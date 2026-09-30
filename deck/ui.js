@@ -85,7 +85,12 @@ $('#btnDescend').onclick=()=>fight(pickDepth);
 $('#goBuilder').onclick=()=>openBuilder();
 $('#goCollection').onclick=()=>openCollection();
 $('#goShop').onclick=()=>openShop();
-$('#btnReset').onclick=()=>{ if(confirm('Reset your save? Your collection and decks will be lost.')){ clearSave(); save=null; buildStart(); } };
+// Two-tap confirmation in the page itself (browser confirm dialogs are blocked in some viewers):
+// the first tap arms the button and changes its label, a second tap within 3 seconds acts.
+function armed(btn,label,act){ if(btn.dataset.armed){ delete btn.dataset.armed; btn.textContent=btn.dataset.label; act(); return; }
+  btn.dataset.label=btn.textContent; btn.dataset.armed='1'; btn.textContent=label;
+  setTimeout(()=>{ if(btn.dataset.armed){ delete btn.dataset.armed; btn.textContent=btn.dataset.label; } },3000); }
+$('#btnReset').onclick=e=>armed(e.currentTarget,'Tap again to erase your collection',()=>{ clearSave(); save=null; buildStart(); });
 document.querySelectorAll('.back').forEach(b=>b.onclick=openCamp);
 
 /* ---------------- filters (builder and collection) ---------------- */
@@ -159,7 +164,7 @@ function renderColl(){
     return el; });
 }
 $('#bAuto').onclick=()=>{ const d=save.decks[editSlot]; d.list=autoFill(d.list,save.owned); persist(); renderBuilder(); };
-$('#bClear').onclick=()=>{ const d=save.decks[editSlot]; if(d.list.length&&!confirm('Remove all cards from '+d.name+'?')) return; d.list=[]; persist(); renderBuilder(); };
+$('#bClear').onclick=e=>{ const d=save.decks[editSlot]; if(!d.list.length) return; armed(e.currentTarget,'Tap to confirm',()=>{ d.list=[]; persist(); renderBuilder(); }); };
 $('#bUse').onclick=()=>{ save.active=editSlot; persist(); renderSlots(); tip(save.decks[editSlot].name+' is now your deck'); };
 
 /* ---------------- collection ---------------- */
@@ -221,14 +226,14 @@ function defeat(){
   reveal('Defeated…','You fell at depth '+depth+' and dropped '+lost+' gold. Your cards are safe.'+burnt,[],
     [['Camp',()=>{ B=null; openCamp(); },true],['Retry',()=>fight(depth)]]);
 }
-$('#btnRetreat').onclick=()=>{ if(B&&confirm('Retreat to camp? You keep your gold.')){ const burnt=settleCharges(); if(burnt) tip(burnt.trim()); B=null; paused=false; $('#bMenu').classList.remove('on'); $('#custom').classList.remove('on'); openCamp(); } };
+$('#btnRetreat').onclick=e=>{ if(B) armed(e.currentTarget,'Tap again to retreat',()=>{ const burnt=settleCharges(); if(burnt) tip(burnt.trim()); B=null; paused=false; $('#bMenu').classList.remove('on'); $('#custom').classList.remove('on'); openCamp(); }); };
 // phone helpers: a short buzz on hits, a pause menu, full screen
 const buzz=ms=>{ try{ navigator.vibrate&&navigator.vibrate(ms); }catch(e){} };
 let paused=false;
 $('#btnMenu').onclick=()=>{ paused=true; if(B) B.player.charging=false; $('#bMenu').classList.add('on'); };
 $('#mResume').onclick=()=>{ paused=false; $('#bMenu').classList.remove('on'); };
 $('#mFull').onclick=()=>{ const d=document, el=d.documentElement;
-  try{ if(d.fullscreenElement||d.webkitFullscreenElement) (d.exitFullscreen||d.webkitExitFullscreen).call(d); else (el.requestFullscreen||el.webkitRequestFullscreen).call(el); }catch(e){ tip('Full screen is not available here'); } };
+  try{ if(d.fullscreenElement||d.webkitFullscreenElement) (d.exitFullscreen||d.webkitExitFullscreen).call(d); else{ const r=(el.requestFullscreen||el.webkitRequestFullscreen).call(el); if(r&&r.catch) r.catch(()=>tip('Full screen is not available here')); } }catch(e){ tip('Full screen is not available here'); } };
 document.addEventListener('fullscreenchange',()=>{ $('#mFull').textContent=document.fullscreenElement?'Exit full screen':'Full screen'; setTimeout(resizeView,50); });
 document.addEventListener('visibilitychange',()=>{ if(document.hidden&&B&&B.phase==='fight'&&$('#scrBattle').classList.contains('on')) $('#btnMenu').onclick(); });
 

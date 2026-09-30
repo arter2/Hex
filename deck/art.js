@@ -419,6 +419,96 @@ function artURL(c){
   return ART_URL[c.id]=cv.toDataURL();
 }
 
-Object.assign(root,{ART_SIZE,cardArt,artCSV,artURL,motifKey});
+/* ---------------- battle sprites ----------------
+   The same pixel kit draws everything on the board: your wizard, each monster, the six
+   humanoids, and your summons, machines and towers. Each sprite is 32 x 32, shaded from the
+   top left and outlined, on a transparent ground, with a black silhouette (for cast shadows)
+   and a white one (for hit flashes). Feet stand on row 30. */
+// a person, built from parts: robe, hat or helmet, and what they hold
+function human(o){
+  if(o.cape) poly([[10,13],[22,13],[26,30],[6,30]],'c');
+  rect(12,25,14,30,'d'); rect(18,25,20,30,'d'); rect(11,29,14,30,'k'); rect(18,29,21,30,'k');
+  poly([[9,27],[23,27],[20,15],[12,15]],'m'); rect(11,20,21,21,'a'); rect(15,15,17,27,'a');
+  rect(8,15,11,23,'m'); rect(21,15,24,23,'m'); rect(8,23,10,25,'h'); rect(22,23,24,25,'h');
+  circ(16,11,4.2,'h'); px(14,11,'K'); px(18,11,'K'); if(o.beard) poly([[12,13],[20,13],[16,21]],'w');
+  switch(o.hat){
+    case 'wizard': poly([[8,9],[24,9],[19,5],[13,0]],'m'); rect(9,8,23,9,'a'); px(16,4,'Y'); break;
+    case 'witch': poly([[6,9],[26,9],[18,5],[21,0]],'k'); rect(12,7,20,8,'m'); break;
+    case 'hood': poly([[10,14],[11,7],[16,3],[21,7],[22,14],[20,14],[19,9],[13,9],[12,14]],'m'); break;
+    case 'helm': rect(11,6,21,13,'g'); rect(12,10,20,11,'K'); poly([[16,6],[19,0],[23,3]],'r'); break;
+    case 'spiked': rect(11,6,21,13,'k'); rect(12,10,20,11,'R'); for(const x of [12,16,20]) poly([[x-1,6],[x+1,6],[x,1]],'g'); break;
+    case 'leaf': poly([[9,11],[16,3],[23,11],[16,9]],'l'); break;
+  }
+  switch(o.weapon){
+    case 'staff': seg(25,6,25,30,2,'t'); circ(25,5,2.6,'A'); px(24,4,'W'); break;
+    case 'bolt': seg(25,8,25,30,1,'g'); curve([[25,1],[23,4],[27,5],[25,9]],1,'A'); break;
+    case 'sword': seg(25,3,25,20,2,'w'); rect(23,19,27,20,'y'); break;
+    case 'bow': quad([25,4],[30,16],[25,28],1,'t'); seg(25,4,25,28,1,'w'); break;
+    case 'darksword': seg(25,2,25,20,2,'k'); seg(25,3,25,18,1,'R'); rect(23,19,27,20,'g'); break;
+  }
+  if(o.shield){ poly([[3,14],[11,14],[11,21],[7,25],[3,21]],'a'); rect(6,15,8,22,'y'); }
+}
+const MONSTER={
+  gloop(){ ell(16,22,13,9,'m'); ell(14,14,6,5,'m'); for(const x of [6,12,20,26]) rect(x,29,x+1,31,'m');
+    circ(11,19,2.6,'W'); circ(20,19,2.6,'W'); px(11,19,'K'); px(12,20,'K'); px(20,19,'K'); px(21,20,'K');
+    rect(12,24,19,25,'K'); px(13,26,'w'); px(18,26,'w'); for(const [x,y] of [[8,24],[24,23],[15,14]]) circ(x,y,1.2,'A'); px(10,15,'W'); px(11,14,'W'); },
+  wisp(){ poly([[16,-1],[21,8],[25,18],[22,27],[16,30],[10,27],[7,18],[11,8]],'m'); poly([[16,6],[20,14],[21,22],[16,27],[11,22],[12,14]],'a');
+    ell(16,21,3.5,5,'W'); poly([[6,14],[2,8],[9,12]],'m'); poly([[26,14],[30,8],[23,12]],'m'); rect(12,17,13,18,'K'); rect(19,17,20,18,'K'); rect(14,22,18,22,'K'); },
+  mite(){ for(const d of [-1,1]) for(let i=0;i<3;i++) seg(16+d*6,22+i*2,16+d*(13+i),26+i*2,1,'k');
+    ell(16,20,10,7,'m'); for(const [x,h] of [[10,7],[14,11],[18,9],[22,6]]) poly([[x-2,16],[x,16-h],[x+2,16]],'x');
+    for(const d of [-1,1]){ seg(16+d*8,18,16+d*13,12,2,'m'); poly([[16+d*13,12],[16+d*15,8],[16+d*11,9]],'w'); }
+    for(const d of [-1,1]){ seg(16+d*3,15,16+d*4,11,1,'k'); circ(16+d*4,10,1.4,'A'); } },
+  beetle(){ for(const d of [-1,1]) for(let i=0;i<3;i++) seg(16+d*5,21+i*3,16+d*12,23+i*3,1,'k');
+    for(const d of [-1,1]) poly([[16,14],[16+d*14,8],[16+d*10,20]],'x');
+    ell(16,21,9,8,'m'); seg(16,13,16,29,1,'k'); ell(16,12,5,4,'k');
+    curve([[16,9],[14,5],[18,3],[15,-1]],2,'a'); px(13,11,'A'); px(19,11,'A'); px(12,17,'W'); },
+  ram(){ ell(17,19,11,8,'w'); for(let i=0;i<7;i++) circ(9+i*3,13+(i%2)*2,2.5,'w'); for(const x of [9,13,20,24]) rect(x,25,x+1,30,'k');
+    ell(7,16,5,6,'k'); px(5,15,'A'); ringp(9,11,4,2,'a'); ringp(9,11,2,1,'a'); for(let i=0;i<4;i++) px(12+i*4,10+(i%2)*2,'Y'); px(4,19,'W'); },
+  shade(){ poly([[16,0],[24,8],[26,20],[29,31],[24,27],[20,31],[16,27],[12,31],[8,27],[3,31],[6,20],[8,8]],'m');
+    poly([[16,3],[22,9],[21,15],[11,15],[10,9]],'K'); rect(12,10,14,11,'A'); rect(18,10,20,11,'A');
+    for(const d of [-1,1]) poly([[16+d*8,15],[16+d*14,22],[16+d*9,20]],'m'); curve([[3,6],[5,3],[2,1]],1,'M'); curve([[28,4],[30,2],[27,0]],1,'M'); },
+  sprite(){ for(const d of [-1,1]){ ell(16+d*8,13,6,8,'x'); ell(16+d*7,22,4,5,'x'); }
+    ell(16,20,3,7,'b'); circ(16,11,3.5,'h'); px(15,11,'K'); px(17,11,'K'); ringp(16,5,4,1,'Y'); rect(14,14,18,15,'a');
+    for(const [x,y] of [[5,4],[27,6],[8,28],[25,27]]) px(x,y,'W'); },
+  golem(){ rect(8,10,24,26,'s'); rect(11,3,21,11,'s'); rect(2,11,8,24,'s'); rect(24,11,30,24,'s'); rect(9,26,14,31,'s'); rect(18,26,23,31,'s');
+    circ(16,17,3.5,'A'); circ(16,17,1.6,'W'); rect(13,6,14,7,'A'); rect(18,6,19,7,'A');
+    for(const [x,y] of [[10,12],[21,22],[4,15],[27,19]]) px(x,y,'M'); seg(8,10,24,10,1,'k'); seg(16,21,16,26,1,'k'); },
+};
+MONSTER.gloopling=MONSTER.gloop;
+const HUMAN_LOOK={cultist:{hat:'hood',weapon:'staff'}, witch:{hat:'witch',weapon:'staff',cape:1}, caller:{hat:'hood',weapon:'bolt'},
+  warden:{hat:'leaf',weapon:'bow',cape:1}, paladin:{hat:'helm',weapon:'sword',shield:1}, knight:{hat:'spiked',weapon:'darksword',cape:1}};
+const SPRITES={};
+function makeSprite(key,pal,draw){
+  if(SPRITES[key]) return SPRITES[key];
+  G=Array.from({length:N},()=>Array(N).fill(null)); draw();
+  const R={}; for(const k in MATS) R[k]=ramp(MATS[k]); R.m=ramp(pal.m); R.a=ramp(pal.a); R.c=ramp(pal.c||pal.a); R.h=ramp('#e8b890'); R.d=ramp(pal.d||'#3a2e4a');
+  const flat={A:pal.glow, W:'#ffffff', M:pal.m, Y:'#ffe066', R:'#ff3a4a', K:'#140a1a'};
+  const mk=()=>{ const cv=document.createElement('canvas'); cv.width=cv.height=N; return cv; };
+  const img=mk(), sil=mk(), wht=mk(), ci=img.getContext('2d'), cs=sil.getContext('2d'), cw=wht.getContext('2d');
+  const has=(x,y)=>y>=0&&y<N&&x>=0&&x<N&&G[y][x];
+  cs.fillStyle='#000'; cw.fillStyle='#fff';
+  for(let y=0;y<N;y++) for(let x=0;x<N;x++){ const m=G[y][x]; let col=null;
+    if(m){ if(flat[m]) col=flat[m]; else { const same=(dx,dy)=>has(x+dx,y+dy)===m;
+        col=R[m][!same(0,-1)||!same(-1,-1)?3:(!same(1,1)&&!same(0,1))?0:(!same(1,0)||!same(0,1))?1:2]; } }
+    else if([[0,1],[0,-1],[1,0],[-1,0]].some(([dx,dy])=>has(x+dx,y+dy))) col=pal.o||'#0a0610';
+    if(col){ ci.fillStyle=col; ci.fillRect(x,y,1,1); cs.fillRect(x,y,1,1); cw.fillRect(x,y,1,1); } }
+  return SPRITES[key]={img,sil,wht};
+}
+// the sprite for a unit on the board: 'player', an enemy id, or an ally's card
+function unitSprite(u){
+  if(u.kind==='player') return makeSprite('player',{m:'#6a4ad0',a:'#e8b830',glow:'#c58bff',o:'#0a0612'},()=>human({hat:'wizard',weapon:'staff',beard:1}));
+  if(u.kind==='enemy'){ const F=FAM[u.color], id=u.id;
+    const pal={m:F.m,a:F.a,glow:F.glow,o:F.o,c:artMix(F.m,'#000000',.35),d:artMix(F.m,'#1a1020',.6)};
+    if(HUMAN_LOOK[id]) return makeSprite('e:'+id,pal,()=>human(HUMAN_LOOK[id]));
+    return makeSprite('e:'+id,pal,MONSTER[id]||MONSTER.gloop); }
+  const c=u.card, F=FAM[c.color], pal={m:F.m,a:F.a,glow:F.glow,o:F.o};
+  return makeSprite('c:'+c.id,Object.assign(pal,{c:COAT[subjectOf(c)[1]]||F.m}),()=>{
+    const [kind,key]=subjectOf(c);
+    if(kind==='creature') creature(CREATURES[key],CREATURE_MOD[words(c)[0]]||{},()=>.5);
+    else if(kind==='machine') machine(key,c.ai);
+    else (THING[key]||THING.sentry)(()=>.5); });
+}
+
+Object.assign(root,{ART_SIZE,cardArt,artCSV,artURL,motifKey,unitSprite});
 if(typeof module!=='undefined') module.exports={ART_SIZE,cardArt,artCSV,motifKey};
 })(typeof window!=='undefined'?window:globalThis);

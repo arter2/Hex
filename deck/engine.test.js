@@ -137,9 +137,10 @@ t('everything a card puts on the board has a turn limit and HP', ()=>{
     if(k==='ward'&&c.ward==='barrier') assert(c.amt>0, c.id+' shield');
     if(k!=='boon') assert(c.dur==null, c.id+' should count turns, not seconds'); }
 });
-t('every card has 16 x 16 pixel art of hex colors, and the CSV files match', ()=>{
+t('every card has 32 x 32 pixel art of hex colors, all unique, and the CSV files match', ()=>{
   const A=require('./art.js'), fs=require('fs'), path=require('path');
-  for(const c of D.CARD_LIST){ const a=A.cardArt(c); assert.strictEqual(a.length,16,c.id); assert(a.every(r=>r.length===16&&r.every(x=>/^#[0-9a-f]{6}$/.test(x))),c.id);
+  for(const c of D.CARD_LIST){ const a=A.cardArt(c); assert.strictEqual(a.length,32,c.id); assert(a.every(r=>r.length===32&&r.every(x=>/^#[0-9a-f]{6}$/.test(x))),c.id);
     const f=path.join(__dirname,'art',c.id+'.csv'); assert(fs.existsSync(f),c.id+' csv missing (run node deck/tools/export-art.js)');
     assert.strictEqual(fs.readFileSync(f,'utf8'),A.artCSV(c),c.id+' csv is stale (run node deck/tools/export-art.js)'); }
+  assert.strictEqual(new Set(D.CARD_LIST.map(c=>A.artCSV(c))).size,D.CARD_LIST.length,'every picture is different');
 });

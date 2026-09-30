@@ -12,7 +12,7 @@ build decks from your collection → fight deeper for rarer drops. 800 cards to 
 | `collection.js` | Save, card drops by depth, packs, auto-fill |
 | `battle.js` | Real-time battle on an 8 x 12 hex board (isometric view that turns upright on a phone); every card type: Strike, Lob, Ward, Sentry, Boon, Charge, Utility, Trap, Environment, Summon, Machine, Legendary piece |
 | `enemies.js` | Monsters with signature attacks, humanoids that cast real cards, encounters in up to 3 waves, terrain (rocks, lava, ice) |
-| `art.js` | 16 x 16 pixel art for every card, built from a motif per card kind in its color family; `node deck/tools/export-art.js` writes `art/<card id>.csv` (16 rows of 16 hex colors) and `art/index.csv` |
+| `art.js` | 32 x 32 pixel art for every card (all 800 different): the subject comes from the card's name, staged by its type, set in its color family's scene, with keyword details and a rarity frame; `node deck/tools/export-art.js` writes `art/<card id>.csv` (32 rows of 32 hex colors) and `art/index.csv` |
 | `ui.js` | Start, camp, deck builder (5 saved decks), collection, shop, Custom screen, HUD, controls |
 
 Tests: `node deck/engine.test.js`

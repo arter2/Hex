@@ -47,17 +47,7 @@ function pathTo(from,to){ // BFS over free tiles on your side
   const path=[]; for(let c=to;c&&c!==from;c=prev.get(c)) path.unshift(c); return path;
 }
 
-/* ---------------- enemies ---------------- */
-const ENEMY_DEFS={
-  gloop: {name:'Gloop',       color:'verdant', hp:120, atk:'shot', dmg:12, rate:[3,4.2]},
-  wisp:  {name:'Cinder Wisp', color:'fire',    hp:85,  atk:'shot', dmg:10, rate:[2.2,3]},
-  mite:  {name:'Frost Mite',  color:'frost',   hp:95,  atk:'slam', dmg:14, rate:[3,4]},
-  beetle:{name:'Volt Beetle', color:'storm',   hp:110, atk:'both', dmg:12, rate:[2.6,3.6]},
-  shade: {name:'Shade',       color:'shadow',  hp:100, atk:'slam', dmg:16, rate:[3.2,4.2]},
-  sprite:{name:'Halo Sprite', color:'light',   hp:90,  atk:'shot', dmg:11, rate:[2.5,3.4]},
-  golem: {name:'Radiant Golem',color:'light',    hp:340, atk:'quake',dmg:22, rate:[3.6,4.6], boss:true, scale:1.45},
-};
-const WEAK_TO={}; for(const k in BEATS) WEAK_TO[BEATS[k]]=k;
+/* enemies, encounters and terrain live in enemies.js */
 
 /* ---------------- state ---------------- */
 let B=null;
@@ -70,15 +60,9 @@ function startBattle(list,depth,hooks,opts){
   p.tile.occ=p;
   B={depth, hooks:hooks||{}, piles:createPiles(list), player:p, aim:null, enemies:[], allies:[], walls:[], shots:[], lobs:[], teles:[], fx:[], floaters:[], parts:[],
      timers:[], gauge:0, phase:'custom', time:0, log:[]};
-  const hs=1+.2*(depth-1), ds=1+.1*(depth-1);
-  const pool=Object.keys(ENEMY_DEFS).filter(k=>!ENEMY_DEFS[k].boss);
-  const ids=depth%4===0?['golem',pick(pool)]:Array.from({length:depth===1?2:3},()=>pick(pool));
-  // spread enemies over different rows of their side
-  const rows=[0,1,2,3,4].sort(()=>Math.random()-.5);
-  ids.forEach((id,i)=>{ const d=ENEMY_DEFS[id], t=pick(E_TILES.filter(x=>x.r===rows[i%5]&&!x.occ&&x.col>=6));
-    const e={kind:'enemy', id, def:d, name:d.name, color:d.color, hp:Math.round(d.hp*hs), maxHp:Math.round(d.hp*hs), dmg:Math.round(d.dmg*ds),
-             tile:t, atkT:rnd(2,3.5)+i*.7, moveT:rnd(1,2), windT:0, burnT:0, burnAcc:0, freezeT:0, stunT:0, slowT:0, poisonT:0, poisonAmt:0, curseT:0, hitT:0};
-    t.occ=e; B.enemies.push(e); });
+  B.waves=makeEncounter(depth); B.wave=0;
+  makeTerrain(depth);
+  spawnWave(0);
   if(opts&&opts.prepare) opts.prepare(B.piles);
   openCustomScreen();
   return B;
@@ -111,7 +95,8 @@ function hitEnemy(e,base,card,opts){
   opts=opts||{};
   const pl=B.player;
   let mult=opts.raw?1:colorMult(card&&card.color,e.color)*(e.curseT>0?1.3:1)*(pl.pactT>0||pl.courageT>0?1.3:1)*(card&&card.valor&&pl.hp<=pl.maxHp/2?1.5:1);
-  const dmg=Math.max(1,Math.round(base*mult));
+  let dmg=Math.max(1,Math.round(base*mult));
+  if(e.barrier>0&&!opts.raw){ const a=Math.min(e.barrier,dmg); e.barrier-=a; dmg-=a; if(!dmg){ floater('🛡',e.tile,'#fff0b3'); return 0; } }
   e.hp-=dmg; e.hitT=.18;
   floater(dmg+(mult>=WEAK_MULT?' WEAK!':''),e.tile,mult>=WEAK_MULT?'#ffe24d':opts.raw?'#b8ffb0':'#fff',mult>=WEAK_MULT);
   flash(e.tile,colorOf(card),.8);
@@ -130,13 +115,18 @@ function applyStatus(e,c){
   if(c.stun){ e.stunT=Math.max(e.stunT,c.stun); cancelAttack(e); }
 }
 function cancelAttack(e){
-  const had=e.windT>0||B.teles.some(t=>t.owner===e);
-  e.windT=0; B.teles=B.teles.filter(t=>t.owner!==e);
+  const had=e.windT>0||e.casting||B.teles.some(t=>t.owner===e);
+  e.windT=0; e.casting=null; B.teles=B.teles.filter(t=>t.owner!==e);
   if(had) floater('cancelled',e.tile,'#6fd6ff');
 }
 function killEnemy(e){
   e.hp=0; if(e.tile.occ===e) e.tile.occ=null; cancelAttack(e); burst(e.tile,COLORS[e.color].c,24);
-  if(!alive().length&&B.phase==='fight'){ B.phase='win'; B.player.charging=false; later(1.2,()=>B.hooks.onEnd&&B.hooks.onEnd(true)); }
+  if(e.def.split){ const spots=around(e.tile).filter(t=>t.side==='e'&&!t.occ).slice(0,2);   // a Gloop splits in two
+    if(!spots.length&&!e.tile.occ) spots.push(e.tile);
+    spots.forEach(t=>{ const m=makeEnemy(e.def.split,t,B.depth); m.atkT+=1; B.enemies.push(m); }); }
+  if(!alive().length&&B.phase==='fight'){
+    if(B.wave<B.waves.length-1){ const nx=B.wave+1; later(1.1,()=>spawnWave(nx)); B.wave=nx-.5; return; }
+    B.phase='win'; B.player.charging=false; later(1.2,()=>B.hooks.onEnd&&B.hooks.onEnd(true)); }
 }
 function healPlayer(n){ const p=B.player; if(n<=0||p.hp<=0) return; const h=Math.min(n,p.maxHp-p.hp); p.hp+=h; if(h>0) floater('+'+h,p.tile,'#6dff9a'); }
 function hitPlayer(dmg){
@@ -176,9 +166,9 @@ const CAST={
   strike(c,p){
     const row=lineTiles(p.tile,DIRS.E);
     if(c.shape==='line') shoot(p.tile,row,{card:c,dmg:c.pow,from:'p'});
-    else if(c.shape==='row'){ row.forEach((t,i)=>{ flash(t,colorOf(c),1); if(t.occ&&t.occ.kind==='enemy') hitEnemy(t.occ,c.pow,c); });
+    else if(c.shape==='row'){ row.forEach((t,i)=>{ flash(t,colorOf(c),1); hitAt(t,c.pow,c); });
       B.fx.push({kind:'beam',a:p.tile,b:row[row.length-1]||p.tile,color:colorOf(c),t:0,life:.3}); }
-    else if(c.shape==='wedge'){ const ts=wedgeTiles(p.tile,2.6); ts.forEach(t=>{ flash(t,colorOf(c),1); if(t.occ&&t.occ.kind==='enemy') hitEnemy(t.occ,c.pow,c); }); }
+    else if(c.shape==='wedge'){ const ts=wedgeTiles(p.tile,2.6); ts.forEach(t=>{ flash(t,colorOf(c),1); hitAt(t,c.pow,c); }); }
     else if(c.shape==='all') alive().forEach(e=>{ B.fx.push({kind:'bolt',a:p.tile,b:e.tile,color:colorOf(c),t:0,life:.35}); hitEnemy(e,c.pow,c); });
     else if(c.shape==='missiles') for(let i=0;i<c.n;i++) later(i*.09,()=>{ const e=pick(alive()); if(!e) return;
       B.fx.push({kind:'arc',a:p.tile,b:e.tile,color:colorOf(c),t:0,life:.25}); hitEnemy(e,c.pow,c); });
@@ -225,12 +215,14 @@ const CAST={
 // Arc onto the aimed tile, or the enemy nearest to `from`, over walls and allies.
 // The tile is fixed at cast, so an enemy that moves during the flight is missed.
 const nearestEnemyTile=from=>{ const e=alive().sort((a,b)=>hexDist(from,a.tile)-hexDist(from,b.tile))[0]; return e?e.tile:null; };
+// damage whatever enemy thing stands on a tile: an enemy, or its wall or sentry
+function hitAt(t,pow,c){ const o=t.occ; if(!o) return; if(o.kind==='enemy') hitEnemy(o,pow,c); else if(o.enemy) hitBlock(o,pow,null); }
 function lobFrom(from,c,pow,radius,dur,target){
   const t=target||nearestEnemyTile(from); if(!t) return;
   const ts=[t].concat(radius?around(t).filter(n=>n.side==='e'):[]);
   B.lobs.push({a:from,b:t,t:0,dur,card:c});
   B.teles.push({tiles:ts,t:0,dur,friendly:true});
-  later(dur,()=>ts.forEach(x=>{ flash(x,colorOf(c),1); burst(x,colorOf(c),6,.2); if(x.occ&&x.occ.kind==='enemy') hitEnemy(x.occ,pow,c); }));
+  later(dur,()=>ts.forEach(x=>{ flash(x,colorOf(c),1); burst(x,colorOf(c),6,.2); hitAt(x,pow,c); }));
 }
 // Sentries, summons and machines stand on a free tile of your side, nearest your row and the rift.
 function placeAlly(c,ai,hp,dur){
@@ -243,6 +235,7 @@ function updateAlly(a,dt){
   if(a.t<=0){ removeBlock(a); return; }
   if(a.fireT>0) return;
   const c=a.card; a.fireT=c.rate||1;
+  if(a.enemy){ shoot(a.tile,lineTiles(a.tile,DIRS.W),{dmg:a.pow,from:'e',owner:null,color:colorOf(c)}); return; }
   const es=alive(); if(!es.length&&a.ai!=='healer') return;
   const inRow=es.filter(e=>e.tile.r===a.tile.r);
   const near=(inRow.length?inRow:es).sort((x,y)=>hexDist(a.tile,x.tile)-hexDist(a.tile,y.tile))[0];
@@ -283,7 +276,7 @@ function update(dt){
   ['moveCd','castCd','wandCd','invT','powerT','pactT','courageT','hasteT','regenT'].forEach(k=>p[k]=Math.max(0,p[k]-dt));
   if(p.regenT>0){ p.regenAcc=(p.regenAcc||0)+p.regenAmt*dt; if(p.regenAcc>=5){ healPlayer(5); p.regenAcc-=5; } }
   if(p.charging) p.chargeT=Math.min(1.2,p.chargeT+dt);
-  if(p.path.length&&p.moveCd<=0){ const n=p.path[0]; if(n.side==='p'&&!n.occ){ p.tile.occ=null; p.tile=n; n.occ=p; p.path.shift(); p.moveCd=haste?.08:.14; } else p.path=[]; }
+  if(p.path.length&&p.moveCd<=0){ const n=p.path[0]; if(n.side==='p'&&!n.occ){ p.tile.occ=null; p.tile=n; n.occ=p; p.path.shift(); p.moveCd=(haste?.08:.14)*(icy(n)?2.2:1); } else p.path=[]; }
 
   // your shots and enemy shots travel tile by tile
   for(const s of b.shots){
@@ -291,8 +284,10 @@ function update(dt){
     while(s.stepT>=s.speed&&!s.done){ s.stepT-=s.speed; s.i++;
       const t=s.tiles[s.i]; if(!t){ s.done=true; break; }
       const o=t.occ;
-      if(s.from==='p'&&o&&o.kind==='enemy'&&o.hp>0){ hitEnemy(o,s.dmg,s.card); s.done=true; }
-      else if(s.from==='e'&&o&&o.kind!=='enemy'){ if(o.kind==='player') hitPlayer(s.dmg); else hitBlock(o,s.dmg,s.owner); s.done=true; }
+      if(o&&o.kind==='rock'){ s.done=true; }
+      else if(s.from==='p'&&o&&o.kind==='enemy'&&o.hp>0){ hitEnemy(o,s.dmg,s.card); s.done=true; }
+      else if(s.from==='p'&&o&&o.enemy){ hitBlock(o,s.dmg,null); s.done=true; }
+      else if(s.from==='e'&&o&&o.kind!=='enemy'&&!o.enemy){ if(o.kind==='player') hitPlayer(s.dmg); else hitBlock(o,s.dmg,s.owner); s.done=true; }
       if(s.done) burst(t,s.card?colorOf(s.card):s.color||'#fff',6,.8);
     }
   }
@@ -301,39 +296,18 @@ function update(dt){
   for(const l of b.lobs) l.t+=dt; b.lobs=b.lobs.filter(l=>l.t<l.dur);
 
   for(const tl of b.teles){ tl.t+=dt;
-    if(tl.t>=tl.dur&&!tl.friendly){ for(const t of tl.tiles){ flash(t,'#ff5d6c',1); const o=t.occ; if(!o) continue;
-      if(o.kind==='player') hitPlayer(tl.dmg); else if(o.kind!=='enemy') hitBlock(o,tl.dmg,tl.owner); } } }
+    if(tl.t>=tl.dur&&!tl.friendly){ if(tl.owner&&tl.owner.hp<=0) continue;
+      for(const t of tl.tiles){ flash(t,'#ff5d6c',1); const o=t.occ; if(!o) continue;
+        if(o.kind==='player') hitPlayer(tl.dmg); else if(o.kind!=='enemy'&&o.kind!=='rock'&&!o.enemy) hitBlock(o,tl.dmg,tl.owner); }
+      if(tl.after) tl.after(); } }
   b.teles=b.teles.filter(tl=>tl.t<tl.dur);
 
   for(const a of b.allies.slice()) updateAlly(a,dt);
 
+  updateTerrain(dt);
   for(const e of alive()) updateEnemy(e,dt);
 }
 
-function updateEnemy(e,dt){
-  const b=B;
-  e.hitT=Math.max(0,e.hitT-dt); e.curseT=Math.max(0,e.curseT-dt); e.poisonT=Math.max(0,e.poisonT-dt);
-  if(e.burnT>0){ e.burnT-=dt; e.burnAcc+=5*dt; if(e.burnAcc>=5){ e.burnAcc-=5; hitEnemy(e,5,null,{raw:true}); if(e.hp<=0) return; } }
-  if(e.freezeT>0||e.stunT>0){ e.freezeT=Math.max(0,e.freezeT-dt); e.stunT=Math.max(0,e.stunT-dt); return; }
-  if(e.slowT>0){ e.slowT-=dt; dt*=.5; }
-  if(e.windT>0){ e.windT-=dt; if(e.windT<=0) shoot(e.tile,lineTiles(e.tile,DIRS.W),{dmg:e.dmg,from:'e',owner:e,color:COLORS[e.color].c}); return; }
-  e.moveT-=dt;
-  if(e.moveT<=0&&!b.teles.some(t=>t.owner===e)){
-    e.moveT=rnd(1.3,2.4);
-    const opts=neighbors(e.tile).filter(t=>t.side==='e'&&!t.occ);
-    if(opts.length){ e.tile.occ=null; e.tile=pick(opts); e.tile.occ=e;
-      if(e.poisonT>0){ hitEnemy(e,e.poisonAmt,null,{raw:true}); if(e.hp<=0) return; } }
-  }
-  e.atkT-=dt;
-  if(e.atkT<=0){
-    e.atkT=rnd(e.def.rate[0],e.def.rate[1]);
-    const pt=b.player.tile, kind=e.def.atk==='both'?pick(['shot','slam']):e.def.atk;
-    if(kind==='shot') e.windT=.55;
-    else if(kind==='slam'){ const n=pick(neighbors(pt).filter(t=>t.side==='p'))||pt; b.teles.push({tiles:[pt,n],t:0,dur:1,dmg:e.dmg,owner:e}); }
-    else if(kind==='quake'){ const safe=[pick(P_TILES)]; safe.push(...neighbors(safe[0]).filter(t=>t.side==='p').slice(0,2));
-      b.teles.push({tiles:P_TILES.filter(t=>!safe.includes(t)),t:0,dur:1.7,dmg:e.dmg,owner:e}); }
-  }
-}
 
 /* ---------------- input helpers ---------------- */
 // Aiming lobs: tap an enemy-side tile (again to clear it). A lob card uses the aim once; a lob charge keeps it.
@@ -405,6 +379,8 @@ function render(){
     let fill=base;
     const tl=telMap.get(t);
     if(tl){ const k=tl.t/tl.dur; fill=mixHex(base,tl.friendly?'#e8e0ff':'#ff3b4e',.25+.5*k*(.6+.4*Math.sin(T*18))); }
+    if(burning(t)) fill=mixHex(fill,'#ff5a1f',t.terrain==='lava'?.45+.12*Math.sin(T*3+t.q):.35+.15*Math.sin(T*8));
+    else if(icy(t)) fill=mixHex(fill,'#bfeaff',t.terrain==='ice'?.45:.35);
     if(t.flash>0) fill=mixHex(base,t.flashC[0]==='#'&&t.flashC.length===7?t.flashC:'#ffffff',Math.min(.8,t.flash));
     ctx.fillStyle='#0c0818'; poly(ctx,top.map(([x,y])=>[x,y+SLAB*S])); ctx.fill();
     ctx.fillStyle=mixHex(base,'#000000',.45);
@@ -423,7 +399,8 @@ function render(){
   // path preview
   if(b.player.path.length){ ctx.fillStyle='rgba(160,180,255,.35)'; for(const t of b.player.path){ const [x,y]=proj(t.wx,0,t.wz); ctx.beginPath(); ctx.ellipse(x,y,S*.18,S*.18*ISO_Y,0,0,TAU); ctx.fill(); } }
 
-  const units=[b.player,...b.walls,...b.allies,...alive()].sort((a,c)=>depthOf(a.tile)-depthOf(c.tile));
+  const rocks=TILES.filter(t=>t.occ&&t.occ.kind==='rock').map(t=>t.occ);
+  const units=[b.player,...b.walls,...b.allies,...rocks,...alive()].sort((a,c)=>depthOf(a.tile)-depthOf(c.tile));
   for(const u of units) DRAW[u.kind](ctx,u,T,S);
 
   for(const s of b.shots){
@@ -467,17 +444,35 @@ const DRAW={
   enemy(ctx,e,T,S){
     const sc=e.def.scale||1; shadow(ctx,e.tile,S,.42*sc);
     const [x,y]=proj(e.tile.wx,0,e.tile.wz), col=COLORS[e.color].c, frozen=e.freezeT>0, h=S*.55*sc, bob=frozen?0:Math.sin(T*4+e.tile.q)*S*.05;
-    ctx.fillStyle=e.hitT>0?'#ffffff':frozen?mixHex(col,'#bfefff',.6):col;
-    ctx.beginPath(); ctx.ellipse(x,y-h+bob,S*.38*sc,h,0,0,TAU); ctx.fill();
-    ctx.strokeStyle='rgba(0,0,0,.45)'; ctx.lineWidth=2; ctx.stroke();
-    ctx.fillStyle='#120a1e'; ctx.beginPath(); ctx.arc(x-S*.12*sc,y-h*1.2+bob,S*.06*sc,0,TAU); ctx.arc(x+S*.12*sc,y-h*1.2+bob,S*.06*sc,0,TAU); ctx.fill();
-    const top=y-h*2-S*.15;
+    const body=e.hitT>0?'#ffffff':frozen?mixHex(col,'#bfefff',.6):col;
+    if(e.deck){ // humanoid: a hooded caster in its color
+      ctx.fillStyle=mixHex(col,'#000000',.35); ctx.beginPath(); ctx.moveTo(x-S*.34,y); ctx.lineTo(x+S*.34,y); ctx.lineTo(x,y-S*1.05+bob); ctx.closePath(); ctx.fill();
+      ctx.fillStyle=body; ctx.beginPath(); ctx.arc(x,y-S*1.05+bob,S*.2,0,TAU); ctx.fill();
+      ctx.fillStyle='#120a1e'; ctx.beginPath(); ctx.arc(x-S*.07,y-S*1.07+bob,S*.035,0,TAU); ctx.arc(x+S*.07,y-S*1.07+bob,S*.035,0,TAU); ctx.fill();
+      ctx.strokeStyle='#b58a5a'; ctx.lineWidth=3; ctx.beginPath(); ctx.moveTo(x-S*.3,y-S*.2); ctx.lineTo(x-S*.42,y-S*1.1); ctx.stroke();
+      ctx.fillStyle=col; ctx.beginPath(); ctx.arc(x-S*.42,y-S*1.15,S*.09,0,TAU); ctx.fill();
+    } else {
+      ctx.fillStyle=body; ctx.beginPath(); ctx.ellipse(x,y-h+bob,S*.38*sc,h,0,0,TAU); ctx.fill();
+      ctx.strokeStyle='rgba(0,0,0,.45)'; ctx.lineWidth=2; ctx.stroke();
+      ctx.fillStyle='#120a1e'; ctx.beginPath(); ctx.arc(x-S*.12*sc,y-h*1.2+bob,S*.06*sc,0,TAU); ctx.arc(x+S*.12*sc,y-h*1.2+bob,S*.06*sc,0,TAU); ctx.fill();
+    }
+    if(e.barrier>0){ ctx.strokeStyle='rgba(255,240,179,.8)'; ctx.lineWidth=2; ctx.beginPath(); ctx.ellipse(x,y-h,S*.5*sc,S*.75*sc,0,0,TAU); ctx.stroke(); }
+    const top=y-Math.max(h*2,S*1.3)-S*.15;
     bar(ctx,x,top,S*.9,e.hp/e.maxHp,'#ff5d6c');
     ctx.font='700 '+Math.round(S*.28)+'px Rajdhani,system-ui,sans-serif'; ctx.textAlign='center';
-    const st=[]; if(e.burnT>0) st.push('🔥'); if(frozen) st.push('❄️'); if(e.stunT>0) st.push('💫'); if(e.slowT>0) st.push('🐌'); if(e.poisonT>0) st.push('☠'); if(e.curseT>0) st.push('☾');
+    const st=[]; if(e.burnT>0) st.push('🔥'); if(frozen) st.push('❄️'); if(e.stunT>0) st.push('💫'); if(e.slowT>0) st.push('🐌'); if(e.poisonT>0) st.push('☠'); if(e.curseT>0) st.push('☾'); if(e.powerT>0) st.push('⬆');
     ctx.fillStyle='#fff'; ctx.fillText(e.name+'  weak: '+COLORS[WEAK_TO[e.color]].icon,x,top-4);
     if(st.length) ctx.fillText(st.join(''),x,top-4-S*.3);
+    if(e.casting){ const w=Math.max(S*1.6,ctx.measureText(e.casting.name).width+14), yy=top-S*.75;   // the card it is about to cast
+      ctx.fillStyle='rgba(12,8,24,.9)'; ctx.strokeStyle=COLORS[e.casting.color].c; ctx.lineWidth=2; ctx.beginPath(); ctx.roundRect(x-w/2,yy-S*.32,w,S*.44,6); ctx.fill(); ctx.stroke();
+      ctx.fillStyle=COLORS[e.casting.color].c; ctx.fillText(TYPES[e.casting.type].icon+' '+e.casting.name,x,yy); }
     if(e.windT>0){ ctx.fillStyle='#ff5d6c'; ctx.font='800 '+Math.round(S*.6)+'px Rajdhani,system-ui,sans-serif'; ctx.fillText('!',x+S*.5,y-h*1.6); }
+  },
+  rock(ctx,r,T,S){
+    const top=hexCorners(r.tile,.7,.75), bot=hexCorners(r.tile,.7,0);
+    ctx.fillStyle='#3b3647'; frontFaces(ctx,top,bot[0][1]-top[0][1]);
+    ctx.fillStyle=r.tile.rockT>0&&r.tile.rockT<2?'#8a8398':'#6b6478'; poly(ctx,top); ctx.fill();
+    ctx.strokeStyle='rgba(0,0,0,.35)'; ctx.lineWidth=1; ctx.stroke();
   },
   wall(ctx,w,T,S){
     const col=colorOf(w.card), top=hexCorners(w.tile,.62,.9), bot=hexCorners(w.tile,.62,0);

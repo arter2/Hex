@@ -208,7 +208,7 @@ function settleCharges(){ const burned=settleChargeUses(save,B.piles); persist()
   return burned.length?' Burned up: '+burned.map(x=>x.card.name+(x.n>1?' ×'+x.n:'')).join(', ')+'.':''; }
 function victory(){
   const b=B, boss=b.enemies.some(e=>e.def.boss);
-  const gold=battleGold(b.depth,boss), drops=battleDrops(b.enemies.map(e=>e.color),b.depth,boss);
+  const gold=battleGold(b.depth,boss), drops=battleDrops(b.enemies.filter(e=>!e.def.minion).map(e=>e.color),b.depth,boss);
   save.gold+=gold; save.wins++; if(b.depth>=save.deepest) save.deepest=b.depth+1;
   const res=addCards(save,drops); const burnt=settleCharges();
   const depth=b.depth;
@@ -258,7 +258,7 @@ function hud(force){
   const b=B; if(!b) return; if(force) for(const k in last) delete last[k];
   const p=b.player, pl=b.piles;
   set('hp',p.hp+'/'+p.maxHp,v=>{ $('#hpTxt').textContent='HP '+v; $('#hpBar').style.width=(p.hp/p.maxHp*100)+'%'; });
-  set('depth',b.depth,v=>$('#depthTxt').textContent='Depth '+v);
+  set('depth',b.depth+'|'+Math.ceil(b.wave),()=>$('#depthTxt').textContent='Depth '+b.depth+(b.waves.length>1?' · Wave '+(Math.ceil(b.wave)+1)+'/'+b.waves.length:''));
   set('piles',pl.draw.length+'|'+pl.hand.length+'|'+pl.discard.length,()=>$('#pileTxt').textContent='Deck '+pl.draw.length+' · Hand '+pl.hand.length+' · Used '+pl.discard.length);
   set('gauge',Math.round(b.gauge*10),()=>$('#gaugeBar').style.width=(b.gauge/GAUGE_MAX*100)+'%');
   const buffs=[]; if(p.barrier>0) buffs.push('🛡 '+Math.ceil(p.barrier)); if(p.dodge) buffs.push('💨 Dodge'); if(p.invT>0) buffs.push('🌀 Phase');

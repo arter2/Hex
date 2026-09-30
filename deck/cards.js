@@ -10,7 +10,10 @@ const COLORS={
   verdant:{name:'Verdant',c:'#6fdc7a', icon:'🌿'},
   arcane: {name:'Arcane', c:'#c58bff', icon:'✦'},
   shadow: {name:'Shadow', c:'#e0588f', icon:'☾'},
+  gray:   {name:'Gray',   c:'#b4b8c8', icon:'🐾', neutral:true},
+  brown:  {name:'Brown',  c:'#c08a55', icon:'⚙', neutral:true},
 };
+const SIX=['fire','frost','storm','verdant','arcane','shadow'];
 // Weakness ring: each color beats the next one.
 const BEATS={fire:'verdant', verdant:'storm', storm:'frost', frost:'shadow', shadow:'arcane', arcane:'fire'};
 const WEAK_MULT=1.75;
@@ -22,6 +25,11 @@ const TYPES={
   ward:  {name:'Ward',   icon:'🛡', text:'Builds a defense on your side'},
   sentry:{name:'Sentry', icon:'♜', text:'A tower that fires on its own'},
   boon:  {name:'Boon',   icon:'✚', text:'Upgrades you for this battle'},
+  charge:{name:'Charge', icon:'⚗', text:'Limited uses; stays queued until spent'},
+  utility:{name:'Utility',icon:'✎', text:'Draw, recall, copy or cleanse'},
+  piece: {name:'Legendary piece', icon:'♛', text:'Part of a legendary combo recipe (phase 4)'},
+  summon:{name:'Summon', icon:'🐾', text:'A creature that fights for a set time'},
+  machine:{name:'Machine',icon:'⚙', text:'A turret, wall or construct'},
 };
 const RARITY={common:{n:'Common',g:'●'}, uncommon:{n:'Uncommon',g:'◆'}, rare:{n:'Rare',g:'★'}, legendary:{n:'Legendary',g:'✹'}};
 
@@ -29,7 +37,8 @@ const RARITY={common:{n:'Common',g:'●'}, uncommon:{n:'Uncommon',g:'◆'}, rare
 //                 all = every enemy, missiles = n hits on random enemies
 // ward: wall (n blocks with hp), thorns (walls that hit back), barrier (absorbs amt)
 // boon: power (wand x2.5), pact (cards and wand +30%), haste, dodge, phase, regen, heal, gauge
-const CARD_LIST=[
+// Signature cards: hand-authored, they define each color's strategies.
+const SIGNATURE=[
   // Fire — raw damage: burn, splash, self-damage for power
   {id:'ember_dart',  name:'Ember Dart',   color:'fire', type:'strike', rank:1, rarity:'common',   pow:24, shape:'line', burn:3},
   {id:'cinder_lance',name:'Cinder Lance', color:'fire', type:'strike', rank:2, rarity:'common',   pow:40, shape:'line'},
@@ -93,6 +102,138 @@ const CARD_LIST=[
   {id:'dark_pact',   name:'Dark Pact',    color:'shadow', type:'boon',   rank:3, rarity:'uncommon', boon:'pact', dur:10, self:15},
   {id:'eclipse',     name:'Eclipse',      color:'shadow', type:'strike', rank:6, rarity:'legendary',pow:70, shape:'all', curse:5, drain:.3},
 ];
+SIGNATURE.forEach(c=>c.sig=true);
+
+/* ---------------- template cards ----------------
+   The rest of the 800 are built from templates with a power budget: higher rank and rarity
+   buy more damage, duration or uses. A seeded generator keeps every card id stable between
+   loads, so saved collections stay valid. Change a template and ids may shift: bump SAVE_KEY. */
+
+// Type split per family of 100 (from the design doc's 800-card plan).
+const TYPE_PLAN={
+  color:{strike:30, lob:12, ward:12, sentry:10, boon:10, charge:16, utility:6, piece:4},
+  gray: {charge:6, piece:4, summon:90},
+  brown:{charge:6, piece:4, machine:90},
+};
+const RARITY_PLAN={common:40, uncommon:30, rare:20, legendary:10};
+const RARITY_MULT={common:1, uncommon:1.12, rare:1.25, legendary:1.45};
+// Ranks 1-12 for the six colors, 1-6 for the neutral families (medium straights 1-3, high 4-6).
+const RANKS={color:{common:[1,5],uncommon:[3,8],rare:[6,10],legendary:[9,12]}, neutral:{common:[1,3],uncommon:[2,4],rare:[3,5],legendary:[5,6]}};
+
+const TRAITS={
+  fire:   {shapes:['line','line','wedge','row'],   kws:['burn','burn','self'],     boons:['power','haste','pact'],  wards:['thorns','wall','barrier'], util:['draw','cleanse'], piece:'lob'},
+  frost:  {shapes:['line','row','row','wedge'],    kws:['freeze','slow','slow'],   boons:['dodge','phase','regen'], wards:['wall','barrier','barrier'],util:['cleanse','draw'], piece:'strike'},
+  storm:  {shapes:['line','line','row','all'],     kws:['stun','stun',null],       boons:['haste','gauge','power'], wards:['barrier','barrier','wall'],util:['draw','recall'],  piece:'lob'},
+  verdant:{shapes:['line','wedge','wedge','line'], kws:['poison','slow','drain'],  boons:['heal','regen','regen'],  wards:['thorns','wall','barrier'], util:['cleanse','draw'], piece:'boon'},
+  arcane: {shapes:['line','missiles','missiles','all'],kws:[null,null,'curse'],    boons:['phase','power','gauge'], wards:['barrier','wall','barrier'],util:['copy','recall','draw'], piece:'strike'},
+  shadow: {shapes:['line','row','line','all'],     kws:['curse','drain','self'],   boons:['pact','pact','heal'],    wards:['wall','thorns','wall'],    util:['copy','draw','cleanse'], piece:'strike'},
+  gray:   {kws:[null], piece:'summon'},
+  brown:  {kws:[null], piece:'machine'},
+};
+const WORDS={
+  fire:   ['Cinder','Ember','Blaze','Scorch','Ash','Magma','Flare','Pyre','Inferno','Kindling','Char','Smolder','Searing','Molten','Wildfire','Brand','Sunfire','Flame','Hearth','Ignis'],
+  frost:  ['Rime','Frost','Glacial','Hoarfrost','Ice','Sleet','Snow','Winter','Crystal','Polar','Boreal','Chill','Permafrost','Hail','Frozen','Icicle','Tundra','Arctic','Numbing','Pale'],
+  storm:  ['Thunder','Volt','Static','Spark','Gale','Tempest','Lightning','Squall','Surge','Arc','Storm','Charged','Zephyr','Cyclone','Flash','Crackling','Galvanic','Monsoon','Sky','Ion'],
+  verdant:['Briar','Thorn','Moss','Vine','Root','Bramble','Fern','Oak','Bloom','Spore','Willow','Thistle','Wild','Sap','Grove','Nettle','Ivy','Verdant','Seed','Hollow'],
+  arcane: ['Rune','Astral','Mystic','Aether','Glyph','Star','Void','Prism','Sigil','Arcane','Mirror','Eldritch','Cosmic','Lunar','Mana','Ether','Nova','Echo','Oracle','Riddle'],
+  shadow: ['Hex','Grave','Dusk','Blood','Bone','Night','Umbral','Wraith','Soul','Crypt','Gloom','Shade','Raven','Dread','Cursed','Black','Vile','Ghoul','Eclipse','Tomb'],
+  gray:   ['Loyal','Feral','Stone','Tiny','Ancient','Wild','Grim','Swift','Brave','Old','Lucky','Dire','Pale','Clever','Hungry','Gentle','Sly','Mossy','Scrappy','Noble'],
+  brown:  ['Clockwork','Brass','Steam','Iron','Copper','Rusted','Gear','Cog','Tin','Bolted','Riveted','Piston','Spring','Gyro','Dwarven','Forge','Oiled','Ratchet','Valve','Anvil'],
+};
+const NOUNS={
+  strike:['Lance','Dart','Bolt','Arrow','Spear','Fang','Lash','Shot','Needle','Ray','Javelin','Blade','Claw','Spike','Beam'],
+  lob:['Bomb','Orb','Pot','Mortar','Comet','Stone','Globe','Burst','Seed'],
+  ward:['Wall','Ward','Aegis','Barrier','Bulwark','Veil','Screen','Rampart','Mantle'],
+  sentry:['Sentry','Spire','Totem','Beacon','Obelisk','Pylon','Idol','Lantern','Watcher'],
+  boon:['Blessing','Rite','Gift','Vigor','Focus','Stride','Oath','Trance','Hymn'],
+  charge:['Flask','Quiver','Satchel','Pouch','Vial','Cask','Bundle','Charm','Censer'],
+  utility:['Scroll','Tome','Lens','Codex','Map','Key','Compass','Candle'],
+  summon:['Imp','Wolf','Hound','Owl','Toad','Bat','Knight','Squire','Spirit','Golem','Rat','Boar','Hawk','Mole','Beetle','Serpent','Bear','Fox','Ogre','Sprite'],
+  turret:['Turret','Ballista','Cannon','Crossbow','Tower'], repeater:['Repeater','Drone','Automaton','Gatling'],
+  mortar:['Mortar','Catapult','Engine','Trebuchet'], bulwark:['Barricade','Bulwark','Bastion','Rampart','Palisade'],
+  piece:['Crown','Heart','Eye','Sigil'],
+};
+
+function mulberry32(a){ return ()=>{ a|=0; a=a+0x6D2B79F5|0; let t=Math.imul(a^a>>>15,1|a); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
+function seedOf(s){ let h=2166136261; for(const ch of s){ h^=ch.charCodeAt(0); h=Math.imul(h,16777619); } return h>>>0; }
+
+function generateCards(){
+  const out=[], names=new Set(SIGNATURE.map(c=>c.name));
+  for(const fam of Object.keys(COLORS)){
+    const rng=mulberry32(seedOf('hexmancers:'+fam)), ri=(a,b)=>a+Math.floor(rng()*(b-a+1)), pk=a=>a[Math.floor(rng()*a.length)];
+    const neutral=COLORS[fam].neutral, plan=TYPE_PLAN[neutral?fam:'color'], tr=TRAITS[fam];
+    const sig=SIGNATURE.filter(c=>c.color===fam);
+    const need=Object.assign({},plan); sig.forEach(c=>need[c.type]--);
+    const rar=Object.assign({},RARITY_PLAN); sig.forEach(c=>rar[c.rarity]--);
+    rar.legendary-=need.piece;
+    const pool=[]; for(const r in rar) for(let i=0;i<rar[r];i++) pool.push(r);
+    for(let i=pool.length-1;i>0;i--){ const j=Math.floor(rng()*(i+1)); [pool[i],pool[j]]=[pool[j],pool[i]]; }
+    const slots=[]; for(const t in need) for(let i=0;i<need[t];i++) slots.push(t);
+    const count={};
+    for(const type of slots){
+      const rarity=type==='piece'?'legendary':pool.pop();
+      const rr=RANKS[neutral?'neutral':'color'][rarity], rank=ri(rr[0],rr[1]);
+      const F=(neutral?1+.12*(rank-1):1+.06*(rank-1))*RARITY_MULT[rarity]*(type==='piece'?1.2:1);
+      count[type]=(count[type]||0)+1;
+      const c={id:fam+'_'+type+'_'+String(count[type]).padStart(2,'0'), color:fam, type, rank, rarity};
+      const kwChance={common:.4,uncommon:.6,rare:.8,legendary:1}[rarity];
+      const kw=rng()<kwChance?pk(tr.kws):null;
+      const base=type==='piece'?tr.piece:type;
+      BUILD[base](c,F,rank,kw,tr,pk,ri);
+      if(type==='piece'){ c.base=base; c.piece=true; }
+      // name: family word + type noun, unique across the whole set
+      let name='';
+      for(let tries=0;tries<400&&(!name||names.has(name));tries++)
+        name=type==='piece'?pk(NOUNS.piece)+' of the '+pk(WORDS[fam]):pk(WORDS[fam])+' '+pk(NOUNS[base==='machine'?c.ai:base]);
+      if(names.has(name)) name+=' '+count[type];
+      names.add(name); c.name=name;
+      out.push(c);
+    }
+  }
+  return out;
+}
+const r1=v=>Math.round(v*10)/10;
+function applyKw(c,kw,rank){
+  if(!kw) return 1;
+  const v={burn:r1(2+rank/3), freeze:r1(1+rank*.15), stun:r1(.8+rank*.1), slow:r1(2+rank*.3), poison:3+rank, curse:r1(3+rank*.3), drain:r1(.25+rank*.03), self:8+rank}[kw];
+  c[kw]=v; return kw==='self'?1.4:.85;
+}
+const BUILD={
+  strike(c,F,rank,kw,tr,pk){
+    c.shape=pk(tr.shapes); const k=applyKw(c,kw,rank);
+    if(c.shape==='missiles'){ c.n=3+Math.floor(rank/3); c.pow=Math.round(9*F*k); }
+    else c.pow=Math.round({line:30,row:26,wedge:30,all:18}[c.shape]*F*k);
+  },
+  lob(c,F,rank,kw,tr,pk){ c.radius=pk([1,1,0]); const k=applyKw(c,kw,rank); c.pow=Math.round(32*F*(c.radius?.8:1)*k*(c.rarity==='legendary'?1.3:1)); if(c.rarity==='legendary') c.delay=.9; },
+  ward(c,F,rank,kw,tr,pk){ c.ward=pk(tr.wards);
+    if(c.ward==='barrier') c.amt=Math.round(45*F); else { c.n=2+(rank>6?1:0); c.hp=Math.round(35*F); if(c.ward==='thorns') c.thorns=Math.round(6*F); } },
+  sentry(c,F,rank,kw,tr,pk){ c.rate=pk([.6,.9,1.2,1.5]); const k=kw==='self'?1:applyKw(c,kw,rank); c.pow=Math.max(3,Math.round(9*F*c.rate*k)); c.dur=8+Math.round(rank/2); },
+  boon(c,F,rank,kw,tr,pk){ c.boon=pk(tr.boons); c.dur=8+Math.round(rank/2);
+    if(c.boon==='heal') c.amt=Math.round(35*F); if(c.boon==='regen'){ c.amt=Math.round(3*F); c.dur=8; }
+    if(c.boon==='gauge') c.amt=r1(Math.min(.9,.35+rank*.04)); if(c.boon==='pact') c.self=10+rank;
+    if(['dodge','heal','gauge'].includes(c.boon)) delete c.dur; if(c.boon==='phase') c.dur=r1(1.5+rank*.15); },
+  charge(c,F,rank,kw,tr,pk,ri){
+    c.fx=c.color==='brown'?'lob':pk(['bolt','bolt','lob']);
+    c.uses=ri(...{common:[3,5],uncommon:[5,8],rare:[8,12],legendary:[12,20]}[c.rarity]);
+    const k=kw==='self'?1:applyKw(c,kw,rank);
+    c.pow=Math.max(4,Math.round(16*F*k/Math.sqrt(c.uses/3)));
+  },
+  utility(c,F,rank,kw,tr,pk){ c.util=pk(tr.util);
+    if(c.util==='draw') c.n=1+(rank>5?1:0)+(rank>9?1:0); if(c.util==='cleanse') c.amt=Math.round(15*F); },
+  summon(c,F,rank,kw,tr,pk){ c.ai=pk(['shooter','shooter','bomber','healer','guardian']);
+    c.hp=Math.round(40*F*(c.ai==='guardian'?2.5:1)); c.dur=Math.round(12+rank*1.5+(c.ai==='guardian'?6:0));
+    if(c.ai==='shooter'){ c.pow=Math.round(10*F); c.rate=1.2; }
+    if(c.ai==='bomber'){ c.pow=Math.round(18*F); c.rate=2.2; }
+    if(c.ai==='healer'){ c.amt=Math.round(4*F); c.rate=2; }
+    if(c.ai==='guardian'){ c.pow=Math.round(6*F); c.rate=1.5; } },
+  machine(c,F,rank,kw,tr,pk){ c.ai=pk(['turret','turret','bulwark','mortar','repeater']);
+    if(c.ai==='turret'){ c.pow=Math.round(9*F); c.rate=1.4; c.hp=Math.round(45*F); c.dur=30; }
+    if(c.ai==='repeater'){ c.pow=Math.round(5*F); c.rate=.5; c.hp=Math.round(35*F); c.dur=20; }
+    if(c.ai==='mortar'){ c.pow=Math.round(22*F); c.rate=2.5; c.hp=Math.round(30*F); c.dur=15; }
+    if(c.ai==='bulwark'){ c.n=1+(c.rank>3?1:0); c.hp=Math.round(90*F); } },
+};
+
+const CARD_LIST=SIGNATURE.concat(generateCards());
 const CARDS={}; CARD_LIST.forEach(c=>CARDS[c.id]=c);
 
 // One-line rules text built from the data, so new cards need no hand-written text.
@@ -102,14 +243,23 @@ function cardText(c){
   if(c.slow) kw.push('Slow '+c.slow+'s'); if(c.poison) kw.push('Poison '+c.poison); if(c.curse) kw.push('Curse '+c.curse+'s');
   if(c.drain) kw.push('Drain '+Math.round(c.drain*100)+'%'); if(c.self) kw.push('Costs '+c.self+' HP');
   let t='';
-  if(c.type==='strike') t={line:c.pow+' to the first enemy in your row', row:c.pow+' to every enemy in your row', wedge:c.pow+' in a short cone ahead',
-                           all:c.pow+' to every enemy', missiles:c.n+' missiles of '+c.pow+' at random enemies'}[c.shape];
-  else if(c.type==='lob') t=c.pow+' on the nearest enemy'+(c.radius?' and around it':'')+', over blockers';
-  else if(c.type==='ward') t=c.ward==='barrier'?'Barrier absorbs '+c.amt:c.n+' walls of '+c.hp+' HP'+(c.ward==='thorns'?', hit back for '+c.thorns:'');
-  else if(c.type==='sentry') t='Tower: '+c.pow+' every '+c.rate+'s for '+c.dur+'s';
-  else if(c.type==='boon') t={power:'Wand ×2.5 for '+c.dur+'s', pact:'Cards and wand +30% for '+c.dur+'s', haste:'Faster moves and casts for '+c.dur+'s',
-                             dodge:'Dodge the next hit', phase:'Untouchable for '+c.dur+'s', regen:'Heal '+c.amt+'/s for '+c.dur+'s', heal:'Heal '+c.amt,
-                             gauge:'Fill '+Math.round(c.amt*100)+'% of the Custom gauge'}[c.boon];
+  const kind=c.type==='piece'?c.base:c.type;
+  if(kind==='strike') t={line:c.pow+' to the first enemy in your row', row:c.pow+' to every enemy in your row', wedge:c.pow+' in a short cone ahead',
+                         all:c.pow+' to every enemy', missiles:c.n+' missiles of '+c.pow+' at random enemies'}[c.shape];
+  else if(kind==='lob') t=c.pow+' on the nearest enemy'+(c.radius?' and around it':'')+', over blockers';
+  else if(kind==='ward') t=c.ward==='barrier'?'Barrier absorbs '+c.amt:c.n+' walls of '+c.hp+' HP'+(c.ward==='thorns'?', hit back for '+c.thorns:'');
+  else if(kind==='sentry') t='Tower: '+c.pow+' every '+c.rate+'s for '+c.dur+'s';
+  else if(kind==='boon') t={power:'Wand ×2.5 for '+c.dur+'s', pact:'Cards and wand +30% for '+c.dur+'s', haste:'Faster moves and casts for '+c.dur+'s',
+                           dodge:'Dodge the next hit', phase:'Untouchable for '+c.dur+'s', regen:'Heal '+c.amt+'/s for '+c.dur+'s', heal:'Heal '+c.amt,
+                           gauge:'Fill '+Math.round(c.amt*100)+'% of the Custom gauge'}[c.boon];
+  else if(kind==='charge') t=c.uses+' uses: '+(c.fx==='lob'?'lob '+c.pow+' on the nearest enemy':'bolt of '+c.pow+' down your row');
+  else if(kind==='utility') t={draw:'Draw '+c.n+' card'+(c.n>1?'s':'')+' into your hand', recall:'Put the top card of your deck into your queue',
+                              copy:'Copy the next queued card', cleanse:'Cancel incoming attacks and heal '+c.amt}[c.util];
+  else if(kind==='summon') t={shooter:'Shoots '+c.pow+' down its row', bomber:'Lobs '+c.pow+' every '+c.rate+'s', healer:'Heals you '+c.amt+' every '+c.rate+'s',
+                             guardian:'Blocks with '+c.hp+' HP, hits for '+c.pow}[c.ai]+'. '+(c.ai==='guardian'?'':c.hp+' HP, ')+c.dur+'s';
+  else if(kind==='machine') t={turret:'Turret: '+c.pow+' every '+c.rate+'s, '+c.hp+' HP', repeater:'Repeater: '+c.pow+' every '+c.rate+'s, '+c.hp+' HP',
+                              mortar:'Mortar: lobs '+c.pow+' every '+c.rate+'s', bulwark:c.n+' iron wall'+(c.n>1?'s':'')+' of '+c.hp+' HP'}[c.ai];
+  if(c.piece) t='Legendary piece. '+t;
   return t+(kw.length?'. '+kw.join(', '):'');
 }
 
@@ -123,7 +273,7 @@ const STARTERS=[
 function starterList(colors,size){
   size=size||60;
   const count={};
-  for(const col of colors) for(const c of CARD_LIST) if(c.color===col) count[c.id]=c.rarity==='legendary'?1:4;
+  for(const col of colors) for(const c of SIGNATURE) if(c.color===col) count[c.id]=c.rarity==='legendary'?1:4;
   let total=Object.values(count).reduce((a,b)=>a+b,0);
   while(total>size){
     const cut=Object.keys(count).filter(id=>CARDS[id].rarity!=='legendary'&&count[id]>2).sort((a,b)=>CARDS[b].rank-CARDS[a].rank||count[b]-count[a])[0];
@@ -133,4 +283,4 @@ function starterList(colors,size){
   return list;
 }
 
-if(typeof module!=='undefined') module.exports={COLORS,BEATS,WEAK_MULT,colorMult,TYPES,RARITY,CARD_LIST,CARDS,cardText,STARTERS,starterList};
+if(typeof module!=='undefined') module.exports={SIX,SIGNATURE,TYPE_PLAN,RARITY_PLAN,COLORS,BEATS,WEAK_MULT,colorMult,TYPES,RARITY,CARD_LIST,CARDS,cardText,STARTERS,starterList};

@@ -12,20 +12,65 @@
 <body>
 <div id="app">
 
-  <!-- deck select -->
-  <section id="scrMenu" class="screen on">
+  <!-- first run: pick a starter deck -->
+  <section id="scrStart" class="screen">
     <h1>Hexmancers</h1>
-    <p class="sub">Deck prototype · phase 2 card engine</p>
+    <p class="sub">Deck prototype · 800 cards to collect</p>
+    <p class="hint center">Choose your first deck. Win fights to collect cards, then build your own decks at camp.</p>
     <div id="starters"></div>
-    <p class="hint">60-card decks · draw 7 at each Custom · queue 3 · no reshuffle: when the deck runs out you fight with your wand.</p>
   </section>
 
-  <!-- deck list -->
-  <section id="scrDeck" class="screen">
-    <div class="bar"><button id="deckBack" class="btn ghost">← Back</button><h2 id="deckName"></h2><span id="deckCount" class="count"></span></div>
-    <div id="deckStats" class="stats"></div>
-    <div id="deckGrid" class="grid"></div>
-    <div class="bar bottom"><button id="deckPlay" class="btn">Play this deck</button></div>
+  <!-- camp: the hub of the collecting loop -->
+  <section id="scrCamp" class="screen">
+    <h1 class="small">Camp</h1>
+    <div class="wallet"><span id="campGold"></span><span id="campColl"></span></div>
+    <div class="panel flat">
+      <div class="bar"><h2 id="campDeck"></h2><span id="campDeckCount" class="count"></span></div>
+      <p id="campDeckErr" class="hint warn"></p>
+      <div class="depthpick"><button id="depthDown" class="btn ghost sq">−</button><button id="btnDescend" class="btn big"></button><button id="depthUp" class="btn ghost sq">+</button></div>
+    </div>
+    <div class="menu">
+      <button id="goBuilder" class="btn ghost">Deck builder</button>
+      <button id="goCollection" class="btn ghost">Collection</button>
+      <button id="goShop" class="btn ghost">Shop</button>
+    </div>
+    <p class="hint center">Monsters drop cards. Deeper fights drop rarer cards. Losing costs 20% of your gold; you keep your cards.</p>
+    <button id="btnReset" class="link">Reset save</button>
+  </section>
+
+  <!-- deck builder -->
+  <section id="scrBuilder" class="screen">
+    <div class="bar"><button class="btn ghost back">←</button><input id="bName" maxlength="24"><span id="bCount" class="count"></span></div>
+    <div id="bSlots" class="slotsel"></div>
+    <div id="bStats" class="stats"></div>
+    <p id="bErr" class="hint warn"></p>
+    <h3>Deck <small class="dim">tap a card to remove it</small></h3>
+    <div id="bDeck" class="grid mini"></div>
+    <h3>Collection <small class="dim">tap a card to add it</small></h3>
+    <div id="bFilters" class="filters"></div>
+    <div id="bColl" class="grid mini"></div>
+    <div class="sticky"><button id="bAuto" class="btn ghost">Auto-fill</button><button id="bClear" class="btn ghost">Clear</button><button id="bUse" class="btn">Use this deck</button></div>
+  </section>
+
+  <!-- collection -->
+  <section id="scrCollection" class="screen">
+    <div class="bar"><button class="btn ghost back">←</button><h2>Collection</h2><span id="cCount" class="count"></span></div>
+    <div id="cProgress" class="stats"></div>
+    <div id="cFilters" class="filters"></div>
+    <div id="cGrid" class="grid mini"></div>
+  </section>
+
+  <!-- shop -->
+  <section id="scrShop" class="screen">
+    <div class="bar"><button class="btn ghost back">←</button><h2>Shop</h2><span id="sGold" class="count gold"></span></div>
+    <div class="panel flat">
+      <h3>Booster pack</h3><p class="hint">5 cards from any family. The last card is uncommon or better.</p>
+      <button id="buyBooster" class="btn"></button>
+    </div>
+    <div class="panel flat">
+      <h3>Family pack</h3><p class="hint">5 cards from one family of your choice.</p>
+      <div id="famPacks" class="fams"></div>
+    </div>
   </section>
 
   <!-- battle -->
@@ -44,10 +89,9 @@
         <button id="btnWand" class="btn ghost">Wand<small>hold to charge</small></button>
         <button id="btnCast" class="btn">Cast<small id="castName"></small></button>
       </div>
-      <p class="keys">Tap a tile to move · keys: arrows/WASD move, Space wand, Enter cast, C custom</p>
+      <p class="keys">Tap a tile to move · keys: arrows/WASD move, Space wand, Enter cast, C custom · <button id="btnRetreat" class="link">Retreat</button></p>
     </div>
 
-    <!-- custom screen -->
     <div id="custom" class="overlay">
       <div class="panel">
         <div class="bar"><h2>Custom</h2><span id="custPiles" class="count"></span></div>
@@ -58,21 +102,29 @@
         <button id="btnFight" class="btn big">Fight!</button>
       </div>
     </div>
-
-    <!-- result -->
-    <div id="result" class="overlay">
-      <div class="panel">
-        <h2 id="resTitle"></h2>
-        <p id="resBody" class="hint"></p>
-        <div class="controls"><button id="resMenu" class="btn ghost">Change deck</button><button id="resNext" class="btn"></button></div>
-      </div>
-    </div>
   </section>
 
+  <!-- shared overlays -->
+  <div id="reveal" class="overlay">
+    <div class="panel">
+      <h2 id="rvTitle"></h2>
+      <p id="rvBody" class="hint"></p>
+      <div id="rvCards" class="grid reveal"></div>
+      <div id="rvBtns" class="controls two"></div>
+    </div>
+  </div>
+  <div id="detail" class="overlay">
+    <div class="panel narrow">
+      <div id="dtCard"></div>
+      <p id="dtInfo" class="hint"></p>
+      <button id="dtClose" class="btn ghost">Close</button>
+    </div>
+  </div>
   <div id="tip" class="tip"></div>
 </div>
 <script src="cards.js"></script>
 <script src="engine.js"></script>
+<script src="collection.js"></script>
 <script src="battle.js"></script>
 <script src="ui.js"></script>
 </body>

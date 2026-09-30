@@ -2,6 +2,8 @@
 const assert=require('assert');
 const D=require('./cards.js');
 const E=require('./engine.js');
+Object.assign(global,D,E);   // collection.js uses the browser globals
+const C=require('./collection.js');
 
 let seed=1; const rng=()=>((seed=(seed*16807)%2147483647)-1)/2147483646;
 const t=(name,fn)=>{ try{ fn(); console.log('ok  '+name); }catch(e){ console.log('FAIL '+name+'\n  '+e.message); process.exitCode=1; } };
@@ -56,4 +58,56 @@ t('no reshuffle: an emptied deck leaves only the wand', ()=>{
   while(!E.wandOnly(p) && guard++<100){ E.openCustom(p); p.hand.slice(0,3).map(c=>c.uid).forEach(u=>E.toggleQueue(p,u)); while(E.castNext(p)); }
   assert(E.wandOnly(p)); assert.strictEqual(p.discard.length,45);
   E.openCustom(p); assert.strictEqual(p.hand.length,0);
+});
+
+t('800 cards: 100 per family, doc type split and 40/30/20/10 rarity', ()=>{
+  assert.strictEqual(D.CARD_LIST.length,800);
+  assert.strictEqual(new Set(D.CARD_LIST.map(c=>c.name)).size,800);
+  for(const fam of Object.keys(D.COLORS)){
+    const cs=D.CARD_LIST.filter(c=>c.color===fam); assert.strictEqual(cs.length,100,fam);
+    const plan=D.TYPE_PLAN[D.COLORS[fam].neutral?fam:'color'];
+    for(const t in plan) assert.strictEqual(cs.filter(c=>c.type===t).length,plan[t],fam+' '+t);
+    for(const r in D.RARITY_PLAN) assert.strictEqual(cs.filter(c=>c.rarity===r).length,D.RARITY_PLAN[r],fam+' '+r);
+  }
+  assert(D.CARD_LIST.every(c=>!/undefined|NaN/.test(D.cardText(c))));
+});
+t('card ids are stable between loads', ()=>{
+  delete require.cache[require.resolve('./cards.js')];
+  const again=require('./cards.js');
+  assert.deepStrictEqual(again.CARD_LIST.map(c=>c.id+c.name+c.rank),D.CARD_LIST.map(c=>c.id+c.name+c.rank));
+});
+t('charge cards stay queued until their uses are spent', ()=>{
+  const id=D.CARD_LIST.find(c=>c.type==='charge'&&c.uses===4).id;
+  const p={draw:[],hand:[],queue:[{uid:1,card:D.CARDS[id]}],discard:[],uid:2};
+  for(let i=0;i<3;i++){ E.castNext(p); assert.strictEqual(p.queue.length,1); }
+  E.castNext(p); assert.strictEqual(p.queue.length,0); assert.strictEqual(p.discard.length,1);
+});
+t('utility: draw, recall and copy', ()=>{
+  const p=E.createPiles(D.starterList(['frost','arcane']),rng,D.CARDS); E.openCustom(p);
+  assert.strictEqual(E.drawCards(p,2).length,2); assert.strictEqual(p.hand.length,9);
+  E.toggleQueue(p,p.hand[0].uid);
+  assert(E.recallTop(p)); assert.strictEqual(p.queue.length,2);
+  const cp=E.copyNext(p); assert(cp&&cp.temp); assert.strictEqual(p.queue.length,3); assert(!E.copyNext(p));
+  E.castNext(p); assert.strictEqual(p.discard.length,0, 'a copy is not discarded');
+  E.openCustom(p); assert(!p.hand.some(c=>c.temp));
+});
+t('deck must fit the collection', ()=>{
+  const list=D.starterList(['fire','storm']), owned={}; list.forEach(id=>owned[id]=(owned[id]||0)+1);
+  assert(E.validateDeck(list,D.CARDS,owned).ok);
+  owned[list[0]]--; assert(!E.validateDeck(list,D.CARDS,owned).ok);
+});
+t('new save: starter deck is legal and owned', ()=>{
+  const s=C.newSave(D.STARTERS[0]); assert(E.validateDeck(s.decks[0].list,D.CARDS,s.owned).ok);
+  assert.strictEqual(s.decks.length,5); assert.strictEqual(C.ownedUnique(s),17);
+});
+t('drops and packs: depth shifts rarity, boss adds a rare+', ()=>{
+  const w1=C.rarityWeights(1), w9=C.rarityWeights(9); assert(w9.legendary>w1.legendary&&w9.common<w1.common);
+  const d=C.battleDrops(['fire','frost'],4,true,rng); assert.strictEqual(d.length,3); assert(['rare','legendary'].includes(d[2].rarity));
+  for(let i=0;i<50;i++){ const pk=C.openPack(1,'gray',rng); assert.strictEqual(pk.length,5); assert(pk.every(c=>c.color==='gray')); assert(pk[4].rarity!=='common'); }
+});
+t('auto-fill builds a legal 60 from what you own', ()=>{
+  const s=C.newSave(D.STARTERS[2]); for(let i=0;i<30;i++) C.addCards(s,C.openPack(3,null,rng));
+  const list=C.autoFill(s.decks[0].list.slice(0,20),s.owned);
+  const v=E.validateDeck(list,D.CARDS,s.owned); assert(v.ok,v.errors.join('; ')); assert.strictEqual(list.length,60);
+  assert(C.autoFill([],{}).length===0);
 });

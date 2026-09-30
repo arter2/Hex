@@ -6,7 +6,8 @@
 
 const RULES={max:60, min:45, copies:4, legendaryCopies:1, hand:7, slots:3};
 
-function validateDeck(list,cards){
+// owned (optional): {id: copies you own}; a deck can't use more copies than you have.
+function validateDeck(list,cards,owned){
   cards=cards||CARDS;
   const errors=[], counts={};
   for(const id of list){
@@ -18,6 +19,7 @@ function validateDeck(list,cards){
   for(const id in counts){
     const lim=cards[id].rarity==='legendary'?RULES.legendaryCopies:RULES.copies;
     if(counts[id]>lim) errors.push(cards[id].name+': '+counts[id]+' copies (max '+lim+')');
+    else if(owned&&counts[id]>(owned[id]||0)) errors.push(cards[id].name+': you own '+(owned[id]||0));
   }
   return {ok:!errors.length, errors, count:list.length, counts};
 }
@@ -33,12 +35,12 @@ function createPiles(list,rng,cards){
   cards=cards||CARDS;
   let uid=1;
   const draw=shuffle(list.map(id=>({uid:uid++, card:cards[id]})),rng);
-  return {draw, hand:[], queue:[], discard:[]};
+  return {draw, hand:[], queue:[], discard:[], uid};
 }
 
 // Opening the Custom screen: queued cards not yet cast go back to the hand, then the hand refills to 7.
 function openCustom(p){
-  p.hand=p.queue.concat(p.hand); p.queue=[];
+  p.hand=p.queue.filter(c=>!c.temp).concat(p.hand); p.queue=[];
   const drawn=[];
   while(p.hand.length<RULES.hand && p.draw.length){ const c=p.draw.pop(); p.hand.push(c); drawn.push(c); }
   return drawn;
@@ -53,13 +55,21 @@ function toggleQueue(p,uid){
   return false;
 }
 
-// Cast the next queued card: it leaves the queue for the discard pile.
+// Cast the next queued card: it leaves the queue for the discard pile. A charge card
+// stays at the front of the queue until its last use is spent; a copy just vanishes.
 function castNext(p){
-  const c=p.queue.shift(); if(!c) return null;
-  p.discard.push(c); return c;
+  const c=p.queue[0]; if(!c) return null;
+  if(c.card.uses){ if(c.left==null) c.left=c.card.uses; c.left--; if(c.left>0) return c; }
+  p.queue.shift(); if(!c.temp) p.discard.push(c); return c;
 }
+
+// Utility cards
+function drawCards(p,n){ const got=[]; while(got.length<n&&p.draw.length){ const c=p.draw.pop(); p.hand.push(c); got.push(c); } return got; }
+function recallTop(p){ if(!p.draw.length||p.queue.length>=RULES.slots) return null; const c=p.draw.pop(); p.queue.push(c); return c; }
+function copyNext(p){ const c=p.queue[0]; if(!c||p.queue.length>=RULES.slots) return null;
+  const cp={uid:p.uid++, card:c.card, temp:true}; p.queue.unshift(cp); return cp; }
 
 // Nothing left to draw, hold or cast: the fight continues with the wand only.
 function wandOnly(p){ return !p.draw.length && !p.hand.length && !p.queue.length; }
 
-if(typeof module!=='undefined') module.exports={RULES,validateDeck,shuffle,createPiles,openCustom,toggleQueue,castNext,wandOnly};
+if(typeof module!=='undefined') module.exports={RULES,validateDeck,shuffle,createPiles,openCustom,toggleQueue,castNext,drawCards,recallTop,copyNext,wandOnly};

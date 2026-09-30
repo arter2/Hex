@@ -73,12 +73,9 @@ function openCamp(){
   $('#campDeckErr').textContent=v.ok?'':v.errors[0]+(v.errors.length>1?' (+'+(v.errors.length-1)+' more)':'')+'. Fix it in the deck builder.';
   $('#btnDescend').textContent='Fight at depth '+pickDepth+(pickDepth%4===0?' · boss':'');
   $('#btnDescend').disabled=!v.ok;
-  document.querySelectorAll('.seg [data-board]').forEach(b=>b.classList.toggle('on',boardShape()===b.dataset.board));
   $('#depthDown').disabled=pickDepth<=1; $('#depthUp').disabled=pickDepth>=save.deepest;
   show('scrCamp');
 }
-const boardShape=()=>(save.settings&&save.settings.board)||'hex';
-document.querySelectorAll('.seg [data-board]').forEach(b=>b.onclick=()=>{ save.settings=Object.assign({},save.settings,{board:b.dataset.board}); persist(); openCamp(); });
 $('#depthDown').onclick=()=>{ pickDepth--; openCamp(); };
 $('#depthUp').onclick=()=>{ pickDepth++; openCamp(); };
 $('#btnDescend').onclick=()=>fight(pickDepth);
@@ -205,7 +202,7 @@ function fight(depth){
     onCast:c=>{ tip(COLORS[c.color].icon+' '+c.name); buzz(12); },
     onHurt:d=>buzz(d>=15?60:30),
     onEnd:win=>win?victory():defeat(),
-  },{board:boardShape(), prepare:p=>assignChargeUses(save,p,d.list)});
+  },{prepare:p=>assignChargeUses(save,p,d.list)});
   hud(true);
 }
 // charge uses spent this fight carry over; a copy that ran dry burns up

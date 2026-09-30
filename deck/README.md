@@ -10,7 +10,7 @@ build decks from your collection → fight deeper for rarer drops. 800 cards to 
 | `cards.js` | 51 hand-authored signature cards (Arcane set aside for Light) + a seeded template generator for the rest of the 800 (type split and 40/30/20/10 rarity per family from the design doc), color ring, starter decks |
 | `engine.js` | Deck rules and piles: 45–60 cards, 4 copies (1 per legendary), draw 7 at each Custom, queue 3, no reshuffle, charge uses, draw/recall/copy |
 | `collection.js` | Save, card drops by depth, packs, auto-fill |
-| `battle.js` | Real-time battle on a 5 x 10 board, hex or square grid (isometric view that turns upright on a phone); every card type: Strike, Lob, Ward, Sentry, Boon, Charge, Utility, Trap, Environment, Summon, Machine, Legendary piece |
+| `battle.js` | Real-time battle on a 7 x 10 hex board (isometric view that turns upright on a phone); every card type: Strike, Lob, Ward, Sentry, Boon, Charge, Utility, Trap, Environment, Summon, Machine, Legendary piece |
 | `enemies.js` | Monsters with signature attacks, humanoids that cast real cards, encounters in up to 3 waves, terrain (rocks, lava, ice) |
 | `ui.js` | Start, camp, deck builder (5 saved decks), collection, shop, Custom screen, HUD, controls |
 

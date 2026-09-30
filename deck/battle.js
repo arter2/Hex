@@ -1,5 +1,5 @@
-/* Hexmancers deck prototype — real-time battle on a 5 x 10 board (hex or square grid), drawn
-   with an orthographic isometric projection on a 2D canvas. Your side is the five columns
+/* Hexmancers deck prototype — real-time battle on a 7 x 10 hex board, drawn with an
+   orthographic isometric projection on a 2D canvas. Your side is the five columns
    nearest you, the enemy side the five across from you. */
 
 const SQ3=Math.sqrt(3), TAU=Math.PI*2;
@@ -7,29 +7,20 @@ const rnd=(a,b)=>a+Math.random()*(b-a), pick=a=>a[(Math.random()*a.length)|0];
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 
 /* ---------------- board ---------------- */
-const BOARD_ROWS=5, BOARD_COLS=10, SQ_SIZE=1.8;
+const BOARD_ROWS=7, BOARD_COLS=10;
+const DIRS={E:[1,0],NE:[1,-1],NW:[0,-1],W:[-1,0],SW:[-1,1],SE:[0,1]}, DIRLIST=Object.values(DIRS);
 // The arrays below are rebuilt in place by buildBoard, so references to them stay valid.
-const DIRS={}, DIRLIST=[], AROUND=[];
 const BOARD=new Map(), CR=new Map(), TILES=[], P_TILES=[], E_TILES=[];
-let SHAPE='hex';
-function buildBoard(shape){
-  SHAPE=shape==='square'?'square':'hex';
-  for(const k in DIRS) delete DIRS[k]; DIRLIST.length=0; AROUND.length=0;
+function buildBoard(){
   BOARD.clear(); CR.clear(); TILES.length=0; P_TILES.length=0; E_TILES.length=0;
-  if(SHAPE==='hex') Object.assign(DIRS,{E:[1,0],NE:[1,-1],NW:[0,-1],W:[-1,0],SW:[-1,1],SE:[0,1]});
-  else Object.assign(DIRS,{E:[1,0],N:[0,-1],W:[-1,0],S:[0,1]});
-  DIRLIST.push(...Object.values(DIRS));
-  AROUND.push(...(SHAPE==='hex'?DIRLIST:[[1,0],[1,-1],[0,-1],[-1,-1],[-1,0],[-1,1],[0,1],[1,1]]));
   for(let r=0;r<BOARD_ROWS;r++) for(let c=0;c<BOARD_COLS;c++){
-    // hex rows are offset by half a tile; q is the axial column so a row keeps one r
-    const off=SHAPE==='hex'?(r%2)*.5:0, q=SHAPE==='hex'?c-Math.floor(r/2):c;
-    const x=c+off-(BOARD_COLS-1+(SHAPE==='hex'?.5:0))/2, side=c<BOARD_COLS/2?'p':'e';
-    const t={q,r,col:c,x,side,wx:SHAPE==='hex'?SQ3*x:SQ_SIZE*x,wz:SHAPE==='hex'?1.5*(r-(BOARD_ROWS-1)/2):SQ_SIZE*(r-(BOARD_ROWS-1)/2),
-             key:q+','+r,occ:null,flash:0,flashC:'#fff'};
+    // odd rows are offset by half a tile; q is the axial column so a row keeps one r
+    const q=c-Math.floor(r/2), x=c+(r%2)*.5-(BOARD_COLS-.5)/2, side=c<BOARD_COLS/2?'p':'e';
+    const t={q,r,col:c,x,side,wx:SQ3*x,wz:1.5*(r-(BOARD_ROWS-1)/2),key:q+','+r,occ:null,flash:0,flashC:'#fff'};
     BOARD.set(t.key,t); CR.set(c+','+r,t); TILES.push(t); (side==='p'?P_TILES:E_TILES).push(t);
   }
 }
-buildBoard('hex');
+buildBoard();
 const tileAt=(q,r)=>BOARD.get(q+','+r);
 const tileCR=(c,r)=>CR.get(c+','+r);   // by board column and row
 // Floor patterns for lobs, environments and traps, kept to one side of the board.
@@ -46,12 +37,10 @@ function patternTiles(t,pat,side){
   return side?ts.filter(x=>x.side===side):ts;
 }
 const neighbors=t=>DIRLIST.map(d=>tileAt(t.q+d[0],t.r+d[1])).filter(Boolean);
-const around=t=>AROUND.map(d=>tileAt(t.q+d[0],t.r+d[1])).filter(Boolean);   // area effects: 6 on hex, 8 on square
-// tile distance: hex steps, or king-move steps on the square grid
-const hexDist=(a,b)=>{ const dq=a.q-b.q, dr=a.r-b.r; return SHAPE==='hex'?(Math.abs(dq)+Math.abs(dr)+Math.abs(dq+dr))/2:Math.max(Math.abs(dq),Math.abs(dr)); };
+const around=neighbors;   // area effects hit the 6 surrounding tiles
+const hexDist=(a,b)=>{ const dq=a.q-b.q, dr=a.r-b.r; return (Math.abs(dq)+Math.abs(dr)+Math.abs(dq+dr))/2; };
 function lineTiles(t,d){ const out=[]; let q=t.q,r=t.r; for(;;){ q+=d[0]; r+=d[1]; const n=tileAt(q,r); if(!n) break; out.push(n); } return out; }
-const TILE_W=()=>SHAPE==='hex'?SQ3:SQ_SIZE;
-function wedgeTiles(t,len){ return TILES.filter(o=>{ const dx=o.wx-t.wx, dz=o.wz-t.wz; return dx>.1 && Math.hypot(dx,dz)<=len*TILE_W() && Math.abs(dz)<=dx*1.2; }); }
+function wedgeTiles(t,len){ return TILES.filter(o=>{ const dx=o.wx-t.wx, dz=o.wz-t.wz; return dx>.1 && Math.hypot(dx,dz)<=len*SQ3 && Math.abs(dz)<=dx*1.2; }); }
 function pathTo(from,to){ // BFS over free tiles on your side
   if(to.side!=='p') return [];
   const prev=new Map([[from,null]]), q=[from];
@@ -68,8 +57,8 @@ let B=null;
 const GAUGE_MAX=10;
 
 function startBattle(list,depth,hooks,opts){
-  buildBoard((opts&&opts.board)||'hex');
-  const p={kind:'player', hp:120, maxHp:120, tile:P_TILES.find(t=>t.col===1&&t.r===2), path:[], moveCd:0, castCd:0, wandCd:0, charging:false, chargeT:0,
+  buildBoard();
+  const p={kind:'player', hp:120, maxHp:120, tile:P_TILES.find(t=>t.col===1&&t.r===(BOARD_ROWS>>1)), path:[], moveCd:0, castCd:0, wandCd:0, charging:false, chargeT:0,
            barrier:0, invT:0, dodge:false, powerT:0, pactT:0, courageT:0, intervene:0, hasteT:0, regenT:0, regenAmt:0};
   p.tile.occ=p;
   B={depth, hooks:hooks||{}, piles:createPiles(list), player:p, aim:null, enemies:[], allies:[], walls:[], shots:[], lobs:[], teles:[], fx:[], floaters:[], parts:[],
@@ -377,7 +366,6 @@ let ISO_Y=.6;
 function proj(wx,y,wz){ return [View.cx+View.S*(wx*View.ca+wz*View.sa), View.cy+View.S*((-wx*View.sa+wz*View.ca)*View.iy-y)]; }
 const depthOf=t=>-t.wx*View.sa+t.wz*View.ca;
 function hexCorners(t,rad,y){ const out=[];
-  if(SHAPE==='square'){ const h=rad*SQ_SIZE/2*.97; for(const [dx,dz] of [[-1,-1],[1,-1],[1,1],[-1,1]]) out.push(proj(t.wx+dx*h,y||0,t.wz+dz*h)); return out; }
   for(let i=0;i<6;i++){ const a=Math.PI/6+i*Math.PI/3; out.push(proj(t.wx+Math.cos(a)*rad,y||0,t.wz+Math.sin(a)*rad)); } return out; }
 // the sides of a raised tile that face the camera (edges whose outward normal points down the screen)
 function frontFaces(ctx,top,drop){ const n=top.length, cx=top.reduce((a,p)=>a+p[0],0)/n, cy=top.reduce((a,p)=>a+p[1],0)/n;

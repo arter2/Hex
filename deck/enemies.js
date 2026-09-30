@@ -52,8 +52,8 @@ function makeEnemy(id,t,depth){
 const openEnemyTiles=()=>E_TILES.filter(t=>!t.occ&&t.terrain!=='lava');
 function spawnWave(i){
   const b=B; b.wave=i;
-  const ids=b.waves[i], rows=[0,1,2,3,4].sort(()=>Math.random()-.5);
-  ids.forEach((id,k)=>{ const free=openEnemyTiles(), back=free.filter(t=>t.r===rows[k%5]&&t.col>=6);
+  const ids=b.waves[i], rows=Array.from({length:BOARD_ROWS},(_,r)=>r).sort(()=>Math.random()-.5);
+  ids.forEach((id,k)=>{ const free=openEnemyTiles(), back=free.filter(t=>t.r===rows[k%BOARD_ROWS]&&t.col>=6);
     const t=pick(back.length?back:free); if(!t) return; const e=makeEnemy(id,t,b.depth); b.enemies.push(e); burst(t,COLORS[e.color].c,16); });
   if(i>0){ floater('Wave '+(i+1)+' of '+b.waves.length,b.player.tile,'#ffe24d',true); b.hooks.onWave&&b.hooks.onWave(i); }
 }

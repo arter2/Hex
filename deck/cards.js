@@ -8,14 +8,15 @@ const COLORS={
   frost:  {name:'Frost',  c:'#6fd6ff', icon:'❄️'},
   storm:  {name:'Storm',  c:'#ffe24d', icon:'⚡'},
   verdant:{name:'Verdant',c:'#6fdc7a', icon:'🌿'},
-  arcane: {name:'Arcane', c:'#c58bff', icon:'✦'},
+  light:  {name:'Light',  c:'#fff0b3', icon:'☀'},
   shadow: {name:'Shadow', c:'#e0588f', icon:'☾'},
   gray:   {name:'Gray',   c:'#b4b8c8', icon:'🐾', neutral:true},
   brown:  {name:'Brown',  c:'#c08a55', icon:'⚙', neutral:true},
 };
-const SIX=['fire','frost','storm','verdant','arcane','shadow'];
+const SIX=['fire','frost','storm','verdant','light','shadow'];
 // Weakness ring: each color beats the next one.
-const BEATS={fire:'verdant', verdant:'storm', storm:'frost', frost:'shadow', shadow:'arcane', arcane:'fire'};
+// Arcane (purple) is set aside for now; Light takes its place in the ring.
+const BEATS={fire:'verdant', verdant:'storm', storm:'frost', frost:'shadow', shadow:'light', light:'fire'};
 const WEAK_MULT=1.75;
 function colorMult(atk,def){ return atk&&BEATS[atk]===def ? WEAK_MULT : 1; }
 
@@ -81,16 +82,16 @@ const SIGNATURE=[
   {id:'mend',        name:'Mend',         color:'verdant', type:'boon',   rank:1, rarity:'common',   boon:'heal', amt:40},
   {id:'world_tree',  name:'World Tree',   color:'verdant', type:'boon',   rank:6, rarity:'legendary',boon:'heal', amt:120},
 
-  // Arcane — manipulation: phase, copy, redraw, queue tricks
-  {id:'arcane_bolt', name:'Arcane Bolt',  color:'arcane', type:'strike', rank:1, rarity:'common',   pow:30, shape:'line'},
-  {id:'missiles',    name:'Arcane Missiles',color:'arcane',type:'strike',rank:3, rarity:'uncommon', pow:14, shape:'missiles', n:5},
-  {id:'arcane_orb',  name:'Arcane Orb',   color:'arcane', type:'lob',    rank:2, rarity:'common',   pow:44, radius:0},
-  {id:'mirror_ward', name:'Mirror Ward',  color:'arcane', type:'ward',   rank:2, rarity:'common',   ward:'barrier', amt:60},
-  {id:'rune_sentry', name:'Rune Sentry',  color:'arcane', type:'sentry', rank:3, rarity:'common',   pow:14, rate:1.5, dur:10},
-  {id:'phase_step',  name:'Phase Step',   color:'arcane', type:'boon',   rank:2, rarity:'common',   boon:'phase', dur:2.5},
-  {id:'overload',    name:'Overload',     color:'arcane', type:'boon',   rank:4, rarity:'uncommon', boon:'power', dur:12},
-  {id:'time_skip',   name:'Time Skip',    color:'arcane', type:'boon',   rank:3, rarity:'uncommon', boon:'gauge', amt:.6},
-  {id:'starfall',    name:'Starfall',     color:'arcane', type:'strike', rank:6, rarity:'legendary',pow:16, shape:'missiles', n:10},
+  // Light — healing, divine intervention, courage
+  {id:'holy_bolt',   name:'Holy Bolt',    color:'light', type:'strike', rank:1, rarity:'common',   pow:26, shape:'line', mend:4},
+  {id:'radiant_motes',name:'Radiant Motes',color:'light',type:'strike', rank:3, rarity:'uncommon', pow:14, shape:'missiles', n:4, mend:2},
+  {id:'judgment',    name:'Judgment',     color:'light', type:'lob',    rank:2, rarity:'common',   pow:48, radius:0, delay:.9},
+  {id:'sanctuary',   name:'Sanctuary',    color:'light', type:'ward',   rank:2, rarity:'common',   ward:'barrier', amt:55},
+  {id:'beacon_hope', name:'Beacon of Hope',color:'light',type:'sentry', rank:3, rarity:'uncommon', pow:7, rate:1, dur:12, mend:3},
+  {id:'blessing',    name:'Blessing',     color:'light', type:'boon',   rank:1, rarity:'common',   boon:'heal', amt:45},
+  {id:'courage',     name:'Courage',      color:'light', type:'boon',   rank:4, rarity:'uncommon', boon:'courage', dur:8},
+  {id:'intervention',name:'Divine Intervention',color:'light',type:'boon',rank:5,rarity:'rare',   boon:'intervene', amt:60},
+  {id:'dawnbreaker', name:'Dawnbreaker',  color:'light', type:'strike', rank:6, rarity:'legendary',pow:55, shape:'all', mend:10, valor:1},
 
   // Shadow — sacrifice: curses, drain, trade HP for power
   {id:'hex_bolt',    name:'Hex Bolt',     color:'shadow', type:'strike', rank:1, rarity:'common',   pow:26, shape:'line', curse:5},
@@ -125,7 +126,7 @@ const TRAITS={
   frost:  {shapes:['line','row','row','wedge'],    kws:['freeze','slow','slow'],   boons:['dodge','phase','regen'], wards:['wall','barrier','barrier'],util:['cleanse','draw'], piece:'strike'},
   storm:  {shapes:['line','line','row','all'],     kws:['stun','stun',null],       boons:['haste','gauge','power'], wards:['barrier','barrier','wall'],util:['draw','recall'],  piece:'lob'},
   verdant:{shapes:['line','wedge','wedge','line'], kws:['poison','slow','drain'],  boons:['heal','regen','regen'],  wards:['thorns','wall','barrier'], util:['cleanse','draw'], piece:'boon'},
-  arcane: {shapes:['line','missiles','missiles','all'],kws:[null,null,'curse'],    boons:['phase','power','gauge'], wards:['barrier','wall','barrier'],util:['copy','recall','draw'], piece:'strike'},
+  light:  {shapes:['line','missiles','all','line'], kws:['mend','valor','mend'],     boons:['heal','courage','intervene','regen'], wards:['barrier','barrier','wall'], util:['cleanse','draw','copy'], piece:'boon'},
   shadow: {shapes:['line','row','line','all'],     kws:['curse','drain','self'],   boons:['pact','pact','heal'],    wards:['wall','thorns','wall'],    util:['copy','draw','cleanse'], piece:'strike'},
   gray:   {kws:[null], piece:'summon'},
   brown:  {kws:[null], piece:'machine'},
@@ -135,7 +136,7 @@ const WORDS={
   frost:  ['Rime','Frost','Glacial','Hoarfrost','Ice','Sleet','Snow','Winter','Crystal','Polar','Boreal','Chill','Permafrost','Hail','Frozen','Icicle','Tundra','Arctic','Numbing','Pale'],
   storm:  ['Thunder','Volt','Static','Spark','Gale','Tempest','Lightning','Squall','Surge','Arc','Storm','Charged','Zephyr','Cyclone','Flash','Crackling','Galvanic','Monsoon','Sky','Ion'],
   verdant:['Briar','Thorn','Moss','Vine','Root','Bramble','Fern','Oak','Bloom','Spore','Willow','Thistle','Wild','Sap','Grove','Nettle','Ivy','Verdant','Seed','Hollow'],
-  arcane: ['Rune','Astral','Mystic','Aether','Glyph','Star','Void','Prism','Sigil','Arcane','Mirror','Eldritch','Cosmic','Lunar','Mana','Ether','Nova','Echo','Oracle','Riddle'],
+  light:  ['Radiant','Holy','Dawn','Solar','Sacred','Gleaming','Blessed','Valiant','Aurora','Halo','Hallowed','Brave','Luminous','Seraph','Gilded','Shining','Dawnlit','Bright','Pure','Vigil'],
   shadow: ['Hex','Grave','Dusk','Blood','Bone','Night','Umbral','Wraith','Soul','Crypt','Gloom','Shade','Raven','Dread','Cursed','Black','Vile','Ghoul','Eclipse','Tomb'],
   gray:   ['Loyal','Feral','Stone','Tiny','Ancient','Wild','Grim','Swift','Brave','Old','Lucky','Dire','Pale','Clever','Hungry','Gentle','Sly','Mossy','Scrappy','Noble'],
   brown:  ['Clockwork','Brass','Steam','Iron','Copper','Rusted','Gear','Cog','Tin','Bolted','Riveted','Piston','Spring','Gyro','Dwarven','Forge','Oiled','Ratchet','Valve','Anvil'],
@@ -195,8 +196,9 @@ function generateCards(){
 const r1=v=>Math.round(v*10)/10;
 function applyKw(c,kw,rank){
   if(!kw) return 1;
-  const v={burn:r1(2+rank/3), freeze:r1(1+rank*.15), stun:r1(.8+rank*.1), slow:r1(2+rank*.3), poison:3+rank, curse:r1(3+rank*.3), drain:r1(.25+rank*.03), self:8+rank}[kw];
-  c[kw]=v; return kw==='self'?1.4:.85;
+  const v={burn:r1(2+rank/3), freeze:r1(1+rank*.15), stun:r1(.8+rank*.1), slow:r1(2+rank*.3), poison:3+rank, curse:r1(3+rank*.3), drain:r1(.25+rank*.03), self:8+rank,
+           mend:2+Math.round(rank/3), valor:1}[kw];
+  c[kw]=v; return kw==='self'?1.4:kw==='valor'?.95:.85;
 }
 const BUILD={
   strike(c,F,rank,kw,tr,pk){
@@ -211,7 +213,8 @@ const BUILD={
   boon(c,F,rank,kw,tr,pk){ c.boon=pk(tr.boons); c.dur=8+Math.round(rank/2);
     if(c.boon==='heal') c.amt=Math.round(35*F); if(c.boon==='regen'){ c.amt=Math.round(3*F); c.dur=8; }
     if(c.boon==='gauge') c.amt=r1(Math.min(.9,.35+rank*.04)); if(c.boon==='pact') c.self=10+rank;
-    if(['dodge','heal','gauge'].includes(c.boon)) delete c.dur; if(c.boon==='phase') c.dur=r1(1.5+rank*.15); },
+    if(c.boon==='intervene') c.amt=Math.round(40*F); if(c.boon==='courage') c.dur=6+Math.round(rank/2);
+    if(['dodge','heal','gauge','intervene'].includes(c.boon)) delete c.dur; if(c.boon==='phase') c.dur=r1(1.5+rank*.15); },
   charge(c,F,rank,kw,tr,pk,ri){
     c.fx=c.color==='brown'?'lob':pk(['bolt','bolt','lob']);
     c.uses=ri(...{common:[3,5],uncommon:[5,8],rare:[8,12],legendary:[12,20]}[c.rarity]);
@@ -241,7 +244,8 @@ function cardText(c){
   const kw=[];
   if(c.burn) kw.push('Burn '+c.burn+'s'); if(c.freeze) kw.push('Freeze '+c.freeze+'s'); if(c.stun) kw.push('Stun '+c.stun+'s');
   if(c.slow) kw.push('Slow '+c.slow+'s'); if(c.poison) kw.push('Poison '+c.poison); if(c.curse) kw.push('Curse '+c.curse+'s');
-  if(c.drain) kw.push('Drain '+Math.round(c.drain*100)+'%'); if(c.self) kw.push('Costs '+c.self+' HP');
+  if(c.drain) kw.push('Drain '+Math.round(c.drain*100)+'%'); if(c.mend) kw.push('Mend '+c.mend); if(c.valor) kw.push('Valor');
+  if(c.self) kw.push('Costs '+c.self+' HP');
   let t='';
   const kind=c.type==='piece'?c.base:c.type;
   if(kind==='strike') t={line:c.pow+' to the first enemy in your row', row:c.pow+' to every enemy in your row', wedge:c.pow+' in a short cone ahead',
@@ -251,7 +255,8 @@ function cardText(c){
   else if(kind==='sentry') t='Tower: '+c.pow+' every '+c.rate+'s for '+c.dur+'s';
   else if(kind==='boon') t={power:'Wand ×2.5 for '+c.dur+'s', pact:'Cards and wand +30% for '+c.dur+'s', haste:'Faster moves and casts for '+c.dur+'s',
                            dodge:'Dodge the next hit', phase:'Untouchable for '+c.dur+'s', regen:'Heal '+c.amt+'/s for '+c.dur+'s', heal:'Heal '+c.amt,
-                           gauge:'Fill '+Math.round(c.amt*100)+'% of the Custom gauge'}[c.boon];
+                           gauge:'Fill '+Math.round(c.amt*100)+'% of the Custom gauge', courage:'Cards and wand +30% for '+c.dur+'s, no HP cost',
+                           intervene:'The next hit that would defeat you leaves you standing and heals '+c.amt}[c.boon];
   else if(kind==='charge') t=c.uses+' uses: '+(c.fx==='lob'?'lob '+c.pow+' on the tile you aim':'bolt of '+c.pow+' down your row');
   else if(kind==='utility') t={draw:'Draw '+c.n+' card'+(c.n>1?'s':'')+' into your hand', recall:'Put the top card of your deck into your queue',
                               copy:'Copy the next queued card', cleanse:'Cancel incoming attacks and heal '+c.amt}[c.util];
@@ -267,7 +272,7 @@ function cardText(c){
 // cards lose copies (never below 2) until the deck fits.
 const STARTERS=[
   {id:'burn_storm', name:'Burn Rush',   colors:['fire','storm'],    text:'Fast damage and stuns. End fights before the enemy acts.'},
-  {id:'frost_arc',  name:'Freeze Lock', colors:['frost','arcane'],  text:'Freeze, ward and missiles. Cancel attacks and chip away.'},
+  {id:'frost_light',name:'Hold the Line', colors:['frost','light'],  text:'Freeze, shield and heal. Cancel attacks and outlast.'},
   {id:'verd_shadow',name:'Bulwark Drain',colors:['verdant','shadow'],text:'Walls, poison and drain. Outlast the enemy.'},
 ];
 function starterList(colors,size){

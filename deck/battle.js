@@ -54,8 +54,8 @@ const ENEMY_DEFS={
   mite:  {name:'Frost Mite',  color:'frost',   hp:95,  atk:'slam', dmg:14, rate:[3,4]},
   beetle:{name:'Volt Beetle', color:'storm',   hp:110, atk:'both', dmg:12, rate:[2.6,3.6]},
   shade: {name:'Shade',       color:'shadow',  hp:100, atk:'slam', dmg:16, rate:[3.2,4.2]},
-  sprite:{name:'Rune Sprite', color:'arcane',  hp:90,  atk:'shot', dmg:11, rate:[2.5,3.4]},
-  golem: {name:'Rune Golem',  color:'arcane',  hp:340, atk:'quake',dmg:22, rate:[3.6,4.6], boss:true, scale:1.45},
+  sprite:{name:'Halo Sprite', color:'light',   hp:90,  atk:'shot', dmg:11, rate:[2.5,3.4]},
+  golem: {name:'Radiant Golem',color:'light',    hp:340, atk:'quake',dmg:22, rate:[3.6,4.6], boss:true, scale:1.45},
 };
 const WEAK_TO={}; for(const k in BEATS) WEAK_TO[BEATS[k]]=k;
 
@@ -66,7 +66,7 @@ const GAUGE_MAX=10;
 function startBattle(list,depth,hooks,opts){
   buildBoard((opts&&opts.board)||'hex');
   const p={kind:'player', hp:120, maxHp:120, tile:P_TILES.find(t=>t.col===1&&t.r===2), path:[], moveCd:0, castCd:0, wandCd:0, charging:false, chargeT:0,
-           barrier:0, invT:0, dodge:false, powerT:0, pactT:0, hasteT:0, regenT:0, regenAmt:0};
+           barrier:0, invT:0, dodge:false, powerT:0, pactT:0, courageT:0, intervene:0, hasteT:0, regenT:0, regenAmt:0};
   p.tile.occ=p;
   B={depth, hooks:hooks||{}, piles:createPiles(list), player:p, aim:null, enemies:[], allies:[], walls:[], shots:[], lobs:[], teles:[], fx:[], floaters:[], parts:[],
      timers:[], gauge:0, phase:'custom', time:0, log:[]};
@@ -108,13 +108,15 @@ const gaugeFull=()=>B.gauge>=GAUGE_MAX;
 function hitEnemy(e,base,card,opts){
   if(!e||e.hp<=0) return 0;
   opts=opts||{};
-  let mult=opts.raw?1:colorMult(card&&card.color,e.color)*(e.curseT>0?1.3:1)*(B.player.pactT>0?1.3:1);
+  const pl=B.player;
+  let mult=opts.raw?1:colorMult(card&&card.color,e.color)*(e.curseT>0?1.3:1)*(pl.pactT>0||pl.courageT>0?1.3:1)*(card&&card.valor&&pl.hp<=pl.maxHp/2?1.5:1);
   const dmg=Math.max(1,Math.round(base*mult));
   e.hp-=dmg; e.hitT=.18;
   floater(dmg+(mult>=WEAK_MULT?' WEAK!':''),e.tile,mult>=WEAK_MULT?'#ffe24d':opts.raw?'#b8ffb0':'#fff',mult>=WEAK_MULT);
   flash(e.tile,colorOf(card),.8);
   if(card&&!opts.raw) applyStatus(e,card);
   if(card&&card.drain&&!opts.raw) healPlayer(Math.round(dmg*card.drain));
+  if(card&&card.mend&&!opts.raw) healPlayer(card.mend);
   if(e.hp<=0) killEnemy(e);
   return dmg;
 }
@@ -143,6 +145,8 @@ function hitPlayer(dmg){
   if(p.barrier>0){ const a=Math.min(p.barrier,dmg); p.barrier-=a; dmg-=a; floater('🛡'+a,p.tile,'#6fd6ff'); }
   if(dmg<=0) return;
   p.hp-=dmg; floater('-'+dmg,p.tile,'#ff5d6c',true); flash(p.tile,'#ff5d6c',1); B.hooks.onHurt&&B.hooks.onHurt(dmg);
+  // Divine Intervention: a lethal hit leaves you at 1 HP, then heals
+  if(p.hp<=0&&p.intervene){ p.hp=1; const h=p.intervene; p.intervene=0; floater('Divine Intervention',p.tile,'#fff0b3',true); burst(p.tile,'#fff0b3',30,1); healPlayer(h); }
   if(p.hp<=0){ p.hp=0; B.phase='lose'; p.charging=false; later(1.2,()=>B.hooks.onEnd&&B.hooks.onEnd(false)); }
 }
 function hitBlock(o,dmg,src){
@@ -211,6 +215,8 @@ const CAST={
       case 'regen': p.regenT=c.dur; p.regenAmt=c.amt; break;
       case 'heal': healPlayer(c.amt); break;
       case 'gauge': B.gauge=Math.min(GAUGE_MAX,B.gauge+c.amt*GAUGE_MAX); break;
+      case 'courage': p.courageT=c.dur; break;
+      case 'intervene': p.intervene=c.amt; break;
     }
     burst(p.tile,col,16,1); floater(c.name,p.tile,col);
   },
@@ -273,7 +279,7 @@ function update(dt){
 
   const p=b.player, haste=p.hasteT>0;
   b.gauge=Math.min(GAUGE_MAX,b.gauge+dt);
-  ['moveCd','castCd','wandCd','invT','powerT','pactT','hasteT','regenT'].forEach(k=>p[k]=Math.max(0,p[k]-dt));
+  ['moveCd','castCd','wandCd','invT','powerT','pactT','courageT','hasteT','regenT'].forEach(k=>p[k]=Math.max(0,p[k]-dt));
   if(p.regenT>0){ p.regenAcc=(p.regenAcc||0)+p.regenAmt*dt; if(p.regenAcc>=5){ healPlayer(5); p.regenAcc-=5; } }
   if(p.charging) p.chargeT=Math.min(1.2,p.chargeT+dt);
   if(p.path.length&&p.moveCd<=0){ const n=p.path[0]; if(n.side==='p'&&!n.occ){ p.tile.occ=null; p.tile=n; n.occ=p; p.path.shift(); p.moveCd=haste?.08:.14; } else p.path=[]; }

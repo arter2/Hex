@@ -1,6 +1,7 @@
 /* Hexmancers deck prototype — the collecting loop: card drops, packs, auto-fill and the save. */
 
-const SAVE_KEY='hexmancers-deck-v1';
+// v2: Arcane set aside for Light, so card ids changed and older saves start over.
+const SAVE_KEY='hexmancers-deck-v2';
 const DECK_SLOTS=5;
 const PACK_PRICE={booster:100, family:150};
 

@@ -30,13 +30,13 @@ t('deck rules: size, copies, legendary limit', ()=>{
 });
 t('color ring: each color beats the next, neutral otherwise', ()=>{
   assert.strictEqual(D.colorMult('fire','verdant'),1.75);
-  assert.strictEqual(D.colorMult('arcane','fire'),1.75);
+  assert.strictEqual(D.colorMult('light','fire'),1.75);
   assert.strictEqual(D.colorMult('verdant','fire'),1);
   assert.strictEqual(D.colorMult(null,'fire'),1);
   assert.strictEqual(new Set(Object.values(D.BEATS)).size,6);
 });
 t('custom draws up to 7, queue holds 3, cast goes to discard', ()=>{
-  const p=E.createPiles(D.starterList(['frost','arcane']),rng,D.CARDS);
+  const p=E.createPiles(D.starterList(['frost','light']),rng,D.CARDS);
   E.openCustom(p); assert.strictEqual(p.hand.length,7); assert.strictEqual(p.draw.length,53);
   const uids=p.hand.map(c=>c.uid);
   uids.slice(0,4).forEach(u=>E.toggleQueue(p,u));
@@ -83,7 +83,7 @@ t('charge cards stay queued until their uses are spent', ()=>{
   E.castNext(p); assert.strictEqual(p.queue.length,0); assert.strictEqual(p.discard.length,1);
 });
 t('utility: draw, recall and copy', ()=>{
-  const p=E.createPiles(D.starterList(['frost','arcane']),rng,D.CARDS); E.openCustom(p);
+  const p=E.createPiles(D.starterList(['frost','light']),rng,D.CARDS); E.openCustom(p);
   assert.strictEqual(E.drawCards(p,2).length,2); assert.strictEqual(p.hand.length,9);
   E.toggleQueue(p,p.hand[0].uid);
   assert(E.recallTop(p)); assert.strictEqual(p.queue.length,2);

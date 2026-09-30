@@ -83,14 +83,18 @@
       <div id="buffs"></div>
     </div>
     <canvas id="board"></canvas>
+    <div id="castFx" class="cast-fx"></div>
+    <div id="banner" class="banner"></div>
+    <div id="hurtFx" class="hurt-fx"></div>
     <div id="hudBottom">
       <div id="queueRow"></div>
+      <div id="comboBar" class="combo-bar" hidden></div>
       <div class="controls battle">
+        <button id="btnWand" class="btn wand">◀ Fire<small>hold to charge</small></button>
         <button id="btnCustom" class="btn ghost">Custom</button>
-        <button id="btnCast" class="btn">Cast<small id="castName"></small></button>
-        <button id="btnWand" class="btn wand">Wand<small>hold to charge</small></button>
+        <button id="btnCast" class="btn">Cast ▶<small id="castName"></small></button>
       </div>
-      <p class="keys">Tap your side to move, the enemy side to aim lobs · keys: arrows/WASD move, Space wand, Enter cast, Q aim, C custom</p>
+      <p class="keys">Tap your side to move, the enemy side to aim lobs · keys: arrows/WASD move, Space fire, Enter cast, Q aim, C custom</p>
     </div>
 
     <div id="bMenu" class="overlay">
@@ -108,9 +112,10 @@
     <div id="custom" class="overlay">
       <div class="panel custom">
         <div class="bar"><h2>Custom</h2><span id="custPiles" class="count"></span></div>
-        <div id="custQueue" class="slots"></div>
-        <p id="custHint" class="hint">Tap cards to queue up to 3; they cast in order. Each slot you leave empty draws you 1 extra card next time. Hold a card to read it.</p>
-        <div id="custHand" class="hand"></div>
+        <div id="custCombo" class="combo-line"></div>
+        <div id="custQueue" class="slots" data-zone="queue"></div>
+        <p id="custHint" class="hint">Tap or drag cards into the 3 slots; they cast left to right. Drag to reorder or to take a card back. Hold a card to read it. Each empty slot draws 1 extra card next time.</p>
+        <div id="custHand" class="hand" data-zone="hand"></div>
         <p id="custEmpty" class="hint warn"></p>
         <button id="btnFight" class="btn big">Fight!</button>
       </div>

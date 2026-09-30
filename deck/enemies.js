@@ -46,7 +46,7 @@ function makeEnemy(id,t,depth){
   const d=ENEMY_DEFS[id], hs=1+.22*(depth-1), ds=1+.1*(depth-1);
   const e={kind:'enemy', id, def:d, name:d.name, color:d.color, hp:Math.round(d.hp*hs), maxHp:Math.round(d.hp*hs), dmg:Math.round(d.dmg*ds), ds,
            tile:t, atkT:rnd(1.8,3.2), moveT:rnd(.8,1.8), windT:0, burnT:0, burnAcc:0, freezeT:0, stunT:0, slowT:0, poisonT:0, poisonAmt:0, curseT:0, hitT:0,
-           barrier:0, powerT:0, castT:0, casting:null, deck:d.deck?enemyDeck(d.color,depth):null, deckCd:rnd(3,5)};
+           barrier:0, powerT:0, castT:0, casting:null, nextMove:pick(d.moves), deck:d.deck?enemyDeck(d.color,depth):null, deckCd:rnd(3,5)};
   t.occ=e; return e;
 }
 const openEnemyTiles=()=>E_TILES.filter(t=>!t.occ&&t.terrain!=='lava');
@@ -162,7 +162,7 @@ function updateEnemy(e,dt){
   if(e.moveT<=0&&!b.teles.some(t=>t.owner===e)){ e.moveT=rnd(1.1,2)*(icy(e.tile)?2:1); moveEnemy(e); if(e.hp<=0) return; }
   if(e.deck){ e.deckCd-=dt; if(e.deckCd<=0&&e.deck.length){ e.deckCd=rnd(4,6); e.casting=e.deck.shift(); e.castT=.9; return; } }
   e.atkT-=dt;
-  if(e.atkT<=0){ e.atkT=rnd(e.def.rate[0],e.def.rate[1]); MOVES[pick(e.def.moves)](e); }
+  if(e.atkT<=0){ e.atkT=rnd(e.def.rate[0],e.def.rate[1]); MOVES[e.nextMove||pick(e.def.moves)](e); e.nextMove=pick(e.def.moves); }   // the next move is picked early so it can be shown
 }
 
 if(typeof module!=='undefined') module.exports={ENEMY_DEFS,MONSTERS,HUMANOIDS,makeEncounter};

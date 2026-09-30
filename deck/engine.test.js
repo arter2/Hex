@@ -144,3 +144,27 @@ t('every card has 32 x 32 pixel art of hex colors, all unique, and the CSV files
     assert.strictEqual(fs.readFileSync(f,'utf8'),A.artCSV(c),c.id+' csv is stale (run node deck/tools/export-art.js)'); }
   assert.strictEqual(new Set(D.CARD_LIST.map(c=>A.artCSV(c))).size,D.CARD_LIST.length,'every picture is different');
 });
+
+t('combos: double, triple, flush and straight are detected and locked in', ()=>{
+  const I=(id,uid)=>({uid,card:D.CARDS[id]});
+  let q=[I('ember_dart',1),I('ember_dart',2),I('spark',3)];
+  let cb=E.detectCombos(q); assert.strictEqual(cb.length,1); assert.strictEqual(cb[0].kind,'simple'); assert.strictEqual(cb[0].mult,1.5);
+  cb=E.detectCombos([I('ember_dart',1),I('ember_dart',2),I('ember_dart',3)]); assert(cb.some(c=>c.kind==='simple'&&c.mult===2)); assert(cb.some(c=>c.kind==='flush'));
+  cb=E.detectCombos([I('ember_dart',1),I('cinder_lance',2),I('fire_pot',3)]);   // ranks 1,2,3, all fire
+  assert(cb.some(c=>c.kind==='flush')); assert(cb.some(c=>c.kind==='straight'));
+  assert.strictEqual(E.detectCombos([I('ember_dart',1),I('spark',2)]).length,0);
+  const p={draw:[],hand:[],queue:[I('ember_dart',1),I('ember_dart',2),I('spark',3)],discard:[]};
+  E.commitCustom(p); assert.strictEqual(p.queue.length,2); assert.strictEqual(p.queue[0].mult,1.5); assert.strictEqual(p.discard.length,1); assert.strictEqual(p.bonus,0);
+  const p2={draw:[],hand:[],queue:[I('ember_dart',1),I('cinder_lance',2),I('fire_pot',3)],discard:[]};
+  E.commitCustom(p2); assert(p2.queue[0].straight); assert(p2.queue.every(c=>c.mult===1.25));
+});
+t('drag and drop: reorder, move between hand and queue, swap into a full queue', ()=>{
+  const p=E.createPiles(D.starterList(['fire','storm']),rng,D.CARDS); E.openCustom(p);
+  const [a,b,c,d]=p.hand.map(x=>x.uid);
+  E.placeCard(p,a,'queue',0); E.placeCard(p,b,'queue',0); assert.deepStrictEqual(p.queue.map(x=>x.uid),[b,a]);
+  E.placeCard(p,c,'queue',1); assert.deepStrictEqual(p.queue.map(x=>x.uid),[b,c,a]);
+  E.placeCard(p,d,'queue',2); assert.deepStrictEqual(p.queue.map(x=>x.uid),[b,c,d]); assert(p.hand.some(x=>x.uid===a),'swapped out to the hand');
+  E.placeCard(p,b,'hand',0); assert.strictEqual(p.hand[0].uid,b); assert.strictEqual(p.queue.length,2);
+  const last=p.hand.at(-1).uid; E.placeCard(p,last,'hand',1); assert.strictEqual(p.hand[1].uid,last);
+  assert.strictEqual(p.hand.length+p.queue.length,7);
+});

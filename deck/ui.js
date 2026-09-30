@@ -199,8 +199,11 @@ function fight(depth){
   startBattle(d.list,depth,{
     onCustom:renderCustom,
     onFight:()=>{ $('#custom').classList.remove('on'); hud(true); },
-    onCast:c=>{ tip(COLORS[c.color].icon+' '+c.name); buzz(12); },
-    onHurt:d=>buzz(d>=15?60:30),
+    onCast:(c,inst)=>{ showCast(c,inst); buzz(12); },
+    onHurt:d=>{ buzz(d>=15?60:30); const h=$('#hurtFx'); h.classList.remove('on'); void h.offsetWidth; h.classList.add('on'); },
+    onTurn:n=>banner('Turn '+n,'#9b7bff'),
+    onWave:i=>banner('Wave '+(i+1),'#ff5d6c'),
+    onCombo:label=>banner('✦ '+label.split(':')[0],'#ffe066'),
     onEnd:win=>win?victory():defeat(),
   },{prepare:p=>assignChargeUses(save,p,d.list)});
   hud(true);
@@ -224,6 +227,9 @@ function defeat(){
     [['Camp',()=>{ B=null; openCamp(); },true],['Retry',()=>fight(depth)]]);
 }
 $('#btnRetreat').onclick=e=>{ if(B) armed(e.currentTarget,'Tap again to retreat',()=>{ const burnt=settleCharges(); if(burnt) tip(burnt.trim()); B=null; paused=false; $('#bMenu').classList.remove('on'); $('#custom').classList.remove('on'); openCamp(); }); };
+// the card you cast pops up large and flies onto the board, Hearthstone style
+function showCast(c,inst){ const box=$('#castFx'); box.innerHTML=''; const el=cardEl(c,inst&&inst.combo?`<span class="tag">✦ ${esc(inst.combo.split(':')[0])}</span>`:''); box.appendChild(el); }
+function banner(text,color){ const b=$('#banner'); b.textContent=text; b.style.setProperty('--bc',color); b.classList.remove('on'); void b.offsetWidth; b.classList.add('on'); }
 // phone helpers: a short buzz on hits, a pause menu, full screen
 const buzz=ms=>{ try{ navigator.vibrate&&navigator.vibrate(ms); }catch(e){} };
 let paused=false;
@@ -234,23 +240,69 @@ $('#mFull').onclick=()=>{ const d=document, el=d.documentElement;
 document.addEventListener('fullscreenchange',()=>{ $('#mFull').textContent=document.fullscreenElement?'Exit full screen':'Full screen'; setTimeout(resizeView,50); });
 document.addEventListener('visibilitychange',()=>{ if(document.hidden&&B&&B.phase==='fight'&&$('#scrBattle').classList.contains('on')) $('#btnMenu').onclick(); });
 
+// the combos a queue makes, as gold chips
+function comboChips(combos){ return combos.length?combos.map(c=>`<span>✦ ${esc(c.label)}</span>`).join(''):''; }
 function renderCustom(){
-  const p=B.piles;
+  const p=B.piles, dealt=B.justDrawn||new Set();
   $('#custom').classList.add('on');
   $('#custPiles').textContent='Deck '+p.draw.length+' · Discard '+p.discard.length;
+  const combos=detectCombos(p.queue), inCombo=new Set();
+  for(const cb of combos){ if(cb.kind==='simple') p.queue.forEach(c=>{ if(c.card.id===cb.id) inCombo.add(c.uid); }); else p.queue.forEach(c=>inCombo.add(c.uid)); }
+  $('#custCombo').innerHTML=comboChips(combos)||'<span class="none">No combo yet: match copies, colors, or ranks in a row</span>';
   const q=$('#custQueue'); q.innerHTML='';
   for(let i=0;i<RULES.slots;i++){
     const inst=p.queue[i];
-    if(inst){ const el=cardEl(inst.card,`<span class="ord">${i+1}</span>`); longPress(el,inst.card); el.onclick=()=>{ if(pressed) return; toggleQueue(p,inst.uid); renderCustom(); }; q.appendChild(el); }
-    else { const s=document.createElement('div'); s.className='slot'; s.innerHTML='Slot '+(i+1)+'<small>+1 draw next</small>'; q.appendChild(s); }
+    if(inst){ const el=cardEl(inst.card,`<span class="ord">${i+1}</span>`); el.dataset.zone='queue'; el.dataset.i=i; if(inCombo.has(inst.uid)) el.classList.add('combo'); dragCard(el,inst); q.appendChild(el); }
+    else { const s=document.createElement('div'); s.className='slot'; s.dataset.zone='queue'; s.dataset.i=i; s.innerHTML='Slot '+(i+1)+'<small>+1 draw next</small>'; q.appendChild(s); }
   }
   const h=$('#custHand'); h.innerHTML='';
-  p.hand.forEach((inst,i)=>{ const el=cardEl(inst.card,inst.left!=null?`<span class="badge">${inst.left} left</span>`:''); el.title='Key '+(i+1); longPress(el,inst.card);
-    el.onclick=()=>{ if(pressed) return; if(!toggleQueue(p,inst.uid)) tip('The queue holds '+RULES.slots+' cards'); renderCustom(); }; h.appendChild(el); });
+  const base=combos.length;
+  p.hand.forEach((inst,i)=>{ const el=cardEl(inst.card,inst.left!=null?`<span class="badge">${inst.left} left</span>`:''); el.title='Key '+(i+1);
+    el.dataset.zone='hand'; el.dataset.i=i;
+    // glow if adding this card to the queue would make a new combo
+    if(p.queue.length<RULES.slots&&detectCombos([...p.queue,inst]).length>base) el.classList.add('hint');
+    if(dealt.has(inst.uid)){ el.classList.add('deal'); el.style.animationDelay=(i*.06)+'s'; }
+    dragCard(el,inst); h.appendChild(el); });
+  B.justDrawn=null;
   $('#custEmpty').textContent=wandOnly(p)?'Your deck is empty. Fight on with your wand!':!p.draw.length?'Deck empty: these are your last cards.':'';
   const empty=RULES.slots-p.queue.length;
   $('#btnFight').textContent=wandOnly(p)?'Fight!':'Fight!'+(empty?' (+'+empty+' draw next time)':'');
 }
+/* Drag and drop on the Custom screen. A tap moves a card between hand and queue, a hold shows
+   its detail, and a drag puts it exactly where it is dropped: a slot (swapping if full), a
+   place in the hand, or back out of the queue. */
+let drag=null;
+function dragCard(el,inst){
+  el.addEventListener('pointerdown',e=>{
+    if(e.button>0) return;
+    drag={el,inst,x0:e.clientX,y0:e.clientY,moved:false,long:false,ghost:null,over:null};
+    drag.timer=setTimeout(()=>{ if(drag&&!drag.moved){ drag.long=true; showDetail(inst.card); } },450);
+    try{ el.setPointerCapture(e.pointerId); }catch(_){}
+  });
+  el.addEventListener('pointermove',e=>{
+    if(!drag||drag.el!==el) return;
+    if(!drag.moved&&Math.hypot(e.clientX-drag.x0,e.clientY-drag.y0)>8){
+      drag.moved=true; clearTimeout(drag.timer);
+      const r=el.getBoundingClientRect(), g=el.cloneNode(true); g.classList.add('drag-ghost'); g.classList.remove('deal','hint');
+      g.style.width=r.width+'px'; g.style.left=r.left+'px'; g.style.top=r.top+'px'; drag.dx=e.clientX-r.left; drag.dy=e.clientY-r.top;
+      document.body.appendChild(g); drag.ghost=g; el.classList.add('dragging'); buzz(8); }
+    if(drag.moved){ drag.ghost.style.left=(e.clientX-drag.dx)+'px'; drag.ghost.style.top=(e.clientY-drag.dy)+'px';
+      const t=dropTarget(e.clientX,e.clientY); if(drag.over&&drag.over!==t) drag.over.classList.remove('drop'); if(t) t.classList.add('drop'); drag.over=t; }
+  });
+  const end=e=>{
+    if(!drag||drag.el!==el) return;
+    clearTimeout(drag.timer); const d=drag; drag=null;
+    if(d.ghost) d.ghost.remove(); if(d.over) d.over.classList.remove('drop'); el.classList.remove('dragging');
+    const p=B.piles;
+    if(d.moved){ const t=e.type==='pointercancel'?null:dropTarget(e.clientX,e.clientY);
+      if(t){ const zone=t.dataset.zone, i=t.dataset.i!=null?+t.dataset.i:null; placeCard(p,d.inst.uid,zone,i); buzz(10); } }
+    else if(!d.long){ if(!toggleQueue(p,d.inst.uid)) tip('The queue holds '+RULES.slots+' cards'); }
+    renderCustom();
+  };
+  el.addEventListener('pointerup',end); el.addEventListener('pointercancel',end);
+  el.addEventListener('contextmenu',e=>e.preventDefault());
+}
+function dropTarget(x,y){ const el=document.elementFromPoint(x,y); return el&&el.closest('#custom [data-zone]'); }
 $('#btnFight').onclick=closeCustomScreen;
 
 /* ---------------- HUD ---------------- */
@@ -269,8 +321,10 @@ function hud(force){
   set('buffs',buffs.join('   '),v=>$('#buffs').textContent=v);
   set('queue',pl.queue.map(c=>c.uid+':'+(c.left==null?'':c.left)).join(','),()=>{
     const row=$('#queueRow'); row.innerHTML='';
+    const locked=pl.queue.filter(c=>c.combo), cb=$('#comboBar');
+    cb.hidden=!locked.length; if(locked.length) cb.textContent='✦ '+(pl.combos||[]).map(c=>c.label.split(':')[0]).join(' · ');
     for(let i=0;i<RULES.slots;i++){ const inst=pl.queue[i], d=document.createElement('div');
-      d.className='qslot'+(inst?' full':'')+(i===0&&inst?' next':'');
+      d.className='qslot'+(inst?' full':'')+(i===0&&inst?' next':'')+(inst&&inst.combo?' combo':'');
       if(inst){ const c=inst.card, uses=c.uses?' ×'+(inst.left==null?c.uses:inst.left):''; d.style.setProperty('--c',COLORS[c.color].c);
         d.innerHTML=`<span class="n">${TYPES[c.type].icon}</span>${esc(c.name)}${uses}${inst.temp?' (copy)':''}`; }
       else d.textContent='—';
@@ -287,8 +341,10 @@ function tryCustom(){ if(B&&B.phase==='fight'&&gaugeFull()&&!wandOnly(B.piles)) 
 $('#btnCustom').onclick=tryCustom;
 $('#btnCast').onclick=castCard;
 const wandBtn=$('#btnWand');
-wandBtn.addEventListener('pointerdown',e=>{ e.preventDefault(); wandDown(); wandBtn.classList.add('charging'); });
-['pointerup','pointerleave','pointercancel'].forEach(ev=>wandBtn.addEventListener(ev,()=>{ wandBtn.classList.remove('charging'); wandUp(); }));
+// the Fire button keeps its finger even if the thumb slides off it, so you can fire with one
+// thumb while tapping the board to move with the other
+wandBtn.addEventListener('pointerdown',e=>{ e.preventDefault(); try{ wandBtn.setPointerCapture(e.pointerId); }catch(_){} wandDown(); wandBtn.classList.add('charging'); });
+['pointerup','pointercancel'].forEach(ev=>wandBtn.addEventListener(ev,()=>{ wandBtn.classList.remove('charging'); wandUp(); }));
 wandBtn.addEventListener('contextmenu',e=>e.preventDefault());
 
 let dragging=false;

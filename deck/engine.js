@@ -46,8 +46,49 @@ function openCustom(p){
   while(p.hand.length<size && p.draw.length){ const c=p.draw.pop(); p.hand.push(c); drawn.push(c); }
   return drawn;
 }
-// Leaving the Custom screen: every empty slot adds 1 card to the next draw (Battle Network style).
-function commitCustom(p){ p.bonus=RULES.slots-p.queue.length; return p.bonus; }
+/* Combos, read from the queue as it stands (Battle Network style):
+   - Double / Triple: copies of the same card merge into one cast at 1.5x / 2x power (charge uses add up)
+   - Flush: three cards of one of the six colors, +25% on each
+   - Straight: three consecutive ranks, cast as one chain with a finisher hit */
+const NEUTRAL=['gray','brown'];
+function detectCombos(queue){
+  const cards=queue.filter(c=>!c.temp).map(c=>c.card), out=[];
+  const by={}; cards.forEach(c=>by[c.id]=(by[c.id]||0)+1);
+  for(const id in by) if(by[id]>=2){ const c=cards.find(x=>x.id===id);
+    out.push({kind:'simple', id, n:by[id], mult:by[id]>=3?2:1.5, label:(by[id]>=3?'Triple ':'Double ')+c.name+' ×'+(by[id]>=3?2:1.5)}); }
+  if(cards.length===RULES.slots&&!NEUTRAL.includes(cards[0].color)&&cards.every(c=>c.color===cards[0].color))
+    out.push({kind:'flush', color:cards[0].color, mult:1.25, label:'Flush: '+cards[0].color[0].toUpperCase()+cards[0].color.slice(1)+' +25%'});
+  const ranks=cards.map(c=>c.rank).sort((a,b)=>a-b);
+  if(cards.length===RULES.slots&&ranks[1]===ranks[0]+1&&ranks[2]===ranks[1]+1)
+    out.push({kind:'straight', ranks, label:'Straight '+ranks.join('-')+': chain cast + finisher'});
+  return out;
+}
+// Leaving the Custom screen: combos lock in, and every empty slot adds 1 card to the next
+// draw (Battle Network style).
+function commitCustom(p){
+  const combos=detectCombos(p.queue);
+  for(const cb of combos){
+    if(cb.kind==='simple'){ const same=p.queue.filter(c=>c.card.id===cb.id), keep=same[0];
+      keep.mult=(keep.mult||1)*cb.mult; keep.combo=cb.label;
+      if(keep.card.uses) keep.left=same.reduce((a,c)=>a+(c.left==null?c.card.uses:c.left),0);
+      for(const c of same.slice(1)){ p.queue.splice(p.queue.indexOf(c),1); p.discard.push(c); } }
+    if(cb.kind==='flush') p.queue.forEach(c=>{ c.mult=(c.mult||1)*cb.mult; c.combo=c.combo||cb.label; });
+    if(cb.kind==='straight'&&p.queue.length===RULES.slots){ p.queue[0].straight=cb.ranks; p.queue.forEach(c=>c.combo=c.combo||cb.label); }
+  }
+  p.combos=combos;
+  p.bonus=RULES.slots-p.queue.length-combos.filter(c=>c.kind==='simple').reduce((a,c)=>a+c.n-1,0);
+  return p.bonus;
+}
+// Drag and drop on the Custom screen: put a card into the hand or the queue at a position.
+// Dropping a hand card onto a full queue swaps it with the card in that slot.
+function placeCard(p,uid,zone,index){
+  const qi=p.queue.findIndex(c=>c.uid===uid), hi=p.hand.findIndex(c=>c.uid===uid);
+  if(qi<0&&hi<0) return false;
+  const src=qi>=0?p.queue:p.hand, si=qi>=0?qi:hi, dst=zone==='queue'?p.queue:p.hand, card=src[si];
+  if(index==null) index=dst.length;
+  if(src!==dst&&zone==='queue'&&p.queue.length>=RULES.slots){ const ti=Math.min(index,RULES.slots-1), other=p.queue[ti]; p.queue[ti]=card; p.hand[si]=other; return true; }
+  src.splice(si,1); dst.splice(Math.max(0,Math.min(index,dst.length)),0,card); return true;
+}
 
 // Tap a card: hand -> queue (if a slot is free), or queue -> hand. Returns true if it moved.
 function toggleQueue(p,uid){
@@ -75,4 +116,4 @@ function copyNext(p){ const c=p.queue[0]; if(!c||p.queue.length>=RULES.slots) re
 // Nothing left to draw, hold or cast: the fight continues with the wand only.
 function wandOnly(p){ return !p.draw.length && !p.hand.length && !p.queue.length; }
 
-if(typeof module!=='undefined') module.exports={RULES,validateDeck,shuffle,createPiles,openCustom,commitCustom,toggleQueue,castNext,drawCards,recallTop,copyNext,wandOnly};
+if(typeof module!=='undefined') module.exports={RULES,detectCombos,placeCard,validateDeck,shuffle,createPiles,openCustom,commitCustom,toggleQueue,castNext,drawCards,recallTop,copyNext,wandOnly};

@@ -111,3 +111,21 @@ t('auto-fill builds a legal 60 from what you own', ()=>{
   const v=E.validateDeck(list,D.CARDS,s.owned); assert(v.ok,v.errors.join('; ')); assert.strictEqual(list.length,60);
   assert(C.autoFill([],{}).length===0);
 });
+
+t('draw bonus: each empty queue slot draws 1 more next time', ()=>{
+  const p=E.createPiles(D.starterList(['fire','storm']),rng,D.CARDS); E.openCustom(p);
+  E.toggleQueue(p,p.hand[0].uid); assert.strictEqual(E.commitCustom(p),2);
+  E.castNext(p); E.openCustom(p); assert.strictEqual(p.hand.length,9);
+  p.hand.slice(0,3).forEach(c=>E.toggleQueue(p,c.uid)); assert.strictEqual(E.commitCustom(p),0);
+  E.castNext(p); E.castNext(p); E.castNext(p); E.openCustom(p); assert.strictEqual(p.hand.length,7, 'bonus is spent once');
+});
+t('charge uses carry across battles and spent copies burn up', ()=>{
+  const s=C.newSave(D.STARTERS[0]); const id=D.CARD_LIST.find(c=>c.type==='charge'&&c.uses===3&&c.color==='fire').id;
+  s.owned[id]=2; s.decks[0].list=s.decks[0].list.slice(0,58).concat([id,id]);
+  const fight=spend=>{ const p=E.createPiles(s.decks[0].list,rng,D.CARDS); C.assignChargeUses(s,p,s.decks[0].list);
+    const ch=p.draw.filter(c=>c.card.id===id).sort((a,b)=>a.copy-b.copy); p.queue=[ch[0]]; p.draw=p.draw.filter(c=>c!==ch[0]);
+    for(let i=0;i<spend;i++) E.castNext(p); return C.settleChargeUses(s,p); };
+  assert.strictEqual(fight(2).length,0); assert.deepStrictEqual(s.charge[id],[1,3]);
+  const burned=fight(1); assert.strictEqual(burned.length,1); assert.strictEqual(s.owned[id],1);
+  assert.deepStrictEqual(s.charge[id],[3]); assert.strictEqual(s.decks[0].list.filter(x=>x===id).length,1);
+});

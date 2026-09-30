@@ -26,6 +26,7 @@ function showDetail(c){
   const inDeck=activeDeck().list.filter(id=>id===c.id).length;
   $('#dtInfo').textContent=save.seen[c.id]?COLORS[c.color].name+' · '+TYPES[c.type].name+' · rank '+c.rank+' · '+RARITY[c.rarity].n+' · owned '+(save.owned[c.id]||0)+' · in deck '+inDeck
     :'Not found yet. '+RARITY[c.rarity].n+' '+COLORS[c.color].name+' '+TYPES[c.type].name+'.';
+  if(c.uses&&save.owned[c.id]) $('#dtInfo').textContent+=' · uses left per copy: '+Array.from({length:save.owned[c.id]},(_,k)=>chargeLeft(save,c.id,k)+'/'+c.uses).join(', ');
   $('#detail').classList.add('on');
 }
 $('#dtClose').onclick=()=>$('#detail').classList.remove('on');
@@ -199,25 +200,28 @@ function fight(depth){
     onCast:c=>{ tip(COLORS[c.color].icon+' '+c.name); buzz(12); },
     onHurt:d=>buzz(d>=15?60:30),
     onEnd:win=>win?victory():defeat(),
-  },{board:boardShape()});
+  },{board:boardShape(), prepare:p=>assignChargeUses(save,p,d.list)});
   hud(true);
 }
+// charge uses spent this fight carry over; a copy that ran dry burns up
+function settleCharges(){ const burned=settleChargeUses(save,B.piles); persist();
+  return burned.length?' Burned up: '+burned.map(x=>x.card.name+(x.n>1?' ×'+x.n:'')).join(', ')+'.':''; }
 function victory(){
   const b=B, boss=b.enemies.some(e=>e.def.boss);
   const gold=battleGold(b.depth,boss), drops=battleDrops(b.enemies.map(e=>e.color),b.depth,boss);
   save.gold+=gold; save.wins++; if(b.depth>=save.deepest) save.deepest=b.depth+1;
-  const res=addCards(save,drops); persist();
+  const res=addCards(save,drops); const burnt=settleCharges();
   const depth=b.depth;
-  reveal('Victory!','Depth '+depth+' cleared in '+Math.round(b.time)+'s · +'+gold+' gold · '+res.filter(r=>r.isNew).length+' new cards',res,
+  reveal('Victory!','Depth '+depth+' cleared in '+Math.round(b.time)+'s · +'+gold+' gold · '+res.filter(r=>r.isNew).length+' new cards.'+burnt,res,
     [['Camp',()=>{ B=null; pickDepth=depth+1; openCamp(); },true],['Depth '+(depth+1)+' →',()=>fight(depth+1)]]);
 }
 function defeat(){
-  const lost=Math.floor(save.gold*.2); save.gold-=lost; persist();
+  const lost=Math.floor(save.gold*.2); save.gold-=lost; const burnt=settleCharges();
   const depth=B.depth;
-  reveal('Defeated…','You fell at depth '+depth+' and dropped '+lost+' gold. Your cards are safe.',[],
+  reveal('Defeated…','You fell at depth '+depth+' and dropped '+lost+' gold. Your cards are safe.'+burnt,[],
     [['Camp',()=>{ B=null; openCamp(); },true],['Retry',()=>fight(depth)]]);
 }
-$('#btnRetreat').onclick=()=>{ if(B&&confirm('Retreat to camp? You keep your gold.')){ B=null; paused=false; $('#bMenu').classList.remove('on'); $('#custom').classList.remove('on'); openCamp(); } };
+$('#btnRetreat').onclick=()=>{ if(B&&confirm('Retreat to camp? You keep your gold.')){ const burnt=settleCharges(); if(burnt) tip(burnt.trim()); B=null; paused=false; $('#bMenu').classList.remove('on'); $('#custom').classList.remove('on'); openCamp(); } };
 // phone helpers: a short buzz on hits, a pause menu, full screen
 const buzz=ms=>{ try{ navigator.vibrate&&navigator.vibrate(ms); }catch(e){} };
 let paused=false;

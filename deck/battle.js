@@ -79,6 +79,7 @@ function startBattle(list,depth,hooks,opts){
     const e={kind:'enemy', id, def:d, name:d.name, color:d.color, hp:Math.round(d.hp*hs), maxHp:Math.round(d.hp*hs), dmg:Math.round(d.dmg*ds),
              tile:t, atkT:rnd(2,3.5)+i*.7, moveT:rnd(1,2), windT:0, burnT:0, burnAcc:0, freezeT:0, stunT:0, slowT:0, poisonT:0, poisonAmt:0, curseT:0, hitT:0};
     t.occ=e; B.enemies.push(e); });
+  if(opts&&opts.prepare) opts.prepare(B.piles);
   openCustomScreen();
   return B;
 }

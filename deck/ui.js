@@ -14,9 +14,9 @@ function cardEl(c,extra,locked){
   const el=document.createElement('button'), col=COLORS[c.color];
   el.className='card'+(c.rarity==='legendary'?' leg':'')+(locked?' locked':''); el.style.setProperty('--c',col.c);
   const stat=c.pow||(c.boon!=='gauge'&&c.amt)||c.hp||'';
-  el.innerHTML=locked?`<div class="ct"><span>${col.icon} ${TYPES[c.type].icon}</span><span class="rank">${c.rank}</span></div><div class="cn">???</div><div class="ty">${TYPES[c.type].name}</div><div class="tx"></div><div class="cp"><span></span><small>${RARITY[c.rarity].g}</small></div>`
+  el.innerHTML=locked?`<div class="ct"><span>${col.icon} ${TYPES[c.type].icon}</span><span class="rank">${c.rank}</span></div><div class="art"></div><div class="cn">???</div><div class="ty">${TYPES[c.type].name}</div><div class="tx"></div><div class="cp"><span></span><small>${RARITY[c.rarity].g}</small></div>`
     :`<div class="ct"><span>${col.icon} ${TYPES[c.type].icon}</span><span class="rank">${c.rank}</span></div>
-    <div class="cn">${esc(c.name)}</div><div class="ty">${TYPES[c.type].name}</div><div class="tx">${esc(cardText(c))}</div>
+    <img class="art" src="${artURL(c)}" alt=""><div class="cn">${esc(c.name)}</div><div class="ty">${TYPES[c.type].name}</div><div class="tx">${esc(cardText(c))}</div>
     <div class="cp"><span>${stat}</span><small title="${RARITY[c.rarity].n}">${RARITY[c.rarity].g}</small></div>`;
   if(extra) el.insertAdjacentHTML('beforeend',extra);
   return el;

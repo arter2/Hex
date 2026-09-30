@@ -84,6 +84,10 @@ select,.filters input{font:600 14px var(--font-b); color:var(--text); background
 @keyframes flip{from{transform:rotateY(90deg) scale(.8); opacity:0;} to{transform:none; opacity:1;}}
 .panel.narrow{max-width:280px;}
 #dtCard .card{aspect-ratio:auto; min-height:260px; font-size:18px;}
+.card .art{display:block; width:100%; height:48px; object-fit:contain; image-rendering:pixelated; margin:2px 0; background:rgba(0,0,0,.25); border-radius:6px;}
+.card div.art{background:rgba(0,0,0,.35);}
+.slots .card .art{height:32px;}
+#dtCard .card .art{height:128px;}
 #dtCard .card .cn{font-size:20px;} #dtCard .card .tx{font-size:15px;} #dtCard .card .ty{font-size:13px;}
 #detail{z-index:7;}
 .controls.two{grid-template-columns:1fr 1fr;}

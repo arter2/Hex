@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
+<title>Hexmancers Deck Prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- deck select -->
+  <section id="scrMenu" class="screen on">
+    <h1>Hexmancers</h1>
+    <p class="sub">Deck prototype · phase 2 card engine</p>
+    <div id="starters"></div>
+    <p class="hint">60-card decks · draw 7 at each Custom · queue 3 · no reshuffle: when the deck runs out you fight with your wand.</p>
+  </section>
+
+  <!-- deck list -->
+  <section id="scrDeck" class="screen">
+    <div class="bar"><button id="deckBack" class="btn ghost">← Back</button><h2 id="deckName"></h2><span id="deckCount" class="count"></span></div>
+    <div id="deckStats" class="stats"></div>
+    <div id="deckGrid" class="grid"></div>
+    <div class="bar bottom"><button id="deckPlay" class="btn">Play this deck</button></div>
+  </section>
+
+  <!-- battle -->
+  <section id="scrBattle" class="screen">
+    <div id="hudTop">
+      <div class="hp"><span id="hpTxt"></span><div class="meter"><i id="hpBar"></i></div></div>
+      <div class="info"><span id="depthTxt"></span><span id="pileTxt"></span></div>
+      <div class="gauge"><span>Custom</span><div class="meter"><i id="gaugeBar"></i></div></div>
+      <div id="buffs"></div>
+    </div>
+    <canvas id="board"></canvas>
+    <div id="hudBottom">
+      <div id="queueRow"></div>
+      <div class="controls">
+        <button id="btnCustom" class="btn ghost">Custom</button>
+        <button id="btnWand" class="btn ghost">Wand<small>hold to charge</small></button>
+        <button id="btnCast" class="btn">Cast<small id="castName"></small></button>
+      </div>
+      <p class="keys">Tap a tile to move · keys: arrows/WASD move, Space wand, Enter cast, C custom</p>
+    </div>
+
+    <!-- custom screen -->
+    <div id="custom" class="overlay">
+      <div class="panel">
+        <div class="bar"><h2>Custom</h2><span id="custPiles" class="count"></span></div>
+        <p class="hint">Tap cards to queue up to 3. They cast in order. Cards you don't queue stay in your hand.</p>
+        <div id="custQueue" class="slots"></div>
+        <div id="custHand" class="hand"></div>
+        <p id="custEmpty" class="hint warn"></p>
+        <button id="btnFight" class="btn big">Fight!</button>
+      </div>
+    </div>
+
+    <!-- result -->
+    <div id="result" class="overlay">
+      <div class="panel">
+        <h2 id="resTitle"></h2>
+        <p id="resBody" class="hint"></p>
+        <div class="controls"><button id="resMenu" class="btn ghost">Change deck</button><button id="resNext" class="btn"></button></div>
+      </div>
+    </div>
+  </section>
+
+  <div id="tip" class="tip"></div>
+</div>
+<script src="cards.js"></script>
+<script src="engine.js"></script>
+<script src="battle.js"></script>
+<script src="ui.js"></script>
+</body>
+</html>

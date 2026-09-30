@@ -28,6 +28,8 @@ const TYPES={
   boon:  {name:'Boon',   icon:'✚', text:'Upgrades you for this battle'},
   charge:{name:'Charge', icon:'⚗', text:'Limited uses; stays queued until spent'},
   utility:{name:'Utility',icon:'✎', text:'Draw, recall, copy or cleanse'},
+  trap:  {name:'Trap',   icon:'⌖', text:'Set on an enemy tile; springs when an enemy steps on it'},
+  environment:{name:'Environment',icon:'⛰', text:'Changes the ground on the enemy side'},
   piece: {name:'Legendary piece', icon:'♛', text:'Part of a legendary combo recipe (phase 4)'},
   summon:{name:'Summon', icon:'🐾', text:'A creature that fights for a set time'},
   machine:{name:'Machine',icon:'⚙', text:'A turret, wall or construct'},
@@ -112,22 +114,23 @@ SIGNATURE.forEach(c=>c.sig=true);
 
 // Type split per family of 100 (from the design doc's 800-card plan).
 const TYPE_PLAN={
-  color:{strike:30, lob:12, ward:12, sentry:10, boon:10, charge:16, utility:6, piece:4},
+  color:{strike:26, lob:12, ward:10, sentry:9, boon:10, charge:14, utility:5, trap:5, environment:5, piece:4},
   gray: {charge:6, piece:4, summon:90},
   brown:{charge:6, piece:4, machine:90},
 };
 const RARITY_PLAN={common:40, uncommon:30, rare:20, legendary:10};
+const PATTERN_MULT={single:1, burst:.8, ring:.85, cross:.75, column:.8, row:.8};
 const RARITY_MULT={common:1, uncommon:1.12, rare:1.25, legendary:1.45};
 // Ranks 1-12 for the six colors, 1-6 for the neutral families (medium straights 1-3, high 4-6).
 const RANKS={color:{common:[1,5],uncommon:[3,8],rare:[6,10],legendary:[9,12]}, neutral:{common:[1,3],uncommon:[2,4],rare:[3,5],legendary:[5,6]}};
 
 const TRAITS={
-  fire:   {shapes:['line','line','wedge','row'],   kws:['burn','burn','self'],     boons:['power','haste','pact'],  wards:['thorns','wall','barrier'], util:['draw','cleanse'], piece:'lob'},
-  frost:  {shapes:['line','row','row','wedge'],    kws:['freeze','slow','slow'],   boons:['dodge','phase','regen'], wards:['wall','barrier','barrier'],util:['cleanse','draw'], piece:'strike'},
-  storm:  {shapes:['line','line','row','all'],     kws:['stun','stun',null],       boons:['haste','gauge','power'], wards:['barrier','barrier','wall'],util:['draw','recall'],  piece:'lob'},
-  verdant:{shapes:['line','wedge','wedge','line'], kws:['poison','slow','drain'],  boons:['heal','regen','regen'],  wards:['thorns','wall','barrier'], util:['cleanse','draw'], piece:'boon'},
-  light:  {shapes:['line','missiles','all','line'], kws:['mend','valor','mend'],     boons:['heal','courage','intervene','regen'], wards:['barrier','barrier','wall'], util:['cleanse','draw','copy'], piece:'boon'},
-  shadow: {shapes:['line','row','line','all'],     kws:['curse','drain','self'],   boons:['pact','pact','heal'],    wards:['wall','thorns','wall'],    util:['copy','draw','cleanse'], piece:'strike'},
+  fire:   {shapes:['line','line','wedge','row','zigzag'], kws:['burn','burn','self','push'], traps:['blast','spike'], envs:['burn','burn','tremor'],     boons:['power','haste','pact'],  wards:['thorns','wall','barrier'], util:['draw','cleanse'], piece:'lob'},
+  frost:  {shapes:['line','row','row','wedge','dig'], kws:['freeze','slow','slow','pull'], traps:['snare','spike'], envs:['freeze','freeze','tremor'],   boons:['dodge','phase','regen'], wards:['wall','barrier','barrier'],util:['cleanse','draw'], piece:'strike'},
+  storm:  {shapes:['line','line','row','all','diag','zigzag'], kws:['stun','stun','confuse','push'], traps:['blast','snare'], envs:['tremor','tremor','burn'],       boons:['haste','gauge','power'], wards:['barrier','barrier','wall'],util:['draw','recall'],  piece:'lob'},
+  verdant:{shapes:['line','wedge','wedge','line','dig'], kws:['poison','slow','drain','pull'], traps:['snare','spike','spike'], envs:['bramble','bramble','freeze'],  boons:['heal','regen','regen'],  wards:['thorns','wall','barrier'], util:['cleanse','draw'], piece:'boon'},
+  light:  {shapes:['line','missiles','all','line','diag'], kws:['mend','valor','mend','push'], traps:['snare','blast'], envs:['burn','tremor'],     boons:['heal','courage','intervene','regen'], wards:['barrier','barrier','wall'], util:['cleanse','draw','copy'], piece:'boon'},
+  shadow: {shapes:['line','row','line','all','dig'], kws:['curse','drain','self','confuse','pull'], traps:['spike','snare'], envs:['bramble','burn'],   boons:['pact','pact','heal'],    wards:['wall','thorns','wall'],    util:['copy','draw','cleanse'], piece:'strike'},
   gray:   {kws:[null], piece:'summon'},
   brown:  {kws:[null], piece:'machine'},
 };
@@ -149,6 +152,8 @@ const NOUNS={
   boon:['Blessing','Rite','Gift','Vigor','Focus','Stride','Oath','Trance','Hymn'],
   charge:['Flask','Quiver','Satchel','Pouch','Vial','Cask','Bundle','Charm','Censer'],
   utility:['Scroll','Tome','Lens','Codex','Map','Key','Compass','Candle'],
+  trap:['Snare','Trap','Glyph','Mine','Tripwire','Pitfall','Jaw','Rune'],
+  environment:['Field','Storm','Ground','Mire','Tide','Rain','Quake','Blight'],
   summon:['Imp','Wolf','Hound','Owl','Toad','Bat','Knight','Squire','Spirit','Golem','Rat','Boar','Hawk','Mole','Beetle','Serpent','Bear','Fox','Ogre','Sprite'],
   turret:['Turret','Ballista','Cannon','Crossbow','Tower'], repeater:['Repeater','Drone','Automaton','Gatling'],
   mortar:['Mortar','Catapult','Engine','Trebuchet'], bulwark:['Barricade','Bulwark','Bastion','Rampart','Palisade'],
@@ -197,16 +202,22 @@ const r1=v=>Math.round(v*10)/10;
 function applyKw(c,kw,rank){
   if(!kw) return 1;
   const v={burn:r1(2+rank/3), freeze:r1(1+rank*.15), stun:r1(.8+rank*.1), slow:r1(2+rank*.3), poison:3+rank, curse:r1(3+rank*.3), drain:r1(.25+rank*.03), self:8+rank,
-           mend:2+Math.round(rank/3), valor:1}[kw];
-  c[kw]=v; return kw==='self'?1.4:kw==='valor'?.95:.85;
+           mend:2+Math.round(rank/3), valor:1, push:1, pull:1, confuse:r1(3+rank*.2)}[kw];
+  c[kw]=v; return kw==='self'?1.4:kw==='valor'||kw==='push'||kw==='pull'?.95:.85;
 }
 const BUILD={
   strike(c,F,rank,kw,tr,pk){
     c.shape=pk(tr.shapes); const k=applyKw(c,kw,rank);
     if(c.shape==='missiles'){ c.n=3+Math.floor(rank/3); c.pow=Math.round(9*F*k); }
-    else c.pow=Math.round({line:30,row:26,wedge:30,all:18}[c.shape]*F*k);
+    else c.pow=Math.round({line:30,row:26,wedge:30,all:18,dig:28,zigzag:28,diag:22}[c.shape]*F*k);
   },
-  lob(c,F,rank,kw,tr,pk){ c.radius=pk([1,1,0]); const k=applyKw(c,kw,rank); c.pow=Math.round(32*F*(c.radius?.8:1)*k*(c.rarity==='legendary'?1.3:1)); if(c.rarity==='legendary') c.delay=.9; },
+  // lobs land in a floor pattern; bigger patterns trade power for area
+  lob(c,F,rank,kw,tr,pk){ c.pattern=pk(['single','single','burst','cross','column','ring','row']); const k=applyKw(c,kw,rank);
+    c.pow=Math.round(32*F*PATTERN_MULT[c.pattern]*k*(c.rarity==='legendary'?1.3:1)); if(c.rarity==='legendary') c.delay=.9; },
+  trap(c,F,rank,kw,tr,pk){ c.trap=pk(tr.traps); const k=kw==='self'?1:applyKw(c,kw,rank);
+    c.pow=Math.round({spike:38,snare:18,blast:26}[c.trap]*F*k); if(c.trap==='snare') c.stun=r1(1.5+rank*.1); },
+  environment(c,F,rank,kw,tr,pk){ c.env=pk(tr.envs); c.pattern=pk(['burst','cross','column','row']); c.dur=6+Math.round(rank/2);
+    if(c.env==='bramble') c.pow=Math.round(8*F); if(c.env==='tremor'){ c.pow=Math.round(14*F); c.stun=r1(.8+rank*.08); delete c.dur; } },
   ward(c,F,rank,kw,tr,pk){ c.ward=pk(tr.wards);
     if(c.ward==='barrier') c.amt=Math.round(45*F); else { c.n=2+(rank>6?1:0); c.hp=Math.round(35*F); if(c.ward==='thorns') c.thorns=Math.round(6*F); } },
   sentry(c,F,rank,kw,tr,pk){ c.rate=pk([.6,.9,1.2,1.5]); const k=kw==='self'?1:applyKw(c,kw,rank); c.pow=Math.max(3,Math.round(9*F*c.rate*k)); c.dur=8+Math.round(rank/2); },
@@ -240,17 +251,26 @@ const CARD_LIST=SIGNATURE.concat(generateCards());
 const CARDS={}; CARD_LIST.forEach(c=>CARDS[c.id]=c);
 
 // One-line rules text built from the data, so new cards need no hand-written text.
+const PATTERN_TEXT={single:'', burst:' and around it', ring:' in a ring around it', cross:' in a cross', column:' down its column', row:' along its row'};
+const AREA_TEXT={burst:' on the tile you aim and around it', cross:' in a cross on the tile you aim', column:" down the aimed tile's column", row:" along the aimed tile's row"};
+const lobPattern=c=>c.pattern||(c.radius?'burst':'single');
 function cardText(c){
   const kw=[];
   if(c.burn) kw.push('Burn '+c.burn+'s'); if(c.freeze) kw.push('Freeze '+c.freeze+'s'); if(c.stun) kw.push('Stun '+c.stun+'s');
   if(c.slow) kw.push('Slow '+c.slow+'s'); if(c.poison) kw.push('Poison '+c.poison); if(c.curse) kw.push('Curse '+c.curse+'s');
   if(c.drain) kw.push('Drain '+Math.round(c.drain*100)+'%'); if(c.mend) kw.push('Mend '+c.mend); if(c.valor) kw.push('Valor');
+  if(c.confuse) kw.push('Confuse '+c.confuse+'s'); if(c.push) kw.push('Knockback'); if(c.pull) kw.push('Pull');
   if(c.self) kw.push('Costs '+c.self+' HP');
   let t='';
   const kind=c.type==='piece'?c.base:c.type;
   if(kind==='strike') t={line:c.pow+' to the first enemy in your row', row:c.pow+' to every enemy in your row', wedge:c.pow+' in a short cone ahead',
-                         all:c.pow+' to every enemy', missiles:c.n+' missiles of '+c.pow+' at random enemies'}[c.shape];
-  else if(kind==='lob') t=c.pow+' on the tile you aim'+(c.radius?' and around it':'')+', over blockers';
+                         all:c.pow+' to every enemy', missiles:c.n+' missiles of '+c.pow+' at random enemies',
+                         dig:c.pow+' tunnelling under walls and shields to the first enemy in your row', zigzag:c.pow+' zigzagging between your row and the next',
+                         diag:c.pow+' in two diagonal bolts'}[c.shape];
+  else if(kind==='lob') t=c.pow+' on the tile you aim'+PATTERN_TEXT[lobPattern(c)]+', over blockers';
+  else if(kind==='trap') t={spike:'Spike trap: '+c.pow, snare:'Snare: '+c.pow+' and roots', blast:'Blast trap: '+c.pow+' to it and around it'}[c.trap]+' when an enemy steps on the tile you aim';
+  else if(kind==='environment') t={burn:'Sets the ground burning', freeze:'Ices the ground, halving enemy speed,', bramble:'Grows brambles that deal '+c.pow+' per step',
+                                   tremor:'Tremor deals '+c.pow}[c.env]+AREA_TEXT[c.pattern]+(c.dur?' for '+c.dur+'s':'');
   else if(kind==='ward') t=c.ward==='barrier'?'Barrier absorbs '+c.amt:c.n+' walls of '+c.hp+' HP'+(c.ward==='thorns'?', hit back for '+c.thorns:'');
   else if(kind==='sentry') t='Tower: '+c.pow+' every '+c.rate+'s for '+c.dur+'s';
   else if(kind==='boon') t={power:'Wand ×2.5 for '+c.dur+'s', pact:'Cards and wand +30% for '+c.dur+'s', haste:'Faster moves and casts for '+c.dur+'s',
@@ -288,4 +308,4 @@ function starterList(colors,size){
   return list;
 }
 
-if(typeof module!=='undefined') module.exports={SIX,SIGNATURE,TYPE_PLAN,RARITY_PLAN,COLORS,BEATS,WEAK_MULT,colorMult,TYPES,RARITY,CARD_LIST,CARDS,cardText,STARTERS,starterList};
+if(typeof module!=='undefined') module.exports={PATTERN_MULT,lobPattern,SIX,SIGNATURE,TYPE_PLAN,RARITY_PLAN,COLORS,BEATS,WEAK_MULT,colorMult,TYPES,RARITY,CARD_LIST,CARDS,cardText,STARTERS,starterList};

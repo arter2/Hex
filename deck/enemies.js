@@ -73,7 +73,7 @@ const icy=t=>t.terrain==='ice'||t.iceT>0;
 function dropRock(t,sec){ if(t.occ) return; t.terrain='rock'; t.rockT=sec; t.occ={kind:'rock',tile:t,hp:Infinity,maxHp:Infinity}; burst(t,'#8a8398',14,.4); }
 function updateTerrain(dt){
   for(const t of TILES){
-    if(t.burnT>0) t.burnT-=dt; if(t.iceT>0) t.iceT-=dt;
+    if(t.burnT>0) t.burnT-=dt; if(t.iceT>0) t.iceT-=dt; if(t.thornT>0) t.thornT-=dt; if(t.trap&&(t.trap.t-=dt)<=0) t.trap=null;
     if(t.rockT>0){ t.rockT-=dt; if(t.rockT<=0){ t.rockT=0; if(t.occ&&t.occ.kind==='rock') t.occ=null; t.terrain=null; } }
   }
   const p=B.player;
@@ -82,9 +82,13 @@ function updateTerrain(dt){
 }
 
 /* ---------------- enemy turns ---------------- */
-function tele(e,tiles,dur,dmg,after){ B.teles.push({tiles:tiles.filter(Boolean),t:0,dur,dmg,owner:e,after}); }
+function tele(e,tiles,dur,dmg,after){ tiles=tiles.filter(Boolean);
+  if(e&&e.confuseT>0) tiles=tiles.map(t=>pick(neighbors(t).filter(x=>x.side==='p'))||t);   // confusion throws attacks off by a tile
+  B.teles.push({tiles,t:0,dur,dmg,owner:e,after}); }
 const pTilesInRow=r=>P_TILES.filter(t=>t.r===r);
-function stepEnemy(e,to){ e.tile.occ=null; e.tile=to; to.occ=e; if(e.poisonT>0) hitEnemy(e,e.poisonAmt,null,{raw:true}); }
+function stepEnemy(e,to){ e.tile.occ=null; e.tile=to; to.occ=e; if(e.poisonT>0) hitEnemy(e,e.poisonAmt,null,{raw:true});
+  if(to.thornT>0&&e.hp>0) hitEnemy(e,to.thornPow,null,{raw:true});
+  if(to.trap&&e.hp>0) springTrap(to,e); }
 function moveEnemy(e){
   const p=B.player, opts=neighbors(e.tile).filter(t=>t.side==='e'&&!t.occ&&!burning(t));
   if(!opts.length) return;
@@ -95,7 +99,9 @@ function moveEnemy(e){
   else if(e.def.ai==='back'&&Math.random()<.6) to=pick(opts.filter(t=>t.col>=e.tile.col));
   stepEnemy(e,to||pick(opts));
 }
-function enemyShot(e,dmg){ shoot(e.tile,lineTiles(e.tile,DIRS.W),{dmg:Math.round(dmg),from:'e',owner:e,color:COLORS[e.color].c}); }
+// a confused enemy fires from the row next to its own
+function enemyShot(e,dmg){ const from=e.confuseT>0&&pick([tileCR(e.tile.col,e.tile.r-1),tileCR(e.tile.col,e.tile.r+1)].filter(Boolean))||e.tile;
+  shoot(from,lineTiles(from,DIRS.W),{dmg:Math.round(dmg),from:'e',owner:e,color:COLORS[e.color].c}); }
 const MOVES={
   shot(e){ e.windT=.55; },
   firebomb(e){ const t=B.player.tile; tele(e,[t],1,e.dmg,()=>{ t.burnT=5; burst(t,'#ff6a3d',14,.3); }); },
@@ -145,6 +151,7 @@ function enemyCast(e,c){
 
 function updateEnemy(e,dt){
   const b=B;
+  e.confuseT=Math.max(0,(e.confuseT||0)-dt);
   e.hitT=Math.max(0,e.hitT-dt); e.curseT=Math.max(0,e.curseT-dt); e.poisonT=Math.max(0,e.poisonT-dt); e.powerT=Math.max(0,e.powerT-dt);
   if(e.burnT>0){ e.burnT-=dt; e.burnAcc+=5*dt; if(e.burnAcc>=5){ e.burnAcc-=5; hitEnemy(e,5,null,{raw:true}); if(e.hp<=0) return; } }
   if(e.freezeT>0||e.stunT>0){ e.freezeT=Math.max(0,e.freezeT-dt); e.stunT=Math.max(0,e.stunT-dt); return; }
@@ -152,7 +159,7 @@ function updateEnemy(e,dt){
   if(e.windT>0){ e.windT-=dt; if(e.windT<=0) enemyShot(e,e.dmg*(e.powerT>0?1.3:1)); return; }
   if(e.casting){ e.castT-=dt; if(e.castT<=0){ const c=e.casting; e.casting=null; enemyCast(e,c); } return; }
   e.moveT-=dt;
-  if(e.moveT<=0&&!b.teles.some(t=>t.owner===e)){ e.moveT=rnd(1.1,2); moveEnemy(e); if(e.hp<=0) return; }
+  if(e.moveT<=0&&!b.teles.some(t=>t.owner===e)){ e.moveT=rnd(1.1,2)*(icy(e.tile)?2:1); moveEnemy(e); if(e.hp<=0) return; }
   if(e.deck){ e.deckCd-=dt; if(e.deckCd<=0&&e.deck.length){ e.deckCd=rnd(4,6); e.casting=e.deck.shift(); e.castT=.9; return; } }
   e.atkT-=dt;
   if(e.atkT<=0){ e.atkT=rnd(e.def.rate[0],e.def.rate[1]); MOVES[pick(e.def.moves)](e); }

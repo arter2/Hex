@@ -10,12 +10,12 @@ const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 const BOARD_ROWS=5, BOARD_COLS=10, SQ_SIZE=1.8;
 // The arrays below are rebuilt in place by buildBoard, so references to them stay valid.
 const DIRS={}, DIRLIST=[], AROUND=[];
-const BOARD=new Map(), TILES=[], P_TILES=[], E_TILES=[];
+const BOARD=new Map(), CR=new Map(), TILES=[], P_TILES=[], E_TILES=[];
 let SHAPE='hex';
 function buildBoard(shape){
   SHAPE=shape==='square'?'square':'hex';
   for(const k in DIRS) delete DIRS[k]; DIRLIST.length=0; AROUND.length=0;
-  BOARD.clear(); TILES.length=0; P_TILES.length=0; E_TILES.length=0;
+  BOARD.clear(); CR.clear(); TILES.length=0; P_TILES.length=0; E_TILES.length=0;
   if(SHAPE==='hex') Object.assign(DIRS,{E:[1,0],NE:[1,-1],NW:[0,-1],W:[-1,0],SW:[-1,1],SE:[0,1]});
   else Object.assign(DIRS,{E:[1,0],N:[0,-1],W:[-1,0],S:[0,1]});
   DIRLIST.push(...Object.values(DIRS));
@@ -26,11 +26,25 @@ function buildBoard(shape){
     const x=c+off-(BOARD_COLS-1+(SHAPE==='hex'?.5:0))/2, side=c<BOARD_COLS/2?'p':'e';
     const t={q,r,col:c,x,side,wx:SHAPE==='hex'?SQ3*x:SQ_SIZE*x,wz:SHAPE==='hex'?1.5*(r-(BOARD_ROWS-1)/2):SQ_SIZE*(r-(BOARD_ROWS-1)/2),
              key:q+','+r,occ:null,flash:0,flashC:'#fff'};
-    BOARD.set(t.key,t); TILES.push(t); (side==='p'?P_TILES:E_TILES).push(t);
+    BOARD.set(t.key,t); CR.set(c+','+r,t); TILES.push(t); (side==='p'?P_TILES:E_TILES).push(t);
   }
 }
 buildBoard('hex');
 const tileAt=(q,r)=>BOARD.get(q+','+r);
+const tileCR=(c,r)=>CR.get(c+','+r);   // by board column and row
+// Floor patterns for lobs, environments and traps, kept to one side of the board.
+function patternTiles(t,pat,side){
+  let ts;
+  switch(pat){
+    case 'burst': ts=[t,...around(t)]; break;
+    case 'ring': ts=around(t); break;
+    case 'cross': ts=TILES.filter(x=>(x.r===t.r&&Math.abs(x.col-t.col)<=2)||(x.col===t.col&&Math.abs(x.r-t.r)<=2)); break;
+    case 'column': ts=TILES.filter(x=>x.col===t.col); break;
+    case 'row': ts=TILES.filter(x=>x.r===t.r); break;
+    default: ts=[t];
+  }
+  return side?ts.filter(x=>x.side===side):ts;
+}
 const neighbors=t=>DIRLIST.map(d=>tileAt(t.q+d[0],t.r+d[1])).filter(Boolean);
 const around=t=>AROUND.map(d=>tileAt(t.q+d[0],t.r+d[1])).filter(Boolean);   // area effects: 6 on hex, 8 on square
 // tile distance: hex steps, or king-move steps on the square grid
@@ -96,11 +110,12 @@ function hitEnemy(e,base,card,opts){
   const pl=B.player;
   let mult=opts.raw?1:colorMult(card&&card.color,e.color)*(e.curseT>0?1.3:1)*(pl.pactT>0||pl.courageT>0?1.3:1)*(card&&card.valor&&pl.hp<=pl.maxHp/2?1.5:1);
   let dmg=Math.max(1,Math.round(base*mult));
-  if(e.barrier>0&&!opts.raw){ const a=Math.min(e.barrier,dmg); e.barrier-=a; dmg-=a; if(!dmg){ floater('🛡',e.tile,'#fff0b3'); return 0; } }
+  if(e.barrier>0&&!opts.raw&&!opts.dig){ const a=Math.min(e.barrier,dmg); e.barrier-=a; dmg-=a; if(!dmg){ floater('🛡',e.tile,'#fff0b3'); return 0; } }
   e.hp-=dmg; e.hitT=.18;
   floater(dmg+(mult>=WEAK_MULT?' WEAK!':''),e.tile,mult>=WEAK_MULT?'#ffe24d':opts.raw?'#b8ffb0':'#fff',mult>=WEAK_MULT);
   flash(e.tile,colorOf(card),.8);
   if(card&&!opts.raw) applyStatus(e,card);
+  if(card&&!opts.raw&&!opts.noShove) shove(e,card,base);
   if(card&&card.drain&&!opts.raw) healPlayer(Math.round(dmg*card.drain));
   if(card&&card.mend&&!opts.raw) healPlayer(card.mend);
   if(e.hp<=0) killEnemy(e);
@@ -113,6 +128,15 @@ function applyStatus(e,c){
   if(c.poison){ e.poisonT=8; e.poisonAmt=Math.max(e.poisonAmt,c.poison); }
   if(c.freeze){ e.freezeT=Math.max(e.freezeT,c.freeze); cancelAttack(e); }
   if(c.stun){ e.stunT=Math.max(e.stunT,c.stun); cancelAttack(e); }
+  if(c.confuse) e.confuseT=Math.max(e.confuseT||0,c.confuse);
+}
+// Knockback shoves an enemy one column back; if something is in the way it slams into it for 50% more.
+// Pull drags it one column toward you.
+function shove(e,c,base){
+  if(e.hp<=0||(!c.push&&!c.pull)) return;
+  const to=tileCR(e.tile.col+(c.push?1:-1),e.tile.r);
+  if(to&&to.side==='e'&&!to.occ){ e.tile.occ=null; e.tile=to; to.occ=e; burst(to,'#e8e0ff',6,.3); if(to.trap) springTrap(to,e); }
+  else if(c.push){ floater('slam!',e.tile,'#ffe24d'); hitEnemy(e,Math.round(base*.5),null,{raw:true}); }
 }
 function cancelAttack(e){
   const had=e.windT>0||e.casting||B.teles.some(t=>t.owner===e);
@@ -170,6 +194,10 @@ const CAST={
       B.fx.push({kind:'beam',a:p.tile,b:row[row.length-1]||p.tile,color:colorOf(c),t:0,life:.3}); }
     else if(c.shape==='wedge'){ const ts=wedgeTiles(p.tile,2.6); ts.forEach(t=>{ flash(t,colorOf(c),1); hitAt(t,c.pow,c); }); }
     else if(c.shape==='all') alive().forEach(e=>{ B.fx.push({kind:'bolt',a:p.tile,b:e.tile,color:colorOf(c),t:0,life:.35}); hitEnemy(e,c.pow,c); });
+    else if(c.shape==='dig') shoot(p.tile,row,{card:c,dmg:c.pow,from:'p',dig:true});
+    else if(c.shape==='zigzag'){ const alt=tileCR(p.tile.col,p.tile.r+1)?1:-1, path=[];
+      for(let i=1;i<BOARD_COLS;i++){ const t=tileCR(p.tile.col+i,p.tile.r+(i%2?alt:0)); if(t) path.push(t); } shoot(p.tile,path,{card:c,dmg:c.pow,from:'p'}); }
+    else if(c.shape==='diag') for(const d of [-1,1]){ const path=[]; for(let i=1;i<BOARD_COLS;i++){ const t=tileCR(p.tile.col+i,p.tile.r+d*i); if(!t) break; path.push(t); } shoot(p.tile,path,{card:c,dmg:c.pow,from:'p'}); }
     else if(c.shape==='missiles') for(let i=0;i<c.n;i++) later(i*.09,()=>{ const e=pick(alive()); if(!e) return;
       B.fx.push({kind:'arc',a:p.tile,b:e.tile,color:colorOf(c),t:0,life:.25}); hitEnemy(e,c.pow,c); });
   },
@@ -180,6 +208,19 @@ const CAST={
     free.slice(0,c.n).forEach(t=>{ const w={kind:'wall',card:c,tile:t,hp:c.hp,maxHp:c.hp,thorns:c.thorns||0}; t.occ=w; B.walls.push(w); burst(t,colorOf(c),8,.3); });
   },
   sentry(c,p){ placeAlly(c,'sentry',40,c.dur); },
+  trap(c,p){ // on the aimed tile, or a free tile next to the nearest enemy
+    const e=alive().sort((a,b)=>hexDist(p.tile,a.tile)-hexDist(p.tile,b.tile))[0];
+    let t=B.aim&&!B.aim.occ&&!B.aim.trap?B.aim:null; B.aim=null;
+    if(!t&&e) t=pick(around(e.tile).filter(x=>x.side==='e'&&!x.occ&&!x.trap));
+    if(!t){ floater('no room',p.tile,'#ffb3a0'); return; }
+    t.trap={card:c,t:20}; burst(t,colorOf(c),10,.2); },
+  environment(c,p){
+    const t=B.aim||nearestEnemyTile(p.tile); B.aim=null; if(!t) return;
+    for(const x of patternTiles(t,c.pattern,'e')){ flash(x,colorOf(c),.8);
+      if(c.env==='burn') x.burnT=Math.max(x.burnT||0,c.dur);
+      if(c.env==='freeze'){ x.iceT=Math.max(x.iceT||0,c.dur); if(x.occ&&x.occ.kind==='enemy') x.occ.slowT=Math.max(x.occ.slowT,2); }
+      if(c.env==='bramble'){ x.thornT=c.dur; x.thornPow=c.pow; x.thornCard=c; }
+      if(c.env==='tremor') hitAt(x,c.pow,c); } },
   charge(c,p){ if(c.fx==='lob') lobFrom(p.tile,c,c.pow,0,.45,B.aim); else shoot(p.tile,lineTiles(p.tile,DIRS.E),{card:c,dmg:c.pow,from:'p'}); },
   utility(c,p){
     const pl=B.piles;
@@ -219,7 +260,7 @@ const nearestEnemyTile=from=>{ const e=alive().sort((a,b)=>hexDist(from,a.tile)-
 function hitAt(t,pow,c){ const o=t.occ; if(!o) return; if(o.kind==='enemy') hitEnemy(o,pow,c); else if(o.enemy) hitBlock(o,pow,null); }
 function lobFrom(from,c,pow,radius,dur,target){
   const t=target||nearestEnemyTile(from); if(!t) return;
-  const ts=[t].concat(radius?around(t).filter(n=>n.side==='e'):[]);
+  const ts=patternTiles(t,c.pattern||(radius?'burst':'single'),'e');
   B.lobs.push({a:from,b:t,t:0,dur,card:c});
   B.teles.push({tiles:ts,t:0,dur,friendly:true});
   later(dur,()=>ts.forEach(x=>{ flash(x,colorOf(c),1); burst(x,colorOf(c),6,.2); hitAt(x,pow,c); }));
@@ -247,6 +288,9 @@ function updateAlly(a,dt){
     case 'healer': healPlayer(c.amt); break;
   }
 }
+// a trap springs when an enemy steps on it
+function springTrap(t,e){ const c=t.trap.card; t.trap=null; floater(c.name,t,colorOf(c));
+  const ts=c.trap==='blast'?patternTiles(t,'burst','e'):[t]; ts.forEach(x=>{ flash(x,colorOf(c),1); burst(x,colorOf(c),8,.3); hitAt(x,c.pow,c); }); }
 function shoot(from,tiles,o){ B.shots.push(Object.assign({a:from,tiles,i:-1,stepT:0,speed:o.from==='p'?.045:.08,hit:new Set()},o)); }
 
 function fireWand(charged){
@@ -284,8 +328,9 @@ function update(dt){
     while(s.stepT>=s.speed&&!s.done){ s.stepT-=s.speed; s.i++;
       const t=s.tiles[s.i]; if(!t){ s.done=true; break; }
       const o=t.occ;
+      if(s.dig&&o&&(o.kind==='rock'||o.enemy)) continue;   // diggers tunnel under walls and rocks
       if(o&&o.kind==='rock'){ s.done=true; }
-      else if(s.from==='p'&&o&&o.kind==='enemy'&&o.hp>0){ hitEnemy(o,s.dmg,s.card); s.done=true; }
+      else if(s.from==='p'&&o&&o.kind==='enemy'&&o.hp>0){ hitEnemy(o,s.dmg,s.card,{dig:s.dig}); s.done=true; }
       else if(s.from==='p'&&o&&o.enemy){ hitBlock(o,s.dmg,null); s.done=true; }
       else if(s.from==='e'&&o&&o.kind!=='enemy'&&!o.enemy){ if(o.kind==='player') hitPlayer(s.dmg); else hitBlock(o,s.dmg,s.owner); s.done=true; }
       if(s.done) burst(t,s.card?colorOf(s.card):s.color||'#fff',6,.8);
@@ -311,7 +356,9 @@ function update(dt){
 
 /* ---------------- input helpers ---------------- */
 // Aiming lobs: tap an enemy-side tile (again to clear it). A lob card uses the aim once; a lob charge keeps it.
-function nextIsLob(){ const q=B&&B.piles.queue[0]; if(!q) return false; const c=q.card, k=c.type==='piece'?c.base:c.type; return k==='lob'||(k==='charge'&&c.fx==='lob'); }
+// cards that land on a tile you aim: lobs, lob charges, traps and environments
+function nextIsLob(){ const q=B&&B.piles.queue[0]; if(!q) return false; const c=q.card, k=c.type==='piece'?c.base:c.type; return k==='lob'||k==='trap'||k==='environment'||(k==='charge'&&c.fx==='lob'); }
+function aimPattern(){ const q=B.piles.queue[0]; if(!q) return 'single'; const c=q.card; return c.type==='trap'?(c.trap==='blast'?'burst':'single'):c.type==='environment'?c.pattern:lobPattern(c); }
 function setAim(t){ const b=B; if(!b||b.phase!=='fight'||!t||t.side!=='e') return; b.aim=b.aim===t?null:t; }
 function cycleAim(){ const b=B; if(!b||b.phase!=='fight') return; const ts=alive().map(e=>e.tile).sort((a,c)=>a.r-c.r||a.q-c.q); if(!ts.length) return;
   b.aim=ts[(ts.indexOf(b.aim)+1)%ts.length]; }
@@ -381,6 +428,7 @@ function render(){
     if(tl){ const k=tl.t/tl.dur; fill=mixHex(base,tl.friendly?'#e8e0ff':'#ff3b4e',.25+.5*k*(.6+.4*Math.sin(T*18))); }
     if(burning(t)) fill=mixHex(fill,'#ff5a1f',t.terrain==='lava'?.45+.12*Math.sin(T*3+t.q):.35+.15*Math.sin(T*8));
     else if(icy(t)) fill=mixHex(fill,'#bfeaff',t.terrain==='ice'?.45:.35);
+    else if(t.thornT>0) fill=mixHex(fill,'#4f8a3a',.45);
     if(t.flash>0) fill=mixHex(base,t.flashC[0]==='#'&&t.flashC.length===7?t.flashC:'#ffffff',Math.min(.8,t.flash));
     ctx.fillStyle='#0c0818'; poly(ctx,top.map(([x,y])=>[x,y+SLAB*S])); ctx.fill();
     ctx.fillStyle=mixHex(base,'#000000',.45);
@@ -392,10 +440,14 @@ function render(){
   }
   // lob reticle: your aim, or a faint marker on the default target when a lob is next
   const aimT=b.aim||(nextIsLob()&&b.phase==='fight'?nearestEnemyTile(b.player.tile):null);
+  if(aimT&&nextIsLob()){ ctx.fillStyle=b.aim?'rgba(255,226,77,.22)':'rgba(255,226,77,.1)'; for(const x of patternTiles(aimT,aimPattern(),'e')) if(x!==aimT){ poly(ctx,hexCorners(x,.8)); ctx.fill(); } }
   if(aimT){ const [x,y]=proj(aimT.wx,.02,aimT.wz), pulse=1+Math.sin(T*6)*.06;
     ctx.strokeStyle=b.aim?'#ffe24d':'rgba(255,226,77,.45)'; ctx.lineWidth=b.aim?3:2; if(!b.aim) ctx.setLineDash([5,5]);
     ctx.beginPath(); ctx.ellipse(x,y,S*.62*pulse,S*.62*ISO_Y*pulse,0,0,TAU); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(x-S*.8,y); ctx.lineTo(x-S*.45,y); ctx.moveTo(x+S*.45,y); ctx.lineTo(x+S*.8,y); ctx.stroke(); ctx.setLineDash([]); }
+  // traps: a rune only you can see
+  for(const t of TILES) if(t.trap){ const [x,y]=proj(t.wx,.03,t.wz); ctx.strokeStyle=colorOf(t.trap.card); ctx.lineWidth=2; ctx.globalAlpha=.6+.3*Math.sin(T*4);
+    ctx.beginPath(); ctx.ellipse(x,y,S*.4,S*.4*View.iy,0,0,TAU); ctx.moveTo(x-S*.25,y); ctx.lineTo(x+S*.25,y); ctx.moveTo(x,y-S*.25*View.iy); ctx.lineTo(x,y+S*.25*View.iy); ctx.stroke(); ctx.globalAlpha=1; }
   // path preview
   if(b.player.path.length){ ctx.fillStyle='rgba(160,180,255,.35)'; for(const t of b.player.path){ const [x,y]=proj(t.wx,0,t.wz); ctx.beginPath(); ctx.ellipse(x,y,S*.18,S*.18*ISO_Y,0,0,TAU); ctx.fill(); } }
 
@@ -460,7 +512,7 @@ const DRAW={
     const top=y-Math.max(h*2,S*1.3)-S*.15;
     bar(ctx,x,top,S*.9,e.hp/e.maxHp,'#ff5d6c');
     ctx.font='700 '+Math.round(S*.28)+'px Rajdhani,system-ui,sans-serif'; ctx.textAlign='center';
-    const st=[]; if(e.burnT>0) st.push('🔥'); if(frozen) st.push('❄️'); if(e.stunT>0) st.push('💫'); if(e.slowT>0) st.push('🐌'); if(e.poisonT>0) st.push('☠'); if(e.curseT>0) st.push('☾'); if(e.powerT>0) st.push('⬆');
+    const st=[]; if(e.burnT>0) st.push('🔥'); if(frozen) st.push('❄️'); if(e.stunT>0) st.push('💫'); if(e.slowT>0) st.push('🐌'); if(e.poisonT>0) st.push('☠'); if(e.curseT>0) st.push('☾'); if(e.powerT>0) st.push('⬆'); if(e.confuseT>0) st.push('❓');
     ctx.fillStyle='#fff'; ctx.fillText(e.name+'  weak: '+COLORS[WEAK_TO[e.color]].icon,x,top-4);
     if(st.length) ctx.fillText(st.join(''),x,top-4-S*.3);
     if(e.casting){ const w=Math.max(S*1.6,ctx.measureText(e.casting.name).width+14), yy=top-S*.75;   // the card it is about to cast

@@ -272,8 +272,8 @@ wandBtn.addEventListener('pointerdown',e=>{ e.preventDefault(); wandDown(); });
 
 let dragging=false;
 View.canvas=$('#board'); View.ctx=View.canvas.getContext('2d');
-View.canvas.addEventListener('pointerdown',e=>{ dragging=true; moveTo(pickTile(e.clientX,e.clientY)); });
-View.canvas.addEventListener('pointermove',e=>{ if(dragging) moveTo(pickTile(e.clientX,e.clientY)); });
+View.canvas.addEventListener('pointerdown',e=>{ const t=pickTile(e.clientX,e.clientY); if(t&&t.side==='e'){ setAim(t); return; } dragging=true; moveTo(t); });
+View.canvas.addEventListener('pointermove',e=>{ if(!dragging) return; const t=pickTile(e.clientX,e.clientY); if(t&&t.side==='p') moveTo(t); });
 ['pointerup','pointercancel','pointerleave'].forEach(ev=>View.canvas.addEventListener(ev,()=>dragging=false));
 window.addEventListener('resize',()=>{ if($('#scrBattle').classList.contains('on')) resizeView(); });
 
@@ -295,6 +295,7 @@ window.addEventListener('keydown',e=>{
   else if(k===' '){ e.preventDefault(); wandDown(); }
   else if(k==='enter'||k==='x') castCard();
   else if(k==='c') tryCustom();
+  else if(k==='q'||k==='tab'){ e.preventDefault(); cycleAim(); }
 });
 window.addEventListener('keyup',e=>{ const k=e.key.toLowerCase(); held.delete(k); if(k===' ') wandUp(); });
 

@@ -15,8 +15,8 @@ build decks from your collection → fight deeper for rarer drops. 800 cards to 
 
 Tests: `node deck/engine.test.js`
 
-Controls: tap a tile to move, hold Wand to charge, Cast plays the next queued card, Custom opens when the gauge is full.
-Keyboard: arrows/WASD move, Space wand, Enter cast, C custom, 1–7 pick cards on the Custom screen.
+Controls: tap a tile on your side to move, tap a tile on the enemy side to aim lobs (nearest enemy if you don't), hold Wand to charge, Cast plays the next queued card, Custom opens when the gauge is full.
+Keyboard: arrows/WASD move, Space wand, Enter cast, Q cycle lob aim, C custom, 1–7 pick cards on the Custom screen.
 In grids, long-press (or right-click) a card for its detail.
 
 Card ids come from a seeded generator. Changing a template in `cards.js` can change ids, so bump `SAVE_KEY` in `collection.js` when you do.

@@ -246,13 +246,13 @@ function cardText(c){
   const kind=c.type==='piece'?c.base:c.type;
   if(kind==='strike') t={line:c.pow+' to the first enemy in your row', row:c.pow+' to every enemy in your row', wedge:c.pow+' in a short cone ahead',
                          all:c.pow+' to every enemy', missiles:c.n+' missiles of '+c.pow+' at random enemies'}[c.shape];
-  else if(kind==='lob') t=c.pow+' on the nearest enemy'+(c.radius?' and around it':'')+', over blockers';
+  else if(kind==='lob') t=c.pow+' on the tile you aim'+(c.radius?' and around it':'')+', over blockers';
   else if(kind==='ward') t=c.ward==='barrier'?'Barrier absorbs '+c.amt:c.n+' walls of '+c.hp+' HP'+(c.ward==='thorns'?', hit back for '+c.thorns:'');
   else if(kind==='sentry') t='Tower: '+c.pow+' every '+c.rate+'s for '+c.dur+'s';
   else if(kind==='boon') t={power:'Wand ×2.5 for '+c.dur+'s', pact:'Cards and wand +30% for '+c.dur+'s', haste:'Faster moves and casts for '+c.dur+'s',
                            dodge:'Dodge the next hit', phase:'Untouchable for '+c.dur+'s', regen:'Heal '+c.amt+'/s for '+c.dur+'s', heal:'Heal '+c.amt,
                            gauge:'Fill '+Math.round(c.amt*100)+'% of the Custom gauge'}[c.boon];
-  else if(kind==='charge') t=c.uses+' uses: '+(c.fx==='lob'?'lob '+c.pow+' on the nearest enemy':'bolt of '+c.pow+' down your row');
+  else if(kind==='charge') t=c.uses+' uses: '+(c.fx==='lob'?'lob '+c.pow+' on the tile you aim':'bolt of '+c.pow+' down your row');
   else if(kind==='utility') t={draw:'Draw '+c.n+' card'+(c.n>1?'s':'')+' into your hand', recall:'Put the top card of your deck into your queue',
                               copy:'Copy the next queued card', cleanse:'Cancel incoming attacks and heal '+c.amt}[c.util];
   else if(kind==='summon') t={shooter:'Shoots '+c.pow+' down its row', bomber:'Lobs '+c.pow+' every '+c.rate+'s', healer:'Heals you '+c.amt+' every '+c.rate+'s',

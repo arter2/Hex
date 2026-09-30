@@ -50,7 +50,7 @@ function startBattle(list,depth,hooks){
   const p={kind:'player', hp:120, maxHp:120, tile:tileAt(-2,0), path:[], moveCd:0, castCd:0, wandCd:0, charging:false, chargeT:0,
            barrier:0, invT:0, dodge:false, powerT:0, pactT:0, hasteT:0, regenT:0, regenAmt:0};
   p.tile.occ=p;
-  B={depth, hooks:hooks||{}, piles:createPiles(list), player:p, enemies:[], allies:[], walls:[], shots:[], lobs:[], teles:[], fx:[], floaters:[], parts:[],
+  B={depth, hooks:hooks||{}, piles:createPiles(list), player:p, aim:null, enemies:[], allies:[], walls:[], shots:[], lobs:[], teles:[], fx:[], floaters:[], parts:[],
      timers:[], gauge:0, phase:'custom', time:0, log:[]};
   const hs=1+.2*(depth-1), ds=1+.1*(depth-1);
   const pool=Object.keys(ENEMY_DEFS).filter(k=>!ENEMY_DEFS[k].boss);
@@ -159,14 +159,14 @@ const CAST={
     else if(c.shape==='missiles') for(let i=0;i<c.n;i++) later(i*.09,()=>{ const e=pick(alive()); if(!e) return;
       B.fx.push({kind:'arc',a:p.tile,b:e.tile,color:colorOf(c),t:0,life:.25}); hitEnemy(e,c.pow,c); });
   },
-  lob(c,p){ lobFrom(p.tile,c,c.pow,c.radius,c.delay||.6); },
+  lob(c,p){ lobFrom(p.tile,c,c.pow,c.radius,c.delay||.6,B.aim); B.aim=null; },
   ward(c,p){
     if(c.ward==='barrier'){ p.barrier+=c.amt; floater('🛡+'+c.amt,p.tile,'#6fd6ff'); return; }
     const free=P_TILES.filter(t=>!t.occ).sort((a,b)=>Math.abs(a.r-p.tile.r)-Math.abs(b.r-p.tile.r)||b.x-a.x);
     free.slice(0,c.n).forEach(t=>{ const w={kind:'wall',card:c,tile:t,hp:c.hp,maxHp:c.hp,thorns:c.thorns||0}; t.occ=w; B.walls.push(w); burst(t,colorOf(c),8,.3); });
   },
   sentry(c,p){ placeAlly(c,'sentry',40,c.dur); },
-  charge(c,p){ if(c.fx==='lob') lobFrom(p.tile,c,c.pow,0,.45); else shoot(p.tile,lineTiles(p.tile,DIRS.E),{card:c,dmg:c.pow,from:'p'}); },
+  charge(c,p){ if(c.fx==='lob') lobFrom(p.tile,c,c.pow,0,.45,B.aim); else shoot(p.tile,lineTiles(p.tile,DIRS.E),{card:c,dmg:c.pow,from:'p'}); },
   utility(c,p){
     const pl=B.piles;
     if(c.util==='draw'){ const got=drawCards(pl,c.n); floater(got.length?'+'+got.length+' to hand':'deck empty',p.tile,'#c58bff'); }
@@ -196,10 +196,12 @@ const CAST={
     burst(p.tile,col,16,1); floater(c.name,p.tile,col);
   },
 };
-// Arc onto the enemy nearest to `from`, over walls and allies.
-function lobFrom(from,c,pow,radius,dur){
-  const e=alive().sort((a,b)=>hexDist(from,a.tile)-hexDist(from,b.tile))[0]; if(!e) return;
-  const t=e.tile, ts=[t].concat(radius?neighbors(t).filter(n=>n.side==='e'):[]);
+// Arc onto the aimed tile, or the enemy nearest to `from`, over walls and allies.
+// The tile is fixed at cast, so an enemy that moves during the flight is missed.
+const nearestEnemyTile=from=>{ const e=alive().sort((a,b)=>hexDist(from,a.tile)-hexDist(from,b.tile))[0]; return e?e.tile:null; };
+function lobFrom(from,c,pow,radius,dur,target){
+  const t=target||nearestEnemyTile(from); if(!t) return;
+  const ts=[t].concat(radius?neighbors(t).filter(n=>n.side==='e'):[]);
   B.lobs.push({a:from,b:t,t:0,dur,card:c});
   B.teles.push({tiles:ts,t:0,dur,friendly:true});
   later(dur,()=>ts.forEach(x=>{ flash(x,colorOf(c),1); burst(x,colorOf(c),6,.2); if(x.occ&&x.occ.kind==='enemy') hitEnemy(x.occ,pow,c); }));
@@ -308,6 +310,11 @@ function updateEnemy(e,dt){
 }
 
 /* ---------------- input helpers ---------------- */
+// Aiming lobs: tap an enemy-side tile (again to clear it). A lob card uses the aim once; a lob charge keeps it.
+function nextIsLob(){ const q=B&&B.piles.queue[0]; if(!q) return false; const c=q.card, k=c.type==='piece'?c.base:c.type; return k==='lob'||(k==='charge'&&c.fx==='lob'); }
+function setAim(t){ const b=B; if(!b||b.phase!=='fight'||!t||t.side!=='e') return; b.aim=b.aim===t?null:t; }
+function cycleAim(){ const b=B; if(!b||b.phase!=='fight') return; const ts=alive().map(e=>e.tile).sort((a,c)=>a.r-c.r||a.q-c.q); if(!ts.length) return;
+  b.aim=ts[(ts.indexOf(b.aim)+1)%ts.length]; }
 function moveTo(t){ const b=B; if(!b||b.phase!=='fight'||!t) return; const p=b.player; if(t===p.tile) return; p.path=pathTo(p.tile,t); }
 function stepDir(d){ const b=B; if(!b||b.phase!=='fight') return; const p=b.player, t=tileAt(p.tile.q+d[0],p.tile.r+d[1]); if(t&&t.side==='p'&&!t.occ) p.path=[t]; }
 function stepVertical(up){ const p=B.player, ds=(up?[DIRS.NE,DIRS.NW]:[DIRS.SE,DIRS.SW]).filter(d=>{ const t=tileAt(p.tile.q+d[0],p.tile.r+d[1]); return t&&t.side==='p'&&!t.occ; }); if(ds.length) stepDir(pick(ds)); }
@@ -370,6 +377,12 @@ function render(){
     if(t.side==='n'){ const [x,y]=proj(t.wx,.1,t.wz); ctx.fillStyle='rgba(180,130,255,.85)'; ctx.beginPath();
       ctx.moveTo(x,y-S*1.1-Math.sin(T*2+t.r)*3); ctx.lineTo(x+S*.22,y-S*.45); ctx.lineTo(x,y); ctx.lineTo(x-S*.22,y-S*.45); ctx.closePath(); ctx.fill(); }
   }
+  // lob reticle: your aim, or a faint marker on the default target when a lob is next
+  const aimT=b.aim||(nextIsLob()&&b.phase==='fight'?nearestEnemyTile(b.player.tile):null);
+  if(aimT){ const [x,y]=proj(aimT.wx,.02,aimT.wz), pulse=1+Math.sin(T*6)*.06;
+    ctx.strokeStyle=b.aim?'#ffe24d':'rgba(255,226,77,.45)'; ctx.lineWidth=b.aim?3:2; if(!b.aim) ctx.setLineDash([5,5]);
+    ctx.beginPath(); ctx.ellipse(x,y,S*.62*pulse,S*.62*ISO_Y*pulse,0,0,TAU); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x-S*.8,y); ctx.lineTo(x-S*.45,y); ctx.moveTo(x+S*.45,y); ctx.lineTo(x+S*.8,y); ctx.stroke(); ctx.setLineDash([]); }
   // path preview
   if(b.player.path.length){ ctx.fillStyle='rgba(160,180,255,.35)'; for(const t of b.player.path){ const [x,y]=proj(t.wx,0,t.wz); ctx.beginPath(); ctx.ellipse(x,y,S*.18,S*.18*ISO_Y,0,0,TAU); ctx.fill(); } }
 

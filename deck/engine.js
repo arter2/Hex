@@ -2,7 +2,7 @@
    Pure deck / hand / queue logic with no rendering, so it can be tested in Node.
    Flow: draw up to 7 at each Custom screen, queue up to 3, casting sends a card to the
    discard pile, unqueued cards stay in hand, and there is no reshuffle: an empty deck
-   leaves you with the wand. */
+   leaves you with the wand. Each queue slot left empty draws 1 extra card next time. */
 
 const RULES={max:60, min:45, copies:4, legendaryCopies:1, hand:7, slots:3};
 
@@ -35,16 +35,19 @@ function createPiles(list,rng,cards){
   cards=cards||CARDS;
   let uid=1;
   const draw=shuffle(list.map(id=>({uid:uid++, card:cards[id]})),rng);
-  return {draw, hand:[], queue:[], discard:[], uid};
+  return {draw, hand:[], queue:[], discard:[], uid, bonus:0};
 }
 
 // Opening the Custom screen: queued cards not yet cast go back to the hand, then the hand refills to 7.
 function openCustom(p){
   p.hand=p.queue.filter(c=>!c.temp).concat(p.hand); p.queue=[];
   const drawn=[];
-  while(p.hand.length<RULES.hand && p.draw.length){ const c=p.draw.pop(); p.hand.push(c); drawn.push(c); }
+  const size=RULES.hand+(p.bonus||0); p.bonus=0;
+  while(p.hand.length<size && p.draw.length){ const c=p.draw.pop(); p.hand.push(c); drawn.push(c); }
   return drawn;
 }
+// Leaving the Custom screen: every empty slot adds 1 card to the next draw (Battle Network style).
+function commitCustom(p){ p.bonus=RULES.slots-p.queue.length; return p.bonus; }
 
 // Tap a card: hand -> queue (if a slot is free), or queue -> hand. Returns true if it moved.
 function toggleQueue(p,uid){
@@ -72,4 +75,4 @@ function copyNext(p){ const c=p.queue[0]; if(!c||p.queue.length>=RULES.slots) re
 // Nothing left to draw, hold or cast: the fight continues with the wand only.
 function wandOnly(p){ return !p.draw.length && !p.hand.length && !p.queue.length; }
 
-if(typeof module!=='undefined') module.exports={RULES,validateDeck,shuffle,createPiles,openCustom,toggleQueue,castNext,drawCards,recallTop,copyNext,wandOnly};
+if(typeof module!=='undefined') module.exports={RULES,validateDeck,shuffle,createPiles,openCustom,commitCustom,toggleQueue,castNext,drawCards,recallTop,copyNext,wandOnly};

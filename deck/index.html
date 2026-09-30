@@ -29,6 +29,7 @@
       <p id="campDeckErr" class="hint warn"></p>
       <div class="depthpick"><button id="depthDown" class="btn ghost sq">−</button><button id="btnDescend" class="btn big"></button><button id="depthUp" class="btn ghost sq">+</button></div>
     </div>
+    <div class="seg"><span>Board</span><button data-board="hex">⬡ Hex</button><button data-board="square">▢ Square</button></div>
     <div class="menu">
       <button id="goBuilder" class="btn ghost">Deck builder</button>
       <button id="goCollection" class="btn ghost">Collection</button>
@@ -76,27 +77,40 @@
   <!-- battle -->
   <section id="scrBattle" class="screen">
     <div id="hudTop">
-      <div class="hp"><span id="hpTxt"></span><div class="meter"><i id="hpBar"></i></div></div>
+      <div class="hp"><div class="meter big"><i id="hpBar"></i><span id="hpTxt"></span></div></div>
       <div class="info"><span id="depthTxt"></span><span id="pileTxt"></span></div>
-      <div class="gauge"><span>Custom</span><div class="meter"><i id="gaugeBar"></i></div></div>
+      <button id="btnMenu" class="btn ghost sq small" aria-label="Menu">⋯</button>
+      <div class="gauge"><div class="meter"><i id="gaugeBar"></i></div></div>
       <div id="buffs"></div>
     </div>
     <canvas id="board"></canvas>
     <div id="hudBottom">
       <div id="queueRow"></div>
-      <div class="controls">
+      <div class="controls battle">
         <button id="btnCustom" class="btn ghost">Custom</button>
-        <button id="btnWand" class="btn ghost">Wand<small>hold to charge</small></button>
         <button id="btnCast" class="btn">Cast<small id="castName"></small></button>
+        <button id="btnWand" class="btn wand">Wand<small>hold to charge</small></button>
       </div>
-      <p class="keys">Tap your side to move, the enemy side to aim lobs · keys: arrows/WASD move, Space wand, Enter cast, Q aim, C custom · <button id="btnRetreat" class="link">Retreat</button></p>
+      <p class="keys">Tap your side to move, the enemy side to aim lobs · keys: arrows/WASD move, Space wand, Enter cast, Q aim, C custom</p>
+    </div>
+
+    <div id="bMenu" class="overlay">
+      <div class="panel narrow">
+        <h2>Paused</h2>
+        <p class="hint">Tap your side of the board to move. Tap the enemy side to aim lobs. Hold Wand to charge a shot.</p>
+        <div class="stack">
+          <button id="mResume" class="btn">Resume</button>
+          <button id="mFull" class="btn ghost">Full screen</button>
+          <button id="btnRetreat" class="btn ghost">Retreat to camp</button>
+        </div>
+      </div>
     </div>
 
     <div id="custom" class="overlay">
-      <div class="panel">
+      <div class="panel custom">
         <div class="bar"><h2>Custom</h2><span id="custPiles" class="count"></span></div>
-        <p class="hint">Tap cards to queue up to 3. They cast in order. Cards you don't queue stay in your hand.</p>
         <div id="custQueue" class="slots"></div>
+        <p id="custHint" class="hint">Tap cards to queue up to 3; they cast in order. Each slot you leave empty draws you 1 extra card next time. Hold a card to read it.</p>
         <div id="custHand" class="hand"></div>
         <p id="custEmpty" class="hint warn"></p>
         <button id="btnFight" class="btn big">Fight!</button>

@@ -1,25 +1,43 @@
-/* Hexmancers deck prototype — real-time battle on the 37-tile hex board, drawn with an
-   orthographic isometric projection on a 2D canvas. Your side is lower-left, the enemy
-   side upper-right, and three rift tiles in the middle are impassable. */
+/* Hexmancers deck prototype — real-time battle on a 5 x 10 board (hex or square grid), drawn
+   with an orthographic isometric projection on a 2D canvas. Your side is the five columns
+   nearest you, the enemy side the five across from you. */
 
 const SQ3=Math.sqrt(3), TAU=Math.PI*2;
 const rnd=(a,b)=>a+Math.random()*(b-a), pick=a=>a[(Math.random()*a.length)|0];
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 
 /* ---------------- board ---------------- */
-const DIRS={E:[1,0],NE:[1,-1],NW:[0,-1],W:[-1,0],SW:[-1,1],SE:[0,1]};
-const DIRLIST=Object.values(DIRS);
-const BOARD=new Map(), TILES=[];
-for(let r=-3;r<=3;r++) for(let q=Math.max(-3,-3-r);q<=Math.min(3,3-r);q++){
-  const x=q+r/2, t={q,r,x,side:x<-.01?'p':x>.01?'e':'n',wx:SQ3*x,wz:1.5*r,key:q+','+r,occ:null,flash:0,flashC:'#fff'};
-  BOARD.set(t.key,t); TILES.push(t);
+const BOARD_ROWS=5, BOARD_COLS=10, SQ_SIZE=1.8;
+// The arrays below are rebuilt in place by buildBoard, so references to them stay valid.
+const DIRS={}, DIRLIST=[], AROUND=[];
+const BOARD=new Map(), TILES=[], P_TILES=[], E_TILES=[];
+let SHAPE='hex';
+function buildBoard(shape){
+  SHAPE=shape==='square'?'square':'hex';
+  for(const k in DIRS) delete DIRS[k]; DIRLIST.length=0; AROUND.length=0;
+  BOARD.clear(); TILES.length=0; P_TILES.length=0; E_TILES.length=0;
+  if(SHAPE==='hex') Object.assign(DIRS,{E:[1,0],NE:[1,-1],NW:[0,-1],W:[-1,0],SW:[-1,1],SE:[0,1]});
+  else Object.assign(DIRS,{E:[1,0],N:[0,-1],W:[-1,0],S:[0,1]});
+  DIRLIST.push(...Object.values(DIRS));
+  AROUND.push(...(SHAPE==='hex'?DIRLIST:[[1,0],[1,-1],[0,-1],[-1,-1],[-1,0],[-1,1],[0,1],[1,1]]));
+  for(let r=0;r<BOARD_ROWS;r++) for(let c=0;c<BOARD_COLS;c++){
+    // hex rows are offset by half a tile; q is the axial column so a row keeps one r
+    const off=SHAPE==='hex'?(r%2)*.5:0, q=SHAPE==='hex'?c-Math.floor(r/2):c;
+    const x=c+off-(BOARD_COLS-1+(SHAPE==='hex'?.5:0))/2, side=c<BOARD_COLS/2?'p':'e';
+    const t={q,r,col:c,x,side,wx:SHAPE==='hex'?SQ3*x:SQ_SIZE*x,wz:SHAPE==='hex'?1.5*(r-(BOARD_ROWS-1)/2):SQ_SIZE*(r-(BOARD_ROWS-1)/2),
+             key:q+','+r,occ:null,flash:0,flashC:'#fff'};
+    BOARD.set(t.key,t); TILES.push(t); (side==='p'?P_TILES:E_TILES).push(t);
+  }
 }
-const P_TILES=TILES.filter(t=>t.side==='p'), E_TILES=TILES.filter(t=>t.side==='e');
+buildBoard('hex');
 const tileAt=(q,r)=>BOARD.get(q+','+r);
 const neighbors=t=>DIRLIST.map(d=>tileAt(t.q+d[0],t.r+d[1])).filter(Boolean);
-const hexDist=(a,b)=>{ const dq=a.q-b.q, dr=a.r-b.r; return (Math.abs(dq)+Math.abs(dr)+Math.abs(dq+dr))/2; };
+const around=t=>AROUND.map(d=>tileAt(t.q+d[0],t.r+d[1])).filter(Boolean);   // area effects: 6 on hex, 8 on square
+// tile distance: hex steps, or king-move steps on the square grid
+const hexDist=(a,b)=>{ const dq=a.q-b.q, dr=a.r-b.r; return SHAPE==='hex'?(Math.abs(dq)+Math.abs(dr)+Math.abs(dq+dr))/2:Math.max(Math.abs(dq),Math.abs(dr)); };
 function lineTiles(t,d){ const out=[]; let q=t.q,r=t.r; for(;;){ q+=d[0]; r+=d[1]; const n=tileAt(q,r); if(!n) break; out.push(n); } return out; }
-function wedgeTiles(t,len){ return TILES.filter(o=>{ const dx=o.wx-t.wx, dz=o.wz-t.wz; return dx>.1 && Math.hypot(dx,dz)<=len*SQ3 && Math.abs(dz)<=dx*1.2; }); }
+const TILE_W=()=>SHAPE==='hex'?SQ3:SQ_SIZE;
+function wedgeTiles(t,len){ return TILES.filter(o=>{ const dx=o.wx-t.wx, dz=o.wz-t.wz; return dx>.1 && Math.hypot(dx,dz)<=len*TILE_W() && Math.abs(dz)<=dx*1.2; }); }
 function pathTo(from,to){ // BFS over free tiles on your side
   if(to.side!=='p') return [];
   const prev=new Map([[from,null]]), q=[from];
@@ -45,9 +63,9 @@ const WEAK_TO={}; for(const k in BEATS) WEAK_TO[BEATS[k]]=k;
 let B=null;
 const GAUGE_MAX=10;
 
-function startBattle(list,depth,hooks){
-  TILES.forEach(t=>{ t.occ=null; t.flash=0; });
-  const p={kind:'player', hp:120, maxHp:120, tile:tileAt(-2,0), path:[], moveCd:0, castCd:0, wandCd:0, charging:false, chargeT:0,
+function startBattle(list,depth,hooks,opts){
+  buildBoard((opts&&opts.board)||'hex');
+  const p={kind:'player', hp:120, maxHp:120, tile:P_TILES.find(t=>t.col===1&&t.r===2), path:[], moveCd:0, castCd:0, wandCd:0, charging:false, chargeT:0,
            barrier:0, invT:0, dodge:false, powerT:0, pactT:0, hasteT:0, regenT:0, regenAmt:0};
   p.tile.occ=p;
   B={depth, hooks:hooks||{}, piles:createPiles(list), player:p, aim:null, enemies:[], allies:[], walls:[], shots:[], lobs:[], teles:[], fx:[], floaters:[], parts:[],
@@ -55,8 +73,9 @@ function startBattle(list,depth,hooks){
   const hs=1+.2*(depth-1), ds=1+.1*(depth-1);
   const pool=Object.keys(ENEMY_DEFS).filter(k=>!ENEMY_DEFS[k].boss);
   const ids=depth%4===0?['golem',pick(pool)]:Array.from({length:depth===1?2:3},()=>pick(pool));
-  const spots=[tileAt(2,-1),tileAt(1,1),tileAt(3,-2),tileAt(0,2),tileAt(2,0)];
-  ids.forEach((id,i)=>{ const d=ENEMY_DEFS[id], t=spots[i];
+  // spread enemies over different rows of their side
+  const rows=[0,1,2,3,4].sort(()=>Math.random()-.5);
+  ids.forEach((id,i)=>{ const d=ENEMY_DEFS[id], t=pick(E_TILES.filter(x=>x.r===rows[i%5]&&!x.occ&&x.col>=6));
     const e={kind:'enemy', id, def:d, name:d.name, color:d.color, hp:Math.round(d.hp*hs), maxHp:Math.round(d.hp*hs), dmg:Math.round(d.dmg*ds),
              tile:t, atkT:rnd(2,3.5)+i*.7, moveT:rnd(1,2), windT:0, burnT:0, burnAcc:0, freezeT:0, stunT:0, slowT:0, poisonT:0, poisonAmt:0, curseT:0, hitT:0};
     t.occ=e; B.enemies.push(e); });
@@ -80,7 +99,7 @@ function openCustomScreen(){
 }
 function closeCustomScreen(){
   const b=B; if(!b||b.phase!=='custom') return;
-  b.phase='fight'; b.gauge=0;
+  commitCustom(b.piles); b.phase='fight'; b.gauge=0;
   b.hooks.onFight&&b.hooks.onFight();
 }
 const gaugeFull=()=>B.gauge>=GAUGE_MAX;
@@ -123,7 +142,7 @@ function hitPlayer(dmg){
   if(p.dodge){ p.dodge=false; floater('dodge',p.tile,'#6fd6ff'); return; }
   if(p.barrier>0){ const a=Math.min(p.barrier,dmg); p.barrier-=a; dmg-=a; floater('🛡'+a,p.tile,'#6fd6ff'); }
   if(dmg<=0) return;
-  p.hp-=dmg; floater('-'+dmg,p.tile,'#ff5d6c',true); flash(p.tile,'#ff5d6c',1);
+  p.hp-=dmg; floater('-'+dmg,p.tile,'#ff5d6c',true); flash(p.tile,'#ff5d6c',1); B.hooks.onHurt&&B.hooks.onHurt(dmg);
   if(p.hp<=0){ p.hp=0; B.phase='lose'; p.charging=false; later(1.2,()=>B.hooks.onEnd&&B.hooks.onEnd(false)); }
 }
 function hitBlock(o,dmg,src){
@@ -201,7 +220,7 @@ const CAST={
 const nearestEnemyTile=from=>{ const e=alive().sort((a,b)=>hexDist(from,a.tile)-hexDist(from,b.tile))[0]; return e?e.tile:null; };
 function lobFrom(from,c,pow,radius,dur,target){
   const t=target||nearestEnemyTile(from); if(!t) return;
-  const ts=[t].concat(radius?neighbors(t).filter(n=>n.side==='e'):[]);
+  const ts=[t].concat(radius?around(t).filter(n=>n.side==='e'):[]);
   B.lobs.push({a:from,b:t,t:0,dur,card:c});
   B.teles.push({tiles:ts,t:0,dur,friendly:true});
   later(dur,()=>ts.forEach(x=>{ flash(x,colorOf(c),1); burst(x,colorOf(c),6,.2); if(x.occ&&x.occ.kind==='enemy') hitEnemy(x.occ,pow,c); }));
@@ -233,7 +252,7 @@ function shoot(from,tiles,o){ B.shots.push(Object.assign({a:from,tiles,i:-1,step
 function fireWand(charged){
   const b=B, p=b.player; if(b.phase!=='fight'||p.wandCd>0) return;
   p.wandCd=charged?.5:.3;
-  const dmg=Math.round((charged?24:6)*(p.powerT>0?2.5:1));
+  const dmg=Math.round((charged?7:3)*(p.powerT>0?2.5:1));
   shoot(p.tile,lineTiles(p.tile,DIRS.E),{dmg,from:'p',wand:true,big:charged});
 }
 
@@ -317,33 +336,46 @@ function cycleAim(){ const b=B; if(!b||b.phase!=='fight') return; const ts=alive
   b.aim=ts[(ts.indexOf(b.aim)+1)%ts.length]; }
 function moveTo(t){ const b=B; if(!b||b.phase!=='fight'||!t) return; const p=b.player; if(t===p.tile) return; p.path=pathTo(p.tile,t); }
 function stepDir(d){ const b=B; if(!b||b.phase!=='fight') return; const p=b.player, t=tileAt(p.tile.q+d[0],p.tile.r+d[1]); if(t&&t.side==='p'&&!t.occ) p.path=[t]; }
-function stepVertical(up){ const p=B.player, ds=(up?[DIRS.NE,DIRS.NW]:[DIRS.SE,DIRS.SW]).filter(d=>{ const t=tileAt(p.tile.q+d[0],p.tile.r+d[1]); return t&&t.side==='p'&&!t.occ; }); if(ds.length) stepDir(pick(ds)); }
+function stepVertical(up){ const p=B.player, ts=neighbors(p.tile).filter(t=>(up?t.r<p.tile.r:t.r>p.tile.r)&&t.side==='p'&&!t.occ); if(ts.length) p.path=[pick(ts)]; }
 function wandDown(){ const b=B; if(!b||b.phase!=='fight') return; b.player.charging=true; b.player.chargeT=0; }
 function wandUp(){ const b=B; if(!b) return; const p=b.player; if(!p.charging) return; p.charging=false; const ch=p.chargeT>=.9; p.chargeT=0; fireWand(ch); }
 
 /* ---------------- rendering ---------------- */
-const View={canvas:null, ctx:null, S:40, cx:0, cy:0, w:0, h:0, dpr:1};
-const C30=Math.cos(Math.PI/6), S30=Math.sin(Math.PI/6), ISO_Y=.6, SLAB=.35;
-function proj(wx,y,wz){ return [View.cx+View.S*(wx*C30+wz*S30), View.cy+View.S*((-wx*S30+wz*C30)*ISO_Y-y)]; }
-const depthOf=t=>-t.wx*S30+t.wz*C30;
-function hexCorners(t,rad,y){ const out=[]; for(let i=0;i<6;i++){ const a=Math.PI/6+i*Math.PI/3; out.push(proj(t.wx+Math.cos(a)*rad,y||0,t.wz+Math.sin(a)*rad)); } return out; }
+// ca/sa = the board's turn on screen: 24 degrees in landscape (your side lower-left), 82 in portrait
+// (your side at the bottom) so a phone held upright uses its height. iy = the isometric squash.
+const View={canvas:null, ctx:null, S:40, cx:0, cy:0, w:0, h:0, dpr:1, ca:Math.cos(Math.PI/6), sa:Math.sin(Math.PI/6), iy:.6};
+const SLAB=.35;
+let ISO_Y=.6;
+function proj(wx,y,wz){ return [View.cx+View.S*(wx*View.ca+wz*View.sa), View.cy+View.S*((-wx*View.sa+wz*View.ca)*View.iy-y)]; }
+const depthOf=t=>-t.wx*View.sa+t.wz*View.ca;
+function hexCorners(t,rad,y){ const out=[];
+  if(SHAPE==='square'){ const h=rad*SQ_SIZE/2*.97; for(const [dx,dz] of [[-1,-1],[1,-1],[1,1],[-1,1]]) out.push(proj(t.wx+dx*h,y||0,t.wz+dz*h)); return out; }
+  for(let i=0;i<6;i++){ const a=Math.PI/6+i*Math.PI/3; out.push(proj(t.wx+Math.cos(a)*rad,y||0,t.wz+Math.sin(a)*rad)); } return out; }
+// the sides of a raised tile that face the camera (edges whose outward normal points down the screen)
+function frontFaces(ctx,top,drop){ const n=top.length, cx=top.reduce((a,p)=>a+p[0],0)/n, cy=top.reduce((a,p)=>a+p[1],0)/n;
+  for(let i=0;i<n;i++){ const a=top[i], b=top[(i+1)%n]; if((a[1]+b[1])/2<=cy) continue;
+    ctx.beginPath(); ctx.moveTo(a[0],a[1]); ctx.lineTo(b[0],b[1]); ctx.lineTo(b[0],b[1]+drop); ctx.lineTo(a[0],a[1]+drop); ctx.closePath(); ctx.fill(); } }
 
 function resizeView(){
   const cv=View.canvas, r=cv.getBoundingClientRect(), dpr=Math.min(window.devicePixelRatio||1,2);
   View.dpr=dpr; View.w=r.width; View.h=r.height; cv.width=Math.round(r.width*dpr); cv.height=Math.round(r.height*dpr);
+  const portrait=r.height>r.width*1.05, ang=(portrait?82:24)*Math.PI/180;
+  View.ca=Math.cos(ang); View.sa=Math.sin(ang); View.iy=ISO_Y=portrait?.8:.6;
   // fit the projected board (plus headroom for units) into the canvas
   View.S=1; View.cx=0; View.cy=0;
   let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9;
   for(const t of TILES) for(const [x,y] of hexCorners(t,1)){ x0=Math.min(x0,x); x1=Math.max(x1,x); y0=Math.min(y0,y); y1=Math.max(y1,y); }
-  y0-=2.2; y1+=SLAB+.2;
+  y0-=1.6; y1+=SLAB+.2;
   View.S=Math.min((r.width-72)/(x1-x0),(r.height-16)/(y1-y0));
   View.cx=r.width/2-View.S*(x0+x1)/2; View.cy=r.height/2-View.S*(y0+y1)/2;
 }
 function pickTile(clientX,clientY){
   const r=View.canvas.getBoundingClientRect(), x=clientX-r.left, y=clientY-r.top;
+  // screen -> board plane, then the nearest tile centre
+  const u=(x-View.cx)/View.S, v=(y-View.cy)/View.S/View.iy, wx=u*View.ca-v*View.sa, wz=u*View.sa+v*View.ca;
   let best=null, bd=1e9;
-  for(const t of TILES){ const [sx,sy]=proj(t.wx,0,t.wz); const d=Math.hypot((sx-x)/C30,(sy-y)/ISO_Y); if(d<bd){ bd=d; best=t; } }
-  return bd<View.S*1.1?best:null;
+  for(const t of TILES){ const d=Math.hypot(t.wx-wx,t.wz-wz); if(d<bd){ bd=d; best=t; } }
+  return bd<1.1?best:null;
 }
 
 function poly(ctx,pts){ ctx.beginPath(); pts.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y)); ctx.closePath(); }
@@ -369,9 +401,7 @@ function render(){
     if(t.flash>0) fill=mixHex(base,t.flashC[0]==='#'&&t.flashC.length===7?t.flashC:'#ffffff',Math.min(.8,t.flash));
     ctx.fillStyle='#0c0818'; poly(ctx,top.map(([x,y])=>[x,y+SLAB*S])); ctx.fill();
     ctx.fillStyle=mixHex(base,'#000000',.45);
-    ctx.beginPath(); // front skirt
-    for(let i=0;i<4;i++){ const [x,y]=top[i]; i?ctx.lineTo(x,y):ctx.moveTo(x,y); }
-    for(let i=3;i>=0;i--){ const [x,y]=top[i]; ctx.lineTo(x,y+SLAB*S); } ctx.closePath(); ctx.fill();
+    frontFaces(ctx,top,SLAB*S);
     ctx.fillStyle=fill; poly(ctx,top); ctx.fill();
     ctx.strokeStyle=t.side==='p'?'rgba(140,160,255,.45)':t.side==='e'?'rgba(255,120,170,.35)':'rgba(190,140,255,.5)'; ctx.lineWidth=1; ctx.stroke();
     if(t.side==='n'){ const [x,y]=proj(t.wx,.1,t.wz); ctx.fillStyle='rgba(180,130,255,.85)'; ctx.beginPath();
@@ -445,7 +475,7 @@ const DRAW={
   wall(ctx,w,T,S){
     const col=colorOf(w.card), top=hexCorners(w.tile,.62,.9), bot=hexCorners(w.tile,.62,0);
     ctx.fillStyle=mixHex(col,'#000000',.5); ctx.beginPath();
-    for(let i=0;i<4;i++){ const [x,y]=top[i]; i?ctx.lineTo(x,y):ctx.moveTo(x,y); } for(let i=3;i>=0;i--) ctx.lineTo(bot[i][0],bot[i][1]); ctx.closePath(); ctx.fill();
+    frontFaces(ctx,top,bot[0][1]-top[0][1]);
     ctx.fillStyle=mixHex(col,'#ffffff',.15); poly(ctx,top); ctx.fill();
     if(w.thorns){ ctx.fillStyle='#fff'; const [x,y]=proj(w.tile.wx,1,w.tile.wz); ctx.font='700 '+Math.round(S*.3)+'px system-ui'; ctx.textAlign='center'; ctx.fillText('✶',x,y); }
     const [x,y]=proj(w.tile.wx,1.15,w.tile.wz); bar(ctx,x,y,S*.7,w.hp/w.maxHp,'#6fd6ff');

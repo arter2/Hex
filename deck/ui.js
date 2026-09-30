@@ -72,9 +72,12 @@ function openCamp(){
   $('#campDeckErr').textContent=v.ok?'':v.errors[0]+(v.errors.length>1?' (+'+(v.errors.length-1)+' more)':'')+'. Fix it in the deck builder.';
   $('#btnDescend').textContent='Fight at depth '+pickDepth+(pickDepth%4===0?' · boss':'');
   $('#btnDescend').disabled=!v.ok;
+  document.querySelectorAll('.seg [data-board]').forEach(b=>b.classList.toggle('on',boardShape()===b.dataset.board));
   $('#depthDown').disabled=pickDepth<=1; $('#depthUp').disabled=pickDepth>=save.deepest;
   show('scrCamp');
 }
+const boardShape=()=>(save.settings&&save.settings.board)||'hex';
+document.querySelectorAll('.seg [data-board]').forEach(b=>b.onclick=()=>{ save.settings=Object.assign({},save.settings,{board:b.dataset.board}); persist(); openCamp(); });
 $('#depthDown').onclick=()=>{ pickDepth--; openCamp(); };
 $('#depthUp').onclick=()=>{ pickDepth++; openCamp(); };
 $('#btnDescend').onclick=()=>fight(pickDepth);
@@ -193,9 +196,10 @@ function fight(depth){
   startBattle(d.list,depth,{
     onCustom:renderCustom,
     onFight:()=>{ $('#custom').classList.remove('on'); hud(true); },
-    onCast:c=>tip(COLORS[c.color].icon+' '+c.name),
+    onCast:c=>{ tip(COLORS[c.color].icon+' '+c.name); buzz(12); },
+    onHurt:d=>buzz(d>=15?60:30),
     onEnd:win=>win?victory():defeat(),
-  });
+  },{board:boardShape()});
   hud(true);
 }
 function victory(){
@@ -213,7 +217,16 @@ function defeat(){
   reveal('Defeated…','You fell at depth '+depth+' and dropped '+lost+' gold. Your cards are safe.',[],
     [['Camp',()=>{ B=null; openCamp(); },true],['Retry',()=>fight(depth)]]);
 }
-$('#btnRetreat').onclick=()=>{ if(B&&confirm('Retreat to camp? You keep your gold.')){ B=null; $('#custom').classList.remove('on'); openCamp(); } };
+$('#btnRetreat').onclick=()=>{ if(B&&confirm('Retreat to camp? You keep your gold.')){ B=null; paused=false; $('#bMenu').classList.remove('on'); $('#custom').classList.remove('on'); openCamp(); } };
+// phone helpers: a short buzz on hits, a pause menu, full screen
+const buzz=ms=>{ try{ navigator.vibrate&&navigator.vibrate(ms); }catch(e){} };
+let paused=false;
+$('#btnMenu').onclick=()=>{ paused=true; if(B) B.player.charging=false; $('#bMenu').classList.add('on'); };
+$('#mResume').onclick=()=>{ paused=false; $('#bMenu').classList.remove('on'); };
+$('#mFull').onclick=()=>{ const d=document, el=d.documentElement;
+  try{ if(d.fullscreenElement||d.webkitFullscreenElement) (d.exitFullscreen||d.webkitExitFullscreen).call(d); else (el.requestFullscreen||el.webkitRequestFullscreen).call(el); }catch(e){ tip('Full screen is not available here'); } };
+document.addEventListener('fullscreenchange',()=>{ $('#mFull').textContent=document.fullscreenElement?'Exit full screen':'Full screen'; setTimeout(resizeView,50); });
+document.addEventListener('visibilitychange',()=>{ if(document.hidden&&B&&B.phase==='fight'&&$('#scrBattle').classList.contains('on')) $('#btnMenu').onclick(); });
 
 function renderCustom(){
   const p=B.piles;
@@ -222,14 +235,15 @@ function renderCustom(){
   const q=$('#custQueue'); q.innerHTML='';
   for(let i=0;i<RULES.slots;i++){
     const inst=p.queue[i];
-    if(inst){ const el=cardEl(inst.card,`<span class="ord">${i+1}</span>`); el.onclick=()=>{ toggleQueue(p,inst.uid); renderCustom(); }; q.appendChild(el); }
-    else { const s=document.createElement('div'); s.className='slot'; s.textContent='Slot '+(i+1); q.appendChild(s); }
+    if(inst){ const el=cardEl(inst.card,`<span class="ord">${i+1}</span>`); longPress(el,inst.card); el.onclick=()=>{ if(pressed) return; toggleQueue(p,inst.uid); renderCustom(); }; q.appendChild(el); }
+    else { const s=document.createElement('div'); s.className='slot'; s.innerHTML='Slot '+(i+1)+'<small>+1 draw next</small>'; q.appendChild(s); }
   }
   const h=$('#custHand'); h.innerHTML='';
-  p.hand.forEach((inst,i)=>{ const el=cardEl(inst.card,inst.left!=null?`<span class="badge">${inst.left} left</span>`:''); el.title='Key '+(i+1);
-    el.onclick=()=>{ if(!toggleQueue(p,inst.uid)) tip('The queue holds '+RULES.slots+' cards'); renderCustom(); }; h.appendChild(el); });
+  p.hand.forEach((inst,i)=>{ const el=cardEl(inst.card,inst.left!=null?`<span class="badge">${inst.left} left</span>`:''); el.title='Key '+(i+1); longPress(el,inst.card);
+    el.onclick=()=>{ if(pressed) return; if(!toggleQueue(p,inst.uid)) tip('The queue holds '+RULES.slots+' cards'); renderCustom(); }; h.appendChild(el); });
   $('#custEmpty').textContent=wandOnly(p)?'Your deck is empty. Fight on with your wand!':!p.draw.length?'Deck empty: these are your last cards.':'';
-  $('#btnFight').textContent=p.queue.length||wandOnly(p)?'Fight!':'Fight with an empty queue';
+  const empty=RULES.slots-p.queue.length;
+  $('#btnFight').textContent=wandOnly(p)?'Fight!':'Fight!'+(empty?' (+'+empty+' draw next time)':'');
 }
 $('#btnFight').onclick=closeCustomScreen;
 
@@ -267,8 +281,9 @@ function tryCustom(){ if(B&&B.phase==='fight'&&gaugeFull()&&!wandOnly(B.piles)) 
 $('#btnCustom').onclick=tryCustom;
 $('#btnCast').onclick=castCard;
 const wandBtn=$('#btnWand');
-wandBtn.addEventListener('pointerdown',e=>{ e.preventDefault(); wandDown(); });
-['pointerup','pointerleave','pointercancel'].forEach(ev=>wandBtn.addEventListener(ev,wandUp));
+wandBtn.addEventListener('pointerdown',e=>{ e.preventDefault(); wandDown(); wandBtn.classList.add('charging'); });
+['pointerup','pointerleave','pointercancel'].forEach(ev=>wandBtn.addEventListener(ev,()=>{ wandBtn.classList.remove('charging'); wandUp(); }));
+wandBtn.addEventListener('contextmenu',e=>e.preventDefault());
 
 let dragging=false;
 View.canvas=$('#board'); View.ctx=View.canvas.getContext('2d');
@@ -304,7 +319,7 @@ let prev=performance.now();
 function frame(now){
   const dt=Math.min(.05,(now-prev)/1000); prev=now;
   if(B&&$('#scrBattle').classList.contains('on')){
-    update(dt);
+    if(!paused) update(dt);
     // The Custom screen opens by itself when the gauge fills and nothing is left to cast.
     if(B.phase==='fight'&&gaugeFull()&&!B.piles.queue.length&&!wandOnly(B.piles)) openCustomScreen();
     render(); hud();

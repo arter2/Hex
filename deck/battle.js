@@ -1,13 +1,15 @@
-/* Hexmancers deck prototype — real-time battle on a 7 x 10 hex board, drawn with an
-   orthographic isometric projection on a 2D canvas. Your side is the five columns
-   nearest you, the enemy side the five across from you. */
+/* Hexmancers deck prototype — real-time battle on an 8 x 12 hex board, drawn with an
+   orthographic isometric projection on a 2D canvas. Your side is the six columns
+   nearest you, the enemy side the six across from you. A turn ends each time the
+   Custom screen opens; shields and everything cards put on the board last a set
+   number of turns or until their HP runs out. */
 
 const SQ3=Math.sqrt(3), TAU=Math.PI*2;
 const rnd=(a,b)=>a+Math.random()*(b-a), pick=a=>a[(Math.random()*a.length)|0];
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 
 /* ---------------- board ---------------- */
-const BOARD_ROWS=7, BOARD_COLS=10;
+const BOARD_ROWS=8, BOARD_COLS=12;
 const DIRS={E:[1,0],NE:[1,-1],NW:[0,-1],W:[-1,0],SW:[-1,1],SE:[0,1]}, DIRLIST=Object.values(DIRS);
 // The arrays below are rebuilt in place by buildBoard, so references to them stay valid.
 const BOARD=new Map(), CR=new Map(), TILES=[], P_TILES=[], E_TILES=[];
@@ -59,7 +61,7 @@ const GAUGE_MAX=10;
 function startBattle(list,depth,hooks,opts){
   buildBoard();
   const p={kind:'player', hp:120, maxHp:120, tile:P_TILES.find(t=>t.col===1&&t.r===(BOARD_ROWS>>1)), path:[], moveCd:0, castCd:0, wandCd:0, charging:false, chargeT:0,
-           barrier:0, invT:0, dodge:false, powerT:0, pactT:0, courageT:0, intervene:0, hasteT:0, regenT:0, regenAmt:0};
+           barrier:0, shieldTurns:0, invT:0, dodge:false, powerT:0, pactT:0, courageT:0, intervene:0, hasteT:0, regenT:0, regenAmt:0};
   p.tile.occ=p;
   B={depth, hooks:hooks||{}, piles:createPiles(list), player:p, aim:null, enemies:[], allies:[], walls:[], shots:[], lobs:[], teles:[], fx:[], floaters:[], parts:[],
      timers:[], gauge:0, phase:'custom', time:0, log:[]};
@@ -81,6 +83,7 @@ function colorOf(card){ return card&&card.color?COLORS[card.color].c:'#e8e0ff'; 
 /* ---------------- custom screen ---------------- */
 function openCustomScreen(){
   const b=B; if(!b||b.phase==='win'||b.phase==='lose') return;
+  if(b.turn!=null) endTurn(); b.turn=(b.turn==null?0:b.turn+1);
   b.phase='custom'; b.player.charging=false; b.player.path=[];
   openCustom(b.piles);
   b.hooks.onCustom&&b.hooks.onCustom();
@@ -192,23 +195,24 @@ const CAST={
   },
   lob(c,p){ lobFrom(p.tile,c,c.pow,c.radius,c.delay||.6,B.aim); B.aim=null; },
   ward(c,p){
-    if(c.ward==='barrier'){ p.barrier+=c.amt; floater('🛡+'+c.amt,p.tile,'#6fd6ff'); return; }
+    if(c.ward==='barrier'){ p.barrier=c.amt; p.shieldTurns=c.turns||2; floater('🛡'+c.amt,p.tile,'#6fd6ff'); return; }   // shields replace, never stack
     const free=P_TILES.filter(t=>!t.occ).sort((a,b)=>Math.abs(a.r-p.tile.r)-Math.abs(b.r-p.tile.r)||b.x-a.x);
-    free.slice(0,c.n).forEach(t=>{ const w={kind:'wall',card:c,tile:t,hp:c.hp,maxHp:c.hp,thorns:c.thorns||0}; t.occ=w; B.walls.push(w); burst(t,colorOf(c),8,.3); });
+    free.slice(0,c.n).forEach(t=>{ const w={kind:'wall',card:c,tile:t,hp:c.hp,maxHp:c.hp,thorns:c.thorns||0,turns:c.turns||2,maxTurns:c.turns||2}; t.occ=w; B.walls.push(w); burst(t,colorOf(c),8,.3); });
   },
-  sentry(c,p){ placeAlly(c,'sentry',40,c.dur); },
+  sentry(c,p){ placeAlly(c,'sentry',c.hp||40,c.turns); },
   trap(c,p){ // on the aimed tile, or a free tile next to the nearest enemy
     const e=alive().sort((a,b)=>hexDist(p.tile,a.tile)-hexDist(p.tile,b.tile))[0];
     let t=B.aim&&!B.aim.occ&&!B.aim.trap?B.aim:null; B.aim=null;
     if(!t&&e) t=pick(around(e.tile).filter(x=>x.side==='e'&&!x.occ&&!x.trap));
     if(!t){ floater('no room',p.tile,'#ffb3a0'); return; }
-    t.trap={card:c,t:20}; burst(t,colorOf(c),10,.2); },
+    t.trap={card:c,turns:c.turns||2}; burst(t,colorOf(c),10,.2); },
   environment(c,p){
     const t=B.aim||nearestEnemyTile(p.tile); B.aim=null; if(!t) return;
     for(const x of patternTiles(t,c.pattern,'e')){ flash(x,colorOf(c),.8);
-      if(c.env==='burn') x.burnT=Math.max(x.burnT||0,c.dur);
-      if(c.env==='freeze'){ x.iceT=Math.max(x.iceT||0,c.dur); if(x.occ&&x.occ.kind==='enemy') x.occ.slowT=Math.max(x.occ.slowT,2); }
-      if(c.env==='bramble'){ x.thornT=c.dur; x.thornPow=c.pow; x.thornCard=c; }
+      if(c.turns) x.envTurns=Math.max(x.envTurns||0,c.turns);   // lasts until that many turns end
+      if(c.env==='burn') x.burnT=1e9;
+      if(c.env==='freeze'){ x.iceT=1e9; if(x.occ&&x.occ.kind==='enemy') x.occ.slowT=Math.max(x.occ.slowT,2); }
+      if(c.env==='bramble'){ x.thornT=1e9; x.thornPow=c.pow; x.thornCard=c; }
       if(c.env==='tremor') hitAt(x,c.pow,c); } },
   charge(c,p){ if(c.fx==='lob') lobFrom(p.tile,c,c.pow,0,.45,B.aim); else shoot(p.tile,lineTiles(p.tile,DIRS.E),{card:c,dmg:c.pow,from:'p'}); },
   utility(c,p){
@@ -220,10 +224,10 @@ const CAST={
       if(n) floater('cleansed',p.tile,'#e8e0ff'); healPlayer(c.amt); }
     burst(p.tile,colorOf(c),10,1);
   },
-  summon(c,p){ placeAlly(c,c.ai,c.hp,c.dur); },
+  summon(c,p){ placeAlly(c,c.ai,c.hp,c.turns); },
   machine(c,p){
-    if(c.ai==='bulwark') return CAST.ward({ward:'wall',n:c.n,hp:c.hp,color:c.color,name:c.name},p);
-    placeAlly(c,c.ai,c.hp,c.dur);
+    if(c.ai==='bulwark') return CAST.ward({ward:'wall',n:c.n,hp:c.hp,turns:c.turns,color:c.color,name:c.name},p);
+    placeAlly(c,c.ai,c.hp,c.turns);
   },
   boon(c,p){
     const col=colorOf(c);
@@ -255,14 +259,24 @@ function lobFrom(from,c,pow,radius,dur,target){
   later(dur,()=>ts.forEach(x=>{ flash(x,colorOf(c),1); burst(x,colorOf(c),6,.2); hitAt(x,pow,c); }));
 }
 // Sentries, summons and machines stand on a free tile of your side, nearest your row and the rift.
-function placeAlly(c,ai,hp,dur){
+function placeAlly(c,ai,hp,turns){
   const p=B.player, t=P_TILES.filter(t=>!t.occ).sort((a,b)=>Math.abs(a.r-p.tile.r)-Math.abs(b.r-p.tile.r)||b.x-a.x)[0];
   if(!t){ floater('no room',p.tile,'#ffb3a0'); return; }
-  const a={kind:'ally',ai,card:c,tile:t,hp,maxHp:hp,t:dur,dur,fireT:.4}; t.occ=a; B.allies.push(a); burst(t,colorOf(c),10,.4);
+  const a={kind:'ally',ai,card:c,tile:t,hp,maxHp:hp,turns:turns||1,maxTurns:turns||1,fireT:.4}; t.occ=a; B.allies.push(a); burst(t,colorOf(c),10,.4);
+}
+// A turn ends: shields and board pieces count down, and expire at 0.
+function endTurn(){
+  const b=B, p=b.player;
+  if(p.shieldTurns>0&&--p.shieldTurns<=0&&p.barrier>0){ p.barrier=0; floater('shield fades',p.tile,'#6fd6ff'); }
+  for(const e of alive()) if(e.shieldTurns>0&&--e.shieldTurns<=0) e.barrier=0;
+  for(const o of [...b.walls,...b.allies]) if(--o.turns<=0){ floater('expired',o.tile,'#b9a3ff'); removeBlock(o); }
+  for(const t of TILES){
+    if(t.trap&&--t.trap.turns<=0) t.trap=null;
+    if(t.envTurns>0&&--t.envTurns<=0){ t.burnT=0; t.iceT=0; t.thornT=0; }
+  }
 }
 function updateAlly(a,dt){
-  a.t-=dt; a.fireT-=dt;
-  if(a.t<=0){ removeBlock(a); return; }
+  a.fireT-=dt;
   if(a.fireT>0) return;
   const c=a.card; a.fireT=c.rate||1;
   if(a.enemy){ shoot(a.tile,lineTiles(a.tile,DIRS.W),{dmg:a.pow,from:'e',owner:null,color:colorOf(c)}); return; }
@@ -465,6 +479,8 @@ function render(){
 }
 
 function shadow(ctx,t,S,r){ const [x,y]=proj(t.wx,0,t.wz); ctx.fillStyle='rgba(0,0,0,.35)'; ctx.beginPath(); ctx.ellipse(x,y,S*r,S*r*ISO_Y,0,0,TAU); ctx.fill(); }
+// one dot per turn left, over walls and units
+function turnPips(ctx,x,y,n,S){ ctx.fillStyle='#e8e0ff'; for(let i=0;i<n;i++){ ctx.beginPath(); ctx.arc(x+(i-(n-1)/2)*S*.18,y,S*.05,0,TAU); ctx.fill(); } }
 function bar(ctx,x,y,w,k,col){ ctx.fillStyle='rgba(0,0,0,.6)'; ctx.fillRect(x-w/2-1,y-1,w+2,6); ctx.fillStyle=col; ctx.fillRect(x-w/2,y,w*clamp(k,0,1),4); }
 const DRAW={
   player(ctx,p,T,S){
@@ -520,7 +536,7 @@ const DRAW={
     frontFaces(ctx,top,bot[0][1]-top[0][1]);
     ctx.fillStyle=mixHex(col,'#ffffff',.15); poly(ctx,top); ctx.fill();
     if(w.thorns){ ctx.fillStyle='#fff'; const [x,y]=proj(w.tile.wx,1,w.tile.wz); ctx.font='700 '+Math.round(S*.3)+'px system-ui'; ctx.textAlign='center'; ctx.fillText('✶',x,y); }
-    const [x,y]=proj(w.tile.wx,1.15,w.tile.wz); bar(ctx,x,y,S*.7,w.hp/w.maxHp,'#6fd6ff');
+    const [x,y]=proj(w.tile.wx,1.15,w.tile.wz); bar(ctx,x,y,S*.7,w.hp/w.maxHp,'#6fd6ff'); turnPips(ctx,x,y-S*.12,w.turns,S);
   },
   ally(ctx,a,T,S){
     const col=colorOf(a.card); shadow(ctx,a.tile,S,.32);
@@ -535,7 +551,8 @@ const DRAW={
       ctx.fillStyle=a.card.color==='brown'?'#6b4a2e':'#4a4468'; ctx.fillRect(x-S*.18,y-S*tall,S*.36,S*tall);
       ctx.fillStyle=col; ctx.shadowColor=col; ctx.shadowBlur=10; ctx.beginPath(); ctx.arc(x,y-S*(tall+.15),S*.2,0,TAU); ctx.fill(); ctx.shadowBlur=0;
       top=y-S*(tall+.55); }
-    ctx.strokeStyle=col; ctx.lineWidth=3; ctx.beginPath(); ctx.arc(x-S*.45,top+S*.1,S*.12,-Math.PI/2,-Math.PI/2+TAU*clamp(a.t/a.dur,0,1)); ctx.stroke();
+    ctx.strokeStyle=col; ctx.lineWidth=3; ctx.beginPath(); ctx.arc(x-S*.45,top+S*.1,S*.12,-Math.PI/2,-Math.PI/2+TAU*clamp(a.turns/a.maxTurns,0,1)); ctx.stroke();
+    turnPips(ctx,x,top-S*.1,a.turns,S);
     if(a.hp<a.maxHp) bar(ctx,x,top,S*.6,a.hp/a.maxHp,'#6fd6ff');
   },
 };

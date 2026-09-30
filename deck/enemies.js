@@ -53,7 +53,7 @@ const openEnemyTiles=()=>E_TILES.filter(t=>!t.occ&&t.terrain!=='lava');
 function spawnWave(i){
   const b=B; b.wave=i;
   const ids=b.waves[i], rows=Array.from({length:BOARD_ROWS},(_,r)=>r).sort(()=>Math.random()-.5);
-  ids.forEach((id,k)=>{ const free=openEnemyTiles(), back=free.filter(t=>t.r===rows[k%BOARD_ROWS]&&t.col>=6);
+  ids.forEach((id,k)=>{ const free=openEnemyTiles(), back=free.filter(t=>t.r===rows[k%BOARD_ROWS]&&t.col>=BOARD_COLS/2+1);
     const t=pick(back.length?back:free); if(!t) return; const e=makeEnemy(id,t,b.depth); b.enemies.push(e); burst(t,COLORS[e.color].c,16); });
   if(i>0){ floater('Wave '+(i+1)+' of '+b.waves.length,b.player.tile,'#ffe24d',true); b.hooks.onWave&&b.hooks.onWave(i); }
 }
@@ -73,7 +73,7 @@ const icy=t=>t.terrain==='ice'||t.iceT>0;
 function dropRock(t,sec){ if(t.occ) return; t.terrain='rock'; t.rockT=sec; t.occ={kind:'rock',tile:t,hp:Infinity,maxHp:Infinity}; burst(t,'#8a8398',14,.4); }
 function updateTerrain(dt){
   for(const t of TILES){
-    if(t.burnT>0) t.burnT-=dt; if(t.iceT>0) t.iceT-=dt; if(t.thornT>0) t.thornT-=dt; if(t.trap&&(t.trap.t-=dt)<=0) t.trap=null;
+    if(t.burnT>0) t.burnT-=dt; if(t.iceT>0) t.iceT-=dt; if(t.thornT>0) t.thornT-=dt;
     if(t.rockT>0){ t.rockT-=dt; if(t.rockT<=0){ t.rockT=0; if(t.occ&&t.occ.kind==='rock') t.occ=null; t.terrain=null; } }
   }
   const p=B.player;
@@ -113,7 +113,7 @@ const MOVES={
     tele(e,[p.tile].concat(neighbors(p.tile).filter(t=>t.side==='p'&&t.col>=p.tile.col)),.85,e.dmg); },
   mend(e){ const hurt=alive().filter(x=>x!==e&&x.hp<x.maxHp).sort((a,b)=>a.hp/a.maxHp-b.hp/b.maxHp)[0];
     if(!hurt) return MOVES.shot(e);
-    const h=Math.round(hurt.maxHp*.2); hurt.hp=Math.min(hurt.maxHp,hurt.hp+h); hurt.barrier+=20; floater('+'+h,hurt.tile,'#fff0b3'); burst(hurt.tile,'#fff0b3',12,1);
+    const h=Math.round(hurt.maxHp*.2); hurt.hp=Math.min(hurt.maxHp,hurt.hp+h); hurt.barrier=Math.max(hurt.barrier,20); hurt.shieldTurns=Math.max(hurt.shieldTurns||0,1); floater('+'+h,hurt.tile,'#fff0b3'); burst(hurt.tile,'#fff0b3',12,1);
     B.fx.push({kind:'bolt',a:e.tile,b:hurt.tile,color:'#fff0b3',t:0,life:.3}); },
   quake(e){ const safe=[pick(P_TILES.filter(t=>!t.occ||t.occ.kind==='player'))]; safe.push(...neighbors(safe[0]).filter(t=>t.side==='p').slice(0,2));
     tele(e,P_TILES.filter(t=>!safe.includes(t)),1.7,e.dmg); },
@@ -134,17 +134,17 @@ function enemyCast(e,c){
     case 'lob': return tele(e,[p.tile].concat(c.radius?around(p.tile).filter(t=>t.side==='p'):[]),.9,pow);
     case 'charge': for(let i=0;i<3;i++) later(i*.35,()=>{ if(e.hp>0) enemyShot(e,pow); }); return;
     case 'ward':
-      if(c.ward==='barrier'){ e.barrier+=Math.round(c.amt*k); floater('🛡'+Math.round(c.amt*k),e.tile,col); return; }
+      if(c.ward==='barrier'){ e.barrier=Math.round(c.amt*k); e.shieldTurns=c.turns||2; floater('🛡'+e.barrier,e.tile,col); return; }
       E_TILES.filter(t=>!t.occ&&t.col===BOARD_COLS/2&&Math.abs(t.r-e.tile.r)<=1).slice(0,c.n).forEach(t=>{
-        const w={kind:'wall',enemy:true,card:c,tile:t,hp:Math.round(c.hp*k),maxHp:Math.round(c.hp*k),thorns:0}; t.occ=w; B.walls.push(w); burst(t,col,8,.3); });
+        const w={kind:'wall',enemy:true,card:c,tile:t,hp:Math.round(c.hp*k),maxHp:Math.round(c.hp*k),thorns:0,turns:c.turns||2,maxTurns:c.turns||2}; t.occ=w; B.walls.push(w); burst(t,col,8,.3); });
       return;
     case 'sentry': { const t=pick(E_TILES.filter(x=>!x.occ&&x.col>=BOARD_COLS/2+1)); if(!t) return;
-      const s={kind:'ally',enemy:true,ai:'sentry',card:c,tile:t,hp:40,maxHp:40,t:c.dur,dur:c.dur,fireT:.6,pow:Math.max(3,Math.round(c.pow*k))}; t.occ=s; B.allies.push(s); burst(t,col,10,.4); return; }
+      const s={kind:'ally',enemy:true,ai:'sentry',card:c,tile:t,hp:40,maxHp:40,turns:c.turns||1,maxTurns:c.turns||1,fireT:.6,pow:Math.max(3,Math.round(c.pow*k))}; t.occ=s; B.allies.push(s); burst(t,col,10,.4); return; }
     case 'boon':
       if(c.boon==='heal'||c.boon==='regen'){ const hurt=alive().sort((a,b)=>a.hp/a.maxHp-b.hp/b.maxHp)[0]; const h=Math.round((c.amt||30)*k*(c.boon==='regen'?4:1));
         hurt.hp=Math.min(hurt.maxHp,hurt.hp+h); floater('+'+h,hurt.tile,'#6dff9a'); return; }
       if(['power','pact','courage','haste'].includes(c.boon)){ e.powerT=8; floater('Empowered',e.tile,col); return; }
-      e.barrier+=30; floater('🛡30',e.tile,col); return;
+      e.barrier=Math.max(e.barrier,30); e.shieldTurns=Math.max(e.shieldTurns||0,1); floater('🛡30',e.tile,col); return;
   }
   enemyShot(e,e.dmg);
 }

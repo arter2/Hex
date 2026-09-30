@@ -129,3 +129,11 @@ t('charge uses carry across battles and spent copies burn up', ()=>{
   const burned=fight(1); assert.strictEqual(burned.length,1); assert.strictEqual(s.owned[id],1);
   assert.deepStrictEqual(s.charge[id],[3]); assert.strictEqual(s.decks[0].list.filter(x=>x===id).length,1);
 });
+t('everything a card puts on the board has a turn limit and HP', ()=>{
+  for(const c of D.CARD_LIST){ const k=c.type==='piece'?c.base:c.type;
+    if(['ward','sentry','summon','machine','trap'].includes(k)) assert(c.turns>=1, c.id+' turns');
+    if(k==='environment'&&c.env!=='tremor') assert(c.turns>=1, c.id+' turns');
+    if(['sentry','summon','machine'].includes(k)||(k==='ward'&&c.ward!=='barrier')) assert(c.hp>0, c.id+' hp');
+    if(k==='ward'&&c.ward==='barrier') assert(c.amt>0, c.id+' shield');
+    if(k!=='boon') assert(c.dur==null, c.id+' should count turns, not seconds'); }
+});

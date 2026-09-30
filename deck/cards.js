@@ -248,12 +248,26 @@ const BUILD={
 };
 
 const CARD_LIST=SIGNATURE.concat(generateCards());
+/* Nothing a card puts on the board lasts forever: shields, walls, towers, summons, machines,
+   traps and changed ground each have HP (or a strength) and a turn limit. A turn ends each time
+   the Custom screen opens. Applied after generation, so card ids are unchanged. */
+function boardTurns(c){
+  const k=c.type==='piece'?c.base:c.type, big=c.rarity==='rare'||c.rarity==='legendary';
+  if(k==='ward') c.turns=big?3:2;
+  else if(k==='sentry'){ c.turns=Math.max(1,Math.round(c.dur/7)); c.hp=40; delete c.dur; }
+  else if(k==='summon'||(k==='machine'&&c.ai!=='bulwark')){ c.turns=Math.max(1,Math.round(c.dur/10)); delete c.dur; }
+  else if(k==='machine') c.turns=3;
+  else if(k==='trap') c.turns=2;
+  else if(k==='environment'&&c.dur){ c.turns=c.dur>=10?2:1; delete c.dur; }
+}
+CARD_LIST.forEach(boardTurns);
 const CARDS={}; CARD_LIST.forEach(c=>CARDS[c.id]=c);
 
 // One-line rules text built from the data, so new cards need no hand-written text.
 const PATTERN_TEXT={single:'', burst:' and around it', ring:' in a ring around it', cross:' in a cross', column:' down its column', row:' along its row'};
 const AREA_TEXT={burst:' on the tile you aim and around it', cross:' in a cross on the tile you aim', column:" down the aimed tile's column", row:" along the aimed tile's row"};
 const lobPattern=c=>c.pattern||(c.radius?'burst':'single');
+const tn=n=>n+' turn'+(n>1?'s':'');
 function cardText(c){
   const kw=[];
   if(c.burn) kw.push('Burn '+c.burn+'s'); if(c.freeze) kw.push('Freeze '+c.freeze+'s'); if(c.stun) kw.push('Stun '+c.stun+'s');
@@ -268,11 +282,11 @@ function cardText(c){
                          dig:c.pow+' tunnelling under walls and shields to the first enemy in your row', zigzag:c.pow+' zigzagging between your row and the next',
                          diag:c.pow+' in two diagonal bolts'}[c.shape];
   else if(kind==='lob') t=c.pow+' on the tile you aim'+PATTERN_TEXT[lobPattern(c)]+', over blockers';
-  else if(kind==='trap') t={spike:'Spike trap: '+c.pow, snare:'Snare: '+c.pow+' and roots', blast:'Blast trap: '+c.pow+' to it and around it'}[c.trap]+' when an enemy steps on the tile you aim';
+  else if(kind==='trap') t={spike:'Spike trap: '+c.pow, snare:'Snare: '+c.pow+' and roots', blast:'Blast trap: '+c.pow+' to it and around it'}[c.trap]+' when an enemy steps on the tile you aim; '+tn(c.turns);
   else if(kind==='environment') t={burn:'Sets the ground burning', freeze:'Ices the ground, halving enemy speed,', bramble:'Grows brambles that deal '+c.pow+' per step',
-                                   tremor:'Tremor deals '+c.pow}[c.env]+AREA_TEXT[c.pattern]+(c.dur?' for '+c.dur+'s':'');
-  else if(kind==='ward') t=c.ward==='barrier'?'Barrier absorbs '+c.amt:c.n+' walls of '+c.hp+' HP'+(c.ward==='thorns'?', hit back for '+c.thorns:'');
-  else if(kind==='sentry') t='Tower: '+c.pow+' every '+c.rate+'s for '+c.dur+'s';
+                                   tremor:'Tremor deals '+c.pow}[c.env]+AREA_TEXT[c.pattern]+(c.turns?' for '+tn(c.turns):'');
+  else if(kind==='ward') t=c.ward==='barrier'?'Shield of '+c.amt+' for '+tn(c.turns)+'; replaces your current shield':c.n+' walls of '+c.hp+' HP'+(c.ward==='thorns'?' that hit back for '+c.thorns:'')+', '+tn(c.turns);
+  else if(kind==='sentry') t='Tower: '+c.pow+' every '+c.rate+'s, '+c.hp+' HP, '+tn(c.turns);
   else if(kind==='boon') t={power:'Wand ×2.5 for '+c.dur+'s', pact:'Cards and wand +30% for '+c.dur+'s', haste:'Faster moves and casts for '+c.dur+'s',
                            dodge:'Dodge the next hit', phase:'Untouchable for '+c.dur+'s', regen:'Heal '+c.amt+'/s for '+c.dur+'s', heal:'Heal '+c.amt,
                            gauge:'Fill '+Math.round(c.amt*100)+'% of the Custom gauge', courage:'Cards and wand +30% for '+c.dur+'s, no HP cost',
@@ -281,9 +295,9 @@ function cardText(c){
   else if(kind==='utility') t={draw:'Draw '+c.n+' card'+(c.n>1?'s':'')+' into your hand', recall:'Put the top card of your deck into your queue',
                               copy:'Copy the next queued card', cleanse:'Cancel incoming attacks and heal '+c.amt}[c.util];
   else if(kind==='summon') t={shooter:'Shoots '+c.pow+' down its row', bomber:'Lobs '+c.pow+' every '+c.rate+'s', healer:'Heals you '+c.amt+' every '+c.rate+'s',
-                             guardian:'Blocks with '+c.hp+' HP, hits for '+c.pow}[c.ai]+'. '+(c.ai==='guardian'?'':c.hp+' HP, ')+c.dur+'s';
-  else if(kind==='machine') t={turret:'Turret: '+c.pow+' every '+c.rate+'s, '+c.hp+' HP', repeater:'Repeater: '+c.pow+' every '+c.rate+'s, '+c.hp+' HP',
-                              mortar:'Mortar: lobs '+c.pow+' every '+c.rate+'s', bulwark:c.n+' iron wall'+(c.n>1?'s':'')+' of '+c.hp+' HP'}[c.ai];
+                             guardian:'Blocks with '+c.hp+' HP, hits for '+c.pow}[c.ai]+'. '+(c.ai==='guardian'?'':c.hp+' HP, ')+tn(c.turns);
+  else if(kind==='machine') t=c.ai==='bulwark'?c.n+' iron wall'+(c.n>1?'s':'')+' of '+c.hp+' HP, '+tn(c.turns):
+                              {turret:'Turret: '+c.pow+' every '+c.rate+'s', repeater:'Repeater: '+c.pow+' every '+c.rate+'s', mortar:'Mortar: lobs '+c.pow+' every '+c.rate+'s'}[c.ai]+', '+c.hp+' HP, '+tn(c.turns);
   if(c.piece) t='Legendary piece. '+t;
   return t+(kw.length?'. '+kw.join(', '):'');
 }

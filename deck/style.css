@@ -499,3 +499,6 @@ body.ui-tablet .grid.mini{grid-template-columns:repeat(auto-fill,minmax(140px,1f
 body.ui-tablet .invgrid{grid-template-columns:repeat(auto-fill,minmax(104px,1fr));}
 body.ui-tablet .panel.custom{max-width:980px;} body.ui-tablet .slots{max-width:520px;}
 body.ui-tablet .controls.battle .btn{min-height:76px; font-size:22px;} body.ui-tablet .qslot{min-height:52px;} body.ui-tablet .qslot .nm{font-size:15px;}
+
+/* the look picker on the character screen */
+.invtabs.looks{align-items:center; margin:6px 0;} .invtabs.looks .lbl{font:400 18px var(--font-t); color:#9aa3ab; margin-right:4px;}

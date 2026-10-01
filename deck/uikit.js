@@ -219,7 +219,9 @@ function drawCampScene(cv,depth,t,sprite){ const ai=Math.floor((Math.max(1,depth
     for(let i=0;i<h;i++){ const k=Math.min(5,Math.floor((1-i/h)*3.2)+(Math.abs(x-fx)<4?2:Math.abs(x-fx)<7?1:0));
       if(i>h-3&&R()<.5) continue; const c=FIRE[k]; cx.fillStyle=`rgb(${c[0]},${c[1]},${c[2]})`; cx.fillRect(x,fy-2-i,1,1); } }
   for(let i=0;i<4;i++){ const c=FIRE[4]; cx.fillStyle=`rgb(${c[0]},${c[1]},${c[2]})`; cx.fillRect(fx-6+Math.floor(R()*12),fy-22-Math.floor(R()*16),1,1); }
-  if(sprite){ cx.fillStyle='rgba(0,0,0,.45)'; cx.fillRect(43,88,22,2); cx.drawImage(sprite,0,0,sprite.width,sprite.height,38,48,40,40); }
+  if(sprite){ cx.fillStyle='rgba(0,0,0,.45)'; cx.fillRect(43,88,22,2);
+    // hand-placed sprites (64 px) stand at full size; the old 32 px ones are scaled up
+    if(sprite.width>32) cx.drawImage(sprite,14,26); else cx.drawImage(sprite,0,0,sprite.width,sprite.height,38,48,40,40); }
 }
 
 /* ---------- the depth map ---------- */

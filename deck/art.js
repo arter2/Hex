@@ -831,7 +831,24 @@ function makeSprite(key,pal,draw){
   return SPRITES[key]={img,sil,wht};
 }
 // the sprite for a unit on the board: 'player', an enemy id, or an ally's card
+// The hand-placed player sprites from sprites.js, decoded once into the same {img,sil,wht}
+// canvases the generated sprites use. Until an image has loaded the old sprite stands in.
+const LOOK_SPR={};
+function lookSprite(id,view){
+  if(typeof PLAYER_LOOKS==='undefined'||typeof document==='undefined') return null;
+  if(!PLAYER_LOOKS[id]) id='wizard'; const key=id+':'+view;
+  if(key in LOOK_SPR) return LOOK_SPR[key];
+  LOOK_SPR[key]=null; const im=new Image();
+  im.onload=()=>{ const n=im.width, mk=()=>{ const c=document.createElement('canvas'); c.width=c.height=n; return c; };
+    const img=mk(), sil=mk(), wht=mk(); img.getContext('2d').drawImage(im,0,0);
+    for(const [c,col] of [[sil,'#000'],[wht,'#fff']]){ const x=c.getContext('2d'); x.drawImage(im,0,0); x.globalCompositeOperation='source-in'; x.fillStyle=col; x.fillRect(0,0,n,n); }
+    LOOK_SPR[key]={img,sil,wht,hand:true}; if(root.onLookLoaded) root.onLookLoaded(); };
+  im.src=PLAYER_LOOKS[id][view]; return null;
+}
+const playerLook=()=>{ try{ return (typeof save!=='undefined'&&save&&save.look)||'wizard'; }catch(e){ return 'wizard'; } };
+if(typeof PLAYER_LOOKS!=='undefined'&&typeof document!=='undefined') for(const id in PLAYER_LOOKS){ lookSprite(id,'front'); lookSprite(id,'back'); }
 function unitSprite(u){
+  if(u.kind==='player'){ const hs=lookSprite(u.lookId||playerLook(),u.view||'back'); if(hs) return hs; }
   if(u.kind==='player'){ const L=u.look||{body:'robe',m:'#1f5fa8',a:'#f2c94c',hat:'wizard',weapon:'staff',glow:'#7fd4ff',beard:true};
     return makeSprite('player:'+JSON.stringify(L),{m:L.m,a:L.a,c:artMix(L.m,'#000000',.35),glow:L.glow,o:'#03070c',d:artMix(L.m,'#1a1020',.55)},()=>human(L)); }
   if(u.kind==='enemy'){ const F=FAM[u.color], id=u.id;
@@ -847,6 +864,6 @@ function unitSprite(u){
     else (THING[key]||THING.sentry)(()=>.5); });
 }
 
-Object.assign(root,{ART_SIZE,cardArt,artCSV,artURL,motifKey,unitSprite});
+Object.assign(root,{ART_SIZE,cardArt,artCSV,artURL,motifKey,unitSprite,lookSprite});
 if(typeof module!=='undefined') module.exports={ART_SIZE,cardArt,artCSV,motifKey};
 })(typeof window!=='undefined'?window:globalThis);

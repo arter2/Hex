@@ -794,7 +794,7 @@ const DRAW={
     // the staff's orb glows, and grows while the wand charges
     const wc=p.wand&&p.wand.color?COLORS[p.wand.color].c:null;
     const glow=p.charging?(p.chargeT>=chargeNeed(p)?'#ffffff':wc||'#7fd4ff'):p.powerT>0?'#ff6a3d':wc;
-    if(glow&&(!p.look||['staff','wand'].includes(p.look.weapon))){ const ox=r.x+(flip?-1:1)*9*r.k, oy=r.top+4*r.k; ctx.fillStyle=glow; ctx.shadowColor=glow; ctx.shadowBlur=10+(p.charging?p.chargeT*18:0);
+    if(glow&&(!p.look||['staff','wand'].includes(p.look.weapon))){ const hs=unitSprite(p).hand, ox=r.x+(flip?-1:1)*(hs?7.5:9)*r.k, oy=r.top+(hs?5:4)*r.k; ctx.fillStyle=glow; ctx.shadowColor=glow; ctx.shadowBlur=10+(p.charging?p.chargeT*18:0);
       ctx.globalAlpha=.85; ctx.beginPath(); ctx.arc(ox,oy,S*(.12+(p.charging?p.chargeT*.12:0)),0,TAU); ctx.fill(); ctx.shadowBlur=0; ctx.globalAlpha=1; }
     const [x,y]=proj(posOf(p)[0],0,posOf(p)[1]);
     if(p.barrier>0){ ctx.strokeStyle='rgba(111,214,255,.85)'; ctx.lineWidth=2.5; ctx.beginPath(); ctx.ellipse(x,y-r.H*.45,S*.75,r.H*.55,0,0,TAU); ctx.stroke();

@@ -94,9 +94,8 @@ function campScene(){
   const k=w/SCENE_W;
   cv.style.width=SCENE_W*k+'px'; cv.style.height=SCENE_H*k+'px';
   const dm=$('#depthMap'); dm.style.width='100%'; dm.style.height='auto';
-  const spr=unitSprite({kind:'player',look:gearLook(save)}).img;
   clearInterval(campTimer); const t0=performance.now();
-  const tick=()=>{ if(!$('#scrCamp').classList.contains('on')){ clearInterval(campTimer); return; } drawCampScene(cv,pickDepth,(performance.now()-t0)/1000,spr); };
+  const tick=()=>{ if(!$('#scrCamp').classList.contains('on')){ clearInterval(campTimer); return; } drawCampScene(cv,pickDepth,(performance.now()-t0)/1000,unitSprite({kind:'player',look:gearLook(save),view:'front'}).img); };
   tick(); campTimer=setInterval(tick,140);
 }
 // the last few things that happened, shown in the camp log
@@ -252,6 +251,11 @@ const DOLL_LEFT=['head','arms','offhand','ring1'], DOLL_RIGHT=['body','weapon','
 const DOLL_ANCHOR={head:[16,7], body:[16,20], arms:[9,21], offhand:[6,18], weapon:[25,12], ring1:[9,24], ring2:[23,24]};
 const INV_TABS=[['all','All'],['weapon','Weapons'],['offhand','Off-hand'],['head','Head'],['body','Body'],['arms','Arms'],['ring','Rings']];
 let chTab='all', chSel=null;
+// pick how your wizard looks: the hooded wizard or an elf, dwarf or orc, man or woman
+function renderLooks(){ const box=$('#chLooks'); if(!box||typeof PLAYER_LOOKS==='undefined') return; const cur=save.look||'wizard';
+  box.innerHTML='<span class="lbl">Look</span>'+Object.keys(PLAYER_LOOKS).map(id=>{ const L=PLAYER_LOOKS[id]; return `<button class="chip${id===cur?' on':''}" data-look="${id}" style="--c:#8fe4ff">${L.name}${L.gender?' · '+L.gender:''}</button>`; }).join('');
+  box.querySelectorAll('[data-look]').forEach(b=>b.onclick=()=>{ save.look=b.dataset.look; persist(); renderCharacter(); }); }
+window.onLookLoaded=()=>{ if($('#scrCharacter').classList.contains('on')) renderCharacter(); };
 function renderCharacter(){
   const s=gearState(save), m=gearMods(save), K=WEAPON_KINDS[m.kind]||WEAPON_KINDS.wand;
   $('#chGold').textContent='🪙 '+save.gold;
@@ -262,7 +266,8 @@ function renderCharacter(){
   cx.fillStyle=col; for(let y=0;y<32;y++) for(let x=0;x<32;x++){ const r=Math.hypot(x-15.5,(y-18)*1.1);
     if(r<9||(r<14&&(x+y)%2===0)){ cx.globalAlpha=r<9?.22:.16; cx.fillRect(x*8,y*8,8,8); } } cx.globalAlpha=1;
   cx.fillStyle='rgba(0,0,0,.5)'; cx.fillRect(72,240,112,8); cx.fillRect(88,248,80,4);
-  const spr=unitSprite({kind:'player',look:gearLook(save)}); cx.drawImage(spr.img,0,0,32,32,0,0,256,256);
+  const spr=unitSprite({kind:'player',look:gearLook(save),view:'front'}); cx.drawImage(spr.img,0,0,spr.img.width,spr.img.height,0,0,256,256);
+  renderLooks();
   // the slots
   const slotEl=slot=>{ const id=s.gear[slot], d=document.createElement('div'); if(id) d.style.setProperty('--fc',COLORS[GEAR[id].family].c); d.className='dslot'+(id&&isStuck(save,id)?' cursed':'')+(id?' full':'')+(chSel&&chSel.slot===slot?' sel':''); d.dataset.slot=slot;
     d.innerHTML=`<span class="lbl">${SLOT_NAMES[slot]}</span>`+(id?`<b class="ic">${gearIcon(id,48)}</b><small>${esc(gearName(save,id))}</small>`:'<b class="ic dim">·</b><small class="dim">empty</small>');

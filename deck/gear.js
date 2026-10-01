@@ -108,6 +108,11 @@ const SLOT_NAMES={weapon:'Weapon',offhand:'Off-hand',head:'Head',body:'Body',arm
 const slotType=slot=>slot.startsWith('ring')?'ring':slot;
 // Curses: a hidden drawback on an ordinary piece, shown once worn. Each is broken by
 // sacrificing cards of its rune (or a scroll of purifying).
+// Every piece belongs to one of the deck's color families (see COLORS in cards.js), shown the
+// same way as on cards: elemental pieces by their element, leather and wood Verdant, forged
+// iron and machinery Brown, plain everyday gear Gray.
+const GEAR_COLOR={"first_flame": "fire", "ember_robes": "fire", "ring_embers": "fire", "ring_dragon": "fire", "samurai_suit": "fire", "kabuto": "fire", "lacquered_bracers": "fire", "ice_wand": "frost", "frostfang": "frost", "frost_robes": "frost", "ring_frost": "frost", "volt_wand": "storm", "quick_wand": "storm", "storm_scepter": "storm", "thunder_repeater": "storm", "storm_trident": "storm", "focus_rod": "storm", "oak_wand": "verdant", "oak_staff": "verdant", "elven_bow": "verdant", "ashwood_bow": "verdant", "leather_armor": "verdant", "leather_cap": "verdant", "leather_bracers": "verdant", "ring_regen": "verdant", "dragonscale": "verdant", "light_wand": "light", "archmage_staff": "light", "dawn_aegis": "light", "wizard_hat": "light", "apprentice_robes": "light", "runed_bracers": "light", "ring_vigor": "light", "warded_cloak": "light", "dark_wand": "shadow", "night_shroud": "shadow", "thief_outfit": "shadow", "black_hood": "shadow", "shadow_wraps": "shadow", "ring_runes": "shadow", "basic_wand": "gray", "broken_wand": "gray", "cloth_shirt": "gray", "padded_robe": "gray", "buckler": "gray", "hunter_spear": "gray", "ring_gold": "gray", "iron_crossbow": "brown", "iron_mail": "brown", "plate_armor": "brown", "iron_helm": "brown", "tower_shield": "brown", "runed_vest": "brown", "rune_staff": "brown"};
+for(const id in GEAR) GEAR[id].family=GEAR_COLOR[id]||'gray';
 const CURSES={
   lead:   {name:'of Lead',      rune:'A', mods:{slow:1.4},      text:'you move 40% slower'},
   fizzle: {name:'of Sputtering',rune:'B', mods:{misfire:.15},   text:'15% of shots fizzle', weapon:true},
@@ -281,4 +286,4 @@ function gearLook(save){ const s=gearState(save), g=s.gear, b=BODY_LOOK[g.body]|
   return {body:b[0], m:b[1], a:b[2], cape:!!b[3], hat:HEAD_LOOK[g.head]||(b[0]==='thief'?'hood':b[0]==='samurai'?'none':'wizard'),
     weapon:{wand:'wand',staff:'staff',bow:'bow',crossbow:'crossbow',spear:'spear'}[k], shield:g.offhand?(g.offhand==='dawn_aegis'?'gold':g.offhand==='tower_shield'?'tower':'round'):null,
     glow:m.color&&typeof COLORS!=='undefined'?COLORS[m.color].c:'#7fd4ff', beard:b[0]!=='thief'}; }
-if(typeof module!=='undefined') module.exports={gearLook,CURSES,SETS,setOf,activeSets,curseRune,unworn,WEAPON_KINDS,SLOTS,SLOT_NAMES,slotType,kindOf,GEAR,ENCHANTS,SCROLLS,MAX_LEVEL,SACRIFICE,gearState,gearName,isStuck,pieceMods,modsText,gearText,gearMods,equip,mergeGear,enchantGear,purifyGear,sacrificeFor,addGear,addScroll,itemCount,rollLoot,lootLabel,addLoot,ensureStarterGear};
+if(typeof module!=='undefined') module.exports={GEAR_COLOR,gearLook,CURSES,SETS,setOf,activeSets,curseRune,unworn,WEAPON_KINDS,SLOTS,SLOT_NAMES,slotType,kindOf,GEAR,ENCHANTS,SCROLLS,MAX_LEVEL,SACRIFICE,gearState,gearName,isStuck,pieceMods,modsText,gearText,gearMods,equip,mergeGear,enchantGear,purifyGear,sacrificeFor,addGear,addScroll,itemCount,rollLoot,lootLabel,addLoot,ensureStarterGear};

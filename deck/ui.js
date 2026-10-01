@@ -236,7 +236,7 @@ function renderCharacter(){
   cx.fillStyle='rgba(0,0,0,.45)'; cx.beginPath(); cx.ellipse(128,244,70,10,0,0,Math.PI*2); cx.fill();
   const spr=unitSprite({kind:'player',look:gearLook(save)}); cx.drawImage(spr.img,0,0,32,32,0,0,256,256);
   // the slots
-  const slotEl=slot=>{ const id=s.gear[slot], d=document.createElement('div'); d.className='dslot'+(id&&isStuck(save,id)?' cursed':'')+(id?' full':'')+(chSel&&chSel.slot===slot?' sel':''); d.dataset.slot=slot;
+  const slotEl=slot=>{ const id=s.gear[slot], d=document.createElement('div'); if(id) d.style.setProperty('--fc',COLORS[GEAR[id].family].c); d.className='dslot'+(id&&isStuck(save,id)?' cursed':'')+(id?' full':'')+(chSel&&chSel.slot===slot?' sel':''); d.dataset.slot=slot;
     d.innerHTML=`<span class="lbl">${SLOT_NAMES[slot]}</span>`+(id?`<b class="ic">${GEAR[id].icon}</b><small>${esc(gearName(save,id))}</small>`:'<b class="ic dim">·</b><small class="dim">empty</small>');
     d.onclick=()=>{ chSel=id?{id,slot}:null; if(!id){ chTab=slotType(slot); } renderCharacter(); };
     if(id) dragGear(d,id,slot);
@@ -260,8 +260,9 @@ function renderCharacter(){
   const ids=Object.keys(GEAR).filter(id=>s.items[id]>0&&(chTab==='all'||GEAR[id].slot===chTab)).sort((a,b)=>order.indexOf(GEAR[a].slot)-order.indexOf(GEAR[b].slot)||GEAR[b].tier-GEAR[a].tier);
   const inv=$('#chInv'); inv.innerHTML=ids.length?'':'<p class="hint">Nothing here yet. Fights drop gear now and then; bosses always drop loot.</p>';
   for(const id of ids){ const G=GEAR[id], on=SLOTS.some(k=>s.gear[k]===id), t=document.createElement('div');
+    t.style.setProperty('--fc',COLORS[G.family].c);
     t.className='itile'+(on?' on':'')+(G.legendary?' legend':'')+(isStuck(save,id)?' cursed':'')+(chSel&&chSel.id===id?' sel':'');
-    t.innerHTML=`<b class="ic">${G.icon}</b><small>${esc(gearName(save,id))}</small><span class="st">${G.legendary?'✹':G.tier?'★'.repeat(G.tier):'·'}</span>`+(s.items[id]>1?`<span class="cnt">×${s.items[id]}</span>`:'')+(on?'<span class="worn">✓</span>':'')+(unworn(save,id)?'<span class="new">?</span>':'');
+    t.innerHTML=`<span class="fam">${COLORS[G.family].icon}</span><b class="ic">${G.icon}</b><small>${esc(gearName(save,id))}</small><span class="st">${G.legendary?'✹':G.tier?'★'.repeat(G.tier):'·'}</span>`+(s.items[id]>1?`<span class="cnt">×${s.items[id]}</span>`:'')+(on?'<span class="worn">✓</span>':'')+(unworn(save,id)?'<span class="new">?</span>':'');
     t.onclick=()=>{ chSel={id}; renderCharacter(); };
     dragGear(t,id,null); inv.appendChild(t); }
   renderGearDetail();
@@ -271,9 +272,9 @@ function renderGearDetail(){
   const box=$('#chDetail'), s=gearState(save); if(!chSel||!s.items[chSel.id]){ box.innerHTML=''; box.className='gdetail empty'; return; }
   const id=chSel.id, G=GEAR[id], wornIn=SLOTS.filter(k=>s.gear[k]===id), on=wornIn.length>0, stuck=isStuck(save,id), set=setOf(id), lv=s.gearLv[id]||0;
   const kindTxt=G.slot==='weapon'?WEAPON_KINDS[kindOf(id)].name+': '+WEAPON_KINDS[kindOf(id)].text:G.weight?G.weight[0].toUpperCase()+G.weight.slice(1)+' armor'+(G.weight==='heavy'&&!s.ench[id]?' (slows casting until enchanted)':''):SLOT_NAMES[G.slot==='ring'?'ring1':G.slot];
-  box.className='gdetail'+(stuck?' cursed':'')+(G.legendary?' legend':'');
+  box.className='gdetail'+(stuck?' cursed':'')+(G.legendary?' legend':''); box.style.setProperty('--fc',COLORS[G.family].c);
   box.innerHTML=`<button class="dx" aria-label="Close">✕</button><div class="dh"><b class="ic">${G.icon}</b><div><b>${esc(gearName(save,id))}</b> <span class="tier">${G.legendary?'✹ Legendary':G.tier?'★'.repeat(G.tier):'junk'}</span>${s.items[id]>1?` <span class="cnt">×${s.items[id]}</span>`:''}
-      <small class="kind">${esc(kindTxt)}</small></div></div>
+      <small class="kind"><span class="chip" style="--c:${COLORS[G.family].c}">${COLORS[G.family].icon} ${COLORS[G.family].name}</span> ${esc(kindTxt)}</small></div></div>
     <p>${esc(gearText(save,id))}${G.text?' · '+esc(G.text):''}</p>
     ${set?`<p class="set${activeSets(save).includes(set)?' on':''}">Set: ${esc(SETS[set].name)} (${SETS[set].pieces.filter(x=>s.items[x]).length}/3 owned, ${SETS[set].pieces.filter(x=>SLOTS.some(k=>s.gear[k]===x)).length}/3 worn) · ${esc(modsText(SETS[set].mods))}</p>`:''}
     ${unworn(save,id)?'<p class="fresh">Not worn yet: it may be enchanted or cursed.</p>':''}

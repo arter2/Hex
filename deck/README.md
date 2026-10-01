@@ -3,16 +3,17 @@
 Open `deck/index.html` in a browser (no build step). Progress is saved in the browser (localStorage).
 
 **The loop:** pick a starter deck → fight at camp → monsters drop cards and gold → open packs in the shop →
-build decks from your collection → fight deeper for rarer drops. 800 cards to collect.
+build decks from your collection → fight deeper for rarer drops. 800 cards to collect, plus 6 heroes:
+the rarest cards, mostly dropped by bosses. A hero fights beside you for 3 turns and empowers you while it stands (one per deck).
 
 | File | What it holds |
 | --- | --- |
-| `cards.js` | 51 hand-authored signature cards (Arcane set aside for Light) + a seeded template generator for the rest of the 800 (type split and 40/30/20/10 rarity per family from the design doc), color ring, starter decks |
-| `engine.js` | Deck rules and piles: 45–60 cards, 4 copies (1 per legendary), draw 7 at each Custom, queue 3, no reshuffle, charge uses, draw/recall/copy |
-| `collection.js` | Save, card drops by depth, packs, auto-fill |
-| `battle.js` | Real-time battle on an 8 x 12 hex board (isometric view that turns upright on a phone); every card type: Strike, Lob, Ward, Sentry, Boon, Charge, Utility, Trap, Environment, Summon, Machine, Legendary piece |
+| `cards.js` | 51 hand-authored signature cards (Arcane set aside for Light) + a seeded template generator for the rest of the 800 (type split and 40/30/20/10 rarity per family from the design doc), the 6 heroes, color ring, starter decks |
+| `engine.js` | Deck rules and piles: 45–60 cards, 4 copies (1 per legendary or hero, 1 hero per deck), draw 7 at each Custom, queue 3, no reshuffle, charge uses, draw/recall/copy |
+| `collection.js` | Save, card drops by depth (bosses sometimes drop a hero), packs, auto-fill |
+| `battle.js` | Real-time battle on an 8 x 12 hex board, seen through a perspective camera behind your side (turned upright on a phone) and run at 80% speed so enemies are easy to follow; every card type: Strike, Lob, Ward, Sentry, Boon, Charge, Utility, Trap, Environment, Summon, Machine, Hero, Legendary piece |
 | `enemies.js` | Monsters with signature attacks, humanoids that cast real cards, encounters in up to 3 waves, terrain (rocks, lava, ice) |
-| `art.js` | 32 x 32 pixel art for every card (all 800 different): the subject comes from the card's name, staged by its type, set in its color family's scene, with keyword details and a rarity frame; `node deck/tools/export-art.js` writes `art/<card id>.csv` (32 rows of 32 hex colors) and `art/index.csv` |
+| `art.js` | 64 x 64 pixel art for every card (all different): the subject comes from the card's name, staged by its type, set in one of three scenes for its color, changed by the words in its name (molten veins, ice, thorns, flowers, smoke, feathers, arcs, gears...), shaded as a solid with material textures, with keyword badges and a rarity frame; also the 32 x 32 sprites for every unit on the board. `node deck/tools/export-art.js` writes `art/<card id>.csv` (64 rows of 64 hex colors) and `art/index.csv` |
 | `ui.js` | Start, camp, deck builder (5 saved decks), collection, shop, Custom screen, HUD, controls |
 
 Tests: `node deck/engine.test.js`

@@ -4,7 +4,7 @@
    discard pile, unqueued cards stay in hand, and there is no reshuffle: an empty deck
    leaves you with the wand. Each queue slot left empty draws 1 extra card next time. */
 
-const RULES={max:60, min:45, copies:4, legendaryCopies:1, hand:7, slots:3};
+const RULES={max:60, min:45, copies:4, legendaryCopies:1, heroes:1, hand:7, slots:3};
 
 // owned (optional): {id: copies you own}; a deck can't use more copies than you have.
 function validateDeck(list,cards,owned){
@@ -17,10 +17,12 @@ function validateDeck(list,cards,owned){
   if(list.length>RULES.max) errors.push('Too many cards: '+list.length+' / '+RULES.max);
   if(list.length<RULES.min) errors.push('Too few cards: '+list.length+' (minimum '+RULES.min+')');
   for(const id in counts){
-    const lim=cards[id].rarity==='legendary'?RULES.legendaryCopies:RULES.copies;
+    const lim=cards[id].rarity==='legendary'||cards[id].rarity==='hero'?RULES.legendaryCopies:RULES.copies;
     if(counts[id]>lim) errors.push(cards[id].name+': '+counts[id]+' copies (max '+lim+')');
     else if(owned&&counts[id]>(owned[id]||0)) errors.push(cards[id].name+': you own '+(owned[id]||0));
   }
+  const heroes=Object.keys(counts).filter(id=>cards[id]&&cards[id].rarity==='hero');
+  if(heroes.length>RULES.heroes) errors.push('Only '+RULES.heroes+' hero per deck ('+heroes.length+')');
   return {ok:!errors.length, errors, count:list.length, counts};
 }
 

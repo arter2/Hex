@@ -80,11 +80,12 @@ select,.filters input{font:600 14px var(--font-b); color:var(--text); background
 .btn.fam{color:var(--c); font-size:14px; padding:8px 4px;}
 .grid.reveal{grid-template-columns:repeat(auto-fill,minmax(112px,1fr)); margin:10px 0;}
 .grid.reveal .card{aspect-ratio:auto; min-height:150px;}
+.grid.reveal .card .art{height:110px;}
 .card.flip{animation:flip .45s both;}
 @keyframes flip{from{transform:rotateY(90deg) scale(.8); opacity:0;} to{transform:none; opacity:1;}}
 .panel.narrow{max-width:280px;}
 #dtCard .card{aspect-ratio:auto; min-height:260px; font-size:18px;}
-.card .art{display:block; width:100%; height:64px; object-fit:contain; image-rendering:pixelated; margin:2px 0; background:rgba(0,0,0,.25); border-radius:6px;}
+.card .art{display:block; width:100%; height:72px; object-fit:contain; image-rendering:pixelated; margin:2px 0; background:rgba(0,0,0,.25); border-radius:6px;}
 .card div.art{background:rgba(0,0,0,.35);}
 .slots .card .art{height:40px;}
 #dtCard .card .art{height:160px;}
@@ -105,6 +106,12 @@ select,.filters input{font:600 14px var(--font-b); color:var(--text); background
 .card .cp small{font-size:12px; color:var(--c); white-space:nowrap;}
 .card .badge{position:absolute; top:4px; right:4px; background:#fff; color:#120a1e; font-weight:800; font-size:12px; border-radius:99px; padding:0 6px;}
 .card.leg{box-shadow:0 0 12px color-mix(in srgb,var(--c) 70%,transparent);}
+/* heroes: a gold frame that shimmers, so the rarest cards are easy to spot */
+.card.hero{border-color:#ffd966!important; box-shadow:0 0 0 1px #ffd966,0 0 16px color-mix(in srgb,var(--c) 70%,#ffd966);
+  background-image:linear-gradient(115deg,transparent 30%,rgba(255,230,140,.22) 45%,transparent 60%),linear-gradient(160deg,color-mix(in srgb,var(--c) 30%,#2a1e10) 0%,#140e28 60%);
+  background-size:250% 100%,100% 100%; animation:heroShine 3.2s linear infinite;}
+.card.hero .cp small{color:#ffd966;}
+@keyframes heroShine{from{background-position:120% 0,0 0} to{background-position:-130% 0,0 0}}
 .card.picked{opacity:.35;}
 .card .ord{position:absolute; top:-2px; left:50%; transform:translateX(-50%); background:var(--gold); color:#120a1e; font-weight:800; width:22px; height:22px; border-radius:0 0 8px 0; display:grid; place-items:center;}
 
@@ -233,3 +240,4 @@ select,.filters input{font:600 14px var(--font-b); color:var(--text); background
   .slots .card,.slot{min-height:84px!important;}
   #btnFight{font-size:17px; padding:8px;}
 }
+.card.hero.flip{animation:flip .45s both,heroShine 3.2s linear infinite;}

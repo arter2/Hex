@@ -1,4 +1,4 @@
-// Writes each card's 32 x 32 pixel art to deck/art/<card id>.csv (32 rows of 32 hex colors),
+// Writes each card's 64 x 64 pixel art to deck/art/<card id>.csv (64 rows of 64 hex colors),
 // plus deck/art/index.csv listing every card and its file. Run: node deck/tools/export-art.js
 const fs=require('fs'), path=require('path');
 const D=require('../cards.js'); Object.assign(global,D);

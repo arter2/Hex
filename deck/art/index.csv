@@ -799,3 +799,9 @@ brown_machine_87,Forge Turret,brown,machine,common,machine:Turret,brown_machine_
 brown_machine_88,Piston Automaton,brown,machine,uncommon,machine:Automaton,brown_machine_88.csv
 brown_machine_89,Cog Mortar,brown,machine,common,machine:Mortar,brown_machine_89.csv
 brown_machine_90,Oiled Bulwark,brown,machine,uncommon,machine:Bulwark,brown_machine_90.csv
+hero_pyra,"Pyra, the Ember Queen",fire,hero,hero,hero:pyra,hero_pyra.csv
+hero_ysolde,Ysolde of the Rime,frost,hero,hero,hero:ysolde,hero_ysolde.csv
+hero_volta,Captain Volta,storm,hero,hero,hero:volta,hero_volta.csv
+hero_thorn,The Thornfather,verdant,hero,hero,hero:thornfather,hero_thorn.csv
+hero_aurel,Sir Aurelion,light,hero,hero,hero:aurelion,hero_aurel.csv
+hero_widow,The Nightwidow,shadow,hero,hero,hero:widow,hero_widow.csv

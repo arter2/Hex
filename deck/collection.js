@@ -5,7 +5,7 @@ const SAVE_KEY='hexmancers-deck-v3';
 const DECK_SLOTS=5;
 const PACK_PRICE={booster:100, family:150};
 
-function copyLimit(c){ return c.rarity==='legendary'?RULES.legendaryCopies:RULES.copies; }
+function copyLimit(c){ return c.rarity==='legendary'||c.rarity==='hero'?RULES.legendaryCopies:RULES.copies; }
 
 // Deeper fights shift drops toward rare and legendary.
 function rarityWeights(depth){
@@ -25,17 +25,25 @@ function rollCard(opts,rng){
   const pool=CARD_LIST.filter(c=>c.rarity===rarity&&(!opts.color||c.color===opts.color));
   return pool[Math.floor(rng()*pool.length)];
 }
-// Each monster drops a card, half the time from its own color; a boss adds a rare or better.
-function battleDrops(enemyColors,depth,boss,rng){
+// Heroes are the rarest find: a boss drops one 4% of the time at depth 1, up to 15% deep down,
+// and a pack holds one 1 time in 100. You get a hero you don't own yet when there is one.
+const heroChance=depth=>Math.min(.15,.03+.012*depth);
+function rollHero(rng,owned){ const fresh=HEROES.filter(h=>!(owned&&owned[h.id])), pool=fresh.length?fresh:HEROES; return pool[Math.floor(rng()*pool.length)]; }
+// Each monster drops a card, half the time from its own color; a boss adds a rare or better,
+// and sometimes a hero.
+function battleDrops(enemyColors,depth,boss,rng,owned){
   rng=rng||Math.random;
   const drops=enemyColors.map(col=>rollCard({depth,color:rng()<.5?col:null},rng));
   if(boss) drops.push(rollCard({depth,min:'rare'},rng));
+  if(boss&&rng()<heroChance(depth)) drops.push(rollHero(rng,owned));
   return drops;
 }
 function battleGold(depth,boss){ return 15+8*depth+(boss?40:0); }
 // Five cards; the last is uncommon or better.
 function openPack(depth,color,rng){
+  rng=rng||Math.random;
   const out=[]; for(let i=0;i<5;i++) out.push(rollCard({depth,color,min:i===4?'uncommon':null},rng));
+  if(rng()<.01){ const h=rollHero(rng); if(!color||h.color===color) out[4]=h; }
   return out;
 }
 
@@ -49,11 +57,13 @@ function autoFill(list,owned,size){
     const own={}; for(const id in owned){ const c=CARDS[id]; if(c&&!COLORS[c.color].neutral) own[c.color]=(own[c.color]||0)+owned[id]; }
     main=main.concat(Object.keys(own).filter(k=>!main.includes(k)).sort((a,b)=>own[b]-own[a])).slice(0,2);
   }
-  const rv={legendary:4,rare:3,uncommon:2,common:1};
+  const rv={hero:5,legendary:4,rare:3,uncommon:2,common:1};
   const score=c=>(main.includes(c.color)?100:COLORS[c.color].neutral?50:0)+rv[c.rarity]*10+c.rank;
   const cands=Object.keys(owned).filter(id=>CARDS[id]).map(id=>CARDS[id]).sort((a,b)=>score(b)-score(a));
   const out=list.slice();
+  let hero=out.some(id=>CARDS[id].rarity==='hero');
   for(const c of cands){
+    if(c.rarity==='hero'){ if(hero) continue; hero=true; }
     while(out.length<size&&(counts[c.id]||0)<Math.min(copyLimit(c),owned[c.id])){ out.push(c.id); counts[c.id]=(counts[c.id]||0)+1; }
     if(out.length>=size) break;
   }
@@ -100,4 +110,4 @@ function loadSave(){
 function writeSave(s){ try{ localStorage.setItem(SAVE_KEY,JSON.stringify(s)); }catch(e){} }
 function clearSave(){ try{ localStorage.removeItem(SAVE_KEY); }catch(e){} }
 
-if(typeof module!=='undefined') module.exports={assignChargeUses,settleChargeUses,chargeLeft,SAVE_KEY,DECK_SLOTS,PACK_PRICE,copyLimit,rarityWeights,rollRarity,rollCard,battleDrops,battleGold,openPack,autoFill,newSave,addCards,ownedUnique};
+if(typeof module!=='undefined') module.exports={heroChance,rollHero,assignChargeUses,settleChargeUses,chargeLeft,SAVE_KEY,DECK_SLOTS,PACK_PRICE,copyLimit,rarityWeights,rollRarity,rollCard,battleDrops,battleGold,openPack,autoFill,newSave,addCards,ownedUnique};

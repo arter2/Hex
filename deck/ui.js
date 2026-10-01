@@ -12,7 +12,7 @@ const esc=s=>String(s).replace(/[&<>"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;'
 
 function cardEl(c,extra,locked){
   const el=document.createElement('button'), col=COLORS[c.color];
-  el.className='card'+(c.rarity==='legendary'?' leg':'')+(locked?' locked':''); el.style.setProperty('--c',col.c);
+  el.className='card'+(c.rarity==='legendary'?' leg':'')+(c.rarity==='hero'?' hero':'')+(locked?' locked':''); el.style.setProperty('--c',col.c);
   const stat=c.pow||(c.boon!=='gauge'&&c.amt)||c.hp||'';
   el.innerHTML=locked?`<div class="ct"><span>${col.icon} ${TYPES[c.type].icon}</span><span class="rank">${c.rank}</span></div><div class="art"></div><div class="cn">???</div><div class="ty">${TYPES[c.type].name}</div><div class="tx"></div><div class="cp"><span></span><small>${RARITY[c.rarity].g}</small></div>`
     :`<div class="ct"><span>${col.icon} ${TYPES[c.type].icon}</span><span class="rank">${c.rank}</span></div>
@@ -204,6 +204,7 @@ function fight(depth){
     onTurn:n=>banner('Turn '+n,'#9b7bff'),
     onWave:i=>banner('Wave '+(i+1),'#ff5d6c'),
     onCombo:label=>banner('✦ '+label.split(':')[0],'#ffe066'),
+    onHero:c=>banner('♔ '+c.name.split(',')[0]+' joins the fight!','#ffe066'),
     onEnd:win=>win?victory():defeat(),
   },{prepare:p=>assignChargeUses(save,p,d.list)});
   hud(true);
@@ -213,11 +214,12 @@ function settleCharges(){ const burned=settleChargeUses(save,B.piles); persist()
   return burned.length?' Burned up: '+burned.map(x=>x.card.name+(x.n>1?' ×'+x.n:'')).join(', ')+'.':''; }
 function victory(){
   const b=B, boss=b.enemies.some(e=>e.def.boss);
-  const gold=battleGold(b.depth,boss), drops=battleDrops(b.enemies.filter(e=>!e.def.minion).map(e=>e.color),b.depth,boss);
+  const gold=battleGold(b.depth,boss), drops=battleDrops(b.enemies.filter(e=>!e.def.minion).map(e=>e.color),b.depth,boss,null,save.owned);
   save.gold+=gold; save.wins++; if(b.depth>=save.deepest) save.deepest=b.depth+1;
   const res=addCards(save,drops); const burnt=settleCharges();
   const depth=b.depth;
-  reveal('Victory!','Depth '+depth+' cleared in '+Math.round(b.time)+'s · +'+gold+' gold · '+res.filter(r=>r.isNew).length+' new cards.'+burnt,res,
+  const hero=drops.find(c=>c.rarity==='hero');
+  reveal(hero?'♔ A hero joins you!':'Victory!',(hero?hero.name+' answers your call. ':'')+'Depth '+depth+' cleared in '+Math.round(b.time)+'s · +'+gold+' gold · '+res.filter(r=>r.isNew).length+' new cards.'+burnt,res,
     [['Camp',()=>{ B=null; pickDepth=depth+1; openCamp(); },true],['Depth '+(depth+1)+' →',()=>fight(depth+1)]]);
 }
 function defeat(){
@@ -317,6 +319,7 @@ function hud(force){
   set('gauge',Math.round(b.gauge*10),()=>$('#gaugeBar').style.width=(b.gauge/GAUGE_MAX*100)+'%');
   const buffs=[]; if(p.barrier>0) buffs.push('🛡 '+Math.ceil(p.barrier)+' · '+p.shieldTurns+(p.shieldTurns>1?' turns':' turn')); if(p.dodge) buffs.push('💨 Dodge'); if(p.invT>0) buffs.push('🌀 Phase');
   if(p.powerT>0) buffs.push('⚡ Wand ×2.5 '+Math.ceil(p.powerT)+'s'); if(p.pactT>0) buffs.push('☾ Pact '+Math.ceil(p.pactT)+'s'); if(p.courageT>0) buffs.push('☀ Courage '+Math.ceil(p.courageT)+'s'); if(p.intervene) buffs.push('✟ Intervention');
+  if(p.hero&&p.hero.hp>0) buffs.unshift('♔ '+p.hero.card.name.split(',')[0]+' · '+p.hero.turns+(p.hero.turns>1?' turns':' turn'));
   if(p.hasteT>0) buffs.push('🌬 Haste '+Math.ceil(p.hasteT)+'s'); if(p.regenT>0) buffs.push('🌿 Regen '+Math.ceil(p.regenT)+'s');
   set('buffs',buffs.join('   '),v=>$('#buffs').textContent=v);
   set('queue',pl.queue.map(c=>c.uid+':'+(c.left==null?'':c.left)).join(','),()=>{

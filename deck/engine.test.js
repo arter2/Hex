@@ -60,11 +60,12 @@ t('no reshuffle: an emptied deck leaves only the wand', ()=>{
   E.openCustom(p); assert.strictEqual(p.hand.length,0);
 });
 
-t('800 cards: 100 per family, doc type split and 40/30/20/10 rarity', ()=>{
-  assert.strictEqual(D.CARD_LIST.length,800);
-  assert.strictEqual(new Set(D.CARD_LIST.map(c=>c.name)).size,800);
+t('800 cards: 100 per family, doc type split and 40/30/20/10 rarity, plus 6 heroes', ()=>{
+  assert.strictEqual(D.CARD_LIST.length,806); assert.strictEqual(D.HEROES.length,6);
+  assert.strictEqual(new Set(D.CARD_LIST.map(c=>c.name)).size,806);
+  assert.deepStrictEqual(D.HEROES.map(h=>h.color).sort(),D.SIX.slice().sort(),'one hero per color');
   for(const fam of Object.keys(D.COLORS)){
-    const cs=D.CARD_LIST.filter(c=>c.color===fam); assert.strictEqual(cs.length,100,fam);
+    const cs=D.CARD_LIST.filter(c=>c.color===fam&&c.rarity!=='hero'); assert.strictEqual(cs.length,100,fam);
     const plan=D.TYPE_PLAN[D.COLORS[fam].neutral?fam:'color'];
     for(const t in plan) assert.strictEqual(cs.filter(c=>c.type===t).length,plan[t],fam+' '+t);
     for(const r in D.RARITY_PLAN) assert.strictEqual(cs.filter(c=>c.rarity===r).length,D.RARITY_PLAN[r],fam+' '+r);
@@ -137,9 +138,9 @@ t('everything a card puts on the board has a turn limit and HP', ()=>{
     if(k==='ward'&&c.ward==='barrier') assert(c.amt>0, c.id+' shield');
     if(k!=='boon') assert(c.dur==null, c.id+' should count turns, not seconds'); }
 });
-t('every card has 32 x 32 pixel art of hex colors, all unique, and the CSV files match', ()=>{
+t('every card has 64 x 64 pixel art of hex colors, all unique, and the CSV files match', ()=>{
   const A=require('./art.js'), fs=require('fs'), path=require('path');
-  for(const c of D.CARD_LIST){ const a=A.cardArt(c); assert.strictEqual(a.length,32,c.id); assert(a.every(r=>r.length===32&&r.every(x=>/^#[0-9a-f]{6}$/.test(x))),c.id);
+  for(const c of D.CARD_LIST){ const a=A.cardArt(c); assert.strictEqual(a.length,64,c.id); assert(a.every(r=>r.length===64&&r.every(x=>/^#[0-9a-f]{6}$/.test(x))),c.id);
     const f=path.join(__dirname,'art',c.id+'.csv'); assert(fs.existsSync(f),c.id+' csv missing (run node deck/tools/export-art.js)');
     assert.strictEqual(fs.readFileSync(f,'utf8'),A.artCSV(c),c.id+' csv is stale (run node deck/tools/export-art.js)'); }
   assert.strictEqual(new Set(D.CARD_LIST.map(c=>A.artCSV(c))).size,D.CARD_LIST.length,'every picture is different');
@@ -167,4 +168,16 @@ t('drag and drop: reorder, move between hand and queue, swap into a full queue',
   E.placeCard(p,b,'hand',0); assert.strictEqual(p.hand[0].uid,b); assert.strictEqual(p.queue.length,2);
   const last=p.hand.at(-1).uid; E.placeCard(p,last,'hand',1); assert.strictEqual(p.hand[1].uid,last);
   assert.strictEqual(p.hand.length+p.queue.length,7);
+});
+t('heroes: one per deck, one copy, rare drops that favor new ones', ()=>{
+  const s=C.newSave(D.STARTERS[0]), list=s.decks[0].list.slice(0,58);
+  assert(E.validateDeck(list.concat(['hero_pyra']),D.CARDS).ok);
+  assert(E.validateDeck(list.concat(['hero_pyra','hero_volta']),D.CARDS).errors.some(e=>e.startsWith('Only 1 hero')));
+  assert(E.validateDeck(list.concat(['hero_pyra','hero_pyra']),D.CARDS).errors.some(e=>e.startsWith('Pyra')));
+  assert(C.heroChance(1)<C.heroChance(9)&&C.heroChance(40)<=.15);
+  let heroes=0; for(let i=0;i<2000;i++) heroes+=C.battleDrops(['fire'],5,true,rng).filter(c=>c.rarity==='hero').length;
+  assert(heroes>60&&heroes<240,'about 9% of boss fights at depth 5: '+heroes);
+  assert(C.battleDrops(['fire'],5,false,rng).every(c=>c.rarity!=='hero'),'only bosses drop heroes');
+  const owned={}; D.HEROES.slice(0,5).forEach(h=>owned[h.id]=1); assert.strictEqual(C.rollHero(rng,owned).id,D.HEROES[5].id);
+  owned.hero_widow=1; owned.hero_aurel=1; const f=C.autoFill([],Object.assign({},s.owned,owned)); assert.strictEqual(f.filter(id=>D.CARDS[id].rarity==='hero').length,1);
 });

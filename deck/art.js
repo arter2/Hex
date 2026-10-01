@@ -1,18 +1,20 @@
-/* Hexmancers deck prototype — pixel art for every card, 32 x 32.
+/* Hexmancers deck prototype — pixel art for every card (64 x 64) and every unit on the board (32 x 32).
    A card's picture is composed, not stamped:
    - the subject comes from the card's own name (a Lance, a Fang, a Censer, an Owl, a Trebuchet),
      falling back to what the card does;
    - its type sets the staging (a wedge fans three weapons, missiles scatter copies, a digger
      bursts from the ground, a lob shows its landing pattern);
-   - its color family sets the scene (lava cavern, snowy peaks, storm sky, forest, sun rays,
-     moonlit fog, stone cave, workshop) and the particles;
-   - keywords add details (flames, bubbles, stars, runes), rarity adds the frame and a glow.
+   - its color family sets the scene, one of three per color (a lava cavern, a volcano or a
+     burning forest for Fire; peaks, an ice cave or an aurora for Frost...);
+   - the words in its name add effects (Magma veins, Rime ice, Thistle thorns and flowers,
+     Raven feathers, Brass plating, Volt arcs...);
+   - keywords add corner badges, rarity adds a glow and the frame.
    Shading comes from the top left, with a dark outline. Variation is seeded from the card id,
-   so a card always has the same picture. cardArt(card) returns 32 rows of 32 hex colors;
+   so a card always has the same picture. cardArt(card) returns 64 rows of 64 hex colors;
    tools/export-art.js writes them to CSV files. */
 
 (function(root){
-const ART_SIZE=32, N=ART_SIZE;
+const ART_SIZE=64, SPR=32;   // card art is 64 x 64, battle sprites 32 x 32
 
 /* ---------------- colors ---------------- */
 const hexRgb=h=>{ const v=parseInt(h.slice(1),16); return [v>>16&255,v>>8&255,v&255]; };
@@ -36,18 +38,28 @@ const COAT={Imp:'#d0463a',Wolf:'#8a98b8',Hound:'#b08a5a',Owl:'#9a7048',Toad:'#5a
   Rat:'#8a7a70',Boar:'#8a5a3a',Hawk:'#c09a5a',Mole:'#6a4a3a',Beetle:'#3a9a8a',Serpent:'#4a9a4a',Bear:'#7a5030',Fox:'#e07a2a',Ogre:'#7a8a3a',Sprite:'#e080c0'};
 const MATS={g:'#8a8398', t:'#8a5a2c', w:'#e8e4f0', k:'#3a3448', y:'#e8b830', s:'#7a7486', f:'#8a5a3a', l:'#4f9a3a', r:'#c02a3a', p:'#8a4ad0', x:'#a8d8f0', b:'#e8dcc0'};
 
-/* ---------------- drawing on a 32 x 32 grid of materials ---------------- */
-let G=null;   // the subject layer being drawn
-function px(x,y,m){ x=Math.floor(x); y=Math.floor(y); if(x>=0&&x<N&&y>=0&&y<N) G[y][x]=m; }
-function rect(x0,y0,x1,y1,m){ for(let y=Math.round(y0);y<=Math.round(y1);y++) for(let x=Math.round(x0);x<=Math.round(x1);x++) px(x,y,m); }
-function ell(cx,cy,rx,ry,m){ for(let y=0;y<N;y++) for(let x=0;x<N;x++) if(((x+.5-cx)/rx)**2+((y+.5-cy)/ry)**2<=1) G[y][x]=m; }
+/* ---------------- drawing on a grid of materials ----------------
+   Shapes are given in 32-unit design coordinates and drawn at U pixels per unit: card art at
+   U = 2 (64 x 64), battle sprites at U = 1 (32 x 32). Curves, circles and slopes are tested at
+   the finer pixels, so a card's outlines come out smoother and its details finer. */
+let G=null, GN=32, U=1;   // the subject layer being drawn, its size in pixels, pixels per unit
+function grid(n,u){ GN=n; U=u; G=Array.from({length:n},()=>Array(n).fill(null)); return G; }
+function hp(X,Y,m){ if(X>=0&&X<GN&&Y>=0&&Y<GN) G[Y][X]=m; }   // one fine pixel
+function px(x,y,m){ const X=Math.floor(x)*U, Y=Math.floor(y)*U; for(let j=0;j<U;j++) for(let i=0;i<U;i++) hp(X+i,Y+j,m); }
+function rect(x0,y0,x1,y1,m){ for(let Y=Math.round(y0)*U;Y<=Math.round(y1)*U+U-1;Y++) for(let X=Math.round(x0)*U;X<=Math.round(x1)*U+U-1;X++) hp(X,Y,m); }
+// visit the fine pixels whose centres fall in a design-space box
+function box(x0,y0,x1,y1,fn){ const X0=Math.max(0,Math.floor(x0*U)), X1=Math.min(GN-1,Math.ceil(x1*U)), Y0=Math.max(0,Math.floor(y0*U)), Y1=Math.min(GN-1,Math.ceil(y1*U));
+  for(let Y=Y0;Y<=Y1;Y++) for(let X=X0;X<=X1;X++) fn(X,Y,(X+.5)/U,(Y+.5)/U); }
+function ell(cx,cy,rx,ry,m){ box(cx-rx,cy-ry,cx+rx,cy+ry,(X,Y,x,y)=>{ if(((x-cx)/rx)**2+((y-cy)/ry)**2<=1) G[Y][X]=m; }); }
 function circ(cx,cy,r,m){ ell(cx,cy,r,r,m); }
-function ringp(cx,cy,r,w,m){ for(let y=0;y<N;y++) for(let x=0;x<N;x++){ const d=Math.hypot(x+.5-cx,y+.5-cy); if(d<=r&&d>=r-w) G[y][x]=m; } }
-function poly(pts,m){ for(let y=0;y<N;y++) for(let x=0;x<N;x++){ const X=x+.5, Y=y+.5; let ins=false;
-  for(let i=0,j=pts.length-1;i<pts.length;j=i++){ const [xi,yi]=pts[i], [xj,yj]=pts[j]; if((yi>Y)!==(yj>Y)&&X<(xj-xi)*(Y-yi)/(yj-yi)+xi) ins=!ins; }
-  if(ins) G[y][x]=m; } }
-function seg(x0,y0,x1,y1,w,m){ const n=Math.ceil(Math.hypot(x1-x0,y1-y0)*2)+1;
-  for(let i=0;i<=n;i++){ const x=x0+(x1-x0)*i/n, y=y0+(y1-y0)*i/n; if(w<=1) px(x,y,m); else circ(x,y,w/2,m); } }
+function ringp(cx,cy,r,w,m){ box(cx-r,cy-r,cx+r,cy+r,(X,Y,x,y)=>{ const d=Math.hypot(x-cx,y-cy); if(d<=r&&d>=r-w) G[Y][X]=m; }); }
+function poly(pts,m){ const xs=pts.map(p=>p[0]), ys=pts.map(p=>p[1]);
+  box(Math.min(...xs),Math.min(...ys),Math.max(...xs),Math.max(...ys),(X,Y,x,y)=>{ let ins=false;
+    for(let i=0,j=pts.length-1;i<pts.length;j=i++){ const [xi,yi]=pts[i], [xj,yj]=pts[j]; if((yi>y)!==(yj>y)&&x<(xj-xi)*(y-yi)/(yj-yi)+xi) ins=!ins; }
+    if(ins) G[Y][X]=m; }); }
+// a thin line is one design pixel wide at U = 1, and a crisp fine-pixel stroke at U = 2
+function seg(x0,y0,x1,y1,w,m){ const n=Math.ceil(Math.hypot(x1-x0,y1-y0)*2*U)+1;
+  for(let i=0;i<=n;i++){ const x=x0+(x1-x0)*i/n, y=y0+(y1-y0)*i/n; if(w<=1){ if(U===1) px(x,y,m); else { const X=Math.floor(x*U), Y=Math.floor(y*U); hp(X,Y,m); hp(X+1,Y,m); hp(X,Y+1,m); } } else circ(x,y,w/2,m); } }
 function curve(pts,w,m){ for(let i=0;i<pts.length-1;i++) seg(...pts[i],...pts[i+1],w,m); }
 function quad(p0,p1,p2,w,m,steps){ const out=[]; steps=steps||14; for(let i=0;i<=steps;i++){ const t=i/steps, u=1-t;
   out.push([u*u*p0[0]+2*u*t*p1[0]+t*t*p2[0], u*u*p0[1]+2*u*t*p1[1]+t*t*p2[1]]); } curve(out,w,m); }
@@ -101,7 +113,7 @@ const THING={
   aegis(){ circ(16,16,11,'m'); ringp(16,16,11,2,'y'); circ(16,16,4,'a'); for(let i=0;i<8;i++){ const [x,y]=at(16,16,i*Math.PI/4,8); px(x,y,'y'); } },
   shield(){ poly([[6,5],[26,5],[26,16],[16,28],[6,16]],'m'); poly([[6,5],[26,5],[26,7],[6,7]],'y'); rect(15,8,17,22,'a'); rect(10,12,22,14,'a'); },
   ward(){ ringp(16,17,12,2,'a'); ringp(16,17,8,1,'M'); poly([[16,8],[23,21],[9,21]],'m'); circ(16,17,2,'W'); },
-  barrier(){ for(let y=0;y<N;y++) for(let x=0;x<N;x++){ const d=Math.hypot(x+.5-16,y+.5-26); if(d<=14&&d>=12.5&&y<26) G[y][x]='a'; else if(d<12.5&&y<26&&(x+y)%4===0) G[y][x]='M'; } rect(2,26,29,28,'s'); },
+  barrier(){ box(2,12,30,26,(X,Y,x,y)=>{ const d=Math.hypot(x-16,y-26); if(d<=14&&d>=12.5&&y<26) G[Y][X]='a'; else if(d<12.5&&y<26&&(X+Y)%(4*U)===0) G[Y][X]='M'; }); rect(2,26,29,28,'s'); },
   veil(){ for(let x=6;x<27;x++){ const w=Math.sin(x*.7)*1.5; rect(x,5+w*.3,x,26+w,x%4<2?'a':'m'); } rect(4,3,28,5,'y'); },
   screen(){ for(let r=0;r<4;r++) for(let c=0;c<4;c++){ const x=7+c*6+(r%2)*3, y=7+r*5; poly([[x-3,y],[x-1.5,y-2.5],[x+1.5,y-2.5],[x+3,y],[x+1.5,y+2.5],[x-1.5,y+2.5]],(r+c)%3?'m':'a'); } },
   mantle(){ poly([[9,5],[23,5],[28,27],[16,24],[4,27]],'m'); rect(9,5,23,7,'y'); circ(16,7,2,'a'); seg(16,9,16,23,1,'k'); },
@@ -257,92 +269,365 @@ function machine(noun,ai){
   base(); circ(15,18,6,'m'); seg(16,16,28,10,3,'k'); px(13,15,'W');
 }
 
-/* ---------------- scenes ---------------- */
+/* ---------------- card art at 64 x 64 ----------------
+   Fine pixels from here on: AN = 64. A card's picture is built in layers:
+   scene (one of three per color) -> background effects -> a glow for rarer cards -> the
+   subject's ground shadow -> the subject, shaded as a solid with textures per material ->
+   outline -> effects from the words in its name -> keyword badges -> frame. */
+const AN=ART_SIZE;
 const BAYER=[[0,8,2,10],[12,4,14,6],[3,11,1,9],[15,7,13,5]];
-function scene(fam,rng,groundY){
-  const F=FAM[fam], out=Array.from({length:N},()=>Array(N).fill(null));
-  for(let y=0;y<N;y++) for(let x=0;x<N;x++){ const t=y/(N-1); out[y][x]=(BAYER[y%4][x%4]/16)<t?F.sky[1]:F.sky[0]; }
-  const put=(x,y,c)=>{ x=Math.floor(x); y=Math.floor(y); if(x>=0&&x<N&&y>=0&&y<N) out[y][x]=c; };
-  const dark=artMix(F.sky[0],'#000000',.3), mid=artMix(F.sky[1],F.m,.25);
+const dith=(x,y,t)=>BAYER[y&3][x&3]/16<t;
+function hash2(x,y,s){ let h=Math.imul((x|0)*374761393+(y|0)*668265263+(s|0)*1442695041,1274126177); h^=h>>>13; h=Math.imul(h,1103515245); return ((h^h>>>16)>>>0)/4294967296; }
+function canvasOf(c0){ return Array.from({length:AN},()=>Array(AN).fill(c0||null)); }
+// drawing straight onto a color layer, in fine pixels
+function painter(out){
+  const put=(x,y,c)=>{ x=Math.floor(x); y=Math.floor(y); if(x>=0&&x<AN&&y>=0&&y<AN&&c) out[y][x]=c; };
+  const get=(x,y)=>out[Math.max(0,Math.min(AN-1,Math.floor(y)))][Math.max(0,Math.min(AN-1,Math.floor(x)))];
+  const P={put,get,
+    rect:(x0,y0,x1,y1,c)=>{ for(let y=Math.floor(y0);y<=y1;y++) for(let x=Math.floor(x0);x<=x1;x++) put(x,y,c); },
+    circ:(cx,cy,r,c,t)=>{ for(let y=Math.floor(cy-r);y<=cy+r;y++) for(let x=Math.floor(cx-r);x<=cx+r;x++) if((x+.5-cx)**2+(y+.5-cy)**2<=r*r&&(t==null||dith(x,y,t))) put(x,y,c); },
+    ell:(cx,cy,rx,ry,c,t)=>{ for(let y=Math.floor(cy-ry);y<=cy+ry;y++) for(let x=Math.floor(cx-rx);x<=cx+rx;x++) if(((x+.5-cx)/rx)**2+((y+.5-cy)/ry)**2<=1&&(t==null||dith(x,y,t))) put(x,y,typeof c==='function'?c(x,y):c); },
+    poly:(pts,c)=>{ const ys=pts.map(p=>p[1]), xs=pts.map(p=>p[0]);
+      for(let y=Math.floor(Math.min(...ys));y<=Math.max(...ys);y++) for(let x=Math.floor(Math.min(...xs));x<=Math.max(...xs);x++){ const X=x+.5, Y=y+.5; let ins=false;
+        for(let i=0,j=pts.length-1;i<pts.length;j=i++){ const [xi,yi]=pts[i], [xj,yj]=pts[j]; if((yi>Y)!==(yj>Y)&&X<(xj-xi)*(Y-yi)/(yj-yi)+xi) ins=!ins; }
+        if(ins) put(x,y,typeof c==='function'?c(x,y):c); } },
+    line:(x0,y0,x1,y1,c)=>{ const n=Math.ceil(Math.hypot(x1-x0,y1-y0))+1; for(let i=0;i<=n;i++) put(x0+(x1-x0)*i/n,y0+(y1-y0)*i/n,c); },
+    tint:(x,y,c,t)=>{ x=Math.floor(x); y=Math.floor(y); if(x>=0&&x<AN&&y>=0&&y<AN) out[y][x]=artMix(out[y][x],c,t); },
+  };
+  return P;
+}
+const lerp=(a,b,t)=>a+(b-a)*t;
+
+/* ---------------- scenes: three per color ---------------- */
+function scene(fam,rng,gy,v){
+  const F=FAM[fam], out=canvasOf(), P=painter(out);
+  const sky0=F.sky[0], sky1=F.sky[1], dark=artMix(sky0,'#000000',.35), mid=artMix(sky1,F.m,.22), far=artMix(sky1,F.m,.1);
+  // a dithered sky, darker at the top
+  for(let y=0;y<AN;y++){ const t=y/gy*4; for(let x=0;x<AN;x++){ const k=Math.min(4,Math.floor(t)+(dith(x,y,t%1)?1:0)); out[y][x]=artMix(sky0,sky1,k/4); } }
+  const ground=(fn)=>{ for(let y=gy;y<AN;y++) for(let x=0;x<AN;x++) out[y][x]=fn(x,y,(y-gy)/(AN-gy)); };
+  const hills=(base,amp,freq,col,ph)=>{ for(let x=0;x<AN;x++){ const h=base-amp*(.5+.5*Math.sin(x*freq+ph))-amp*.4*Math.sin(x*freq*2.3+ph*1.7); for(let y=Math.floor(h);y<gy;y++) P.put(x,y,col); } };
+  const stars=(n,c)=>{ for(let i=0;i<n;i++){ const x=rng()*AN, y=rng()*gy*.6; P.put(x,y,c||'#ffffff'); } };
   switch(fam){
-    case 'fire': // cavern with a lava pool
-      for(let x=0;x<N;x++){ const h=3+Math.sin(x*.5+rng()*6)*2; for(let y=0;y<h;y++) put(x,y,dark); }
-      for(let y=groundY;y<N;y++) for(let x=0;x<N;x++) put(x,y,(x+y*3)%9===0?artMix(F.glow,'#3a0a04',.3):artMix(F.m,'#2a0604',.62+.1*Math.sin(x*.8+y)));
+    case 'fire':
+      if(v===0){ // lava cavern: stalactites, glowing pool
+        for(let i=0;i<9;i++){ const x=rng()*AN, w=3+rng()*5, h=6+rng()*14; P.poly([[x-w,0],[x+w,0],[x,h]],dark); }
+        hills(gy-4,6,.15,mid,rng()*6);
+        ground((x,y,t)=>{ const n=Math.sin(x*.4+y*.9)+Math.sin(x*.13-y*.5); return n>1.1?F.glow:n>.6?artMix(F.m,'#ffcc33',.3):artMix(F.m,'#2a0604',.55+.15*t); });
+      } else if(v===1){ // a volcano and its ash plume
+        const cx=12+rng()*40, cone=artMix('#4a2c24',sky1,.25); P.poly([[cx-34,gy],[cx-6,gy-28],[cx+6,gy-28],[cx+34,gy]],cone);
+        for(let i=0;i<8;i++) P.circ(cx+(rng()-.5)*10+i*1.5,gy-32-i*3,3+i*.7,artMix(sky1,'#3a2a2a',.5),.7);
+        for(const d of [-1,1]){ let x=cx+d*3; for(let y=gy-28;y<gy;y++){ x+=d*.35+(rng()-.5)*.8; P.put(x,y,F.glow); P.put(x+1,y,artMix(F.m,'#ffcc33',.4)); } }
+        P.ell(cx,gy-28,6,1.5,F.glow);
+        ground((x,y,t)=>hash2(x,y,3)<.06?F.glow:(x+y*2)%11===0?artMix(F.m,'#1a0402',.4):artMix('#2a1a1a',F.m,.12+.1*t));
+      } else { // burning forest
+        for(let i=0;i<7;i++){ const x=rng()*AN, h=14+rng()*16; P.rect(x-1,gy-h,x+1,gy,dark); for(let k=0;k<4;k++) P.poly([[x-7+k,gy-h+5+k*4],[x,gy-h-2+k*4],[x+7-k,gy-h+5+k*4]],dark); }
+        for(let x=0;x<AN;x++) for(let y=gy-10;y<gy;y++) if(dith(x,y,(y-gy+10)/14)) P.tint(x,y,F.glow,.35);
+        ground((x,y)=>hash2(x,y,5)<.05?F.a:(x*3+y)%7===0?'#3a1408':'#2a1008');
+      }
       break;
-    case 'frost': // mountains and snow
-      for(let x=0;x<N;x++){ const h=groundY-6-Math.abs(((x+rng()*3)%16)-8)*1.2; for(let y=Math.floor(h);y<groundY;y++) put(x,y,y<h+2?'#e8f4ff':mid); }
-      for(let y=groundY;y<N;y++) for(let x=0;x<N;x++) put(x,y,(BAYER[y%4][x%4]>12)?'#b8d4ea':F.ground);
+    case 'frost':
+      if(v===0){ // snowy peaks, a far range and a near one
+        for(const [b,a,f,col] of [[gy-6,22,.09,far],[gy,14,.14,mid]]){ const ph=rng()*6;
+          for(let x=0;x<AN;x++){ const tri=1-Math.abs(((x*f+ph)%2+2)%2-1), h=b-a*tri; for(let y=Math.floor(h);y<b;y++) P.put(x,y,y<h+a*.3*tri?(dith(x,y,.8)?'#eef8ff':'#c8e0f4'):col); } }
+        ground((x,y,t)=>dith(x,y,.3+t*.4)?'#b8d4ea':F.ground);
+      } else if(v===1){ // ice cave
+        for(let i=0;i<12;i++){ const x=rng()*AN, w=1.5+rng()*3, h=5+rng()*14; P.poly([[x-w,0],[x+w,0],[x,h]],i%3?mid:'#cfeaff'); }
+        for(let i=0;i<5;i++){ const x=rng()*AN, h=6+rng()*10; P.poly([[x-3,gy],[x,gy-h],[x+3,gy]],artMix(F.m,'#ffffff',.3)); }
+        ground((x,y)=>(x-y*2)%9===0?'#ffffff':dith(x,y,.5)?'#9ccbe8':'#c8e4f6');
+      } else { // aurora over a frozen lake
+        stars(18);
+        for(let b=0;b<3;b++){ const y0=8+b*5+rng()*4, col=['#6affc8','#6ad0ff','#b08aff'][b]; for(let x=0;x<AN;x++){ const y=y0+Math.sin(x*.12+b*2)*4; for(let k=0;k<7;k++) if(dith(x,y+k,.5-k*.07)) P.tint(x,y+k,col,.6); } }
+        hills(gy-2,4,.2,dark,rng()*6);
+        ground((x,y,t)=>{ const r=out[Math.max(0,gy-(y-gy)*2-2)][x]; return dith(x,y,.25)?'#dff4ff':artMix(r,'#9fd0ee',.45); });
+      }
       break;
-    case 'storm': // cloud bank and a distant strike
-      for(let i=0;i<5;i++){ const cx=rng()*N, cy=3+rng()*6; for(let y=0;y<N;y++) for(let x=0;x<N;x++) if(((x-cx)/7)**2+((y-cy)/3)**2<1) put(x,y,mid); }
-      { let x=4+rng()*24; for(let y=8;y<groundY;y++){ x+=(rng()-.5)*2; put(x,y,artMix(F.a,F.sky[1],.3)); } }
-      for(let y=groundY;y<N;y++) for(let x=0;x<N;x++) put(x,y,F.ground);
+    case 'storm':
+      if(v===0){ // cloud bank and a strike
+        for(let i=0;i<7;i++) P.ell(rng()*AN,4+rng()*14,10+rng()*8,4+rng()*3,mid);
+        { let x=8+rng()*48; for(let y=14;y<gy;y++){ x+=(rng()-.5)*3; P.put(x,y,'#ffffff'); P.put(x+1,y,F.glow); } }
+        ground((x,y)=>(x+y)%13===0?artMix(F.ground,F.m,.3):F.ground);
+      } else if(v===1){ // rain on a lone spire
+        const sx=10+rng()*44; P.poly([[sx-4,gy],[sx-1,gy-30],[sx+1,gy-30],[sx+4,gy]],dark); P.line(sx,gy-30,sx+3,gy-40,F.glow);
+        for(let i=0;i<70;i++){ const x=rng()*AN, y=rng()*gy; P.line(x,y,x-2,y+4,artMix(sky1,'#c8d4ff',.35)); }
+        ground((x,y)=>dith(x,y,.15)?artMix(F.ground,'#8a86ff',.3):F.ground);
+      } else { // a distant twister over windswept grass
+        const tx=10+rng()*44; for(let y=6;y<gy;y++){ const w=(gy-y)*.25+1, ox=Math.sin(y*.3)*3; for(let x=-w;x<=w;x++) if(dith(Math.floor(tx+ox+x),y,.6)) P.put(tx+ox+x,y,mid); }
+        for(let i=0;i<6;i++) P.ell(rng()*AN,3+rng()*6,12,3,mid);
+        ground((x,y)=>(x*5+y*3)%7===0?artMix(F.ground,'#6a8a4a',.5):artMix(F.ground,'#3a4a2a',.4));
+      }
       break;
-    case 'verdant': // tree line and grass
-      for(let i=0;i<6;i++){ const cx=rng()*N, r=4+rng()*4; for(let y=0;y<N;y++) for(let x=0;x<N;x++) if(Math.hypot(x-cx,(y-groundY+4)*1.2)<r) put(x,y,artMix(F.sky[1],F.m,.35)); }
-      for(let y=groundY;y<N;y++) for(let x=0;x<N;x++) put(x,y,(x*7+y*3)%9===0?F.m:F.ground);
+    case 'verdant':
+      if(v===0){ // tree line
+        for(let i=0;i<9;i++){ const cx=rng()*AN, r=6+rng()*8; P.circ(cx,gy-4-r*.5,r,artMix(sky1,F.m,.3+rng()*.15)); }
+        ground((x,y)=>hash2(x,y,7)<.12?F.m:(x*7+y*3)%11===0?artMix(F.m,'#ffffff',.2):F.ground);
+      } else if(v===1){ // deep forest with light shafts
+        for(let i=0;i<8;i++){ const x=rng()*AN, w=2+rng()*3; P.rect(x-w,0,x+w,gy,artMix(dark,'#2a1a0a',.4)); }
+        for(let i=0;i<3;i++){ const x=rng()*AN; for(let y=0;y<gy;y++) for(let k=0;k<5;k++) if(dith(Math.floor(x+y*.5+k),y,.35)) P.tint(x+y*.5+k,y,F.glow,.25); }
+        ground((x,y)=>hash2(x,y,9)<.15?artMix(F.m,'#000000',.2):F.ground);
+        for(let i=0;i<6;i++){ const x=rng()*AN; for(let k=0;k<4;k++) P.line(x,gy+2,x+(k-1.5)*3,gy-4,F.m); }
+      } else { // rolling meadow under a sun
+        P.circ(8+rng()*48,10,6,'#fff6c8');
+        hills(gy-6,6,.08,artMix(F.m,sky1,.45),rng()*6); hills(gy-2,4,.13,artMix(F.m,'#1a3a12',.3),rng()*6);
+        ground((x,y)=>{ const h=hash2(x,y,11); return h<.03?'#ff8ab0':h<.06?'#ffe066':h<.2?F.m:F.ground; });
+      }
       break;
-    case 'light': // sun rays
-      for(let y=0;y<N;y++) for(let x=0;x<N;x++){ const a=Math.atan2(y-4,x-16); if(Math.sin(a*9)>.55&&y<groundY) put(x,y,artMix(out[y][x],F.glow,.18)); }
-      for(let y=groundY;y<N;y++) for(let x=0;x<N;x++) put(x,y,(x+y)%6===0?F.glow:F.ground);
+    case 'light':
+      if(v===0){ // sun rays
+        const sx=16+rng()*32; for(let y=0;y<gy;y++) for(let x=0;x<AN;x++){ const a=Math.atan2(y+6,x-sx); if(Math.sin(a*14)>.5) P.tint(x,y,F.glow,.2); }
+        P.circ(sx,0,9,'#fff6c8',.8);
+        ground((x,y)=>(x+y)%6===0?F.glow:dith(x,y,.3)?artMix(F.ground,'#ffffff',.2):F.ground);
+      } else if(v===1){ // cathedral window between pillars
+        const wx=20+rng()*24; P.rect(wx-9,8,wx+9,gy,artMix(sky0,'#000000',.2)); P.circ(wx,8,9,artMix(sky0,'#000000',.2));
+        const glass=['#ffd966','#8ad0ff','#ff8a8a','#b08aff']; for(let y=1;y<gy-4;y++) for(let x=wx-7;x<=wx+7;x++) if(Math.hypot(x-wx,Math.max(0,8-y))<7.5) P.put(x,y,(x%4===0||y%5===0)?'#2a2030':artMix(glass[(Math.floor(x/4)*3+Math.floor(y/5))%4],sky1,.35));
+        for(const px0 of [wx-15,wx+12]) P.rect(px0,0,px0+3,gy,artMix(F.ground,'#ffffff',.25));
+        ground((x,y)=>((x>>2)+(y>>2))%2?artMix(F.ground,'#ffffff',.25):F.ground);
+      } else { // above the clouds
+        for(let i=0;i<9;i++) P.ell(rng()*AN,gy-2+rng()*4,10+rng()*8,4+rng()*3,'#fff6e8');
+        ground((x,y)=>dith(x,y,.5)?'#fff6e8':'#e8dcc8');
+        for(let i=0;i<5;i++) P.ell(rng()*AN,6+rng()*20,8,2,artMix(sky1,'#ffffff',.3));
+      }
       break;
-    case 'shadow': { // moon and mist
-      const mx=6+rng()*20; for(let y=0;y<N;y++) for(let x=0;x<N;x++) if(Math.hypot(x-mx,y-6)<4) put(x,y,Math.hypot(x-mx-1.5,y-5)<3.2?out[y][x]:'#e8d8f0');
-      for(let y=groundY-3;y<N;y++) for(let x=0;x<N;x++) if(y>=groundY||(BAYER[y%4][x%4]>(groundY-y)*5)) put(x,y,y>=groundY?F.ground:artMix(F.sky[1],F.a,.35));
-      break; }
-    case 'gray': // cave wall and pebbles
-      for(let i=0;i<14;i++){ const x=rng()*N, y=rng()*groundY; put(x,y,mid); put(x+1,y,mid); }
-      for(let y=groundY;y<N;y++) for(let x=0;x<N;x++) put(x,y,(x*5+y*11)%13===0?'#5a5c68':F.ground);
+    case 'shadow':
+      if(v===0){ // moon and mist
+        const mx=10+rng()*44; P.circ(mx,11,7,'#e8d8f0'); P.circ(mx+3,9,6,artMix(sky0,sky1,.3)); stars(14,'#c8a8e0');
+        for(let y=gy-8;y<gy;y++) for(let x=0;x<AN;x++) if(dith(x,y,(y-gy+8)/9)) P.put(x,y,artMix(sky1,F.a,.4));
+        ground((x,y)=>dith(x,y,.12)?artMix(F.ground,F.a,.4):F.ground);
+      } else if(v===1){ // graveyard
+        stars(10,'#c8a8e0');
+        const tree=4+rng()*56; P.line(tree,gy,tree,gy-24,dark); for(let k=0;k<5;k++){ const y=gy-10-k*3, d=k%2?1:-1; P.line(tree,y,tree+d*(6+k),y-5,dark); }
+        for(let i=0;i<5;i++){ const x=rng()*AN, h=5+rng()*5; if(rng()<.5){ P.rect(x-2,gy-h,x+2,gy,mid); P.circ(x,gy-h,2,mid); } else { P.rect(x,gy-h-2,x+1,gy,mid); P.rect(x-2,gy-h+1,x+3,gy-h+2,mid); } }
+        ground((x,y)=>hash2(x,y,13)<.1?artMix(F.ground,'#3a2a3a',.5):F.ground);
+      } else { // castle on the skyline, with bats
+        const cx=8+rng()*48; P.rect(cx-12,gy-14,cx+12,gy,dark); for(const t of [-12,-4,6]) { P.rect(cx+t,gy-24,cx+t+5,gy,dark); P.poly([[cx+t-1,gy-24],[cx+t+2.5,gy-31],[cx+t+6,gy-24]],dark); }
+        for(let i=0;i<5;i++) P.put(cx-10+rng()*20,gy-10-rng()*12,'#ffd966');
+        for(let i=0;i<4;i++){ const x=rng()*AN, y=4+rng()*16; P.put(x,y,dark); P.put(x-1,y-1,dark); P.put(x+1,y-1,dark); P.put(x-2,y,dark); P.put(x+2,y,dark); }
+        ground((x,y)=>(x*3+y*5)%9===0?artMix(F.ground,F.m,.2):F.ground);
+      }
       break;
-    case 'brown': { // workshop planks and a gear
-      for(let y=0;y<groundY;y++) for(let x=0;x<N;x++) if(x%8===0) put(x,y,dark);
-      const gx=4+rng()*24, gy=4+rng()*6; for(let y=0;y<N;y++) for(let x=0;x<N;x++){ const d=Math.hypot(x-gx,y-gy), a=Math.atan2(y-gy,x-gx); if(d<5+(Math.sin(a*8)>0?1:0)&&d>2) put(x,y,mid); }
-      for(let y=groundY;y<N;y++) for(let x=0;x<N;x++) put(x,y,(y-groundY)%3===0?dark:F.ground);
-      break; }
+    case 'gray':
+      if(v===0){ for(let i=0;i<10;i++){ const x=rng()*AN, w=2+rng()*4; P.poly([[x-w,0],[x+w,0],[x,5+rng()*10]],mid); }
+        for(let i=0;i<30;i++){ const x=rng()*AN, y=rng()*gy; P.put(x,y,mid); P.put(x+1,y,mid); }
+        ground((x,y)=>hash2(x,y,17)<.08?'#5a5c68':(x*5+y*11)%13===0?'#4a4c58':F.ground);
+      } else if(v===1){ hills(gy-10,10,.09,far,rng()*6); hills(gy-3,6,.17,mid,rng()*6);
+        for(let i=0;i<6;i++){ const x=rng()*AN; P.ell(x,gy+2,4+rng()*3,3,'#5a5c68'); }
+        ground((x,y)=>dith(x,y,.2)?'#4a4c58':F.ground);
+      } else { // ruins
+        for(let i=0;i<4;i++){ const x=4+i*16+rng()*6, h=10+rng()*22; P.rect(x,gy-h,x+5,gy,mid); P.rect(x-1,gy-h,x+6,gy-h+1,far); for(let y=gy-h+4;y<gy;y+=4) P.rect(x,y,x+5,y,dark); }
+        ground((x,y)=>((x>>3)+(y>>2))%2?'#4a4c58':F.ground);
+      }
+      break;
+    case 'brown':
+      if(v===0){ for(let y=0;y<gy;y++) for(let x=0;x<AN;x++) if(x%12===0||(y%16===0)) P.put(x,y,dark);
+        const gx=8+rng()*48, gy0=8+rng()*12; for(let y=gy0-9;y<gy0+9;y++) for(let x=gx-9;x<gx+9;x++){ const d=Math.hypot(x-gx,y-gy0), a=Math.atan2(y-gy0,x-gx); if(d<7+(Math.sin(a*10)>0?2:0)&&d>3) P.put(x,y,mid); }
+        ground((x,y)=>(y-gy)%4===0?dark:F.ground);
+      } else if(v===1){ // foundry chimneys
+        for(let i=0;i<3;i++){ const x=6+rng()*52, h=18+rng()*16; P.rect(x-3,gy-h,x+3,gy,dark); for(let k=0;k<5;k++) P.circ(x+k*2,gy-h-3-k*4,2+k*.8,artMix(sky1,'#6a5a4a',.5),.6); }
+        for(let x=0;x<AN;x++) for(let y=gy-6;y<gy;y++) if(dith(x,y,(y-gy+6)/8)) P.tint(x,y,'#ff9a3a',.35);
+        ground((x,y)=>hash2(x,y,19)<.04?'#ffb050':(x+y)%8===0?dark:F.ground);
+      } else { // pipes and valves
+        for(let i=0;i<3;i++){ const y=6+i*12+rng()*4; P.rect(0,y,AN,y+3,mid); P.rect(0,y,AN,y,far); for(let x=4+rng()*8;x<AN;x+=18){ P.rect(x,y-1,x+2,y+4,dark); } }
+        const vx=10+rng()*44; P.circ(vx,10,4,'#c04a2a'); P.circ(vx,10,1.5,dark);
+        ground((x,y)=>(x%8===0||(y-gy)%5===0)?dark:F.ground);
+      }
+      break;
   }
   return out;
 }
 
-/* ---------------- particles and keyword details, drawn flat on top ---------------- */
-function particles(out,fam,rng,n){
-  const F=FAM[fam], put=(x,y,c)=>{ x=Math.floor(x); y=Math.floor(y); if(x>=0&&x<N&&y>=0&&y<N) out[y][x]=c; };
-  for(let i=0;i<n;i++){ const x=rng()*N, y=rng()*N;
-    switch(fam){
-      case 'fire': put(x,y,rng()<.5?F.glow:F.a); break;
-      case 'frost': put(x,y,'#ffffff'); if(rng()<.4){ put(x+1,y,'#dff4ff'); put(x-1,y,'#dff4ff'); put(x,y+1,'#dff4ff'); put(x,y-1,'#dff4ff'); } break;
-      case 'storm': put(x,y,F.m); put(x+1,y+1,F.glow); break;
-      case 'verdant': put(x,y,F.m); put(x+1,y,artMix(F.m,'#ffffff',.3)); break;
-      case 'light': put(x,y,'#ffffff'); if(rng()<.5){ put(x+1,y,F.m); put(x-1,y,F.m); put(x,y+1,F.m); put(x,y-1,F.m); } break;
-      case 'shadow': put(x,y,F.a); put(x+1,y,artMix(F.a,F.sky[0],.5)); break;
-      case 'gray': put(x,y,'#8a8ea0'); break;
-      case 'brown': put(x,y,'#d8d0c8'); put(x+1,y-1,'#a8a098'); break;
-    } }
+/* ---------------- effects from the words in a card's name ----------------
+   Each card's adjective sets what is happening to its subject: a Magma card glows with
+   molten veins, a Rime card is iced over, a Thistle card grows thorns and flowers, a
+   Raven card sheds feathers. Material effects change the subject before shading; overlay
+   effects are painted on top; background effects go behind it. */
+const FX_WORDS={
+  Cinder:'embers charred', Ember:'embers flames', Blaze:'flames flames', Scorch:'charred flames', Ash:'charred smoke', Magma:'molten embers', Flare:'flames sparkles',
+  Pyre:'flames charred', Inferno:'flames embers rays', Kindling:'embers glowup', Char:'charred molten', Smolder:'smoke embers', Searing:'flames glowup', Molten:'molten glowup',
+  Wildfire:'flames leaves', Brand:'molten runes', Sunfire:'flames rays', Flame:'flames', Hearth:'glowup embers', Ignis:'flames runes', Fire:'flames', Kindle:'embers', Meteor:'embers smoke',
+  Rime:'ice sparkles', Frost:'snowcap icicles', Glacial:'ice icicles', Hoarfrost:'snowcap sparkles', Ice:'ice', Sleet:'rain icicles', Snow:'snowcap snowfall', Winter:'snowcap icicles snowfall',
+  Crystal:'ice sparkles', Polar:'snowcap aurora', Boreal:'aurora snowcap', Chill:'icicles wind', Permafrost:'ice snowcap', Hail:'snowfall icicles', Frozen:'ice icicles', Icicle:'icicles',
+  Tundra:'snowcap wind', Arctic:'snowcap aurora', Numbing:'ice wind', Pale:'sparkles snowfall', Zero:'ice aurora', Blizzard:'snowfall wind',
+  Thunder:'arcs rain', Volt:'arcs', Static:'arcs sparkles', Spark:'arcs sparks', Gale:'wind', Tempest:'wind rain arcs', Lightning:'arcs arcs', Squall:'rain wind', Surge:'arcs glowup',
+  Arc:'arcs', Storm:'rain arcs', Charged:'arcs runes', Zephyr:'wind sparkles', Cyclone:'wind wind', Flash:'sparkles arcs', Crackling:'arcs sparks', Galvanic:'arcs gears', Monsoon:'rain rain',
+  Sky:'wind clouds', Ion:'runes arcs', Tailwind:'wind', Chain:'arcs',
+  Briar:'thorns vines', Thorn:'thorns', Moss:'moss', Vine:'vines', Root:'moss roots', Bramble:'thorns vines', Fern:'moss leaves', Oak:'moss leaves', Bloom:'flowers vines', Spore:'spores moss',
+  Willow:'vines leaves', Thistle:'thorns flowers', Wild:'flowers leaves', Sap:'sap', Grove:'leaves moss', Nettle:'thorns leaves', Ivy:'vines vines', Verdant:'flowers moss', Seed:'spores leaves', Hollow:'spores eyes',
+  Radiant:'rays sparkles', Holy:'halo rays', Dawn:'rays glowup', Solar:'rays', Sacred:'halo gold', Gleaming:'sparkles gold', Blessed:'halo sparkles', Valiant:'wings gold', Aurora:'aurora sparkles',
+  Halo:'halo', Hallowed:'gold runes', Brave:'wings', Luminous:'sparkles glowup', Seraph:'wings halo', Gilded:'gold sparkles', Shining:'sparkles rays', Dawnlit:'rays glowup', Bright:'sparkles',
+  Pure:'halo sparkles', Vigil:'runes glowup', Judgment:'rays halo', Sanctuary:'halo', Dawnbreaker:'rays wings',
+  Hex:'runes smoke', Grave:'bones smoke', Dusk:'smoke', Blood:'blood', Bone:'bones', Night:'eyes stars', Umbral:'smoke eyes', Wraith:'smoke smoke', Soul:'wisps', Crypt:'bones runes',
+  Gloom:'smoke eyes', Shade:'smoke', Raven:'feathers', Dread:'eyes blood', Cursed:'runes charred', Black:'eclipse charred', Vile:'blood spores', Ghoul:'bones blood', Eclipse:'eclipse', Tomb:'bones runes', Pact:'blood runes',
+  Clockwork:'gears', Brass:'brass rivets', Steam:'steam', Iron:'rivets', Copper:'copper', Rusted:'rust', Gear:'gears', Cog:'gears', Tin:'rivets sparkles', Bolted:'rivets', Riveted:'rivets rust',
+  Piston:'steam gears', Spring:'spring', Gyro:'gears wind', Dwarven:'brass runes', Forge:'glowup embers', Oiled:'oil', Ratchet:'gears rivets', Valve:'steam', Anvil:'embers glowup',
+};
+// the gray family's words describe creatures, so they read differently there
+const FX_GRAY={Loyal:'sparkles', Feral:'eyes', Stone:'moss', Tiny:'sparkles', Ancient:'moss runes', Wild:'leaves', Grim:'smoke', Swift:'wind', Brave:'sparkles', Old:'moss', Lucky:'sparkles flowers',
+  Dire:'eyes smoke', Pale:'snowfall', Clever:'runes', Hungry:'blood', Gentle:'flowers', Sly:'smoke', Mossy:'moss leaves', Scrappy:'charred', Noble:'gold sparkles'};
+const FX_DEFAULT={fire:'embers', frost:'snowfall', storm:'arcs', verdant:'leaves', light:'sparkles', shadow:'smoke', gray:'', brown:'rivets'};
+function effectsOf(c){
+  let list=[];
+  for(const w of words(c)){ const f=(c.color==='gray'&&FX_GRAY[w])||FX_WORDS[w]; if(f) list=list.concat(f.split(' ')); }
+  if(!list.length) list=FX_DEFAULT[c.color].split(' ').filter(Boolean);
+  return list;
 }
-function details(out,c,rng){
-  const put=(x,y,col)=>{ x=Math.floor(x); y=Math.floor(y); if(x>=0&&x<N&&y>=0&&y<N) out[y][x]=col; };
-  const icon=(x,y,rows,col)=>rows.forEach((r,j)=>[...r].forEach((ch,i)=>{ if(ch==='#') put(x+i,y+j,col); }));
-  const spots=[[2,2],[25,2],[2,25],[25,25]].sort(()=>rng()-.5);
-  const next=()=>spots.pop()||[2,2];
-  if(c.burn){ const [x,y]=next(); icon(x,y,['..#..','.##..','.###.','#####','.###.'],'#ff7a2a'); put(x+2,y+3,'#ffe066'); }
-  if(c.freeze||c.slow){ const [x,y]=next(); icon(x,y,['..#..','#.#.#','.###.','#.#.#','..#..'],'#dff4ff'); }
-  if(c.stun){ const [x,y]=next(); icon(x,y,['..#..','.###.','#####','.###.','.#.#.'],'#fff39a'); }
-  if(c.poison){ const [x,y]=next(); icon(x,y,['.#...','###.#','.#.##','...#.','.....'],'#8aff6a'); }
-  if(c.curse){ const [x,y]=next(); icon(x,y,['#...#','.#.#.','..#..','.#.#.','#...#'],'#b88aff'); }
-  if(c.drain||c.self){ const [x,y]=next(); icon(x,y,['..#..','.###.','#####','#####','.###.'],'#e0304a'); }
-  if(c.mend){ const [x,y]=next(); icon(x,y,['..#..','..#..','#####','..#..','..#..'],'#8aff9a'); }
-  if(c.valor){ const [x,y]=next(); icon(x,y,['#...#','##.##','.###.','..#..','.#.#.'],'#ffd966'); }
-  if(c.confuse){ const [x,y]=next(); icon(x,y,['.###.','#...#','...#.','..#..','..#..'],'#ffffff'); }
-  if(c.push||c.pull){ const [x,y]=next(); icon(x,y,c.push?['#....','.#...','..#..','.#...','#....']:['....#','...#.','..#..','...#.','....#'],'#e8e0ff'); }
+const FX_BG=new Set(['rays','rain','aurora','eclipse','stars','snowfall','clouds','leaves','eyes']);
+const FX_MAT=new Set(['molten','charred','ice','icicles','snowcap','moss','thorns','gold','wings','bones','gears','rivets','rust','spring','copper','brass','vines','roots']);
+
+// the subject's shape: its box, and the pixels on its top and bottom edges
+function subjInfo(){ let x0=AN,y0=AN,x1=-1,y1=-1; const top=[],bot=[],all=[];
+  for(let y=0;y<AN;y++) for(let x=0;x<AN;x++) if(G[y][x]){ all.push([x,y]); x0=Math.min(x0,x); x1=Math.max(x1,x); y0=Math.min(y0,y); y1=Math.max(y1,y);
+    if(y===0||!G[y-1][x]) top.push([x,y]); if(y===AN-1||!G[y+1][x]) bot.push([x,y]); }
+  if(x1<0){ x0=y0=24; x1=y1=40; }
+  return {x0,y0,x1,y1,top,bot,all,cx:(x0+x1)/2,cy:(y0+y1)/2,w:x1-x0+1,h:y1-y0+1};
+}
+const pickN=(arr,n,rng)=>{ const a=arr.slice(), out=[]; while(out.length<n&&a.length) out.push(a.splice(Math.floor(rng()*a.length),1)[0]); return out; };
+const inSubj=(x,y)=>x>=0&&y>=0&&x<AN&&y<AN&&G[y][x];
+
+// background effects, painted on the scene before the subject
+const BG_FX={
+  rays(P,I,F,rng){ for(let y=0;y<AN;y++) for(let x=0;x<AN;x++){ const a=Math.atan2(y-I.cy,x-I.cx); if(Math.sin(a*10+rng.ph)>.6) P.tint(x,y,F.glow,.22); } },
+  rain(P,I,F,rng,n){ for(let i=0;i<40*n;i++){ const x=rng()*AN, y=rng()*AN; P.line(x,y,x-2,y+5,artMix(P.get(x,y),'#c8d8ff',.45)); } },
+  aurora(P,I,F,rng){ for(let b=0;b<2;b++){ const y0=4+b*6+rng()*4, col=b?'#b08aff':'#6affc8'; for(let x=0;x<AN;x++){ const y=y0+Math.sin(x*.1+b*2+rng.ph)*4; for(let k=0;k<6;k++) if(dith(x,Math.floor(y+k),.55-k*.08)) P.tint(x,y+k,col,.55); } } },
+  eclipse(P,I,F,rng){ const x=rng()<.5?12:52; P.circ(x,11,8,'#fff0c8'); P.circ(x,11,6.5,'#0a0410'); },
+  stars(P,I,F,rng,n){ for(let i=0;i<20*n;i++) P.put(rng()*AN,rng()*AN*.6,rng()<.3?F.glow:'#ffffff'); },
+  snowfall(P,I,F,rng,n){ for(let i=0;i<26*n;i++){ const x=rng()*AN, y=rng()*AN; P.put(x,y,'#ffffff'); if(rng()<.3){ P.put(x+1,y,'#dff4ff'); P.put(x,y+1,'#dff4ff'); } } },
+  clouds(P,I,F,rng){ for(let i=0;i<4;i++) P.ell(rng()*AN,4+rng()*18,9,3,artMix(P.get(32,10),'#ffffff',.35),.75); },
+  leaves(P,I,F,rng,n){ const cols=['#6fbf4f','#a8c84a','#d8a040','#c0602a']; for(let i=0;i<8*n;i++){ const x=rng()*AN, y=rng()*AN, c=cols[Math.floor(rng()*4)], d=rng()<.5?1:-1; P.put(x,y,c); P.put(x+d,y,c); P.put(x+d,y+1,c); P.put(x+2*d,y+1,artMix(c,'#000000',.3)); } },
+  eyes(P,I,F,rng,n){ for(let i=0;i<2+n;i++){ const x=2+rng()*58, y=2+rng()*(I.y1-4); if(Math.abs(x-I.cx)<I.w/2+3&&y>I.y0-3) continue; const c=rng()<.5?'#ff3a4a':F.glow; P.put(x,y,c); P.put(x+3,y,c); P.put(x,y+1,artMix(c,'#000000',.5)); P.put(x+3,y+1,artMix(c,'#000000',.5)); } },
+};
+// material effects, on the subject layer before it is shaded
+const MAT_FX={
+  molten(I,F,rng,n){ for(let v=0;v<2+n;v++){ let [x,y]=I.all[Math.floor(rng()*I.all.length)]; for(let k=0;k<14;k++){ if(inSubj(x,y)) G[y][x]='A'; x+=Math.round(rng()*2-1); y+=Math.round(rng()*2-1); } } },
+  charred(I,F,rng,n){ for(let i=0;i<3+2*n;i++){ const [x,y]=I.all[Math.floor(rng()*I.all.length)], r=1+rng()*2; for(let j=-3;j<=3;j++) for(let k=-3;k<=3;k++) if(j*j+k*k<=r*r&&inSubj(x+j,y+k)&&!/[A-Z]/.test(G[y+k][x+j])) G[y+k][x+j]='k'; } },
+  ice(I,F,rng){ for(const [x,y] of I.all) if(y>I.y1-I.h*.42+Math.sin(x*.9)*2) G[y][x]=hash2(x,y,21)<.06?'W':'x'; },
+  icicles(I,F,rng,n){ for(const [x,y] of pickN(I.bot.filter(p=>p[1]>I.cy-2),3+2*n,rng)){ const L=3+Math.floor(rng()*6); for(let k=1;k<=L;k++){ if(!G[y+k]) break; if(!G[y+k][x]) G[y+k][x]=k===L?'W':'x'; if(k<L/2&&G[y+k][x+1]===null) G[y+k][x+1]='x'; } } },
+  snowcap(I){ for(const [x,y] of I.top){ const t=1+(hash2(x,y,23)<.6?1:0)+(hash2(x,y,24)<.25?1:0); for(let k=0;k<t;k++) if(inSubj(x,y+k)) G[y+k][x]='w'; if(y>0&&hash2(x,y,25)<.3) G[y-1][x]='w'; } },
+  moss(I,F,rng){ for(const [x,y] of I.top) if(hash2(x,y,27)<.65){ const t=1+(hash2(x,y,28)<.5?1:0); for(let k=0;k<t;k++) if(inSubj(x,y+k)) G[y+k][x]='l'; if(hash2(x,y,29)<.12) for(let k=t;k<t+3;k++) if(inSubj(x,y+k)) G[y+k][x]='l'; } },
+  roots(I,F,rng,n){ for(const [x,y] of pickN(I.bot,2+n,rng)){ let X=x, Y=y; for(let k=0;k<8;k++){ Y++; X+=Math.round(rng()*2-1); if(Y<AN&&X>=0&&X<AN&&!G[Y][X]) G[Y][X]='t'; } } },
+  thorns(I,F,rng,n){ for(const [x,y] of pickN(I.top.concat(I.bot),5+3*n,rng)){ const up=!inSubj(x,y-1), d=up?-1:1, s=rng()<.5?-1:1;
+      for(let k=1;k<=3;k++){ const X=x+(k>1?s:0), Y=y+d*k; if(Y>=0&&Y<AN&&X>=0&&X<AN&&!G[Y][X]) G[Y][X]=k===3?'W':'b'; } } },
+  vines(I,F,rng,n){ for(let v=0;v<Math.max(1,Math.round(n));v++){ const ph=rng()*6, amp=I.h*.28, y0=I.cy+(v-.5)*I.h*.25;
+      for(let x=I.x0-2;x<=I.x1+2;x++){ const y=Math.round(y0+Math.sin(x*.3+ph)*amp); for(const yy of [y,y+1]) if(yy>=0&&yy<AN&&x>=0&&x<AN&&(G[yy][x]||Math.abs(x-I.cx)<I.w/2)) G[yy][x]='l';
+        if((x+v*3)%7===0){ const s=Math.sin(x)>0?-1:1; for(const [dx,dy] of [[0,s*2],[1,s*2],[1,s*3],[0,s*1]]) if(y+dy>=0&&y+dy<AN&&x+dx<AN) G[y+dy][x+dx]='l'; } } } },
+  gold(I){ for(const [x,y] of I.all){ const m=G[y][x]; if(m==='g'||m==='t'||m==='s') G[y][x]='y'; } for(const [x,y] of I.top) if(hash2(x,y,31)<.15) G[y][x]='Y'; },
+  brass(I){ for(const [x,y] of I.all){ const m=G[y][x]; if(m==='g'||m==='s'||m==='m') G[y][x]='y'; } },
+  copper(I){ for(const [x,y] of I.all){ const m=G[y][x]; if(m==='g'||m==='s'||m==='m') G[y][x]='o'; } },
+  bones(I){ for(const [x,y] of I.all){ const m=G[y][x]; if(m==='m'||m==='c'||m==='s') G[y][x]=hash2(x,y,33)<.04?'k':'b'; } },
+  wings(I){ const y0=Math.max(4,I.y0+I.h*.2); for(const d of [-1,1]){ const bx=I.cx+d*3;
+      for(let f=0;f<4;f++){ const len=10+f*2.5-(f===3?3:0); for(let k=0;k<len;k++){ const x=Math.round(bx+d*(k+2)), y=Math.round(y0+f*2.5+k*.15-Math.sin(k/len*Math.PI)*3); for(const yy of [y,y+1]) if(x>=0&&x<AN&&yy>=0&&yy<AN&&!G[yy][x]) G[yy][x]=k===len-1?'W':'w'; } } } },
+  gears(I,F,rng,n){ for(let i=0;i<Math.max(1,Math.round(n));i++){ const gx=i?I.x0+3:I.x1-3, gy=i?I.y1-4:I.y0+4, R=4+rng()*2, Rc=Math.ceil(R);
+      for(let y=gy-Rc-2;y<=gy+Rc+2;y++) for(let x=gx-Rc-2;x<=gx+Rc+2;x++){ if(y<0||x<0||y>=AN||x>=AN) continue; const d=Math.hypot(x-gx,y-gy), a=Math.atan2(y-gy,x-gx); if(d<R+(Math.sin(a*8)>0?1.6:0)) G[y][x]=d<1.6?'k':d<R*.55?'y':'g'; } } },
+  rivets(I){ for(const [x,y] of I.top) if((x%5)===0&&inSubj(x,y+2)&&inSubj(x,y+3)){ G[y+2][x]='K'; if(inSubj(x-1,y+1)) G[y+1][x-1]='W'; } },
+  rust(I,F,rng,n){ for(let i=0;i<4+2*n;i++){ const [x,y]=I.all[Math.floor(rng()*I.all.length)]; for(let j=-2;j<=2;j++) for(let k=-1;k<=1;k++) if(inSubj(x+j,y+k)&&hash2(x+j,y+k,35)<.7&&!/[A-Z]/.test(G[y+k][x+j])) G[y+k][x+j]='o'; } },
+  spring(I){ const x=Math.min(AN-6,I.x1+2); for(let y=I.y0+6;y<I.y1;y++){ const o=Math.round(Math.sin(y*.9)*2); if(!G[y][x+o+2]) G[y][x+o+2]='g'; } },
+};
+// overlay effects, painted on top of the shaded subject
+const OV_FX={
+  flames(P,I,F,rng,n){ const pts=pickN(I.top.filter(p=>p[1]<I.cy+2),4+Math.round(3*n),rng);
+    for(const [x,y] of pts){ const H=5+Math.floor(rng()*7), ph=rng()*6;
+      for(let k=0;k<H;k++){ const t=k/H, w=Math.round((1-t)*2.6), ox=Math.round(Math.sin(k*.7+ph)*1.3), Y=y-k;
+        for(let i=-w;i<=w;i++) P.put(x+ox+i,Y,t>.75?'#d03a1a':Math.abs(i)===w&&w>0?'#ff6a1a':t<.3&&Math.abs(i)<w?'#fff3b0':'#ffc233'); } } },
+  embers(P,I,F,rng,n){ for(let i=0;i<10*n;i++){ const x=I.x0-4+rng()*(I.w+8), y=I.y0-12+rng()*(I.h*.7+12), c=rng()<.5?'#ffb030':'#ff6a1a'; P.put(x,y,c); if(rng()<.4) P.put(x,y+1,artMix(c,'#000000',.4)); } },
+  sparks(P,I,F,rng,n){ for(let i=0;i<10*n;i++){ const x=rng()*AN, y=rng()*AN; if(inSubj(x|0,y|0)) continue; P.put(x,y,'#fff39a'); if(rng()<.3) P.put(x+1,y-1,'#ffffff'); } },
+  smoke(P,I,F,rng,n){ const col=artMix(F.sky[1],'#8a7a9a',.45); for(const [x,y] of pickN(I.top,2+Math.round(n),rng)){ let X=x, Y=y-2; for(let k=0;k<6;k++){ const r=1.5+k*.7;
+      for(let j=-r;j<=r;j++) for(let i=-r;i<=r;i++) if(i*i+j*j<=r*r&&dith(Math.floor(X+i),Math.floor(Y+j),.55-k*.06)&&!inSubj(Math.floor(X+i),Math.floor(Y+j))) P.put(X+i,Y+j,col); X+=rng()*3-1; Y-=3; } } },
+  arcs(P,I,F,rng,n){ const pts=pickN(I.top.concat(I.bot),3+Math.round(2*n),rng);
+    for(const [x,y] of pts){ const a0=Math.atan2(y-I.cy,x-I.cx); let X=x, Y=y; for(let k=0;k<9+rng()*6;k++){ const a=a0+(rng()-.5)*1.6; X+=Math.cos(a)*1.6; Y+=Math.sin(a)*1.6; if(inSubj(Math.floor(X),Math.floor(Y))) continue; P.put(X,Y,'#ffffff'); P.put(X+1,Y,F.glow); } } },
+  wind(P,I,F,rng,n){ for(let i=0;i<2+Math.round(n);i++){ const y0=I.y0+rng()*I.h, len=20+rng()*20, x0=rng()*(AN-len), ph=rng()*6;
+      for(let k=0;k<len;k++){ const x=x0+k, y=y0+Math.sin(k*.15+ph)*3; if(!inSubj(Math.floor(x),Math.floor(y))&&dith(Math.floor(x),Math.floor(y),.85)) P.put(x,y,'#e8f0ff'); }
+      const ex=x0+len, ey=y0+Math.sin(len*.15+ph)*3; for(let a=0;a<5;a+=.5) P.put(ex+Math.cos(a)*2.5,ey-2.5+Math.sin(a)*2.5,'#e8f0ff'); } },
+  halo(P,I,F){ const y=Math.max(3,I.y0-4); for(let a=0;a<TAU2;a+=.08){ const x=I.cx+Math.cos(a)*7, yy=y+Math.sin(a)*2.2; if(!inSubj(Math.floor(x),Math.floor(yy))||Math.sin(a)<0) P.put(x,yy,Math.sin(a)<-.5?'#ffffff':'#ffe066'); } },
+  sparkles(P,I,F,rng,n){ for(let i=0;i<3+3*n;i++){ const x=2+rng()*60, y=2+rng()*58; if(inSubj(x|0,y|0)&&rng()<.5) continue; const big=rng()<.4;
+      P.put(x,y,'#ffffff'); for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1]]) P.put(x+dx,y+dy,F.glow); if(big) for(const [dx,dy] of [[2,0],[-2,0],[0,2],[0,-2]]) P.put(x+dx,y+dy,artMix(F.glow,'#000000',.2)); } },
+  glowup(P,I,F){ const y=Math.min(AN-3,I.y1+1); for(let j=-4;j<=3;j++) for(let i=-I.w/2-6;i<=I.w/2+6;i++){ const X=Math.floor(I.cx+i), Y=y+j; if(!inSubj(X,Y)&&((i/(I.w/2+6))**2+(j/4)**2)<1&&dith(X,Y,.6)) P.tint(X,Y,F.glow,.45); } },
+  flowers(P,I,F,rng,n){ const cols=['#ff6a9a','#ffffff','#c08aff','#ff9a3a']; for(const [x,y] of pickN(I.top.concat(I.bot),3+2*n,rng)){ const c=cols[Math.floor(rng()*4)], Y=inSubj(x,y-1)?y+1:y-1;
+      for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1]]) P.put(x+dx,Y+dy,c); P.put(x,Y,'#ffd23a'); } },
+  spores(P,I,F,rng,n){ for(let i=0;i<6*n;i++){ const x=I.x0-6+rng()*(I.w+12), y=I.y0-14+rng()*(I.h*.6+14); P.circ(x,y,1.2,'#e8f0c0',.6); P.put(x,y,'#f8ffe0'); } },
+  steam(P,I,F,rng,n){ for(let i=0;i<2+n;i++){ let X=I.cx+(rng()-.3)*I.w*.6, Y=I.y0-2; for(let k=0;k<4;k++){ P.circ(X,Y,2+k*.8,'#f0f0f0',.5-k*.08); X+=rng()*3-1; Y-=4; } } },
+  blood(P,I,F,rng,n){ for(const [x,y] of pickN(I.bot.filter(p=>p[1]>I.cy),2+2*n,rng)){ const L=2+Math.floor(rng()*5); for(let k=1;k<=L;k++) P.put(x,y+k,k===L?'#ff3a4a':'#a0102a'); } },
+  sap(P,I,F,rng,n){ for(const [x,y] of pickN(I.bot,2+2*n,rng)){ const L=2+Math.floor(rng()*4); for(let k=1;k<=L;k++) P.put(x,y+k,k===L?'#ffd27a':'#c88a2a'); } },
+  oil(P,I,F,rng,n){ for(const [x,y] of pickN(I.bot,2+2*n,rng)){ const L=2+Math.floor(rng()*4); for(let k=1;k<=L;k++) P.put(x,y+k,k===L?'#6a6a8a':'#1a1a24'); } },
+  feathers(P,I,F,rng,n){ for(let i=0;i<2+Math.round(2*n);i++){ const x=4+rng()*56, y=4+rng()*50, a=rng()*3; for(let k=0;k<6;k++){ const X=x+Math.cos(a)*k, Y=y+Math.sin(a)*k; P.put(X,Y,'#1a1424'); if(k>1&&k<5){ P.put(X+Math.sin(a),Y-Math.cos(a),'#2e2440'); } } } },
+  wisps(P,I,F,rng,n){ for(let i=0;i<2+Math.round(2*n);i++){ const x=4+rng()*56, y=6+rng()*40; if(inSubj(x|0,y|0)) continue; P.circ(x,y,2,'#8ad8e8'); P.put(x,y,'#ffffff'); P.put(x,y-3,'#8ad8e8'); P.put(x+1,y-4,'#8ad8e8'); } },
+  runes(P,I,F,rng,n){ const glyphs=[['#.#','.#.','#.#'],['###','#..','###'],['.#.','###','.#.'],['#..','###','..#'],['##.','.#.','.##']];
+    for(let i=0;i<2+Math.round(n);i++){ const [x,y]=I.all[Math.floor(rng()*I.all.length)], g=glyphs[Math.floor(rng()*glyphs.length)];
+      g.forEach((r,j)=>[...r].forEach((ch,k)=>{ if(ch==='#') P.put(x+k-1,y+j-1,F.glow); })); } },
+};
+const TAU2=Math.PI*2;
+
+/* ---------------- keyword badges and frames ---------------- */
+const BADGES={
+  burn:[['..#..','.##..','.###.','#####','.###.'],'#ff7a2a'], freeze:[['..#..','#.#.#','.###.','#.#.#','..#..'],'#dff4ff'], slow:[['..#..','#.#.#','.###.','#.#.#','..#..'],'#9fd0ff'],
+  stun:[['..#..','.###.','#####','.###.','.#.#.'],'#fff39a'], poison:[['.#...','###.#','.#.##','...#.','.....'],'#8aff6a'], curse:[['#...#','.#.#.','..#..','.#.#.','#...#'],'#b88aff'],
+  drain:[['..#..','.###.','#####','#####','.###.'],'#e0304a'], mend:[['..#..','..#..','#####','..#..','..#..'],'#8aff9a'], valor:[['#...#','##.##','.###.','..#..','.#.#.'],'#ffd966'],
+  confuse:[['.###.','#...#','...#.','..#..','..#..'],'#ffffff'], push:[['#....','.#...','..#..','.#...','#....'],'#e8e0ff'], pull:[['....#','...#.','..#..','...#.','....#'],'#e8e0ff'],
+};
+function badges(P,c,rng){
+  const spots=[[2,2],[51,2],[2,51],[51,51]].sort(()=>rng()-.5), keys=Object.keys(BADGES).filter(k=>c[k]||(k==='drain'&&c.self));
+  for(const k of keys.slice(0,4)){ const [x,y]=spots.pop(), [rows,col]=BADGES[k];
+    P.circ(x+5.5,y+5.5,6,'#0a0612'); P.circ(x+5.5,y+5.5,5,artMix(col,'#0a0612',.7));
+    rows.forEach((r,j)=>[...r].forEach((ch,i)=>{ if(ch==='#'){ P.rect(x+1+i*2,y+1+j*2,x+2+i*2,y+2+j*2,col); } })); }
+}
+function frame(out,c,F){
+  const P=painter(out), r=c.rarity, edge=(w,light,dark)=>{ for(let i=0;i<w;i++) for(let k=i;k<AN-i;k++){ P.put(k,i,light); P.put(i,k,light); P.put(k,AN-1-i,dark); P.put(AN-1-i,k,dark); } };
+  if(r==='common'){ edge(1,artMix(F.o,'#ffffff',.15),F.o); return; }
+  if(r==='uncommon'){ edge(1,artMix(F.m,'#ffffff',.25),artMix(F.m,'#000000',.45)); return; }
+  if(r==='rare'){ edge(2,'#e8e4f4','#6a6478'); for(const [x,y] of [[2,2],[61,2],[2,61],[61,61]]) P.put(x,y,'#ffffff'); return; }
+  const gold=['#fff3a8','#e8b830','#8a6418'];
+  edge(3,gold[0],gold[2]); for(let k=1;k<AN-1;k++){ P.put(k,1,gold[1]); P.put(1,k,gold[1]); P.put(k,AN-2,gold[1]); P.put(AN-2,k,gold[1]); }
+  for(const [x,y] of [[3,3],[60,3],[3,60],[60,60]]){ P.circ(x+.5,y+.5,3,gold[2]); P.circ(x+.5,y+.5,2,F.m); P.put(x,y,'#ffffff'); }
+  if(r==='hero'){ // a crown at the top, and the frame banded in the color
+    for(let k=6;k<AN-6;k+=6){ P.put(k,1,F.m); P.put(1,k,F.m); P.put(k,AN-2,F.m); P.put(AN-2,k,F.m); }
+    const cx=32; P.rect(cx-6,4,cx+6,7,gold[1]); for(const d of [-6,0,6]){ P.poly([[cx+d-2,5],[cx+d,0],[cx+d+2,5]],gold[1]); P.put(cx+d,1,'#ffffff'); } P.rect(cx-6,4,cx+6,4,gold[0]);
+    P.put(cx,6,'#ff3a4a'); P.put(cx-4,6,F.m); P.put(cx+4,6,F.m);
+  }
+}
+
+/* ---------------- shading: each material as a lit solid ----------------
+   Light comes from the top left. A pixel's tone depends on how far it is from its own
+   material's edges: lit rims on top and left, shade and a colored rim light on the bottom
+   right, and a dithered gradient between. Wood shows grain, stone speckles, metal a
+   streak of shine, fur strokes, glass glints. */
+const ramp5=c=>[artMix(c,'#0a0612',.62),artMix(c,'#0a0612',.32),c,artMix(c,'#ffffff',.32),artMix(c,'#ffffff',.62)];
+function texture(m,x,y,tone){
+  const h=hash2(x,y,41);
+  switch(m){
+    case 't': case 'f': if(((y*3+Math.round(Math.sin(x*.45)*2))%7)===0&&tone>0) return tone-1; return tone;
+    case 's': return h<.1?tone-1:h>.93?tone+1:tone;
+    case 'g': case 'y': case 'o': return ((x+y)%13===0||(x+y)%13===1)&&tone>=2?tone+1:tone;
+    case 'c': return hash2(x,y>>1,43)<.16?tone-1:tone;
+    case 'x': return h>.96?4:tone;
+    case 'l': return hash2(x>>1,y>>1,45)<.2?tone-1:tone;
+    default: return h<.04?tone-1:tone;
+  }
+}
+function shadeSubject(out,R,flat,rim){
+  const at=(x,y)=>y>=0&&y<AN&&x>=0&&x<AN?G[y][x]:null;
+  const run=(x,y,dx,dy,m)=>{ let k=1; while(k<=6&&at(x+dx*k,y+dy*k)===m) k++; return k; };
+  for(let y=0;y<AN;y++) for(let x=0;x<AN;x++){ const m=G[y][x]; if(!m) continue;
+    if(flat[m]){ out[y][x]=flat[m]; continue; }
+    const top=Math.min(run(x,y,0,-1,m),run(x,y,-1,0,m),run(x,y,-1,-1,m)), bot=Math.min(run(x,y,0,1,m),run(x,y,1,0,m),run(x,y,1,1,m));
+    const ext=(dx,dy)=>!at(x+dx,y+dy);
+    let tone;
+    if(top===1) tone=ext(0,-1)||ext(-1,0)?4:3;
+    else if(bot===1) tone=0;
+    else if(bot===2) tone=1;
+    else if(top===2) tone=3;
+    else tone=bot<=4&&dith(x,y,.5)?1:top<=4&&dith(x,y,.35)?3:2;
+    tone=Math.max(0,Math.min(4,texture(m,x,y,tone)));
+    let col=(R[m]||R.m)[tone];
+    if(rim&&bot===1&&(ext(1,0)||ext(0,1))) col=artMix((R[m]||R.m)[2],rim,.5);
+    out[y][x]=col; }
 }
 
 /* ---------------- composition ---------------- */
-function artRng(id){ let h=2166136261; for(const ch of 'art32:'+id){ h^=ch.charCodeAt(0); h=Math.imul(h,16777619); } let a=h>>>0;
-  return ()=>{ a|=0; a=a+0x6D2B79F5|0; let t=Math.imul(a^a>>>15,1|a); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
-const words=c=>c.name.replace(/ of the /,' ').split(/\s+/);
+function artRng(id){ let h=2166136261; for(const ch of 'art64:'+id){ h^=ch.charCodeAt(0); h=Math.imul(h,16777619); } let a=h>>>0;
+  const r=()=>{ a|=0; a=a+0x6D2B79F5|0; let t=Math.imul(a^a>>>15,1|a); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; r.ph=r()*6; return r; }
+const words=c=>c.name.replace(/[,]/g,'').replace(/ of the /,' ').split(/\s+/);
 function findWord(c,table){ const ws=words(c); for(let i=ws.length-1;i>=0;i--) if(table[ws[i]]) return table[ws[i]]; return null; }
 // what the picture shows: [kind, key] for the subject
 function subjectOf(c){
   const kind=c.type==='piece'?c.base:c.type;
+  if(kind==='hero') return ['hero',c.hero];
   if(c.type==='piece') return ['thing',findWord(c,THING_WORDS)||'sigil'];
   if(kind==='summon') return ['creature',Object.keys(CREATURES).find(n=>words(c).includes(n))||'Imp'];
   if(kind==='machine'){ const n=words(c).at(-1); return ['machine',n]; }
@@ -355,6 +640,7 @@ function subjectOf(c){
 }
 function drawSubject(c,rng){
   const [kind,key]=subjectOf(c), sh=c.shape;
+  if(kind==='hero'){ human(HERO_LOOK[key]||{}); return; }
   if(kind==='creature'){ const adj=words(c)[0]; creature(CREATURES[key],CREATURE_MOD[adj]||{},rng); return; }
   if(kind==='machine'){ machine(key,c.ai); return; }
   if(kind==='weapon'){ const W=WEAPON[key]||WEAPON.arrow;
@@ -373,38 +659,50 @@ function drawSubject(c,rng){
   THING[key](rng);
   if(c.type==='ward'&&c.ward==='thorns') for(let x=4;x<28;x+=4) poly([[x-1.5,10],[x+1.5,10],[x,4]],'w');
 }
+// turn, scale and nudge the drawn subject a little, so two cards with the same subject sit differently
+function restage(rng,upright){
+  const s=.9+rng()*.16, a=upright?0:(rng()-.5)*.3, dx=(rng()-.5)*5, dy=(rng()-.5)*3, cx=32, cy=36, src=G, cs=Math.cos(a), sn=Math.sin(a);
+  const dst=Array.from({length:AN},()=>Array(AN).fill(null));
+  for(let y=0;y<AN;y++) for(let x=0;x<AN;x++){ const u=(x+.5-cx-dx)/s, v=(y+.5-cy-dy)/s, sx=Math.floor(cx+u*cs+v*sn), sy=Math.floor(cy-u*sn+v*cs);
+    if(sx>=0&&sx<AN&&sy>=0&&sy<AN) dst[y][x]=src[sy][sx]; }
+  G=dst;
+}
 
 const ART_CACHE={};
 function cardArt(c){
   if(ART_CACHE[c.id]) return ART_CACHE[c.id];
-  const rng=artRng(c.id), fam=c.color, F=FAM[fam], groundY=24+Math.floor(rng()*4);
-  const bg=scene(fam,rng,groundY);
+  const rng=artRng(c.id), fam=c.color, F=FAM[fam], gy=46+Math.floor(rng()*7), variant=Math.floor(rng()*3);
+  const amt={common:.6,uncommon:.8,rare:1,legendary:1.3,hero:1.6}[c.rarity]||1;
+  const fx=effectsOf(c);
+  // the subject first, so the scene can be lit around it
+  grid(AN,2); drawSubject(c,rng);
+  const kind=subjectOf(c)[0], upright=kind==='creature'||kind==='hero'||kind==='machine';
+  if(!upright&&rng()<.5) G.forEach(row=>row.reverse());
+  restage(rng,upright);
+  let I=subjInfo();
+  const out=scene(fam,rng,gy,variant), P=painter(out);
+  for(const f of fx) if(FX_BG.has(f)) BG_FX[f](P,I,F,rng,amt);
   // rarer cards glow behind the subject
-  if(c.rarity!=='common'){ const r={uncommon:9,rare:12,legendary:15}[c.rarity];
-    for(let y=0;y<N;y++) for(let x=0;x<N;x++){ const d=Math.hypot(x-15.5,y-15.5); if(d<r&&BAYER[y%4][x%4]<(1-d/r)*16) bg[y][x]=artMix(bg[y][x],F.glow,.35); } }
-  particles(bg,fam,rng,6+Math.floor(rng()*6));
-  // subject
-  G=Array.from({length:N},()=>Array(N).fill(null));
-  drawSubject(c,rng);
-  if(rng()<.5&&!['creature'].includes(subjectOf(c)[0])) G.forEach(row=>row.reverse());
-  const swap=rng()<.2, base={m:swap?F.a:F.m, a:swap?F.m:F.a, c:COAT[subjectOf(c)[1]]||F.m, ...MATS};
-  // an Ember card leans red, a Frost card blue: tint shared materials a little toward the family
-  const R={}; for(const k in base) R[k]=ramp(k==='m'||k==='a'?base[k]:artMix(base[k],F.m,.12));
-  const flat={A:F.glow, W:'#ffffff', M:F.m, Y:'#ffe066', R:'#ff3a4a'};
-  const out=bg.map(r=>r.slice()), has=(x,y)=>y>=0&&y<N&&x>=0&&x<N&&G[y][x];
-  for(let y=0;y<N;y++) for(let x=0;x<N;x++){ const m=G[y][x]; if(!m) continue;
-    if(flat[m]){ out[y][x]=flat[m]; continue; }
-    const same=(dx,dy)=>has(x+dx,y+dy)===m;
-    const tone=!same(0,-1)||!same(-1,-1)?3:(!same(1,1)&&!same(0,1))?0:(!same(1,0)||!same(0,1))?1:2;
-    out[y][x]=R[m][tone]; }
-  // outline around the subject, and a soft shadow on the ground
-  for(let y=0;y<N;y++) for(let x=0;x<N;x++){ if(G[y][x]) continue;
-    if([[0,1],[0,-1],[1,0],[-1,0]].some(([dx,dy])=>has(x+dx,y+dy))) out[y][x]=F.o; }
-  details(out,c,rng);
-  // frame by rarity
-  const frame={legendary:['#ffe066','#b08a2a','#fff6c8'],rare:['#d8d4e4','#7a7488','#ffffff'],uncommon:[artMix(F.m,'#ffffff',.2),artMix(F.m,'#000000',.4),null]}[c.rarity];
-  if(frame) for(let i=0;i<N;i++) for(const [x,y] of [[i,0],[i,N-1],[0,i],[N-1,i]]) out[y][x]=frame[(x+y)%2];
-  if(c.rarity==='legendary') for(const [x,y] of [[1,1],[N-2,1],[1,N-2],[N-2,N-2]]){ out[y][x]=frame[2]; }
+  if(c.rarity!=='common'){ const r={uncommon:18,rare:24,legendary:30,hero:34}[c.rarity];
+    for(let y=0;y<AN;y++) for(let x=0;x<AN;x++){ const d=Math.hypot(x-I.cx,y-I.cy); if(d<r&&dith(x,y,(1-d/r)*1.1)) out[y][x]=artMix(out[y][x],F.glow,c.rarity==='hero'?.45:.32); } }
+  // the subject's shadow on the ground
+  { const sy=Math.min(AN-3,Math.max(gy+2,I.y1)), rx=I.w*.42+2; for(let y=sy-3;y<=sy+3;y++) for(let x=Math.floor(I.cx-rx);x<=I.cx+rx;x++) if(((x-I.cx)/rx)**2+((y-sy)/3)**2<=1&&dith(x,y,.75)) P.tint(x,y,'#000000',.45); }
+  for(const f of fx) if(FX_MAT.has(f)) MAT_FX[f](I,F,rng,amt);
+  I=subjInfo();
+  // materials: the family's two colors (sometimes swapped, always shifted a little), plus the shared kit
+  const swap=rng()<.2, jit=(col)=>artMix(col,rng()<.5?F.a:'#ffffff',rng()*.16);
+  const base={...MATS, m:jit(swap?F.a:F.m), a:jit(swap?F.m:F.a), c:COAT[subjectOf(c)[1]]||F.m, o:'#c8743a', h:'#e8b890', d:artMix(F.m,'#1a1020',.6)};
+  if(kind==='hero') Object.assign(base,{m:F.m,a:F.a,c:artMix(F.m,'#000000',.35)});
+  const R={}; for(const k in base) R[k]=ramp5(k==='m'||k==='a'?base[k]:artMix(base[k],F.m,.12));
+  const flat={A:F.glow, W:'#ffffff', M:F.m, Y:'#ffe066', R:'#ff3a4a', K:'#140a1a'};
+  shadeSubject(out,R,flat,F.glow);
+  // outline: dark all round
+  const has=(x,y)=>y>=0&&y<AN&&x>=0&&x<AN&&G[y][x];
+  for(let y=0;y<AN;y++) for(let x=0;x<AN;x++){ if(G[y][x]) continue; if(has(x,y+1)||has(x,y-1)||has(x+1,y)||has(x-1,y)) out[y][x]=F.o; }
+  for(const f of fx) if(OV_FX[f]) OV_FX[f](P,I,F,rng,amt);
+  if(c.rarity==='legendary'||c.rarity==='hero') OV_FX.sparkles(P,I,F,rng,.6);
+  badges(P,c,rng);
+  frame(out,c,F);
   return ART_CACHE[c.id]=out;
 }
 const motifKey=c=>subjectOf(c).join(':');
@@ -414,7 +712,7 @@ function artCSV(c){ return cardArt(c).map(row=>row.join(',')).join('\n')+'\n'; }
 const ART_URL={};
 function artURL(c){
   if(ART_URL[c.id]) return ART_URL[c.id];
-  const cv=document.createElement('canvas'); cv.width=cv.height=N; const ctx=cv.getContext('2d');
+  const cv=document.createElement('canvas'); cv.width=cv.height=AN; const ctx=cv.getContext('2d');
   cardArt(c).forEach((row,y)=>row.forEach((col,x)=>{ ctx.fillStyle=col; ctx.fillRect(x,y,1,1); }));
   return ART_URL[c.id]=cv.toDataURL();
 }
@@ -426,6 +724,8 @@ function artURL(c){
    and a white one (for hit flashes). Feet stand on row 30. */
 // a person, built from parts: robe, hat or helmet, and what they hold
 function human(o){
+  if(o.back==='wings') for(const d of [-1,1]){ poly([[16+d*4,12],[16+d*15,3],[16+d*14,11],[16+d*12,20],[16+d*6,20]],'w'); for(let i=0;i<3;i++) seg(16+d*(7+i*2),13+i*2,16+d*(13-i),6+i*4,1,'b'); }
+  if(o.back==='legs') for(const d of [-1,1]) for(let i=0;i<3;i++) curve([[16+d*5,14+i*3],[16+d*(11+i),8+i*4],[16+d*(14+i),18+i*4]],1,'k');
   if(o.cape) poly([[10,13],[22,13],[26,30],[6,30]],'c');
   rect(12,25,14,30,'d'); rect(18,25,20,30,'d'); rect(11,29,14,30,'k'); rect(18,29,21,30,'k');
   poly([[9,27],[23,27],[20,15],[12,15]],'m'); rect(11,20,21,21,'a'); rect(15,15,17,27,'a');
@@ -438,13 +738,26 @@ function human(o){
     case 'helm': rect(11,6,21,13,'g'); rect(12,10,20,11,'K'); poly([[16,6],[19,0],[23,3]],'r'); break;
     case 'spiked': rect(11,6,21,13,'k'); rect(12,10,20,11,'R'); for(const x of [12,16,20]) poly([[x-1,6],[x+1,6],[x,1]],'g'); break;
     case 'leaf': poly([[9,11],[16,3],[23,11],[16,9]],'l'); break;
+    case 'crown': rect(11,5,21,7,'y'); for(const x of [12,16,20]) poly([[x-1.5,6],[x,1.5],[x+1.5,6]],'y'); px(16,6,'R'); px(12,6,'A'); px(20,6,'A'); break;
+    case 'tiara': for(const [x,h] of [[11,4],[13.5,6],[16,9],[18.5,6],[21,4]]) poly([[x-1.3,8],[x,8-h],[x+1.3,8]],'x'); rect(11,7,21,8,'w'); px(16,2,'W'); break;
+    case 'tricorn': poly([[7,9],[25,9],[21,4],[16,6],[11,4]],'k'); rect(8,8,24,9,'y'); quad([22,5],[27,1],[29,3],2,'a'); break;
+    case 'antlers': rect(11,6,21,8,'l'); for(const d of [-1,1]){ quad([16+d*4,7],[16+d*8,3],[16+d*12,0],2,'t'); seg(16+d*7,5,16+d*6,1,1,'t'); seg(16+d*10,2,16+d*12,4,1,'t'); } break;
+    case 'veil': poly([[10,15],[10,8],[16,4],[22,8],[22,15],[20,15],[19,10],[13,10],[12,15]],'k'); for(let x=11;x<22;x+=2) px(x,9,'M'); poly([[13,3],[16,0],[19,3]],'M'); break;
   }
+  if(o.hair==='flame') for(const [x,h] of [[10,5],[12,8],[15,9],[18,8],[21,6],[23,4]]) poly([[x-1.6,9],[x,9-h],[x+1.6,9]],(x%2?'A':'M'));
+  if(o.hair==='long') for(const d of [-1,1]) rect(16+d*4-(d>0?0:1),9,16+d*4+(d>0?1:0),19,'w');
   switch(o.weapon){
     case 'staff': seg(25,6,25,30,2,'t'); circ(25,5,2.6,'A'); px(24,4,'W'); break;
     case 'bolt': seg(25,8,25,30,1,'g'); curve([[25,1],[23,4],[27,5],[25,9]],1,'A'); break;
     case 'sword': seg(25,3,25,20,2,'w'); rect(23,19,27,20,'y'); break;
     case 'bow': quad([25,4],[30,16],[25,28],1,'t'); seg(25,4,25,28,1,'w'); break;
     case 'darksword': seg(25,2,25,20,2,'k'); seg(25,3,25,18,1,'R'); rect(23,19,27,20,'g'); break;
+    case 'flamestaff': seg(25,7,25,30,2,'t'); for(const [x,h] of [[23,6],[25,9],[27,6]]) poly([[x-1.5,7],[x,7-h],[x+1.5,7]],'A'); circ(25,6,2,'Y'); break;
+    case 'icestaff': seg(25,8,25,30,2,'w'); poly([[25,0],[28,5],[25,10],[22,5]],'x'); px(24,3,'W'); break;
+    case 'saber': quad([25,20],[28,10],[24,2],2,'w'); rect(22,20,27,21,'y'); seg(25,21,25,24,2,'t'); break;
+    case 'gnarl': curve([[25,30],[24,22],[26,15],[24,9],[26,3]],2,'t'); for(const [x,y] of [[27,5],[23,10],[27,14]]) ell(x,y,2,1.2,'l'); break;
+    case 'greatsword': seg(25,1,25,21,3,'w'); seg(25,2,25,19,1,'Y'); rect(21,20,29,21,'y'); seg(25,22,25,25,2,'t'); circ(25,26,1.4,'y'); break;
+    case 'scythe': seg(25,4,25,30,1,'k'); quad([25,4],[19,0],[13,6],2,'g'); px(13,6,'W'); break;
   }
   if(o.shield){ poly([[3,14],[11,14],[11,21],[7,25],[3,21]],'a'); rect(6,15,8,22,'y'); }
 }
@@ -477,17 +790,22 @@ const MONSTER={
 MONSTER.gloopling=MONSTER.gloop;
 const HUMAN_LOOK={cultist:{hat:'hood',weapon:'staff'}, witch:{hat:'witch',weapon:'staff',cape:1}, caller:{hat:'hood',weapon:'bolt'},
   warden:{hat:'leaf',weapon:'bow',cape:1}, paladin:{hat:'helm',weapon:'sword',shield:1}, knight:{hat:'spiked',weapon:'darksword',cape:1}};
+// the six heroes: a crowned fire queen, a frost sorceress, a sky captain, an antlered
+// forest elder, a winged paladin and a spider-legged witch of the night
+const HERO_LOOK={pyra:{hat:'crown',hair:'flame',weapon:'flamestaff',cape:1}, ysolde:{hat:'tiara',hair:'long',weapon:'icestaff',cape:1},
+  volta:{hat:'tricorn',weapon:'saber',cape:1}, thornfather:{hat:'antlers',weapon:'gnarl',beard:1},
+  aurelion:{hat:'helm',weapon:'greatsword',shield:1,back:'wings'}, widow:{hat:'veil',weapon:'scythe',back:'legs',cape:1}};
 const SPRITES={};
 function makeSprite(key,pal,draw){
   if(SPRITES[key]) return SPRITES[key];
-  G=Array.from({length:N},()=>Array(N).fill(null)); draw();
+  grid(SPR,1); draw();
   const R={}; for(const k in MATS) R[k]=ramp(MATS[k]); R.m=ramp(pal.m); R.a=ramp(pal.a); R.c=ramp(pal.c||pal.a); R.h=ramp('#e8b890'); R.d=ramp(pal.d||'#3a2e4a');
   const flat={A:pal.glow, W:'#ffffff', M:pal.m, Y:'#ffe066', R:'#ff3a4a', K:'#140a1a'};
-  const mk=()=>{ const cv=document.createElement('canvas'); cv.width=cv.height=N; return cv; };
+  const mk=()=>{ const cv=document.createElement('canvas'); cv.width=cv.height=SPR; return cv; };
   const img=mk(), sil=mk(), wht=mk(), ci=img.getContext('2d'), cs=sil.getContext('2d'), cw=wht.getContext('2d');
-  const has=(x,y)=>y>=0&&y<N&&x>=0&&x<N&&G[y][x];
+  const has=(x,y)=>y>=0&&y<SPR&&x>=0&&x<SPR&&G[y][x];
   cs.fillStyle='#000'; cw.fillStyle='#fff';
-  for(let y=0;y<N;y++) for(let x=0;x<N;x++){ const m=G[y][x]; let col=null;
+  for(let y=0;y<SPR;y++) for(let x=0;x<SPR;x++){ const m=G[y][x]; let col=null;
     if(m){ if(flat[m]) col=flat[m]; else { const same=(dx,dy)=>has(x+dx,y+dy)===m;
         col=R[m][!same(0,-1)||!same(-1,-1)?3:(!same(1,1)&&!same(0,1))?0:(!same(1,0)||!same(0,1))?1:2]; } }
     else if([[0,1],[0,-1],[1,0],[-1,0]].some(([dx,dy])=>has(x+dx,y+dy))) col=pal.o||'#0a0610';
@@ -502,6 +820,7 @@ function unitSprite(u){
     if(HUMAN_LOOK[id]) return makeSprite('e:'+id,pal,()=>human(HUMAN_LOOK[id]));
     return makeSprite('e:'+id,pal,MONSTER[id]||MONSTER.gloop); }
   const c=u.card, F=FAM[c.color], pal={m:F.m,a:F.a,glow:F.glow,o:F.o};
+  if(c.type==='hero') return makeSprite('h:'+c.hero,{m:F.m,a:F.a,glow:F.glow,o:F.o,c:artMix(F.m,'#000000',.35),d:artMix(F.m,'#1a1020',.6)},()=>human(HERO_LOOK[c.hero]||{}));
   return makeSprite('c:'+c.id,Object.assign(pal,{c:COAT[subjectOf(c)[1]]||F.m}),()=>{
     const [kind,key]=subjectOf(c);
     if(kind==='creature') creature(CREATURES[key],CREATURE_MOD[words(c)[0]]||{},()=>.5);

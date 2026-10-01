@@ -61,7 +61,7 @@ const GAUGE_MAX=10;
 function startBattle(list,depth,hooks,opts){
   buildBoard();
   const p={kind:'player', hp:120, maxHp:120, tile:P_TILES.find(t=>t.col===1&&t.r===(BOARD_ROWS>>1)), path:[], moveCd:0, castCd:0, wandCd:0, charging:false, chargeT:0,
-           barrier:0, shieldTurns:0, hurtT:0, invT:0, dodge:false, powerT:0, pactT:0, courageT:0, intervene:0, hasteT:0, regenT:0, regenAmt:0};
+           barrier:0, shieldTurns:0, hurtT:0, invT:0, dodge:false, powerT:0, pactT:0, courageT:0, intervene:0, hasteT:0, regenT:0, regenAmt:0, hero:null};
   p.tile.occ=p;
   B={depth, hooks:hooks||{}, piles:createPiles(list), player:p, aim:null, enemies:[], allies:[], walls:[], shots:[], lobs:[], teles:[], fx:[], floaters:[], parts:[],
      timers:[], gauge:0, phase:'custom', time:0, log:[]};
@@ -106,7 +106,7 @@ function hitEnemy(e,base,card,opts){
   if(!e||e.hp<=0) return 0;
   opts=opts||{};
   const pl=B.player;
-  let mult=opts.raw?1:colorMult(card&&card.color,e.color)*(e.curseT>0?1.3:1)*(pl.pactT>0||pl.courageT>0?1.3:1)*(card&&card.valor&&pl.hp<=pl.maxHp/2?1.5:1);
+  let mult=opts.raw?1:colorMult(card&&card.color,e.color)*(e.curseT>0?1.3:1)*(pl.pactT>0||pl.courageT>0?1.3:1)*(card&&card.valor&&pl.hp<=pl.maxHp/2?1.5:1)*heroMult(card);
   let dmg=Math.max(1,Math.round(base*mult));
   if(e.barrier>0&&!opts.raw&&!opts.dig){ const a=Math.min(e.barrier,dmg); e.barrier-=a; dmg-=a; if(!dmg){ floater('🛡',e.tile,'#fff0b3'); return 0; } }
   e.hp-=dmg; e.hitT=.18; if(dmg>=40||mult>=WEAK_MULT) shake(dmg>=60?5:3);
@@ -116,6 +116,7 @@ function hitEnemy(e,base,card,opts){
   if(card&&!opts.raw&&!opts.noShove) shove(e,card,base);
   if(card&&card.drain&&!opts.raw) healPlayer(Math.round(dmg*card.drain));
   if(card&&card.mend&&!opts.raw) healPlayer(card.mend);
+  if(heroOn('widow')&&!opts.raw) healPlayer(Math.round(dmg*.2),true);
   if(e.hp<=0) killEnemy(e);
   return dmg;
 }
@@ -150,7 +151,7 @@ function killEnemy(e){
     if(B.wave<B.waves.length-1){ const nx=B.wave+1; later(1.1,()=>spawnWave(nx)); B.wave=nx-.5; return; }
     B.phase='win'; B.player.charging=false; later(1.2,()=>B.hooks.onEnd&&B.hooks.onEnd(true)); }
 }
-function healPlayer(n){ const p=B.player; if(n<=0||p.hp<=0) return; const h=Math.min(n,p.maxHp-p.hp); p.hp+=h; if(h>0) floater('+'+h,p.tile,'#6dff9a'); }
+function healPlayer(n,quiet){ const p=B.player; if(n<=0||p.hp<=0) return; const h=Math.min(n,p.maxHp-p.hp); p.hp+=h; if(h>0&&!quiet) floater('+'+h,p.tile,'#6dff9a'); }
 function hitPlayer(dmg){
   const p=B.player; if(B.phase!=='fight') return;
   if(p.invT>0){ floater('miss',p.tile,'#c58bff'); return; }
@@ -169,6 +170,7 @@ function hitBlock(o,dmg,src){
 }
 function removeBlock(o){
   if(o.tile.occ===o) o.tile.occ=null; burst(o.tile,colorOf(o.card),12);
+  if(o===B.player.hero) heroLeaves();
   B.walls=B.walls.filter(w=>w!==o); B.allies=B.allies.filter(s=>s!==o);
 }
 function payHp(n){ const p=B.player; if(!n) return; const c=Math.min(n,p.hp-1); p.hp-=c; floater('-'+c,p.tile,'#e0588f'); }
@@ -188,7 +190,7 @@ function castCard(){
   const b=B; if(!b||b.phase!=='fight') return;
   const p=b.player; if(p.castCd>0) return;
   const inst=castNext(b.piles); if(!inst) return;
-  p.castCd=p.hasteT>0?.25:.45;
+  p.castCd=p.hasteT>0||heroOn('volta')?.25:.45;
   playCard(inst);
   if(inst.straight){ // Straight: the next two cards follow in one chain, then a finisher
     const chain=[]; for(let i=0;i<2;i++){ const n=castNext(b.piles); if(n) chain.push(n); }
@@ -246,6 +248,7 @@ const CAST={
     burst(p.tile,colorOf(c),10,1);
   },
   summon(c,p){ placeAlly(c,c.ai,c.hp,c.turns); },
+  hero(c,p){ callHero(c); },
   machine(c,p){
     if(c.ai==='bulwark') return CAST.ward({ward:'wall',n:c.n,hp:c.hp,turns:c.turns,color:c.color,name:c.name},p);
     placeAlly(c,c.ai,c.hp,c.turns);
@@ -286,6 +289,40 @@ function placeAlly(c,ai,hp,turns){
   const p=B.player, t=placementTiles(1)[0];
   if(!t){ floater('no room',p.tile,'#ffb3a0'); return; }
   const a={kind:'ally',ai,card:c,tile:t,hp,maxHp:hp,turns:turns||1,maxTurns:turns||1,fireT:.4}; t.occ=a; B.allies.push(a); burst(t,colorOf(c),10,.4);
+  return a;
+}
+
+/* ---------------- heroes ----------------
+   A hero stands on your side for a few turns, attacks on its own, and while it stands it
+   empowers you (its aura). One at a time: calling another sends the first one home. */
+const heroOn=id=>{ const h=B&&B.player.hero; return !!(h&&h.hp>0&&h.card.hero===id); };
+const heroMult=card=>(heroOn('pyra')?1.3:1)*(heroOn('aurelion')&&card?1.25:1);
+function callHero(c){
+  const p=B.player; if(p.hero) removeBlock(p.hero);
+  const a=placeAlly(c,'hero',c.hp,c.turns); if(!a) return;
+  p.hero=a; a.fireT=.8;
+  if(c.hero==='thornfather'){ p.maxHp+=30; healPlayer(30); }
+  if(c.hero==='aurelion') p.intervene=Math.max(p.intervene||0,c.amt);
+  if(c.hero==='ysolde') heroShield();
+  burst(a.tile,colorOf(c),40,1.6); burst(a.tile,'#ffe066',20,2); flash(a.tile,'#ffe066',1); shake(6);
+  B.fx.push({kind:'ring',a:p.tile,color:'#ffe066',t:0,life:.7});
+  B.hooks.onHero&&B.hooks.onHero(c);
+}
+function heroShield(){ const p=B.player, c=p.hero.card; if(p.barrier<c.amt){ p.barrier=c.amt; p.shieldTurns=1; floater('🛡'+c.amt,p.tile,'#6fd6ff'); } }
+function heroLeaves(){ const p=B.player, c=p.hero.card; p.hero=null; floater(c.name.split(',')[0]+' departs',p.tile,'#ffe066');
+  if(c.hero==='thornfather'){ p.maxHp-=30; p.hp=Math.min(p.hp,p.maxHp); } }
+function heroStrike(a,near){
+  const c=a.card, col=colorOf(c), es=alive(); if(!es.length) return;
+  near=near||es[0];
+  switch(c.hero){
+    case 'pyra': lobFrom(a.tile,c,c.pow,1,.6,near.tile); break;
+    case 'ysolde': B.fx.push({kind:'beam',a:a.tile,b:near.tile,color:col,t:0,life:.3}); hitEnemy(near,c.pow,c); break;
+    case 'volta': { let from=a.tile; es.sort((x,y)=>hexDist(a.tile,x.tile)-hexDist(a.tile,y.tile)).slice(0,3).forEach((e,i)=>{ const f=from;
+      later(i*.12,()=>{ B.fx.push({kind:'bolt',a:f,b:e.tile,color:col,t:0,life:.3}); hitEnemy(e,c.pow,c); }); from=e.tile; }); break; }
+    case 'thornfather': [near.tile,...around(near.tile)].forEach(t=>{ flash(t,col,.8); burst(t,col,4,.3); hitAt(t,c.pow,c); }); break;
+    case 'aurelion': B.fx.push({kind:'beam',a:near.tile,b:near.tile,y0:6,color:'#fff6c8',t:0,life:.45}); flash(near.tile,'#fff6c8',1); burst(near.tile,'#fff6c8',14,1.5); hitEnemy(near,c.pow,c); healPlayer(c.heal); break;
+    case 'widow': B.fx.push({kind:'arc',a:a.tile,b:near.tile,color:col,t:0,life:.35}); hitEnemy(near,c.pow,c); break;
+  }
 }
 // A turn ends: shields and board pieces count down, and expire at 0.
 function endTurn(){
@@ -297,6 +334,7 @@ function endTurn(){
     if(t.trap&&--t.trap.turns<=0) t.trap=null;
     if(t.envTurns>0&&--t.envTurns<=0){ t.burnT=0; t.iceT=0; t.thornT=0; }
   }
+  if(heroOn('ysolde')) heroShield();
 }
 function updateAlly(a,dt){
   a.fireT-=dt;
@@ -312,6 +350,7 @@ function updateAlly(a,dt){
     case 'shooter': shoot(a.tile,lineTiles(a.tile,DIRS.E),{card:c,dmg:c.pow,from:'p'}); break;
     case 'bomber': case 'mortar': lobFrom(a.tile,c,c.pow,a.ai==='mortar'?1:0,.7); break;
     case 'healer': healPlayer(c.amt); break;
+    case 'hero': heroStrike(a,near); break;
   }
 }
 // a trap springs when an enemy steps on it
@@ -327,6 +366,7 @@ function fireWand(charged){
 }
 
 /* ---------------- simulation ---------------- */
+const PACE=.8;
 function update(dt){
   const b=B; if(!b) return;
   b.time+=dt;
@@ -340,16 +380,21 @@ function update(dt){
   for(const q of b.parts){ q.t+=dt; q.vy-=9*dt; q.wx+=q.vx*dt; q.wz+=q.vz*dt; q.y=Math.max(0,q.y+q.vy*dt); } b.parts=b.parts.filter(q=>q.t<q.life);
   for(const t of TILES) t.flash=Math.max(0,t.flash-dt*3);
   if(b.phase==='custom') return;
+  // The fight runs at PACE speed so enemies, shots and attacks are easier to follow.
+  // Your own moving, firing and charging stay at full speed.
+  const rdt=dt; dt*=PACE;
 
   for(const tm of b.timers) tm.t-=dt;
   const due=b.timers.filter(tm=>tm.t<=0); b.timers=b.timers.filter(tm=>tm.t>0); due.forEach(tm=>tm.fn());
   if(b.phase!=='fight'){ b.shots=[]; b.teles=[]; return; }
 
   const p=b.player, haste=p.hasteT>0;
-  b.gauge=Math.min(GAUGE_MAX,b.gauge+dt);
-  ['moveCd','castCd','wandCd','invT','powerT','pactT','courageT','hasteT','regenT','hurtT'].forEach(k=>p[k]=Math.max(0,p[k]-dt));
+  b.gauge=Math.min(GAUGE_MAX,b.gauge+dt*(heroOn('volta')?1.5:1));
+  ['moveCd','wandCd','hurtT'].forEach(k=>p[k]=Math.max(0,p[k]-rdt));
+  ['castCd','invT','powerT','pactT','courageT','hasteT','regenT'].forEach(k=>p[k]=Math.max(0,p[k]-dt));
   if(p.regenT>0){ p.regenAcc=(p.regenAcc||0)+p.regenAmt*dt; if(p.regenAcc>=5){ healPlayer(5); p.regenAcc-=5; } }
-  if(p.charging) p.chargeT=Math.min(1.2,p.chargeT+dt);
+  if(heroOn('thornfather')){ p.heroAcc=(p.heroAcc||0)+3*dt; if(p.heroAcc>=6){ healPlayer(6); p.heroAcc-=6; } }
+  if(p.charging) p.chargeT=Math.min(1.2,p.chargeT+rdt);
   if(p.path.length&&p.moveCd<=0){ const n=p.path[0]; if(n.side==='p'&&!n.occ){ p.tile.occ=null; p.tile=n; n.occ=p; p.path.shift(); p.moveCd=(haste?.08:.14)*(icy(n)?2.2:1); } else p.path=[]; }
 
   // your shots and enemy shots travel tile by tile
@@ -398,7 +443,7 @@ function shotPath(tiles,dig){ const path=[];
     if(!dig&&(o.kind==='rock'||o.enemy)) return {path,hit:[]}; }
   return {path,hit:[]}; }
 function estDamage(c,e,m){ const pl=B.player;
-  return Math.max(1,Math.round((c.pow||0)*(m||1)*colorMult(c.color,e.color)*(e.curseT>0?1.3:1)*(pl.pactT>0||pl.courageT>0?1.3:1)*(c.valor&&pl.hp<=pl.maxHp/2?1.5:1))); }
+  return Math.max(1,Math.round((c.pow||0)*(m||1)*colorMult(c.color,e.color)*(e.curseT>0?1.3:1)*(pl.pactT>0||pl.courageT>0?1.3:1)*(c.valor&&pl.hp<=pl.maxHp/2?1.5:1)*heroMult(c))); }
 function castPreview(){
   const b=B, inst=b&&b.piles.queue[0]; if(!inst||b.phase!=='fight') return null;
   const c=inst.card, k=c.type==='piece'?c.base:c.type, p=b.player, row=lineTiles(p.tile,DIRS.E), out={card:c,mult:inst.mult||1,area:[],hit:[],place:[],self:false,note:''};
@@ -420,7 +465,7 @@ function castPreview(){
   }
   else if(k==='ward'&&c.ward==='barrier') out.self=true;
   else if(k==='ward'||(k==='machine'&&c.ai==='bulwark')) out.place.push(...placementTiles(c.n||1));
-  else if(k==='sentry'||k==='summon'||k==='machine') out.place.push(...placementTiles(1));
+  else if(k==='sentry'||k==='summon'||k==='machine'||k==='hero') out.place.push(...placementTiles(1));
   else out.self=true;   // boons and utilities act on you
   return out;
 }
@@ -436,12 +481,21 @@ function wandDown(){ const b=B; if(!b||b.phase!=='fight') return; b.player.charg
 function wandUp(){ const b=B; if(!b) return; const p=b.player; if(!p.charging) return; p.charging=false; const ch=p.chargeT>=.9; p.chargeT=0; fireWand(ch); }
 
 /* ---------------- rendering ---------------- */
-// ca/sa = the board's turn on screen: 24 degrees in landscape (your side lower-left), 82 in portrait
-// (your side at the bottom) so a phone held upright uses its height. iy = the isometric squash.
-const View={canvas:null, ctx:null, S:40, cx:0, cy:0, w:0, h:0, dpr:1, ca:Math.cos(Math.PI/6), sa:Math.sin(Math.PI/6), iy:.6};
+// A perspective camera: the board turns on screen by ca/sa (24 degrees in landscape, your side
+// lower-left; 82 in portrait, your side at the bottom so a phone held upright uses its height),
+// then a camera behind your side looks down at it, so near tiles and units are bigger than far ones.
+// u = across the screen, v = toward the camera. iy/cp = sin/cos of how far it looks down; dist = how
+// far back it sits (in tiles), which sets how strong the perspective is.
+const View={canvas:null, ctx:null, S:40, cx:0, cy:0, w:0, h:0, dpr:1, ca:Math.cos(Math.PI/6), sa:Math.sin(Math.PI/6), iy:.6, cp:.8, dist:22, u0:0, v0:0};
 const SLAB=.35;
 let ISO_Y=.6;
-function proj(wx,y,wz){ return [View.cx+View.S*(wx*View.ca+wz*View.sa), View.cy+View.S*((-wx*View.sa+wz*View.ca)*View.iy-y)]; }
+const boardUV=(wx,wz)=>[wx*View.ca+wz*View.sa, -wx*View.sa+wz*View.ca];
+// how much nearer than the board's centre a point is: 1 at the centre, above 1 close to the camera
+function nearK(wx,y,wz){ const dv=-wx*View.sa+wz*View.ca-View.v0; return View.dist/(View.dist-y*View.iy-dv*View.cp); }
+function proj(wx,y,wz){ const [u,v]=boardUV(wx,wz), du=u-View.u0, dv=v-View.v0, k=nearK(wx,y,wz);
+  return [View.cx+View.S*k*du, View.cy+View.S*k*(dv*View.iy-y)]; }
+// the pixel size of one tile at a point on the board, for sizing units, rings and labels
+const scaleAt=(wx,wz)=>View.S*nearK(wx,0,wz);
 const depthOf=t=>-t.wx*View.sa+t.wz*View.ca;
 function hexCorners(t,rad,y){ const out=[];
   for(let i=0;i<6;i++){ const a=Math.PI/6+i*Math.PI/3; out.push(proj(t.wx+Math.cos(a)*rad,y||0,t.wz+Math.sin(a)*rad)); } return out; }
@@ -454,21 +508,27 @@ function resizeView(){
   const cv=View.canvas, r=cv.getBoundingClientRect(), dpr=Math.min(window.devicePixelRatio||1,2);
   View.dpr=dpr; View.w=r.width; View.h=r.height; cv.width=Math.round(r.width*dpr); cv.height=Math.round(r.height*dpr);
   const portrait=r.height>r.width*1.05, ang=(portrait?82:24)*Math.PI/180;
-  View.ca=Math.cos(ang); View.sa=Math.sin(ang); View.iy=ISO_Y=portrait?.8:.6;
+  View.ca=Math.cos(ang); View.sa=Math.sin(ang); View.iy=ISO_Y=portrait?.88:.62; View.cp=Math.sqrt(1-View.iy*View.iy);
+  // look at the middle of the board from a camera about 1.6 boards back
+  let u0=1e9,u1=-1e9,v0=1e9,v1=-1e9;
+  for(const t of TILES){ const [u,v]=boardUV(t.wx,t.wz); u0=Math.min(u0,u); u1=Math.max(u1,u); v0=Math.min(v0,v); v1=Math.max(v1,v); }
+  View.u0=(u0+u1)/2; View.v0=(v0+v1)/2; View.dist=Math.max(14,(v1-v0)*1.6);
   // fit the projected board (plus headroom for units) into the canvas
   View.S=1; View.cx=0; View.cy=0;
   let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9;
-  for(const t of TILES) for(const [x,y] of hexCorners(t,1)){ x0=Math.min(x0,x); x1=Math.max(x1,x); y0=Math.min(y0,y); y1=Math.max(y1,y); }
-  y0-=1.6; y1+=SLAB+.2;
-  View.S=Math.min((r.width-72)/(x1-x0),(r.height-16)/(y1-y0));
+  for(const t of TILES) for(const [x,y] of hexCorners(t,1).concat(hexCorners(t,0,2.2))){ x0=Math.min(x0,x); x1=Math.max(x1,x); y0=Math.min(y0,y); y1=Math.max(y1,y); }
+  y1+=SLAB+.2;
+  View.S=Math.min((r.width-(portrait?24:72))/(x1-x0),(r.height-16)/(y1-y0));
   View.cx=r.width/2-View.S*(x0+x1)/2; View.cy=r.height/2-View.S*(y0+y1)/2;
 }
+// screen -> tile: the tile whose top face is under the finger, or the nearest one close by
 function pickTile(clientX,clientY){
   const r=View.canvas.getBoundingClientRect(), x=clientX-r.left, y=clientY-r.top;
-  // screen -> board plane, then the nearest tile centre
-  const u=(x-View.cx)/View.S, v=(y-View.cy)/View.S/View.iy, wx=u*View.ca-v*View.sa, wz=u*View.sa+v*View.ca;
   let best=null, bd=1e9;
-  for(const t of TILES){ const d=Math.hypot(t.wx-wx,t.wz-wz); if(d<bd){ bd=d; best=t; } }
+  for(const t of TILES){ const hc=hexCorners(t,1);
+    let inside=false; for(let i=0,j=5;i<6;j=i++){ const [xi,yi]=hc[i], [xj,yj]=hc[j]; if((yi>y)!==(yj>y)&&x<(xj-xi)*(y-yi)/(yj-yi)+xi) inside=!inside; }
+    if(inside) return t;
+    const [cx,cy]=proj(t.wx,0,t.wz), d=Math.hypot(x-cx,(y-cy)/View.iy)/scaleAt(t.wx,t.wz); if(d<bd){ bd=d; best=t; } }
   return bd<1.1?best:null;
 }
 
@@ -516,42 +576,42 @@ function render(){
       ctx.globalAlpha=hitSet.has(t)?.95:.55; ctx.strokeStyle=hitSet.has(t)?'#ffffff':col; ctx.stroke(); }
     for(const t of pv.place){ const hc=hexCorners(t,.8); ctx.globalAlpha=.9; ctx.strokeStyle=col; ctx.setLineDash([4,3]); poly(ctx,hc); ctx.stroke(); ctx.setLineDash([]);
       ctx.globalAlpha=.25*pulse+.1; ctx.fillStyle=col; ctx.fill(); }
-    if(pv.self){ const [x,y]=proj(...posOf(b.player).slice(0,1),.02,posOf(b.player)[1]); ctx.globalAlpha=.8; ctx.strokeStyle=col; ctx.setLineDash([5,4]);
+    if(pv.self){ const [x,y]=proj(...posOf(b.player).slice(0,1),.02,posOf(b.player)[1]), S=scaleAt(...posOf(b.player)); ctx.globalAlpha=.8; ctx.strokeStyle=col; ctx.setLineDash([5,4]);
       ctx.beginPath(); ctx.ellipse(x,y,S*.7,S*.7*View.iy,0,0,TAU); ctx.stroke(); ctx.setLineDash([]); }
     ctx.globalAlpha=1; b.preview=pv; } else b.preview=null;
-  if(aimT){ const [x,y]=proj(aimT.wx,.02,aimT.wz), pulse=1+Math.sin(T*6)*.06;
+  if(aimT){ const [x,y]=proj(aimT.wx,.02,aimT.wz), S=scaleAt(aimT.wx,aimT.wz), pulse=1+Math.sin(T*6)*.06;
     ctx.strokeStyle=b.aim?'#ffe24d':'rgba(255,226,77,.45)'; ctx.lineWidth=b.aim?3:2; if(!b.aim) ctx.setLineDash([5,5]);
     ctx.beginPath(); ctx.ellipse(x,y,S*.62*pulse,S*.62*ISO_Y*pulse,0,0,TAU); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(x-S*.8,y); ctx.lineTo(x-S*.45,y); ctx.moveTo(x+S*.45,y); ctx.lineTo(x+S*.8,y); ctx.stroke(); ctx.setLineDash([]); }
   // traps: a rune only you can see
-  for(const t of TILES) if(t.trap){ const [x,y]=proj(t.wx,.03,t.wz); ctx.strokeStyle=colorOf(t.trap.card); ctx.lineWidth=2; ctx.globalAlpha=.6+.3*Math.sin(T*4);
+  for(const t of TILES) if(t.trap){ const [x,y]=proj(t.wx,.03,t.wz), S=scaleAt(t.wx,t.wz); ctx.strokeStyle=colorOf(t.trap.card); ctx.lineWidth=2; ctx.globalAlpha=.6+.3*Math.sin(T*4);
     ctx.beginPath(); ctx.ellipse(x,y,S*.4,S*.4*View.iy,0,0,TAU); ctx.moveTo(x-S*.25,y); ctx.lineTo(x+S*.25,y); ctx.moveTo(x,y-S*.25*View.iy); ctx.lineTo(x,y+S*.25*View.iy); ctx.stroke(); ctx.globalAlpha=1; }
   // path preview
-  if(b.player.path.length){ ctx.fillStyle='rgba(160,180,255,.35)'; for(const t of b.player.path){ const [x,y]=proj(t.wx,0,t.wz); ctx.beginPath(); ctx.ellipse(x,y,S*.18,S*.18*ISO_Y,0,0,TAU); ctx.fill(); } }
+  if(b.player.path.length){ ctx.fillStyle='rgba(160,180,255,.35)'; for(const t of b.player.path){ const [x,y]=proj(t.wx,0,t.wz), S=scaleAt(t.wx,t.wz); ctx.beginPath(); ctx.ellipse(x,y,S*.18,S*.18*ISO_Y,0,0,TAU); ctx.fill(); } }
 
   const rocks=TILES.filter(t=>t.occ&&t.occ.kind==='rock').map(t=>t.occ);
   const dying=b.enemies.filter(e=>e.hp<=0&&e.deathT>0);
   const units=[b.player,...b.walls,...b.allies,...rocks,...alive(),...dying].sort((a,c)=>depthOf(a.tile)-depthOf(c.tile));
-  for(const u of units) DRAW[u.kind](ctx,u,T,S);
+  for(const u of units) DRAW[u.kind](ctx,u,T,scaleAt(...posOf(u)));
   // expected damage on each enemy the next card would hit (★ = its weak color)
   if(b.preview&&b.preview.card.pow){ const pv=b.preview; ctx.textAlign='center'; ctx.font='800 '+Math.round(S*.34)+'px Rajdhani,system-ui,sans-serif';
-    for(const t of new Set(pv.hit)){ const e=t.occ; if(!e||e.kind!=='enemy') continue; const [x,y]=proj(posOf(e)[0],0,posOf(e)[1]);
+    for(const t of new Set(pv.hit)){ const e=t.occ; if(!e||e.kind!=='enemy') continue; const [x,y]=proj(posOf(e)[0],0,posOf(e)[1]), S=scaleAt(...posOf(e)); ctx.font='800 '+Math.round(S*.34)+'px Rajdhani,system-ui,sans-serif';
       const d=estDamage(pv.card,e,pv.mult), weak=colorMult(pv.card.color,e.color)>1, txt=(pv.card.shape==='missiles'?pv.card.n+'× ':'')+'−'+d+(weak?' ★':'');
       const w=ctx.measureText(txt).width+12, yy=y-S*.35; ctx.fillStyle=weak?'#ffe066':'rgba(12,8,24,.88)'; ctx.strokeStyle=colorOf(pv.card); ctx.lineWidth=2;
       ctx.beginPath(); ctx.roundRect(x-w/2,yy-S*.28,w,S*.4,6); ctx.fill(); ctx.stroke(); ctx.fillStyle=weak?'#1a1206':'#fff'; ctx.fillText(txt,x,yy); } }
 
   for(const s of b.shots){
-    const from=s.i<0?s.a:s.tiles[s.i], to=s.tiles[s.i+1]||from, k=clamp(s.stepT/s.speed,0,1);
+    const from=s.i<0?s.a:s.tiles[s.i], to=s.tiles[s.i+1]||from, k=clamp(s.stepT/s.speed,0,1), S=scaleAt(from.wx,from.wz);
     { const tc=s.card?colorOf(s.card):s.color||'#e8e0ff', [tx,ty]=proj(from.wx,1,from.wz), [hx,hy]=proj(from.wx+(to.wx-from.wx)*k,1,from.wz+(to.wz-from.wz)*k);
       ctx.strokeStyle=tc; ctx.globalAlpha=.45; ctx.lineWidth=S*(s.wand?.08:.14); ctx.beginPath(); ctx.moveTo(tx,ty); ctx.lineTo(hx,hy); ctx.stroke(); ctx.globalAlpha=1; }
     const wx=from.wx+(to.wx-from.wx)*k, wz=from.wz+(to.wz-from.wz)*k, [x,y]=proj(wx,1,wz);
     const col=s.card?colorOf(s.card):s.color||(s.wand?'#e8e0ff':'#fff');
     ctx.fillStyle=col; ctx.shadowColor=col; ctx.shadowBlur=12; ctx.beginPath(); ctx.arc(x,y,S*(s.big?.26:s.wand?.13:.19),0,TAU); ctx.fill(); ctx.shadowBlur=0;
   }
-  for(const l of b.lobs){ const k=l.t/l.dur, wx=l.a.wx+(l.b.wx-l.a.wx)*k, wz=l.a.wz+(l.b.wz-l.a.wz)*k, [x,y]=proj(wx,1+Math.sin(k*Math.PI)*3,wz);
+  for(const l of b.lobs){ const k=l.t/l.dur, wx=l.a.wx+(l.b.wx-l.a.wx)*k, wz=l.a.wz+(l.b.wz-l.a.wz)*k, [x,y]=proj(wx,1+Math.sin(k*Math.PI)*3,wz), S=scaleAt(wx,wz);
     const col=colorOf(l.card); ctx.fillStyle=col; ctx.shadowColor=col; ctx.shadowBlur=14; ctx.beginPath(); ctx.arc(x,y,S*.24,0,TAU); ctx.fill(); ctx.shadowBlur=0; }
   for(const f of b.fx){
-    if(f.kind==='ring'){ const [x,y]=proj(...posOf(b.player).slice(0,1),0,posOf(b.player)[1]), r=S*(.4+1.4*f.t/f.life); ctx.strokeStyle=f.color; ctx.globalAlpha=1-f.t/f.life; ctx.lineWidth=3;
+    if(f.kind==='ring'){ const [x,y]=proj(...posOf(b.player).slice(0,1),0,posOf(b.player)[1]), r=scaleAt(...posOf(b.player))*(.4+1.4*f.t/f.life); ctx.strokeStyle=f.color; ctx.globalAlpha=1-f.t/f.life; ctx.lineWidth=3;
       ctx.beginPath(); ctx.ellipse(x,y,r,r*View.iy,0,0,TAU); ctx.stroke(); ctx.globalAlpha=1; continue; }
     const a=proj(f.a.wx,f.y0||1,f.a.wz), c=proj((f.b||f.a).wx,1,(f.b||f.a).wz), al=1-f.t/f.life;
     ctx.strokeStyle=f.color; ctx.globalAlpha=al; ctx.lineWidth=f.kind==='beam'?S*.35:3; ctx.shadowColor=f.color; ctx.shadowBlur=10; ctx.beginPath(); ctx.moveTo(a[0],a[1]);
@@ -561,7 +621,7 @@ function render(){
   }
   for(const q of b.parts){ const [x,y]=proj(q.wx,q.y,q.wz); ctx.globalAlpha=1-q.t/q.life; ctx.fillStyle=q.color; ctx.fillRect(x-2,y-2,4,4); } ctx.globalAlpha=1;
   ctx.textAlign='center';
-  for(const f of b.floaters){ const [x,y]=proj(f.wx,f.y,f.wz), pop=1+.7*Math.max(0,1-f.t/.14); ctx.globalAlpha=Math.min(1,(1-f.t/.9)*1.6); ctx.font=(f.big?'800 ':'700 ')+Math.round(S*(f.big?.55:.42)*pop)+'px Rajdhani,system-ui,sans-serif';
+  for(const f of b.floaters){ const [x,y]=proj(f.wx,f.y,f.wz), S=scaleAt(f.wx,f.wz), pop=1+.7*Math.max(0,1-f.t/.14); ctx.globalAlpha=Math.min(1,(1-f.t/.9)*1.6); ctx.font=(f.big?'800 ':'700 ')+Math.round(S*(f.big?.55:.42)*pop)+'px Rajdhani,system-ui,sans-serif';
     ctx.lineWidth=3; ctx.strokeStyle='rgba(0,0,0,.7)'; ctx.strokeText(f.text,x,y); ctx.fillStyle=f.color; ctx.fillText(f.text,x,y); } ctx.globalAlpha=1;
 }
 
@@ -646,12 +706,24 @@ const DRAW={
     const [x,y]=proj(w.tile.wx,1.15,w.tile.wz); bar(ctx,x,y,S*.7,w.hp/w.maxHp,'#6fd6ff'); turnPips(ctx,x,y-S*.12,w.turns,S);
   },
   ally(ctx,a,T,S){
+    if(a.ai==='hero') return DRAW.hero(ctx,a,T,S);
     const col=colorOf(a.card), unit=['shooter','bomber','healer','guardian'].includes(a.ai);
     const r=drawSprite(ctx,a,T,S,{scale:unit?.85:.8,bob:unit?.04:0,flip:facing(a,a.enemy?B.player:alive()[0],false),flash:a.hitT>0?.8:0});
     const x=r.x, top=r.top-S*.05;
     ctx.strokeStyle=col; ctx.lineWidth=3; ctx.beginPath(); ctx.arc(x-S*.45,top+S*.1,S*.12,-Math.PI/2,-Math.PI/2+TAU*clamp(a.turns/a.maxTurns,0,1)); ctx.stroke();
     turnPips(ctx,x,top-S*.1,a.turns,S);
     if(a.hp<a.maxHp) bar(ctx,x,top,S*.6,a.hp/a.maxHp,'#6fd6ff');
+  },
+  // a hero: a golden ring on the ground, a light column, its name, HP and turns
+  hero(ctx,a,T,S){
+    const col=colorOf(a.card), [gx,gy]=proj(...posOf(a).slice(0,1),.02,posOf(a)[1]), pulse=.5+.5*Math.sin(T*3);
+    ctx.strokeStyle='#ffe066'; ctx.lineWidth=2.5; ctx.globalAlpha=.6+.3*pulse; ctx.beginPath(); ctx.ellipse(gx,gy,S*.78,S*.78*View.iy,0,0,TAU); ctx.stroke();
+    const g=ctx.createLinearGradient(0,gy-S*3,0,gy); g.addColorStop(0,'rgba(255,230,120,0)'); g.addColorStop(1,'rgba(255,230,120,.28)');
+    ctx.globalAlpha=1; ctx.fillStyle=g; ctx.fillRect(gx-S*.55,gy-S*3,S*1.1,S*3);
+    const r=drawSprite(ctx,a,T,S,{scale:1.05,bob:.04,flip:facing(a,alive()[0],false),flash:a.hitT>0?.8:0});
+    const top=r.top-S*.1; ctx.textAlign='center'; ctx.font='800 '+Math.round(S*.3)+'px Rajdhani,system-ui,sans-serif';
+    ctx.lineWidth=3; ctx.strokeStyle='rgba(0,0,0,.7)'; const nm='♔ '+a.card.name.split(',')[0]; ctx.strokeText(nm,r.x,top-S*.18); ctx.fillStyle='#ffe066'; ctx.fillText(nm,r.x,top-S*.18);
+    bar(ctx,r.x,top,S*.9,a.hp/a.maxHp,col); turnPips(ctx,r.x,top+S*.16,a.turns,S);
   },
 };
 

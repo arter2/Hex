@@ -33,8 +33,9 @@ const TYPES={
   piece: {name:'Legendary piece', icon:'♛', text:'Part of a legendary combo recipe (phase 4)'},
   summon:{name:'Summon', icon:'🐾', text:'A creature that fights for a set time'},
   machine:{name:'Machine',icon:'⚙', text:'A turret, wall or construct'},
+  hero:  {name:'Hero',   icon:'♔', text:'Calls a hero to fight beside you and empower you'},
 };
-const RARITY={common:{n:'Common',g:'●'}, uncommon:{n:'Uncommon',g:'◆'}, rare:{n:'Rare',g:'★'}, legendary:{n:'Legendary',g:'✹'}};
+const RARITY={common:{n:'Common',g:'●'}, uncommon:{n:'Uncommon',g:'◆'}, rare:{n:'Rare',g:'★'}, legendary:{n:'Legendary',g:'✹'}, hero:{n:'Hero',g:'♔'}};
 
 // shape (strike): line = first enemy in row, row = every enemy in row, wedge = short cone,
 //                 all = every enemy, missiles = n hits on random enemies
@@ -247,7 +248,25 @@ const BUILD={
     if(c.ai==='bulwark'){ c.n=1+(c.rank>3?1:0); c.hp=Math.round(90*F); } },
 };
 
-const CARD_LIST=SIGNATURE.concat(generateCards());
+/* Heroes: the rarest cards. A boss sometimes drops one (more often deeper down), and a pack
+   very rarely holds one. Casting a hero calls it onto your side for a few turns: it fights on
+   its own, and while it stands it empowers you. One hero per deck. Added after the 800, so
+   the generated ids are unchanged. */
+const HEROES=[
+  {id:'hero_pyra',  name:'Pyra, the Ember Queen', color:'fire',    hero:'pyra',        pow:40, rate:1.6, hp:150, burn:3,
+   attack:'hurls fireballs of {pow} that splash',          aura:'your cards and wand deal +30%'},
+  {id:'hero_ysolde',name:'Ysolde of the Rime',    color:'frost',   hero:'ysolde',      pow:26, rate:1.4, hp:170, freeze:1.2, amt:30,
+   attack:'fires freezing bolts of {pow}',                 aura:'you get a shield of 30 now and at the start of each turn'},
+  {id:'hero_volta', name:'Captain Volta',         color:'storm',   hero:'volta',       pow:22, rate:1.3, hp:140, stun:.6,
+   attack:'chains lightning of {pow} through 3 enemies',   aura:'your Custom gauge fills 50% faster and you cast faster'},
+  {id:'hero_thorn', name:'The Thornfather',       color:'verdant', hero:'thornfather', pow:20, rate:1.5, hp:200, poison:6, amt:3,
+   attack:'bursts thorns of {pow} around an enemy',        aura:'you get +30 max HP and heal 3 a second'},
+  {id:'hero_aurel', name:'Sir Aurelion',          color:'light',   hero:'aurelion',    pow:30, rate:1.5, hp:180, heal:6, amt:60,
+   attack:'calls down holy light of {pow} on an enemy and heals you 6', aura:'your cards deal +25%, and the next lethal hit leaves you standing and heals 60'},
+  {id:'hero_widow', name:'The Nightwidow',        color:'shadow',  hero:'widow',       pow:28, rate:1.4, hp:140, curse:4,
+   attack:'casts curses of {pow} on the nearest enemy',    aura:'you heal 20% of all damage you deal'},
+].map(h=>Object.assign({type:'hero', rank:7, rarity:'hero', turns:3},h));
+const CARD_LIST=SIGNATURE.concat(generateCards(),HEROES);
 /* Nothing a card puts on the board lasts forever: shields, walls, towers, summons, machines,
    traps and changed ground each have HP (or a strength) and a turn limit. A turn ends each time
    the Custom screen opens. Applied after generation, so card ids are unchanged. */
@@ -298,6 +317,7 @@ function cardText(c){
                              guardian:'Blocks with '+c.hp+' HP, hits for '+c.pow}[c.ai]+'. '+(c.ai==='guardian'?'':c.hp+' HP, ')+tn(c.turns);
   else if(kind==='machine') t=c.ai==='bulwark'?c.n+' iron wall'+(c.n>1?'s':'')+' of '+c.hp+' HP, '+tn(c.turns):
                               {turret:'Turret: '+c.pow+' every '+c.rate+'s', repeater:'Repeater: '+c.pow+' every '+c.rate+'s', mortar:'Mortar: lobs '+c.pow+' every '+c.rate+'s'}[c.ai]+', '+c.hp+' HP, '+tn(c.turns);
+  else if(kind==='hero') t='Calls '+c.name.split(',')[0]+' for '+tn(c.turns)+' ('+c.hp+' HP), who '+c.attack.replace('{pow}',c.pow)+'. While it stands, '+c.aura;
   if(c.piece) t='Legendary piece. '+t;
   return t+(kw.length?'. '+kw.join(', '):'');
 }
@@ -322,4 +342,4 @@ function starterList(colors,size){
   return list;
 }
 
-if(typeof module!=='undefined') module.exports={PATTERN_MULT,lobPattern,SIX,SIGNATURE,TYPE_PLAN,RARITY_PLAN,COLORS,BEATS,WEAK_MULT,colorMult,TYPES,RARITY,CARD_LIST,CARDS,cardText,STARTERS,starterList};
+if(typeof module!=='undefined') module.exports={HEROES,PATTERN_MULT,lobPattern,SIX,SIGNATURE,TYPE_PLAN,RARITY_PLAN,COLORS,BEATS,WEAK_MULT,colorMult,TYPES,RARITY,CARD_LIST,CARDS,cardText,STARTERS,starterList};

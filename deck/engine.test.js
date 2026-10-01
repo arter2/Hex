@@ -243,9 +243,9 @@ t('gear: every save starts with the basic wand; copies merge up to +3; enchantin
 });
 t('cursed gear hides its name, sticks once worn, and breaks with a scroll or a sacrifice of its rune', ()=>{
   const s=C.newSave(D.STARTERS[0]); G.addGear(s,'leaden_robe');
-  assert.strictEqual(s.gear.armor,'leaden_robe','an empty slot puts it on at once'); assert(G.isStuck(s,'leaden_robe')); assert.strictEqual(G.gearName(s,'leaden_robe'),'Leaden Robe');
-  assert(G.gearMods(s).slow>1,'the drawback applies'); assert(!G.equip(s,'armor',null).ok,'it will not come off');
-  const t=C.newSave(D.STARTERS[0]); t.gear.armor='padded_robe'; t.items.padded_robe=1; G.addGear(t,'omen_cloak'); assert.strictEqual(G.gearName(t,'omen_cloak'),'Silken Cloak','disguised until worn');
+  assert.strictEqual(s.gear.body,'leaden_robe','an empty slot puts it on at once'); assert(G.isStuck(s,'leaden_robe')); assert.strictEqual(G.gearName(s,'leaden_robe'),'Leaden Robe');
+  assert(G.gearMods(s).slow>1,'the drawback applies'); assert(!G.equip(s,'body',null).ok,'it will not come off');
+  const t=C.newSave(D.STARTERS[0]); t.gear.body='padded_robe'; t.items.padded_robe=1; G.addGear(t,'omen_cloak'); assert.strictEqual(G.gearName(t,'omen_cloak'),'Silken Cloak','disguised until worn');
   assert(G.gearText(t,'omen_cloak').startsWith('Unidentified'));
   // break the robe's curse with 3 rune A cards
   const runeA=Object.keys(s.owned).filter(id=>D.CARDS[id].code==='A'); assert(runeA.length);
@@ -254,10 +254,24 @@ t('cursed gear hides its name, sticks once worn, and breaks with a scroll or a s
   const before=pick.reduce((a,id)=>a+s.owned[id],0)/pick.length;
   assert(G.sacrificeFor(s,'leaden_robe',pick).ok); assert(!G.isStuck(s,'leaden_robe')); assert(!G.gearMods(s).slow,'a broken curse loses its drawback'); assert(G.gearMods(s).hp>=60,'and keeps its strength');
   assert(s.decks[0].list.every(id=>(s.owned[id]||0)>=s.decks[0].list.filter(x=>x===id).length),'decks only hold cards you still own');
-  assert(G.equip(s,'armor',null).ok,'now it comes off');
+  assert(G.equip(s,'body',null).ok,'now it comes off');
   // or a scroll
   const u=C.newSave(D.STARTERS[0]); G.addGear(u,'thirsting_wand'); assert(G.equip(u,'weapon','thirsting_wand').cursed); assert(!G.purifyGear(u,'thirsting_wand').ok);
   G.addScroll(u,'purify'); assert(G.purifyGear(u,'thirsting_wand').ok); assert(!G.gearMods(u).hpPerShot);
+});
+t('seven slots: two-handed weapons push out a shield, rings fill two slots, old saves move armor to body', ()=>{
+  const s=C.newSave(D.STARTERS[0]);
+  G.addGear(s,'buckler'); assert.strictEqual(s.gear.offhand,'buckler');
+  G.addGear(s,'oak_staff'); assert(G.equip(s,'weapon','oak_staff').ok); assert(!s.gear.offhand,'a staff takes both hands');
+  assert(!G.equip(s,'offhand','buckler').ok,'no shield with a staff');
+  G.addGear(s,'ring_vigor'); G.addGear(s,'ring_regen'); assert.strictEqual(s.gear.ring1,'ring_vigor'); assert.strictEqual(s.gear.ring2,'ring_regen');
+  G.equip(s,'ring1',null); assert(G.equip(s,'ring','ring_vigor').ok); assert.strictEqual(s.gear.ring1,'ring_vigor'); assert(!('ring' in s.gear));
+  const m=G.gearMods(s); assert.strictEqual(m.kind,'staff'); assert.strictEqual(m.hp,20); assert.strictEqual(m.regen,1);
+  G.addGear(s,'plate_armor'); G.addGear(s,'iron_helm'); assert.strictEqual(s.gear.body,'plate_armor'); assert(G.gearMods(s).slow>1.3&&G.gearMods(s).castSlow>1);
+  for(const k of ['wand','staff','bow','crossbow','spear']) assert(Object.values(G.GEAR).some(g=>(g.kind||'wand')===k&&g.slot==='weapon'),k);
+  for(const n of ['Cloth Shirt','Plate Armor','Leather Armor','Samurai Suit','Black Thief Outfit','Iron Helm','Buckler','Leather Bracers']) assert(Object.values(G.GEAR).some(g=>g.name===n),n);
+  const old=C.newSave(D.STARTERS[0]); old.gear={weapon:'basic_wand',armor:'iron_mail'}; old.items.iron_mail=1; G.ensureStarterGear(old);
+  assert.strictEqual(old.gear.body,'iron_mail'); assert(!('armor' in old.gear));
 });
 t('loot: scrolls, gear by depth, rare legendaries, some cursed pieces', ()=>{
   const n={scroll:0,legend:0,cursed:0,t3:0}; const N=4000;

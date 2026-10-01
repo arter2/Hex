@@ -217,32 +217,41 @@ function renderCollection(){
    you own: equip it, merge two copies to upgrade it, enchant it, or break its curse. */
 function openCharacter(){ ensureStarterGear(save); persist(); $('#chMsg').textContent=''; renderCharacter(); show('scrCharacter'); }
 function charMsg(r){ $('#chMsg').textContent=r.msg||''; $('#chMsg').className='hint'+(r.cursed?' curse':r.ok?'':' warn'); if(r.ok) persist(); renderCharacter(); }
+const GEAR_GROUPS=[['weapon','Weapons: wands, staffs, bows, crossbows, spears'],['offhand','Off-hand: shields'],['head','Helmets and hats'],['body','Body armor'],['arms','Bracers'],['ring','Rings (two slots)']];
 function renderCharacter(){
-  const s=gearState(save), m=gearMods(save);
+  const s=gearState(save), m=gearMods(save), K=WEAPON_KINDS[m.kind]||WEAPON_KINDS.wand;
   $('#chGold').textContent='🪙 '+save.gold;
-  // the wizard, large, glowing in the wand's element
+  // the wizard, large, glowing in the weapon's element
   const cv=$('#chSprite'), cx=cv.getContext('2d'); cx.clearRect(0,0,128,128); cx.imageSmoothingEnabled=false;
   const col=m.color?COLORS[m.color].c:'#7fd4ff', g=cx.createRadialGradient(64,70,4,64,70,64); g.addColorStop(0,col+'55'); g.addColorStop(1,col+'00'); cx.fillStyle=g; cx.fillRect(0,0,128,128);
   const spr=unitSprite({kind:'player'}); cx.drawImage(spr.img,0,0,32,32,0,0,128,128);
-  const w=(k,v)=>`<div><span>${k}</span><b>${v}</b></div>`;
-  $('#chStats').innerHTML=w('Max HP',120+(m.hp||0))+w('Wand',Math.max(1,3+m.tap)+' · charged '+Math.max(2,7+m.charged))+w('Element',m.color?COLORS[m.color].icon+' '+COLORS[m.color].name:'none')
-    +w('Fire rate',m.cd&&m.cd!==1?Math.round((1/m.cd-1)*100)+'% faster':'normal')+w('Guard',Math.round((m.guard||0)*100)+'%')+w('Start shield',m.shield||0)
-    +(m.surge?w('4th slot chance',Math.round(m.surge*100)+'%'):'')+(m.slow||m.gauge||m.hurt||m.hpPerShot||m.misfire?w('Curses',modsText({slow:m.slow,gauge:m.gauge,hurt:m.hurt,hpPerShot:m.hpPerShot,misfire:m.misfire})):'');
-  // the two slots
+  const w=(k,v)=>`<div><span>${k}</span><b>${v}</b></div>`, pct=x=>Math.round(x*100)+'%';
+  $('#chStats').innerHTML=w('Max HP',120+(m.hp||0))+w(K.name,Math.max(1,K.tap+m.tap)+' · charged '+Math.max(2,K.charged+m.charged))+w('Element',m.color?COLORS[m.color].icon+' '+COLORS[m.color].name:'none')
+    +w('Fire rate',m.cd&&m.cd!==1?Math.round((1/m.cd-1)*100)+'% faster':'normal')+w('Guard',pct(m.guard||0))+w('Start shield',m.shield||0)
+    +(m.dodge?w('Dodge',pct(m.dodge)):'')+(m.block?w('Shield block','1 hit a turn'):'')+(m.regen?w('Regeneration',m.regen+' HP/s'):'')+(m.counter?w('Counter',m.counter):'')
+    +(m.slow&&m.slow!==1?w('Move speed',m.slow<1?Math.round((1-m.slow)*100)+'% faster':Math.round((m.slow-1)*100)+'% slower'):'')+(m.castSlow?w('Casting',Math.round((m.castSlow-1)*100)+'% slower'):'')
+    +(m.surge?w('4th slot chance',pct(m.surge)):'')+(m.gold?w('Gold','+'+pct(m.gold)):'')+(m.gauge||m.hurt||m.hpPerShot||m.misfire?w('Curses',modsText({gauge:m.gauge,hurt:m.hurt,hpPerShot:m.hpPerShot,misfire:m.misfire})):'');
+  // the seven slots
   const slots=$('#chSlots'); slots.innerHTML='';
-  for(const slot of ['weapon','armor']){ const id=s.gear[slot], d=document.createElement('div'); d.className='gearslot'+(id&&isStuck(save,id)?' cursed':'');
-    d.innerHTML=`<span class="lbl">${slot==='weapon'?'Weapon':'Armor'}</span>`+(id?`<b>${GEAR[id].icon} ${esc(gearName(save,id))}</b><small>${esc(gearText(save,id))}</small>${isStuck(save,id)?'<em>☠ Cursed: '+esc(GEAR[id].curse)+'. It will not come off.</em>':''}`:'<b class="dim">Nothing</b>');
+  for(const slot of SLOTS){ const id=s.gear[slot], d=document.createElement('div'); d.className='gearslot'+(id&&isStuck(save,id)?' cursed':'')+(id?'':' empty');
+    d.innerHTML=`<span class="lbl">${SLOT_NAMES[slot]}</span>`+(id?`<b>${GEAR[id].icon} ${esc(gearName(save,id))}</b>${isStuck(save,id)?'<em>☠ Cursed</em>':''}`:'<b class="dim">—</b>');
+    if(id) d.onclick=()=>{ const r=equip(save,slot,null); charMsg(r); };
     slots.appendChild(d); }
   const sc=$('#chScrolls'); sc.innerHTML='<span class="lbl">Scrolls</span>'+Object.keys(SCROLLS).map(k=>`<span class="chip" style="--c:#7fd4ff">${SCROLLS[k].icon} ${SCROLLS[k].name} ×${s.scrolls[k]||0}</span>`).join('');
-  for(const slot of ['weapon','armor']){ const box=$(slot==='weapon'?'#chWeapons':'#chArmor'); box.innerHTML='';
-    const ids=Object.keys(GEAR).filter(id=>GEAR[id].slot===slot&&s.items[id]>0).sort((a,b)=>GEAR[b].tier-GEAR[a].tier);
-    if(!ids.length) box.innerHTML='<p class="hint">None yet. Fights drop gear now and then; bosses always drop loot.</p>';
-    for(const id of ids){ const G=GEAR[id], on=s.gear[slot]===id, stuck=isStuck(save,id), known=!G.cursed||s.ident[id];
+  const lists=$('#chLists'); lists.innerHTML='';
+  for(const [type,title] of GEAR_GROUPS){
+    const ids=Object.keys(GEAR).filter(id=>GEAR[id].slot===type&&s.items[id]>0).sort((a,b)=>GEAR[b].tier-GEAR[a].tier);
+    const h=document.createElement('h3'); h.textContent=title; lists.appendChild(h);
+    const box=document.createElement('div'); box.className='gearlist'; lists.appendChild(box);
+    if(!ids.length){ box.innerHTML='<p class="hint">None yet.</p>'; continue; }
+    for(const id of ids){ const G=GEAR[id], wornIn=SLOTS.filter(k=>s.gear[k]===id), on=wornIn.length>0, stuck=isStuck(save,id), known=!G.cursed||s.ident[id];
+      const kindTxt=G.slot==='weapon'&&known?WEAPON_KINDS[kindOf(id)].name+': '+WEAPON_KINDS[kindOf(id)].text:G.weight?G.weight[0].toUpperCase()+G.weight.slice(1)+' armor':'';
       const row=document.createElement('div'); row.className='gearrow'+(on?' on':'')+(G.legendary?' legend':'')+(stuck?' cursed':'');
       row.innerHTML=`<div class="gi">${known?G.icon:'❔'}</div><div class="gt"><b>${esc(gearName(save,id))}</b> <span class="tier">${G.legendary?'✹ Legendary':G.tier?'★'.repeat(G.tier):'junk'}</span>${s.items[id]>1?` <span class="cnt">×${s.items[id]}</span>`:''}
-        <small>${esc(gearText(save,id))}${known&&G.text?' · '+esc(G.text):''}</small>${stuck?`<em>☠ Cursed: ${esc(G.curse)}</em>`:G.cursed&&known?'<em class="ok">Curse broken</em>':''}</div><div class="ga"></div>`;
+        <small>${esc(gearText(save,id))}${known&&G.text?' · '+esc(G.text):''}</small>${kindTxt?`<small class="kind">${esc(kindTxt)}</small>`:''}${stuck?`<em>☠ Cursed: ${esc(G.curse)}</em>`:G.cursed&&known?'<em class="ok">Curse broken</em>':''}</div><div class="ga"></div>`;
       const act=row.querySelector('.ga'), btn=(label,fn,dis)=>{ const b=document.createElement('button'); b.className='btn ghost small'; b.textContent=label; b.disabled=!!dis; b.onclick=fn; act.appendChild(b); };
-      btn(on?'Take off':'Equip',()=>charMsg(equip(save,slot,on?null:id)),on&&stuck);
+      if(on) btn('Take off',()=>charMsg(equip(save,wornIn[0],null)),stuck);
+      if(!on||(G.slot==='ring'&&s.items[id]>1&&wornIn.length<2)) btn('Equip',()=>charMsg(equip(save,G.slot==='ring'?'ring':G.slot,id)));
       if(s.items[id]>1) btn('Merge → +'+((s.gearLv[id]||0)+1),()=>charMsg(mergeGear(save,id)),(s.gearLv[id]||0)>=MAX_LEVEL);
       if(!s.ench[id]&&known) btn('Enchant',()=>charMsg(enchantGear(save,id)),!(s.scrolls.enchant>0));
       if(stuck){ btn('Purify',()=>charMsg(purifyGear(save,id)),!(s.scrolls.purify>0)); btn('Sacrifice '+SACRIFICE+' rune '+G.rune,()=>pickSacrifice(id)); }
@@ -311,6 +320,7 @@ function settleCharges(){ const burned=settleChargeUses(save,B.piles); persist()
 function victory(){
   const b=B, boss=b.enemies.some(e=>e.def.boss);
   const rw=battleRewards(b.enemies.filter(e=>!e.def.minion).map(e=>e.color),b.depth,boss,null,save.owned);
+  if(rw.gold) rw.gold=Math.round(rw.gold*(1+(gearMods(save).gold||0)));   // Ring of Fortune
   save.gold+=rw.gold; save.wins++; if(b.depth>=save.deepest) save.deepest=b.depth+1;
   const loot=rw.items.map(k=>({k, res:addLoot(save,k)}));
   const res=addCards(save,rw.cards); const burnt=settleCharges();

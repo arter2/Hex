@@ -310,3 +310,7 @@ select,.filters input{font:600 14px var(--font-b); color:var(--text); background
 @media (max-width:420px){ .charbox{grid-template-columns:96px 1fr;} #chSprite{width:96px; height:96px;} .charstats{grid-template-columns:1fr;} }
 .gearrow.on.cursed{border-color:#ff5d6c; background:color-mix(in srgb,#ff5d6c 8%,var(--panel));}
 .card .badge{top:auto; bottom:30px; right:6px;}
+.gearslots{grid-template-columns:repeat(4,1fr);}
+.gearslot{min-height:56px; cursor:pointer; font-size:13px;} .gearslot b{font-size:13px; line-height:1.2;} .gearslot.empty{border-color:var(--line); cursor:default;}
+.gearrow .gt small.kind{color:#9fdcff;}
+@media (max-width:420px){ .gearslots{grid-template-columns:repeat(2,1fr);} }

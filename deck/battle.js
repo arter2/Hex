@@ -77,10 +77,12 @@ function startBattle(list,depth,hooks,opts){
 // Your equipped weapon and armor (see gear.js): wand damage, speed and element, max HP, damage
 // taken off every hit, a starting shield, and any curse's drawback.
 function applyGear(p,m){
-  m=Object.assign({tap:0,charged:0,cd:1,charge:1,hp:0,guard:0,shield:0},m||{});
-  p.wand={tap:Math.max(1,3+m.tap), charged:Math.max(2,7+m.charged), cd:m.cd, charge:.9*m.charge, color:m.color||null,
+  m=Object.assign({tap:0,charged:0,cd:1,charge:1,hp:0,guard:0,shield:0,kind:'wand'},m||{});
+  const K=(typeof WEAPON_KINDS!=='undefined'&&WEAPON_KINDS[m.kind])||{tap:3,charged:7,cd:.3,ccd:.5};
+  p.wand={kind:m.kind, tap:Math.max(1,K.tap+m.tap), charged:Math.max(2,K.charged+m.charged), cd:K.cd*m.cd, ccd:K.ccd*m.cd, charge:.9*m.charge, color:m.color||null,
     chill:m.chill||0, zap:m.zap||0, drain:m.drain||0, glow:m.glow||0, burn:m.burn||0, misfire:m.misfire||0, hpPerShot:m.hpPerShot||0};
   p.guard=m.guard; p.slow=m.slow||1; p.hurt=m.hurt||1; p.gaugeMult=m.gauge||1;
+  p.dodgeChance=m.dodge||0; p.block=m.block||0; p.blockReady=!!m.block; p.counter=m.counter||0; p.regenGear=m.regen||0; p.castSlow=m.castSlow||1; p.power=m.power||{};
   p.maxHp+=m.hp; p.hp=p.maxHp;
   if(m.shield){ p.barrier=m.shield; p.shieldTurns=2; }
 }
@@ -117,7 +119,7 @@ function hitEnemy(e,base,card,opts){
   if(!e||e.hp<=0) return 0;
   opts=opts||{};
   const pl=B.player;
-  let mult=opts.raw?1:colorMult(card&&card.color,e.color)*(e.curseT>0?1.3:1)*(pl.pactT>0||pl.courageT>0?1.3:1)*(card&&card.valor&&pl.hp<=pl.maxHp/2?1.5:1)*heroMult(card);
+  let mult=opts.raw?1:colorMult(card&&card.color,e.color)*(e.curseT>0?1.3:1)*(pl.pactT>0||pl.courageT>0?1.3:1)*(card&&card.valor&&pl.hp<=pl.maxHp/2?1.5:1)*heroMult(card)*((card&&pl.power&&pl.power[card.color])||1);
   let dmg=Math.max(1,Math.round(base*mult));
   if(e.barrier>0&&!opts.raw&&!opts.dig){ const a=Math.min(e.barrier,dmg); e.barrier-=a; dmg-=a; if(!dmg){ floater('🛡',e.tile,'#fff0b3'); return 0; } }
   e.hp-=dmg; e.hitT=.18; if(dmg>=40||mult>=WEAK_MULT) shake(dmg>=60?5:3);
@@ -167,10 +169,14 @@ function hitPlayer(dmg){
   const p=B.player; if(B.phase!=='fight') return;
   if(p.invT>0){ floater('miss',p.tile,'#7fd4ff'); return; }
   if(p.dodge){ p.dodge=false; floater('dodge',p.tile,'#6fd6ff'); return; }
+  if(p.dodgeChance&&Math.random()<p.dodgeChance){ floater('dodge',p.tile,'#9fdcff'); return; }
+  if(p.block&&p.blockReady){ p.blockReady=false; floater('blocked',p.tile,'#f2c94c'); burst(p.tile,'#f2c94c',8,1); return; }
   if(p.barrier>0){ const a=Math.min(p.barrier,dmg); p.barrier-=a; dmg-=a; floater('🛡'+a,p.tile,'#6fd6ff'); }
   if(p.guard&&dmg>0) dmg=Math.max(1,Math.round(dmg*(1-p.guard)));
   if(p.hurt&&p.hurt!==1&&dmg>0) dmg=Math.round(dmg*p.hurt);
   if(dmg<=0) return;
+  if(p.counter){ const foe=alive().filter(e=>hexDist(e.tile,p.tile)<=5).sort((a,b)=>hexDist(a.tile,p.tile)-hexDist(b.tile,p.tile))[0];
+    if(foe){ B.fx.push({kind:'beam',a:p.tile,b:foe.tile,color:'#e6f4ff',t:0,life:.2}); hitEnemy(foe,p.counter,null,{raw:true}); } }
   p.hp-=dmg; p.hurtT=.25; shake(dmg>=15?8:5); floater('-'+dmg,p.tile,'#ff5d6c',true); flash(p.tile,'#ff5d6c',1); B.hooks.onHurt&&B.hooks.onHurt(dmg);
   // Divine Intervention: a lethal hit leaves you at 1 HP, then heals
   if(p.hp<=0&&p.intervene){ p.hp=1; const h=p.intervene; p.intervene=0; floater('Divine Intervention',p.tile,'#fff0b3',true); burst(p.tile,'#fff0b3',30,1); healPlayer(h); }
@@ -203,7 +209,7 @@ function castCard(){
   const b=B; if(!b||b.phase!=='fight') return;
   const p=b.player; if(p.castCd>0) return;
   const inst=castNext(b.piles); if(!inst) return;
-  p.castCd=p.hasteT>0||heroOn('volta')?.25:.45;
+  p.castCd=(p.hasteT>0||heroOn('volta')?.25:.45)*(p.castSlow||1);
   playCard(inst);
   if(inst.straight){ // Straight: the next two cards follow in one chain, then a finisher
     const chain=[]; for(let i=0;i<inst.straight.length-1;i++){ const n=castNext(b.piles); if(n) chain.push(n); }
@@ -349,6 +355,7 @@ function endTurn(){
     if(t.envTurns>0&&--t.envTurns<=0){ t.burnT=0; t.iceT=0; t.thornT=0; }
   }
   if(heroOn('ysolde')) heroShield();
+  if(p.block) p.blockReady=true;   // a shield is ready again each turn
 }
 function updateAlly(a,dt){
   a.fireT-=dt;
@@ -374,15 +381,24 @@ function shoot(from,tiles,o){ B.shots.push(Object.assign({a:from,tiles,i:-1,step
 
 function fireWand(charged){
   const b=B, p=b.player; if(b.phase!=='fight'||p.wandCd>0) return;
-  const w=p.wand||{tap:3,charged:7,cd:1};
-  p.wandCd=(charged?.5:.3)*w.cd;
+  const w=p.wand||{kind:'wand',tap:3,charged:7,cd:.3,ccd:.5};
+  p.wandCd=charged?w.ccd||.5:w.cd||.3;
   if(w.hpPerShot) payHp(w.hpPerShot);
   if(w.misfire&&Math.random()<w.misfire){ floater('fizzle',p.tile,'#93a9ba'); burst(p.tile,'#56606a',5,1); return; }
   const dmg=Math.round((charged?w.charged:w.tap)*(p.powerT>0?2.5:1));
-  // an elemental wand shoots in its color, and its effects ride on the shot like a card's
+  // an elemental weapon shoots in its color, and its effects ride on the shot like a card's
   const card=w.color||w.burn||w.drain||w.zap||w.chill||w.glow?{id:'wand', name:'Wand', color:w.color, burn:w.burn||0, drain:w.drain||0,
     freeze:charged?w.chill:0, stun:w.zap&&Math.random()<w.zap?.5:0, mend:charged?w.glow:0}:null;
-  shoot(p.tile,lineTiles(p.tile,DIRS.E),{dmg,from:'p',wand:true,big:charged,card});
+  const row=lineTiles(p.tile,DIRS.E), o=()=>({dmg,from:'p',wand:true,big:charged,card});
+  // each kind of weapon fires its own way (see WEAPON_KINDS in gear.js)
+  switch(w.kind){
+    case 'staff': shoot(p.tile,row,Object.assign(o(),{pierce:charged?1:0})); break;
+    case 'bow': if(charged){ for(const dr of [-1,0,1]){ const st=dr?tileCR(p.tile.col,p.tile.r+dr):p.tile; if(st) shoot(st,lineTiles(st,DIRS.E),o()); } }
+      else shoot(p.tile,row,Object.assign(o(),{pierce:1,falloff:.6})); break;
+    case 'crossbow': shoot(p.tile,row,Object.assign(o(),charged?{dig:true}:{push:true})); break;
+    case 'spear': shoot(p.tile,charged?row:row.slice(0,3),Object.assign(o(),charged?{pierce:9}:{})); break;
+    default: shoot(p.tile,row,o());
+  }
 }
 
 /* ---------------- simulation ---------------- */
@@ -413,6 +429,7 @@ function update(dt){
   ['moveCd','wandCd','hurtT'].forEach(k=>p[k]=Math.max(0,p[k]-rdt));
   ['castCd','invT','powerT','pactT','courageT','hasteT','regenT'].forEach(k=>p[k]=Math.max(0,p[k]-dt));
   if(p.regenT>0){ p.regenAcc=(p.regenAcc||0)+p.regenAmt*dt; if(p.regenAcc>=5){ healPlayer(5); p.regenAcc-=5; } }
+  if(p.regenGear){ p.gearAcc=(p.gearAcc||0)+p.regenGear*dt; if(p.gearAcc>=3){ healPlayer(3,true); p.gearAcc-=3; } }
   if(heroOn('thornfather')){ p.heroAcc=(p.heroAcc||0)+3*dt; if(p.heroAcc>=6){ healPlayer(6); p.heroAcc-=6; } }
   if(p.charging) p.chargeT=Math.min(1.2,p.chargeT+rdt);
   if(p.path.length&&p.moveCd<=0){ const n=p.path[0]; if(n.side==='p'&&!n.occ){ p.tile.occ=null; p.tile=n; n.occ=p; p.path.shift(); p.moveCd=(haste?.08:.14)*(icy(n)?2.2:1)*(p.slow||1); } else p.path=[]; }
@@ -425,7 +442,9 @@ function update(dt){
       const o=t.occ;
       if(s.dig&&o&&(o.kind==='rock'||o.enemy)) continue;   // diggers tunnel under walls and rocks
       if(o&&o.kind==='rock'){ s.done=true; }
-      else if(s.from==='p'&&o&&o.kind==='enemy'&&o.hp>0){ hitEnemy(o,s.dmg,s.card,{dig:s.dig}); s.done=true; }
+      else if(s.from==='p'&&o&&o.kind==='enemy'&&o.hp>0){ if(s.hit.has(o)) continue; s.hit.add(o);
+        hitEnemy(o,s.dmg,s.card,{dig:s.dig}); if(s.push&&o.hp>0) shove(o,{push:1},s.dmg);
+        if(s.pierce>0){ s.pierce--; s.dmg=Math.max(1,Math.round(s.dmg*(s.falloff||1))); burst(t,'#ffffff',4,.8); } else s.done=true; }
       else if(s.from==='p'&&o&&o.enemy){ hitBlock(o,s.dmg,null); s.done=true; }
       else if(s.from==='e'&&o&&o.kind!=='enemy'&&!o.enemy){ if(o.kind==='player') hitPlayer(s.dmg); else hitBlock(o,s.dmg,s.owner); s.done=true; }
       if(s.done) burst(t,s.card?colorOf(s.card):s.color||'#fff',6,.8);
@@ -463,7 +482,7 @@ function shotPath(tiles,dig){ const path=[];
     if(!dig&&(o.kind==='rock'||o.enemy)) return {path,hit:[]}; }
   return {path,hit:[]}; }
 function estDamage(c,e,m){ const pl=B.player;
-  return Math.max(1,Math.round((c.pow||0)*(m||1)*colorMult(c.color,e.color)*(e.curseT>0?1.3:1)*(pl.pactT>0||pl.courageT>0?1.3:1)*(c.valor&&pl.hp<=pl.maxHp/2?1.5:1)*heroMult(c))); }
+  return Math.max(1,Math.round((c.pow||0)*(m||1)*colorMult(c.color,e.color)*(e.curseT>0?1.3:1)*(pl.pactT>0||pl.courageT>0?1.3:1)*(c.valor&&pl.hp<=pl.maxHp/2?1.5:1)*heroMult(c)*((pl.power&&pl.power[c.color])||1))); }
 function castPreview(){
   const b=B, inst=b&&b.piles.queue[0]; if(!inst||b.phase!=='fight') return null;
   const c=inst.card, k=c.type==='piece'?c.base:c.type, p=b.player, row=lineTiles(p.tile,DIRS.E), out={card:c,mult:inst.mult||1,area:[],hit:[],place:[],paths:[],arc:null,self:false,note:''};

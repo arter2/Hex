@@ -814,7 +814,7 @@ function makeSprite(key,pal,draw){
 }
 // the sprite for a unit on the board: 'player', an enemy id, or an ally's card
 function unitSprite(u){
-  if(u.kind==='player') return makeSprite('player',{m:'#6a4ad0',a:'#e8b830',glow:'#c58bff',o:'#0a0612'},()=>human({hat:'wizard',weapon:'staff',beard:1}));
+  if(u.kind==='player') return makeSprite('player',{m:'#1f5fa8',a:'#f2c94c',glow:'#7fd4ff',o:'#03070c'},()=>human({hat:'wizard',weapon:'staff',beard:1}));
   if(u.kind==='enemy'){ const F=FAM[u.color], id=u.id;
     const pal={m:F.m,a:F.a,glow:F.glow,o:F.o,c:artMix(F.m,'#000000',.35),d:artMix(F.m,'#1a1020',.6)};
     if(HUMAN_LOOK[id]) return makeSprite('e:'+id,pal,()=>human(HUMAN_LOOK[id]));

@@ -290,6 +290,62 @@ function boardTurns(c){
   else if(k==='environment'&&c.dur){ c.turns=c.dur>=10?2:1; delete c.dur; }
 }
 CARD_LIST.forEach(boardTurns);
+
+/* Rune codes (Battle Network style). Every card carries a rune, A to F, or the rare wild ✱.
+   The cards you queue in one turn must share a rune or a name (✱ fits any rune), so a combo
+   takes a deck built around a few runes. Signature cards are grouped by hand: each color
+   uses three runes, a starter deck's two colors use all six, and each color has one rune
+   whose three cards make a Straight (Fire: Cinder Lance 3, Ember Wall 4, Flame Fan 5).
+   Heroes are wild. */
+const RUNES=['A','B','C','D','E','F'], WILD='✱';
+const SIG_RUNES={
+  A:['cinder_lance','ember_wall','flame_fan', 'frost_ward','hail_lob','rime_wall','glacial_veil', 'mend','briar_bomb','bramble_wall'],
+  B:['ember_dart','fire_pot','kindle', 'ice_shard','frost_lance','icicle_spire', 'thorn_dart','vine_lash','regrowth'],
+  C:['brazier','blaze_bolt','meteor', 'absolute_zero', 'bark_skin','spore_pod','world_tree'],
+  D:['static_ward','ball_light','tailwind', 'blessing','judgment','sanctuary', 'grave_pit','wraith_totem','blood_lance'],
+  E:['thunder_row','coil_sentry','spark', 'holy_bolt','radiant_motes','beacon_hope', 'hex_bolt','soul_drain','bone_wall'],
+  F:['chain_light','stormcall', 'courage','intervention','dawnbreaker', 'dark_pact','eclipse'],
+};
+{ const sig={}; for(const k in SIG_RUNES) SIG_RUNES[k].forEach(id=>sig[id]=k);
+  for(const c of CARD_LIST){
+    if(c.rarity==='hero') c.code=WILD;
+    else if(sig[c.id]) c.code=sig[c.id];
+    else { const h=seedOf('rune:'+c.id); c.code=h%33===0?WILD:RUNES[h%6]; } } }
+
+/* Recipes (Program Advance style): queue exactly these cards, in any order, and they fuse into
+   one stronger card. Recipes ignore runes. Four-card recipes need the 4th slot (Rune Surge).
+   Each recipe also needs one 'key' card you have to find: a generated card picked from the
+   collection by `key` (color, type, rarity), so a starter deck alone never makes one.
+   The fused card is not collected; it exists only for the cast. */
+const RECIPES=[
+  {id:'r_inferno',  name:'Inferno Lance',   cards:['ember_dart','cinder_lance'],      key:{color:'fire',type:'strike',rarity:'rare'}, card:{color:'fire',   type:'strike', pow:150, shape:'row', burn:6}},
+  {id:'r_firestorm',name:'Firestorm',       cards:['fire_pot','flame_fan'],               key:{color:'fire',type:'lob',rarity:'uncommon'}, card:{color:'fire',   type:'lob',    pow:110, pattern:'cross', burn:5}},
+  {id:'r_glacier',  name:'Glacier',         cards:['ice_shard','frost_lance'],         key:{color:'frost',type:'ward',rarity:'uncommon'}, card:{color:'frost',  type:'strike', pow:60,  shape:'all', freeze:3}},
+  {id:'r_fortress', name:'Frozen Fortress', cards:['rime_wall','frost_ward'],       key:{color:'frost',type:'boon',rarity:'rare'}, card:{color:'frost',  type:'ward',   ward:'barrier', amt:150, turns:3}},
+  {id:'r_thunder',  name:'Thunderhead',     cards:['spark','thunder_row'],           key:{color:'storm',type:'strike',rarity:'rare'}, card:{color:'storm',  type:'strike', pow:70,  shape:'all', stun:2}},
+  {id:'r_coil',     name:'Tempest Coil',    cards:['coil_sentry','static_ward'],        key:{color:'storm',type:'sentry',rarity:'uncommon'}, card:{color:'storm',  type:'sentry', pow:18,  rate:.4, hp:120, turns:3}},
+  {id:'r_overgrow', name:'Overgrowth',      cards:['thorn_dart','vine_lash'],         key:{color:'verdant',type:'lob',rarity:'uncommon'}, card:{color:'verdant',type:'strike', pow:90,  shape:'wedge', poison:12, slow:4}},
+  {id:'r_grove',    name:'Ancient Grove',   cards:['mend','regrowth'],                 key:{color:'verdant',type:'boon',rarity:'rare'}, card:{color:'verdant',type:'boon',   boon:'heal', amt:100}},
+  {id:'r_holylance',name:'Choir of Light',  cards:['holy_bolt','radiant_motes'],        key:{color:'light',type:'lob',rarity:'uncommon'}, card:{color:'light',  type:'strike', pow:22,  shape:'missiles', n:8, mend:3}},
+  {id:'r_sanctum',  name:'Sanctum',         cards:['sanctuary','blessing'],              key:{color:'light',type:'ward',rarity:'rare'}, card:{color:'light',  type:'boon',   boon:'courage', dur:16}},
+  {id:'r_harvest',  name:'Soul Harvest',    cards:['hex_bolt','soul_drain'],           key:{color:'shadow',type:'lob',rarity:'uncommon'}, card:{color:'shadow', type:'strike', pow:60,  shape:'all', drain:.5, curse:6}},
+  {id:'r_citadel',  name:'Bone Citadel',    cards:['bone_wall','wraith_totem'],        key:{color:'shadow',type:'sentry',rarity:'rare'}, card:{color:'shadow', type:'ward',   ward:'thorns', n:4, hp:90, thorns:15, turns:3}},
+  {id:'r_embers',   name:'Storm of Embers', cards:['ember_dart','spark'],             key:{color:'gray',type:'summon',rarity:'rare'}, card:{color:'storm',  type:'lob',    pow:100, pattern:'burst', burn:4, stun:1}},
+  {id:'r_dawnfrost',name:'Dawnfrost',       cards:['ice_shard','holy_bolt'],           key:{color:'brown',type:'machine',rarity:'rare'}, card:{color:'light',  type:'strike', pow:90,  shape:'row', freeze:2, mend:6}},
+  {id:'r_rot',      name:'Rot Bloom',       cards:['thorn_dart','hex_bolt'],           key:{color:'gray',type:'summon',rarity:'uncommon'}, card:{color:'shadow', type:'lob',    pow:90,  pattern:'burst', poison:10, curse:5}},
+  {id:'r_sunforge', name:'Sun Forge',       cards:['ember_dart','cinder_lance','meteor'],        key:{color:'fire',type:'lob',rarity:'legendary'}, card:{color:'fire',   type:'lob',    pow:300, pattern:'burst', burn:8, delay:1}},
+  {id:'r_winter',   name:'Absolute Winter', cards:['ice_shard','frost_lance','absolute_zero'],   key:{color:'frost',type:'lob',rarity:'legendary'}, card:{color:'frost',  type:'strike', pow:120, shape:'all', freeze:5}},
+  {id:'r_skyfall',  name:'Skyfall',         cards:['spark','thunder_row','stormcall'],         key:{color:'storm',type:'lob',rarity:'legendary'}, card:{color:'storm',  type:'strike', pow:140, shape:'all', stun:3}},
+  {id:'r_heart',    name:"World's Heart",   cards:['mend','regrowth','world_tree'],             key:{color:'verdant',type:'boon',rarity:'legendary'}, card:{color:'verdant',type:'boon',   boon:'heal', amt:220}},
+  {id:'r_dawn',     name:'Final Dawn',      cards:['holy_bolt','courage','dawnbreaker'],         key:{color:'light',type:'strike',rarity:'legendary'}, card:{color:'light',  type:'strike', pow:160, shape:'all', mend:20}},
+  {id:'r_night',    name:'Endless Night',   cards:['hex_bolt','soul_drain','eclipse'],        key:{color:'shadow',type:'strike',rarity:'legendary'}, card:{color:'shadow', type:'strike', pow:170, shape:'all', drain:.5, curse:8}},
+];
+RECIPES.forEach((r,i)=>{
+  const base=CARD_LIST.filter(c=>!SIGNATURE.includes(c)&&!c.potion&&c.rarity!=='hero'&&c.color===r.key.color), kind=c=>c.type==='piece'?c.base:c.type;
+  let pool=base.filter(c=>kind(c)===r.key.type&&c.rarity===r.key.rarity); if(!pool.length) pool=base.filter(c=>c.rarity===r.key.rarity); if(!pool.length) pool=base;
+  const taken=new Set(RECIPES.slice(0,i).map(x=>x.keyId)); r.keyId=(pool.find(c=>!taken.has(c.id))||pool[0]).id;
+  r.cards.push(r.keyId);
+  r.card=Object.assign({id:r.id, name:r.name, rank:12, rarity:'legendary', code:WILD, recipe:true},r.card); });
 const CARDS={}; CARD_LIST.forEach(c=>CARDS[c.id]=c);
 
 // One-line rules text built from the data, so new cards need no hand-written text.
@@ -352,4 +408,4 @@ function starterList(colors,size){
   return list;
 }
 
-if(typeof module!=='undefined') module.exports={POTIONS,HEROES,PATTERN_MULT,lobPattern,SIX,SIGNATURE,TYPE_PLAN,RARITY_PLAN,COLORS,BEATS,WEAK_MULT,colorMult,TYPES,RARITY,CARD_LIST,CARDS,cardText,STARTERS,starterList};
+if(typeof module!=='undefined') module.exports={RUNES,WILD,RECIPES,POTIONS,HEROES,PATTERN_MULT,lobPattern,SIX,SIGNATURE,TYPE_PLAN,RARITY_PLAN,COLORS,BEATS,WEAK_MULT,colorMult,TYPES,RARITY,CARD_LIST,CARDS,cardText,STARTERS,starterList};

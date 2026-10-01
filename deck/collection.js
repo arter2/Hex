@@ -40,6 +40,7 @@ const GEAR={
   focus_rod:     {slot:'weapon', tier:2, name:'Focus Rod',         icon:'🔮', mods:{charge:.65, charged:3}},
   storm_scepter: {slot:'weapon', tier:2, name:'Storm Scepter',     icon:'⚡', mods:{tap:2, charged:4}},
   archmage_staff:{slot:'weapon', tier:3, name:"Archmage's Staff",  icon:'✨', mods:{tap:3, charged:6, cd:.85}},
+  rune_staff:    {slot:'weapon', tier:3, name:'Runecarved Staff',  icon:'ᚱ', mods:{tap:2, charged:4, surge:.2}},
   padded_robe:   {slot:'armor',  tier:1, name:'Padded Robe',       icon:'👘', mods:{hp:20}},
   warded_cloak:  {slot:'armor',  tier:1, name:'Warded Cloak',      icon:'🧥', mods:{shield:30}},
   iron_mail:     {slot:'armor',  tier:2, name:'Iron Mail',         icon:'🛡', mods:{guard:.1, hp:10}},
@@ -49,9 +50,9 @@ const GEAR={
 function gearText(g){ const m=g.mods, t=[];
   if(m.tap) t.push('wand +'+m.tap); if(m.charged) t.push('charged shot +'+m.charged); if(m.cd) t.push('fires '+Math.round((1/m.cd-1)*100)+'% faster');
   if(m.charge) t.push('charges '+Math.round((1-m.charge)*100)+'% faster'); if(m.hp) t.push('+'+m.hp+' max HP'); if(m.guard) t.push('take '+Math.round(m.guard*100)+'% less damage');
-  if(m.shield) t.push('start each fight with a '+m.shield+' shield'); return t.join(', '); }
+  if(m.shield) t.push('start each fight with a '+m.shield+' shield'); if(m.surge) t.push(Math.round(m.surge*100)+'% chance each turn to open the 4th slot'); return t.join(', '); }
 // the combined mods of what you have equipped
-function gearMods(save){ const out={tap:0,charged:0,cd:1,charge:1,hp:0,guard:0,shield:0};
+function gearMods(save){ const out={tap:0,charged:0,cd:1,charge:1,hp:0,guard:0,shield:0,surge:0};
   for(const id of Object.values(save.gear||{})){ const g=GEAR[id]; if(!g) continue; for(const k in g.mods) if(k==='cd'||k==='charge') out[k]*=g.mods[k]; else out[k]+=g.mods[k]; }
   return out; }
 // a gear drop: tier 1 at first, tier 2 from depth 4, tier 3 from depth 8 (a boss rolls one tier up)

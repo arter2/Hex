@@ -2,9 +2,11 @@
    Pure deck / hand / queue logic with no rendering, so it can be tested in Node.
    Flow: draw up to 7 at each Custom screen, queue up to 3, casting sends a card to the
    discard pile, unqueued cards stay in hand, and there is no reshuffle: an empty deck
-   leaves you with the wand. Each queue slot left empty draws 1 extra card next time. */
+   leaves you with the wand. Each queue slot left empty draws 1 extra card next time.
+   Runes: the queued cards must share a rune or a name (✱ fits any rune). Rune Surge: a hand
+   holding 4 or more cards of one rune opens a 4th slot for that turn. */
 
-const RULES={max:60, min:45, copies:4, legendaryCopies:1, heroes:1, hand:7, slots:3};
+const RULES={max:60, min:45, copies:4, legendaryCopies:1, heroes:1, hand:7, slots:3, surgeSlots:4, surgeRunes:4};
 
 // owned (optional): {id: copies you own}; a deck can't use more copies than you have.
 function validateDeck(list,cards,owned){
@@ -37,8 +39,27 @@ function createPiles(list,rng,cards){
   cards=cards||CARDS;
   let uid=1;
   const draw=shuffle(list.map(id=>({uid:uid++, card:cards[id]})),rng);
-  return {draw, hand:[], queue:[], discard:[], uid, bonus:0};
+  return {draw, hand:[], queue:[], discard:[], uid, bonus:0, slots:RULES.slots};
 }
+const slotsOf=p=>p.slots||RULES.slots;
+const WILD_RUNE='✱';
+// Rune Surge: the rune with the most cards in hand (wild cards count for every rune)
+function surgeRune(hand){ const n={}, wild=hand.filter(c=>c.card.code===WILD_RUNE).length;
+  hand.forEach(c=>{ const k=c.card.code; if(k&&k!==WILD_RUNE) n[k]=(n[k]||0)+1; });
+  let best=null; for(const k in n) if(!best||n[k]>n[best]) best=k;
+  return best&&n[best]+wild>=RULES.surgeRunes?best:null; }
+// Do these cards fit together in one queue? Same rune (wild fits any), or all the same card,
+// or a step toward a recipe.
+function runesFit(cards){
+  const runes=new Set(cards.map(c=>c.code).filter(k=>k&&k!==WILD_RUNE));
+  if(runes.size<=1) return true;
+  if(cards.every(c=>c.name===cards[0].name)) return true;
+  return recipeStep(cards);
+}
+// true if these cards are all part of one recipe (any order, copies counted)
+function fitsRecipe(r,cards){ const need=r.cards.slice(); return cards.every(c=>{ const i=need.indexOf(c.id); if(i<0) return false; need.splice(i,1); return true; }); }
+function recipeStep(cards){ const list=typeof RECIPES!=='undefined'?RECIPES:[]; return list.some(r=>fitsRecipe(r,cards)); }
+const canQueue=(p,inst)=>p.queue.length<slotsOf(p)&&runesFit([...p.queue.filter(c=>!c.temp).map(c=>c.card),inst.card]);
 
 // Opening the Custom screen: queued cards not yet cast go back to the hand, then the hand refills to 7.
 function openCustom(p){
@@ -46,39 +67,53 @@ function openCustom(p){
   const drawn=[];
   const size=RULES.hand+(p.bonus||0); p.bonus=0;
   while(p.hand.length<size && p.draw.length){ const c=p.draw.pop(); p.hand.push(c); drawn.push(c); }
+  // Rune Surge opens a 4th slot this turn; some gear can open it by chance (p.surge)
+  p.surge=surgeRune(p.hand); p.slots=RULES.slots;
+  if(p.surge) p.slots=RULES.surgeSlots;
+  else if(p.surgeLuck&&(p.rng||Math.random)()<p.surgeLuck){ p.slots=RULES.surgeSlots; p.surge='luck'; }
   return drawn;
 }
-/* Combos, read from the queue as it stands (Battle Network style):
+/* Combos, read from the queue as it stands (runes already keep a queue to one rune):
+   - Recipe: exactly the cards of a recipe fuse into one named card (beats everything else)
    - Double / Triple: copies of the same card merge into one cast at 1.5x / 2x power (charge uses add up)
-   - Flush: three cards of one of the six colors, +25% on each
-   - Straight: three consecutive ranks, cast as one chain with a finisher hit */
+   - Flush: 3 or more cards of one of the six colors AND one type, +25% each (+40% for 4)
+   - Straight: 3 ranks in a row, cast as one chain with a finisher; 4 in a row is a Grand Straight */
 const NEUTRAL=['gray','brown'];
+function findRecipe(cards){ const list=typeof RECIPES!=='undefined'?RECIPES:[];
+  return list.find(r=>r.cards.length===cards.length&&fitsRecipe(r,cards))||null; }
 function detectCombos(queue){
   const cards=queue.filter(c=>!c.temp).map(c=>c.card), out=[];
+  const r=cards.length>=3&&findRecipe(cards);
+  if(r) return [{kind:'recipe', recipe:r, label:'Recipe: '+r.name}];
   const by={}; cards.forEach(c=>by[c.id]=(by[c.id]||0)+1);
   for(const id in by) if(by[id]>=2){ const c=cards.find(x=>x.id===id);
     out.push({kind:'simple', id, n:by[id], mult:by[id]>=3?2:1.5, label:(by[id]>=3?'Triple ':'Double ')+c.name+' ×'+(by[id]>=3?2:1.5)}); }
-  if(cards.length===RULES.slots&&!NEUTRAL.includes(cards[0].color)&&cards.every(c=>c.color===cards[0].color))
-    out.push({kind:'flush', color:cards[0].color, mult:1.25, label:'Flush: '+cards[0].color[0].toUpperCase()+cards[0].color.slice(1)+' +25%'});
+  const kind=c=>c.type==='piece'?c.base:c.type;
+  if(cards.length>=3&&!NEUTRAL.includes(cards[0].color)&&cards.every(c=>c.color===cards[0].color&&kind(c)===kind(cards[0]))&&new Set(cards.map(c=>c.id)).size>1){
+    const m=cards.length>=4?1.4:1.25, nm=cards[0].color[0].toUpperCase()+cards[0].color.slice(1);
+    out.push({kind:'flush', color:cards[0].color, mult:m, label:'Flush: '+nm+' '+TYPES_NAME(kind(cards[0]))+' +'+Math.round((m-1)*100)+'%'}); }
   const ranks=cards.map(c=>c.rank).sort((a,b)=>a-b);
-  if(cards.length===RULES.slots&&ranks[1]===ranks[0]+1&&ranks[2]===ranks[1]+1)
-    out.push({kind:'straight', ranks, label:'Straight '+ranks.join('-')+': chain cast + finisher'});
+  if(cards.length>=3&&ranks.every((x,i)=>!i||x===ranks[i-1]+1))
+    out.push({kind:'straight', ranks, label:(cards.length>=4?'Grand Straight ':'Straight ')+ranks.join('-')+': chain cast + finisher'});
   return out;
 }
+const TYPES_NAME=k=>typeof TYPES!=='undefined'&&TYPES[k]?TYPES[k].name+'s':k;
 // Leaving the Custom screen: combos lock in, and every empty slot adds 1 card to the next
-// draw (Battle Network style).
+// draw (Battle Network style). A recipe replaces its cards with the fused card.
 function commitCustom(p){
-  const combos=detectCombos(p.queue);
+  const combos=detectCombos(p.queue), filled=p.queue.length;
   for(const cb of combos){
+    if(cb.kind==='recipe'){ const used=p.queue.filter(c=>!c.temp); p.discard.push(...used);
+      p.queue=[...p.queue.filter(c=>c.temp),{uid:p.uid++, card:cb.recipe.card, temp:true, recipe:true, combo:cb.label}]; }
     if(cb.kind==='simple'){ const same=p.queue.filter(c=>c.card.id===cb.id), keep=same[0];
       keep.mult=(keep.mult||1)*cb.mult; keep.combo=cb.label;
       if(keep.card.uses) keep.left=same.reduce((a,c)=>a+(c.left==null?c.card.uses:c.left),0);
       for(const c of same.slice(1)){ p.queue.splice(p.queue.indexOf(c),1); p.discard.push(c); } }
     if(cb.kind==='flush') p.queue.forEach(c=>{ c.mult=(c.mult||1)*cb.mult; c.combo=c.combo||cb.label; });
-    if(cb.kind==='straight'&&p.queue.length===RULES.slots){ p.queue[0].straight=cb.ranks; p.queue.forEach(c=>c.combo=c.combo||cb.label); }
+    if(cb.kind==='straight'&&p.queue.length>=3){ p.queue[0].straight=cb.ranks; p.queue.forEach(c=>c.combo=c.combo||cb.label); }
   }
   p.combos=combos;
-  p.bonus=RULES.slots-p.queue.length-combos.filter(c=>c.kind==='simple').reduce((a,c)=>a+c.n-1,0);
+  p.bonus=Math.max(0,RULES.slots-filled);
   return p.bonus;
 }
 // Drag and drop on the Custom screen: put a card into the hand or the queue at a position.
@@ -88,7 +123,10 @@ function placeCard(p,uid,zone,index){
   if(qi<0&&hi<0) return false;
   const src=qi>=0?p.queue:p.hand, si=qi>=0?qi:hi, dst=zone==='queue'?p.queue:p.hand, card=src[si];
   if(index==null) index=dst.length;
-  if(src!==dst&&zone==='queue'&&p.queue.length>=RULES.slots){ const ti=Math.min(index,RULES.slots-1), other=p.queue[ti]; p.queue[ti]=card; p.hand[si]=other; return true; }
+  if(src!==dst&&zone==='queue'&&p.queue.length>=slotsOf(p)){ const ti=Math.min(index,slotsOf(p)-1), other=p.queue[ti];
+    if(!runesFit(p.queue.filter((c,i)=>i!==ti&&!c.temp).map(c=>c.card).concat(card.card))) return false;
+    p.queue[ti]=card; p.hand[si]=other; return true; }
+  if(src!==dst&&zone==='queue'&&!canQueue(p,card)) return false;
   src.splice(si,1); dst.splice(Math.max(0,Math.min(index,dst.length)),0,card); return true;
 }
 
@@ -97,7 +135,7 @@ function toggleQueue(p,uid){
   let i=p.queue.findIndex(c=>c.uid===uid);
   if(i>=0){ p.hand.push(p.queue.splice(i,1)[0]); return true; }
   i=p.hand.findIndex(c=>c.uid===uid);
-  if(i>=0 && p.queue.length<RULES.slots){ p.queue.push(p.hand.splice(i,1)[0]); return true; }
+  if(i>=0 && canQueue(p,p.hand[i])){ p.queue.push(p.hand.splice(i,1)[0]); return true; }
   return false;
 }
 
@@ -111,11 +149,11 @@ function castNext(p){
 
 // Utility cards
 function drawCards(p,n){ const got=[]; while(got.length<n&&p.draw.length){ const c=p.draw.pop(); p.hand.push(c); got.push(c); } return got; }
-function recallTop(p){ if(!p.draw.length||p.queue.length>=RULES.slots) return null; const c=p.draw.pop(); p.queue.push(c); return c; }
-function copyNext(p){ const c=p.queue[0]; if(!c||p.queue.length>=RULES.slots) return null;
+function recallTop(p){ if(!p.draw.length||p.queue.length>=slotsOf(p)) return null; const c=p.draw.pop(); p.queue.push(c); return c; }
+function copyNext(p){ const c=p.queue[0]; if(!c||p.queue.length>=slotsOf(p)) return null;
   const cp={uid:p.uid++, card:c.card, temp:true}; p.queue.unshift(cp); return cp; }
 
 // Nothing left to draw, hold or cast: the fight continues with the wand only.
 function wandOnly(p){ return !p.draw.length && !p.hand.length && !p.queue.length; }
 
-if(typeof module!=='undefined') module.exports={RULES,detectCombos,placeCard,validateDeck,shuffle,createPiles,openCustom,commitCustom,toggleQueue,castNext,drawCards,recallTop,copyNext,wandOnly};
+if(typeof module!=='undefined') module.exports={slotsOf,surgeRune,runesFit,canQueue,findRecipe,RULES,detectCombos,placeCard,validateDeck,shuffle,createPiles,openCustom,commitCustom,toggleQueue,castNext,drawCards,recallTop,copyNext,wandOnly};

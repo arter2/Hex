@@ -14,15 +14,17 @@ function cardEl(c,extra,locked){
   const el=document.createElement('button'), col=COLORS[c.color];
   el.className='card'+(c.rarity==='legendary'?' leg':'')+(c.rarity==='hero'?' hero':'')+(locked?' locked':''); el.style.setProperty('--c',col.c);
   const stat=c.pow||(c.boon!=='gauge'&&c.amt)||c.hp||'';
+  const rune=c.code?`<span class="rune${c.code==='✱'?' wild':''}" title="Rune ${c.code}">${c.code}</span>`:'';
   el.innerHTML=locked?`<div class="ct"><span>${col.icon} ${TYPES[c.type].icon}</span><span class="rank">${c.rank}</span></div><div class="art"></div><div class="cn">???</div><div class="ty">${TYPES[c.type].name}</div><div class="tx"></div><div class="cp"><span></span><small>${RARITY[c.rarity].g}</small></div>`
-    :`<div class="ct"><span>${col.icon} ${TYPES[c.type].icon}</span><span class="rank">${c.rank}</span></div>
+    :`<div class="ct"><span>${col.icon} ${TYPES[c.type]?TYPES[c.type].icon:''}</span><span class="tr">${rune}<span class="rank">${c.rank}</span></span></div>
     <img class="art" src="${artURL(c)}" alt=""><div class="cn">${esc(c.name)}</div><div class="ty">${TYPES[c.type].name}</div><div class="tx">${esc(cardText(c))}</div>
     <div class="cp"><span>${stat}</span><small title="${RARITY[c.rarity].n}">${RARITY[c.rarity].g}</small></div>`;
   if(extra) el.insertAdjacentHTML('beforeend',extra);
   return el;
 }
 function showDetail(c){
-  const box=$('#dtCard'); box.innerHTML=''; box.appendChild(cardEl(c,'',!save.seen[c.id]));
+  const box=$('#dtCard'); box.innerHTML=''; box.appendChild(cardEl(c,'',!c.recipe&&!save.seen[c.id]));
+  if(c.recipe){ const r=RECIPES.find(x=>x.id===c.id); $('#dtInfo').textContent='Recipe: '+r.cards.map(id=>CARDS[id].name).join(' + ')+'. Queue these together and they fuse into this card.'; $('#detail').classList.add('on'); return; }
   const inDeck=activeDeck().list.filter(id=>id===c.id).length;
   $('#dtInfo').textContent=save.seen[c.id]?COLORS[c.color].name+' · '+TYPES[c.type].name+' · rank '+c.rank+' · '+RARITY[c.rarity].n+' · owned '+(save.owned[c.id]||0)+' · in deck '+inDeck
     :'Not found yet. '+RARITY[c.rarity].n+' '+COLORS[c.color].name+' '+TYPES[c.type].name+'.';
@@ -143,7 +145,7 @@ function renderDeck(){
   const byColor={}, byType={};
   d.list.forEach(id=>{ const c=CARDS[id]; byColor[c.color]=(byColor[c.color]||0)+1; byType[c.type]=(byType[c.type]||0)+1; });
   $('#bStats').innerHTML=FAM_ORDER.filter(k=>byColor[k]).map(k=>`<span class="chip" style="--c:${COLORS[k].c}">${COLORS[k].icon} ${byColor[k]}</span>`).join('')+
-    Object.keys(TYPES).filter(k=>byType[k]).map(k=>`<span class="chip" style="--c:#b9a3ff">${TYPES[k].icon} ${TYPES[k].name} ${byType[k]}</span>`).join('');
+    Object.keys(TYPES).filter(k=>byType[k]).map(k=>`<span class="chip" style="--c:#9fdcff">${TYPES[k].icon} ${TYPES[k].name} ${byType[k]}</span>`).join('');
   const ids=Object.keys(v.counts).map(id=>CARDS[id]).sort(byFamily);
   paged($('#bDeck'),ids,c=>{ const el=cardEl(c,`<span class="badge">×${v.counts[c.id]}</span>`); longPress(el,c);
     el.onclick=()=>{ if(pressed) return; const i=d.list.lastIndexOf(c.id); d.list.splice(i,1); persist(); renderDeck(); renderColl(); }; return el; },300);
@@ -170,12 +172,27 @@ $('#bUse').onclick=()=>{ save.active=editSlot; persist(); renderSlots(); tip(sav
    a tab for the whole set of 1,006 with the ones you haven't found yet greyed out. */
 const cf={colors:new Set(), type:'', rarity:'', q:'', owned:'', mine:true, sort:'family'};
 function openCollection(){ makeFilters($('#cFilters'),cf,renderCollection,!cf.mine); renderCollection(); show('scrCollection'); }
-$('#cTabMine').onclick=()=>{ cf.mine=true; cf.owned=''; openCollection(); };
-$('#cTabAll').onclick=()=>{ cf.mine=false; openCollection(); };
+$('#cTabMine').onclick=()=>{ cf.mine=true; cf.book=false; cf.owned=''; openCollection(); };
+$('#cTabAll').onclick=()=>{ cf.mine=false; cf.book=false; openCollection(); };
+$('#cTabBook').onclick=()=>{ cf.book=true; renderCollection(); };
+// The recipe book: found recipes show their cards and what they make; the rest show the
+// colors and types they need, with the cards you have already seen named.
+function renderBook(){
+  const known=save.recipes||{}, g=$('#cGrid'); g.innerHTML='';
+  $('#cTitle').textContent='Recipes'; $('#cCount').textContent=Object.keys(known).length+' / '+RECIPES.length+' found';
+  $('#cProgress').innerHTML=''; $('#cItems').hidden=true; $('#cFilters').hidden=true;
+  for(const r of RECIPES){ const found=known[r.id], box=document.createElement('div'); box.className='recipe'+(found?' found':'');
+    const parts=r.cards.map(id=>{ const c=CARDS[id]; return found||save.seen[id]?`<span class="chip" style="--c:${COLORS[c.color].c}">${esc(c.name)}</span>`:`<span class="chip" style="--c:${COLORS[c.color].c}">??? ${TYPES[c.type].name}</span>`; }).join(' + ');
+    box.innerHTML=`<div class="rh">${found?'⚗ '+esc(r.name):'⚗ ???'}${r.cards.length>3?' <small>4 cards · needs the 4th slot</small>':''}</div><div class="rp">${parts}</div>`;
+    if(found){ const el=cardEl(r.card); el.onclick=()=>showDetail(r.card); box.appendChild(el); }
+    g.appendChild(box); }
+}
 $('#cSort').onchange=e=>{ cf.sort=e.target.value; renderCollection(); };
 const SORTS={family:byFamily, rank:(a,b)=>a.rank-b.rank||byFamily(a,b), rarity:(a,b)=>RAR_ORDER.indexOf(b.rarity)-RAR_ORDER.indexOf(a.rarity)||byFamily(a,b),
   copies:(a,b)=>(save.owned[b.id]||0)-(save.owned[a.id]||0)||byFamily(a,b), name:(a,b)=>a.name.localeCompare(b.name)};
 function renderCollection(){
+  $('#cTabBook').classList.toggle('on',!!cf.book); $('#cFilters').hidden=!!cf.book; $('#cSort').hidden=!!cf.book;
+  if(cf.book){ $('#cTabMine').classList.remove('on'); $('#cTabAll').classList.remove('on'); return renderBook(); }
   $('#cTabMine').classList.toggle('on',cf.mine); $('#cTabAll').classList.toggle('on',!cf.mine); $('#cSort').value=cf.sort;
   const copies=Object.keys(save.owned).reduce((a,id)=>a+(CARDS[id]?save.owned[id]:0),0);
   $('#cTitle').textContent=cf.mine?'My cards':'All cards';
@@ -220,9 +237,10 @@ function fight(depth){
     onFight:()=>{ $('#custom').classList.remove('on'); hud(true); },
     onCast:(c,inst)=>{ showCast(c,inst); buzz(12); },
     onHurt:d=>{ buzz(d>=15?60:30); const h=$('#hurtFx'); h.classList.remove('on'); void h.offsetWidth; h.classList.add('on'); },
-    onTurn:n=>banner('Turn '+n,'#9b7bff'),
+    onTurn:n=>banner('Turn '+n,'#4fb3ff'),
     onWave:i=>banner('Wave '+(i+1),'#ff5d6c'),
     onCombo:label=>banner('✦ '+label.split(':')[0],'#ffe066'),
+    onRecipe:r=>{ const first=!(save.recipes||{})[r.id]; save.recipes=save.recipes||{}; save.recipes[r.id]=1; persist(); banner((first?'⚗ New recipe! ':'⚗ ')+r.name,'#39ff8a'); },
     onHero:c=>banner('♔ '+c.name.split(',')[0]+' joins the fight!','#ffe066'),
     onEnd:win=>win?victory():defeat(),
   },{prepare:p=>assignChargeUses(save,p,d.list), gear:gearMods(save)});
@@ -272,9 +290,12 @@ function renderCustom(){
   $('#custPiles').textContent='Deck '+p.draw.length+' · Discard '+p.discard.length;
   const combos=detectCombos(p.queue), inCombo=new Set();
   for(const cb of combos){ if(cb.kind==='simple') p.queue.forEach(c=>{ if(c.card.id===cb.id) inCombo.add(c.uid); }); else p.queue.forEach(c=>inCombo.add(c.uid)); }
-  $('#custCombo').innerHTML=comboChips(combos)||'<span class="none">No combo yet: match copies, colors, or ranks in a row</span>';
+  $('#custCombo').innerHTML=comboChips(combos)||'<span class="none">No combo yet</span>';
   const q=$('#custQueue'); q.innerHTML='';
-  for(let i=0;i<RULES.slots;i++){
+  const slots=slotsOf(p), runeNow=p.queue.map(c=>c.card.code).find(k=>k&&k!=='✱');
+  $('#custSurge').innerHTML=slots>RULES.slots?`<b>ᚱ Rune Surge${p.surge&&p.surge!=='luck'?' ('+p.surge+')':''}!</b> A 4th slot is open this turn: 4-card recipes and Grand Straights are possible.`:'';
+  q.classList.toggle('four',slots>RULES.slots);
+  for(let i=0;i<slots;i++){
     const inst=p.queue[i];
     if(inst){ const el=cardEl(inst.card,`<span class="ord">${i+1}</span>`); el.dataset.zone='queue'; el.dataset.i=i; if(inCombo.has(inst.uid)) el.classList.add('combo'); dragCard(el,inst); q.appendChild(el); }
     else { const s=document.createElement('div'); s.className='slot'; s.dataset.zone='queue'; s.dataset.i=i; s.innerHTML='Slot '+(i+1)+'<small>+1 draw next</small>'; q.appendChild(s); }
@@ -284,12 +305,14 @@ function renderCustom(){
   p.hand.forEach((inst,i)=>{ const el=cardEl(inst.card,inst.left!=null?`<span class="badge">${inst.left} left</span>`:''); el.title='Key '+(i+1);
     el.dataset.zone='hand'; el.dataset.i=i;
     // glow if adding this card to the queue would make a new combo
-    if(p.queue.length<RULES.slots&&detectCombos([...p.queue,inst]).length>base) el.classList.add('hint');
+    if(p.queue.length&&!canQueue(p,inst)&&p.queue.length<slots) el.classList.add('blocked');
+    else if(p.queue.length<slots&&detectCombos([...p.queue,inst]).length>base) el.classList.add('hint');
+    else if(p.queue.length&&p.queue.length<slots&&new Set([...p.queue.map(c=>c.card.code),inst.card.code].filter(k=>k&&k!=='✱')).size>1) el.classList.add('recipe-step');   // fits only as part of a recipe
     if(dealt.has(inst.uid)){ el.classList.add('deal'); el.style.animationDelay=(i*.06)+'s'; }
     dragCard(el,inst); h.appendChild(el); });
   B.justDrawn=null;
   $('#custEmpty').textContent=wandOnly(p)?'Your deck is empty. Fight on with your wand!':!p.draw.length?'Deck empty: these are your last cards.':'';
-  const empty=RULES.slots-p.queue.length;
+  const empty=Math.max(0,RULES.slots-p.queue.length);
   $('#btnFight').textContent=wandOnly(p)?'Fight!':'Fight!'+(empty?' (+'+empty+' draw next time)':'');
 }
 // Your gear: every weapon and armor you own; tap one to equip it (tap the equipped one to take it off).
@@ -329,7 +352,7 @@ function dragCard(el,inst){
     const p=B.piles;
     if(d.moved){ const t=e.type==='pointercancel'?null:dropTarget(e.clientX,e.clientY);
       if(t){ const zone=t.dataset.zone, i=t.dataset.i!=null?+t.dataset.i:null; placeCard(p,d.inst.uid,zone,i); buzz(10); } }
-    else if(!d.long){ if(!toggleQueue(p,d.inst.uid)) tip('The queue holds '+RULES.slots+' cards'); }
+    else if(!d.long){ if(!toggleQueue(p,d.inst.uid)) tip(p.queue.length>=slotsOf(p)?'The queue is full':'Runes must match: this turn\'s queue is rune '+(p.queue.map(c=>c.card.code).find(k=>k!=='✱')||'✱')); }
     renderCustom();
   };
   el.addEventListener('pointerup',end); el.addEventListener('pointercancel',end);
@@ -345,7 +368,7 @@ function hud(force){
   const b=B; if(!b) return; if(force) for(const k in last) delete last[k];
   const p=b.player, pl=b.piles;
   set('hp',p.hp+'/'+p.maxHp,v=>{ $('#hpTxt').textContent='HP '+v; $('#hpBar').style.width=(p.hp/p.maxHp*100)+'%'; });
-  set('depth',b.depth+'|'+Math.ceil(b.wave),()=>$('#depthTxt').textContent='Depth '+b.depth+(b.waves.length>1?' · Wave '+(Math.ceil(b.wave)+1)+'/'+b.waves.length:''));
+  set('depth',b.depth+'|'+Math.ceil(b.wave),()=>$('#depthTxt').textContent='Depth '+b.depth+' · '+areaOf(b.depth).name+(b.waves.length>1?' · W'+(Math.ceil(b.wave)+1)+'/'+b.waves.length:''));
   set('piles',pl.draw.length+'|'+pl.hand.length+'|'+pl.discard.length,()=>$('#pileTxt').textContent='Deck '+pl.draw.length+' · Hand '+pl.hand.length+' · Used '+pl.discard.length);
   set('gauge',Math.round(b.gauge*10),()=>$('#gaugeBar').style.width=(b.gauge/GAUGE_MAX*100)+'%');
   const buffs=[]; if(p.barrier>0) buffs.push('🛡 '+Math.ceil(p.barrier)+' · '+p.shieldTurns+(p.shieldTurns>1?' turns':' turn')); if(p.dodge) buffs.push('💨 Dodge'); if(p.invT>0) buffs.push('🌀 Phase');
@@ -357,10 +380,10 @@ function hud(force){
     const row=$('#queueRow'); row.innerHTML='';
     const locked=pl.queue.filter(c=>c.combo), cb=$('#comboBar');
     cb.hidden=!locked.length; if(locked.length) cb.textContent='✦ '+(pl.combos||[]).map(c=>c.label.split(':')[0]).join(' · ');
-    for(let i=0;i<RULES.slots;i++){ const inst=pl.queue[i], d=document.createElement('div');
+    for(let i=0;i<Math.max(RULES.slots,pl.queue.length);i++){ const inst=pl.queue[i], d=document.createElement('div');
       d.className='qslot'+(inst?' full':'')+(i===0&&inst?' next':'')+(inst&&inst.combo?' combo':'');
       if(inst){ const c=inst.card, uses=c.uses?' ×'+(inst.left==null?c.uses:inst.left):''; d.style.setProperty('--c',COLORS[c.color].c);
-        d.innerHTML=`<span class="n">${TYPES[c.type].icon}</span>${esc(c.name)}${uses}${inst.temp?' (copy)':''}`; }
+        d.innerHTML=`<span class="n">${TYPES[c.type].icon}</span>${esc(c.name)}${uses}${inst.temp&&!inst.recipe?' (copy)':''}`; }
       else d.textContent='—';
       row.appendChild(d); }
     $('#castName').textContent=pl.queue[0]?pl.queue[0].card.name:'queue empty';

@@ -35,14 +35,43 @@ t('color ring: each color beats the next, neutral otherwise', ()=>{
   assert.strictEqual(D.colorMult(null,'fire'),1);
   assert.strictEqual(new Set(Object.values(D.BEATS)).size,6);
 });
+// piles whose next draws are exactly these cards, in order
+const stacked=(ids,extra)=>{ let uid=1; const draw=(extra||[]).concat(ids.slice().reverse()).map(id=>({uid:uid++,card:D.CARDS[id]})); return {draw,hand:[],queue:[],discard:[],uid,bonus:0,slots:3}; };
+// four rune-A fire/frost cards and some others
+const A4=['cinder_lance','ember_wall','flame_fan','frost_ward'], MIX=['ember_dart','spark','ice_shard'];
 t('custom draws up to 7, queue holds 3, cast goes to discard', ()=>{
-  const p=E.createPiles(D.starterList(['frost','light']),rng,D.CARDS);
-  E.openCustom(p); assert.strictEqual(p.hand.length,7); assert.strictEqual(p.draw.length,53);
+  const p=stacked(['cinder_lance','ember_wall','flame_fan','ember_dart','spark','ice_shard','holy_bolt'],D.starterList(['frost','light']).slice(0,10));
+  E.openCustom(p); assert.strictEqual(p.hand.length,7); assert.strictEqual(p.draw.length,10);
   const uids=p.hand.map(c=>c.uid);
-  uids.slice(0,4).forEach(u=>E.toggleQueue(p,u));
+  uids.slice(0,3).forEach(u=>E.toggleQueue(p,u)); assert(!E.toggleQueue(p,uids[3]),'full');
   assert.strictEqual(p.queue.length,3); assert.strictEqual(p.hand.length,4);
   assert(E.toggleQueue(p,uids[0])); assert.strictEqual(p.queue.length,2);
   const c=E.castNext(p); assert(c); assert.strictEqual(p.discard[0],c); assert.strictEqual(p.queue.length,1);
+});
+t('runes: queued cards must share a rune or a name; wild fits any; recipe steps are allowed', ()=>{
+  const C=id=>D.CARDS[id];
+  assert(E.runesFit([C('cinder_lance'),C('ember_wall'),C('frost_ward')]),'all rune A');
+  assert(!E.runesFit([C('cinder_lance'),C('brazier')]),'A and C');
+  assert(E.runesFit([C('ember_dart'),C('ember_dart')]),'same name');
+  const wild=D.CARD_LIST.find(c=>c.code==='✱'&&c.rarity!=='hero'); assert(E.runesFit([C('cinder_lance'),wild]));
+  const r=D.RECIPES[0]; assert(E.runesFit(r.cards.slice(0,2).map(C))&&new Set(r.cards.slice(0,2).map(id=>C(id).code)).size>1,'a recipe step ignores runes');
+  const p=stacked(['cinder_lance','brazier','ember_wall','spark','ice_shard','holy_bolt','mend']); E.openCustom(p);
+  assert(E.toggleQueue(p,p.hand[0].uid)); assert(!E.toggleQueue(p,p.hand[0].uid),'brazier is rune C'); assert(E.toggleQueue(p,p.hand[1].uid),'ember_wall is rune A');
+});
+t('Rune Surge: 4 cards of one rune in hand open a 4th slot for that turn', ()=>{
+  const p=stacked(A4.concat(MIX)); E.openCustom(p); assert.strictEqual(p.surge,'A'); assert.strictEqual(E.slotsOf(p),4);
+  p.hand.slice(0,4).map(c=>c.uid).forEach(u=>assert(E.toggleQueue(p,u))); assert.strictEqual(p.queue.length,4);
+  const q=stacked(['cinder_lance','ember_wall','flame_fan','ember_dart','spark','ice_shard','holy_bolt']); E.openCustom(q); assert.strictEqual(E.slotsOf(q),3);
+  const g=stacked(['cinder_lance','ember_dart','spark','ice_shard','holy_bolt','mend','hex_bolt']); g.surgeLuck=1; E.openCustom(g); assert.strictEqual(E.slotsOf(g),4,'gear luck');
+});
+t('recipes fuse their cards into one card; four-card recipes need the 4th slot', ()=>{
+  const r=D.RECIPES.find(x=>x.cards.length===3), I=(id,uid)=>({uid,card:D.CARDS[id]});
+  const p={draw:[],hand:[],queue:r.cards.map((id,i)=>I(id,i+1)),discard:[],uid:9,slots:3};
+  const cb=E.detectCombos(p.queue); assert.strictEqual(cb[0].kind,'recipe'); assert.strictEqual(cb.length,1);
+  E.commitCustom(p); assert.strictEqual(p.queue.length,1); assert.strictEqual(p.queue[0].card.name,r.name); assert.strictEqual(p.discard.length,3); assert.strictEqual(p.bonus,0);
+  E.castNext(p); assert.strictEqual(p.discard.length,3,'the fused card is not discarded');
+  assert(D.RECIPES.some(x=>x.cards.length===4)); assert(D.RECIPES.every(x=>x.cards.every(id=>D.CARDS[id])));
+  for(const st of D.STARTERS){ const own=new Set(D.starterList(st.colors)); assert(D.RECIPES.every(x=>!x.cards.every(id=>own.has(id))),'a starter deck alone makes no recipe'); }
 });
 t('uncast queue returns to hand and the hand refills to 7', ()=>{
   const p=E.createPiles(D.starterList(['fire','storm']),rng,D.CARDS);
@@ -115,11 +144,12 @@ t('auto-fill builds a legal 60 from what you own', ()=>{
 });
 
 t('draw bonus: each empty queue slot draws 1 more next time', ()=>{
-  const p=E.createPiles(D.starterList(['fire','storm']),rng,D.CARDS); E.openCustom(p);
+  const p=stacked(['cinder_lance','ember_dart','spark','ice_shard','holy_bolt','mend','hex_bolt'],D.starterList(['fire','storm']).slice(0,30)); E.openCustom(p);
   E.toggleQueue(p,p.hand[0].uid); assert.strictEqual(E.commitCustom(p),2);
   E.castNext(p); E.openCustom(p); assert.strictEqual(p.hand.length,9);
-  p.hand.slice(0,3).forEach(c=>E.toggleQueue(p,c.uid)); assert.strictEqual(E.commitCustom(p),0);
-  E.castNext(p); E.castNext(p); E.castNext(p); E.openCustom(p); assert.strictEqual(p.hand.length,7, 'bonus is spent once');
+  const p2=stacked(['cinder_lance','ember_wall','flame_fan','ember_dart','spark','ice_shard','holy_bolt'],D.starterList(['fire','storm']).slice(0,30)); E.openCustom(p2);
+  p2.hand.slice(0,3).forEach(c=>E.toggleQueue(p2,c.uid)); assert.strictEqual(E.commitCustom(p2),0);
+  E.castNext(p2); E.castNext(p2); E.castNext(p2); E.openCustom(p2); assert.strictEqual(p2.hand.length,7, 'no bonus when the queue was full');
 });
 t('charge uses carry across battles and spent copies burn up', ()=>{
   const s=C.newSave(D.STARTERS[0]); const id=D.CARD_LIST.find(c=>c.type==='charge'&&c.uses===3&&c.color==='fire').id;
@@ -147,25 +177,26 @@ t('every card has 64 x 64 pixel art of hex colors, all unique, and the CSV files
   assert.strictEqual(new Set(D.CARD_LIST.map(c=>A.artCSV(c))).size,D.CARD_LIST.length,'every picture is different');
 });
 
-t('combos: double, triple, flush and straight are detected and locked in', ()=>{
+t('combos: double, triple, flush (one color and one type) and straight are detected and locked in', ()=>{
   const I=(id,uid)=>({uid,card:D.CARDS[id]});
-  let q=[I('ember_dart',1),I('ember_dart',2),I('spark',3)];
-  let cb=E.detectCombos(q); assert.strictEqual(cb.length,1); assert.strictEqual(cb[0].kind,'simple'); assert.strictEqual(cb[0].mult,1.5);
-  cb=E.detectCombos([I('ember_dart',1),I('ember_dart',2),I('ember_dart',3)]); assert(cb.some(c=>c.kind==='simple'&&c.mult===2)); assert(cb.some(c=>c.kind==='flush'));
-  cb=E.detectCombos([I('cinder_lance',1),I('ember_wall',2),I('fire_pot',3)]);   // ranks 3,4,5, all fire
-  assert(cb.some(c=>c.kind==='flush')); assert(cb.some(c=>c.kind==='straight'));
-  assert.strictEqual(E.detectCombos([I('ember_dart',1),I('spark',2)]).length,0);
-  const p={draw:[],hand:[],queue:[I('ember_dart',1),I('ember_dart',2),I('spark',3)],discard:[]};
+  let cb=E.detectCombos([I('ember_dart',1),I('ember_dart',2),I('fire_pot',3)]); assert(cb.some(c=>c.kind==='simple'&&c.mult===1.5)); assert(!cb.some(c=>c.kind==='flush'),'strike+lob is no flush');
+  cb=E.detectCombos([I('ember_dart',1),I('ember_dart',2),I('ember_dart',3)]); assert(cb.some(c=>c.kind==='simple'&&c.mult===2)); assert(!cb.some(c=>c.kind==='flush'),'copies alone are no flush');
+  cb=E.detectCombos([I('ember_dart',1),I('cinder_lance',2),I('flame_fan',3)]); assert(cb.some(c=>c.kind==='flush'),'three fire strikes');
+  cb=E.detectCombos([I('cinder_lance',1),I('ember_wall',2),I('flame_fan',3)]);   // ranks 3,4,5, all rune A
+  assert(cb.some(c=>c.kind==='straight')); assert(!cb.some(c=>c.kind==='flush'));
+  const G=D.CARD_LIST.filter(c=>c.color==='fire'&&c.code==='A'&&c.type!=='piece').slice(0,0);
+  const p={draw:[],hand:[],queue:[I('ember_dart',1),I('ember_dart',2),I('fire_pot',3)],discard:[],slots:3};
   E.commitCustom(p); assert.strictEqual(p.queue.length,2); assert.strictEqual(p.queue[0].mult,1.5); assert.strictEqual(p.discard.length,1); assert.strictEqual(p.bonus,0);
-  const p2={draw:[],hand:[],queue:[I('cinder_lance',1),I('ember_wall',2),I('fire_pot',3)],discard:[]};
-  E.commitCustom(p2); assert(p2.queue[0].straight); assert(p2.queue.every(c=>c.mult===1.25));
+  const p2={draw:[],hand:[],queue:[I('cinder_lance',1),I('ember_wall',2),I('flame_fan',3)],discard:[],slots:3};
+  E.commitCustom(p2); assert(p2.queue[0].straight);
 });
 t('drag and drop: reorder, move between hand and queue, swap into a full queue', ()=>{
-  const p=E.createPiles(D.starterList(['fire','storm']),rng,D.CARDS); E.openCustom(p);
-  const [a,b,c,d]=p.hand.map(x=>x.uid);
+  const p=stacked(['cinder_lance','ember_wall','flame_fan','frost_ward','ember_dart','spark','ice_shard']); E.openCustom(p); p.slots=3;
+  const [a,b,c,d,e]=p.hand.map(x=>x.uid);
   E.placeCard(p,a,'queue',0); E.placeCard(p,b,'queue',0); assert.deepStrictEqual(p.queue.map(x=>x.uid),[b,a]);
   E.placeCard(p,c,'queue',1); assert.deepStrictEqual(p.queue.map(x=>x.uid),[b,c,a]);
   E.placeCard(p,d,'queue',2); assert.deepStrictEqual(p.queue.map(x=>x.uid),[b,c,d]); assert(p.hand.some(x=>x.uid===a),'swapped out to the hand');
+  assert(!E.placeCard(p,e,'queue',0),'a rune B card cannot swap into a rune A queue');
   E.placeCard(p,b,'hand',0); assert.strictEqual(p.hand[0].uid,b); assert.strictEqual(p.queue.length,2);
   const last=p.hand.at(-1).uid; E.placeCard(p,last,'hand',1); assert.strictEqual(p.hand[1].uid,last);
   assert.strictEqual(p.hand.length+p.queue.length,7);
@@ -182,10 +213,13 @@ t('heroes: one per deck, one copy, rare drops that favor new ones', ()=>{
   const owned={}; D.HEROES.slice(0,5).forEach(h=>owned[h.id]=1); assert.strictEqual(C.rollHero(rng,owned).id,D.HEROES[5].id);
   owned.hero_widow=1; owned.hero_aurel=1; const f=C.autoFill([],Object.assign({},s.owned,owned)); assert.strictEqual(f.filter(id=>D.CARDS[id].rarity==='hero').length,1);
 });
-t('straights are harder: few random three-card queues from a starter deck make one', ()=>{
-  let n=0; const N=4000;
-  for(let i=0;i<N;i++){ const p=E.createPiles(D.starterList(['fire','storm']),rng,D.CARDS); const q=p.draw.slice(0,3); if(E.detectCombos(q).some(c=>c.kind==='straight')) n++; }
-  assert(n/N<.08,'straight rate '+(n/N).toFixed(3));
+t('combos are uncommon: with runes, a starter hand rarely offers a flush or straight', ()=>{
+  const N=1500; let fl=0, st=0, surge=0;
+  const subs=h=>{ const o=[]; for(let i=0;i<h.length;i++) for(let j=i+1;j<h.length;j++) for(let k=j+1;k<h.length;k++) o.push([h[i],h[j],h[k]]); return o; };
+  for(let i=0;i<N;i++){ const p=E.createPiles(D.starterList(['fire','storm']),rng,D.CARDS); E.openCustom(p); if(E.slotsOf(p)>3) surge++;
+    const ok=subs(p.hand).filter(q=>E.runesFit(q.map(c=>c.card))).map(q=>E.detectCombos(q).map(c=>c.kind)).flat();
+    if(ok.includes('flush')) fl++; if(ok.includes('straight')) st++; }
+  assert(fl/N<.15,'flush '+fl/N); assert(st/N<.18,'straight '+st/N); assert(surge/N>.03&&surge/N<.18,'surge '+surge/N);
 });
 t('a normal fight gives exactly one reward: a card, gold or an item; a boss gives more', ()=>{
   const kinds={card:0,gold:0,item:0};

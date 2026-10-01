@@ -55,7 +55,7 @@
   <!-- collection -->
   <section id="scrCollection" class="screen">
     <div class="bar"><button class="btn ghost back">←</button><h2 id="cTitle">My cards</h2><span id="cCount" class="count"></span></div>
-    <div class="tabs"><button id="cTabMine" class="chip on">My cards</button><button id="cTabAll" class="chip">All cards</button>
+    <div class="tabs"><button id="cTabMine" class="chip on">My cards</button><button id="cTabAll" class="chip">All cards</button><button id="cTabBook" class="chip">Recipes</button>
       <select id="cSort"><option value="family">Sort: color</option><option value="rank">Sort: rank</option><option value="rarity">Sort: rarity</option><option value="copies">Sort: most copies</option><option value="name">Sort: name</option></select></div>
     <div id="cProgress" class="stats"></div>
     <div id="cItems" class="items-row"></div>
@@ -116,8 +116,9 @@
       <div class="panel custom">
         <div class="bar"><h2>Custom</h2><span id="custPiles" class="count"></span></div>
         <div id="custCombo" class="combo-line"></div>
+        <div id="custSurge" class="surge"></div>
         <div id="custQueue" class="slots" data-zone="queue"></div>
-        <p id="custHint" class="hint">Tap or drag cards into the 3 slots; they cast left to right. Drag to reorder or to take a card back. Hold a card to read it. Each empty slot draws 1 extra card next time.</p>
+        <p id="custHint" class="hint">Queue up to 3 cards that share a <b>rune</b> (the letter on the card; ✱ fits any) or a name. They cast left to right. Combos: copies (Double), one color and type (Flush), ranks in a row (Straight), or a secret recipe. 4 cards of one rune in hand open a 4th slot. Each empty slot draws 1 extra card next time.</p>
         <div id="custHand" class="hand" data-zone="hand"></div>
         <p id="custEmpty" class="hint warn"></p>
         <button id="btnFight" class="btn big">Fight!</button>

@@ -60,12 +60,13 @@ t('no reshuffle: an emptied deck leaves only the wand', ()=>{
   E.openCustom(p); assert.strictEqual(p.hand.length,0);
 });
 
-t('800 cards: 100 per family, doc type split and 40/30/20/10 rarity, plus 6 heroes', ()=>{
-  assert.strictEqual(D.CARD_LIST.length,806); assert.strictEqual(D.HEROES.length,6);
-  assert.strictEqual(new Set(D.CARD_LIST.map(c=>c.name)).size,806);
+t('1,000 cards: 125 per family, type split and 50/38/25/12 rarity, plus 6 heroes', ()=>{
+  assert.strictEqual(D.CARD_LIST.length,1006); assert.strictEqual(D.HEROES.length,6);
+  assert.strictEqual(new Set(D.CARD_LIST.map(c=>c.name)).size,1006);
   assert.deepStrictEqual(D.HEROES.map(h=>h.color).sort(),D.SIX.slice().sort(),'one hero per color');
   for(const fam of Object.keys(D.COLORS)){
-    const cs=D.CARD_LIST.filter(c=>c.color===fam&&c.rarity!=='hero'); assert.strictEqual(cs.length,100,fam);
+    const cs=D.CARD_LIST.filter(c=>c.color===fam&&c.rarity!=='hero'); assert.strictEqual(cs.length,125,fam);
+    for(let r=1;r<=12;r++){ const n=cs.filter(c=>c.rank===r).length; assert(n>=8&&n<=13,fam+' rank '+r+': '+n); }
     const plan=D.TYPE_PLAN[D.COLORS[fam].neutral?fam:'color'];
     for(const t in plan) assert.strictEqual(cs.filter(c=>c.type===t).length,plan[t],fam+' '+t);
     for(const r in D.RARITY_PLAN) assert.strictEqual(cs.filter(c=>c.rarity===r).length,D.RARITY_PLAN[r],fam+' '+r);
@@ -151,12 +152,12 @@ t('combos: double, triple, flush and straight are detected and locked in', ()=>{
   let q=[I('ember_dart',1),I('ember_dart',2),I('spark',3)];
   let cb=E.detectCombos(q); assert.strictEqual(cb.length,1); assert.strictEqual(cb[0].kind,'simple'); assert.strictEqual(cb[0].mult,1.5);
   cb=E.detectCombos([I('ember_dart',1),I('ember_dart',2),I('ember_dart',3)]); assert(cb.some(c=>c.kind==='simple'&&c.mult===2)); assert(cb.some(c=>c.kind==='flush'));
-  cb=E.detectCombos([I('ember_dart',1),I('cinder_lance',2),I('fire_pot',3)]);   // ranks 1,2,3, all fire
+  cb=E.detectCombos([I('cinder_lance',1),I('ember_wall',2),I('fire_pot',3)]);   // ranks 3,4,5, all fire
   assert(cb.some(c=>c.kind==='flush')); assert(cb.some(c=>c.kind==='straight'));
   assert.strictEqual(E.detectCombos([I('ember_dart',1),I('spark',2)]).length,0);
   const p={draw:[],hand:[],queue:[I('ember_dart',1),I('ember_dart',2),I('spark',3)],discard:[]};
   E.commitCustom(p); assert.strictEqual(p.queue.length,2); assert.strictEqual(p.queue[0].mult,1.5); assert.strictEqual(p.discard.length,1); assert.strictEqual(p.bonus,0);
-  const p2={draw:[],hand:[],queue:[I('ember_dart',1),I('cinder_lance',2),I('fire_pot',3)],discard:[]};
+  const p2={draw:[],hand:[],queue:[I('cinder_lance',1),I('ember_wall',2),I('fire_pot',3)],discard:[]};
   E.commitCustom(p2); assert(p2.queue[0].straight); assert(p2.queue.every(c=>c.mult===1.25));
 });
 t('drag and drop: reorder, move between hand and queue, swap into a full queue', ()=>{
@@ -180,4 +181,9 @@ t('heroes: one per deck, one copy, rare drops that favor new ones', ()=>{
   assert(C.battleDrops(['fire'],5,false,rng).every(c=>c.rarity!=='hero'),'only bosses drop heroes');
   const owned={}; D.HEROES.slice(0,5).forEach(h=>owned[h.id]=1); assert.strictEqual(C.rollHero(rng,owned).id,D.HEROES[5].id);
   owned.hero_widow=1; owned.hero_aurel=1; const f=C.autoFill([],Object.assign({},s.owned,owned)); assert.strictEqual(f.filter(id=>D.CARDS[id].rarity==='hero').length,1);
+});
+t('straights are harder: few random three-card queues from a starter deck make one', ()=>{
+  let n=0; const N=4000;
+  for(let i=0;i<N;i++){ const p=E.createPiles(D.starterList(['fire','storm']),rng,D.CARDS); const q=p.draw.slice(0,3); if(E.detectCombos(q).some(c=>c.kind==='straight')) n++; }
+  assert(n/N<.08,'straight rate '+(n/N).toFixed(3));
 });

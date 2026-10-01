@@ -1,7 +1,7 @@
 /* Hexmancers deck prototype — the collecting loop: card drops, packs, auto-fill and the save. */
 
-// Card ids come from the templates; when they change, older saves start over (v3: traps and environments).
-const SAVE_KEY='hexmancers-deck-v3';
+// Card ids come from the templates; when they change, older saves start over (v4: 1,000 cards, ranks 1-12 everywhere).
+const SAVE_KEY='hexmancers-deck-v4';
 const DECK_SLOTS=5;
 const PACK_PRICE={booster:100, family:150};
 

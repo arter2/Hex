@@ -115,15 +115,15 @@ SIGNATURE.forEach(c=>c.sig=true);
 
 // Type split per family of 100 (from the design doc's 800-card plan).
 const TYPE_PLAN={
-  color:{strike:26, lob:12, ward:10, sentry:9, boon:10, charge:14, utility:5, trap:5, environment:5, piece:4},
-  gray: {charge:6, piece:4, summon:90},
-  brown:{charge:6, piece:4, machine:90},
+  color:{strike:32, lob:15, ward:13, sentry:11, boon:12, charge:17, utility:7, trap:6, environment:8, piece:4},
+  gray: {charge:8, piece:4, summon:113},
+  brown:{charge:8, piece:4, machine:113},
 };
-const RARITY_PLAN={common:40, uncommon:30, rare:20, legendary:10};
+const RARITY_PLAN={common:50, uncommon:38, rare:25, legendary:12};
 const PATTERN_MULT={single:1, burst:.8, ring:.85, cross:.75, column:.8, row:.8};
 const RARITY_MULT={common:1, uncommon:1.12, rare:1.25, legendary:1.45};
-// Ranks 1-12 for the six colors, 1-6 for the neutral families (medium straights 1-3, high 4-6).
-const RANKS={color:{common:[1,5],uncommon:[3,8],rare:[6,10],legendary:[9,12]}, neutral:{common:[1,3],uncommon:[2,4],rare:[3,5],legendary:[5,6]}};
+// Ranks 1-12 in every family, spread evenly and not tied to rarity, so three in a row (a Straight)
+// takes the right cards rather than coming up by itself. A card's power still grows with its rank.
 
 const TRAITS={
   fire:   {shapes:['line','line','wedge','row','zigzag'], kws:['burn','burn','self','push'], traps:['blast','spike'], envs:['burn','burn','tremor'],     boons:['power','haste','pact'],  wards:['thorns','wall','barrier'], util:['draw','cleanse'], piece:'lob'},
@@ -176,11 +176,12 @@ function generateCards(){
     const pool=[]; for(const r in rar) for(let i=0;i<rar[r];i++) pool.push(r);
     for(let i=pool.length-1;i>0;i--){ const j=Math.floor(rng()*(i+1)); [pool[i],pool[j]]=[pool[j],pool[i]]; }
     const slots=[]; for(const t in need) for(let i=0;i<need[t];i++) slots.push(t);
+    const ranks=slots.map((_,i)=>i%12+1); for(let i=ranks.length-1;i>0;i--){ const j=Math.floor(rng()*(i+1)); [ranks[i],ranks[j]]=[ranks[j],ranks[i]]; }
     const count={};
     for(const type of slots){
       const rarity=type==='piece'?'legendary':pool.pop();
-      const rr=RANKS[neutral?'neutral':'color'][rarity], rank=ri(rr[0],rr[1]);
-      const F=(neutral?1+.12*(rank-1):1+.06*(rank-1))*RARITY_MULT[rarity]*(type==='piece'?1.2:1);
+      const rank=ranks.pop();
+      const F=(1+.06*(rank-1))*RARITY_MULT[rarity]*(type==='piece'?1.2:1);
       count[type]=(count[type]||0)+1;
       const c={id:fam+'_'+type+'_'+String(count[type]).padStart(2,'0'), color:fam, type, rank, rarity};
       const kwChance={common:.4,uncommon:.6,rare:.8,legendary:1}[rarity];
@@ -250,7 +251,7 @@ const BUILD={
 
 /* Heroes: the rarest cards. A boss sometimes drops one (more often deeper down), and a pack
    very rarely holds one. Casting a hero calls it onto your side for a few turns: it fights on
-   its own, and while it stands it empowers you. One hero per deck. Added after the 800, so
+   its own, and while it stands it empowers you. One hero per deck. Added after the 1,000, so
    the generated ids are unchanged. */
 const HEROES=[
   {id:'hero_pyra',  name:'Pyra, the Ember Queen', color:'fire',    hero:'pyra',        pow:40, rate:1.6, hp:150, burn:3,
@@ -266,6 +267,8 @@ const HEROES=[
   {id:'hero_widow', name:'The Nightwidow',        color:'shadow',  hero:'widow',       pow:28, rate:1.4, hp:140, curse:4,
    attack:'casts curses of {pow} on the nearest enemy',    aura:'you heal 20% of all damage you deal'},
 ].map(h=>Object.assign({type:'hero', rank:7, rarity:'hero', turns:3},h));
+// Signature cards spread over 1-12 as well: damage cards take the odd ranks, the rest the even ones.
+SIGNATURE.forEach(c=>{ c.rank=c.rank*2-(c.type==='strike'||c.type==='lob'?1:0); });
 const CARD_LIST=SIGNATURE.concat(generateCards(),HEROES);
 /* Nothing a card puts on the board lasts forever: shields, walls, towers, summons, machines,
    traps and changed ground each have HP (or a strength) and a turn limit. A turn ends each time

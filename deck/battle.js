@@ -446,14 +446,14 @@ function estDamage(c,e,m){ const pl=B.player;
   return Math.max(1,Math.round((c.pow||0)*(m||1)*colorMult(c.color,e.color)*(e.curseT>0?1.3:1)*(pl.pactT>0||pl.courageT>0?1.3:1)*(c.valor&&pl.hp<=pl.maxHp/2?1.5:1)*heroMult(c))); }
 function castPreview(){
   const b=B, inst=b&&b.piles.queue[0]; if(!inst||b.phase!=='fight') return null;
-  const c=inst.card, k=c.type==='piece'?c.base:c.type, p=b.player, row=lineTiles(p.tile,DIRS.E), out={card:c,mult:inst.mult||1,area:[],hit:[],place:[],self:false,note:''};
-  const enemyTiles=()=>alive().map(e=>e.tile), path=(tiles,dig)=>{ const r=shotPath(tiles,dig); out.area.push(...r.path); out.hit.push(...r.hit); };
+  const c=inst.card, k=c.type==='piece'?c.base:c.type, p=b.player, row=lineTiles(p.tile,DIRS.E), out={card:c,mult:inst.mult||1,area:[],hit:[],place:[],paths:[],arc:null,self:false,note:''};
+  const enemyTiles=()=>alive().map(e=>e.tile), path=(tiles,dig)=>{ const r=shotPath(tiles,dig); out.area.push(...r.path); out.hit.push(...r.hit); out.paths.push(r.path); };
   const route=fn=>{ const ts=[]; for(let i=1;i<BOARD_COLS;i++){ const t=fn(i); if(!t) break; ts.push(t); } return ts; };
   if(k==='strike'||(k==='charge'&&c.fx!=='lob')){
     const sh=k==='charge'?'line':c.shape;
     if(sh==='line') path(row,false);
     else if(sh==='dig') path(row,true);
-    else if(sh==='row'){ out.area.push(...row); out.hit.push(...row.filter(t=>t.occ&&t.occ.kind==='enemy')); }
+    else if(sh==='row'){ out.area.push(...row); out.paths.push(row); out.hit.push(...row.filter(t=>t.occ&&t.occ.kind==='enemy')); }
     else if(sh==='wedge'){ const ts=wedgeTiles(p.tile,2.6); out.area.push(...ts); out.hit.push(...ts.filter(t=>t.occ&&t.occ.kind==='enemy')); }
     else if(sh==='zigzag'){ const alt=tileCR(p.tile.col,p.tile.r+1)?1:-1; path(route(i=>tileCR(p.tile.col+i,p.tile.r+(i%2?alt:0))),false); }
     else if(sh==='diag'){ for(const d of [-1,1]) path(route(i=>tileCR(p.tile.col+i,p.tile.r+d*i)),false); }
@@ -461,7 +461,7 @@ function castPreview(){
     else if(sh==='missiles'){ out.hit.push(...enemyTiles()); out.area.push(...out.hit); out.note=c.n+' random hits'; }
   }
   else if(k==='lob'||k==='trap'||k==='environment'||(k==='charge'&&c.fx==='lob')){
-    const t=b.aim||nearestEnemyTile(p.tile); if(t){ const ts=patternTiles(t,aimPattern(),'e'); out.area.push(...ts); if(k!=='trap') out.hit.push(...ts.filter(x=>x.occ&&x.occ.kind==='enemy')); }
+    const t=b.aim||nearestEnemyTile(p.tile); if(t){ const ts=patternTiles(t,aimPattern(),'e'); out.area.push(...ts); out.arc=t; if(k!=='trap') out.hit.push(...ts.filter(x=>x.occ&&x.occ.kind==='enemy')); }
   }
   else if(k==='ward'&&c.ward==='barrier') out.self=true;
   else if(k==='ward'||(k==='machine'&&c.ai==='bulwark')) out.place.push(...placementTiles(c.n||1));
@@ -481,9 +481,9 @@ function wandDown(){ const b=B; if(!b||b.phase!=='fight') return; b.player.charg
 function wandUp(){ const b=B; if(!b) return; const p=b.player; if(!p.charging) return; p.charging=false; const ch=p.chargeT>=.9; p.chargeT=0; fireWand(ch); }
 
 /* ---------------- rendering ---------------- */
-// A perspective camera: the board turns on screen by ca/sa (24 degrees in landscape, your side
-// lower-left; 82 in portrait, your side at the bottom so a phone held upright uses its height),
-// then a camera behind your side looks down at it, so near tiles and units are bigger than far ones.
+// A perspective camera behind you and up: the board is turned so your side is at the bottom and the
+// enemy straight ahead (ca/sa, 90 degrees), centered on screen, and the camera looks down the board
+// over your shoulder, so near tiles and units are bigger than far ones.
 // u = across the screen, v = toward the camera. iy/cp = sin/cos of how far it looks down; dist = how
 // far back it sits (in tiles), which sets how strong the perspective is.
 const View={canvas:null, ctx:null, S:40, cx:0, cy:0, w:0, h:0, dpr:1, ca:Math.cos(Math.PI/6), sa:Math.sin(Math.PI/6), iy:.6, cp:.8, dist:22, u0:0, v0:0};
@@ -507,12 +507,12 @@ function frontFaces(ctx,top,drop){ const n=top.length, cx=top.reduce((a,p)=>a+p[
 function resizeView(){
   const cv=View.canvas, r=cv.getBoundingClientRect(), dpr=Math.min(window.devicePixelRatio||1,2);
   View.dpr=dpr; View.w=r.width; View.h=r.height; cv.width=Math.round(r.width*dpr); cv.height=Math.round(r.height*dpr);
-  const portrait=r.height>r.width*1.05, ang=(portrait?82:24)*Math.PI/180;
-  View.ca=Math.cos(ang); View.sa=Math.sin(ang); View.iy=ISO_Y=portrait?.88:.62; View.cp=Math.sqrt(1-View.iy*View.iy);
-  // look at the middle of the board from a camera about 1.6 boards back
+  const portrait=r.height>r.width*1.05, ang=Math.PI/2;
+  View.ca=Math.cos(ang); View.sa=Math.sin(ang); View.iy=ISO_Y=portrait?.8:.62; View.cp=Math.sqrt(1-View.iy*View.iy);
+  // look at the middle of the board from a camera about 1.3 boards back
   let u0=1e9,u1=-1e9,v0=1e9,v1=-1e9;
   for(const t of TILES){ const [u,v]=boardUV(t.wx,t.wz); u0=Math.min(u0,u); u1=Math.max(u1,u); v0=Math.min(v0,v); v1=Math.max(v1,v); }
-  View.u0=(u0+u1)/2; View.v0=(v0+v1)/2; View.dist=Math.max(14,(v1-v0)*1.6);
+  View.u0=(u0+u1)/2; View.v0=(v0+v1)/2; View.dist=Math.max(12,(v1-v0)*(portrait?1.3:1.8));
   // fit the projected board (plus headroom for units) into the canvas
   View.S=1; View.cx=0; View.cy=0;
   let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9;
@@ -572,7 +572,7 @@ function render(){
   const pv=castPreview();
   if(pv){ const col=colorOf(pv.card), pulse=.55+.25*Math.sin(T*4), hitSet=new Set(pv.hit);
     ctx.lineWidth=2;
-    for(const t of new Set(pv.area)){ const hc=hexCorners(t,.86); ctx.globalAlpha=(hitSet.has(t)?.5:.26)*pulse+.1; ctx.fillStyle=col; poly(ctx,hc); ctx.fill();
+    for(const t of new Set(pv.area)){ const hc=hexCorners(t,.88); ctx.globalAlpha=(hitSet.has(t)?.6:.38)*pulse+.18; ctx.fillStyle=col; poly(ctx,hc); ctx.fill();
       ctx.globalAlpha=hitSet.has(t)?.95:.55; ctx.strokeStyle=hitSet.has(t)?'#ffffff':col; ctx.stroke(); }
     for(const t of pv.place){ const hc=hexCorners(t,.8); ctx.globalAlpha=.9; ctx.strokeStyle=col; ctx.setLineDash([4,3]); poly(ctx,hc); ctx.stroke(); ctx.setLineDash([]);
       ctx.globalAlpha=.25*pulse+.1; ctx.fillStyle=col; ctx.fill(); }
@@ -593,6 +593,7 @@ function render(){
   const dying=b.enemies.filter(e=>e.hp<=0&&e.deathT>0);
   const units=[b.player,...b.walls,...b.allies,...rocks,...alive(),...dying].sort((a,c)=>depthOf(a.tile)-depthOf(c.tile));
   for(const u of units) DRAW[u.kind](ctx,u,T,scaleAt(...posOf(u)));
+  if(b.preview) previewOverlay(ctx,b.preview,T);
   // expected damage on each enemy the next card would hit (★ = its weak color)
   if(b.preview&&b.preview.card.pow){ const pv=b.preview; ctx.textAlign='center'; ctx.font='800 '+Math.round(S*.34)+'px Rajdhani,system-ui,sans-serif';
     for(const t of new Set(pv.hit)){ const e=t.occ; if(!e||e.kind!=='enemy') continue; const [x,y]=proj(posOf(e)[0],0,posOf(e)[1]), S=scaleAt(...posOf(e)); ctx.font='800 '+Math.round(S*.34)+'px Rajdhani,system-ui,sans-serif';
@@ -625,6 +626,25 @@ function render(){
     ctx.lineWidth=3; ctx.strokeStyle='rgba(0,0,0,.7)'; ctx.strokeText(f.text,x,y); ctx.fillStyle=f.color; ctx.fillText(f.text,x,y); } ctx.globalAlpha=1;
 }
 
+// The next card's reach, drawn again over the units so nothing hides it: the outline of every
+// tile it covers, and a moving dashed line with an arrow along each path a shot will take
+// (or the arc of a lob) from you to where it lands.
+function previewOverlay(ctx,pv,T){
+  const col=colorOf(pv.card), [px0,pz0]=posOf(B.player);
+  ctx.save(); ctx.lineJoin='round';
+  ctx.globalAlpha=.6; ctx.strokeStyle=col; ctx.lineWidth=2;
+  for(const t of new Set(pv.area)){ poly(ctx,hexCorners(t,.88,.02)); ctx.stroke(); }
+  ctx.globalAlpha=.95; ctx.shadowColor=col; ctx.shadowBlur=10;
+  const arrow=(a,b2)=>{ const ang=Math.atan2(b2[1]-a[1],b2[0]-a[0]), L=Math.max(9,scaleAt(px0,pz0)*.28); ctx.setLineDash([]); ctx.fillStyle=col; ctx.beginPath();
+    ctx.moveTo(b2[0]+Math.cos(ang)*L*.4,b2[1]+Math.sin(ang)*L*.4); ctx.lineTo(b2[0]-Math.cos(ang-.5)*L,b2[1]-Math.sin(ang-.5)*L); ctx.lineTo(b2[0]-Math.cos(ang+.5)*L,b2[1]-Math.sin(ang+.5)*L); ctx.closePath(); ctx.fill(); };
+  const S0=scaleAt(px0,pz0); ctx.lineWidth=Math.max(3,S0*.08); ctx.setLineDash([S0*.28,S0*.18]); ctx.lineDashOffset=-T*S0*1.4;
+  for(const path of pv.paths){ if(!path.length) continue; const pts=[proj(px0,.08,pz0),...path.map(t=>proj(t.wx,.08,t.wz))];
+    ctx.strokeStyle=col; ctx.beginPath(); pts.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y)); ctx.stroke(); arrow(pts[pts.length-2],pts[pts.length-1]); ctx.setLineDash([S0*.28,S0*.18]); }
+  if(pv.arc){ const a=proj(px0,.08,pz0), c=proj(pv.arc.wx,.05,pv.arc.wz), m=proj((px0+pv.arc.wx)/2,1.6,(pz0+pv.arc.wz)/2);
+    ctx.strokeStyle=col; ctx.beginPath(); ctx.moveTo(a[0],a[1]); ctx.quadraticCurveTo(2*m[0]-(a[0]+c[0])/2+S0*2.2,2*m[1]-(a[1]+c[1])/2,c[0],c[1]); ctx.stroke();
+    arrow([c[0],c[1]-S0*.5],c); }
+  ctx.restore();
+}
 // Draw a unit's pixel sprite standing on its tile: a soft ground shadow, a cast shadow falling
 // away from the light, a little breathing and bobbing, and a white flash when hit.
 // Returns the screen x and the top of the sprite, for bars and labels.

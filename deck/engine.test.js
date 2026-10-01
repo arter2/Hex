@@ -104,7 +104,7 @@ t('new save: starter deck is legal and owned', ()=>{
 });
 t('drops and packs: depth shifts rarity, boss adds a rare+', ()=>{
   const w1=C.rarityWeights(1), w9=C.rarityWeights(9); assert(w9.legendary>w1.legendary&&w9.common<w1.common);
-  const d=C.battleDrops(['fire','frost'],4,true,rng); assert.strictEqual(d.length,3); assert(['rare','legendary'].includes(d[2].rarity));
+  const d=C.battleRewards(['fire','frost'],4,true,rng); assert(d.cards.length>=2&&d.gold>0&&d.items.length===1); assert(['rare','legendary'].includes(d.cards[0].rarity));
   for(let i=0;i<50;i++){ const pk=C.openPack(1,'gray',rng); assert.strictEqual(pk.length,5); assert(pk.every(c=>c.color==='gray')); assert(pk[4].rarity!=='common'); }
 });
 t('auto-fill builds a legal 60 from what you own', ()=>{
@@ -176,9 +176,9 @@ t('heroes: one per deck, one copy, rare drops that favor new ones', ()=>{
   assert(E.validateDeck(list.concat(['hero_pyra','hero_volta']),D.CARDS).errors.some(e=>e.startsWith('Only 1 hero')));
   assert(E.validateDeck(list.concat(['hero_pyra','hero_pyra']),D.CARDS).errors.some(e=>e.startsWith('Pyra')));
   assert(C.heroChance(1)<C.heroChance(9)&&C.heroChance(40)<=.15);
-  let heroes=0; for(let i=0;i<2000;i++) heroes+=C.battleDrops(['fire'],5,true,rng).filter(c=>c.rarity==='hero').length;
+  let heroes=0; for(let i=0;i<2000;i++) heroes+=C.battleRewards(['fire'],5,true,rng).cards.filter(c=>c.rarity==='hero').length;
   assert(heroes>60&&heroes<240,'about 9% of boss fights at depth 5: '+heroes);
-  assert(C.battleDrops(['fire'],5,false,rng).every(c=>c.rarity!=='hero'),'only bosses drop heroes');
+  for(let i=0;i<300;i++) assert(C.battleRewards(['fire'],5,false,rng).cards.every(c=>c.rarity!=='hero'),'only bosses drop heroes');
   const owned={}; D.HEROES.slice(0,5).forEach(h=>owned[h.id]=1); assert.strictEqual(C.rollHero(rng,owned).id,D.HEROES[5].id);
   owned.hero_widow=1; owned.hero_aurel=1; const f=C.autoFill([],Object.assign({},s.owned,owned)); assert.strictEqual(f.filter(id=>D.CARDS[id].rarity==='hero').length,1);
 });
@@ -186,4 +186,12 @@ t('straights are harder: few random three-card queues from a starter deck make o
   let n=0; const N=4000;
   for(let i=0;i<N;i++){ const p=E.createPiles(D.starterList(['fire','storm']),rng,D.CARDS); const q=p.draw.slice(0,3); if(E.detectCombos(q).some(c=>c.kind==='straight')) n++; }
   assert(n/N<.08,'straight rate '+(n/N).toFixed(3));
+});
+t('a normal fight gives exactly one reward: a card, gold or an item; a boss gives more', ()=>{
+  const kinds={card:0,gold:0,item:0};
+  for(let i=0;i<3000;i++){ const r=C.battleRewards(['fire','frost'],3,false,rng), n=r.cards.length+(r.gold?1:0)+r.items.length;
+    assert.strictEqual(n,1); kinds[r.cards.length?'card':r.gold?'gold':'item']++; r.items.forEach(id=>assert(C.ITEMS[id])); }
+  assert(kinds.card>1400&&kinds.gold>700&&kinds.item>300,JSON.stringify(kinds));
+  const b=C.battleRewards(['fire'],4,true,rng); assert(b.cards.length+(b.gold?1:0)+b.items.length>=4);
+  const s=C.newSave(D.STARTERS[0]); assert.strictEqual(C.itemCount(s),1); C.addItem(s,'tonic',2); assert.strictEqual(C.itemCount(s),3);
 });

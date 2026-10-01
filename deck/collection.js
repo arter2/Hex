@@ -29,16 +29,33 @@ function rollCard(opts,rng){
 // and a pack holds one 1 time in 100. You get a hero you don't own yet when there is one.
 const heroChance=depth=>Math.min(.15,.03+.012*depth);
 function rollHero(rng,owned){ const fresh=HEROES.filter(h=>!(owned&&owned[h.id])), pool=fresh.length?fresh:HEROES; return pool[Math.floor(rng()*pool.length)]; }
-// Each monster drops a card, half the time from its own color; a boss adds a rare or better,
-// and sometimes a hero.
-function battleDrops(enemyColors,depth,boss,rng,owned){
+/* Items: potions you carry between fights and drink on the Custom screen, one at a time. */
+const ITEMS={
+  draught:{name:'Healing Draught',   icon:'🧪', text:'Heal 40 HP'},
+  tonic:  {name:'Iron Tonic',        icon:'🛡', text:'A shield of 40 for 2 turns (replaces a weaker one)'},
+  elixir: {name:'Quicksilver Elixir',icon:'💨', text:'Faster moves and casts for 10 seconds'},
+  wind:   {name:'Second Wind',       icon:'🌀', text:'Draw 2 more cards now'},
+};
+function addItem(save,id,n){ save.items=save.items||{}; save.items[id]=(save.items[id]||0)+(n||1); }
+function itemCount(save){ return Object.values(save.items||{}).reduce((a,b)=>a+b,0); }
+
+/* Rewards. A normal fight gives exactly one thing: a card (55%, half the time in the color of
+   a monster you beat), a pile of gold (30%) or an item (15%). A boss gives more: gold, a rare
+   or better card, another card, an item, and sometimes a hero.
+   Returns {cards:[], gold, items:[]}. */
+function battleGold(depth,boss){ return boss?60+20*depth:40+15*depth; }
+function battleRewards(enemyColors,depth,boss,rng,owned){
   rng=rng||Math.random;
-  const drops=enemyColors.map(col=>rollCard({depth,color:rng()<.5?col:null},rng));
-  if(boss) drops.push(rollCard({depth,min:'rare'},rng));
-  if(boss&&rng()<heroChance(depth)) drops.push(rollHero(rng,owned));
-  return drops;
+  const color=()=>rng()<.5&&enemyColors.length?enemyColors[Math.floor(rng()*enemyColors.length)]:null;
+  const item=()=>{ const ks=Object.keys(ITEMS); return ks[Math.floor(rng()*ks.length)]; };
+  if(boss){ const r={cards:[rollCard({depth,min:'rare'},rng),rollCard({depth,color:color()},rng)], gold:battleGold(depth,true), items:[item()]};
+    if(rng()<heroChance(depth)) r.cards.push(rollHero(rng,owned));
+    return r; }
+  const x=rng();
+  if(x<.55) return {cards:[rollCard({depth,color:color()},rng)], gold:0, items:[]};
+  if(x<.85) return {cards:[], gold:battleGold(depth,false), items:[]};
+  return {cards:[], gold:0, items:[item()]};
 }
-function battleGold(depth,boss){ return 15+8*depth+(boss?40:0); }
 // Five cards; the last is uncommon or better.
 function openPack(depth,color,rng){
   rng=rng||Math.random;
@@ -74,7 +91,7 @@ function newSave(starter){
   const list=starterList(starter.colors), owned={};
   list.forEach(id=>owned[id]=(owned[id]||0)+1);
   const decks=[{name:starter.name, list}]; for(let i=1;i<DECK_SLOTS;i++) decks.push({name:'Deck '+(i+1), list:[]});
-  return {v:1, gold:100, depth:1, deepest:1, owned, seen:Object.assign({},owned), decks, active:0, wins:0};
+  return {v:1, gold:100, depth:1, deepest:1, owned, seen:Object.assign({},owned), decks, active:0, wins:0, items:{draught:1}};
 }
 function addCards(save,cards){ return cards.map(c=>{ const isNew=!save.owned[c.id]; save.owned[c.id]=(save.owned[c.id]||0)+1; save.seen[c.id]=1; return {card:c,isNew}; }); }
 function ownedUnique(save){ return Object.keys(save.owned).filter(id=>CARDS[id]&&save.owned[id]>0).length; }
@@ -110,4 +127,4 @@ function loadSave(){
 function writeSave(s){ try{ localStorage.setItem(SAVE_KEY,JSON.stringify(s)); }catch(e){} }
 function clearSave(){ try{ localStorage.removeItem(SAVE_KEY); }catch(e){} }
 
-if(typeof module!=='undefined') module.exports={heroChance,rollHero,assignChargeUses,settleChargeUses,chargeLeft,SAVE_KEY,DECK_SLOTS,PACK_PRICE,copyLimit,rarityWeights,rollRarity,rollCard,battleDrops,battleGold,openPack,autoFill,newSave,addCards,ownedUnique};
+if(typeof module!=='undefined') module.exports={ITEMS,addItem,itemCount,battleRewards,heroChance,rollHero,assignChargeUses,settleChargeUses,chargeLeft,SAVE_KEY,DECK_SLOTS,PACK_PRICE,copyLimit,rarityWeights,rollRarity,rollCard,battleGold,openPack,autoFill,newSave,addCards,ownedUnique};

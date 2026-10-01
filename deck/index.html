@@ -31,10 +31,10 @@
     </div>
     <div class="menu">
       <button id="goBuilder" class="btn ghost">Deck builder</button>
-      <button id="goCollection" class="btn ghost">Collection</button>
+      <button id="goCollection" class="btn ghost">My cards</button>
       <button id="goShop" class="btn ghost">Shop</button>
     </div>
-    <p class="hint center">Monsters drop cards. Deeper fights drop rarer cards. Losing costs 20% of your gold; you keep your cards.</p>
+    <p class="hint center">Each win gives one reward: a card, gold or a potion. Bosses (every 4th depth) give more. Deeper fights drop rarer cards. Losing costs 20% of your gold; you keep your cards.</p>
     <button id="btnReset" class="link">Reset save</button>
   </section>
 
@@ -54,8 +54,11 @@
 
   <!-- collection -->
   <section id="scrCollection" class="screen">
-    <div class="bar"><button class="btn ghost back">←</button><h2>Collection</h2><span id="cCount" class="count"></span></div>
+    <div class="bar"><button class="btn ghost back">←</button><h2 id="cTitle">My cards</h2><span id="cCount" class="count"></span></div>
+    <div class="tabs"><button id="cTabMine" class="chip on">My cards</button><button id="cTabAll" class="chip">All cards</button>
+      <select id="cSort"><option value="family">Sort: color</option><option value="rank">Sort: rank</option><option value="rarity">Sort: rarity</option><option value="copies">Sort: most copies</option><option value="name">Sort: name</option></select></div>
     <div id="cProgress" class="stats"></div>
+    <div id="cItems" class="items-row"></div>
     <div id="cFilters" class="filters"></div>
     <div id="cGrid" class="grid mini"></div>
   </section>
@@ -116,6 +119,7 @@
         <div id="custQueue" class="slots" data-zone="queue"></div>
         <p id="custHint" class="hint">Tap or drag cards into the 3 slots; they cast left to right. Drag to reorder or to take a card back. Hold a card to read it. Each empty slot draws 1 extra card next time.</p>
         <div id="custHand" class="hand" data-zone="hand"></div>
+        <div id="custItems" class="items-row"></div>
         <p id="custEmpty" class="hint warn"></p>
         <button id="btnFight" class="btn big">Fight!</button>
       </div>

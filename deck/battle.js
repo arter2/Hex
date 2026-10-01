@@ -270,6 +270,18 @@ const CAST={
     burst(p.tile,col,16,1); floater(c.name,p.tile,col);
   },
 };
+// Drinking an item (from the Custom screen). Returns false if it would do nothing.
+function useItem(id){
+  const b=B, p=b&&b.player; if(!p||b.phase==='win'||b.phase==='lose') return false;
+  switch(id){
+    case 'draught': if(p.hp>=p.maxHp) return false; healPlayer(40); break;
+    case 'tonic': if(p.barrier>=40) return false; p.barrier=40; p.shieldTurns=2; floater('🛡40',p.tile,'#6fd6ff'); break;
+    case 'elixir': p.hasteT=Math.max(p.hasteT,10); break;
+    case 'wind': if(!drawCards(b.piles,2).length) return false; b.justDrawn=new Set(b.piles.hand.slice(-2).map(c=>c.uid)); break;
+    default: return false;
+  }
+  burst(p.tile,'#c58bff',14,1); return true;
+}
 // Arc onto the aimed tile, or the enemy nearest to `from`, over walls and allies.
 // The tile is fixed at cast, so an enemy that moves during the flight is missed.
 const nearestEnemyTile=from=>{ const e=alive().sort((a,b)=>hexDist(from,a.tile)-hexDist(from,b.tile))[0]; return e?e.tile:null; };

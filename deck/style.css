@@ -241,3 +241,19 @@ select,.filters input{font:600 14px var(--font-b); color:var(--text); background
   #btnFight{font-size:17px; padding:8px;}
 }
 .card.hero.flip{animation:flip .45s both,heroShine 3.2s linear infinite;}
+/* My cards tabs, items and non-card rewards */
+.tabs{display:flex; gap:8px; align-items:center; margin:6px 0 4px; flex-wrap:wrap;}
+.tabs .chip{--c:#c58bff; cursor:pointer; font-size:15px; padding:6px 14px; opacity:.6;}
+.tabs .chip.on{opacity:1; background:color-mix(in srgb,var(--c) 40%,transparent);}
+.tabs select{margin-left:auto;}
+.items-row{display:flex; gap:6px; flex-wrap:wrap; align-items:center; margin:6px 0;}
+.items-row:empty{display:none;}
+.items-row .lbl{font-size:12px; color:var(--dim); font-weight:700; text-transform:uppercase; letter-spacing:.04em; width:100%;}
+.item{display:flex; flex-direction:column; align-items:flex-start; gap:1px; text-align:left; font:700 14px var(--font-b); color:var(--text); cursor:pointer;
+  background:color-mix(in srgb,#c58bff 18%,#140e28); border:1px solid color-mix(in srgb,#c58bff 55%,transparent); border-radius:10px; padding:6px 10px; min-height:44px;}
+.item b{color:#ffe066;} .item small{font-weight:500; font-size:11px; color:var(--dim);}
+.item:disabled{cursor:default; opacity:1;}
+.reward{display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; text-align:center; min-height:150px; padding:10px; border-radius:10px;
+  background:linear-gradient(160deg,#3a2c10,#140e28 70%); border:2px solid #ffd966; color:var(--text); font-family:var(--font-b);}
+.reward b{font-size:42px; line-height:1;} .reward span{font:800 15px var(--font-h);} .reward small{font-size:12px; color:var(--dim);}
+.reward.flip{animation:flip .45s both;}

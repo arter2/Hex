@@ -38,9 +38,10 @@ function longPress(el,c){
   el.addEventListener('contextmenu',e=>{ e.preventDefault(); showDetail(c); });
 }
 
-function reveal(title,body,results,buttons){
+function reveal(title,body,results,buttons,extras){
   $('#rvTitle').textContent=title; $('#rvBody').textContent=body;
   const g=$('#rvCards'); g.innerHTML='';
+  (extras||[]).forEach((x,i)=>{ const el=document.createElement('div'); el.className='reward flip'; el.style.animationDelay=(i*.12)+'s'; el.innerHTML=`<b>${x.icon}</b><span>${esc(x.name)}</span><small>${esc(x.text)}</small>`; g.appendChild(el); });
   results.forEach((r,i)=>{ const el=cardEl(r.card,r.isNew?'<span class="badge new">NEW</span>':''); el.style.animationDelay=(i*.12)+'s'; el.classList.add('flip'); el.onclick=()=>showDetail(r.card); g.appendChild(el); });
   const bb=$('#rvBtns'); bb.innerHTML=''; bb.classList.toggle('two',buttons.length>1);
   buttons.forEach(([label,fn,ghost])=>{ const b=document.createElement('button'); b.className='btn'+(ghost?' ghost':''); b.textContent=label; b.onclick=()=>{ $('#reveal').classList.remove('on'); fn(); }; bb.appendChild(b); });
@@ -67,7 +68,7 @@ function openCamp(){
   if(pickDepth===1&&save.deepest>1) pickDepth=save.deepest;
   const d=activeDeck(), v=validateDeck(d.list,CARDS,save.owned);
   $('#campGold').textContent='🪙 '+save.gold+' gold';
-  $('#campColl').textContent='🂠 '+ownedUnique(save)+' / '+CARD_LIST.length+' cards';
+  $('#campColl').textContent='🂠 '+ownedUnique(save)+' / '+CARD_LIST.length+' cards'+(itemCount(save)?' · 🧪 '+itemCount(save):'');
   $('#campDeck').textContent=d.name;
   const cnt=$('#campDeckCount'); cnt.textContent=v.count+' / '+RULES.max; cnt.classList.toggle('bad',!v.ok);
   $('#campDeckErr').textContent=v.ok?'':v.errors[0]+(v.errors.length>1?' (+'+(v.errors.length-1)+' more)':'')+'. Fix it in the deck builder.';
@@ -165,13 +166,31 @@ $('#bClear').onclick=e=>{ const d=save.decks[editSlot]; if(!d.list.length) retur
 $('#bUse').onclick=()=>{ save.active=editSlot; persist(); renderSlots(); tip(save.decks[editSlot].name+' is now your deck'); };
 
 /* ---------------- collection ---------------- */
-const cf={colors:new Set(), type:'', rarity:'', q:'', owned:''};
-function openCollection(){ makeFilters($('#cFilters'),cf,renderCollection,true); renderCollection(); show('scrCollection'); }
+/* My cards: everything you own (with copies and how many are in your deck), your items, and
+   a tab for the whole set of 1,006 with the ones you haven't found yet greyed out. */
+const cf={colors:new Set(), type:'', rarity:'', q:'', owned:'', mine:true, sort:'family'};
+function openCollection(){ makeFilters($('#cFilters'),cf,renderCollection,!cf.mine); renderCollection(); show('scrCollection'); }
+$('#cTabMine').onclick=()=>{ cf.mine=true; cf.owned=''; openCollection(); };
+$('#cTabAll').onclick=()=>{ cf.mine=false; openCollection(); };
+$('#cSort').onchange=e=>{ cf.sort=e.target.value; renderCollection(); };
+const SORTS={family:byFamily, rank:(a,b)=>a.rank-b.rank||byFamily(a,b), rarity:(a,b)=>RAR_ORDER.indexOf(b.rarity)-RAR_ORDER.indexOf(a.rarity)||byFamily(a,b),
+  copies:(a,b)=>(save.owned[b.id]||0)-(save.owned[a.id]||0)||byFamily(a,b), name:(a,b)=>a.name.localeCompare(b.name)};
 function renderCollection(){
-  $('#cCount').textContent=ownedUnique(save)+' / '+CARD_LIST.length;
+  $('#cTabMine').classList.toggle('on',cf.mine); $('#cTabAll').classList.toggle('on',!cf.mine); $('#cSort').value=cf.sort;
+  const copies=Object.keys(save.owned).reduce((a,id)=>a+(CARDS[id]?save.owned[id]:0),0);
+  $('#cTitle').textContent=cf.mine?'My cards':'All cards';
+  $('#cCount').textContent=cf.mine?ownedUnique(save)+' cards · '+copies+' copies':ownedUnique(save)+' / '+CARD_LIST.length;
+  renderItems($('#cItems'),false); $('#cItems').hidden=!cf.mine;
+  if(cf.mine){ const inDeck={}; activeDeck().list.forEach(id=>inDeck[id]=(inDeck[id]||0)+1);
+    const fam={}; Object.keys(save.owned).forEach(id=>{ const c=CARDS[id]; if(c&&save.owned[id]>0) fam[c.color]=(fam[c.color]||0)+save.owned[id]; });
+    $('#cProgress').innerHTML=FAM_ORDER.filter(k=>fam[k]).map(k=>`<span class="chip" style="--c:${COLORS[k].c}">${COLORS[k].icon} ${fam[k]}</span>`).join('');
+    const items=Object.keys(save.owned).map(id=>CARDS[id]).filter(c=>c&&save.owned[c.id]>0&&passes(c,cf)).sort(SORTS[cf.sort]);
+    paged($('#cGrid'),items,c=>{ const el=cardEl(c,`<span class="badge">×${save.owned[c.id]}${inDeck[c.id]?' · '+inDeck[c.id]+' in deck':''}</span>`); el.onclick=()=>showDetail(c); return el; });
+    if(!items.length) $('#cGrid').innerHTML='<p class="hint">No cards match.</p>';
+    return; }
   const fam={}; CARD_LIST.forEach(c=>{ fam[c.color]=fam[c.color]||[0,0]; fam[c.color][1]++; if(save.seen[c.id]) fam[c.color][0]++; });
   $('#cProgress').innerHTML=FAM_ORDER.map(k=>`<span class="chip" style="--c:${COLORS[k].c}">${COLORS[k].icon} ${fam[k][0]}/${fam[k][1]}</span>`).join('');
-  const items=CARD_LIST.filter(c=>passes(c,cf)).sort(byFamily);
+  const items=CARD_LIST.filter(c=>passes(c,cf)).sort(SORTS[cf.sort]);
   paged($('#cGrid'),items,c=>{ const own=save.owned[c.id]||0; const el=cardEl(c,own?`<span class="badge">×${own}</span>`:'',!save.seen[c.id]); el.onclick=()=>showDetail(c); return el; });
 }
 
@@ -214,13 +233,16 @@ function settleCharges(){ const burned=settleChargeUses(save,B.piles); persist()
   return burned.length?' Burned up: '+burned.map(x=>x.card.name+(x.n>1?' ×'+x.n:'')).join(', ')+'.':''; }
 function victory(){
   const b=B, boss=b.enemies.some(e=>e.def.boss);
-  const gold=battleGold(b.depth,boss), drops=battleDrops(b.enemies.filter(e=>!e.def.minion).map(e=>e.color),b.depth,boss,null,save.owned);
-  save.gold+=gold; save.wins++; if(b.depth>=save.deepest) save.deepest=b.depth+1;
-  const res=addCards(save,drops); const burnt=settleCharges();
+  const rw=battleRewards(b.enemies.filter(e=>!e.def.minion).map(e=>e.color),b.depth,boss,null,save.owned);
+  save.gold+=rw.gold; save.wins++; if(b.depth>=save.deepest) save.deepest=b.depth+1;
+  rw.items.forEach(id=>addItem(save,id));
+  const res=addCards(save,rw.cards); const burnt=settleCharges();
   const depth=b.depth;
-  const hero=drops.find(c=>c.rarity==='hero');
-  reveal(hero?'♔ A hero joins you!':'Victory!',(hero?hero.name+' answers your call. ':'')+'Depth '+depth+' cleared in '+Math.round(b.time)+'s · +'+gold+' gold · '+res.filter(r=>r.isNew).length+' new cards.'+burnt,res,
-    [['Camp',()=>{ B=null; pickDepth=depth+1; openCamp(); },true],['Depth '+(depth+1)+' →',()=>fight(depth+1)]]);
+  const hero=rw.cards.find(c=>c.rarity==='hero');
+  const got=[...rw.cards.map(c=>c.name),...(rw.gold?['🪙 '+rw.gold+' gold']:[]),...rw.items.map(id=>ITEMS[id].icon+' '+ITEMS[id].name)];
+  reveal(hero?'♔ A hero joins you!':boss?'Boss defeated!':'Victory!',(hero?hero.name+' answers your call. ':'')+'Depth '+depth+' cleared in '+Math.round(b.time)+'s. '+(boss?'Boss rewards: ':'Your reward: ')+got.join(', ')+'.'+burnt,res,
+    [['Camp',()=>{ B=null; pickDepth=depth+1; openCamp(); },true],['Depth '+(depth+1)+' →',()=>fight(depth+1)]],
+    [...(rw.gold?[{icon:'🪙',name:rw.gold+' gold',text:'Spend it on packs in the shop'}]:[]),...rw.items.map(id=>ITEMS[id])]);
 }
 function defeat(){
   const lost=Math.floor(save.gold*.2); save.gold-=lost; const burnt=settleCharges();
@@ -266,9 +288,21 @@ function renderCustom(){
     if(dealt.has(inst.uid)){ el.classList.add('deal'); el.style.animationDelay=(i*.06)+'s'; }
     dragCard(el,inst); h.appendChild(el); });
   B.justDrawn=null;
+  renderItems($('#custItems'),true);
   $('#custEmpty').textContent=wandOnly(p)?'Your deck is empty. Fight on with your wand!':!p.draw.length?'Deck empty: these are your last cards.':'';
   const empty=RULES.slots-p.queue.length;
   $('#btnFight').textContent=wandOnly(p)?'Fight!':'Fight!'+(empty?' (+'+empty+' draw next time)':'');
+}
+// Your potions: on the Custom screen a tap drinks one; in My cards they are just listed.
+function renderItems(box,usable){
+  const its=Object.keys(ITEMS).filter(id=>(save.items||{})[id]>0);
+  box.innerHTML=its.length?(usable?'<span class="lbl">Items</span>':'<span class="lbl">Your items</span>'):usable?'':'<span class="lbl">No items yet. Normal fights sometimes give one, bosses always do.</span>';
+  for(const id of its){ const it=ITEMS[id], b=document.createElement('button'); b.className='item'; b.title=it.text;
+    b.innerHTML=`${it.icon} ${esc(it.name)} <b>×${save.items[id]}</b><small>${esc(it.text)}</small>`;
+    if(usable) b.onclick=()=>{ if(!useItem(id)) return tip('That would do nothing right now');
+      save.items[id]--; if(!save.items[id]) delete save.items[id]; persist(); buzz(15); tip(it.name+'!'); renderCustom(); };
+    else b.disabled=true;
+    box.appendChild(b); }
 }
 /* Drag and drop on the Custom screen. A tap moves a card between hand and queue, a hold shows
    its detail, and a drag puts it exactly where it is dropped: a slot (swapping if full), a

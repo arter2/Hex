@@ -314,3 +314,5 @@ select,.filters input{font:600 14px var(--font-b); color:var(--text); background
 .gearslot{min-height:56px; cursor:pointer; font-size:13px;} .gearslot b{font-size:13px; line-height:1.2;} .gearslot.empty{border-color:var(--line); cursor:default;}
 .gearrow .gt small.kind{color:#9fdcff;}
 @media (max-width:420px){ .gearslots{grid-template-columns:repeat(2,1fr);} }
+.gearrow .gt small.set{color:#93a9ba;} .gearrow .gt small.set.on{color:#39ff8a; font-weight:700;}
+.gearrow .gt small.fresh{color:#f2c94c;}

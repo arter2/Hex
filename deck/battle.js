@@ -69,7 +69,7 @@ function startBattle(list,depth,hooks,opts){
   makeTerrain(depth);
   spawnWave(0);
   if(opts&&opts.prepare) opts.prepare(B.piles);
-  applyGear(p,opts&&opts.gear); B.piles.surgeLuck=(opts&&opts.gear&&opts.gear.surge)||0;
+  applyGear(p,opts&&opts.gear); p.look=opts&&opts.look; B.piles.surgeLuck=(opts&&opts.gear&&opts.gear.surge)||0;
   openCustomScreen();
   return B;
 }
@@ -82,7 +82,7 @@ function applyGear(p,m){
   p.wand={kind:m.kind, tap:Math.max(1,K.tap+m.tap), charged:Math.max(2,K.charged+m.charged), cd:K.cd*m.cd, ccd:K.ccd*m.cd, charge:.9*m.charge, color:m.color||null,
     chill:m.chill||0, zap:m.zap||0, drain:m.drain||0, glow:m.glow||0, burn:m.burn||0, misfire:m.misfire||0, hpPerShot:m.hpPerShot||0};
   p.guard=m.guard; p.slow=m.slow||1; p.hurt=m.hurt||1; p.gaugeMult=m.gauge||1;
-  p.dodgeChance=m.dodge||0; p.block=m.block||0; p.blockReady=!!m.block; p.counter=m.counter||0; p.regenGear=m.regen||0; p.castSlow=m.castSlow||1; p.power=m.power||{};
+  p.dodgeChance=m.dodge||0; p.block=m.block||0; p.blocksLeft=p.block; p.counter=m.counter||0; p.regenGear=m.regen||0; p.castSlow=m.castSlow||1; p.power=m.power||{};
   p.maxHp+=m.hp; p.hp=p.maxHp;
   if(m.shield){ p.barrier=m.shield; p.shieldTurns=2; }
 }
@@ -170,7 +170,7 @@ function hitPlayer(dmg){
   if(p.invT>0){ floater('miss',p.tile,'#7fd4ff'); return; }
   if(p.dodge){ p.dodge=false; floater('dodge',p.tile,'#6fd6ff'); return; }
   if(p.dodgeChance&&Math.random()<p.dodgeChance){ floater('dodge',p.tile,'#9fdcff'); return; }
-  if(p.block&&p.blockReady){ p.blockReady=false; floater('blocked',p.tile,'#f2c94c'); burst(p.tile,'#f2c94c',8,1); return; }
+  if(p.blocksLeft>0){ p.blocksLeft--; floater('blocked',p.tile,'#f2c94c'); burst(p.tile,'#f2c94c',8,1); return; }
   if(p.barrier>0){ const a=Math.min(p.barrier,dmg); p.barrier-=a; dmg-=a; floater('🛡'+a,p.tile,'#6fd6ff'); }
   if(p.guard&&dmg>0) dmg=Math.max(1,Math.round(dmg*(1-p.guard)));
   if(p.hurt&&p.hurt!==1&&dmg>0) dmg=Math.round(dmg*p.hurt);
@@ -355,7 +355,7 @@ function endTurn(){
     if(t.envTurns>0&&--t.envTurns<=0){ t.burnT=0; t.iceT=0; t.thornT=0; }
   }
   if(heroOn('ysolde')) heroShield();
-  if(p.block) p.blockReady=true;   // a shield is ready again each turn
+  p.blocksLeft=p.block||0;   // a shield is ready again each turn
 }
 function updateAlly(a,dt){
   a.fireT-=dt;
@@ -794,7 +794,7 @@ const DRAW={
     // the staff's orb glows, and grows while the wand charges
     const wc=p.wand&&p.wand.color?COLORS[p.wand.color].c:null;
     const glow=p.charging?(p.chargeT>=chargeNeed(p)?'#ffffff':wc||'#7fd4ff'):p.powerT>0?'#ff6a3d':wc;
-    if(glow){ const ox=r.x+(flip?-1:1)*9*r.k, oy=r.top+4*r.k; ctx.fillStyle=glow; ctx.shadowColor=glow; ctx.shadowBlur=10+(p.charging?p.chargeT*18:0);
+    if(glow&&(!p.look||['staff','wand'].includes(p.look.weapon))){ const ox=r.x+(flip?-1:1)*9*r.k, oy=r.top+4*r.k; ctx.fillStyle=glow; ctx.shadowColor=glow; ctx.shadowBlur=10+(p.charging?p.chargeT*18:0);
       ctx.globalAlpha=.85; ctx.beginPath(); ctx.arc(ox,oy,S*(.12+(p.charging?p.chargeT*.12:0)),0,TAU); ctx.fill(); ctx.shadowBlur=0; ctx.globalAlpha=1; }
     const [x,y]=proj(posOf(p)[0],0,posOf(p)[1]);
     if(p.barrier>0){ ctx.strokeStyle='rgba(111,214,255,.85)'; ctx.lineWidth=2.5; ctx.beginPath(); ctx.ellipse(x,y-r.H*.45,S*.75,r.H*.55,0,0,TAU); ctx.stroke();

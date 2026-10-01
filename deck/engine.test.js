@@ -241,23 +241,36 @@ t('gear: every save starts with the basic wand; copies merge up to +3; enchantin
   ['broken_wand','basic_wand','ice_wand','volt_wand','dark_wand','light_wand'].forEach(id=>assert(G.GEAR[id]&&G.GEAR[id].slot==='weapon',id));
   assert(Object.values(G.GEAR).filter(g=>g.legendary).length>=4);
 });
-t('cursed gear hides its name, sticks once worn, and breaks with a scroll or a sacrifice of its rune', ()=>{
-  const s=C.newSave(D.STARTERS[0]); G.addGear(s,'leaden_robe');
-  assert.strictEqual(s.gear.body,'leaden_robe','an empty slot puts it on at once'); assert(G.isStuck(s,'leaden_robe')); assert.strictEqual(G.gearName(s,'leaden_robe'),'Leaden Robe');
-  assert(G.gearMods(s).slow>1,'the drawback applies'); assert(!G.equip(s,'body',null).ok,'it will not come off');
-  const t=C.newSave(D.STARTERS[0]); t.gear.body='padded_robe'; t.items.padded_robe=1; G.addGear(t,'omen_cloak'); assert.strictEqual(G.gearName(t,'omen_cloak'),'Silken Cloak','disguised until worn');
-  assert(G.gearText(t,'omen_cloak').startsWith('Unidentified'));
-  // break the robe's curse with 3 rune A cards
-  const runeA=Object.keys(s.owned).filter(id=>D.CARDS[id].code==='A'); assert(runeA.length);
-  const pick=[]; for(const id of runeA) for(let i=0;i<s.owned[id]&&pick.length<3;i++) pick.push(id);
-  const wrong=Object.keys(s.owned).find(id=>D.CARDS[id].code!=='A'); assert(!G.sacrificeFor(s,'leaden_robe',[wrong,wrong,wrong]).ok,'other runes will not do');
-  const before=pick.reduce((a,id)=>a+s.owned[id],0)/pick.length;
-  assert(G.sacrificeFor(s,'leaden_robe',pick).ok); assert(!G.isStuck(s,'leaden_robe')); assert(!G.gearMods(s).slow,'a broken curse loses its drawback'); assert(G.gearMods(s).hp>=60,'and keeps its strength');
+t('gear is identified, but enchantments and curses stay hidden until worn; a curse sticks until broken', ()=>{
+  const s=C.newSave(D.STARTERS[0]); G.addGear(s,'plate_armor'); s.hidden.plate_armor={curse:'lead'};
+  s.gear.body=null; delete s.worn.plate_armor; assert.strictEqual(G.gearName(s,'plate_armor'),'Plate Armor','named, curse unknown'); assert(G.unworn(s,'plate_armor'));
+  const r=G.equip(s,'body','plate_armor'); assert(r.cursed); assert(G.isStuck(s,'plate_armor')); assert.strictEqual(G.gearName(s,'plate_armor'),'Plate Armor of Lead');
+  assert(G.gearMods(s).slow>1.3*1.3,'the curse adds to the armor'); assert(!G.equip(s,'body',null).ok,'it will not come off');
+  // break it with 3 rune A cards (the curse's rune)
+  assert.strictEqual(G.curseRune(s,'plate_armor'),'A');
+  const runeA=Object.keys(s.owned).filter(id=>D.CARDS[id].code==='A'); const pick=[]; for(const id of runeA) for(let i=0;i<s.owned[id]&&pick.length<3;i++) pick.push(id);
+  const wrong=Object.keys(s.owned).find(id=>D.CARDS[id].code!=='A'); assert(!G.sacrificeFor(s,'plate_armor',[wrong,wrong,wrong]).ok);
+  assert(G.sacrificeFor(s,'plate_armor',pick).ok); assert(!G.isStuck(s,'plate_armor')); assert(G.equip(s,'body',null).ok);
   assert(s.decks[0].list.every(id=>(s.owned[id]||0)>=s.decks[0].list.filter(x=>x===id).length),'decks only hold cards you still own');
-  assert(G.equip(s,'body',null).ok,'now it comes off');
+  // a hidden enchantment shows up when worn; heavy armor stops slowing casting once enchanted
+  const t=C.newSave(D.STARTERS[0]); G.addGear(t,'iron_mail'); t.gear.body=null; delete t.worn.iron_mail; t.hidden.iron_mail={ench:'vigor'};
+  assert(G.gearMods(t).castSlow===undefined||G.gearMods(t).castSlow===1); G.equip(t,'body','iron_mail'); assert.strictEqual(t.ench.iron_mail,'vigor'); assert(!G.gearMods(t).castSlow,'enchanted heavy armor casts at full speed');
+  const u=C.newSave(D.STARTERS[0]); G.addGear(u,'iron_mail'); assert(G.gearMods(u).castSlow>1,'plain heavy armor slows casting');
   // or a scroll
-  const u=C.newSave(D.STARTERS[0]); G.addGear(u,'thirsting_wand'); assert(G.equip(u,'weapon','thirsting_wand').cursed); assert(!G.purifyGear(u,'thirsting_wand').ok);
-  G.addScroll(u,'purify'); assert(G.purifyGear(u,'thirsting_wand').ok); assert(!G.gearMods(u).hpPerShot);
+  const v=C.newSave(D.STARTERS[0]); G.addGear(v,'oak_wand'); v.hidden.oak_wand={curse:'thirst'}; delete v.worn.oak_wand; assert(G.equip(v,'weapon','oak_wand').cursed); assert(!G.purifyGear(v,'oak_wand').ok);
+  G.addScroll(v,'purify'); assert(G.purifyGear(v,'oak_wand').ok); assert(!G.gearMods(v).hpPerShot);
+  // new loot hides traits now and then, never on legendaries
+  let cursed=0, ench=0; for(let i=0;i<2000;i++){ const w=C.newSave(D.STARTERS[0]); G.addGear(w,'elven_bow',rng); const h=w.hidden.elven_bow; if(h&&h.curse) cursed++; if(h&&h.ench) ench++; }
+  assert(cursed>200&&cursed<420,'cursed '+cursed); assert(ench>140&&ench<340,'enchanted '+ench);
+  for(let i=0;i<300;i++){ const w=C.newSave(D.STARTERS[0]); G.addGear(w,'first_flame',rng); assert(!(w.hidden.first_flame&&w.hidden.first_flame.curse)); }
+});
+t('sets: all three pieces give the bonus; old cursed items become ordinary pieces with a curse; the look follows the gear', ()=>{
+  const s=C.newSave(D.STARTERS[0]); ['kabuto','samurai_suit','lacquered_bracers'].forEach(id=>G.addGear(s,id));
+  assert.deepStrictEqual(G.activeSets(s),['samurai']); assert(G.gearMods(s).counter>=25);
+  const L=G.gearLook(s); assert.strictEqual(L.body,'samurai'); assert.strictEqual(L.hat,'kabuto');
+  G.addGear(s,'elven_bow'); G.equip(s,'weapon','elven_bow'); assert.strictEqual(G.gearLook(s).weapon,'bow');
+  const o=C.newSave(D.STARTERS[0]); o.items.leaden_robe=1; o.gear.body='leaden_robe'; o.cursed={leaden_robe:1}; G.ensureStarterGear(o);
+  assert.strictEqual(o.gear.body,'plate_armor'); assert.strictEqual(o.cursed.plate_armor,'lead'); assert(!o.items.leaden_robe);
 });
 t('seven slots: two-handed weapons push out a shield, rings fill two slots, old saves move armor to body', ()=>{
   const s=C.newSave(D.STARTERS[0]);
@@ -273,12 +286,12 @@ t('seven slots: two-handed weapons push out a shield, rings fill two slots, old 
   const old=C.newSave(D.STARTERS[0]); old.gear={weapon:'basic_wand',armor:'iron_mail'}; old.items.iron_mail=1; G.ensureStarterGear(old);
   assert.strictEqual(old.gear.body,'iron_mail'); assert(!('armor' in old.gear));
 });
-t('loot: scrolls, gear by depth, rare legendaries, some cursed pieces', ()=>{
-  const n={scroll:0,legend:0,cursed:0,t3:0}; const N=4000;
-  for(let i=0;i<N;i++){ const k=G.rollLoot(9,rng,true); if(k.startsWith('scroll:')){ n.scroll++; continue; } const g=G.GEAR[k]; assert(g,k); if(g.legendary) n.legend++; else if(g.cursed) n.cursed++; else if(g.tier===3) n.t3++; }
-  assert(n.scroll>600&&n.scroll<1000,JSON.stringify(n)); assert(n.legend>150&&n.legend<400,JSON.stringify(n)); assert(n.cursed>300,JSON.stringify(n));
-  for(let i=0;i<500;i++){ const k=G.rollLoot(1,rng,false); if(G.GEAR[k]&&!G.GEAR[k].legendary&&!G.GEAR[k].cursed) assert(G.GEAR[k].tier<=1,k); }
-  const s=C.newSave(D.STARTERS[0]); G.addLoot(s,'scroll:purify'); assert.strictEqual(s.scrolls.purify,1); assert(G.lootLabel(s,'thirsting_wand').name==='Gleaming Wand');
+t('loot: scrolls, gear by depth, rare legendaries', ()=>{
+  const n={scroll:0,legend:0,t3:0}; const N=4000;
+  for(let i=0;i<N;i++){ const k=G.rollLoot(9,rng,true); if(k.startsWith('scroll:')){ n.scroll++; continue; } const g=G.GEAR[k]; assert(g,k); if(g.legendary) n.legend++; else if(g.tier===3) n.t3++; }
+  assert(n.scroll>600&&n.scroll<1000,JSON.stringify(n)); assert(n.legend>150&&n.legend<400,JSON.stringify(n)); assert(n.t3>1000,JSON.stringify(n));
+  for(let i=0;i<500;i++){ const k=G.rollLoot(1,rng,false); if(G.GEAR[k]&&!G.GEAR[k].legendary) assert(G.GEAR[k].tier<=1,k); }
+  const s=C.newSave(D.STARTERS[0]); G.addLoot(s,'scroll:purify'); assert.strictEqual(s.scrolls.purify,1);
 });
 t('potions are gray cards, and potions in an old save become those cards', ()=>{
   assert.strictEqual(D.POTIONS.length,4); D.POTIONS.forEach(c=>{ assert(D.CARDS[c.id]); assert.strictEqual(c.color,'gray'); assert(D.cardText(c).length>5); });

@@ -728,9 +728,19 @@ function human(o){
   if(o.back==='legs') for(const d of [-1,1]) for(let i=0;i<3;i++) curve([[16+d*5,14+i*3],[16+d*(11+i),8+i*4],[16+d*(14+i),18+i*4]],1,'k');
   if(o.cape) poly([[10,13],[22,13],[26,30],[6,30]],'c');
   rect(12,25,14,30,'d'); rect(18,25,20,30,'d'); rect(11,29,14,30,'k'); rect(18,29,21,30,'k');
-  poly([[9,27],[23,27],[20,15],[12,15]],'m'); rect(11,20,21,21,'a'); rect(15,15,17,27,'a');
-  rect(8,15,11,23,'m'); rect(21,15,24,23,'m'); rect(8,23,10,25,'h'); rect(22,23,24,25,'h');
+  // the body: a robe by default, or what the gear says
+  switch(o.body){
+    case 'shirt': rect(12,22,20,27,'d'); poly([[10,24],[22,24],[21,15],[11,15]],'m'); rect(10,22,22,23,'t'); rect(8,15,11,21,'m'); rect(21,15,24,21,'m'); break;
+    case 'leather': rect(12,22,20,27,'d'); poly([[10,25],[22,25],[21,15],[11,15]],'m'); seg(11,15,21,24,1,'a'); rect(10,22,22,23,'y'); rect(8,15,11,22,'m'); rect(21,15,24,22,'m'); break;
+    case 'thief': rect(12,22,20,27,'m'); poly([[10,25],[22,25],[21,15],[11,15]],'m'); rect(10,21,22,22,'a'); seg(12,15,20,21,1,'a'); rect(8,15,11,22,'m'); rect(21,15,24,22,'m'); break;
+    case 'plate': rect(12,23,20,28,'m'); rect(11,15,21,24,'m'); rect(13,17,19,18,'a'); rect(15,15,17,23,'a'); rect(10,23,22,24,'k'); rect(7,14,11,17,'a'); rect(21,14,25,17,'a'); rect(8,17,11,23,'m'); rect(21,17,24,23,'m'); break;
+    case 'samurai': rect(11,22,21,27,'m'); for(let y=23;y<27;y+=2) rect(11,y,21,y,'a'); rect(11,15,21,22,'m'); for(let y=16;y<22;y+=2) rect(11,y,21,y,'a');
+      for(const d of [-1,1]){ poly([[16+d*5,14],[16+d*10,15],[16+d*10,21],[16+d*5,19]],'m'); seg(16+d*6,16,16+d*9,17,1,'a'); seg(16+d*6,18,16+d*9,19,1,'a'); } break;
+    default: poly([[9,27],[23,27],[20,15],[12,15]],'m'); rect(11,20,21,21,'a'); rect(15,15,17,27,'a'); rect(8,15,11,23,'m'); rect(21,15,24,23,'m');
+  }
+  rect(8,23,10,25,'h'); rect(22,23,24,25,'h');
   circ(16,11,4.2,'h'); px(14,11,'K'); px(18,11,'K'); if(o.beard) poly([[12,13],[20,13],[16,21]],'w');
+  if(o.body==='thief') rect(12,12,20,14,'m');   // a thief's mask
   switch(o.hat){
     case 'wizard': poly([[8,9],[24,9],[19,5],[13,0]],'m'); rect(9,8,23,9,'a'); px(16,4,'Y'); break;
     case 'witch': poly([[6,9],[26,9],[18,5],[21,0]],'k'); rect(12,7,20,8,'m'); break;
@@ -738,6 +748,8 @@ function human(o){
     case 'helm': rect(11,6,21,13,'g'); rect(12,10,20,11,'K'); poly([[16,6],[19,0],[23,3]],'r'); break;
     case 'spiked': rect(11,6,21,13,'k'); rect(12,10,20,11,'R'); for(const x of [12,16,20]) poly([[x-1,6],[x+1,6],[x,1]],'g'); break;
     case 'leaf': poly([[9,11],[16,3],[23,11],[16,9]],'l'); break;
+    case 'cap': ell(16,8,5.2,3,'t'); rect(10,8,23,9,'t'); break;
+    case 'kabuto': ell(16,8,6,4.5,'k'); rect(9,9,23,10,'k'); for(const d of [-1,1]) poly([[16+d*5,9],[16+d*9,10],[16+d*8,14],[16+d*5,12]],'k'); quad([11,4],[16,8],[21,4],2,'y'); break;
     case 'crown': rect(11,5,21,7,'y'); for(const x of [12,16,20]) poly([[x-1.5,6],[x,1.5],[x+1.5,6]],'y'); px(16,6,'R'); px(12,6,'A'); px(20,6,'A'); break;
     case 'tiara': for(const [x,h] of [[11,4],[13.5,6],[16,9],[18.5,6],[21,4]]) poly([[x-1.3,8],[x,8-h],[x+1.3,8]],'x'); rect(11,7,21,8,'w'); px(16,2,'W'); break;
     case 'tricorn': poly([[7,9],[25,9],[21,4],[16,6],[11,4]],'k'); rect(8,8,24,9,'y'); quad([22,5],[27,1],[29,3],2,'a'); break;
@@ -748,6 +760,9 @@ function human(o){
   if(o.hair==='long') for(const d of [-1,1]) rect(16+d*4-(d>0?0:1),9,16+d*4+(d>0?1:0),19,'w');
   switch(o.weapon){
     case 'staff': seg(25,6,25,30,2,'t'); circ(25,5,2.6,'A'); px(24,4,'W'); break;
+    case 'wand': seg(25,14,25,25,1,'t'); circ(25,13,1.6,'A'); px(25,12,'W'); break;
+    case 'crossbow': rect(20,19,29,20,'t'); quad([27,13],[30,19],[27,25],1,'g'); seg(27,13,27,25,1,'w'); px(29,19,'A'); break;
+    case 'spear': seg(25,4,25,30,1,'t'); poly([[25,-1],[27,4],[25,7],[23,4]],'g'); px(25,2,'W'); break;
     case 'bolt': seg(25,8,25,30,1,'g'); curve([[25,1],[23,4],[27,5],[25,9]],1,'A'); break;
     case 'sword': seg(25,3,25,20,2,'w'); rect(23,19,27,20,'y'); break;
     case 'bow': quad([25,4],[30,16],[25,28],1,'t'); seg(25,4,25,28,1,'w'); break;
@@ -759,7 +774,10 @@ function human(o){
     case 'greatsword': seg(25,1,25,21,3,'w'); seg(25,2,25,19,1,'Y'); rect(21,20,29,21,'y'); seg(25,22,25,25,2,'t'); circ(25,26,1.4,'y'); break;
     case 'scythe': seg(25,4,25,30,1,'k'); quad([25,4],[19,0],[13,6],2,'g'); px(13,6,'W'); break;
   }
-  if(o.shield){ poly([[3,14],[11,14],[11,21],[7,25],[3,21]],'a'); rect(6,15,8,22,'y'); }
+  if(o.shield==='round'){ circ(6.5,19,4.2,'t'); ringp(6.5,19,4.2,1,'g'); px(6,19,'y'); }
+  else if(o.shield==='tower'){ rect(2,13,10,27,'g'); rect(5,15,7,25,'a'); rect(3,19,9,20,'a'); }
+  else if(o.shield==='gold'){ poly([[3,14],[11,14],[11,21],[7,25],[3,21]],'y'); circ(7,19,1.8,'A'); }
+  else if(o.shield){ poly([[3,14],[11,14],[11,21],[7,25],[3,21]],'a'); rect(6,15,8,22,'y'); }
 }
 const MONSTER={
   gloop(){ ell(16,22,13,9,'m'); ell(14,14,6,5,'m'); for(const x of [6,12,20,26]) rect(x,29,x+1,31,'m');
@@ -814,7 +832,8 @@ function makeSprite(key,pal,draw){
 }
 // the sprite for a unit on the board: 'player', an enemy id, or an ally's card
 function unitSprite(u){
-  if(u.kind==='player') return makeSprite('player',{m:'#1f5fa8',a:'#f2c94c',glow:'#7fd4ff',o:'#03070c'},()=>human({hat:'wizard',weapon:'staff',beard:1}));
+  if(u.kind==='player'){ const L=u.look||{body:'robe',m:'#1f5fa8',a:'#f2c94c',hat:'wizard',weapon:'staff',glow:'#7fd4ff',beard:true};
+    return makeSprite('player:'+JSON.stringify(L),{m:L.m,a:L.a,c:artMix(L.m,'#000000',.35),glow:L.glow,o:'#03070c',d:artMix(L.m,'#1a1020',.55)},()=>human(L)); }
   if(u.kind==='enemy'){ const F=FAM[u.color], id=u.id;
     const pal={m:F.m,a:F.a,glow:F.glow,o:F.o,c:artMix(F.m,'#000000',.35),d:artMix(F.m,'#1a1020',.6)};
     if(HUMAN_LOOK[id]) return makeSprite('e:'+id,pal,()=>human(HUMAN_LOOK[id]));

@@ -217,46 +217,101 @@ function renderCollection(){
    you own: equip it, merge two copies to upgrade it, enchant it, or break its curse. */
 function openCharacter(){ ensureStarterGear(save); persist(); $('#chMsg').textContent=''; renderCharacter(); show('scrCharacter'); }
 function charMsg(r){ $('#chMsg').textContent=r.msg||''; $('#chMsg').className='hint'+(r.cursed?' curse':r.ok?'':' warn'); if(r.ok) persist(); renderCharacter(); }
-const GEAR_GROUPS=[['weapon','Weapons: wands, staffs, bows, crossbows, spears'],['offhand','Off-hand: shields'],['head','Helmets and hats'],['body','Body armor'],['arms','Bracers'],['ring','Rings (two slots)']];
+/* The Character screen is a paper doll: your wizard in the middle, the seven slots around it
+   with dashed lines to where each piece is worn, and your inventory below as a grid of pieces.
+   Tap a piece (or a slot) to see it and act on it, or drag a piece onto a slot to put it on and
+   drag it off a slot to take it off. */
+const DOLL_LEFT=['head','arms','offhand','ring1'], DOLL_RIGHT=['body','weapon','ring2'];
+// where on the 32 x 32 sprite each slot's piece is worn
+const DOLL_ANCHOR={head:[16,7], body:[16,20], arms:[9,21], offhand:[6,18], weapon:[25,12], ring1:[9,24], ring2:[23,24]};
+const INV_TABS=[['all','All'],['weapon','Weapons'],['offhand','Off-hand'],['head','Head'],['body','Body'],['arms','Arms'],['ring','Rings']];
+let chTab='all', chSel=null;
 function renderCharacter(){
   const s=gearState(save), m=gearMods(save), K=WEAPON_KINDS[m.kind]||WEAPON_KINDS.wand;
   $('#chGold').textContent='🪙 '+save.gold;
   // the wizard, large, glowing in the weapon's element
-  const cv=$('#chSprite'), cx=cv.getContext('2d'); cx.clearRect(0,0,128,128); cx.imageSmoothingEnabled=false;
-  const col=m.color?COLORS[m.color].c:'#7fd4ff', g=cx.createRadialGradient(64,70,4,64,70,64); g.addColorStop(0,col+'55'); g.addColorStop(1,col+'00'); cx.fillStyle=g; cx.fillRect(0,0,128,128);
-  const spr=unitSprite({kind:'player',look:gearLook(save)}); cx.drawImage(spr.img,0,0,32,32,0,0,128,128);
+  const cv=$('#chSprite'), cx=cv.getContext('2d'); cx.clearRect(0,0,256,256); cx.imageSmoothingEnabled=false;
+  const col=m.color?COLORS[m.color].c:'#7fd4ff', g=cx.createRadialGradient(128,150,8,128,150,128); g.addColorStop(0,col+'44'); g.addColorStop(1,col+'00'); cx.fillStyle=g; cx.fillRect(0,0,256,256);
+  cx.fillStyle='rgba(0,0,0,.45)'; cx.beginPath(); cx.ellipse(128,244,70,10,0,0,Math.PI*2); cx.fill();
+  const spr=unitSprite({kind:'player',look:gearLook(save)}); cx.drawImage(spr.img,0,0,32,32,0,0,256,256);
+  // the slots
+  const slotEl=slot=>{ const id=s.gear[slot], d=document.createElement('div'); d.className='dslot'+(id&&isStuck(save,id)?' cursed':'')+(id?' full':'')+(chSel&&chSel.slot===slot?' sel':''); d.dataset.slot=slot;
+    d.innerHTML=`<span class="lbl">${SLOT_NAMES[slot]}</span>`+(id?`<b class="ic">${GEAR[id].icon}</b><small>${esc(gearName(save,id))}</small>`:'<b class="ic dim">·</b><small class="dim">empty</small>');
+    d.onclick=()=>{ chSel=id?{id,slot}:null; if(!id){ chTab=slotType(slot); } renderCharacter(); };
+    if(id) dragGear(d,id,slot);
+    return d; };
+  const L=$('#chDoll .dcol.left'), R=$('#chDoll .dcol.right'); L.innerHTML=''; R.innerHTML='';
+  DOLL_LEFT.forEach(k=>L.appendChild(slotEl(k))); DOLL_RIGHT.forEach(k=>R.appendChild(slotEl(k)));
+  requestAnimationFrame(dollLines);
+  // what it all adds up to
   const w=(k,v)=>`<div><span>${k}</span><b>${v}</b></div>`, pct=x=>Math.round(x*100)+'%';
   $('#chStats').innerHTML=w('Max HP',120+(m.hp||0))+w(K.name,Math.max(1,K.tap+m.tap)+' · charged '+Math.max(2,K.charged+m.charged))+w('Element',m.color?COLORS[m.color].icon+' '+COLORS[m.color].name:'none')
     +w('Fire rate',m.cd&&m.cd!==1?Math.round((1/m.cd-1)*100)+'% faster':'normal')+w('Guard',pct(m.guard||0))+w('Start shield',m.shield||0)
-    +(m.dodge?w('Dodge',pct(m.dodge)):'')+(m.block?w('Shield block','1 hit a turn'):'')+(m.regen?w('Regeneration',m.regen+' HP/s'):'')+(m.counter?w('Counter',m.counter):'')
-    +(m.slow&&m.slow!==1?w('Move speed',m.slow<1?Math.round((1-m.slow)*100)+'% faster':Math.round((m.slow-1)*100)+'% slower'):'')+(m.castSlow?w('Casting',Math.round((m.castSlow-1)*100)+'% slower'):'')
-    +(m.surge?w('4th slot chance',pct(m.surge)):'')+(m.gold?w('Gold','+'+pct(m.gold)):'')+(m.gauge||m.hurt||m.hpPerShot||m.misfire?w('Curses',modsText({gauge:m.gauge,hurt:m.hurt,hpPerShot:m.hpPerShot,misfire:m.misfire})):'');
-  const sets=activeSets(save); if(sets.length) $('#chStats').innerHTML+=sets.map(k=>w('Set ✦',SETS[k].name)).join('');
-  // the seven slots
-  const slots=$('#chSlots'); slots.innerHTML='';
-  for(const slot of SLOTS){ const id=s.gear[slot], d=document.createElement('div'); d.className='gearslot'+(id&&isStuck(save,id)?' cursed':'')+(id?'':' empty');
-    d.innerHTML=`<span class="lbl">${SLOT_NAMES[slot]}</span>`+(id?`<b>${GEAR[id].icon} ${esc(gearName(save,id))}</b>${isStuck(save,id)?'<em>☠ Cursed</em>':''}`:'<b class="dim">—</b>');
-    if(id) d.onclick=()=>{ const r=equip(save,slot,null); charMsg(r); };
-    slots.appendChild(d); }
-  const sc=$('#chScrolls'); sc.innerHTML='<span class="lbl">Scrolls</span>'+Object.keys(SCROLLS).map(k=>`<span class="chip" style="--c:#7fd4ff">${SCROLLS[k].icon} ${SCROLLS[k].name} ×${s.scrolls[k]||0}</span>`).join('');
-  const lists=$('#chLists'); lists.innerHTML='';
-  for(const [type,title] of GEAR_GROUPS){
-    const ids=Object.keys(GEAR).filter(id=>GEAR[id].slot===type&&s.items[id]>0).sort((a,b)=>GEAR[b].tier-GEAR[a].tier);
-    const h=document.createElement('h3'); h.textContent=title; lists.appendChild(h);
-    const box=document.createElement('div'); box.className='gearlist'; lists.appendChild(box);
-    if(!ids.length){ box.innerHTML='<p class="hint">None yet.</p>'; continue; }
-    for(const id of ids){ const G=GEAR[id], wornIn=SLOTS.filter(k=>s.gear[k]===id), on=wornIn.length>0, stuck=isStuck(save,id), known=true, fresh=unworn(save,id), set=setOf(id);
-      const kindTxt=G.slot==='weapon'&&known?WEAPON_KINDS[kindOf(id)].name+': '+WEAPON_KINDS[kindOf(id)].text:G.weight?G.weight[0].toUpperCase()+G.weight.slice(1)+' armor':'';
-      const row=document.createElement('div'); row.className='gearrow'+(on?' on':'')+(G.legendary?' legend':'')+(stuck?' cursed':'');
-      row.innerHTML=`<div class="gi">${known?G.icon:'❔'}</div><div class="gt"><b>${esc(gearName(save,id))}</b> <span class="tier">${G.legendary?'✹ Legendary':G.tier?'★'.repeat(G.tier):'junk'}</span>${s.items[id]>1?` <span class="cnt">×${s.items[id]}</span>`:''}
-        <small>${esc(gearText(save,id))}${known&&G.text?' · '+esc(G.text):''}</small>${kindTxt?`<small class="kind">${esc(kindTxt)}</small>`:''}${set?`<small class="set${activeSets(save).includes(set)?' on':''}">Set: ${esc(SETS[set].name)} (${SETS[set].pieces.filter(x=>s.items[x]).length}/3) · ${esc(modsText(SETS[set].mods))}</small>`:''}${fresh?'<small class="fresh">Not worn yet: it may be enchanted or cursed</small>':''}${stuck?`<em>☠ Cursed ${esc(CURSES[s.cursed[id]].name)}: ${esc(CURSES[s.cursed[id]].text)}</em>`:''}</div><div class="ga"></div>`;
-      const act=row.querySelector('.ga'), btn=(label,fn,dis)=>{ const b=document.createElement('button'); b.className='btn ghost small'; b.textContent=label; b.disabled=!!dis; b.onclick=fn; act.appendChild(b); };
-      if(on) btn('Take off',()=>charMsg(equip(save,wornIn[0],null)),stuck);
-      if(!on||(G.slot==='ring'&&s.items[id]>1&&wornIn.length<2)) btn('Equip',()=>charMsg(equip(save,G.slot==='ring'?'ring':G.slot,id)));
-      if(s.items[id]>1) btn('Merge → +'+((s.gearLv[id]||0)+1),()=>charMsg(mergeGear(save,id)),(s.gearLv[id]||0)>=MAX_LEVEL);
-      if(!s.ench[id]&&known) btn('Enchant',()=>charMsg(enchantGear(save,id)),!(s.scrolls.enchant>0));
-      if(stuck){ btn('Purify',()=>charMsg(purifyGear(save,id)),!(s.scrolls.purify>0)); btn('Sacrifice '+SACRIFICE+' rune '+curseRune(save,id),()=>pickSacrifice(id)); }
-      box.appendChild(row); } }
+    +(m.dodge?w('Dodge',pct(m.dodge)):'')+(m.block?w('Shield block',m.block+' hit'+(m.block>1?'s':'')+' a turn'):'')+(m.regen?w('Regeneration',m.regen+' HP/s'):'')+(m.counter?w('Counter',m.counter):'')
+    +(m.slow&&m.slow!==1?w('Move speed',m.slow<1?Math.round((1-m.slow)*100)+'% faster':Math.round((m.slow-1)*100)+'% slower'):'')+(m.castSlow&&m.castSlow>1?w('Casting',Math.round((m.castSlow-1)*100)+'% slower'):'')
+    +(m.surge?w('4th slot chance',pct(m.surge)):'')+(m.gold?w('Gold','+'+pct(m.gold)):'')+(m.gauge||m.hurt||m.hpPerShot||m.misfire?w('Curses',modsText({gauge:m.gauge,hurt:m.hurt,hpPerShot:m.hpPerShot,misfire:m.misfire})):'')
+    +activeSets(save).map(k=>w('Set ✦',SETS[k].name)).join('');
+  $('#chScrolls').innerHTML='<span class="lbl">Scrolls</span>'+Object.keys(SCROLLS).map(k=>`<span class="chip" style="--c:#7fd4ff">${SCROLLS[k].icon} ${SCROLLS[k].name} ×${s.scrolls[k]||0}</span>`).join('');
+  // inventory tabs and grid
+  const tabs=$('#chTabs'); tabs.innerHTML='';
+  for(const [k,label] of INV_TABS){ const b=document.createElement('button'); b.className='chip'+(chTab===k?' on':''); b.textContent=label; b.onclick=()=>{ chTab=k; renderCharacter(); }; tabs.appendChild(b); }
+  const order=['weapon','offhand','head','body','arms','ring'];
+  const ids=Object.keys(GEAR).filter(id=>s.items[id]>0&&(chTab==='all'||GEAR[id].slot===chTab)).sort((a,b)=>order.indexOf(GEAR[a].slot)-order.indexOf(GEAR[b].slot)||GEAR[b].tier-GEAR[a].tier);
+  const inv=$('#chInv'); inv.innerHTML=ids.length?'':'<p class="hint">Nothing here yet. Fights drop gear now and then; bosses always drop loot.</p>';
+  for(const id of ids){ const G=GEAR[id], on=SLOTS.some(k=>s.gear[k]===id), t=document.createElement('div');
+    t.className='itile'+(on?' on':'')+(G.legendary?' legend':'')+(isStuck(save,id)?' cursed':'')+(chSel&&chSel.id===id?' sel':'');
+    t.innerHTML=`<b class="ic">${G.icon}</b><small>${esc(gearName(save,id))}</small><span class="st">${G.legendary?'✹':G.tier?'★'.repeat(G.tier):'·'}</span>`+(s.items[id]>1?`<span class="cnt">×${s.items[id]}</span>`:'')+(on?'<span class="worn">✓</span>':'')+(unworn(save,id)?'<span class="new">?</span>':'');
+    t.onclick=()=>{ chSel={id}; renderCharacter(); };
+    dragGear(t,id,null); inv.appendChild(t); }
+  renderGearDetail();
+}
+// the selected piece: what it does, its set, and what you can do with it
+function renderGearDetail(){
+  const box=$('#chDetail'), s=gearState(save); if(!chSel||!s.items[chSel.id]){ box.innerHTML=''; box.className='gdetail empty'; return; }
+  const id=chSel.id, G=GEAR[id], wornIn=SLOTS.filter(k=>s.gear[k]===id), on=wornIn.length>0, stuck=isStuck(save,id), set=setOf(id), lv=s.gearLv[id]||0;
+  const kindTxt=G.slot==='weapon'?WEAPON_KINDS[kindOf(id)].name+': '+WEAPON_KINDS[kindOf(id)].text:G.weight?G.weight[0].toUpperCase()+G.weight.slice(1)+' armor'+(G.weight==='heavy'&&!s.ench[id]?' (slows casting until enchanted)':''):SLOT_NAMES[G.slot==='ring'?'ring1':G.slot];
+  box.className='gdetail'+(stuck?' cursed':'')+(G.legendary?' legend':'');
+  box.innerHTML=`<button class="dx" aria-label="Close">✕</button><div class="dh"><b class="ic">${G.icon}</b><div><b>${esc(gearName(save,id))}</b> <span class="tier">${G.legendary?'✹ Legendary':G.tier?'★'.repeat(G.tier):'junk'}</span>${s.items[id]>1?` <span class="cnt">×${s.items[id]}</span>`:''}
+      <small class="kind">${esc(kindTxt)}</small></div></div>
+    <p>${esc(gearText(save,id))}${G.text?' · '+esc(G.text):''}</p>
+    ${set?`<p class="set${activeSets(save).includes(set)?' on':''}">Set: ${esc(SETS[set].name)} (${SETS[set].pieces.filter(x=>s.items[x]).length}/3 owned, ${SETS[set].pieces.filter(x=>SLOTS.some(k=>s.gear[k]===x)).length}/3 worn) · ${esc(modsText(SETS[set].mods))}</p>`:''}
+    ${unworn(save,id)?'<p class="fresh">Not worn yet: it may be enchanted or cursed.</p>':''}
+    ${stuck?`<p class="curse">☠ Cursed ${esc(CURSES[s.cursed[id]].name)}: ${esc(CURSES[s.cursed[id]].text)}. Break it with a Scroll of Purifying or 3 rune ${curseRune(save,id)} cards.</p>`:''}
+    <div class="ga"></div>`;
+  box.querySelector('.dx').onclick=()=>{ chSel=null; renderCharacter(); };
+  const act=box.querySelector('.ga'), btn=(label,fn,dis)=>{ const b=document.createElement('button'); b.className='btn ghost small'; b.textContent=label; b.disabled=!!dis; b.onclick=fn; act.appendChild(b); };
+  if(on) btn('Take off',()=>charMsg(equip(save,wornIn[0],null)),stuck);
+  if(!on||(G.slot==='ring'&&s.items[id]>1&&wornIn.length<2)) btn('Equip',()=>charMsg(equip(save,G.slot==='ring'?'ring':G.slot,id)));
+  if(s.items[id]>1) btn('Merge → +'+(lv+1),()=>charMsg(mergeGear(save,id)),lv>=MAX_LEVEL);
+  if(!s.ench[id]) btn('Enchant ('+(s.scrolls.enchant||0)+')',()=>charMsg(enchantGear(save,id)),!(s.scrolls.enchant>0));
+  if(stuck){ btn('Purify ('+(s.scrolls.purify||0)+')',()=>charMsg(purifyGear(save,id)),!(s.scrolls.purify>0)); btn('Sacrifice 3 rune '+curseRune(save,id),()=>pickSacrifice(id)); }
+}
+// dashed lines from each slot to where it sits on the wizard
+function dollLines(){
+  const doll=$('#chDoll'), svg=doll.querySelector('.dlines'), cv=$('#chSprite'); if(!doll.offsetParent) return;
+  const d=doll.getBoundingClientRect(), c=cv.getBoundingClientRect(), k=c.width/32; let html='';
+  doll.querySelectorAll('.dslot').forEach(el=>{ const r=el.getBoundingClientRect(), slot=el.dataset.slot, [ax,ay]=DOLL_ANCHOR[slot], left=DOLL_LEFT.includes(slot);
+    const x1=(left?r.right:r.left)-d.left, y1=r.top+r.height/2-d.top, x2=c.left-d.left+ax*k, y2=c.top-d.top+ay*k, full=!!gearState(save).gear[slot];
+    html+=`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" class="${full?'full':''}"/><circle cx="${x2}" cy="${y2}" r="3" class="${full?'full':''}"/>`; });
+  svg.setAttribute('viewBox','0 0 '+d.width+' '+d.height); svg.innerHTML=html;
+}
+window.addEventListener('resize',()=>{ if($('#scrCharacter').classList.contains('on')) dollLines(); });
+// drag a piece from the inventory onto a slot, or from a slot off the doll
+let gdrag=null;
+function dragGear(el,id,fromSlot){
+  el.addEventListener('pointerdown',e=>{ if(e.button>0) return; gdrag={el,id,fromSlot,x0:e.clientX,y0:e.clientY,moved:false}; try{ el.setPointerCapture(e.pointerId); }catch(_){} });
+  el.addEventListener('pointermove',e=>{ if(!gdrag||gdrag.el!==el) return;
+    if(!gdrag.moved&&Math.hypot(e.clientX-gdrag.x0,e.clientY-gdrag.y0)>8){ gdrag.moved=true; const g=document.createElement('div'); g.className='gghost'; g.textContent=GEAR[id].icon; document.body.appendChild(g); gdrag.ghost=g; }
+    if(gdrag.moved){ gdrag.ghost.style.left=e.clientX+'px'; gdrag.ghost.style.top=e.clientY+'px';
+      document.querySelectorAll('.dslot.drop').forEach(x=>x.classList.remove('drop')); const t=document.elementFromPoint(e.clientX,e.clientY), sl=t&&t.closest('.dslot');
+      if(sl&&slotType(sl.dataset.slot)===GEAR[id].slot) sl.classList.add('drop'); } });
+  const end=e=>{ if(!gdrag||gdrag.el!==el) return; const d=gdrag; gdrag=null; if(d.ghost) d.ghost.remove(); document.querySelectorAll('.dslot.drop').forEach(x=>x.classList.remove('drop'));
+    if(!d.moved||e.type==='pointercancel') return;
+    const t=document.elementFromPoint(e.clientX,e.clientY), sl=t&&t.closest('.dslot');
+    if(sl){ if(slotType(sl.dataset.slot)!==GEAR[id].slot) return tip('That goes in the '+SLOT_NAMES[GEAR[id].slot==='ring'?'ring1':GEAR[id].slot]+' slot');
+      if(sl.dataset.slot!==d.fromSlot){ if(d.fromSlot){ const r=equip(save,d.fromSlot,null); if(!r.ok) return charMsg(r); } chSel={id,slot:sl.dataset.slot}; charMsg(equip(save,sl.dataset.slot,id)); } }
+    else if(d.fromSlot&&t&&t.closest('#chInv,#chDetail,.invhead,#chTabs')){ chSel={id}; charMsg(equip(save,d.fromSlot,null)); } };
+  el.addEventListener('pointerup',end); el.addEventListener('pointercancel',end);
 }
 // choose the cards to give up to break a curse
 function pickSacrifice(id){ const G=Object.assign({},GEAR[id],{rune:curseRune(save,id)}), chosen=[];

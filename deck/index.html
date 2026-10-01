@@ -67,14 +67,21 @@
   <!-- character and gear -->
   <section id="scrCharacter" class="screen">
     <div class="bar"><button class="btn ghost back">←</button><h2>Character</h2><span id="chGold" class="count gold"></span></div>
-    <div class="charbox">
-      <canvas id="chSprite" width="128" height="128"></canvas>
-      <div id="chStats" class="charstats"></div>
+    <!-- the paper doll: your wizard with the seven slots around it -->
+    <div id="chDoll" class="doll">
+      <div class="dcol left"></div>
+      <div class="dfig"><canvas id="chSprite" width="256" height="256"></canvas></div>
+      <div class="dcol right"></div>
+      <svg class="dlines"></svg>
     </div>
-    <div id="chSlots" class="gearslots"></div>
-    <div id="chScrolls" class="items-row"></div>
     <div id="chMsg" class="hint"></div>
-    <div id="chLists"></div>
+    <div class="invhead"><h3>Inventory</h3><span class="dim">Tap a piece, or drag it onto a slot</span></div>
+    <div id="chTabs" class="invtabs"></div>
+    <div id="chInv" class="invgrid"></div>
+    <div id="chDetail" class="gdetail"></div>
+    <h3>Stats</h3>
+    <div id="chStats" class="charstats"></div>
+    <div id="chScrolls" class="items-row"></div>
     <div class="testbar"><span class="dim">Testing</span><button id="chTestAll" class="btn ghost">Get one of every piece</button><button id="chTestScrolls" class="btn ghost">+2 of each scroll</button></div>
   </section>
 

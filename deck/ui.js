@@ -15,9 +15,10 @@ function cardEl(c,extra,locked){
   el.className='card'+(c.rarity==='legendary'?' leg':'')+(c.rarity==='hero'?' hero':'')+(locked?' locked':''); el.style.setProperty('--c',col.c);
   const stat=c.pow||(c.boon!=='gauge'&&c.amt)||c.hp||'';
   const rune=c.code?`<span class="rune${c.code==='✱'?' wild':''}" title="Rune ${c.code}">${c.code}</span>`:'';
+  const R=ROLES[cardRole(c)]; el.style.setProperty('--rc',R.c);
   el.innerHTML=locked?`<div class="ct"><span>${col.icon} ${TYPES[c.type].icon}</span><span class="rank">${c.rank}</span></div><div class="art"></div><div class="cn">???</div><div class="ty">${TYPES[c.type].name}</div><div class="tx"></div><div class="cp"><span></span><small>${RARITY[c.rarity].g}</small></div>`
     :`<div class="ct"><span>${col.icon} ${TYPES[c.type]?TYPES[c.type].icon:''}</span><span class="tr">${rune}<span class="rank">${c.rank}</span></span></div>
-    <img class="art" src="${artURL(c)}" alt=""><div class="cn">${esc(c.name)}</div><div class="ty">${TYPES[c.type].name}</div><div class="tx">${esc(cardText(c))}</div>
+    <img class="art" src="${artURL(c)}" alt=""><div class="cn">${esc(c.name)}</div><div class="ty">${TYPES[c.type].name} <span class="rl">${R.icon} ${R.name}</span></div><div class="tx">${esc(cardText(c))}</div>
     <div class="cp"><span>${stat}</span><small title="${RARITY[c.rarity].n}">${RARITY[c.rarity].g}</small></div>`;
   if(extra) el.insertAdjacentHTML('beforeend',extra);
   return el;
@@ -430,9 +431,9 @@ function renderCustom(){
   p.hand.forEach((inst,i)=>{ const el=cardEl(inst.card,inst.left!=null?`<span class="badge">${inst.left} left</span>`:''); el.title='Key '+(i+1);
     el.dataset.zone='hand'; el.dataset.i=i;
     // glow if adding this card to the queue would make a new combo
-    if(p.queue.length&&!canQueue(p,inst)&&p.queue.length<slots) el.classList.add('blocked');
-    else if(p.queue.length<slots&&detectCombos([...p.queue,inst]).length>base) el.classList.add('hint');
-    else if(p.queue.length&&p.queue.length<slots&&new Set([...p.queue.map(c=>c.card.code),inst.card.code].filter(k=>k&&k!=='✱')).size>1) el.classList.add('recipe-step');   // fits only as part of a recipe
+    if(p.queue.length<slots&&detectCombos([...p.queue,inst]).length>base) el.classList.add('hint');
+    else if(p.queue.length&&p.queue.length<slots&&recipeStep([...p.queue.map(c=>c.card),inst.card])&&!oneRune([...p.queue.map(c=>c.card),inst.card])) el.classList.add('recipe-step');   // part of a recipe with what is queued
+    else if(p.queue.length&&oneRune([...p.queue.map(c=>c.card),inst.card])) el.classList.add('rune-match');   // same rune as the queue
     if(dealt.has(inst.uid)){ el.classList.add('deal'); el.style.animationDelay=(i*.06)+'s'; }
     dragCard(el,inst); h.appendChild(el); });
   B.justDrawn=null;
@@ -468,7 +469,7 @@ function dragCard(el,inst){
     const p=B.piles;
     if(d.moved){ const t=e.type==='pointercancel'?null:dropTarget(e.clientX,e.clientY);
       if(t){ const zone=t.dataset.zone, i=t.dataset.i!=null?+t.dataset.i:null; placeCard(p,d.inst.uid,zone,i); buzz(10); } }
-    else if(!d.long){ if(!toggleQueue(p,d.inst.uid)) tip(p.queue.length>=slotsOf(p)?'The queue is full':'Runes must match: this turn\'s queue is rune '+(p.queue.map(c=>c.card.code).find(k=>k!=='✱')||'✱')); }
+    else if(!d.long){ if(!toggleQueue(p,d.inst.uid)) tip('The queue is full'); }
     renderCustom();
   };
   el.addEventListener('pointerup',end); el.addEventListener('pointercancel',end);
@@ -498,11 +499,12 @@ function hud(force){
     cb.hidden=!locked.length; if(locked.length) cb.textContent='✦ '+(pl.combos||[]).map(c=>c.label.split(':')[0]).join(' · ');
     for(let i=0;i<Math.max(RULES.slots,pl.queue.length);i++){ const inst=pl.queue[i], d=document.createElement('div');
       d.className='qslot'+(inst?' full':'')+(i===0&&inst?' next':'')+(inst&&inst.combo?' combo':'');
-      if(inst){ const c=inst.card, uses=c.uses?' ×'+(inst.left==null?c.uses:inst.left):''; d.style.setProperty('--c',COLORS[c.color].c);
-        d.innerHTML=`<span class="n">${TYPES[c.type].icon}</span>${esc(c.name)}${uses}${inst.temp&&!inst.recipe?' (copy)':''}`; }
+      if(inst){ const c=inst.card, uses=c.uses?' ×'+(inst.left==null?c.uses:inst.left):'', R=ROLES[cardRole(c)]; d.style.setProperty('--c',COLORS[c.color].c); d.style.setProperty('--rc',R.c);
+        d.innerHTML=`<span class="role">${R.icon} ${R.name}</span><span class="nm">${esc(c.name)}${uses}${inst.temp&&!inst.recipe?' (copy)':''}</span>`; }
       else d.textContent='—';
       row.appendChild(d); }
-    $('#castName').textContent=pl.queue[0]?pl.queue[0].card.name:'queue empty';
+    const nx=pl.queue[0], NR=nx&&ROLES[cardRole(nx.card)]; $('#castName').textContent=nx?NR.icon+' '+nx.card.name:'queue empty';
+    $('#btnCast').style.setProperty('--rc',NR?NR.c:'transparent'); $('#btnCast').classList.toggle('role',!!NR);
     $('#btnCast').disabled=!pl.queue.length;
   });
   const canCustom=b.phase==='fight'&&gaugeFull()&&!wandOnly(pl);

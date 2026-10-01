@@ -13,7 +13,7 @@ const ENEMY_DEFS={
   ram:      {name:'Thunder Ram',  color:'storm',   hp:130, dmg:18, rate:[4,5],     moves:['rush'],            ai:'align'},
   shade:    {name:'Shade',        color:'shadow',  hp:100, dmg:15, rate:[3.2,4.2], moves:['blink'],           ai:'wander'},
   sprite:   {name:'Halo Sprite',  color:'light',   hp:80,  dmg:9,  rate:[2.6,3.4], moves:['mend','shot'],     ai:'back'},
-  golem:    {name:'Radiant Golem',color:'light',   hp:340, dmg:22, rate:[3.4,4.4], moves:['quake','boulders'],ai:'wander', boss:true, scale:1.45},
+  golem:    {name:'Radiant Golem',color:'light',   hp:300, dmg:22, rate:[3.4,4.4], moves:['quake','boulders'],ai:'wander', boss:true, scale:1.45},
   // humanoids: a basic shot plus a deck of 8 cards of their color
   cultist:  {name:'Ember Cultist',color:'fire',    hp:110, dmg:9,  rate:[3,4],     moves:['shot'], ai:'align', deck:true},
   witch:    {name:'Frost Witch',  color:'frost',   hp:105, dmg:9,  rate:[3,4],     moves:['shot'], ai:'back',  deck:true},
@@ -43,7 +43,7 @@ function enemyDeck(color,depth){
   return Array.from({length:8},()=>pick(pool));
 }
 function makeEnemy(id,t,depth){
-  const d=ENEMY_DEFS[id], hs=1+.22*(depth-1), ds=1+.1*(depth-1);
+  const d=ENEMY_DEFS[id], hs=1+.13*(depth-1), ds=1+.1*(depth-1);
   const e={kind:'enemy', id, def:d, name:d.name, color:d.color, hp:Math.round(d.hp*hs), maxHp:Math.round(d.hp*hs), dmg:Math.round(d.dmg*ds), ds,
            tile:t, atkT:rnd(1.8,3.2), moveT:rnd(.8,1.8), windT:0, burnT:0, burnAcc:0, freezeT:0, stunT:0, slowT:0, poisonT:0, poisonAmt:0, curseT:0, hitT:0,
            barrier:0, powerT:0, castT:0, casting:null, nextMove:pick(d.moves), deck:d.deck?enemyDeck(d.color,depth):null, deckCd:rnd(3,5)};
@@ -64,13 +64,17 @@ function makeTerrain(depth){
   if(depth<2) return;
   const avoid=t=>t.occ||t.col===0||t.col===BOARD_COLS-1;
   const place=(side,n,kind)=>{ for(let i=0;i<n;i++){ const t=pick((side==='p'?P_TILES:E_TILES).filter(x=>!avoid(x)&&!x.terrain)); if(!t) return;
-    t.terrain=kind; if(kind==='rock') t.occ={kind:'rock',tile:t,hp:Infinity,maxHp:Infinity}; } };
+    t.terrain=kind; if(kind==='rock') t.occ={kind:'rock',tile:t,hp:ROCK_HP,maxHp:ROCK_HP}; } };
   place('p',rnd(1,2.99)|0,'rock'); place('e',rnd(1,2.99)|0,'rock');
   if(depth>=3){ const k=pick(['lava','ice']); place('p',1+(depth>=7?1:0),k); place('e',1,k==='lava'?'ice':'lava'); }
 }
 const burning=t=>t.terrain==='lava'||t.burnT>0;
 const icy=t=>t.terrain==='ice'||t.iceT>0;
-function dropRock(t,sec){ if(t.occ) return; t.terrain='rock'; t.rockT=sec; t.occ={kind:'rock',tile:t,hp:Infinity,maxHp:Infinity}; burst(t,'#8a8398',14,.4); }
+function dropRock(t,sec){ if(t.occ) return; t.terrain='rock'; t.rockT=sec; t.occ={kind:'rock',tile:t,hp:ROCK_HP*.6,maxHp:ROCK_HP*.6}; burst(t,'#8a8398',14,.4); }
+// Rocks are cover, not walls forever: shots chip them, and at 0 they crumble.
+const ROCK_HP=30;
+function hitRock(r,dmg){ r.hp-=dmg; flash(r.tile,'#8a8398',.5); burst(r.tile,'#8a8398',4,.4);
+  if(r.hp<=0){ const t=r.tile; if(t.occ===r) t.occ=null; t.terrain=null; t.rockT=0; burst(t,'#b8b4c4',16,.6); floater('crumbles',t,'#b8b4c4'); } }
 function updateTerrain(dt){
   for(const t of TILES){
     if(t.burnT>0) t.burnT-=dt; if(t.iceT>0) t.iceT-=dt; if(t.thornT>0) t.thornT-=dt;
@@ -94,10 +98,15 @@ function moveEnemy(e){
   if(!opts.length) return;
   // step out of your row when you are charging the wand
   if(p.charging&&e.tile.r===p.tile.r&&Math.random()<.5){ const off=opts.filter(t=>t.r!==p.tile.r); if(off.length) return stepEnemy(e,pick(off)); }
+  // enemies want a line of fire: they avoid standing behind a rock or their own wall
+  const open=t=>!lineTiles(t,DIRS.W).some(x=>x.side==='e'&&x.occ&&(x.occ.kind==='rock'||x.occ.enemy));
+  const good=opts.filter(open), pool=good.length?good:opts;
   let to=null;
-  if(e.def.ai==='align'&&e.tile.r!==p.tile.r&&Math.random()<.75){ const d=Math.sign(p.tile.r-e.tile.r); to=pick(opts.filter(t=>Math.sign(t.r-e.tile.r)===d)); }
-  else if(e.def.ai==='back'&&Math.random()<.6) to=pick(opts.filter(t=>t.col>=e.tile.col));
-  stepEnemy(e,to||pick(opts));
+  if(e.def.ai==='align'&&e.tile.r!==p.tile.r&&Math.random()<.75){ const d=Math.sign(p.tile.r-e.tile.r); to=pick(pool.filter(t=>Math.sign(t.r-e.tile.r)===d)); }
+  // back-liners keep their distance early on, then press in once the fight drags (from turn 3)
+  else if(e.def.ai==='back') to=pick(pool.filter(t=>(B.turn||0)<2&&Math.random()<.6?t.col>=e.tile.col:t.col<=e.tile.col));
+  else if((B.turn||0)>=3&&Math.random()<.4) to=pick(pool.filter(t=>t.col<e.tile.col));
+  stepEnemy(e,to||pick(pool));
 }
 // a confused enemy fires from the row next to its own
 function enemyShot(e,dmg){ const from=e.confuseT>0&&pick([tileCR(e.tile.col,e.tile.r-1),tileCR(e.tile.col,e.tile.r+1)].filter(Boolean))||e.tile;
@@ -159,7 +168,7 @@ function updateEnemy(e,dt){
   if(e.windT>0){ e.windT-=dt; if(e.windT<=0) enemyShot(e,e.dmg*(e.powerT>0?1.3:1)); return; }
   if(e.casting){ e.castT-=dt; if(e.castT<=0){ const c=e.casting; e.casting=null; enemyCast(e,c); } return; }
   e.moveT-=dt;
-  if(e.moveT<=0&&!b.teles.some(t=>t.owner===e)){ e.moveT=rnd(1.1,2)*(icy(e.tile)?2:1); moveEnemy(e); if(e.hp<=0) return; }
+  if(e.moveT<=0&&!b.teles.some(t=>t.owner===e)){ e.moveT=rnd(1.4,2.4)*(icy(e.tile)?2:1); moveEnemy(e); if(e.hp<=0) return; }
   if(e.deck){ e.deckCd-=dt; if(e.deckCd<=0&&e.deck.length){ e.deckCd=rnd(4,6); e.casting=e.deck.shift(); e.castT=.9; return; } }
   e.atkT-=dt;
   if(e.atkT<=0){ e.atkT=rnd(e.def.rate[0],e.def.rate[1]); MOVES[e.nextMove||pick(e.def.moves)](e); e.nextMove=pick(e.def.moves); }   // the next move is picked early so it can be shown

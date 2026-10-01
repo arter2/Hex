@@ -357,3 +357,13 @@ select,.filters input{font:600 14px var(--font-b); color:var(--text); background
 .gdetail{position:sticky; bottom:8px; z-index:5; box-shadow:0 -6px 24px rgba(0,0,0,.6);} .gdetail.empty{display:none;}
 .gdetail .dx{position:absolute; top:6px; right:8px; background:none; border:0; color:var(--dim); font-size:18px; cursor:pointer; padding:4px 8px;}
 .gdetail{position:sticky;}
+.card.rune-match{box-shadow:0 0 0 2px rgba(127,212,255,.7);}
+/* what each loaded card is for: a colored role band on the queue, the cast button and every card */
+.qslot{height:auto; min-height:44px; flex-direction:column; align-items:flex-start; justify-content:center; gap:0; padding:3px 8px;}
+.qslot.full{border-left:6px solid var(--rc);}
+.qslot .role{font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.06em; color:var(--rc);}
+.qslot .nm{font-size:13px; overflow:hidden; text-overflow:ellipsis; max-width:100%;}
+#btnCast.role{box-shadow:inset 0 -5px 0 var(--rc);}
+.card .ty .rl{color:var(--rc); font-size:10px; margin-left:4px; white-space:nowrap;}
+.card::before{content:''; position:absolute; left:0; top:0; bottom:0; width:4px; background:var(--rc,transparent); opacity:.9;}
+@media (orientation:landscape) and (max-height:500px){ .qslot{min-height:38px;} }

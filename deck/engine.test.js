@@ -49,15 +49,16 @@ t('custom draws up to 7, queue holds 3, cast goes to discard', ()=>{
   assert(E.toggleQueue(p,uids[0])); assert.strictEqual(p.queue.length,2);
   const c=E.castNext(p); assert(c); assert.strictEqual(p.discard[0],c); assert.strictEqual(p.queue.length,1);
 });
-t('runes: queued cards must share a rune or a name; wild fits any; recipe steps are allowed', ()=>{
-  const C=id=>D.CARDS[id];
-  assert(E.runesFit([C('cinder_lance'),C('ember_wall'),C('frost_ward')]),'all rune A');
-  assert(!E.runesFit([C('cinder_lance'),C('brazier')]),'A and C');
-  assert(E.runesFit([C('ember_dart'),C('ember_dart')]),'same name');
-  const wild=D.CARD_LIST.find(c=>c.code==='✱'&&c.rarity!=='hero'); assert(E.runesFit([C('cinder_lance'),wild]));
-  const r=D.RECIPES[0]; assert(E.runesFit(r.cards.slice(0,2).map(C))&&new Set(r.cards.slice(0,2).map(id=>C(id).code)).size>1,'a recipe step ignores runes');
+t('runes: any cards can be queued, but a flush or straight needs one rune (wild fits any)', ()=>{
+  const C=id=>D.CARDS[id], I=(id,uid)=>({uid,card:D.CARDS[id]});
+  assert(E.oneRune([C('cinder_lance'),C('ember_wall'),C('frost_ward')]),'all rune A'); assert(!E.oneRune([C('cinder_lance'),C('brazier')]),'A and C');
+  const wild=D.CARD_LIST.find(c=>c.code==='✱'&&c.rarity!=='hero'); assert(E.oneRune([C('cinder_lance'),wild]));
   const p=stacked(['cinder_lance','brazier','ember_wall','spark','ice_shard','holy_bolt','mend']); E.openCustom(p);
-  assert(E.toggleQueue(p,p.hand[0].uid)); assert(!E.toggleQueue(p,p.hand[0].uid),'brazier is rune C'); assert(E.toggleQueue(p,p.hand[1].uid),'ember_wall is rune A');
+  assert(E.toggleQueue(p,p.hand[0].uid)); assert(E.toggleQueue(p,p.hand[0].uid),'a rune C card can follow a rune A card');
+  // a straight of mixed runes does not count: Ember Dart 1 (B), Ember Wall... build ranks 3,4,5 with one off-rune card
+  const off=D.CARD_LIST.find(c=>c.rank===5&&c.code!=='A'&&c.color==='fire'&&c.type!=='strike');
+  assert(E.detectCombos([I('cinder_lance',1),I('ember_wall',2),I('flame_fan',3)]).some(c=>c.kind==='straight'),'rune A 3-4-5');
+  assert(!E.detectCombos([I('cinder_lance',1),I('ember_wall',2),{uid:3,card:off}]).some(c=>c.kind==='straight'),'mixed runes: no straight');
 });
 t('Rune Surge: 4 cards of one rune in hand open a 4th slot for that turn', ()=>{
   const p=stacked(A4.concat(MIX)); E.openCustom(p); assert.strictEqual(p.surge,'A'); assert.strictEqual(E.slotsOf(p),4);
@@ -182,7 +183,9 @@ t('combos: double, triple, flush (one color and one type) and straight are detec
   const I=(id,uid)=>({uid,card:D.CARDS[id]});
   let cb=E.detectCombos([I('ember_dart',1),I('ember_dart',2),I('fire_pot',3)]); assert(cb.some(c=>c.kind==='simple'&&c.mult===1.5)); assert(!cb.some(c=>c.kind==='flush'),'strike+lob is no flush');
   cb=E.detectCombos([I('ember_dart',1),I('ember_dart',2),I('ember_dart',3)]); assert(cb.some(c=>c.kind==='simple'&&c.mult===2)); assert(!cb.some(c=>c.kind==='flush'),'copies alone are no flush');
-  cb=E.detectCombos([I('ember_dart',1),I('cinder_lance',2),I('flame_fan',3)]); assert(cb.some(c=>c.kind==='flush'),'three fire strikes');
+  const fs=D.CARD_LIST.filter(c=>c.color==='fire'&&c.type==='strike'&&c.code==='A').slice(0,3); assert.strictEqual(fs.length,3);
+  cb=E.detectCombos(fs.map((c,i)=>({uid:i+1,card:c}))); assert(cb.some(c=>c.kind==='flush'),'three rune A fire strikes');
+  cb=E.detectCombos([I('ember_dart',1),I('cinder_lance',2),I('flame_fan',3)]); assert(!cb.some(c=>c.kind==='flush'),'fire strikes of mixed runes: no flush');
   cb=E.detectCombos([I('cinder_lance',1),I('ember_wall',2),I('flame_fan',3)]);   // ranks 3,4,5, all rune A
   assert(cb.some(c=>c.kind==='straight')); assert(!cb.some(c=>c.kind==='flush'));
   const G=D.CARD_LIST.filter(c=>c.color==='fire'&&c.code==='A'&&c.type!=='piece').slice(0,0);
@@ -197,7 +200,6 @@ t('drag and drop: reorder, move between hand and queue, swap into a full queue',
   E.placeCard(p,a,'queue',0); E.placeCard(p,b,'queue',0); assert.deepStrictEqual(p.queue.map(x=>x.uid),[b,a]);
   E.placeCard(p,c,'queue',1); assert.deepStrictEqual(p.queue.map(x=>x.uid),[b,c,a]);
   E.placeCard(p,d,'queue',2); assert.deepStrictEqual(p.queue.map(x=>x.uid),[b,c,d]); assert(p.hand.some(x=>x.uid===a),'swapped out to the hand');
-  assert(!E.placeCard(p,e,'queue',0),'a rune B card cannot swap into a rune A queue');
   E.placeCard(p,b,'hand',0); assert.strictEqual(p.hand[0].uid,b); assert.strictEqual(p.queue.length,2);
   const last=p.hand.at(-1).uid; E.placeCard(p,last,'hand',1); assert.strictEqual(p.hand[1].uid,last);
   assert.strictEqual(p.hand.length+p.queue.length,7);

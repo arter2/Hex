@@ -3,8 +3,9 @@
    Flow: draw up to 7 at each Custom screen, queue up to 3, casting sends a card to the
    discard pile, unqueued cards stay in hand, and there is no reshuffle: an empty deck
    leaves you with the wand. Each queue slot left empty draws 1 extra card next time.
-   Runes: the queued cards must share a rune or a name (✱ fits any rune). Rune Surge: a hand
-   holding 4 or more cards of one rune opens a 4th slot for that turn. */
+   Runes: any cards can be queued, but a Flush or a Straight only counts when its cards share a
+   rune (✱ fits any rune). Rune Surge: a hand holding 4 or more cards of one rune opens a 4th
+   slot for that turn. */
 
 const RULES={max:60, min:45, copies:4, legendaryCopies:1, heroes:1, hand:7, slots:3, surgeSlots:4, surgeRunes:4};
 
@@ -59,7 +60,9 @@ function runesFit(cards){
 // true if these cards are all part of one recipe (any order, copies counted)
 function fitsRecipe(r,cards){ const need=r.cards.slice(); return cards.every(c=>{ const i=need.indexOf(c.id); if(i<0) return false; need.splice(i,1); return true; }); }
 function recipeStep(cards){ const list=typeof RECIPES!=='undefined'?RECIPES:[]; return list.some(r=>fitsRecipe(r,cards)); }
-const canQueue=(p,inst)=>p.queue.length<slotsOf(p)&&runesFit([...p.queue.filter(c=>!c.temp).map(c=>c.card),inst.card]);
+const canQueue=(p,inst)=>p.queue.length<slotsOf(p);
+// one rune (wild cards fit any) — what a Flush or a Straight needs
+const oneRune=cards=>new Set(cards.map(c=>c.code).filter(k=>k&&k!==WILD_RUNE)).size<=1;
 
 // Opening the Custom screen: queued cards not yet cast go back to the hand, then the hand refills to 7.
 function openCustom(p){
@@ -76,8 +79,8 @@ function openCustom(p){
 /* Combos, read from the queue as it stands (runes already keep a queue to one rune):
    - Recipe: exactly the cards of a recipe fuse into one named card (beats everything else)
    - Double / Triple: copies of the same card merge into one cast at 1.5x / 2x power (charge uses add up)
-   - Flush: 3 or more cards of one of the six colors AND one type, +25% each (+40% for 4)
-   - Straight: 3 ranks in a row, cast as one chain with a finisher; 4 in a row is a Grand Straight */
+   - Flush: 3 or more cards of one rune, one of the six colors AND one type, +25% each (+40% for 4)
+   - Straight: 3 ranks in a row of one rune, cast as one chain with a finisher; 4 in a row is a Grand Straight */
 const NEUTRAL=['gray','brown'];
 function findRecipe(cards){ const list=typeof RECIPES!=='undefined'?RECIPES:[];
   return list.find(r=>r.cards.length===cards.length&&fitsRecipe(r,cards))||null; }
@@ -89,11 +92,11 @@ function detectCombos(queue){
   for(const id in by) if(by[id]>=2){ const c=cards.find(x=>x.id===id);
     out.push({kind:'simple', id, n:by[id], mult:by[id]>=3?2:1.5, label:(by[id]>=3?'Triple ':'Double ')+c.name+' ×'+(by[id]>=3?2:1.5)}); }
   const kind=c=>c.type==='piece'?c.base:c.type;
-  if(cards.length>=3&&!NEUTRAL.includes(cards[0].color)&&cards.every(c=>c.color===cards[0].color&&kind(c)===kind(cards[0]))&&new Set(cards.map(c=>c.id)).size>1){
+  if(cards.length>=3&&oneRune(cards)&&!NEUTRAL.includes(cards[0].color)&&cards.every(c=>c.color===cards[0].color&&kind(c)===kind(cards[0]))&&new Set(cards.map(c=>c.id)).size>1){
     const m=cards.length>=4?1.4:1.25, nm=cards[0].color[0].toUpperCase()+cards[0].color.slice(1);
     out.push({kind:'flush', color:cards[0].color, mult:m, label:'Flush: '+nm+' '+TYPES_NAME(kind(cards[0]))+' +'+Math.round((m-1)*100)+'%'}); }
   const ranks=cards.map(c=>c.rank).sort((a,b)=>a-b);
-  if(cards.length>=3&&ranks.every((x,i)=>!i||x===ranks[i-1]+1))
+  if(cards.length>=3&&oneRune(cards)&&ranks.every((x,i)=>!i||x===ranks[i-1]+1))
     out.push({kind:'straight', ranks, label:(cards.length>=4?'Grand Straight ':'Straight ')+ranks.join('-')+': chain cast + finisher'});
   return out;
 }
@@ -124,7 +127,6 @@ function placeCard(p,uid,zone,index){
   const src=qi>=0?p.queue:p.hand, si=qi>=0?qi:hi, dst=zone==='queue'?p.queue:p.hand, card=src[si];
   if(index==null) index=dst.length;
   if(src!==dst&&zone==='queue'&&p.queue.length>=slotsOf(p)){ const ti=Math.min(index,slotsOf(p)-1), other=p.queue[ti];
-    if(!runesFit(p.queue.filter((c,i)=>i!==ti&&!c.temp).map(c=>c.card).concat(card.card))) return false;
     p.queue[ti]=card; p.hand[si]=other; return true; }
   if(src!==dst&&zone==='queue'&&!canQueue(p,card)) return false;
   src.splice(si,1); dst.splice(Math.max(0,Math.min(index,dst.length)),0,card); return true;
@@ -156,4 +158,4 @@ function copyNext(p){ const c=p.queue[0]; if(!c||p.queue.length>=slotsOf(p)) ret
 // Nothing left to draw, hold or cast: the fight continues with the wand only.
 function wandOnly(p){ return !p.draw.length && !p.hand.length && !p.queue.length; }
 
-if(typeof module!=='undefined') module.exports={slotsOf,surgeRune,runesFit,canQueue,findRecipe,RULES,detectCombos,placeCard,validateDeck,shuffle,createPiles,openCustom,commitCustom,toggleQueue,castNext,drawCards,recallTop,copyNext,wandOnly};
+if(typeof module!=='undefined') module.exports={oneRune,slotsOf,surgeRune,runesFit,canQueue,findRecipe,RULES,detectCombos,placeCard,validateDeck,shuffle,createPiles,openCustom,commitCustom,toggleQueue,castNext,drawCards,recallTop,copyNext,wandOnly};

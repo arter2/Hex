@@ -348,6 +348,18 @@ RECIPES.forEach((r,i)=>{
   r.card=Object.assign({id:r.id, name:r.name, rank:12, rarity:'legendary', code:WILD, recipe:true},r.card); });
 const CARDS={}; CARD_LIST.forEach(c=>CARDS[c.id]=c);
 
+/* What a card is for, at a glance (shown on loaded cards while you fight):
+   attack = damages enemies, defense = shields, walls and healing, turret = towers, summons,
+   machines and heroes that act on their own, status = buffs, debuffs, ground and card tricks. */
+const ROLES={attack:{name:'Attack',icon:'⚔',c:'#ff5d6c'}, defense:{name:'Defense',icon:'🛡',c:'#7fd4ff'}, turret:{name:'Turret',icon:'♜',c:'#39ff8a'}, status:{name:'Status',icon:'✦',c:'#f2c94c'}};
+function cardRole(c){ const k=c.type==='piece'?c.base:c.type;
+  if(['strike','lob','charge','trap'].includes(k)) return 'attack';
+  if(['sentry','summon','machine','hero'].includes(k)) return c.ai==='bulwark'?'defense':'turret';
+  if(k==='ward') return 'defense';
+  if(k==='boon') return ['heal','regen','dodge','phase','intervene'].includes(c.boon)?'defense':'status';
+  if(k==='utility') return c.util==='cleanse'?'defense':'status';
+  return 'status'; }
+
 // One-line rules text built from the data, so new cards need no hand-written text.
 const PATTERN_TEXT={single:'', burst:' and around it', ring:' in a ring around it', cross:' in a cross', column:' down its column', row:' along its row'};
 const AREA_TEXT={burst:' on the tile you aim and around it', cross:' in a cross on the tile you aim', column:" down the aimed tile's column", row:" along the aimed tile's row"};
@@ -408,4 +420,4 @@ function starterList(colors,size){
   return list;
 }
 
-if(typeof module!=='undefined') module.exports={RUNES,WILD,RECIPES,POTIONS,HEROES,PATTERN_MULT,lobPattern,SIX,SIGNATURE,TYPE_PLAN,RARITY_PLAN,COLORS,BEATS,WEAK_MULT,colorMult,TYPES,RARITY,CARD_LIST,CARDS,cardText,STARTERS,starterList};
+if(typeof module!=='undefined') module.exports={ROLES,cardRole,RUNES,WILD,RECIPES,POTIONS,HEROES,PATTERN_MULT,lobPattern,SIX,SIGNATURE,TYPE_PLAN,RARITY_PLAN,COLORS,BEATS,WEAK_MULT,colorMult,TYPES,RARITY,CARD_LIST,CARDS,cardText,STARTERS,starterList};

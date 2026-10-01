@@ -19,6 +19,8 @@ the rarest cards, mostly dropped by bosses. A hero fights beside you for 3 turns
 
 Tests: `node deck/engine.test.js`
 
+Playtest bots (novice, casual, expert): `node deck/tools/playtest/run.js check 10 1,3,5,8` prints win rate, fight length, stalls and more per skill and depth; `node deck/tools/playtest/weapons.js` compares weapons and gear.
+
 Controls: tap a tile on your side to move, tap a tile on the enemy side to aim lobs (nearest enemy if you don't), hold Wand to charge, Cast plays the next queued card, Custom opens when the gauge is full.
 Keyboard: arrows/WASD move, Space wand, Enter cast, Q cycle lob aim, C custom, 1–7 pick cards on the Custom screen.
 In grids, long-press (or right-click) a card for its detail.

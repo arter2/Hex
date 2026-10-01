@@ -396,13 +396,13 @@ function fireWand(charged){
     case 'bow': if(charged){ for(const dr of [-1,0,1]){ const st=dr?tileCR(p.tile.col,p.tile.r+dr):p.tile; if(st) shoot(st,lineTiles(st,DIRS.E),o()); } }
       else shoot(p.tile,row,Object.assign(o(),{pierce:1,falloff:.6})); break;
     case 'crossbow': shoot(p.tile,row,Object.assign(o(),charged?{dig:true}:{push:true})); break;
-    case 'spear': shoot(p.tile,charged?row:row.slice(0,3),Object.assign(o(),charged?{pierce:9}:{})); break;
+    case 'spear': shoot(p.tile,charged?row:row.slice(0,6),Object.assign(o(),charged?{pierce:9}:{})); break;
     default: shoot(p.tile,row,o());
   }
 }
 
 /* ---------------- simulation ---------------- */
-const PACE=.8;
+const PACE=.7;
 function update(dt){
   const b=B; if(!b) return;
   b.time+=dt;
@@ -416,7 +416,7 @@ function update(dt){
   for(const q of b.parts){ q.t+=dt; q.vy-=9*dt; q.wx+=q.vx*dt; q.wz+=q.vz*dt; q.y=Math.max(0,q.y+q.vy*dt); } b.parts=b.parts.filter(q=>q.t<q.life);
   for(const t of TILES) t.flash=Math.max(0,t.flash-dt*3);
   if(b.phase==='custom') return;
-  // The fight runs at PACE speed so enemies, shots and attacks are easier to follow.
+  // The fight runs at PACE speed (70%) so enemies, shots and attacks are easier to follow.
   // Your own moving, firing and charging stay at full speed.
   const rdt=dt; dt*=PACE;
 
@@ -441,7 +441,7 @@ function update(dt){
       const t=s.tiles[s.i]; if(!t){ s.done=true; break; }
       const o=t.occ;
       if(s.dig&&o&&(o.kind==='rock'||o.enemy)) continue;   // diggers tunnel under walls and rocks
-      if(o&&o.kind==='rock'){ s.done=true; }
+      if(o&&o.kind==='rock'){ hitRock(o,s.dmg); s.done=true; }
       else if(s.from==='p'&&o&&o.kind==='enemy'&&o.hp>0){ if(s.hit.has(o)) continue; s.hit.add(o);
         hitEnemy(o,s.dmg,s.card,{dig:s.dig}); if(s.push&&o.hp>0) shove(o,{push:1},s.dmg);
         if(s.pierce>0){ s.pierce--; s.dmg=Math.max(1,Math.round(s.dmg*(s.falloff||1))); burst(t,'#ffffff',4,.8); } else s.done=true; }
@@ -830,6 +830,10 @@ const DRAW={
     ctx.fillStyle='#2a3138'; frontFaces(ctx,top,bot[0][1]-top[0][1]);
     ctx.fillStyle=r.tile.rockT>0&&r.tile.rockT<2?'#7d8894':'#56606a'; poly(ctx,top); ctx.fill();
     ctx.strokeStyle='rgba(0,0,0,.35)'; ctx.lineWidth=1; ctx.stroke();
+    // cracks as it takes hits
+    const k=r.maxHp?1-r.hp/r.maxHp:0;
+    if(k>.05){ const [cx,cy]=proj(r.tile.wx,.76,r.tile.wz); ctx.strokeStyle='rgba(10,14,18,.85)'; ctx.lineWidth=1.5; ctx.beginPath();
+      for(let i=0;i<1+Math.floor(k*4);i++){ const a=i*2.1+.4, l=S*.35*(.5+k); ctx.moveTo(cx,cy); ctx.lineTo(cx+Math.cos(a)*l*.6,cy+Math.sin(a)*l*.3); ctx.lineTo(cx+Math.cos(a+.4)*l,cy+Math.sin(a+.4)*l*.5); } ctx.stroke(); }
   },
   wall(ctx,w,T,S){
     const col=colorOf(w.card), top=hexCorners(w.tile,.62,.9), bot=hexCorners(w.tile,.62,0);

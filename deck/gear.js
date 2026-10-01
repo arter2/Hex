@@ -35,7 +35,7 @@ const GEAR={
   oak_wand:      {slot:'weapon', tier:1, name:'Oak Wand',             icon:'🪄', mods:{tap:1, charged:2}},
   quick_wand:    {slot:'weapon', tier:1, name:'Quick Wand',           icon:'🪄', mods:{cd:.8}},
   ice_wand:      {slot:'weapon', tier:2, name:'Thin Wand of Ice',     icon:'❄', mods:{color:'frost', chill:.8}, text:'Charged shots freeze'},
-  volt_wand:     {slot:'weapon', tier:2, name:'Wand of Electricity',  icon:'⚡', mods:{color:'storm', tap:-1, cd:.7, zap:.25}, text:'Fast; every shot may stun'},
+  volt_wand:     {slot:'weapon', tier:2, name:'Wand of Electricity',  icon:'⚡', mods:{color:'storm', cd:.7, zap:.25}, text:'Fast; every shot may stun'},
   dark_wand:     {slot:'weapon', tier:2, name:'Wand of Darkness',     icon:'☾', mods:{color:'shadow', charged:1, drain:.3}, text:'Shots drain life'},
   light_wand:    {slot:'weapon', tier:2, name:'Wand of Light',        icon:'☀', mods:{color:'light', glow:5}, text:'Charged shots heal you'},
   focus_rod:     {slot:'weapon', kind:'staff', tier:2, name:'Focus Rod',            icon:'🔮', mods:{charge:.65, charged:3}},
@@ -48,7 +48,7 @@ const GEAR={
   ashwood_bow:   {slot:'weapon', kind:'bow',   tier:2, name:'Ashwood Bow',        icon:'🏹', mods:{color:'verdant', tap:1, charged:2}, text:'Verdant arrows'},
   iron_crossbow: {slot:'weapon', kind:'crossbow', tier:1, name:'Iron Crossbow',   icon:'🎯', mods:{}, text:'Bolts knock back; charged bolts break shields'},
   thunder_repeater:{slot:'weapon', kind:'crossbow', tier:3, name:'Thunderbolt Repeater', icon:'🎯', mods:{color:'storm', cd:.75, charged:3, zap:.2}},
-  hunter_spear:  {slot:'weapon', kind:'spear', tier:1, name:"Hunter's Spear",     icon:'🔱', mods:{}, text:'Reaches 3 tiles for double damage; charged: thrown down the row'},
+  hunter_spear:  {slot:'weapon', kind:'spear', tier:1, name:"Hunter's Spear",     icon:'🔱', mods:{}, text:'Reaches 6 tiles for double damage; charged: thrown down the row'},
   storm_trident: {slot:'weapon', kind:'spear', tier:3, name:'Storm Trident',      icon:'🔱', mods:{color:'storm', tap:2, charged:4, zap:.15}},
   // body armor: light, medium, heavy
   cloth_shirt:   {slot:'body', weight:'light',  tier:1, name:'Cloth Shirt',        icon:'👕', mods:{hp:10}},
@@ -99,7 +99,7 @@ const WEAPON_KINDS={
   staff:   {name:'Staff',    tap:4, charged:10, cd:.45, ccd:.6, twoHand:true, text:'slower; charged orbs pierce 2 enemies'},
   bow:     {name:'Bow',      tap:3, charged:5,  cd:.35, ccd:.6, twoHand:true, text:'arrows pierce the first enemy (60% to the next); charged: a volley down 3 rows'},
   crossbow:{name:'Crossbow', tap:6, charged:9,  cd:.6,  ccd:.7, twoHand:true, text:'slow heavy bolts that knock back; charged bolts go under shields and walls'},
-  spear:   {name:'Spear',    tap:6, charged:9,  cd:.35, ccd:.6, text:'reaches only 3 tiles; charged: thrown through the whole row'},
+  spear:   {name:'Spear',    tap:6, charged:9,  cd:.35, ccd:.6, text:'reaches 6 tiles (the whole enemy side from your front column); charged: thrown through the whole row'},
 };
 const kindOf=id=>GEAR[id]&&GEAR[id].slot==='weapon'?GEAR[id].kind||'wand':null;
 // the seven slots, and which kind of piece each takes

@@ -69,10 +69,19 @@ function startBattle(list,depth,hooks,opts){
   makeTerrain(depth);
   spawnWave(0);
   if(opts&&opts.prepare) opts.prepare(B.piles);
+  applyGear(p,opts&&opts.gear);
   openCustomScreen();
   return B;
 }
 
+// Your equipped weapon and armor (see GEAR in collection.js): wand damage and speed, max HP,
+// damage taken off every hit, and a shield at the start of the fight.
+function applyGear(p,m){
+  m=Object.assign({tap:0,charged:0,cd:1,charge:1,hp:0,guard:0,shield:0},m||{});
+  p.wand={tap:3+m.tap, charged:7+m.charged, cd:m.cd, charge:.9*m.charge}; p.guard=m.guard;
+  p.maxHp+=m.hp; p.hp=p.maxHp;
+  if(m.shield){ p.barrier=m.shield; p.shieldTurns=2; }
+}
 const alive=()=>B.enemies.filter(e=>e.hp>0);
 function later(sec,fn){ B.timers.push({t:sec,fn}); }
 // units slide between tiles instead of jumping
@@ -157,6 +166,7 @@ function hitPlayer(dmg){
   if(p.invT>0){ floater('miss',p.tile,'#c58bff'); return; }
   if(p.dodge){ p.dodge=false; floater('dodge',p.tile,'#6fd6ff'); return; }
   if(p.barrier>0){ const a=Math.min(p.barrier,dmg); p.barrier-=a; dmg-=a; floater('🛡'+a,p.tile,'#6fd6ff'); }
+  if(p.guard&&dmg>0) dmg=Math.max(1,Math.round(dmg*(1-p.guard)));
   if(dmg<=0) return;
   p.hp-=dmg; p.hurtT=.25; shake(dmg>=15?8:5); floater('-'+dmg,p.tile,'#ff5d6c',true); flash(p.tile,'#ff5d6c',1); B.hooks.onHurt&&B.hooks.onHurt(dmg);
   // Divine Intervention: a lethal hit leaves you at 1 HP, then heals
@@ -270,18 +280,6 @@ const CAST={
     burst(p.tile,col,16,1); floater(c.name,p.tile,col);
   },
 };
-// Drinking an item (from the Custom screen). Returns false if it would do nothing.
-function useItem(id){
-  const b=B, p=b&&b.player; if(!p||b.phase==='win'||b.phase==='lose') return false;
-  switch(id){
-    case 'draught': if(p.hp>=p.maxHp) return false; healPlayer(40); break;
-    case 'tonic': if(p.barrier>=40) return false; p.barrier=40; p.shieldTurns=2; floater('🛡40',p.tile,'#6fd6ff'); break;
-    case 'elixir': p.hasteT=Math.max(p.hasteT,10); break;
-    case 'wind': if(!drawCards(b.piles,2).length) return false; b.justDrawn=new Set(b.piles.hand.slice(-2).map(c=>c.uid)); break;
-    default: return false;
-  }
-  burst(p.tile,'#c58bff',14,1); return true;
-}
 // Arc onto the aimed tile, or the enemy nearest to `from`, over walls and allies.
 // The tile is fixed at cast, so an enemy that moves during the flight is missed.
 const nearestEnemyTile=from=>{ const e=alive().sort((a,b)=>hexDist(from,a.tile)-hexDist(from,b.tile))[0]; return e?e.tile:null; };
@@ -372,8 +370,9 @@ function shoot(from,tiles,o){ B.shots.push(Object.assign({a:from,tiles,i:-1,step
 
 function fireWand(charged){
   const b=B, p=b.player; if(b.phase!=='fight'||p.wandCd>0) return;
-  p.wandCd=charged?.5:.3;
-  const dmg=Math.round((charged?7:3)*(p.powerT>0?2.5:1));
+  const w=p.wand||{tap:3,charged:7,cd:1};
+  p.wandCd=(charged?.5:.3)*w.cd;
+  const dmg=Math.round((charged?w.charged:w.tap)*(p.powerT>0?2.5:1));
   shoot(p.tile,lineTiles(p.tile,DIRS.E),{dmg,from:'p',wand:true,big:charged});
 }
 
@@ -490,7 +489,8 @@ function moveTo(t){ const b=B; if(!b||b.phase!=='fight'||!t) return; const p=b.p
 function stepDir(d){ const b=B; if(!b||b.phase!=='fight') return; const p=b.player, t=tileAt(p.tile.q+d[0],p.tile.r+d[1]); if(t&&t.side==='p'&&!t.occ) p.path=[t]; }
 function stepVertical(up){ const p=B.player, ts=neighbors(p.tile).filter(t=>(up?t.r<p.tile.r:t.r>p.tile.r)&&t.side==='p'&&!t.occ); if(ts.length) p.path=[pick(ts)]; }
 function wandDown(){ const b=B; if(!b||b.phase!=='fight') return; b.player.charging=true; b.player.chargeT=0; }
-function wandUp(){ const b=B; if(!b) return; const p=b.player; if(!p.charging) return; p.charging=false; const ch=p.chargeT>=.9; p.chargeT=0; fireWand(ch); }
+function wandUp(){ const b=B; if(!b) return; const p=b.player; if(!p.charging) return; p.charging=false; const ch=p.chargeT>=chargeNeed(p); p.chargeT=0; fireWand(ch); }
+const chargeNeed=p=>p.wand?p.wand.charge:.9;
 
 /* ---------------- rendering ---------------- */
 // A perspective camera behind you and up: the board is turned so your side is at the bottom and the
@@ -691,7 +691,7 @@ const DRAW={
     const foe=alive().sort((m,n)=>hexDist(p.tile,m.tile)-hexDist(p.tile,n.tile))[0];
     const flip=facing(p,foe,false), r=drawSprite(ctx,p,T,S,{alpha:p.invT>0?.45:1,flip,bob:.03,flash:p.hurtT>0?p.hurtT*3:0});
     // the staff's orb glows, and grows while the wand charges
-    const glow=p.charging?(p.chargeT>=.9?'#ffffff':'#c58bff'):p.powerT>0?'#ff6a3d':null;
+    const glow=p.charging?(p.chargeT>=chargeNeed(p)?'#ffffff':'#c58bff'):p.powerT>0?'#ff6a3d':null;
     if(glow){ const ox=r.x+(flip?-1:1)*9*r.k, oy=r.top+4*r.k; ctx.fillStyle=glow; ctx.shadowColor=glow; ctx.shadowBlur=10+(p.charging?p.chargeT*18:0);
       ctx.globalAlpha=.85; ctx.beginPath(); ctx.arc(ox,oy,S*(.12+(p.charging?p.chargeT*.12:0)),0,TAU); ctx.fill(); ctx.shadowBlur=0; ctx.globalAlpha=1; }
     const [x,y]=proj(posOf(p)[0],0,posOf(p)[1]);

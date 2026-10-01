@@ -1005,3 +1005,7 @@ hero_volta,Captain Volta,storm,hero,hero,hero:volta,hero_volta.csv
 hero_thorn,The Thornfather,verdant,hero,hero,hero:thornfather,hero_thorn.csv
 hero_aurel,Sir Aurelion,light,hero,hero,hero:aurelion,hero_aurel.csv
 hero_widow,The Nightwidow,shadow,hero,hero,hero:widow,hero_widow.csv
+potion_heal,Healing Draught,gray,boon,common,thing:flask,potion_heal.csv
+potion_tonic,Iron Tonic,gray,ward,common,thing:vial,potion_tonic.csv
+potion_elixir,Quicksilver Elixir,gray,boon,uncommon,thing:flask,potion_elixir.csv
+potion_wind,Second Wind,gray,utility,uncommon,thing:feather,potion_wind.csv

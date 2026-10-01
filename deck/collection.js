@@ -29,25 +29,48 @@ function rollCard(opts,rng){
 // and a pack holds one 1 time in 100. You get a hero you don't own yet when there is one.
 const heroChance=depth=>Math.min(.15,.03+.012*depth);
 function rollHero(rng,owned){ const fresh=HEROES.filter(h=>!(owned&&owned[h.id])), pool=fresh.length?fresh:HEROES; return pool[Math.floor(rng()*pool.length)]; }
-/* Items: potions you carry between fights and drink on the Custom screen, one at a time. */
-const ITEMS={
-  draught:{name:'Healing Draught',   icon:'🧪', text:'Heal 40 HP'},
-  tonic:  {name:'Iron Tonic',        icon:'🛡', text:'A shield of 40 for 2 turns (replaces a weaker one)'},
-  elixir: {name:'Quicksilver Elixir',icon:'💨', text:'Faster moves and casts for 10 seconds'},
-  wind:   {name:'Second Wind',       icon:'🌀', text:'Draw 2 more cards now'},
+/* Gear: weapon and armor upgrades for your wizard. You own each piece once, equip one weapon
+   and one armor at camp, and it changes every fight. Better tiers drop deeper down; a piece you
+   already own turns into gold. Weapon mods: tap / charged wand damage added, cd = time between
+   shots (x), charge = time to charge (x). Armor mods: hp = max HP added, guard = share of damage
+   taken off, shield = a shield at the start of each fight. */
+const GEAR={
+  oak_wand:      {slot:'weapon', tier:1, name:'Oak Wand',          icon:'🪄', mods:{tap:1, charged:2}},
+  quick_wand:    {slot:'weapon', tier:1, name:'Quick Wand',        icon:'🪄', mods:{cd:.8}},
+  focus_rod:     {slot:'weapon', tier:2, name:'Focus Rod',         icon:'🔮', mods:{charge:.65, charged:3}},
+  storm_scepter: {slot:'weapon', tier:2, name:'Storm Scepter',     icon:'⚡', mods:{tap:2, charged:4}},
+  archmage_staff:{slot:'weapon', tier:3, name:"Archmage's Staff",  icon:'✨', mods:{tap:3, charged:6, cd:.85}},
+  padded_robe:   {slot:'armor',  tier:1, name:'Padded Robe',       icon:'👘', mods:{hp:20}},
+  warded_cloak:  {slot:'armor',  tier:1, name:'Warded Cloak',      icon:'🧥', mods:{shield:30}},
+  iron_mail:     {slot:'armor',  tier:2, name:'Iron Mail',         icon:'🛡', mods:{guard:.1, hp:10}},
+  runed_vest:    {slot:'armor',  tier:2, name:'Runed Vestments',   icon:'🥋', mods:{hp:30, shield:20}},
+  dragonscale:   {slot:'armor',  tier:3, name:'Dragonscale Coat',  icon:'🐉', mods:{hp:50, guard:.15}},
 };
-function addItem(save,id,n){ save.items=save.items||{}; save.items[id]=(save.items[id]||0)+(n||1); }
-function itemCount(save){ return Object.values(save.items||{}).reduce((a,b)=>a+b,0); }
+function gearText(g){ const m=g.mods, t=[];
+  if(m.tap) t.push('wand +'+m.tap); if(m.charged) t.push('charged shot +'+m.charged); if(m.cd) t.push('fires '+Math.round((1/m.cd-1)*100)+'% faster');
+  if(m.charge) t.push('charges '+Math.round((1-m.charge)*100)+'% faster'); if(m.hp) t.push('+'+m.hp+' max HP'); if(m.guard) t.push('take '+Math.round(m.guard*100)+'% less damage');
+  if(m.shield) t.push('start each fight with a '+m.shield+' shield'); return t.join(', '); }
+// the combined mods of what you have equipped
+function gearMods(save){ const out={tap:0,charged:0,cd:1,charge:1,hp:0,guard:0,shield:0};
+  for(const id of Object.values(save.gear||{})){ const g=GEAR[id]; if(!g) continue; for(const k in g.mods) if(k==='cd'||k==='charge') out[k]*=g.mods[k]; else out[k]+=g.mods[k]; }
+  return out; }
+// a gear drop: tier 1 at first, tier 2 from depth 4, tier 3 from depth 8 (a boss rolls one tier up)
+function rollGear(depth,rng,boss){ const top=Math.min(3,1+Math.floor(depth/4)+(boss?1:0));
+  const tier=rng()<.6?top:Math.max(1,top-1), pool=Object.keys(GEAR).filter(id=>GEAR[id].tier===tier); return pool[Math.floor(rng()*pool.length)]; }
+// Returns how much gold a duplicate was worth (0 for a new piece).
+function addGear(save,id){ save.items=save.items||{}; if(save.items[id]) { const g=50*GEAR[id].tier; save.gold+=g; return g; }
+  save.items[id]=1; save.gear=save.gear||{}; if(!save.gear[GEAR[id].slot]) save.gear[GEAR[id].slot]=id; return 0; }
+function itemCount(save){ return Object.keys(save.items||{}).filter(id=>GEAR[id]).length; }
 
 /* Rewards. A normal fight gives exactly one thing: a card (55%, half the time in the color of
-   a monster you beat), a pile of gold (30%) or an item (15%). A boss gives more: gold, a rare
-   or better card, another card, an item, and sometimes a hero.
+   a monster you beat), a pile of gold (30%) or a piece of gear (15%). A boss gives more: gold, a
+   rare or better card, another card, a piece of gear, and sometimes a hero.
    Returns {cards:[], gold, items:[]}. */
 function battleGold(depth,boss){ return boss?60+20*depth:40+15*depth; }
 function battleRewards(enemyColors,depth,boss,rng,owned){
   rng=rng||Math.random;
   const color=()=>rng()<.5&&enemyColors.length?enemyColors[Math.floor(rng()*enemyColors.length)]:null;
-  const item=()=>{ const ks=Object.keys(ITEMS); return ks[Math.floor(rng()*ks.length)]; };
+  const item=()=>rollGear(depth,rng,boss);
   if(boss){ const r={cards:[rollCard({depth,min:'rare'},rng),rollCard({depth,color:color()},rng)], gold:battleGold(depth,true), items:[item()]};
     if(rng()<heroChance(depth)) r.cards.push(rollHero(rng,owned));
     return r; }
@@ -91,7 +114,7 @@ function newSave(starter){
   const list=starterList(starter.colors), owned={};
   list.forEach(id=>owned[id]=(owned[id]||0)+1);
   const decks=[{name:starter.name, list}]; for(let i=1;i<DECK_SLOTS;i++) decks.push({name:'Deck '+(i+1), list:[]});
-  return {v:1, gold:100, depth:1, deepest:1, owned, seen:Object.assign({},owned), decks, active:0, wins:0, items:{draught:1}};
+  return {v:1, gold:100, depth:1, deepest:1, owned, seen:Object.assign({},owned), decks, active:0, wins:0, items:{}, gear:{}};
 }
 function addCards(save,cards){ return cards.map(c=>{ const isNew=!save.owned[c.id]; save.owned[c.id]=(save.owned[c.id]||0)+1; save.seen[c.id]=1; return {card:c,isNew}; }); }
 function ownedUnique(save){ return Object.keys(save.owned).filter(id=>CARDS[id]&&save.owned[id]>0).length; }
@@ -121,10 +144,15 @@ function settleChargeUses(save,piles){
 }
 
 function loadSave(){
-  try{ const s=JSON.parse(localStorage.getItem(SAVE_KEY)||'null'); if(s&&s.v===1) return s; }catch(e){}
+  try{ const s=JSON.parse(localStorage.getItem(SAVE_KEY)||'null'); if(s&&s.v===1) return migrate(s); }catch(e){}
   return null;
 }
+// Potions used to be items; they are cards now.
+const OLD_POTIONS={draught:'potion_heal', tonic:'potion_tonic', elixir:'potion_elixir', wind:'potion_wind'};
+function migrate(s){ s.items=s.items||{}; s.gear=s.gear||{};
+  for(const k in OLD_POTIONS) if(s.items[k]){ const id=OLD_POTIONS[k]; s.owned[id]=(s.owned[id]||0)+s.items[k]; s.seen[id]=1; delete s.items[k]; }
+  return s; }
 function writeSave(s){ try{ localStorage.setItem(SAVE_KEY,JSON.stringify(s)); }catch(e){} }
 function clearSave(){ try{ localStorage.removeItem(SAVE_KEY); }catch(e){} }
 
-if(typeof module!=='undefined') module.exports={ITEMS,addItem,itemCount,battleRewards,heroChance,rollHero,assignChargeUses,settleChargeUses,chargeLeft,SAVE_KEY,DECK_SLOTS,PACK_PRICE,copyLimit,rarityWeights,rollRarity,rollCard,battleGold,openPack,autoFill,newSave,addCards,ownedUnique};
+if(typeof module!=='undefined') module.exports={GEAR,gearText,gearMods,rollGear,addGear,itemCount,loadSave,battleRewards,heroChance,rollHero,assignChargeUses,settleChargeUses,chargeLeft,SAVE_KEY,DECK_SLOTS,PACK_PRICE,copyLimit,rarityWeights,rollRarity,rollCard,battleGold,openPack,autoFill,newSave,addCards,ownedUnique};

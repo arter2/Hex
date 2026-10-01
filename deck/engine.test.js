@@ -61,11 +61,11 @@ t('no reshuffle: an emptied deck leaves only the wand', ()=>{
 });
 
 t('1,000 cards: 125 per family, type split and 50/38/25/12 rarity, plus 6 heroes', ()=>{
-  assert.strictEqual(D.CARD_LIST.length,1006); assert.strictEqual(D.HEROES.length,6);
-  assert.strictEqual(new Set(D.CARD_LIST.map(c=>c.name)).size,1006);
+  assert.strictEqual(D.CARD_LIST.length,1010); assert.strictEqual(D.HEROES.length,6);
+  assert.strictEqual(new Set(D.CARD_LIST.map(c=>c.name)).size,1010);
   assert.deepStrictEqual(D.HEROES.map(h=>h.color).sort(),D.SIX.slice().sort(),'one hero per color');
   for(const fam of Object.keys(D.COLORS)){
-    const cs=D.CARD_LIST.filter(c=>c.color===fam&&c.rarity!=='hero'); assert.strictEqual(cs.length,125,fam);
+    const cs=D.CARD_LIST.filter(c=>c.color===fam&&c.rarity!=='hero'&&!c.potion); assert.strictEqual(cs.length,125,fam);
     for(let r=1;r<=12;r++){ const n=cs.filter(c=>c.rank===r).length; assert(n>=8&&n<=13,fam+' rank '+r+': '+n); }
     const plan=D.TYPE_PLAN[D.COLORS[fam].neutral?fam:'color'];
     for(const t in plan) assert.strictEqual(cs.filter(c=>c.type===t).length,plan[t],fam+' '+t);
@@ -190,8 +190,21 @@ t('straights are harder: few random three-card queues from a starter deck make o
 t('a normal fight gives exactly one reward: a card, gold or an item; a boss gives more', ()=>{
   const kinds={card:0,gold:0,item:0};
   for(let i=0;i<3000;i++){ const r=C.battleRewards(['fire','frost'],3,false,rng), n=r.cards.length+(r.gold?1:0)+r.items.length;
-    assert.strictEqual(n,1); kinds[r.cards.length?'card':r.gold?'gold':'item']++; r.items.forEach(id=>assert(C.ITEMS[id])); }
+    assert.strictEqual(n,1); kinds[r.cards.length?'card':r.gold?'gold':'item']++; r.items.forEach(id=>assert(C.GEAR[id])); }
   assert(kinds.card>1400&&kinds.gold>700&&kinds.item>300,JSON.stringify(kinds));
   const b=C.battleRewards(['fire'],4,true,rng); assert(b.cards.length+(b.gold?1:0)+b.items.length>=4);
-  const s=C.newSave(D.STARTERS[0]); assert.strictEqual(C.itemCount(s),1); C.addItem(s,'tonic',2); assert.strictEqual(C.itemCount(s),3);
+});
+t('gear: weapons and armor, one of each equipped, duplicates become gold, tiers by depth', ()=>{
+  const s=C.newSave(D.STARTERS[0]); assert.strictEqual(C.itemCount(s),0);
+  assert.strictEqual(C.addGear(s,'oak_wand'),0); assert.strictEqual(s.gear.weapon,'oak_wand','the first weapon equips itself');
+  C.addGear(s,'storm_scepter'); assert.strictEqual(s.gear.weapon,'oak_wand'); const g0=s.gold; assert.strictEqual(C.addGear(s,'oak_wand'),50); assert.strictEqual(s.gold,g0+50);
+  C.addGear(s,'iron_mail'); s.gear.weapon='storm_scepter'; const m=C.gearMods(s); assert.strictEqual(m.tap,2); assert.strictEqual(m.charged,4); assert.strictEqual(m.guard,.1); assert.strictEqual(m.hp,10);
+  for(let i=0;i<200;i++){ assert(C.GEAR[C.rollGear(1,rng)].tier<=1); assert(C.GEAR[C.rollGear(9,rng)].tier>=2); }
+  assert(Object.values(C.GEAR).every(g=>C.gearText(g).length>5));
+});
+t('potions are gray cards, and potions in an old save become those cards', ()=>{
+  assert.strictEqual(D.POTIONS.length,4); D.POTIONS.forEach(c=>{ assert(D.CARDS[c.id]); assert.strictEqual(c.color,'gray'); assert(D.cardText(c).length>5); });
+  const s=C.newSave(D.STARTERS[0]); s.items={draught:2,wind:1};
+  global.localStorage={getItem:()=>JSON.stringify(s)}; const m=C.loadSave(); delete global.localStorage;
+  assert.strictEqual(m.owned.potion_heal,2); assert.strictEqual(m.owned.potion_wind,1); assert.deepStrictEqual(m.items,{});
 });

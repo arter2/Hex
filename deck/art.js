@@ -189,7 +189,7 @@ const THING_WORDS={Bomb:'bomb',Orb:'orb',Pot:'pot',Mortar:'mortar',Comet:'comet'
   Flask:'flask',Quiver:'quiver',Satchel:'satchel',Pouch:'pouch',Vial:'vial',Cask:'cask',Bundle:'bundle',Charm:'charm',Censer:'censer',
   Scroll:'scroll',Tome:'tome',Lens:'lens',Codex:'codex',Map:'map',Key:'key',Compass:'compass',Candle:'candle',
   Snare:'snare',Trap:'trap',Glyph:'glyph',Mine:'mine',Tripwire:'tripwire',Pitfall:'pitfall',Jaw:'jaw',Rune:'rune',Pit:'pitfall',
-  Crown:'crown',Heart:'heart',Eye:'eye',Sigil:'sigil',Tree:'tree',Eclipse:'eclipse',Zero:'crystal',Dawnbreaker:'sun',Pact:'skull',Tailwind:'boot'};
+  Crown:'crown',Heart:'heart',Draught:'flask',Tonic:'vial',Elixir:'flask',Wind:'feather',Eye:'eye',Sigil:'sigil',Tree:'tree',Eclipse:'eclipse',Zero:'crystal',Dawnbreaker:'sun',Pact:'skull',Tailwind:'boot'};
 const BOON_THING={heal:'heart',regen:'sprout',power:'flamesword',courage:'banner',pact:'skull',haste:'boot',dodge:'feather',phase:'ghost',gauge:'hourglass',intervene:'halo'};
 
 /* ---------------- creatures, from parts ---------------- */

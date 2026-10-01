@@ -269,7 +269,14 @@ const HEROES=[
 ].map(h=>Object.assign({type:'hero', rank:7, rarity:'hero', turns:3},h));
 // Signature cards spread over 1-12 as well: damage cards take the odd ranks, the rest the even ones.
 SIGNATURE.forEach(c=>{ c.rank=c.rank*2-(c.type==='strike'||c.type==='lob'?1:0); });
-const CARD_LIST=SIGNATURE.concat(generateCards(),HEROES);
+/* Potions: four gray cards you can put in any deck. Added after the heroes so ids stay put. */
+const POTIONS=[
+  {id:'potion_heal',  name:'Healing Draught',   type:'boon',    boon:'heal',  amt:40,          rank:3, rarity:'common'},
+  {id:'potion_tonic', name:'Iron Tonic',        type:'ward',    ward:'barrier', amt:40, turns:2, rank:5, rarity:'common'},
+  {id:'potion_elixir',name:'Quicksilver Elixir',type:'boon',    boon:'haste', dur:10,          rank:7, rarity:'uncommon'},
+  {id:'potion_wind',  name:'Second Wind',       type:'utility', util:'draw',  n:2,             rank:9, rarity:'uncommon'},
+].map(c=>Object.assign({color:'gray', potion:true},c));
+const CARD_LIST=SIGNATURE.concat(generateCards(),HEROES,POTIONS);
 /* Nothing a card puts on the board lasts forever: shields, walls, towers, summons, machines,
    traps and changed ground each have HP (or a strength) and a turn limit. A turn ends each time
    the Custom screen opens. Applied after generation, so card ids are unchanged. */
@@ -345,4 +352,4 @@ function starterList(colors,size){
   return list;
 }
 
-if(typeof module!=='undefined') module.exports={HEROES,PATTERN_MULT,lobPattern,SIX,SIGNATURE,TYPE_PLAN,RARITY_PLAN,COLORS,BEATS,WEAK_MULT,colorMult,TYPES,RARITY,CARD_LIST,CARDS,cardText,STARTERS,starterList};
+if(typeof module!=='undefined') module.exports={POTIONS,HEROES,PATTERN_MULT,lobPattern,SIX,SIGNATURE,TYPE_PLAN,RARITY_PLAN,COLORS,BEATS,WEAK_MULT,colorMult,TYPES,RARITY,CARD_LIST,CARDS,cardText,STARTERS,starterList};

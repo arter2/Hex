@@ -68,7 +68,7 @@ function openCamp(){
   if(pickDepth===1&&save.deepest>1) pickDepth=save.deepest;
   const d=activeDeck(), v=validateDeck(d.list,CARDS,save.owned);
   $('#campGold').textContent='🪙 '+save.gold+' gold';
-  $('#campColl').textContent='🂠 '+ownedUnique(save)+' / '+CARD_LIST.length+' cards'+(itemCount(save)?' · 🧪 '+itemCount(save):'');
+  $('#campColl').textContent='🂠 '+ownedUnique(save)+' / '+CARD_LIST.length+' cards'+(itemCount(save)?' · ⚔ '+itemCount(save)+' gear':'');
   $('#campDeck').textContent=d.name;
   const cnt=$('#campDeckCount'); cnt.textContent=v.count+' / '+RULES.max; cnt.classList.toggle('bad',!v.ok);
   $('#campDeckErr').textContent=v.ok?'':v.errors[0]+(v.errors.length>1?' (+'+(v.errors.length-1)+' more)':'')+'. Fix it in the deck builder.';
@@ -180,7 +180,7 @@ function renderCollection(){
   const copies=Object.keys(save.owned).reduce((a,id)=>a+(CARDS[id]?save.owned[id]:0),0);
   $('#cTitle').textContent=cf.mine?'My cards':'All cards';
   $('#cCount').textContent=cf.mine?ownedUnique(save)+' cards · '+copies+' copies':ownedUnique(save)+' / '+CARD_LIST.length;
-  renderItems($('#cItems'),false); $('#cItems').hidden=!cf.mine;
+  renderGear($('#cItems')); $('#cItems').hidden=!cf.mine;
   if(cf.mine){ const inDeck={}; activeDeck().list.forEach(id=>inDeck[id]=(inDeck[id]||0)+1);
     const fam={}; Object.keys(save.owned).forEach(id=>{ const c=CARDS[id]; if(c&&save.owned[id]>0) fam[c.color]=(fam[c.color]||0)+save.owned[id]; });
     $('#cProgress').innerHTML=FAM_ORDER.filter(k=>fam[k]).map(k=>`<span class="chip" style="--c:${COLORS[k].c}">${COLORS[k].icon} ${fam[k]}</span>`).join('');
@@ -225,7 +225,7 @@ function fight(depth){
     onCombo:label=>banner('✦ '+label.split(':')[0],'#ffe066'),
     onHero:c=>banner('♔ '+c.name.split(',')[0]+' joins the fight!','#ffe066'),
     onEnd:win=>win?victory():defeat(),
-  },{prepare:p=>assignChargeUses(save,p,d.list)});
+  },{prepare:p=>assignChargeUses(save,p,d.list), gear:gearMods(save)});
   hud(true);
 }
 // charge uses spent this fight carry over; a copy that ran dry burns up
@@ -235,14 +235,14 @@ function victory(){
   const b=B, boss=b.enemies.some(e=>e.def.boss);
   const rw=battleRewards(b.enemies.filter(e=>!e.def.minion).map(e=>e.color),b.depth,boss,null,save.owned);
   save.gold+=rw.gold; save.wins++; if(b.depth>=save.deepest) save.deepest=b.depth+1;
-  rw.items.forEach(id=>addItem(save,id));
+  const dupGold=rw.items.reduce((a,id)=>a+addGear(save,id),0);
   const res=addCards(save,rw.cards); const burnt=settleCharges();
   const depth=b.depth;
   const hero=rw.cards.find(c=>c.rarity==='hero');
-  const got=[...rw.cards.map(c=>c.name),...(rw.gold?['🪙 '+rw.gold+' gold']:[]),...rw.items.map(id=>ITEMS[id].icon+' '+ITEMS[id].name)];
-  reveal(hero?'♔ A hero joins you!':boss?'Boss defeated!':'Victory!',(hero?hero.name+' answers your call. ':'')+'Depth '+depth+' cleared in '+Math.round(b.time)+'s. '+(boss?'Boss rewards: ':'Your reward: ')+got.join(', ')+'.'+burnt,res,
+  const got=[...rw.cards.map(c=>c.name),...(rw.gold?['🪙 '+rw.gold+' gold']:[]),...rw.items.map(id=>GEAR[id].icon+' '+GEAR[id].name)];
+  reveal(hero?'♔ A hero joins you!':boss?'Boss defeated!':'Victory!',(hero?hero.name+' answers your call. ':'')+'Depth '+depth+' cleared in '+Math.round(b.time)+'s. '+(boss?'Boss rewards: ':'Your reward: ')+got.join(', ')+'.'+(dupGold?' You already had that gear: it became '+dupGold+' gold.':'')+burnt,res,
     [['Camp',()=>{ B=null; pickDepth=depth+1; openCamp(); },true],['Depth '+(depth+1)+' →',()=>fight(depth+1)]],
-    [...(rw.gold?[{icon:'🪙',name:rw.gold+' gold',text:'Spend it on packs in the shop'}]:[]),...rw.items.map(id=>ITEMS[id])]);
+    [...(rw.gold?[{icon:'🪙',name:rw.gold+' gold',text:'Spend it on packs in the shop'}]:[]),...rw.items.map(id=>({icon:GEAR[id].icon,name:GEAR[id].name+' '+'★'.repeat(GEAR[id].tier),text:(GEAR[id].slot==='weapon'?'Weapon: ':'Armor: ')+gearText(GEAR[id])}))]);
 }
 function defeat(){
   const lost=Math.floor(save.gold*.2); save.gold-=lost; const burnt=settleCharges();
@@ -288,20 +288,17 @@ function renderCustom(){
     if(dealt.has(inst.uid)){ el.classList.add('deal'); el.style.animationDelay=(i*.06)+'s'; }
     dragCard(el,inst); h.appendChild(el); });
   B.justDrawn=null;
-  renderItems($('#custItems'),true);
   $('#custEmpty').textContent=wandOnly(p)?'Your deck is empty. Fight on with your wand!':!p.draw.length?'Deck empty: these are your last cards.':'';
   const empty=RULES.slots-p.queue.length;
   $('#btnFight').textContent=wandOnly(p)?'Fight!':'Fight!'+(empty?' (+'+empty+' draw next time)':'');
 }
-// Your potions: on the Custom screen a tap drinks one; in My cards they are just listed.
-function renderItems(box,usable){
-  const its=Object.keys(ITEMS).filter(id=>(save.items||{})[id]>0);
-  box.innerHTML=its.length?(usable?'<span class="lbl">Items</span>':'<span class="lbl">Your items</span>'):usable?'':'<span class="lbl">No items yet. Normal fights sometimes give one, bosses always do.</span>';
-  for(const id of its){ const it=ITEMS[id], b=document.createElement('button'); b.className='item'; b.title=it.text;
-    b.innerHTML=`${it.icon} ${esc(it.name)} <b>×${save.items[id]}</b><small>${esc(it.text)}</small>`;
-    if(usable) b.onclick=()=>{ if(!useItem(id)) return tip('That would do nothing right now');
-      save.items[id]--; if(!save.items[id]) delete save.items[id]; persist(); buzz(15); tip(it.name+'!'); renderCustom(); };
-    else b.disabled=true;
+// Your gear: every weapon and armor you own; tap one to equip it (tap the equipped one to take it off).
+function renderGear(box){
+  const own=Object.keys(GEAR).filter(id=>(save.items||{})[id]); save.gear=save.gear||{};
+  box.innerHTML='<span class="lbl">Your gear '+(own.length?'· tap to equip':'')+'</span>'+(own.length?'':'<span class="none">No gear yet. Normal fights sometimes give a weapon or armor; bosses always do.</span>');
+  for(const slot of ['weapon','armor']) for(const id of own.filter(id=>GEAR[id].slot===slot)){ const g=GEAR[id], on=save.gear[slot]===id, b=document.createElement('button');
+    b.className='item'+(on?' on':''); b.innerHTML=`${g.icon} ${esc(g.name)} <b>${'★'.repeat(g.tier)}</b>${on?' <em>equipped</em>':''}<small>${slot==='weapon'?'Weapon':'Armor'}: ${esc(gearText(g))}</small>`;
+    b.onclick=()=>{ save.gear[slot]=on?null:id; persist(); renderGear(box); tip(on?g.name+' taken off':g.name+' equipped'); };
     box.appendChild(b); }
 }
 /* Drag and drop on the Custom screen. A tap moves a card between hand and queue, a hold shows

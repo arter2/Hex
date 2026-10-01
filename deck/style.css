@@ -167,7 +167,7 @@ select,.filters input{font:600 14px var(--font-b); color:var(--text); background
 .tip{position:fixed; left:50%; top:calc(env(safe-area-inset-top,0px) + 96px); transform:translateX(-50%); background:var(--panel2); border:1px solid var(--line); padding:8px 14px; border-radius:10px; font-weight:700; opacity:0; transition:opacity .25s; pointer-events:none; z-index:9;}
 .tip.on{opacity:1;}
 
-@media (min-width:700px){ .hand{grid-template-columns:repeat(7,1fr);} .fams{grid-template-columns:repeat(8,1fr);} }
+body.ui-tablet .hand{grid-template-columns:repeat(7,1fr);} body.ui-tablet .fams{grid-template-columns:repeat(8,1fr);}
 
 /* landscape phones: board on the left, controls in a thumb column on the right */
 @media (orientation:landscape) and (max-height:560px){
@@ -478,3 +478,24 @@ select,.filters input,#bName{border-radius:0; border:6px solid transparent; bord
 #hudTop .info{font-family:var(--font-t); font-size:17px;}
 #buffs{font-family:var(--font-t); font-size:17px;}
 .keys{font-family:var(--font-t); font-size:15px;}
+
+/* layout toggle: phone keeps one narrow column; tablet spreads out with bigger targets */
+.layoutBtn{width:100%; min-height:44px; font-size:16px; color:#9aa3ab; flex-direction:row; gap:6px;}
+.layoutBtn b{font-weight:600; color:#5d656d;} .layoutBtn b.on{color:var(--blue);}
+#scrStart .layoutBtn{max-width:460px; margin-top:12px;}
+body.ui-phone .camp,body.ui-phone #starters,body.ui-phone #scrStart .layoutBtn{max-width:480px;}
+body.ui-phone #scrBuilder,body.ui-phone #scrCollection,body.ui-phone #scrShop,body.ui-phone #scrCharacter{max-width:520px;}
+body.ui-phone .panel.custom{max-width:480px;}
+body.ui-tablet .camp{max-width:1000px; display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); gap:10px 18px; align-items:start;
+  grid-template-areas:"logo logo" "area area" "scene depth" "scene menu" "log menu" "log layout" "wallet wallet";}
+body.ui-tablet .camp .logo{grid-area:logo;} body.ui-tablet #campArea{grid-area:area;} body.ui-tablet .scenebox{grid-area:scene;} body.ui-tablet .depthbox{grid-area:depth;}
+body.ui-tablet .camp .menu{grid-area:menu; grid-template-columns:1fr 1fr;} body.ui-tablet #campLog{grid-area:log;} body.ui-tablet .camp .layoutBtn{grid-area:layout;} body.ui-tablet .camp .wallet{grid-area:wallet;}
+body.ui-tablet .btn{font-size:19px; min-height:56px;} body.ui-tablet .btn.mi{min-height:80px; font-size:20px;}
+body.ui-tablet .hint,body.ui-tablet .gdetail p{font-size:20px;} body.ui-tablet .panel.log{font-size:21px;}
+body.ui-tablet #scrBuilder,body.ui-tablet #scrCollection,body.ui-tablet #scrShop{max-width:1100px;}
+body.ui-tablet #scrCharacter{max-width:1000px;}
+body.ui-tablet #starters{max-width:900px; grid-template-columns:repeat(2,minmax(0,1fr));} body.ui-tablet #scrStart .layoutBtn{max-width:900px;}
+body.ui-tablet .grid.mini{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));}
+body.ui-tablet .invgrid{grid-template-columns:repeat(auto-fill,minmax(104px,1fr));}
+body.ui-tablet .panel.custom{max-width:980px;} body.ui-tablet .slots{max-width:520px;}
+body.ui-tablet .controls.battle .btn{min-height:76px; font-size:22px;} body.ui-tablet .qslot{min-height:52px;} body.ui-tablet .qslot .nm{font-size:15px;}

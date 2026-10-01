@@ -93,7 +93,7 @@ function campScene(){
   // the scene fills the frame; pixels stay hard-edged, so this reads as pixel art at any size
   const k=w/SCENE_W;
   cv.style.width=SCENE_W*k+'px'; cv.style.height=SCENE_H*k+'px';
-  const dm=$('#depthMap'); dm.style.width=165*k+'px'; dm.style.height=45*k+'px';
+  const dm=$('#depthMap'); dm.style.width='100%'; dm.style.height='auto';
   const spr=unitSprite({kind:'player',look:gearLook(save)}).img;
   clearInterval(campTimer); const t0=performance.now();
   const tick=()=>{ if(!$('#scrCamp').classList.contains('on')){ clearInterval(campTimer); return; } drawCampScene(cv,pickDepth,(performance.now()-t0)/1000,spr); };
@@ -595,5 +595,18 @@ function frame(now){
   }
   requestAnimationFrame(frame);
 }
+/* ---------------- phone or tablet layout ----------------
+   Phone keeps everything in one narrow column with 4 cards to a row; tablet spreads the camp
+   into two columns, shows 7 cards to a row in battle and uses bigger buttons and text. It
+   starts from the screen's width and the player can switch it; the choice is remembered. */
+const LAYOUT_KEY='hexmancers-layout';
+function getLayout(){ try{ const v=localStorage.getItem(LAYOUT_KEY); if(v==='phone'||v==='tablet') return v; }catch(e){} return innerWidth>=700?'tablet':'phone'; }
+function setLayout(m,keep){ document.body.classList.toggle('ui-tablet',m==='tablet'); document.body.classList.toggle('ui-phone',m!=='tablet');
+  if(keep){ try{ localStorage.setItem(LAYOUT_KEY,m); }catch(e){} }
+  document.querySelectorAll('.layoutBtn').forEach(b=>{ b.innerHTML=`Layout: <b class="${m==='phone'?'on':''}">Phone</b> ⇄ <b class="${m==='tablet'?'on':''}">Tablet</b>`; b.setAttribute('aria-label','Layout: '+m+'. Tap to switch.'); });
+  if($('#scrCamp').classList.contains('on')) campScene();
+  if($('#scrBattle').classList.contains('on')) resizeView(); }
+document.querySelectorAll('.layoutBtn').forEach(b=>b.onclick=()=>setLayout(document.body.classList.contains('ui-tablet')?'phone':'tablet',true));
+setLayout(getLayout());
 if(save) openCamp(); else buildStart();
 requestAnimationFrame(frame);

@@ -70,7 +70,7 @@ function openCamp(){
   if(pickDepth===1&&save.deepest>1) pickDepth=save.deepest;
   const d=activeDeck(), v=validateDeck(d.list,CARDS,save.owned);
   $('#campGold').textContent='🪙 '+save.gold+' gold';
-  $('#campColl').textContent='🂠 '+ownedUnique(save)+' / '+CARD_LIST.length+' cards'+(itemCount(save)?' · ⚔ '+itemCount(save)+' gear':'');
+  $('#campColl').textContent='🂠 '+ownedUnique(save)+' / '+CARD_LIST.length+' cards'+(itemCount(save)?' · ⚔ '+itemCount(save)+' gear':'')+(Object.keys(gearState(save).cursed).length?' · ☠ cursed':'');
   $('#campDeck').textContent=d.name;
   const cnt=$('#campDeckCount'); cnt.textContent=v.count+' / '+RULES.max; cnt.classList.toggle('bad',!v.ok);
   $('#campDeckErr').textContent=v.ok?'':v.errors[0]+(v.errors.length>1?' (+'+(v.errors.length-1)+' more)':'')+'. Fix it in the deck builder.';
@@ -85,6 +85,7 @@ $('#btnDescend').onclick=()=>fight(pickDepth);
 $('#goBuilder').onclick=()=>openBuilder();
 $('#goCollection').onclick=()=>openCollection();
 $('#goShop').onclick=()=>openShop();
+$('#goChar').onclick=()=>openCharacter();
 // Two-tap confirmation in the page itself (browser confirm dialogs are blocked in some viewers):
 // the first tap arms the button and changes its label, a second tap within 3 seconds acts.
 function armed(btn,label,act){ if(btn.dataset.armed){ delete btn.dataset.armed; btn.textContent=btn.dataset.label; act(); return; }
@@ -197,7 +198,7 @@ function renderCollection(){
   const copies=Object.keys(save.owned).reduce((a,id)=>a+(CARDS[id]?save.owned[id]:0),0);
   $('#cTitle').textContent=cf.mine?'My cards':'All cards';
   $('#cCount').textContent=cf.mine?ownedUnique(save)+' cards · '+copies+' copies':ownedUnique(save)+' / '+CARD_LIST.length;
-  renderGear($('#cItems')); $('#cItems').hidden=!cf.mine;
+  $('#cItems').innerHTML=`<button class="item" onclick="openCharacter()">⚔ Gear, enchanting and curses are on the Character screen →</button>`; $('#cItems').hidden=!cf.mine;
   if(cf.mine){ const inDeck={}; activeDeck().list.forEach(id=>inDeck[id]=(inDeck[id]||0)+1);
     const fam={}; Object.keys(save.owned).forEach(id=>{ const c=CARDS[id]; if(c&&save.owned[id]>0) fam[c.color]=(fam[c.color]||0)+save.owned[id]; });
     $('#cProgress').innerHTML=FAM_ORDER.filter(k=>fam[k]).map(k=>`<span class="chip" style="--c:${COLORS[k].c}">${COLORS[k].icon} ${fam[k]}</span>`).join('');
@@ -211,6 +212,59 @@ function renderCollection(){
   paged($('#cGrid'),items,c=>{ const own=save.owned[c.id]||0; const el=cardEl(c,own?`<span class="badge">×${own}</span>`:'',!save.seen[c.id]); el.onclick=()=>showDetail(c); return el; });
 }
 
+/* ---------------- character and gear ----------------
+   Your wizard, what the equipped gear adds up to, the two slots, your scrolls, and every piece
+   you own: equip it, merge two copies to upgrade it, enchant it, or break its curse. */
+function openCharacter(){ ensureStarterGear(save); persist(); $('#chMsg').textContent=''; renderCharacter(); show('scrCharacter'); }
+function charMsg(r){ $('#chMsg').textContent=r.msg||''; $('#chMsg').className='hint'+(r.cursed?' curse':r.ok?'':' warn'); if(r.ok) persist(); renderCharacter(); }
+function renderCharacter(){
+  const s=gearState(save), m=gearMods(save);
+  $('#chGold').textContent='🪙 '+save.gold;
+  // the wizard, large, glowing in the wand's element
+  const cv=$('#chSprite'), cx=cv.getContext('2d'); cx.clearRect(0,0,128,128); cx.imageSmoothingEnabled=false;
+  const col=m.color?COLORS[m.color].c:'#7fd4ff', g=cx.createRadialGradient(64,70,4,64,70,64); g.addColorStop(0,col+'55'); g.addColorStop(1,col+'00'); cx.fillStyle=g; cx.fillRect(0,0,128,128);
+  const spr=unitSprite({kind:'player'}); cx.drawImage(spr.img,0,0,32,32,0,0,128,128);
+  const w=(k,v)=>`<div><span>${k}</span><b>${v}</b></div>`;
+  $('#chStats').innerHTML=w('Max HP',120+(m.hp||0))+w('Wand',Math.max(1,3+m.tap)+' · charged '+Math.max(2,7+m.charged))+w('Element',m.color?COLORS[m.color].icon+' '+COLORS[m.color].name:'none')
+    +w('Fire rate',m.cd&&m.cd!==1?Math.round((1/m.cd-1)*100)+'% faster':'normal')+w('Guard',Math.round((m.guard||0)*100)+'%')+w('Start shield',m.shield||0)
+    +(m.surge?w('4th slot chance',Math.round(m.surge*100)+'%'):'')+(m.slow||m.gauge||m.hurt||m.hpPerShot||m.misfire?w('Curses',modsText({slow:m.slow,gauge:m.gauge,hurt:m.hurt,hpPerShot:m.hpPerShot,misfire:m.misfire})):'');
+  // the two slots
+  const slots=$('#chSlots'); slots.innerHTML='';
+  for(const slot of ['weapon','armor']){ const id=s.gear[slot], d=document.createElement('div'); d.className='gearslot'+(id&&isStuck(save,id)?' cursed':'');
+    d.innerHTML=`<span class="lbl">${slot==='weapon'?'Weapon':'Armor'}</span>`+(id?`<b>${GEAR[id].icon} ${esc(gearName(save,id))}</b><small>${esc(gearText(save,id))}</small>${isStuck(save,id)?'<em>☠ Cursed: '+esc(GEAR[id].curse)+'. It will not come off.</em>':''}`:'<b class="dim">Nothing</b>');
+    slots.appendChild(d); }
+  const sc=$('#chScrolls'); sc.innerHTML='<span class="lbl">Scrolls</span>'+Object.keys(SCROLLS).map(k=>`<span class="chip" style="--c:#7fd4ff">${SCROLLS[k].icon} ${SCROLLS[k].name} ×${s.scrolls[k]||0}</span>`).join('');
+  for(const slot of ['weapon','armor']){ const box=$(slot==='weapon'?'#chWeapons':'#chArmor'); box.innerHTML='';
+    const ids=Object.keys(GEAR).filter(id=>GEAR[id].slot===slot&&s.items[id]>0).sort((a,b)=>GEAR[b].tier-GEAR[a].tier);
+    if(!ids.length) box.innerHTML='<p class="hint">None yet. Fights drop gear now and then; bosses always drop loot.</p>';
+    for(const id of ids){ const G=GEAR[id], on=s.gear[slot]===id, stuck=isStuck(save,id), known=!G.cursed||s.ident[id];
+      const row=document.createElement('div'); row.className='gearrow'+(on?' on':'')+(G.legendary?' legend':'')+(stuck?' cursed':'');
+      row.innerHTML=`<div class="gi">${known?G.icon:'❔'}</div><div class="gt"><b>${esc(gearName(save,id))}</b> <span class="tier">${G.legendary?'✹ Legendary':G.tier?'★'.repeat(G.tier):'junk'}</span>${s.items[id]>1?` <span class="cnt">×${s.items[id]}</span>`:''}
+        <small>${esc(gearText(save,id))}${known&&G.text?' · '+esc(G.text):''}</small>${stuck?`<em>☠ Cursed: ${esc(G.curse)}</em>`:G.cursed&&known?'<em class="ok">Curse broken</em>':''}</div><div class="ga"></div>`;
+      const act=row.querySelector('.ga'), btn=(label,fn,dis)=>{ const b=document.createElement('button'); b.className='btn ghost small'; b.textContent=label; b.disabled=!!dis; b.onclick=fn; act.appendChild(b); };
+      btn(on?'Take off':'Equip',()=>charMsg(equip(save,slot,on?null:id)),on&&stuck);
+      if(s.items[id]>1) btn('Merge → +'+((s.gearLv[id]||0)+1),()=>charMsg(mergeGear(save,id)),(s.gearLv[id]||0)>=MAX_LEVEL);
+      if(!s.ench[id]&&known) btn('Enchant',()=>charMsg(enchantGear(save,id)),!(s.scrolls.enchant>0));
+      if(stuck){ btn('Purify',()=>charMsg(purifyGear(save,id)),!(s.scrolls.purify>0)); btn('Sacrifice '+SACRIFICE+' rune '+G.rune,()=>pickSacrifice(id)); }
+      box.appendChild(row); } }
+}
+// choose the cards to give up to break a curse
+function pickSacrifice(id){ const G=GEAR[id], chosen=[];
+  $('#pkTitle').textContent='Break the curse'; $('#pkBody').textContent='Give up '+SACRIFICE+' cards of rune '+G.rune+'. They leave your collection and your decks for good.';
+  const box=$('#pkCards'); box.innerHTML='';
+  const own=Object.keys(save.owned).map(k=>CARDS[k]).filter(c=>c&&c.code===G.rune&&save.owned[c.id]>0).sort(byFamily);
+  if(!own.length) box.innerHTML='<p class="hint">You own no rune '+G.rune+' cards. Find some, or use a Scroll of Purifying.</p>';
+  for(const c of own){ const el=cardEl(c,`<span class="badge">×${save.owned[c.id]}</span>`); const mark=()=>{ const n=chosen.filter(x=>x===c.id).length; el.classList.toggle('chosen',n>0); el.dataset.n=n?'×'+n:''; };
+    el.onclick=()=>{ const n=chosen.filter(x=>x===c.id).length; if(n<save.owned[c.id]&&chosen.length<SACRIFICE) chosen.push(c.id); else chosen.splice(chosen.indexOf(c.id),1); mark(); $('#pkOk').disabled=chosen.length!==SACRIFICE; $('#pkOk').textContent='Sacrifice '+chosen.length+' / '+SACRIFICE; };
+    box.appendChild(el); }
+  $('#pkOk').disabled=true; $('#pkOk').textContent='Sacrifice 0 / '+SACRIFICE;
+  $('#pkOk').onclick=()=>{ $('#pick').classList.remove('on'); charMsg(sacrificeFor(save,id,chosen)); };
+  $('#pkCancel').onclick=()=>$('#pick').classList.remove('on');
+  $('#pick').classList.add('on');
+}
+$('#chTestAll').onclick=()=>{ Object.keys(GEAR).forEach(id=>{ gearState(save).items[id]=(gearState(save).items[id]||0)+1; }); persist(); charMsg({ok:true,msg:'One of every piece added (cursed ones are still in disguise).'}); };
+$('#chTestScrolls').onclick=()=>{ addScroll(save,'enchant',2); addScroll(save,'purify',2); persist(); charMsg({ok:true,msg:'+2 of each scroll'}); };
+
 /* ---------------- shop ---------------- */
 function openShop(){
   $('#sGold').textContent='🪙 '+save.gold;
@@ -218,9 +272,14 @@ function openShop(){
   const box=$('#famPacks'); box.innerHTML='';
   for(const k of FAM_ORDER){ const b=document.createElement('button'); b.className='btn ghost fam'; b.style.setProperty('--c',COLORS[k].c);
     b.innerHTML=`${COLORS[k].icon} ${COLORS[k].name}<small>${PACK_PRICE.family} gold</small>`; b.disabled=save.gold<PACK_PRICE.family; b.onclick=()=>buyPack(k); box.appendChild(b); }
+  renderScrollShop();
   show('scrShop');
 }
 $('#buyBooster').onclick=()=>buyPack(null);
+function renderScrollShop(){ const box=$('#scrollShop'); box.innerHTML='';
+  for(const k in SCROLLS){ const sc=SCROLLS[k], b=document.createElement('button'); b.className='btn ghost fam'; b.style.setProperty('--c','#7fd4ff');
+    b.innerHTML=`${sc.icon} ${sc.name}<small>${sc.price} gold · you have ${gearState(save).scrolls[k]||0}</small>`; b.disabled=save.gold<sc.price;
+    b.onclick=()=>{ if(save.gold<sc.price) return; save.gold-=sc.price; addScroll(save,k); persist(); tip(sc.name+' bought'); openShop(); }; box.appendChild(b); } }
 function buyPack(color){
   const price=color?PACK_PRICE.family:PACK_PRICE.booster; if(save.gold<price) return;
   save.gold-=price; const res=addCards(save,openPack(save.deepest,color)); persist(); openShop();
@@ -253,14 +312,14 @@ function victory(){
   const b=B, boss=b.enemies.some(e=>e.def.boss);
   const rw=battleRewards(b.enemies.filter(e=>!e.def.minion).map(e=>e.color),b.depth,boss,null,save.owned);
   save.gold+=rw.gold; save.wins++; if(b.depth>=save.deepest) save.deepest=b.depth+1;
-  const dupGold=rw.items.reduce((a,id)=>a+addGear(save,id),0);
+  const loot=rw.items.map(k=>({k, res:addLoot(save,k)}));
   const res=addCards(save,rw.cards); const burnt=settleCharges();
   const depth=b.depth;
   const hero=rw.cards.find(c=>c.rarity==='hero');
-  const got=[...rw.cards.map(c=>c.name),...(rw.gold?['🪙 '+rw.gold+' gold']:[]),...rw.items.map(id=>GEAR[id].icon+' '+GEAR[id].name)];
-  reveal(hero?'♔ A hero joins you!':boss?'Boss defeated!':'Victory!',(hero?hero.name+' answers your call. ':'')+'Depth '+depth+' cleared in '+Math.round(b.time)+'s. '+(boss?'Boss rewards: ':'Your reward: ')+got.join(', ')+'.'+(dupGold?' You already had that gear: it became '+dupGold+' gold.':'')+burnt,res,
+  const got=[...rw.cards.map(c=>c.name),...(rw.gold?['🪙 '+rw.gold+' gold']:[]),...rw.items.map(k=>{ const l=lootLabel(save,k); return l.icon+' '+l.name; })];
+  reveal(hero?'♔ A hero joins you!':boss?'Boss defeated!':'Victory!',(hero?hero.name+' answers your call. ':'')+'Depth '+depth+' cleared in '+Math.round(b.time)+'s. '+(boss?'Boss rewards: ':'Your reward: ')+got.join(', ')+'.'+loot.map(l=>l.res&&l.res.cursed?' '+l.res.msg:l.res&&l.res.ok?' You put it on.':'').join('')+burnt,res,
     [['Camp',()=>{ B=null; pickDepth=depth+1; openCamp(); },true],['Depth '+(depth+1)+' →',()=>fight(depth+1)]],
-    [...(rw.gold?[{icon:'🪙',name:rw.gold+' gold',text:'Spend it on packs in the shop'}]:[]),...rw.items.map(id=>({icon:GEAR[id].icon,name:GEAR[id].name+' '+'★'.repeat(GEAR[id].tier),text:(GEAR[id].slot==='weapon'?'Weapon: ':'Armor: ')+gearText(GEAR[id])}))]);
+    [...(rw.gold?[{icon:'🪙',name:rw.gold+' gold',text:'Spend it on packs in the shop'}]:[]),...rw.items.map(k=>lootLabel(save,k))]);
 }
 function defeat(){
   const lost=Math.floor(save.gold*.2); save.gold-=lost; const burnt=settleCharges();
@@ -314,15 +373,6 @@ function renderCustom(){
   $('#custEmpty').textContent=wandOnly(p)?'Your deck is empty. Fight on with your wand!':!p.draw.length?'Deck empty: these are your last cards.':'';
   const empty=Math.max(0,RULES.slots-p.queue.length);
   $('#btnFight').textContent=wandOnly(p)?'Fight!':'Fight!'+(empty?' (+'+empty+' draw next time)':'');
-}
-// Your gear: every weapon and armor you own; tap one to equip it (tap the equipped one to take it off).
-function renderGear(box){
-  const own=Object.keys(GEAR).filter(id=>(save.items||{})[id]); save.gear=save.gear||{};
-  box.innerHTML='<span class="lbl">Your gear '+(own.length?'· tap to equip':'')+'</span>'+(own.length?'':'<span class="none">No gear yet. Normal fights sometimes give a weapon or armor; bosses always do.</span>');
-  for(const slot of ['weapon','armor']) for(const id of own.filter(id=>GEAR[id].slot===slot)){ const g=GEAR[id], on=save.gear[slot]===id, b=document.createElement('button');
-    b.className='item'+(on?' on':''); b.innerHTML=`${g.icon} ${esc(g.name)} <b>${'★'.repeat(g.tier)}</b>${on?' <em>equipped</em>':''}<small>${slot==='weapon'?'Weapon':'Armor'}: ${esc(gearText(g))}</small>`;
-    b.onclick=()=>{ save.gear[slot]=on?null:id; persist(); renderGear(box); tip(on?g.name+' taken off':g.name+' equipped'); };
-    box.appendChild(b); }
 }
 /* Drag and drop on the Custom screen. A tap moves a card between hand and queue, a hold shows
    its detail, and a drag puts it exactly where it is dropped: a slot (swapping if full), a

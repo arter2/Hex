@@ -33,6 +33,7 @@
       <button id="goBuilder" class="btn ghost">Deck builder</button>
       <button id="goCollection" class="btn ghost">My cards</button>
       <button id="goShop" class="btn ghost">Shop</button>
+      <button id="goChar" class="btn ghost">Character</button>
     </div>
     <p class="hint center">Each win gives one reward: a card, gold or a piece of gear (equip it in My cards). Bosses (every 4th depth) give more. Deeper fights drop rarer cards. Losing costs 20% of your gold; you keep your cards.</p>
     <button id="btnReset" class="link">Reset save</button>
@@ -63,6 +64,21 @@
     <div id="cGrid" class="grid mini"></div>
   </section>
 
+  <!-- character and gear -->
+  <section id="scrCharacter" class="screen">
+    <div class="bar"><button class="btn ghost back">←</button><h2>Character</h2><span id="chGold" class="count gold"></span></div>
+    <div class="charbox">
+      <canvas id="chSprite" width="128" height="128"></canvas>
+      <div id="chStats" class="charstats"></div>
+    </div>
+    <div id="chSlots" class="gearslots"></div>
+    <div id="chScrolls" class="items-row"></div>
+    <div id="chMsg" class="hint"></div>
+    <h3>Wands and staffs</h3><div id="chWeapons" class="gearlist"></div>
+    <h3>Armor</h3><div id="chArmor" class="gearlist"></div>
+    <div class="testbar"><span class="dim">Testing</span><button id="chTestAll" class="btn ghost">Get one of every piece</button><button id="chTestScrolls" class="btn ghost">+2 of each scroll</button></div>
+  </section>
+
   <!-- shop -->
   <section id="scrShop" class="screen">
     <div class="bar"><button class="btn ghost back">←</button><h2>Shop</h2><span id="sGold" class="count gold"></span></div>
@@ -73,6 +89,10 @@
     <div class="panel flat">
       <h3>Family pack</h3><p class="hint">5 cards from one family of your choice.</p>
       <div id="famPacks" class="fams"></div>
+    </div>
+    <div class="panel flat">
+      <h3>Scrolls</h3><p class="hint">Use them on the Character screen.</p>
+      <div id="scrollShop" class="fams two"></div>
     </div>
   </section>
 
@@ -142,11 +162,19 @@
       <button id="dtClose" class="btn ghost">Close</button>
     </div>
   </div>
+  <div id="pick" class="overlay">
+    <div class="panel">
+      <h2 id="pkTitle"></h2><p id="pkBody" class="hint"></p>
+      <div id="pkCards" class="grid mini"></div>
+      <div class="controls two"><button id="pkCancel" class="btn ghost">Cancel</button><button id="pkOk" class="btn">Sacrifice</button></div>
+    </div>
+  </div>
   <div id="tip" class="tip"></div>
 </div>
 <script src="cards.js"></script>
 <script src="engine.js"></script>
 <script src="collection.js"></script>
+<script src="gear.js"></script>
 <script src="battle.js"></script>
 <script src="enemies.js"></script>
 <script src="art.js"></script>

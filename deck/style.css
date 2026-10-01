@@ -29,7 +29,7 @@ h3{font:800 16px var(--font-h); margin:14px 0 6px;}
 .panel.flat{max-width:460px; margin-bottom:12px; text-align:left;}
 .depthpick{display:grid; grid-template-columns:52px 1fr 52px; gap:8px;}
 .btn.sq{padding:0; font-size:24px;}
-.menu{display:grid; grid-template-columns:repeat(3,1fr); gap:8px; width:100%; max-width:460px;}
+.menu{display:grid; grid-template-columns:repeat(2,1fr); gap:8px; width:100%; max-width:460px;}
 .count.gold{color:var(--gold);}
 .btn{font:700 17px var(--font-b); color:#fff; background:linear-gradient(#1f6fb8,#0e3a66); border:1px solid rgba(255,255,255,.25); border-radius:12px;
   padding:10px 16px; cursor:pointer; min-height:48px; display:inline-flex; flex-direction:column; align-items:center; justify-content:center; user-select:none; touch-action:manipulation;}
@@ -281,3 +281,32 @@ select,.filters input{font:600 14px var(--font-b); color:var(--text); background
 #cGrid:has(.recipe){display:block;}
 #hpTxt{white-space:nowrap;}
 #hudTop .info{min-width:0; max-width:62vw; overflow:hidden;} #hudTop .info span{overflow:hidden; text-overflow:ellipsis; max-width:100%;}
+/* character and gear */
+#scrCharacter{max-width:760px; margin:0 auto; padding-bottom:40px;}
+.charbox{display:grid; grid-template-columns:128px 1fr; gap:12px; align-items:center; background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:10px;}
+#chSprite{width:128px; height:128px; image-rendering:pixelated; border-radius:10px; background:radial-gradient(circle at 50% 70%,#0e3a66,#04080c 70%);}
+.charstats{display:grid; grid-template-columns:1fr 1fr; gap:4px 12px; font-size:13px;}
+.charstats div{display:flex; justify-content:space-between; gap:6px; border-bottom:1px solid rgba(127,212,255,.12); padding:2px 0;}
+.charstats span{color:var(--dim);} .charstats b{color:var(--text); text-align:right;}
+.gearslots{display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:10px 0 4px;}
+.gearslot{background:var(--panel2); border:1px solid #f2c94c; border-radius:12px; padding:8px 10px; display:flex; flex-direction:column; gap:2px; min-height:70px;}
+.gearslot .lbl,.gearlist .lbl{font-size:11px; text-transform:uppercase; letter-spacing:.05em; color:var(--dim); font-weight:700;}
+.gearslot small{font-size:12px; color:var(--dim);} .gearslot em{font-style:normal; font-size:12px; color:#ff5d6c;}
+.gearslot.cursed,.gearrow.cursed{border-color:#ff5d6c; box-shadow:0 0 12px rgba(255,93,108,.25);}
+.gearlist{display:grid; gap:6px;}
+.gearrow{display:grid; grid-template-columns:36px 1fr; gap:4px 8px; align-items:center; background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:8px;}
+.gearrow.on{border-color:#f2c94c; background:color-mix(in srgb,#f2c94c 8%,var(--panel));}
+.gearrow.legend .gt b{color:#f2c94c; text-shadow:0 0 8px rgba(242,201,76,.5);}
+.gearrow .gi{font-size:26px; text-align:center;} .gearrow .gt{display:flex; flex-direction:column; gap:1px; min-width:0;}
+.gearrow .gt small{font-size:12px; color:var(--dim);} .gearrow .tier{font-size:12px; color:#f2c94c;} .gearrow .cnt{font-size:12px; color:#39ff8a; font-weight:800;}
+.gearrow em{font-style:normal; font-size:12px; color:#ff5d6c;} .gearrow em.ok{color:#39ff8a;}
+.gearrow .ga{grid-column:1/-1; display:flex; flex-wrap:wrap; gap:6px;}
+.btn.small{min-height:36px; padding:4px 10px; font-size:14px;}
+.hint.curse{color:#ff5d6c; font-weight:700;}
+.testbar{display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-top:16px; padding-top:10px; border-top:1px dashed var(--line);}
+.fams.two{grid-template-columns:1fr 1fr;}
+.card.chosen{outline:3px solid #ff5d6c; outline-offset:-3px;}
+.card.chosen::after{content:attr(data-n); position:absolute; bottom:4px; right:6px; background:#ff5d6c; color:#fff; font-weight:800; border-radius:99px; padding:0 6px;}
+@media (max-width:420px){ .charbox{grid-template-columns:96px 1fr;} #chSprite{width:96px; height:96px;} .charstats{grid-template-columns:1fr;} }
+.gearrow.on.cursed{border-color:#ff5d6c; background:color-mix(in srgb,#ff5d6c 8%,var(--panel));}
+.card .badge{top:auto; bottom:30px; right:6px;}

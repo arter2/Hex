@@ -4,6 +4,7 @@ const D=require('./cards.js');
 const E=require('./engine.js');
 Object.assign(global,D,E);   // collection.js uses the browser globals
 const C=require('./collection.js');
+const G=require('./gear.js'); Object.assign(global,G);   // collection.js rolls loot from gear.js
 
 let seed=1; const rng=()=>((seed=(seed*16807)%2147483647)-1)/2147483646;
 const t=(name,fn)=>{ try{ fn(); console.log('ok  '+name); }catch(e){ console.log('FAIL '+name+'\n  '+e.message); process.exitCode=1; } };
@@ -224,21 +225,50 @@ t('combos are uncommon: with runes, a starter hand rarely offers a flush or stra
 t('a normal fight gives exactly one reward: a card, gold or an item; a boss gives more', ()=>{
   const kinds={card:0,gold:0,item:0};
   for(let i=0;i<3000;i++){ const r=C.battleRewards(['fire','frost'],3,false,rng), n=r.cards.length+(r.gold?1:0)+r.items.length;
-    assert.strictEqual(n,1); kinds[r.cards.length?'card':r.gold?'gold':'item']++; r.items.forEach(id=>assert(C.GEAR[id])); }
+    assert.strictEqual(n,1); kinds[r.cards.length?'card':r.gold?'gold':'item']++; r.items.forEach(k=>assert(G.GEAR[k]||k.startsWith('scroll:'),k)); }
   assert(kinds.card>1400&&kinds.gold>700&&kinds.item>300,JSON.stringify(kinds));
   const b=C.battleRewards(['fire'],4,true,rng); assert(b.cards.length+(b.gold?1:0)+b.items.length>=4);
 });
-t('gear: weapons and armor, one of each equipped, duplicates become gold, tiers by depth', ()=>{
-  const s=C.newSave(D.STARTERS[0]); assert.strictEqual(C.itemCount(s),0);
-  assert.strictEqual(C.addGear(s,'oak_wand'),0); assert.strictEqual(s.gear.weapon,'oak_wand','the first weapon equips itself');
-  C.addGear(s,'storm_scepter'); assert.strictEqual(s.gear.weapon,'oak_wand'); const g0=s.gold; assert.strictEqual(C.addGear(s,'oak_wand'),50); assert.strictEqual(s.gold,g0+50);
-  C.addGear(s,'iron_mail'); s.gear.weapon='storm_scepter'; const m=C.gearMods(s); assert.strictEqual(m.tap,2); assert.strictEqual(m.charged,4); assert.strictEqual(m.guard,.1); assert.strictEqual(m.hp,10);
-  for(let i=0;i<200;i++){ assert(C.GEAR[C.rollGear(1,rng)].tier<=1); assert(C.GEAR[C.rollGear(9,rng)].tier>=2); }
-  assert(Object.values(C.GEAR).every(g=>C.gearText(g).length>5));
+t('gear: every save starts with the basic wand; copies merge up to +3; enchanting adds one enchantment', ()=>{
+  const s=C.newSave(D.STARTERS[0]); assert.strictEqual(s.gear.weapon,'basic_wand'); assert.strictEqual(G.itemCount(s),1);
+  const base=G.gearMods(s); assert.strictEqual(base.tap,0);
+  G.addGear(s,'ice_wand'); assert.strictEqual(s.gear.weapon,'basic_wand','a full slot is not changed');
+  assert(G.equip(s,'weapon','ice_wand').ok); let m=G.gearMods(s); assert.strictEqual(m.color,'frost'); assert(m.chill>0);
+  assert(!G.mergeGear(s,'ice_wand').ok,'one copy cannot merge'); G.addGear(s,'ice_wand'); G.addGear(s,'ice_wand');
+  assert(G.mergeGear(s,'ice_wand').ok); assert(G.mergeGear(s,'ice_wand').ok); assert.strictEqual(s.gearLv.ice_wand,2); assert.strictEqual(s.items.ice_wand,1);
+  m=G.gearMods(s); assert.strictEqual(m.tap,2); assert.strictEqual(m.charged,4); assert(G.gearName(s,'ice_wand').endsWith('+2'));
+  assert(!G.enchantGear(s,'ice_wand').ok,'needs a scroll'); G.addScroll(s,'enchant'); assert(G.enchantGear(s,'ice_wand',()=>.99).ok); assert(s.ench.ice_wand); assert(!G.enchantGear(s,'ice_wand').ok,'one enchantment');
+  ['broken_wand','basic_wand','ice_wand','volt_wand','dark_wand','light_wand'].forEach(id=>assert(G.GEAR[id]&&G.GEAR[id].slot==='weapon',id));
+  assert(Object.values(G.GEAR).filter(g=>g.legendary).length>=4);
+});
+t('cursed gear hides its name, sticks once worn, and breaks with a scroll or a sacrifice of its rune', ()=>{
+  const s=C.newSave(D.STARTERS[0]); G.addGear(s,'leaden_robe');
+  assert.strictEqual(s.gear.armor,'leaden_robe','an empty slot puts it on at once'); assert(G.isStuck(s,'leaden_robe')); assert.strictEqual(G.gearName(s,'leaden_robe'),'Leaden Robe');
+  assert(G.gearMods(s).slow>1,'the drawback applies'); assert(!G.equip(s,'armor',null).ok,'it will not come off');
+  const t=C.newSave(D.STARTERS[0]); t.gear.armor='padded_robe'; t.items.padded_robe=1; G.addGear(t,'omen_cloak'); assert.strictEqual(G.gearName(t,'omen_cloak'),'Silken Cloak','disguised until worn');
+  assert(G.gearText(t,'omen_cloak').startsWith('Unidentified'));
+  // break the robe's curse with 3 rune A cards
+  const runeA=Object.keys(s.owned).filter(id=>D.CARDS[id].code==='A'); assert(runeA.length);
+  const pick=[]; for(const id of runeA) for(let i=0;i<s.owned[id]&&pick.length<3;i++) pick.push(id);
+  const wrong=Object.keys(s.owned).find(id=>D.CARDS[id].code!=='A'); assert(!G.sacrificeFor(s,'leaden_robe',[wrong,wrong,wrong]).ok,'other runes will not do');
+  const before=pick.reduce((a,id)=>a+s.owned[id],0)/pick.length;
+  assert(G.sacrificeFor(s,'leaden_robe',pick).ok); assert(!G.isStuck(s,'leaden_robe')); assert(!G.gearMods(s).slow,'a broken curse loses its drawback'); assert(G.gearMods(s).hp>=60,'and keeps its strength');
+  assert(s.decks[0].list.every(id=>(s.owned[id]||0)>=s.decks[0].list.filter(x=>x===id).length),'decks only hold cards you still own');
+  assert(G.equip(s,'armor',null).ok,'now it comes off');
+  // or a scroll
+  const u=C.newSave(D.STARTERS[0]); G.addGear(u,'thirsting_wand'); assert(G.equip(u,'weapon','thirsting_wand').cursed); assert(!G.purifyGear(u,'thirsting_wand').ok);
+  G.addScroll(u,'purify'); assert(G.purifyGear(u,'thirsting_wand').ok); assert(!G.gearMods(u).hpPerShot);
+});
+t('loot: scrolls, gear by depth, rare legendaries, some cursed pieces', ()=>{
+  const n={scroll:0,legend:0,cursed:0,t3:0}; const N=4000;
+  for(let i=0;i<N;i++){ const k=G.rollLoot(9,rng,true); if(k.startsWith('scroll:')){ n.scroll++; continue; } const g=G.GEAR[k]; assert(g,k); if(g.legendary) n.legend++; else if(g.cursed) n.cursed++; else if(g.tier===3) n.t3++; }
+  assert(n.scroll>600&&n.scroll<1000,JSON.stringify(n)); assert(n.legend>150&&n.legend<400,JSON.stringify(n)); assert(n.cursed>300,JSON.stringify(n));
+  for(let i=0;i<500;i++){ const k=G.rollLoot(1,rng,false); if(G.GEAR[k]&&!G.GEAR[k].legendary&&!G.GEAR[k].cursed) assert(G.GEAR[k].tier<=1,k); }
+  const s=C.newSave(D.STARTERS[0]); G.addLoot(s,'scroll:purify'); assert.strictEqual(s.scrolls.purify,1); assert(G.lootLabel(s,'thirsting_wand').name==='Gleaming Wand');
 });
 t('potions are gray cards, and potions in an old save become those cards', ()=>{
   assert.strictEqual(D.POTIONS.length,4); D.POTIONS.forEach(c=>{ assert(D.CARDS[c.id]); assert.strictEqual(c.color,'gray'); assert(D.cardText(c).length>5); });
   const s=C.newSave(D.STARTERS[0]); s.items={draught:2,wind:1};
   global.localStorage={getItem:()=>JSON.stringify(s)}; const m=C.loadSave(); delete global.localStorage;
-  assert.strictEqual(m.owned.potion_heal,2); assert.strictEqual(m.owned.potion_wind,1); assert.deepStrictEqual(m.items,{});
+  assert.strictEqual(m.owned.potion_heal,2); assert.strictEqual(m.owned.potion_wind,1); assert(!m.items.draught&&!m.items.wind); assert.strictEqual(m.gear.weapon,'basic_wand','old saves get the basic wand');
 });

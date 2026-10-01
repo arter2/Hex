@@ -74,11 +74,13 @@ function startBattle(list,depth,hooks,opts){
   return B;
 }
 
-// Your equipped weapon and armor (see GEAR in collection.js): wand damage and speed, max HP,
-// damage taken off every hit, and a shield at the start of the fight.
+// Your equipped weapon and armor (see gear.js): wand damage, speed and element, max HP, damage
+// taken off every hit, a starting shield, and any curse's drawback.
 function applyGear(p,m){
   m=Object.assign({tap:0,charged:0,cd:1,charge:1,hp:0,guard:0,shield:0},m||{});
-  p.wand={tap:3+m.tap, charged:7+m.charged, cd:m.cd, charge:.9*m.charge}; p.guard=m.guard;
+  p.wand={tap:Math.max(1,3+m.tap), charged:Math.max(2,7+m.charged), cd:m.cd, charge:.9*m.charge, color:m.color||null,
+    chill:m.chill||0, zap:m.zap||0, drain:m.drain||0, glow:m.glow||0, burn:m.burn||0, misfire:m.misfire||0, hpPerShot:m.hpPerShot||0};
+  p.guard=m.guard; p.slow=m.slow||1; p.hurt=m.hurt||1; p.gaugeMult=m.gauge||1;
   p.maxHp+=m.hp; p.hp=p.maxHp;
   if(m.shield){ p.barrier=m.shield; p.shieldTurns=2; }
 }
@@ -167,6 +169,7 @@ function hitPlayer(dmg){
   if(p.dodge){ p.dodge=false; floater('dodge',p.tile,'#6fd6ff'); return; }
   if(p.barrier>0){ const a=Math.min(p.barrier,dmg); p.barrier-=a; dmg-=a; floater('🛡'+a,p.tile,'#6fd6ff'); }
   if(p.guard&&dmg>0) dmg=Math.max(1,Math.round(dmg*(1-p.guard)));
+  if(p.hurt&&p.hurt!==1&&dmg>0) dmg=Math.round(dmg*p.hurt);
   if(dmg<=0) return;
   p.hp-=dmg; p.hurtT=.25; shake(dmg>=15?8:5); floater('-'+dmg,p.tile,'#ff5d6c',true); flash(p.tile,'#ff5d6c',1); B.hooks.onHurt&&B.hooks.onHurt(dmg);
   // Divine Intervention: a lethal hit leaves you at 1 HP, then heals
@@ -373,8 +376,13 @@ function fireWand(charged){
   const b=B, p=b.player; if(b.phase!=='fight'||p.wandCd>0) return;
   const w=p.wand||{tap:3,charged:7,cd:1};
   p.wandCd=(charged?.5:.3)*w.cd;
+  if(w.hpPerShot) payHp(w.hpPerShot);
+  if(w.misfire&&Math.random()<w.misfire){ floater('fizzle',p.tile,'#93a9ba'); burst(p.tile,'#56606a',5,1); return; }
   const dmg=Math.round((charged?w.charged:w.tap)*(p.powerT>0?2.5:1));
-  shoot(p.tile,lineTiles(p.tile,DIRS.E),{dmg,from:'p',wand:true,big:charged});
+  // an elemental wand shoots in its color, and its effects ride on the shot like a card's
+  const card=w.color||w.burn||w.drain||w.zap||w.chill||w.glow?{id:'wand', name:'Wand', color:w.color, burn:w.burn||0, drain:w.drain||0,
+    freeze:charged?w.chill:0, stun:w.zap&&Math.random()<w.zap?.5:0, mend:charged?w.glow:0}:null;
+  shoot(p.tile,lineTiles(p.tile,DIRS.E),{dmg,from:'p',wand:true,big:charged,card});
 }
 
 /* ---------------- simulation ---------------- */
@@ -401,13 +409,13 @@ function update(dt){
   if(b.phase!=='fight'){ b.shots=[]; b.teles=[]; return; }
 
   const p=b.player, haste=p.hasteT>0;
-  b.gauge=Math.min(GAUGE_MAX,b.gauge+dt*(heroOn('volta')?1.5:1));
+  b.gauge=Math.min(GAUGE_MAX,b.gauge+dt*(heroOn('volta')?1.5:1)*(p.gaugeMult||1));
   ['moveCd','wandCd','hurtT'].forEach(k=>p[k]=Math.max(0,p[k]-rdt));
   ['castCd','invT','powerT','pactT','courageT','hasteT','regenT'].forEach(k=>p[k]=Math.max(0,p[k]-dt));
   if(p.regenT>0){ p.regenAcc=(p.regenAcc||0)+p.regenAmt*dt; if(p.regenAcc>=5){ healPlayer(5); p.regenAcc-=5; } }
   if(heroOn('thornfather')){ p.heroAcc=(p.heroAcc||0)+3*dt; if(p.heroAcc>=6){ healPlayer(6); p.heroAcc-=6; } }
   if(p.charging) p.chargeT=Math.min(1.2,p.chargeT+rdt);
-  if(p.path.length&&p.moveCd<=0){ const n=p.path[0]; if(n.side==='p'&&!n.occ){ p.tile.occ=null; p.tile=n; n.occ=p; p.path.shift(); p.moveCd=(haste?.08:.14)*(icy(n)?2.2:1); } else p.path=[]; }
+  if(p.path.length&&p.moveCd<=0){ const n=p.path[0]; if(n.side==='p'&&!n.occ){ p.tile.occ=null; p.tile=n; n.occ=p; p.path.shift(); p.moveCd=(haste?.08:.14)*(icy(n)?2.2:1)*(p.slow||1); } else p.path=[]; }
 
   // your shots and enemy shots travel tile by tile
   for(const s of b.shots){
@@ -765,7 +773,8 @@ const DRAW={
     const foe=alive().sort((m,n)=>hexDist(p.tile,m.tile)-hexDist(p.tile,n.tile))[0];
     const flip=facing(p,foe,false), r=drawSprite(ctx,p,T,S,{alpha:p.invT>0?.45:1,flip,bob:.03,flash:p.hurtT>0?p.hurtT*3:0});
     // the staff's orb glows, and grows while the wand charges
-    const glow=p.charging?(p.chargeT>=chargeNeed(p)?'#ffffff':'#7fd4ff'):p.powerT>0?'#ff6a3d':null;
+    const wc=p.wand&&p.wand.color?COLORS[p.wand.color].c:null;
+    const glow=p.charging?(p.chargeT>=chargeNeed(p)?'#ffffff':wc||'#7fd4ff'):p.powerT>0?'#ff6a3d':wc;
     if(glow){ const ox=r.x+(flip?-1:1)*9*r.k, oy=r.top+4*r.k; ctx.fillStyle=glow; ctx.shadowColor=glow; ctx.shadowBlur=10+(p.charging?p.chargeT*18:0);
       ctx.globalAlpha=.85; ctx.beginPath(); ctx.arc(ox,oy,S*(.12+(p.charging?p.chargeT*.12:0)),0,TAU); ctx.fill(); ctx.shadowBlur=0; ctx.globalAlpha=1; }
     const [x,y]=proj(posOf(p)[0],0,posOf(p)[1]);

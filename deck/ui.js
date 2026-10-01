@@ -44,7 +44,7 @@ function longPress(el,c){
 function reveal(title,body,results,buttons,extras){
   $('#rvTitle').textContent=title; $('#rvBody').textContent=body;
   const g=$('#rvCards'); g.innerHTML='';
-  (extras||[]).forEach((x,i)=>{ const el=document.createElement('div'); el.className='reward flip'; el.style.animationDelay=(i*.12)+'s'; el.innerHTML=`<b>${x.icon}</b><span>${esc(x.name)}</span><small>${esc(x.text)}</small>`; g.appendChild(el); });
+  (extras||[]).forEach((x,i)=>{ const el=document.createElement('div'); el.className='reward flip'; el.style.animationDelay=(i*.12)+'s'; el.innerHTML=`<b>${x.pic||x.icon}</b><span>${esc(x.name)}</span><small>${esc(x.text)}</small>`; g.appendChild(el); });
   results.forEach((r,i)=>{ const el=cardEl(r.card,r.isNew?'<span class="badge new">NEW</span>':''); el.style.animationDelay=(i*.12)+'s'; el.classList.add('flip'); el.onclick=()=>showDetail(r.card); g.appendChild(el); });
   const bb=$('#rvBtns'); bb.innerHTML=''; bb.classList.toggle('two',buttons.length>1);
   buttons.forEach(([label,fn,ghost])=>{ const b=document.createElement('button'); b.className='btn'+(ghost?' ghost':''); b.textContent=label; b.onclick=()=>{ $('#reveal').classList.remove('on'); fn(); }; bb.appendChild(b); });
@@ -70,16 +70,41 @@ function openCamp(){
   pickDepth=Math.min(Math.max(1,pickDepth),save.deepest);
   if(pickDepth===1&&save.deepest>1) pickDepth=save.deepest;
   const d=activeDeck(), v=validateDeck(d.list,CARDS,save.owned);
-  $('#campGold').textContent='🪙 '+save.gold+' gold';
-  $('#campColl').textContent='🂠 '+ownedUnique(save)+' / '+CARD_LIST.length+' cards'+(itemCount(save)?' · ⚔ '+itemCount(save)+' gear':'')+(Object.keys(gearState(save).cursed).length?' · ☠ cursed':'');
+  $('#campGold').innerHTML=uiIcon('coin',32)+save.gold;
+  $('#campColl').innerHTML=uiIcon('cards',32)+ownedUnique(save)+(Object.keys(gearState(save).cursed).length?' <em class="curse">cursed</em>':'');
   $('#campDeck').textContent=d.name;
-  const cnt=$('#campDeckCount'); cnt.textContent=v.count+' / '+RULES.max; cnt.classList.toggle('bad',!v.ok);
+  const cnt=$('#campDeckCount'); cnt.textContent=v.count+'/'+RULES.max; cnt.classList.toggle('bad',!v.ok);
   $('#campDeckErr').textContent=v.ok?'':v.errors[0]+(v.errors.length>1?' (+'+(v.errors.length-1)+' more)':'')+'. Fix it in the deck builder.';
-  $('#btnDescend').textContent='Fight at depth '+pickDepth+(pickDepth%4===0?' · boss':'');
+  $('#campArea').textContent=areaOf(pickDepth).name;
+  const nextBoss=Math.ceil(pickDepth/4)*4; $('#campBoss').innerHTML=pickDepth%4===0?'<b class="gold">Boss here</b>':'Boss at <b class="gold">'+nextBoss+'</b>';
+  $('#btnDescend').textContent='Descend to '+pickDepth;
   $('#btnDescend').disabled=!v.ok;
   $('#depthDown').disabled=pickDepth<=1; $('#depthUp').disabled=pickDepth>=save.deepest;
-  show('scrCamp');
+  drawDepthMap($('#depthMap'),pickDepth,save.deepest);
+  $('#campLog').innerHTML=(campLog.length?campLog:[{t:'Each win gives one reward: a card, gold or a piece of gear. Bosses every 4th depth give more. Losing costs 20% of your gold.',c:'dim'}])
+    .slice(-4).map(l=>`<div class="${l.c||''}">${esc(l.t)}</div>`).join('');
+  show('scrCamp'); campScene();
 }
+// the camp scene: the area you are about to enter, your wizard in its gear, and a fire that
+// flickers while the camp is open. Drawn at a whole-number zoom so pixels stay square.
+let campTimer=0;
+function campScene(){
+  const cv=$('#campScene'), box=cv.parentElement, w=box.clientWidth||330;
+  // the scene fills the frame; pixels stay hard-edged, so this reads as pixel art at any size
+  const k=w/SCENE_W;
+  cv.style.width=SCENE_W*k+'px'; cv.style.height=SCENE_H*k+'px';
+  const dm=$('#depthMap'); dm.style.width=165*k+'px'; dm.style.height=45*k+'px';
+  const spr=unitSprite({kind:'player',look:gearLook(save)}).img;
+  clearInterval(campTimer); const t0=performance.now();
+  const tick=()=>{ if(!$('#scrCamp').classList.contains('on')){ clearInterval(campTimer); return; } drawCampScene(cv,pickDepth,(performance.now()-t0)/1000,spr); };
+  tick(); campTimer=setInterval(tick,140);
+}
+// the last few things that happened, shown in the camp log
+const campLog=[];
+const lootPic=(k,n=64)=>k.startsWith('scroll:')?uiIcon('scroll',n,k==='scroll:purify'?'#f2c94c':'#8fe4ff'):gearIcon(k,n);
+function logCamp(t,c){ campLog.push({t,c}); if(campLog.length>12) campLog.shift(); }
+document.querySelectorAll('.btn.mi').forEach(b=>b.insertAdjacentHTML('afterbegin',uiIcon(b.dataset.icon,48)));
+addEventListener('resize',()=>{ if($('#scrCamp').classList.contains('on')) campScene(); });
 $('#depthDown').onclick=()=>{ pickDepth--; openCamp(); };
 $('#depthUp').onclick=()=>{ pickDepth++; openCamp(); };
 $('#btnDescend').onclick=()=>fight(pickDepth);
@@ -232,12 +257,15 @@ function renderCharacter(){
   $('#chGold').textContent='🪙 '+save.gold;
   // the wizard, large, glowing in the weapon's element
   const cv=$('#chSprite'), cx=cv.getContext('2d'); cx.clearRect(0,0,256,256); cx.imageSmoothingEnabled=false;
-  const col=m.color?COLORS[m.color].c:'#7fd4ff', g=cx.createRadialGradient(128,150,8,128,150,128); g.addColorStop(0,col+'44'); g.addColorStop(1,col+'00'); cx.fillStyle=g; cx.fillRect(0,0,256,256);
-  cx.fillStyle='rgba(0,0,0,.45)'; cx.beginPath(); cx.ellipse(128,244,70,10,0,0,Math.PI*2); cx.fill();
+  const col=m.color?COLORS[m.color].c:'#7fd4ff';
+  // the weapon's element glows around the wizard in two dithered rings of sprite-sized pixels
+  cx.fillStyle=col; for(let y=0;y<32;y++) for(let x=0;x<32;x++){ const r=Math.hypot(x-15.5,(y-18)*1.1);
+    if(r<9||(r<14&&(x+y)%2===0)){ cx.globalAlpha=r<9?.22:.16; cx.fillRect(x*8,y*8,8,8); } } cx.globalAlpha=1;
+  cx.fillStyle='rgba(0,0,0,.5)'; cx.fillRect(72,240,112,8); cx.fillRect(88,248,80,4);
   const spr=unitSprite({kind:'player',look:gearLook(save)}); cx.drawImage(spr.img,0,0,32,32,0,0,256,256);
   // the slots
   const slotEl=slot=>{ const id=s.gear[slot], d=document.createElement('div'); if(id) d.style.setProperty('--fc',COLORS[GEAR[id].family].c); d.className='dslot'+(id&&isStuck(save,id)?' cursed':'')+(id?' full':'')+(chSel&&chSel.slot===slot?' sel':''); d.dataset.slot=slot;
-    d.innerHTML=`<span class="lbl">${SLOT_NAMES[slot]}</span>`+(id?`<b class="ic">${GEAR[id].icon}</b><small>${esc(gearName(save,id))}</small>`:'<b class="ic dim">·</b><small class="dim">empty</small>');
+    d.innerHTML=`<span class="lbl">${SLOT_NAMES[slot]}</span>`+(id?`<b class="ic">${gearIcon(id,48)}</b><small>${esc(gearName(save,id))}</small>`:'<b class="ic dim">·</b><small class="dim">empty</small>');
     d.onclick=()=>{ chSel=id?{id,slot}:null; if(!id){ chTab=slotType(slot); } renderCharacter(); };
     if(id) dragGear(d,id,slot);
     return d; };
@@ -252,7 +280,7 @@ function renderCharacter(){
     +(m.slow&&m.slow!==1?w('Move speed',m.slow<1?Math.round((1-m.slow)*100)+'% faster':Math.round((m.slow-1)*100)+'% slower'):'')+(m.castSlow&&m.castSlow>1?w('Casting',Math.round((m.castSlow-1)*100)+'% slower'):'')
     +(m.surge?w('4th slot chance',pct(m.surge)):'')+(m.gold?w('Gold','+'+pct(m.gold)):'')+(m.gauge||m.hurt||m.hpPerShot||m.misfire?w('Curses',modsText({gauge:m.gauge,hurt:m.hurt,hpPerShot:m.hpPerShot,misfire:m.misfire})):'')
     +activeSets(save).map(k=>w('Set ✦',SETS[k].name)).join('');
-  $('#chScrolls').innerHTML='<span class="lbl">Scrolls</span>'+Object.keys(SCROLLS).map(k=>`<span class="chip" style="--c:#7fd4ff">${SCROLLS[k].icon} ${SCROLLS[k].name} ×${s.scrolls[k]||0}</span>`).join('');
+  $('#chScrolls').innerHTML='<span class="lbl">Scrolls</span>'+Object.keys(SCROLLS).map(k=>`<span class="chip" style="--c:#7fd4ff">${lootPic('scroll:'+k,24)} ${SCROLLS[k].name} ×${s.scrolls[k]||0}</span>`).join('');
   // inventory tabs and grid
   const tabs=$('#chTabs'); tabs.innerHTML='';
   for(const [k,label] of INV_TABS){ const b=document.createElement('button'); b.className='chip'+(chTab===k?' on':''); b.textContent=label; b.onclick=()=>{ chTab=k; renderCharacter(); }; tabs.appendChild(b); }
@@ -262,7 +290,7 @@ function renderCharacter(){
   for(const id of ids){ const G=GEAR[id], on=SLOTS.some(k=>s.gear[k]===id), t=document.createElement('div');
     t.style.setProperty('--fc',COLORS[G.family].c);
     t.className='itile'+(on?' on':'')+(G.legendary?' legend':'')+(isStuck(save,id)?' cursed':'')+(chSel&&chSel.id===id?' sel':'');
-    t.innerHTML=`<span class="fam">${COLORS[G.family].icon}</span><b class="ic">${G.icon}</b><small>${esc(gearName(save,id))}</small><span class="st">${G.legendary?'✹':G.tier?'★'.repeat(G.tier):'·'}</span>`+(s.items[id]>1?`<span class="cnt">×${s.items[id]}</span>`:'')+(on?'<span class="worn">✓</span>':'')+(unworn(save,id)?'<span class="new">?</span>':'');
+    t.innerHTML=`<span class="fam">${COLORS[G.family].icon}</span><b class="ic">${gearIcon(id,48)}</b><small>${esc(gearName(save,id))}</small><span class="st">${G.legendary?'✹':G.tier?'★'.repeat(G.tier):'·'}</span>`+(s.items[id]>1?`<span class="cnt">×${s.items[id]}</span>`:'')+(on?'<span class="worn">✓</span>':'')+(unworn(save,id)?'<span class="new">?</span>':'');
     t.onclick=()=>{ chSel={id}; renderCharacter(); };
     dragGear(t,id,null); inv.appendChild(t); }
   renderGearDetail();
@@ -273,7 +301,7 @@ function renderGearDetail(){
   const id=chSel.id, G=GEAR[id], wornIn=SLOTS.filter(k=>s.gear[k]===id), on=wornIn.length>0, stuck=isStuck(save,id), set=setOf(id), lv=s.gearLv[id]||0;
   const kindTxt=G.slot==='weapon'?WEAPON_KINDS[kindOf(id)].name+': '+WEAPON_KINDS[kindOf(id)].text:G.weight?G.weight[0].toUpperCase()+G.weight.slice(1)+' armor'+(G.weight==='heavy'&&!s.ench[id]?' (slows casting until enchanted)':''):SLOT_NAMES[G.slot==='ring'?'ring1':G.slot];
   box.className='gdetail'+(stuck?' cursed':'')+(G.legendary?' legend':''); box.style.setProperty('--fc',COLORS[G.family].c);
-  box.innerHTML=`<button class="dx" aria-label="Close">✕</button><div class="dh"><b class="ic">${G.icon}</b><div><b>${esc(gearName(save,id))}</b> <span class="tier">${G.legendary?'✹ Legendary':G.tier?'★'.repeat(G.tier):'junk'}</span>${s.items[id]>1?` <span class="cnt">×${s.items[id]}</span>`:''}
+  box.innerHTML=`<button class="dx" aria-label="Close">✕</button><div class="dh"><b class="ic">${gearIcon(id,64)}</b><div><b>${esc(gearName(save,id))}</b> <span class="tier">${G.legendary?'✹ Legendary':G.tier?'★'.repeat(G.tier):'junk'}</span>${s.items[id]>1?` <span class="cnt">×${s.items[id]}</span>`:''}
       <small class="kind"><span class="chip" style="--c:${COLORS[G.family].c}">${COLORS[G.family].icon} ${COLORS[G.family].name}</span> ${esc(kindTxt)}</small></div></div>
     <p>${esc(gearText(save,id))}${G.text?' · '+esc(G.text):''}</p>
     ${set?`<p class="set${activeSets(save).includes(set)?' on':''}">Set: ${esc(SETS[set].name)} (${SETS[set].pieces.filter(x=>s.items[x]).length}/3 owned, ${SETS[set].pieces.filter(x=>SLOTS.some(k=>s.gear[k]===x)).length}/3 worn) · ${esc(modsText(SETS[set].mods))}</p>`:''}
@@ -303,7 +331,7 @@ let gdrag=null;
 function dragGear(el,id,fromSlot){
   el.addEventListener('pointerdown',e=>{ if(e.button>0) return; gdrag={el,id,fromSlot,x0:e.clientX,y0:e.clientY,moved:false}; try{ el.setPointerCapture(e.pointerId); }catch(_){} });
   el.addEventListener('pointermove',e=>{ if(!gdrag||gdrag.el!==el) return;
-    if(!gdrag.moved&&Math.hypot(e.clientX-gdrag.x0,e.clientY-gdrag.y0)>8){ gdrag.moved=true; const g=document.createElement('div'); g.className='gghost'; g.textContent=GEAR[id].icon; document.body.appendChild(g); gdrag.ghost=g; }
+    if(!gdrag.moved&&Math.hypot(e.clientX-gdrag.x0,e.clientY-gdrag.y0)>8){ gdrag.moved=true; const g=document.createElement('div'); g.className='gghost'; g.innerHTML=gearIcon(id,64); document.body.appendChild(g); gdrag.ghost=g; }
     if(gdrag.moved){ gdrag.ghost.style.left=e.clientX+'px'; gdrag.ghost.style.top=e.clientY+'px';
       document.querySelectorAll('.dslot.drop').forEach(x=>x.classList.remove('drop')); const t=document.elementFromPoint(e.clientX,e.clientY), sl=t&&t.closest('.dslot');
       if(sl&&slotType(sl.dataset.slot)===GEAR[id].slot) sl.classList.add('drop'); } });
@@ -345,7 +373,7 @@ function openShop(){
 $('#buyBooster').onclick=()=>buyPack(null);
 function renderScrollShop(){ const box=$('#scrollShop'); box.innerHTML='';
   for(const k in SCROLLS){ const sc=SCROLLS[k], b=document.createElement('button'); b.className='btn ghost fam'; b.style.setProperty('--c','#7fd4ff');
-    b.innerHTML=`${sc.icon} ${sc.name}<small>${sc.price} gold · you have ${gearState(save).scrolls[k]||0}</small>`; b.disabled=save.gold<sc.price;
+    b.innerHTML=`${lootPic('scroll:'+k,32)} ${sc.name}<small>${sc.price} gold · you have ${gearState(save).scrolls[k]||0}</small>`; b.disabled=save.gold<sc.price;
     b.onclick=()=>{ if(save.gold<sc.price) return; save.gold-=sc.price; addScroll(save,k); persist(); tip(sc.name+' bought'); openShop(); }; box.appendChild(b); } }
 function buyPack(color){
   const price=color?PACK_PRICE.family:PACK_PRICE.booster; if(save.gold<price) return;
@@ -385,13 +413,16 @@ function victory(){
   const depth=b.depth;
   const hero=rw.cards.find(c=>c.rarity==='hero');
   const got=[...rw.cards.map(c=>c.name),...(rw.gold?['🪙 '+rw.gold+' gold']:[]),...rw.items.map(k=>{ const l=lootLabel(save,k); return l.icon+' '+l.name; })];
+  logCamp((boss?'Boss defeated':'Won')+' at depth '+depth+'.','win'); got.forEach(g=>logCamp('Found '+g.replace(/^[^A-Za-z0-9]+/u,'')+'.',/gold$/.test(g)?'gold':'loot'));
+  loot.forEach(l=>{ if(l.res&&l.res.cursed) logCamp(l.res.msg,'curse'); });
   reveal(hero?'♔ A hero joins you!':boss?'Boss defeated!':'Victory!',(hero?hero.name+' answers your call. ':'')+'Depth '+depth+' cleared in '+Math.round(b.time)+'s. '+(boss?'Boss rewards: ':'Your reward: ')+got.join(', ')+'.'+loot.map(l=>l.res&&l.res.cursed?' '+l.res.msg:l.res&&l.res.ok?' You put it on.':'').join('')+burnt,res,
     [['Camp',()=>{ B=null; pickDepth=depth+1; openCamp(); },true],['Depth '+(depth+1)+' →',()=>fight(depth+1)]],
-    [...(rw.gold?[{icon:'🪙',name:rw.gold+' gold',text:'Spend it on packs in the shop'}]:[]),...rw.items.map(k=>lootLabel(save,k))]);
+    [...(rw.gold?[{pic:uiIcon('coin',64),name:rw.gold+' gold',text:'Spend it on packs in the shop'}]:[]),...rw.items.map(k=>Object.assign(lootLabel(save,k),{pic:lootPic(k)}))]);
 }
 function defeat(){
   const lost=Math.floor(save.gold*.2); save.gold-=lost; const burnt=settleCharges();
   const depth=B.depth;
+  logCamp('Fell at depth '+depth+', dropped '+lost+' gold.','curse');
   reveal('Defeated…','You fell at depth '+depth+' and dropped '+lost+' gold. Your cards are safe.'+burnt,[],
     [['Camp',()=>{ B=null; openCamp(); },true],['Retry',()=>fight(depth)]]);
 }

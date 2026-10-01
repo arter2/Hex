@@ -6,7 +6,7 @@
 <title>Hexmancers Deck Prototype</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jacquard+12&family=Pixelify+Sans:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -22,21 +22,28 @@
 
   <!-- camp: the hub of the collecting loop -->
   <section id="scrCamp" class="screen">
-    <h1 class="small">Camp</h1>
-    <div class="wallet"><span id="campGold"></span><span id="campColl"></span></div>
-    <div class="panel flat">
-      <div class="bar"><h2 id="campDeck"></h2><span id="campDeckCount" class="count"></span></div>
-      <p id="campDeckErr" class="hint warn"></p>
-      <div class="depthpick"><button id="depthDown" class="btn ghost sq">−</button><button id="btnDescend" class="btn big"></button><button id="depthUp" class="btn ghost sq">+</button></div>
+    <div class="camp">
+      <h1 class="logo">Hexmancers</h1>
+      <div id="campArea" class="area"></div>
+      <div class="scenebox">
+        <div class="panel scene"><canvas id="campScene"></canvas></div>
+        <div class="pxbanner">Camp</div>
+      </div>
+      <div class="panel depthbox">
+        <div class="drow"><span><span id="campDeck"></span> <span id="campDeckCount" class="count"></span></span><span id="campBoss"></span></div>
+        <p id="campDeckErr" class="hint warn"></p>
+        <canvas id="depthMap"></canvas>
+        <div class="depthpick"><button id="depthDown" class="btn ghost sq" aria-label="Shallower">◄</button><button id="btnDescend" class="btn big"></button><button id="depthUp" class="btn ghost sq" aria-label="Deeper">►</button></div>
+      </div>
+      <div class="menu">
+        <button id="goBuilder" class="btn ghost mi" data-icon="deck">Deck builder</button>
+        <button id="goCollection" class="btn ghost mi" data-icon="cards">My cards</button>
+        <button id="goShop" class="btn ghost mi" data-icon="bag">Shop</button>
+        <button id="goChar" class="btn ghost mi" data-icon="hero">Character</button>
+      </div>
+      <div id="campLog" class="panel log"></div>
+      <div class="wallet"><span id="campGold"></span><span id="campColl"></span><button id="btnReset" class="link">Reset save</button></div>
     </div>
-    <div class="menu">
-      <button id="goBuilder" class="btn ghost">Deck builder</button>
-      <button id="goCollection" class="btn ghost">My cards</button>
-      <button id="goShop" class="btn ghost">Shop</button>
-      <button id="goChar" class="btn ghost">Character</button>
-    </div>
-    <p class="hint center">Each win gives one reward: a card, gold or a piece of gear (equip it in My cards). Bosses (every 4th depth) give more. Deeper fights drop rarer cards. Losing costs 20% of your gold; you keep your cards.</p>
-    <button id="btnReset" class="link">Reset save</button>
   </section>
 
   <!-- deck builder -->
@@ -184,6 +191,7 @@
 <script src="battle.js"></script>
 <script src="enemies.js"></script>
 <script src="art.js"></script>
+<script src="uikit.js"></script>
 <script src="ui.js"></script>
 </body>
 </html>

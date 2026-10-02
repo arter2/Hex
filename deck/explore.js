@@ -136,22 +136,76 @@ function xInit3D(){
   renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
   const scene=new THREE.Scene(); scene.background=new THREE.Color('#050608');
   const cam=new THREE.PerspectiveCamera(46,1,.1,200);
-  const amb=new THREE.AmbientLight(0xffffff,.42), sun=new THREE.DirectionalLight(0xffffff,.55); sun.position.set(-4,10,6);
-  const lamp=new THREE.PointLight(0xffd9a0,1.25,13,1.6);
+  const amb=new THREE.AmbientLight(0xffffff,.34), sun=new THREE.DirectionalLight(0xffffff,.3); sun.position.set(-4,10,6);
+  const lamp=new THREE.PointLight(0xffd9a0,1.6,16,1.4);   // your light: a soft pool that falls off with distance
   scene.add(amb,sun,lamp);
   X3={renderer,scene,cam,lamp,group:null,ray:new THREE.Raycaster(),plane:new THREE.Plane(new THREE.Vector3(0,1,0),0)};
-  cv.addEventListener('pointerdown',xTap);
+  cv.addEventListener('pointerdown',e=>{ if(!EX||!EX.active) return; e.preventDefault(); try{ cv.setPointerCapture(e.pointerId); }catch(_){}
+    XHOLD.id=e.pointerId; XHOLD.x=XHOLD.x0=e.clientX; XHOLD.y=XHOLD.y0=e.clientY; XHOLD.t0=performance.now(); XHOLD.on=true; });
+  cv.addEventListener('pointermove',e=>{ if(e.pointerId===XHOLD.id){ XHOLD.x=e.clientX; XHOLD.y=e.clientY; } });
+  const end=e=>{ if(e.pointerId!==XHOLD.id) return; const tap=performance.now()-XHOLD.t0<260&&Math.hypot(XHOLD.x-XHOLD.x0,XHOLD.y-XHOLD.y0)<14;
+    XHOLD.on=false; XHOLD.id=null; if(tap) xTap(e); };
+  cv.addEventListener('pointerup',end); cv.addEventListener('pointercancel',e=>{ XHOLD.on=false; XHOLD.id=null; });
+  cv.addEventListener('contextmenu',e=>e.preventDefault());
   return X3;
 }
 function xTex(cv,rep){ const t=new THREE.CanvasTexture(cv); t.magFilter=THREE.NearestFilter; t.minFilter=THREE.NearestFilter; if(rep){ t.wrapS=t.wrapT=THREE.RepeatWrapping; } return t; }
-function xFloorCanvas(A){ const c=document.createElement('canvas'); c.width=c.height=48; const x=c.getContext('2d'); x.imageSmoothingEnabled=false;
-  x.fillStyle=mixHex(A.lit,'#ffffff',.08); x.fillRect(0,0,48,48); x.drawImage(floorTexture(A),0,0,64,64,0,0,48,48); return c; }
-function xWallCanvas(A){ const c=document.createElement('canvas'); c.width=c.height=32; const x=c.getContext('2d'), R=caveRng(A.name.length);
-  x.fillStyle=mixHex(A.wall,'#000000',.4); x.fillRect(0,0,32,32);
-  for(let row=0;row<4;row++){ const off=row%2?4:0; for(let b=-1;b<4;b++){ const bx=b*8+off, by=row*8;
-    x.fillStyle=mixHex(A.wall,'#ffffff',.06+R()*.16); x.fillRect(bx+1,by+1,7,6);
-    x.fillStyle=mixHex(A.wall,'#ffffff',.3); x.fillRect(bx+1,by+1,7,1); } }
-  return c; }
+const xPhong=(o)=>new THREE.MeshPhongMaterial(Object.assign({shininess:4,specular:0x111111},o||{}));
+/* Stone, drawn once per area: periodic noise so big textures tile without seams, quantized to a
+   few tones so it still reads as pixel art. Corridors are raw rock; rooms are cut stone in one
+   of two patterns; walls are rough rock along corridors and chiseled blocks around rooms. */
+const XSTONE={
+  'Glowworm Hollows':{rock:['#1c2328','#2c3740','#3e4c56','#56666f'], moss:'#3f7a3a', spark:'#39ff8a', detail:'moss'},
+  'Frozen Deeps':    {rock:['#1a2836','#2a4054','#40607c','#7ea6c4'], moss:'#cfeeff', spark:'#e6f6ff', detail:'frost'},
+  'Gilded Ruins':    {rock:['#1f1d1a','#33302b','#4a463e','#6a6458'], moss:'#8a6a2a', spark:'#f2c94c', detail:'gold'},
+  'The Abyss':       {rock:['#0b0d12','#161a22','#232a36','#38404e'], moss:'#3a2a56', spark:'#e9fbff', detail:'stars'},
+};
+function xNoise(N,cells,R){ const g=new Float32Array(cells*cells).map(()=>R());
+  const at=(x,y)=>g[((y%cells+cells)%cells)*cells+((x%cells+cells)%cells)], sm=t=>t*t*(3-2*t);
+  return (px,py)=>{ const fx=px/N*cells, fy=py/N*cells, x0=Math.floor(fx), y0=Math.floor(fy), tx=sm(fx-x0), ty=sm(fy-y0);
+    return (at(x0,y0)*(1-tx)+at(x0+1,y0)*tx)*(1-ty)+(at(x0,y0+1)*(1-tx)+at(x0+1,y0+1)*tx)*ty; }; }
+function xFbm(N,R,base){ const o=[base,base*2,base*4,base*8].map(c=>xNoise(N,c,R)); return (x,y)=>o[0](x,y)*.5+o[1](x,y)*.25+o[2](x,y)*.15+o[3](x,y)*.1; }
+const xHexRGB=h=>[parseInt(h.slice(1,3),16),parseInt(h.slice(3,5),16),parseInt(h.slice(5,7),16)];
+function xPaint(N,fn){ const c=document.createElement('canvas'); c.width=c.height=N; const x=c.getContext('2d'), im=x.createImageData(N,N);
+  for(let j=0;j<N;j++) for(let i=0;i<N;i++){ const v=fn(i,j), o=(j*N+i)*4; im.data[o]=v[0]; im.data[o+1]=v[1]; im.data[o+2]=v[2]; im.data[o+3]=255; }
+  x.putImageData(im,0,0); return c; }
+const xTone=(S,t)=>{ const r=S.rock, k=Math.max(0,Math.min(r.length-1.001,t*(r.length-1))), i=Math.floor(k); return xHexRGB(r[i]).map((v,n)=>Math.round(v+(xHexRGB(r[i+1])[n]-v)*(k-i>.5?1:0))); };
+function xSpeck(c,S,R,n,small){ const x=c.getContext('2d'), N=c.width;
+  for(let k=0;k<n;k++){ const cx=R()*N|0, cy=R()*N|0;
+    if(S.detail==='moss'){ x.fillStyle=S.moss; for(let m=0;m<7;m++) x.fillRect((cx+R()*6-3)%N|0,(cy+R()*4-2)%N|0,1,1); if(R()<.3){ x.fillStyle=S.spark; x.fillRect(cx,cy,1,1); } }
+    else if(S.detail==='frost'){ x.fillStyle=S.moss; x.globalAlpha=.5; let px=cx, py=cy; for(let m=0;m<8;m++){ x.fillRect(px|0,py|0,1,1); px+=R()*2-.5; py+=R()*2-1; } x.globalAlpha=1; }
+    else if(S.detail==='gold'){ if(R()<.4){ x.fillStyle=S.spark; x.globalAlpha=.6; x.fillRect(cx,cy,small?1:2,1); x.globalAlpha=1; } }
+    else { x.fillStyle=R()<.5?S.spark:S.moss; x.globalAlpha=.3+R()*.5; x.fillRect(cx,cy,1,1); x.globalAlpha=1; } } }
+// raw cave rock: blotchy fbm, a few ridged cracks, pebbles with a lit top and a shadow
+function xRockFloor(S,seed){ const N=256, R=caveRng(seed), f=xFbm(N,R,4), cr=xNoise(N,12,R), cr2=xNoise(N,7,R);
+  const c=xPaint(N,(i,j)=>{ let t=f(i,j)*1.25-.12; const k=Math.abs(cr(i,j)-.5), k2=Math.abs(cr2(i,j)-.5);
+    if(k<.012||k2<.008) t-=.35; else if(k<.03) t+=.06; return xTone(S,Math.max(0,Math.min(1,t))); });
+  const x=c.getContext('2d');
+  for(let n=0;n<90;n++){ const px=R()*N|0, py=R()*N|0, w=1+R()*3|0, h=1+R()*2|0, tt=.5+R()*.4;
+    x.fillStyle='rgba(0,0,0,.45)'; x.fillRect(px+1,py+1,w,h); x.fillStyle='rgb('+xTone(S,tt).join(',')+')'; x.fillRect(px,py,w,h); x.fillStyle='rgb('+xTone(S,1).join(',')+')'; x.fillRect(px,py,w,1); }
+  xSpeck(c,S,R,40); return c; }
+// cut stone: irregular slabs in staggered rows (style 0) or a tighter running bond of smaller tiles (style 1)
+function xSlabFloor(S,seed,style){ const N=256, R=caveRng(seed), f=xFbm(N,R,8), id=new Int16Array(N*N), edge=new Uint8Array(N*N), tone=[];
+  const rowsH=[]; let y=0; while(y<N){ const h=style?16:(20+R()*20|0); rowsH.push([y,Math.min(h,N-y)]); y+=h; }
+  let sid=0;
+  for(const [y0,h] of rowsH){ const off=R()*N|0; let x0=0; while(x0<N){ const w=style?32:(26+R()*40|0), ww=Math.min(w,N-x0);
+      for(let j=y0;j<y0+h;j++) for(let i=x0;i<x0+ww;i++){ const X=(i+off)%N; id[j*N+X]=sid;
+        edge[j*N+X]=(j===y0?1:0)|(j===y0+h-1?2:0)|(i===x0?4:0)|(i===x0+ww-1?8:0); }
+      tone.push(.35+R()*.35); sid++; x0+=ww; } }
+  const c=xPaint(N,(i,j)=>{ const k=j*N+i, e=edge[k]; let t=tone[id[k]]+(f(i,j)-.5)*.35;
+    if(e&(2|8)) t=.05; else if(e&(1|4)) t=Math.min(1,t+.28); return xTone(S,Math.max(0,Math.min(1,t))); });
+  const x=c.getContext('2d');
+  for(let n=0;n<26;n++){ let px=R()*N, py=R()*N, a=R()*6.3; x.fillStyle='rgba(0,0,0,.55)'; for(let m=0;m<6+R()*12;m++){ x.fillRect(px|0,py|0,1,1); a+=(R()-.5); px+=Math.cos(a); py+=Math.sin(a); } }
+  xSpeck(c,S,R,style?18:26,true); return c; }
+// walls: rough rock with strata (corridors), large ashlar blocks or small rubble stones (rooms)
+function xRockWall(S,seed){ const N=64, R=caveRng(seed), f=xFbm(N,R,2), st=xNoise(N,4,R);
+  return xPaint(N,(i,j)=>{ let t=f(i,j)*1.1-.05+Math.sin((j+st(i,j)*14)*.55)*.08; if(j<2) t+=.3; return xTone(S,Math.max(0,Math.min(1,t))); }); }
+function xBlockWall(S,seed,rubble){ const N=64, R=caveRng(seed), f=xFbm(N,R,4);
+  const rows=rubble?[0,9,18,27,36,45,54]:[0,16,32,48], H=rubble?9:16, out=new Float32Array(N*N).fill(-1);
+  rows.forEach((y0,r)=>{ let x0=-(R()*20|0); while(x0<N){ const w=rubble?(8+R()*10|0):(18+R()*22|0), tn=.3+R()*.4;
+      for(let j=y0;j<Math.min(N,y0+H);j++) for(let i=Math.max(0,x0);i<Math.min(N,x0+w);i++){ const e=j===y0||i===x0?.3:j===y0+H-1||i===x0+w-1?-1:0; out[j*N+i]=e<0?.04:tn+e; }
+      x0+=w; } });
+  return xPaint(N,(i,j)=>{ const b=out[j*N+i]; let t=b<0?.05:b+(f(i,j)-.5)*.25; if(j<2) t+=.25; return xTone(S,Math.max(0,Math.min(1,t))); }); }
 function xTextSprite(txt,col){ const c=document.createElement('canvas'); c.width=c.height=32; const x=c.getContext('2d');
   x.font='bold 22px monospace'; x.textAlign='center'; x.textBaseline='middle'; x.lineWidth=4; x.strokeStyle='#000'; x.strokeText(txt,16,17); x.fillStyle=col; x.fillText(txt,16,17);
   const s=new THREE.Sprite(new THREE.SpriteMaterial({map:xTex(c),transparent:true,depthTest:false})); s.scale.set(.9,.9,1); s.renderOrder=5; return s; }
@@ -159,25 +213,46 @@ function xSprite(getImg,h){ const s=new THREE.Sprite(new THREE.SpriteMaterial({t
 function xRefresh(s,flip){ const sp=s.userData.getImg(), im=sp&&sp.img;
   if(im&&(im!==s.userData.img||flip!==s.userData.flip)){ s.userData.img=im; s.userData.flip=flip; const tx=xTex(im,true); if(flip){ tx.repeat.x=-1; tx.offset.x=1; }
     if(s.material.map) s.material.map.dispose(); s.material.map=tx; s.material.needsUpdate=true; } }
-const xMat=(c,o)=>new THREE.MeshLambertMaterial(Object.assign({color:c},o||{}));
+const xMat=(c,o)=>new THREE.MeshPhongMaterial(Object.assign({color:c,shininess:6,specular:0x111111},o||{}));
 const xBox=(w,h,d,m,x,y,z)=>{ const o=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m); o.position.set(x,y,z); return o; };
 
 function xBuildScene(){
   const G=xInit3D();
   if(G.group){ G.scene.remove(G.group); G.group.traverse(o=>{ if(o.geometry) o.geometry.dispose(); if(o.material&&o.material.map) o.material.map.dispose(); }); }
   const grp=new THREE.Group(); G.group=grp; G.scene.add(grp);
-  const A=EX.area, floors=[], walls=[];
-  for(let i=0;i<XN*XN;i++){ if(EX.t[i]!==T_ROCK) floors.push(i);
-    const d=EX.doors.get(i);
-    if(EX.t[i]===T_ROCK||(d&&d.state==='secret')){ const x=xcx(i), y=xcy(i); let near=false;
-      for(let dy=-1;dy<=1&&!near;dy++) for(let dx=-1;dx<=1;dx++){ const nx=x+dx, ny=y+dy; if(nx>=0&&ny>=0&&nx<XN&&ny<XN&&EX.t[xi(nx,ny)]!==T_ROCK&&!(dx===0&&dy===0)){ near=true; break; } }
-      if(near) walls.push(i); } }
-  const fm=new THREE.InstancedMesh(new THREE.BoxGeometry(XCS,.3,XCS),xMat(0xffffff,{map:xTex(xFloorCanvas(A))}),floors.length);
-  const wm=new THREE.InstancedMesh(new THREE.BoxGeometry(XCS,XWALL,XCS),xMat(0xffffff,{map:xTex(xWallCanvas(A))}),walls.length);
-  [fm,wm].forEach(m=>{ m.instanceMatrix.setUsage(THREE.DynamicDrawUsage); grp.add(m); });
-  EX.fIdx=new Map(floors.map((c,k)=>[c,k])); EX.wIdx=new Map(walls.map((c,k)=>[c,k])); EX.fm=fm; EX.wm=wm; EX.shown=new Uint8Array(XN*XN);
-  const zero=new THREE.Matrix4().makeScale(0,0,0), col=new THREE.Color(0,0,0);
-  floors.forEach((c,k)=>{ fm.setMatrixAt(k,zero); fm.setColorAt(k,col); }); walls.forEach((c,k)=>{ wm.setMatrixAt(k,zero); wm.setColorAt(k,col); });
+  const A=EX.area, S=XSTONE[A.name]||XSTONE['Glowworm Hollows'], seed=EX.depth*31;
+  // floor: one plane per stone kind, cut to its cells with a mask, so textures run across cells without seams
+  const variant=new Int8Array(XN*XN).fill(-1);
+  EX.rooms.forEach(r=>{ r.style=r.closet?1:Math.random()<.5?0:1; });
+  for(let i=0;i<XN*XN;i++) if(EX.t[i]!==T_ROCK) variant[i]=EX.room[i]>=0?1+EX.rooms[EX.room[i]].style:0;
+  const span=XN*XCS, texCells=8, mk=(i,v)=>variant[i]===v?255:0;
+  const floorTex=[xRockFloor(S,seed+1),xSlabFloor(S,seed+2,0),xSlabFloor(S,seed+3,1)];
+  floorTex.forEach((cv,v)=>{ const pos=[], uv=[], k=texCells*XCS;
+    for(let i=0;i<XN*XN;i++){ if(variant[i]!==v) continue; const x0=xcx(i)*XCS, z0=xcy(i)*XCS, x1=x0+XCS, z1=z0+XCS;
+      pos.push(x0,0,z0, x0,0,z1, x1,0,z1,  x0,0,z0, x1,0,z1, x1,0,z0);
+      uv.push(x0/k,-z0/k, x0/k,-z1/k, x1/k,-z1/k,  x0/k,-z0/k, x1/k,-z1/k, x1/k,-z0/k); }
+    if(!pos.length) return;
+    const geo=new THREE.BufferGeometry(); geo.setAttribute('position',new THREE.Float32BufferAttribute(pos,3)); geo.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2)); geo.computeVertexNormals();
+    grp.add(new THREE.Mesh(geo,xPhong({map:xTex(cv,true)}))); });
+  // darkness: a black veil over the floor whose alpha comes from a per-cell light map with linear
+  // filtering, so light fades smoothly from cell to cell instead of cutting off
+  EX.fog=new Uint8Array(XN*XN*4).fill(255); EX.fogCur=new Float32Array(XN*XN); EX.fogTgt=new Float32Array(XN*XN);
+  const ft=new THREE.DataTexture(EX.fog,XN,XN,THREE.RGBAFormat); ft.magFilter=ft.minFilter=THREE.LinearFilter; ft.needsUpdate=true; EX.fogTex=ft;
+  const veil=new THREE.Mesh(new THREE.PlaneGeometry(span,span),new THREE.MeshBasicMaterial({color:0x000000,transparent:true,alphaMap:ft,depthWrite:false}));
+  veil.rotation.x=-Math.PI/2; veil.position.set(span/2,.04,span/2); veil.renderOrder=1; grp.add(veil); EX.veil=veil;
+  // walls: rough rock beside corridors, chiseled blocks (large or rubble) around rooms
+  const walls=[[],[],[]];
+  for(let i=0;i<XN*XN;i++){ const d=EX.doors.get(i); if(!(EX.t[i]===T_ROCK||(d&&d.state==='secret'))) continue;
+    const x=xcx(i), y=xcy(i); let near=-1;
+    for(let dy=-1;dy<=1;dy++) for(let dx=-1;dx<=1;dx++){ const nx=x+dx, ny=y+dy; if((dx||dy)&&nx>=0&&ny>=0&&nx<XN&&ny<XN){ const n=xi(nx,ny); if(EX.t[n]!==T_ROCK&&!(EX.doors.get(n)&&EX.doors.get(n).state==='secret')){ const r=EX.room[n]; near=Math.max(near,r>=0?1+EX.rooms[r].style:0); } } }
+    if(near>=0) walls[near].push(i); }
+  const wallTex=[xRockWall(S,seed+4),xBlockWall(S,seed+5,false),xBlockWall(S,seed+6,true)];
+  EX.wIdx=new Map(); EX.wms=[]; EX.shown=new Uint8Array(XN*XN);
+  const zero=new THREE.Matrix4().makeScale(0,0,0), black=new THREE.Color(0,0,0);
+  walls.forEach((list,v)=>{ const wm=new THREE.InstancedMesh(new THREE.BoxGeometry(XCS,XWALL,XCS),xPhong({map:xTex(wallTex[v])}),Math.max(1,list.length));
+    wm.instanceMatrix.setUsage(THREE.DynamicDrawUsage); grp.add(wm); EX.wms.push(wm);
+    for(let k=0;k<wm.count;k++){ wm.setMatrixAt(k,zero); wm.setColorAt(k,black); }
+    list.forEach((c,k)=>EX.wIdx.set(c,[wm,k])); });
   // doors: a frame on every doorway, a plank door while it is closed
   const wood=xMat(0x6a4426), iron=xMat(0x2a2a30), frame=xMat(0x3a2414);
   for(const [i,d] of EX.doors){ const ew=EX.t[i-1]!==T_ROCK&&EX.t[i+1]!==T_ROCK, g=new THREE.Group(); g.position.set(xw(i),0,xz(i)); if(ew) g.rotation.y=Math.PI/2;
@@ -192,8 +267,8 @@ function xBuildScene(){
   down.userData.ring=ring; down.visible=false; grp.add(down); EX.downMesh=down;
   // the way back up: a worn stone circle under a shaft of daylight
   const up=new THREE.Group(); up.position.set(xw(EX.up),0,xz(EX.up));
-  up.add(xBox(XCS*.85,.06,XCS*.85,xMat(0xb8b2a0),0,.03,0));
-  const shaft=new THREE.Mesh(new THREE.CylinderGeometry(.55,.75,6,8,1,true),new THREE.MeshBasicMaterial({color:0xfff2c0,transparent:true,opacity:.12,depthWrite:false,side:THREE.DoubleSide})); shaft.position.y=3; up.add(shaft);
+  up.add(xBox(XCS*.8,.05,XCS*.8,xMat(0x6e6a60),0,.025,0));
+  const halo=new THREE.Mesh(new THREE.TorusGeometry(.72,.06,6,20),new THREE.MeshBasicMaterial({color:0xfff2c0})); halo.rotation.x=Math.PI/2; halo.position.y=.08; up.add(halo);
   up.visible=false; grp.add(up); EX.upMesh=up;
   // chests
   const cwood=xMat(0x7a4a22), gold=xMat(0xf2c94c,{emissive:0x402a08});
@@ -211,19 +286,26 @@ function xGroupSprites(gp,grp){ const id=gp.ids[0], d=ENEMY_DEFS[id], h=2.3*Math
   gp.sprite=xSprite(()=>unitSprite({kind:'enemy',id,color:d.color}),h); gp.sprite.visible=false; grp.add(gp.sprite);
   gp.zz=xTextSprite('z','#9fd8ff'); gp.bang=xTextSprite('!','#ff4d5e'); gp.zz.visible=gp.bang.visible=false; grp.add(gp.zz,gp.bang); gp.h=h; }
 function xPaintCells(){
-  const zero=new THREE.Matrix4().makeScale(0,0,0), m=new THREE.Matrix4(), col=new THREE.Color();
-  for(const [c,k] of EX.fIdx){ const s=EX.seen[c]; if(!s) continue;
-    if(!EX.shown[c]){ m.makeTranslation(xw(c),-.15,xz(c)); EX.fm.setMatrixAt(k,m); }
-    const v=EX.vis[c], n=.9+((c*2654435761>>>0)%100)/1000; col.setRGB(v?n:.3,v?n:.3,v?n:.34); EX.fm.setColorAt(k,col); }
-  for(const [c,k] of EX.wIdx){ if(!EX.seen[c]) continue;
-    if(!EX.shown[c]){ m.makeTranslation(xw(c),XWALL/2-.1,xz(c)); EX.wm.setMatrixAt(k,m); }
-    const v=EX.vis[c]; col.setRGB(v?1:.32,v?1:.32,v?1:.36); EX.wm.setColorAt(k,col); }
-  for(let c=0;c<XN*XN;c++) if(EX.seen[c]) EX.shown[c]=1;
-  EX.fm.instanceMatrix.needsUpdate=EX.wm.instanceMatrix.needsUpdate=true;
-  if(EX.fm.instanceColor) EX.fm.instanceColor.needsUpdate=true; if(EX.wm.instanceColor) EX.wm.instanceColor.needsUpdate=true;
+  // brightness each cell is heading for: full near you and dimmer toward the edge of sight,
+  // a low glow where you have been, black where you have not
+  const px=xcx(EX.pc), py=xcy(EX.pc), here=EX.room[EX.pc], rad=here>=0&&EX.rooms[here].lit?9:4;
+  const m=new THREE.Matrix4();
+  for(let c=0;c<XN*XN;c++){ let b=0;
+    if(EX.vis[c]){ const d=Math.hypot(xcx(c)-px,xcy(c)-py); b=1-.55*Math.min(1,Math.max(0,(d-1)/rad)); }
+    else if(EX.seen[c]) b=.24;
+    EX.fogTgt[c]=b;
+    if(EX.seen[c]&&!EX.shown[c]){ EX.shown[c]=1; const w=EX.wIdx.get(c); if(w){ m.makeTranslation(xw(c),XWALL/2-.05,xz(c)); w[0].setMatrixAt(w[1],m); w[0].instanceMatrix.needsUpdate=true; } } }
   for(const [i,d] of EX.doors) if(d.mesh) d.mesh.visible=!!EX.seen[i]&&d.state!=='secret';
   for(const c of EX.chests) c.mesh.visible=!!EX.seen[c.cell];
   EX.downMesh.visible=!!EX.seen[EX.down]; EX.upMesh.visible=!!EX.seen[EX.up];
+}
+// ease every cell toward its brightness, so newly seen ground fades in and ground you leave fades out
+function xFadeCells(dt){
+  const k=Math.min(1,dt*5), col=new THREE.Color(); let moved=false;
+  for(let c=0;c<XN*XN;c++){ const cur=EX.fogCur[c], tg=EX.fogTgt[c]; if(Math.abs(cur-tg)<.004) continue; moved=true;
+    const v=cur+(tg-cur)*k; EX.fogCur[c]=v; const y=XN-1-xcy(c), o=(y*XN+xcx(c))*4; EX.fog[o]=EX.fog[o+1]=EX.fog[o+2]=Math.round((1-v)*255);
+    const w=EX.wIdx.get(c); if(w){ col.setRGB(v,v,v*1.05); w[0].setColorAt(w[1],col); w[0].instanceColor.needsUpdate=true; } }
+  if(moved) EX.fogTex.needsUpdate=true;
 }
 function xTrapMesh(tr){ if(tr.mesh||!X3) return; const T=TRAPS[tr.kind], g=new THREE.Group(); g.position.set(xw(tr.cell),0,xz(tr.cell));
   g.add(xBox(1.3,.06,1.3,xMat(new THREE.Color(T.col).multiplyScalar(.6)),0,.03,0));
@@ -232,7 +314,7 @@ function xTrapMesh(tr){ if(tr.mesh||!X3) return; const T=TRAPS[tr.kind], g=new T
   tr.mesh=g; X3.group.add(g); }
 
 /* ---------------- input ---------------- */
-const XKEY={};
+const XKEY={}, XHOLD={on:false,id:null,x:0,y:0,x0:0,y0:0,t0:0};
 document.addEventListener('keydown',e=>{ if(!EX||!EX.active) return; const k=e.key.toLowerCase(); XKEY[k]=true;
   if(k==='f') xSearch(); if(k==='e') xDisarm(); if(['arrowup','arrowdown','arrowleft','arrowright',' '].includes(k)) e.preventDefault(); EX.path=[]; });
 document.addEventListener('keyup',e=>{ XKEY[e.key.toLowerCase()]=false; });
@@ -256,6 +338,10 @@ function xMove(dt){
   if(EX.stuckT>0){ EX.stuckT-=dt; return; }
   let ix=0, iz=0;
   if(XKEY.a||XKEY.arrowleft) ix-=1; if(XKEY.d||XKEY.arrowright) ix+=1; if(XKEY.w||XKEY.arrowup) iz-=1; if(XKEY.s||XKEY.arrowdown) iz+=1;
+  // holding a finger (or the mouse) down walks toward it, steering as it moves
+  if(!ix&&!iz&&XHOLD.on&&performance.now()-XHOLD.t0>200){ const r=$('#xView').getBoundingClientRect(), v=new THREE.Vector3(EX.px,.8,EX.pz).project(X3.cam);
+    const sx=r.left+(v.x+1)/2*r.width, sy=r.top+(1-v.y)/2*r.height, dx=XHOLD.x-sx, dy=XHOLD.y-sy, l=Math.hypot(dx,dy);
+    if(l>18){ ix=dx/l; iz=dy/l; EX.path=[]; } }
   if(!ix&&!iz&&EX.path.length){ const n=EX.path[0], tx=xw(n)-EX.px, tz=xz(n)-EX.pz, d=Math.hypot(tx,tz); if(d<.25){ EX.path.shift(); } else { ix=tx/d; iz=tz/d; } }
   const len=Math.hypot(ix,iz); if(len<.1){ EX.walk=0; return; }
   ix/=len; iz/=len; const sp=5.4*dt, r=.42;
@@ -290,7 +376,7 @@ function xSearch(){ if(!EX||EX.action||EX.busy) return; EX.path=[]; xLog('You se
   EX.action={t:1.1, done(){ const x=xcx(EX.pc), y=xcy(EX.pc); let found=0;
     for(let dy=-2;dy<=2;dy++) for(let dx=-2;dx<=2;dx++){ const i=xi(x+dx,y+dy), d=EX.doors.get(i);
       if(d&&d.state==='secret'&&Math.random()<.55){ d.state='closed'; d.leaf.visible=true; found++; xLog('You find a hidden door!','good');
-        const k=EX.wIdx.get(i); if(k!=null){ EX.wm.setMatrixAt(k,new THREE.Matrix4().makeScale(0,0,0)); EX.wm.instanceMatrix.needsUpdate=true; } EX.seen[i]=1; } }
+        const w=EX.wIdx.get(i); if(w){ w[0].setMatrixAt(w[1],new THREE.Matrix4().makeScale(0,0,0)); w[0].instanceMatrix.needsUpdate=true; EX.wIdx.delete(i); } EX.seen[i]=1; } }
     for(const tr of EX.traps) if(tr.armed&&!tr.known&&Math.max(Math.abs(xcx(tr.cell)-x),Math.abs(xcy(tr.cell)-y))<=2&&Math.random()<.65){ tr.known=true; xTrapMesh(tr); found++; xLog('You find a '+TRAPS[tr.kind].name+'.','good'); }
     for(const ch of EX.chests) if(!ch.open&&ch.trap&&!ch.trapKnown&&Math.max(Math.abs(xcx(ch.cell)-x),Math.abs(xcy(ch.cell)-y))<=1&&Math.random()<.65){ ch.trapKnown=true; found++; xLog('The chest\'s lock is trapped.','good'); }
     if(!found) xLog('You find nothing.','dim'); xUpdateVis(); xHud(); } };
@@ -378,15 +464,15 @@ function xLoop(ts){
   const dt=Math.min(.05,(ts-xLast)/1000); xLast=ts;
   if(!EX.busy){ xMove(dt); xEnemies(dt);
     EX.regenT+=dt; if(EX.regenT>3){ EX.regenT=0; if(EX.hp<xmaxHp()){ EX.hp++; xHud(); } } }
-  xDraw(ts/1000); xRaf=requestAnimationFrame(xLoop);
+  xDraw(ts/1000,dt); xRaf=requestAnimationFrame(xLoop);
 }
 function xResize(){ const G=X3, cv=$('#xView'), w=cv.clientWidth||400, h=cv.clientHeight||600; G.renderer.setSize(w,h,false); G.cam.aspect=w/h; G.cam.updateProjectionMatrix(); }
-function xDraw(T){
-  const G=X3; xResize();
+function xDraw(T,dt){
+  const G=X3; xResize(); xFadeCells(dt||.016);
   const bob=EX.walk?Math.abs(Math.sin(EX.walk))*.08:0;
   EX.me.position.set(EX.px,bob,EX.pz); xRefresh(EX.me,EX.face<0);
   G.lamp.position.set(EX.px,2.6,EX.pz);
-  const portrait=G.cam.aspect<1, hgt=portrait?23:18, back=portrait?12:10;
+  const k=Math.max(1,Math.min(1.8,.8/G.cam.aspect)), hgt=18*k, back=10*k;   // tall screens pull back so a room still fits across
   G.cam.position.set(EX.px,hgt,EX.pz+back); G.cam.lookAt(EX.px,0,EX.pz-.5);
   for(const g of EX.groups){ const v=!!EX.vis[g.cell]; g.sprite.visible=v; g.zz.visible=v&&g.state==='sleep'; g.bang.visible=v&&g.state==='chase';
     if(v){ g.sprite.position.set(g.x,g.state==='sleep'?0:Math.abs(Math.sin(T*4+g.bob))*.06,g.z); xRefresh(g.sprite,(g.face||-1)>0);

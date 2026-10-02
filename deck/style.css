@@ -508,7 +508,7 @@ body.ui-tablet .controls.battle .btn{min-height:76px; font-size:22px;} body.ui-t
    with the window (1 on phones, about 1.4 at 1920 x 1080, up to 2.5 on 4K). Menus, the battle
    HUD and pop-ups are zoomed by it; the battle board is not, because it already fills its
    canvas at full resolution. */
-.screen:not(#scrBattle),#hudTop,#hudBottom,.overlay,.tip,.cast-fx,.banner,.peek{zoom:var(--ui,1);}
+.screen:not(#scrBattle):not(#scrExplore),#hudTop,#hudBottom,#xTop,#xBottom,#xLog,#xMini,.x-bang,.overlay,.tip,.cast-fx,.banner,.peek{zoom:var(--ui,1);}
 /* wide screens with room to spare: the board takes the full height and the controls sit in a column on the right */
 @media (min-height:561px){
   body.wide #scrBattle.on{display:grid; grid-template-columns:minmax(0,1fr) calc(300px*var(--ui,1)); grid-template-rows:auto minmax(0,1fr);}
@@ -613,3 +613,13 @@ body.wide .camp{grid-template-areas:"logo logo" "area area" "scene depth" "scene
 .x-bang{position:absolute; left:50%; top:38%; transform:translate(-50%,-50%) scale(.6); opacity:0; pointer-events:none; font:700 44px/1 var(--font-display,serif); color:#fff; text-shadow:0 3px 0 #000,0 0 18px #000; transition:opacity .15s, transform .15s; z-index:4;}
 .x-bang.on{opacity:1; transform:translate(-50%,-50%) scale(1);}
 .x-bang.ambush{color:#39ff8a;} .x-bang.surprised{color:#ff5d6c;} .x-bang.depth{color:#d6b8ff; font-size:36px;}
+
+/* overworld on phones and tablets: safe areas, thumb-sized buttons, no keyboard hint on touch */
+#xTop{padding-top:calc(8px + env(safe-area-inset-top,0px)); padding-left:calc(12px + env(safe-area-inset-left,0px)); padding-right:calc(12px + env(safe-area-inset-right,0px));}
+#xBottom{padding-bottom:calc(10px + env(safe-area-inset-bottom,0px)); padding-left:calc(12px + env(safe-area-inset-left,0px)); padding-right:calc(12px + env(safe-area-inset-right,0px));}
+#xBottom .btn{min-height:46px; min-width:86px;}
+#scrExplore, #xView, #xBottom button{touch-action:none; -webkit-user-select:none; user-select:none; -webkit-touch-callout:none;}
+@media (pointer:coarse){ #xBottom .keys .k{display:none;} }
+@media (max-width:520px){ #xMini{width:84px; height:84px; top:58px;} #xLog{bottom:104px; max-width:calc(100% - 20px); font-size:12px;} #xTop{font-size:13px;} }
+#xView{cursor:pointer;}
+.x-vignette{position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse at 50% 46%, transparent 45%, rgba(0,0,0,.55) 100%);}

@@ -39,6 +39,7 @@ LOOK_IDS = {('human', 'm'): 'wizard', ('human', 'f'): 'human_f', ('elf', 'm'): '
             ('witch', 'm'): 'witch_m', ('witch', 'f'): 'witch', ('necro', 'm'): 'necro', ('necro', 'f'): 'necro_f',
             ('shaman', 'm'): 'shaman_m', ('shaman', 'f'): 'shaman_f', ('ranger', 'm'): 'ranger_m', ('ranger', 'f'): 'ranger_f',
             ('orc', 'm'): 'orc_m', ('orc', 'f'): 'orc_f'}
+SEX_NAMES = {('witch', 'm'): 'Warlock'}
 NAMES = {'human': 'Human', 'elf': 'Elf', 'dwarf': 'Dwarf', 'undead': 'Undead', 'witch': 'Witch', 'necro': 'Necromancer',
          'shaman': 'Shaman', 'ranger': 'Ranger', 'orc': 'Orc'}
 BACK_K = 1.12

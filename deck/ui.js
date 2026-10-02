@@ -78,6 +78,7 @@ function reveal(title,body,results,buttons,extras){
   const bb=$('#rvBtns'); bb.innerHTML=''; bb.classList.toggle('two',buttons.length>1);
   buttons.forEach(([label,fn,ghost])=>{ const b=document.createElement('button'); b.className='btn'+(ghost?' ghost':''); b.textContent=label; b.onclick=()=>{ $('#reveal').classList.remove('on'); fn(); }; bb.appendChild(b); });
   $('#reveal').classList.add('on');
+  const main=bb.querySelector('.btn:not(.ghost)')||bb.querySelector('.btn'); if(main) setTimeout(()=>main.focus(),50);
 }
 
 /* ---------------- start ---------------- */
@@ -135,7 +136,7 @@ function logCamp(t,c){ campLog.push({t,c}); if(campLog.length>12) campLog.shift(
 // Testing: start any boss straight away at its own depth
 function renderTrials(){ const box=$('#bossTrials'); if(!box||typeof BOSS_ORDER==='undefined') return;
   box.innerHTML='<span class="lbl">Test a boss</span>'+BOSS_ORDER.map((id,i)=>`<button class="chip" data-boss="${id}" style="--c:${COLORS[ENEMY_DEFS[id].color].c}">${ENEMY_DEFS[id].name} · ${4*(i+1)}</button>`).join('');
-  box.querySelectorAll('[data-boss]').forEach(b=>b.onclick=()=>{ const i=BOSS_ORDER.indexOf(b.dataset.boss); fight(4*(i+1),[[b.dataset.boss]]); }); }
+  box.querySelectorAll('[data-boss]').forEach(b=>b.onclick=()=>{ const i=BOSS_ORDER.indexOf(b.dataset.boss); fight(4*(i+1),[[b.dataset.boss]],{trial:true}); }); }
 renderTrials();
 document.querySelectorAll('.btn.mi').forEach(b=>b.insertAdjacentHTML('afterbegin',uiIcon(b.dataset.icon,48)));
 addEventListener('resize',()=>{ if($('#scrCamp').classList.contains('on')) campScene(); });
@@ -442,7 +443,7 @@ function fight(depth,waves,xo){
     onHero:c=>banner('♔ '+c.name.split(',')[0]+' joins the fight!','#ffe066'),
     onEnd:win=>win?victory():defeat(),
   },{prepare:p=>assignChargeUses(save,p,d.list), gear:gearMods(save), look:gearLook(save), waves, hp:xo&&xo.hp, opening:xo&&xo.opening});
-  B.explore=!!(xo&&xo.explore);
+  B.explore=!!(xo&&xo.explore); B.trial=!!(xo&&xo.trial);
   if(B.opening) setTimeout(()=>banner(B.opening==='ambush'?'Ambush! They\'re slow to react':'Surprised! They strike first',B.opening==='ambush'?'#39ff8a':'#ff5d6c'),300);
   hud(true);
 }
@@ -453,7 +454,7 @@ function victory(){
   const b=B, boss=b.enemies.some(e=>e.def.boss);
   const rw=battleRewards(b.enemies.filter(e=>!e.def.minion).map(e=>e.color),b.depth,boss,null,save.owned);
   if(rw.gold) rw.gold=Math.round(rw.gold*(1+(gearMods(save).gold||0)));   // Ring of Fortune
-  save.gold+=rw.gold; save.wins++; if(!b.explore&&b.depth>=save.deepest) save.deepest=b.depth+1;
+  save.gold+=rw.gold; save.wins++; if(!b.explore&&!b.trial&&b.depth>=save.deepest) save.deepest=b.depth+1;
   const hpLeft=b.player.hp;
   const loot=rw.items.map(k=>({k, res:addLoot(save,k)}));
   const res=addCards(save,rw.cards); const burnt=settleCharges();
@@ -462,7 +463,7 @@ function victory(){
   const got=[...rw.cards.map(c=>c.name),...(rw.gold?['🪙 '+rw.gold+' gold']:[]),...rw.items.map(k=>{ const l=lootLabel(save,k); return l.icon+' '+l.name; })];
   logCamp((boss?'Boss defeated':'Won')+' at depth '+depth+'.','win'); got.forEach(g=>logCamp('Found '+g.replace(/^[^A-Za-z0-9]+/u,'')+'.',/gold$/.test(g)?'gold':'loot'));
   loot.forEach(l=>{ if(l.res&&l.res.cursed) logCamp(l.res.msg,'curse'); });
-  reveal(hero?'♔ A hero joins you!':boss?'Boss defeated!':'Victory!',(hero?hero.name+' answers your call. ':'')+'Depth '+depth+' cleared in '+Math.round(b.time)+'s. '+(boss?'Boss rewards: ':'Your reward: ')+got.join(', ')+'.'+loot.map(l=>l.res&&l.res.cursed?' '+l.res.msg:l.res&&l.res.ok?' You put it on.':'').join('')+burnt,res,
+  reveal(hero?'♔ A hero joins you!':boss?'Boss defeated!':'Victory!',(hero?hero.name+' answers your call. ':'')+(b.explore?'Won in '+Math.round(b.time)+'s. ':'Depth '+depth+' cleared in '+Math.round(b.time)+'s. ')+(boss?'Boss rewards: ':'Your reward: ')+got.join(', ')+'.'+loot.map(l=>l.res&&l.res.cursed?' '+l.res.msg:l.res&&l.res.ok?' You put it on.':'').join('')+burnt,res,
     b.explore?[['Keep exploring',()=>{ B=null; resumeExplore(hpLeft,true); },true]]
     :[['Camp',()=>{ B=null; pickDepth=depth+1; openCamp(); },true],['Depth '+(depth+1)+' →',()=>fight(depth+1)]],
     [...(rw.gold?[{pic:uiIcon('coin',64),name:rw.gold+' gold',text:'Spend it on packs in the shop'}]:[]),...rw.items.map(k=>Object.assign(lootLabel(save,k),{pic:lootPic(k)}))]);
@@ -475,7 +476,11 @@ function defeat(){
   reveal('Defeated…','You fell at depth '+depth+' and dropped '+lost+' gold. Your cards are safe.'+burnt,[],
     xp?[['Camp',()=>{ B=null; openCamp(); },true]]:[['Camp',()=>{ B=null; openCamp(); },true],['Retry',()=>fight(depth)]]);
 }
-$('#btnRetreat').onclick=e=>{ if(B) armed(e.currentTarget,'Tap again to retreat',()=>{ const burnt=settleCharges(); if(burnt) tip(burnt.trim()); B=null; paused=false; $('#bMenu').classList.remove('on'); $('#custom').classList.remove('on'); openCamp(); }); };
+$('#btnRetreat').onclick=e=>{ if(B) armed(e.currentTarget,'Tap again to retreat',()=>{ paused=false; $('#bMenu').classList.remove('on'); $('#custom').classList.remove('on');
+  if(B.phase==='lose'||B.player.hp<=0) return defeat();   // already beaten: the loss still counts
+  const burnt=settleCharges(); if(burnt) tip(burnt.trim());
+  if(B.explore){ const lost=Math.floor(save.gold*.1); save.gold-=lost; persist(); logCamp('Fled a fight at depth '+B.depth+' and dropped '+lost+' gold.','curse'); tip('You flee to camp and drop '+lost+' gold'); }
+  B=null; openCamp(); }); };
 // the card you cast pops up large and flies onto the board, Hearthstone style
 function showCast(c,inst){ const box=$('#castFx'); box.innerHTML=''; const el=cardEl(c,inst&&inst.combo?`<span class="tag">✦ ${esc(inst.combo.split(':')[0])}</span>`:''); box.appendChild(el); }
 function banner(text,color){ const b=$('#banner'); b.textContent=text; b.style.setProperty('--bc',color); b.classList.remove('on'); void b.offsetWidth; b.classList.add('on'); }

@@ -18,7 +18,7 @@ def look_row(race, sex):
     L = C.look(race, sex); lid = C.LOOK_IDS[(race, sex)]
     parts = ["%s:'%s'" % (k, url(L[k])) for k in ('front', 'back', 'frontBare', 'backBare')]
     parts += ['tip:' + tip(L['tip']), 'tipBack:' + tip(L['tipBack'])]
-    return "  %s:{name:'%s', gender:'%s', %s}" % (lid, C.NAMES[race], {'m': 'man', 'f': 'woman'}[sex], ', '.join(parts))
+    return "  %s:{name:'%s', gender:'%s', %s}" % (lid, C.SEX_NAMES.get((race, sex), C.NAMES[race]), {'m': 'man', 'f': 'woman'}[sex], ', '.join(parts))
 
 def main():
     rows = [look_row(r, s) for r in C.RACES for s in 'mf']

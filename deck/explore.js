@@ -408,13 +408,13 @@ function xLoot(rich){ const d=EX.depth+(rich?2:0), r=Math.random();
 /* ---------------- enemies ---------------- */
 function xEnemies(dt){
   for(const g of EX.groups){
-    const vis=!!EX.vis[g.cell]; if(vis&&!g.seen&&g.state!=='sleep'){ g.seen=true; }
     const d=Math.hypot(g.x-EX.px,g.z-EX.pz), cells=d/XCS;
+    if(EX.vis[g.cell]&&g.state!=='sleep'&&cells>2.2){ g.seen=true; g.surprise=false; }
     if(g.state==='sleep'){ g.wakeT-=dt; if(g.wakeT<=0){ g.wakeT=1; if(cells<2.6&&Math.random()<.3){ g.state='chase'; g.surprise=!EX.vis[g.cell]; if(EX.vis[g.cell]) xLog(ENEMY_DEFS[g.ids[0]].name+' wakes up!','warn'); } } }
     else if(g.state==='guard'){ if(EX.room[EX.pc]===EX.room[g.home]&&EX.room[EX.pc]>=0){ g.state='chase'; xLog(ENEMY_DEFS[g.ids[0]].name+' rises to face you!','warn'); } }
     else { const sees=cells<7.5&&xLos(g.cell,EX.pc);
       if(sees){ if(g.state!=='chase'&&EX.vis[g.cell]) xLog(ENEMY_DEFS[g.ids[0]].name+' spots you!','warn'); g.state='chase'; g.lostT=0; }
-      else if(g.state==='chase'){ g.lostT+=dt; if(g.lostT>6){ g.state='wander'; g.path=[]; } }
+      else if(g.state==='chase'){ g.lostT+=dt; if(g.lostT>6){ g.state='wander'; g.path=[]; g.seen=false; } }
       g.repath-=dt;
       if(g.repath<=0){ g.repath=g.state==='chase'?.4:2.5;
         const goal=g.state==='chase'?EX.pc:(g.path.length?null:xWanderGoal(g));
@@ -436,11 +436,11 @@ function xPathTo(dist,from,goal){ if(dist[from]<0) return []; const out=[]; let 
 // how the fight opens: reach a sleeping enemy first and you ambush it; one you never saw coming strikes first
 function xEngage(g){
   const opening=g.state==='sleep'?'ambush':(g.surprise||!g.seen)?'surprised':null;
-  EX.busy=true; EX.path=[]; EX.fighting=g;
+  EX.busy=true; EX.path=[]; EX.fighting=g; xHud();
   const name=ENEMY_DEFS[g.ids[0]].name;
   if(opening==='ambush') xLog('You catch the '+name+' asleep!','good'); else if(opening==='surprised') xLog('The '+name+' was waiting for you!','bad');
   const b=$('#xBang'); b.textContent=opening==='ambush'?'Ambush!':opening==='surprised'?'Surprised!':'!'; b.className='x-bang on '+(opening||'');
-  setTimeout(()=>{ b.className='x-bang'; EX.active=false; fight(EX.depth,[g.ids.slice()],{hp:EX.hp,opening,explore:true}); },700);
+  setTimeout(()=>{ b.className='x-bang'; if(!EX||EX.fighting!==g) return; EX.active=false; fight(EX.depth,[g.ids.slice()],{hp:EX.hp,opening,explore:true}); },700);
 }
 
 /* ---------------- floors, camp, death ---------------- */
@@ -450,7 +450,7 @@ function xStairsDown(){
   save.deepest=Math.max(save.deepest,nd); persist();
   setTimeout(()=>{ buildFloor(nd,hp); EX.active=true; xHud(); xLoopStart(); xBanner('Depth '+nd); },500);
 }
-function xToCamp(){ if(!EX||EX.pc!==EX.up) return; logCamp('Climbed back to camp from depth '+EX.depth+'.','dim'); stopExplore(); pickDepth=EX.depth; EX=null; openCamp(); }
+function xToCamp(){ if(!EX||EX.busy||EX.pc!==EX.up) return; logCamp('Climbed back to camp from depth '+EX.depth+'.','dim'); stopExplore(); pickDepth=EX.depth; EX=null; openCamp(); }
 function xDie(why){ EX.busy=true; const lost=Math.floor(save.gold*.2); save.gold-=lost; persist(); const depth=EX.depth;
   logCamp('Killed by '+why+' at depth '+depth+', dropped '+lost+' gold.','curse'); stopExplore();
   reveal('You died…','Killed by '+why+' on depth '+depth+'. You dropped '+lost+' gold. Your cards are safe.',[],[['Camp',()=>{ EX=null; openCamp(); },true]]); }
@@ -503,7 +503,7 @@ function xHud(){ if(!EX) return; const m=xmaxHp();
   $('#xHpBar').style.width=(100*EX.hp/m)+'%'; $('#xHpTxt').textContent=Math.ceil(EX.hp)+' / '+m+' HP';
   $('#xDepth').textContent='Depth '+EX.depth+' · '+EX.area.name; $('#xGold').textContent=save.gold+' gold';
   $('#xSearch').disabled=!!EX.action; $('#xDisarm').disabled=!!EX.action||!xDisarmTarget();
-  $('#xCamp').style.display=EX.pc===EX.up?'':'none'; $('#xAct').textContent=EX.action?'…':''; }
+  $('#xCamp').style.display=EX.pc===EX.up&&!EX.busy?'':'none'; $('#xAct').textContent=EX.action?'…':''; }
 
 /* ---------------- entering and returning ---------------- */
 function enterExplore(depth){
@@ -516,7 +516,7 @@ function enterExplore(depth){
 function resumeExplore(hp,won){
   if(!EX) return openCamp();
   const g=EX.fighting; EX.fighting=null;
-  if(won&&g){ EX.groups=EX.groups.filter(x=>x!==g); [g.sprite,g.zz,g.bang].forEach(o=>X3.group.remove(o)); if(g.boss){ EX.bossDead=true; xLog('The guardian falls. The stairs down are open.','good'); } }
+  if(won&&g){ EX.groups=EX.groups.filter(x=>x!==g); [g.sprite,g.zz,g.bang].forEach(o=>{ X3.group.remove(o); if(o.material.map) o.material.map.dispose(); o.material.dispose(); }); if(g.boss){ EX.bossDead=true; xLog('The guardian falls. The stairs down are open.','good'); } }
   EX.hp=Math.max(1,hp); EX.busy=false; EX.active=true; EX.path=[];
   for(const k in XKEY) XKEY[k]=false;
   show('scrExplore'); xUpdateVis(); xHud(); xLoopStart();

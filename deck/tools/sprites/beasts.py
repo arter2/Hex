@@ -300,5 +300,9 @@ for uid, fn in (('gloop', gloop), ('gloopling', gloop), ('wisp', wisp), ('mite',
 unit('hollow', lambda: shade(crown=True, cape='#5a1a2a', tone='#3a2a56'))
 unit('clone', lambda: shade(tone='#2e2244'))
 
+import cast as _cast
+for _pid, _o in _cast.PEOPLE.items():
+    unit(_pid, (lambda o: lambda: figure.build(o, 'front'))(_o))
+
 def build(uid):
     return UNITS[uid]()

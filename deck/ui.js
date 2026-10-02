@@ -285,10 +285,12 @@ const DOLL_LEFT=['head','arms','offhand','ring1'], DOLL_RIGHT=['body','weapon','
 const DOLL_ANCHOR={head:[16,7], body:[16,20], arms:[9,21], offhand:[6,18], weapon:[25,12], ring1:[9,24], ring2:[23,24]};
 const INV_TABS=[['all','All'],['weapon','Weapons'],['offhand','Off-hand'],['head','Head'],['body','Body'],['arms','Arms'],['ring','Rings']];
 let chTab='all', chSel=null;
-// pick how your wizard looks: the hooded wizard or an elf, dwarf or orc, man or woman
+// pick how your hexmancer looks: wizard, elf, dwarf or orc (man or woman), dark witch or necromancer; hat on or off
 function renderLooks(){ const box=$('#chLooks'); if(!box||typeof PLAYER_LOOKS==='undefined') return; const cur=save.look||'wizard';
   box.innerHTML='<span class="lbl">Look</span>'+Object.keys(PLAYER_LOOKS).map(id=>{ const L=PLAYER_LOOKS[id]; return `<button class="chip${id===cur?' on':''}" data-look="${id}" style="--c:#8fe4ff">${L.name}${L.gender?' · '+L.gender:''}</button>`; }).join('');
-  box.querySelectorAll('[data-look]').forEach(b=>b.onclick=()=>{ save.look=b.dataset.look; persist(); renderCharacter(); }); }
+  box.innerHTML+=`<button class="chip${save.hat===false?'':' on'}" data-hat="1" style="--c:#f2c94c">${save.hat===false?'Hat off':'Hat on'}</button>`;
+  box.querySelectorAll('[data-look]').forEach(b=>b.onclick=()=>{ save.look=b.dataset.look; persist(); renderCharacter(); });
+  box.querySelector('[data-hat]').onclick=()=>{ save.hat=save.hat===false; persist(); renderCharacter(); }; }
 window.onLookLoaded=()=>{ if($('#scrCharacter').classList.contains('on')) renderCharacter(); };
 function renderCharacter(){
   const s=gearState(save), m=gearMods(save), K=WEAPON_KINDS[m.kind]||WEAPON_KINDS.wand;

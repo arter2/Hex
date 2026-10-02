@@ -25,7 +25,7 @@ def ramp(base, cool=0.66, warm=0.13, contrast=1.0):
     Shadows slide toward blue-violet and gain saturation; lights slide toward warm yellow."""
     r, g, b = [v / 255 for v in rgb(base)]
     h, s, v = colorsys.rgb_to_hsv(r, g, b)
-    steps = [(-0.70, 0.07, 0.18), (-0.47, 0.05, 0.12), (-0.24, 0.025, 0.06), (0, 0, 0), (0.20, -0.025, -0.10), (0.42, -0.05, -0.25)]
+    steps = [(-0.70, 0.07, 0.18), (-0.50, 0.05, 0.12), (-0.29, 0.03, 0.07), (0, 0, 0), (0.20, -0.025, -0.10), (0.42, -0.05, -0.25)]
     out = []
     for dv, dh, ds in steps:
         dv *= contrast
@@ -125,6 +125,22 @@ class Part:
             if 0 <= x < self.spr.w and 0 <= y < self.spr.h: self.mask[y, x] = not erase
         return self
 
+    def hull(self):
+        """Replace the mask with its convex hull, so a union of shapes shades as one smooth form."""
+        ys, xs = np.nonzero(self.mask)
+        if len(xs) < 3: return self
+        pts = sorted(set(zip(xs.tolist(), ys.tolist())))
+        cross = lambda o, a, b: (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0])
+        lo, hi = [], []
+        for p in pts:
+            while len(lo) >= 2 and cross(lo[-2], lo[-1], p) <= 0: lo.pop()
+            lo.append(p)
+        for p in reversed(pts):
+            while len(hi) >= 2 and cross(hi[-2], hi[-1], p) <= 0: hi.pop()
+            hi.append(p)
+        poly = [(x + 0.5, y + 0.5) for x, y in lo[:-1] + hi[:-1]]
+        im = self._img(); ImageDraw.Draw(im).polygon(poly, fill=1, outline=1); self.mask |= np.array(im, bool); return self
+
     def clip(self, other):
         """Keep only the pixels inside another part (or mask)."""
         self.mask &= (other.mask if isinstance(other, Part) else other); return self
@@ -137,6 +153,7 @@ class Sprite:
         self.w, self.h = w, h; self.parts = []; self.decals = []; self.mats = {}
         self.outline_mix, self.outline_dark = outline_mix, rgb(outline_dark)
         self.glow = []                           # (x, y, color) pixels that may sit outside the figure
+        self.rim = True                          # dark materials catch a light along the top-left edge
 
     def mat(self, name, spec):
         self.mats[name] = ramp_of(spec); return name
@@ -157,6 +174,10 @@ class Sprite:
     def paint(self, pts, color, over=False):
         """Paint pixels a fixed color; over=True also paints outside the figure."""
         self.decals.append(('rgb', None, pts, (rgb(color), over))); return self
+
+    def ontone(self, mat, pts, t):
+        """Tone t of a material, only on pixels that already show that material."""
+        self.decals.append(('onmat', mat, pts, t)); return self
 
     def mtone(self, mat, pts, t, over=False):
         """Paint pixels with a tone from a named material, wherever they fall."""
@@ -235,6 +256,14 @@ class Sprite:
                         shade[y, x] = True
         tone = np.where(shade & (tone > 1), tone - 1, tone)
         tone = self._clean(tone, own)
+        if self.rim:
+            solid = own >= 0
+            for i, p in enumerate(order):
+                base = self.mats[p.mat][3]
+                if 0.3 * base[0] + 0.59 * base[1] + 0.11 * base[2] > 95: continue
+                m = own == i
+                edge = m & ~np.roll(solid, 1, 1) | m & ~np.roll(solid, 1, 0)
+                tone = np.where(edge & (tone < 4), tone + 1, tone)
         img = np.zeros((H, W, 4), int)
         for i, p in enumerate(order):
             R_ = self.mats[p.mat]; vis = own == i
@@ -262,6 +291,9 @@ class Sprite:
                     p = self.get(ref) if isinstance(ref, str) else ref
                     if p is None or own[y, x] < 0 or order[own[y, x]] is not p: continue
                     img[y, x, :3] = self.mats[p.mat][val]
+                elif kind == 'onmat':
+                    if own[y, x] < 0 or order[own[y, x]].mat != ref: continue
+                    img[y, x, :3] = self.mats[ref][val]
                 elif kind == 'mat':
                     t, over = val
                     if own[y, x] < 0 and not over: continue

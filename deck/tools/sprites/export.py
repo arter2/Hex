@@ -29,11 +29,10 @@ def main():
            "   Player looks: front (camp, character screen) and back (battle), each with and without a hat;\n"
            "   tip is where the staff's focus sits, as a fraction of the image. */\n"
            "const PLAYER_LOOKS={\n" + ",\n".join(rows) + "\n};\n")
-    units = getattr(cast, 'UNITS', {})
-    if units:
-        import beasts
+    import beasts
+    if beasts.UNITS:
         urows = []
-        for uid in units:
+        for uid in beasts.UNITS:
             s = beasts.build(uid); urows.append("  %s:'%s'" % (uid, url(s.render())))
         src += "/* Enemies, bosses and heroes, drawn facing right. */\nconst UNIT_SPRITES={\n" + ",\n".join(urows) + "\n};\n"
     out = os.path.join(os.path.dirname(__file__), '..', '..', 'sprites.js')

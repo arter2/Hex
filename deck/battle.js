@@ -779,7 +779,7 @@ function previewOverlay(ctx,pv,T){
 // Draw a unit's pixel sprite standing on its tile: a soft ground shadow, a cast shadow falling
 // away from the light, a little breathing and bobbing, and a white flash when hit.
 // Returns the screen x and the top of the sprite, for bars and labels.
-const FACES_LEFT=new Set(['ram']);
+const FACES_LEFT=new Set([]);
 function drawSprite(ctx,u,T,S,o){
   const spr=typeof unitSprite==='function'?unitSprite(u):null, [wx,wz]=posOf(u), [x,y]=proj(wx,0,wz);
   const sc=o.scale||1, H=S*2.7*sc, k=H/32, alpha=o.alpha==null?1:o.alpha;
@@ -812,7 +812,7 @@ const DRAW={
     // the staff's orb glows, and grows while the wand charges
     const wc=p.wand&&p.wand.color?COLORS[p.wand.color].c:null;
     const glow=p.charging?(p.chargeT>=chargeNeed(p)?'#ffffff':wc||'#7fd4ff'):p.powerT>0?'#ff6a3d':wc;
-    if(glow&&(!p.look||['staff','wand'].includes(p.look.weapon))){ const hs=unitSprite(p).hand, ox=r.x+(flip?-1:1)*(hs?7.5:9)*r.k, oy=r.top+(hs?5:4)*r.k; ctx.fillStyle=glow; ctx.shadowColor=glow; ctx.shadowBlur=10+(p.charging?p.chargeT*18:0);
+    if(glow&&(!p.look||['staff','wand'].includes(p.look.weapon))){ const sp=unitSprite(p), tp=sp&&sp.tip, ox=tp?r.x+(flip?-1:1)*(tp[0]-.5)*r.H:r.x+(flip?-1:1)*9*r.k, oy=tp?r.top-r.k+tp[1]*r.H:r.top+4*r.k; ctx.fillStyle=glow; ctx.shadowColor=glow; ctx.shadowBlur=10+(p.charging?p.chargeT*18:0);
       ctx.globalAlpha=.85; ctx.beginPath(); ctx.arc(ox,oy,S*(.12+(p.charging?p.chargeT*.12:0)),0,TAU); ctx.fill(); ctx.shadowBlur=0; ctx.globalAlpha=1; }
     const [x,y]=proj(posOf(p)[0],0,posOf(p)[1]);
     if(p.barrier>0){ ctx.strokeStyle='rgba(111,214,255,.85)'; ctx.lineWidth=2.5; ctx.beginPath(); ctx.ellipse(x,y-r.H*.45,S*.75,r.H*.55,0,0,TAU); ctx.stroke();

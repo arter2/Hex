@@ -14,10 +14,10 @@ GROUND = 93
 BUILD = {
     ('human', 'm'): dict(height=62, head=(14, 16), sw=8.5, hip=5.5, leg=29, arm=2.3, leg_r=2.6),
     ('human', 'f'): dict(height=60, head=(13, 15), sw=7.0, hip=6.0, leg=29, arm=2.0, leg_r=2.4),
-    ('elf', 'm'):   dict(height=74, head=(13, 16), sw=6.6, hip=4.6, leg=38, arm=1.8, leg_r=2.0),
-    ('elf', 'f'):   dict(height=72, head=(12, 15), sw=5.8, hip=5.0, leg=38, arm=1.6, leg_r=1.9),
+    ('elf', 'm'):   dict(height=74, head=(13, 16), sw=6.0, hip=4.2, leg=38, arm=1.8, leg_r=2.0),
+    ('elf', 'f'):   dict(height=72, head=(12, 15), sw=5.4, hip=4.6, leg=38, arm=1.6, leg_r=1.9),
     ('dwarf', 'm'): dict(height=46, head=(15, 15), sw=10.0, hip=7.0, leg=15, arm=3.0, leg_r=3.0),
-    ('dwarf', 'f'): dict(height=44, head=(14, 14), sw=8.5, hip=7.0, leg=15, arm=2.6, leg_r=2.8),
+    ('dwarf', 'f'): dict(height=44, head=(15, 14), sw=8.5, hip=7.0, leg=15, arm=2.6, leg_r=2.8),
     ('orc', 'm'):   dict(height=64, head=(16, 16), sw=13.0, hip=8.0, leg=27, arm=3.6, leg_r=3.4, neck=5),
     ('orc', 'f'):   dict(height=61, head=(14, 15), sw=10.0, hip=7.0, leg=28, arm=2.9, leg_r=2.8, neck=4),
 }
@@ -30,6 +30,7 @@ def fold(s, part, x0, y0, x1, y1, w1=3.0, tone=2):
         t = k / n; y = int(round(y0 + k)); xs = int(round(x0 + (x1 - x0) * t)); w = max(1, int(round(1 + (w1 - 1) * t ** 0.8)))
         s.tone(part, [(xs + i, y) for i in range(w)], tone)
         if t > 0.72 and w > 2: s.tone(part, [(xs + w // 2, y)], tone - 1)
+        if 0.12 < t < 0.85: s.tone(part, [(xs - 1, y)], 4)
 
 def bottom_band(mask, rows=2):
     """The lowest pixels of a mask in each column, for hem bands and brim edges."""
@@ -124,14 +125,14 @@ def dress(s, B, o, view):
             cs.poly(op, erase=True)
             # trim down both edges of the opening and along the hem
             tl = s.part('trimL', 'trim', z=4.5, R=1, line=0)
-            tl.capsule((cx + 0.6, wy + 1), (op[3][0] - 0.2, hem), 0.75, 0.75).clip(cs)
+            tl.curve([(cx + 0.6, wy + 1), (cx - 0.6, (wy + hem) / 2 + 2), (op[3][0] - 0.2, hem)], 0.75, 0.75).clip(cs)
             tr = s.part('trimR', 'trim', z=4.5, R=1, line=0)
-            tr.capsule((cx + 2.6, wy + 1), (op[2][0] + 0.2, hem), 0.75, 0.75).clip(cs)
+            tr.curve([(cx + 2.6, wy + 1), (cx + 4.4, (wy + hem) / 2 - 1), (op[2][0] + 0.2, hem)], 0.75, 0.75).clip(cs)
         # the hem dips under each fold and rises between them
         folds = [(cx - 3, wy + 3, cx - 6, hem, 3.0), (cx + 6, wy + 4, cx + 8.5, hem, 2.5)] if not back else \
                 [(cx - 4, wy + 2, cx - 6.5, hem, 3.5), (cx + 3, wy + 3, cx + 4.5, hem, 3.0)]
         for (x0, y0, x1, y1, w) in folds:
-            cs.ellipse(x1 + 1, hem + 1.2, 2.2, 1.2)                       # the hem bulges a little under each fold
+            if style == 'coat': cs.ellipse(x1 + 1, hem + 1.2, 2.2, 1.2)    # the hem bulges a little under each fold
         hb = s.part('hemband', 'trim', z=4.4, R=1, line=0)
         hb.mask |= bottom_band(cs.mask, 2)
         for (x0, y0, x1, y1, w) in folds: fold(s, 'coat', x0, y0, x1, y1 - 1, w)
@@ -163,6 +164,13 @@ def dress(s, B, o, view):
     s.part('neck', 'skin', z=3, R=2).rect(int(cx - nk), int(B.chin - 3), int(cx + nk + 0.5), int(sy + 1))
     s.tone('neck', [(x, int(B.chin)) for x in range(int(cx - 2), int(cx + 3))], 1)
     s.tone('neck', [(x, int(B.chin) + 1) for x in range(int(cx - 2), int(cx + 1))], 2)
+    if o.get('plate'):
+        pt = s.part('plate', 'iron', z=4.8, shine=1, R=5)
+        pt.poly([(B.shL[0], sy + 1), (B.shR[0], sy + 1), (cx + b['hip'] + 1, wy), (cx - b['hip'], wy)])
+        s.tone('plate', [(int(cx + 1), y) for y in range(int(sy + 2), int(wy))], 4)
+        for d, sh_ in ((-1, B.shL), (1, B.shR)):
+            s.part('pauldron%d' % d, 'iron', z=12.7 if d > 0 else 11.7, shine=1, R=3).ellipse(sh_[0] + d * 0.5, sh_[1], b['arm'] + 3, b['arm'] + 2.2)
+            s.part('ptrim%d' % d, 'gold', z=12.75 if d > 0 else 11.75, shine=1, R=1, line=0).rect(int(sh_[0] - b['arm'] - 2), int(sh_[1] + b['arm'] + 1), int(sh_[0] + b['arm'] + 3), int(sh_[1] + b['arm'] + 1))
     if o.get('cowl'):
         cw_ = s.part('cowl', 'cloth', z=12.9 if not back else 13.6, R=3.5, cast=1)
         cw_.poly([(cx - b['sw'] + 1, sy + 1), (cx - 3, B.chin - 3), (cx + 4, B.chin - 3), (cx + b['sw'], sy + 1), (cx + 6, sy + 5), (cx + 1, sy + 6.5), (cx - 4, sy + 5)])
@@ -215,7 +223,7 @@ def arm(s, B, side, o, back):
     if side == 'R' and o.get('staff', 'crescent'):
         # a fist around the staff: three finger bands across the front, the thumb on top
         hd.rect(X - 2, Y - 2, X + 1, Y + 2).px([(X + 2, Y - 1), (X + 2, Y), (X + 2, Y + 1), (X - 3, Y - 1), (X - 3, Y)])
-        s.tone('hand' + side, [(X - 1, Y - 1), (X, Y - 1), (X + 1, Y - 1), (X - 1, Y + 1), (X, Y + 1), (X + 1, Y + 1)], 2)
+        s.tone('hand' + side, [(X - 1, Y - 1), (X, Y - 1), (X + 1, Y - 1), (X - 1, Y + 1), (X, Y + 1), (X + 1, Y + 1)], 1)
         s.tone('hand' + side, [(X + 2, Y - 1), (X + 2, Y + 1)], 1)
         s.tone('hand' + side, [(X - 2, Y - 2), (X - 1, Y - 2)], 4); s.tone('hand' + side, [(X - 3, Y - 1)], 4)
         if back: s.tone('hand' + side, [(X - 2, Y), (X - 1, Y), (X, Y), (X + 1, Y)], 2)
@@ -224,7 +232,8 @@ def arm(s, B, side, o, back):
         hd.rect(X - 2, Y - 1, X + 2, Y + 1).px([(X - 3, Y - 2), (X - 3, Y - 1), (X - 2, Y - 2), (X + 1, Y + 2), (X, Y + 2), (X - 1, Y + 2)])
         s.tone('hand' + side, [(X - 2, Y), (X - 1, Y), (X, Y)], 4)
         s.tone('hand' + side, [(X - 1, Y + 2), (X, Y + 2), (X + 1, Y + 2), (X + 2, Y + 1)], 2)
-        s.tone('hand' + side, [(X - 2, Y - 1)], 2)
+        s.tone('hand' + side, [(X - 2, Y - 1)], 1)
+        if back: s.tone('hand' + side, [(X - 1, Y), (X, Y), (X + 1, Y), (X - 2, Y)], 2)
     else:
         hd.ellipse(ha[0], ha[1], r * 0.55 + 1.5, r * 0.55 + 1.6)
         s.tone('hand' + side, [(X - 1, Y + 1), (X, Y + 1)], 2)
@@ -354,18 +363,21 @@ def hair(s, B, o, view):
                 p = s.part('lockb%d' % i, 'hair', z=14.1 + i * 0.01, R=w, line=0, cast=0)
                 p.curve([(ex + rx, ey + ry), (ex + (rx + tx) / 2, ey + (ry + ty) / 2), (ex + tx, ey + ty)], w, 0.8, steps=16)
             nape = bottom_band(cap.mask | s.get('lockb1').mask | s.get('lockb2').mask, 1)
-            s.mtone('hair', [(int(x), int(y)) for y, x in zip(*nape.nonzero())], 1)
+            s.ontone('hair', [(int(x), int(y)) for y, x in zip(*nape.nonzero())], 1)
     if st in ('long', 'braids', 'ponytail', 'wild', 'mane'):
         hb = s.part('hairback', 'hair', z=-2 if not back else 15, R=4, line=1)
         ln = {'long': 20, 'braids': 9, 'ponytail': 6, 'wild': 13, 'mane': 15}[st]
         hb.ellipse(ex - 0.5, ey - 1, hw / 2 + 1.5, hh / 2 + 0.5)
         if st in ('long', 'wild', 'mane'):
+            hb.mask[int(ey + 2):, :] = False
             # the fall of hair as separate tapering locks with a ragged, uneven end
-            n = 5; spread = hw / 2 + 2.0
+            n = 4 if back else 5; spread = hw / 2 + 1.0
+            hb.flat = -0.45                                  # the base shows only as the dark gaps between locks
             for i in range(n):
-                t = i / (n - 1); x0 = ex - spread + 2 * spread * t; ln_i = ln * (0.78 + 0.22 * ((i * 7) % 3) / 2)
-                lp = s.part('fall%d' % i, 'hair', z=(-2 if not back else 15) + 0.01 * (i % 2), R=2.4, line=3 if back else 1)
-                lp.curve([(x0 * 0.6 + ex * 0.4, ey - 2), (x0 + (x0 - ex) * 0.15, ey + ln_i * 0.5), (x0 + (x0 - ex) * 0.25 + (1 if i % 2 else -1), ey + ln_i)], 3.0, 0.9, steps=18)
+                t = i / (n - 1); x0 = ex - spread + 2 * spread * t; ln_i = ln * (0.8 + 0.2 * ((i * 7) % 3) / 2)
+                lp = s.part('fall%d' % i, 'hair', z=(-2 if not back else 15) + 0.01 * (i + 1), R=2.6, line=0, cast=0)
+                lp.curve([(x0 * 0.7 + ex * 0.3, ey - 3), (x0 + (x0 - ex) * 0.12, ey + ln_i * 0.5), (x0 + (x0 - ex) * 0.2, ey + ln_i)], 2.5, 0.5, steps=18)
+                hb.curve([(x0 * 0.7 + ex * 0.3, ey - 3), (x0 + (x0 - ex) * 0.12, ey + ln_i * 0.5), (x0 + (x0 - ex) * 0.2, ey + ln_i)], 3.2, 1.0, steps=18)
         else:
             hb.poly([(ex - hw / 2 - 1.5, ey), (ex + hw / 2 + 1.5, ey), (ex + hw / 2 + 2.5, ey + ln), (ex + 1, ey + ln + 2), (ex - hw / 2 - 2.5, ey + ln + 1)])
         if st == 'ponytail':
@@ -382,7 +394,7 @@ def hair(s, B, o, view):
     if st == 'mohawk':
         m = s.part('mohawk', 'hair', z=14.2, R=2)
         if back: m.curve([(ex, ey + 4), (ex, top - 1), (ex - 1, top - 4)], 2.4, 1.4)
-        else: m.curve([(ex + 1, ey - 2), (ex + 0.5, top - 3), (ex - 5, top - 1)], 2.3, 1.2)
+        else: m.curve([(ex + 2.5, top + 3), (ex + 1, top - 2.5), (ex - 4, top - 1.5), (ex - 6.5, top + 3)], 2.2, 1.4, steps=30)
         s.tone('head', [(int(ex - 3), int(top + 3)), (int(ex - 2), int(top + 2))], 2)
     if st == 'topknot':
         s.part('knot', 'hair', z=14.1, R=2.5).ellipse(ex - 1, top - 1, 3.2, 2.8)
@@ -420,7 +432,8 @@ def hat(s, B, o, view):
         rx = (hw / 2 + (6.5 if not witch else 9)) * o.get('brim', 1.0)
         brim.ellipse(ex + 0.5, by + 0.8, rx, 3.0)
         brim.poly([(ex + 0.5 - rx * 0.8, by - 0.4), (ex - rx + 1.5, by + 2.6), (ex - rx - 0.5, by + 3.6), (ex - rx + 0.5, by + 1.8)])
-        brim.poly([(ex + 0.5 + rx * 0.8, by), (ex + rx + 0.5, by + 0.5), (ex + rx + 1.5, by + 2.2), (ex + rx - 1, by + 2.5)])
+        brim.poly([(ex + 0.5 + rx * 0.8, by), (ex + rx + 0.5, by + 1.0), (ex + rx + 1.5, by + 3.4), (ex + rx + 0.5, by + 4.2), (ex + rx - 1.5, by + 2.8)])
+        brim.ellipse(ex + 0.5, by + 2.2, rx * 0.7, 2.2)
         edge = bottom_band(brim.mask, 1)
         s.tone('brim', [(int(x), int(y)) for y, x in zip(*edge.nonzero())], 1)
         lip = bottom_band(brim.mask, 2) & ~edge
@@ -449,7 +462,12 @@ def hat(s, B, o, view):
         hd = s.part('hood', 'cloth', z=15, R=5, cast=2)
         hd.ellipse(ex - 0.3, ey - 1.2, hw / 2 + 2.8, hh / 2 + 2.5)
         hd.poly([(ex - hw / 2 - 3.2, ey), (ex + hw / 2 + 3, ey), (ex + hw / 2 + 5.5, ey + hh / 2 + 5), (ex - hw / 2 - 5.5, ey + hh / 2 + 6)])
+        if back:
+            hd.poly([(ex - 4, ey + hh / 2 + 3), (ex + 5, ey + hh / 2 + 3), (ex + 0.5, ey + hh / 2 + 11)])
+        hd.hull()
         hd.poly([(ex - 2, ey - hh / 2 - 1.5), (ex - hw / 2 - 6, ey - hh / 2 + 4), (ex - hw / 2 - 2, ey - 1)])
+        if back:
+            s.tone('hood', [(int(ex + 0.5), y) for y in range(int(ey - hh / 2 + 2), int(ey + hh / 2 + 8))], 2)
         if not back:
             hd.ellipse(ex + 1.3, ey + 1.5, hw / 2 - 0.8, hh / 2 - 1.6, erase=True)
             hd.rect(int(ex - hw / 2 + 2.5), int(ey + 2), int(ex + hw / 2 - 0.5), int(ey + hh / 2 - 0.5), erase=True)
@@ -476,14 +494,116 @@ def hat(s, B, o, view):
             for dx in (-hw / 2 + 1, 0, hw / 2 - 1):
                 c.poly([(ex + dx - 1.5, top + 3.5), (ex + dx, top - 1.5), (ex + dx + 1.5, top + 3.5)])
         s.part('cgem', 'gem', z=16.2, shine=1, R=1).rect(int(ex), int(top + 3), int(ex + 1), int(top + 4))
+    elif kind == 'tiara' or kind == 'icecrown':
+        tall = 1.0 if kind == 'tiara' else 1.8
+        for i, (dx, h) in enumerate(((-hw / 2 + 1, 3), (-2.5, 5), (0.5, 8), (3.5, 5), (hw / 2, 3))):
+            s.part('spike%d' % i, 'gem', z=16, shine=1, R=1).poly([(ex + dx - 1.5, top + 3.5), (ex + dx + 1.5, top + 3.5), (ex + dx, top + 3.5 - h * tall)])
+        s.part('circ', 'gold' if kind == 'tiara' else 'gem', z=16.1, shine=1, R=1).rect(int(ex - hw / 2), int(top + 3), int(ex + hw / 2 + 1), int(top + 4))
+    elif kind == 'tricorn':
+        tc = s.part('tricorn', 'hat', z=16, R=3, cast=2)
+        tc.poly([(ex - hw / 2 - 5, top + 5), (ex - 2, top - 1), (ex + 4, top - 2), (ex + hw / 2 + 6, top + 4), (ex + 3, top + 6.5), (ex - 4, top + 6.5)])
+        s.part('tband', 'hatband', z=16.1, R=1, line=0).poly([(ex - hw / 2 - 4, top + 5), (ex + hw / 2 + 5, top + 4), (ex + hw / 2 + 5, top + 5), (ex - hw / 2 - 4, top + 6)]).clip(tc)
+        s.part('plume', 'cloth', z=15.9, R=1.5).curve([(ex - 2, top), (ex - 7, top - 5), (ex - 12, top - 3)], 2.0, 0.6)
+        for p in s.parts:
+            if p.name in ('hair',) or p.name.startswith('lock'): p.mask[:int(top + 5), :] = False
+    elif kind == 'antlers':
+        for d in (-1, 1):
+            a = s.part('antler%d' % d, 'bone', z=16, R=1.2)
+            a.curve([(ex + d * 3, top + 2), (ex + d * 8, top - 3), (ex + d * 13, top - 8)], 1.6, 0.6)
+            a.curve([(ex + d * 7, top - 2), (ex + d * 7, top - 8)], 1.1, 0.5).curve([(ex + d * 10, top - 5), (ex + d * 14, top - 3)], 1.0, 0.4)
+        s.part('wreath', 'leaf', z=16.1, R=1).rect(int(ex - hw / 2), int(top + 2), int(ex + hw / 2 + 1), int(top + 3))
+    elif kind in ('veil', 'spiked'):
+        if kind == 'veil':
+            v = s.part('veil', 'hat', z=16, R=4, cast=2)
+            v.ellipse(ex - 0.3, ey - 1.5, hw / 2 + 2, hh / 2 + 1.5).poly([(ex - hw / 2 - 2, ey), (ex + hw / 2 + 2, ey), (ex + hw / 2 + 5, ey + hh / 2 + 8), (ex - hw / 2 - 5, ey + hh / 2 + 9)])
+            if view != 'back':
+                v.ellipse(ex + 1, ey + 1.5, hw / 2 - 1, hh / 2 - 2, erase=True)
+            for i, x in enumerate((ex - 3, ex, ex + 3)):
+                s.part('vcrown%d' % i, 'gold', z=16.1, shine=1, R=1).poly([(x - 1.2, top), (x, top - 4), (x + 1.2, top)])
+            for p in s.parts:
+                if p.name in ('hair', 'hairback', 'frontlock', 'ear', 'ear2') or p.name.startswith(('lock', 'fall')): p.mask &= ~v.mask
+        else:
+            hm = s.part('helm', 'iron', z=16, shine=1, R=4)
+            hm.ellipse(ex, ey - 0.5, hw / 2 + 1.5, hh / 2 + 0.5)
+            if view != 'back':
+                hm.rect(int(ex - 1), int(ey + 1), int(ex + hw / 2 + 2), int(ey + 3), erase=True)
+                s.paint([(x, int(ey + 2)) for x in range(int(ex - 1), int(ex + hw / 2 + 1))], '#ff3a4a')
+            for i, dx in enumerate((-4, 0, 4)):
+                s.part('hspike%d' % i, 'iron', z=16.1, shine=1, R=1).poly([(ex + dx - 1.5, top + 1), (ex + dx + 1.5, top + 1), (ex + dx, top - 5)])
+            for p in s.parts:
+                if p.name in ('hair', 'hairback', 'frontlock', 'ear', 'ear2') or p.name.startswith(('lock', 'fall')): p.mask &= ~hm.mask
     elif kind == 'horns':
         for d in (-1, 1):
             s.part('horn%d' % d, 'bone', z=16, R=1.5).curve([(ex + d * 3, top + 2), (ex + d * 8, top - 1), (ex + d * 7, top - 7)], 2.0, 0.5)
 
 # ---------------------------------------------------------------- staffs and spells
+def blade(s, B, o, view, kind):
+    """A sword, saber, spear or scythe in the right fist, blade up."""
+    hx_, hy_ = B.haR; x = hx_ + 0.3; g = s.mats.get('steel') and 'steel' or 'iron'
+    if kind in ('sword', 'greatsword', 'darksword'):
+        # the blade raised and angled out, away from the head
+        L = 22 if kind == 'sword' else 28; w = 1.6 if kind == 'sword' else 2.3
+        a = math.radians(28); ux, uy = math.sin(a), -math.cos(a); px_, py_ = -uy, ux
+        b0 = (x + ux * 3, hy_ + uy * 3); b1 = (x + ux * (L - 3), hy_ + uy * (L - 3)); tp = (x + ux * L, hy_ + uy * L)
+        bl = s.part('blade', 'blade', z=12.35, shine=1, R=w)
+        bl.poly([(b0[0] - px_ * w, b0[1] - py_ * w), (b0[0] + px_ * w, b0[1] + py_ * w), (b1[0] + px_ * w, b1[1] + py_ * w), tp, (b1[0] - px_ * w, b1[1] - py_ * w)])
+        s.tone('blade', [(int(round(x + ux * k)), int(round(hy_ + uy * k))) for k in range(4, L - 2)], 5 if kind != 'darksword' else 1)
+        s.part('guard', 'gold', z=12.7, shine=1, R=1).capsule((b0[0] - px_ * 4, b0[1] - py_ * 4), (b0[0] + px_ * 4, b0[1] + py_ * 4), 1.0)
+        s.part('pommel', 'gold', z=12.3, shine=1, R=1).ellipse(x - ux * 4, hy_ - uy * 4, 1.5, 1.4)
+        s.staff_tip = (x + ux * (L - 4), hy_ + uy * (L - 4))
+    elif kind == 'saber':
+        bl = s.part('blade', g, z=12.35, shine=1, R=1.5)
+        bl.curve([(x, hy_ - 3), (x + 3, hy_ - 12), (x + 1, hy_ - 22)], 1.7, 0.5, steps=24)
+        s.part('guard', 'gold', z=12.5, shine=1, R=1).curve([(x - 3, hy_ - 2), (x, hy_ - 3), (x + 3, hy_ + 1)], 1.0, 0.8)
+        s.staff_tip = (x + 1, hy_ - 20)
+    elif kind in ('spear', 'scythe'):
+        top = B.top - 2
+        st = s.part('staff', 'wood', z=12.4, R=1.2, line=2).capsule((x, top + 4), (x, GROUND - 0.5), 1.2, 1.0)
+        if kind == 'spear':
+            s.part('head', g, z=12.45, shine=1, R=1.5).poly([(x - 2.5, top + 5), (x + 2.5, top + 5), (x, top - 5)])
+            s.staff_tip = (x, top)
+        else:
+            sc = s.part('scythe', g, z=12.45, shine=1, R=2)
+            sc.curve([(x, top + 3), (x - 9, top - 1), (x - 18, top + 6)], 2.4, 0.4, steps=30)
+            s.staff_tip = (x - 9, top)
+
+def bow(s, B, o, view):
+    hx_, hy_ = B.haL; x = hx_ - 1
+    b = s.part('bow', 'wood', z=13.1, R=1, line=2)
+    b.curve([(x + 3, hy_ - 18), (x - 5, hy_), (x + 3, hy_ + 18)], 1.4, 1.0, steps=30)
+    s.paint([(int(x + 3), y) for y in range(int(hy_ - 17), int(hy_ + 18))], '#e8e0c8')
+
+def shield(s, B, o, view):
+    kind = o.get('shield'); hx_, hy_ = B.haL
+    if not kind: return
+    sh = s.part('shield', 'shield', z=13.2 if view != 'back' else 10.5, shine=1, R=5)
+    if kind == 'round':
+        sh.ellipse(hx_ - 1, hy_ - 2, 7, 7.5)
+        s.part('rim', 'gold', z=13.3, shine=1, R=1, line=0).ellipse(hx_ - 1, hy_ - 2, 7, 7.5).ellipse(hx_ - 1, hy_ - 2, 5.8, 6.3, erase=True)
+        s.part('boss', 'gold', z=13.35, shine=1, R=1.5).ellipse(hx_ - 1, hy_ - 2, 1.8, 1.8)
+    else:
+        sh.poly([(hx_ - 8, hy_ - 10), (hx_ + 6, hy_ - 10), (hx_ + 6, hy_ + 1), (hx_ - 1, hy_ + 8), (hx_ - 8, hy_ + 1)])
+        if view != 'back':
+            s.part('crest', 'gold', z=13.3, shine=1, R=1, line=0).rect(int(hx_ - 2), int(hy_ - 9), int(hx_), int(hy_ + 5)).rect(int(hx_ - 6), int(hy_ - 5), int(hx_ + 4), int(hy_ - 3))
+
+def wings(s, B, o, view):
+    cx, sy = B.cx, B.sy; z = -4 if view != 'back' else 9.5
+    for d in (-1, 1):
+        w = s.part('wing%d' % d, 'wing', z=z, R=5, line=3)
+        w.poly([(cx + d * 2, sy + 4), (cx + d * 22, sy - 16), (cx + d * 26, sy - 12), (cx + d * 20, sy + 2), (cx + d * 22, sy + 8), (cx + d * 12, sy + 14)])
+        for k in range(3):
+            s.tone('wing%d' % d, [(int(cx + d * (8 + k * 5 + j * 0.3)), int(sy - 2 - k * 4 + j)) for j in range(8)], 2)
+
+def spider_legs(s, B, o, view):
+    cx, sy = B.cx, B.sy
+    for d in (-1, 1):
+        for k in range(3):
+            s.part('sleg%d%d' % (d, k), 'carapace', z=-4, R=1.2).curve([(cx + d * 3, sy + 6 + k * 3), (cx + d * (16 + k * 2), sy - 6 + k * 6), (cx + d * (22 + k), sy + 14 + k * 8)], 1.6, 0.6, steps=20)
+
 def staff(s, B, o, view):
     kind = o.get('staff', 'crescent')
     if not kind: return
+    if kind in ('sword', 'greatsword', 'darksword', 'saber', 'spear', 'scythe'): return blade(s, B, o, view, kind)
     hx_, hy_ = B.haR; x = hx_ + 0.3
     top = B.top - 3 + o.get('staff_dy', 0)
     st = s.part('staff', 'wood', z=12.4, R=1.2, line=2)
@@ -526,6 +646,17 @@ def staff(s, B, o, view):
         for d in (-1, 1): s.part('tusk%d' % d, 'bone', z=12.45, R=1).curve([(x + d * 3, top + 3), (x + d * 7, top + 1), (x + d * 7, top - 4)], 1.3, 0.4)
         s.part('feather', 'cloth', z=12.55, R=1).capsule((x - 3, top + 7), (x - 4, top + 13), 1.0, 0.6)
         gx, gy = x, top + 2
+    elif kind == 'flamestaff':
+        fl = s.part('fire', 'spell', z=12.6, line=0, shine=1, R=2, cast=0)
+        fl.poly([(x - 3.5, top + 5), (x + 3.5, top + 5), (x + 3, top), (x + 1, top - 7), (x, top - 2), (x - 2, top - 5), (x - 3, top)])
+        s.mtone('spell', [(int(x), int(top + 2)), (int(x), int(top + 3)), (int(x - 1), int(top + 3))], 5)
+        s.part('cup', 'gold', z=12.55, shine=1, R=1).rect(int(x - 3), int(top + 5), int(x + 3), int(top + 7))
+        gx, gy = x, top + 1
+    elif kind == 'bolt':
+        s.part('rod', 'iron', z=12.5, shine=1, R=1).rect(int(x - 3), int(top + 6), int(x + 3), int(top + 7))
+        bt = s.part('zap', 'spell', z=12.6, line=0, shine=1, R=1, cast=0)
+        bt.poly([(x + 1, top - 6), (x - 3, top + 1), (x, top + 1), (x - 2, top + 6), (x + 3, top - 1), (x, top - 1)])
+        gx, gy = x, top
     if kind in ('crescent', 'branch', 'totem', 'hammer'):
         s.part('orb', 'gem', z=12.7, shine=1, R=1.6, line=1).ellipse(gx, gy, 2.0, 2.0)
         s.paint([(int(gx) - 1, int(gy) - 1)], '#ffffff')
@@ -555,7 +686,7 @@ DEFAULT_MATS = {
     'skin': '#d99a78', 'hair': '#5a3a2a', 'beard': '#5a3a2a', 'pants': '#3b3046', 'boot': '#5a3a2a', 'boot2': '#7a5a3a',
     'robe': '#3f4b6c', 'under': '#2b2f45', 'trim': '#c9923e', 'cloth': '#3c6670', 'cape': '#2b3350', 'belt': '#4b3229',
     'gold': '#e2b34a', 'hat': '#3f4b6c', 'hatband': '#8a5a3a', 'wood': '#7a5230', 'leather': '#6b4426', 'gem': '#5fd2ff',
-    'bone': '#d8cfb0', 'iron': '#8a8e9a', 'leaf': '#5aa04a', 'paper': '#e8dcc0', 'spell': '#7fd4ff', 'void': '#120c18',
+    'bone': '#d8cfb0', 'iron': '#8a8e9a', 'shield': '#8a5a3a', 'wing': '#f0f0f8', 'carapace': '#2a2230', 'blade': '#c8d0dc', 'leaf': '#5aa04a', 'paper': '#e8dcc0', 'spell': '#7fd4ff', 'void': '#120c18',
 }
 
 def build(o, view='front', size=SIZE):
@@ -565,7 +696,11 @@ def build(o, view='front', size=SIZE):
     for k, v in DEFAULT_MATS.items(): s.mat(k, v)
     for k, v in o.get('pal', {}).items(): s.mat(k, v)
     B = Body(race, sex, cx=o.get('cx', 44), pose=o.get('pose', 'staff'))
+    if o.get('back_extra') == 'wings': wings(s, B, o, view)
+    if o.get('back_extra') == 'legs': spider_legs(s, B, o, view)
     dress(s, B, o, view); head(s, B, o, view); hat(s, B, o, view); staff(s, B, o, view); offhand(s, B, o, view)
+    if o.get('shield'): shield(s, B, o, view)
+    if o.get('off') == 'bow': bow(s, B, o, view)
     if view != 'back': face(s, B, o)
     if 'extra' in o: o['extra'](s, B, view)
     return s

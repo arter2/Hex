@@ -262,6 +262,63 @@ function cardTexture(){ const R=rng(23), I=Img(32,32);
   for(let i=0;i<5;i++){ let x=Math.floor(R()*32), y=Math.floor(R()*32); for(let k=0;k<4;k++){ I.set(x%32,y%32,[0,0,0,55]); x+=R()<.5?1:0; y++; } }
   return I; }
 
+/* ---------- card faces: one texture per family, 64 x 64 tiles ---------- */
+const TAU=Math.PI*2, sh=(c,d)=>lift(hx(c),d);
+const FACE_TEX={
+  // frost: rolling water with foam, a few soft cloud puffs
+  frost(){ const I=Img(64,64,hx('#173452')), R=rng(41);
+    for(const [cx,cy,r] of [[14,10,6],[22,9,5],[48,40,6],[56,41,4]]) I.ellipse(cx,cy,r,r*.6,sh('#173452',10));
+    for(let i=0;i<6;i++){ const y0=4+i*11, ph=R()*TAU;
+      for(let x=0;x<64;x++){ const t=TAU*x/32+ph, y=Math.round(y0+2*Math.sin(t));
+        I.set(x,(y+64)%64,hx('#2a5c8a')); if(Math.cos(t)>.3) I.set(x,(y+63)%64,hx('#4f86b8')); if(Math.cos(t)>.9&&R()<.5) I.set(x,(y+62)%64,hx('#a8d4ff')); } }
+    return I; },
+  // fire: desert dunes under a red sky, embers drifting up
+  fire(){ const I=Img(64,64,hx('#4a1f16')), R=rng(43);
+    for(let i=0;i<4;i++){ const y0=i*16+8, ph=R()*TAU;
+      for(let x=0;x<64;x++){ const y=Math.round(y0+3*Math.sin(TAU*x/64+ph));
+        for(let k=1;k<8;k++) I.set(x,(y+k)%64,sh('#4a1f16',k<3?10:5)); I.set(x,y%64,hx('#8a3e26')); I.set(x,(y+1)%64,hx('#6a2e1c')); } }
+    for(let i=0;i<70;i++){ const x=Math.floor(R()*64), y=Math.floor(R()*64); I.set(x,y,hx(R()<.6?'#e8582c':'#f2a54a')); }
+    for(let i=0;i<6;i++){ const x=Math.floor(R()*64), y=Math.floor(R()*64); for(let k=0;k<4;k++) I.set((x+(k%2))%64,(y-k+64)%64,hx(k<2?'#c4471f':'#ff8a3d')); }
+    return I; },
+  // shadow: cave rock, cracked blocks in near-black
+  shadow(){ return wall([-16,-11,-6,0,6,12,20,30].map(d=>sh('#1e1a1d',d)),64,47,3); },
+  // light: Greek marble ashlar, pale blocks with grey veins
+  light(){ const I=Img(64,64,hx('#d9d2bc')), R=rng(53);
+    for(let i=0;i<9;i++){ let x=Math.floor(R()*64), y=Math.floor(R()*64); const c=hx(R()<.5?'#bfb59a':'#a99f84');
+      for(let k=0;k<40;k++){ I.set(x,y,c); x=(x+1)%64; y=(y+(R()<.5?1:R()<.5?0:63))%64; } }
+    for(let y=0;y<64;y+=16){ for(let x=0;x<64;x++){ I.set(x,y,hx('#b3a98e')); I.set(x,(y+1)%64,hx('#ece6d4')); }
+      const off=(y/16)%2?16:0; for(let x=off;x<64;x+=32) for(let k=0;k<16;k++){ I.set(x,(y+k)%64,hx('#b3a98e')); I.set((x+1)%64,(y+k)%64,hx('#ece6d4')); } }
+    return I; },
+  // verdant: plains of grass tufts with a few flowers
+  verdant(){ const I=Img(64,64,hx('#1c3a24')), R=rng(59);
+    for(let i=0;i<40;i++){ const x=Math.floor(R()*64), y=Math.floor(R()*64); I.ellipse(x,y,3,2,sh('#1c3a24',-6)); }
+    for(let i=0;i<120;i++){ const x=Math.floor(R()*64), y=Math.floor(R()*64), c=hx(R()<.5?'#2c5a36':'#3f7a4a');
+      I.set(x,y,c); I.set((x+63)%64,(y+63)%64,c); I.set((x+1)%64,(y+63)%64,c); if(R()<.5) I.set(x,(y+62)%64,hx('#5a9a5e')); }
+    for(let i=0;i<8;i++) I.set(Math.floor(R()*64),Math.floor(R()*64),hx(R()<.5?'#e8e8a0':'#f2c4d8'));
+    return I; },
+  // storm: sun rays and forked lightning
+  storm(){ const I=Img(64,64,hx('#4a3c12')), R=rng(61);
+    for(let y=0;y<64;y++) for(let x=0;x<64;x++) if((x+y)%16<3) I.set(x,y,sh('#4a3c12',8));
+    for(let b=0;b<2;b++){ let x=8+b*32+Math.floor(R()*8);
+      for(let y=0;y<64;y++){ if(y%3===0) x=(x+(R()<.5?2:62))%64; I.set(x,y,hx('#d9a83a')); I.set((x+1)%64,y,hx('#a8822a')); I.set((x+63)%64,y,hx('#6e5418')); } }
+    for(let i=0;i<14;i++) I.set(Math.floor(R()*64),Math.floor(R()*64),hx('#ffd866'));
+    return I; },
+  // brown (machines): riveted metal plates crossed by a stitched leather strap
+  brown(){ const I=Img(64,64,hx('#44352a'));
+    for(let y=0;y<64;y++) for(let x=0;x<64;x++){ const px=x%32, py=y%32;
+      if(px===0||py===0) I.set(x,y,hx('#5a4636')); else if(px===31||py===31) I.set(x,y,hx('#2a2018')); }
+    for(let y=0;y<64;y+=32) for(let x=0;x<64;x+=32) for(const [dx,dy] of [[3,3],[28,3],[3,28],[28,28]]){ I.rect(x+dx,y+dy,x+dx+1,y+dy+1,hx('#8a7a66')); I.set(x+dx,y+dy,hx('#c8b8a0')); }
+    for(let y=40;y<50;y++) for(let x=0;x<64;x++) I.set(x,y,hx(y===40||y===49?'#2a1a10':'#5a3c28'));
+    for(let x=0;x<64;x+=4){ I.set(x,42,hx('#a87a50')); I.set(x+1,42,hx('#a87a50')); I.set(x,47,hx('#a87a50')); I.set(x+1,47,hx('#a87a50')); }
+    return I; },
+  // gray: paper, ruled pages with a margin line and fibres
+  gray(){ const I=Img(64,64,hx('#d8d0bc')), R=rng(67);
+    for(let i=0;i<220;i++) I.set(Math.floor(R()*64),Math.floor(R()*64),hx(R()<.5?'#cfc6ae':'#e4ddc9'));
+    for(let y=6;y<64;y+=8) for(let x=0;x<64;x++) I.set(x,y,hx('#c2b89e'));
+    for(let y=0;y<64;y++){ I.set(10,y,hx('#c8a89a')); }
+    return I; },
+};
+
 /* ---------- hand the textures to the stylesheet ---------- */
 function install(){ if(typeof document==='undefined') return; const s=document.documentElement.style, u=I=>`url(${I.url()})`;
   s.setProperty('--px-wall',u(wall(STONE.slice(0,8).map(c=>lift(c,-4)),64,7,3)));
@@ -276,6 +333,7 @@ function install(){ if(typeof document==='undefined') return; const s=document.d
   s.setProperty('--px-banner',u(banner()));
   s.setProperty('--px-coin',`url(${icon('coin')})`);
   s.setProperty('--px-cardtex',u(cardTexture()));
+  for(const k in FACE_TEX) s.setProperty('--tex-'+k,u(FACE_TEX[k]()));
 }
 if(typeof document!=='undefined'){ if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',install); else install(); }
 

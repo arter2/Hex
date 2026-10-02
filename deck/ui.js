@@ -10,20 +10,18 @@ function show(id){ $('#tip').classList.remove('on'); document.querySelectorAll('
 let tipT=0; function tip(msg){ const t=$('#tip'); t.textContent=msg; t.classList.add('on'); clearTimeout(tipT); tipT=setTimeout(()=>t.classList.remove('on'),1400); }
 const esc=s=>String(s).replace(/[&<>"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]));
 
-// Card colors after Magic: The Gathering's frames: each family gets a muted, earthy frame
-// color, light plates for the name and type lines, a pale tinted text box with dark ink, and a
-// deeper band for the stone rim. Storm takes multicolor gold, gray the silver of artifacts,
-// brown the tan of lands; heroes get a gold frame.
+// Card faces: each family has its own textured face (drawn by uikit.js) in a deep, toned-down
+// color with white text, except the two light families (light's marble, gray's paper), which
+// keep dark ink. acc colors the type line, bd the rim band and rank, tb the text panel.
 const CARD_PAL={
-  fire:   {fr:'#9a4632', pl:'#f0c7b2', bx:'#f5e2d4', bd:'#b5402c', ink:'#2a120c'},
-  frost:  {fr:'#33628c', pl:'#bcd7ea', bx:'#dfecf4', bd:'#1f5f95', ink:'#0c1a28'},
-  storm:  {fr:'#9a7c38', pl:'#ecd9a2', bx:'#f5edd3', bd:'#b48a2a', ink:'#261c08'},
-  verdant:{fr:'#3a6a48', pl:'#bcd8c0', bx:'#e0ecdc', bd:'#2c6640', ink:'#0e1e12'},
-  light:  {fr:'#a99f80', pl:'#f2ecd4', bx:'#faf6e6', bd:'#c2b27c', ink:'#2a2416'},
-  shadow: {fr:'#3a3234', pl:'#bdb2ae', bx:'#dcd3ce', bd:'#2a2224', ink:'#140e0e'},
-  gray:   {fr:'#6e767d', pl:'#d3d8dc', bx:'#e9ecee', bd:'#5a6168', ink:'#161a1e'},
-  brown:  {fr:'#7a5c40', pl:'#dcc7a6', bx:'#eee2cd', bd:'#6c4e32', ink:'#22160c'},
-  hero:   {fr:'#9a7a30', pl:'#f0dc9c', bx:'#f8f0d4', bd:'#c9a03a', ink:'#261c06'},
+  fire:   {face:'#4a1f16', ink:'#fff4ec', acc:'#ffb08a', bd:'#b5452e', tb:'rgba(0,0,0,.34)'},
+  frost:  {face:'#173452', ink:'#f0f7ff', acc:'#9fd0ff', bd:'#2f6ea6', tb:'rgba(0,0,0,.32)'},
+  storm:  {face:'#4a3c12', ink:'#fff8e2', acc:'#ffd866', bd:'#b48a2a', tb:'rgba(0,0,0,.48)'},
+  verdant:{face:'#1c3a24', ink:'#f0fbf2', acc:'#9fdca8', bd:'#2f7448', tb:'rgba(0,0,0,.32)'},
+  light:  {face:'#d9d2bc', ink:'#2a2416', acc:'#7a5c1e', bd:'#b8a46a', tb:'rgba(255,255,255,.42)'},
+  shadow: {face:'#1e1a1d', ink:'#f2eef0', acc:'#d6b6c6', bd:'#5a4a52', tb:'rgba(0,0,0,.30)'},
+  gray:   {face:'#d8d0bc', ink:'#221c12', acc:'#5e4e34', bd:'#8a8070', tb:'rgba(255,255,255,.40)'},
+  brown:  {face:'#3a2c22', ink:'#fbf2e8', acc:'#e0b080', bd:'#8a6644', tb:'rgba(0,0,0,.34)'},
 };
 function cardEl(c,extra,locked){
   const el=document.createElement('button'), col=COLORS[c.color];
@@ -31,16 +29,18 @@ function cardEl(c,extra,locked){
   const stat=c.pow||(c.boon!=='gauge'&&c.amt)||c.hp||'';
   const rune=c.code?`<span class="rune${c.code==='✱'?' wild':''}" title="Rune ${c.code}">${c.code}</span>`:'';
   const R=ROLES[cardRole(c)]; el.style.setProperty('--rc',R.c);
-  const CP=c.rarity==='hero'?CARD_PAL.hero:CARD_PAL[c.color]||CARD_PAL.gray;
-  for(const [k,v] of [['--cfr',CP.fr],['--cpl',CP.pl],['--cbx',CP.bx],['--cbd',CP.bd],['--cink',CP.ink]]) el.style.setProperty(k,v);
-  if(typeof cardFrame==='function') el.style.setProperty('--cf',cardFrame(CP.bd,c.rarity));
-  el.innerHTML=locked?`<div class="nm"><span class="cn">???</span><span class="tr"><span class="rank">${c.rank}</span></span></div><div class="art"></div><div class="ty"><span class="ti">${col.icon}${TYPES[c.type].icon}</span>${TYPES[c.type].name}</div><div class="tx"></div><div class="cp"><small>${RARITY[c.rarity].g}</small></div>`
-    :`<div class="nm"><span class="cn">${esc(c.name)}</span><span class="tr">${rune}<span class="rank">${c.rank}</span></span></div>
-    <img class="art" src="${artURL(c)}" alt=""><div class="ty"><span class="ti">${col.icon}${TYPES[c.type]?TYPES[c.type].icon:''}</span>${TYPES[c.type].name} <span class="rl">${R.icon} ${R.name}</span></div><div class="tx">${esc(cardText(c))}</div>
-    <div class="cp"><small title="${RARITY[c.rarity].n}">${RARITY[c.rarity].g}</small>${stat?`<span>${stat}</span>`:''}</div>`;
+  const CP=CARD_PAL[c.color]||CARD_PAL.gray;
+  el.classList.add(/^#[ef]/i.test(CP.ink)?'dk':'lt');
+  for(const [k,v] of [['--cface',CP.face],['--cink',CP.ink],['--cacc',CP.acc],['--cbd',CP.bd],['--ctb',CP.tb],['--ctex','var(--tex-'+(CARD_PAL[c.color]?c.color:'gray')+')']]) el.style.setProperty(k,v);
+  if(typeof cardFrame==='function') el.style.setProperty('--cf',cardFrame(c.rarity==='hero'?'#c9a03a':CP.bd,c.rarity));
+  el.innerHTML=locked?`<div class="ct"><span>${col.icon} ${TYPES[c.type].icon}</span><span class="rank">${c.rank}</span></div><div class="art"></div><div class="cn">???</div><div class="ty">${TYPES[c.type].name}</div><div class="tx"></div><div class="cp"><span></span><small>${RARITY[c.rarity].g}</small></div>`
+    :`<div class="ct"><span>${col.icon} ${TYPES[c.type]?TYPES[c.type].icon:''}</span><span class="tr">${rune}<span class="rank">${c.rank}</span></span></div>
+    <img class="art" src="${artURL(c)}" alt=""><div class="cn">${esc(c.name)}</div><div class="ty">${TYPES[c.type].name} <span class="rl">${R.icon} ${R.name}</span></div><div class="tx">${esc(cardText(c))}</div>
+    <div class="cp"><span>${stat}</span><small title="${RARITY[c.rarity].n}">${RARITY[c.rarity].g}</small></div>`;
   if(extra) el.insertAdjacentHTML('beforeend',extra);
   return el;
 }
+
 function showDetail(c){
   const box=$('#dtCard'); box.innerHTML=''; box.appendChild(cardEl(c,'',!c.recipe&&!save.seen[c.id]));
   if(c.recipe){ const r=RECIPES.find(x=>x.id===c.id); $('#dtInfo').textContent='Recipe: '+r.cards.map(id=>CARDS[id].name).join(' + ')+'. Queue these together and they fuse into this card.'; $('#detail').classList.add('on'); return; }

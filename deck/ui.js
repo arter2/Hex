@@ -131,6 +131,11 @@ function campScene(){
 const campLog=[];
 const lootPic=(k,n=64)=>k.startsWith('scroll:')?uiIcon('scroll',n,k==='scroll:purify'?'#f2c94c':'#8fe4ff'):gearIcon(k,n);
 function logCamp(t,c){ campLog.push({t,c}); if(campLog.length>12) campLog.shift(); }
+// Testing: start any boss straight away at its own depth
+function renderTrials(){ const box=$('#bossTrials'); if(!box||typeof BOSS_ORDER==='undefined') return;
+  box.innerHTML='<span class="lbl">Test a boss</span>'+BOSS_ORDER.map((id,i)=>`<button class="chip" data-boss="${id}" style="--c:${COLORS[ENEMY_DEFS[id].color].c}">${ENEMY_DEFS[id].name} · ${4*(i+1)}</button>`).join('');
+  box.querySelectorAll('[data-boss]').forEach(b=>b.onclick=()=>{ const i=BOSS_ORDER.indexOf(b.dataset.boss); fight(4*(i+1),[[b.dataset.boss]]); }); }
+renderTrials();
 document.querySelectorAll('.btn.mi').forEach(b=>b.insertAdjacentHTML('afterbegin',uiIcon(b.dataset.icon,48)));
 addEventListener('resize',()=>{ if($('#scrCamp').classList.contains('on')) campScene(); });
 $('#depthDown').onclick=()=>{ pickDepth--; openCamp(); };
@@ -416,7 +421,7 @@ function buyPack(color){
 }
 
 /* ---------------- battle flow ---------------- */
-function fight(depth){
+function fight(depth,waves){
   const d=activeDeck(); if(!validateDeck(d.list,CARDS,save.owned).ok) return openCamp();
   $('#reveal').classList.remove('on');
   show('scrBattle');
@@ -426,12 +431,13 @@ function fight(depth){
     onCast:(c,inst)=>{ showCast(c,inst); buzz(12); },
     onHurt:d=>{ buzz(d>=15?60:30); const h=$('#hurtFx'); h.classList.remove('on'); void h.offsetWidth; h.classList.add('on'); },
     onTurn:n=>banner('Turn '+n,'#4fb3ff'),
+    onBoss:(t,c,info)=>{ banner(t,c); if(info) tip(info); },
     onWave:i=>banner('Wave '+(i+1),'#ff5d6c'),
     onCombo:label=>banner('✦ '+label.split(':')[0],'#ffe066'),
     onRecipe:r=>{ const first=!(save.recipes||{})[r.id]; save.recipes=save.recipes||{}; save.recipes[r.id]=1; persist(); banner((first?'⚗ New recipe! ':'⚗ ')+r.name,'#39ff8a'); },
     onHero:c=>banner('♔ '+c.name.split(',')[0]+' joins the fight!','#ffe066'),
     onEnd:win=>win?victory():defeat(),
-  },{prepare:p=>assignChargeUses(save,p,d.list), gear:gearMods(save), look:gearLook(save)});
+  },{prepare:p=>assignChargeUses(save,p,d.list), gear:gearMods(save), look:gearLook(save), waves});
   hud(true);
 }
 // charge uses spent this fight carry over; a copy that ran dry burns up
@@ -557,16 +563,17 @@ function hud(force){
   const buffs=[]; if(p.barrier>0) buffs.push('🛡 '+Math.ceil(p.barrier)+' · '+p.shieldTurns+(p.shieldTurns>1?' turns':' turn')); if(p.dodge) buffs.push('💨 Dodge'); if(p.invT>0) buffs.push('🌀 Phase');
   if(p.powerT>0) buffs.push('⚡ Wand ×2.5 '+Math.ceil(p.powerT)+'s'); if(p.pactT>0) buffs.push('☾ Pact '+Math.ceil(p.pactT)+'s'); if(p.courageT>0) buffs.push('☀ Courage '+Math.ceil(p.courageT)+'s'); if(p.intervene) buffs.push('✟ Intervention');
   if(p.hero&&p.hero.hp>0) buffs.unshift('♔ '+p.hero.card.name.split(',')[0]+' · '+p.hero.turns+(p.hero.turns>1?' turns':' turn'));
+  if(p.rootT>0) buffs.unshift('❦ Rooted '+p.rootT.toFixed(1)+'s');
   if(p.hasteT>0) buffs.push('🌬 Haste '+Math.ceil(p.hasteT)+'s'); if(p.regenT>0) buffs.push('🌿 Regen '+Math.ceil(p.regenT)+'s');
   set('buffs',buffs.join('   '),v=>$('#buffs').textContent=v);
-  set('queue',pl.queue.map(c=>c.uid+':'+(c.left==null?'':c.left)).join(','),()=>{
+  set('queue',pl.queue.map(c=>c.uid+':'+(c.left==null?'':c.left)+(c.frozenT>0?'f':'')).join(','),()=>{
     const row=$('#queueRow'); row.innerHTML='';
     const locked=pl.queue.filter(c=>c.combo), cb=$('#comboBar');
     cb.hidden=!locked.length; if(locked.length) cb.textContent='✦ '+(pl.combos||[]).map(c=>c.label.split(':')[0]).join(' · ');
     for(let i=0;i<Math.max(RULES.slots,pl.queue.length);i++){ const inst=pl.queue[i], d=document.createElement('div');
-      d.className='qslot'+(inst?' full':'')+(i===0&&inst?' next':'')+(inst&&inst.combo?' combo':'');
+      d.className='qslot'+(inst?' full':'')+(i===0&&inst?' next':'')+(inst&&inst.combo?' combo':'')+(inst&&inst.frozenT>0?' frozen':'');
       if(inst){ const c=inst.card, uses=c.uses?' ×'+(inst.left==null?c.uses:inst.left):'', R=ROLES[cardRole(c)]; d.style.setProperty('--c',COLORS[c.color].c); d.style.setProperty('--rc',R.c);
-        d.innerHTML=`<span class="role">${R.icon} ${R.name}</span><span class="nm">${esc(c.name)}${uses}${inst.temp&&!inst.recipe?' (copy)':''}</span>`; }
+        d.innerHTML=`<span class="role">${R.icon} ${R.name}</span><span class="nm">${inst.frozenT>0?'❄ ':''}${esc(c.name)}${uses}${inst.temp&&!inst.recipe?' (copy)':''}</span>`; }
       else d.textContent='—';
       row.appendChild(d); }
     const nx=pl.queue[0], NR=nx&&ROLES[cardRole(nx.card)]; $('#castName').textContent=nx?NR.icon+' '+nx.card.name:'queue empty';

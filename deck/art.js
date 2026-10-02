@@ -806,6 +806,26 @@ const MONSTER={
     for(const [x,y] of [[10,12],[21,22],[4,15],[27,19]]) px(x,y,'M'); seg(8,10,24,10,1,'k'); seg(16,21,16,26,1,'k'); },
 };
 MONSTER.gloopling=MONSTER.gloop;
+// the bosses and their helpers
+Object.assign(MONSTER,{
+  glacier(){ poly([[16,9],[26,31],[6,31]],'m'); poly([[16,12],[20,31],[12,31]],'x'); seg(12,14,5,21,2,'m'); seg(20,14,26,9,2,'m');
+    seg(27,4,27,30,1,'x'); ell(27,4,2.2,3.2,'x'); px(27,4,'A'); circ(16,8,3.6,'h'); px(15,8,'K'); px(17,8,'K');
+    poly([[11,5],[12,0],[14,4],[16,-1],[18,4],[20,0],[21,5]],'x'); for(const [x,y] of [[8,26],[23,27],[12,20]]) px(x,y,'W'); },
+  treant(){ ell(16,8,13,8,'m'); ell(6,13,6,5,'m'); ell(26,13,6,5,'m'); rect(11,12,21,31,'f'); seg(11,17,3,10,2,'f'); seg(21,17,29,10,2,'f');
+    for(const x of [13,17,20]) seg(x,14,x+(x%2?1:-1),30,1,'k'); circ(13,19,1.6,'A'); circ(19,19,1.6,'A'); rect(14,24,18,25,'K');
+    seg(11,30,6,31,2,'f'); seg(21,30,26,31,2,'f'); for(const [x,y] of [[8,5],[22,4],[16,2]]) px(x,y,'Y'); },
+  wyrm(){ ell(16,27,13,4.5,'m'); ell(13,21,8,4,'m'); curve([[17,21],[22,14],[20,7]],4,'m'); ell(20,6,5.5,4,'m');
+    seg(18,3,15,-1,2,'b'); seg(22,3,25,-1,2,'b'); px(22,5,'A'); px(23,5,'A'); poly([[24,7],[29,8],[24,9]],'K');
+    for(const [x,y] of [[8,23],[12,18],[19,16],[22,11]]) poly([[x,y],[x+2,y-3],[x+3,y]],'a'); ell(16,28,8,1.5,'a'); },
+  roc(){ poly([[16,15],[1,4],[3,12],[6,19]],'m'); poly([[16,15],[31,4],[29,12],[26,19]],'m');
+    for(const d of [-1,1]) for(let i=0;i<3;i++) seg(16+d*(8+i*3),12+i*2,16+d*(10+i*3),18+i,1,'a');
+    ell(16,19,6,8,'m'); ell(16,21,3.5,5,'a'); circ(16,9,4,'m'); poly([[17,9],[22,11],[17,12]],'y'); px(15,8,'A'); px(14,8,'A');
+    seg(13,26,11,31,1,'k'); seg(19,26,21,31,1,'k'); for(const [x,y] of [[4,3],[28,2],[2,15]]) px(x,y,'Y'); },
+  hollow(){ MONSTER.shade(); poly([[10,4],[11,0],[13,3],[16,-1],[19,3],[21,0],[22,4]],'y'); px(16,1,'A'); },
+  rootnode(){ seg(10,31,6,31,2,'f'); seg(22,31,26,31,2,'f'); rect(11,21,21,31,'f'); ell(16,21,5,2,'f'); ell(16,13,3.5,7,'l'); px(16,11,'A'); px(15,13,'A'); px(17,15,'A'); },
+  sapling(){ seg(16,31,16,15,2,'f'); ell(10,15,6,3.5,'m'); ell(22,12,6,3.5,'m'); ell(16,8,4,4,'m'); px(14,22,'A'); px(18,22,'A'); },
+});
+MONSTER.clone=MONSTER.shade;
 const HUMAN_LOOK={cultist:{hat:'hood',weapon:'staff'}, witch:{hat:'witch',weapon:'staff',cape:1}, caller:{hat:'hood',weapon:'bolt'},
   warden:{hat:'leaf',weapon:'bow',cape:1}, paladin:{hat:'helm',weapon:'sword',shield:1}, knight:{hat:'spiked',weapon:'darksword',cape:1}};
 // the six heroes: a crowned fire queen, a frost sorceress, a sky captain, an antlered

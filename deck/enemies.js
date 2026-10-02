@@ -34,7 +34,7 @@ function makeEncounter(depth){
   const human=Math.min(.6,depth<2?0:.15+.05*depth);
   const out=[];
   for(let w=0;w<waves;w++) out.push(Array.from({length:size},()=>Math.random()<human?pick(HUMANOIDS):pick(MONSTERS)));
-  if(depth%4===0) out[out.length-1]=['golem',pick(MONSTERS)].concat(depth>=8?[pick(HUMANOIDS)]:[]);
+  if(depth%4===0) out[out.length-1]=[typeof bossFor==='function'?bossFor(depth):'golem'].concat(depth>=8?[pick(MONSTERS)]:[]);   // a boss and its helpers carry the fight
   return out;
 }
 function enemyDeck(color,depth){
@@ -68,7 +68,7 @@ function makeTerrain(depth){
   place('p',rnd(1,2.99)|0,'rock'); place('e',rnd(1,2.99)|0,'rock');
   if(depth>=3){ const k=pick(['lava','ice']); place('p',1+(depth>=7?1:0),k); place('e',1,k==='lava'?'ice':'lava'); }
 }
-const burning=t=>t.terrain==='lava'||t.burnT>0;
+const burning=t=>t.terrain==='lava'||t.burnT>0||t.holeT>0;
 const icy=t=>t.terrain==='ice'||t.iceT>0;
 function dropRock(t,sec){ if(t.occ) return; t.terrain='rock'; t.rockT=sec; t.occ={kind:'rock',tile:t,hp:ROCK_HP*.6,maxHp:ROCK_HP*.6}; burst(t,'#8a8398',14,.4); }
 // Rocks are cover, not walls forever: shots chip them, and at 0 they crumble.
@@ -77,7 +77,7 @@ function hitRock(r,dmg){ r.hp-=dmg; flash(r.tile,'#8a8398',.5); burst(r.tile,'#8
   if(r.hp<=0){ const t=r.tile; if(t.occ===r) t.occ=null; t.terrain=null; t.rockT=0; burst(t,'#b8b4c4',16,.6); floater('crumbles',t,'#b8b4c4'); } }
 function updateTerrain(dt){
   for(const t of TILES){
-    if(t.burnT>0) t.burnT-=dt; if(t.iceT>0) t.iceT-=dt; if(t.thornT>0) t.thornT-=dt;
+    if(t.burnT>0) t.burnT-=dt; if(t.iceT>0) t.iceT-=dt; if(t.thornT>0) t.thornT-=dt; if(t.holeT>0) t.holeT-=dt;
     if(t.rockT>0){ t.rockT-=dt; if(t.rockT<=0){ t.rockT=0; if(t.occ&&t.occ.kind==='rock') t.occ=null; t.terrain=null; } }
   }
   const p=B.player;
@@ -94,6 +94,7 @@ function stepEnemy(e,to){ e.tile.occ=null; e.tile=to; to.occ=e; if(e.poisonT>0) 
   if(to.thornT>0&&e.hp>0) hitEnemy(e,to.thornPow,null,{raw:true});
   if(to.trap&&e.hp>0) springTrap(to,e); }
 function moveEnemy(e){
+  if(e.def.ai==='still'||e.under) return;
   const p=B.player, opts=neighbors(e.tile).filter(t=>t.side==='e'&&!t.occ&&!burning(t));
   if(!opts.length) return;
   // step out of your row when you are charging the wand
@@ -163,6 +164,7 @@ function updateEnemy(e,dt){
   e.confuseT=Math.max(0,(e.confuseT||0)-dt);
   e.hitT=Math.max(0,e.hitT-dt); e.curseT=Math.max(0,e.curseT-dt); e.poisonT=Math.max(0,e.poisonT-dt); e.powerT=Math.max(0,e.powerT-dt);
   if(e.burnT>0){ e.burnT-=dt; e.burnAcc+=5*dt; if(e.burnAcc>=5){ e.burnAcc-=5; hitEnemy(e,5,null,{raw:true}); if(e.hp<=0) return; } }
+  if(e.def.bossId&&typeof bossTick==='function'&&bossTick(e,dt)) return;   // away, or guarding while it evolves
   if(e.freezeT>0||e.stunT>0){ e.freezeT=Math.max(0,e.freezeT-dt); e.stunT=Math.max(0,e.stunT-dt); return; }
   if(e.slowT>0){ e.slowT-=dt; dt*=.5; }
   if(e.windT>0){ e.windT-=dt; if(e.windT<=0) enemyShot(e,e.dmg*(e.powerT>0?1.3:1)); return; }

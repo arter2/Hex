@@ -12,7 +12,7 @@ for(const sk in SKILLS) for(const d of depths) for(let si=0;si<3;si++) for(let i
   const g=makeGame(1000*d+100*si+i+7), st=g.STARTERS[si];
   let gear={};
   if(weapon){ const save={items:{},gear:{}}; g.gearState(save); save.items[weapon]=1; save.gear.weapon=weapon; gear=g.gearMods(save); }
-  const r=g.playBattle(g.starterList(st.colors),d,SKILLS[sk],300,gear);
+  const r=g.playBattle(g.starterList(st.colors),d,SKILLS[sk],+(process.env.CAP||300),gear);
   rows.push(Object.assign({skill:sk,depth:d,starter:st.name},r));
 }
 const fs=require('fs'); if(process.env.SAVE) fs.writeFileSync(process.env.SAVE,JSON.stringify(rows));

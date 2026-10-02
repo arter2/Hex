@@ -589,3 +589,8 @@ body.tall.ui-tablet .camp{max-width:640px;}
 .card.dk .cn,.card.dk .ct,.card.dk .cp span{text-shadow:1px 1px 0 #000;} .card.lt .cn{text-shadow:1px 1px 0 rgba(255,255,255,.5);}
 .card.lt .ty .rl{color:color-mix(in srgb,var(--rc) 45%,#000);}
 .card .art{object-fit:cover;}
+/* boss trials on the camp screen, and a frozen queue slot */
+.trials{display:flex; flex-wrap:wrap; gap:6px; align-items:center; padding:2px 4px;} .trials .lbl{font:400 18px var(--font-t); color:#7b848d; width:100%;}
+.trials .chip{cursor:pointer; font-size:13px; padding:4px 8px;}
+body.wide .camp{grid-template-areas:"logo logo" "area area" "scene depth" "scene menu" "log menu" "log layout" "trials trials" "wallet wallet";} body.wide #bossTrials{grid-area:trials;}
+.qslot.frozen{outline:2px solid #9fd0ff; outline-offset:-2px; filter:saturate(.4) brightness(1.2);}

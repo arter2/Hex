@@ -32,6 +32,10 @@ Card ids come from a seeded generator. Changing a template in `cards.js` can cha
 See `CHECKPOINTS.md` for known-good points to go back to.
 
 
+## Screen sizes
+
+The page is tagged `.wide` (landscape) or `.tall` (portrait) and gets `--ui`, a scale for menus, the battle HUD and pop-ups: 1 on phones, about 1.4 at 1920 x 1080, up to 2.5 on 4K. In wide windows the battle board takes the full height with the controls in a column on the right, the custom screen puts the hand beside the queue, and the camp uses two columns. Any size works; on itch.io a 1280 x 720 or 540 x 960 embed with the fullscreen button is a good default.
+
 ## Publishing on itch.io
 
 `python3 deck/tools/build-itch.py` writes `dist/hexmancers-itch.zip`: `index.html` at the root with the stylesheet and scripts beside it. On itch.io, create a project with Kind of project set to HTML, upload the zip and tick "This file will be played in the browser".

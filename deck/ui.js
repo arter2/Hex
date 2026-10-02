@@ -613,5 +613,17 @@ function setLayout(m,keep){ document.body.classList.toggle('ui-tablet',m==='tabl
   if($('#scrBattle').classList.contains('on')) resizeView(); }
 document.querySelectorAll('.layoutBtn').forEach(b=>b.onclick=()=>setLayout(document.body.classList.contains('ui-tablet')?'phone':'tablet',true));
 setLayout(getLayout());
+/* the window's shape and size: .wide or .tall, and --ui, the scale for menus and the HUD.
+   1 on phones; on bigger screens it grows so text and buttons stay a comfortable size. */
+function applyViewport(){
+  const w=innerWidth, h=innerHeight, wide=w>h*1.15;
+  document.body.classList.toggle('wide',wide); document.body.classList.toggle('tall',!wide);
+  const s=wide?Math.min(h/760,w/1250):Math.min(w/560,h/1000);
+  document.documentElement.style.setProperty('--ui',Math.max(1,Math.min(2.5,s)).toFixed(3));
+  if($('#scrBattle').classList.contains('on')) requestAnimationFrame(resizeView);
+  if($('#scrCamp').classList.contains('on')) campScene();
+}
+addEventListener('resize',applyViewport); addEventListener('orientationchange',()=>setTimeout(applyViewport,150));
+applyViewport();
 if(save) openCamp(); else buildStart();
 requestAnimationFrame(frame);

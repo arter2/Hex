@@ -502,3 +502,40 @@ body.ui-tablet .controls.battle .btn{min-height:76px; font-size:22px;} body.ui-t
 
 /* the look picker on the character screen */
 .invtabs.looks{align-items:center; margin:6px 0;} .invtabs.looks .lbl{font:400 18px var(--font-t); color:#9aa3ab; margin-right:4px;}
+
+/* ---------- any screen size, either way up ----------
+   ui.js tags the page .wide (landscape) or .tall (portrait) and sets --ui, a scale that grows
+   with the window (1 on phones, about 1.4 at 1920 x 1080, up to 2.5 on 4K). Menus, the battle
+   HUD and pop-ups are zoomed by it; the battle board is not, because it already fills its
+   canvas at full resolution. */
+.screen:not(#scrBattle),#hudTop,#hudBottom,.overlay,.tip,.cast-fx,.banner{zoom:var(--ui,1);}
+/* wide screens with room to spare: the board takes the full height and the controls sit in a column on the right */
+@media (min-height:561px){
+  body.wide #scrBattle.on{display:grid; grid-template-columns:minmax(0,1fr) calc(300px*var(--ui,1)); grid-template-rows:auto minmax(0,1fr);}
+  body.wide #hudTop{grid-column:1/-1;}
+  body.wide #board{grid-column:1; grid-row:2; height:100%;}
+  body.wide #hudBottom{grid-column:2; grid-row:2; display:flex; flex-direction:column; justify-content:flex-end; gap:8px; padding:10px 12px 14px;
+    background:#121417 var(--px-slate); background-size:64px 64px; border-top:0; border-left:2px solid #000; box-shadow:inset 2px 0 0 #383e45;}
+  body.wide #queueRow{grid-template-columns:1fr; gap:6px; margin-bottom:4px;}
+  body.wide .qslot{min-height:52px;}
+  body.wide .controls.battle{grid-template-columns:1fr 1fr; grid-template-areas:"cast cast" "wand custom";}
+  body.wide #btnCast{grid-area:cast;} body.wide #btnWand{grid-area:wand;} body.wide #btnCustom{grid-area:custom;}
+  body.wide .controls.battle .btn{min-height:68px;}
+  body.wide #btnCast{min-height:84px;}
+  body.wide .keys{display:block; text-align:left;}
+}
+/* the custom screen when wide: queue and Fight on the left, the hand on the right */
+body.wide .panel.custom{max-width:1180px; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.5fr); gap:4px 16px; align-content:start; height:100%;}
+body.wide .panel.custom>.bar{grid-column:1/-1; margin:0;}
+body.wide #custCombo,body.wide #custSurge,body.wide #custQueue,body.wide #custHint,body.wide #custEmpty,body.wide #btnFight{grid-column:1;}
+body.wide #custHand{grid-column:2; grid-row:2/span 6; grid-template-columns:repeat(4,1fr); overflow:auto; align-content:start;}
+body.wide #custom .slots{max-width:none;}
+/* the camp spreads into two columns whenever the window is wide */
+body.wide .camp{max-width:1000px; display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); gap:10px 18px; align-items:start;
+  grid-template-areas:"logo logo" "area area" "scene depth" "scene menu" "log menu" "log layout" "wallet wallet";}
+body.wide .camp .logo{grid-area:logo;} body.wide #campArea{grid-area:area;} body.wide .scenebox{grid-area:scene;} body.wide .depthbox{grid-area:depth;}
+body.wide .camp .menu{grid-area:menu;} body.wide #campLog{grid-area:log;} body.wide .camp .layoutBtn{grid-area:layout;} body.wide .camp .wallet{grid-area:wallet;}
+body.wide #starters{max-width:1100px; grid-template-columns:repeat(auto-fit,minmax(300px,1fr));}
+/* upright windows keep the camp in one column, wider on tablets */
+body.tall .camp{display:flex; flex-direction:column; max-width:480px; margin:0 auto;}
+body.tall.ui-tablet .camp{max-width:640px;}

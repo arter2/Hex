@@ -15,8 +15,22 @@ def square(im):
     sq.alpha_composite(im, ((SIZE - im.width) // 2, SIZE - im.height))
     return sq
 
+def scale2x(im):
+    """Scale2x (EPX): doubles a pixel-art image, rounding off diagonal steps without blurring."""
+    w, h = im.size; src = im.load(); out = Image.new('RGBA', (w * 2, h * 2)); dst = out.load()
+    g = lambda x, y: src[min(w - 1, max(0, x)), min(h - 1, max(0, y))]
+    for y in range(h):
+        for x in range(w):
+            P = src[x, y]; A, B, C, D = g(x, y - 1), g(x + 1, y), g(x - 1, y), g(x, y + 1)
+            e0 = A if (C == A and C != D and A != B) else P
+            e1 = B if (A == B and A != C and B != D) else P
+            e2 = C if (D == C and D != B and C != A) else P
+            e3 = D if (B == D and B != A and D != C) else P
+            dst[2 * x, 2 * y], dst[2 * x + 1, 2 * y], dst[2 * x, 2 * y + 1], dst[2 * x + 1, 2 * y + 1] = e0, e1, e2, e3
+    return out
+
 def url(im):
-    b = io.BytesIO(); square(im).save(b, 'PNG'); return 'data:image/png;base64,' + base64.b64encode(b.getvalue()).decode()
+    b = io.BytesIO(); scale2x(square(im)).save(b, 'PNG'); return 'data:image/png;base64,' + base64.b64encode(b.getvalue()).decode()
 
 def main():
     rows = []

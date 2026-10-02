@@ -14,7 +14,7 @@
    tools/export-art.js writes them to CSV files. */
 
 (function(root){
-const ART_SIZE=64, SPR=32;   // card art is 64 x 64, battle sprites 32 x 32
+const ART_SIZE=64, SPR=64;   // card art and battle sprites are both 64 x 64 (sprites: 32 design units at 2 px each)
 
 /* ---------------- colors ---------------- */
 const hexRgb=h=>{ const v=parseInt(h.slice(1),16); return [v>>16&255,v>>8&255,v&255]; };
@@ -836,7 +836,7 @@ const HERO_LOOK={pyra:{hat:'crown',hair:'flame',weapon:'flamestaff',cape:1}, yso
 const SPRITES={};
 function makeSprite(key,pal,draw){
   if(SPRITES[key]) return SPRITES[key];
-  grid(SPR,1); draw();
+  grid(SPR,SPR/32); draw();
   const R={}; for(const k in MATS) R[k]=ramp(MATS[k]); R.m=ramp(pal.m); R.a=ramp(pal.a); R.c=ramp(pal.c||pal.a); R.h=ramp('#e8b890'); R.d=ramp(pal.d||'#3a2e4a');
   const flat={A:pal.glow, W:'#ffffff', M:pal.m, Y:'#ffe066', R:'#ff3a4a', K:'#140a1a'};
   const mk=()=>{ const cv=document.createElement('canvas'); cv.width=cv.height=SPR; return cv; };
@@ -845,7 +845,10 @@ function makeSprite(key,pal,draw){
   cs.fillStyle='#000'; cw.fillStyle='#fff';
   for(let y=0;y<SPR;y++) for(let x=0;x<SPR;x++){ const m=G[y][x]; let col=null;
     if(m){ if(flat[m]) col=flat[m]; else { const same=(dx,dy)=>has(x+dx,y+dy)===m;
-        col=R[m][!same(0,-1)||!same(-1,-1)?3:(!same(1,1)&&!same(0,1))?0:(!same(1,0)||!same(0,1))?1:2]; } }
+        // light from the upper left: a highlight band along top/left edges, a shadow band along the
+        // bottom/right, a deep core shadow in the far corner; bands scale with the sprite's resolution
+        const d=SPR/32, edge=(sx,sy,n)=>{ for(let k=1;k<=n;k++) if(!same(sx*k,sy*k)) return true; return false; };
+        col=R[m][edge(0,-1,d)||edge(-1,-1,d)||edge(-1,0,1)?3:(edge(1,1,d)&&edge(0,1,d))?0:(edge(1,0,2*d)||edge(0,1,2*d))?1:2]; } }
     else if([[0,1],[0,-1],[1,0],[-1,0]].some(([dx,dy])=>has(x+dx,y+dy))) col=pal.o||'#0a0610';
     if(col){ ci.fillStyle=col; ci.fillRect(x,y,1,1); cs.fillRect(x,y,1,1); cw.fillRect(x,y,1,1); } }
   return SPRITES[key]={img,sil,wht};

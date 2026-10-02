@@ -11,8 +11,7 @@ let tipT=0; function tip(msg){ const t=$('#tip'); t.textContent=msg; t.classList
 const esc=s=>String(s).replace(/[&<>"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]));
 
 // Card faces: each family has its own textured face (drawn by uikit.js) in a deep, toned-down
-// color with white text, except the two light families (light's marble, gray's paper), which
-// keep dark ink. acc colors the type line, bd the rim band and rank, tb the text panel.
+// color with white text, except light's pale marble, which keeps dark ink. acc colors the type line, bd the rim band and rank, tb the text panel.
 const CARD_PAL={
   fire:   {face:'#4a1f16', ink:'#fff4ec', acc:'#ffb08a', bd:'#b5452e', tb:'rgba(0,0,0,.34)'},
   frost:  {face:'#173452', ink:'#f0f7ff', acc:'#9fd0ff', bd:'#2f6ea6', tb:'rgba(0,0,0,.32)'},
@@ -20,7 +19,7 @@ const CARD_PAL={
   verdant:{face:'#1c3a24', ink:'#f0fbf2', acc:'#9fdca8', bd:'#2f7448', tb:'rgba(0,0,0,.32)'},
   light:  {face:'#d9d2bc', ink:'#2a2416', acc:'#7a5c1e', bd:'#b8a46a', tb:'rgba(255,255,255,.42)'},
   shadow: {face:'#1e1a1d', ink:'#f2eef0', acc:'#d6b6c6', bd:'#5a4a52', tb:'rgba(0,0,0,.30)'},
-  gray:   {face:'#d8d0bc', ink:'#221c12', acc:'#5e4e34', bd:'#8a8070', tb:'rgba(255,255,255,.40)'},
+  gray:   {face:'#6f7378', ink:'#f4f5f7', acc:'#d6dade', bd:'#9aa0a6', tb:'rgba(0,0,0,.30)'},
   brown:  {face:'#3a2c22', ink:'#fbf2e8', acc:'#e0b080', bd:'#8a6644', tb:'rgba(0,0,0,.34)'},
 };
 function cardEl(c,extra,locked){

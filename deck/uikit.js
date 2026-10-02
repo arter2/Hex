@@ -311,11 +311,11 @@ const FACE_TEX={
     for(let y=40;y<50;y++) for(let x=0;x<64;x++) I.set(x,y,hx(y===40||y===49?'#2a1a10':'#5a3c28'));
     for(let x=0;x<64;x+=4){ I.set(x,42,hx('#a87a50')); I.set(x+1,42,hx('#a87a50')); I.set(x,47,hx('#a87a50')); I.set(x+1,47,hx('#a87a50')); }
     return I; },
-  // gray: paper, ruled pages with a margin line and fibres
-  gray(){ const I=Img(64,64,hx('#d8d0bc')), R=rng(67);
-    for(let i=0;i<220;i++) I.set(Math.floor(R()*64),Math.floor(R()*64),hx(R()<.5?'#cfc6ae':'#e4ddc9'));
-    for(let y=6;y<64;y+=8) for(let x=0;x<64;x++) I.set(x,y,hx('#c2b89e'));
-    for(let y=0;y<64;y++){ I.set(10,y,hx('#c8a89a')); }
+  // gray: slate-grey paper, ruled pages with a margin line and fibres
+  gray(){ const I=Img(64,64,hx('#6f7378')), R=rng(67);
+    for(let i=0;i<220;i++) I.set(Math.floor(R()*64),Math.floor(R()*64),hx(R()<.5?'#676b70':'#7b7f84'));
+    for(let y=6;y<64;y+=8) for(let x=0;x<64;x++) I.set(x,y,hx('#5f6368'));
+    for(let y=0;y<64;y++){ I.set(10,y,hx('#86787a')); }
     return I; },
 };
 

@@ -648,3 +648,6 @@ body.wide .camp{grid-template-areas:"logo logo" "area area" "scene depth" "scene
 @media (max-width:420px){ .fams{grid-template-columns:repeat(2,minmax(0,1fr));} }
 /* the title screen centers without clipping its top when it is taller than the phone */
 #scrStart{justify-content:flex-start;} #scrStart>:first-child{margin-top:auto;} #scrStart>:last-child{margin-bottom:auto;}
+
+.depthbox .quick{width:100%; margin-top:8px; display:flex; flex-direction:column; align-items:center; gap:2px;}
+.depthbox .quick small{font-size:12px; opacity:.75; font-weight:400;}

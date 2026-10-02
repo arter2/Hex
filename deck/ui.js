@@ -108,8 +108,8 @@ function openCamp(){
   $('#campDeckErr').textContent=v.ok?'':v.errors[0]+(v.errors.length>1?' (+'+(v.errors.length-1)+' more)':'')+'. Fix it in the deck builder.';
   $('#campArea').textContent=areaOf(pickDepth).name;
   const nextBoss=Math.ceil(pickDepth/4)*4; $('#campBoss').innerHTML=pickDepth%4===0?'<b class="gold">Boss here</b>':'Boss at <b class="gold">'+nextBoss+'</b>';
-  $('#btnDescend').textContent='Descend to '+pickDepth;
-  $('#btnDescend').disabled=!v.ok;
+  $('#btnDescend').textContent='Explore depth '+pickDepth;
+  $('#btnDescend').disabled=!v.ok; $('#btnQuick').disabled=!v.ok;
   $('#depthDown').disabled=pickDepth<=1; $('#depthUp').disabled=pickDepth>=save.deepest;
   drawDepthMap($('#depthMap'),pickDepth,save.deepest);
   $('#campLog').innerHTML=(campLog.length?campLog:[{t:'Each win gives one reward: a card, gold or a piece of gear. Bosses every 4th depth give more. Losing costs 20% of your gold.',c:'dim'}])
@@ -143,6 +143,7 @@ addEventListener('resize',()=>{ if($('#scrCamp').classList.contains('on')) campS
 $('#depthDown').onclick=()=>{ pickDepth--; openCamp(); };
 $('#depthUp').onclick=()=>{ pickDepth++; openCamp(); };
 $('#btnDescend').onclick=()=>enterExplore(pickDepth);
+$('#btnQuick').onclick=()=>fight(pickDepth);   // the battle on its own, no dungeon
 $('#goBuilder').onclick=()=>openBuilder();
 $('#goCollection').onclick=()=>openCollection();
 $('#goShop').onclick=()=>openShop();

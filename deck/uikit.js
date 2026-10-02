@@ -242,6 +242,26 @@ function drawDepthMap(cv,pick,deepest){ const W=165, H=45, SP=13; cv.width=W; cv
     else if(n!==pick){ I.rect(x-3,y-3,x+3,y+3,C.k); I.rect(x-2,y-2,x+2,y+2,n<deepest?STONE[8]:n===deepest?STONE[6]:STONE[3]); if(n<deepest) I.set(x-1,y-1,C.white); } });
   cv.getContext('2d').putImageData(new ImageData(I.d,W,H),0,0); return start; }
 
+/* ---------- card frames ----------
+   A carved stone rim around every card with a band in the card's color, gold studs on
+   legendary and hero cards: the cards sit in the same stone world as the menus.
+   Slice 3, shown as a 6px border. */
+const FRAMES={};
+function cardFrame(col,rarity){ const key=col+'|'+rarity; if(FRAMES[key]) return FRAMES[key];
+  const N=9, I=Img(N,N), R=rng(17), c=hx(col), gold=rarity==='legendary'||rarity==='hero';
+  for(let y=0;y<N;y++) for(let x=0;x<N;x++){ const d=Math.min(x,y,N-1-x,N-1-y), tl=x<=y?x===d:y===d;
+    const lit=(x===d&&x<N/2)||(y===d&&y<N/2);
+    if(d===0) I.set(x,y,C.k);
+    else if(d===1) I.set(x,y,lit?STONE[R()<.25?5:6]:STONE[R()<.25?2:3]);
+    else if(d===2) I.set(x,y,lit?light(c,.15):dark(c,.25)); }
+  for(const [x,y] of [[1,1],[N-2,1],[1,N-2],[N-2,N-2]]) I.set(x,y,gold?C.gold:STONE[8]);
+  if(rarity==='hero') for(const [x,y] of [[2,1],[1,2],[N-3,1],[N-2,2],[1,N-3],[2,N-2],[N-3,N-2],[N-2,N-3]]) I.set(x,y,C.gold2);
+  return FRAMES[key]=`url(${I.url()})`; }
+function cardTexture(){ const R=rng(23), I=Img(32,32);
+  for(let y=0;y<32;y++) for(let x=0;x<32;x++){ const r=R(); if(r<.07) I.set(x,y,[0,0,0,70]); else if(r<.11) I.set(x,y,[255,255,255,14]); }
+  for(let i=0;i<5;i++){ let x=Math.floor(R()*32), y=Math.floor(R()*32); for(let k=0;k<4;k++){ I.set(x%32,y%32,[0,0,0,55]); x+=R()<.5?1:0; y++; } }
+  return I; }
+
 /* ---------- hand the textures to the stylesheet ---------- */
 function install(){ if(typeof document==='undefined') return; const s=document.documentElement.style, u=I=>`url(${I.url()})`;
   s.setProperty('--px-wall',u(wall(STONE.slice(0,8).map(c=>lift(c,-4)),64,7,3)));
@@ -255,8 +275,9 @@ function install(){ if(typeof document==='undefined') return; const s=document.d
   s.setProperty('--px-bar',u(bar()));
   s.setProperty('--px-banner',u(banner()));
   s.setProperty('--px-coin',`url(${icon('coin')})`);
+  s.setProperty('--px-cardtex',u(cardTexture()));
 }
 if(typeof document!=='undefined'){ if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',install); else install(); }
 
-Object.assign(root,{PX,uiIcon,gearIcon,gearIconName,drawCampScene,drawDepthMap,SCENE_W,SCENE_H});
+Object.assign(root,{PX,cardFrame,uiIcon,gearIcon,gearIconName,drawCampScene,drawDepthMap,SCENE_W,SCENE_H});
 })(typeof window!=='undefined'?window:globalThis);

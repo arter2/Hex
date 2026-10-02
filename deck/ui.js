@@ -16,6 +16,7 @@ function cardEl(c,extra,locked){
   const stat=c.pow||(c.boon!=='gauge'&&c.amt)||c.hp||'';
   const rune=c.code?`<span class="rune${c.code==='✱'?' wild':''}" title="Rune ${c.code}">${c.code}</span>`:'';
   const R=ROLES[cardRole(c)]; el.style.setProperty('--rc',R.c);
+  if(typeof cardFrame==='function') el.style.setProperty('--cf',cardFrame(col.c,c.rarity));
   el.innerHTML=locked?`<div class="ct"><span>${col.icon} ${TYPES[c.type].icon}</span><span class="rank">${c.rank}</span></div><div class="art"></div><div class="cn">???</div><div class="ty">${TYPES[c.type].name}</div><div class="tx"></div><div class="cp"><span></span><small>${RARITY[c.rarity].g}</small></div>`
     :`<div class="ct"><span>${col.icon} ${TYPES[c.type]?TYPES[c.type].icon:''}</span><span class="tr">${rune}<span class="rank">${c.rank}</span></span></div>
     <img class="art" src="${artURL(c)}" alt=""><div class="cn">${esc(c.name)}</div><div class="ty">${TYPES[c.type].name} <span class="rl">${R.icon} ${R.name}</span></div><div class="tx">${esc(cardText(c))}</div>
@@ -33,13 +34,25 @@ function showDetail(c){
   $('#detail').classList.add('on');
 }
 $('#dtClose').onclick=()=>$('#detail').classList.remove('on');
-// long-press (or right-click) any card in a grid for its detail
+// Hold a card in a grid to peek at it: it grows to a big, readable card for as long as the
+// finger stays down and shrinks back on release (the tap that ends a peek does nothing else).
+// Right-click still opens the full detail.
 let pressT=0, pressed=false;
+function peek(c,on){ const box=$('#peek');
+  if(!on){ box.classList.remove('on'); return; }
+  box.innerHTML=''; const el=cardEl(c,'',!c.recipe&&!save.seen[c.id]); el.classList.add('big'); box.appendChild(el);
+  if(save.seen[c.id]){ const n=document.createElement('p'); n.className='peekinfo'; n.textContent=COLORS[c.color].name+' · '+TYPES[c.type].name+' · rank '+c.rank+' · '+RARITY[c.rarity].n+' · owned '+(save.owned[c.id]||0); box.appendChild(n); }
+  box.classList.add('on'); }
 function longPress(el,c){
-  el.addEventListener('pointerdown',()=>{ pressed=false; clearTimeout(pressT); pressT=setTimeout(()=>{ pressed=true; showDetail(c); },450); });
-  ['pointerup','pointerleave','pointercancel'].forEach(ev=>el.addEventListener(ev,()=>clearTimeout(pressT)));
-  el.addEventListener('contextmenu',e=>{ e.preventDefault(); showDetail(c); });
+  let x0=0, y0=0;
+  el.addEventListener('pointerdown',e=>{ pressed=false; x0=e.clientX; y0=e.clientY; clearTimeout(pressT); pressT=setTimeout(()=>{ pressed=true; peek(c,true); if(navigator.vibrate) navigator.vibrate(12); },320); });
+  el.addEventListener('pointermove',e=>{ if(!pressed&&Math.hypot(e.clientX-x0,e.clientY-y0)>10) clearTimeout(pressT); });
+  const end=()=>{ clearTimeout(pressT); if(pressed) peek(c,false); };
+  ['pointerup','pointercancel','lostpointercapture'].forEach(ev=>el.addEventListener(ev,end));
+  el.addEventListener('pointerleave',()=>{ if(!pressed) clearTimeout(pressT); });
+  el.addEventListener('contextmenu',e=>{ e.preventDefault(); if(!pressed) showDetail(c); });
 }
+addEventListener('pointerup',()=>{ if(pressed) setTimeout(()=>peek(null,false),0); });
 
 function reveal(title,body,results,buttons,extras){
   $('#rvTitle').textContent=title; $('#rvBody').textContent=body;
@@ -228,13 +241,13 @@ function renderCollection(){
     const fam={}; Object.keys(save.owned).forEach(id=>{ const c=CARDS[id]; if(c&&save.owned[id]>0) fam[c.color]=(fam[c.color]||0)+save.owned[id]; });
     $('#cProgress').innerHTML=FAM_ORDER.filter(k=>fam[k]).map(k=>`<span class="chip" style="--c:${COLORS[k].c}">${COLORS[k].icon} ${fam[k]}</span>`).join('');
     const items=Object.keys(save.owned).map(id=>CARDS[id]).filter(c=>c&&save.owned[c.id]>0&&passes(c,cf)).sort(SORTS[cf.sort]);
-    paged($('#cGrid'),items,c=>{ const el=cardEl(c,`<span class="badge">×${save.owned[c.id]}${inDeck[c.id]?' · '+inDeck[c.id]+' in deck':''}</span>`); el.onclick=()=>showDetail(c); return el; });
+    paged($('#cGrid'),items,c=>{ const el=cardEl(c,`<span class="badge">×${save.owned[c.id]}${inDeck[c.id]?' · '+inDeck[c.id]+' in deck':''}</span>`); longPress(el,c); el.onclick=()=>{ if(!pressed) showDetail(c); }; return el; });
     if(!items.length) $('#cGrid').innerHTML='<p class="hint">No cards match.</p>';
     return; }
   const fam={}; CARD_LIST.forEach(c=>{ fam[c.color]=fam[c.color]||[0,0]; fam[c.color][1]++; if(save.seen[c.id]) fam[c.color][0]++; });
   $('#cProgress').innerHTML=FAM_ORDER.map(k=>`<span class="chip" style="--c:${COLORS[k].c}">${COLORS[k].icon} ${fam[k][0]}/${fam[k][1]}</span>`).join('');
   const items=CARD_LIST.filter(c=>passes(c,cf)).sort(SORTS[cf.sort]);
-  paged($('#cGrid'),items,c=>{ const own=save.owned[c.id]||0; const el=cardEl(c,own?`<span class="badge">×${own}</span>`:'',!save.seen[c.id]); el.onclick=()=>showDetail(c); return el; });
+  paged($('#cGrid'),items,c=>{ const own=save.owned[c.id]||0; const el=cardEl(c,own?`<span class="badge">×${own}</span>`:'',!save.seen[c.id]); longPress(el,c); el.onclick=()=>{ if(!pressed) showDetail(c); }; return el; });
 }
 
 /* ---------------- character and gear ----------------

@@ -656,6 +656,63 @@ function drawCave(ctx,b,T){
   ctx.restore(); ctx.globalAlpha=1;
 }
 
+/* Floor textures: each area paves its hexes in its own pixel-art stone, drawn once per area
+   into a few small canvases and laid over each tile's colour, so the side and danger tints
+   still read through. Marks are only light and shade (plus the area's accent), never a base colour. */
+const FLOOR_STYLE={
+  'Glowworm Hollows':{stones:6, accent:'#39ff8a', moss:'#4f8a3a', detail:'moss'},
+  'Frozen Deeps':    {stones:5, accent:'#e6f6ff', moss:'#bfeaff', detail:'frost'},
+  'Gilded Ruins':    {stones:4, accent:'#f2c94c', moss:'#8a6a2a', detail:'inlay'},
+  'The Abyss':       {stones:7, accent:'#e9fbff', moss:'#3a2a56', detail:'stars'},
+};
+const FLOOR_TEX={};
+function floorTextures(A){
+  if(FLOOR_TEX[A.name]) return FLOOR_TEX[A.name];
+  const F=FLOOR_STYLE[A.name]||FLOOR_STYLE['Glowworm Hollows'], N=40, out=[];
+  for(let v=0;v<4;v++){
+    const R=caveRng(v*7919+A.name.length*131), cv=document.createElement('canvas'); cv.width=cv.height=N;
+    const x=cv.getContext('2d'), img=x.createImageData(N,N), d=img.data;
+    // flagstones: each pixel belongs to its nearest seed (wrapping, so stones meet cleanly)
+    const seeds=Array.from({length:F.stones},()=>({x:R()*N,y:R()*N,sh:(R()-.5)*.16}));
+    const own=new Int8Array(N*N), dist=new Float32Array(N*N);
+    for(let j=0;j<N;j++) for(let i=0;i<N;i++){ let b=0,bd=1e9,b2=1e9;
+      seeds.forEach((s,k)=>{ let dx=Math.abs(i-s.x), dy=Math.abs(j-s.y); dx=Math.min(dx,N-dx); dy=Math.min(dy,N-dy); const dd=dx*dx+dy*dy*1.3;
+        if(dd<bd){ b2=bd; bd=dd; b=k; } else if(dd<b2) b2=dd; });
+      own[j*N+i]=b; dist[j*N+i]=Math.sqrt(b2)-Math.sqrt(bd); }
+    const put=(i,j,r,g,bl,a)=>{ const o=((j%N+N)%N*N+(i%N+N)%N)*4; d[o]=r; d[o+1]=g; d[o+2]=bl; d[o+3]=a; };
+    for(let j=0;j<N;j++) for(let i=0;i<N;i++){ const k=j*N+i, s=seeds[own[k]], e=dist[k];
+      if(e<1.1) put(i,j,0,0,0,150);                                   // grout between stones
+      else if(e<2.2&&own[((j+1)%N)*N+i]!==own[k]) put(i,j,0,0,0,70);   // shaded lower lip
+      else if(e<2.2) put(i,j,255,255,255,46);                          // worn upper edge catches light
+      else { const n=(R()-.5)*.08+s.sh; put(i,j,n>0?255:0,n>0?255:0,n>0?255:0,Math.round(Math.abs(n)*420)); } }
+    x.putImageData(img,0,0);
+    // the area's detail, in pixel clusters
+    const hex=c=>[parseInt(c.slice(1,3),16),parseInt(c.slice(3,5),16),parseInt(c.slice(5,7),16)];
+    const dot=(i,j,c,a)=>{ x.globalAlpha=a; x.fillStyle=c; x.fillRect(i,j,1,1); };
+    if(F.detail==='moss'){ for(let n=0;n<5;n++){ const cx=R()*N|0, cy=R()*N|0; for(let m=0;m<7;m++) dot(cx+(R()*4|0)-2,cy+(R()*3|0)-1,F.moss,.55); }
+      for(let n=0;n<3;n++) dot(R()*N|0,R()*N|0,F.accent,.9); }
+    else if(F.detail==='frost'){ for(let n=0;n<2;n++){ let cx=R()*N, cy=R()*N; for(let m=0;m<10;m++){ dot(cx|0,cy|0,F.accent,.5); cx+=R()*2-.4; cy+=R()*2-1; } }
+      for(let n=0;n<7;n++) dot(R()*N|0,R()*N|0,F.accent,.75); }
+    else if(F.detail==='inlay'){ if(v%2===0){ const y0=R()*N|0; for(let i=0;i<N;i++) dot(i,y0,F.accent,.38); }
+      for(let n=0;n<3;n++){ const cx=R()*N|0, cy=R()*N|0; dot(cx,cy,F.accent,.7); dot(cx+1,cy,F.accent,.4); } }
+    else { for(let n=0;n<6;n++) dot(R()*N|0,R()*N|0,F.accent,.35+R()*.5); for(let n=0;n<4;n++){ const cx=R()*N|0, cy=R()*N|0; dot(cx,cy,F.moss,.6); dot(cx+1,cy,F.moss,.6); } }
+    x.globalAlpha=1; out.push(cv);
+  }
+  return FLOOR_TEX[A.name]=out;
+}
+// lay the area's stone over one tile's top face (scaled into its projected shape, so it shrinks with distance)
+function paveTile(ctx,t,top,A,alpha){
+  const tex=floorTextures(A), v=tex[((t.q*7+t.r*13)%4+4)%4];
+  let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9; for(const [x,y] of top){ x0=Math.min(x0,x); x1=Math.max(x1,x); y0=Math.min(y0,y); y1=Math.max(y1,y); }
+  ctx.save(); poly(ctx,top); ctx.clip(); ctx.globalAlpha=alpha; ctx.imageSmoothingEnabled=false;
+  ctx.drawImage(v,x0,y0,x1-x0,y1-y0);
+  // bevel: light on the far edges, so every slab reads as raised stone
+  ctx.globalAlpha=alpha*.6; ctx.strokeStyle='rgba(255,255,255,.35)'; ctx.lineWidth=1.5; ctx.beginPath();
+  const n=top.length, cy=top.reduce((a,p)=>a+p[1],0)/n;
+  for(let i=0;i<n;i++){ const a=top[i], b=top[(i+1)%n]; if((a[1]+b[1])/2<cy){ ctx.moveTo(a[0],a[1]); ctx.lineTo(b[0],b[1]); } }
+  ctx.stroke(); ctx.restore();
+}
+
 function render(){
   const ctx=View.ctx, b=B; if(!ctx) return;
   ctx.setTransform(View.dpr,0,0,View.dpr,0,0);
@@ -682,11 +739,12 @@ function render(){
     ctx.fillStyle=mixHex(base,'#000000',.45);
     frontFaces(ctx,top,SLAB*S);
     ctx.fillStyle=fill; poly(ctx,top); ctx.fill();
+    if(!(t.holeT>0)) paveTile(ctx,t,top,View.cave.area,t.side==='n'?.5:.85);
     // an incoming attack fills its tile as it gets closer; it lands when the tile is full
     if(tl&&!tl.friendly){ ctx.fillStyle='rgba(255,50,70,.6)'; poly(ctx,hexCorners(t,.96*Math.min(1,tl.t/tl.dur))); ctx.fill(); }
     if(t.holeT>0){ ctx.save(); ctx.globalAlpha=.35+.15*Math.sin(T*5+t.q); ctx.fillStyle='#ff5a1f'; poly(ctx,hexCorners(t,.72)); ctx.fill(); ctx.globalAlpha=1; ctx.fillStyle='#0b0506'; poly(ctx,hexCorners(t,.55)); ctx.fill(); ctx.restore(); poly(ctx,top); }
     if(b.fog&&t.side==='e'){ ctx.save(); ctx.globalAlpha=.42+.06*Math.sin(T*.8+t.q); ctx.fillStyle='#0a0610'; poly(ctx,top); ctx.fill(); ctx.restore(); poly(ctx,top); }
-    ctx.strokeStyle=t.side==='p'?'rgba(127,212,255,.5)':t.side==='e'?'rgba(150,165,180,.35)':'rgba(57,255,138,.5)'; ctx.lineWidth=1; ctx.stroke();
+    poly(ctx,top); ctx.strokeStyle=t.side==='p'?'rgba(127,212,255,.5)':t.side==='e'?'rgba(150,165,180,.35)':'rgba(57,255,138,.5)'; ctx.lineWidth=1; ctx.stroke();
     if(t.side==='n'){ const [x,y]=proj(t.wx,.1,t.wz); ctx.fillStyle='rgba(57,255,138,.85)'; ctx.beginPath();
       ctx.moveTo(x,y-S*1.1-Math.sin(T*2+t.r)*3); ctx.lineTo(x+S*.22,y-S*.45); ctx.lineTo(x,y); ctx.lineTo(x-S*.22,y-S*.45); ctx.closePath(); ctx.fill(); }
   }

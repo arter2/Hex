@@ -50,6 +50,11 @@ def cut(name, box, thr=34, keep_largest=True):
             obj = nd.find_objects(lab)
             keep = [i + 1 for i, s in enumerate(sizes) if s >= max(12, big * 0.06)
                     and obj[i][0].stop - obj[i][0].start > 8 and obj[i][1].stop - obj[i][1].start > 8]
+            # pieces must sit over the main figure's columns (not a neighbour frame's staff or glow)
+            bi = int(np.argmax(sizes)); bx = obj[bi][1]; pad = max(6, (bx.stop - bx.start) // 5)
+            W = m.shape[1]
+            keep = [i for i in keep if obj[i - 1][1].stop > bx.start - pad and obj[i - 1][1].start < bx.stop + pad
+                    and not ((obj[i - 1][1].start <= 2 or obj[i - 1][1].stop >= W - 2) and sizes[i - 1] < big * 0.3)]
             m &= np.isin(lab, keep)
     # outline ring: the dark pixels hugging the figure belong to it
     ring = nd.binary_dilation(m, iterations=1) & ~m & (hi > 24)

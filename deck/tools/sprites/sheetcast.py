@@ -80,7 +80,7 @@ MON_X = [15, 348, 632, 916, 1200]
 
 def first_figure(name, box, min_h=30, view=0):
     """The view-th figure from the left inside box (skipping frame lines and labels)."""
-    bs = [b for b in S.blobs(name, box, gap=1) if b[3] - b[1] >= min_h and b[3] - b[1] < box[3] - box[1] - 3 and b[2] - b[0] > 8]
+    bs = [b for b in S.blobs(name, box, gap=1) if b[3] - b[1] >= min_h and b[2] - b[0] > 12]
     return bs[view][:4] if len(bs) > view else None
 
 def boss(bid):

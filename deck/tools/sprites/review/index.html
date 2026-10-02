@@ -1,0 +1,177 @@
+<title>Hexmancers Sprite Review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>
+/* Layout: a casting-room ledger. Summary strip, filter chips, then one wide card per sprite:
+   the sprite on a pixel stage at left, its words and the panel's scores at right. Single dark look. */
+:root{
+  --ink:#0d0e16; --slab:#161826; --slab2:#1e2133; --line:#2c3049; --text:#e9e4d4; --dim:#9a97a8;
+  --gold:#f2c14e; --pass:#5fd38d; --fail:#ff6b6b; --warn:#f2a74e; --sky:#7fc8ff;
+  --display:"Jersey 10", "Courier New", monospace; --body:"Atkinson Hyperlegible", system-ui, sans-serif; --mono:"JetBrains Mono", ui-monospace, monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--ink); color:var(--text); font-family:var(--body); font-size:15px; line-height:1.5; margin:0}
+.wrap{max-width:1180px; margin:0 auto; padding-inline:16px; padding-block:24px 64px}
+h1{font-family:var(--display); font-weight:400; font-size:clamp(40px,7vw,64px); line-height:.9; margin:0; letter-spacing:.02em; color:var(--gold); text-wrap:balance}
+.lede{color:var(--dim); max-width:68ch; margin:.6em 0 0}
+.summary{display:flex; flex-wrap:wrap; gap:10px; margin:22px 0 14px}
+.stat{background:var(--slab); border:1px solid var(--line); padding:8px 14px; min-width:120px}
+.stat b{display:block; font-family:var(--display); font-size:34px; font-weight:400; line-height:1; font-variant-numeric:tabular-nums}
+.stat span{font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--dim)}
+.filters{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 22px}
+.chip{font:inherit; font-size:13px; color:var(--text); background:var(--slab); border:1px solid var(--line); padding:6px 12px; cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--gold); color:var(--ink); border-color:var(--gold); font-weight:700}
+.chip:focus-visible,.btn:focus-visible,.thumb:focus-visible,textarea:focus-visible{outline:2px solid var(--sky); outline-offset:2px}
+.list{display:grid; gap:18px}
+.card{display:grid; grid-template-columns:minmax(0,300px) minmax(0,1fr); gap:20px; background:var(--slab); border:1px solid var(--line); padding:16px}
+.card.approved{border-color:var(--pass)} .card.rework{border-color:var(--warn)}
+@media (max-width:760px){ .card{grid-template-columns:minmax(0,1fr)} }
+.stage{width:100%; max-width:288px; aspect-ratio:1; background-color:#262a3e; background-image:linear-gradient(#2f3450 1px,transparent 1px),linear-gradient(90deg,#2f3450 1px,transparent 1px); background-size:12.5% 12.5%; display:grid; place-items:center; position:relative}
+.stage img{width:100%; height:100%; image-rendering:pixelated}
+.stage .px{position:absolute; right:6px; bottom:4px; font:11px var(--mono); color:var(--dim)}
+.thumbs{display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; max-width:288px}
+.thumb{width:44px; height:44px; padding:0; background:#262a3e; border:1px solid var(--line); cursor:pointer}
+.thumb img{width:100%; height:100%; image-rendering:pixelated; display:block}
+.thumb[aria-pressed="true"]{border-color:var(--gold)}
+.play{font:12px var(--mono); margin-top:8px; background:none; color:var(--sky); border:1px solid var(--line); padding:4px 10px; cursor:pointer}
+.head{display:flex; flex-wrap:wrap; align-items:baseline; gap:8px 12px}
+.head h2{font-family:var(--display); font-weight:400; font-size:34px; line-height:1; margin:0; color:var(--text)}
+.tag{font-size:11px; letter-spacing:.1em; text-transform:uppercase; padding:2px 8px; border:1px solid var(--line); color:var(--dim)}
+.verdict{font:700 12px var(--mono); padding:3px 9px}
+.verdict.pass{background:var(--pass); color:var(--ink)} .verdict.fail{background:var(--fail); color:var(--ink)} .verdict.none{border:1px solid var(--line); color:var(--dim)}
+dl{margin:10px 0 0; display:grid; gap:6px}
+dt{font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--gold)}
+dd{margin:0; max-width:70ch}
+.scores{margin-top:14px; overflow-x:auto}
+table{border-collapse:collapse; font:13px var(--mono); font-variant-numeric:tabular-nums; min-width:420px; width:100%}
+th,td{padding:4px 8px; text-align:right; border-bottom:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left; font-family:var(--body)}
+thead th{color:var(--dim); font-weight:400; font-size:11px; letter-spacing:.06em; text-transform:uppercase}
+td.lo{color:var(--fail)} td.hi{color:var(--pass)}
+tr.total td{font-weight:700; border-bottom:0; color:var(--text)}
+.bar{position:relative; height:8px; background:var(--slab2); margin-top:8px}
+.bar i{position:absolute; inset:0 auto 0 0; background:var(--fail)} .bar i.ok{background:var(--pass)}
+.bar u{position:absolute; top:-4px; bottom:-4px; width:2px; background:var(--gold); left:90%}
+.hist{font:12px var(--mono); color:var(--dim); margin-top:6px}
+details{margin-top:10px} summary{cursor:pointer; color:var(--sky); font-size:13px}
+details ul{margin:6px 0 0; padding-left:18px; display:grid; gap:4px; font-size:14px}
+.decide{display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-top:14px; padding-top:12px; border-top:1px dashed var(--line)}
+.btn{font:700 14px var(--body); padding:8px 14px; cursor:pointer; border:1px solid var(--line); background:var(--slab2); color:var(--text)}
+.btn.ok[aria-pressed="true"]{background:var(--pass); color:var(--ink); border-color:var(--pass)}
+.btn.back[aria-pressed="true"]{background:var(--warn); color:var(--ink); border-color:var(--warn)}
+.decide textarea{flex:1 1 220px; min-width:0; font:13px var(--body); background:var(--ink); color:var(--text); border:1px solid var(--line); padding:6px 8px; resize:vertical; min-height:36px}
+.saved{font-size:12px; color:var(--dim)}
+.note{color:var(--dim); font-size:13px}
+@media (prefers-reduced-motion:reduce){ *{animation:none!important; transition:none!important} }
+</style>
+
+<div class="wrap">
+  <h1>Hexmancers Sprite Review</h1>
+  <p class="lede">Every character, humanoid, monster, boss and hero, redrawn at 128 × 128 from the concept sheets and scored by a panel of three models on eight categories (max 80). A sprite passes the panel at an average of 72. Your call is final: approve it for the game, or send it back for another round with a note.</p>
+  <div class="summary" id="summary"></div>
+  <div class="filters" id="filters" role="group" aria-label="Filter sprites"></div>
+  <p class="note" id="status">Loading sprites…</p>
+  <div class="list" id="list"></div>
+</div>
+
+<script>
+const S={data:null, filter:'all', decisions:{}, db:null, view:{}, timers:{}};
+const CAT_LABEL={legibility:'Legibility',silhouette:'Silhouette',creativity:'Creativity',efficiency:'Grid use',detail:'Detail / face',look:'Polish',animation:'Animation',reference:'Reference'};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function latest(sp){ const rs=Object.keys(sp.rounds||{}).map(Number).sort((a,b)=>a-b); const r=rs[rs.length-1]; return r?{r, js:sp.rounds[r]}:null; }
+function avgTotal(js){ const v=Object.values(js); return v.length? v.reduce((a,x)=>a+x.total,0)/v.length : null; }
+function panelPass(sp){ const l=latest(sp); const t=l&&avgTotal(l.js); return t==null?null:t>=S.data.pass_mark; }
+
+function renderSummary(){
+  const sp=S.data.sprites, passed=sp.filter(s=>panelPass(s)).length;
+  const ap=sp.filter(s=>S.decisions[s.id]?.status==='approved').length, rw=sp.filter(s=>S.decisions[s.id]?.status==='rework').length;
+  document.getElementById('summary').innerHTML=[[sp.length,'sprites'],[passed,'passed panel'],[ap,'approved by you'],[rw,'sent back'],['R'+S.data.round,'current round']]
+    .map(([b,s])=>`<div class="stat"><b>${b}</b><span>${s}</span></div>`).join('');
+}
+const FILTERS=[['all','All'],['Player','Player looks'],['Humanoid','Humanoids'],['Monster','Monsters'],['Boss','Bosses'],['Boss helper','Boss helpers'],['Hero','Heroes'],['pass','Passed panel'],['fail','Below 72'],['approved','Approved'],['rework','Sent back'],['undecided','Undecided']];
+function renderFilters(){
+  const el=document.getElementById('filters');
+  el.innerHTML=FILTERS.map(([k,l])=>`<button class="chip" data-f="${k}" aria-pressed="${S.filter===k}">${l}</button>`).join('');
+  el.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{ S.filter=b.dataset.f; try{localStorage.setItem('f',S.filter)}catch(e){} renderFilters(); renderList(); });
+}
+function shown(sp){ const d=S.decisions[sp.id]?.status, f=S.filter;
+  if(f==='all') return true; if(f==='pass') return panelPass(sp)===true; if(f==='fail') return panelPass(sp)===false;
+  if(f==='approved'||f==='rework') return d===f; if(f==='undecided') return !d; return sp.cat===f; }
+
+function scoreTable(sp){
+  const l=latest(sp); if(!l) return '<p class="note">Not scored yet.</p>';
+  const ks=Object.keys(l.js), J=S.data.judges, pm=S.data.pass_mark;
+  const rows=S.data.cats.map(c=>{ const vs=ks.map(k=>+l.js[k][c]||0), a=vs.reduce((x,y)=>x+y,0)/vs.length;
+    return `<tr><td>${CAT_LABEL[c]}</td>${vs.map(v=>`<td class="${v<=6?'lo':v>=9?'hi':''}">${v}</td>`).join('')}<td>${a.toFixed(1)}</td></tr>`; }).join('');
+  const tots=ks.map(k=>l.js[k].total), avg=avgTotal(l.js);
+  const hist=Object.keys(sp.rounds).map(Number).sort((a,b)=>a-b).map(r=>'R'+r+' '+avgTotal(sp.rounds[r]).toFixed(1)).join('  →  ');
+  return `<div class="scores"><table><thead><tr><th>Round ${l.r}</th>${ks.map(k=>`<th>${esc(J[k]||k)}</th>`).join('')}<th>Avg</th></tr></thead>
+    <tbody>${rows}<tr class="total"><td>Total / 80</td>${tots.map(t=>`<td class="${t>=pm?'hi':'lo'}">${t}</td>`).join('')}<td>${avg.toFixed(1)}</td></tr></tbody></table></div>
+    <div class="bar" title="Average ${avg.toFixed(1)} of 80; pass mark ${pm}"><i class="${avg>=pm?'ok':''}" style="width:${avg/80*100}%"></i><u></u></div>
+    <div class="hist">${esc(hist)}</div>
+    <details><summary>What the judges want fixed</summary><ul>${ks.map(k=>`<li><b>${esc(J[k]||k)}:</b> ${esc(l.js[k].fix||'')}</li>`).join('')}</ul></details>`;
+}
+function card(sp){
+  const d=S.decisions[sp.id]||{}, pp=panelPass(sp), imgs=[sp.main].concat(sp.alts), v=S.view[sp.id]||0;
+  const altNames=sp.cat==='Player'?['Battle (back)','Hat off','Front','Front, hat off']:['Front','Back','Side','Side'];
+  return `<article class="card ${d.status||''}" id="c-${sp.id}">
+    <div><div class="stage"><img id="st-${sp.id}" src="${v>=0?imgs[v]:sp.frames[0]}" alt="${esc(sp.name)} sprite" width="128" height="128"><span class="px">128×128</span></div>
+      <div class="thumbs">${imgs.map((u,i)=>`<button class="thumb" data-id="${sp.id}" data-i="${i}" aria-pressed="${i===v}" title="${altNames[i]||'View '+(i+1)}"><img src="${u}" alt="${altNames[i]||'view'}"></button>`).join('')}</div>
+      ${sp.frames.length?`<button class="play" data-id="${sp.id}">▶ play idle · walk · cast · attack · hurt · die</button>`:''}</div>
+    <div style="min-width:0">
+      <div class="head"><h2>${esc(sp.name)}</h2><span class="tag">${esc(sp.cat)}</span>
+        <span class="verdict ${pp==null?'none':pp?'pass':'fail'}">${pp==null?'unscored':pp?'PASSED PANEL':'BELOW 72'}</span></div>
+      <dl><dt>What it is</dt><dd>${esc(sp.does)}</dd><dt>How it works</dt><dd>${esc(sp.works)}</dd></dl>
+      ${scoreTable(sp)}
+      <div class="decide">
+        <button class="btn ok" data-id="${sp.id}" data-s="approved" aria-pressed="${d.status==='approved'}">✓ Approve</button>
+        <button class="btn back" data-id="${sp.id}" data-s="rework" aria-pressed="${d.status==='rework'}">↺ Send back</button>
+        <textarea id="note-${sp.id}" data-id="${sp.id}" placeholder="Note for the next round (optional)">${esc(d.note||'')}</textarea>
+        <span class="saved" id="sv-${sp.id}">${S.db?'':'Sign in to save decisions'}</span>
+      </div>
+    </div></article>`;
+}
+function renderList(){
+  const sp=S.data.sprites.filter(shown);
+  document.getElementById('status').textContent=sp.length?'':'Nothing matches this filter.';
+  document.getElementById('list').innerHTML=sp.map(card).join('');
+  document.querySelectorAll('.thumb').forEach(b=>b.onclick=()=>{ stop(b.dataset.id); S.view[b.dataset.id]=+b.dataset.i; refresh(b.dataset.id); });
+  document.querySelectorAll('.play').forEach(b=>b.onclick=()=>play(b.dataset.id,b));
+  document.querySelectorAll('.btn').forEach(b=>b.onclick=()=>decide(b.dataset.id,b.dataset.s));
+  document.querySelectorAll('.decide textarea').forEach(t=>t.onchange=()=>decide(t.dataset.id,null,t.value));
+}
+function refresh(id){ const sp=S.data.sprites.find(s=>s.id===id), el=document.getElementById('c-'+id); if(el) el.outerHTML=card(sp);
+  const n=document.getElementById('c-'+id); if(!n) return;
+  n.querySelectorAll('.thumb').forEach(b=>b.onclick=()=>{ stop(id); S.view[id]=+b.dataset.i; refresh(id); });
+  n.querySelectorAll('.play').forEach(b=>b.onclick=()=>play(id,b));
+  n.querySelectorAll('.btn').forEach(b=>b.onclick=()=>decide(id,b.dataset.s));
+  n.querySelectorAll('textarea').forEach(t=>t.onchange=()=>decide(id,null,t.value)); }
+function stop(id){ if(S.timers[id]){ clearInterval(S.timers[id]); delete S.timers[id]; } }
+function play(id,btn){ const sp=S.data.sprites.find(s=>s.id===id), img=document.getElementById('st-'+id);
+  if(S.timers[id]){ stop(id); btn.textContent='▶ play idle · walk · cast · attack · hurt · die'; return; }
+  let i=0; btn.textContent='■ stop'; S.timers[id]=setInterval(()=>{ img.src=sp.frames[i%sp.frames.length]; i++; },420); }
+
+async function decide(id,status,note){
+  const cur=Object.assign({},S.decisions[id]||{}); if(status) cur.status=cur.status===status?null:status;
+  if(note!=null) cur.note=note; else { const t=document.getElementById('note-'+id); if(t) cur.note=t.value; }
+  cur.round=S.data.round; S.decisions[id]=cur; renderSummary(); refresh(id);
+  const sv=document.getElementById('sv-'+id);
+  if(!S.db){ if(sv) sv.textContent='Not saved: sign in to save decisions'; return; }
+  try{ await S.db.collection('decisions').doc(id).set({status:cur.status||null, note:cur.note||'', round:cur.round, at:Date.now()});
+       const s2=document.getElementById('sv-'+id); if(s2) s2.textContent='Saved'; }
+  catch(e){ const s2=document.getElementById('sv-'+id); if(s2) s2.textContent='Could not save ('+(e&&e.code||'error')+'). Try again.'; }
+}
+
+async function boot(){
+  try{ const f=localStorage.getItem('f'); if(f) S.filter=f; }catch(e){}
+  try{ const r=await fetch('data.json'); S.data=await r.json(); }
+  catch(e){ document.getElementById('status').textContent='The sprite data did not load. Reload the page.'; return; }
+  renderSummary(); renderFilters(); renderList();
+  const db=window.claude&&await window.claude.use('db');
+  if(db){ S.db=db; renderList();
+    db.collection('decisions').onSnapshot(snap=>{ snap.docs.forEach(d=>{ S.decisions[d.id]=d.data(); }); renderSummary(); renderList(); },
+      ()=>{ document.getElementById('status').textContent='Saved decisions could not be loaded right now.'; }); }
+}
+boot();
+</script>

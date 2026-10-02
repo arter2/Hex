@@ -15,7 +15,12 @@ def sheet(name):
     return _cache[name]
 
 def mask_of(a, thr=34):
-    m = a.max(2) > thr
+    # distance from the local background colour (median of the box border), so near-black boots
+    # and outlines that sit just above the navy ground still count as figure
+    border = np.concatenate([a[0], a[-1], a[:, 0], a[:, -1]])
+    bg = np.median(border, 0)
+    dist = np.abs(a - bg).sum(2)
+    m = (a.max(2) > thr) | (dist > 26)
     m = nd.binary_closing(m, iterations=1)
     m = nd.binary_fill_holes(m)
     return m

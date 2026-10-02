@@ -68,7 +68,7 @@ details ul{margin:6px 0 0; padding-left:18px; display:grid; gap:4px; font-size:1
 
 <div class="wrap">
   <h1>Hexmancers Sprite Review</h1>
-  <p class="lede">Every character, humanoid, monster, boss and hero, redrawn at 128 × 128 from the concept sheets and scored by a panel of three models on eight categories (max 80). A sprite passes the panel at an average of 72. Your call is final: approve it for the game, or send it back for another round with a note.</p>
+  <p class="lede">Every character, humanoid, monster, boss and hero, redrawn at 128 × 128 from the concept sheets and scored on eight categories (max 80). Rounds 1 and 2 used three models; round 3 uses five stricter Opus judges, each a specialist (pixel technique, character design, animation, arcade art direction, in-game readability). A sprite passes the panel at an average of 72. Your call is final: approve it for the game, or send it back for another round with a note.</p>
   <div class="summary" id="summary"></div>
   <div class="filters" id="filters" role="group" aria-label="Filter sprites"></div>
   <p class="note" id="status">Loading sprites…</p>
@@ -101,7 +101,7 @@ function shown(sp){ const d=S.decisions[sp.id]?.status, f=S.filter;
 
 function scoreTable(sp){
   const l=latest(sp); if(!l) return '<p class="note">Not scored yet.</p>';
-  const ks=Object.keys(l.js), J=S.data.judges, pm=S.data.pass_mark;
+  const ks=Object.keys(l.js), J=S.data.judges[l.r]||{}, pm=S.data.pass_mark;
   const rows=S.data.cats.map(c=>{ const vs=ks.map(k=>+l.js[k][c]||0), a=vs.reduce((x,y)=>x+y,0)/vs.length;
     return `<tr><td>${CAT_LABEL[c]}</td>${vs.map(v=>`<td class="${v<=6?'lo':v>=9?'hi':''}">${v}</td>`).join('')}<td>${a.toFixed(1)}</td></tr>`; }).join('');
   const tots=ks.map(k=>l.js[k].total), avg=avgTotal(l.js);

@@ -57,7 +57,7 @@ def levels(im):
     a[..., :3] = a[..., :3] * 0.45 + rgb * 0.55
     return Image.fromarray(a.clip(0, 255).astype(np.uint8), 'RGBA')
 
-def despeckle(q, on, passes=2):
+def despeckle(q, on, passes=3):
     """Pixel-art clean-up: a pixel that matches none of its four neighbours, while most of its eight
     neighbours share one colour, takes that colour. Kills dither noise, keeps real details."""
     q = q.copy(); H, W = on.shape
@@ -127,7 +127,7 @@ def look_frames(race, sex, hat):
     g = C.GROUPS.index((sex, hat))
     cuts = [S.cut('actions', C.act_box(race, g, f)) for f in range(6)]
     k = LOOK_H / 84.0                       # sheet figures are ~84 px at their tallest
-    frames = [stand(to_pixels(c, round(c.height * k), colors=48)) for c in cuts]
+    frames = [stand(to_pixels(c, round(c.height * k), colors=32)) for c in cuts]
     return frames
 
 def look_front(race, sex, hat, dye=None):
@@ -191,7 +191,7 @@ def boss_views(bid, height, dye=None):
             front = C.boss(bid); k = height / front.height
             dy = (lambda im: recolor(im, *dye)) if dye else (lambda im: im)
             front = dy(front)
-            out = [stand(to_pixels(front, height))]
+            out = [stand(to_pixels(front, height, colors=40))]
             # later views: cut each from the panel's remaining width, left to right
             rest = [b for b in bs if b[0] > bs[0][0] + front.width * 0.6][:3]
             for b in rest:
@@ -220,7 +220,7 @@ def unit(uid):
     if kind == 'back':
         race, sex, hat = src; g = C.GROUPS.index((sex, hat)); c = S.cut('actions', C.act_box(race, g, C.CAST[g]))
         if rest: c = recolor(c, *rest[0])
-        return [stand(to_pixels(c, round(c.height * LOOK_H / 84.0)))]
+        return [stand(to_pixels(c, round(c.height * LOOK_H / 84.0), colors=32))]
     if kind == 'mon': return [stand(to_pixels(C.monster(src), rest[0], scale=2, colors=32))]
     h = rest[0]; dye = rest[1] if len(rest) > 1 else None; how = rest[2] if len(rest) > 2 else None
     vs = boss_views(src, h, dye)
@@ -234,7 +234,7 @@ def idle(img, n=4):
     if not len(ys): return [img] * n
     top, bot = ys.min(), ys.max(); hip = top + int((bot - top) * 0.55)
     frames = []
-    for dy in (0, 1, 1, 0)[:n]:
+    for dy in (0, 1, 2, 1)[:n]:
         b = a.copy()
         if dy:
             b[top - dy:hip - dy] = a[top:hip]

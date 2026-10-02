@@ -3,7 +3,9 @@ its words, and each round's judge scores. Usage: python3 review_data.py <round> 
 import sys, os, json, pickle, base64, io
 J = '/tmp/claude-0/-home-user-Hex/5ecd24fc-732e-523e-bb34-78aa2fbf8119/scratchpad/judge/'
 CATS = ['legibility', 'silhouette', 'creativity', 'efficiency', 'detail', 'look', 'animation', 'reference']
-JUDGES = {'A': 'Opus', 'B': 'Sonnet', 'C': 'Haiku'}
+JUDGES = {'1': {'A': 'Opus', 'B': 'Sonnet', 'C': 'Haiku'}, '2': {'A': 'Opus', 'B': 'Sonnet', 'C': 'Haiku'},
+          '3': {'A': 'Pixel tech', 'B': 'Designer', 'C': 'Animator', 'D': 'Art director', 'E': 'Readability'}}
+LETTERS = 'ABCDE'
 
 def url(im):
     b = io.BytesIO(); im.save(b, 'PNG', optimize=True); return 'data:image/png;base64,' + base64.b64encode(b.getvalue()).decode()
@@ -13,7 +15,7 @@ def main(rounds):
     es = pickle.load(open(J + 'r%d.pkl' % last, 'rb'))
     scores = {}
     for r in rounds:
-        for k in JUDGES:
+        for k in LETTERS:
             f = J + 'judge%s_r%d.json' % (k, r)
             if os.path.exists(f):
                 for sid, v in json.load(open(f)).items():

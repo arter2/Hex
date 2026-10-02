@@ -594,3 +594,22 @@ body.tall.ui-tablet .camp{max-width:640px;}
 .trials .chip{cursor:pointer; font-size:13px; padding:4px 8px;}
 body.wide .camp{grid-template-areas:"logo logo" "area area" "scene depth" "scene menu" "log menu" "log layout" "trials trials" "wallet wallet";} body.wide #bossTrials{grid-area:trials;}
 .qslot.frozen{outline:2px solid #9fd0ff; outline-offset:-2px; filter:saturate(.4) brightness(1.2);}
+
+/* ---------------- overworld ---------------- */
+#scrExplore{padding:0; overflow:hidden; background:#050608;}
+#xView{position:absolute; inset:0; width:100%; height:100%; display:block; touch-action:none; image-rendering:pixelated;}
+#xTop{position:absolute; top:0; left:0; right:0; display:grid; grid-template-columns:minmax(0,1fr) auto; gap:4px 12px; align-items:center; padding:8px 12px; font-weight:700; font-size:14px; pointer-events:none;
+  background:linear-gradient(#050608ee,#05060800);}
+#xTop .info{display:flex; flex-direction:column; align-items:flex-end; gap:2px; font-size:13px;}
+#xGold{color:#f2c94c;}
+#xMini{position:absolute; top:52px; right:10px; width:120px; height:120px; image-rendering:pixelated; border:2px solid #2a2f3e; background:#05060a; pointer-events:none;}
+#xLog{position:absolute; left:10px; bottom:118px; max-width:min(560px,70%); font-size:13px; line-height:1.35; text-shadow:0 1px 0 #000,0 0 4px #000; pointer-events:none;}
+#xLog .dim{color:#9aa3b5;} #xLog .good{color:#7dffb0;} #xLog .bad{color:#ff7a85;} #xLog .warn{color:#ffd166;} #xLog .gold{color:#f2c94c;} #xLog .loot{color:#c9a7ff;}
+#xBottom{position:absolute; left:0; right:0; bottom:0; padding:8px 12px 10px; background:linear-gradient(#05060800,#050608ee);}
+#xBottom .controls{display:flex; gap:8px; align-items:center; flex-wrap:wrap;}
+#xBottom .controls .btn{flex:0 0 auto;}
+#xBottom .keys{margin:6px 0 0; font-size:11px; color:#8a90a0;}
+#xAct{color:#ffd166; font-weight:700;}
+.x-bang{position:absolute; left:50%; top:38%; transform:translate(-50%,-50%) scale(.6); opacity:0; pointer-events:none; font:700 44px/1 var(--font-display,serif); color:#fff; text-shadow:0 3px 0 #000,0 0 18px #000; transition:opacity .15s, transform .15s; z-index:4;}
+.x-bang.on{opacity:1; transform:translate(-50%,-50%) scale(1);}
+.x-bang.ambush{color:#39ff8a;} .x-bang.surprised{color:#ff5d6c;} .x-bang.depth{color:#d6b8ff; font-size:36px;}

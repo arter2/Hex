@@ -96,6 +96,7 @@ function buildStart(){
 /* ---------------- camp ---------------- */
 let pickDepth=1;
 function openCamp(){
+  if(typeof stopExplore==='function'){ stopExplore(); EX=null; }
   pickDepth=Math.min(Math.max(1,pickDepth),save.deepest);
   if(pickDepth===1&&save.deepest>1) pickDepth=save.deepest;
   const d=activeDeck(), v=validateDeck(d.list,CARDS,save.owned);
@@ -140,7 +141,7 @@ document.querySelectorAll('.btn.mi').forEach(b=>b.insertAdjacentHTML('afterbegin
 addEventListener('resize',()=>{ if($('#scrCamp').classList.contains('on')) campScene(); });
 $('#depthDown').onclick=()=>{ pickDepth--; openCamp(); };
 $('#depthUp').onclick=()=>{ pickDepth++; openCamp(); };
-$('#btnDescend').onclick=()=>fight(pickDepth);
+$('#btnDescend').onclick=()=>enterExplore(pickDepth);
 $('#goBuilder').onclick=()=>openBuilder();
 $('#goCollection').onclick=()=>openCollection();
 $('#goShop').onclick=()=>openShop();
@@ -423,7 +424,8 @@ function buyPack(color){
 }
 
 /* ---------------- battle flow ---------------- */
-function fight(depth,waves){
+// xo (from the overworld): {hp, opening, explore} — wounds carry in and the fight returns to the map
+function fight(depth,waves,xo){
   const d=activeDeck(); if(!validateDeck(d.list,CARDS,save.owned).ok) return openCamp();
   $('#reveal').classList.remove('on');
   show('scrBattle');
@@ -439,7 +441,9 @@ function fight(depth,waves){
     onRecipe:r=>{ const first=!(save.recipes||{})[r.id]; save.recipes=save.recipes||{}; save.recipes[r.id]=1; persist(); banner((first?'⚗ New recipe! ':'⚗ ')+r.name,'#39ff8a'); },
     onHero:c=>banner('♔ '+c.name.split(',')[0]+' joins the fight!','#ffe066'),
     onEnd:win=>win?victory():defeat(),
-  },{prepare:p=>assignChargeUses(save,p,d.list), gear:gearMods(save), look:gearLook(save), waves});
+  },{prepare:p=>assignChargeUses(save,p,d.list), gear:gearMods(save), look:gearLook(save), waves, hp:xo&&xo.hp, opening:xo&&xo.opening});
+  B.explore=!!(xo&&xo.explore);
+  if(B.opening) setTimeout(()=>banner(B.opening==='ambush'?'Ambush! They\'re slow to react':'Surprised! They strike first',B.opening==='ambush'?'#39ff8a':'#ff5d6c'),300);
   hud(true);
 }
 // charge uses spent this fight carry over; a copy that ran dry burns up
@@ -449,7 +453,8 @@ function victory(){
   const b=B, boss=b.enemies.some(e=>e.def.boss);
   const rw=battleRewards(b.enemies.filter(e=>!e.def.minion).map(e=>e.color),b.depth,boss,null,save.owned);
   if(rw.gold) rw.gold=Math.round(rw.gold*(1+(gearMods(save).gold||0)));   // Ring of Fortune
-  save.gold+=rw.gold; save.wins++; if(b.depth>=save.deepest) save.deepest=b.depth+1;
+  save.gold+=rw.gold; save.wins++; if(!b.explore&&b.depth>=save.deepest) save.deepest=b.depth+1;
+  const hpLeft=b.player.hp;
   const loot=rw.items.map(k=>({k, res:addLoot(save,k)}));
   const res=addCards(save,rw.cards); const burnt=settleCharges();
   const depth=b.depth;
@@ -458,15 +463,17 @@ function victory(){
   logCamp((boss?'Boss defeated':'Won')+' at depth '+depth+'.','win'); got.forEach(g=>logCamp('Found '+g.replace(/^[^A-Za-z0-9]+/u,'')+'.',/gold$/.test(g)?'gold':'loot'));
   loot.forEach(l=>{ if(l.res&&l.res.cursed) logCamp(l.res.msg,'curse'); });
   reveal(hero?'♔ A hero joins you!':boss?'Boss defeated!':'Victory!',(hero?hero.name+' answers your call. ':'')+'Depth '+depth+' cleared in '+Math.round(b.time)+'s. '+(boss?'Boss rewards: ':'Your reward: ')+got.join(', ')+'.'+loot.map(l=>l.res&&l.res.cursed?' '+l.res.msg:l.res&&l.res.ok?' You put it on.':'').join('')+burnt,res,
-    [['Camp',()=>{ B=null; pickDepth=depth+1; openCamp(); },true],['Depth '+(depth+1)+' →',()=>fight(depth+1)]],
+    b.explore?[['Keep exploring',()=>{ B=null; resumeExplore(hpLeft,true); },true]]
+    :[['Camp',()=>{ B=null; pickDepth=depth+1; openCamp(); },true],['Depth '+(depth+1)+' →',()=>fight(depth+1)]],
     [...(rw.gold?[{pic:uiIcon('coin',64),name:rw.gold+' gold',text:'Spend it on packs in the shop'}]:[]),...rw.items.map(k=>Object.assign(lootLabel(save,k),{pic:lootPic(k)}))]);
 }
 function defeat(){
   const lost=Math.floor(save.gold*.2); save.gold-=lost; const burnt=settleCharges();
   const depth=B.depth;
   logCamp('Fell at depth '+depth+', dropped '+lost+' gold.','curse');
+  const xp=B.explore; if(xp&&typeof stopExplore==='function'){ stopExplore(); EX=null; }
   reveal('Defeated…','You fell at depth '+depth+' and dropped '+lost+' gold. Your cards are safe.'+burnt,[],
-    [['Camp',()=>{ B=null; openCamp(); },true],['Retry',()=>fight(depth)]]);
+    xp?[['Camp',()=>{ B=null; openCamp(); },true]]:[['Camp',()=>{ B=null; openCamp(); },true],['Retry',()=>fight(depth)]]);
 }
 $('#btnRetreat').onclick=e=>{ if(B) armed(e.currentTarget,'Tap again to retreat',()=>{ const burnt=settleCharges(); if(burnt) tip(burnt.trim()); B=null; paused=false; $('#bMenu').classList.remove('on'); $('#custom').classList.remove('on'); openCamp(); }); };
 // the card you cast pops up large and flies onto the board, Hearthstone style

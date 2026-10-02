@@ -70,6 +70,12 @@ function startBattle(list,depth,hooks,opts){
   spawnWave(0);
   if(opts&&opts.prepare) opts.prepare(B.piles);
   applyGear(p,opts&&opts.gear); p.look=opts&&opts.look; B.piles.surgeLuck=(opts&&opts.gear&&opts.gear.surge)||0;
+  // fights that start on the overworld carry your wounds in, and how the fight began matters:
+  // catching a sleeping enemy holds its first attacks back; being caught off guard lets it strike first
+  if(opts&&opts.hp!=null) p.hp=Math.max(1,Math.min(p.maxHp,opts.hp));
+  B.opening=opts&&opts.opening||null;
+  if(B.opening==='ambush') B.enemies.forEach(e=>{ e.atkT+=3.5; e.stunT=Math.max(e.stunT,1.5); });
+  if(B.opening==='surprised') B.enemies.forEach(e=>{ e.atkT=rnd(.4,.9); });
   openCustomScreen();
   return B;
 }

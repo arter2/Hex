@@ -472,7 +472,7 @@ function defeat(){
   const lost=Math.floor(save.gold*.2); save.gold-=lost; const burnt=settleCharges();
   const depth=B.depth;
   logCamp('Fell at depth '+depth+', dropped '+lost+' gold.','curse');
-  const xp=B.explore; if(xp&&typeof stopExplore==='function'){ stopExplore(); EX=null; }
+  const xp=B.explore; if(xp&&typeof stopExplore==='function'){ stopExplore(); EX=null; XPARK=null; }
   reveal('Defeated…','You fell at depth '+depth+' and dropped '+lost+' gold. Your cards are safe.'+burnt,[],
     xp?[['Camp',()=>{ B=null; openCamp(); },true]]:[['Camp',()=>{ B=null; openCamp(); },true],['Retry',()=>fight(depth)]]);
 }

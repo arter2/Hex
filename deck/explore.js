@@ -58,12 +58,15 @@ function tryFloor(depth,R){
   for(let k=1;k<main.length;k++) carve(main[k-1],main[k],null);
   for(let n=0;n<2;n++){ const a=pick(main), b=pick(main); if(a!==b) carve(a,b,R()<.6?b:null); }
   const closet=rooms.find(r=>r.closet);
-  if(closet){ const near=main.slice().sort((p,q)=>Math.hypot(p.cx-closet.cx,p.cy-closet.cy)-Math.hypot(q.cx-closet.cx,q.cy-closet.cy))[0]; carve(closet,near,near); }
+  if(closet){ const near=main.slice().sort((p,q)=>Math.hypot(p.cx-closet.cx,p.cy-closet.cy)-Math.hypot(q.cx-closet.cx,q.cy-closet.cy))[0]; carve(closet,near,null); }
   // corridors that clip a room corner can leave doors with no wall either side; keep only real doorways
   for(const [i] of doors){ const x=xcx(i), y=xcy(i), open=d=>t[d]!==T_ROCK;
     const ew=open(xi(x-1,y))&&open(xi(x+1,y)), ns=open(xi(x,y-1))&&open(xi(x,y+1));
     if(ew===ns){ doors.delete(i); t[i]=T_FLOOR; } }
   main[0].lit=true;   // you always arrive somewhere you can see
+  // every way into the closet is a secret door, and nothing else may lead there
+  if(closet){ let n=0; for(const [i,d] of doors){ const x=xcx(i), y=xcy(i); if([xi(x-1,y),xi(x+1,y),xi(x,y-1),xi(x,y+1)].some(c=>room[c]===closet.id)){ d.state='secret'; n++; } }
+    if(!n) return null; if(xbfs(t,doors,xi(main[0].cx,main[0].cy),false)[xi(closet.cx,closet.cy)]>=0) return null; }
   const start=main[0], dist=xbfs(t,doors,xi(start.cx,start.cy),false);
   let exit=main[main.length-1], far=-1; for(const r of main){ const d=dist[xi(r.cx,r.cy)]; if(d>far){ far=d; exit=r; } }
   if(far<22) return null;
@@ -316,7 +319,7 @@ function xTrapMesh(tr){ if(tr.mesh||!X3) return; const T=TRAPS[tr.kind], g=new T
 /* ---------------- input ---------------- */
 const XKEY={}, XHOLD={on:false,id:null,x:0,y:0,x0:0,y0:0,t0:0};
 document.addEventListener('keydown',e=>{ if(!EX||!EX.active) return; const k=e.key.toLowerCase(); XKEY[k]=true;
-  if(k==='f') xSearch(); if(k==='e') xDisarm(); if(['arrowup','arrowdown','arrowleft','arrowright',' '].includes(k)) e.preventDefault(); EX.path=[]; });
+  if(k==='f') xSearch(); if(k==='e') xDisarm(); if(k==='c'||k==='<') xToCamp(); if(['arrowup','arrowdown','arrowleft','arrowright',' '].includes(k)) e.preventDefault(); EX.path=[]; });
 document.addEventListener('keyup',e=>{ XKEY[e.key.toLowerCase()]=false; });
 function xTap(e){ if(!EX||!EX.active||EX.busy) return; const G=X3, r=e.target.getBoundingClientRect();
   const v=new THREE.Vector2((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1), hit=new THREE.Vector3();
@@ -335,7 +338,7 @@ const xChestAt=c=>EX.chests.find(ch=>ch.cell===c&&!ch.open);
 /* ---------------- you ---------------- */
 function xMove(dt){
   if(EX.action){ EX.action.t-=dt; if(EX.action.t<=0){ const a=EX.action; EX.action=null; a.done(); } return; }
-  if(EX.stuckT>0){ EX.stuckT-=dt; return; }
+  if(EX.stuckT>0){ EX.stuckT-=dt; if(EX.stuckT<=0) xHud(); return; }
   let ix=0, iz=0;
   if(XKEY.a||XKEY.arrowleft) ix-=1; if(XKEY.d||XKEY.arrowright) ix+=1; if(XKEY.w||XKEY.arrowup) iz-=1; if(XKEY.s||XKEY.arrowdown) iz+=1;
   // holding a finger (or the mouse) down walks toward it, steering as it moves
@@ -345,17 +348,23 @@ function xMove(dt){
   if(!ix&&!iz&&EX.path.length){ const n=EX.path[0], tx=xw(n)-EX.px, tz=xz(n)-EX.pz, d=Math.hypot(tx,tz); if(d<.25){ EX.path.shift(); } else { ix=tx/d; iz=tz/d; } }
   const len=Math.hypot(ix,iz); if(len<.1){ EX.walk=0; return; }
   ix/=len; iz/=len; const sp=5.4*dt, r=.42;
-  const tryAxis=(nx,nz)=>{ for(const [ox,oz] of [[-r,-r],[r,-r],[-r,r],[r,r]]){ const c=xcell(nx+ox,nz+oz); if(c===EX.pc) continue; if(!xBump(c)) return false; } return true; };
-  if(tryAxis(EX.px+ix*sp,EX.pz)) EX.px+=ix*sp; if(tryAxis(EX.px,EX.pz+iz*sp)) EX.pz+=iz*sp;
+  const front=xcell(EX.px+ix*XCS*.6,EX.pz+iz*XCS*.6);
+  const tryAxis=(nx,nz)=>{ for(const [ox,oz] of [[-r,-r],[r,-r],[-r,r],[r,r]]){ const c=xcell(nx+ox,nz+oz); if(c===EX.pc) continue; if(!xBump(c,c===front)) return false; } return true; };
+  const okX=tryAxis(EX.px+ix*sp,EX.pz), okZ=tryAxis(EX.px,EX.pz+iz*sp);
+  if(okX) EX.px+=ix*sp; if(okZ) EX.pz+=iz*sp;
+  // caught on a door frame or corner: ease toward the middle of the cell so you slide through
+  const cx=(xcx(EX.pc)+.5)*XCS, cz=(xcy(EX.pc)+.5)*XCS, ease=(a,b)=>Math.max(-sp,Math.min(sp,b-a));
+  if(!okZ&&Math.abs(iz)>.3&&!okX) EX.px+=ease(EX.px,cx); else if(!okZ&&Math.abs(iz)>.3&&Math.abs(ix)<.3) EX.px+=ease(EX.px,cx);
+  if(!okX&&Math.abs(ix)>.3&&Math.abs(iz)<.3) EX.pz+=ease(EX.pz,cz);
   if(Math.abs(ix)>.2) EX.face=ix<0?-1:1; EX.view=iz<-.35?'back':'front'; EX.walk=(EX.walk||0)+dt*10;
   const c=xcell(EX.px,EX.pz); if(c!==EX.pc&&c>=0){ EX.pc=c; xEnter(c); }
 }
 // walking into a cell: walls stop you, doors open, chests open, a trap you know about stops you
-function xBump(c){
+function xBump(c,front){
   if(c<0||!xPassable(c)) return false;
-  const d=EX.doors.get(c); if(d&&d.state==='closed'){ d.state='open'; d.leaf.visible=false; xLog('You open the door.','dim'); xUpdateVis(); return false; }
-  const ch=xChestAt(c); if(ch){ xOpenChest(ch); return false; }
-  const tr=xKnownTrap(c); if(tr){ xSay('trap','There is a '+TRAPS[tr.kind].name+' there. Disarm it (E) or go around.'); EX.path=[]; return false; }
+  const d=EX.doors.get(c); if(d&&d.state==='closed'){ if(!front) return false; d.state='open'; d.leaf.visible=false; xLog('You open the door.','dim'); xUpdateVis(); return false; }
+  const ch=xChestAt(c); if(ch){ if(front) xOpenChest(ch); return false; }
+  const tr=xKnownTrap(c); if(tr){ xSay('trap'+c,'There is a '+TRAPS[tr.kind].name+' there. Disarm it (E) or go around.'); EX.path=[]; return false; }
   return true;
 }
 function xEnter(c){
@@ -365,19 +374,19 @@ function xEnter(c){
   xHud();
 }
 function xHurt(n,why){ EX.hp=Math.max(0,EX.hp-n); xFlash(); xHud(); if(EX.hp<=0) xDie(why); }
-function xSpring(tr){ const T=TRAPS[tr.kind]; tr.known=true; xTrapMesh(tr);
-  xLog(T.text,'bad'); const dmg=T.dmg[1]?Math.round(rnd(T.dmg[0],T.dmg[1])+EX.depth*.8):0;
+function xSpring(tr,remote){ const T=TRAPS[tr.kind]; tr.known=true; xTrapMesh(tr);
+  xLog(remote&&tr.kind==='pit'?'The pit\'s lid snaps and catches your arm!':T.text,'bad'); const dmg=T.dmg[1]?Math.round(rnd(T.dmg[0],T.dmg[1])+EX.depth*.8):0;
   if(tr.kind==='alarm'){ tr.armed=false; if(tr.mesh) tr.mesh.visible=false; for(const g of EX.groups) if(!g.boss){ g.state='chase'; g.lostT=0; } }
-  if(tr.kind==='pit') EX.stuckT=T.stuck;
+  if(tr.kind==='pit'&&!remote) EX.stuckT=T.stuck;
   if(dmg) xHurt(dmg,'a '+T.name); }
 
 /* ---------------- search, disarm, chests ---------------- */
 function xSearch(){ if(!EX||EX.action||EX.busy) return; EX.path=[]; xLog('You search the area…','dim');
   EX.action={t:1.1, done(){ const x=xcx(EX.pc), y=xcy(EX.pc); let found=0;
     for(let dy=-2;dy<=2;dy++) for(let dx=-2;dx<=2;dx++){ const i=xi(x+dx,y+dy), d=EX.doors.get(i);
-      if(d&&d.state==='secret'&&Math.random()<.55){ d.state='closed'; d.leaf.visible=true; found++; xLog('You find a hidden door!','good');
+      if(d&&d.state==='secret'&&xLos(EX.pc,i)&&Math.random()<.55){ d.state='closed'; d.leaf.visible=true; found++; xLog('You find a hidden door!','good');
         const w=EX.wIdx.get(i); if(w){ w[0].setMatrixAt(w[1],new THREE.Matrix4().makeScale(0,0,0)); w[0].instanceMatrix.needsUpdate=true; EX.wIdx.delete(i); } EX.seen[i]=1; } }
-    for(const tr of EX.traps) if(tr.armed&&!tr.known&&Math.max(Math.abs(xcx(tr.cell)-x),Math.abs(xcy(tr.cell)-y))<=2&&Math.random()<.65){ tr.known=true; xTrapMesh(tr); found++; xLog('You find a '+TRAPS[tr.kind].name+'.','good'); }
+    for(const tr of EX.traps) if(tr.armed&&!tr.known&&xLos(EX.pc,tr.cell)&&Math.max(Math.abs(xcx(tr.cell)-x),Math.abs(xcy(tr.cell)-y))<=2&&Math.random()<.65){ tr.known=true; xTrapMesh(tr); found++; xLog('You find a '+TRAPS[tr.kind].name+'.','good'); }
     for(const ch of EX.chests) if(!ch.open&&ch.trap&&!ch.trapKnown&&Math.max(Math.abs(xcx(ch.cell)-x),Math.abs(xcy(ch.cell)-y))<=1&&Math.random()<.65){ ch.trapKnown=true; found++; xLog('The chest\'s lock is trapped.','good'); }
     if(!found) xLog('You find nothing.','dim'); xUpdateVis(); xHud(); } };
   xHud(); }
@@ -388,7 +397,7 @@ function xDisarm(){ if(!EX||EX.action||EX.busy) return; const tg=xDisarmTarget()
   EX.action={t:1.3, done(){ const ok=Math.random()<.72;
     if(isChest){ if(ok){ tg.trap=false; xLog('You disarm the needle in the lock.','good'); } else { tg.trap=false; xLog('Click. A needle jabs your hand!','bad'); xHurt(Math.round(5+EX.depth),'a trapped lock'); } }
     else if(ok){ tg.armed=false; if(tg.mesh) tg.mesh.visible=false; xLog('You disarm the '+TRAPS[tg.kind].name+'.','good'); if(Math.random()<.3){ const g=Math.round(5+EX.depth*3); save.gold+=g; persist(); xLog('You salvage '+g+' gold of parts.','gold'); } }
-    else { xLog('You slip!','bad'); xSpring(tg); tg.armed=false; if(tg.mesh) tg.mesh.visible=false; }
+    else { xLog('You slip!','bad'); xSpring(tg,true); tg.armed=false; if(tg.mesh) tg.mesh.visible=false; }
     xHud(); } };
   xHud(); }
 function xOpenChest(ch){
@@ -450,8 +459,9 @@ function xStairsDown(){
   save.deepest=Math.max(save.deepest,nd); persist();
   setTimeout(()=>{ buildFloor(nd,hp); EX.active=true; xHud(); xLoopStart(); xBanner('Depth '+nd); },500);
 }
-function xToCamp(){ if(!EX||EX.busy||EX.pc!==EX.up) return; logCamp('Climbed back to camp from depth '+EX.depth+'.','dim'); stopExplore(); pickDepth=EX.depth; EX=null; openCamp(); }
-function xDie(why){ EX.busy=true; const lost=Math.floor(save.gold*.2); save.gold-=lost; persist(); const depth=EX.depth;
+let XPARK=null;
+function xToCamp(){ if(!EX||EX.busy||EX.pc!==EX.up) return; logCamp('Climbed back to camp from depth '+EX.depth+'. The floor stays as you left it.','dim'); stopExplore(); pickDepth=EX.depth; XPARK=EX; EX=null; openCamp(); }
+function xDie(why){ XPARK=null; EX.busy=true; const lost=Math.floor(save.gold*.2); save.gold-=lost; persist(); const depth=EX.depth;
   logCamp('Killed by '+why+' at depth '+depth+', dropped '+lost+' gold.','curse'); stopExplore();
   reveal('You died…','Killed by '+why+' on depth '+depth+'. You dropped '+lost+' gold. Your cards are safe.',[],[['Camp',()=>{ EX=null; openCamp(); },true]]); }
 function stopExplore(){ if(EX) EX.active=false; }
@@ -461,12 +471,12 @@ let xRaf=0, xLast=0;
 function xLoopStart(){ cancelAnimationFrame(xRaf); xLast=performance.now(); xRaf=requestAnimationFrame(xLoop); }
 function xLoop(ts){
   if(!EX||!EX.active||!$('#scrExplore').classList.contains('on')) return;
-  const dt=Math.min(.05,(ts-xLast)/1000); xLast=ts;
+  const dt=Math.min(.1,(ts-xLast)/1000); xLast=ts;
   if(!EX.busy){ xMove(dt); xEnemies(dt);
     EX.regenT+=dt; if(EX.regenT>3){ EX.regenT=0; if(EX.hp<xmaxHp()){ EX.hp++; xHud(); } } }
   xDraw(ts/1000,dt); xRaf=requestAnimationFrame(xLoop);
 }
-function xResize(){ const G=X3, cv=$('#xView'), w=cv.clientWidth||400, h=cv.clientHeight||600; G.renderer.setSize(w,h,false); G.cam.aspect=w/h; G.cam.updateProjectionMatrix(); }
+function xResize(){ const G=X3, cv=$('#xView'), w=cv.clientWidth||400, h=cv.clientHeight||600; if(G.w===w&&G.h===h) return; G.w=w; G.h=h; G.renderer.setSize(w,h,false); G.cam.aspect=w/h; G.cam.updateProjectionMatrix(); }
 function xDraw(T,dt){
   const G=X3; xResize(); xFadeCells(dt||.016);
   const bob=EX.walk?Math.abs(Math.sin(EX.walk))*.08:0;
@@ -485,7 +495,7 @@ function xDraw(T,dt){
 function xMini(){
   const cv=$('#xMini'), c=cv.getContext('2d'), s=3; cv.width=cv.height=XN*s;
   c.fillStyle='rgba(5,6,10,.8)'; c.fillRect(0,0,cv.width,cv.height);
-  for(let i=0;i<XN*XN;i++){ if(!EX.seen[i]||EX.t[i]===T_ROCK) continue; const d=EX.doors.get(i); if(d&&d.state==='secret') continue;
+  for(let i=0;i<XN*XN;i++){ if(!EX.seen[i]) continue; const d=EX.doors.get(i); if(EX.t[i]===T_ROCK||(d&&d.state==='secret')){ c.fillStyle='#1a1d26'; c.fillRect(xcx(i)*s,xcy(i)*s,s,s); continue; }
     c.fillStyle=d?'#a0703a':EX.vis[i]?'#7c8aa6':'#3c4458'; c.fillRect(xcx(i)*s,xcy(i)*s,s,s); }
   const dot=(i,col,r)=>{ c.fillStyle=col; c.fillRect(xcx(i)*s-r+1,xcy(i)*s-r+1,s+2*r-2,s+2*r-2); };
   if(EX.seen[EX.down]) dot(EX.down,EX.depth%4===0?'#ff5d6c':'#d6b8ff',2); if(EX.seen[EX.up]) dot(EX.up,'#fff2c0',2);
@@ -503,13 +513,16 @@ function xHud(){ if(!EX) return; const m=xmaxHp();
   $('#xHpBar').style.width=(100*EX.hp/m)+'%'; $('#xHpTxt').textContent=Math.ceil(EX.hp)+' / '+m+' HP';
   $('#xDepth').textContent='Depth '+EX.depth+' · '+EX.area.name; $('#xGold').textContent=save.gold+' gold';
   $('#xSearch').disabled=!!EX.action; $('#xDisarm').disabled=!!EX.action||!xDisarmTarget();
-  $('#xCamp').style.display=EX.pc===EX.up&&!EX.busy?'':'none'; $('#xAct').textContent=EX.action?'…':''; }
+  $('#xCamp').style.display=EX.pc===EX.up&&!EX.busy?'':'none'; $('#xAct').textContent=EX.action?'Working…':EX.stuckT>0?'Stuck in a pit!':''; }
 
 /* ---------------- entering and returning ---------------- */
 function enterExplore(depth){
   const v=validateDeck(activeDeck().list,CARDS,save.owned); if(!v.ok) return;
   if(typeof THREE==='undefined'){ tip('The 3D map could not load; fighting directly.'); return fight(depth); }
-  show('scrExplore'); xInit3D(); buildFloor(depth); EX.active=true; xHud(); xLoopStart();
+  show('scrExplore'); xInit3D();
+  if(XPARK&&XPARK.depth===depth){ EX=XPARK; XPARK=null; EX.hp=xmaxHp(); EX.busy=false; EX.path=[]; EX.px=xw(EX.up); EX.pz=xz(EX.up); EX.pc=EX.up; xUpdateVis(); xLog('You climb back down. You feel rested.','dim'); }
+  else { XPARK=null; buildFloor(depth); }
+  EX.active=true; xHud(); xLoopStart();
   xBanner('Depth '+depth);
 }
 // back from a fight that started on the map: the enemy is gone and your wounds carry over

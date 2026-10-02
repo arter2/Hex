@@ -52,10 +52,10 @@ def look(race, sex):
         sfx = '' if hat else 'Bare'
         b = S.cut('actions', act_box(race, g))          # idle: sets the scale
         c = S.cut('actions', act_box(race, g, CAST[g]))    # battle shows the casting stance
-        bi, _ = S.fit(c, height=round(c.height * BACK_K))
+        bi = S.pixelate(c, round(c.height * BACK_K), scale=1, colors=48)
         out['back' + sfx] = bi
         f = S.cut('turns', turn_box(race, g))
-        fi, _ = S.fit(f, height=round(b.height * BACK_K * 0.92))
+        fi = S.pixelate(f, round(b.height * BACK_K * 0.92), scale=2, colors=32)
         out['front' + sfx] = fi
         if hat:
             out['tipBack'] = glow_tip(bi); out['tip'] = None
@@ -102,7 +102,7 @@ def monster(mid):
 
 def front(race, sex, hat):
     g = GROUPS.index((sex, hat)); b = S.cut('actions', act_box(race, g))
-    return S.fit(S.cut('turns', turn_box(race, g)), height=round(b.height * BACK_K * 0.92))[0]
+    return S.pixelate(S.cut('turns', turn_box(race, g)), round(b.height * BACK_K * 0.92), scale=2, colors=32)
 
 # unit id -> how to draw it (enemies face right in their source; battle flips them)
 UNITS = {
@@ -122,5 +122,5 @@ UNITS = {
 def unit(uid):
     kind, src, *h = UNITS[uid]
     if kind == 'front': return front(*src)
-    im = boss(src) if kind == 'boss' else monster(src)
-    return S.fit(im, height=h[0])[0]
+    if kind == 'boss': return S.pixelate(boss(src), h[0], scale=1, colors=48)
+    return S.pixelate(monster(src), h[0], scale=2, colors=32)   # monsters are tiny on their sheet

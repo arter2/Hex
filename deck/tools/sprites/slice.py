@@ -86,3 +86,48 @@ def fit(im, size=96, height=None, foot=93, cx=None):
     x = (size - nw) // 2 if cx is None else int(cx - nw / 2)
     c.alpha_composite(r, (max(0, min(size - nw, x)), foot + 1 - nh))
     return c, k
+
+def pixelate(im, height, scale=2, colors=40, size=96, foot=93):
+    """Turn a soft, painted-looking cut into crisp pixel art: shrink it to its native pixel grid
+    (height/scale px tall), sharpen, snap to a small palette, harden alpha, outline the light
+    edges, then blow it up `scale`x with nearest neighbour and stand it on the canvas."""
+    from PIL import ImageFilter
+    w, h = im.size
+    nh = max(8, round(height / scale)); nw = max(4, round(w * nh / h))
+    if nw * scale > size - 2: nw = (size - 2) // scale; nh = max(8, round(h * nw / w))
+    # premultiplied shrink so the dark background doesn't bleed into edge colours
+    a = np.asarray(im).astype(float); al = a[..., 3:] / 255
+    pm = Image.fromarray(np.dstack([a[..., :3] * al, a[..., 3]]).clip(0, 255).astype(np.uint8), 'RGBA')
+    sm = np.asarray(pm.resize((nw, nh), Image.BOX)).astype(float)
+    sa = sm[..., 3]; rgb = sm[..., :3] / np.maximum(sa[..., None] / 255, 1e-3)
+    small = Image.fromarray(rgb.clip(0, 255).astype(np.uint8), 'RGB').filter(ImageFilter.UnsharpMask(radius=1, percent=90, threshold=2))
+    on = sa > 110
+    # palette from the figure's own pixels only
+    px = np.asarray(small)[on]
+    if len(px) == 0: return Image.new('RGBA', (size, size))
+    pal_img = Image.fromarray(px.reshape(1, -1, 3), 'RGB').quantize(min(colors, len(px)), method=Image.MEDIANCUT)
+    q = np.asarray(small.quantize(palette=pal_img, dither=Image.Dither.NONE).convert('RGB')).copy()
+    alpha = np.where(on, 255, 0).astype(np.uint8)
+    # drop lone pixels hanging off the silhouette
+    nb = nd.convolve(on.astype(int), np.ones((3, 3), int), mode='constant') - on
+    alpha[on & (nb <= 1)] = 0; on = alpha > 0
+    # one-pixel outline where a light pixel meets the background
+    lum = q.mean(2)
+    ring = nd.binary_dilation(on, structure=[[0, 1, 0], [1, 1, 1], [0, 1, 0]]) & ~on
+    edge = on & nd.binary_dilation(~on, structure=[[0, 1, 0], [1, 1, 1], [0, 1, 0]])
+    lit_edge = edge & (lum > 70)
+    need = ring & nd.binary_dilation(lit_edge, structure=[[0, 1, 0], [1, 1, 1], [0, 1, 0]])
+    if need.any():
+        # darkest-neighbour shade, pushed toward ink
+        src = np.where(on[..., None], q, 255).astype(float)
+        dk = np.stack([nd.grey_erosion(src[..., c], size=3) for c in range(3)], -1)
+        ink = (dk * 0.3 + np.array([11, 7, 16]) * 0.7).astype(np.uint8)
+        q[need] = ink[need]; alpha[need] = 255
+    small = Image.fromarray(np.dstack([q, alpha]), 'RGBA')
+    big = small.resize((small.width * scale, small.height * scale), Image.NEAREST)
+    c = Image.new('RGBA', (size, size))
+    x = (size - big.width) // 2 // scale * scale
+    y = foot + 1 - big.height
+    y = y // scale * scale + (foot + 1) % scale
+    c.alpha_composite(big, (max(0, x), max(0, y)))
+    return c

@@ -596,11 +596,13 @@ function hud(force){
     $('#btnCast').disabled=!pl.queue.length;
   });
   const canCustom=b.phase==='fight'&&gaugeFull()&&!wandOnly(pl);
-  set('custom',canCustom,v=>{ $('#btnCustom').disabled=!v; $('#btnCustom').classList.toggle('ready',v); });
+  set('custom',canCustom,v=>{ const bt=$('#btnCustom'); bt.disabled=!v; bt.classList.toggle('ready',v); bt.innerHTML=v?'✦ Custom<small>cards ready</small>':'Custom'; });
 }
 
 /* ---------------- battle input ---------------- */
-function tryCustom(){ if(B&&B.phase==='fight'&&gaugeFull()&&!wandOnly(B.piles)) openCustomScreen(); }
+function tryCustom(){ if(!(B&&B.phase==='fight'&&gaugeFull()&&!wandOnly(B.piles))) return;
+  if(B.player.charging){ wandUp(); $('#btnWand').classList.remove('charging'); }   // a shot you were charging goes off first
+  openCustomScreen(); }
 $('#btnCustom').onclick=tryCustom;
 $('#btnCast').onclick=castCard;
 const wandBtn=$('#btnWand');
@@ -647,8 +649,7 @@ function frame(now){
   const dt=Math.min(.05,(now-prev)/1000); prev=now;
   if(B&&$('#scrBattle').classList.contains('on')){
     if(!paused) update(dt);
-    // The Custom screen opens by itself when the gauge fills and nothing is left to cast.
-    if(B.phase==='fight'&&gaugeFull()&&!B.piles.queue.length&&!wandOnly(B.piles)) openCustomScreen();
+    // The Custom screen never opens by itself: when the gauge is full the Custom button glows and you open it.
     render(); hud();
   }
   requestAnimationFrame(frame);

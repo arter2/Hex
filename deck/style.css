@@ -667,3 +667,12 @@ body.wide .camp{grid-template-areas:"logo logo" "area area" "scene depth" "scene
 .ktest b{color:#8fe4ff;}
 #setClose{width:100%; margin-top:6px;}
 @media (pointer:coarse){ #goSettings{display:none;} #mControls{display:none;} }
+
+/* the Custom button glows and pulses when the gauge is full: you open the card screen yourself */
+#btnCustom.ready{animation:customReady 1.1s ease-in-out infinite!important; border-color:#ffe066!important; color:#ffe066!important; background:#2a2410!important; opacity:1!important;}
+#btnCustom.ready small{color:#ffe9a0; font-size:12px;}
+@keyframes customReady{
+  0%,100%{box-shadow:0 0 0 2px #ffe06655, 0 0 10px 2px #ffe06655; transform:scale(1);}
+  50%{box-shadow:0 0 0 3px #ffe066cc, 0 0 26px 8px #ffd16699; transform:scale(1.04);}
+}
+@media (prefers-reduced-motion:reduce){ #btnCustom.ready{animation:none!important; box-shadow:0 0 0 3px #ffe066cc, 0 0 18px 4px #ffd16699;} }

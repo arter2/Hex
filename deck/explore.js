@@ -318,8 +318,9 @@ function xTrapMesh(tr){ if(tr.mesh||!X3) return; const T=TRAPS[tr.kind], g=new T
 
 /* ---------------- input ---------------- */
 const XKEY={}, XHOLD={on:false,id:null,x:0,y:0,x0:0,y0:0,t0:0};
-document.addEventListener('keydown',e=>{ if(!EX||!EX.active) return; const k=e.key.toLowerCase(); XKEY[k]=true;
-  if(k==='f') xSearch(); if(k==='e') xDisarm(); if(k==='c'||k==='<') xToCamp(); if(['arrowup','arrowdown','arrowleft','arrowright',' '].includes(k)) e.preventDefault(); EX.path=[]; });
+document.addEventListener('keydown',e=>{ if(!EX||!EX.active) return; const k=e.key.toLowerCase(), a=keyAct(k,'map'); XKEY[k]=true;
+  if(a==='search') xSearch(); else if(a==='disarm') xDisarm(); else if(a==='camp') xToCamp();
+  if(a||k===' '){ e.preventDefault(); } if(['up','down','left','right'].includes(a)) EX.path=[]; });
 document.addEventListener('keyup',e=>{ XKEY[e.key.toLowerCase()]=false; });
 function xTap(e){ if(!EX||!EX.active||EX.busy) return; const G=X3, r=e.target.getBoundingClientRect();
   const v=new THREE.Vector2((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1), hit=new THREE.Vector3();
@@ -340,7 +341,8 @@ function xMove(dt){
   if(EX.action){ EX.action.t-=dt; if(EX.action.t<=0){ const a=EX.action; EX.action=null; a.done(); } return; }
   if(EX.stuckT>0){ EX.stuckT-=dt; if(EX.stuckT<=0) xHud(); return; }
   let ix=0, iz=0;
-  if(XKEY.a||XKEY.arrowleft) ix-=1; if(XKEY.d||XKEY.arrowright) ix+=1; if(XKEY.w||XKEY.arrowup) iz-=1; if(XKEY.s||XKEY.arrowdown) iz+=1;
+  const held=id=>keysFor(id).some(k=>XKEY[k]);   // your bindings, from Settings (keys.js)
+  if(held('left')) ix-=1; if(held('right')) ix+=1; if(held('up')) iz-=1; if(held('down')) iz+=1;
   // holding a finger (or the mouse) down walks toward it, steering as it moves
   if(!ix&&!iz&&XHOLD.on&&performance.now()-XHOLD.t0>200){ const r=$('#xView').getBoundingClientRect(), v=new THREE.Vector3(EX.px,.8,EX.pz).project(X3.cam);
     const sx=r.left+(v.x+1)/2*r.width, sy=r.top+(1-v.y)/2*r.height, dx=XHOLD.x-sx, dy=XHOLD.y-sy, l=Math.hypot(dx,dy);

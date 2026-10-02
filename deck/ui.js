@@ -628,16 +628,18 @@ window.addEventListener('keydown',e=>{
     return;
   }
   if(B.phase!=='fight'||held.has(k)) return; held.add(k);
-  if(k==='arrowleft'||k==='a') stepDir(DIRS.W);
-  else if(k==='arrowright'||k==='d') stepDir(DIRS.E);
-  else if(k==='arrowup'||k==='w') stepVertical(true);
-  else if(k==='arrowdown'||k==='s') stepVertical(false);
-  else if(k===' '){ e.preventDefault(); wandDown(); }
-  else if(k==='enter'||k==='x') castCard();
-  else if(k==='c') tryCustom();
-  else if(k==='q'||k==='tab'){ e.preventDefault(); cycleAim(); }
+  const a=typeof keyAct==='function'?keyAct(k,'battle'):null;   // your bindings, from Settings (keys.js)
+  if(a) e.preventDefault();
+  if(a==='left') stepDir(DIRS.W);
+  else if(a==='right') stepDir(DIRS.E);
+  else if(a==='up') stepVertical(true);
+  else if(a==='down') stepVertical(false);
+  else if(a==='fire') wandDown();
+  else if(a==='cast') castCard();
+  else if(a==='custom') tryCustom();
+  else if(a==='aim') cycleAim();
 });
-window.addEventListener('keyup',e=>{ const k=e.key.toLowerCase(); held.delete(k); if(k===' ') wandUp(); });
+window.addEventListener('keyup',e=>{ const k=e.key.toLowerCase(); held.delete(k); if(typeof keyAct==='function'&&keyAct(k,'battle')==='fire') wandUp(); });
 
 /* ---------------- loop ---------------- */
 let prev=performance.now();

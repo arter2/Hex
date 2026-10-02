@@ -42,6 +42,7 @@
         <button id="goCollection" class="btn ghost mi" data-icon="cards">My cards</button>
         <button id="goShop" class="btn ghost mi" data-icon="bag">Shop</button>
         <button id="goChar" class="btn ghost mi" data-icon="hero">Character</button>
+        <button id="goSettings" class="btn ghost mi" data-icon="scroll">Settings</button>
       </div>
       <button class="btn ghost layoutBtn"></button>
       <div id="campLog" class="panel log"></div>
@@ -167,6 +168,7 @@
         <div class="stack">
           <button id="mResume" class="btn">Resume</button>
           <button id="mFull" class="btn ghost">Full screen</button>
+          <button id="mControls" class="btn ghost">Controls</button>
           <button id="btnRetreat" class="btn ghost">Retreat to camp</button>
         </div>
       </div>
@@ -209,6 +211,19 @@
       <div class="controls two"><button id="pkCancel" class="btn ghost">Cancel</button><button id="pkOk" class="btn">Sacrifice</button></div>
     </div>
   </div>
+  <div id="settings" class="overlay">
+    <div class="panel settings">
+      <div class="bar"><h2>Settings</h2></div>
+      <h3>Keyboard controls</h3>
+      <p class="hint">Click a key box, then press the key you want. Esc cancels, Backspace clears. Each action can have two keys. Saved in this browser.</p>
+      <div class="krow preset"><label for="setPreset">Layout</label><select id="setPreset"></select><button id="setReset" class="btn ghost small">Reset</button></div>
+      <div id="setKeys"></div>
+      <p id="setClash" class="hint warn"></p>
+      <div class="ktest"><span class="dim">Try a key:</span> <span id="setTest">press any key to see what it does</span></div>
+      <p class="hint">Fixed keys: 1–7 pick a card and Backspace removes one on the Custom screen; Enter or Space starts the fight.</p>
+      <button id="setClose" class="btn">Done</button>
+    </div>
+  </div>
   <div id="peek" class="peek"></div>
   <div id="tip" class="tip"></div>
 </div>
@@ -223,6 +238,7 @@
 <script src="art.js"></script>
 <script src="uikit.js"></script>
 <script src="ui.js"></script>
+<script src="keys.js"></script>
 <script src="three.min.js"></script>
 <script src="explore.js"></script>
 </body>

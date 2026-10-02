@@ -651,3 +651,19 @@ body.wide .camp{grid-template-areas:"logo logo" "area area" "scene depth" "scene
 
 .depthbox .quick{width:100%; margin-top:8px; display:flex; flex-direction:column; align-items:center; gap:2px;}
 .depthbox .quick small{font-size:12px; opacity:.75; font-weight:400;}
+
+/* settings: keyboard bindings */
+#settings{z-index:8;}
+.panel.settings{max-width:560px; width:100%; max-height:100%; overflow-y:auto;}
+.panel.settings h3{margin:12px 0 4px;}
+.krow{display:grid; grid-template-columns:minmax(0,1fr) 110px 110px; gap:6px; align-items:center; padding:3px 0;}
+.krow.preset{grid-template-columns:auto minmax(0,1fr) auto;}
+.krow select{min-width:0;}
+.kbtn{font:inherit; font-size:14px; padding:6px 4px; background:#10131c; color:#e8e4d4; border:2px solid #3a4258; cursor:pointer; min-height:34px;}
+.kbtn:hover,.kbtn:focus-visible{border-color:#8fe4ff; outline:none;}
+.kbtn.cap{border-color:#ffd166; color:#ffd166;}
+.kbtn.bad{border-color:#ff5d6c; color:#ff9aa3;}
+.ktest{margin:10px 0; padding:8px 10px; background:#0b0d14; border:1px dashed #3a4258; font-size:14px;}
+.ktest b{color:#8fe4ff;}
+#setClose{width:100%; margin-top:6px;}
+@media (pointer:coarse){ #goSettings{display:none;} #mControls{display:none;} }

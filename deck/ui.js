@@ -10,17 +10,34 @@ function show(id){ $('#tip').classList.remove('on'); document.querySelectorAll('
 let tipT=0; function tip(msg){ const t=$('#tip'); t.textContent=msg; t.classList.add('on'); clearTimeout(tipT); tipT=setTimeout(()=>t.classList.remove('on'),1400); }
 const esc=s=>String(s).replace(/[&<>"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]));
 
+// Card colors after Magic: The Gathering's frames: each family gets a muted, earthy frame
+// color, light plates for the name and type lines, a pale tinted text box with dark ink, and a
+// deeper band for the stone rim. Storm takes multicolor gold, gray the silver of artifacts,
+// brown the tan of lands; heroes get a gold frame.
+const CARD_PAL={
+  fire:   {fr:'#9a4632', pl:'#f0c7b2', bx:'#f5e2d4', bd:'#b5402c', ink:'#2a120c'},
+  frost:  {fr:'#33628c', pl:'#bcd7ea', bx:'#dfecf4', bd:'#1f5f95', ink:'#0c1a28'},
+  storm:  {fr:'#9a7c38', pl:'#ecd9a2', bx:'#f5edd3', bd:'#b48a2a', ink:'#261c08'},
+  verdant:{fr:'#3a6a48', pl:'#bcd8c0', bx:'#e0ecdc', bd:'#2c6640', ink:'#0e1e12'},
+  light:  {fr:'#a99f80', pl:'#f2ecd4', bx:'#faf6e6', bd:'#c2b27c', ink:'#2a2416'},
+  shadow: {fr:'#3a3234', pl:'#bdb2ae', bx:'#dcd3ce', bd:'#2a2224', ink:'#140e0e'},
+  gray:   {fr:'#6e767d', pl:'#d3d8dc', bx:'#e9ecee', bd:'#5a6168', ink:'#161a1e'},
+  brown:  {fr:'#7a5c40', pl:'#dcc7a6', bx:'#eee2cd', bd:'#6c4e32', ink:'#22160c'},
+  hero:   {fr:'#9a7a30', pl:'#f0dc9c', bx:'#f8f0d4', bd:'#c9a03a', ink:'#261c06'},
+};
 function cardEl(c,extra,locked){
   const el=document.createElement('button'), col=COLORS[c.color];
   el.className='card'+(c.rarity==='legendary'?' leg':'')+(c.rarity==='hero'?' hero':'')+(locked?' locked':''); el.style.setProperty('--c',col.c);
   const stat=c.pow||(c.boon!=='gauge'&&c.amt)||c.hp||'';
   const rune=c.code?`<span class="rune${c.code==='✱'?' wild':''}" title="Rune ${c.code}">${c.code}</span>`:'';
   const R=ROLES[cardRole(c)]; el.style.setProperty('--rc',R.c);
-  if(typeof cardFrame==='function') el.style.setProperty('--cf',cardFrame(col.c,c.rarity));
-  el.innerHTML=locked?`<div class="ct"><span>${col.icon} ${TYPES[c.type].icon}</span><span class="rank">${c.rank}</span></div><div class="art"></div><div class="cn">???</div><div class="ty">${TYPES[c.type].name}</div><div class="tx"></div><div class="cp"><span></span><small>${RARITY[c.rarity].g}</small></div>`
-    :`<div class="ct"><span>${col.icon} ${TYPES[c.type]?TYPES[c.type].icon:''}</span><span class="tr">${rune}<span class="rank">${c.rank}</span></span></div>
-    <img class="art" src="${artURL(c)}" alt=""><div class="cn">${esc(c.name)}</div><div class="ty">${TYPES[c.type].name} <span class="rl">${R.icon} ${R.name}</span></div><div class="tx">${esc(cardText(c))}</div>
-    <div class="cp"><span>${stat}</span><small title="${RARITY[c.rarity].n}">${RARITY[c.rarity].g}</small></div>`;
+  const CP=c.rarity==='hero'?CARD_PAL.hero:CARD_PAL[c.color]||CARD_PAL.gray;
+  for(const [k,v] of [['--cfr',CP.fr],['--cpl',CP.pl],['--cbx',CP.bx],['--cbd',CP.bd],['--cink',CP.ink]]) el.style.setProperty(k,v);
+  if(typeof cardFrame==='function') el.style.setProperty('--cf',cardFrame(CP.bd,c.rarity));
+  el.innerHTML=locked?`<div class="nm"><span class="cn">???</span><span class="tr"><span class="rank">${c.rank}</span></span></div><div class="art"></div><div class="ty"><span class="ti">${col.icon}${TYPES[c.type].icon}</span>${TYPES[c.type].name}</div><div class="tx"></div><div class="cp"><small>${RARITY[c.rarity].g}</small></div>`
+    :`<div class="nm"><span class="cn">${esc(c.name)}</span><span class="tr">${rune}<span class="rank">${c.rank}</span></span></div>
+    <img class="art" src="${artURL(c)}" alt=""><div class="ty"><span class="ti">${col.icon}${TYPES[c.type]?TYPES[c.type].icon:''}</span>${TYPES[c.type].name} <span class="rl">${R.icon} ${R.name}</span></div><div class="tx">${esc(cardText(c))}</div>
+    <div class="cp"><small title="${RARITY[c.rarity].n}">${RARITY[c.rarity].g}</small>${stat?`<span>${stat}</span>`:''}</div>`;
   if(extra) el.insertAdjacentHTML('beforeend',extra);
   return el;
 }

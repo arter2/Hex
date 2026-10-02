@@ -568,3 +568,41 @@ body.tall.ui-tablet .camp{max-width:640px;}
 .peek .card.big .tx{font-size:23px; line-height:1.05; color:#dfe6ec;}
 .peek .card.big .cp{font-size:28px;} .peek .card.big .cp small{font-size:18px;}
 .peekinfo{margin:0; padding:4px 10px; font:400 19px var(--font-t); color:#c9d1d8; background:#0b0c0e; border:2px solid #000; box-shadow:0 0 0 2px #383e45; max-width:min(84vw,340px); text-align:center;}
+
+/* ---------- card faces after Magic: The Gathering ----------
+   Muted family color on the textured face, light plates for the name and type lines, a pale
+   tinted text box with dark ink, and the power in a plate at the bottom right. */
+.card{background-color:var(--cfr); background-image:var(--px-cardtex); background-size:64px 64px; color:var(--cink); gap:3px; padding:3px 4px 4px 6px;}
+.card::before{opacity:.75;}
+.card .nm,.card .ty{display:flex; align-items:center; gap:3px; background:var(--cpl); color:var(--cink); border:1px solid rgba(0,0,0,.65); box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -1px 0 rgba(0,0,0,.18); padding:1px 3px; min-width:0;}
+.card .nm{justify-content:space-between;}
+.card .nm .cn{font:600 12px/1.1 var(--font-h); color:var(--cink); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; min-width:0;}
+.card .nm .tr{display:flex; gap:3px; align-items:center; flex:none;}
+.card .rank{background:var(--cbd); color:#fff; border:1px solid rgba(0,0,0,.7); padding:0 4px; font:600 11px/1.3 var(--font-h);}
+.card .ty{font:600 10px/1.2 var(--font-b); text-transform:uppercase; letter-spacing:.02em; white-space:nowrap; overflow:hidden; color:var(--cink);}
+.card .ty .ti{font-size:10px; letter-spacing:0;}
+.card .ty .rl{margin-left:auto; color:color-mix(in srgb,var(--rc) 55%,#000); font-size:9px;}
+.card .tx{background:var(--cbx); color:var(--cink); border:1px solid rgba(0,0,0,.6); box-shadow:inset 0 0 0 1px rgba(255,255,255,.35); padding:2px 3px; font:400 14px/1 var(--font-t);}
+.card .art{border-color:transparent;}
+.card .cp{align-items:center; min-height:18px;}
+.card .cp small{color:var(--cpl); font-size:11px; text-shadow:1px 1px 0 #000;}
+.card .cp span{margin-left:auto; background:var(--cpl); color:var(--cink); border:1px solid rgba(0,0,0,.7); box-shadow:inset 0 1px 0 rgba(255,255,255,.45); padding:0 5px; font:700 14px/1.25 var(--font-h);}
+.card .badge{top:auto; bottom:4px; left:6px; right:auto;}
+.card.hero{background-color:var(--cfr); background-image:var(--px-cardtex);}
+.card.leg{box-shadow:0 0 0 2px #000,0 0 10px color-mix(in srgb,var(--cbd) 60%,transparent);}
+.card.locked .tx{background:color-mix(in srgb,var(--cbx) 50%,#000);}
+/* the big peek card follows the same layout, larger */
+.peek .card.big .nm .cn{font-size:24px;} .peek .card.big .rank{font-size:18px; padding:0 8px;}
+.peek .card.big .ty{font-size:16px; padding:3px 6px;} .peek .card.big .ty .ti{font-size:16px;} .peek .card.big .ty .rl{font-size:14px;}
+.peek .card.big .tx{font-size:24px; padding:6px 8px; color:var(--cink);}
+.peek .card.big .cp span{font-size:24px; padding:0 10px;} .peek .card.big .cp small{font-size:16px;}
+.peek .card.big .nm{padding:3px 6px;}
+.card .badge{top:26px; right:8px; bottom:auto; left:auto;}
+.card .nm .cn{white-space:normal; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; line-height:1.05;}
+.card .badge{top:auto; bottom:3px; left:50%; right:auto; transform:translateX(-50%);}
+/* narrow cards (the hand and queue in battle): rune and rank on top, the name below them */
+.hand .card .nm,.slots .card .nm,.cast-fx .card .nm{flex-wrap:wrap; row-gap:1px;}
+.hand .card .nm .tr,.slots .card .nm .tr{margin-left:auto;}
+.hand .card .nm .cn,.slots .card .nm .cn{order:2; flex-basis:100%; font-size:11px;}
+.hand .card .ty .rl,.slots .card .ty .rl{display:none;}
+.hand .card .ty{display:none;}

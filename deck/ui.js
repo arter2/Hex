@@ -646,8 +646,16 @@ function hud(force){
 function tryCustom(){ if(!(B&&B.phase==='fight'&&gaugeFull()&&!wandOnly(B.piles))) return;
   if(B.player.charging){ wandUp(); $('#btnWand').classList.remove('charging'); }   // a shot you were charging goes off first
   openCustomScreen(); }
-$('#btnCustom').onclick=tryCustom;
-$('#btnCast').onclick=castCard;
+/* Mobile browsers never make a click from a touch while another finger is down, so with the
+   thumb holding Fire a tap on Cast did nothing. Battle buttons act on their own pointerdown
+   instead (each finger is its own pointer); click is kept only for keyboard/assistive presses. */
+function pressBtn(el,fn){
+  el.addEventListener('pointerdown',e=>{ if(e.button>0) return; e.preventDefault(); if(!el.disabled) fn(); });
+  el.addEventListener('click',e=>{ if(e.detail===0) fn(); });
+  el.addEventListener('contextmenu',e=>e.preventDefault());
+}
+pressBtn($('#btnCustom'),tryCustom);
+pressBtn($('#btnCast'),castCard);
 const wandBtn=$('#btnWand');
 // the Fire button keeps its finger even if the thumb slides off it, so you can fire with one
 // thumb while tapping the board to move with the other

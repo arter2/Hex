@@ -15,3 +15,19 @@ window.render=function(data,yaw,pitch,bob){
   g.rotation.set(pitch||0,yaw,0); sc.add(g); R.render(sc,cam);
   return R.domElement.toDataURL(); };
 </script>
+<script>
+// posable version: one group per part, rotated about its pivot (shoulder, hip, neck)
+window.renderParts=function(data,yaw,pose,bob){
+  const {W,H,parts,piv}=data, CW=W+40, CH=H+12;
+  const R=new T.WebGLRenderer({antialias:false,preserveDrawingBuffer:true,alpha:true}); R.setSize(CW,CH); R.setPixelRatio(1);
+  const sc=new T.Scene(), cam=new T.OrthographicCamera(-CW/2,CW/2,CH/2,-CH/2,-200,200); cam.position.z=100;
+  sc.add(new T.AmbientLight(0xffffff,AMB)); const d=new T.DirectionalLight(0xffffff,K); d.position.copy(L); sc.add(d); sc.add(d.target);
+  const root=new T.Group(), geo=new T.BoxGeometry(1,1,1), mats={};
+  for(const p in parts){ const pv=piv[p]||[W/2,H/2], px=pv[0]+0.5-W/2, py=pv[1]+0.5-H/2;
+    const g=new T.Group(); g.position.set(px,py,0); const r=(pose&&pose[p])||[0,0,0]; g.rotation.set(r[0],r[1],r[2]);
+    for(const [x,y,z0,z1,cr,cg,cb] of parts[p]){ const k=cr+','+cg+','+cb;
+      const m=mats[k]||(mats[k]=new T.MeshLambertMaterial({color:new T.Color(cr/255,cg/255,cb/255)}));
+      const mesh=new T.Mesh(geo,m); mesh.scale.z=z1-z0+1; mesh.position.set(x+0.5-W/2-px,y+0.5-H/2-py,(z0+z1)/2); g.add(mesh); }
+    root.add(g); }
+  root.position.y=bob||0; root.rotation.y=yaw; sc.add(root); R.render(sc,cam); return R.domElement.toDataURL(); };
+</script>

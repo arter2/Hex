@@ -88,18 +88,20 @@ function buildStart(){
     const d=document.createElement('div'); d.className='starter';
     d.innerHTML=`<h3>${s.name}</h3><div class="cols">${s.colors.map(c=>`<span class="chip" style="--c:${COLORS[c].c}">${COLORS[c].icon} ${COLORS[c].name}</span>`).join('')}</div>
       <p>${s.text}</p><div class="row"><button class="btn">Start with this deck</button></div>`;
-    d.querySelector('.btn').onclick=()=>{ save=newSave(s); persist(); openCamp(); };
+    d.querySelector('.btn').onclick=()=>{ if(typeof XPARK!=='undefined') XPARK=null; save=newSave(s); persist(); pickDepth=1; openCamp(); };
     box.appendChild(d);
   }
+  $('#startBack').style.display=save?'':'none';
+  $('#startWarn').textContent=save?'Starting a new game replaces your current save: your cards, gold and gear.':'';
   show('scrStart');
 }
 
 /* ---------------- camp ---------------- */
-let pickDepth=1;
+let pickDepth=null;   // null until you first open camp or the menu, then your choice sticks (1 included)
 function openCamp(){
   if(typeof stopExplore==='function'){ stopExplore(); EX=null; }
+  if(pickDepth==null) pickDepth=save.deepest;
   pickDepth=Math.min(Math.max(1,pickDepth),save.deepest);
-  if(pickDepth===1&&save.deepest>1) pickDepth=save.deepest;
   const d=activeDeck(), v=validateDeck(d.list,CARDS,save.owned);
   $('#campGold').innerHTML=uiIcon('coin',32)+save.gold;
   $('#campColl').innerHTML=uiIcon('cards',32)+ownedUnique(save)+(Object.keys(gearState(save).cursed).length?' <em class="curse">cursed</em>':'');
@@ -679,5 +681,33 @@ function applyViewport(){
 }
 addEventListener('resize',applyViewport); addEventListener('orientationchange',()=>setTimeout(applyViewport,150));
 applyViewport();
-if(save) openCamp(); else buildStart();
+openMenu();
 requestAnimationFrame(frame);
+
+/* ---------------- main menu ----------------
+   The game opens here: Continue goes to camp; Explore and Battle start at the depth shown
+   (any depth from 1 to your deepest); New game picks a starter deck. */
+function openMenu(){
+  if(typeof stopExplore==='function'){ stopExplore(); EX=null; }
+  const has=!!save;
+  if(has){ if(pickDepth==null) pickDepth=save.deepest; pickDepth=Math.min(Math.max(1,pickDepth),save.deepest); }
+  else pickDepth=1;
+  $('#mmContinue').style.display=has?'':'none';
+  $('#mmSave').textContent=has?'Deepest depth '+save.deepest+' · '+save.gold+' gold · '+Object.keys(save.owned).length+' kinds of card':'No save yet. Start a new game to pick your first deck.';
+  $('#mmDepth').textContent=pickDepth; $('#mmArea').textContent=areaOf(pickDepth).name+(pickDepth%4===0?' · boss depth':'');
+  $('#mmDown').disabled=!has||pickDepth<=1; $('#mmUp').disabled=!has||pickDepth>=save.deepest;
+  const v=has?validateDeck(activeDeck().list,CARDS,save.owned):{ok:false};
+  $('#mmExplore').disabled=$('#mmBattle').disabled=!has||!v.ok;
+  $('#mmWarn').textContent=!has?'':v.ok?'':'Your deck is not ready ('+(v.errors[0]||'invalid')+'). Fix it in the deck builder at camp.';
+  $('#mmNew').classList.toggle('big',!has); $('#mmNew').classList.toggle('ghost',has);
+  show('scrMenu');
+}
+$('#mmDown').onclick=()=>{ pickDepth--; openMenu(); };
+$('#mmUp').onclick=()=>{ pickDepth++; openMenu(); };
+$('#mmContinue').onclick=()=>openCamp();
+$('#mmExplore').onclick=()=>enterExplore(pickDepth);
+$('#mmBattle').onclick=()=>fight(pickDepth);
+$('#mmNew').onclick=()=>buildStart();
+$('#mmSettings').onclick=()=>openSettings();
+$('#startBack').onclick=()=>openMenu();
+$('#campMenu').onclick=()=>openMenu();

@@ -676,3 +676,20 @@ body.wide .camp{grid-template-areas:"logo logo" "area area" "scene depth" "scene
   50%{box-shadow:0 0 0 3px #ffe066cc, 0 0 26px 8px #ffd16699; transform:scale(1.04);}
 }
 @media (prefers-reduced-motion:reduce){ #btnCustom.ready{animation:none!important; box-shadow:0 0 0 3px #ffe066cc, 0 0 18px 4px #ffd16699;} }
+
+/* main menu */
+#scrMenu{align-items:center;}
+#scrMenu>.mainmenu:first-child{margin-top:auto;} #scrMenu>.mainmenu:last-child{margin-bottom:auto;}
+.mainmenu{width:100%; max-width:460px; display:flex; flex-direction:column; gap:10px; padding-block:12px;}
+.mmbtn{display:flex; flex-direction:column; align-items:center; gap:2px; width:100%;}
+.mmbtn small{font-size:13px; font-weight:400; opacity:.8;}
+.mmdepth{display:flex; flex-direction:column; gap:8px; padding:12px;}
+.mmpick{display:grid; grid-template-columns:1fr auto auto auto; gap:8px; align-items:center; font-size:18px;}
+.mmpick b{min-width:2.2ch; text-align:center; font-size:26px; color:var(--gold,#f2c94c);}
+.mmrow{display:grid; grid-template-columns:1fr 1fr; gap:8px;}
+.mmdepth .hint{margin:0;}
+.startback{align-self:flex-start;}
+.campmenu{align-self:flex-start;}
+.mmrow .mmbtn{min-width:0; padding-inline:6px;}
+#scrCamp{position:absolute;}
+body.ui-tablet .campmenu, body.wide .campmenu{position:absolute; top:12px; left:12px; z-index:3; width:auto;}

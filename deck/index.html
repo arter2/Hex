@@ -12,11 +12,34 @@
 <body>
 <div id="app">
 
-  <!-- first run: pick a starter deck -->
+  <!-- main menu: what the game opens on -->
+  <section id="scrMenu" class="screen">
+    <div class="mainmenu">
+      <h1>Hexmancers</h1>
+      <p class="sub">Dungeon crawling and card battles on a hex grid</p>
+      <p id="mmSave" class="hint center"></p>
+      <button id="mmContinue" class="btn big mmbtn">▶ Continue<small>back to camp, where you left off</small></button>
+      <div class="panel mmdepth">
+        <div class="mmpick"><span>Start at depth</span><button id="mmDown" class="btn ghost sq" aria-label="Shallower">◄</button><b id="mmDepth">1</b><button id="mmUp" class="btn ghost sq" aria-label="Deeper">►</button></div>
+        <p id="mmArea" class="hint center"></p>
+        <div class="mmrow">
+          <button id="mmExplore" class="btn mmbtn">🗺 Explore<small>the dungeon</small></button>
+          <button id="mmBattle" class="btn ghost mmbtn">⚔ Battle<small>no dungeon</small></button>
+        </div>
+        <p id="mmWarn" class="hint warn center"></p>
+      </div>
+      <button id="mmNew" class="btn ghost mmbtn">✦ New game<small>choose a starter deck</small></button>
+      <button id="mmSettings" class="btn ghost mmbtn small">Settings</button>
+    </div>
+  </section>
+
+  <!-- new game: pick a starter deck -->
   <section id="scrStart" class="screen">
+    <button id="startBack" class="btn ghost back startback">← Main menu</button>
     <h1>Hexmancers</h1>
     <p class="sub">Deck prototype · 1,000 cards and 6 heroes to collect</p>
     <p class="hint center">Choose your first deck. Win fights to collect cards, then build your own decks at camp.</p>
+    <p id="startWarn" class="hint warn center"></p>
     <div id="starters"></div>
     <button class="btn ghost layoutBtn"></button>
   </section>
@@ -24,6 +47,7 @@
   <!-- camp: the hub of the collecting loop -->
   <section id="scrCamp" class="screen">
     <div class="camp">
+      <button id="campMenu" class="btn ghost small campmenu">☰ Menu</button>
       <h1 class="logo">Hexmancers</h1>
       <div id="campArea" class="area"></div>
       <div class="scenebox">

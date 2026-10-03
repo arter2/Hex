@@ -858,10 +858,25 @@ function makeSprite(key,pal,draw){
 // canvases the generated sprites use. Until an image has loaded the old sprite stands in.
 const LOOK_SPR={};
 const hatOn=()=>{ try{ return !(typeof save!=='undefined'&&save&&save.hat===false); }catch(e){ return true; } };
-function lookSprite(id,view,hat){
+// From behind (battle and dungeon) a look has four poses drawn together on one sheet: idle, walk,
+// cast and attack (sprites.js `anim`), so every frame shares a palette, a scale and the same feet.
+const POSES=['idle','walk','cast','attack'];
+function lookSprite(id,view,hat,pose){
   if(typeof PLAYER_LOOKS==='undefined'||typeof document==='undefined') return null;
   if(!PLAYER_LOOKS[id]) id='wizard'; if(hat==null) hat=hatOn();
-  const L=PLAYER_LOOKS[id], field=view+(hat||!L[view+'Bare']?'':'Bare'), key=id+':'+field;
+  const L=PLAYER_LOOKS[id], bare=!hat&&!!L[view+'Bare'];
+  // the posed frames, when this look has them
+  if(view==='back'&&L.anim){ const field=bare&&L.animBare?'animBare':'anim', key=id+':'+field, pi=Math.max(0,POSES.indexOf(pose||'idle'));
+    if(!(key in LOOK_SPR)){ LOOK_SPR[key]=null; const im=new Image();
+      im.onload=()=>{ const n=im.height, tips=(field==='animBare'?L.tipsBare:L.tips)||[];
+        LOOK_SPR[key]=POSES.map((_,i)=>{ const mk=()=>{ const c=document.createElement('canvas'); c.width=c.height=n; return c; }, img=mk(), sil=mk(), wht=mk();
+          img.getContext('2d').drawImage(im,i*n,0,n,n,0,0,n,n);
+          for(const [c,col] of [[sil,'#000'],[wht,'#fff']]){ const x=c.getContext('2d'); x.drawImage(img,0,0); x.globalCompositeOperation='source-in'; x.fillStyle=col; x.fillRect(0,0,n,n); }
+          return {img,sil,wht,hand:true,tip:tips[i]||L.tipBack||null,pose:POSES[i]}; });
+        if(root.onLookLoaded) root.onLookLoaded(); };
+      im.src=L[field]; }
+    const fr=LOOK_SPR[key]; return fr?fr[Math.min(pi,fr.length-1)]:null; }
+  const field=view+(bare?'Bare':''), key=id+':'+field;
   if(key in LOOK_SPR) return LOOK_SPR[key];
   LOOK_SPR[key]=null; const im=new Image();
   im.onload=()=>{ const n=im.width, mk=()=>{ const c=document.createElement('canvas'); c.width=c.height=n; return c; };
@@ -886,7 +901,7 @@ function rigSprite(id){
 }
 if(typeof UNIT_SPRITES!=='undefined'&&typeof document!=='undefined') for(const id in UNIT_SPRITES) rigSprite(id);
 function unitSprite(u){
-  if(u.kind==='player'){ const hs=lookSprite(u.lookId||playerLook(),u.view||'back'); if(hs) return hs; }
+  if(u.kind==='player'){ const hs=lookSprite(u.lookId||playerLook(),u.view||'back',null,u.pose); if(hs) return hs; }
   if(u.kind==='player'){ const L=u.look||{body:'robe',m:'#1f5fa8',a:'#f2c94c',hat:'wizard',weapon:'staff',glow:'#7fd4ff',beard:true};
     return makeSprite('player:'+JSON.stringify(L),{m:L.m,a:L.a,c:artMix(L.m,'#000000',.35),glow:L.glow,o:'#03070c',d:artMix(L.m,'#1a1020',.55)},()=>human(L)); }
   if(u.kind==='enemy'){ const rs=rigSprite(u.id); if(rs) return rs; }

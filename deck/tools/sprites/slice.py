@@ -97,7 +97,7 @@ def fit(im, size=96, height=None, foot=93, cx=None):
     c.alpha_composite(r, (max(0, min(size - nw, x)), foot + 1 - nh))
     return c, k
 
-def pixelate(im, height, scale=2, colors=40, size=96, foot=93):
+def pixelate(im, height, scale=2, colors=40, size=96, foot=93, palette=None, cx=None):
     """Turn a soft, painted-looking cut into crisp pixel art: shrink it to its native pixel grid
     (height/scale px tall), sharpen, snap to a small palette, harden alpha, outline the light
     edges, then blow it up `scale`x with nearest neighbour and stand it on the canvas."""
@@ -115,7 +115,8 @@ def pixelate(im, height, scale=2, colors=40, size=96, foot=93):
     # palette from the figure's own pixels only
     px = np.asarray(small)[on]
     if len(px) == 0: return Image.new('RGBA', (size, size))
-    pal_img = Image.fromarray(px.reshape(1, -1, 3), 'RGB').quantize(min(colors, len(px)), method=Image.MEDIANCUT)
+    # one palette for all frames of an animation keeps its colours from flickering
+    pal_img = palette if palette is not None else Image.fromarray(px.reshape(1, -1, 3), 'RGB').quantize(min(colors, len(px)), method=Image.MEDIANCUT)
     q = np.asarray(small.quantize(palette=pal_img, dither=Image.Dither.NONE).convert('RGB')).copy()
     alpha = np.where(on, 255, 0).astype(np.uint8)
     # drop lone pixels hanging off the silhouette
@@ -136,7 +137,8 @@ def pixelate(im, height, scale=2, colors=40, size=96, foot=93):
     small = Image.fromarray(np.dstack([q, alpha]), 'RGBA')
     big = small.resize((small.width * scale, small.height * scale), Image.NEAREST)
     c = Image.new('RGBA', (size, size))
-    x = (size - big.width) // 2 // scale * scale
+    # cx: the source x that should land on the canvas centre (an animation's feet), else centre the box
+    x = (size - big.width) // 2 // scale * scale if cx is None else int(round(size / 2 - cx * nw / w * scale))
     y = foot + 1 - big.height
     y = y // scale * scale + (foot + 1) % scale
     c.alpha_composite(big, (max(0, x), max(0, y)))

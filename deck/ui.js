@@ -533,7 +533,7 @@ $('#mLeave').onclick=e=>{ const w=pauseWhere(); if(!w) return closePause();
 function toggleFull(){ const d=document, el=d.documentElement;
   try{ if(d.fullscreenElement||d.webkitFullscreenElement) (d.exitFullscreen||d.webkitExitFullscreen).call(d); else{ const r=(el.requestFullscreen||el.webkitRequestFullscreen).call(el); if(r&&r.catch) r.catch(()=>tip('Full screen is not available here')); } }catch(e){ tip('Full screen is not available here'); } }
 $('#mFull').onclick=toggleFull; $('#setFull').onclick=toggleFull;
-document.addEventListener('fullscreenchange',()=>{ document.querySelectorAll('.fullBtn').forEach(b=>b.textContent=document.fullscreenElement?'Exit full screen':'Full screen'); setTimeout(resizeView,50); });
+document.addEventListener('fullscreenchange',()=>{ lockOrient(); setTimeout(applyViewport,120); document.querySelectorAll('.fullBtn').forEach(b=>b.textContent=document.fullscreenElement?'Exit full screen':'Full screen'); setTimeout(resizeView,50); });
 document.addEventListener('visibilitychange',()=>{ if(document.hidden) openPause(); });
 // Esc opens and closes the pause menu (the settings screen takes Esc first while it is open)
 window.addEventListener('keydown',e=>{ if(e.key!=='Escape') return; if($('#pause').classList.contains('on')){ e.preventDefault(); closePause(); } else if(pauseWhere()){ e.preventDefault(); openPause(); } });
@@ -702,7 +702,7 @@ function frame(now){
    into two columns, shows 7 cards to a row in battle and uses bigger buttons and text. It
    starts from the screen's width and the player can switch it; the choice is remembered. */
 const LAYOUT_KEY='hexmancers-layout';
-function getLayout(){ try{ const v=localStorage.getItem(LAYOUT_KEY); if(v==='phone'||v==='tablet') return v; }catch(e){} return innerWidth>=700?'tablet':'phone'; }
+function getLayout(){ try{ const v=localStorage.getItem(LAYOUT_KEY); if(v==='phone'||v==='tablet') return v; }catch(e){} let w=innerWidth; try{ const o=localStorage.getItem('hexmancers-orient'); if((o==='portrait'&&innerWidth>innerHeight)||(o==='landscape'&&innerHeight>innerWidth)) w=innerHeight; }catch(e){} return w>=700?'tablet':'phone'; }
 function setLayout(m,keep){ document.body.classList.toggle('ui-tablet',m==='tablet'); document.body.classList.toggle('ui-phone',m!=='tablet');
   if(keep){ try{ localStorage.setItem(LAYOUT_KEY,m); }catch(e){} }
   document.querySelectorAll('.layoutBtn').forEach(b=>{ b.innerHTML=`<b class="${m==='phone'?'on':''}">Phone</b> ⇄ <b class="${m==='tablet'?'on':''}">Tablet</b>`; b.setAttribute('aria-label','Layout: '+m+'. Tap to switch.'); });
@@ -723,8 +723,24 @@ $('#setSfx').onclick=()=>{ let on=true; try{ on=localStorage.getItem('hexmancers
 applySfx();
 /* the window's shape and size: .wide or .tall, and --ui, the scale for menus and the HUD.
    1 on phones; on bigger screens it grows so text and buttons stay a comfortable size. */
+/* Screen orientation (Settings): auto follows the device; portrait or landscape keeps the game that way.
+   Where the browser can lock the screen (full screen on most phones) it does; otherwise, when the
+   device is held the other way, the whole game is turned a quarter so it stays as chosen. */
+const ORIENT_KEY='hexmancers-orient';
+const getOrient=()=>{ try{ const v=localStorage.getItem(ORIENT_KEY); if(v==='portrait'||v==='landscape') return v; }catch(e){} return 'auto'; };
+function lockOrient(){ const o=getOrient(), so=screen.orientation;
+  try{ if(!so) return; if(o==='auto'){ if(so.unlock) so.unlock(); return; } if(so.lock&&(document.fullscreenElement||document.webkitFullscreenElement)) so.lock(o).catch(()=>{}); }catch(e){} }
+function applyOrient(){ const o=getOrient(), portraitNow=innerHeight>=innerWidth, app=$('#app');
+  const turn=o!=='auto'&&(o==='portrait')!==portraitNow;
+  app.classList.toggle('rot',turn); document.body.classList.toggle('rot',turn);
+  if(turn){ app.style.width=innerHeight+'px'; app.style.height=innerWidth+'px'; } else { app.style.width=''; app.style.height=''; }
+  const b=$('#setOrient'); if(b) b.textContent={auto:'Auto',portrait:'Portrait',landscape:'Landscape'}[o]; }
+$('#setOrient').onclick=()=>{ const n={auto:'portrait',portrait:'landscape',landscape:'auto'}[getOrient()]; try{ localStorage.setItem(ORIENT_KEY,n); }catch(e){} lockOrient(); applyViewport(); };
 function applyViewport(){
-  const w=innerWidth, h=innerHeight, wide=w>h*1.15;
+  applyOrient();
+  const rot=$('#app').classList.contains('rot'), w=rot?innerHeight:innerWidth, h=rot?innerWidth:innerHeight, wide=w>h*1.15;
+  // size classes from the game's own frame (it may be turned), in place of media queries on the screen
+  const B=document.body.classList; B.toggle('lsS',w>h&&h<=560); B.toggle('lsXS',w>h&&h<=500); B.toggle('hTall',h>=561); B.toggle('h460',h<=460); B.toggle('w420',w<=420); B.toggle('w520',w<=520);
   document.body.classList.toggle('wide',wide); document.body.classList.toggle('tall',!wide);
   const s=wide?Math.min(h/760,w/1250):Math.min(w/560,h/1000);
   document.documentElement.style.setProperty('--ui',Math.max(1,Math.min(2.5,s)).toFixed(3));

@@ -224,8 +224,8 @@ function xInit3D(){
   dust.renderOrder=3; scene.add(dust);
   X3={renderer,scene,cam,amb,lamp,dust,group:null,ray:new THREE.Raycaster(),plane:new THREE.Plane(new THREE.Vector3(0,1,0),0)};
   cv.addEventListener('pointerdown',e=>{ if(!EX||!EX.active||xPaused) return; e.preventDefault(); try{ cv.setPointerCapture(e.pointerId); }catch(_){}
-    XHOLD.id=e.pointerId; XHOLD.x=XHOLD.x0=e.clientX; XHOLD.y=XHOLD.y0=e.clientY; XHOLD.t0=performance.now(); XHOLD.on=true; });
-  cv.addEventListener('pointermove',e=>{ if(e.pointerId===XHOLD.id){ XHOLD.x=e.clientX; XHOLD.y=e.clientY; } });
+    const [ax,ay]=appXY(e.clientX,e.clientY); XHOLD.id=e.pointerId; XHOLD.x=XHOLD.x0=ax; XHOLD.y=XHOLD.y0=ay; XHOLD.t0=performance.now(); XHOLD.on=true; });
+  cv.addEventListener('pointermove',e=>{ if(e.pointerId===XHOLD.id){ [XHOLD.x,XHOLD.y]=appXY(e.clientX,e.clientY); } });
   const end=e=>{ if(e.pointerId!==XHOLD.id) return; const tap=performance.now()-XHOLD.t0<260&&Math.hypot(XHOLD.x-XHOLD.x0,XHOLD.y-XHOLD.y0)<14;
     XHOLD.on=false; XHOLD.id=null; if(tap) xTap(e); };
   cv.addEventListener('pointerup',end); cv.addEventListener('pointercancel',e=>{ XHOLD.on=false; XHOLD.id=null; });
@@ -288,9 +288,12 @@ function xTextSprite(txt,col){ const c=document.createElement('canvas'); c.width
   x.font='700 22px "Pixelify Sans",monospace'; x.textAlign='center'; x.textBaseline='middle'; x.lineWidth=4; x.strokeStyle='#000'; x.strokeText(txt,16,17); x.fillStyle=col; x.fillText(txt,16,17);
   const s=new THREE.Sprite(new THREE.SpriteMaterial({map:xTex(c),transparent:true,depthTest:false})); s.scale.set(.9,.9,1); s.renderOrder=5; return s; }
 function xSprite(getImg,h){ const s=new THREE.Sprite(new THREE.SpriteMaterial({transparent:true,alphaTest:.35})); s.center.set(.5,.03); s.scale.set(h,h,1); s.userData={getImg,img:null,flip:false}; return s; }
+// swap a sprite's picture (an animation frame, or facing the other way); each picture's texture is made once and kept
 function xRefresh(s,flip){ const sp=s.userData.getImg(), im=sp&&sp.img;
-  if(im&&(im!==s.userData.img||flip!==s.userData.flip)){ s.userData.img=im; s.userData.flip=flip; const tx=xTex(im,true); if(flip){ tx.repeat.x=-1; tx.offset.x=1; }
-    if(s.material.map) s.material.map.dispose(); s.material.map=tx; s.material.needsUpdate=true; } }
+  if(im&&(im!==s.userData.img||flip!==s.userData.flip)){ s.userData.img=im; s.userData.flip=flip;
+    const cache=s.userData.tex||(s.userData.tex=new Map()), key=im; let pair=cache.get(key);
+    if(!pair){ const a=xTex(im,true), b=xTex(im,true); b.repeat.x=-1; b.offset.x=1; pair=[a,b]; cache.set(key,pair); }
+    s.material.map=pair[flip?1:0]; s.material.needsUpdate=true; } }
 const xMat=(c,o)=>new THREE.MeshPhongMaterial(Object.assign({color:c,shininess:6,specular:0x111111},o||{}));
 const xBox=(w,h,d,m,x,y,z)=>{ const o=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m); o.position.set(x,y,z); return o; };
 
@@ -364,7 +367,8 @@ function xBuildScene(){
   G.amb.color.set(0xffffff).lerp(glowC,.25); G.lamp.color.set(0xffd9a0).lerp(glowC,.3); G.dust.material.color.copy(glowC);
   xAreaLights(grp,A);
   // you and the enemies are flat sprites standing in the 3D rooms, like the old dungeon crawlers
-  EX.me=xSprite(()=>unitSprite({kind:'player',look:gearLook(save),view:EX.view}),2.3); grp.add(EX.me);
+  // you are seen from behind and above, as in battle: the same four poses (stand, walk, cast, attack)
+  EX.me=xSprite(()=>unitSprite({kind:'player',look:gearLook(save),view:'back',pose:EX.pose||'idle'}),2.3); grp.add(EX.me);
   for(const gp of EX.groups) xGroupSprites(gp,grp);
   if(typeof xBuildProps==='function') xBuildProps();   // people, puzzles, keys and the rest (dungeon.js)
 }
@@ -448,8 +452,8 @@ document.addEventListener('keydown',e=>{ if(!EX||!EX.active||xPaused) return; co
   if(a==='search') xSearch(); else if(a==='disarm') xDisarm(); else if(a==='camp') xToCamp();
   if(a||k===' '){ e.preventDefault(); } if(['up','down','left','right'].includes(a)) EX.path=[]; });
 document.addEventListener('keyup',e=>{ XKEY[e.key.toLowerCase()]=false; });
-function xTap(e){ if(!EX||!EX.active||EX.busy) return; const G=X3, r=e.target.getBoundingClientRect();
-  const v=new THREE.Vector2((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1), hit=new THREE.Vector3();
+function xTap(e){ if(!EX||!EX.active||EX.busy) return; const G=X3, r=appBox(e.target), [ex,ey]=appXY(e.clientX,e.clientY);
+  const v=new THREE.Vector2((ex-r.left)/r.width*2-1,-(ey-r.top)/r.height*2+1), hit=new THREE.Vector3();
   G.ray.setFromCamera(v,G.cam); if(!G.ray.ray.intersectPlane(G.plane,hit)) return;
   const c=xcell(hit.x,hit.z); if(c<0||!EX.seen[c]) return;
   const goal=c, blocked=n=>xKnownTrap(n)||xChestAt(n)&&n!==goal||typeof xSolid==='function'&&xSolid(n)&&n!==goal;
@@ -470,7 +474,7 @@ function xMove(dt){
   const held=id=>keysFor(id).some(k=>XKEY[k]);   // your bindings, from Settings (keys.js)
   if(held('left')) ix-=1; if(held('right')) ix+=1; if(held('up')) iz-=1; if(held('down')) iz+=1;
   // holding a finger (or the mouse) down walks toward it, steering as it moves
-  if(!ix&&!iz&&XHOLD.on&&performance.now()-XHOLD.t0>200){ const r=$('#xView').getBoundingClientRect(), v=new THREE.Vector3(EX.px,.8,EX.pz).project(X3.cam);
+  if(!ix&&!iz&&XHOLD.on&&performance.now()-XHOLD.t0>200){ const r=appBox($('#xView')), v=new THREE.Vector3(EX.px,.8,EX.pz).project(X3.cam);
     const sx=r.left+(v.x+1)/2*r.width, sy=r.top+(1-v.y)/2*r.height, dx=XHOLD.x-sx, dy=XHOLD.y-sy, l=Math.hypot(dx,dy);
     if(l>18){ ix=dx/l; iz=dy/l; EX.path=[]; } }
   if(!ix&&!iz&&EX.path.length){ const n=EX.path[0], tx=xw(n)-EX.px, tz=xz(n)-EX.pz, d=Math.hypot(tx,tz); if(d<.25){ EX.path.shift(); } else { ix=tx/d; iz=tz/d; } }
@@ -635,15 +639,18 @@ function xLoop(ts){
 function xResize(){ const G=X3, cv=$('#xView'), w=cv.clientWidth||400, h=cv.clientHeight||600; if(G.w===w&&G.h===h) return; G.w=w; G.h=h; G.renderer.setSize(w,h,false); G.cam.aspect=w/h; G.cam.updateProjectionMatrix(); }
 function xDraw(T,dt){
   dt=dt||.016; const G=X3; xResize(); xFadeCells(dt);
-  const bob=EX.walk?Math.abs(Math.sin(EX.walk))*.08:0;
-  EX.me.position.set(EX.px,bob,EX.pz); xRefresh(EX.me,EX.face<0);
+  // a two-step walk: the walking pose and the standing pose in turn, rising one art pixel on the step;
+  // searching or disarming shows the casting pose
+  const ART=2.3/96, step=EX.walk?Math.floor(EX.walk/1.5)%2:0;
+  EX.pose=EX.action?'cast':EX.walk?(step?'walk':'idle'):'idle';
+  EX.me.position.set(EX.px,step*ART,EX.pz); xRefresh(EX.me,EX.face<0);
   G.lamp.position.set(EX.px,2.6,EX.pz);
   const k=Math.max(1,Math.min(1.8,.8/G.cam.aspect)), hgt=18*k, back=10*k;   // tall screens pull back so a room still fits across
   G.cam.position.set(EX.px,hgt,EX.pz+back); G.cam.lookAt(EX.px,0,EX.pz-.5);
   // enemies show only while in sight; a Shadow Assassin only when it is close; a dormant guardian not at all
   for(const g of EX.groups){ if(!g.sprite) continue; const v=!!EX.vis[g.cell]&&!g.dormant&&!(g.stealth&&Math.hypot(g.x-EX.px,g.z-EX.pz)/XCS>3.2); g.sprite.visible=v; g.zz.visible=v&&g.state==='sleep'; g.bang.visible=v&&g.state==='chase';
     if(g.ring){ g.ring.visible=v; g.ring.position.set(g.x,.06,g.z); }
-    if(v){ g.sprite.position.set(g.x,g.state==='sleep'?0:Math.abs(Math.sin(T*4+g.bob))*.06,g.z); xRefresh(g.sprite,(g.face||-1)>0);
+    if(v){ g.sprite.position.set(g.x,g.state==='sleep'?0:(Math.floor(T*(g.state==='chase'?4:1.6)+g.bob)%2)*g.h/96,g.z); xRefresh(g.sprite,(g.face||-1)>0);
       g.zz.position.set(g.x+.5,g.h+.2+Math.sin(T*2+g.bob)*.15,g.z); g.bang.position.set(g.x,g.h+.35,g.z); } }
   if(typeof xDungeonDraw==='function') xDungeonDraw(T);
   EX.downMesh.userData.ring.rotation.z+=.02;

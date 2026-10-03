@@ -177,22 +177,22 @@ select,.filters input{font:600 14px var(--font-b); color:var(--text); background
 body.ui-tablet .hand{grid-template-columns:repeat(7,1fr);} body.ui-tablet .fams{grid-template-columns:repeat(8,1fr);}
 
 /* landscape phones: board on the left, controls in a thumb column on the right */
-@media (orientation:landscape) and (max-height:560px){
-  #scrBattle{display:none; grid-template-columns:1fr 250px; grid-template-rows:auto 1fr;}
-  #scrBattle.on{display:grid;}
-  #hudTop{grid-column:1/-1; padding:6px 12px 0;}
-  #buffs{min-height:0;}
-  #board{grid-column:1; grid-row:2; height:100%;}
-  #hudBottom{grid-column:2; grid-row:2; display:flex; flex-direction:column; justify-content:flex-end; background:none; padding:4px 10px calc(8px + env(safe-area-inset-bottom,0px)) 0;}
-  #queueRow{grid-template-columns:1fr; gap:4px;}
-  .qslot{height:34px;}
-  .controls.battle{grid-template-columns:1fr; grid-template-areas:"custom" "cast";}
-  #btnCustom{grid-area:custom;} #btnCast{grid-area:cast;}
-  #btnWand{position:fixed; left:calc(10px + env(safe-area-inset-left,0px)); bottom:calc(10px + env(safe-area-inset-bottom,0px)); width:150px; z-index:3;}
-  .controls.battle .btn{min-height:54px;}
-  .hand{grid-template-columns:repeat(7,1fr);}
-  .slots .card,.slot{min-height:70px!important;}
-}
+
+  body.lsS #scrBattle{display:none; grid-template-columns:1fr 250px; grid-template-rows:auto 1fr;}
+  body.lsS #scrBattle.on{display:grid;}
+  body.lsS #hudTop{grid-column:1/-1; padding:6px 12px 0;}
+  body.lsS #buffs{min-height:0;}
+  body.lsS #board{grid-column:1; grid-row:2; height:100%;}
+  body.lsS #hudBottom{grid-column:2; grid-row:2; display:flex; flex-direction:column; justify-content:flex-end; background:none; padding:4px 10px calc(8px + env(safe-area-inset-bottom,0px)) 0;}
+  body.lsS #queueRow{grid-template-columns:1fr; gap:4px;}
+  body.lsS .qslot{height:34px;}
+  body.lsS .controls.battle{grid-template-columns:1fr; grid-template-areas:"custom" "cast";}
+  body.lsS #btnCustom{grid-area:custom;} body.lsS #btnCast{grid-area:cast;}
+  body.lsS #btnWand{position:fixed; left:calc(10px + env(safe-area-inset-left,0px)); bottom:calc(10px + env(safe-area-inset-bottom,0px)); width:150px; z-index:3;}
+  body.lsS .controls.battle .btn{min-height:54px;}
+  body.lsS .hand{grid-template-columns:repeat(7,1fr);}
+  body.lsS .slots .card,body.lsS .slot{min-height:70px!important;}
+
 
 /* ---------- battle feedback ---------- */
 .combo-bar{margin:-2px 0 6px; padding:5px 10px; border-radius:10px; font-weight:800; font-size:13px; color:#1a1206;
@@ -234,18 +234,18 @@ body.ui-tablet .hand{grid-template-columns:repeat(7,1fr);} body.ui-tablet .fams{
 #scrBattle, #scrBattle button, #board{touch-action:none;}
 #custom .panel{touch-action:pan-y;}
 /* landscape phones: slots and Fight on the left, the hand on the right */
-@media (orientation:landscape) and (max-height:560px){
-  #custom{padding:6px;}
-  .panel.custom{max-width:none; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.5fr); gap:4px 12px; align-content:start; overflow:hidden; height:100%;}
-  .panel.custom>.bar{grid-column:1/-1; margin:0;}
-  #custCombo,#custQueue,#custEmpty,#btnFight{grid-column:1;}
-  #custHint{display:none;}
-  #custHand{grid-column:2; grid-row:2/span 4; grid-template-columns:repeat(4,1fr); overflow:auto; max-height:calc(100dvh - 70px); align-content:start;}
-  #custHand .card{min-height:104px;}
-  #custom .card .art{height:36px;}
-  .slots .card,.slot{min-height:84px!important;}
-  #btnFight{font-size:17px; padding:8px;}
-}
+
+  body.lsS #custom{padding:6px;}
+  body.lsS .panel.custom{max-width:none; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.5fr); gap:4px 12px; align-content:start; overflow:hidden; height:100%;}
+  body.lsS .panel.custom>.bar{grid-column:1/-1; margin:0;}
+  body.lsS #custCombo,body.lsS #custQueue,body.lsS #custEmpty,body.lsS #btnFight{grid-column:1;}
+  body.lsS #custHint{display:none;}
+  body.lsS #custHand{grid-column:2; grid-row:2/span 4; grid-template-columns:repeat(4,1fr); overflow:auto; max-height:calc(100dvh - 70px); align-content:start;}
+  body.lsS #custHand .card{min-height:104px;}
+  body.lsS #custom .card .art{height:36px;}
+  body.lsS .slots .card,body.lsS .slot{min-height:84px!important;}
+  body.lsS #btnFight{font-size:17px; padding:8px;}
+
 .card.hero.flip{animation:flip .45s both,heroShine 3.2s linear infinite;}
 /* My cards tabs, items and non-card rewards */
 .tabs{display:flex; gap:8px; align-items:center; margin:6px 0 4px; flex-wrap:wrap;}
@@ -313,13 +313,13 @@ body.ui-tablet .hand{grid-template-columns:repeat(7,1fr);} body.ui-tablet .fams{
 .fams.two{grid-template-columns:1fr 1fr;}
 .card.chosen{outline:3px solid #ff5d6c; outline-offset:-3px;}
 .card.chosen::after{content:attr(data-n); position:absolute; bottom:4px; right:6px; background:#ff5d6c; color:#fff; font-weight:800; border-radius:99px; padding:0 6px;}
-@media (max-width:420px){ .charbox{grid-template-columns:96px 1fr;} #chSprite{width:96px; height:96px;} .charstats{grid-template-columns:1fr;} }
+ body.w420 .charbox{grid-template-columns:96px 1fr;} body.w420 #chSprite{width:96px; height:96px;} body.w420 .charstats{grid-template-columns:1fr;} 
 .gearrow.on.cursed{border-color:#ff5d6c; background:color-mix(in srgb,#ff5d6c 8%,var(--panel));}
 .card .badge{top:auto; bottom:30px; right:6px;}
 .gearslots{grid-template-columns:repeat(4,1fr);}
 .gearslot{min-height:56px; cursor:pointer; font-size:13px;} .gearslot b{font-size:13px; line-height:1.2;} .gearslot.empty{border-color:var(--line); cursor:default;}
 .gearrow .gt small.kind{color:#9fdcff;}
-@media (max-width:420px){ .gearslots{grid-template-columns:repeat(2,1fr);} }
+ body.w420 .gearslots{grid-template-columns:repeat(2,1fr);} 
 .gearrow .gt small.set{color:#93a9ba;} .gearrow .gt small.set.on{color:#39ff8a; font-weight:700;}
 .gearrow .gt small.fresh{color:#f2c94c;}
 /* paper doll */
@@ -359,7 +359,7 @@ body.ui-tablet .hand{grid-template-columns:repeat(7,1fr);} body.ui-tablet .fams{
 .gdetail p.fresh{color:#f2c94c;} .gdetail p.curse{color:#ff5d6c;}
 .gdetail .ga{display:flex; flex-wrap:wrap; gap:6px; margin-top:4px;}
 #chStats{margin:6px 0; background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:8px 10px;}
-@media (max-width:420px){ .doll{grid-template-columns:76px 1fr 76px; gap:4px;} .charstats{grid-template-columns:1fr 1fr;} }
+ body.w420 .doll{grid-template-columns:76px 1fr 76px; gap:4px;} body.w420 .charstats{grid-template-columns:1fr 1fr;} 
 .gdetail{position:sticky; bottom:8px; z-index:5; box-shadow:0 -6px 24px rgba(0,0,0,.6);} .gdetail.empty{display:none;}
 .gdetail .dx{position:absolute; top:6px; right:8px; background:none; border:0; color:var(--dim); font-size:18px; cursor:pointer; padding:4px 8px;}
 .gdetail{position:sticky;}
@@ -372,7 +372,7 @@ body.ui-tablet .hand{grid-template-columns:repeat(7,1fr);} body.ui-tablet .fams{
 #btnCast.role{box-shadow:inset 0 -5px 0 var(--rc);}
 .card .ty .rl{color:var(--rc); font-size:10px; margin-left:4px; white-space:nowrap;}
 .card::before{content:''; position:absolute; left:0; top:0; bottom:0; width:4px; background:var(--rc,transparent); opacity:.9;}
-@media (orientation:landscape) and (max-height:500px){ .qslot{min-height:38px;} }
+ body.lsXS .qslot{min-height:38px;} 
 /* gear shows its color family like cards do */
 .itile::after{content:''; position:absolute; left:0; right:0; bottom:0; height:4px; background:var(--fc);}
 .itile .fam{position:absolute; top:3px; left:50%; transform:translateX(-50%); font-size:10px; opacity:.9;}
@@ -517,20 +517,20 @@ body.ui-tablet .controls.battle .btn{min-height:76px; font-size:22px;} body.ui-t
    canvas at full resolution. */
 .screen:not(#scrBattle):not(#scrExplore),#hudTop,#hudBottom,#xTop,#xBottom,#xMini,.x-bang,.overlay,.tip,.cast-fx,.banner,.peek{zoom:var(--ui,1);}
 /* wide screens with room to spare: the board takes the full height and the controls sit in a column on the right */
-@media (min-height:561px){
-  body.wide #scrBattle.on{display:grid; grid-template-columns:minmax(0,1fr) calc(300px*var(--ui,1)); grid-template-rows:auto minmax(0,1fr);}
-  body.wide #hudTop{grid-column:1/-1;}
-  body.wide #board{grid-column:1; grid-row:2; height:100%;}
-  body.wide #hudBottom{grid-column:2; grid-row:2; display:flex; flex-direction:column; justify-content:flex-end; gap:8px; padding:10px 12px 14px;
+
+  body.hTall.wide #scrBattle.on{display:grid; grid-template-columns:minmax(0,1fr) calc(300px*var(--ui,1)); grid-template-rows:auto minmax(0,1fr);}
+  body.hTall.wide #hudTop{grid-column:1/-1;}
+  body.hTall.wide #board{grid-column:1; grid-row:2; height:100%;}
+  body.hTall.wide #hudBottom{grid-column:2; grid-row:2; display:flex; flex-direction:column; justify-content:flex-end; gap:8px; padding:10px 12px 14px;
     background:#121417 var(--px-slate); background-size:64px 64px; border-top:0; border-left:2px solid #000; box-shadow:inset 2px 0 0 #383e45;}
-  body.wide #queueRow{grid-template-columns:1fr; gap:6px; margin-bottom:4px;}
-  body.wide .qslot{min-height:52px;}
-  body.wide .controls.battle{grid-template-columns:1fr 1fr; grid-template-areas:"cast cast" "wand custom";}
-  body.wide #btnCast{grid-area:cast;} body.wide #btnWand{grid-area:wand;} body.wide #btnCustom{grid-area:custom;}
-  body.wide .controls.battle .btn{min-height:68px;}
-  body.wide #btnCast{min-height:84px;}
-  body.wide .keys{display:block; text-align:left;}
-}
+  body.hTall.wide #queueRow{grid-template-columns:1fr; gap:6px; margin-bottom:4px;}
+  body.hTall.wide .qslot{min-height:52px;}
+  body.hTall.wide .controls.battle{grid-template-columns:1fr 1fr; grid-template-areas:"cast cast" "wand custom";}
+  body.hTall.wide #btnCast{grid-area:cast;} body.hTall.wide #btnWand{grid-area:wand;} body.hTall.wide #btnCustom{grid-area:custom;}
+  body.hTall.wide .controls.battle .btn{min-height:68px;}
+  body.hTall.wide #btnCast{min-height:84px;}
+  body.hTall.wide .keys{display:block; text-align:left;}
+
 /* the custom screen when wide: queue and Fight on the left, the hand on the right */
 body.wide .panel.custom{max-width:1180px; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.5fr); gap:4px 16px; align-content:start; height:100%;}
 body.wide .panel.custom>.bar{grid-column:1/-1; margin:0;}
@@ -627,7 +627,7 @@ body.wide .camp{grid-template-areas:"logo logo" "area area" "scene depth" "scene
 #xBottom .btn{min-height:46px; min-width:86px;}
 #scrExplore, #xView, #xBottom button{touch-action:none; -webkit-user-select:none; user-select:none; -webkit-touch-callout:none;}
 @media (pointer:coarse){ #xBottom .keys .k{display:none;} }
-@media (max-width:520px){ #xMini{width:84px; height:84px; top:58px;} #xLog{font-size:12px;} #xTop{font-size:13px;} }
+ body.w520 #xMini{width:84px; height:84px; top:58px;} body.w520 #xLog{font-size:12px;} body.w520 #xTop{font-size:13px;} 
 #xView{cursor:pointer;}
 .x-vignette{position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse at 50% 46%, transparent 45%, rgba(0,0,0,.55) 100%);}
 
@@ -643,16 +643,16 @@ body.wide .camp{grid-template-areas:"logo logo" "area area" "scene depth" "scene
 .controls.battle .btn{min-width:0; overflow:hidden;}
 .controls.battle .btn small{display:block; max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
 .meter span{white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%;}
-@media (max-height:460px){
-  .controls.battle .btn, body.wide .controls.battle .btn, body.wide #btnCast{min-height:44px!important; font-size:16px!important; padding-block:4px;}
-  body.wide #hudBottom{padding:6px 10px 8px!important; gap:4px!important; overflow-y:auto;}
-  body.wide .qslot{min-height:36px!important;}
-  #hudBottom .keys{display:none!important;}
-}
+
+  body.h460 .controls.battle .btn,body.h460.wide .controls.battle .btn,body.h460.wide #btnCast{min-height:44px!important; font-size:16px!important; padding-block:4px;}
+  body.h460.wide #hudBottom{padding:6px 10px 8px!important; gap:4px!important; overflow-y:auto;}
+  body.h460.wide .qslot{min-height:36px!important;}
+  body.h460 #hudBottom .keys{display:none!important;}
+
 /* shop grids never overflow the screen */
 .fams{grid-template-columns:repeat(4,minmax(0,1fr));} body.ui-tablet .fams{grid-template-columns:repeat(8,minmax(0,1fr));} .fams.two{grid-template-columns:repeat(2,minmax(0,1fr));}
 .fams>*{min-width:0;}
-@media (max-width:420px){ .fams{grid-template-columns:repeat(2,minmax(0,1fr));} }
+ body.w420 .fams{grid-template-columns:repeat(2,minmax(0,1fr));} 
 /* the title screen centers without clipping its top when it is taller than the phone */
 #scrStart{justify-content:flex-start;} #scrStart>:first-child{margin-top:auto;} #scrStart>:last-child{margin-bottom:auto;}
 
@@ -721,7 +721,7 @@ body:not(.dev) .devonly{display:none!important;}
 /* shop: family packs wrap to fit the panel at any width */
 .fams,body.ui-tablet .fams{grid-template-columns:repeat(auto-fill,minmax(104px,1fr));}
 .fams.two,body.ui-tablet .fams.two{grid-template-columns:repeat(auto-fill,minmax(210px,1fr));}
-@media (max-width:420px){ .fams,body.ui-tablet .fams{grid-template-columns:repeat(2,minmax(0,1fr));} }
+ body.w420 .fams,body.w420.ui-tablet .fams{grid-template-columns:repeat(2,minmax(0,1fr));} 
 .btn.fam{min-width:0; overflow:hidden;} .btn.fam small{display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
 #scrShop{align-items:center;} #scrShop>*{width:100%; max-width:760px;}
 .x-bang{font:800 44px/1.05 var(--font-h); text-shadow:3px 3px 0 #000; text-align:center; white-space:nowrap;}
@@ -752,5 +752,8 @@ body.tall #xMini{top:calc(86px + env(safe-area-inset-top,0px));}
 #xStatus .xs{display:inline-flex; align-items:center; gap:3px; padding:2px 6px; background:rgba(4,6,9,.75); border:1px solid #2c3137; font:400 17px var(--font-t); color:var(--text);}
 #xStatus .xs .pxi{width:18px; height:18px;} #xStatus .bad{color:#ff7a85;} #xStatus .good{color:#7dffb0;}
 body.tall #xStatus{top:calc(84px + env(safe-area-inset-top,0px)); max-width:calc(100% - 120px);}
-@media (max-width:520px){ .xrow{grid-template-columns:32px minmax(0,1fr) auto;} .xrow .btn{min-width:78px;} #xdPic{width:72px; height:72px;} }
+ body.w520 .xrow{grid-template-columns:32px minmax(0,1fr) auto;} body.w520 .xrow .btn{min-width:78px;} body.w520 #xdPic{width:72px; height:72px;} 
 .panel.xdlg,#xdText,.xrow .nm{text-align:left;} .xdt{text-align:left;}
+/* the game turned a quarter to keep the chosen orientation (Settings › Screen orientation) */
+#app.rot{inset:auto; top:0; left:0; transform-origin:0 0; transform:rotate(90deg) translateY(-100%);}
+body.rot .drag-ghost,body.rot .gghost{transform:rotate(90deg);}

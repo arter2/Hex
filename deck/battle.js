@@ -54,6 +54,12 @@ function pathTo(from,to){ // BFS over free tiles on your side
 
 /* enemies, encounters and terrain live in enemies.js */
 
+/* The whole game can be turned a quarter (Settings › Orientation) when the browser will not lock
+   the screen: then on-screen boxes and pointer positions are turned back into the game's own frame. */
+const appRot=()=>typeof document!=='undefined'&&!!document.getElementById('app')&&document.getElementById('app').classList.contains('rot');
+function appBox(el){ const r=el.getBoundingClientRect(); if(!appRot()) return r; const W=innerWidth; return {left:r.top, top:W-r.right, width:r.height, height:r.width, right:r.bottom, bottom:W-r.left}; }
+const appXY=(x,y)=>appRot()?[y,innerWidth-x]:[x,y];
+
 /* ---------------- state ---------------- */
 let B=null;
 const GAUGE_MAX=10;
@@ -210,7 +216,7 @@ function payHp(n){ const p=B.player; if(!n) return; const c=Math.min(n,p.hp-1); 
 /* ---------------- casting ---------------- */
 // A card as cast: numbers scaled by any combo on its queue slot.
 function scaled(c,m){ if(!m||m===1) return c; const o=Object.assign({},c); for(const k of ['pow','amt','thorns','hp']) if(typeof o[k]==='number') o[k]=Math.round(o[k]*m); return o; }
-function playCard(inst){
+function playCard(inst){ if(B&&B.player){ B.player.poseT=B.time; B.player.poseK='cast'; }
   const b=B, p=b.player, c=scaled(inst.card,inst.mult);
   b.log.push(c.name);
   b.hooks.onCast&&b.hooks.onCast(c,inst);
@@ -393,7 +399,7 @@ function springTrap(t,e){ const c=t.trap.card; t.trap=null; floater(c.name,t,col
   const ts=c.trap==='blast'?patternTiles(t,'burst','e'):[t]; ts.forEach(x=>{ flash(x,colorOf(c),1); burst(x,colorOf(c),8,.3); hitAt(x,c.pow,c); }); }
 function shoot(from,tiles,o){ B.shots.push(Object.assign({a:from,tiles,i:-1,stepT:0,speed:o.from==='p'?.045:.08,hit:new Set()},o)); }
 
-function fireWand(charged){
+function fireWand(charged){ if(B&&B.player){ B.player.poseT=B.time; B.player.poseK='attack'; }
   const b=B, p=b.player; if(b.phase!=='fight'||p.wandCd>0) return;
   const w=p.wand||{kind:'wand',tap:3,charged:7,cd:.3,ccd:.5};
   p.wandCd=charged?w.ccd||.5:w.cd||.3;
@@ -563,7 +569,7 @@ function frontFaces(ctx,top,drop){ const n=top.length, cx=top.reduce((a,p)=>a+p[
     ctx.beginPath(); ctx.moveTo(a[0],a[1]); ctx.lineTo(b[0],b[1]); ctx.lineTo(b[0],b[1]+drop); ctx.lineTo(a[0],a[1]+drop); ctx.closePath(); ctx.fill(); } }
 
 function resizeView(){
-  const cv=View.canvas, r=cv.getBoundingClientRect(), dpr=Math.min(window.devicePixelRatio||1,2);
+  const cv=View.canvas, r=appBox(cv), dpr=Math.min(window.devicePixelRatio||1,2);
   View.dpr=dpr; View.w=r.width; View.h=r.height; cv.width=Math.round(r.width*dpr); cv.height=Math.round(r.height*dpr);
   const portrait=r.height>r.width*1.05, ang=Math.PI/2;
   View.ca=Math.cos(ang); View.sa=Math.sin(ang); View.iy=ISO_Y=portrait?.8:.62; View.cp=Math.sqrt(1-View.iy*View.iy);
@@ -581,7 +587,7 @@ function resizeView(){
 }
 // screen -> tile: the tile whose top face is under the finger, or the nearest one close by
 function pickTile(clientX,clientY){
-  const r=View.canvas.getBoundingClientRect(), x=clientX-r.left, y=clientY-r.top;
+  [clientX,clientY]=appXY(clientX,clientY); const r=appBox(View.canvas), x=clientX-r.left, y=clientY-r.top;
   let best=null, bd=1e9;
   for(const t of TILES){ const hc=hexCorners(t,1);
     let inside=false; for(let i=0,j=5;i<6;j=i++){ const [xi,yi]=hc[i], [xj,yj]=hc[j]; if((yi>y)!==(yj>y)&&x<(xj-xi)*(y-yi)/(yj-yi)+xi) inside=!inside; }
@@ -851,8 +857,11 @@ function drawSprite(ctx,u,T,S,o){
   ctx.save(); ctx.globalAlpha=.3*alpha; ctx.translate(x,y); ctx.transform(1,0,-.7,-.28,0,0); if(o.flip) ctx.scale(-1,1);
   ctx.drawImage(spr.sil,-H/2,-31*k,H,H); ctx.restore();
   // body
-  const breathe=Math.sin(T*3+(u.tile?u.tile.q:0))*.03, bob=(o.bob||0)*Math.sin(T*4+(u.tile?u.tile.r:0));
-  ctx.save(); ctx.globalAlpha=alpha; ctx.translate(x,y-bob*S); ctx.scale((o.flip?-1:1)*(1-breathe*.5),1+breathe);
+  // pixel art is never squashed: it rises one art pixel on a step (o.step, or a slow breath when o.bob is set),
+  // and the offset is a whole number of the sprite's own pixels so its pixels stay square
+  const ap=H/(spr.hand?96:32), seed=(u.tile?u.tile.q*3+u.tile.r:0), step=o.step!=null?o.step:o.bob?Math.floor(T*1.6+seed*.37)%2:0, lift=Math.round(step*ap);
+  const bob=lift/S;
+  ctx.save(); ctx.globalAlpha=alpha; ctx.translate(Math.round(x),Math.round(y)-lift); ctx.scale(o.flip?-1:1,1);
   ctx.drawImage(spr.img,-H/2,-31*k,H,H);
   if(o.flash){ ctx.globalAlpha=alpha*o.flash; ctx.drawImage(spr.wht,-H/2,-31*k,H,H); }
   if(o.tint){ ctx.globalAlpha=alpha*.35; ctx.globalCompositeOperation='source-atop'; ctx.fillStyle=o.tint; ctx.fillRect(-H/2,-31*k,H,H); ctx.globalCompositeOperation='source-over'; }
@@ -868,7 +877,10 @@ function bar(ctx,x,y,w,k,col){ ctx.fillStyle='rgba(0,0,0,.6)'; ctx.fillRect(x-w/
 const DRAW={
   player(ctx,p,T,S){
     const foe=alive().sort((m,n)=>hexDist(p.tile,m.tile)-hexDist(p.tile,n.tile))[0];
-    const flip=facing(p,foe,false), r=drawSprite(ctx,p,T,S,{alpha:p.invT>0?.45:1,flip,bob:.03,flash:p.hurtT>0?p.hurtT*3:0});
+    // the pose: attack just after a shot, cast after a card or while charging, a walk cycle while moving, else standing
+    const moving=Math.hypot((p.rx??p.tile.wx)-p.tile.wx,(p.rz??p.tile.wz)-p.tile.wz)>.04||p.path.length>0, since=B.time-(p.poseT??-9);
+    p.pose=since<.28?p.poseK:p.charging?'cast':moving?(Math.floor(T*7)%2?'walk':'idle'):'idle';
+    const flip=facing(p,foe,false), r=drawSprite(ctx,p,T,S,{alpha:p.invT>0?.45:1,flip,step:moving?Math.floor(T*7)%2:Math.floor(T*1.6)%2,flash:p.hurtT>0?p.hurtT*3:0});
     // the staff's orb glows, and grows while the wand charges
     const wc=p.wand&&p.wand.color?COLORS[p.wand.color].c:null;
     const glow=p.charging?(p.chargeT>=chargeNeed(p)?'#ffffff':wc||'#7fd4ff'):p.powerT>0?'#ff6a3d':wc;

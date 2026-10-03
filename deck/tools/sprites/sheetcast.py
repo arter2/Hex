@@ -3,6 +3,7 @@ actions.png: 9 races x (male/female, hatless/hat) x 6 actions, seen from behind 
 turns.png: the same characters turning in 16 steps; step 0 faces the viewer (camp, character screen).
 bosses.png: 24 bosses, 4 views each.  monsters.png: 50 monsters, 16 directions each."""
 import numpy as np
+import scipy.ndimage as nd
 from PIL import Image
 import slice as S
 
@@ -34,6 +35,39 @@ def glow_tip(im):
     top = ys.min(); sel = ys < top + 9
     return (float(xs[sel].mean()) / im.width, float(ys[sel].mean()) / im.height)
 
+ACTIONS = ['idle', 'walk', 'cast', 'attack']   # columns 0-3 of actions.png (its damaged and fallen poses do not match the rest)
+
+def feet_x(im):
+    """Where the figure stands: the middle of its lowest rows, so poses line up on the feet, not on the staff."""
+    a = np.asarray(im)[..., 3] > 0; ys = np.where(a.any(1))[0]
+    band = a[max(ys.min(), ys.max() - max(4, (ys.max() - ys.min()) // 8)):ys.max() + 1]
+    xs = np.where(band)[1]; return float(xs.mean())
+
+def anim(race, g):
+    """The four battle poses of one look (from behind) as one 384 x 96 strip, sharing a palette and a
+    scale, standing on the same feet; plus where the staff's glow is in each."""
+    cuts = []
+    for i, name in enumerate(ACTIONS):
+        f = CAST[g] if name == 'cast' else i
+        cuts.append(S.cut('actions', act_box(race, g, f)))
+    px = []
+    for c in cuts:
+        a = np.asarray(c); px.append(a[a[..., 3] > 110][:, :3])
+    px = np.concatenate(px)
+    pal = Image.fromarray(px.reshape(1, -1, 3), 'RGB').quantize(48, method=Image.MEDIANCUT)
+    strip = Image.new('RGBA', (96 * len(cuts), 96)); tips = []
+    for i, c in enumerate(cuts):
+        fr = S.pixelate(c, round(c.height * BACK_K), scale=1, colors=48, palette=pal, cx=feet_x(c))
+        # drop specks the sheet left floating beside the figure (a few pixels apart from it)
+        a = np.asarray(fr).copy(); lab, n = nd.label(a[..., 3] > 0, structure=np.ones((3, 3)))
+        if n > 1:
+            sz = nd.sum(a[..., 3] > 0, lab, range(1, n + 1))
+            for k, v in enumerate(sz):
+                if v < 12: a[..., 3][lab == k + 1] = 0
+            fr = Image.fromarray(a, 'RGBA')
+        strip.alpha_composite(fr, (96 * i, 0)); tips.append(glow_tip(fr))
+    return strip, tips
+
 LOOK_IDS = {('human', 'm'): 'wizard', ('human', 'f'): 'human_f', ('elf', 'm'): 'elf_m', ('elf', 'f'): 'elf_f',
             ('dwarf', 'm'): 'dwarf_m', ('dwarf', 'f'): 'dwarf_f', ('undead', 'm'): 'undead_m', ('undead', 'f'): 'undead_f',
             ('witch', 'm'): 'witch_m', ('witch', 'f'): 'witch', ('necro', 'm'): 'necro', ('necro', 'f'): 'necro_f',
@@ -58,8 +92,11 @@ def look(race, sex):
         f = S.cut('turns', turn_box(race, g))
         fi = S.pixelate(f, round(b.height * BACK_K * 0.92), scale=2, colors=32)
         out['front' + sfx] = fi
+        st, tips = anim(race, g)
+        out['anim' + sfx] = st; out['tips' + sfx] = tips
+        out['back' + sfx] = st.crop((0, 0, 96, 96))           # standing, from behind
         if hat:
-            out['tipBack'] = glow_tip(bi); out['tip'] = None
+            out['tipBack'] = tips[0]; out['tip'] = None
     return out
 
 # Bosses: (panel left, top, right, bottom) of the front view on bosses.png, by unit id.

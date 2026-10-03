@@ -968,7 +968,7 @@ function xPaintExtra(){
 function xDungeonDraw(T){
   for(const it of EX.items) if(it.spin&&it.mesh.visible){ it.spin.rotation.y=T*1.6; it.spin.position.y=.55+Math.sin(T*2.4+it.cell)*.08; }
   for(const p of EX.props){ if(!p.mesh||!p.mesh.visible) continue;
-    if(p.spr){ xRefresh(p.spr,false); p.spr.position.y=Math.abs(Math.sin(T*2+p.cell))*.03; }
+    if(p.spr){ xRefresh(p.spr,false); p.spr.position.y=(Math.floor(T*1.4+p.cell*.37)%2)*2.2/96; }
     if(p.mark&&p.mark.isSprite){ const st=p.kind==='merchant'?'$':p.role==='prisoner'||p.state==='done'?'':p.state==='idle'?'!':p.state==='shop'?'$':'?'; p.mark.visible=!!st;
       if(st&&p.mark.userData.txt!==st){ p.mark.userData.txt=st; const s=xTextSprite(st,st==='$'?'#f2c94c':'#8fe4ff'); p.mark.material.map=s.material.map; p.mark.material.needsUpdate=true; }
       p.mark.position.y=2.75+Math.sin(T*3)*.06; }

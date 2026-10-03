@@ -3,10 +3,10 @@
 (function(){
 const {M,G,add,grp}=LAB, PI=Math.PI, EL=LAB.EL, shade=LAB.shadeHex, T=THREE, DS=T.DoubleSide;
 const FRONT=[{name:'front',yaw:-.42}], MOVES5=['idle','walk','cast','attack','hurt'];
-const boss=(id,name,ref,build,extra)=>LAB.mon(id,'Bosses',name,ref,build,Object.assign({cell:160},extra||{}));
-const bossH=(id,name,ref,spec,extra)=>LAB.hum(id,'Bosses',name,ref,spec,Object.assign({cell:160},extra||{}));
-const mini=(id,name,ref,build,extra)=>LAB.mon(id,'Minibosses',name,ref,build,Object.assign({cell:128},extra||{}));
-const miniH=(id,name,ref,spec,extra)=>LAB.hum(id,'Minibosses',name,ref,spec,Object.assign({cell:128},extra||{}));
+const boss=(id,name,ref,build,extra)=>LAB.mon(id,'Bosses',name,ref,build,Object.assign({cell:224},extra||{}));
+const bossH=(id,name,ref,spec,extra)=>LAB.hum(id,'Bosses',name,ref,spec,Object.assign({cell:224},extra||{}));
+const mini=(id,name,ref,build,extra)=>LAB.mon(id,'Minibosses',name,ref,build,Object.assign({cell:176},extra||{}));
+const miniH=(id,name,ref,spec,extra)=>LAB.hum(id,'Minibosses',name,ref,spec,Object.assign({cell:176},extra||{}));
 
 /* a heavy biped: golems and constructs. parts are given as builders */
 function biped(o){ const R={}, root=grp(null); R.root=root; const S=o.size||1;
@@ -50,23 +50,42 @@ function steam(c){ const S0=c.size||1;
   fore:(e,S,s)=>{ add(e,G.sph(.17*S,10,8),Br,0,0,0); add(e,G.lathe([[.18*S,0],[.25*S,-.3*S],[.27*S,-.6*S]],14),Cu,0,0,0); rivets(e,.27*S,-.55*S,8,S); add(e,G.tor(.26*S,.03*S,4,14),Fe,0,-.2*S,0,PI/2);
     add(e,G.sph(.24*S,10,8),Fe,0,-.75*S,0).scale.set(1,.9,1); for(let i=0;i<3;i++) add(e,G.cyl(.05*S,.04*S,.2*S,6),Cu2,(-.12+i*.12)*S,-.92*S,.12*S,.3); },
   extra:(R,gg)=>{ } }); }
-LAB.ROSTER.push({id:'golem',group:'Bosses',name:'Radiant Golem',ref:'unit:golem',cell:160,views:FRONT,moves:MOVES5,
+LAB.ROSTER.push({id:'golem',group:'Bosses',name:'Radiant Golem',ref:'unit:golem',cell:224,views:FRONT,moves:MOVES5,
   build:LAB.creature(()=>steam({body:0xc0743a,dark:0x3a3430,trim:0xe8b850,glow:0xffd070}))});
 
-/* ---------- Glacier Queen: a muscled ice giant, narrow waist, crown of ice ---------- */
-bossH('glacier','Glacier Queen','unit:glacier',{muscle:true, scale:1.62, bodyW:1.18, waistK:.78, armK:1.25, legW:1.1, headK:1.18, skin:0x3e78b8, skinMetal:.25, facet:true, eyes:0xeaffff, eyeGlow:true, angry:true, jaw:true, fangs:true, ears:'none', brows:true, browC:0x2a5a9a,
-  top:'skin', legs:'skin', shins:'skin', boot:'skin', skirt:'none', sleeve:'bare', belt:0x2a5a9a, loin:0x2e5c9a, handClaws:0xd8f4ff, claws:0xd8f4ff,
-  hat:{type:'icecrown'}, noSlash:false, fx:0xbfe8ff, seed:9,
-  onPose:(R,P)=>{ if(!R.shards){ R.shards=1; const im=M(0xd8f4ff,{metal:.8}), im2=M(0x9ad0f4,{metal:.6}); for(let i=0;i<9;i++){ const sd=i<4?1:i<8?-1:0, s=add(R.torso,G.oct(1),i%2?im:im2,sd*(.3+(i%4)*.04),.5+(i%2)*.05,(i%4)*.05-.08,-.3,0,-sd*(.5+(i%4)*.25)); s.scale.set(.05,.2+(i%3)*.05,.05); } } }});
+/* ---------- Glacier Queen: a crystalline ice giantess, narrow waist, shoulders of jutting glacier, a jagged crown ---------- */
+const F=LAB.fabric, GB=LAB.garb, sh=LAB.sh, MT=LAB.MT;
+const iceT=F(64,64,{c:0x3a6aa8,soft:false,custom:P=>{ for(let k=0;k<9;k++){ let x=P.rnd()*64, y=P.rnd()*64; for(let i=0;i<14;i++){ P.px(x,y,0xe8f8ff); x+=P.rnd()<.5?-1:1; y+=P.rnd()<.6?1:0; } }
+  for(let i=0;i<60;i++) P.px(P.rnd()*64,P.rnd()*64,0x3a6ab0); for(let i=0;i<30;i++) P.px(P.rnd()*64,P.rnd()*64,0xbfe6ff); }});
+const shard=(p,m,x,y,z,len,w,dx,dy,dz)=>{ const s=add(p,G.oct(1),m,x,y,z); s.scale.set(w,len,w); LAB.aim(s,dx,dy,dz); return s; };
+bossH('glacier','Glacier Queen','unit:glacier',{fem:true, muscle:true, scale:1.7, bodyW:1.22, shK:1.15, waistK:.7, armK:1.3, legW:1.12, headK:1.12, skin:0x3a6aa8, skinTex:iceT, skinMetal:.3, facet:true,
+  fp:{eyes:{style:'glow',c:0xeaffff}, brows:{style:'angry',c:0x2a5a9a}, nose:'small', mouth:'fangs', lips:0x2a4a8a, shadow:0x2a5aa0}, jaw:true, ears:'none',
+  top:'skin', legs:'skin', shins:'skin', boot:'skin', shoe:{type:'claw',c2:0xd8f4ff}, skirt:'none', sleeve:'bare', belt:false, loin:F(32,32,{c:0x2e5c9a,custom:P=>{ for(let y=20;y<32;y++) for(let x=0;x<32;x++) if(P.rnd()<(y-20)/14) P.px(x,y,0xe8f8ff); }}), handClaws:0xd8f4ff,
+  stance:{torsoX:.06,armLZ:.15,armRZ:-.1}, gait:{stride:.8,bounce:1.2},
+  hair:{c:0xd8f0ff,style:'savage',len:.5,tex:LAB.hairT(0xd8f0ff)}, hat:{type:'icecrown'}, fx:0xbfe8ff, seed:9,
+  dress(R,C){ const im=M(0xe8f8ff,{metal:.8}), im2=M(0x9ad0f4,{metal:.6}), im3=M(0x6ab0e8,{metal:.5}), b=C.b;
+    for(const s of [1,-1]){ const p=grp(R['arm'+(s>0?'L':'R')],0,.08,0); for(let i=0;i<6;i++) shard(p,[im,im2,im3][i%3],s*(.03+i*.035),.08,(i-2.5)*.06,.32+((i*2)%3)*.12,.07,s*(.4+i*.12),1,(i-2.5)*.25); }
+    for(let i=0;i<7;i++) shard(R.torso,[im,im2,im3][i%3],(i%2?.07:-.07),.56-i*.075,-b.ch*C.dz-.02,.24+(i%3)*.1,.06,(i%2?.35:-.35),.7,-1);
+    for(const n of ['L','R']) for(let i=0;i<3;i++) shard(R['elbow'+n],[im,im2][i%2],0,-.06-i*.08,-b.ar*.9,.2,.045,0,.3,-1);
+    for(let i=0;i<20;i++){ const a=i/20*PI*2, L=.5+((i*7)%5)*.12; const s2=add(R.hips,G.oct(1),[im,im2,im3][i%3],Math.sin(a)*b.hp*1.18,-L*.5,Math.cos(a)*b.hp*1.1); s2.scale.set(.06,L*.55,.06); s2.rotation.z=-Math.sin(a)*.12; s2.rotation.x=Math.cos(a)*.12; }
+    R.hat.scale.setScalar(1.35); }},{note:'A queen of living ice: crystal skin, glacier shards bursting from shoulders, spine and forearms.'});
 
-/* ---------- the Roc: an ice demon with frozen wings ---------- */
-bossH('roc','Roc','unit:roc',{muscle:true, scale:1.5, bodyW:1.05, waistK:.8, armLen:1.15, headK:1.15, skin:0x5070b0, skinMetal:.2, facet:true, eyes:0xeaffff, eyeGlow:true, angry:true, fangs:true, jaw:true, ears:'none', browC:0x3a5a8a,
-  top:'skin', legs:'skin', shins:'skin', boot:'skin', skirt:'none', sleeve:'bare', belt:0x2a3a6a, loin:0x3a4a7a, handClaws:0xeaf8ff, claws:0xeaf8ff,
-  horns:{c:0xeaf8ff,type:'back',size:1.5,metal:.6}, wings:0xbfe0f8, wingK:1.5, tail:{c:0x7aa8d8,tip:0xeaf8ff}, pads:{c:0xd8f0ff,metal:.7,spike:2,spikeC:0xeaf8ff,layers:1,r:.16},
-  castUp:true, bolts:0xbfe8ff, fx:EL.frost, seed:12},{note:'Rebuilt as an ice demon: horns, frozen wings, tail and claws.'});
+/* ---------- the Roc: an ice demon with a raptor's skull, frost-feather wings and ruff, and taloned bird legs ---------- */
+const featherT=(c,c2)=>F(64,32,{c,custom:P=>{ for(let y=0;y<32;y+=4) for(let x=0;x<64;x+=4){ P.px(x+((y/4)%2)*2,y+3,c2); P.px(x+((y/4)%2)*2+1,y+2,c2); } }});
+bossH('roc','Roc','unit:roc',{muscle:true, scale:1.52, bodyW:.98, shK:1.1, waistK:.7, armLen:1.25, headK:1.0, skin:0x2a3a6a, skinMetal:.15, face:'void', eyes:0xbff4ff, ears:'none',
+  digi:{m:0x2a3a6a, talon:0xeaf8ff, fur:featherT(0xd8ecff,0x9ac0e8)}, top:'skin', skirt:'none', sleeve:'bare', belt:false, handClaws:0xeaf8ff, noOrb:true,
+  stance:{torsoX:.18,headX:-.12,armLZ:.25,armRZ:-.25,armLX:-.1,armRX:-.1}, gait:{stride:.9,bounce:1.4,lift:1.2},
+  wings:0xbfe0f8, wingK:1.7, tail:{c:0xd8ecff,tip:0xeaf8ff}, castUp:true, bolts:0xbfe8ff, fx:EL.frost, seed:12,
+  dress(R,C){ const bm=M(0xeae4d4), dk=M(0x0a0c14), gl=M(0xbff4ff,{glow:true}), hn=M(0xeaf8ff,{metal:.5});
+    const sk=grp(R.head,0,.18,.04); add(sk,G.sph(.16,12,10),bm,0,0,0).scale.set(.95,.85,1.15);
+    const bk=add(sk,G.cone(.07,.3,8),bm,0,-.06,.26,PI/2+.35); bk.scale.set(1,1,.8); add(sk,G.cone(.04,.12,6),bm,0,-.16,.36,PI-.2);
+    for(const s of [1,-1]){ add(sk,G.sph(.045,8,6),dk,.075*s,.02,.12).scale.set(1,1.2,.6); add(sk,G.sph(.018,5,4),gl,.075*s,.02,.14);
+      add(sk,G.tube([[.09*s,.08,-.02],[.2*s,.2,-.12],[.26*s,.36,-.3],[.22*s,.5,-.46]],.045,.008,14,6),hn,0,0,0); }
+    GB.capelet(R,C,{mat:featherT(0xd8ecff,0x9ac0e8),len:.24,flare:1.45,hem:GB.zig(16,.07),folds:10}); }},{note:'An ice demon with a raptor skull, frost-feathered wings and ruff, and taloned bird legs.'});
+
 
 /* ---------- the Wyrm: a giant scorpion whose stinger burns ---------- */
-boss('wyrm','Ember Wyrm','unit:wyrm',()=>{ const root=grp(null); root.scale.setScalar(1.08); const body=grp(root,0,.55,0), sc=M(0xd8822a,{metal:.6}), sc2=M(0x9a4a14,{metal:.5}), dk=M(0x3a1606), belly=M(0xf0b860,{metal:.3}), eye=M(0xfff08a,{glow:true}), f1=M(0xff5a1a,{glow:true}), f2=M(0xffa040,{glow:true}), f3=M(0xfff0b0,{glow:true});
+boss('wyrm','Ember Wyrm','unit:wyrm',()=>{ const root=grp(null); root.scale.setScalar(1.08); const scT=(a,b)=>LAB.MT(LAB.fabric(64,32,{c:a,scales:{c:a,c2:b}}),{metal:.6}); const body=grp(root,0,.55,0), sc=scT(0xd8822a,0x9a4a14), sc2=scT(0x9a4a14,0x5a2a0a), dk=M(0x3a1606), belly=M(0xf0b860,{metal:.3}), eye=M(0xfff08a,{glow:true}), f1=M(0xff5a1a,{glow:true}), f2=M(0xffa040,{glow:true}), f3=M(0xfff0b0,{glow:true});
   // segmented body plates
   for(let i=0;i<6;i++){ const r=.42-Math.abs(i-1.5)*.04; add(body,G.cap(r,.5,14,6),i%2?sc:sc2,0,0,.55-i*.28).scale.set(1.15,.55,.75); add(body,G.cyl(r*.95,r*.95,.08,14),dk,0,-.02,.55-i*.28).scale.set(1.15,1,.75); }
   const head=grp(body,0,.04,.85); add(head,G.cap(.36,.5,14,6),sc,0,0,0).scale.set(1.1,.55,.8); for(const s of [1,-1]){ add(head,G.sph(.05,6,5),eye,.08*s,.14,.18); add(head,G.sph(.035,6,5),eye,.18*s,.1,.12); }
@@ -88,36 +107,101 @@ boss('wyrm','Ember Wyrm','unit:wyrm',()=>{ const root=grp(null); root.scale.setS
     claws.forEach(([a,up,lo,s])=>{ const open=.25+.5*g.wind+.6*g.raise+.15*Math.sin(g.t*PI*2); up.rotation.y=s*open*.6; lo.rotation.y=-s*open*.5; a.rotation.y=-s*(.2*g.strike); a.rotation.x=-.3*g.wind+.2*g.strike-.4*g.raise; });
     legs.forEach(([l,s,i])=>{ const w=g.step?Math.sin(g.t*PI*2+i*1.7+(s>0?0:PI)):0; l.rotation.x=.25*w; l.rotation.z=s*(.12*Math.max(0,w)-.08*g.hurt); }); fx.update(g.raise,g.t); }}; },{note:'Rebuilt as a giant scorpion with a burning stinger, like the current art.'});
 
-/* ---------- the Treant: an ent of living wood ---------- */
-bossH('treant','Treant','unit:treant',{muscle:true, scale:1.62, bodyW:1.15, armK:1.35, armLen:1.25, legW:1.25, headK:1.15, skin:0x4a3018, grain:0x24160a, barkLimbs:true, eyes:0xf0ff6a, eyeGlow:true, angry:true, jaw:true, ears:'none', browC:0x3a2614, brows:true,
-  top:'skin', legs:'skin', shins:'skin', boot:'skin', skirt:'none', sleeve:'bare', belt:false, beard:{c:0x4a6a22,len:.5}, handClaws:0x4a3220, claws:0x4a3220,
-  vines:{c:0x2e4a1a,n:3,leaf:0x4a8a2a}, armVines:0x2e4a1a, leaves:{c:[0x2e6a22,0x4a8a2a,0x6aa83a,0xc8a83a], chest:1, per:18, w:.09, h:.26}, thorns:{c:0x3a2614,n:10},
-  hat:{type:'canopy'}, pads:{c:0x4a3220,layers:2,r:.17}, fx:0xe8ff6a, seed:21},{note:'An ent: muscled living wood, glowing eyes, a crown of branches and leaves.'});
+/* ---------- the Treant: an ent built like a tree: root feet, a trunk that widens to the ground, branch arms, a carved bark face ---------- */
+bossH('treant','Treant','unit:treant',{muscle:true, scale:1.6, bodyW:1.25, hipK:1.35, waistK:1.1, armK:1.35, armLen:1.3, legW:1.45, legK:.82, headK:1.05, headS:[1,1.12,1], skin:0x5a3a1e, skinTex:LAB.barkT(0x5a3a1e,0x2a1a0c,0x7a5a34),
+  fp:{eyes:{style:'glow',c:0xf0ff6a}, brows:{style:'heavy',c:0x2a1a0c}, nose:'none', mouth:'open', mouthGlow:0xc8ff4a, custom:(P,A,at)=>{ for(let i=-3;i<=3;i++) at(A.nose,i,-1,0x3a2414); }}, jaw:true, ears:'none',
+  top:'skin', legs:'skin', shins:'skin', boot:'skin', shoe:{type:'claw',c2:0x3a2414}, skirt:'none', sleeve:'bare', belt:false, handClaws:0x4a3220,
+  stance:{torsoX:.12,headX:-.08,armLZ:.2,armRZ:-.2}, gait:{stride:.6,bounce:1.5,sway:.06,lift:.6},
+  vines:{c:0x2e4a1a,n:3,leaf:0x4a8a2a}, armVines:0x2e4a1a, thorns:{c:0x3a2614,n:8}, hat:{type:'canopy'}, fx:0xe8ff6a, seed:21,
+  dress(R,C){ const bk=MT(LAB.barkT(0x4a3018,0x24160a,0x6a4a2a)), lv=[0x2e6a22,0x4a8a2a,0x6aa83a].map(c=>M(c,{soft:true})), b=C.b;
+    GB.beard(R,C,{style:'moss',c:0x4a6a22,len:.5,z:.1});
+    for(const n of ['L','R']){ const s=n==='L'?1:-1; const k=R['knee'+n];
+      for(let i=0;i<4;i++){ const a=i/4*PI*2+.4; add(k,G.tube([[0,-C.shinL*.8,0],[Math.sin(a)*.12,-C.shinL-.02,Math.cos(a)*.12],[Math.sin(a)*.24,-C.shinL-.07,Math.cos(a)*.24]],.05,.015,6,5),bk,0,0,0); }
+      const br=grp(R['arm'+n],s*.08,.0,0); add(br,G.tube([[0,0,0],[s*.15,.2,-.05],[s*.22,.42,-.1]],.05,.015,8,5),bk,0,0,0); LAB.leafRing(br,7,.42,.06,1,lv,.06,.16,2.2,.6).forEach(l=>{ l.position.x+=s*.22; l.position.z-=.1; });
+      const br2=grp(R['elbow'+n],s*.06,-.1,0); add(br2,G.tube([[0,0,0],[s*.16,.06,.02],[s*.26,.2,.0]],.035,.01,6,4),bk,0,0,0); }
+    for(const [x,y,z] of [[.22,.5,.05],[-.18,.52,-.05],[.05,.3,b.ch*C.dz+.03]]){ add(R.torso,G.cyl(.012,.016,.05,5),M(0xe8dcc0),x,y,z); add(R.torso,G.cap(.05,.5,8,4),M(0xc84a2a),x,y+.03,z).scale.set(1,.6,1); }
+    add(R.torso,G.sph(.07,10,8),M(0x0e0804),0,.22,b.ch*C.dz*1.0).scale.set(1,1.3,.4); add(R.torso,G.sph(.03,6,5),M(0xc8ff4a,{glow:true}),0,.21,b.ch*C.dz*1.0+.02); }},{note:'An ent: a trunk that widens into root feet, branch arms in leaf, a carved face with glowing eyes and maw.'});
 
-/* ---------- the Hollow King: a horned purple devil in a hollow, torn cloak ---------- */
-bossH('hollow','Hollow King','unit:hollow',{muscle:true, scale:1.72, bodyW:1.12, waistK:.82, armLen:1.15, headK:1.05, skin:0x4a2a6a, skinMetal:.2, eyes:0xff6aff, eyeGlow:true, angry:true, jaw:true, fangs:true, ears:'elf', browC:0x1a0a2a,
-  top:'skin', legs:0x1a0e2a, robe:0x1e1030, robeDk:0x120a1e, skirt:'long', skirtC:0x1e1030, skirtGap:.8, rags:true, hem:0x5a2a8a, sleeve:'bare', belt:0x120a1e, handClaws:0xe8d8ff, claws:0xe8d8ff,
-  horns:{c:0x1a1020,type:'bull',size:1.7,metal:.5}, pads:{c:0x2a1a3a,metal:.6,spike:3,spikeC:0xd8c8f0,layers:2,r:.18}, cape:0x140a22, capeLen:1.5, capeHem:0x5a2a8a, mantle:0x1e1030, tail:{c:0x3a2050,tip:0x1a1020},
-  castUp:true, bolts:0xd08aff, fx:0xb08aff, seed:13},{note:'The last boss: a purple devil with great horns, burning eyes and a hollow torn cloak.'});
+/* ---------- the Hollow King: a horned purple devil on cloven legs, a glowing hollow in its chest, a torn rune cloak ---------- */
+bossH('hollow','Hollow King','unit:hollow',{muscle:true, scale:1.72, bodyW:1.12, waistK:.8, armLen:1.15, headK:1.05, skin:0x4a2a6a, skinMetal:.2, ears:'elf', earL:.2,
+  skinTex:F(32,32,{c:0x4a2a6a,soft:false,custom:P=>{ for(let k=0;k<3;k++){ let x=k*11+3, y=0; while(y<32){ P.px(x,y,0xd08aff,{glow:true}); y++; x+=P.rnd()<.5?-1:1; } } }}),
+  fp:{eyes:{style:'glow',c:0xff6aff}, brows:{style:'angry',c:0x1a0a2a}, nose:'long', mouth:'fangs', lips:0x1a0a2a, cheekbones:true, shadow:0x1a0a2a}, jaw:true, fangs:true,
+  digi:{m:0x3a2050, talon:0x0e0a14, fur:F(32,32,{c:0x1a1024,fur:{c:0x1a1024,c2:0x2a1a3a}})},
+  top:'skin', robe:F(128,64,{c:0x1e1030,tears:{c:0x0a0612,n:14},rows:[{y0:52,y1:60,c:0x160a26,pat:'rune',pc:0xd08aff,every:8,pfg:{glow:true}}]}), robeDk:0x120a1e, skirt:'none', sleeve:'bare', belt:0x120a1e, handClaws:0xe8d8ff,
+  horns:{c:0x1a1020,type:'bull',size:1.7,metal:.5}, pads:{c:0x2a1a3a,metal:.6,spike:3,spikeC:0xd8c8f0,layers:2,r:.18},
+  cape:F(64,64,{c:0x140a22,tears:{c:0x08040e,n:12},rows:[{y0:54,y1:60,c:0x140a22,pat:'rune',pc:0xd08aff,every:8,pfg:{glow:true}}]}), capeLen:1.5, capeHem:0x5a2a8a, rags:true, mantle:0x1e1030, tail:{c:0x3a2050,tip:0x1a1020},
+  stance:{torsoX:.1,headX:-.06}, gait:{stride:.85,bounce:1.3}, castUp:true, bolts:0xd08aff, fx:0xb08aff, seed:13,
+  dress(R,C){ const b=C.b; add(R.torso,G.tor(.09,.03,6,14),M(0x1a0a2a),0,.3,b.ch*C.dz*.92).scale.set(1,1.2,.6); add(R.torso,G.sph(.07,10,8),M(0x05030a),0,.3,b.ch*C.dz*.86).scale.set(1,1.2,.4);
+    add(R.torso,G.ico(.035,0),M(0xff6aff,{glow:true}),0,.3,b.ch*C.dz*.95); GB.skirt(R,C,{pts:GB.prof(C,.6,.42),mat:R.o.robe,a0:.5,len:PI*2-1,folds:8,amp:.05,hem:GB.tatter(.12,3)}); }},{note:'The last boss: a purple devil on cloven legs, great horns, burning eyes, a glowing hollow in its chest and a torn rune cloak.'});
 
 /* ---------- minibosses ---------- */
-miniH('executioner','Executioner','mini:executioner',{muscle:true, scale:1.36, bodyW:1.18, waistK:1.05, skin:0xc8906a, top:'skin', legs:0x241812, boot:0x140c08, bootTall:true, skirt:'none', sleeve:'bare', belt:0x2a1a10, belt2:0x2a1a10, loin:0x3a2418,
-  straps:0x2a1a10, strap1:true, bracers:0x1a100a, hat:{type:'sack',c:0x0c0a0e,eyes:0xff3a2a}, headK:1.1, weapon:{kind:'axe',double:false,len:1.55,metal:M(0x9aa0a8,{metal:1}),wood:M(0x2a1a10)}, weaponK:1.15, fx:0xff5a3a});
-miniH('corruptknight','Corrupted Knight','mini:corruptknight',{muscle:true, scale:1.32, bodyW:1.1, headK:1.02, skin:0x5a4a6a, armor:{c:0x2e2240,c2:0x160e22,trim:0xd08aff,chest:true,arms:true,legs:true,metal:1}, faulds:true, pads:{c:0x3a2a52,metal:1,spike:3,spikeC:0x6a5a8a,layers:3,r:.2},
+miniH('executioner','Executioner','mini:executioner',{muscle:true, scale:1.36, bodyW:1.2, waistK:1.08, skin:0xc8906a, stance:{torsoX:.1,headX:-.06,armLZ:.12}, gait:{stride:.85,bounce:1.3},
+  top:F(64,32,{c:0xc8906a,soft:false,custom:P=>{ for(let i=0;i<40;i++) P.px(P.rnd()*24-12,6+P.rnd()*10,0x8a5a3a); P.line(-9,14,-3,22,0xe8b090); P.line(4,8,10,16,0xe8b090); }}),
+  legs:0x241812, boot:0x140c08, bootTall:true, skirt:'none', sleeve:'bare', belt:0x2a1a10, loin:F(32,64,{c:0x3a2418,mottle:[0x2e1c12,.2],scatter:[{pat:'drop',c:0x5a0a0e,n:8,y0:4,y1:60}]}),
+  bracers:0x1a100a, hat:{type:'sack',c:0x0c0a0e,eyes:0xff3a2a}, headK:1.1, weapon:{kind:'axe',double:false,len:1.55,metal:M(0x9aa0a8,{metal:1}),wood:M(0x2a1a10)}, weaponK:1.15, fx:0xff5a3a,
+  dress(R,C){ for(const n of ['L','R']) GB.chain(R['elbow'+n],[[0,-.05,.06],[.05,-.12,.07],[0,-.2,.07],[-.05,-.27,.06]],M(0x5a5a60,{metal:.7}),5); GB.necklace(R,C,{t:'teeth',n:7,drop:.07}); }});
+miniH('corruptknight','Corrupted Knight','mini:corruptknight',{muscle:true, scale:1.32, bodyW:1.1, headK:1.02, skin:0x5a4a6a, stance:{torsoX:.1,headX:-.05}, gait:{stride:.85},
+  armor:{c:0x2e2240,c2:0x160e22,trim:0xd08aff,chest:true,arms:true,legs:true,metal:1}, faulds:true, pads:{c:0x3a2a52,metal:1,spike:3,spikeC:0x6a5a8a,layers:3,r:.2},
   hat:{type:'helm',type2:'knight',c:0x2e2240,c2:0x160e22,horns:0x0e0a14,slit:0xe08aff}, skirt:'none', cape:0x2a1040, capeHem:0x6a2a9a, rags:true, belt:0x160e22, cracks:0xd08aff,
-  weapon:{kind:'sword',metal:M(0x3a2a52,{metal:1}),guard:M(0x0e0a14,{metal:.8}),c:0xe08aff,len:1.15}, offhand:{kind:'kite',m:M(0x2e2240,{metal:.9}),rim:M(0x6a5a8a,{metal:1}),c:0xd08aff}, fx:0xd08aff});
+  weapon:{kind:'sword',metal:M(0x3a2a52,{metal:1}),guard:M(0x0e0a14,{metal:.8}),c:0xe08aff,len:1.15}, offhand:{kind:'kite',m:M(0x2e2240,{metal:.9}),rim:M(0x6a5a8a,{metal:1}),c:0xd08aff}, fx:0xd08aff,
+  dress(R,C){ const tm=M(0x1a0e24), tg=M(0xe08aff,{glow:true}); for(let i=0;i<5;i++){ const s=i%2?1:-1, a=(i-2)*.35, g=grp(R.torso,Math.sin(a)*.12,.4,-C.b.ch*C.dz); R.flick.push({o:g,ax:'z',a:.15,k:1,p:i,z0:0});
+      const pts=[[0,0,0],[Math.sin(a)*.2,.15,-.15],[Math.sin(a)*.4+s*.05,.35,-.2],[Math.sin(a)*.5,.6,-.12+s*.05]]; add(g,G.tube(pts,.05,.012,14,6),tm,0,0,0); add(g,G.sph(.025,5,4),tg,...pts[3]); } }});
 mini('giant_mimic','Giant Mimic','mini:giant_mimic',()=>LAB.mimicModel(1.75,true));
-miniH('dungeonwarden','Dungeon Warden','mini:dungeonwarden',{muscle:true, scale:1.38, bodyW:1.12, headK:1.0, skin:0x0a0a10, armor:{c:0x5a626e,c2:0x30343c,trim:0x8a7a5a,chest:true,arms:true,legs:true,metal:.95}, faulds:true, pads:{c:0x5a626e,metal:.95,layers:3,r:.2},
-  hat:{type:'helm',type2:'great',c:0x5a626e,c2:0x30343c,slit:0x8adcff,crest:0x6a1a1a}, skirt:'knee', robe:0x3a1414, tabard:0x6a1a1a, hem:0x8a7a5a, cape:0x2a1010, capeHem:0x8a7a5a, belt:0x2a1a10, belt2:0x8a7a5a,
-  weapon:{kind:'chain'}, offhand:{kind:'chain'}, fx:0x8adcff},{note:'An empty suit of armour that walks: only the light of its eyes inside the visor.'});
-miniH('alchemist','Plague Alchemist','mini:alchemist',{scale:1.22, skin:0xd8c8a8, robe:0x16141a, robeDk:0x0c0a10, top:0x16141a, trim:0x9be05a, hat:{type:'beak',c:0xe8dcc0,hat:0x0c0a10,lens:0x9be05a}, cape:0x0c0a10, capeHem:0x2a2a22, belt:0x3a2a1e, belt2:0x9be05a, sleeve:'flared', gloves:0x1a1410, mantle:0x0c0a10,
-  weapon:{kind:'flask',c:0x9be05a}, offhand:{kind:'flask',c:0xd0ff6a}, fx:0x9be05a});
-miniH('assassin','Shadow Assassin','mini:assassin',{slender:true, legK:1.12, armLen:1.1, scale:1.2, skin:0x2a1e32, face:'void', eyes:0xff3a5a, robe:0x1a1022, robeDk:0x0e0814, top:0x1a1022, skirt:'mini', skirtC:0x140c1c, rags:true, legs:0x140c1c, boot:0x0a060e, bootTall:true, sleeve:'tight', sleeveC:0x1a1022,
-  hat:{type:'hood',c:0x120a18}, cape:0x0e0814, capeLen:1.2, capeHem:0x4a1a2a, straps:0x2a1a2a, gloves:0x0a060e, belt:0x2a1a2a, ears:'none',
-  weapon:{kind:'dagger',c:0xff3a5a,metal:M(0x6a6a7a,{metal:1})}, offhand:{kind:'dagger',c:0xff3a5a,metal:M(0x6a6a7a,{metal:1})}, fx:0xff3a5a, onPose:(R,P)=>{ R.torso.rotation.x+=.18; R.head.rotation.x-=.1; }});
-LAB.ROSTER.push({id:'construct',group:'Minibosses',name:'Arcane Construct',ref:'mini:construct',cell:128,views:FRONT,moves:MOVES5,
-  build:LAB.creature(()=>steam({body:0x7a6a9a,dark:0x2a2838,trim:0xc8a050,glow:0x9fe8ff,size:.78,crest:true}))});
+miniH('dungeonwarden','Dungeon Warden','mini:dungeonwarden',{muscle:true, scale:1.38, bodyW:1.12, headK:1.0, skin:0x0a0a10, stance:{torsoX:.04}, gait:{stride:.8,bounce:1.2},
+  armor:{c:F(64,32,{c:0x5a626e,mottle:[0x4a525e,.2],scatter:[{pat:'dot',c:0x8a929e,n:14}]}),c2:0x30343c,trim:0x8a7a5a,chest:true,arms:true,legs:true,metal:.9}, faulds:true, pads:{c:0x5a626e,metal:.95,layers:3,r:.2},
+  hat:{type:'helm',type2:'great',c:0x5a626e,c2:0x30343c,slit:0x8adcff,crest:0x6a1a1a}, skirt:'knee', robe:0x3a1414,
+  tabard:F(32,64,{c:0x6a1a1a,custom:P=>{ for(let y=14;y<34;y++) P.px(16,y,0xd8c8a0); for(let x=10;x<23;x++) P.px(x,20,0xd8c8a0); P.rect(13,12,7,3,0xd8c8a0); }}), hem:0x8a7a5a, cape:0x2a1010, capeHem:0x8a7a5a, belt:0x2a1a10, belt2:0x8a7a5a,
+  weapon:{kind:'chain'}, offhand:{kind:'chain'}, fx:0x8adcff,
+  dress(R,C){ const f1=M(0x8adcff,{glow:true}), f2=M(0xd8f4ff,{glow:true}), f3=M(0x3a7ac8,{glow:true});
+    const fl=(par,x,y,z,k)=>{ const g=grp(par,x,y,z); R.flick.push({o:g,ax:'z',a:.2,k:2,p:x*9+y,z0:0}); add(g,G.cone(.07*k,.3*k,6),f3,0,.12*k,0); add(g,G.cone(.05*k,.24*k,6),f1,0,.1*k,.01); add(g,G.cone(.025*k,.14*k,5),f2,0,.06*k,.02); };
+    fl(R.head,0,.4,0,1.3); fl(R.head,.1,.36,-.05,.9); fl(R.head,-.1,.36,-.05,.9); for(const n of ['L','R']) fl(R['hand'+n],0,.06,0,.7); fl(R.torso,0,.6,-.05,1); }},{note:'An empty suit of armour that walks: ghost-fire burns where its head should be and leaks from its gauntlets.'});
+miniH('alchemist','Plague Alchemist','mini:alchemist',{scale:1.22, skin:0xd8c8a8, robe:F(128,64,{c:0x16141a,mottle:[0x101014,.2],rows:[{y0:56,y1:64,c:0x101014,pat:'drop',pc:0x9be05a,every:9,pfg:{glow:true}}]}), robeDk:0x0c0a10, top:0x16141a,
+  trim:0x9be05a, hat:{type:'beak',c:0xe8dcc0,hat:0x0c0a10,lens:0x9be05a}, cape:0x0c0a10, capeHem:0x2a2a22, belt:0x3a2a1e, belt2:0x9be05a, sleeve:'flared', gloves:0x1a1410, mantle:0x0c0a10,
+  stance:{torsoX:.12,headX:-.04}, gait:{stride:.8},
+  weapon:{kind:'flask',c:0x9be05a}, offhand:{kind:'flask',c:0xd0ff6a}, fx:0x9be05a,
+  dress(R,C){ const b=C.b; GB.strap(R,C,[-b.sh*.7,.5,b.ch*C.dz*.6],[b.wa*.9,.08,b.wa*C.dz*.9],0x3a2a1e,.05);
+    for(let i=0;i<5;i++){ const u=i/4, x=-b.sh*.55+u*(b.wa*.9+b.sh*.55), y=.46-u*.36, z=b.ch*C.dz*.75+.04; add(R.torso,G.cyl(.022,.022,.07,6),M([0x9be05a,0xd0ff6a,0x6aff9a][i%3],{glow:true}),x,y,z); add(R.torso,G.cyl(.012,.012,.02,5),M(0x6b4428),x,y+.045,z); }
+    GB.belt(R,C,{mat:null,items:[{t:'lantern',a:1.4,c:0x9be05a},{t:'pouch',a:-1.3,c:0x3a2a1e}]}); }});
+miniH('assassin','Shadow Assassin','mini:assassin',{slender:true, legK:1.12, armLen:1.1, scale:1.2, skin:0xc8a088, fp:{eyes:{style:'narrow',c:0xff3a5a,glow:true}, brows:{style:'angry',c:0x1a0a10}, nose:'none', mouth:'none', paint:{type:'mask',c:0x1a0a14}},
+  robe:0x1a1022, robeDk:0x0e0814, top:F(64,32,{c:0x1a1022,custom:P=>{ for(let y=4;y<28;y++) P.px(Math.round(-6+y*.5),y,0x6a1a2a); }}), skirt:'mini', skirtC:0x140c1c, rags:true, legs:0x140c1c, boot:0x0a060e, bootTall:true, sleeve:'tight', sleeveC:0x1a1022,
+  hat:{type:'hood',c:0x120a18}, cape:0x0e0814, capeLen:1.2, capeHem:0x4a1a2a, straps:0x2a1a2a, gloves:0x0a060e, belt:0x6a1a2a, ears:'none',
+  stance:{torsoX:.22,headX:-.14,kneeL:.25,kneeR:.25,hipsY:-.05,legL:-.15,legR:.1}, gait:{stride:1.2,bounce:.6},
+  weapon:{kind:'dagger',c:0xff3a5a,metal:M(0x6a6a7a,{metal:1})}, offhand:{kind:'dagger',c:0xff3a5a,metal:M(0x6a6a7a,{metal:1})}, fx:0xff3a5a,
+  dress(R,C){ add(R.head,G.robe([[.17,-.02],[.175,.08],[.165,.12]],6,.01,20),M(0x6a1a2a,{soft:true}),0,0,0).scale.set(1,1,1.02); for(const s of [1,-1]) add(R.torso,G.cloth(.06,.4,1.3,1,.01,.012),M(0x6a1a2a,{soft:true}),.06*s,.06,-C.b.wa*C.dz-.04,.15,0,s*.12); }});
+/* ---------- Arcane Construct: a hovering rune-stone shell round a blazing crystal, a one-eyed mask, fists that float free ---------- */
+LAB.ROSTER.push({id:'construct',group:'Minibosses',name:'Arcane Construct',ref:'mini:construct',cell:176,views:FRONT,moves:MOVES5,
+  build:LAB.creature(()=>{ const root=grp(null), body=grp(root,0,1.2,0); root.scale.setScalar(1.3);
+    const stoneT=F(64,64,{c:0x6a5a8a,mottle:[0x5a4a7a,.2],mottle2:[0x7a6a9a,.1],rows:[{y0:20,y1:23,c:0x4a3a6a,pat:'rune',pc:0x9fe8ff,every:8,pfg:{glow:true}},{y0:44,y1:47,c:0x4a3a6a,pat:'rune',pc:0x9fe8ff,every:8,off:4,pfg:{glow:true}}]});
+    const st=MT(stoneT,{facet:true}), br=M(0xc8a050,{metal:.9}), gl=M(0x9fe8ff,{glow:true}), gw=M(0xffffff,{glow:true}), dk=M(0x140e20);
+    // shell: two halves of a cracked egg of stone, split at the front round the crystal
+    add(body,G.arc([[.3,-.5],[.5,-.2],[.58,.15],[.5,.5],[.28,.72]],.55,PI*2-1.1,0,0,22),MT(stoneT,{facet:true,side:DS}),0,0,0).scale.z=.85;
+    for(const y of [-.32,.32]) add(body,G.tor(.52,.03,5,22),br,0,y,0,PI/2).scale.set(1,.85,1);
+    for(let i=0;i<6;i++){ const a=-.5+i*.2; add(body,G.box(.02,.6,.03),br,Math.sin(a)*.42,.1,Math.cos(a)*.42*.85+.04,0,a,0); }
+    const core=grp(body,0,.1,.1); add(core,G.oct(.24),gl,0,0,0).scale.set(1,1.5,1); add(core,G.oct(.1),gw,0,0,.08).scale.set(1,1.5,1);
+    // collar, mask with one great eye, crest
+    add(body,G.cyl(.3,.4,.12,10),st,0,.72,0); const head=grp(body,0,.95,.02);
+    add(head,G.box(.36,.36,.28),st,0,0,0); add(head,G.box(.4,.06,.32),br,0,.2,0); add(head,G.cone(.07,.3,4),br,0,.36,-.02);
+    add(head,G.cyl(.1,.1,.06,14),dk,0,.0,.15,PI/2); add(head,G.cyl(.07,.07,.07,14),gl,0,.0,.16,PI/2); add(head,G.cyl(.03,.03,.08,8),gw,0,0,.17,PI/2);
+    for(const s of [1,-1]) add(head,G.box(.04,.2,.04),br,.17*s,-.06,.14);
+    // fists floating free of the body, joined to it only by light
+    const fists=[]; for(const s of [1,-1]){ const f=grp(body,.82*s,-.05,.05); add(f,G.sph(.17,10,8),st,0,0,0).scale.set(1,1.1,1); add(f,G.box(.3,.22,.24),st,0,-.18,.02);
+      for(let i=0;i<4;i++) add(f,G.box(.06,.08,.07),br,(i-1.5)*.07,-.28,.1); add(f,G.tor(.16,.02,4,14),gl,0,.02,0,PI/2); const sh2=add(body,G.sph(.18,10,8),st,.6*s,.42,0); sh2.scale.set(1,.8,1); add(body,G.oct(.05),gl,.7*s,.2,.02); fists.push([f,s]); }
+    // below: no legs, a tapering spill of stones and light
+    const tail=grp(body,0,-.55,0); for(let i=0;i<5;i++) add(tail,G.rock(.13-i*.02,i+3,.3,0),st,Math.sin(i*2)*.08,-i*.16,Math.cos(i*2)*.06); for(let i=0;i<3;i++) add(tail,G.oct(.04),gl,Math.sin(i*2.1)*.15,-.2-i*.18,.05);
+    // orbiting rune stones
+    const orb=grp(root); for(let i=0;i<4;i++){ const o=add(orb,G.rock(.08,i+9,.3,0),st,0,0,0); add(o,G.box(.05,.05,.01),gl,0,0,.075); }
+    const fx=LAB.motes(root,0x9fe8ff,1.9,.9);
+    return {root, apply:(g)=>{ body.position.y=1.2+.06*Math.sin(g.t*PI*2)+.12*g.raise; body.rotation.x=.18*g.strike-.12*g.wind-.18*g.hurt; body.position.z=.25*g.strike;
+      core.scale.setScalar(1+.15*Math.sin(g.t*PI*4)+.4*g.raise); head.rotation.x=-.2*g.hurt+.1*g.strike;
+      fists.forEach(([f,s],i)=>{ f.position.set(.82*s,-.05+.08*Math.sin(g.t*PI*2+i)+.6*g.raise,.05+(i?.9*g.strike-.3*g.wind:.2*g.strike)); f.rotation.x=-.6*g.raise+(i?-.6*g.strike:0); });
+      tail.rotation.z=.1*Math.sin(g.t*PI*2); tail.rotation.x=-.25*Math.abs(g.step);
+      orb.children.forEach((o,i)=>{ const a=i/4*PI*2+g.t*PI*2*.5; o.position.set(Math.cos(a)*1.0,1.0+.3*Math.sin(a*2)+.3*g.raise,Math.sin(a)*.7); o.rotation.set(a,a*2,0); }); fx.update(g.raise,g.t); }}; })});
 miniH('bonecollector','Bone Collector','mini:bonecollector',{scale:1.28, bodyW:1.05, skin:0x9aa08a, eyes:0xffe86a, eyeGlow:true, angry:true, jaw:true, ears:'human', nose:true, brows:false, stitches:0x2a1a14,
-  top:0x4a3a2c, robe:0x2a221c, robeDk:0x1a1410, skirt:'knee', apron:0x6a4a2a, blood:0x6a0a0e, sleeve:'tight', sleeveC:0x2a221c, gloves:0x3a2418, boot:0x1a120c, bootTall:true, belt:0x2a1a10,
-  hat:{type:'mask'}, bones:0xe8dcc0, weapon:{kind:'saw'}, offhand:{kind:'hook'}, fx:0x9bff6a, onPose:(R,P)=>{ R.torso.rotation.x+=.28; R.head.rotation.x-=.22; }},{note:'A medieval surgeon gone wrong: stitched grey skin, a bloodied leather apron, a bone saw and a hook.'});
+  fp:{eyes:{style:'glow',c:0xffe86a}, mouth:'stitched', sunken:0x2a2a1a, paint:{type:'veins',c:0x5a6a4a}},
+  top:0x4a3a2c, robe:0x2a221c, robeDk:0x1a1410, skirt:'knee', apron:F(32,64,{c:0x6a4a2a,mottle:[0x5a3a20,.18],scatter:[{pat:'drop',c:0x6a0a0e,n:18,y0:6,y1:60},{pat:'dot2',c:0x4a0608,n:20}]}), sleeve:'tight', sleeveC:0x2a221c, gloves:0x3a2418, boot:0x1a120c, bootTall:true, belt:0x2a1a10,
+  hat:{type:'mask'}, bones:0xe8dcc0, weapon:{kind:'saw'}, offhand:{kind:'hook'}, fx:0x9bff6a, stance:{torsoX:.3,headX:-.24,armLZ:.1}, gait:{stride:.75,sway:.06,bounce:.9},
+  dress(R,C){ const b=C.b, sk=grp(R.torso,0,.32,-b.ch*C.dz-.16); add(sk,G.sph(.24,12,10),M(0x6a5a3a,{soft:true}),0,0,0).scale.set(1,1.25,.85); add(sk,G.tor(.1,.03,5,10),M(0x3a2a1a),0,.28,0,PI/2);
+    for(let i=0;i<6;i++){ const a=i/6*PI*2; const bn=add(sk,G.cyl(.018,.018,.32,5),M(0xe8dcc0),Math.sin(a)*.08,.38,Math.cos(a)*.06); LAB.aim(bn,Math.sin(a)*.4,1,Math.cos(a)*.3); add(sk,G.sph(.03,5,4),M(0xe8dcc0),Math.sin(a)*.14,.52,Math.cos(a)*.1); }
+    add(sk,G.sph(.07,8,6),M(0xe8dcc0),.1,.42,.05); GB.strap(R,C,[-b.sh*.6,.52,b.ch*C.dz*.5],[b.wa*.8,.1,b.wa*C.dz*.9],0x3a2a1a,.04);
+    GB.necklace(R,C,{t:'bones',c:0xe8dcc0,n:11,drop:.08}); }},{note:'A medieval surgeon gone wrong: stitched grey skin, a blood-spattered apron, a sack of bones on his back, a bone saw and a hook.'});
 })();

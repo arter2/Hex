@@ -3,7 +3,7 @@
 (function(){
 const {grp}=LAB, PI=Math.PI;
 for(const id in LAB.GAME_WEAPONS){ const spec=LAB.GAME_WEAPONS[id];
-  LAB.ROSTER.push({id:'w_'+id, group:'Weapons', name:spec.name+(spec.legendary?' (legendary)':''), ref:'gear:'+id, cell:96, base:48, views:[{name:'icon',yaw:0}], moves:['icon','spin'],
+  LAB.ROSTER.push({id:'w_'+id, group:'Weapons', name:spec.name+(spec.legendary?' (legendary)':''), ref:'gear:'+id, cell:128, base:64, views:[{name:'icon',yaw:0}], moves:['icon','spin'],
     build:()=>{ const root=grp(null), turn=grp(root), tilt=grp(turn), w=LAB.weapon(spec); tilt.add(w);
       // icons exaggerate what tells weapons apart: thicker shafts, bigger heads
       if(['staff','spear','wand','branch','rune2','trident2','fang2'].includes(spec.kind)){ const L=spec.kind==='wand'||(spec.kind==='branch'&&spec.len<1)?1.25:1.5; w.scale.set(L,1,L); w.traverse(o=>{ if(o.userData.gem) o.scale.setScalar(1.5); });

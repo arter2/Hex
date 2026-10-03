@@ -26,6 +26,9 @@ function head(g,type,c,h){ const gm=glow(c), core=glow(0xffffff);
     case 'ghost':{ add(H,G.tor(.09,.016,5,10),IRON,0,.12,0); add(H,G.tor(.09,.016,5,10),IRON,0,.12,0,0,PI/2); const w=add(H,G.sph(.07,8,6),gm,0,.12,0); w.scale.set(1,1.3,1); add(H,G.cone(.05,.14,6),gm,0,.24,0); break; }
     case 'feather':{ add(H,G.oct(.08),gm,0,.08,0).scale.set(1,1.5,1); for(const s of [1,-1]){ const f=add(H,G.box(.05,.22,.015),M(0xf1ead8),.07*s,-.08,.02,0,0,.35*s); } add(H,G.sph(.03,5,4),M(0xc8463a),0,-.04,.05); break; }
     case 'antler':{ for(const s of [1,-1]) add(H,G.tube([[0,0,0],[.08*s,.12,0],[.12*s,.26,0],[.06*s,.34,0]],.025,.01,8,5),BONE,0,0,0); add(H,G.sph(.06,8,6),gm,0,.12,0); break; }
+    case 'prism':{ add(H,G.cyl(.06,.05,.03,10),SILVER,0,0,0); add(H,G.cyl(.075,.075,.012,14),M(0xbff4ff,{metal:.9}),0,.025,0);
+      const o=add(H,G.oct(1),gm,0,.2,0); o.scale.set(.05,.17,.05); o.rotation.y=PI/4; add(H,G.oct(1),core,0,.2,.012).scale.set(.02,.08,.02);
+      for(let i=0;i<3;i++){ const a=i/3*PI*2; add(H,G.tube([[Math.sin(a)*.05,.02,Math.cos(a)*.05],[Math.sin(a)*.08,.12,Math.cos(a)*.08],[Math.sin(a)*.045,.24,Math.cos(a)*.045]],.014,.006,8,4),SILVER,0,0,0); } break; }
     case 'star':{ add(H,G.tor(.13,.02,5,14),GOLD,0,.13,0); const s=add(H,G.oct(.13),gm,0,.13,0); s.scale.set(1,1.4,.7); add(H,G.oct(.05),core,0,.14,.05);
       for(let i=0;i<4;i++) add(H,G.cone(.03,.12,4),GOLD,Math.cos(i*PI/2)*.17,.13+Math.sin(i*PI/2)*.17,0,0,0,i*PI/2-PI/2); break; }
     case 'rune':{ for(let i=0;i<3;i++) add(H,G.tor(.04,.014,4,10),glow(c),0,-.25-i*.12,0,PI/2); add(H,G.cyl(.06,.035,.16,6),M(0x6b6f7a),0,.08,0); add(H,G.oct(.065),gm,0,.22,0).scale.set(1,1.5,1); break; }
@@ -36,7 +39,8 @@ function head(g,type,c,h){ const gm=glow(c), core=glow(0xffffff);
   } return H; }
 
 /* spec: {kind, wood, head, c, len} for staffs; other kinds take their own fields */
-LAB.weapon=function(spec){ const g=grp(null), k=spec.kind, w=spec.wood||WOOD, c=spec.c||EL.verdant;
+const SPIRAL=()=>LAB.MT(LAB.fabric(32,32,{c:0x4a2a18,soft:false,custom:P=>{ for(let y=0;y<32;y++) for(let x=0;x<32;x++){ const k=(x+y*2)%8; if(k<2) P.px(x,y,0x7a4a28); else if(k===2) P.px(x,y,0x2a160c); } }}));
+LAB.weapon=function(spec){ const g=grp(null), k=spec.kind, w=spec.wood==='spiral'?SPIRAL():spec.wood||WOOD, c=spec.c||EL.verdant;
   if(k==='staff'){ const L=spec.len||1.7, lo=-.65; add(g,G.cyl(.024,.03,L,6),w,0,lo+L/2,0);
     if(spec.wrap) add(g,G.cyl(.034,.034,.16,6),spec.wrap,0,.05,0);
     if(spec.bands) for(let i=0;i<spec.bands.n;i++) add(g,G.cyl(.033,.033,.03,6),spec.bands.m,0,lo+L-.12-i*.18,0);
@@ -45,6 +49,7 @@ LAB.weapon=function(spec){ const g=grp(null), k=spec.kind, w=spec.wood||WOOD, c=
     if(spec.grip) add(g,G.cyl(.03,.03,.14,6),spec.grip,0,0,0);
     if(spec.bands) for(let i=0;i<spec.bands.n;i++) add(g,G.cyl(.024,.024,.022,6),spec.bands.m,0,.12+i*.09,0);
     const top=L-.08; g.userData.top=top; g.userData.gemAt=top+.04;
+    if(spec.pommel) add(g,G.sph(.032,8,6),M(0xf4ead0),0,-.15,0);
     if(spec.carved){ add(g,G.lathe([[.001,-.14],[.036,-.13],[.04,-.09],[.03,-.06],[.036,-.02],[.03,.04],[.034,.08],[.026,.11]],10),spec.grip||w,0,0,0); for(const y of [-.06,.02,.09]) add(g,G.tor(.033,.008,4,10),spec.ring||GOLD,0,y,0,PI/2); }
     if(spec.broken){ for(let i=0;i<5;i++) add(g,G.cone(.008,.05+(i%2)*.03,3),w,(i-2)*.007,top+.0,(i%2)*.006,0,0,(i-2)*.25);
       add(g,G.tube([[.01,top-.02,0],[.06,top-.1,.02],[.08,top-.2,.01]],.008,.004,6,3),w,0,0,0); add(g,G.box(.006,.18,.012),M(0x2a1a0e),.012,top-.2,.016);
@@ -102,7 +107,9 @@ LAB.weapon=function(spec){ const g=grp(null), k=spec.kind, w=spec.wood||WOOD, c=
     const top=pts[10]; const lm=[M(0x4fa83a,{soft:true}),M(0x7ad04a,{soft:true}),M(0x2e7a2a,{soft:true})];
     for(let i=0;i<(spec.twigs||4);i++){ const a=i*2.1, y=top[1]-.04-i*.07*L/1.7, len=(.18+.08*(i%2))*L/1.7; add(g,G.tube([[top[0],y,top[2]],[top[0]+Math.sin(a)*len*.6,y+len*.5,Math.cos(a)*len*.5],[top[0]+Math.sin(a)*len,y+len*.85,Math.cos(a)*len*.7]],r0*.55,r0*.2,8,5),w,0,0,0);
       const lf=add(g,G.leaf(.05*L/1.7+.015,.13*L/1.7+.03),lm[i%3],top[0]+Math.sin(a)*len,y+len*.85,Math.cos(a)*len*.7,0,a,Math.sin(a)*.8); lf.userData.gem=true; }
-    if(spec.c){ const H=grp(g,top[0],top[1]+.03,top[2]); H.userData.gem=true; add(H,G.sph(.06*L/1.7+.02,10,8),glow(spec.c),0,.02,0); add(H,G.sph(.025*L/1.7+.01,6,5),glow(0xffffff),-.01,.03,.03); }
+    if(spec.acorn){ const H=grp(g,top[0],top[1]+.03,top[2]); H.userData.gem=true; add(H,G.sph(.042,10,8),glow(spec.c),0,.0,0).scale.set(1,1.35,1); add(H,G.sph(.018,6,5),glow(0xffffff),-.012,.01,.03);
+      add(H,G.cap(.05,.5,12,6),M(0x6a4a24),0,.035,0).scale.set(1,.8,1); add(H,G.cyl(.008,.01,.05,5),M(0x4a3018),0,.085,0); }
+    else if(spec.c){ const H=grp(g,top[0],top[1]+.03,top[2]); H.userData.gem=true; add(H,G.sph(.06*L/1.7+.02,10,8),glow(spec.c),0,.02,0); add(H,G.sph(.025*L/1.7+.01,6,5),glow(0xffffff),-.01,.03,.03); }
     g.userData.top=top[1]; g.userData.gemAt=top[1]+.04; }
   else if(k==='crossbow'){ // stock along +y, prod across the front, string drawn back to the nut, stirrup, trigger, loaded bolt
     const st=spec.wood||WOOD, met=spec.metal||IRON, dk=spec.dark||DWOOD;
@@ -129,8 +136,9 @@ LAB.weapon=function(spec){ const g=grp(null), k=spec.kind, w=spec.wood||WOOD, c=
     const L=spec.len||1.6, top=L-.6, ice=M(0xd8f4ff,{metal:.8,facet:true}), ice2=M(0x8fd0f4,{metal:.6,facet:true});
     add(g,G.cyl(.024,.028,L,6),w,0,L/2-.6,0); for(let i=0;i<5;i++){ const s=add(g,G.oct(1),i%2?ice:ice2,.03*(i%2?1:-1),top-.6+i*.12,0,0,0,(i%2?-.5:.5)); s.scale.set(.025,.07,.025); }
     add(g,G.tor(.05,.014,4,10),SILVER,0,top,0,PI/2); const H=grp(g,0,top,0); H.userData.gem=true;
-    const f=add(H,G.oct(1),ice,0,.24,0); f.scale.set(.07,.26,.035); add(H,G.oct(1),glow(spec.c||0x8fdcff),0,.2,0).scale.set(.03,.15,.04);
-    for(const s of [1,-1]){ const a=add(H,G.oct(1),ice2,.07*s,.08,0,0,0,-.7*s); a.scale.set(.03,.12,.02); const b2=add(H,G.oct(1),ice,.1*s,.18,0,0,0,-.35*s); b2.scale.set(.02,.08,.015); }
+    add(H,G.tube([[0,0,0],[.02,.14,0],[.07,.3,0],[.15,.42,0],[.24,.46,0]],.075,.006,16,7),ice,0,0,0); add(H,G.tube([[0,.02,.02],[.02,.14,.025],[.07,.28,.02],[.13,.38,.01]],.03,.004,12,5),glow(spec.c||0x8fdcff),0,0,0);
+    for(let i=0;i<6;i++){ const a=i/6*PI*2; const t=add(H,G.cone(.016,.08,4),ice2,Math.sin(a)*.06,.02,Math.cos(a)*.06); LAB.aim(t,Math.sin(a)*.5,1,Math.cos(a)*.5); }
+    add(H,G.tor(.065,.016,4,12),M(0xe8f8ff,{metal:.9}),0,-.01,0,PI/2);
     g.userData.top=top+.5; g.userData.gemAt=top+.2; }
   else if(k==='rune2'){ // a heavy celtic staff: thick shaft, knotwork bands, carved glowing runes, bound stone head
     const L=spec.len||1.75, lo=-.65, top=lo+L, wd=w, knot=M(0x3a2a18), gl=glow(spec.c||0x7fd4ff), stone=M(0x6a6e78,{facet:true});
@@ -162,14 +170,14 @@ LAB.shield=function(spec){ const g=grp(null);
 /* the game's 21 weapons */
 LAB.GAME_WEAPONS={
   broken_wand:{name:'Broken Wand', kind:'wand', wood:M(0x7a5232), carved:true, grip:M(0x5a3a22), ring:M(0x9a8a6a,{metal:.6}), broken:true, len:.36, c:0xfff2c8},
-  basic_wand:{name:'Basic Wand', kind:'wand', wood:M(0x8a5a32), carved:true, grip:M(0x5a3820), ring:GOLD, tip:'ivory', c:0xfff2c8, len:.56},
-  oak_wand:{name:'Oak Wand', kind:'branch', wood:M(0x6e4528), len:.62, lo:-.12, r:.02, kink:.04, twigs:3, c:EL.verdant, seed:3},
+  basic_wand:{name:'Basic Wand', kind:'wand', wood:'spiral', carved:true, grip:M(0x3a2214), ring:M(0xf4ead0), tip:'ivory', pommel:true, c:0xfff2c8, len:.6},
+  oak_wand:{name:'Oak Wand', kind:'branch', wood:M(0x6e4528), len:.62, lo:-.12, r:.02, kink:.04, twigs:2, c:0xd8ff6a, acorn:true, seed:3},
   quick_wand:{name:'Quick Wand', kind:'wand', wood:PALE, bands:{n:3,m:SILVER}, c:0x9ff4ff},
   ice_wand:{name:'Thin Wand of Ice', kind:'wand', wood:M(0xc8ecff,{metal:.7,facet:true}), carved:true, grip:M(0x9ad4f4,{metal:.6,facet:true}), ring:M(0xe8f8ff,{metal:.9}), tip:'icicle', c:EL.frost, len:.52},
   volt_wand:{name:'Wand of Electricity', kind:'wand', wood:IRON, tip:'spark', c:EL.storm},
   dark_wand:{name:'Wand of Darkness', kind:'wand', wood:DARK, grip:M(0x4a2a5a), tip:'moon', c:EL.shadow},
   light_wand:{name:'Wand of Light', kind:'wand', wood:M(0xf3ead6), grip:GOLD, tip:'sunburst', c:EL.light},
-  focus_rod:{name:'Focus Rod', kind:'staff', wood:SILVER, head:'orb', c:0x7fe8ff, len:1.45},
+  focus_rod:{name:'Focus Rod', kind:'staff', wood:SILVER, wrap:M(0x2a3a4a), head:'prism', c:0x7fe8ff, len:1.45},
   storm_scepter:{name:'Storm Scepter', kind:'wand', wood:GOLD, tip:'scepter', c:EL.storm, len:.6},
   archmage_staff:{name:"Archmage's Staff", kind:'staff', wood:M(0x4a3a6a), head:'star', c:0x9fe8ff, bands:{n:3,m:GOLD}, len:1.85},
   rune_staff:{name:'Runecarved Staff', kind:'rune2', wood:M(0x6a4a2c), c:0x7fd4ff, len:1.75},

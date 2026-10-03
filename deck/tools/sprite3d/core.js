@@ -6,17 +6,23 @@
 (function(){
 const T=THREE;
 const LAB=window.LAB={};
-const PPU=LAB.PPU=33;            // pixels per world unit for every character
+const PPU=LAB.PPU=44;            // pixels per world unit for every character
+LAB.ELEV=30*Math.PI/180;
 const EL=30*Math.PI/180;          // camera elevation
 
 /* ---------- part helpers ---------- */
 let pidN=0;
-const M=LAB.M=(c,o={})=>({c:new T.Color(c),glow:!!o.glow,metal:o.metal||0,side:o.side||T.FrontSide,soft:!!o.soft,facet:!!o.facet});
+const M=LAB.M=(c,o={})=>({c:new T.Color(c),glow:!!o.glow,metal:o.metal||0,side:o.side||T.FrontSide,soft:!!o.soft,facet:!!o.facet,tex:o.tex||null});
+// a material from a colour, a material, or a painted texture {map,fmap}
+LAB.mat=(v,o={})=>v==null?null:(typeof v==='object'&&v.c)?v:(typeof v==='object'&&v.map)?M(0xffffff,Object.assign({},o,{tex:v})):M(v,o);
 LAB.mesh=(geo,m,x=0,y=0,z=0,rx=0,ry=0,rz=0)=>{ const o=new T.Mesh(geo); o.userData.m=m; o.userData.pid=1+(pidN++%250);
   o.position.set(x,y,z); o.rotation.set(rx,ry,rz); o.castShadow=!m.glow; o.receiveShadow=true; return o; };
 LAB.grp=(p,x=0,y=0,z=0)=>{ const o=new T.Group(); o.position.set(x,y,z); if(p) p.add(o); return o; };
 LAB.aim=(o,dx,dy,dz)=>{ o.quaternion.setFromUnitVectors(new T.Vector3(0,1,0),new T.Vector3(dx,dy,dz).normalize()); return o; };
 LAB.add=(p,...a)=>{ const o=LAB.mesh(...a); p.add(o); return o; };
+// lathe v runs by point index; make it run by height so painted bands sit where they are drawn
+LAB.vfix=g=>{ const p=g.attributes.position, uv=g.attributes.uv; let lo=1e9, hi=-1e9; for(let i=0;i<p.count;i++){ lo=Math.min(lo,p.getY(i)); hi=Math.max(hi,p.getY(i)); }
+  for(let i=0;i<p.count;i++) uv.setY(i,(p.getY(i)-lo)/((hi-lo)||1)); uv.needsUpdate=true; g.userData.yr=[lo,hi]; return g; };
 const G=LAB.G={
   cyl:(rt,rb,h,s=10)=>new T.CylinderGeometry(rt,rb,h,s),
   box:(w,h,d)=>new T.BoxGeometry(w,h,d),
@@ -27,7 +33,7 @@ const G=LAB.G={
   oct:r=>new T.OctahedronGeometry(r),
   ico:(r,d=0)=>new T.IcosahedronGeometry(r,d),
   dod:r=>new T.DodecahedronGeometry(r),
-  lathe:(pts,s=14,gap=0)=>new T.LatheGeometry(pts.map(([r,y])=>new T.Vector2(Math.max(1e-4,r),y)),s,gap/2,Math.PI*2-gap),
+  lathe:(pts,s=14,gap=0)=>LAB.vfix(new T.LatheGeometry(pts.map(([r,y])=>new T.Vector2(Math.max(1e-4,r),y)),s,gap/2,Math.PI*2-gap)),
   // a leaf: flat pointed blade, tip toward +y
   leaf:(w=.06,h=.14)=>{ const g=new T.OctahedronGeometry(1,0); g.scale(w,h/2,w*.22); g.translate(0,h/2,0); return g; },
   // a ring lying flat (XZ) between r0 and r1, deformed by f(x,z,r,a)->dy
@@ -35,10 +41,11 @@ const G=LAB.G={
     for(let i=0;i<p.count;i++){ const x=p.getX(i), z=-p.getY(i), r=Math.hypot(x,z), a=Math.atan2(x,z); p.setXYZ(i,x,f?f(x,z,r,a):0,z); }
     g.computeVertexNormals(); return g; },
   // a robe: lathe whose radius ripples into folds, deeper toward the hem
-  robe:(pts,folds=7,amp=.028,s=42,gap=0)=>{ const g=new T.LatheGeometry(pts.map(([r,y])=>new T.Vector2(Math.max(1e-4,r),y)),s,gap/2,Math.PI*2-gap), p=g.attributes.position;
+  robe:(pts,folds=7,amp=.028,s=42,gap=0,hem)=>{ const g=new T.LatheGeometry(pts.map(([r,y])=>new T.Vector2(Math.max(1e-4,r),y)),s,gap/2,Math.PI*2-gap), p=g.attributes.position;
     const ys=pts.map(q=>q[1]), top=Math.max(...ys), bot=Math.min(...ys);
     for(let i=0;i<p.count;i++){ const x=p.getX(i), z=p.getZ(i), y=p.getY(i), a=Math.atan2(x,z), d=(top-y)/(top-bot||1);
       const k=1+amp*d*Math.sin(a*folds+Math.sin(a*3)*.8)/Math.max(.12,Math.hypot(x,z)); p.setX(i,x*k); p.setZ(i,z*k); }
+    LAB.vfix(g); if(hem){ const ys=new Float32Array(p.count); for(let i=0;i<p.count;i++){ const y=p.getY(i); if(Math.abs(y-bot)<1e-6){ const a=Math.atan2(p.getX(i),p.getZ(i)); p.setY(i,y+hem(a)); } } }
     g.computeVertexNormals(); return g; },
   // cloth panel hanging down from y=0: widened toward the bottom by k, rippled into folds
   cloth:(w,h,k=1.4,folds=3,amp=.03,d=.03)=>{ const g=new T.BoxGeometry(w,h,d,12,8,1), p=g.attributes.position;
@@ -74,12 +81,16 @@ const facetL=new T.MeshPhongMaterial({color:0xffffff,flatShading:true,shininess:
 const depthM=[new T.MeshDepthMaterial({depthPacking:T.RGBADepthPacking}),new T.MeshDepthMaterial({depthPacking:T.RGBADepthPacking,side:T.DoubleSide})];
 const basicCache=new Map();
 const basic=(c,side)=>{ const k=c.getHexString()+side; if(!basicCache.has(k)) basicCache.set(k,new T.MeshBasicMaterial({color:c,side})); return basicCache.get(k); };
-function setPass(root,pass){ root.traverse(o=>{ if(!o.isMesh) return; const m=o.userData.m, d=m.side===T.DoubleSide?1:0;
-  if(pass==='albedo') o.material=basic(m.c,m.side);
+// painted textures: the colour map feeds the albedo pass; the flags map (R glow/soft, G metal) is
+// multiplied by (1,1,pid) so the part id survives for the contour lines
+const texCache=new Map();
+const texMat=(map,side,col)=>{ const k=map.uuid+side+(col?col.getHexString():''); if(!texCache.has(k)) texCache.set(k,new T.MeshBasicMaterial({map,side,color:col||0xffffff,alphaTest:.5})); return texCache.get(k); };
+function setPass(root,pass){ root.traverse(o=>{ if(!o.isMesh) return; const m=o.userData.m, d=m.side===T.DoubleSide?1:0, tx=m.tex;
+  if(pass==='albedo') o.material=tx?texMat(tx.map,m.side):basic(m.c,m.side);
   else if(pass==='light') o.material=m.glow?white:m.facet?facetL:lambert[d];
   else if(pass==='normal') o.material=m.facet?facetN:normalM[d];
   else if(pass==='depth') o.material=depthM[d];
-  else if(pass==='flags') o.material=basic(new T.Color((m.glow?255:m.soft?128:0)/255,Math.round(m.metal*255)/255,o.userData.pid/255),m.side); }); }
+  else if(pass==='flags') o.material=tx?texMat(tx.fmap,m.side,new T.Color(1,1,o.userData.pid/255)):basic(new T.Color((m.glow?255:m.soft?128:0)/255,Math.round(m.metal*255)/255,o.userData.pid/255),m.side); }); }
 
 function camFor(size,base){ const h=size/PPU, c=new T.OrthographicCamera(-h/2,h/2,h/2,-h/2,.1,60);
   const ty=(h/2-base/PPU)/Math.cos(EL); c.position.set(0,ty+20*Math.sin(EL),20*Math.cos(EL)); c.lookAt(0,ty,0); c.updateMatrixWorld(); return c; }

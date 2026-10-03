@@ -168,16 +168,11 @@ function gearIcon(id,size=48){ const G=GEAR[id], col=(COLORS[G.family]||{}).c||'
   return `<img class="pxi" src="${icon(gearIconName(id),col)}" width="${size}" height="${size}" alt="">`; }
 function uiIcon(name,size=48,accent){ return `<img class="pxi" src="${icon(name,accent)}" width="${size}" height="${size}" alt="">`; }
 
-/* ---------- the camp scene, one per area ---------- */
+/* ---------- the camp scene, one per area (its `camp` look in world.js) ---------- */
 const SCENE_W=165, SCENE_H=96, SCENES={};
-const AREA_LOOK=[ // Glowworm Hollows, Frozen Deeps, Gilded Ruins, The Abyss
-  {tint:'#1d262f', dots:['#39ff8a','#8fe4ff'], feature:'crystal'},
-  {tint:'#1b3048', dots:['#8fe4ff','#eef3f6'], feature:'ice'},
-  {tint:'#25272b', dots:['#f2c94c','#fff3b0'], feature:'gold'},
-  {tint:'#0d1115', dots:['#eef3f6','#8fe4ff'], feature:'stars'}];
 function areaRamp(tint){ const t=hx(tint); return [-30,-20,-10,0,10,20,32,46].map(dl=>lift(t,dl)); }
 function sceneBase(ai){ if(SCENES[ai]) return SCENES[ai];
-  const L=AREA_LOOK[ai%AREA_LOOK.length], R=rng(91+ai*7), ramp=areaRamp(L.tint), W=SCENE_W, H=SCENE_H;
+  const L=AREAS[ai%AREAS.length].camp, R=rng(91+ai*7), ramp=areaRamp(L.tint), W=SCENE_W, H=SCENE_H;
   const T=wall(ramp,64,33+ai,3), I=Img(W,H); for(let y=0;y<H;y++) for(let x=0;x<W;x++) I.set(x,y,T.get(x%64,y%64));
   // a tunnel leading deeper
   I.ellipse(124,44,22,26,hx('#040506')); I.rect(102,44,146,70,hx('#040506')); I.ring(124,44,23,27,2,ramp[5],180,360); I.ring(124,44,23,27,1,ramp[6],200,340);
@@ -189,7 +184,7 @@ function sceneBase(ai){ if(SCENES[ai]) return SCENES[ai];
   // stalactites
   for(const sx of [8,30,52,76,98,150,160]){ const len=8+Math.floor(R()*12); for(let i=0;i<len;i++){ const w=Math.max(0,3-Math.floor(i/4)); for(let x=sx-w;x<=sx+w;x++) I.set(((x%W)+W)%W,i,x<sx?ramp[5]:x===sx?ramp[4]:ramp[2]); } }
   // the area's own light
-  if(L.feature==='crystal'||L.feature==='ice'){ const cols=L.dots.map(hx);
+  if(L.feature==='crystal'||L.feature==='ice'||L.feature==='lava'||L.feature==='storm'){ const cols=L.dots.map(hx);
     for(const [cx,cy,h] of [[18,66,12],[26,66,8],[148,66,14],[156,66,9]]){ const c=cols[0], d2=dark(c,.5);
       I.poly([[cx-3,cy],[cx,cy-h],[cx+3,cy]],c); I.poly([[cx,cy],[cx,cy-h],[cx+3,cy]],d2); I.set(cx-1,cy-h+3,C.white); } }
   if(L.feature==='gold'){ for(const px of [14,150]){ I.rect(px,20,px+9,F,ramp[5]); I.rect(px+1,20,px+3,F,ramp[6]); I.rect(px+7,20,px+9,F,ramp[3]); I.rect(px-2,18,px+11,21,ramp[6]); I.rect(px-2,F-3,px+11,F,ramp[4]);
@@ -207,7 +202,7 @@ function sceneBase(ai){ if(SCENES[ai]) return SCENES[ai];
   const bd=Img(W,H); bd.rect(20,80,46,86,C.deep); bd.rect(20,80,46,81,C.blue3); bd.ellipse(46,83,4,3.5,C.deep2); bd.line(30,80,30,86,C.gold2); bd.outline(); I.over(bd);
   return SCENES[ai]=I; }
 // draw the scene with the player and a fire that flickers with time t
-function drawCampScene(cv,depth,t,sprite){ const ai=Math.floor((Math.max(1,depth)-1)/3), base=sceneBase(ai);
+function drawCampScene(cv,depth,t,sprite){ const ai=areaIndex(depth), base=sceneBase(ai);
   cv.width=SCENE_W; cv.height=SCENE_H; const cx=cv.getContext('2d'); cx.imageSmoothingEnabled=false; cx.putImageData(new ImageData(base.d.slice(),SCENE_W,SCENE_H),0,0);
   const fx=83, fy=80, R=rng(Math.floor(t*8));
   // firelight on the floor and walls: two dithered rings, never a gradient
@@ -233,10 +228,10 @@ function drawDepthMap(cv,pick,deepest){ const W=165, H=45, SP=13; cv.width=W; cv
   for(let y=0;y<H;y++) for(let x=0;x<W;x++) I.set(x,y,R()<.9?STONE[1]:STONE[2]);
   const start=Math.max(1,Math.floor((pick-1)/12)*12+1), pts=[];
   for(let i=0;i<12;i++) pts.push([10+i*SP, 22+(i%2?6:-6)]);
-  for(let i=1;i<12;i++) if((start+i-1)%3===0){ const x=10+i*SP-Math.floor(SP/2); for(let y=3;y<H-3;y+=2) I.set(x,y,STONE[4]); }
+  for(let i=1;i<12;i++) if((start+i-1)%DEPTHS_PER_AREA===0){ const x=10+i*SP-Math.floor(SP/2); for(let y=3;y<H-3;y+=2) I.set(x,y,STONE[4]); }
   for(let i=0;i<11;i++){ const [x0,y0]=pts[i],[x1,y1]=pts[i+1]; for(let s=0;s<SP;s+=2) I.set(x0+s,Math.round(y0+(y1-y0)*s/SP),start+i<deepest?STONE[7]:STONE[3]); }
   const sk=Img(24,24); ICONS.skull(sk); sk.outline();
-  pts.forEach(([x,y],i)=>{ const n=start+i, boss=n%4===0;
+  pts.forEach(([x,y],i)=>{ const n=start+i, boss=isBossDepth(n);
     if(n===pick){ I.rect(x-5,y-5,x+5,y+5,C.k); I.rect(x-4,y-4,x+4,y+4,C.blue2); I.rect(x-3,y-3,x+3,y+3,C.blue); I.set(x-2,y-2,C.white); I.set(x-1,y-2,C.white);
       for(const [a,b] of [[-8,0],[8,0],[0,-8],[0,8]]) I.set(x+a,y+b,C.blue2); }
     if(boss){ for(let yy=0;yy<24;yy+=2) for(let xx=0;xx<24;xx+=2){ const c=sk.get(xx,yy); if(c[3]) I.set(x-6+xx/2,y-6+yy/2,n>deepest?mix(c,STONE[3],.6):c); }

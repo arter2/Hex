@@ -28,13 +28,18 @@ const HUMANOIDS=['cultist','witch','caller','warden','paladin','knight'];
 const ENEMY_CARD_TYPES=['strike','lob','ward','sentry','boon','charge'];
 
 /* ---------------- encounters ---------------- */
-// Deeper fights: more waves, bigger waves, more humanoids, a boss every 4th depth.
+// Deeper fights: more waves, bigger waves, more humanoids. Half the enemies belong to the area's
+// own color (frost mites and frost witches in the Frozen Deeps), the rest wander in from anywhere.
+// The last floor of every area is its boss's (world.js).
 function makeEncounter(depth){
   const waves=depth<=2?1:depth<=5?2:3, size=Math.min(4,2+(depth>=4?1:0)+(depth>=9?1:0));
   const human=Math.min(.6,depth<2?0:.15+.05*depth);
+  const A=typeof areaOf==='function'?areaOf(depth):null;
+  const one=list=>{ const home=A?list.filter(id=>ENEMY_DEFS[id].color===A.color):[]; return home.length&&Math.random()<.5?pick(home):pick(list); };
   const out=[];
-  for(let w=0;w<waves;w++) out.push(Array.from({length:size},()=>Math.random()<human?pick(HUMANOIDS):pick(MONSTERS)));
-  if(depth%4===0) out[out.length-1]=[typeof bossFor==='function'?bossFor(depth):'golem'].concat(depth>=8?[pick(MONSTERS)]:[]);   // a boss and its helpers carry the fight
+  for(let w=0;w<waves;w++) out.push(Array.from({length:size},()=>one(Math.random()<human?HUMANOIDS:MONSTERS)));
+  const boss=typeof isBossDepth==='function'?isBossDepth(depth):depth%4===0;
+  if(boss) out[out.length-1]=[typeof bossFor==='function'?bossFor(depth):'golem'].concat(depth>=8?[one(MONSTERS)]:[]);   // a boss and its helpers carry the fight
   return out;
 }
 function enemyDeck(color,depth){

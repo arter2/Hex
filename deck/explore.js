@@ -103,13 +103,13 @@ function buildFloor(depth,hp){
   for(let n=0;n<nT&&floorCells.length;n++){ const c=floorCells.splice(Math.floor(Math.random()*floorCells.length),1)[0]; taken.add(c); EX.traps.push({cell:c, kind:pick(kinds), known:false, armed:true}); }
   // enemy groups: some asleep, some wandering; on a boss depth the boss waits by the stairs down
   const nG=Math.min(others.length,3+Math.floor(depth/3));
-  const rooms=others.slice().sort(()=>Math.random()-.5).filter(r=>r!==F.exit||depth%4!==0).slice(0,nG);
+  const rooms=others.slice().sort(()=>Math.random()-.5).filter(r=>r!==F.exit||!isBossDepth(depth)).slice(0,nG);
   for(const r of rooms){ const c=freeCell(r); if(c<0) continue; const wave=makeEncounter(depth)[0], ids=wave.slice(0,1+Math.floor(Math.random()*Math.min(3,wave.length)));
     EX.groups.push(xGroup(ids,c,Math.random()<.45?'sleep':'wander')); }
-  if(depth%4===0){ const c=xi(F.exit.cx-1,F.exit.cy); EX.groups.push(Object.assign(xGroup([bossFor(depth)],c,'guard'),{boss:true})); }
+  if(isBossDepth(depth)){ const c=xi(F.exit.cx-1,F.exit.cy); EX.groups.push(Object.assign(xGroup([bossFor(depth)],c,'guard'),{boss:true})); }
   EX.px=xw(EX.up); EX.pz=xz(EX.up); EX.pc=EX.up; EX.face=1; EX.view='front';
-  xBuildScene(); xUpdateVis(); xLog('Depth '+depth+': '+A.name+'.','dim');
-  if(depth%4===0) xLog('Something huge waits by the stairs down on this floor.','warn');
+  xBuildScene(); xUpdateVis(); xLog('Depth '+depth+' · '+areaLabel(depth)+'. Find the stairs down.','dim');
+  if(isBossDepth(depth)) xLog(ENEMY_DEFS[bossFor(depth)].name+' guards the stairs down. Beat it to open the way to '+areaOf(depth+1).name+'.','warn');
 }
 function xGroup(ids,cell,state){ return {ids, cell, x:xw(cell), z:xz(cell), state, home:cell, path:[], repath:0, lostT:0, wakeT:1+Math.random()*1.5, seen:false, sprite:null, mark:null, bob:Math.random()*6}; }
 
@@ -142,8 +142,13 @@ function xInit3D(){
   const amb=new THREE.AmbientLight(0xffffff,.34), sun=new THREE.DirectionalLight(0xffffff,.3); sun.position.set(-4,10,6);
   const lamp=new THREE.PointLight(0xffd9a0,1.6,16,1.4);   // your light: a soft pool that falls off with distance
   scene.add(amb,sun,lamp);
-  X3={renderer,scene,cam,lamp,group:null,ray:new THREE.Raycaster(),plane:new THREE.Plane(new THREE.Vector3(0,1,0),0)};
-  cv.addEventListener('pointerdown',e=>{ if(!EX||!EX.active) return; e.preventDefault(); try{ cv.setPointerCapture(e.pointerId); }catch(_){}
+  // dust drifting through the light around you, in the area's glow, as in the battle cave
+  const DN=70, dpos=new Float32Array(DN*3); for(let k=0;k<DN;k++){ dpos[k*3]=(Math.random()-.5)*20; dpos[k*3+1]=Math.random()*3.2; dpos[k*3+2]=(Math.random()-.5)*16; }
+  const dgeo=new THREE.BufferGeometry(); dgeo.setAttribute('position',new THREE.BufferAttribute(dpos,3));
+  const dust=new THREE.Points(dgeo,new THREE.PointsMaterial({color:0xffffff,size:.08,transparent:true,opacity:.5,blending:THREE.AdditiveBlending,depthWrite:false}));
+  dust.renderOrder=3; scene.add(dust);
+  X3={renderer,scene,cam,amb,lamp,dust,group:null,ray:new THREE.Raycaster(),plane:new THREE.Plane(new THREE.Vector3(0,1,0),0)};
+  cv.addEventListener('pointerdown',e=>{ if(!EX||!EX.active||xPaused) return; e.preventDefault(); try{ cv.setPointerCapture(e.pointerId); }catch(_){}
     XHOLD.id=e.pointerId; XHOLD.x=XHOLD.x0=e.clientX; XHOLD.y=XHOLD.y0=e.clientY; XHOLD.t0=performance.now(); XHOLD.on=true; });
   cv.addEventListener('pointermove',e=>{ if(e.pointerId===XHOLD.id){ XHOLD.x=e.clientX; XHOLD.y=e.clientY; } });
   const end=e=>{ if(e.pointerId!==XHOLD.id) return; const tap=performance.now()-XHOLD.t0<260&&Math.hypot(XHOLD.x-XHOLD.x0,XHOLD.y-XHOLD.y0)<14;
@@ -154,15 +159,9 @@ function xInit3D(){
 }
 function xTex(cv,rep){ const t=new THREE.CanvasTexture(cv); t.magFilter=THREE.NearestFilter; t.minFilter=THREE.NearestFilter; if(rep){ t.wrapS=t.wrapT=THREE.RepeatWrapping; } return t; }
 const xPhong=(o)=>new THREE.MeshPhongMaterial(Object.assign({shininess:4,specular:0x111111},o||{}));
-/* Stone, drawn once per area: periodic noise so big textures tile without seams, quantized to a
+/* Stone, drawn once per area from its `stone` look in world.js: periodic noise so big textures tile without seams, quantized to a
    few tones so it still reads as pixel art. Corridors are raw rock; rooms are cut stone in one
    of two patterns; walls are rough rock along corridors and chiseled blocks around rooms. */
-const XSTONE={
-  'Glowworm Hollows':{rock:['#1c2328','#2c3740','#3e4c56','#56666f'], moss:'#3f7a3a', spark:'#39ff8a', detail:'moss'},
-  'Frozen Deeps':    {rock:['#1a2836','#2a4054','#40607c','#7ea6c4'], moss:'#cfeeff', spark:'#e6f6ff', detail:'frost'},
-  'Gilded Ruins':    {rock:['#1f1d1a','#33302b','#4a463e','#6a6458'], moss:'#8a6a2a', spark:'#f2c94c', detail:'gold'},
-  'The Abyss':       {rock:['#0b0d12','#161a22','#232a36','#38404e'], moss:'#3a2a56', spark:'#e9fbff', detail:'stars'},
-};
 function xNoise(N,cells,R){ const g=new Float32Array(cells*cells).map(()=>R());
   const at=(x,y)=>g[((y%cells+cells)%cells)*cells+((x%cells+cells)%cells)], sm=t=>t*t*(3-2*t);
   return (px,py)=>{ const fx=px/N*cells, fy=py/N*cells, x0=Math.floor(fx), y0=Math.floor(fy), tx=sm(fx-x0), ty=sm(fy-y0);
@@ -177,6 +176,7 @@ function xSpeck(c,S,R,n,small){ const x=c.getContext('2d'), N=c.width;
   for(let k=0;k<n;k++){ const cx=R()*N|0, cy=R()*N|0;
     if(S.detail==='moss'){ x.fillStyle=S.moss; for(let m=0;m<7;m++) x.fillRect((cx+R()*6-3)%N|0,(cy+R()*4-2)%N|0,1,1); if(R()<.3){ x.fillStyle=S.spark; x.fillRect(cx,cy,1,1); } }
     else if(S.detail==='frost'){ x.fillStyle=S.moss; x.globalAlpha=.5; let px=cx, py=cy; for(let m=0;m<8;m++){ x.fillRect(px|0,py|0,1,1); px+=R()*2-.5; py+=R()*2-1; } x.globalAlpha=1; }
+    else if(S.detail==='embers'){ x.fillStyle=S.spark; let px=cx, py=cy; for(let m=0;m<6;m++){ x.globalAlpha=.35+R()*.4; x.fillRect(px|0,py|0,1,1); px+=R()*2-1; py+=R()*2-1; } x.globalAlpha=1; }
     else if(S.detail==='gold'){ if(R()<.4){ x.fillStyle=S.spark; x.globalAlpha=.6; x.fillRect(cx,cy,small?1:2,1); x.globalAlpha=1; } }
     else { x.fillStyle=R()<.5?S.spark:S.moss; x.globalAlpha=.3+R()*.5; x.fillRect(cx,cy,1,1); x.globalAlpha=1; } } }
 // raw cave rock: blotchy fbm, a few ridged cracks, pebbles with a lit top and a shadow
@@ -210,7 +210,7 @@ function xBlockWall(S,seed,rubble){ const N=64, R=caveRng(seed), f=xFbm(N,R,4);
       x0+=w; } });
   return xPaint(N,(i,j)=>{ const b=out[j*N+i]; let t=b<0?.05:b+(f(i,j)-.5)*.25; if(j<2) t+=.25; return xTone(S,Math.max(0,Math.min(1,t))); }); }
 function xTextSprite(txt,col){ const c=document.createElement('canvas'); c.width=c.height=32; const x=c.getContext('2d');
-  x.font='bold 22px monospace'; x.textAlign='center'; x.textBaseline='middle'; x.lineWidth=4; x.strokeStyle='#000'; x.strokeText(txt,16,17); x.fillStyle=col; x.fillText(txt,16,17);
+  x.font='700 22px "Pixelify Sans",monospace'; x.textAlign='center'; x.textBaseline='middle'; x.lineWidth=4; x.strokeStyle='#000'; x.strokeText(txt,16,17); x.fillStyle=col; x.fillText(txt,16,17);
   const s=new THREE.Sprite(new THREE.SpriteMaterial({map:xTex(c),transparent:true,depthTest:false})); s.scale.set(.9,.9,1); s.renderOrder=5; return s; }
 function xSprite(getImg,h){ const s=new THREE.Sprite(new THREE.SpriteMaterial({transparent:true,alphaTest:.35})); s.center.set(.5,.03); s.scale.set(h,h,1); s.userData={getImg,img:null,flip:false}; return s; }
 function xRefresh(s,flip){ const sp=s.userData.getImg(), im=sp&&sp.img;
@@ -223,7 +223,7 @@ function xBuildScene(){
   const G=xInit3D();
   if(G.group){ G.scene.remove(G.group); G.group.traverse(o=>{ if(o.geometry) o.geometry.dispose(); if(o.material&&o.material.map) o.material.map.dispose(); }); }
   const grp=new THREE.Group(); G.group=grp; G.scene.add(grp);
-  const A=EX.area, S=XSTONE[A.name]||XSTONE['Glowworm Hollows'], seed=EX.depth*31;
+  const A=EX.area, S=A.stone||AREAS[0].stone, seed=EX.depth*31;
   // floor: one plane per stone kind, cut to its cells with a mask, so textures run across cells without seams
   const variant=new Int8Array(XN*XN).fill(-1);
   EX.rooms.forEach(r=>{ r.style=r.closet?1:Math.random()<.5?0:1; });
@@ -263,14 +263,14 @@ function xBuildScene(){
     const leaf=new THREE.Group(); leaf.add(xBox(XCS-.44,XWALL-.24,.16,wood,0,(XWALL-.24)/2,0), xBox(XCS-.44,.1,.18,iron,0,.4,0), xBox(XCS-.44,.1,.18,iron,0,1.1,0));
     g.add(leaf); d.mesh=g; d.leaf=leaf; leaf.visible=d.state==='closed'; g.visible=false; grp.add(g); }
   // stairs
-  const glow=new THREE.Color(EX.depth%4===0?'#ff5d6c':A.glow);
+  const glow=new THREE.Color(isBossDepth(EX.depth)?'#ff5d6c':A.glow);
   const down=new THREE.Group(); down.position.set(xw(EX.down),0,xz(EX.down));
   down.add(xBox(XCS*.8,.32,XCS*.8,xMat(0x050507),0,.02,0));
   const ring=new THREE.Mesh(new THREE.TorusGeometry(.75,.08,6,20),new THREE.MeshBasicMaterial({color:glow})); ring.rotation.x=Math.PI/2; ring.position.y=.2; down.add(ring);
   down.userData.ring=ring; down.visible=false; grp.add(down); EX.downMesh=down;
   // the way back up: a worn stone circle under a shaft of daylight
   const up=new THREE.Group(); up.position.set(xw(EX.up),0,xz(EX.up));
-  up.add(xBox(XCS*.8,.05,XCS*.8,xMat(0x6e6a60),0,.025,0));
+  const disc=new THREE.Mesh(new THREE.CylinderGeometry(.82,.88,.05,20),xMat(new THREE.Color(A.lit).lerp(new THREE.Color(0x8a8478),.5))); disc.position.y=.025; up.add(disc);
   const halo=new THREE.Mesh(new THREE.TorusGeometry(.72,.06,6,20),new THREE.MeshBasicMaterial({color:0xfff2c0})); halo.rotation.x=Math.PI/2; halo.position.y=.08; up.add(halo);
   up.visible=false; grp.add(up); EX.upMesh=up;
   // chests
@@ -281,9 +281,44 @@ function xBuildScene(){
     g.userData.lid=lid; g.visible=false; c.mesh=g; grp.add(g); }
   // known traps get a plate when found
   for(const tr of EX.traps) tr.mesh=null;
+  // the area's light: the same color as its battle cave, in the air, in your lamp and in the
+  // crystals, lava, veins or motes along the room walls
+  const glowC=new THREE.Color(A.glow);
+  G.scene.background=new THREE.Color(A.fog).multiplyScalar(.3);
+  G.amb.color.set(0xffffff).lerp(glowC,.25); G.lamp.color.set(0xffd9a0).lerp(glowC,.3); G.dust.material.color.copy(glowC);
+  xAreaLights(grp,A);
   // you and the enemies are flat sprites standing in the 3D rooms, like the old dungeon crawlers
   EX.me=xSprite(()=>unitSprite({kind:'player',look:gearLook(save),view:EX.view}),2.3); grp.add(EX.me);
   for(const gp of EX.groups) xGroupSprites(gp,grp);
+}
+// a soft round glow, tinted by the sprite's color and added to what is behind it
+function xGlowTex(){ const c=document.createElement('canvas'); c.width=c.height=64; const x=c.getContext('2d'), g=x.createRadialGradient(32,32,0,32,32,32);
+  g.addColorStop(0,'rgba(255,255,255,.9)'); g.addColorStop(.35,'rgba(255,255,255,.35)'); g.addColorStop(1,'rgba(255,255,255,0)'); x.fillStyle=g; x.fillRect(0,0,64,64);
+  const t=new THREE.CanvasTexture(c); return t; }
+/* Two or three light sources grow from the walls of every room, in the area's look (world.js):
+   crystals (Hollows, Storm Vault), ice (Deeps), lava cracks (Rifts), gold veins (Ruins) or
+   floating motes (Abyss). They show once you have seen the floor in front of them and dim with
+   it, so a remembered room glows faintly and the room you stand in glows bright. */
+function xAreaLights(grp,A){
+  EX.glows=[]; const R=caveRng(EX.depth*53+7), tex=xGlowTex(), col=new THREE.Color(A.glow), pale=col.clone().lerp(new THREE.Color(0xffffff),.55);
+  for(const r of EX.rooms){ if(r.closet) continue; const cand=[];
+    for(let x=r.x;x<r.x+r.w;x++){ cand.push([x,r.y-1,0,1],[x,r.y+r.h,0,-1]); }
+    for(let y=r.y;y<r.y+r.h;y++){ cand.push([r.x-1,y,1,0],[r.x+r.w,y,-1,0]); }
+    const ok=cand.filter(([x,y])=>x>=0&&y>=0&&x<XN&&y<XN&&EX.t[xi(x,y)]===T_ROCK);
+    const n=Math.min(ok.length,2+(R()*2|0));
+    for(let k=0;k<n;k++){ const [wx,wy,dx,dy]=ok.splice(R()*ok.length|0,1)[0], floor=xi(wx+dx,wy+dy);
+      const g=new THREE.Group(); g.position.set((wx+.5+dx*.5)*XCS+dx*.08,0,(wy+.5+dy*.5)*XCS+dy*.08); g.rotation.y=Math.atan2(dx,dy);
+      const mats=[], mat=c=>{ const m=new THREE.MeshBasicMaterial({color:c,transparent:true}); mats.push(m); return m; };
+      if(A.veins==='crystal'||A.veins==='ice'||A.veins==='storm'){
+        for(let m=0;m<3;m++){ const h=.45+R()*.55, cone=new THREE.Mesh(new THREE.ConeGeometry(.09+R()*.05,h,4),mat(m===1?pale:col));
+          cone.position.set((m-1)*.2+(R()-.5)*.08,h/2-.02,.06+R()*.1); cone.rotation.z=(m-1)*.35+(R()-.5)*.2; cone.rotation.x=.18; g.add(cone); } }
+      else if(A.veins==='lava'){ for(let m=0;m<4;m++){ const sl=new THREE.Mesh(new THREE.BoxGeometry(.5+R()*.6,.03,.07),mat(m%2?pale:col)); sl.position.set((R()-.5)*1.2,.02,.15+R()*.5); sl.rotation.y=(R()-.5)*1.4; g.add(sl); } }
+      else if(A.veins==='gold'){ let x0=-.5, y0=.4; for(let m=0;m<4;m++){ const x1=x0+.25+R()*.15, y1=y0+(R()-.3)*.35, len=Math.hypot(x1-x0,y1-y0), v=new THREE.Mesh(new THREE.BoxGeometry(len,.05,.04),mat(m%2?pale:col));
+          v.position.set((x0+x1)/2,(y0+y1)/2+.4,.02); v.rotation.z=Math.atan2(y1-y0,x1-x0); g.add(v); x0=x1; y0=y1; } }
+      else { for(let m=0;m<4;m++){ const s=new THREE.Mesh(new THREE.SphereGeometry(.045,6,4),mat(pale)); s.position.set((R()-.5)*1.1,.5+R()*1.1,.2+R()*.4); s.userData.y0=s.position.y; g.add(s); } }
+      const halo=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,color:col,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false}));
+      halo.scale.set(2.6,2.6,1); halo.position.set(0,.55,.25); halo.renderOrder=2; g.add(halo);
+      g.visible=false; grp.add(g); EX.glows.push({g,floor,mats,halo,ph:R()*6}); } }
 }
 function xGroupSprites(gp,grp){ const id=gp.ids[0], d=ENEMY_DEFS[id], h=2.3*Math.max(.75,Math.min(1.7,d.scale||1));
   gp.sprite=xSprite(()=>unitSprite({kind:'enemy',id,color:d.color}),h); gp.sprite.visible=false; grp.add(gp.sprite);
@@ -301,6 +336,7 @@ function xPaintCells(){
   for(const [i,d] of EX.doors) if(d.mesh) d.mesh.visible=!!EX.seen[i]&&d.state!=='secret';
   for(const c of EX.chests) c.mesh.visible=!!EX.seen[c.cell];
   EX.downMesh.visible=!!EX.seen[EX.down]; EX.upMesh.visible=!!EX.seen[EX.up];
+  for(const L of EX.glows) L.g.visible=!!EX.seen[L.floor];
 }
 // ease every cell toward its brightness, so newly seen ground fades in and ground you leave fades out
 function xFadeCells(dt){
@@ -318,7 +354,10 @@ function xTrapMesh(tr){ if(tr.mesh||!X3) return; const T=TRAPS[tr.kind], g=new T
 
 /* ---------------- input ---------------- */
 const XKEY={}, XHOLD={on:false,id:null,x:0,y:0,x0:0,y0:0,t0:0};
-document.addEventListener('keydown',e=>{ if(!EX||!EX.active) return; const k=e.key.toLowerCase(), a=keyAct(k,'map'); XKEY[k]=true;
+// paused (ui.js): the floor stands still and keys and touches are let go
+let xPaused=false;
+function xPause(on){ xPaused=!!on; for(const k in XKEY) XKEY[k]=false; XHOLD.on=false; XHOLD.id=null; }
+document.addEventListener('keydown',e=>{ if(!EX||!EX.active||xPaused) return; const k=e.key.toLowerCase(), a=keyAct(k,'map'); XKEY[k]=true;
   if(a==='search') xSearch(); else if(a==='disarm') xDisarm(); else if(a==='camp') xToCamp();
   if(a||k===' '){ e.preventDefault(); } if(['up','down','left','right'].includes(a)) EX.path=[]; });
 document.addEventListener('keyup',e=>{ XKEY[e.key.toLowerCase()]=false; });
@@ -450,7 +489,7 @@ function xEngage(g){
   EX.busy=true; EX.path=[]; EX.fighting=g; xHud();
   const name=ENEMY_DEFS[g.ids[0]].name;
   if(opening==='ambush') xLog('You catch the '+name+' asleep!','good'); else if(opening==='surprised') xLog('The '+name+' was waiting for you!','bad');
-  const b=$('#xBang'); b.textContent=opening==='ambush'?'Ambush!':opening==='surprised'?'Surprised!':'!'; b.className='x-bang on '+(opening||'');
+  const b=$('#xBang'); b.textContent=opening==='ambush'?'Ambush!':opening==='surprised'?'Surprised!':'!'; b.dataset.key='fight'; b.className='x-bang on '+(opening||'');
   setTimeout(()=>{ b.className='x-bang'; if(!EX||EX.fighting!==g) return; EX.active=false; fight(EX.depth,[g.ids.slice()],{hp:EX.hp,opening,explore:true}); },700);
 }
 
@@ -459,14 +498,14 @@ function xStairsDown(){
   if(EX.groups.some(g=>g.boss)){ xSay('boss','The stairs are sealed while the guardian of this floor lives.'); return; }
   EX.busy=true; xLog('You descend…','dim'); const nd=EX.depth+1, hp=Math.min(xmaxHp(),EX.hp+Math.round(xmaxHp()*.2));
   save.deepest=Math.max(save.deepest,nd); persist();
-  setTimeout(()=>{ buildFloor(nd,hp); EX.active=true; xHud(); xLoopStart(); xBanner('Depth '+nd); },500);
+  setTimeout(()=>{ buildFloor(nd,hp); EX.active=true; xHud(); xLoopStart(); xBanner(nd); },500);
 }
 let XPARK=null;
 function xToCamp(){ if(!EX||EX.busy||EX.pc!==EX.up) return; logCamp('Climbed back to camp from depth '+EX.depth+'. The floor stays as you left it.','dim'); stopExplore(); pickDepth=EX.depth; XPARK=EX; EX=null; openCamp(); }
 function xDie(why){ XPARK=null; EX.busy=true; const lost=Math.floor(save.gold*.2); save.gold-=lost; persist(); const depth=EX.depth;
   logCamp('Killed by '+why+' at depth '+depth+', dropped '+lost+' gold.','curse'); stopExplore();
-  reveal('You died…','Killed by '+why+' on depth '+depth+'. You dropped '+lost+' gold. Your cards are safe.',[],[['Camp',()=>{ EX=null; openCamp(); },true]]); }
-function stopExplore(){ if(EX) EX.active=false; }
+  reveal('Defeated…','Brought down by '+why+' at depth '+depth+'. You dropped '+lost+' gold. Your cards are safe.',[],[['Camp',()=>{ EX=null; openCamp(); }]]); }
+function stopExplore(){ if(EX) EX.active=false; xPause(false); }
 
 /* ---------------- loop, hud ---------------- */
 let xRaf=0, xLast=0;
@@ -474,13 +513,13 @@ function xLoopStart(){ cancelAnimationFrame(xRaf); xLast=performance.now(); xRaf
 function xLoop(ts){
   if(!EX||!EX.active||!$('#scrExplore').classList.contains('on')) return;
   const dt=Math.min(.1,(ts-xLast)/1000); xLast=ts;
-  if(!EX.busy){ xMove(dt); xEnemies(dt);
+  if(!EX.busy&&!xPaused){ xMove(dt); xEnemies(dt);
     EX.regenT+=dt; if(EX.regenT>3){ EX.regenT=0; if(EX.hp<xmaxHp()){ EX.hp++; xHud(); } } }
   xDraw(ts/1000,dt); xRaf=requestAnimationFrame(xLoop);
 }
 function xResize(){ const G=X3, cv=$('#xView'), w=cv.clientWidth||400, h=cv.clientHeight||600; if(G.w===w&&G.h===h) return; G.w=w; G.h=h; G.renderer.setSize(w,h,false); G.cam.aspect=w/h; G.cam.updateProjectionMatrix(); }
 function xDraw(T,dt){
-  const G=X3; xResize(); xFadeCells(dt||.016);
+  dt=dt||.016; const G=X3; xResize(); xFadeCells(dt);
   const bob=EX.walk?Math.abs(Math.sin(EX.walk))*.08:0;
   EX.me.position.set(EX.px,bob,EX.pz); xRefresh(EX.me,EX.face<0);
   G.lamp.position.set(EX.px,2.6,EX.pz);
@@ -490,6 +529,11 @@ function xDraw(T,dt){
     if(v){ g.sprite.position.set(g.x,g.state==='sleep'?0:Math.abs(Math.sin(T*4+g.bob))*.06,g.z); xRefresh(g.sprite,(g.face||-1)>0);
       g.zz.position.set(g.x+.5,g.h+.2+Math.sin(T*2+g.bob)*.15,g.z); g.bang.position.set(g.x,g.h+.35,g.z); } }
   EX.downMesh.userData.ring.rotation.z+=.02;
+  for(const L of EX.glows){ if(!L.g.visible) continue; const f=EX.fogCur[L.floor], fl=.85+.15*Math.sin(T*1.7+L.ph);
+    L.halo.material.opacity=.6*f*fl; for(const m of L.mats) m.opacity=.3+.7*f;
+    if(EX.area.veins==='stars') L.g.children.forEach((o,i)=>{ if(o.userData.y0!=null) o.position.y=o.userData.y0+Math.sin(T*1.3+i+L.ph)*.12; }); }
+  { const P=G.dust.geometry.attributes.position, a=P.array; for(let k=0;k<a.length;k+=3){ a[k+1]+=dt*.25; a[k]+=Math.sin(T+k)*dt*.1; if(a[k+1]>3.2) a[k+1]=0; } P.needsUpdate=true;
+    G.dust.position.set(EX.px,0,EX.pz); G.dust.material.opacity=.35+.15*Math.sin(T*.7); }
   for(const c of EX.chests) if(c.rich&&!c.open) c.mesh.position.y=Math.abs(Math.sin(T*2))*.05;
   G.renderer.render(G.scene,G.cam);
   if((EX.miniT=(EX.miniT||0)+1)%6===0) xMini();
@@ -500,7 +544,7 @@ function xMini(){
   for(let i=0;i<XN*XN;i++){ if(!EX.seen[i]) continue; const d=EX.doors.get(i); if(EX.t[i]===T_ROCK||(d&&d.state==='secret')){ c.fillStyle='#1a1d26'; c.fillRect(xcx(i)*s,xcy(i)*s,s,s); continue; }
     c.fillStyle=d?'#a0703a':EX.vis[i]?'#7c8aa6':'#3c4458'; c.fillRect(xcx(i)*s,xcy(i)*s,s,s); }
   const dot=(i,col,r)=>{ c.fillStyle=col; c.fillRect(xcx(i)*s-r+1,xcy(i)*s-r+1,s+2*r-2,s+2*r-2); };
-  if(EX.seen[EX.down]) dot(EX.down,EX.depth%4===0?'#ff5d6c':'#d6b8ff',2); if(EX.seen[EX.up]) dot(EX.up,'#fff2c0',2);
+  if(EX.seen[EX.down]) dot(EX.down,isBossDepth(EX.depth)?'#ff5d6c':EX.area.glow,2); if(EX.seen[EX.up]) dot(EX.up,'#fff2c0',2);
   for(const ch of EX.chests) if(EX.seen[ch.cell]&&!ch.open) dot(ch.cell,'#f2c94c',1);
   for(const tr of EX.traps) if(tr.known&&tr.armed) dot(tr.cell,'#ff4d5e',1);
   for(const g of EX.groups) if(EX.vis[g.cell]) dot(g.cell,'#ff6b6b',1);
@@ -509,11 +553,14 @@ function xMini(){
 function xLog(t,c){ if(!EX) return; EX.log.push({t,c}); if(EX.log.length>5) EX.log.shift();
   const el=$('#xLog'); if(el) el.innerHTML=EX.log.map((l,i)=>`<div class="${l.c||''}" style="opacity:${.45+.55*(i+1)/EX.log.length}">${esc(l.t)}</div>`).join(''); }
 function xSay(k,t){ const now=performance.now(); if((EX.msgT[k]||0)>now) return; EX.msgT[k]=now+2500; xLog(t,'warn'); }
-function xBanner(t){ const b=$('#xBang'); b.textContent=t; b.className='x-bang on depth'; setTimeout(()=>{ if(b.textContent===t) b.className='x-bang'; },1400); }
+// the floor's banner, in its area's color: the area's name first when you have just entered it
+function xBanner(depth){ const b=$('#xBang'), A=areaOf(depth), first=areaFloor(depth)===1, key='d'+depth;
+  b.innerHTML=first?esc(A.name)+'<small>Depth '+depth+' · '+(isBossDepth(depth)?'boss floor':'floor 1 of '+DEPTHS_PER_AREA)+'</small>':'Depth '+depth+'<small>'+esc(areaLabel(depth))+'</small>';
+  b.style.setProperty('--bc',A.glow); b.dataset.key=key; b.className='x-bang on depth'; setTimeout(()=>{ if(b.dataset.key===key) b.className='x-bang'; },first?2200:1400); }
 function xFlash(){ const h=$('#xHurt'); h.classList.remove('on'); void h.offsetWidth; h.classList.add('on'); }
 function xHud(){ if(!EX) return; const m=xmaxHp();
-  $('#xHpBar').style.width=(100*EX.hp/m)+'%'; $('#xHpTxt').textContent=Math.ceil(EX.hp)+' / '+m+' HP';
-  $('#xDepth').textContent='Depth '+EX.depth+' · '+EX.area.name; $('#xGold').textContent=save.gold+' gold';
+  hpMeter($('#xHpBar'),$('#xHpTxt'),EX.hp,m);
+  $('#xDepth').textContent='Depth '+EX.depth+' · '+areaLabel(EX.depth); $('#xDepth').style.color=EX.area.glow; goldText($('#xGold'));
   $('#xSearch').disabled=!!EX.action; $('#xDisarm').disabled=!!EX.action||!xDisarmTarget();
   $('#xCamp').style.display=EX.pc===EX.up&&!EX.busy?'':'none'; $('#xAct').textContent=EX.action?'Working…':EX.stuckT>0?'Stuck in a pit!':''; }
 
@@ -525,13 +572,13 @@ function enterExplore(depth){
   if(XPARK&&XPARK.depth===depth){ EX=XPARK; XPARK=null; EX.hp=xmaxHp(); EX.busy=false; EX.path=[]; EX.px=xw(EX.up); EX.pz=xz(EX.up); EX.pc=EX.up; xUpdateVis(); xLog('You climb back down. You feel rested.','dim'); }
   else { XPARK=null; buildFloor(depth); }
   EX.active=true; xHud(); xLoopStart();
-  xBanner('Depth '+depth);
+  xBanner(depth);
 }
 // back from a fight that started on the map: the enemy is gone and your wounds carry over
 function resumeExplore(hp,won){
   if(!EX) return openCamp();
   const g=EX.fighting; EX.fighting=null;
-  if(won&&g){ EX.groups=EX.groups.filter(x=>x!==g); [g.sprite,g.zz,g.bang].forEach(o=>{ X3.group.remove(o); if(o.material.map) o.material.map.dispose(); o.material.dispose(); }); if(g.boss){ EX.bossDead=true; xLog('The guardian falls. The stairs down are open.','good'); } }
+  if(won&&g){ EX.groups=EX.groups.filter(x=>x!==g); [g.sprite,g.zz,g.bang].forEach(o=>{ X3.group.remove(o); if(o.material.map) o.material.map.dispose(); o.material.dispose(); }); if(g.boss){ EX.bossDead=true; xLog(ENEMY_DEFS[g.ids[0]].name+' falls. The stairs down to '+areaOf(EX.depth+1).name+' are open.','good'); } }
   EX.hp=Math.max(1,hp); EX.busy=false; EX.active=true; EX.path=[];
   for(const k in XKEY) XKEY[k]=false;
   show('scrExplore'); xUpdateVis(); xHud(); xLoopStart();

@@ -38,7 +38,7 @@ function keyClashes(){ const out=new Set();
 
 /* ---------------- the settings screen ---------------- */
 let keyCapture=null;   // {id, slot} while waiting for a key
-function openSettings(){ renderSettings(); $('#settings').classList.add('on'); }
+function openSettings(){ renderSettings(); const kb=$('#setKbd'); if(kb&&!kb.dataset.init){ kb.dataset.init='1'; kb.open=!matchMedia('(pointer:coarse)').matches; } $('#settings').classList.add('on'); }
 function closeSettings(){ keyCapture=null; $('#settings').classList.remove('on'); }
 function renderSettings(){
   const clash=keyClashes();
@@ -54,7 +54,7 @@ $('#setPreset').onchange=e=>{ const v=e.target.value; if(KEY_PRESETS[v]){ KEYMAP
 $('#setReset').onclick=()=>{ KEYMAP={preset:'standard', map:JSON.parse(JSON.stringify(KEY_PRESETS.standard.map))}; saveKeys(); renderSettings(); };
 $('#setClose').onclick=closeSettings;
 $('#goSettings').onclick=openSettings;
-$('#mControls').onclick=openSettings;
+
 // while the settings screen is open, keys go to it and nowhere else
 window.addEventListener('keydown',e=>{
   if(!$('#settings').classList.contains('on')) return;

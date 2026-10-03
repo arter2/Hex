@@ -9,6 +9,9 @@ const activeDeck=()=>save.decks[save.active];
 function show(id){ $('#tip').classList.remove('on'); document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('on',s.id===id)); if(id==='scrBattle') resizeView(); window.scrollTo(0,0); }
 let tipT=0; function tip(msg){ const t=$('#tip'); t.textContent=msg; t.classList.add('on'); clearTimeout(tipT); tipT=setTimeout(()=>t.classList.remove('on'),1400); }
 const esc=s=>String(s).replace(/[&<>"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]));
+// the same HP bar and gold readout everywhere: battle, dungeon, camp, shop, character
+function hpMeter(bar,txt,hp,max){ hp=Math.max(0,Math.ceil(hp)); bar.style.width=Math.min(100,hp/max*100)+'%'; txt.textContent='HP '+hp+'/'+max; bar.parentElement.classList.toggle('low',hp/max<=.3); }
+function goldText(el,n){ el.innerHTML=uiIcon('coin',20)+'<span>'+(n==null?save.gold:n)+'</span>'; el.classList.add('goldtxt'); }
 
 // Card faces: each family has its own textured face (drawn by uikit.js) in a deep, toned-down
 // color with white text, except light's pale marble, which keeps dark ink. acc colors the type line, bd the rim band and rank, tb the text panel.
@@ -76,7 +79,8 @@ function reveal(title,body,results,buttons,extras){
   (extras||[]).forEach((x,i)=>{ const el=document.createElement('div'); el.className='reward flip'; el.style.animationDelay=(i*.12)+'s'; el.innerHTML=`<b>${x.pic||x.icon}</b><span>${esc(x.name)}</span><small>${esc(x.text)}</small>`; g.appendChild(el); });
   results.forEach((r,i)=>{ const el=cardEl(r.card,r.isNew?'<span class="badge new">NEW</span>':''); el.style.animationDelay=(i*.12)+'s'; el.classList.add('flip'); el.onclick=()=>showDetail(r.card); g.appendChild(el); });
   const bb=$('#rvBtns'); bb.innerHTML=''; bb.classList.toggle('two',buttons.length>1);
-  buttons.forEach(([label,fn,ghost])=>{ const b=document.createElement('button'); b.className='btn'+(ghost?' ghost':''); b.textContent=label; b.onclick=()=>{ $('#reveal').classList.remove('on'); fn(); }; bb.appendChild(b); });
+  // a lone button is always the main one
+  buttons.forEach(([label,fn,ghost])=>{ const b=document.createElement('button'); b.className='btn'+(ghost&&buttons.length>1?' ghost':''); b.textContent=label; b.onclick=()=>{ $('#reveal').classList.remove('on'); fn(); }; bb.appendChild(b); });
   $('#reveal').classList.add('on');
   const main=bb.querySelector('.btn:not(.ghost)')||bb.querySelector('.btn'); if(main) setTimeout(()=>main.focus(),50);
 }
@@ -108,13 +112,13 @@ function openCamp(){
   $('#campDeck').textContent=d.name;
   const cnt=$('#campDeckCount'); cnt.textContent=v.count+'/'+RULES.max; cnt.classList.toggle('bad',!v.ok);
   $('#campDeckErr').textContent=v.ok?'':v.errors[0]+(v.errors.length>1?' (+'+(v.errors.length-1)+' more)':'')+'. Fix it in the deck builder.';
-  $('#campArea').textContent=areaOf(pickDepth).name;
-  const nextBoss=Math.ceil(pickDepth/4)*4; $('#campBoss').innerHTML=pickDepth%4===0?'<b class="gold">Boss here</b>':'Boss at <b class="gold">'+nextBoss+'</b>';
+  const A=areaOf(pickDepth); $('#campArea').textContent=areaLabel(pickDepth); $('#campArea').style.color=A.glow;
+  $('#campBoss').innerHTML=isBossDepth(pickDepth)?'<b class="gold">'+ENEMY_DEFS[bossFor(pickDepth)].name+' here</b>':'Boss at <b class="gold">'+areaBossDepth(pickDepth)+'</b>';
   $('#btnDescend').textContent='Explore depth '+pickDepth;
   $('#btnDescend').disabled=!v.ok; $('#btnQuick').disabled=!v.ok;
   $('#depthDown').disabled=pickDepth<=1; $('#depthUp').disabled=pickDepth>=save.deepest;
   drawDepthMap($('#depthMap'),pickDepth,save.deepest);
-  $('#campLog').innerHTML=(campLog.length?campLog:[{t:'Each win gives one reward: a card, gold or a piece of gear. Bosses every 4th depth give more. Losing costs 20% of your gold.',c:'dim'}])
+  $('#campLog').innerHTML=(campLog.length?campLog:[{t:'Each win gives a reward: a card, gold or a piece of gear. Every area is '+DEPTHS_PER_AREA+' floors deep and its boss waits on the last one. Losing costs 20% of your gold.',c:'dim'}])
     .slice(-4).map(l=>`<div class="${l.c||''}">${esc(l.t)}</div>`).join('');
   show('scrCamp'); campScene();
 }
@@ -137,8 +141,8 @@ const lootPic=(k,n=64)=>k.startsWith('scroll:')?uiIcon('scroll',n,k==='scroll:pu
 function logCamp(t,c){ campLog.push({t,c}); if(campLog.length>12) campLog.shift(); }
 // Testing: start any boss straight away at its own depth
 function renderTrials(){ const box=$('#bossTrials'); if(!box||typeof BOSS_ORDER==='undefined') return;
-  box.innerHTML='<span class="lbl">Test a boss</span>'+BOSS_ORDER.map((id,i)=>`<button class="chip" data-boss="${id}" style="--c:${COLORS[ENEMY_DEFS[id].color].c}">${ENEMY_DEFS[id].name} · ${4*(i+1)}</button>`).join('');
-  box.querySelectorAll('[data-boss]').forEach(b=>b.onclick=()=>{ const i=BOSS_ORDER.indexOf(b.dataset.boss); fight(4*(i+1),[[b.dataset.boss]],{trial:true}); }); }
+  box.innerHTML='<span class="lbl">Test a boss</span>'+BOSS_ORDER.map(id=>`<button class="chip" data-boss="${id}" style="--c:${COLORS[ENEMY_DEFS[id].color].c}">${ENEMY_DEFS[id].name} · ${bossDepth(id)}</button>`).join('');
+  box.querySelectorAll('[data-boss]').forEach(b=>b.onclick=()=>fight(bossDepth(b.dataset.boss),[[b.dataset.boss]],{trial:true})); }
 renderTrials();
 document.querySelectorAll('.btn.mi').forEach(b=>b.insertAdjacentHTML('afterbegin',uiIcon(b.dataset.icon,48)));
 addEventListener('resize',()=>{ if($('#scrCamp').classList.contains('on')) campScene(); });
@@ -155,7 +159,11 @@ $('#goChar').onclick=()=>openCharacter();
 function armed(btn,label,act){ if(btn.dataset.armed){ delete btn.dataset.armed; btn.textContent=btn.dataset.label; act(); return; }
   btn.dataset.label=btn.textContent; btn.dataset.armed='1'; btn.textContent=label;
   setTimeout(()=>{ if(btn.dataset.armed){ delete btn.dataset.armed; btn.textContent=btn.dataset.label; } },3000); }
-$('#btnReset').onclick=e=>armed(e.currentTarget,'Tap again to erase your collection',()=>{ clearSave(); save=null; buildStart(); });
+// Settings › Save › Erase: wherever you are, everything stops and the game returns to the menu
+$('#btnReset').onclick=e=>armed(e.currentTarget,'Tap again to erase',()=>{
+  closeSettings(); ['#pause','#reveal','#custom','#detail','#pick'].forEach(k=>$(k).classList.remove('on')); paused=false; B=null;
+  if(typeof stopExplore==='function'){ stopExplore(); EX=null; XPARK=null; }
+  clearSave(); save=null; campLog.length=0; pickDepth=null; openMenu(); tip('Save erased'); });
 document.querySelectorAll('.back').forEach(b=>b.onclick=openCamp);
 
 /* ---------------- filters (builder and collection) ---------------- */
@@ -299,7 +307,7 @@ function renderLooks(){ const box=$('#chLooks'); if(!box||typeof PLAYER_LOOKS===
 window.onLookLoaded=()=>{ if($('#scrCharacter').classList.contains('on')) renderCharacter(); };
 function renderCharacter(){
   const s=gearState(save), m=gearMods(save), K=WEAPON_KINDS[m.kind]||WEAPON_KINDS.wand;
-  $('#chGold').textContent='🪙 '+save.gold;
+  goldText($('#chGold'));
   // the wizard, large, glowing in the weapon's element
   const cv=$('#chSprite'), cx=cv.getContext('2d'); cx.clearRect(0,0,256,256); cx.imageSmoothingEnabled=false;
   const col=m.color?COLORS[m.color].c:'#7fd4ff';
@@ -408,7 +416,7 @@ $('#chTestScrolls').onclick=()=>{ addScroll(save,'enchant',2); addScroll(save,'p
 
 /* ---------------- shop ---------------- */
 function openShop(){
-  $('#sGold').textContent='🪙 '+save.gold;
+  goldText($('#sGold'));
   $('#buyBooster').textContent='Buy · '+PACK_PRICE.booster+' gold'; $('#buyBooster').disabled=save.gold<PACK_PRICE.booster;
   const box=$('#famPacks'); box.innerHTML='';
   for(const k of FAM_ORDER){ const b=document.createElement('button'); b.className='btn ghost fam'; b.style.setProperty('--c',COLORS[k].c);
@@ -463,11 +471,11 @@ function victory(){
   const res=addCards(save,rw.cards); const burnt=settleCharges();
   const depth=b.depth;
   const hero=rw.cards.find(c=>c.rarity==='hero');
-  const got=[...rw.cards.map(c=>c.name),...(rw.gold?['🪙 '+rw.gold+' gold']:[]),...rw.items.map(k=>{ const l=lootLabel(save,k); return l.icon+' '+l.name; })];
+  const got=[...rw.cards.map(c=>c.name),...(rw.gold?[rw.gold+' gold']:[]),...rw.items.map(k=>{ const l=lootLabel(save,k); return l.icon+' '+l.name; })];
   logCamp((boss?'Boss defeated':'Won')+' at depth '+depth+'.','win'); got.forEach(g=>logCamp('Found '+g.replace(/^[^A-Za-z0-9]+/u,'')+'.',/gold$/.test(g)?'gold':'loot'));
   loot.forEach(l=>{ if(l.res&&l.res.cursed) logCamp(l.res.msg,'curse'); });
-  reveal(hero?'♔ A hero joins you!':boss?'Boss defeated!':'Victory!',(hero?hero.name+' answers your call. ':'')+(b.explore?'Won in '+Math.round(b.time)+'s. ':'Depth '+depth+' cleared in '+Math.round(b.time)+'s. ')+(boss?'Boss rewards: ':'Your reward: ')+got.join(', ')+'.'+loot.map(l=>l.res&&l.res.cursed?' '+l.res.msg:l.res&&l.res.ok?' You put it on.':'').join('')+burnt,res,
-    b.explore?[['Keep exploring',()=>{ B=null; resumeExplore(hpLeft,true); },true]]
+  reveal(hero?'♔ A hero joins you!':boss?'Boss defeated!':'Victory!',(hero?hero.name+' answers your call. ':'')+(boss&&!b.trial?'The way down to '+areaOf(depth+1).name+' is open. ':'')+(b.explore?'Won in '+Math.round(b.time)+'s. ':'Depth '+depth+' cleared in '+Math.round(b.time)+'s. ')+(boss?'Boss rewards: ':'Your reward: ')+got.join(', ')+'.'+loot.map(l=>l.res&&l.res.cursed?' '+l.res.msg:l.res&&l.res.ok?' You put it on.':'').join('')+burnt,res,
+    b.explore?[['Keep exploring',()=>{ B=null; resumeExplore(hpLeft,true); }]]
     :[['Camp',()=>{ B=null; pickDepth=depth+1; openCamp(); },true],['Depth '+(depth+1)+' →',()=>fight(depth+1)]],
     [...(rw.gold?[{pic:uiIcon('coin',64),name:rw.gold+' gold',text:'Spend it on packs in the shop'}]:[]),...rw.items.map(k=>Object.assign(lootLabel(save,k),{pic:lootPic(k)}))]);
 }
@@ -479,23 +487,51 @@ function defeat(){
   reveal('Defeated…','You fell at depth '+depth+' and dropped '+lost+' gold. Your cards are safe.'+burnt,[],
     xp?[['Camp',()=>{ B=null; openCamp(); },true]]:[['Camp',()=>{ B=null; openCamp(); },true],['Retry',()=>fight(depth)]]);
 }
-$('#btnRetreat').onclick=e=>{ if(B) armed(e.currentTarget,'Tap again to retreat',()=>{ paused=false; $('#bMenu').classList.remove('on'); $('#custom').classList.remove('on');
-  if(B.phase==='lose'||B.player.hp<=0) return defeat();   // already beaten: the loss still counts
+// leaving a fight early: a battle-only fight costs nothing; fleeing a dungeon fight costs 10% of
+// your gold and the floor; a fight you have already lost still counts as a defeat
+function leaveFight(){ paused=false; $('#custom').classList.remove('on');
+  if(B.phase==='lose'||B.player.hp<=0) return defeat();
   const burnt=settleCharges(); if(burnt) tip(burnt.trim());
-  if(B.explore){ const lost=Math.floor(save.gold*.1); save.gold-=lost; persist(); logCamp('Fled a fight at depth '+B.depth+' and dropped '+lost+' gold.','curse'); tip('You flee to camp and drop '+lost+' gold'); }
-  B=null; openCamp(); }); };
+  if(B.explore){ fleeCost('Fled a fight at depth '+B.depth); if(typeof stopExplore==='function'){ stopExplore(); EX=null; XPARK=null; } }
+  B=null; openCamp(); }
+function fleeCost(what){ const lost=Math.floor(save.gold*.1); save.gold-=lost; persist(); logCamp(what+' and dropped '+lost+' gold.','curse'); tip('You flee to camp and drop '+lost+' gold'); }
 // the card you cast pops up large and flies onto the board, Hearthstone style
 function showCast(c,inst){ const box=$('#castFx'); box.innerHTML=''; const el=cardEl(c,inst&&inst.combo?`<span class="tag">✦ ${esc(inst.combo.split(':')[0])}</span>`:''); box.appendChild(el); }
 function banner(text,color){ const b=$('#banner'); b.textContent=text; b.style.setProperty('--bc',color); b.classList.remove('on'); void b.offsetWidth; b.classList.add('on'); }
 // phone helpers: a short buzz on hits, a pause menu, full screen
 const buzz=ms=>{ try{ navigator.vibrate&&navigator.vibrate(ms); }catch(e){} };
 let paused=false;
-$('#btnMenu').onclick=()=>{ paused=true; if(B) B.player.charging=false; $('#bMenu').classList.add('on'); };
-$('#mResume').onclick=()=>{ paused=false; $('#bMenu').classList.remove('on'); };
-$('#mFull').onclick=()=>{ const d=document, el=d.documentElement;
-  try{ if(d.fullscreenElement||d.webkitFullscreenElement) (d.exitFullscreen||d.webkitExitFullscreen).call(d); else{ const r=(el.requestFullscreen||el.webkitRequestFullscreen).call(el); if(r&&r.catch) r.catch(()=>tip('Full screen is not available here')); } }catch(e){ tip('Full screen is not available here'); } };
-document.addEventListener('fullscreenchange',()=>{ $('#mFull').textContent=document.fullscreenElement?'Exit full screen':'Full screen'; setTimeout(resizeView,50); });
-document.addEventListener('visibilitychange',()=>{ if(document.hidden&&B&&B.phase==='fight'&&$('#scrBattle').classList.contains('on')) $('#btnMenu').onclick(); });
+/* ---------------- pause ----------------
+   One pause menu for the dungeon and the battle. The ⋯ button, Esc, or switching away from the
+   game opens it; what "leave" does depends on where you are. */
+function pauseWhere(){ if(B&&$('#scrBattle').classList.contains('on')) return B.trial?'trial':B.explore?'xfight':'battle';
+  if(typeof EX!=='undefined'&&EX&&EX.active&&$('#scrExplore').classList.contains('on')) return 'map'; return null; }
+function openPause(){ const w=pauseWhere(); if(!w||$('#pause').classList.contains('on')) return;
+  if(w==='map'){ if(EX.busy) return; xPause(true); } else { if(B.phase!=='fight') return; paused=true; B.player.charging=false; $('#btnWand').classList.remove('charging'); }
+  const d=w==='map'?EX.depth:B.depth, onStairs=w==='map'&&EX.pc===EX.up;
+  $('#pauseWhere').textContent='Depth '+d+' · '+areaLabel(d);
+  $('#pauseHint').textContent=w==='map'?'Tap a spot to walk there, or hold to walk toward your finger. Search for secret doors and traps, and disarm a trap before you cross it.'
+    :'Tap your side of the board to move and the enemy side to aim lobs. Hold Fire to charge a shot; open Custom when it glows.';
+  const L=$('#mLeave'); delete L.dataset.armed;
+  L.textContent=w==='battle'?'Retreat to camp':w==='trial'?'End the test':onStairs?'Climb to camp':'Flee to camp · lose 10% gold';
+  $('#pause').classList.add('on'); setTimeout(()=>$('#mResume').focus(),30); }
+function closePause(){ if(!$('#pause').classList.contains('on')) return; $('#pause').classList.remove('on'); paused=false; if(typeof xPause==='function') xPause(false); }
+$('#btnMenu').onclick=openPause;
+$('#xMenu').onclick=openPause;
+$('#mResume').onclick=closePause;
+$('#mSettings').onclick=()=>openSettings();
+$('#mLeave').onclick=e=>{ const w=pauseWhere(); if(!w) return closePause();
+  if(w==='map'&&EX.pc===EX.up){ closePause(); return xToCamp(); }   // free from the stairs up, and the floor waits for you
+  armed(e.currentTarget,w==='battle'||w==='trial'?'Tap again to leave':'Tap again to flee',()=>{ $('#pause').classList.remove('on');
+    if(w==='map'){ xPause(false); fleeCost('Fled depth '+EX.depth); stopExplore(); EX=null; XPARK=null; openCamp(); }
+    else leaveFight(); }); };
+function toggleFull(){ const d=document, el=d.documentElement;
+  try{ if(d.fullscreenElement||d.webkitFullscreenElement) (d.exitFullscreen||d.webkitExitFullscreen).call(d); else{ const r=(el.requestFullscreen||el.webkitRequestFullscreen).call(el); if(r&&r.catch) r.catch(()=>tip('Full screen is not available here')); } }catch(e){ tip('Full screen is not available here'); } }
+$('#mFull').onclick=toggleFull; $('#setFull').onclick=toggleFull;
+document.addEventListener('fullscreenchange',()=>{ document.querySelectorAll('.fullBtn').forEach(b=>b.textContent=document.fullscreenElement?'Exit full screen':'Full screen'); setTimeout(resizeView,50); });
+document.addEventListener('visibilitychange',()=>{ if(document.hidden) openPause(); });
+// Esc opens and closes the pause menu (the settings screen takes Esc first while it is open)
+window.addEventListener('keydown',e=>{ if(e.key!=='Escape') return; if($('#pause').classList.contains('on')){ e.preventDefault(); closePause(); } else if(pauseWhere()){ e.preventDefault(); openPause(); } });
 
 // the combos a queue makes, as gold chips
 function comboChips(combos){ return combos.length?combos.map(c=>`<span>✦ ${esc(c.label)}</span>`).join(''):''; }
@@ -573,8 +609,8 @@ function set(key,val,fn){ if(last[key]!==val){ last[key]=val; fn(val); } }
 function hud(force){
   const b=B; if(!b) return; if(force) for(const k in last) delete last[k];
   const p=b.player, pl=b.piles;
-  set('hp',p.hp+'/'+p.maxHp,v=>{ $('#hpTxt').textContent='HP '+v; $('#hpBar').style.width=(p.hp/p.maxHp*100)+'%'; });
-  set('depth',b.depth+'|'+Math.ceil(b.wave),()=>$('#depthTxt').textContent='Depth '+b.depth+' · '+areaOf(b.depth).name+(b.waves.length>1?' · W'+(Math.ceil(b.wave)+1)+'/'+b.waves.length:''));
+  set('hp',p.hp+'/'+p.maxHp,()=>hpMeter($('#hpBar'),$('#hpTxt'),p.hp,p.maxHp));
+  set('depth',b.depth+'|'+Math.ceil(b.wave),()=>{ const t=$('#depthTxt'); t.textContent='Depth '+b.depth+' · '+areaOf(b.depth).name+(b.waves.length>1?' · Wave '+(Math.ceil(b.wave)+1)+'/'+b.waves.length:''); t.style.color=areaOf(b.depth).glow; });
   set('piles',pl.draw.length+'|'+pl.hand.length+'|'+pl.discard.length,()=>$('#pileTxt').textContent='Deck '+pl.draw.length+' · Hand '+pl.hand.length+' · Used '+pl.discard.length);
   set('gauge',Math.round(b.gauge*10),()=>$('#gaugeBar').style.width=(b.gauge/GAUGE_MAX*100)+'%');
   const buffs=[]; if(p.barrier>0) buffs.push('🛡 '+Math.ceil(p.barrier)+' · '+p.shieldTurns+(p.shieldTurns>1?' turns':' turn')); if(p.dodge) buffs.push('💨 Dodge'); if(p.invT>0) buffs.push('🌀 Phase');
@@ -631,7 +667,7 @@ window.addEventListener('keydown',e=>{
     else if(k==='enter'||k===' '){ e.preventDefault(); closeCustomScreen(); }
     return;
   }
-  if(B.phase!=='fight'||held.has(k)) return; held.add(k);
+  if(B.phase!=='fight'||paused||held.has(k)) return; held.add(k);
   const a=typeof keyAct==='function'?keyAct(k,'battle'):null;   // your bindings, from Settings (keys.js)
   if(a) e.preventDefault();
   if(a==='left') stepDir(DIRS.W);
@@ -664,11 +700,18 @@ const LAYOUT_KEY='hexmancers-layout';
 function getLayout(){ try{ const v=localStorage.getItem(LAYOUT_KEY); if(v==='phone'||v==='tablet') return v; }catch(e){} return innerWidth>=700?'tablet':'phone'; }
 function setLayout(m,keep){ document.body.classList.toggle('ui-tablet',m==='tablet'); document.body.classList.toggle('ui-phone',m!=='tablet');
   if(keep){ try{ localStorage.setItem(LAYOUT_KEY,m); }catch(e){} }
-  document.querySelectorAll('.layoutBtn').forEach(b=>{ b.innerHTML=`Layout: <b class="${m==='phone'?'on':''}">Phone</b> ⇄ <b class="${m==='tablet'?'on':''}">Tablet</b>`; b.setAttribute('aria-label','Layout: '+m+'. Tap to switch.'); });
+  document.querySelectorAll('.layoutBtn').forEach(b=>{ b.innerHTML=`<b class="${m==='phone'?'on':''}">Phone</b> ⇄ <b class="${m==='tablet'?'on':''}">Tablet</b>`; b.setAttribute('aria-label','Layout: '+m+'. Tap to switch.'); });
   if($('#scrCamp').classList.contains('on')) campScene();
   if($('#scrBattle').classList.contains('on')) resizeView(); }
 document.querySelectorAll('.layoutBtn').forEach(b=>b.onclick=()=>setLayout(document.body.classList.contains('ui-tablet')?'phone':'tablet',true));
 setLayout(getLayout());
+/* Testing tools (boss tests at camp, free gear and scrolls on the Character screen) stay hidden
+   unless switched on in Settings, or by opening the game with ?dev in the address. */
+const DEV_KEY='hexmancers-dev';
+try{ if(/[?&]dev\b/.test(location.search)) localStorage.setItem(DEV_KEY,'1'); }catch(e){}
+function applyDev(){ let on=false; try{ on=localStorage.getItem(DEV_KEY)==='1'; }catch(e){} document.body.classList.toggle('dev',on); $('#setDev').textContent=on?'On':'Off'; }
+$('#setDev').onclick=()=>{ const on=!document.body.classList.contains('dev'); try{ localStorage.setItem(DEV_KEY,on?'1':'0'); }catch(e){} applyDev(); };
+applyDev();
 /* the window's shape and size: .wide or .tall, and --ui, the scale for menus and the HUD.
    1 on phones; on bigger screens it grows so text and buttons stay a comfortable size. */
 function applyViewport(){
@@ -693,8 +736,8 @@ function openMenu(){
   if(has){ if(pickDepth==null) pickDepth=save.deepest; pickDepth=Math.min(Math.max(1,pickDepth),save.deepest); }
   else pickDepth=1;
   $('#mmContinue').style.display=has?'':'none';
-  $('#mmSave').textContent=has?'Deepest depth '+save.deepest+' · '+save.gold+' gold · '+Object.keys(save.owned).length+' kinds of card':'No save yet. Start a new game to pick your first deck.';
-  $('#mmDepth').textContent=pickDepth; $('#mmArea').textContent=areaOf(pickDepth).name+(pickDepth%4===0?' · boss depth':'');
+  $('#mmSave').innerHTML=has?'Deepest: depth '+save.deepest+', '+esc(areaOf(save.deepest).name)+' · <span class="goldtxt">'+uiIcon('coin',20)+save.gold+'</span> · '+ownedUnique(save)+' cards':'No save yet. Start a new game to pick your first deck.';
+  $('#mmDepth').textContent=pickDepth; $('#mmArea').textContent=areaLabel(pickDepth); $('#mmArea').style.color=areaOf(pickDepth).glow;
   $('#mmDown').disabled=!has||pickDepth<=1; $('#mmUp').disabled=!has||pickDepth>=save.deepest;
   const v=has?validateDeck(activeDeck().list,CARDS,save.owned):{ok:false};
   $('#mmExplore').disabled=$('#mmBattle').disabled=!has||!v.ok;

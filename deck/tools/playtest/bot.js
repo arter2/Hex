@@ -39,7 +39,9 @@ function playBattle(list,depth,skill,capSec,gear){
       es.filter(e=>e.windT>0).forEach(e=>lineTiles(e.tile,DIRS.W).forEach(tt=>danger.add(tt)));
       B.shots.filter(s=>s.from==='e').forEach(s=>s.tiles.slice(Math.max(0,s.i)).forEach(tt=>danger.add(tt)));
       if(danger.has(p.tile)&&Math.random()<skill.dodge){ const safe=P_TILES.filter(tt=>!tt.occ&&!danger.has(tt)).sort((a,b)=>hexDist(p.tile,a)-hexDist(p.tile,b))[0]; if(safe) moveTo(safe); }
-      else if(skill.align&&es.length&&!p.path.length){ const tgt=es.slice().sort((a,b)=>a.hp-b.hp)[0];
+      else if(skill.align&&es.length&&!p.path.length){ // experts follow the boss tip: break healers first, then the boss; others pick the weakest
+        const heals=e=>e.def.moves.some(m=>m==='mend'||m==='mendboss'), rank=e=>skill.smartCast?(heals(e)?0:e.def.boss?1:2):0;
+        const tgt=es.slice().sort((a,b)=>rank(a)-rank(b)||a.hp-b.hp)[0];
         if(tgt.tile.r!==p.tile.r){ const tt=P_TILES.filter(x=>x.r===tgt.tile.r&&!x.occ&&!danger.has(x)).sort((a,b)=>(skill.closeIn?b.x-a.x:0))[0]; if(tt) moveTo(tt); }
         else if(skill.closeIn){ const fwd=P_TILES.filter(x=>x.r===p.tile.r&&!x.occ&&!danger.has(x)).sort((a,b)=>b.x-a.x)[0]; if(fwd&&fwd!==p.tile) moveTo(fwd); } }
     }

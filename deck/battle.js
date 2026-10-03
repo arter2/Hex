@@ -591,18 +591,11 @@ function mixHex(a,b,t){ const pa=parseInt(a.slice(1),16), pb=parseInt(b.slice(1)
   return 'rgb('+r+','+g+','+bl+')'; }
 
 /* ---------------- the cave around the board ----------------
-   The area you fight in is built around the board in the same perspective: a rock floor past
-   the tiles, a back wall and side walls rising out of it with a dark ceiling, stalactites and
-   rubble, and the area's own light: green crystals, blue ice, gold veins and pillars, or white
-   motes in the black. The area changes every 3 depths and the cycle repeats. The still part is
+   The area you fight in (world.js) is built around the board in the same perspective: a rock
+   floor past the tiles, a back wall and side walls rising out of it with a dark ceiling,
+   stalactites and rubble, and the area's own light: green crystals, blue ice, glowing lava
+   cracks, gold veins and pillars, storm crystals, or white motes in the black. The still part is
    drawn once into a cached canvas; glows, mist and drifting dust animate every frame. */
-const AREAS=[
-  {name:'Glowworm Hollows', rock:'#151c22', wall:'#1d262f', lit:'#3a4c5a', glow:'#39ff8a', fog:'#0d3a2a', veins:'crystal'},
-  {name:'Frozen Deeps',     rock:'#122131', wall:'#182c42', lit:'#3a6488', glow:'#7fd4ff', fog:'#0e2f4f', veins:'ice'},
-  {name:'Gilded Ruins',     rock:'#17191c', wall:'#22252a', lit:'#4a4f57', glow:'#f2c94c', fog:'#2a2410', veins:'gold'},
-  {name:'The Abyss',        rock:'#07090b', wall:'#0d1115', lit:'#26303a', glow:'#e9fbff', fog:'#0a1a24', veins:'stars'},
-];
-const areaOf=d=>AREAS[Math.floor((Math.max(1,d)-1)/3)%AREAS.length];
 function caveRng(seed){ let a=seed|0; return ()=>{ a=a+0x6D2B79F5|0; let t=Math.imul(a^a>>>15,1|a); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
 function buildCave(depth){
   const A=areaOf(depth), cv=document.createElement('canvas'); cv.width=Math.round(View.w*View.dpr); cv.height=Math.round(View.h*View.dpr);
@@ -642,9 +635,9 @@ function buildCave(depth){
     fillPoly(bot,mixHex(A.rock,'#000000',.5)); fillPoly(top,mixHex(A.wall,A.lit,.25+R()*.2)); }
   // the area's light: crystals, ice, gold, or white motes
   for(const L of lights){ const [x,y]=L.p, S2=scaleAt(0,0)*L.r;
-    if(A.veins==='crystal'||A.veins==='ice'){ for(let k=0;k<3;k++){ const a=-Math.PI/2+(k-1)*.5+R()*.3, len=S2*(.6+R()*.7);
+    if(A.veins==='crystal'||A.veins==='ice'||A.veins==='storm'){ for(let k=0;k<3;k++){ const a=-Math.PI/2+(k-1)*.5+R()*.3, len=S2*(.6+R()*.7);
         fillPoly([[x-S2*.12,y],[x+Math.cos(a)*len,y+Math.sin(a)*len],[x+S2*.12,y]],k===1?'#ffffff':A.glow); } }
-    else if(A.veins==='gold'){ ctx.strokeStyle=A.glow; ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(x-S2,y+S2*.3); for(let k=0;k<4;k++) ctx.lineTo(x-S2+S2*.6*(k+1),y+(R()-.5)*S2*.8); ctx.stroke(); }
+    else if(A.veins==='gold'||A.veins==='lava'){ ctx.strokeStyle=A.glow; ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(x-S2,y+S2*.3); for(let k=0;k<4;k++) ctx.lineTo(x-S2+S2*.6*(k+1),y+(R()-.5)*S2*.8); ctx.stroke(); }
     else { ctx.fillStyle='#ffffff'; ctx.fillRect(x-1,y-1,2,2); } }
   if(A.veins==='gold') for(const s2 of [-1,1]) for(let i=0;i<3;i++){ const wx=near*.3+back*.7-i*5, wz=s2*(z1+1.9), b0=P(wx,0,wz), t0=P(wx,1.8+R()*2.5,wz), w=scaleAt(wx,wz)*.32;
       fillPoly([[b0[0]-w,b0[1]],[b0[0]+w,b0[1]],[t0[0]+w,t0[1]],[t0[0]-w,t0[1]]],A.lit); fillPoly([[t0[0]-w*1.3,t0[1]],[t0[0]+w*1.3,t0[1]],[t0[0]+w*1.3,t0[1]+w*.5],[t0[0]-w*1.3,t0[1]+w*.5]],A.glow); }
@@ -662,22 +655,16 @@ function drawCave(ctx,b,T){
   ctx.restore(); ctx.globalAlpha=1;
 }
 
-/* Floor textures: each area paves its hexes in its own pixel-art stone, drawn once per area
-   into one canvas and laid over each tile's colour, so the side and danger tints
-   still read through. Marks are only light and shade (plus the area's accent), never a base colour. */
-const FLOOR_STYLE={
-  'Glowworm Hollows':{accent:'#39ff8a', moss:'#4f8a3a', detail:'moss'},
-  'Frozen Deeps':    {accent:'#e6f6ff', moss:'#bfeaff', detail:'frost'},
-  'Gilded Ruins':    {accent:'#f2c94c', moss:'#8a6a2a', detail:'inlay'},
-  'The Abyss':       {accent:'#e9fbff', moss:'#3a2a56', detail:'stars'},
-};
+/* Floor textures: each area paves its hexes in its own pixel-art stone (its `floor` look in
+   world.js), drawn once per area into one canvas and laid over each tile's colour, so the side
+   and danger tints still read through. Marks are only light and shade (plus the area's accent). */
 /* One large field of irregular stones per area (about one stone per tile). Each hex shows a
    different window of it, so no two tiles look alike and the pattern never visibly repeats. */
 const FLOOR_TEX={}, FLOOR_N=288, FLOOR_WIN=44;
 function floorTexture(A){
   if(FLOOR_TEX[A.name]) return FLOOR_TEX[A.name];
-  const F=FLOOR_STYLE[A.name]||FLOOR_STYLE['Glowworm Hollows'], N=FLOOR_N;
-  const R=caveRng(A.name.length*131+7), cv=document.createElement('canvas'); cv.width=cv.height=N;
+  const F=A.floor||AREAS[0].floor, N=FLOOR_N;
+  const R=caveRng((A.index||0)*131+7), cv=document.createElement('canvas'); cv.width=cv.height=N;
   const x=cv.getContext('2d'), img=x.createImageData(N,N), d=img.data;
   // jittered grid of seeds, so stones are even-sized but irregular
   const G=7, cell=N/G, seeds=[];
@@ -702,6 +689,7 @@ function floorTexture(A){
   const sp=n=>Array.from({length:n},()=>[R()*N|0,R()*N|0]);
   if(F.detail==='moss'){ for(const [cx,cy] of sp(16)) for(let m=0;m<6;m++) dot(cx+(R()*4|0)-2,cy+(R()*3|0)-1,F.moss,.4); for(const [cx,cy] of sp(10)) dot(cx,cy,F.accent,.6); }
   else if(F.detail==='frost'){ for(const [cx0,cy0] of sp(9)){ let cx=cx0, cy=cy0; for(let m=0;m<9;m++){ dot(cx|0,cy|0,F.accent,.32); cx+=R()*2-.4; cy+=R()*2-1; } } for(const [cx,cy] of sp(18)) dot(cx,cy,F.accent,.5); }
+  else if(F.detail==='embers'){ for(let n=0;n<7;n++){ let cx=R()*N, cy=R()*N, ang=R()*6.28; for(let m=0;m<8+R()*10;m++){ dot(cx|0,cy|0,F.accent,.3); ang+=(R()-.5)*1.2; cx+=Math.cos(ang); cy+=Math.sin(ang); } } for(const [cx,cy] of sp(14)) dot(cx,cy,F.accent,.5); }
   else if(F.detail==='inlay'){ for(let n=0;n<4;n++){ const y0=R()*N|0, x0=R()*N|0, len=20+R()*40|0; for(let i=0;i<len;i++) dot((x0+i)%N,y0,F.accent,.26); } for(const [cx,cy] of sp(10)) dot(cx,cy,F.accent,.45); }
   else { for(const [cx,cy] of sp(24)) dot(cx,cy,F.accent,.2+R()*.4); for(const [cx,cy] of sp(12)){ dot(cx,cy,F.moss,.45); dot(cx+1,cy,F.moss,.45); } }
   x.globalAlpha=1;
@@ -792,8 +780,8 @@ function render(){
     ctx.font='600 '+Math.round(Math.max(13,S*.3))+'px "Pixelify Sans",system-ui,sans-serif'; ctx.textAlign='center'; ctx.fillStyle='#fff';
     ctx.fillText(boss.name+'  '+['','I','II','III'][boss.phase||1]+(boss.under?'  · out of reach':''),View.w/2,y0+h+Math.max(15,S*.34)); }
   // expected damage on each enemy the next card would hit (★ = its weak color)
-  if(b.preview&&b.preview.card.pow){ const pv=b.preview; ctx.textAlign='center'; ctx.font='800 '+Math.round(S*.34)+'px Rajdhani,system-ui,sans-serif';
-    for(const t of new Set(pv.hit)){ const e=t.occ; if(!e||e.kind!=='enemy') continue; const [x,y]=proj(posOf(e)[0],0,posOf(e)[1]), S=scaleAt(...posOf(e)); ctx.font='800 '+Math.round(S*.34)+'px Rajdhani,system-ui,sans-serif';
+  if(b.preview&&b.preview.card.pow){ const pv=b.preview; ctx.textAlign='center'; ctx.font='800 '+Math.round(S*.34)+'px "Pixelify Sans",system-ui,sans-serif';
+    for(const t of new Set(pv.hit)){ const e=t.occ; if(!e||e.kind!=='enemy') continue; const [x,y]=proj(posOf(e)[0],0,posOf(e)[1]), S=scaleAt(...posOf(e)); ctx.font='800 '+Math.round(S*.34)+'px "Pixelify Sans",system-ui,sans-serif';
       const d=estDamage(pv.card,e,pv.mult), weak=bossMult(pv.card.color,e)>1, txt=(pv.card.shape==='missiles'?pv.card.n+'× ':'')+'−'+d+(weak?' ★':'');
       const w=ctx.measureText(txt).width+12, yy=y-S*.35; ctx.fillStyle=weak?'#ffe066':'rgba(4,8,12,.88)'; ctx.strokeStyle=colorOf(pv.card); ctx.lineWidth=2;
       ctx.beginPath(); ctx.roundRect(x-w/2,yy-S*.28,w,S*.4,6); ctx.fill(); ctx.stroke(); ctx.fillStyle=weak?'#1a1206':'#fff'; ctx.fillText(txt,x,yy); } }
@@ -819,7 +807,7 @@ function render(){
   }
   for(const q of b.parts){ const [x,y]=proj(q.wx,q.y,q.wz); ctx.globalAlpha=1-q.t/q.life; ctx.fillStyle=q.color; ctx.fillRect(x-2,y-2,4,4); } ctx.globalAlpha=1;
   ctx.textAlign='center';
-  for(const f of b.floaters){ const [x,y]=proj(f.wx,f.y,f.wz), S=scaleAt(f.wx,f.wz), pop=1+.7*Math.max(0,1-f.t/.14); ctx.globalAlpha=Math.min(1,(1-f.t/.9)*1.6); ctx.font=(f.big?'800 ':'700 ')+Math.round(S*(f.big?.55:.42)*pop)+'px Rajdhani,system-ui,sans-serif';
+  for(const f of b.floaters){ const [x,y]=proj(f.wx,f.y,f.wz), S=scaleAt(f.wx,f.wz), pop=1+.7*Math.max(0,1-f.t/.14); ctx.globalAlpha=Math.min(1,(1-f.t/.9)*1.6); ctx.font=(f.big?'800 ':'700 ')+Math.round(S*(f.big?.55:.42)*pop)+'px "Pixelify Sans",system-ui,sans-serif';
     ctx.lineWidth=3; ctx.strokeStyle='rgba(0,0,0,.7)'; ctx.strokeText(f.text,x,y); ctx.fillStyle=f.color; ctx.fillText(f.text,x,y); } ctx.globalAlpha=1;
 }
 
@@ -895,14 +883,14 @@ const DRAW={
     if(e.barrier>0){ ctx.strokeStyle='rgba(255,240,179,.85)'; ctx.lineWidth=2.5; ctx.beginPath(); ctx.ellipse(x,y-h,S*.7*sc,h*1.2,0,0,TAU); ctx.stroke(); }
     const top=r.top-S*.1;
     bar(ctx,x,top,S*.9,e.hp/e.maxHp,'#ff5d6c');
-    ctx.font='700 '+Math.round(S*.28)+'px Rajdhani,system-ui,sans-serif'; ctx.textAlign='center';
+    ctx.font='700 '+Math.round(S*.28)+'px "Pixelify Sans",system-ui,sans-serif'; ctx.textAlign='center';
     const st=[]; if(e.burnT>0) st.push('🔥'); if(frozen) st.push('❄️'); if(e.stunT>0) st.push('💫'); if(e.slowT>0) st.push('🐌'); if(e.poisonT>0) st.push('☠'); if(e.curseT>0) st.push('☾'); if(e.powerT>0) st.push('⬆'); if(e.confuseT>0) st.push('❓');
     ctx.fillStyle='#fff'; ctx.fillText(e.name+'  weak: '+COLORS[e.weak||WEAK_TO[e.color]].icon+(e.resist?'  reflects: '+COLORS[e.resist].icon:''),x,top-4);
     if(st.length) ctx.fillText(st.join(''),x,top-4-S*.3);
     if(e.casting){ const w=Math.max(S*1.6,ctx.measureText(e.casting.name).width+14), yy=top-S*.75;   // the card it is about to cast
       ctx.fillStyle='rgba(4,8,12,.9)'; ctx.strokeStyle=COLORS[e.casting.color].c; ctx.lineWidth=2; ctx.beginPath(); ctx.roundRect(x-w/2,yy-S*.32,w,S*.44,6); ctx.fill(); ctx.stroke();
       ctx.fillStyle=COLORS[e.casting.color].c; ctx.fillText(TYPES[e.casting.type].icon+' '+e.casting.name,x,yy); }
-    if(e.windT>0){ ctx.fillStyle='#ff5d6c'; ctx.font='800 '+Math.round(S*.6)+'px Rajdhani,system-ui,sans-serif'; ctx.fillText('!',x+S*.5,y-h*1.6); }
+    if(e.windT>0){ ctx.fillStyle='#ff5d6c'; ctx.font='800 '+Math.round(S*.6)+'px "Pixelify Sans",system-ui,sans-serif'; ctx.fillText('!',x+S*.5,y-h*1.6); }
     // intent: what it will do next, with a ring that closes as the attack nears
     if(e.hp>0&&!e.casting&&!e.windT&&e.nextMove&&e.atkT<1.6&&e.freezeT<=0&&e.stunT<=0){ const ix=x+S*.62, iy=top-S*.05, r=S*.26, k=1-e.atkT/1.6;
       ctx.fillStyle='rgba(4,8,12,.85)'; ctx.beginPath(); ctx.arc(ix,iy,r,0,TAU); ctx.fill();
@@ -944,7 +932,7 @@ const DRAW={
     const g=ctx.createLinearGradient(0,gy-S*3,0,gy); g.addColorStop(0,'rgba(255,230,120,0)'); g.addColorStop(1,'rgba(255,230,120,.28)');
     ctx.globalAlpha=1; ctx.fillStyle=g; ctx.fillRect(gx-S*.55,gy-S*3,S*1.1,S*3);
     const r=drawSprite(ctx,a,T,S,{scale:1.05,bob:.04,flip:facing(a,alive()[0],false),flash:a.hitT>0?.8:0});
-    const top=r.top-S*.1; ctx.textAlign='center'; ctx.font='800 '+Math.round(S*.3)+'px Rajdhani,system-ui,sans-serif';
+    const top=r.top-S*.1; ctx.textAlign='center'; ctx.font='800 '+Math.round(S*.3)+'px "Pixelify Sans",system-ui,sans-serif';
     ctx.lineWidth=3; ctx.strokeStyle='rgba(0,0,0,.7)'; const nm='♔ '+a.card.name.split(',')[0]; ctx.strokeText(nm,r.x,top-S*.18); ctx.fillStyle='#ffe066'; ctx.fillText(nm,r.x,top-S*.18);
     bar(ctx,r.x,top,S*.9,a.hp/a.maxHp,col); turnPips(ctx,r.x,top+S*.16,a.turns,S);
   },

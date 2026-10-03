@@ -1,4 +1,5 @@
-/* Hexmancers — bosses. One per color, one every 4th depth, each meant to last 6 to 10 minutes.
+/* Hexmancers — bosses. One per color, each ruling the last floor of its own area (world.js),
+   each meant to last 6 to 10 minutes.
    Every boss has a signature gimmick and evolves twice, at 2/3 and 1/3 of its HP: a banner, a
    short guard, and a new strategy. The battle code calls bossTick each frame, bossHit before
    damage lands, and asks bossColorMult for the boss's current weakness. */
@@ -15,8 +16,8 @@ Object.assign(ENEMY_DEFS,{
   sapling: {name:'Sapling',      color:'verdant', hp:55,  dmg:8,  rate:[2.6,3.6], moves:['shot'],     ai:'align', minion:true, scale:.75},
   clone:   {name:'Hollow Shade', color:'shadow',  hp:60,  dmg:10, rate:[3,4],     moves:['blink'],    ai:'wander', minion:true, scale:1.1},
 });
-// the order bosses appear in, matched to the area of each 4th depth, then the cycle repeats
-const BOSS_ORDER=['glacier','golem','hollow','treant','wyrm','roc'];
+// each area's boss waits on its 4th floor (world.js); the order follows the areas
+const BOSS_ORDER=AREAS.map(a=>a.boss);
 const BOSS_INFO={
   glacier:'Raises ice walls on your side; later freezes the front card of your queue, then a blizzard.',
   golem:'Its weak color changes every few seconds (shown over it); later it reflects the color it resists.',
@@ -25,7 +26,9 @@ const BOSS_INFO={
   wyrm:'Cracks your tiles into lava pits you cannot cross; later burrows and erupts under a row.',
   roc:'Lightning rods mark tiles, then strike; later it flies off the board and dives down a row.',
 };
-const bossFor=depth=>BOSS_ORDER[(Math.floor(depth/4)-1+BOSS_ORDER.length*99)%BOSS_ORDER.length];
+const bossFor=depth=>areaOf(depth).boss;
+// the depth where a boss first waits: the last floor of its area
+const bossDepth=id=>(BOSS_ORDER.indexOf(id)+1)*DEPTHS_PER_AREA;
 const ROTATE_COLORS=['fire','frost','storm','verdant','shadow','light'];
 
 /* ---------------- moves only bosses use ---------------- */
@@ -46,7 +49,7 @@ Object.assign(MOVES,{
     tele(e,[t],1,Math.round(e.dmg*.5),()=>{ if(B.player.tile===t){ B.player.rootT=2.2; floater('Rooted!',t,'#9fdca8',true); } }); },
   // a Root Node pours life into its boss
   mendboss(e){ const boss=e.summoner; if(!boss||boss.hp<=0) return;
-    const h=Math.round(boss.maxHp*.025); boss.hp=Math.min(boss.maxHp,boss.hp+h); floater('+'+h,boss.tile||e.tile,'#9fdca8');
+    const h=Math.round(boss.maxHp*.015); boss.hp=Math.min(boss.maxHp,boss.hp+h); floater('+'+h,boss.tile||e.tile,'#9fdca8');
     if(boss.tile) B.fx.push({kind:'bolt',a:e.tile,b:boss.tile,color:'#9fdca8',t:0,life:.35}); },
 });
 Object.assign(INTENT_ICON,{icewall:'▤',crack:'◎',rods:'⚡',vines:'❦',mendboss:'✚'});
@@ -57,6 +60,8 @@ function openPit(t,sec){ t.holeT=sec; t.burnT=Math.max(t.burnT||0,.1); burst(t,'
   const p=B.player; if(p.tile===t){ hitPlayer(6); const to=pick(neighbors(t).filter(x=>x.side==='p'&&!x.occ&&!(x.holeT>0))); if(to){ t.occ=null; p.tile=to; to.occ=p; p.path=[]; } } }
 
 /* ---------------- helpers ---------------- */
+// Root Nodes grow within reach of your wand, never in the back two columns, so breaking them is always possible
+const nodeTiles=()=>E_TILES.filter(t=>t.col<BOARD_COLS-2);
 function summon(boss,id,n,tiles){ const free=(tiles||E_TILES).filter(t=>!t.occ&&!burning(t)); const out=[];
   for(let i=0;i<n&&free.length;i++){ const t=free.splice(Math.floor(Math.random()*free.length),1)[0]; const m=makeEnemy(id,t,B.depth); m.summoner=boss; m.atkT+=1; B.enemies.push(m); burst(t,COLORS[m.color].c,14); out.push(m); }
   return out; }
@@ -68,7 +73,7 @@ function come(e,t){ t=t&&!t.occ?t:pick(E_TILES.filter(x=>!x.occ&&!burning(x))); 
 /* ---------------- each boss's gimmick, every frame ---------------- */
 function bossStart(e){ e.phase=1; e.gT=0; e.g2=0;
   if(e.def.bossId==='golem'){ e.weak=pick(ROTATE_COLORS.filter(c=>c!=='light')); e.resist=null; }
-  if(e.def.bossId==='treant') summon(e,'rootnode',2);
+  if(e.def.bossId==='treant') summon(e,'rootnode',2,nodeTiles());
   if(e.def.bossId==='hollow') B.fog=true;
   B.hooks.onBoss&&B.hooks.onBoss(e.name,COLORS[e.color].c,BOSS_INFO[e.def.bossId]);
 }
@@ -82,7 +87,7 @@ function evolve(e,ph){ e.phase=ph; e.guardT=2.5; cancelAttack(e); shake(8); burs
   if(e.def.bossId==='golem'&&ph>=2) e.reflect=true;
   if(e.def.bossId==='golem'&&ph===3){ e.def={...e.def, moves:['quake','quake','boulders'], rate:[2.6,3.4]}; }
   if(e.def.bossId==='hollow'&&ph===3) summon(e,'clone',2);
-  if(e.def.bossId==='treant'&&ph===3){ summon(e,'rootnode',Math.max(0,2-helpers(e,'rootnode').length)); summon(e,'sapling',2); }
+  if(e.def.bossId==='treant'&&ph===3){ summon(e,'rootnode',Math.max(0,2-helpers(e,'rootnode').length),nodeTiles()); summon(e,'sapling',2); }
   if(e.def.bossId==='wyrm'&&ph===3){ e.def={...e.def, rate:[2.4,3.2]}; }
 }
 function bossTick(e,dt){
@@ -97,7 +102,9 @@ function bossTick(e,dt){
       e.resist=e.reflect?pick(ROTATE_COLORS.filter(c=>c!==e.weak)):null; floater('weak: '+COLORS[e.weak].name+(e.resist?' · reflects '+COLORS[e.resist].name:''),e.tile,COLORS[e.weak].c,true); } }
   if(id==='hollow'){ if(e.gT>=6&&!e.under){ e.gT=0; const to=pick(E_TILES.filter(t=>!t.occ&&!burning(t))); if(to){ burst(e.tile,'#e0588f',12); e.tile.occ=null; e.tile=to; to.occ=e; burst(to,'#e0588f',12); } }
     e.g2+=dt; if(e.phase>=2&&e.g2>=10){ e.g2=0; const hand=B.piles.hand; if(hand.length){ const c=hand.splice(Math.floor(Math.random()*hand.length),1)[0]; B.piles.discard.push(c); floater('Stolen: '+c.card.name,p.tile,'#e0588f',true); } } }
-  if(id==='treant'){ e.g2+=dt; if(e.phase>=3&&e.g2>=14){ e.g2=0; if(helpers(e,'sapling').length<3) summon(e,'sapling',1); if(!helpers(e,'rootnode').length) summon(e,'rootnode',1); } }
+  // the grove keeps sending saplings, but a broken Root Node regrows only once: healing that
+  // never ends made the fight unwinnable
+  if(id==='treant'){ e.g2+=dt; if(e.phase>=3&&e.g2>=14){ e.g2=0; if(helpers(e,'sapling').length<3) summon(e,'sapling',1); if(!helpers(e,'rootnode').length&&!e.regrown){ e.regrown=true; summon(e,'rootnode',1,nodeTiles()); } } }
   if(id==='wyrm'||id==='roc'){
     if(e.under){ e.awayT-=dt; if(e.awayT<=0&&!e.diving){ e.diving=true; const r=p.tile.r, row=P_TILES.filter(t=>t.r===r);
         tele(null,row,1.1,Math.round(e.dmg*1.3),()=>{ if(id==='wyrm') row.forEach(t=>{ if(Math.random()<.4) openPit(t,8); }); come(e,pick(E_TILES.filter(t=>t.r===r&&!t.occ))); e.diving=false; e.gT=0; });
@@ -117,4 +124,4 @@ function bossColorMult(atk,e){ if(e&&e.weak) return atk===e.weak?WEAK_MULT:atk&&
 // when a boss falls, everything it brought falls with it
 function bossDown(e){ B.fog=false; for(const m of helpers(e)) killEnemy(m); }
 
-if(typeof module!=='undefined') module.exports={BOSS_ORDER,bossFor};
+if(typeof module!=='undefined') module.exports={BOSS_ORDER,bossFor,bossDepth};

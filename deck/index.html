@@ -4,9 +4,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
 <title>Hexmancers</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jacquard+12&family=Pixelify+Sans:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,7 +13,7 @@
   <section id="scrMenu" class="screen">
     <div class="mainmenu">
       <h1>Hexmancers</h1>
-      <p class="sub">Dungeon crawling and card battles on a hex grid</p>
+      <p class="sub">Crawl the dungeon. Duel on the hex grid. Collect the cards.</p>
       <p id="mmSave" class="hint center"></p>
       <button id="mmContinue" class="btn big mmbtn">▶ Continue<small>back to camp, where you left off</small></button>
       <div class="panel mmdepth">
@@ -37,11 +34,10 @@
   <section id="scrStart" class="screen">
     <button id="startBack" class="btn ghost back startback">← Main menu</button>
     <h1>Hexmancers</h1>
-    <p class="sub">Deck prototype · 1,000 cards and 6 heroes to collect</p>
-    <p class="hint center">Choose your first deck. Win fights to collect cards, then build your own decks at camp.</p>
+    <p class="sub">New game</p>
+    <p class="hint center">Choose your first deck. Win fights and open chests to collect cards from 1,000, then build your own decks at camp.</p>
     <p id="startWarn" class="hint warn center"></p>
     <div id="starters"></div>
-    <button class="btn ghost layoutBtn"></button>
   </section>
 
   <!-- camp: the hub of the collecting loop -->
@@ -68,10 +64,9 @@
         <button id="goChar" class="btn ghost mi" data-icon="hero">Character</button>
         <button id="goSettings" class="btn ghost mi" data-icon="scroll">Settings</button>
       </div>
-      <button class="btn ghost layoutBtn"></button>
       <div id="campLog" class="panel log"></div>
-      <div id="bossTrials" class="trials"></div>
-      <div class="wallet"><span id="campGold"></span><span id="campColl"></span><button id="btnReset" class="link">Reset save</button></div>
+      <div id="bossTrials" class="trials devonly"></div>
+      <div class="wallet"><span id="campGold"></span><span id="campColl"></span></div>
     </div>
   </section>
 
@@ -119,7 +114,7 @@
     <h3>Stats</h3>
     <div id="chStats" class="charstats"></div>
     <div id="chScrolls" class="items-row"></div>
-    <div class="testbar"><span class="dim">Testing</span><button id="chTestAll" class="btn ghost">Get one of every piece</button><button id="chTestScrolls" class="btn ghost">+2 of each scroll</button></div>
+    <div class="testbar devonly"><span class="dim">Testing</span><button id="chTestAll" class="btn ghost">Get one of every piece</button><button id="chTestScrolls" class="btn ghost">+2 of each scroll</button></div>
   </section>
 
   <!-- shop -->
@@ -144,8 +139,9 @@
     <canvas id="xView"></canvas>
     <div class="x-vignette"></div>
     <div id="xTop">
-      <div class="meter big"><i id="xHpBar"></i><span id="xHpTxt"></span></div>
-      <div class="info"><span id="xDepth"></span><span id="xGold"></span></div>
+      <div class="meter big hpmeter"><i id="xHpBar"></i><span id="xHpTxt"></span></div>
+      <div class="info"><span id="xDepth"></span><span id="xGold" class="goldtxt"></span></div>
+      <button id="xMenu" class="btn ghost sq small" aria-label="Pause">⋯</button>
     </div>
     <canvas id="xMini"></canvas>
     <div id="xHurt" class="hurt-fx"></div>
@@ -164,9 +160,9 @@
 
   <section id="scrBattle" class="screen">
     <div id="hudTop">
-      <div class="hp"><div class="meter big"><i id="hpBar"></i><span id="hpTxt"></span></div></div>
+      <div class="hp"><div class="meter big hpmeter"><i id="hpBar"></i><span id="hpTxt"></span></div></div>
       <div class="info"><span id="depthTxt"></span><span id="pileTxt"></span></div>
-      <button id="btnMenu" class="btn ghost sq small" aria-label="Menu">⋯</button>
+      <button id="btnMenu" class="btn ghost sq small" aria-label="Pause">⋯</button>
       <div class="gauge"><div class="meter"><i id="gaugeBar"></i></div></div>
       <div id="buffs"></div>
     </div>
@@ -185,19 +181,6 @@
       <p class="keys">Tap your side to move, the enemy side to aim lobs · keys: arrows/WASD move, Space fire, Enter cast, Q aim, C custom</p>
     </div>
 
-    <div id="bMenu" class="overlay">
-      <div class="panel narrow">
-        <h2>Paused</h2>
-        <p class="hint">Tap your side of the board to move. Tap the enemy side to aim lobs. Hold Wand to charge a shot.</p>
-        <div class="stack">
-          <button id="mResume" class="btn">Resume</button>
-          <button id="mFull" class="btn ghost">Full screen</button>
-          <button id="mControls" class="btn ghost">Controls</button>
-          <button id="btnRetreat" class="btn ghost">Retreat to camp</button>
-        </div>
-      </div>
-    </div>
-
     <div id="custom" class="overlay">
       <div class="panel custom">
         <div class="bar"><h2>Custom</h2><span id="custPiles" class="count"></span></div>
@@ -213,6 +196,20 @@
   </section>
 
   <!-- shared overlays -->
+  <!-- one pause menu for the dungeon and the battle -->
+  <div id="pause" class="overlay">
+    <div class="panel narrow">
+      <h2>Paused</h2>
+      <p id="pauseWhere" class="hint center"></p>
+      <p id="pauseHint" class="hint"></p>
+      <div class="stack">
+        <button id="mResume" class="btn">Resume</button>
+        <button id="mSettings" class="btn ghost">Settings</button>
+        <button id="mFull" class="btn ghost fullBtn">Full screen</button>
+        <button id="mLeave" class="btn ghost"></button>
+      </div>
+    </div>
+  </div>
   <div id="reveal" class="overlay">
     <div class="panel">
       <h2 id="rvTitle"></h2>
@@ -238,13 +235,21 @@
   <div id="settings" class="overlay">
     <div class="panel settings">
       <div class="bar"><h2>Settings</h2></div>
-      <h3>Keyboard controls</h3>
-      <p class="hint">Click a key box, then press the key you want. Esc cancels, Backspace clears. Each action can have two keys. Saved in this browser.</p>
-      <div class="krow preset"><label for="setPreset">Layout</label><select id="setPreset"></select><button id="setReset" class="btn ghost small">Reset</button></div>
-      <div id="setKeys"></div>
-      <p id="setClash" class="hint warn"></p>
-      <div class="ktest"><span class="dim">Try a key:</span> <span id="setTest">press any key to see what it does</span></div>
-      <p class="hint">Fixed keys: 1–7 pick a card and Backspace removes one on the Custom screen; Enter or Space starts the fight.</p>
+      <h3>Game</h3>
+      <div class="srow"><span>Screen layout<small>Phone: one narrow column. Tablet: two columns, bigger buttons.</small></span><button class="btn ghost small layoutBtn"></button></div>
+      <div class="srow"><span>Full screen</span><button id="setFull" class="btn ghost small fullBtn">Full screen</button></div>
+      <div class="srow"><span>Testing tools<small>Boss tests at camp and free gear on the Character screen</small></span><button id="setDev" class="btn ghost small"></button></div>
+      <details id="setKbd">
+        <summary><h3>Keyboard controls</h3></summary>
+        <p class="hint">Click a key box, then press the key you want. Esc cancels, Backspace clears. Each action can have two keys. Saved in this browser.</p>
+        <div class="krow preset"><label for="setPreset">Layout</label><select id="setPreset"></select><button id="setReset" class="btn ghost small">Reset</button></div>
+        <div id="setKeys"></div>
+        <p id="setClash" class="hint warn"></p>
+        <div class="ktest"><span class="dim">Try a key:</span> <span id="setTest">press any key to see what it does</span></div>
+        <p class="hint">Fixed keys: Esc pauses. On the Custom screen, 1–7 pick a card, Backspace removes one, and Enter or Space starts the fight.</p>
+      </details>
+      <h3>Save</h3>
+      <div class="srow"><span>Erase this save<small>Your cards, decks, gold and gear in this browser. Cannot be undone.</small></span><button id="btnReset" class="btn ghost small danger">Erase</button></div>
       <button id="setClose" class="btn">Done</button>
     </div>
   </div>
@@ -253,6 +258,7 @@
 </div>
 <script src="cards.js"></script>
 <script src="engine.js"></script>
+<script src="world.js"></script>
 <script src="collection.js"></script>
 <script src="gear.js"></script>
 <script src="battle.js"></script>

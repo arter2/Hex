@@ -530,10 +530,22 @@ $('#mLeave').onclick=e=>{ const w=pauseWhere(); if(!w) return closePause();
   armed(e.currentTarget,w==='battle'||w==='trial'?'Tap again to leave':'Tap again to flee',()=>{ $('#pause').classList.remove('on');
     if(w==='map'){ xPause(false); fleeCost('Fled depth '+EX.depth); stopExplore(); EX=null; XPARK=null; if(typeof XRUN!=='undefined') XRUN=null; openCamp(); }
     else leaveFight(); }); };
+const isFull=()=>!!(document.fullscreenElement||document.webkitFullscreenElement);
+let fullByUs=false;   // true while the player asked to leave full screen, so that exit does not pause
 function toggleFull(){ const d=document, el=d.documentElement;
-  try{ if(d.fullscreenElement||d.webkitFullscreenElement) (d.exitFullscreen||d.webkitExitFullscreen).call(d); else{ const r=(el.requestFullscreen||el.webkitRequestFullscreen).call(el); if(r&&r.catch) r.catch(()=>tip('Full screen is not available here')); } }catch(e){ tip('Full screen is not available here'); } }
+  try{ if(isFull()){ fullByUs=true; (d.exitFullscreen||d.webkitExitFullscreen).call(d); } else{ const r=(el.requestFullscreen||el.webkitRequestFullscreen).call(el); if(r&&r.catch) r.catch(()=>tip('Full screen is not available here')); } }catch(e){ tip('Full screen is not available here'); } }
 $('#mFull').onclick=toggleFull; $('#setFull').onclick=toggleFull;
-document.addEventListener('fullscreenchange',()=>{ lockOrient(); setTimeout(applyViewport,120); document.querySelectorAll('.fullBtn').forEach(b=>b.textContent=document.fullscreenElement?'Exit full screen':'Full screen'); setTimeout(resizeView,50); });
+function onFullChange(){ lockOrient(); setTimeout(applyViewport,120); document.querySelectorAll('.fullBtn').forEach(b=>b.textContent=isFull()?'Exit full screen':'Full screen'); setTimeout(resizeView,50);
+  // thrown out of full screen by the system (an iPad pinch, a swipe): pause so the fight waits
+  // and the pause menu's Full screen button is one tap away
+  if(!isFull()&&!fullByUs&&pauseWhere()&&!$('#pause').classList.contains('on')) openPause();
+  if(!isFull()) fullByUs=false; }
+document.addEventListener('fullscreenchange',onFullChange); document.addEventListener('webkitfullscreenchange',onFullChange);
+/* iPad Safari reads two thumbs on the screen (Fire plus Cast, or moving while firing) as a pinch,
+   and a pinch zooms the page or closes full screen. Nothing in the game uses pinch, so swallow
+   WebKit's gesture events and any multi-finger move before the browser acts on them. */
+['gesturestart','gesturechange','gestureend'].forEach(ev=>document.addEventListener(ev,e=>e.preventDefault(),{passive:false}));
+document.addEventListener('touchmove',e=>{ if(e.touches.length>1||(e.scale!=null&&e.scale!==1)) e.preventDefault(); },{passive:false});
 document.addEventListener('visibilitychange',()=>{ if(document.hidden) openPause(); });
 // Esc opens and closes the pause menu (the settings screen takes Esc first while it is open)
 window.addEventListener('keydown',e=>{ if(e.key!=='Escape') return; if($('#pause').classList.contains('on')){ e.preventDefault(); closePause(); } else if(pauseWhere()){ e.preventDefault(); openPause(); } });

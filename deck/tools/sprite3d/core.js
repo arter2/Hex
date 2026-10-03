@@ -11,10 +11,11 @@ const EL=30*Math.PI/180;          // camera elevation
 
 /* ---------- part helpers ---------- */
 let pidN=0;
-const M=LAB.M=(c,o={})=>({c:new T.Color(c),glow:!!o.glow,metal:o.metal||0,side:o.side||T.FrontSide,soft:!!o.soft});
+const M=LAB.M=(c,o={})=>({c:new T.Color(c),glow:!!o.glow,metal:o.metal||0,side:o.side||T.FrontSide,soft:!!o.soft,facet:!!o.facet});
 LAB.mesh=(geo,m,x=0,y=0,z=0,rx=0,ry=0,rz=0)=>{ const o=new T.Mesh(geo); o.userData.m=m; o.userData.pid=1+(pidN++%250);
   o.position.set(x,y,z); o.rotation.set(rx,ry,rz); o.castShadow=!m.glow; o.receiveShadow=true; return o; };
 LAB.grp=(p,x=0,y=0,z=0)=>{ const o=new T.Group(); o.position.set(x,y,z); if(p) p.add(o); return o; };
+LAB.aim=(o,dx,dy,dz)=>{ o.quaternion.setFromUnitVectors(new T.Vector3(0,1,0),new T.Vector3(dx,dy,dz).normalize()); return o; };
 LAB.add=(p,...a)=>{ const o=LAB.mesh(...a); p.add(o); return o; };
 const G=LAB.G={
   cyl:(rt,rb,h,s=10)=>new T.CylinderGeometry(rt,rb,h,s),
@@ -26,9 +27,15 @@ const G=LAB.G={
   oct:r=>new T.OctahedronGeometry(r),
   ico:(r,d=0)=>new T.IcosahedronGeometry(r,d),
   dod:r=>new T.DodecahedronGeometry(r),
-  lathe:(pts,s=14)=>new T.LatheGeometry(pts.map(([r,y])=>new T.Vector2(r,y)),s),
+  lathe:(pts,s=14,gap=0)=>new T.LatheGeometry(pts.map(([r,y])=>new T.Vector2(Math.max(1e-4,r),y)),s,gap/2,Math.PI*2-gap),
+  // a leaf: flat pointed blade, tip toward +y
+  leaf:(w=.06,h=.14)=>{ const g=new T.OctahedronGeometry(1,0); g.scale(w,h/2,w*.22); g.translate(0,h/2,0); return g; },
+  // a ring lying flat (XZ) between r0 and r1, deformed by f(x,z,r,a)->dy
+  disc:(r0,r1,seg=28,f)=>{ const g=new T.RingGeometry(r0,r1,seg,3), p=g.attributes.position;
+    for(let i=0;i<p.count;i++){ const x=p.getX(i), z=-p.getY(i), r=Math.hypot(x,z), a=Math.atan2(x,z); p.setXYZ(i,x,f?f(x,z,r,a):0,z); }
+    g.computeVertexNormals(); return g; },
   // a robe: lathe whose radius ripples into folds, deeper toward the hem
-  robe:(pts,folds=7,amp=.028,s=42)=>{ const g=new T.LatheGeometry(pts.map(([r,y])=>new T.Vector2(r,y)),s), p=g.attributes.position;
+  robe:(pts,folds=7,amp=.028,s=42,gap=0)=>{ const g=new T.LatheGeometry(pts.map(([r,y])=>new T.Vector2(Math.max(1e-4,r),y)),s,gap/2,Math.PI*2-gap), p=g.attributes.position;
     const ys=pts.map(q=>q[1]), top=Math.max(...ys), bot=Math.min(...ys);
     for(let i=0;i<p.count;i++){ const x=p.getX(i), z=p.getZ(i), y=p.getY(i), a=Math.atan2(x,z), d=(top-y)/(top-bot||1);
       const k=1+amp*d*Math.sin(a*folds+Math.sin(a*3)*.8)/Math.max(.12,Math.hypot(x,z)); p.setX(i,x*k); p.setZ(i,z*k); }
@@ -63,13 +70,14 @@ key.shadow.bias=-.0015; key.shadow.normalBias=.015; scene.add(key); scene.add(ke
 const lambert=[new T.MeshLambertMaterial({color:0xffffff}),new T.MeshLambertMaterial({color:0xffffff,side:T.DoubleSide})];
 const white=new T.MeshBasicMaterial({color:0xffffff});
 const normalM=[new T.MeshNormalMaterial(),new T.MeshNormalMaterial({side:T.DoubleSide})];
+const facetL=new T.MeshPhongMaterial({color:0xffffff,flatShading:true,shininess:0,specular:0}), facetN=new T.MeshNormalMaterial({flatShading:true});
 const depthM=[new T.MeshDepthMaterial({depthPacking:T.RGBADepthPacking}),new T.MeshDepthMaterial({depthPacking:T.RGBADepthPacking,side:T.DoubleSide})];
 const basicCache=new Map();
 const basic=(c,side)=>{ const k=c.getHexString()+side; if(!basicCache.has(k)) basicCache.set(k,new T.MeshBasicMaterial({color:c,side})); return basicCache.get(k); };
 function setPass(root,pass){ root.traverse(o=>{ if(!o.isMesh) return; const m=o.userData.m, d=m.side===T.DoubleSide?1:0;
   if(pass==='albedo') o.material=basic(m.c,m.side);
-  else if(pass==='light') o.material=m.glow?white:lambert[d];
-  else if(pass==='normal') o.material=normalM[d];
+  else if(pass==='light') o.material=m.glow?white:m.facet?facetL:lambert[d];
+  else if(pass==='normal') o.material=m.facet?facetN:normalM[d];
   else if(pass==='depth') o.material=depthM[d];
   else if(pass==='flags') o.material=basic(new T.Color((m.glow?255:m.soft?128:0)/255,Math.round(m.metal*255)/255,o.userData.pid/255),m.side); }); }
 
@@ -109,7 +117,7 @@ LAB.render=function(root,size,base,opts={}){
     pid[i]=P.flags[k+2]; }
   for(let i=0;i<N;i++){ if(!a[i]) continue; const k=i*4;
     const A=[P.albedo[k],P.albedo[k+1],P.albedo[k+2]], glow=P.flags[k]>200, soft=P.flags[k]>100&&P.flags[k]<=200, metal=P.flags[k+1]/255;
-    if(glow){ const nz=P.normal[k+2]/127.5-1; const c=nz>.75?mix(A,[255,255,255],.45):nz>.4?A:mul(A,.82); out.set([clamp(c[0]),clamp(c[1]),clamp(c[2]),255],k); band[i]=9; continue; }
+    if(glow){ const nz=P.normal[k+2]/127.5-1; const c=nz>.8?mix(A,[255,255,255],.22):nz>.45?A:mul(A,.8); out.set([clamp(c[0]),clamp(c[1]),clamp(c[2]),255],k); band[i]=9; continue; }
     const nx=P.normal[k]/127.5-1, ny=P.normal[k+1]/127.5-1, nz=P.normal[k+2]/127.5-1;
     let v=P.light[k]/255*1.05;
     const rim=Math.max(0,nx*.85+ny*.25)*Math.pow(Math.max(0,1-nz),1.6);

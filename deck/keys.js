@@ -15,16 +15,18 @@ const KEY_ACTIONS=[
   {id:'search', name:'Search',             where:'map'},
   {id:'disarm', name:'Disarm',             where:'map'},
   {id:'camp',   name:'Climb to camp',      where:'map'},
+  {id:'bag',    name:'Open bag',           where:'map'},
 ];
 const KEY_PRESETS={
-  standard:{name:'Standard (WASD + arrows)', map:{up:['w','arrowup'],down:['s','arrowdown'],left:['a','arrowleft'],right:['d','arrowright'],fire:[' '],cast:['enter','x'],custom:['c'],aim:['q','tab'],search:['f'],disarm:['e'],camp:['c','<']}},
-  arrows:  {name:'Arrows + right hand', map:{up:['arrowup'],down:['arrowdown'],left:['arrowleft'],right:['arrowright'],fire:['z',' '],cast:['x','enter'],custom:['c'],aim:['v','tab'],search:['s'],disarm:['d'],camp:['a']}},
-  esdf:    {name:'ESDF (left hand, more keys nearby)', map:{up:['e'],down:['d'],left:['s'],right:['f'],fire:[' '],cast:['r','enter'],custom:['w'],aim:['a','tab'],search:['g'],disarm:['t'],camp:['q']}},
-  vim:     {name:'HJKL', map:{up:['k'],down:['j'],left:['h'],right:['l'],fire:[' '],cast:['enter','f'],custom:['c'],aim:['a','tab'],search:['s'],disarm:['d'],camp:['<']}},
+  standard:{name:'Standard (WASD + arrows)', map:{up:['w','arrowup'],down:['s','arrowdown'],left:['a','arrowleft'],right:['d','arrowright'],fire:[' '],cast:['enter','x'],custom:['c'],aim:['q','tab'],search:['f'],disarm:['e'],camp:['c','<'],bag:['b','i']}},
+  arrows:  {name:'Arrows + right hand', map:{up:['arrowup'],down:['arrowdown'],left:['arrowleft'],right:['arrowright'],fire:['z',' '],cast:['x','enter'],custom:['c'],aim:['v','tab'],search:['s'],disarm:['d'],camp:['a'],bag:['b']}},
+  esdf:    {name:'ESDF (left hand, more keys nearby)', map:{up:['e'],down:['d'],left:['s'],right:['f'],fire:[' '],cast:['r','enter'],custom:['w'],aim:['a','tab'],search:['g'],disarm:['t'],camp:['q'],bag:['b']}},
+  vim:     {name:'HJKL', map:{up:['k'],down:['j'],left:['h'],right:['l'],fire:[' '],cast:['enter','f'],custom:['c'],aim:['a','tab'],search:['s'],disarm:['d'],camp:['<'],bag:['i']}},
 };
 const KEYS_SAVE='hexmancers-keys';
 let KEYMAP=loadKeys();
-function loadKeys(){ try{ const v=JSON.parse(localStorage.getItem(KEYS_SAVE)); if(v&&v.map) return v; }catch(e){} return {preset:'standard', map:JSON.parse(JSON.stringify(KEY_PRESETS.standard.map))}; }
+function loadKeys(){ try{ const v=JSON.parse(localStorage.getItem(KEYS_SAVE)); if(v&&v.map){ // actions added since the save get their preset's keys
+      const base=(KEY_PRESETS[v.preset]||KEY_PRESETS.standard).map; for(const a of KEY_ACTIONS) if(!v.map[a.id]) v.map[a.id]=(base[a.id]||[]).slice(); return v; } }catch(e){} return {preset:'standard', map:JSON.parse(JSON.stringify(KEY_PRESETS.standard.map))}; }
 function saveKeys(){ try{ localStorage.setItem(KEYS_SAVE,JSON.stringify(KEYMAP)); }catch(e){} keyHints(); }
 // what this key does where you are ('battle' or 'map'), or null
 function keyAct(k,where){ for(const a of KEY_ACTIONS){ if(a.where!=='both'&&a.where!==where) continue; if((KEYMAP.map[a.id]||[]).includes(k)) return a.id; } return null; }
@@ -77,6 +79,6 @@ function keyHints(){
   const bk=$('#scrBattle .keys'); if(bk) bk.textContent='Tap your side to move, the enemy side to aim lobs · keys: '+mv+' move, '+k('fire')+' fire, '+k('cast')+' cast, '+k('aim')+' aim, '+k('custom')+' custom';
   const mk=$('#xBottom .keys .k'); if(mk) mk.textContent=' · keys: '+mv+' move, '+k('search')+' search, '+k('disarm')+' disarm';
   const lab=(sel,id)=>{ const el=$(sel); if(el) el.textContent=keyLabel(keysFor(id)[0]); };
-  lab('#xSearch .k','search'); lab('#xDisarm .k','disarm'); lab('#xCamp .k','camp');
+  lab('#xSearch .k','search'); lab('#xDisarm .k','disarm'); lab('#xCamp .k','camp'); lab('#xBag .k','bag');
 }
 keyHints();

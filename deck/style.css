@@ -734,3 +734,23 @@ body.tall #xTop .info{grid-area:info; flex-direction:row; justify-content:space-
 body.tall #xTop .info #xDepth{min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
 body.tall #xMini{top:calc(86px + env(safe-area-inset-top,0px));}
 .x-bang.depth{white-space:normal; width:max-content; max-width:92vw;}
+
+/* ---------------- the dungeon's dialog, status strip and bag ---------------- */
+#xDialog{z-index:6;}
+.panel.xdlg{max-width:620px; width:100%; max-height:100%; overflow-y:auto; display:flex; flex-direction:column; gap:6px;}
+.xdh{display:grid; grid-template-columns:auto minmax(0,1fr) auto; gap:12px; align-items:center;}
+#xdPic{width:96px; height:96px; image-rendering:pixelated; background:radial-gradient(circle at 50% 60%,#1c2430,#06080b 70%); border:2px solid #2c3137;}
+.xdt h2{font-size:22px;} .xdt .hint{margin:2px 0 0;}
+#xdText{margin:4px 0; line-height:1.4; font-size:16px;}
+#xdTabs{display:flex; gap:6px; flex-wrap:wrap;} #xdTabs[hidden]{display:none;}
+#xdBody{display:flex; flex-direction:column; gap:6px;}
+.xrow{display:grid; grid-template-columns:40px minmax(0,1fr) auto; gap:10px; align-items:center; padding:6px 8px; background:rgba(255,255,255,.04); border:1px solid #1c2026;}
+.xrow .pic{display:flex; align-items:center; justify-content:center;} .xrow .pic .pxi{width:32px; height:32px;}
+.xrow .nm{display:flex; flex-direction:column; min-width:0;} .xrow .nm b{font-size:15px;} .xrow .nm small{color:var(--dim); font:400 15px/1.2 var(--font-t);}
+.xrow .btn{min-width:96px; min-height:38px; white-space:nowrap;}
+#xStatus{position:absolute; left:12px; top:62px; display:flex; flex-wrap:wrap; gap:6px; max-width:60%; pointer-events:none; zoom:var(--ui,1);}
+#xStatus .xs{display:inline-flex; align-items:center; gap:3px; padding:2px 6px; background:rgba(4,6,9,.75); border:1px solid #2c3137; font:400 17px var(--font-t); color:var(--text);}
+#xStatus .xs .pxi{width:18px; height:18px;} #xStatus .bad{color:#ff7a85;} #xStatus .good{color:#7dffb0;}
+body.tall #xStatus{top:calc(84px + env(safe-area-inset-top,0px)); max-width:calc(100% - 120px);}
+@media (max-width:520px){ .xrow{grid-template-columns:32px minmax(0,1fr) auto;} .xrow .btn{min-width:78px;} #xdPic{width:72px; height:72px;} }
+.panel.xdlg,#xdText,.xrow .nm{text-align:left;} .xdt{text-align:left;}

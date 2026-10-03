@@ -5,7 +5,10 @@
    patrol can catch you off guard. Some doors are secret and some floors are trapped: search (F)
    to find both, then disarm (E) a trap before you cross it. Chests hold cards, gold or gear.
    Touching an enemy starts a battle: reach a sleeping one first for an ambush, or get caught
-   unawares and it strikes first. Stairs down lead deeper; the stairs up lead back to camp. */
+   unawares and it strikes first. Stairs down lead deeper; the stairs up lead back to camp.
+   What else fills a floor (people and quests, merchants, sanctuaries, keys and locked doors,
+   puzzles, minibosses, visible traps and secrets) lives in dungeon.js, which this file calls
+   through a few hooks (xFloorPlan, xPopulate, xBumpExtra, xEnterExtra, xDungeonTick...). */
 
 const XN=48, XCS=2, XWALL=1.7;           // grid cells per side, world units per cell, wall height
 const T_ROCK=0, T_FLOOR=1, T_DOOR=2;
@@ -15,28 +18,53 @@ const TRAPS={
   fire: {name:'fire rune',  dmg:[12,18], col:'#ff7a2a', text:'A rune flares and fire washes over you!'},
   pit:  {name:'pit',        dmg:[8,12],  col:'#2a2230', text:'The floor gives way and you fall into a pit!', stuck:1.6},
   alarm:{name:'alarm rune', dmg:[0,0],   col:'#f2c94c', text:'A rune shrieks! Everything on this floor heard that.'},
+  blocks:{name:'falling block trap', dmg:[10,15], col:'#8a8398', text:'Stones crash down from the ceiling!', stun:1},
+  explosive:{name:'explosive rune', dmg:[14,20], col:'#ff9a3a', text:'A rune detonates under your feet!'},
+  trapdoor:{name:'trapdoor', dmg:[6,9], col:'#140a10', text:'The floor collapses beneath you!', fall:true},
 };
+// which hidden traps a floor can hold: deeper floors add worse ones (a trapdoor never sits on a boss floor, so no one falls past a boss)
+function xTrapKinds(depth){ const k=['spike','spike','dart','dart'];
+  if(depth>=2) k.push('fire','pit'); if(depth>=3) k.push('alarm','blocks'); if(depth>=4) k.push('explosive','fire'); if(depth>=5&&!isBossDepth(depth)) k.push('trapdoor');
+  return k; }
 let EX=null, X3=null;
 const xi=(x,y)=>y*XN+x, xcx=i=>i%XN, xcy=i=>(i/XN)|0;
 const xw=i=>(xcx(i)+.5)*XCS, xz=i=>(xcy(i)+.5)*XCS;
 const xcell=(x,z)=>{ const cx=Math.floor(x/XCS), cy=Math.floor(z/XCS); return cx<0||cy<0||cx>=XN||cy>=XN?-1:xi(cx,cy); };
-const xmaxHp=()=>120+((typeof gearMods==='function'&&gearMods(save).hp)||0);
+// your max HP: 120 plus gear and blessings (gear.js), less a fifth while a curse totem's curse is on you (dungeon.js)
+const xmaxHp=()=>Math.round((120+((typeof gearMods==='function'&&gearMods(save).hp)||0))*(EX&&EX.ail&&EX.ail.curse?.8:1));
 
-/* ---------------- the floor plan ---------------- */
-function genFloor(depth){
-  for(let tries=0;tries<40;tries++){ const f=tryFloor(depth,caveRng((Date.now()&0xffffff)^(depth*7919)^(tries*104729))); if(f) return f; }
-  return tryFloor(depth,caveRng(depth));
+/* ---------------- the floor plan ----------------
+   Main rooms joined in a chain by L-shaped corridors, plus a few extra corridors (some behind
+   secret doors). Side rooms hang off the main rooms, each behind one kind of door: the hidden
+   closet behind a secret door, a vault behind a silver or gold lock, a prison cell behind a
+   bronze lock. A plan (dungeon.js) can also ask for bronze-locked doors on the main rooms, a
+   shortcut gate from the stairs up toward the stairs down, and a boss door on a boss floor.
+   Rules that keep every floor playable: the stairs down can always be reached from the stairs
+   up with no key at all, every main room that is not behind a planned lock is reachable, and a
+   lock only ever shuts off at most two rooms. */
+function genFloor(depth,plan){
+  const seed=t=>caveRng((Date.now()&0xffffff)^(depth*7919)^(t*104729));
+  for(let tries=0;tries<120;tries++){ const f=tryFloor(depth,seed(tries),plan); if(f) return f; }
+  // a plan too crowded for the dice: keep only the closet, then nothing extra
+  for(let tries=0;tries<200;tries++){ const f=tryFloor(depth,seed(500+tries),{side:[{kind:'closet',lock:'secret'}]}); if(f) return f; }
+  for(let tries=0;;tries++){ const f=tryFloor(depth,seed(900+tries),{side:[]}); if(f) return f; }
 }
-function tryFloor(depth,R){
+const xAdj4=i=>{ const x=xcx(i), y=xcy(i); return [x>0?i-1:-1, x<XN-1?i+1:-1, y>0?i-XN:-1, y<XN-1?i+XN:-1].filter(n=>n>=0); };
+function tryFloor(depth,R,plan){
+  plan=plan||{};
   const ri=(a,b)=>a+Math.floor(R()*(b-a+1));
   const t=new Uint8Array(XN*XN), room=new Int16Array(XN*XN).fill(-1), rooms=[];
   const free=(x,y,w,h,m)=>!rooms.some(r=>x<r.x+r.w+m&&x+w+m>r.x&&y<r.y+r.h+m&&y+h+m>r.y);
-  for(let k=0;k<400&&rooms.length<10;k++){ const w=ri(5,10), h=ri(4,8), x=ri(2,XN-w-3), y=ri(2,XN-h-3);
+  const want=plan.small?6:10;
+  for(let k=0;k<400&&rooms.length<want;k++){ const w=ri(5,10), h=ri(4,8), x=ri(2,XN-w-3), y=ri(2,XN-h-3);
     if(free(x,y,w,h,4)) rooms.push({x,y,w,h,lit:R()<.68}); }
-  if(rooms.length<6) return null;
+  if(rooms.length<(plan.small?4:6)) return null;
   rooms.sort((a,b)=>(a.x+a.w/2)-(b.x+b.w/2));
-  // a hidden closet: a tiny room reached only through a secret door, with a good chest in it
-  for(let k=0;k<200;k++){ const x=ri(2,XN-6), y=ri(2,XN-6); if(free(x,y,3,3,3)){ rooms.push({x,y,w:3,h:3,lit:false,closet:true}); break; } }
+  // side rooms: the closet (secret door), a vault (silver or gold lock), a prison cell (bronze lock)
+  const sides=plan.side||[{kind:'closet',lock:'secret'}];
+  for(const sd of sides){ const w=sd.w||3, h=sd.h||3;
+    for(let k=0;k<200;k++){ const x=ri(2,XN-w-3), y=ri(2,XN-h-3); if(free(x,y,w,h,3)){ rooms.push({x,y,w,h,lit:sd.kind==='cell',side:sd.kind,lock:sd.lock,content:sd.content||null,closet:sd.kind==='closet'}); break; } } }
+  if(sides.some(sd=>sd.kind==='closet')&&!rooms.some(r=>r.closet)) return null;
   rooms.forEach((r,id)=>{ r.id=id; r.cx=r.x+(r.w>>1); r.cy=r.y+(r.h>>1);
     for(let j=r.y;j<r.y+r.h;j++) for(let i=r.x;i<r.x+r.w;i++){ t[xi(i,j)]=T_FLOOR; room[xi(i,j)]=id; } });
   const doors=new Map();
@@ -54,67 +82,113 @@ function tryFloor(depth,R){
         doors.set(i,{state:secret?'secret':R()<.3?'closed':'open'}); t[i]=T_DOOR; };
       if(room[pi]>=0&&room[ci]<0) mk(ci,room[pi]); if(room[pi]<0&&room[ci]>=0) mk(pi,room[ci]); }
   };
-  const main=rooms.filter(r=>!r.closet);
+  const main=rooms.filter(r=>!r.side), sideRooms=rooms.filter(r=>r.side);
   for(let k=1;k<main.length;k++) carve(main[k-1],main[k],null);
   for(let n=0;n<2;n++){ const a=pick(main), b=pick(main); if(a!==b) carve(a,b,R()<.6?b:null); }
-  const closet=rooms.find(r=>r.closet);
-  if(closet){ const near=main.slice().sort((p,q)=>Math.hypot(p.cx-closet.cx,p.cy-closet.cy)-Math.hypot(q.cx-closet.cx,q.cy-closet.cy))[0]; carve(closet,near,null); }
+  for(const s of sideRooms){ const near=main.slice().sort((p,q)=>Math.hypot(p.cx-s.cx,p.cy-s.cy)-Math.hypot(q.cx-s.cx,q.cy-s.cy))[0]; carve(s,near,null); }
+  // a shortcut: one more corridor from the first room toward the far end of the floor
+  const startI=xi(main[0].cx,main[0].cy);
+  let gateDoors=null;
+  if(plan.gate){ const d0=xbfs(t,doors,startI,false); let far=null, fd=-1; for(const r of main){ const d=d0[xi(r.cx,r.cy)]; if(d>fd){ fd=d; far=r; } }
+    if(far&&far!==main[0]){ const before=new Set(doors.keys()); carve(main[0],far,null); gateDoors=[...doors.keys()].filter(i=>!before.has(i)); } }
   // corridors that clip a room corner can leave doors with no wall either side; keep only real doorways
   for(const [i] of doors){ const x=xcx(i), y=xcy(i), open=d=>t[d]!==T_ROCK;
     const ew=open(xi(x-1,y))&&open(xi(x+1,y)), ns=open(xi(x,y-1))&&open(xi(x,y+1));
     if(ew===ns){ doors.delete(i); t[i]=T_FLOOR; } }
   main[0].lit=true;   // you always arrive somewhere you can see
-  // every way into the closet is a secret door, and nothing else may lead there
-  if(closet){ let n=0; for(const [i,d] of doors){ const x=xcx(i), y=xcy(i); if([xi(x-1,y),xi(x+1,y),xi(x,y-1),xi(x,y+1)].some(c=>room[c]===closet.id)){ d.state='secret'; n++; } }
-    if(!n) return null; if(xbfs(t,doors,xi(main[0].cx,main[0].cy),false)[xi(closet.cx,closet.cy)]>=0) return null; }
-  const start=main[0], dist=xbfs(t,doors,xi(start.cx,start.cy),false);
-  let exit=main[main.length-1], far=-1; for(const r of main){ const d=dist[xi(r.cx,r.cy)]; if(d>far){ far=d; exit=r; } }
-  if(far<22) return null;
-  return {t,room,rooms,doors,start,exit};
+  const touching=(i,r)=>xAdj4(i).some(c=>room[c]===r.id);
+  // seal each side room behind its kind of door; one that cannot be sealed (a corridor runs
+  // straight into it) becomes an ordinary nook, except the closet, which must stay hidden
+  for(let pass=0;pass<2;pass++) for(const s of sideRooms){ if(!s.side) continue; let n=0;
+    for(const [i,d] of doors) if(touching(i,s)){ n++; if(s.lock==='secret'){ d.state='secret'; d.lock=null; } else { d.state='locked'; d.lock=s.lock; } }
+    if(n&&xbfs(t,doors,startI,false)[xi(s.cx,s.cy)]<0) continue;
+    if(s.closet) return null;
+    for(const [i,d] of doors) if(touching(i,s)&&d.lock===s.lock){ d.state='closed'; d.lock=null; }
+    s.side=null; s.nook=true; s.content=null; }
+  // every main room must be reachable before any planned lock goes on
+  const all=xbfs(t,doors,startI,false); if(main.some(r=>all[xi(r.cx,r.cy)]<0)) return null;
+  const start=main[0];
+  let exit=main[main.length-1], far=-1; for(const r of main){ const d=all[xi(r.cx,r.cy)]; if(d>far){ far=d; exit=r; } }
+  if(far<(plan.small?14:22)) return null;
+  const exitI=xi(exit.cx,exit.cy), reach=()=>xbfs(t,doors,startI,false);
+  // bronze-locked doors on the main rooms: never on the way to the stairs down, at most two rooms behind each
+  let locks=0;
+  if(plan.locks){ const cand=[...doors].filter(([i,d])=>(d.state==='open'||d.state==='closed')&&!touching(i,start)&&!touching(i,exit)&&!sideRooms.some(s=>touching(i,s))).sort(()=>R()-.5);
+    for(const [i,d] of cand){ if(locks>=plan.locks) break; const prev=d.state; d.state='locked'; d.lock='bronze';
+      const dd=reach(), cut=main.filter(r=>dd[xi(r.cx,r.cy)]<0);
+      if(dd[exitI]<0||cut.length>2){ d.state=prev; d.lock=null; continue; }
+      locks++; cut.forEach(r=>r.behind='bronze'); } }
+  // the shortcut gate: the new corridor's door out of the first room, worth having only if it saves real walking
+  let gate=null;
+  if(gateDoors){ const g=gateDoors.find(i=>doors.has(i)&&touching(i,start)&&doors.get(i).state!=='secret');
+    if(g!=null){ const d=doors.get(g), prev=d.state; d.state='open'; const open=reach()[exitI]; d.state='locked'; d.lock='gate'; const shut=reach()[exitI];
+      const side=xAdj4(g).find(c=>t[c]!==T_ROCK&&room[c]!==start.id);
+      const lever=side!=null&&xAdj4(side).find(c=>t[c]===T_ROCK&&!doors.has(c));
+      if(shut<0||open<0||shut-open<6||lever==null||lever===false){ d.state=prev==='locked'?'closed':prev; d.lock=null; }
+      else if(main.some(r=>!r.behind&&reach()[xi(r.cx,r.cy)]<0)){ d.state=prev==='locked'?'closed':prev; d.lock=null; }   // a gate may not cut a room off
+      else gate={cell:g, side, lever, saves:shut-open}; } }
+  // the boss door: every way into the boss's room needs the floor's boss key
+  let bossDoor=false;
+  if(plan.bossDoor){ const ds=[...doors].filter(([i,d])=>touching(i,exit)&&d.state!=='secret');
+    const keep=ds.map(([i,d])=>[d,d.state,d.lock]); ds.forEach(([i,d])=>{ d.state='locked'; d.lock='boss'; });
+    const dd=reach(), lost=main.filter(r=>r!==exit&&!r.behind&&dd[xi(r.cx,r.cy)]<0);
+    if(ds.length&&dd[exitI]<0&&!lost.length) bossDoor=true; else keep.forEach(([d,st,lk])=>{ d.state=st; d.lock=lk; }); }
+  return {t,room,rooms,doors,start,exit,gate,bossDoor};
 }
-// breadth-first distances; secret doors block unless found; `seenOnly` limits it to explored cells
+// breadth-first distances; secret and locked doors block; `seenOnly` limits it to explored cells
 function xbfs(t,doors,s,seenOnly,blockFn){
   const d=new Int16Array(XN*XN).fill(-1), q=[s]; d[s]=0;
   for(let h=0;h<q.length;h++){ const c=q[h], x=xcx(c), y=xcy(c);
     for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1]]){ const nx=x+dx, ny=y+dy; if(nx<0||ny<0||nx>=XN||ny>=XN) continue; const n=xi(nx,ny);
-      if(d[n]>=0||t[n]===T_ROCK) continue; const dr=doors.get(n); if(dr&&dr.state==='secret') continue;
+      if(d[n]>=0||t[n]===T_ROCK) continue; const dr=doors.get(n); if(dr&&(dr.state==='secret'||dr.state==='locked')) continue;
       if(seenOnly&&!seenOnly[n]) continue; if(blockFn&&blockFn(n)) continue; d[n]=d[c]+1; q.push(n); } }
   return d;
 }
 
-/* ---------------- a new floor ---------------- */
-function buildFloor(depth,hp){
-  const F=genFloor(depth), A=areaOf(depth);
+/* ---------------- a new floor ----------------
+   dungeon.js plans what a floor holds before it is dug (side rooms, locks, the gate, the boss
+   door), gives some rooms a role (merchant, sanctuary, puzzle, lair) and fills them afterwards
+   with people, puzzles, keys and secrets. The rooms without a role get chests, traps and enemies. */
+function buildFloor(depth,hp,opt){
+  opt=opt||{};
+  const plan=typeof xFloorPlan==='function'?xFloorPlan(depth,opt):null;
+  const F=genFloor(depth,plan), A=areaOf(depth);
   EX=Object.assign({depth, area:A, hp:hp==null?xmaxHp():hp, vis:new Uint8Array(XN*XN), seen:new Uint8Array(XN*XN),
-    chests:[], traps:[], groups:[], log:[], action:null, stuckT:0, regenT:0, active:false, busy:false, path:[], msgT:{}, bossDead:false}, F);
+    chests:[], traps:[], groups:[], log:[], action:null, stuckT:0, regenT:0, active:false, busy:false, path:[], msgT:{}, bossDead:false,
+    plan, branch:!!opt.branch, props:[], items:[], propAt:new Map(), wallAt:new Map(), itemAt:new Map(), safe:new Set(), clock:0, stillT:0, sight:0, ail:{poison:0,curse:0}}, F);
   const ri=(a,b)=>a+Math.floor(Math.random()*(b-a+1));
   const cellIn=r=>xi(r.x+ri(0,r.w-1), r.y+ri(0,r.h-1));
   const taken=new Set([xi(F.start.cx,F.start.cy), xi(F.exit.cx,F.exit.cy)]);
   const freeCell=r=>{ for(let k=0;k<30;k++){ const c=cellIn(r); if(!taken.has(c)){ taken.add(c); return c; } } return -1; };
-  EX.up=xi(F.start.cx,F.start.cy); EX.down=xi(F.exit.cx,F.exit.cy);
-  const others=F.rooms.filter(r=>r!==F.start&&!r.closet);
-  // chests: about every other room, sometimes trapped; the closet always has a rich one
-  for(const r of others) if(Math.random()<.5){ const c=freeCell(r); if(c>=0) EX.chests.push({cell:c, open:false, trap:Math.random()<.22, trapKnown:false}); }
-  const cl=F.rooms.find(r=>r.closet); if(cl){ const c=xi(cl.cx,cl.cy); taken.add(c); EX.chests.push({cell:c, open:false, trap:false, trapKnown:false, rich:true}); }
-  // hidden traps in rooms and corridors, never on the stairs or in the first room
-  const kinds=['spike','spike','dart','dart','fire','pit','alarm'];
-  const floorCells=[]; for(let i=0;i<XN*XN;i++) if(F.t[i]===T_FLOOR&&F.room[i]!==F.start.id&&!taken.has(i)) floorCells.push(i);
-  const nT=Math.min(9,3+Math.floor(depth/2));
+  EX.up=xi(F.start.cx,F.start.cy); EX.down=xi(F.exit.cx,F.exit.cy); EX.taken=taken;
+  if(typeof xAssignRooms==='function') xAssignRooms();
+  const others=F.rooms.filter(r=>r!==F.start&&!r.side&&!r.nook), open=others.filter(r=>!r.role);
+  // chests: about every other ordinary room, sometimes trapped (side rooms are filled by dungeon.js)
+  for(const r of open) if(Math.random()<.5){ const c=freeCell(r); if(c>=0) EX.chests.push({cell:c, open:false, trap:Math.random()<.22, trapKnown:false}); }
+  if(typeof xFloorPlan!=='function'){ const cl=F.rooms.find(r=>r.closet); if(cl){ const c=xi(cl.cx,cl.cy); taken.add(c); EX.chests.push({cell:c, open:false, trap:false, trapKnown:false, rich:true}); } }
+  // hidden traps in ordinary rooms and corridors, never on the stairs or in the first room; deeper floors hold more and worse
+  const kinds=typeof xTrapKinds==='function'?xTrapKinds(depth):['spike','spike','dart','dart','fire','pit','alarm'];
+  const quiet=i=>{ const r=F.room[i]; return r>=0&&(F.rooms[r]===F.start||F.rooms[r].role||F.rooms[r].side); };
+  const floorCells=[]; for(let i=0;i<XN*XN;i++) if(F.t[i]===T_FLOOR&&!quiet(i)&&!taken.has(i)) floorCells.push(i);
+  const nT=Math.min(14,3+Math.floor(depth*.6))-(opt.branch?2:0);
   for(let n=0;n<nT&&floorCells.length;n++){ const c=floorCells.splice(Math.floor(Math.random()*floorCells.length),1)[0]; taken.add(c); EX.traps.push({cell:c, kind:pick(kinds), known:false, armed:true}); }
   // enemy groups: some asleep, some wandering; on a boss depth the boss waits by the stairs down
-  const nG=Math.min(others.length,3+Math.floor(depth/3));
-  const rooms=others.slice().sort(()=>Math.random()-.5).filter(r=>r!==F.exit||!isBossDepth(depth)).slice(0,nG);
+  const nG=Math.min(open.length,(opt.branch?1:3)+Math.floor(depth/3));
+  const rooms=open.slice().sort(()=>Math.random()-.5).filter(r=>r!==F.exit||!isBossDepth(depth)).slice(0,nG);
   for(const r of rooms){ const c=freeCell(r); if(c<0) continue; const wave=makeEncounter(depth)[0], ids=wave.slice(0,1+Math.floor(Math.random()*Math.min(3,wave.length)));
     EX.groups.push(xGroup(ids,c,Math.random()<.45?'sleep':'wander')); }
-  if(isBossDepth(depth)){ const c=xi(F.exit.cx-1,F.exit.cy); EX.groups.push(Object.assign(xGroup([bossFor(depth)],c,'guard'),{boss:true})); }
+  if(isBossDepth(depth)&&!opt.branch){ const c=xi(F.exit.cx-1,F.exit.cy); taken.add(c); EX.groups.push(Object.assign(xGroup([bossFor(depth)],c,'guard'),{boss:true})); }
   EX.px=xw(EX.up); EX.pz=xz(EX.up); EX.pc=EX.up; EX.face=1; EX.view='front';
-  xBuildScene(); xUpdateVis(); xLog('Depth '+depth+' · '+areaLabel(depth)+'. Find the stairs down.','dim');
-  if(isBossDepth(depth)) xLog(ENEMY_DEFS[bossFor(depth)].name+' guards the stairs down. Beat it to open the way to '+areaOf(depth+1).name+'.','warn');
+  if(typeof xPopulate==='function') xPopulate();
+  xBuildScene(); xUpdateVis();
+  xLog('Depth '+depth+' · '+(opt.branch?'Hidden Sanctum':areaLabel(depth))+'. Find the stairs down.','dim');
+  if(isBossDepth(depth)&&!opt.branch) xLog(ENEMY_DEFS[bossFor(depth)].name+' guards the stairs down. Beat it to open the way to '+areaOf(depth+1).name+'.','warn');
+  if(typeof xArrival==='function') xArrival();
 }
 function xGroup(ids,cell,state){ return {ids, cell, x:xw(cell), z:xz(cell), state, home:cell, path:[], repath:0, lostT:0, wakeT:1+Math.random()*1.5, seen:false, sprite:null, mark:null, bob:Math.random()*6}; }
 
 /* ---------------- line of sight ---------------- */
-const xPassable=i=>{ if(i<0||EX.t[i]===T_ROCK) return false; const d=EX.doors.get(i); return !(d&&d.state==='secret'); };
+const xPassable=i=>{ if(i<0||EX.t[i]===T_ROCK) return false; const d=EX.doors.get(i); return !(d&&d.state==='secret'); };   // locked doors are handled by xBump
 const xClear=i=>{ if(i<0||EX.t[i]===T_ROCK) return false; const d=EX.doors.get(i); return !d||d.state==='open'; };
 function xLos(a,b){ let x0=xcx(a), y0=xcy(a); const x1=xcx(b), y1=xcy(b), dx=Math.abs(x1-x0), dy=-Math.abs(y1-y0), sx=x0<x1?1:-1, sy=y0<y1?1:-1; let e=dx+dy;
   while(true){ if(x0===x1&&y0===y1) return true; const i=xi(x0,y0); if(i!==a&&!xClear(i)) return false;
@@ -125,6 +199,7 @@ function xUpdateVis(){
   const here=EX.room[pc]; let rad=1.6;
   if(here>=0){ const r=EX.rooms[here]; if(r.lit){ lightRoom(r); rad=7; } else rad=2.6; }
   if(EX.t[pc]===T_DOOR) for(const n of [pc-1,pc+1,pc-XN,pc+XN]){ const r=EX.room[n]; if(r>=0&&EX.rooms[r].lit&&EX.doors.get(pc).state==='open') lightRoom(EX.rooms[r]); }
+  rad+=((save&&save.perm&&save.perm.insight)||0)+(EX.sight||0);   // Insight blessings and lantern oil
   const R=Math.ceil(rad), x=xcx(pc), y=xcy(pc);
   for(let dy=-R;dy<=R;dy++) for(let dx=-R;dx<=R;dx++){ const nx=x+dx, ny=y+dy; if(nx<0||ny<0||nx>=XN||ny>=XN||dx*dx+dy*dy>rad*rad) continue; const i=xi(nx,ny); if(xLos(pc,i)) v[i]=1; }
   // a lit room's light shows in it from the doorway, but its walls only from inside; you never see through rock
@@ -258,10 +333,15 @@ function xBuildScene(){
     list.forEach((c,k)=>EX.wIdx.set(c,[wm,k])); });
   // doors: a frame on every doorway, a plank door while it is closed
   const wood=xMat(0x6a4426), iron=xMat(0x2a2a30), frame=xMat(0x3a2414);
+  // a locked door shows its lock: a bronze, silver or gold plate, iron bars on a shortcut gate, red bands on a boss door
+  const LOCK_COL={bronze:0xc8843a, silver:0xcfd8e6, gold:0xf2c94c, boss:0xff5d6c};
   for(const [i,d] of EX.doors){ const ew=EX.t[i-1]!==T_ROCK&&EX.t[i+1]!==T_ROCK, g=new THREE.Group(); g.position.set(xw(i),0,xz(i)); if(ew) g.rotation.y=Math.PI/2;
     g.add(xBox(.22,XWALL,.4,frame,-XCS/2+.11,XWALL/2,0), xBox(.22,XWALL,.4,frame,XCS/2-.11,XWALL/2,0), xBox(XCS,.22,.4,frame,0,XWALL-.11,0));
-    const leaf=new THREE.Group(); leaf.add(xBox(XCS-.44,XWALL-.24,.16,wood,0,(XWALL-.24)/2,0), xBox(XCS-.44,.1,.18,iron,0,.4,0), xBox(XCS-.44,.1,.18,iron,0,1.1,0));
-    g.add(leaf); d.mesh=g; d.leaf=leaf; leaf.visible=d.state==='closed'; g.visible=false; grp.add(g); }
+    const leaf=new THREE.Group();
+    if(d.lock==='gate'){ for(let k=0;k<5;k++) leaf.add(xBox(.07,XWALL-.24,.07,iron,-.6+k*.3,(XWALL-.24)/2,0)); leaf.add(xBox(XCS-.44,.08,.09,iron,0,.5,0), xBox(XCS-.44,.08,.09,iron,0,1.2,0)); }
+    else { leaf.add(xBox(XCS-.44,XWALL-.24,.16,d.lock==='boss'?xMat(0x3a1418):wood,0,(XWALL-.24)/2,0), xBox(XCS-.44,.1,.18,d.lock==='boss'?xMat(0xff5d6c,{emissive:0x401010}):iron,0,.4,0), xBox(XCS-.44,.1,.18,d.lock==='boss'?xMat(0xff5d6c,{emissive:0x401010}):iron,0,1.1,0));
+      if(LOCK_COL[d.lock]) for(const zz of [-.1,.1]) leaf.add(xBox(.26,.32,.04,xMat(LOCK_COL[d.lock],{emissive:new THREE.Color(LOCK_COL[d.lock]).multiplyScalar(.25)}),.38,.78,zz)); }
+    g.add(leaf); d.mesh=g; d.leaf=leaf; leaf.visible=d.state==='closed'||d.state==='locked'; g.visible=false; grp.add(g); }
   // stairs
   const glow=new THREE.Color(isBossDepth(EX.depth)?'#ff5d6c':A.glow);
   const down=new THREE.Group(); down.position.set(xw(EX.down),0,xz(EX.down));
@@ -274,11 +354,7 @@ function xBuildScene(){
   const halo=new THREE.Mesh(new THREE.TorusGeometry(.72,.06,6,20),new THREE.MeshBasicMaterial({color:0xfff2c0})); halo.rotation.x=Math.PI/2; halo.position.y=.08; up.add(halo);
   up.visible=false; grp.add(up); EX.upMesh=up;
   // chests
-  const cwood=xMat(0x7a4a22), gold=xMat(0xf2c94c,{emissive:0x402a08});
-  for(const c of EX.chests){ const g=new THREE.Group(); g.position.set(xw(c.cell),0,xz(c.cell)); g.rotation.y=(Math.random()-.5)*.6;
-    g.add(xBox(1,.5,.66,cwood,0,.25,0), xBox(.12,.54,.7,gold,0,.27,0));
-    const lid=new THREE.Group(); lid.position.set(0,.5,-.33); lid.add(xBox(1,.22,.66,c.rich?xMat(0x5a3a8a):cwood,0,.11,.33), xBox(.14,.24,.7,gold,0,.12,.33)); g.add(lid);
-    g.userData.lid=lid; g.visible=false; c.mesh=g; grp.add(g); }
+  for(const c of EX.chests) grp.add(xChestMesh(c));
   // known traps get a plate when found
   for(const tr of EX.traps) tr.mesh=null;
   // the area's light: the same color as its battle cave, in the air, in your lamp and in the
@@ -290,7 +366,15 @@ function xBuildScene(){
   // you and the enemies are flat sprites standing in the 3D rooms, like the old dungeon crawlers
   EX.me=xSprite(()=>unitSprite({kind:'player',look:gearLook(save),view:EX.view}),2.3); grp.add(EX.me);
   for(const gp of EX.groups) xGroupSprites(gp,grp);
+  if(typeof xBuildProps==='function') xBuildProps();   // people, puzzles, keys and the rest (dungeon.js)
 }
+// a chest: plain wood, a purple lid when rich, gold trim glowing on a legendary hoard
+function xChestMesh(c){ const cwood=xMat(0x7a4a22), gold=xMat(0xf2c94c,{emissive:c.legend?0x806010:0x402a08});
+  const g=new THREE.Group(); g.position.set(xw(c.cell),0,xz(c.cell)); g.rotation.y=(Math.random()-.5)*.6;
+  g.add(xBox(1,.5,.66,cwood,0,.25,0), xBox(.12,.54,.7,gold,0,.27,0));
+  const lid=new THREE.Group(); lid.position.set(0,.5,-.33); lid.add(xBox(1,.22,.66,c.rich?xMat(0x5a3a8a):cwood,0,.11,.33), xBox(.14,.24,.7,gold,0,.12,.33)); g.add(lid);
+  if(c.open) lid.rotation.x=-1.9;
+  g.userData.lid=lid; g.visible=false; c.mesh=g; return g; }
 // a soft round glow, tinted by the sprite's color and added to what is behind it
 function xGlowTex(){ const c=document.createElement('canvas'); c.width=c.height=64; const x=c.getContext('2d'), g=x.createRadialGradient(32,32,0,32,32,32);
   g.addColorStop(0,'rgba(255,255,255,.9)'); g.addColorStop(.35,'rgba(255,255,255,.35)'); g.addColorStop(1,'rgba(255,255,255,0)'); x.fillStyle=g; x.fillRect(0,0,64,64);
@@ -301,7 +385,7 @@ function xGlowTex(){ const c=document.createElement('canvas'); c.width=c.height=
    it, so a remembered room glows faintly and the room you stand in glows bright. */
 function xAreaLights(grp,A){
   EX.glows=[]; const R=caveRng(EX.depth*53+7), tex=xGlowTex(), col=new THREE.Color(A.glow), pale=col.clone().lerp(new THREE.Color(0xffffff),.55);
-  for(const r of EX.rooms){ if(r.closet) continue; const cand=[];
+  for(const r of EX.rooms){ if(r.side||r.nook) continue; const cand=[];
     for(let x=r.x;x<r.x+r.w;x++){ cand.push([x,r.y-1,0,1],[x,r.y+r.h,0,-1]); }
     for(let y=r.y;y<r.y+r.h;y++){ cand.push([r.x-1,y,1,0],[r.x+r.w,y,-1,0]); }
     const ok=cand.filter(([x,y])=>x>=0&&y>=0&&x<XN&&y<XN&&EX.t[xi(x,y)]===T_ROCK);
@@ -322,7 +406,9 @@ function xAreaLights(grp,A){
 }
 function xGroupSprites(gp,grp){ const id=gp.ids[0], d=ENEMY_DEFS[id], h=2.3*Math.max(.75,Math.min(1.7,d.scale||1));
   gp.sprite=xSprite(()=>unitSprite({kind:'enemy',id,color:d.color}),h); gp.sprite.visible=false; grp.add(gp.sprite);
-  gp.zz=xTextSprite('z','#9fd8ff'); gp.bang=xTextSprite('!','#ff4d5e'); gp.zz.visible=gp.bang.visible=false; grp.add(gp.zz,gp.bang); gp.h=h; }
+  gp.zz=xTextSprite('z','#9fd8ff'); gp.bang=xTextSprite('!','#ff4d5e'); gp.zz.visible=gp.bang.visible=false; grp.add(gp.zz,gp.bang); gp.h=h;
+  // a miniboss stands on a ring of its colour, so you know it for a big threat from afar
+  if(gp.mini){ const r=new THREE.Mesh(new THREE.TorusGeometry(.95,.07,6,24),new THREE.MeshBasicMaterial({color:new THREE.Color(COLORS[d.color].c)})); r.rotation.x=Math.PI/2; r.position.y=.06; r.visible=false; grp.add(r); gp.ring=r; } }
 function xPaintCells(){
   // brightness each cell is heading for: full near you and dimmer toward the edge of sight,
   // a low glow where you have been, black where you have not
@@ -337,6 +423,7 @@ function xPaintCells(){
   for(const c of EX.chests) c.mesh.visible=!!EX.seen[c.cell];
   EX.downMesh.visible=!!EX.seen[EX.down]; EX.upMesh.visible=!!EX.seen[EX.up];
   for(const L of EX.glows) L.g.visible=!!EX.seen[L.floor];
+  if(typeof xPaintExtra==='function') xPaintExtra();
 }
 // ease every cell toward its brightness, so newly seen ground fades in and ground you leave fades out
 function xFadeCells(dt){
@@ -365,7 +452,7 @@ function xTap(e){ if(!EX||!EX.active||EX.busy) return; const G=X3, r=e.target.ge
   const v=new THREE.Vector2((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1), hit=new THREE.Vector3();
   G.ray.setFromCamera(v,G.cam); if(!G.ray.ray.intersectPlane(G.plane,hit)) return;
   const c=xcell(hit.x,hit.z); if(c<0||!EX.seen[c]) return;
-  const goal=c, blocked=n=>xKnownTrap(n)||xChestAt(n)&&n!==goal;
+  const goal=c, blocked=n=>xKnownTrap(n)||xChestAt(n)&&n!==goal||typeof xSolid==='function'&&xSolid(n)&&n!==goal;
   const d=xbfs(EX.t,EX.doors,goal,EX.seen,n=>blocked(n)&&n!==EX.pc);
   if(d[EX.pc]<0) return; const path=[]; let cur=EX.pc;
   while(cur!==goal){ const x=xcx(cur), y=xcy(cur); let best=-1;
@@ -377,7 +464,7 @@ const xChestAt=c=>EX.chests.find(ch=>ch.cell===c&&!ch.open);
 
 /* ---------------- you ---------------- */
 function xMove(dt){
-  if(EX.action){ EX.action.t-=dt; if(EX.action.t<=0){ const a=EX.action; EX.action=null; a.done(); } return; }
+  if(EX.action){ EX.stillT=0; EX.action.t-=dt; if(EX.action.t<=0){ const a=EX.action; EX.action=null; a.done(); } return; }
   if(EX.stuckT>0){ EX.stuckT-=dt; if(EX.stuckT<=0) xHud(); return; }
   let ix=0, iz=0;
   const held=id=>keysFor(id).some(k=>XKEY[k]);   // your bindings, from Settings (keys.js)
@@ -387,8 +474,10 @@ function xMove(dt){
     const sx=r.left+(v.x+1)/2*r.width, sy=r.top+(1-v.y)/2*r.height, dx=XHOLD.x-sx, dy=XHOLD.y-sy, l=Math.hypot(dx,dy);
     if(l>18){ ix=dx/l; iz=dy/l; EX.path=[]; } }
   if(!ix&&!iz&&EX.path.length){ const n=EX.path[0], tx=xw(n)-EX.px, tz=xz(n)-EX.pz, d=Math.hypot(tx,tz); if(d<.25){ EX.path.shift(); } else { ix=tx/d; iz=tz/d; } }
-  const len=Math.hypot(ix,iz); if(len<.1){ EX.walk=0; return; }
+  const len=Math.hypot(ix,iz); if(len<.1){ EX.walk=0; EX.stillT=(EX.stillT||0)+dt; return; }   // standing still: you notice hidden things (dungeon.js)
+  EX.stillT=0;
   ix/=len; iz/=len; const sp=5.4*dt, r=.42;
+  EX.moveDir=Math.abs(ix)>Math.abs(iz)?[Math.sign(ix),0]:[0,Math.sign(iz)];   // which way a pushed block goes
   const front=xcell(EX.px+ix*XCS*.6,EX.pz+iz*XCS*.6);
   const tryAxis=(nx,nz)=>{ for(const [ox,oz] of [[-r,-r],[r,-r],[-r,r],[r,r]]){ const c=xcell(nx+ox,nz+oz); if(c===EX.pc) continue; if(!xBump(c,c===front)) return false; } return true; };
   const okX=tryAxis(EX.px+ix*sp,EX.pz), okZ=tryAxis(EX.px,EX.pz+iz*sp);
@@ -402,6 +491,7 @@ function xMove(dt){
 }
 // walking into a cell: walls stop you, doors open, chests open, a trap you know about stops you
 function xBump(c,front){
+  if(typeof xBumpExtra==='function'){ const r=xBumpExtra(c,front); if(r!==undefined) return r; }   // locks, people, puzzles, levers (dungeon.js)
   if(c<0||!xPassable(c)) return false;
   const d=EX.doors.get(c); if(d&&d.state==='closed'){ if(!front) return false; d.state='open'; d.leaf.visible=false; xLog('You open the door.','dim'); xUpdateVis(); return false; }
   const ch=xChestAt(c); if(ch){ if(front) xOpenChest(ch); return false; }
@@ -411,41 +501,58 @@ function xBump(c,front){
 function xEnter(c){
   xUpdateVis();
   const tr=EX.traps.find(t=>t.cell===c&&t.armed); if(tr) xSpring(tr);
-  if(c===EX.down) xStairsDown();
+  if(EX.busy) return;
+  if(typeof xEnterExtra==='function') xEnterExtra(c);
+  if(c===EX.down&&!EX.busy) xStairsDown();
   xHud();
 }
 function xHurt(n,why){ EX.hp=Math.max(0,EX.hp-n); xFlash(); xHud(); if(EX.hp<=0) xDie(why); }
 function xSpring(tr,remote){ const T=TRAPS[tr.kind]; tr.known=true; xTrapMesh(tr);
   xLog(remote&&tr.kind==='pit'?'The pit\'s lid snaps and catches your arm!':T.text,'bad'); const dmg=T.dmg[1]?Math.round(rnd(T.dmg[0],T.dmg[1])+EX.depth*.8):0;
-  if(tr.kind==='alarm'){ tr.armed=false; if(tr.mesh) tr.mesh.visible=false; for(const g of EX.groups) if(!g.boss){ g.state='chase'; g.lostT=0; } }
+  if(tr.kind==='alarm'){ tr.armed=false; if(tr.mesh) tr.mesh.visible=false; for(const g of EX.groups) if(!g.boss&&!g.dormant){ g.state='chase'; g.lostT=0; }
+    // from depth 3 the alarm also calls the floor's Dungeon Warden
+    if(EX.depth>=3&&!EX.wardenCalled&&typeof xMiniGroup==='function'){ EX.wardenCalled=true; const far=EX.rooms.filter(r=>!r.side&&!r.safe&&!r.behind).sort((a,b)=>Math.hypot(b.cx-xcx(EX.pc),b.cy-xcy(EX.pc))-Math.hypot(a.cx-xcx(EX.pc),a.cy-xcy(EX.pc)))[0];
+      if(far){ const g=xMiniGroup('dungeonwarden',xi(far.cx,far.cy),{beh:'hunt',huntT:0}); EX.groups.push(g); xGroupSprites(g,X3.group); xLog('Far off, chains rattle: the Dungeon Warden answers the alarm.','bad'); } } }
   if(tr.kind==='pit'&&!remote) EX.stuckT=T.stuck;
-  if(dmg) xHurt(dmg,'a '+T.name); }
+  if(T.stun&&!remote) EX.stuckT=T.stun;
+  if(tr.kind==='dart') EX.ail.poison=Math.max(EX.ail.poison||0,10+EX.depth);
+  if(tr.kind==='explosive'||tr.kind==='blocks'||tr.kind==='trapdoor'){ tr.armed=false; }
+  if(dmg) xHurt(dmg,'a '+T.name);
+  if(T.fall&&!remote&&EX.hp>0&&typeof xFall==='function') xFall(1,'You tumble down to the floor below!'); }
 
 /* ---------------- search, disarm, chests ---------------- */
 function xSearch(){ if(!EX||EX.action||EX.busy) return; EX.path=[]; xLog('You search the area…','dim');
-  EX.action={t:1.1, done(){ const x=xcx(EX.pc), y=xcy(EX.pc); let found=0;
-    for(let dy=-2;dy<=2;dy++) for(let dx=-2;dx<=2;dx++){ const i=xi(x+dx,y+dy), d=EX.doors.get(i);
-      if(d&&d.state==='secret'&&xLos(EX.pc,i)&&Math.random()<.55){ d.state='closed'; d.leaf.visible=true; found++; xLog('You find a hidden door!','good');
-        const w=EX.wIdx.get(i); if(w){ w[0].setMatrixAt(w[1],new THREE.Matrix4().makeScale(0,0,0)); w[0].instanceMatrix.needsUpdate=true; EX.wIdx.delete(i); } EX.seen[i]=1; } }
-    for(const tr of EX.traps) if(tr.armed&&!tr.known&&xLos(EX.pc,tr.cell)&&Math.max(Math.abs(xcx(tr.cell)-x),Math.abs(xcy(tr.cell)-y))<=2&&Math.random()<.65){ tr.known=true; xTrapMesh(tr); found++; xLog('You find a '+TRAPS[tr.kind].name+'.','good'); }
-    for(const ch of EX.chests) if(!ch.open&&ch.trap&&!ch.trapKnown&&Math.max(Math.abs(xcx(ch.cell)-x),Math.abs(xcy(ch.cell)-y))<=1&&Math.random()<.65){ ch.trapKnown=true; found++; xLog('The chest\'s lock is trapped.','good'); }
-    if(!found) xLog('You find nothing.','dim'); xUpdateVis(); xHud(); } };
+  EX.action={t:1.1, done(){ if(!xSearchRoll(1,false)) xLog('You find nothing.','dim'); } };
   xHud(); }
+// one search of everything within 2 tiles you can see: k is the chance (1 for the Search button,
+// a third while you stand still); deeper traps are a little harder to spot
+function xSearchRoll(k,quiet){ const x=xcx(EX.pc), y=xcy(EX.pc); let found=0; const hard=Math.max(.75,1-EX.depth*.01);
+  for(let dy=-2;dy<=2;dy++) for(let dx=-2;dx<=2;dx++){ const i=xi(x+dx,y+dy), d=EX.doors.get(i);
+    if(d&&d.state==='secret'&&xLos(EX.pc,i)&&Math.random()<.55*k){ d.state='closed'; d.leaf.visible=true; found++; xLog(quiet?'Standing still, you notice the outline of a hidden door!':'You find a hidden door!','good');
+      const w=EX.wIdx.get(i); if(w){ w[0].setMatrixAt(w[1],new THREE.Matrix4().makeScale(0,0,0)); w[0].instanceMatrix.needsUpdate=true; EX.wIdx.delete(i); } EX.seen[i]=1; } }
+  for(const tr of EX.traps) if(tr.armed&&!tr.known&&xLos(EX.pc,tr.cell)&&Math.max(Math.abs(xcx(tr.cell)-x),Math.abs(xcy(tr.cell)-y))<=2&&Math.random()<.65*k*hard){ tr.known=true; xTrapMesh(tr); found++; xLog('You find a '+TRAPS[tr.kind].name+'.','good'); }
+  for(const ch of EX.chests) if(!ch.open&&ch.trap&&!ch.trapKnown&&Math.max(Math.abs(xcx(ch.cell)-x),Math.abs(xcy(ch.cell)-y))<=1&&Math.random()<.65*k){ ch.trapKnown=true; found++; xLog('The chest\'s lock is trapped.','good'); }
+  if(typeof xSearchExtra==='function') found+=xSearchExtra(k,quiet);
+  if(found){ xUpdateVis(); xHud(); } return found; }
 function xDisarmTarget(){ const x=xcx(EX.pc), y=xcy(EX.pc), near=c=>Math.max(Math.abs(xcx(c)-x),Math.abs(xcy(c)-y))<=1;
   return EX.traps.find(t=>t.armed&&t.known&&near(t.cell))||EX.chests.find(c=>!c.open&&c.trap&&c.trapKnown&&near(c.cell)); }
-function xDisarm(){ if(!EX||EX.action||EX.busy) return; const tg=xDisarmTarget(); if(!tg){ xLog('There is nothing here you know how to disarm.','dim'); return; }
+function xDisarm(){ if(!EX||EX.action||EX.busy) return; const tg=xDisarmTarget();
+  if(!tg){ const alt=typeof xDisarmAlt==='function'&&xDisarmAlt(); if(alt){ EX.path=[]; xLog(alt.start,'dim'); EX.action={t:alt.t, done(){ alt.run(); xHud(); }}; xHud(); return; }
+    xLog('There is nothing here you know how to disarm.','dim'); return; }
   EX.path=[]; const isChest=tg.open!==undefined; xLog('You carefully work at the '+(isChest?'lock':TRAPS[tg.kind].name)+'…','dim');
-  EX.action={t:1.3, done(){ const ok=Math.random()<.72;
+  EX.action={t:1.3, done(){ const ok=Math.random()<Math.max(.55,.74-EX.depth*.008);
     if(isChest){ if(ok){ tg.trap=false; xLog('You disarm the needle in the lock.','good'); } else { tg.trap=false; xLog('Click. A needle jabs your hand!','bad'); xHurt(Math.round(5+EX.depth),'a trapped lock'); } }
     else if(ok){ tg.armed=false; if(tg.mesh) tg.mesh.visible=false; xLog('You disarm the '+TRAPS[tg.kind].name+'.','good'); if(Math.random()<.3){ const g=Math.round(5+EX.depth*3); save.gold+=g; persist(); xLog('You salvage '+g+' gold of parts.','gold'); } }
     else { xLog('You slip!','bad'); xSpring(tg,true); tg.armed=false; if(tg.mesh) tg.mesh.visible=false; }
     xHud(); } };
   xHud(); }
 function xOpenChest(ch){
+  if(typeof xChestExtra==='function'&&xChestExtra(ch)) return;   // a mimic (dungeon.js)
   if(ch.trap&&ch.trapKnown){ xSay('chest','The lock is trapped. Disarm it first (E).'); return; }
   if(ch.trap){ ch.trap=false; xLog('A needle in the lock pricks you!','bad'); xHurt(Math.round(5+EX.depth),'a trapped chest'); if(EX.hp<=0) return; }
   ch.open=true; ch.mesh.userData.lid.rotation.x=-1.9; EX.path=[];
   const rolls=ch.rich?2:1; for(let n=0;n<rolls;n++) xLoot(ch.rich);
+  if(typeof xChestAfter==='function') xChestAfter(ch);
   persist(); xHud();
 }
 // chest loot: a card, gold or a piece of gear
@@ -457,52 +564,60 @@ function xLoot(rich){ const d=EX.depth+(rich?2:0), r=Math.random();
 
 /* ---------------- enemies ---------------- */
 function xEnemies(dt){
+  const safe=EX.safe&&EX.safe.has(EX.pc);
   for(const g of EX.groups){
+    if(g.dormant) continue;
     const d=Math.hypot(g.x-EX.px,g.z-EX.pz), cells=d/XCS;
-    if(EX.vis[g.cell]&&g.state!=='sleep'&&cells>2.2){ g.seen=true; g.surprise=false; }
-    if(g.state==='sleep'){ g.wakeT-=dt; if(g.wakeT<=0){ g.wakeT=1; if(cells<2.6&&Math.random()<.3){ g.state='chase'; g.surprise=!EX.vis[g.cell]; if(EX.vis[g.cell]) xLog(ENEMY_DEFS[g.ids[0]].name+' wakes up!','warn'); } } }
+    if(EX.vis[g.cell]&&g.state!=='sleep'&&cells>2.2&&!(g.stealth&&cells>3.2)){ g.seen=true; g.surprise=false; }
+    if(g.mini&&typeof xMiniStep==='function') xMiniStep(g,dt,cells);
+    else if(g.state==='sleep'){ g.wakeT-=dt; if(g.wakeT<=0){ g.wakeT=1; if(cells<2.6&&Math.random()<.3){ g.state='chase'; g.surprise=!EX.vis[g.cell]; if(EX.vis[g.cell]) xLog(ENEMY_DEFS[g.ids[0]].name+' wakes up!','warn'); } } }
     else if(g.state==='guard'){ if(EX.room[EX.pc]===EX.room[g.home]&&EX.room[EX.pc]>=0){ g.state='chase'; xLog(ENEMY_DEFS[g.ids[0]].name+' rises to face you!','warn'); } }
-    else { const sees=cells<7.5&&xLos(g.cell,EX.pc);
+    else { const sees=cells<7.5&&!safe&&xLos(g.cell,EX.pc);
       if(sees){ if(g.state!=='chase'&&EX.vis[g.cell]) xLog(ENEMY_DEFS[g.ids[0]].name+' spots you!','warn'); g.state='chase'; g.lostT=0; }
       else if(g.state==='chase'){ g.lostT+=dt; if(g.lostT>6){ g.state='wander'; g.path=[]; g.seen=false; } }
       g.repath-=dt;
       if(g.repath<=0){ g.repath=g.state==='chase'?.4:2.5;
         const goal=g.state==='chase'?EX.pc:(g.path.length?null:xWanderGoal(g));
-        if(goal!=null){ const dist=xbfs(EX.t,EX.doors,goal,null,n=>!!xKnownTrap(n)&&false); g.path=xPathTo(dist,g.cell,goal); } }
+        if(goal!=null){ const dist=xbfs(EX.t,EX.doors,goal,null,typeof xEnemyBlock==='function'?xEnemyBlock:null); g.path=xPathTo(dist,g.cell,goal); } }
       const sp=(g.state==='chase'?4.1:2)*dt;
       if(g.path.length){ const n=g.path[0], tx=xw(n)-g.x, tz=xz(n)-g.z, l=Math.hypot(tx,tz);
         if(l<.2){ g.path.shift(); const dr=EX.doors.get(n); if(dr&&dr.state==='closed'){ dr.state='open'; dr.leaf.visible=false; if(EX.seen[n]) xUpdateVis(); } }
         else { g.x+=tx/l*Math.min(sp,l); g.z+=tz/l*Math.min(sp,l); g.face=tx<0?-1:1; } }
       const c=xcell(g.x,g.z); if(c>=0) g.cell=c; }
-    if(d<1.15&&!EX.busy){ xEngage(g); return; }
+    if(d<1.15&&!EX.busy&&!safe){ xEngage(g); return; }   // nothing fights you inside a sanctuary or a merchant's room
   }
 }
-function xWanderGoal(g){ const r=pick(EX.rooms.filter(r=>!r.closet)); return xi(r.x+Math.floor(Math.random()*r.w),r.y+Math.floor(Math.random()*r.h)); }
+function xWanderGoal(g){ const r=pick(EX.rooms.filter(r=>!r.side&&!r.nook&&!r.behind&&!r.safe)); return xi(r.x+Math.floor(Math.random()*r.w),r.y+Math.floor(Math.random()*r.h)); }
 function xPathTo(dist,from,goal){ if(dist[from]<0) return []; const out=[]; let cur=from;
   for(let k=0;k<200&&cur!==goal;k++){ const x=xcx(cur), y=xcy(cur); let best=-1;
     for(const n of [xi(x+1,y),xi(x-1,y),xi(x,y+1),xi(x,y-1)]) if(n>=0&&n<XN*XN&&dist[n]>=0&&dist[n]<dist[cur]&&(best<0||dist[n]<dist[best])) best=n;
     if(best<0) break; out.push(best); cur=best; }
   return out; }
 // how the fight opens: reach a sleeping enemy first and you ambush it; one you never saw coming strikes first
-function xEngage(g){
-  const opening=g.state==='sleep'?'ambush':(g.surprise||!g.seen)?'surprised':null;
+function xEngage(g,forced){
+  const opening=forced!==undefined?forced:g.state==='sleep'?'ambush':(g.surprise||!g.seen)?'surprised':null;
   EX.busy=true; EX.path=[]; EX.fighting=g; xHud();
   const name=ENEMY_DEFS[g.ids[0]].name;
   if(opening==='ambush') xLog('You catch the '+name+' asleep!','good'); else if(opening==='surprised') xLog('The '+name+' was waiting for you!','bad');
   const b=$('#xBang'); b.textContent=opening==='ambush'?'Ambush!':opening==='surprised'?'Surprised!':'!'; b.dataset.key='fight'; b.className='x-bang on '+(opening||'');
-  setTimeout(()=>{ b.className='x-bang'; if(!EX||EX.fighting!==g) return; EX.active=false; fight(EX.depth,[g.ids.slice()],{hp:EX.hp,opening,explore:true}); },700);
+  setTimeout(()=>{ b.className='x-bang'; if(!EX||EX.fighting!==g) return; EX.active=false; fight(EX.depth,[g.ids.slice()],{hp:EX.hp,opening,explore:true,rule:g.rule||null}); },700);
 }
 
 /* ---------------- floors, camp, death ---------------- */
 function xStairsDown(){
   if(EX.groups.some(g=>g.boss)){ xSay('boss','The stairs are sealed while the guardian of this floor lives.'); return; }
-  EX.busy=true; xLog('You descend…','dim'); const nd=EX.depth+1, hp=Math.min(xmaxHp(),EX.hp+Math.round(xmaxHp()*.2));
-  save.deepest=Math.max(save.deepest,nd); persist();
+  EX.busy=true; if(typeof xEscortCheck==='function') xEscortCheck(); xLog('You descend…','dim'); const nd=EX.depth+1, hp=Math.min(xmaxHp(),EX.hp+Math.round(xmaxHp()*.2));
+  save.deepest=Math.max(save.deepest,nd); persist(); if(typeof XRUN!=='undefined'&&XRUN){ XRUN.keys.boss=0; if(XRUN.chute===EX.depth) XRUN.chute=0; }
   setTimeout(()=>{ buildFloor(nd,hp); EX.active=true; xHud(); xLoopStart(); xBanner(nd); },500);
 }
 let XPARK=null;
-function xToCamp(){ if(!EX||EX.busy||EX.pc!==EX.up) return; logCamp('Climbed back to camp from depth '+EX.depth+'. The floor stays as you left it.','dim'); stopExplore(); pickDepth=EX.depth; XPARK=EX; EX=null; openCamp(); }
-function xDie(why){ XPARK=null; EX.busy=true; const lost=Math.floor(save.gold*.2); save.gold-=lost; persist(); const depth=EX.depth;
+function xToCamp(){ if(!EX||EX.busy||EX.pc!==EX.up) return; if(typeof xEscortCheck==='function') xEscortCheck(); logCamp('Climbed back to camp from depth '+EX.depth+'. The floor stays as you left it.','dim'); stopExplore(); pickDepth=EX.depth; XPARK=EX; EX=null; openCamp(); }
+function xDie(why){
+  // a sanctuary's blessing pulls you back once: to the stairs up of this floor, at half health
+  if(typeof xTryRevive==='function'&&xTryRevive()){ const lost=Math.floor(save.gold*.1); save.gold-=lost; persist(); EX.hp=Math.round(xmaxHp()*.5); EX.ail={poison:0,curse:0};
+    EX.pc=EX.up; EX.px=xw(EX.up); EX.pz=xz(EX.up); EX.path=[]; EX.stuckT=0; xUpdateVis(); xHud(); xFlash();
+    xLog('Brought down by '+why+', but the shrine pulls you back to the stairs up. You dropped '+lost+' gold.','good'); return; }
+  XPARK=null; if(typeof XRUN!=='undefined') XRUN=null; EX.busy=true; const lost=Math.floor(save.gold*.2); save.gold-=lost; persist(); const depth=EX.depth;
   logCamp('Killed by '+why+' at depth '+depth+', dropped '+lost+' gold.','curse'); stopExplore();
   reveal('Defeated…','Brought down by '+why+' at depth '+depth+'. You dropped '+lost+' gold. Your cards are safe.',[],[['Camp',()=>{ EX=null; openCamp(); }]]); }
 function stopExplore(){ if(EX) EX.active=false; xPause(false); }
@@ -513,7 +628,7 @@ function xLoopStart(){ cancelAnimationFrame(xRaf); xLast=performance.now(); xRaf
 function xLoop(ts){
   if(!EX||!EX.active||!$('#scrExplore').classList.contains('on')) return;
   const dt=Math.min(.1,(ts-xLast)/1000); xLast=ts;
-  if(!EX.busy&&!xPaused){ xMove(dt); xEnemies(dt);
+  if(!EX.busy&&!xPaused){ xMove(dt); xEnemies(dt); if(EX.active&&!EX.busy&&typeof xDungeonTick==='function') xDungeonTick(dt);
     EX.regenT+=dt; if(EX.regenT>3){ EX.regenT=0; if(EX.hp<xmaxHp()){ EX.hp++; xHud(); } } }
   xDraw(ts/1000,dt); xRaf=requestAnimationFrame(xLoop);
 }
@@ -525,9 +640,12 @@ function xDraw(T,dt){
   G.lamp.position.set(EX.px,2.6,EX.pz);
   const k=Math.max(1,Math.min(1.8,.8/G.cam.aspect)), hgt=18*k, back=10*k;   // tall screens pull back so a room still fits across
   G.cam.position.set(EX.px,hgt,EX.pz+back); G.cam.lookAt(EX.px,0,EX.pz-.5);
-  for(const g of EX.groups){ const v=!!EX.vis[g.cell]; g.sprite.visible=v; g.zz.visible=v&&g.state==='sleep'; g.bang.visible=v&&g.state==='chase';
+  // enemies show only while in sight; a Shadow Assassin only when it is close; a dormant guardian not at all
+  for(const g of EX.groups){ if(!g.sprite) continue; const v=!!EX.vis[g.cell]&&!g.dormant&&!(g.stealth&&Math.hypot(g.x-EX.px,g.z-EX.pz)/XCS>3.2); g.sprite.visible=v; g.zz.visible=v&&g.state==='sleep'; g.bang.visible=v&&g.state==='chase';
+    if(g.ring){ g.ring.visible=v; g.ring.position.set(g.x,.06,g.z); }
     if(v){ g.sprite.position.set(g.x,g.state==='sleep'?0:Math.abs(Math.sin(T*4+g.bob))*.06,g.z); xRefresh(g.sprite,(g.face||-1)>0);
       g.zz.position.set(g.x+.5,g.h+.2+Math.sin(T*2+g.bob)*.15,g.z); g.bang.position.set(g.x,g.h+.35,g.z); } }
+  if(typeof xDungeonDraw==='function') xDungeonDraw(T);
   EX.downMesh.userData.ring.rotation.z+=.02;
   for(const L of EX.glows){ if(!L.g.visible) continue; const f=EX.fogCur[L.floor], fl=.85+.15*Math.sin(T*1.7+L.ph);
     L.halo.material.opacity=.6*f*fl; for(const m of L.mats) m.opacity=.3+.7*f;
@@ -547,7 +665,8 @@ function xMini(){
   if(EX.seen[EX.down]) dot(EX.down,isBossDepth(EX.depth)?'#ff5d6c':EX.area.glow,2); if(EX.seen[EX.up]) dot(EX.up,'#fff2c0',2);
   for(const ch of EX.chests) if(EX.seen[ch.cell]&&!ch.open) dot(ch.cell,'#f2c94c',1);
   for(const tr of EX.traps) if(tr.known&&tr.armed) dot(tr.cell,'#ff4d5e',1);
-  for(const g of EX.groups) if(EX.vis[g.cell]) dot(g.cell,'#ff6b6b',1);
+  if(typeof xMiniExtra==='function') xMiniExtra(c,s,dot);
+  for(const g of EX.groups) if(EX.vis[g.cell]&&!g.dormant&&!(g.stealth&&Math.hypot(g.x-EX.px,g.z-EX.pz)/XCS>3.2)) dot(g.cell,g.mini?'#ff9a3a':'#ff6b6b',g.mini?2:1);
   dot(EX.pc,'#ffffff',2);
 }
 function xLog(t,c){ if(!EX) return; EX.log.push({t,c}); if(EX.log.length>5) EX.log.shift();
@@ -561,8 +680,9 @@ function xFlash(){ const h=$('#xHurt'); h.classList.remove('on'); void h.offsetW
 function xHud(){ if(!EX) return; const m=xmaxHp();
   hpMeter($('#xHpBar'),$('#xHpTxt'),EX.hp,m);
   $('#xDepth').textContent='Depth '+EX.depth+' · '+areaLabel(EX.depth); $('#xDepth').style.color=EX.area.glow; goldText($('#xGold'));
-  $('#xSearch').disabled=!!EX.action; $('#xDisarm').disabled=!!EX.action||!xDisarmTarget();
-  $('#xCamp').style.display=EX.pc===EX.up&&!EX.busy?'':'none'; $('#xAct').textContent=EX.action?'Working…':EX.stuckT>0?'Stuck in a pit!':''; }
+  $('#xSearch').disabled=!!EX.action; $('#xDisarm').disabled=!!EX.action||!(xDisarmTarget()||typeof xDisarmAlt==='function'&&xDisarmAlt());
+  $('#xCamp').style.display=EX.pc===EX.up&&!EX.busy?'':'none'; $('#xAct').textContent=EX.action?'Working…':EX.stuckT>0?'Stuck!':'';
+  if(typeof xHudExtra==='function') xHudExtra(); }
 
 /* ---------------- entering and returning ---------------- */
 function enterExplore(depth){
@@ -570,18 +690,21 @@ function enterExplore(depth){
   if(typeof THREE==='undefined'){ tip('The 3D map could not load; fighting directly.'); return fight(depth); }
   show('scrExplore'); xInit3D();
   if(XPARK&&XPARK.depth===depth){ EX=XPARK; XPARK=null; EX.hp=xmaxHp(); EX.busy=false; EX.path=[]; EX.px=xw(EX.up); EX.pz=xz(EX.up); EX.pc=EX.up; xUpdateVis(); xLog('You climb back down. You feel rested.','dim'); }
-  else { XPARK=null; buildFloor(depth); }
+  else { XPARK=null; if(typeof xNewRun==='function') xNewRun(depth); buildFloor(depth); }
   EX.active=true; xHud(); xLoopStart();
   xBanner(depth);
 }
 // back from a fight that started on the map: the enemy is gone and your wounds carry over
-function resumeExplore(hp,won){
+// info.ruleOK: a trial's rule was kept (dungeon.js pays out)
+function resumeExplore(hp,won,info){
   if(!EX) return openCamp();
   const g=EX.fighting; EX.fighting=null;
-  if(won&&g){ EX.groups=EX.groups.filter(x=>x!==g); [g.sprite,g.zz,g.bang].forEach(o=>{ X3.group.remove(o); if(o.material.map) o.material.map.dispose(); o.material.dispose(); }); if(g.boss){ EX.bossDead=true; xLog(ENEMY_DEFS[g.ids[0]].name+' falls. The stairs down to '+areaOf(EX.depth+1).name+' are open.','good'); } }
+  if(won&&g){ EX.groups=EX.groups.filter(x=>x!==g); [g.sprite,g.zz,g.bang,g.ring].forEach(o=>{ if(!o) return; X3.group.remove(o); if(o.material.map) o.material.map.dispose(); o.material.dispose(); }); if(g.boss){ EX.bossDead=true; xLog(ENEMY_DEFS[g.ids[0]].name+' falls. The stairs down to '+areaOf(EX.depth+1).name+' are open.','good'); } }
   EX.hp=Math.max(1,hp); EX.busy=false; EX.active=true; EX.path=[];
   for(const k in XKEY) XKEY[k]=false;
-  show('scrExplore'); xUpdateVis(); xHud(); xLoopStart();
+  show('scrExplore'); xUpdateVis();
+  if(typeof xAfterFight==='function') xAfterFight(g,won,info);
+  xHud(); xLoopStart();
 }
 $('#xSearch').onclick=()=>xSearch();
 $('#xDisarm').onclick=()=>xDisarm();

@@ -144,6 +144,7 @@
       <button id="xMenu" class="btn ghost sq small" aria-label="Pause">⋯</button>
     </div>
     <canvas id="xMini"></canvas>
+    <div id="xStatus"></div>
     <div id="xHurt" class="hurt-fx"></div>
     <div id="xBang" class="x-bang"></div>
     <div id="xBottom">
@@ -151,10 +152,11 @@
       <div class="controls">
         <button id="xSearch" class="btn ghost">Search<small class="k">F</small></button>
         <button id="xDisarm" class="btn ghost">Disarm<small class="k">E</small></button>
+        <button id="xBag" class="btn ghost">Bag<small class="k">B</small></button>
         <button id="xCamp" class="btn">Climb to camp<small class="k">C</small></button>
         <span id="xAct"></span>
       </div>
-      <p class="keys">Tap a spot to walk there, or hold to walk toward your finger<span class="k"> · keys: WASD/arrows move, F search, E disarm</span>. Walk into doors and chests to open them; reach a sleeping enemy first to ambush it.</p>
+      <p class="keys">Tap a spot to walk there, or hold to walk toward your finger<span class="k"> · keys: WASD/arrows move, F search, E disarm</span>. Walk into doors, chests, people and levers to use them; stand still to notice hidden things; reach a sleeping enemy first to ambush it.</p>
     </div>
   </section>
 
@@ -232,12 +234,23 @@
       <div class="controls two"><button id="pkCancel" class="btn ghost">Cancel</button><button id="pkOk" class="btn">Sacrifice</button></div>
     </div>
   </div>
+  <!-- the dungeon's dialog: people, merchants, sanctuaries, tablets, your bag -->
+  <div id="xDialog" class="overlay">
+    <div class="panel xdlg">
+      <div class="xdh"><canvas id="xdPic" width="96" height="96"></canvas><div class="xdt"><h2 id="xdTitle"></h2><p id="xdSub" class="hint"></p></div><span id="xdGold"></span></div>
+      <p id="xdText"></p>
+      <div id="xdTabs" class="tabs"></div>
+      <div id="xdBody"></div>
+      <div id="xdBtns" class="controls two"></div>
+    </div>
+  </div>
   <div id="settings" class="overlay">
     <div class="panel settings">
       <div class="bar"><h2>Settings</h2></div>
       <h3>Game</h3>
       <div class="srow"><span>Screen layout<small>Phone: one narrow column. Tablet: two columns, bigger buttons.</small></span><button class="btn ghost small layoutBtn"></button></div>
       <div class="srow"><span>Full screen</span><button id="setFull" class="btn ghost small fullBtn">Full screen</button></div>
+      <div class="srow"><span>Sound effects<small>Whispers near secrets, clicks, chimes and grinding stone in the dungeon</small></span><button id="setSfx" class="btn ghost small"></button></div>
       <div class="srow"><span>Testing tools<small>Boss tests at camp and free gear on the Character screen</small></span><button id="setDev" class="btn ghost small"></button></div>
       <details id="setKbd">
         <summary><h3>Keyboard controls</h3></summary>
@@ -266,10 +279,12 @@
 <script src="bosses.js"></script>
 <script src="sprites.js"></script>
 <script src="art.js"></script>
+<script src="minibosses.js"></script>
 <script src="uikit.js"></script>
 <script src="ui.js"></script>
 <script src="keys.js"></script>
 <script src="three.min.js"></script>
 <script src="explore.js"></script>
+<script src="dungeon.js"></script>
 </body>
 </html>

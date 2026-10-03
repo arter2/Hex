@@ -182,6 +182,8 @@ function gearMods(save){ const out={tap:0,charged:0,cd:1,charge:1,hp:0,guard:0,s
       else if(k==='power'){ for(const c in m.power) out.power[c]=(out.power[c]||1)*m.power[c]; }
       else if(MULT_KEYS.includes(k)) out[k]=(out[k]||1)*m[k]; else out[k]=(out[k]||0)+m[k]; } }
   for(const k of activeSets(save)){ const m=SETS[k].mods; for(const x in m) out[x]=MULT_KEYS.includes(x)?(out[x]||1)*m[x]:(out[x]||0)+m[x]; }
+  // permanent blessings from the dungeon (dungeon.js): Vigor, Might and Fortune
+  const P=save.perm||{}; out.hp+=6*(P.vigor||0); out.tap+=P.might||0; out.charged+=2*(P.might||0); if(P.fortune) out.gold=(out.gold||0)+.05*P.fortune;
   out.guard=Math.min(.6,out.guard); out.dodge=Math.min(.4,out.dodge||0);
   return out; }
 

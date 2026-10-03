@@ -161,8 +161,8 @@ function armed(btn,label,act){ if(btn.dataset.armed){ delete btn.dataset.armed; 
   setTimeout(()=>{ if(btn.dataset.armed){ delete btn.dataset.armed; btn.textContent=btn.dataset.label; } },3000); }
 // Settings › Save › Erase: wherever you are, everything stops and the game returns to the menu
 $('#btnReset').onclick=e=>armed(e.currentTarget,'Tap again to erase',()=>{
-  closeSettings(); ['#pause','#reveal','#custom','#detail','#pick'].forEach(k=>$(k).classList.remove('on')); paused=false; B=null;
-  if(typeof stopExplore==='function'){ stopExplore(); EX=null; XPARK=null; }
+  closeSettings(); ['#pause','#reveal','#custom','#detail','#pick','#xDialog'].forEach(k=>$(k).classList.remove('on')); paused=false; B=null;
+  if(typeof stopExplore==='function'){ stopExplore(); EX=null; XPARK=null; if(typeof XRUN!=='undefined') XRUN=null; }
   clearSave(); save=null; campLog.length=0; pickDepth=null; openMenu(); tip('Save erased'); });
 document.querySelectorAll('.back').forEach(b=>b.onclick=openCamp);
 
@@ -333,8 +333,10 @@ function renderCharacter(){
     +(m.dodge?w('Dodge',pct(m.dodge)):'')+(m.block?w('Shield block',m.block+' hit'+(m.block>1?'s':'')+' a turn'):'')+(m.regen?w('Regeneration',m.regen+' HP/s'):'')+(m.counter?w('Counter',m.counter):'')
     +(m.slow&&m.slow!==1?w('Move speed',m.slow<1?Math.round((1-m.slow)*100)+'% faster':Math.round((m.slow-1)*100)+'% slower'):'')+(m.castSlow&&m.castSlow>1?w('Casting',Math.round((m.castSlow-1)*100)+'% slower'):'')
     +(m.surge?w('4th slot chance',pct(m.surge)):'')+(m.gold?w('Gold','+'+pct(m.gold)):'')+(m.gauge||m.hurt||m.hpPerShot||m.misfire?w('Curses',modsText({gauge:m.gauge,hurt:m.hurt,hpPerShot:m.hpPerShot,misfire:m.misfire})):'')
-    +activeSets(save).map(k=>w('Set ✦',SETS[k].name)).join('');
-  $('#chScrolls').innerHTML='<span class="lbl">Scrolls</span>'+Object.keys(SCROLLS).map(k=>`<span class="chip" style="--c:#7fd4ff">${lootPic('scroll:'+k,24)} ${SCROLLS[k].name} ×${s.scrolls[k]||0}</span>`).join('');
+    +activeSets(save).map(k=>w('Set ✦',SETS[k].name)).join('')
+    +(typeof PERM!=='undefined'?Object.keys(PERM).filter(k=>save.perm&&save.perm[k]).map(k=>w('Blessing',PERM[k].name+' ×'+save.perm[k])).join(''):'');
+  $('#chScrolls').innerHTML='<span class="lbl">Scrolls</span>'+Object.keys(SCROLLS).map(k=>`<span class="chip" style="--c:#7fd4ff">${lootPic('scroll:'+k,24)} ${SCROLLS[k].name} ×${s.scrolls[k]||0}</span>`).join('')
+    +(typeof MATS!=='undefined'?Object.keys(MATS).filter(k=>save.mats&&save.mats[k]).map(k=>`<span class="chip" style="--c:${MATS[k].col}">${MATS[k].name} ×${save.mats[k]}</span>`).join('')+Object.keys(BAG).filter(k=>save.bag&&save.bag[k]).map(k=>`<span class="chip" style="--c:${BAG[k].col}">${BAG[k].name} ×${save.bag[k]}</span>`).join(''):'');
   // inventory tabs and grid
   const tabs=$('#chTabs'); tabs.innerHTML='';
   for(const [k,label] of INV_TABS){ const b=document.createElement('button'); b.className='chip'+(chTab===k?' on':''); b.textContent=label; b.onclick=()=>{ chTab=k; renderCharacter(); }; tabs.appendChild(b); }
@@ -453,7 +455,7 @@ function fight(depth,waves,xo){
     onRecipe:r=>{ const first=!(save.recipes||{})[r.id]; save.recipes=save.recipes||{}; save.recipes[r.id]=1; persist(); banner((first?'⚗ New recipe! ':'⚗ ')+r.name,'#39ff8a'); },
     onHero:c=>banner('♔ '+c.name.split(',')[0]+' joins the fight!','#ffe066'),
     onEnd:win=>win?victory():defeat(),
-  },{prepare:p=>assignChargeUses(save,p,d.list), gear:gearMods(save), look:gearLook(save), waves, hp:xo&&xo.hp, opening:xo&&xo.opening});
+  },{prepare:p=>assignChargeUses(save,p,d.list), gear:gearMods(save), look:gearLook(save), waves, hp:xo&&xo.hp, opening:xo&&xo.opening, rule:xo&&xo.rule});
   B.explore=!!(xo&&xo.explore); B.trial=!!(xo&&xo.trial);
   if(B.opening) setTimeout(()=>banner(B.opening==='ambush'?'Ambush! They\'re slow to react':'Surprised! They strike first',B.opening==='ambush'?'#39ff8a':'#ff5d6c'),300);
   hud(true);
@@ -475,15 +477,18 @@ function victory(){
   logCamp((boss?'Boss defeated':'Won')+' at depth '+depth+'.','win'); got.forEach(g=>logCamp('Found '+g.replace(/^[^A-Za-z0-9]+/u,'')+'.',/gold$/.test(g)?'gold':'loot'));
   loot.forEach(l=>{ if(l.res&&l.res.cursed) logCamp(l.res.msg,'curse'); });
   reveal(hero?'♔ A hero joins you!':boss?'Boss defeated!':'Victory!',(hero?hero.name+' answers your call. ':'')+(boss&&!b.trial?'The way down to '+areaOf(depth+1).name+' is open. ':'')+(b.explore?'Won in '+Math.round(b.time)+'s. ':'Depth '+depth+' cleared in '+Math.round(b.time)+'s. ')+(boss?'Boss rewards: ':'Your reward: ')+got.join(', ')+'.'+loot.map(l=>l.res&&l.res.cursed?' '+l.res.msg:l.res&&l.res.ok?' You put it on.':'').join('')+burnt,res,
-    b.explore?[['Keep exploring',()=>{ B=null; resumeExplore(hpLeft,true); }]]
+    b.explore?[['Keep exploring',()=>{ const ruleOK=!!(b.rule&&b.rule.ok); B=null; resumeExplore(hpLeft,true,{ruleOK}); }]]
     :[['Camp',()=>{ B=null; pickDepth=depth+1; openCamp(); },true],['Depth '+(depth+1)+' →',()=>fight(depth+1)]],
     [...(rw.gold?[{pic:uiIcon('coin',64),name:rw.gold+' gold',text:'Spend it on packs in the shop'}]:[]),...rw.items.map(k=>Object.assign(lootLabel(save,k),{pic:lootPic(k)}))]);
 }
 function defeat(){
   const lost=Math.floor(save.gold*.2); save.gold-=lost; const burnt=settleCharges();
-  const depth=B.depth;
+  const depth=B.depth, xp=B.explore;
+  // a sanctuary's blessing (dungeon.js): you wake at the floor's stairs up instead, for half the gold
+  if(xp&&typeof xTryRevive==='function'&&xTryRevive()){ save.gold+=lost-Math.floor(lost/2); persist(); logCamp('A shrine pulled you back from defeat at depth '+depth+'.','win');
+    return reveal('Pulled back','You fell, but the shrine’s blessing carries you back to the stairs up at half health. You dropped '+Math.floor(lost/2)+' gold.'+burnt,[],[['Get up',()=>{ B=null; xRevived(); }]]); }
   logCamp('Fell at depth '+depth+', dropped '+lost+' gold.','curse');
-  const xp=B.explore; if(xp&&typeof stopExplore==='function'){ stopExplore(); EX=null; XPARK=null; }
+  if(xp&&typeof stopExplore==='function'){ stopExplore(); EX=null; XPARK=null; if(typeof XRUN!=='undefined') XRUN=null; }
   reveal('Defeated…','You fell at depth '+depth+' and dropped '+lost+' gold. Your cards are safe.'+burnt,[],
     xp?[['Camp',()=>{ B=null; openCamp(); },true]]:[['Camp',()=>{ B=null; openCamp(); },true],['Retry',()=>fight(depth)]]);
 }
@@ -492,7 +497,7 @@ function defeat(){
 function leaveFight(){ paused=false; $('#custom').classList.remove('on');
   if(B.phase==='lose'||B.player.hp<=0) return defeat();
   const burnt=settleCharges(); if(burnt) tip(burnt.trim());
-  if(B.explore){ fleeCost('Fled a fight at depth '+B.depth); if(typeof stopExplore==='function'){ stopExplore(); EX=null; XPARK=null; } }
+  if(B.explore){ fleeCost('Fled a fight at depth '+B.depth); if(typeof stopExplore==='function'){ stopExplore(); EX=null; XPARK=null; if(typeof XRUN!=='undefined') XRUN=null; } }
   B=null; openCamp(); }
 function fleeCost(what){ const lost=Math.floor(save.gold*.1); save.gold-=lost; persist(); logCamp(what+' and dropped '+lost+' gold.','curse'); tip('You flee to camp and drop '+lost+' gold'); }
 // the card you cast pops up large and flies onto the board, Hearthstone style
@@ -523,7 +528,7 @@ $('#mSettings').onclick=()=>openSettings();
 $('#mLeave').onclick=e=>{ const w=pauseWhere(); if(!w) return closePause();
   if(w==='map'&&EX.pc===EX.up){ closePause(); return xToCamp(); }   // free from the stairs up, and the floor waits for you
   armed(e.currentTarget,w==='battle'||w==='trial'?'Tap again to leave':'Tap again to flee',()=>{ $('#pause').classList.remove('on');
-    if(w==='map'){ xPause(false); fleeCost('Fled depth '+EX.depth); stopExplore(); EX=null; XPARK=null; openCamp(); }
+    if(w==='map'){ xPause(false); fleeCost('Fled depth '+EX.depth); stopExplore(); EX=null; XPARK=null; if(typeof XRUN!=='undefined') XRUN=null; openCamp(); }
     else leaveFight(); }); };
 function toggleFull(){ const d=document, el=d.documentElement;
   try{ if(d.fullscreenElement||d.webkitFullscreenElement) (d.exitFullscreen||d.webkitExitFullscreen).call(d); else{ const r=(el.requestFullscreen||el.webkitRequestFullscreen).call(el); if(r&&r.catch) r.catch(()=>tip('Full screen is not available here')); } }catch(e){ tip('Full screen is not available here'); } }
@@ -712,6 +717,10 @@ try{ if(/[?&]dev\b/.test(location.search)) localStorage.setItem(DEV_KEY,'1'); }c
 function applyDev(){ let on=false; try{ on=localStorage.getItem(DEV_KEY)==='1'; }catch(e){} document.body.classList.toggle('dev',on); $('#setDev').textContent=on?'On':'Off'; }
 $('#setDev').onclick=()=>{ const on=!document.body.classList.contains('dev'); try{ localStorage.setItem(DEV_KEY,on?'1':'0'); }catch(e){} applyDev(); };
 applyDev();
+// sound effects in the dungeon (dungeon.js), on unless switched off
+function applySfx(){ let on=true; try{ on=localStorage.getItem('hexmancers-sfx')!=='0'; }catch(e){} $('#setSfx').textContent=on?'On':'Off'; }
+$('#setSfx').onclick=()=>{ let on=true; try{ on=localStorage.getItem('hexmancers-sfx')!=='0'; localStorage.setItem('hexmancers-sfx',on?'0':'1'); }catch(e){} applySfx(); };
+applySfx();
 /* the window's shape and size: .wide or .tall, and --ui, the scale for menus and the HUD.
    1 on phones; on bigger screens it grows so text and buttons stay a comfortable size. */
 function applyViewport(){

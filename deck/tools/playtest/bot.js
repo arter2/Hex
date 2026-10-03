@@ -23,10 +23,10 @@ function pickCards(skill){ const p=B.piles; STATS.customs++; const es=alive(), s
   STATS.queued+=p.queue.length; const cb=detectCombos(p.queue); cb.forEach(x=>STATS.combos[x.kind]=(STATS.combos[x.kind]||0)+1);
   closeCustomScreen(); }
 // skill: wandRate, dodge, react, align, pick, smartCast, charge
-function playBattle(list,depth,skill,capSec,gear){
+function playBattle(list,depth,skill,capSec,gear,waves){
   STATS={dmg:{},taken:0,hits:0,cast:0,customs:0,queued:0,surges:0,runeBlocks:0,combos:{},backTime:0,outOfReach:0,enemyT:0,castTypes:{}};
   let t=0, wandT=0, reactT=0; const dt=1/30;
-  startBattle(list,depth,{onEnd:()=>{}},{gear:gear||{},look:null});
+  startBattle(list,depth,{onEnd:()=>{}},{gear:gear||{},look:null,waves:waves||null});
   pickCards(skill);
   while(t<capSec&&(B.phase==='fight'||B.phase==='custom')){
     if(B.phase==='custom'){ pickCards(skill); continue; }

@@ -170,6 +170,8 @@ function updateEnemy(e,dt){
   e.hitT=Math.max(0,e.hitT-dt); e.curseT=Math.max(0,e.curseT-dt); e.poisonT=Math.max(0,e.poisonT-dt); e.powerT=Math.max(0,e.powerT-dt);
   if(e.burnT>0){ e.burnT-=dt; e.burnAcc+=5*dt; if(e.burnAcc>=5){ e.burnAcc-=5; hitEnemy(e,5,null,{raw:true}); if(e.hp<=0) return; } }
   if(e.def.bossId&&typeof bossTick==='function'&&bossTick(e,dt)) return;   // away, or guarding while it evolves
+  if(e.def.mini&&typeof miniTick==='function'&&miniTick(e,dt)) return;   // minibosses (minibosses.js)
+  if(e.under) return;
   if(e.freezeT>0||e.stunT>0){ e.freezeT=Math.max(0,e.freezeT-dt); e.stunT=Math.max(0,e.stunT-dt); return; }
   if(e.slowT>0){ e.slowT-=dt; dt*=.5; }
   if(e.windT>0){ e.windT-=dt; if(e.windT<=0) enemyShot(e,e.dmg*(e.powerT>0?1.3:1)); return; }

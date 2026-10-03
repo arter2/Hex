@@ -74,6 +74,8 @@ function startBattle(list,depth,hooks,opts){
   // catching a sleeping enemy holds its first attacks back; being caught off guard lets it strike first
   if(opts&&opts.hp!=null) p.hp=Math.max(1,Math.min(p.maxHp,opts.hp));
   B.opening=opts&&opts.opening||null;
+  // a trial's rule (minibosses.js): fight in order, survive, or light the switches
+  B.rule=opts&&opts.rule?Object.assign({},opts.rule):null; if(B.rule&&typeof ruleSetup==='function') ruleSetup(B.rule);
   if(B.opening==='ambush') B.enemies.forEach(e=>{ e.atkT+=3.5; e.stunT=Math.max(e.stunT,1.5); });
   if(B.opening==='surprised') B.enemies.forEach(e=>{ e.atkT=rnd(.4,.9); });
   openCustomScreen();
@@ -166,6 +168,8 @@ function cancelAttack(e){
 function killEnemy(e){
   e.hp=0; e.deathT=.5; if(e.tile.occ===e) e.tile.occ=null; cancelAttack(e);
   if(e.def.bossId&&typeof bossDown==='function') bossDown(e); burst(e.tile,COLORS[e.color].c,30,1); shake(4);
+  if(e.def.mini&&typeof helpers==='function') for(const m of helpers(e)) if(m.hp>0) killEnemy(m);   // a miniboss's helpers fall with it
+  if(typeof extraKill==='function') extraKill(e);
   if(e.def.split){ const spots=around(e.tile).filter(t=>t.side==='e'&&!t.occ).slice(0,2);   // a Gloop splits in two
     if(!spots.length&&!e.tile.occ) spots.push(e.tile);
     spots.forEach(t=>{ const m=makeEnemy(e.def.split,t,B.depth); m.atkT+=1; B.enemies.push(m); }); }
@@ -436,6 +440,7 @@ function update(dt){
 
   // safety: a fight with nobody left and no wave coming is won
   if(!alive().length&&Number.isInteger(b.wave)&&b.wave>=b.waves.length-1&&b.enemies.length){ b.phase='win'; b.player.charging=false; later(1.2,()=>b.hooks.onEnd&&b.hooks.onEnd(true)); return; }
+  if(typeof extraTick==='function'){ extraTick(dt); if(b.phase!=='fight') return; }
   const p=b.player, haste=p.hasteT>0;
   b.gauge=Math.min(GAUGE_MAX,b.gauge+dt*(heroOn('volta')?1.5:1)*(p.gaugeMult||1));
   ['moveCd','wandCd','hurtT'].forEach(k=>p[k]=Math.max(0,p[k]-rdt));
@@ -771,14 +776,15 @@ function render(){
   const units=[b.player,...b.walls,...b.allies,...rocks,...alive(),...dying].sort((a,c)=>depthOf(a.tile)-depthOf(c.tile));
   for(const u of units) DRAW[u.kind](ctx,u,T,scaleAt(...posOf(u)));
   if(b.preview) previewOverlay(ctx,b.preview,T);
-  // the boss's health across the top, with its two evolutions marked
-  const boss=b.enemies.find(e=>e.def.bossId&&e.hp>0);
-  if(boss){ const w=Math.min(View.w*.72,560), x0=(View.w-w)/2, y0=10, h=12;
+  if(typeof extraDraw==='function') extraDraw(ctx,T);
+  // the boss's health across the top, with its two evolutions marked (a miniboss: its enrage at half)
+  const boss=b.enemies.find(e=>e.def.bossId&&e.hp>0)||b.enemies.find(e=>e.def.mini&&e.hp>0);
+  if(boss){ const w=Math.min(View.w*.72,560), x0=(View.w-w)/2, y0=10, h=12, mini=!boss.def.bossId;
     ctx.fillStyle='rgba(0,0,0,.75)'; ctx.fillRect(x0-3,y0-3,w+6,h+6); ctx.fillStyle='#2a0e12'; ctx.fillRect(x0,y0,w,h);
-    ctx.fillStyle=boss.guardT>0?'#e6f4ff':'#ff5d6c'; ctx.fillRect(x0,y0,w*boss.hp/boss.maxHp,h);
-    ctx.fillStyle='#000'; for(const f of [1/3,2/3]) ctx.fillRect(x0+w*f-1,y0,2,h);
+    ctx.fillStyle=boss.guardT>0?'#e6f4ff':mini?'#ff9a3a':'#ff5d6c'; ctx.fillRect(x0,y0,w*boss.hp/boss.maxHp,h);
+    ctx.fillStyle='#000'; for(const f of mini?[1/2]:[1/3,2/3]) ctx.fillRect(x0+w*f-1,y0,2,h);
     ctx.font='600 '+Math.round(Math.max(13,S*.3))+'px "Pixelify Sans",system-ui,sans-serif'; ctx.textAlign='center'; ctx.fillStyle='#fff';
-    ctx.fillText(boss.name+'  '+['','I','II','III'][boss.phase||1]+(boss.under?'  · out of reach':''),View.w/2,y0+h+Math.max(15,S*.34)); }
+    ctx.fillText(boss.name+'  '+(mini?(boss.enraged?'· enraged':'· miniboss'):['','I','II','III'][boss.phase||1])+(boss.under?'  · out of reach':''),View.w/2,y0+h+Math.max(15,S*.34)); }
   // expected damage on each enemy the next card would hit (★ = its weak color)
   if(b.preview&&b.preview.card.pow){ const pv=b.preview; ctx.textAlign='center'; ctx.font='800 '+Math.round(S*.34)+'px "Pixelify Sans",system-ui,sans-serif';
     for(const t of new Set(pv.hit)){ const e=t.occ; if(!e||e.kind!=='enemy') continue; const [x,y]=proj(posOf(e)[0],0,posOf(e)[1]), S=scaleAt(...posOf(e)); ctx.font='800 '+Math.round(S*.34)+'px "Pixelify Sans",system-ui,sans-serif';

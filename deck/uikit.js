@@ -153,6 +153,14 @@ const ICONS={
   bracer(I,a){ for(const ox of [1,12]){ I.poly([[ox+1,5],[ox+9,3],[ox+10,20],[ox,21]],C.leather); I.rect(ox,7,ox+9,8,C.steel); I.rect(ox,16,ox+10,17,C.steel); I.line(ox+2,6,ox+2,19,mix(C.leather,C.white,.2)); I.rect(ox+4,11,ox+6,13,a); I.set(ox+4,11,C.white); } },
   ring(I,a){ I.ring(12,15,8,7,2.5,C.gold,0,360); I.ring(12,15,8,7,1,C.gold2,20,160); I.poly([[12,2],[16,6],[12,10],[8,6]],a); I.set(11,4,C.white); I.set(10,6,light(a)); I.set(13,8,dark(a)); I.set(6,13,light(C.gold)); },
 };
+// the dungeon's things: keys, potions, a smoke bomb, gems (materials) and a map
+Object.assign(ICONS,{
+  key(I,a){ const d=dark(a,.45); I.ellipse(7,8,5,5,a); I.ellipse(7,8,2,2,C.k); I.rect(11,7,21,9,a); I.rect(17,10,18,13,a); I.rect(20,10,21,12,a); I.line(11,9,21,9,d); I.set(5,5,light(a)); },
+  potion(I,a){ I.rect(10,2,13,6,C.paper2); I.rect(9,1,14,2,C.wood); I.ellipse(11.5,15,8,7,a); I.ellipse(11.5,17,7,4,dark(a,.3)); I.set(8,12,C.white); I.set(9,11,C.white); },
+  smoke(I,a){ I.ellipse(11.5,15,7,7,STONE[3]); I.ellipse(11,14,6,6,STONE[5]); I.line(15,7,18,3,C.wood,1); I.set(19,2,FIRE[4]); I.set(18,1,FIRE[3]); I.set(9,11,STONE[7]); },
+  gem(I,a){ I.poly([[11.5,2],[20,10],[11.5,22],[3,10]],a); I.poly([[11.5,2],[20,10],[11.5,10]],light(a)); I.poly([[3,10],[11.5,10],[11.5,22]],dark(a,.35)); I.set(9,6,C.white); },
+  map(I,a){ I.poly([[2,4],[8,2],[15,4],[21,2],[21,19],[15,21],[8,19],[2,21]],C.paper); I.line(8,2,8,19,C.paper2); I.line(15,4,15,21,C.paper2); I.line(4,15,10,10,FIRE[2]); I.line(10,10,13,13,FIRE[2]); I.line(13,13,19,7,FIRE[2]); I.rect(17,6,19,8,C.k); },
+});
 function icon(name,accent){ const key=name+'|'+(accent||''); if(ICON[key]) return ICON[key];
   const I=Img(24,24); (ICONS[name]||ICONS.coin)(I,accent?hx(accent):C.blue); I.outline(); return ICON[key]=I.url(); }
 // which picture a piece of gear gets
@@ -334,5 +342,5 @@ function install(){ if(typeof document==='undefined') return; const s=document.d
 }
 if(typeof document!=='undefined'){ if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',install); else install(); }
 
-Object.assign(root,{PX,cardFrame,uiIcon,gearIcon,gearIconName,drawCampScene,drawDepthMap,SCENE_W,SCENE_H});
+Object.assign(root,{PX,cardFrame,uiIcon,uiIconURL:icon,gearIcon,gearIconName,drawCampScene,drawDepthMap,SCENE_W,SCENE_H});
 })(typeof window!=='undefined'?window:globalThis);

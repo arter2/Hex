@@ -1,0 +1,17 @@
+<!doctype html><meta charset="utf-8"><body><script src="three.min.js"></script><script>
+const T=THREE;
+// light fixed to the camera (upper left, mostly frontal); front faces at yaw 0 come out at exactly the source colour
+const L=new T.Vector3(-0.4,0.5,1).normalize(), AMB=0.55, K=(1-AMB)/L.z;
+window.render=function(data,yaw,pitch,bob){
+  const {W,H,vox}=data, CW=W+40, CH=H+12;
+  const R=new T.WebGLRenderer({antialias:false,preserveDrawingBuffer:true,alpha:true}); R.setSize(CW,CH); R.setPixelRatio(1);
+  const sc=new T.Scene(), cam=new T.OrthographicCamera(-CW/2,CW/2,CH/2,-CH/2,-200,200); cam.position.z=100;
+  sc.add(new T.AmbientLight(0xffffff,AMB)); const d=new T.DirectionalLight(0xffffff,K); d.position.copy(L); sc.add(d); sc.add(d.target);
+  const g=new T.Group(), geo=new T.BoxGeometry(1,1,1), mats={};
+  for(const [x,y,zb,zf,r,gg,b] of vox){ const k=r+','+gg+','+b;
+    const m=mats[k]||(mats[k]=new T.MeshLambertMaterial({color:new T.Color(r/255,gg/255,b/255)}));
+    const len=zf+zb+1, mesh=new T.Mesh(geo,m); mesh.scale.z=len;
+    mesh.position.set(x+0.5-W/2, y+0.5-H/2+(bob||0), (zf-zb)/2); g.add(mesh); }
+  g.rotation.set(pitch||0,yaw,0); sc.add(g); R.render(sc,cam);
+  return R.domElement.toDataURL(); };
+</script>

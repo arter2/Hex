@@ -5,7 +5,7 @@ import numpy as np, json, sys, colorsys
 from scipy import ndimage as nd
 SPEC={
  'ranger':{'rules':[('quiver',[3,0,16,16]),('head',[18,0,36,14]),('armL',[8,19,16,45]),('armR',[31,19,35,44]),
-   ('armL',[0,43,12,52]),('armR',[33,43,47,57]),('torso',[0,44,47,52],'green'),('legL',[0,44,23,67]),('legR',[24,44,47,67])],
+   ('armL',[0,43,12,52]),('armL',[0,52,5,56]),('armR',[33,43,47,57]),('torso',[0,44,47,52],'green'),('legL',[0,44,23,67]),('legR',[24,44,47,67])],
   'piv':{'head':[26,15],'armL':[13,21],'armR':[32,21],'legL':[20,46],'legR':[28,46],'quiver':[13,14]},
   'z':{'quiver':-7,'armL':0,'armR':0},
   'fill':{'torso':[[14,15,33,47]],'legL':[[16,42,24,50]],'legR':[[24,42,32,50]]}},

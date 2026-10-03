@@ -31,3 +31,22 @@ window.renderParts=function(data,yaw,pose,bob){
     root.add(g); }
   root.position.y=bob||0; root.rotation.y=yaw; sc.add(root); R.render(sc,cam); return R.domElement.toDataURL(); };
 </script>
+<script>
+// model version: each column is a box whose front face shows the reference pixel and whose
+// side / top / back faces show the row's material colour
+window.renderModel=function(data,yaw,pose,bob){
+  const {W,H,parts,piv}=data, CW=W+40, CH=H+12;
+  const R=new T.WebGLRenderer({antialias:false,preserveDrawingBuffer:true,alpha:true}); R.setSize(CW,CH); R.setPixelRatio(1);
+  const sc=new T.Scene(), cam=new T.OrthographicCamera(-CW/2,CW/2,CH/2,-CH/2,-200,200); cam.position.z=100;
+  sc.add(new T.AmbientLight(0xffffff,AMB)); const d=new T.DirectionalLight(0xffffff,K); d.position.copy(L); sc.add(d); sc.add(d.target);
+  const root=new T.Group(), geo=new T.BoxGeometry(1,1,1), mats={};
+  const M=c=>{ const k=c.join(','); return mats[k]||(mats[k]=new T.MeshLambertMaterial({color:new T.Color(c[0]/255,c[1]/255,c[2]/255)})); };
+  for(const p in parts){ const pv=piv[p]||[W/2,H/2], px=pv[0]+0.5-W/2, py=pv[1]+0.5-H/2;
+    const g=new T.Group(); g.position.set(px,py,0); const r=(pose&&pose[p])||[0,0,0];
+    if(r.length===4) g.setRotationFromAxisAngle(new T.Vector3(r[0],r[1],r[2]).normalize(),r[3]); else g.rotation.set(r[0],r[1],r[2]);
+    for(const [x,y,z0,z1,f,l,rt,md] of parts[p]){
+      const mesh=new T.Mesh(geo,[M(rt),M(l),M(md),M(md),M(f),M(md)]); mesh.scale.z=z1-z0;
+      mesh.position.set(x+0.5-W/2-px,y+0.5-H/2-py,(z0+z1)/2); g.add(mesh); }
+    root.add(g); }
+  root.position.y=bob||0; root.rotation.y=yaw; sc.add(root); R.render(sc,cam); return R.domElement.toDataURL(); };
+</script>

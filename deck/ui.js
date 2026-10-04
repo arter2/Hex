@@ -780,15 +780,14 @@ function openMenu(){
   const has=!!save;
   if(has){ if(pickDepth==null) pickDepth=save.deepest; pickDepth=Math.min(Math.max(1,pickDepth),save.deepest); }
   else pickDepth=1;
-  $('#mmContinue').style.display=has?'':'none';
-  $('#mmSave').innerHTML=has?'<i class="mmthumb"></i><div class="mmdeep"><span>Deepest: depth <b>'+save.deepest+'</b></span><small>'+esc(areaOf(save.deepest).name)+'</small></div><div class="mmgold"><span class="goldtxt">'+uiIcon('coin',20)+save.gold+'</span><small>'+ownedUnique(save)+' cards</small></div>'
-    :'<i class="mmthumb"></i><div class="mmdeep"><small>No save yet. Start a new game to pick your first deck.</small></div>';
+  $('#mmContinue').disabled=!has;
+  $('#mmSave').innerHTML=has?'<span class="mmdeep">Deepest: depth <b>'+save.deepest+'</b></span><span class="mmname">'+esc(areaOf(save.deepest).name)+'</span><span class="mmgold">'+uiIcon('coin',20)+save.gold+'</span><span class="mmcards">'+ownedUnique(save)+' cards</span>'
+    :'<span class="mmdeep">No save yet.</span><span class="mmname">Start a new game.</span>';
   $('#mmDepth').textContent=pickDepth; $('#mmArea').textContent=areaLabel(pickDepth); $('#mmArea').style.color=areaOf(pickDepth).glow;
   $('#mmDown').disabled=!has||pickDepth<=1; $('#mmUp').disabled=!has||pickDepth>=save.deepest;
   const v=has?validateDeck(activeDeck().list,CARDS,save.owned):{ok:false};
   $('#mmExplore').disabled=$('#mmBattle').disabled=!has||!v.ok;
   $('#mmWarn').textContent=!has?'':v.ok?'':'Your deck is not ready ('+(v.errors[0]||'invalid')+'). Fix it in the deck builder at camp.';
-  $('#mmNew').classList.toggle('big',!has);
   show('scrMenu');
 }
 $('#mmDown').onclick=()=>{ pickDepth--; openMenu(); };

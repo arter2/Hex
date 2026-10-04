@@ -635,7 +635,7 @@ function xSeesCell(g,c,sn){ const dx=xw(c)-g.x, dz=xz(c)-g.z, d=Math.hypot(dx,dz
     if(g.state!=='chase'&&d>XFOV.near*sn){ let a=Math.atan2(dz,dx)-(g.head||0); a=Math.atan2(Math.sin(a),Math.cos(a)); if(Math.abs(a)>XFOV.half) return false; } }
   return c===g.cell||xLos(g.cell,c); }
 // the zones, painted on a canvas laid over the floor: a faint fill and a dotted edge per enemy
-const XFOV_PX=12;
+const XFOV_PX=24;
 function xFovMesh(grp){ const span=XN*XCS, cv=document.createElement('canvas'); cv.width=cv.height=XN*XFOV_PX;
   const tex=new THREE.CanvasTexture(cv); tex.magFilter=THREE.LinearFilter; tex.minFilter=THREE.LinearFilter;
   const m=new THREE.Mesh(new THREE.PlaneGeometry(span,span),new THREE.MeshBasicMaterial({map:tex,transparent:true,depthWrite:false}));
@@ -651,7 +651,7 @@ function xFov(dt){ const F=EX.fov; if(!F) return; F.t-=dt; if(F.t>0) return; F.t
     const col=g.state==='chase'?'255,77,94':g.state==='sleep'?'127,180,255':'255,196,64';
     x.fillStyle=`rgba(${col},.1)`; for(const c of zone) x.fillRect(xcx(c)*P,xcy(c)*P,P,P);
     // the dotted edge: every side of a zone cell that borders a cell outside the zone
-    x.strokeStyle=`rgba(${col},.45)`; x.lineWidth=1.5; x.setLineDash([2,4]); x.beginPath();
+    x.strokeStyle=`rgba(${col},.5)`; x.lineWidth=1; x.setLineDash([3,6]); x.beginPath();
     for(const c of zone){ const X=xcx(c)*P, Y=xcy(c)*P;
       if(!zone.has(c-XN)){ x.moveTo(X,Y); x.lineTo(X+P,Y); } if(!zone.has(c+XN)){ x.moveTo(X,Y+P); x.lineTo(X+P,Y+P); }
       if(!zone.has(c-1)||xcx(c)===0){ x.moveTo(X,Y); x.lineTo(X,Y+P); } if(!zone.has(c+1)||xcx(c)===XN-1){ x.moveTo(X+P,Y); x.lineTo(X+P,Y+P); } }

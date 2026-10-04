@@ -1,213 +1,355 @@
 # Hexmancers boss prompts
 
-There's one prompt per boss. Send **Prompt 0** once at the start of the conversation, then send
-one boss prompt per message. Each boss gets its own sheet. If a sheet breaks a rule (labels,
-uneven cells, a figure crossing a cell edge, a soft background), reply:
-"Redo this sheet. Follow the sheet rules exactly."
+## What went wrong last time
 
-Why the rules are what they are:
-- **Size.** The game draws a boss about 1.5× the size of a hero. A hero figure on your hero
-  sheets is about 90 px tall, so a boss figure needs to be about 200 px tall. That gives it at
-  least the same pixel detail when it's scaled up.
-- **Cells.** I cut every frame by its cell. Equal cells with a shared ground line keep the boss
-  from jumping between frames.
-- **Facing.** The battle camera sits behind the player and looks at the enemy side, so bosses
-  face the viewer. The game flips them left or right toward the player.
-- **Background.** The flat green keys out cleanly, the same as on your hero sheets.
+The first Golem sheet broke the layout in five ways:
+- **Wrong figure counts.** The rows held 7, 6, 5 and 7 figures instead of 6 each.
+- **Frames spilled into neighbors.** The beam, the thrown rock and the smash dust ran into the
+  next figures.
+- **Uneven placement.** Figures were placed by eye, so no row lines up with a grid.
+- **Shadows.** It drew ground shadows.
+- **Poses out of order.** The poses didn't follow the cell list.
 
----
+Image models can't reliably count past about 6 or keep a long cell list in order. These prompts
+work around that:
+- **Six frames per sheet.** Each boss is split into **three sheets of 6 frames**
+  (3 columns × 2 rows).
+- **Drawn grid lines.** The grid is drawn as **magenta lines** so the model can see every
+  cell. I remove the lines when I cut the sheet.
+- **One sentence per cell.** Each cell is described in its own sentence, in reading order.
+- **Effects stay small.** Effects must fit inside their own cell.
 
-## Prompt 0: sheet rules (send first)
+## How to use
 
-> I'm making boss sprite sheets for **Hexmancers**, a fantasy card battler on a hex grid. Every
-> sheet follows these rules exactly. If a rule conflicts with making it look nice, follow the rule.
->
-> **Style.** Match the hero sheets I've been making: high-detail 16-bit pixel art in the style
-> of late-1990s arcade games, with bold readable silhouettes, a 1-pixel dark outline (a dark
-> version of the local color, not pure black), light from the upper left and 3–5 step color
-> ramps. Crisp square pixels: no blur, no soft glow, no gradients, no anti-aliasing into the
-> background. Glows and magic are drawn as solid pixel shapes.
->
-> **Canvas.** 1536 × 1024 pixels. Flat solid chroma green **#00FF00** everywhere, including
-> between figures. No text, labels, titles, numbers, borders, panels or frames of any kind.
->
-> **Grid.** An invisible grid of **6 columns × 4 rows**. Every cell is **256 × 256** px. One
-> frame per cell. Every frame stands on the same ground line, **8 px above the bottom of its
-> cell**. Nothing touches or crosses a cell edge: leave at least 6 px of green on every side.
->
-> **Size.** In the idle frames the boss's body is **200–220 px tall** (flying or floating bosses:
-> the body spans that much). It's the same size in every cell, so only the pose changes. Spell
-> effects stay inside the cell.
->
-> **View.** Front three-quarter view: the boss faces the viewer, turned slightly to **the
-> viewer's right**. It's the same view in every cell. No back views or side views.
->
-> **Consistency.** The same design, proportions, colors and props in every cell. No ground
-> shadows. No other characters in the cells unless the prompt asks for them.
->
-> **Reading order.** Cells are numbered left to right, top to bottom: row 1 is cells 1–6,
-> row 2 is cells 7–12, row 3 is cells 13–18, row 4 is cells 19–24.
->
-> Reply "Ready" and wait for the first boss.
+1. Start a **new chat**. Send **Prompt 0** and wait for "Ready".
+2. Send **one sheet prompt per message** (for example *Golem 1*, then *Golem 2*, then
+   *Golem 3*).
+3. **Check before you save.** Make sure there are exactly 6 figures, one in each box, with
+   nothing crossing a magenta line and no text. If any of that is wrong, reply:
+   **"Redo this sheet. Exactly 6 figures, one per cell, nothing crossing the magenta lines."**
+4. Save each sheet as a PNG at full size and upload all three together.
 
 ---
 
-## Shared layout (every boss uses it)
+## Prompt 0: rules (send first, once)
 
-| Row | Cells | What |
+> I'm making boss sprite sheets for **Hexmancers**, a pixel-art fantasy card battler. I'll send
+> one sheet at a time. Every sheet follows these rules exactly. If a rule conflicts with making
+> it look nice, follow the rule.
+>
+> **1. Canvas and grid.**
+> - The image is **1536 × 1024** pixels.
+> - Draw a grid of **3 columns × 2 rows = 6 cells** with straight **4-pixel solid magenta
+>   (#FF00FF) lines**: one around the outside edge, two vertical lines at x = 512 and x = 1024,
+>   and one horizontal line at y = 512.
+> - Every cell is the same 512 × 512 square.
+> - Inside every cell, the background is flat solid chroma green **#00FF00**.
+>
+> **2. Exactly one figure per cell, exactly 6 figures per sheet.**
+> - Never add extra poses and never leave a cell empty unless the sheet says so.
+> - **Count them before you finish.**
+>
+> **3. Nothing crosses a magenta line.**
+> - The figure **and all its effects** (beams, rocks, sparks, dust, flames) stay inside their
+>   own cell, at least 16 px away from every line.
+> - If an effect would be too long, make it shorter.
+> - Beams and thrown objects end before the cell edge.
+>
+> **4. Same size, same spot.**
+> - In every cell the boss is drawn at **the same scale**, and is **about 400 px tall** when
+>   standing.
+> - Its feet stand on the same ground line, **40 px above the bottom line of the cell**.
+> - It is centred left to right.
+> - Do not zoom in or out between cells. A crouch is shorter because of the pose, not because
+>   of the scale.
+>
+> **5. View.**
+> - Front three-quarter view, facing the viewer, turned slightly to the viewer's right.
+> - The same view in all 6 cells.
+>
+> **6. Clean background.**
+> - No ground shadows, no floor, no text, no labels, no numbers, no titles, and no other
+>   characters.
+>
+> **7. Style.**
+> - Crisp pixel art in a late-1990s arcade style.
+> - A 1-pixel dark outline (a dark version of the local color, not pure black).
+> - Light from the upper left, with 3–5 step color ramps.
+> - Square pixels, no blur, no soft glow, no gradients.
+> - Magic and glows are drawn as solid pixel shapes.
+>
+> **8. Consistency.** The same character design, colors and proportions in every cell. Only the
+> pose changes.
+>
+> Cells are read left to right, top row then bottom row: **cell 1, 2, 3** on top and
+> **cell 4, 5, 6** below.
+>
+> Reply "Ready" and wait.
+
+---
+
+## The three sheets every boss gets
+
+| Sheet | Cells 1–3 (top) | Cells 4–6 (bottom) |
 |---|---|---|
-| 1 | 1–4 | **Idle** loop, 4 frames: a clear breathing motion (rise 2–3 px, cape or flames shift) |
-| 1 | 5–6 | **Hurt**: recoil, then recover |
-| 2 | 7–9 | **Attack A**: wind-up, release, recover |
-| 2 | 10–12 | **Attack B**: wind-up, release, recover |
-| 3 | 13–15 | **Special**: the boss's signature move (named per boss) |
-| 3 | 16–18 | **Shot**: a plain ranged attack (raise, fire, recover); the projectile leaves the cell edge on the right |
-| 4 | 19 | **Phase change**: a roar or flare as it powers up |
-| 4 | 20–21 | **Enraged idle**, 2 frames: the phase-3 look, brighter, cracked and angrier |
-| 4 | 22–24 | **Death**: stagger, collapse, last frame mostly gone |
-
-The game has 3 phases. At ⅔ and ⅓ health the boss powers up (cell 19), and in phase 3 it uses
-the enraged look (cells 20–21).
+| **1: idle and hurt** | idle A, idle B, idle C | idle D, hurt, phase-change roar |
+| **2: attacks** | attack A wind-up, attack A hit, attack B wind-up | attack B throw/hit, shot, special |
+| **3: enraged and death** | enraged idle A, enraged idle B, special (second frame) | death 1, death 2, death 3 |
 
 ---
 
-## 1. Radiant Golem (light): Glowworm Hollows
+## 1. Radiant Golem (light)
 
-> **Sheet: Radiant Golem.** Follow the sheet rules and the shared layout.
->
-> **Design.** A towering golem of white marble and gold plates, broad and heavy, with a
-> glowing prism core in its chest and light shining from the seams between its plates. Short
-> thick legs, huge fists. The prism core is **pure white** in every cell (the game tints it to
-> show the color it's weak to).
->
-> - **Attack A (Quake):** raises both fists overhead, slams the ground, cracks of light run out
->   from its fists along the ground.
-> - **Attack B (Boulders):** tears a marble chunk from its shoulder and hurls it overhand.
-> - **Special (Prism turn), cells 13–15:** the core opens like a flower, flares, and closes;
->   its seams blaze.
-> - **Shot:** a beam of light from the core.
-> - **Enraged:** the plates crack wider, the seams blaze gold and white, and the core is
->   brighter.
-> - **Death:** the plates fall away, the core flickers out, and the body crumbles into a heap
->   of marble.
+**Design (repeat in every Golem sheet):** a towering golem of white marble and gold plates,
+broad and heavy, with short thick legs and huge fists. It has a glowing diamond-shaped prism
+core in its chest that is **pure white** in every cell, and light shines from the seams between
+its plates.
 
-## 2. Glacier Queen (frost): Frozen Deeps
+**Golem 1**
+> **Sheet: Radiant Golem 1.** Follow the rules. [Design above.]
+> - Cell 1: standing idle, fists low.
+> - Cell 2: idle, chest raised 4 px, fists slightly open.
+> - Cell 3: idle, same as cell 1 but the seams glow brighter.
+> - Cell 4: idle, chest lowered, fists closed.
+> - Cell 5: hurt, recoiling backward with chips of marble flying off, still inside the cell.
+> - Cell 6: phase-change roar, arms spread wide, the core flaring and seams blazing.
 
-> **Sheet: Glacier Queen.** Follow the sheet rules and the shared layout.
->
-> **Design.** A regal ice sorceress queen, tall and slender, with a tall crystal crown, a gown
-> of layered ice shards, a cape of frost mist drawn as solid pixel shapes, and an ice scepter
-> in her right hand. Pale blue skin, white hair and a proud, cold face. Her gown spreads wide
-> at the hem.
->
-> - **Attack A (Ice Slam):** raises the scepter high, then drives it down; ice spikes burst up
->   at its tip.
-> - **Attack B (Ice Wall):** sweeps her left hand across, and a low wall of ice blocks rises
->   in front of her.
-> - **Special (Frozen Glare), cells 13–15:** her eyes and crown blaze white, and a ring of
->   frost spreads from her feet.
-> - **Shot:** an ice shard shot from the scepter.
-> - **Enraged (Blizzard):** her crown is taller and jagged, snow swirls round her as solid
->   flakes, and her gown is cracked with blue light.
-> - **Death:** she shatters from the crown down, ending in a pile of ice shards and the fallen
->   crown.
+**Golem 2**
+> **Sheet: Radiant Golem 2.** Follow the rules. [Design above.]
+> - Cell 1: both fists raised high overhead, ready to slam.
+> - Cell 2: both fists slammed into the ground, short cracks of light around its fists, all
+>   inside the cell.
+> - Cell 3: tearing a marble boulder off its shoulder, the boulder held above its head.
+> - Cell 4: throwing the boulder forward, the boulder just leaving its hand and still inside the
+>   cell.
+> - Cell 5: firing a short beam of light from the core; the beam is at most 150 px long.
+> - Cell 6: the core opening like a flower of gold plates, glowing.
 
-## 3. Thunder Roc (storm): Storm Vault
-
-> **Sheet: Thunder Roc.** Follow the sheet rules and the shared layout. The Roc is drawn
-> **in flight in every cell, wings spread**. Its body and wings span about 220 px wide and
-> 200 px tall, and its talons are at the ground line.
->
-> **Design.** A giant eagle-like bird with storm-blue feathers, white-tipped wing edges,
-> lightning crackling along the wing edges, a golden beak and talons, and yellow eyes.
->
-> - **Attack A (Lightning Rods):** throws its head back and screeches, then three small bolts
->   leave its wing tips.
-> - **Attack B (Dive):** wings fold, it plunges with its talons forward, and recovers.
-> - **Special (Takes to the sky), cells 13–15:** a huge wingbeat lifts it, then it rises until
->   only its talons and tail show at the top of the cell, then it's gone (an empty cell is
->   fine for cell 15).
-> - **Shot:** a lightning bolt from the beak.
-> - **Enraged (Storm chains):** lightning wraps its whole body and its eyes blaze white.
-> - **Death:** it falls from the sky, wings crumpled, and lands in a heap of feathers.
-
-## 4. Magma Wyrm (fire): Ember Rifts
-
-> **Sheet: Magma Wyrm.** Follow the sheet rules and the shared layout. The Wyrm rears up
-> from coils on the ground: the coils sit on the ground line, and the raised neck and head
-> reach about 210 px up.
->
-> **Design.** A coiled serpent-dragon of black cooling rock with glowing orange lava cracks,
-> a horned head and molten drool. No wings or legs.
->
-> - **Attack A (Crack):** slams its head into the ground, and lava cracks spread from the
->   impact.
-> - **Attack B (Fire Bomb):** rears back, then spits a ball of magma in an arc.
-> - **Special (Burrow and erupt), cells 13–15:** sinks into a molten pool, is gone with only
->   the pool bubbling, then bursts up with lava flying.
-> - **Shot:** a short gout of flame from its jaws.
-> - **Enraged (Molten core):** most of the rock has melted away, so it glows bright orange
->   and yellow from inside.
-> - **Death:** the lava dims to dark rock, and it slumps and crumbles into a cooling heap.
-
-## 5. Elder Treant (verdant): Gilded Ruins
-
-> **Sheet: Elder Treant.** Follow the sheet rules and the shared layout. The Treant **never
-> walks**: its roots stay planted in every cell, and only the trunk, branches and face move.
->
-> **Design.** An ancient oak giant with a bark face, a moss beard, branch arms, root feet,
-> glowing green eyes, and small birds' nests in its leafy crown.
->
-> - **Attack A (Vines):** plunges one branch arm into the ground, and vines erupt from the
->   ground in front of it.
-> - **Attack B (Seed shot):** swings a branch overhand and flings a glowing seed.
-> - **Special (The grove wakes), cells 13–15:** raises both branch arms, its crown blooms,
->   and green light pours from its eyes and mouth.
-> - **Shot:** a thorn volley from its open hand.
-> - **Enraged:** autumn colors, glowing sap running from its cracks, and its eyes blazing.
-> - **Death:** it splits down the middle, leaves fall, and it ends as a dead stump.
->
-> **Helpers on the same sheet are not needed.** Make Root Node and Sapling on the helpers
-> sheet below.
-
-## 6. Hollow King (shadow): The Abyss
-
-> **Sheet: Hollow King.** Follow the sheet rules and the shared layout. The King **floats**:
-> the hem of the robe hovers about 10 px above the ground line in every cell.
->
-> **Design.** A crowned, empty suit of royal robes with no body inside, only a black void with
-> two violet eyes. A tattered purple cape, gloves with nothing in them, and a broken iron crown
-> floating above the hood.
->
-> - **Attack A (Blink):** folds into its cape, then becomes a column of violet smoke, then
->   reappears.
-> - **Attack B (Steal):** reaches forward with a long shadowy hand that grabs at the air.
-> - **Special (Splits into shades), cells 13–15:** the robe tears, two small shadow copies
->   peel off its sides, and it stands with them.
-> - **Shot:** a violet orb from its open glove.
-> - **Enraged:** the void spills out as smoke, its eyes blaze, and the crown is cracked in two.
-> - **Death:** the robe collapses empty to the floor and the crown falls onto it.
+**Golem 3**
+> **Sheet: Radiant Golem 3.** Follow the rules. [Design above.] Cells 1–2 show the enraged
+> golem: wider cracks, seams blazing gold and white, a brighter core and solid flame shapes
+> along its shoulders.
+> - Cell 1: enraged idle, standing.
+> - Cell 2: enraged idle, chest raised 4 px.
+> - Cell 3: the core flower fully open and blazing (normal colors).
+> - Cell 4: staggering, plates falling off.
+> - Cell 5: collapsing onto its knees into a heap of plates.
+> - Cell 6: a pile of marble and gold rubble with a faint core glow.
 
 ---
 
-## 7. Boss helpers (one sheet)
+## 2. Glacier Queen (frost)
 
-> **Sheet: boss helpers.** Follow the sheet rules, but this sheet uses a grid of **6 columns
-> × 3 rows** of 256 px cells on a **1536 × 768** canvas. Each row is one helper. Columns: 1–2
-> idle, 3–4 attack (wind-up, release), 5 hurt, 6 death. Helpers stand on the same ground line
-> as the bosses, at the heights given.
->
-> 1. **Root Node** (verdant, ~110 px tall): a knot of thick roots shaped like a small shrine,
->    with a glowing green seed in the middle. It never moves; the idle frames pulse the seed.
->    For its attack, a beam of green light rises from the seed (it heals the Treant).
-> 2. **Sapling** (verdant, ~100 px tall): a knee-high walking tree-child with twig arms, a
->    leafy crown and big curious eyes. It throws a pebble for its attack.
-> 3. **Hollow Shade** (shadow, ~120 px tall): a small hooded void-wraith with one violet eye
->    and a sliver of the Hollow King's crown. For its attack it blinks (fades to smoke, then
->    reappears).
+**Design:** a regal, tall, slender ice sorceress queen with a tall crystal crown, a gown of
+layered ice shards spreading wide at the hem, a cape of frost mist drawn as solid shapes, and an
+ice scepter in her right hand. Pale blue skin, white hair and a proud, cold face.
+
+**Queen 1**
+> **Sheet: Glacier Queen 1.** Follow the rules. [Design.]
+> - Cell 1: standing idle, scepter upright.
+> - Cell 2: idle, the cape drifting left.
+> - Cell 3: idle, the cape drifting right.
+> - Cell 4: idle, the scepter tilted slightly forward.
+> - Cell 5: hurt, recoiling, shards chipping off her gown.
+> - Cell 6: phase-change, arms raised and the crown blazing white.
+
+**Queen 2**
+> **Sheet: Glacier Queen 2.** Follow the rules. [Design.]
+> - Cell 1: the scepter raised high in both hands.
+> - Cell 2: the scepter driven down, with short ice spikes bursting up at its tip.
+> - Cell 3: her left hand drawn back across her body.
+> - Cell 4: her left hand swept out, a low wall of three ice blocks rising in front of her.
+> - Cell 5: shooting a short ice shard from the scepter, the shard still inside the cell.
+> - Cell 6: frozen glare, her eyes and crown glowing white and a ring of frost at her feet.
+
+**Queen 3**
+> **Sheet: Glacier Queen 3.** Follow the rules. [Design.] Cells 1–2 show the enraged queen
+> (blizzard): a taller jagged crown, solid snowflakes around her and her gown cracked with blue
+> light.
+> - Cell 1: enraged idle.
+> - Cell 2: enraged idle, the snowflakes shifted.
+> - Cell 3: frozen glare, stronger (normal colors).
+> - Cell 4: cracking from the crown down.
+> - Cell 5: half shattered, falling.
+> - Cell 6: a pile of ice shards with the fallen crown on top.
 
 ---
 
-### After each sheet
+## 3. Thunder Roc (storm)
 
-Save it as a PNG at full size (1536 × 1024, helpers 1536 × 768) and upload it here.
+**Design:** a giant eagle-like bird with storm-blue feathers, white-tipped wings with lightning
+crackling along the edges, a golden beak and talons, and yellow eyes. It is **in flight in every
+cell**: wings spread, body about 380 px across, talons near the ground line.
+
+**Roc 1**
+> **Sheet: Thunder Roc 1.** Follow the rules. [Design.]
+> - Cell 1: wings up, hovering.
+> - Cell 2: wings level.
+> - Cell 3: wings down.
+> - Cell 4: wings level, head turned.
+> - Cell 5: hurt, recoiling, feathers flying.
+> - Cell 6: phase-change screech, head back and lightning all over its body.
+
+**Roc 2**
+> **Sheet: Thunder Roc 2.** Follow the rules. [Design.]
+> - Cell 1: head thrown back, screeching.
+> - Cell 2: three small lightning bolts leaving its wing tips, all inside the cell.
+> - Cell 3: wings folding, starting a dive.
+> - Cell 4: diving, talons forward.
+> - Cell 5: a short lightning bolt from its beak.
+> - Cell 6: a huge wingbeat, rising.
+
+**Roc 3**
+> **Sheet: Thunder Roc 3.** Follow the rules. [Design.] Cells 1–2 show the enraged Roc:
+> lightning wrapped round its whole body and eyes blazing white.
+> - Cell 1: enraged, wings up.
+> - Cell 2: enraged, wings down.
+> - Cell 3: rising high, only its talons and tail low in the cell, its body near the top line
+>   but not crossing it.
+> - Cell 4: falling, wings crumpled.
+> - Cell 5: hitting the ground.
+> - Cell 6: a heap of feathers on the ground.
+
+---
+
+## 4. Magma Wyrm (fire)
+
+**Design:** a serpent-dragon of black cooling rock with glowing orange lava cracks, a horned
+head, molten drool, and no wings or legs. Its coils rest on the ground line, and its neck rears
+up so the head is near the top of the figure's 400 px height.
+
+**Wyrm 1**
+> **Sheet: Magma Wyrm 1.** Follow the rules. [Design.]
+> - Cell 1: reared up, idle.
+> - Cell 2: idle, the head swayed left.
+> - Cell 3: idle, the head swayed right.
+> - Cell 4: idle, jaws open with drool.
+> - Cell 5: hurt, recoiling, chips of rock flying.
+> - Cell 6: phase-change roar, its cracks blazing.
+
+**Wyrm 2**
+> **Sheet: Magma Wyrm 2.** Follow the rules. [Design.]
+> - Cell 1: the head raised high, ready to strike.
+> - Cell 2: the head slammed into the ground, with short lava cracks.
+> - Cell 3: reared back, a magma ball glowing in its jaws.
+> - Cell 4: spitting the magma ball, the ball still inside the cell.
+> - Cell 5: a short gout of flame from its jaws, at most 150 px long.
+> - Cell 6: sinking into a molten pool, half under.
+
+**Wyrm 3**
+> **Sheet: Magma Wyrm 3.** Follow the rules. [Design.] Cells 1–2 show the enraged Wyrm
+> (molten core): mostly melted, glowing bright orange and yellow from inside.
+> - Cell 1: enraged idle.
+> - Cell 2: enraged idle, the head shifted.
+> - Cell 3: bursting up out of a molten pool, with lava drops round it inside the cell.
+> - Cell 4: the lava dimming, slumping.
+> - Cell 5: collapsed in coils.
+> - Cell 6: a cooled heap of dark rock.
+
+---
+
+## 5. Elder Treant (verdant)
+
+**Design:** an ancient oak giant with a bark face, a moss beard, branch arms, root feet,
+glowing green eyes, and small birds' nests in its leafy crown. **Its roots never move**: they
+are planted in the same place in every cell.
+
+**Treant 1**
+> **Sheet: Elder Treant 1.** Follow the rules. [Design.]
+> - Cell 1: idle.
+> - Cell 2: idle, the crown swaying left.
+> - Cell 3: idle, the crown swaying right.
+> - Cell 4: idle, the arms lowered.
+> - Cell 5: hurt, bark chips flying.
+> - Cell 6: phase-change, both arms raised, the eyes blazing.
+
+**Treant 2**
+> **Sheet: Elder Treant 2.** Follow the rules. [Design.]
+> - Cell 1: one branch arm raised.
+> - Cell 2: the arm plunged into the ground, with short vines bursting up in front.
+> - Cell 3: a branch swung back, holding a glowing seed.
+> - Cell 4: flinging the seed, the seed still inside the cell.
+> - Cell 5: a short volley of thorns from its open hand.
+> - Cell 6: its crown blooming, with green light from its eyes and mouth.
+
+**Treant 3**
+> **Sheet: Elder Treant 3.** Follow the rules. [Design.] Cells 1–2 show the enraged Treant:
+> autumn colors, glowing sap in the cracks and blazing eyes.
+> - Cell 1: enraged idle.
+> - Cell 2: enraged idle, the crown shifted.
+> - Cell 3: the crown in full bloom (normal colors).
+> - Cell 4: splitting down the middle.
+> - Cell 5: falling apart, leaves dropping.
+> - Cell 6: a dead stump.
+
+---
+
+## 6. Hollow King (shadow)
+
+**Design:** a crowned, empty suit of royal robes with no body inside, only a black void with
+two violet eyes. It has a tattered purple cape, empty gloves, and a broken iron crown floating
+above the hood. **It floats**: the hem hovers 20 px above the ground line in every cell.
+
+**King 1**
+> **Sheet: Hollow King 1.** Follow the rules. [Design.]
+> - Cell 1: floating idle.
+> - Cell 2: idle, 6 px higher.
+> - Cell 3: idle, the cape flowing left.
+> - Cell 4: idle, the cape flowing right.
+> - Cell 5: hurt, recoiling, the robe torn.
+> - Cell 6: phase-change, arms spread and the eyes blazing.
+
+**King 2**
+> **Sheet: Hollow King 2.** Follow the rules. [Design.]
+> - Cell 1: folding into its cape.
+> - Cell 2: a column of violet smoke where it was.
+> - Cell 3: reaching forward with a long shadow hand.
+> - Cell 4: the shadow hand closing on the air.
+> - Cell 5: firing a violet orb from its glove, the orb still inside the cell.
+> - Cell 6: the robe tearing, two small shadow copies peeling off its sides.
+
+**King 3**
+> **Sheet: Hollow King 3.** Follow the rules. [Design.] Cells 1–2 show the enraged King: the
+> void spilling out as smoke, the eyes blazing and the crown cracked in two.
+> - Cell 1: enraged idle.
+> - Cell 2: enraged idle, 6 px higher.
+> - Cell 3: standing with the two shadow copies beside it.
+> - Cell 4: the robe sagging.
+> - Cell 5: the robe collapsing.
+> - Cell 6: an empty robe on the floor with the crown fallen on it.
+
+---
+
+## 7. Boss helpers (one sheet each)
+
+These are smaller figures. Use the same rules, but draw each helper **about 220 px tall**, still
+standing 40 px above the bottom line.
+
+**Root Node**
+> **Sheet: Root Node.** Follow the rules, but the figure is about 220 px tall. A knot of thick
+> roots shaped like a small shrine, with a glowing green seed in the middle. It never moves.
+> - Cells 1–3: idle, the seed dim, medium and bright.
+> - Cell 4: a beam of green light rising from the seed, inside the cell.
+> - Cell 5: hurt, splinters flying.
+> - Cell 6: broken roots, the seed dark.
+
+**Sapling**
+> **Sheet: Sapling.** Follow the rules, but the figure is about 200 px tall. A knee-high
+> walking tree-child with twig arms, a leafy crown and big curious eyes.
+> - Cell 1: idle.
+> - Cell 2: idle with the leaves swaying.
+> - Cell 3: arm back with a pebble.
+> - Cell 4: throwing the pebble.
+> - Cell 5: hurt.
+> - Cell 6: a fallen twig pile.
+
+**Hollow Shade**
+> **Sheet: Hollow Shade.** Follow the rules, but the figure is about 240 px tall and floats
+> 20 px above the ground line. A small hooded void-wraith with one violet eye and a sliver of
+> the Hollow King's crown.
+> - Cell 1: idle.
+> - Cell 2: idle, 6 px higher.
+> - Cell 3: fading into smoke.
+> - Cell 4: reappearing from smoke.
+> - Cell 5: hurt.
+> - Cell 6: an empty hood on the floor.

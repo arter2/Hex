@@ -19,7 +19,7 @@ Painted hero sheets, keyed from green screen to transparent PNG by `deck/tools/k
 | `undead_m.png` | undead_m | Undead man | Skeleton |
 | `undead_f.png` | undead_f | Undead woman | |
 | `witch_f.png` | witch | Witch | Labeled sheet, 8 directions, hat and no-hat statics |
-| `necro_m.png` | necro | Necromancer man | |
+| `warlock.png` | witch_m | Warlock | |
 | `necro_f.png` | necro_f | Necromancer woman | |
 | `shaman_m.png` | shaman_m | Shaman man | |
 | `shaman_f.png` | shaman_f | Shaman woman | |
@@ -43,7 +43,7 @@ Painted hero sheets, keyed from green screen to transparent PNG by `deck/tools/k
 ## Still missing
 
 - **Dwarf** with hat: only the hatless sheets so far.
-- **Warlock** (witch_m): no sheet.
+- **Necromancer man** (necro): no sheet; the dark-haired man is the warlock.
 - **Hatless sets** (`frontBare`, `backBare`, `animBare`): done for the wizard and both dwarves;
   human_f and witch_f have only static no-hat poses; no hatless art for the other looks.
 - **Back-view action** (cast, walk, hurt from behind): the unlabeled sheets show the back only

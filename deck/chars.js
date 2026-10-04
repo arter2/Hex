@@ -6,6 +6,10 @@
 (function(root){
 
 const STAT_POINTS=12, STAT_MAX=18;
+// levels: experience from wins, secrets, traps and chests; every level brings LEVEL_POINTS more
+// points, and a stat can then grow past the creation cap up to STAT_CAP
+const LEVEL_POINTS=2, STAT_CAP=24;
+const xpNeed=level=>60+40*level;   // to go from this level to the next: 100, 140, 180...
 const STAT_KEYS=['str','dex','con','int','wis','cha','rch','cst'];
 // k: what the stat changes; per: the change for each point away from 10
 const STATS={
@@ -35,11 +39,14 @@ const RACE_KEYS=Object.keys(RACES);
 function newChar(race,body){ race=RACES[race]?race:'human'; body=body?1:0;
   return {race, body, look:RACES[race].looks[body], spent:Object.fromEntries(STAT_KEYS.map(k=>[k,0]))}; }
 const statOf=(ch,k)=>RACES[ch.race].base[k]+(ch.spent[k]||0);
-const pointsLeft=ch=>STAT_POINTS-STAT_KEYS.reduce((a,k)=>a+(ch.spent[k]||0),0);
+const pointsLeft=ch=>STAT_POINTS+(ch.earned||0)-STAT_KEYS.reduce((a,k)=>a+(ch.spent[k]||0),0);
+// points already confirmed (at creation, or at a level up) can't be taken back
+const lockChar=ch=>{ ch.lock=Object.assign({},ch.spent); return ch; };
+const statCap=ch=>ch.lock?STAT_CAP:STAT_MAX;
 // put a point in (+1) or take one back (-1); you can never go below your race's baseline
 function spendPoint(ch,k,d){ const s=ch.spent[k]||0;
-  if(d>0&&(pointsLeft(ch)<=0||statOf(ch,k)>=STAT_MAX)) return false;
-  if(d<0&&s<=0) return false;
+  if(d>0&&(pointsLeft(ch)<=0||statOf(ch,k)>=statCap(ch))) return false;
+  if(d<0&&s<=((ch.lock&&ch.lock[k])||0)) return false;
   ch.spent[k]=s+d; return true; }
 
 // what a character's stats do in play, as gear-style mods (gear.js adds them to your gear)
@@ -67,7 +74,19 @@ function statEffect(ch,k){ const v=statOf(ch,k)-10, S=STATS[k], pct=x=>(x>=0?'+'
   if(k==='cst') return pct(S.per*v)+' cast speed';
   return ''; }
 
-const API={STAT_POINTS,STAT_MAX,STAT_KEYS,STATS,RACES,RACE_KEYS,newChar,statOf,pointsLeft,spendPoint,statMods,statEffect};
+// a save from before characters gets an average human with its old look, and its 12 creation
+// points still to spend
+function ensureChar(save){ if(!save.char||!RACES[save.char.race]) save.char=lockChar(Object.assign(newChar('human',0),{look:save.look||'wizard'}));
+  save.level=save.level||1; save.xp=save.xp||0; return save.char; }
+// gain experience; returns how many levels it brought
+function gainXp(save,n){ const ch=ensureChar(save); n=Math.max(0,Math.round(n)); save.xp+=n; let up=0;
+  while(save.xp>=xpNeed(save.level)){ save.xp-=xpNeed(save.level); save.level++; up++; }
+  if(up){ ch.earned=(ch.earned||0)+up*LEVEL_POINTS; save.lvlNew=true; }
+  return up; }
+// how much a won fight is worth: every foe by depth, a miniboss double, a boss four times
+function fightXp(enemies,depth){ return enemies.reduce((a,e)=>a+(e.minion?3:8+4*depth)*(e.boss?4:e.mini?2:1),0); }
+
+const API={LEVEL_POINTS,STAT_CAP,xpNeed,lockChar,statCap,ensureChar,gainXp,fightXp,STAT_POINTS,STAT_MAX,STAT_KEYS,STATS,RACES,RACE_KEYS,newChar,statOf,pointsLeft,spendPoint,statMods,statEffect};
 Object.assign(root,API);
 if(typeof module!=='undefined') module.exports=API;
 })(typeof window!=='undefined'?window:globalThis);

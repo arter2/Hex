@@ -85,6 +85,7 @@
       <div id="campLog" class="panel log"></div>
       <div id="bossTrials" class="trials devonly"></div>
       <div class="wallet"><span id="campGold"></span><span id="campColl"></span></div>
+      <button id="campLevel" class="xpbar"></button>
     </div>
   </section>
 
@@ -160,7 +161,7 @@
     <div class="x-vignette"></div>
     <div id="xTop">
       <div class="meter big hpmeter"><i id="xHpBar"></i><span id="xHpTxt"></span></div>
-      <div class="info"><span id="xDepth"></span><span id="xGold" class="goldtxt"></span></div>
+      <div class="info"><span id="xDepth"></span><span id="xLv" class="xplv"></span><span id="xGold" class="goldtxt"></span></div>
       <button id="xMenu" class="btn ghost sq small" aria-label="Pause">⋯</button>
     </div>
     <canvas id="xMini"></canvas>
@@ -231,6 +232,16 @@
         <button id="mFull" class="btn ghost fullBtn">Full screen</button>
         <button id="mLeave" class="btn ghost"></button>
       </div>
+    </div>
+  </div>
+  <!-- level up: spend the new stat points on the same dials as at character creation -->
+  <div id="lvlUp" class="overlay">
+    <div class="panel lvl">
+      <h2 id="lvTitle">Level up!</h2>
+      <p id="lvSub" class="hint center"></p>
+      <div class="ccpts"><span>Points to spend</span><b id="lvPts">2</b></div>
+      <div id="lvStats" class="ccstats"></div>
+      <div class="row2"><button id="lvLater" class="btn ghost">Later</button><button id="lvDone" class="btn">Done</button></div>
     </div>
   </div>
   <div id="reveal" class="overlay">

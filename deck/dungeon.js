@@ -114,7 +114,7 @@ function rewardText(r){
   if(r.lore) return 'the tale "'+loreOf(r.lore).title+'"';
   return 'nothing';
 }
-function xGrant(r,why){
+function xGrant(r,why){ if(why) xXp(15+2*EX.depth,why.toLowerCase());
   const t=rewardText(r);
   if(r.gold){ save.gold+=r.gold; }
   if(r.gear){ const res=addLoot(save,r.gear,XR); if(res&&res.cursed) xLog(res.msg,'bad'); }
@@ -470,7 +470,7 @@ const PUZZLE_BUILD={
   trial(r){ const c=xi(r.cx,r.cy); if(!xSolidOK(c)) return null; xProp('trialaltar',c,{rule:xpick(['order','survive','switches'])}); return {}; },
 };
 // a puzzle is solved: something grinds open at its heart
-function xPuzzleSolved(){ const pz=EX.puzzle; if(!pz||pz.solved) return; pz.solved=true; const r=EX.rooms[pz.room];
+function xPuzzleSolved(){ const pz=EX.puzzle; if(!pz||pz.solved) return; pz.solved=true; xXp(30+3*EX.depth,'puzzle solved'); const r=EX.rooms[pz.room];
   xSfx('chime'); xSfx('grind'); xLog('Something clicks into place, and stone grinds open.','good'); tip('Puzzle solved!');
   const around=xRoomCells(r).filter(c=>!EX.taken.has(c)).sort((a,b)=>Math.hypot(xcx(a)-r.cx,xcy(a)-r.cy)-Math.hypot(xcx(b)-r.cx,xcy(b)-r.cy));
   if(around[0]!=null){ const ch=xChest(around[0],{rich:true,legend:XR()<.12}); if(pz.key) ch.key=pz.key; else if(XR()<.4) ch.key=XR()<.25&&EX.depth>=5?'gold':'silver'; xMeshChest(ch); }
@@ -1035,8 +1035,8 @@ function xDisarmAlt(){ if(!EX) return null; const pc=EX.pc;
   const door=xAdj4(pc).find(n=>{ const d=EX.doors.get(n); return d&&d.state==='locked'&&LOCKS[d.lock]&&LOCKS[d.lock].pick>0; });
   if(door!=null){ const d=EX.doors.get(door), L=LOCKS[d.lock];
     return {t:1.6, start:'You work a pin into the '+L.name+'…', run(){ if(d.state!=='locked') return;
-      if(XR()<L.pick) xUnlock(door,d,'Click. You pick the lock of the '+L.name+'.'); else { xLog('The pin slips with a loud scrape. Something heard that.','bad'); xSfx('click'); xMakeNoise(9); } }}; }
+      if(XR()<L.pick){ xUnlock(door,d,'Click. You pick the lock of the '+L.name+'.'); xXp(10+EX.depth,'lock picked'); } else { xLog('The pin slips with a loud scrape. Something heard that.','bad'); xSfx('click'); xMakeNoise(9); } }}; }
   const hz=EX.props.find(p=>!p.gone&&!p.jammed&&(p.kind==='blade'||p.kind==='jet')&&(p.cell===pc||xAdj4(pc).includes(p.cell)));
   if(hz) return {t:1.4, start:'You wedge a stone into the '+(hz.kind==='blade'?'blade’s mechanism':'jet’s vent')+'…', run(){
-    if(XR()<.6){ hz.jammed=true; if(hz.flame) hz.flame.visible=false; xLog('It jams with a screech.','good'); } else { xLog('It catches you while you work!','bad'); xHurt(Math.round(5+EX.depth*.6),'a trap you were jamming'); } }};
+    if(XR()<.6){ hz.jammed=true; if(hz.flame) hz.flame.visible=false; xLog('It jams with a screech.','good'); xXp(12+EX.depth,'trap jammed'); } else { xLog('It catches you while you work!','bad'); xHurt(Math.round(5+EX.depth*.6),'a trap you were jamming'); } }};
   return null; }

@@ -319,3 +319,13 @@ t('stats change play: average is no change, a strong stat helps', ()=>{
   assert.deepStrictEqual(CH.statMods(null).hp,0);
   const G2=require('./gear.js'); const sv={char:o}; global.statMods=CH.statMods; assert.strictEqual(G2.gearMods(sv).hp,m.hp);
 });
+t('experience: levels bring stat points, confirmed points stay, the cap rises', ()=>{
+  const sv={look:'wizard'}; CH.ensureChar(sv); assert.strictEqual(sv.level,1); assert.strictEqual(CH.pointsLeft(sv.char),12,'old saves get their creation points');
+  const c=CH.newChar('elf',0); CH.lockChar(c); sv.char=c; assert.strictEqual(CH.pointsLeft(c),12);
+  for(const k of CH.STAT_KEYS) while(CH.pointsLeft(c)&&CH.spendPoint(c,k,1)); CH.lockChar(c); assert.strictEqual(CH.pointsLeft(c),0);
+  assert.strictEqual(CH.gainXp(sv,CH.xpNeed(1)+CH.xpNeed(2)),2); assert.strictEqual(sv.level,3); assert.strictEqual(CH.pointsLeft(c),2*CH.LEVEL_POINTS); assert(sv.lvlNew);
+  assert(!CH.spendPoint(c,'str',-1),'confirmed points are locked');
+  assert(CH.spendPoint(c,'str',1)); assert(CH.spendPoint(c,'str',-1),'new points can be taken back');
+  assert.strictEqual(CH.statCap(c),CH.STAT_CAP);
+  assert(CH.fightXp([{boss:true}],4)>CH.fightXp([{}],4)&&CH.fightXp([{minion:true}],4)<CH.fightXp([{}],4));
+});

@@ -525,6 +525,9 @@ function xEnter(c){
   if(c===EX.down&&!EX.busy) xStairsDown();
   xHud();
 }
+// experience on the map: a line in the log, and the level-up panel when a level comes
+function xXp(n,why){ if(typeof gainXp!=='function'||!save) return; const up=gainXp(save,n); persist(); xLog('+'+Math.round(n)+' XP · '+why,'xp');
+  if(up){ xLog('Level up! You are now level '+save.level+'.','good'); setTimeout(()=>{ if(EX&&EX.active&&!EX.busy) maybeLevelUp(); },400); } xHud(); }
 function xHurt(n,why){ EX.hp=Math.max(0,EX.hp-n); xFlash(); xHud(); if(EX.hp<=0) xDie(why); }
 function xSpring(tr,remote){ const T=TRAPS[tr.kind]; tr.known=true; xTrapMesh(tr);
   xLog(remote&&tr.kind==='pit'?'The pit\'s lid snaps and catches your arm!':T.text,'bad'); const dmg=T.dmg[1]?Math.round(rnd(T.dmg[0],T.dmg[1])+EX.depth*.8):0;
@@ -563,7 +566,7 @@ function xSearchRoll(k,quiet,at){ k*=(typeof gearMods==='function'&&gearMods(sav
   for(const tr of EX.traps) if(tr.armed&&!tr.known&&xLos(EX.pc,tr.cell)&&Math.max(Math.abs(xcx(tr.cell)-x),Math.abs(xcy(tr.cell)-y))<=2&&Math.random()<.65*k*hard){ tr.known=true; xTrapMesh(tr); found++; xLog('You find a '+TRAPS[tr.kind].name+'.','good'); }
   for(const ch of EX.chests) if(!ch.open&&ch.trap&&!ch.trapKnown&&Math.max(Math.abs(xcx(ch.cell)-x),Math.abs(xcy(ch.cell)-y))<=1&&Math.random()<.65*k){ ch.trapKnown=true; found++; xLog('The chest\'s lock is trapped.','good'); }
   if(typeof xSearchExtra==='function') found+=xSearchExtra(k,quiet,at);
-  if(found){ xUpdateVis(); xHud(); } return found; }
+  if(found){ xUpdateVis(); xHud(); xXp(found*(10+EX.depth),found>1?found+' secrets found':'secret found'); } return found; }
 function xDisarmTarget(){ const x=xcx(EX.pc), y=xcy(EX.pc), near=c=>Math.max(Math.abs(xcx(c)-x),Math.abs(xcy(c)-y))<=1;
   return EX.traps.find(t=>t.armed&&t.known&&near(t.cell))||EX.chests.find(c=>!c.open&&c.trap&&c.trapKnown&&near(c.cell)); }
 function xDisarm(){ if(!EX||EX.action||EX.busy) return; const tg=xDisarmTarget();
@@ -571,6 +574,7 @@ function xDisarm(){ if(!EX||EX.action||EX.busy) return; const tg=xDisarmTarget()
     xLog('There is nothing here you know how to disarm.','dim'); return; }
   EX.path=[]; const isChest=tg.open!==undefined; xLog('You carefully work at the '+(isChest?'lock':TRAPS[tg.kind].name)+'…','dim');
   EX.action={t:1.3, done(){ const ok=Math.random()<Math.max(.55,.74-EX.depth*.008);
+    if(ok) xXp(12+EX.depth,'trap disarmed');
     if(isChest){ if(ok){ tg.trap=false; xLog('You disarm the needle in the lock.','good'); } else { tg.trap=false; xLog('Click. A needle jabs your hand!','bad'); xHurt(Math.round(5+EX.depth),'a trapped lock'); } }
     else if(ok){ tg.armed=false; if(tg.mesh) tg.mesh.visible=false; xLog('You disarm the '+TRAPS[tg.kind].name+'.','good'); if(Math.random()<.3){ const g=Math.round(5+EX.depth*3); save.gold+=g; persist(); xLog('You salvage '+g+' gold of parts.','gold'); } }
     else { xLog('You slip!','bad'); xSpring(tg,true); tg.armed=false; if(tg.mesh) tg.mesh.visible=false; }
@@ -581,7 +585,7 @@ function xOpenChest(ch){
   if(ch.trap&&ch.trapKnown){ xSay('chest','The lock is trapped. Disarm it first (E).'); return; }
   if(ch.trap){ ch.trap=false; xLog('A needle in the lock pricks you!','bad'); xHurt(Math.round(5+EX.depth),'a trapped chest'); if(EX.hp<=0) return; }
   ch.open=true; ch.mesh.userData.lid.rotation.x=-1.9; EX.path=[];
-  const rolls=ch.rich?2:1; for(let n=0;n<rolls;n++) xLoot(ch.rich);
+  const rolls=ch.rich?2:1; for(let n=0;n<rolls;n++) xLoot(ch.rich); xXp(ch.rich?15:5,'chest opened');
   if(typeof xChestAfter==='function') xChestAfter(ch);
   persist(); xHud();
 }
@@ -637,7 +641,7 @@ function xEngage(g,forced){
 function xStairsDown(){
   if(EX.groups.some(g=>g.boss)){ xSay('boss','The stairs are sealed while the guardian of this floor lives.'); return; }
   EX.busy=true; if(typeof xEscortCheck==='function') xEscortCheck(); xLog('You descend…','dim'); const nd=EX.depth+1, hp=Math.min(xmaxHp(),EX.hp+Math.round(xmaxHp()*.2));
-  save.deepest=Math.max(save.deepest,nd); persist(); if(typeof XRUN!=='undefined'&&XRUN){ XRUN.keys.boss=0; if(XRUN.chute===EX.depth) XRUN.chute=0; }
+  if(nd>save.deepest) xXp(20+2*nd,'new depth'); save.deepest=Math.max(save.deepest,nd); persist(); if(typeof XRUN!=='undefined'&&XRUN){ XRUN.keys.boss=0; if(XRUN.chute===EX.depth) XRUN.chute=0; }
   xKeep(); setTimeout(()=>{ xGoFloor(nd,hp,'up'); EX.active=true; xHud(); xLoopStart(); xBanner(nd); },500);
 }
 // floors you have been on this run are kept as you left them, so the stairs work both ways
@@ -740,6 +744,7 @@ function xBanner(depth){ const b=$('#xBang'), A=areaOf(depth), first=areaFloor(d
 function xFlash(){ const h=$('#xHurt'); h.classList.remove('on'); void h.offsetWidth; h.classList.add('on'); }
 function xHud(){ if(!EX) return; const m=xmaxHp();
   hpMeter($('#xHpBar'),$('#xHpTxt'),EX.hp,m);
+  if(typeof xpLine==='function'){ const l=$('#xLv'); l.textContent='Lv '+save.level+(pointsLeft(ensureChar(save))>0?' ★':''); l.title=xpLine(); }
   $('#xDepth').textContent='Depth '+EX.depth+' · '+areaLabel(EX.depth); $('#xDepth').style.color=EX.area.glow; goldText($('#xGold'));
   $('#xSearch').disabled=!!EX.action; $('#xSearch').classList.toggle('aiming',!!EX.aim); $('#xSearch').firstChild.textContent=EX.aim?'Search here':'Search'; $('#xDisarm').disabled=!!EX.action||!(xDisarmTarget()||typeof xDisarmAlt==='function'&&xDisarmAlt());
   const onUp=EX.pc===EX.up&&!EX.busy, aboveMain=EX.branch&&xFloors()&&xFloors().get(EX.depth);
@@ -767,6 +772,7 @@ function resumeExplore(hp,won,info){
   for(const k in XKEY) XKEY[k]=false;
   show('scrExplore'); xUpdateVis();
   if(typeof xAfterFight==='function') xAfterFight(g,won,info);
+  setTimeout(()=>{ if(typeof maybeLevelUp==='function') maybeLevelUp(); },300);
   xHud(); xLoopStart();
 }
 $('#xSearch').onclick=()=>xSearch();

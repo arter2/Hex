@@ -105,18 +105,20 @@ function renderNewChar(){ const ch=ccChar, R=RACES[ch.race];
     b.appendChild(c); b.insertAdjacentHTML('beforeend',`<span>${RACES[k].name}</span>`);
     b.onclick=()=>{ ccChar=newChar(k,ch.body); for(const s of STAT_KEYS) ccChar.spent[s]=Math.min(ch.spent[s]||0,STAT_MAX-RACES[k].base[s]); $('#ccWarn').textContent=''; delete $('#ccGo').dataset.sure; renderNewChar(); }; box.appendChild(b); }
   // the stats, one dial each
-  const st=$('#ccStats'); st.innerHTML='';
+  statDials($('#ccStats'),ch,$('#ccPts'),()=>{ if(!pointsLeft(ccChar)) $('#ccWarn').textContent=''; }); }
+// a horizontal dial for each stat, spending a character's points (character creation and level ups)
+function statDials(root,ch,ptsEl,after){ root.innerHTML=''; root._ch=ch; root._pts=ptsEl; root._after=after;
   for(const k of STAT_KEYS){ const S=STATS[k], row=document.createElement('div'); row.className='ccrow'; row.dataset.k=k;
-    row.innerHTML=`<div class="ccname"><b>${S.icon} ${S.ab}</b><span>${S.name}</span></div><div class="dial" role="slider" tabindex="0" aria-label="${S.name}" aria-valuemin="0" aria-valuemax="${STAT_MAX}"><div class="tape"></div><i class="notch"></i><span class="dl">◄</span><span class="dr">►</span></div><div class="ccval"><b></b><small></small></div><p class="cceff"></p>`;
-    st.appendChild(row); buildDial(row,k); }
-  ccUpdate(); }
+    row.innerHTML=`<div class="ccname"><b>${S.icon} ${S.ab}</b><span>${S.name}</span></div><div class="dial" role="slider" tabindex="0" aria-label="${S.name}" aria-valuemin="0" aria-valuemax="${STAT_CAP}"><div class="tape"></div><i class="notch"></i><span class="dl">◄</span><span class="dr">►</span></div><div class="ccval"><b></b><small></small></div><p class="cceff"></p>`;
+    root.appendChild(row); buildDial(row,k,root); }
+  dialsUpdate(root); }
 // a horizontal dial: a strip of numbered ticks under a fixed notch; dragging the strip, or tapping
 // an end, turns the stat up or down one point at a time
 const DIAL_STEP=22;
-function buildDial(row,k){ const d=row.querySelector('.dial'), tape=d.querySelector('.tape');
-  tape.innerHTML=Array.from({length:STAT_MAX+1},(_,v)=>`<i data-v="${v}"><b>${v}</b></i>`).join('');
+function buildDial(row,k,root){ const d=row.querySelector('.dial'), tape=d.querySelector('.tape');
+  tape.innerHTML=Array.from({length:STAT_CAP+1},(_,v)=>`<i data-v="${v}"><b>${v}</b></i>`).join('');
   let drag=null;
-  const step=n=>{ let moved=false; for(let i=0;i<Math.abs(n);i++) if(spendPoint(ccChar,k,Math.sign(n))) moved=true; else break; if(moved){ buzz(6); ccUpdate(); } return moved; };
+  const step=n=>{ let moved=false; for(let i=0;i<Math.abs(n);i++) if(spendPoint(root._ch,k,Math.sign(n))) moved=true; else break; if(moved){ buzz(6); dialsUpdate(root); } return moved; };
   d.addEventListener('pointerdown',e=>{ e.preventDefault(); try{ d.setPointerCapture(e.pointerId); }catch(_){} drag={id:e.pointerId,x:e.clientX,acc:0,moved:false}; d.classList.add('turning'); });
   d.addEventListener('pointermove',e=>{ if(!drag||e.pointerId!==drag.id) return; const dx=e.clientX-drag.x; drag.x=e.clientX; drag.acc+=dx;
     // dragging the strip left brings bigger numbers under the notch
@@ -127,15 +129,41 @@ function buildDial(row,k){ const d=row.querySelector('.dial'), tape=d.querySelec
     drag=null; d.classList.remove('turning'); tape.style.setProperty('--nudge','0px'); };
   d.addEventListener('pointerup',end); d.addEventListener('pointercancel',end);
   d.addEventListener('keydown',e=>{ if(e.key==='ArrowRight'||e.key==='ArrowUp'){ e.preventDefault(); step(1); } else if(e.key==='ArrowLeft'||e.key==='ArrowDown'){ e.preventDefault(); step(-1); } }); }
-function ccUpdate(){ const ch=ccChar, left=pointsLeft(ch);
-  $('#ccPts').textContent=left; $('#ccPts').classList.toggle('none',!left);
-  document.querySelectorAll('#ccStats .ccrow').forEach(row=>{ const k=row.dataset.k, v=statOf(ch,k), base=RACES[ch.race].base[k], d=row.querySelector('.dial');
+// ticks: blue up to the race's baseline, gold for points already confirmed, green for new ones
+function dialsUpdate(root){ const ch=root._ch, left=pointsLeft(ch), cap=statCap(ch);
+  if(root._pts){ root._pts.textContent=left; root._pts.classList.toggle('none',!left); }
+  root.querySelectorAll('.ccrow').forEach(row=>{ const k=row.dataset.k, v=statOf(ch,k), base=RACES[ch.race].base[k], kept=base+((ch.lock&&ch.lock[k])||0), d=row.querySelector('.dial');
     row.querySelector('.tape').style.setProperty('--v',v);
-    row.querySelectorAll('.tape i').forEach(t=>{ const n=+t.dataset.v; t.className=n>v?'':n>base?'buy':n>0?'base':''; t.classList.toggle('cur',n===v); });
-    d.setAttribute('aria-valuenow',v); d.classList.toggle('atmin',v<=base); d.classList.toggle('atmax',v>=STAT_MAX||!left);
-    row.querySelector('.ccval b').textContent=v; row.querySelector('.ccval small').textContent=ch.spent[k]?'+'+ch.spent[k]:'';
+    row.querySelectorAll('.tape i').forEach(t=>{ const n=+t.dataset.v; t.className=n>v||n>cap?(n>cap?'over':''):n>kept?(ch.lock?'new':'buy'):n>base?'buy':n>0?'base':''; t.classList.toggle('cur',n===v); });
+    d.setAttribute('aria-valuenow',v); d.classList.toggle('atmin',v<=kept); d.classList.toggle('atmax',v>=cap||!left);
+    const fresh=(ch.spent[k]||0)-((ch.lock&&ch.lock[k])||0);
+    row.querySelector('.ccval b').textContent=v; row.querySelector('.ccval small').textContent=ch.lock?(fresh?'+'+fresh:''):(ch.spent[k]?'+'+ch.spent[k]:'');
     const eff=statEffect(ch,k); row.querySelector('.cceff').innerHTML=`${esc(STATS[k].text)} · <b class="${v>10?'up':v<10?'down':''}">${esc(eff)}</b>`; });
-  if(!left){ $('#ccWarn').textContent=''; } }
+  if(root._after) root._after(); }
+
+/* ---------------- experience and levels ----------------
+   XP comes from won fights, secrets found, traps disarmed, chests and new depths (chars.js has the
+   curve). A level up opens this panel to spend the new points; Later keeps them for the
+   Character screen or the next level up. */
+let lvBack=null;
+function openLevelUp(back){ const ch=ensureChar(save); save.lvlNew=false; persist(); lvBack=back||null;
+  if(typeof xPause==='function'&&EX&&EX.active) xPause(true);
+  $('#lvTitle').textContent='Level '+save.level+'!'; $('#lvSub').textContent='Your '+RACES[ch.race].name.toLowerCase()+' grows stronger. Spend your points on any stat (up to '+STAT_CAP+').';
+  lvBefore=Object.assign({},ch.spent); statDials($('#lvStats'),ch,$('#lvPts')); $('#lvlUp').classList.add('on'); }
+let lvBefore=null;
+function closeLevelUp(keep){ const ch=save.char; if(!keep&&lvBefore) ch.spent=lvBefore; else lockChar(ch); persist(); $('#lvlUp').classList.remove('on');
+  if(typeof xPause==='function'&&EX&&EX.active) xPause(false);
+  if($('#scrCamp').classList.contains('on')) xpBar($('#campLevel')); if($('#scrCharacter').classList.contains('on')) renderCharacter(); if(typeof xHud==='function'&&EX) xHud();
+  if(lvBack) lvBack(); }
+$('#lvDone').onclick=()=>closeLevelUp(true);
+$('#campLevel').onclick=()=>{ if(pointsLeft(ensureChar(save))>0) openLevelUp(()=>openCamp()); else openCharacter(); };
+$('#lvLater').onclick=()=>closeLevelUp(false);
+// open the panel if a level up is waiting (after a fight, back at camp, on the map)
+function maybeLevelUp(){ if(save&&save.lvlNew&&save.char&&pointsLeft(save.char)>0&&!$('#lvlUp').classList.contains('on')&&!$('#reveal').classList.contains('on')) openLevelUp(); }
+// level and XP as a bar: "Lv 3 · 40/140 XP"
+function xpLine(){ ensureChar(save); return 'Lv '+save.level+' · '+save.xp+'/'+xpNeed(save.level)+' XP'; }
+function xpBar(el){ ensureChar(save); const k=save.xp/xpNeed(save.level), left=pointsLeft(save.char);
+  el.innerHTML=`<span>${xpLine()}</span><i style="--k:${k}"></i>`+(left?`<b>+${left} points</b>`:''); el.classList.toggle('pts',!!left); }
 
 /* ---------------- start ---------------- */
 function buildStart(){
@@ -145,7 +173,7 @@ function buildStart(){
     d.innerHTML=`<h3>${s.name}</h3><div class="cols">${s.colors.map(c=>`<span class="chip" style="--c:${COLORS[c].c}">${COLORS[c].icon} ${COLORS[c].name}</span>`).join('')}</div>
       <p>${s.text}</p><div class="row"><button class="btn">Start with this deck</button></div>`;
     d.querySelector('.btn').onclick=()=>{ if(typeof XPARK!=='undefined') XPARK=null; save=newSave(s);
-      if(ccChar) Object.assign(save,{char:ccChar, look:ccChar.look, hat:true}); persist(); pickDepth=1; openCamp(); };
+      if(ccChar) Object.assign(save,{char:lockChar(ccChar), look:ccChar.look, hat:true, level:1, xp:0}); persist(); pickDepth=1; openCamp(); };
     box.appendChild(d);
   }
   $('#startWarn').textContent=save?'Starting a new game replaces your current save: your cards, gold and gear.':'';
@@ -159,7 +187,7 @@ function openCamp(){
   if(pickDepth==null) pickDepth=save.deepest;
   pickDepth=Math.min(Math.max(1,pickDepth),save.deepest);
   const d=activeDeck(), v=validateDeck(d.list,CARDS,save.owned);
-  $('#campGold').innerHTML=uiIcon('coin',32)+save.gold;
+  $('#campGold').innerHTML=uiIcon('coin',32)+save.gold; xpBar($('#campLevel'));
   $('#campColl').innerHTML=uiIcon('cards',32)+ownedUnique(save)+(Object.keys(gearState(save).cursed).length?' <em class="curse">cursed</em>':'');
   $('#campDeck').textContent=d.name;
   const cnt=$('#campDeckCount'); cnt.textContent=v.count+'/'+RULES.max; cnt.classList.toggle('bad',!v.ok);
@@ -172,7 +200,7 @@ function openCamp(){
   drawDepthMap($('#depthMap'),pickDepth,save.deepest);
   $('#campLog').innerHTML=(campLog.length?campLog:[{t:'Each win gives a reward: a card, gold or a piece of gear. Every area is '+DEPTHS_PER_AREA+' floors deep and its boss waits on the last one. Losing costs 20% of your gold.',c:'dim'}])
     .slice(-4).map(l=>`<div class="${l.c||''}">${esc(l.t)}</div>`).join('');
-  show('scrCamp'); campScene();
+  show('scrCamp'); campScene(); setTimeout(maybeLevelUp,250);
 }
 // the camp scene: the area you are about to enter, your wizard in its gear, and a fire that
 // flickers while the camp is open. Drawn at a whole-number zoom so pixels stay square.
@@ -381,7 +409,9 @@ function renderCharacter(){
   // what it all adds up to
   const w=(k,v)=>`<div><span>${k}</span><b>${v}</b></div>`, pct=x=>Math.round(x*100)+'%';
   const ch=save.char&&RACES[save.char.race]?save.char:null;
-  $('#chAbil').innerHTML=ch?w('Race',RACES[ch.race].name+' · '+(ch.body?'woman':'man'))+STAT_KEYS.map(k=>w(STATS[k].icon+' '+STATS[k].ab+' '+statOf(ch,k),statEffect(ch,k))).join(''):'<p class="hint">Characters made before stats existed have average stats (10 in each). Start a new game to make a character.</p>';
+  const left=ch?pointsLeft(ch):0;
+  $('#chAbil').innerHTML=(ch?w('Level',xpLine())+(left?`<div class="wide"><button id="chSpend" class="btn small">Spend ${left} stat point${left>1?'s':''}</button></div>`:''):'')+(ch?w('Race',RACES[ch.race].name+' · '+(ch.body?'woman':'man'))+STAT_KEYS.map(k=>w(STATS[k].icon+' '+STATS[k].ab+' '+statOf(ch,k),statEffect(ch,k))).join(''):'<p class="hint">Characters made before stats existed have average stats (10 in each). Start a new game to make a character.</p>');
+  if($('#chSpend')) $('#chSpend').onclick=()=>openLevelUp(()=>renderCharacter());
   $('#chStats').innerHTML=w('Max HP',120+(m.hp||0))+w(K.name,Math.max(1,K.tap+m.tap)+' · charged '+Math.max(2,K.charged+m.charged))+w('Element',m.color?COLORS[m.color].icon+' '+COLORS[m.color].name:'none')
     +w('Fire rate',m.cd&&m.cd!==1?Math.round((1/m.cd-1)*100)+'% faster':'normal')+w('Guard',pct(m.guard||0))+w('Start shield',m.shield||0)
     +(m.dodge?w('Dodge',pct(m.dodge)):'')+(m.block?w('Shield block',m.block+' hit'+(m.block>1?'s':'')+' a turn'):'')+(m.regen?w('Regeneration',m.regen+' HP/s'):'')+(m.counter?w('Counter',m.counter):'')
@@ -521,6 +551,7 @@ function victory(){
   const b=B, boss=b.enemies.some(e=>e.def.boss);
   const rw=battleRewards(b.enemies.filter(e=>!e.def.minion).map(e=>e.color),b.depth,boss,null,save.owned);
   if(rw.gold) rw.gold=Math.round(rw.gold*(1+(gearMods(save).gold||0)));   // Ring of Fortune
+  const xp=fightXp(b.enemies.map(e=>({minion:e.def.minion,boss:e.def.boss,mini:e.def.mini})),b.depth), lvUp=gainXp(save,xp);
   save.gold+=rw.gold; save.wins++; if(!b.explore&&!b.trial&&b.depth>=save.deepest) save.deepest=b.depth+1;
   const hpLeft=b.player.hp;
   const loot=rw.items.map(k=>({k, res:addLoot(save,k)}));
@@ -533,7 +564,7 @@ function victory(){
   reveal(hero?'♔ A hero joins you!':boss?'Boss defeated!':'Victory!',(hero?hero.name+' answers your call. ':'')+(boss&&!b.trial?'The way down to '+areaOf(depth+1).name+' is open. ':'')+(b.explore?'Won in '+Math.round(b.time)+'s. ':'Depth '+depth+' cleared in '+Math.round(b.time)+'s. ')+(boss?'Boss rewards: ':'Your reward: ')+got.join(', ')+'.'+loot.map(l=>l.res&&l.res.cursed?' '+l.res.msg:l.res&&l.res.ok?' You put it on.':'').join('')+burnt,res,
     b.explore?[['Keep exploring',()=>{ const ruleOK=!!(b.rule&&b.rule.ok); B=null; resumeExplore(hpLeft,true,{ruleOK}); }]]
     :[['Camp',()=>{ B=null; pickDepth=depth+1; openCamp(); },true],['Depth '+(depth+1)+' →',()=>fight(depth+1)]],
-    [...(rw.gold?[{pic:uiIcon('coin',64),name:rw.gold+' gold',text:'Spend it on packs in the shop'}]:[]),...rw.items.map(k=>Object.assign(lootLabel(save,k),{pic:lootPic(k)}))]);
+    [{pic:'<b class="xpic">XP</b>',name:'+'+xp+' XP',text:lvUp?'Level '+save.level+'! +'+(lvUp*LEVEL_POINTS)+' stat points':xpLine()},...(rw.gold?[{pic:uiIcon('coin',64),name:rw.gold+' gold',text:'Spend it on packs in the shop'}]:[]),...rw.items.map(k=>Object.assign(lootLabel(save,k),{pic:lootPic(k)}))]);
 }
 function defeat(){
   const lost=Math.floor(save.gold*.2); save.gold-=lost; const burnt=settleCharges();

@@ -822,3 +822,17 @@ body.lsS #custHand .slot.hole{min-height:104px;}
 .dial.atmin .dl,.dial.atmax .dr{color:#2c3137;}
 .dial:focus-visible{outline:2px solid #7fe3ff;}
 @media (max-width:380px){ .ccrow{grid-template-columns:80px 1fr 40px;} .cctop{grid-template-columns:110px 1fr;} #ccSprite{width:110px; height:110px;} }
+
+/* experience: the bar at camp, the level on the map, the level-up panel */
+.xpbar{position:relative; display:flex; align-items:center; gap:8px; width:100%; padding:4px 8px 10px; background:#0d1014; border:2px solid #2c3137; color:#c3d0de; font:400 17px var(--font-t); cursor:pointer; text-align:left;}
+.xpbar span{flex:1;} .xpbar b{font:600 14px var(--font-b); color:#06100a; background:#7dff9a; padding:0 6px; animation:readyBlink .9s steps(2) infinite;}
+.xpbar i{position:absolute; left:8px; right:8px; bottom:3px; height:4px; background:#1e232a;}
+.xpbar i::after{content:''; position:absolute; inset:0; width:calc(var(--k,0)*100%); background:#7dff9a;}
+.xplv{font:600 14px var(--font-b); color:#7dff9a; margin:0 8px;}
+#xLog .xp{color:#7dff9a;}
+.xpic{display:grid; place-items:center; width:64px; height:64px; font:700 26px var(--font-b); color:#06100a; background:#7dff9a; border:3px solid #000;}
+#lvlUp .panel.lvl{max-width:560px; width:100%; max-height:100%; overflow-y:auto; display:flex; flex-direction:column; gap:8px;}
+#lvTitle{color:#7dff9a; font-size:30px;}
+#lvlUp .row2{display:grid; grid-template-columns:1fr 1fr; gap:8px;}
+.dial .tape i.new::before{background:#7dff9a; height:16px;} .dial .tape i.new b{color:#7dff9a;}
+.charstats .wide{grid-column:1/-1; border:0; justify-content:center;}

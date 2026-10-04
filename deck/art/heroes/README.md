@@ -16,6 +16,7 @@ Painted hero sheets, keyed from green screen to transparent PNG by `deck/tools/k
 | `dwarf_m_bare.png` | dwarf_m (hatless) | Dwarf man | Labeled sheet, 8 directions, big beard |
 | `dwarf_m_bare_alt.png` | (spare) | Dwarf man | Long hair, short stubble |
 | `dwarf_f_bare.png` | dwarf_f (hatless) | Dwarf woman | Labeled sheet, 8 directions, braids |
+| `witch_f_bare.png` | witch (hatless) | Witch | Labeled sheet, 8 directions |
 | `necro_m.png` | necro | Necromancer (undead) man | Skeleton |
 | `witch_f.png` | witch | Witch | Labeled sheet, 8 directions, hat and no-hat statics |
 | `warlock.png` | witch_m | Warlock | |
@@ -44,7 +45,6 @@ Painted hero sheets, keyed from green screen to transparent PNG by `deck/tools/k
 ## Still missing
 
 Hoods are not hats, so hooded looks need no hatless set. Looks with a hat: wizard (done),
-ranger woman (done), witch.
+ranger woman (done), witch (done).
 
-- **Witch hatless:** only a static pose on `witch_f.png`; no hatless animation.
 - **Dwarf with hat:** optional; both dwarf sheets are hatless.

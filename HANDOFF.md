@@ -128,8 +128,9 @@ All sprites live as base64 PNGs in `deck/sprites.js` and are read by `art.js` (`
      need a small reader change in `art.js` (`rigSprite`) and `battle.js` to pick frames by
      state (attack, hurt, phase, death).
    - Size bosses to their old fill, so they stay about 1.5× a hero.
-3. **Write prompts for the rest**, in the same format: monsters, humanoid enemies, allied
-   heroes, minibosses and weapon icons. `deck/art/SPRITE_PROMPTS.md` has the old one-sheet
+3. **Write prompts for the rest**, in the same format. Monsters and humanoid enemies are done
+   (`deck/art/enemies/`, one file each, two sheets per enemy). Still to do: allied heroes,
+   minibosses and weapon icons. `deck/art/SPRITE_PROMPTS.md` has the old one-sheet
    versions with each character's description.
 4. **Optional:** back-view action rows for the 10 looks that only stand from behind.
 5. **After any art change:** run the tests, take a browser screenshot of the character screen

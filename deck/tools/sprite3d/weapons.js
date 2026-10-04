@@ -19,7 +19,7 @@ function head(g,type,c,h){ const gm=glow(c), core=glow(0xffffff);
       add(H,G.cone(.045,.2,5),M(0x5fd08a),.09,0,0,0,0,-1); add(H,G.cone(.045,.2,5),M(0x5fd08a),-.09,0,0,0,0,1); break; }
     case 'orb':{ add(H,G.tor(.11,.018,5,12),GOLD,0,.1,0); add(H,G.tor(.11,.018,5,12),GOLD,0,.1,0,0,PI/2); add(H,G.sph(.085,10,8),gm,0,.1,0); add(H,G.sph(.035,6,5),core,-.02,.12,.06); break; }
     case 'flame':{ add(H,G.cyl(.06,.03,.08,6),IRON,0,0,0); for(let i=0;i<4;i++) add(H,G.cone(.025,.12,4),IRON,Math.sin(i*PI/2)*.06,.06,Math.cos(i*PI/2)*.06,Math.cos(i*PI/2)*.5,0,-Math.sin(i*PI/2)*.5);
-      const f=[glow(0xc8280e),glow(c),glow(0xffa040),glow(0xffe08a),glow(0xfff8e0)]; add(H,G.cone(.13,.42,8),f[1],0,.22,0); add(H,G.cone(.1,.3,7),f[2],0,.18,.02); add(H,G.cone(.06,.2,6),f[3],0,.13,.04); add(H,G.sph(.035,6,5),f[4],0,.1,.05);
+      const f=[glow(0xc8280e),glow(c),glow(0xffa040),glow(0xffe08a),glow(0xfff8e0)]; H.userData.fire=LAB.fire(H,{h:.5,r:.14,cols:[c,0xffa040,0xffe08a],amp:.34,seed:3}); add(H,G.sph(.035,6,5),f[4],0,.1,.05);
       for(let i=0;i<5;i++){ const a=i/5*PI*2; add(H,G.cone(.05,.2+(i%2)*.08,5),i%2?f[0]:f[1],Math.sin(a)*.08,.14,Math.cos(a)*.08,Math.cos(a)*.45,0,-Math.sin(a)*.45); } break; }
     case 'skull':{ add(H,G.sph(.085,10,8),BONE,0,.08,0); add(H,G.box(.09,.05,.08),BONE,0,.01,.02); add(H,G.box(.03,.03,.02),glow(c),.035,.08,.075); add(H,G.box(.03,.03,.02),glow(c),-.035,.08,.075);
       add(H,G.sph(.06,8,6),glow(c),0,.2,-.02); break; }
@@ -173,7 +173,7 @@ LAB.GAME_WEAPONS={
   basic_wand:{name:'Basic Wand', kind:'wand', wood:'spiral', carved:true, grip:M(0x3a2214), ring:M(0xf4ead0), tip:'ivory', pommel:true, c:0xfff2c8, len:.6},
   oak_wand:{name:'Oak Wand', kind:'branch', wood:M(0x6e4528), len:.62, lo:-.12, r:.02, kink:.04, twigs:2, c:0xd8ff6a, acorn:true, seed:3},
   quick_wand:{name:'Quick Wand', kind:'wand', wood:PALE, bands:{n:3,m:SILVER}, c:0x9ff4ff},
-  ice_wand:{name:'Thin Wand of Ice', kind:'wand', wood:M(0xc8ecff,{metal:.7,facet:true}), carved:true, grip:M(0x9ad4f4,{metal:.6,facet:true}), ring:M(0xe8f8ff,{metal:.9}), tip:'icicle', c:EL.frost, len:.52},
+  ice_wand:{name:'Thin Wand of Ice', kind:'wand', wood:M(0xc8ecff,{glass:.45,facet:true}), carved:true, grip:M(0x9ad4f4,{glass:.55,facet:true}), ring:M(0xe8f8ff,{metal:.9}), tip:'icicle', c:EL.frost, len:.52},
   volt_wand:{name:'Wand of Electricity', kind:'wand', wood:IRON, tip:'spark', c:EL.storm},
   dark_wand:{name:'Wand of Darkness', kind:'wand', wood:DARK, grip:M(0x4a2a5a), tip:'moon', c:EL.shadow},
   light_wand:{name:'Wand of Light', kind:'wand', wood:M(0xf3ead6), grip:GOLD, tip:'sunburst', c:EL.light},
@@ -189,6 +189,6 @@ LAB.GAME_WEAPONS={
   hunter_spear:{name:"Hunter's Spear", kind:'spear', wrap:LEATHER, tassel:M(0xb5452e)},
   storm_trident:{name:'Storm Trident', kind:'trident2', wood:M(0x2a5a6a), metal:M(0xe8c050,{metal:1}), c:0x6ff0e0, len:2.0},
   first_flame:{name:'Staff of the First Flame', kind:'staff', wood:M(0x3a1d14), head:'flame', c:0xff6a1a, bands:{n:2,m:GOLD}, len:1.85, legendary:true},
-  frostfang:{name:'Frostfang Scepter', kind:'fang2', wood:M(0xbfe6f8,{metal:.6,facet:true}), c:EL.frost, len:1.6, legendary:true},
+  frostfang:{name:'Frostfang Scepter', kind:'fang2', wood:M(0xbfe6f8,{glass:.45,facet:true}), c:EL.frost, len:1.6, legendary:true},
 };
 })();

@@ -10,5 +10,5 @@ for(const id in LAB.GAME_WEAPONS){ const spec=LAB.GAME_WEAPONS[id];
         if(spec.kind==='spear') w.children.forEach(o=>{ if(o.position.y>(spec.len||1.8)-.75) o.scale.multiplyScalar(1.4); }); }
       const box=new THREE.Box3().setFromObject(w), size=new THREE.Vector3(), c=new THREE.Vector3(); box.getSize(size); box.getCenter(c);
       w.position.sub(c); const k=Math.min(2.25/Math.max(size.y,.01),1.6/Math.max(size.x,.01),3.2)*1.3; tilt.scale.setScalar(k); tilt.rotation.z=-PI/4;
-      return {root, moves:{icon:{frames:1,fps:1}, spin:{frames:12,fps:8}}, pose:(m,t)=>{ turn.rotation.set(-.35,m==='spin'?t*PI*2:.45,0); root.rotation.y=0; }}; }}); }
+      return {root, moves:{icon:{frames:1,fps:1}, spin:{frames:12,fps:8}}, pose:(m,t)=>{ turn.rotation.set(-.35,m==='spin'?t*PI*2:.45,0); root.rotation.y=0; LAB.fireTick(root,m==='spin'?t:0); }}; }}); }
 })();

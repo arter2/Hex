@@ -17,7 +17,7 @@ const armT=(skin,c,o={})=>F(32,32,{c:skin,soft:false,custom:P=>{ const g=o.glow?
 
 const P={
 /* 1. the archmage: stooped, long beard to the belt, star-sown robe open over a pale under-robe, bell sleeves, capelet, book on the hip */
-wizard:{name:'Human wizard', skin:HUMAN, bodyW:.95, headK:1.32, stance:{torsoX:.1,headX:-.08}, gait:{stride:.75,arm:.5,bounce:.6},
+wizard:{name:'Human wizard', skin:HUMAN, bodyW:.95, headK:1.32, attitude:'noble', stance:{armRZ:-.26,armRX:-.12}, gait:{stride:.75,arm:.5,bounce:.6},
   robe:F(128,64,{c:0x2c4c9a,mottle:[0x26448c,.1],scatter:[{pat:'star',c:0xe8c860,n:26,y0:4,y1:44,fg:{metal:.6}},{pat:'moon',c:0xf0e0a0,n:5,y0:6,y1:40}],
     rows:[{y0:49,y1:50,c:0xe8c860,fg:{metal:.7}},{y0:50,y1:61,c:0x1a2c66,pat:'rune',pc:0xe8c860,every:7,pfg:{metal:.6}},{y0:61,y1:64,c:0xe8c860,fg:{metal:.7}}]}),
   top:F(64,32,{c:0x2c4c9a,mottle:[0x26448c,.1],scatter:[{pat:'star',c:0xe8c860,n:6,y0:10,y1:30}],custom:P=>{ for(let y=0;y<24;y++){ const w=Math.max(0,Math.round(7-y*.3)); for(let dx=-w;dx<=w;dx++) P.px(dx,y,0x9ab8e8); P.px(-w-1,y,0xe8c860); P.px(w+1,y,0xe8c860); } }}),
@@ -93,7 +93,7 @@ elf_f:{name:'Elf', fem:true, bodyW:.9, waistK:.84, scale:1.04, legK:1.12, headK:
 
 /* 5. the runesmith: short and immensely broad, forked braided beard, goggles on the brow, chainmail shirt, leather smith's apron,
       plaid kilt, rune bracers on bare forearms, steel-capped boots, hammer on the belt */
-dwarf_m:{name:'Dwarf', muscle:true, scale:.8, bodyW:1.42, shK:1.04, legK:.68, legW:1.25, armK:1.25, armLen:.94, headK:1.52, headS:[1.08,.98,1.0], skin:DWARF, nose:true,
+dwarf_m:{name:'Dwarf', muscle:true, scale:.8, bodyW:1.42, shK:1.04, legK:.68, legW:1.25, armK:1.25, armLen:.94, headK:1.46, headS:[1.02,1.06,1.0], headP:{jaw:1.15,brow:1.6,cheek:1.3}, skin:DWARF,
   stance:{armLZ:.2,armRZ:-.1,torsoX:.04}, gait:{sway:.07,stride:.8,bounce:1.3,lift:.7},
   top:F(64,32,{c:0x7a828c,rings:{c:0x9aa2ac,c2:0x4a525c,metal:.75},rows:[{y0:0,y1:3,c:0x3a2418}]}), sleeve:'short', sleeveC:F(32,32,{c:0x7a828c,rings:{c:0x9aa2ac,c2:0x4a525c}}),
   armSkin:armT(DWARF,0xff8a3a,{rows:[22,27],glow:true,zig:true}), skirt:'none', belt:false, legs:0x3a2e28, boot:0x3a2418, bootTall:true, shoe:{type:'heavy',c2:0x8a929c},
@@ -110,7 +110,7 @@ dwarf_m:{name:'Dwarf', muscle:true, scale:.8, bodyW:1.42, shK:1.04, legK:.68, le
     GB.strap(R,C,[-.07,.44,b.ch*C.dz+.06],[-.1,.56,0.0],0x3a2418,.035); GB.strap(R,C,[.07,.44,b.ch*C.dz+.06],[.1,.56,0.0],0x3a2418,.035);
     GB.belt(R,C,{mat:0x3a2418,w:.045,buckle:0xd8b048,bw:.13,bh:.11,rk:1.32,items:[{t:'hammer',a:1.35},{t:'pouch',a:-1.25,c:0x5a3a22},{t:'pouch',a:-1.9,c:0x4a3020}]});
     add(R.torso,G.tor(b.sh*.75,.07,6,14),LAB.MT(furT(0x8a6a4a,0x6a4a30),{soft:true}),0,.52,0,PI/2).scale.set(1,.85,1);
-    GB.beard(R,C,{c:0xe0702a,tex:hairT(0xe0702a),style:'fork',len:.44,w:1.28,z:.1,zs:.72,stache:'big',ring:0xd8b048}); }},
+    GB.beard(R,C,{c:0xe0702a,tex:hairT(0xe0702a),style:'fork',len:.72,w:1.28,z:.1,zs:.72,stache:'big',ring:0xd8b048}); }},
 
 /* 6. the forgemaiden: short and strong, twin buns and braids, sleeveless laced leather jerkin with fur trim, work gloves,
       a steel gauntlet on the hammer arm, short pleated kilt over leggings, fur-cuffed boots, tongs and hammer on the belt */
@@ -132,22 +132,19 @@ dwarf_f:{name:'Dwarf', fem:true, muscle:true, scale:.82, bodyW:1.16, legK:.72, l
 
 /* 7. the lich: hunched skeleton in a rotting royal robe hanging open over the ribs, towering ragged collar,
       rusted spiked crown, chains and a glowing phylactery */
-undead_m:{name:'Undead', skel:true, scale:1.05, legK:1.05, armLen:1.12, headK:1.26, skin:0xb9c3cc, bone:0xd8dccc, face:'skull', eyes:0x7fffe0,
+undead_m:{name:'Undead', skel:true, scale:1.05, legK:1.05, armLen:1.12, headK:1.3, skin:0xb9c3cc, bone:0xd8dccc, face:'skull', eyes:0x7fffe0, headP:{len:1.16,jaw:.66,cheek:2,sockets:3,chin:.35,brow:1.6},
   stance:{torsoX:.22,headX:-.16,armLZ:.06,armLX:.15}, gait:{stride:.6,sway:.06,bounce:.4,arm:.3,lift:.5},
   robe:F(128,64,{c:0x2a1a38,mottle:[0x22142e,.15],tears:{c:0x0e0812,n:14},rows:[{y0:4,y1:5,c:0x8a7a40},{y0:5,y1:12,c:0x1a1024,pat:'rune',pc:0x8a7a40,every:7},{y0:12,y1:13,c:0x8a7a40}],
     scatter:[{pat:'skull',c:0x3a2a48,n:6,y0:18,y1:50}]}),
   sleeve:'flared', skirt:'none', belt:false, legs:'bone',
   fp:{eyes:{style:'socket',c:0x7fffe0}, nose:'skull', mouth:'skull', custom:(P,A,at)=>{ at(A.browN,-1,-2,0x8a8a80); at(A.browN,0,-3,0x8a8a80); at(A.browN,1,-4,0x8a8a80); at(A.cheekF,1,-1,0x8a8a80); }},
   hat:{type:'spikecrown',c:0x6a5a4a,gem:0x6affd0},
-  hair:{c:0xdde2e6,style:'long',len:.42,tex:hairT(0xdde2e6)},
   cape:F(64,64,{c:0x1a1424,tears:{c:0x0a0610,n:10},rows:[{y0:0,y1:3,c:0x8a7a40}]}), capeHem:0x1a1424, rags:true, capeLen:1.0,
   weapon:staff('ghost',0x7fffe0,0x4a4a52), fx:0x7fffe0,
   dress(R,C){ const b=C.b;
     GB.skirt(R,C,{pts:GB.prof(C,.84,.36),mat:C.o.robe,folds:8,amp:.045,gap:1.5,hem:GB.tatter(.1,2)});
     GB.shell(R,C,{mat:C.o.robe,gap:1.9,k:1.25,from:2,to:8});
     GB.collar(R,C,{mat:F(64,32,{c:0x2a1838,tears:{c:0x0a0610,n:6}}),h:.34,r0:.1,r1:.27,gap:1.9,trim:0x8a7a40,y:.48});
-    GB.chain(R.torso,[[-.17,.1,.1],[-.05,.0,.17],[.08,.02,.16],[.18,.12,.08]],M(0x6a6a70,{metal:.7}),9);
-    GB.chain(R.handL,[[0,.02,0],[.02,-.08,.04],[.0,-.18,.06],[-.02,-.26,.05]],M(0x6a6a70,{metal:.7}),6); add(R.elbowL,G.cyl(.05,.05,.06,8),M(0x5a5a60,{metal:.7}),0,-.27,0);
     GB.necklace(R,C,{t:'beads',c:0x6a6a70,n:7,drop:.1,pendant:{c:0x6affd0,glow:true,r:.04,frame:0x8a7a40}}); }},
 
 /* 8. the banshee: floats with no feet, hair streaming upward, screaming mouth, bone-stayed bodice over bare ribs,
@@ -207,7 +204,8 @@ witch:{name:'Witch', fem:true, bodyW:.9, waistK:.8, legK:1.08, headK:1.28, skin:
 
 /* 11. the barrow druid: gaunt and stooped, deer-skull mask with branching antlers, moss beard, cloak of fallen leaves,
        a moss mantle, bone charms, bandaged shins and clawed bare feet */
-necro:{name:'Necromancer', slender:true, scale:1.08, legK:1.08, armLen:1.12, headK:1.2, skin:0xb8c0b0,
+necro:{name:'Necromancer', slender:true, scale:1.08, legK:1.08, armLen:1.12, headK:1.2, skin:0xc4a888, headP:{cheek:1.5,jaw:.9,sockets:1.6,len:1.12},
+  fp:{eyes:{style:'narrow',c:0x9cff6a,glow:true}, brows:{style:'heavy',c:0x3a4a34}, nose:'long', sunken:0x2a3a2a, wrinkles:true},
   stance:{torsoX:.2,headX:-.12}, gait:{stride:.7,arm:.4,bounce:.6},
   top:F(64,32,{c:0x4a3a22,leaves:{c:[0x6a4a22,0x8a5a2a,0x4a5a2a,0x9a3a1a,0x5a4a1a]}}), sleeve:'open', robe:F(64,64,{c:0x4a3a22,leaves:{c:[0x6a4a22,0x8a5a2a,0x4a5a2a,0x9a3a1a,0x3a3a1a]}}),
   skirt:'none', belt:false, legs:wrapsT(0x8a8070,0x5a5244), shoe:{type:'claw',c2:0x1a1410},
@@ -217,7 +215,7 @@ necro:{name:'Necromancer', slender:true, scale:1.08, legK:1.08, armLen:1.12, hea
     GB.skirt(R,C,{pts:GB.prof(C,.9,.4),mat:C.o.robe,folds:11,amp:.05,gap:.7,hem:GB.tatter(.12,5)});
     for(let k=0;k<4;k++) LAB.leafRing(R.skirt,18,-.12-k*.17,.27+k*.035,.92,lv,.08,.22,.3,.5,k*.6);
     GB.capelet(R,C,{mat:furT(0x4a6a34,0x3a5228),len:.2,flare:1.38,hem:GB.tatter(.07,7),folds:9});
-    GB.beard(R,C,{style:'moss',c:0x6a7a5a,len:.36,z:.12});
+    GB.beard(R,C,{style:'moss',c:0x6a7a5a,len:.26,z:.12});
     GB.belt(R,C,{mat:0x3a2a1a,w:.025,items:[{t:'skull',a:.95},{t:'bone',a:-.9},{t:'feather',a:1.7,c:0x2a2a2a},{t:'skull',a:-1.75},{t:'lantern',a:2.4,c:0x9cff6a}]}); }},
 
 /* 12. the mourning dryad: slender and curved, thorn crown with a veil of hanging moss, glowing eyes, a gown of dark leaves
@@ -238,8 +236,8 @@ necro_f:{name:'Necromancer', fem:true, waistK:.82, hipK:1.12, bust:1.12, legK:1.
 
 /* 13. the wolf shaman: stocky, crouched and wide, wolf-head pelt hood with paws over the shoulders, bare painted chest,
        fang necklace, braided beard, fur kilt over leather trousers, moccasins */
-shaman_m:{name:'Shaman', muscle:true, bodyW:1.12, scale:.98, legK:.95, headK:1.3, skin:0xc8906a,
-  stance:{kneeL:.16,kneeR:.16,hipsY:-.03,legL:-.12,legR:.12,torsoX:.08}, gait:{stride:1.1,bounce:1.3},
+shaman_m:{name:'Shaman', muscle:true, bodyW:1.12, scale:.98, legK:.95, headK:1.3, skin:0xc8906a, headP:{jaw:1.2,brow:1.5,cheek:1.4},
+  attitude:'brute', stance:{legL:-.16,legR:.14,armRX:-.35,elbowR:-.3,armLZ:.1}, gait:{stride:1.1,bounce:1.3},
   top:F(64,32,{c:0xc8906a,soft:false,custom:P=>{ const c=0xf0f0e8; for(let y=8;y<26;y+=5) for(let i=-6;i<=6;i++) if(Math.abs(i)>1) P.px(i,y+Math.round(Math.abs(i)*.3),c); for(let y=0;y<6;y++){ P.px(-10,8+y*3,0x2aa8a0); P.px(10,8+y*3,0x2aa8a0); } }}),
   sleeve:'bare', armSkin:armT(0xc8906a,0x2aa8a0,{rows:[6,9,24],zig:true}), skirt:'none', belt:false, legs:0x5a4630, boot:0x7a5634, shoe:{type:'moccasin'}, bracers:0x5a3a22,
   fp:{eyes:{style:'round',c:0x6a4a20}, brows:{style:'heavy',c:0x5a2a14}, nose:'broad', mouth:'frown', paint:{type:'mask',c:0xf0f0e8}},

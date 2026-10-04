@@ -95,6 +95,10 @@ LAB.paintFace=function(P,A,F,skin){
   if(F.freckles) for(const [dx,dy] of [[-2,0],[0,1],[2,0],[3,1],[-3,1],[1,-1]]) at(A.nose,dx,dy,S(.8));
   if(F.shadow) for(const p of [A.eyeN,A.eyeF]) { at(p,-1,-2,F.shadow); at(p,0,-2,F.shadow); at(p,1,-2,F.shadow); }
   if(F.paint) for(const pt of [].concat(F.paint)) paintMark(P,A,pt,at,skin);
+  // round 4: heads are ~20 px wide, so features are drawn at full size (see bigFace)
+  if(A.r>=10.5&&!F.small){ bigFace(P,A,F,skin,at,S,d); if(F.wrinkles){ at(A.eyeN,-3,1,S(.82)); at(A.eyeF,3,1,S(.82)); at(A.mouth,-3,-1,S(.82)); at(A.mouth,3,-1,S(.84)); }
+    if(F.scar){ const sc=F.scar, p=sc.at==='far'?A.eyeF:A.eyeN, col=sc.c||mixc(skin,0xffe8e0,.5); for(let i=-4;i<=4;i++) at(p,Math.round(i*.5)*(sc.dir||1),i,col); }
+    if(F.custom) F.custom(P,A,at,skin); return; }
   // eyes
   const eye=(p,near)=>{
     if(st==='none') return;
@@ -159,6 +163,73 @@ LAB.paintFace=function(P,A,F,skin){
   if(F.scar){ const sc=F.scar, p=sc.at==='far'?A.eyeF:A.eyeN, col=sc.c||mixc(skin,0xffe8e0,.5); for(let i=-3;i<=3;i++) at(p,Math.round(i*.5)*(sc.dir||1),i,col); }
   if(F.custom) F.custom(P,A,at,skin);
 };
+/* Full-size face for ~20 px heads. Near eye 4 px wide, far eye 3 (foreshortened); lid liner, white,
+   two-pixel iris with pupil and catch-light; socket shadow under the brow; nose drawn as a shadowed
+   bridge on the far side, a lit tip, a nostril and the shadow it casts; mouth as a dark parting line,
+   lit lower lip and the shadow under it. d points from the near eye toward the far eye. */
+function bigFace(P,A,F,skin,at,S,d){
+  const E=F.eyes||{}, st=E.style||'round', iris=E.c==null?0x3a5a7a:E.c, liner=E.liner==null?INK:E.liner, gl=E.glow?{glow:true}:null,
+    pup=E.pupil||mixc(iris,INK,.62), hi=mixc(iris,0xffffff,.35), lash=!!E.lash, sock=S(.8);
+  // sockets: the brow shades the eye
+  for(const [p,near] of [[A.eyeN,1],[A.eyeF,0]]) for(let dx=-2;dx<=(near?2:1);dx++){ at(p,dx,-2,mixc(skin,sock,.6)); }
+  const eye=(p,near)=>{
+    if(st==='none') return;
+    if(st==='socket'){ for(let dx=-1;dx<=(near?2:1);dx++) for(let dy=-2;dy<=1;dy++) at(p,dx,dy,0x120a10); at(p,0,-1,iris,{glow:true}); at(p,near?1:0,0,mixc(iris,0xffffff,.5),{glow:true}); if(near) at(p,1,-1,iris,{glow:true}); return; }
+    if(st==='glow'){ for(let dx=-1;dx<=(near?2:1);dx++){ at(p,dx,-2,liner); at(p,dx,-1,iris,{glow:true}); } at(p,0,-1,mixc(iris,0xffffff,.6),{glow:true}); if(near) at(p,1,0,iris,{glow:true}); return; }
+    if(near){
+      const w=st==='narrow'||st==='slit'||st==='old'?1:2;
+      for(let dx=-1;dx<=2;dx++) at(p,dx,-2,liner);                                       // upper lid
+      if(lash||st==='almond'){ at(p,-2,-2,liner); at(p,-2,-3,liner); }
+      if(st==='almond') at(p,-2,-1,liner);
+      at(p,-1,-1,SCL); at(p,0,-1,iris,gl); at(p,1,-1,pup,gl); at(p,2,-1,mixc(SCL,skin,.35));
+      if(w>1){ at(p,-1,0,mixc(SCL,skin,.5)); at(p,0,0,hi,gl); at(p,1,0,iris,gl); at(p,2,0,mixc(skin,sock,.5)); }
+      else { at(p,-1,0,S(.82)); at(p,0,0,S(.82)); at(p,1,0,S(.82)); }
+      if(st==='slit'){ at(p,0,-1,iris,gl); at(p,1,-1,liner); }
+      at(p,0,-1,gl?iris:0xffffff,gl); at(p,1,-1,pup,gl);                                 // catch-light, pupil
+      if(st==='old'){ at(p,-1,1,S(.82)); at(p,0,1,S(.82)); at(p,1,1,S(.86)); }
+      else { at(p,-1,1,S(.9)); at(p,0,1,S(.92)); } }
+    else {
+      for(let dx=0;dx<=2;dx++) at(p,dx,-2,liner); if(lash||st==='almond') at(p,3,-3,liner);
+      at(p,0,-1,mixc(SCL,skin,.35)); at(p,1,-1,pup,gl); at(p,2,-1,iris,gl);
+      if(!(st==='narrow'||st==='slit'||st==='old')){ at(p,1,0,iris,gl); at(p,2,0,mixc(SCL,skin,.4)); } }
+  };
+  eye(A.eyeN,true); eye(A.eyeF,false);
+  // brows: two pixels thick at the inner end, angled by style
+  const B=F.brows||{}, bs=B.style||'thin', bc=B.c==null?0x3a2418:B.c, by=-4+(B.dy||0);
+  const brow=(p,near)=>{ if(bs==='none') return; const xs=near?[-2,-1,0,1,2]:[0,1,2,3], inner=near?2:0;
+    xs.forEach((dx,i)=>{ const t=near?i/(xs.length-1):1-i/(xs.length-1);   // t=1 at the inner end (toward the nose)
+      let y=by; if(bs==='angry') y+=t>.6?1:0; if(bs==='raised'||bs==='arched') y+=(t<.2||t>.85)?1:0; if(bs==='raised') y-=1;
+      at(p,dx,y,bc); if(bs==='bushy'||bs==='heavy'||(t>.6&&bs!=='thin')) at(p,dx,y+1,bs==='heavy'?bc:mixc(bc,skin,.4)); if(bs==='bushy') at(p,dx,y-1,mixc(bc,skin,.5)); }); };
+  brow(A.browN||A.eyeN,true); brow(A.browF||A.eyeF,false);
+  // nose
+  const N=F.nose||'small', n=A.nose, L=N==='long'||N==='hook'||N==='big'?4:N==='button'?2:3;
+  if(N==='skull'){ at(n,0,0,0x120a10); at(n,1,0,0x120a10); at(n,0,-1,0x2a1e24); at(n,1,-1,0x2a1e24); }
+  else if(N==='snout'){ at(n,-1,0,0x1a1210); at(n,1,0,0x1a1210); at(n,0,-1,S(1.1)); at(n,0,-2,S(1.08)); }
+  else if(N!=='none'){
+    for(let k=1;k<=L;k++) at(n,1,-k,S(k===1?.78:.86));                                  // shadowed far side of the bridge
+    at(n,0,-1,S(1.06)); if(L>2) at(n,0,-2,S(1.04));                                      // lit ridge
+    at(n,0,0,N==='big'?mixc(S(1.04),0xd06050,.25):S(1.08)); at(n,1,0,S(.66));            // tip and nostril
+    if(N==='broad'||N==='big'){ at(n,-1,0,S(.8)); at(n,2,0,S(.74)); }
+    if(N==='hook') at(n,0,1,S(.86));
+    at(n,0,1,S(.84)); at(n,1,1,S(.8)); }                                                 // shadow under the nose
+  // mouth
+  const Mo=F.mouth||'line', m=A.mouth, mc=F.lips||S(.6), lip=F.lips?mixc(F.lips,0xffffff,.12):S(1.02);
+  if(Mo==='line'||Mo==='lips'||Mo==='smile'||Mo==='frown'||Mo==='smirk'){
+    const curve=Mo==='smile'?-1:Mo==='frown'?1:0;
+    for(let dx=-2;dx<=2;dx++) at(m,dx,Math.abs(dx)===2?curve:0,dx===2?sh(mc,.85):sh(mc,F.lips?.7:.9));
+    if(Mo==='smirk') at(m,2,-1,sh(mc,.8));
+    if(F.lips||Mo==='lips'){ at(m,-1,-1,sh(mc,.9)); at(m,0,-1,mc); at(m,-1,1,lip); at(m,0,1,lip); at(m,1,1,sh(mc,.95)); }
+    else { at(m,-1,1,S(1.05)); at(m,0,1,S(1.04)); }
+    at(m,0,2,S(.86)); }
+  else if(Mo==='teeth'){ for(let dx=-2;dx<=2;dx++) at(m,dx,0,0x2a0a0e); at(m,-1,0,0xf2ead8); at(m,1,0,0xf2ead8); at(m,0,1,0x2a0a0e); at(m,0,2,S(.86)); }
+  else if(Mo==='fangs'){ for(let dx=-2;dx<=2;dx++) at(m,dx,0,0x2a0a0e); at(m,-1,1,0xf6f0e0); at(m,1,1,0xf6f0e0); }
+  else if(Mo==='open'){ for(let dx=-1;dx<=1;dx++) for(let dy=-1;dy<=1;dy++) at(m,dx,dy,dy?0x1a080c:0x2a0a12); if(F.mouthGlow) at(m,0,0,F.mouthGlow,{glow:true}); }
+  else if(Mo==='skull'){ for(let dx=-2;dx<=2;dx++){ at(m,dx,-1,0x120a10); at(m,dx,0,(dx&1)?0x120a10:0xe8e0cc); at(m,dx,1,0x120a10); } }
+  else if(Mo==='stitched'){ for(let dx=-2;dx<=2;dx++) at(m,dx,0,0x2a1a20); for(const dx of [-2,0,2]){ at(m,dx,-1,0x4a3a40); at(m,dx,1,0x4a3a40); } }
+  else if(Mo==='tusk'){ for(let dx=-3;dx<=3;dx++) at(m,dx,0,0x2a1214); at(m,0,1,S(.8)); }
+  // chin and jaw: a lit chin ball and the shadow under it
+  if(A.chin&&Mo!=='skull'){ at(A.chin,0,0,S(1.04)); at(A.chin,0,2,S(.82)); at(A.chin,-1,2,S(.84)); at(A.chin,1,2,S(.8)); }
+}
 function paintMark(P,A,pt,at,skin){ const c=pt.c, fg=pt.glow?{glow:true}:null;
   if(pt.type==='mask'){ for(const p of [A.eyeN,A.eyeF]) for(let dx=-2;dx<=2;dx++) for(let dy=-1;dy<=0;dy++) at(p,dx,dy,c,fg); for(let x=Math.min(A.eyeN[0],A.eyeF[0]);x<=Math.max(A.eyeN[0],A.eyeF[0]);x++) P.px(x,A.eyeN[1]-1,c,fg); }
   if(pt.type==='stripes'){ for(const p of [A.cheekN,A.cheekF]) for(let i=0;i<(pt.n||2);i++) for(let dy=-1;dy<=1;dy++) at(p,-1+i*2,dy,c,fg); }

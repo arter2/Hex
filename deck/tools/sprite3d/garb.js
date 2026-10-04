@@ -124,12 +124,15 @@ const H=LAB.HATS;
 // sorceress hat: wide flat brim tipped back, low dented crown, ribbon bow and a plume
 H.wide=(R,o,K)=>{ const par=R.hat, m=MT(o.tex||o.c,{soft:true,side:DS}), m1=MT(o.tex||o.c,{soft:true}), rib=MT(o.band||0x1a2448,{soft:true});
   const BR=o.brim||.38; add(par,G.disc(.15,BR,36,(x,z,r,a)=>{ const t=(r-.15)/(BR-.15); return .05*t*t*(1-Math.cos(a))*.5+.018*t*Math.sin(4*a)-.03*t*t*(Math.cos(a)>0?Math.cos(a):0); }),m,0,-.01,0);
-  const cr=G.lathe([[.175,0],[.17,.06],[.15,.12],[.1,.165],[.03,.18],[.001,.18]],18), p=cr.attributes.position; for(let i=0;i<p.count;i++){ const y=p.getY(i), x=p.getX(i); if(y>.12) p.setY(i,y-.035*Math.max(0,1-Math.abs(x)/.06)); } cr.computeVertexNormals();
+  // a taller cavalier crown, pinched at the front and creased down the top
+  const cr=G.lathe([[.182,0],[.176,.08],[.165,.16],[.14,.22],[.08,.255],[.001,.26]],20), p=cr.attributes.position; for(let i=0;i<p.count;i++){ const y=p.getY(i), x=p.getX(i), z=p.getZ(i); const t=Math.max(0,(y-.1)/.16); p.setX(i,x*(1-.12*t*Math.max(0,z/.18))); p.setY(i,y-.045*t*Math.max(0,1-Math.abs(x)/.07)); } cr.computeVertexNormals();
   add(par,cr,m1,0,0,0); add(par,G.tor(.172,.026,5,18),rib,0,.035,0,PI/2);
   const bow=grp(par,.15,.05,.08); bow.rotation.y=.9; add(bow,G.leaf(.07,.14),rib,0,0,0,0,0,PI/2+.3); add(bow,G.leaf(.07,.14),rib,0,0,0,0,0,-PI/2-.3); add(bow,G.sph(.03,6,5),rib,0,0,.01);
   add(bow,G.leaf(.04,.18),rib,.03,-.02,-.02,0,0,PI-.3); add(bow,G.leaf(.04,.16),rib,-.03,-.02,-.02,0,0,PI+.4);
-  if(o.plume){ const pm=MT(o.plume,{soft:true}), pg=grp(par,.13,.07,.02); pg.rotation.set(-1.05,.35,-.5); const fl=add(pg,G.leaf(.11,.46),pm,0,0,0); fl.scale.set(1,1,2.2);
-    add(pg,G.leaf(.07,.36),MT(sh(o.plume,.82),{soft:true}),.0,.03,-.012).scale.set(1,1,2); add(pg,G.cyl(.006,.004,.44,4),M(sh(o.plume,.6)),0,.22,.008); }
+  // ostrich plume: a curved quill sweeping back over the brim with soft barbs along it
+  if(o.plume){ const pm=M(o.plume,{soft:true,side:DS}), pm2=M(sh(o.plume,.84),{soft:true,side:DS}), Q=[[.12,.06,.06],[.2,.16,-.02],[.24,.22,-.16],[.22,.2,-.32],[.16,.1,-.42]];
+    add(par,G.tube(Q,.008,.004,16,4),M(sh(o.plume,.6)),0,0,0); const c=new T.CatmullRomCurve3(Q.map(q=>new T.Vector3(...q)));
+    for(let i=1;i<14;i++){ const u=i/14, q=c.getPointAt(u), tn=c.getTangentAt(u); for(const s of [1,-1]){ const f=add(par,G.leaf(.03,.1+.05*Math.sin(u*PI)),i%2?pm:pm2,q.x,q.y,q.z); LAB.aim(f,tn.x*.4+s*.6,tn.y*.4-.5,tn.z*.4+s*.2); } } }
   if(o.gem) add(par,G.oct(.03),M(o.gem,{glow:true}),0,.035,.19).scale.set(1,1.4,.6);
   R.hatTip=grp(par,0,.18,0); };
 // crooked witch hat: wide floppy brim, crown kinked at mid height, drooping tip with a charm
@@ -154,9 +157,10 @@ H.flowers=(R,o,K)=>{ const h=R.head, lm=[0x3f8a3a,0x5aa844].map(c=>M(c,{soft:tru
   R.hatTip=grp(R.hat,0,0,0); };
 // brass goggles pushed up on the brow
 H.goggles=(R,o,K)=>{ const h=R.head, br=M(o.c||0xc8903a,{metal:.85}), st=M(o.strap||0x3a2418);
-  add(h,G.tor(.168,.016,4,22),st,0,.25,-.02,PI/2-.45);
-  for(const s of [1,-1]){ const g=grp(h,.058*s,.27,.13); g.rotation.x=-.75; add(g,G.cyl(.045,.045,.045,12),br,0,0,0); add(g,G.cyl(.034,.034,.05,12),M(o.lens||0x7ad8ff,{glow:true}),0,.005,0); add(g,G.tor(.045,.01,4,12),br,0,.025,0,PI/2); }
-  add(h,G.box(.03,.02,.03),br,0,.27,.16); R.hatTip=grp(R.hat,0,0,0); };
+  // pushed up on the crown, clear of the brow
+  add(h,G.tor(.168,.016,4,22),st,0,.3,-.04,PI/2-.25);
+  for(const s of [1,-1]){ const g=grp(h,.06*s,.33,.085); g.rotation.x=-1.05; add(g,G.cyl(.045,.045,.045,12),br,0,0,0); add(g,G.cyl(.034,.034,.05,12),M(o.lens||0x7ad8ff,{glow:true}),0,.005,0); add(g,G.tor(.045,.01,4,12),br,0,.025,0,PI/2); }
+  add(h,G.box(.03,.02,.03),br,0,.335,.11); R.hatTip=grp(R.hat,0,0,0); };
 // twin buns with braids looping down
 H.buns=(R,o,K)=>{ const h=R.head, m=MT(o.c,{soft:true}), d=MT(sh(o.c,.75),{soft:true}), bd=M(o.bead||0xd8b048,{metal:.8});
   for(const s of [1,-1]){ add(h,G.sph(.085,10,8),m,.13*s,.27,-.06); add(h,G.tor(.06,.018,4,12),d,.13*s,.27,-.06,0,.9*s,0);
@@ -168,7 +172,8 @@ H.spikecrown=(R,o,K)=>{ const h=R.head, m=M(o.c||0x6a5a4a,{metal:.55}), g=M(o.ge
   for(const a of [0,2.2,-2.2]) add(h,G.oct(.022),g,Math.sin(a)*.18,.27,Math.cos(a)*.175); R.hatTip=grp(R.hat,0,0,0); };
 // deer skull mask with branching antlers
 H.deerskull=(R,o,K)=>{ const h=R.head, bm=M(o.c||0xe6dcc4), dk=M(0x0e0a0c), am=M(o.antler||0x5a4630), gl=M(o.eyes||0x9cff6a,{glow:true});
-  const sk=grp(h,0,.2,.06); add(sk,G.sph(.15,14,10),bm,0,0,0).scale.set(1,.9,1.1);
+  // worn as a headdress: the skull sits up on the crown with its snout over the brow, so the face shows beneath
+  const sk=grp(h,0,.4,-.04); sk.rotation.x=-.55; sk.scale.setScalar(.7); add(sk,G.sph(.15,14,10),bm,0,0,0).scale.set(1,.82,1.1);
   const sn=add(sk,G.cyl(.06,.1,.22,8),bm,0,-.06,.14,PI/2+.5); sn.scale.set(1,1,.75); add(sk,G.box(.07,.03,.06),bm,0,-.13,.22,.4);
   for(const s of [1,-1]){ add(sk,G.sph(.04,8,6),dk,.07*s,.0,.12).scale.set(1,1.1,.6); add(sk,G.sph(.014,5,4),gl,.07*s,.0,.135); add(sk,G.sph(.012,4,3),dk,.025*s,-.12,.24); }
   for(const s of [1,-1]){ const A=[[.08*s,.12,-.02],[.2*s,.26,-.06],[.27*s,.44,-.1],[.36*s,.6,-.08]]; add(sk,G.tube(A,.032,.014,12,5),am,0,0,0);
@@ -185,7 +190,8 @@ H.thornveil=(R,o,K)=>{ const h=R.head, tm=M(o.c||0x241820), mm=[o.moss||0x3a5236
   R.hatTip=grp(R.hat,0,0,0); };
 // wolf pelt: the wolf's head rides above the brow (the face shows under its jaw), pelt down the back, paws on the chest
 H.wolf=(R,o,K)=>{ const h=R.head, f=MT(o.tex||o.c,{soft:true}), f2=MT(sh(o.c,.7),{soft:true}), lt=MT(sh(o.c,1.25),{soft:true}), dk=M(0x140e0c), tooth=M(0xf0e8d8), b=R.b;
-  const w=grp(h,0,.4,-.09); w.rotation.x=.2; add(w,G.sph(.17,14,10),f,0,0,0).scale.set(1.12,.78,1.2);
+  // the wolf's skull is worn down over the crown like a helm: its jaw rests on the brow, its hide wraps the head
+  const w=grp(h,0,.3,-.03); w.rotation.x=.12; add(w,G.sph(.185,16,12,),f,0,0,0).scale.set(1.08,.72,1.12); add(w,G.cap(.19,.62,16,8),f,0,-.06,-.02,PI).scale.set(1.08,1.1,1.1);
   const sn=add(w,G.cyl(.05,.085,.2,8),f,0,-.03,.24,PI/2+.12); sn.scale.set(1.05,1,.75); add(w,G.box(.1,.03,.16),lt,0,-.075,.23);
   add(w,G.sph(.032,6,5),dk,0,-.015,.345); for(const s of [1,-1]) for(let i=0;i<3;i++) add(w,G.cone(.012,.045,4),tooth,(.035+i*.004)*s,-.085,.31-i*.045,PI);
   for(const s of [1,-1]){ const e=grp(w,.1*s,.11,-.04); e.rotation.set(-.15,0,-.32*s); add(e,G.cone(.065,.19,5),f,0,.08,0).scale.set(1,1,.6); add(e,G.cone(.035,.12,4),lt,0,.06,.02).scale.set(1,1,.4);

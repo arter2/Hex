@@ -58,7 +58,7 @@ const F=LAB.fabric, GB=LAB.garb, sh=LAB.sh, MT=LAB.MT;
 const iceT=F(64,64,{c:0x3a6aa8,soft:false,custom:P=>{ for(let k=0;k<9;k++){ let x=P.rnd()*64, y=P.rnd()*64; for(let i=0;i<14;i++){ P.px(x,y,0xe8f8ff); x+=P.rnd()<.5?-1:1; y+=P.rnd()<.6?1:0; } }
   for(let i=0;i<60;i++) P.px(P.rnd()*64,P.rnd()*64,0x3a6ab0); for(let i=0;i<30;i++) P.px(P.rnd()*64,P.rnd()*64,0xbfe6ff); }});
 const shard=(p,m,x,y,z,len,w,dx,dy,dz)=>{ const s=add(p,G.oct(1),m,x,y,z); s.scale.set(w,len,w); LAB.aim(s,dx,dy,dz); return s; };
-bossH('glacier','Glacier Queen','unit:glacier',{fem:true, muscle:true, scale:1.7, bodyW:1.22, shK:1.15, waistK:.7, armK:1.3, legW:1.12, headK:1.12, skin:0x3a6aa8, skinTex:iceT, skinMetal:.3, facet:true,
+bossH('glacier','Glacier Queen','unit:glacier',{fem:true, muscle:true, scale:1.7, bodyW:1.22, shK:1.15, waistK:.7, armK:1.3, legW:1.12, headK:1.12, skin:0x5a8ac8, skinGlass:.55, facet:true,
   fp:{eyes:{style:'glow',c:0xeaffff}, brows:{style:'angry',c:0x2a5a9a}, nose:'small', mouth:'fangs', lips:0x2a4a8a, shadow:0x2a5aa0}, jaw:true, ears:'none',
   top:'skin', legs:'skin', shins:'skin', boot:'skin', shoe:{type:'claw',c2:0xd8f4ff}, skirt:'none', sleeve:'bare', belt:false, loin:F(32,32,{c:0x2e5c9a,custom:P=>{ for(let y=20;y<32;y++) for(let x=0;x<32;x++) if(P.rnd()<(y-20)/14) P.px(x,y,0xe8f8ff); }}), handClaws:0xd8f4ff,
   stance:{torsoX:.06,armLZ:.15,armRZ:-.1}, gait:{stride:.8,bounce:1.2},
@@ -85,9 +85,12 @@ bossH('roc','Roc','unit:roc',{muscle:true, scale:1.52, bodyW:.98, shK:1.1, waist
 
 
 /* ---------- the Wyrm: a giant scorpion whose stinger burns ---------- */
-boss('wyrm','Ember Wyrm','unit:wyrm',()=>{ const root=grp(null); root.scale.setScalar(1.08); const scT=(a,b)=>LAB.MT(LAB.fabric(64,32,{c:a,scales:{c:a,c2:b}}),{metal:.6}); const body=grp(root,0,.55,0), sc=scT(0xd8822a,0x9a4a14), sc2=scT(0x9a4a14,0x5a2a0a), dk=M(0x3a1606), belly=M(0xf0b860,{metal:.3}), eye=M(0xfff08a,{glow:true}), f1=M(0xff5a1a,{glow:true}), f2=M(0xffa040,{glow:true}), f3=M(0xfff0b0,{glow:true});
+boss('wyrm','Ember Wyrm','unit:wyrm',()=>{ const root=grp(null); root.scale.setScalar(1.08); const scT=(a,b)=>LAB.MT(LAB.fabric(64,32,{c:a,scales:{c:a,c2:b}}),{metal:.78}); const body=grp(root,0,.55,0), sc=scT(0xd8822a,0x9a4a14), sc2=scT(0x9a4a14,0x5a2a0a), dk=M(0x3a1606), belly=M(0xf0b860,{metal:.3}), eye=M(0xfff08a,{glow:true}), f1=M(0xff5a1a,{glow:true}), f2=M(0xffa040,{glow:true}), f3=M(0xfff0b0,{glow:true});
   // segmented body plates
-  for(let i=0;i<6;i++){ const r=.42-Math.abs(i-1.5)*.04; add(body,G.cap(r,.5,14,6),i%2?sc:sc2,0,0,.55-i*.28).scale.set(1.15,.55,.75); add(body,G.cyl(r*.95,r*.95,.08,14),dk,0,-.02,.55-i*.28).scale.set(1.15,1,.75); }
+  // a broad armoured thorax, then narrower keeled abdomen plates that overlap like shingles
+  add(body,G.cap(.5,.5,16,8),sc,0,0,.45).scale.set(1.25,.62,1.1); add(body,G.box(.06,.06,.7),dk,0,.3,.45);
+  for(const s of [1,-1]) add(body,G.cone(.05,.22,4),dk,.3*s,.22,.6,-.3,0,-s*.5);
+  for(let i=0;i<4;i++){ const r=.4-i*.035; add(body,G.cap(r,.5,8,5),i%2?sc:sc2,0,.02,-.05-i*.24).scale.set(1.15,.5,.72); add(body,G.cone(.04,.12,4),dk,0,r*.5,-.05-i*.24,-.4); add(body,G.cyl(r*.95,r*.95,.08,8),dk,0,-.02,-.05-i*.24).scale.set(1.15,1,.72); }
   const head=grp(body,0,.04,.85); add(head,G.cap(.36,.5,14,6),sc,0,0,0).scale.set(1.1,.55,.8); for(const s of [1,-1]){ add(head,G.sph(.05,6,5),eye,.08*s,.14,.18); add(head,G.sph(.035,6,5),eye,.18*s,.1,.12); }
   for(const s of [1,-1]) add(head,G.cone(.04,.18,4),dk,.08*s,-.04,.35,PI/2+.4);
   // pincers on jointed arms
@@ -96,14 +99,15 @@ boss('wyrm','Ember Wyrm','unit:wyrm',()=>{ const root=grp(null); root.scale.setS
     const lo=grp(c,0,-.04,.15); add(lo,G.cone(.06,.36,6),sc2,-.05*s,0,.18,PI/2,0,.25*s).scale.set(1,1,.6); for(let i=0;i<3;i++) add(up,G.cone(.015,.05,3),belly,.02*s,-.03,.1+i*.08,PI); claws.push([a,up,lo,s]); }
   const legs=[]; for(const s of [1,-1]) for(let i=0;i<4;i++){ const l=grp(body,.4*s,-.05,.45-i*.28); add(l,G.tube([[0,0,0],[.35*s,.32,.04],[.62*s,.18,.06],[.78*s,-.55,.08]],.045,.02,14,5),i%2?sc2:sc,0,0,0); add(l,G.sph(.05,6,5),dk,.35*s,.32,.04); legs.push([l,s,i]); }
   // the tail: seven segments that curl up and over, a stinger bulb wreathed in fire
-  const segs=[]; let p=grp(body,0,.05,-1.0); for(let i=0;i<7;i++){ const r=.22-i*.017; add(p,G.sph(r,10,8),i%2?sc:sc2,0,0,-.0).scale.set(1,.85,1.2); add(p,G.tor(r*.95,.025,4,12),dk,0,0,0,0,0,0); segs.push(p); p=grp(p,0,0,-.33+i*.01); }
+  const segs=[]; let p=grp(body,0,.05,-1.0); for(let i=0;i<7;i++){ const r=.22-i*.017; add(p,G.cyl(r,r*.8,.32,6),i%2?sc:sc2,0,0,-.0,PI/2,0,0); add(p,G.cone(.035,.12,4),dk,0,r*.9,0,-.3); add(p,G.tor(r*.95,.025,4,12),dk,0,0,0,0,0,0); segs.push(p); p=grp(p,0,0,-.33+i*.01); }
   const sting=p; add(sting,G.sph(.2,10,8),M(0xb0381a,{metal:.4}),0,0,0).scale.set(1,1.2,1); add(sting,G.cone(.07,.42,6),dk,0,.06,.3,PI/2+.6);
-  const flame=grp(sting,0,.1,0); for(let i=0;i<4;i++){ const f=add(flame,G.cone(.34-i*.07,.9-i*.15,7),[f1,f2,f1,f3][i],0,.4+i*.05,.02*i); }
-  for(let i=0;i<5;i++) add(flame,G.cone(.07,.3,5),i%2?f1:f2,Math.sin(i*1.3)*.2,.15,Math.cos(i*1.3)*.15,(LAB.rnd()-.5)*.6,0,Math.sin(i)*.6);
+  // living fire on the stinger, reshaped every frame, and a light in it that warms the shell plates nearby
+  const flame=grp(sting,0,.1,0); const fire=LAB.fire(flame,{h:1.0,r:.32,cols:[0xff5a1a,0xffa040,0xfff0b0],amp:.32,seed:5});
+  const pl=new THREE.PointLight(0xffb060,1.6,3.2); pl.position.set(0,.45,0); flame.add(pl);
   const fx=LAB.motes(root,0xffa040,1.8,1.2);
   return {root, apply:(g)=>{ body.position.y=.55+.02*g.bob; body.rotation.x=.12*g.strike-.1*g.wind-.15*g.hurt; body.position.z=.2*g.strike;
     const curl=1+.25*g.wind-.5*g.strike+.15*g.raise+.05*Math.sin(g.t*PI*2); segs.forEach((s,i)=>{ s.rotation.x=(i===0?.6:.5)*curl+(i>4?.2*g.strike:0); s.rotation.z=.04*Math.sin(g.t*PI*2+i*.6); });
-    sting.rotation.x=.4+.6*g.strike; root.updateMatrixWorld(true); const q=new THREE.Quaternion(); sting.getWorldQuaternion(q); flame.quaternion.copy(q.invert()); flame.scale.setScalar(.85+.15*Math.sin(g.t*PI*6)+.5*Math.max(g.strike,g.raise)); flame.children.forEach((f,i)=>f.rotation.z=.12*Math.sin(g.t*PI*4+i));
+    sting.rotation.x=.4+.6*g.strike; root.updateMatrixWorld(true); const q=new THREE.Quaternion(); sting.getWorldQuaternion(q); flame.quaternion.copy(q.invert()); flame.scale.setScalar(.95+.5*Math.max(g.strike,g.raise)); fire.update(g.t); pl.intensity=1.4+.4*Math.sin(g.t*PI*2*3);
     claws.forEach(([a,up,lo,s])=>{ const open=.25+.5*g.wind+.6*g.raise+.15*Math.sin(g.t*PI*2); up.rotation.y=s*open*.6; lo.rotation.y=-s*open*.5; a.rotation.y=-s*(.2*g.strike); a.rotation.x=-.3*g.wind+.2*g.strike-.4*g.raise; });
     legs.forEach(([l,s,i])=>{ const w=g.step?Math.sin(g.t*PI*2+i*1.7+(s>0?0:PI)):0; l.rotation.x=.25*w; l.rotation.z=s*(.12*Math.max(0,w)-.08*g.hurt); }); fx.update(g.raise,g.t); }}; },{note:'Rebuilt as a giant scorpion with a burning stinger, like the current art.'});
 
@@ -157,15 +161,16 @@ miniH('dungeonwarden','Dungeon Warden','mini:dungeonwarden',{muscle:true, scale:
     fl(R.head,0,.4,0,1.3); fl(R.head,.1,.36,-.05,.9); fl(R.head,-.1,.36,-.05,.9); for(const n of ['L','R']) fl(R['hand'+n],0,.06,0,.7); fl(R.torso,0,.6,-.05,1); }},{note:'An empty suit of armour that walks: ghost-fire burns where its head should be and leaks from its gauntlets.'});
 miniH('alchemist','Plague Alchemist','mini:alchemist',{scale:1.22, skin:0xd8c8a8, robe:F(128,64,{c:0x16141a,mottle:[0x101014,.2],rows:[{y0:56,y1:64,c:0x101014,pat:'drop',pc:0x9be05a,every:9,pfg:{glow:true}}]}), robeDk:0x0c0a10, top:0x16141a,
   trim:0x9be05a, hat:{type:'beak',c:0xe8dcc0,hat:0x0c0a10,lens:0x9be05a}, cape:0x0c0a10, capeHem:0x2a2a22, belt:0x3a2a1e, belt2:0x9be05a, sleeve:'flared', gloves:0x1a1410, mantle:0x0c0a10,
-  stance:{torsoX:.12,headX:-.04}, gait:{stride:.8},
+  // a wide bell of a coat split at the front, and a short shuffling step, so the legs stay inside it
+  skirtW:1.32, skirtGap:.55, attitude:'stalk', stance:{torsoX:-.02,headX:-.02}, gait:{stride:.42,lift:.45},
   weapon:{kind:'flask',c:0x9be05a}, offhand:{kind:'flask',c:0xd0ff6a}, fx:0x9be05a,
   dress(R,C){ const b=C.b; GB.strap(R,C,[-b.sh*.7,.5,b.ch*C.dz*.6],[b.wa*.9,.08,b.wa*C.dz*.9],0x3a2a1e,.05);
     for(let i=0;i<5;i++){ const u=i/4, x=-b.sh*.55+u*(b.wa*.9+b.sh*.55), y=.46-u*.36, z=b.ch*C.dz*.75+.04; add(R.torso,G.cyl(.022,.022,.07,6),M([0x9be05a,0xd0ff6a,0x6aff9a][i%3],{glow:true}),x,y,z); add(R.torso,G.cyl(.012,.012,.02,5),M(0x6b4428),x,y+.045,z); }
     GB.belt(R,C,{mat:null,items:[{t:'lantern',a:1.4,c:0x9be05a},{t:'pouch',a:-1.3,c:0x3a2a1e}]}); }});
-miniH('assassin','Shadow Assassin','mini:assassin',{slender:true, legK:1.12, armLen:1.1, scale:1.2, skin:0xc8a088, fp:{eyes:{style:'narrow',c:0xff3a5a,glow:true}, brows:{style:'angry',c:0x1a0a10}, nose:'none', mouth:'none', paint:{type:'mask',c:0x1a0a14}},
-  robe:0x1a1022, robeDk:0x0e0814, top:F(64,32,{c:0x1a1022,custom:P=>{ for(let y=4;y<28;y++) P.px(Math.round(-6+y*.5),y,0x6a1a2a); }}), skirt:'mini', skirtC:0x140c1c, rags:true, legs:0x140c1c, boot:0x0a060e, bootTall:true, sleeve:'tight', sleeveC:0x1a1022,
+miniH('assassin','Shadow Assassin','mini:assassin',{slender:true, muscle:true, bodyW:.9, waistK:.82, legK:1.12, armLen:1.1, scale:1.22, skin:0x0a0610, face:'void', eyes:0xff2a4a, armSkin:0x3a2a30, attitude:'stalk',
+  robe:0x120a18, robeDk:0x08040c, top:F(64,32,{c:0x120a18,custom:P=>{ for(let y=4;y<28;y++) P.px(Math.round(-6+y*.5),y,0x6a1a2a); }}), skirt:'mini', skirtC:0x140c1c, rags:true, legs:0x140c1c, boot:0x0a060e, bootTall:true, sleeve:'tight', sleeveC:0x1a1022,
   hat:{type:'hood',c:0x120a18}, cape:0x0e0814, capeLen:1.2, capeHem:0x4a1a2a, straps:0x2a1a2a, gloves:0x0a060e, belt:0x6a1a2a, ears:'none',
-  stance:{torsoX:.22,headX:-.14,kneeL:.25,kneeR:.25,hipsY:-.05,legL:-.15,legR:.1}, gait:{stride:1.2,bounce:.6},
+  stance:{torsoX:.06,headX:-.12,kneeL:.12,kneeR:.0,hipsY:-.03,legL:-.15,legR:.1,armRX:-.5,elbowR:-.9,armLX:.3,armLZ:.35}, gait:{stride:1.2,bounce:.6},
   weapon:{kind:'dagger',c:0xff3a5a,metal:M(0x6a6a7a,{metal:1})}, offhand:{kind:'dagger',c:0xff3a5a,metal:M(0x6a6a7a,{metal:1})}, fx:0xff3a5a,
   dress(R,C){ add(R.head,G.robe([[.17,-.02],[.175,.08],[.165,.12]],6,.01,20),M(0x6a1a2a,{soft:true}),0,0,0).scale.set(1,1,1.02); for(const s of [1,-1]) add(R.torso,G.cloth(.06,.4,1.3,1,.01,.012),M(0x6a1a2a,{soft:true}),.06*s,.06,-C.b.wa*C.dz-.04,.15,0,s*.12); }});
 /* ---------- Arcane Construct: a hovering rune-stone shell round a blazing crystal, a one-eyed mask, fists that float free ---------- */

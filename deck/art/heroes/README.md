@@ -2,7 +2,7 @@
 
 Painted hero sheets, keyed from green screen to transparent PNG by `deck/tools/key_heroes.py`
 (the green originals go in `src/`, which git ignores). One file per look; keys match
-`PLAYER_LOOKS` in `deck/sprites.js`.
+`PLAYER_LOOKS` in `deck/sprites.js`. Undead and Necromancer are one class.
 
 | File | Look | Race / class | Notes |
 |---|---|---|---|
@@ -16,11 +16,11 @@ Painted hero sheets, keyed from green screen to transparent PNG by `deck/tools/k
 | `dwarf_m_bare.png` | dwarf_m (hatless) | Dwarf man | Labeled sheet, 8 directions, big beard |
 | `dwarf_m_bare_alt.png` | (spare) | Dwarf man | Long hair, short stubble |
 | `dwarf_f_bare.png` | dwarf_f (hatless) | Dwarf woman | Labeled sheet, 8 directions, braids |
-| `necro_m.png` | necro | Necromancer man | Skeleton |
-| `undead_f.png` | undead_f | Undead woman | |
+| `necro_m.png` | necro | Necromancer (undead) man | Skeleton |
 | `witch_f.png` | witch | Witch | Labeled sheet, 8 directions, hat and no-hat statics |
 | `warlock.png` | witch_m | Warlock | |
-| `necro_f.png` | necro_f | Necromancer woman | |
+| `necro_f.png` | necro_f | Necromancer (undead) woman | White hair, pale |
+| `warlock_f.png` | (spare) | Warlock woman | Matches the warlock sheet |
 | `shaman_m.png` | shaman_m | Shaman man | |
 | `shaman_f.png` | shaman_f | Shaman woman | |
 | `ranger_m.png` | ranger_m | Ranger man | |
@@ -43,7 +43,6 @@ Painted hero sheets, keyed from green screen to transparent PNG by `deck/tools/k
 ## Still missing
 
 - **Dwarf** with hat: only the hatless sheets so far.
-- **Undead man** (undead_m): no sheet; the skeleton is the necromancer man.
 - **Hatless sets** (`frontBare`, `backBare`, `animBare`): done for the wizard and both dwarves;
   human_f and witch_f have only static no-hat poses; no hatless art for the other looks.
 - **Back-view action** (cast, walk, hurt from behind): the unlabeled sheets show the back only

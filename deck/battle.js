@@ -587,7 +587,9 @@ function resizeView(){
 }
 // screen -> tile: the tile whose top face is under the finger, or the nearest one close by
 function pickTile(clientX,clientY){
-  [clientX,clientY]=appXY(clientX,clientY); const r=appBox(View.canvas), x=clientX-r.left, y=clientY-r.top;
+  [clientX,clientY]=appXY(clientX,clientY); const r=appBox(View.canvas); return pickAt(clientX-r.left,clientY-r.top); }
+// board point (canvas pixels) -> tile
+function pickAt(x,y){
   let best=null, bd=1e9;
   for(const t of TILES){ const hc=hexCorners(t,1);
     let inside=false; for(let i=0,j=5;i<6;j=i++){ const [xi,yi]=hc[i], [xj,yj]=hc[j]; if((yi>y)!==(yj>y)&&x<(xj-xi)*(y-yi)/(yj-yi)+xi) inside=!inside; }

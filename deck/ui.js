@@ -569,7 +569,10 @@ function renderCustom(){
     else { const s=document.createElement('div'); s.className='slot'; s.dataset.zone='queue'; s.dataset.i=i; s.innerHTML='Slot '+(i+1)+'<small>+1 draw next</small>'; q.appendChild(s); }
   }
   const h=$('#custHand'); h.innerHTML='';
-  const base=combos.length;
+  const base=combos.length, lay=handLayout(p), byUid=new Map(p.hand.map((c,i)=>[c.uid,i]));
+  // a queued card leaves an empty outline where it sat, so the rest of the hand stays put
+  lay.forEach(u=>{ if(byUid.has(u)) return; const s=document.createElement('div'); s.className='slot hole'; s.dataset.zone='hand'; s.dataset.uid=u;
+    const nxt=lay.slice(lay.indexOf(u)+1).find(v=>byUid.has(v)); s.dataset.i=nxt==null?p.hand.length:byUid.get(nxt); s.style.order=lay.indexOf(u); h.appendChild(s); });
   p.hand.forEach((inst,i)=>{ const el=cardEl(inst.card,inst.left!=null?`<span class="badge">${inst.left} left</span>`:''); el.title='Key '+(i+1);
     el.dataset.zone='hand'; el.dataset.i=i;
     // glow if adding this card to the queue would make a new combo
@@ -577,12 +580,23 @@ function renderCustom(){
     else if(p.queue.length&&p.queue.length<slots&&recipeStep([...p.queue.map(c=>c.card),inst.card])&&!oneRune([...p.queue.map(c=>c.card),inst.card])) el.classList.add('recipe-step');   // part of a recipe with what is queued
     else if(p.queue.length&&oneRune([...p.queue.map(c=>c.card),inst.card])) el.classList.add('rune-match');   // same rune as the queue
     if(dealt.has(inst.uid)){ el.classList.add('deal'); el.style.animationDelay=(i*.06)+'s'; }
-    dragCard(el,inst); h.appendChild(el); });
+    el.style.order=lay.indexOf(inst.uid); el.dataset.uid=inst.uid; dragCard(el,inst); h.appendChild(el); });
   B.justDrawn=null;
   $('#custEmpty').textContent=wandOnly(p)?'Your deck is empty. Fight on with your wand!':!p.draw.length?'Deck empty: these are your last cards.':'';
   const empty=Math.max(0,RULES.slots-p.queue.length);
   $('#btnFight').textContent=wandOnly(p)?'Fight!':'Fight!'+(empty?' (+'+empty+' draw next time)':'');
 }
+/* Every card keeps its own spot in the hand for the whole fight: taking one into the queue leaves
+   a gap, and it goes back to that gap when it returns, so cards never shuffle about. New cards
+   take the spots at the end. The hand array is kept in this order (number keys follow it). */
+function handLayout(p){ const inH=new Set(p.hand.map(c=>c.uid)), inQ=new Set(p.queue.map(c=>c.uid));
+  const L=(B.handLay||[]).filter(u=>inH.has(u)||inQ.has(u)); for(const c of p.hand) if(!L.includes(c.uid)) L.push(c.uid);
+  // trim gaps at the end, so an emptied hand does not keep a row of outlines
+  while(L.length&&!inH.has(L[L.length-1])) L.pop();
+  const pos=new Map(L.map((u,i)=>[u,i])); p.hand.sort((a,b)=>pos.get(a.uid)-pos.get(b.uid)); B.handLay=L; return L; }
+// a card dropped on a spot in the hand takes that spot
+function layDrop(uid,beforeUid){ const L=B.handLay||[]; const i=L.indexOf(uid); if(i>=0) L.splice(i,1);
+  const j=beforeUid==null?-1:L.indexOf(beforeUid); if(j<0) L.push(uid); else L.splice(j,0,uid); }
 /* Drag and drop on the Custom screen. A tap moves a card between hand and queue, a hold shows
    its detail, and a drag puts it exactly where it is dropped: a slot (swapping if full), a
    place in the hand, or back out of the queue. */
@@ -610,7 +624,8 @@ function dragCard(el,inst){
     if(d.ghost) d.ghost.remove(); if(d.over) d.over.classList.remove('drop'); el.classList.remove('dragging');
     const p=B.piles;
     if(d.moved){ const t=e.type==='pointercancel'?null:dropTarget(e.clientX,e.clientY);
-      if(t){ const zone=t.dataset.zone, i=t.dataset.i!=null?+t.dataset.i:null; placeCard(p,d.inst.uid,zone,i); buzz(10); } }
+      if(t){ const zone=t.dataset.zone, i=t.dataset.i!=null?+t.dataset.i:null, spot=t.dataset.uid;
+        if(placeCard(p,d.inst.uid,zone,i)&&zone==='hand'&&spot&&spot!==String(d.inst.uid)) layDrop(d.inst.uid,isNaN(+spot)?spot:+spot); buzz(10); } }
     else if(!d.long){ if(!toggleQueue(p,d.inst.uid)) tip('The queue is full'); }
     renderCustom();
   };
@@ -675,11 +690,20 @@ wandBtn.addEventListener('pointerdown',e=>{ e.preventDefault(); try{ wandBtn.set
 ['pointerup','pointercancel'].forEach(ev=>wandBtn.addEventListener(ev,()=>{ wandBtn.classList.remove('charging'); wandUp(); }));
 wandBtn.addEventListener('contextmenu',e=>e.preventDefault());
 
-let dragging=false;
+/* Moving on the board: a tap walks to the tapped tile. A drag works like a trackpad: put your
+   finger anywhere (below your mage, say, so it stays in view) and slide it; your mage moves the
+   same way from where it stood, so your finger never has to cover it. */
+let dragging=null;
 View.canvas=$('#board'); View.ctx=View.canvas.getContext('2d');
-View.canvas.addEventListener('pointerdown',e=>{ const t=pickTile(e.clientX,e.clientY); if(t&&t.side==='e'){ setAim(t); return; } dragging=true; moveTo(t); });
-View.canvas.addEventListener('pointermove',e=>{ if(!dragging) return; const t=pickTile(e.clientX,e.clientY); if(t&&t.side==='p') moveTo(t); });
-['pointerup','pointercancel','pointerleave'].forEach(ev=>View.canvas.addEventListener(ev,()=>dragging=false));
+View.canvas.addEventListener('pointerdown',e=>{ const t=pickTile(e.clientX,e.clientY); if(t&&t.side==='e'){ setAim(t); return; }
+  if(!B||!B.player) return; try{ View.canvas.setPointerCapture(e.pointerId); }catch(_){}
+  const [ax,ay]=appXY(e.clientX,e.clientY), [wx,wz]=posOf(B.player), [px,py]=proj(wx,0,wz);
+  dragging={id:e.pointerId,x0:ax,y0:ay,px,py,tap:t,moved:false}; });
+View.canvas.addEventListener('pointermove',e=>{ const d=dragging; if(!d||e.pointerId!==d.id) return; const [ax,ay]=appXY(e.clientX,e.clientY);
+  if(!d.moved&&Math.hypot(ax-d.x0,ay-d.y0)>12) d.moved=true;
+  if(d.moved){ const t=pickAt(d.px+(ax-d.x0)*1.15,d.py+(ay-d.y0)*1.15); if(t&&t.side==='p') moveTo(t); } });
+const dragEnd=e=>{ const d=dragging; if(!d||e.pointerId!==d.id) return; dragging=null; if(!d.moved&&e.type==='pointerup'&&d.tap&&d.tap.side==='p') moveTo(d.tap); };
+['pointerup','pointercancel'].forEach(ev=>View.canvas.addEventListener(ev,dragEnd));
 window.addEventListener('resize',()=>{ if($('#scrBattle').classList.contains('on')) resizeView(); });
 
 const held=new Set();

@@ -609,7 +609,8 @@ body.wide .camp{grid-template-areas:"logo logo" "area area" "scene depth" "scene
   background:linear-gradient(#050608ee,#05060800);}
 #xTop .info{display:flex; flex-direction:column; align-items:flex-end; gap:2px; font-size:13px;}
 #xGold{color:#f2c94c;}
-#xMini{position:absolute; top:52px; right:10px; width:120px; height:120px; image-rendering:pixelated; border:2px solid #2a2f3e; background:#05060a; pointer-events:none;}
+#xMini{position:absolute; top:52px; right:10px; width:120px; height:120px; image-rendering:pixelated; border:2px solid #2a2f3e; background:#05060a; touch-action:none; user-select:none; -webkit-user-select:none; -webkit-touch-callout:none;}
+#xMini.big{position:fixed; zoom:1; top:50%!important; left:50%; right:auto; width:min(94vw,70vh)!important; height:min(94vw,70vh)!important; transform:translate(-50%,-50%); z-index:20; border:3px solid #7fd4ff; box-shadow:0 0 0 100vmax rgba(0,0,0,.55);}
 #xLog{max-width:min(560px,100%); margin-bottom:8px; font-size:13px; line-height:1.35; text-shadow:0 1px 0 #000,0 0 4px #000; pointer-events:none;}
 #xLog .dim{color:#9aa3b5;} #xLog .good{color:#7dffb0;} #xLog .bad{color:#ff7a85;} #xLog .warn{color:#ffd166;} #xLog .gold{color:#f2c94c;} #xLog .loot{color:#c9a7ff;}
 #xBottom{position:absolute; left:0; right:0; bottom:0; padding:8px 12px 10px; background:linear-gradient(#05060800,#050608ee);}
@@ -777,3 +778,6 @@ body.tall #xStatus{top:calc(84px + env(safe-area-inset-top,0px)); max-width:calc
 /* the game turned a quarter to keep the chosen orientation (Settings › Screen orientation) */
 #app.rot{inset:auto; top:0; left:0; transform-origin:0 0; transform:rotate(90deg) translateY(-100%);}
 body.rot .drag-ghost,body.rot .gghost{transform:rotate(90deg);}
+#xSearch.aiming{border-image-source:var(--px-btn-gold); color:var(--gold);}
+.hand .slot.hole{min-height:128px; opacity:.45;}
+body.lsS #custHand .slot.hole{min-height:104px;}

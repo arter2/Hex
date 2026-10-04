@@ -11,6 +11,7 @@
    through a few hooks (xFloorPlan, xPopulate, xBumpExtra, xEnterExtra, xDungeonTick...). */
 
 const XN=48, XCS=2, XWALL=1.7;           // grid cells per side, world units per cell, wall height
+const XSPR=3.3;                          // height of a person on the map, in world units
 const T_ROCK=0, T_FLOOR=1, T_DOOR=2;
 const TRAPS={
   spike:{name:'spike trap', dmg:[9,14],  col:'#9aa4b0', text:'Spikes shoot up through the floor!'},
@@ -223,13 +224,27 @@ function xInit3D(){
   const dust=new THREE.Points(dgeo,new THREE.PointsMaterial({color:0xffffff,size:.08,transparent:true,opacity:.5,blending:THREE.AdditiveBlending,depthWrite:false}));
   dust.renderOrder=3; scene.add(dust);
   X3={renderer,scene,cam,amb,lamp,dust,group:null,ray:new THREE.Raycaster(),plane:new THREE.Plane(new THREE.Vector3(0,1,0),0)};
+  // the search reticle: a ring as wide as the area a search covers, with a cross at its heart
+  const rm=new THREE.MeshBasicMaterial({color:0x7fe3ff,transparent:true,opacity:.9,depthTest:false}), ret=new THREE.Group();
+  const ring=new THREE.Mesh(new THREE.RingGeometry(XCS*2.3,XCS*2.5,40),rm); ring.rotation.x=-Math.PI/2; ret.add(ring);
+  for(const [w,d] of [[XCS*1.2,.14],[.14,XCS*1.2]]){ const b=new THREE.Mesh(new THREE.PlaneGeometry(w,d),rm); b.rotation.x=-Math.PI/2; ret.add(b); }
+  ret.renderOrder=6; ret.traverse(o=>o.renderOrder=6); ret.visible=false; scene.add(ret); X3.reticle=ret;
   cv.addEventListener('pointerdown',e=>{ if(!EX||!EX.active||xPaused) return; e.preventDefault(); try{ cv.setPointerCapture(e.pointerId); }catch(_){}
-    const [ax,ay]=appXY(e.clientX,e.clientY); XHOLD.id=e.pointerId; XHOLD.x=XHOLD.x0=ax; XHOLD.y=XHOLD.y0=ay; XHOLD.t0=performance.now(); XHOLD.on=true; });
-  cv.addEventListener('pointermove',e=>{ if(e.pointerId===XHOLD.id){ [XHOLD.x,XHOLD.y]=appXY(e.clientX,e.clientY); } });
-  const end=e=>{ if(e.pointerId!==XHOLD.id) return; const tap=performance.now()-XHOLD.t0<260&&Math.hypot(XHOLD.x-XHOLD.x0,XHOLD.y-XHOLD.y0)<14;
+    const [ax,ay]=appXY(e.clientX,e.clientY);
+    if(EX.aim){ EX.aim.id=e.pointerId; EX.aim.cell=xAimCell(ax,ay); return; }
+    XHOLD.id=e.pointerId; XHOLD.x=XHOLD.x0=ax; XHOLD.y=XHOLD.y0=ay; XHOLD.t0=performance.now(); XHOLD.on=true; });
+  cv.addEventListener('pointermove',e=>{ if(EX&&EX.aim&&e.pointerId===EX.aim.id){ const [ax,ay]=appXY(e.clientX,e.clientY); EX.aim.cell=xAimCell(ax,ay); return; }
+    if(e.pointerId===XHOLD.id){ [XHOLD.x,XHOLD.y]=appXY(e.clientX,e.clientY); } });
+  const end=e=>{ if(EX&&EX.aim&&e.pointerId===EX.aim.id) return xSearchAt(EX.aim.cell);
+    if(e.pointerId!==XHOLD.id) return; const tap=performance.now()-XHOLD.t0<260&&Math.hypot(XHOLD.x-XHOLD.x0,XHOLD.y-XHOLD.y0)<14;
     XHOLD.on=false; XHOLD.id=null; if(tap) xTap(e); };
   cv.addEventListener('pointerup',end); cv.addEventListener('pointercancel',e=>{ XHOLD.on=false; XHOLD.id=null; });
   cv.addEventListener('contextmenu',e=>e.preventDefault());
+  // hold a finger on the minimap to see it big; let go to shrink it back
+  const mm=$('#xMini'); let mmT=0;
+  const mmOff=()=>{ clearTimeout(mmT); mm.classList.remove('big'); };
+  mm.addEventListener('pointerdown',e=>{ e.preventDefault(); try{ mm.setPointerCapture(e.pointerId); }catch(_){} clearTimeout(mmT); mmT=setTimeout(()=>{ if(EX) xMini(); mm.classList.add('big'); },250); });
+  mm.addEventListener('pointerup',mmOff); mm.addEventListener('pointercancel',mmOff); mm.addEventListener('contextmenu',e=>e.preventDefault());
   return X3;
 }
 function xTex(cv,rep){ const t=new THREE.CanvasTexture(cv); t.magFilter=THREE.NearestFilter; t.minFilter=THREE.NearestFilter; if(rep){ t.wrapS=t.wrapT=THREE.RepeatWrapping; } return t; }
@@ -368,7 +383,7 @@ function xBuildScene(){
   xAreaLights(grp,A);
   // you and the enemies are flat sprites standing in the 3D rooms, like the old dungeon crawlers
   // you are seen from behind and above, as in battle: the same four poses (stand, walk, cast, attack)
-  EX.me=xSprite(()=>unitSprite({kind:'player',look:gearLook(save),view:'back',pose:EX.pose||'idle'}),2.3); grp.add(EX.me);
+  EX.me=xSprite(()=>unitSprite({kind:'player',look:gearLook(save),view:EX.view||'front',pose:EX.pose||'idle'}),XSPR); grp.add(EX.me);
   for(const gp of EX.groups) xGroupSprites(gp,grp);
   if(typeof xBuildProps==='function') xBuildProps();   // people, puzzles, keys and the rest (dungeon.js)
 }
@@ -408,7 +423,7 @@ function xAreaLights(grp,A){
       halo.scale.set(2.6,2.6,1); halo.position.set(0,.55,.25); halo.renderOrder=2; g.add(halo);
       g.visible=false; grp.add(g); EX.glows.push({g,floor,mats,halo,ph:R()*6}); } }
 }
-function xGroupSprites(gp,grp){ const id=gp.ids[0], d=ENEMY_DEFS[id], h=2.3*Math.max(.75,Math.min(1.7,d.scale||1));
+function xGroupSprites(gp,grp){ const id=gp.ids[0], d=ENEMY_DEFS[id], h=XSPR*Math.max(.75,Math.min(1.7,d.scale||1));
   gp.sprite=xSprite(()=>unitSprite({kind:'enemy',id,color:d.color}),h); gp.sprite.visible=false; grp.add(gp.sprite);
   gp.zz=xTextSprite('z','#9fd8ff'); gp.bang=xTextSprite('!','#ff4d5e'); gp.zz.visible=gp.bang.visible=false; grp.add(gp.zz,gp.bang); gp.h=h;
   // a miniboss stands on a ring of its colour, so you know it for a big threat from afar
@@ -449,7 +464,7 @@ const XKEY={}, XHOLD={on:false,id:null,x:0,y:0,x0:0,y0:0,t0:0};
 let xPaused=false;
 function xPause(on){ xPaused=!!on; for(const k in XKEY) XKEY[k]=false; XHOLD.on=false; XHOLD.id=null; }
 document.addEventListener('keydown',e=>{ if(!EX||!EX.active||xPaused) return; const k=e.key.toLowerCase(), a=keyAct(k,'map'); XKEY[k]=true;
-  if(a==='search') xSearch(); else if(a==='disarm') xDisarm(); else if(a==='camp') xToCamp();
+  if(a==='search'){ if(EX.aim) xSearch(); else xSearchAt(EX.pc); } else if(a==='disarm') xDisarm(); else if(a==='camp') xToCamp();
   if(a||k===' '){ e.preventDefault(); } if(['up','down','left','right'].includes(a)) EX.path=[]; });
 document.addEventListener('keyup',e=>{ XKEY[e.key.toLowerCase()]=false; });
 function xTap(e){ if(!EX||!EX.active||EX.busy) return; const G=X3, r=appBox(e.target), [ex,ey]=appXY(e.clientX,e.clientY);
@@ -490,7 +505,7 @@ function xMove(dt){
   const cx=(xcx(EX.pc)+.5)*XCS, cz=(xcy(EX.pc)+.5)*XCS, ease=(a,b)=>Math.max(-sp,Math.min(sp,b-a));
   if(!okZ&&Math.abs(iz)>.3&&!okX) EX.px+=ease(EX.px,cx); else if(!okZ&&Math.abs(iz)>.3&&Math.abs(ix)<.3) EX.px+=ease(EX.px,cx);
   if(!okX&&Math.abs(ix)>.3&&Math.abs(iz)<.3) EX.pz+=ease(EX.pz,cz);
-  if(Math.abs(ix)>.2) EX.face=ix<0?-1:1; EX.view=iz<-.35?'back':'front'; EX.walk=(EX.walk||0)+dt*10;
+  if(Math.abs(ix)>.2) EX.face=ix<0?-1:1; if(iz<-.35) EX.view='back'; else if(iz>.35) EX.view='front'; EX.walk=(EX.walk||0)+dt*10;
   const c=xcell(EX.px,EX.pz); if(c!==EX.pc&&c>=0){ EX.pc=c; xEnter(c); }
 }
 // walking into a cell: walls stop you, doors open, chests open, a trap you know about stops you
@@ -525,18 +540,29 @@ function xSpring(tr,remote){ const T=TRAPS[tr.kind]; tr.known=true; xTrapMesh(tr
   if(T.fall&&!remote&&EX.hp>0&&typeof xFall==='function') xFall(1,'You tumble down to the floor below!'); }
 
 /* ---------------- search, disarm, chests ---------------- */
-function xSearch(){ if(!EX||EX.action||EX.busy) return; EX.path=[]; xLog('You search the area…','dim');
-  EX.action={t:1.1, done(){ if(!xSearchRoll(1,false)) xLog('You find nothing.','dim'); } };
+// Search: a reticle appears and follows your finger (the floor holds still while you aim); let go
+// to search the 5 x 5 tiles under it. Pressing Search again (or F) searches where it is.
+const XAIM_R=4;   // how far from you the reticle can go, in tiles
+function xSearch(){ if(!EX||EX.action||EX.busy) return;
+  if(EX.aim) return xSearchAt(EX.aim.cell);
+  EX.path=[]; XHOLD.on=false; EX.aim={cell:EX.pc}; xLog('Drag to aim your search; let go to search there.','dim'); xHud(); }
+function xSearchAt(c){ if(!EX||EX.action||EX.busy) return; EX.aim=null; EX.path=[]; EX.searchCell=c; xLog('You search the area…','dim');
+  EX.action={t:1.1, done(){ EX.searchCell=null; if(!xSearchRoll(1,false,c)) xLog('You find nothing.','dim'); } };
   xHud(); }
+// the cell under a screen point, kept within reach of you
+function xAimCell(ex,ey){ const G=X3, r=appBox($('#xView')), v=new THREE.Vector2((ex-r.left)/r.width*2-1,-(ey-r.top)/r.height*2+1), hit=new THREE.Vector3();
+  G.ray.setFromCamera(v,G.cam); if(!G.ray.ray.intersectPlane(G.plane,hit)) return EX.aim.cell;
+  const px=xcx(EX.pc), py=xcy(EX.pc), cl=(a,b)=>Math.max(b-XAIM_R,Math.min(b+XAIM_R,a));
+  return xi(Math.max(0,Math.min(XN-1,cl(Math.floor(hit.x/XCS),px))),Math.max(0,Math.min(XN-1,cl(Math.floor(hit.z/XCS),py)))); }
 // one search of everything within 2 tiles you can see: k is the chance (1 for the Search button,
 // a third while you stand still); deeper traps are a little harder to spot
-function xSearchRoll(k,quiet){ const x=xcx(EX.pc), y=xcy(EX.pc); let found=0; const hard=Math.max(.75,1-EX.depth*.01);
+function xSearchRoll(k,quiet,at){ const ctr=at==null?EX.pc:at, x=xcx(ctr), y=xcy(ctr); let found=0; const hard=Math.max(.75,1-EX.depth*.01);
   for(let dy=-2;dy<=2;dy++) for(let dx=-2;dx<=2;dx++){ const i=xi(x+dx,y+dy), d=EX.doors.get(i);
     if(d&&d.state==='secret'&&xLos(EX.pc,i)&&Math.random()<.55*k){ d.state='closed'; d.leaf.visible=true; found++; xLog(quiet?'Standing still, you notice the outline of a hidden door!':'You find a hidden door!','good');
       const w=EX.wIdx.get(i); if(w){ w[0].setMatrixAt(w[1],new THREE.Matrix4().makeScale(0,0,0)); w[0].instanceMatrix.needsUpdate=true; EX.wIdx.delete(i); } EX.seen[i]=1; } }
   for(const tr of EX.traps) if(tr.armed&&!tr.known&&xLos(EX.pc,tr.cell)&&Math.max(Math.abs(xcx(tr.cell)-x),Math.abs(xcy(tr.cell)-y))<=2&&Math.random()<.65*k*hard){ tr.known=true; xTrapMesh(tr); found++; xLog('You find a '+TRAPS[tr.kind].name+'.','good'); }
   for(const ch of EX.chests) if(!ch.open&&ch.trap&&!ch.trapKnown&&Math.max(Math.abs(xcx(ch.cell)-x),Math.abs(xcy(ch.cell)-y))<=1&&Math.random()<.65*k){ ch.trapKnown=true; found++; xLog('The chest\'s lock is trapped.','good'); }
-  if(typeof xSearchExtra==='function') found+=xSearchExtra(k,quiet);
+  if(typeof xSearchExtra==='function') found+=xSearchExtra(k,quiet,at);
   if(found){ xUpdateVis(); xHud(); } return found; }
 function xDisarmTarget(){ const x=xcx(EX.pc), y=xcy(EX.pc), near=c=>Math.max(Math.abs(xcx(c)-x),Math.abs(xcy(c)-y))<=1;
   return EX.traps.find(t=>t.armed&&t.known&&near(t.cell))||EX.chests.find(c=>!c.open&&c.trap&&c.trapKnown&&near(c.cell)); }
@@ -612,7 +638,28 @@ function xStairsDown(){
   if(EX.groups.some(g=>g.boss)){ xSay('boss','The stairs are sealed while the guardian of this floor lives.'); return; }
   EX.busy=true; if(typeof xEscortCheck==='function') xEscortCheck(); xLog('You descend…','dim'); const nd=EX.depth+1, hp=Math.min(xmaxHp(),EX.hp+Math.round(xmaxHp()*.2));
   save.deepest=Math.max(save.deepest,nd); persist(); if(typeof XRUN!=='undefined'&&XRUN){ XRUN.keys.boss=0; if(XRUN.chute===EX.depth) XRUN.chute=0; }
-  setTimeout(()=>{ buildFloor(nd,hp); EX.active=true; xHud(); xLoopStart(); xBanner(nd); },500);
+  xKeep(); setTimeout(()=>{ xGoFloor(nd,hp,'up'); EX.active=true; xHud(); xLoopStart(); xBanner(nd); },500);
+}
+// floors you have been on this run are kept as you left them, so the stairs work both ways
+function xFloors(){ return typeof XRUN!=='undefined'&&XRUN?(XRUN.floors||(XRUN.floors=new Map())):null; }
+function xKeep(){ const m=xFloors(); if(m&&EX&&!EX.branch) m.set(EX.depth,EX); }
+// go to a floor, arriving on its stairs up or down (or a cell): a kept floor comes back as it was;
+// a new one reached from below has its guardian already beaten, since you came past it
+function xGoFloor(depth,hp,at){ const m=xFloors(), F=m&&m.get(depth), ail=EX&&EX.ail;
+  if(F){ EX=F; EX.hp=hp; EX.busy=false; EX.path=[]; EX.action=null; EX.aim=null; EX.searchCell=null; EX.stuckT=0; EX.fighting=null; if(ail) EX.ail=ail; xBuildScene(); for(const tr of EX.traps) if(tr.known&&tr.armed) xTrapMesh(tr); }
+  else { buildFloor(depth,hp);
+    if(at==='down') for(const g of EX.groups.filter(g=>g.boss)){ EX.groups.splice(EX.groups.indexOf(g),1); [g.sprite,g.zz,g.bang,g.ring].forEach(o=>o&&X3.group.remove(o)); EX.bossDead=true; } }
+  const c=typeof at==='number'?at:at==='down'?EX.down:EX.up; EX.pc=c; EX.px=xw(c); EX.pz=xz(c); EX.view=at==='down'?'back':'front'; xUpdateVis(); }
+// the stairs up: to the floor above (or the main floor, from a hidden branch); from depth 1, to camp
+function xStairsUp(){
+  if(!EX||EX.busy||EX.pc!==EX.up) return;
+  const m=xFloors(), main=EX.branch&&m&&m.get(EX.depth);
+  if(!main&&EX.depth<=1) return xToCamp();
+  if(typeof xEscortCheck==='function') xEscortCheck();
+  EX.busy=true; xLog('You climb the stairs…','dim'); const hp=EX.hp, nd=main?EX.depth:EX.depth-1;
+  if(!main) xKeep();
+  const at=main?((main.props.find(p=>p.kind==='hstair')||{}).cell??'up'):'down';
+  setTimeout(()=>{ xGoFloor(nd,hp,at); EX.active=true; xHud(); xLoopStart(); xBanner(nd); },450);
 }
 let XPARK=null;
 function xToCamp(){ if(!EX||EX.busy||EX.pc!==EX.up) return; if(typeof xEscortCheck==='function') xEscortCheck(); logCamp('Climbed back to camp from depth '+EX.depth+'. The floor stays as you left it.','dim'); stopExplore(); pickDepth=EX.depth; XPARK=EX; EX=null; openCamp(); }
@@ -632,7 +679,7 @@ function xLoopStart(){ cancelAnimationFrame(xRaf); xLast=performance.now(); xRaf
 function xLoop(ts){
   if(!EX||!EX.active||!$('#scrExplore').classList.contains('on')) return;
   const dt=Math.min(.1,(ts-xLast)/1000); xLast=ts;
-  if(!EX.busy&&!xPaused){ xMove(dt); xEnemies(dt); if(EX.active&&!EX.busy&&typeof xDungeonTick==='function') xDungeonTick(dt);
+  if(!EX.busy&&!xPaused&&!EX.aim){ xMove(dt); xEnemies(dt); if(EX.active&&!EX.busy&&typeof xDungeonTick==='function') xDungeonTick(dt);
     EX.regenT+=dt; if(EX.regenT>3){ EX.regenT=0; if(EX.hp<xmaxHp()){ EX.hp++; xHud(); } } }
   xDraw(ts/1000,dt); xRaf=requestAnimationFrame(xLoop);
 }
@@ -641,7 +688,7 @@ function xDraw(T,dt){
   dt=dt||.016; const G=X3; xResize(); xFadeCells(dt);
   // a two-step walk: the walking pose and the standing pose in turn, rising one art pixel on the step;
   // searching or disarming shows the casting pose
-  const ART=2.3/96, step=EX.walk?Math.floor(EX.walk/1.5)%2:0;
+  const ART=XSPR/96, step=EX.walk?Math.floor(EX.walk/1.5)%2:0;
   EX.pose=EX.action?'cast':EX.walk?(step?'walk':'idle'):'idle';
   EX.me.position.set(EX.px,step*ART,EX.pz); xRefresh(EX.me,EX.face<0);
   G.lamp.position.set(EX.px,2.6,EX.pz);
@@ -653,6 +700,8 @@ function xDraw(T,dt){
     if(v){ g.sprite.position.set(g.x,g.state==='sleep'?0:(Math.floor(T*(g.state==='chase'?4:1.6)+g.bob)%2)*g.h/96,g.z); xRefresh(g.sprite,(g.face||-1)<0);
       g.zz.position.set(g.x+.5,g.h+.2+Math.sin(T*2+g.bob)*.15,g.z); g.bang.position.set(g.x,g.h+.35,g.z); } }
   if(typeof xDungeonDraw==='function') xDungeonDraw(T);
+  { const rc=EX.aim?EX.aim.cell:EX.searchCell, R=G.reticle; R.visible=rc!=null;
+    if(R.visible){ R.position.set(xw(rc),.12,xz(rc)); const k=EX.aim?1+.05*Math.sin(T*8):1+.12*Math.sin(T*14); R.scale.set(k,1,k); R.children[0].material.opacity=EX.aim?.9:.6+.3*Math.sin(T*14); } }
   EX.downMesh.userData.ring.rotation.z+=.02;
   for(const L of EX.glows){ if(!L.g.visible) continue; const f=EX.fogCur[L.floor], fl=.85+.15*Math.sin(T*1.7+L.ph);
     L.halo.material.opacity=.6*f*fl; for(const m of L.mats) m.opacity=.3+.7*f;
@@ -664,8 +713,13 @@ function xDraw(T,dt){
   if((EX.miniT=(EX.miniT||0)+1)%6===0) xMini();
 }
 function xMini(){
-  const cv=$('#xMini'), c=cv.getContext('2d'), s=3; cv.width=cv.height=XN*s;
-  c.fillStyle='rgba(5,6,10,.8)'; c.fillRect(0,0,cv.width,cv.height);
+  const cv=$('#xMini'), c=cv.getContext('2d'), big=cv.classList.contains('big');
+  // held big, the map zooms to the part of the floor you have explored
+  let x0=0, y0=0, n=XN;
+  if(big){ let a=XN, b=XN, A=0, B=0; for(let i=0;i<XN*XN;i++) if(EX.seen[i]){ const x=xcx(i), y=xcy(i); a=Math.min(a,x); b=Math.min(b,y); A=Math.max(A,x); B=Math.max(B,y); }
+    if(A>=a){ n=Math.min(XN,Math.max(16,A-a+5,B-b+5)); x0=Math.max(0,Math.min(XN-n,Math.round((a+A)/2-n/2))); y0=Math.max(0,Math.min(XN-n,Math.round((b+B)/2-n/2))); } }
+  const s=big?Math.max(3,Math.floor(384/n)):3; cv.width=cv.height=n*s;
+  c.fillStyle='rgba(5,6,10,.8)'; c.fillRect(0,0,cv.width,cv.height); c.translate(-x0*s,-y0*s);
   for(let i=0;i<XN*XN;i++){ if(!EX.seen[i]) continue; const d=EX.doors.get(i); if(EX.t[i]===T_ROCK||(d&&d.state==='secret')){ c.fillStyle='#1a1d26'; c.fillRect(xcx(i)*s,xcy(i)*s,s,s); continue; }
     c.fillStyle=d?'#a0703a':EX.vis[i]?'#7c8aa6':'#3c4458'; c.fillRect(xcx(i)*s,xcy(i)*s,s,s); }
   const dot=(i,col,r)=>{ c.fillStyle=col; c.fillRect(xcx(i)*s-r+1,xcy(i)*s-r+1,s+2*r-2,s+2*r-2); };
@@ -687,8 +741,10 @@ function xFlash(){ const h=$('#xHurt'); h.classList.remove('on'); void h.offsetW
 function xHud(){ if(!EX) return; const m=xmaxHp();
   hpMeter($('#xHpBar'),$('#xHpTxt'),EX.hp,m);
   $('#xDepth').textContent='Depth '+EX.depth+' · '+areaLabel(EX.depth); $('#xDepth').style.color=EX.area.glow; goldText($('#xGold'));
-  $('#xSearch').disabled=!!EX.action; $('#xDisarm').disabled=!!EX.action||!(xDisarmTarget()||typeof xDisarmAlt==='function'&&xDisarmAlt());
-  $('#xCamp').style.display=EX.pc===EX.up&&!EX.busy?'':'none'; $('#xAct').textContent=EX.action?'Working…':EX.stuckT>0?'Stuck!':'';
+  $('#xSearch').disabled=!!EX.action; $('#xSearch').classList.toggle('aiming',!!EX.aim); $('#xSearch').firstChild.textContent=EX.aim?'Search here':'Search'; $('#xDisarm').disabled=!!EX.action||!(xDisarmTarget()||typeof xDisarmAlt==='function'&&xDisarmAlt());
+  const onUp=EX.pc===EX.up&&!EX.busy, aboveMain=EX.branch&&xFloors()&&xFloors().get(EX.depth);
+  $('#xCamp').style.display=onUp?'':'none'; $('#xUp').style.display=onUp&&(EX.depth>1||aboveMain)?'':'none';
+  $('#xUp').firstChild.textContent=aboveMain?'Climb up':'Up to depth '+(EX.depth-1); $('#xAct').textContent=EX.aim?'Aim…':EX.action?'Working…':EX.stuckT>0?'Stuck!':'';
   if(typeof xHudExtra==='function') xHudExtra(); }
 
 /* ---------------- entering and returning ---------------- */
@@ -707,7 +763,7 @@ function resumeExplore(hp,won,info){
   if(!EX) return openCamp();
   const g=EX.fighting; EX.fighting=null;
   if(won&&g){ EX.groups=EX.groups.filter(x=>x!==g); [g.sprite,g.zz,g.bang,g.ring].forEach(o=>{ if(!o) return; X3.group.remove(o); if(o.material.map) o.material.map.dispose(); o.material.dispose(); }); if(g.boss){ EX.bossDead=true; xLog(ENEMY_DEFS[g.ids[0]].name+' falls. The stairs down to '+areaOf(EX.depth+1).name+' are open.','good'); } }
-  EX.hp=Math.max(1,hp); EX.busy=false; EX.active=true; EX.path=[];
+  EX.hp=Math.max(1,hp); EX.busy=false; EX.active=true; EX.path=[]; EX.aim=null;
   for(const k in XKEY) XKEY[k]=false;
   show('scrExplore'); xUpdateVis();
   if(typeof xAfterFight==='function') xAfterFight(g,won,info);
@@ -716,3 +772,4 @@ function resumeExplore(hp,won,info){
 $('#xSearch').onclick=()=>xSearch();
 $('#xDisarm').onclick=()=>xDisarm();
 $('#xCamp').onclick=()=>xToCamp();
+$('#xUp').onclick=()=>xStairsUp();

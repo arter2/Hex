@@ -508,7 +508,7 @@ function xMeshProp(p){
   const stone=xMat(0x6e6a64), dark=xMat(0x2a2a30), wood=xMat(0x7a4a22), gold=xMat(0xf2c94c,{emissive:0x402a08});
   switch(p.kind){
     case 'npc': case 'merchant': {
-      p.spr=xSprite(()=>lookSprite(p.look,'front',true),2.2); g.add(p.spr);
+      p.spr=xSprite(()=>lookSprite(p.look,'front',true),XSPR*.96); g.add(p.spr);
       if(p.kind==='merchant'){ g.add(xBox(1.5,.62,.45,wood,0,.31,.62), xBox(1.6,.08,.55,xMat(0x4e2e16),0,.64,.62), xCyl(.04,1.3,dark,.72,.65,.62), xBall(.12,xGlowMat(0xffd08a),.72,1.35,.62)); }
       p.mark=xNameMark(p.kind==='merchant'?'$':'!',p.kind==='merchant'?'#f2c94c':'#8fe4ff'); p.mark.position.set(0,2.75,0); g.add(p.mark); break; }
     case 'altar': { const c=THEME_COL[p.theme]||0xfff2c0; g.add(xBox(1.3,.7,.8,stone,0,.35,0), xBox(1.45,.12,.95,xMat(0x8a8478),0,.72,0)); p.orbMesh=xBall(.22,xGlowMat(c),0,1.15,0); g.add(p.orbMesh);
@@ -717,7 +717,7 @@ function xNearestSecret(rad){ const pc=EX.pc, px=xcx(pc), py=xcy(pc), out=[]; co
   for(const ch of EX.chests) if((ch.mimic||ch.giant)&&!ch.mimicKnown&&!ch.open&&near(ch.cell)) out.push({cell:ch.cell,cue:'Something nearby breathes, slow and patient.'});
   out.sort((a,b)=>Math.hypot(xcx(a.cell)-px,xcy(a.cell)-py)-Math.hypot(xcx(b.cell)-px,xcy(b.cell)-py)); return out[0]||null; }
 // searching (F, or standing still at a third of the chance) also finds caches, switches, loose stones and mimics
-function xSearchExtra(k,quiet){ const pc=EX.pc, px=xcx(pc), py=xcy(pc); let found=0; const near=(c,r)=>Math.max(Math.abs(xcx(c)-px),Math.abs(xcy(c)-py))<=r;
+function xSearchExtra(k,quiet,at){ const pc=EX.pc, ctr=at==null?pc:at, px=xcx(ctr), py=xcy(ctr); let found=0; const near=(c,r)=>Math.max(Math.abs(xcx(c)-px),Math.abs(xcy(c)-py))<=r;
   for(const p of EX.props){ if(p.gone||p.found!==false||!near(p.cell,2)) continue; const see=p.wall?xLos(pc,p.front):xLos(pc,p.cell); if(!see) continue;
     if(XR()<(p.kind==='loose'?.5:.6)*k){ p.found=true; found++;
       if(p.kind==='cache'){ if(p.mesh) p.mesh.visible=true; xLog('One stone in the wall sits loose: a hidden cache! Walk into it to open it.','good'); }
@@ -798,12 +798,12 @@ function xQuestCheck(){ if(!XRUN||!EX) return;
 // a trapdoor or a chute: down one floor, landing somewhere on it (never past a boss floor's boss)
 function xFall(n,msg){ if(EX.busy) return; EX.busy=true; xEscortCheck(); xLog(msg,'warn'); xSfx('thud');
   const nd=EX.depth+n, hp=EX.hp; save.deepest=Math.max(save.deepest,nd); persist(); if(XRUN){ XRUN.keys.boss=0; if(XRUN.chute===EX.depth) XRUN.chute=0; }
-  setTimeout(()=>{ buildFloor(nd,hp); const land=EX.rooms.filter(r=>!r.side&&!r.nook&&r!==EX.exit&&!r.behind&&r!==EX.start);
+  xKeep(); setTimeout(()=>{ xGoFloor(nd,hp,'up'); const land=EX.rooms.filter(r=>!r.side&&!r.nook&&r!==EX.exit&&!r.behind&&r!==EX.start);
     if(land.length&&n>0&&msg.indexOf('chute')<0){ const r=xpick(land); EX.pc=xi(r.cx,r.cy); EX.px=xw(EX.pc); EX.pz=xz(EX.pc); xUpdateVis(); }
     EX.active=true; xHud(); xLoopStart(); xBanner(nd); },550); }
 // the hidden stair in a secret closet: a small, quiet floor of the same depth with a guarded hoard
 function xEnterBranch(){ if(EX.busy) return; EX.busy=true; xEscortCheck(); xLog('The hidden stair winds down into the dark…','good'); xSfx('grind');
-  const d=EX.depth, hp=EX.hp; setTimeout(()=>{ buildFloor(d,hp,{branch:true}); EX.active=true; xHud(); xLoopStart(); xBanner(d); const b=$('#xBang'); b.innerHTML='Hidden Sanctum<small>Depth '+d+' · a secret branch</small>'; },550); }
+  const d=EX.depth, hp=EX.hp; xKeep(); setTimeout(()=>{ buildFloor(d,hp,{branch:true}); EX.active=true; xHud(); xLoopStart(); xBanner(d); const b=$('#xBang'); b.innerHTML='Hidden Sanctum<small>Depth '+d+' · a secret branch</small>'; },550); }
 // a sanctuary's blessing: the first time you fall afterwards, you wake at the stairs up of that floor
 function xTryRevive(){ if(!XRUN||!XRUN.attuned||!EX) return false; XRUN.attuned=0; return true; }
 function xRevived(){ const g=EX.fighting; resumeExplore(Math.round(xmaxHp()*.5),false);

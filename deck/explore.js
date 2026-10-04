@@ -186,7 +186,7 @@ function buildFloor(depth,hp,opt){
   if(isBossDepth(depth)&&!opt.branch) xLog(ENEMY_DEFS[bossFor(depth)].name+' guards the stairs down. Beat it to open the way to '+areaOf(depth+1).name+'.','warn');
   if(typeof xArrival==='function') xArrival();
 }
-function xGroup(ids,cell,state){ return {ids, cell, x:xw(cell), z:xz(cell), state, home:cell, path:[], repath:0, lostT:0, wakeT:1+Math.random()*1.5, seen:false, sprite:null, mark:null, bob:Math.random()*6}; }
+function xGroup(ids,cell,state){ return {ids, cell, x:xw(cell), z:xz(cell), head:Math.random()*Math.PI*2, state, home:cell, path:[], repath:0, lostT:0, wakeT:1+Math.random()*1.5, seen:false, sprite:null, mark:null, bob:Math.random()*6}; }
 
 /* ---------------- line of sight ---------------- */
 const xPassable=i=>{ if(i<0||EX.t[i]===T_ROCK) return false; const d=EX.doors.get(i); return !(d&&d.state==='secret'); };   // locked doors are handled by xBump
@@ -336,6 +336,7 @@ function xBuildScene(){
   const ft=new THREE.DataTexture(EX.fog,XN,XN,THREE.RGBAFormat); ft.magFilter=ft.minFilter=THREE.LinearFilter; ft.needsUpdate=true; EX.fogTex=ft;
   const veil=new THREE.Mesh(new THREE.PlaneGeometry(span,span),new THREE.MeshBasicMaterial({color:0x000000,transparent:true,alphaMap:ft,depthWrite:false}));
   veil.rotation.x=-Math.PI/2; veil.position.set(span/2,.04,span/2); veil.renderOrder=1; grp.add(veil); EX.veil=veil;
+  xFovMesh(grp);
   // walls: rough rock beside corridors, chiseled blocks (large or rubble) around rooms
   const walls=[[],[],[]];
   for(let i=0;i<XN*XN;i++){ const d=EX.doors.get(i); if(!(EX.t[i]===T_ROCK||(d&&d.state==='secret'))) continue;
@@ -606,9 +607,9 @@ function xEnemies(dt){
     const d=Math.hypot(g.x-EX.px,g.z-EX.pz), cells=d/XCS;
     if(EX.vis[g.cell]&&g.state!=='sleep'&&cells>2.2&&!(g.stealth&&cells>3.2)){ g.seen=true; g.surprise=false; }
     if(g.mini&&typeof xMiniStep==='function') xMiniStep(g,dt,cells);
-    else if(g.state==='sleep'){ g.wakeT-=dt; if(g.wakeT<=0){ g.wakeT=1; if(cells<2.6*sn&&Math.random()<.3*sn){ g.state='chase'; g.surprise=!EX.vis[g.cell]; if(EX.vis[g.cell]) xLog(ENEMY_DEFS[g.ids[0]].name+' wakes up!','warn'); } } }
+    else if(g.state==='sleep'){ g.wakeT-=dt; if(g.wakeT<=0){ g.wakeT=1; if(xSeesCell(g,EX.pc,sn)&&Math.random()<.3*sn){ g.state='chase'; g.surprise=!EX.vis[g.cell]; if(EX.vis[g.cell]) xLog(ENEMY_DEFS[g.ids[0]].name+' wakes up!','warn'); } } }
     else if(g.state==='guard'){ if(EX.room[EX.pc]===EX.room[g.home]&&EX.room[EX.pc]>=0){ g.state='chase'; xLog(ENEMY_DEFS[g.ids[0]].name+' rises to face you!','warn'); } }
-    else { const sees=cells<7.5*sn&&!safe&&xLos(g.cell,EX.pc);
+    else { const sees=!safe&&xSeesCell(g,EX.pc,sn);
       if(sees){ if(g.state!=='chase'&&EX.vis[g.cell]) xLog(ENEMY_DEFS[g.ids[0]].name+' spots you!','warn'); g.state='chase'; g.lostT=0; }
       else if(g.state==='chase'){ g.lostT+=dt; if(g.lostT>6){ g.state='wander'; g.path=[]; g.seen=false; } }
       g.repath-=dt;
@@ -618,11 +619,44 @@ function xEnemies(dt){
       const sp=(g.state==='chase'?4.1:2)*dt;
       if(g.path.length){ const n=g.path[0], tx=xw(n)-g.x, tz=xz(n)-g.z, l=Math.hypot(tx,tz);
         if(l<.2){ g.path.shift(); const dr=EX.doors.get(n); if(dr&&dr.state==='closed'){ dr.state='open'; dr.leaf.visible=false; if(EX.seen[n]) xUpdateVis(); } }
-        else { g.x+=tx/l*Math.min(sp,l); g.z+=tz/l*Math.min(sp,l); g.face=tx<0?-1:1; } }
+        else { g.x+=tx/l*Math.min(sp,l); g.z+=tz/l*Math.min(sp,l); g.face=tx<0?-1:1; g.head=Math.atan2(tz,tx); } }
       const c=xcell(g.x,g.z); if(c>=0) g.cell=c; }
     if(d<1.15&&!EX.busy&&!safe){ xEngage(g); return; }   // nothing fights you inside a sanctuary or a merchant's room
   }
 }
+/* What an enemy can see. Awake, it looks the way it walks: a 120° cone out to 7.5 tiles, plus
+   1.5 tiles all around; once chasing it looks every way. Asleep, it wakes to you within 2.6
+   tiles. Walls block it all, and Stealth shrinks the distances. The map draws these zones on
+   the floor (xFov), so you can see where to sneak past or creep up for an ambush. */
+const XFOV={r:7.5, half:Math.PI/3, near:1.5, wake:2.6};
+function xSeesCell(g,c,sn){ const dx=xw(c)-g.x, dz=xz(c)-g.z, d=Math.hypot(dx,dz)/XCS;
+  if(g.state==='sleep'){ if(d>XFOV.wake*sn) return false; }
+  else { if(d>XFOV.r*sn) return false;
+    if(g.state!=='chase'&&d>XFOV.near*sn){ let a=Math.atan2(dz,dx)-(g.head||0); a=Math.atan2(Math.sin(a),Math.cos(a)); if(Math.abs(a)>XFOV.half) return false; } }
+  return c===g.cell||xLos(g.cell,c); }
+// the zones, painted on a canvas laid over the floor: a faint fill and a dotted edge per enemy
+const XFOV_PX=12;
+function xFovMesh(grp){ const span=XN*XCS, cv=document.createElement('canvas'); cv.width=cv.height=XN*XFOV_PX;
+  const tex=new THREE.CanvasTexture(cv); tex.magFilter=THREE.LinearFilter; tex.minFilter=THREE.LinearFilter;
+  const m=new THREE.Mesh(new THREE.PlaneGeometry(span,span),new THREE.MeshBasicMaterial({map:tex,transparent:true,depthWrite:false}));
+  m.rotation.x=-Math.PI/2; m.position.set(span/2,.03,span/2); m.renderOrder=0; grp.add(m); EX.fov={cv,tex,mesh:m,t:0,key:''}; }
+function xFov(dt){ const F=EX.fov; if(!F) return; F.t-=dt; if(F.t>0) return; F.t=.12;
+  const sn=EX.sneak||1, shown=EX.groups.filter(g=>g.sprite&&g.sprite.visible&&!g.dormant&&g.state!=='guard');
+  const key=shown.map(g=>g.cell+':'+g.state+':'+Math.round((g.head||0)*8)).join('|')+'@'+sn;
+  if(key===F.key) return; F.key=key;
+  const x=F.cv.getContext('2d'), P=XFOV_PX; x.clearRect(0,0,F.cv.width,F.cv.height);
+  for(const g of shown){ const R=Math.ceil((g.state==='sleep'?XFOV.wake:XFOV.r)*sn)+1, gx=xcx(g.cell), gy=xcy(g.cell), zone=new Set();
+    for(let dy=-R;dy<=R;dy++) for(let dx=-R;dx<=R;dx++){ const cx=gx+dx, cy=gy+dy; if(cx<0||cy<0||cx>=XN||cy>=XN) continue; const c=xi(cx,cy);
+      if(EX.t[c]!==T_ROCK&&xSeesCell(g,c,sn)) zone.add(c); }
+    const col=g.state==='chase'?'255,77,94':g.state==='sleep'?'127,180,255':'255,196,64';
+    x.fillStyle=`rgba(${col},.3)`; for(const c of zone) x.fillRect(xcx(c)*P,xcy(c)*P,P,P);
+    // the dotted edge: every side of a zone cell that borders a cell outside the zone
+    x.strokeStyle=`rgba(${col},.95)`; x.lineWidth=2.5; x.setLineDash([3,4]); x.beginPath();
+    for(const c of zone){ const X=xcx(c)*P, Y=xcy(c)*P;
+      if(!zone.has(c-XN)){ x.moveTo(X,Y); x.lineTo(X+P,Y); } if(!zone.has(c+XN)){ x.moveTo(X,Y+P); x.lineTo(X+P,Y+P); }
+      if(!zone.has(c-1)||xcx(c)===0){ x.moveTo(X,Y); x.lineTo(X,Y+P); } if(!zone.has(c+1)||xcx(c)===XN-1){ x.moveTo(X+P,Y); x.lineTo(X+P,Y+P); } }
+    x.stroke(); x.setLineDash([]); }
+  F.tex.needsUpdate=true; }
 function xWanderGoal(g){ const r=pick(EX.rooms.filter(r=>!r.side&&!r.nook&&!r.behind&&!r.safe)); return xi(r.x+Math.floor(Math.random()*r.w),r.y+Math.floor(Math.random()*r.h)); }
 function xPathTo(dist,from,goal){ if(dist[from]<0) return []; const out=[]; let cur=from;
   for(let k=0;k<200&&cur!==goal;k++){ const x=xcx(cur), y=xcy(cur); let best=-1;
@@ -705,6 +739,7 @@ function xDraw(T,dt){
     if(g.ring){ g.ring.visible=v; g.ring.position.set(g.x,.06,g.z); }
     if(v){ g.sprite.position.set(g.x,g.state==='sleep'?0:(Math.floor(T*(g.state==='chase'?4:1.6)+g.bob)%2)*g.h/96,g.z); xRefresh(g.sprite,(g.face||-1)<0);
       g.zz.position.set(g.x+.5,g.h+.2+Math.sin(T*2+g.bob)*.15,g.z); g.bang.position.set(g.x,g.h+.35,g.z); } }
+  xFov(dt);
   if(typeof xDungeonDraw==='function') xDungeonDraw(T);
   { const rc=EX.aim?EX.aim.cell:EX.searchCell, R=G.reticle; R.visible=rc!=null;
     if(R.visible){ R.position.set(xw(rc),.12,xz(rc)); const k=EX.aim?1+.05*Math.sin(T*8):1+.12*Math.sin(T*14); R.scale.set(k,1,k); R.children[0].material.opacity=EX.aim?.9:.6+.3*Math.sin(T*14); } }
@@ -746,7 +781,7 @@ function xBanner(depth){ const b=$('#xBang'), A=areaOf(depth), first=areaFloor(d
 function xFlash(){ const h=$('#xHurt'); h.classList.remove('on'); void h.offsetWidth; h.classList.add('on'); }
 function xHud(){ if(!EX) return; const m=xmaxHp();
   hpMeter($('#xHpBar'),$('#xHpTxt'),EX.hp,m);
-  if(typeof xpLine==='function'){ const l=$('#xLv'); l.textContent='Lv '+save.level+(pointsLeft(ensureChar(save))>0?' ★':''); l.title=xpLine(); }
+  if(typeof xpLine==='function'){ const l=$('#xLv'), ch=ensureChar(save); l.textContent='Lv '+save.level+(pointsLeft(ch)>0?' ★':''); l.title=xpLine(); }
   $('#xDepth').textContent='Depth '+EX.depth+' · '+areaLabel(EX.depth); $('#xDepth').style.color=EX.area.glow; goldText($('#xGold'));
   $('#xSearch').disabled=!!EX.action; $('#xSearch').classList.toggle('aiming',!!EX.aim); $('#xSearch').firstChild.textContent=EX.aim?'Search here':'Search'; $('#xDisarm').disabled=!!EX.action||!(xDisarmTarget()||typeof xDisarmAlt==='function'&&xDisarmAlt());
   const onUp=EX.pc===EX.up&&!EX.busy, aboveMain=EX.branch&&xFloors()&&xFloors().get(EX.depth);

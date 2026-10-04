@@ -749,11 +749,11 @@ function xWalk(g,goal,sp,dt){
   g.repath-=dt; if(g.repath<=0||g.goal!==goal){ g.repath=.45; g.goal=goal; g.path=xPathTo(xbfs(EX.t,EX.doors,goal,null,xEnemyBlock),g.cell,goal); }
   if(g.path.length){ const n=g.path[0], tx=xw(n)-g.x, tz=xz(n)-g.z, l=Math.hypot(tx,tz);
     if(l<.2){ g.path.shift(); const dr=EX.doors.get(n); if(dr&&dr.state==='closed'){ dr.state='open'; if(dr.leaf) dr.leaf.visible=false; if(EX.seen[n]) xUpdateVis(); } }
-    else { const s=Math.min(sp*dt,l); g.x+=tx/l*s; g.z+=tz/l*s; g.face=tx<0?-1:1; } }
+    else { const s=Math.min(sp*dt,l); g.x+=tx/l*s; g.z+=tz/l*s; g.face=tx<0?-1:1; g.head=Math.atan2(tz,tx); } }
   const c=xcell(g.x,g.z); if(c>=0) g.cell=c; }
 // hunters always know where you are (after a while); patrols walk a beat; guards stay by their hoard
 function xMiniStep(g,dt,cells){
-  const sees=cells<7.5&&!EX.safe.has(EX.pc)&&xLos(g.cell,EX.pc);
+  const sees=!EX.safe.has(EX.pc)&&xSeesCell(g,EX.pc,EX.sneak||1);
   if(sees&&!g.seen&&EX.vis[g.cell]&&!g.stealth){ g.seen=true; xLog('The '+ENEMY_DEFS[g.mini].name+' has seen you!','warn'); }
   if(g.stunT>0){ g.stunT-=dt; return true; }
   if(g.beh==='hunt'){ if(g.huntT>0){ g.huntT-=dt; if(g.huntT<=0&&g.mini==='assassin') xLog('The back of your neck prickles. Something is hunting you.','warn'); return true; }

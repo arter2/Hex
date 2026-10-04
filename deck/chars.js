@@ -10,7 +10,7 @@ const STAT_POINTS=12, STAT_MAX=18;
 // points, and a stat can then grow past the creation cap up to STAT_CAP
 const LEVEL_POINTS=2, STAT_CAP=24;
 const xpNeed=level=>60+40*level;   // to go from this level to the next: 100, 140, 180...
-const STAT_KEYS=['str','dex','con','int','wis','cha','rch','cst'];
+const STAT_KEYS=['str','dex','con','int','wis','cha','stl','rch','cst'];
 // k: what the stat changes; per: the change for each point away from 10
 const STATS={
   str:{name:'Strength',     ab:'STR', icon:'✊', per:.06, text:'Wand and staff shot damage'},
@@ -19,19 +19,20 @@ const STATS={
   int:{name:'Intelligence', ab:'INT', icon:'📖', per:.04, text:'Card power: damage, healing and shields'},
   wis:{name:'Wisdom',       ab:'WIS', icon:'👁', per:.08, text:'Finding hidden doors, traps and secrets'},
   cha:{name:'Charisma',     ab:'CHA', icon:'💬', per:.04, text:'Gold found, and lower merchant prices'},
+  stl:{name:'Stealth',      ab:'STL', icon:'🌑', per:.05, text:'Enemies spot you from less far, and sleepers stay asleep'},
   rch:{name:'Recharge',     ab:'RCH', icon:'↻', per:.04, text:'Wand fire rate and charge-up time'},
   cst:{name:'Casting',      ab:'CST', icon:'✦', per:.05, text:'Cast speed, and how fast cards come ready'},
 };
-// each race's baseline adds up to 80 (ten in every stat, moved about)
+// each race's baseline adds up to 90 (ten in every stat, moved about)
 const RACES={
-  human: {name:'Human',       looks:['wizard','human_f'],   base:{str:10,dex:10,con:10,int:10,wis:10,cha:10,rch:10,cst:10}, text:'Even in every stat: ready for any deck.'},
-  elf:   {name:'Elf',         looks:['elf_m','elf_f'],      base:{str:8, dex:12,con:8, int:12,wis:11,cha:10,rch:10,cst:9},  text:'Quick shots and strong cards, but frail.'},
-  dwarf: {name:'Dwarf',       looks:['dwarf_m','dwarf_f'],  base:{str:12,dex:8, con:13,int:9, wis:10,cha:8, rch:11,cst:9},  text:'Tough and hard-hitting; slow to charm.'},
-  warlock:{name:'Warlock',    looks:['witch_m','witch'],    base:{str:8, dex:10,con:9, int:12,wis:9, cha:12,rch:9, cst:11}, text:'Silver-tongued spellcasters with fast cards.'},
-  necro: {name:'Necromancer', looks:['necro','necro_f'],    base:{str:9, dex:9, con:9, int:13,wis:11,cha:8, rch:9, cst:12}, text:'The strongest and fastest casters; weak wands.'},
-  shaman:{name:'Shaman',      looks:['shaman_m','shaman_f'],base:{str:10,dex:9, con:11,int:9, wis:13,cha:10,rch:9, cst:9},  text:'Hardy and wise: nothing stays hidden from them.'},
-  ranger:{name:'Ranger',      looks:['ranger_m','ranger_f'],base:{str:10,dex:13,con:9, int:8, wis:12,cha:9, rch:11,cst:8},  text:'Fast, sharp-eyed shooters; plain spells.'},
-  orc:   {name:'Orc',         looks:['orc_m','orc_f'],      base:{str:14,dex:9, con:12,int:8, wis:8, cha:8, rch:11,cst:10}, text:'Huge wand hits and lots of HP; little else.'},
+  human: {name:'Human',       looks:['wizard','human_f'],   base:{str:10,dex:10,con:10,int:10,wis:10,cha:10,stl:10,rch:10,cst:10}, text:'Even in every stat: ready for any deck.'},
+  elf:   {name:'Elf',         looks:['elf_m','elf_f'],      base:{str:8, dex:12,con:8, int:12,wis:10,cha:10,stl:11,rch:10,cst:9},  text:'Quick, quiet shots and strong cards, but frail.'},
+  dwarf: {name:'Dwarf',       looks:['dwarf_m','dwarf_f'],  base:{str:13,dex:8, con:13,int:9, wis:10,cha:8, stl:8, rch:12,cst:9},  text:'Tough and hard-hitting; slow to charm.'},
+  warlock:{name:'Warlock',    looks:['witch_m','witch'],    base:{str:8, dex:10,con:9, int:12,wis:9, cha:11,stl:11,rch:9, cst:11}, text:'Silver-tongued spellcasters with fast cards.'},
+  necro: {name:'Necromancer', looks:['necro','necro_f'],    base:{str:9, dex:9, con:9, int:13,wis:11,cha:8, stl:10,rch:9, cst:12}, text:'The strongest and fastest casters; weak wands.'},
+  shaman:{name:'Shaman',      looks:['shaman_m','shaman_f'],base:{str:10,dex:9, con:11,int:9, wis:13,cha:10,stl:10,rch:9, cst:9},  text:'Hardy and wise: nothing stays hidden from them.'},
+  ranger:{name:'Ranger',      looks:['ranger_m','ranger_f'],base:{str:10,dex:12,con:9, int:8, wis:11,cha:9, stl:12,rch:11,cst:8},  text:'Fast, quiet, sharp-eyed shooters; plain spells.'},
+  orc:   {name:'Orc',         looks:['orc_m','orc_f'],      base:{str:15,dex:9, con:13,int:8, wis:8, cha:8, stl:7, rch:12,cst:10}, text:'Huge wand hits and lots of HP; loud and little else.'},
 };
 const RACE_KEYS=Object.keys(RACES);
 
@@ -50,7 +51,7 @@ function spendPoint(ch,k,d){ const s=ch.spent[k]||0;
   ch.spent[k]=s+d; return true; }
 
 // what a character's stats do in play, as gear-style mods (gear.js adds them to your gear)
-function statMods(ch){ const o={shotMult:1,shotSpeed:1,dodge:0,hp:0,spell:1,search:1,gold:0,price:1,cd:1,charge:1,gauge:1,castSlow:1};
+function statMods(ch){ const o={sneak:1,shotMult:1,shotSpeed:1,dodge:0,hp:0,spell:1,search:1,gold:0,price:1,cd:1,charge:1,gauge:1,castSlow:1};
   if(!ch||!RACES[ch.race]) return o;
   const m=k=>statOf(ch,k)-10, S=STATS;
   o.shotMult=1+S.str.per*m('str');
@@ -59,6 +60,7 @@ function statMods(ch){ const o={shotMult:1,shotSpeed:1,dodge:0,hp:0,spell:1,sear
   o.spell=1+S.int.per*m('int');
   o.search=Math.max(.5,1+S.wis.per*m('wis'));
   o.gold=S.cha.per*m('cha'); o.price=Math.max(.6,1-S.cha.per*m('cha'));
+  o.sneak=Math.max(.5,1-S.stl.per*m('stl'));
   o.cd=o.charge=Math.max(.6,1-S.rch.per*m('rch'));
   o.gauge=Math.max(.5,1+S.cst.per*m('cst')); o.castSlow=Math.max(.6,1-S.cst.per*m('cst'));
   return o; }
@@ -70,6 +72,7 @@ function statEffect(ch,k){ const v=statOf(ch,k)-10, S=STATS[k], pct=x=>(x>=0?'+'
   if(k==='int') return pct(S.per*v)+' card power';
   if(k==='wis') return pct(S.per*v)+' search';
   if(k==='cha') return pct(S.per*v)+' gold, '+pct(-S.per*v)+' prices';
+  if(k==='stl') return pct(S.per*v)+' stealth';
   if(k==='rch') return pct(S.per*v)+' recharge';
   if(k==='cst') return pct(S.per*v)+' cast speed';
   return ''; }

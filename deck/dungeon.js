@@ -666,7 +666,7 @@ function xCacheLoot(loot){
   if(loot==='bag'){ const b=xpick(Object.keys(BAG)); addBag(b); persist(); xLog('Behind the loose stone: a '+BAG[b].name+'.','loot'); return; }
   if(loot==='lore'){ const u=unreadLore(); if(u.length){ addLore(u[0].id); persist(); xDlgText(u[0].title,u[0].text); } else { addMat('essence'); xLog('Behind the loose stone: Arcane Essence.','loot'); } } }
 // noise draws the nearest sleepers
-function xMakeNoise(rad){ for(const g of EX.groups) if(!g.boss&&!g.dormant&&Math.hypot(g.x-EX.px,g.z-EX.pz)/XCS<rad){ g.state='chase'; g.lostT=0; } }
+function xMakeNoise(rad){ rad*=EX.sneak||1; for(const g of EX.groups) if(!g.boss&&!g.dormant&&Math.hypot(g.x-EX.px,g.z-EX.pz)/XCS<rad){ g.state='chase'; g.lostT=0; } }
 // a chest you open (explore.js asks first): mimics bite back; keys and legendary hoards come out too
 function xChestExtra(ch){
   if(ch.mimic||ch.giant){ const g=xGroup(ch.giant?miniWave('giant_mimic',EX.depth):['mimic'],ch.cell,'wander'); g.mimicChest=ch; g.x=xw(ch.cell); g.z=xz(ch.cell); g.seen=!!ch.mimicKnown;

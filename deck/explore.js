@@ -598,15 +598,17 @@ function xLoot(rich){ const d=EX.depth+(rich?2:0), r=Math.random();
 
 /* ---------------- enemies ---------------- */
 function xEnemies(dt){
-  const safe=EX.safe&&EX.safe.has(EX.pc);
+  const safe=EX.safe&&EX.safe.has(EX.pc), now=performance.now();
+  // Stealth (chars.js) shrinks how far enemies see you and how easily sleepers wake
+  if(!(EX.sneakT>now)){ EX.sneakT=now+1000; EX.sneak=(typeof gearMods==='function'&&gearMods(save).sneak)||1; } const sn=EX.sneak||1;
   for(const g of EX.groups){
     if(g.dormant) continue;
     const d=Math.hypot(g.x-EX.px,g.z-EX.pz), cells=d/XCS;
     if(EX.vis[g.cell]&&g.state!=='sleep'&&cells>2.2&&!(g.stealth&&cells>3.2)){ g.seen=true; g.surprise=false; }
     if(g.mini&&typeof xMiniStep==='function') xMiniStep(g,dt,cells);
-    else if(g.state==='sleep'){ g.wakeT-=dt; if(g.wakeT<=0){ g.wakeT=1; if(cells<2.6&&Math.random()<.3){ g.state='chase'; g.surprise=!EX.vis[g.cell]; if(EX.vis[g.cell]) xLog(ENEMY_DEFS[g.ids[0]].name+' wakes up!','warn'); } } }
+    else if(g.state==='sleep'){ g.wakeT-=dt; if(g.wakeT<=0){ g.wakeT=1; if(cells<2.6*sn&&Math.random()<.3*sn){ g.state='chase'; g.surprise=!EX.vis[g.cell]; if(EX.vis[g.cell]) xLog(ENEMY_DEFS[g.ids[0]].name+' wakes up!','warn'); } } }
     else if(g.state==='guard'){ if(EX.room[EX.pc]===EX.room[g.home]&&EX.room[EX.pc]>=0){ g.state='chase'; xLog(ENEMY_DEFS[g.ids[0]].name+' rises to face you!','warn'); } }
-    else { const sees=cells<7.5&&!safe&&xLos(g.cell,EX.pc);
+    else { const sees=cells<7.5*sn&&!safe&&xLos(g.cell,EX.pc);
       if(sees){ if(g.state!=='chase'&&EX.vis[g.cell]) xLog(ENEMY_DEFS[g.ids[0]].name+' spots you!','warn'); g.state='chase'; g.lostT=0; }
       else if(g.state==='chase'){ g.lostT+=dt; if(g.lostT>6){ g.state='wander'; g.path=[]; g.seen=false; } }
       g.repath-=dt;

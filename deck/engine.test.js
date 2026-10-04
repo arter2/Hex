@@ -303,14 +303,14 @@ t('potions are gray cards, and potions in an old save become those cards', ()=>{
 });
 
 const CH=require('./chars.js');
-t('every race baseline adds up to 80 and has a man and a woman look', ()=>{
-  for(const k of CH.RACE_KEYS){ const R=CH.RACES[k]; assert.strictEqual(CH.STAT_KEYS.reduce((a,s)=>a+R.base[s],0),80,k); assert.strictEqual(R.looks.length,2,k); }
+t('every race baseline adds up to 90 and has a man and a woman look', ()=>{
+  for(const k of CH.RACE_KEYS){ const R=CH.RACES[k]; assert.strictEqual(CH.STAT_KEYS.reduce((a,s)=>a+R.base[s],0),90,k); assert.strictEqual(R.looks.length,2,k); }
 });
 t('12 points to spend, never below the race baseline or above the cap', ()=>{
   const c=CH.newChar('orc',1); assert.strictEqual(c.look,'orc_f'); assert.strictEqual(CH.pointsLeft(c),12);
   assert(!CH.spendPoint(c,'str',-1),'cannot go below baseline');
-  let n=0; while(CH.spendPoint(c,'str',1)) n++; assert.strictEqual(CH.statOf(c,'str'),CH.STAT_MAX); assert.strictEqual(n,CH.STAT_MAX-14);
-  while(CH.spendPoint(c,'wis',1)); assert.strictEqual(CH.pointsLeft(c),0); assert.strictEqual(CH.statOf(c,'wis'),16); assert(!CH.spendPoint(c,'dex',1),'no points left');
+  let n=0; while(CH.spendPoint(c,'str',1)) n++; assert.strictEqual(CH.statOf(c,'str'),CH.STAT_MAX); assert.strictEqual(n,CH.STAT_MAX-CH.RACES.orc.base.str);
+  while(CH.spendPoint(c,'wis',1)); assert.strictEqual(CH.pointsLeft(c),0); assert.strictEqual(CH.statOf(c,'wis'),CH.RACES.orc.base.wis+CH.STAT_POINTS-n); assert(!CH.spendPoint(c,'dex',1),'no points left');
   assert(CH.spendPoint(c,'wis',-1)); assert.strictEqual(CH.pointsLeft(c),1);
 });
 t('stats change play: average is no change, a strong stat helps', ()=>{

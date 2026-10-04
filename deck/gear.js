@@ -189,7 +189,7 @@ function gearMods(save){ const out={tap:0,charged:0,cd:1,charge:1,hp:0,guard:0,s
     out.hp+=S.hp; out.dodge=(out.dodge||0)+S.dodge; out.gold=(out.gold||0)+S.gold;
     for(const k of ['cd','charge']) out[k]=(out[k]||1)*S[k];
     // kept apart from gear's own gauge and cast curses, which the character screen lists as curses
-    Object.assign(out,{shotMult:S.shotMult, shotSpeed:S.shotSpeed, spell:S.spell, search:S.search, price:S.price, sGauge:S.gauge, sCast:S.castSlow}); }
+    Object.assign(out,{shotMult:S.shotMult, shotSpeed:S.shotSpeed, spell:S.spell, search:S.search, price:S.price, sneak:S.sneak, sGauge:S.gauge, sCast:S.castSlow}); }
   out.guard=Math.min(.6,out.guard); out.dodge=Math.min(.4,out.dodge||0);
   return out; }
 

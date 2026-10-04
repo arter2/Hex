@@ -119,7 +119,7 @@ select,.filters input{font:600 14px var(--font-b); color:var(--text); background
 .card.hero .cp small{color:#ffd966;}
 @keyframes heroShine{50%{border-color:#fff3b0!important; box-shadow:0 0 0 2px #fff3b0,0 0 0 4px #000;}}
 .card.picked{opacity:.35;}
-.card .ord{position:absolute; bottom:-2px; left:50%; transform:translateX(-50%); background:var(--gold); color:#04080c; font-weight:800; width:22px; height:22px; border-radius:8px 8px 0 0; display:grid; place-items:center;}
+.card .ord{position:absolute; bottom:-2px; left:50%; transform:translateX(-50%); background:var(--gold); color:#04080c; font-weight:800; width:32px; height:30px; font-size:20px; border-radius:8px 8px 0 0; display:grid; place-items:center;}
 
 .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(104px,1fr)); gap:8px;}
 .stats{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:10px;}
@@ -559,7 +559,7 @@ body.tall.ui-tablet .camp{max-width:640px;}
 @keyframes heroGlint{50%{filter:brightness(1.25) saturate(1.15);}}
 .card.hero.flip{animation:flip .45s both,heroGlint 1.6s steps(2) infinite;}
 .card .badge{border-radius:0; border:2px solid #000; font-family:var(--font-t); font-size:15px; line-height:1; padding:1px 4px;}
-.card .ord{border-radius:0; border:2px solid #000;}
+.card .ord{border-radius:0; border:2px solid #000; font-family:var(--font-t); font-size:24px; line-height:1;}
 /* hold to peek: a big, readable copy of the card while the finger stays down */
 .peek{position:fixed; inset:0; z-index:80; display:none; flex-direction:column; align-items:center; justify-content:center; gap:10px; pointer-events:none; background:rgba(0,0,0,.55);}
 .peek.on{display:flex; animation:peekIn .14s ease-out;}

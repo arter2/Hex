@@ -173,6 +173,7 @@ function gearIconName(id){ const G=typeof GEAR!=='undefined'&&GEAR[id]; if(!G) r
   if(G.slot==='arms') return 'bracer';
   return 'ring'; }
 function gearIcon(id,size=48){ const G=GEAR[id], col=(COLORS[G.family]||{}).c||'#b4b8c8';
+  if(typeof GEAR_SPRITES!=='undefined'&&GEAR_SPRITES[id]) return `<img class="pxi" src="${GEAR_SPRITES[id]}" width="${size}" height="${size}" alt="">`;
   return `<img class="pxi" src="${icon(gearIconName(id),col)}" width="${size}" height="${size}" alt="">`; }
 function uiIcon(name,size=48,accent){ return `<img class="pxi" src="${icon(name,accent)}" width="${size}" height="${size}" alt="">`; }
 
@@ -223,9 +224,9 @@ function drawCampScene(cv,depth,t,sprite){ const ai=areaIndex(depth), base=scene
       if(i>h-3&&R()<.5) continue; const c=FIRE[k]; cx.fillStyle=`rgb(${c[0]},${c[1]},${c[2]})`; cx.fillRect(x,fy-2-i,1,1); } }
   for(let i=0;i<4;i++){ const c=FIRE[4]; cx.fillStyle=`rgb(${c[0]},${c[1]},${c[2]})`; cx.fillRect(fx-6+Math.floor(R()*12),fy-22-Math.floor(R()*16),1,1); }
   if(sprite){ cx.fillStyle='rgba(0,0,0,.45)'; cx.fillRect(43,88,22,2);
-    // rig sprites (96 px, feet on row 93) stand at full size on the camp floor at row 90;
+    // rig sprites (square, feet at 31/32) are fitted to 96 px and stand on the camp floor at row 90;
     // the old 32 px ones are scaled up
-    if(sprite.width>=96) cx.drawImage(sprite,-2,-3);
+    if(sprite.width>=96){ cx.imageSmoothingEnabled=false; cx.drawImage(sprite,0,0,sprite.width,sprite.height,-2,-3,96,96); }
     else if(sprite.width>64) cx.drawImage(sprite,0,0,sprite.width,sprite.height,14,26,64,64); else if(sprite.width>32) cx.drawImage(sprite,14,26); else cx.drawImage(sprite,0,0,sprite.width,sprite.height,38,48,40,40); }
 }
 

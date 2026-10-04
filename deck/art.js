@@ -919,6 +919,6 @@ function unitSprite(u){
     else (THING[key]||THING.sentry)(()=>.5); });
 }
 
-Object.assign(root,{ART_SIZE,cardArt,artCSV,artURL,motifKey,unitSprite,lookSprite});
+Object.assign(root,{ART_SIZE,cardArt,artCSV,artURL,motifKey,unitSprite,lookSprite,rigSprite});
 if(typeof module!=='undefined') module.exports={ART_SIZE,cardArt,artCSV,motifKey};
 })(typeof window!=='undefined'?window:globalThis);

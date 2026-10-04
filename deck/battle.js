@@ -859,7 +859,7 @@ function drawSprite(ctx,u,T,S,o){
   // body
   // pixel art is never squashed: it rises one art pixel on a step (o.step, or a slow breath when o.bob is set),
   // and the offset is a whole number of the sprite's own pixels so its pixels stay square
-  const ap=H/(spr.hand?96:32), seed=(u.tile?u.tile.q*3+u.tile.r:0), step=o.step!=null?o.step:o.bob?Math.floor(T*1.6+seed*.37)%2:0, lift=Math.round(step*ap);
+  const ap=H/(spr.hand?spr.img.width:32), seed=(u.tile?u.tile.q*3+u.tile.r:0), step=o.step!=null?o.step:o.bob?Math.floor(T*1.6+seed*.37)%2:0, lift=Math.round(step*ap);
   const bob=lift/S;
   ctx.save(); ctx.globalAlpha=alpha; ctx.translate(Math.round(x),Math.round(y)-lift); ctx.scale(o.flip?-1:1,1);
   ctx.drawImage(spr.img,-H/2,-31*k,H,H);

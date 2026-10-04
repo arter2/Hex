@@ -166,6 +166,7 @@ function mimicSprite(){
   return {img,sil,wht,hand:true};
 }
 function miniSprite(id){
+  if(typeof rigSprite==='function'&&typeof UNIT_SPRITES!=='undefined'&&UNIT_SPRITES[id]){ const rs=rigSprite(id); if(rs) return rs; }
   if(MINI_SPR[id]) return MINI_SPR[id];
   const d=ENEMY_DEFS[id]; if(d.look==='mimic') return MINI_SPR[id]=mimicSprite();
   const base=baseUnitSprite({kind:'enemy',id:d.look,color:d.color});

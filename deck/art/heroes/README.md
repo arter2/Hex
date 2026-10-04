@@ -13,6 +13,9 @@ Painted hero sheets, keyed from green screen to transparent PNG by `deck/tools/k
 | `human_f.png` | human_f | Human woman | Labeled sheet, 8 directions, hood and no-hood statics |
 | `elf_m.png` | elf_m | Elf man | |
 | `elf_f.png` | elf_f | Elf woman | Has one hooded static |
+| `dwarf_m_bare.png` | dwarf_m (hatless) | Dwarf man | Labeled sheet, 8 directions, big beard |
+| `dwarf_m_bare_alt.png` | (spare) | Dwarf man | Long hair, short stubble |
+| `dwarf_f_bare.png` | dwarf_f (hatless) | Dwarf woman | Labeled sheet, 8 directions, braids |
 | `undead_m.png` | undead_m | Undead man | Skeleton |
 | `undead_f.png` | undead_f | Undead woman | |
 | `witch_f.png` | witch | Witch | Labeled sheet, 8 directions, hat and no-hat statics |
@@ -39,9 +42,9 @@ Painted hero sheets, keyed from green screen to transparent PNG by `deck/tools/k
 
 ## Still missing
 
-- **Dwarf**, man and woman: no sheets.
+- **Dwarf** with hat: only the hatless sheets so far.
 - **Warlock** (witch_m): no sheet.
-- **Hatless sets** (`frontBare`, `backBare`, `animBare`): done for the wizard (human_m_bare);
+- **Hatless sets** (`frontBare`, `backBare`, `animBare`): done for the wizard and both dwarves;
   human_f and witch_f have only static no-hat poses; no hatless art for the other looks.
 - **Back-view action** (cast, walk, hurt from behind): the unlabeled sheets show the back only
   standing; the 4 labeled sheets cover it.

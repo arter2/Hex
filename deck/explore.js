@@ -649,9 +649,9 @@ function xFov(dt){ const F=EX.fov; if(!F) return; F.t-=dt; if(F.t>0) return; F.t
     for(let dy=-R;dy<=R;dy++) for(let dx=-R;dx<=R;dx++){ const cx=gx+dx, cy=gy+dy; if(cx<0||cy<0||cx>=XN||cy>=XN) continue; const c=xi(cx,cy);
       if(EX.t[c]!==T_ROCK&&xSeesCell(g,c,sn)) zone.add(c); }
     const col=g.state==='chase'?'255,77,94':g.state==='sleep'?'127,180,255':'255,196,64';
-    x.fillStyle=`rgba(${col},.3)`; for(const c of zone) x.fillRect(xcx(c)*P,xcy(c)*P,P,P);
+    x.fillStyle=`rgba(${col},.1)`; for(const c of zone) x.fillRect(xcx(c)*P,xcy(c)*P,P,P);
     // the dotted edge: every side of a zone cell that borders a cell outside the zone
-    x.strokeStyle=`rgba(${col},.95)`; x.lineWidth=2.5; x.setLineDash([3,4]); x.beginPath();
+    x.strokeStyle=`rgba(${col},.45)`; x.lineWidth=1.5; x.setLineDash([2,4]); x.beginPath();
     for(const c of zone){ const X=xcx(c)*P, Y=xcy(c)*P;
       if(!zone.has(c-XN)){ x.moveTo(X,Y); x.lineTo(X+P,Y); } if(!zone.has(c+XN)){ x.moveTo(X,Y+P); x.lineTo(X+P,Y+P); }
       if(!zone.has(c-1)||xcx(c)===0){ x.moveTo(X,Y); x.lineTo(X,Y+P); } if(!zone.has(c+1)||xcx(c)===XN-1){ x.moveTo(X+P,Y); x.lineTo(X+P,Y+P); } }

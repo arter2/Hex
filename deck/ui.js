@@ -410,7 +410,7 @@ function renderCharacter(){
   const w=(k,v)=>`<div><span>${k}</span><b>${v}</b></div>`, pct=x=>Math.round(x*100)+'%';
   const ch=save.char&&RACES[save.char.race]?save.char:null;
   const left=ch?pointsLeft(ch):0;
-  $('#chAbil').innerHTML=(ch?w('Level',xpLine())+(left?`<div class="wide"><button id="chSpend" class="btn small">Spend ${left} stat point${left>1?'s':''}</button></div>`:''):'')+(ch?w('Race',RACES[ch.race].name+' · '+(ch.body?'woman':'man'))+STAT_KEYS.map(k=>w(STATS[k].icon+' '+STATS[k].ab+' '+statOf(ch,k),statEffect(ch,k))).join(''):'<p class="hint">Characters made before stats existed have average stats (10 in each). Start a new game to make a character.</p>');
+  $('#chAbil').innerHTML=(ch?w('Level',xpLine())+(left?`<div class="wide"><button id="chSpend" class="btn small">Spend ${left} stat point${left>1?'s':''}</button></div>`:''):'')+(ch?w('Race',RACES[ch.race].name+' · '+(ch.body?'woman':'man'))+STAT_KEYS.map(k=>{ const g=(m.stats&&m.stats[k])||0; return w(STATS[k].icon+' '+STATS[k].ab+' '+statOf(ch,k,m.stats)+(g?` <small class="${g>0?'up':'down'}">(${g>0?'+':'−'}${Math.abs(g)} gear)</small>`:''),statEffect(ch,k,m.stats)); }).join(''):'<p class="hint">Characters made before stats existed have average stats (10 in each). Start a new game to make a character.</p>');
   if($('#chSpend')) $('#chSpend').onclick=()=>openLevelUp(()=>renderCharacter());
   $('#chStats').innerHTML=w('Max HP',120+(m.hp||0))+w(K.name,Math.max(1,K.tap+m.tap)+' · charged '+Math.max(2,K.charged+m.charged))+w('Element',m.color?COLORS[m.color].icon+' '+COLORS[m.color].name:'none')
     +w('Fire rate',m.cd&&m.cd!==1?Math.round((1/m.cd-1)*100)+'% faster':'normal')+w('Guard',pct(m.guard||0))+w('Start shield',m.shield||0)

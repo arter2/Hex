@@ -836,3 +836,4 @@ body.lsS #custHand .slot.hole{min-height:104px;}
 #lvlUp .row2{display:grid; grid-template-columns:1fr 1fr; gap:8px;}
 .dial .tape i.new::before{background:#7dff9a; height:16px;} .dial .tape i.new b{color:#7dff9a;}
 .charstats .wide{grid-column:1/-1; border:0; justify-content:center;}
+.charstats small.up{color:#7dff9a;} .charstats small.down{color:#ff8a8a;} .charstats small{font:400 14px var(--font-t);}

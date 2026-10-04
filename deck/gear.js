@@ -114,12 +114,13 @@ const slotType=slot=>slot.startsWith('ring')?'ring':slot;
 const GEAR_COLOR={"first_flame": "fire", "ember_robes": "fire", "ring_embers": "fire", "ring_dragon": "fire", "samurai_suit": "fire", "kabuto": "fire", "lacquered_bracers": "fire", "ice_wand": "frost", "frostfang": "frost", "frost_robes": "frost", "ring_frost": "frost", "volt_wand": "storm", "quick_wand": "storm", "storm_scepter": "storm", "thunder_repeater": "storm", "storm_trident": "storm", "focus_rod": "storm", "oak_wand": "verdant", "oak_staff": "verdant", "elven_bow": "verdant", "ashwood_bow": "verdant", "leather_armor": "verdant", "leather_cap": "verdant", "leather_bracers": "verdant", "ring_regen": "verdant", "dragonscale": "verdant", "light_wand": "light", "archmage_staff": "light", "dawn_aegis": "light", "wizard_hat": "light", "apprentice_robes": "light", "runed_bracers": "light", "ring_vigor": "light", "warded_cloak": "light", "dark_wand": "shadow", "night_shroud": "shadow", "thief_outfit": "shadow", "black_hood": "shadow", "shadow_wraps": "shadow", "ring_runes": "shadow", "basic_wand": "gray", "broken_wand": "gray", "cloth_shirt": "gray", "padded_robe": "gray", "buckler": "gray", "hunter_spear": "gray", "ring_gold": "gray", "iron_crossbow": "brown", "iron_mail": "brown", "plate_armor": "brown", "iron_helm": "brown", "tower_shield": "brown", "runed_vest": "brown", "rune_staff": "brown"};
 for(const id in GEAR) GEAR[id].family=GEAR_COLOR[id]||'gray';
 const CURSES={
-  lead:   {name:'of Lead',      rune:'A', mods:{slow:1.4},      text:'you move 40% slower'},
-  fizzle: {name:'of Sputtering',rune:'B', mods:{misfire:.15},   text:'15% of shots fizzle', weapon:true},
-  thirst: {name:'of Thirst',    rune:'C', mods:{hpPerShot:1},   text:'each shot costs 1 HP', weapon:true},
-  frailty:{name:'of Frailty',   rune:'D', mods:{hp:-30},        text:'30 less max HP'},
-  hunger: {name:'of Hunger',    rune:'E', mods:{gauge:.75},     text:'the Custom gauge fills 25% slower'},
-  omen:   {name:'of Ill Omen',  rune:'F', mods:{hurt:1.35},     text:'hits that get through deal 35% more'},
+  // stats: a curse also lowers one of your character's stats (chars.js) while you wear it
+  lead:   {name:'of Lead',      rune:'A', mods:{slow:1.4},      stats:{stl:-2}, text:'you move 40% slower, −2 Stealth'},
+  fizzle: {name:'of Sputtering',rune:'B', mods:{misfire:.15},   stats:{rch:-2}, text:'15% of shots fizzle, −2 Recharge', weapon:true},
+  thirst: {name:'of Thirst',    rune:'C', mods:{hpPerShot:1},   stats:{con:-2}, text:'each shot costs 1 HP, −2 Constitution', weapon:true},
+  frailty:{name:'of Frailty',   rune:'D', mods:{hp:-30},        stats:{str:-2}, text:'30 less max HP, −2 Strength'},
+  hunger: {name:'of Hunger',    rune:'E', mods:{gauge:.75},     stats:{cst:-2}, text:'the Custom gauge fills 25% slower, −2 Casting'},
+  omen:   {name:'of Ill Omen',  rune:'F', mods:{hurt:1.35},     stats:{cha:-2}, text:'hits that get through deal 35% more, −2 Charisma'},
 };
 // Sets: wear all three pieces for the bonus
 const SETS={
@@ -131,12 +132,16 @@ const SETS={
 const setOf=id=>Object.keys(SETS).find(k=>SETS[k].pieces.includes(id));
 const activeSets=save=>Object.keys(SETS).filter(k=>SETS[k].pieces.every(id=>Object.values(gearState(save).gear).includes(id)));
 const ENCHANTS={
-  vigor:  {name:'of Vigor',    mods:{hp:15},      text:'+15 max HP'},
-  haste:  {name:'of Haste',    mods:{cd:.9},      text:'fires 10% faster'},
-  focus:  {name:'of Focus',    mods:{charge:.85}, text:'charges 15% faster'},
-  warding:{name:'of Warding',  mods:{shield:15},  text:'+15 starting shield'},
-  might:  {name:'of Might',    mods:{tap:1, charged:2}, text:'wand +1, charged +2'},
-  runes:  {name:'of Runes',    mods:{surge:.08},  text:'8% chance each turn to open the 4th slot'},
+  // stats: an enchantment also raises one of your character's stats (chars.js) while you wear it
+  vigor:  {name:'of Vigor',    mods:{hp:15},      stats:{con:2}, text:'+15 max HP, +2 Constitution'},
+  haste:  {name:'of Haste',    mods:{cd:.9},      stats:{rch:2}, text:'fires 10% faster, +2 Recharge'},
+  focus:  {name:'of Focus',    mods:{charge:.85}, stats:{cst:2}, text:'charges 15% faster, +2 Casting'},
+  warding:{name:'of Warding',  mods:{shield:15},  stats:{wis:2}, text:'+15 starting shield, +2 Wisdom'},
+  might:  {name:'of Might',    mods:{tap:1, charged:2}, stats:{str:2}, text:'wand +1, charged +2, +2 Strength'},
+  runes:  {name:'of Runes',    mods:{surge:.08},  stats:{int:2}, text:'8% chance each turn to open the 4th slot, +2 Intelligence'},
+  grace:  {name:'of Grace',    mods:{dodge:.04},  stats:{dex:2}, text:'dodge 4% of hits, +2 Dexterity'},
+  shadows:{name:'of Shadows',  mods:{},           stats:{stl:3}, text:'+3 Stealth'},
+  silver: {name:'of the Silver Tongue', mods:{gold:.05}, stats:{cha:2}, text:'+5% gold, +2 Charisma'},
 };
 const MAX_LEVEL=3, SACRIFICE=3;
 const MULT_KEYS=['cd','charge','slow','gauge','hurt','castSlow'];
@@ -153,6 +158,7 @@ function pieceMods(save,id){
   const e=s.ench[id]&&ENCHANTS[s.ench[id]]; if(e) for(const k in e.mods) m[k]=MULT_KEYS.includes(k)?(m[k]||1)*e.mods[k]:(m[k]||0)+e.mods[k];
   if(e&&g.weight==='heavy') delete m.castSlow;   // enchanted heavy armor no longer slows casting
   const c=s.cursed[id]&&CURSES[s.cursed[id]]; if(c) for(const k in c.mods) m[k]=MULT_KEYS.includes(k)?(m[k]||1)*c.mods[k]:(m[k]||0)+c.mods[k];
+  for(const x of [e,c]) if(x&&x.stats){ m.stats=Object.assign({},m.stats); for(const k in x.stats) m.stats[k]=(m.stats[k]||0)+x.stats[k]; }
   return m;
 }
 function modsText(m){ const t=[];
@@ -167,6 +173,7 @@ function modsText(m){ const t=[];
   if(m.regen) t.push('heal '+m.regen+' HP a second'); if(m.gold) t.push('+'+Math.round(m.gold*100)+'% gold');
   if(m.power) for(const c in m.power) t.push(c+' cards +'+Math.round((m.power[c]-1)*100)+'%');
   if(m.castSlow) t.push('cast '+Math.round((m.castSlow-1)*100)+'% slower');
+  if(m.stats) for(const k in m.stats) if(m.stats[k]) t.push((m.stats[k]>0?'+':'−')+Math.abs(m.stats[k])+' '+(typeof STATS!=='undefined'&&STATS[k]?STATS[k].name:k.toUpperCase()));
   if(m.misfire) t.push(Math.round(m.misfire*100)+'% of shots fizzle'); if(m.hpPerShot) t.push('each shot costs '+m.hpPerShot+' HP');
   if(m.gauge) t.push('gauge '+Math.round((1-m.gauge)*100)+'% slower'); if(m.slow&&m.slow>1) t.push('move '+Math.round((m.slow-1)*100)+'% slower'); if(m.slow&&m.slow<1) t.push('move '+Math.round((1-m.slow)*100)+'% faster'); if(m.hurt) t.push('take '+Math.round((m.hurt-1)*100)+'% more from hits');
   return t.join(', ')||'no bonuses'; }
@@ -180,12 +187,13 @@ function gearMods(save){ const out={tap:0,charged:0,cd:1,charge:1,hp:0,guard:0,s
     if(slot==='weapon') out.kind=kindOf(id);
     for(const k in m){ if(k==='color'){ if(slot==='weapon'||!out.color) out.color=m.color; }
       else if(k==='power'){ for(const c in m.power) out.power[c]=(out.power[c]||1)*m.power[c]; }
+      else if(k==='stats'){ out.stats=out.stats||{}; for(const c in m.stats) out.stats[c]=(out.stats[c]||0)+m.stats[c]; }
       else if(MULT_KEYS.includes(k)) out[k]=(out[k]||1)*m[k]; else out[k]=(out[k]||0)+m[k]; } }
   for(const k of activeSets(save)){ const m=SETS[k].mods; for(const x in m) out[x]=MULT_KEYS.includes(x)?(out[x]||1)*m[x]:(out[x]||0)+m[x]; }
   // permanent blessings from the dungeon (dungeon.js): Vigor, Might and Fortune
   const P=save.perm||{}; out.hp+=6*(P.vigor||0); out.tap+=P.might||0; out.charged+=2*(P.might||0); if(P.fortune) out.gold=(out.gold||0)+.05*P.fortune;
   // your character's stats (chars.js): a save from before characters has none and gets no change
-  if(typeof statMods==='function'){ const S=statMods(save.char);
+  if(typeof statMods==='function'){ const S=statMods(save.char,out.stats);
     out.hp+=S.hp; out.dodge=(out.dodge||0)+S.dodge; out.gold=(out.gold||0)+S.gold;
     for(const k of ['cd','charge']) out[k]=(out[k]||1)*S[k];
     // kept apart from gear's own gauge and cast curses, which the character screen lists as curses

@@ -42,7 +42,8 @@ const RACE_KEYS=Object.keys(RACES);
 // a fresh character: the race's baseline with nothing spent yet
 function newChar(race,body){ race=RACES[race]?race:'human'; body=body?1:0;
   return {race, body, look:RACES[race].looks[body], spent:Object.fromEntries(STAT_KEYS.map(k=>[k,0]))}; }
-const statOf=(ch,k)=>RACES[ch.race].base[k]+(ch.spent[k]||0);
+// bonus: stat changes from enchanted or cursed gear (gear.js), counted in play but not when spending points
+const statOf=(ch,k,bonus)=>RACES[ch.race].base[k]+(ch.spent[k]||0)+((bonus&&bonus[k])||0);
 const pointsLeft=ch=>STAT_POINTS+(ch.earned||0)-STAT_KEYS.reduce((a,k)=>a+(ch.spent[k]||0),0);
 // points already confirmed (at creation, or at a level up) can't be taken back
 const lockChar=ch=>{ ch.lock=Object.assign({},ch.spent); return ch; };
@@ -54,9 +55,9 @@ function spendPoint(ch,k,d){ const s=ch.spent[k]||0;
   ch.spent[k]=s+d; return true; }
 
 // what a character's stats do in play, as gear-style mods (gear.js adds them to your gear)
-function statMods(ch){ const o={sneak:1,shotMult:1,shotSpeed:1,dodge:0,hp:0,spell:1,search:1,gold:0,price:1,cd:1,charge:1,gauge:1,castSlow:1};
-  if(!ch||!RACES[ch.race]) return o;
-  const m=k=>statOf(ch,k)-10, S=STATS;
+function statMods(ch,bonus){ const o={sneak:1,shotMult:1,shotSpeed:1,dodge:0,hp:0,spell:1,search:1,gold:0,price:1,cd:1,charge:1,gauge:1,castSlow:1};
+  if(!ch||!RACES[ch.race]){ if(!bonus) return o; ch=newChar('human',0); }
+  const m=k=>statOf(ch,k,bonus)-10, S=STATS;
   o.shotMult=1+S.str.per*m('str');
   o.shotSpeed=Math.max(.6,1-S.dex.per*m('dex')); o.dodge=Math.max(0,.01*m('dex'));
   o.hp=S.con.per*m('con');
@@ -68,7 +69,7 @@ function statMods(ch){ const o={sneak:1,shotMult:1,shotSpeed:1,dodge:0,hp:0,spel
   o.gauge=Math.max(.5,1+S.cst.per*m('cst')); o.castSlow=Math.max(.6,1-S.cst.per*m('cst'));
   return o; }
 // the effect of one stat, in words, for the character screen
-function statEffect(ch,k){ const v=statOf(ch,k)-10, S=STATS[k], pct=x=>(x>=0?'+':'')+Math.round(x*100)+'%';
+function statEffect(ch,k,bonus){ const v=statOf(ch,k,bonus)-10, S=STATS[k], pct=x=>(x>=0?'+':'')+Math.round(x*100)+'%';
   if(k==='con') return (v>=0?'+':'')+Math.round(S.per*v)+' max HP';
   if(k==='str') return pct(S.per*v)+' shot damage';
   if(k==='dex') return pct(S.per*v)+' shot speed'+(v>0?', '+v+'% dodge':'');

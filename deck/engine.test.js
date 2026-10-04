@@ -332,3 +332,12 @@ t('experience: levels bring stat points, confirmed points stay, the cap rises', 
   assert.strictEqual(CH.statCap(c),CH.STAT_CAP);
   assert(CH.fightXp([{boss:true}],4)>CH.fightXp([{}],4)&&CH.fightXp([{minion:true}],4)<CH.fightXp([{}],4));
 });
+t('enchanted and cursed gear raise and lower your stats while worn', ()=>{
+  const G3=require('./gear.js'); global.statMods=CH.statMods; global.STATS=CH.STATS;
+  const id=Object.keys(G3.GEAR).find(k=>G3.GEAR[k].slot==='weapon'), sv={char:CH.newChar('human',0)}; G3.gearState(sv);
+  const before=G3.gearMods(sv); sv.items[id]=1; sv.gear.weapon=id; sv.ench[id]='might';
+  const m=G3.gearMods(sv); assert.strictEqual(m.stats.str,2); assert(m.shotMult>before.shotMult,'+2 STR adds shot damage');
+  sv.cursed[id]='thirst'; const c=G3.gearMods(sv); assert.strictEqual(c.stats.con,-2); assert(c.hp<m.hp,'−2 CON lowers max HP');
+  assert(/Strength/.test(G3.gearText(sv,id)),'piece text names the stat');
+  assert.strictEqual(CH.statOf(sv.char,'str',c.stats),12); assert.strictEqual(CH.statOf(sv.char,'str'),10,'spending ignores gear');
+});

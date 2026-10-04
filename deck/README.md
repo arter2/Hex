@@ -1,0 +1,50 @@
+# Hexmancers deck prototype
+
+Open `deck/index.html` in a browser (no build step). Progress is saved in the browser (localStorage).
+
+**The loop:** pick a starter deck → fight at camp → each win gives one reward (a card, gold or a piece of gear; bosses give more) → equip a weapon and an armor → open packs in the shop →
+build decks from your collection → fight deeper for rarer drops. 1,000 cards to collect, plus 6 heroes:
+the rarest cards, mostly dropped by bosses. A hero fights beside you for 3 turns and empowers you while it stands (one per deck).
+
+| File | What it holds |
+| --- | --- |
+| `world.js` | The world in one table: six areas of 4 floors each (Glowworm Hollows, Frozen Deeps, Storm Vault, Ember Rifts, Gilded Ruins, The Abyss), each with its color, the boss on its 4th floor (Radiant Golem, Glacier Queen, Thunder Roc, Magma Wyrm, Elder Treant, Hollow King) and its look in the battle cave, battle floor, dungeon stone and camp scene. Camp, menus, dungeon, battles and encounters all ask `areaOf(depth)`. |
+| `cards.js` | 51 hand-authored signature cards (Arcane set aside for Light) + a seeded template generator for the rest of the 1,000 (125 per family: type split, 50/38/25/12 rarity, ranks 1–12 spread evenly so Straights take the right cards), the 6 heroes, 4 potion cards (gray), color ring, starter decks |
+| `engine.js` | Runes (queued cards share a rune A–F or a name; ✱ is wild), combos (Double/Triple, Flush = one color and one type, Straight / Grand Straight, recipes), Rune Surge 4th slot. Deck rules and piles: 45–60 cards, 4 copies (1 per legendary or hero, 1 hero per deck), draw 7 at each Custom, queue 3, no reshuffle, charge uses, draw/recall/copy |
+| `collection.js` | Save, rewards (one card, gold or gear per normal win; bosses give gold, 2+ cards, gear and sometimes a hero), packs, auto-fill |
+| `gear.js` | Your wizard's gear in seven slots (weapon, off-hand, head, body, arms, 2 rings): 55 pieces. Weapon kinds fire differently (wands quick, staffs pierce, bows volley, crossbows knock back, spears reach 3); body armor is light, medium or heavy; shields block a hit a turn; 5 legendaries, 4 three-piece sets; every piece is identified except a hidden enchantment or curse that shows when first worn (a curse sticks until purified or paid for with 3 cards of its rune); heavy armor slows casting unless enchanted; your wizard's sprite shows what you wear; merging copies (+1 to +3), scrolls of enchanting and purifying, loot rolls. Shown on the Character screen |
+| `battle.js` | Real-time battle on an 8 x 12 hex board inside the cave of the area you are in (world.js), seen through a perspective camera behind you and up, looking straight at the enemy side, with the next card's reach drawn on the floor (tiles, shot paths, lob arcs) and run at 80% speed so enemies are easy to follow; every card type: Strike, Lob, Ward, Sentry, Boon, Charge, Utility, Trap, Environment, Summon, Machine, Hero, Legendary piece |
+| `enemies.js` | Monsters with signature attacks, humanoids that cast real cards, encounters in up to 3 waves, terrain (rocks, lava, ice) |
+| `art.js` | 64 x 64 pixel art for every card (all different): the subject comes from the card's name, staged by its type, set in one of three scenes for its color, changed by the words in its name (molten veins, ice, thorns, flowers, smoke, feathers, arcs, gears...), shaded as a solid with material textures, with keyword badges and a rarity frame; also the 32 x 32 sprites for every unit on the board. `node deck/tools/export-art.js` writes `art/<card id>.csv` (64 rows of 64 hex colors) and `art/index.csv` |
+| `bosses.js` | Six bosses, one per color, each on the last floor of its area (world.js), each with a gimmick and two evolutions at 2/3 and 1/3 HP, aimed at 6 to 10 minute fights. Camp has a Test a boss row |
+| `keys.js` | Keyboard controls: every action on up to two keys, four presets (Standard WASD + arrows, Arrows + right hand, ESDF, HJKL), a Settings screen (main menu, camp, and the pause menu) to rebind keys with clash warnings and a key tester; saved per browser. Battles and the dungeon both read it, and the on-screen hints follow it |
+| `explore.js` | The overworld: each depth is a Rogue/NetHack-style floor of rooms and corridors in 3D (Three.js r128, bundled as three.min.js). You see only what is in sight: a lit room shows whole when you step in, corridors and dark rooms only a few steps around you, and explored ground stays dimly remembered. Enemies sleep, wander or hunt you; reach a sleeping one first for an ambush (its attacks are held back), or get caught by one you never saw and it strikes first. Secret doors and hidden traps (spikes, darts, fire, pits, alarms) are found by searching (F); a found trap blocks the way until you disarm it (E), and a slip springs it. Chests (some with trapped locks, one rich chest in a hidden closet per floor) hold cards, gold or gear. Wounds carry between fights and floors and heal slowly as you walk; stairs down lead deeper, the stairs up return to camp |
+| `dungeon.js` | What fills the dungeon: NPCs with side quests (quest givers, lost adventurers to escort, prisoners in locked cells, scholars, a robbed merchant, a rival treasure hunter, sanctuary hermits); merchants every 3 to 6 floors (weapon, armor, card, curio, black market, goblin) with stock that scales with depth, selling, upgrades, curse removal and maps; sanctuaries every 5 to 6 floors (rest once, bind for one revive); bronze, silver, gold, skeleton and boss keys with locked doors, vaults, prison cells, shortcut gates and boss doors; puzzles (pressure plates and blocks, rotating statues, mirrors and light, the colour-wheel runes, lever order, combat trials); visible traps (swinging blades, flame jets, curse totems), mimics, poison and curses; secrets found by standing still or searching (hidden doors, wall caches, hidden switches, loose floor stones, a hidden stair to a sanctum branch), with whisper cues; the bag, consumables, crafting materials, permanent blessings and lore. Every floor holds at least two of these, and a fuzz test checks that no floor ever locks you out. |
+| `minibosses.js` | Eight minibosses for the dungeon (Executioner, Corrupted Knight, Giant Mimic, Dungeon Warden, Plague Alchemist, Shadow Assassin, Arcane Construct, Bone Collector) with their own attack patterns, escorts and an enrage at half health; they hunt, patrol, guard hoards or appear when something happens (lingering too long, an alarm, a looted bone pile, an opened vault). Also the combat trials' rules (fight in order, survive, light the switches). |
+| `uikit.js` | The pixel stone menu kit, drawn at load: tiling rock walls, carved stone frames, stone buttons (blue rim for the main action, gold for rewards), dark inset slots, header bars, the title banner, 24 x 24 icons for menus and every piece of gear (tinted by its color family), the camp scene for each area with a flickering fire, and the depth map. Each art pixel shows as 2 css pixels; textures reach the stylesheet as `--px-*` variables. No gradients: glow is dithered |
+| `sprites.js` | Generated by `python3 deck/tools/sprites/export.py` (Pillow): the hand-placed wizard and its elf, dwarf and orc variants (man and woman), front for camp and the character screen, back for battle. Pick one under Look on the character screen |
+| `ui.js` | Main menu, start, camp, deck builder (5 saved decks), collection, shop, Custom screen, HUD, the shared pause menu (dungeon and battle; Esc), Settings (layout, full screen, testing tools, erase save), controls |
+| `fonts/` | Pixelify Sans, VT323 and Jacquard 12 (SIL OFL, see `fonts/OFL.txt`), bundled so the game looks the same offline and on itch.io |
+
+Tests: `node deck/engine.test.js`
+
+Dungeon fuzz test: `node deck/tools/dungeon/fuzz.js` builds 192 floors in a headless browser and fails if any floor could lock you out, a puzzle cannot be solved or a merchant or sanctuary misses its schedule. Minibosses: `node deck/tools/playtest/minis.js 3 3,6,9` plays each one against the starter decks.
+
+Playtest bots (novice, casual, expert): `node deck/tools/playtest/run.js check 10 1,3,5,8` prints win rate, fight length, stalls and more per skill and depth; `node deck/tools/playtest/weapons.js` compares weapons and gear.
+
+Controls: tap a tile on your side to move, tap a tile on the enemy side to aim lobs (nearest enemy if you don't), hold Wand to charge, Cast plays the next queued card, Custom opens when the gauge is full.
+Keyboard: arrows/WASD move, Space wand, Enter cast, Q cycle lob aim, C custom, 1–7 pick cards on the Custom screen.
+In grids, long-press (or right-click) a card for its detail.
+
+Card ids come from a seeded generator. Changing a template in `cards.js` can change ids, so bump `SAVE_KEY` in `collection.js` when you do.
+
+See `CHECKPOINTS.md` for known-good points to go back to.
+
+
+## Screen sizes
+
+The page is tagged `.wide` (landscape) or `.tall` (portrait) and gets `--ui`, a scale for menus, the battle HUD and pop-ups: 1 on phones, about 1.4 at 1920 x 1080, up to 2.5 on 4K. In wide windows the battle board takes the full height with the controls in a column on the right, the custom screen puts the hand beside the queue, and the camp uses two columns. Any size works; on itch.io a 1280 x 720 or 540 x 960 embed with the fullscreen button is a good default.
+
+## Publishing on itch.io
+
+`python3 deck/tools/build-itch.py` writes `dist/hexmancers-itch.zip`: `index.html` at the root with the stylesheet and scripts beside it. On itch.io, create a project with Kind of project set to HTML, upload the zip and tick "This file will be played in the browser".

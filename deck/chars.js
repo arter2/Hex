@@ -13,7 +13,7 @@ const xpNeed=level=>60+40*level;   // to go from this level to the next: 100, 14
 const STAT_KEYS=['str','dex','con','int','wis','cha','stl','rch','cst'];
 // k: what the stat changes; per: the change for each point away from 10
 const STATS={
-  str:{name:'Strength',     ab:'STR', icon:'✊', per:.06, text:'Wand and staff shot damage'},
+  str:{name:'Strength',     ab:'STR', icon:'✊', per:.05, text:'Wand and staff shot damage'},
   dex:{name:'Dexterity',    ab:'DEX', icon:'🏹', per:.05, text:'Shot speed, and a chance to dodge hits'},
   con:{name:'Constitution', ab:'CON', icon:'❤', per:6,   text:'Max HP'},
   int:{name:'Intelligence', ab:'INT', icon:'📖', per:.04, text:'Card power: damage, healing and shields'},
@@ -23,16 +23,19 @@ const STATS={
   rch:{name:'Recharge',     ab:'RCH', icon:'↻', per:.04, text:'Wand fire rate and charge-up time'},
   cst:{name:'Casting',      ab:'CST', icon:'✦', per:.05, text:'Cast speed, and how fast cards come ready'},
 };
-// each race's baseline adds up to 90 (ten in every stat, moved about)
+// each race's baseline adds up to 90 (ten in every stat, moved about), split the same way for all:
+// 60 across the six combat stats and 30 across the three dungeon ones (Wisdom, Charisma, Stealth),
+// so no race buys battle power by giving up dungeon stats. Checked with the race bots
+// (tools/playtest/races.js): every race wins within a couple of points of the others.
 const RACES={
   human: {name:'Human',       looks:['wizard','human_f'],   base:{str:10,dex:10,con:10,int:10,wis:10,cha:10,stl:10,rch:10,cst:10}, text:'Even in every stat: ready for any deck.'},
-  elf:   {name:'Elf',         looks:['elf_m','elf_f'],      base:{str:8, dex:12,con:8, int:12,wis:10,cha:10,stl:11,rch:10,cst:9},  text:'Quick, quiet shots and strong cards, but frail.'},
-  dwarf: {name:'Dwarf',       looks:['dwarf_m','dwarf_f'],  base:{str:13,dex:8, con:13,int:9, wis:10,cha:8, stl:8, rch:12,cst:9},  text:'Tough and hard-hitting; slow to charm.'},
-  warlock:{name:'Warlock',    looks:['witch_m','witch'],    base:{str:8, dex:10,con:9, int:12,wis:9, cha:11,stl:11,rch:9, cst:11}, text:'Silver-tongued spellcasters with fast cards.'},
-  necro: {name:'Necromancer', looks:['necro','necro_f'],    base:{str:9, dex:9, con:9, int:13,wis:11,cha:8, stl:10,rch:9, cst:12}, text:'The strongest and fastest casters; weak wands.'},
-  shaman:{name:'Shaman',      looks:['shaman_m','shaman_f'],base:{str:10,dex:9, con:11,int:9, wis:13,cha:10,stl:10,rch:9, cst:9},  text:'Hardy and wise: nothing stays hidden from them.'},
-  ranger:{name:'Ranger',      looks:['ranger_m','ranger_f'],base:{str:10,dex:12,con:9, int:8, wis:11,cha:9, stl:12,rch:11,cst:8},  text:'Fast, quiet, sharp-eyed shooters; plain spells.'},
-  orc:   {name:'Orc',         looks:['orc_m','orc_f'],      base:{str:15,dex:9, con:13,int:8, wis:8, cha:8, stl:7, rch:12,cst:10}, text:'Huge wand hits and lots of HP; loud and little else.'},
+  elf:   {name:'Elf',         looks:['elf_m','elf_f'],      base:{str:8,dex:12,con:8,int:12,wis:10,cha:9,stl:11,rch:10,cst:10},  text:'Quick, quiet shots and strong cards, but frail.'},
+  dwarf: {name:'Dwarf',       looks:['dwarf_m','dwarf_f'],  base:{str:11,dex:8,con:13,int:9,wis:11,cha:10,stl:9,rch:11,cst:8},  text:'Tough, wise and hard to kill; slow casters.'},
+  warlock:{name:'Warlock',    looks:['witch_m','witch'],    base:{str:8,dex:10,con:9,int:12,wis:9,cha:12,stl:9,rch:9,cst:12}, text:'Silver-tongued spellcasters with fast, strong cards.'},
+  necro: {name:'Necromancer', looks:['necro','necro_f'],    base:{str:8,dex:9,con:9,int:13,wis:11,cha:8,stl:11,rch:9,cst:12}, text:'The strongest and fastest casters; weak wands.'},
+  shaman:{name:'Shaman',      looks:['shaman_m','shaman_f'],base:{str:9,dex:9,con:12,int:11,wis:13,cha:9,stl:8,rch:9,cst:10},  text:'Hardy and wise: nothing stays hidden from them.'},
+  ranger:{name:'Ranger',      looks:['ranger_m','ranger_f'],base:{str:10,dex:13,con:9,int:8,wis:11,cha:8,stl:11,rch:12,cst:8},  text:'Fast, quiet, sharp-eyed shooters; plain spells.'},
+  orc:   {name:'Orc',         looks:['orc_m','orc_f'],      base:{str:11,dex:9,con:12,int:9,wis:11,cha:11,stl:8,rch:11,cst:8}, text:'Big wand hits and lots of HP; loud, slow casters.'},
 };
 const RACE_KEYS=Object.keys(RACES);
 

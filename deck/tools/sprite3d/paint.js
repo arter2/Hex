@@ -168,6 +168,8 @@ LAB.paintFace=function(P,A,F,skin){
    bridge on the far side, a lit tip, a nostril and the shadow it casts; mouth as a dark parting line,
    lit lower lip and the shadow under it. d points from the near eye toward the far eye. */
 function bigFace(P,A,F,skin,at,S,d){
+  // bark or stone faces: broken vertical grain over the whole face
+  if(F.grain){ const n=A.TS; for(let x=0;x<n;x+=2){ let y=0; while(y<n){ const L=2+Math.floor(P.rnd()*5); if(P.rnd()<.6) for(let k=0;k<L;k++) P.px(x+(P.rnd()<.2?1:0),y+k,mixc(skin,F.grain,.55)); y+=L+1+Math.floor(P.rnd()*3); } } }
   const E=F.eyes||{}, st=E.style||'round', iris=E.c==null?0x3a5a7a:E.c, liner=E.liner==null?INK:E.liner, gl=E.glow?{glow:true}:null,
     pup=E.pupil||mixc(iris,INK,.62), hi=mixc(iris,0xffffff,.35), lash=!!E.lash, sock=S(.8);
   // sockets: the brow shades the eye

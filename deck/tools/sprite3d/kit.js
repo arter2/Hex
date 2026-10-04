@@ -74,6 +74,7 @@ function hood(R,H,shoulderR){ const hm=M(H.c,{soft:true,side:DS}), hm1=M(H.c,{so
 // executioner's sack hood: covers the whole head, two eye holes
 function sack(R,H){ const hm=M(H.c,{soft:true}), h=R.head;
   add(h,G.robe([[.22,-.06],[.2,.05],[.185,.2],[.15,.3],[.09,.38],[.01,.42]],5,.015,24),hm,0,0,0);
+  add(h,G.nose(.05,.032,.075),M(H.c,{soft:true,facet:true}),0,.16,.19); add(h,G.box(.012,.2,.012),M(0x2a2020),0,.2,.205);
   for(const s of [1,-1]){ add(h,G.box(.075,.045,.04),M(0x050308),.065*s,.17,.19); add(h,G.box(.03,.022,.02),M(H.eyes||0xff3a2a,{glow:true}),.06*s,.17,.205); }
   add(R.torso,G.robe([[.42,.3],[.36,.42],[.2,.54],[.08,.6]],7,.025,28),hm,0,0,0).scale.z=.8;
   R.hatTip=grp(R.hat,0,0,0); }
@@ -89,6 +90,13 @@ function helm(R,H){ const hc=MT(H.tex||H.c,{metal:H.metal==null?.95:H.metal}), h
     add(h,G.box(.03,.3,.36),h2,0,.37,-.02); }
   else if(ty==='open'){ add(h,G.cap(.22,.5,16,8),hc,0,.16,0); add(h,new T.SphereGeometry(.222,16,10,PI/2+.75,PI*2-1.5,PI*.48,PI*.42),M(H.c,{metal:.95,side:DS}),0,.16,0);
     add(h,G.box(.04,.17,.04),h2,0,.2,.215); add(h,G.tor(.222,.02,4,18),h2,0,.18,0,PI/2); }
+  else if(ty==='dread'){ // angular war helm: faceted skull, a beaked visor, glowing T-slit, flared cheek guards, a crest ridge
+    const hf=MT(H.tex||H.c,{metal:H.metal==null?.95:H.metal,facet:true}), h2f=M(colOf(H.c2)||shade(H.c,.65),{metal:.9,facet:true});
+    add(h,G.limb([[-.07,.21,.2,0],[.1,.235,.235,0],[.27,.205,.215,-.01],[.37,.11,.14,-.02],[.41,.02,.03,-.03]],8),hf,0,0,0);
+    const vz=add(h,G.cone(.17,.2,4),hf,0,.12,.2,PI/2,PI/4,0); vz.scale.set(1.15,1,.62);
+    add(h,G.box(.26,.026,.04),slitM,0,.18,.24); add(h,G.box(.03,.12,.04),slitM,0,.12,.255); add(h,G.box(.3,.04,.06),dark,0,.205,.215);
+    for(const s of [1,-1]){ const c=add(h,G.trap(.11,.2,.03,1.4),h2f,.17*s,.03,.13,0,s*.55,s*.12); add(h,G.cone(.035,.2,4),h2f,.16*s,.3,.1,-1.0,0,-s*.5); }
+    add(h,G.trap(.04,.16,.32,.4),h2f,0,.42,-.03); add(h,G.tor(.215,.02,4,8),h2f,0,-.03,0,PI/2); }
   else if(ty==='barbute'){ add(h,G.lathe([[.2,-.05],[.215,.1],[.22,.22],[.17,.34],[.001,.38]],16),hc,0,0,0);
     add(h,G.box(.05,.22,.05),dark,0,.1,.205); add(h,G.box(.2,.05,.05),dark,0,.2,.2); add(h,G.box(.14,.025,.03),slitM,0,.2,.215); }
   if(H.crest) add(h,G.box(.045,.12,.34),M(H.crest),0,.42,-.02);
@@ -283,9 +291,15 @@ LAB.humanoid=function(o){
         fing.forEach(([x,y],i)=>{ add(w,G.tube([[.5*s,.5,-.1],[(x*.8)*s,(.5+y)/2+.1,-.12],[x*s,y,-.12]],.016,.006,8,4),wm2,0,0,0);
           const prev=i?fing[i-1]:[.5,.5]; const g=new T.BufferGeometry();
           g.setAttribute('position',new T.Float32BufferAttribute([0,0,-.08, prev[0]*s,prev[1],-.11, x*s,y,-.12],3)); g.computeVertexNormals(); add(w,g,wm,0,0,0); }); }
-      else { const WS=o.wingK||1; add(w,G.tube([[0,0,0],[.25*s*WS,.25*WS,-.05],[.6*s*WS,.55*WS,-.1],[.75*s*WS,.75*WS,-.12]],.07,.03,10,6),wm,0,0,0);
-        for(let i=0;i<9;i++){ const u=i/8, x=s*(.06+u*.66)*WS, y=(.04+u*.68)*WS, L=(.45+u*.55)*WS; const f=add(w,G.leaf(.08+u*.03,L),i%2?wm2:wm,x,y,-.06-u*.06,0,0,PI+s*(.08+u*.32)); f.scale.set(1,1,1.6); }
-        for(let i=0;i<6;i++){ const u=i/5; add(w,G.leaf(.07,.3+u*.2),wm,s*(.1+u*.55)*WS,(.12+u*.6)*WS,-.03,0,0,PI+s*(.2+u*.3)).scale.set(1,1,1.6); } } } }
+      else { // a real bird wing: a jointed arm bone, long primaries fanning from the wrist, secondaries along the forearm, two rows of coverts
+        const WS=o.wingK||1, wm3=M(new T.Color(o.wings).lerp(new T.Color(0xffffff),.22).getHex(),{soft:true,side:DS}), arm=[[0,0,0],[.3*s*WS,.28*WS,-.06],[.78*s*WS,.66*WS,-.12],[1.0*s*WS,.62*WS,-.14]];
+        add(w,G.tube(arm,.06,.025,12,6),wm,0,0,0); const cv=new T.CatmullRomCurve3(arm.map(p=>new T.Vector3(...p)));
+        for(let i=0;i<10;i++){ const u=i/9, q=cv.getPointAt(.62+u*.38), L=(.7+.45*Math.sin(u*PI*.8))*WS, ang=PI+s*(.35+u*1.15);
+          add(w,G.leaf(.075,L),i%2?wm2:wm,q.x,q.y,q.z-.02-u*.03,0,0,ang).scale.set(1,1,1.5); }
+        for(let i=0;i<9;i++){ const u=i/8, q=cv.getPointAt(.08+u*.52), L=(.5+.12*u)*WS;
+          add(w,G.leaf(.075,L),i%2?wm:wm2,q.x,q.y,q.z-.05,0,0,PI+s*(.06+u*.3)).scale.set(1,1,1.5); }
+        for(const [row,len] of [[0,.24],[1,.15]]) for(let i=0;i<10;i++){ const u=i/9, q=cv.getPointAt(.05+u*.85);
+          add(w,G.leaf(.06,len*WS),row?wm3:wm,q.x,q.y+.02-row*.06,q.z+.01+row*.01,0,0,PI+s*(.15+u*.5)).scale.set(1,1,1.5); } } } }
   if(o.tail){ R.tail=grp(R.hips,0,.0,-b.hp*.7); const tm=M(o.tail.c); add(R.tail,G.tube([[0,0,0],[0,-.2,-.25],[.1,-.55,-.35],[.25,-.75,-.2],[.3,-.8,.0]],.05,.018,16,6),tm,0,0,0);
     if(o.tail.tip) add(R.tail,G.oct(.08),M(o.tail.tip),.32,-.8,.05).scale.set(1,1.4,.3); }
   // ----- head: the back half is plain; the front half carries the painted face (see faceProject)
@@ -479,7 +493,7 @@ LAB.poseHumanoid=function(R,P){
   if(R.upright) R.wpPivot.rotation.set(P.wpTilt-(P.armRX+P.elbowR),0,-(P.armRZ-sp)); else R.wpPivot.rotation.set(P.wpX+P.wpTilt,0,0);
   if(R.weapon) R.weapon.position.y=P.wpY;
   if(R.cape) R.cape.rotation.x=P.cape; R.skirt.rotation.z=P.skirtZ; if(R.hatTip) R.hatTip.rotation.x=P.hatTip;
-  if(R.wings) R.wings.forEach((w,i)=>w.rotation.y=(i?-1:1)*(.3-P.wing*.5));
+  if(R.wings) R.wings.forEach((w,i)=>{ const s=i?-1:1, f=Math.sin((P.t||0)*PI*2); w.rotation.y=s*(.25-P.wing*.5+.12*f); w.rotation.z=s*(.1*f-.05); w.rotation.x=.05*f; });
   if(R.tail) R.tail.rotation.set(.1*Math.sin(P.t*PI*2),.35*Math.sin(P.t*PI*2),0);
   for(const f of R.flick) f.o.rotation[f.ax]=(f.z0||0)+f.a*Math.sin(P.t*PI*2*f.k+f.p);
   R.orb.visible=P.orb>.05&&!R.o.noOrb; R.orb.scale.setScalar(Math.max(.01,P.orb));

@@ -132,6 +132,13 @@ LAB.render=function(root,size,base,opts={}){
   for(let i=0;i<N;i++){ const k=i*4; a[i]=P.albedo[k+3]>=128?1:0; if(!a[i]) continue;
     const d=P.depth; dep[i]=(d[k]/16777216+d[k+1]/65536+d[k+2]/256+d[k+3])/255;   // three's RGBA depth packing
     pid[i]=P.flags[k+2]; }
+  // ambient occlusion from the depth pass: pixels with nearer geometry close around them (creases, under
+  // overlaps, between fingers and folds) lose a tone band
+  const occ=new Uint8Array(N);
+  if(opts.ao!==false){ const Rr=[2,4], D=[[1,0],[-1,0],[0,1],[0,-1],[1,1],[-1,1],[1,-1],[-1,-1]];
+    for(let y=0;y<size;y++) for(let x=0;x<size;x++){ const i=y*size+x; if(!a[i]) continue; let n=0;
+      for(const r of Rr) for(const [dx,dy] of D){ const xx=x+dx*r, yy=y+dy*r; if(xx<0||yy<0||xx>=size||yy>=size) continue; const j=yy*size+xx; if(a[j]&&dep[i]-dep[j]>.0015&&dep[i]-dep[j]<.03) n++; }
+      occ[i]=n>=6?2:n>=3?1:0; } }
   // one pixel of one layer -> [r,g,b, band]
   const shadeAt=(L,i)=>{ const k=i*4;
     const A=[L.albedo[k],L.albedo[k+1],L.albedo[k+2]], fr=L.flags[k], glow=fr>200, soft=fr>100&&fr<=200, glass=fr>40&&fr<=100, metal=glass?0:L.flags[k+1]/255;
@@ -144,6 +151,7 @@ LAB.render=function(root,size,base,opts={}){
     // polished metal mirrors a room: bright sky above a dark horizon band, a dim floor below, hard glints
     if(metal>0){ const ry=2*nz*ny, env=(ry>.28?.95+.25*ry:ry>.02?.22:.5-.2*Math.max(0,-ry))+.18*Math.max(0,-nx);
       v=v*(1-.7*metal)+(env+spec*1.6)*.7*metal; v=.5+(v-.5)*1.35; }
+    if(L===P&&occ[i]) v-=.13*occ[i];
     const TH=[.36,.56,.8,1.02]; let b=v<TH[0]?0:v<TH[1]?1:v<TH[2]?2:v<TH[3]?3:4;
     if(soft&&opts.dither!==false){ const px=i%size, py=(i/size)|0; for(let q=0;q<4;q++){ const dd=v-TH[q]; if(Math.abs(dd)<.03&&((px+py)&1)) b=dd<0?q+1:q; } }
     if(soft&&b===4) b=3;
@@ -195,6 +203,12 @@ LAB.fire=function(par,o={}){ const T=THREE, h=o.h||1, r=o.r||.3, cols=o.cols||[0
         x+=h*.12*u*u*Math.sin(ph+seed); p.setXYZ(j,x,y,z); }
       g.computeVertexNormals(); m.geometry.dispose(); m.geometry=g; } };
   update(0); return {update, shells}; };
+// glowing particles streaming back from a point (eyes): each frame the motes drift back and up and shrink
+LAB.trail=function(par,x,y,z,col,o={}){ const n=o.n||6, ms=[]; for(let i=0;i<n;i++){ const m=LAB.mesh(new THREE.OctahedronGeometry(1),LAB.M(i%2?col:0xffffff,{glow:true}),x,y,z); m.castShadow=false; par.add(m); ms.push(m); }
+  const dir=o.dir||[-.35,.12,-.9], len=o.len||.4, sz=o.size||.02;
+  const update=t=>ms.forEach((m,i)=>{ const u=((i/n)+t*(o.speed||2))%1, w=Math.sin((u+i)*Math.PI*2)*.03;
+    m.position.set(x+dir[0]*len*u+w,y+dir[1]*len*u+.06*u*u,z+dir[2]*len*u); m.scale.setScalar(sz*(1-u*.8)); m.userData.m=LAB.M(u<.35?0xffffff:col,{glow:true}); });
+  update(0); return {update}; };
 // advance every living flame under a model
 LAB.fireTick=(root,t)=>root.traverse(o=>{ if(o.userData&&o.userData.fire) o.userData.fire.update(t); });
 

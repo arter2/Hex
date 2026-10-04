@@ -556,7 +556,7 @@ function xAimCell(ex,ey){ const G=X3, r=appBox($('#xView')), v=new THREE.Vector2
   return xi(Math.max(0,Math.min(XN-1,cl(Math.floor(hit.x/XCS),px))),Math.max(0,Math.min(XN-1,cl(Math.floor(hit.z/XCS),py)))); }
 // one search of everything within 2 tiles you can see: k is the chance (1 for the Search button,
 // a third while you stand still); deeper traps are a little harder to spot
-function xSearchRoll(k,quiet,at){ const ctr=at==null?EX.pc:at, x=xcx(ctr), y=xcy(ctr); let found=0; const hard=Math.max(.75,1-EX.depth*.01);
+function xSearchRoll(k,quiet,at){ k*=(typeof gearMods==='function'&&gearMods(save).search)||1; const ctr=at==null?EX.pc:at, x=xcx(ctr), y=xcy(ctr); let found=0; const hard=Math.max(.75,1-EX.depth*.01);
   for(let dy=-2;dy<=2;dy++) for(let dx=-2;dx<=2;dx++){ const i=xi(x+dx,y+dy), d=EX.doors.get(i);
     if(d&&d.state==='secret'&&xLos(EX.pc,i)&&Math.random()<.55*k){ d.state='closed'; d.leaf.visible=true; found++; xLog(quiet?'Standing still, you notice the outline of a hidden door!':'You find a hidden door!','good');
       const w=EX.wIdx.get(i); if(w){ w[0].setMatrixAt(w[1],new THREE.Matrix4().makeScale(0,0,0)); w[0].instanceMatrix.needsUpdate=true; EX.wIdx.delete(i); } EX.seen[i]=1; } }

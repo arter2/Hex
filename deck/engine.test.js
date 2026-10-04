@@ -301,3 +301,21 @@ t('potions are gray cards, and potions in an old save become those cards', ()=>{
   global.localStorage={getItem:()=>JSON.stringify(s)}; const m=C.loadSave(); delete global.localStorage;
   assert.strictEqual(m.owned.potion_heal,2); assert.strictEqual(m.owned.potion_wind,1); assert(!m.items.draught&&!m.items.wind); assert.strictEqual(m.gear.weapon,'basic_wand','old saves get the basic wand');
 });
+
+const CH=require('./chars.js');
+t('every race baseline adds up to 80 and has a man and a woman look', ()=>{
+  for(const k of CH.RACE_KEYS){ const R=CH.RACES[k]; assert.strictEqual(CH.STAT_KEYS.reduce((a,s)=>a+R.base[s],0),80,k); assert.strictEqual(R.looks.length,2,k); }
+});
+t('12 points to spend, never below the race baseline or above the cap', ()=>{
+  const c=CH.newChar('orc',1); assert.strictEqual(c.look,'orc_f'); assert.strictEqual(CH.pointsLeft(c),12);
+  assert(!CH.spendPoint(c,'str',-1),'cannot go below baseline');
+  let n=0; while(CH.spendPoint(c,'str',1)) n++; assert.strictEqual(CH.statOf(c,'str'),CH.STAT_MAX); assert.strictEqual(n,CH.STAT_MAX-14);
+  while(CH.spendPoint(c,'wis',1)); assert.strictEqual(CH.pointsLeft(c),0); assert.strictEqual(CH.statOf(c,'wis'),16); assert(!CH.spendPoint(c,'dex',1),'no points left');
+  assert(CH.spendPoint(c,'wis',-1)); assert.strictEqual(CH.pointsLeft(c),1);
+});
+t('stats change play: average is no change, a strong stat helps', ()=>{
+  const h=CH.statMods(CH.newChar('human',0)); for(const k of ['shotMult','shotSpeed','spell','search','price','cd','charge','gauge','castSlow']) assert.strictEqual(h[k],1,k); assert.strictEqual(h.hp,0);
+  const o=CH.newChar('orc',0); const m=CH.statMods(o); assert(m.shotMult>1&&m.hp>0&&m.spell<1);
+  assert.deepStrictEqual(CH.statMods(null).hp,0);
+  const G2=require('./gear.js'); const sv={char:o}; global.statMods=CH.statMods; assert.strictEqual(G2.gearMods(sv).hp,m.hp);
+});

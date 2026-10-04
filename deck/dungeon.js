@@ -308,7 +308,7 @@ function xStock(kind){ const d=EX.depth, out=[], gear=(fn,n)=>{ for(let k=0,trie
       {kind:'key',k:'bronze',price:KEYS.bronze.price},{kind:'key',k:XR()<.5?'silver':'bronze',price:0},{kind:'mat',k:xpick(['ore','essence']),price:60}); out[3].price=KEYS[out[3].k].price; }
   if(kind==='weapon'||kind==='armor') out.push({kind:'mat',k:'ore',price:55});
   if(kind!=='goblin'&&kind!=='black') out.push({kind:'bag',k:'draught',price:BAG.draught.price});
-  for(const o of out) o.price=Math.round(o.price*(1+.02*d));
+  const cha=gearMods(save).price||1; for(const o of out) o.price=Math.round(o.price*(1+.02*d)*cha);
   return out; }
 function xPlaceMerchant(r,kind,cell){ const c=cell!=null?cell:xFreeSolid(r,true); if(c<0) return null; const M=MERCHANTS[kind];
   return xProp('merchant',c,{mkind:kind, name:M.who, title:M.name, look:M.look, stock:xStock(kind), used:{}}); }
@@ -846,7 +846,7 @@ function xTalk(p){ const L=xpick(LINES[p.role]||['…']), d=EX.depth;
     return done(L+' The thieves can’t have gone far. Find my crate on this floor and bring it back; you won’t regret it.'); }
   if(p.role==='rival'){ if(p.state==='idle'){ p.state='race'; const t=p.target; if(t){ EX.seen[t.cell]=1; xUpdateVis(); }
       return done(L+' The chest is marked on your map now, if you think you’re fast enough. Go!'); }
-    if(p.state==='lost'&&!p.sold){ const id=rollLoot(d+1,XR), price=gearPrice(id); return xDlg({look:p.look,title:p.name,sub:p.title,text:'Fine, you won. I do have this spare: '+lootLabel(save,id).name+'. '+price+' gold?',
+    if(p.state==='lost'&&!p.sold){ const id=rollLoot(d+1,XR), price=Math.round(gearPrice(id)*(gearMods(save).price||1)); return xDlg({look:p.look,title:p.name,sub:p.title,text:'Fine, you won. I do have this spare: '+lootLabel(save,id).name+'. '+price+' gold?',
       buttons:[['Buy it ('+price+')',()=>{ if(save.gold<price) return tip('Not enough gold'); save.gold-=price; p.sold=true; const res=addLoot(save,id,XR); persist(); xLog('You buy '+lootLabel(save,id).name+'.'+(res&&res.cursed?' '+res.msg:''),'loot'); xHud(); }],['No',null,true]]}); }
     return done(p.state==='won'?'Too slow, friend. Better luck below.':'Out of my way!'); }
   if(p.role==='hermit'){ if(p.state==='idle'){ p.state='done'; if(XR()<.2){ const k=xpick(Object.keys(PERM)), ok=addPerm(k); persist(); return done(L+' Here. Take a little of my strength. ('+(ok?PERM[k].name+': '+PERM[k].text:'you are already strong')+')'); }

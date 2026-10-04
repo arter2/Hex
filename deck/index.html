@@ -27,9 +27,30 @@
     </div>
   </section>
 
+  <!-- new game, step 1: your hexmancer: race, body and stats -->
+  <section id="scrNewChar" class="screen">
+    <div class="cc">
+      <div class="bar"><button id="ccBack" class="btn ghost back">←</button><h2>Your hexmancer</h2><span class="dim">Step 1 of 2</span></div>
+      <div class="cctop">
+        <canvas id="ccSprite" width="192" height="192"></canvas>
+        <div class="ccinfo">
+          <h3 id="ccRace"></h3>
+          <p id="ccText" class="hint"></p>
+          <div class="ccbody"><button class="chip" data-body="0">Man</button><button class="chip" data-body="1">Woman</button></div>
+        </div>
+      </div>
+      <div id="ccRaces" class="ccraces"></div>
+      <div class="ccpts"><span>Points to spend</span><b id="ccPts">12</b><button id="ccReset" class="btn ghost small">Reset</button></div>
+      <p class="hint center ccdialhint">Drag a dial left or right, or tap its ends, to move a stat. Your race sets the starting value.</p>
+      <div id="ccStats" class="ccstats"></div>
+      <p id="ccWarn" class="hint warn center"></p>
+      <button id="ccGo" class="btn big">Choose your deck ►</button>
+    </div>
+  </section>
+
   <!-- new game: pick a starter deck -->
   <section id="scrStart" class="screen">
-    <button id="startBack" class="btn ghost back startback">← Main menu</button>
+    <button id="startBack" class="btn ghost back startback">← Character</button>
     <h1>Hexmancers</h1>
     <p class="sub">New game</p>
     <p class="hint center">Choose your first deck. Win fights and open chests to collect cards from 1,000, then build your own decks at camp.</p>
@@ -108,7 +129,9 @@
     <div id="chTabs" class="invtabs"></div>
     <div id="chInv" class="invgrid"></div>
     <div id="chDetail" class="gdetail"></div>
-    <h3>Stats</h3>
+    <h3>Abilities</h3>
+    <div id="chAbil" class="charstats"></div>
+    <h3>Gear stats</h3>
     <div id="chStats" class="charstats"></div>
     <div id="chScrolls" class="items-row"></div>
     <div class="testbar devonly"><span class="dim">Testing</span><button id="chTestAll" class="btn ghost">Get one of every piece</button><button id="chTestScrolls" class="btn ghost">+2 of each scroll</button></div>
@@ -269,6 +292,7 @@
   <div id="tip" class="tip"></div>
 </div>
 <script src="cards.js"></script>
+<script src="chars.js"></script>
 <script src="engine.js"></script>
 <script src="world.js"></script>
 <script src="collection.js"></script>

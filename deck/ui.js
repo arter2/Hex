@@ -85,6 +85,58 @@ function reveal(title,body,results,buttons,extras){
   const main=bb.querySelector('.btn:not(.ghost)')||bb.querySelector('.btn'); if(main) setTimeout(()=>main.focus(),50);
 }
 
+/* ---------------- new game: your hexmancer ----------------
+   Every new game starts by making a character: a race (its baseline stats) and a body (man or
+   woman, which picks the look), then 12 points spread over eight stats with horizontal dials.
+   The deck pick comes next, and the character goes into the new save (chars.js). */
+let ccChar=null;
+function openNewChar(keep){ if(!keep||!ccChar) ccChar=newChar(pick(RACE_KEYS),Math.random()<.5?1:0); $('#ccWarn').textContent=''; delete $('#ccGo').dataset.sure; renderNewChar(); show('scrNewChar'); }
+function ccLook(id){ return typeof lookSprite==='function'?lookSprite(id,'front',true):null; }
+function renderNewChar(){ const ch=ccChar, R=RACES[ch.race];
+  $('#ccRace').textContent=R.name+' · '+(ch.body?'woman':'man'); $('#ccText').textContent=R.text;
+  document.querySelectorAll('#scrNewChar [data-body]').forEach(b=>{ b.classList.toggle('on',+b.dataset.body===ch.body); b.onclick=()=>{ const spent=ch.spent; ccChar=newChar(ch.race,+b.dataset.body); ccChar.spent=spent; renderNewChar(); }; });
+  // the hexmancer, big
+  const cv=$('#ccSprite'), x=cv.getContext('2d'); x.clearRect(0,0,192,192); x.imageSmoothingEnabled=false; const sp=ccLook(ch.look);
+  if(sp) x.drawImage(sp.img,0,0,sp.img.width,sp.img.height,0,0,192,192);
+  // the races, each shown by the look for the body you picked
+  const box=$('#ccRaces'); box.innerHTML='';
+  for(const k of RACE_KEYS){ const b=document.createElement('button'); b.className='ccrace'+(k===ch.race?' on':''); const c=document.createElement('canvas'); c.width=c.height=64;
+    const s2=ccLook(RACES[k].looks[ch.body]); if(s2){ const y=c.getContext('2d'); y.imageSmoothingEnabled=false; y.drawImage(s2.img,0,0,s2.img.width,s2.img.height,0,0,64,64); }
+    b.appendChild(c); b.insertAdjacentHTML('beforeend',`<span>${RACES[k].name}</span>`);
+    b.onclick=()=>{ ccChar=newChar(k,ch.body); for(const s of STAT_KEYS) ccChar.spent[s]=Math.min(ch.spent[s]||0,STAT_MAX-RACES[k].base[s]); $('#ccWarn').textContent=''; delete $('#ccGo').dataset.sure; renderNewChar(); }; box.appendChild(b); }
+  // the stats, one dial each
+  const st=$('#ccStats'); st.innerHTML='';
+  for(const k of STAT_KEYS){ const S=STATS[k], row=document.createElement('div'); row.className='ccrow'; row.dataset.k=k;
+    row.innerHTML=`<div class="ccname"><b>${S.icon} ${S.ab}</b><span>${S.name}</span></div><div class="dial" role="slider" tabindex="0" aria-label="${S.name}" aria-valuemin="0" aria-valuemax="${STAT_MAX}"><div class="tape"></div><i class="notch"></i><span class="dl">◄</span><span class="dr">►</span></div><div class="ccval"><b></b><small></small></div><p class="cceff"></p>`;
+    st.appendChild(row); buildDial(row,k); }
+  ccUpdate(); }
+// a horizontal dial: a strip of numbered ticks under a fixed notch; dragging the strip, or tapping
+// an end, turns the stat up or down one point at a time
+const DIAL_STEP=22;
+function buildDial(row,k){ const d=row.querySelector('.dial'), tape=d.querySelector('.tape');
+  tape.innerHTML=Array.from({length:STAT_MAX+1},(_,v)=>`<i data-v="${v}"><b>${v}</b></i>`).join('');
+  let drag=null;
+  const step=n=>{ let moved=false; for(let i=0;i<Math.abs(n);i++) if(spendPoint(ccChar,k,Math.sign(n))) moved=true; else break; if(moved){ buzz(6); ccUpdate(); } return moved; };
+  d.addEventListener('pointerdown',e=>{ e.preventDefault(); try{ d.setPointerCapture(e.pointerId); }catch(_){} drag={id:e.pointerId,x:e.clientX,acc:0,moved:false}; d.classList.add('turning'); });
+  d.addEventListener('pointermove',e=>{ if(!drag||e.pointerId!==drag.id) return; const dx=e.clientX-drag.x; drag.x=e.clientX; drag.acc+=dx;
+    // dragging the strip left brings bigger numbers under the notch
+    while(Math.abs(drag.acc)>=DIAL_STEP){ const s=drag.acc<0?1:-1; drag.acc+=s*DIAL_STEP; drag.moved=true; if(!step(s)) drag.acc=0; }
+    tape.style.setProperty('--nudge',Math.max(-DIAL_STEP/2,Math.min(DIAL_STEP/2,drag.acc))+'px'); });
+  const end=e=>{ if(!drag||e.pointerId!==drag.id) return; const r=d.getBoundingClientRect();
+    if(!drag.moved&&e.type==='pointerup') step(e.clientX<r.left+r.width/2?-1:1);
+    drag=null; d.classList.remove('turning'); tape.style.setProperty('--nudge','0px'); };
+  d.addEventListener('pointerup',end); d.addEventListener('pointercancel',end);
+  d.addEventListener('keydown',e=>{ if(e.key==='ArrowRight'||e.key==='ArrowUp'){ e.preventDefault(); step(1); } else if(e.key==='ArrowLeft'||e.key==='ArrowDown'){ e.preventDefault(); step(-1); } }); }
+function ccUpdate(){ const ch=ccChar, left=pointsLeft(ch);
+  $('#ccPts').textContent=left; $('#ccPts').classList.toggle('none',!left);
+  document.querySelectorAll('#ccStats .ccrow').forEach(row=>{ const k=row.dataset.k, v=statOf(ch,k), base=RACES[ch.race].base[k], d=row.querySelector('.dial');
+    row.querySelector('.tape').style.setProperty('--v',v);
+    row.querySelectorAll('.tape i').forEach(t=>{ const n=+t.dataset.v; t.className=n>v?'':n>base?'buy':n>0?'base':''; t.classList.toggle('cur',n===v); });
+    d.setAttribute('aria-valuenow',v); d.classList.toggle('atmin',v<=base); d.classList.toggle('atmax',v>=STAT_MAX||!left);
+    row.querySelector('.ccval b').textContent=v; row.querySelector('.ccval small').textContent=ch.spent[k]?'+'+ch.spent[k]:'';
+    const eff=statEffect(ch,k); row.querySelector('.cceff').innerHTML=`${esc(STATS[k].text)} · <b class="${v>10?'up':v<10?'down':''}">${esc(eff)}</b>`; });
+  if(!left){ $('#ccWarn').textContent=''; } }
+
 /* ---------------- start ---------------- */
 function buildStart(){
   const box=$('#starters'); box.innerHTML='';
@@ -92,10 +144,10 @@ function buildStart(){
     const d=document.createElement('div'); d.className='starter';
     d.innerHTML=`<h3>${s.name}</h3><div class="cols">${s.colors.map(c=>`<span class="chip" style="--c:${COLORS[c].c}">${COLORS[c].icon} ${COLORS[c].name}</span>`).join('')}</div>
       <p>${s.text}</p><div class="row"><button class="btn">Start with this deck</button></div>`;
-    d.querySelector('.btn').onclick=()=>{ if(typeof XPARK!=='undefined') XPARK=null; save=newSave(s); persist(); pickDepth=1; openCamp(); };
+    d.querySelector('.btn').onclick=()=>{ if(typeof XPARK!=='undefined') XPARK=null; save=newSave(s);
+      if(ccChar) Object.assign(save,{char:ccChar, look:ccChar.look, hat:true}); persist(); pickDepth=1; openCamp(); };
     box.appendChild(d);
   }
-  $('#startBack').style.display=save?'':'none';
   $('#startWarn').textContent=save?'Starting a new game replaces your current save: your cards, gold and gear.':'';
   show('scrStart');
 }
@@ -304,7 +356,7 @@ function renderLooks(){ const box=$('#chLooks'); if(!box||typeof PLAYER_LOOKS===
   box.innerHTML+=`<button class="chip${save.hat===false?'':' on'}" data-hat="1" style="--c:#f2c94c">${save.hat===false?'Hat off':'Hat on'}</button>`;
   box.querySelectorAll('[data-look]').forEach(b=>b.onclick=()=>{ save.look=b.dataset.look; persist(); renderCharacter(); });
   box.querySelector('[data-hat]').onclick=()=>{ save.hat=save.hat===false; persist(); renderCharacter(); }; }
-window.onLookLoaded=()=>{ if($('#scrCharacter').classList.contains('on')) renderCharacter(); };
+window.onLookLoaded=()=>{ if($('#scrCharacter').classList.contains('on')) renderCharacter(); if($('#scrNewChar').classList.contains('on')) renderNewChar(); };
 function renderCharacter(){
   const s=gearState(save), m=gearMods(save), K=WEAPON_KINDS[m.kind]||WEAPON_KINDS.wand;
   goldText($('#chGold'));
@@ -328,6 +380,8 @@ function renderCharacter(){
   requestAnimationFrame(dollLines);
   // what it all adds up to
   const w=(k,v)=>`<div><span>${k}</span><b>${v}</b></div>`, pct=x=>Math.round(x*100)+'%';
+  const ch=save.char&&RACES[save.char.race]?save.char:null;
+  $('#chAbil').innerHTML=ch?w('Race',RACES[ch.race].name+' · '+(ch.body?'woman':'man'))+STAT_KEYS.map(k=>w(STATS[k].icon+' '+STATS[k].ab+' '+statOf(ch,k),statEffect(ch,k))).join(''):'<p class="hint">Characters made before stats existed have average stats (10 in each). Start a new game to make a character.</p>';
   $('#chStats').innerHTML=w('Max HP',120+(m.hp||0))+w(K.name,Math.max(1,K.tap+m.tap)+' · charged '+Math.max(2,K.charged+m.charged))+w('Element',m.color?COLORS[m.color].icon+' '+COLORS[m.color].name:'none')
     +w('Fire rate',m.cd&&m.cd!==1?Math.round((1/m.cd-1)*100)+'% faster':'normal')+w('Guard',pct(m.guard||0))+w('Start shield',m.shield||0)
     +(m.dodge?w('Dodge',pct(m.dodge)):'')+(m.block?w('Shield block',m.block+' hit'+(m.block>1?'s':'')+' a turn'):'')+(m.regen?w('Regeneration',m.regen+' HP/s'):'')+(m.counter?w('Counter',m.counter):'')
@@ -819,7 +873,10 @@ $('#mmUp').onclick=()=>{ pickDepth++; openMenu(); };
 $('#mmContinue').onclick=()=>openCamp();
 $('#mmExplore').onclick=()=>enterExplore(pickDepth);
 $('#mmBattle').onclick=()=>fight(pickDepth);
-$('#mmNew').onclick=()=>buildStart();
+$('#mmNew').onclick=()=>openNewChar();
 $('#mmSettings').onclick=()=>openSettings();
-$('#startBack').onclick=()=>openMenu();
+$('#startBack').onclick=()=>openNewChar(true);
+$('#ccBack').onclick=()=>openMenu();
+$('#ccGo').onclick=()=>{ if(pointsLeft(ccChar)>0&&!$('#ccGo').dataset.sure){ $('#ccWarn').textContent='You still have '+pointsLeft(ccChar)+' points to spend. Tap again to go on anyway.'; $('#ccGo').dataset.sure='1'; return; } buildStart(); };
+$('#ccReset').onclick=()=>{ ccChar=newChar(ccChar.race,ccChar.body); renderNewChar(); };
 $('#campMenu').onclick=()=>openMenu();

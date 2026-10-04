@@ -184,6 +184,12 @@ function gearMods(save){ const out={tap:0,charged:0,cd:1,charge:1,hp:0,guard:0,s
   for(const k of activeSets(save)){ const m=SETS[k].mods; for(const x in m) out[x]=MULT_KEYS.includes(x)?(out[x]||1)*m[x]:(out[x]||0)+m[x]; }
   // permanent blessings from the dungeon (dungeon.js): Vigor, Might and Fortune
   const P=save.perm||{}; out.hp+=6*(P.vigor||0); out.tap+=P.might||0; out.charged+=2*(P.might||0); if(P.fortune) out.gold=(out.gold||0)+.05*P.fortune;
+  // your character's stats (chars.js): a save from before characters has none and gets no change
+  if(typeof statMods==='function'){ const S=statMods(save.char);
+    out.hp+=S.hp; out.dodge=(out.dodge||0)+S.dodge; out.gold=(out.gold||0)+S.gold;
+    for(const k of ['cd','charge']) out[k]=(out[k]||1)*S[k];
+    // kept apart from gear's own gauge and cast curses, which the character screen lists as curses
+    Object.assign(out,{shotMult:S.shotMult, shotSpeed:S.shotSpeed, spell:S.spell, search:S.search, price:S.price, sGauge:S.gauge, sCast:S.castSlow}); }
   out.guard=Math.min(.6,out.guard); out.dodge=Math.min(.4,out.dodge||0);
   return out; }
 

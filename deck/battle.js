@@ -95,8 +95,9 @@ function applyGear(p,m){
   const K=(typeof WEAPON_KINDS!=='undefined'&&WEAPON_KINDS[m.kind])||{tap:3,charged:7,cd:.3,ccd:.5};
   p.wand={kind:m.kind, tap:Math.max(1,K.tap+m.tap), charged:Math.max(2,K.charged+m.charged), cd:K.cd*m.cd, ccd:K.ccd*m.cd, charge:.9*m.charge, color:m.color||null,
     chill:m.chill||0, zap:m.zap||0, drain:m.drain||0, glow:m.glow||0, burn:m.burn||0, misfire:m.misfire||0, hpPerShot:m.hpPerShot||0};
-  p.guard=m.guard; p.slow=m.slow||1; p.hurt=m.hurt||1; p.gaugeMult=m.gauge||1;
-  p.dodgeChance=m.dodge||0; p.block=m.block||0; p.blocksLeft=p.block; p.counter=m.counter||0; p.regenGear=m.regen||0; p.castSlow=m.castSlow||1; p.power=m.power||{};
+  p.guard=m.guard; p.slow=m.slow||1; p.hurt=m.hurt||1; p.gaugeMult=(m.gauge||1)*(m.sGauge||1);
+  p.wand.mult=m.shotMult||1; p.shotSpeed=m.shotSpeed||1; p.spell=m.spell||1;
+  p.dodgeChance=m.dodge||0; p.block=m.block||0; p.blocksLeft=p.block; p.counter=m.counter||0; p.regenGear=m.regen||0; p.castSlow=(m.castSlow||1)*(m.sCast||1); p.power=m.power||{};
   p.maxHp+=m.hp; p.hp=p.maxHp;
   if(m.shield){ p.barrier=m.shield; p.shieldTurns=2; }
 }
@@ -217,7 +218,7 @@ function payHp(n){ const p=B.player; if(!n) return; const c=Math.min(n,p.hp-1); 
 // A card as cast: numbers scaled by any combo on its queue slot.
 function scaled(c,m){ if(!m||m===1) return c; const o=Object.assign({},c); for(const k of ['pow','amt','thorns','hp']) if(typeof o[k]==='number') o[k]=Math.round(o[k]*m); return o; }
 function playCard(inst){ if(B&&B.player){ B.player.poseT=B.time; B.player.poseK='cast'; }
-  const b=B, p=b.player, c=scaled(inst.card,inst.mult);
+  const b=B, p=b.player, c=scaled(inst.card,(inst.mult||1)*(p.spell||1));
   b.log.push(c.name);
   b.hooks.onCast&&b.hooks.onCast(c,inst);
   B.fx.push({kind:'ring',a:p.tile,color:colorOf(c),t:0,life:.45}); burst(p.tile,colorOf(c),10,1.2);
@@ -397,7 +398,7 @@ function updateAlly(a,dt){
 // a trap springs when an enemy steps on it
 function springTrap(t,e){ const c=t.trap.card; t.trap=null; floater(c.name,t,colorOf(c));
   const ts=c.trap==='blast'?patternTiles(t,'burst','e'):[t]; ts.forEach(x=>{ flash(x,colorOf(c),1); burst(x,colorOf(c),8,.3); hitAt(x,c.pow,c); }); }
-function shoot(from,tiles,o){ B.shots.push(Object.assign({a:from,tiles,i:-1,stepT:0,speed:o.from==='p'?.045:.08,hit:new Set()},o)); }
+function shoot(from,tiles,o){ B.shots.push(Object.assign({a:from,tiles,i:-1,stepT:0,speed:o.from==='p'?.045*((B.player&&B.player.shotSpeed)||1):.08,hit:new Set()},o)); }
 
 function fireWand(charged){ if(B&&B.player){ B.player.poseT=B.time; B.player.poseK='attack'; }
   const b=B, p=b.player; if(b.phase!=='fight'||p.wandCd>0) return;
@@ -405,7 +406,7 @@ function fireWand(charged){ if(B&&B.player){ B.player.poseT=B.time; B.player.pos
   p.wandCd=charged?w.ccd||.5:w.cd||.3;
   if(w.hpPerShot) payHp(w.hpPerShot);
   if(w.misfire&&Math.random()<w.misfire){ floater('fizzle',p.tile,'#93a9ba'); burst(p.tile,'#56606a',5,1); return; }
-  const dmg=Math.round((charged?w.charged:w.tap)*(p.powerT>0?2.5:1));
+  const dmg=Math.max(1,Math.round((charged?w.charged:w.tap)*(w.mult||1)*(p.powerT>0?2.5:1)));
   // an elemental weapon shoots in its color, and its effects ride on the shot like a card's
   const card=w.color||w.burn||w.drain||w.zap||w.chill||w.glow?{id:'wand', name:'Wand', color:w.color, burn:w.burn||0, drain:w.drain||0,
     freeze:charged?w.chill:0, stun:w.zap&&Math.random()<w.zap?.5:0, mend:charged?w.glow:0}:null;

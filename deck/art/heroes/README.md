@@ -23,6 +23,7 @@ Painted hero sheets, keyed from green screen to transparent PNG by `deck/tools/k
 | `warlock_f.png` | (spare) | Warlock woman | Matches the warlock sheet |
 | `shaman_m.png` | shaman_m | Shaman man | |
 | `shaman_f.png` | shaman_f | Shaman woman | |
+| `ranger_f_bare.png` | ranger_f (hatless) | Ranger woman | Labeled sheet, 8 directions |
 | `ranger_m.png` | ranger_m | Ranger man | |
 | `ranger_f.png` | ranger_f | Ranger woman | Labeled "Hunter Wizard", 8 directions |
 | `orc_m.png` | orc_m | Orc man | Big, bearded |
@@ -42,8 +43,8 @@ Painted hero sheets, keyed from green screen to transparent PNG by `deck/tools/k
 
 ## Still missing
 
-- **Dwarf** with hat: only the hatless sheets so far.
-- **Hatless sets** (`frontBare`, `backBare`, `animBare`): done for the wizard and both dwarves;
-  human_f and witch_f have only static no-hat poses; no hatless art for the other looks.
-- **Back-view action** (cast, walk, hurt from behind): the unlabeled sheets show the back only
-  standing; the 4 labeled sheets cover it.
+Hoods are not hats, so hooded looks need no hatless set. Looks with a hat: wizard (done),
+ranger woman (done), witch.
+
+- **Witch hatless:** only a static pose on `witch_f.png`; no hatless animation.
+- **Dwarf with hat:** optional; both dwarf sheets are hatless.

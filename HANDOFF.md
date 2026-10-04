@@ -132,7 +132,9 @@ All sprites live as base64 PNGs in `deck/sprites.js` and are read by `art.js` (`
    (`deck/art/enemies/`, one file each, two sheets per enemy). Still to do: allied heroes,
    minibosses and weapon icons. `deck/art/SPRITE_PROMPTS.md` has the old one-sheet
    versions with each character's description.
-4. **Optional:** back-view action rows for the 10 looks that only stand from behind.
+4. **Walk cycles:** `deck/art/heroes/walk.md` has prompts for front, side and back 4-frame walks
+   for all 16 looks (38 sheets). Once uploaded, they need a cutter and a direction-aware
+   `walk` view in `art.js` and `explore.js` (steps at the end of that file).
 5. **After any art change:** run the tests, take a browser screenshot of the character screen
    and a battle (Playwright at `/opt/node22/lib/node_modules/playwright`, Chromium at
    `/opt/pw-browsers/chromium`), rebuild the zip, then commit and push.

@@ -299,7 +299,7 @@ const DOLL_ANCHOR={head:[16,7], body:[16,20], arms:[9,21], offhand:[6,18], weapo
 const INV_TABS=[['all','All'],['weapon','Weapons'],['offhand','Off-hand'],['head','Head'],['body','Body'],['arms','Arms'],['ring','Rings']];
 let chTab='all', chSel=null;
 // pick how your hexmancer looks: wizard, elf, dwarf or orc (man or woman), dark witch or necromancer; hat on or off
-function renderLooks(){ const box=$('#chLooks'); if(!box||typeof PLAYER_LOOKS==='undefined') return; const cur=save.look||'wizard';
+function renderLooks(){ const box=$('#chLooks'); if(!box||typeof PLAYER_LOOKS==='undefined') return; const cur=(typeof LOOK_ALIAS!=='undefined'&&LOOK_ALIAS[save.look])||save.look||'wizard';
   box.innerHTML='<span class="lbl">Look</span>'+Object.keys(PLAYER_LOOKS).map(id=>{ const L=PLAYER_LOOKS[id]; return `<button class="chip${id===cur?' on':''}" data-look="${id}" style="--c:#8fe4ff">${L.name}${L.gender?' · '+L.gender:''}</button>`; }).join('');
   box.innerHTML+=`<button class="chip${save.hat===false?'':' on'}" data-hat="1" style="--c:#f2c94c">${save.hat===false?'Hat off':'Hat on'}</button>`;
   box.querySelectorAll('[data-look]').forEach(b=>b.onclick=()=>{ save.look=b.dataset.look; persist(); renderCharacter(); });

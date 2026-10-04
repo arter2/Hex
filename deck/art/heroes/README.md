@@ -1,7 +1,8 @@
 # Hero sprite sheets
 
 Painted hero sheets, keyed from green screen to transparent PNG by `deck/tools/key_heroes.py`
-(the green originals go in `src/`, which git ignores). One file per look; keys match
+(the green originals go in `src/`, which git ignores). `deck/tools/heroes/make.py` cuts the
+figures named in `deck/tools/heroes/spec.py` into `PLAYER_LOOKS` in `deck/sprites.js`. One file per look; keys match
 `PLAYER_LOOKS` in `deck/sprites.js`. Undead and Necromancer are one class.
 
 | File | Look | Race / class | Notes |

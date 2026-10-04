@@ -861,8 +861,11 @@ const hatOn=()=>{ try{ return !(typeof save!=='undefined'&&save&&save.hat===fals
 // From behind (battle and dungeon) a look has four poses drawn together on one sheet: idle, walk,
 // cast and attack (sprites.js `anim`), so every frame shares a palette, a scale and the same feet.
 const POSES=['idle','walk','cast','attack'];
+// Undead and Necromancer became one class; old saves keep their look
+const LOOK_ALIAS={undead_m:'necro',undead_f:'necro_f'};
 function lookSprite(id,view,hat,pose){
   if(typeof PLAYER_LOOKS==='undefined'||typeof document==='undefined') return null;
+  id=LOOK_ALIAS[id]||id;
   if(!PLAYER_LOOKS[id]) id='wizard'; if(hat==null) hat=hatOn();
   const L=PLAYER_LOOKS[id], bare=!hat&&!!L[view+'Bare'];
   // the posed frames, when this look has them
@@ -885,7 +888,7 @@ function lookSprite(id,view,hat,pose){
     LOOK_SPR[key]={img,sil,wht,hand:true,tip:view==='back'?(L.tipBack||L.tip):L.tip}; if(root.onLookLoaded) root.onLookLoaded(); };
   im.src=L[field]; return null;
 }
-const playerLook=()=>{ try{ return (typeof save!=='undefined'&&save&&save.look)||'wizard'; }catch(e){ return 'wizard'; } };
+const playerLook=()=>{ try{ const l=(typeof save!=='undefined'&&save&&save.look)||'wizard'; return LOOK_ALIAS[l]||l; }catch(e){ return 'wizard'; } };
 if(typeof PLAYER_LOOKS!=='undefined'&&typeof document!=='undefined') for(const id in PLAYER_LOOKS) for(const v of ['front','back']) for(const h of [true,false]) lookSprite(id,v,h);
 // enemies, bosses and heroes drawn on the rig (sprites.js), decoded the same way
 const UNIT_SPR={};
@@ -919,6 +922,6 @@ function unitSprite(u){
     else (THING[key]||THING.sentry)(()=>.5); });
 }
 
-Object.assign(root,{ART_SIZE,cardArt,artCSV,artURL,motifKey,unitSprite,lookSprite,rigSprite});
+Object.assign(root,{ART_SIZE,cardArt,artCSV,artURL,motifKey,unitSprite,lookSprite,rigSprite,LOOK_ALIAS});
 if(typeof module!=='undefined') module.exports={ART_SIZE,cardArt,artCSV,motifKey};
 })(typeof window!=='undefined'?window:globalThis);

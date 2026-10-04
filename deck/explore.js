@@ -11,7 +11,7 @@
    through a few hooks (xFloorPlan, xPopulate, xBumpExtra, xEnterExtra, xDungeonTick...). */
 
 const XN=48, XCS=2, XWALL=1.7;           // grid cells per side, world units per cell, wall height
-const XSPR=3.3;                          // height of a person on the map, in world units
+const XSPR=2.8;                          // height of a person on the map, in world units
 const T_ROCK=0, T_FLOOR=1, T_DOOR=2;
 const TRAPS={
   spike:{name:'spike trap', dmg:[9,14],  col:'#9aa4b0', text:'Spikes shoot up through the floor!'},

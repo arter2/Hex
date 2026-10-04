@@ -7,6 +7,8 @@ Painted hero sheets, keyed from green screen to transparent PNG by `deck/tools/k
 | File | Look | Race / class | Notes |
 |---|---|---|---|
 | `human_m.png` | wizard | Human man | Labeled sheet, 8 directions, hat and no-hat statics |
+| `human_m_bare.png` | wizard (hatless) | Human man | Labeled sheet, 8 directions, full hatless animation |
+| `human_m_bare_alt.png` | (spare) | Human man | Second hatless take, same layout |
 | `human_m_apprentice.png` | (spare) | Human man | Young red-haired apprentice, no hat |
 | `human_f.png` | human_f | Human woman | Labeled sheet, 8 directions, hood and no-hood statics |
 | `elf_m.png` | elf_m | Elf man | |
@@ -39,7 +41,7 @@ Painted hero sheets, keyed from green screen to transparent PNG by `deck/tools/k
 
 - **Dwarf**, man and woman: no sheets.
 - **Warlock** (witch_m): no sheet.
-- **Hatless sets** (`frontBare`, `backBare`, `animBare`): only static no-hat poses on the
-  human_m, human_f and witch_f sheets; no hatless animation for any look.
+- **Hatless sets** (`frontBare`, `backBare`, `animBare`): done for the wizard (human_m_bare);
+  human_f and witch_f have only static no-hat poses; no hatless art for the other looks.
 - **Back-view action** (cast, walk, hurt from behind): the unlabeled sheets show the back only
   standing; the 4 labeled sheets cover it.

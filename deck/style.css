@@ -697,6 +697,29 @@ body.wide .camp{grid-template-areas:"logo logo" "area area" "scene depth" "scene
 .startback{align-self:flex-start;}
 .campmenu{align-self:flex-start;}
 .mmrow .mmbtn{min-width:0; padding-inline:6px;}
+/* main menu art: the painted banner (title, tagline, the party on the stairs) sits on top and
+   fades into the dark; the buttons below match it */
+#scrMenu{background:#06070c;}
+#scrMenu>.mainmenu:first-child{margin-top:0;}
+.mmbanner{width:calc(100% + 32px); max-width:560px; align-self:center; aspect-ratio:1024/712; margin:-16px 0 -8px; flex:none; position:relative;
+  background:url(art/ui/menu_banner.jpg) center/100% auto no-repeat;}
+.mmbanner::after{content:''; position:absolute; inset:0; background:linear-gradient(transparent 80%,#06070c), linear-gradient(90deg,#06070c,transparent 6%,transparent 94%,#06070c);}
+.sr{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap;}
+.mainmenu{position:relative; padding-top:0;}
+.mmcont{color:#bdf3ff; box-shadow:0 0 14px rgba(80,200,255,.45);}
+.mmcont small{color:#9fd3e6;}
+.mmbox{max-width:none; padding:2px 4px; display:flex; flex-direction:column; gap:0;}
+.mmstats{display:grid; grid-template-columns:auto 1fr auto; gap:8px; align-items:center; padding:6px 4px 8px; border-bottom:2px solid #000; box-shadow:0 2px 0 #2c3137;}
+.mmthumb{display:block; width:112px; aspect-ratio:252/86; background:url(art/ui/menu_area.jpg) center/cover; border:2px solid #000; box-shadow:0 0 0 2px #2c3137; image-rendering:pixelated;}
+.mmdeep,.mmgold{display:flex; flex-direction:column; gap:2px; font:400 19px/1.05 var(--font-t); color:#d8dde2; text-align:left;}
+.mmdeep b{color:var(--gold); font-size:22px;}
+.mmdeep small,.mmgold small{font-size:16px; color:#9aa3ab;}
+.mmgold{text-align:center; align-items:center; padding-left:8px; border-left:2px solid #2c3137;}
+.mmbox .mmdepth{padding:8px 4px 6px;}
+.mmpick span{text-align:right; font:500 17px var(--font-b); color:#e8ecef;}
+.mmnew{border-image-source:var(--px-btn-violet); color:#e9dcff;}
+.mmnew small{color:#b9a6d8;}
+.mmset{flex-direction:row; justify-content:center; gap:8px;}
 #scrCamp{position:absolute;}
 body.ui-tablet .campmenu, body.wide .campmenu{position:absolute; top:12px; left:12px; z-index:3; width:auto;}
 
@@ -757,3 +780,8 @@ body.tall #xStatus{top:calc(84px + env(safe-area-inset-top,0px)); max-width:calc
 /* the game turned a quarter to keep the chosen orientation (Settings › Screen orientation) */
 #app.rot{inset:auto; top:0; left:0; transform-origin:0 0; transform:rotate(90deg) translateY(-100%);}
 body.rot .drag-ghost,body.rot .gghost{transform:rotate(90deg);}
+.mmdeep{white-space:nowrap; min-width:0;} .mmdeep small{white-space:normal;}
+.mmthumb{width:96px;}
+.mainmenu .mmbtn{font-size:21px;} .mainmenu .mmbtn small{font-size:16px;}
+.mainmenu .mmcont{font-size:26px; padding-block:6px;}
+.mainmenu .mmset{font-size:20px;}

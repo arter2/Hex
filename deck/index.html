@@ -12,21 +12,22 @@
   <!-- main menu: what the game opens on -->
   <section id="scrMenu" class="screen">
     <div class="mainmenu">
-      <h1>Hexmancers</h1>
-      <p class="sub">Crawl the dungeon. Duel on the hex grid. Collect the cards.</p>
-      <p id="mmSave" class="hint center"></p>
-      <button id="mmContinue" class="btn big mmbtn">▶ Continue<small>back to camp, where you left off</small></button>
-      <div class="panel mmdepth">
-        <div class="mmpick"><span>Start at depth</span><button id="mmDown" class="btn ghost sq" aria-label="Shallower">◄</button><b id="mmDepth">1</b><button id="mmUp" class="btn ghost sq" aria-label="Deeper">►</button></div>
-        <p id="mmArea" class="hint center"></p>
-        <div class="mmrow">
-          <button id="mmExplore" class="btn mmbtn">🗺 Explore<small>the dungeon</small></button>
-          <button id="mmBattle" class="btn ghost mmbtn">⚔ Battle<small>no dungeon</small></button>
+      <div class="mmbanner"><h1 class="sr">Hexmancers</h1><p class="sr">Crawl the dungeon. Duel on the hex grid. Collect the cards.</p></div>
+      <button id="mmContinue" class="btn big mmbtn mmcont">▶ Continue<small>Back to camp, where you left off</small></button>
+      <div class="panel mmbox">
+        <div id="mmSave" class="mmstats"></div>
+        <div class="mmdepth">
+          <div class="mmpick"><span>Start at depth</span><button id="mmDown" class="btn ghost sq" aria-label="Shallower">◄</button><b id="mmDepth">1</b><button id="mmUp" class="btn ghost sq" aria-label="Deeper">►</button></div>
+          <p id="mmArea" class="hint center"></p>
+          <div class="mmrow">
+            <button id="mmExplore" class="btn mmbtn">🗺 Explore<small>the dungeon</small></button>
+            <button id="mmBattle" class="btn ghost mmbtn">⚔ Battle<small>no dungeon</small></button>
+          </div>
+          <p id="mmWarn" class="hint warn center"></p>
         </div>
-        <p id="mmWarn" class="hint warn center"></p>
       </div>
-      <button id="mmNew" class="btn ghost mmbtn">✦ New game<small>choose a starter deck</small></button>
-      <button id="mmSettings" class="btn ghost mmbtn small">Settings</button>
+      <button id="mmNew" class="btn mmbtn mmnew">✦ New game<small>choose a starter deck</small></button>
+      <button id="mmSettings" class="btn ghost mmbtn mmset">⚙ Settings</button>
     </div>
   </section>
 

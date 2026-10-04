@@ -334,6 +334,7 @@ function install(){ if(typeof document==='undefined') return; const s=document.d
   s.setProperty('--px-btn-down',u(button(STONE[2],STONE[3],STONE[4],STONE[5],STONE[6])));
   s.setProperty('--px-btn-blue',u(button(C.blue,C.blue2,hx('#0e2738'),hx('#0a1b28'),hx('#06121b'))));
   s.setProperty('--px-btn-gold',u(button(hx('#fff3b0'),C.gold,hx('#3a2e10'),hx('#2a210b'),hx('#1c1607'))));
+  s.setProperty('--px-btn-violet',u(button(hx('#d9b8ff'),hx('#9a6ad8'),hx('#2c1d45'),hx('#211536'),hx('#160e25'))));
   s.setProperty('--px-slot',u(slot()));
   s.setProperty('--px-bar',u(bar()));
   s.setProperty('--px-banner',u(banner()));

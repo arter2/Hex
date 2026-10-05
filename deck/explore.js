@@ -11,6 +11,7 @@
    through a few hooks (xFloorPlan, xPopulate, xBumpExtra, xEnterExtra, xDungeonTick...). */
 
 const XN=48, XCS=2, XWALL=1.7;           // grid cells per side, world units per cell, wall height
+const XSPEED=7;                          // your walking speed, in world units a second (3.5 tiles)
 const XSPR=2.8;                          // height of a person on the map, in world units
 const T_ROCK=0, T_FLOOR=1, T_DOOR=2;
 const TRAPS={
@@ -490,13 +491,13 @@ function xMove(dt){
   const held=id=>keysFor(id).some(k=>XKEY[k]);   // your bindings, from Settings (keys.js)
   if(held('left')) ix-=1; if(held('right')) ix+=1; if(held('up')) iz-=1; if(held('down')) iz+=1;
   // holding a finger (or the mouse) down walks toward it, steering as it moves
-  if(!ix&&!iz&&XHOLD.on&&performance.now()-XHOLD.t0>200){ const r=appBox($('#xView')), v=new THREE.Vector3(EX.px,.8,EX.pz).project(X3.cam);
+  if(!ix&&!iz&&XHOLD.on&&performance.now()-XHOLD.t0>120){ const r=appBox($('#xView')), v=new THREE.Vector3(EX.px,.8,EX.pz).project(X3.cam);
     const sx=r.left+(v.x+1)/2*r.width, sy=r.top+(1-v.y)/2*r.height, dx=XHOLD.x-sx, dy=XHOLD.y-sy, l=Math.hypot(dx,dy);
     if(l>18){ ix=dx/l; iz=dy/l; EX.path=[]; } }
   if(!ix&&!iz&&EX.path.length){ const n=EX.path[0], tx=xw(n)-EX.px, tz=xz(n)-EX.pz, d=Math.hypot(tx,tz); if(d<.25){ EX.path.shift(); } else { ix=tx/d; iz=tz/d; } }
   const len=Math.hypot(ix,iz); if(len<.1){ EX.walk=0; EX.stillT=(EX.stillT||0)+dt; return; }   // standing still: you notice hidden things (dungeon.js)
   EX.stillT=0;
-  ix/=len; iz/=len; const sp=5.4*dt, r=.42;
+  ix/=len; iz/=len; const sp=XSPEED*dt, r=.42;
   EX.moveDir=Math.abs(ix)>Math.abs(iz)?[Math.sign(ix),0]:[0,Math.sign(iz)];   // which way a pushed block goes
   const front=xcell(EX.px+ix*XCS*.6,EX.pz+iz*XCS*.6);
   const tryAxis=(nx,nz)=>{ for(const [ox,oz] of [[-r,-r],[r,-r],[-r,r],[r,r]]){ const c=xcell(nx+ox,nz+oz); if(c===EX.pc) continue; if(!xBump(c,c===front)) return false; } return true; };
@@ -506,7 +507,7 @@ function xMove(dt){
   const cx=(xcx(EX.pc)+.5)*XCS, cz=(xcy(EX.pc)+.5)*XCS, ease=(a,b)=>Math.max(-sp,Math.min(sp,b-a));
   if(!okZ&&Math.abs(iz)>.3&&!okX) EX.px+=ease(EX.px,cx); else if(!okZ&&Math.abs(iz)>.3&&Math.abs(ix)<.3) EX.px+=ease(EX.px,cx);
   if(!okX&&Math.abs(ix)>.3&&Math.abs(iz)<.3) EX.pz+=ease(EX.pz,cz);
-  if(Math.abs(ix)>.2) EX.face=ix<0?-1:1; if(iz<-.35) EX.view='back'; else if(iz>.35) EX.view='front'; EX.walk=(EX.walk||0)+dt*10;
+  if(Math.abs(ix)>.2) EX.face=ix<0?-1:1; if(iz<-.35) EX.view='back'; else if(iz>.35) EX.view='front'; EX.walk=(EX.walk||0)+dt*10*XSPEED/5.4;
   const c=xcell(EX.px,EX.pz); if(c!==EX.pc&&c>=0){ EX.pc=c; xEnter(c); }
 }
 // walking into a cell: walls stop you, doors open, chests open, a trap you know about stops you
@@ -635,7 +636,7 @@ function xSeesCell(g,c,sn){ const dx=xw(c)-g.x, dz=xz(c)-g.z, d=Math.hypot(dx,dz
     if(g.state!=='chase'&&d>XFOV.near*sn){ let a=Math.atan2(dz,dx)-(g.head||0); a=Math.atan2(Math.sin(a),Math.cos(a)); if(Math.abs(a)>XFOV.half) return false; } }
   return c===g.cell||xLos(g.cell,c); }
 // the zones, painted on a canvas laid over the floor: a faint fill and a dotted edge per enemy
-const XFOV_PX=24;
+const XFOV_PX=12;
 function xFovMesh(grp){ const span=XN*XCS, cv=document.createElement('canvas'); cv.width=cv.height=XN*XFOV_PX;
   const tex=new THREE.CanvasTexture(cv); tex.magFilter=THREE.LinearFilter; tex.minFilter=THREE.LinearFilter;
   const m=new THREE.Mesh(new THREE.PlaneGeometry(span,span),new THREE.MeshBasicMaterial({map:tex,transparent:true,depthWrite:false}));
@@ -651,7 +652,7 @@ function xFov(dt){ const F=EX.fov; if(!F) return; F.t-=dt; if(F.t>0) return; F.t
     const col=g.state==='chase'?'255,77,94':g.state==='sleep'?'127,180,255':'255,196,64';
     x.fillStyle=`rgba(${col},.1)`; for(const c of zone) x.fillRect(xcx(c)*P,xcy(c)*P,P,P);
     // the dotted edge: every side of a zone cell that borders a cell outside the zone
-    x.strokeStyle=`rgba(${col},.5)`; x.lineWidth=1; x.setLineDash([3,6]); x.beginPath();
+    x.strokeStyle=`rgba(${col},.5)`; x.lineWidth=.6; x.setLineDash([1.5,3]); x.beginPath();
     for(const c of zone){ const X=xcx(c)*P, Y=xcy(c)*P;
       if(!zone.has(c-XN)){ x.moveTo(X,Y); x.lineTo(X+P,Y); } if(!zone.has(c+XN)){ x.moveTo(X,Y+P); x.lineTo(X+P,Y+P); }
       if(!zone.has(c-1)||xcx(c)===0){ x.moveTo(X,Y); x.lineTo(X,Y+P); } if(!zone.has(c+1)||xcx(c)===XN-1){ x.moveTo(X+P,Y); x.lineTo(X+P,Y+P); } }

@@ -345,3 +345,9 @@ t('three save slots, slot 1 keeps the original save key', ()=>{
   const C2=require('./collection.js'); assert.strictEqual(C2.SAVE_SLOTS,3); assert.strictEqual(C2.slotKey(1),C2.SAVE_KEY);
   assert.strictEqual(new Set([1,2,3].map(C2.slotKey)).size,3);
 });
+t('save points keep shared objects, maps, sets and typed arrays', ()=>{
+  const SP=require('./savepoint.js'); const prop={kind:'lever',on:false}, a={props:[prop], at:new Map([[5,prop]]), seen:new Uint8Array([0,1,1]), safe:new Set([3]), mesh:{isObject3D:true}, fn(){}, n:Infinity};
+  a.self=a; const b=SP.snapDecode(JSON.parse(JSON.stringify(SP.snapEncode(a))));
+  assert.strictEqual(b.at.get(5),b.props[0],'same object in the list and the map'); assert(b.seen instanceof Uint8Array&&b.seen[2]===1);
+  assert(b.safe.has(3)); assert.strictEqual(b.self,b); assert.strictEqual(b.mesh,undefined); assert.strictEqual(b.fn,undefined); assert.strictEqual(b.n,Infinity);
+});

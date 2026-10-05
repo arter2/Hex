@@ -711,7 +711,7 @@ function xDie(why){
     xLog('Brought down by '+why+', but the shrine pulls you back to the stairs up. You dropped '+lost+' gold.','good'); return; }
   XPARK=null; if(typeof XRUN!=='undefined') XRUN=null; EX.busy=true; const lost=Math.floor(save.gold*.2); save.gold-=lost; persist(); const depth=EX.depth;
   logCamp('Killed by '+why+' at depth '+depth+', dropped '+lost+' gold.','curse'); stopExplore();
-  reveal('Defeated…','Brought down by '+why+' at depth '+depth+'. You dropped '+lost+' gold. Your cards are safe.',[],[['Camp',()=>{ EX=null; openCamp(); }]]); }
+  reveal('Defeated…','Brought down by '+why+' at depth '+depth+'. You dropped '+lost+' gold. Your cards are safe.',[],[['Camp',()=>{ EX=null; openCamp(); },true],...(typeof peekPoint==='function'&&peekPoint()?[['Load save',()=>loadPoint()]]:[])]); }
 function stopExplore(){ if(EX) EX.active=false; xPause(false); }
 
 /* ---------------- loop, hud ---------------- */

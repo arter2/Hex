@@ -851,3 +851,4 @@ body.lsS #custHand .slot.hole{min-height:104px;}
 .slinfo b{font:600 16px var(--font-b); color:#e8ecef;} .slinfo small{font:400 16px var(--font-t); color:#9aa3ab;}
 .slbtns{display:flex; flex-direction:column; gap:4px; align-items:stretch;}
 .slnow{font:400 16px var(--font-t); color:#7fd4ff; text-align:center;}
+#pause .row2{display:grid; grid-template-columns:1fr 1fr; gap:8px;} #mPoint{margin:0;}

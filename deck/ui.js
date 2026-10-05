@@ -189,7 +189,7 @@ function openSlots(mode){ const isNew=mode==='new', box=$('#slList'); box.innerH
     if(isNew){ const go=()=>{ useSlot(n); $('#slots').classList.remove('on'); openNewChar(); };
       if(s) btn('Replace','ghost',e=>armed(e.currentTarget,'Tap again',go)); else btn('Start here','',go); }
     else { if(n!==SAVE_SLOT) btn(s?'Play':'Use','',()=>{ useSlot(n); $('#slots').classList.remove('on'); openMenu(); }); else bb.insertAdjacentHTML('beforeend','<span class="slnow">In use</span>');
-      if(s) btn('Delete','ghost',e=>armed(e.currentTarget,'Tap again',()=>{ clearSave(n); if(n===SAVE_SLOT){ save=null; pickDepth=null; } openSlots(); openMenu(); tip('Slot '+n+' deleted'); })); }
+      if(s) btn('Delete','ghost',e=>armed(e.currentTarget,'Tap again',()=>{ clearSave(n); clearPoint(n); if(n===SAVE_SLOT){ save=null; pickDepth=null; } openSlots(); openMenu(); tip('Slot '+n+' deleted'); })); }
     box.appendChild(row); }
   $('#slots').classList.add('on'); }
 
@@ -201,7 +201,7 @@ function buildStart(){
     d.innerHTML=`<h3>${s.name}</h3><div class="cols">${s.colors.map(c=>`<span class="chip" style="--c:${COLORS[c].c}">${COLORS[c].icon} ${COLORS[c].name}</span>`).join('')}</div>
       <p>${s.text}</p><div class="row"><button class="btn">Start with this deck</button></div>`;
     d.querySelector('.btn').onclick=()=>{ if(typeof XPARK!=='undefined') XPARK=null; save=newSave(s);
-      if(ccChar) Object.assign(save,{char:lockChar(ccChar), look:ccChar.look, hat:true, level:1, xp:0}); persist(); pickDepth=1; openCamp(); };
+      clearPoint(); if(ccChar) Object.assign(save,{char:lockChar(ccChar), look:ccChar.look, hat:true, level:1, xp:0}); persist(); pickDepth=1; openCamp(); };
     box.appendChild(d);
   }
   $('#startWarn').textContent=save?'Starting a new game replaces your current save: your cards, gold and gear.':'';
@@ -271,7 +271,7 @@ function armed(btn,label,act){ if(btn.dataset.armed){ delete btn.dataset.armed; 
 $('#btnReset').onclick=e=>armed(e.currentTarget,'Tap again to erase',()=>{
   closeSettings(); ['#pause','#reveal','#custom','#detail','#pick','#xDialog'].forEach(k=>$(k).classList.remove('on')); paused=false; B=null;
   if(typeof stopExplore==='function'){ stopExplore(); EX=null; XPARK=null; if(typeof XRUN!=='undefined') XRUN=null; }
-  clearSave(); save=null; campLog.length=0; pickDepth=null; openMenu(); tip('Save erased'); });
+  clearSave(); clearPoint(); save=null; campLog.length=0; pickDepth=null; openMenu(); tip('Save erased'); });
 document.querySelectorAll('.back').forEach(b=>b.onclick=openCamp);
 
 /* ---------------- filters (builder and collection) ---------------- */
@@ -603,7 +603,7 @@ function defeat(){
   logCamp('Fell at depth '+depth+', dropped '+lost+' gold.','curse');
   if(xp&&typeof stopExplore==='function'){ stopExplore(); EX=null; XPARK=null; if(typeof XRUN!=='undefined') XRUN=null; }
   reveal('Defeated…','You fell at depth '+depth+' and dropped '+lost+' gold. Your cards are safe.'+burnt,[],
-    xp?[['Camp',()=>{ B=null; openCamp(); },true]]:[['Camp',()=>{ B=null; openCamp(); },true],['Retry',()=>fight(depth)]]);
+    xp?[['Camp',()=>{ B=null; openCamp(); },true],...(peekPoint()?[['Load save',()=>loadPoint()]]:[])]:[['Camp',()=>{ B=null; openCamp(); },true],['Retry',()=>fight(depth)]]);
 }
 // leaving a fight early: a battle-only fight costs nothing; fleeing a dungeon fight costs 10% of
 // your gold and the floor; a fight you have already lost still counts as a defeat
@@ -632,7 +632,13 @@ function openPause(){ const w=pauseWhere(); if(!w||$('#pause').classList.contain
     :'Tap your side of the board to move and the enemy side to aim lobs. Hold Fire to charge a shot; open Custom when it glows.';
   const L=$('#mLeave'); delete L.dataset.armed;
   L.textContent=w==='battle'?'Retreat to camp':w==='trial'?'End the test':onStairs?'Climb to camp':'Flee to camp · lose 10% gold';
-  $('#pause').classList.add('on'); setTimeout(()=>$('#mResume').focus(),30); }
+  pausePoint(); $('#pause').classList.add('on'); setTimeout(()=>$('#mResume').focus(),30); }
+// the save point line and buttons on the pause screen (savepoint.js)
+function pausePoint(){ const P=peekPoint(), why=canSavePoint(), S=$('#mSave'), L=$('#mLoad'); delete S.dataset.armed; delete L.dataset.armed; S.textContent='Save game'; L.textContent='Load save';
+  S.disabled=!!why; L.disabled=!P;
+  $('#mPoint').textContent=(P?'Save point: depth '+P.depth+' · Lv '+P.level+' · '+agoText(P.time)+'.':'No save point yet.')+(why?' '+why:''); }
+$('#mSave').onclick=e=>{ const go=()=>{ const r=savePoint(); tip(r.msg); pausePoint(); }; if(peekPoint()) armed(e.currentTarget,'Tap to overwrite',go); else go(); };
+$('#mLoad').onclick=e=>armed(e.currentTarget,'Tap to load',()=>{ if(!loadPoint()) tip('No save point'); });
 function closePause(){ if(!$('#pause').classList.contains('on')) return; $('#pause').classList.remove('on'); paused=false; if(typeof xPause==='function') xPause(false); }
 $('#btnMenu').onclick=openPause;
 $('#xMenu').onclick=openPause;

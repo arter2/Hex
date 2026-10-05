@@ -112,8 +112,14 @@ function settleChargeUses(save,piles){
   return burned;
 }
 
-function loadSave(){
-  try{ const s=JSON.parse(localStorage.getItem(SAVE_KEY)||'null'); if(s&&s.v===1) return migrate(s); }catch(e){}
+/* Three save slots. Slot 1 keeps the original key, so a save from before slots is slot 1.
+   SAVE_SLOT is the slot in use; the choice is remembered in this browser. */
+const SAVE_SLOTS=3, SLOT_KEY='hexmancers-slot';
+const slotKey=n=>n===1?SAVE_KEY:SAVE_KEY+'-slot'+n;
+let SAVE_SLOT=1; try{ const n=+localStorage.getItem(SLOT_KEY); if(n>=1&&n<=SAVE_SLOTS) SAVE_SLOT=n; }catch(e){}
+function setSlot(n){ SAVE_SLOT=n; try{ localStorage.setItem(SLOT_KEY,String(n)); }catch(e){} }
+function loadSave(n){
+  try{ const s=JSON.parse(localStorage.getItem(slotKey(n||SAVE_SLOT))||'null'); if(s&&s.v===1) return migrate(s); }catch(e){}
   return null;
 }
 // Potions used to be items; they are cards now.
@@ -121,7 +127,7 @@ const OLD_POTIONS={draught:'potion_heal', tonic:'potion_tonic', elixir:'potion_e
 function migrate(s){ s.items=s.items||{}; s.gear=s.gear||{}; if(typeof ensureStarterGear==='function') ensureStarterGear(s);
   for(const k in OLD_POTIONS) if(s.items[k]){ const id=OLD_POTIONS[k]; s.owned[id]=(s.owned[id]||0)+s.items[k]; s.seen[id]=1; delete s.items[k]; }
   return s; }
-function writeSave(s){ try{ localStorage.setItem(SAVE_KEY,JSON.stringify(s)); }catch(e){} }
-function clearSave(){ try{ localStorage.removeItem(SAVE_KEY); }catch(e){} }
+function writeSave(s){ try{ localStorage.setItem(slotKey(SAVE_SLOT),JSON.stringify(s)); }catch(e){} }
+function clearSave(n){ try{ localStorage.removeItem(slotKey(n||SAVE_SLOT)); }catch(e){} }
 
-if(typeof module!=='undefined') module.exports={loadSave,battleRewards,heroChance,rollHero,assignChargeUses,settleChargeUses,chargeLeft,SAVE_KEY,DECK_SLOTS,PACK_PRICE,copyLimit,rarityWeights,rollRarity,rollCard,battleGold,openPack,autoFill,newSave,addCards,ownedUnique};
+if(typeof module!=='undefined') module.exports={loadSave,SAVE_SLOTS,slotKey,setSlot,battleRewards,heroChance,rollHero,assignChargeUses,settleChargeUses,chargeLeft,SAVE_KEY,DECK_SLOTS,PACK_PRICE,copyLimit,rarityWeights,rollRarity,rollCard,battleGold,openPack,autoFill,newSave,addCards,ownedUnique};

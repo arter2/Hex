@@ -837,3 +837,17 @@ body.lsS #custHand .slot.hole{min-height:104px;}
 .dial .tape i.new::before{background:#7dff9a; height:16px;} .dial .tape i.new b{color:#7dff9a;}
 .charstats .wide{grid-column:1/-1; border:0; justify-content:center;}
 .charstats small.up{color:#7dff9a;} .charstats small.down{color:#ff8a8a;} .charstats small{font:400 14px var(--font-t);}
+
+/* save slots */
+#mmSlots{left:18%; top:57.3%; width:64%; height:6.3%;}
+.mmstats{pointer-events:none;}
+.mmstats>.mmslot{left:19.3%; top:61.3%; padding:.3cqw .8cqw; font-size:2.4cqw; color:#e8ecef; background:rgba(4,6,10,.75); border:.2cqw solid #7fd4ff;}
+#slots .panel.slotsp{max-width:520px; width:100%; display:flex; flex-direction:column; gap:10px;}
+.sllist{display:flex; flex-direction:column; gap:8px;}
+.slrow{display:grid; grid-template-columns:40px 1fr auto; gap:10px; align-items:center; padding:8px; background:#0d1014; border:2px solid #2c3137; text-align:left;}
+.slrow.cur{border-color:#7fd4ff; box-shadow:0 0 10px rgba(127,212,255,.25);}
+.sln{font:700 28px var(--font-b); color:#7fd4ff; text-align:center;}
+.slinfo{display:flex; flex-direction:column; line-height:1.1; min-width:0;}
+.slinfo b{font:600 16px var(--font-b); color:#e8ecef;} .slinfo small{font:400 16px var(--font-t); color:#9aa3ab;}
+.slbtns{display:flex; flex-direction:column; gap:4px; align-items:stretch;}
+.slnow{font:400 16px var(--font-t); color:#7fd4ff; text-align:center;}

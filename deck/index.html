@@ -14,6 +14,7 @@
     <div class="mmart">
       <h1 class="sr">Hexmancers</h1><p class="sr">Crawl the dungeon. Duel on the hex grid. Collect the cards.</p>
       <button id="mmContinue" class="hot"><span class="sr">Continue: back to camp, where you left off</span></button>
+      <button id="mmSlots" class="hot"><span class="sr">Save slots</span></button>
       <div id="mmSave" class="mmstats"></div>
       <button id="mmDown" class="hot" aria-label="Shallower"></button>
       <b id="mmDepth" class="mmtxt">1</b>
@@ -242,6 +243,15 @@
       <div class="ccpts"><span>Points to spend</span><b id="lvPts">2</b></div>
       <div id="lvStats" class="ccstats"></div>
       <div class="row2"><button id="lvLater" class="btn ghost">Later</button><button id="lvDone" class="btn">Done</button></div>
+    </div>
+  </div>
+  <!-- save slots: switch, delete, or pick one for a new game -->
+  <div id="slots" class="overlay">
+    <div class="panel slotsp">
+      <h2 id="slTitle">Save slots</h2>
+      <p id="slHint" class="hint center"></p>
+      <div id="slList" class="sllist"></div>
+      <button id="slClose" class="btn ghost">Back</button>
     </div>
   </div>
   <div id="reveal" class="overlay">

@@ -172,6 +172,27 @@ function xpLine(){ ensureChar(save); return 'Lv '+save.level+' · '+save.xp+'/'+
 function xpBar(el){ ensureChar(save); const k=save.xp/xpNeed(save.level), left=pointsLeft(save.char);
   el.innerHTML=`<span>${xpLine()}</span><i style="--k:${k}"></i>`+(left?`<b>+${left} points</b>`:''); el.classList.toggle('pts',!!left); }
 
+/* ---------------- save slots ----------------
+   Three saves side by side. The menu's save panel opens this list to switch slots or delete one;
+   New game opens it to choose where the new game goes (a used slot asks twice before it is replaced). */
+function slotLine(s){ if(!s) return '<b>Empty</b>';
+  const ch=s.char&&RACES[s.char.race]&&!s.char.auto?RACES[s.char.race].name+' '+(s.char.body?'woman':'man'):'No character yet';
+  return `<b>${esc(ch)} · Lv ${s.level||1}</b><small>Depth ${s.deepest} · ${s.gold} gold · ${ownedUnique(s)} cards</small>`; }
+function useSlot(n){ if(typeof stopExplore==='function'){ stopExplore(); EX=null; XPARK=null; if(typeof XRUN!=='undefined') XRUN=null; }
+  B=null; setSlot(n); save=loadSave(); campLog.length=0; pickDepth=null; ccChar=null; }
+function openSlots(mode){ const isNew=mode==='new', box=$('#slList'); box.innerHTML='';
+  $('#slTitle').textContent=isNew?'New game':'Save slots';
+  $('#slHint').textContent=isNew?'Choose a slot for the new game. Starting in a used slot replaces that save.':'Pick a slot to play. Each keeps its own character, cards, gold and gear.';
+  for(let n=1;n<=SAVE_SLOTS;n++){ const s=n===SAVE_SLOT?save:loadSave(n), row=document.createElement('div'); row.className='slrow'+(n===SAVE_SLOT?' cur':'');
+    row.innerHTML=`<span class="sln">${n}</span><div class="slinfo">${slotLine(s)}</div><div class="slbtns"></div>`;
+    const bb=row.querySelector('.slbtns'), btn=(label,cls,fn)=>{ const b=document.createElement('button'); b.className='btn small'+(cls?' '+cls:''); b.textContent=label; b.onclick=e=>fn(e); bb.appendChild(b); return b; };
+    if(isNew){ const go=()=>{ useSlot(n); $('#slots').classList.remove('on'); openNewChar(); };
+      if(s) btn('Replace','ghost',e=>armed(e.currentTarget,'Tap again',go)); else btn('Start here','',go); }
+    else { if(n!==SAVE_SLOT) btn(s?'Play':'Use','',()=>{ useSlot(n); $('#slots').classList.remove('on'); openMenu(); }); else bb.insertAdjacentHTML('beforeend','<span class="slnow">In use</span>');
+      if(s) btn('Delete','ghost',e=>armed(e.currentTarget,'Tap again',()=>{ clearSave(n); if(n===SAVE_SLOT){ save=null; pickDepth=null; } openSlots(); openMenu(); tip('Slot '+n+' deleted'); })); }
+    box.appendChild(row); }
+  $('#slots').classList.add('on'); }
+
 /* ---------------- start ---------------- */
 function buildStart(){
   const box=$('#starters'); box.innerHTML='';
@@ -897,8 +918,9 @@ function openMenu(){
   if(has){ if(pickDepth==null) pickDepth=save.deepest; pickDepth=Math.min(Math.max(1,pickDepth),save.deepest); }
   else pickDepth=1;
   $('#mmContinue').disabled=!has;
-  $('#mmSave').innerHTML=has?'<span class="mmdeep">Deepest: depth <b>'+save.deepest+'</b></span><span class="mmname">'+esc(areaOf(save.deepest).name)+'</span><span class="mmgold">'+uiIcon('coin',20)+save.gold+'</span><span class="mmcards">'+ownedUnique(save)+' cards</span>'
-    :'<span class="mmdeep">No save yet.</span><span class="mmname">Start a new game.</span>';
+  const slotTag='<span class="mmslot">Slot '+SAVE_SLOT+' ▾</span>';
+  $('#mmSave').innerHTML=slotTag+(has?'<span class="mmdeep">Deepest: depth <b>'+save.deepest+'</b></span><span class="mmname">'+esc(areaOf(save.deepest).name)+'</span><span class="mmgold">'+uiIcon('coin',20)+save.gold+'</span><span class="mmcards">'+ownedUnique(save)+' cards</span>'
+    :'<span class="mmdeep">Slot '+SAVE_SLOT+' is empty.</span><span class="mmname">Start a new game.</span>');
   $('#mmDepth').textContent=pickDepth; $('#mmArea').textContent=areaLabel(pickDepth); $('#mmArea').style.color=areaOf(pickDepth).glow;
   $('#mmDown').disabled=!has||pickDepth<=1; $('#mmUp').disabled=!has||pickDepth>=save.deepest;
   const v=has?validateDeck(activeDeck().list,CARDS,save.owned):{ok:false};
@@ -911,7 +933,9 @@ $('#mmUp').onclick=()=>{ pickDepth++; openMenu(); };
 $('#mmContinue').onclick=()=>withChar(()=>openCamp());
 $('#mmExplore').onclick=()=>withChar(()=>enterExplore(pickDepth));
 $('#mmBattle').onclick=()=>withChar(()=>fight(pickDepth));
-$('#mmNew').onclick=()=>openNewChar();
+$('#mmNew').onclick=()=>openSlots('new');
+$('#mmSlots').onclick=()=>openSlots();
+$('#slClose').onclick=()=>$('#slots').classList.remove('on');
 $('#mmSettings').onclick=()=>openSettings();
 $('#startBack').onclick=()=>openNewChar(true);
 $('#ccBack').onclick=()=>openMenu();

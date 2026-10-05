@@ -341,3 +341,7 @@ t('enchanted and cursed gear raise and lower your stats while worn', ()=>{
   assert(/Strength/.test(G3.gearText(sv,id)),'piece text names the stat');
   assert.strictEqual(CH.statOf(sv.char,'str',c.stats),12); assert.strictEqual(CH.statOf(sv.char,'str'),10,'spending ignores gear');
 });
+t('three save slots, slot 1 keeps the original save key', ()=>{
+  const C2=require('./collection.js'); assert.strictEqual(C2.SAVE_SLOTS,3); assert.strictEqual(C2.slotKey(1),C2.SAVE_KEY);
+  assert.strictEqual(new Set([1,2,3].map(C2.slotKey)).size,3);
+});

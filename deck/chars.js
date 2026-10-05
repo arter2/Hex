@@ -83,7 +83,7 @@ function statEffect(ch,k,bonus){ const v=statOf(ch,k,bonus)-10, S=STATS[k], pct=
 
 // a save from before characters gets an average human with its old look, and its 12 creation
 // points still to spend
-function ensureChar(save){ if(!save.char||!RACES[save.char.race]) save.char=lockChar(Object.assign(newChar('human',0),{look:save.look||'wizard'}));
+function ensureChar(save){ if(!save.char||!RACES[save.char.race]) save.char=lockChar(Object.assign(newChar('human',0),{look:save.look||'wizard', auto:true}));   // auto: a stand-in until the player makes a character
   save.level=save.level||1; save.xp=save.xp||0; return save.char; }
 // gain experience; returns how many levels it brought
 function gainXp(save,n){ const ch=ensureChar(save); n=Math.max(0,Math.round(n)); save.xp+=n; let up=0;

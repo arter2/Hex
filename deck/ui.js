@@ -90,7 +90,14 @@ function reveal(title,body,results,buttons,extras){
    woman, which picks the look), then 12 points spread over eight stats with horizontal dials.
    The deck pick comes next, and the character goes into the new save (chars.js). */
 let ccChar=null;
-function openNewChar(keep){ if(!keep||!ccChar) ccChar=newChar(pick(RACE_KEYS),Math.random()<.5?1:0); $('#ccWarn').textContent=''; delete $('#ccGo').dataset.sure; renderNewChar(); show('scrNewChar'); }
+// mode 'existing': a save from before characters makes one now, keeping its cards, gold, gear and level;
+// then goes on to what the player chose (next)
+let ccMode=null, ccNext=null;
+const needsChar=()=>save&&(!save.char||save.char.auto||!RACES[save.char.race]);
+function withChar(next){ if(needsChar()) openNewChar(false,'existing',next); else next(); }
+function openNewChar(keep,mode,next){ ccMode=mode||null; ccNext=next||null;
+  $('#ccStep').textContent=ccMode?'Make your character':'Step 1 of 2'; $('#ccGo').textContent=ccMode?'Save character ►':'Choose your deck ►';
+  if(!keep||!ccChar) ccChar=newChar(pick(RACE_KEYS),Math.random()<.5?1:0); $('#ccWarn').textContent=''; delete $('#ccGo').dataset.sure; renderNewChar(); show('scrNewChar'); }
 function ccLook(id){ return typeof lookSprite==='function'?lookSprite(id,'front',true):null; }
 function renderNewChar(){ const ch=ccChar, R=RACES[ch.race];
   $('#ccRace').textContent=R.name+' · '+(ch.body?'woman':'man'); $('#ccText').textContent=R.text;
@@ -901,13 +908,16 @@ function openMenu(){
 }
 $('#mmDown').onclick=()=>{ pickDepth--; openMenu(); };
 $('#mmUp').onclick=()=>{ pickDepth++; openMenu(); };
-$('#mmContinue').onclick=()=>openCamp();
-$('#mmExplore').onclick=()=>enterExplore(pickDepth);
-$('#mmBattle').onclick=()=>fight(pickDepth);
+$('#mmContinue').onclick=()=>withChar(()=>openCamp());
+$('#mmExplore').onclick=()=>withChar(()=>enterExplore(pickDepth));
+$('#mmBattle').onclick=()=>withChar(()=>fight(pickDepth));
 $('#mmNew').onclick=()=>openNewChar();
 $('#mmSettings').onclick=()=>openSettings();
 $('#startBack').onclick=()=>openNewChar(true);
 $('#ccBack').onclick=()=>openMenu();
-$('#ccGo').onclick=()=>{ if(pointsLeft(ccChar)>0&&!$('#ccGo').dataset.sure){ $('#ccWarn').textContent='You still have '+pointsLeft(ccChar)+' points to spend. Tap again to go on anyway.'; $('#ccGo').dataset.sure='1'; return; } buildStart(); };
+$('#ccGo').onclick=()=>{ if(pointsLeft(ccChar)>0&&!$('#ccGo').dataset.sure){ $('#ccWarn').textContent='You still have '+pointsLeft(ccChar)+' points to spend. Tap again to go on anyway.'; $('#ccGo').dataset.sure='1'; return; } if(ccMode==='existing') return keepChar(); buildStart(); };
+// a save from before characters takes the new character: level points earned so far stay to spend
+function keepChar(){ const old=save.char, ch=lockChar(ccChar); ch.earned=(old&&old.earned)||0; if(ch.earned) save.lvlNew=true;
+  Object.assign(save,{char:ch, look:ch.look, hat:true}); ensureChar(save); persist(); const go=ccNext||openCamp; ccMode=ccNext=null; go(); }
 $('#ccReset').onclick=()=>{ ccChar=newChar(ccChar.race,ccChar.body); renderNewChar(); };
 $('#campMenu').onclick=()=>openMenu();

@@ -673,6 +673,7 @@ window.addEventListener('keydown',e=>{ if(e.key!=='Escape') return; if($('#pause
 function comboChips(combos){ return combos.length?combos.map(c=>`<span>✦ ${esc(c.label)}</span>`).join(''):''; }
 function renderCustom(){
   const p=B.piles, dealt=B.justDrawn||new Set();
+  if(!$('#custom').classList.contains('on')) custShownT=performance.now();
   $('#custom').classList.add('on');
   $('#custPiles').textContent='Deck '+p.draw.length+' · Discard '+p.discard.length;
   const combos=detectCombos(p.queue), inCombo=new Set();
@@ -753,6 +754,12 @@ function dragCard(el,inst){
 }
 function dropTarget(x,y){ const el=document.elementFromPoint(x,y); return el&&el.closest('#custom [data-zone]'); }
 $('#btnFight').onclick=closeCustomScreen;
+/* The Custom button acts on the finger going down, so the screen opens while the finger is still
+   on the glass; on a phone the Fight! button then sits right under it, and the tap's click (sent
+   when the finger lifts) would close the screen at once. Clicks in the first half second after it
+   opens are ignored. */
+let custShownT=0;
+$('#custom').addEventListener('click',e=>{ if(performance.now()-custShownT<500){ e.stopPropagation(); e.preventDefault(); } },true);
 
 /* ---------------- HUD ---------------- */
 const last={};

@@ -22,3 +22,5 @@ Existing files stay in place; do not rename or overwrite previously used assets.
 
 The workshop is a browser-local preview tool. Repository review records are the shared
 source of truth; browser “Approved” status alone is not production approval.
+
+Every class and variant requires nine baseline animations, each in all eight directions with 12 frames per direction. Track completion with the [coverage matrix](templates/coverage-matrix.md).

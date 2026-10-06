@@ -29,6 +29,30 @@ Keep chroma green out of character colors; record a suitable non-key green in th
 Do not bake a detached projectile or spell effect into the character sheet: put it in vfx/ with its own metadata and origin/alignment notes.
 Keep inventory icons in weapons/ as separately identified assets, not among the 12 animation frames.
 
+## Mandatory coverage for every class and variant
+
+The supplied view references establish a full eight-direction character animation set.
+Use them for directional coverage and pose readability; preserve each Hexmancers character's existing design.
+This requirement applies to EVERY animation of EVERY class and EVERY gender, headgear, palette and form variant.
+An idle turntable does not satisfy attack, hurt, death or movement coverage.
+
+Required baseline animations: `idle`, `walk`, `run`, `attack-1`, `attack-2`, `walk-attack`, `run-attack`, `hurt`, `death`.
+Each requires all eight directions in the canonical row order, with 12 animation frames per direction.
+That means **96 frames per animation sheet, nine separate sheets and 864 frames per class/variant**.
+Additional class-specific actions (cast, special attack, backward walk, phase change, etc.)
+also require eight directions × 12 frames on their own sheets; they do not replace the baseline.
+
+Side profiles and rear three-quarter views must be fully drawn and readable. Keep camera elevation,
+body volume, costume details, equipment placement and handedness coherent through the full turn.
+Do not rotate a flat front sprite or substitute a static pose repeated 12 times for an animation.
+Left and right views must be checked separately; mirroring cannot swap weapon hands or costume details.
+Front-only attacks, a back view only for walking, or a single directional sample are incomplete.
+
+Copy [the coverage matrix](templates/coverage-matrix.md) into each variant folder as COVERAGE.md.
+Track all direction/animation combinations against their exact sheet revision and review record.
+A class/variant is complete only when every required cell has passed review and the corresponding
+sheet revisions have actual approval records. No new images or approvals are created by this specification.
+
 ## Canonical layout for new sheets
 
 This is the repository default for new production sheets, not a claim about the layout of earlier images.
@@ -70,8 +94,8 @@ Matching metadata uses the same basename and .json extension.
 Example:
 `characters/elf-wizard/variants/male-no-hat-normal/animations/idle/elf-wizard__male-no-hat-normal__idle__8dir__v001.png`
 
-Common animation slugs: idle, walk-forward, walk-backward, cast, attack, hurt, death.
-These are starter names, not evidence that animations exist. Add new slugs as needed.
+Use the mandatory baseline animation slugs above. Keep existing filenames intact;
+record their mapping to the baseline in the coverage matrix. Add class-specific slugs as needed.
 Use separate sheets for each animation, even when unused space remains.
 Keep originals and design references in sources/; never classify them as approved just because they were imported.
 

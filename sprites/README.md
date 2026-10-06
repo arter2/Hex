@@ -7,3 +7,18 @@ Import PNG sheets, choose a frame size (128×128 by default), row, starting colu
 Imports and saved reviews persist in IndexedDB in the current browser and origin. Use **Save review** after changing metadata. Export/restore JSON backups to move sheets and notes between machines. Backups contain the original PNG data. Importing here does not upload files to GitHub or replace the game's procedural 3D characters. Approved status records your review; it does not automatically integrate a sheet into gameplay.
 
 Recommended repository asset folders as assets are approved: `characters/`, `enemies/`, `bosses/`, `weapons/`, and `vfx/`. Keep source sheets as lossless PNGs and document animation rows alongside them. Labels occupying sheet rows must be excluded using the row selector.
+
+## Production workflow
+
+Start with [the production guide](PRODUCTION.md). New character assets belong in
+`characters/<class>/variants/<variant>/animations/<animation>/`.
+Existing files stay in place; do not rename or overwrite previously used assets.
+
+- [Character classes and variants](characters/README.md)
+- [Sheet layout and direction map](templates/sheet-metadata.example.json)
+- [Review notes template](reviews/TEMPLATE.md)
+- [Approval record template](approvals/TEMPLATE.md)
+- [Sources and reference policy](sources/README.md)
+
+The workshop is a browser-local preview tool. Repository review records are the shared
+source of truth; browser “Approved” status alone is not production approval.

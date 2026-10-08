@@ -376,7 +376,7 @@ function xBuildScene(){
   // chests
   for(const c of EX.chests) grp.add(xChestMesh(c));
   // known traps get a plate when found
-  for(const tr of EX.traps) tr.mesh=null;
+  for(const tr of EX.traps){ tr.mesh=null; tr.tell=null; if(tr.armed&&!tr.known) xTrapTell(tr,grp); }
   // the area's light: the same color as its battle cave, in the air, in your lamp and in the
   // crystals, lava, veins or motes along the room walls
   const glowC=new THREE.Color(A.glow);
@@ -454,7 +454,33 @@ function xFadeCells(dt){
     const w=EX.wIdx.get(c); if(w){ col.setRGB(v,v,v*1.05); w[0].setColorAt(w[1],col); w[0].instanceColor.needsUpdate=true; } }
   if(moved) EX.fogTex.needsUpdate=true;
 }
-function xTrapMesh(tr){ if(tr.mesh||!X3) return; const T=TRAPS[tr.kind], g=new THREE.Group(); g.position.set(xw(tr.cell),0,xz(tr.cell));
+/* Trap tells: a hidden trap is never shown, but it leaves small signs an attentive player can
+   read. Its floor stone sits in a faint seam; spikes leave pin holes, runes give off a faint pulse
+   of their colour now and then, pits and trapdoors have a darker, scuffed seam, falling blocks
+   leave grit, and metal (spikes, darts, blocks) catches the lamp in a brief glint when you come
+   within 3 tiles. Tells show only on cells in sight (the veil hides the rest) and go away once
+   the trap is found or disarmed. Built from the floor's state, so kept floors and save points
+   get them back. */
+const XTELL={spike:{dots:5,glint:'#dfe6f0'}, dart:{glint:'#c8ffb8'}, fire:{rune:1}, explosive:{rune:1}, alarm:{rune:1}, pit:{dark:1}, trapdoor:{dark:1}, blocks:{grit:1,glint:'#d8d0e8'}};
+function xTrapTell(tr,grp){ const T=TRAPS[tr.kind], K=XTELL[tr.kind]||{}, g=new THREE.Group(); g.position.set(xw(tr.cell),0,xz(tr.cell));
+  const m=(c,o)=>new THREE.MeshBasicMaterial({color:c,transparent:true,opacity:o,depthWrite:false}), flat=(geo,mat,x,z,y)=>{ const o=new THREE.Mesh(geo,mat); o.rotation.x=-Math.PI/2; o.position.set(x||0,y||.012,z||0); g.add(o); return o; };
+  // the seam: four thin dark strips round a stone a little smaller than the cell
+  const s=XCS*.42, w=.035, seam=m(0x000000,K.dark?.32:.18);
+  for(const [x,z,a,b] of [[0,-s,2*s,w],[0,s,2*s,w],[-s,0,w,2*s],[s,0,w,2*s]]) flat(new THREE.PlaneGeometry(a,b),seam,x,z);
+  if(K.dark){ const sc=m(0x000000,.16); flat(new THREE.PlaneGeometry(.5,.03),sc,-.2,.25); flat(new THREE.PlaneGeometry(.35,.03),sc,.25,-.15); }
+  if(K.dots){ const h=m(0x000000,.3); for(let k=0;k<K.dots;k++) flat(new THREE.CircleGeometry(.035,6),h,-.4+k*.2,(k%2-.5)*.4); }
+  if(K.grit){ const gm=m(0xb8b0c8,.22); for(let k=0;k<7;k++) flat(new THREE.CircleGeometry(.025,5),gm,Math.sin(k*2.3)*.5,Math.cos(k*1.7)*.5); }
+  if(K.rune){ const r=flat(new THREE.RingGeometry(.3,.34,16),m(new THREE.Color(T.col),0),0,0,.014); g.userData.rune=r; }
+  if(K.glint){ const sp=new THREE.Sprite(new THREE.SpriteMaterial({map:xGlowTex(),color:new THREE.Color(K.glint),transparent:true,opacity:0,depthWrite:false,blending:THREE.AdditiveBlending}));
+    sp.scale.set(.32,.32,1); sp.position.set(.2,.08,-.1); g.add(sp); g.userData.glint=sp; }
+  g.userData.ph=Math.random()*10; g.visible=false; grp.add(g); tr.tell=g; }
+// each frame: show the tells you can see, pulse runes and flash glints
+function xTellDraw(T){ for(const tr of EX.traps){ const g=tr.tell; if(!g) continue;
+  const on=tr.armed&&!tr.known&&!!EX.vis[tr.cell]; g.visible=on; if(!on) continue;
+  const near=Math.hypot(xw(tr.cell)-EX.px,xz(tr.cell)-EX.pz)/XCS<=3, ph=g.userData.ph, cyc=(T+ph)%4.5;
+  if(g.userData.rune) g.userData.rune.material.opacity=cyc<.9?.16*Math.sin(cyc/.9*Math.PI):0;   // a faint breath of colour every few seconds
+  if(g.userData.glint) g.userData.glint.material.opacity=near&&cyc>3.9&&cyc<4.15?.9*Math.sin((cyc-3.9)/.25*Math.PI):0; } }
+function xTrapMesh(tr){ if(tr.mesh||!X3) return; if(tr.tell) tr.tell.visible=false; const T=TRAPS[tr.kind], g=new THREE.Group(); g.position.set(xw(tr.cell),0,xz(tr.cell));
   g.add(xBox(1.3,.06,1.3,xMat(new THREE.Color(T.col).multiplyScalar(.6)),0,.03,0));
   if(tr.kind==='spike') for(let k=0;k<5;k++){ const s=new THREE.Mesh(new THREE.ConeGeometry(.1,.4,4),xMat(0xb8c0cc)); s.position.set(-.4+k*.2,.2,(k%2-.5)*.4); g.add(s); }
   else { const r=new THREE.Mesh(new THREE.TorusGeometry(.42,.06,4,12),new THREE.MeshBasicMaterial({color:T.col})); r.rotation.x=Math.PI/2; r.position.y=.08; g.add(r); }
@@ -740,7 +766,7 @@ function xDraw(T,dt){
     if(g.ring){ g.ring.visible=v; g.ring.position.set(g.x,.06,g.z); }
     if(v){ g.sprite.position.set(g.x,g.state==='sleep'?0:(Math.floor(T*(g.state==='chase'?4:1.6)+g.bob)%2)*g.h/96,g.z); xRefresh(g.sprite,(g.face||-1)<0);
       g.zz.position.set(g.x+.5,g.h+.2+Math.sin(T*2+g.bob)*.15,g.z); g.bang.position.set(g.x,g.h+.35,g.z); } }
-  xFov(dt);
+  xFov(dt); xTellDraw(T);
   if(typeof xDungeonDraw==='function') xDungeonDraw(T);
   { const rc=EX.aim?EX.aim.cell:EX.searchCell, R=G.reticle; R.visible=rc!=null;
     if(R.visible){ R.position.set(xw(rc),.12,xz(rc)); const k=EX.aim?1+.05*Math.sin(T*8):1+.12*Math.sin(T*14); R.scale.set(k,1,k); R.children[0].material.opacity=EX.aim?.9:.6+.3*Math.sin(T*14); } }

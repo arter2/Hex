@@ -13,6 +13,7 @@ effects, bands of frames of uneven widths. Each cell holds one frame. This scrip
   3. scales each animation so its body (median over the frames) is FILL of the frame tall, the
      feet on the frame's 31/32 line and its feet centred (sheets draw the
      boss at different sizes and places); effects are scaled to fit and centred,
+  3b. leaves out any frame whose drawing runs off its cell (cut off on the sheet),
   4. reduces all frames of a boss to one shared palette of up to COLORS colors (index 0 is
      transparent), and
   5. writes each animation as one block: its frames' palette indices, one byte a pixel, row by
@@ -29,8 +30,8 @@ DECK = os.path.normpath(os.path.join(HERE, '..', '..'))
 SRC = os.path.join(DECK, 'art', 'bosses', 'src')
 OUT = os.path.join(DECK, 'sprites_pal.js')
 
-SIZE = 160          # frame size in pixels (square)
-FILL = .88          # body height (the median over an animation) as a share of the frame
+SIZE = 176          # frame size in pixels (square), with room around the body for fists and dust
+FILL = .80          # body height (the median over an animation) as a share of the frame
 FXFILL = .92        # an effect's largest frame as a share of the frame
 COLORS = 127        # palette size, not counting transparent (gold and blue bodies share it)
 SPECK = 400         # loose bits smaller than this (in sheet pixels) are dropped from bodies
@@ -154,8 +155,24 @@ def cells(spec):
     bxs = boxes_of(spec)
     if 'frames' in spec:
         a, b = spec['frames']; bxs = bxs[a - 1:b]
-    for bx in bxs:
-        yield key_cell(im.crop(bx), spec['lay']['label'], 25 if spec.get('fx') else SPECK)
+    for n, bx in enumerate(bxs):
+        c = key_cell(im.crop(bx), spec['lay']['label'], 25 if spec.get('fx') else SPECK)
+        if touches_edge(c):
+            CUT.append('%s frame %d' % (spec['sheet'], n + 1 + (spec['frames'][0] - 1 if 'frames' in spec else 0)))
+            continue
+        yield c
+
+
+CUT = []   # frames left out because the drawing runs off its cell
+
+
+def touches_edge(im, m=3, most=40):
+    """True if the drawing runs off the cell: more than `most` opaque pixels along one border
+    (a few sparkles or a dust speck touching it do not count)."""
+    w, h = im.size
+    a = im.getchannel('A')
+    return any(sum(1 for v in a.crop(box).getdata() if v) > most
+               for box in ((0, 0, w, m), (0, h - m, w, h), (0, 0, m, h), (w - m, 0, w, h)))
 
 
 def build(name, anims):
@@ -187,6 +204,12 @@ def build(name, anims):
                 ox = SIZE // 2 - round(hx * k)
             # bodies stand on the 31/32 line; effects keep the cell's centre on the frame's centre
             oy = SIZE // 2 - sh // 2 if spec.get('fx') else round(SIZE * 31 / 32) - round(bx[3] * k)
+            # a frame whose drawing would run past the square frame (a beam, a raised rock) is left out
+            al = sm.getchannel('A')
+            outside = sum(1 for (x, y), v in zip(((x, y) for y in range(sh) for x in range(sw)), al.getdata())
+                          if v and not (0 <= ox + x < SIZE and 0 <= oy + y < SIZE))
+            if outside > 60:
+                CUT.append('%s (%s, past the frame)' % (spec['sheet'], a)); continue
             fr.alpha_composite(sm, (ox, oy)) if ox >= 0 and oy >= 0 else fr.paste(sm, (ox, oy), sm)
             frames[a].append(fr)
     # one palette for every frame of this boss
@@ -207,7 +230,7 @@ def build(name, anims):
             raw += bytes(min(v, COLORS - 1) + 1 if al[i] else 0 for i, v in enumerate(ix))
         z = zlib.compressobj(9, zlib.DEFLATED, -15)      # raw deflate: the browser's DecompressionStream('deflate-raw')
         enc[a] = base64.b64encode(z.compress(bytes(raw)) + z.flush()).decode()
-    return {'size': SIZE, 'pal': hexes, 'fps': {a: sp['fps'] for a, sp in anims.items()},
+    return {'size': SIZE, 'zoom': round(.88 / FILL, 3), 'pal': hexes, 'fps': {a: sp['fps'] for a, sp in anims.items()},
             'fx': [a for a, sp in anims.items() if sp.get('fx')], 'anims': enc}
 
 
@@ -228,6 +251,7 @@ def main():
                 '   pixel, row by row, frame after frame), raw-deflated and base64. art.js (palFrame) decodes them. */\n')
         f.write('const PAL_SPRITES=' + json.dumps(data, separators=(',', ':')) + ';\n')
         f.write("if(typeof module!=='undefined') module.exports={PAL_SPRITES};\n")
+    print('left out (cut off):', ', '.join(CUT) or 'none')
     print('wrote', OUT, os.path.getsize(OUT), 'bytes')
 
 

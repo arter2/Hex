@@ -873,7 +873,7 @@ function previewOverlay(ctx,pv,T){
 const FACES_LEFT=new Set([]);
 function drawSprite(ctx,u,T,S,o){
   const spr=typeof unitSprite==='function'?unitSprite(u):null, [wx,wz]=posOf(u), [x,y]=proj(wx,0,wz);
-  const sc=o.scale||1, H=S*2.7*sc, k=H/32, alpha=o.alpha==null?1:o.alpha;
+  const sc=(o.scale||1)*((spr&&spr.zoom)||1), H=S*2.7*sc, k=H/32, alpha=o.alpha==null?1:o.alpha;
   const g=ctx.createRadialGradient(x,y,0,x,y,S*.62*sc); g.addColorStop(0,'rgba(0,0,0,.55)'); g.addColorStop(1,'rgba(0,0,0,0)');
   ctx.globalAlpha=alpha; ctx.fillStyle=g; ctx.beginPath(); ctx.ellipse(x,y,S*.62*sc,S*.62*sc*View.iy,0,0,TAU); ctx.fill();
   if(!spr){ ctx.globalAlpha=1; return {x,top:y-H}; }

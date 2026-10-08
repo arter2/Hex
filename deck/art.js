@@ -922,7 +922,7 @@ function palFrame(id,anim,i,mirror){ const P=PAL_SPRITES[id], idx=PAL_IDX[id+':'
   for(let k=0;k<n*n;k++){ const v=idx[o+k]; if(!v) continue; const c=rgb[v-1]; px[k*4]=c[0]; px[k*4+1]=c[1]; px[k*4+2]=c[2]; px[k*4+3]=255; }
   ctx.putImageData(d,0,0);
   for(const [c,col] of [[sil,'#000'],[wht,'#fff']]){ const x=c.getContext('2d'); x.drawImage(img,0,0); x.globalCompositeOperation='source-in'; x.fillStyle=col; x.fillRect(0,0,n,n); }
-  return PAL_SPR[key]={img,sil,wht,hand:true,front:true}; }
+  return PAL_SPR[key]={img,sil,wht,hand:true,front:true,zoom:(P.zoom||1)}; }
 /* Which animation a boss shows. A one-off (u.palPlay: hurt, throw, the phase change) plays once
    through; otherwise, in a fight, its walk toward you, away, or to either side while it slides
    between tiles (it keeps walking a moment after, so a step is not a flicker), else its idle.

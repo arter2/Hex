@@ -30,8 +30,8 @@ DECK = os.path.normpath(os.path.join(HERE, '..', '..'))
 SRC = os.path.join(DECK, 'art', 'bosses', 'src')
 OUT = os.path.join(DECK, 'sprites_pal.js')
 
-SIZE = 176          # frame size in pixels (square), with room around the body for fists and dust
-FILL = .80          # body height (the median over an animation) as a share of the frame
+SIZE = 200          # frame size in pixels (square), with room around the body for fists, dust and tall crystals
+FILL = .70          # body height (the median over an animation) as a share of the frame
 FXFILL = .92        # an effect's largest frame as a share of the frame
 COLORS = 127        # palette size, not counting transparent (gold and blue bodies share it)
 SPECK = 400         # loose bits smaller than this (in sheet pixels) are dropped from bodies
@@ -59,8 +59,9 @@ BOSSES = {
         'phase':  dict(sheet='golem_phase.webp', lay=G6x3, fps=10),
         # the crystal body (phase 2 and on)
         'idle2':  dict(sheet='golem_crystal_idle.webp', lay=G4w, fps=8),
-        'walk2L': dict(sheet='golem_crystal_walk_left.webp', lay=G6x2, fps=12),
-        'walk2B': dict(sheet='golem_crystal_walk_back.webp', lay=G6x2, fps=12),
+        # these two sheets draw a slimmer, taller golem: sized by width (wide) to match the others
+        'walk2L': dict(sheet='golem_crystal_walk_left.webp', lay=G6x2, fps=12, wide=.65),
+        'walk2B': dict(sheet='golem_crystal_walk_back.webp', lay=G6x2, fps=12, wide=.65),
         'angry2': dict(sheet='golem_crystal_angry.webp', lay=G4w, fps=10),
         'fire2':  dict(sheet='golem_crystal_fire.webp', lay=G4w, fps=14),
         # the crystal nova (frames 11-12 fill the whole cell: a flash, left out)
@@ -68,6 +69,10 @@ BOSSES = {
         'rock':   dict(sheet='golem_rock.webp', lay=strip(60, 222), fps=14, fx=True),
         'rockArc':dict(sheet='golem_rock.webp', lay=strip(318, 510), fps=14, fx=True),
         'impact': dict(sheet='golem_rock.webp', lay=strip(605, 790), fps=14, fx=True),
+        # the crystal shard, drawn flying right; the game turns it to where it flies. It is every
+        # light-colored shot (the golem's from phase 2, light enemies', your light cards')
+        'shard':    dict(sheet='golem_crystal_shot.webp', lay=strip(320, 600), fps=14, fx=True, frames=(1, 8)),
+        'shardHit': dict(sheet='golem_crystal_shot.webp', lay=strip(320, 600), fps=14, fx=True, frames=(9, 12)),
     },
 }
 
@@ -186,6 +191,9 @@ def build(name, anims):
         else:
             hs = sorted(b[3] - b[1] for b in bbs)
             k = FILL * SIZE / hs[len(hs) // 2]
+            if spec.get('wide'):   # sized by its median width instead
+                ws = sorted(b[2] - b[0] for b in bbs)
+                k = spec['wide'] * SIZE / ws[len(ws) // 2]
         frames[a] = []
         for f, bx in zip(fs, bbs):
             w, h = f.size

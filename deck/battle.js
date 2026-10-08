@@ -113,7 +113,8 @@ function applyGear(p,m){
 }
 const alive=()=>B.enemies.filter(e=>e.hp>0);
 // a boss with an impact animation (sprites_pal.js) bursts its rock where it lands
-function palImpact(e,t){ if(e&&t&&!(e.phase>=2)&&typeof palHas==='function'&&palHas(e.id,'impact')) B.fx.push({kind:'palfx',id:e.id,anim:'impact',a:t,t:0,life:8/14}); }
+const lightShot=s=>typeof palHas==='function'&&palHas('golem','shard')&&!(s.owner&&palHas(s.owner.id,'rock')&&!(s.owner.phase>=2))&&(s.card?s.card.color==='light':!!(s.owner&&s.owner.color==='light'));
+function palImpact(e,t,s){ if(s&&lightShot(s)&&t){ B.fx.push({kind:'palfx',id:'golem',anim:'shardHit',a:t,t:0,life:4/14}); return; } if(e&&t&&!(e.phase>=2)&&typeof palHas==='function'&&palHas(e.id,'impact')) B.fx.push({kind:'palfx',id:e.id,anim:'impact',a:t,t:0,life:8/14}); }
 function later(sec,fn){ B.timers.push({t:sec,fn}); }
 // units slide between tiles instead of jumping
 const INTENT_ICON={shot:'➶',firebomb:'🔥',iceslam:'❄',cross:'✚',rush:'➤',blink:'☾',mend:'✚',quake:'⚠',boulders:'●'};
@@ -483,7 +484,7 @@ function update(dt){
         hitEnemy(o,s.dmg,s.card,{dig:s.dig}); if(s.push&&o.hp>0) shove(o,{push:1},s.dmg);
         if(s.pierce>0){ s.pierce--; s.dmg=Math.max(1,Math.round(s.dmg*(s.falloff||1))); burst(t,'#ffffff',4,.8); } else s.done=true; }
       else if(s.from==='p'&&o&&o.enemy){ hitBlock(o,s.dmg,null); s.done=true; }
-      else if(s.from==='e'&&o&&o.kind!=='enemy'&&!o.enemy){ palImpact(s.owner,t); if(o.kind==='player') hitPlayer(s.dmg); else hitBlock(o,s.dmg,s.owner); s.done=true; }
+      else if(s.from==='e'&&o&&o.kind!=='enemy'&&!o.enemy){ palImpact(s.owner,t,s); if(o.kind==='player') hitPlayer(s.dmg); else hitBlock(o,s.dmg,s.owner); s.done=true; }
       if(s.done) burst(t,s.card?colorOf(s.card):s.color||'#fff',6,.8);
     }
   }
@@ -827,6 +828,11 @@ function render(){
     const wx=from.wx+(to.wx-from.wx)*k, wz=from.wz+(to.wz-from.wz)*k, [x,y]=proj(wx,1,wz);
     const rk=s.owner&&!(s.owner.phase>=2)&&typeof palHas==='function'&&palHas(s.owner.id,'rock')&&palFrame(s.owner.id,'rock',Math.floor((B.time-(s.t0??(s.t0=B.time)))*14));
     if(rk){ const H=S*1.6; ctx.save(); ctx.imageSmoothingEnabled=false; ctx.translate(x,y); ctx.scale(-1,1); ctx.drawImage(rk.img,-H/2,-H/2,H,H); ctx.restore(); continue; }   // the sheet throws to the right; ours fly left
+    // light shots fly as the crystal shard (sprites_pal.js), turned to where they go: it grows over
+    // its first 4 frames, then loops the last 4
+    if(lightShot(s)){ const n=Math.floor((B.time-(s.t0??(s.t0=B.time)))*14), sh=palFrame('golem','shard',n<4?n:4+n%4);
+      if(sh){ const [ax,ay]=proj(from.wx,1,from.wz), [bx,by]=proj(to.wx,1,to.wz), H=S*(s.wand?1.1:1.6);
+        ctx.save(); ctx.imageSmoothingEnabled=false; ctx.translate(x,y); ctx.rotate(Math.atan2(by-ay,bx-ax)||Math.PI/2); ctx.drawImage(sh.img,-H/2,-H/2,H,H); ctx.restore(); continue; } }
     const col=s.card?colorOf(s.card):s.color||(s.wand?'#e6f4ff':'#fff');
     ctx.fillStyle=col; ctx.shadowColor=col; ctx.shadowBlur=12; ctx.beginPath(); ctx.arc(x,y,S*(s.big?.26:s.wand?.13:.19),0,TAU); ctx.fill(); ctx.shadowBlur=0;
   }

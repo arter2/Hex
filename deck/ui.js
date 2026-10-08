@@ -614,7 +614,19 @@ function leaveFight(){ paused=false; $('#custom').classList.remove('on');
   B=null; openCamp(); }
 function fleeCost(what){ const lost=Math.floor(save.gold*.1); save.gold-=lost; persist(); logCamp(what+' and dropped '+lost+' gold.','curse'); tip('You flee to camp and drop '+lost+' gold'); }
 // the card you cast pops up large and flies onto the board, Hearthstone style
-function showCast(c,inst){ const box=$('#castFx'); box.innerHTML=''; const el=cardEl(c,inst&&inst.combo?`<span class="tag">✦ ${esc(inst.combo.split(':')[0])}</span>`:''); box.appendChild(el); }
+/* How a cast card shows (Settings › Cast card): big (the full card mid-screen), side (a small card
+   at the left edge), ribbon (only its name, under the top bar) or ghost (the big card, faint and quick).
+   Only big covers the enemies for long; the others keep the board clear. */
+const CAST_FX=['big','side','ribbon','ghost'], CAST_FX_NAME={big:'Big',side:'Side',ribbon:'Ribbon',ghost:'Ghost'};
+const castFxMode=()=>{ let m='big'; try{ m=localStorage.getItem('hexmancers-castfx')||'big'; }catch(e){} return CAST_FX.includes(m)?m:'big'; };
+function showCast(c,inst){ const box=$('#castFx'), rib=$('#castRib'), mode=castFxMode(), combo=inst&&inst.combo?inst.combo.split(':')[0]:'';
+  box.innerHTML=''; rib.innerHTML=''; box.className='cast-fx '+mode;
+  if(mode==='ribbon'){ const d=document.createElement('div'); d.className='rib'; d.style.setProperty('--c',COLORS[c.color].c);
+    d.innerHTML=`<b>✦ ${esc(c.name)}</b>${combo?`<span>${esc(combo)}</span>`:''}`; rib.appendChild(d); return; }
+  box.appendChild(cardEl(c,combo?`<span class="tag">✦ ${esc(combo)}</span>`:'')); }
+function applyCastFx(){ const b=$('#setCastFx'); if(b) b.textContent=CAST_FX_NAME[castFxMode()]; }
+$('#setCastFx').onclick=()=>{ const m=CAST_FX[(CAST_FX.indexOf(castFxMode())+1)%CAST_FX.length]; try{ localStorage.setItem('hexmancers-castfx',m); }catch(e){} applyCastFx(); };
+applyCastFx();
 function banner(text,color){ const b=$('#banner'); b.textContent=text; b.style.setProperty('--bc',color); b.classList.remove('on'); void b.offsetWidth; b.classList.add('on'); }
 // phone helpers: a short buzz on hits, a pause menu, full screen
 const buzz=ms=>{ try{ navigator.vibrate&&navigator.vibrate(ms); }catch(e){} };
@@ -673,7 +685,7 @@ window.addEventListener('keydown',e=>{ if(e.key!=='Escape') return; if($('#pause
 function comboChips(combos){ return combos.length?combos.map(c=>`<span>✦ ${esc(c.label)}</span>`).join(''):''; }
 function renderCustom(){
   const p=B.piles, dealt=B.justDrawn||new Set();
-  if(!$('#custom').classList.contains('on')) custShownT=performance.now();
+  if(!$('#custom').classList.contains('on')){ custShownT=performance.now(); custPressed=false; }
   $('#custom').classList.add('on');
   $('#custPiles').textContent='Deck '+p.draw.length+' · Discard '+p.discard.length;
   const combos=detectCombos(p.queue), inCombo=new Set();
@@ -755,11 +767,12 @@ function dragCard(el,inst){
 function dropTarget(x,y){ const el=document.elementFromPoint(x,y); return el&&el.closest('#custom [data-zone]'); }
 $('#btnFight').onclick=closeCustomScreen;
 /* The Custom button acts on the finger going down, so the screen opens while the finger is still
-   on the glass; on a phone the Fight! button then sits right under it, and the tap's click (sent
-   when the finger lifts) would close the screen at once. Clicks in the first half second after it
-   opens are ignored. */
-let custShownT=0;
-$('#custom').addEventListener('click',e=>{ if(performance.now()-custShownT<500){ e.stopPropagation(); e.preventDefault(); } },true);
+   on the glass, and the tap's click (sent when the finger lifts, however long it was held) lands on
+   whatever is under it now. So a click on the Custom screen only counts when its press also began
+   on the Custom screen after it opened. Keyboard presses (no pointer) always count. */
+let custShownT=0, custPressed=false;
+$('#custom').addEventListener('pointerdown',()=>{ custPressed=true; },true);
+$('#custom').addEventListener('click',e=>{ if(e.detail!==0&&!custPressed){ e.stopPropagation(); e.preventDefault(); } },true);
 
 /* ---------------- HUD ---------------- */
 const last={};
@@ -792,7 +805,8 @@ function hud(force){
     $('#btnCast').disabled=!pl.queue.length;
   });
   const canCustom=b.phase==='fight'&&gaugeFull()&&!wandOnly(pl);
-  set('custom',canCustom,v=>{ const bt=$('#btnCustom'); bt.disabled=!v; bt.classList.toggle('ready',v); bt.innerHTML=v?'✦ Custom<small>cards ready</small>':'Custom'; });
+  set('custom',canCustom+'|'+wandOnly(pl),()=>{ const bt=$('#btnCustom'); bt.disabled=!canCustom; bt.classList.toggle('ready',canCustom);
+    $('#custLbl').innerHTML=canCustom?'✦ Custom · cards ready':wandOnly(pl)?'Deck empty: wand only':'Custom'; });
 }
 
 /* ---------------- battle input ---------------- */
@@ -824,10 +838,18 @@ View.canvas=$('#board'); View.ctx=View.canvas.getContext('2d');
 View.canvas.addEventListener('pointerdown',e=>{ const t=pickTile(e.clientX,e.clientY); if(t&&t.side==='e'){ setAim(t); return; }
   if(!B||!B.player) return; try{ View.canvas.setPointerCapture(e.pointerId); }catch(_){}
   const [ax,ay]=appXY(e.clientX,e.clientY), [wx,wz]=posOf(B.player), [px,py]=proj(wx,0,wz);
-  dragging={id:e.pointerId,x0:ax,y0:ay,px,py,tap:t,moved:false}; });
+  dragging={id:e.pointerId,x0:ax,y0:ay,px,py,tap:t,moved:false,cur:B.player.tile}; });
+// how far a canvas point is from a tile's centre, in tiles (flattened the way the board is)
+const tileOff=(t,x,y)=>{ const [cx,cy]=proj(t.wx,0,t.wz); return Math.hypot(x-cx,(y-cy)/View.iy)/scaleAt(t.wx,t.wz); };
 View.canvas.addEventListener('pointermove',e=>{ const d=dragging; if(!d||e.pointerId!==d.id) return; const [ax,ay]=appXY(e.clientX,e.clientY);
   if(!d.moved&&Math.hypot(ax-d.x0,ay-d.y0)>12) d.moved=true;
-  if(d.moved){ const t=pickAt(d.px+(ax-d.x0)*1.15,d.py+(ay-d.y0)*1.15); if(t&&t.side==='p') moveTo(t); } });
+  if(!d.moved) return;
+  // the target only changes once the finger is well into the next tile, so a finger resting near
+  // an edge doesn't flick the mage back and forth between two tiles
+  const x=d.px+(ax-d.x0)*1.15, y=d.py+(ay-d.y0)*1.15, t=pickAt(x,y);
+  if(!t||t.side!=='p'||t===d.cur) return;
+  if(d.cur&&tileOff(t,x,y)>tileOff(d.cur,x,y)-.3) return;
+  d.cur=t; moveTo(t); });
 const dragEnd=e=>{ const d=dragging; if(!d||e.pointerId!==d.id) return; dragging=null; if(!d.moved&&e.type==='pointerup'&&d.tap&&d.tap.side==='p') moveTo(d.tap); };
 ['pointerup','pointercancel'].forEach(ev=>View.canvas.addEventListener(ev,dragEnd));
 window.addEventListener('resize',()=>{ if($('#scrBattle').classList.contains('on')) resizeView(); });
@@ -839,7 +861,7 @@ window.addEventListener('keydown',e=>{
     const n=parseInt(k,10);
     if(n>=1&&n<=7&&B.piles.hand[n-1]){ toggleQueue(B.piles,B.piles.hand[n-1].uid); renderCustom(); }
     else if(k==='backspace'&&B.piles.queue.length){ toggleQueue(B.piles,B.piles.queue[B.piles.queue.length-1].uid); renderCustom(); }
-    else if(k==='enter'||k===' '){ e.preventDefault(); closeCustomScreen(); }
+    else if((k==='enter'||k===' ')&&!e.repeat&&!held.has(k)){ e.preventDefault(); closeCustomScreen(); }
     return;
   }
   if(B.phase!=='fight'||paused||held.has(k)) return; held.add(k);

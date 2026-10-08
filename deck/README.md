@@ -34,7 +34,7 @@ Dungeon fuzz test: `node deck/tools/dungeon/fuzz.js` builds 192 floors in a head
 
 Playtest bots (novice, casual, expert): `node deck/tools/playtest/run.js check 10 1,3,5,8` prints win rate, fight length, stalls and more per skill and depth; `node deck/tools/playtest/weapons.js` compares weapons and gear.
 
-Controls: tap a tile on your side to move, tap a tile on the enemy side to aim lobs (nearest enemy if you don't), hold Wand to charge, Cast plays the next queued card, Custom opens when the gauge is full.
+Controls: tap a tile on your side to move (or drag anywhere like a trackpad; walks keep to the straightest line and the target only changes once your finger is well into the next tile), tap a tile on the enemy side to aim lobs (nearest enemy if you don't), hold Wand to charge, Cast plays the next queued card. The Custom button runs across the top of the battle and is the gauge: it fills, then glows when you can open the card screen. A faint triangle grid splits every hex into six. Settings › Cast card picks how a cast card shows: Big, Side, Ribbon or Ghost.
 Keyboard: arrows/WASD move, Space wand, Enter cast, Q cycle lob aim, C custom, 1–7 pick cards on the Custom screen.
 In grids, long-press (or right-click) a card for its detail.
 

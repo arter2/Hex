@@ -43,13 +43,23 @@ const around=neighbors;   // area effects hit the 6 surrounding tiles
 const hexDist=(a,b)=>{ const dq=a.q-b.q, dr=a.r-b.r; return (Math.abs(dq)+Math.abs(dr)+Math.abs(dq+dr))/2; };
 function lineTiles(t,d){ const out=[]; let q=t.q,r=t.r; for(;;){ q+=d[0]; r+=d[1]; const n=tileAt(q,r); if(!n) break; out.push(n); } return out; }
 function wedgeTiles(t,len){ return TILES.filter(o=>{ const dx=o.wx-t.wx, dz=o.wz-t.wz; return dx>.1 && Math.hypot(dx,dz)<=len*SQ3 && Math.abs(dz)<=dx*1.2; }); }
-function pathTo(from,to){ // BFS over free tiles on your side
-  if(to.side!=='p') return [];
-  const prev=new Map([[from,null]]), q=[from];
-  while(q.length){ const c=q.shift(); if(c===to) break;
-    for(const n of neighbors(c)) if(n.side==='p'&&!prev.has(n)&&!(n.holeT>0)&&(!n.occ||n===to)){ prev.set(n,c); q.push(n); } }
-  if(!prev.has(to)||to.occ) return [];
-  const path=[]; for(let c=to;c&&c!==from;c=prev.get(c)) path.unshift(c); return path;
+/* A shortest walk over free tiles on your side. On a hex board there are often many equally short
+   walks, and a plain search picks any of them, so the mage veered off and back. Of the shortest
+   walks this takes the one that stays closest to the straight line from start to goal. */
+function pathTo(from,to){
+  if(to.side!=='p'||to.occ||to===from) return [];
+  const free=n=>n.side==='p'&&!(n.holeT>0)&&(!n.occ||n===from);
+  const dist=new Map([[to,0]]), q=[to];   // steps to the goal, counted back from it
+  while(q.length){ const c=q.shift(); if(c===from) break;
+    for(const n of neighbors(c)) if(!dist.has(n)&&free(n)){ dist.set(n,dist.get(c)+1); q.push(n); } }
+  if(!dist.has(from)) return [];
+  const ax=from.wx, az=from.wz, dx=to.wx-ax, dz=to.wz-az, L=Math.hypot(dx,dz)||1;
+  const off=t=>Math.abs((t.wx-ax)*dz-(t.wz-az)*dx)/L;   // how far a tile is from the line
+  const path=[]; let c=from;
+  while(c!==to){ const k=dist.get(c)-1; let best=null;
+    for(const n of neighbors(c)) if(dist.get(n)===k&&(!best||off(n)<off(best)-1e-6)) best=n;
+    path.push(best); c=best; }
+  return path;
 }
 
 /* enemies, encounters and terrain live in enemies.js */
@@ -538,9 +548,13 @@ function aimPattern(){ const q=B.piles.queue[0]; if(!q) return 'single'; const c
 function setAim(t){ const b=B; if(!b||b.phase!=='fight'||!t||t.side!=='e') return; b.aim=b.aim===t?null:t; }
 function cycleAim(){ const b=B; if(!b||b.phase!=='fight') return; const ts=alive().map(e=>e.tile).sort((a,c)=>a.r-c.r||a.q-c.q); if(!ts.length) return;
   b.aim=ts[(ts.indexOf(b.aim)+1)%ts.length]; }
-function moveTo(t){ const b=B; if(!b||b.phase!=='fight'||!t) return; const p=b.player; if(t===p.tile) return; p.path=pathTo(p.tile,t); }
-function stepDir(d){ const b=B; if(!b||b.phase!=='fight') return; const p=b.player, t=tileAt(p.tile.q+d[0],p.tile.r+d[1]); if(t&&t.side==='p'&&!t.occ) p.path=[t]; }
-function stepVertical(up){ const p=B.player, ts=neighbors(p.tile).filter(t=>(up?t.r<p.tile.r:t.r>p.tile.r)&&t.side==='p'&&!t.occ); if(ts.length) p.path=[pick(ts)]; }
+function moveTo(t){ const b=B; if(!b||b.phase!=='fight'||!t) return; const p=b.player; p.lane=null; if(t===p.tile){ p.path=[]; return; } const last=p.path[p.path.length-1]; if(last===t) return; p.path=pathTo(p.tile,t); }
+function stepDir(d){ const b=B; if(!b||b.phase!=='fight') return; const p=b.player, t=tileAt(p.tile.q+d[0],p.tile.r+d[1]); p.lane=null; if(t&&t.side==='p'&&!t.occ) p.path=[t]; }
+// rows are offset by half a tile, so a step to the next row goes half a tile one way or the other:
+// keep to the column you started in (lane), so repeated steps run straight instead of wandering
+function stepVertical(up){ const p=B.player, ts=neighbors(p.tile).filter(t=>(up?t.r<p.tile.r:t.r>p.tile.r)&&t.side==='p'&&!t.occ&&!(t.holeT>0)); if(!ts.length) return;
+  if(p.lane==null) p.lane=p.tile.wx;
+  ts.sort((a,c)=>Math.abs(a.wx-p.lane)-Math.abs(c.wx-p.lane)||(a.wx-c.wx)); p.path=[ts[0]]; }
 function wandDown(){ const b=B; if(!b||b.phase!=='fight') return; b.player.charging=true; b.player.chargeT=0; }
 function wandUp(){ const b=B; if(!b) return; const p=b.player; if(!p.charging) return; p.charging=false; const ch=p.chargeT>=chargeNeed(p); p.chargeT=0; fireWand(ch); }
 const chargeNeed=p=>p.wand?p.wand.charge:.9;
@@ -754,6 +768,9 @@ function render(){
     if(tl&&!tl.friendly){ ctx.fillStyle='rgba(255,50,70,.6)'; poly(ctx,hexCorners(t,.96*Math.min(1,tl.t/tl.dur))); ctx.fill(); }
     if(t.holeT>0){ ctx.save(); ctx.globalAlpha=.35+.15*Math.sin(T*5+t.q); ctx.fillStyle='#ff5a1f'; poly(ctx,hexCorners(t,.72)); ctx.fill(); ctx.globalAlpha=1; ctx.fillStyle='#0b0506'; poly(ctx,hexCorners(t,.55)); ctx.fill(); ctx.restore(); poly(ctx,top); }
     if(b.fog&&t.side==='e'){ ctx.save(); ctx.globalAlpha=.42+.06*Math.sin(T*.8+t.q); ctx.fillStyle='#0a0610'; poly(ctx,top); ctx.fill(); ctx.restore(); poly(ctx,top); }
+    // a light triangle grid: every hex split into its six triangles, a steady guide to walk by
+    if(!(t.holeT>0)&&t.side!=='n'){ const [mx,my]=proj(t.wx,0,t.wz); ctx.beginPath(); for(const [x,y] of top){ ctx.moveTo(mx,my); ctx.lineTo(x,y); }
+      ctx.strokeStyle=t.side==='p'?'rgba(127,212,255,.13)':'rgba(170,185,200,.09)'; ctx.lineWidth=1; ctx.stroke(); }
     poly(ctx,top); ctx.strokeStyle=t.side==='p'?'rgba(127,212,255,.5)':t.side==='e'?'rgba(150,165,180,.35)':'rgba(57,255,138,.5)'; ctx.lineWidth=1; ctx.stroke();
     if(t.side==='n'){ const [x,y]=proj(t.wx,.1,t.wz); ctx.fillStyle='rgba(57,255,138,.85)'; ctx.beginPath();
       ctx.moveTo(x,y-S*1.1-Math.sin(T*2+t.r)*3); ctx.lineTo(x+S*.22,y-S*.45); ctx.lineTo(x,y); ctx.lineTo(x-S*.22,y-S*.45); ctx.closePath(); ctx.fill(); }

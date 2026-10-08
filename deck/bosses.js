@@ -78,7 +78,7 @@ function bossStart(e){ e.phase=1; e.gT=0; e.g2=0;
   B.hooks.onBoss&&B.hooks.onBoss(e.name,COLORS[e.color].c,BOSS_INFO[e.def.bossId]);
 }
 // at 2/3 and 1/3 HP: a banner, a 2.5s guard, a new strategy
-function evolve(e,ph){ e.phase=ph; e.guardT=2.5; cancelAttack(e); shake(8); burst(e.tile||B.player.tile,COLORS[e.color].c,40,1);
+function evolve(e,ph){ e.phase=ph; if(ph>=3&&e.tile&&typeof palHas==='function'&&palHas(e.id,'nova')) B.fx.push({kind:'palfx',id:e.id,anim:'nova',a:e.tile,t:0,life:10/12,big:1}); e.guardT=2.5; cancelAttack(e); shake(8); burst(e.tile||B.player.tile,COLORS[e.color].c,40,1);
   const lines={glacier:['','','Her glare locks your queue','Blizzard!'], golem:['','','The prism turns: it reflects','Overcharge!'], hollow:['','','It reaches for your hand','It splits into shades'],
                treant:['','','Vines stir under you','The grove wakes'], wyrm:['','','It burrows','Molten core!'], roc:['','','It takes to the sky','The storm chains']};
   const txt=e.name+(ph===2?' II':' III')+' · '+lines[e.def.bossId][ph];

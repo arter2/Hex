@@ -931,19 +931,24 @@ function palFrame(id,anim,i,mirror){ const P=PAL_SPRITES[id], idx=PAL_IDX[id+':'
    screen's right is +z. */
 const palFrames=(id,a)=>{ const P=PAL_SPRITES[id], i=PAL_IDX[id+':'+a]; return i?i.length/(P.size*P.size):0; };
 function palSprite(u){ const P=PAL_SPRITES[u.id], t=performance.now()/1000, A=P.anims, two=u.phase>=2&&A.idle2;
-  if(u.phase!=null&&u.palPh!==u.phase){ if(u.palPh!=null&&u.phase>u.palPh&&A.phase) u.palPlay={anim:'phase',t}; u.palPh=u.phase; }
+  // evolving: into the second body (phase), then its rage (angry2) when it is enraged
+  if(u.phase!=null&&u.palPh!==u.phase){ if(u.palPh!=null&&u.phase>u.palPh){ const a=u.phase>=3&&A.angry2?'angry2':A.phase?'phase':null; if(a) u.palPlay={anim:a,t}; } u.palPh=u.phase; }
   const pl=u.palPlay; if(pl){ const f=Math.floor((t-pl.t)*((P.fps&&P.fps[pl.anim])||12)), n=palFrames(u.id,pl.anim);
-    if(n&&f<n){ const two0=pl.anim!=='phase'&&two&&(pl.anim==='hurt'||pl.anim==='throw'); if(!two0) return palFrame(u.id,pl.anim,f); }
-    else u.palPlay=null; }
+    if(n&&f<n) return palFrame(u.id,pl.anim,f); u.palPlay=null; }
   let anim='idle';
   if(u.tile&&u.rx!=null){ const dx=u.tile.wx-u.rx, dz=u.tile.wz-u.rz;
     if(Math.hypot(dx,dz)>.03){ anim=Math.abs(dz)>Math.abs(dx)*1.2?(dz>0?'walkR':'walkL'):(dx<0?'walkF':'walkB'); u.palWalk=anim; u.palT=t; }
     else if(u.palWalk&&t-u.palT<.35) anim=u.palWalk; }
-  if(two){ const walk=anim!=='idle'; const a2=walk?'walk2L':'idle2'; return palFrame(u.id,a2,Math.floor(t*((P.fps&&P.fps[a2])||10)),walk&&anim==='walkR'); }
+  // the second body: its back walk faces the viewer too, so it serves for both toward and away
+  if(two){ const a2=anim==='idle'?'idle2':(anim==='walkF'||anim==='walkB')&&A.walk2B?'walk2B':'walk2L'; return palFrame(u.id,a2,Math.floor(t*((P.fps&&P.fps[a2])||10)),anim==='walkR'); }
   return palFrame(u.id,anim,Math.floor(t*((P.fps&&P.fps[anim])||10))); }
 // start a boss's one-off animation (hurt waits a while between plays, so a hail of hits is not a stagger-lock)
-function palPlay(u,anim){ if(typeof PAL_SPRITES==='undefined'||!u||!PAL_SPRITES[u.id]||!PAL_SPRITES[u.id].anims[anim]) return false; const t=performance.now()/1000;
-  if(u.palPlay&&(u.palPlay.anim==='phase'||(anim==='hurt'&&u.palPlay.anim==='throw'))) return false;
+// From phase 2 the crystal body has its own: fire2 for throw, angry2 for the quake; no hurt.
+const PAL_TWO={throw:'fire2', quake:'angry2'};
+function palPlay(u,anim){ if(typeof PAL_SPRITES==='undefined'||!u||!PAL_SPRITES[u.id]) return false; const A=PAL_SPRITES[u.id].anims, t=performance.now()/1000;
+  if(u.phase>=2&&A.idle2){ if(anim==='hurt') return false; anim=PAL_TWO[anim]||anim; }
+  if(!A[anim]) return false;
+  if(u.palPlay&&(u.palPlay.anim==='phase'||u.palPlay.anim==='angry2'&&anim!=='fire2'||(anim==='hurt'&&/throw|fire2/.test(u.palPlay.anim)))) return false;
   if(anim==='hurt'){ if(t-(u.palHurtT||-9)<2.5) return false; u.palHurtT=t; }
   u.palPlay={anim,t}; return true; }
 const palHas=(id,anim)=>typeof PAL_SPRITES!=='undefined'&&!!PAL_SPRITES[id]&&!!PAL_SPRITES[id].anims[anim];

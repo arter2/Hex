@@ -11,8 +11,8 @@ effects, bands of frames of uneven widths. Each cell holds one frame. This scrip
      ground shadow goes too, but green inside the figure, like the golem's fist gems, stays),
      blanks the cell number in the top-left corner and drops loose specks (pebbles, dust),
   3. scales each animation so its body (median over the frames) is FILL of the frame tall, the
-     feet on the frame's 31/32 line and the cell's centre on the frame's centre (sheets draw the
-     boss at different sizes); effects are scaled to fit and centred,
+     feet on the frame's 31/32 line and its feet centred (sheets draw the
+     boss at different sizes and places); effects are scaled to fit and centred,
   4. reduces all frames of a boss to one shared palette of up to COLORS colors (index 0 is
      transparent), and
   5. writes each animation as one block: its frames' palette indices, one byte a pixel, row by
@@ -40,6 +40,8 @@ SPECK = 400         # loose bits smaller than this (in sheet pixels) are dropped
 G4 = {'cols': [0, 383, 767, 1151, 1535], 'rows': [59, 388, 705, 1023], 'label': 'tl'}
 G6x3 = {'cols': [k * 256 for k in range(7)], 'rows': [59, 359, 671, 1024], 'label': 'tl'}
 G6x2 = {'cols': [round(k * 1774 / 6) for k in range(7)], 'rows': [77, 478, 887], 'label': 'tl'}
+G4w = {'cols': [round(k * 1774 / 4) for k in range(5)], 'rows': [68, 340, 613, 887], 'label': 'tl'}
+G4fx = {'cols': [round(k * 1774 / 4) for k in range(5)], 'rows': [0, 275, 552, 887], 'label': 'tl'}
 def strip(y0, y1): return {'strip': (y0, y1), 'label': 'bl'}
 
 # boss -> animation -> sheet, layout, frames per second, and options:
@@ -54,9 +56,14 @@ BOSSES = {
         'hurt':   dict(sheet='golem_hurt.webp', lay=G4, fps=16),
         'throw':  dict(sheet='golem_throw.webp', lay=G4, fps=14),
         'phase':  dict(sheet='golem_phase.webp', lay=G6x3, fps=10),
-        # the crystal body (phase 2 and on): idle from the end of the change, and its walk
-        'idle2':  dict(sheet='golem_phase.webp', lay=G6x3, fps=6, frames=(15, 18)),
+        # the crystal body (phase 2 and on)
+        'idle2':  dict(sheet='golem_crystal_idle.webp', lay=G4w, fps=8),
         'walk2L': dict(sheet='golem_crystal_walk_left.webp', lay=G6x2, fps=12),
+        'walk2B': dict(sheet='golem_crystal_walk_back.webp', lay=G6x2, fps=12),
+        'angry2': dict(sheet='golem_crystal_angry.webp', lay=G4w, fps=10),
+        'fire2':  dict(sheet='golem_crystal_fire.webp', lay=G4w, fps=14),
+        # the crystal nova (frames 11-12 fill the whole cell: a flash, left out)
+        'nova':   dict(sheet='golem_crystal_burst.webp', lay=G4fx, fps=12, frames=(1, 10), fx=True),
         'rock':   dict(sheet='golem_rock.webp', lay=strip(60, 222), fps=14, fx=True),
         'rockArc':dict(sheet='golem_rock.webp', lay=strip(318, 510), fps=14, fx=True),
         'impact': dict(sheet='golem_rock.webp', lay=strip(605, 790), fps=14, fx=True),
@@ -170,7 +177,14 @@ def build(name, anims):
             # binary alpha: pixel art has no half-clear pixels
             sm.putalpha(sm.getchannel('A').point(lambda v: 255 if v >= 110 else 0))
             fr = Image.new('RGBA', (SIZE, SIZE), (0, 0, 0, 0))
-            ox = SIZE // 2 - sw // 2
+            if spec.get('fx'):
+                ox = SIZE // 2 - sw // 2
+            else:
+                # a body is centred on its feet (the bottom sixth of it), not on the cell: sheets
+                # sometimes shift the figure over to make room for a raised rock or a beam
+                top = f.crop((bx[0], bx[3] - max(1, (bx[3] - bx[1]) // 6), bx[2], bx[3])).getbbox()
+                hx = bx[0] + (top[0] + top[2]) / 2 if top else w / 2
+                ox = SIZE // 2 - round(hx * k)
             # bodies stand on the 31/32 line; effects keep the cell's centre on the frame's centre
             oy = SIZE // 2 - sh // 2 if spec.get('fx') else round(SIZE * 31 / 32) - round(bx[3] * k)
             fr.alpha_composite(sm, (ox, oy)) if ox >= 0 and oy >= 0 else fr.paste(sm, (ox, oy), sm)

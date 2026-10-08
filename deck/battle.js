@@ -829,12 +829,12 @@ function render(){
       ctx.strokeStyle=tc; ctx.globalAlpha=.45; ctx.lineWidth=S*(s.wand?.08:.14); ctx.beginPath(); ctx.moveTo(tx,ty); ctx.lineTo(hx,hy); ctx.stroke(); ctx.globalAlpha=1; }
     const wx=from.wx+(to.wx-from.wx)*k, wz=from.wz+(to.wz-from.wz)*k, [x,y]=proj(wx,1,wz);
     const rk=s.owner&&!(s.owner.phase>=2)&&typeof palHas==='function'&&palHas(s.owner.id,'rock')&&palFrame(s.owner.id,'rock',Math.floor((B.time-(s.t0??(s.t0=B.time)))*14));
-    if(rk){ const H=palH(S,s.owner.id); ctx.save(); ctx.imageSmoothingEnabled=false; ctx.translate(x,y); ctx.scale(-1,1); ctx.drawImage(rk.img,-H/2,-H/2,H,H); ctx.restore(); continue; }   // the sheet throws to the right; ours fly left
+    if(rk){ const H=palH(S,s.owner.id), [ax,ay]=proj(from.wx,1,from.wz), [bx,by]=proj(to.wx,1,to.wz); ctx.save(); ctx.imageSmoothingEnabled=false; ctx.translate(x,y); ctx.rotate((Math.atan2(by-ay,bx-ax)||Math.PI/2)-Math.PI/2); ctx.drawImage(rk.img,-H/2,-H/2,H,H); ctx.restore(); continue; }   // drawn flying down (at you); turned to where it goes
     // light shots fly as the crystal shard (sprites_pal.js), turned to where they go: it grows over
     // its first 4 frames, then loops the last 4
     if(lightShot(s)){ const n=Math.floor((B.time-(s.t0??(s.t0=B.time)))*14), sh=palFrame('golem','shard',n<4?n:4+n%4);
       if(sh){ const [ax,ay]=proj(from.wx,1,from.wz), [bx,by]=proj(to.wx,1,to.wz), H=palH(S,'golem',s.owner?((s.owner.def&&s.owner.def.scale)||1):s.wand?.7:1);
-        ctx.save(); ctx.imageSmoothingEnabled=false; ctx.translate(x,y); ctx.rotate(Math.atan2(by-ay,bx-ax)||Math.PI/2); ctx.drawImage(sh.img,-H/2,-H/2,H,H); ctx.restore(); continue; } }
+        ctx.save(); ctx.imageSmoothingEnabled=false; ctx.translate(x,y); ctx.rotate((Math.atan2(by-ay,bx-ax)||Math.PI/2)-Math.PI/2); ctx.drawImage(sh.img,-H/2,-H/2,H,H); ctx.restore(); continue; } }
     const col=s.card?colorOf(s.card):s.color||(s.wand?'#e6f4ff':'#fff');
     ctx.fillStyle=col; ctx.shadowColor=col; ctx.shadowBlur=12; ctx.beginPath(); ctx.arc(x,y,S*(s.big?.26:s.wand?.13:.19),0,TAU); ctx.fill(); ctx.shadowBlur=0;
   }

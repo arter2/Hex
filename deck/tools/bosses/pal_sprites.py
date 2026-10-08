@@ -67,12 +67,12 @@ BOSSES = {
         'fire2':  dict(sheet='golem_crystal_fire.webp', lay=G4w, fps=14),
         # the crystal nova (frames 11-12 fill the whole cell: a flash, left out)
         'nova':   dict(sheet='golem_crystal_burst.webp', lay=G4fx, fps=12, frames=(1, 10), fx=True, like='idle2'),
-        'rock':   dict(sheet='golem_rock.webp', lay=strip(60, 222), fps=14, fx=True, like='idle'),
-        'rockArc':dict(sheet='golem_rock.webp', lay=strip(318, 510), fps=14, fx=True, like='idle'),
+        'rock':   dict(sheet='golem_rock.webp', lay=strip(60, 222), fps=14, fx=True, rot=True, like='idle'),
+        'rockArc':dict(sheet='golem_rock.webp', lay=strip(318, 510), fps=14, fx=True, rot=True, like='idle'),
         'impact': dict(sheet='golem_rock.webp', lay=strip(605, 790), fps=14, fx=True, like='idle'),
-        # the crystal shard, drawn flying right; the game turns it to where it flies. It is every
+        # the crystal shard, drawn flying right and turned to fly down (rot), at the player. It is every
         # light-colored shot (the golem's from phase 2, light enemies', your light cards')
-        'shard':    dict(sheet='golem_crystal_shot.webp', lay=strip(320, 600), fps=14, fx=True, like='idle2', frames=(1, 8)),
+        'shard':    dict(sheet='golem_crystal_shot.webp', lay=strip(320, 600), fps=14, fx=True, rot=True, like='idle2', frames=(1, 8)),
         'shardHit': dict(sheet='golem_crystal_shot.webp', lay=strip(320, 600), fps=14, fx=True, like='idle2', frames=(9, 12)),
     },
 }
@@ -180,6 +180,8 @@ def cells(spec):
         a, b = spec['frames']; bxs = bxs[a - 1:b]
     for n, bx in enumerate(bxs):
         c = key_cell(im.crop(bx), spec['lay']['label'], 25 if spec.get('fx') else SPECK)
+        if spec.get('rot'):   # projectiles are drawn flying right: turn them a quarter clockwise, to fly down at you
+            c = c.rotate(-90, expand=True)
         if touches_edge(c):
             CUT.append('%s frame %d' % (spec['sheet'], n + 1 + (spec['frames'][0] - 1 if 'frames' in spec else 0)))
             continue

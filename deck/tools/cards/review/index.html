@@ -1,0 +1,158 @@
+<title>Hexmancers Card Review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;700&family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>
+/* Layout: a card ledger. Summary and filters stay on top; below, one row per card with its art,
+   its current rules text, and your verdict and rewrite beside it. Single dark look, like the game. */
+:root{
+  --ink:#0c0d13; --slab:#151722; --slab2:#1d2030; --line:#2b2f45; --text:#ebe6d6; --dim:#9b98aa;
+  --gold:#f2c94c; --pass:#5fd38d; --fail:#ff6b6b; --edit:#8fc8ff;
+  --display:"Pixelify Sans","Courier New",monospace; --body:"Atkinson Hyperlegible",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--ink); color:var(--text); font-family:var(--body); font-size:15px; line-height:1.45; margin:0}
+.wrap{max-width:1180px; margin:0 auto; padding-inline:16px; padding-block:22px 64px}
+h1{font-family:var(--display); font-weight:700; font-size:clamp(30px,5vw,44px); line-height:1; margin:0; color:var(--gold); letter-spacing:.02em}
+.lede{color:var(--dim); max-width:70ch; margin:.5em 0 0}
+.summary{display:flex; flex-wrap:wrap; gap:8px; margin:18px 0 12px}
+.stat{background:var(--slab); border:1px solid var(--line); padding:6px 12px; min-width:104px}
+.stat b{display:block; font-family:var(--display); font-size:26px; line-height:1.1; font-variant-numeric:tabular-nums}
+.stat span{font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--dim)}
+.stat.p b{color:var(--pass)} .stat.f b{color:var(--fail)} .stat.e b{color:var(--edit)}
+.bar{position:sticky; top:env(safe-area-inset-top,0px); z-index:5; background:var(--ink); padding-block:8px; border-bottom:1px solid var(--line); display:grid; gap:8px}
+.row{display:flex; flex-wrap:wrap; gap:6px; align-items:center}
+.chip{font:inherit; font-size:13px; color:var(--text); background:var(--slab); border:1px solid var(--line); padding:4px 10px; cursor:pointer}
+.chip[aria-pressed="true"]{border-color:var(--c,var(--gold)); background:color-mix(in srgb,var(--c,var(--gold)) 22%,var(--slab)); font-weight:700}
+select,input[type=search]{font:inherit; font-size:14px; background:var(--slab); color:var(--text); border:1px solid var(--line); padding:5px 8px; min-width:0}
+input[type=search]{flex:1 1 200px}
+.pager{display:flex; gap:8px; align-items:center; font-size:14px; color:var(--dim)}
+.pager button{font:inherit; background:var(--slab2); color:var(--text); border:1px solid var(--line); padding:4px 12px; cursor:pointer}
+.pager button:disabled{opacity:.4; cursor:default}
+button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--edit); outline-offset:2px}
+.list{display:grid; gap:10px; margin-top:12px}
+.card{display:grid; grid-template-columns:96px minmax(0,1fr) minmax(0,1.1fr); gap:14px; background:var(--slab); border:1px solid var(--line); border-left:4px solid var(--c); padding:12px}
+.card.pass{box-shadow:inset 0 0 0 1px var(--pass)} .card.fail{box-shadow:inset 0 0 0 1px var(--fail)}
+@media (max-width:820px){ .card{grid-template-columns:80px minmax(0,1fr)} .card .edit{grid-column:1/-1} }
+.art{width:100%; aspect-ratio:1; image-rendering:pixelated; display:block; background:#000; border:1px solid var(--line)}
+.meta{min-width:0}
+.name{font-family:var(--display); font-size:20px; line-height:1.15; margin:0}
+.tags{display:flex; flex-wrap:wrap; gap:5px; margin:6px 0}
+.tag{font-size:11px; letter-spacing:.06em; text-transform:uppercase; padding:1px 7px; border:1px solid var(--line); color:var(--dim)}
+.tag.col{color:var(--c); border-color:var(--c)}
+.tag.rune{font-family:var(--mono); color:var(--gold); border-color:var(--gold)}
+.rules{margin:4px 0 0; font-size:15px}
+.rules.old{color:var(--dim); text-decoration:line-through; text-decoration-color:var(--fail)}
+.stats{font:12px var(--mono); color:var(--dim); margin-top:6px; word-break:break-word}
+.id{font:11px var(--mono); color:var(--dim); opacity:.7}
+.edit{display:grid; gap:6px; align-content:start; min-width:0}
+.edit label{font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--edit)}
+textarea{font:inherit; font-size:14px; background:var(--ink); color:var(--text); border:1px solid var(--line); padding:6px 8px; resize:vertical; min-height:58px; width:100%}
+.verdict{display:flex; flex-wrap:wrap; gap:6px; align-items:center}
+.vb{font:700 13px var(--body); padding:6px 12px; cursor:pointer; border:1px solid var(--line); background:var(--slab2); color:var(--text)}
+.vb.p[aria-pressed="true"]{background:var(--pass); color:var(--ink); border-color:var(--pass)}
+.vb.f[aria-pressed="true"]{background:var(--fail); color:var(--ink); border-color:var(--fail)}
+.saved{font-size:12px; color:var(--dim)}
+.empty{color:var(--dim); padding:20px 0}
+@media (prefers-reduced-motion:reduce){ *{transition:none!important} }
+</style>
+
+<div class="wrap">
+  <h1>Hexmancers Card Review</h1>
+  <p class="lede">All 1,010 cards with their art and current rules text. Pass the ones that stay as they are, fail the ones that should go, and write a new ability for any card you want changed. Everything saves as you go, and I read your verdicts and rewrites straight from here.</p>
+  <div class="summary" id="summary"></div>
+  <div class="bar">
+    <div class="row" id="colors" role="group" aria-label="Color"></div>
+    <div class="row">
+      <select id="fType" aria-label="Type"></select>
+      <select id="fRarity" aria-label="Rarity"></select>
+      <select id="fStatus" aria-label="Review status">
+        <option value="all">Every card</option><option value="todo">Not reviewed</option><option value="pass">Passed</option>
+        <option value="fail">Failed</option><option value="edit">Rewritten</option></select>
+      <input type="search" id="fSearch" placeholder="Search names and abilities" aria-label="Search">
+    </div>
+    <div class="pager"><button id="prev">← Prev</button><span id="pageInfo"></span><button id="next">Next →</button></div>
+  </div>
+  <p class="empty" id="status">Loading cards…</p>
+  <div class="list" id="list"></div>
+  <div class="pager" style="margin-top:14px"><button id="prev2">← Prev</button><span id="pageInfo2"></span><button id="next2">Next →</button></div>
+</div>
+
+<script>
+const PER=40, S={d:null, rev:{}, db:null, f:{color:'all',type:'all',rarity:'all',status:'all',q:''}, page:0};
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const RARITY=['common','uncommon','rare','epic','legendary','hero'];
+function st(c){ const r=S.rev[c.id]||{}; return r; }
+function matches(c){ const f=S.f, r=st(c);
+  if(f.color!=='all'&&c.color!==f.color) return false; if(f.type!=='all'&&c.type!==f.type) return false; if(f.rarity!=='all'&&c.rarity!==f.rarity) return false;
+  if(f.status==='todo'&&(r.status||r.text)) return false; if(f.status==='pass'&&r.status!=='pass') return false; if(f.status==='fail'&&r.status!=='fail') return false; if(f.status==='edit'&&!r.text) return false;
+  if(f.q){ const q=f.q.toLowerCase(); if(!(c.name.toLowerCase().includes(q)||c.text.toLowerCase().includes(q)||(r.text||'').toLowerCase().includes(q))) return false; }
+  return true; }
+function renderSummary(){ const cs=S.d.cards, rs=cs.map(c=>st(c));
+  const p=rs.filter(r=>r.status==='pass').length, f=rs.filter(r=>r.status==='fail').length, e=rs.filter(r=>r.text).length, t=cs.filter(c=>!st(c).status&&!st(c).text).length;
+  document.getElementById('summary').innerHTML=[['',cs.length,'cards'],['p',p,'passed'],['f',f,'failed'],['e',e,'rewritten'],['',t,'not reviewed']]
+    .map(([k,b,s])=>`<div class="stat ${k}"><b>${b}</b><span>${s}</span></div>`).join(''); }
+function renderFilters(){
+  const C=S.d.colors; const cols=['all',...Object.keys(C)];
+  document.getElementById('colors').innerHTML=cols.map(k=>`<button class="chip" data-c="${k}" aria-pressed="${S.f.color===k}" style="--c:${k==='all'?'':C[k].c}">${k==='all'?'All colors':esc((C[k].icon||'')+' '+C[k].name)}</button>`).join('');
+  document.querySelectorAll('#colors .chip').forEach(b=>b.onclick=()=>{ S.f.color=b.dataset.c; S.page=0; renderFilters(); renderList(); });
+  const types=[...new Set(S.d.cards.map(c=>c.type))].sort(), rar=RARITY.filter(r=>S.d.cards.some(c=>c.rarity===r));
+  const ft=document.getElementById('fType'), fr=document.getElementById('fRarity');
+  if(!ft.options.length){ ft.innerHTML='<option value="all">Every type</option>'+types.map(t=>`<option value="${t}">${t[0].toUpperCase()+t.slice(1)}</option>`).join('');
+    fr.innerHTML='<option value="all">Every rarity</option>'+rar.map(t=>`<option value="${t}">${t[0].toUpperCase()+t.slice(1)}</option>`).join(''); }
+}
+function statsLine(c){ return Object.entries(c.stats).map(([k,v])=>k+' '+v).join(' · '); }
+function cardHTML(c){ const r=st(c), col=S.d.colors[c.color]||{c:'#888',name:c.color};
+  return `<article class="card ${r.status||''}" id="c-${c.id}" style="--c:${col.c}">
+    <img class="art" src="${c.art}" alt="${esc(c.name)} art" width="64" height="64" loading="lazy">
+    <div class="meta"><h2 class="name">${esc(c.name)}</h2>
+      <div class="tags"><span class="tag col">${esc((col.icon||'')+' '+col.name)}</span><span class="tag">${esc(c.type)}</span><span class="tag">rank ${c.rank}</span><span class="tag">${esc(c.rarity)}</span>${c.rune?`<span class="tag rune">rune ${esc(c.rune)}</span>`:''}</div>
+      <p class="rules${r.text?' old':''}">${esc(c.text)}</p>
+      <div class="stats">${esc(statsLine(c))}</div><div class="id">${esc(c.id)}</div></div>
+    <div class="edit"><label for="t-${c.id}">Rewrite ability</label>
+      <textarea id="t-${c.id}" data-id="${c.id}" placeholder="Leave empty to keep: ${esc(c.text)}">${esc(r.text||'')}</textarea>
+      <label for="n-${c.id}">Note</label>
+      <textarea id="n-${c.id}" class="note" data-id="${c.id}" style="min-height:34px" placeholder="Optional: why, or what to change">${esc(r.note||'')}</textarea>
+      <div class="verdict"><button class="vb p" data-id="${c.id}" data-s="pass" aria-pressed="${r.status==='pass'}">✓ Pass</button>
+        <button class="vb f" data-id="${c.id}" data-s="fail" aria-pressed="${r.status==='fail'}">✗ Fail</button>
+        <span class="saved" id="s-${c.id}">${S.db?'':'Sign in to save'}</span></div></div></article>`; }
+function renderList(){
+  const all=S.d.cards.filter(matches), pages=Math.max(1,Math.ceil(all.length/PER)); S.page=Math.min(S.page,pages-1);
+  const slice=all.slice(S.page*PER,S.page*PER+PER);
+  const sEl=document.getElementById('status'); sEl.textContent=all.length?'':'No cards match these filters.'; sEl.hidden=!!all.length;
+  document.getElementById('list').innerHTML=slice.map(cardHTML).join('');
+  const info=all.length?`${S.page*PER+1}–${S.page*PER+slice.length} of ${all.length}`:'';
+  ['','2'].forEach(k=>{ document.getElementById('pageInfo'+k).textContent=info; document.getElementById('prev'+k).disabled=S.page<=0; document.getElementById('next'+k).disabled=S.page>=pages-1; });
+  document.querySelectorAll('.vb').forEach(b=>b.onclick=()=>{ const cur=st({id:b.dataset.id}).status; save(b.dataset.id,{status:cur===b.dataset.s?null:b.dataset.s}); });
+  document.querySelectorAll('.edit textarea').forEach(t=>t.onchange=()=>save(t.dataset.id,t.classList.contains('note')?{note:t.value}:{text:t.value.trim()}));
+}
+function refreshCard(id){ const c=S.d.cards.find(x=>x.id===id), el=document.getElementById('c-'+id); if(!c||!el) return;
+  const r=st(c); el.className='card '+(r.status||''); el.querySelectorAll('.vb').forEach(b=>b.setAttribute('aria-pressed',r.status===b.dataset.s));
+  el.querySelector('.rules').classList.toggle('old',!!r.text); }
+async function save(id,patch){
+  const cur=Object.assign({},S.rev[id]||{},patch); S.rev[id]=cur; renderSummary(); refreshCard(id);
+  const sv=document.getElementById('s-'+id);
+  if(!S.db){ if(sv) sv.textContent='Not saved: sign in to save'; return; }
+  if(sv) sv.textContent='Saving…';
+  try{ await S.db.collection('cards').doc(id).set({status:cur.status||null, text:cur.text||'', note:cur.note||'', at:Date.now()}); const s2=document.getElementById('s-'+id); if(s2) s2.textContent='Saved'; }
+  catch(e){ const s2=document.getElementById('s-'+id); if(s2) s2.textContent='Could not save ('+(e&&e.code||'error')+'). Try again.'; }
+}
+function hook(){
+  const go=d=>{ S.page+=d; renderList(); window.scrollTo({top:0}); };
+  ['','2'].forEach(k=>{ document.getElementById('prev'+k).onclick=()=>go(-1); document.getElementById('next'+k).onclick=()=>go(1); });
+  const set=(id,key)=>document.getElementById(id).onchange=e=>{ S.f[key]=e.target.value; S.page=0; renderList(); };
+  set('fType','type'); set('fRarity','rarity'); set('fStatus','status');
+  let qt=0; document.getElementById('fSearch').oninput=e=>{ clearTimeout(qt); qt=setTimeout(()=>{ S.f.q=e.target.value.trim(); S.page=0; renderList(); },180); };
+}
+async function boot(){
+  try{ S.d=await (await fetch('data.json')).json(); }catch(e){ document.getElementById('status').textContent='The card list did not load. Reload the page.'; return; }
+  renderSummary(); renderFilters(); hook(); renderList();
+  const db=window.claude&&await window.claude.use('db');
+  if(db){ S.db=db; renderList();
+    db.collection('cards').onSnapshot(snap=>{ const changed=[];
+      snap.docChanges().forEach(ch=>{ if(ch.type==='removed') delete S.rev[ch.doc.id]; else S.rev[ch.doc.id]=ch.doc.data(); changed.push(ch.doc.id); });
+      renderSummary(); if(changed.length>20) renderList(); else changed.forEach(refreshCard); },
+      ()=>{ document.getElementById('status').textContent='Saved reviews could not be loaded right now.'; }); }
+}
+boot();
+</script>

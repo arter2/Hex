@@ -912,9 +912,10 @@ const PAL_IDX={}, PAL_SPR={};
 if(typeof PAL_SPRITES!=='undefined'&&typeof document!=='undefined'&&typeof DecompressionStream!=='undefined')
   for(const id in PAL_SPRITES) for(const a in PAL_SPRITES[id].anims){ const b=atob(PAL_SPRITES[id].anims[a]), u=new Uint8Array(b.length); for(let i=0;i<b.length;i++) u[i]=b.charCodeAt(i);
     new Response(new Blob([u]).stream().pipeThrough(new DecompressionStream('deflate-raw'))).arrayBuffer().then(buf=>{ PAL_IDX[id+':'+a]=new Uint8Array(buf); }).catch(()=>{}); }
-function palFrame(id,anim,i){ const P=PAL_SPRITES[id], idx=PAL_IDX[id+':'+anim]||PAL_IDX[id+':idle']; if(!idx) return null;
+function palFrame(id,anim,i,mirror){ const P=PAL_SPRITES[id], idx=PAL_IDX[id+':'+anim]||PAL_IDX[id+':idle']; if(!idx) return null;
   if(!PAL_IDX[id+':'+anim]) anim='idle';
-  const n=P.size, count=idx.length/(n*n), f=((i%count)+count)%count, key=id+':'+anim+':'+f; if(PAL_SPR[key]) return PAL_SPR[key];
+  const n=P.size, count=idx.length/(n*n), f=((i%count)+count)%count, key=id+':'+anim+':'+f+(mirror?':m':''); if(PAL_SPR[key]) return PAL_SPR[key];
+  if(mirror){ const b=palFrame(id,anim,f); return b&&(PAL_SPR[key]=Object.assign({},b,{mirror:true})); }
   const rgb=P.rgb||(P.rgb=P.pal.map(h=>[parseInt(h.slice(1,3),16),parseInt(h.slice(3,5),16),parseInt(h.slice(5,7),16)]));
   const mk=()=>{ const c=document.createElement('canvas'); c.width=c.height=n; return c; }, img=mk(), sil=mk(), wht=mk();
   const ctx=img.getContext('2d'), d=ctx.createImageData(n,n), px=d.data, o=f*n*n;
@@ -922,14 +923,30 @@ function palFrame(id,anim,i){ const P=PAL_SPRITES[id], idx=PAL_IDX[id+':'+anim]|
   ctx.putImageData(d,0,0);
   for(const [c,col] of [[sil,'#000'],[wht,'#fff']]){ const x=c.getContext('2d'); x.drawImage(img,0,0); x.globalCompositeOperation='source-in'; x.fillStyle=col; x.fillRect(0,0,n,n); }
   return PAL_SPR[key]={img,sil,wht,hand:true,front:true}; }
-/* Which animation a boss shows: in a fight, its walk toward you, away, or to either side while it
-   slides between tiles (it keeps walking a moment after, so a step is not a flicker); otherwise
-   its idle. On the board your side is low x and the screen's right is +z. */
-function palSprite(u){ const P=PAL_SPRITES[u.id], t=performance.now()/1000; let anim='idle';
+/* Which animation a boss shows. A one-off (u.palPlay: hurt, throw, the phase change) plays once
+   through; otherwise, in a fight, its walk toward you, away, or to either side while it slides
+   between tiles (it keeps walking a moment after, so a step is not a flicker), else its idle.
+   From phase 2 a boss with a second body (idle2, walk2L) uses it: the one side walk serves for
+   every direction and is mirrored for the right. On the board your side is low x and the
+   screen's right is +z. */
+const palFrames=(id,a)=>{ const P=PAL_SPRITES[id], i=PAL_IDX[id+':'+a]; return i?i.length/(P.size*P.size):0; };
+function palSprite(u){ const P=PAL_SPRITES[u.id], t=performance.now()/1000, A=P.anims, two=u.phase>=2&&A.idle2;
+  if(u.phase!=null&&u.palPh!==u.phase){ if(u.palPh!=null&&u.phase>u.palPh&&A.phase) u.palPlay={anim:'phase',t}; u.palPh=u.phase; }
+  const pl=u.palPlay; if(pl){ const f=Math.floor((t-pl.t)*((P.fps&&P.fps[pl.anim])||12)), n=palFrames(u.id,pl.anim);
+    if(n&&f<n){ const two0=pl.anim!=='phase'&&two&&(pl.anim==='hurt'||pl.anim==='throw'); if(!two0) return palFrame(u.id,pl.anim,f); }
+    else u.palPlay=null; }
+  let anim='idle';
   if(u.tile&&u.rx!=null){ const dx=u.tile.wx-u.rx, dz=u.tile.wz-u.rz;
     if(Math.hypot(dx,dz)>.03){ anim=Math.abs(dz)>Math.abs(dx)*1.2?(dz>0?'walkR':'walkL'):(dx<0?'walkF':'walkB'); u.palWalk=anim; u.palT=t; }
     else if(u.palWalk&&t-u.palT<.35) anim=u.palWalk; }
+  if(two){ const walk=anim!=='idle'; const a2=walk?'walk2L':'idle2'; return palFrame(u.id,a2,Math.floor(t*((P.fps&&P.fps[a2])||10)),walk&&anim==='walkR'); }
   return palFrame(u.id,anim,Math.floor(t*((P.fps&&P.fps[anim])||10))); }
+// start a boss's one-off animation (hurt waits a while between plays, so a hail of hits is not a stagger-lock)
+function palPlay(u,anim){ if(typeof PAL_SPRITES==='undefined'||!u||!PAL_SPRITES[u.id]||!PAL_SPRITES[u.id].anims[anim]) return false; const t=performance.now()/1000;
+  if(u.palPlay&&(u.palPlay.anim==='phase'||(anim==='hurt'&&u.palPlay.anim==='throw'))) return false;
+  if(anim==='hurt'){ if(t-(u.palHurtT||-9)<2.5) return false; u.palHurtT=t; }
+  u.palPlay={anim,t}; return true; }
+const palHas=(id,anim)=>typeof PAL_SPRITES!=='undefined'&&!!PAL_SPRITES[id]&&!!PAL_SPRITES[id].anims[anim];
 function unitSprite(u){
   if(u.kind==='player'){ const hs=lookSprite(u.lookId||playerLook(),u.view||'back',null,u.pose); if(hs) return hs; }
   if(u.kind==='player'){ const L=u.look||{body:'robe',m:'#1f5fa8',a:'#f2c94c',hat:'wizard',weapon:'staff',glow:'#7fd4ff',beard:true};
@@ -950,6 +967,6 @@ function unitSprite(u){
     else (THING[key]||THING.sentry)(()=>.5); });
 }
 
-Object.assign(root,{ART_SIZE,cardArt,artCSV,artURL,motifKey,unitSprite,lookSprite,rigSprite,palFrame,palSprite,LOOK_ALIAS});
+Object.assign(root,{ART_SIZE,cardArt,artCSV,artURL,motifKey,unitSprite,lookSprite,rigSprite,palFrame,palSprite,palPlay,palHas,LOOK_ALIAS});
 if(typeof module!=='undefined') module.exports={ART_SIZE,cardArt,artCSV,motifKey};
 })(typeof window!=='undefined'?window:globalThis);

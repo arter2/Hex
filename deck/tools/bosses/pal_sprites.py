@@ -1,16 +1,18 @@
 #!/usr/bin/env python3
 """Boss animation sheets -> fixed-palette sprite frames (deck/sprites_pal.js).
 
-The sheets (AI-made, in deck/art/bosses/src/, ignored by git) are 1536 x 1024: a title band on
-top, then 4 columns x 3 rows of numbered cells on a #00FF00 background with thin magenta lines.
-Each cell holds one frame. This script:
+The sheets (AI-made, in deck/art/bosses/src/, ignored by git) have a title band on top, then
+numbered cells on a #00FF00 background with faint lines: a grid (4 x 3, 6 x 3, 6 x 2) or, for
+effects, bands of frames of uneven widths. Each cell holds one frame. This script:
 
-  1. cuts every cell at the known grid (the lines are too faint on some sheets to detect),
+  1. cuts every cell, at the sheet's known grid (the lines are too faint to find), or for a band
+     at the green gaps between its frames,
   2. keys the background out by flood fill from the cell's edge over green (so the drawn
      ground shadow goes too, but green inside the figure, like the golem's fist gems, stays),
      blanks the cell number in the top-left corner and drops loose specks (pebbles, dust),
-  3. scales every frame of a boss by one factor, so the body is FILL of the frame tall, with
-     the feet on the frame's 31/32 line and the cell's centre on the frame's centre,
+  3. scales each animation so its body (median over the frames) is FILL of the frame tall, the
+     feet on the frame's 31/32 line and the cell's centre on the frame's centre (sheets draw the
+     boss at different sizes); effects are scaled to fit and centred,
   4. reduces all frames of a boss to one shared palette of up to COLORS colors (index 0 is
      transparent), and
   5. writes each animation as one block: its frames' palette indices, one byte a pixel, row by
@@ -28,20 +30,36 @@ SRC = os.path.join(DECK, 'art', 'bosses', 'src')
 OUT = os.path.join(DECK, 'sprites_pal.js')
 
 SIZE = 160          # frame size in pixels (square)
-FILL = .88          # body height as a share of the frame
-COLORS = 63         # palette size, not counting transparent
-SPECK = 400         # loose bits smaller than this (in sheet pixels) are dropped
-COLS = [0, 383, 767, 1151, 1535]
-ROWS = [59, 388, 705, 1023]
+FILL = .88          # body height (the median over an animation) as a share of the frame
+FXFILL = .92        # an effect's largest frame as a share of the frame
+COLORS = 127        # palette size, not counting transparent (gold and blue bodies share it)
+SPECK = 400         # loose bits smaller than this (in sheet pixels) are dropped from bodies
 
-# boss -> animation -> (sheet file, frames per second)
+# How a sheet is laid out. grid: cell edges in x and y; strip: frames in one band (y0, y1) found
+# by the green gaps between them. label: where the cell number sits ('tl' top left, 'bl' bottom left).
+G4 = {'cols': [0, 383, 767, 1151, 1535], 'rows': [59, 388, 705, 1023], 'label': 'tl'}
+G6x3 = {'cols': [k * 256 for k in range(7)], 'rows': [59, 359, 671, 1024], 'label': 'tl'}
+G6x2 = {'cols': [round(k * 1774 / 6) for k in range(7)], 'rows': [77, 478, 887], 'label': 'tl'}
+def strip(y0, y1): return {'strip': (y0, y1), 'label': 'bl'}
+
+# boss -> animation -> sheet, layout, frames per second, and options:
+#   frames: which frames of the sheet (1-based, inclusive); fx: an effect (centred, not standing)
 BOSSES = {
     'golem': {
-        'idle':  ('golem_idle.webp', 8),
-        'walkF': ('golem_walk_fwd.webp', 12),
-        'walkB': ('golem_walk_back.webp', 12),
-        'walkL': ('golem_walk_left.webp', 12),
-        'walkR': ('golem_walk_right.webp', 12),
+        'idle':   dict(sheet='golem_idle.webp', lay=G4, fps=8),
+        'walkF':  dict(sheet='golem_walk_fwd.webp', lay=G4, fps=12),
+        'walkB':  dict(sheet='golem_walk_back.webp', lay=G4, fps=12),
+        'walkL':  dict(sheet='golem_walk_left.webp', lay=G4, fps=12),
+        'walkR':  dict(sheet='golem_walk_right.webp', lay=G4, fps=12),
+        'hurt':   dict(sheet='golem_hurt.webp', lay=G4, fps=16),
+        'throw':  dict(sheet='golem_throw.webp', lay=G4, fps=14),
+        'phase':  dict(sheet='golem_phase.webp', lay=G6x3, fps=10),
+        # the crystal body (phase 2 and on): idle from the end of the change, and its walk
+        'idle2':  dict(sheet='golem_phase.webp', lay=G6x3, fps=6, frames=(15, 18)),
+        'walk2L': dict(sheet='golem_crystal_walk_left.webp', lay=G6x2, fps=12),
+        'rock':   dict(sheet='golem_rock.webp', lay=strip(60, 222), fps=14, fx=True),
+        'rockArc':dict(sheet='golem_rock.webp', lay=strip(318, 510), fps=14, fx=True),
+        'impact': dict(sheet='golem_rock.webp', lay=strip(605, 790), fps=14, fx=True),
     },
 }
 
@@ -51,7 +69,7 @@ def bg_like(p):
     return (g > r + 40 and g > b + 40) or (r > 120 and b > 120 and g < 170)
 
 
-def key_cell(cell):
+def key_cell(cell, label='tl', speck=SPECK):
     """RGBA cell with the background (and anything green touching the edge) made clear."""
     w, h = cell.size
     px = cell.load()
@@ -66,7 +84,7 @@ def key_cell(cell):
     op = out.load()
     for y in range(h):
         for x in range(w):
-            if mp[x + 1, y + 1] == 128 or (x < 64 and y < 56):   # background, or the cell number
+            if mp[x + 1, y + 1] == 128 or (x < 64 and (y < 56 if label == 'tl' else y > h - 42)):   # background, or the cell number
                 op[x, y] = (0, 0, 0, 0)
     # take the green fringe off edge pixels
     for y in range(h):
@@ -87,40 +105,75 @@ def key_cell(cell):
             for nx, ny in ((x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)):
                 if 0 <= nx < w and 0 <= ny < h and not seen[ny * w + nx] and op[nx, ny][3]:
                     seen[ny * w + nx] = 1; stack.append(ny * w + nx)
-        if len(comp) < SPECK:
+        if len(comp) < speck:
             for c in comp:
                 op[c % w, c // w] = (0, 0, 0, 0)
     return out
 
 
-def cells(sheet):
-    im = Image.open(os.path.join(SRC, sheet)).convert('RGB')
-    for j in range(3):
-        for i in range(4):
-            x0, x1, y0, y1 = COLS[i] + 3, COLS[i + 1] - 2, ROWS[j] + 3, ROWS[j + 1] - 2
-            yield key_cell(im.crop((x0, y0, x1, y1)))
+def boxes_of(spec):
+    """The sheet's cells as (x0, y0, x1, y1)."""
+    lay = spec['lay']
+    if 'strip' in lay:
+        y0, y1 = lay['strip']
+        im = Image.open(os.path.join(SRC, spec['sheet'])).convert('RGB')
+        w = im.width
+        px = im.load()
+        occ = []
+        for x in range(w):
+            n = 0
+            for y in range(y0, y1 - 40, 2):          # above the numbers
+                r, g, b = px[x, y]
+                if not (g > r + 50 and g > b + 50):
+                    n += 1
+            occ.append(n > 1)
+        runs, start, last = [], None, -99
+        for x, v in enumerate(occ):
+            if v:
+                if start is None or x - last > 10:
+                    if start is not None: runs.append((start, last))
+                    start = x
+                last = x
+        if start is not None: runs.append((start, last))
+        runs = [r for r in runs if r[1] - r[0] >= 20]
+        edges = [0] + [(runs[k][1] + runs[k + 1][0]) // 2 for k in range(len(runs) - 1)] + [w]
+        return [(edges[k] + 2, y0, edges[k + 1] - 2, y1) for k in range(len(runs))]
+    C, R = lay['cols'], lay['rows']
+    return [(C[i] + 3, R[j] + 3, C[i + 1] - 2, R[j + 1] - 2) for j in range(len(R) - 1) for i in range(len(C) - 1)]
+
+
+def cells(spec):
+    im = Image.open(os.path.join(SRC, spec['sheet'])).convert('RGB')
+    bxs = boxes_of(spec)
+    if 'frames' in spec:
+        a, b = spec['frames']; bxs = bxs[a - 1:b]
+    for bx in bxs:
+        yield key_cell(im.crop(bx), spec['lay']['label'], 25 if spec.get('fx') else SPECK)
 
 
 def build(name, anims):
-    raw = {a: list(cells(sheet)) for a, (sheet, _) in anims.items()}
-    boxes = [f.getbbox() for fs in raw.values() for f in fs]
-    tall = max(b[3] - b[1] for b in boxes)
-    k = FILL * SIZE / tall
     frames = {}
-    for a, fs in raw.items():
+    for a, spec in anims.items():
+        fs = list(cells(spec))
+        bbs = [f.getbbox() or (0, 0, 1, 1) for f in fs]
+        if spec.get('fx'):
+            big = max(max(b[2] - b[0], b[3] - b[1]) for b in bbs)
+            k = FXFILL * SIZE / big
+        else:
+            hs = sorted(b[3] - b[1] for b in bbs)
+            k = FILL * SIZE / hs[len(hs) // 2]
         frames[a] = []
-        for f in fs:
-            bx = f.getbbox()
+        for f, bx in zip(fs, bbs):
             w, h = f.size
             sw, sh = max(1, round(w * k)), max(1, round(h * k))
             sm = f.resize((sw, sh), Image.BOX)
             # binary alpha: pixel art has no half-clear pixels
-            al = sm.getchannel('A').point(lambda v: 255 if v >= 110 else 0)
-            sm.putalpha(al)
+            sm.putalpha(sm.getchannel('A').point(lambda v: 255 if v >= 110 else 0))
             fr = Image.new('RGBA', (SIZE, SIZE), (0, 0, 0, 0))
             ox = SIZE // 2 - sw // 2
-            oy = round(SIZE * 31 / 32) - round(bx[3] * k)
-            fr.alpha_composite(sm, (ox, oy))
+            # bodies stand on the 31/32 line; effects keep the cell's centre on the frame's centre
+            oy = SIZE // 2 - sh // 2 if spec.get('fx') else round(SIZE * 31 / 32) - round(bx[3] * k)
+            fr.alpha_composite(sm, (ox, oy)) if ox >= 0 and oy >= 0 else fr.paste(sm, (ox, oy), sm)
             frames[a].append(fr)
     # one palette for every frame of this boss
     opaque = [p for fs in frames.values() for fr in fs for p in fr.getdata() if p[3]]
@@ -140,16 +193,17 @@ def build(name, anims):
             raw += bytes(min(v, COLORS - 1) + 1 if al[i] else 0 for i, v in enumerate(ix))
         z = zlib.compressobj(9, zlib.DEFLATED, -15)      # raw deflate: the browser's DecompressionStream('deflate-raw')
         enc[a] = base64.b64encode(z.compress(bytes(raw)) + z.flush()).decode()
-    return {'size': SIZE, 'pal': hexes, 'fps': {a: fps for a, (_, fps) in anims.items()}, 'anims': enc}
+    return {'size': SIZE, 'pal': hexes, 'fps': {a: sp['fps'] for a, sp in anims.items()},
+            'fx': [a for a, sp in anims.items() if sp.get('fx')], 'anims': enc}
 
 
 def main():
     import json
     data = {}
     for name, anims in BOSSES.items():
-        if all(os.path.exists(os.path.join(SRC, s)) for s, _ in anims.values()):
+        if all(os.path.exists(os.path.join(SRC, sp['sheet'])) for sp in anims.values()):
             data[name] = build(name, anims)
-            print(name, {a: len(v) for a, v in data[name]['anims'].items()})
+            print(name, {a: len(v) // 1000 for a, v in data[name]['anims'].items()}, 'kB')
         else:
             print('skip', name, '(sheets missing in', SRC + ')', file=sys.stderr)
     with open(OUT, 'w') as f:

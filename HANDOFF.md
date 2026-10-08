@@ -114,8 +114,10 @@ All sprites live as base64 PNGs in `deck/sprites.js` and are read by `art.js` (`
 forward, walk backward, walk slight left, walk slight right), in a 4 × 3 grid with a title band and
 numbered cells, not the 3 × 2 format above. `deck/tools/bosses/pal_sprites.py` cuts them at the
 known grid, keys the green (and the drawn ground shadow), drops the numbers and loose pebbles, and
-writes `deck/sprites_pal.js`; add a boss there by listing its sheets in `BOSSES`. Still missing for
-the golem: hurt, attacks, special, phase roar, enraged and death.
+writes `deck/sprites_pal.js`; add a boss there by listing its sheets in `BOSSES`. Second batch added: hurt, throw rock (plus the rock
+in flight and its impact), the phase change into the blue crystal body, and the crystal body's
+side walk (used for every direction from phase 2, mirrored for the right). Still missing for the
+golem: a second attack (quake), the crystal body's other walks and attacks, and death.
 
 **Boss mechanics the art supports** (`bosses.js`):
 - **Three phases.** Each boss has 3 phases: it evolves at ⅔ and ⅓ HP, and phase 3 is enraged.

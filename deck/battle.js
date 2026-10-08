@@ -112,6 +112,8 @@ function applyGear(p,m){
   if(m.shield){ p.barrier=m.shield; p.shieldTurns=2; }
 }
 const alive=()=>B.enemies.filter(e=>e.hp>0);
+// a boss with an impact animation (sprites_pal.js) bursts its rock where it lands
+function palImpact(e,t){ if(e&&t&&typeof palHas==='function'&&palHas(e.id,'impact')) B.fx.push({kind:'palfx',id:e.id,anim:'impact',a:t,t:0,life:8/14}); }
 function later(sec,fn){ B.timers.push({t:sec,fn}); }
 // units slide between tiles instead of jumping
 const INTENT_ICON={shot:'➶',firebomb:'🔥',iceslam:'❄',cross:'✚',rush:'➤',blink:'☾',mend:'✚',quake:'⚠',boulders:'●'};
@@ -148,7 +150,7 @@ function hitEnemy(e,base,card,opts){
   let mult=opts.raw?1:bossMult(card&&card.color,e)*(e.curseT>0?1.3:1)*(pl.pactT>0||pl.courageT>0?1.3:1)*(card&&card.valor&&pl.hp<=pl.maxHp/2?1.5:1)*heroMult(card)*((card&&pl.power&&pl.power[card.color])||1);
   let dmg=Math.max(1,Math.round(base*mult));
   if(e.barrier>0&&!opts.raw&&!opts.dig){ const a=Math.min(e.barrier,dmg); e.barrier-=a; dmg-=a; if(!dmg){ floater('🛡',e.tile,'#fff0b3'); return 0; } }
-  e.hp-=dmg; e.hitT=.18; if(dmg>=40||mult>=WEAK_MULT) shake(dmg>=60?5:3);
+  e.hp-=dmg; e.hitT=.18; if(typeof palPlay==='function') palPlay(e,'hurt'); if(dmg>=40||mult>=WEAK_MULT) shake(dmg>=60?5:3);
   floater(dmg+(mult>=WEAK_MULT?' WEAK!':''),e.tile,mult>=WEAK_MULT?'#ffe24d':opts.raw?'#b8ffb0':'#fff',mult>=WEAK_MULT);
   flash(e.tile,colorOf(card),.8);
   if(card&&!opts.raw) applyStatus(e,card);
@@ -481,7 +483,7 @@ function update(dt){
         hitEnemy(o,s.dmg,s.card,{dig:s.dig}); if(s.push&&o.hp>0) shove(o,{push:1},s.dmg);
         if(s.pierce>0){ s.pierce--; s.dmg=Math.max(1,Math.round(s.dmg*(s.falloff||1))); burst(t,'#ffffff',4,.8); } else s.done=true; }
       else if(s.from==='p'&&o&&o.enemy){ hitBlock(o,s.dmg,null); s.done=true; }
-      else if(s.from==='e'&&o&&o.kind!=='enemy'&&!o.enemy){ if(o.kind==='player') hitPlayer(s.dmg); else hitBlock(o,s.dmg,s.owner); s.done=true; }
+      else if(s.from==='e'&&o&&o.kind!=='enemy'&&!o.enemy){ palImpact(s.owner,t); if(o.kind==='player') hitPlayer(s.dmg); else hitBlock(o,s.dmg,s.owner); s.done=true; }
       if(s.done) burst(t,s.card?colorOf(s.card):s.color||'#fff',6,.8);
     }
   }
@@ -823,12 +825,15 @@ function render(){
     { const tc=s.card?colorOf(s.card):s.color||'#e6f4ff', [tx,ty]=proj(from.wx,1,from.wz), [hx,hy]=proj(from.wx+(to.wx-from.wx)*k,1,from.wz+(to.wz-from.wz)*k);
       ctx.strokeStyle=tc; ctx.globalAlpha=.45; ctx.lineWidth=S*(s.wand?.08:.14); ctx.beginPath(); ctx.moveTo(tx,ty); ctx.lineTo(hx,hy); ctx.stroke(); ctx.globalAlpha=1; }
     const wx=from.wx+(to.wx-from.wx)*k, wz=from.wz+(to.wz-from.wz)*k, [x,y]=proj(wx,1,wz);
+    const rk=s.owner&&typeof palHas==='function'&&palHas(s.owner.id,'rock')&&palFrame(s.owner.id,'rock',Math.floor((B.time-(s.t0??(s.t0=B.time)))*14));
+    if(rk){ const H=S*1.6; ctx.save(); ctx.imageSmoothingEnabled=false; ctx.translate(x,y); ctx.scale(-1,1); ctx.drawImage(rk.img,-H/2,-H/2,H,H); ctx.restore(); continue; }   // the sheet throws to the right; ours fly left
     const col=s.card?colorOf(s.card):s.color||(s.wand?'#e6f4ff':'#fff');
     ctx.fillStyle=col; ctx.shadowColor=col; ctx.shadowBlur=12; ctx.beginPath(); ctx.arc(x,y,S*(s.big?.26:s.wand?.13:.19),0,TAU); ctx.fill(); ctx.shadowBlur=0;
   }
   for(const l of b.lobs){ const k=l.t/l.dur, wx=l.a.wx+(l.b.wx-l.a.wx)*k, wz=l.a.wz+(l.b.wz-l.a.wz)*k, [x,y]=proj(wx,1+Math.sin(k*Math.PI)*3,wz), S=scaleAt(wx,wz);
     const col=colorOf(l.card); ctx.fillStyle=col; ctx.shadowColor=col; ctx.shadowBlur=14; ctx.beginPath(); ctx.arc(x,y,S*.24,0,TAU); ctx.fill(); ctx.shadowBlur=0; }
   for(const f of b.fx){
+    if(f.kind==='palfx'){ const fr=palFrame(f.id,f.anim,Math.floor(f.t*14)); if(fr){ const [x,y]=proj(f.a.wx,.4,f.a.wz), H=scaleAt(f.a.wx,f.a.wz)*2; ctx.save(); ctx.imageSmoothingEnabled=false; ctx.drawImage(fr.img,x-H/2,y-H*.6,H,H); ctx.restore(); } continue; }
     if(f.kind==='ring'){ const [x,y]=proj(...posOf(b.player).slice(0,1),0,posOf(b.player)[1]), r=scaleAt(...posOf(b.player))*(.4+1.4*f.t/f.life); ctx.strokeStyle=f.color; ctx.globalAlpha=1-f.t/f.life; ctx.lineWidth=3;
       ctx.beginPath(); ctx.ellipse(x,y,r,r*View.iy,0,0,TAU); ctx.stroke(); ctx.globalAlpha=1; continue; }
     const a=proj(f.a.wx,f.y0||1,f.a.wz), c=proj((f.b||f.a).wx,1,(f.b||f.a).wz), al=1-f.t/f.life;
@@ -872,7 +877,7 @@ function drawSprite(ctx,u,T,S,o){
   const g=ctx.createRadialGradient(x,y,0,x,y,S*.62*sc); g.addColorStop(0,'rgba(0,0,0,.55)'); g.addColorStop(1,'rgba(0,0,0,0)');
   ctx.globalAlpha=alpha; ctx.fillStyle=g; ctx.beginPath(); ctx.ellipse(x,y,S*.62*sc,S*.62*sc*View.iy,0,0,TAU); ctx.fill();
   if(!spr){ ctx.globalAlpha=1; return {x,top:y-H}; }
-  if(spr.front) o=Object.assign({},o,{flip:false});   // drawn facing the viewer: never mirrored
+  if(spr.front) o=Object.assign({},o,{flip:!!spr.mirror});   // drawn facing the viewer: mirrored only for a side walk reused the other way
   ctx.imageSmoothingEnabled=false;
   // cast shadow: the silhouette laid flat on the ground toward the lower right
   ctx.save(); ctx.globalAlpha=.3*alpha; ctx.translate(x,y); ctx.transform(1,0,-.7,-.28,0,0); if(o.flip) ctx.scale(-1,1);

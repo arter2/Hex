@@ -133,7 +133,7 @@ const MOVES={
   quake(e){ const safe=[pick(P_TILES.filter(t=>!t.occ||t.occ.kind==='player'))]; safe.push(...neighbors(safe[0]).filter(t=>t.side==='p').slice(0,2));
     tele(e,P_TILES.filter(t=>!safe.includes(t)),1.7,e.dmg); },
   boulders(e){ const ts=[B.player.tile,pick(P_TILES.filter(t=>!t.occ))].filter(Boolean);
-    tele(e,ts,1.3,e.dmg,()=>ts.forEach(t=>{ if(!t.occ) dropRock(t,10); })); },
+    tele(e,ts,1.3,e.dmg,()=>ts.forEach(t=>{ if(typeof palImpact==='function') palImpact(e,t); if(!t.occ) dropRock(t,10); })); },
 };
 
 /* A humanoid casts a card from its deck: announce it (.9s), then play it mirrored
@@ -180,7 +180,7 @@ function updateEnemy(e,dt){
   if(e.moveT<=0&&!b.teles.some(t=>t.owner===e)){ e.moveT=rnd(1.4,2.4)*(icy(e.tile)?2:1); moveEnemy(e); if(e.hp<=0) return; }
   if(e.deck){ e.deckCd-=dt; if(e.deckCd<=0&&e.deck.length){ e.deckCd=rnd(4,6); e.casting=e.deck.shift(); e.castT=.9; return; } }
   e.atkT-=dt;
-  if(e.atkT<=0){ e.atkT=rnd(e.def.rate[0],e.def.rate[1]); MOVES[e.nextMove||pick(e.def.moves)](e); e.nextMove=pick(e.def.moves); }   // the next move is picked early so it can be shown
+  if(e.atkT<=0){ e.atkT=rnd(e.def.rate[0],e.def.rate[1]); const mv=e.nextMove||pick(e.def.moves); MOVES[mv](e); e.nextMove=pick(e.def.moves); if((mv==='shot'||mv==='boulders')&&typeof palPlay==='function') palPlay(e,'throw'); }   // the next move is picked early so it can be shown
 }
 
 if(typeof module!=='undefined') module.exports={ENEMY_DEFS,MONSTERS,HUMANOIDS,makeEncounter};

@@ -305,7 +305,7 @@ function xTextSprite(txt,col){ const c=document.createElement('canvas'); c.width
   const s=new THREE.Sprite(new THREE.SpriteMaterial({map:xTex(c),transparent:true,depthTest:false})); s.scale.set(.9,.9,1); s.renderOrder=5; return s; }
 function xSprite(getImg,h){ const s=new THREE.Sprite(new THREE.SpriteMaterial({transparent:true,alphaTest:.35})); s.center.set(.5,.03); s.scale.set(h,h,1); s.userData={getImg,img:null,flip:false}; return s; }
 // swap a sprite's picture (an animation frame, or facing the other way); each picture's texture is made once and kept
-function xRefresh(s,flip){ const sp=s.userData.getImg(), im=sp&&sp.img;
+function xRefresh(s,flip){ const sp=s.userData.getImg(), im=sp&&sp.img; if(sp&&sp.front) flip=false;
   if(im&&(im!==s.userData.img||flip!==s.userData.flip)){ s.userData.img=im; s.userData.flip=flip;
     const cache=s.userData.tex||(s.userData.tex=new Map()), key=im; let pair=cache.get(key);
     if(!pair){ const a=xTex(im,true), b=xTex(im,true); b.repeat.x=-1; b.offset.x=1; pair=[a,b]; cache.set(key,pair); }

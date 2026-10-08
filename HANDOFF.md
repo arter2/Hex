@@ -110,6 +110,13 @@ All sprites live as base64 PNGs in `deck/sprites.js` and are read by `art.js` (`
   effects crossing cells, shadows. A copy is kept in `deck/art/bosses/src/golem_try1.png`, and
   its idle frames are usable. The prompts were rewritten into the 6-cell format because of it.
 
+**Golem, first batch in (fixed-palette sprites).** Five 12-frame sheets came in (idle, walk
+forward, walk backward, walk slight left, walk slight right), in a 4 × 3 grid with a title band and
+numbered cells, not the 3 × 2 format above. `deck/tools/bosses/pal_sprites.py` cuts them at the
+known grid, keys the green (and the drawn ground shadow), drops the numbers and loose pebbles, and
+writes `deck/sprites_pal.js`; add a boss there by listing its sheets in `BOSSES`. Still missing for
+the golem: hurt, attacks, special, phase roar, enraged and death.
+
 **Boss mechanics the art supports** (`bosses.js`):
 - **Three phases.** Each boss has 3 phases: it evolves at ⅔ and ⅓ HP, and phase 3 is enraged.
 - **Golem:** its weak color is shown by tinting a white core.

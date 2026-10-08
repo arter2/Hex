@@ -872,6 +872,7 @@ function drawSprite(ctx,u,T,S,o){
   const g=ctx.createRadialGradient(x,y,0,x,y,S*.62*sc); g.addColorStop(0,'rgba(0,0,0,.55)'); g.addColorStop(1,'rgba(0,0,0,0)');
   ctx.globalAlpha=alpha; ctx.fillStyle=g; ctx.beginPath(); ctx.ellipse(x,y,S*.62*sc,S*.62*sc*View.iy,0,0,TAU); ctx.fill();
   if(!spr){ ctx.globalAlpha=1; return {x,top:y-H}; }
+  if(spr.front) o=Object.assign({},o,{flip:false});   // drawn facing the viewer: never mirrored
   ctx.imageSmoothingEnabled=false;
   // cast shadow: the silhouette laid flat on the ground toward the lower right
   ctx.save(); ctx.globalAlpha=.3*alpha; ctx.translate(x,y); ctx.transform(1,0,-.7,-.28,0,0); if(o.flip) ctx.scale(-1,1);

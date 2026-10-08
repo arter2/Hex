@@ -34,6 +34,7 @@ SIZE = 200          # frame size in pixels (square), with room around the body f
 FILL = .70          # body height (the median over an animation) as a share of the frame
 FXFILL = .92        # an effect's largest frame as a share of the frame
 COLORS = 127        # palette size, not counting transparent (gold and blue bodies share it)
+POCKET = 120        # enclosed green bigger than this (in sheet pixels) is background too
 SPECK = 400         # loose bits smaller than this (in sheet pixels) are dropped from bodies
 
 # How a sheet is laid out. grid: cell edges in x and y; strip: frames in one band (y0, y1) found
@@ -65,14 +66,14 @@ BOSSES = {
         'angry2': dict(sheet='golem_crystal_angry.webp', lay=G4w, fps=10),
         'fire2':  dict(sheet='golem_crystal_fire.webp', lay=G4w, fps=14),
         # the crystal nova (frames 11-12 fill the whole cell: a flash, left out)
-        'nova':   dict(sheet='golem_crystal_burst.webp', lay=G4fx, fps=12, frames=(1, 10), fx=True),
-        'rock':   dict(sheet='golem_rock.webp', lay=strip(60, 222), fps=14, fx=True),
-        'rockArc':dict(sheet='golem_rock.webp', lay=strip(318, 510), fps=14, fx=True),
-        'impact': dict(sheet='golem_rock.webp', lay=strip(605, 790), fps=14, fx=True),
+        'nova':   dict(sheet='golem_crystal_burst.webp', lay=G4fx, fps=12, frames=(1, 10), fx=True, like='idle2'),
+        'rock':   dict(sheet='golem_rock.webp', lay=strip(60, 222), fps=14, fx=True, like='idle'),
+        'rockArc':dict(sheet='golem_rock.webp', lay=strip(318, 510), fps=14, fx=True, like='idle'),
+        'impact': dict(sheet='golem_rock.webp', lay=strip(605, 790), fps=14, fx=True, like='idle'),
         # the crystal shard, drawn flying right; the game turns it to where it flies. It is every
         # light-colored shot (the golem's from phase 2, light enemies', your light cards')
-        'shard':    dict(sheet='golem_crystal_shot.webp', lay=strip(320, 600), fps=14, fx=True, frames=(1, 8)),
-        'shardHit': dict(sheet='golem_crystal_shot.webp', lay=strip(320, 600), fps=14, fx=True, frames=(9, 12)),
+        'shard':    dict(sheet='golem_crystal_shot.webp', lay=strip(320, 600), fps=14, fx=True, like='idle2', frames=(1, 8)),
+        'shardHit': dict(sheet='golem_crystal_shot.webp', lay=strip(320, 600), fps=14, fx=True, like='idle2', frames=(9, 12)),
     },
 }
 
@@ -93,6 +94,23 @@ def key_cell(cell, label='tl', speck=SPECK):
             if not bg_like(px[x, y]):
                 mp[x + 1, y + 1] = 0
     ImageDraw.floodfill(mask, (0, 0), 128)            # 128: background reached from the edge
+    # green pockets the edge fill cannot reach (between the legs, under an arm) go too, if they
+    # are big enough to be background and not a green gem
+    seen = bytearray((w + 2) * (h + 2))
+    for y0 in range(1, h + 1):
+        for x0 in range(1, w + 1):
+            if mp[x0, y0] != 255 or seen[y0 * (w + 2) + x0]:
+                continue
+            comp, stack = [], [(x0, y0)]
+            seen[y0 * (w + 2) + x0] = 1
+            while stack:
+                x, y = stack.pop(); comp.append((x, y))
+                for nx, ny in ((x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)):
+                    if 0 < nx <= w and 0 < ny <= h and mp[nx, ny] == 255 and not seen[ny * (w + 2) + nx]:
+                        seen[ny * (w + 2) + nx] = 1; stack.append((nx, ny))
+            if len(comp) >= POCKET:
+                for x, y in comp:
+                    mp[x, y] = 128
     out = cell.convert('RGBA')
     op = out.load()
     for y in range(h):
@@ -180,12 +198,17 @@ def touches_edge(im, m=3, most=40):
                for box in ((0, 0, w, m), (0, h - m, w, h), (0, 0, m, h), (w - m, 0, w, h)))
 
 
+KS = {}   # each animation's scale, for effects drawn like a body
+
+
 def build(name, anims):
     frames = {}
     for a, spec in anims.items():
         fs = list(cells(spec))
         bbs = [f.getbbox() or (0, 0, 1, 1) for f in fs]
-        if spec.get('fx'):
+        if spec.get('like'):       # drawn at the same scale as a body animation (sizes stay true to the art)
+            k = KS[spec['like']]
+        elif spec.get('fx'):
             big = max(max(b[2] - b[0], b[3] - b[1]) for b in bbs)
             k = FXFILL * SIZE / big
         else:
@@ -194,6 +217,7 @@ def build(name, anims):
             if spec.get('wide'):   # sized by its median width instead
                 ws = sorted(b[2] - b[0] for b in bbs)
                 k = spec['wide'] * SIZE / ws[len(ws) // 2]
+        KS[a] = k
         frames[a] = []
         for f, bx in zip(fs, bbs):
             w, h = f.size

@@ -113,6 +113,8 @@ function applyGear(p,m){
 }
 const alive=()=>B.enemies.filter(e=>e.hp>0);
 // a boss with an impact animation (sprites_pal.js) bursts its rock where it lands
+// effect frames are drawn at the same scale as the boss's body (pal_sprites.py: like), so they are sized like it
+const palH=(S,id,sc)=>S*2.7*(sc||((ENEMY_DEFS[id]||{}).scale)||1)*((PAL_SPRITES[id]&&PAL_SPRITES[id].zoom)||1);
 const lightShot=s=>typeof palHas==='function'&&palHas('golem','shard')&&!(s.owner&&palHas(s.owner.id,'rock')&&!(s.owner.phase>=2))&&(s.card?s.card.color==='light':!!(s.owner&&s.owner.color==='light'));
 function palImpact(e,t,s){ if(s&&lightShot(s)&&t){ B.fx.push({kind:'palfx',id:'golem',anim:'shardHit',a:t,t:0,life:4/14}); return; } if(e&&t&&!(e.phase>=2)&&typeof palHas==='function'&&palHas(e.id,'impact')) B.fx.push({kind:'palfx',id:e.id,anim:'impact',a:t,t:0,life:8/14}); }
 function later(sec,fn){ B.timers.push({t:sec,fn}); }
@@ -827,11 +829,11 @@ function render(){
       ctx.strokeStyle=tc; ctx.globalAlpha=.45; ctx.lineWidth=S*(s.wand?.08:.14); ctx.beginPath(); ctx.moveTo(tx,ty); ctx.lineTo(hx,hy); ctx.stroke(); ctx.globalAlpha=1; }
     const wx=from.wx+(to.wx-from.wx)*k, wz=from.wz+(to.wz-from.wz)*k, [x,y]=proj(wx,1,wz);
     const rk=s.owner&&!(s.owner.phase>=2)&&typeof palHas==='function'&&palHas(s.owner.id,'rock')&&palFrame(s.owner.id,'rock',Math.floor((B.time-(s.t0??(s.t0=B.time)))*14));
-    if(rk){ const H=S*1.6; ctx.save(); ctx.imageSmoothingEnabled=false; ctx.translate(x,y); ctx.scale(-1,1); ctx.drawImage(rk.img,-H/2,-H/2,H,H); ctx.restore(); continue; }   // the sheet throws to the right; ours fly left
+    if(rk){ const H=palH(S,s.owner.id); ctx.save(); ctx.imageSmoothingEnabled=false; ctx.translate(x,y); ctx.scale(-1,1); ctx.drawImage(rk.img,-H/2,-H/2,H,H); ctx.restore(); continue; }   // the sheet throws to the right; ours fly left
     // light shots fly as the crystal shard (sprites_pal.js), turned to where they go: it grows over
     // its first 4 frames, then loops the last 4
     if(lightShot(s)){ const n=Math.floor((B.time-(s.t0??(s.t0=B.time)))*14), sh=palFrame('golem','shard',n<4?n:4+n%4);
-      if(sh){ const [ax,ay]=proj(from.wx,1,from.wz), [bx,by]=proj(to.wx,1,to.wz), H=S*(s.wand?1.1:1.6);
+      if(sh){ const [ax,ay]=proj(from.wx,1,from.wz), [bx,by]=proj(to.wx,1,to.wz), H=palH(S,'golem',s.owner?((s.owner.def&&s.owner.def.scale)||1):s.wand?.7:1);
         ctx.save(); ctx.imageSmoothingEnabled=false; ctx.translate(x,y); ctx.rotate(Math.atan2(by-ay,bx-ax)||Math.PI/2); ctx.drawImage(sh.img,-H/2,-H/2,H,H); ctx.restore(); continue; } }
     const col=s.card?colorOf(s.card):s.color||(s.wand?'#e6f4ff':'#fff');
     ctx.fillStyle=col; ctx.shadowColor=col; ctx.shadowBlur=12; ctx.beginPath(); ctx.arc(x,y,S*(s.big?.26:s.wand?.13:.19),0,TAU); ctx.fill(); ctx.shadowBlur=0;
@@ -839,7 +841,7 @@ function render(){
   for(const l of b.lobs){ const k=l.t/l.dur, wx=l.a.wx+(l.b.wx-l.a.wx)*k, wz=l.a.wz+(l.b.wz-l.a.wz)*k, [x,y]=proj(wx,1+Math.sin(k*Math.PI)*3,wz), S=scaleAt(wx,wz);
     const col=colorOf(l.card); ctx.fillStyle=col; ctx.shadowColor=col; ctx.shadowBlur=14; ctx.beginPath(); ctx.arc(x,y,S*.24,0,TAU); ctx.fill(); ctx.shadowBlur=0; }
   for(const f of b.fx){
-    if(f.kind==='palfx'){ const fr=palFrame(f.id,f.anim,Math.floor(f.t*14)); if(fr){ const [x,y]=proj(f.a.wx,f.big?1.2:.4,f.a.wz), H=scaleAt(f.a.wx,f.a.wz)*(f.big?4:2); ctx.save(); ctx.imageSmoothingEnabled=false; ctx.drawImage(fr.img,x-H/2,y-H*.6,H,H); ctx.restore(); } continue; }
+    if(f.kind==='palfx'){ const fr=palFrame(f.id,f.anim,Math.floor(f.t*14)); if(fr){ const [x,y]=proj(f.a.wx,1,f.a.wz), H=palH(scaleAt(f.a.wx,f.a.wz),f.id); ctx.save(); ctx.imageSmoothingEnabled=false; ctx.drawImage(fr.img,x-H/2,y-H/2,H,H); ctx.restore(); } continue; }
     if(f.kind==='ring'){ const [x,y]=proj(...posOf(b.player).slice(0,1),0,posOf(b.player)[1]), r=scaleAt(...posOf(b.player))*(.4+1.4*f.t/f.life); ctx.strokeStyle=f.color; ctx.globalAlpha=1-f.t/f.life; ctx.lineWidth=3;
       ctx.beginPath(); ctx.ellipse(x,y,r,r*View.iy,0,0,TAU); ctx.stroke(); ctx.globalAlpha=1; continue; }
     const a=proj(f.a.wx,f.y0||1,f.a.wz), c=proj((f.b||f.a).wx,1,(f.b||f.a).wz), al=1-f.t/f.life;

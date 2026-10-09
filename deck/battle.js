@@ -124,6 +124,27 @@ const posOf=u=>[u.rx??u.tile.wx, u.rz??u.tile.wz];
 function shake(a){ View.shake=Math.max(View.shake||0,a); }
 function floater(text,t,color,big){ B.floaters.push({text,wx:t.wx,wz:t.wz,y:1.6,t:0,color:color||'#fff',big}); }
 function flash(t,color,amt){ t.flash=Math.max(t.flash,amt||1); t.flashC=color; }
+/* Particle shapes: square chips (default), 'glow' soft additive dots, 'shard' spinning ice splinters,
+   'spark' streaks along their motion, 'ember' rising flickers, 'leaf' tumbling petals, 'ring' a ground shockwave. */
+function drawPart(ctx,q){
+  const k=q.t/q.life, [x,y]=proj(q.wx,q.y,q.wz), S=scaleAt(q.wx,q.wz)/20, sz=(q.s||4)*S*(q.shrink?1-k:1);
+  ctx.globalAlpha=Math.max(0,1-k); ctx.globalCompositeOperation=q.add?'lighter':'source-over'; ctx.fillStyle=ctx.strokeStyle=q.color;
+  switch(q.shape){
+    case 'glow': { const g=ctx.createRadialGradient(x,y,0,x,y,sz); g.addColorStop(0,q.color); g.addColorStop(1,'rgba(0,0,0,0)'); ctx.fillStyle=g; ctx.beginPath(); ctx.arc(x,y,sz,0,TAU); ctx.fill(); break; }
+    case 'shard': ctx.save(); ctx.translate(x,y); ctx.rotate(q.rot||0); ctx.beginPath(); ctx.moveTo(0,-sz*1.6); ctx.lineTo(sz*.45,0); ctx.lineTo(0,sz*1.6); ctx.lineTo(-sz*.45,0); ctx.closePath(); ctx.fill(); ctx.fillStyle='#fff'; ctx.globalAlpha*=.7; ctx.fillRect(-sz*.12,-sz*1.1,sz*.24,sz*.9); ctx.restore(); break;
+    case 'spark': { const [x2,y2]=proj(q.wx-q.vx*.05,q.y-q.vy*.05,q.wz-q.vz*.05); ctx.lineWidth=Math.max(1,sz*.5); ctx.lineCap='round'; ctx.beginPath(); ctx.moveTo(x2,y2); ctx.lineTo(x,y); ctx.stroke(); break; }
+    case 'ember': ctx.globalAlpha*=.6+.4*Math.sin(q.t*30+q.wx*9); ctx.fillRect(x-sz/2,y-sz/2,sz,sz); break;
+    case 'leaf': ctx.save(); ctx.translate(x,y); ctx.rotate(q.rot||0); ctx.beginPath(); ctx.ellipse(0,0,sz,sz*.45,0,0,TAU); ctx.fill(); ctx.restore(); break;
+    case 'ring': { const r=(q.r0+(q.r1-q.r0)*(1-(1-k)*(1-k)))*S*20; ctx.lineWidth=Math.max(1,(q.s||6)*S*(1-k)); ctx.beginPath(); ctx.ellipse(x,y,r,r*View.iy,0,0,TAU); ctx.stroke(); break; }
+    default: ctx.fillRect(x-sz/2,y-sz/2,sz,sz);
+  }
+}
+// n particles of one kind from a tile; o sets shape, color(s), speed, rise, gravity, life and size.
+function spray(t,n,o){ const cs=[].concat(o.color);
+  for(let i=0;i<n;i++){ const a=rnd(0,TAU), v=rnd(o.v0==null?1:o.v0,o.v||3);
+    B.parts.push({wx:t.wx+rnd(-.15,.15),wz:t.wz+rnd(-.15,.15),y:o.y==null?.9:o.y+rnd(-.2,.2),vx:Math.cos(a)*v,vz:Math.sin(a)*v,vy:rnd(o.up0==null?1:o.up0,o.up==null?3:o.up),
+      g:o.g,drag:o.drag,t:0,life:rnd((o.life||.7)*.6,o.life||.7),color:cs[i%cs.length],shape:o.shape,s:rnd((o.s||4)*.6,o.s||4),add:o.add,shrink:o.shrink,rot:rnd(0,TAU),spin:o.spin?rnd(-o.spin,o.spin):0}); } }
+function ring(t,color,r1,life,s){ B.parts.push({wx:t.wx,wz:t.wz,y:.05,vx:0,vz:0,vy:0,g:0,t:0,life:life||.45,color,shape:'ring',r0:.1,r1:r1||1,s:s||6,add:true}); }
 function burst(t,color,n,y){ for(let i=0;i<(n||10);i++) B.parts.push({wx:t.wx,wz:t.wz,y:y||.8,vx:rnd(-2,2),vz:rnd(-2,2),vy:rnd(1,3.5),t:0,life:rnd(.4,.8),color}); }
 function colorOf(card){ return card&&card.color?COLORS[card.color].c:'#e6f4ff'; }
 
@@ -176,6 +197,20 @@ const REACTIONS={
   'frost+verdant':{name:'Rimebind', c:'#9fd0ff'},  // freezes it and everything next to it
 };
 const MARK_T=6;
+// Each reaction's own particles: a bright core, a shockwave, then its element.
+function reactFx(name,t){
+  const R=REACTIONS[Object.keys(REACTIONS).find(k=>REACTIONS[k].name===name)];
+  spray(t,6,{shape:'glow',color:R.c,v0:0,v:.6,up0:0,up:.6,g:0,life:.35,s:22,add:true,shrink:1});
+  ring(t,R.c,1.4,.45,7);
+  switch(name){
+    case 'Shatter': spray(t,26,{shape:'shard',color:['#e8fbff','#9fe6ff','#6fd6ff'],v0:2,v:5.5,up0:1,up:4,g:7,drag:1.2,life:.9,s:7,spin:14}); spray(t,14,{shape:'spark',color:'#ffffff',v0:3,v:7,up:3,g:0,drag:3,life:.3,s:3,add:true}); ring(t,'#ffffff',.9,.3,4); break;
+    case 'Conduct': spray(t,30,{shape:'spark',color:['#fff6a8','#ffe24d','#ffffff'],v0:3,v:9,up0:-1,up:4,g:0,drag:4,life:.35,s:3,add:true}); spray(t,10,{shape:'glow',color:'#ffe24d',v:2,up:2,g:0,life:.5,s:8,add:true}); break;
+    case 'Wildfire': spray(t,34,{shape:'ember',color:['#ffd27a','#ff9a3d','#ff6a3d','#d8401f'],v0:.3,v:2.2,up0:1.5,up:4,g:-2,drag:1.5,life:1.1,s:5,shrink:1,add:true}); spray(t,8,{shape:'glow',color:'#ff6a3d',v:1.5,up:2,g:-1,life:.7,s:14,add:true,shrink:1}); break;
+    case 'Eclipse': spray(t,22,{shape:'glow',color:['#e0588f','#7a2a8f','#fff0b3'],v0:2,v:4,up0:-.5,up:1,g:0,drag:2.5,life:.7,s:9,add:true,shrink:1}); ring(t,'#fff0b3',.6,.6,3); ring(t,'#7a2a8f',1.9,.7,9); break;
+    case 'Thornbind': spray(t,24,{shape:'leaf',color:['#6fdc7a','#3fa856','#b6f59a'],v0:.5,v:2.5,up0:2,up:4.5,g:5,drag:1,life:1,s:6,spin:8}); spray(t,10,{shape:'spark',color:'#ffe24d',v0:2,v:5,g:0,drag:3,life:.3,s:2,add:true}); break;
+    case 'Rimebind': spray(t,20,{shape:'shard',color:['#ffffff','#bfefff','#6fdc7a'],v0:.5,v:2.5,up0:.5,up:2,g:3,drag:1.5,life:.9,s:5,spin:6}); spray(t,16,{shape:'glow',color:'#bfefff',v:1.5,up0:-.2,up:.5,g:0,drag:1,life:.9,s:7,add:true,shrink:1}); break;
+  }
+}
 // The reaction this color would set off on some marked enemy, if any (lights up queued cards).
 const reactWith=c=>{ for(const e of alive()) if(e.markT>0&&e.mark&&e.mark!==c){ const r=REACTIONS[[e.mark,c].sort().join('+')]; if(r) return r; } return null; };
 function react(e,card,base){
@@ -185,15 +220,15 @@ function react(e,card,base){
   if(!rx){ e.mark=c; e.markT=MARK_T; return; }
   e.mark=null; e.markT=0;
   const t=e.tile, near=r=>alive().filter(o=>o!==e&&hexDist(o.tile,t)<=r);
-  floater(rx.name+'!',t,rx.c,true); flash(t,rx.c,1); burst(t,rx.c,22,1.2); shake(5);
+  floater(rx.name+'!',t,rx.c,true); flash(t,rx.c,1); shake(5); reactFx(rx.name,t);
   B.reacts=(B.reacts||0)+1;
   later(.12,()=>{ switch(rx.name){
     case 'Shatter': { const k=e.freezeT>0?1.5:1; e.freezeT=0; if(e.hp>0) hitEnemy(e,Math.round(base*k),null,{raw:true}); break; }
-    case 'Conduct': near(2).forEach(o=>{ B.fx.push({kind:'arc',a:t,b:o.tile,color:rx.c,t:0,life:.3}); hitEnemy(o,Math.round(base*.6),null,{raw:true}); if(o.hp>0){ o.stunT=Math.max(o.stunT,1); cancelAttack(o); } }); if(e.hp>0) e.stunT=Math.max(e.stunT,1); break;
-    case 'Wildfire': [e,...near(1)].forEach(o=>{ o.burnT=Math.max(o.burnT,6); o.tile.burnT=Math.max(o.tile.burnT||0,4); burst(o.tile,'#ff6a3d',8,.4); }); break;
+    case 'Conduct': near(2).forEach(o=>{ B.fx.push({kind:'bolt',a:t,b:o.tile,color:rx.c,t:0,life:.3}); spray(o.tile,10,{shape:'spark',color:['#fff6a8','#ffffff'],v0:2,v:6,g:0,drag:4,life:.3,s:3,add:true}); hitEnemy(o,Math.round(base*.6),null,{raw:true}); if(o.hp>0){ o.stunT=Math.max(o.stunT,1); cancelAttack(o); } }); if(e.hp>0) e.stunT=Math.max(e.stunT,1); break;
+    case 'Wildfire': [e,...near(1)].forEach(o=>{ o.burnT=Math.max(o.burnT,6); o.tile.burnT=Math.max(o.tile.burnT||0,4); spray(o.tile,12,{shape:'ember',color:['#ffd27a','#ff6a3d'],v:1,up0:1,up:3,g:-2,drag:1.5,life:.9,s:4,add:true,shrink:1}); }); break;
     case 'Eclipse': if(e.hp>0){ hitEnemy(e,Math.round(base*1.2),null,{raw:true}); e.curseT=Math.max(e.curseT,5); } break;
     case 'Thornbind': if(e.hp>0){ e.stunT=Math.max(e.stunT,2.5); e.slowT=Math.max(e.slowT,5); cancelAttack(e); } break;
-    case 'Rimebind': [e,...near(1)].forEach(o=>{ if(o.hp>0){ o.freezeT=Math.max(o.freezeT,2); cancelAttack(o); burst(o.tile,'#bfefff',8,.6); } }); break;
+    case 'Rimebind': [e,...near(1)].forEach(o=>{ if(o.hp>0){ o.freezeT=Math.max(o.freezeT,2); cancelAttack(o); spray(o.tile,10,{shape:'shard',color:['#ffffff','#bfefff'],v:1.8,up:2.5,g:6,life:.6,s:4,spin:8}); ring(o.tile,'#bfefff',.8,.4,4); } }); break;
   } });
 }
 const bossMult=(atk,e)=>typeof bossColorMult==='function'?bossColorMult(atk,e):colorMult(atk,e.color);
@@ -481,7 +516,7 @@ function update(dt){
   for(const u of [b.player,...b.enemies,...b.allies]){ u.rx=u.rx==null?u.tile.wx:u.rx+(u.tile.wx-u.rx)*k; u.rz=u.rz==null?u.tile.wz:u.rz+(u.tile.wz-u.rz)*k; }
   for(const e of b.enemies) if(e.hp<=0&&e.deathT>0) e.deathT-=dt;
   View.shake=(View.shake||0)*Math.exp(-dt*9);
-  for(const q of b.parts){ q.t+=dt; q.vy-=9*dt; q.wx+=q.vx*dt; q.wz+=q.vz*dt; q.y=Math.max(0,q.y+q.vy*dt); } b.parts=b.parts.filter(q=>q.t<q.life);
+  for(const q of b.parts){ q.t+=dt; q.vy-=(q.g==null?9:q.g)*dt; if(q.drag){ const d=Math.max(0,1-q.drag*dt); q.vx*=d; q.vz*=d; q.vy*=d; } if(q.spin) q.rot=(q.rot||0)+q.spin*dt; q.wx+=q.vx*dt; q.wz+=q.vz*dt; q.y=Math.max(0,q.y+q.vy*dt); } b.parts=b.parts.filter(q=>q.t<q.life);
   for(const t of TILES) t.flash=Math.max(0,t.flash-dt*3);
   if(b.phase==='custom') return;
   // The fight runs at PACE speed (70%) so enemies, shots and attacks are easier to follow.
@@ -882,7 +917,7 @@ function render(){
     else if(f.kind==='arc'){ ctx.quadraticCurveTo((a[0]+c[0])/2,Math.min(a[1],c[1])-S*1.5,c[0],c[1]); }
     ctx.lineTo(c[0],c[1]); ctx.stroke(); ctx.globalAlpha=1; ctx.shadowBlur=0;
   }
-  for(const q of b.parts){ const [x,y]=proj(q.wx,q.y,q.wz); ctx.globalAlpha=1-q.t/q.life; ctx.fillStyle=q.color; ctx.fillRect(x-2,y-2,4,4); } ctx.globalAlpha=1;
+  for(const q of b.parts) drawPart(ctx,q); ctx.globalAlpha=1; ctx.globalCompositeOperation='source-over';
   ctx.textAlign='center';
   for(const f of b.floaters){ const [x,y]=proj(f.wx,f.y,f.wz), S=scaleAt(f.wx,f.wz), pop=1+.7*Math.max(0,1-f.t/.14); ctx.globalAlpha=Math.min(1,(1-f.t/.9)*1.6); ctx.font=(f.big?'800 ':'700 ')+Math.round(S*(f.big?.55:.42)*pop)+'px "Pixelify Sans",system-ui,sans-serif';
     ctx.lineWidth=3; ctx.strokeStyle='rgba(0,0,0,.7)'; ctx.strokeText(f.text,x,y); ctx.fillStyle=f.color; ctx.fillText(f.text,x,y); } ctx.globalAlpha=1;
@@ -911,6 +946,11 @@ function previewOverlay(ctx,pv,T){
 // away from the light, a little breathing and bobbing, and a white flash when hit.
 // Returns the screen x and the top of the sprite, for bars and labels.
 const FACES_LEFT=new Set([]);
+// A copy of a sprite filled with one color inside its own pixels (frozen, stunned). Cached per image and color.
+const TINTS=new WeakMap();
+function tinted(img,c){ let m=TINTS.get(img); if(!m) TINTS.set(img,m={}); if(m[c]) return m[c];
+  const cv=document.createElement('canvas'); cv.width=img.width; cv.height=img.height; const x=cv.getContext('2d');
+  x.drawImage(img,0,0); x.globalCompositeOperation='source-in'; x.fillStyle=c; x.fillRect(0,0,cv.width,cv.height); return m[c]=cv; }
 function drawSprite(ctx,u,T,S,o){
   const spr=typeof unitSprite==='function'?unitSprite(u):null, [wx,wz]=posOf(u), [x,y]=proj(wx,0,wz);
   const sc=(o.scale||1)*((spr&&spr.zoom)||1), H=S*2.7*sc, k=H/32, alpha=o.alpha==null?1:o.alpha;
@@ -930,7 +970,7 @@ function drawSprite(ctx,u,T,S,o){
   ctx.save(); ctx.globalAlpha=alpha; ctx.translate(Math.round(x),Math.round(y)-lift); ctx.scale(o.flip?-1:1,1);
   ctx.drawImage(spr.img,-H/2,-31*k,H,H);
   if(o.flash){ ctx.globalAlpha=alpha*o.flash; ctx.drawImage(spr.wht,-H/2,-31*k,H,H); }
-  if(o.tint){ ctx.globalAlpha=alpha*.35; ctx.globalCompositeOperation='source-atop'; ctx.fillStyle=o.tint; ctx.fillRect(-H/2,-31*k,H,H); ctx.globalCompositeOperation='source-over'; }
+  if(o.tint){ ctx.globalAlpha=alpha*.45; ctx.drawImage(tinted(spr.img,o.tint),-H/2,-31*k,H,H); }
   ctx.restore(); ctx.globalAlpha=1; ctx.imageSmoothingEnabled=true;
   return {x,top:y-30*k-bob*S,H,k};
 }

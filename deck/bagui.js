@@ -18,7 +18,7 @@ function bagItems(){ const s=gearState(save), out=[];
 function xBag(){ if(!EX||EX.busy||$('#xDialog').classList.contains('on')) return; xPause(true); BAGUI.sel=null; renderBag(); $('#bagUI').classList.add('on'); }
 function closeBag(){ $('#bagUI').classList.remove('on'); if(!$('#pause').classList.contains('on')) xPause(false); xHud(); }
 function renderBag(){ const s=gearState(save), m=gearMods(save), K=WEAPON_KINDS[m.kind]||WEAPON_KINDS.wand, ch=save.char&&RACES[save.char.race]?save.char:null;
-  $('#bgTitle').textContent=(ch?RACES[ch.race].name:'Hexmancer')+' — Level '+(save.level||1);
+  $('#bgTitle').innerHTML=esc((ch?RACES[ch.race].name:'Hexmancer')+' — Level '+(save.level||1))+'<small>▤ Tap to build your deck ›</small>';
   // the character, big, on a pool of light
   const cv=$('#bgSprite'), c=cv.getContext('2d'); c.clearRect(0,0,cv.width,cv.height); c.imageSmoothingEnabled=false;
   const spr=unitSprite({kind:'player',look:gearLook(save),view:'front'}); if(spr) c.drawImage(spr.img,0,0,spr.img.width,spr.img.height,0,0,cv.width,cv.height);
@@ -66,5 +66,7 @@ function bagDetail(){ const d=$('#bgDetail'), it=BAGUI.sel; d.innerHTML='';
   if(it.kind==='gear') btn('Equip',()=>{ const G=GEAR[it.k], sl=G.slot==='ring'?(!gearState(save).gear.ring1?'ring1':'ring2'):G.slot; const r=equip(save,sl,it.k); if(r.msg) tip(r.msg); if(r.ok) persist(); BAGUI.sel=null; renderBag(); });
 }
 $('#bgClose').onclick=closeBag;
+// tap the top of the bag (its title or the bag badge) to build your deck
+for(const sel of ['#bgTitle','.bgbag']) $(sel).onclick=()=>{ if(typeof openDeckUI==='function') openDeckUI('bag'); };
 $('#bagUI').addEventListener('pointerdown',e=>{ if(e.target.id==='bagUI') closeBag(); });
 document.addEventListener('keydown',e=>{ if(!$('#bagUI').classList.contains('on')) return; const k=e.key.toLowerCase(); if(k==='escape'||(typeof keyAct==='function'&&keyAct(k,'map')==='bag')){ e.preventDefault(); e.stopImmediatePropagation(); closeBag(); } },true);

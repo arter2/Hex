@@ -309,7 +309,7 @@ function paged(box,items,make,page){
 /* ---------------- deck builder ---------------- */
 const bf={colors:new Set(), type:'', rarity:'', q:''};
 let editSlot=0;
-function openBuilder(){ editSlot=save.active; makeFilters($('#bFilters'),bf,renderColl,false); renderBuilder(); show('scrBuilder'); }
+function openBuilder(){ if(typeof openDeckUI==='function') return openDeckUI('camp'); editSlot=save.active; makeFilters($('#bFilters'),bf,renderColl,false); renderBuilder(); show('scrBuilder'); }
 function renderBuilder(){ renderSlots(); renderDeck(); renderColl(); }
 function renderSlots(){
   const box=$('#bSlots'); box.innerHTML='';

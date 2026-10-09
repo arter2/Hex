@@ -105,6 +105,22 @@
     <div class="sticky"><button id="bAuto" class="btn ghost">Auto-fill</button><button id="bClear" class="btn ghost">Clear</button><button id="bUse" class="btn">Use this deck</button></div>
   </section>
 
+  <!-- deck builder (deckui.js) -->
+  <section id="scrDeck" class="screen dkscr">
+    <div class="dkhead"><button id="dkBack" class="dkpill sq" aria-label="Back">←</button><input id="dkName" maxlength="24"><div id="dkSlots" class="dkslots"></div><button id="dkUse" class="dkpill">Use ★</button></div>
+    <div class="dktools"><button id="dkClear" class="dkpill red">— Remove All</button><button id="dkAuto" class="dkpill">Auto-build</button>
+      <div class="dkpill zoom"><button id="dkZo" aria-label="Zoom out">⊖</button><span id="dkZoom">50%</span><button id="dkZi" aria-label="Zoom in">⊕</button></div></div>
+    <div id="dkDeck" class="dkdeck"></div>
+    <div class="dkdrawer">
+      <div class="dkbar"><span id="dkCount" class="dkcount"></span><span id="dkErr" class="dkerr"></span><label class="dksoul">♔ <select id="dkSoul"></select></label><button id="dkMulti" class="dkpill">☐ Select</button></div>
+      <div id="dkTabs" class="dktabs"></div>
+      <div class="dksearch"><input id="dkQ" placeholder="🔍 Search card library"><button id="dkFilt" class="dkpill">⚙ Filters</button><button id="dkSort" class="dkpill">⇅ Color</button></div>
+      <div id="dkFilters" class="filters" hidden></div>
+      <div id="dkColl" class="dkcoll"></div>
+      <div id="dkMultiBar" class="dkmultibar" hidden><span id="dkSelN"></span><button id="dkSelAdd" class="btn">Add to deck</button><button id="dkSelNew" class="btn ghost">New deck</button></div>
+      <button id="dkOK" class="dkok">OK</button>
+    </div>
+  </section>
   <!-- collection -->
   <section id="scrCollection" class="screen">
     <div class="bar"><button class="btn ghost back">←</button><h2 id="cTitle">My cards</h2><span id="cCount" class="count"></span></div>
@@ -299,6 +315,15 @@
       </div>
     </div>
   </div>
+  <div id="dkPeek" class="overlay">
+    <div class="panel narrow dkpeek">
+      <div id="dkpCard"></div>
+      <p id="dkpInfo" class="hint"></p>
+      <div class="dkprow"><button id="dkpMinus" class="btn ghost">−</button><span id="dkpN"></span><button id="dkpPlus" class="btn">+ Add</button></div>
+      <div id="dkpOtherRow" class="dkprow"><select id="dkpOther"></select><button id="dkpAddOther" class="btn ghost">Add to deck</button></div>
+      <button id="dkpClose" class="btn ghost">Close</button>
+    </div>
+  </div>
   <div id="xDialog" class="overlay">
     <div class="panel xdlg">
       <div class="xdh"><canvas id="xdPic" width="96" height="96"></canvas><div class="xdt"><h2 id="xdTitle"></h2><p id="xdSub" class="hint"></p></div><span id="xdGold"></span></div>
@@ -356,6 +381,7 @@
 <script src="dungeon.js"></script>
 <script src="missions.js"></script>
 <script src="bagui.js"></script>
+<script src="deckui.js"></script>
 <script src="savepoint.js"></script>
 </body>
 </html>

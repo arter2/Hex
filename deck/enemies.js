@@ -168,6 +168,7 @@ function updateEnemy(e,dt){
   const b=B;
   e.confuseT=Math.max(0,(e.confuseT||0)-dt);
   e.hitT=Math.max(0,e.hitT-dt); e.curseT=Math.max(0,e.curseT-dt); e.poisonT=Math.max(0,e.poisonT-dt); e.powerT=Math.max(0,e.powerT-dt);
+  if(e.markT>0&&(e.markT-=dt)<=0) e.mark=null;
   if(e.burnT>0){ e.burnT-=dt; e.burnAcc+=5*dt; if(e.burnAcc>=5){ e.burnAcc-=5; hitEnemy(e,5,null,{raw:true}); if(e.hp<=0) return; } }
   if(e.def.bossId&&typeof bossTick==='function'&&bossTick(e,dt)) return;   // away, or guarding while it evolves
   if(e.def.mini&&typeof miniTick==='function'&&miniTick(e,dt)) return;   // minibosses (minibosses.js)

@@ -157,12 +157,44 @@ function hitEnemy(e,base,card,opts){
   floater(dmg+(mult>=WEAK_MULT?' WEAK!':''),e.tile,mult>=WEAK_MULT?'#ffe24d':opts.raw?'#b8ffb0':'#fff',mult>=WEAK_MULT);
   flash(e.tile,colorOf(card),.8);
   if(card&&!opts.raw) applyStatus(e,card);
+  if(card&&!opts.raw) react(e,card,base);
   if(card&&!opts.raw&&!opts.noShove) shove(e,card,base);
   if(card&&card.drain&&!opts.raw) healPlayer(Math.round(dmg*card.drain));
   if(card&&card.mend&&!opts.raw) healPlayer(card.mend);
   if(heroOn('widow')&&!opts.raw) healPlayer(Math.round(dmg*.2),true);
   if(e.hp<=0) killEnemy(e);
   return dmg;
+}
+/* Reactions: a colored hit leaves its element on the enemy for 6 s. Hitting it with the
+   partner color sets the pair off and uses the mark up, so the order of your casts is the plan. */
+const REACTIONS={
+  'fire+frost':   {name:'Shatter',  c:'#bfefff'},  // big burst, more if it is frozen
+  'frost+storm':  {name:'Conduct',  c:'#ffe24d'},  // arcs to enemies within 2 hexes and stuns them
+  'fire+verdant': {name:'Wildfire', c:'#ff6a3d'},  // burns it, its neighbors and their tiles
+  'light+shadow': {name:'Eclipse',  c:'#e0588f'},  // pierces barriers and curses
+  'storm+verdant':{name:'Thornbind',c:'#6fdc7a'},  // roots it in place: long stun, attack cancelled
+  'frost+verdant':{name:'Rimebind', c:'#9fd0ff'},  // freezes it and everything next to it
+};
+const MARK_T=6;
+// The reaction this color would set off on some marked enemy, if any (lights up queued cards).
+const reactWith=c=>{ for(const e of alive()) if(e.markT>0&&e.mark&&e.mark!==c){ const r=REACTIONS[[e.mark,c].sort().join('+')]; if(r) return r; } return null; };
+function react(e,card,base){
+  const c=card.color; if(!SIX.includes(c)) return;
+  const m=e.markT>0?e.mark:null;
+  const rx=m&&m!==c?REACTIONS[[m,c].sort().join('+')]:null;
+  if(!rx){ e.mark=c; e.markT=MARK_T; return; }
+  e.mark=null; e.markT=0;
+  const t=e.tile, near=r=>alive().filter(o=>o!==e&&hexDist(o.tile,t)<=r);
+  floater(rx.name+'!',t,rx.c,true); flash(t,rx.c,1); burst(t,rx.c,22,1.2); shake(5);
+  B.reacts=(B.reacts||0)+1;
+  later(.12,()=>{ switch(rx.name){
+    case 'Shatter': { const k=e.freezeT>0?1.5:1; e.freezeT=0; if(e.hp>0) hitEnemy(e,Math.round(base*k),null,{raw:true}); break; }
+    case 'Conduct': near(2).forEach(o=>{ B.fx.push({kind:'arc',a:t,b:o.tile,color:rx.c,t:0,life:.3}); hitEnemy(o,Math.round(base*.6),null,{raw:true}); if(o.hp>0){ o.stunT=Math.max(o.stunT,1); cancelAttack(o); } }); if(e.hp>0) e.stunT=Math.max(e.stunT,1); break;
+    case 'Wildfire': [e,...near(1)].forEach(o=>{ o.burnT=Math.max(o.burnT,6); o.tile.burnT=Math.max(o.tile.burnT||0,4); burst(o.tile,'#ff6a3d',8,.4); }); break;
+    case 'Eclipse': if(e.hp>0){ hitEnemy(e,Math.round(base*1.2),null,{raw:true}); e.curseT=Math.max(e.curseT,5); } break;
+    case 'Thornbind': if(e.hp>0){ e.stunT=Math.max(e.stunT,2.5); e.slowT=Math.max(e.slowT,5); cancelAttack(e); } break;
+    case 'Rimebind': [e,...near(1)].forEach(o=>{ if(o.hp>0){ o.freezeT=Math.max(o.freezeT,2); cancelAttack(o); burst(o.tile,'#bfefff',8,.6); } }); break;
+  } });
 }
 const bossMult=(atk,e)=>typeof bossColorMult==='function'?bossColorMult(atk,e):colorMult(atk,e.color);
 function applyStatus(e,c){
@@ -932,6 +964,9 @@ const DRAW={
     const r=drawSprite(ctx,e,T,S,{scale:sc,alpha:dk*(B.fog&&!e.def.boss?.4:1),flip:facing(e,B.player,FACES_LEFT.has(e.id)),bob:frozen?0:.05,flash:e.hitT>0?.85:0,tint:frozen?'#bfefff':e.stunT>0?'#fff39a':null});
     const x=r.x, y=r.top+30*r.k, h=r.H*.45;
     ctx.globalAlpha=dk;
+    if(e.markT>0&&e.mark){ const mc=COLORS[e.mark].c, pu=.55+.35*Math.sin(T*6); ctx.globalAlpha=dk*pu*Math.min(1,e.markT/1.2);   // element mark, waiting for its partner
+      ctx.strokeStyle=mc; ctx.lineWidth=3; ctx.setLineDash([6,5]); ctx.beginPath(); ctx.ellipse(x,r.top+r.H*.98,S*.62*sc,S*.62*sc*ISO_Y,T*.8,0,TAU); ctx.stroke(); ctx.setLineDash([]);
+      ctx.font=Math.round(S*.32)+'px system-ui,sans-serif'; ctx.textAlign='center'; ctx.fillStyle=mc; ctx.fillText(COLORS[e.mark].icon,x-S*.7*sc,r.top+r.H*.9); ctx.globalAlpha=dk; }
     if(e.barrier>0){ ctx.strokeStyle='rgba(255,240,179,.85)'; ctx.lineWidth=2.5; ctx.beginPath(); ctx.ellipse(x,y-h,S*.7*sc,h*1.2,0,0,TAU); ctx.stroke(); }
     const top=r.top-S*.1;
     bar(ctx,x,top,S*.9,e.hp/e.maxHp,'#ff5d6c');

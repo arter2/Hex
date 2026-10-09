@@ -868,3 +868,8 @@ body.lsS #custHand .slot.hole{min-height:104px;}
 .slbtns{display:flex; flex-direction:column; gap:4px; align-items:stretch;}
 .slnow{font:400 16px var(--font-t); color:#7fd4ff; text-align:center;}
 #pause .row2{display:grid; grid-template-columns:1fr 1fr; gap:8px;} #mPoint{margin:0;}
+
+/* A queued card that would set off a reaction on a marked enemy */
+.qslot.react{border-color:var(--xc)!important; box-shadow:0 0 0 2px var(--xc), 0 0 14px var(--xc); animation:rxPulse .8s ease-in-out infinite alternate;}
+.qslot .rx{margin-left:.5em; font-size:.8em; color:var(--xc); font-weight:700;}
+@keyframes rxPulse{from{filter:brightness(1)} to{filter:brightness(1.35)}}

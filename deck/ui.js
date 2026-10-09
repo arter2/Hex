@@ -790,14 +790,15 @@ function hud(force){
   if(p.rootT>0) buffs.unshift('❦ Rooted '+p.rootT.toFixed(1)+'s');
   if(p.hasteT>0) buffs.push('🌬 Haste '+Math.ceil(p.hasteT)+'s'); if(p.regenT>0) buffs.push('🌿 Regen '+Math.ceil(p.regenT)+'s');
   set('buffs',buffs.join('   '),v=>$('#buffs').textContent=v);
-  set('queue',pl.queue.map(c=>c.uid+':'+(c.left==null?'':c.left)+(c.frozenT>0?'f':'')).join(','),()=>{
+  set('queue',pl.queue.map(c=>c.uid+':'+(c.left==null?'':c.left)+(c.frozenT>0?'f':'')).join(',')+'|'+alive().map(e=>e.markT>0?e.mark:'').join(','),()=>{
     const row=$('#queueRow'); row.innerHTML='';
     const locked=pl.queue.filter(c=>c.combo), cb=$('#comboBar');
     cb.hidden=!locked.length; if(locked.length) cb.textContent='✦ '+(pl.combos||[]).map(c=>c.label.split(':')[0]).join(' · ');
     for(let i=0;i<Math.max(RULES.slots,pl.queue.length);i++){ const inst=pl.queue[i], d=document.createElement('div');
       d.className='qslot'+(inst?' full':'')+(i===0&&inst?' next':'')+(inst&&inst.combo?' combo':'')+(inst&&inst.frozenT>0?' frozen':'');
+      const rx=inst&&inst.card.pow&&reactWith(inst.card.color); if(rx){ d.classList.add('react'); d.style.setProperty('--xc',rx.c); }
       if(inst){ const c=inst.card, uses=c.uses?' ×'+(inst.left==null?c.uses:inst.left):'', R=ROLES[cardRole(c)]; d.style.setProperty('--c',COLORS[c.color].c); d.style.setProperty('--rc',R.c);
-        d.innerHTML=`<span class="role">${R.icon} ${R.name}</span><span class="nm">${inst.frozenT>0?'❄ ':''}${esc(c.name)}${uses}${inst.temp&&!inst.recipe?' (copy)':''}</span>`; }
+        d.innerHTML=`<span class="role">${R.icon} ${R.name}${rx?`<span class="rx">✦ ${rx.name}</span>`:''}</span><span class="nm">${inst.frozenT>0?'❄ ':''}${esc(c.name)}${uses}${inst.temp&&!inst.recipe?' (copy)':''}</span>`; }
       else d.textContent='—';
       row.appendChild(d); }
     const nx=pl.queue[0], NR=nx&&ROLES[cardRole(nx.card)]; $('#castName').textContent=nx?NR.icon+' '+nx.card.name:'queue empty';

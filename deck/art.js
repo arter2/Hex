@@ -827,7 +827,10 @@ Object.assign(MONSTER,{
 });
 MONSTER.clone=MONSTER.shade;
 const HUMAN_LOOK={cultist:{hat:'hood',weapon:'staff'}, witch:{hat:'witch',weapon:'staff',cape:1}, caller:{hat:'hood',weapon:'bolt'},
-  warden:{hat:'leaf',weapon:'bow',cape:1}, paladin:{hat:'helm',weapon:'sword',shield:1}, knight:{hat:'spiked',weapon:'darksword',cape:1}};
+  warden:{hat:'leaf',weapon:'bow',cape:1}, paladin:{hat:'helm',weapon:'sword',shield:1}, knight:{hat:'spiked',weapon:'darksword',cape:1},
+  // outlaws
+  bandit:{body:'leather',hat:'cap',weapon:'saber',beard:1}, cutpurse:{body:'thief',hat:'thief',weapon:'wand'}, marksman:{body:'leather',hat:'helm',weapon:'crossbow'},
+  sellsword:{body:'plate',hat:'kabuto',weapon:'greatsword',shield:1}, bomber:{body:'shirt',hat:'cap',weapon:'staff',beard:1}};
 // the six heroes: a crowned fire queen, a frost sorceress, a sky captain, an antlered
 // forest elder, a winged paladin and a spider-legged witch of the night
 const HERO_LOOK={pyra:{hat:'crown',hair:'flame',weapon:'flamestaff',cape:1}, ysolde:{hat:'tiara',hair:'long',weapon:'icestaff',cape:1},

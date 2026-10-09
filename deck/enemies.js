@@ -21,10 +21,18 @@ const ENEMY_DEFS={
   warden:   {name:'Grove Warden', color:'verdant', hp:125, dmg:9,  rate:[3.2,4.2], moves:['shot'], ai:'back',  deck:true},
   paladin:  {name:'Dawn Paladin', color:'light',   hp:130, dmg:10, rate:[3.2,4.2], moves:['shot'], ai:'align', deck:true},
   knight:   {name:'Hex Knight',   color:'shadow',  hp:115, dmg:10, rate:[3,4],     moves:['shot'], ai:'align', deck:true},
+  // outlaws: ordinary people with steel instead of spells. No element of their own, so each has
+  // its own weakness, and each fights its own way. They carry coin (more gold when you win).
+  bandit:   {name:'Bandit',        color:'gray',  weak:'fire',    hp:105, dmg:14, rate:[2.6,3.4], moves:['lunge','shot'], ai:'align', outlaw:true},
+  cutpurse: {name:'Cutpurse',      color:'gray',  weak:'light',   hp:80,  dmg:8,  rate:[2.4,3.2], moves:['steal','blink'], ai:'wander', outlaw:true},
+  marksman: {name:'Crossbowman',   color:'brown', weak:'storm',   hp:90,  dmg:22, rate:[3.6,4.6], moves:['snipe'], ai:'back', outlaw:true},
+  sellsword:{name:'Sellsword',     color:'brown', weak:'frost',   hp:170, dmg:16, rate:[3.4,4.4], moves:['guard','cleave'], ai:'align', outlaw:true},
+  bomber:   {name:'Powder Monkey', color:'gray',  weak:'verdant', hp:85,  dmg:15, rate:[3.2,4.2], moves:['bomb'], ai:'back', outlaw:true},
 };
 const WEAK_TO={}; for(const k in BEATS) WEAK_TO[BEATS[k]]=k;
 const MONSTERS=['gloop','wisp','mite','beetle','ram','shade','sprite'];
 const HUMANOIDS=['cultist','witch','caller','warden','paladin','knight'];
+const OUTLAWS=['bandit','cutpurse','marksman','sellsword','bomber'];
 const ENEMY_CARD_TYPES=['strike','lob','ward','sentry','boon','charge'];
 
 /* ---------------- encounters ---------------- */
@@ -37,7 +45,9 @@ function makeEncounter(depth){
   const A=typeof areaOf==='function'?areaOf(depth):null;
   const one=list=>{ const home=A?list.filter(id=>ENEMY_DEFS[id].color===A.color):[]; return home.length&&Math.random()<.5?pick(home):pick(list); };
   const out=[];
-  for(let w=0;w<waves;w++) out.push(Array.from({length:size},()=>one(Math.random()<human?HUMANOIDS:MONSTERS)));
+  // an outlaw gang: a wave of outlaws (from depth 1), otherwise monsters with casters mixed in
+  for(let w=0;w<waves;w++){ if(Math.random()<(depth<2?.2:.25)){ out.push(Array.from({length:size},()=>pick(OUTLAWS))); continue; }
+    out.push(Array.from({length:size},()=>one(Math.random()<human?HUMANOIDS:MONSTERS))); }
   const boss=typeof isBossDepth==='function'?isBossDepth(depth):depth%4===0;
   if(boss) out[out.length-1]=[typeof bossFor==='function'?bossFor(depth):'golem'].concat(depth>=8?[one(MONSTERS)]:[]);   // a boss and its helpers carry the fight
   return out;
@@ -51,7 +61,7 @@ function makeEnemy(id,t,depth){
   const d=ENEMY_DEFS[id], hs=1+.13*(depth-1), ds=1+.1*(depth-1);
   const e={kind:'enemy', id, def:d, name:d.name, color:d.color, hp:Math.round(d.hp*hs), maxHp:Math.round(d.hp*hs), dmg:Math.round(d.dmg*ds), ds,
            tile:t, atkT:rnd(1.8,3.2), moveT:rnd(.8,1.8), windT:0, burnT:0, burnAcc:0, freezeT:0, stunT:0, slowT:0, poisonT:0, poisonAmt:0, curseT:0, hitT:0,
-           barrier:0, powerT:0, castT:0, casting:null, nextMove:pick(d.moves), deck:d.deck?enemyDeck(d.color,depth):null, deckCd:rnd(3,5)};
+           barrier:0, powerT:0, castT:0, casting:null, weak:d.weak||null, nextMove:pick(d.moves), deck:d.deck?enemyDeck(d.color,depth):null, deckCd:rnd(3,5)};
   t.occ=e; return e;
 }
 const openEnemyTiles=()=>E_TILES.filter(t=>!t.occ&&t.terrain!=='lava');
@@ -127,6 +137,21 @@ const MOVES={
   blink(e){ const p=B.player, to=pick(E_TILES.filter(t=>!t.occ&&!burning(t)&&t.col<=BOARD_COLS/2+1&&Math.abs(t.r-p.tile.r)<=1));
     if(to){ burst(e.tile,'#e0588f',10); stepEnemy(e,to); burst(to,'#e0588f',10); }
     tele(e,[p.tile].concat(neighbors(p.tile).filter(t=>t.side==='p'&&t.col>=p.tile.col)),.85,e.dmg); },
+  // Bandit: closes to the front of its side and slashes your tile and the ones beside it
+  lunge(e){ const p=B.player, to=E_TILES.filter(t=>!t.occ&&!burning(t)&&Math.abs(t.r-p.tile.r)<=1).sort((a,b)=>a.col-b.col)[0];
+    if(to&&to.col<e.tile.col){ stepEnemy(e,to); burst(to,'#b4b8c8',8,.4); }
+    tele(e,[p.tile].concat(neighbors(p.tile).filter(t=>t.side==='p'&&t.r!==p.tile.r)),.8,e.dmg); },
+  // Cutpurse: grabs at you; if it lands it steals the next card in your queue. Kill it to get it back.
+  steal(e){ const t=B.player.tile; tele(e,[t],.9,Math.round(e.dmg*.6),()=>{ if(B.player.tile!==t) return; const q=B.piles.queue;
+    const card=q.find(c=>!c.combo); if(card&&e.hp>0){ q.splice(q.indexOf(card),1); (e.loot=e.loot||[]).push(card); floater('Stole '+card.card.name+'!',e.tile,'#ffe066',true); } }); },
+  // Crossbowman: a long, slow aim on where you stand, then a heavy bolt. Move!
+  snipe(e){ const t=B.player.tile; tele(e,[t],1.5,Math.round(e.dmg*1.4)); },
+  // Sellsword: raises a shield for itself and the weakest ally, or swings across two rows
+  guard(e){ const ally=alive().filter(x=>x!==e).sort((a,b)=>a.hp/a.maxHp-b.hp/b.maxHp)[0];
+    for(const x of [e,ally]) if(x){ x.barrier=Math.max(x.barrier,30); floater('🛡30',x.tile,'#e6f4ff'); burst(x.tile,'#e6f4ff',8,1); } },
+  cleave(e){ const p=B.player, rows=[p.tile.r,p.tile.r+(Math.random()<.5?-1:1)]; tele(e,P_TILES.filter(t=>rows.includes(t.r)&&t.col<=2),1.1,e.dmg); },
+  // Powder Monkey: a fizzing bomb on and around you that leaves the floor burning
+  bomb(e){ const t=B.player.tile, ts=[t,...neighbors(t).filter(x=>x.side==='p')].filter(()=>true).slice(0,4); tele(e,ts,1.3,e.dmg,()=>ts.forEach(x=>{ x.burnT=Math.max(x.burnT||0,3); burst(x,'#ff9a3a',10,.5); })); },
   mend(e){ const hurt=alive().filter(x=>x!==e&&x.hp<x.maxHp).sort((a,b)=>a.hp/a.maxHp-b.hp/b.maxHp)[0];
     if(!hurt) return MOVES.shot(e);
     const h=Math.round(hurt.maxHp*.2); hurt.hp=Math.min(hurt.maxHp,hurt.hp+h); hurt.barrier=Math.max(hurt.barrier,20); hurt.shieldTurns=Math.max(hurt.shieldTurns||0,1); floater('+'+h,hurt.tile,'#fff0b3'); burst(hurt.tile,'#fff0b3',12,1);
@@ -185,4 +210,4 @@ function updateEnemy(e,dt){
   if(e.atkT<=0){ e.atkT=rnd(e.def.rate[0],e.def.rate[1]); const mv=e.nextMove||pick(e.def.moves); MOVES[mv](e); e.nextMove=pick(e.def.moves); if(typeof palPlay==='function') palPlay(e,mv==='quake'?'quake':(mv==='shot'||mv==='boulders')?'throw':''); }   // the next move is picked early so it can be shown
 }
 
-if(typeof module!=='undefined') module.exports={ENEMY_DEFS,MONSTERS,HUMANOIDS,makeEncounter};
+if(typeof module!=='undefined') module.exports={ENEMY_DEFS,MONSTERS,HUMANOIDS,OUTLAWS,makeEncounter};

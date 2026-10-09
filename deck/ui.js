@@ -578,7 +578,8 @@ function settleCharges(){ const burned=settleChargeUses(save,B.piles); persist()
   return burned.length?' Burned up: '+burned.map(x=>x.card.name+(x.n>1?' ×'+x.n:'')).join(', ')+'.':''; }
 function victory(){
   const b=B, boss=b.enemies.some(e=>e.def.boss);
-  const rw=battleRewards(b.enemies.filter(e=>!e.def.minion).map(e=>e.color),b.depth,boss,null,save.owned);
+  const rw=battleRewards(b.enemies.filter(e=>!e.def.minion).map(e=>e.def.outlaw?e.weak:e.color),b.depth,boss,null,save.owned);
+  const outlaws=b.enemies.filter(e=>e.def.outlaw).length; if(outlaws) rw.gold=Math.round(rw.gold*(1+.2*outlaws));   // outlaws carry coin
   if(rw.gold) rw.gold=Math.round(rw.gold*(1+(gearMods(save).gold||0)));   // Ring of Fortune
   const xp=fightXp(b.enemies.map(e=>({minion:e.def.minion,boss:e.def.boss,mini:e.def.mini})),b.depth), lvUp=gainXp(save,xp);
   save.gold+=rw.gold; save.wins++; if(!b.explore&&!b.trial&&b.depth>=save.deepest) save.deepest=b.depth+1;

@@ -302,6 +302,7 @@ function cancelAttack(e){
 function killEnemy(e){
   e.hp=0; e.deathT=.5; if(e.tile.occ===e) e.tile.occ=null; cancelAttack(e);
   if(e.def.bossId&&typeof bossDown==='function') bossDown(e); burst(e.tile,COLORS[e.color].c,30,1); shake(4);
+  if(e.loot&&e.loot.length){ B.piles.hand.push(...e.loot); floater('Got back '+e.loot.map(c=>c.card.name).join(', '),e.tile,'#39ff8a',true); e.loot=null; }   // a Cutpurse drops what it stole
   if(e.def.mini&&typeof helpers==='function') for(const m of helpers(e)) if(m.hp>0) killEnemy(m);   // a miniboss's helpers fall with it
   if(typeof extraKill==='function') extraKill(e);
   if(e.def.split){ const spots=around(e.tile).filter(t=>t.side==='e'&&!t.occ).slice(0,2);   // a Gloop splits in two

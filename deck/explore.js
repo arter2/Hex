@@ -496,6 +496,7 @@ const XKEY={}, XHOLD={on:false,id:null,x:0,y:0,x0:0,y0:0,t0:0};
 let xPaused=false;
 function xPause(on){ xPaused=!!on; for(const k in XKEY) XKEY[k]=false; XHOLD.on=false; XHOLD.id=null; }
 document.addEventListener('keydown',e=>{ if(!EX||!EX.active||xPaused) return; const k=e.key.toLowerCase(), a=keyAct(k,'map'); XKEY[k]=true;
+  if(a==='fire'&&!e.repeat) xStrike();
   if(a==='search'){ if(EX.aim) xSearch(); else xSearchAt(EX.pc); } else if(a==='disarm') xDisarm(); else if(a==='camp') xToCamp();
   if(a||k===' '){ e.preventDefault(); } if(['up','down','left','right'].includes(a)) EX.path=[]; });
 document.addEventListener('keyup',e=>{ XKEY[e.key.toLowerCase()]=false; });
@@ -700,7 +701,8 @@ function xEngage(g,forced){
   EX.busy=true; EX.path=[]; EX.fighting=g; xHud();
   const name=ENEMY_DEFS[g.ids[0]].name;
   if(opening==='ambush') xLog('You catch the '+name+' asleep!','good'); else if(opening==='surprised') xLog('The '+name+' was waiting for you!','bad');
-  const b=$('#xBang'); b.textContent=opening==='ambush'?'Ambush!':opening==='surprised'?'Surprised!':'!'; b.dataset.key='fight'; b.className='x-bang on '+(opening||'');
+  if(opening==='strike') xLog('First strike on the '+name+'!','good');
+  const b=$('#xBang'); b.textContent=opening==='strike'?'First Strike!':opening==='ambush'?'Ambush!':opening==='surprised'?'Surprised!':'!'; b.dataset.key='fight'; b.className='x-bang on '+(opening==='strike'?'ambush':opening||'');
   setTimeout(()=>{ b.className='x-bang'; if(!EX||EX.fighting!==g) return; EX.active=false; fight(EX.depth,[g.ids.slice()],{hp:EX.hp,opening,explore:true,rule:g.rule||null}); },700);
 }
 
@@ -758,7 +760,7 @@ function xLidOpen(ch){ const l=ch&&ch.mesh&&ch.mesh.userData.lid; if(!l) return;
 function xLidTick(dt){ for(const ch of EX.chests){ if(ch.lidT==null) continue; const l=ch.mesh&&ch.mesh.userData.lid; if(!l){ ch.lidT=null; continue; }
   ch.lidT=Math.min(1,ch.lidT+dt/.55); const k=ch.lidT, e=1-Math.pow(1-k,3), wob=Math.sin(k*Math.PI*3)*(1-k)*.35;
   l.rotation.x=-(2.25*e-.35*k*k+wob); if(k>=1){ l.rotation.x=-1.9; ch.lidT=null; } } }
-function xDoorTick(dt){ xLidTick(dt); for(const d of EX.doors.values()){ if(d.anim==null) continue;
+function xDoorTick(dt){ xLidTick(dt); if(typeof xBitsTick==='function'&&EX) xBitsTick(dt); for(const d of EX.doors.values()){ if(d.anim==null) continue;
   d.anim=Math.min(1,d.anim+dt/(d.gate?.7:.42)); const k=d.anim, e=d.gate?k*k*(3-2*k):1-Math.pow(1-k,3)*(1-.25*Math.sin(k*9)*(1-k));
   // a swung door overshoots a hair and settles
   xDoorPose(d,d.gate?e:Math.min(1.06,e+.08*Math.sin(k*Math.PI)),d.sign||1); if(k>=1){ d.anim=null; xDoorPose(d,1,d.sign||1); } } }
@@ -776,7 +778,7 @@ function xDraw(T,dt){
   // a two-step walk: the walking pose and the standing pose in turn, rising one art pixel on the step;
   // searching or disarming shows the casting pose
   const ART=XSPR/96, step=EX.walk?Math.floor(EX.walk/1.5)%2:0;
-  EX.pose=EX.action?'cast':EX.walk?(step?'walk':'idle'):'idle';
+  EX.pose=EX.action||EX.swingT>0?'cast':EX.walk?(step?'walk':'idle'):'idle';
   EX.me.position.set(EX.px,step*ART,EX.pz); xRefresh(EX.me,EX.face<0);
   G.lamp.position.set(EX.px,2.6,EX.pz);
   const k=Math.max(1,Math.min(1.8,.8/G.cam.aspect)), hgt=18*k, back=10*k;   // tall screens pull back so a room still fits across
@@ -861,6 +863,7 @@ function resumeExplore(hp,won,info){
   xHud(); xLoopStart();
 }
 $('#xSearch').onclick=()=>xSearch();
+$('#xStrike').onclick=()=>xStrike();
 $('#xDisarm').onclick=()=>xDisarm();
 $('#xCamp').onclick=()=>xToCamp();
 $('#xUp').onclick=()=>xStairsUp();

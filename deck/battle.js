@@ -92,6 +92,8 @@ function startBattle(list,depth,hooks,opts){
   B.opening=opts&&opts.opening||null;
   // a trial's rule (minibosses.js): fight in order, survive, or light the switches
   B.rule=opts&&opts.rule?Object.assign({},opts.rule):null; if(B.rule&&typeof ruleSetup==='function') ruleSetup(B.rule);
+  // First Strike from the map: every enemy opens hurt (15%), stunned and slow to act
+  if(B.opening==='strike') B.enemies.forEach(e=>{ const d=Math.max(8,Math.round(e.maxHp*.15)); e.hp=Math.max(1,e.hp-d); e.atkT+=3; e.stunT=Math.max(e.stunT,2); later(.5,()=>{ floater('-'+d,e.tile,'#ffe24d',true); burst(e.tile,'#ffffff',12,1); }); });
   if(B.opening==='ambush') B.enemies.forEach(e=>{ e.atkT+=3.5; e.stunT=Math.max(e.stunT,1.5); });
   if(B.opening==='surprised') B.enemies.forEach(e=>{ e.atkT=rnd(.4,.9); });
   openCustomScreen();

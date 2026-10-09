@@ -259,6 +259,7 @@ function xPopulate(){
   // every floor holds at least two things beyond the closet: top it up when a planned one did not fit
   for(let k=0;k<4&&!EX.branch&&xRealized().length<2;k++){ const have=xRealized();
     if(!have.includes('cache')) xPlaceCache(); else if(!have.includes('npc')) xPlaceNPC(xpick(['quest','lost','scholar'])); else if(!have.includes('gauntlet')) xPlaceGauntlet(); else xMakeMimic(); }
+  xPlacePots();
   if(typeof xPlanEvents==='function') xPlanEvents();   // missions that start partway through (missions.js)
   EX.bellAt=d>=3&&!EX.branch?Math.max(140,230+xri(0,40)-d*4):0;   // stay too long and the Executioner comes
 }
@@ -551,6 +552,10 @@ function xMeshProp(p){
     case 'bones': for(let k=0;k<9;k++){ const b=xBox(.12+XR()*.2,.08,.08,xMat(0xe8e0c8),(XR()-.5)*.9,.06+XR()*.3,(XR()-.5)*.9); b.rotation.y=XR()*3; g.add(b); } g.add(xBall(.16,xMat(0xe8e0c8),.1,.45,0)); break;
     case 'puddle': { const m=new THREE.MeshBasicMaterial({color:0x8fd14f,transparent:true,opacity:.35}); const c=new THREE.Mesh(new THREE.CircleGeometry(.6,12),m); c.rotation.x=-Math.PI/2; c.position.y=.05; g.add(c); break; }
     case 'keystand': { g.add(xBox(.4,.8,.4,stone,0,.4,0)); const k=xKeyMesh(KEYS[p.key].col); k.position.y=1.15; g.add(k); p.spin=k; break; }
+    case 'pot': { const clay=xMat(p.tint||0xa0603a), rim=xMat(0x5a3220);
+      if(p.crate){ g.add(xBox(.7,.62,.7,wood,0,.31,0), xBox(.74,.08,.74,dark,0,.6,0), xBox(.74,.08,.74,dark,0,.06,0)); }
+      else { g.add(xBall(.3,clay,0,.3,0), xCyl(.16,.2,clay,0,.62,0), xCyl(.2,.06,rim,0,.72,0)); g.children[0].scale.y=1.1; }
+      g.rotation.y=p.rot||0; break; }
     default: if(typeof xMissionMesh==='function') xMissionMesh(p,g);
   }
   g.visible=false; p.mesh=g; X3.group.add(g); return g; }
@@ -588,6 +593,7 @@ function xBumpExtra(c,front){
 function xEnterExtra(c){
   const it=EX.itemAt.get(c); if(it) xPickup(it);
   for(const p of EX.props){ if(p.cell!==c||p.wall||p.gone) continue;
+    if(p.kind==='pot'){ xBreakPot(p); continue; }
     if(p.kind==='reset') xResetBlocks();
     if(p.kind==='keystand'&&!p.taken){ p.taken=true; if(p.spin) p.spin.visible=false; addKey(p.key); xLog('You take the '+KEYS[p.key].name+'.','good'); xSfx('unlock'); }
     if(p.kind==='hstair') return xEnterBranch();
@@ -1026,6 +1032,8 @@ function xSfx(kind,pan){ if(!sfxOn()) return; try{
   out.gain.value=.6;
   if(kind==='whisper') noise(1.2,600,1700,.09);
   else if(kind==='click') tone(320,0,.06,'square',.05);
+  else if(kind==='swing'){ noise(.16,2400,600,.14,'bandpass'); }
+  else if(kind==='shatter'){ noise(.22,3200,1200,.22,'highpass'); for(let k=0;k<4;k++) tone(1400+Math.random()*1600,k*.03,.07,'triangle',.04); }
   else if(kind==='door'){ noise(.32,420,180,.18,'bandpass'); tone(150+Math.random()*30,.02,.28,'sawtooth',.025); tone(90,.3,.12,'triangle',.08); }   // creak, then the knock against the wall
   else if(kind==='gate'){ noise(.7,900,500,.12,'bandpass'); for(let k=0;k<6;k++) tone(220+k*12,k*.1,.06,'square',.02); tone(70,.68,.2,'triangle',.12); }   // chain rattle and a clunk
   else if(kind==='unlock'){ tone(660,0,.12,'triangle',.1); tone(990,.09,.16,'triangle',.08); }
@@ -1053,3 +1061,41 @@ function xDisarmAlt(){ if(!EX) return null; const pc=EX.pc;
   if(hz) return {t:1.4, start:'You wedge a stone into the '+(hz.kind==='blade'?'blade’s mechanism':'jet’s vent')+'…', run(){
     if(XR()<.6){ hz.jammed=true; if(hz.flame) hz.flame.visible=false; xLog('It jams with a screech.','good'); xXp(12+EX.depth,'trap jammed'); } else { xLog('It catches you while you work!','bad'); xHurt(Math.round(5+EX.depth*.6),'a trap you were jamming'); } }};
   return null; }
+
+/* ---------------- pots, crates and the first strike ----------------
+   Rooms hold breakable pots and crates: walk through one or swing at it. Most hold nothing, some
+   gold, a little healing, now and then a card. Swinging at an enemy in reach (Space, or the Strike
+   button) starts the fight with a First Strike: it opens hurt, stunned and slow to act. */
+function xPlacePots(){ if(EX.branch) return;
+  for(const r of EX.rooms){ if(r.side||r.safe||r.nook||r.role) continue;
+    const n=xri(0,r.w*r.h>30?4:2);
+    for(let k=0;k<n;k++){ const c=xFreeCell(r); if(c<0) break;
+      const crate=XR()<.3; xProp('pot',c,{solid:false,crate,rot:XR()*6,tint:xpick([0xa0603a,0x8a5a3a,0xb07040,0x7a6a5a])}); } } }
+function xBreakPot(p){ if(p.gone) return; xRemoveProp(p); xSfx(p.crate?'thud':'shatter');
+  xShards(xw(p.cell),xz(p.cell),p.crate?0x7a4a22:(p.tint||0xa0603a));
+  const r=Math.random(), d=EX.depth;
+  if(r<.32){ const g=Math.round((4+d*3)*rnd(.6,1.4)); save.gold+=g; xLog('+'+g+' gold from the '+(p.crate?'crate':'pot')+'.','gold'); xPopText('+'+g,'#f2c94c',p.cell); }
+  else if(r<.42){ const h=Math.min(xmaxHp(),EX.hp+10)-EX.hp; if(h>0){ EX.hp+=h; xLog('A healing herb: +'+h+' HP.','good'); xPopText('+'+h+' HP','#39ff8a',p.cell); } }
+  else if(r<.45){ const c=rollCard({depth:d}); const res=addCards(save,[c]); xLog('Tucked inside: '+c.name+(res[0]&&res[0].isNew?' (new!)':'')+'.','loot'); xPopText('Card!','#8fe4ff',p.cell); }
+  xHud(); }
+// clay or wood shards that fly out and fall
+function xShards(x,z,col){ if(!X3||!X3.group) return; EX.shards=EX.shards||[]; const m=xMat(col);
+  for(let k=0;k<10;k++){ const o=xBox(.08+Math.random()*.12,.05,.08+Math.random()*.1,m,x,.4,z); const a=Math.random()*6.3, v=1.5+Math.random()*2.5;
+    o.userData={vx:Math.cos(a)*v,vz:Math.sin(a)*v,vy:2+Math.random()*3,spin:(Math.random()-.5)*14,t:0}; X3.group.add(o); EX.shards.push(o); } }
+function xPopText(txt,col,cell){ if(!X3||!X3.group) return; const s=xTextSprite(txt,col); s.scale.set(txt.length>3?1.6:1.1,.8,1); s.position.set(xw(cell),1.2,xz(cell)); s.userData.t=0; X3.group.add(s); (EX.pops=EX.pops||[]).push(s); }
+function xBitsTick(dt){
+  if(EX.shards) EX.shards=EX.shards.filter(o=>{ const u=o.userData; u.t+=dt; u.vy-=12*dt; o.position.x+=u.vx*dt; o.position.z+=u.vz*dt; o.position.y=Math.max(.03,o.position.y+u.vy*dt);
+    if(o.position.y<=.03){ u.vx*=.8; u.vz*=.8; u.spin*=.7; } o.rotation.y+=u.spin*dt; o.rotation.x+=u.spin*.5*dt;
+    if(u.t>1.6){ X3.group.remove(o); return false; } return true; });
+  if(EX.pops) EX.pops=EX.pops.filter(s=>{ s.userData.t+=dt; s.position.y+=dt*1.2; s.material.opacity=Math.max(0,1-s.userData.t/1.1); s.material.transparent=true; if(s.userData.t>1.1){ X3.group.remove(s); return false; } return true; });
+  if(EX.strikeCd>0) EX.strikeCd-=dt;
+  if(EX.swingT>0){ EX.swingT-=dt; const w=X3&&X3.swing; if(w){ const k=1-EX.swingT/.25; w.visible=EX.swingT>0; w.position.set(EX.px,.7,EX.pz); w.rotation.z=(EX.swingDir||0)-1.9+k*2.6; w.material.opacity=.85*(1-k); } } }
+function xStrike(){ if(!EX||!EX.active||EX.busy||EX.fighting||EX.action||(EX.strikeCd||0)>0) return;
+  EX.strikeCd=.5; EX.swingT=.25;
+  const G=X3; if(G&&!G.swing){ const m=new THREE.MeshBasicMaterial({color:0xcfefff,transparent:true,opacity:.8,side:THREE.DoubleSide,blending:THREE.AdditiveBlending,depthWrite:false});
+    G.swing=new THREE.Mesh(new THREE.RingGeometry(.9,1.5,20,1,0,1.6),m); G.swing.rotation.order='XYZ'; G.swing.rotation.x=-Math.PI/2; G.group.add(G.swing); }
+  if(G&&G.swing&&G.swing.parent!==G.group) G.group.add(G.swing);
+  EX.swingDir=(EX.face||1)<0?Math.PI:0; xSfx('swing');
+  for(const p of EX.props) if(p.kind==='pot'&&!p.gone&&Math.hypot(xw(p.cell)-EX.px,xz(p.cell)-EX.pz)<XCS*1.6) xBreakPot(p);
+  const foe=EX.groups.filter(g=>g.sprite&&g.sprite.visible&&!g.dormant).map(g=>({g,d:Math.hypot(g.x-EX.px,g.z-EX.pz)})).filter(o=>o.d<XCS*1.8).sort((a,b)=>a.d-b.d)[0];
+  if(foe) xEngage(foe.g,'strike'); }

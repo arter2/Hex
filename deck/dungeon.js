@@ -80,7 +80,46 @@ let XRUN=null;
 function xNewRun(depth){
   XRUN={start:depth, keys:{}, quests:[], kills:{}, attuned:0, chute:0, solution:0, discount:0,
         next:{merchant:depth+xri(0,2), sanct:depth+xri(3,5)}};
+  // what you owned walking in: anything beyond this is what the run found, and what your body keeps if you fall
+  XRUN.snap={owned:Object.assign({},save.owned), items:Object.assign({},gearState(save).items)};
 }
+
+/* ---------------- your body ----------------
+   Fall in the dungeon and everything this run found (cards and gear) stays on your body, with the
+   gold you dropped. The same character can go back down: the floor is new, but your body lies
+   somewhere on the depth you fell on. Walk over it to take it all back. Fall again before you
+   reach it, or start another character, and the old body is lost. */
+const whoAmI=()=>save.char?[save.char.race,save.char.body,save.char.look].join('|'):'';
+function xDropBody(depth,gold){
+  const old=save.corpse; save.corpse=null;
+  if(!XRUN||!XRUN.snap) return {old, n:0};
+  const s=gearState(save), cards={}, items={}, decks=[];
+  for(const id in save.owned){ const n=(save.owned[id]||0)-(XRUN.snap.owned[id]||0); if(n>0) cards[id]=n; }
+  for(const id in s.items){ const n=(s.items[id]||0)-(XRUN.snap.items[id]||0); if(n>0&&!GEAR[id].starter) items[id]=n; }
+  for(const id in cards){ save.owned[id]-=cards[id]; if(save.owned[id]<=0) delete save.owned[id];
+    save.decks.forEach((d,i)=>{ while(d.list.filter(x=>x===id).length>(save.owned[id]||0)){ d.list.splice(d.list.lastIndexOf(id),1); decks.push([i,id]); } }); }
+  for(const id in items){ s.items[id]-=items[id]; if(s.items[id]<=0){ delete s.items[id]; for(const sl in s.gear) if(s.gear[sl]===id) s.gear[sl]=null; } }
+  const n=Object.values(cards).reduce((a,b)=>a+b,0)+Object.values(items).reduce((a,b)=>a+b,0);
+  if(n||gold) save.corpse={depth, who:whoAmI(), gold:gold||0, cards, items, decks, t:Date.now()};
+  return {old, n, cards:Object.values(cards).reduce((a,b)=>a+b,0), items:Object.values(items).reduce((a,b)=>a+b,0)};
+}
+// the words for a fresh death: what your body holds now, and whether an older one was lost
+function xBodyNote(r){ const c=save.corpse;
+  return (r.old?' Your old body, never recovered, is lost.':'')+(c?' Your body lies at depth '+c.depth+(r.cards?' with '+r.cards+' card'+(r.cards>1?'s':''):'')+(r.items?(r.cards?' and ':' with ')+r.items+' piece'+(r.items>1?'s':'')+' of gear':'')+(c.gold?', and '+c.gold+' gold':'')+'. Go back down as this character to take it back.':''); }
+function xPlaceBody(){ const c=save.corpse; if(!c||EX.branch||c.depth!==EX.depth) return;
+  if(c.who!==whoAmI()){ save.corpse=null; persist(); return; }
+  const reach=xReach(), far=[]; for(let i=0;i<XN*XN;i++) if(reach[i]>=8&&EX.room[i]>=0&&!EX.taken.has(i)&&!nearDoor(i)&&!xSolid(i)) far.push(i);
+  const cell=far.length?xpick(far):xFreeCell(xpick(EX.rooms.filter(r=>!r.side))); if(cell<0) return;
+  xProp('corpse',cell,{solid:false}); xLog('You feel a pull. Your body lies somewhere on this floor.','good'); }
+function xTakeBody(p){ const c=save.corpse; if(!c){ xRemoveProp(p); return; } const s=gearState(save);
+  for(const id in c.cards) save.owned[id]=(save.owned[id]||0)+c.cards[id];
+  for(const id in c.items) s.items[id]=(s.items[id]||0)+c.items[id];
+  for(const [i,id] of c.decks||[]) if(save.decks[i]&&save.decks[i].list.filter(x=>x===id).length<save.owned[id]) save.decks[i].list.push(id);
+  save.gold+=c.gold; const nc=Object.values(c.cards).reduce((a,b)=>a+b,0), ni=Object.values(c.items).reduce((a,b)=>a+b,0);
+  save.corpse=null; persist(); xRemoveProp(p); xSfx('chime');
+  if(X3&&X3.group) xShards(xw(p.cell),xz(p.cell),0xbfefff);
+  xLog('You find your body and take back '+[nc&&nc+' card'+(nc>1?'s':''),ni&&ni+' piece'+(ni>1?'s':'')+' of gear',c.gold&&c.gold+' gold'].filter(Boolean).join(', ')+'.','loot');
+  tip('Recovered your belongings!'); xHud(); }
 const keyN=k=>XRUN&&XRUN.keys[k]||0;
 function addKey(k,n){ if(!XRUN) xNewRun(EX?EX.depth:1); XRUN.keys[k]=keyN(k)+(n||1); }
 
@@ -259,7 +298,7 @@ function xPopulate(){
   // every floor holds at least two things beyond the closet: top it up when a planned one did not fit
   for(let k=0;k<4&&!EX.branch&&xRealized().length<2;k++){ const have=xRealized();
     if(!have.includes('cache')) xPlaceCache(); else if(!have.includes('npc')) xPlaceNPC(xpick(['quest','lost','scholar'])); else if(!have.includes('gauntlet')) xPlaceGauntlet(); else xMakeMimic(); }
-  xPlacePots();
+  xPlacePots(); xPlaceBody();
   if(typeof xPlanEvents==='function') xPlanEvents();   // missions that start partway through (missions.js)
   EX.bellAt=d>=3&&!EX.branch?Math.max(140,230+xri(0,40)-d*4):0;   // stay too long and the Executioner comes
 }
@@ -552,6 +591,13 @@ function xMeshProp(p){
     case 'bones': for(let k=0;k<9;k++){ const b=xBox(.12+XR()*.2,.08,.08,xMat(0xe8e0c8),(XR()-.5)*.9,.06+XR()*.3,(XR()-.5)*.9); b.rotation.y=XR()*3; g.add(b); } g.add(xBall(.16,xMat(0xe8e0c8),.1,.45,0)); break;
     case 'puddle': { const m=new THREE.MeshBasicMaterial({color:0x8fd14f,transparent:true,opacity:.35}); const c=new THREE.Mesh(new THREE.CircleGeometry(.6,12),m); c.rotation.x=-Math.PI/2; c.position.y=.05; g.add(c); break; }
     case 'keystand': { g.add(xBox(.4,.8,.4,stone,0,.4,0)); const k=xKeyMesh(KEYS[p.key].col); k.position.y=1.15; g.add(k); p.spin=k; break; }
+    case 'corpse': { const bone=xMat(0xe8e0c8), cloth=xMat(0x5a2a8a);
+      for(let k=0;k<6;k++){ const b=xBox(.1+XR()*.25,.07,.07,bone,(XR()-.5)*.8,.05,(XR()-.5)*.6); b.rotation.y=XR()*3; g.add(b); }
+      g.add(xBall(.15,bone,.15,.12,-.1), xBox(.8,.05,.5,cloth,-.05,.03,.05));
+      const hat=xCone(.22,.5,cloth,-.25,.25,.15); hat.rotation.z=1.1; g.add(hat);
+      const beam=new THREE.Mesh(new THREE.CylinderGeometry(.18,.32,6,10,1,true),new THREE.MeshBasicMaterial({color:0xbfefff,transparent:true,opacity:.25,blending:THREE.AdditiveBlending,depthWrite:false,side:THREE.DoubleSide}));
+      beam.position.y=3; g.add(beam); p.beam=beam;
+      const wisp=xBall(.12,xGlowMat(0xdff8ff),0,.9,0); g.add(wisp); p.wisp=wisp; break; }
     case 'pot': { const clay=xMat(p.tint||0xa0603a), rim=xMat(0x5a3220);
       if(p.crate){ g.add(xBox(.7,.62,.7,wood,0,.31,0), xBox(.74,.08,.74,dark,0,.6,0), xBox(.74,.08,.74,dark,0,.06,0)); }
       else { g.add(xBall(.3,clay,0,.3,0), xCyl(.16,.2,clay,0,.62,0), xCyl(.2,.06,rim,0,.72,0)); g.children[0].scale.y=1.1; }
@@ -594,6 +640,7 @@ function xEnterExtra(c){
   const it=EX.itemAt.get(c); if(it) xPickup(it);
   for(const p of EX.props){ if(p.cell!==c||p.wall||p.gone) continue;
     if(p.kind==='pot'){ xBreakPot(p); continue; }
+    if(p.kind==='corpse'){ xTakeBody(p); continue; }
     if(p.kind==='reset') xResetBlocks();
     if(p.kind==='keystand'&&!p.taken){ p.taken=true; if(p.spin) p.spin.visible=false; addKey(p.key); xLog('You take the '+KEYS[p.key].name+'.','good'); xSfx('unlock'); }
     if(p.kind==='hstair') return xEnterBranch();
@@ -990,6 +1037,7 @@ function xDungeonDraw(T){
     if(p.orbMesh) p.orbMesh.position.y=1.15+Math.sin(T*2)*.06;
     if(p.spin) p.spin.rotation.y=T*1.6;
     if(p.ring) p.ring.rotation.z+=.02;
+    if(p.kind==='corpse'&&p.wisp){ p.wisp.position.y=.9+Math.sin(T*2)*.25; p.wisp.position.x=Math.cos(T*1.3)*.3; p.beam.material.opacity=.18+.1*Math.sin(T*3); }
     if(p.kind==='decor'&&p.flame){ p.flame.scale.y=.85+.2*Math.sin(T*9+p.cell); }
     if(p.kind==='trialaltar'&&p.flame) p.flame.scale.y=.85+.2*Math.sin(T*7);
     if(p.kind==='crystal'&&p.glowMat) p.glowMat.opacity=EX.puzzle&&EX.puzzle.solved?1:.55+.15*Math.sin(T*2);

@@ -154,7 +154,8 @@ function xMissionHud(out){ if(!XRUN) return; for(const q of XRUN.quests) if(xmLi
 function xMissionMini(c,s,dot){ if(!XRUN) return; const blink=Math.floor(performance.now()/400)%2;
   for(const q of XRUN.quests) if(xmLive(q)&&q.kind==='rescue'&&!q.reached&&q.depth===EX.depth&&blink) dot(q.cell,'#ff5d6c',2);
   for(const p of EX.props) if(p.kind==='brazier'&&p.lit&&EX.seen[p.cell]) dot(p.cell,'#b48cff',1);
-  for(const it of EX.items) if(it.kind==='mpage'&&EX.seen[it.cell]) dot(it.cell,'#e8e0c8',1); }
+  for(const it of EX.items) if(it.kind==='mpage'&&EX.seen[it.cell]) dot(it.cell,'#e8e0c8',1);
+  for(const p of EX.props) if(p.kind==='corpse'&&!p.gone&&blink) dot(p.cell,'#bfefff',2); }   // your body: you always know where it lies
 // the mark over a mission's monsters, drawn by hand (the pixel font has no crown or skull): a gold
 // crown over a bounty, a red skull over a nest's brood
 function xmTagSprite(txt,col){ const c=document.createElement('canvas'); c.width=c.height=32; const x=c.getContext('2d'); x.lineJoin='round';

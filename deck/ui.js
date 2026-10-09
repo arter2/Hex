@@ -608,9 +608,10 @@ function defeat(){
   // a sanctuary's blessing (dungeon.js): you wake at the floor's stairs up instead, for half the gold
   if(xp&&typeof xTryRevive==='function'&&xTryRevive()){ save.gold+=lost-Math.floor(lost/2); persist(); logCamp('A shrine pulled you back from defeat at depth '+depth+'.','win');
     return reveal('Pulled back','You fell, but the shrine’s blessing carries you back to the stairs up at half health. You dropped '+Math.floor(lost/2)+' gold.'+burnt,[],[['Get up',()=>{ B=null; xRevived(); }]]); }
-  logCamp('Fell at depth '+depth+', dropped '+lost+' gold.','curse');
+  let body=null; if(xp&&typeof xDropBody==='function'){ body=xDropBody(depth,lost); persist(); }
+  logCamp('Fell at depth '+depth+', dropped '+lost+' gold.'+(body&&save.corpse?' Your body lies there.':''),'curse');
   if(xp&&typeof stopExplore==='function'){ stopExplore(); EX=null; XPARK=null; if(typeof XRUN!=='undefined') XRUN=null; }
-  reveal('Defeated…','You fell at depth '+depth+' and dropped '+lost+' gold. Your cards are safe.'+burnt,[],
+  reveal('Defeated…','You fell at depth '+depth+' and dropped '+lost+' gold.'+(body?xBodyNote(body):' Your cards are safe.')+burnt,[],
     xp?[['Camp',()=>{ B=null; openCamp(); },true],...(peekPoint()?[['Load save',()=>loadPoint()]]:[])]:[['Camp',()=>{ B=null; openCamp(); },true],['Retry',()=>fight(depth)]]);
 }
 // leaving a fight early: a battle-only fight costs nothing; fleeing a dungeon fight costs 10% of

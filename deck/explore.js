@@ -765,9 +765,10 @@ function xDie(why){
   if(typeof xTryRevive==='function'&&xTryRevive()){ const lost=Math.floor(save.gold*.1); save.gold-=lost; persist(); EX.hp=Math.round(xmaxHp()*.5); EX.ail={poison:0,curse:0};
     EX.pc=EX.up; EX.px=xw(EX.up); EX.pz=xz(EX.up); EX.path=[]; EX.stuckT=0; xUpdateVis(); xHud(); xFlash();
     xLog('Brought down by '+why+', but the shrine pulls you back to the stairs up. You dropped '+lost+' gold.','good'); return; }
-  XPARK=null; if(typeof XRUN!=='undefined') XRUN=null; EX.busy=true; const lost=Math.floor(save.gold*.2); save.gold-=lost; persist(); const depth=EX.depth;
-  logCamp('Killed by '+why+' at depth '+depth+', dropped '+lost+' gold.','curse'); stopExplore();
-  reveal('Defeated…','Brought down by '+why+' at depth '+depth+'. You dropped '+lost+' gold. Your cards are safe.',[],[['Camp',()=>{ EX=null; openCamp(); },true],...(typeof peekPoint==='function'&&peekPoint()?[['Load save',()=>loadPoint()]]:[])]); }
+  EX.busy=true; const lost=Math.floor(save.gold*.2); save.gold-=lost; const depth=EX.depth, body=xDropBody(depth,lost); persist();
+  XPARK=null; if(typeof XRUN!=='undefined') XRUN=null;
+  logCamp('Killed by '+why+' at depth '+depth+', dropped '+lost+' gold.'+(save.corpse?' Your body lies there.':''),'curse'); stopExplore();
+  reveal('Defeated…','Brought down by '+why+' at depth '+depth+'. You dropped '+lost+' gold.'+xBodyNote(body),[],[['Camp',()=>{ EX=null; openCamp(); },true],...(typeof peekPoint==='function'&&peekPoint()?[['Load save',()=>loadPoint()]]:[])]); }
 function stopExplore(){ if(EX) EX.active=false; xPause(false); }
 
 /* ---------------- loop, hud ---------------- */

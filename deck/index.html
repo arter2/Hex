@@ -287,6 +287,18 @@
     </div>
   </div>
   <!-- the dungeon's dialog: people, merchants, sanctuaries, tablets, your bag -->
+  <div id="bagUI" class="overlay">
+    <div class="bagframe">
+      <div class="bghead"><span class="bgbag"></span><h2 id="bgTitle"></h2><span id="bgGold" class="bggold"></span><button id="bgClose" class="bgx" aria-label="Close">✕</button></div>
+      <div class="bgbody">
+        <div class="bgchar">
+          <div class="bgdoll"><div id="bgLeft" class="bgcol"></div><div class="bgfig"><canvas id="bgSprite" width="192" height="192"></canvas></div><div id="bgRight" class="bgcol"></div></div>
+          <div class="bgfoot"><div id="bgWeapon"></div><div id="bgStats" class="bgstats"></div><div id="bgOff"></div></div>
+        </div>
+        <div class="bgside"><div id="bgTabs" class="bgtabs"></div><div id="bgGrid" class="bggrid"></div><div id="bgDetail" class="bgdetail"></div></div>
+      </div>
+    </div>
+  </div>
   <div id="xDialog" class="overlay">
     <div class="panel xdlg">
       <div class="xdh"><canvas id="xdPic" width="96" height="96"></canvas><div class="xdt"><h2 id="xdTitle"></h2><p id="xdSub" class="hint"></p></div><span id="xdGold"></span></div>
@@ -343,6 +355,7 @@
 <script src="explore.js"></script>
 <script src="dungeon.js"></script>
 <script src="missions.js"></script>
+<script src="bagui.js"></script>
 <script src="savepoint.js"></script>
 </body>
 </html>

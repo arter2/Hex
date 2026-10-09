@@ -191,6 +191,7 @@ function hitEnemy(e,base,card,opts){
   if(card&&card.drain&&!opts.raw) healPlayer(Math.round(dmg*card.drain));
   if(card&&card.mend&&!opts.raw) healPlayer(card.mend);
   if(heroOn('widow')&&!opts.raw) healPlayer(Math.round(dmg*.2),true);
+  if(heroAura('drain')&&!opts.raw) healPlayer(Math.round(dmg*heroAura('drain')),true);
   if(e.hp<=0) killEnemy(e);
   return dmg;
 }
@@ -343,7 +344,9 @@ function hitPlayer(dmg){
   if(p.dodgeChance&&Math.random()<p.dodgeChance){ floater('dodge',p.tile,'#9fdcff'); return; }
   if(p.blocksLeft>0){ p.blocksLeft--; floater('blocked',p.tile,'#f2c94c'); burst(p.tile,'#f2c94c',8,1); return; }
   if(p.barrier>0){ const a=Math.min(p.barrier,dmg); p.barrier-=a; dmg-=a; floater('🛡'+a,p.tile,'#6fd6ff'); }
+  if(heroAura('dodge')&&Math.random()<heroAura('dodge')){ floater('dodge',p.tile,'#9fdcff'); return; }
   if(p.guard&&dmg>0) dmg=Math.max(1,Math.round(dmg*(1-p.guard)));
+  if(heroAura('armor')&&dmg>0) dmg=Math.max(1,Math.round(dmg*(1-heroAura('armor'))));
   if(p.hurt&&p.hurt!==1&&dmg>0) dmg=Math.round(dmg*p.hurt);
   if(p.hexT>0&&dmg>0) dmg=Math.round(dmg*1.3);   // a Dark Wizard's hex
   if(dmg<=0) return;
@@ -382,7 +385,7 @@ function castCard(){
   const p=b.player; if(p.castCd>0) return;
   const fq=b.piles.queue[0]; if(fq&&fq.frozenT>0){ floater('Frozen ❄',p.tile,'#9fd0ff'); return; }
   const inst=castNext(b.piles); if(!inst) return;
-  p.castCd=(p.hasteT>0||heroOn('volta')?.25:.45)*(p.castSlow||1);
+  p.castCd=(p.hasteT>0||heroOn('volta')||heroAura('haste')?.25:.45)*(p.castSlow||1);
   playCard(inst); soulGain(B.soul&&inst.card.color===B.soul.card.color?18:8);
   if(inst.straight){ // Straight: the next two cards follow in one chain, then a finisher
     const chain=[]; for(let i=0;i<inst.straight.length-1;i++){ const n=castNext(b.piles); if(n) chain.push(n); }
@@ -489,19 +492,20 @@ function placeAlly(c,ai,hp,turns){
    A hero stands on your side for a few turns, attacks on its own, and while it stands it
    empowers you (its aura). One at a time: calling another sends the first one home. */
 const heroOn=id=>{ const h=B&&B.player.hero; return !!(h&&h.hp>0&&h.card.hero===id); };
-const heroMult=card=>(heroOn('pyra')?1.3:1)*(heroOn('aurelion')&&card?1.25:1);
+const heroAura=k=>{ const h=B&&B.player.hero; return h&&h.hp>0&&h.card.aurae?h.card.aurae[k]||0:0; };
+const heroMult=card=>(heroOn('pyra')?1.3:1)*(heroOn('aurelion')&&card?1.25:1)*(1+heroAura('dmg'))*(card&&heroAura('crit')&&Math.random()<heroAura('crit')?2:1);
 function callHero(c){
   const p=B.player; if(p.hero) removeBlock(p.hero);
   const a=placeAlly(c,'hero',c.hp,c.turns); if(!a) return;
   p.hero=a; a.fireT=.8;
   if(c.hero==='thornfather'){ p.maxHp+=30; healPlayer(30); }
   if(c.hero==='aurelion') p.intervene=Math.max(p.intervene||0,c.amt);
-  if(c.hero==='ysolde') heroShield();
+  if(c.hero==='ysolde'||(c.aurae&&c.aurae.shield)) heroShield();
   burst(a.tile,colorOf(c),40,1.6); burst(a.tile,'#ffe066',20,2); flash(a.tile,'#ffe066',1); shake(6);
   B.fx.push({kind:'ring',a:p.tile,color:'#ffe066',t:0,life:.7});
   B.hooks.onHero&&B.hooks.onHero(c);
 }
-function heroShield(){ const p=B.player, c=p.hero.card; if(p.barrier<c.amt){ p.barrier=c.amt; p.shieldTurns=1; floater('🛡'+c.amt,p.tile,'#6fd6ff'); } }
+function heroShield(){ const p=B.player, c=p.hero.card, amt=c.amt||heroAura('shield'); if(p.barrier<amt){ p.barrier=amt; p.shieldTurns=1; floater('🛡'+amt,p.tile,'#6fd6ff'); } }
 function heroLeaves(){ const p=B.player, c=p.hero.card; p.hero=null; floater(c.name.split(',')[0]+' departs',p.tile,'#ffe066');
   if(c.hero==='thornfather'){ p.maxHp-=30; p.hp=Math.min(p.hp,p.maxHp); } }
 function heroStrike(a,near){
@@ -515,6 +519,22 @@ function heroStrike(a,near){
     case 'thornfather': [near.tile,...around(near.tile)].forEach(t=>{ flash(t,col,.8); burst(t,col,4,.3); hitAt(t,c.pow,c); }); break;
     case 'aurelion': B.fx.push({kind:'beam',a:near.tile,b:near.tile,y0:6,color:'#fff6c8',t:0,life:.45}); flash(near.tile,'#fff6c8',1); burst(near.tile,'#fff6c8',14,1.5); hitEnemy(near,c.pow,c); healPlayer(c.heal); break;
     case 'widow': B.fx.push({kind:'arc',a:a.tile,b:near.tile,color:col,t:0,life:.35}); hitEnemy(near,c.pow,c); break;
+    default: heroStyle(a,near,c,col,es);
+  }
+}
+// the later Souls attack by style
+function heroStyle(a,near,c,col,es){
+  switch(c.style){
+    case 'lob': lobFrom(a.tile,c,c.pow,1,.6,near.tile); break;
+    case 'multi': for(let i=0;i<(c.n||3);i++) later(i*.1,()=>{ const e=pick(alive()); if(!e) return; B.fx.push({kind:'arc',a:a.tile,b:e.tile,color:col,t:0,life:.25}); hitEnemy(e,c.pow,c); }); break;
+    case 'sky': B.fx.push({kind:'beam',a:near.tile,b:near.tile,y0:6,color:col,t:0,life:.4}); flash(near.tile,col,1); burst(near.tile,col,14,1.5); hitEnemy(near,c.pow,c); if(c.heal) healPlayer(c.heal); break;
+    case 'row': { const row=lineTiles(a.tile,DIRS.E), hit=row.filter(t=>t.occ&&t.occ.kind==='enemy').map(t=>t.occ);
+      if(!hit.length){ B.fx.push({kind:'beam',a:a.tile,b:near.tile,color:col,t:0,life:.3}); hitEnemy(near,c.pow,c); break; }   // nothing in its row: it turns on the nearest
+      B.fx.push({kind:'beam',a:a.tile,b:row[row.length-1],color:col,t:0,life:.3}); hit.forEach(e=>hitEnemy(e,c.pow,c)); break; }
+    case 'chain': { let from=a.tile; es.sort((x,y)=>hexDist(a.tile,x.tile)-hexDist(a.tile,y.tile)).slice(0,c.n||3).forEach((e,i)=>{ const f=from;
+      later(i*.12,()=>{ B.fx.push({kind:'bolt',a:f,b:e.tile,color:col,t:0,life:.3}); hitEnemy(e,c.pow,c); }); from=e.tile; }); break; }
+    case 'burst': [near.tile,...around(near.tile)].forEach(t=>{ flash(t,col,.8); burst(t,col,4,.3); hitAt(t,c.pow,c); }); break;
+    default: B.fx.push({kind:'arc',a:a.tile,b:near.tile,color:col,t:0,life:.35}); hitEnemy(near,c.pow,c);
   }
 }
 // A turn ends: shields and board pieces count down, and expire at 0.
@@ -527,7 +547,7 @@ function endTurn(){
     if(t.trap&&--t.trap.turns<=0) t.trap=null;
     if(t.envTurns>0&&--t.envTurns<=0){ t.burnT=0; t.iceT=0; t.thornT=0; }
   }
-  if(heroOn('ysolde')) heroShield();
+  if(heroOn('ysolde')||heroAura('shield')) heroShield();
   p.blocksLeft=p.block||0;   // a shield is ready again each turn
 }
 function updateAlly(a,dt){
@@ -604,11 +624,12 @@ function update(dt){
   if(!alive().length&&Number.isInteger(b.wave)&&b.wave>=b.waves.length-1&&b.enemies.length){ b.phase='win'; b.player.charging=false; later(1.2,()=>b.hooks.onEnd&&b.hooks.onEnd(true)); return; }
   if(typeof extraTick==='function'){ extraTick(dt); if(b.phase!=='fight') return; }
   const p=b.player, haste=p.hasteT>0;
-  b.gauge=Math.min(GAUGE_MAX,b.gauge+dt*(heroOn('volta')?1.5:1)*(p.gaugeMult||1));
+  b.gauge=Math.min(GAUGE_MAX,b.gauge+dt*(heroOn('volta')?1.5:1)*(heroAura('gauge')||1)*(p.gaugeMult||1));
   ['moveCd','wandCd','hurtT'].forEach(k=>p[k]=Math.max(0,p[k]-rdt));
   ['castCd','invT','powerT','pactT','courageT','hasteT','regenT'].forEach(k=>p[k]=Math.max(0,p[k]-dt));
   if(p.regenT>0){ p.regenAcc=(p.regenAcc||0)+p.regenAmt*dt; if(p.regenAcc>=5){ healPlayer(5); p.regenAcc-=5; } }
   if(p.regenGear){ p.gearAcc=(p.gearAcc||0)+p.regenGear*dt; if(p.gearAcc>=3){ healPlayer(3,true); p.gearAcc-=3; } }
+  if(heroAura('regen')){ p.auraAcc=(p.auraAcc||0)+heroAura('regen')*dt; if(p.auraAcc>=4){ healPlayer(4); p.auraAcc-=4; } }
   if(heroOn('thornfather')){ p.heroAcc=(p.heroAcc||0)+3*dt; if(p.heroAcc>=6){ healPlayer(6); p.heroAcc-=6; } }
   if(p.charging) p.chargeT=Math.min(1.2,p.chargeT+rdt);
   if(B.soul&&B.soul.unisonT>0&&b.phase==='fight'){ B.soul.unisonT-=dt; if(B.soul.unisonT<=0){ floater('Unison ends',p.tile,COLORS[B.soul.card.color].c); B.hooks.onSoul&&B.hooks.onSoul(); } }

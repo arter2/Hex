@@ -1005,6 +1005,20 @@ hero_volta,Captain Volta,storm,hero,hero,hero:volta,hero_volta.csv
 hero_thorn,The Thornfather,verdant,hero,hero,hero:thornfather,hero_thorn.csv
 hero_aurel,Sir Aurelion,light,hero,hero,hero:aurelion,hero_aurel.csv
 hero_widow,The Nightwidow,shadow,hero,hero,hero:widow,hero_widow.csv
+hero_brann,Brann the Forgemaster,fire,hero,hero,hero:brann,hero_brann.csv
+hero_cinder,"Cinder, the Ash Dancer",fire,hero,hero,hero:cinder,hero_cinder.csv
+hero_winter,Old Man Winter,frost,hero,hero,hero:winter,hero_winter.csv
+hero_glacia,Glacia the Mirror,frost,hero,hero,hero:glacia,hero_glacia.csv
+hero_zephyra,"Zephyra, Wind Rider",storm,hero,hero,hero:zephyra,hero_zephyra.csv
+hero_raijin,"Raijin, the Thunder King",storm,hero,hero,hero:raijin,hero_raijin.csv
+hero_briar,Mother Briar,verdant,hero,hero,hero:briar,hero_briar.csv
+hero_fang,Fang the Beastcaller,verdant,hero,hero,hero:fang,hero_fang.csv
+hero_lumina,Saint Lumina,light,hero,hero,hero:lumina,hero_lumina.csv
+hero_solaris,"Solaris, Dawn Archer",light,hero,hero,hero:solaris,hero_solaris.csv
+hero_oracle,The Oracle,light,hero,hero,hero:oracle,hero_oracle.csv
+hero_morrow,Morrow the Lich,shadow,hero,hero,hero:morrow,hero_morrow.csv
+hero_vex,"Vex, the Night Blade",shadow,hero,hero,hero:vex,hero_vex.csv
+hero_jester,The Hollow Jester,shadow,hero,hero,hero:jester,hero_jester.csv
 potion_heal,Healing Draught,gray,boon,common,thing:flask,potion_heal.csv
 potion_tonic,Iron Tonic,gray,ward,common,thing:vial,potion_tonic.csv
 potion_elixir,Quicksilver Elixir,gray,boon,uncommon,thing:flask,potion_elixir.csv

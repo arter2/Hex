@@ -91,10 +91,10 @@ t('no reshuffle: an emptied deck leaves only the wand', ()=>{
   E.openCustom(p); assert.strictEqual(p.hand.length,0);
 });
 
-t('1,000 cards: 125 per family, type split and 50/38/25/12 rarity, plus 6 heroes', ()=>{
-  assert.strictEqual(D.CARD_LIST.length,1010); assert.strictEqual(D.HEROES.length,6);
-  assert.strictEqual(new Set(D.CARD_LIST.map(c=>c.name)).size,1010);
-  assert.deepStrictEqual(D.HEROES.map(h=>h.color).sort(),D.SIX.slice().sort(),'one hero per color');
+t('1,000 cards: 125 per family, type split and 50/38/25/12 rarity, plus 20 heroes', ()=>{
+  assert.strictEqual(D.CARD_LIST.length,1024); assert.strictEqual(D.HEROES.length,20);
+  assert.strictEqual(new Set(D.CARD_LIST.map(c=>c.name)).size,1024);
+  assert.deepStrictEqual([...new Set(D.HEROES.map(h=>h.color))].sort(),D.SIX.slice().sort(),'heroes cover every color'); assert(D.SIX.every(c=>D.HEROES.filter(h=>h.color===c).length>=3),'at least 3 Souls per color');
   for(const fam of Object.keys(D.COLORS)){
     const cs=D.CARD_LIST.filter(c=>c.color===fam&&c.rarity!=='hero'&&!c.potion); assert.strictEqual(cs.length,125,fam);
     for(let r=1;r<=12;r++){ const n=cs.filter(c=>c.rank===r).length; assert(n>=8&&n<=13,fam+' rank '+r+': '+n); }
@@ -213,7 +213,7 @@ t('heroes: one per deck, one copy, rare drops that favor new ones', ()=>{
   let heroes=0; for(let i=0;i<2000;i++) heroes+=C.battleRewards(['fire'],5,true,rng).cards.filter(c=>c.rarity==='hero').length;
   assert(heroes>60&&heroes<240,'about 9% of boss fights at depth 5: '+heroes);
   for(let i=0;i<300;i++) assert(C.battleRewards(['fire'],5,false,rng).cards.every(c=>c.rarity!=='hero'),'only bosses drop heroes');
-  const owned={}; D.HEROES.slice(0,5).forEach(h=>owned[h.id]=1); assert.strictEqual(C.rollHero(rng,owned).id,D.HEROES[5].id);
+  const owned={}; D.HEROES.slice(0,-1).forEach(h=>owned[h.id]=1); assert.strictEqual(C.rollHero(rng,owned).id,D.HEROES[D.HEROES.length-1].id);
   owned.hero_widow=1; owned.hero_aurel=1; const f=C.autoFill([],Object.assign({},s.owned,owned)); assert.strictEqual(f.filter(id=>D.CARDS[id].rarity==='hero').length,1);
 });
 t('combos are uncommon: with runes, a starter hand rarely offers a flush or straight', ()=>{

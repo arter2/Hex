@@ -838,7 +838,12 @@ const HUMAN_LOOK={cultist:{hat:'hood',weapon:'staff'}, witch:{hat:'witch',weapon
 // forest elder, a winged paladin and a spider-legged witch of the night
 const HERO_LOOK={pyra:{hat:'crown',hair:'flame',weapon:'flamestaff',cape:1}, ysolde:{hat:'tiara',hair:'long',weapon:'icestaff',cape:1},
   volta:{hat:'tricorn',weapon:'saber',cape:1}, thornfather:{hat:'antlers',weapon:'gnarl',beard:1},
-  aurelion:{hat:'helm',weapon:'greatsword',shield:1,back:'wings'}, widow:{hat:'veil',weapon:'scythe',back:'legs',cape:1}};
+  aurelion:{hat:'helm',weapon:'greatsword',shield:1,back:'wings'}, widow:{hat:'veil',weapon:'scythe',back:'legs',cape:1},
+  brann:{body:'plate',hat:'kabuto',weapon:'greatsword',beard:1}, cinder:{hair:'flame',weapon:'flamestaff',cape:1}, winter:{hat:'wizard',weapon:'icestaff',beard:1,cape:1},
+  glacia:{hat:'tiara',hair:'long',weapon:'icestaff'}, zephyra:{hat:'tricorn',hair:'long',weapon:'bow',cape:1}, raijin:{hat:'crown',weapon:'spear',beard:1,cape:1},
+  briar:{hat:'leaf',hair:'long',weapon:'gnarl'}, fang:{body:'leather',hat:'antlers',weapon:'spear'}, lumina:{hat:'tiara',weapon:'staff',back:'wings',cape:1},
+  solaris:{hat:'helm',weapon:'bow',cape:1}, oracle:{hat:'hood',weapon:'staff',cape:1}, morrow:{hat:'crown',weapon:'scythe',cape:1},
+  vex:{body:'thief',hat:'thief',weapon:'darksword'}, jester:{hat:'witch',weapon:'wand',cape:1}};
 const SPRITES={};
 function makeSprite(key,pal,draw){
   if(SPRITES[key]) return SPRITES[key];

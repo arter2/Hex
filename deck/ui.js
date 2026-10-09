@@ -317,7 +317,11 @@ function renderSlots(){
     b.textContent=(i+1)+(i===save.active?' ★':''); b.title=d.name; b.onclick=()=>{ editSlot=i; renderBuilder(); }; box.appendChild(b); });
   const d=save.decks[editSlot]; $('#bName').value=d.name;
   $('#bUse').textContent=editSlot===save.active?'In use ★':'Use this deck';
+  const cur=soulOf(d.list,d), sel=$('#bSoul');
+  sel.innerHTML=soulsOwned().map(h=>`<option value="${h.id}"${h.id===cur?' selected':''}>${COLORS[h.color].icon} ${esc(h.name)}</option>`).join('');
+  $('#bSoulTxt').textContent=CARDS[cur]?'Attacks: '+cardText(CARDS[cur]).replace(/\s+/g,' ').slice(0,140):'';
 }
+$('#bSoul').onchange=e=>{ save.decks[editSlot].soul=e.target.value; persist(); renderSlots(); };
 $('#bName').oninput=e=>{ save.decks[editSlot].name=e.target.value||'Deck '+(editSlot+1); persist(); };
 function renderDeck(){
   const d=save.decks[editSlot], v=validateDeck(d.list,CARDS,save.owned);
@@ -555,7 +559,7 @@ function fight(depth,waves,xo){
   const d=activeDeck(); if(!validateDeck(d.list,CARDS,save.owned).ok) return openCamp();
   $('#reveal').classList.remove('on');
   show('scrBattle');
-  const soul=soulOf(d.list), list=d.list.filter(id=>!(CARDS[id]&&CARDS[id].rarity==='hero'));
+  const soul=soulOf(d.list,d), list=d.list.filter(id=>!(CARDS[id]&&CARDS[id].rarity==='hero'));
   startBattle(list,depth,{
     onSoul:ready=>{ if(ready){ buzz(30); banner('♔ Soul ready: Summon or Unison','#ffe066'); } soulMenu(false); },
     onCustom:renderCustom,
@@ -818,7 +822,11 @@ function hud(force){
 
 /* The Soul: the deck's hero if it holds one, otherwise the hero of the deck's main color.
    It stays beside the fight (left of the board) instead of being drawn as a card. */
-function soulOf(list){ const h=list.find(id=>CARDS[id]&&CARDS[id].rarity==='hero'); if(h) return h;
+// Souls you can pick: every hero you own, plus the first six (one per color) that every hexmancer starts with
+const STARTER_SOULS=['hero_pyra','hero_ysolde','hero_volta','hero_thorn','hero_aurel','hero_widow'];
+const soulsOwned=()=>HEROES.filter(h=>STARTER_SOULS.includes(h.id)||save.owned&&save.owned[h.id]);
+function soulOf(list,deck){ const h=list.find(id=>CARDS[id]&&CARDS[id].rarity==='hero'); if(h) return h;
+  if(deck&&deck.soul&&soulsOwned().some(x=>x.id===deck.soul)) return deck.soul;
   const n={}; for(const id of list){ const c=CARDS[id]; if(c&&SIX.includes(c.color)) n[c.color]=(n[c.color]||0)+1; }
   const col=Object.keys(n).sort((a,b)=>n[b]-n[a])[0], H=HEROES.find(h=>h.color===col); return H&&H.id; }
 function soulMenu(on){ const m=$('#soulMenu'); if(m) m.classList.toggle('on',!!on&&soulReady()); }

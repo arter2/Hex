@@ -883,7 +883,7 @@ body.lsS #custHand .slot.hole{min-height:104px;}
 #xBottom .keys.learned{display:none;}
 
 /* the Soul: a round meter left of the board; full, it offers Summon or Unison */
-.soul{position:absolute; left:10px; top:96px; z-index:5; display:flex; flex-direction:column; align-items:center; gap:2px; --sc:#ffe066; --k:0%;}
+.soul{position:absolute; left:10px; top:122px; z-index:5; display:flex; flex-direction:column; align-items:center; gap:2px; --sc:#ffe066; --k:0%;}
 .soul-orb{position:relative; width:58px; height:58px; border-radius:50%; border:0; padding:0; cursor:pointer; background:radial-gradient(circle at 50% 40%,#1a2030,#05070b 70%);
   box-shadow:0 0 0 3px #0a0e16, 0 4px 10px #000a; font-size:26px; display:grid; place-items:center;}
 .soul-ring{position:absolute; inset:-3px; border-radius:50%; background:conic-gradient(var(--sc) var(--k),#ffffff1a 0); -webkit-mask:radial-gradient(circle,transparent 25px,#000 26px); mask:radial-gradient(circle,transparent 25px,#000 26px);}
@@ -895,4 +895,5 @@ body.lsS #custHand .slot.hole{min-height:104px;}
 .soul-menu.on{display:flex;}
 .soul-menu .btn{min-height:44px; font-size:15px; display:flex; flex-direction:column; align-items:flex-start; line-height:1.1; padding:4px 10px;}
 .soul-menu .btn small{font-size:10px; opacity:.8; font-weight:400;}
-@media (orientation:portrait){ .soul{top:136px;} }
+@media (orientation:portrait){ .soul{top:150px;} }
+.soulpick{display:flex; flex-direction:column; gap:2px; margin:4px 0 6px;} .soulpick label{font-weight:700; color:var(--gold);} .soulpick select{font:600 15px var(--font-b); margin-left:6px; background:#0a0e16; color:#fff; border:2px solid #3a4258; padding:3px 6px; max-width:70vw;}

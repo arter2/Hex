@@ -231,6 +231,7 @@ function updateEnemy(e,dt){
   if(e.under) return;
   if(e.freezeT>0||e.stunT>0){ e.freezeT=Math.max(0,e.freezeT-dt); e.stunT=Math.max(0,e.stunT-dt); return; }
   if(e.slowT>0){ e.slowT-=dt; dt*=.5; }
+  if(typeof heroAura==='function'&&heroAura('slowfoes')) dt*=1-heroAura('slowfoes');   // Old Man Winter
   if(e.windT>0){ e.windT-=dt; if(e.windT<=0) enemyShot(e,e.dmg*(e.powerT>0?1.3:1)); return; }
   if(e.casting){ e.castT-=dt; if(e.castT<=0){ const c=e.casting; e.casting=null; enemyCast(e,c); } return; }
   e.moveT-=dt;

@@ -121,7 +121,7 @@ const lightShot=s=>typeof palHas==='function'&&palHas('golem','shard')&&!(s.owne
 function palImpact(e,t,s){ if(s&&lightShot(s)&&t){ B.fx.push({kind:'palfx',id:'golem',anim:'shardHit',a:t,t:0,life:4/14}); return; } if(e&&t&&!(e.phase>=2)&&typeof palHas==='function'&&palHas(e.id,'impact')) B.fx.push({kind:'palfx',id:e.id,anim:'impact',a:t,t:0,life:8/14}); }
 function later(sec,fn){ B.timers.push({t:sec,fn}); }
 // units slide between tiles instead of jumping
-const INTENT_ICON={shot:'➶',firebomb:'🔥',iceslam:'❄',cross:'✚',rush:'➤',blink:'☾',mend:'✚',quake:'⚠',boulders:'●'};
+const INTENT_ICON={hex:'☾',summon:'☠',shift:'⟳',collect:'🂠',brew:'⚗',snare:'❦',revive:'✝',bless:'✦',lunge:'⚔',steal:'✋',snipe:'◎',guard:'🛡',cleave:'⚔',bomb:'💣',shot:'➶',firebomb:'🔥',iceslam:'❄',cross:'✚',rush:'➤',blink:'☾',mend:'✚',quake:'⚠',boulders:'●'};
 const posOf=u=>[u.rx??u.tile.wx, u.rz??u.tile.wz];
 function shake(a){ View.shake=Math.max(View.shake||0,a); }
 function floater(text,t,color,big){ B.floaters.push({text,wx:t.wx,wz:t.wz,y:1.6,t:0,color:color||'#fff',big}); }
@@ -322,6 +322,7 @@ function hitPlayer(dmg){
   if(p.barrier>0){ const a=Math.min(p.barrier,dmg); p.barrier-=a; dmg-=a; floater('🛡'+a,p.tile,'#6fd6ff'); }
   if(p.guard&&dmg>0) dmg=Math.max(1,Math.round(dmg*(1-p.guard)));
   if(p.hurt&&p.hurt!==1&&dmg>0) dmg=Math.round(dmg*p.hurt);
+  if(p.hexT>0&&dmg>0) dmg=Math.round(dmg*1.3);   // a Dark Wizard's hex
   if(dmg<=0) return;
   if(p.counter){ const foe=alive().filter(e=>hexDist(e.tile,p.tile)<=5).sort((a,b)=>hexDist(a.tile,p.tile)-hexDist(b.tile,p.tile))[0];
     if(foe){ B.fx.push({kind:'beam',a:p.tile,b:foe.tile,color:'#e6f4ff',t:0,life:.2}); hitEnemy(foe,p.counter,null,{raw:true}); } }
@@ -585,7 +586,7 @@ function update(dt){
   if(p.regenGear){ p.gearAcc=(p.gearAcc||0)+p.regenGear*dt; if(p.gearAcc>=3){ healPlayer(3,true); p.gearAcc-=3; } }
   if(heroOn('thornfather')){ p.heroAcc=(p.heroAcc||0)+3*dt; if(p.heroAcc>=6){ healPlayer(6); p.heroAcc-=6; } }
   if(p.charging) p.chargeT=Math.min(1.2,p.chargeT+rdt);
-  p.rootT=Math.max(0,(p.rootT||0)-dt); for(const q of b.piles.queue) if(q.frozenT>0) q.frozenT-=dt;
+  p.rootT=Math.max(0,(p.rootT||0)-dt); p.hexT=Math.max(0,(p.hexT||0)-dt); for(const q of b.piles.queue) if(q.frozenT>0) q.frozenT-=dt;
   if(p.path.length&&p.moveCd<=0&&p.rootT<=0){ const n=p.path[0]; if(n.side==='p'&&!n.occ&&!(n.holeT>0)){ p.tile.occ=null; p.tile=n; n.occ=p; p.path.shift(); p.moveCd=(haste?.08:.14)*(icy(n)?2.2:1)*(p.slow||1); } else p.path=[]; }
 
   // your shots and enemy shots travel tile by tile

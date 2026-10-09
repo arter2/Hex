@@ -27,12 +27,20 @@ const ENEMY_DEFS={
   cutpurse: {name:'Cutpurse',      color:'gray',  weak:'light',   hp:80,  dmg:8,  rate:[2.4,3.2], moves:['steal','blink'], ai:'wander', outlaw:true},
   marksman: {name:'Crossbowman',   color:'brown', weak:'storm',   hp:90,  dmg:22, rate:[3.6,4.6], moves:['snipe'], ai:'back', outlaw:true},
   sellsword:{name:'Sellsword',     color:'brown', weak:'frost',   hp:170, dmg:16, rate:[3.4,4.4], moves:['guard','cleave'], ai:'align', outlaw:true},
+  // spellfolk: humans who twist the fight rather than just hit
+  darkwiz:  {name:'Dark Wizard',   color:'shadow',  hp:110, dmg:13, rate:[3,4],     moves:['hex','shot','summon'], ai:'back', spell:true},
+  shifter:  {name:'Shapeshifter',  color:'gray', weak:'light', hp:120, dmg:12, rate:[2.8,3.8], moves:['shift'], ai:'wander', spell:true},
+  collector:{name:'Card Collector',color:'brown', weak:'shadow', hp:115, dmg:10, rate:[2.8,3.6], moves:['collect','shot'], ai:'back', spell:true, collector:true},
+  hedgewitch:{name:'Witch Healer', color:'verdant', hp:95,  dmg:9,  rate:[3,4],     moves:['brew','snare','mend'], ai:'back', spell:true},
+  priest:   {name:'Priest',        color:'light',   hp:100, dmg:8,  rate:[3.2,4.2], moves:['revive','bless'], ai:'back', spell:true},
   bomber:   {name:'Powder Monkey', color:'gray',  weak:'verdant', hp:85,  dmg:15, rate:[3.2,4.2], moves:['bomb'], ai:'back', outlaw:true},
 };
 const WEAK_TO={}; for(const k in BEATS) WEAK_TO[BEATS[k]]=k;
 const MONSTERS=['gloop','wisp','mite','beetle','ram','shade','sprite'];
 const HUMANOIDS=['cultist','witch','caller','warden','paladin','knight'];
 const OUTLAWS=['bandit','cutpurse','marksman','sellsword','bomber'];
+const SPELLFOLK=['darkwiz','shifter','collector','hedgewitch','priest'];
+const SHIFT_FORMS=['gloop','wisp','mite','beetle','ram','shade','sprite'];
 const ENEMY_CARD_TYPES=['strike','lob','ward','sentry','boon','charge'];
 
 /* ---------------- encounters ---------------- */
@@ -47,7 +55,7 @@ function makeEncounter(depth){
   const out=[];
   // an outlaw gang: a wave of outlaws (from depth 1), otherwise monsters with casters mixed in
   for(let w=0;w<waves;w++){ if(Math.random()<(depth<2?.2:.25)){ out.push(Array.from({length:size},()=>pick(OUTLAWS))); continue; }
-    out.push(Array.from({length:size},()=>one(Math.random()<human?HUMANOIDS:MONSTERS))); }
+    out.push(Array.from({length:size},()=>one(Math.random()<human?(Math.random()<.45?SPELLFOLK:HUMANOIDS):MONSTERS))); }
   const boss=typeof isBossDepth==='function'?isBossDepth(depth):depth%4===0;
   if(boss) out[out.length-1]=[typeof bossFor==='function'?bossFor(depth):'golem'].concat(depth>=8?[one(MONSTERS)]:[]);   // a boss and its helpers carry the fight
   return out;
@@ -62,6 +70,7 @@ function makeEnemy(id,t,depth){
   const e={kind:'enemy', id, def:d, name:d.name, color:d.color, hp:Math.round(d.hp*hs), maxHp:Math.round(d.hp*hs), dmg:Math.round(d.dmg*ds), ds,
            tile:t, atkT:rnd(1.8,3.2), moveT:rnd(.8,1.8), windT:0, burnT:0, burnAcc:0, freezeT:0, stunT:0, slowT:0, poisonT:0, poisonAmt:0, curseT:0, hitT:0,
            barrier:0, powerT:0, castT:0, casting:null, weak:d.weak||null, nextMove:pick(d.moves), deck:d.deck?enemyDeck(d.color,depth):null, deckCd:rnd(3,5)};
+  if(d.collector) e.deck=[];   // a Card Collector's deck is whatever it takes from you
   t.occ=e; return e;
 }
 const openEnemyTiles=()=>E_TILES.filter(t=>!t.occ&&t.terrain!=='lava');
@@ -152,6 +161,27 @@ const MOVES={
   cleave(e){ const p=B.player, rows=[p.tile.r,p.tile.r+(Math.random()<.5?-1:1)]; tele(e,P_TILES.filter(t=>rows.includes(t.r)&&t.col<=2),1.1,e.dmg); },
   // Powder Monkey: a fizzing bomb on and around you that leaves the floor burning
   bomb(e){ const t=B.player.tile, ts=[t,...neighbors(t).filter(x=>x.side==='p')].filter(()=>true).slice(0,4); tele(e,ts,1.3,e.dmg,()=>ts.forEach(x=>{ x.burnT=Math.max(x.burnT||0,3); burst(x,'#ff9a3a',10,.5); })); },
+  // Dark Wizard: hexes your row (you take 30% more for 6 s), or calls a shade to its side
+  hex(e){ const p=B.player, row=p.tile.r; tele(e,pTilesInRow(row),.9,Math.round(e.dmg*.5),()=>{ if(p.tile.r===row){ p.hexT=6; floater('Hexed!',p.tile,'#e0588f',true); burst(p.tile,'#7a2a8f',16,1); } }); },
+  summon(e){ if(alive().length>=4) return MOVES.hex(e); const t=pick(openEnemyTiles()); if(!t) return MOVES.shot(e);
+    const m=makeEnemy('shade',t,B.depth); m.hp=m.maxHp=Math.round(m.maxHp*.5); m.atkT+=1.5; B.enemies.push(m); burst(t,'#7a2a8f',20,1); floater('summoned',t,'#e0588f');
+    B.fx.push({kind:'bolt',a:e.tile,b:t,color:'#e0588f',t:0,life:.35}); },
+  // Shapeshifter: takes a monster's shape, its element, weakness and attacks, and shifts again later
+  shift(e){ const f=pick(SHIFT_FORMS.filter(x=>x!==e.form)), d=ENEMY_DEFS[f]; e.form=f; e.color=d.color; e.weak=null; e.moves=d.moves.concat(['shift']);
+    e.nextMove=pick(d.moves); burst(e.tile,COLORS[d.color].c,26,1.2); burst(e.tile,'#ffffff',10,1); floater('→ '+d.name,e.tile,COLORS[d.color].c,true); },
+  // Card Collector: snatches a card from your hand, then casts it back at you. Kill it for all of them back.
+  collect(e){ const t=B.player.tile; tele(e,[t],.9,Math.round(e.dmg*.5),()=>{ if(B.player.tile!==t||e.hp<=0) return; const src=B.piles.hand.length?B.piles.hand:B.piles.queue.filter(c=>!c.combo);
+    const card=pick(src); if(!card) return; const L=B.piles.hand.includes(card)?B.piles.hand:B.piles.queue; L.splice(L.indexOf(card),1);
+    (e.loot=e.loot||[]).push(card); e.deck.push(card.card); e.deckCd=Math.min(e.deckCd,1.2); floater('Collected '+card.card.name+'!',e.tile,'#ffe066',true); }); },
+  // Witch Healer: a brew that heals every ally a little, a root that pins you in place, or a strong mend
+  brew(e){ for(const x of alive()){ const h=Math.round(x.maxHp*.08); if(x.hp<x.maxHp){ x.hp=Math.min(x.maxHp,x.hp+h); floater('+'+h,x.tile,'#6dff9a'); burst(x.tile,'#6fdc7a',8,1); } } },
+  snare(e){ const t=B.player.tile; tele(e,[t],.8,Math.round(e.dmg*.5),()=>{ if(B.player.tile===t){ B.player.rootT=Math.max(B.player.rootT||0,1.8); floater('Rooted!',t,'#6fdc7a',true); burst(t,'#6fdc7a',14,.4); } }); },
+  // Priest: brings a fallen ally back once each, or blesses the living with a shield and strength
+  revive(e){ const dead=B.enemies.find(x=>x.hp<=0&&x!==e&&!x.revived&&!x.def.boss&&!x.def.mini), t=dead&&pick(openEnemyTiles());
+    if(!dead||!t) return MOVES.bless(e);
+    Object.assign(dead,{hp:Math.round(dead.maxHp*.4), revived:true, deathT:0, tile:t, burnT:0, freezeT:0, stunT:0, poisonT:0, curseT:0, markT:0, mark:null, atkT:2, casting:null, windT:0}); t.occ=dead;
+    floater('Revived!',t,'#fff0b3',true); burst(t,'#fff0b3',30,1.5); B.fx.push({kind:'beam',a:t,b:t,y0:6,color:'#fff6c8',t:0,life:.5}); },
+  bless(e){ for(const x of alive()){ x.barrier=Math.max(x.barrier,25); x.powerT=Math.max(x.powerT,6); floater('Blessed',x.tile,'#fff0b3'); burst(x.tile,'#fff0b3',8,1); } },
   mend(e){ const hurt=alive().filter(x=>x!==e&&x.hp<x.maxHp).sort((a,b)=>a.hp/a.maxHp-b.hp/b.maxHp)[0];
     if(!hurt) return MOVES.shot(e);
     const h=Math.round(hurt.maxHp*.2); hurt.hp=Math.min(hurt.maxHp,hurt.hp+h); hurt.barrier=Math.max(hurt.barrier,20); hurt.shieldTurns=Math.max(hurt.shieldTurns||0,1); floater('+'+h,hurt.tile,'#fff0b3'); burst(hurt.tile,'#fff0b3',12,1);
@@ -207,7 +237,7 @@ function updateEnemy(e,dt){
   if(e.moveT<=0&&!b.teles.some(t=>t.owner===e)){ e.moveT=rnd(1.4,2.4)*(icy(e.tile)?2:1); moveEnemy(e); if(e.hp<=0) return; }
   if(e.deck){ e.deckCd-=dt; if(e.deckCd<=0&&e.deck.length){ e.deckCd=rnd(4,6); e.casting=e.deck.shift(); e.castT=.9; return; } }
   e.atkT-=dt;
-  if(e.atkT<=0){ e.atkT=rnd(e.def.rate[0],e.def.rate[1]); const mv=e.nextMove||pick(e.def.moves); MOVES[mv](e); e.nextMove=pick(e.def.moves); if(typeof palPlay==='function') palPlay(e,mv==='quake'?'quake':(mv==='shot'||mv==='boulders')?'throw':''); }   // the next move is picked early so it can be shown
+  if(e.atkT<=0){ e.atkT=rnd(e.def.rate[0],e.def.rate[1]); const ms=e.moves||e.def.moves, mv=e.nextMove||pick(ms); MOVES[mv](e); e.nextMove=pick(e.moves||e.def.moves); if(typeof palPlay==='function') palPlay(e,mv==='quake'?'quake':(mv==='shot'||mv==='boulders')?'throw':''); }   // the next move is picked early so it can be shown
 }
 
-if(typeof module!=='undefined') module.exports={ENEMY_DEFS,MONSTERS,HUMANOIDS,OUTLAWS,makeEncounter};
+if(typeof module!=='undefined') module.exports={ENEMY_DEFS,MONSTERS,HUMANOIDS,OUTLAWS,SPELLFOLK,makeEncounter};

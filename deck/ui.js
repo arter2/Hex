@@ -790,6 +790,7 @@ function hud(force){
   if(p.powerT>0) buffs.push('⚡ Wand ×2.5 '+Math.ceil(p.powerT)+'s'); if(p.pactT>0) buffs.push('☾ Pact '+Math.ceil(p.pactT)+'s'); if(p.courageT>0) buffs.push('☀ Courage '+Math.ceil(p.courageT)+'s'); if(p.intervene) buffs.push('✟ Intervention');
   if(p.hero&&p.hero.hp>0) buffs.unshift('♔ '+p.hero.card.name.split(',')[0]+' · '+p.hero.turns+(p.hero.turns>1?' turns':' turn'));
   if(p.rootT>0) buffs.unshift('❦ Rooted '+p.rootT.toFixed(1)+'s');
+  if(p.hexT>0) buffs.unshift('☾ Hexed '+Math.ceil(p.hexT)+'s (+30% damage taken)');
   if(p.hasteT>0) buffs.push('🌬 Haste '+Math.ceil(p.hasteT)+'s'); if(p.regenT>0) buffs.push('🌿 Regen '+Math.ceil(p.regenT)+'s');
   set('buffs',buffs.join('   '),v=>$('#buffs').textContent=v);
   set('queue',pl.queue.map(c=>c.uid+':'+(c.left==null?'':c.left)+(c.frozenT>0?'f':'')).join(',')+'|'+alive().map(e=>e.markT>0?e.mark:'').join(','),()=>{

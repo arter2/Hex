@@ -830,7 +830,10 @@ const HUMAN_LOOK={cultist:{hat:'hood',weapon:'staff'}, witch:{hat:'witch',weapon
   warden:{hat:'leaf',weapon:'bow',cape:1}, paladin:{hat:'helm',weapon:'sword',shield:1}, knight:{hat:'spiked',weapon:'darksword',cape:1},
   // outlaws
   bandit:{body:'leather',hat:'cap',weapon:'saber',beard:1}, cutpurse:{body:'thief',hat:'thief',weapon:'wand'}, marksman:{body:'leather',hat:'helm',weapon:'crossbow'},
-  sellsword:{body:'plate',hat:'kabuto',weapon:'greatsword',shield:1}, bomber:{body:'shirt',hat:'cap',weapon:'staff',beard:1}};
+  sellsword:{body:'plate',hat:'kabuto',weapon:'greatsword',shield:1}, bomber:{body:'shirt',hat:'cap',weapon:'staff',beard:1},
+  // spellfolk
+  darkwiz:{hat:'wizard',weapon:'darksword',cape:1,beard:1}, shifter:{body:'leather',hat:'hood',weapon:'gnarl'}, collector:{body:'shirt',hat:'tricorn',weapon:'wand',cape:1},
+  hedgewitch:{hat:'witch',weapon:'gnarl',hair:'long'}, priest:{hat:'tiara',weapon:'staff',cape:1}};
 // the six heroes: a crowned fire queen, a frost sorceress, a sky captain, an antlered
 // forest elder, a winged paladin and a spider-legged witch of the night
 const HERO_LOOK={pyra:{hat:'crown',hair:'flame',weapon:'flamestaff',cape:1}, ysolde:{hat:'tiara',hair:'long',weapon:'icestaff',cape:1},
@@ -959,6 +962,7 @@ function unitSprite(u){
   if(u.kind==='player'){ const hs=lookSprite(u.lookId||playerLook(),u.view||'back',null,u.pose); if(hs) return hs; }
   if(u.kind==='player'){ const L=u.look||{body:'robe',m:'#1f5fa8',a:'#f2c94c',hat:'wizard',weapon:'staff',glow:'#7fd4ff',beard:true};
     return makeSprite('player:'+JSON.stringify(L),{m:L.m,a:L.a,c:artMix(L.m,'#000000',.35),glow:L.glow,o:'#03070c',d:artMix(L.m,'#1a1020',.55)},()=>human(L)); }
+  if(u.kind==='enemy'&&u.form) u=Object.assign({},u,{id:u.form,form:null});   // a Shapeshifter wears its current shape
   if(u.kind==='enemy'&&typeof PAL_SPRITES!=='undefined'&&PAL_SPRITES[u.id]){ const ps=palSprite(u); if(ps) return ps; }
   if(u.kind==='enemy'){ const rs=rigSprite(u.id); if(rs) return rs; }
   if(u.kind==='enemy'){ const F=FAM[u.color], id=u.id;

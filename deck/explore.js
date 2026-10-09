@@ -329,8 +329,13 @@ function xBuildScene(){
       pos.push(x0,0,z0, x0,0,z1, x1,0,z1,  x0,0,z0, x1,0,z1, x1,0,z0);
       uv.push(x0/k,-z0/k, x0/k,-z1/k, x1/k,-z1/k,  x0/k,-z0/k, x1/k,-z1/k, x1/k,-z0/k); }
     if(!pos.length) return;
-    const geo=new THREE.BufferGeometry(); geo.setAttribute('position',new THREE.Float32BufferAttribute(pos,3)); geo.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2)); geo.computeVertexNormals();
-    grp.add(new THREE.Mesh(geo,xPhong({map:xTex(cv,true)}))); });
+    // shade: each corner darkens with the rock around it, so floors sink softly into the walls
+    const rock=(x,y)=>x<0||y<0||x>=XN||y>=XN||EX.t[xi(x,y)]===T_ROCK?1:0, col=[];
+    for(let k=0;k<pos.length;k+=3){ const gx=Math.round(pos[k]/XCS), gy=Math.round(pos[k+2]/XCS);
+      const n=rock(gx-1,gy-1)+rock(gx,gy-1)+rock(gx-1,gy)+rock(gx,gy); const a=n>=3?.38:n===2?.6:n===1?.78:1; col.push(a,a,a); }
+    for(let k=0;k<col.length;k+=18){ const t=.9+((Math.sin(k*12.9898+seed)*43758.5453)%1+1)%1*.1; for(let j=0;j<18;j++) col[k+j]*=t; }
+    const geo=new THREE.BufferGeometry(); geo.setAttribute('position',new THREE.Float32BufferAttribute(pos,3)); geo.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2)); geo.setAttribute('color',new THREE.Float32BufferAttribute(col,3)); geo.computeVertexNormals();
+    grp.add(new THREE.Mesh(geo,xPhong({map:xTex(cv,true),vertexColors:true}))); });
   // darkness: a black veil over the floor whose alpha comes from a per-cell light map with linear
   // filtering, so light fades smoothly from cell to cell instead of cutting off
   EX.fog=new Uint8Array(XN*XN*4).fill(255); EX.fogCur=new Float32Array(XN*XN); EX.fogTgt=new Float32Array(XN*XN);
@@ -347,7 +352,11 @@ function xBuildScene(){
   const wallTex=[xRockWall(S,seed+4),xBlockWall(S,seed+5,false),xBlockWall(S,seed+6,true)];
   EX.wIdx=new Map(); EX.wms=[]; EX.shown=new Uint8Array(XN*XN);
   const zero=new THREE.Matrix4().makeScale(0,0,0), black=new THREE.Color(0,0,0);
-  walls.forEach((list,v)=>{ const wm=new THREE.InstancedMesh(new THREE.BoxGeometry(XCS,XWALL,XCS),xPhong({map:xTex(wallTex[v])}),Math.max(1,list.length));
+  const wgeo=new THREE.BoxGeometry(XCS,XWALL,XCS,1,3,1);
+  { const P=wgeo.attributes.position, N=wgeo.attributes.normal, c=[];   // foot shadow up the face, a darker rim at the top, a near-black cap
+    for(let k=0;k<P.count;k++){ const y=P.getY(k)/XWALL+.5; const a=N.getY(k)>.5?.22:N.getY(k)<-.5?.2:.5+.5*Math.min(1,y*1.6)-(y>.97?.25:0); c.push(a,a,a); }
+    wgeo.setAttribute('color',new THREE.Float32BufferAttribute(c,3)); }
+  walls.forEach((list,v)=>{ const wm=new THREE.InstancedMesh(wgeo,xPhong({map:xTex(wallTex[v]),vertexColors:true}),Math.max(1,list.length));
     wm.instanceMatrix.setUsage(THREE.DynamicDrawUsage); grp.add(wm); EX.wms.push(wm);
     for(let k=0;k<wm.count;k++){ wm.setMatrixAt(k,zero); wm.setColorAt(k,black); }
     list.forEach((c,k)=>EX.wIdx.set(c,[wm,k])); });
@@ -425,8 +434,23 @@ function xAreaLights(grp,A){
       else { for(let m=0;m<4;m++){ const s=new THREE.Mesh(new THREE.SphereGeometry(.045,6,4),mat(pale)); s.position.set((R()-.5)*1.1,.5+R()*1.1,.2+R()*.4); s.userData.y0=s.position.y; g.add(s); } }
       const halo=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,color:col,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false}));
       halo.scale.set(2.6,2.6,1); halo.position.set(0,.55,.25); halo.renderOrder=2; g.add(halo);
-      g.visible=false; grp.add(g); EX.glows.push({g,floor,mats,halo,ph:R()*6}); } }
+      g.add(xPool(tex,col,2.4)); g.visible=false; grp.add(g); EX.glows.push({g,floor,mats,halo,ph:R()*6}); }
+    // one or two wall torches: an iron bracket, a flickering flame and a warm pool on the floor
+    for(let k=Math.min(ok.length,1+(R()<.4?1:0));k>0;k--){ const [wx,wy,dx,dy]=ok.splice(R()*ok.length|0,1)[0], floor=xi(wx+dx,wy+dy);
+      const g=new THREE.Group(); g.position.set((wx+.5+dx*.5)*XCS+dx*.04,0,(wy+.5+dy*.5)*XCS+dy*.04); g.rotation.y=Math.atan2(dx,dy);
+      const iron=xMat(0x2a2620), warm=new THREE.Color(0xffa040), mats=[];
+      g.add(xBox(.1,.45,.1,iron,0,1.0,.1), xBox(.26,.08,.26,iron,0,1.24,.18), xBox(.3,.05,.06,iron,0,1.0,.04));
+      const flame=new THREE.Group(), fm=c=>{ const m=new THREE.MeshBasicMaterial({color:c,transparent:true}); mats.push(m); return m; };
+      const f1=new THREE.Mesh(new THREE.ConeGeometry(.17,.5,6),fm(0xff7a2a)), f2=new THREE.Mesh(new THREE.ConeGeometry(.09,.32,6),fm(0xffe08a));
+      f1.position.y=.25; f2.position.y=.17; flame.add(f1,f2); flame.position.set(0,1.28,.18); g.add(flame);
+      const halo=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,color:warm,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false}));
+      halo.scale.set(3.2,3.2,1); halo.position.set(0,1.5,.3); halo.renderOrder=2; g.add(halo);
+      const pool=xPool(tex,warm,4.2); g.add(pool);
+      g.visible=false; grp.add(g); EX.glows.push({g,floor,mats,halo,pool,flame,torch:true,ph:R()*6}); } }
 }
+// a soft pool of colored light on the floor in front of a wall light (an additive decal: cheap, no real light)
+function xPool(tex,col,size){ const m=new THREE.Mesh(new THREE.PlaneGeometry(size,size),new THREE.MeshBasicMaterial({map:tex,color:col,transparent:true,opacity:.35,blending:THREE.AdditiveBlending,depthWrite:false}));
+  m.rotation.x=-Math.PI/2; m.position.set(0,.06,size*.32); m.renderOrder=2; m.userData.pool=1; return m; }
 function xGroupSprites(gp,grp){ const id=gp.ids[0], d=ENEMY_DEFS[id], h=XSPR*Math.max(.75,Math.min(1.7,d.scale||1));
   gp.sprite=xSprite(()=>unitSprite({kind:'enemy',id,color:d.color}),h); gp.sprite.visible=false; grp.add(gp.sprite);
   gp.zz=xTextSprite('z','#9fd8ff'); gp.bang=xTextSprite('!','#ff4d5e'); gp.zz.visible=gp.bang.visible=false; grp.add(gp.zz,gp.bang); gp.h=h;
@@ -794,12 +818,16 @@ function xDraw(T,dt){
   { const rc=EX.aim?EX.aim.cell:EX.searchCell, R=G.reticle; R.visible=rc!=null;
     if(R.visible){ R.position.set(xw(rc),.12,xz(rc)); const k=EX.aim?1+.05*Math.sin(T*8):1+.12*Math.sin(T*14); R.scale.set(k,1,k); R.children[0].material.opacity=EX.aim?.9:.6+.3*Math.sin(T*14); } }
   EX.downMesh.userData.ring.rotation.z+=.02;
-  for(const L of EX.glows){ if(!L.g.visible) continue; const f=EX.fogCur[L.floor], fl=.85+.15*Math.sin(T*1.7+L.ph);
+  for(const L of EX.glows){ if(!L.g.visible) continue; const f=EX.fogCur[L.floor];
+    const fl=L.torch?.8+.12*Math.sin(T*11+L.ph)+.08*Math.sin(T*23.7+L.ph*3):.85+.15*Math.sin(T*1.7+L.ph);
     L.halo.material.opacity=.6*f*fl; for(const m of L.mats) m.opacity=.3+.7*f;
+    for(const o of L.g.children) if(o.userData.pool) o.material.opacity=(L.torch?.6:.3)*f*fl;
+    if(L.flame){ L.flame.scale.set(.9+.15*Math.sin(T*17+L.ph),.85+.3*fl,.9+.15*Math.cos(T*13+L.ph)); L.flame.rotation.z=Math.sin(T*7+L.ph)*.12; }
     if(EX.area.veins==='stars') L.g.children.forEach((o,i)=>{ if(o.userData.y0!=null) o.position.y=o.userData.y0+Math.sin(T*1.3+i+L.ph)*.12; }); }
   { const P=G.dust.geometry.attributes.position, a=P.array; for(let k=0;k<a.length;k+=3){ a[k+1]+=dt*.25; a[k]+=Math.sin(T+k)*dt*.1; if(a[k+1]>3.2) a[k+1]=0; } P.needsUpdate=true;
     G.dust.position.set(EX.px,0,EX.pz); G.dust.material.opacity=.35+.15*Math.sin(T*.7); }
   for(const c of EX.chests) if(c.rich&&!c.open) c.mesh.position.y=Math.abs(Math.sin(T*2))*.05;
+  G.lamp.intensity=1.6*(.95+.04*Math.sin(T*9.3)+.03*Math.sin(T*21.1));
   G.renderer.render(G.scene,G.cam);
   if((EX.miniT=(EX.miniT||0)+1)%6===0) xMini();
 }
@@ -841,6 +869,8 @@ function xHud(){ if(!EX) return; const m=xmaxHp();
 
 /* ---------------- entering and returning ---------------- */
 function enterExplore(depth){
+  // the long how-to line under the buttons: shown for your first three floors, then tucked away
+  try{ const n=+(localStorage.getItem('hexmancers-xhelp')||0)+1; localStorage.setItem('hexmancers-xhelp',n); document.querySelector('#xBottom .keys').classList.toggle('learned',n>3); }catch(e){}
   const v=validateDeck(activeDeck().list,CARDS,save.owned); if(!v.ok) return;
   if(typeof THREE==='undefined'){ tip('The 3D map could not load; fighting directly.'); return fight(depth); }
   show('scrExplore'); xInit3D();

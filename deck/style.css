@@ -876,3 +876,8 @@ body.lsS #custHand .slot.hole{min-height:104px;}
 
 /* the map Strike button: swing at pots and enemies in reach */
 #xBottom .btn.strike{border-image-source:var(--px-btn-gold); color:var(--gold);}
+
+/* dungeon polish: a vignette that closes the view in, and a tidier control bar */
+#xVig{position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse 75% 70% at 50% 46%,rgba(0,0,0,0) 55%,rgba(0,0,0,.55) 85%,rgba(0,0,0,.85) 100%);}
+#xBottom .btn.mini{min-height:38px; min-width:0; font-size:14px; padding:0 8px;}
+#xBottom .keys.learned{display:none;}

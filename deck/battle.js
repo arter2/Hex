@@ -218,14 +218,14 @@ function reactFx(name,t){
 }
 // The reaction this color would set off on some marked enemy, if any (lights up queued cards).
 const reactWith=c=>{ for(const e of alive()) if(e.markT>0&&e.mark&&e.mark!==c){ const r=REACTIONS[[e.mark,c].sort().join('+')]; if(r) return r; } return null; };
-function react(e,card,base){
+function react(e,card,base,fromGround){
   const c=card.color; if(!SIX.includes(c)) return;
   const m=e.markT>0?e.mark:null;
   const rx=m&&m!==c?REACTIONS[[m,c].sort().join('+')]:null;
-  if(!rx){ e.mark=c; e.markT=MARK_T; return; }
-  e.mark=null; e.markT=0;
+  if(!rx){ e.mark=c; e.markT=MARK_T; if(!fromGround) stain(e.tile,c); return; }
+  e.mark=null; e.markT=0; e.tile.gT=0;
   const t=e.tile, near=r=>alive().filter(o=>o!==e&&hexDist(o.tile,t)<=r);
-  floater(rx.name+'!',t,rx.c,true); flash(t,rx.c,1); shake(5); reactFx(rx.name,t);
+  floater(rx.name+'!',t,rx.c,true); flash(t,rx.c,1); shake(5); reactFx(rx.name,t); groundFx(rx.name,t);
   B.reacts=(B.reacts||0)+1;
   later(.12,()=>{ switch(rx.name){
     case 'Shatter': { const k=e.freezeT>0?1.5:1; e.freezeT=0; if(e.hp>0) hitEnemy(e,Math.round(base*k),null,{raw:true}); break; }
@@ -235,6 +235,35 @@ function react(e,card,base){
     case 'Thornbind': if(e.hp>0){ e.stunT=Math.max(e.stunT,2.5); e.slowT=Math.max(e.slowT,5); cancelAttack(e); } break;
     case 'Rimebind': [e,...near(1)].forEach(o=>{ if(o.hp>0){ o.freezeT=Math.max(o.freezeT,2); cancelAttack(o); spray(o.tile,10,{shape:'shard',color:['#ffffff','#bfefff'],v:1.8,up:2.5,g:6,life:.6,s:4,spin:8}); ring(o.tile,'#bfefff',.8,.4,4); } }); break;
   } });
+}
+/* Ground: a colored hit stains the enemy-side tile under it for 8 s. An enemy that steps or stands on a
+   stain picks the element up as its mark (or sets off a reaction with the one it carries), and a card that
+   lands on an empty stained tile reacts with the stain itself. Every reaction also reshapes the ground. */
+const STAIN_T=8;
+function stain(t,c){ if(!t||t.side!=='e'||t.holeT>0) return; t.gEl=c; t.gT=STAIN_T; }
+const groundArea=t=>[t,...neighbors(t)].filter(x=>x.side==='e');
+function groundFx(name,t){ const A=groundArea(t);
+  switch(name){
+    case 'Shatter':  A.forEach(x=>{ x.iceT=Math.max(x.iceT||0,6); }); break;                        // ice field: enemies on it are slowed
+    case 'Conduct':  A.forEach(x=>{ x.zapT=Math.max(x.zapT||0,5); }); break;                        // live current: damage and jolts
+    case 'Wildfire': A.forEach(x=>{ x.burnT=Math.max(x.burnT||0,6); }); break;                      // burning ground
+    case 'Eclipse':  A.forEach(x=>{ x.voidT=Math.max(x.voidT||0,6); }); break;                      // shadow pool: curses whoever stands in it
+    case 'Thornbind':A.forEach(x=>{ x.thornT=Math.max(x.thornT||0,8); x.thornPow=Math.max(x.thornPow||0,10); }); break;  // thorns hurt anything that steps in
+    case 'Rimebind': A.forEach(x=>{ x.iceT=Math.max(x.iceT||0,8); }); break;
+  }
+  A.forEach((x,i)=>{ x.gT=0; later(.04*i,()=>flash(x,REACTIONS[Object.keys(REACTIONS).find(k=>REACTIONS[k].name===name)].c,.7)); });
+}
+// A card hits an empty enemy tile: stain it, or react with the stain already there.
+function groundHit(t,c){ if(!c||!SIX.includes(c.color)||t.side!=='e') return;
+  const m=t.gT>0?t.gEl:null, rx=m&&m!==c.color?REACTIONS[[m,c.color].sort().join('+')]:null;
+  if(!rx) return stain(t,c.color);
+  t.gT=0; floater(rx.name+'!',t,rx.c,true); shake(3); reactFx(rx.name,t); groundFx(rx.name,t); B.reacts=(B.reacts||0)+1; }
+// Enemies standing on stains or reshaped ground (called every frame from updateTerrain).
+function groundTick(e,dt){ const t=e.tile;
+  if(t.gT>0&&t.gEl&&!(e.markT>0&&e.mark===t.gEl)){ const c=t.gEl; t.gT=0; react(e,{color:c},12,true); if(e.hp<=0) return; }
+  if(icy(t)) e.slowT=Math.max(e.slowT,.5);
+  if(t.voidT>0) e.curseT=Math.max(e.curseT,.6);
+  if(t.zapT>0){ e.zapAcc=(e.zapAcc||0)+dt; if(e.zapAcc>=.6){ e.zapAcc=0; spray(t,5,{shape:'spark',color:['#fff6a8','#ffe24d'],v0:2,v:5,g:0,drag:4,life:.25,s:2,add:true}); hitEnemy(e,4,null,{raw:true}); if(e.hp>0&&Math.random()<.35){ e.stunT=Math.max(e.stunT,.35); cancelAttack(e); } } } else e.zapAcc=0;
 }
 function counterHit(e){
   const t=e.tile; cancelAttack(e); e.stunT=Math.max(e.stunT,1.5);
@@ -411,7 +440,7 @@ const CAST={
 // The tile is fixed at cast, so an enemy that moves during the flight is missed.
 const nearestEnemyTile=from=>{ const e=alive().sort((a,b)=>hexDist(from,a.tile)-hexDist(from,b.tile))[0]; return e?e.tile:null; };
 // damage whatever enemy thing stands on a tile: an enemy, or its wall or sentry
-function hitAt(t,pow,c){ const o=t.occ; if(!o) return; if(o.kind==='enemy') hitEnemy(o,pow,c); else if(o.enemy) hitBlock(o,pow,null); }
+function hitAt(t,pow,c){ const o=t.occ; if(!o) return groundHit(t,c); if(o.kind==='enemy') hitEnemy(o,pow,c); else if(o.enemy) hitBlock(o,pow,null); }
 function lobFrom(from,c,pow,radius,dur,target){
   const t=target||nearestEnemyTile(from); if(!t) return;
   const ts=patternTiles(t,c.pattern||(radius?'burst':'single'),'e');
@@ -845,6 +874,9 @@ function render(){
     else if(burning(t)) fill=mixHex(fill,'#ff5a1f',t.terrain==='lava'?.45+.12*Math.sin(T*3+t.q):.35+.15*Math.sin(T*8));
     else if(icy(t)) fill=mixHex(fill,'#bfeaff',t.terrain==='ice'?.45:.35);
     else if(t.thornT>0) fill=mixHex(fill,'#4f8a3a',.45);
+    else if(t.zapT>0) fill=mixHex(fill,'#ffe24d',.22+.25*Math.max(0,Math.sin(T*23+t.q*5)));
+    else if(t.voidT>0) fill=mixHex(fill,'#3a0f3f',.6+.1*Math.sin(T*4));
+    if(t.gT>0&&t.gEl&&!t.holeT) fill=mixHex(fill,COLORS[t.gEl].c,(.2+.12*Math.sin(T*5+t.r))*Math.min(1,t.gT/1.5));
     if(t.flash>0) fill=mixHex(base,t.flashC[0]==='#'&&t.flashC.length===7?t.flashC:'#ffffff',Math.min(.8,t.flash));
     ctx.fillStyle='#020406'; poly(ctx,top.map(([x,y])=>[x,y+SLAB*S])); ctx.fill();
     ctx.fillStyle=mixHex(base,'#000000',.45);

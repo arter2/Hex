@@ -82,11 +82,12 @@ function hitRock(r,dmg){ r.hp-=dmg; flash(r.tile,'#8a8398',.5); burst(r.tile,'#8
   if(r.hp<=0){ const t=r.tile; if(t.occ===r) t.occ=null; t.terrain=null; t.rockT=0; burst(t,'#b8b4c4',16,.6); floater('crumbles',t,'#b8b4c4'); } }
 function updateTerrain(dt){
   for(const t of TILES){
-    if(t.burnT>0) t.burnT-=dt; if(t.iceT>0) t.iceT-=dt; if(t.thornT>0) t.thornT-=dt; if(t.holeT>0) t.holeT-=dt;
+    if(t.burnT>0) t.burnT-=dt; if(t.iceT>0) t.iceT-=dt; if(t.thornT>0) t.thornT-=dt; if(t.holeT>0) t.holeT-=dt; if(t.gT>0) t.gT-=dt; if(t.zapT>0) t.zapT-=dt; if(t.voidT>0) t.voidT-=dt;
     if(t.rockT>0){ t.rockT-=dt; if(t.rockT<=0){ t.rockT=0; if(t.occ&&t.occ.kind==='rock') t.occ=null; t.terrain=null; } }
   }
   const p=B.player;
   if(burning(p.tile)&&p.invT<=0){ p.burnAcc=(p.burnAcc||0)+dt; if(p.burnAcc>=.5){ p.burnAcc=0; hitPlayer(3); } } else p.burnAcc=0;
+  for(const e of alive()) groundTick(e,dt);
   for(const e of alive()) if(burning(e.tile)){ e.lavaAcc=(e.lavaAcc||0)+dt; if(e.lavaAcc>=.5){ e.lavaAcc=0; hitEnemy(e,3,null,{raw:true}); } }
 }
 

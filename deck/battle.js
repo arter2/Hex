@@ -85,6 +85,7 @@ function startBattle(list,depth,hooks,opts){
   makeTerrain(depth);
   spawnWave(0);
   if(opts&&opts.prepare) opts.prepare(B.piles);
+  soulInit(opts&&opts.soul);
   applyGear(p,opts&&opts.gear); p.look=opts&&opts.look; B.piles.surgeLuck=(opts&&opts.gear&&opts.gear.surge)||0;
   // fights that start on the overworld carry your wounds in, and how the fight began matters:
   // catching a sleeping enemy holds its first attacks back; being caught off guard lets it strike first
@@ -226,6 +227,7 @@ function react(e,card,base,fromGround){
   const rx=m&&m!==c?REACTIONS[[m,c].sort().join('+')]:null;
   if(!rx){ e.mark=c; e.markT=MARK_T; if(!fromGround) stain(e.tile,c); return; }
   e.mark=null; e.markT=0; e.tile.gT=0;
+  const sc=B.soul&&B.soul.card.color; if(sc===m||sc===c){ base=Math.round(base*1.3); } soulGain(sc===m||sc===c?25:12);   // the Soul feeds on its own element's reactions
   const t=e.tile, near=r=>alive().filter(o=>o!==e&&hexDist(o.tile,t)<=r);
   floater(rx.name+'!',t,rx.c,true); flash(t,rx.c,1); shake(5); reactFx(rx.name,t); groundFx(rx.name,t);
   B.reacts=(B.reacts||0)+1;
@@ -267,6 +269,27 @@ function groundTick(e,dt){ const t=e.tile;
   if(t.voidT>0) e.curseT=Math.max(e.curseT,.6);
   if(t.zapT>0){ e.zapAcc=(e.zapAcc||0)+dt; if(e.zapAcc>=.6){ e.zapAcc=0; spray(t,5,{shape:'spark',color:['#fff6a8','#ffe24d'],v0:2,v:5,g:0,drag:4,life:.25,s:2,add:true}); hitEnemy(e,4,null,{raw:true}); if(e.hp>0&&Math.random()<.35){ e.stunT=Math.max(e.stunT,.35); cancelAttack(e); } } } else e.zapAcc=0;
 }
+/* ---------------- the Soul ----------------
+   Your hero stands beside the fight instead of sitting in your deck. Casting its color, setting off
+   reactions with its color (which also hit 30% harder) and landing Counter Hits charge its meter.
+   Full, it offers a choice: Summon calls the hero onto the board (its usual hero card), or Unison
+   gives up the next card in your queue to take its power for 10 s: your wand shots fire in its color,
+   1.5x as hard, with its element's effect, and they mark enemies for reactions. */
+const SOUL_MAX=100, UNISON_T=10;
+const UNISON_FX={fire:{burn:3}, frost:{slow:1.5}, storm:{stun:.25}, verdant:{poison:4}, light:{mend:2}, shadow:{drain:.2}};
+function soulInit(id){ const c=id&&CARDS[id]; B.soul=c?{card:c,charge:0,unisonT:0,ready:false}:null; }
+function soulGain(n){ const s=B&&B.soul; if(!s||s.unisonT>0) return; const was=s.charge>=SOUL_MAX; s.charge=Math.min(SOUL_MAX,s.charge+n);
+  if(!was&&s.charge>=SOUL_MAX){ floater('Soul ready!',B.player.tile,COLORS[s.card.color].c,true); B.hooks.onSoul&&B.hooks.onSoul(true); } }
+const soulReady=()=>!!(B&&B.soul&&B.soul.charge>=SOUL_MAX&&B.phase==='fight');
+function soulSummon(){ if(!soulReady()) return false; const s=B.soul; s.charge=0; callHero(s.card); B.hooks.onSoul&&B.hooks.onSoul(); return true; }
+function soulUnite(){ if(!soulReady()) return false; const s=B.soul, p=B.player, q=B.piles.queue;
+  const gone=q.find(c=>!c.combo); if(gone){ q.splice(q.indexOf(gone),1); floater('Gave up '+gone.card.name,p.tile,'#c8c8d8'); }
+  s.charge=0; s.unisonT=UNISON_T; const col=COLORS[s.card.color].c;
+  ring(p.tile,col,2.2,.6,9); ring(p.tile,'#ffffff',1.2,.4,4); spray(p.tile,30,{shape:'glow',color:[col,'#ffffff'],v0:1,v:4,up0:1,up:4,g:-1,drag:2,life:.9,s:8,add:true,shrink:1}); shake(5);
+  floater(s.card.name.split(',')[0]+' Unison!',p.tile,col,true); B.hooks.onSoul&&B.hooks.onSoul(); return true; }
+// while in Unison: a function that builds the wand shot's card in the Soul's element
+function soulUnison(){ const s=B.soul; if(!s||!(s.unisonT>0)) return null; const c=s.card.color;
+  return charged=>Object.assign({id:'unison', name:'Unison', color:c}, UNISON_FX[c]||{}, charged&&c==='frost'?{freeze:1}:{}); }
 function counterHit(e){
   const t=e.tile; cancelAttack(e); e.stunT=Math.max(e.stunT,1.5);
   floater('COUNTER!',{wx:t.wx,wz:t.wz},'#ff3b5c',true); B.floaters[B.floaters.length-1].y=2.4;
@@ -274,7 +297,7 @@ function counterHit(e){
   spray(t,1,{shape:'glow',color:'#ffffff',v0:0,v:0,up0:0,up:0,g:0,life:.25,s:30,add:true,shrink:1});
   ring(t,'#ff3b5c',1.6,.4,8); ring(t,'#ffffff',1,.25,4);
   spray(t,22,{shape:'spark',color:['#ffffff','#ff3b5c','#ffd0d8'],v0:4,v:10,up0:-1,up:5,g:0,drag:4,life:.35,s:3,add:true});
-  B.counters=(B.counters||0)+1;
+  B.counters=(B.counters||0)+1; soulGain(15);
 }
 const bossMult=(atk,e)=>typeof bossColorMult==='function'?bossColorMult(atk,e):colorMult(atk,e.color);
 function applyStatus(e,c){
@@ -360,7 +383,7 @@ function castCard(){
   const fq=b.piles.queue[0]; if(fq&&fq.frozenT>0){ floater('Frozen ❄',p.tile,'#9fd0ff'); return; }
   const inst=castNext(b.piles); if(!inst) return;
   p.castCd=(p.hasteT>0||heroOn('volta')?.25:.45)*(p.castSlow||1);
-  playCard(inst);
+  playCard(inst); soulGain(B.soul&&inst.card.color===B.soul.card.color?18:8);
   if(inst.straight){ // Straight: the next two cards follow in one chain, then a finisher
     const chain=[]; for(let i=0;i<inst.straight.length-1;i++){ const n=castNext(b.piles); if(n) chain.push(n); }
     const grand=inst.straight.length>=4;
@@ -535,10 +558,12 @@ function fireWand(charged){ if(B&&B.player){ B.player.poseT=B.time; B.player.pos
   p.wandCd=charged?w.ccd||.5:w.cd||.3;
   if(w.hpPerShot) payHp(w.hpPerShot);
   if(w.misfire&&Math.random()<w.misfire){ floater('fizzle',p.tile,'#93a9ba'); burst(p.tile,'#56606a',5,1); return; }
-  const dmg=Math.max(1,Math.round((charged?w.charged:w.tap)*(w.mult||1)*(p.powerT>0?2.5:1)));
+  let dmg=Math.max(1,Math.round((charged?w.charged:w.tap)*(w.mult||1)*(p.powerT>0?2.5:1)));
   // an elemental weapon shoots in its color, and its effects ride on the shot like a card's
-  const card=w.color||w.burn||w.drain||w.zap||w.chill||w.glow?{id:'wand', name:'Wand', color:w.color, burn:w.burn||0, drain:w.drain||0,
+  let card=w.color||w.burn||w.drain||w.zap||w.chill||w.glow?{id:'wand', name:'Wand', color:w.color, burn:w.burn||0, drain:w.drain||0,
     freeze:charged?w.chill:0, stun:w.zap&&Math.random()<w.zap?.5:0, mend:charged?w.glow:0}:null;
+  const un=soulUnison();
+  if(un){ card=un(charged); dmg=Math.round(dmg*1.5); }
   const row=lineTiles(p.tile,DIRS.E), o=()=>({dmg,from:'p',wand:true,big:charged,card});
   // each kind of weapon fires its own way (see WEAPON_KINDS in gear.js)
   switch(w.kind){
@@ -586,6 +611,7 @@ function update(dt){
   if(p.regenGear){ p.gearAcc=(p.gearAcc||0)+p.regenGear*dt; if(p.gearAcc>=3){ healPlayer(3,true); p.gearAcc-=3; } }
   if(heroOn('thornfather')){ p.heroAcc=(p.heroAcc||0)+3*dt; if(p.heroAcc>=6){ healPlayer(6); p.heroAcc-=6; } }
   if(p.charging) p.chargeT=Math.min(1.2,p.chargeT+rdt);
+  if(B.soul&&B.soul.unisonT>0&&b.phase==='fight'){ B.soul.unisonT-=dt; if(B.soul.unisonT<=0){ floater('Unison ends',p.tile,COLORS[B.soul.card.color].c); B.hooks.onSoul&&B.hooks.onSoul(); } }
   p.rootT=Math.max(0,(p.rootT||0)-dt); p.hexT=Math.max(0,(p.hexT||0)-dt); for(const q of b.piles.queue) if(q.frozenT>0) q.frozenT-=dt;
   if(p.path.length&&p.moveCd<=0&&p.rootT<=0){ const n=p.path[0]; if(n.side==='p'&&!n.occ&&!(n.holeT>0)){ p.tile.occ=null; p.tile=n; n.occ=p; p.path.shift(); p.moveCd=(haste?.08:.14)*(icy(n)?2.2:1)*(p.slow||1); } else p.path=[]; }
 
@@ -1037,6 +1063,9 @@ const DRAW={
     // the pose: attack just after a shot, cast after a card or while charging, a walk cycle while moving, else standing
     const moving=Math.hypot((p.rx??p.tile.wx)-p.tile.wx,(p.rz??p.tile.wz)-p.tile.wz)>.04||p.path.length>0, since=B.time-(p.poseT??-9);
     p.pose=since<.28?p.poseK:p.charging?'cast':moving?(Math.floor(T*7)%2?'walk':'idle'):'idle';
+    if(B.soul&&B.soul.unisonT>0){ const [ux,uy]=proj(posOf(p)[0],0,posOf(p)[1]), uc=COLORS[B.soul.card.color].c, k=.75+.25*Math.sin(T*8);
+      ctx.save(); ctx.globalCompositeOperation='lighter'; ctx.strokeStyle=uc; ctx.lineWidth=3; ctx.globalAlpha=.8*k; ctx.beginPath(); ctx.ellipse(ux,uy,S*.75,S*.75*View.iy,0,0,TAU); ctx.stroke();
+      ctx.globalAlpha=.25*k; ctx.fillStyle=uc; ctx.fill(); ctx.restore(); if(Math.random()<.3) spray(p.tile,1,{shape:'glow',color:uc,v:.4,up0:1,up:2,g:-1,life:.6,s:5,add:true,shrink:1}); }
     const flip=facing(p,foe,false), r=drawSprite(ctx,p,T,S,{alpha:p.invT>0?.45:1,flip,step:moving?Math.floor(T*7)%2:Math.floor(T*1.6)%2,flash:p.hurtT>0?p.hurtT*3:0});
     // the staff's orb glows, and grows while the wand charges
     const wc=p.wand&&p.wand.color?COLORS[p.wand.color].c:null;

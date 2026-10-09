@@ -555,7 +555,9 @@ function fight(depth,waves,xo){
   const d=activeDeck(); if(!validateDeck(d.list,CARDS,save.owned).ok) return openCamp();
   $('#reveal').classList.remove('on');
   show('scrBattle');
-  startBattle(d.list,depth,{
+  const soul=soulOf(d.list), list=d.list.filter(id=>!(CARDS[id]&&CARDS[id].rarity==='hero'));
+  startBattle(list,depth,{
+    onSoul:ready=>{ if(ready){ buzz(30); banner('♔ Soul ready: Summon or Unison','#ffe066'); } soulMenu(false); },
     onCustom:renderCustom,
     onFight:()=>{ $('#custom').classList.remove('on'); hud(true); },
     onCast:(c,inst)=>{ showCast(c,inst); buzz(12); },
@@ -567,7 +569,7 @@ function fight(depth,waves,xo){
     onRecipe:r=>{ const first=!(save.recipes||{})[r.id]; save.recipes=save.recipes||{}; save.recipes[r.id]=1; persist(); banner((first?'⚗ New recipe! ':'⚗ ')+r.name,'#39ff8a'); },
     onHero:c=>banner('♔ '+c.name.split(',')[0]+' joins the fight!','#ffe066'),
     onEnd:win=>win?victory():defeat(),
-  },{prepare:p=>assignChargeUses(save,p,d.list), gear:gearMods(save), look:gearLook(save), waves, hp:xo&&xo.hp, opening:xo&&xo.opening, rule:xo&&xo.rule});
+  },{prepare:p=>assignChargeUses(save,p,d.list), gear:gearMods(save), look:gearLook(save), waves, hp:xo&&xo.hp, opening:xo&&xo.opening, rule:xo&&xo.rule, soul});
   B.explore=!!(xo&&xo.explore); B.trial=!!(xo&&xo.trial);
   if(B.opening==='strike') setTimeout(()=>banner('First Strike! They reel back','#39ff8a'),300);
   else if(B.opening) setTimeout(()=>banner(B.opening==='ambush'?'Ambush! They\'re slow to react':'Surprised! They strike first',B.opening==='ambush'?'#39ff8a':'#ff5d6c'),300);
@@ -808,11 +810,25 @@ function hud(force){
     $('#btnCast').style.setProperty('--rc',NR?NR.c:'transparent'); $('#btnCast').classList.toggle('role',!!NR);
     $('#btnCast').disabled=!pl.queue.length;
   });
+  set('soul',b.soul?[Math.round(b.soul.charge),Math.ceil(b.soul.unisonT),soulReady(),(pl.queue[0]||{}).uid].join('|'):'',soulHud);
   const canCustom=b.phase==='fight'&&gaugeFull()&&!wandOnly(pl);
   set('custom',canCustom+'|'+wandOnly(pl),()=>{ const bt=$('#btnCustom'); bt.disabled=!canCustom; bt.classList.toggle('ready',canCustom);
     $('#custLbl').innerHTML=canCustom?'✦ Custom · cards ready':wandOnly(pl)?'Deck empty: wand only':'Custom'; });
 }
 
+/* The Soul: the deck's hero if it holds one, otherwise the hero of the deck's main color.
+   It stays beside the fight (left of the board) instead of being drawn as a card. */
+function soulOf(list){ const h=list.find(id=>CARDS[id]&&CARDS[id].rarity==='hero'); if(h) return h;
+  const n={}; for(const id of list){ const c=CARDS[id]; if(c&&SIX.includes(c.color)) n[c.color]=(n[c.color]||0)+1; }
+  const col=Object.keys(n).sort((a,b)=>n[b]-n[a])[0], H=HEROES.find(h=>h.color===col); return H&&H.id; }
+function soulMenu(on){ const m=$('#soulMenu'); if(m) m.classList.toggle('on',!!on&&soulReady()); }
+function soulHud(){ const s=B&&B.soul, box=$('#soulBox'); if(!box) return; box.hidden=!s; if(!s) return;
+  const col=COLORS[s.card.color].c, k=s.unisonT>0?s.unisonT/UNISON_T:s.charge/SOUL_MAX, ready=soulReady();
+  box.style.setProperty('--sc',col); box.style.setProperty('--k',(k*100).toFixed(1)+'%');
+  box.classList.toggle('ready',ready); box.classList.toggle('unison',s.unisonT>0);
+  $('#soulIcon').textContent=COLORS[s.card.color].icon; $('#soulName').textContent=s.unisonT>0?'Unison '+Math.ceil(s.unisonT)+'s':ready?'Ready!':s.card.name.split(',')[0];
+  const q=B.piles.queue.find(c=>!c.combo); $('#soulUnite').innerHTML='✦ Unison<small>'+(q?'gives up '+esc(q.card.name):'10 s of its power')+'</small>'; }
+function trySoul(){ if(!soulReady()) return; const m=$('#soulMenu'); soulMenu(!m.classList.contains('on')); }
 /* ---------------- battle input ---------------- */
 function tryCustom(){ if(!(B&&B.phase==='fight'&&gaugeFull()&&!wandOnly(B.piles))) return;
   if(B.player.charging){ wandUp(); $('#btnWand').classList.remove('charging'); }   // a shot you were charging goes off first
@@ -826,6 +842,9 @@ function pressBtn(el,fn){
   el.addEventListener('contextmenu',e=>e.preventDefault());
 }
 pressBtn($('#btnCustom'),tryCustom);
+pressBtn($('#btnSoul'),trySoul);
+pressBtn($('#soulSummon'),()=>{ soulSummon(); soulMenu(false); });
+pressBtn($('#soulUnite'),()=>{ soulUnite(); soulMenu(false); });
 pressBtn($('#btnCast'),castCard);
 const wandBtn=$('#btnWand');
 // the Fire button keeps its finger even if the thumb slides off it, so you can fire with one
@@ -878,6 +897,8 @@ window.addEventListener('keydown',e=>{
   else if(a==='fire') wandDown();
   else if(a==='cast') castCard();
   else if(a==='custom') tryCustom();
+  else if(a==='soul') trySoul();
+  else if($('#soulMenu').classList.contains('on')&&(k==='1'||k==='2')){ (k==='1'?soulSummon:soulUnite)(); soulMenu(false); }
   else if(a==='aim') cycleAim();
 });
 window.addEventListener('keyup',e=>{ const k=e.key.toLowerCase(); held.delete(k); if(typeof keyAct==='function'&&keyAct(k,'battle')==='fire') wandUp(); });

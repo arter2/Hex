@@ -12,16 +12,17 @@ const KEY_ACTIONS=[
   {id:'cast',   name:'Cast next card',     where:'battle'},
   {id:'custom', name:'Open Custom',        where:'battle'},
   {id:'aim',    name:'Cycle lob aim',      where:'battle'},
+  {id:'soul',   name:'Soul (then 1 Summon, 2 Unison)', where:'battle'},
   {id:'search', name:'Search',             where:'map'},
   {id:'disarm', name:'Disarm',             where:'map'},
   {id:'camp',   name:'Climb to camp',      where:'map'},
   {id:'bag',    name:'Open bag',           where:'map'},
 ];
 const KEY_PRESETS={
-  standard:{name:'Standard (WASD + arrows)', map:{up:['w','arrowup'],down:['s','arrowdown'],left:['a','arrowleft'],right:['d','arrowright'],fire:[' '],cast:['enter','x'],custom:['c'],aim:['q','tab'],search:['f'],disarm:['e'],camp:['c','<'],bag:['b','i']}},
-  arrows:  {name:'Arrows + right hand', map:{up:['arrowup'],down:['arrowdown'],left:['arrowleft'],right:['arrowright'],fire:['z',' '],cast:['x','enter'],custom:['c'],aim:['v','tab'],search:['s'],disarm:['d'],camp:['a'],bag:['b']}},
-  esdf:    {name:'ESDF (left hand, more keys nearby)', map:{up:['e'],down:['d'],left:['s'],right:['f'],fire:[' '],cast:['r','enter'],custom:['w'],aim:['a','tab'],search:['g'],disarm:['t'],camp:['q'],bag:['b']}},
-  vim:     {name:'HJKL', map:{up:['k'],down:['j'],left:['h'],right:['l'],fire:[' '],cast:['enter','f'],custom:['c'],aim:['a','tab'],search:['s'],disarm:['d'],camp:['<'],bag:['i']}},
+  standard:{name:'Standard (WASD + arrows)', map:{up:['w','arrowup'],down:['s','arrowdown'],left:['a','arrowleft'],right:['d','arrowright'],fire:[' '],cast:['enter','x'],custom:['c'],aim:['q','tab'],soul:['v'],search:['f'],disarm:['e'],camp:['c','<'],bag:['b','i']}},
+  arrows:  {name:'Arrows + right hand', map:{up:['arrowup'],down:['arrowdown'],left:['arrowleft'],right:['arrowright'],fire:['z',' '],cast:['x','enter'],custom:['c'],aim:['v','tab'],soul:['g'],search:['s'],disarm:['d'],camp:['a'],bag:['b']}},
+  esdf:    {name:'ESDF (left hand, more keys nearby)', map:{up:['e'],down:['d'],left:['s'],right:['f'],fire:[' '],cast:['r','enter'],custom:['w'],aim:['a','tab'],soul:['v'],search:['g'],disarm:['t'],camp:['q'],bag:['b']}},
+  vim:     {name:'HJKL', map:{up:['k'],down:['j'],left:['h'],right:['l'],fire:[' '],cast:['enter','f'],custom:['c'],aim:['a','tab'],soul:['v'],search:['s'],disarm:['d'],camp:['<'],bag:['i']}},
 };
 const KEYS_SAVE='hexmancers-keys';
 let KEYMAP=loadKeys();

@@ -881,3 +881,18 @@ body.lsS #custHand .slot.hole{min-height:104px;}
 #xVig{position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse 75% 70% at 50% 46%,rgba(0,0,0,0) 55%,rgba(0,0,0,.55) 85%,rgba(0,0,0,.85) 100%);}
 #xBottom .btn.mini{min-height:38px; min-width:0; font-size:14px; padding:0 8px;}
 #xBottom .keys.learned{display:none;}
+
+/* the Soul: a round meter left of the board; full, it offers Summon or Unison */
+.soul{position:absolute; left:10px; top:96px; z-index:5; display:flex; flex-direction:column; align-items:center; gap:2px; --sc:#ffe066; --k:0%;}
+.soul-orb{position:relative; width:58px; height:58px; border-radius:50%; border:0; padding:0; cursor:pointer; background:radial-gradient(circle at 50% 40%,#1a2030,#05070b 70%);
+  box-shadow:0 0 0 3px #0a0e16, 0 4px 10px #000a; font-size:26px; display:grid; place-items:center;}
+.soul-ring{position:absolute; inset:-3px; border-radius:50%; background:conic-gradient(var(--sc) var(--k),#ffffff1a 0); -webkit-mask:radial-gradient(circle,transparent 25px,#000 26px); mask:radial-gradient(circle,transparent 25px,#000 26px);}
+.soul.ready .soul-orb{animation:soulPulse 1s ease-in-out infinite alternate;}
+.soul.unison .soul-orb{box-shadow:0 0 0 3px var(--sc), 0 0 22px var(--sc);}
+@keyframes soulPulse{from{box-shadow:0 0 0 3px var(--sc),0 0 8px var(--sc)} to{box-shadow:0 0 0 3px #fff,0 0 26px var(--sc)}}
+.soul-name{font:700 11px var(--font-b); color:var(--sc); text-shadow:1px 1px 0 #000; max-width:90px; text-align:center;}
+.soul-menu{display:none; flex-direction:column; gap:6px; margin-top:4px;}
+.soul-menu.on{display:flex;}
+.soul-menu .btn{min-height:44px; font-size:15px; display:flex; flex-direction:column; align-items:flex-start; line-height:1.1; padding:4px 10px;}
+.soul-menu .btn small{font-size:10px; opacity:.8; font-weight:400;}
+@media (orientation:portrait){ .soul{top:136px;} }

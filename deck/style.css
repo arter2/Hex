@@ -1025,3 +1025,12 @@ body.lsS #custHand .slot.hole{min-height:104px;}
 .dkcoll .card.indeck>.cn,.dkcoll .card.indeck>.ty{opacity:1!important; text-shadow:1px 1px 0 #000;}
 .dkcoll .card .cn{font-size:13px;}
 @media (orientation:landscape) and (max-height:520px){ .dkcoll{grid-template-columns:repeat(auto-fill,minmax(120px,1fr));} }
+/* the hold preview: wide enough for the whole card, art shown whole */
+.panel.narrow.dkpeek{max-width:min(94vw,400px); max-height:96vh;}
+#dkpCard .card{width:100%; max-width:340px; height:auto;}
+#dkpCard .card .art{width:100%; height:auto; aspect-ratio:1; max-height:42vh; object-fit:contain;}
+#dkpCard .card .tx{font-size:15px; line-height:1.25; overflow:visible; display:block; -webkit-line-clamp:unset;}
+@media (orientation:landscape) and (max-height:600px){
+  .panel.narrow.dkpeek{max-width:min(94vw,640px); display:grid; grid-template-columns:auto 1fr; grid-template-rows:repeat(4,auto) 1fr; column-gap:12px; align-items:center;}
+  .dkpeek #dkpCard{grid-row:1/6;} #dkpCard .card{width:min(40vw,250px);} #dkpCard .card .art{max-height:38vh;}
+}

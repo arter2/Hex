@@ -49,7 +49,7 @@ function dkRender(){ const d=dkDeck(), v=validateDeck(d.list,CARDS,save.owned);
   $('#dkMulti').classList.toggle('on',DK.multi); $('#dkMulti').textContent=DK.multi?'✓ Selecting':'☐ Select';
   dkLibrary(); dkMultiBar(); }
 // card height follows the zoom's column width (aspect-ratio alone collapses inside a scrolling grid)
-const dkCols=()=>[6,4,3][DK.zoom];
+const dkCols=()=>[5,4,3][DK.zoom];
 function dkRows(){ const box=$('#dkDeck'), cols=dkCols(), w=(box.clientWidth-20-(cols-1)*6)/cols; box.style.gridTemplateColumns='repeat('+cols+',1fr)'; if(w>0) box.style.gridAutoRows=Math.round(w*1.05)+'px'; }
 addEventListener('resize',()=>{ if($('#scrDeck').classList.contains('on')) dkRows(); });
 function dkLibrary(){ const d=dkDeck(), f=DK.filt;

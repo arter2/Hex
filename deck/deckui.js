@@ -5,7 +5,7 @@
    mode picks many cards at once: add them all, or start a new deck from them. Opens from the
    camp (Deck) and from the dungeon bag (tap its title); OK goes back where you came from. */
 const DK={slot:0, zoom:1, tab:'all', sort:'family', filt:{colors:new Set(), type:'', rarity:'', q:''}, multi:false, sel:new Set(), from:'camp', snap:null, peek:null};
-const DK_ZOOM=[25,50,75], DK_SORTS=[['family','Color'],['rank','Rank'],['rarity','Rarity'],['name','Name'],['copies','Copies']];
+const DK_ZOOM=[50,75,100], DK_SORTS=[['family','Color'],['rank','Rank'],['rarity','Rarity'],['name','Name'],['copies','Copies']];
 const dkDeck=()=>save.decks[DK.slot];
 const dkCount=(d,id)=>d.list.reduce((a,x)=>a+(x===id),0);
 const dkMax=c=>Math.min(copyLimit(c),save.owned[c.id]||0);
@@ -29,11 +29,14 @@ function dkRender(){ const d=dkDeck(), v=validateDeck(d.list,CARDS,save.owned);
   $('#dkErr').textContent=v.ok?'':v.errors[0]||'';
   // soul
   if(typeof soulOf==='function'){ const cur=soulOf(d.list,d); $('#dkSoul').innerHTML=soulsOwned().map(h=>`<option value="${h.id}"${h.id===cur?' selected':''}>${COLORS[h.color].icon} ${esc(h.name.split(',')[0])}</option>`).join(''); }
-  // the deck: every copy, grouped, then dashed empty spots to finish the row
+  // the deck: one tile per card with its copies (×N) and its name, then dashed spots to finish the row
   const box=$('#dkDeck'); box.innerHTML=''; box.className='dkdeck z'+DK.zoom;
-  const ids=d.list.slice().sort((a,b)=>byFamily(CARDS[a],CARDS[b]));
-  for(const id of ids){ const c=CARDS[id]; if(!c) continue; const el=cardEl(c); dkHold(el,c,()=>{ dkRemove(c); dkChange(); }); box.appendChild(el); }
-  const cols=[10,6,4][DK.zoom], empty=Math.min(RULES.max-ids.length,Math.max(cols,cols-ids.length%cols+(ids.length%cols?0:0)));
+  const counts={}; d.list.forEach(id=>counts[id]=(counts[id]||0)+1);
+  const ids=Object.keys(counts).filter(id=>CARDS[id]).sort((a,b)=>byFamily(CARDS[a],CARDS[b]));
+  for(const id of ids){ const c=CARDS[id], el=document.createElement('button'); el.className='dktile'; el.style.setProperty('--c',COLORS[c.color].c);
+    el.innerHTML=`<img src="${artURL(c)}" alt=""><span class="dkn">${esc(c.name)}</span><span class="dkx">×${counts[id]}</span><span class="dkt">${COLORS[c.color].icon}${TYPES[c.type]?TYPES[c.type].icon:''}</span>`;
+    el.title=c.name+' ×'+counts[id]+' (tap to take one out)'; dkHold(el,c,()=>{ dkRemove(c); dkChange(); }); box.appendChild(el); }
+  const cols=dkCols(), empty=ids.length%cols?cols-ids.length%cols:(ids.length?0:cols);
   for(let i=0;i<empty;i++){ const e=document.createElement('div'); e.className='dkempty'; box.appendChild(e); }
   dkRows();
   // tabs: all, then each color with how many the deck holds
@@ -46,7 +49,8 @@ function dkRender(){ const d=dkDeck(), v=validateDeck(d.list,CARDS,save.owned);
   $('#dkMulti').classList.toggle('on',DK.multi); $('#dkMulti').textContent=DK.multi?'✓ Selecting':'☐ Select';
   dkLibrary(); dkMultiBar(); }
 // card height follows the zoom's column width (aspect-ratio alone collapses inside a scrolling grid)
-function dkRows(){ const box=$('#dkDeck'), cols=(innerWidth>innerHeight&&DK.zoom===0?8:[10,6,4][DK.zoom]), w=(box.clientWidth-20-(cols-1)*4)/cols; if(w>0) box.style.gridAutoRows=Math.round(w*1.4)+'px'; }
+const dkCols=()=>[6,4,3][DK.zoom];
+function dkRows(){ const box=$('#dkDeck'), cols=dkCols(), w=(box.clientWidth-20-(cols-1)*6)/cols; box.style.gridTemplateColumns='repeat('+cols+',1fr)'; if(w>0) box.style.gridAutoRows=Math.round(w*1.05)+'px'; }
 addEventListener('resize',()=>{ if($('#scrDeck').classList.contains('on')) dkRows(); });
 function dkLibrary(){ const d=dkDeck(), f=DK.filt;
   const items=Object.keys(save.owned).map(id=>CARDS[id]).filter(c=>c&&save.owned[c.id]>0&&(DK.tab==='all'||c.color===DK.tab)&&passes(c,f)).sort(SORTS[DK.sort]);

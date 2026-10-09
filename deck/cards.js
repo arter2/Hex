@@ -305,7 +305,19 @@ const POTIONS=[
   {id:'potion_elixir',name:'Quicksilver Elixir',type:'boon',    boon:'haste', dur:10,          rank:7, rarity:'uncommon'},
   {id:'potion_wind',  name:'Second Wind',       type:'utility', util:'draw',  n:2,             rank:9, rarity:'uncommon'},
 ].map(c=>Object.assign({color:'gray', potion:true},c));
-const CARD_LIST=SIGNATURE.concat(generateCards(),HEROES,POTIONS);
+/* The Brood (verdant): each card summons a little creature that pounces on the nearest enemy.
+   Queue 2 Brood cards for a Pack (each brings two, +25%), 3 for a Swarm (two each, +50%, and a
+   Bramble Ogre leads them), and 4 (with the Rune Surge slot) to fuse them into the Elder Grovebeast,
+   a hero that fights for 3 turns. Brood cards carry the wild rune, so they queue with anything. */
+const BROOD=[
+  {id:'brood_imp',   name:'Sprout Imp',     color:'verdant', type:'summon', ai:'critter', brood:1, rank:1, rarity:'common',   pow:8,  hp:30, rate:.9, dur:20},
+  {id:'brood_snake', name:'Thorn Serpent',  color:'verdant', type:'summon', ai:'critter', brood:1, rank:2, rarity:'common',   pow:9,  hp:26, rate:1,  dur:20, poison:2},
+  {id:'brood_hawk',  name:'Moss Hawk',      color:'verdant', type:'summon', ai:'critter', brood:1, rank:3, rarity:'uncommon', pow:9,  hp:22, rate:.7, dur:20},
+];
+const BROOD_LEADER={id:'brood_ogre', name:'Bramble Ogre', color:'verdant', type:'summon', ai:'critter', rank:4, rarity:'rare', pow:22, hp:70, rate:1.2, turns:2, slow:1};
+const GROVEBEAST={id:'hero_grovebeast', name:'Elder Grovebeast', color:'verdant', type:'hero', hero:'grovebeast', style:'burst', rank:7, rarity:'hero', turns:3,
+  pow:34, rate:1.4, hp:300, poison:4, aurae:{regen:3}, attack:'stamps thorns of {pow} around an enemy', aura:'you heal 3 a second, and it calls two Sprout Imps'};
+const CARD_LIST=SIGNATURE.concat(generateCards(),HEROES,POTIONS,BROOD);
 /* Nothing a card puts on the board lasts forever: shields, walls, towers, summons, machines,
    traps and changed ground each have HP (or a strength) and a turn limit. A turn ends each time
    the Custom screen opens. Applied after generation, so card ids are unchanged. */
@@ -337,7 +349,7 @@ const SIG_RUNES={
 };
 { const sig={}; for(const k in SIG_RUNES) SIG_RUNES[k].forEach(id=>sig[id]=k);
   for(const c of CARD_LIST){
-    if(c.rarity==='hero') c.code=WILD;
+    if(c.rarity==='hero'||c.brood) c.code=WILD;
     else if(sig[c.id]) c.code=sig[c.id];
     else { const h=seedOf('rune:'+c.id); c.code=h%33===0?WILD:RUNES[h%6]; } } }
 
@@ -420,7 +432,7 @@ function cardText(c){
   else if(kind==='charge') t=c.uses+' uses: '+(c.fx==='lob'?'lob '+c.pow+' on the tile you aim':'bolt of '+c.pow+' down your row');
   else if(kind==='utility') t={draw:'Draw '+c.n+' card'+(c.n>1?'s':'')+' into your hand', recall:'Put the top card of your deck into your queue',
                               copy:'Copy the next queued card', cleanse:'Cancel incoming attacks and heal '+c.amt}[c.util];
-  else if(kind==='summon') t={shooter:'Shoots '+c.pow+' down its row', bomber:'Lobs '+c.pow+' every '+c.rate+'s', healer:'Heals you '+c.amt+' every '+c.rate+'s',
+  else if(kind==='summon') t={critter:'Pounces on the nearest enemy for '+c.pow+' every '+c.rate+'s. Brood: 2 queued = Pack, 3 = Swarm, 4 = Elder Grovebeast', shooter:'Shoots '+c.pow+' down its row', bomber:'Lobs '+c.pow+' every '+c.rate+'s', healer:'Heals you '+c.amt+' every '+c.rate+'s',
                              guardian:'Blocks with '+c.hp+' HP, hits for '+c.pow}[c.ai]+'. '+(c.ai==='guardian'?'':c.hp+' HP, ')+tn(c.turns);
   else if(kind==='machine') t=c.ai==='bulwark'?c.n+' iron wall'+(c.n>1?'s':'')+' of '+c.hp+' HP, '+tn(c.turns):
                               {turret:'Turret: '+c.pow+' every '+c.rate+'s', repeater:'Repeater: '+c.pow+' every '+c.rate+'s', mortar:'Mortar: lobs '+c.pow+' every '+c.rate+'s'}[c.ai]+', '+c.hp+' HP, '+tn(c.turns);
@@ -439,7 +451,7 @@ const STARTERS=[
 function starterList(colors,size){
   size=size||60;
   const count={};
-  for(const col of colors) for(const c of SIGNATURE) if(c.color===col) count[c.id]=c.rarity==='legendary'?1:4;
+  for(const col of colors) for(const c of SIGNATURE.concat(BROOD)) if(c.color===col) count[c.id]=c.rarity==='legendary'?1:c.brood?3:4;
   let total=Object.values(count).reduce((a,b)=>a+b,0);
   while(total>size){
     const cut=Object.keys(count).filter(id=>CARDS[id].rarity!=='legendary'&&count[id]>2).sort((a,b)=>CARDS[b].rank-CARDS[a].rank||count[b]-count[a])[0];
@@ -449,4 +461,4 @@ function starterList(colors,size){
   return list;
 }
 
-if(typeof module!=='undefined') module.exports={ROLES,cardRole,RUNES,WILD,RECIPES,POTIONS,HEROES,PATTERN_MULT,lobPattern,SIX,SIGNATURE,TYPE_PLAN,RARITY_PLAN,COLORS,BEATS,WEAK_MULT,colorMult,TYPES,RARITY,CARD_LIST,CARDS,cardText,STARTERS,starterList};
+if(typeof module!=='undefined') module.exports={BROOD,GROVEBEAST,BROOD_LEADER,ROLES,cardRole,RUNES,WILD,RECIPES,POTIONS,HEROES,PATTERN_MULT,lobPattern,SIX,SIGNATURE,TYPE_PLAN,RARITY_PLAN,COLORS,BEATS,WEAK_MULT,colorMult,TYPES,RARITY,CARD_LIST,CARDS,cardText,STARTERS,starterList};

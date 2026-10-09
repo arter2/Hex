@@ -92,11 +92,11 @@ t('no reshuffle: an emptied deck leaves only the wand', ()=>{
 });
 
 t('1,000 cards: 125 per family, type split and 50/38/25/12 rarity, plus 20 heroes', ()=>{
-  assert.strictEqual(D.CARD_LIST.length,1024); assert.strictEqual(D.HEROES.length,20);
-  assert.strictEqual(new Set(D.CARD_LIST.map(c=>c.name)).size,1024);
+  assert.strictEqual(D.CARD_LIST.length,1027); assert.strictEqual(D.HEROES.length,20);
+  assert.strictEqual(new Set(D.CARD_LIST.map(c=>c.name)).size,1027);
   assert.deepStrictEqual([...new Set(D.HEROES.map(h=>h.color))].sort(),D.SIX.slice().sort(),'heroes cover every color'); assert(D.SIX.every(c=>D.HEROES.filter(h=>h.color===c).length>=3),'at least 3 Souls per color');
   for(const fam of Object.keys(D.COLORS)){
-    const cs=D.CARD_LIST.filter(c=>c.color===fam&&c.rarity!=='hero'&&!c.potion); assert.strictEqual(cs.length,125,fam);
+    const cs=D.CARD_LIST.filter(c=>c.color===fam&&c.rarity!=='hero'&&!c.potion&&!c.brood); assert.strictEqual(cs.length,125,fam);
     for(let r=1;r<=12;r++){ const n=cs.filter(c=>c.rank===r).length; assert(n>=8&&n<=13,fam+' rank '+r+': '+n); }
     const plan=D.TYPE_PLAN[D.COLORS[fam].neutral?fam:'color'];
     for(const t in plan) assert.strictEqual(cs.filter(c=>c.type===t).length,plan[t],fam+' '+t);

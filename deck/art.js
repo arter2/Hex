@@ -843,7 +843,8 @@ const HERO_LOOK={pyra:{hat:'crown',hair:'flame',weapon:'flamestaff',cape:1}, yso
   glacia:{hat:'tiara',hair:'long',weapon:'icestaff'}, zephyra:{hat:'tricorn',hair:'long',weapon:'bow',cape:1}, raijin:{hat:'crown',weapon:'spear',beard:1,cape:1},
   briar:{hat:'leaf',hair:'long',weapon:'gnarl'}, fang:{body:'leather',hat:'antlers',weapon:'spear'}, lumina:{hat:'tiara',weapon:'staff',back:'wings',cape:1},
   solaris:{hat:'helm',weapon:'bow',cape:1}, oracle:{hat:'hood',weapon:'staff',cape:1}, morrow:{hat:'crown',weapon:'scythe',cape:1},
-  vex:{body:'thief',hat:'thief',weapon:'darksword'}, jester:{hat:'witch',weapon:'wand',cape:1}};
+  vex:{body:'thief',hat:'thief',weapon:'darksword'}, jester:{hat:'witch',weapon:'wand',cape:1},
+  grovebeast:{hat:'antlers',body:'leather',weapon:'gnarl',beard:1,back:'wings'}};
 const SPRITES={};
 function makeSprite(key,pal,draw){
   if(SPRITES[key]) return SPRITES[key];

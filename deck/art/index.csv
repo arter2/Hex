@@ -1023,3 +1023,6 @@ potion_heal,Healing Draught,gray,boon,common,thing:flask,potion_heal.csv
 potion_tonic,Iron Tonic,gray,ward,common,thing:vial,potion_tonic.csv
 potion_elixir,Quicksilver Elixir,gray,boon,uncommon,thing:flask,potion_elixir.csv
 potion_wind,Second Wind,gray,utility,uncommon,thing:feather,potion_wind.csv
+brood_imp,Sprout Imp,verdant,summon,common,creature:Imp,brood_imp.csv
+brood_snake,Thorn Serpent,verdant,summon,common,creature:Serpent,brood_snake.csv
+brood_hawk,Moss Hawk,verdant,summon,uncommon,creature:Hawk,brood_hawk.csv

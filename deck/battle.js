@@ -373,7 +373,8 @@ function payHp(n){ const p=B.player; if(!n) return; const c=Math.min(n,p.hp-1); 
 // A card as cast: numbers scaled by any combo on its queue slot.
 function scaled(c,m){ if(!m||m===1) return c; const o=Object.assign({},c); for(const k of ['pow','amt','thorns','hp']) if(typeof o[k]==='number') o[k]=Math.round(o[k]*m); return o; }
 function playCard(inst){ if(B&&B.player){ B.player.poseT=B.time; B.player.poseK='cast'; }
-  const b=B, p=b.player, c=scaled(inst.card,(inst.mult||1)*(p.spell||1));
+  const b=B, p=b.player; let c=scaled(inst.card,(inst.mult||1)*(p.spell||1));
+  if(inst.brood) c=Object.assign({},c,{broodN:inst.brood,leader:inst.leader});
   b.log.push(c.name);
   b.hooks.onCast&&b.hooks.onCast(c,inst);
   B.fx.push({kind:'ring',a:p.tile,color:colorOf(c),t:0,life:.45}); burst(p.tile,colorOf(c),10,1.2);
@@ -443,8 +444,10 @@ const CAST={
       if(n) floater('cleansed',p.tile,'#e6f4ff'); healPlayer(c.amt); }
     burst(p.tile,colorOf(c),10,1);
   },
-  summon(c,p){ placeAlly(c,c.ai,c.hp,c.turns); },
-  hero(c,p){ callHero(c); },
+  summon(c,p){ if(c.ai!=='critter') return placeAlly(c,c.ai,c.hp,c.turns);
+    const n=c.broodN>=2?2:1; for(let i=0;i<n;i++) later(i*.15,()=>spawnCritter(c));
+    if(c.leader&&typeof BROOD_LEADER!=='undefined') later(.35,()=>{ const o=spawnCritter(scaled(BROOD_LEADER,1.25)); if(o) floater('Bramble Ogre!',o.tile,'#6fdc7a',true); }); },
+  hero(c,p){ callHero(c); if(c.hero==='grovebeast'){ shake(9); spray(p.tile,40,{shape:'leaf',color:['#6fdc7a','#3fa856','#b6f59a'],v0:1,v:6,up0:2,up:6,g:5,life:1.2,s:7,spin:9}); } },
   machine(c,p){
     if(c.ai==='bulwark') return CAST.ward({ward:'wall',n:c.n,hp:c.hp,turns:c.turns,color:c.color,name:c.name},p);
     placeAlly(c,c.ai,c.hp,c.turns);
@@ -481,8 +484,12 @@ function lobFrom(from,c,pow,radius,dur,target){
 // Sentries, summons and machines stand on a free tile of your side, nearest your row and the rift.
 // where walls, towers, summons and machines go: free tiles on your side, nearest your row and the front
 function placementTiles(n){ const p=B.player; return P_TILES.filter(t=>!t.occ).sort((a,b)=>Math.abs(a.r-p.tile.r)-Math.abs(b.r-p.tile.r)||b.x-a.x).slice(0,n); }
-function placeAlly(c,ai,hp,turns){
-  const p=B.player, t=placementTiles(1)[0];
+// a Brood critter: a small ally that pounces on the nearest enemy
+function spawnCritter(c){ const free=P_TILES.filter(t=>!t.occ&&!(t.holeT>0)&&t!==B.player.tile).sort((x,y)=>y.col-x.col||Math.random()-.5);
+  const front=free.filter(t=>t.col>=free[0].col-1); const a=placeAlly(c,'critter',c.hp,c.turns,front.length?pick(front):free[0]); if(!a) return null; a.fireT=.3+Math.random()*.3;
+  spray(a.tile,10,{shape:'leaf',color:['#6fdc7a','#b6f59a'],v0:.5,v:2,up0:1.5,up:3.5,g:5,life:.8,s:5,spin:8}); return a; }
+function placeAlly(c,ai,hp,turns,at){
+  const p=B.player, t=at||placementTiles(1)[0];
   if(!t){ floater('no room',p.tile,'#ffb3a0'); return; }
   const a={kind:'ally',ai,card:c,tile:t,hp,maxHp:hp,turns:turns||1,maxTurns:turns||1,fireT:.4}; t.occ=a; B.allies.push(a); burst(t,colorOf(c),10,.4);
   return a;
@@ -501,6 +508,7 @@ function callHero(c){
   if(c.hero==='thornfather'){ p.maxHp+=30; healPlayer(30); }
   if(c.hero==='aurelion') p.intervene=Math.max(p.intervene||0,c.amt);
   if(c.hero==='ysolde'||(c.aurae&&c.aurae.shield)) heroShield();
+  if(c.hero==='grovebeast'&&typeof BROOD!=='undefined') for(let i=0;i<2;i++) later(.4+i*.2,()=>spawnCritter(BROOD[0]));
   burst(a.tile,colorOf(c),40,1.6); burst(a.tile,'#ffe066',20,2); flash(a.tile,'#ffe066',1); shake(6);
   B.fx.push({kind:'ring',a:p.tile,color:'#ffe066',t:0,life:.7});
   B.hooks.onHero&&B.hooks.onHero(c);
@@ -565,6 +573,7 @@ function updateAlly(a,dt){
     case 'bomber': case 'mortar': lobFrom(a.tile,c,c.pow,a.ai==='mortar'?1:0,.7); break;
     case 'healer': healPlayer(c.amt); break;
     case 'hero': heroStrike(a,near); break;
+    case 'critter': if(near){ a.hopT=.25; B.fx.push({kind:'arc',a:a.tile,b:near.tile,color:colorOf(c),t:0,life:.22}); later(.18,()=>{ if(near.hp>0){ hitEnemy(near,c.pow,c); spray(near.tile,5,{shape:'leaf',color:'#6fdc7a',v:2,up:2,g:5,life:.5,s:4,spin:8}); } }); } break;
   }
 }
 // a trap springs when an enemy steps on it

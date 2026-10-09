@@ -95,6 +95,8 @@ function detectCombos(queue){
   if(cards.length>=3&&oneRune(cards)&&!NEUTRAL.includes(cards[0].color)&&cards.every(c=>c.color===cards[0].color&&kind(c)===kind(cards[0]))&&new Set(cards.map(c=>c.id)).size>1){
     const m=cards.length>=4?1.4:1.25, nm=cards[0].color[0].toUpperCase()+cards[0].color.slice(1);
     out.push({kind:'flush', color:cards[0].color, mult:m, label:'Flush: '+nm+' '+TYPES_NAME(kind(cards[0]))+' +'+Math.round((m-1)*100)+'%'}); }
+  const brood=cards.filter(c=>c.brood).length;
+  if(brood>=2) out.push({kind:'brood', n:Math.min(4,brood), label:brood>=4?'Elder Grovebeast!':brood===3?'Brood Swarm: two each +50%, an Ogre leads':'Brood Pack: two each +25%'});
   const ranks=cards.map(c=>c.rank).sort((a,b)=>a-b);
   if(cards.length>=3&&oneRune(cards)&&ranks.every((x,i)=>!i||x===ranks[i-1]+1))
     out.push({kind:'straight', ranks, label:(cards.length>=4?'Grand Straight ':'Straight ')+ranks.join('-')+': chain cast + finisher'});
@@ -112,6 +114,9 @@ function commitCustom(p){
       keep.mult=(keep.mult||1)*cb.mult; keep.combo=cb.label;
       if(keep.card.uses) keep.left=same.reduce((a,c)=>a+(c.left==null?c.card.uses:c.left),0);
       for(const c of same.slice(1)){ p.queue.splice(p.queue.indexOf(c),1); p.discard.push(c); } }
+    if(cb.kind==='brood'){ const bs=p.queue.filter(c=>c.card.brood&&!c.temp);
+      if(cb.n>=4&&typeof GROVEBEAST!=='undefined'){ p.discard.push(...bs); p.queue=p.queue.filter(c=>!bs.includes(c)); p.queue.unshift({uid:p.uid++, card:GROVEBEAST, temp:true, recipe:true, combo:cb.label}); }
+      else bs.forEach((c,i)=>{ c.brood=cb.n; c.mult=(c.mult||1)*(cb.n>=3?1.5:1.25); c.combo=cb.label; c.leader=cb.n>=3&&i===0; }); }
     if(cb.kind==='flush') p.queue.forEach(c=>{ c.mult=(c.mult||1)*cb.mult; c.combo=c.combo||cb.label; });
     if(cb.kind==='straight'&&p.queue.length>=3){ p.queue[0].straight=cb.ranks; p.queue.forEach(c=>c.combo=c.combo||cb.label); }
   }

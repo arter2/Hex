@@ -172,10 +172,15 @@ function hitEnemy(e,base,card,opts){
   if(e.def.bossId&&typeof bossHit==='function'){ const r=bossHit(e,card,base); if(r!==null) return r; }
   const pl=B.player;
   let mult=opts.raw?1:bossMult(card&&card.color,e)*(e.curseT>0?1.3:1)*(pl.pactT>0||pl.courageT>0?1.3:1)*(card&&card.valor&&pl.hp<=pl.maxHp/2?1.5:1)*heroMult(card)*((card&&pl.power&&pl.power[card.color])||1);
+  // Counter Hit (Battle Network): a card that lands while the enemy winds up, casts or has an attack
+  // marked on the board does double damage, stuns it and cancels the attack.
+  const counter=!opts.raw&&card&&card.id!=='wand'&&e.hp>0&&!(e.stunT>0)&&!(e.freezeT>0)&&(e.windT>0||!!e.casting||B.teles.some(t=>t.owner===e&&!t.friendly));
+  const weak=mult>=WEAK_MULT; if(counter) mult*=2;
   let dmg=Math.max(1,Math.round(base*mult));
+  if(counter) counterHit(e);
   if(e.barrier>0&&!opts.raw&&!opts.dig){ const a=Math.min(e.barrier,dmg); e.barrier-=a; dmg-=a; if(!dmg){ floater('🛡',e.tile,'#fff0b3'); return 0; } }
-  e.hp-=dmg; e.hitT=.18; if(typeof palPlay==='function') palPlay(e,'hurt'); if(dmg>=40||mult>=WEAK_MULT) shake(dmg>=60?5:3);
-  floater(dmg+(mult>=WEAK_MULT?' WEAK!':''),e.tile,mult>=WEAK_MULT?'#ffe24d':opts.raw?'#b8ffb0':'#fff',mult>=WEAK_MULT);
+  e.hp-=dmg; e.hitT=.18; if(typeof palPlay==='function') palPlay(e,'hurt'); if(dmg>=40||weak) shake(dmg>=60?5:3);
+  floater(dmg+(weak?' WEAK!':''),e.tile,counter?'#ff8fa3':weak?'#ffe24d':opts.raw?'#b8ffb0':'#fff',weak||counter);
   flash(e.tile,colorOf(card),.8);
   if(card&&!opts.raw) applyStatus(e,card);
   if(card&&!opts.raw) react(e,card,base);
@@ -230,6 +235,15 @@ function react(e,card,base){
     case 'Thornbind': if(e.hp>0){ e.stunT=Math.max(e.stunT,2.5); e.slowT=Math.max(e.slowT,5); cancelAttack(e); } break;
     case 'Rimebind': [e,...near(1)].forEach(o=>{ if(o.hp>0){ o.freezeT=Math.max(o.freezeT,2); cancelAttack(o); spray(o.tile,10,{shape:'shard',color:['#ffffff','#bfefff'],v:1.8,up:2.5,g:6,life:.6,s:4,spin:8}); ring(o.tile,'#bfefff',.8,.4,4); } }); break;
   } });
+}
+function counterHit(e){
+  const t=e.tile; cancelAttack(e); e.stunT=Math.max(e.stunT,1.5);
+  floater('COUNTER!',{wx:t.wx,wz:t.wz},'#ff3b5c',true); B.floaters[B.floaters.length-1].y=2.4;
+  B.hitStop=.12; shake(7); flash(t,'#ffffff',1);
+  spray(t,1,{shape:'glow',color:'#ffffff',v0:0,v:0,up0:0,up:0,g:0,life:.25,s:30,add:true,shrink:1});
+  ring(t,'#ff3b5c',1.6,.4,8); ring(t,'#ffffff',1,.25,4);
+  spray(t,22,{shape:'spark',color:['#ffffff','#ff3b5c','#ffd0d8'],v0:4,v:10,up0:-1,up:5,g:0,drag:4,life:.35,s:3,add:true});
+  B.counters=(B.counters||0)+1;
 }
 const bossMult=(atk,e)=>typeof bossColorMult==='function'?bossColorMult(atk,e):colorMult(atk,e.color);
 function applyStatus(e,c){
@@ -508,6 +522,7 @@ function fireWand(charged){ if(B&&B.player){ B.player.poseT=B.time; B.player.pos
 const PACE=.7;
 function update(dt){
   const b=B; if(!b) return;
+  if(b.hitStop>0){ b.hitStop-=dt; dt*=.08; }   // a Counter Hit freezes the moment for a beat
   b.time+=dt;
   // Effects keep animating on the Custom screen, the fight itself is paused.
   for(const f of b.fx) f.t+=dt; b.fx=b.fx.filter(f=>f.t<f.life);
@@ -1017,7 +1032,7 @@ const DRAW={
     if(e.casting){ const w=Math.max(S*1.6,ctx.measureText(e.casting.name).width+14), yy=top-S*.75;   // the card it is about to cast
       ctx.fillStyle='rgba(4,8,12,.9)'; ctx.strokeStyle=COLORS[e.casting.color].c; ctx.lineWidth=2; ctx.beginPath(); ctx.roundRect(x-w/2,yy-S*.32,w,S*.44,6); ctx.fill(); ctx.stroke();
       ctx.fillStyle=COLORS[e.casting.color].c; ctx.fillText(TYPES[e.casting.type].icon+' '+e.casting.name,x,yy); }
-    if(e.windT>0){ ctx.fillStyle='#ff5d6c'; ctx.font='800 '+Math.round(S*.6)+'px "Pixelify Sans",system-ui,sans-serif'; ctx.fillText('!',x+S*.5,y-h*1.6); }
+    if(e.windT>0||e.casting){ const pu=1+.25*Math.sin(T*25); ctx.fillStyle='#ff5d6c'; ctx.font='800 '+Math.round(S*.6*pu)+'px "Pixelify Sans",system-ui,sans-serif'; ctx.fillText('!',x+S*.5,y-h*1.6); }
     // intent: what it will do next, with a ring that closes as the attack nears
     if(e.hp>0&&!e.casting&&!e.windT&&e.nextMove&&e.atkT<1.6&&e.freezeT<=0&&e.stunT<=0){ const ix=x+S*.62, iy=top-S*.05, r=S*.26, k=1-e.atkT/1.6;
       ctx.fillStyle='rgba(4,8,12,.85)'; ctx.beginPath(); ctx.arc(ix,iy,r,0,TAU); ctx.fill();

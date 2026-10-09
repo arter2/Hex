@@ -118,7 +118,7 @@ function moveEnemy(e){
 function enemyShot(e,dmg){ const from=e.confuseT>0&&pick([tileCR(e.tile.col,e.tile.r-1),tileCR(e.tile.col,e.tile.r+1)].filter(Boolean))||e.tile;
   shoot(from,lineTiles(from,DIRS.W),{dmg:Math.round(dmg),from:'e',owner:e,color:COLORS[e.color].c}); }
 const MOVES={
-  shot(e){ e.windT=.55; },
+  shot(e){ e.windT=.7; },
   firebomb(e){ const t=B.player.tile; tele(e,[t],1,e.dmg,()=>{ t.burnT=5; burst(t,'#ff6a3d',14,.3); }); },
   iceslam(e){ const t=B.player.tile, n=pick(neighbors(t).filter(x=>x.side==='p')); tele(e,[t,n],1,e.dmg,()=>[t,n].forEach(x=>x&&(x.iceT=6))); },
   cross(e){ const t=B.player.tile; tele(e,P_TILES.filter(x=>x.r===t.r||(x.col===t.col&&Math.abs(x.r-t.r)<=2)),1.1,e.dmg); },

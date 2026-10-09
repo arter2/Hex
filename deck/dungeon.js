@@ -601,10 +601,10 @@ function xTryUnlock(c,d){ const L=LOCKS[d.lock];
   let used=keyN(L.key)>0?L.key:d.lock!=='boss'&&keyN('skeleton')>0?'skeleton':null;
   if(!used){ xSay('lock'+c,'The '+L.name+' is locked. You need a '+KEYS[L.key].name+(L.pick?', or pick the lock (E)':'')+'.'); xSfx('click'); return; }
   XRUN.keys[used]--; xUnlock(c,d,'You open the '+L.name+' with a '+KEYS[used].name+(used==='skeleton'?'; it crumbles to dust':'')+'.'); }
-function xUnlock(c,d,msg){ d.state='open'; d.lock=null; if(d.leaf) d.leaf.visible=false; xSfx('unlock'); xLog(msg,'good'); xUpdateVis(); xHud();
+function xUnlock(c,d,msg){ d.gate=d.lock==='gate'; d.state='open'; d.lock=null; xDoorOpen(d); xSfx('unlock'); xLog(msg,'good'); xUpdateVis(); xHud();
   const r=xAdj4(c).map(roomOf).find(x=>x&&x.side==='vault');
   if(r) for(const g of EX.groups) if(g.dormant&&g.vault===r.id){ g.dormant=false; g.state='chase'; g.beh='guard'; xLog('An Arcane Construct grinds awake inside the vault!','warn'); xSfx('grind'); } }
-function xFoundDoor(i,d){ d.state='closed'; if(d.leaf) d.leaf.visible=true; const w=EX.wIdx.get(i);
+function xFoundDoor(i,d){ d.state='closed'; if(d.leaf){ d.leaf.visible=true; xDoorPose(d,0,1); } const w=EX.wIdx.get(i);
   if(w){ w[0].setMatrixAt(w[1],new THREE.Matrix4().makeScale(0,0,0)); w[0].instanceMatrix.needsUpdate=true; EX.wIdx.delete(i); } EX.seen[i]=1; }
 function xOpenCloset(id,how){ let n=0; for(const [i,d] of EX.doors) if(d.state==='secret'&&xAdj4(i).some(c=>EX.room[c]===id)){ xFoundDoor(i,d); n++; }
   if(n){ xLog(how,'good'); xSfx('grind'); xUpdateVis(); } return n; }
@@ -738,10 +738,10 @@ function xNpcWalk(p,dt){ if(p.x==null){ p.x=xw(p.cell); p.z=xz(p.cell); p.path=[
   let goal, sp;
   if(p.role==='lost'||p.role==='scout'){ goal=EX.pc; sp=p.role==='scout'?4.6:5.2; if(Math.hypot(p.x-EX.px,p.z-EX.pz)<XCS*1.3) return xNpcPlace(p); }
   else { const t=p.target; if(!t||t.open){ p.state=t&&t.open&&p.state!=='won'?'lost':p.state; return; } goal=t.cell; sp=1.8;
-    if(xAdj4(t.cell).includes(p.cell)||p.cell===t.cell){ t.open=true; if(t.mesh&&t.mesh.userData.lid) t.mesh.userData.lid.rotation.x=-1.9; p.state='won'; xLog('You hear a whoop of triumph: '+p.name+' got to the treasure first.','bad'); return; } }
+    if(xAdj4(t.cell).includes(p.cell)||p.cell===t.cell){ t.open=true; xLidOpen(t); p.state='won'; xLog('You hear a whoop of triumph: '+p.name+' got to the treasure first.','bad'); return; } }
   p.repath=(p.repath||0)-dt; if(p.repath<=0){ p.repath=.5; const dist=xbfs(EX.t,EX.doors,goal,null,n=>xSolid(n)&&n!==goal); p.path=xPathTo(dist,p.cell,goal); }
   if(p.path.length){ const n=p.path[0], tx=xw(n)-p.x, tz=xz(n)-p.z, l=Math.hypot(tx,tz); if(l<.2) p.path.shift(); else { const s=Math.min(sp*dt,l); p.x+=tx/l*s; p.z+=tz/l*s; }
-    const dr=EX.doors.get(n); if(dr&&dr.state==='closed'&&l<1){ dr.state='open'; if(dr.leaf) dr.leaf.visible=false; } }
+    const dr=EX.doors.get(n); if(dr&&dr.state==='closed'&&l<1){ dr.state='open'; xDoorOpen(dr,p.cell); } }
   const c=xcell(p.x,p.z); if(c>=0) p.cell=c; xNpcPlace(p); }
 function xNpcPlace(p){ if(p.mesh) p.mesh.position.set(p.x,0,p.z); }
 // leading someone lost to the stairs: they thank you if they kept up
@@ -755,7 +755,7 @@ const xEnemyBlock=n=>EX.safe.has(n)||xSolid(n);
 function xWalk(g,goal,sp,dt){
   g.repath-=dt; if(g.repath<=0||g.goal!==goal){ g.repath=.45; g.goal=goal; g.path=xPathTo(xbfs(EX.t,EX.doors,goal,null,xEnemyBlock),g.cell,goal); }
   if(g.path.length){ const n=g.path[0], tx=xw(n)-g.x, tz=xz(n)-g.z, l=Math.hypot(tx,tz);
-    if(l<.2){ g.path.shift(); const dr=EX.doors.get(n); if(dr&&dr.state==='closed'){ dr.state='open'; if(dr.leaf) dr.leaf.visible=false; if(EX.seen[n]) xUpdateVis(); } }
+    if(l<.2){ g.path.shift(); const dr=EX.doors.get(n); if(dr&&dr.state==='closed'){ dr.state='open'; xDoorOpen(dr,g.cell); if(EX.seen[n]) xUpdateVis(); } }
     else { const s=Math.min(sp*dt,l); g.x+=tx/l*s; g.z+=tz/l*s; g.face=tx<0?-1:1; g.head=Math.atan2(tz,tx); } }
   const c=xcell(g.x,g.z); if(c>=0) g.cell=c; }
 // hunters always know where you are (after a while); patrols walk a beat; guards stay by their hoard
@@ -789,7 +789,7 @@ function xAfterFight(g,won,info){
     if(XR()<.4){ const id=rollLoot(EX.depth+2,XR,true), res=addLoot(save,id,XR); drops.push(lootLabel(save,id).name); if(res&&res.cursed) xLog(res.msg,'bad'); } }
   for(const c of g.carry||[]) if(c.startsWith('key:')){ addKey(c.slice(4)); drops.push('a '+KEYS[c.slice(4)].name); }
   if(drops.length){ xLog((g.mini?'The '+ENEMY_DEFS[g.mini].name:'They')+' dropped '+drops.join(', ')+'.','loot'); xSfx('chime'); }
-  if(g.mimicChest){ const ch=g.mimicChest; ch.mimic=ch.giant=false; ch.open=true; if(ch.mesh&&ch.mesh.userData.lid) ch.mesh.userData.lid.rotation.x=-1.9; xLoot(true); if(ch.rich) xLoot(true); xChestAfter(ch); }
+  if(g.mimicChest){ const ch=g.mimicChest; ch.mimic=ch.giant=false; ch.open=true; xLidOpen(ch); xLoot(true); if(ch.rich) xLoot(true); xChestAfter(ch); }
   if(typeof xMissionFight==='function') xMissionFight(g);
   if(g.trial){ const p=g.trial; p.spent=true; if(p.flame) p.flame.visible=false;
     if(info&&info.ruleOK) xPuzzleSolved(); else xLog('The trial was broken. The altar goes dark.','bad'); }
@@ -1026,6 +1026,8 @@ function xSfx(kind,pan){ if(!sfxOn()) return; try{
   out.gain.value=.6;
   if(kind==='whisper') noise(1.2,600,1700,.09);
   else if(kind==='click') tone(320,0,.06,'square',.05);
+  else if(kind==='door'){ noise(.32,420,180,.18,'bandpass'); tone(150+Math.random()*30,.02,.28,'sawtooth',.025); tone(90,.3,.12,'triangle',.08); }   // creak, then the knock against the wall
+  else if(kind==='gate'){ noise(.7,900,500,.12,'bandpass'); for(let k=0;k<6;k++) tone(220+k*12,k*.1,.06,'square',.02); tone(70,.68,.2,'triangle',.12); }   // chain rattle and a clunk
   else if(kind==='unlock'){ tone(660,0,.12,'triangle',.1); tone(990,.09,.16,'triangle',.08); }
   else if(kind==='chime'){ [523,659,784,1046].forEach((f,i)=>tone(f,i*.07,.35,'sine',.07)); }
   else if(kind==='grind') noise(.7,220,120,.18,'lowpass');

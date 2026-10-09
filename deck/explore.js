@@ -361,7 +361,9 @@ function xBuildScene(){
     if(d.lock==='gate'){ for(let k=0;k<5;k++) leaf.add(xBox(.07,XWALL-.24,.07,iron,-.6+k*.3,(XWALL-.24)/2,0)); leaf.add(xBox(XCS-.44,.08,.09,iron,0,.5,0), xBox(XCS-.44,.08,.09,iron,0,1.2,0)); }
     else { leaf.add(xBox(XCS-.44,XWALL-.24,.16,d.lock==='boss'?xMat(0x3a1418):wood,0,(XWALL-.24)/2,0), xBox(XCS-.44,.1,.18,d.lock==='boss'?xMat(0xff5d6c,{emissive:0x401010}):iron,0,.4,0), xBox(XCS-.44,.1,.18,d.lock==='boss'?xMat(0xff5d6c,{emissive:0x401010}):iron,0,1.1,0));
       if(LOCK_COL[d.lock]) for(const zz of [-.1,.1]) leaf.add(xBox(.26,.32,.04,xMat(LOCK_COL[d.lock],{emissive:new THREE.Color(LOCK_COL[d.lock]).multiplyScalar(.25)}),.38,.78,zz)); }
-    g.add(leaf); d.mesh=g; d.leaf=leaf; leaf.visible=d.state==='closed'||d.state==='locked'; g.visible=false; grp.add(g); }
+    // the leaf hangs on a hinge at one jamb so it can swing (a gate's bars lift instead)
+    const LW=XCS-.44, hinge=new THREE.Group(); if(d.lock!=='gate'){ hinge.position.x=-LW/2; leaf.position.x=LW/2; } hinge.add(leaf);
+    g.add(hinge); d.mesh=g; d.leaf=hinge; d.ew=ew; d.cell=i; hinge.visible=d.state!=='secret'; if(d.state==='open') xDoorPose(d,1,1); g.visible=false; grp.add(g); }
   // stairs
   const glow=new THREE.Color(isBossDepth(EX.depth)?'#ff5d6c':A.glow);
   const down=new THREE.Group(); down.position.set(xw(EX.down),0,xz(EX.down));
@@ -542,7 +544,7 @@ function xMove(dt){
 function xBump(c,front){
   if(typeof xBumpExtra==='function'){ const r=xBumpExtra(c,front); if(r!==undefined) return r; }   // locks, people, puzzles, levers (dungeon.js)
   if(c<0||!xPassable(c)) return false;
-  const d=EX.doors.get(c); if(d&&d.state==='closed'){ if(!front) return false; d.state='open'; d.leaf.visible=false; xLog('You open the door.','dim'); xUpdateVis(); return false; }
+  const d=EX.doors.get(c); if(d&&d.state==='closed'){ if(!front) return false; d.state='open'; xDoorOpen(d); xLog('You open the door.','dim'); xUpdateVis(); return false; }
   const ch=xChestAt(c); if(ch){ if(front) xOpenChest(ch); return false; }
   const tr=xKnownTrap(c); if(tr){ xSay('trap'+c,'There is a '+TRAPS[tr.kind].name+' there. Disarm it (E) or go around.'); EX.path=[]; return false; }
   return true;
@@ -591,7 +593,7 @@ function xAimCell(ex,ey){ const G=X3, r=appBox($('#xView')), v=new THREE.Vector2
 // a third while you stand still); deeper traps are a little harder to spot
 function xSearchRoll(k,quiet,at){ k*=(typeof gearMods==='function'&&gearMods(save).search)||1; const ctr=at==null?EX.pc:at, x=xcx(ctr), y=xcy(ctr); let found=0; const hard=Math.max(.75,1-EX.depth*.01);
   for(let dy=-2;dy<=2;dy++) for(let dx=-2;dx<=2;dx++){ const i=xi(x+dx,y+dy), d=EX.doors.get(i);
-    if(d&&d.state==='secret'&&xLos(EX.pc,i)&&Math.random()<.55*k){ d.state='closed'; d.leaf.visible=true; found++; xLog(quiet?'Standing still, you notice the outline of a hidden door!':'You find a hidden door!','good');
+    if(d&&d.state==='secret'&&xLos(EX.pc,i)&&Math.random()<.55*k){ d.state='closed'; d.leaf.visible=true; xDoorPose(d,0,1); found++; xLog(quiet?'Standing still, you notice the outline of a hidden door!':'You find a hidden door!','good');
       const w=EX.wIdx.get(i); if(w){ w[0].setMatrixAt(w[1],new THREE.Matrix4().makeScale(0,0,0)); w[0].instanceMatrix.needsUpdate=true; EX.wIdx.delete(i); } EX.seen[i]=1; } }
   for(const tr of EX.traps) if(tr.armed&&!tr.known&&xLos(EX.pc,tr.cell)&&Math.max(Math.abs(xcx(tr.cell)-x),Math.abs(xcy(tr.cell)-y))<=2&&Math.random()<.65*k*hard){ tr.known=true; xTrapMesh(tr); found++; xLog('You find a '+TRAPS[tr.kind].name+'.','good'); }
   for(const ch of EX.chests) if(!ch.open&&ch.trap&&!ch.trapKnown&&Math.max(Math.abs(xcx(ch.cell)-x),Math.abs(xcy(ch.cell)-y))<=1&&Math.random()<.65*k){ ch.trapKnown=true; found++; xLog('The chest\'s lock is trapped.','good'); }
@@ -614,7 +616,7 @@ function xOpenChest(ch){
   if(typeof xChestExtra==='function'&&xChestExtra(ch)) return;   // a mimic (dungeon.js)
   if(ch.trap&&ch.trapKnown){ xSay('chest','The lock is trapped. Disarm it first (E).'); return; }
   if(ch.trap){ ch.trap=false; xLog('A needle in the lock pricks you!','bad'); xHurt(Math.round(5+EX.depth),'a trapped chest'); if(EX.hp<=0) return; }
-  ch.open=true; ch.mesh.userData.lid.rotation.x=-1.9; EX.path=[];
+  ch.open=true; xLidOpen(ch); EX.path=[];
   const rolls=ch.rich?2:1; for(let n=0;n<rolls;n++) xLoot(ch.rich); xXp(ch.rich?15:5,'chest opened');
   if(typeof xChestAfter==='function') xChestAfter(ch);
   persist(); xHud();
@@ -647,7 +649,7 @@ function xEnemies(dt){
         if(goal!=null){ const dist=xbfs(EX.t,EX.doors,goal,null,typeof xEnemyBlock==='function'?xEnemyBlock:null); g.path=xPathTo(dist,g.cell,goal); } }
       const sp=(g.state==='chase'?4.1:2)*dt;
       if(g.path.length){ const n=g.path[0], tx=xw(n)-g.x, tz=xz(n)-g.z, l=Math.hypot(tx,tz);
-        if(l<.2){ g.path.shift(); const dr=EX.doors.get(n); if(dr&&dr.state==='closed'){ dr.state='open'; dr.leaf.visible=false; if(EX.seen[n]) xUpdateVis(); } }
+        if(l<.2){ g.path.shift(); const dr=EX.doors.get(n); if(dr&&dr.state==='closed'){ dr.state='open'; xDoorOpen(dr,g.cell); if(EX.seen[n]) xUpdateVis(); } }
         else { g.x+=tx/l*Math.min(sp,l); g.z+=tz/l*Math.min(sp,l); g.face=tx<0?-1:1; g.head=Math.atan2(tz,tx); } }
       const c=xcell(g.x,g.z); if(c>=0) g.cell=c; }
     if(d<1.15&&!EX.busy&&!safe){ xEngage(g); return; }   // nothing fights you inside a sanctuary or a merchant's room
@@ -744,13 +746,29 @@ function stopExplore(){ if(EX) EX.active=false; xPause(false); }
 
 /* ---------------- loop, hud ---------------- */
 let xRaf=0, xLast=0;
+/* Doors swing open on their hinge, away from whoever opens them; a shortcut gate's bars slide up.
+   xDoorOpen starts the animation, xDoorTick runs it every frame. */
+function xDoorPose(d,k,sign){ if(d.lock==='gate'||d.gate){ d.leaf.position.y=k*(XWALL-.3); return; } d.leaf.rotation.y=sign*k*1.65; }
+function xDoorOpen(d,by){ if(!d||!d.leaf) return; d.leaf.visible=true;
+  const bx=by!=null?xw(by):EX.px, bz=by!=null?xz(by):EX.pz, rel=d.ew?bx-xw(d.cell):bz-xz(d.cell);
+  d.sign=d.ew?(rel>0?-1:1):(rel>0?1:-1); d.gate=d.gate||d.lock==='gate'; d.anim=0;
+  if(EX.seen&&EX.seen[d.cell]){ const near=Math.hypot(xw(d.cell)-EX.px,xz(d.cell)-EX.pz)/XCS; if(near<9) xSfx(d.gate?'gate':'door',(xw(d.cell)-EX.px)/(XCS*6)); } }
+// A chest lid pops up past open, falls back and bounces; gold light spills out of it.
+function xLidOpen(ch){ const l=ch&&ch.mesh&&ch.mesh.userData.lid; if(!l) return; ch.lidT=0; xSfx('door'); }
+function xLidTick(dt){ for(const ch of EX.chests){ if(ch.lidT==null) continue; const l=ch.mesh&&ch.mesh.userData.lid; if(!l){ ch.lidT=null; continue; }
+  ch.lidT=Math.min(1,ch.lidT+dt/.55); const k=ch.lidT, e=1-Math.pow(1-k,3), wob=Math.sin(k*Math.PI*3)*(1-k)*.35;
+  l.rotation.x=-(2.25*e-.35*k*k+wob); if(k>=1){ l.rotation.x=-1.9; ch.lidT=null; } } }
+function xDoorTick(dt){ xLidTick(dt); for(const d of EX.doors.values()){ if(d.anim==null) continue;
+  d.anim=Math.min(1,d.anim+dt/(d.gate?.7:.42)); const k=d.anim, e=d.gate?k*k*(3-2*k):1-Math.pow(1-k,3)*(1-.25*Math.sin(k*9)*(1-k));
+  // a swung door overshoots a hair and settles
+  xDoorPose(d,d.gate?e:Math.min(1.06,e+.08*Math.sin(k*Math.PI)),d.sign||1); if(k>=1){ d.anim=null; xDoorPose(d,1,d.sign||1); } } }
 function xLoopStart(){ cancelAnimationFrame(xRaf); xLast=performance.now(); xRaf=requestAnimationFrame(xLoop); }
 function xLoop(ts){
   if(!EX||!EX.active||!$('#scrExplore').classList.contains('on')) return;
   const dt=Math.min(.1,(ts-xLast)/1000); xLast=ts;
   if(!EX.busy&&!xPaused&&!EX.aim){ xMove(dt); xEnemies(dt); if(EX.active&&!EX.busy&&typeof xDungeonTick==='function') xDungeonTick(dt);
     EX.regenT+=dt; if(EX.regenT>3){ EX.regenT=0; if(EX.hp<xmaxHp()){ EX.hp++; xHud(); } } }
-  xDraw(ts/1000,dt); xRaf=requestAnimationFrame(xLoop);
+  xDoorTick(dt||.016); xDraw(ts/1000,dt); xRaf=requestAnimationFrame(xLoop);
 }
 function xResize(){ const G=X3, cv=$('#xView'), w=cv.clientWidth||400, h=cv.clientHeight||600; if(G.w===w&&G.h===h) return; G.w=w; G.h=h; G.renderer.setSize(w,h,false); G.cam.aspect=w/h; G.cam.updateProjectionMatrix(); }
 function xDraw(T,dt){

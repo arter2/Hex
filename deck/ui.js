@@ -187,7 +187,7 @@ function openSlots(mode){ const isNew=mode==='new', box=$('#slList'); box.innerH
     row.innerHTML=`<span class="sln">${n}</span><div class="slinfo">${slotLine(s)}</div><div class="slbtns"></div>`;
     const bb=row.querySelector('.slbtns'), btn=(label,cls,fn)=>{ const b=document.createElement('button'); b.className='btn small'+(cls?' '+cls:''); b.textContent=label; b.onclick=e=>fn(e); bb.appendChild(b); return b; };
     if(isNew){ const go=()=>{ useSlot(n); $('#slots').classList.remove('on'); openNewChar(); };
-      if(s) btn('Replace','ghost',e=>armed(e.currentTarget,'Tap again',go)); else btn('Start here','',go); }
+      if(s) btn('Replace','ghost',e=>{ armed(e.currentTarget,'Tap again to replace',go); $('#slHint').innerHTML='<b style="color:#ff8a8a">Tap again within 3 seconds to replace slot '+n+'. That save will be lost.</b>'; }); else btn('Start here','',go); }
     else { if(n!==SAVE_SLOT) btn(s?'Play':'Use','',()=>{ useSlot(n); $('#slots').classList.remove('on'); openMenu(); }); else bb.insertAdjacentHTML('beforeend','<span class="slnow">In use</span>');
       if(s) btn('Delete','ghost',e=>armed(e.currentTarget,'Tap again',()=>{ clearSave(n); clearPoint(n); if(n===SAVE_SLOT){ save=null; pickDepth=null; } openSlots(); openMenu(); tip('Slot '+n+' deleted'); })); }
     box.appendChild(row); }
@@ -976,6 +976,9 @@ function applyViewport(){
 addEventListener('resize',applyViewport); addEventListener('orientationchange',()=>setTimeout(applyViewport,150));
 applyViewport();
 openMenu();
+// the very first launch (no save in any slot): go straight to making your character in slot 1
+{ let any=false; for(let n=1;n<=SAVE_SLOTS;n++) if(n===SAVE_SLOT?save:loadSave(n)) any=true;
+  if(!any){ useSlot(1); openNewChar(); } }
 requestAnimationFrame(frame);
 
 /* ---------------- main menu ----------------

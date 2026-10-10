@@ -93,7 +93,8 @@ function detectCombos(queue){
     out.push({kind:'simple', id, n:by[id], mult:by[id]>=3?2:1.5, label:(by[id]>=3?'Triple ':'Double ')+c.name+' ×'+(by[id]>=3?2:1.5)}); }
   const kind=c=>c.type==='piece'?c.base:c.type;
   if(cards.length>=3&&oneRune(cards)&&!NEUTRAL.includes(cards[0].color)&&cards.every(c=>c.color===cards[0].color&&kind(c)===kind(cards[0]))&&new Set(cards.map(c=>c.id)).size>1){
-    const m=cards.length>=4?1.4:1.25, nm=cards[0].color[0].toUpperCase()+cards[0].color.slice(1);
+    // one bonus for any Flush: a stronger 4-card Flush made the 4th slot too strong
+    const m=1.25, nm=cards[0].color[0].toUpperCase()+cards[0].color.slice(1);
     out.push({kind:'flush', color:cards[0].color, mult:m, label:'Flush: '+nm+' '+TYPES_NAME(kind(cards[0]))+' +'+Math.round((m-1)*100)+'%'}); }
   const brood=cards.filter(c=>c.brood).length;
   if(brood>=2) out.push({kind:'brood', n:Math.min(4,brood), label:brood>=4?'Elder Grovebeast!':brood===3?'Brood Swarm: two each +50%, an Ogre leads':'Brood Pack: two each +25%'});

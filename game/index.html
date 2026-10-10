@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
+<title>Hexmancers</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- main menu: what the game opens on -->
+  <section id="scrMenu" class="screen">
+    <div class="mmart">
+      <h1 class="sr">Hexmancers</h1><p class="sr">Crawl the dungeon. Duel on the hex grid. Collect the cards.</p>
+      <button id="mmContinue" class="hot"><span class="sr">Continue: back to camp, where you left off</span></button>
+      <button id="mmSlots" class="hot"><span class="sr">Save slots</span></button>
+      <div id="mmSave" class="mmstats"></div>
+      <button id="mmDown" class="hot" aria-label="Shallower"></button>
+      <b id="mmDepth" class="mmtxt">1</b>
+      <button id="mmUp" class="hot" aria-label="Deeper"></button>
+      <p id="mmArea" class="mmtxt"></p>
+      <button id="mmExplore" class="hot"><span class="sr">Explore the dungeon</span></button>
+      <button id="mmBattle" class="hot"><span class="sr">Battle, no dungeon</span></button>
+      <button id="mmNew" class="hot"><span class="sr">New game: choose a starter deck</span></button>
+      <button id="mmSettings" class="hot"><span class="sr">Settings</span></button>
+      <p id="mmWarn" class="mmtxt"></p>
+    </div>
+  </section>
+
+  <!-- new game, step 1: your hexmancer: race, body and stats -->
+  <section id="scrNewChar" class="screen">
+    <div class="cc">
+      <div class="bar"><button id="ccBack" class="btn ghost back">←</button><h2>Your hexmancer</h2><span id="ccStep" class="dim">Step 1 of 2</span></div>
+      <div class="cctop">
+        <canvas id="ccSprite" width="192" height="192"></canvas>
+        <div class="ccinfo">
+          <h3 id="ccRace"></h3>
+          <p id="ccText" class="hint"></p>
+          <div class="ccbody"><button class="chip" data-body="0">Man</button><button class="chip" data-body="1">Woman</button></div>
+        </div>
+      </div>
+      <div id="ccRaces" class="ccraces"></div>
+      <div class="ccpts"><span>Points to spend</span><b id="ccPts">12</b><button id="ccReset" class="btn ghost small">Reset</button></div>
+      <p class="hint center ccdialhint">Drag a dial left or right, or tap its ends, to move a stat. Your race sets the starting value.</p>
+      <div id="ccStats" class="ccstats"></div>
+      <p id="ccWarn" class="hint warn center"></p>
+      <button id="ccGo" class="btn big">Choose your deck ►</button>
+    </div>
+  </section>
+
+  <!-- new game: pick a starter deck -->
+  <section id="scrStart" class="screen">
+    <button id="startBack" class="btn ghost back startback">← Character</button>
+    <h1>Hexmancers</h1>
+    <p class="sub">New game</p>
+    <p class="hint center">Choose your first deck. Win fights and open chests to collect cards from 1,000, then build your own decks at camp.</p>
+    <p id="startWarn" class="hint warn center"></p>
+    <div id="starters"></div>
+  </section>
+
+  <!-- camp: the hub of the collecting loop -->
+  <section id="scrCamp" class="screen">
+    <div class="camp">
+      <button id="campMenu" class="btn ghost small campmenu">☰ Menu</button>
+      <h1 class="logo">Hexmancers</h1>
+      <div id="campArea" class="area"></div>
+      <div class="scenebox">
+        <div class="panel scene"><canvas id="campScene"></canvas></div>
+        <div class="pxbanner">Camp</div>
+      </div>
+      <div class="panel depthbox">
+        <div class="drow"><span><span id="campDeck"></span> <span id="campDeckCount" class="count"></span></span><span id="campBoss"></span></div>
+        <p id="campDeckErr" class="hint warn"></p>
+        <canvas id="depthMap"></canvas>
+        <div class="depthpick"><button id="depthDown" class="btn ghost sq" aria-label="Shallower">◄</button><button id="btnDescend" class="btn big"></button><button id="depthUp" class="btn ghost sq" aria-label="Deeper">►</button></div>
+        <button id="btnQuick" class="btn ghost quick">⚔ Battle only <small>skip the dungeon, fight straight away</small></button>
+      </div>
+      <div class="menu">
+        <button id="goBuilder" class="btn ghost mi" data-icon="deck">Deck builder</button>
+        <button id="goCollection" class="btn ghost mi" data-icon="cards">My cards</button>
+        <button id="goShop" class="btn ghost mi" data-icon="bag">Shop</button>
+        <button id="goChar" class="btn ghost mi" data-icon="hero">Character</button>
+        <button id="goSettings" class="btn ghost mi" data-icon="scroll">Settings</button>
+      </div>
+      <div id="campLog" class="panel log"></div>
+      <div id="bossTrials" class="trials devonly"></div>
+      <div class="wallet"><span id="campGold"></span><span id="campColl"></span></div>
+      <button id="campLevel" class="xpbar"></button>
+    </div>
+  </section>
+
+  <!-- deck builder -->
+  <section id="scrBuilder" class="screen">
+    <div class="bar"><button class="btn ghost back">←</button><input id="bName" maxlength="24"><span id="bCount" class="count"></span></div>
+    <div id="bSlots" class="slotsel"></div>
+    <div class="soulpick"><label>♔ Soul <select id="bSoul"></select></label><small id="bSoulTxt" class="dim"></small></div>
+    <div id="bStats" class="stats"></div>
+    <p id="bErr" class="hint warn"></p>
+    <h3>Deck <small class="dim">tap a card to remove it</small></h3>
+    <div id="bDeck" class="grid mini"></div>
+    <h3>Collection <small class="dim">tap a card to add it</small></h3>
+    <div id="bFilters" class="filters"></div>
+    <div id="bColl" class="grid mini"></div>
+    <div class="sticky"><button id="bAuto" class="btn ghost">Auto-fill</button><button id="bClear" class="btn ghost">Clear</button><button id="bUse" class="btn">Use this deck</button></div>
+  </section>
+
+  <!-- deck builder (deckui.js) -->
+  <section id="scrDeck" class="screen dkscr">
+    <div class="dkhead"><button id="dkBack" class="dkpill sq" aria-label="Back">←</button><input id="dkName" maxlength="24"><div id="dkSlots" class="dkslots"></div><button id="dkUse" class="dkpill">Use ★</button></div>
+    <div class="dktools"><button id="dkClear" class="dkpill red">— Remove All</button><button id="dkAuto" class="dkpill">Auto-build</button>
+      <div class="dkpill zoom"><button id="dkZo" aria-label="Zoom out">⊖</button><span id="dkZoom">50%</span><button id="dkZi" aria-label="Zoom in">⊕</button></div></div>
+    <div id="dkDeck" class="dkdeck"></div>
+    <div class="dkdrawer">
+      <div class="dkbar"><span id="dkCount" class="dkcount"></span><span id="dkErr" class="dkerr"></span><label class="dksoul">♔ <select id="dkSoul"></select></label><button id="dkMulti" class="dkpill">☐ Select</button></div>
+      <div id="dkTabs" class="dktabs"></div>
+      <div class="dksearch"><input id="dkQ" placeholder="🔍 Search card library"><button id="dkFilt" class="dkpill">⚙ Filters</button><button id="dkSort" class="dkpill">⇅ Color</button></div>
+      <div id="dkFilters" class="filters" hidden></div>
+      <div id="dkColl" class="dkcoll"></div>
+      <div id="dkMultiBar" class="dkmultibar" hidden><span id="dkSelN"></span><button id="dkSelAdd" class="btn">Add to deck</button><button id="dkSelNew" class="btn ghost">New deck</button></div>
+      <button id="dkOK" class="dkok">OK</button>
+    </div>
+  </section>
+  <!-- collection -->
+  <section id="scrCollection" class="screen">
+    <div class="bar"><button class="btn ghost back">←</button><h2 id="cTitle">My cards</h2><span id="cCount" class="count"></span></div>
+    <div class="tabs"><button id="cTabMine" class="chip on">My cards</button><button id="cTabAll" class="chip">All cards</button><button id="cTabBook" class="chip">Recipes</button>
+      <select id="cSort"><option value="family">Sort: color</option><option value="rank">Sort: rank</option><option value="rarity">Sort: rarity</option><option value="copies">Sort: most copies</option><option value="name">Sort: name</option></select></div>
+    <div id="cProgress" class="stats"></div>
+    <div id="cItems" class="items-row"></div>
+    <div id="cFilters" class="filters"></div>
+    <div id="cGrid" class="grid mini"></div>
+  </section>
+
+  <!-- character and gear -->
+  <section id="scrCharacter" class="screen">
+    <div class="bar"><button class="btn ghost back">←</button><h2>Character</h2><span id="chGold" class="count gold"></span></div>
+    <!-- the paper doll: your wizard with the seven slots around it -->
+    <div id="chDoll" class="doll">
+      <div class="dcol left"></div>
+      <div class="dfig"><canvas id="chSprite" width="256" height="256"></canvas></div>
+      <div class="dcol right"></div>
+      <svg class="dlines"></svg>
+    </div>
+    <div id="chLooks" class="invtabs looks"></div>
+    <div id="chMsg" class="hint"></div>
+    <div class="invhead"><h3>Inventory</h3><span class="dim">Tap a piece, or drag it onto a slot</span></div>
+    <div id="chTabs" class="invtabs"></div>
+    <div id="chInv" class="invgrid"></div>
+    <div id="chDetail" class="gdetail"></div>
+    <h3>Abilities</h3>
+    <div id="chAbil" class="charstats"></div>
+    <h3>Gear stats</h3>
+    <div id="chStats" class="charstats"></div>
+    <div id="chScrolls" class="items-row"></div>
+    <div class="testbar devonly"><span class="dim">Testing</span><button id="chTestAll" class="btn ghost">Get one of every piece</button><button id="chTestScrolls" class="btn ghost">+2 of each scroll</button></div>
+  </section>
+
+  <!-- shop -->
+  <section id="scrShop" class="screen">
+    <div class="bar"><button class="btn ghost back">←</button><h2>Shop</h2><span id="sGold" class="count gold"></span></div>
+    <div class="panel flat">
+      <h3>Booster pack</h3><p class="hint">5 cards from any family. The last card is uncommon or better.</p>
+      <button id="buyBooster" class="btn"></button>
+    </div>
+    <div class="panel flat">
+      <h3>Family pack</h3><p class="hint">5 cards from one family of your choice.</p>
+      <div id="famPacks" class="fams"></div>
+    </div>
+    <div class="panel flat">
+      <h3>Scrolls</h3><p class="hint">Use them on the Character screen.</p>
+      <div id="scrollShop" class="fams two"></div>
+    </div>
+  </section>
+
+  <!-- battle -->
+  <section id="scrExplore" class="screen">
+    <canvas id="xView"></canvas>
+    <div id="xVig"></div>
+    <div class="x-vignette"></div>
+    <div id="xTop">
+      <div class="meter big hpmeter"><i id="xHpBar"></i><span id="xHpTxt"></span></div>
+      <div class="info"><span id="xDepth"></span><span id="xLv" class="xplv"></span><span id="xGold" class="goldtxt"></span></div>
+      <button id="xMenu" class="btn ghost sq small" aria-label="Pause">⋯</button>
+    </div>
+    <canvas id="xMini"></canvas>
+    <div id="xStatus"></div>
+    <div id="xHurt" class="hurt-fx"></div>
+    <div id="xBang" class="x-bang"></div>
+    <div id="xBottom">
+      <div id="xLog"></div>
+      <div class="controls">
+        <button id="xStrike" class="btn strike">Strike<small class="k">Space</small></button>
+        <button id="xSearch" class="btn ghost">Search<small class="k">F</small></button>
+        <button id="xDisarm" class="btn ghost">Disarm<small class="k">E</small></button>
+        <button id="xBag" class="btn ghost mini">Bag<small class="k">B</small></button>
+        <button id="xUp" class="btn mini">Up to depth 1</button>
+        <button id="xCamp" class="btn mini">Climb to camp<small class="k">C</small></button>
+        <span id="xAct"></span>
+      </div>
+      <p class="keys">Tap a spot to walk there, or hold to walk toward your finger<span class="k"> · keys: WASD/arrows move, F search, E disarm</span>. Search shows a ring: drag it where you want to look, then let go. Hold the minimap to see it big. Walk into doors, chests, people and levers to use them; stand still to notice hidden things; reach a sleeping enemy first to ambush it.</p>
+    </div>
+  </section>
+
+  <section id="scrBattle" class="screen">
+    <div id="hudTop">
+      <div class="hp"><div class="meter big hpmeter"><i id="hpBar"></i><span id="hpTxt"></span></div></div>
+      <div class="info"><span id="depthTxt"></span><span id="pileTxt"></span></div>
+      <button id="btnMenu" class="btn ghost sq small" aria-label="Pause">⋯</button>
+      <button id="btnCustom" class="btn custgauge" disabled><i id="gaugeBar"></i><span id="custLbl">Custom</span></button>
+      <div id="buffs"></div>
+      <div id="castRib" class="cast-rib"></div>
+    </div>
+    <div id="soulBox" class="soul" hidden>
+      <button id="btnSoul" class="soul-orb" aria-label="Soul"><i class="soul-ring"></i><span id="soulIcon"></span></button>
+      <span id="soulName" class="soul-name"></span>
+      <div id="soulMenu" class="soul-menu"><button id="soulSummon" class="btn">♔ Summon<small>the hero joins for 3 turns</small></button><button id="soulUnite" class="btn">✦ Unison</button></div>
+    </div>
+    <canvas id="board"></canvas>
+    <div id="castFx" class="cast-fx"></div>
+    <div id="banner" class="banner"></div>
+    <div id="hurtFx" class="hurt-fx"></div>
+    <div id="hudBottom">
+      <div id="queueRow"></div>
+      <div id="comboBar" class="combo-bar" hidden></div>
+      <div class="controls battle">
+        <button id="btnWand" class="btn wand">◀ Fire<small>hold to charge</small></button>
+        <button id="btnCast" class="btn">Cast ▶<small id="castName"></small></button>
+      </div>
+      <p class="keys">Tap your side to move, the enemy side to aim lobs · keys: arrows/WASD move, Space fire, Enter cast, Q aim, C custom</p>
+    </div>
+
+    <div id="custom" class="overlay">
+      <div class="panel custom">
+        <div class="bar"><h2>Custom</h2><span id="custPiles" class="count"></span></div>
+        <div id="custCombo" class="combo-line"></div>
+        <div id="custSurge" class="surge"></div>
+        <div id="custQueue" class="slots" data-zone="queue"></div>
+        <p id="custHint" class="hint">Queue any 3 cards; they cast left to right. Combos: copies (Double); one rune, color and type (Flush); one rune and ranks in a row (Straight); or a secret recipe. The <b>rune</b> is the letter on the card (✱ fits any); cards matching your queue's rune are outlined. 4 cards of one rune in hand open a 4th slot. Each empty slot draws 1 extra card next time.</p>
+        <div id="custHand" class="hand" data-zone="hand"></div>
+        <p id="custEmpty" class="hint warn"></p>
+        <button id="btnFight" class="btn big">Fight!</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- shared overlays -->
+  <!-- one pause menu for the dungeon and the battle -->
+  <div id="pause" class="overlay">
+    <div class="panel narrow">
+      <h2>Paused</h2>
+      <p id="pauseWhere" class="hint center"></p>
+      <p id="pauseHint" class="hint"></p>
+      <div class="stack">
+        <button id="mResume" class="btn">Resume</button>
+        <div class="row2"><button id="mSave" class="btn ghost">Save game</button><button id="mLoad" class="btn ghost">Load save</button></div>
+        <p id="mPoint" class="hint center"></p>
+        <button id="mSettings" class="btn ghost">Settings</button>
+        <button id="mFull" class="btn ghost fullBtn">Full screen</button>
+        <button id="mLeave" class="btn ghost"></button>
+      </div>
+    </div>
+  </div>
+  <!-- level up: spend the new stat points on the same dials as at character creation -->
+  <div id="lvlUp" class="overlay">
+    <div class="panel lvl">
+      <h2 id="lvTitle">Level up!</h2>
+      <p id="lvSub" class="hint center"></p>
+      <div class="ccpts"><span>Points to spend</span><b id="lvPts">2</b></div>
+      <div id="lvStats" class="ccstats"></div>
+      <div class="row2"><button id="lvLater" class="btn ghost">Later</button><button id="lvDone" class="btn">Done</button></div>
+    </div>
+  </div>
+  <!-- save slots: switch, delete, or pick one for a new game -->
+  <div id="slots" class="overlay">
+    <div class="panel slotsp">
+      <h2 id="slTitle">Save slots</h2>
+      <p id="slHint" class="hint center"></p>
+      <div id="slList" class="sllist"></div>
+      <button id="slClose" class="btn ghost">Back</button>
+    </div>
+  </div>
+  <div id="reveal" class="overlay">
+    <div class="panel">
+      <h2 id="rvTitle"></h2>
+      <p id="rvBody" class="hint"></p>
+      <div id="rvCards" class="grid reveal"></div>
+      <div id="rvBtns" class="controls two"></div>
+    </div>
+  </div>
+  <div id="detail" class="overlay">
+    <div class="panel narrow">
+      <div id="dtCard"></div>
+      <p id="dtInfo" class="hint"></p>
+      <button id="dtClose" class="btn ghost">Close</button>
+    </div>
+  </div>
+  <div id="pick" class="overlay">
+    <div class="panel">
+      <h2 id="pkTitle"></h2><p id="pkBody" class="hint"></p>
+      <div id="pkCards" class="grid mini"></div>
+      <div class="controls two"><button id="pkCancel" class="btn ghost">Cancel</button><button id="pkOk" class="btn">Sacrifice</button></div>
+    </div>
+  </div>
+  <!-- the dungeon's dialog: people, merchants, sanctuaries, tablets, your bag -->
+  <div id="bagUI" class="overlay">
+    <div class="bagframe">
+      <div class="bghead"><span class="bgbag"></span><h2 id="bgTitle"></h2><span id="bgGold" class="bggold"></span><button id="bgClose" class="bgx" aria-label="Close">✕</button></div>
+      <div class="bgbody">
+        <div class="bgchar">
+          <div class="bgdoll"><div id="bgLeft" class="bgcol"></div><div class="bgfig"><canvas id="bgSprite" width="192" height="192"></canvas></div><div id="bgRight" class="bgcol"></div></div>
+          <div class="bgfoot"><div id="bgWeapon"></div><div id="bgStats" class="bgstats"></div><div id="bgOff"></div></div>
+        </div>
+        <div class="bgside"><div id="bgTabs" class="bgtabs"></div><div id="bgGrid" class="bggrid"></div><div id="bgDetail" class="bgdetail"></div></div>
+      </div>
+    </div>
+  </div>
+  <div id="dkPeek" class="overlay">
+    <div class="panel narrow dkpeek">
+      <div id="dkpCard"></div>
+      <p id="dkpInfo" class="hint"></p>
+      <div class="dkprow"><button id="dkpMinus" class="btn ghost">−</button><span id="dkpN"></span><button id="dkpPlus" class="btn">+ Add</button></div>
+      <div id="dkpOtherRow" class="dkprow"><select id="dkpOther"></select><button id="dkpAddOther" class="btn ghost">Add to deck</button></div>
+      <button id="dkpClose" class="btn ghost">Close</button>
+    </div>
+  </div>
+  <div id="xDialog" class="overlay">
+    <div class="panel xdlg">
+      <div class="xdh"><canvas id="xdPic" width="96" height="96"></canvas><div class="xdt"><h2 id="xdTitle"></h2><p id="xdSub" class="hint"></p></div><span id="xdGold"></span></div>
+      <p id="xdText"></p>
+      <div id="xdTabs" class="tabs"></div>
+      <div id="xdBody"></div>
+      <div id="xdBtns" class="controls two"></div>
+    </div>
+  </div>
+  <div id="settings" class="overlay">
+    <div class="panel settings">
+      <div class="bar"><h2>Settings</h2></div>
+      <h3>Game</h3>
+      <div class="srow"><span>Screen layout<small>Phone: one narrow column. Tablet: two columns, bigger buttons.</small></span><button class="btn ghost small layoutBtn"></button></div>
+      <div class="srow"><span>Screen orientation<small>Keep the game upright or sideways however you hold the device. Locks the screen in full screen where the browser allows it.</small></span><button id="setOrient" class="btn ghost small"></button></div>
+      <div class="srow"><span>Full screen</span><button id="setFull" class="btn ghost small fullBtn">Full screen</button></div>
+      <div class="srow"><span>Sound effects<small>Whispers near secrets, clicks, chimes and grinding stone in the dungeon</small></span><button id="setSfx" class="btn ghost small"></button></div>
+      <div class="srow"><span>Cast card<small>How a card shows when you cast it. Big: the full card in the middle. Side: a small card at the left edge. Ribbon: just its name under the top bar. Ghost: the big card, see-through and quick.</small></span><button id="setCastFx" class="btn ghost small"></button></div>
+      <div class="srow"><span>Testing tools<small>Boss tests at camp and free gear on the Character screen</small></span><button id="setDev" class="btn ghost small"></button></div>
+      <details id="setKbd">
+        <summary><h3>Keyboard controls</h3></summary>
+        <p class="hint">Click a key box, then press the key you want. Esc cancels, Backspace clears. Each action can have two keys. Saved in this browser.</p>
+        <div class="krow preset"><label for="setPreset">Layout</label><select id="setPreset"></select><button id="setReset" class="btn ghost small">Reset</button></div>
+        <div id="setKeys"></div>
+        <p id="setClash" class="hint warn"></p>
+        <div class="ktest"><span class="dim">Try a key:</span> <span id="setTest">press any key to see what it does</span></div>
+        <p class="hint">Fixed keys: Esc pauses. On the Custom screen, 1–7 pick a card, Backspace removes one, and Enter or Space starts the fight.</p>
+      </details>
+      <h3>Save</h3>
+      <div class="srow"><span>Erase this save<small>Your cards, decks, gold and gear in this browser. Cannot be undone.</small></span><button id="btnReset" class="btn ghost small danger">Erase</button></div>
+      <button id="setClose" class="btn">Done</button>
+    </div>
+  </div>
+  <div id="peek" class="peek"></div>
+  <div id="tip" class="tip"></div>
+</div>
+<script src="cards.js"></script>
+<script src="chars.js"></script>
+<script src="engine.js"></script>
+<script src="world.js"></script>
+<script src="collection.js"></script>
+<script src="gear.js"></script>
+<script src="battle.js"></script>
+<script src="enemies.js"></script>
+<script src="bosses.js"></script>
+<script src="sprites.js"></script>
+<script src="sprites_pal.js"></script>
+<script src="art.js"></script>
+<script src="minibosses.js"></script>
+<script src="uikit.js"></script>
+<script src="ui.js"></script>
+<script src="keys.js"></script>
+<script src="three.min.js"></script>
+<script src="explore.js"></script>
+<script src="dungeon.js"></script>
+<script src="missions.js"></script>
+<script src="bagui.js"></script>
+<script src="deckui.js"></script>
+<script src="savepoint.js"></script>
+</body>
+</html>

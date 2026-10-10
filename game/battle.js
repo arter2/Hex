@@ -162,6 +162,7 @@ function openCustomScreen(){
 function closeCustomScreen(){
   const b=B; if(!b||b.phase!=='custom') return;
   commitCustom(b.piles); b.phase='fight'; b.gauge=0;
+  for(const cb of b.piles.combos||[]) if(cb.kind==='run'){ const p=b.player; p.hasteT=Math.max(p.hasteT,cb.dur); p.courageT=Math.max(p.courageT,cb.dur); }   // Rune Run
   if(b.turn>0&&b.hooks.onTurn) b.hooks.onTurn(b.turn+1);
   for(const cb of b.piles.combos||[]){ if(cb.kind==='recipe'){ b.hooks.onRecipe&&b.hooks.onRecipe(cb.recipe); continue; } if(cb.kind!=='straight') b.hooks.onCombo&&b.hooks.onCombo(cb.label); }
   b.hooks.onFight&&b.hooks.onFight();

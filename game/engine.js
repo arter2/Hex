@@ -1,13 +1,13 @@
 /* Hexmancers deck prototype — card engine.
    Pure deck / hand / queue logic with no rendering, so it can be tested in Node.
-   Flow: draw up to 7 at each Custom screen, queue up to 3, casting sends a card to the
+   Flow: draw up to 6 at each Custom screen, queue up to 3, casting sends a card to the
    discard pile, unqueued cards stay in hand, and there is no reshuffle: an empty deck
    leaves you with the wand. Each queue slot left empty draws 1 extra card next time.
    Runes: any cards can be queued, but a Flush or a Straight only counts when its cards share a
    rune (✱ fits any rune). Rune Surge: a hand holding 4 or more cards of one rune opens a 4th
    slot for that turn. */
 
-const RULES={max:60, min:45, copies:4, legendaryCopies:1, heroes:1, hand:7, slots:3, surgeSlots:4, surgeRunes:4};
+const RULES={max:60, min:45, copies:4, legendaryCopies:1, heroes:1, hand:6, slots:3, surgeSlots:4, surgeRunes:4};
 
 // owned (optional): {id: copies you own}; a deck can't use more copies than you have.
 function validateDeck(list,cards,owned){
@@ -64,7 +64,7 @@ const canQueue=(p,inst)=>p.queue.length<slotsOf(p);
 // one rune (wild cards fit any) — what a Flush or a Straight needs
 const oneRune=cards=>new Set(cards.map(c=>c.code).filter(k=>k&&k!==WILD_RUNE)).size<=1;
 
-// Opening the Custom screen: queued cards not yet cast go back to the hand, then the hand refills to 7.
+// Opening the Custom screen: queued cards not yet cast go back to the hand, then the hand refills to 6.
 function openCustom(p){
   p.hand=p.queue.filter(c=>!c.temp).concat(p.hand); p.queue=[];
   const drawn=[];
@@ -100,8 +100,19 @@ function detectCombos(queue){
   const ranks=cards.map(c=>c.rank).sort((a,b)=>a-b);
   if(cards.length>=3&&oneRune(cards)&&ranks.every((x,i)=>!i||x===ranks[i-1]+1))
     out.push({kind:'straight', ranks, label:(cards.length>=4?'Grand Straight ':'Straight ')+ranks.join('-')+': chain cast + finisher'});
+  const run=runeRun(cards);
+  if(run){ const dur=run.length>=4?12:8; out.push({kind:'run', runes:run, dur, label:(run.length>=4?'Grand Rune Run ':'Rune Run ')+run.join('-')+': Haste + Courage '+dur+'s'}); }
   return out;
 }
+/* Rune Run: 3 or 4 cards whose runes are letters in a row (A-B-C, B-C-D … C-D-E-F), in any order;
+   a ✱ fills any gap. It gives you Haste and Courage (cards and wand +30%) for 8s, 12s with 4 cards.
+   Returns the letters of the run, or null. */
+function runeRun(cards){ if(cards.length<3) return null;
+  const L=typeof RUNES!=='undefined'?RUNES:['A','B','C','D','E','F'], codes=cards.map(c=>c.code);
+  const wild=codes.filter(k=>k===WILD_RUNE).length, idx=codes.filter(k=>k!==WILD_RUNE).map(k=>L.indexOf(k));
+  if(idx.length<2||idx.some(i=>i<0)||new Set(idx).size!==idx.length) return null;
+  const lo=Math.min(...idx), hi=Math.max(...idx); if(hi-lo+1>cards.length||(hi-lo+1)-idx.length>wild) return null;
+  const start=Math.max(0,Math.min(lo,L.length-cards.length)); return L.slice(start,start+cards.length); }
 const TYPES_NAME=k=>typeof TYPES!=='undefined'&&TYPES[k]?TYPES[k].name+'s':k;
 // Leaving the Custom screen: combos lock in, and every empty slot adds 1 card to the next
 // draw (Battle Network style). A recipe replaces its cards with the fused card.
@@ -118,6 +129,7 @@ function commitCustom(p){
       if(cb.n>=4&&typeof GROVEBEAST!=='undefined'){ p.discard.push(...bs); p.queue=p.queue.filter(c=>!bs.includes(c)); p.queue.unshift({uid:p.uid++, card:GROVEBEAST, temp:true, recipe:true, combo:cb.label}); }
       else bs.forEach((c,i)=>{ c.brood=cb.n; c.mult=(c.mult||1)*(cb.n>=3?1.5:1.25); c.combo=cb.label; c.leader=cb.n>=3&&i===0; }); }
     if(cb.kind==='flush') p.queue.forEach(c=>{ c.mult=(c.mult||1)*cb.mult; c.combo=c.combo||cb.label; });
+    if(cb.kind==='run') p.queue.forEach(c=>c.combo=c.combo||cb.label);
     if(cb.kind==='straight'&&p.queue.length>=3){ p.queue[0].straight=cb.ranks; p.queue.forEach(c=>c.combo=c.combo||cb.label); }
   }
   p.combos=combos;

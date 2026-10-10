@@ -894,7 +894,7 @@ window.addEventListener('keydown',e=>{
   if(!B||!$('#scrBattle').classList.contains('on')) return; const k=e.key.toLowerCase();
   if(B.phase==='custom'){
     const n=parseInt(k,10);
-    if(n>=1&&n<=7&&B.piles.hand[n-1]){ toggleQueue(B.piles,B.piles.hand[n-1].uid); renderCustom(); }
+    if(n>=1&&n<=9&&B.piles.hand[n-1]){ toggleQueue(B.piles,B.piles.hand[n-1].uid); renderCustom(); }
     else if(k==='backspace'&&B.piles.queue.length){ toggleQueue(B.piles,B.piles.queue[B.piles.queue.length-1].uid); renderCustom(); }
     else if((k==='enter'||k===' ')&&!e.repeat&&!held.has(k)){ e.preventDefault(); closeCustomScreen(); }
     return;

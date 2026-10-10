@@ -255,7 +255,7 @@ body.ui-tablet .hand{grid-template-columns:repeat(7,1fr);} body.ui-tablet .fams{
   body.lsS #custom{padding:6px;}
   body.lsS .panel.custom{max-width:none; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.5fr); gap:4px 12px; align-content:start; overflow:hidden; height:100%;}
   body.lsS .panel.custom>.bar{grid-column:1/-1; margin:0;}
-  body.lsS #custCombo,body.lsS #custQueue,body.lsS #custEmpty,body.lsS #btnFight{grid-column:1;}
+  body.lsS #custCombo,body.lsS #custRecipe,body.lsS #custQueue,body.lsS #custEmpty,body.lsS #btnFight{grid-column:1;}
   body.lsS #custHint{display:none;}
   body.lsS #custHand{grid-column:2; grid-row:2/span 4; grid-template-columns:repeat(4,1fr); overflow:auto; max-height:calc(100dvh - 70px); align-content:start;}
   body.lsS #custHand .card{min-height:104px;}
@@ -287,7 +287,7 @@ body.ui-tablet .hand{grid-template-columns:repeat(7,1fr);} body.ui-tablet .fams{
   background:#0e3a66; color:#bfe9ff; border:1px solid #7fd4ff; box-shadow:0 0 6px rgba(127,212,255,.45);}
 .rune.wild{background:#2a2410; color:#f2c94c; border-color:#f2c94c; box-shadow:0 0 6px rgba(242,201,76,.5);}
 .card.blocked{opacity:.38; filter:grayscale(.6);}
-.card.recipe-step{box-shadow:0 0 0 2px #39ff8a,0 0 14px rgba(57,255,138,.5);}
+.card.recipe-step{box-shadow:0 0 0 2px #b46cff,0 0 12px rgba(180,108,255,.45);}
 .surge:empty{display:none;}
 .surge{margin:2px auto 6px; max-width:420px; text-align:center; font-size:13px; color:#d8f6ff; padding:6px 10px; border-radius:10px;
   background:#0a2016; border:2px solid #39ff8a; box-shadow:0 0 0 2px #000; animation:surgeGlow 1.4s steps(2) infinite;}
@@ -553,7 +553,7 @@ body.ui-tablet .controls.battle .btn{min-height:76px; font-size:22px;} body.ui-t
 /* the custom screen when wide: queue and Fight on the left, the hand on the right */
 body.wide .panel.custom{max-width:1180px; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.5fr); gap:4px 16px; align-content:start; height:100%;}
 body.wide .panel.custom>.bar{grid-column:1/-1; margin:0;}
-body.wide #custCombo,body.wide #custSurge,body.wide #custQueue,body.wide #custHint,body.wide #custEmpty,body.wide #btnFight{grid-column:1;}
+body.wide #custCombo,body.wide #custSurge,body.wide #custRecipe,body.wide #custQueue,body.wide #custHint,body.wide #custEmpty,body.wide #btnFight{grid-column:1;}
 body.wide #custHand{grid-column:2; grid-row:2/span 6; grid-template-columns:repeat(4,1fr); overflow:auto; align-content:start;}
 body.wide #custom .slots{max-width:none;}
 /* the camp spreads into two columns whenever the window is wide */
@@ -1071,3 +1071,13 @@ body.lsS #custHand .slot.hole{min-height:104px;}
 #custQueue .slot,#custQueue .slot small{min-width:0; white-space:normal; overflow-wrap:anywhere;}
 /* short (landscape phone) screens: drop the level-up blurb and tighten the header so the buttons fit */
 @media (max-height:520px){ #lvlUp #lvSub{display:none;} #lvlUp .panel.lvl{gap:4px;} #lvlUp #lvTitle{margin:0;} #lvlUp .ccpts{margin:0;} #lvlUp #lvStats{min-height:72px;} }
+
+/* recipes: cards that make a recipe you hold glow purple with a ⚗ tag; the line above the queue says so */
+.hand .card.recipe-ready{box-shadow:0 0 0 2px #c58bff, 0 0 16px rgba(180,108,255,.75); animation:rcpGlow 1.6s ease-in-out infinite;}
+.hand .card.recipe-ready::after{content:'⚗ recipe'; position:absolute; bottom:4px; left:50%; transform:translateX(-50%); font:800 10px var(--font-b); color:#1a0630; background:#c58bff; padding:0 6px; white-space:nowrap;}
+@keyframes rcpGlow{50%{box-shadow:0 0 0 2px #e0c2ff, 0 0 24px rgba(197,139,255,.95);}}
+#custRecipe:empty{display:none;}
+#custRecipe b{color:#d9b3ff;}
+#custCombo .rcp{color:#1a0630; background:#c58bff; border-color:#c58bff;}
+@media (prefers-reduced-motion:reduce){ .hand .card.recipe-ready{animation:none;} }
+#custRecipe.surge{background:#1a0c2e; border:2px solid #b46cff; animation:none;}

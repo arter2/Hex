@@ -49,6 +49,7 @@ function showDetail(c){
   const inDeck=activeDeck().list.filter(id=>id===c.id).length;
   $('#dtInfo').textContent=save.seen[c.id]?COLORS[c.color].name+' · '+TYPES[c.type].name+' · rank '+c.rank+' · '+RARITY[c.rarity].n+' · owned '+(save.owned[c.id]||0)+' · in deck '+inDeck
     :'Not found yet. '+RARITY[c.rarity].n+' '+COLORS[c.color].name+' '+TYPES[c.type].name+'.';
+  { const found=RECIPES.filter(r=>recipeKnown(r)&&r.cards.includes(c.id)); if(found.length) $('#dtInfo').textContent+=' · ⚗ Part of: '+found.map(r=>r.name).join(', '); }
   if(c.uses&&save.owned[c.id]) $('#dtInfo').textContent+=' · uses left per copy: '+Array.from({length:save.owned[c.id]},(_,k)=>chargeLeft(save,c.id,k)+'/'+c.uses).join(', ');
   $('#detail').classList.add('on');
 }
@@ -694,7 +695,16 @@ document.addEventListener('visibilitychange',()=>{ if(document.hidden) openPause
 window.addEventListener('keydown',e=>{ if(e.key!=='Escape') return; if($('#pause').classList.contains('on')){ e.preventDefault(); closePause(); } else if(pauseWhere()){ e.preventDefault(); openPause(); } });
 
 // the combos a queue makes, as gold chips
-function comboChips(combos){ return combos.length?combos.map(c=>`<span>✦ ${esc(c.label)}</span>`).join(''):''; }
+// a recipe you have never cast keeps its name hidden until you do
+const recipeKnown=r=>!!(save.recipes||{})[r.id];
+function comboChips(combos){ return combos.length?combos.map(c=>c.kind==='recipe'&&!recipeKnown(c.recipe)?`<span class="rcp">⚗ Unknown recipe!</span>`:`<span>${c.kind==='recipe'?'⚗':'✦'} ${esc(c.label)}</span>`).join(''):''; }
+/* Recipes you could make from your hand and queue right now: each with the uids of the cards it
+   would use. The Spell screen names them in a line and makes those cards glow purple. */
+function recipesInHand(p){ const pool=[...p.queue,...p.hand].filter(c=>!c.temp), out=[];
+  for(const r of (typeof RECIPES!=='undefined'?RECIPES:[])){ const used=[], free=pool.slice();
+    for(const id of r.cards){ const i=free.findIndex(c=>c.card.id===id); if(i<0){ used.length=0; break; } used.push(free.splice(i,1)[0].uid); }
+    if(used.length===r.cards.length) out.push({r, uids:used}); }
+  return out; }
 function renderCustom(){
   const p=B.piles, dealt=B.justDrawn||new Set();
   if(!$('#custom').classList.contains('on')){ custShownT=performance.now(); custPressed=false; }
@@ -707,6 +717,10 @@ function renderCustom(){
   const slots=slotsOf(p), runeNow=p.queue.map(c=>c.card.code).find(k=>k&&k!=='✱');
   $('#custSurge').innerHTML=slots>RULES.slots?`<b>ᚱ Rune Surge${p.surge&&p.surge!=='luck'?' ('+p.surge+')':''}!</b> A 4th slot is open this turn: 4-card recipes and Grand Straights are possible.`:'';
   q.classList.toggle('four',slots>RULES.slots);
+  const ready=recipesInHand(p), inRecipe=new Set(ready.flatMap(x=>x.uids));
+  const inQ=new Set(p.queue.map(c=>c.uid));
+  $('#custRecipe').innerHTML=ready.map(({r,uids})=>`<b>⚗ ${recipeKnown(r)?'Recipe in hand: '+esc(r.name)+'.':'A hidden recipe is in your hand!'}</b> `
+    +(uids.every(u=>inQ.has(u))&&p.queue.length===r.cards.length?'Ready: press Fight! to fuse them.':r.cards.length>slots?'It needs the 4th slot.':'Queue the glowing cards together, on their own.')).join('<br>');
   for(let i=0;i<slots;i++){
     const inst=p.queue[i];
     if(inst){ const el=cardEl(inst.card,`<span class="ord">${i+1}</span>`); el.dataset.zone='queue'; el.dataset.i=i; if(inCombo.has(inst.uid)) el.classList.add('combo'); dragCard(el,inst); q.appendChild(el); }
@@ -720,7 +734,8 @@ function renderCustom(){
   p.hand.forEach((inst,i)=>{ const el=cardEl(inst.card,inst.left!=null?`<span class="badge">${inst.left} left</span>`:''); el.title='Key '+(i+1);
     el.dataset.zone='hand'; el.dataset.i=i;
     // glow if adding this card to the queue would make a new combo
-    if(p.queue.length<slots&&detectCombos([...p.queue,inst]).length>base) el.classList.add('hint');
+    if(inRecipe.has(inst.uid)) el.classList.add('recipe-ready');   // part of a recipe you can make right now: purple
+    else if(p.queue.length<slots&&detectCombos([...p.queue,inst]).length>base) el.classList.add('hint');
     else if(p.queue.length&&p.queue.length<slots&&recipeStep([...p.queue.map(c=>c.card),inst.card])&&!oneRune([...p.queue.map(c=>c.card),inst.card])) el.classList.add('recipe-step');   // part of a recipe with what is queued
     else if(p.queue.length&&oneRune([...p.queue.map(c=>c.card),inst.card])) el.classList.add('rune-match');   // same rune as the queue
     if(dealt.has(inst.uid)){ el.classList.add('deal'); el.style.animationDelay=(i*.06)+'s'; }

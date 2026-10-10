@@ -387,7 +387,7 @@ function renderCollection(){
     const fam={}; Object.keys(save.owned).forEach(id=>{ const c=CARDS[id]; if(c&&save.owned[id]>0) fam[c.color]=(fam[c.color]||0)+save.owned[id]; });
     $('#cProgress').innerHTML=FAM_ORDER.filter(k=>fam[k]).map(k=>`<span class="chip" style="--c:${COLORS[k].c}">${COLORS[k].icon} ${fam[k]}</span>`).join('');
     const items=Object.keys(save.owned).map(id=>CARDS[id]).filter(c=>c&&save.owned[c.id]>0&&passes(c,cf)).sort(SORTS[cf.sort]);
-    paged($('#cGrid'),items,c=>{ const el=cardEl(c,`<span class="badge">×${save.owned[c.id]}${inDeck[c.id]?' · '+inDeck[c.id]+' in deck':''}</span>`); longPress(el,c); el.onclick=()=>{ if(!pressed) showDetail(c); }; return el; });
+    paged($('#cGrid'),items,c=>{ const el=cardEl(c,`<span class="badge" title="${inDeck[c.id]||0} in this deck, ${save.owned[c.id]} owned">${inDeck[c.id]?inDeck[c.id]+'/'+save.owned[c.id]+' deck':'×'+save.owned[c.id]}</span>`); longPress(el,c); el.onclick=()=>{ if(!pressed) showDetail(c); }; return el; });
     if(!items.length) $('#cGrid').innerHTML='<p class="hint">No cards match.</p>';
     return; }
   const fam={}; CARD_LIST.forEach(c=>{ fam[c.color]=fam[c.color]||[0,0]; fam[c.color][1]++; if(save.seen[c.id]) fam[c.color][0]++; });
@@ -987,6 +987,11 @@ function applyViewport(){
   // Text size grows the scale, but never so far that the game's own width drops below 340px (where its layouts still fit)
   const base=Math.max(1,Math.min(2.5,s)), ui=Math.min(base*getTextScale(),Math.max(base,w/340));
   document.documentElement.style.setProperty('--ui',ui.toFixed(3));
+  /* One card size for every card grid (My cards, deck library, Custom hand, rewards). On a phone it is
+     the size that fits 3 across the narrowest of them, the Custom hand (the frame less 84px); bigger
+     screens get 120px. Text size does not change it: the grids undo that part of --ui (--tz). */
+  const R=document.documentElement.style, cw=wide&&h<=560?96:w<600?Math.max(80,Math.min(120,Math.floor((w-84-12)/3))):120;
+  R.setProperty('--uib',base.toFixed(3)); R.setProperty('--tz',(ui/base).toFixed(3)); R.setProperty('--cardw',(cw/base).toFixed(1)+'px');
   if($('#scrBattle').classList.contains('on')) requestAnimationFrame(resizeView);
   if($('#scrCamp').classList.contains('on')) campScene();
 }

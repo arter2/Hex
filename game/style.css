@@ -1044,3 +1044,23 @@ body.lsS #custHand .slot.hole{min-height:104px;}
   .panel.narrow.dkpeek{max-width:min(94vw,640px); display:grid; grid-template-columns:auto 1fr; grid-template-rows:repeat(4,auto) 1fr; column-gap:12px; align-items:center;}
   .dkpeek #dkpCard{grid-row:1/6;} #dkpCard .card{width:min(40vw,250px);} #dkpCard .card .art{max-height:38vh;}
 }
+
+/* ---- one card size everywhere (ui.js applyViewport sets --cardw) ----
+   Card grids lay cards out at a fixed width and height, 3 across on a phone, and undo the Text size
+   setting so cards stay the same size whatever it is. Long card text is cut to 3 lines; holding a
+   card (peek) shows it in full. */
+#cGrid,#dkColl,#custHand,#rvCards,#pkCards,#bColl,#bDeck,#custQueue,#dkDeck,#dtCard,#dkpCard{zoom:calc(1/var(--tz,1));}
+.peek,.cast-fx{zoom:var(--uib,1);}
+#cGrid,#dkColl,#custHand,#rvCards,#pkCards,#bColl{display:grid!important; grid-template-columns:repeat(auto-fill,var(--cardw,104px))!important; justify-content:center; gap:6px!important;}
+#cGrid>.card,#dkColl>.card,#custHand>.card,#custHand>.slot,#rvCards>.card,#rvCards>*,#pkCards>.card,#bColl>.card{width:var(--cardw,104px); height:calc(var(--cardw,104px)*1.7)!important; min-height:0!important; aspect-ratio:auto!important;}
+#cGrid .card .art,#dkColl .card .art,#custHand .card .art,#rvCards .card .art,#pkCards .card .art,#bColl .card .art{height:calc(var(--cardw,104px)*.5)!important; flex:none;}
+#cGrid .card .tx,#dkColl .card .tx,#custHand .card .tx,#rvCards .card .tx,#pkCards .card .tx,#bColl .card .tx{display:-webkit-box!important; -webkit-box-orient:vertical; -webkit-line-clamp:3; overflow:hidden; flex:0 1 auto; min-height:0;}
+#cGrid .card .cn,#dkColl .card .cn,#custHand .card .cn,#rvCards .card .cn,#pkCards .card .cn,#bColl .card .cn{white-space:nowrap; overflow:hidden; text-overflow:ellipsis; flex:none;}
+#cGrid .card .cp,#dkColl .card .cp,#custHand .card .cp,#rvCards .card .cp,#pkCards .card .cp,#bColl .card .cp{margin-top:auto; flex:none;}
+#custHand{max-height:none!important; overflow:visible!important;}
+#custHint summary{cursor:pointer; list-style:none;} #custHint summary::-webkit-details-marker{display:none;}
+#custHint summary u{color:var(--blue); text-underline-offset:3px;}
+#custHint[open] summary u{display:none;}
+/* on the standard card, count and NEW badges sit on the lower edge of the art, clear of the name */
+:is(#cGrid,#dkColl,#custHand,#rvCards,#pkCards,#bColl) .card .badge{top:calc(var(--cardw,104px)*.5 + 8px); bottom:auto; right:4px; max-width:calc(100% - 8px); font-size:13px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+#dtCard .card,#dkpCard .card{width:228px; max-width:100%; margin-inline:auto;}   /* the read-it-big card keeps one size too */

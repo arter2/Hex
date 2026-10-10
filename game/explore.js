@@ -793,7 +793,7 @@ function xLoopStart(){ cancelAnimationFrame(xRaf); xLast=performance.now(); xRaf
 function xLoop(ts){
   if(!EX||!EX.active||!$('#scrExplore').classList.contains('on')) return;
   const dt=Math.min(.1,(ts-xLast)/1000); xLast=ts;
-  if(!EX.busy&&!xPaused&&!EX.aim){ xMove(dt); xEnemies(dt); if(EX.active&&!EX.busy&&typeof xDungeonTick==='function') xDungeonTick(dt);
+  if(!EX.busy&&!xPaused&&!EX.aim){ xMove(dt); xEnemies(dt); if(EX.active&&!EX.busy&&typeof xDungeonTick==='function') xDungeonTick(dt); if(EX.active&&!EX.busy) xTipScan(dt);
     EX.regenT+=dt; if(EX.regenT>3){ EX.regenT=0; if(EX.hp<xmaxHp()){ EX.hp++; xHud(); } } }
   xDoorTick(dt||.016); xDraw(ts/1000,dt); xRaf=requestAnimationFrame(xLoop);
 }
@@ -848,11 +848,64 @@ function xMini(){
   for(const tr of EX.traps) if(tr.known&&tr.armed) dot(tr.cell,'#ff4d5e',1);
   if(typeof xMiniExtra==='function') xMiniExtra(c,s,dot);
   for(const g of EX.groups) if(EX.vis[g.cell]&&!g.dormant&&!(g.stealth&&Math.hypot(g.x-EX.px,g.z-EX.pz)/XCS>3.2)) dot(g.cell,g.tagCol||(g.mini?'#ff9a3a':'#ff6b6b'),g.mini||g.elite?2:1);
+  xStairsMark(c,s);
   dot(EX.pc,'#ffffff',2);
 }
 function xLog(t,c){ if(!EX) return; EX.log.push({t,c}); if(EX.log.length>5) EX.log.shift();
   const el=$('#xLog'); if(el) el.innerHTML=EX.log.map((l,i)=>`<div class="${l.c||''}" style="opacity:${.45+.55*(i+1)/EX.log.length}">${esc(l.t)}</div>`).join(''); }
 function xSay(k,t){ const now=performance.now(); if((EX.msgT[k]||0)>now) return; EX.msgT[k]=now+2500; xLog(t,'warn'); }
+
+/* ---------------- first-time tips ---------------- */
+/* One short card the first time you meet each thing, in place of the long how-to line.
+   Settings › Dungeon tips turns them off; turning them back on shows them all again. */
+const XTIPS={
+  move:   ()=>matchMedia('(pointer:coarse)').matches?'Tap a spot to walk there, or hold to walk toward your finger.':'Click a spot to walk there, or move with WASD or the arrow keys.',
+  stairs: ()=>'You found the stairs down! Walk onto them to go deeper.'+(xStairsMarkOn()?' They stay marked on your minimap; hold the map to see it big.':' Hold the minimap to see it big.'),
+  door:   ()=>'Walk into a door to open it.',
+  locked: ()=>'A locked door. Find its key on this floor, or buy one from a merchant.',
+  chest:  ()=>'Walk into a chest to open it. Some locks hide a needle: Search near it first, then Disarm.',
+  sleeper:()=>'That enemy is asleep. Reach it before it wakes to ambush it.',
+  trap:   ()=>'A trap! Step around it, or stand next to it and Disarm it.',
+  person: ()=>'Walk into people to talk to them.',
+  puzzle: ()=>'A puzzle. Walk into levers, statues and stones to use them; clues may be elsewhere on the floor.',
+  hidden: ()=>'Stand still for a moment to notice hidden doors and traps, or use Search to look harder.',
+};
+const XTIP_PUZZLE=new Set(['lever','plever','plate','statue','mirror','runestone','block']);
+const xTipsOn=()=>{ try{ return localStorage.getItem('hexmancers-xtips')!=='0'; }catch(e){ return true; } };
+const xStairsMarkOn=()=>{ try{ return localStorage.getItem('hexmancers-xstairs')!=='0'; }catch(e){ return true; } };
+let xTipSeen=null, xTipQ=[], xTipT=0, xTipScanT=0, xTipStill=0;
+function xTipSeenSet(){ if(!xTipSeen){ try{ xTipSeen=new Set(JSON.parse(localStorage.getItem('hexmancers-xtipseen')||'[]')); }catch(e){ xTipSeen=new Set(); } } return xTipSeen; }
+function xTipReset(){ xTipSeen=new Set(); try{ localStorage.removeItem('hexmancers-xtipseen'); }catch(e){} }
+function xTip(k){ if(!xTipsOn()||!XTIPS[k]) return; const seen=xTipSeenSet(); if(seen.has(k)||xTipQ.includes(k)) return; xTipQ.push(k); if(!$('#xTipCard').classList.contains('on')) xTipNext(); }
+function xTipNext(){ const card=$('#xTipCard'); clearTimeout(xTipT);
+  if(!$('#scrExplore').classList.contains('on')){ card.classList.remove('on'); return; }   // in a fight: keep the rest for later
+  const k=xTipQ.shift();
+  if(!k||!xTipsOn()){ card.classList.remove('on'); xTipQ=[]; return; }
+  const seen=xTipSeenSet(); seen.add(k); try{ localStorage.setItem('hexmancers-xtipseen',JSON.stringify([...seen])); }catch(e){}
+  $('#xTipText').textContent=XTIPS[k](); card.classList.add('on'); xTipT=setTimeout(xTipNext,9000); }
+function xTipHide(){ clearTimeout(xTipT); xTipQ=[]; const c=$('#xTipCard'); if(c) c.classList.remove('on'); }
+$('#xTipOk').onclick=()=>xTipNext();
+$('#xTipOff').onclick=()=>{ try{ localStorage.setItem('hexmancers-xtips','0'); }catch(e){} xTipHide(); if(typeof applyXTips==='function') applyXTips(); tip('Tips are off. Turn them back on in Settings.'); };
+// a few times a second: is anything new in sight? and have you been standing still long enough to learn about secrets?
+function xTipScan(dt){ if(!EX||!xTipsOn()) return;
+  xTipStill=EX.path&&EX.path.length?0:xTipStill+dt; if(xTipStill>4&&EX.depth>=1&&(EX.floorT||0)>25) xTip('hidden');
+  EX.floorT=(EX.floorT||0)+dt; if((xTipScanT+=dt)<.4) return; xTipScanT=0;
+  const seen=xTipSeenSet(), want=k=>!seen.has(k)&&!xTipQ.includes(k), V=EX.vis;
+  if(want('stairs')&&V[EX.down]) xTip('stairs');
+  if(want('door')||want('locked')) for(const [i,d] of EX.doors){ if(!V[i]) continue; if(d.state==='closed') xTip('door'); else if(d.state==='locked') xTip('locked'); }
+  if(want('chest')&&EX.chests.some(c=>!c.open&&V[c.cell])) xTip('chest');
+  if(want('sleeper')&&EX.groups.some(g=>g.state==='sleep'&&!g.dormant&&V[g.cell])) xTip('sleeper');
+  if(want('trap')&&EX.traps.some(t=>t.known&&t.armed&&V[t.cell])) xTip('trap');
+  if((want('person')||want('puzzle'))&&EX.props) for(const p of EX.props){ if(p.gone||!V[p.wall?p.front:p.cell]) continue;
+    if(p.kind==='npc'||p.kind==='merchant') xTip('person'); else if(XTIP_PUZZLE.has(p.kind)) xTip('puzzle'); }
+}
+
+// the stairs down on the minimap, once seen: a pulsing ring and a down arrow in the floor's color (red on a boss floor)
+function xStairsMark(c,s){ if(!xStairsMarkOn()||!EX.seen[EX.down]) return;
+  const col=isBossDepth(EX.depth)?'#ff5d6c':EX.area.glow, x=xcx(EX.down)*s+s/2, y=xcy(EX.down)*s+s/2, u=Math.max(s,3), p=.5+.5*Math.sin(performance.now()/260);
+  c.save(); c.lineWidth=Math.max(1.5,u*.45); c.strokeStyle=col; c.globalAlpha=.35+.5*p; c.beginPath(); c.arc(x,y,u*(2.2+.8*p),0,Math.PI*2); c.stroke(); c.globalAlpha=1;
+  c.beginPath(); c.moveTo(x-u*1.3,y-u*.8); c.lineTo(x+u*1.3,y-u*.8); c.lineTo(x,y+u*1.1); c.closePath();
+  c.fillStyle=col; c.fill(); c.lineWidth=Math.max(1,u*.3); c.strokeStyle='#05060a'; c.stroke(); c.restore(); }
 // the floor's banner, in its area's color: the area's name first when you have just entered it
 function xBanner(depth){ const b=$('#xBang'), A=areaOf(depth), first=areaFloor(depth)===1, key='d'+depth;
   b.innerHTML=first?esc(A.name)+'<small>Depth '+depth+' · '+(isBossDepth(depth)?'boss floor':'floor 1 of '+DEPTHS_PER_AREA)+'</small>':'Depth '+depth+'<small>'+esc(areaLabel(depth))+'</small>';
@@ -870,14 +923,14 @@ function xHud(){ if(!EX) return; const m=xmaxHp();
 
 /* ---------------- entering and returning ---------------- */
 function enterExplore(depth){
-  // the long how-to line under the buttons: shown for your first three floors, then tucked away
-  try{ const n=+(localStorage.getItem('hexmancers-xhelp')||0)+1; localStorage.setItem('hexmancers-xhelp',n); document.querySelector('#xBottom .keys').classList.toggle('learned',n>3); }catch(e){}
+  // the long how-to line under the buttons is replaced by first-time tips (xTip)
+  document.querySelector('#xBottom .keys').classList.add('learned');
   const v=validateDeck(activeDeck().list,CARDS,save.owned); if(!v.ok) return;
   if(typeof THREE==='undefined'){ tip('The 3D map could not load; fighting directly.'); return fight(depth); }
   show('scrExplore'); xInit3D();
   if(XPARK&&XPARK.depth===depth){ EX=XPARK; XPARK=null; EX.hp=xmaxHp(); EX.busy=false; EX.path=[]; EX.px=xw(EX.up); EX.pz=xz(EX.up); EX.pc=EX.up; xUpdateVis(); xLog('You climb back down. You feel rested.','dim'); }
   else { XPARK=null; if(typeof xNewRun==='function') xNewRun(depth); buildFloor(depth); }
-  EX.active=true; xHud(); xLoopStart();
+  EX.active=true; xHud(); xLoopStart(); xTip('move');
   xBanner(depth);
 }
 // back from a fight that started on the map: the enemy is gone and your wounds carry over

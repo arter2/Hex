@@ -943,6 +943,13 @@ try{ if(/[?&]dev\b/.test(location.search)) localStorage.setItem(DEV_KEY,'1'); }c
 function applyDev(){ let on=false; try{ on=localStorage.getItem(DEV_KEY)==='1'; }catch(e){} document.body.classList.toggle('dev',on); $('#setDev').textContent=on?'On':'Off'; }
 $('#setDev').onclick=()=>{ const on=!document.body.classList.contains('dev'); try{ localStorage.setItem(DEV_KEY,on?'1':'0'); }catch(e){} applyDev(); };
 applyDev();
+// Settings › Dungeon tips and Stairs marker (explore.js reads the same keys)
+function applyXTips(){ let tips=true, mark=true; try{ tips=localStorage.getItem('hexmancers-xtips')!=='0'; mark=localStorage.getItem('hexmancers-xstairs')!=='0'; }catch(e){}
+  $('#setXTips').textContent=tips?'On':'Off'; $('#setXStairs').textContent=mark?'On':'Off'; }
+$('#setXTips').onclick=()=>{ let on=true; try{ on=localStorage.getItem('hexmancers-xtips')!=='0'; localStorage.setItem('hexmancers-xtips',on?'0':'1'); }catch(e){}
+  if(on){ if(typeof xTipHide==='function') xTipHide(); } else if(typeof xTipReset==='function') xTipReset(); applyXTips(); };
+$('#setXStairs').onclick=()=>{ let on=true; try{ on=localStorage.getItem('hexmancers-xstairs')!=='0'; localStorage.setItem('hexmancers-xstairs',on?'0':'1'); }catch(e){} applyXTips(); if(typeof EX!=='undefined'&&EX&&typeof xMini==='function') xMini(); };
+applyXTips();
 // sound effects in the dungeon (dungeon.js), on unless switched off
 function applySfx(){ let on=true; try{ on=localStorage.getItem('hexmancers-sfx')!=='0'; }catch(e){} $('#setSfx').textContent=on?'On':'Off'; }
 $('#setSfx').onclick=()=>{ let on=true; try{ on=localStorage.getItem('hexmancers-sfx')!=='0'; localStorage.setItem('hexmancers-sfx',on?'0':'1'); }catch(e){} applySfx(); };

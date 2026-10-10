@@ -880,7 +880,15 @@ body.lsS #custHand .slot.hole{min-height:104px;}
 /* dungeon polish: a vignette that closes the view in, and a tidier control bar */
 #xVig{position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse 75% 70% at 50% 46%,rgba(0,0,0,0) 55%,rgba(0,0,0,.55) 85%,rgba(0,0,0,.85) 100%);}
 #xBottom .btn.mini{min-height:38px; min-width:0; font-size:14px; padding:0 8px;}
-#xBottom .keys.learned{display:none;}
+#xBottom .keys.learned{display:none!important;}   /* beats the touch rule that forces the line on */
+/* first-time tips (explore.js xTip): one card above the log, with Got it and Turn off */
+.xtip{display:none; pointer-events:auto; max-width:min(460px,100%); margin:0 0 8px; padding:8px 10px; background:#121417; border:2px solid #000; box-shadow:0 0 0 2px var(--gold),0 6px 18px rgba(0,0,0,.6); color:var(--text); text-align:left;}
+.xtip.on{display:block; animation:xtipIn .2s ease-out;}
+.xtip p{margin:0 0 6px; font:400 18px/1.15 var(--font-t);}
+.xtipbtns{display:flex; gap:8px; flex-wrap:wrap;}
+#xBottom .xtip .btn.mini{min-height:40px; font-size:14px; padding:0 12px;}
+@keyframes xtipIn{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:none;}}
+@media (prefers-reduced-motion:reduce){ .xtip.on{animation:none;} }
 
 /* the Soul: a round meter left of the board; full, it offers Summon or Unison */
 .soul{position:absolute; left:10px; top:122px; z-index:5; display:flex; flex-direction:column; align-items:center; gap:2px; --sc:#ffe066; --k:0%;}

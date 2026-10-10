@@ -259,7 +259,7 @@ const HEROES=[
   {id:'hero_ysolde',name:'Ysolde of the Rime',    color:'frost',   hero:'ysolde',      pow:26, rate:1.4, hp:170, freeze:1.2, amt:30,
    attack:'fires freezing bolts of {pow}',                 aura:'you get a shield of 30 now and at the start of each turn'},
   {id:'hero_volta', name:'Captain Volta',         color:'storm',   hero:'volta',       pow:22, rate:1.3, hp:140, stun:.6,
-   attack:'chains lightning of {pow} through 3 enemies',   aura:'your Custom gauge fills 50% faster and you cast faster'},
+   attack:'chains lightning of {pow} through 3 enemies',   aura:'your Spell gauge fills 50% faster and you cast faster'},
   {id:'hero_thorn', name:'The Thornfather',       color:'verdant', hero:'thornfather', pow:20, rate:1.5, hp:200, poison:6, amt:3,
    attack:'bursts thorns of {pow} around an enemy',        aura:'you get +30 max HP and heal 3 a second'},
   {id:'hero_aurel', name:'Sir Aurelion',          color:'light',   hero:'aurelion',    pow:30, rate:1.5, hp:180, heal:6, amt:60,
@@ -278,7 +278,7 @@ const HEROES=[
   {id:'hero_zephyra',name:'Zephyra, Wind Rider',   color:'storm',   hero:'zephyra', style:'multi', n:3, pow:16, rate:1.2, hp:130, aurae:{dodge:.2},
    attack:'looses 3 gusts of {pow}',                       aura:'you dodge 20% of hits'},
   {id:'hero_raijin',name:'Raijin, the Thunder King',color:'storm',  hero:'raijin',  style:'chain', n:4, pow:24, rate:1.5, hp:170, stun:.4, aurae:{gauge:1.3},
-   attack:'chains lightning of {pow} through 4 enemies',   aura:'your Custom gauge fills 30% faster'},
+   attack:'chains lightning of {pow} through 4 enemies',   aura:'your Spell gauge fills 30% faster'},
   {id:'hero_briar', name:'Mother Briar',           color:'verdant', hero:'briar',   style:'burst', pow:18, rate:1.5, hp:200, poison:5, aurae:{regen:2},
    attack:'bursts poison thorns of {pow} around an enemy', aura:'you heal 2 a second'},
   {id:'hero_fang',  name:'Fang the Beastcaller',   color:'verdant', hero:'fang',    style:'arc',   pow:32, rate:1.3, hp:170, slow:2, aurae:{dmg:.2},
@@ -288,7 +288,7 @@ const HEROES=[
   {id:'hero_solaris',name:'Solaris, Dawn Archer',  color:'light',   hero:'solaris', style:'multi', n:5, pow:12, rate:1.4, hp:140, aurae:{dmg:.2},
    attack:'rains 5 sun arrows of {pow}',                   aura:'your cards and wand deal +20%'},
   {id:'hero_oracle',name:'The Oracle',             color:'light',   hero:'oracle',  style:'row',   pow:22, rate:1.5, hp:150, aurae:{gauge:1.4},
-   attack:'fires a ray of {pow} down its row',             aura:'your Custom gauge fills 40% faster'},
+   attack:'fires a ray of {pow} down its row',             aura:'your Spell gauge fills 40% faster'},
   {id:'hero_morrow',name:'Morrow the Lich',        color:'shadow',  hero:'morrow',  style:'burst', pow:20, rate:1.5, hp:160, curse:3, aurae:{drain:.15},
    attack:'bursts grave frost of {pow} that curses',       aura:'you heal 15% of all damage you deal'},
   {id:'hero_vex',   name:'Vex, the Night Blade',   color:'shadow',  hero:'vex',     style:'arc',   pow:40, rate:1.4, hp:130, aurae:{crit:.2},
@@ -427,7 +427,7 @@ function cardText(c){
   else if(kind==='sentry') t='Tower: '+c.pow+' every '+c.rate+'s, '+c.hp+' HP, '+tn(c.turns);
   else if(kind==='boon') t={power:'Wand ×2.5 for '+c.dur+'s', pact:'Cards and wand +30% for '+c.dur+'s', haste:'Faster moves and casts for '+c.dur+'s',
                            dodge:'Dodge the next hit', phase:'Untouchable for '+c.dur+'s', regen:'Heal '+c.amt+'/s for '+c.dur+'s', heal:'Heal '+c.amt,
-                           gauge:'Fill '+Math.round(c.amt*100)+'% of the Custom gauge', courage:'Cards and wand +30% for '+c.dur+'s, no HP cost',
+                           gauge:'Fill '+Math.round(c.amt*100)+'% of the Spell gauge', courage:'Cards and wand +30% for '+c.dur+'s, no HP cost',
                            intervene:'The next hit that would defeat you leaves you standing and heals '+c.amt}[c.boon];
   else if(kind==='charge') t=c.uses+' uses: '+(c.fx==='lob'?'lob '+c.pow+' on the tile you aim':'bolt of '+c.pow+' down your row');
   else if(kind==='utility') t={draw:'Draw '+c.n+' card'+(c.n>1?'s':'')+' into your hand', recall:'Put the top card of your deck into your queue',

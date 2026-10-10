@@ -10,7 +10,7 @@ const KEY_ACTIONS=[
   {id:'right',  name:'Move right',         where:'both'},
   {id:'fire',   name:'Fire wand (hold to charge)', where:'battle'},
   {id:'cast',   name:'Cast next card',     where:'battle'},
-  {id:'custom', name:'Open Custom',        where:'battle'},
+  {id:'custom', name:'Open Spell',        where:'battle'},
   {id:'aim',    name:'Cycle lob aim',      where:'battle'},
   {id:'soul',   name:'Soul (then 1 Summon, 2 Unison)', where:'battle'},
   {id:'search', name:'Search',             where:'map'},

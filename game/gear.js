@@ -119,7 +119,7 @@ const CURSES={
   fizzle: {name:'of Sputtering',rune:'B', mods:{misfire:.15},   stats:{rch:-2}, text:'15% of shots fizzle, −2 Recharge', weapon:true},
   thirst: {name:'of Thirst',    rune:'C', mods:{hpPerShot:1},   stats:{con:-2}, text:'each shot costs 1 HP, −2 Constitution', weapon:true},
   frailty:{name:'of Frailty',   rune:'D', mods:{hp:-30},        stats:{str:-2}, text:'30 less max HP, −2 Strength'},
-  hunger: {name:'of Hunger',    rune:'E', mods:{gauge:.75},     stats:{cst:-2}, text:'the Custom gauge fills 25% slower, −2 Casting'},
+  hunger: {name:'of Hunger',    rune:'E', mods:{gauge:.75},     stats:{cst:-2}, text:'the Spell gauge fills 25% slower, −2 Casting'},
   omen:   {name:'of Ill Omen',  rune:'F', mods:{hurt:1.35},     stats:{cha:-2}, text:'hits that get through deal 35% more, −2 Charisma'},
 };
 // Sets: wear all three pieces for the bonus

@@ -651,7 +651,7 @@ function openPause(){ const w=pauseWhere(); if(!w||$('#pause').classList.contain
   const d=w==='map'?EX.depth:B.depth, onStairs=w==='map'&&EX.pc===EX.up;
   $('#pauseWhere').textContent='Depth '+d+' · '+areaLabel(d);
   $('#pauseHint').textContent=w==='map'?'Tap a spot to walk there, or hold to walk toward your finger. Search for secret doors and traps, and disarm a trap before you cross it.'
-    :'Tap your side of the board to move and the enemy side to aim lobs. Hold Fire to charge a shot; open Custom when it glows.';
+    :'Tap your side of the board to move and the enemy side to aim lobs. Hold Fire to charge a shot; open Spell when it glows.';
   const L=$('#mLeave'); delete L.dataset.armed;
   L.textContent=w==='battle'?'Retreat to camp':w==='trial'?'End the test':onStairs?'Climb to camp':'Flee to camp · lose 10% gold';
   pausePoint(); $('#pause').classList.add('on'); setTimeout(()=>$('#mResume').focus(),30); }
@@ -819,7 +819,7 @@ function hud(force){
   set('soul',b.soul?[Math.round(b.soul.charge),Math.ceil(b.soul.unisonT),soulReady(),(pl.queue[0]||{}).uid].join('|'):'',soulHud);
   const canCustom=b.phase==='fight'&&gaugeFull()&&!wandOnly(pl);
   set('custom',canCustom+'|'+wandOnly(pl),()=>{ const bt=$('#btnCustom'); bt.disabled=!canCustom; bt.classList.toggle('ready',canCustom);
-    $('#custLbl').innerHTML=canCustom?'✦ Custom · cards ready':wandOnly(pl)?'Deck empty: wand only':'Custom'; });
+    $('#custLbl').innerHTML=canCustom?'✦ Spell · cards ready':wandOnly(pl)?'Deck empty: wand only':'Spell'; });
 }
 
 /* The Soul: the deck's hero if it holds one, otherwise the hero of the deck's main color.

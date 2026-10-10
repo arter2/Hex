@@ -852,6 +852,8 @@ body.lsS #custHand .slot.hole{min-height:104px;}
 #lvlUp .panel.lvl{max-width:560px; width:100%; max-height:100%; overflow-y:auto; display:flex; flex-direction:column; gap:8px;}
 #lvTitle{color:#7dff9a; font-size:30px;}
 #lvlUp .row2{display:grid; grid-template-columns:1fr 1fr; gap:8px;}
+/* the stat list scrolls on its own, so Later and Done always stay on screen */
+#lvlUp .panel.lvl>*{flex:none;} #lvlUp #lvStats{flex:1 1 auto; min-height:110px; overflow-y:auto; overscroll-behavior:contain;}
 .dial .tape i.new::before{background:#7dff9a; height:16px;} .dial .tape i.new b{color:#7dff9a;}
 .charstats .wide{grid-column:1/-1; border:0; justify-content:center;}
 .charstats small.up{color:#7dff9a;} .charstats small.down{color:#ff8a8a;} .charstats small{font:400 14px var(--font-t);}
@@ -1067,3 +1069,5 @@ body.lsS #custHand .slot.hole{min-height:104px;}
 /* the queue's slots share the row evenly: an empty slot's label wraps instead of squeezing a queued card (4th slot on narrow phones) */
 #custQueue.slots{grid-template-columns:repeat(3,minmax(0,1fr));} #custQueue.slots.four{grid-template-columns:repeat(4,minmax(0,1fr));}
 #custQueue .slot,#custQueue .slot small{min-width:0; white-space:normal; overflow-wrap:anywhere;}
+/* short (landscape phone) screens: drop the level-up blurb and tighten the header so the buttons fit */
+@media (max-height:520px){ #lvlUp #lvSub{display:none;} #lvlUp .panel.lvl{gap:4px;} #lvlUp #lvTitle{margin:0;} #lvlUp .ccpts{margin:0;} #lvlUp #lvStats{min-height:72px;} }

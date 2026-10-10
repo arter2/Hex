@@ -447,6 +447,9 @@ const STARTERS=[
   {id:'burn_storm', name:'Burn Rush',   colors:['fire','storm'],    text:'Fast damage and stuns. End fights before the enemy acts.'},
   {id:'frost_light',name:'Hold the Line', colors:['frost','light'],  text:'Freeze, shield and heal. Cancel attacks and outlast.'},
   {id:'verd_shadow',name:'Bulwark Drain',colors:['verdant','shadow'],text:'Walls, poison and drain. Outlast the enemy.'},
+  {id:'fire_shadow',name:'Hellfire Pact', colors:['fire','shadow'],  text:'Burn and curse, then drain it back. Trade health for raw power.'},
+  {id:'frost_verd', name:'Winter Garden', colors:['frost','verdant'], text:'Freeze, slow and poison from behind walls. Let them wither.'},
+  {id:'storm_light',name:'Tempest Choir', colors:['storm','light'],   text:'Chain lightning and stuns, with heals and blessings to keep you up.'},
 ];
 function starterList(colors,size){
   size=size||60;

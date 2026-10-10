@@ -940,10 +940,11 @@ function resumeExplore(hp,won,info){
   const g=EX.fighting; EX.fighting=null;
   if(won&&g){ EX.groups=EX.groups.filter(x=>x!==g); [g.sprite,g.zz,g.bang,g.ring,g.tag].forEach(o=>{ if(!o) return; X3.group.remove(o); if(o.material.map) o.material.map.dispose(); o.material.dispose(); }); if(g.boss){ EX.bossDead=true; xLog(ENEMY_DEFS[g.ids[0]].name+' falls. The stairs down to '+areaOf(EX.depth+1).name+' are open.','good'); } }
   EX.hp=Math.max(1,hp); EX.busy=false; EX.active=true; EX.path=[]; EX.aim=null;
-  for(const k in XKEY) XKEY[k]=false;
+  xPause($('#lvlUp').classList.contains('on'));   // let go of a pause left over from before the fight (keys and touches too)
   show('scrExplore'); xUpdateVis();
   if(typeof xAfterFight==='function') xAfterFight(g,won,info);
-  setTimeout(()=>{ if(typeof maybeLevelUp==='function') maybeLevelUp(); },300);
+  // not while the next fight is starting: the panel would pause the map under it
+  setTimeout(()=>{ if(typeof maybeLevelUp==='function'&&EX&&EX.active&&!EX.busy) maybeLevelUp(); },300);
   xHud(); xLoopStart();
 }
 $('#xSearch').onclick=()=>xSearch();

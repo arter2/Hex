@@ -159,7 +159,8 @@ function openLevelUp(back){ const ch=ensureChar(save); save.lvlNew=false; persis
   lvBefore=Object.assign({},ch.spent); statDials($('#lvStats'),ch,$('#lvPts')); $('#lvlUp').classList.add('on'); }
 let lvBefore=null;
 function closeLevelUp(keep){ const ch=save.char; if(!keep&&lvBefore) ch.spent=lvBefore; else lockChar(ch); persist(); $('#lvlUp').classList.remove('on');
-  if(typeof xPause==='function'&&EX&&EX.active) xPause(false);
+  // un-pause the map even if a fight started while this was open, or you stay frozen after it
+  if(typeof xPause==='function'&&EX&&!$('#pause').classList.contains('on')&&!$('#xDialog').classList.contains('on')&&!$('#bagUI').classList.contains('on')) xPause(false);
   if($('#scrCamp').classList.contains('on')) xpBar($('#campLevel')); if($('#scrCharacter').classList.contains('on')) renderCharacter(); if(typeof xHud==='function'&&EX) xHud();
   if(lvBack) lvBack(); }
 $('#lvDone').onclick=()=>closeLevelUp(true);

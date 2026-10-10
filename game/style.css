@@ -163,7 +163,7 @@ select,.filters input{font:600 14px var(--font-b); color:var(--text); background
 .panel{background:var(--panel); border:1px solid var(--line); border-radius:18px; padding:14px; width:100%; max-width:560px; max-height:100%; overflow:auto; text-align:center;}
 .panel .bar{text-align:left;}
 .panel.custom{padding:10px; display:flex; flex-direction:column; max-height:100%;}
-.panel.custom #btnFight{flex:none; margin-top:4px;}
+.panel.custom #btnFight{flex:none; margin-bottom:4px;}
 .slots{display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:4px auto 6px; width:100%; max-width:360px;}
 .slot{min-height:96px;}
 .slots .card{min-height:96px!important;} .slots .card .tx{display:none;}
@@ -658,7 +658,7 @@ body.wide .camp{grid-template-areas:"logo logo" "area area" "scene depth" "scene
 @media (pointer:coarse){ .k{display:none!important;} #xBottom .keys{display:block!important;} body.wide #hudBottom .keys{display:none!important;} }
 /* the Custom screen scrolls when a 4th slot opens on a short screen, and Fight stays in reach */
 .panel.custom{overflow-y:auto!important; -webkit-overflow-scrolling:touch;}
-.panel.custom #btnFight{position:sticky; bottom:0; z-index:2;}
+.panel.custom #btnFight{position:sticky; top:0; z-index:2;}   /* at the top of the Spell screen, and stays there as you scroll */
 /* battle buttons may shrink instead of pushing off the screen */
 .controls.battle .btn{min-width:0; overflow:hidden;}
 .controls.battle .btn small{display:block; max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}

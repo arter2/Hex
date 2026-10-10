@@ -687,7 +687,9 @@ document.addEventListener('fullscreenchange',onFullChange); document.addEventLis
    WebKit's gesture events and any multi-finger move before the browser acts on them. */
 ['gesturestart','gesturechange','gestureend'].forEach(ev=>document.addEventListener(ev,e=>e.preventDefault(),{passive:false}));
 document.addEventListener('touchmove',e=>{ if(e.touches.length>1||(e.scale!=null&&e.scale!==1)) e.preventDefault(); },{passive:false});
-document.addEventListener('visibilitychange',()=>{ if(document.hidden) openPause(); });
+document.addEventListener('visibilitychange',()=>{ if(document.hidden) openPause();
+  // back from the background: re-measure the board (and its cached cave) at its real size
+  else if(B&&$('#scrBattle').classList.contains('on')){ View.cave=null; resizeView(); } });
 // Esc opens and closes the pause menu (the settings screen takes Esc first while it is open)
 window.addEventListener('keydown',e=>{ if(e.key!=='Escape') return; if($('#pause').classList.contains('on')){ e.preventDefault(); closePause(); } else if(pauseWhere()){ e.preventDefault(); openPause(); } });
 
@@ -917,12 +919,15 @@ window.addEventListener('keyup',e=>{ const k=e.key.toLowerCase(); held.delete(k)
 let prev=performance.now();
 function frame(now){
   const dt=Math.min(.05,(now-prev)/1000); prev=now;
+  // the next frame is asked for first, so one bad frame can never stop the fight for good
+  requestAnimationFrame(frame);
   if(B&&$('#scrBattle').classList.contains('on')){
+    if(!(View.w>0&&View.h>0)) resizeView();
     if(!paused) update(dt);
     // The Custom screen never opens by itself: when the gauge is full the Custom button glows and you open it.
-    render(); hud();
+    try{ render(); }catch(e){ View.cave=null; resizeView(); }   // e.g. the board was resized to nothing in the background: rebuild it next frame
+    hud();
   }
-  requestAnimationFrame(frame);
 }
 /* ---------------- phone or tablet layout ----------------
    Phone keeps everything in one narrow column with 4 cards to a row; tablet spreads the camp

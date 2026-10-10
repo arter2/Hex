@@ -761,6 +761,7 @@ function frontFaces(ctx,top,drop){ const n=top.length, cx=top.reduce((a,p)=>a+p[
 
 function resizeView(){
   const cv=View.canvas, r=appBox(cv), dpr=Math.min(window.devicePixelRatio||1,2);
+  if(!(r.width>0&&r.height>0)) return;   // hidden (the app is in the background): keep the last size, a 0-size board can't be drawn
   View.dpr=dpr; View.w=r.width; View.h=r.height; cv.width=Math.round(r.width*dpr); cv.height=Math.round(r.height*dpr);
   const portrait=r.height>r.width*1.05, ang=Math.PI/2;
   View.ca=Math.cos(ang); View.sa=Math.sin(ang); View.iy=ISO_Y=portrait?.8:.62; View.cp=Math.sqrt(1-View.iy*View.iy);

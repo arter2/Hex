@@ -92,7 +92,7 @@ function detectCombos(queue){
   for(const id in by) if(by[id]>=2){ const c=cards.find(x=>x.id===id);
     out.push({kind:'simple', id, n:by[id], mult:by[id]>=3?2:1.5, label:(by[id]>=3?'Triple ':'Double ')+c.name+' ×'+(by[id]>=3?2:1.5)}); }
   const kind=c=>c.type==='piece'?c.base:c.type;
-  if(cards.length>=3&&oneRune(cards)&&!NEUTRAL.includes(cards[0].color)&&cards.every(c=>c.color===cards[0].color&&kind(c)===kind(cards[0]))&&new Set(cards.map(c=>c.id)).size>1){
+  if(cards.length>=3&&oneRune(cards)&&!NEUTRAL.includes(cards[0].color)&&cards.every(c=>c.color===cards[0].color&&kind(c)===kind(cards[0]))&&new Set(cards.map(c=>c.id)).size===cards.length){   // every card different: copies merge (Double), which would make it a 2-card Flush
     // one bonus for any Flush: a stronger 4-card Flush made the 4th slot too strong
     const m=1.25, nm=cards[0].color[0].toUpperCase()+cards[0].color.slice(1);
     out.push({kind:'flush', color:cards[0].color, mult:m, label:'Flush: '+nm+' '+TYPES_NAME(kind(cards[0]))+' +'+Math.round((m-1)*100)+'%'}); }

@@ -91,11 +91,11 @@ function detectCombos(queue){
   const by={}; cards.forEach(c=>by[c.id]=(by[c.id]||0)+1);
   for(const id in by) if(by[id]>=2){ const c=cards.find(x=>x.id===id);
     out.push({kind:'simple', id, n:by[id], mult:by[id]>=3?2:1.5, label:(by[id]>=3?'Triple ':'Double ')+c.name+' ×'+(by[id]>=3?2:1.5)}); }
-  const kind=c=>c.type==='piece'?c.base:c.type;
-  if(cards.length>=3&&oneRune(cards)&&!NEUTRAL.includes(cards[0].color)&&cards.every(c=>c.color===cards[0].color&&kind(c)===kind(cards[0]))&&new Set(cards.map(c=>c.id)).size===cards.length){   // every card different: copies merge (Double), which would make it a 2-card Flush
+  // Flush: different cards of one rune and one color (any types)
+  if(cards.length>=3&&oneRune(cards)&&!NEUTRAL.includes(cards[0].color)&&cards.every(c=>c.color===cards[0].color)&&new Set(cards.map(c=>c.id)).size===cards.length){   // every card different: copies merge (Double), which would make it a 2-card Flush
     // one bonus for any Flush: a stronger 4-card Flush made the 4th slot too strong
     const m=1.25, nm=cards[0].color[0].toUpperCase()+cards[0].color.slice(1);
-    out.push({kind:'flush', color:cards[0].color, mult:m, label:'Flush: '+nm+' '+TYPES_NAME(kind(cards[0]))+' +'+Math.round((m-1)*100)+'%'}); }
+    out.push({kind:'flush', color:cards[0].color, mult:m, label:'Flush: '+nm+' +'+Math.round((m-1)*100)+'%'}); }
   const brood=cards.filter(c=>c.brood).length;
   if(brood>=2) out.push({kind:'brood', n:Math.min(4,brood), label:brood>=4?'Elder Grovebeast!':brood===3?'Brood Swarm: two each +50%, an Ogre leads':'Brood Pack: two each +25%'});
   const ranks=cards.map(c=>c.rank).sort((a,b)=>a-b);
@@ -118,7 +118,6 @@ function runeRun(cards){ if(cards.length<3) return null;
   if(idx.length<2||idx.some(i=>i<0)||new Set(idx).size!==idx.length) return null;
   const lo=Math.min(...idx), hi=Math.max(...idx); if(hi-lo+1>cards.length||(hi-lo+1)-idx.length>wild) return null;
   const start=Math.max(0,Math.min(lo,L.length-cards.length)); return L.slice(start,start+cards.length); }
-const TYPES_NAME=k=>typeof TYPES!=='undefined'&&TYPES[k]?TYPES[k].name+'s':k;
 // Leaving the Custom screen: combos lock in, and every empty slot adds 1 card to the next
 // draw (Battle Network style). A recipe replaces its cards with the fused card.
 function commitCustom(p){

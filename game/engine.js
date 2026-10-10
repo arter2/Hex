@@ -101,6 +101,10 @@ function detectCombos(queue){
   if(cards.length>=3&&oneRune(cards)&&ranks.every((x,i)=>!i||x===ranks[i-1]+1))
     out.push({kind:'straight', ranks, label:(cards.length>=4?'Grand Straight ':'Straight ')+ranks.join('-')+': chain cast + finisher'});
   const run=runeRun(cards);
+  // Rune Set: every queued card has the same rune (✱ fits any): Power, wand ×2.5, for 8s (12s with 4)
+  const real=cards.map(c=>c.code).filter(k=>k&&k!==WILD_RUNE);
+  if(cards.length>=3&&real.length&&cards.every(c=>c.code)&&oneRune(cards)){ const dur=cards.length>=4?12:8;
+    out.push({kind:'set', rune:real[0], n:cards.length, dur, label:(cards.length>=4?'Grand Rune Set ':'Rune Set ')+real[0]+'×'+cards.length+': Wand ×2.5 '+dur+'s'}); }
   if(run){ const dur=run.length>=4?12:8; out.push({kind:'run', runes:run, dur, label:(run.length>=4?'Grand Rune Run ':'Rune Run ')+run.join('-')+': Haste + Courage '+dur+'s'}); }
   return out;
 }
@@ -129,7 +133,7 @@ function commitCustom(p){
       if(cb.n>=4&&typeof GROVEBEAST!=='undefined'){ p.discard.push(...bs); p.queue=p.queue.filter(c=>!bs.includes(c)); p.queue.unshift({uid:p.uid++, card:GROVEBEAST, temp:true, recipe:true, combo:cb.label}); }
       else bs.forEach((c,i)=>{ c.brood=cb.n; c.mult=(c.mult||1)*(cb.n>=3?1.5:1.25); c.combo=cb.label; c.leader=cb.n>=3&&i===0; }); }
     if(cb.kind==='flush') p.queue.forEach(c=>{ c.mult=(c.mult||1)*cb.mult; c.combo=c.combo||cb.label; });
-    if(cb.kind==='run') p.queue.forEach(c=>c.combo=c.combo||cb.label);
+    if(cb.kind==='run'||cb.kind==='set') p.queue.forEach(c=>c.combo=c.combo||cb.label);
     if(cb.kind==='straight'&&p.queue.length>=3){ p.queue[0].straight=cb.ranks; p.queue.forEach(c=>c.combo=c.combo||cb.label); }
   }
   p.combos=combos;

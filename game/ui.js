@@ -969,14 +969,24 @@ function applyOrient(){ const o=getOrient(), portraitNow=innerHeight>=innerWidth
   if(turn){ app.style.width=innerHeight+'px'; app.style.height=innerWidth+'px'; } else { app.style.width=''; app.style.height=''; }
   const b=$('#setOrient'); if(b) b.textContent={auto:'Auto',portrait:'Portrait',landscape:'Landscape'}[o]; }
 $('#setOrient').onclick=()=>{ const n={auto:'portrait',portrait:'landscape',landscape:'auto'}[getOrient()]; try{ localStorage.setItem(ORIENT_KEY,n); }catch(e){} lockOrient(); applyViewport(); };
+/* Text size (Settings): a player multiplier on --ui. Normal (1) leaves the game as it was;
+   on a narrow phone the bigger sizes stop where the layouts would stop fitting (applyViewport). */
+const TEXT_KEY='hexmancers-text', TEXT_SIZES=[[1,'Normal'],[1.15,'Large'],[1.3,'Larger']];
+const getTextScale=()=>{ let v=1; try{ v=+localStorage.getItem(TEXT_KEY)||1; }catch(e){} return TEXT_SIZES.some(t=>t[0]===v)?v:1; };
+function applyText(){ const b=$('#setText'); if(b) b.textContent=TEXT_SIZES.find(t=>t[0]===getTextScale())[1]; }
+$('#setText').onclick=()=>{ const i=TEXT_SIZES.findIndex(t=>t[0]===getTextScale()), n=TEXT_SIZES[(i+1)%TEXT_SIZES.length][0];
+  try{ localStorage.setItem(TEXT_KEY,n); }catch(e){} applyViewport(); };
 function applyViewport(){
+  applyText();
   applyOrient();
   const rot=$('#app').classList.contains('rot'), w=rot?innerHeight:innerWidth, h=rot?innerWidth:innerHeight, wide=w>h*1.15;
   // size classes from the game's own frame (it may be turned), in place of media queries on the screen
   const B=document.body.classList; B.toggle('lsS',w>h&&h<=560); B.toggle('lsXS',w>h&&h<=500); B.toggle('hTall',h>=561); B.toggle('h460',h<=460); B.toggle('w420',w<=420); B.toggle('w520',w<=520);
   document.body.classList.toggle('wide',wide); document.body.classList.toggle('tall',!wide);
   const s=wide?Math.min(h/760,w/1250):Math.min(w/560,h/1000);
-  document.documentElement.style.setProperty('--ui',Math.max(1,Math.min(2.5,s)).toFixed(3));
+  // Text size grows the scale, but never so far that the game's own width drops below 340px (where its layouts still fit)
+  const base=Math.max(1,Math.min(2.5,s)), ui=Math.min(base*getTextScale(),Math.max(base,w/340));
+  document.documentElement.style.setProperty('--ui',ui.toFixed(3));
   if($('#scrBattle').classList.contains('on')) requestAnimationFrame(resizeView);
   if($('#scrCamp').classList.contains('on')) campScene();
 }

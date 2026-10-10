@@ -471,9 +471,11 @@ select,.filters input,#bName{border-radius:0; border:6px solid transparent; bord
 .depthbox .drow{width:100%; display:flex; justify-content:space-between; align-items:baseline; font:400 20px var(--font-t); color:#9aa3ab;}
 .depthbox .drow #campDeck{color:var(--text);}
 .depthbox .hint:empty{display:none;}
-.depthbox .depthpick{width:100%; grid-template-columns:56px 1fr 56px; gap:6px;}
+.depthbox .depthpick{width:100%; grid-template-columns:56px minmax(0,1fr) 56px; gap:6px;}
+.depthbox .depthpick #btnDescend{min-width:0; white-space:normal;}
 .depthpick .btn{min-height:56px;}
-.camp .menu{max-width:none; gap:6px;}
+.camp .menu{max-width:none; gap:6px; grid-template-columns:repeat(2,minmax(0,1fr));}   /* columns may shrink, so a bigger Text size still fits a phone */
+.camp .btn.mi{min-width:0; white-space:normal; overflow-wrap:anywhere;}
 .btn.mi{flex-direction:row; justify-content:flex-start; gap:8px; min-height:68px; padding:2px 6px; font-size:18px;}
 .btn.mi .pxi{flex:none;}
 .panel.log{text-align:left; font:400 19px/1.05 var(--font-t); color:#9aa3ab; padding:2px 6px; max-width:none;}

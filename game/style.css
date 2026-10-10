@@ -1064,3 +1064,6 @@ body.lsS #custHand .slot.hole{min-height:104px;}
 /* on the standard card, count and NEW badges sit on the lower edge of the art, clear of the name */
 :is(#cGrid,#dkColl,#custHand,#rvCards,#pkCards,#bColl) .card .badge{top:calc(var(--cardw,104px)*.5 + 8px); bottom:auto; right:4px; max-width:calc(100% - 8px); font-size:13px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
 #dtCard .card,#dkpCard .card{width:228px; max-width:100%; margin-inline:auto;}   /* the read-it-big card keeps one size too */
+/* the queue's slots share the row evenly: an empty slot's label wraps instead of squeezing a queued card (4th slot on narrow phones) */
+#custQueue.slots{grid-template-columns:repeat(3,minmax(0,1fr));} #custQueue.slots.four{grid-template-columns:repeat(4,minmax(0,1fr));}
+#custQueue .slot,#custQueue .slot small{min-width:0; white-space:normal; overflow-wrap:anywhere;}

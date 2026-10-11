@@ -6,29 +6,42 @@ of gear should draw on its color's list. A color is never just one theme: each
 has several sub-themes, and some ideas are shared between two colors on
 purpose (see *Shared ground* at the end).
 
-| Brief name | Color in the game (code name) | Card color |
-|---|---|---|
-| Red | Fire (`fire`) | `#ff6a3d` |
-| Blue | Frost (`frost`) | `#6fd6ff` |
-| White | Light (`light`) | `#fff0b3` |
-| Green | Verdant (`verdant`) | `#6fdc7a` |
-| Yellow | Storm (`storm`) | `#ffe24d` |
-| Black | Shadow (`shadow`) | `#e0588f` |
+The game keeps its color names and adds the brief's color word to them:
 
-Items marked *(?)* are written as given and still need a quick note on what
-they mean.
+| Name in the game | Code name | Card color |
+|---|---|---|
+| Red · Fire | `fire` | `#ff6a3d` |
+| Blue · Frost | `frost` | `#6fd6ff` |
+| White · Light | `light` | `#fff0b3` |
+| Green · Verdant | `verdant` | `#6fdc7a` |
+| Yellow · Storm | `storm` | `#ffe24d` |
+| Black · Shadow | `shadow` | `#e0588f` |
+
+## Principles
+
+- **Think abstract.** A color is a feeling and a world, not one element. Weather
+  shows it best: **storms are Yellow, wind is White, hurricanes are Blue,
+  cyclones are Red, fog is Black.**
+- **Every color has its own version of a thing.** Overlap is fine as long as it
+  is that color's take: wild wolves are Green, white wolves are White, dark
+  wolves are Black, winter wolves are Blue.
+- **Mythology from all over the world.** Cards, creatures and heroes should be
+  a large and varied set drawn from many cultures, not one per color.
+
+Items marked *(?)* still need a note on what they mean.
 
 ---
 
 ## Red: fire and the mountain
 
-**Elements and places:** fire, volcanoes, lava, mountains, earth, explosions.
-Purification through flame.
+**Elements and places:** fire, volcanoes, lava, mountains, earth, explosions,
+cyclones. Purification through flame.
 
 **Crafts and know-how:** blacksmithing, forging, mining, guns, rockets.
 
 **Creatures:** dragons, wyverns, gremlins, goblins, foxes, coyotes, griffins,
-the phoenix, shishi (lion-dogs), duende, vampires, the minotaur, Torus *(?)*,
+the phoenix, shishi (lion-dogs), duende, vampires, the minotaur, the bull
+(Taurus),
 yokai, kitsune, oni.
 
 **Peoples and cultures (inspiration):** dwarf-like, Native American-like,
@@ -50,12 +63,13 @@ Japanese-like, Chinese-like, Tibetan-like, mountain peoples, exo-like *(?)*.
 ## Blue: water, ice and the great unknown
 
 **Elements and places:** water, ice, snow, rivers, lakes, the ocean, floods,
-islands, dams. Cleanliness, purification through water. The great unknown.
+hurricanes, islands, dams, ships. Cleanliness, purification through water.
+The great unknown.
 
 **Magic:** sorcery, enchantment.
 
 **Creatures:** merpeople, fish, sea monsters, the leviathan, yeti, snowmen,
-wolves, kappa, shios *(?)*.
+wolves, kappa.
 
 **Peoples and cultures (inspiration):** pirates, Caribbean-like,
 Eskimo/Inuit-like, Norse-like.
@@ -75,14 +89,15 @@ Eskimo/Inuit-like, Norse-like.
 
 **Ideals:** purity, conquest, safety, the divine, sacred lands.
 
-**Knowledge:** libraries, books, alchemy, medicine, astronomy.
+**Knowledge:** libraries, books, alchemy, medicine, salves (healing creams),
+astronomy.
 
 **Achievement:** architecture, fortresses, marble, stone, bricks, temples,
 human achievement.
 
 **Elements:** wind.
 
-**People:** humans, doctors, clerics, saulves *(?)*, knights, crusaders.
+**People:** humans, doctors, clerics, knights, crusaders.
 
 **Creatures and figures:** owls, Athena, Pegasus, centaurs.
 
@@ -132,7 +147,8 @@ Mayan-like.
 
 ## Yellow: lightning, sand and greed
 
-**Elements and places:** electricity, the desert, dryness, sand, the Sahara.
+**Elements and places:** electricity, storms, the desert, dryness, sand, the
+Sahara.
 
 **Science and machines:** electrification, chemistry, chemicals, 16th-century
 science, flying machines, traps, bronze, golems.
@@ -142,8 +158,9 @@ science, flying machines, traps, bronze, golems.
 **Effects:** paralysis.
 
 **Creatures and figures:** birds, lizards, snakes, scarabs, camels, the
-manticore, the chimera, Foo dogs, djinn, ifrit, Horus, the chupacabra,
-dybics *(?)*, baebue *(?)*, sila *(?)*, falek *(?)*.
+manticore, the chimera, Foo dogs, djinn, ifrit, Horus, the chupacabra, and
+mythical creatures from many cultures: the dybbuk *(best guess for "dybics")*,
+Bahamut *(best guess for "baebue")*, the si'lat *("sila")*, Falak *("falek")*.
 
 **Peoples and cultures (inspiration):** Middle Eastern, Persian-like,
 Bedouin-like, Arabian-like, Egyptian-like.
@@ -161,6 +178,8 @@ Bedouin-like, Arabian-like, Egyptian-like.
 ## Black: death, horror and dark magic
 
 **Death and disease:** plague, death, zombies, skeletons, ghosts, ghouls.
+
+**Elements:** fog.
 
 **Dark magic:** dark magic, witches, the cauldron, voodoo, tarot, curses.
 
@@ -200,6 +219,7 @@ them its own way:
 | Chemistry | Yellow, Black | Yellow: science and invention. Black: poisons and the cauldron. |
 | Lizards and snakes | Green, Yellow | Green: jungle and forest. Yellow: desert. |
 | Purification | Red, Blue | Red: through flame. Blue: through water. |
-| Wind | White, Yellow | White: the open sky, Pegasus. Yellow: sandstorms. |
+| Weather | all | Storms Yellow, wind White, hurricanes Blue, cyclones Red, fog Black. |
+| Wolves | all | Wild wolves Green, white wolves White, dark wolves Black, winter wolves Blue. |
 | Mountains | Red, Green | Red: volcanoes, mines. Green: highlands, mountain men. |
 | Stone and earth | Red, White | Red: raw earth, mining. White: marble and architecture. |

@@ -844,7 +844,24 @@ const HERO_LOOK={pyra:{hat:'crown',hair:'flame',weapon:'flamestaff',cape:1}, yso
   briar:{hat:'leaf',hair:'long',weapon:'gnarl'}, fang:{body:'leather',hat:'antlers',weapon:'spear'}, lumina:{hat:'tiara',weapon:'staff',back:'wings',cape:1},
   solaris:{hat:'helm',weapon:'bow',cape:1}, oracle:{hat:'hood',weapon:'staff',cape:1}, morrow:{hat:'crown',weapon:'scythe',cape:1},
   vex:{body:'thief',hat:'thief',weapon:'darksword'}, jester:{hat:'witch',weapon:'wand',cape:1},
-  grovebeast:{hat:'antlers',body:'leather',weapon:'gnarl',beard:1,back:'wings'}};
+  grovebeast:{hat:'antlers',body:'leather',weapon:'gnarl',beard:1,back:'wings'},
+  // the 64 later Souls
+  ignis:{body:'plate',hat:'spiked',weapon:'greatsword',cape:1}, sola:{hair:'flame',weapon:'wand',cape:1}, kael:{body:'samurai',hat:'samurai',weapon:'saber'}, magmar:{body:'plate',hat:'kabuto',weapon:'spear',beard:1},
+  phoenixia:{hair:'flame',back:'wings',weapon:'flamestaff'}, varn:{hat:'crown',weapon:'flamestaff',cape:1,beard:1}, emberly:{body:'shirt',hat:'cap',weapon:'staff'}, pyrrhus:{body:'shirt',hat:'cap',weapon:'crossbow',beard:1},
+  scorch:{body:'thief',hat:'thief',weapon:'bow'}, salamandra:{hat:'veil',hair:'long',weapon:'spear'}, vulcan:{body:'plate',hat:'helm',weapon:'greatsword',beard:1,shield:'round'}, boreas:{hat:'hood',weapon:'icestaff',cape:1,beard:1},
+  frida:{hat:'veil',hair:'long',weapon:'icestaff'}, tundra:{body:'leather',hat:'antlers',weapon:'spear',beard:1}, sora:{body:'samurai',hat:'samurai',weapon:'saber'}, aurora:{hat:'tiara',hair:'long',weapon:'staff',cape:1},
+  ymir:{body:'plate',hat:'spiked',weapon:'greatsword',beard:1}, sleet:{hat:'leaf',weapon:'bow',cape:1}, crysta:{hat:'tiara',weapon:'wand'}, permafrost:{hat:'wizard',weapon:'gnarl',beard:1},
+  nix:{hat:'hood',back:'wings',weapon:'wand'}, glace:{hat:'crown',hair:'long',weapon:'icestaff',cape:1}, tempest:{hat:'wizard',weapon:'staff',cape:1,beard:1}, gale:{hat:'tricorn',weapon:'saber',cape:1},
+  thundra:{body:'plate',hat:'helm',weapon:'greatsword',beard:1,shield:1}, voltaire:{body:'shirt',hat:'cap',weapon:'wand'}, cyclona:{hat:'veil',hair:'long',weapon:'spear'}, quarrel:{hat:'kabuto',weapon:'crossbow'},
+  nimbus:{hat:'hood',weapon:'gnarl',beard:1,cape:1}, stati:{hat:'witch',weapon:'wand',cape:1}, kiri:{hat:'tricorn',hair:'long',weapon:'bow'}, thunderbird:{back:'wings',hat:'crown',weapon:'spear'},
+  ozone:{body:'shirt',hat:'cap',weapon:'staff',beard:1}, oakheart:{body:'leather',hat:'antlers',weapon:'gnarl',beard:1}, sylva:{hat:'leaf',hair:'long',weapon:'bow',cape:1}, mossback:{hat:'hood',weapon:'staff',beard:1},
+  venna:{hat:'crown',body:'thief',weapon:'spear'}, lia:{hat:'leaf',weapon:'wand',back:'wings'}, grovewalker:{body:'leather',hat:'antlers',weapon:'gnarl'}, hivequeen:{hat:'tiara',back:'wings',weapon:'wand'},
+  ulfa:{body:'leather',hat:'hood',weapon:'spear'}, sporelord:{hat:'witch',weapon:'gnarl',beard:1}, dara:{hat:'leaf',hair:'long',weapon:'staff'}, thistle:{body:'plate',hat:'helm',weapon:'sword',shield:'round'},
+  seraphiel:{back:'wings',hat:'helm',weapon:'greatsword'}, cassia:{body:'plate',hat:'helm',weapon:'sword',shield:'gold'}, lux:{hat:'hood',weapon:'staff',cape:1}, halo:{hat:'tiara',hair:'long',weapon:'wand',back:'wings'},
+  pharaoh:{hat:'crown',weapon:'staff',cape:1}, aldric:{body:'plate',hat:'helm',weapon:'greatsword',shield:1}, ratha:{hat:'kabuto',weapon:'spear'}, prisma:{hat:'witch',hair:'long',weapon:'wand'},
+  theron:{hat:'crown',weapon:'greatsword',beard:1,cape:1}, celestine:{hat:'veil',weapon:'staff',cape:1}, nox:{hat:'crown',weapon:'darksword',cape:1}, mordo:{body:'plate',hat:'spiked',weapon:'scythe'},
+  shade:{body:'thief',hat:'thief',weapon:'darksword'}, banshee:{hat:'veil',hair:'long',weapon:'wand'}, sanguis:{hat:'hood',weapon:'saber',cape:1}, hexa:{hat:'witch',weapon:'wand',cape:1},
+  reaper:{hat:'hood',weapon:'scythe',cape:1}, arachna:{back:'legs',hat:'veil',weapon:'wand'}, necros:{hat:'crown',weapon:'gnarl',beard:1,cape:1}, corvina:{hat:'witch',back:'wings',weapon:'staff'}};
 const SPRITES={};
 function makeSprite(key,pal,draw){
   if(SPRITES[key]) return SPRITES[key];

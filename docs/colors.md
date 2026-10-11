@@ -73,12 +73,12 @@ Eskimo/Inuit-like, Norse-like.
 
 ## White: knowledge, faith and human achievement
 
-**Ideals:** purity, conquest, the divine, sacred lands.
+**Ideals:** purity, conquest, safety, the divine, sacred lands.
 
 **Knowledge:** libraries, books, alchemy, medicine, astronomy.
 
-**Achievement:** architecture, marble, stone, bricks, temples, human
-achievement.
+**Achievement:** architecture, fortresses, marble, stone, bricks, temples,
+human achievement.
 
 **Elements:** wind.
 
@@ -94,7 +94,8 @@ knighthood, the crusades.
 - **Knighthood and conquest:** shields, armor, charges, an army of humans.
 - **Knowledge:** books, libraries and alchemy: learn recipes, see what is
   coming, upgrade cards.
-- **Architecture:** walls, towers and temples that stay on the board.
+- **Safety and the fortress:** walls, towers, fortresses and temples that
+  stay on the board; barriers, guarding allies, taking hits for others.
 - **The divine:** blessings, revival, judgment on the wicked.
 - **Wind and the sky:** Pegasus, owls; speed and evasion.
 

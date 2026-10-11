@@ -201,7 +201,20 @@ const CREATURES={
   Hawk:{head:'round',ears:'none',snout:'beak',body:'round',wings:1}, Mole:{head:'round',ears:'none',snout:'long',body:'squat',claws:1}, Beetle:{head:'round',ears:'antenna',snout:'mandible',body:'shell'},
   Serpent:{head:'long',ears:'none',snout:'fangs',body:'coil'}, Bear:{head:'wide',ears:'round',snout:'short',body:'big'}, Fox:{head:'long',ears:'point',snout:'long',body:'small',tail:2},
   Ogre:{head:'square',ears:'round',snout:'tusk',body:'big'}, Sprite:{head:'round',ears:'point',snout:'none',body:'small',wings:2},
+  // creatures of the color sets (cardsets.js), built from the same parts
+  Dragon:{head:'long',ears:'horns',snout:'fangs',body:'big',wings:1,tail:1}, Wyvern:{head:'long',ears:'horns',snout:'fangs',body:'small',wings:1,tail:1},
+  Lung:{head:'long',ears:'horns',snout:'long',body:'coil'}, Griffin:{head:'round',ears:'tufts',snout:'beak',body:'big',wings:1,tail:1},
+  Phoenix:{head:'round',ears:'plume',snout:'beak',body:'round',wings:1,tail:2}, Kitsune:{head:'long',ears:'point',snout:'long',body:'small',tail:2,eyes:'glow'},
+  Shishi:{head:'wide',ears:'floppy',snout:'grin',body:'big',tail:1}, Oni:{head:'square',ears:'horns',snout:'tusk',body:'big'},
+  Minotaur:{head:'wide',ears:'horns',snout:'short',body:'armor'}, Bull:{head:'wide',ears:'horns',snout:'wide',body:'big',tail:1},
+  Goblin:{head:'round',ears:'point',snout:'grin',body:'small'}, Gremlin:{head:'round',ears:'point',snout:'grin',body:'squat',eyes:'big'},
+  Duende:{head:'round',ears:'point',snout:'none',body:'small',eyes:'glow'}, Salamander:{head:'long',ears:'none',snout:'wide',body:'squat',tail:1},
+  Dwarf:{head:'helm',ears:'none',snout:'none',body:'armor',mod:{beard:1,scale:.85}}, Tengu:{head:'round',ears:'none',snout:'beak',body:'armor',wings:1},
+  Vampire:{head:'round',ears:'point',snout:'fangs',body:'armor',wings:2},
 };
+// a summon's creature and its modifier: from the card (color sets) or from the words in its name
+const creatureOf=c=>c.body&&CREATURES[c.body]?c.body:Object.keys(CREATURES).find(n=>words(c).includes(n))||'Imp';
+const creatureMod=(c,key)=>Object.assign({},(CREATURES[key]||{}).mod,CREATURE_MOD[c.mod||words(c)[0]]);
 // the adjective in a summon's name changes it: Stone creatures are made of stone, Tiny ones are small...
 const CREATURE_MOD={Stone:{mat:'s'},Iron:{mat:'g'},Tiny:{scale:.75},Ancient:{beard:1},Grim:{eyes:'r'},Dire:{eyes:'r',scale:1.1},Swift:{lines:1},Feral:{eyes:'r'},
   Mossy:{moss:1},Noble:{crown:1},Loyal:{collar:1},Pale:{mat:'w'},Scrappy:{scar:1},Lucky:{star:1},Hungry:{drool:1},Gentle:{blush:1},Clever:{glasses:1},Sly:{eyes:'narrow'},Wild:{lines:1},Brave:{scar:1},Old:{beard:1}};
@@ -629,8 +642,8 @@ function subjectOf(c){
   const kind=c.type==='piece'?c.base:c.type;
   if(kind==='hero') return ['hero',c.hero];
   if(c.type==='piece') return ['thing',findWord(c,THING_WORDS)||'sigil'];
-  if(kind==='summon') return ['creature',Object.keys(CREATURES).find(n=>words(c).includes(n))||'Imp'];
-  if(kind==='machine'){ const n=words(c).at(-1); return ['machine',n]; }
+  if(kind==='summon') return ['creature',creatureOf(c)];
+  if(kind==='machine'){ const n=c.mach||words(c).at(-1); return ['machine',n]; }
   if(kind==='strike'||(kind==='charge'&&c.fx==='bolt')&&!findWord(c,THING_WORDS)) return ['weapon',findWord(c,WEAPON_WORDS)||{row:'beam',all:'bolt',missiles:'shot',wedge:'arrow',dig:'spear',zigzag:'bolt',diag:'blade'}[c.shape]||'arrow'];
   const t=findWord(c,THING_WORDS); if(t) return ['thing',t];
   if(kind==='boon') return ['thing',BOON_THING[c.boon]||'heart'];
@@ -641,7 +654,7 @@ function subjectOf(c){
 function drawSubject(c,rng){
   const [kind,key]=subjectOf(c), sh=c.shape;
   if(kind==='hero'){ human(HERO_LOOK[key]||{}); return; }
-  if(kind==='creature'){ const adj=words(c)[0]; creature(CREATURES[key],CREATURE_MOD[adj]||{},rng); return; }
+  if(kind==='creature'){ creature(CREATURES[key],creatureMod(c,key),rng); return; }
   if(kind==='machine'){ machine(key,c.ai); return; }
   if(kind==='weapon'){ const W=WEAPON[key]||WEAPON.arrow;
     if(c.type==='charge'){ W(6,26,24,8); W(12,28,28,14); return; }
@@ -997,7 +1010,7 @@ function unitSprite(u){
   if(c.type==='hero') return makeSprite('h:'+c.hero,{m:F.m,a:F.a,glow:F.glow,o:F.o,c:artMix(F.m,'#000000',.35),d:artMix(F.m,'#1a1020',.6)},()=>human(HERO_LOOK[c.hero]||{}));
   return makeSprite('c:'+c.id,Object.assign(pal,{c:COAT[subjectOf(c)[1]]||F.m}),()=>{
     const [kind,key]=subjectOf(c);
-    if(kind==='creature') creature(CREATURES[key],CREATURE_MOD[words(c)[0]]||{},()=>.5);
+    if(kind==='creature') creature(CREATURES[key],creatureMod(c,key),()=>.5);
     else if(kind==='machine') machine(key,c.ai);
     else (THING[key]||THING.sentry)(()=>.5); });
 }

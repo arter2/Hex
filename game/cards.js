@@ -170,6 +170,8 @@ function generateCards(){
     const rng=mulberry32(seedOf('hexmancers:'+fam)), ri=(a,b)=>a+Math.floor(rng()*(b-a+1)), pk=a=>a[Math.floor(rng()*a.length)];
     const neutral=COLORS[fam].neutral, plan=TYPE_PLAN[neutral?fam:'color'], tr=TRAITS[fam];
     const sig=SIGNATURE.filter(c=>c.color===fam);
+    // a hand-written set (cardsets.js) replaces the generated cards of this color
+    if(typeof CARD_SETS!=='undefined'&&CARD_SETS[fam]){ out.push(...authoredCards(fam,parseCardSet(CARD_SETS[fam]),rng,pk,ri,tr,names)); continue; }
     const need=Object.assign({},plan); sig.forEach(c=>need[c.type]--);
     const rar=Object.assign({},RARITY_PLAN); sig.forEach(c=>rar[c.rarity]--);
     rar.legendary-=need.piece;
@@ -200,6 +202,29 @@ function generateCards(){
   }
   return out;
 }
+/* A color's hand-written set: each entry names its card, type and rarity, and may choose the
+   variant (shape, pattern, ward...), keyword and art. Ranks 1-12 are still spread evenly and
+   shuffled, and BUILD makes the stats, so power follows rank and rarity as everywhere else.
+   Ids stay color_type_NN, so cards in a save keep their place (with the new card's look). */
+const SET_FIELDS=['shape','pattern','ward','boon','util','trap','env','ai','fx'];
+function authoredCards(fam,list,rng,pk,ri,tr,names){
+  const out=[], count={}, ranks=list.map((_,i)=>i%12+1);
+  for(let i=ranks.length-1;i>0;i--){ const j=Math.floor(rng()*(i+1)); [ranks[i],ranks[j]]=[ranks[j],ranks[i]]; }
+  for(const e of list){ const type=e.type, rarity=e.rarity, rank=ranks.pop();
+    if(!BUILD[type==='piece'?tr.piece:type]||!RARITY_MULT[rarity]) throw new Error('card set '+fam+': bad line "'+e.name+'"');
+    const F=(1+.06*(rank-1))*RARITY_MULT[rarity]*(type==='piece'?1.2:1);
+    count[type]=(count[type]||0)+1;
+    const c={id:fam+'_'+type+'_'+String(count[type]).padStart(2,'0'), color:fam, type, rank, rarity};
+    for(const k of SET_FIELDS) if(e.o[k]) c[k]=e.o[k];
+    const kwChance={common:.4,uncommon:.6,rare:.8,legendary:1}[rarity];
+    const kw=e.o.kw!=null?(e.o.kw==='-'?null:e.o.kw):rng()<kwChance?pk(tr.kws):null;
+    const base=type==='piece'?tr.piece:type;
+    BUILD[base](c,F,rank,kw,tr,pk,ri);
+    if(type==='piece'){ c.base=base; c.piece=true; }
+    if(e.o.body) c.body=e.o.body; if(e.o.mod) c.mod=e.o.mod; if(e.o.mach) c.mach=e.o.mach;
+    if(names.has(e.name)) throw new Error('card set '+fam+': the name "'+e.name+'" is taken');
+    names.add(e.name); c.name=e.name; out.push(c); }
+  return out; }
 const r1=v=>Math.round(v*10)/10;
 function applyKw(c,kw,rank){
   if(!kw) return 1;
@@ -209,40 +234,40 @@ function applyKw(c,kw,rank){
 }
 const BUILD={
   strike(c,F,rank,kw,tr,pk){
-    c.shape=pk(tr.shapes); const k=applyKw(c,kw,rank);
+    c.shape=c.shape||pk(tr.shapes); const k=applyKw(c,kw,rank);
     if(c.shape==='missiles'){ c.n=3+Math.floor(rank/3); c.pow=Math.round(9*F*k); }
     else c.pow=Math.round({line:30,row:26,wedge:30,all:18,dig:28,zigzag:28,diag:22}[c.shape]*F*k);
   },
   // lobs land in a floor pattern; bigger patterns trade power for area
-  lob(c,F,rank,kw,tr,pk){ c.pattern=pk(['single','single','burst','cross','column','ring','row']); const k=applyKw(c,kw,rank);
+  lob(c,F,rank,kw,tr,pk){ c.pattern=c.pattern||pk(['single','single','burst','cross','column','ring','row']); const k=applyKw(c,kw,rank);
     c.pow=Math.round(32*F*PATTERN_MULT[c.pattern]*k*(c.rarity==='legendary'?1.3:1)); if(c.rarity==='legendary') c.delay=.9; },
-  trap(c,F,rank,kw,tr,pk){ c.trap=pk(tr.traps); const k=kw==='self'?1:applyKw(c,kw,rank);
+  trap(c,F,rank,kw,tr,pk){ c.trap=c.trap||pk(tr.traps); const k=kw==='self'?1:applyKw(c,kw,rank);
     c.pow=Math.round({spike:38,snare:18,blast:26}[c.trap]*F*k); if(c.trap==='snare') c.stun=r1(1.5+rank*.1); },
-  environment(c,F,rank,kw,tr,pk){ c.env=pk(tr.envs); c.pattern=pk(['burst','cross','column','row']); c.dur=6+Math.round(rank/2);
+  environment(c,F,rank,kw,tr,pk){ c.env=c.env||pk(tr.envs); c.pattern=c.pattern||pk(['burst','cross','column','row']); c.dur=6+Math.round(rank/2);
     if(c.env==='bramble') c.pow=Math.round(8*F); if(c.env==='tremor'){ c.pow=Math.round(14*F); c.stun=r1(.8+rank*.08); delete c.dur; } },
-  ward(c,F,rank,kw,tr,pk){ c.ward=pk(tr.wards);
+  ward(c,F,rank,kw,tr,pk){ c.ward=c.ward||pk(tr.wards);
     if(c.ward==='barrier') c.amt=Math.round(45*F); else { c.n=2+(rank>6?1:0); c.hp=Math.round(35*F); if(c.ward==='thorns') c.thorns=Math.round(6*F); } },
   sentry(c,F,rank,kw,tr,pk){ c.rate=pk([.6,.9,1.2,1.5]); const k=kw==='self'?1:applyKw(c,kw,rank); c.pow=Math.max(3,Math.round(9*F*c.rate*k)); c.dur=8+Math.round(rank/2); },
-  boon(c,F,rank,kw,tr,pk){ c.boon=pk(tr.boons); c.dur=8+Math.round(rank/2);
+  boon(c,F,rank,kw,tr,pk){ c.boon=c.boon||pk(tr.boons); c.dur=8+Math.round(rank/2);
     if(c.boon==='heal') c.amt=Math.round(35*F); if(c.boon==='regen'){ c.amt=Math.round(3*F); c.dur=8; }
     if(c.boon==='gauge') c.amt=r1(Math.min(.9,.35+rank*.04)); if(c.boon==='pact') c.self=10+rank;
     if(c.boon==='intervene') c.amt=Math.round(40*F); if(c.boon==='courage') c.dur=6+Math.round(rank/2);
     if(['dodge','heal','gauge','intervene'].includes(c.boon)) delete c.dur; if(c.boon==='phase') c.dur=r1(1.5+rank*.15); },
   charge(c,F,rank,kw,tr,pk,ri){
-    c.fx=c.color==='brown'?'lob':pk(['bolt','bolt','lob']);
+    c.fx=c.fx||(c.color==='brown'?'lob':pk(['bolt','bolt','lob']));
     c.uses=ri(...{common:[3,5],uncommon:[5,8],rare:[8,12],legendary:[12,20]}[c.rarity]);
     const k=kw==='self'?1:applyKw(c,kw,rank);
     c.pow=Math.max(4,Math.round(16*F*k/Math.sqrt(c.uses/3)));
   },
-  utility(c,F,rank,kw,tr,pk){ c.util=pk(tr.util);
+  utility(c,F,rank,kw,tr,pk){ c.util=c.util||pk(tr.util);
     if(c.util==='draw') c.n=1+(rank>5?1:0)+(rank>9?1:0); if(c.util==='cleanse') c.amt=Math.round(15*F); },
-  summon(c,F,rank,kw,tr,pk){ c.ai=pk(['shooter','shooter','bomber','healer','guardian']);
+  summon(c,F,rank,kw,tr,pk){ c.ai=c.ai||pk(['shooter','shooter','bomber','healer','guardian']);
     c.hp=Math.round(40*F*(c.ai==='guardian'?2.5:1)); c.dur=Math.round(12+rank*1.5+(c.ai==='guardian'?6:0));
     if(c.ai==='shooter'){ c.pow=Math.round(10*F); c.rate=1.2; }
     if(c.ai==='bomber'){ c.pow=Math.round(18*F); c.rate=2.2; }
     if(c.ai==='healer'){ c.amt=Math.round(4*F); c.rate=2; }
     if(c.ai==='guardian'){ c.pow=Math.round(6*F); c.rate=1.5; } },
-  machine(c,F,rank,kw,tr,pk){ c.ai=pk(['turret','turret','bulwark','mortar','repeater']);
+  machine(c,F,rank,kw,tr,pk){ c.ai=c.ai||pk(['turret','turret','bulwark','mortar','repeater']);
     if(c.ai==='turret'){ c.pow=Math.round(9*F); c.rate=1.4; c.hp=Math.round(45*F); c.dur=30; }
     if(c.ai==='repeater'){ c.pow=Math.round(5*F); c.rate=.5; c.hp=Math.round(35*F); c.dur=20; }
     if(c.ai==='mortar'){ c.pow=Math.round(22*F); c.rate=2.5; c.hp=Math.round(30*F); c.dur=15; }

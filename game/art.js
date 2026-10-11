@@ -212,6 +212,7 @@ const CREATURES={
   Dwarf:{head:'helm',ears:'none',snout:'none',body:'armor',mod:{beard:1,scale:.85}}, Tengu:{head:'round',ears:'none',snout:'beak',body:'armor',wings:1},
   Vampire:{head:'round',ears:'point',snout:'fangs',body:'armor',wings:2},
 };
+if(typeof CARD_SET_CREATURES!=='undefined') for(const k in CARD_SET_CREATURES) if(!CREATURES[k]) CREATURES[k]=CARD_SET_CREATURES[k];
 // a summon's creature and its modifier: from the card (color sets) or from the words in its name
 const creatureOf=c=>c.body&&CREATURES[c.body]?c.body:Object.keys(CREATURES).find(n=>words(c).includes(n))||'Imp';
 const creatureMod=(c,key)=>Object.assign({},(CREATURES[key]||{}).mod,CREATURE_MOD[c.mod||words(c)[0]]);

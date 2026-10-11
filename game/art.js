@@ -36,7 +36,8 @@ const FAM={
 // each creature's own coat, so summons read against their scene
 const COAT={Imp:'#d0463a',Wolf:'#8a98b8',Hound:'#b08a5a',Owl:'#9a7048',Toad:'#5aa04a',Bat:'#7a5a9a',Knight:'#a8a8b8',Squire:'#98a0b0',Spirit:'#8ad8e8',Golem:'#8a8272',
   Rat:'#8a7a70',Boar:'#8a5a3a',Hawk:'#c09a5a',Mole:'#6a4a3a',Beetle:'#3a9a8a',Serpent:'#4a9a4a',Bear:'#7a5030',Fox:'#e07a2a',Ogre:'#7a8a3a',Sprite:'#e080c0'};
-const MATS={g:'#8a8398', t:'#8a5a2c', w:'#e8e4f0', k:'#3a3448', y:'#e8b830', s:'#7a7486', f:'#8a5a3a', l:'#4f9a3a', r:'#c02a3a', p:'#8a4ad0', x:'#a8d8f0', b:'#e8dcc0'};
+const MATS={g:'#8a8398', t:'#8a5a2c', w:'#e8e4f0', k:'#3a3448', y:'#e8b830', s:'#7a7486', f:'#8a5a3a', l:'#4f9a3a', r:'#c02a3a', p:'#8a4ad0', x:'#a8d8f0', b:'#e8dcc0',
+  j:'#f0c8a0', u:'#b0784c', v:'#6e4630'};   // j u v: more skin tones for people
 
 /* ---------------- drawing on a grid of materials ----------------
    Shapes are given in 32-unit design coordinates and drawn at U pixels per unit: card art at
@@ -213,13 +214,154 @@ const CREATURES={
   Vampire:{head:'round',ears:'point',snout:'fangs',body:'armor',wings:2},
 };
 if(typeof CARD_SET_CREATURES!=='undefined') for(const k in CARD_SET_CREATURES) if(!CREATURES[k]) CREATURES[k]=CARD_SET_CREATURES[k];
+// every creature's body plan, colours and features (the coat colour goes into COAT)
+const CREATURE_PLAN={
+  Imp:{plan:'biped',head:'goblin',horns:1,body:'bare',robe:'c',skin:'c',wings:'a',weapon:'claws',size:.8},
+  Wolf:{plan:'quad',snout:'long',ears:'point',tail:'bushy',fangs:1},
+  Hound:{plan:'quad',snout:'long',ears:'round',tail:'thin',legs:'long'},
+  Owl:{plan:'bird',beak:'hook',ears:'point',bodyW:5},
+  Toad:{plan:'quad',legs:'short',bodyW:7,bodyH:4.5,snout:'jaw',tail:'none',neck:-2,headR:3.5,spots:'k'},
+  Bat:{plan:'bird',fly:1,wingType:'bat',beak:'short',ears:'point',belly:false,size:.85},
+  Knight:{plan:'biped',body:'armor',hat:'helm',weapon:'sword',shield:'a',plume:'r'},
+  Squire:{plan:'biped',vary:{hat:['cap','hood','none','straw'],weapon:['spear','bow','staff','sword','gun'],body:['robe','rags','armor']}},
+  Spirit:{plan:'ghost'},
+  Golem:{plan:'golem',runes:1},
+  Rat:{plan:'quad',size:.75,snout:'long',ears:'round',tail:'thin',legs:'short'},
+  Boar:{plan:'quad',snout:'short',legs:'short',tail:'thin',spikes:'k',tusk:1},
+  Hawk:{plan:'bird',fly:1,beak:'hook',talons:1},
+  Mole:{plan:'quad',legs:'short',snout:'long',tail:'stub',size:.85},
+  Beetle:{plan:'bug',horn:1},
+  Serpent:{plan:'serpent'},
+  Bear:{plan:'quad',bodyW:8.5,bodyH:5,snout:'short',ears:'round',tail:'stub',legs:'short',size:1.05},
+  Fox:{plan:'quad',snout:'long',ears:'point',tail:'bushy',size:.85},
+  Ogre:{plan:'biped',body:'bulk',head:'beast',weapon:'club',big:1,size:1.05},
+  Sprite:{plan:'biped',head:'elf',body:'robe',wings:'x',lower:'wisp',size:.8},
+  // Red
+  Dragon:{plan:'quad',coat:'#c83a2a',snout:'jaw',horns:'back',wings:'bat',tail:'long',spikes:'w',bodyW:9,neck:2,legs:'short',belly:'y'},
+  Wyvern:{plan:'bird',fly:1,coat:'#8a4a2a',wingType:'bat',beak:'jaw',tail:'long',tailMat:'c'},
+  Lung:{plan:'serpent',coat:'#d8a020',legs:1,whiskers:'w',horns:'back',fins:'r',snout:'jaw'},
+  Griffin:{plan:'quad',coat:'#c8a050',snout:'hook',crest:'w',wings:'feather',wingMat:'w',tail:'tuft',mane:'w'},
+  Phoenix:{plan:'bird',fly:1,coat:'#ff6a2a',tail:'long',tailMat:'A',crest:'y',wingMat:'y'},
+  Kitsune:{plan:'quad',coat:'#f0e8e0',snout:'long',ears:'point',tail:'multi',tails:3,eyes:'glow',size:.9},
+  Shishi:{plan:'quad',coat:'#d8a040',snout:'short',mane:'y',tail:'bushy',ears:'round'},
+  Oni:{plan:'biped',coat:'#c83a3a',body:'bulk',head:'beast',horns:'big',weapon:'club',big:1,belt:'y'},
+  Minotaur:{plan:'biped',coat:'#7a4a2a',head:'bull',body:'bulk',weapon:'axe',big:1},
+  Bull:{plan:'quad',coat:'#6a3a2a',horns:'bull',snout:'short',hoof:1,tail:'tuft'},
+  Goblin:{plan:'biped',coat:'#6a9a3a',head:'goblin',skin:'c',body:'rags',robe:'f',size:.8,vary:{weapon:['spear','club','gun','none']}},
+  Gremlin:{plan:'biped',coat:'#5a8a5a',head:'goblin',eyes:'A',skin:'c',body:'bare',robe:'c',size:.7,weapon:'hammer'},
+  Duende:{plan:'biped',coat:'#7a5a3a',head:'goblin',skin:'b',body:'robe',robe:'f',hat:'cap',size:.7},
+  Salamander:{plan:'quad',coat:'#ff7a2a',legs:'short',snout:'long',tail:'long',spots:'y',size:.8},
+  Dwarf:{plan:'biped',beard:'long',beardMat:'t',body:'armor',hat:'helm',size:.85,vary:{weapon:['hammer','axe','gun']}},
+  Tengu:{plan:'biped',coat:'#c83a3a',head:'bird',beakMat:'r',skin:'c',wings:'k',body:'robe',robe:'k',hat:'cap',weapon:'staff'},
+  Vampire:{plan:'biped',head:'human',skin:'w',body:'robe',robe:'k',wings:'r',hair:'long',hairMat:'k',eyes:'R'},
+  // Blue
+  Merfolk:{plan:'biped',coat:'#3aa89a',lower:'tail',tailMat:'c',body:'bare',robe:'h',hair:'long',hairMat:'a',weapon:'trident'},
+  Fish:{plan:'fish',coat:'#e88a6a',size:.8},
+  Seal:{plan:'fish',coat:'#7a8a98',fin:false,bodyW:8,bigEye:1},
+  Kappa:{plan:'biped',coat:'#5a9a4a',head:'bird',beakMat:'y',skin:'c',body:'bare',robe:'c',hat:'cap',size:.8},
+  Yeti:{plan:'biped',coat:'#e8ecf4',body:'bulk',head:'beast',big:1,eyes:'A',weapon:'claws',skin:'c'},
+  Snowman:{plan:'snowman'},
+  Penguin:{plan:'bird',coat:'#2a2a3a',belly:'w',beak:'beak',size:.75},
+  Walrus:{plan:'quad',coat:'#a07a5a',legs:'short',bodyW:9,bodyH:5,snout:'short',whiskers:'w',tail:'stub',tusk:1},
+  Narwhal:{plan:'fish',coat:'#8a98a8',tusk:1},
+  Orca:{plan:'fish',coat:'#1a1a2a',patch:'w',belly:'w',fin:'tall',bodyW:10},
+  Shark:{plan:'fish',coat:'#7a8aa0',nose:'point',fin:'tall',teeth:1,belly:'w'},
+  Turtle:{plan:'turtle',coat:'#5a9a6a',shell:'f'},
+  Crab:{plan:'crab',coat:'#d0402a'},
+  Kraken:{plan:'squid',coat:'#a03a5a',spots:'w'},
+  Leviathan:{plan:'serpent',coat:'#2a4a7a',fins:'x',size:1.15,snout:'jaw',belly:'w'},
+  // White
+  Pegasus:{plan:'quad',coat:'#f4f0f8',snout:'long',ears:'point',mane:'x',wings:'feather',wingMat:'w',legs:'long',hoof:1,tail:'bushy',neck:2},
+  Centaur:{plan:'quad',coat:'#9a6a3a',legs:'long',hoof:1,tail:'bushy',torso:{robe:'a',hair:'k',weapon:'bow'}},
+  Unicorn:{plan:'quad',coat:'#f8f4ff',snout:'long',ears:'point',horns:'one',mane:'A',legs:'long',hoof:1,tail:'bushy',neck:2},
+  Stag:{plan:'quad',coat:'#e8e4d8',snout:'long',ears:'point',horns:'antler',antlerMat:'w',legs:'long',hoof:1,tail:'stub',neck:2},
+  Crane:{plan:'bird',coat:'#f4f4f8',beak:'beak',beakLen:5,crest:'r'},
+  Angel:{plan:'biped',body:'robe',robe:'w',wings:'w',hat:'halo',hair:'long',hairMat:'y',weapon:'sword'},
+  Lamassu:{plan:'quad',coat:'#c8b080',wings:'feather',wingMat:'y',legs:'long',hoof:1,tail:'tuft',torso:{robe:'y',hair:'k',hat:'crown'}},
+  Sphinx:{plan:'quad',coat:'#d8b060',legs:'short',tail:'tuft',torso:{robe:'y',hair:'b',hat:'crown'}},
+  Elephant:{plan:'quad',coat:'#b8b8c8',bodyW:9.5,bodyH:5.5,snout:'trunk',ears:'round',headR:3.6,legs:'short',tail:'thin',belly:false},
+  Qilin:{plan:'quad',coat:'#d8b040',snout:'long',horns:'one',mane:'r',spots:'y',hoof:1,tail:'bushy',legs:'long'},
+  Valkyrie:{plan:'biped',body:'armor',hat:'helm',plume:'w',wings:'w',weapon:'spear',shield:'a',hair:'long',hairMat:'y'},
+  Cleric:{plan:'biped',body:'robe',robe:'w',hat:'cap',weapon:'staff',belt:'y'},
+  Scholar:{plan:'biped',body:'robe',robe:'a',hat:'cap',weapon:'book',beard:'short'},
+  // Green
+  Ent:{plan:'tree'},
+  Leshy:{plan:'tree',antler:1,flowers:'y'},
+  Deer:{plan:'quad',coat:'#b07a4a',snout:'long',ears:'point',horns:'antler',legs:'long',hoof:1,tail:'stub',neck:2,spots:'w'},
+  Moose:{plan:'quad',coat:'#5a3a2a',snout:'long',ears:'point',horns:'antler',antlerMat:'b',legs:'long',hoof:1,tail:'stub',bodyW:9,hump:1},
+  Ape:{plan:'biped',coat:'#8a5a3a',body:'bulk',head:'beast',skin:'c',big:1},
+  Monkey:{plan:'biped',coat:'#a87a4a',head:'beast',skin:'c',body:'bare',robe:'c',size:.75,weapon:'staff'},
+  Panther:{plan:'quad',coat:'#2a2a3a',snout:'short',muzzle:'c',ears:'round',tail:'thin',eyes:'glow',spots:'k'},
+  Tiger:{plan:'quad',coat:'#e8882a',snout:'short',ears:'round',tail:'thin',stripes:'k'},
+  Elf:{plan:'biped',head:'elf',body:'robe',robe:'l',hair:'long',hairMat:'y',weapon:'bow',hat:'leaf'},
+  Druid:{plan:'biped',body:'robe',robe:'l',hat:'antler',beard:'long',weapon:'staff'},
+  Fairy:{plan:'biped',head:'elf',body:'robe',robe:'a',wings:'x',lower:'wisp',size:.75,hair:'long',hairMat:'y'},
+  Mushroom:{plan:'shroom',coat:'#c0503a',arms:1},
+  Ant:{plan:'bug',coat:'#8a2a1a',mandibles:1,long:1},
+  Hornet:{plan:'bug',coat:'#e8b830',wings:1,stinger:1,segments:1},
+  Tortoise:{plan:'turtle',coat:'#8a7a5a',shell:'l'},
+  Sasquatch:{plan:'biped',coat:'#6a4a2a',body:'bulk',head:'beast',skin:'c',big:1,size:1.1},
+  Tanuki:{plan:'quad',coat:'#8a6a4a',snout:'short',muzzle:'w',ears:'round',tail:'bushy',legs:'short'},
+  Satyr:{plan:'biped',lower:'goat',horns:1,body:'bare',robe:'h',beard:'short',beardMat:'f',weapon:'staff'},
+  Lizard:{plan:'quad',coat:'#6a9a3a',legs:'short',snout:'long',tail:'long',crest:'y',spikes:'y',size:.9},
+  Kodama:{plan:'ghost',coat:'#e8f0e0',size:.8},
+  Quetzal:{plan:'bird',coat:'#2aa86a',belly:'r',tail:'long',tailMat:'l',crest:'l'},
+  Sauropod:{plan:'quad',coat:'#7a8a5a',bodyW:9.5,bodyH:5,neck:6,legs:'long',tail:'long',snout:'short',headR:2.4},
+  // Yellow
+  Djinn:{plan:'biped',coat:'#4a8ae8',skin:'c',lower:'wisp',robe:'c',body:'bare',hat:'turban',hatMat:'y',beard:'short',beardMat:'k',big:1},
+  Scarab:{plan:'bug',coat:'#2a8a6a',horn:1,headMat:'y'},
+  Camel:{plan:'quad',coat:'#c8a070',hump:1,legs:'long',neck:3,snout:'long',ears:'round',tail:'thin',hoof:1},
+  Manticore:{plan:'quad',coat:'#c8803a',mane:'r',tail:'scorp',wings:'bat',snout:'short',muzzle:'h',fangs:1},
+  Chimera:{plan:'quad',coat:'#c89040',mane:'y',horns:'curl',tail:'long',wings:'bat',snout:'short'},
+  Scorpion:{plan:'scorpion',coat:'#8a5a2a'},
+  Jackal:{plan:'biped',coat:'#2a2a2a',head:'goblin',skin:'c',body:'armor',trim:'y',weapon:'spear'},
+  Crocodile:{plan:'quad',coat:'#4a6a3a',legs:'short',bodyW:9,bodyH:3.5,snout:'jaw',tail:'long',spikes:'c',neck:-1},
+  Roc:{plan:'bird',fly:1,coat:'#8a5a3a',beak:'hook',talons:1,size:1.15,wingMat:'f'},
+  Automaton:{plan:'golem',mat:'y',runes:1},
+  Raiju:{plan:'quad',coat:'#5a7ae8',snout:'long',ears:'point',tail:'bushy',eyes:'glow',spikes:'A'},
+  Chupacabra:{plan:'quad',coat:'#6a7a5a',spikes:'k',snout:'long',ears:'point',eyes:'red',fangs:1,legs:'long',tail:'thin',bodyW:6.5},
+  Simurgh:{plan:'bird',fly:1,coat:'#3a8aa8',tail:'long',tailMat:'y',crest:'y',wingMat:'a'},
+  Bahamut:{plan:'fish',coat:'#3a6ab8',bodyW:11,bodyH:6,spikes:'y',size:1.1},
+  Sandworm:{plan:'serpent',coat:'#c8a070',snout:'jaw',belly:'b',size:1.1},
+  // Black
+  Skeleton:{plan:'biped',head:'skull',body:'bone',legs:'w',vary:{weapon:['sword','bow','spear','axe']}},
+  Zombie:{plan:'biped',coat:'#7a9a6a',skin:'c',head:'beast',body:'rags',robe:'f',eyes:'A'},
+  Ghoul:{plan:'biped',coat:'#8a8a9a',skin:'c',head:'goblin',body:'rags',robe:'k',weapon:'claws',eyes:'R'},
+  Ghost:{plan:'ghost',coat:'#c8d8f0',chains:1},
+  Banshee:{plan:'ghost',coat:'#d8e0f0',hair:'w'},
+  Lich:{plan:'biped',head:'skull',body:'robe',robe:'p',hat:'crown',weapon:'staff',eyes:'A'},
+  Reaper:{plan:'ghost',coat:'#2a2a3a',robe:'k',face:'w',weapon:'scythe'},
+  Werewolf:{plan:'biped',coat:'#6a5a4a',body:'bulk',head:'goblin',skin:'c',weapon:'claws',eyes:'R',big:1},
+  Gaunt:{plan:'biped',coat:'#d8d0c0',head:'skull',hat:'antler',body:'bone',legs:'w',size:1.1},
+  Nightmare:{plan:'quad',coat:'#2a1a3a',snout:'long',ears:'point',mane:'A',legs:'long',hoof:1,eyes:'red',tail:'bushy'},
+  Spider:{plan:'spider',coat:'#3a2a4a',mark:'r'},
+  Moth:{plan:'bug',coat:'#8a7a6a',wings:1,segments:1},
+  Centipede:{plan:'serpent',coat:'#8a3a2a',legs:1,snout:'jaw',belly:false,fins:'k'},
+  Leech:{plan:'serpent',coat:'#3a2a3a',snout:'short',belly:'r',size:.8},
+  Witch:{plan:'biped',coat:'#7aa86a',skin:'c',body:'robe',robe:'k',hat:'witch',hair:'long',hairMat:'w',weapon:'staff'},
+  Plaguemask:{plan:'biped',head:'plague',body:'robe',robe:'k',hat:'cap',weapon:'lantern'},
+  Demon:{plan:'biped',coat:'#a02a3a',skin:'c',body:'bulk',head:'beast',horns:'big',wings:'k',weapon:'claws',eyes:'A',big:1},
+  Crow:{plan:'bird',fly:1,coat:'#1a1a2a',beak:'beak',beakMat:'k',size:.85},
+  Cat:{plan:'quad',coat:'#1a1a2a',snout:'short',muzzle:'c',ears:'point',tail:'thin',eyes:'glow',size:.75,belly:false},
+  Jiangshi:{plan:'biped',coat:'#a8c8a8',skin:'c',body:'robe',robe:'a',hat:'cap'},
+};
+// heroes who are creatures, not people: drawn with that creature's body, a little larger
+const HERO_BODY={ignis:'Dragon', phoenixia:'Phoenix', scorch:'Fox', nix:'Owl', thunderbird:'Roc', oakheart:'Ent', grovewalker:'Ent', mossback:'Tortoise',
+  ulfa:'Wolf', sporelord:'Mushroom', banshee:'Banshee', arachna:'Spider', reaper:'Reaper', necros:'Lich', morrow:'Lich'};
+// the later heroes vary in skin tone, robe style and sometimes robe colour (the first six keep their painted look)
+const heroLook=key=>{ const L=HERO_LOOK[key]||{}; if(['pyra','ysolde','volta','thornfather','aurelion','widow'].includes(key)) return L;
+  let h=7; for(const ch of key) h=(h*31+ch.charCodeAt(0))>>>0;
+  return Object.assign({skin:['h','j','u','v'][h%4], robe:['cross','plain','sash','trim'][(h>>>3)%4], rmat:['m','m','m','w','k','d'][(h>>>6)%6]},L); };
+const heroBeast=(key,c)=>{ const b=HERO_BODY[key]; if(!b||!CREATURES[b]) return false; const sp=CREATURES[b]; beast(Object.assign({},sp,{size:(sp.size||1)*1.12}),{},c); return true; };
+for(const k in CREATURE_PLAN){ const P=CREATURE_PLAN[k]; CREATURES[k]=Object.assign({},P); if(P.coat) COAT[k]=P.coat; }
 // a summon's creature and its modifier: from the card (color sets) or from the words in its name
 const creatureOf=c=>c.body&&CREATURES[c.body]?c.body:Object.keys(CREATURES).find(n=>words(c).includes(n))||'Imp';
 const creatureMod=(c,key)=>Object.assign({},(CREATURES[key]||{}).mod,CREATURE_MOD[c.mod||words(c)[0]]);
 // the adjective in a summon's name changes it: Stone creatures are made of stone, Tiny ones are small...
 const CREATURE_MOD={Stone:{mat:'s'},Iron:{mat:'g'},Tiny:{scale:.75},Ancient:{beard:1},Grim:{eyes:'r'},Dire:{eyes:'r',scale:1.1},Swift:{lines:1},Feral:{eyes:'r'},
   Mossy:{moss:1},Noble:{crown:1},Loyal:{collar:1},Pale:{mat:'w'},Scrappy:{scar:1},Lucky:{star:1},Hungry:{drool:1},Gentle:{blush:1},Clever:{glasses:1},Sly:{eyes:'narrow'},Wild:{lines:1},Brave:{scar:1},Old:{beard:1}};
-function creature(spec,mod,rng){
+function creature(spec,mod,rng,card){
+  if(spec.plan) return beast(spec,mod,card);
   const m=mod.mat||'c', s=mod.scale||1, cx=16, by=27, B=v=>v*s;
   // body
   if(spec.body==='coil'){ for(let i=0;i<3;i++) ringp(cx,by-4-i*3,B(9-i*2),B(3),m); }
@@ -263,6 +405,249 @@ function creature(spec,mod,rng){
   if(mod.blush) for(const d of [-1,1]) px(cx+d*B(4),hy+B(2),'R');
   if(mod.drool) seg(cx+B(1),hy+B(4),cx+B(1),hy+B(7),1,'x');
 }
+
+/* ---------------- creatures with a body plan ----------------
+   A spec with a plan is drawn as that kind of body, so a wolf, a dragon, a goblin and a kraken
+   each have their own silhouette. Beasts, birds, fish, serpents and bugs are seen from the side,
+   facing right; people, spirits, trees and crabs from the front. Materials: c the creature's coat
+   (COAT, or a coat colour in the spec), a the card colour, b belly or skin, h human skin, w bone and
+   horn, k dark, y gold, g metal, s stone, t wood, l leaf, x glass, A glow. A person's look can vary
+   with the card (hat, weapon, robe) so many cards sharing one body still differ. */
+function beast(sp0,mod,c){ let sp=sp0;
+  const s=(mod.scale||1)*(sp.size||1), by=27, B=v=>v*s, C=sp.mat||mod.mat||'c', C2=sp.mat2||'a';
+  const E=mod.eyes==='r'?'R':sp.eyes==='glow'?'A':sp.eyes==='red'?'R':'W';
+  const eye=(x,y,big)=>{ if(big){ circ(x,y,1.3,'W'); px(x,y,'k'); } else { px(x,y,E); if(E==='W') px(x,y+1,'k'); } };
+  const h=c&&c.id?[...c.id].reduce((a,ch)=>(a*31+ch.charCodeAt(0))>>>0,7):7, pick=(arr,salt)=>arr[((h>>>(salt||0))+(salt||0))%arr.length];
+  // heads seen from the side, facing right
+  const sideHead=(hx,hy,o)=>{ o=o||{}; const hr=B(o.r||3), M=o.mat||C;
+    if(o.ears==='long') for(const d of [0,1.6]) poly([[hx-1.5+d,hy-hr+1],[hx-2.5+d,hy-hr-B(5)],[hx-.5+d,hy-hr+1]],M);
+    if(o.ears==='point') poly([[hx-2,hy-hr+1],[hx-1.5,hy-hr-B(3)],[hx,hy-hr+1]],M);
+    if(o.ears==='round') circ(hx-1.5,hy-hr+.5,B(1.4),M);
+    ell(hx,hy,hr*1.05,hr*.9,M);
+    const sn=o.snout||'short';
+    if(sn==='long'){ ell(hx+hr+B(1.2),hy+B(.8),B(2.4),B(1.5),M); px(hx+hr+B(3.2),hy+B(.3),'k'); if(o.fangs) px(hx+hr+B(1.5),hy+B(2.3),'w'); }
+    else if(sn==='short'){ ell(hx+hr*.8,hy+B(.9),B(1.6),B(1.3),o.muzzle||'b'); px(hx+hr+B(.8),hy+B(.5),'k'); }
+    else if(sn==='beak') poly([[hx+hr-.5,hy-1],[hx+hr+B(o.beakLen||3.5),hy+B(.5)],[hx+hr-.5,hy+1.5]],o.beakMat||'y');
+    else if(sn==='hook'){ poly([[hx+hr-.5,hy-1],[hx+hr+B(3),hy],[hx+hr+B(2),hy+B(2)],[hx+hr-.5,hy+1]],'y'); }
+    else if(sn==='trunk'){ quad([hx+hr,hy+1],[hx+hr+B(3),hy+B(3)],[hx+hr+B(2),hy+B(7)],B(1.5),M); }
+    else if(sn==='jaw'){ ell(hx+hr+B(2),hy+B(.6),B(3.4),B(1.5),M); for(let i=0;i<3;i++) px(hx+hr+B(.5+i*1.3),hy+B(1.9),'w'); }
+    if(o.tusk) for(const d of [0,1.2]) seg(hx+hr+B(.5)+d,hy+B(1.5),hx+hr+B(.8)+d,hy+B(5),1,'w');
+    if(o.horns==='curl') ringp(hx-.5,hy-hr+B(.5),B(2.3),1,'w');
+    if(o.horns==='back') for(const d of [0,1.5]) quad([hx-1+d,hy-hr+1],[hx-3+d,hy-hr-B(3)],[hx-5+d,hy-hr-B(2)],1,'w');
+    if(o.horns==='bull') quad([hx,hy-hr+1],[hx+B(2),hy-hr-B(2)],[hx+B(4),hy-hr-B(3)],1.2,'w');
+    if(o.horns==='one') seg(hx+1,hy-hr+1,hx+B(4.5),hy-hr-B(7),B(1.3),'y');
+    if(o.horns==='antler'){ const t=o.antlerMat||'t'; seg(hx-1,hy-hr+1,hx-2,hy-hr-B(6),1,t); seg(hx-1.5,hy-hr-B(3),hx-B(5),hy-hr-B(5),1,t); seg(hx-1.8,hy-hr-B(5),hx+B(1),hy-hr-B(8),1,t); seg(hx-1.5,hy-hr-B(3),hx+B(2),hy-hr-B(4),1,t); }
+    if(o.crest) poly([[hx-2,hy-hr+.5],[hx-B(3),hy-hr-B(4)],[hx,hy-hr-B(1)],[hx+B(1),hy-hr-B(4)],[hx+1.5,hy-hr+.5]],o.crest);
+    if(o.whiskers){ seg(hx+hr+1,hy+1,hx+hr+B(6),hy+B(3),1,o.whiskers); seg(hx+hr+1,hy+1,hx+hr+B(5),hy-B(1),1,o.whiskers); }
+    eye(hx+B(1),hy-B(.6));
+  };
+  const tail=(x,y,t,M)=>{ M=M||C;
+    if(t==='thin') quad([x,y],[x-B(4),y],[x-B(5),y-B(6)],1,M);
+    else if(t==='bushy'){ quad([x,y],[x-B(3),y-B(1)],[x-B(4),y-B(5)],B(2.4),M); circ(x-B(4),y-B(5.5),B(1.6),'w'); }
+    else if(t==='tuft'){ quad([x,y],[x-B(4),y+B(1)],[x-B(5),y-B(4)],1,M); circ(x-B(5),y-B(4.5),B(1.3),'k'); }
+    else if(t==='long'){ quad([x,y],[x-B(6),y+B(3)],[x-B(10),y-B(1)],B(2),M); poly([[x-B(10),y-B(3)],[x-B(12.5),y-B(1)],[x-B(10),y+B(1)]],M); }
+    else if(t==='fan'){ for(let i=0;i<3;i++) quad([x,y],[x-B(5),y-B(2+i*2)],[x-B(8),y-B(i*4)],1.5,i===1?'A':M); }
+    else if(t==='stub') circ(x-.5,y,B(1.2),M);
+    else if(t==='multi'){ const n=sp.tails||5; for(let i=0;i<n;i++){ const a=(165+125*i/Math.max(1,n-1))*Math.PI/180, L=B((n>5?10:9)-(i%2)*1.5), ex=x+Math.cos(a)*L, ey=y+Math.sin(a)*L;
+      quad([x,y],[x+Math.cos(a)*L*.45,y+Math.sin(a)*L*.45-B(1)],[ex,ey],B(n>5?1.4:1.9),i%2?'a':M); circ(ex,ey,B(1.2),'A'); } }
+    else if(t==='scorp'){ quad([x,y],[x-B(4),y-B(9)],[x+B(4),y-B(12)],B(1.8),M); poly([[x+B(4),y-B(13)],[x+B(7),y-B(11)],[x+B(4),y-B(10)]],'k'); } };
+  const wings=(x,y,t,M)=>{ M=M||sp.wingMat||C2;
+    if(t==='feather'){ poly([[x+B(2),y+B(1)],[x-B(2),y-B(9)],[x-B(8),y-B(13)],[x-B(7),y-B(7)],[x-B(4),y-B(2)]],M); for(let i=0;i<3;i++) seg(x-B(1+i*2),y-B(1+i*2.5),x-B(5+i),y-B(8+i*1.5),1,'w'); }
+    else if(t==='bat'){ poly([[x+B(2),y],[x-B(1),y-B(10)],[x-B(9),y-B(12)],[x-B(8),y-B(7)],[x-B(6),y-B(8)],[x-B(5),y-B(3)],[x-B(3),y-B(5)],[x-B(1),y]],M); seg(x-B(1),y-B(10),x-B(9),y-B(12),1,'k'); }
+    else if(t==='bug'){ ell(x-B(2),y-B(5),B(3),B(5),'x'); ell(x+B(1),y-B(5),B(2.4),B(4.4),'x'); } };
+  // a small human torso and head on a beast's body (centaur, jorogumo, scorpion-man)
+  const torso=(x,y,o)=>{ o=o||{}; const R=o.robe||C2; rect(x-B(1.8),y-B(6),x+B(1.8),y,R); seg(x+B(1.5),y-B(5),x+B(3.5),y-B(2),B(1.1),'h');
+    if(o.hair) rect(x-B(2.3),y-B(10),x+B(2.3),y-B(4),o.hair); circ(x,y-B(8),B(2.4),'h'); px(x+B(1),y-B(8.4),'k');
+    if(o.weapon==='bow'){ quad([x+B(4),y-B(9)],[x+B(7),y-B(4)],[x+B(4),y+B(1)],1,'t'); seg(x+B(4),y-B(9),x+B(4),y+B(1),1,'w'); }
+    if(o.weapon==='spear') { seg(x+B(4),y-B(12),x+B(4),y+B(2),1,'t'); poly([[x+B(3),y-B(12)],[x+B(5),y-B(12)],[x+B(4),y-B(15)]],'w'); }
+    if(o.hat==='helm') ell(x,y-B(9),B(2.6),B(2),'g'); if(o.hat==='crown') rect(x-B(2),y-B(11),x+B(2),y-B(10),'y'); };
+  // people, seen from the front
+  const person=(o)=>{ const cx=16, top=by-B(16), skin=o.skin||'h';
+    if(o.wings) for(const d of [-1,1]) poly([[cx+d*B(3),by-B(13)],[cx+d*B(13),by-B(20)],[cx+d*B(11),by-B(9)],[cx+d*B(5),by-B(7)]],o.wings);
+    // the lower half
+    if(o.lower==='tail'){ quad([cx,by-B(7)],[cx+B(2),by-B(1)],[cx+B(7),by-B(1)],B(3.2),o.tailMat||'x'); poly([[cx+B(7),by-B(3)],[cx+B(11),by-B(5)],[cx+B(10),by],[cx+B(7),by]],o.tailMat||'x'); }
+    else if(o.lower==='wisp') poly([[cx-B(5),by-B(9)],[cx+B(5),by-B(9)],[cx+B(3),by-B(2)],[cx+B(1),by-B(4)],[cx,by],[cx-B(2),by-B(4)],[cx-B(4),by-B(1)]],o.robe||C);
+    else if(o.lower==='goat'){ for(const d of [-1,1]){ quad([cx+d*B(2),by-B(8)],[cx+d*B(4),by-B(4)],[cx+d*B(2),by-B(1)],B(1.6),'f'); rect(cx+d*B(2)-1,by-B(1),cx+d*B(2),by,'k'); } }
+    else if(o.lower!=='none'){ for(const d of [-1,1]) rect(cx+d*B(2.5)-B(1),by-B(6),cx+d*B(2.5)+B(.5),by,o.legs||'k'); }
+    // the body
+    const R=o.robe||C2;
+    if(o.body==='robe') poly([[cx-B(4),by-B(13)],[cx+B(4),by-B(13)],[cx+B(6),by-B(1)],[cx-B(6),by-B(1)]],R);
+    else if(o.body==='armor'){ rect(cx-B(5),by-B(13),cx+B(5),by-B(5),'g'); rect(cx-B(5),by-B(7),cx+B(5),by-B(6),o.trim||'y'); rect(cx-B(1),by-B(13),cx+B(1),by-B(7),R); }
+    else if(o.body==='bone'){ rect(cx-B(1),by-B(13),cx,by-B(5),'w'); for(let i=0;i<3;i++) seg(cx-B(4),by-B(12-i*2),cx+B(4),by-B(12-i*2),1,'w'); ell(cx,by-B(5),B(3),B(1.2),'w'); }
+    else if(o.body==='rags') poly([[cx-B(4),by-B(13)],[cx+B(4),by-B(13)],[cx+B(5),by-B(3)],[cx+B(3),by-B(5)],[cx+B(1),by-B(2)],[cx-B(1),by-B(5)],[cx-B(3),by-B(2)],[cx-B(5),by-B(4)]],R);
+    else if(o.body==='bulk') ell(cx,by-B(9),B(7),B(6),C);
+    else ell(cx,by-B(9),B(4.5),B(4.5),R);
+    if(o.belt) rect(cx-B(5),by-B(8),cx+B(5),by-B(7),o.belt);
+    // arms
+    const arm=o.body==='bone'?'w':o.armMat||(o.body==='bulk'?C:skin), aw=o.body==='bulk'?B(2.2):B(1.4);
+    seg(cx-B(o.body==='bulk'?6:4.5),by-B(12),cx-B(7.5),by-B(6),aw,arm); seg(cx+B(o.body==='bulk'?6:4.5),by-B(12),cx+B(7.5),by-B(7),aw,arm);
+    // what it holds, in the right hand
+    const hx=cx+B(8), hy=by-B(7), wp=o.weapon;
+    if(wp==='staff'){ seg(hx,hy-B(10),hx,by,1,'t'); circ(hx,hy-B(10),B(1.6),'A'); }
+    else if(wp==='spear'){ seg(hx,hy-B(11),hx,by,1,'t'); poly([[hx-1,hy-B(11)],[hx+1,hy-B(11)],[hx,hy-B(14)]],'w'); }
+    else if(wp==='trident'){ seg(hx,hy-B(10),hx,by,1,'y'); for(const d of [-1.5,0,1.5]) seg(hx+d,hy-B(10),hx+d,hy-B(13),1,'y'); rect(hx-1.5,hy-B(10),hx+1.5,hy-B(10),'y'); }
+    else if(wp==='sword'){ seg(hx,hy+B(1),hx+B(1),hy-B(9),1,'w'); rect(hx-1.5,hy,hx+1.5,hy,'y'); }
+    else if(wp==='club'){ quad([hx,hy+B(1)],[hx+B(1),hy-B(4)],[hx+B(2),hy-B(8)],B(2),'t'); for(let i=0;i<3;i++) px(hx+B(1.5),hy-B(4+i*1.5),'w'); }
+    else if(wp==='axe'){ seg(hx,hy+B(1),hx,hy-B(9),1,'t'); poly([[hx,hy-B(9)],[hx+B(4),hy-B(10)],[hx+B(4),hy-B(5)],[hx,hy-B(6)]],'g'); }
+    else if(wp==='hammer'){ seg(hx,hy+B(1),hx,hy-B(8),1,'t'); rect(hx-B(2),hy-B(10),hx+B(2),hy-B(7),'g'); }
+    else if(wp==='bow'){ quad([hx,hy-B(8)],[hx+B(4),hy-B(2)],[hx,hy+B(4)],1,'t'); seg(hx,hy-B(8),hx,hy+B(4),1,'w'); }
+    else if(wp==='scythe'){ seg(hx,hy+B(2),hx,hy-B(11),1,'t'); quad([hx,hy-B(11)],[hx-B(5),hy-B(12)],[hx-B(8),hy-B(7)],1.4,'w'); }
+    else if(wp==='gun'){ seg(hx-B(1),hy,hx+B(4),hy-B(2),1.6,'g'); px(hx+B(4),hy-B(2),'k'); }
+    else if(wp==='book'){ rect(hx-B(1),hy-B(2),hx+B(2),hy+B(1),'r'); rect(hx-B(1),hy-B(2),hx-B(.3),hy+B(1),'y'); }
+    else if(wp==='lantern'){ seg(hx,hy,hx,hy+B(2),1,'k'); rect(hx-B(1.2),hy+B(2),hx+B(1.2),hy+B(5),'A'); }
+    else if(wp==='orb') circ(hx,hy-B(1),B(1.8),'A');
+    else if(wp==='claws') for(let i=0;i<3;i++) seg(hx-B(1)+i,hy,hx+i,hy+B(2),1,'w');
+    if(o.shield) { ell(cx-B(8),by-B(8),B(2.8),B(3.5),o.shield); px(cx-B(8),by-B(8),'y'); }
+    // the head
+    const hd=o.head||'human', hy2=top, hr=B(o.big?4.6:3.8), HM=hd==='skull'?'w':hd==='human'||hd==='elf'?skin:o.headMat||C;
+    if(o.hair==='long') rect(cx-hr,hy2-B(1),cx+hr,hy2+B(6),o.hairMat||'k');
+    if(hd==='bull'){ ell(cx,hy2,hr*1.2,hr,HM); for(const d of [-1,1]) quad([cx+d*hr,hy2-B(1)],[cx+d*(hr+B(3)),hy2-B(2)],[cx+d*(hr+B(3)),hy2-B(5)],1.2,'w'); ell(cx,hy2+B(2),B(2.5),B(1.5),'b'); px(cx-1,hy2+B(2),'k'); px(cx+1,hy2+B(2),'k'); }
+    else ell(cx,hy2,hr,hr,HM);
+    if(hd==='skull'){ for(const d of [-1,1]) circ(cx+d*B(1.6),hy2-B(.3),B(1.1),'k'); for(let i=-1;i<=1;i++) px(cx+i*B(1),hy2+B(2.4),'k'); }
+    if(hd==='goblin'||hd==='elf') for(const d of [-1,1]) poly([[cx+d*hr*.8,hy2-B(1)],[cx+d*(hr+B(hd==='goblin'?5:3)),hy2-B(3)],[cx+d*hr*.8,hy2+B(1)]],HM);
+    if(hd==='bird') poly([[cx-B(1),hy2],[cx+B(1),hy2],[cx,hy2+B(5)]],o.beakMat||'r');
+    if(hd==='plague') poly([[cx-B(1.5),hy2],[cx+B(1.5),hy2],[cx+B(5),hy2+B(4)]],'b');
+    if(o.horns) for(const d of [-1,1]) poly([[cx+d*B(1.5),hy2-hr+1],[cx+d*B(o.horns==='big'?5:3.5),hy2-hr-B(o.horns==='big'?5:3)],[cx+d*B(3.2),hy2-hr+B(1.5)]],'w');
+    // eyes and face
+    if(hd!=='skull'&&hd!=='bull'&&hd!=='plague'){ const em=o.eyes||E; for(const d of [-1,1]){ px(cx+d*B(1.5),hy2,em); if(em==='W') px(cx+d*B(1.5),hy2+1,'k'); } }
+    if(hd==='plague') for(const d of [-1,1]) circ(cx+d*B(1.5),hy2-B(.5),B(.9),'x');
+    if(hd==='beast'||hd==='goblin') { rect(cx-B(1.5),hy2+B(2),cx+B(1.5),hy2+B(2),'k'); px(cx-B(1),hy2+B(3),'w'); px(cx+B(1),hy2+B(3),'w'); }
+    if(o.beard) poly([[cx-hr*.8,hy2+B(1)],[cx+hr*.8,hy2+B(1)],[cx,hy2+B(o.beard==='long'?8:5)]],o.beardMat||'w');
+    // headwear
+    const hat=o.hat;
+    if(hat==='hood') { ell(cx,hy2-B(.5),hr+B(1),hr+B(.6),R); ell(cx,hy2+B(.6),hr-B(.6),hr-B(1),hd==='skull'?'w':'k'); for(const d of [-1,1]) px(cx+d*B(1.5),hy2+B(.5),o.eyes||'A'); }
+    else if(hat==='witch'){ poly([[cx-hr-B(3),hy2-hr+B(1)],[cx+hr+B(3),hy2-hr+B(1)],[cx+B(2),hy2-hr-B(9)]],'k'); rect(cx-hr,hy2-hr,cx+hr,hy2-hr+B(1),'p'); }
+    else if(hat==='crown') poly([[cx-hr,hy2-hr+B(1)],[cx-hr,hy2-hr-B(2)],[cx-B(1.5),hy2-hr],[cx,hy2-hr-B(3)],[cx+B(1.5),hy2-hr],[cx+hr,hy2-hr-B(2)],[cx+hr,hy2-hr+B(1)]],'y');
+    else if(hat==='helm'){ ell(cx,hy2-B(1),hr+B(.5),hr,'g'); rect(cx-hr,hy2-B(.5),cx+hr,hy2+B(.3),'k'); if(o.plume) poly([[cx,hy2-hr],[cx+B(4),hy2-hr-B(5)],[cx+B(1),hy2-hr+B(1)]],o.plume); }
+    else if(hat==='kabuto'){ ell(cx,hy2-B(1),hr+B(1),hr*.8,'k'); poly([[cx-B(3),hy2-hr],[cx,hy2-hr-B(4)],[cx+B(3),hy2-hr]],'y'); }
+    else if(hat==='tricorn') poly([[cx-hr-B(2),hy2-hr+B(1)],[cx-B(1),hy2-hr-B(2)],[cx+B(1),hy2-hr-B(2)],[cx+hr+B(2),hy2-hr+B(1)],[cx,hy2-hr+B(2)]],'k');
+    else if(hat==='turban'){ ell(cx,hy2-hr+B(1),hr+B(1),B(2.4),o.hatMat||'w'); circ(cx,hy2-hr+B(.5),B(.8),'r'); }
+    else if(hat==='straw') ell(cx,hy2-hr+B(1),hr+B(4),B(1.4),'y');
+    else if(hat==='leaf'){ for(const d of [-1,0,1]) ell(cx+d*B(2.5),hy2-hr,B(1.6),B(2.6),'l'); }
+    else if(hat==='halo') ringp(cx,hy2-hr-B(2),B(3),1,'A');
+    else if(hat==='cap') ell(cx,hy2-hr+B(1),hr,B(2),R);
+    else if(hat==='antler') for(const d of [-1,1]){ seg(cx+d*B(2),hy2-hr+1,cx+d*B(4),hy2-hr-B(5),1,'t'); seg(cx+d*B(3),hy2-hr-B(2),cx+d*B(6),hy2-hr-B(3),1,'t'); }
+  };
+  const NM=(c&&c.name)||'';
+  if(/Nine-Tailed/.test(NM)) sp=Object.assign({},sp,{tails:9});
+  if(/Hammerhead/.test(NM)) sp=Object.assign({},sp,{hammer:1});
+  if(/Zaratan|Island/.test(NM)) sp=Object.assign({},sp,{island:1});
+  if(/Jorogumo/.test(NM)) sp=Object.assign({},sp,{lady:1});
+  if(/Girtablilu|Scorpion-?[Mm]an/.test(NM)) sp=Object.assign({},sp,{man:1});
+  const P=sp.plan;
+  if(P==='quad'){ const lift=sp.legs==='long'?3.5:sp.legs==='short'?-.5:1.5, bx=14, cy=by-B(5+lift), rx=B(sp.bodyW||8), ry=B(sp.bodyH||4.3);
+    if(sp.wings) wings(bx+1,cy-ry+B(2),sp.wings);
+    tail(bx-rx+B(1),cy-B(1),sp.tail||'thin');
+    const LM=sp.legMat||C, foot=sp.hoof?'k':LM;
+    for(const x of [bx-rx+B(2),bx-rx+B(4.6),bx+rx-B(5),bx+rx-B(2.6)]){ rect(x,cy+ry-B(2),x+B(1.3),by-1,LM); rect(x,by-1,x+B(1.3),by,foot); }
+    if(sp.hump) ell(bx-B(1),cy-ry+B(.5),B(4),B(3),C);
+    ell(bx,cy,rx,ry,C);
+    if(sp.belly) ell(bx+B(1),cy+ry*.6,rx*.62,ry*.32,sp.belly);
+    if(sp.stripes) for(let i=-2;i<=2;i++) seg(bx+B(i*3),cy-ry+1,bx+B(i*3)-1,cy+B(1),1,sp.stripes);
+    if(sp.spots) for(let i=0;i<6;i++) circ(bx-rx+B(2)+i*B(2.6),cy-B(1)+(i%2?B(1.4):-B(.8)),B(.8),sp.spots);
+    if(sp.spikes) for(let i=0;i<5;i++){ const x=bx-rx+B(3)+i*B(3); poly([[x-1,cy-ry+1],[x+1,cy-ry+1],[x,cy-ry-B(2.5)]],sp.spikes); }
+    if(sp.shell) { ell(bx,cy-B(1),rx+B(1),ry+B(1.5),sp.shell); for(let i=-1;i<=1;i++) ringp(bx+B(i*4),cy-B(1),B(2),1,'k'); }
+    const nk=sp.neck||0, nx=bx+rx-B(2), ny=cy-ry+B(1.5), hx=nx+B(2.5+nk*.35), hy=ny-B(2.5+nk);
+    if(sp.torso){ torso(nx+B(1),ny+B(1),sp.torso); if(sp.wings) wings(bx+B(3),cy-ry+B(2.5),sp.wings); return; }
+    seg(nx,ny+B(1),hx-1,hy+B(1),B(3),C);
+    if(sp.mane){ ell(nx,ny-B(1),B(3.2),B(3.6),sp.mane); ell(hx-B(2),hy,B(3.2),B(3.4),sp.mane); }
+    sideHead(hx,hy,{r:sp.headR||3,ears:sp.ears,snout:sp.snout,horns:sp.horns,crest:sp.crest,whiskers:sp.whiskers,fangs:sp.fangs,beakMat:sp.beakMat,muzzle:sp.muzzle,tusk:sp.tusk,antlerMat:sp.antlerMat});
+    if(sp.wings) wings(bx+B(3),cy-ry+B(2.5),sp.wings);
+  }
+  else if(P==='biped'){ const o=Object.assign({},sp);
+    if(sp.vary){ o.hat=o.hat||pick(sp.vary.hat||['none'],1); o.weapon=o.weapon||pick(sp.vary.weapon||['none'],3); o.robe=o.robe||pick(sp.vary.robe||[C2],5); o.body=o.body||pick(sp.vary.body||['robe'],7); }
+    if(c&&c.name){ const nm=c.name; const W=[[/Pirate|Buccaneer|Corsair|Captain/,'tricorn','sword'],[/Samurai|Ronin/,'kabuto','sword'],[/Archer|Ranger|Hunter|Bow/,null,'bow'],[/Musket|Gunner|Rifle|Pistol/,null,'gun'],[/Monk|Hermit|Sage|Scribe|Scholar|Astronomer/,null,'book'],[/Lancer|Spear|Immortal|Hoplite|Legion/,'helm','spear'],[/Mamluk|Sultan|Vizier|Bazaar|Desert|Bedouin/,'turban',null],[/Smith|Miner|Forge/,null,'hammer'],[/Knight|Paladin|Crusader|Templar|Sir /,'helm','sword'],[/Witch|Hag|Crone/,'witch',null],[/Druid|Shaman|Curandero/,'antler','staff'],[/King|Queen|Emperor|Pharaoh|Warlord|Chieftain/,'crown',null],[/Lantern/,null,'lantern'],[/Alchemist|Physician|Doctor|Healer/,null,'orb']];
+      for(const [re,hat,wp] of W) if(re.test(nm)){ if(hat) o.hat=hat; if(wp) o.weapon=wp; break; } }
+    person(o); }
+  else if(P==='serpent'){ const n=12, M=C, heads=sp.heads||1;
+    for(let i=0;i<n;i++){ const t=i/(n-1), x=B(3)+t*B(19), y=by-B(2)-Math.sin(t*Math.PI*1.6)*B(3)-t*B(5), r=B(1.2+t*1.8); circ(x,y,r,M); if(sp.belly!==false&&i%2) px(x,y+r-1,sp.belly||'b'); if(sp.fins&&i%3===1) poly([[x-1,y-r],[x+1,y-r],[x,y-r-B(2.2)]],sp.fins); if(sp.legs&&(i===3||i===8)) { seg(x,y+r-1,x-B(1),by,1,M); seg(x+1,y+r-1,x+B(1),by,1,M); } }
+    for(let k=0;k<heads;k++){ const hx=B(24)-k*B(4), hy=by-B(12)-k*B(3); if(k) quad([B(20),by-B(8)],[hx-B(2),hy+B(3)],[hx,hy],B(1.6),M);
+      if(sp.hood) ell(hx-B(1),hy+B(1),B(3),B(4.5),sp.hood);
+      sideHead(hx,hy,{r:B(2.6),snout:sp.snout||'long',horns:sp.horns,crest:sp.crest,whiskers:sp.whiskers,fangs:true}); } }
+  else if(P==='bird'){ const flying=sp.fly, bx=14, cy=by-B(flying?11:8), M=C;
+    if(sp.tail) { const tl=sp.tail==='long'?12:6; for(let i=0;i<3;i++) quad([bx-B(4),cy],[bx-B(tl*.6),cy+B(i-1)],[bx-B(tl),cy+B(i*2-1)],B(1.4),i===1?(sp.tailMat||'A'):M); }
+    if(flying) wings(bx+B(2),cy-B(1),sp.wingType||'feather',sp.wingMat||M);
+    ell(bx,cy,B(sp.bodyW||5.5),B(4.5),M); if(sp.belly!==false) ell(bx+B(1.5),cy+B(1.5),B(3.5),B(2.4),sp.belly||'b');
+    if(!flying){ poly([[bx+B(3),cy-B(2)],[bx-B(5),cy-B(1)],[bx-B(7),cy+B(2)],[bx+B(2),cy+B(2)]],sp.wingMat||M); }
+    sideHead(bx+B(5.5),cy-B(4.5),{r:B(2.8),snout:sp.beak||'beak',beakMat:sp.beakMat,crest:sp.crest,beakLen:sp.beakLen,ears:sp.ears});
+    if(!flying) for(const d of [-1,1]) seg(bx+B(d),cy+B(4),bx+B(d),by,1,'y');
+    if(flying&&sp.talons) for(const d of [-1,1]) seg(bx+B(d*1.5),cy+B(4),bx+B(d*2),cy+B(7),1,'y'); }
+  else if(P==='fish'){ const bx=15, cy=by-B(8), rx=B(sp.bodyW||9), ry=B(sp.bodyH||4.5), M=C;
+    poly([[bx-rx+B(1),cy],[bx-rx-B(4),cy-B(4)],[bx-rx-B(3),cy],[bx-rx-B(4),cy+B(4)]],sp.finMat||M);
+    if(sp.fin!==false) poly([[bx-B(2),cy-ry+1],[bx+B(sp.fin==='tall'?1:2),cy-ry-B(sp.fin==='tall'?6:3)],[bx+B(3),cy-ry+1]],sp.finMat||M);
+    if(sp.nose==='point') poly([[bx+rx-B(2),cy-ry*.6],[bx+rx+B(3),cy+B(.5)],[bx+rx-B(2),cy+ry*.6]],M);
+    ell(bx,cy,rx,ry,M); if(sp.belly!==false) ell(bx+B(1),cy+ry*.45,rx*.8,ry*.45,sp.belly||'b');
+    if(sp.patch) ell(bx+rx-B(3),cy-B(1),B(1.6),B(1),sp.patch);
+    if(sp.hammer) rect(bx+rx-B(1),cy-B(3),bx+rx+B(1),cy+B(3),M);
+    if(sp.tusk) seg(bx+rx,cy,bx+rx+B(9),cy-B(2),1,'w');
+    if(sp.spikes) for(let i=0;i<5;i++){ const x=bx-rx+B(3)+i*B(3.4); poly([[x-1,cy-ry+1],[x+1,cy-ry+1],[x,cy-ry-B(2.5)]],sp.spikes); }
+    eye(bx+rx-B(2.5),cy-B(1),sp.bigEye); rect(bx+rx-B(2.5),cy+B(1.5),bx+rx-B(.5),cy+B(1.5),'k');
+    if(sp.teeth) for(let i=0;i<3;i++) px(bx+rx-B(2.5)+i,cy+B(2.3),'w'); }
+  else if(P==='squid'){ const M=C, cx=16;
+    for(let i=0;i<6;i++){ const d=i<3?-1:1, k=i%3; quad([cx+d*B(1+k*1.6),by-B(9)],[cx+d*B(3+k*3),by-B(4)],[cx+d*B(5+k*3.5),by-B(1+k*1.5)],B(1.5),M); }
+    ell(cx,by-B(15),B(sp.headW||6.5),B(8),M); for(const d of [-1,1]) eye(cx+d*B(2.5),by-B(11),true);
+    if(sp.spots) for(let i=0;i<4;i++) circ(cx-B(3)+i*B(2),by-B(19)+(i%2)*B(2),B(.7),sp.spots); }
+  else if(P==='bug'){ const M=C;
+    if(sp.wings) wings(B(16),by-B(9),'bug');
+    for(let i=0;i<3;i++) for(const d of [0,1]) seg(B(12+i*3)+d,by-B(6),B(10+i*4)+d*2,by,1,'k');
+    ell(B(10),by-B(7),B(5),B(sp.long?2.6:4),M); if(sp.segments) for(let i=0;i<4;i++) rect(B(6+i*2.2),by-B(10),B(6+i*2.2),by-B(4),'k');
+    circ(B(16),by-B(8),B(2.8),M); circ(B(20),by-B(8.5),B(2.3),sp.headMat||M);
+    if(sp.horn) quad([B(21),by-B(10)],[B(24),by-B(13)],[B(23),by-B(16)],1.4,'w');
+    if(sp.stinger) poly([[B(5),by-B(8)],[B(1),by-B(7)],[B(5),by-B(6)]],'k');
+    for(const d of [-1,1]) quad([B(21),by-B(10)],[B(23),by-B(14+d)],[B(25),by-B(13+d*2)],1,'k');
+    if(sp.mandibles) for(const d of [-1,1]) seg(B(22),by-B(8),B(24),by-B(8+d*1.5),1,'k');
+    eye(B(21),by-B(9)); }
+  else if(P==='spider'){ const M=C, cx=16;
+    for(let i=0;i<4;i++) for(const d of [-1,1]) quad([cx+d*B(3),by-B(8)],[cx+d*B(7+i),by-B(14-i*2)],[cx+d*B(9+i*1.5),by],1,'k');
+    ell(cx,by-B(9),B(6),B(5),M); circ(cx,by-B(13),B(3.2),sp.headMat||M); if(sp.mark) poly([[cx,by-B(11)],[cx+B(1.5),by-B(9)],[cx,by-B(7)],[cx-B(1.5),by-B(9)]],sp.mark);
+    for(const [x,y] of [[-1.2,-14],[1.2,-14],[-2,-13],[2,-13]]) px(cx+B(x),by+B(y),sp.eyeMat||'R');
+    if(sp.lady) torso(cx,by-B(12),{robe:'k',hair:'k'}); }
+  else if(P==='scorpion'){ const M=C;
+    for(let i=0;i<3;i++) for(const d of [0,1]) seg(B(11+i*3)+d,by-B(4),B(9+i*4)+d*2,by,1,'k');
+    tail(B(7),by-B(5),'scorp',M); ell(B(14),by-B(5),B(7),B(3),M); for(let i=0;i<4;i++) rect(B(9+i*3),by-B(8),B(9+i*3),by-B(3),'k');
+    for(const d of [-1,1]){ seg(B(20),by-B(5),B(25),by-B(7+d*2),B(1.2),M); ell(B(26.5),by-B(7.5+d*2),B(2.2),B(1.6),M); px(B(28),by-B(7.5+d*2),'k'); }
+    eye(B(20),by-B(6));
+    if(sp.man) torso(B(20),by-B(7),{robe:'g',weapon:'spear',hat:'helm'}); }
+  else if(P==='ghost'){ const cx=16, M=sp.robe||C;
+    poly([[cx-B(6),by-B(14)],[cx+B(6),by-B(14)],[cx+B(7),by-B(4)],[cx+B(4),by-B(1)],[cx+B(2),by-B(4)],[cx,by],[cx-B(2),by-B(4)],[cx-B(4),by-B(1)],[cx-B(7),by-B(4)]],M);
+    for(const d of [-1,1]) quad([cx+d*B(5),by-B(12)],[cx+d*B(9),by-B(10)],[cx+d*B(9),by-B(6)],B(1.3),M);
+    if(sp.hair) rect(cx-B(5),by-B(21),cx+B(5),by-B(10),sp.hair);
+    ell(cx,by-B(17),B(4.5),B(4.5),sp.face||M);
+    for(const d of [-1,1]){ circ(cx+d*B(1.8),by-B(17),B(1.2),'k'); px(cx+d*B(1.8),by-B(17),'A'); }
+    ell(cx,by-B(14.5),B(1.2),B(1.6),'k');
+    if(sp.chains) for(let i=0;i<4;i++) ringp(cx-B(4)+i*B(2.6),by-B(8),B(1),1,'g');
+    if(sp.weapon==='scythe'){ seg(B(25),by-B(20),B(25),by,1,'t'); quad([B(25),by-B(20)],[B(19),by-B(21)],[B(16),by-B(16)],1.4,'w'); } }
+  else if(P==='tree'){ const cx=16, L=sp.leaf||'l';
+    rect(cx-B(3),by-B(14),cx+B(3),by,'t'); for(const d of [-1,1]) quad([cx+d*B(2),by],[cx+d*B(5),by-B(1)],[cx+d*B(7),by],1,'t');
+    for(const d of [-1,1]) quad([cx+d*B(3),by-B(10)],[cx+d*B(8),by-B(11)],[cx+d*B(9),by-B(16)],B(1.4),'t');
+    for(const [x,y,r] of [[0,-19,6],[-6,-16,4],[6,-16,4],[-3,-22,4],[3,-22,4]]) circ(cx+B(x),by+B(y),B(r),L);
+    if(sp.flowers) for(const [x,y] of [[-4,-20],[3,-23],[5,-17],[-1,-17]]) px(cx+B(x),by+B(y),sp.flowers);
+    for(const d of [-1,1]) circ(cx+d*B(1.4),by-B(10),B(.9),'A'); rect(cx-B(1.5),by-B(7),cx+B(1.5),by-B(7),'k');
+    if(sp.antler) for(const d of [-1,1]){ seg(cx+d*B(2),by-B(23),cx+d*B(5),by-B(28),1,'t'); seg(cx+d*B(4),by-B(26),cx+d*B(7),by-B(26),1,'t'); } }
+  else if(P==='shroom'){ const cx=16;
+    rect(cx-B(3),by-B(10),cx+B(3),by,'b'); ell(cx,by-B(12),B(sp.capW||9),B(sp.capH||5.5),C); for(const [x,y] of [[-5,-14],[0,-16],[5,-13],[-2,-12]]) circ(cx+B(x),by+B(y),B(1.1),'w');
+    for(const d of [-1,1]) px(cx+d*B(1.4),by-B(6),'k'); if(sp.arms) for(const d of [-1,1]) seg(cx+d*B(3),by-B(5),cx+d*B(6),by-B(3),B(1.2),'b'); }
+  else if(P==='turtle'){ const bx=14, cy=by-B(5);
+    for(const x of [bx-B(6),bx+B(5)]) rect(x,cy+B(1),x+B(2),by,C);
+    ell(B(24),cy-B(1),B(2.6),B(2.2),C); eye(B(25),cy-B(1.6));
+    ell(bx,cy-B(2),B(sp.shellW||9),B(6),sp.shell||C2); for(let i=-1;i<=1;i++) ringp(bx+B(i*4),cy-B(3),B(2),1,'k'); rect(bx-B(9),cy+B(2),bx+B(9),cy+B(3),'b');
+    if(sp.island) { for(const [x,r] of [[-3,3],[3,2.5]]) circ(bx+B(x),cy-B(9),B(r),'l'); rect(bx-B(.5),cy-B(9),bx+B(.5),cy-B(5),'t'); } }
+  else if(P==='crab'){ const cx=16, M=C;
+    for(let i=0;i<3;i++) for(const d of [-1,1]) quad([cx+d*B(4),by-B(5)],[cx+d*B(7+i),by-B(6)],[cx+d*B(8+i*1.5),by],1,M);
+    for(const d of [-1,1]){ seg(cx+d*B(5),by-B(8),cx+d*B(9),by-B(13),B(1.4),M); ell(cx+d*B(10),by-B(15),B(3),B(2.4),M); rect(cx+d*B(10),by-B(16),cx+d*B(12),by-B(16),'k'); }
+    ell(cx,by-B(7),B(7),B(4),M); for(const d of [-1,1]){ seg(cx+d*B(2),by-B(10),cx+d*B(2),by-B(13),1,M); px(cx+d*B(2),by-B(14),'W'); } }
+  else if(P==='golem'){ const cx=16, M=sp.mat||'s';
+    for(const d of [-1,1]) rect(cx+d*B(3)-B(1.5),by-B(6),cx+d*B(3)+B(1.5),by,M);
+    rect(cx-B(6),by-B(16),cx+B(6),by-B(5),M); for(const d of [-1,1]) rect(cx+d*B(7)-B(1.5),by-B(15),cx+d*B(7)+B(1.5),by-B(5),M);
+    rect(cx-B(3),by-B(21),cx+B(3),by-B(16),M); for(const d of [-1,1]) px(cx+d*B(1.4),by-B(19),'A');
+    if(sp.runes) for(const [x,y] of [[-3,-13],[2,-11],[-1,-8]]) px(cx+B(x),by+B(y),'A'); seg(cx-B(4),by-B(14),cx-B(1),by-B(9),1,'k');
+    if(sp.crown) poly([[cx-B(3),by-B(21)],[cx-B(3),by-B(24)],[cx,by-B(22)],[cx+B(3),by-B(24)],[cx+B(3),by-B(21)]],'y'); }
+  else if(P==='blob'){ const cx=16; ell(cx,by-B(6),B(9),B(7),C); for(const d of [-1,1]) eye(cx+d*B(3),by-B(8),true); rect(cx-B(2),by-B(4),cx+B(2),by-B(4),'k'); }
+  else if(P==='snowman'){ const cx=16; circ(cx,by-B(4),B(5.5),'w'); circ(cx,by-B(12),B(4.2),'w'); circ(cx,by-B(19),B(3.2),'w');
+    for(const d of [-1,1]) px(cx+d*B(1.2),by-B(19.5),'k'); poly([[cx,by-B(18.5)],[cx+B(4),by-B(18)],[cx,by-B(17.5)]],'y'); rect(cx-B(3.5),by-B(16),cx+B(3.5),by-B(15),'r');
+    for(const d of [-1,1]) seg(cx+d*B(4),by-B(12),cx+d*B(8),by-B(16),1,'t'); rect(cx-B(2.5),by-B(25),cx+B(2.5),by-B(22),'k'); rect(cx-B(4),by-B(22),cx+B(4),by-B(22),'k'); }
+}
+
 
 /* ---------------- machines, from parts ---------------- */
 function machine(noun,ai){
@@ -654,8 +1039,8 @@ function subjectOf(c){
 }
 function drawSubject(c,rng){
   const [kind,key]=subjectOf(c), sh=c.shape;
-  if(kind==='hero'){ human(HERO_LOOK[key]||{}); return; }
-  if(kind==='creature'){ creature(CREATURES[key],creatureMod(c,key),rng); return; }
+  if(kind==='hero'){ if(!heroBeast(key,c)) human(heroLook(key)); return; }
+  if(kind==='creature'){ creature(CREATURES[key],creatureMod(c,key),rng,c); return; }
   if(kind==='machine'){ machine(key,c.ai); return; }
   if(kind==='weapon'){ const W=WEAPON[key]||WEAPON.arrow;
     if(c.type==='charge'){ W(6,26,24,8); W(12,28,28,14); return; }
@@ -706,7 +1091,7 @@ function cardArt(c){
   // materials: the family's two colors (sometimes swapped, always shifted a little), plus the shared kit
   const swap=rng()<.2, jit=(col)=>artMix(col,rng()<.5?F.a:'#ffffff',rng()*.16);
   const base={...MATS, m:jit(swap?F.a:F.m), a:jit(swap?F.m:F.a), c:COAT[subjectOf(c)[1]]||F.m, o:'#c8743a', h:'#e8b890', d:artMix(F.m,'#1a1020',.6)};
-  if(kind==='hero') Object.assign(base,{m:F.m,a:F.a,c:artMix(F.m,'#000000',.35)});
+  if(kind==='hero') Object.assign(base,{m:F.m,a:F.a,c:HERO_BODY[c.hero]&&COAT[HERO_BODY[c.hero]]||artMix(F.m,'#000000',.35)});
   const R={}; for(const k in base) R[k]=ramp5(k==='m'||k==='a'?base[k]:artMix(base[k],F.m,.12));
   const flat={A:F.glow, W:'#ffffff', M:F.m, Y:'#ffe066', R:'#ff3a4a', K:'#140a1a'};
   shadeSubject(out,R,flat,F.glow);
@@ -724,8 +1109,13 @@ function artCSV(c){ return cardArt(c).map(row=>row.join(',')).join('\n')+'\n'; }
 
 // in the browser: a data URL of the picture, drawn once per card
 const ART_URL={};
+// a painted picture for this card, if one was added to UNIT_SPRITES (sprites.js): 'art_<card id>' for one
+// card, or 'body_<Creature>' (e.g. body_Dragon) for every card of that creature; it replaces the drawn art
+function paintedKey(c){ if(typeof UNIT_SPRITES==='undefined') return null; if(UNIT_SPRITES['art_'+c.id]) return 'art_'+c.id;
+  const [kind,key]=subjectOf(c); return kind==='creature'&&UNIT_SPRITES['body_'+key]?'body_'+key:null; }
 function artURL(c){
   if(ART_URL[c.id]) return ART_URL[c.id];
+  { const pk=paintedKey(c); if(pk) return ART_URL[c.id]=UNIT_SPRITES[pk]; }
   const cv=document.createElement('canvas'); cv.width=cv.height=AN; const ctx=cv.getContext('2d');
   cardArt(c).forEach((row,y)=>row.forEach((col,x)=>{ ctx.fillStyle=col; ctx.fillRect(x,y,1,1); }));
   return ART_URL[c.id]=cv.toDataURL();
@@ -750,10 +1140,16 @@ function human(o){
     case 'plate': rect(12,23,20,28,'m'); rect(11,15,21,24,'m'); rect(13,17,19,18,'a'); rect(15,15,17,23,'a'); rect(10,23,22,24,'k'); rect(7,14,11,17,'a'); rect(21,14,25,17,'a'); rect(8,17,11,23,'m'); rect(21,17,24,23,'m'); break;
     case 'samurai': rect(11,22,21,27,'m'); for(let y=23;y<27;y+=2) rect(11,y,21,y,'a'); rect(11,15,21,22,'m'); for(let y=16;y<22;y+=2) rect(11,y,21,y,'a');
       for(const d of [-1,1]){ poly([[16+d*5,14],[16+d*10,15],[16+d*10,21],[16+d*5,19]],'m'); seg(16+d*6,16,16+d*9,17,1,'a'); seg(16+d*6,18,16+d*9,19,1,'a'); } break;
-    default: poly([[9,27],[23,27],[20,15],[12,15]],'m'); rect(11,20,21,21,'a'); rect(15,15,17,27,'a'); rect(8,15,11,23,'m'); rect(21,15,24,23,'m');
+    default: { const R=o.rmat||'m', T=o.rmat&&o.rmat!=='m'?'m':'a'; poly([[9,27],[23,27],[20,15],[12,15]],R); rect(8,15,11,23,R); rect(21,15,24,23,R);
+      // robe styles: the cross stripe, a plain robe with a belt, a sash, or a trimmed hem and collar
+      if(!o.robe||o.robe==='cross'){ rect(11,20,21,21,T); rect(15,15,17,27,T); }
+      else if(o.robe==='plain') rect(11,21,21,22,'t');
+      else if(o.robe==='sash') seg(12,15,21,25,1.6,T);
+      else if(o.robe==='trim'){ rect(9,26,23,27,T); poly([[13,15],[19,15],[16,19]],T); } }
   }
-  rect(8,23,10,25,'h'); rect(22,23,24,25,'h');
-  circ(16,11,4.2,'h'); px(14,11,'K'); px(18,11,'K'); if(o.beard) poly([[12,13],[20,13],[16,21]],'w');
+  const SK=o.skin||'h';
+  rect(8,23,10,25,SK); rect(22,23,24,25,SK);
+  circ(16,11,4.2,SK); px(14,11,'K'); px(18,11,'K'); if(o.beard) poly([[12,13],[20,13],[16,21]],'w');
   if(o.body==='thief') rect(12,12,20,14,'m');   // a thief's mask
   switch(o.hat){
     case 'wizard': poly([[8,9],[24,9],[19,5],[13,0]],'m'); rect(9,8,23,9,'a'); px(16,4,'Y'); break;
@@ -1008,10 +1404,11 @@ function unitSprite(u){
     return makeSprite('e:'+id,pal,MONSTER[id]||MONSTER.gloop); }
   if(u.card&&u.card.type==='hero'){ const rs=rigSprite('hero_'+u.card.hero); if(rs) return rs; }
   const c=u.card, F=FAM[c.color], pal={m:F.m,a:F.a,glow:F.glow,o:F.o};
-  if(c.type==='hero') return makeSprite('h:'+c.hero,{m:F.m,a:F.a,glow:F.glow,o:F.o,c:artMix(F.m,'#000000',.35),d:artMix(F.m,'#1a1020',.6)},()=>human(HERO_LOOK[c.hero]||{}));
+  { const pk=paintedKey(c); if(pk){ const rs=rigSprite(pk); if(rs) return rs; } }
+  if(c.type==='hero') return makeSprite('h:'+c.hero,{m:F.m,a:F.a,glow:F.glow,o:F.o,c:HERO_BODY[c.hero]&&COAT[HERO_BODY[c.hero]]||artMix(F.m,'#000000',.35),d:artMix(F.m,'#1a1020',.6)},()=>{ if(!heroBeast(c.hero,c)) human(heroLook(c.hero)); });
   return makeSprite('c:'+c.id,Object.assign(pal,{c:COAT[subjectOf(c)[1]]||F.m}),()=>{
     const [kind,key]=subjectOf(c);
-    if(kind==='creature') creature(CREATURES[key],creatureMod(c,key),()=>.5);
+    if(kind==='creature') creature(CREATURES[key],creatureMod(c,key),()=>.5,c);
     else if(kind==='machine') machine(key,c.ai);
     else (THING[key]||THING.sentry)(()=>.5); });
 }

@@ -80,7 +80,7 @@ function autoFill(list,owned,size){
 }
 
 function newSave(starter){
-  const list=starterList(starter.colors), owned={};
+  const list=starterList(starter.colors,60,starter.recipe), owned={};
   list.forEach(id=>owned[id]=(owned[id]||0)+1);
   const decks=[{name:starter.name, list}]; for(let i=1;i<DECK_SLOTS;i++) decks.push({name:'Deck '+(i+1), list:[]});
   return {v:1, gold:100, depth:1, deepest:1, owned, seen:Object.assign({},owned), decks, active:0, wins:0, items:{basic_wand:1}, gear:{weapon:'basic_wand'}};

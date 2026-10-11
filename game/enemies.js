@@ -66,7 +66,9 @@ function enemyDeck(color,depth){
   return Array.from({length:8},()=>pick(pool));
 }
 function makeEnemy(id,t,depth){
-  const d=ENEMY_DEFS[id], hs=1+.13*(depth-1), ds=1+.1*(depth-1);
+  // HP grows 13% a depth; past depth 12 a boss's growth tapers (−2.5% a depth, at most −30%) so deep
+  // boss floors do not turn into long damage sponges
+  const d=ENEMY_DEFS[id], hs=(1+.13*(depth-1))*(d.boss&&depth>12?1-Math.min(.3,.025*(depth-12)):1), ds=1+.1*(depth-1);
   const e={kind:'enemy', id, def:d, name:d.name, color:d.color, hp:Math.round(d.hp*hs), maxHp:Math.round(d.hp*hs), dmg:Math.round(d.dmg*ds), ds,
            tile:t, atkT:rnd(1.8,3.2), moveT:rnd(.8,1.8), windT:0, burnT:0, burnAcc:0, freezeT:0, stunT:0, slowT:0, poisonT:0, poisonAmt:0, curseT:0, hitT:0,
            barrier:0, powerT:0, castT:0, casting:null, weak:d.weak||null, nextMove:pick(d.moves), deck:d.deck?enemyDeck(d.color,depth):null, deckCd:rnd(3,5)};

@@ -102,22 +102,24 @@ function detectCombos(queue){
   if(cards.length>=3&&oneRune(cards)&&ranks.every((x,i)=>!i||x===ranks[i-1]+1))
     out.push({kind:'straight', ranks, label:(cards.length>=4?'Grand Straight ':'Straight ')+ranks.join('-')+': chain cast + finisher'});
   const run=runeRun(cards);
-  // Rune Set: every queued card has the same rune (✱ fits any): Power, wand ×2.5, for 8s (12s with 4)
+  // Rune Set: every queued card has the same rune (✱ fits any): Power, wand ×2.5, for 5s (8s with 4)
   const real=cards.map(c=>c.code).filter(k=>k&&k!==WILD_RUNE);
-  if(cards.length>=3&&real.length&&cards.every(c=>c.code)&&oneRune(cards)){ const dur=cards.length>=4?12:8;
+  if(cards.length>=3&&real.length&&cards.every(c=>c.code)&&oneRune(cards)){ const dur=cards.length>=4?8:5;
     out.push({kind:'set', rune:real[0], n:cards.length, dur, label:(cards.length>=4?'Grand Rune Set ':'Rune Set ')+real[0]+'×'+cards.length+': Wand ×2.5 '+dur+'s'}); }
   if(run){ const dur=run.length>=4?12:8; out.push({kind:'run', runes:run, dur, label:(run.length>=4?'Grand Rune Run ':'Rune Run ')+run.join('-')+': Haste + Courage '+dur+'s'}); }
   return out;
 }
-/* Rune Run: 3 or 4 cards whose runes are letters in a row (A-B-C, B-C-D … C-D-E-F), in any order;
-   a ✱ fills any gap. It gives you Haste and Courage (cards and wand +30%) for 8s, 12s with 4 cards.
-   Returns the letters of the run, or null. */
+/* Rune Run: 3 or 4 cards whose runes go up the alphabet one letter at a time, in queue order
+   (left to right: A-B-C, B-C-D … C-D-E-F); a ✱ stands in for the letter in its place. It gives
+   you Haste and Courage (cards and wand +30%) for 8s, 12s with 4 cards. Returns the letters of
+   the run, or null. */
 function runeRun(cards){ if(cards.length<3) return null;
   const L=typeof RUNES!=='undefined'?RUNES:['A','B','C','D','E','F'], codes=cards.map(c=>c.code);
-  const wild=codes.filter(k=>k===WILD_RUNE).length, idx=codes.filter(k=>k!==WILD_RUNE).map(k=>L.indexOf(k));
-  if(idx.length<2||idx.some(i=>i<0)||new Set(idx).size!==idx.length) return null;
-  const lo=Math.min(...idx), hi=Math.max(...idx); if(hi-lo+1>cards.length||(hi-lo+1)-idx.length>wild) return null;
-  const start=Math.max(0,Math.min(lo,L.length-cards.length)); return L.slice(start,start+cards.length); }
+  let start=null, real=0;
+  for(let i=0;i<codes.length;i++){ if(codes[i]===WILD_RUNE) continue; const k=L.indexOf(codes[i]); if(k<0) return null;
+    if(start===null) start=k-i; else if(k-i!==start) return null; real++; }
+  if(real<2||start<0||start+cards.length>L.length) return null;
+  return L.slice(start,start+cards.length); }
 // Leaving the Custom screen: combos lock in, and every empty slot adds 1 card to the next
 // draw (Battle Network style). A recipe replaces its cards with the fused card.
 function commitCustom(p){

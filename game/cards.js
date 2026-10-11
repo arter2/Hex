@@ -598,20 +598,23 @@ function cardText(c){
 // Premade decks: two colors, legendary x1 and everything else x4, then the highest-rank
 // cards lose copies (never below 2) until the deck fits.
 const STARTERS=[
-  {id:'burn_storm', name:'Burn Rush',   colors:['fire','storm'],    text:'Fast damage and stuns. End fights before the enemy acts.'},
-  {id:'frost_light',name:'Hold the Line', colors:['frost','light'],  text:'Freeze, shield and heal. Cancel attacks and outlast.'},
-  {id:'verd_shadow',name:'Bulwark Drain',colors:['verdant','shadow'],text:'Walls, poison and drain. Outlast the enemy.'},
-  {id:'fire_shadow',name:'Hellfire Pact', colors:['fire','shadow'],  text:'Burn and curse, then drain it back. Trade health for raw power.'},
-  {id:'frost_storm',name:'Blizzard',      colors:['frost','storm'],   text:'Freeze them in place, then shatter them with lightning.'},
-  {id:'verd_light', name:'Sacred Grove',  colors:['verdant','light'], text:'Summons, heals and blessings. Grow an army and keep it alive.'},
+  {id:'burn_storm', name:'Burn Rush',   colors:['fire','storm'],    text:'Fast damage and stuns. End fights before the enemy acts.', recipe:'r_inferno'},
+  {id:'frost_light',name:'Hold the Line', colors:['frost','light'],  text:'Freeze, shield and heal. Cancel attacks and outlast.', recipe:'r_fortress'},
+  {id:'verd_shadow',name:'Bulwark Drain',colors:['verdant','shadow'],text:'Walls, poison and drain. Outlast the enemy.', recipe:'r_citadel'},
+  {id:'fire_shadow',name:'Hellfire Pact', colors:['fire','shadow'],  text:'Burn and curse, then drain it back. Trade health for raw power.', recipe:'r_harvest'},
+  {id:'frost_storm',name:'Blizzard',      colors:['frost','storm'],   text:'Freeze them in place, then shatter them with lightning.', recipe:'r_thunder'},
+  {id:'verd_light', name:'Sacred Grove',  colors:['verdant','light'], text:'Summons, heals and blessings. Grow an army and keep it alive.', recipe:'r_grove'},
 ];
-function starterList(colors,size){
+// a starter deck: its two colors' signature cards, plus every card of one recipe (3 copies of its
+// key card), so new players can find a recipe early
+function starterList(colors,size,recipe){
   size=size||60;
   const count={};
   for(const col of colors) for(const c of SIGNATURE.concat(BROOD)) if(c.color===col) count[c.id]=c.rarity==='legendary'?1:c.brood?3:4;
+  const R=recipe&&RECIPES.find(r=>r.id===recipe); if(R) for(const id of R.cards) if(!count[id]) count[id]=CARDS[id].rarity==='legendary'?1:3;
   let total=Object.values(count).reduce((a,b)=>a+b,0);
   while(total>size){
-    const cut=Object.keys(count).filter(id=>CARDS[id].rarity!=='legendary'&&count[id]>2).sort((a,b)=>CARDS[b].rank-CARDS[a].rank||count[b]-count[a])[0];
+    const cut=Object.keys(count).filter(id=>CARDS[id].rarity!=='legendary'&&count[id]>2&&!(R&&R.cards.includes(id))).sort((a,b)=>CARDS[b].rank-CARDS[a].rank||count[b]-count[a])[0];
     if(!cut) break; count[cut]--; total--;
   }
   const list=[]; for(const id in count) for(let i=0;i<count[id];i++) list.push(id);

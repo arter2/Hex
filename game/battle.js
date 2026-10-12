@@ -335,6 +335,7 @@ function killEnemy(e){
     if(!spots.length&&!e.tile.occ) spots.push(e.tile);
     spots.forEach(t=>{ const m=makeEnemy(e.def.split,t,B.depth); m.atkT+=1; B.enemies.push(m); }); }
   if(!alive().length&&B.phase==='fight'){
+    if(!Number.isInteger(B.wave)) return;   // the next wave is already on its way
     if(B.wave<B.waves.length-1){ const nx=B.wave+1; later(1.1,()=>spawnWave(nx)); B.wave=nx-.5; return; }
     B.phase='win'; B.player.charging=false; later(1.2,()=>B.hooks.onEnd&&B.hooks.onEnd(true)); }
 }
@@ -345,6 +346,7 @@ function hitPlayer(dmg){
   if(p.dodge){ p.dodge=false; floater('dodge',p.tile,'#6fd6ff'); return; }
   if(p.dodgeChance&&Math.random()<p.dodgeChance){ floater('dodge',p.tile,'#9fdcff'); return; }
   if(p.blocksLeft>0){ p.blocksLeft--; floater('blocked',p.tile,'#f2c94c'); burst(p.tile,'#f2c94c',8,1); return; }
+  { const g=guards().sort((x,y)=>y.hp-x.hp)[0]; if(g){ B.fx.push({kind:'beam',a:g.tile,b:p.tile,color:'#b4b8c8',t:0,life:.25}); floater('guarded',p.tile,'#b4b8c8'); hitBlock(g,dmg,null); return; } }   // Gray Guardians (and Aegis gear) take the hit
   if(p.barrier>0){ const a=Math.min(p.barrier,dmg); p.barrier-=a; dmg-=a; floater('🛡'+a,p.tile,'#6fd6ff'); }
   if(heroAura('dodge')&&Math.random()<heroAura('dodge')){ floater('dodge',p.tile,'#9fdcff'); return; }
   if(p.guard&&dmg>0) dmg=Math.max(1,Math.round(dmg*(1-p.guard)));
@@ -366,6 +368,7 @@ function hitBlock(o,dmg,src){
 }
 function removeBlock(o){
   if(o.tile.occ===o) o.tile.occ=null; burst(o.tile,colorOf(o.card),12);
+  if(o.gear&&o.gear.length){ (B.gearDrop=B.gearDrop||[]).push(...o.gear); o.gear=null; floater('gear dropped',o.tile,'#c08a55'); }
   if(o===B.player.hero) heroLeaves();
   B.walls=B.walls.filter(w=>w!==o); B.allies=B.allies.filter(s=>s!==o);
 }
@@ -374,9 +377,19 @@ function payHp(n){ const p=B.player; if(!n) return; const c=Math.min(n,p.hp-1); 
 /* ---------------- casting ---------------- */
 // A card as cast: numbers scaled by any combo on its queue slot.
 function scaled(c,m){ if(!m||m===1) return c; const o=Object.assign({},c); for(const k of ['pow','amt','thorns','hp']) if(typeof o[k]==='number') o[k]=Math.round(o[k]*m); return o; }
+// Race tech (Brown): +10% for each other card of the same race in your hand
+const raceMult=(card,except)=>card.race?1+.1*B.piles.hand.filter(h=>h!==except&&h.card.race===card.race).length:1;
+// race tech also lifts the fractional numbers of gear, tinkers and Ace Enchantments
+function raceFrac(c,m){ if(m===1) return c; const o=Object.assign({},c); for(const k of ['tk','eqPow','upPow']) if(typeof o[k]==='number') o[k]=Math.round(o[k]*m*100)/100; return o; }
+// Unstable tech misfires 1 time in 5: it fizzles and burns you
+function misfire(c,p){ if(!c.unstable||Math.random()>=.2) return false;
+  const d=Math.round(6+(c.pow||c.amt||c.hp||20)*.15); payHp(d); floater('Misfire!',p.tile,'#ff8a3d',true); spray(p.tile,14,{shape:'spark',color:['#ffb04d','#5a4a3a','#ffffff'],v0:2,v:5,up0:1,up:4,g:6,drag:1,life:.5,s:4,add:true}); shake(4); return true; }
 function playCard(inst){ if(B&&B.player){ B.player.poseT=B.time; B.player.poseK='cast'; }
-  const b=B, p=b.player; let c=scaled(inst.card,(inst.mult||1)*(p.spell||1));
+  const b=B, p=b.player; let c=scaled(inst.card,(inst.mult||1)*(p.spell||1)*raceMult(inst.card,inst));
+  c=raceFrac(c,raceMult(inst.card,inst));
+  if(inst.extra) c=Object.assign({},c,inst.extra);   // a Tinker's keyword
   if(inst.brood) c=Object.assign({},c,{broodN:inst.brood,leader:inst.leader});
+  if(misfire(c,p)) return;
   b.log.push(c.name);
   b.hooks.onCast&&b.hooks.onCast(c,inst);
   B.fx.push({kind:'ring',a:p.tile,color:colorOf(c),t:0,life:.45}); burst(p.tile,colorOf(c),10,1.2);
@@ -439,6 +452,10 @@ const CAST={
   charge(c,p){ if(c.fx==='lob') lobFrom(p.tile,c,c.pow,0,.45,B.aim); else shoot(p.tile,lineTiles(p.tile,DIRS.E),{card:c,dmg:c.pow,from:'p'}); },
   utility(c,p){
     const pl=B.piles;
+    if(c.util==='search'){ const got=deckSearch(c); floater(got?'Found: '+got.card.name:'nothing found',p.tile,'#c08a55'); if(got) B.justDrawn=new Set([got.uid]); burst(p.tile,colorOf(c),10,1); return; }
+    if(c.util==='reshuffle'){ const r=reshuffleHand(pl); floater('Reshuffle: '+r.got.length+' new',p.tile,'#c08a55'); B.justDrawn=new Set(r.got.map(x=>x.uid)); burst(p.tile,colorOf(c),10,1); return; }
+    if(c.util==='keep'){ const r=reshuffleHand(pl,B.keepSet||new Set()); B.keepSet=null; floater('Kept '+pl.hand.filter(x=>!r.got.includes(x)).length+', drew '+r.got.length,p.tile,'#c08a55'); B.justDrawn=new Set(r.got.map(x=>x.uid)); burst(p.tile,colorOf(c),10,1); return; }
+    if(c.util==='recharge'){ const k=rechargeAll(pl,c.n); floater(k?'Recharged '+k+' card'+(k>1?'s':''):'no Charge cards',p.tile,'#c08a55'); burst(p.tile,colorOf(c),10,1); return; }
     if(c.util==='draw'){ const got=drawCards(pl,c.n); floater(got.length?'+'+got.length+' to hand':'deck empty',p.tile,'#7fd4ff'); }
     else if(c.util==='recall'){ const got=recallTop(pl); floater(got?'Recall: '+got.card.name:'nothing to recall',p.tile,'#7fd4ff'); }
     else if(c.util==='copy'){ const got=copyNext(pl); floater(got?'Copy: '+got.card.name:'nothing to copy',p.tile,'#7fd4ff'); }
@@ -454,6 +471,12 @@ const CAST={
     if(c.ai==='bulwark') return CAST.ward({ward:'wall',n:c.n,hp:c.hp,turns:c.turns,color:c.color,name:c.name},p);
     placeAlly(c,c.ai,c.hp,c.turns);
   },
+  equip(c,p){ equipAlly(c); },
+  ace(c,p){ loadAce(c); },
+  aceup(c,p){ enchantAce(c); },
+  // instants normally come from your hand (useInstant), but a copied or recalled one still works
+  instant(c,p){ CAST[c.as](c,p); },
+  tinker(c,p){ const t=bestTinkerTarget(); if(t) tinkerCard(c,t); },
   boon(c,p){
     const col=colorOf(c);
     switch(c.boon){
@@ -494,8 +517,84 @@ function placeAlly(c,ai,hp,turns,at){
   const p=B.player, t=at||placementTiles(1)[0];
   if(!t){ floater('no room',p.tile,'#ffb3a0'); return; }
   const a={kind:'ally',ai,card:c,tile:t,hp,maxHp:hp,turns:turns||1,maxTurns:turns||1,fireT:.4}; t.occ=a; B.allies.push(a); burst(t,colorOf(c),10,.4);
+  if(ai!=='sentry'&&ai!=='hero'&&B.gearDrop&&B.gearDrop.length){ const g=B.gearDrop; B.gearDrop=[]; g.forEach(x=>wearGear(a,x)); }   // dropped gear is picked up
   return a;
 }
+
+/* ---------------- Brown: instants, the deck tools, equipment and tinkering ---------------- */
+// Search: which deck cards a search card can find
+function deckSearch(c,pickUid){ const pl=B.piles;
+  if(c.find==='pick') return pickUid!=null?takeFromDeck(pl,pickUid):searchDeck(pl,x=>x.rank===Math.max(...pl.draw.map(d=>d.card.rank)));
+  if(c.find==='rune'){ const q=pl.queue.map(x=>x.card.code).find(k=>k&&k!==WILD_RUNE)||surgeRune(pl.hand)||(()=>{ const n={}; pl.hand.forEach(h=>{ const k=h.card.code; if(k&&k!==WILD_RUNE) n[k]=(n[k]||0)+1; }); return Object.keys(n).sort((a,b)=>n[b]-n[a])[0]; })();
+    return searchDeck(pl,x=>!q||x.code===q||x.code===WILD_RUNE); }
+  if(c.find==='attack'||c.find==='defense') return searchDeck(pl,x=>cardRole(x)===c.find);
+  if(c.find==='creature') return searchDeck(pl,x=>['summon','machine','sentry'].includes(x.type==='piece'?x.base:x.type));
+  return searchDeck(pl); }
+/* Use an instant from your hand, on the Spell screen or mid-fight. `choice` carries a pick when
+   the card needs one: {target: a card instance} for Tinker, {keep: Set of uids} for Keep and
+   Reshuffle, {uid} for a pick-any search. Returns false if it could not be used. */
+function useInstant(inst,choice){
+  const b=B; if(!b||(b.phase!=='fight'&&b.phase!=='custom')) return false;
+  const pl=b.piles, p=b.player, i=pl.hand.indexOf(inst); if(i<0||!isInstant(inst.card)) return false;
+  pl.hand.splice(i,1); pl.discard.push(inst);
+  const rm=raceMult(inst.card,inst); let c=raceFrac(scaled(inst.card,rm*(inst.card.as==='utility'?1:(p.spell||1))),rm);
+  b.log.push(c.name); b.hooks.onCast&&b.hooks.onCast(c,inst); soulGain(5);
+  B.fx.push({kind:'ring',a:p.tile,color:colorOf(c),t:0,life:.45});
+  if(misfire(c,p)) return true;
+  if(c.type==='tinker'){ const t=choice&&choice.target||bestTinkerTarget(); if(t) tinkerCard(c,t); else floater('nothing to tinker',p.tile,'#c08a55'); return true; }
+  if(c.as==='utility'&&c.util==='keep') B.keepSet=choice&&choice.keep||new Set();
+  if(c.as==='utility'&&c.util==='search'&&c.find==='pick'){ const got=deckSearch(c,choice&&choice.uid); floater(got?'Found: '+got.card.name:'nothing found',p.tile,'#c08a55'); if(got) B.justDrawn=new Set([got.uid]); return true; }
+  if(c.self&&c.as!=='boon') payHp(c.self);
+  CAST[c.as](c,p);
+  return true;
+}
+// mid-fight, a Tinker with nobody to ask picks your strongest card waiting in queue or hand
+function bestTinkerTarget(){ const pl=B.piles; return [...pl.queue,...pl.hand].filter(x=>!isInstant(x.card)&&!x.temp).sort((a,b)=>(b.card.pow||b.card.amt||b.card.hp||0)-(a.card.pow||a.card.amt||a.card.hp||0))[0]||null; }
+function tinkerCard(c,target){ target.mult=(target.mult||1)*(1+c.tk); target.tinker=(target.tinker||0)+c.tk;
+  const kw={}; for(const k of ['burn','freeze','stun','slow','poison','curse','drain','mend','confuse','push','pull','valor']) if(c[k]) kw[k]=c[k];
+  if(Object.keys(kw).length) target.extra=Object.assign(target.extra||{},kw);
+  floater('🔧 '+target.card.name+' +'+Math.round(c.tk*100)+'%',B.player.tile,'#c08a55'); }
+// Equipment goes on your strongest creature; with none, it waits and your next summon picks it up
+function equipAlly(c){ const a=B.allies.filter(x=>x.hp>0&&x.ai!=='sentry').sort((x,y)=>y.hp-x.hp)[0];
+  if(!a){ (B.gearDrop=B.gearDrop||[]).push(c); floater(c.name+' waits for a creature',B.player.tile,'#c08a55'); return; }
+  wearGear(a,c); }
+function wearGear(a,c){ (a.gear=a.gear||[]).push(c); if(c.eqHp){ a.maxHp+=c.eqHp; a.hp+=c.eqHp; } if(c.eqTurns){ a.turns+=c.eqTurns; a.maxTurns+=c.eqTurns; }
+  floater('⚔ '+c.name,a.tile,'#c08a55'); burst(a.tile,'#c08a55',10,1); }
+/* What an ally attacks with: its card, made stronger by Veteran turns (Gray), a Legend nearby
+   (Gray) and its equipment (Brown). */
+function allyCard(a){ const c=a.card; if(a.ai==='hero'||a.enemy) return c;
+  let m=1+(a.vet||0)*.1;
+  if(c.color==='gray'&&!c.legend&&B.allies.some(x=>x!==a&&x.hp>0&&x.card.legend)) m+=.25;
+  const kw={}; let rate=1;
+  for(const g of a.gear||[]){ if(g.eqPow) m+=g.eqPow; if(g.eqRate) rate*=g.eqRate; for(const k of ['burn','freeze','stun','slow','poison','curse','drain','mend','confuse']) if(g[k]) kw[k]=g[k]; }
+  if(m===1&&rate===1&&!Object.keys(kw).length) return c;
+  return Object.assign(scaled(c,m),kw,{rate:(c.rate||1)*rate}); }
+const guards=()=>B.allies.filter(a=>a.hp>0&&(a.card.color==='gray'&&a.ai==='guardian'||(a.gear||[]).some(g=>g.eq==='aegis')));
+
+/* ---------------- the Sidearm and its Ace ----------------
+   An Ace card loads into your Sidearm instead of going off. Ace Enchantments (from any color)
+   add power, a new shape or their effects, up to ×3. You fire it when you choose; loading another
+   Ace replaces it, and it is gone when the fight ends. */
+const ACE_MAX=3;
+function loadAce(c){ const old=B.sidearm, pend=B.acePending||[]; B.acePending=[];
+  B.sidearm={card:c, mult:1, shape:c.shape, kw:{}, name:c.name};
+  pend.forEach(enchantAce);
+  floater((old?'Swapped: ':'Loaded: ')+c.name,B.player.tile,'#ffe066',true); B.fx.push({kind:'ring',a:B.player.tile,color:'#ffe066',t:0,life:.6}); }
+function enchantAce(c){ const s=B.sidearm;
+  if(!s){ (B.acePending=B.acePending||[]).push(c); floater('♤ waits for an Ace',B.player.tile,colorOf(c)); return; }
+  s.mult=Math.min(ACE_MAX,s.mult+(c.upPow||0)); if(c.upShape) s.shape=c.upShape;
+  for(const k of ['burn','freeze','stun','slow','poison','curse','drain','mend','confuse','push','pull','valor']) if(c[k]) s.kw[k]=Math.max(s.kw[k]||0,c[k]);
+  s.tint=c.color; floater('♤ Ace ×'+s.mult.toFixed(1),B.player.tile,colorOf(c),true); burst(B.player.tile,colorOf(c),14,1.2); }
+function fireAce(){ const b=B; if(!b||b.phase!=='fight'||!b.sidearm) return false;
+  const s=b.sidearm, p=b.player; b.sidearm=null;
+  const c=Object.assign(scaled(s.card,s.mult*(p.spell||1)),s.kw,{shape:s.shape==='nova'||s.shape==='twin'?'line':s.shape});
+  floater(s.name+'!',p.tile,'#ffe066',true); shake(8); B.fx.push({kind:'ring',a:p.tile,color:'#ffe066',t:0,life:.7}); burst(p.tile,'#ffe066',24,1.4);
+  b.hooks.onCast&&b.hooks.onCast(c,{combo:'Ace ×'+s.mult.toFixed(1)});
+  if(s.shape==='nova'){ const t=b.aim||nearestEnemyTile(p.tile); b.aim=null; if(t){ B.fx.push({kind:'beam',a:p.tile,b:t,color:'#ffe066',t:0,life:.4}); patternTiles(t,'burst','e').forEach(x=>{ flash(x,colorOf(c),1); burst(x,colorOf(c),8,.4); hitAt(x,c.pow,c); }); } }
+  else if(s.shape==='twin'){ CAST.strike(c,p); later(.2,()=>CAST.strike(c,p)); }
+  else CAST.strike(c,p);
+  b.hooks.onAce&&b.hooks.onAce(s);
+  return true; }
 
 /* ---------------- heroes ----------------
    A hero stands on your side for a few turns, attacks on its own, and while it stands it
@@ -553,6 +652,7 @@ function endTurn(){
   if(p.shieldTurns>0&&--p.shieldTurns<=0&&p.barrier>0){ p.barrier=0; floater('shield fades',p.tile,'#6fd6ff'); }
   for(const e of alive()) if(e.shieldTurns>0&&--e.shieldTurns<=0) e.barrier=0;
   for(const o of [...b.walls,...b.allies]) if(--o.turns<=0){ floater('expired',o.tile,'#9fdcff'); removeBlock(o); }
+  for(const a of b.allies) if(a.hp>0&&a.card.color==='gray'&&a.ai!=='hero'){ a.vet=(a.vet||0)+1; floater('Veteran +'+a.vet*10+'%',a.tile,'#b4b8c8'); }   // Gray: Veteran
   for(const t of TILES){
     if(t.trap&&--t.trap.turns<=0) t.trap=null;
     if(t.envTurns>0&&--t.envTurns<=0){ t.burnT=0; t.iceT=0; t.thornT=0; }
@@ -563,7 +663,7 @@ function endTurn(){
 function updateAlly(a,dt){
   a.fireT-=dt;
   if(a.fireT>0) return;
-  const c=a.card; a.fireT=c.rate||1;
+  const c=allyCard(a); a.fireT=c.rate||1;
   if(a.enemy){ shoot(a.tile,lineTiles(a.tile,DIRS.W),{dmg:a.pow,from:'e',owner:null,color:colorOf(c)}); return; }
   const es=alive(); if(!es.length&&a.ai!=='healer') return;
   const inRow=es.filter(e=>e.tile.r===a.tile.r);

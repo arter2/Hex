@@ -1081,3 +1081,19 @@ body.lsS #custHand .slot.hole{min-height:104px;}
 #custCombo .rcp{color:#1a0630; background:#c58bff; border-color:#c58bff;}
 @media (prefers-reduced-motion:reduce){ .hand .card.recipe-ready{animation:none;} }
 #custRecipe.surge{background:#1a0c2e; border:2px solid #b46cff; animation:none;}
+
+/* Brown instants, the picker and the Sidearm */
+.inst-row{display:flex; gap:6px; overflow-x:auto; margin-bottom:6px; scrollbar-width:none;}
+.inst-row .btn.inst{flex:0 0 auto; min-height:34px; padding:4px 10px; font-size:13px; border:2px solid var(--c); background:color-mix(in srgb,var(--c) 22%,#0b141e); white-space:nowrap;}
+.card.instant{outline:2px dashed #c08a55; outline-offset:-3px;}
+.card .badge.inst{background:#c08a55; color:#1a1008;}
+.card .badge.tink{background:#5a3a1a; color:#ffd9a0; border:1px solid #c08a55;}
+#picker .hand .card.picked{outline:3px solid var(--gold); outline-offset:-3px; transform:translateY(-4px);}
+#picker .row{display:flex; gap:8px; margin-top:10px;}
+#picker .row .btn{flex:1;}
+#picker{z-index:6;}
+.controls.battle.has-ace{grid-template-columns:1fr 1fr 1fr;}
+.btn.ace{border:2px solid #ffe066; background:linear-gradient(0deg,rgba(255,224,102,.35) var(--k,0%),transparent var(--k,0%)),#1a1608; color:#ffe066;}
+.btn.ace.hot{box-shadow:0 0 14px #ffe066; animation:aceHot 1s ease-in-out infinite alternate;}
+@keyframes aceHot{from{box-shadow:0 0 6px #ffe066;}to{box-shadow:0 0 18px #ffb04d;}}
+body.lsS .controls.battle.has-ace{grid-template-columns:1fr;}

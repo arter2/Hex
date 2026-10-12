@@ -60,7 +60,10 @@ function runesFit(cards){
 // true if these cards are all part of one recipe (any order, copies counted)
 function fitsRecipe(r,cards){ const need=r.cards.slice(); return cards.every(c=>{ const i=need.indexOf(c.id); if(i<0) return false; need.splice(i,1); return true; }); }
 function recipeStep(cards){ const list=typeof RECIPES!=='undefined'?RECIPES:[]; return list.some(r=>fitsRecipe(r,cards)); }
-const canQueue=(p,inst)=>p.queue.length<slotsOf(p);
+// Instants (and Tinker) are never queued: you tap them in your hand and they act at once.
+const TAP_TYPES=['instant','tinker'];
+const isInstant=c=>!!c&&TAP_TYPES.includes(c.type);
+const canQueue=(p,inst)=>p.queue.length<slotsOf(p)&&!(inst&&isInstant(inst.card));
 // one rune (wild cards fit any) — what a Flush or a Straight needs
 const oneRune=cards=>new Set(cards.map(c=>c.code).filter(k=>k&&k!==WILD_RUNE)).size<=1;
 
@@ -148,6 +151,7 @@ function placeCard(p,uid,zone,index){
   const qi=p.queue.findIndex(c=>c.uid===uid), hi=p.hand.findIndex(c=>c.uid===uid);
   if(qi<0&&hi<0) return false;
   const src=qi>=0?p.queue:p.hand, si=qi>=0?qi:hi, dst=zone==='queue'?p.queue:p.hand, card=src[si];
+  if(zone==='queue'&&isInstant(card.card)) return false;
   if(index==null) index=dst.length;
   if(src!==dst&&zone==='queue'&&p.queue.length>=slotsOf(p)){ const ti=Math.min(index,slotsOf(p)-1), other=p.queue[ti];
     p.queue[ti]=card; p.hand[si]=other; return true; }
@@ -178,7 +182,23 @@ function recallTop(p){ if(!p.draw.length||p.queue.length>=slotsOf(p)) return nul
 function copyNext(p){ const c=p.queue[0]; if(!c||p.queue.length>=slotsOf(p)) return null;
   const cp={uid:p.uid++, card:c.card, temp:true}; p.queue.unshift(cp); return cp; }
 
+/* Brown's deck tools.
+   Search: a random card of your deck that passes `test` goes to your hand.
+   Reshuffle: the hand (but the cards you keep) goes back into the deck, the deck is shuffled,
+   and you draw back up to a full hand. */
+function searchDeck(p,test){ const ok=p.draw.filter(c=>!test||test(c.card)); if(!ok.length) return null;
+  const c=ok[Math.floor((p.rng||Math.random)()*ok.length)]; p.draw.splice(p.draw.indexOf(c),1); p.hand.push(c); return c; }
+function takeFromDeck(p,uid){ const i=p.draw.findIndex(c=>c.uid===uid); if(i<0) return null; const c=p.draw.splice(i,1)[0]; p.hand.push(c); return c; }
+function reshuffleHand(p,keep){ keep=keep||new Set();
+  const back=p.hand.filter(c=>!keep.has(c.uid)&&!c.temp); p.hand=p.hand.filter(c=>keep.has(c.uid));
+  p.draw.push(...back); shuffle(p.draw,p.rng);
+  const got=drawCards(p,Math.max(0,RULES.hand-p.hand.length)); return {back:back.length, got}; }
+// Recharge: every Charge card in this battle gets uses back (never past its full count)
+function rechargeAll(p,n){ let k=0;
+  for(const c of [...p.draw,...p.hand,...p.queue,...p.discard]) if(c.card.uses&&!c.temp){ const was=c.left==null?c.card.uses:c.left, now=Math.min(c.card.uses,was+n); if(now>was){ c.left=now; k++; } }
+  return k; }
+
 // Nothing left to draw, hold or cast: the fight continues with the wand only.
 function wandOnly(p){ return !p.draw.length && !p.hand.length && !p.queue.length; }
 
-if(typeof module!=='undefined') module.exports={oneRune,slotsOf,surgeRune,runesFit,canQueue,findRecipe,RULES,detectCombos,placeCard,validateDeck,shuffle,createPiles,openCustom,commitCustom,toggleQueue,castNext,drawCards,recallTop,copyNext,wandOnly};
+if(typeof module!=='undefined') module.exports={isInstant,TAP_TYPES,searchDeck,takeFromDeck,reshuffleHand,rechargeAll,oneRune,slotsOf,surgeRune,runesFit,canQueue,findRecipe,RULES,detectCombos,placeCard,validateDeck,shuffle,createPiles,openCustom,commitCustom,toggleQueue,castNext,drawCards,recallTop,copyNext,wandOnly};

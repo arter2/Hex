@@ -190,7 +190,9 @@ const THING_WORDS={Bomb:'bomb',Orb:'orb',Pot:'pot',Mortar:'mortar',Comet:'comet'
   Flask:'flask',Quiver:'quiver',Satchel:'satchel',Pouch:'pouch',Vial:'vial',Cask:'cask',Bundle:'bundle',Charm:'charm',Censer:'censer',
   Scroll:'scroll',Tome:'tome',Lens:'lens',Codex:'codex',Map:'map',Key:'key',Compass:'compass',Candle:'candle',
   Snare:'snare',Trap:'trap',Glyph:'glyph',Mine:'mine',Tripwire:'tripwire',Pitfall:'pitfall',Jaw:'jaw',Rune:'rune',Pit:'pitfall',
-  Crown:'crown',Heart:'heart',Draught:'flask',Tonic:'vial',Elixir:'flask',Wind:'feather',Eye:'eye',Sigil:'sigil',Tree:'tree',Eclipse:'eclipse',Zero:'crystal',Dawnbreaker:'sun',Pact:'skull',Tailwind:'boot'};
+  Crown:'crown',Heart:'heart',Draught:'flask',Tonic:'vial',Elixir:'flask',Wind:'feather',Eye:'eye',Sigil:'sigil',Tree:'tree',Eclipse:'eclipse',Zero:'crystal',Dawnbreaker:'sun',Pact:'skull',Tailwind:'boot',
+  Potion:'flask',Philter:'vial',Brew:'cask',Gauntlet:'fist',Gauntlets:'fist',Wrench:'key',Goggles:'lens',Spyglass:'lens',Monocle:'lens',Clock:'hourglass',Clockwork:'hourglass',Banner:'banner',Standard:'banner',
+  Helm:'crown',Amulet:'charm',Talisman:'charm',Ring:'halo',Deck:'cards',Card:'cards',Cards:'cards',Ace:'cards',Lamp:'lantern',Battery:'pylon',Coil:'pylon',Grenade:'bomb',Rocket:'comet'};
 const BOON_THING={heal:'heart',regen:'sprout',power:'flamesword',courage:'banner',pact:'skull',haste:'boot',dodge:'feather',phase:'ghost',gauge:'hourglass',intervene:'halo'};
 
 /* ---------------- creatures, from parts ---------------- */
@@ -344,6 +346,14 @@ const CREATURE_PLAN={
   Crow:{plan:'bird',fly:1,coat:'#1a1a2a',beak:'beak',beakMat:'k',size:.85},
   Cat:{plan:'quad',coat:'#1a1a2a',snout:'short',muzzle:'c',ears:'point',tail:'thin',eyes:'glow',size:.75,belly:false},
   Jiangshi:{plan:'biped',coat:'#a8c8a8',skin:'c',body:'robe',robe:'a',hat:'cap'},
+  // Gray: the normal type
+  Armor:{plan:'biped',coat:'#9aa0b0',body:'armor',hat:'helm',skin:'g',eyes:'A',weapon:'sword',shield:'a',size:1.05},
+  Gargoyle:{plan:'biped',coat:'#8a8a94',head:'beast',horns:1,skin:'c',body:'bare',robe:'c',wings:'k',weapon:'claws'},
+  Hero:{plan:'biped',vary:{hat:['helm','crown','none','hood'],weapon:['sword','spear','bow','axe','hammer'],body:['armor','robe'],skin:['h','j','u','v']}},
+  Heroine:{plan:'biped',hair:'long',vary:{hat:['none','helm','crown'],weapon:['sword','spear','bow','staff'],body:['armor','robe'],skin:['h','j','u','v'],hairMat:['k','b','y','r']}},
+  Horse:{plan:'quad',coat:'#8a5a3a',snout:'long',ears:'point',mane:'k',legs:'long',hoof:1,tail:'bushy',neck:2},
+  Hippogriff:{plan:'quad',coat:'#b0a090',snout:'hook',crest:'w',wings:'feather',wingMat:'w',legs:'long',hoof:1,tail:'bushy'},
+  Mimic:{plan:'golem',coat:'#8a5a2a'},
 };
 // heroes who are creatures, not people: drawn with that creature's body, a little larger
 const HERO_BODY={ignis:'Dragon', phoenixia:'Phoenix', scorch:'Fox', nix:'Owl', thunderbird:'Roc', oakheart:'Ent', grovewalker:'Ent', mossback:'Tortoise',
@@ -555,7 +565,7 @@ function beast(sp0,mod,c){ let sp=sp0;
     if(sp.wings) wings(bx+B(3),cy-ry+B(2.5),sp.wings);
   }
   else if(P==='biped'){ const o=Object.assign({},sp);
-    if(sp.vary){ o.hat=o.hat||pick(sp.vary.hat||['none'],1); o.weapon=o.weapon||pick(sp.vary.weapon||['none'],3); o.robe=o.robe||pick(sp.vary.robe||[C2],5); o.body=o.body||pick(sp.vary.body||['robe'],7); }
+    if(sp.vary){ o.hat=o.hat||pick(sp.vary.hat||['none'],1); o.weapon=o.weapon||pick(sp.vary.weapon||['none'],3); o.robe=o.robe||pick(sp.vary.robe||[C2],5); o.body=o.body||pick(sp.vary.body||['robe'],7); if(sp.vary.skin) o.skin=pick(sp.vary.skin,9); if(sp.vary.hairMat) o.hairMat=pick(sp.vary.hairMat,11); }
     if(c&&c.name){ const nm=c.name; const W=[[/Pirate|Buccaneer|Corsair|Captain/,'tricorn','sword'],[/Samurai|Ronin/,'kabuto','sword'],[/Archer|Ranger|Hunter|Bow/,null,'bow'],[/Musket|Gunner|Rifle|Pistol/,null,'gun'],[/Monk|Hermit|Sage|Scribe|Scholar|Astronomer/,null,'book'],[/Lancer|Spear|Immortal|Hoplite|Legion/,'helm','spear'],[/Mamluk|Sultan|Vizier|Bazaar|Desert|Bedouin/,'turban',null],[/Smith|Miner|Forge/,null,'hammer'],[/Knight|Paladin|Crusader|Templar|Sir /,'helm','sword'],[/Witch|Hag|Crone/,'witch',null],[/Druid|Shaman|Curandero/,'antler','staff'],[/King|Queen|Emperor|Pharaoh|Warlord|Chieftain/,'crown',null],[/Lantern/,null,'lantern'],[/Alchemist|Physician|Doctor|Healer/,null,'orb']];
       for(const [re,hat,wp] of W) if(re.test(nm)){ if(hat) o.hat=hat; if(wp) o.weapon=wp; break; } }
     person(o); }
@@ -1025,7 +1035,9 @@ const words=c=>c.name.replace(/[,]/g,'').replace(/ of the /,' ').split(/\s+/);
 function findWord(c,table){ const ws=words(c); for(let i=ws.length-1;i>=0;i--) if(table[ws[i]]) return table[ws[i]]; return null; }
 // what the picture shows: [kind, key] for the subject
 function subjectOf(c){
-  const kind=c.type==='piece'?c.base:c.type;
+  const kind=c.type==='piece'?c.base:c.type==='instant'?c.as:c.type;
+  if(kind==='equip'||kind==='tinker'||kind==='ace'||kind==='aceup'){ const t=findWord(c,THING_WORDS);
+    return ['thing',t||(kind==='equip'?{blade:'flamesword',plate:'aegis',spring:'charm',aegis:'shield',banner:'banner',rune:'rune'}[c.eq]:kind==='tinker'?'key':kind==='ace'?'cards':'sigil')||'charm']; }
   if(kind==='hero') return ['hero',c.hero];
   if(c.type==='piece') return ['thing',findWord(c,THING_WORDS)||'sigil'];
   if(kind==='summon') return ['creature',creatureOf(c)];

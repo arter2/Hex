@@ -34,7 +34,14 @@ const TYPES={
   summon:{name:'Summon', icon:'🐾', text:'A creature that fights for a set time'},
   machine:{name:'Machine',icon:'⚙', text:'A turret, wall or construct'},
   hero:  {name:'Hero',   icon:'♔', text:'Calls a hero to fight beside you and empower you'},
+  instant:{name:'Instant',icon:'✧', text:'Tap it in your hand to use it at once, even mid-fight; it never takes a queue slot'},
+  equip: {name:'Equipment',icon:'⚔', text:'Gear for one of your creatures; it drops when the creature falls and your next summon picks it up'},
+  tinker:{name:'Tinker', icon:'🔧', text:'Tap it, then pick a card in your hand or queue: that card is upgraded for the whole battle'},
+  ace:   {name:'Ace',    icon:'♠', text:'Loads into your Sidearm instead of going off; fire it when you need a finisher'},
+  aceup: {name:'Ace Enchantment',icon:'♤', text:'Powers up or changes the Ace in your Sidearm (or the next one you load)'},
 };
+// Brown's races: tech of the same race gets stronger for each other card of that race in your hand
+const RACES_TECH={dwarf:'Dwarven', gnome:'Gnomish', elf:'Elven', goblin:'Goblin', alchemy:'Desert alchemy', sea:'Sea-folk', sky:'Sky-folk', human:'Human', troll:'Troll', djinn:'Djinn'};
 const RARITY={common:{n:'Common',g:'●'}, uncommon:{n:'Uncommon',g:'◆'}, rare:{n:'Rare',g:'★'}, legendary:{n:'Legendary',g:'✹'}, hero:{n:'Hero',g:'♔'}};
 
 // shape (strike): line = first enemy in row, row = every enemy in row, wedge = short cone,
@@ -132,8 +139,8 @@ const TRAITS={
   verdant:{shapes:['line','wedge','wedge','line','dig'], kws:['poison','slow','drain','pull'], traps:['snare','spike','spike'], envs:['bramble','bramble','freeze'],  boons:['heal','regen','regen'],  wards:['thorns','wall','barrier'], util:['cleanse','draw'], piece:'boon'},
   light:  {shapes:['line','missiles','all','line','diag'], kws:['mend','valor','mend','push'], traps:['snare','blast'], envs:['burn','tremor'],     boons:['heal','courage','intervene','regen'], wards:['barrier','barrier','wall'], util:['cleanse','draw','copy'], piece:'boon'},
   shadow: {shapes:['line','row','line','all','dig'], kws:['curse','drain','self','confuse','pull'], traps:['spike','snare'], envs:['bramble','burn'],   boons:['pact','pact','heal'],    wards:['wall','thorns','wall'],    util:['copy','draw','cleanse'], piece:'strike'},
-  gray:   {kws:[null], piece:'summon'},
-  brown:  {kws:[null], piece:'machine'},
+  gray:   {kws:[null], piece:'summon', shapes:['line','wedge'], wards:['wall','barrier'], boons:['courage','power','haste'], util:['draw']},
+  brown:  {kws:[null], piece:'machine', shapes:['line','missiles','wedge','row'], wards:['barrier','wall'], boons:['heal','haste','power','regen','dodge','courage','gauge'], util:['draw','search','recharge'], traps:['blast','spike','snare'], envs:['burn','tremor']},
 };
 const WORDS={
   fire:   ['Cinder','Ember','Blaze','Scorch','Ash','Magma','Flare','Pyre','Inferno','Kindling','Char','Smolder','Searing','Molten','Wildfire','Brand','Sunfire','Flame','Hearth','Ignis'],
@@ -171,7 +178,11 @@ function generateCards(){
     const neutral=COLORS[fam].neutral, plan=TYPE_PLAN[neutral?fam:'color'], tr=TRAITS[fam];
     const sig=SIGNATURE.filter(c=>c.color===fam);
     // a hand-written set (cardsets.js) replaces the generated cards of this color
-    if(typeof CARD_SETS!=='undefined'&&CARD_SETS[fam]){ out.push(...authoredCards(fam,parseCardSet(CARD_SETS[fam]),rng,pk,ri,tr,names)); continue; }
+    if(typeof CARD_SETS!=='undefined'&&CARD_SETS[fam]){ out.push(...authoredCards(fam,parseCardSet(CARD_SETS[fam]),rng,pk,ri,tr,names));
+      // later additions to a color (its Aces and Ace Enchantments) roll on their own, so the set's cards keep their ranks
+      if(typeof CARD_EXTRAS!=='undefined'&&CARD_EXTRAS[fam]){ const r2=mulberry32(seedOf('hexmancers:extra:'+fam));
+        out.push(...authoredCards(fam,parseCardSet(CARD_EXTRAS[fam]),r2,a=>a[Math.floor(r2()*a.length)],(a,b)=>a+Math.floor(r2()*(b-a+1)),tr,names)); }
+      continue; }
     const need=Object.assign({},plan); sig.forEach(c=>need[c.type]--);
     const rar=Object.assign({},RARITY_PLAN); sig.forEach(c=>rar[c.rarity]--);
     rar.legendary-=need.piece;
@@ -206,7 +217,7 @@ function generateCards(){
    variant (shape, pattern, ward...), keyword and art. Ranks 1-12 are still spread evenly and
    shuffled, and BUILD makes the stats, so power follows rank and rarity as everywhere else.
    Ids stay color_type_NN, so cards in a save keep their place (with the new card's look). */
-const SET_FIELDS=['shape','pattern','ward','boon','util','trap','env','ai','fx'];
+const SET_FIELDS=['shape','pattern','ward','boon','util','trap','env','ai','fx','as','find','eq','race'];
 function authoredCards(fam,list,rng,pk,ri,tr,names){
   const out=[], count={}, ranks=list.map((_,i)=>i%12+1);
   for(let i=ranks.length-1;i>0;i--){ const j=Math.floor(rng()*(i+1)); [ranks[i],ranks[j]]=[ranks[j],ranks[i]]; }
@@ -222,6 +233,9 @@ function authoredCards(fam,list,rng,pk,ri,tr,names){
     BUILD[base](c,F,rank,kw,tr,pk,ri);
     if(type==='piece'){ c.base=base; c.piece=true; }
     if(e.o.body) c.body=e.o.body; if(e.o.mod) c.mod=e.o.mod; if(e.o.mach) c.mach=e.o.mach;
+    if(e.o.legend) c.legend=true;
+    // Unstable (goblin and gremlin tech): 30% stronger, but 1 in 5 casts misfire
+    if(e.o.unstable){ c.unstable=true; for(const k of ['pow','amt','hp','eqHp']) if(typeof c[k]==='number') c[k]=Math.round(c[k]*1.3); if(c.tk) c.tk=r1(c.tk*1.3); if(c.upPow) c.upPow=r1(c.upPow*1.3); }
     if(names.has(e.name)) throw new Error('card set '+fam+': the name "'+e.name+'" is taken');
     names.add(e.name); c.name=e.name; out.push(c); }
   return out; }
@@ -260,13 +274,32 @@ const BUILD={
     c.pow=Math.max(4,Math.round(16*F*k/Math.sqrt(c.uses/3)));
   },
   utility(c,F,rank,kw,tr,pk){ c.util=c.util||pk(tr.util);
-    if(c.util==='draw') c.n=1+(rank>5?1:0)+(rank>9?1:0); if(c.util==='cleanse') c.amt=Math.round(15*F); },
+    if(c.util==='draw') c.n=1+(rank>5?1:0)+(rank>9?1:0); if(c.util==='cleanse') c.amt=Math.round(15*F);
+    if(c.util==='recharge') c.n=1+Math.floor(rank/4)+(c.rarity==='legendary'?2:0);
+    if(c.util==='search') c.find=c.find||{common:'any',uncommon:pk(['attack','defense','creature']),rare:'rune',legendary:'pick'}[c.rarity]; },
   summon(c,F,rank,kw,tr,pk){ c.ai=c.ai||pk(['shooter','shooter','bomber','healer','guardian']);
     c.hp=Math.round(40*F*(c.ai==='guardian'?2.5:1)); c.dur=Math.round(12+rank*1.5+(c.ai==='guardian'?6:0));
     if(c.ai==='shooter'){ c.pow=Math.round(10*F); c.rate=1.2; }
     if(c.ai==='bomber'){ c.pow=Math.round(18*F); c.rate=2.2; }
     if(c.ai==='healer'){ c.amt=Math.round(4*F); c.rate=2; }
     if(c.ai==='guardian'){ c.pow=Math.round(6*F); c.rate=1.5; } },
+  // an instant is another kind of card (as=boon, utility, strike, lob, ward) that you tap to use;
+  // its attacks are a little weaker, since it costs no slot and can come at any time
+  instant(c,F,rank,kw,tr,pk,ri){ c.as=c.as||'boon'; BUILD[c.as](c,c.as==='strike'||c.as==='lob'?F*.8:F,rank,kw,tr,pk,ri);
+    if(c.as==='lob') c.delay=c.delay||.45; },
+  // equipment: eq = blade (+power), plate (+HP), spring (attacks faster), aegis (it guards you),
+  // banner (+1 turn) or rune (its attacks carry the card's keyword)
+  equip(c,F,rank,kw,tr,pk){ c.eq=c.eq||pk(['blade','plate','spring']); if(kw&&kw!=='self') applyKw(c,kw,rank);
+    if(c.eq==='blade'||c.eq==='rune') c.eqPow=r1(.2+.15*F); if(c.eq==='plate'||c.eq==='aegis') c.eqHp=Math.round(30*F);
+    if(c.eq==='spring') c.eqRate=r1(Math.max(.5,.8-.05*F)); if(c.eq==='banner'){ c.eqTurns=1; c.eqPow=r1(.1*F); } },
+  // tinker: the card you pick gets +tk power for the battle (and this card's keyword, if any)
+  tinker(c,F,rank,kw,tr,pk){ if(kw&&kw!=='self') applyKw(c,kw,rank); c.tk=r1(.15+.12*F); },
+  // an Ace: a finisher that waits in your Sidearm. shape: line (first enemy in your row),
+  // row (every enemy in your row), all (every enemy), nova (the nearest enemy and around it)
+  ace(c,F,rank,kw,tr,pk){ c.shape=c.shape||pk(['line','row','nova','all']); const k=applyKw(c,kw,rank);
+    c.pow=Math.round({line:70,row:56,nova:52,all:40,twin:44}[c.shape]*F*k); },
+  // an Ace Enchantment: +upPow power for the Sidearm's Ace, and it can change its shape or add its keyword
+  aceup(c,F,rank,kw,tr,pk){ if(kw&&kw!=='self') applyKw(c,kw,rank); c.upPow=r1(.2+.1*F); if(c.shape) c.upShape=c.shape; delete c.shape; },
   machine(c,F,rank,kw,tr,pk){ c.ai=c.ai||pk(['turret','turret','bulwark','mortar','repeater']);
     if(c.ai==='turret'){ c.pow=Math.round(9*F); c.rate=1.4; c.hp=Math.round(45*F); c.dur=30; }
     if(c.ai==='repeater'){ c.pow=Math.round(5*F); c.rate=.5; c.hp=Math.round(35*F); c.dur=20; }
@@ -452,13 +485,13 @@ const HEROES=[
 ].map(h=>Object.assign({type:'hero', rank:7, rarity:'hero', turns:3},h));
 // Signature cards spread over 1-12 as well: damage cards take the odd ranks, the rest the even ones.
 SIGNATURE.forEach(c=>{ c.rank=c.rank*2-(c.type==='strike'||c.type==='lob'?1:0); });
-/* Potions: four gray cards you can put in any deck. Added after the heroes so ids stay put. */
+/* Potions: four Brown instants you can put in any deck. Added after the heroes so ids stay put. */
 const POTIONS=[
-  {id:'potion_heal',  name:'Healing Draught',   type:'boon',    boon:'heal',  amt:40,          rank:3, rarity:'common'},
-  {id:'potion_tonic', name:'Iron Tonic',        type:'ward',    ward:'barrier', amt:40, turns:2, rank:5, rarity:'common'},
-  {id:'potion_elixir',name:'Quicksilver Elixir',type:'boon',    boon:'haste', dur:10,          rank:7, rarity:'uncommon'},
-  {id:'potion_wind',  name:'Second Wind',       type:'utility', util:'draw',  n:2,             rank:9, rarity:'uncommon'},
-].map(c=>Object.assign({color:'gray', potion:true},c));
+  {id:'potion_heal',  name:'Healing Draught',   as:'boon',    boon:'heal',  amt:40,          rank:3, rarity:'common'},
+  {id:'potion_tonic', name:'Iron Tonic',        as:'ward',    ward:'barrier', amt:40, turns:2, rank:5, rarity:'common'},
+  {id:'potion_elixir',name:'Quicksilver Elixir',as:'boon',    boon:'haste', dur:10,          rank:7, rarity:'uncommon'},
+  {id:'potion_wind',  name:'Second Wind',       as:'utility', util:'draw',  n:2,             rank:9, rarity:'uncommon'},
+].map(c=>Object.assign({color:'brown', type:'instant', race:'alchemy', potion:true},c));   // potions are Brown instants now (they were Gray boons)
 /* The Brood (verdant): each card summons a little creature that pounces on the nearest enemy.
    Queue 2 Brood cards for a Pack (each brings two, +25%), 3 for a Swarm (two each, +50%, and a
    Bramble Ogre leads them), and 4 (with the Rune Surge slot) to fuse them into the Elder Grovebeast,
@@ -476,7 +509,7 @@ const CARD_LIST=SIGNATURE.concat(generateCards(),HEROES,POTIONS,BROOD);
    traps and changed ground each have HP (or a strength) and a turn limit. A turn ends each time
    the Custom screen opens. Applied after generation, so card ids are unchanged. */
 function boardTurns(c){
-  const k=c.type==='piece'?c.base:c.type, big=c.rarity==='rare'||c.rarity==='legendary';
+  const k=c.type==='piece'?c.base:c.type==='instant'?c.as:c.type, big=c.rarity==='rare'||c.rarity==='legendary';
   if(k==='ward') c.turns=big?3:2;
   else if(k==='sentry'){ c.turns=Math.max(1,Math.round(c.dur/7)); c.hp=40; delete c.dur; }
   else if(k==='summon'||(k==='machine'&&c.ai!=='bulwark')){ c.turns=Math.max(1,Math.round(c.dur/10)); delete c.dur; }
@@ -485,6 +518,8 @@ function boardTurns(c){
   else if(k==='environment'&&c.dur){ c.turns=c.dur>=10?2:1; delete c.dur; }
 }
 CARD_LIST.forEach(boardTurns);
+// Gray creatures stay a turn longer: Veteran makes them better the longer they stand
+CARD_LIST.forEach(c=>{ if(c.color==='gray'&&c.type==='summon'&&c.turns) c.turns++; });
 
 /* Rune codes (Battle Network style). Every card carries a rune, A to F, or the rare wild ✱.
    The cards you queue in one turn must share a rune or a name (✱ fits any rune), so a combo
@@ -547,7 +582,8 @@ const CARDS={}; CARD_LIST.forEach(c=>CARDS[c.id]=c);
    attack = damages enemies, defense = shields, walls and healing, turret = towers, summons,
    machines and heroes that act on their own, status = buffs, debuffs, ground and card tricks. */
 const ROLES={attack:{name:'Attack',icon:'⚔',c:'#ff5d6c'}, defense:{name:'Defense',icon:'🛡',c:'#7fd4ff'}, turret:{name:'Turret',icon:'♜',c:'#39ff8a'}, status:{name:'Status',icon:'✦',c:'#f2c94c'}};
-function cardRole(c){ const k=c.type==='piece'?c.base:c.type;
+function cardRole(c){ const k=c.type==='piece'?c.base:c.type==='instant'?c.as:c.type;
+  if(k==='ace') return 'attack'; if(k==='equip'||k==='tinker'||k==='aceup') return 'status';
   if(['strike','lob','charge','trap'].includes(k)) return 'attack';
   if(['sentry','summon','machine','hero'].includes(k)) return c.ai==='bulwark'?'defense':'turret';
   if(k==='ward') return 'defense';
@@ -585,13 +621,28 @@ function cardText(c){
                            intervene:'The next hit that would defeat you leaves you standing and heals '+c.amt}[c.boon];
   else if(kind==='charge') t=c.uses+' uses: '+(c.fx==='lob'?'lob '+c.pow+' on the tile you aim':'bolt of '+c.pow+' down your row');
   else if(kind==='utility') t={draw:'Draw '+c.n+' card'+(c.n>1?'s':'')+' into your hand', recall:'Put the top card of your deck into your queue',
-                              copy:'Copy the next queued card', cleanse:'Cancel incoming attacks and heal '+c.amt}[c.util];
+                              copy:'Copy the next queued card', cleanse:'Cancel incoming attacks and heal '+c.amt,
+                              recharge:'Every Charge card in this battle gets '+c.n+' use'+(c.n>1?'s':'')+' back',
+                              search:{any:'Search your deck: a random card goes to your hand', attack:'Search your deck for a random attack card', defense:'Search your deck for a random defense card',
+                                      creature:'Search your deck for a random creature, machine or tower', rune:'Search your deck for a card with the rune of your queue (or your hand\'s most common rune)', pick:'Search your deck and pick any card'}[c.find],
+                              reshuffle:'Shuffle your hand into your deck and draw a fresh hand',
+                              keep:'Pick cards to keep, shuffle the rest into your deck and draw back up to a full hand'}[c.util];
   else if(kind==='summon') t={critter:'Pounces on the nearest enemy for '+c.pow+' every '+c.rate+'s. Brood: 2 queued = Pack, 3 = Swarm, 4 = Elder Grovebeast', shooter:'Shoots '+c.pow+' down its row', bomber:'Lobs '+c.pow+' every '+c.rate+'s', healer:'Heals you '+c.amt+' every '+c.rate+'s',
                              guardian:'Blocks with '+c.hp+' HP, hits for '+c.pow}[c.ai]+'. '+(c.ai==='guardian'?'':c.hp+' HP, ')+tn(c.turns);
   else if(kind==='machine') t=c.ai==='bulwark'?c.n+' iron wall'+(c.n>1?'s':'')+' of '+c.hp+' HP, '+tn(c.turns):
                               {turret:'Turret: '+c.pow+' every '+c.rate+'s', repeater:'Repeater: '+c.pow+' every '+c.rate+'s', mortar:'Mortar: lobs '+c.pow+' every '+c.rate+'s'}[c.ai]+', '+c.hp+' HP, '+tn(c.turns);
   else if(kind==='hero') t='Calls '+c.name.split(',')[0]+' for '+tn(c.turns)+' ('+c.hp+' HP), who '+c.attack.replace('{pow}',c.pow)+'. While it stands, '+c.aura;
+  else if(kind==='instant') t='Instant: '+cardText(Object.assign({},c,{type:c.as,race:null,unstable:false,legend:false})).replace(/\. (Burn|Freeze|Stun|Slow|Poison|Curse|Drain|Mend|Valor|Confuse|Knockback|Pull|Costs).*$/,'');
+  else if(kind==='equip') t='Equip your strongest creature: '+[c.eqPow?'+'+Math.round(c.eqPow*100)+'% power':'', c.eqHp?'+'+c.eqHp+' HP':'', c.eqRate?'attacks '+Math.round((1/c.eqRate-1)*100)+'% faster':'',
+                              c.eq==='aegis'?'it steps in front of hits aimed at you':'', c.eqTurns?'+'+tn(c.eqTurns):''].filter(Boolean).join(', ')+(kw.length?', and its attacks carry this card\'s effects':'');
+  else if(kind==='tinker') t='Tap, then pick a card in your hand or queue: +'+Math.round(c.tk*100)+'% power for the rest of the battle'+(kw.length?' and this card\'s effects':'');
+  else if(kind==='ace') t='Ace: loads into your Sidearm. Fire it for '+c.pow+' '+{line:'to the first enemy in your row',row:'to every enemy in your row',all:'to every enemy',nova:'to the nearest enemy and around it',twin:'twice down your row'}[c.shape]+'. Ace Enchantments build it up to ×3';
+  else if(kind==='aceup') t='Ace Enchantment: your Sidearm\'s Ace gets +'+Math.round(c.upPow*100)+'% power'+(c.upShape?' and now hits '+{row:'every enemy in your row',all:'every enemy',nova:'around its target',twin:'twice'}[c.upShape]:'')+(kw.length?' and these effects':'')+'. With no Ace loaded it waits for the next one';
   if(c.piece) t='Legendary piece. '+t;
+  if(c.unstable) t='Unstable: 1 in 5 misfires and hurts you. '+t;
+  if(c.legend) t+='. Legend: your other Gray creatures deal +25% while it stands';
+  if(c.color==='gray'&&kind==='summon') t+=c.ai==='guardian'?'. Guardian: takes hits aimed at you. Veteran: +10% each turn':'. Veteran: +10% power each turn it survives';
+  if(c.race&&RACES_TECH[c.race]) t+='. '+RACES_TECH[c.race]+' tech'+(c.pow||c.amt||c.hp||c.tk||c.eqPow||c.eqHp||c.upPow?': +10% for each other '+RACES_TECH[c.race]+' card in your hand':'');
   return t+(kw.length?'. '+kw.join(', '):'');
 }
 
@@ -621,4 +672,4 @@ function starterList(colors,size,recipe){
   return list;
 }
 
-if(typeof module!=='undefined') module.exports={BROOD,GROVEBEAST,BROOD_LEADER,ROLES,cardRole,RUNES,WILD,RECIPES,POTIONS,HEROES,PATTERN_MULT,lobPattern,SIX,SIGNATURE,TYPE_PLAN,RARITY_PLAN,COLORS,BEATS,WEAK_MULT,colorMult,TYPES,RARITY,CARD_LIST,CARDS,cardText,STARTERS,starterList};
+if(typeof module!=='undefined') module.exports={RACES_TECH,BROOD,GROVEBEAST,BROOD_LEADER,ROLES,cardRole,RUNES,WILD,RECIPES,POTIONS,HEROES,PATTERN_MULT,lobPattern,SIX,SIGNATURE,TYPE_PLAN,RARITY_PLAN,COLORS,BEATS,WEAK_MULT,colorMult,TYPES,RARITY,CARD_LIST,CARDS,cardText,STARTERS,starterList};

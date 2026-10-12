@@ -723,7 +723,7 @@ function renderCustom(){
     +(uids.every(u=>inQ.has(u))&&p.queue.length===r.cards.length?'Ready: press Fight! to fuse them.':r.cards.length>slots?'It needs the 4th slot.':'Queue the glowing cards together, on their own.')).join('<br>');
   for(let i=0;i<slots;i++){
     const inst=p.queue[i];
-    if(inst){ const el=cardEl(inst.card,`<span class="ord">${i+1}</span>`); el.dataset.zone='queue'; el.dataset.i=i; if(inCombo.has(inst.uid)) el.classList.add('combo'); dragCard(el,inst); q.appendChild(el); }
+    if(inst){ const el=cardEl(inst.card,`<span class="ord">${i+1}</span>`+instBadge(inst,true)); el.dataset.zone='queue'; el.dataset.i=i; if(inCombo.has(inst.uid)) el.classList.add('combo'); dragCard(el,inst); q.appendChild(el); }
     else { const s=document.createElement('div'); s.className='slot'; s.dataset.zone='queue'; s.dataset.i=i; s.innerHTML='Slot '+(i+1)+'<small>+1 draw next</small>'; q.appendChild(s); }
   }
   const h=$('#custHand'); h.innerHTML='';
@@ -731,20 +731,57 @@ function renderCustom(){
   // a queued card leaves an empty outline where it sat, so the rest of the hand stays put
   lay.forEach(u=>{ if(byUid.has(u)) return; const s=document.createElement('div'); s.className='slot hole'; s.dataset.zone='hand'; s.dataset.uid=u;
     const nxt=lay.slice(lay.indexOf(u)+1).find(v=>byUid.has(v)); s.dataset.i=nxt==null?p.hand.length:byUid.get(nxt); s.style.order=lay.indexOf(u); h.appendChild(s); });
-  p.hand.forEach((inst,i)=>{ const el=cardEl(inst.card,inst.left!=null?`<span class="badge">${inst.left} left</span>`:''); el.title='Key '+(i+1);
+  p.hand.forEach((inst,i)=>{ const el=cardEl(inst.card,instBadge(inst)); el.title='Key '+(i+1)+(isInstant(inst.card)?' · tap to use now':'');
+    if(isInstant(inst.card)) el.classList.add('instant');
     el.dataset.zone='hand'; el.dataset.i=i;
     // glow if adding this card to the queue would make a new combo
     if(inRecipe.has(inst.uid)) el.classList.add('recipe-ready');   // part of a recipe you can make right now: purple
+    else if(isInstant(inst.card)) {}
     else if(p.queue.length<slots&&detectCombos([...p.queue,inst]).length>base) el.classList.add('hint');
     else if(p.queue.length&&p.queue.length<slots&&recipeStep([...p.queue.map(c=>c.card),inst.card])&&!oneRune([...p.queue.map(c=>c.card),inst.card])) el.classList.add('recipe-step');   // part of a recipe with what is queued
     else if(p.queue.length&&oneRune([...p.queue.map(c=>c.card),inst.card])) el.classList.add('rune-match');   // same rune as the queue
     if(dealt.has(inst.uid)){ el.classList.add('deal'); el.style.animationDelay=(i*.06)+'s'; }
     el.style.order=lay.indexOf(inst.uid); el.dataset.uid=inst.uid; dragCard(el,inst); h.appendChild(el); });
   B.justDrawn=null;
+  $('#custAce').innerHTML=B.sidearm?`<b>♠ Sidearm:</b> ${esc(B.sidearm.name)} ×${B.sidearm.mult.toFixed(1)}`:(B.acePending||[]).length?`<b>♤</b> ${B.acePending.length} Ace Enchantment${B.acePending.length>1?'s':''} waiting for an Ace`:'';
   $('#custEmpty').textContent=wandOnly(p)?'Your deck is empty. Fight on with your wand!':!p.draw.length?'Deck empty: these are your last cards.':'';
   const empty=Math.max(0,RULES.slots-p.queue.length);
   $('#btnFight').textContent=wandOnly(p)?'Fight!':'Fight!'+(empty?' (+'+empty+' draw next time)':'');
 }
+// small marks on a card in hand or queue: Charge uses left, a Tinker upgrade, an instant
+function instBadge(inst,inQueue){ let h='';
+  if(inst.left!=null) h+=`<span class="badge">${inst.left} left</span>`;
+  if(inst.tinker) h+=`<span class="badge tink">🔧 +${Math.round(inst.tinker*100)}%</span>`;
+  else if(!inQueue&&isInstant(inst.card)) h+=`<span class="badge inst">✧ tap</span>`;
+  return h; }
+/* Instants: a tap uses one at once. Tinker, Keep and Reshuffle and a pick-any Search first ask
+   which cards (the picker); the fight waits while it is open. */
+function tapInstant(inst){ const c=inst.card, P=B.piles;
+  const done=()=>{ if(B.phase==='custom') renderCustom(); hud(true); };
+  if(c.type==='tinker'){ const opts=[...P.queue,...P.hand].filter(x=>x!==inst&&!isInstant(x.card)&&!x.temp);
+    if(!opts.length){ tip('Nothing to tinker'); return; }
+    return openPicker({title:'🔧 '+c.name, hint:'Pick the card to upgrade (+'+Math.round(c.tk*100)+'% for this battle).', items:opts, max:1,
+      ok:sel=>{ useInstant(inst,{target:sel[0]}); done(); }}); }
+  if(c.as==='utility'&&c.util==='keep'){ const opts=P.hand.filter(x=>x!==inst);
+    return openPicker({title:'✧ '+c.name, hint:'Tap the cards to keep. The rest go back into your deck and you draw back up to '+RULES.hand+'.', items:opts, max:opts.length, min:0,
+      ok:sel=>{ useInstant(inst,{keep:new Set(sel.map(x=>x.uid))}); done(); }}); }
+  if(c.as==='utility'&&c.util==='search'&&c.find==='pick'){ const opts=P.draw.slice().sort((a,b)=>a.card.name.localeCompare(b.card.name));
+    if(!opts.length){ tip('Your deck is empty'); return; }
+    return openPicker({title:'✧ '+c.name, hint:'Pick any card from your deck to put in your hand.', items:opts, max:1,
+      ok:sel=>{ useInstant(inst,{uid:sel[0].uid}); done(); }}); }
+  useInstant(inst); done(); }
+let pickWas=null;
+function openPicker(o){ const box=$('#pickList'), sel=new Set(); box.innerHTML='';
+  pickWas=paused; paused=true;
+  $('#pickTitle').textContent=o.title; $('#pickHint').textContent=o.hint;
+  const upd=()=>{ $('#pickCount').textContent=sel.size+(o.max>1?' picked':''); $('#pickOk').disabled=sel.size<(o.min==null?1:o.min); };
+  o.items.forEach(inst=>{ const el=cardEl(inst.card,instBadge(inst)); el.onclick=()=>{ if(sel.has(inst)){ sel.delete(inst); el.classList.remove('picked'); }
+      else { if(o.max===1){ sel.clear(); box.querySelectorAll('.picked').forEach(x=>x.classList.remove('picked')); } if(sel.size<o.max){ sel.add(inst); el.classList.add('picked'); } } upd(); };
+    longPress&&longPress(el,inst.card); box.appendChild(el); });
+  $('#pickOk').onclick=()=>{ closePicker(); o.ok([...sel]); };
+  $('#pickCancel').onclick=closePicker;
+  upd(); $('#picker').classList.add('on'); }
+function closePicker(){ $('#picker').classList.remove('on'); paused=!!pickWas; pickWas=null; }
 /* Every card keeps its own spot in the hand for the whole fight: taking one into the queue leaves
    a gap, and it goes back to that gap when it returns, so cards never shuffle about. New cards
    take the spots at the end. The hand array is kept in this order (number keys follow it). */
@@ -785,7 +822,7 @@ function dragCard(el,inst){
     if(d.moved){ const t=e.type==='pointercancel'?null:dropTarget(e.clientX,e.clientY);
       if(t){ const zone=t.dataset.zone, i=t.dataset.i!=null?+t.dataset.i:null, spot=t.dataset.uid;
         if(placeCard(p,d.inst.uid,zone,i)&&zone==='hand'&&spot&&spot!==String(d.inst.uid)) layDrop(d.inst.uid,isNaN(+spot)?spot:+spot); buzz(10); } }
-    else if(!d.long){ if(!toggleQueue(p,d.inst.uid)) tip('The queue is full'); }
+    else if(!d.long){ if(isInstant(d.inst.card)){ tapInstant(d.inst); return; } if(!toggleQueue(p,d.inst.uid)) tip('The queue is full'); }
     renderCustom();
   };
   el.addEventListener('pointerup',end); el.addEventListener('pointercancel',end);
@@ -833,6 +870,13 @@ function hud(force){
     $('#btnCast').style.setProperty('--rc',NR?NR.c:'transparent'); $('#btnCast').classList.toggle('role',!!NR);
     $('#btnCast').disabled=!pl.queue.length;
   });
+  set('inst',pl.hand.filter(c=>isInstant(c.card)).map(c=>c.uid).join(',')+'|'+b.phase,()=>{ const row=$('#instRow'), ins=pl.hand.filter(c=>isInstant(c.card));
+    row.hidden=!ins.length||b.phase!=='fight'; row.innerHTML='';
+    ins.forEach(inst=>{ const bt=document.createElement('button'), c=inst.card; bt.className='btn inst'; bt.style.setProperty('--c',COLORS[c.color].c);
+      bt.innerHTML=`✧ ${esc(c.name)}`; pressBtn(bt,()=>tapInstant(inst)); row.appendChild(bt); }); });
+  set('ace',b.sidearm?b.sidearm.name+'|'+b.sidearm.mult.toFixed(1)+'|'+b.sidearm.shape:'',()=>{ const bt=$('#btnAce'), s=b.sidearm;
+    bt.hidden=!s; bt.parentElement.classList.toggle('has-ace',!!s);
+    if(s){ $('#aceName').textContent=s.name+' ×'+s.mult.toFixed(1); bt.style.setProperty('--k',((s.mult-1)/(ACE_MAX-1)*100).toFixed(0)+'%'); bt.classList.toggle('hot',s.mult>=2); } });
   set('soul',b.soul?[Math.round(b.soul.charge),Math.ceil(b.soul.unisonT),soulReady(),(pl.queue[0]||{}).uid].join('|'):'',soulHud);
   const canCustom=b.phase==='fight'&&gaugeFull()&&!wandOnly(pl);
   set('custom',canCustom+'|'+wandOnly(pl),()=>{ const bt=$('#btnCustom'); bt.disabled=!canCustom; bt.classList.toggle('ready',canCustom);
@@ -873,6 +917,7 @@ pressBtn($('#btnSoul'),trySoul);
 pressBtn($('#soulSummon'),()=>{ soulSummon(); soulMenu(false); });
 pressBtn($('#soulUnite'),()=>{ soulUnite(); soulMenu(false); });
 pressBtn($('#btnCast'),castCard);
+pressBtn($('#btnAce'),fireAce);
 const wandBtn=$('#btnWand');
 // the Fire button keeps its finger even if the thumb slides off it, so you can fire with one
 // thumb while tapping the board to move with the other
@@ -909,7 +954,8 @@ window.addEventListener('keydown',e=>{
   if(!B||!$('#scrBattle').classList.contains('on')) return; const k=e.key.toLowerCase();
   if(B.phase==='custom'){
     const n=parseInt(k,10);
-    if(n>=1&&n<=9&&B.piles.hand[n-1]){ toggleQueue(B.piles,B.piles.hand[n-1].uid); renderCustom(); }
+    if($('#picker').classList.contains('on')) return;
+    if(n>=1&&n<=9&&B.piles.hand[n-1]){ const h=B.piles.hand[n-1]; if(isInstant(h.card)) tapInstant(h); else { toggleQueue(B.piles,h.uid); renderCustom(); } }
     else if(k==='backspace'&&B.piles.queue.length){ toggleQueue(B.piles,B.piles.queue[B.piles.queue.length-1].uid); renderCustom(); }
     else if((k==='enter'||k===' ')&&!e.repeat&&!held.has(k)){ e.preventDefault(); closeCustomScreen(); }
     return;
@@ -925,6 +971,7 @@ window.addEventListener('keydown',e=>{
   else if(a==='cast') castCard();
   else if(a==='custom') tryCustom();
   else if(a==='soul') trySoul();
+  else if(a==='ace') fireAce();
   else if($('#soulMenu').classList.contains('on')&&(k==='1'||k==='2')){ (k==='1'?soulSummon:soulUnite)(); soulMenu(false); }
   else if(a==='aim') cycleAim();
 });

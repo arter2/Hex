@@ -1,8 +1,8 @@
-# Black · Shadow: all 225 cards
+# Black · Shadow: all 231 cards
 
 Starter cards are marked ★. Each card shows its rune letter and rank (the Spell screen combos use them). Numbers are from the current build: power follows rank (1-12) and rarity.
 
-Common 84 · Rare 47 · Uncommon 72 · Legendary 22
+Common 85 · Rare 49 · Uncommon 74 · Legendary 23
 
 ## Attacks (38)
 
@@ -288,3 +288,19 @@ Common 84 · Rare 47 · Uncommon 72 · Legendary 22
 | Candle of the Hanged Man | Legendary | E4 | Legendary piece. 45 to every enemy in your row. Stun 1.2s |
 | Cauldron of the Bone Mother | Legendary | D2 | Legendary piece. 47 to the first enemy in your row. Poison 5 |
 | Mask of the Plague Doctor | Legendary | E12 | Legendary piece. 44 to every enemy. Mend 6 |
+
+## Aces (Sidearm finishers) (3)
+
+| Card | Rarity | Rune | What it does |
+|---|---|---|---|
+| Banshee's Final Wail | Uncommon | F3 | Ace: loads into your Sidearm. Fire it for 43 to every enemy. Ace Enchantments build it up to ×3. Confuse 3.6s |
+| Reaper's Due | Rare | C4 | Ace: loads into your Sidearm. Fire it for 88 to the first enemy in your row. Ace Enchantments build it up to ×3. Drain 40% |
+| Death's Door | Legendary | B6 | Ace: loads into your Sidearm. Fire it for 83 to the nearest enemy and around it. Ace Enchantments build it up to ×3. Curse 4.8s |
+
+## Ace Enchantments (3)
+
+| Card | Rarity | Rune | What it does |
+|---|---|---|---|
+| Cursed Bullet | Common | C1 | Ace Enchantment: your Sidearm's Ace gets +30% power and these effects. With no Ace loaded it waits for the next one. Curse 3.3s |
+| Blood Price | Uncommon | D2 | Ace Enchantment: your Sidearm's Ace gets +30% power and these effects. With no Ace loaded it waits for the next one. Drain 30% |
+| Fog of Dread | Rare | E5 | Ace Enchantment: your Sidearm's Ace gets +40% power and now hits every enemy and these effects. With no Ace loaded it waits for the next one. Confuse 4s |

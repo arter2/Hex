@@ -1402,6 +1402,548 @@ Sapling Catapult | machine | u | ai=mortar mach=Catapult
 Treehouse Lookout | machine | u | ai=turret mach=Tower
 `,
 
+/* ---------------- Gray · the normal type ----------------
+   Creatures that fit any color: suits of armor, golems and guardians, hunters and beasts of
+   burden, household spirits and familiars, and the mythical heroes of every culture.
+   Gray never has a weakness. Veteran: a Gray creature gets +10% each turn it survives.
+   Guardian: Gray guardians step in front of hits aimed at you. Legend: a Gray hero makes your
+   other Gray creatures stronger while it stands. */
+gray:`
+Living Armor | summon | c | ai=guardian body=Armor
+Empty Helm Sentinel | summon | c | ai=guardian body=Armor
+Haunted Plate | summon | u | ai=guardian body=Armor mod=Grim
+Rusted Suit of Armor | summon | c | ai=guardian body=Armor mod=Old
+Gilded Parade Armor | summon | u | ai=guardian body=Armor mod=Noble
+Black Knight's Armor | summon | r | ai=guardian body=Armor mod=Dire
+Tin Soldier | summon | c | ai=guardian body=Squire mod=Tiny
+Toy Knight | summon | c | ai=guardian body=Knight mod=Tiny
+Clay Golem of Prague | summon | r | ai=guardian body=Golem
+Mud Golem | summon | c | ai=guardian body=Golem mod=Mossy
+Stone Golem | summon | c | ai=guardian body=Golem mod=Stone
+Iron Golem | summon | u | ai=guardian body=Golem mod=Iron
+Talos, the Bronze Giant | summon | l | ai=guardian body=Golem mod=Iron legend=1
+Cathedral Gargoyle | summon | c | ai=guardian body=Gargoyle
+Grotesque | summon | c | ai=guardian body=Gargoyle mod=Grim
+Waterspout Gargoyle | summon | u | ai=guardian body=Gargoyle mod=Old
+Shisa | summon | c | ai=guardian body=Shishi
+Komainu | summon | u | ai=guardian body=Shishi mod=Stone
+Guardian Lion of the Gate | summon | r | ai=guardian body=Shishi mod=Noble
+Nio Temple Guardian | summon | r | ai=guardian body=Oni mod=Stone
+Dvarapala | summon | u | ai=guardian body=Hero mod=Stone
+Moai Watcher | summon | r | ai=guardian body=Golem mod=Ancient
+Terracotta Spearman | summon | c | ai=guardian body=Squire mod=Stone
+Terracotta General | summon | r | ai=guardian body=Knight mod=Stone
+Ushabti Servant | summon | c | ai=guardian body=Squire mod=Tiny
+Scarecrow Sentinel | summon | c | ai=guardian body=Squire mod=Scrappy
+Shield Maiden | summon | u | ai=guardian body=Heroine
+Hoplite | summon | c | ai=guardian body=Knight
+Roman Centurion | summon | u | ai=guardian body=Knight mod=Brave
+Gatehouse Sergeant | summon | c | ai=guardian body=Squire
+Castle Warden | summon | u | ai=guardian body=Knight mod=Old
+Watchtower Guard | summon | c | ai=guardian body=Squire mod=Loyal
+Loyal Mastiff | summon | c | ai=guardian body=Hound mod=Loyal
+Kangal Shepherd Dog | summon | u | ai=guardian body=Hound mod=Brave
+Old Gray Bear | summon | u | ai=guardian body=Bear mod=Old
+Cave Bear | summon | c | ai=guardian body=Bear
+Wild Boar | summon | c | ai=guardian body=Boar mod=Wild
+Great Tortoise | summon | u | ai=guardian body=Tortoise mod=Ancient
+Snapping Turtle | summon | c | ai=guardian body=Turtle mod=Hungry
+Armadillo Knight | summon | u | ai=guardian body=Beetle mod=Brave
+Ironback Beetle | summon | c | ai=guardian body=Beetle mod=Iron
+Mimic Chest | summon | u | ai=guardian body=Mimic
+War Elephant | summon | r | ai=guardian body=Elephant
+Ox of the Plough | summon | c | ai=guardian body=Bull mod=Gentle
+Aurochs | summon | u | ai=guardian body=Bull mod=Ancient
+Wandering Ronin | summon | u | ai=guardian body=Hero mod=Scrappy
+Bridge Troll | summon | u | ai=guardian body=Ogre mod=Mossy
+Ettin | summon | r | ai=guardian body=Ogre mod=Dire
+
+Longbow Yeoman | summon | c | ai=shooter body=Hero
+Village Archer | summon | c | ai=shooter body=Squire
+Shepherd Slinger | summon | c | ai=shooter body=Squire mod=Swift
+Scythian Horse Archer | summon | u | ai=shooter body=Centaur
+Steppe Rider | summon | u | ai=shooter body=Horse mod=Swift
+Amazon Archer | summon | u | ai=shooter body=Heroine
+Mounted Bowman | summon | c | ai=shooter body=Horse
+Javelin Thrower | summon | c | ai=shooter body=Hero mod=Swift
+Spear Hunter | summon | c | ai=shooter body=Hero mod=Wild
+Woodcutter | summon | c | ai=shooter body=Squire mod=Old
+Bounty Hunter | summon | u | ai=shooter body=Hero mod=Sly
+Wandering Ranger | summon | u | ai=shooter body=Heroine mod=Swift
+Tracker | summon | c | ai=shooter body=Hero mod=Clever
+Falconer | summon | u | ai=shooter body=Hero mod=Noble
+Hunting Falcon | summon | c | ai=shooter body=Hawk mod=Swift
+Peregrine | summon | c | ai=shooter body=Hawk
+Kestrel | summon | c | ai=shooter body=Hawk mod=Tiny
+Osprey | summon | c | ai=shooter body=Hawk mod=Hungry
+Golden Eagle | summon | u | ai=shooter body=Hawk mod=Noble
+Messenger Pigeon | summon | c | ai=shooter body=Hawk mod=Gentle
+Night Owl Scout | summon | c | ai=shooter body=Owl
+Horned Owl | summon | u | ai=shooter body=Owl mod=Grim
+Quill Porcupine | summon | c | ai=shooter body=Boar mod=Scrappy
+Spiny Hedgehog | summon | c | ai=shooter body=Mole mod=Scrappy
+Spitting Llama | summon | c | ai=shooter body=Camel mod=Sly
+Bactrian Camel | summon | u | ai=shooter body=Camel mod=Old
+Gray Fox | summon | c | ai=shooter body=Fox mod=Sly
+Plains Wolf | summon | c | ai=shooter body=Wolf
+Lone Wolf | summon | u | ai=shooter body=Wolf mod=Scrappy
+Alpha Wolf | summon | r | ai=shooter body=Wolf mod=Dire
+Hunting Hound | summon | c | ai=shooter body=Hound
+Alley Cat | summon | c | ai=shooter body=Cat mod=Scrappy
+Lynx | summon | u | ai=shooter body=Cat mod=Wild
+Wildcat | summon | c | ai=shooter body=Cat mod=Feral
+Sea Eagle | summon | u | ai=shooter body=Hawk mod=Dire
+Mountain Goat | summon | c | ai=shooter body=Stag mod=Scrappy
+Ibex | summon | u | ai=shooter body=Stag mod=Wild
+Hippogriff | summon | u | ai=shooter body=Hippogriff
+Hippogriff Rider | summon | r | ai=shooter body=Hippogriff mod=Noble
+War Griffin | summon | r | ai=shooter body=Griffin mod=Brave
+Royal Griffin | summon | l | ai=shooter body=Griffin mod=Noble
+Sleipnir, the Eight-Legged Steed | summon | l | ai=shooter body=Horse mod=Swift
+Arion, the Swift Horse | summon | r | ai=shooter body=Horse mod=Swift
+Bayard, the Magic Bay | summon | r | ai=shooter body=Horse mod=Lucky
+Uchchaihshravas | summon | l | ai=shooter body=Pegasus mod=Noble
+Wandering Bard | summon | c | ai=shooter body=Hero mod=Gentle
+Crossbow Militia | summon | c | ai=shooter body=Squire mod=Brave
+Pikeman | summon | c | ai=shooter body=Knight
+Sellsword | summon | u | ai=shooter body=Hero mod=Scrappy
+Veteran Captain | summon | r | ai=shooter body=Knight mod=Old
+Errant Knight | summon | u | ai=shooter body=Knight mod=Brave
+Cossack Rider | summon | u | ai=shooter body=Horse mod=Brave
+Gaucho with Bolas | summon | u | ai=shooter body=Hero mod=Wild
+Mongol Outrider | summon | r | ai=shooter body=Horse mod=Dire
+Maasai Spearman | summon | u | ai=shooter body=Hero mod=Brave
+Zulu Impi | summon | u | ai=shooter body=Hero mod=Swift
+Viking Raider | summon | c | ai=shooter body=Hero mod=Feral
+
+Hill Giant | summon | u | ai=bomber body=Ogre
+Rock-Throwing Cyclops | summon | r | ai=bomber body=Ogre mod=Dire
+Stone Troll | summon | u | ai=bomber body=Ogre mod=Stone
+Ogre Brute | summon | c | ai=bomber body=Ogre
+Mountain Gorilla | summon | u | ai=bomber body=Ape
+Sling Monkey | summon | c | ai=bomber body=Monkey mod=Sly
+Howler Monkey | summon | c | ai=bomber body=Monkey mod=Wild
+Coconut Crab | summon | c | ai=bomber body=Crab
+Boulder Golem | summon | u | ai=bomber body=Golem mod=Stone
+Pebble Golem | summon | c | ai=bomber body=Golem mod=Tiny
+Rock Elemental | summon | r | ai=bomber body=Golem mod=Ancient
+Siege Ogre | summon | r | ai=bomber body=Ogre mod=Iron
+Two-Headed Giant | summon | r | ai=bomber body=Ogre mod=Grim
+Jotun Hurler | summon | r | ai=bomber body=Ogre mod=Ancient
+Fomorian Brute | summon | u | ai=bomber body=Ogre mod=Feral
+Oni Pebble-Tosser | summon | c | ai=bomber body=Oni mod=Tiny
+Gremlin Pot-Thrower | summon | c | ai=bomber body=Gremlin mod=Scrappy
+Kobold Sapper | summon | c | ai=bomber body=Goblin mod=Clever
+Hobgoblin Grenadier | summon | u | ai=bomber body=Goblin mod=Brave
+Barrel-Rolling Dwarf | summon | u | ai=bomber body=Dwarf mod=Lucky
+Village Brawler | summon | c | ai=bomber body=Hero mod=Scrappy
+Tavern Bouncer | summon | c | ai=bomber body=Ogre mod=Gentle
+Mole Sapper | summon | c | ai=bomber body=Mole mod=Clever
+Badger | summon | c | ai=bomber body=Mole mod=Feral
+Rampaging Rhino | summon | u | ai=bomber body=Bull mod=Dire
+Charging Bison | summon | c | ai=bomber body=Bull mod=Wild
+Woolly Mammoth | summon | r | ai=bomber body=Elephant mod=Ancient
+Elephant Bird | summon | u | ai=bomber body=Roc mod=Tiny
+Stone-Dropping Vulture | summon | c | ai=bomber body=Crow mod=Hungry
+Thunder Ram | summon | u | ai=bomber body=Bull mod=Brave
+
+Familiar Cat | summon | c | ai=healer body=Cat mod=Gentle
+Tabby Familiar | summon | c | ai=healer body=Cat mod=Lucky
+Owl Familiar | summon | c | ai=healer body=Owl mod=Clever
+Toad Familiar | summon | c | ai=healer body=Toad mod=Gentle
+Raven Familiar | summon | u | ai=healer body=Crow mod=Clever
+Brownie | summon | c | ai=healer body=Duende mod=Gentle
+Domovoi | summon | u | ai=healer body=Duende mod=Old
+Tomte | summon | c | ai=healer body=Duende mod=Ancient
+Hob of the Hearth | summon | c | ai=healer body=Duende mod=Mossy
+Zashiki-warashi | summon | u | ai=healer body=Kodama mod=Lucky
+Lares of the Home | summon | u | ai=healer body=Spirit mod=Gentle
+Household Kobold | summon | c | ai=healer body=Goblin mod=Gentle
+Village Healer | summon | c | ai=healer body=Heroine mod=Gentle
+Wise Woman | summon | u | ai=healer body=Heroine mod=Old
+Field Surgeon | summon | u | ai=healer body=Hero mod=Clever
+Herbwife | summon | c | ai=healer body=Heroine mod=Mossy
+Midwife | summon | c | ai=healer body=Heroine mod=Gentle
+Saint Bernard | summon | u | ai=healer body=Hound mod=Gentle
+Therapy Pony | summon | c | ai=healer body=Horse mod=Tiny
+Faithful Donkey | summon | c | ai=healer body=Horse mod=Loyal
+Milk Cow | summon | c | ai=healer body=Bull mod=Gentle
+Mother Hen | summon | c | ai=healer body=Crane mod=Tiny
+Honeybadger | summon | u | ai=healer body=Mole mod=Brave
+Sacred Ibis | summon | u | ai=healer body=Crane mod=Noble
+Beaver Builder | summon | c | ai=healer body=Rat mod=Clever
+Capybara | summon | c | ai=healer body=Rat mod=Gentle
+Wandering Monk | summon | u | ai=healer body=Hero mod=Gentle
+Pilgrim | summon | c | ai=healer body=Hero mod=Old
+Tea Master | summon | r | ai=healer body=Hero mod=Clever
+Camp Cook | summon | c | ai=healer body=Ogre mod=Gentle
+
+Beowulf | summon | l | ai=guardian body=Hero mod=Brave legend=1
+Gilgamesh | summon | l | ai=bomber body=Hero mod=Noble legend=1
+Enkidu | summon | r | ai=guardian body=Ape mod=Wild legend=1
+Hua Mulan | summon | l | ai=shooter body=Heroine mod=Brave legend=1
+Cu Chulainn | summon | l | ai=shooter body=Hero mod=Feral legend=1
+Sundiata Keita | summon | l | ai=guardian body=Hero mod=Noble legend=1
+Momotaro | summon | r | ai=shooter body=Hero mod=Lucky legend=1
+Atalanta | summon | r | ai=shooter body=Heroine mod=Swift legend=1
+Heracles | summon | l | ai=bomber body=Hero mod=Brave legend=1
+Perseus | summon | r | ai=shooter body=Hero mod=Clever legend=1
+Theseus | summon | r | ai=guardian body=Hero mod=Brave legend=1
+Achilles | summon | l | ai=shooter body=Hero mod=Swift legend=1
+Hector of Troy | summon | r | ai=guardian body=Knight mod=Noble legend=1
+Rostam | summon | l | ai=guardian body=Hero mod=Brave legend=1
+Arjuna | summon | l | ai=shooter body=Hero mod=Noble legend=1
+Sigurd | summon | r | ai=shooter body=Hero mod=Brave legend=1
+Ilya Muromets | summon | r | ai=guardian body=Hero mod=Old legend=1
+Lancelot | summon | r | ai=guardian body=Knight mod=Noble legend=1
+Gawain | summon | r | ai=guardian body=Knight mod=Brave legend=1
+El Cid | summon | r | ai=shooter body=Knight mod=Noble legend=1
+Roland | summon | r | ai=guardian body=Knight mod=Brave legend=1
+Robin Hood | summon | r | ai=shooter body=Hero mod=Sly legend=1
+Mwindo | summon | r | ai=healer body=Hero mod=Lucky legend=1
+Kintaro | summon | r | ai=bomber body=Hero mod=Tiny legend=1
+Fionn mac Cumhaill | summon | r | ai=shooter body=Hero mod=Clever legend=1
+Scathach | summon | l | ai=shooter body=Heroine mod=Grim legend=1
+Tomoe Gozen | summon | r | ai=shooter body=Heroine mod=Brave legend=1
+Antarah the Poet-Knight | summon | r | ai=guardian body=Hero mod=Noble legend=1
+Hunahpu and Xbalanque | summon | l | ai=bomber body=Hero mod=Lucky legend=1
+Glooscap | summon | l | ai=healer body=Hero mod=Ancient legend=1
+
+Shield Wall | ward | c | ward=wall
+Phalanx | ward | u | ward=wall
+Testudo | ward | u | ward=barrier
+Schiltron | ward | r | ward=thorns
+Hedge of Spears | ward | c | ward=thorns
+Wagon Circle | ward | c | ward=wall
+Shield Brace | ward | c | ward=barrier
+Hold the Gate | ward | u | ward=wall
+Last Stand | ward | r | ward=barrier
+Iron Ring Fort | ward | l | ward=wall
+
+Battle Cry | boon | c | boon=courage
+Rallying Horn | boon | c | boon=courage
+Haka War Dance | boon | u | boon=power
+Kiai Shout | boon | c | boon=power
+Oath of Brotherhood | boon | u | boon=courage
+Hunter's Focus | boon | c | boon=haste
+Stubborn Will | boon | u | boon=dodge
+Campfire Rest | boon | c | boon=heal
+Trusty Steed | boon | u | boon=haste
+Song of the Old Heroes | boon | r | boon=courage
+
+Sling Stones | charge | c | fx=bolt kw=-
+Hunter's Quiver | charge | c | fx=bolt kw=-
+Bag of Rocks | charge | c | fx=lob kw=-
+Throwing Axes | charge | u | fx=bolt kw=-
+Javelin Bundle | charge | u | fx=bolt kw=-
+Caltrop Pouch | charge | c | fx=lob kw=slow
+Boomerang Belt | charge | u | fx=bolt kw=-
+Bundle of Darts | charge | c | fx=bolt kw=-
+Hurling Stones | charge | r | fx=lob kw=push
+Legendary Quiver | charge | l | fx=bolt kw=-
+`,
+
+/* ---------------- Brown · technology ----------------
+   The tech of every race: dwarven forges, gnomish clockwork, elven crystal, goblin junk,
+   desert alchemy, sea-folk diving gear, sky-folk kites, troll bone-work, djinn brass and human
+   craft. Instants (tap to use at once): buff potions, gadgets and the deck tools (search,
+   reshuffle, keep and reshuffle, recharge). Equipment for your creatures, Tinker for your cards,
+   machines, and Aces with their Enchantments for your Sidearm.
+   race=  Race tech: +10% for each other card of that race in your hand.
+   unstable=1  Goblin and gremlin tech: 30% stronger, 1 in 5 misfires. */
+brown:`
+Dwarven Cannon Nest | machine | c | ai=turret mach=Cannon race=dwarf
+Steam Cannon | machine | u | ai=turret mach=Cannon race=dwarf
+Dwarven Runic Battery | machine | l | ai=turret mach=Tower race=dwarf kw=stun
+Gnomish Arc Turret | machine | u | ai=turret mach=Tower race=gnome kw=stun
+Clockwork Owl | machine | c | ai=turret mach=Drone race=gnome
+Elven Moonbow Ballista | machine | u | ai=turret mach=Ballista race=elf
+Elven Starglass Spire | machine | r | ai=turret mach=Tower race=elf kw=mend
+Goblin Junk Cannon | machine | c | ai=turret mach=Cannon race=goblin unstable=1
+Harbor Ballista | machine | c | ai=turret mach=Ballista race=sea
+Lighthouse Lens Beam | machine | r | ai=turret mach=Tower race=sea kw=burn
+Sky-Ship Deck Gun | machine | r | ai=turret mach=Cannon race=sky
+Djinn Brass Idol | machine | r | ai=turret mach=Tower race=djinn kw=confuse
+Troll Bone Ballista | machine | c | ai=turret mach=Ballista race=troll
+Alchemist's Fire Siphon | machine | u | ai=turret mach=Cannon race=alchemy kw=burn
+Brass Crossbow Turret | machine | c | ai=turret mach=Crossbow race=human
+Antikythera Sentinel | machine | l | ai=turret mach=Automaton race=human
+
+Gnomish Gatling | machine | c | ai=repeater mach=Gatling race=gnome
+Brass Hornet Swarm | machine | r | ai=repeater mach=Drone race=gnome kw=poison
+Goblin Rattle-Gun | machine | c | ai=repeater mach=Gatling race=goblin unstable=1
+Chu-ko-nu Repeater | machine | u | ai=repeater mach=Repeater race=human
+Elven Spinning Glaive | machine | u | ai=repeater mach=Repeater race=elf
+Coral Spitter | machine | c | ai=repeater mach=Repeater race=sea
+Sky-Folk Kite Drone | machine | u | ai=repeater mach=Drone race=sky
+Dwarven Rivet Gun | machine | r | ai=repeater mach=Gatling race=dwarf
+Troll Pebble Hurler | machine | c | ai=repeater mach=Repeater race=troll
+Al-Jazari's Elephant Clock | machine | l | ai=repeater mach=Automaton race=djinn
+
+Siege Mangonel | machine | c | ai=mortar mach=Catapult race=human
+Castle Trebuchet | machine | u | ai=mortar mach=Trebuchet race=human
+Goblin Rocket Rack | machine | c | ai=mortar mach=Engine race=goblin unstable=1 kw=burn
+Gnomish Bomb Lobber | machine | c | ai=mortar mach=Catapult race=gnome
+Alchemist's Acid Mortar | machine | u | ai=mortar mach=Engine race=alchemy kw=poison
+Troll Boulder Sling | machine | c | ai=mortar mach=Catapult race=troll
+Depth Charge Launcher | machine | r | ai=mortar mach=Engine race=sea kw=slow
+Sky-Folk Bomb Balloon | machine | u | ai=mortar mach=Drone race=sky
+Dwarven Thunder Mortar | machine | r | ai=mortar mach=Engine race=dwarf kw=stun
+Byzantine Fire Engine | machine | r | ai=mortar mach=Engine race=alchemy kw=burn
+Djinn Sand Cannon | machine | l | ai=mortar mach=Engine race=djinn kw=slow
+Elven Seed Catapult | machine | u | ai=mortar mach=Catapult race=elf kw=poison
+
+Iron Bastion | machine | c | ai=bulwark mach=Bastion race=dwarf
+Dwarven Gate of Iron | machine | r | ai=bulwark mach=Bulwark race=dwarf
+Gnomish Pop-Up Wall | machine | c | ai=bulwark mach=Barricade race=gnome
+Elven Thornglass Barrier | machine | u | ai=bulwark mach=Palisade race=elf
+Goblin Scrap Barricade | machine | c | ai=bulwark mach=Barricade race=goblin unstable=1
+Coral Rampart | machine | u | ai=bulwark mach=Rampart race=sea
+Sky-Folk Wind Sail Wall | machine | u | ai=bulwark mach=Palisade race=sky
+Troll Stone Rampart | machine | c | ai=bulwark mach=Rampart race=troll
+Pike Palisade | machine | c | ai=bulwark mach=Palisade race=human
+Alchemist's Glass Bulwark | machine | u | ai=bulwark mach=Bulwark race=alchemy
+Djinn Mirage Wall | machine | r | ai=bulwark mach=Bastion race=djinn
+Brass Tortoise Wall | machine | l | ai=bulwark mach=Bulwark race=human
+
+Dwarven Stout | instant | c | as=boon boon=heal race=dwarf
+Elven Dew | instant | c | as=boon boon=heal race=elf
+Troll Blood Tonic | instant | u | as=boon boon=regen race=troll
+Panacea | instant | r | as=boon boon=heal race=alchemy
+Elixir of Life | instant | l | as=boon boon=heal race=alchemy
+Peach of Immortality | instant | l | as=boon boon=regen race=human
+Soma Draught | instant | u | as=boon boon=power race=human
+Berserker Brew | instant | c | as=boon boon=power race=troll
+Giant's Strength Potion | instant | u | as=boon boon=power race=alchemy
+Haoma Cup | instant | r | as=boon boon=courage race=djinn
+Liquid Courage | instant | c | as=boon boon=courage race=dwarf
+Mead of Poetry | instant | u | as=boon boon=gauge race=human
+Mana Potion | instant | c | as=boon boon=gauge race=alchemy
+Gnomish Coffee | instant | c | as=boon boon=haste race=gnome
+Kahve of the Bazaar | instant | u | as=boon boon=haste race=djinn
+Sea-Folk Kelp Tea | instant | c | as=boon boon=regen race=sea
+Smoke Bomb | instant | c | as=boon boon=dodge race=goblin
+Cat's Eye Tonic | instant | u | as=boon boon=dodge race=elf
+Invisibility Draught | instant | r | as=boon boon=phase race=alchemy
+Bottled Lightning | instant | u | as=boon boon=haste race=sky unstable=1
+Guardian Angel Vial | instant | r | as=boon boon=intervene race=human
+Goblin Rage Juice | instant | u | as=boon boon=power race=goblin unstable=1
+
+Throwing Knives | instant | c | as=strike shape=missiles race=human kw=-
+Goblin Firecracker | instant | c | as=strike shape=missiles race=goblin unstable=1 kw=burn
+Flash Bang Powder | instant | u | as=strike shape=all race=gnome kw=stun
+Shock Glove | instant | c | as=strike shape=line race=gnome kw=stun
+Elven Flechette | instant | c | as=strike shape=line race=elf kw=-
+Bolas | instant | c | as=strike shape=line race=human kw=slow
+Boomerang | instant | c | as=strike shape=zigzag race=human kw=-
+Chakram | instant | u | as=strike shape=diag race=human kw=-
+Net Gun | instant | u | as=strike shape=line race=sea kw=stun
+Coral Shrapnel | instant | c | as=strike shape=wedge race=sea kw=-
+Djinn Smoke Puff | instant | u | as=strike shape=all race=djinn kw=confuse
+Dwarven Blasting Charge | instant | u | as=lob pattern=burst race=dwarf kw=push
+Gnomish Grenade | instant | c | as=lob pattern=single race=gnome kw=-
+Sticky Tar Bomb | instant | c | as=lob pattern=burst race=troll kw=slow
+Acid Flask | instant | c | as=lob pattern=single race=alchemy kw=poison
+Sky-Folk Lightning Jar | instant | r | as=lob pattern=burst race=sky kw=stun
+Troll Snot Bomb | instant | u | as=lob pattern=burst race=troll unstable=1 kw=poison
+Dwarven Rune Grenade | instant | r | as=lob pattern=cross race=dwarf kw=-
+
+Spyglass Peek | instant | c | as=utility util=draw race=sea
+Pocket Almanac | instant | c | as=utility util=draw race=human
+Dwarven Ledger | instant | u | as=utility util=draw race=dwarf
+Elven Star Map | instant | r | as=utility util=draw race=elf
+Gnomish Punch-Card Reader | instant | u | as=utility util=draw race=gnome
+Dowsing Rod | instant | c | as=utility util=search find=any race=dwarf
+Gnomish Card-Finder | instant | c | as=utility util=search find=any race=gnome
+Smuggler's Map | instant | c | as=utility util=search find=any race=sea
+Goblin Rummage Sack | instant | c | as=utility util=search find=any race=goblin
+Quartermaster's Ledger | instant | u | as=utility util=search find=attack race=human
+Weapon Rack Index | instant | u | as=utility util=search find=attack race=dwarf
+Armorer's Catalog | instant | u | as=utility util=search find=defense race=dwarf
+Shield Rack Index | instant | u | as=utility util=search find=defense race=human
+Beast Whistle | instant | u | as=utility util=search find=creature race=troll
+Kite Signal | instant | u | as=utility util=search find=creature race=sky
+Rune Compass | instant | r | as=utility util=search find=rune race=dwarf
+Lodestone Locator | instant | r | as=utility util=search find=rune race=alchemy
+Akashic Lens | instant | l | as=utility util=search find=pick race=elf
+Clockwork Shuffler | instant | u | as=utility util=reshuffle race=gnome
+Goblin Card Toss | instant | c | as=utility util=reshuffle race=goblin
+Djinn's Whirlwind Deal | instant | r | as=utility util=reshuffle race=djinn
+Tidecaller's Shuffle | instant | u | as=utility util=reshuffle race=sea
+Elven Sorting Lens | instant | r | as=utility util=keep race=elf
+Dwarven Sorting Tray | instant | u | as=utility util=keep race=dwarf
+Gnomish Sieve | instant | u | as=utility util=keep race=gnome
+Merchant's Scale | instant | l | as=utility util=keep race=djinn
+Lightning Battery | instant | u | as=utility util=recharge race=sky
+Dwarven Forge Bellows | instant | c | as=utility util=recharge race=dwarf
+Gnomish Wind-Up Key | instant | c | as=utility util=recharge race=gnome
+Alchemist's Reagent Kit | instant | u | as=utility util=recharge race=alchemy
+Storm Jar Generator | instant | r | as=utility util=recharge race=sky
+Troll Rock Grinder | instant | l | as=utility util=recharge race=troll
+Smelling Salts | instant | c | as=utility util=cleanse race=alchemy
+Antidote Kit | instant | u | as=utility util=cleanse race=alchemy
+Elven Purifying Lamp | instant | r | as=utility util=cleanse race=elf
+Copying Press | instant | u | as=utility util=copy race=human
+Gnomish Duplicator | instant | r | as=utility util=copy race=gnome
+Grappling Hook | instant | c | as=utility util=recall race=sea
+
+Pop-Up Umbrella Shield | instant | c | as=ward ward=barrier race=gnome
+Dwarven Shield Charm | instant | c | as=ward ward=barrier race=dwarf
+Gnomish Force Bubble | instant | u | as=ward ward=barrier race=gnome
+Elven Glass Ward | instant | u | as=ward ward=barrier race=elf
+Sea-Folk Shell Guard | instant | c | as=ward ward=barrier race=sea
+Djinn Mirage Cloak | instant | r | as=ward ward=barrier race=djinn
+
+Dwarven War Axe | equip | c | eq=blade race=dwarf
+Elven Moon Blade | equip | u | eq=blade race=elf
+Goblin Spiked Collar | equip | c | eq=blade race=goblin unstable=1
+Troll Bone Club | equip | c | eq=blade race=troll
+Sea-Folk Trident Head | equip | c | eq=blade race=sea
+Sky-Folk Steel Talons | equip | u | eq=blade race=sky
+Damascus Edge | equip | r | eq=blade race=djinn
+Masamune's Edge | equip | l | eq=blade race=human
+Khopesh | equip | u | eq=blade race=alchemy
+Dwarven Plate | equip | c | eq=plate race=dwarf
+Elven Leaf Mail | equip | c | eq=plate race=elf
+Gnomish Gear Armor | equip | u | eq=plate race=gnome
+Troll Hide Barding | equip | c | eq=plate race=troll
+Sea-Folk Scale Mail | equip | c | eq=plate race=sea
+O-yoroi Lacquer Plate | equip | r | eq=plate race=human
+Brigandine Coat | equip | u | eq=plate race=human
+Clockwork Spurs | equip | c | eq=spring race=gnome
+Gnomish Spring Boots | equip | u | eq=spring race=gnome
+Goblin Rocket Pack | equip | u | eq=spring race=goblin unstable=1
+Sky-Folk Wing Harness | equip | r | eq=spring race=sky
+Quicksilver Horseshoes | equip | u | eq=spring race=alchemy
+Tower Shield Harness | equip | c | eq=aegis race=human
+Dwarven Aegis Plate | equip | r | eq=aegis race=dwarf
+Elven Mirror Shield | equip | u | eq=aegis race=elf
+Gnomish Deflector Dish | equip | u | eq=aegis race=gnome
+War Banner Pole | equip | c | eq=banner race=human
+Regimental Drum | equip | u | eq=banner race=human
+Dwarven Clan Standard | equip | r | eq=banner race=dwarf
+Conch War Horn | equip | u | eq=banner race=sea
+Dwarven Fire Rune | equip | u | eq=rune race=dwarf kw=burn
+Elven Frost Sigil | equip | u | eq=rune race=elf kw=freeze
+Sky-Folk Spark Coil | equip | r | eq=rune race=sky kw=stun
+
+Whetstone | tinker | c | race=human kw=-
+Gun Oil | tinker | c | race=human kw=-
+Sharpening Wheel | tinker | c | race=dwarf kw=-
+Tempering Oil | tinker | c | race=dwarf kw=-
+Lens Polish | tinker | c | race=elf kw=-
+Gnomish Overclock | tinker | u | race=gnome kw=-
+Dwarven Forge Upgrade | tinker | u | race=dwarf kw=-
+Elven Enchanter's Kit | tinker | u | race=elf kw=mend
+Goblin Duct Tape | tinker | c | race=goblin unstable=1 kw=-
+Alchemical Infusion | tinker | u | race=alchemy kw=poison
+Fire Rune Etching | tinker | u | race=dwarf kw=burn
+Frost Coating | tinker | u | race=sea kw=freeze
+Spark Plug | tinker | u | race=gnome kw=stun
+Silver Plating | tinker | c | race=human kw=-
+Counterweight | tinker | c | race=troll kw=push
+Djinn's Polish | tinker | r | race=djinn kw=confuse
+Wayland's Bench | tinker | r | race=human kw=-
+Goibniu's Hammer | tinker | r | race=human kw=-
+Ilmarinen's Forge | tinker | l | race=human kw=-
+Hephaestus's Anvil | tinker | l | race=human kw=burn
+
+Goblin Bomb Bag | charge | c | fx=lob race=goblin unstable=1 kw=push
+Dwarven Blasting Keg | charge | u | fx=lob race=dwarf kw=push
+Gnomish Spark Canister | charge | c | fx=bolt race=gnome kw=stun
+Harpoon Rack | charge | c | fx=bolt race=sea kw=pull
+Pebble Pouch | charge | c | fx=bolt race=sky kw=-
+Elven Arrow Pouch | charge | u | fx=bolt race=elf kw=-
+Acid Vial Belt | charge | u | fx=lob race=alchemy kw=poison
+Troll Rock Satchel | charge | c | fx=lob race=troll kw=-
+Brass Shot Bundle | charge | c | fx=bolt race=human kw=-
+Djinn Ember Censer | charge | r | fx=lob race=djinn kw=burn
+Clockwork Bolt Feeder | charge | r | fx=bolt race=gnome kw=-
+Bottomless Quiver | charge | l | fx=bolt race=elf kw=-
+
+Flintlock Pistol | ace | c | shape=line race=human kw=-
+Dwarven Hand Cannon | ace | u | shape=nova race=dwarf kw=push
+Gnomish Ray Pistol | ace | u | shape=row race=gnome kw=-
+Goblin Boomstick | ace | c | shape=nova race=goblin unstable=1 kw=-
+Elven Crystal Sling | ace | u | shape=line race=elf kw=-
+Harpoon Gun | ace | c | shape=line race=sea kw=pull
+Double-Barrel Blunderbuss | ace | r | shape=twin race=human kw=-
+Djinn Lamp Blast | ace | r | shape=all race=djinn kw=confuse
+Thunder Rod | ace | r | shape=row race=sky kw=stun
+Philosopher's Bullet | ace | l | shape=line race=alchemy kw=-
+Runic Siege Pistol | ace | l | shape=row race=dwarf kw=-
+Troll Bone Crossbow | ace | u | shape=line race=troll kw=slow
+
+Silver Bullets | aceup | c | race=human kw=-
+Black Powder Charge | aceup | c | race=dwarf kw=push
+Gnomish Scope | aceup | u | race=gnome kw=-
+Spread Shot Choke | aceup | u | shape=row race=human kw=-
+Scattergun Drum | aceup | r | shape=all race=goblin unstable=1 kw=-
+Explosive Rounds | aceup | u | shape=nova race=goblin kw=-
+Frost Shell | aceup | u | race=sea kw=freeze
+Alchemical Tracer | aceup | c | race=alchemy kw=burn
+Elven Mirror Barrel | aceup | r | shape=twin race=elf kw=-
+Lightning Capacitor | aceup | r | race=sky kw=stun
+Venom Cartridge | aceup | c | race=alchemy kw=poison
+Rifled Barrel | aceup | u | race=dwarf kw=-
+Bottled Djinn Wind | aceup | r | shape=all race=djinn kw=-
+Masterwork Trigger | aceup | l | race=gnome kw=-
+Troll Hide Grip | aceup | c | race=troll kw=-
+`,
+
+};
+/* Later additions to the six colors: each gets three Aces (finishers for the Sidearm) and three
+   Ace Enchantments that power up or change whatever Ace is loaded. They roll their own ranks,
+   so the cards above keep theirs. */
+const CARD_EXTRAS={
+fire:`
+Phoenix Arrow | ace | u | shape=line kw=burn
+Sunfall Lance | ace | r | shape=row kw=burn
+Heart of the Volcano | ace | l | shape=nova kw=burn
+Dragonfire Coating | aceup | c | kw=burn
+Blacksmith's Temper | aceup | u | kw=-
+Cyclone Wrap | aceup | r | shape=nova kw=push
+`,
+frost:`
+Narwhal Harpoon | ace | u | shape=line kw=freeze
+Tidal Ram | ace | r | shape=row kw=push
+Heart of Winter | ace | l | shape=all kw=freeze
+Rime Edge | aceup | c | kw=freeze
+Undertow Charm | aceup | u | kw=pull
+Hurricane Eye | aceup | r | shape=row kw=slow
+`,
+storm:`
+Thunderbird Feather | ace | u | shape=line kw=stun
+Djinn's Last Wish | ace | r | shape=all kw=confuse
+Vajra of Indra | ace | l | shape=row kw=stun
+Static Charge | aceup | c | kw=stun
+Gilded Shot | aceup | u | kw=-
+Sandstorm Scatter | aceup | r | shape=all kw=slow
+`,
+verdant:`
+Thornheart Seed | ace | u | shape=nova kw=poison
+Hunter's Last Arrow | ace | r | shape=line kw=slow
+Wrath of the Wild | ace | l | shape=all kw=poison
+Venom Tip | aceup | c | kw=poison
+Sap of Renewal | aceup | u | kw=drain
+Root Snare Wrap | aceup | r | shape=row kw=slow
+`,
+light:`
+Sun Spear | ace | u | shape=line kw=valor
+Archangel's Verdict | ace | r | shape=all kw=mend
+Last Light of Dawn | ace | l | shape=row kw=mend
+Blessed Oil | aceup | c | kw=mend
+Oath of Valor | aceup | u | kw=valor
+Halo of Judgment | aceup | r | shape=nova kw=-
+`,
+shadow:`
+Banshee's Final Wail | ace | u | shape=all kw=confuse
+Reaper's Due | ace | r | shape=line kw=drain
+Death's Door | ace | l | shape=nova kw=curse
+Cursed Bullet | aceup | c | kw=curse
+Blood Price | aceup | u | kw=drain
+Fog of Dread | aceup | r | shape=all kw=confuse
+`,
 };
 // creatures the color sets add to the art's list (art.js), built from the same parts
 const CARD_SET_CREATURES={"Merfolk":{"head":"round","ears":"point","snout":"grin","body":"wisp","tail":1,"eyes":"big"},"Fish":{"head":"long","ears":"plume","snout":"wide","body":"small","tail":1,"eyes":"top"},"Seal":{"head":"round","ears":"none","snout":"short","body":"round","tail":1,"eyes":"big"},"Kappa":{"head":"round","ears":"none","snout":"beak","body":"shell","claws":1},"Yeti":{"head":"wide","ears":"round","snout":"short","body":"big","claws":1},"Snowman":{"head":"round","ears":"none","snout":"short","body":"round","eyes":"big"},"Penguin":{"head":"round","ears":"none","snout":"beak","body":"squat","wings":1},"Walrus":{"head":"wide","ears":"none","snout":"tusk","body":"big","mod":{"beard":1}},"Narwhal":{"head":"long","ears":"horns","snout":"long","body":"round","tail":1},"Orca":{"head":"long","ears":"plume","snout":"grin","body":"big","tail":1},"Shark":{"head":"long","ears":"plume","snout":"fangs","body":"coil","tail":1},"Turtle":{"head":"square","ears":"none","snout":"beak","body":"shell","mod":{"scale":1.2,"mat":"s"}},"Crab":{"head":"wide","ears":"antenna","snout":"mandible","body":"shell","claws":1},"Kraken":{"head":"round","ears":"none","snout":"beak","body":"coil","tail":2,"eyes":"glow","mod":{"scale":1.3}},"Leviathan":{"head":"long","ears":"horns","snout":"fangs","body":"coil","tail":2,"eyes":"glow","mod":{"scale":1.3,"mat":"g"}},"Djinn":{"head":"long","ears":"point","snout":"grin","body":"wisp","eyes":"glow","mod":{"beard":1}},"Scarab":{"head":"round","ears":"antenna","snout":"mandible","body":"shell","wings":2},"Camel":{"head":"long","ears":"floppy","snout":"long","body":"big","tail":1},"Manticore":{"head":"wide","ears":"tufts","snout":"fangs","body":"big","wings":2,"tail":1,"claws":1},"Chimera":{"head":"wide","ears":"horns","snout":"fangs","body":"big","tail":2,"claws":1},"Scorpion":{"head":"round","ears":"antenna","snout":"mandible","body":"shell","tail":1,"claws":1},"Jackal":{"head":"long","ears":"point","snout":"long","body":"small","tail":1},"Crocodile":{"head":"long","ears":"none","snout":"long","body":"squat","tail":1,"claws":1},"Roc":{"head":"round","ears":"plume","snout":"beak","body":"big","wings":2,"mod":{"scale":1.3}},"Sphinx":{"head":"helm","ears":"floppy","snout":"short","body":"squat","tail":1,"claws":1,"mod":{"mat":"s"}},"Automaton":{"head":"square","ears":"none","snout":"none","body":"block","eyes":"glow","mod":{"mat":"g"}},"Lizard":{"head":"long","ears":"none","snout":"long","body":"small","tail":1,"claws":1},"Raiju":{"head":"round","ears":"point","snout":"fangs","body":"small","tail":2,"eyes":"glow"},"Chupacabra":{"head":"long","ears":"point","snout":"fangs","body":"squat","eyes":"glow","claws":1},"Simurgh":{"head":"round","ears":"plume","snout":"beak","body":"wisp","wings":2,"tail":2},"Bahamut":{"head":"wide","ears":"none","snout":"wide","body":"coil","tail":2,"mod":{"scale":1.3}},"Sandworm":{"head":"round","ears":"none","snout":"mandible","body":"coil","mod":{"scale":1.2}},"Skeleton":{"head":"round","ears":"none","snout":"grin","body":"small","eyes":"glow"},"Zombie":{"head":"square","ears":"floppy","snout":"wide","body":"squat","claws":1},"Ghoul":{"head":"wide","ears":"point","snout":"fangs","body":"squat","eyes":"big","claws":1},"Ghost":{"head":"round","ears":"none","snout":"none","body":"wisp","eyes":"big"},"Banshee":{"head":"long","ears":"none","snout":"wide","body":"wisp","eyes":"glow"},"Lich":{"head":"helm","ears":"horns","snout":"none","body":"wisp","eyes":"glow","mod":{"beard":1}},"Reaper":{"head":"helm","ears":"none","snout":"none","body":"wisp","eyes":"glow","claws":1,"mod":{"scale":1.2}},"Werewolf":{"head":"long","ears":"point","snout":"fangs","body":"big","tail":1,"eyes":"glow","claws":1},"Gaunt":{"head":"long","ears":"horns","snout":"fangs","body":"big","eyes":"glow","claws":1,"mod":{"scale":1.25}},"Nightmare":{"head":"long","ears":"point","snout":"long","body":"big","tail":1,"eyes":"glow"},"Spider":{"head":"round","ears":"none","snout":"mandible","body":"small","eyes":"glow","claws":1},"Moth":{"head":"round","ears":"antenna","snout":"none","body":"small","wings":2,"eyes":"big"},"Centipede":{"head":"long","ears":"antenna","snout":"mandible","body":"coil","claws":1},"Leech":{"head":"round","ears":"none","snout":"mandible","body":"coil","mod":{"scale":0.8}},"Witch":{"head":"long","ears":"point","snout":"long","body":"small","eyes":"top"},"Plaguemask":{"head":"helm","ears":"none","snout":"beak","body":"big","eyes":"glow"},"Demon":{"head":"wide","ears":"horns","snout":"fangs","body":"big","wings":2,"tail":1,"claws":1},"Crow":{"head":"round","ears":"none","snout":"beak","body":"small","wings":2,"tail":1,"eyes":"glow"},"Cat":{"head":"round","ears":"point","snout":"short","body":"small","tail":1,"eyes":"glow"},"Jiangshi":{"head":"square","ears":"none","snout":"short","body":"block","eyes":"top"},"Pegasus":{"head":"long","ears":"point","snout":"long","body":"big","wings":1,"tail":1},"Centaur":{"head":"round","ears":"round","snout":"short","body":"big","tail":1,"mod":{"beard":1}},"Unicorn":{"head":"long","ears":"horns","snout":"long","body":"big","tail":1,"eyes":"big"},"Stag":{"head":"long","ears":"horns","snout":"short","body":"big","tail":1},"Crane":{"head":"round","ears":"plume","snout":"beak","body":"small","wings":1,"tail":1},"Angel":{"head":"round","ears":"none","snout":"none","body":"wisp","wings":2,"eyes":"glow"},"Lamassu":{"head":"helm","ears":"horns","snout":"short","body":"big","wings":2,"tail":1,"mod":{"beard":1,"mat":"s"}},"Elephant":{"head":"wide","ears":"floppy","snout":"tusk","body":"big","tail":1,"mod":{"scale":1.3}},"Qilin":{"head":"long","ears":"horns","snout":"long","body":"armor","tail":2,"eyes":"glow"},"Valkyrie":{"head":"helm","ears":"plume","snout":"none","body":"armor","wings":1},"Cleric":{"head":"round","ears":"none","snout":"short","body":"round"},"Scholar":{"head":"square","ears":"round","snout":"short","body":"small","mod":{"beard":1}},"Ent":{"head":"square","ears":"none","snout":"none","body":"block","eyes":"glow","mod":{"beard":1,"scale":1.25}},"Leshy":{"head":"square","ears":"horns","snout":"grin","body":"big","eyes":"glow","claws":1,"mod":{"beard":1}},"Deer":{"head":"long","ears":"horns","snout":"short","body":"small","tail":1},"Moose":{"head":"long","ears":"horns","snout":"wide","body":"big","tail":1},"Ape":{"head":"round","ears":"round","snout":"wide","body":"big","claws":1},"Monkey":{"head":"round","ears":"round","snout":"short","body":"small","tail":2},"Panther":{"head":"wide","ears":"point","snout":"fangs","body":"small","tail":1,"claws":1,"eyes":"glow"},"Tiger":{"head":"wide","ears":"round","snout":"fangs","body":"big","tail":1,"claws":1},"Elf":{"head":"long","ears":"point","snout":"none","body":"small"},"Druid":{"head":"round","ears":"none","snout":"none","body":"wisp","mod":{"beard":1}},"Fairy":{"head":"round","ears":"point","snout":"none","body":"wisp","wings":2,"mod":{"scale":0.7}},"Mushroom":{"head":"wide","ears":"none","snout":"grin","body":"squat"},"Ant":{"head":"round","ears":"antenna","snout":"mandible","body":"armor"},"Hornet":{"head":"round","ears":"antenna","snout":"mandible","body":"small","wings":2,"tail":1},"Tortoise":{"head":"round","ears":"none","snout":"beak","body":"shell"},"Sasquatch":{"head":"round","ears":"none","snout":"wide","body":"big","claws":1,"mod":{"scale":1.3}},"Tanuki":{"head":"round","ears":"round","snout":"short","body":"round","tail":1},"Satyr":{"head":"long","ears":"horns","snout":"grin","body":"small","tail":1,"mod":{"beard":1}},"Kodama":{"head":"round","ears":"none","snout":"none","body":"small","eyes":"big","mod":{"scale":0.6}},"Quetzal":{"head":"round","ears":"plume","snout":"beak","body":"small","wings":2,"tail":2},"Sauropod":{"head":"round","ears":"none","snout":"short","body":"big","tail":1,"mod":{"scale":1.3}}};

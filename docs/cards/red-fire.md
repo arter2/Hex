@@ -1,8 +1,8 @@
-# Red · Fire: all 225 cards
+# Red · Fire: all 231 cards
 
 Starter cards are marked ★. Each card shows its rune letter and rank (the Spell screen combos use them). Numbers are from the current build: power follows rank (1-12) and rarity.
 
-Common 93 · Uncommon 73 · Rare 39 · Legendary 20
+Common 94 · Uncommon 75 · Rare 41 · Legendary 21
 
 ## Attacks (40)
 
@@ -288,3 +288,19 @@ Common 93 · Uncommon 73 · Rare 39 · Legendary 20
 | Eye of the Dragon | Legendary | A2 | Legendary piece. 52 on the tile you aim along its row, over blockers. Burn 2.7s |
 | Anvil of the First Forge | Legendary | F2 | Legendary piece. 52 on the tile you aim down its column, over blockers. Stun 1s |
 | Tail of the Nine-Tailed Fox | Legendary | A3 | Legendary piece. 62 on the tile you aim along its row, over blockers. Knockback |
+
+## Aces (Sidearm finishers) (3)
+
+| Card | Rarity | Rune | What it does |
+|---|---|---|---|
+| Phoenix Arrow | Uncommon | F3 | Ace: loads into your Sidearm. Fire it for 75 to the first enemy in your row. Ace Enchantments build it up to ×3. Burn 3s |
+| Sunfall Lance | Rare | C4 | Ace: loads into your Sidearm. Fire it for 70 to every enemy in your row. Ace Enchantments build it up to ×3. Burn 3.3s |
+| Heart of the Volcano | Legendary | B6 | Ace: loads into your Sidearm. Fire it for 83 to the nearest enemy and around it. Ace Enchantments build it up to ×3. Burn 4s |
+
+## Ace Enchantments (3)
+
+| Card | Rarity | Rune | What it does |
+|---|---|---|---|
+| Dragonfire Coating | Common | C5 | Ace Enchantment: your Sidearm's Ace gets +30% power and these effects. With no Ace loaded it waits for the next one. Burn 3.7s |
+| Blacksmith's Temper | Uncommon | D1 | Ace Enchantment: your Sidearm's Ace gets +30% power. With no Ace loaded it waits for the next one |
+| Cyclone Wrap | Rare | E2 | Ace Enchantment: your Sidearm's Ace gets +30% power and now hits around its target and these effects. With no Ace loaded it waits for the next one. Knockback |

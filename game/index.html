@@ -222,11 +222,13 @@
     <div id="banner" class="banner"></div>
     <div id="hurtFx" class="hurt-fx"></div>
     <div id="hudBottom">
+      <div id="instRow" class="inst-row" hidden></div>
       <div id="queueRow"></div>
       <div id="comboBar" class="combo-bar" hidden></div>
       <div class="controls battle">
         <button id="btnWand" class="btn wand">◀ Fire<small>hold to charge</small></button>
         <button id="btnCast" class="btn">Cast ▶<small id="castName"></small></button>
+        <button id="btnAce" class="btn ace" hidden>♠ Ace<small id="aceName"></small></button>
       </div>
       <p class="keys">Tap your side to move, the enemy side to aim lobs · keys: arrows/WASD move, Space fire, Enter cast, Q aim, C spell</p>
     </div>
@@ -239,9 +241,18 @@
         <div id="custSurge" class="surge"></div>
         <div id="custRecipe" class="surge rcpline"></div>
         <div id="custQueue" class="slots" data-zone="queue"></div>
-        <details id="custHint" class="hint"><summary>Queue any 3 cards; they cast left to right. <u>Combo rules</u></summary>Combos: copies (Double); 3 different cards of one rune and color (Flush); one rune and ranks in a row (Straight); runes in order left to right like A, B, C (Rune Run: Haste and Courage, +30% cards and wand, for 8s); three of one rune (Rune Set: wand ×2.5 for 5s); or a secret recipe. The <b>rune</b> is the letter on the card (✱ fits any); cards matching your queue's rune are outlined. 4 cards of one rune in hand open a 4th slot. Each empty slot draws 1 extra card next time. Hold a card to read it in full.</details>
+        <details id="custHint" class="hint"><summary>Queue any 3 cards; they cast left to right. <u>Combo rules</u></summary>Combos: copies (Double); 3 different cards of one rune and color (Flush); one rune and ranks in a row (Straight); runes in order left to right like A, B, C (Rune Run: Haste and Courage, +30% cards and wand, for 8s); three of one rune (Rune Set: wand ×2.5 for 5s); or a secret recipe. <b>✧ Instants</b> (Brown) never go in the queue: tap one to use it at once. <b>♠ Aces</b> load into your Sidearm; fire them with the Ace button. The <b>rune</b> is the letter on the card (✱ fits any); cards matching your queue's rune are outlined. 4 cards of one rune in hand open a 4th slot. Each empty slot draws 1 extra card next time. Hold a card to read it in full.</details>
         <div id="custHand" class="hand" data-zone="hand"></div>
         <p id="custEmpty" class="hint warn"></p>
+        <p id="custAce" class="hint"></p>
+      </div>
+    </div>
+    <div id="picker" class="overlay">
+      <div class="panel custom">
+        <div class="bar"><h2 id="pickTitle">Pick</h2><span id="pickCount" class="count"></span></div>
+        <p id="pickHint" class="hint"></p>
+        <div id="pickList" class="hand"></div>
+        <div class="row"><button id="pickOk" class="btn big">Done</button><button id="pickCancel" class="btn ghost">Cancel</button></div>
       </div>
     </div>
   </section>

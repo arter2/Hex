@@ -279,6 +279,17 @@ Brown:
 - Race tech: each race's tech gets stronger for every other card of that race in
   your hand (+10% each).
 
-Holstered finisher (name to come): a card that is not used right away. It goes
-into a holster with its own button, other cards you cast build it up, and you
-fire it when you need it, as a way to finish a fight.
+### Aces and the Sidearm
+
+An **Ace** is a finisher that is not used right away. Cast from the queue, it
+loads into your **Sidearm**, which gets its own button (♠ Ace) beside Fire and
+Cast. You fire it when you need it.
+
+- Only **Ace Enchantments** build it up, not every card. They come from every
+  color, and each one adds power (up to ×3), may change how the Ace hits (a row,
+  every enemy, a blast around the target, or two shots), and adds its color's
+  effect (burn, freeze, stun, poison, drain, curse, mend...).
+- An enchantment cast with no Ace loaded waits for the next one.
+- One Ace at a time: loading another replaces it. It is gone when the fight ends.
+- Each of the six colors has 3 Aces and 3 Ace Enchantments; Brown has 12 Aces
+  and 15 Enchantments (guns, ammo, scopes and barrels).

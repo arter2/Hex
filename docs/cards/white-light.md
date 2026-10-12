@@ -1,8 +1,8 @@
-# White · Light: all 225 cards
+# White · Light: all 231 cards
 
 Starter cards are marked ★. Each card shows its rune letter and rank (the Spell screen combos use them). Numbers are from the current build: power follows rank (1-12) and rarity.
 
-Common 90 · Uncommon 68 · Rare 44 · Legendary 23
+Common 91 · Uncommon 70 · Rare 46 · Legendary 24
 
 ## Attacks (35)
 
@@ -288,3 +288,19 @@ Common 90 · Uncommon 68 · Rare 44 · Legendary 23
 | Stone of the Philosophers | Legendary | E5 | Legendary piece. The next hit that would defeat you leaves you standing and heals 86 |
 | Bridle of the Pegasus | Legendary | D4 | Legendary piece. Heal 72 |
 | Scales of the Final Judge | Legendary | E4 | Legendary piece. Heal 6/s for 8s |
+
+## Aces (Sidearm finishers) (3)
+
+| Card | Rarity | Rune | What it does |
+|---|---|---|---|
+| Sun Spear | Uncommon | D1 | Ace: loads into your Sidearm. Fire it for 74 to the first enemy in your row. Ace Enchantments build it up to ×3. Valor |
+| Archangel's Verdict | Rare | C6 | Ace: loads into your Sidearm. Fire it for 55 to every enemy. Ace Enchantments build it up to ×3. Mend 4 |
+| Last Light of Dawn | Legendary | B2 | Ace: loads into your Sidearm. Fire it for 73 to every enemy in your row. Ace Enchantments build it up to ×3. Mend 3 |
+
+## Ace Enchantments (3)
+
+| Card | Rarity | Rune | What it does |
+|---|---|---|---|
+| Blessed Oil | Common | C5 | Ace Enchantment: your Sidearm's Ace gets +30% power and these effects. With no Ace loaded it waits for the next one. Mend 4 |
+| Oath of Valor | Uncommon | F4 | Ace Enchantment: your Sidearm's Ace gets +30% power and these effects. With no Ace loaded it waits for the next one. Valor |
+| Halo of Judgment | Rare | ✱3 | Ace Enchantment: your Sidearm's Ace gets +30% power and now hits around its target. With no Ace loaded it waits for the next one |

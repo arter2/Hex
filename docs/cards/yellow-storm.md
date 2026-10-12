@@ -1,8 +1,8 @@
-# Yellow · Storm: all 225 cards
+# Yellow · Storm: all 231 cards
 
 Starter cards are marked ★. Each card shows its rune letter and rank (the Spell screen combos use them). Numbers are from the current build: power follows rank (1-12) and rarity.
 
-Common 91 · Uncommon 66 · Legendary 23 · Rare 45
+Common 92 · Uncommon 68 · Legendary 24 · Rare 47
 
 ## Attacks (37)
 
@@ -288,3 +288,19 @@ Common 91 · Uncommon 66 · Legendary 23 · Rare 45
 | Scale of the World Fish | Legendary | B10 | Legendary piece. 106 on the tile you aim, over blockers. Knockback |
 | Tail of the Manticore | Legendary | C2 | Legendary piece. 52 on the tile you aim and around it, over blockers. Poison 5 |
 | Heart of the Bronze Giant | Legendary | B4 | Legendary piece. 58 on the tile you aim along its row, over blockers. Stun 1.2s |
+
+## Aces (Sidearm finishers) (3)
+
+| Card | Rarity | Rune | What it does |
+|---|---|---|---|
+| Thunderbird Feather | Uncommon | C4 | Ace: loads into your Sidearm. Fire it for 79 to the first enemy in your row. Ace Enchantments build it up to ×3. Stun 1.2s |
+| Djinn's Last Wish | Rare | F1 | Ace: loads into your Sidearm. Fire it for 43 to every enemy. Ace Enchantments build it up to ×3. Confuse 3.2s |
+| Vajra of Indra | Legendary | A2 | Ace: loads into your Sidearm. Fire it for 73 to every enemy in your row. Ace Enchantments build it up to ×3. Stun 1s |
+
+## Ace Enchantments (3)
+
+| Card | Rarity | Rune | What it does |
+|---|---|---|---|
+| Static Charge | Common | D5 | Ace Enchantment: your Sidearm's Ace gets +30% power and these effects. With no Ace loaded it waits for the next one. Stun 1.3s |
+| Gilded Shot | Uncommon | C6 | Ace Enchantment: your Sidearm's Ace gets +30% power. With no Ace loaded it waits for the next one |
+| Sandstorm Scatter | Rare | B3 | Ace Enchantment: your Sidearm's Ace gets +30% power and now hits every enemy and these effects. With no Ace loaded it waits for the next one. Slow 2.9s |

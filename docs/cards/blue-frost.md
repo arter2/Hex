@@ -1,8 +1,8 @@
-# Blue · Frost: all 225 cards
+# Blue · Frost: all 231 cards
 
 Starter cards are marked ★. Each card shows its rune letter and rank (the Spell screen combos use them). Numbers are from the current build: power follows rank (1-12) and rarity.
 
-Common 92 · Uncommon 71 · Legendary 22 · Rare 40
+Common 93 · Uncommon 73 · Legendary 23 · Rare 42
 
 ## Attacks (41)
 
@@ -288,3 +288,19 @@ Common 92 · Uncommon 71 · Legendary 22 · Rare 40
 | Heart of the Leviathan | Legendary | B3 | Legendary piece. 56 to the first enemy in your row. Valor |
 | Eye of the Frost Giant | Legendary | C11 | Legendary piece. 62 to every enemy in your row. Freeze 2.7s |
 | Bell of the Sunken City | Legendary | D7 | Legendary piece. 52 to every enemy in your row. Confuse 4.4s |
+
+## Aces (Sidearm finishers) (3)
+
+| Card | Rarity | Rune | What it does |
+|---|---|---|---|
+| Narwhal Harpoon | Uncommon | D3 | Ace: loads into your Sidearm. Fire it for 75 to the first enemy in your row. Ace Enchantments build it up to ×3. Freeze 1.5s |
+| Tidal Ram | Rare | A5 | Ace: loads into your Sidearm. Fire it for 82 to every enemy in your row. Ace Enchantments build it up to ×3. Knockback |
+| Heart of Winter | Legendary | F6 | Ace: loads into your Sidearm. Fire it for 64 to every enemy. Ace Enchantments build it up to ×3. Freeze 1.9s |
+
+## Ace Enchantments (3)
+
+| Card | Rarity | Rune | What it does |
+|---|---|---|---|
+| Rime Edge | Common | E2 | Ace Enchantment: your Sidearm's Ace gets +30% power and these effects. With no Ace loaded it waits for the next one. Freeze 1.3s |
+| Undertow Charm | Uncommon | F1 | Ace Enchantment: your Sidearm's Ace gets +30% power and these effects. With no Ace loaded it waits for the next one. Pull |
+| Hurricane Eye | Rare | A4 | Ace Enchantment: your Sidearm's Ace gets +30% power and now hits every enemy in your row and these effects. With no Ace loaded it waits for the next one. Slow 3.2s |

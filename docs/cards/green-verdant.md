@@ -1,8 +1,8 @@
-# Green · Verdant: all 228 cards
+# Green · Verdant: all 234 cards
 
 Starter cards are marked ★. Each card shows its rune letter and rank (the Spell screen combos use them). Numbers are from the current build: power follows rank (1-12) and rarity.
 
-Common 93 · Uncommon 69 · Legendary 23 · Rare 43
+Common 94 · Uncommon 71 · Legendary 24 · Rare 45
 
 ## Attacks (40)
 
@@ -291,3 +291,19 @@ Common 93 · Uncommon 69 · Legendary 23 · Rare 43
 | Pipes of the Goat-Footed | Legendary | B1 | Legendary piece. Heal 5/s for 8s |
 | Pelt of the Jaguar King | Legendary | C3 | Legendary piece. Heal 6/s for 8s |
 | Mask of the Green Man | Legendary | F8 | Legendary piece. Heal 7/s for 8s |
+
+## Aces (Sidearm finishers) (3)
+
+| Card | Rarity | Rune | What it does |
+|---|---|---|---|
+| Thornheart Seed | Uncommon | D6 | Ace: loads into your Sidearm. Fire it for 64 to the nearest enemy and around it. Ace Enchantments build it up to ×3. Poison 9 |
+| Hunter's Last Arrow | Rare | C5 | Ace: loads into your Sidearm. Fire it for 92 to the first enemy in your row. Ace Enchantments build it up to ×3. Slow 3.5s |
+| Wrath of the Wild | Legendary | B4 | Ace: loads into your Sidearm. Fire it for 58 to every enemy. Ace Enchantments build it up to ×3. Poison 7 |
+
+## Ace Enchantments (3)
+
+| Card | Rarity | Rune | What it does |
+|---|---|---|---|
+| Venom Tip | Common | A2 | Ace Enchantment: your Sidearm's Ace gets +30% power and these effects. With no Ace loaded it waits for the next one. Poison 5 |
+| Sap of Renewal | Uncommon | D1 | Ace Enchantment: your Sidearm's Ace gets +30% power and these effects. With no Ace loaded it waits for the next one. Drain 30% |
+| Root Snare Wrap | Rare | E3 | Ace Enchantment: your Sidearm's Ace gets +30% power and now hits every enemy in your row and these effects. With no Ace loaded it waits for the next one. Slow 2.9s |

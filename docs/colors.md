@@ -223,3 +223,33 @@ them its own way:
 | Wolves | all | Wild wolves Green, white wolves White, dark wolves Black, winter wolves Blue. |
 | Mountains | Red, Green | Red: volcanoes, mines. Green: highlands, mountain men. |
 | Stone and earth | Red, White | Red: raw earth, mining. White: marble and architecture. |
+
+---
+
+## The two neutral colors
+
+Gray and Brown go in any deck. They are not one of the six; they sit beside them.
+
+### Gray: the normal type
+
+Gray is the "Normal" type, as in Pokémon: creatures that make sense in more
+than one color, so any deck can use them and they still feel interesting.
+
+- Creatures that fit several colors at once: suits of armor, golems, guardians,
+  constructs, familiars, mounts.
+- Mythical heroes and champions from every culture: the warriors, wanderers and
+  legends who do not belong to one element.
+- Plain but characterful: the strength of Gray is being reliable and flexible,
+  not flashy.
+
+### Brown: technology
+
+Brown is technology, from all the different races in the game. It plays like
+enchantments, artifacts and instants in Magic: The Gathering.
+
+- Buff potions.
+- Temporary enchantments on your creatures, or on cards in your hand.
+- Artifacts and devices: turrets, engines, tools, contraptions.
+- Instants: quick one-off effects.
+- Every race brings its own tech: dwarven forges, gnomish clockwork, elven
+  crystal lenses, desert alchemy, sea-folk diving gear, and so on.

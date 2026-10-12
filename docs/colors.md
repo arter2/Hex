@@ -259,3 +259,26 @@ enchantments, artifacts and instants in Magic: The Gathering.
   - Reshuffle: shuffle your whole hand back into the deck and draw a new one.
   - Keep and reshuffle: choose cards to keep, shuffle the rest back and draw
     the same number again.
+
+### Rules for the neutral colors
+
+Gray:
+- No weakness: Gray deals and takes even damage against every color.
+- Veteran: a Gray creature gets +10% power for each turn it survives.
+- Guardian: armor and guard creatures step in and take hits aimed at you.
+- Legend: Gray mythical heroes make your other Gray creatures stronger while they stand.
+
+Brown:
+- True instants: tap one in your hand during the fight and it fires at once
+  (no Spell screen, no queue slot).
+- Equipment: gear attaches to one of your creatures; if it dies the gear drops
+  and your next summon picks it up.
+- Tinker: an upgraded card in your hand keeps the upgrade for the whole battle.
+- Unstable: goblin and gremlin tech is stronger but has a 1 in 5 chance to misfire.
+- Recharge: some tech refills the uses of your Charge cards.
+- Race tech: each race's tech gets stronger for every other card of that race in
+  your hand (+10% each).
+
+Holstered finisher (name to come): a card that is not used right away. It goes
+into a holster with its own button, other cards you cast build it up, and you
+fire it when you need it, as a way to finish a fight.

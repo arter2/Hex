@@ -253,3 +253,9 @@ enchantments, artifacts and instants in Magic: The Gathering.
 - Instants: quick one-off effects.
 - Every race brings its own tech: dwarven forges, gnomish clockwork, elven
   crystal lenses, desert alchemy, sea-folk diving gear, and so on.
+- Deck tools (Brown only):
+  - Search: pull a random card of a kind from your deck into your hand
+    (a random spell, a random creature, a random card of one rune...).
+  - Reshuffle: shuffle your whole hand back into the deck and draw a new one.
+  - Keep and reshuffle: choose cards to keep, shuffle the rest back and draw
+    the same number again.

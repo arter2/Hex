@@ -1149,3 +1149,23 @@ body.ui-phone:not(.wide) .panel.scene{width:fit-content; max-width:100%; margin:
 .xcards .card{flex:0 1 210px; min-width:0; width:auto; cursor:default;}
 .xcards .card{aspect-ratio:auto; height:auto;} .xcards .card .tx{overflow:visible; max-height:none; -webkit-line-clamp:unset; display:block; flex:none;}
 .xcards .xnew{position:absolute; bottom:4px; left:6px; z-index:3; background:#ffe066; color:#1a1300; font:800 12px var(--font-b); padding:2px 7px; border-radius:10px; box-shadow:0 2px 0 #000;}
+
+/* the bag in the game's pixel style, in tanned leather (textures from uikit.js) */
+.bagframe{background:#4a2f1a var(--px-leather); background-size:96px 96px; background-clip:padding-box; image-rendering:pixelated;
+  border:20px solid transparent; border-image:var(--px-frame-leather) 10 round; border-radius:0; box-shadow:0 10px 30px #000c;}
+.bghead{background:#2c1b0f var(--px-leather-dk); background-size:96px 96px; border-bottom:4px solid #0c0704; box-shadow:inset 0 -2px 0 #70492a, 0 2px 0 #8a5c36; margin:-2px -4px 0;}
+.bgbag{border-radius:0; border:8px solid transparent; border-image:var(--px-btn-brass) 4 fill stretch; background:none; box-shadow:none; width:52px; height:52px; top:2px;}
+.bgbag::after{inset:4px;}
+.bgx{border-radius:0; border:8px solid transparent; border-image:var(--px-btn-red) 4 fill stretch; background:none; box-shadow:none; width:44px; height:44px; padding:0; text-shadow:2px 2px 0 #000;}
+.bgx:active{transform:translateY(1px);}
+.bgchar,.bgside{border-radius:0; border:6px solid transparent; border-image:var(--px-slot-leather) 3 stretch; box-shadow:inset 0 0 10px #0009; background-clip:padding-box;}
+.bgside{background:#3a2414 var(--px-leather-dk); background-size:96px 96px;}
+.bgbag::after{inset:2px;}
+.bgslot,.bgcell{border-radius:0; border:6px solid transparent; border-image:var(--px-slot-leather) 3 fill stretch; background:none; box-shadow:none;}
+.bgslot.full{box-shadow:inset 0 0 0 2px var(--fc,#d8b060), inset 0 0 12px color-mix(in srgb,var(--fc,#d8b060) 35%,transparent);}
+.bgcell.full{background:none; box-shadow:inset 0 0 0 2px var(--fc,#70492a);}
+.bgslot.sel,.bgcell.sel{outline:3px solid #f2d9a0; outline-offset:0;}
+.bgtab{border-radius:0; border:8px solid transparent; border-image:var(--px-btn-leather) 4 fill stretch; background:none; box-shadow:none; padding:2px 2px; text-shadow:2px 2px 0 #000;}
+.bgtab.on{border-image-source:var(--px-btn-leather-on); background:none; box-shadow:none; color:#ffe9b0;}
+.bgdetail{border-radius:0; border:6px solid transparent; border-image:var(--px-slot-leather) 3 fill stretch; background:none; box-shadow:none;}
+.bgghost{border-radius:0; border:6px solid transparent; border-image:var(--px-slot-leather) 3 fill stretch; background:none;}

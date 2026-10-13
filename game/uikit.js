@@ -325,6 +325,41 @@ const FACE_TEX={
     return I; },
 };
 
+/* ---------- leather, for the bag ----------
+   The same kit as the stone UI (a frame sliced at 10, slots sliced at 3, buttons at 4), in
+   tanned brown leather: a pebbled grain, a stitched edge and brass rivets. */
+const LEATHER=['#0c0704','#160d07','#20140b','#2c1b0f','#3a2414','#4a2f1a','#5c3c22','#70492a','#8a5c36','#a8744a'].map(hx);
+const BRASS=['#3a2a0c','#6e5418','#b08a2a','#e0b850','#fff0b0'].map(hx), STITCH=hx('#d8b888');
+// a seamless tile of pebbled leather: k shifts the whole tile darker (k<0) or lighter
+function leather(seed,k){ const N=48, L=i=>LEATHER[Math.max(0,Math.min(9,i+k))], I=Img(N,N,L(5)), R=rng(seed), W=(x,y,c)=>I.set((x+N)%N,(y+N)%N,c);
+  for(let i=0;i<N*N*.18;i++) W(Math.floor(R()*N),Math.floor(R()*N),R()<.5?L(4):L(6));   // the mottle of the hide
+  for(let i=0;i<140;i++){ const x=Math.floor(R()*N), y=Math.floor(R()*N), w=R()<.5?2:1;   // pebbles: lit on top, shaded below
+    for(let dx=0;dx<w;dx++){ W(x+dx,y,L(6)); W(x+dx,y+1,L(4)); } if(R()<.25) W(x,y,L(7)); }
+  for(let i=0;i<7;i++){ let x=Math.floor(R()*N), y=Math.floor(R()*N); const dx=R()<.5?1:-1, n=4+Math.floor(R()*6);   // creases
+    for(let j=0;j<n;j++){ W(x,y,L(3)); W(x,y-1,L(6)); x+=dx; if(R()<.5) y++; } }
+  for(let i=0;i<10;i++) W(Math.floor(R()*N),Math.floor(R()*N),L(8));
+  return I; }
+// the stitched leather frame: a raised rolled edge, a row of stitches, and brass rivets in the corners
+function leatherFrame(){ const N=30, S=10, I=Img(N,N), R=rng(9), n=t=>LEATHER[Math.max(0,Math.min(9,t+(R()<.18?-1:R()<.18?1:0)))];
+  for(let y=0;y<N;y++) for(let x=0;x<N;x++){ const dd=Math.min(x,y,N-1-x,N-1-y), tl=Math.min(x,y)===dd&&!(x>N-1-y||y>N-1-x);
+    if(dd>=S) continue;
+    if(dd===S-1){ I.set(x,y,LEATHER[3]); continue; }
+    if(dd===0) I.set(x,y,C.k);
+    else if(dd===1) I.set(x,y,tl?LEATHER[9]:LEATHER[4]);
+    else if(dd===2) I.set(x,y,tl?n(8):n(5));
+    else if(dd===4){ const along=dd===y||dd===N-1-y?x:y; I.set(x,y,along%3===0?n(6):STITCH); }   // the stitching
+    else if(dd<=5) I.set(x,y,n(dd===3&&tl?7:6));
+    else if(dd===6) I.set(x,y,tl?LEATHER[3]:LEATHER[7]);
+    else if(dd===7) I.set(x,y,C.k);
+    else I.set(x,y,LEATHER[1]); }
+  for(const [cx,cy] of [[2,2],[N-6,2],[2,N-6],[N-6,N-6]]){ I.rect(cx,cy,cx+3,cy+3,BRASS[2]); I.rect(cx+1,cy+1,cx+2,cy+2,BRASS[3]); I.set(cx+1,cy+1,BRASS[4]); I.set(cx+3,cy+3,BRASS[1]); I.set(cx+3,cy,BRASS[1]); I.set(cx,cy+3,BRASS[1]);
+    for(const [x,y] of [[cx-1,cy],[cx-1,cy+3],[cx+4,cy],[cx+4,cy+3],[cx,cy-1],[cx+3,cy-1],[cx,cy+4],[cx+3,cy+4]]) I.set(x,y,C.k); }
+  return I; }
+// a pocket pressed into the leather: dark inside, shaded at the top and lit at the bottom
+function leatherSlot(){ const N=9, IN=[20,12,6,165], I=Img(N,N,IN);   // the inside lets the leather show through, darkened
+  for(let y=0;y<N;y++) for(let x=0;x<N;x++){ if(y===0||x===0) I.set(x,y,C.k); else if(y<3&&x>0||x<3&&y>0) I.set(x,y,LEATHER[1]); else if(y===N-1||x===N-1) I.set(x,y,LEATHER[7]); }
+  I.rect(3,3,N-2,N-2,IN); return I; }
+
 /* ---------- hand the textures to the stylesheet ---------- */
 function install(){ if(typeof document==='undefined') return; const s=document.documentElement.style, u=I=>`url(${I.url()})`;
   s.setProperty('--px-wall',u(wall(STONE.slice(0,8).map(c=>lift(c,-4)),64,7,3)));
@@ -340,6 +375,14 @@ function install(){ if(typeof document==='undefined') return; const s=document.d
   s.setProperty('--px-banner',u(banner()));
   s.setProperty('--px-coin',`url(${icon('coin')})`);
   s.setProperty('--px-cardtex',u(cardTexture()));
+  s.setProperty('--px-leather',u(leather(21,1)));
+  s.setProperty('--px-leather-dk',u(leather(23,-1)));
+  s.setProperty('--px-frame-leather',u(leatherFrame()));
+  s.setProperty('--px-slot-leather',u(leatherSlot()));
+  s.setProperty('--px-btn-leather',u(button(LEATHER[8],LEATHER[7],LEATHER[4],LEATHER[3],LEATHER[2])));
+  s.setProperty('--px-btn-leather-on',u(button(BRASS[4],BRASS[3],LEATHER[6],LEATHER[4],LEATHER[3])));
+  s.setProperty('--px-btn-brass',u(button(BRASS[4],BRASS[3],BRASS[2],BRASS[1],BRASS[0])));
+  s.setProperty('--px-btn-red',u(button(hx('#ffb0a0'),hx('#e0503a'),hx('#9a2414'),hx('#6a160a'),hx('#420c06'))));
   for(const k in FACE_TEX) s.setProperty('--tex-'+k,u(FACE_TEX[k]()));
 }
 if(typeof document!=='undefined'){ if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',install); else install(); }

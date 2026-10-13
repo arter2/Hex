@@ -233,12 +233,11 @@ function xInit3D(){
   cv.addEventListener('pointerdown',e=>{ if(!EX||!EX.active||xPaused) return; e.preventDefault(); try{ cv.setPointerCapture(e.pointerId); }catch(_){}
     const [ax,ay]=appXY(e.clientX,e.clientY);
     if(EX.aim){ EX.aim.id=e.pointerId; EX.aim.cell=xAimCell(ax,ay); return; }
-    XHOLD.id=e.pointerId; XHOLD.x=XHOLD.x0=ax; XHOLD.y=XHOLD.y0=ay; XHOLD.t0=performance.now(); XHOLD.on=true; });
+    XHOLD.id=e.pointerId; XHOLD.x=XHOLD.x0=ax; XHOLD.y=XHOLD.y0=ay; XHOLD.t0=performance.now(); XHOLD.on=true; xGoalAt(ax,ay); });
   cv.addEventListener('pointermove',e=>{ if(EX&&EX.aim&&e.pointerId===EX.aim.id){ const [ax,ay]=appXY(e.clientX,e.clientY); EX.aim.cell=xAimCell(ax,ay); return; }
-    if(e.pointerId===XHOLD.id){ [XHOLD.x,XHOLD.y]=appXY(e.clientX,e.clientY); } });
+    if(e.pointerId===XHOLD.id){ [XHOLD.x,XHOLD.y]=appXY(e.clientX,e.clientY); xGoalAt(XHOLD.x,XHOLD.y); } });
   const end=e=>{ if(EX&&EX.aim&&e.pointerId===EX.aim.id) return xSearchAt(EX.aim.cell);
-    if(e.pointerId!==XHOLD.id) return; const tap=performance.now()-XHOLD.t0<260&&Math.hypot(XHOLD.x-XHOLD.x0,XHOLD.y-XHOLD.y0)<14;
-    XHOLD.on=false; XHOLD.id=null; if(tap) xTap(e); };
+    if(e.pointerId!==XHOLD.id) return; XHOLD.on=false; XHOLD.id=null; };   // letting go keeps you walking to the goal
   cv.addEventListener('pointerup',end); cv.addEventListener('pointercancel',e=>{ XHOLD.on=false; XHOLD.id=null; });
   cv.addEventListener('contextmenu',e=>e.preventDefault());
   // hold a finger on the minimap to see it big; let go to shrink it back
@@ -522,19 +521,35 @@ function xPause(on){ xPaused=!!on; for(const k in XKEY) XKEY[k]=false; XHOLD.on=
 document.addEventListener('keydown',e=>{ if(!EX||!EX.active||xPaused) return; const k=e.key.toLowerCase(), a=keyAct(k,'map'); XKEY[k]=true;
   if(a==='fire'&&!e.repeat) xStrike();
   if(a==='search'){ if(EX.aim) xSearch(); else xSearchAt(EX.pc); } else if(a==='disarm') xDisarm(); else if(a==='camp') xToCamp();
-  if(a||k===' '){ e.preventDefault(); } if(['up','down','left','right'].includes(a)) EX.path=[]; });
+  if(a||k===' '){ e.preventDefault(); } if(['up','down','left','right'].includes(a)){ EX.path=[]; EX.goal=null; } });
 document.addEventListener('keyup',e=>{ XKEY[e.key.toLowerCase()]=false; });
-function xTap(e){ if(!EX||!EX.active||EX.busy) return; const G=X3, r=appBox(e.target), [ex,ey]=appXY(e.clientX,e.clientY);
-  const v=new THREE.Vector2((ex-r.left)/r.width*2-1,-(ey-r.top)/r.height*2+1), hit=new THREE.Vector3();
-  G.ray.setFromCamera(v,G.cam); if(!G.ray.ray.intersectPlane(G.plane,hit)) return;
-  const c=xcell(hit.x,hit.z); if(c<0||!EX.seen[c]) return;
-  const goal=c, blocked=n=>xKnownTrap(n)||xChestAt(n)&&n!==goal||typeof xSolid==='function'&&xSolid(n)&&n!==goal;
+/* Moving with a finger: wherever you touch (or drag to) is where you go. The spot on the floor
+   under the finger becomes your goal, the walk there takes the shortest way round walls, and you
+   keep going after you let go. Holding still does not drift the goal as the camera follows you:
+   it only changes when the finger moves. */
+function xPathToCell(goal){ const blocked=n=>xKnownTrap(n)||xChestAt(n)&&n!==goal||typeof xSolid==='function'&&xSolid(n)&&n!==goal;
   const d=xbfs(EX.t,EX.doors,goal,EX.seen,n=>blocked(n)&&n!==EX.pc);
-  if(d[EX.pc]<0) return; const path=[]; let cur=EX.pc;
+  if(d[EX.pc]<0) return null; const path=[]; let cur=EX.pc;
   while(cur!==goal){ const x=xcx(cur), y=xcy(cur); let best=-1;
     for(const n of [xi(x+1,y),xi(x-1,y),xi(x,y+1),xi(x,y-1)]) if(d[n]>=0&&d[n]<d[cur]&&(best<0||d[n]<d[best])) best=n;
     if(best<0) break; path.push(best); cur=best; }
-  EX.path=path; }
+  return path; }
+function xGoalAt(ax,ay){ if(!EX||!EX.active||EX.busy) return; let g=xFloorAt(ax,ay); if(!g) return;
+  let c=xcell(g.x,g.z);
+  // a touch on a wall (or a spot you have not seen) aims at the nearest open cell you know
+  if(c<0||!EX.seen[c]||!xPassable(c)){ let best=-1, bd=9; const cx=Math.floor(g.x/XCS), cz=Math.floor(g.z/XCS);
+    for(let dy=-1;dy<=1;dy++) for(let dx=-1;dx<=1;dx++){ const x=cx+dx, y=cz+dy; if(x<0||y<0||x>=XN||y>=XN) continue; const n=xi(x,y);
+      if(!EX.seen[n]||!xPassable(n)) continue; const dd=Math.hypot(xw(n)-g.x,xz(n)-g.z); if(dd<bd){ bd=dd; best=n; } }
+    if(best<0) return; c=best; g={x:xw(c),z:xz(c)}; }
+  if(EX.goal&&EX.goal.cell===c){ EX.goal.x=g.x; EX.goal.z=g.z; return; }   // same cell: just nudge the end point
+  const path=c===EX.pc?[]:xPathToCell(c); if(!path) return;
+  EX.goal={cell:c, x:g.x, z:g.z}; EX.path=path; }
+function xTap(e){ const [ax,ay]=appXY(e.clientX,e.clientY); xGoalAt(ax,ay); }
+// can you walk straight from (x,z) to the middle of cell n? (open floor all the way, with room for you)
+function xStraight(x,z,n){ const tx=xw(n), tz=xz(n), L=Math.hypot(tx-x,tz-z), steps=Math.ceil(L/.3), r=.45;
+  for(let k=1;k<=steps;k++){ const px=x+(tx-x)*k/steps, pz=z+(tz-z)*k/steps;
+    for(const [ox,oz] of [[-r,-r],[r,-r],[-r,r],[r,r]]){ const c=xcell(px+ox,pz+oz); if(c===EX.pc) continue; if(!xClear(c)||xKnownTrap(c)||xChestAt(c)||typeof xSolid==='function'&&xSolid(c)) return false; } }
+  return true; }
 // the point on the floor under a screen point (app coordinates), or null
 function xFloorAt(ax,ay){ const G=X3; if(!G) return null; const r=appBox($('#xView')); if(!r.width) return null;
   const v=new THREE.Vector2((ax-r.left)/r.width*2-1,-(ay-r.top)/r.height*2+1), hit=new THREE.Vector3();
@@ -549,14 +564,18 @@ function xMove(dt){
   let ix=0, iz=0;
   const held=id=>keysFor(id).some(k=>XKEY[k]);   // your bindings, from Settings (keys.js)
   if(held('left')) ix-=1; if(held('right')) ix+=1; if(held('up')) iz-=1; if(held('down')) iz+=1;
-  // holding a finger (or the mouse) down walks toward the spot on the floor under it, steering as
-  // it moves. The camera is tilted, so the finger is found on the floor (not compared in screen
-  // pixels), or diagonals would drift away from the finger.
-  if(!ix&&!iz&&XHOLD.on&&performance.now()-XHOLD.t0>50){ const g=xFloorAt(XHOLD.x,XHOLD.y);
-    if(g){ const dx=g.x-EX.px, dz=g.z-EX.pz, l=Math.hypot(dx,dz); if(l>.35){ ix=dx/l; iz=dz/l; EX.path=[]; } } }
-  if(!ix&&!iz&&EX.path.length){ const n=EX.path[0], tx=xw(n)-EX.px, tz=xz(n)-EX.pz, d=Math.hypot(tx,tz); if(d<.25){ EX.path.shift(); } else { ix=tx/d; iz=tz/d; } }
+  if(ix||iz){ EX.path=[]; EX.goal=null; }   // keys take over from a finger's goal
+  if(!ix&&!iz&&EX.path.length){
+    // cut corners: head for the furthest cell on the route you can walk to in a straight line
+    while(EX.path.length>1&&xStraight(EX.px,EX.pz,EX.path[1])) EX.path.shift();
+    const last=EX.path.length===1&&EX.goal&&EX.path[0]===EX.goal.cell;
+    const n=EX.path[0], gx=last?EX.goal.x:xw(n), gz=last?EX.goal.z:xz(n), tx=gx-EX.px, tz=gz-EX.pz, d=Math.hypot(tx,tz);
+    if(d<(last?.2:.5)||EX.pc===n&&!last&&EX.path.length>1){ EX.path.shift(); if(last) EX.goal=null; } else { ix=tx/d; iz=tz/d; if(last&&d<1.2){ ix*=Math.max(.35,d/1.2); iz*=Math.max(.35,d/1.2); } } }
+  // inside the goal cell: walk to the exact spot you touched
+  else if(!ix&&!iz&&EX.goal&&EX.goal.cell===EX.pc){ const tx=EX.goal.x-EX.px, tz=EX.goal.z-EX.pz, d=Math.hypot(tx,tz);
+    if(d<.2) EX.goal=null; else { ix=tx/d; iz=tz/d; if(d<1.2){ ix*=Math.max(.35,d/1.2); iz*=Math.max(.35,d/1.2); } } }
   // speed eases in and out over a few frames, so starts, stops and turns feel smooth, not stiff
-  const len0=Math.hypot(ix,iz); if(len0>.1){ ix/=len0; iz/=len0; }
+  const len0=Math.hypot(ix,iz); if(len0>1){ ix/=len0; iz/=len0; }
   const kv=1-Math.exp(-dt*(len0>.1?22:30)); EX.vx=(EX.vx||0)+(ix-(EX.vx||0))*kv; EX.vz=(EX.vz||0)+(iz-(EX.vz||0))*kv;
   if(len0<=.1&&Math.hypot(EX.vx,EX.vz)<.15){ EX.vx=EX.vz=0; }
   ix=EX.vx; iz=EX.vz;
@@ -573,6 +592,8 @@ function xMove(dt){
   if(!okZ&&Math.abs(iz)>.3&&!okX) EX.px+=ease(EX.px,cx); else if(!okZ&&Math.abs(iz)>.3&&Math.abs(ix)<.3) EX.px+=ease(EX.px,cx);
   if(!okX&&Math.abs(ix)>.3&&Math.abs(iz)<.3) EX.pz+=ease(EX.pz,cz);
   if(Math.abs(ix)>.2) EX.face=ix<0?-1:1; if(iz<-.35) EX.view='back'; else if(iz>.35) EX.view='front'; EX.walk=(EX.walk||0)+dt*10*XSPEED/5.4;
+  // walking into something that will not give (a locked door, a person): give up the goal
+  if((EX.path.length||EX.goal)&&!okX&&!okZ){ EX.blockT=(EX.blockT||0)+dt; if(EX.blockT>.5){ EX.path=[]; EX.goal=null; EX.blockT=0; } } else EX.blockT=0;
   const c=xcell(EX.px,EX.pz); if(c!==EX.pc&&c>=0){ EX.pc=c; xEnter(c); }
 }
 // walking into a cell: walls stop you, doors open, chests open, a trap you know about stops you

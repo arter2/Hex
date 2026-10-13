@@ -311,7 +311,14 @@ function xBlockWall(S,seed,rubble){ const N=64, R=caveRng(seed), f=xFbm(N,R,4);
 function xTextSprite(txt,col){ const c=document.createElement('canvas'); c.width=c.height=32; const x=c.getContext('2d');
   x.font='700 22px "Pixelify Sans",monospace'; x.textAlign='center'; x.textBaseline='middle'; x.lineWidth=4; x.strokeStyle='#000'; x.strokeText(txt,16,17); x.fillStyle=col; x.fillText(txt,16,17);
   const s=new THREE.Sprite(new THREE.SpriteMaterial({map:xTex(c),transparent:true,depthTest:false})); s.scale.set(.9,.9,1); s.renderOrder=5; return s; }
-function xSprite(getImg,h){ const s=new THREE.Sprite(new THREE.SpriteMaterial({transparent:true,alphaTest:.35})); s.center.set(.5,.03); s.scale.set(h,h,1); s.userData={getImg,img:null,flip:false}; return s; }
+function xSprite(getImg,h){ const s=new THREE.Sprite(new THREE.SpriteMaterial({transparent:true,alphaTest:.35})); s.center.set(.5,.03); s.scale.set(h,h,1); s.userData={getImg,img:null,flip:false,h}; return s; }
+/* A sprite always faces the camera, so it leans back as the camera looks down, and its head
+   would sink into the wall behind it. Stood up, it is slid toward the camera along the line of
+   sight (and shrunk to match), so it looks exactly the same but sits in front of the back wall;
+   a wall in front of it still hides its feet. */
+const XPULL=1.5;
+function xStand(s){ const c=X3.cam.position, p=s.position, dx=c.x-p.x, dy=c.y-p.y, dz=c.z-p.z, d=Math.hypot(dx,dy,dz); if(d<XPULL*2) return;
+  const k=XPULL/d; p.set(p.x+dx*k,p.y+dy*k,p.z+dz*k); const h=(s.userData.h||s.scale.y)*(1-k); s.scale.set(h,h,1); }
 // swap a sprite's picture (an animation frame, or facing the other way); each picture's texture is made once and kept
 function xRefresh(s,flip){ const sp=s.userData.getImg(), im=sp&&sp.img; if(sp&&sp.front) flip=false;
   if(im&&(im!==s.userData.img||flip!==s.userData.flip)){ s.userData.img=im; s.userData.flip=flip;
@@ -884,6 +891,7 @@ function xDraw(T,dt){
     if(g.tag){ g.tag.visible=v; if(v) g.tag.position.set(g.x,g.h+(g.state==='chase'?1.1:.5)+Math.sin(T*2.5+g.bob)*.08,g.z); }
     if(v){ g.sprite.position.set(g.x,g.state==='sleep'?0:(Math.floor(T*(g.state==='chase'?4:1.6)+g.bob)%2)*g.h/96,g.z); xRefresh(g.sprite,(g.face||-1)<0);
       g.zz.position.set(g.x+.5,g.h+.2+Math.sin(T*2+g.bob)*.15,g.z); g.bang.position.set(g.x,g.h+.35,g.z); } }
+  G.cam.updateMatrixWorld(); xStand(EX.me); for(const g of EX.groups) if(g.sprite&&g.sprite.visible) xStand(g.sprite);
   xFov(dt); xTellDraw(T);
   if(typeof xDungeonDraw==='function') xDungeonDraw(T);
   { const rc=EX.aim?EX.aim.cell:EX.searchCell, R=G.reticle; R.visible=rc!=null;

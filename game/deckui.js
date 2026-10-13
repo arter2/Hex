@@ -106,7 +106,8 @@ $('#dkBack').onclick=e=>{ const v=validateDeck(activeDeck().list,CARDS,save.owne
   if(DK.from==='bag'&&!v.ok) return armed(e.currentTarget,'Discard changes?',()=>{ save.decks=JSON.parse(DK.snap); persist(); dkLeave(); });
   dkLeave(); };
 
-/* The library drawer slides: drag its grip up for more library, down for more deck (portrait).
+/* The library drawer slides: drag its grip up for more library, down for more deck (portrait),
+   or sideways on a wide screen, where the grip is a divider between the two columns.
    A tap on the grip switches between the whole screen for the library and the usual split.
    The size is remembered in this browser. */
 (function(){ const grip=$('#dkGrip'), deck=$('#dkDeck'), scr=$('#scrDeck'), KEY='hexmancers-dkh';
@@ -116,15 +117,27 @@ $('#dkBack').onclick=e=>{ const v=validateDeck(activeDeck().list,CARDS,save.owne
   const set=h=>{ h=Math.round(Math.max(0,Math.min(maxH(),h))); deck.style.height=h+'px'; deck.style.maxHeight='none'; deck.style.minHeight='0'; deck.style.paddingBlock=h<20?'0':''; return h; };
   let saved=null; try{ const v=+localStorage.getItem(KEY); if(v>=0&&localStorage.getItem(KEY)!==null) saved=v; }catch(e){}
   const keep=h=>{ saved=h; try{ localStorage.setItem(KEY,String(h)); }catch(e){} };
-  // apply the remembered size whenever the builder opens or the window changes
-  new MutationObserver(()=>{ if(scr.classList.contains('on')&&saved!=null) requestAnimationFrame(()=>set(saved)); }).observe(scr,{attributes:true,attributeFilter:['class']});
-  addEventListener('resize',()=>{ if(scr.classList.contains('on')&&saved!=null) set(saved); });
-  const Y=e=>typeof appXY==='function'?appXY(e.clientX,e.clientY)[1]:e.clientY;
+  // landscape: the deck is the left column, the library the right; the grip sits between them and
+  // drags sideways. The deck column keeps room for its name and tools; the library keeps 320px.
+  const wide=()=>matchMedia('(orientation:landscape)').matches, WKEY='hexmancers-dkw';
+  const wDef=()=>Math.round(scr.clientWidth/2.1), wMin=()=>Math.min(260,scr.clientWidth*.3), wMax=()=>Math.max(wMin(),scr.clientWidth-320);
+  const setW=w=>{ w=Math.round(Math.max(wMin(),Math.min(wMax(),w))); scr.style.gridTemplateColumns=w+'px 1fr'; return w; };
+  let savedW=null; try{ const v=localStorage.getItem(WKEY); if(v!==null&&+v>0) savedW=+v; }catch(e){}
+  const keepW=w=>{ savedW=w; try{ localStorage.setItem(WKEY,String(w)); }catch(e){} };
+  const fit=()=>{ if(!scr.classList.contains('on')) return; if(wide()){ if(savedW!=null) setW(savedW); } else { scr.style.gridTemplateColumns=''; if(saved!=null) set(saved); } };
+  new MutationObserver(()=>requestAnimationFrame(fit)).observe(scr,{attributes:true,attributeFilter:['class']});
+  addEventListener('resize',fit);
+  const P=e=>typeof appXY==='function'?appXY(e.clientX,e.clientY):[e.clientX,e.clientY];
+  const deckW=()=>$('#dkDeck').getBoundingClientRect().width+20;   // the deck column (its grid has 10px padding each side)
   let drag=null;
-  grip.addEventListener('pointerdown',e=>{ e.preventDefault(); try{ grip.setPointerCapture(e.pointerId); }catch(_){} drag={id:e.pointerId,y0:Y(e),h0:deck.getBoundingClientRect().height,moved:false}; grip.classList.add('on'); scr.classList.add('gripping'); });
-  grip.addEventListener('pointermove',e=>{ if(!drag||e.pointerId!==drag.id) return; const dy=Y(e)-drag.y0; if(Math.abs(dy)>4) drag.moved=true; if(drag.moved) set(drag.h0+dy); });
+  grip.addEventListener('pointerdown',e=>{ e.preventDefault(); try{ grip.setPointerCapture(e.pointerId); }catch(_){} const [x,y]=P(e), w=wide();
+    drag={id:e.pointerId,w,p0:w?x:y,s0:w?parseFloat(getComputedStyle(scr).gridTemplateColumns)||deckW():deck.getBoundingClientRect().height,moved:false}; grip.classList.add('on'); scr.classList.add('gripping'); });
+  grip.addEventListener('pointermove',e=>{ if(!drag||e.pointerId!==drag.id) return; const [x,y]=P(e), d=(drag.w?x:y)-drag.p0; if(Math.abs(d)>4) drag.moved=true; if(drag.moved) drag.w?setW(drag.s0+d):set(drag.s0+d); });
   const end=e=>{ if(!drag||e.pointerId!==drag.id) return; const d=drag; drag=null; grip.classList.remove('on'); scr.classList.remove('gripping');
+    if(d.w){ if(d.moved) keepW(setW(parseFloat(getComputedStyle(scr).gridTemplateColumns)));
+      else if(e.type==='pointerup') keepW(setW(d.s0>wDef()*.8?wMin():wDef()));   // a tap: a wide library, or the usual split
+      return; }
     if(d.moved) keep(Math.round(deck.getBoundingClientRect().height));
-    else if(e.type==='pointerup'){ deck.style.transition='height .2s'; keep(set(d.h0>def()/2?0:def())); setTimeout(()=>deck.style.transition='',250); } };
+    else if(e.type==='pointerup'){ deck.style.transition='height .2s'; keep(set(d.s0>def()/2?0:def())); setTimeout(()=>deck.style.transition='',250); } };
   grip.addEventListener('pointerup',end); grip.addEventListener('pointercancel',end);
 })();

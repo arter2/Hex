@@ -1116,3 +1116,30 @@ function keepChar(){ const old=save.char, ch=lockChar(ccChar); ch.earned=(old&&o
   Object.assign(save,{char:ch, look:ch.look, hat:true}); ensureChar(save); persist(); const go=ccNext||openCamp; ccMode=ccNext=null; go(); }
 $('#ccReset').onclick=()=>{ ccChar=newChar(ccChar.race,ccChar.body); renderNewChar(); };
 $('#campMenu').onclick=()=>openMenu();
+
+/* ---------------- closing windows: one way everywhere ----------------
+   Every pop-up window has the same ✕ in its top-right corner, Esc closes the window on top, and a
+   tap on the dark area around a window closes it too (except a result window, where a stray tap
+   would choose for you; its ✕ takes the first choice). Full screens go back with their ← button,
+   and Esc does the same. Buttons that only closed a window are gone: the ✕ does it. */
+const CLOSERS={
+  pause:()=>closePause(), settings:()=>closeSettings(), slots:()=>$('#slots').classList.remove('on'),
+  detail:()=>$('#detail').classList.remove('on'), pick:()=>$('#pick').classList.remove('on'),
+  dkPeek:()=>$('#dkpClose').onclick(), xDialog:()=>xDlgClose(), bagUI:()=>closeBag(), picker:()=>closePicker(),
+  lvlUp:()=>closeLevelUp(false),
+  reveal:()=>{ const b=$('#rvBtns .btn'); if(b) b.click(); else $('#reveal').classList.remove('on'); },
+};
+const NO_BACKDROP=['reveal'], OWN_X=['bagUI'];
+for(const id of ['dtClose','slClose','dkpClose','setClose','pkCancel','pickCancel','lvLater']){ const b=$('#'+id); if(b) b.hidden=true; }
+for(const id in CLOSERS){ const ov=$('#'+id); if(!ov) continue;
+  if(!OWN_X.includes(id)){ const panel=ov.querySelector('.panel')||ov.firstElementChild, x=document.createElement('button');
+    x.className='winx'; x.type='button'; x.setAttribute('aria-label','Close'); x.textContent='✕'; x.onclick=e=>{ e.stopPropagation(); CLOSERS[id](); };
+    panel.classList.add('haswinx'); panel.prepend(x); }
+  if(!NO_BACKDROP.includes(id)&&!['bagUI','dkPeek'].includes(id)) ov.addEventListener('click',e=>{ if(e.target===ov&&ov.classList.contains('on')) CLOSERS[id](); }); }
+window.addEventListener('keydown',e=>{ if(e.key!=='Escape'||keyCapture) return;
+  const open=Object.keys(CLOSERS).map(id=>$('#'+id)).filter(el=>el&&el.classList.contains('on'));
+  if(open.length){ const z=el=>+getComputedStyle(el).zIndex||0;
+    const top=open.sort((a,b)=>z(a)-z(b)||(a.compareDocumentPosition(b)&4?-1:1)).pop();
+    e.preventDefault(); e.stopImmediatePropagation(); CLOSERS[top.id](); return; }
+  const back=document.querySelector('.screen.on .back:not([hidden]), .screen.on #dkBack');
+  if(back){ e.preventDefault(); e.stopImmediatePropagation(); back.click(); } },true);

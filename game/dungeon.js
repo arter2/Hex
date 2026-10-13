@@ -960,8 +960,9 @@ function xDlg(o){ if(!EX) return; xPause(true); EX.dlg=o;
   const tabs=$('#xdTabs'); tabs.innerHTML=''; tabs.hidden=!o.tabs;
   if(o.tabs) o.tabs.forEach(([id,label])=>{ const b=document.createElement('button'); b.className='chip'+(o.tab===id?' on':''); b.textContent=label; b.onclick=()=>{ o.tab=id; xDlg(o); }; tabs.appendChild(b); });
   const body=$('#xdBody'); body.innerHTML=''; if(o.body) o.body(body,o);
-  const bb=$('#xdBtns'); bb.innerHTML=''; bb.classList.toggle('two',(o.buttons||[]).length>1);
-  (o.buttons||[['Close',null]]).forEach(([label,fn,ghost])=>{ const b=document.createElement('button'); b.className='btn'+(ghost?' ghost':''); b.textContent=label; b.onclick=()=>{ xDlgClose(); if(fn) fn(); }; bb.appendChild(b); });
+  const btns=(o.buttons||[]).filter(([l,fn])=>!(l==='Close'&&!fn));   // closing is the ✕ in the corner (ui.js)
+  const bb=$('#xdBtns'); bb.innerHTML=''; bb.hidden=!btns.length; bb.classList.toggle('two',btns.length>1);
+  btns.forEach(([label,fn,ghost])=>{ const b=document.createElement('button'); b.className='btn'+(ghost?' ghost':''); b.textContent=label; b.onclick=()=>{ xDlgClose(); if(fn) fn(); }; bb.appendChild(b); });
   $('#xDialog').classList.add('on'); setTimeout(()=>{ const m=bb.querySelector('.btn:not(.ghost)'); if(m) m.focus(); },40); }
 function xDlgClose(){ $('#xDialog').classList.remove('on'); if(EX) EX.dlg=null; if(!$('#pause').classList.contains('on')) xPause(false); xHud(); }
 const xDlgText=(title,text)=>xDlg({title,text,icon:['scroll','#f2c94c'],buttons:[['Close',null]]});

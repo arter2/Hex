@@ -1176,3 +1176,13 @@ body.ui-phone:not(.wide) .panel.scene{width:fit-content; max-width:100%; margin:
 .bgtab.on{border-image-source:var(--px-btn-leather-on); background:none; box-shadow:none; color:#ffe9b0;}
 .bgdetail{border-radius:0; border:6px solid transparent; border-image:var(--px-slot-leather) 3 fill stretch; background:none; box-shadow:none;}
 .bgghost{border-radius:0; border:6px solid transparent; border-image:var(--px-slot-leather) 3 fill stretch; background:none;}
+
+/* the one close button every window shares (ui.js): a pixel red ✕ in the top-right corner */
+.haswinx{position:relative;}
+.winx,.bgx,.x-map-close{width:44px; height:44px; padding:0; border-radius:0; border:8px solid transparent; border-image:var(--px-btn-red) 4 fill stretch; background:none; box-shadow:none;
+  color:#fff; font:900 18px/1 var(--font-b); text-shadow:2px 2px 0 #000; cursor:pointer; display:grid; place-items:center;}
+.winx{position:absolute; top:-6px; right:-6px; z-index:3;}
+.winx:active,.bgx:active,.x-map-close:active{transform:translateY(1px);}
+.haswinx>h2:first-of-type,.haswinx .xdh{padding-right:44px;}
+#xDialog .xdh #xdGold{margin-right:34px;}
+button[hidden]{display:none!important;}

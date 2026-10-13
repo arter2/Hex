@@ -1413,6 +1413,8 @@ function unitSprite(u){
   if(u.kind==='enemy'){ const F=FAM[u.color], id=u.id;
     const pal={m:F.m,a:F.a,glow:F.glow,o:F.o,c:artMix(F.m,'#000000',.35),d:artMix(F.m,'#1a1020',.6)};
     if(HUMAN_LOOK[id]) return makeSprite('e:'+id,pal,()=>human(HUMAN_LOOK[id]));
+    // vermin and other plain beasts are drawn with a creature body (rat, bat, beetle, worm, spider)
+    { const D=typeof ENEMY_DEFS!=='undefined'&&ENEMY_DEFS[id], b=D&&D.body; if(b&&CREATURES[b]) return makeSprite('e:'+id,Object.assign(pal,{c:COAT[b]||pal.c}),()=>creature(CREATURES[b],{},()=>.5,{name:D.name})); }
     return makeSprite('e:'+id,pal,MONSTER[id]||MONSTER.gloop); }
   if(u.card&&u.card.type==='hero'){ const rs=rigSprite('hero_'+u.card.hero); if(rs) return rs; }
   const c=u.card, F=FAM[c.color], pal={m:F.m,a:F.a,glow:F.glow,o:F.o};

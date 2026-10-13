@@ -166,13 +166,13 @@ function buildFloor(depth,hp,opt){
   if(typeof xAssignRooms==='function') xAssignRooms();
   const others=F.rooms.filter(r=>r!==F.start&&!r.side&&!r.nook), open=others.filter(r=>!r.role);
   // chests: about every other ordinary room, sometimes trapped (side rooms are filled by dungeon.js)
-  for(const r of open) if(Math.random()<.5){ const c=freeCell(r); if(c>=0) EX.chests.push({cell:c, open:false, trap:Math.random()<.22, trapKnown:false}); }
+  for(const r of open) if(Math.random()<.5){ const c=freeCell(r); if(c>=0) EX.chests.push({cell:c, open:false, trap:Math.random()<.12, trapKnown:false}); }
   if(typeof xFloorPlan!=='function'){ const cl=F.rooms.find(r=>r.closet); if(cl){ const c=xi(cl.cx,cl.cy); taken.add(c); EX.chests.push({cell:c, open:false, trap:false, trapKnown:false, rich:true}); } }
   // hidden traps in ordinary rooms and corridors, never on the stairs or in the first room; deeper floors hold more and worse
   const kinds=typeof xTrapKinds==='function'?xTrapKinds(depth):['spike','spike','dart','dart','fire','pit','alarm'];
   const quiet=i=>{ const r=F.room[i]; return r>=0&&(F.rooms[r]===F.start||F.rooms[r].role||F.rooms[r].side); };
   const floorCells=[]; for(let i=0;i<XN*XN;i++) if(F.t[i]===T_FLOOR&&!quiet(i)&&!taken.has(i)) floorCells.push(i);
-  const nT=Math.min(14,3+Math.floor(depth*.6))-(opt.branch?2:0);
+  const nT=Math.max(0,Math.min(5,1+Math.floor(depth*.25))-(opt.branch?1:0));   // a few, not a minefield: 1 early, up to 5 deep down
   for(let n=0;n<nT&&floorCells.length;n++){ const c=floorCells.splice(Math.floor(Math.random()*floorCells.length),1)[0]; taken.add(c); EX.traps.push({cell:c, kind:pick(kinds), known:false, armed:true}); }
   // enemy groups: some asleep, some wandering; on a boss depth the boss waits by the stairs down
   const nG=Math.min(open.length,(opt.branch?1:3)+Math.floor(depth/3));
@@ -180,6 +180,10 @@ function buildFloor(depth,hp,opt){
   for(const r of rooms){ const c=freeCell(r); if(c<0) continue; const wave=makeEncounter(depth)[0], ids=wave.slice(0,1+Math.floor(Math.random()*Math.min(3,wave.length)));
     EX.groups.push(xGroup(ids,c,Math.random()<.45?'sleep':'wander')); }
   if(isBossDepth(depth)&&!opt.branch){ const c=xi(F.exit.cx-1,F.exit.cy); taken.add(c); EX.groups.push(Object.assign(xGroup([bossFor(depth)],c,'guard'),{boss:true})); }
+  // most groups keep to their own room until they see you; from depth 3 one (two from depth 8)
+  // goes looking for you instead. Vermin never hunt.
+  { const can=EX.groups.filter(g=>!g.boss&&!g.ids.every(id=>ENEMY_DEFS[id].vermin)), n=depth>=8?2:depth>=3?1:0;
+    can.sort(()=>Math.random()-.5).slice(0,n).forEach(g=>{ g.hunter=true; g.state='wander'; }); }
   EX.px=xw(EX.up); EX.pz=xz(EX.up); EX.pc=EX.up; EX.face=1; EX.view='front';
   if(typeof xPopulate==='function') xPopulate();
   xBuildScene(); xUpdateVis();
@@ -331,6 +335,23 @@ function xRefresh(s,flip){ const sp=s.userData.getImg(), im=sp&&sp.img; if(sp&&s
 const xMat=(c,o)=>new THREE.MeshPhongMaterial(Object.assign({color:c,shininess:6,specular:0x111111},o||{}));
 const xBox=(w,h,d,m,x,y,z)=>{ const o=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m); o.position.set(x,y,z); return o; };
 
+// a wall block: a box with chamfered top edges and corners; rough=true pushes its faces in and
+// out a little (the same everywhere for the same point, so neighbouring faces still meet)
+function xWallGeo(rough,seed){ const g=new THREE.BoxGeometry(XCS,XWALL,XCS,4,5,4), P=g.attributes.position, hw=XCS/2, hh=XWALL/2, B=rough?.13:.08;
+  const hsh=(x,y,z)=>{ const v=Math.sin(x*127.1+y*311.7+z*74.7+seed*13.3)*43758.5453; return v-Math.floor(v); };
+  for(let k=0;k<P.count;k++){ let x=P.getX(k), y=P.getY(k), z=P.getZ(k); const top=y>hh-1e-4, ex=Math.abs(Math.abs(x)-hw)<1e-4, ez=Math.abs(Math.abs(z)-hw)<1e-4;
+    if(ex&&ez){ x-=Math.sign(x)*B*.5; z-=Math.sign(z)*B*.5; }   // the four upright corners are cut
+    if(top){ const sx=(hw-B)/hw; x*=sx; z*=sx; }                  // the top face shrinks: a bevel all round
+    if(rough&&!top&&y>-hh+1e-4){ const n=hsh(Math.round(x*10),Math.round(y*10),Math.round(z*10))-.5, m=hsh(Math.round(z*10),Math.round(y*10),Math.round(x*10))-.5;
+      if(ex) x+=n*.14; if(ez) z+=m*.14; if(!ex&&!ez){ x+=n*.08; z+=m*.08; } y+=(hsh(x,y,z)-.5)*.06; }
+    P.setXYZ(k,x,y,z); }
+  g.computeVertexNormals();
+  const N=g.attributes.normal, c=[];   // foot shadow up the face, a lit bevel, a near-black cap
+  for(let k=0;k<P.count;k++){ const y=P.getY(k)/XWALL+.5, ny=N.getY(k); const a=ny>.85?.22:ny<-.5?.2:ny>.3?.85:.5+.5*Math.min(1,y*1.6)-(y>.97?.15:0); c.push(a,a,a); }
+  g.setAttribute('color',new THREE.Float32BufferAttribute(c,3)); return g; }
+// where a wall block stands: turned a quarter (or not) and, for cave rock, a little taller or shorter, so no two look alike
+function xWallMatrix(m,c,rock){ const h=Math.sin(c*91.7+EX.depth*7.3)*43758.5453, r=h-Math.floor(h), sy=rock?.9+r*.22:1;
+  m.makeRotationY(Math.floor(r*4)*Math.PI/2); m.scale(new THREE.Vector3(1,sy,1)); m.setPosition(xw(c),XWALL*sy/2-.05,xz(c)); }
 function xBuildScene(){
   const G=xInit3D();
   if(G.group){ G.scene.remove(G.group); G.group.traverse(o=>{ if(o.geometry) o.geometry.dispose(); if(o.material&&o.material.map) o.material.map.dispose(); }); }
@@ -370,11 +391,10 @@ function xBuildScene(){
   const wallTex=[xRockWall(S,seed+4),xBlockWall(S,seed+5,false),xBlockWall(S,seed+6,true)];
   EX.wIdx=new Map(); EX.wms=[]; EX.shown=new Uint8Array(XN*XN);
   const zero=new THREE.Matrix4().makeScale(0,0,0), black=new THREE.Color(0,0,0);
-  const wgeo=new THREE.BoxGeometry(XCS,XWALL,XCS,1,3,1);
-  { const P=wgeo.attributes.position, N=wgeo.attributes.normal, c=[];   // foot shadow up the face, a darker rim at the top, a near-black cap
-    for(let k=0;k<P.count;k++){ const y=P.getY(k)/XWALL+.5; const a=N.getY(k)>.5?.22:N.getY(k)<-.5?.2:.5+.5*Math.min(1,y*1.6)-(y>.97?.25:0); c.push(a,a,a); }
-    wgeo.setAttribute('color',new THREE.Float32BufferAttribute(c,3)); }
-  walls.forEach((list,v)=>{ const wm=new THREE.InstancedMesh(wgeo,xPhong({map:xTex(wallTex[v]),vertexColors:true}),Math.max(1,list.length));
+  // each wall block is bevelled: its top edges and its corners are cut back, so blocks read as
+  // stone with worn edges (and a groove runs between neighbours); cave rock is also knobbly
+  const wgeos=[xWallGeo(true,seed),xWallGeo(false,seed),xWallGeo(false,seed+1)];
+  walls.forEach((list,v)=>{ const wgeo=wgeos[v], wm=new THREE.InstancedMesh(wgeo,xPhong({map:xTex(wallTex[v]),vertexColors:true}),Math.max(1,list.length));
     wm.instanceMatrix.setUsage(THREE.DynamicDrawUsage); grp.add(wm); EX.wms.push(wm);
     for(let k=0;k<wm.count;k++){ wm.setMatrixAt(k,zero); wm.setColorAt(k,black); }
     list.forEach((c,k)=>EX.wIdx.set(c,[wm,k])); });
@@ -499,7 +519,7 @@ function xPaintCells(){
     if(EX.vis[c]){ const d=Math.hypot(xcx(c)-px,xcy(c)-py); b=1-.55*Math.min(1,Math.max(0,(d-1)/rad)); }
     else if(EX.seen[c]) b=.24;
     EX.fogTgt[c]=b;
-    if(EX.seen[c]&&!EX.shown[c]){ EX.shown[c]=1; const w=EX.wIdx.get(c); if(w){ m.makeTranslation(xw(c),XWALL/2-.05,xz(c)); w[0].setMatrixAt(w[1],m); w[0].instanceMatrix.needsUpdate=true; } } }
+    if(EX.seen[c]&&!EX.shown[c]){ EX.shown[c]=1; const w=EX.wIdx.get(c); if(w){ xWallMatrix(m,c,EX.wms.indexOf(w[0])===0); w[0].setMatrixAt(w[1],m); w[0].instanceMatrix.needsUpdate=true; } } }
   for(const [i,d] of EX.doors) if(d.mesh) d.mesh.visible=!!EX.seen[i]&&d.state!=='secret';
   for(const c of EX.chests) c.mesh.visible=!!EX.seen[c.cell];
   EX.downMesh.visible=!!EX.seen[EX.down]; EX.upMesh.visible=!!EX.seen[EX.up];
@@ -764,12 +784,13 @@ function xEnemies(dt){
     else if(g.state==='guard'){ if(EX.room[EX.pc]===EX.room[g.home]&&EX.room[EX.pc]>=0){ g.state='chase'; xLog(ENEMY_DEFS[g.ids[0]].name+' rises to face you!','warn'); } }
     else { const sees=!safe&&xSeesCell(g,EX.pc,sn);
       if(sees){ if(g.state!=='chase'&&EX.vis[g.cell]) xLog(ENEMY_DEFS[g.ids[0]].name+' spots you!','warn'); g.state='chase'; g.lostT=0; }
-      else if(g.state==='chase'){ g.lostT+=dt; if(g.lostT>6){ g.state='wander'; g.path=[]; g.seen=false; } }
+      else if(g.state==='chase'){ g.lostT+=dt; if(g.lostT>(g.hunter?6:3)){ g.state='wander'; g.path=[]; g.seen=false; } }
       g.repath-=dt;
-      if(g.repath<=0){ g.repath=g.state==='chase'?.4:2.5;
+      if(g.repath<=0){ g.repath=g.state==='chase'?.5:g.hunter?4:2.5;
         const goal=g.state==='chase'?EX.pc:(g.path.length?null:xWanderGoal(g));
         if(goal!=null){ const dist=xbfs(EX.t,EX.doors,goal,null,typeof xEnemyBlock==='function'?xEnemyBlock:null); g.path=xPathTo(dist,g.cell,goal); } }
-      const sp=(g.state==='chase'?4.1:2)*dt;
+      // you walk at 7: anything chasing you is slower, so you can always get away
+      const vermin=g.ids.every(id=>ENEMY_DEFS[id].vermin), sp=(g.state==='chase'?(g.hunter?3.6:vermin?2.8:3.2):g.hunter?1.8:1.4)*dt;
       if(g.path.length){ const n=g.path[0], tx=xw(n)-g.x, tz=xz(n)-g.z, l=Math.hypot(tx,tz);
         if(l<.2){ g.path.shift(); const dr=EX.doors.get(n); if(dr&&dr.state==='closed'){ dr.state='open'; xDoorOpen(dr,g.cell); if(EX.seen[n]) xUpdateVis(); } }
         else { g.x+=tx/l*Math.min(sp,l); g.z+=tz/l*Math.min(sp,l); g.face=tx<0?-1:1; g.head=Math.atan2(tz,tx); } }
@@ -810,7 +831,13 @@ function xFov(dt){ const F=EX.fov; if(!F) return; F.t-=dt; if(F.t>0) return; F.t
       if(!zone.has(c-1)||xcx(c)===0){ x.moveTo(X,Y); x.lineTo(X,Y+P); } if(!zone.has(c+1)||xcx(c)===XN-1){ x.moveTo(X+P,Y); x.lineTo(X+P,Y+P); } }
     x.stroke(); x.setLineDash([]); }
   F.tex.needsUpdate=true; }
-function xWanderGoal(g){ const r=pick(EX.rooms.filter(r=>!r.side&&!r.nook&&!r.behind&&!r.safe)); return xi(r.x+Math.floor(Math.random()*r.w),r.y+Math.floor(Math.random()*r.h)); }
+// where an awake group strolls to: a hunter heads for where you are (slowly, it does not know
+// exactly); every other group stays inside its own room, and goes back there after losing you
+function xWanderGoal(g){
+  if(g.hunter){ const x=xcx(EX.pc)+Math.round((Math.random()-.5)*6), y=xcy(EX.pc)+Math.round((Math.random()-.5)*6), c=xi(Math.max(0,Math.min(XN-1,x)),Math.max(0,Math.min(XN-1,y))); return EX.t[c]===T_FLOOR?c:EX.pc; }
+  const ri=EX.room[g.home], r=ri>=0?EX.rooms[ri]:null;
+  if(!r) return g.home;
+  return xi(r.x+Math.floor(Math.random()*r.w),r.y+Math.floor(Math.random()*r.h)); }
 function xPathTo(dist,from,goal){ if(dist[from]<0) return []; const out=[]; let cur=from;
   for(let k=0;k<200&&cur!==goal;k++){ const x=xcx(cur), y=xcy(cur); let best=-1;
     for(const n of [xi(x+1,y),xi(x-1,y),xi(x,y+1),xi(x,y-1)]) if(n>=0&&n<XN*XN&&dist[n]>=0&&dist[n]<dist[cur]&&(best<0||dist[n]<dist[best])) best=n;

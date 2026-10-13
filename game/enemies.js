@@ -33,6 +33,12 @@ const ENEMY_DEFS={
   collector:{name:'Card Collector',color:'brown', weak:'shadow', hp:115, dmg:10, rate:[2.8,3.6], moves:['collect','shot'], ai:'back', spell:true, collector:true},
   hedgewitch:{name:'Witch Healer', color:'verdant', hp:95,  dmg:9,  rate:[3,4],     moves:['brew','snare','mend'], ai:'back', spell:true},
   priest:   {name:'Priest',        color:'light',   hp:100, dmg:8,  rate:[3.2,4.2], moves:['revive','bless'], ai:'back', spell:true},
+  // vermin: common, weak and quick to kill; most of what you meet on the first floors
+  rat:      {name:'Cave Rat',      color:'gray', weak:'fire',    hp:30, dmg:5, rate:[2,2.8],   moves:['lunge'],        ai:'wander', vermin:true, body:'Rat',      scale:.75},
+  bat:      {name:'Cave Bat',      color:'shadow',               hp:24, dmg:5, rate:[1.8,2.6], moves:['lunge','shot'], ai:'wander', vermin:true, body:'Bat',      scale:.75},
+  bug:      {name:'Cave Beetle',   color:'verdant',              hp:40, dmg:6, rate:[2.6,3.4], moves:['shot'],         ai:'align',  vermin:true, body:'Beetle',   scale:.75},
+  worm:     {name:'Cave Worm',     color:'gray', weak:'frost',   hp:34, dmg:6, rate:[2.8,3.6], moves:['shot'],         ai:'align',  vermin:true, body:'Leech',    scale:.8},
+  spider:   {name:'Cave Spider',   color:'shadow',               hp:32, dmg:7, rate:[2.2,3],   moves:['lunge','shot'], ai:'wander', vermin:true, body:'Spider',   scale:.75},
   bomber:   {name:'Powder Monkey', color:'gray',  weak:'verdant', hp:85,  dmg:15, rate:[3.2,4.2], moves:['bomb'], ai:'back', outlaw:true},
 };
 const WEAK_TO={}; for(const k in BEATS) WEAK_TO[BEATS[k]]=k;
@@ -40,6 +46,9 @@ const MONSTERS=['gloop','wisp','mite','beetle','ram','shade','sprite'];
 const HUMANOIDS=['cultist','witch','caller','warden','paladin','knight'];
 const OUTLAWS=['bandit','cutpurse','marksman','sellsword','bomber'];
 const SPELLFOLK=['darkwiz','shifter','collector','hedgewitch','priest'];
+const VERMIN=['rat','bat','bug','worm','spider'];
+// how often a fight is vermin: most fights on the first floors, fading out by depth 7
+const verminChance=depth=>depth<=1?.75:depth<=2?.6:depth<=3?.45:depth<=5?.25:depth<=7?.1:0;
 const SHIFT_FORMS=['gloop','wisp','mite','beetle','ram','shade','sprite'];
 const ENEMY_CARD_TYPES=['strike','lob','ward','sentry','boon','charge'];
 
@@ -54,6 +63,10 @@ function makeEncounter(depth){
   const one=list=>{ const home=A?list.filter(id=>ENEMY_DEFS[id].color===A.color):[]; return home.length&&Math.random()<.5?pick(home):pick(list); };
   const out=[];
   // an outlaw gang: a wave of outlaws (from depth 1), otherwise monsters with casters mixed in
+  // a nest of vermin: one kind or a mix, a little bigger than other packs since each is weak
+  if(Math.random()<verminChance(depth)){ const one=Math.random()<.6?pick(VERMIN):null;
+    for(let w=0;w<Math.max(1,waves-1);w++) out.push(Array.from({length:Math.min(5,size+1)},()=>one||pick(VERMIN)));
+    if(!(typeof isBossDepth==='function'?isBossDepth(depth):depth%4===0)) return out; }
   for(let w=0;w<waves;w++){ if(Math.random()<(depth<2?.2:.25)){ out.push(Array.from({length:size},()=>pick(OUTLAWS))); continue; }
     out.push(Array.from({length:size},()=>one(Math.random()<human?(Math.random()<.45?SPELLFOLK:HUMANOIDS):MONSTERS))); }
   const boss=typeof isBossDepth==='function'?isBossDepth(depth):depth%4===0;
@@ -243,4 +256,4 @@ function updateEnemy(e,dt){
   if(e.atkT<=0){ e.atkT=rnd(e.def.rate[0],e.def.rate[1]); const ms=e.moves||e.def.moves, mv=e.nextMove||pick(ms); MOVES[mv](e); e.nextMove=pick(e.moves||e.def.moves); if(typeof palPlay==='function') palPlay(e,mv==='quake'?'quake':(mv==='shot'||mv==='boulders')?'throw':''); }   // the next move is picked early so it can be shown
 }
 
-if(typeof module!=='undefined') module.exports={ENEMY_DEFS,MONSTERS,HUMANOIDS,OUTLAWS,SPELLFOLK,makeEncounter};
+if(typeof module!=='undefined') module.exports={VERMIN,verminChance,ENEMY_DEFS,MONSTERS,HUMANOIDS,OUTLAWS,SPELLFOLK,makeEncounter};

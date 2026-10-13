@@ -274,6 +274,12 @@ function xChest(cell,o){ const ch=Object.assign({cell,open:false,trap:false,trap
 function xWallSpot(r,avoid){ const out=[]; for(const c of xRoomCells(r)) for(const n of xAdj4(c)) if(EX.t[n]===T_ROCK&&!EX.wallAt.has(n)&&!(avoid&&avoid(n,c))) out.push([n,c]); return out.length?xpick(out):null; }
 // rooms anyone can reach from the stairs up without a key
 function xOpenRooms(reach,o){ return EX.rooms.filter(r=>!r.side&&!r.nook&&!r.safe&&r.role!=='puzzle'&&reach[xi(r.cx,r.cy)]>=0&&(!o||!o.notStart||r!==EX.start)&&(!o||o.not!==r)); }
+/* Loose finds lying on the floor where you can see them: a potion or two, sometimes a scroll,
+   and now and then a weapon or a piece of armor (more often deeper down). */
+function xPlaceFinds(){ const reach=xReach(), d=EX.depth, put=(kind,o)=>{ const c=xReachableCell(reach); if(c>=0) xItem(kind,c,o); };
+  for(let n=1+(XR()<.5?1:0);n>0;n--) put('potion',{bag:xweighted([['draught',6],['antidote',2],['oil',2]])});
+  if(XR()<.35) put('scroll',{scroll:XR()<.67?'enchant':'purify'});
+  if(XR()<Math.min(.5,.25+.03*d)){ const id=rollLoot(d,XR); if(id.startsWith('scroll:')) put('scroll',{scroll:id.slice(7)}); else put('gear',{gear:id}); } }
 function xReachableCell(reach,o){ const rooms=xOpenRooms(reach,o).filter(r=>r!==EX.start||!(o&&o.notStart)); for(let k=0;k<20;k++){ const r=xpick(rooms); if(!r) break; const c=xFreeCell(r); if(c>=0&&reach[c]>=0) return c; } return -1; }
 const roomOf=c=>EX.room[c]>=0?EX.rooms[EX.room[c]]:null;
 
@@ -298,7 +304,7 @@ function xPopulate(){
   // every floor holds at least two things beyond the closet: top it up when a planned one did not fit
   for(let k=0;k<4&&!EX.branch&&xRealized().length<2;k++){ const have=xRealized();
     if(!have.includes('cache')) xPlaceCache(); else if(!have.includes('npc')) xPlaceNPC(xpick(['quest','lost','scholar'])); else if(!have.includes('gauntlet')) xPlaceGauntlet(); else xMakeMimic(); }
-  xPlacePots(); xPlaceBody();
+  xPlacePots(); xPlaceBody(); if(!EX.branch) xPlaceFinds();
   if(typeof xPlanEvents==='function') xPlanEvents();   // missions that start partway through (missions.js)
   EX.bellAt=d>=3&&!EX.branch?Math.max(140,230+xri(0,40)-d*4):0;   // stay too long and the Executioner comes
 }
@@ -384,7 +390,7 @@ function xPlaceKeys(){
   for(const [i,d] of EX.doors) if(d.state==='locked'){ if(d.lock==='bronze') bronze++; if(d.lock==='silver'||d.lock==='gold') vault=d.lock; }
   const carried=EX.groups.filter(g=>g.carry&&g.carry.includes('key:bronze')).length;
   for(let n=Math.max(0,bronze-carried);n>0;n--){ const ch=EX.chests.filter(c=>!c.open&&!c.key&&!c.mimic&&!c.giant&&reach[c.cell]>=0&&!c.rich);
-    if(ch.length&&XR()<.5) xpick(ch).key='bronze'; else { const c=xReachableCell(reach,{notStart:true}); if(c>=0) xItem('key',c,{key:'bronze'}); } }
+    if(ch.length&&XR()<.25) xpick(ch).key='bronze'; else { const c=xReachableCell(reach,{notStart:true}); if(c>=0) xItem('key',c,{key:'bronze'}); } }
   if(EX.bossDoor){ const c=xReachableCell(reach,{room:true,notStart:true}); if(c>=0) xProp('keystand',c,{key:'boss',solid:false}); else { const k=xReachableCell(reach); if(k>=0) xItem('key',k,{key:'boss'}); } }
   if(vault){ const mini=EX.groups.find(g=>g.mini&&!g.dormant&&!g.vault), pz=EX.puzzle;
     if(mini){ mini.carry=(mini.carry||[]).concat('key:'+vault); }
@@ -612,6 +618,16 @@ function xMeshItem(it){ if(!X3||!X3.group) return null; const g=new THREE.Group(
   else if(it.kind==='crate'){ m=new THREE.Group(); m.add(xBox(.7,.55,.55,xMat(0x8a5a32),0,0,0), xBox(.74,.06,.6,xMat(0x4e3420),0,.1,0)); }
   else if(it.kind==='mpage'&&typeof xMissionItemMesh==='function') m=xMissionItemMesh(it);
   else if(it.kind==='gold'){ m=new THREE.Group(); for(let k=0;k<5;k++) m.add(xCyl(.14,.05,xMat(0xf2c94c,{emissive:0x402a08}),(k%3-1)*.2,-.12+k*.05,(k%2)*.15)); }
+  else if(it.kind==='potion'){ const col=new THREE.Color((BAG[it.bag]||BAG.draught).col); m=new THREE.Group();
+    m.add(xBall(.19,xMat(col,{emissive:col.clone().multiplyScalar(.45),transparent:true,opacity:.9}),0,-.04,0), xCyl(.06,.16,xMat(0xbfe6ff,{transparent:true,opacity:.7}),0,.17,0), xCyl(.07,.07,xMat(0x8a5a32),0,.28,0)); }
+  else if(it.kind==='scroll'){ m=new THREE.Group(); const roll=xCyl(.09,.5,xMat(0xf0e2bc),0,0,0); roll.rotation.z=Math.PI/2; m.add(roll);
+    for(const x of [-.27,.27]){ const k=xCyl(.11,.04,xMat(0x6a4a2a),x,0,0); k.rotation.z=Math.PI/2; m.add(k); } m.add(xBox(.08,.2,.2,xMat(it.scroll==='purify'?0xf2c94c:0x7fe3ff,{emissive:it.scroll==='purify'?0x403008:0x103040}),0,0,0)); }
+  else if(it.kind==='gear'){ const G=typeof GEAR!=='undefined'&&GEAR[it.gear], slot=G?G.slot:'weapon', steel=xMat(0xc7d0d8,{shininess:70,specular:0xffffff}), gold=xMat(0xf2c94c,{emissive:0x302008}); m=new THREE.Group();
+    if(slot==='weapon'){ m.add(xBox(.07,.62,.03,steel,0,.12,0), xBox(.3,.05,.06,gold,0,-.2,0), xBox(.05,.16,.05,xMat(0x5a3a22),0,-.31,0)); m.rotation.z=.5; }
+    else if(slot==='ring'){ const r=new THREE.Mesh(new THREE.TorusGeometry(.14,.04,8,16),gold); r.rotation.x=.6; m.add(r, xBall(.06,xMat(0x7fe3ff,{emissive:0x104050}),0,.15,0)); }
+    else if(slot==='offhand'){ const sh=xCyl(.26,.06,xMat(0x6a4a2a),0,0,0); sh.rotation.x=Math.PI/2; m.add(sh); const b=xCyl(.08,.08,steel,0,0,.04); b.rotation.x=Math.PI/2; m.add(b); }
+    else if(slot==='head'){ const h=new THREE.Mesh(new THREE.SphereGeometry(.22,12,8,0,Math.PI*2,0,Math.PI/2),steel); m.add(h, xBox(.46,.05,.05,gold,0,.02,.18)); }
+    else { m.add(xBox(.42,.4,.16,steel,0,0,0), xBox(.44,.06,.18,gold,0,.12,0), xBox(.14,.14,.14,steel,-.26,.13,0), xBox(.14,.14,.14,steel,.26,.13,0)); } }
   else { m=new THREE.Group(); m.add(xBall(.2,xMat(0x8a5a32),0,0,0), xBox(.12,.08,.12,xMat(0xf2c94c),0,.18,0)); }
   m.position.y=.55; g.add(m); it.spin=m; g.visible=false; it.mesh=g; X3.group.add(g); return g; }
 function xMeshChest(ch){ if(typeof xChestMesh==='function'&&X3&&X3.group) X3.group.add(xChestMesh(ch)); }
@@ -674,6 +690,9 @@ function xPickup(it){ EX.items=EX.items.filter(x=>x!==it); EX.itemAt.delete(it.c
   if(it.kind==='key'){ addKey(it.key); xLog('You pick up a '+KEYS[it.key].name+'.','good'); xSfx('unlock'); }
   else if(it.kind==='mat'){ addMat(it.mat,it.n||1); xLog('You gather '+(it.n||1)+' '+MATS[it.mat].name+'.','loot'); }
   else if(it.kind==='gold'){ save.gold+=it.n; xLog('You scoop up '+it.n+' gold.','gold'); }
+  else if(it.kind==='potion'){ addBag(it.bag); xLog('You pick up a '+BAG[it.bag].name+'. It is in your bag.','loot'); xSfx('click'); }
+  else if(it.kind==='scroll'){ addScroll(save,it.scroll); xLog('You pick up a Scroll of '+(it.scroll==='purify'?'Purifying':'Enchanting')+'.','loot'); xSfx('click'); }
+  else if(it.kind==='gear'){ addLoot(save,it.gear,XR); xLog('You pick up '+lootLabel(save,it.gear).name+'. Put it on from your Character screen.','loot'); xSfx('click'); }
   else if(it.kind==='crate'){ EX.carrying=it; xLog('You heave up '+it.owner+'’s crate. Bring it back to them.','loot'); }
   else if(it.kind==='mpage'&&typeof xMissionPickup==='function') xMissionPickup(it);
   else if(it.kind==='quest'){ const q=XRUN&&XRUN.quests.find(x=>x.id===it.qid); if(q&&!q.done){ q.done=true; xLog('You find '+q.giver+'’s '+q.item+'. Their token glows warm in your pocket.','good'); xGrant(q.reward,'Quest reward'); } }
@@ -1051,7 +1070,7 @@ function xMiniExtra(c,s,dot){
   for(const p of EX.props){ if(p.gone) continue; const at=p.wall?p.front:p.cell; if(!EX.seen[at]) continue;
     const col=p.kind==='merchant'?'#f2c94c':p.kind==='altar'?'#39ff8a':p.kind==='npc'&&p.state!=='done'?'#8fe4ff':p.kind==='keystand'&&!p.taken?KEYS.boss.col:p.kind==='trialaltar'||p.kind==='core'||p.kind==='tablet'?'#b48cff':p.kind==='blade'||p.kind==='jet'||p.kind==='totem'?'#ff9a3a':p.kind==='hstair'||p.kind==='chute'?'#b48cff':null;
     if(col) dot(p.cell,col,1); }
-  for(const it of EX.items) if(EX.seen[it.cell]) dot(it.cell,it.kind==='key'?KEYS[it.key].col:it.kind==='quest'||it.kind==='crate'?'#8fe4ff':'#c9a7ff',1);
+  for(const it of EX.items) if(EX.seen[it.cell]) dot(it.cell,it.kind==='key'?KEYS[it.key].col:it.kind==='quest'||it.kind==='crate'?'#8fe4ff':it.kind==='potion'?(BAG[it.bag]||BAG.draught).col:it.kind==='gear'?'#e6edf3':it.kind==='scroll'?'#f0e2bc':'#c9a7ff',1);
   for(const p of EX.props) if(p.role==='rival'&&p.target&&EX.seen[p.target.cell]&&!p.target.open) dot(p.target.cell,'#f2c94c',2);
   if(typeof xMissionMini==='function') xMissionMini(c,s,dot);
   if(EX.hints) for(const h of EX.hints){ c.fillStyle='#ff5d6c'; c.fillRect(xcx(h)*s-1,xcy(h)*s+1,s+2,1); c.fillRect(xcx(h)*s+1,xcy(h)*s-1,1,s+2); } }

@@ -79,11 +79,24 @@ function autoFill(list,owned,size){
   return out;
 }
 
+/* Heroes are summoned by their card. Every hexmancer owns the six first heroes (one per color),
+   and a starter deck carries the hero of its first color. */
+const STARTER_HEROES=['hero_pyra','hero_ysolde','hero_volta','hero_thorn','hero_aurel','hero_widow'];
+const heroOfColor=col=>STARTER_HEROES.find(id=>CARDS[id]&&CARDS[id].color===col);
+function giveStarterHeroes(s){ for(const id of STARTER_HEROES) if(CARDS[id]&&!s.owned[id]){ s.owned[id]=1; s.seen[id]=1; } }
+// put a hero card into a deck that has none, dropping one copy of its most-copied low card if the deck is full
+function addHeroToDeck(list,id){ if(!id||list.some(x=>CARDS[x]&&CARDS[x].rarity==='hero')) return;
+  if(list.length>=RULES.max){ const n={}; list.forEach(x=>n[x]=(n[x]||0)+1);
+    const cut=Object.keys(n).filter(x=>CARDS[x]&&CARDS[x].rarity!=='legendary'&&n[x]>1).sort((x,y)=>n[y]-n[x]||CARDS[x].rank-CARDS[y].rank)[0];
+    if(!cut) return; list.splice(list.lastIndexOf(cut),1); }
+  list.push(id); }
 function newSave(starter){
   const list=starterList(starter.colors,60,starter.recipe), owned={};
+  addHeroToDeck(list,heroOfColor(starter.colors[0]));
   list.forEach(id=>owned[id]=(owned[id]||0)+1);
   const decks=[{name:starter.name, list}]; for(let i=1;i<DECK_SLOTS;i++) decks.push({name:'Deck '+(i+1), list:[]});
-  return {v:1, gold:100, depth:1, deepest:1, owned, seen:Object.assign({},owned), decks, active:0, wins:0, items:{basic_wand:1}, gear:{weapon:'basic_wand'}};
+  const sv={v:1, gold:100, depth:1, deepest:1, owned, seen:Object.assign({},owned), decks, active:0, wins:0, items:{basic_wand:1}, gear:{weapon:'basic_wand'}, heroCards:1};
+  giveStarterHeroes(sv); return sv;
 }
 function addCards(save,cards){ return cards.map(c=>{ const isNew=!save.owned[c.id]; save.owned[c.id]=(save.owned[c.id]||0)+1; save.seen[c.id]=1; return {card:c,isNew}; }); }
 function ownedUnique(save){ return Object.keys(save.owned).filter(id=>CARDS[id]&&save.owned[id]>0).length; }
@@ -126,6 +139,11 @@ function loadSave(n){
 const OLD_POTIONS={draught:'potion_heal', tonic:'potion_tonic', elixir:'potion_elixir', wind:'potion_wind'};
 function migrate(s){ s.items=s.items||{}; s.gear=s.gear||{}; if(typeof ensureStarterGear==='function') ensureStarterGear(s);
   for(const k in OLD_POTIONS) if(s.items[k]){ const id=OLD_POTIONS[k]; s.owned[id]=(s.owned[id]||0)+s.items[k]; s.seen[id]=1; delete s.items[k]; }
+  // the Soul used to stand beside every fight: now its hero is a card in the deck
+  if(!s.heroCards){ s.heroCards=1; giveStarterHeroes(s);
+    for(const d of s.decks||[]) if(d.list&&d.list.length){ let id=d.soul&&s.owned[d.soul]?d.soul:null;
+      if(!id){ const n={}; d.list.forEach(x=>{ const c=CARDS[x]; if(c&&SIX.includes(c.color)) n[c.color]=(n[c.color]||0)+1; }); id=heroOfColor(Object.keys(n).sort((a,b)=>n[b]-n[a])[0]); }
+      addHeroToDeck(d.list,id); delete d.soul; } }
   return s; }
 function writeSave(s){ try{ localStorage.setItem(slotKey(SAVE_SLOT),JSON.stringify(s)); }catch(e){} }
 function clearSave(n){ try{ localStorage.removeItem(slotKey(n||SAVE_SLOT)); }catch(e){} }

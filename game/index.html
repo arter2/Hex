@@ -94,7 +94,7 @@
   <section id="scrBuilder" class="screen">
     <div class="bar"><button class="btn ghost back">←</button><input id="bName" maxlength="24"><span id="bCount" class="count"></span></div>
     <div id="bSlots" class="slotsel"></div>
-    <div class="soulpick"><label>♔ Soul <select id="bSoul"></select></label><small id="bSoulTxt" class="dim"></small></div>
+    <div class="soulpick" hidden><label>♔ Soul <select id="bSoul"></select></label><small id="bSoulTxt" class="dim"></small></div>
     <div id="bStats" class="stats"></div>
     <p id="bErr" class="hint warn"></p>
     <h3>Deck <small class="dim">tap a card to remove it</small></h3>
@@ -112,7 +112,7 @@
       <div class="dkpill zoom"><button id="dkZo" aria-label="Zoom out">⊖</button><span id="dkZoom">50%</span><button id="dkZi" aria-label="Zoom in">⊕</button></div></div>
     <div id="dkDeck" class="dkdeck"></div>
     <div class="dkdrawer">
-      <div class="dkbar"><span id="dkCount" class="dkcount"></span><span id="dkErr" class="dkerr"></span><label class="dksoul">♔ <select id="dkSoul"></select></label><button id="dkMulti" class="dkpill">☐ Select</button></div>
+      <div class="dkbar"><span id="dkCount" class="dkcount"></span><span id="dkErr" class="dkerr"></span><label class="dksoul" hidden>♔ <select id="dkSoul"></select></label><button id="dkMulti" class="dkpill">☐ Select</button></div>
       <div id="dkTabs" class="dktabs"></div>
       <div class="dksearch"><input id="dkQ" placeholder="🔍 Search card library"><button id="dkFilt" class="dkpill">⚙ Filters</button><button id="dkSort" class="dkpill">⇅ Color</button></div>
       <div id="dkFilters" class="filters" hidden></div>

@@ -570,7 +570,7 @@ function fight(depth,waves,xo){
   const d=activeDeck(); if(!validateDeck(d.list,CARDS,save.owned).ok) return openCamp();
   $('#reveal').classList.remove('on');
   show('scrBattle');
-  const soul=soulOf(d.list,d), list=d.list.filter(id=>!(CARDS[id]&&CARDS[id].rarity==='hero'));
+  const soul=null, list=d.list;   // heroes are cards in the deck now: drawn and played to summon them
   startBattle(list,depth,{
     onSoul:ready=>{ if(ready){ buzz(30); banner('♔ Soul ready: Summon or Unison','#ffe066'); } soulMenu(false); },
     onCustom:renderCustom,

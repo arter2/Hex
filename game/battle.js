@@ -625,12 +625,29 @@ function heroStrike(a,near){
     case 'ysolde': B.fx.push({kind:'beam',a:a.tile,b:near.tile,color:col,t:0,life:.3}); hitEnemy(near,c.pow,c); break;
     case 'volta': { let from=a.tile; es.sort((x,y)=>hexDist(a.tile,x.tile)-hexDist(a.tile,y.tile)).slice(0,3).forEach((e,i)=>{ const f=from;
       later(i*.12,()=>{ B.fx.push({kind:'bolt',a:f,b:e.tile,color:col,t:0,life:.3}); hitEnemy(e,c.pow,c); }); from=e.tile; }); break; }
-    case 'thornfather': [near.tile,...around(near.tile)].forEach(t=>{ flash(t,col,.8); burst(t,col,4,.3); hitAt(t,c.pow,c); }); break;
+    case 'thornfather': thornBurst(a,near.tile,c,col); break;
     case 'aurelion': B.fx.push({kind:'beam',a:near.tile,b:near.tile,y0:6,color:'#fff6c8',t:0,life:.45}); flash(near.tile,'#fff6c8',1); burst(near.tile,'#fff6c8',14,1.5); hitEnemy(near,c.pow,c); healPlayer(c.heal); break;
     case 'widow': B.fx.push({kind:'arc',a:a.tile,b:near.tile,color:col,t:0,life:.35}); hitEnemy(near,c.pow,c); break;
     default: heroStyle(a,near,c,col,es);
   }
 }
+// a vine lashes out from the hero, then the ground around the enemy bursts
+function thornBurst(a,t,c,col){ B.fx.push({kind:'arc',a:a.tile,b:t,color:col,t:0,life:.25});
+  later(.22,()=>[t,...around(t)].forEach(x=>{ flash(x,col,.8); burst(x,col,4,.3); hitAt(x,c.pow,c); })); }
+// A hero walks your half of the board: it lines up with the enemy nearest to it, keeps to its
+// fighting distance (casters stay back, brawlers go to the front) and never stands still for long.
+const HERO_BACK=['pyra','ysolde','aurelion'], HERO_BACK_STYLE=['lob','sky'];
+function heroWalk(a,dt){
+  a.walkT=(a.walkT==null?.5:a.walkT)-dt; if(a.walkT>0||B.phase!=='fight') return; a.walkT=.45+Math.random()*.45;
+  const es=alive(); if(!es.length) return; const p=B.player, c=a.card;
+  const foe=es.slice().sort((x,y)=>hexDist(a.tile,x.tile)-hexDist(a.tile,y.tile))[0].tile;
+  const col=HERO_BACK.includes(c.hero)||HERO_BACK_STYLE.includes(c.style)?2:4;
+  const score=t=>-Math.abs(t.r-foe.r)*1.2-Math.abs(t.col-col)*.7-(t.r===p.tile.r&&t.col>p.tile.col?1.5:0)+Math.random()*1.4;
+  const opts=neighbors(a.tile).filter(t=>t.side==='p'&&!t.occ&&!(t.holeT>0));
+  if(!opts.length) return;
+  const best=opts.map(t=>[t,score(t)]).sort((x,y)=>y[1]-x[1])[0];
+  if(best[1]<score(a.tile)-.3&&(a.still=(a.still||0)+1)<2) return;   // where it stands is better: it waits a moment, but not for long
+  a.still=0; a.tile.occ=null; a.tile=best[0]; best[0].occ=a; }
 // the later Souls attack by style
 function heroStyle(a,near,c,col,es){
   switch(c.style){
@@ -642,7 +659,7 @@ function heroStyle(a,near,c,col,es){
       B.fx.push({kind:'beam',a:a.tile,b:row[row.length-1],color:col,t:0,life:.3}); hit.forEach(e=>hitEnemy(e,c.pow,c)); break; }
     case 'chain': { let from=a.tile; es.sort((x,y)=>hexDist(a.tile,x.tile)-hexDist(a.tile,y.tile)).slice(0,c.n||3).forEach((e,i)=>{ const f=from;
       later(i*.12,()=>{ B.fx.push({kind:'bolt',a:f,b:e.tile,color:col,t:0,life:.3}); hitEnemy(e,c.pow,c); }); from=e.tile; }); break; }
-    case 'burst': [near.tile,...around(near.tile)].forEach(t=>{ flash(t,col,.8); burst(t,col,4,.3); hitAt(t,c.pow,c); }); break;
+    case 'burst': thornBurst(a,near.tile,c,col); break;
     default: B.fx.push({kind:'arc',a:a.tile,b:near.tile,color:col,t:0,life:.35}); hitEnemy(near,c.pow,c);
   }
 }
@@ -661,6 +678,7 @@ function endTurn(){
   p.blocksLeft=p.block||0;   // a shield is ready again each turn
 }
 function updateAlly(a,dt){
+  if(a.ai==='hero') heroWalk(a,dt);
   a.fireT-=dt;
   if(a.fireT>0) return;
   const c=allyCard(a); a.fireT=c.rate||1;
@@ -1271,7 +1289,8 @@ const DRAW={
     ctx.strokeStyle='#ffe066'; ctx.lineWidth=2.5; ctx.globalAlpha=.6+.3*pulse; ctx.beginPath(); ctx.ellipse(gx,gy,S*.78,S*.78*View.iy,0,0,TAU); ctx.stroke();
     const g=ctx.createLinearGradient(0,gy-S*3,0,gy); g.addColorStop(0,'rgba(255,230,120,0)'); g.addColorStop(1,'rgba(255,230,120,.28)');
     ctx.globalAlpha=1; ctx.fillStyle=g; ctx.fillRect(gx-S*.55,gy-S*3,S*1.1,S*3);
-    const r=drawSprite(ctx,a,T,S,{scale:1.05,bob:.04,flip:facing(a,alive()[0],false),flash:a.hitT>0?.8:0});
+    const moving=Math.hypot(posOf(a)[0]-a.tile.wx,posOf(a)[1]-a.tile.wz)>.05;
+    const r=drawSprite(ctx,a,T,S,{scale:1.05,bob:.04,step:moving?Math.floor(T*7)%2:null,flip:facing(a,alive()[0],false),flash:a.hitT>0?.8:0});
     const top=r.top-S*.1; ctx.textAlign='center'; ctx.font='800 '+Math.round(S*.3)+'px "Pixelify Sans",system-ui,sans-serif';
     ctx.lineWidth=3; ctx.strokeStyle='rgba(0,0,0,.7)'; const nm='♔ '+a.card.name.split(',')[0]; ctx.strokeText(nm,r.x,top-S*.18); ctx.fillStyle='#ffe066'; ctx.fillText(nm,r.x,top-S*.18);
     bar(ctx,r.x,top,S*.9,a.hp/a.maxHp,col); turnPips(ctx,r.x,top+S*.16,a.turns,S);

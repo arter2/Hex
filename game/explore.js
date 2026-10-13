@@ -234,7 +234,7 @@ function xInit3D(){
   const ring=new THREE.Mesh(new THREE.RingGeometry(XCS*2.3,XCS*2.5,40),rm); ring.rotation.x=-Math.PI/2; ret.add(ring);
   for(const [w,d] of [[XCS*1.2,.14],[.14,XCS*1.2]]){ const b=new THREE.Mesh(new THREE.PlaneGeometry(w,d),rm); b.rotation.x=-Math.PI/2; ret.add(b); }
   ret.renderOrder=6; ret.traverse(o=>o.renderOrder=6); ret.visible=false; scene.add(ret); X3.reticle=ret;
-  cv.addEventListener('pointerdown',e=>{ if(!EX||!EX.active||xPaused) return; e.preventDefault(); try{ cv.setPointerCapture(e.pointerId); }catch(_){}
+  cv.addEventListener('pointerdown',e=>{ if(!EX||!EX.active||xPaused) return; e.preventDefault(); EX.needInput=false; try{ cv.setPointerCapture(e.pointerId); }catch(_){}
     const [ax,ay]=appXY(e.clientX,e.clientY);
     if(EX.aim){ EX.aim.id=e.pointerId; EX.aim.cell=xAimCell(ax,ay); return; }
     XHOLD.id=e.pointerId; XHOLD.x=XHOLD.x0=ax; XHOLD.y=XHOLD.y0=ay; XHOLD.t0=performance.now(); XHOLD.on=true; XHOLD.stick=false;
@@ -593,8 +593,12 @@ function xStickDraw(){ const el=$('#xStick'); if(!el) return; const m=xMoveMode(
   el.firstElementChild.style.transform='translate('+dx+'px,'+dy+'px)'; }
 // paused (ui.js): the floor stands still and keys and touches are let go
 let xPaused=false;
-function xPause(on){ xPaused=!!on; for(const k in XKEY) XKEY[k]=false; XHOLD.on=false; XHOLD.id=null; if(EX){ EX.vx=EX.vz=0; } }
-document.addEventListener('keydown',e=>{ if(EX&&xMapIsOpen()&&(e.key==='Escape'||e.key==='m')){ xMapClose(); return; } if(!EX||!EX.active||xPaused) return; const k=e.key.toLowerCase(), a=keyAct(k,'map'); XKEY[k]=true;
+// Pausing (a dialog, the bag, the menu) stops you dead: keys, finger and any walk you were on.
+// Afterwards you need fresh input (a tap or a new key press, not a key still held) before
+// walking into something acts on it again, so closing a talk never walks you back into the NPC.
+function xPause(on){ xPaused=!!on; for(const k in XKEY) XKEY[k]=false; XHOLD.on=false; XHOLD.id=null;
+  if(EX){ EX.vx=EX.vz=0; EX.path=[]; EX.goal=null; EX.blockT=0; if(!on) EX.needInput=true; } }
+document.addEventListener('keydown',e=>{ if(EX&&xMapIsOpen()&&(e.key==='Escape'||e.key==='m')){ xMapClose(); return; } if(!EX||!EX.active||xPaused) return; if(e.repeat&&EX.needInput) return; EX.needInput=false; const k=e.key.toLowerCase(), a=keyAct(k,'map'); XKEY[k]=true;
   if(a==='fire'&&!e.repeat) xStrike();
   if(a==='search'){ if(EX.aim) xSearch(); else xSearchAt(EX.pc); } else if(a==='disarm') xDisarm(); else if(a==='camp') xToCamp();
   if(a||k===' '){ e.preventDefault(); } if(['up','down','left','right'].includes(a)){ EX.path=[]; EX.goal=null; } });
@@ -989,7 +993,7 @@ function xMapTap(e){ const cv=$('#xMini'), r=appBox(cv), V=EX.miniView; if(!V||!
   xMapClose();
   if(c===EX.pc) return;
   const path=xPathToCell(c); if(!path){ xSay('mapway','You know no way there yet.'); return; }
-  EX.goal={cell:c, x:xw(c), z:xz(c)}; EX.path=path; xLog('You set off across the floor…','dim'); }
+  EX.goal={cell:c, x:xw(c), z:xz(c)}; EX.path=path; EX.needInput=false; xLog('You set off across the floor…','dim'); }
 function xLog(t,c){ if(!EX) return; EX.log.push({t,c}); if(EX.log.length>5) EX.log.shift();
   const el=$('#xLog'); if(el) el.innerHTML=EX.log.map((l,i)=>`<div class="${l.c||''}" style="opacity:${.45+.55*(i+1)/EX.log.length}">${esc(l.t)}</div>`).join(''); }
 function xSay(k,t){ const now=performance.now(); if((EX.msgT[k]||0)>now) return; EX.msgT[k]=now+2500; xLog(t,'warn'); }

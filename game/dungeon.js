@@ -642,7 +642,7 @@ function xBuildProps(){ for(const p of EX.props) xMeshProp(p); for(const it of E
   if(EX.puzzle&&EX.puzzle.kind==='mirrors') xMeshBeam(xTraceBeam().cells); }
 
 /* ---------------- walking into things ---------------- */
-const xCanAct=()=>{ const now=performance.now(); if(now<(EX.actT||0)) return false; EX.actT=now+350; return true; };
+const xCanAct=()=>{ if(EX.needInput) return false; const now=performance.now(); if(now<(EX.actT||0)) return false; EX.actT=now+350; return true; };   // needInput: see xPause
 // explore.js asks this before its own rules: false = blocked, undefined = carry on as usual
 function xBumpExtra(c,front){
   if(c<0) return;

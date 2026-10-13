@@ -230,16 +230,25 @@ function openCamp(){
   drawDepthMap($('#depthMap'),pickDepth,save.deepest);
   $('#campLog').innerHTML=(campLog.length?campLog:[{t:'Each win gives a reward: a card, gold or a piece of gear. Every area is '+DEPTHS_PER_AREA+' floors deep and its boss waits on the last one. Losing costs 20% of your gold.',c:'dim'}])
     .slice(-4).map(l=>`<div class="${l.c||''}">${esc(l.t)}</div>`).join('');
-  show('scrCamp'); campScene(); setTimeout(maybeLevelUp,250);
+  show('scrCamp'); campScene(); setTimeout(()=>{ if($('#scrCamp').classList.contains('on')) campScene(); },120);   // again once the log and fonts have settled, so the fit is right
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(()=>{ if($('#scrCamp').classList.contains('on')) campScene(); });
+  setTimeout(maybeLevelUp,250);
 }
 // the camp scene: the area you are about to enter, your wizard in its gear, and a fire that
 // flickers while the camp is open. Drawn at a whole-number zoom so pixels stay square.
 let campTimer=0;
 function campScene(){
-  const cv=$('#campScene'), box=cv.parentElement, w=box.clientWidth||330;
+  const cv=$('#campScene'), box=cv.parentElement, w=((box.parentElement.clientWidth||330)-(box.offsetWidth-box.clientWidth))||330;   // the frame may hug a shrunk picture, so measure the row it sits in
   // the scene fills the frame; pixels stay hard-edged, so this reads as pixel art at any size
-  const k=w/SCENE_W;
+  let k=w/SCENE_W;
   cv.style.width=SCENE_W*k+'px'; cv.style.height=SCENE_H*k+'px';
+  // on a phone the camp fits one screen: the picture gives up height first (down to about half),
+  // and only if that is not enough does the whole camp shrink a little
+  const scr=$('#scrCamp'), camp=scr.querySelector('.camp'); camp.style.zoom='';
+  if(document.body.classList.contains('ui-phone')&&!document.body.classList.contains('wide')){
+    const over=scr.scrollHeight-scr.clientHeight;
+    if(over>0){ const h=Math.max(SCENE_H*k*.5,SCENE_H*k-over); k=h/SCENE_H; cv.style.width=SCENE_W*k+'px'; cv.style.height=h+'px'; }
+    const over2=scr.scrollHeight-scr.clientHeight; if(over2>0) camp.style.zoom=Math.max(.8,scr.clientHeight/(scr.clientHeight+over2)).toFixed(3); }
   const dm=$('#depthMap'); dm.style.width='100%'; dm.style.height='auto';
   clearInterval(campTimer); const t0=performance.now();
   const tick=()=>{ if(!$('#scrCamp').classList.contains('on')){ clearInterval(campTimer); return; } drawCampScene(cv,pickDepth,(performance.now()-t0)/1000,unitSprite({kind:'player',look:gearLook(save),view:'front'}).img); };
@@ -947,7 +956,7 @@ View.canvas.addEventListener('pointermove',e=>{ const d=dragging; if(!d||e.point
   d.cur=t; moveTo(t); });
 const dragEnd=e=>{ const d=dragging; if(!d||e.pointerId!==d.id) return; dragging=null; if(!d.moved&&e.type==='pointerup'&&d.tap&&d.tap.side==='p') moveTo(d.tap); };
 ['pointerup','pointercancel'].forEach(ev=>View.canvas.addEventListener(ev,dragEnd));
-window.addEventListener('resize',()=>{ if($('#scrBattle').classList.contains('on')) resizeView(); });
+window.addEventListener('resize',()=>{ if($('#scrBattle').classList.contains('on')) resizeView(); if($('#scrCamp').classList.contains('on')) campScene(); });
 
 const held=new Set();
 window.addEventListener('keydown',e=>{

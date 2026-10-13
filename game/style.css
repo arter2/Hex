@@ -1109,3 +1109,22 @@ body.lsS #custHand .slot.hole{min-height:104px;}
 .x-stick[hidden]{display:none;}
 .x-stick.live{border-color:rgba(127,212,255,.8); background:rgba(127,212,255,.14);}
 .x-knob{display:block; width:48px; height:48px; border-radius:50%; background:rgba(127,212,255,.55); border:2px solid #bfeaff;}
+
+/* Camp on a phone: everything fits on one screen. The Menu button sits in the corner beside
+   the title, Settings lives in that menu, the tiles and the log are compact, and the camp
+   picture shrinks to take up whatever height is left (campFit in ui.js). */
+body.ui-phone:not(.wide) .camp{gap:6px; padding-bottom:6px; position:relative;}
+body.ui-phone:not(.wide) .campmenu{position:absolute; top:4px; left:0; z-index:3; width:auto; min-height:36px; padding:4px 10px; font-size:15px;}
+body.ui-phone:not(.wide) .camp .logo{margin-top:2px; padding-left:64px; padding-right:12px;}
+body.ui-phone:not(.wide) .scenebox{margin-top:12px;}
+body.ui-phone:not(.wide) .panel.scene{background:#000;}
+body.ui-phone:not(.wide) #goSettings{display:none;}
+body.ui-phone:not(.wide) .camp .btn.mi{min-height:54px; font-size:17px;}
+body.ui-phone:not(.wide) .depthbox{gap:4px;}
+body.ui-phone:not(.wide) .depthbox .depthpick .btn{min-height:52px;}
+body.ui-phone:not(.wide) .depthbox .quick{margin-top:4px; min-height:40px; padding:4px 10px; flex-direction:row; gap:8px; flex-wrap:wrap; justify-content:center;}
+body.ui-phone:not(.wide) .panel.log{font-size:17px; max-height:calc(2 * 1.05em + 6px); overflow:hidden;}
+body.ui-phone:not(.wide) .depthbox .quick small{display:none;}
+body.ui-phone:not(.wide) .depthbox .depthpick #btnDescend{white-space:nowrap; font-size:clamp(15px,4.6vw,20px); padding-left:4px; padding-right:4px;}
+body.ui-phone:not(.wide) .panel.log:empty{display:none;}
+body.ui-phone:not(.wide) .panel.scene{width:fit-content; max-width:100%; margin:0 auto;}

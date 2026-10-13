@@ -247,16 +247,14 @@ function sacrificeFor(save,id,cardIds){ const g=Object.assign({},GEAR[id],{rune:
     for(const d of save.decks) while(d.list.filter(x=>x===c).length>(save.owned[c]||0)) d.list.splice(d.list.lastIndexOf(c),1); }
   delete s.cursed[id]; return {ok:true, msg:'The curse on the '+g.name+' is broken'}; }
 
-// Add loot: a piece of gear (a copy if you have it already) or a scroll. A new piece is put on
-// at once if that slot is empty, which is how a cursed piece can catch you out.
+// Add loot: a piece of gear (a copy if you have it already) or a scroll. Loot goes into your
+// bag; nothing is put on until you choose to wear it (a hidden curse shows itself then).
 function addGear(save,id,rng){ const s=gearState(save), first=!s.items[id]; s.items[id]=(s.items[id]||0)+1;
   // a piece new to you may hide an enchantment or a curse until you wear it
   if(first&&rng&&!GEAR[id].starter){ const h={};
     if(rng()<.12){ const ks=Object.keys(ENCHANTS).filter(k=>GEAR[id].slot==='weapon'||!['haste','focus','might'].includes(k)); h.ench=ks[Math.floor(rng()*ks.length)]; }
     if(!GEAR[id].legendary&&rng()<.15){ const ks=Object.keys(CURSES).filter(k=>!CURSES[k].weapon||GEAR[id].slot==='weapon'); h.curse=ks[Math.floor(rng()*ks.length)]; }
     if(h.ench||h.curse) s.hidden[id]=h; }
-  const t=GEAR[id].slot, free=SLOTS.find(k=>slotType(k)===t&&!s.gear[k]);
-  if(free&&!(t==='offhand'&&s.gear.weapon&&WEAPON_KINDS[kindOf(s.gear.weapon)].twoHand)) return equip(save,free,id);
   return null; }
 function addScroll(save,kind,n){ const s=gearState(save); s.scrolls[kind]=(s.scrolls[kind]||0)+(n||1); }
 function itemCount(save){ const s=gearState(save); return Object.keys(s.items).filter(id=>GEAR[id]&&s.items[id]>0).length; }

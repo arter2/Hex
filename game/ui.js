@@ -875,8 +875,8 @@ function hud(force){
     ins.forEach(inst=>{ const bt=document.createElement('button'), c=inst.card; bt.className='btn inst'; bt.style.setProperty('--c',COLORS[c.color].c);
       bt.innerHTML=`✧ ${esc(c.name)}`; pressBtn(bt,()=>tapInstant(inst)); row.appendChild(bt); }); });
   set('ace',b.sidearm?b.sidearm.name+'|'+b.sidearm.mult.toFixed(1)+'|'+b.sidearm.shape:'',()=>{ const bt=$('#btnAce'), s=b.sidearm;
-    bt.hidden=!s; bt.parentElement.classList.toggle('has-ace',!!s);
-    if(s){ $('#aceName').textContent=s.name+' ×'+s.mult.toFixed(1); bt.style.setProperty('--k',((s.mult-1)/(ACE_MAX-1)*100).toFixed(0)+'%'); bt.classList.toggle('hot',s.mult>=2); } });
+    bt.hidden=!s;
+    if(s){ $('#aceName').textContent='×'+s.mult.toFixed(1); bt.title=s.name+' ×'+s.mult.toFixed(1); bt.style.setProperty('--k',((s.mult-1)/(ACE_MAX-1)*100).toFixed(0)+'%'); bt.classList.toggle('hot',s.mult>=2); } });
   set('soul',b.soul?[Math.round(b.soul.charge),Math.ceil(b.soul.unisonT),soulReady(),(pl.queue[0]||{}).uid].join('|'):'',soulHud);
   const canCustom=b.phase==='fight'&&gaugeFull()&&!wandOnly(pl);
   set('custom',canCustom+'|'+wandOnly(pl),()=>{ const bt=$('#btnCustom'); bt.disabled=!canCustom; bt.classList.toggle('ready',canCustom);

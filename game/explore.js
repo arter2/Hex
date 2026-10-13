@@ -518,7 +518,7 @@ function xTrapMesh(tr){ if(tr.mesh||!X3) return; if(tr.tell) tr.tell.visible=fal
 const XKEY={}, XHOLD={on:false,id:null,x:0,y:0,x0:0,y0:0,t0:0};
 // paused (ui.js): the floor stands still and keys and touches are let go
 let xPaused=false;
-function xPause(on){ xPaused=!!on; for(const k in XKEY) XKEY[k]=false; XHOLD.on=false; XHOLD.id=null; }
+function xPause(on){ xPaused=!!on; for(const k in XKEY) XKEY[k]=false; XHOLD.on=false; XHOLD.id=null; if(EX){ EX.vx=EX.vz=0; } }
 document.addEventListener('keydown',e=>{ if(!EX||!EX.active||xPaused) return; const k=e.key.toLowerCase(), a=keyAct(k,'map'); XKEY[k]=true;
   if(a==='fire'&&!e.repeat) xStrike();
   if(a==='search'){ if(EX.aim) xSearch(); else xSearchAt(EX.pc); } else if(a==='disarm') xDisarm(); else if(a==='camp') xToCamp();
@@ -535,6 +535,10 @@ function xTap(e){ if(!EX||!EX.active||EX.busy) return; const G=X3, r=appBox(e.ta
     for(const n of [xi(x+1,y),xi(x-1,y),xi(x,y+1),xi(x,y-1)]) if(d[n]>=0&&d[n]<d[cur]&&(best<0||d[n]<d[best])) best=n;
     if(best<0) break; path.push(best); cur=best; }
   EX.path=path; }
+// the point on the floor under a screen point (app coordinates), or null
+function xFloorAt(ax,ay){ const G=X3; if(!G) return null; const r=appBox($('#xView')); if(!r.width) return null;
+  const v=new THREE.Vector2((ax-r.left)/r.width*2-1,-(ay-r.top)/r.height*2+1), hit=new THREE.Vector3();
+  G.ray.setFromCamera(v,G.cam); return G.ray.ray.intersectPlane(G.plane,hit)?hit:null; }
 const xKnownTrap=c=>EX.traps.find(t=>t.cell===c&&t.armed&&t.known);
 const xChestAt=c=>EX.chests.find(ch=>ch.cell===c&&!ch.open);
 
@@ -545,14 +549,20 @@ function xMove(dt){
   let ix=0, iz=0;
   const held=id=>keysFor(id).some(k=>XKEY[k]);   // your bindings, from Settings (keys.js)
   if(held('left')) ix-=1; if(held('right')) ix+=1; if(held('up')) iz-=1; if(held('down')) iz+=1;
-  // holding a finger (or the mouse) down walks toward it, steering as it moves
-  if(!ix&&!iz&&XHOLD.on&&performance.now()-XHOLD.t0>120){ const r=appBox($('#xView')), v=new THREE.Vector3(EX.px,.8,EX.pz).project(X3.cam);
-    const sx=r.left+(v.x+1)/2*r.width, sy=r.top+(1-v.y)/2*r.height, dx=XHOLD.x-sx, dy=XHOLD.y-sy, l=Math.hypot(dx,dy);
-    if(l>18){ ix=dx/l; iz=dy/l; EX.path=[]; } }
+  // holding a finger (or the mouse) down walks toward the spot on the floor under it, steering as
+  // it moves. The camera is tilted, so the finger is found on the floor (not compared in screen
+  // pixels), or diagonals would drift away from the finger.
+  if(!ix&&!iz&&XHOLD.on&&performance.now()-XHOLD.t0>50){ const g=xFloorAt(XHOLD.x,XHOLD.y);
+    if(g){ const dx=g.x-EX.px, dz=g.z-EX.pz, l=Math.hypot(dx,dz); if(l>.35){ ix=dx/l; iz=dz/l; EX.path=[]; } } }
   if(!ix&&!iz&&EX.path.length){ const n=EX.path[0], tx=xw(n)-EX.px, tz=xz(n)-EX.pz, d=Math.hypot(tx,tz); if(d<.25){ EX.path.shift(); } else { ix=tx/d; iz=tz/d; } }
-  const len=Math.hypot(ix,iz); if(len<.1){ EX.walk=0; EX.stillT=(EX.stillT||0)+dt; return; }   // standing still: you notice hidden things (dungeon.js)
+  // speed eases in and out over a few frames, so starts, stops and turns feel smooth, not stiff
+  const len0=Math.hypot(ix,iz); if(len0>.1){ ix/=len0; iz/=len0; }
+  const kv=1-Math.exp(-dt*(len0>.1?22:30)); EX.vx=(EX.vx||0)+(ix-(EX.vx||0))*kv; EX.vz=(EX.vz||0)+(iz-(EX.vz||0))*kv;
+  if(len0<=.1&&Math.hypot(EX.vx,EX.vz)<.15){ EX.vx=EX.vz=0; }
+  ix=EX.vx; iz=EX.vz;
+  const len=Math.hypot(ix,iz); if(len<.05){ EX.walk=0; EX.stillT=(EX.stillT||0)+dt; return; }   // standing still: you notice hidden things (dungeon.js)
   EX.stillT=0;
-  ix/=len; iz/=len; const sp=XSPEED*dt, r=.42;
+  const amt=Math.min(1,len); ix/=len; iz/=len; const sp=XSPEED*dt*amt, r=.42;
   EX.moveDir=Math.abs(ix)>Math.abs(iz)?[Math.sign(ix),0]:[0,Math.sign(iz)];   // which way a pushed block goes
   const front=xcell(EX.px+ix*XCS*.6,EX.pz+iz*XCS*.6);
   const tryAxis=(nx,nz)=>{ for(const [ox,oz] of [[-r,-r],[r,-r],[-r,r],[r,r]]){ const c=xcell(nx+ox,nz+oz); if(c===EX.pc) continue; if(!xBump(c,c===front)) return false; } return true; };

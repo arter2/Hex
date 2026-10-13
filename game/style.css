@@ -1092,8 +1092,14 @@ body.lsS #custHand .slot.hole{min-height:104px;}
 #picker .row{display:flex; gap:8px; margin-top:10px;}
 #picker .row .btn{flex:1;}
 #picker{z-index:6;}
-.controls.battle.has-ace{grid-template-columns:1fr 1fr 1fr;}
-.btn.ace{border:2px solid #ffe066; background:linear-gradient(0deg,rgba(255,224,102,.35) var(--k,0%),transparent var(--k,0%)),#1a1608; color:#ffe066;}
-.btn.ace.hot{box-shadow:0 0 14px #ffe066; animation:aceHot 1s ease-in-out infinite alternate;}
+/* the Ace sits in the top right of the board, opposite the Soul */
+.ace-btn{position:absolute; right:10px; top:122px; z-index:5; width:56px; height:56px; border-radius:14px; border:2px solid #ffe066; padding:0; cursor:pointer;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0; color:#ffe066; font-family:inherit;
+  background:linear-gradient(0deg,rgba(255,224,102,.35) var(--k,0%),transparent var(--k,0%)),#1a1608; touch-action:manipulation;}
+.ace-btn[hidden]{display:none;}
+.ace-btn .ace-ic{font-size:24px; line-height:1;}
+.ace-btn .ace-nm{font-size:11px; font-weight:800; line-height:1.1;}
+.ace-btn.hot{animation:aceHot 1s ease-in-out infinite alternate;}
 @keyframes aceHot{from{box-shadow:0 0 6px #ffe066;}to{box-shadow:0 0 18px #ffb04d;}}
-body.lsS .controls.battle.has-ace{grid-template-columns:1fr;}
+@media (orientation:portrait){ .ace-btn{top:150px;} }
+@media (prefers-reduced-motion:reduce){ .ace-btn.hot{animation:none; box-shadow:0 0 12px #ffe066;} }

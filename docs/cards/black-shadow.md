@@ -293,9 +293,9 @@ Common 85 · Rare 50 · Uncommon 75 · Legendary 24
 
 | Card | Rarity | Rune | What it does |
 |---|---|---|---|
-| Spreading Mire | Uncommon | C2 | Claim: the enemy's front tile in every row becomes your Swamp for 2 turns. Enemies standing there are cursed as they are driven back. While you stand on Swamp, your hits drain 10% |
-| Sunken Bog | Rare | F3 | Claim: the enemy's front two tiles in your row and the rows beside it become your Swamp for 3 turns. Enemies standing there are cursed as they are driven back. While you stand on Swamp, your hits drain 10% |
-| The Drowned Fen | Legendary | A1 | Claim: the enemy's front two tiles in every row become your Swamp for 3 turns. Enemies standing there are cursed as they are driven back. While you stand on Swamp, your hits drain 10% |
+| Spreading Mire | Uncommon | C2 | Claim: the enemy's front tile in every row becomes your Swamp for 20 seconds. Enemies standing there are cursed as they are driven back. While you stand on Swamp, your hits drain 10% |
+| Sunken Bog | Rare | F3 | Claim: the enemy's front two tiles in your row and the rows beside it become your Swamp for 30 seconds. Enemies standing there are cursed as they are driven back. While you stand on Swamp, your hits drain 10% |
+| The Drowned Fen | Legendary | A1 | Claim: the enemy's front two tiles in every row become your Swamp for 30 seconds. Enemies standing there are cursed as they are driven back. While you stand on Swamp, your hits drain 10% |
 
 ## Aces (Sidearm finishers) (3)
 

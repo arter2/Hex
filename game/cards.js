@@ -312,7 +312,7 @@ const BUILD={
   // an Ace Enchantment: +upPow power for the Sidearm's Ace, and it can change its shape or add its keyword
   aceup(c,F,rank,kw,tr,pk){ if(kw&&kw!=='self') applyKw(c,kw,rank); c.upPow=r1(.2+.1*F); if(c.shape) c.upShape=c.shape; delete c.shape; },
   // a claim: reach = front, patch or deep; the land comes from the card's color
-  claim(c,F,rank,kw,tr,pk){ c.land=LAND_OF[c.color]; c.reach=c.reach||'front'; c.turns=c.reach==='front'?2:3; },
+  claim(c,F,rank,kw,tr,pk){ c.land=LAND_OF[c.color]; c.reach=c.reach||'front'; c.secs=c.reach==='front'?20:30; },   // timed, not turns: skipping the Custom screen can't make it last
   machine(c,F,rank,kw,tr,pk){ c.ai=c.ai||pk(['turret','turret','bulwark','mortar','repeater']);
     if(c.ai==='turret'){ c.pow=Math.round(9*F); c.rate=1.4; c.hp=Math.round(45*F); c.dur=30; }
     if(c.ai==='repeater'){ c.pow=Math.round(5*F); c.rate=.5; c.hp=Math.round(35*F); c.dur=20; }
@@ -649,7 +649,7 @@ function cardText(c){
   else if(kind==='equip') t='Equip your strongest creature: '+[c.eqPow?'+'+Math.round(c.eqPow*100)+'% power':'', c.eqHp?'+'+c.eqHp+' HP':'', c.eqRate?'attacks '+Math.round((1/c.eqRate-1)*100)+'% faster':'',
                               c.eq==='aegis'?'it steps in front of hits aimed at you':'', c.eqTurns?'+'+tn(c.eqTurns):''].filter(Boolean).join(', ')+(kw.length?', and its attacks carry this card\'s effects':'');
   else if(kind==='tinker') t='Tap, then pick a card in your hand or queue: +'+Math.round(c.tk*100)+'% power for the rest of the battle'+(kw.length?' and this card\'s effects':'');
-  else if(kind==='claim'){ const L=LANDS[c.land]; t='Claim: '+CLAIM_REACH[c.reach]+(c.reach==='front'?' becomes':' become')+' your '+L.name+' for '+tn(c.turns)+'. Enemies standing there '+L.push+' as they are driven back. While you stand on '+L.name+', '+L.stand; }
+  else if(kind==='claim'){ const L=LANDS[c.land]; t='Claim: '+CLAIM_REACH[c.reach]+(c.reach==='front'?' becomes':' become')+' your '+L.name+' for '+c.secs+' seconds. Enemies standing there '+L.push+' as they are driven back. While you stand on '+L.name+', '+L.stand; }
   else if(kind==='ace') t='Ace: loads into your Sidearm. Fire it for '+c.pow+' '+{line:'to the first enemy in your row',row:'to every enemy in your row',all:'to every enemy',nova:'to the nearest enemy and around it',twin:'twice down your row'}[c.shape]+'. Ace Enchantments build it up to ×3';
   else if(kind==='aceup') t='Ace Enchantment: your Sidearm\'s Ace gets +'+Math.round(c.upPow*100)+'% power'+(c.upShape?' and now hits '+{row:'every enemy in your row',all:'every enemy',nova:'around its target',twin:'twice'}[c.upShape]:'')+(kw.length?' and these effects':'')+'. With no Ace loaded it waits for the next one';
   if(c.piece) t='Legendary piece. '+t;

@@ -293,9 +293,9 @@ Common 91 · Uncommon 71 · Rare 47 · Legendary 25
 
 | Card | Rarity | Rune | What it does |
 |---|---|---|---|
-| Marble Causeway | Uncommon | A3 | Claim: the enemy's front tile in every row becomes your Marble for 2 turns. Enemies standing there are stunned as they are driven back. While you stand on Marble, you take 25% less damage |
-| Colonnade of Dawn | Rare | B1 | Claim: the enemy's front two tiles in your row and the rows beside it become your Marble for 3 turns. Enemies standing there are stunned as they are driven back. While you stand on Marble, you take 25% less damage |
-| Temple Foundation | Legendary | C2 | Claim: the enemy's front two tiles in every row become your Marble for 3 turns. Enemies standing there are stunned as they are driven back. While you stand on Marble, you take 25% less damage |
+| Marble Causeway | Uncommon | A3 | Claim: the enemy's front tile in every row becomes your Marble for 20 seconds. Enemies standing there are stunned as they are driven back. While you stand on Marble, you take 25% less damage |
+| Colonnade of Dawn | Rare | B1 | Claim: the enemy's front two tiles in your row and the rows beside it become your Marble for 30 seconds. Enemies standing there are stunned as they are driven back. While you stand on Marble, you take 25% less damage |
+| Temple Foundation | Legendary | C2 | Claim: the enemy's front two tiles in every row become your Marble for 30 seconds. Enemies standing there are stunned as they are driven back. While you stand on Marble, you take 25% less damage |
 
 ## Aces (Sidearm finishers) (3)
 

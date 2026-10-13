@@ -293,9 +293,9 @@ Common 93 · Uncommon 74 · Legendary 24 · Rare 43
 
 | Card | Rarity | Rune | What it does |
 |---|---|---|---|
-| Rising Tide | Uncommon | ✱2 | Claim: the enemy's front tile in every row becomes your Flood for 2 turns. Enemies standing there are swept two tiles back and slowed as they are driven back. While you stand on Flood, your hits deal 20% more |
-| Flash Flood | Rare | D1 | Claim: the enemy's front two tiles in your row and the rows beside it become your Flood for 3 turns. Enemies standing there are swept two tiles back and slowed as they are driven back. While you stand on Flood, your hits deal 20% more |
-| The Great Deluge | Legendary | E3 | Claim: the enemy's front two tiles in every row become your Flood for 3 turns. Enemies standing there are swept two tiles back and slowed as they are driven back. While you stand on Flood, your hits deal 20% more |
+| Rising Tide | Uncommon | ✱2 | Claim: the enemy's front tile in every row becomes your Flood for 20 seconds. Enemies standing there are swept two tiles back and slowed as they are driven back. While you stand on Flood, your hits deal 20% more |
+| Flash Flood | Rare | D1 | Claim: the enemy's front two tiles in your row and the rows beside it become your Flood for 30 seconds. Enemies standing there are swept two tiles back and slowed as they are driven back. While you stand on Flood, your hits deal 20% more |
+| The Great Deluge | Legendary | E3 | Claim: the enemy's front two tiles in every row become your Flood for 30 seconds. Enemies standing there are swept two tiles back and slowed as they are driven back. While you stand on Flood, your hits deal 20% more |
 
 ## Aces (Sidearm finishers) (3)
 

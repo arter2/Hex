@@ -610,9 +610,9 @@ function claimLand(c){
   for(let r=0;r<BOARD_ROWS;r++){ if(c.reach==='patch'&&Math.abs(r-p.tile.r)>1) continue;
     want.push(...E_TILES.filter(t=>t.r===r&&t.col<=BOARD_COLS-3).sort((a,b)=>a.col-b.col).slice(0,n)); }
   // ground of the same land you already hold gets its time back
-  for(const t of P_TILES) if(t.claim&&t.claim.land===c.land) t.claim.turns=Math.max(t.claim.turns,c.turns);
+  for(const t of P_TILES) if(t.claim&&t.claim.land===c.land) t.claim.t=Math.max(t.claim.t,c.secs);
   const got=want.filter(t=>clearForClaim(t,c.land,want));
-  for(const t of got){ t.side='p'; t.claim={land:c.land,turns:c.turns}; E_TILES.splice(E_TILES.indexOf(t),1); P_TILES.push(t);
+  for(const t of got){ t.side='p'; t.claim={land:c.land,t:c.secs}; E_TILES.splice(E_TILES.indexOf(t),1); P_TILES.push(t);
     t.terrain=null; t.trap=null; t.burnT=0; t.iceT=0; t.thornT=0; t.voidT=0; t.zapT=0;
     flash(t,look.c,1); burst(t,look.c,8,.5); }
   shake(4); floater(got.length?LANDS[c.land].name+'!':'no ground to take',p.tile,look.c,true);
@@ -629,8 +629,8 @@ function clearForClaim(t,land,taking){ const o=t.occ; if(!o) return true;
     if(to.trap) springTrap(to,o); return true; }
   if(o.enemy){ removeBlock(o); return true; }
   return false; }
-// a turn ends: claimed ground counts down, and land whose time is up goes back to the enemy
-function landTurn(){ const back=P_TILES.filter(t=>t.claim&&--t.claim.turns<=0); if(!back.length) return;
+// claimed ground lasts a set time in the fight (it pauses on the Custom screen); then it goes back to the enemy
+function landTick(dt){ const back=P_TILES.filter(t=>t.claim&&(t.claim.t-=dt)<=0); if(!back.length) return;
   for(const t of back){ t.claim=null; t.side='e'; P_TILES.splice(P_TILES.indexOf(t),1); E_TILES.push(t); flash(t,'#ffffff',.6); }
   // whoever stood there steps back onto your side
   for(const t of back){ const o=t.occ; if(!o||o.kind==='enemy') continue;
@@ -718,7 +718,6 @@ function endTurn(){
     if(t.envTurns>0&&--t.envTurns<=0){ t.burnT=0; t.iceT=0; t.thornT=0; }
   }
   if(heroOn('ysolde')||heroAura('shield')) heroShield();
-  landTurn();
   p.blocksLeft=p.block||0;   // a shield is ready again each turn
 }
 function updateAlly(a,dt){
@@ -798,6 +797,7 @@ function update(dt){
   if(typeof extraTick==='function'){ extraTick(dt); if(b.phase!=='fight') return; }
   const p=b.player, haste=p.hasteT>0;
   b.gauge=Math.min(GAUGE_MAX,b.gauge+dt*(heroOn('volta')?1.5:1)*(heroAura('gauge')||1)*(p.gaugeMult||1));
+  landTick(dt);
   ['moveCd','wandCd','hurtT'].forEach(k=>p[k]=Math.max(0,p[k]-rdt));
   ['castCd','invT','powerT','pactT','courageT','hasteT','regenT'].forEach(k=>p[k]=Math.max(0,p[k]-dt));
   if(p.regenT>0){ p.regenAcc=(p.regenAcc||0)+p.regenAmt*dt; if(p.regenAcc>=5){ healPlayer(5); p.regenAcc-=5; } }
@@ -1120,7 +1120,7 @@ function render(){
 
   const tiles=TILES.slice().sort((a,c)=>depthOf(a)-depthOf(c));
   for(const t of tiles){
-    const top=hexCorners(t,.96), land=t.claim&&LAND_LOOK[t.claim.land], base=land?land.base:{p:'#123756',e:'#23292f',n:'#0a1a14'}[t.side];
+    const top=hexCorners(t,.96), land=t.claim&&LAND_LOOK[t.claim.land], base=land?(t.claim.t<3&&Math.sin(T*12)>0?mixHex(land.base,'#23292f',.6):land.base):{p:'#123756',e:'#23292f',n:'#0a1a14'}[t.side];   // claimed ground blinks in its last 3 seconds
     let fill=base;
     const tl=telMap.get(t);
     if(tl){ const k=tl.t/tl.dur; fill=mixHex(base,tl.friendly?'#e6f4ff':'#ff3b4e',.25+.5*k*(.6+.4*Math.sin(T*18))); }

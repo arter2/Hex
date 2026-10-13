@@ -296,9 +296,9 @@ Common 94 · Uncommon 72 · Legendary 25 · Rare 46
 
 | Card | Rarity | Rune | What it does |
 |---|---|---|---|
-| Creeping Overgrowth | Uncommon | A2 | Claim: the enemy's front tile in every row becomes your Overgrowth for 2 turns. Enemies standing there are rooted (slowed) as they are driven back. While you stand on Overgrowth, you heal 3 a second |
-| Rootbound Glade | Rare | B3 | Claim: the enemy's front two tiles in your row and the rows beside it become your Overgrowth for 3 turns. Enemies standing there are rooted (slowed) as they are driven back. While you stand on Overgrowth, you heal 3 a second |
-| Wildwood Reclamation | Legendary | C1 | Claim: the enemy's front two tiles in every row become your Overgrowth for 3 turns. Enemies standing there are rooted (slowed) as they are driven back. While you stand on Overgrowth, you heal 3 a second |
+| Creeping Overgrowth | Uncommon | A2 | Claim: the enemy's front tile in every row becomes your Overgrowth for 20 seconds. Enemies standing there are rooted (slowed) as they are driven back. While you stand on Overgrowth, you heal 3 a second |
+| Rootbound Glade | Rare | B3 | Claim: the enemy's front two tiles in your row and the rows beside it become your Overgrowth for 30 seconds. Enemies standing there are rooted (slowed) as they are driven back. While you stand on Overgrowth, you heal 3 a second |
+| Wildwood Reclamation | Legendary | C1 | Claim: the enemy's front two tiles in every row become your Overgrowth for 30 seconds. Enemies standing there are rooted (slowed) as they are driven back. While you stand on Overgrowth, you heal 3 a second |
 
 ## Aces (Sidearm finishers) (3)
 

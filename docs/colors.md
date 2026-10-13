@@ -297,7 +297,10 @@ Cast. You fire it when you need it.
 ### Claims: taking the enemy's ground
 
 Green, Black, White and Blue can take ground from the enemy side. A Claim card
-turns the enemy's front tiles into your side for a few turns. You can walk
+turns the enemy's front tiles into your side for a set time: 20 or 30
+seconds of fighting. The timer pauses on the Custom screen. It is timed rather than
+counted in turns, so skipping the Custom screen can't make it last. In its last
+3 seconds the ground blinks. You can walk
 there, and your summons and heroes can stand there. Enemies standing on those
 tiles are driven back, and their walls crumble. When the time runs out, the
 ground goes back to the enemy, and anyone of yours on it steps back to your
@@ -311,8 +314,8 @@ side. Casting a second claim pushes deeper.
 | Blue | Flood | swept two tiles back and slowed | your hits deal 20% more |
 
 Each of these colors has three Claims:
-- Uncommon: the enemy's front tile in every row, for 2 turns.
-- Rare: the front two tiles in your row and the rows beside it, for 3 turns.
-- Legendary: the front two tiles in every row, for 3 turns.
+- Uncommon: the enemy's front tile in every row, for 20 seconds.
+- Rare: the front two tiles in your row and the rows beside it, for 30 seconds.
+- Legendary: the front two tiles in every row, for 30 seconds.
 
 The enemy's back three columns can never be taken.

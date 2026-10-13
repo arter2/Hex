@@ -105,3 +105,26 @@ $('#dkOK').onclick=dkLeave;
 $('#dkBack').onclick=e=>{ const v=validateDeck(activeDeck().list,CARDS,save.owned);
   if(DK.from==='bag'&&!v.ok) return armed(e.currentTarget,'Discard changes?',()=>{ save.decks=JSON.parse(DK.snap); persist(); dkLeave(); });
   dkLeave(); };
+
+/* The library drawer slides: drag its grip up for more library, down for more deck (portrait).
+   A tap on the grip switches between the whole screen for the library and the usual split.
+   The size is remembered in this browser. */
+(function(){ const grip=$('#dkGrip'), deck=$('#dkDeck'), scr=$('#scrDeck'), KEY='hexmancers-dkh';
+  const def=()=>Math.round(innerHeight*.34);
+  // the deck can shrink to nothing or grow until the drawer keeps just its bar and color tabs
+  const maxH=()=>{ const top=deck.getBoundingClientRect().top-scr.getBoundingClientRect().top; return Math.max(0,scr.clientHeight-top-150); };
+  const set=h=>{ h=Math.round(Math.max(0,Math.min(maxH(),h))); deck.style.height=h+'px'; deck.style.maxHeight='none'; deck.style.minHeight='0'; deck.style.paddingBlock=h<20?'0':''; return h; };
+  let saved=null; try{ const v=+localStorage.getItem(KEY); if(v>=0&&localStorage.getItem(KEY)!==null) saved=v; }catch(e){}
+  const keep=h=>{ saved=h; try{ localStorage.setItem(KEY,String(h)); }catch(e){} };
+  // apply the remembered size whenever the builder opens or the window changes
+  new MutationObserver(()=>{ if(scr.classList.contains('on')&&saved!=null) requestAnimationFrame(()=>set(saved)); }).observe(scr,{attributes:true,attributeFilter:['class']});
+  addEventListener('resize',()=>{ if(scr.classList.contains('on')&&saved!=null) set(saved); });
+  const Y=e=>typeof appXY==='function'?appXY(e.clientX,e.clientY)[1]:e.clientY;
+  let drag=null;
+  grip.addEventListener('pointerdown',e=>{ e.preventDefault(); try{ grip.setPointerCapture(e.pointerId); }catch(_){} drag={id:e.pointerId,y0:Y(e),h0:deck.getBoundingClientRect().height,moved:false}; grip.classList.add('on'); scr.classList.add('gripping'); });
+  grip.addEventListener('pointermove',e=>{ if(!drag||e.pointerId!==drag.id) return; const dy=Y(e)-drag.y0; if(Math.abs(dy)>4) drag.moved=true; if(drag.moved) set(drag.h0+dy); });
+  const end=e=>{ if(!drag||e.pointerId!==drag.id) return; const d=drag; drag=null; grip.classList.remove('on'); scr.classList.remove('gripping');
+    if(d.moved) keep(Math.round(deck.getBoundingClientRect().height));
+    else if(e.type==='pointerup'){ deck.style.transition='height .2s'; keep(set(d.h0>def()/2?0:def())); setTimeout(()=>deck.style.transition='',250); } };
+  grip.addEventListener('pointerup',end); grip.addEventListener('pointercancel',end);
+})();

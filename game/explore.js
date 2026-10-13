@@ -235,7 +235,8 @@ function xInit3D(){
     if(EX.aim){ EX.aim.id=e.pointerId; EX.aim.cell=xAimCell(ax,ay); return; }
     XHOLD.id=e.pointerId; XHOLD.x=XHOLD.x0=ax; XHOLD.y=XHOLD.y0=ay; XHOLD.t0=performance.now(); XHOLD.on=true; XHOLD.stick=false;
     const m=xMoveMode();
-    if(m==='goal') xGoalAt(ax,ay);
+    if(m==='tapstick'){}   // decided by what the finger does next (xMove and the release)
+    else if(m==='goal') xGoalAt(ax,ay);
     else if(m==='fixed'){ const h=xStickHome(); if(Math.hypot(ax-h.x,ay-h.y)<XSTICK_R*1.6){ XHOLD.stick=true; XHOLD.x0=h.x; XHOLD.y0=h.y; EX.path=[]; EX.goal=null; } else xGoalAt(ax,ay); }
     else { EX.path=[]; EX.goal=null; XHOLD.stick=m==='float';
       if(m==='pad'){ const a=xFloorAt(ax,ay), b2=xFloorAt(ax+100,ay+100); XHOLD.kx=a&&b2?(b2.x-a.x)/100:.05; XHOLD.kz=a&&b2?(b2.z-a.z)/100:.05; XHOLD.px=EX.px; XHOLD.pz=EX.pz; } }
@@ -243,7 +244,9 @@ function xInit3D(){
   cv.addEventListener('pointermove',e=>{ if(EX&&EX.aim&&e.pointerId===EX.aim.id){ const [ax,ay]=appXY(e.clientX,e.clientY); EX.aim.cell=xAimCell(ax,ay); return; }
     if(e.pointerId===XHOLD.id){ [XHOLD.x,XHOLD.y]=appXY(e.clientX,e.clientY); if(xMoveMode()==='goal'||xMoveMode()==='fixed'&&!XHOLD.stick) xGoalAt(XHOLD.x,XHOLD.y); xStickDraw(); } });
   const end=e=>{ if(EX&&EX.aim&&e.pointerId===EX.aim.id) return xSearchAt(EX.aim.cell);
-    if(e.pointerId!==XHOLD.id) return; XHOLD.on=false; XHOLD.id=null; XHOLD.stick=false; xStickDraw(); };   // in Walk to touch, letting go keeps you walking to the goal
+    if(e.pointerId!==XHOLD.id) return;
+    if(xMoveMode()==='tapstick'&&!XHOLD.stick&&performance.now()-XHOLD.t0<XTAP_MS&&Math.hypot(XHOLD.x-XHOLD.x0,XHOLD.y-XHOLD.y0)<XTAP_PX) xGoalAt(XHOLD.x0,XHOLD.y0);   // a quick tap: walk there
+    XHOLD.on=false; XHOLD.id=null; XHOLD.stick=false; xStickDraw(); };   // in Walk to touch, letting go keeps you walking to the goal
   cv.addEventListener('pointerup',end); cv.addEventListener('pointercancel',e=>{ XHOLD.on=false; XHOLD.id=null; XHOLD.stick=false; xStickDraw(); });
   cv.addEventListener('contextmenu',e=>e.preventDefault());
   // hold a finger on the minimap to see it big; let go to shrink it back
@@ -521,15 +524,18 @@ function xTrapMesh(tr){ if(tr.mesh||!X3) return; if(tr.tell) tr.tell.visible=fal
 
 /* ---------------- input ---------------- */
 const XKEY={}, XHOLD={on:false,id:null,x:0,y:0,x0:0,y0:0,t0:0};
-/* Touch movement has five styles (Settings, or the button under the minimap):
+/* Touch movement styles (Settings). The default, tapstick, mixes the first two:
+   tapstick a quick tap walks you there; hold or slide and you steer with an invisible floating stick
    goal    walk to where you touch or drag, and keep going after you let go
    float   a thumbstick appears wherever your finger lands
    fixed   a thumbstick in the bottom-left corner; a tap elsewhere walks there
    follow  hold to chase your finger, let go to stop
    pad     a trackpad: slide anywhere and you move the same way (like battle) */
-const XMOVES=['goal','float','fixed','follow','pad'], XMOVE_NAME={goal:'Walk to touch',float:'Floating stick',fixed:'Fixed stick',follow:'Follow finger',pad:'Trackpad'},
-  XMOVE_ICON={goal:'📍',float:'🕹',fixed:'🎮',follow:'👆',pad:'▭'};
-const xMoveMode=()=>{ let m='goal'; try{ m=localStorage.getItem('hexmancers-xmove')||'goal'; }catch(e){} return XMOVES.includes(m)?m:'goal'; };
+// tapstick (the default): a quick tap walks you there; hold or slide and it is an invisible floating stick
+const XMOVES=['tapstick','goal','float','fixed','follow','pad'], XMOVE_NAME={tapstick:'Tap + hold',goal:'Walk to touch',float:'Floating stick',fixed:'Fixed stick',follow:'Follow finger',pad:'Trackpad'},
+  XMOVE_ICON={tapstick:'✋',goal:'📍',float:'🕹',fixed:'🎮',follow:'👆',pad:'▭'};
+const XTAP_MS=200, XTAP_PX=12;   // shorter and smaller than this is a tap; anything more becomes the stick
+const xMoveMode=()=>{ let m='tapstick'; try{ m=localStorage.getItem('hexmancers-xmove')||'tapstick'; }catch(e){} return XMOVES.includes(m)?m:'tapstick'; };
 function xSetMoveMode(m){ try{ localStorage.setItem('hexmancers-xmove',m); }catch(e){} xMoveUi(); }
 const XSTICK_R=56;   // how far the stick's knob travels, in screen pixels
 function xStickHome(){ const r=appBox($('#xView')), bot=$('#xBottom'), bb=bot?appBox(bot):null; return {x:r.left+24+XSTICK_R, y:(bb&&bb.top>0?bb.top:r.bottom)-24-XSTICK_R}; }
@@ -592,6 +598,7 @@ function xMove(dt){
   if(held('left')) ix-=1; if(held('right')) ix+=1; if(held('up')) iz-=1; if(held('down')) iz+=1;
   if(ix||iz){ EX.path=[]; EX.goal=null; }   // keys take over from a finger's goal
   else if(XHOLD.on){ const m=xMoveMode();
+    if(m==='tapstick'&&!XHOLD.stick&&(performance.now()-XHOLD.t0>=XTAP_MS||Math.hypot(XHOLD.x-XHOLD.x0,XHOLD.y-XHOLD.y0)>=XTAP_PX)){ XHOLD.stick=true; EX.path=[]; EX.goal=null; }
     if(XHOLD.stick){ let dx=(XHOLD.x-XHOLD.x0)/XSTICK_R, dy=(XHOLD.y-XHOLD.y0)/XSTICK_R; const l=Math.hypot(dx,dy);
       if(l>.18){ const k=Math.min(1,(l-.18)/.62+.25)/l; ix=dx*k; iz=dy*k; } }   // a stick: screen up is up the map; how far you push sets the speed
     else if(m==='follow'){ const g=xFloorAt(XHOLD.x,XHOLD.y); if(g){ const dx=g.x-EX.px, dz=g.z-EX.pz, l=Math.hypot(dx,dz); if(l>.4){ const k=Math.min(1,l/1.5)/l; ix=dx*k; iz=dz*k; } } }
@@ -1015,8 +1022,7 @@ $('#xStrike').onclick=()=>xStrike();
 $('#xDisarm').onclick=()=>xDisarm();
 $('#xCamp').onclick=()=>xToCamp();
 $('#xUp').onclick=()=>xStairsUp();
-// touch movement: the button under the minimap and the Settings row both cycle the five styles
+// touch movement: the Settings row cycles the styles
 { const next=()=>{ const m=XMOVES[(XMOVES.indexOf(xMoveMode())+1)%XMOVES.length]; xSetMoveMode(m); return m; };
-  const b=$('#xMoveMode'); if(b){ b.addEventListener('pointerdown',e=>{ e.preventDefault(); e.stopPropagation(); const m=next(); if(typeof tip==='function') tip('Touch movement: '+XMOVE_NAME[m]); }); b.addEventListener('contextmenu',e=>e.preventDefault()); }
   const s=$('#setXMove'); if(s) s.onclick=()=>next();
   window.addEventListener('resize',xStickDraw); xMoveUi(); }

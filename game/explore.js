@@ -765,7 +765,7 @@ function xOpenChest(ch){
 }
 // chest loot: a card, gold or a piece of gear
 function xLoot(rich){ const d=EX.depth+(rich?2:0), r=Math.random();
-  if(r<.42){ const c=rollCard({depth:d,min:rich?'uncommon':null}); const res=addCards(save,[c]); xLog('The chest holds a card: '+c.name+(res[0]&&res[0].isNew?' (new!)':'')+'.','loot'); tip('Card: '+c.name); }
+  if(r<.42){ const c=rollCard({depth:d,min:rich?'uncommon':null}); const res=addCards(save,[c]); xLog('The chest holds a card: '+c.name+(res[0]&&res[0].isNew?' (new!)':'')+'.','loot'); xCardPop(c,res[0]&&res[0].isNew); }
   else if(r<.76){ const g=Math.round(battleGold(d,false)*rnd(.5,1.1)); save.gold+=g; xLog('The chest holds '+g+' gold.','gold'); tip('+'+g+' gold'); }
   else { const k=rollLoot(d,Math.random,rich); const l=lootLabel(save,k), res=addLoot(save,k); xLog('The chest holds '+l.name+'.'+(res&&res.cursed?' '+res.msg:''),'loot'); tip(l.name); }
 }

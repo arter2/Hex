@@ -25,7 +25,8 @@ function renderBag(){ const s=gearState(save), m=gearMods(save), K=WEAPON_KINDS[
   const slot=(k,big)=>{ const id=s.gear[k], d=document.createElement('button'); d.className='bgslot'+(big?' big':'')+(id?' full':'')+(BAGUI.sel&&BAGUI.sel.slot===k?' sel':'');
     if(id) d.style.setProperty('--fc',COLORS[GEAR[id].family].c);
     d.innerHTML=(id?gearIcon(id,big?56:40):`<span class="ghost">${uiIcon({weapon:'staff',offhand:'buckler',head:'helm',body:'robe',arms:'bracer',ring1:'ring',ring2:'ring'}[k]||'bag',big?44:30,'#6a5440')}</span>`)+`<span class="lbl">${SLOT_NAMES[k]}</span>`;
-    d.onclick=()=>{ BAGUI.sel=id?{kind:'worn',k:id,slot:k}:null; renderBag(); }; return d; };
+    d.dataset.drop='slot:'+k; d.onclick=()=>{ BAGUI.sel=id?{kind:'worn',k:id,slot:k}:null; renderBag(); };
+    if(id) bagDrag(d,{kind:'worn',k:id,slot:k}); return d; };
   const L=$('#bgLeft'), R=$('#bgRight'); L.innerHTML=''; R.innerHTML='';
   ['head','body','arms'].forEach(k=>L.appendChild(slot(k))); ['ring1','ring2'].forEach(k=>R.appendChild(slot(k)));
   $('#bgWeapon').replaceChildren(slot('weapon',true)); $('#bgOff').replaceChildren(slot('offhand',true));
@@ -35,10 +36,10 @@ function renderBag(){ const s=gearState(save), m=gearMods(save), K=WEAPON_KINDS[
   // the bag side: tabs, then the grid (or a list for quests, journal and blessings)
   const tabs=$('#bgTabs'); tabs.innerHTML='';
   for(const [k,l] of [['items','Items'],['quests','Quests'],['journal','Journal'],['bless','Blessings']]){ const b=document.createElement('button'); b.className='bgtab'+(BAGUI.tab===k?' on':''); b.textContent=l; b.onclick=()=>{ BAGUI.tab=k; BAGUI.sel=null; renderBag(); }; tabs.appendChild(b); }
-  const box=$('#bgGrid'); box.innerHTML=''; box.className=BAGUI.tab==='items'?'bggrid':'bglist';
+  const box=$('#bgGrid'); box.innerHTML=''; box.className=BAGUI.tab==='items'?'bggrid':'bglist'; box.dataset.drop='bag'; $('#bgSprite').dataset.drop='me';
   if(BAGUI.tab==='items'){ const items=bagItems(), n=Math.max(BAG_MIN,Math.ceil((items.length+1)/BAG_COLS)*BAG_COLS);
     for(let i=0;i<n;i++){ const it=items[i], d=document.createElement('button'); d.className='bgcell'+(it?' full':'')+(it&&BAGUI.sel&&BAGUI.sel.kind===it.kind&&BAGUI.sel.k===it.k?' sel':'');
-      if(it){ if(it.fam) d.style.setProperty('--fc',it.fam); d.innerHTML=it.pic+(it.n>1?`<span class="cnt">${it.n}</span>`:'')+(it.tier?`<span class="tier">${it.tier}</span>`:''); d.title=it.name; d.onclick=()=>{ BAGUI.sel=it; renderBag(); }; }
+      if(it){ if(it.fam) d.style.setProperty('--fc',it.fam); d.innerHTML=it.pic+(it.n>1?`<span class="cnt">${it.n}</span>`:'')+(it.tier?`<span class="tier">${it.tier}</span>`:''); d.title=it.name; d.onclick=()=>{ BAGUI.sel=it; renderBag(); }; if(it.kind==='gear'||it.kind==='bag') bagDrag(d,it); }
       else d.disabled=true;
       box.appendChild(d); } }
   else xBagLists(box,{tab:BAGUI.tab});
@@ -65,6 +66,40 @@ function bagDetail(){ const d=$('#bgDetail'), it=BAGUI.sel; d.innerHTML='';
   if(it.kind==='bag') btn('Use',()=>{ xUseBag(it.k); BAGUI.sel=bagN(it.k)>0?it:null; renderBag(); });
   if(it.kind==='gear') btn('Equip',()=>{ const G=GEAR[it.k], sl=G.slot==='ring'?(!gearState(save).gear.ring1?'ring1':'ring2'):G.slot; const r=equip(save,sl,it.k); if(r.msg) tip(r.msg); if(r.ok) persist(); BAGUI.sel=null; renderBag(); });
 }
+/* Drag and drop: drag gear from the bag onto its slot (or onto your character) to put it on, a worn
+   piece back into the bag to take it off, a ring between the two ring slots, and a potion onto your
+   character to drink it. A tap without a drag still selects, as before. */
+const BAG_DRAG_PX=8;
+// where this thing may be dropped: a list of data-drop names
+function bagDropsFor(it){ if(it.kind==='bag') return ['me'];
+  if(it.kind==='gear'){ const sl=GEAR[it.k].slot; return ['me',...(sl==='ring'?['slot:ring1','slot:ring2']:['slot:'+sl])]; }
+  if(it.kind==='worn') return ['bag',...(it.slot==='ring1'?['slot:ring2']:it.slot==='ring2'?['slot:ring1']:[])];
+  return []; }
+function bagDrop(it,to){ let r=null;
+  if(it.kind==='bag'&&to==='me'){ xUseBag(it.k); BAGUI.sel=null; renderBag(); return; }
+  if(it.kind==='gear'){ const G=GEAR[it.k], sl=to==='me'?(G.slot==='ring'?(!gearState(save).gear.ring1?'ring1':'ring2'):G.slot):to.slice(5); r=equip(save,sl,it.k); }
+  if(it.kind==='worn'&&to==='bag'){ if(GEAR[it.k].starter&&it.slot==='weapon') r={ok:false,msg:'Your first wand stays in hand until you hold another'}; else r=equip(save,it.slot,null); }
+  if(it.kind==='worn'&&to.startsWith('slot:ring')){ const k2=to.slice(5), s=gearState(save), other=s.gear[k2];
+    if(isStuck(save,it.k)||(other&&isStuck(save,other))) r={ok:false,msg:'A cursed ring will not come off'}; else { s.gear[k2]=it.k; s.gear[it.slot]=other||null; r={ok:true}; } }
+  if(r&&r.msg) tip(r.msg); if(r&&r.ok){ persist(); xSfx&&xSfx('click'); } BAGUI.sel=null; renderBag(); }
+function bagDrag(el,it){ el.style.touchAction='none';
+  el.addEventListener('pointerdown',e=>{ if(e.button>0) return; const x0=e.clientX, y0=e.clientY, pid=e.pointerId, ok=bagDropsFor(it); let ghost=null, over=null;
+    const targets=()=>[...$('#bagUI').querySelectorAll('[data-drop]')].filter(t=>ok.includes(t.dataset.drop));
+    const move=ev=>{ if(ev.pointerId!==pid) return;
+      if(!ghost){ if(Math.hypot(ev.clientX-x0,ev.clientY-y0)<BAG_DRAG_PX) return;
+        ghost=document.createElement('div'); ghost.className='bgghost'; ghost.innerHTML=el.innerHTML; document.body.appendChild(ghost);
+        el.classList.add('dragsrc'); targets().forEach(t=>t.classList.add('dropok')); $('#bagUI').classList.add('dragging'); }
+      ghost.style.left=ev.clientX+'px'; ghost.style.top=ev.clientY+'px';
+      const t=(document.elementFromPoint(ev.clientX,ev.clientY)||{closest:()=>null}).closest('[data-drop]'), hit=t&&ok.includes(t.dataset.drop)?t:null;
+      if(hit!==over){ if(over) over.classList.remove('drophover'); over=hit; if(over) over.classList.add('drophover'); } };
+    const up=ev=>{ if(ev.pointerId!==pid) return; removeEventListener('pointermove',move); removeEventListener('pointerup',up); removeEventListener('pointercancel',up);
+      if(!ghost) return;   // no drag: the click selects it
+      ghost.remove(); el.classList.remove('dragsrc'); $('#bagUI').classList.remove('dragging'); targets().forEach(t=>t.classList.remove('dropok','drophover'));
+      BAGUI.dragAt=Date.now();   // the drag is not also a tap
+      if(over&&ev.type==='pointerup') bagDrop(it,over.dataset.drop); };
+    addEventListener('pointermove',move); addEventListener('pointerup',up); addEventListener('pointercancel',up); }); }
+$('#bagUI').addEventListener('dragstart',e=>e.preventDefault());   // the browser's own image drag would cancel ours
+$('#bagUI').addEventListener('click',e=>{ if(Date.now()-(BAGUI.dragAt||0)<350){ e.stopPropagation(); e.preventDefault(); } },true);
 $('#bgClose').onclick=closeBag;
 // tap the top of the bag (its title or the bag badge) to build your deck
 for(const sel of ['#bgTitle','.bgbag']) $(sel).onclick=()=>{ if(typeof openDeckUI==='function') openDeckUI('bag'); };

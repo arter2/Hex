@@ -163,7 +163,7 @@ function xGrant(r,why){ if(why) xXp(15+2*EX.depth,why.toLowerCase());
   if(r.key) addKey(r.key);
   if(r.chute&&XRUN) XRUN.chute=r.chute;
   if(r.solution&&XRUN) XRUN.solution++;
-  if(r.card) addCards(save,[r.card]);
+  if(r.card){ const res=addCards(save,[r.card]); xCardPop(r.card,res[0]&&res[0].isNew); }
   if(r.lore) addLore(r.lore);
   persist(); xLog((why?why+': ':'')+t+'.',r.perm?'good':r.gold?'gold':'loot'); tip(t.charAt(0).toUpperCase()+t.slice(1)); xSfx('chime');
   if(typeof xHud==='function') xHud();
@@ -944,6 +944,16 @@ function xDlgPic(o){ const cv=$('#xdPic'), c=cv.getContext('2d'); c.clearRect(0,
   else if(o.enemy){ const s=unitSprite({kind:'enemy',id:o.enemy,color:ENEMY_DEFS[o.enemy].color}); draw(s&&s.img); }
   else if(o.icon){ const im=new Image(); im.onload=()=>{ c.imageSmoothingEnabled=false; c.drawImage(im,12,12,72,72); }; im.src=uiIconURL(o.icon[0],o.icon[1]); }
   cv.style.display=o.look||o.enemy||o.icon?'':'none'; }
+/* A card you get in the dungeon pops up so you can read it. Cards found together (a rich chest)
+   show in one box; if another box is open, it waits for that one to close. */
+function xCardPop(c,isNew){ if(!EX||!c) return; (EX.cardQ=EX.cardQ||[]).push({c,isNew:!!isNew}); if(!EX.cardQT) EX.cardQT=setTimeout(xCardShow,300); }
+function xCardShow(){ if(!EX) return; EX.cardQT=0; const q=EX.cardQ||[]; if(!q.length) return;
+  if($('#xDialog').classList.contains('on')||$('#bagUI').classList.contains('on')){ EX.cardQT=setTimeout(xCardShow,400); return; }
+  EX.cardQ=[]; const one=q.length===1;
+  xDlg({title:one?(q[0].isNew?'New card!':'Card found'):q.length+' cards found', sub:one?COLORS[q[0].c.color].name+' · '+RARITY[q[0].c.rarity].n+' · '+TYPES[q[0].c.type].name:q.map(x=>x.c.name).join(' · '),
+    text:(one?'It goes':'They go')+' into your collection. Add '+(one?'it':'them')+' to a deck from the bag (tap its title) or at camp.',
+    body:b=>{ const row=document.createElement('div'); row.className='xcards'; q.forEach(({c,isNew})=>{ const el=cardEl(c,isNew?'<span class="xnew">NEW</span>':''); el.tabIndex=-1; row.appendChild(el); }); b.appendChild(row); },
+    buttons:[['Got it',null],['Build deck',()=>{ if(typeof openDeckUI==='function') openDeckUI('bag'); },true]]}); xSfx('chime'); }
 function xDlg(o){ if(!EX) return; xPause(true); EX.dlg=o;
   $('#xdTitle').textContent=o.title||''; $('#xdSub').textContent=o.sub||''; $('#xdText').textContent=o.text||''; xDlgPic(o);
   goldText($('#xdGold'));

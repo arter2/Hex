@@ -293,3 +293,26 @@ Cast. You fire it when you need it.
 - One Ace at a time: loading another replaces it. It is gone when the fight ends.
 - Each of the six colors has 3 Aces and 3 Ace Enchantments; Brown has 12 Aces
   and 15 Enchantments (guns, ammo, scopes and barrels).
+
+### Claims: taking the enemy's ground
+
+Green, Black, White and Blue can take ground from the enemy side. A Claim card
+turns the enemy's front tiles into your side for a few turns. You can walk
+there, and your summons and heroes can stand there. Enemies standing on those
+tiles are driven back, and their walls crumble. When the time runs out, the
+ground goes back to the enemy, and anyone of yours on it steps back to your
+side. Casting a second claim pushes deeper.
+
+| Color | Land | Enemies driven off | While you stand on it |
+|---|---|---|---|
+| Green | Forest overgrowth | rooted (slowed) | you heal 3 a second |
+| Black | Swamp | cursed | your hits drain 10% |
+| White | Marble bricks and columns | stunned | you take 25% less damage |
+| Blue | Flood | swept two tiles back and slowed | your hits deal 20% more |
+
+Each of these colors has three Claims:
+- Uncommon: the enemy's front tile in every row, for 2 turns.
+- Rare: the front two tiles in your row and the rows beside it, for 3 turns.
+- Legendary: the front two tiles in every row, for 3 turns.
+
+The enemy's back three columns can never be taken.

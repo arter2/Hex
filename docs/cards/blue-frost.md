@@ -1,8 +1,8 @@
-# Blue · Frost: all 231 cards
+# Blue · Frost: all 234 cards
 
 Starter cards are marked ★. Each card shows its rune letter and rank (the Spell screen combos use them). Numbers are from the current build: power follows rank (1-12) and rarity.
 
-Common 93 · Uncommon 73 · Legendary 23 · Rare 42
+Common 93 · Uncommon 74 · Legendary 24 · Rare 43
 
 ## Attacks (41)
 
@@ -288,6 +288,14 @@ Common 93 · Uncommon 73 · Legendary 23 · Rare 42
 | Heart of the Leviathan | Legendary | B3 | Legendary piece. 56 to the first enemy in your row. Valor |
 | Eye of the Frost Giant | Legendary | C11 | Legendary piece. 62 to every enemy in your row. Freeze 2.7s |
 | Bell of the Sunken City | Legendary | D7 | Legendary piece. 52 to every enemy in your row. Confuse 4.4s |
+
+## Claims (land) (3)
+
+| Card | Rarity | Rune | What it does |
+|---|---|---|---|
+| Rising Tide | Uncommon | ✱2 | Claim: the enemy's front tile in every row becomes your Flood for 2 turns. Enemies standing there are swept two tiles back and slowed as they are driven back. While you stand on Flood, your hits deal 20% more |
+| Flash Flood | Rare | D1 | Claim: the enemy's front two tiles in your row and the rows beside it become your Flood for 3 turns. Enemies standing there are swept two tiles back and slowed as they are driven back. While you stand on Flood, your hits deal 20% more |
+| The Great Deluge | Legendary | E3 | Claim: the enemy's front two tiles in every row become your Flood for 3 turns. Enemies standing there are swept two tiles back and slowed as they are driven back. While you stand on Flood, your hits deal 20% more |
 
 ## Aces (Sidearm finishers) (3)
 

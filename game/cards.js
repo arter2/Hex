@@ -39,7 +39,18 @@ const TYPES={
   tinker:{name:'Tinker', icon:'🔧', text:'Tap it, then pick a card in your hand or queue: that card is upgraded for the whole battle'},
   ace:   {name:'Ace',    icon:'♠', text:'Loads into your Sidearm instead of going off; fire it when you need a finisher'},
   aceup: {name:'Ace Enchantment',icon:'♤', text:'Powers up or changes the Ace in your Sidearm (or the next one you load)'},
+  claim: {name:'Claim',  icon:'⚑', text:'Takes ground from the enemy side for a few turns: you can walk and summon there'},
 };
+/* Claimed land: Verdant, Shadow, Light and Frost can take the enemy's front tiles for a few turns.
+   Each color's ground drives the enemies off its own way and helps you while you stand on it. */
+const LANDS={
+  overgrowth:{name:'Overgrowth', color:'verdant', push:'are rooted (slowed)',          stand:'you heal 3 a second'},
+  swamp:     {name:'Swamp',      color:'shadow',  push:'are cursed',                   stand:'your hits drain 10%'},
+  marble:    {name:'Marble',     color:'light',   push:'are stunned',                  stand:'you take 25% less damage'},
+  flood:     {name:'Flood',      color:'frost',   push:'are swept two tiles back and slowed', stand:'your hits deal 20% more'},
+};
+const LAND_OF={verdant:'overgrowth', shadow:'swamp', light:'marble', frost:'flood'};
+const CLAIM_REACH={front:'the enemy\'s front tile in every row', patch:'the enemy\'s front two tiles in your row and the rows beside it', deep:'the enemy\'s front two tiles in every row'};
 // Brown's races: tech of the same race gets stronger for each other card of that race in your hand
 const RACES_TECH={dwarf:'Dwarven', gnome:'Gnomish', elf:'Elven', goblin:'Goblin', alchemy:'Desert alchemy', sea:'Sea-folk', sky:'Sky-folk', human:'Human', troll:'Troll', djinn:'Djinn'};
 const RARITY={common:{n:'Common',g:'●'}, uncommon:{n:'Uncommon',g:'◆'}, rare:{n:'Rare',g:'★'}, legendary:{n:'Legendary',g:'✹'}, hero:{n:'Hero',g:'♔'}};
@@ -180,8 +191,8 @@ function generateCards(){
     // a hand-written set (cardsets.js) replaces the generated cards of this color
     if(typeof CARD_SETS!=='undefined'&&CARD_SETS[fam]){ out.push(...authoredCards(fam,parseCardSet(CARD_SETS[fam]),rng,pk,ri,tr,names));
       // later additions to a color (its Aces and Ace Enchantments) roll on their own, so the set's cards keep their ranks
-      if(typeof CARD_EXTRAS!=='undefined'&&CARD_EXTRAS[fam]){ const r2=mulberry32(seedOf('hexmancers:extra:'+fam));
-        out.push(...authoredCards(fam,parseCardSet(CARD_EXTRAS[fam]),r2,a=>a[Math.floor(r2()*a.length)],(a,b)=>a+Math.floor(r2()*(b-a+1)),tr,names)); }
+      for(const [X,tag] of [[typeof CARD_EXTRAS!=='undefined'&&CARD_EXTRAS,'extra'],[typeof CARD_CLAIMS!=='undefined'&&CARD_CLAIMS,'claim']]) if(X&&X[fam]){ const r2=mulberry32(seedOf('hexmancers:'+tag+':'+fam));
+        out.push(...authoredCards(fam,parseCardSet(X[fam]),r2,a=>a[Math.floor(r2()*a.length)],(a,b)=>a+Math.floor(r2()*(b-a+1)),tr,names)); }
       continue; }
     const need=Object.assign({},plan); sig.forEach(c=>need[c.type]--);
     const rar=Object.assign({},RARITY_PLAN); sig.forEach(c=>rar[c.rarity]--);
@@ -217,7 +228,7 @@ function generateCards(){
    variant (shape, pattern, ward...), keyword and art. Ranks 1-12 are still spread evenly and
    shuffled, and BUILD makes the stats, so power follows rank and rarity as everywhere else.
    Ids stay color_type_NN, so cards in a save keep their place (with the new card's look). */
-const SET_FIELDS=['shape','pattern','ward','boon','util','trap','env','ai','fx','as','find','eq','race'];
+const SET_FIELDS=['shape','pattern','ward','boon','util','trap','env','ai','fx','as','find','eq','race','reach'];
 function authoredCards(fam,list,rng,pk,ri,tr,names){
   const out=[], count={}, ranks=list.map((_,i)=>i%12+1);
   for(let i=ranks.length-1;i>0;i--){ const j=Math.floor(rng()*(i+1)); [ranks[i],ranks[j]]=[ranks[j],ranks[i]]; }
@@ -300,6 +311,8 @@ const BUILD={
     c.pow=Math.round({line:70,row:56,nova:52,all:40,twin:44}[c.shape]*F*k); },
   // an Ace Enchantment: +upPow power for the Sidearm's Ace, and it can change its shape or add its keyword
   aceup(c,F,rank,kw,tr,pk){ if(kw&&kw!=='self') applyKw(c,kw,rank); c.upPow=r1(.2+.1*F); if(c.shape) c.upShape=c.shape; delete c.shape; },
+  // a claim: reach = front, patch or deep; the land comes from the card's color
+  claim(c,F,rank,kw,tr,pk){ c.land=LAND_OF[c.color]; c.reach=c.reach||'front'; c.turns=c.reach==='front'?2:3; },
   machine(c,F,rank,kw,tr,pk){ c.ai=c.ai||pk(['turret','turret','bulwark','mortar','repeater']);
     if(c.ai==='turret'){ c.pow=Math.round(9*F); c.rate=1.4; c.hp=Math.round(45*F); c.dur=30; }
     if(c.ai==='repeater'){ c.pow=Math.round(5*F); c.rate=.5; c.hp=Math.round(35*F); c.dur=20; }
@@ -636,6 +649,7 @@ function cardText(c){
   else if(kind==='equip') t='Equip your strongest creature: '+[c.eqPow?'+'+Math.round(c.eqPow*100)+'% power':'', c.eqHp?'+'+c.eqHp+' HP':'', c.eqRate?'attacks '+Math.round((1/c.eqRate-1)*100)+'% faster':'',
                               c.eq==='aegis'?'it steps in front of hits aimed at you':'', c.eqTurns?'+'+tn(c.eqTurns):''].filter(Boolean).join(', ')+(kw.length?', and its attacks carry this card\'s effects':'');
   else if(kind==='tinker') t='Tap, then pick a card in your hand or queue: +'+Math.round(c.tk*100)+'% power for the rest of the battle'+(kw.length?' and this card\'s effects':'');
+  else if(kind==='claim'){ const L=LANDS[c.land]; t='Claim: '+CLAIM_REACH[c.reach]+(c.reach==='front'?' becomes':' become')+' your '+L.name+' for '+tn(c.turns)+'. Enemies standing there '+L.push+' as they are driven back. While you stand on '+L.name+', '+L.stand; }
   else if(kind==='ace') t='Ace: loads into your Sidearm. Fire it for '+c.pow+' '+{line:'to the first enemy in your row',row:'to every enemy in your row',all:'to every enemy',nova:'to the nearest enemy and around it',twin:'twice down your row'}[c.shape]+'. Ace Enchantments build it up to ×3';
   else if(kind==='aceup') t='Ace Enchantment: your Sidearm\'s Ace gets +'+Math.round(c.upPow*100)+'% power'+(c.upShape?' and now hits '+{row:'every enemy in your row',all:'every enemy',nova:'around its target',twin:'twice'}[c.upShape]:'')+(kw.length?' and these effects':'')+'. With no Ace loaded it waits for the next one';
   if(c.piece) t='Legendary piece. '+t;
@@ -672,4 +686,4 @@ function starterList(colors,size,recipe){
   return list;
 }
 
-if(typeof module!=='undefined') module.exports={RACES_TECH,BROOD,GROVEBEAST,BROOD_LEADER,ROLES,cardRole,RUNES,WILD,RECIPES,POTIONS,HEROES,PATTERN_MULT,lobPattern,SIX,SIGNATURE,TYPE_PLAN,RARITY_PLAN,COLORS,BEATS,WEAK_MULT,colorMult,TYPES,RARITY,CARD_LIST,CARDS,cardText,STARTERS,starterList};
+if(typeof module!=='undefined') module.exports={LANDS,LAND_OF,RACES_TECH,BROOD,GROVEBEAST,BROOD_LEADER,ROLES,cardRole,RUNES,WILD,RECIPES,POTIONS,HEROES,PATTERN_MULT,lobPattern,SIX,SIGNATURE,TYPE_PLAN,RARITY_PLAN,COLORS,BEATS,WEAK_MULT,colorMult,TYPES,RARITY,CARD_LIST,CARDS,cardText,STARTERS,starterList};

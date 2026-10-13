@@ -1,8 +1,8 @@
-# Green · Verdant: all 234 cards
+# Green · Verdant: all 237 cards
 
 Starter cards are marked ★. Each card shows its rune letter and rank (the Spell screen combos use them). Numbers are from the current build: power follows rank (1-12) and rarity.
 
-Common 94 · Uncommon 71 · Legendary 24 · Rare 45
+Common 94 · Uncommon 72 · Legendary 25 · Rare 46
 
 ## Attacks (40)
 
@@ -291,6 +291,14 @@ Common 94 · Uncommon 71 · Legendary 24 · Rare 45
 | Pipes of the Goat-Footed | Legendary | B1 | Legendary piece. Heal 5/s for 8s |
 | Pelt of the Jaguar King | Legendary | C3 | Legendary piece. Heal 6/s for 8s |
 | Mask of the Green Man | Legendary | F8 | Legendary piece. Heal 7/s for 8s |
+
+## Claims (land) (3)
+
+| Card | Rarity | Rune | What it does |
+|---|---|---|---|
+| Creeping Overgrowth | Uncommon | A2 | Claim: the enemy's front tile in every row becomes your Overgrowth for 2 turns. Enemies standing there are rooted (slowed) as they are driven back. While you stand on Overgrowth, you heal 3 a second |
+| Rootbound Glade | Rare | B3 | Claim: the enemy's front two tiles in your row and the rows beside it become your Overgrowth for 3 turns. Enemies standing there are rooted (slowed) as they are driven back. While you stand on Overgrowth, you heal 3 a second |
+| Wildwood Reclamation | Legendary | C1 | Claim: the enemy's front two tiles in every row become your Overgrowth for 3 turns. Enemies standing there are rooted (slowed) as they are driven back. While you stand on Overgrowth, you heal 3 a second |
 
 ## Aces (Sidearm finishers) (3)
 

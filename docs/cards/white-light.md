@@ -1,8 +1,8 @@
-# White · Light: all 231 cards
+# White · Light: all 234 cards
 
 Starter cards are marked ★. Each card shows its rune letter and rank (the Spell screen combos use them). Numbers are from the current build: power follows rank (1-12) and rarity.
 
-Common 91 · Uncommon 70 · Rare 46 · Legendary 24
+Common 91 · Uncommon 71 · Rare 47 · Legendary 25
 
 ## Attacks (35)
 
@@ -288,6 +288,14 @@ Common 91 · Uncommon 70 · Rare 46 · Legendary 24
 | Stone of the Philosophers | Legendary | E5 | Legendary piece. The next hit that would defeat you leaves you standing and heals 86 |
 | Bridle of the Pegasus | Legendary | D4 | Legendary piece. Heal 72 |
 | Scales of the Final Judge | Legendary | E4 | Legendary piece. Heal 6/s for 8s |
+
+## Claims (land) (3)
+
+| Card | Rarity | Rune | What it does |
+|---|---|---|---|
+| Marble Causeway | Uncommon | A3 | Claim: the enemy's front tile in every row becomes your Marble for 2 turns. Enemies standing there are stunned as they are driven back. While you stand on Marble, you take 25% less damage |
+| Colonnade of Dawn | Rare | B1 | Claim: the enemy's front two tiles in your row and the rows beside it become your Marble for 3 turns. Enemies standing there are stunned as they are driven back. While you stand on Marble, you take 25% less damage |
+| Temple Foundation | Legendary | C2 | Claim: the enemy's front two tiles in every row become your Marble for 3 turns. Enemies standing there are stunned as they are driven back. While you stand on Marble, you take 25% less damage |
 
 ## Aces (Sidearm finishers) (3)
 

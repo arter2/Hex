@@ -176,7 +176,7 @@ function hitEnemy(e,base,card,opts){
   opts=opts||{};
   if(e.def.bossId&&typeof bossHit==='function'){ const r=bossHit(e,card,base); if(r!==null) return r; }
   const pl=B.player;
-  let mult=opts.raw?1:bossMult(card&&card.color,e)*(e.curseT>0?1.3:1)*(pl.pactT>0||pl.courageT>0?1.3:1)*(card&&card.valor&&pl.hp<=pl.maxHp/2?1.5:1)*heroMult(card)*((card&&pl.power&&pl.power[card.color])||1);
+  let mult=opts.raw?1:bossMult(card&&card.color,e)*(e.curseT>0?1.3:1)*(pl.pactT>0||pl.courageT>0?1.3:1)*(card&&card.valor&&pl.hp<=pl.maxHp/2?1.5:1)*heroMult(card)*(onLand('flood')&&!opts.raw?1.2:1)*((card&&pl.power&&pl.power[card.color])||1);
   // Counter Hit (Battle Network): a card that lands while the enemy winds up, casts or has an attack
   // marked on the board does double damage, stuns it and cancels the attack.
   const counter=!opts.raw&&card&&card.id!=='wand'&&e.hp>0&&!(e.stunT>0)&&!(e.freezeT>0)&&(e.windT>0||!!e.casting||B.teles.some(t=>t.owner===e&&!t.friendly));
@@ -194,6 +194,7 @@ function hitEnemy(e,base,card,opts){
   if(card&&card.mend&&!opts.raw) healPlayer(card.mend);
   if(heroOn('widow')&&!opts.raw) healPlayer(Math.round(dmg*.2),true);
   if(heroAura('drain')&&!opts.raw) healPlayer(Math.round(dmg*heroAura('drain')),true);
+  if(onLand('swamp')&&!opts.raw) healPlayer(Math.round(dmg*.1),true);
   if(e.hp<=0) killEnemy(e);
   return dmg;
 }
@@ -351,6 +352,7 @@ function hitPlayer(dmg){
   if(heroAura('dodge')&&Math.random()<heroAura('dodge')){ floater('dodge',p.tile,'#9fdcff'); return; }
   if(p.guard&&dmg>0) dmg=Math.max(1,Math.round(dmg*(1-p.guard)));
   if(heroAura('armor')&&dmg>0) dmg=Math.max(1,Math.round(dmg*(1-heroAura('armor'))));
+  if(onLand('marble')&&dmg>0) dmg=Math.max(1,Math.round(dmg*.75));
   if(p.hurt&&p.hurt!==1&&dmg>0) dmg=Math.round(dmg*p.hurt);
   if(p.hexT>0&&dmg>0) dmg=Math.round(dmg*1.3);   // a Dark Wizard's hex
   if(dmg<=0) return;
@@ -473,6 +475,7 @@ const CAST={
   },
   equip(c,p){ equipAlly(c); },
   ace(c,p){ loadAce(c); },
+  claim(c,p){ claimLand(c); },
   aceup(c,p){ enchantAce(c); },
   // instants normally come from your hand (useInstant), but a copied or recalled one still works
   instant(c,p){ CAST[c.as](c,p); },
@@ -596,6 +599,46 @@ function fireAce(){ const b=B; if(!b||b.phase!=='fight'||!b.sidearm) return fals
   b.hooks.onAce&&b.hooks.onAce(s);
   return true; }
 
+/* ---------------- claimed land ----------------
+   A Claim card takes the enemy's front tiles for a few turns (LANDS in cards.js). The tiles join
+   your side: you can walk there and your summons stand there. Enemies on them are driven back,
+   their walls crumble, and when the time runs out the ground goes back to the enemy. */
+const LAND_LOOK={overgrowth:{base:'#1c4523',c:'#6fdc7a'}, swamp:{base:'#2a2232',c:'#9a7ab8'}, marble:{base:'#a9adb6',c:'#fff6dc'}, flood:{base:'#0b6b7c',c:'#7ff0ff'}};
+const onLand=k=>{ const t=B&&B.player&&B.player.tile; return !!(t&&t.claim&&t.claim.land===k); };
+function claimLand(c){
+  const p=B.player, look=LAND_LOOK[c.land], n=c.reach==='front'?1:2, want=[];
+  for(let r=0;r<BOARD_ROWS;r++){ if(c.reach==='patch'&&Math.abs(r-p.tile.r)>1) continue;
+    want.push(...E_TILES.filter(t=>t.r===r&&t.col<=BOARD_COLS-3).sort((a,b)=>a.col-b.col).slice(0,n)); }
+  // ground of the same land you already hold gets its time back
+  for(const t of P_TILES) if(t.claim&&t.claim.land===c.land) t.claim.turns=Math.max(t.claim.turns,c.turns);
+  const got=want.filter(t=>clearForClaim(t,c.land,want));
+  for(const t of got){ t.side='p'; t.claim={land:c.land,turns:c.turns}; E_TILES.splice(E_TILES.indexOf(t),1); P_TILES.push(t);
+    t.terrain=null; t.trap=null; t.burnT=0; t.iceT=0; t.thornT=0; t.voidT=0; t.zapT=0;
+    flash(t,look.c,1); burst(t,look.c,8,.5); }
+  shake(4); floater(got.length?LANDS[c.land].name+'!':'no ground to take',p.tile,look.c,true);
+}
+// clear a tile for the claim: an enemy is driven further back (and the land's effect hits it), its walls crumble
+function clearForClaim(t,land,taking){ const o=t.occ; if(!o) return true;
+  if(o.kind==='enemy'){ const far=land==='flood'?2:1;
+    const to=E_TILES.filter(x=>!x.occ&&!taking.includes(x)&&x.col>t.col).sort((a,b)=>Math.abs(a.r-t.r)*3+Math.abs(a.col-t.col-far)-(Math.abs(b.r-t.r)*3+Math.abs(b.col-t.col-far)))[0];
+    if(!to) return false; t.occ=null; o.tile=to; to.occ=o; burst(to,'#e6f4ff',6,.3);
+    if(land==='overgrowth') o.slowT=Math.max(o.slowT||0,2.5);
+    if(land==='swamp') o.curseT=Math.max(o.curseT||0,4);
+    if(land==='marble'){ o.stunT=Math.max(o.stunT||0,1); cancelAttack(o); }
+    if(land==='flood') o.slowT=Math.max(o.slowT||0,2);
+    if(to.trap) springTrap(to,o); return true; }
+  if(o.enemy){ removeBlock(o); return true; }
+  return false; }
+// a turn ends: claimed ground counts down, and land whose time is up goes back to the enemy
+function landTurn(){ const back=P_TILES.filter(t=>t.claim&&--t.claim.turns<=0); if(!back.length) return;
+  for(const t of back){ t.claim=null; t.side='e'; P_TILES.splice(P_TILES.indexOf(t),1); E_TILES.push(t); flash(t,'#ffffff',.6); }
+  // whoever stood there steps back onto your side
+  for(const t of back){ const o=t.occ; if(!o||o.kind==='enemy') continue;
+    const to=P_TILES.filter(x=>!x.occ&&!(x.holeT>0)).sort((a,b)=>hexDist(a,t)-hexDist(b,t))[0];
+    t.occ=null; if(!to){ if(o.kind!=='player') removeBlock(o); else { t.occ=o; continue; } continue; }
+    o.tile=to; to.occ=o; if(o.kind==='player') o.path=[]; }
+  floater('the ground is lost',B.player.tile,'#c8c8d8'); }
+
 /* ---------------- heroes ----------------
    A hero stands on your side for a few turns, attacks on its own, and while it stands it
    empowers you (its aura). One at a time: calling another sends the first one home. */
@@ -675,6 +718,7 @@ function endTurn(){
     if(t.envTurns>0&&--t.envTurns<=0){ t.burnT=0; t.iceT=0; t.thornT=0; }
   }
   if(heroOn('ysolde')||heroAura('shield')) heroShield();
+  landTurn();
   p.blocksLeft=p.block||0;   // a shield is ready again each turn
 }
 function updateAlly(a,dt){
@@ -758,6 +802,7 @@ function update(dt){
   ['castCd','invT','powerT','pactT','courageT','hasteT','regenT'].forEach(k=>p[k]=Math.max(0,p[k]-dt));
   if(p.regenT>0){ p.regenAcc=(p.regenAcc||0)+p.regenAmt*dt; if(p.regenAcc>=5){ healPlayer(5); p.regenAcc-=5; } }
   if(p.regenGear){ p.gearAcc=(p.gearAcc||0)+p.regenGear*dt; if(p.gearAcc>=3){ healPlayer(3,true); p.gearAcc-=3; } }
+  if(onLand('overgrowth')){ p.landAcc=(p.landAcc||0)+3*dt; if(p.landAcc>=3){ healPlayer(3); p.landAcc-=3; } }
   if(heroAura('regen')){ p.auraAcc=(p.auraAcc||0)+heroAura('regen')*dt; if(p.auraAcc>=4){ healPlayer(4); p.auraAcc-=4; } }
   if(heroOn('thornfather')){ p.heroAcc=(p.heroAcc||0)+3*dt; if(p.heroAcc>=6){ healPlayer(6); p.heroAcc-=6; } }
   if(p.charging) p.chargeT=Math.min(1.2,p.chargeT+rdt);
@@ -1021,6 +1066,34 @@ function floorTexture(A){
   return FLOOR_TEX[A.name]=cv;
 }
 // lay a window of the area's stone over one tile's top face, scaled into its projected shape
+// the look of claimed ground: overgrowth, swamp, marble bricks or flood water
+function drawLand(ctx,t,top,T,S){
+  const k=t.claim.land, h=Math.imul(t.q*73856093^t.r*19349663,2654435761)>>>0, rr=i=>((h>>>(i*3))&255)/255, [cx,cy]=proj(t.wx,0,t.wz), iy=View.iy;
+  ctx.save(); poly(ctx,top); ctx.clip();
+  if(k==='overgrowth'){
+    for(let i=0;i<7;i++){ const x=cx+(rr(i)-.5)*S*1.4, y=cy+(rr(i+1)-.5)*S*1.2*iy, sw=Math.sin(T*2+i+t.q)*S*.03;
+      ctx.strokeStyle=i%2?'#3fa856':'#7fe08a'; ctx.lineWidth=Math.max(1.5,S*.05); ctx.beginPath(); ctx.moveTo(x,y); ctx.quadraticCurveTo(x+sw,y-S*.14,x+sw*2+S*.05,y-S*.28); ctx.moveTo(x,y); ctx.quadraticCurveTo(x-sw,y-S*.12,x-S*.08,y-S*.22); ctx.stroke(); }
+    ctx.fillStyle='#b6f59a'; for(let i=0;i<3;i++){ ctx.beginPath(); ctx.ellipse(cx+(rr(i+4)-.5)*S,cy+(rr(i+2)-.5)*S*iy,S*.07,S*.04,rr(i)*3,0,TAU); ctx.fill(); }
+  } else if(k==='swamp'){
+    ctx.fillStyle='rgba(60,90,50,.55)'; for(let i=0;i<3;i++){ ctx.beginPath(); ctx.ellipse(cx+(rr(i)-.5)*S*1.1,cy+(rr(i+3)-.5)*S*.9*iy,S*.28,S*.28*iy,0,0,TAU); ctx.fill(); }
+    for(let i=0;i<3;i++){ const ph=(T*.6+rr(i+1)*3)%1, x=cx+(rr(i+5)-.5)*S, y=cy+(rr(i+2)-.5)*S*.8*iy;
+      ctx.strokeStyle='rgba(190,160,220,'+(1-ph).toFixed(2)+')'; ctx.lineWidth=1.5; ctx.beginPath(); ctx.ellipse(x,y-ph*S*.05,S*(.04+ph*.12),S*(.04+ph*.12)*iy,0,0,TAU); ctx.stroke(); }
+  } else if(k==='marble'){
+    ctx.strokeStyle='rgba(90,90,110,.55)'; ctx.lineWidth=1.2; const w=S*.5, hh=S*.5*iy;
+    for(let j=-3;j<=3;j++){ const y=cy+j*hh; ctx.beginPath(); ctx.moveTo(cx-S*2,y); ctx.lineTo(cx+S*2,y); ctx.stroke();
+      for(let i=-4;i<=4;i++){ const x=cx+i*w+(j%2?w/2:0); ctx.beginPath(); ctx.moveTo(x,y); ctx.lineTo(x,y+hh); ctx.stroke(); } }
+    ctx.strokeStyle='rgba(255,255,255,.35)'; ctx.beginPath(); ctx.moveTo(cx-S*.5,cy-S*.2*iy); ctx.lineTo(cx+S*.1,cy+S*.25*iy); ctx.stroke();   // a vein in the stone
+  } else if(k==='flood'){
+    for(let i=0;i<3;i++){ const ph=(T*.5+i/3+rr(i))%1; ctx.strokeStyle='rgba(180,235,255,'+(.6*(1-ph)).toFixed(2)+')'; ctx.lineWidth=1.5;
+      ctx.beginPath(); ctx.ellipse(cx+(rr(i+2)-.5)*S*.6,cy+(rr(i+4)-.5)*S*.5*iy,S*(.15+ph*.6),S*(.15+ph*.6)*iy,0,0,TAU); ctx.stroke(); }
+    ctx.fillStyle='rgba(255,255,255,.25)'; ctx.fillRect(cx-S*.6+Math.sin(T*1.5+t.q)*S*.2,cy-S*.1*iy,S*.3,1.5);
+  }
+  ctx.restore();
+  // marble raises a short column on some tiles
+  if(k==='marble'&&h%3===0&&!t.occ){ const x=cx+S*.25, y=cy-S*.1*iy, cw=S*.18, ch=S*.55;
+    ctx.fillStyle='#e9e6dc'; ctx.fillRect(x-cw/2,y-ch,cw,ch); ctx.fillStyle='#c7c3b8'; ctx.fillRect(x+cw/6,y-ch,cw/3,ch);
+    ctx.fillStyle='#f6f3ea'; ctx.fillRect(x-cw*.75,y-ch-S*.06,cw*1.5,S*.07); ctx.fillRect(x-cw*.75,y-S*.04,cw*1.5,S*.05); }
+}
 function paveTile(ctx,t,top,A,alpha){
   const tex=floorTexture(A), h=Math.imul(t.q*73856093^t.r*19349663,2654435761)>>>0, span=FLOOR_N-FLOOR_WIN;
   const sx=h%span, sy=(h>>>12)%span;
@@ -1047,7 +1120,7 @@ function render(){
 
   const tiles=TILES.slice().sort((a,c)=>depthOf(a)-depthOf(c));
   for(const t of tiles){
-    const top=hexCorners(t,.96), base={p:'#123756',e:'#23292f',n:'#0a1a14'}[t.side];
+    const top=hexCorners(t,.96), land=t.claim&&LAND_LOOK[t.claim.land], base=land?land.base:{p:'#123756',e:'#23292f',n:'#0a1a14'}[t.side];
     let fill=base;
     const tl=telMap.get(t);
     if(tl){ const k=tl.t/tl.dur; fill=mixHex(base,tl.friendly?'#e6f4ff':'#ff3b4e',.25+.5*k*(.6+.4*Math.sin(T*18))); }
@@ -1063,7 +1136,8 @@ function render(){
     ctx.fillStyle=mixHex(base,'#000000',.45);
     frontFaces(ctx,top,SLAB*S);
     ctx.fillStyle=fill; poly(ctx,top); ctx.fill();
-    if(!(t.holeT>0)) paveTile(ctx,t,top,View.cave.area,t.side==='n'?.4:.7);
+    if(!(t.holeT>0)) paveTile(ctx,t,top,View.cave.area,t.side==='n'?.4:land?.25:.7);
+    if(land&&!(t.holeT>0)) drawLand(ctx,t,top,T,S);
     // an incoming attack fills its tile as it gets closer; it lands when the tile is full
     if(tl&&!tl.friendly){ ctx.fillStyle='rgba(255,50,70,.6)'; poly(ctx,hexCorners(t,.96*Math.min(1,tl.t/tl.dur))); ctx.fill(); }
     if(t.holeT>0){ ctx.save(); ctx.globalAlpha=.35+.15*Math.sin(T*5+t.q); ctx.fillStyle='#ff5a1f'; poly(ctx,hexCorners(t,.72)); ctx.fill(); ctx.globalAlpha=1; ctx.fillStyle='#0b0506'; poly(ctx,hexCorners(t,.55)); ctx.fill(); ctx.restore(); poly(ctx,top); }

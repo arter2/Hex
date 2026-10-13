@@ -1038,6 +1038,7 @@ function subjectOf(c){
   const kind=c.type==='piece'?c.base:c.type==='instant'?c.as:c.type;
   if(kind==='equip'||kind==='tinker'||kind==='ace'||kind==='aceup'){ const t=findWord(c,THING_WORDS);
     return ['thing',t||(kind==='equip'?{blade:'flamesword',plate:'aegis',spring:'charm',aegis:'shield',banner:'banner',rune:'rune'}[c.eq]:kind==='tinker'?'key':kind==='ace'?'cards':'sigil')||'charm']; }
+  if(kind==='claim') return ['thing',{overgrowth:'tree',swamp:'skull',marble:'pillar',flood:'crystal'}[c.land]||'stone'];
   if(kind==='hero') return ['hero',c.hero];
   if(c.type==='piece') return ['thing',findWord(c,THING_WORDS)||'sigil'];
   if(kind==='summon') return ['creature',creatureOf(c)];

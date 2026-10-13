@@ -1,8 +1,8 @@
-# Black · Shadow: all 231 cards
+# Black · Shadow: all 234 cards
 
 Starter cards are marked ★. Each card shows its rune letter and rank (the Spell screen combos use them). Numbers are from the current build: power follows rank (1-12) and rarity.
 
-Common 85 · Rare 49 · Uncommon 74 · Legendary 23
+Common 85 · Rare 50 · Uncommon 75 · Legendary 24
 
 ## Attacks (38)
 
@@ -288,6 +288,14 @@ Common 85 · Rare 49 · Uncommon 74 · Legendary 23
 | Candle of the Hanged Man | Legendary | E4 | Legendary piece. 45 to every enemy in your row. Stun 1.2s |
 | Cauldron of the Bone Mother | Legendary | D2 | Legendary piece. 47 to the first enemy in your row. Poison 5 |
 | Mask of the Plague Doctor | Legendary | E12 | Legendary piece. 44 to every enemy. Mend 6 |
+
+## Claims (land) (3)
+
+| Card | Rarity | Rune | What it does |
+|---|---|---|---|
+| Spreading Mire | Uncommon | C2 | Claim: the enemy's front tile in every row becomes your Swamp for 2 turns. Enemies standing there are cursed as they are driven back. While you stand on Swamp, your hits drain 10% |
+| Sunken Bog | Rare | F3 | Claim: the enemy's front two tiles in your row and the rows beside it become your Swamp for 3 turns. Enemies standing there are cursed as they are driven back. While you stand on Swamp, your hits drain 10% |
+| The Drowned Fen | Legendary | A1 | Claim: the enemy's front two tiles in every row become your Swamp for 3 turns. Enemies standing there are cursed as they are driven back. While you stand on Swamp, your hits drain 10% |
 
 ## Aces (Sidearm finishers) (3)
 

@@ -233,12 +233,18 @@ function xInit3D(){
   cv.addEventListener('pointerdown',e=>{ if(!EX||!EX.active||xPaused) return; e.preventDefault(); try{ cv.setPointerCapture(e.pointerId); }catch(_){}
     const [ax,ay]=appXY(e.clientX,e.clientY);
     if(EX.aim){ EX.aim.id=e.pointerId; EX.aim.cell=xAimCell(ax,ay); return; }
-    XHOLD.id=e.pointerId; XHOLD.x=XHOLD.x0=ax; XHOLD.y=XHOLD.y0=ay; XHOLD.t0=performance.now(); XHOLD.on=true; xGoalAt(ax,ay); });
+    XHOLD.id=e.pointerId; XHOLD.x=XHOLD.x0=ax; XHOLD.y=XHOLD.y0=ay; XHOLD.t0=performance.now(); XHOLD.on=true; XHOLD.stick=false;
+    const m=xMoveMode();
+    if(m==='goal') xGoalAt(ax,ay);
+    else if(m==='fixed'){ const h=xStickHome(); if(Math.hypot(ax-h.x,ay-h.y)<XSTICK_R*1.6){ XHOLD.stick=true; XHOLD.x0=h.x; XHOLD.y0=h.y; EX.path=[]; EX.goal=null; } else xGoalAt(ax,ay); }
+    else { EX.path=[]; EX.goal=null; XHOLD.stick=m==='float';
+      if(m==='pad'){ const a=xFloorAt(ax,ay), b2=xFloorAt(ax+100,ay+100); XHOLD.kx=a&&b2?(b2.x-a.x)/100:.05; XHOLD.kz=a&&b2?(b2.z-a.z)/100:.05; XHOLD.px=EX.px; XHOLD.pz=EX.pz; } }
+    xStickDraw(); });
   cv.addEventListener('pointermove',e=>{ if(EX&&EX.aim&&e.pointerId===EX.aim.id){ const [ax,ay]=appXY(e.clientX,e.clientY); EX.aim.cell=xAimCell(ax,ay); return; }
-    if(e.pointerId===XHOLD.id){ [XHOLD.x,XHOLD.y]=appXY(e.clientX,e.clientY); xGoalAt(XHOLD.x,XHOLD.y); } });
+    if(e.pointerId===XHOLD.id){ [XHOLD.x,XHOLD.y]=appXY(e.clientX,e.clientY); if(xMoveMode()==='goal'||xMoveMode()==='fixed'&&!XHOLD.stick) xGoalAt(XHOLD.x,XHOLD.y); xStickDraw(); } });
   const end=e=>{ if(EX&&EX.aim&&e.pointerId===EX.aim.id) return xSearchAt(EX.aim.cell);
-    if(e.pointerId!==XHOLD.id) return; XHOLD.on=false; XHOLD.id=null; };   // letting go keeps you walking to the goal
-  cv.addEventListener('pointerup',end); cv.addEventListener('pointercancel',e=>{ XHOLD.on=false; XHOLD.id=null; });
+    if(e.pointerId!==XHOLD.id) return; XHOLD.on=false; XHOLD.id=null; XHOLD.stick=false; xStickDraw(); };   // in Walk to touch, letting go keeps you walking to the goal
+  cv.addEventListener('pointerup',end); cv.addEventListener('pointercancel',e=>{ XHOLD.on=false; XHOLD.id=null; XHOLD.stick=false; xStickDraw(); });
   cv.addEventListener('contextmenu',e=>e.preventDefault());
   // hold a finger on the minimap to see it big; let go to shrink it back
   const mm=$('#xMini'); let mmT=0;
@@ -515,6 +521,26 @@ function xTrapMesh(tr){ if(tr.mesh||!X3) return; if(tr.tell) tr.tell.visible=fal
 
 /* ---------------- input ---------------- */
 const XKEY={}, XHOLD={on:false,id:null,x:0,y:0,x0:0,y0:0,t0:0};
+/* Touch movement has five styles (Settings, or the button under the minimap):
+   goal    walk to where you touch or drag, and keep going after you let go
+   float   a thumbstick appears wherever your finger lands
+   fixed   a thumbstick in the bottom-left corner; a tap elsewhere walks there
+   follow  hold to chase your finger, let go to stop
+   pad     a trackpad: slide anywhere and you move the same way (like battle) */
+const XMOVES=['goal','float','fixed','follow','pad'], XMOVE_NAME={goal:'Walk to touch',float:'Floating stick',fixed:'Fixed stick',follow:'Follow finger',pad:'Trackpad'},
+  XMOVE_ICON={goal:'📍',float:'🕹',fixed:'🎮',follow:'👆',pad:'▭'};
+const xMoveMode=()=>{ let m='goal'; try{ m=localStorage.getItem('hexmancers-xmove')||'goal'; }catch(e){} return XMOVES.includes(m)?m:'goal'; };
+function xSetMoveMode(m){ try{ localStorage.setItem('hexmancers-xmove',m); }catch(e){} xMoveUi(); }
+const XSTICK_R=56;   // how far the stick's knob travels, in screen pixels
+function xStickHome(){ const r=appBox($('#xView')), bot=$('#xBottom'), bb=bot?appBox(bot):null; return {x:r.left+24+XSTICK_R, y:(bb&&bb.top>0?bb.top:r.bottom)-24-XSTICK_R}; }
+function xMoveUi(){ const m=xMoveMode(), b=$('#xMoveMode'); if(b){ b.textContent=XMOVE_ICON[m]; b.title='Touch movement: '+XMOVE_NAME[m]; }
+  const st=$('#setXMove'); if(st) st.textContent=XMOVE_NAME[m]; xStickDraw(); }
+function xStickDraw(){ const el=$('#xStick'); if(!el) return; const m=xMoveMode(), on=XHOLD.on&&XHOLD.stick;
+  if(m!=='fixed'&&!(m==='float'&&on)){ el.hidden=true; return; }
+  const o=on?{x:XHOLD.x0,y:XHOLD.y0}:xStickHome(); el.hidden=false; el.classList.toggle('live',!!on);
+  el.style.left=(o.x-XSTICK_R)+'px'; el.style.top=(o.y-XSTICK_R)+'px';
+  let dx=on?XHOLD.x-o.x:0, dy=on?XHOLD.y-o.y:0; const l=Math.hypot(dx,dy); if(l>XSTICK_R){ dx*=XSTICK_R/l; dy*=XSTICK_R/l; }
+  el.firstElementChild.style.transform='translate('+dx+'px,'+dy+'px)'; }
 // paused (ui.js): the floor stands still and keys and touches are let go
 let xPaused=false;
 function xPause(on){ xPaused=!!on; for(const k in XKEY) XKEY[k]=false; XHOLD.on=false; XHOLD.id=null; if(EX){ EX.vx=EX.vz=0; } }
@@ -565,6 +591,12 @@ function xMove(dt){
   const held=id=>keysFor(id).some(k=>XKEY[k]);   // your bindings, from Settings (keys.js)
   if(held('left')) ix-=1; if(held('right')) ix+=1; if(held('up')) iz-=1; if(held('down')) iz+=1;
   if(ix||iz){ EX.path=[]; EX.goal=null; }   // keys take over from a finger's goal
+  else if(XHOLD.on){ const m=xMoveMode();
+    if(XHOLD.stick){ let dx=(XHOLD.x-XHOLD.x0)/XSTICK_R, dy=(XHOLD.y-XHOLD.y0)/XSTICK_R; const l=Math.hypot(dx,dy);
+      if(l>.18){ const k=Math.min(1,(l-.18)/.62+.25)/l; ix=dx*k; iz=dy*k; } }   // a stick: screen up is up the map; how far you push sets the speed
+    else if(m==='follow'){ const g=xFloorAt(XHOLD.x,XHOLD.y); if(g){ const dx=g.x-EX.px, dz=g.z-EX.pz, l=Math.hypot(dx,dz); if(l>.4){ const k=Math.min(1,l/1.5)/l; ix=dx*k; iz=dz*k; } } }
+    else if(m==='pad'){ const tx=XHOLD.px+(XHOLD.x-XHOLD.x0)*XHOLD.kx*1.2, tz=XHOLD.pz+(XHOLD.y-XHOLD.y0)*XHOLD.kz*1.2, dx=tx-EX.px, dz=tz-EX.pz, l=Math.hypot(dx,dz);
+      if(l>.2){ const k=Math.min(1,l/1.2)/l; ix=dx*k; iz=dz*k; } } }
   if(!ix&&!iz&&EX.path.length){
     // cut corners: head for the furthest cell on the route you can walk to in a straight line
     while(EX.path.length>1&&xStraight(EX.px,EX.pz,EX.path[1])) EX.path.shift();
@@ -983,3 +1015,8 @@ $('#xStrike').onclick=()=>xStrike();
 $('#xDisarm').onclick=()=>xDisarm();
 $('#xCamp').onclick=()=>xToCamp();
 $('#xUp').onclick=()=>xStairsUp();
+// touch movement: the button under the minimap and the Settings row both cycle the five styles
+{ const next=()=>{ const m=XMOVES[(XMOVES.indexOf(xMoveMode())+1)%XMOVES.length]; xSetMoveMode(m); return m; };
+  const b=$('#xMoveMode'); if(b){ b.addEventListener('pointerdown',e=>{ e.preventDefault(); e.stopPropagation(); const m=next(); if(typeof tip==='function') tip('Touch movement: '+XMOVE_NAME[m]); }); b.addEventListener('contextmenu',e=>e.preventDefault()); }
+  const s=$('#setXMove'); if(s) s.onclick=()=>next();
+  window.addEventListener('resize',xStickDraw); xMoveUi(); }

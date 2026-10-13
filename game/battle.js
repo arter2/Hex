@@ -2,7 +2,7 @@
    orthographic isometric projection on a 2D canvas. Your side is the six columns
    nearest you, the enemy side the six across from you. A turn ends each time the
    Custom screen opens; shields and everything cards put on the board last a set
-   number of turns or until their HP runs out. */
+   time of fighting (10 s per "turn" on the card) or until their HP runs out. */
 
 const SQ3=Math.sqrt(3), TAU=Math.PI*2;
 const rnd=(a,b)=>a+Math.random()*(b-a), pick=a=>a[(Math.random()*a.length)|0];
@@ -77,7 +77,7 @@ const GAUGE_MAX=10;
 function startBattle(list,depth,hooks,opts){
   buildBoard();
   const p={kind:'player', hp:120, maxHp:120, tile:P_TILES.find(t=>t.col===1&&t.r===(BOARD_ROWS>>1)), path:[], moveCd:0, castCd:0, wandCd:0, charging:false, chargeT:0,
-           barrier:0, shieldTurns:0, hurtT:0, invT:0, dodge:false, powerT:0, pactT:0, courageT:0, intervene:0, hasteT:0, regenT:0, regenAmt:0, hero:null};
+           barrier:0, shieldT:0, hurtT:0, invT:0, dodge:false, powerT:0, pactT:0, courageT:0, intervene:0, hasteT:0, regenT:0, regenAmt:0, hero:null};
   p.tile.occ=p;
   B={depth, hooks:hooks||{}, piles:createPiles(list), player:p, aim:null, enemies:[], allies:[], walls:[], shots:[], lobs:[], teles:[], fx:[], floaters:[], parts:[],
      timers:[], gauge:0, phase:'custom', time:0, log:[]};
@@ -112,7 +112,7 @@ function applyGear(p,m){
   p.wand.mult=m.shotMult||1; p.shotSpeed=m.shotSpeed||1; p.spell=m.spell||1;
   p.dodgeChance=m.dodge||0; p.block=m.block||0; p.blocksLeft=p.block; p.counter=m.counter||0; p.regenGear=m.regen||0; p.castSlow=(m.castSlow||1)*(m.sCast||1); p.power=m.power||{};
   p.maxHp+=m.hp; p.hp=p.maxHp;
-  if(m.shield){ p.barrier=m.shield; p.shieldTurns=2; }
+  if(m.shield){ p.barrier=m.shield; p.shieldT=secs(2); }
 }
 const alive=()=>B.enemies.filter(e=>e.hp>0);
 // a boss with an impact animation (sprites_pal.js) bursts its rock where it lands
@@ -433,8 +433,8 @@ const CAST={
   },
   lob(c,p){ lobFrom(p.tile,c,c.pow,c.radius,c.delay||.6,B.aim); B.aim=null; },
   ward(c,p){
-    if(c.ward==='barrier'){ p.barrier=c.amt; p.shieldTurns=c.turns||2; floater('🛡'+c.amt,p.tile,'#6fd6ff'); return; }   // shields replace, never stack
-    placementTiles(c.n).forEach(t=>{ const w={kind:'wall',card:c,tile:t,hp:c.hp,maxHp:c.hp,thorns:c.thorns||0,turns:c.turns||2,maxTurns:c.turns||2}; t.occ=w; B.walls.push(w); burst(t,colorOf(c),8,.3); });
+    if(c.ward==='barrier'){ p.barrier=c.amt; p.shieldT=secs(c.turns||2); floater('🛡'+c.amt,p.tile,'#6fd6ff'); return; }   // shields replace, never stack
+    placementTiles(c.n).forEach(t=>{ const w={kind:'wall',card:c,tile:t,hp:c.hp,maxHp:c.hp,thorns:c.thorns||0,life:secs(c.turns||2),maxLife:secs(c.turns||2)}; t.occ=w; B.walls.push(w); burst(t,colorOf(c),8,.3); });
   },
   sentry(c,p){ placeAlly(c,'sentry',c.hp||40,c.turns); },
   trap(c,p){ // on the aimed tile, or a free tile next to the nearest enemy
@@ -442,11 +442,11 @@ const CAST={
     let t=B.aim&&!B.aim.occ&&!B.aim.trap?B.aim:null; B.aim=null;
     if(!t&&e) t=pick(around(e.tile).filter(x=>x.side==='e'&&!x.occ&&!x.trap));
     if(!t){ floater('no room',p.tile,'#ffb3a0'); return; }
-    t.trap={card:c,turns:c.turns||2}; burst(t,colorOf(c),10,.2); },
+    t.trap={card:c,life:secs(c.turns||2)}; burst(t,colorOf(c),10,.2); },
   environment(c,p){
     const t=B.aim||nearestEnemyTile(p.tile); B.aim=null; if(!t) return;
     for(const x of patternTiles(t,c.pattern,'e')){ flash(x,colorOf(c),.8);
-      if(c.turns) x.envTurns=Math.max(x.envTurns||0,c.turns);   // lasts until that many turns end
+      if(c.turns) x.envT=Math.max(x.envT||0,secs(c.turns));   // lasts that many seconds of fighting
       if(c.env==='burn') x.burnT=1e9;
       if(c.env==='freeze'){ x.iceT=1e9; if(x.occ&&x.occ.kind==='enemy') x.occ.slowT=Math.max(x.occ.slowT,2); }
       if(c.env==='bramble'){ x.thornT=1e9; x.thornPow=c.pow; x.thornCard=c; }
@@ -519,7 +519,7 @@ function spawnCritter(c){ const free=P_TILES.filter(t=>!t.occ&&!(t.holeT>0)&&t!=
 function placeAlly(c,ai,hp,turns,at){
   const p=B.player, t=at||placementTiles(1)[0];
   if(!t){ floater('no room',p.tile,'#ffb3a0'); return; }
-  const a={kind:'ally',ai,card:c,tile:t,hp,maxHp:hp,turns:turns||1,maxTurns:turns||1,fireT:.4}; t.occ=a; B.allies.push(a); burst(t,colorOf(c),10,.4);
+  const a={kind:'ally',ai,card:c,tile:t,hp,maxHp:hp,life:secs(turns||1),maxLife:secs(turns||1),fireT:.4}; t.occ=a; B.allies.push(a); burst(t,colorOf(c),10,.4);
   if(ai!=='sentry'&&ai!=='hero'&&B.gearDrop&&B.gearDrop.length){ const g=B.gearDrop; B.gearDrop=[]; g.forEach(x=>wearGear(a,x)); }   // dropped gear is picked up
   return a;
 }
@@ -561,9 +561,9 @@ function tinkerCard(c,target){ target.mult=(target.mult||1)*(1+c.tk); target.tin
 function equipAlly(c){ const a=B.allies.filter(x=>x.hp>0&&x.ai!=='sentry').sort((x,y)=>y.hp-x.hp)[0];
   if(!a){ (B.gearDrop=B.gearDrop||[]).push(c); floater(c.name+' waits for a creature',B.player.tile,'#c08a55'); return; }
   wearGear(a,c); }
-function wearGear(a,c){ (a.gear=a.gear||[]).push(c); if(c.eqHp){ a.maxHp+=c.eqHp; a.hp+=c.eqHp; } if(c.eqTurns){ a.turns+=c.eqTurns; a.maxTurns+=c.eqTurns; }
+function wearGear(a,c){ (a.gear=a.gear||[]).push(c); if(c.eqHp){ a.maxHp+=c.eqHp; a.hp+=c.eqHp; } if(c.eqTurns){ a.life+=secs(c.eqTurns); a.maxLife+=secs(c.eqTurns); }
   floater('⚔ '+c.name,a.tile,'#c08a55'); burst(a.tile,'#c08a55',10,1); }
-/* What an ally attacks with: its card, made stronger by Veteran turns (Gray), a Legend nearby
+/* What an ally attacks with: its card, made stronger by Veteran time (Gray), a Legend nearby
    (Gray) and its equipment (Brown). */
 function allyCard(a){ const c=a.card; if(a.ai==='hero'||a.enemy) return c;
   let m=1+(a.vet||0)*.1;
@@ -600,7 +600,7 @@ function fireAce(){ const b=B; if(!b||b.phase!=='fight'||!b.sidearm) return fals
   return true; }
 
 /* ---------------- claimed land ----------------
-   A Claim card takes the enemy's front tiles for a few turns (LANDS in cards.js). The tiles join
+   A Claim card takes the enemy's front tiles for 20 or 30 seconds (LANDS in cards.js). The tiles join
    your side: you can walk there and your summons stand there. Enemies on them are driven back,
    their walls crumble, and when the time runs out the ground goes back to the enemy. */
 const LAND_LOOK={overgrowth:{base:'#1c4523',c:'#6fdc7a'}, swamp:{base:'#2a2232',c:'#9a7ab8'}, marble:{base:'#a9adb6',c:'#fff6dc'}, flood:{base:'#0b6b7c',c:'#7ff0ff'}};
@@ -640,7 +640,7 @@ function landTick(dt){ const back=P_TILES.filter(t=>t.claim&&(t.claim.t-=dt)<=0)
   floater('the ground is lost',B.player.tile,'#c8c8d8'); }
 
 /* ---------------- heroes ----------------
-   A hero stands on your side for a few turns, attacks on its own, and while it stands it
+   A hero stands on your side for 30 seconds, attacks on its own, and while it stands it
    empowers you (its aura). One at a time: calling another sends the first one home. */
 const heroOn=id=>{ const h=B&&B.player.hero; return !!(h&&h.hp>0&&h.card.hero===id); };
 const heroAura=k=>{ const h=B&&B.player.hero; return h&&h.hp>0&&h.card.aurae?h.card.aurae[k]||0:0; };
@@ -657,7 +657,7 @@ function callHero(c){
   B.fx.push({kind:'ring',a:p.tile,color:'#ffe066',t:0,life:.7});
   B.hooks.onHero&&B.hooks.onHero(c);
 }
-function heroShield(){ const p=B.player, c=p.hero.card, amt=c.amt||heroAura('shield'); if(p.barrier<amt){ p.barrier=amt; p.shieldTurns=1; floater('🛡'+amt,p.tile,'#6fd6ff'); } }
+function heroShield(){ const p=B.player, c=p.hero.card, amt=c.amt||heroAura('shield'); if(p.barrier<amt){ p.barrier=amt; p.shieldT=secs(1); floater('🛡'+amt,p.tile,'#6fd6ff'); } }
 function heroLeaves(){ const p=B.player, c=p.hero.card; p.hero=null; floater(c.name.split(',')[0]+' departs',p.tile,'#ffe066');
   if(c.hero==='thornfather'){ p.maxHp-=30; p.hp=Math.min(p.hp,p.maxHp); } }
 function heroStrike(a,near){
@@ -706,20 +706,28 @@ function heroStyle(a,near,c,col,es){
     default: B.fx.push({kind:'arc',a:a.tile,b:near.tile,color:col,t:0,life:.35}); hitEnemy(near,c.pow,c);
   }
 }
-// A turn ends: shields and board pieces count down, and expire at 0.
-function endTurn(){
+/* Everything a card leaves behind lasts a set time of fighting, not a number of turns: a turn only
+   ends when the Custom screen opens, so a player who never opened it could keep walls, summons
+   and shields forever. A card's "turns" are TURN_S seconds each (about how long a turn takes),
+   and the clock stops while the Custom screen is open. Repeating bonuses (Veteran, a hero's
+   shield, a Buckler's block) come every TURN_S seconds too. */
+const TURN_S=10, secs=n=>n*TURN_S;
+function timeTick(dt){
   const b=B, p=b.player;
-  if(p.shieldTurns>0&&--p.shieldTurns<=0&&p.barrier>0){ p.barrier=0; floater('shield fades',p.tile,'#6fd6ff'); }
-  for(const e of alive()) if(e.shieldTurns>0&&--e.shieldTurns<=0) e.barrier=0;
-  for(const o of [...b.walls,...b.allies]) if(--o.turns<=0){ floater('expired',o.tile,'#9fdcff'); removeBlock(o); }
-  for(const a of b.allies) if(a.hp>0&&a.card.color==='gray'&&a.ai!=='hero'){ a.vet=(a.vet||0)+1; floater('Veteran +'+a.vet*10+'%',a.tile,'#b4b8c8'); }   // Gray: Veteran
+  if(p.shieldT>0&&(p.shieldT-=dt)<=0&&p.barrier>0){ p.barrier=0; floater('shield fades',p.tile,'#6fd6ff'); }
+  for(const e of alive()) if(e.shieldT>0&&(e.shieldT-=dt)<=0) e.barrier=0;
+  for(const o of [...b.walls,...b.allies]) if((o.life-=dt)<=0){ floater('expired',o.tile,'#9fdcff'); removeBlock(o); }
+  for(const a of b.allies) if(a.hp>0&&a.card.color==='gray'&&a.ai!=='hero'&&!a.enemy&&(a.vetT=(a.vetT||0)+dt)>=TURN_S){ a.vetT-=TURN_S; a.vet=(a.vet||0)+1; floater('Veteran +'+a.vet*10+'%',a.tile,'#b4b8c8'); }   // Gray: Veteran
   for(const t of TILES){
-    if(t.trap&&--t.trap.turns<=0) t.trap=null;
-    if(t.envTurns>0&&--t.envTurns<=0){ t.burnT=0; t.iceT=0; t.thornT=0; }
+    if(t.trap&&(t.trap.life-=dt)<=0) t.trap=null;
+    if(t.envT>0&&(t.envT-=dt)<=0){ t.burnT=0; t.iceT=0; t.thornT=0; }
   }
-  if(heroOn('ysolde')||heroAura('shield')) heroShield();
-  p.blocksLeft=p.block||0;   // a shield is ready again each turn
+  if((p.beatT=(p.beatT||0)+dt)>=TURN_S){ p.beatT-=TURN_S;
+    if(heroOn('ysolde')||heroAura('shield')) heroShield();
+    p.blocksLeft=p.block||0; }   // a Buckler's block comes back
 }
+// A turn ends (the Custom screen opens)
+function endTurn(){}
 function updateAlly(a,dt){
   if(a.ai==='hero') heroWalk(a,dt);
   a.fireT-=dt;
@@ -797,7 +805,7 @@ function update(dt){
   if(typeof extraTick==='function'){ extraTick(dt); if(b.phase!=='fight') return; }
   const p=b.player, haste=p.hasteT>0;
   b.gauge=Math.min(GAUGE_MAX,b.gauge+dt*(heroOn('volta')?1.5:1)*(heroAura('gauge')||1)*(p.gaugeMult||1));
-  landTick(dt);
+  landTick(dt); timeTick(dt);
   ['moveCd','wandCd','hurtT'].forEach(k=>p[k]=Math.max(0,p[k]-rdt));
   ['castCd','invT','powerT','pactT','courageT','hasteT','regenT'].forEach(k=>p[k]=Math.max(0,p[k]-dt));
   if(p.regenT>0){ p.regenAcc=(p.regenAcc||0)+p.regenAmt*dt; if(p.regenAcc>=5){ healPlayer(5); p.regenAcc-=5; } }
@@ -1280,7 +1288,8 @@ function drawSprite(ctx,u,T,S,o){
 function facing(u,target,defLeft){ if(!target) return false; const a=proj(...posOf(u).slice(0,1),0,posOf(u)[1])[0], b=proj(...posOf(target).slice(0,1),0,posOf(target)[1])[0]; return (b<a)!==!!defLeft; }
 function shadow(ctx,u,S,r){ const [wx,wz]=u.tile?posOf(u):[u.wx,u.wz], [x,y]=proj(wx,0,wz); ctx.fillStyle='rgba(0,0,0,.35)'; ctx.beginPath(); ctx.ellipse(x,y,S*r,S*r*ISO_Y,0,0,TAU); ctx.fill(); }
 // one dot per turn left, over walls and units
-function turnPips(ctx,x,y,n,S){ ctx.fillStyle='#e6f4ff'; for(let i=0;i<n;i++){ ctx.beginPath(); ctx.arc(x+(i-(n-1)/2)*S*.18,y,S*.05,0,TAU); ctx.fill(); } }
+function turnPips(ctx,x,y,life,S){ const n=Math.ceil(life/TURN_S); ctx.fillStyle='#e6f4ff';   // one pip for each 10 s left
+  for(let i=0;i<n;i++){ ctx.beginPath(); ctx.arc(x+(i-(n-1)/2)*S*.18,y,S*.05,0,TAU); ctx.fill(); } }
 function bar(ctx,x,y,w,k,col){ ctx.fillStyle='rgba(0,0,0,.6)'; ctx.fillRect(x-w/2-1,y-1,w+2,6); ctx.fillStyle=col; ctx.fillRect(x-w/2,y,w*clamp(k,0,1),4); }
 const DRAW={
   player(ctx,p,T,S){
@@ -1346,18 +1355,18 @@ const DRAW={
     frontFaces(ctx,top,bot[0][1]-top[0][1]);
     ctx.fillStyle=mixHex(col,'#ffffff',.15); poly(ctx,top); ctx.fill();
     if(w.thorns){ ctx.fillStyle='#fff'; const [x,y]=proj(w.tile.wx,1,w.tile.wz); ctx.font='700 '+Math.round(S*.3)+'px system-ui'; ctx.textAlign='center'; ctx.fillText('✶',x,y); }
-    const [x,y]=proj(w.tile.wx,1.15,w.tile.wz); bar(ctx,x,y,S*.7,w.hp/w.maxHp,'#6fd6ff'); turnPips(ctx,x,y-S*.12,w.turns,S);
+    const [x,y]=proj(w.tile.wx,1.15,w.tile.wz); bar(ctx,x,y,S*.7,w.hp/w.maxHp,'#6fd6ff'); turnPips(ctx,x,y-S*.12,w.life,S);
   },
   ally(ctx,a,T,S){
     if(a.ai==='hero') return DRAW.hero(ctx,a,T,S);
     const col=colorOf(a.card), unit=['shooter','bomber','healer','guardian'].includes(a.ai);
     const r=drawSprite(ctx,a,T,S,{scale:unit?.85:.8,bob:unit?.04:0,flip:facing(a,a.enemy?B.player:alive()[0],false),flash:a.hitT>0?.8:0});
     const x=r.x, top=r.top-S*.05;
-    ctx.strokeStyle=col; ctx.lineWidth=3; ctx.beginPath(); ctx.arc(x-S*.45,top+S*.1,S*.12,-Math.PI/2,-Math.PI/2+TAU*clamp(a.turns/a.maxTurns,0,1)); ctx.stroke();
-    turnPips(ctx,x,top-S*.1,a.turns,S);
+    ctx.strokeStyle=col; ctx.lineWidth=3; ctx.beginPath(); ctx.arc(x-S*.45,top+S*.1,S*.12,-Math.PI/2,-Math.PI/2+TAU*clamp(a.life/a.maxLife,0,1)); ctx.stroke();
+    turnPips(ctx,x,top-S*.1,a.life,S);
     if(a.hp<a.maxHp) bar(ctx,x,top,S*.6,a.hp/a.maxHp,'#6fd6ff');
   },
-  // a hero: a golden ring on the ground, a light column, its name, HP and turns
+  // a hero: a golden ring on the ground, a light column, its name, HP and time left
   hero(ctx,a,T,S){
     const col=colorOf(a.card), [gx,gy]=proj(...posOf(a).slice(0,1),.02,posOf(a)[1]), pulse=.5+.5*Math.sin(T*3);
     ctx.strokeStyle='#ffe066'; ctx.lineWidth=2.5; ctx.globalAlpha=.6+.3*pulse; ctx.beginPath(); ctx.ellipse(gx,gy,S*.78,S*.78*View.iy,0,0,TAU); ctx.stroke();
@@ -1367,7 +1376,7 @@ const DRAW={
     const r=drawSprite(ctx,a,T,S,{scale:1.05,bob:.04,step:moving?Math.floor(T*7)%2:null,flip:facing(a,alive()[0],false),flash:a.hitT>0?.8:0});
     const top=r.top-S*.1; ctx.textAlign='center'; ctx.font='800 '+Math.round(S*.3)+'px "Pixelify Sans",system-ui,sans-serif';
     ctx.lineWidth=3; ctx.strokeStyle='rgba(0,0,0,.7)'; const nm='♔ '+a.card.name.split(',')[0]; ctx.strokeText(nm,r.x,top-S*.18); ctx.fillStyle='#ffe066'; ctx.fillText(nm,r.x,top-S*.18);
-    bar(ctx,r.x,top,S*.9,a.hp/a.maxHp,col); turnPips(ctx,r.x,top+S*.16,a.turns,S);
+    bar(ctx,r.x,top,S*.9,a.hp/a.maxHp,col); turnPips(ctx,r.x,top+S*.16,a.life,S);
   },
 };
 

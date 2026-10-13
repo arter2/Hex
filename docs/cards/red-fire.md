@@ -83,108 +83,108 @@ Common 94 · Uncommon 75 · Rare 41 · Legendary 21
 
 | Card | Rarity | Rune | What it does |
 |---|---|---|---|
-| Red Dragon Whelp | Uncommon | F7 | Shoots 15 down its row. 61 HP, 2 turns |
-| Great Red Dragon | Legendary | C4 | Lobs 31 every 2.2s. 68 HP, 2 turns |
-| Wyvern | Rare | B8 | Lobs 32 every 2.2s. 71 HP, 2 turns |
-| Fire Drake | Uncommon | E1 | Shoots 11 down its row. 45 HP, 1 turn |
-| Griffin | Rare | D3 | Blocks with 140 HP, hits for 8. 2 turns |
-| Phoenix | Legendary | A10 | Heals you 9 every 2s. 89 HP, 3 turns |
-| Phoenix Chick | Common | F12 | Heals you 7 every 2s. 66 HP, 3 turns |
-| Kitsune | Rare | E10 | Shoots 19 down its row. 77 HP, 3 turns |
-| Nine-Tailed Kitsune | Legendary | D7 | Shoots 20 down its row. 79 HP, 2 turns |
-| Fire Fox | Common | D2 | Shoots 11 down its row. 42 HP, 2 turns |
-| Coyote Trickster | Uncommon | E11 | Shoots 18 down its row. 72 HP, 3 turns |
-| Ember Coyote | Common | B7 | Lobs 24 every 2.2s. 54 HP, 2 turns |
-| Shishi Lion-Dog | Uncommon | C11 | Blocks with 179 HP, hits for 11. 4 turns |
-| Oni Brute | Rare | F9 | Blocks with 185 HP, hits for 11. 3 turns |
-| Red Oni | Uncommon | A4 | Lobs 24 every 2.2s. 53 HP, 2 turns |
-| Oni Warlord | Legendary | D10 | Blocks with 223 HP, hits for 13. 3 turns |
-| Minotaur | Rare | E2 | Blocks with 133 HP, hits for 8. 2 turns |
-| Fire Bull | Common | F5 | Blocks with 124 HP, hits for 7. 3 turns |
-| Goblin Sapper | Common | A11 | Lobs 29 every 2.2s. 64 HP, 3 turns |
-| Goblin Gunner | Common | C11 | Shoots 16 down its row. 64 HP, 3 turns |
-| Goblin Chieftain | Uncommon | B5 | Blocks with 139 HP, hits for 8. 3 turns |
-| Gremlin | Common | A4 | Lobs 21 every 2.2s. 47 HP, 2 turns |
-| Gremlin Tinkerer | Uncommon | F10 | Heals you 7 every 2s. 69 HP, 3 turns |
-| Duende | Uncommon | E4 | Shoots 13 down its row. 53 HP, 2 turns |
-| Salamander | Common | D3 | Shoots 11 down its row. 45 HP, 2 turns |
-| Lava Golem | Rare | C12 | Blocks with 207 HP, hits for 12. 4 turns |
-| Magma Elemental | Uncommon | B2 | Lobs 21 every 2.2s. 47 HP, 2 turns |
-| Dwarven Smith | Uncommon | A5 | Heals you 6 every 2s. 56 HP, 2 turns |
-| Dwarven Miner | Common | F8 | Blocks with 142 HP, hits for 9. 3 turns |
-| Dwarven Musketeer | Common | B8 | Shoots 14 down its row. 57 HP, 2 turns |
-| Dwarven Rocketeer | Uncommon | C1 | Lobs 20 every 2.2s. 45 HP, 1 turn |
-| Mountain Hermit | Common | D7 | Heals you 5 every 2s. 54 HP, 2 turns |
-| Samurai | Rare | E10 | Blocks with 193 HP, hits for 12. 3 turns |
-| Ronin Archer | Uncommon | D6 | Shoots 15 down its row. 58 HP, 2 turns |
-| Mountain Monk | Uncommon | E8 | Heals you 6 every 2s. 64 HP, 2 turns |
-| Tengu | Uncommon | F11 | Shoots 18 down its row. 72 HP, 3 turns |
-| Lantern Ghost | Common | A1 | Lobs 18 every 2.2s. 40 HP, 1 turn |
-| Fire Vampire | Rare | F1 | Shoots 13 down its row. 50 HP, 1 turn |
-| Cinder Bat Swarm | Common | A1 | Shoots 10 down its row. 40 HP, 1 turn |
-| Cinder Hound | Common | C7 | Lobs 24 every 2.2s. 54 HP, 2 turns |
-| Mole Miner | Common | B12 | Blocks with 166 HP, hits for 10. 4 turns |
-| Lava Beetle | Common | E9 | Blocks with 148 HP, hits for 9. 3 turns |
-| Imperial Lung Dragon | Legendary | D7 | Shoots 20 down its row. 79 HP, 2 turns |
-| Firebird | Rare | E2 | Heals you 5 every 2s. 53 HP, 2 turns |
-| Ember Imp | Common | D1 | Lobs 18 every 2.2s. 40 HP, 1 turn |
+| Red Dragon Whelp | Uncommon | F7 | Shoots 15 down its row. 61 HP, 20 seconds |
+| Great Red Dragon | Legendary | C4 | Lobs 31 every 2.2s. 68 HP, 20 seconds |
+| Wyvern | Rare | B8 | Lobs 32 every 2.2s. 71 HP, 20 seconds |
+| Fire Drake | Uncommon | E1 | Shoots 11 down its row. 45 HP, 10 seconds |
+| Griffin | Rare | D3 | Blocks with 140 HP, hits for 8. 20 seconds |
+| Phoenix | Legendary | A10 | Heals you 9 every 2s. 89 HP, 30 seconds |
+| Phoenix Chick | Common | F12 | Heals you 7 every 2s. 66 HP, 30 seconds |
+| Kitsune | Rare | E10 | Shoots 19 down its row. 77 HP, 30 seconds |
+| Nine-Tailed Kitsune | Legendary | D7 | Shoots 20 down its row. 79 HP, 20 seconds |
+| Fire Fox | Common | D2 | Shoots 11 down its row. 42 HP, 20 seconds |
+| Coyote Trickster | Uncommon | E11 | Shoots 18 down its row. 72 HP, 30 seconds |
+| Ember Coyote | Common | B7 | Lobs 24 every 2.2s. 54 HP, 20 seconds |
+| Shishi Lion-Dog | Uncommon | C11 | Blocks with 179 HP, hits for 11. 40 seconds |
+| Oni Brute | Rare | F9 | Blocks with 185 HP, hits for 11. 30 seconds |
+| Red Oni | Uncommon | A4 | Lobs 24 every 2.2s. 53 HP, 20 seconds |
+| Oni Warlord | Legendary | D10 | Blocks with 223 HP, hits for 13. 30 seconds |
+| Minotaur | Rare | E2 | Blocks with 133 HP, hits for 8. 20 seconds |
+| Fire Bull | Common | F5 | Blocks with 124 HP, hits for 7. 30 seconds |
+| Goblin Sapper | Common | A11 | Lobs 29 every 2.2s. 64 HP, 30 seconds |
+| Goblin Gunner | Common | C11 | Shoots 16 down its row. 64 HP, 30 seconds |
+| Goblin Chieftain | Uncommon | B5 | Blocks with 139 HP, hits for 8. 30 seconds |
+| Gremlin | Common | A4 | Lobs 21 every 2.2s. 47 HP, 20 seconds |
+| Gremlin Tinkerer | Uncommon | F10 | Heals you 7 every 2s. 69 HP, 30 seconds |
+| Duende | Uncommon | E4 | Shoots 13 down its row. 53 HP, 20 seconds |
+| Salamander | Common | D3 | Shoots 11 down its row. 45 HP, 20 seconds |
+| Lava Golem | Rare | C12 | Blocks with 207 HP, hits for 12. 40 seconds |
+| Magma Elemental | Uncommon | B2 | Lobs 21 every 2.2s. 47 HP, 20 seconds |
+| Dwarven Smith | Uncommon | A5 | Heals you 6 every 2s. 56 HP, 20 seconds |
+| Dwarven Miner | Common | F8 | Blocks with 142 HP, hits for 9. 30 seconds |
+| Dwarven Musketeer | Common | B8 | Shoots 14 down its row. 57 HP, 20 seconds |
+| Dwarven Rocketeer | Uncommon | C1 | Lobs 20 every 2.2s. 45 HP, 10 seconds |
+| Mountain Hermit | Common | D7 | Heals you 5 every 2s. 54 HP, 20 seconds |
+| Samurai | Rare | E10 | Blocks with 193 HP, hits for 12. 30 seconds |
+| Ronin Archer | Uncommon | D6 | Shoots 15 down its row. 58 HP, 20 seconds |
+| Mountain Monk | Uncommon | E8 | Heals you 6 every 2s. 64 HP, 20 seconds |
+| Tengu | Uncommon | F11 | Shoots 18 down its row. 72 HP, 30 seconds |
+| Lantern Ghost | Common | A1 | Lobs 18 every 2.2s. 40 HP, 10 seconds |
+| Fire Vampire | Rare | F1 | Shoots 13 down its row. 50 HP, 10 seconds |
+| Cinder Bat Swarm | Common | A1 | Shoots 10 down its row. 40 HP, 10 seconds |
+| Cinder Hound | Common | C7 | Lobs 24 every 2.2s. 54 HP, 20 seconds |
+| Mole Miner | Common | B12 | Blocks with 166 HP, hits for 10. 40 seconds |
+| Lava Beetle | Common | E9 | Blocks with 148 HP, hits for 9. 30 seconds |
+| Imperial Lung Dragon | Legendary | D7 | Shoots 20 down its row. 79 HP, 20 seconds |
+| Firebird | Rare | E2 | Heals you 5 every 2s. 53 HP, 20 seconds |
+| Ember Imp | Common | D1 | Lobs 18 every 2.2s. 40 HP, 10 seconds |
 
 ## Machines (15)
 
 | Card | Rarity | Rune | What it does |
 |---|---|---|---|
-| Hand Cannon | Common | F10 | Turret: 14 every 1.4s, 69 HP, 3 turns |
-| Fire Lance Turret | Common | E9 | Turret: 13 every 1.4s, 67 HP, 3 turns |
-| Goblin Gatling | Uncommon | D1 | Repeater: 6 every 0.5s, 39 HP, 2 turns |
-| Rocket Battery | Uncommon | E11 | Mortar: lobs 39 every 2.5s, 54 HP, 2 turns |
-| Hwacha Rocket Cart | Rare | D8 | Mortar: lobs 39 every 2.5s, 53 HP, 2 turns |
-| Dwarven Siege Cannon | Rare | C6 | Turret: 15 every 1.4s, 73 HP, 3 turns |
-| Iron Barricade | Common | B3 | 1 iron wall of 101 HP, 3 turns |
-| Mine Cart Barricade | Common | E4 | 2 iron walls of 106 HP, 3 turns |
-| Gremlin Clockwork Drone | Common | D5 | Repeater: 6 every 0.5s, 43 HP, 2 turns |
-| Dragon-Mouth Cannon | Uncommon | D1 | Turret: 10 every 1.4s, 50 HP, 3 turns |
-| Volley Gun | Uncommon | E10 | Repeater: 9 every 0.5s, 60 HP, 2 turns |
-| Ember Trebuchet | Uncommon | F9 | Mortar: lobs 36 every 2.5s, 50 HP, 2 turns |
-| Stone Bastion | Uncommon | A7 | 2 iron walls of 137 HP, 3 turns |
-| Firework Launcher | Common | B3 | Mortar: lobs 25 every 2.5s, 34 HP, 2 turns |
-| The Great Bombard | Legendary | C12 | Mortar: lobs 53 every 2.5s, 72 HP, 2 turns |
+| Hand Cannon | Common | F10 | Turret: 14 every 1.4s, 69 HP, 30 seconds |
+| Fire Lance Turret | Common | E9 | Turret: 13 every 1.4s, 67 HP, 30 seconds |
+| Goblin Gatling | Uncommon | D1 | Repeater: 6 every 0.5s, 39 HP, 20 seconds |
+| Rocket Battery | Uncommon | E11 | Mortar: lobs 39 every 2.5s, 54 HP, 20 seconds |
+| Hwacha Rocket Cart | Rare | D8 | Mortar: lobs 39 every 2.5s, 53 HP, 20 seconds |
+| Dwarven Siege Cannon | Rare | C6 | Turret: 15 every 1.4s, 73 HP, 30 seconds |
+| Iron Barricade | Common | B3 | 1 iron wall of 101 HP, 30 seconds |
+| Mine Cart Barricade | Common | E4 | 2 iron walls of 106 HP, 30 seconds |
+| Gremlin Clockwork Drone | Common | D5 | Repeater: 6 every 0.5s, 43 HP, 20 seconds |
+| Dragon-Mouth Cannon | Uncommon | D1 | Turret: 10 every 1.4s, 50 HP, 30 seconds |
+| Volley Gun | Uncommon | E10 | Repeater: 9 every 0.5s, 60 HP, 20 seconds |
+| Ember Trebuchet | Uncommon | F9 | Mortar: lobs 36 every 2.5s, 50 HP, 20 seconds |
+| Stone Bastion | Uncommon | A7 | 2 iron walls of 137 HP, 30 seconds |
+| Firework Launcher | Common | B3 | Mortar: lobs 25 every 2.5s, 34 HP, 20 seconds |
+| The Great Bombard | Legendary | C12 | Mortar: lobs 53 every 2.5s, 72 HP, 20 seconds |
 
 ## Walls & shields (15)
 
 | Card | Rarity | Rune | What it does |
 |---|---|---|---|
-| ★ Ember Wall | Common | A4 | 2 walls of 30 HP that hit back for 10, 2 turns |
-| Dwarven Shieldwall | Uncommon | C3 | 2 walls of 44 HP, 2 turns |
-| Forge-Iron Plate | Common | D7 | Shield of 61 for 2 turns; replaces your current shield |
-| Basalt Wall | Common | E10 | 3 walls of 54 HP, 2 turns |
-| Obsidian Bulwark | Uncommon | D2 | 2 walls of 42 HP, 2 turns |
-| Wall of Fire | Common | E12 | 3 walls of 58 HP that hit back for 10, 2 turns |
-| Lava Moat | Uncommon | F2 | 2 walls of 42 HP that hit back for 7, 2 turns |
-| Mountain Pass Gate | Rare | A7 | 3 walls of 59 HP, 3 turns |
-| Samurai Armor | Uncommon | F12 | Shield of 84 for 2 turns; replaces your current shield |
-| Dragon Scale Shield | Rare | A10 | Shield of 87 for 3 turns; replaces your current shield |
-| Oni Mask | Common | C1 | 2 walls of 35 HP that hit back for 6, 2 turns |
-| Brimstone Rampart | Common | B5 | 2 walls of 43 HP, 2 turns |
-| Anvil Guard | Common | A12 | Shield of 75 for 2 turns; replaces your current shield |
-| Great Wall Bricks | Rare | F5 | 2 walls of 54 HP, 3 turns |
-| Molten Shell | Legendary | E12 | 3 walls of 84 HP that hit back for 14, 3 turns |
+| ★ Ember Wall | Common | A4 | 2 walls of 30 HP that hit back for 10, 20 seconds |
+| Dwarven Shieldwall | Uncommon | C3 | 2 walls of 44 HP, 20 seconds |
+| Forge-Iron Plate | Common | D7 | Shield of 61 for 20 seconds; replaces your current shield |
+| Basalt Wall | Common | E10 | 3 walls of 54 HP, 20 seconds |
+| Obsidian Bulwark | Uncommon | D2 | 2 walls of 42 HP, 20 seconds |
+| Wall of Fire | Common | E12 | 3 walls of 58 HP that hit back for 10, 20 seconds |
+| Lava Moat | Uncommon | F2 | 2 walls of 42 HP that hit back for 7, 20 seconds |
+| Mountain Pass Gate | Rare | A7 | 3 walls of 59 HP, 30 seconds |
+| Samurai Armor | Uncommon | F12 | Shield of 84 for 20 seconds; replaces your current shield |
+| Dragon Scale Shield | Rare | A10 | Shield of 87 for 30 seconds; replaces your current shield |
+| Oni Mask | Common | C1 | 2 walls of 35 HP that hit back for 6, 20 seconds |
+| Brimstone Rampart | Common | B5 | 2 walls of 43 HP, 20 seconds |
+| Anvil Guard | Common | A12 | Shield of 75 for 20 seconds; replaces your current shield |
+| Great Wall Bricks | Rare | F5 | 2 walls of 54 HP, 30 seconds |
+| Molten Shell | Legendary | E12 | 3 walls of 84 HP that hit back for 14, 30 seconds |
 
 ## Turrets (12)
 
 | Card | Rarity | Rune | What it does |
 |---|---|---|---|
-| ★ Brazier | Uncommon | C8 | Tower: 10 every 1.2s, 40 HP, 1 turn. Burn 2s |
-| Bonfire | Common | F2 | Tower: 5 every 0.6s, 40 HP, 1 turn. Burn 2.7s |
-| Forge Bellows | Common | C4 | Tower: 13 every 1.2s, 40 HP, 1 turn |
-| Lava Totem | Common | B9 | Tower: 10 every 0.9s, 40 HP, 2 turns. Slow 4.7s |
-| Shishi Guardian Statue | Uncommon | C5 | Tower: 14 every 1.2s, 40 HP, 2 turns. Knockback |
-| Fox Lantern | Uncommon | B6 | Tower: 7 every 0.6s, 40 HP, 2 turns. Confuse 4.2s |
-| Dragon Kiln | Rare | E12 | Tower: 14 every 0.9s, 40 HP, 2 turns. Burn 6s |
-| Smoking Chimney | Common | D6 | Tower: 18 every 1.5s, 40 HP, 2 turns |
-| Torch Post | Common | E5 | Tower: 17 every 1.5s, 40 HP, 2 turns |
-| Fire Lookout Tower | Uncommon | D2 | Tower: 16 every 1.5s, 40 HP, 1 turn |
-| Goblin Flamethrower Post | Uncommon | F3 | Tower: 9 every 0.9s, 40 HP, 1 turn. Burn 3s |
-| Phoenix Nest | Rare | A10 | Tower: 22 every 1.5s, 40 HP, 2 turns. Burn 5.3s |
+| ★ Brazier | Uncommon | C8 | Tower: 10 every 1.2s, 40 HP, 10 seconds. Burn 2s |
+| Bonfire | Common | F2 | Tower: 5 every 0.6s, 40 HP, 10 seconds. Burn 2.7s |
+| Forge Bellows | Common | C4 | Tower: 13 every 1.2s, 40 HP, 10 seconds |
+| Lava Totem | Common | B9 | Tower: 10 every 0.9s, 40 HP, 20 seconds. Slow 4.7s |
+| Shishi Guardian Statue | Uncommon | C5 | Tower: 14 every 1.2s, 40 HP, 20 seconds. Knockback |
+| Fox Lantern | Uncommon | B6 | Tower: 7 every 0.6s, 40 HP, 20 seconds. Confuse 4.2s |
+| Dragon Kiln | Rare | E12 | Tower: 14 every 0.9s, 40 HP, 20 seconds. Burn 6s |
+| Smoking Chimney | Common | D6 | Tower: 18 every 1.5s, 40 HP, 20 seconds |
+| Torch Post | Common | E5 | Tower: 17 every 1.5s, 40 HP, 20 seconds |
+| Fire Lookout Tower | Uncommon | D2 | Tower: 16 every 1.5s, 40 HP, 10 seconds |
+| Goblin Flamethrower Post | Uncommon | F3 | Tower: 9 every 0.9s, 40 HP, 10 seconds. Burn 3s |
+| Phoenix Nest | Rare | A10 | Tower: 22 every 1.5s, 40 HP, 20 seconds. Burn 5.3s |
 
 ## Buffs (18)
 
@@ -251,33 +251,33 @@ Common 94 · Uncommon 75 · Rare 41 · Legendary 21
 
 | Card | Rarity | Rune | What it does |
 |---|---|---|---|
-| Landmine | Uncommon | B6 | Blast trap: 38 to it and around it when an enemy steps on the tile you aim; 2 turns |
-| Powder Tripwire | Common | E12 | Blast trap: 43 to it and around it when an enemy steps on the tile you aim; 2 turns |
-| Iron Caltrops | Common | D10 | Spike trap: 59 when an enemy steps on the tile you aim; 2 turns |
-| Magma Pit | Uncommon | A5 | Spike trap: 45 when an enemy steps on the tile you aim; 2 turns. Burn 3.7s |
-| Cave-In | Rare | F7 | Blast trap: 38 to it and around it when an enemy steps on the tile you aim; 2 turns. Stun 1.5s |
-| Goblin Snare | Common | C9 | Snare: 23 and roots when an enemy steps on the tile you aim; 2 turns. Burn 5s, Stun 2.4s |
-| Fox Den Snare | Common | B1 | Snare: 18 and roots when an enemy steps on the tile you aim; 2 turns. Stun 1.6s |
-| Minotaur's Labyrinth | Rare | A4 | Snare: 23 and roots when an enemy steps on the tile you aim; 2 turns. Burn 3.3s, Stun 1.9s |
-| Ember Spike Pit | Common | F7 | Spike trap: 44 when an enemy steps on the tile you aim; 2 turns. Burn 4.3s |
-| Firework Mine | Uncommon | B4 | Blast trap: 33 to it and around it when an enemy steps on the tile you aim; 2 turns. Knockback |
+| Landmine | Uncommon | B6 | Blast trap: 38 to it and around it when an enemy steps on the tile you aim; 20 seconds |
+| Powder Tripwire | Common | E12 | Blast trap: 43 to it and around it when an enemy steps on the tile you aim; 20 seconds |
+| Iron Caltrops | Common | D10 | Spike trap: 59 when an enemy steps on the tile you aim; 20 seconds |
+| Magma Pit | Uncommon | A5 | Spike trap: 45 when an enemy steps on the tile you aim; 20 seconds. Burn 3.7s |
+| Cave-In | Rare | F7 | Blast trap: 38 to it and around it when an enemy steps on the tile you aim; 20 seconds. Stun 1.5s |
+| Goblin Snare | Common | C9 | Snare: 23 and roots when an enemy steps on the tile you aim; 20 seconds. Burn 5s, Stun 2.4s |
+| Fox Den Snare | Common | B1 | Snare: 18 and roots when an enemy steps on the tile you aim; 20 seconds. Stun 1.6s |
+| Minotaur's Labyrinth | Rare | A4 | Snare: 23 and roots when an enemy steps on the tile you aim; 20 seconds. Burn 3.3s, Stun 1.9s |
+| Ember Spike Pit | Common | F7 | Spike trap: 44 when an enemy steps on the tile you aim; 20 seconds. Burn 4.3s |
+| Firework Mine | Uncommon | B4 | Blast trap: 33 to it and around it when an enemy steps on the tile you aim; 20 seconds. Knockback |
 
 ## Field effects (12)
 
 | Card | Rarity | Rune | What it does |
 |---|---|---|---|
-| Lava Field | Common | B4 | Sets the ground burning down the aimed tile's column for 1 turn |
-| Scorched Earth | Common | A1 | Sets the ground burning in a cross on the tile you aim for 1 turn |
-| Volcanic Ash Fall | Uncommon | F4 | Sets the ground burning in a cross on the tile you aim for 1 turn |
+| Lava Field | Common | B4 | Sets the ground burning down the aimed tile's column for 10 seconds |
+| Scorched Earth | Common | A1 | Sets the ground burning in a cross on the tile you aim for 10 seconds |
+| Volcanic Ash Fall | Uncommon | F4 | Sets the ground burning in a cross on the tile you aim for 10 seconds |
 | Earthquake | Rare | E9 | Tremor deals 26 down the aimed tile's column. Stun 1.5s |
 | Rumbling Mine | Common | D12 | Tremor deals 23 in a cross on the tile you aim. Stun 1.8s |
-| Fire Cyclone | Uncommon | C10 | Sets the ground burning down the aimed tile's column for 2 turns |
-| Ember Rain | Common | B3 | Sets the ground burning down the aimed tile's column for 1 turn |
-| Sulfur Springs | Uncommon | A1 | Sets the ground burning down the aimed tile's column for 1 turn |
-| Forge Floor | Common | F8 | Sets the ground burning along the aimed tile's row for 2 turns |
+| Fire Cyclone | Uncommon | C10 | Sets the ground burning down the aimed tile's column for 20 seconds |
+| Ember Rain | Common | B3 | Sets the ground burning down the aimed tile's column for 10 seconds |
+| Sulfur Springs | Uncommon | A1 | Sets the ground burning down the aimed tile's column for 10 seconds |
+| Forge Floor | Common | F8 | Sets the ground burning along the aimed tile's row for 20 seconds |
 | Rockslide Valley | Uncommon | B8 | Tremor deals 22 down the aimed tile's column. Stun 1.4s |
 | Mountain's Wrath | Rare | C8 | Tremor deals 25 down the aimed tile's column. Stun 1.4s |
-| Sea of Flames | Legendary | D5 | Sets the ground burning in a cross on the tile you aim for 1 turn |
+| Sea of Flames | Legendary | D5 | Sets the ground burning in a cross on the tile you aim for 10 seconds |
 
 ## Legendary pieces (5)
 

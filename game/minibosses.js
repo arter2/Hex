@@ -49,7 +49,7 @@ Object.assign(MOVES,{
   lunge(e){ const p=B.player, to=pick(E_TILES.filter(t=>!t.occ&&!burning(t)&&t.r===p.tile.r&&t.col<=BOARD_COLS/2+1));
     if(to){ burst(e.tile,'#c0a0ff',10); stepEnemy(e,to); burst(to,'#c0a0ff',10); }
     tele(e,P_TILES.filter(t=>t.r===p.tile.r&&t.col>=P_COLS()-3),.85,e.dmg); },
-  guard(e){ e.barrier=Math.max(e.barrier,Math.round(40*e.ds)); e.shieldTurns=Math.max(e.shieldTurns||0,1); floater('🛡 Guard',e.tile,'#fff0b3'); burst(e.tile,'#fff0b3',10,1); },
+  guard(e){ e.barrier=Math.max(e.barrier,Math.round(40*e.ds)); e.shieldT=Math.max(e.shieldT||0,secs(1)); floater('🛡 Guard',e.tile,'#fff0b3'); burst(e.tile,'#fff0b3',10,1); },
   // Mimics: a bite on your tile and the tiles in front of you; coins rain on your side
   chomp(e){ const t=B.player.tile, ts=[t,...neighbors(t).filter(x=>x.side==='p'&&x.col>t.col)]; tele(e,ts,1,Math.round(e.dmg*1.4)); },
   coins(e){ const ts=P_TILES.filter(t=>!t.occ||t.occ.kind==='player').sort(()=>Math.random()-.5).slice(0,e.enraged?5:3);

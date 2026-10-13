@@ -199,7 +199,7 @@ const MOVES={
   bless(e){ for(const x of alive()){ x.barrier=Math.max(x.barrier,25); x.powerT=Math.max(x.powerT,6); floater('Blessed',x.tile,'#fff0b3'); burst(x.tile,'#fff0b3',8,1); } },
   mend(e){ const hurt=alive().filter(x=>x!==e&&x.hp<x.maxHp).sort((a,b)=>a.hp/a.maxHp-b.hp/b.maxHp)[0];
     if(!hurt) return MOVES.shot(e);
-    const h=Math.round(hurt.maxHp*.2); hurt.hp=Math.min(hurt.maxHp,hurt.hp+h); hurt.barrier=Math.max(hurt.barrier,20); hurt.shieldTurns=Math.max(hurt.shieldTurns||0,1); floater('+'+h,hurt.tile,'#fff0b3'); burst(hurt.tile,'#fff0b3',12,1);
+    const h=Math.round(hurt.maxHp*.2); hurt.hp=Math.min(hurt.maxHp,hurt.hp+h); hurt.barrier=Math.max(hurt.barrier,20); hurt.shieldT=Math.max(hurt.shieldT||0,secs(1)); floater('+'+h,hurt.tile,'#fff0b3'); burst(hurt.tile,'#fff0b3',12,1);
     B.fx.push({kind:'bolt',a:e.tile,b:hurt.tile,color:'#fff0b3',t:0,life:.3}); },
   quake(e){ const safe=[pick(P_TILES.filter(t=>!t.occ||t.occ.kind==='player'))]; safe.push(...neighbors(safe[0]).filter(t=>t.side==='p').slice(0,2));
     tele(e,P_TILES.filter(t=>!safe.includes(t)),1.7,e.dmg); },
@@ -220,17 +220,17 @@ function enemyCast(e,c){
     case 'lob': return tele(e,[p.tile].concat(c.radius?around(p.tile).filter(t=>t.side==='p'):[]),.9,pow);
     case 'charge': for(let i=0;i<3;i++) later(i*.35,()=>{ if(e.hp>0) enemyShot(e,pow); }); return;
     case 'ward':
-      if(c.ward==='barrier'){ e.barrier=Math.round(c.amt*k); e.shieldTurns=c.turns||2; floater('🛡'+e.barrier,e.tile,col); return; }
+      if(c.ward==='barrier'){ e.barrier=Math.round(c.amt*k); e.shieldT=secs(c.turns||2); floater('🛡'+e.barrier,e.tile,col); return; }
       E_TILES.filter(t=>!t.occ&&t.col===BOARD_COLS/2&&Math.abs(t.r-e.tile.r)<=1).slice(0,c.n).forEach(t=>{
-        const w={kind:'wall',enemy:true,card:c,tile:t,hp:Math.round(c.hp*k),maxHp:Math.round(c.hp*k),thorns:0,turns:c.turns||2,maxTurns:c.turns||2}; t.occ=w; B.walls.push(w); burst(t,col,8,.3); });
+        const w={kind:'wall',enemy:true,card:c,tile:t,hp:Math.round(c.hp*k),maxHp:Math.round(c.hp*k),thorns:0,life:secs(c.turns||2),maxLife:secs(c.turns||2)}; t.occ=w; B.walls.push(w); burst(t,col,8,.3); });
       return;
     case 'sentry': { const t=pick(E_TILES.filter(x=>!x.occ&&x.col>=BOARD_COLS/2+1)); if(!t) return;
-      const s={kind:'ally',enemy:true,ai:'sentry',card:c,tile:t,hp:40,maxHp:40,turns:c.turns||1,maxTurns:c.turns||1,fireT:.6,pow:Math.max(3,Math.round(c.pow*k))}; t.occ=s; B.allies.push(s); burst(t,col,10,.4); return; }
+      const s={kind:'ally',enemy:true,ai:'sentry',card:c,tile:t,hp:40,maxHp:40,life:secs(c.turns||1),maxLife:secs(c.turns||1),fireT:.6,pow:Math.max(3,Math.round(c.pow*k))}; t.occ=s; B.allies.push(s); burst(t,col,10,.4); return; }
     case 'boon':
       if(c.boon==='heal'||c.boon==='regen'){ const hurt=alive().sort((a,b)=>a.hp/a.maxHp-b.hp/b.maxHp)[0]; const h=Math.round((c.amt||30)*k*(c.boon==='regen'?4:1));
         hurt.hp=Math.min(hurt.maxHp,hurt.hp+h); floater('+'+h,hurt.tile,'#6dff9a'); return; }
       if(['power','pact','courage','haste'].includes(c.boon)){ e.powerT=8; floater('Empowered',e.tile,col); return; }
-      e.barrier=Math.max(e.barrier,30); e.shieldTurns=Math.max(e.shieldTurns||0,1); floater('🛡30',e.tile,col); return;
+      e.barrier=Math.max(e.barrier,30); e.shieldT=Math.max(e.shieldT||0,secs(1)); floater('🛡30',e.tile,col); return;
   }
   enemyShot(e,e.dmg);
 }

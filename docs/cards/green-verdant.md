@@ -78,119 +78,119 @@ Common 94 · Uncommon 72 · Legendary 25 · Rare 46
 
 | Card | Rarity | Rune | What it does |
 |---|---|---|---|
-| Elder Ent | Rare | D4 | Blocks with 147 HP, hits for 9. 2 turns |
-| Jack-in-the-Green | Rare | C6 | Blocks with 163 HP, hits for 10. 3 turns |
-| Leshy of the Birchwood | Rare | B2 | Blocks with 133 HP, hits for 8. 2 turns |
-| Kodama | Common | A2 | Heals you 4 every 2s. 42 HP, 2 turns |
-| Oak Dryad | Uncommon | F10 | Heals you 7 every 2s. 69 HP, 3 turns |
-| Pixie Swarm | Common | E11 | Shoots 16 down its row. 64 HP, 3 turns |
-| Robin Goodfellow | Rare | ✱8 | Shoots 18 down its row. 71 HP, 2 turns |
-| Queen Mab | Legendary | A12 | Heals you 10 every 2s. 96 HP, 3 turns |
-| Will-o'-Wisp | Common | F9 | Lobs 27 every 2.2s. 59 HP, 3 turns |
-| Faun Reveler | Common | B11 | Heals you 6 every 2s. 64 HP, 3 turns |
-| Elven Pathfinder | Common | C2 | Shoots 11 down its row. 42 HP, 2 turns |
-| Patupaiarehe Mist Folk | Uncommon | D3 | Shoots 13 down its row. 50 HP, 2 turns |
-| Curupira | Rare | E4 | Shoots 15 down its row. 59 HP, 2 turns |
-| Chullachaqui | Uncommon | D2 | Lobs 21 every 2.2s. 47 HP, 2 turns |
-| Alux Field Keeper | Common | E3 | Blocks with 112 HP, hits for 7. 2 turns |
-| Grove Druid | Common | F1 | Heals you 4 every 2s. 40 HP, 1 turn |
-| Rainforest Curandero | Uncommon | A8 | Heals you 6 every 2s. 64 HP, 2 turns |
-| Archdruid of the Oaks | Rare | D6 | Heals you 7 every 2s. 65 HP, 2 turns |
-| Greenwood Outlaw | Common | E12 | Shoots 17 down its row. 66 HP, 3 turns |
-| Hooded Outlaw Captain | Rare | A4 | Shoots 15 down its row. 59 HP, 2 turns |
-| Mountain Man Trapper | Common | F3 | Blocks with 112 HP, hits for 7. 2 turns |
-| Sir Gawain | Rare | C12 | Blocks with 207 HP, hits for 12. 4 turns |
-| The Green Knight | Legendary | B5 | Blocks with 180 HP, hits for 11. 3 turns |
-| Arthur, the Once King | Legendary | E2 | Blocks with 154 HP, hits for 9. 2 turns |
-| Gwyn ap Nudd | Legendary | D5 | Shoots 18 down its row. 72 HP, 2 turns |
-| Cwn Annwn Hound | Uncommon | A10 | Lobs 31 every 2.2s. 69 HP, 3 turns |
-| Herne the Hunter | Legendary | F3 | Shoots 16 down its row. 65 HP, 2 turns |
-| Tapio, King of the Forest | Legendary | C7 | Blocks with 197 HP, hits for 12. 3 turns |
-| Sasquatch | Uncommon | B7 | Blocks with 152 HP, hits for 9. 3 turns |
-| Yowie | Uncommon | B12 | Lobs 33 every 2.2s. 74 HP, 3 turns |
-| Basajaun | Rare | C1 | Blocks with 125 HP, hits for 8. 2 turns |
-| Kapre Tree Giant | Rare | F7 | Lobs 31 every 2.2s. 68 HP, 2 turns |
-| Orang Pendek | Common | A3 | Shoots 11 down its row. 45 HP, 2 turns |
-| Mapinguari | Rare | D4 | Blocks with 147 HP, hits for 9. 2 turns |
-| Old Man of the Forest | Uncommon | E9 | Heals you 7 every 2s. 66 HP, 3 turns |
-| Capuchin Thief | Common | B9 | Lobs 27 every 2.2s. 59 HP, 3 turns |
-| Monkey King's Vanguard | Uncommon | C3 | Blocks with 125 HP, hits for 8. 2 turns |
-| Tanuki Drummer | Common | F8 | Lobs 26 every 2.2s. 57 HP, 2 turns |
-| Grizzly Matriarch | Uncommon | A7 | Blocks with 152 HP, hits for 9. 3 turns |
-| Otso the Honey-Paw | Rare | A7 | Blocks with 170 HP, hits for 10. 3 turns |
-| Bull Moose | Uncommon | F2 | Blocks with 119 HP, hits for 7. 2 turns |
-| Dappled Fawn | Common | E2 | Heals you 4 every 2s. 42 HP, 2 turns |
-| Balam Jaguar Knight | Rare | D9 | Blocks with 185 HP, hits for 11. 3 turns |
-| Clouded Leopard | Common | E8 | Shoots 14 down its row. 57 HP, 2 turns |
-| Sundarbans Tiger | Rare | D9 | Blocks with 185 HP, hits for 11. 3 turns |
-| Horangi Mountain Tiger | Uncommon | C11 | Blocks with 179 HP, hits for 11. 4 turns |
-| Greenwood Wolf Pack | Common | B1 | Lobs 18 every 2.2s. 40 HP, 1 turn |
-| Wild Tusker Boar | Common | E7 | Blocks with 136 HP, hits for 8. 3 turns |
-| Twrch Trwyth | Legendary | D2 | Blocks with 154 HP, hits for 9. 2 turns |
-| Komodo Monitor | Rare | F6 | Blocks with 163 HP, hits for 10. 3 turns |
-| Fer-de-Lance | Common | A9 | Shoots 15 down its row. 59 HP, 3 turns |
-| Green Anaconda | Rare | B10 | Blocks with 193 HP, hits for 12. 3 turns |
-| Poison Dart Frog | Common | C7 | Lobs 24 every 2.2s. 54 HP, 2 turns |
-| Army Ant Soldier | Common | D2 | Lobs 19 every 2.2s. 42 HP, 2 turns |
-| Giant Forest Hornet | Common | E4 | Lobs 21 every 2.2s. 47 HP, 2 turns |
-| Sporeling Thallid | Common | F5 | Lobs 22 every 2.2s. 50 HP, 2 turns |
-| Thallid Germinator | Uncommon | A8 | Heals you 6 every 2s. 64 HP, 2 turns |
-| Fungal Thallid Brute | Rare | D9 | Blocks with 185 HP, hits for 11. 3 turns |
-| Moss-Shelled Tortoise | Common | E2 | Blocks with 106 HP, hits for 6. 2 turns |
-| Galapagos Giant Tortoise | Rare | E4 | Blocks with 147 HP, hits for 9. 2 turns |
-| Resplendent Quetzal | Uncommon | D9 | Heals you 7 every 2s. 66 HP, 3 turns |
-| Mokele-mbembe | Legendary | A9 | Blocks with 215 HP, hits for 13. 3 turns |
-| Sprout Imp | Common | ✱1 | Pounces on the nearest enemy for 8 every 0.9s. Brood: 2 queued = Pack, 3 = Swarm, 4 = Elder Grovebeast. 30 HP, 2 turns |
-| Thorn Serpent | Common | ✱2 | Pounces on the nearest enemy for 9 every 1s. Brood: 2 queued = Pack, 3 = Swarm, 4 = Elder Grovebeast. 26 HP, 2 turns. Poison 2 |
-| Moss Hawk | Uncommon | ✱3 | Pounces on the nearest enemy for 9 every 0.7s. Brood: 2 queued = Pack, 3 = Swarm, 4 = Elder Grovebeast. 22 HP, 2 turns |
+| Elder Ent | Rare | D4 | Blocks with 147 HP, hits for 9. 20 seconds |
+| Jack-in-the-Green | Rare | C6 | Blocks with 163 HP, hits for 10. 30 seconds |
+| Leshy of the Birchwood | Rare | B2 | Blocks with 133 HP, hits for 8. 20 seconds |
+| Kodama | Common | A2 | Heals you 4 every 2s. 42 HP, 20 seconds |
+| Oak Dryad | Uncommon | F10 | Heals you 7 every 2s. 69 HP, 30 seconds |
+| Pixie Swarm | Common | E11 | Shoots 16 down its row. 64 HP, 30 seconds |
+| Robin Goodfellow | Rare | ✱8 | Shoots 18 down its row. 71 HP, 20 seconds |
+| Queen Mab | Legendary | A12 | Heals you 10 every 2s. 96 HP, 30 seconds |
+| Will-o'-Wisp | Common | F9 | Lobs 27 every 2.2s. 59 HP, 30 seconds |
+| Faun Reveler | Common | B11 | Heals you 6 every 2s. 64 HP, 30 seconds |
+| Elven Pathfinder | Common | C2 | Shoots 11 down its row. 42 HP, 20 seconds |
+| Patupaiarehe Mist Folk | Uncommon | D3 | Shoots 13 down its row. 50 HP, 20 seconds |
+| Curupira | Rare | E4 | Shoots 15 down its row. 59 HP, 20 seconds |
+| Chullachaqui | Uncommon | D2 | Lobs 21 every 2.2s. 47 HP, 20 seconds |
+| Alux Field Keeper | Common | E3 | Blocks with 112 HP, hits for 7. 20 seconds |
+| Grove Druid | Common | F1 | Heals you 4 every 2s. 40 HP, 10 seconds |
+| Rainforest Curandero | Uncommon | A8 | Heals you 6 every 2s. 64 HP, 20 seconds |
+| Archdruid of the Oaks | Rare | D6 | Heals you 7 every 2s. 65 HP, 20 seconds |
+| Greenwood Outlaw | Common | E12 | Shoots 17 down its row. 66 HP, 30 seconds |
+| Hooded Outlaw Captain | Rare | A4 | Shoots 15 down its row. 59 HP, 20 seconds |
+| Mountain Man Trapper | Common | F3 | Blocks with 112 HP, hits for 7. 20 seconds |
+| Sir Gawain | Rare | C12 | Blocks with 207 HP, hits for 12. 40 seconds |
+| The Green Knight | Legendary | B5 | Blocks with 180 HP, hits for 11. 30 seconds |
+| Arthur, the Once King | Legendary | E2 | Blocks with 154 HP, hits for 9. 20 seconds |
+| Gwyn ap Nudd | Legendary | D5 | Shoots 18 down its row. 72 HP, 20 seconds |
+| Cwn Annwn Hound | Uncommon | A10 | Lobs 31 every 2.2s. 69 HP, 30 seconds |
+| Herne the Hunter | Legendary | F3 | Shoots 16 down its row. 65 HP, 20 seconds |
+| Tapio, King of the Forest | Legendary | C7 | Blocks with 197 HP, hits for 12. 30 seconds |
+| Sasquatch | Uncommon | B7 | Blocks with 152 HP, hits for 9. 30 seconds |
+| Yowie | Uncommon | B12 | Lobs 33 every 2.2s. 74 HP, 30 seconds |
+| Basajaun | Rare | C1 | Blocks with 125 HP, hits for 8. 20 seconds |
+| Kapre Tree Giant | Rare | F7 | Lobs 31 every 2.2s. 68 HP, 20 seconds |
+| Orang Pendek | Common | A3 | Shoots 11 down its row. 45 HP, 20 seconds |
+| Mapinguari | Rare | D4 | Blocks with 147 HP, hits for 9. 20 seconds |
+| Old Man of the Forest | Uncommon | E9 | Heals you 7 every 2s. 66 HP, 30 seconds |
+| Capuchin Thief | Common | B9 | Lobs 27 every 2.2s. 59 HP, 30 seconds |
+| Monkey King's Vanguard | Uncommon | C3 | Blocks with 125 HP, hits for 8. 20 seconds |
+| Tanuki Drummer | Common | F8 | Lobs 26 every 2.2s. 57 HP, 20 seconds |
+| Grizzly Matriarch | Uncommon | A7 | Blocks with 152 HP, hits for 9. 30 seconds |
+| Otso the Honey-Paw | Rare | A7 | Blocks with 170 HP, hits for 10. 30 seconds |
+| Bull Moose | Uncommon | F2 | Blocks with 119 HP, hits for 7. 20 seconds |
+| Dappled Fawn | Common | E2 | Heals you 4 every 2s. 42 HP, 20 seconds |
+| Balam Jaguar Knight | Rare | D9 | Blocks with 185 HP, hits for 11. 30 seconds |
+| Clouded Leopard | Common | E8 | Shoots 14 down its row. 57 HP, 20 seconds |
+| Sundarbans Tiger | Rare | D9 | Blocks with 185 HP, hits for 11. 30 seconds |
+| Horangi Mountain Tiger | Uncommon | C11 | Blocks with 179 HP, hits for 11. 40 seconds |
+| Greenwood Wolf Pack | Common | B1 | Lobs 18 every 2.2s. 40 HP, 10 seconds |
+| Wild Tusker Boar | Common | E7 | Blocks with 136 HP, hits for 8. 30 seconds |
+| Twrch Trwyth | Legendary | D2 | Blocks with 154 HP, hits for 9. 20 seconds |
+| Komodo Monitor | Rare | F6 | Blocks with 163 HP, hits for 10. 30 seconds |
+| Fer-de-Lance | Common | A9 | Shoots 15 down its row. 59 HP, 30 seconds |
+| Green Anaconda | Rare | B10 | Blocks with 193 HP, hits for 12. 30 seconds |
+| Poison Dart Frog | Common | C7 | Lobs 24 every 2.2s. 54 HP, 20 seconds |
+| Army Ant Soldier | Common | D2 | Lobs 19 every 2.2s. 42 HP, 20 seconds |
+| Giant Forest Hornet | Common | E4 | Lobs 21 every 2.2s. 47 HP, 20 seconds |
+| Sporeling Thallid | Common | F5 | Lobs 22 every 2.2s. 50 HP, 20 seconds |
+| Thallid Germinator | Uncommon | A8 | Heals you 6 every 2s. 64 HP, 20 seconds |
+| Fungal Thallid Brute | Rare | D9 | Blocks with 185 HP, hits for 11. 30 seconds |
+| Moss-Shelled Tortoise | Common | E2 | Blocks with 106 HP, hits for 6. 20 seconds |
+| Galapagos Giant Tortoise | Rare | E4 | Blocks with 147 HP, hits for 9. 20 seconds |
+| Resplendent Quetzal | Uncommon | D9 | Heals you 7 every 2s. 66 HP, 30 seconds |
+| Mokele-mbembe | Legendary | A9 | Blocks with 215 HP, hits for 13. 30 seconds |
+| Sprout Imp | Common | ✱1 | Pounces on the nearest enemy for 8 every 0.9s. Brood: 2 queued = Pack, 3 = Swarm, 4 = Elder Grovebeast. 30 HP, 20 seconds |
+| Thorn Serpent | Common | ✱2 | Pounces on the nearest enemy for 9 every 1s. Brood: 2 queued = Pack, 3 = Swarm, 4 = Elder Grovebeast. 26 HP, 20 seconds. Poison 2 |
+| Moss Hawk | Uncommon | ✱3 | Pounces on the nearest enemy for 9 every 0.7s. Brood: 2 queued = Pack, 3 = Swarm, 4 = Elder Grovebeast. 22 HP, 20 seconds |
 
 ## Machines (4)
 
 | Card | Rarity | Rune | What it does |
 |---|---|---|---|
-| Hunter's Crossbow Rig | Common | F12 | Turret: 15 every 1.4s, 75 HP, 3 turns |
-| Sharpened Log Palisade | Common | C8 | 2 iron walls of 128 HP, 3 turns |
-| Sapling Catapult | Uncommon | B4 | Mortar: lobs 29 every 2.5s, 40 HP, 2 turns |
-| Treehouse Lookout | Uncommon | E7 | Turret: 14 every 1.4s, 69 HP, 3 turns |
+| Hunter's Crossbow Rig | Common | F12 | Turret: 15 every 1.4s, 75 HP, 30 seconds |
+| Sharpened Log Palisade | Common | C8 | 2 iron walls of 128 HP, 30 seconds |
+| Sapling Catapult | Uncommon | B4 | Mortar: lobs 29 every 2.5s, 40 HP, 20 seconds |
+| Treehouse Lookout | Uncommon | E7 | Turret: 14 every 1.4s, 69 HP, 30 seconds |
 
 ## Walls & shields (16)
 
 | Card | Rarity | Rune | What it does |
 |---|---|---|---|
-| ★ Bramble Wall | Common | A4 | 3 walls of 40 HP that hit back for 10, 2 turns |
-| ★ Bark Skin | Uncommon | C8 | Shield of 70 for 2 turns; replaces your current shield |
-| Hawthorn Hedge | Common | E11 | 3 walls of 56 HP that hit back for 10, 2 turns |
-| Holly Thicket | Common | B2 | 2 walls of 37 HP that hit back for 6, 2 turns |
-| Briar Rose Hedge | Uncommon | C4 | 2 walls of 46 HP that hit back for 8, 2 turns |
-| Stacked Log Wall | Common | F6 | 2 walls of 46 HP, 2 turns |
-| Strangler Fig Roots | Uncommon | A11 | 3 walls of 63 HP, 2 turns |
-| Living Hedge Maze | Rare | D4 | 2 walls of 52 HP, 3 turns |
-| Baobab Bulwark | Rare | E3 | 2 walls of 49 HP, 3 turns |
-| Turtle Shell Guard | Common | F9 | Shield of 67 for 2 turns; replaces your current shield |
-| Bear Hide Cloak | Common | A8 | Shield of 64 for 2 turns; replaces your current shield |
-| Moss Mantle | Common | E11 | Shield of 72 for 2 turns; replaces your current shield |
-| Oak Heartwood Shield | Uncommon | D7 | Shield of 69 for 2 turns; replaces your current shield |
-| Ghillie Suit | Uncommon | A6 | Shield of 66 for 2 turns; replaces your current shield |
-| Pangolin Scales | Uncommon | F2 | Shield of 53 for 2 turns; replaces your current shield |
-| Green Chapel Gate | Legendary | C12 | 3 walls of 84 HP, 3 turns |
+| ★ Bramble Wall | Common | A4 | 3 walls of 40 HP that hit back for 10, 20 seconds |
+| ★ Bark Skin | Uncommon | C8 | Shield of 70 for 20 seconds; replaces your current shield |
+| Hawthorn Hedge | Common | E11 | 3 walls of 56 HP that hit back for 10, 20 seconds |
+| Holly Thicket | Common | B2 | 2 walls of 37 HP that hit back for 6, 20 seconds |
+| Briar Rose Hedge | Uncommon | C4 | 2 walls of 46 HP that hit back for 8, 20 seconds |
+| Stacked Log Wall | Common | F6 | 2 walls of 46 HP, 20 seconds |
+| Strangler Fig Roots | Uncommon | A11 | 3 walls of 63 HP, 20 seconds |
+| Living Hedge Maze | Rare | D4 | 2 walls of 52 HP, 30 seconds |
+| Baobab Bulwark | Rare | E3 | 2 walls of 49 HP, 30 seconds |
+| Turtle Shell Guard | Common | F9 | Shield of 67 for 20 seconds; replaces your current shield |
+| Bear Hide Cloak | Common | A8 | Shield of 64 for 20 seconds; replaces your current shield |
+| Moss Mantle | Common | E11 | Shield of 72 for 20 seconds; replaces your current shield |
+| Oak Heartwood Shield | Uncommon | D7 | Shield of 69 for 20 seconds; replaces your current shield |
+| Ghillie Suit | Uncommon | A6 | Shield of 66 for 20 seconds; replaces your current shield |
+| Pangolin Scales | Uncommon | F2 | Shield of 53 for 20 seconds; replaces your current shield |
+| Green Chapel Gate | Legendary | C12 | 3 walls of 84 HP, 30 seconds |
 
 ## Turrets (13)
 
 | Card | Rarity | Rune | What it does |
 |---|---|---|---|
-| ★ Spore Pod | Common | C4 | Tower: 6 every 1s, 40 HP, 2 turns. Poison 4 |
-| Pitcher Plant | Common | D5 | Tower: 9 every 0.9s, 40 HP, 2 turns. Poison 8 |
-| Sundew Patch | Common | C1 | Tower: 5 every 0.6s, 40 HP, 1 turn. Slow 2.3s |
-| Venus Flytrap | Common | B3 | Tower: 9 every 0.9s, 40 HP, 1 turn. Pull |
-| Beltane Maypole | Common | C1 | Tower: 11 every 1.5s, 40 HP, 1 turn. Mend 2 |
-| Puffball Sentinel | Common | B4 | Tower: 5 every 0.6s, 40 HP, 1 turn. Confuse 3.8s |
-| Carved Stag Post | Common | A6 | Tower: 13 every 1.2s, 40 HP, 2 turns. Knockback |
-| Treehouse Archer Post | Uncommon | F5 | Tower: 7 every 0.6s, 40 HP, 2 turns |
-| Hornet Hive | Uncommon | A11 | Tower: 16 every 1.2s, 40 HP, 2 turns. Poison 14 |
-| Whispering Oak | Uncommon | F9 | Tower: 19 every 1.5s, 40 HP, 2 turns. Confuse 4.8s |
-| Druid's Standing Stone | Uncommon | D12 | Tower: 13 every 0.9s, 40 HP, 2 turns. Stun 2s |
-| Weeping Willow | Rare | E5 | Tower: 14 every 1.2s, 40 HP, 2 turns. Slow 3.5s |
-| Mandrake Patch | Rare | F11 | Tower: 23 every 1.5s, 40 HP, 2 turns. Stun 1.9s |
+| ★ Spore Pod | Common | C4 | Tower: 6 every 1s, 40 HP, 20 seconds. Poison 4 |
+| Pitcher Plant | Common | D5 | Tower: 9 every 0.9s, 40 HP, 20 seconds. Poison 8 |
+| Sundew Patch | Common | C1 | Tower: 5 every 0.6s, 40 HP, 10 seconds. Slow 2.3s |
+| Venus Flytrap | Common | B3 | Tower: 9 every 0.9s, 40 HP, 10 seconds. Pull |
+| Beltane Maypole | Common | C1 | Tower: 11 every 1.5s, 40 HP, 10 seconds. Mend 2 |
+| Puffball Sentinel | Common | B4 | Tower: 5 every 0.6s, 40 HP, 10 seconds. Confuse 3.8s |
+| Carved Stag Post | Common | A6 | Tower: 13 every 1.2s, 40 HP, 20 seconds. Knockback |
+| Treehouse Archer Post | Uncommon | F5 | Tower: 7 every 0.6s, 40 HP, 20 seconds |
+| Hornet Hive | Uncommon | A11 | Tower: 16 every 1.2s, 40 HP, 20 seconds. Poison 14 |
+| Whispering Oak | Uncommon | F9 | Tower: 19 every 1.5s, 40 HP, 20 seconds. Confuse 4.8s |
+| Druid's Standing Stone | Uncommon | D12 | Tower: 13 every 0.9s, 40 HP, 20 seconds. Stun 2s |
+| Weeping Willow | Rare | E5 | Tower: 14 every 1.2s, 40 HP, 20 seconds. Slow 3.5s |
+| Mandrake Patch | Rare | F11 | Tower: 23 every 1.5s, 40 HP, 20 seconds. Stun 1.9s |
 
 ## Buffs (16)
 
@@ -253,33 +253,33 @@ Common 94 · Uncommon 72 · Legendary 25 · Rare 46
 
 | Card | Rarity | Rune | What it does |
 |---|---|---|---|
-| Hunter's Net | Common | F4 | Snare: 21 and roots when an enemy steps on the tile you aim; 2 turns. Stun 1.9s |
-| Root Tripwire | Common | E1 | Snare: 17 and roots when an enemy steps on the tile you aim; 2 turns. Stun 1.6s, Pull |
-| Bear Pit | Common | D7 | Spike trap: 52 when an enemy steps on the tile you aim; 2 turns |
-| Punji Stakes | Common | C11 | Spike trap: 52 when an enemy steps on the tile you aim; 2 turns. Poison 14 |
-| Stinkhorn Patch | Common | B1 | Blast trap: 22 to it and around it when an enemy steps on the tile you aim; 2 turns. Poison 4 |
-| Pitfall of Thorns | Uncommon | A12 | Spike trap: 71 when an enemy steps on the tile you aim; 2 turns |
-| Deadfall | Uncommon | F8 | Blast trap: 35 to it and around it when an enemy steps on the tile you aim; 2 turns. Stun 1.6s |
-| Fairy Ring | Uncommon | E1 | Snare: 17 and roots when an enemy steps on the tile you aim; 2 turns. Stun 1.6s, Confuse 3.2s |
-| Peat Bog Mire | Uncommon | D10 | Snare: 26 and roots when an enemy steps on the tile you aim; 2 turns. Stun 2.5s, Slow 5s |
-| Giant Puffball | Uncommon | ✱1 | Blast trap: 25 to it and around it when an enemy steps on the tile you aim; 2 turns. Confuse 3.2s |
-| Strangler Vine Snare | Rare | E4 | Snare: 25 and roots when an enemy steps on the tile you aim; 2 turns. Stun 1.9s, Pull |
-| Pixie-Led Path | Rare | F10 | Snare: 29 and roots when an enemy steps on the tile you aim; 2 turns. Stun 2.5s, Confuse 5s |
+| Hunter's Net | Common | F4 | Snare: 21 and roots when an enemy steps on the tile you aim; 20 seconds. Stun 1.9s |
+| Root Tripwire | Common | E1 | Snare: 17 and roots when an enemy steps on the tile you aim; 20 seconds. Stun 1.6s, Pull |
+| Bear Pit | Common | D7 | Spike trap: 52 when an enemy steps on the tile you aim; 20 seconds |
+| Punji Stakes | Common | C11 | Spike trap: 52 when an enemy steps on the tile you aim; 20 seconds. Poison 14 |
+| Stinkhorn Patch | Common | B1 | Blast trap: 22 to it and around it when an enemy steps on the tile you aim; 20 seconds. Poison 4 |
+| Pitfall of Thorns | Uncommon | A12 | Spike trap: 71 when an enemy steps on the tile you aim; 20 seconds |
+| Deadfall | Uncommon | F8 | Blast trap: 35 to it and around it when an enemy steps on the tile you aim; 20 seconds. Stun 1.6s |
+| Fairy Ring | Uncommon | E1 | Snare: 17 and roots when an enemy steps on the tile you aim; 20 seconds. Stun 1.6s, Confuse 3.2s |
+| Peat Bog Mire | Uncommon | D10 | Snare: 26 and roots when an enemy steps on the tile you aim; 20 seconds. Stun 2.5s, Slow 5s |
+| Giant Puffball | Uncommon | ✱1 | Blast trap: 25 to it and around it when an enemy steps on the tile you aim; 20 seconds. Confuse 3.2s |
+| Strangler Vine Snare | Rare | E4 | Snare: 25 and roots when an enemy steps on the tile you aim; 20 seconds. Stun 1.9s, Pull |
+| Pixie-Led Path | Rare | F10 | Snare: 29 and roots when an enemy steps on the tile you aim; 20 seconds. Stun 2.5s, Confuse 5s |
 
 ## Field effects (10)
 
 | Card | Rarity | Rune | What it does |
 |---|---|---|---|
-| Bramble Thicket | Common | B5 | Grows brambles that deal 10 per step on the tile you aim and around it for 1 turn |
-| Tangled Undergrowth | Common | E6 | Grows brambles that deal 10 per step along the aimed tile's row for 1 turn |
-| Kudzu Spread | Common | ✱8 | Grows brambles that deal 11 per step in a cross on the tile you aim for 2 turns |
-| Heather Moor | Common | E4 | Grows brambles that deal 9 per step along the aimed tile's row for 1 turn |
-| Rainforest Canopy | Uncommon | D3 | Grows brambles that deal 10 per step in a cross on the tile you aim for 1 turn |
-| Mire of the Fens | Uncommon | A9 | Grows brambles that deal 13 per step down the aimed tile's column for 2 turns |
+| Bramble Thicket | Common | B5 | Grows brambles that deal 10 per step on the tile you aim and around it for 10 seconds |
+| Tangled Undergrowth | Common | E6 | Grows brambles that deal 10 per step along the aimed tile's row for 10 seconds |
+| Kudzu Spread | Common | ✱8 | Grows brambles that deal 11 per step in a cross on the tile you aim for 20 seconds |
+| Heather Moor | Common | E4 | Grows brambles that deal 9 per step along the aimed tile's row for 10 seconds |
+| Rainforest Canopy | Uncommon | D3 | Grows brambles that deal 10 per step in a cross on the tile you aim for 10 seconds |
+| Mire of the Fens | Uncommon | A9 | Grows brambles that deal 13 per step down the aimed tile's column for 20 seconds |
 | Stampede | Uncommon | F6 | Tremor deals 20 along the aimed tile's row. Stun 1.3s |
 | Birnam Wood Marches | Rare | E7 | Tremor deals 24 down the aimed tile's column. Stun 1.4s |
 | Ent Moot | Rare | D1 | Tremor deals 18 on the tile you aim and around it. Stun 0.9s |
-| Primeval Wildwood | Legendary | B1 | Grows brambles that deal 12 per step on the tile you aim and around it for 1 turn |
+| Primeval Wildwood | Legendary | B1 | Grows brambles that deal 12 per step on the tile you aim and around it for 10 seconds |
 
 ## Legendary pieces (6)
 

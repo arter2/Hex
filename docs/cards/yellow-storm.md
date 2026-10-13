@@ -73,120 +73,120 @@ Common 92 · Uncommon 68 · Legendary 24 · Rare 47
 
 | Card | Rarity | Rune | What it does |
 |---|---|---|---|
-| Thunder Raiju | Rare | C9 | Shoots 19 down its row. 74 HP, 3 turns |
-| Lamp Djinn | Rare | D6 | Shoots 16 down its row. 65 HP, 2 turns |
-| Ifrit | Rare | E5 | Lobs 28 every 2.2s. 62 HP, 2 turns |
-| Ifrit Sultan | Legendary | D11 | Lobs 42 every 2.2s. 93 HP, 3 turns |
-| Si'lat Shapeshifter | Uncommon | E12 | Shoots 19 down its row. 74 HP, 3 turns |
-| Dybbuk | Uncommon | F4 | Lobs 24 every 2.2s. 53 HP, 2 turns |
-| Sand Scarab | Common | ✱7 | Blocks with 136 HP, hits for 8. 3 turns |
-| Golden Scarab | Uncommon | F3 | Heals you 5 every 2s. 50 HP, 2 turns |
-| Khepri's Dawn Beetle | Rare | A12 | Heals you 8 every 2s. 83 HP, 3 turns |
-| Desert Camel | Common | C4 | Blocks with 118 HP, hits for 7. 2 turns |
-| War Camel | Uncommon | B6 | Blocks with 146 HP, hits for 9. 3 turns |
-| Manticore | Rare | A2 | Shoots 13 down its row. 53 HP, 2 turns |
-| Chimera | Rare | F10 | Lobs 35 every 2.2s. 77 HP, 3 turns |
-| Emperor Scorpion | Uncommon | E2 | Blocks with 119 HP, hits for 7. 2 turns |
-| Sand Scorpion | Common | D6 | Shoots 13 down its row. 52 HP, 2 turns |
-| Girtablilu Gatewarden | Rare | C8 | Blocks with 178 HP, hits for 11. 3 turns |
-| Jackal Tomb Guard | Uncommon | B10 | Blocks with 172 HP, hits for 10. 3 turns |
-| Nile Crocodile | Common | A9 | Blocks with 148 HP, hits for 9. 3 turns |
-| Great River Crocodile | Rare | F5 | Blocks with 155 HP, hits for 9. 3 turns |
-| Roc | Rare | F5 | Lobs 28 every 2.2s. 62 HP, 2 turns |
-| Simurgh | Legendary | A2 | Heals you 6 every 2s. 61 HP, 2 turns |
-| Great Sphinx | Legendary | F12 | Blocks with 241 HP, hits for 14. 4 turns |
-| Riddling Sphinx | Rare | E4 | Heals you 6 every 2s. 59 HP, 2 turns |
-| Bronze Automaton | Uncommon | D7 | Blocks with 152 HP, hits for 9. 3 turns |
-| Talos the Bronze Giant | Legendary | E7 | Blocks with 197 HP, hits for 12. 3 turns |
-| Clockwork Falcon | Uncommon | B11 | Shoots 18 down its row. 72 HP, 3 turns |
-| Horus the Far-Seeing | Legendary | C7 | Shoots 20 down its row. 79 HP, 2 turns |
-| Ibis Scribe | Common | B10 | Heals you 6 every 2s. 62 HP, 3 turns |
-| Frilled Lizard | Common | C7 | Shoots 14 down its row. 54 HP, 2 turns |
-| Horned Viper | Common | A11 | Shoots 16 down its row. 64 HP, 3 turns |
-| Uraeus Cobra | Uncommon | F9 | Shoots 17 down its row. 66 HP, 3 turns |
-| Plumed Serpent | Rare | C5 | Lobs 28 every 2.2s. 62 HP, 2 turns |
-| Chupacabra | Uncommon | B11 | Lobs 32 every 2.2s. 72 HP, 3 turns |
-| Foo Dog Sentinel | Uncommon | E1 | Blocks with 112 HP, hits for 7. 2 turns |
-| Brass Foo Pup | Common | D6 | Blocks with 130 HP, hits for 8. 3 turns |
-| Bahamut | Legendary | A4 | Blocks with 171 HP, hits for 10. 2 turns |
-| Falak the Abyss Serpent | Legendary | F6 | Lobs 34 every 2.2s. 75 HP, 2 turns |
-| Sandworm | Rare | A6 | Lobs 29 every 2.2s. 65 HP, 2 turns |
-| Linen-Wrapped Sentinel | Uncommon | F10 | Blocks with 172 HP, hits for 10. 3 turns |
-| Sand Golem | Common | D10 | Blocks with 154 HP, hits for 9. 3 turns |
-| Wandering Alchemist | Uncommon | E3 | Heals you 5 every 2s. 50 HP, 2 turns |
-| Bedouin Raider | Common | F1 | Shoots 10 down its row. 40 HP, 1 turn |
-| Parthian Horse Archer | Uncommon | A5 | Shoots 14 down its row. 56 HP, 2 turns |
-| Bazaar Pickpocket | Common | B12 | Lobs 30 every 2.2s. 66 HP, 3 turns |
-| Mamluk Lancer | Uncommon | C8 | Blocks with 159 HP, hits for 10. 3 turns |
-| Persian Immortal | Rare | D1 | Blocks with 125 HP, hits for 8. 2 turns |
-| Storm Imp | Common | E11 | Shoots 16 down its row. 64 HP, 3 turns |
-| Spark Sprite | Common | F10 | Shoots 15 down its row. 62 HP, 3 turns |
-| Thunder Hawk | Common | A9 | Shoots 15 down its row. 59 HP, 3 turns |
-| Coin-Hoard Dragon | Rare | E3 | Blocks with 140 HP, hits for 8. 2 turns |
+| Thunder Raiju | Rare | C9 | Shoots 19 down its row. 74 HP, 30 seconds |
+| Lamp Djinn | Rare | D6 | Shoots 16 down its row. 65 HP, 20 seconds |
+| Ifrit | Rare | E5 | Lobs 28 every 2.2s. 62 HP, 20 seconds |
+| Ifrit Sultan | Legendary | D11 | Lobs 42 every 2.2s. 93 HP, 30 seconds |
+| Si'lat Shapeshifter | Uncommon | E12 | Shoots 19 down its row. 74 HP, 30 seconds |
+| Dybbuk | Uncommon | F4 | Lobs 24 every 2.2s. 53 HP, 20 seconds |
+| Sand Scarab | Common | ✱7 | Blocks with 136 HP, hits for 8. 30 seconds |
+| Golden Scarab | Uncommon | F3 | Heals you 5 every 2s. 50 HP, 20 seconds |
+| Khepri's Dawn Beetle | Rare | A12 | Heals you 8 every 2s. 83 HP, 30 seconds |
+| Desert Camel | Common | C4 | Blocks with 118 HP, hits for 7. 20 seconds |
+| War Camel | Uncommon | B6 | Blocks with 146 HP, hits for 9. 30 seconds |
+| Manticore | Rare | A2 | Shoots 13 down its row. 53 HP, 20 seconds |
+| Chimera | Rare | F10 | Lobs 35 every 2.2s. 77 HP, 30 seconds |
+| Emperor Scorpion | Uncommon | E2 | Blocks with 119 HP, hits for 7. 20 seconds |
+| Sand Scorpion | Common | D6 | Shoots 13 down its row. 52 HP, 20 seconds |
+| Girtablilu Gatewarden | Rare | C8 | Blocks with 178 HP, hits for 11. 30 seconds |
+| Jackal Tomb Guard | Uncommon | B10 | Blocks with 172 HP, hits for 10. 30 seconds |
+| Nile Crocodile | Common | A9 | Blocks with 148 HP, hits for 9. 30 seconds |
+| Great River Crocodile | Rare | F5 | Blocks with 155 HP, hits for 9. 30 seconds |
+| Roc | Rare | F5 | Lobs 28 every 2.2s. 62 HP, 20 seconds |
+| Simurgh | Legendary | A2 | Heals you 6 every 2s. 61 HP, 20 seconds |
+| Great Sphinx | Legendary | F12 | Blocks with 241 HP, hits for 14. 40 seconds |
+| Riddling Sphinx | Rare | E4 | Heals you 6 every 2s. 59 HP, 20 seconds |
+| Bronze Automaton | Uncommon | D7 | Blocks with 152 HP, hits for 9. 30 seconds |
+| Talos the Bronze Giant | Legendary | E7 | Blocks with 197 HP, hits for 12. 30 seconds |
+| Clockwork Falcon | Uncommon | B11 | Shoots 18 down its row. 72 HP, 30 seconds |
+| Horus the Far-Seeing | Legendary | C7 | Shoots 20 down its row. 79 HP, 20 seconds |
+| Ibis Scribe | Common | B10 | Heals you 6 every 2s. 62 HP, 30 seconds |
+| Frilled Lizard | Common | C7 | Shoots 14 down its row. 54 HP, 20 seconds |
+| Horned Viper | Common | A11 | Shoots 16 down its row. 64 HP, 30 seconds |
+| Uraeus Cobra | Uncommon | F9 | Shoots 17 down its row. 66 HP, 30 seconds |
+| Plumed Serpent | Rare | C5 | Lobs 28 every 2.2s. 62 HP, 20 seconds |
+| Chupacabra | Uncommon | B11 | Lobs 32 every 2.2s. 72 HP, 30 seconds |
+| Foo Dog Sentinel | Uncommon | E1 | Blocks with 112 HP, hits for 7. 20 seconds |
+| Brass Foo Pup | Common | D6 | Blocks with 130 HP, hits for 8. 30 seconds |
+| Bahamut | Legendary | A4 | Blocks with 171 HP, hits for 10. 20 seconds |
+| Falak the Abyss Serpent | Legendary | F6 | Lobs 34 every 2.2s. 75 HP, 20 seconds |
+| Sandworm | Rare | A6 | Lobs 29 every 2.2s. 65 HP, 20 seconds |
+| Linen-Wrapped Sentinel | Uncommon | F10 | Blocks with 172 HP, hits for 10. 30 seconds |
+| Sand Golem | Common | D10 | Blocks with 154 HP, hits for 9. 30 seconds |
+| Wandering Alchemist | Uncommon | E3 | Heals you 5 every 2s. 50 HP, 20 seconds |
+| Bedouin Raider | Common | F1 | Shoots 10 down its row. 40 HP, 10 seconds |
+| Parthian Horse Archer | Uncommon | A5 | Shoots 14 down its row. 56 HP, 20 seconds |
+| Bazaar Pickpocket | Common | B12 | Lobs 30 every 2.2s. 66 HP, 30 seconds |
+| Mamluk Lancer | Uncommon | C8 | Blocks with 159 HP, hits for 10. 30 seconds |
+| Persian Immortal | Rare | D1 | Blocks with 125 HP, hits for 8. 20 seconds |
+| Storm Imp | Common | E11 | Shoots 16 down its row. 64 HP, 30 seconds |
+| Spark Sprite | Common | F10 | Shoots 15 down its row. 62 HP, 30 seconds |
+| Thunder Hawk | Common | A9 | Shoots 15 down its row. 59 HP, 30 seconds |
+| Coin-Hoard Dragon | Rare | E3 | Blocks with 140 HP, hits for 8. 20 seconds |
 
 ## Machines (22)
 
 | Card | Rarity | Rune | What it does |
 |---|---|---|---|
-| Ornithopter | Common | A11 | Repeater: 8 every 0.5s, 56 HP, 2 turns |
-| Spiral Aerial Screw | Uncommon | B12 | Repeater: 9 every 0.5s, 65 HP, 2 turns |
-| Tesla Tower | Rare | C4 | Turret: 13 every 1.4s, 66 HP, 3 turns |
-| Voltaic Pile Turret | Common | D6 | Turret: 12 every 1.4s, 59 HP, 3 turns |
-| Arc Gatling | Uncommon | E10 | Repeater: 9 every 0.5s, 60 HP, 2 turns |
-| Brass Automaton Archer | Uncommon | F2 | Turret: 11 every 1.4s, 53 HP, 3 turns |
-| Scorpio Bolt Thrower | Common | A4 | Turret: 11 every 1.4s, 53 HP, 3 turns |
-| Naphtha Siphon | Uncommon | B7 | Turret: 14 every 1.4s, 69 HP, 3 turns |
-| Desert Onager | Common | C12 | Mortar: lobs 37 every 2.5s, 50 HP, 2 turns |
-| Caravan Mangonel | Uncommon | A10 | Mortar: lobs 38 every 2.5s, 52 HP, 2 turns |
-| Architronito | Rare | F5 | Turret: 14 every 1.4s, 70 HP, 3 turns |
-| Zhuge Repeater | Uncommon | E11 | Repeater: 9 every 0.5s, 63 HP, 2 turns |
-| Tortoise War Wagon | Rare | D9 | 2 iron walls of 167 HP, 3 turns |
-| Sandstone Rampart | Common | E11 | 2 iron walls of 144 HP, 3 turns |
-| Palm-Log Palisade | Common | D8 | 2 iron walls of 128 HP, 3 turns |
-| Bronze Barricade | Common | C9 | 2 iron walls of 133 HP, 3 turns |
-| Elephant Clock Automaton | Rare | B5 | Turret: 14 every 1.4s, 70 HP, 3 turns |
-| Coin-Spitting Mortar | Common | C7 | Mortar: lobs 30 every 2.5s, 41 HP, 2 turns |
-| Clockwork Flying Carpet | Rare | B1 | Repeater: 6 every 0.5s, 44 HP, 2 turns |
-| Hang-Glider Scout | Common | F4 | Repeater: 6 every 0.5s, 41 HP, 2 turns |
-| The Thunder Engine | Legendary | A2 | Repeater: 8 every 0.5s, 54 HP, 2 turns |
-| The Bronze Colossus | Legendary | D9 | 2 iron walls of 193 HP, 3 turns |
+| Ornithopter | Common | A11 | Repeater: 8 every 0.5s, 56 HP, 20 seconds |
+| Spiral Aerial Screw | Uncommon | B12 | Repeater: 9 every 0.5s, 65 HP, 20 seconds |
+| Tesla Tower | Rare | C4 | Turret: 13 every 1.4s, 66 HP, 30 seconds |
+| Voltaic Pile Turret | Common | D6 | Turret: 12 every 1.4s, 59 HP, 30 seconds |
+| Arc Gatling | Uncommon | E10 | Repeater: 9 every 0.5s, 60 HP, 20 seconds |
+| Brass Automaton Archer | Uncommon | F2 | Turret: 11 every 1.4s, 53 HP, 30 seconds |
+| Scorpio Bolt Thrower | Common | A4 | Turret: 11 every 1.4s, 53 HP, 30 seconds |
+| Naphtha Siphon | Uncommon | B7 | Turret: 14 every 1.4s, 69 HP, 30 seconds |
+| Desert Onager | Common | C12 | Mortar: lobs 37 every 2.5s, 50 HP, 20 seconds |
+| Caravan Mangonel | Uncommon | A10 | Mortar: lobs 38 every 2.5s, 52 HP, 20 seconds |
+| Architronito | Rare | F5 | Turret: 14 every 1.4s, 70 HP, 30 seconds |
+| Zhuge Repeater | Uncommon | E11 | Repeater: 9 every 0.5s, 63 HP, 20 seconds |
+| Tortoise War Wagon | Rare | D9 | 2 iron walls of 167 HP, 30 seconds |
+| Sandstone Rampart | Common | E11 | 2 iron walls of 144 HP, 30 seconds |
+| Palm-Log Palisade | Common | D8 | 2 iron walls of 128 HP, 30 seconds |
+| Bronze Barricade | Common | C9 | 2 iron walls of 133 HP, 30 seconds |
+| Elephant Clock Automaton | Rare | B5 | Turret: 14 every 1.4s, 70 HP, 30 seconds |
+| Coin-Spitting Mortar | Common | C7 | Mortar: lobs 30 every 2.5s, 41 HP, 20 seconds |
+| Clockwork Flying Carpet | Rare | B1 | Repeater: 6 every 0.5s, 44 HP, 20 seconds |
+| Hang-Glider Scout | Common | F4 | Repeater: 6 every 0.5s, 41 HP, 20 seconds |
+| The Thunder Engine | Legendary | A2 | Repeater: 8 every 0.5s, 54 HP, 20 seconds |
+| The Bronze Colossus | Legendary | D9 | 2 iron walls of 193 HP, 30 seconds |
 
 ## Walls & shields (14)
 
 | Card | Rarity | Rune | What it does |
 |---|---|---|---|
-| ★ Static Ward | Common | D2 | Shield of 35 for 2 turns; replaces your current shield |
-| Copper Lattice | Common | D6 | Shield of 59 for 2 turns; replaces your current shield |
-| Bronze Aegis | Uncommon | A12 | Shield of 84 for 2 turns; replaces your current shield |
-| Sandbag Wall | Common | F5 | 2 walls of 43 HP, 2 turns |
-| Mudbrick Wall | Common | C3 | 2 walls of 39 HP, 2 turns |
-| Kasbah Gate | Rare | B4 | 2 walls of 52 HP, 3 turns |
-| Cactus Hedge | Common | E9 | 3 walls of 52 HP that hit back for 9, 2 turns |
-| Scorpion Pit Ring | Uncommon | D3 | 2 walls of 44 HP that hit back for 8, 2 turns |
-| Faraday Cage | Uncommon | C2 | Shield of 53 for 2 turns; replaces your current shield |
-| Charged Fence | Common | B5 | 2 walls of 43 HP that hit back for 7, 2 turns |
-| Caravan Circle | Common | D7 | 3 walls of 48 HP, 2 turns |
-| Djinn's Veil | Uncommon | E3 | Shield of 56 for 2 turns; replaces your current shield |
-| Lightning Rod Array | Rare | B10 | 3 walls of 67 HP that hit back for 12, 3 turns |
-| Walls of the City of Brass | Legendary | C5 | 2 walls of 63 HP, 3 turns |
+| ★ Static Ward | Common | D2 | Shield of 35 for 20 seconds; replaces your current shield |
+| Copper Lattice | Common | D6 | Shield of 59 for 20 seconds; replaces your current shield |
+| Bronze Aegis | Uncommon | A12 | Shield of 84 for 20 seconds; replaces your current shield |
+| Sandbag Wall | Common | F5 | 2 walls of 43 HP, 20 seconds |
+| Mudbrick Wall | Common | C3 | 2 walls of 39 HP, 20 seconds |
+| Kasbah Gate | Rare | B4 | 2 walls of 52 HP, 30 seconds |
+| Cactus Hedge | Common | E9 | 3 walls of 52 HP that hit back for 9, 20 seconds |
+| Scorpion Pit Ring | Uncommon | D3 | 2 walls of 44 HP that hit back for 8, 20 seconds |
+| Faraday Cage | Uncommon | C2 | Shield of 53 for 20 seconds; replaces your current shield |
+| Charged Fence | Common | B5 | 2 walls of 43 HP that hit back for 7, 20 seconds |
+| Caravan Circle | Common | D7 | 3 walls of 48 HP, 20 seconds |
+| Djinn's Veil | Uncommon | E3 | Shield of 56 for 20 seconds; replaces your current shield |
+| Lightning Rod Array | Rare | B10 | 3 walls of 67 HP that hit back for 12, 30 seconds |
+| Walls of the City of Brass | Legendary | C5 | 2 walls of 63 HP, 30 seconds |
 
 ## Turrets (13)
 
 | Card | Rarity | Rune | What it does |
 |---|---|---|---|
-| ★ Coil Sentry | Common | E6 | Tower: 8 every 0.6s, 40 HP, 2 turns |
-| Lightning Rod | Common | C1 | Tower: 9 every 1.2s, 40 HP, 1 turn. Stun 0.9s |
-| Tesla Coil | Uncommon | D1 | Tower: 10 every 1.2s, 40 HP, 1 turn. Stun 0.9s |
-| Sun Obelisk | Common | E7 | Tower: 16 every 1.5s, 40 HP, 2 turns. Burn 4.3s |
-| Scarab Totem | Common | ✱7 | Tower: 9 every 0.9s, 40 HP, 2 turns. Poison 10 |
-| Brazen Head | Rare | E9 | Tower: 17 every 1.2s, 40 HP, 2 turns. Confuse 4.8s |
-| Foo Dog Statue | Uncommon | F12 | Tower: 24 every 1.5s, 40 HP, 2 turns. Knockback |
-| Snake Charmer's Basket | Common | A8 | Tower: 13 every 1.2s, 40 HP, 2 turns. Poison 11 |
-| Oil Lamp Brazier | Common | D2 | Tower: 7 every 0.9s, 40 HP, 1 turn. Burn 2.7s |
-| Storm Kite | Uncommon | E6 | Tower: 10 every 0.9s, 40 HP, 2 turns. Stun 1.4s |
-| Sandstone Idol | Common | C1 | Tower: 9 every 1.2s, 40 HP, 1 turn. Slow 2.3s |
-| Thunder Drum | Common | B5 | Tower: 16 every 1.5s, 40 HP, 2 turns. Knockback |
-| Burning Mirror | Rare | ✱8 | Tower: 16 every 1.2s, 40 HP, 2 turns. Burn 4.7s |
+| ★ Coil Sentry | Common | E6 | Tower: 8 every 0.6s, 40 HP, 20 seconds |
+| Lightning Rod | Common | C1 | Tower: 9 every 1.2s, 40 HP, 10 seconds. Stun 0.9s |
+| Tesla Coil | Uncommon | D1 | Tower: 10 every 1.2s, 40 HP, 10 seconds. Stun 0.9s |
+| Sun Obelisk | Common | E7 | Tower: 16 every 1.5s, 40 HP, 20 seconds. Burn 4.3s |
+| Scarab Totem | Common | ✱7 | Tower: 9 every 0.9s, 40 HP, 20 seconds. Poison 10 |
+| Brazen Head | Rare | E9 | Tower: 17 every 1.2s, 40 HP, 20 seconds. Confuse 4.8s |
+| Foo Dog Statue | Uncommon | F12 | Tower: 24 every 1.5s, 40 HP, 20 seconds. Knockback |
+| Snake Charmer's Basket | Common | A8 | Tower: 13 every 1.2s, 40 HP, 20 seconds. Poison 11 |
+| Oil Lamp Brazier | Common | D2 | Tower: 7 every 0.9s, 40 HP, 10 seconds. Burn 2.7s |
+| Storm Kite | Uncommon | E6 | Tower: 10 every 0.9s, 40 HP, 20 seconds. Stun 1.4s |
+| Sandstone Idol | Common | C1 | Tower: 9 every 1.2s, 40 HP, 10 seconds. Slow 2.3s |
+| Thunder Drum | Common | B5 | Tower: 16 every 1.5s, 40 HP, 20 seconds. Knockback |
+| Burning Mirror | Rare | ✱8 | Tower: 16 every 1.2s, 40 HP, 20 seconds. Burn 4.7s |
 
 ## Buffs (15)
 
@@ -249,33 +249,33 @@ Common 92 · Uncommon 68 · Legendary 24 · Rare 47
 
 | Card | Rarity | Rune | What it does |
 |---|---|---|---|
-| Pit of Gold Coins | Uncommon | E12 | Snare: 28 and roots when an enemy steps on the tile you aim; 2 turns. Stun 2.7s, Drain 60% |
-| Quicksand | Common | F1 | Snare: 15 and roots when an enemy steps on the tile you aim; 2 turns. Stun 1.6s, Slow 2.3s |
-| Tripwire Spark | Common | A8 | Blast trap: 31 to it and around it when an enemy steps on the tile you aim; 2 turns. Stun 1.6s |
-| Scorpion Nest | Common | F3 | Spike trap: 36 when an enemy steps on the tile you aim; 2 turns. Poison 6 |
-| Pressure Plate Darts | Common | ✱2 | Spike trap: 34 when an enemy steps on the tile you aim; 2 turns. Poison 5 |
-| Tomb Boulder | Uncommon | B9 | Blast trap: 41 to it and around it when an enemy steps on the tile you aim; 2 turns. Knockback |
-| Antlion Pit | Uncommon | C9 | Snare: 28 and roots when an enemy steps on the tile you aim; 2 turns. Stun 2.4s, Pull |
-| Shocking Floor Tiles | Common | F3 | Spike trap: 36 when an enemy steps on the tile you aim; 2 turns. Stun 1.1s |
-| Djinn Bottle | Rare | A4 | Snare: 23 and roots when an enemy steps on the tile you aim; 2 turns. Stun 1.9s, Confuse 3.8s |
-| Collapsing Tomb Floor | Uncommon | E11 | Blast trap: 40 to it and around it when an enemy steps on the tile you aim; 2 turns. Slow 5.3s |
-| Electrified Gold Idol | Rare | D6 | Blast trap: 36 to it and around it when an enemy steps on the tile you aim; 2 turns. Stun 1.4s |
-| Cobra Basket Trap | Common | C3 | Spike trap: 36 when an enemy steps on the tile you aim; 2 turns. Poison 6 |
-| Mirage Oasis | Uncommon | B9 | Snare: 25 and roots when an enemy steps on the tile you aim; 2 turns. Stun 2.4s, Confuse 4.8s |
-| Pharaoh's Curse Seal | Rare | ✱7 | Blast trap: 38 to it and around it when an enemy steps on the tile you aim; 2 turns. Curse 5.1s |
+| Pit of Gold Coins | Uncommon | E12 | Snare: 28 and roots when an enemy steps on the tile you aim; 20 seconds. Stun 2.7s, Drain 60% |
+| Quicksand | Common | F1 | Snare: 15 and roots when an enemy steps on the tile you aim; 20 seconds. Stun 1.6s, Slow 2.3s |
+| Tripwire Spark | Common | A8 | Blast trap: 31 to it and around it when an enemy steps on the tile you aim; 20 seconds. Stun 1.6s |
+| Scorpion Nest | Common | F3 | Spike trap: 36 when an enemy steps on the tile you aim; 20 seconds. Poison 6 |
+| Pressure Plate Darts | Common | ✱2 | Spike trap: 34 when an enemy steps on the tile you aim; 20 seconds. Poison 5 |
+| Tomb Boulder | Uncommon | B9 | Blast trap: 41 to it and around it when an enemy steps on the tile you aim; 20 seconds. Knockback |
+| Antlion Pit | Uncommon | C9 | Snare: 28 and roots when an enemy steps on the tile you aim; 20 seconds. Stun 2.4s, Pull |
+| Shocking Floor Tiles | Common | F3 | Spike trap: 36 when an enemy steps on the tile you aim; 20 seconds. Stun 1.1s |
+| Djinn Bottle | Rare | A4 | Snare: 23 and roots when an enemy steps on the tile you aim; 20 seconds. Stun 1.9s, Confuse 3.8s |
+| Collapsing Tomb Floor | Uncommon | E11 | Blast trap: 40 to it and around it when an enemy steps on the tile you aim; 20 seconds. Slow 5.3s |
+| Electrified Gold Idol | Rare | D6 | Blast trap: 36 to it and around it when an enemy steps on the tile you aim; 20 seconds. Stun 1.4s |
+| Cobra Basket Trap | Common | C3 | Spike trap: 36 when an enemy steps on the tile you aim; 20 seconds. Poison 6 |
+| Mirage Oasis | Uncommon | B9 | Snare: 25 and roots when an enemy steps on the tile you aim; 20 seconds. Stun 2.4s, Confuse 4.8s |
+| Pharaoh's Curse Seal | Rare | ✱7 | Blast trap: 38 to it and around it when an enemy steps on the tile you aim; 20 seconds. Curse 5.1s |
 
 ## Field effects (10)
 
 | Card | Rarity | Rune | What it does |
 |---|---|---|---|
-| Scorching Sun | Common | E8 | Sets the ground burning along the aimed tile's row for 2 turns |
-| Salt Flats | Common | F11 | Sets the ground burning on the tile you aim and around it for 2 turns |
-| Sahara Noon | Uncommon | A11 | Sets the ground burning down the aimed tile's column for 2 turns |
+| Scorching Sun | Common | E8 | Sets the ground burning along the aimed tile's row for 20 seconds |
+| Salt Flats | Common | F11 | Sets the ground burning on the tile you aim and around it for 20 seconds |
+| Sahara Noon | Uncommon | A11 | Sets the ground burning down the aimed tile's column for 20 seconds |
 | Sandworm Burrows | Rare | F8 | Tremor deals 25 down the aimed tile's column. Stun 1.4s |
 | Thunder Rumble | Common | A12 | Tremor deals 23 on the tile you aim and around it. Stun 1.8s |
 | Dune Shift | Common | B4 | Tremor deals 17 along the aimed tile's row. Stun 1.1s |
-| Lightning Field | Uncommon | C3 | Sets the ground burning in a cross on the tile you aim for 1 turn |
-| Sun-Baked Wadi | Common | B7 | Sets the ground burning down the aimed tile's column for 2 turns |
+| Lightning Field | Uncommon | C3 | Sets the ground burning in a cross on the tile you aim for 10 seconds |
+| Sun-Baked Wadi | Common | B7 | Sets the ground burning down the aimed tile's column for 20 seconds |
 | Storm Front | Uncommon | C10 | Tremor deals 24 along the aimed tile's row. Stun 1.6s |
 | Great Sand Sea | Legendary | E6 | Tremor deals 26 on the tile you aim and around it. Stun 1.3s |
 

@@ -80,108 +80,108 @@ Common 93 · Uncommon 74 · Legendary 24 · Rare 43
 
 | Card | Rarity | Rune | What it does |
 |---|---|---|---|
-| Merrow | Common | D3 | Shoots 11 down its row. 45 HP, 2 turns |
-| Mermaid Singer | Uncommon | A5 | Heals you 6 every 2s. 56 HP, 2 turns |
-| Merman Spearman | Common | F9 | Blocks with 148 HP, hits for 9. 3 turns |
-| Merfolk Tidecaller | Uncommon | A12 | Lobs 33 every 2.2s. 74 HP, 3 turns |
-| Ningyo | Uncommon | F5 | Heals you 6 every 2s. 56 HP, 2 turns |
-| Siren | Rare | C9 | Shoots 19 down its row. 74 HP, 3 turns |
-| Selkie | Uncommon | B10 | Heals you 7 every 2s. 69 HP, 3 turns |
-| Nixie | Common | A4 | Shoots 12 down its row. 47 HP, 2 turns |
-| Rusalka | Rare | F1 | Shoots 13 down its row. 50 HP, 1 turn |
-| Kappa | Common | D1 | Blocks with 100 HP, hits for 6. 2 turns |
-| Umibozu | Rare | E11 | Blocks with 200 HP, hits for 12. 4 turns |
-| Yeti | Uncommon | B11 | Blocks with 179 HP, hits for 11. 4 turns |
-| Yeti Cub | Common | C8 | Blocks with 142 HP, hits for 9. 3 turns |
-| Yeti Matriarch | Rare | B5 | Blocks with 155 HP, hits for 9. 3 turns |
-| Snowman | Common | C7 | Blocks with 136 HP, hits for 8. 3 turns |
-| Winter Wolf | Common | F4 | Shoots 12 down its row. 47 HP, 2 turns |
-| Frost Wolf Alpha | Uncommon | A10 | Blocks with 172 HP, hits for 10. 3 turns |
-| Rockhopper Penguin | Common | F4 | Lobs 21 every 2.2s. 47 HP, 2 turns |
-| Walrus | Uncommon | ✱7 | Blocks with 152 HP, hits for 9. 3 turns |
-| Narwhal | Uncommon | A10 | Shoots 17 down its row. 69 HP, 3 turns |
-| Orca | Rare | F11 | Lobs 36 every 2.2s. 80 HP, 3 turns |
-| Hammerhead Shark | Uncommon | E4 | Shoots 13 down its row. 53 HP, 2 turns |
-| Great White Shark | Rare | D12 | Lobs 37 every 2.2s. 83 HP, 3 turns |
-| Sea Turtle | Common | E2 | Heals you 4 every 2s. 42 HP, 2 turns |
-| Zaratan the Island Turtle | Legendary | D2 | Blocks with 154 HP, hits for 9. 2 turns |
-| King Crab | Uncommon | C8 | Blocks with 159 HP, hits for 10. 3 turns |
-| Giant Squid | Rare | B7 | Lobs 31 every 2.2s. 68 HP, 2 turns |
-| The Kraken | Legendary | E5 | Blocks with 180 HP, hits for 11. 3 turns |
-| Kraken Spawn | Common | D7 | Lobs 24 every 2.2s. 54 HP, 2 turns |
-| Leviathan | Legendary | F7 | Blocks with 197 HP, hits for 12. 3 turns |
-| Bunyip of the Billabong | Uncommon | A4 | Blocks with 132 HP, hits for 8. 2 turns |
-| Sea Serpent | Rare | B11 | Shoots 20 down its row. 80 HP, 3 turns |
-| Dragon King of the Deep | Legendary | C12 | Lobs 43 every 2.2s. 96 HP, 3 turns |
-| River Lung | Uncommon | D4 | Heals you 5 every 2s. 53 HP, 2 turns |
-| Frost Giant | Rare | E4 | Blocks with 147 HP, hits for 9. 2 turns |
-| Pirate Deckhand | Common | F10 | Shoots 15 down its row. 62 HP, 3 turns |
-| Buccaneer Captain | Rare | A8 | Shoots 18 down its row. 71 HP, 2 turns |
-| Powder Monkey | Common | D12 | Lobs 30 every 2.2s. 66 HP, 3 turns |
-| Flying Dutchman's Captain | Legendary | E6 | Shoots 19 down its row. 75 HP, 2 turns |
-| Drowned Sailor | Common | C11 | Lobs 29 every 2.2s. 64 HP, 3 turns |
-| Snow Maiden | Common | B9 | Heals you 6 every 2s. 59 HP, 3 turns |
-| Yuki-onna | Rare | E2 | Shoots 13 down its row. 53 HP, 2 turns |
-| Kayak Hunter | Common | D8 | Shoots 14 down its row. 57 HP, 2 turns |
-| Polar Bear | Uncommon | A1 | Blocks with 112 HP, hits for 7. 2 turns |
-| River Mother's Herald | Uncommon | F4 | Heals you 5 every 2s. 53 HP, 2 turns |
-| Vodyanoy | Uncommon | C9 | Lobs 30 every 2.2s. 66 HP, 3 turns |
-| Ahuizotl | Uncommon | B6 | Shoots 15 down its row. 58 HP, 2 turns |
-| Taniwha | Rare | E8 | Blocks with 178 HP, hits for 11. 3 turns |
+| Merrow | Common | D3 | Shoots 11 down its row. 45 HP, 20 seconds |
+| Mermaid Singer | Uncommon | A5 | Heals you 6 every 2s. 56 HP, 20 seconds |
+| Merman Spearman | Common | F9 | Blocks with 148 HP, hits for 9. 30 seconds |
+| Merfolk Tidecaller | Uncommon | A12 | Lobs 33 every 2.2s. 74 HP, 30 seconds |
+| Ningyo | Uncommon | F5 | Heals you 6 every 2s. 56 HP, 20 seconds |
+| Siren | Rare | C9 | Shoots 19 down its row. 74 HP, 30 seconds |
+| Selkie | Uncommon | B10 | Heals you 7 every 2s. 69 HP, 30 seconds |
+| Nixie | Common | A4 | Shoots 12 down its row. 47 HP, 20 seconds |
+| Rusalka | Rare | F1 | Shoots 13 down its row. 50 HP, 10 seconds |
+| Kappa | Common | D1 | Blocks with 100 HP, hits for 6. 20 seconds |
+| Umibozu | Rare | E11 | Blocks with 200 HP, hits for 12. 40 seconds |
+| Yeti | Uncommon | B11 | Blocks with 179 HP, hits for 11. 40 seconds |
+| Yeti Cub | Common | C8 | Blocks with 142 HP, hits for 9. 30 seconds |
+| Yeti Matriarch | Rare | B5 | Blocks with 155 HP, hits for 9. 30 seconds |
+| Snowman | Common | C7 | Blocks with 136 HP, hits for 8. 30 seconds |
+| Winter Wolf | Common | F4 | Shoots 12 down its row. 47 HP, 20 seconds |
+| Frost Wolf Alpha | Uncommon | A10 | Blocks with 172 HP, hits for 10. 30 seconds |
+| Rockhopper Penguin | Common | F4 | Lobs 21 every 2.2s. 47 HP, 20 seconds |
+| Walrus | Uncommon | ✱7 | Blocks with 152 HP, hits for 9. 30 seconds |
+| Narwhal | Uncommon | A10 | Shoots 17 down its row. 69 HP, 30 seconds |
+| Orca | Rare | F11 | Lobs 36 every 2.2s. 80 HP, 30 seconds |
+| Hammerhead Shark | Uncommon | E4 | Shoots 13 down its row. 53 HP, 20 seconds |
+| Great White Shark | Rare | D12 | Lobs 37 every 2.2s. 83 HP, 30 seconds |
+| Sea Turtle | Common | E2 | Heals you 4 every 2s. 42 HP, 20 seconds |
+| Zaratan the Island Turtle | Legendary | D2 | Blocks with 154 HP, hits for 9. 20 seconds |
+| King Crab | Uncommon | C8 | Blocks with 159 HP, hits for 10. 30 seconds |
+| Giant Squid | Rare | B7 | Lobs 31 every 2.2s. 68 HP, 20 seconds |
+| The Kraken | Legendary | E5 | Blocks with 180 HP, hits for 11. 30 seconds |
+| Kraken Spawn | Common | D7 | Lobs 24 every 2.2s. 54 HP, 20 seconds |
+| Leviathan | Legendary | F7 | Blocks with 197 HP, hits for 12. 30 seconds |
+| Bunyip of the Billabong | Uncommon | A4 | Blocks with 132 HP, hits for 8. 20 seconds |
+| Sea Serpent | Rare | B11 | Shoots 20 down its row. 80 HP, 30 seconds |
+| Dragon King of the Deep | Legendary | C12 | Lobs 43 every 2.2s. 96 HP, 30 seconds |
+| River Lung | Uncommon | D4 | Heals you 5 every 2s. 53 HP, 20 seconds |
+| Frost Giant | Rare | E4 | Blocks with 147 HP, hits for 9. 20 seconds |
+| Pirate Deckhand | Common | F10 | Shoots 15 down its row. 62 HP, 30 seconds |
+| Buccaneer Captain | Rare | A8 | Shoots 18 down its row. 71 HP, 20 seconds |
+| Powder Monkey | Common | D12 | Lobs 30 every 2.2s. 66 HP, 30 seconds |
+| Flying Dutchman's Captain | Legendary | E6 | Shoots 19 down its row. 75 HP, 20 seconds |
+| Drowned Sailor | Common | C11 | Lobs 29 every 2.2s. 64 HP, 30 seconds |
+| Snow Maiden | Common | B9 | Heals you 6 every 2s. 59 HP, 30 seconds |
+| Yuki-onna | Rare | E2 | Shoots 13 down its row. 53 HP, 20 seconds |
+| Kayak Hunter | Common | D8 | Shoots 14 down its row. 57 HP, 20 seconds |
+| Polar Bear | Uncommon | A1 | Blocks with 112 HP, hits for 7. 20 seconds |
+| River Mother's Herald | Uncommon | F4 | Heals you 5 every 2s. 53 HP, 20 seconds |
+| Vodyanoy | Uncommon | C9 | Lobs 30 every 2.2s. 66 HP, 30 seconds |
+| Ahuizotl | Uncommon | B6 | Shoots 15 down its row. 58 HP, 20 seconds |
+| Taniwha | Rare | E8 | Blocks with 178 HP, hits for 11. 30 seconds |
 
 ## Machines (10)
 
 | Card | Rarity | Rune | What it does |
 |---|---|---|---|
-| Ship's Cannon | Uncommon | B1 | Turret: 10 every 1.4s, 50 HP, 3 turns |
-| Broadside Battery | Rare | A7 | Repeater: 8 every 0.5s, 59 HP, 2 turns |
-| Harpoon Ballista | Uncommon | F1 | Turret: 10 every 1.4s, 50 HP, 3 turns |
-| Harpoon Launcher | Common | E12 | Turret: 15 every 1.4s, 75 HP, 3 turns |
-| Ice Catapult | Common | D10 | Mortar: lobs 34 every 2.5s, 46 HP, 2 turns |
-| Mortar Ketch | Uncommon | C1 | Mortar: lobs 25 every 2.5s, 34 HP, 2 turns |
-| Sluice Gate Bulwark | Uncommon | B12 | 2 iron walls of 167 HP, 3 turns |
-| Icebreaker Engine | Rare | A7 | 2 iron walls of 153 HP, 3 turns |
-| Waterwheel Repeater | Common | F7 | Repeater: 7 every 0.5s, 48 HP, 2 turns |
-| Diving Bell Automaton | Rare | B2 | Turret: 12 every 1.4s, 60 HP, 3 turns |
+| Ship's Cannon | Uncommon | B1 | Turret: 10 every 1.4s, 50 HP, 30 seconds |
+| Broadside Battery | Rare | A7 | Repeater: 8 every 0.5s, 59 HP, 20 seconds |
+| Harpoon Ballista | Uncommon | F1 | Turret: 10 every 1.4s, 50 HP, 30 seconds |
+| Harpoon Launcher | Common | E12 | Turret: 15 every 1.4s, 75 HP, 30 seconds |
+| Ice Catapult | Common | D10 | Mortar: lobs 34 every 2.5s, 46 HP, 20 seconds |
+| Mortar Ketch | Uncommon | C1 | Mortar: lobs 25 every 2.5s, 34 HP, 20 seconds |
+| Sluice Gate Bulwark | Uncommon | B12 | 2 iron walls of 167 HP, 30 seconds |
+| Icebreaker Engine | Rare | A7 | 2 iron walls of 153 HP, 30 seconds |
+| Waterwheel Repeater | Common | F7 | Repeater: 7 every 0.5s, 48 HP, 20 seconds |
+| Diving Bell Automaton | Rare | B2 | Turret: 12 every 1.4s, 60 HP, 30 seconds |
 
 ## Walls & shields (16)
 
 | Card | Rarity | Rune | What it does |
 |---|---|---|---|
-| ★ Rime Wall | Common | A4 | 3 walls of 40 HP, 2 turns |
-| ★ Frost Ward | Common | A2 | Shield of 50 for 2 turns; replaces your current shield |
-| Sea Wall | Common | A2 | 2 walls of 37 HP, 2 turns |
-| Beaver Dam | Common | B10 | 3 walls of 54 HP, 2 turns |
-| Great Dam | Rare | C11 | 3 walls of 70 HP, 3 turns |
-| Ice Palace Gate | Uncommon | D1 | 2 walls of 39 HP, 2 turns |
-| Snow Fort | Common | E10 | 3 walls of 54 HP, 2 turns |
-| Igloo | Common | F8 | Shield of 64 for 2 turns; replaces your current shield |
-| Coral Reef | Uncommon | A8 | 3 walls of 56 HP that hit back for 10, 2 turns |
-| Sea Urchin Bed | Common | B4 | 2 walls of 41 HP that hit back for 7, 2 turns |
-| Bubble Shield | Common | C12 | Shield of 75 for 2 turns; replaces your current shield |
-| Mirror of Still Water | Uncommon | A11 | Shield of 81 for 2 turns; replaces your current shield |
-| Kelp Curtain | Common | F8 | Shield of 64 for 2 turns; replaces your current shield |
-| Pack Ice Bulwark | Uncommon | E3 | 2 walls of 44 HP, 2 turns |
-| Walls of Ys | Legendary | D10 | 3 walls of 78 HP, 3 turns |
-| Dome of Atlantis | Rare | E10 | Shield of 87 for 3 turns; replaces your current shield |
+| ★ Rime Wall | Common | A4 | 3 walls of 40 HP, 20 seconds |
+| ★ Frost Ward | Common | A2 | Shield of 50 for 20 seconds; replaces your current shield |
+| Sea Wall | Common | A2 | 2 walls of 37 HP, 20 seconds |
+| Beaver Dam | Common | B10 | 3 walls of 54 HP, 20 seconds |
+| Great Dam | Rare | C11 | 3 walls of 70 HP, 30 seconds |
+| Ice Palace Gate | Uncommon | D1 | 2 walls of 39 HP, 20 seconds |
+| Snow Fort | Common | E10 | 3 walls of 54 HP, 20 seconds |
+| Igloo | Common | F8 | Shield of 64 for 20 seconds; replaces your current shield |
+| Coral Reef | Uncommon | A8 | 3 walls of 56 HP that hit back for 10, 20 seconds |
+| Sea Urchin Bed | Common | B4 | 2 walls of 41 HP that hit back for 7, 20 seconds |
+| Bubble Shield | Common | C12 | Shield of 75 for 20 seconds; replaces your current shield |
+| Mirror of Still Water | Uncommon | A11 | Shield of 81 for 20 seconds; replaces your current shield |
+| Kelp Curtain | Common | F8 | Shield of 64 for 20 seconds; replaces your current shield |
+| Pack Ice Bulwark | Uncommon | E3 | 2 walls of 44 HP, 20 seconds |
+| Walls of Ys | Legendary | D10 | 3 walls of 78 HP, 30 seconds |
+| Dome of Atlantis | Rare | E10 | Shield of 87 for 30 seconds; replaces your current shield |
 
 ## Turrets (13)
 
 | Card | Rarity | Rune | What it does |
 |---|---|---|---|
-| ★ Icicle Spire | Uncommon | B6 | Tower: 12 every 1.4s, 40 HP, 2 turns. Slow 2s |
-| Inuksuk Watcher | Common | D6 | Tower: 18 every 1.5s, 40 HP, 2 turns |
-| Lighthouse | Uncommon | A9 | Tower: 11 every 0.9s, 40 HP, 2 turns. Stun 1.7s |
-| Ice Spike Totem | Common | F10 | Tower: 11 every 0.9s, 40 HP, 2 turns. Freeze 2.5s |
-| Narwhal Horn Totem | Common | C1 | Tower: 8 every 0.9s, 40 HP, 1 turn |
-| Figurehead Sentinel | Uncommon | B12 | Tower: 9 every 0.6s, 40 HP, 2 turns. Curse 6.6s |
-| Coral Spire | Common | E3 | Tower: 5 every 0.6s, 40 HP, 1 turn. Poison 6 |
-| Siren Rock | Rare | D7 | Tower: 20 every 1.5s, 40 HP, 2 turns. Confuse 4.4s |
-| Fountain of Youth | Rare | C6 | Tower: 7 every 0.6s, 40 HP, 2 turns. Mend 4 |
-| Rime Giant Cairn | Uncommon | B1 | Tower: 13 every 1.5s, 40 HP, 1 turn. Slow 2.3s |
-| Whale Bone Arch | Common | B7 | Tower: 17 every 1.5s, 40 HP, 2 turns. Knockback |
-| Lantern of the Drowned | Rare | C6 | Tower: 11 every 0.9s, 40 HP, 2 turns. Drain 40% |
-| Tide Pole | Common | F11 | Tower: 16 every 1.2s, 40 HP, 2 turns. Pull |
+| ★ Icicle Spire | Uncommon | B6 | Tower: 12 every 1.4s, 40 HP, 20 seconds. Slow 2s |
+| Inuksuk Watcher | Common | D6 | Tower: 18 every 1.5s, 40 HP, 20 seconds |
+| Lighthouse | Uncommon | A9 | Tower: 11 every 0.9s, 40 HP, 20 seconds. Stun 1.7s |
+| Ice Spike Totem | Common | F10 | Tower: 11 every 0.9s, 40 HP, 20 seconds. Freeze 2.5s |
+| Narwhal Horn Totem | Common | C1 | Tower: 8 every 0.9s, 40 HP, 10 seconds |
+| Figurehead Sentinel | Uncommon | B12 | Tower: 9 every 0.6s, 40 HP, 20 seconds. Curse 6.6s |
+| Coral Spire | Common | E3 | Tower: 5 every 0.6s, 40 HP, 10 seconds. Poison 6 |
+| Siren Rock | Rare | D7 | Tower: 20 every 1.5s, 40 HP, 20 seconds. Confuse 4.4s |
+| Fountain of Youth | Rare | C6 | Tower: 7 every 0.6s, 40 HP, 20 seconds. Mend 4 |
+| Rime Giant Cairn | Uncommon | B1 | Tower: 13 every 1.5s, 40 HP, 10 seconds. Slow 2.3s |
+| Whale Bone Arch | Common | B7 | Tower: 17 every 1.5s, 40 HP, 20 seconds. Knockback |
+| Lantern of the Drowned | Rare | C6 | Tower: 11 every 0.9s, 40 HP, 20 seconds. Drain 40% |
+| Tide Pole | Common | F11 | Tower: 16 every 1.2s, 40 HP, 20 seconds. Pull |
 
 ## Buffs (17)
 
@@ -249,34 +249,34 @@ Common 93 · Uncommon 74 · Legendary 24 · Rare 43
 
 | Card | Rarity | Rune | What it does |
 |---|---|---|---|
-| Ice Hole | Common | F11 | Snare: 24 and roots when an enemy steps on the tile you aim; 2 turns. Freeze 2.7s, Stun 2.6s |
-| Thin Ice | Common | C1 | Snare: 18 and roots when an enemy steps on the tile you aim; 2 turns. Stun 1.6s |
-| Hidden Reef | Common | B1 | Spike trap: 38 when an enemy steps on the tile you aim; 2 turns |
-| Fishing Net | Common | C10 | Snare: 24 and roots when an enemy steps on the tile you aim; 2 turns. Stun 2.5s, Slow 5s |
-| Sunken Mine | Uncommon | B9 | Blast trap: 41 to it and around it when an enemy steps on the tile you aim; 2 turns. Knockback |
-| Sea Mine | Uncommon | E1 | Blast trap: 25 to it and around it when an enemy steps on the tile you aim; 2 turns. Stun 0.9s |
-| Kelp Tangle | Common | D9 | Snare: 23 and roots when an enemy steps on the tile you aim; 2 turns. Stun 2.4s, Slow 4.7s |
-| Ice Spike Pit | Uncommon | C12 | Spike trap: 60 when an enemy steps on the tile you aim; 2 turns. Freeze 2.8s |
-| Siren's Shoal | Rare | B12 | Snare: 32 and roots when an enemy steps on the tile you aim; 2 turns. Stun 2.7s, Confuse 5.4s |
-| Davy Jones' Locker | Legendary | F1 | Blast trap: 32 to it and around it when an enemy steps on the tile you aim; 2 turns. Drain 30% |
+| Ice Hole | Common | F11 | Snare: 24 and roots when an enemy steps on the tile you aim; 20 seconds. Freeze 2.7s, Stun 2.6s |
+| Thin Ice | Common | C1 | Snare: 18 and roots when an enemy steps on the tile you aim; 20 seconds. Stun 1.6s |
+| Hidden Reef | Common | B1 | Spike trap: 38 when an enemy steps on the tile you aim; 20 seconds |
+| Fishing Net | Common | C10 | Snare: 24 and roots when an enemy steps on the tile you aim; 20 seconds. Stun 2.5s, Slow 5s |
+| Sunken Mine | Uncommon | B9 | Blast trap: 41 to it and around it when an enemy steps on the tile you aim; 20 seconds. Knockback |
+| Sea Mine | Uncommon | E1 | Blast trap: 25 to it and around it when an enemy steps on the tile you aim; 20 seconds. Stun 0.9s |
+| Kelp Tangle | Common | D9 | Snare: 23 and roots when an enemy steps on the tile you aim; 20 seconds. Stun 2.4s, Slow 4.7s |
+| Ice Spike Pit | Uncommon | C12 | Spike trap: 60 when an enemy steps on the tile you aim; 20 seconds. Freeze 2.8s |
+| Siren's Shoal | Rare | B12 | Snare: 32 and roots when an enemy steps on the tile you aim; 20 seconds. Stun 2.7s, Confuse 5.4s |
+| Davy Jones' Locker | Legendary | F1 | Blast trap: 32 to it and around it when an enemy steps on the tile you aim; 20 seconds. Drain 30% |
 
 ## Field effects (13)
 
 | Card | Rarity | Rune | What it does |
 |---|---|---|---|
-| Frozen Lake | Common | F4 | Ices the ground, halving enemy speed, on the tile you aim and around it for 1 turn |
-| Permafrost | Common | E10 | Ices the ground, halving enemy speed, along the aimed tile's row for 2 turns |
-| Black Ice | Uncommon | D9 | Ices the ground, halving enemy speed, in a cross on the tile you aim for 2 turns |
-| Snowfield | Common | E10 | Ices the ground, halving enemy speed, on the tile you aim and around it for 2 turns |
+| Frozen Lake | Common | F4 | Ices the ground, halving enemy speed, on the tile you aim and around it for 10 seconds |
+| Permafrost | Common | E10 | Ices the ground, halving enemy speed, along the aimed tile's row for 20 seconds |
+| Black Ice | Uncommon | D9 | Ices the ground, halving enemy speed, in a cross on the tile you aim for 20 seconds |
+| Snowfield | Common | E10 | Ices the ground, halving enemy speed, on the tile you aim and around it for 20 seconds |
 | Tsunami Surge | Rare | D3 | Tremor deals 20 along the aimed tile's row. Stun 1s |
 | Rolling Breakers | Uncommon | C8 | Tremor deals 22 along the aimed tile's row. Stun 1.4s |
 | Flood Plain | Uncommon | B9 | Tremor deals 23 down the aimed tile's column. Stun 1.5s |
-| Iceberg Field | Uncommon | C12 | Ices the ground, halving enemy speed, in a cross on the tile you aim for 2 turns |
-| Polar Night | Rare | B9 | Ices the ground, halving enemy speed, on the tile you aim and around it for 2 turns |
-| Kelp Forest | Common | F6 | Grows brambles that deal 10 per step on the tile you aim and around it for 1 turn |
-| Mangrove Roots | Common | A3 | Grows brambles that deal 9 per step down the aimed tile's column for 1 turn |
-| Sargasso Sea | Uncommon | B9 | Grows brambles that deal 13 per step in a cross on the tile you aim for 2 turns |
-| Fimbulwinter | Legendary | C5 | Ices the ground, halving enemy speed, along the aimed tile's row for 1 turn |
+| Iceberg Field | Uncommon | C12 | Ices the ground, halving enemy speed, in a cross on the tile you aim for 20 seconds |
+| Polar Night | Rare | B9 | Ices the ground, halving enemy speed, on the tile you aim and around it for 20 seconds |
+| Kelp Forest | Common | F6 | Grows brambles that deal 10 per step on the tile you aim and around it for 10 seconds |
+| Mangrove Roots | Common | A3 | Grows brambles that deal 9 per step down the aimed tile's column for 10 seconds |
+| Sargasso Sea | Uncommon | B9 | Grows brambles that deal 13 per step in a cross on the tile you aim for 20 seconds |
+| Fimbulwinter | Legendary | C5 | Ices the ground, halving enemy speed, along the aimed tile's row for 10 seconds |
 
 ## Legendary pieces (6)
 

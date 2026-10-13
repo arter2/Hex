@@ -39,7 +39,7 @@ const TYPES={
   tinker:{name:'Tinker', icon:'🔧', text:'Tap it, then pick a card in your hand or queue: that card is upgraded for the whole battle'},
   ace:   {name:'Ace',    icon:'♠', text:'Loads into your Sidearm instead of going off; fire it when you need a finisher'},
   aceup: {name:'Ace Enchantment',icon:'♤', text:'Powers up or changes the Ace in your Sidearm (or the next one you load)'},
-  claim: {name:'Claim',  icon:'⚑', text:'Takes ground from the enemy side for a few turns: you can walk and summon there'},
+  claim: {name:'Claim',  icon:'⚑', text:'Takes ground from the enemy side for a while: you can walk and summon there'},
 };
 /* Claimed land: Verdant, Shadow, Light and Frost can take the enemy's front tiles for a few turns.
    Each color's ground drives the enemies off its own way and helps you while you stand on it. */
@@ -328,7 +328,7 @@ const HEROES=[
   {id:'hero_pyra',  name:'Pyra, the Ember Queen', color:'fire',    hero:'pyra',        pow:40, rate:1.6, hp:150, burn:3,
    attack:'hurls fireballs of {pow} that splash',          aura:'your cards and wand deal +30%'},
   {id:'hero_ysolde',name:'Ysolde of the Rime',    color:'frost',   hero:'ysolde',      pow:26, rate:1.4, hp:170, freeze:1.2, amt:30,
-   attack:'fires freezing bolts of {pow}',                 aura:'you get a shield of 30 now and at the start of each turn'},
+   attack:'fires freezing bolts of {pow}',                 aura:'you get a shield of 30 now and every 10 seconds'},
   {id:'hero_volta', name:'Captain Volta',         color:'storm',   hero:'volta',       pow:22, rate:1.3, hp:140, stun:.6,
    attack:'chains lightning of {pow} through 3 enemies',   aura:'your Spell gauge fills 50% faster and you cast faster'},
   {id:'hero_thorn', name:'The Thornfather',       color:'verdant', hero:'thornfather', pow:20, rate:1.5, hp:200, poison:6, amt:3,
@@ -345,7 +345,7 @@ const HEROES=[
   {id:'hero_winter',name:'Old Man Winter',         color:'frost',   hero:'winter',  style:'sky',   pow:30, rate:1.6, hp:180, freeze:.8, aurae:{slowfoes:.25},
    attack:'drops hail of {pow} from above that freezes',  aura:'enemies act 25% slower'},
   {id:'hero_glacia',name:'Glacia the Mirror',      color:'frost',   hero:'glacia',  style:'row',   pow:24, rate:1.5, hp:160, slow:2, aurae:{shield:20},
-   attack:'fires a piercing ray of {pow} down its row',   aura:'you get a shield of 20 now and at the start of each turn'},
+   attack:'fires a piercing ray of {pow} down its row',   aura:'you get a shield of 20 now and every 10 seconds'},
   {id:'hero_zephyra',name:'Zephyra, Wind Rider',   color:'storm',   hero:'zephyra', style:'multi', n:3, pow:16, rate:1.2, hp:130, aurae:{dodge:.2},
    attack:'looses 3 gusts of {pow}',                       aura:'you dodge 20% of hits'},
   {id:'hero_raijin',name:'Raijin, the Thunder King',color:'storm',  hero:'raijin',  style:'chain', n:4, pow:24, rate:1.5, hp:170, stun:.4, aurae:{gauge:1.3},
@@ -382,7 +382,7 @@ const HEROES=[
   {id:'hero_emberly', name:'Emberly the Lamplighter', color:'fire', hero:'emberly', style:'chain', n:3, pow:20, rate:1.4, hp:140, burn:2, aurae:{gauge:1.3},
    attack:'chains flame of {pow} through 3 enemies', aura:'your Spell gauge fills 30% faster'},
   {id:'hero_pyrrhus', name:'Pyrrhus the Bombardier', color:'fire', hero:'pyrrhus', style:'lob', pow:40, rate:1.9, hp:180, burn:2, aurae:{shield:20},
-   attack:'lobs firebombs of {pow} that splash', aura:'you get a shield of 20 now and at the start of each turn'},
+   attack:'lobs firebombs of {pow} that splash', aura:'you get a shield of 20 now and every 10 seconds'},
   {id:'hero_scorch', name:'Scorch, the Red Fox', color:'fire', hero:'scorch', style:'multi', n:3, pow:17, rate:1.2, hp:130, burn:1, aurae:{dodge:0.2},
    attack:'throws 3 fire darts of {pow} at random enemies', aura:'you dodge 20% of hits'},
   {id:'hero_salamandra', name:'Salamandra', color:'fire', hero:'salamandra', style:'arc', pow:30, rate:1.3, hp:160, burn:4, aurae:{drain:0.12},
@@ -392,7 +392,7 @@ const HEROES=[
   {id:'hero_boreas', name:'Boreas, the North Wind', color:'frost', hero:'boreas', style:'multi', n:4, pow:13, rate:1.3, hp:140, slow:2, aurae:{slowfoes:0.2},
    attack:'blows 4 icy gusts of {pow} at random enemies that slow', aura:'enemies act 20% slower'},
   {id:'hero_frida', name:'Frida Snowveil', color:'frost', hero:'frida', style:'sky', pow:26, rate:1.6, hp:160, freeze:0.8, aurae:{shield:25},
-   attack:'calls an ice spike of {pow} down on an enemy that freezes', aura:'you get a shield of 25 now and at the start of each turn'},
+   attack:'calls an ice spike of {pow} down on an enemy that freezes', aura:'you get a shield of 25 now and every 10 seconds'},
   {id:'hero_tundra', name:'Tundra the Mammoth Lord', color:'frost', hero:'tundra', style:'burst', pow:18, rate:1.7, hp:240, slow:3, aurae:{armor:0.2},
    attack:'stamps a frost quake of {pow} around an enemy that slows', aura:'you take 20% less damage'},
   {id:'hero_sora', name:'Rimeblade Sora', color:'frost', hero:'sora', style:'arc', pow:36, rate:1.4, hp:140, freeze:0.6, aurae:{crit:0.15},
@@ -428,7 +428,7 @@ const HEROES=[
   {id:'hero_stati', name:'Stati, the Static Witch', color:'storm', hero:'stati', style:'chain', n:3, pow:22, rate:1.4, hp:140, stun:0.3, aurae:{drain:0.12},
    attack:'chains static of {pow} through 3 enemies', aura:'you heal 12% of all damage you deal'},
   {id:'hero_kiri', name:'Squall Rider Kiri', color:'storm', hero:'kiri', style:'multi', n:3, pow:17, rate:1.2, hp:130, aurae:{shield:20},
-   attack:'looses 3 wind arrows of {pow} at random enemies', aura:'you get a shield of 20 now and at the start of each turn'},
+   attack:'looses 3 wind arrows of {pow} at random enemies', aura:'you get a shield of 20 now and every 10 seconds'},
   {id:'hero_thunderbird', name:'The Thunderbird', color:'storm', hero:'thunderbird', style:'sky', pow:26, rate:1.5, hp:150, stun:0.4, aurae:{dmg:0.15},
    attack:'dives from the clouds on an enemy for {pow} that stuns', aura:'your cards and wand deal +15%'},
   {id:'hero_ozone', name:'Ozone the Tinker', color:'storm', hero:'ozone', style:'lob', pow:34, rate:1.8, hp:160, stun:0.4, aurae:{gauge:1.2},
@@ -438,7 +438,7 @@ const HEROES=[
   {id:'hero_sylva', name:'Sylva the Wild Archer', color:'verdant', hero:'sylva', style:'multi', n:4, pow:13, rate:1.3, hp:130, poison:2, aurae:{dodge:0.2},
    attack:'looses 4 thorn arrows of {pow} at random enemies', aura:'you dodge 20% of hits'},
   {id:'hero_mossback', name:'Mossback the Tortoise Sage', color:'verdant', hero:'mossback', style:'row', pow:20, rate:1.6, hp:230, slow:2, aurae:{shield:25},
-   attack:'casts a piercing moss beam of {pow} down its row that slows', aura:'you get a shield of 25 now and at the start of each turn'},
+   attack:'casts a piercing moss beam of {pow} down its row that slows', aura:'you get a shield of 25 now and every 10 seconds'},
   {id:'hero_venna', name:'Venna, the Viper Queen', color:'verdant', hero:'venna', style:'arc', pow:30, rate:1.3, hp:150, poison:8, aurae:{drain:0.12},
    attack:'strikes an enemy for {pow} with a poison fang', aura:'you heal 12% of all damage you deal'},
   {id:'hero_lia', name:'Bloomwarden Lia', color:'verdant', hero:'lia', style:'sky', pow:22, rate:1.6, hp:160, poison:3, aurae:{regen:3},
@@ -456,7 +456,7 @@ const HEROES=[
   {id:'hero_thistle', name:'Thistle the Hedge Knight', color:'verdant', hero:'thistle', style:'row', pow:24, rate:1.5, hp:190, poison:3, aurae:{haste:1},
    attack:'fires a piercing thorn volley of {pow} down its row', aura:'you cast faster'},
   {id:'hero_seraphiel', name:'Seraphiel', color:'light', hero:'seraphiel', style:'sky', pow:26, rate:1.6, hp:170, heal:8, aurae:{shield:25},
-   attack:'calls holy fire of {pow} on an enemy and heals you 8', aura:'you get a shield of 25 now and at the start of each turn'},
+   attack:'calls holy fire of {pow} on an enemy and heals you 8', aura:'you get a shield of 25 now and every 10 seconds'},
   {id:'hero_cassia', name:'Dawn Knight Cassia', color:'light', hero:'cassia', style:'arc', pow:36, rate:1.4, hp:170, aurae:{armor:0.2},
    attack:'strikes an enemy for {pow} with a radiant blade', aura:'you take 20% less damage'},
   {id:'hero_lux', name:'Lux the Lantern Bearer', color:'light', hero:'lux', style:'row', pow:22, rate:1.5, hp:150, aurae:{regen:2},
@@ -492,7 +492,7 @@ const HEROES=[
   {id:'hero_arachna', name:'Arachna', color:'shadow', hero:'arachna', style:'multi', n:3, pow:17, rate:1.3, hp:150, slow:2, aurae:{dodge:0.15},
    attack:'spits 3 webs of {pow} at random enemies that slow', aura:'you dodge 15% of hits'},
   {id:'hero_necros', name:'Necros the Bone Lord', color:'shadow', hero:'necros', style:'lob', pow:34, rate:1.8, hp:180, curse:3, aurae:{shield:20},
-   attack:'hurls a bone bomb of {pow} that splashes', aura:'you get a shield of 20 now and at the start of each turn'},
+   attack:'hurls a bone bomb of {pow} that splashes', aura:'you get a shield of 20 now and every 10 seconds'},
   {id:'hero_corvina', name:'Corvina, Raven Witch', color:'shadow', hero:'corvina', style:'sky', pow:24, rate:1.5, hp:140, confuse:1.5, aurae:{haste:1},
    attack:'sends ravens down on an enemy for {pow} that confuse', aura:'you cast faster'},
 ].map(h=>Object.assign({type:'hero', rank:7, rarity:'hero', turns:3},h));
@@ -519,8 +519,8 @@ const GROVEBEAST={id:'hero_grovebeast', name:'Elder Grovebeast', color:'verdant'
   pow:34, rate:1.4, hp:300, poison:4, aurae:{regen:3}, attack:'stamps thorns of {pow} around an enemy', aura:'you heal 3 a second, and it calls two Sprout Imps'};
 const CARD_LIST=SIGNATURE.concat(generateCards(),HEROES,POTIONS,BROOD);
 /* Nothing a card puts on the board lasts forever: shields, walls, towers, summons, machines,
-   traps and changed ground each have HP (or a strength) and a turn limit. A turn ends each time
-   the Custom screen opens. Applied after generation, so card ids are unchanged. */
+   traps and changed ground each have HP (or a strength) and a time limit, written as turns
+   here: each is 10 seconds of fighting (TURN_S in battle.js). Applied after generation, so card ids are unchanged. */
 function boardTurns(c){
   const k=c.type==='piece'?c.base:c.type==='instant'?c.as:c.type, big=c.rarity==='rare'||c.rarity==='legendary';
   if(k==='ward') c.turns=big?3:2;
@@ -531,7 +531,7 @@ function boardTurns(c){
   else if(k==='environment'&&c.dur){ c.turns=c.dur>=10?2:1; delete c.dur; }
 }
 CARD_LIST.forEach(boardTurns);
-// Gray creatures stay a turn longer: Veteran makes them better the longer they stand
+// Gray creatures stay 10 seconds longer: Veteran makes them better the longer they stand
 CARD_LIST.forEach(c=>{ if(c.color==='gray'&&c.type==='summon'&&c.turns) c.turns++; });
 
 /* Rune codes (Battle Network style). Every card carries a rune, A to F, or the rare wild ✱.
@@ -608,7 +608,7 @@ function cardRole(c){ const k=c.type==='piece'?c.base:c.type==='instant'?c.as:c.
 const PATTERN_TEXT={single:'', burst:' and around it', ring:' in a ring around it', cross:' in a cross', column:' down its column', row:' along its row'};
 const AREA_TEXT={burst:' on the tile you aim and around it', cross:' in a cross on the tile you aim', column:" down the aimed tile's column", row:" along the aimed tile's row"};
 const lobPattern=c=>c.pattern||(c.radius?'burst':'single');
-const tn=n=>n+' turn'+(n>1?'s':'');
+const tn=n=>n*10+' seconds';   // a card's turns are 10 s of fighting each (TURN_S in battle.js)
 function cardText(c){
   const kw=[];
   if(c.burn) kw.push('Burn '+c.burn+'s'); if(c.freeze) kw.push('Freeze '+c.freeze+'s'); if(c.stun) kw.push('Stun '+c.stun+'s');
@@ -655,7 +655,7 @@ function cardText(c){
   if(c.piece) t='Legendary piece. '+t;
   if(c.unstable) t='Unstable: 1 in 5 misfires and hurts you. '+t;
   if(c.legend) t+='. Legend: your other Gray creatures deal +25% while it stands';
-  if(c.color==='gray'&&kind==='summon') t+=c.ai==='guardian'?'. Guardian: takes hits aimed at you. Veteran: +10% each turn':'. Veteran: +10% power each turn it survives';
+  if(c.color==='gray'&&kind==='summon') t+=c.ai==='guardian'?'. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds':'. Veteran: +10% power for every 10 seconds it survives';
   if(c.race&&RACES_TECH[c.race]) t+='. '+RACES_TECH[c.race]+' tech'+(c.pow||c.amt||c.hp||c.tk||c.eqPow||c.eqHp||c.upPow?': +10% for each other '+RACES_TECH[c.race]+' card in your hand':'');
   return t+(kw.length?'. '+kw.join(', '):'');
 }

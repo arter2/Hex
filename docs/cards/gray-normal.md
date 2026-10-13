@@ -8,216 +8,216 @@ Common 96 · Uncommon 67 · Rare 44 · Legendary 18
 
 | Card | Rarity | Rune | What it does |
 |---|---|---|---|
-| Living Armor | Common | E1 | Blocks with 100 HP, hits for 6. 3 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Empty Helm Sentinel | Common | F4 | Blocks with 118 HP, hits for 7. 3 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Haunted Plate | Uncommon | A9 | Blocks with 166 HP, hits for 10. 4 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Rusted Suit of Armor | Common | B2 | Blocks with 106 HP, hits for 6. 3 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Gilded Parade Armor | Uncommon | C4 | Blocks with 132 HP, hits for 8. 3 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Black Knight's Armor | Rare | D10 | Blocks with 193 HP, hits for 12. 4 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Tin Soldier | Common | E12 | Blocks with 166 HP, hits for 10. 5 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Toy Knight | Common | B6 | Blocks with 130 HP, hits for 8. 4 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Clay Golem of Prague | Rare | C12 | Blocks with 207 HP, hits for 12. 5 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Mud Golem | Common | E6 | Blocks with 130 HP, hits for 8. 4 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Stone Golem | Common | D12 | Blocks with 166 HP, hits for 10. 5 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Iron Golem | Uncommon | C8 | Blocks with 159 HP, hits for 10. 4 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Talos, the Bronze Giant | Legendary | B2 | Blocks with 154 HP, hits for 9. 3 turns. Legend: your other Gray creatures deal +25% while it stands. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Cathedral Gargoyle | Common | C6 | Blocks with 130 HP, hits for 8. 4 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Grotesque | Common | B5 | Blocks with 124 HP, hits for 7. 4 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Waterspout Gargoyle | Uncommon | A8 | Blocks with 159 HP, hits for 10. 4 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Shisa | Common | F3 | Blocks with 112 HP, hits for 7. 3 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Komainu | Uncommon | C1 | Blocks with 112 HP, hits for 7. 3 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Guardian Lion of the Gate | Rare | B5 | Blocks with 155 HP, hits for 9. 4 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Nio Temple Guardian | Rare | F9 | Blocks with 185 HP, hits for 11. 4 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Dvarapala | Uncommon | A9 | Blocks with 166 HP, hits for 10. 4 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Moai Watcher | Rare | D8 | Blocks with 178 HP, hits for 11. 4 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Terracotta Spearman | Common | E8 | Blocks with 142 HP, hits for 9. 4 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Terracotta General | Rare | D6 | Blocks with 163 HP, hits for 10. 4 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Ushabti Servant | Common | E7 | Blocks with 136 HP, hits for 8. 4 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Scarecrow Sentinel | Common | B10 | Blocks with 154 HP, hits for 9. 4 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Shield Maiden | Uncommon | C8 | Blocks with 159 HP, hits for 10. 4 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Hoplite | Common | B5 | Blocks with 124 HP, hits for 7. 4 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Roman Centurion | Uncommon | C7 | Blocks with 152 HP, hits for 9. 4 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Gatehouse Sergeant | Common | A2 | Blocks with 106 HP, hits for 6. 3 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Castle Warden | Uncommon | F11 | Blocks with 179 HP, hits for 11. 5 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Watchtower Guard | Common | C1 | Blocks with 100 HP, hits for 6. 3 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Loyal Mastiff | Common | B10 | Blocks with 154 HP, hits for 9. 4 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Kangal Shepherd Dog | Uncommon | C7 | Blocks with 152 HP, hits for 9. 4 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Old Gray Bear | Uncommon | B9 | Blocks with 166 HP, hits for 10. 4 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Cave Bear | Common | E2 | Blocks with 106 HP, hits for 6. 3 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Wild Boar | Common | D4 | Blocks with 118 HP, hits for 7. 3 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Great Tortoise | Uncommon | C1 | Blocks with 112 HP, hits for 7. 3 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Snapping Turtle | Common | B12 | Blocks with 166 HP, hits for 10. 5 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Armadillo Knight | Uncommon | F9 | Blocks with 166 HP, hits for 10. 4 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Ironback Beetle | Common | A8 | Blocks with 142 HP, hits for 9. 4 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Mimic Chest | Uncommon | B5 | Blocks with 139 HP, hits for 8. 4 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| War Elephant | Rare | C3 | Blocks with 140 HP, hits for 8. 3 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Ox of the Plough | Common | B6 | Blocks with 130 HP, hits for 8. 4 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Aurochs | Uncommon | C4 | Blocks with 132 HP, hits for 8. 3 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Wandering Ronin | Uncommon | ✱12 | Blocks with 186 HP, hits for 11. 5 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Bridge Troll | Uncommon | E5 | Blocks with 139 HP, hits for 8. 4 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Ettin | Rare | B11 | Blocks with 200 HP, hits for 12. 5 turns. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Longbow Yeoman | Common | C1 | Shoots 10 down its row. 40 HP, 2 turns. Veteran: +10% power each turn it survives |
-| Village Archer | Common | ✱4 | Shoots 12 down its row. 47 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Shepherd Slinger | Common | F11 | Shoots 16 down its row. 64 HP, 4 turns. Veteran: +10% power each turn it survives |
-| Scythian Horse Archer | Uncommon | E5 | Shoots 14 down its row. 56 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Steppe Rider | Uncommon | D9 | Shoots 17 down its row. 66 HP, 4 turns. Veteran: +10% power each turn it survives |
-| Amazon Archer | Uncommon | C11 | Shoots 18 down its row. 72 HP, 4 turns. Veteran: +10% power each turn it survives |
-| Mounted Bowman | Common | B2 | Shoots 11 down its row. 42 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Javelin Thrower | Common | A11 | Shoots 16 down its row. 64 HP, 4 turns. Veteran: +10% power each turn it survives |
-| Spear Hunter | Common | F5 | Shoots 12 down its row. 50 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Woodcutter | Common | C4 | Shoots 12 down its row. 47 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Bounty Hunter | Uncommon | B4 | Shoots 13 down its row. 53 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Wandering Ranger | Uncommon | F1 | Shoots 11 down its row. 45 HP, 2 turns. Veteran: +10% power each turn it survives |
-| Tracker | Common | A3 | Shoots 11 down its row. 45 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Falconer | Uncommon | ✱3 | Shoots 13 down its row. 50 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Hunting Falcon | Common | E5 | Shoots 12 down its row. 50 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Peregrine | Common | B8 | Shoots 14 down its row. 57 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Kestrel | Common | C9 | Shoots 15 down its row. 59 HP, 4 turns. Veteran: +10% power each turn it survives |
-| Osprey | Common | F3 | Shoots 11 down its row. 45 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Golden Eagle | Uncommon | A12 | Shoots 19 down its row. 74 HP, 4 turns. Veteran: +10% power each turn it survives |
-| Messenger Pigeon | Common | D8 | Shoots 14 down its row. 57 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Night Owl Scout | Common | E3 | Shoots 11 down its row. 45 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Horned Owl | Uncommon | E1 | Shoots 11 down its row. 45 HP, 2 turns. Veteran: +10% power each turn it survives |
-| Quill Porcupine | Common | D2 | Shoots 11 down its row. 42 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Spiny Hedgehog | Common | A10 | Shoots 15 down its row. 62 HP, 4 turns. Veteran: +10% power each turn it survives |
-| Spitting Llama | Common | F12 | Shoots 17 down its row. 66 HP, 4 turns. Veteran: +10% power each turn it survives |
-| Bactrian Camel | Uncommon | C9 | Shoots 17 down its row. 66 HP, 4 turns. Veteran: +10% power each turn it survives |
-| Gray Fox | Common | B2 | Shoots 11 down its row. 42 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Plains Wolf | Common | E9 | Shoots 15 down its row. 59 HP, 4 turns. Veteran: +10% power each turn it survives |
-| Lone Wolf | Uncommon | D10 | Shoots 17 down its row. 69 HP, 4 turns. Veteran: +10% power each turn it survives |
-| Alpha Wolf | Rare | A11 | Shoots 20 down its row. 80 HP, 4 turns. Veteran: +10% power each turn it survives |
-| Hunting Hound | Common | F4 | Shoots 12 down its row. 47 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Alley Cat | Common | D3 | Shoots 11 down its row. 45 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Lynx | Uncommon | E10 | Shoots 17 down its row. 69 HP, 4 turns. Veteran: +10% power each turn it survives |
-| Wildcat | Common | F10 | Shoots 15 down its row. 62 HP, 4 turns. Veteran: +10% power each turn it survives |
-| Sea Eagle | Uncommon | A3 | Shoots 13 down its row. 50 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Mountain Goat | Common | B4 | Shoots 12 down its row. 47 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Ibex | Uncommon | C5 | Shoots 14 down its row. 56 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Hippogriff | Uncommon | D6 | Shoots 15 down its row. 58 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Hippogriff Rider | Rare | E1 | Shoots 13 down its row. 50 HP, 2 turns. Veteran: +10% power each turn it survives |
-| War Griffin | Rare | F3 | Shoots 14 down its row. 56 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Royal Griffin | Legendary | ✱4 | Shoots 17 down its row. 68 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Sleipnir, the Eight-Legged Steed | Legendary | E12 | Shoots 24 down its row. 96 HP, 4 turns. Veteran: +10% power each turn it survives |
-| Arion, the Swift Horse | Rare | D12 | Shoots 21 down its row. 83 HP, 4 turns. Veteran: +10% power each turn it survives |
-| Bayard, the Magic Bay | Rare | C8 | Shoots 18 down its row. 71 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Uchchaihshravas | Legendary | B3 | Shoots 16 down its row. 65 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Wandering Bard | Common | C10 | Shoots 15 down its row. 62 HP, 4 turns. Veteran: +10% power each turn it survives |
-| Crossbow Militia | Common | B10 | Shoots 15 down its row. 62 HP, 4 turns. Veteran: +10% power each turn it survives |
-| Pikeman | Common | A6 | Shoots 13 down its row. 52 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Sellsword | Uncommon | F6 | Shoots 15 down its row. 58 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Veteran Captain | Rare | A11 | Shoots 20 down its row. 80 HP, 4 turns. Veteran: +10% power each turn it survives |
-| Errant Knight | Uncommon | F7 | Shoots 15 down its row. 61 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Cossack Rider | Uncommon | C8 | Shoots 16 down its row. 64 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Gaucho with Bolas | Uncommon | B1 | Shoots 11 down its row. 45 HP, 2 turns. Veteran: +10% power each turn it survives |
-| Mongol Outrider | Rare | A7 | Shoots 17 down its row. 68 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Maasai Spearman | Uncommon | F4 | Shoots 13 down its row. 53 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Zulu Impi | Uncommon | A10 | Shoots 17 down its row. 69 HP, 4 turns. Veteran: +10% power each turn it survives |
-| Viking Raider | Common | F11 | Shoots 16 down its row. 64 HP, 4 turns. Veteran: +10% power each turn it survives |
-| Hill Giant | Uncommon | E12 | Lobs 33 every 2.2s. 74 HP, 4 turns. Veteran: +10% power each turn it survives |
-| Rock-Throwing Cyclops | Rare | D7 | Lobs 31 every 2.2s. 68 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Stone Troll | Uncommon | E6 | Lobs 26 every 2.2s. 58 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Ogre Brute | Common | D9 | Lobs 27 every 2.2s. 59 HP, 4 turns. Veteran: +10% power each turn it survives |
-| Mountain Gorilla | Uncommon | B12 | Lobs 33 every 2.2s. 74 HP, 4 turns. Veteran: +10% power each turn it survives |
-| Sling Monkey | Common | C3 | Lobs 20 every 2.2s. 45 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Howler Monkey | Common | D8 | Lobs 26 every 2.2s. 57 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Coconut Crab | Common | E4 | Lobs 21 every 2.2s. 47 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Boulder Golem | Uncommon | F3 | Lobs 23 every 2.2s. 50 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Pebble Golem | Common | A9 | Lobs 27 every 2.2s. 59 HP, 4 turns. Veteran: +10% power each turn it survives |
-| Rock Elemental | Rare | B3 | Lobs 25 every 2.2s. 56 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Siege Ogre | Rare | C4 | Lobs 27 every 2.2s. 59 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Two-Headed Giant | Rare | D1 | Lobs 23 every 2.2s. 50 HP, 2 turns. Veteran: +10% power each turn it survives |
-| Jotun Hurler | Rare | E1 | Lobs 23 every 2.2s. 50 HP, 2 turns. Veteran: +10% power each turn it survives |
-| Fomorian Brute | Uncommon | C7 | Lobs 27 every 2.2s. 61 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Oni Pebble-Tosser | Common | B3 | Lobs 20 every 2.2s. 45 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Gremlin Pot-Thrower | Common | E11 | Lobs 29 every 2.2s. 64 HP, 4 turns. Veteran: +10% power each turn it survives |
-| Kobold Sapper | Common | D7 | Lobs 24 every 2.2s. 54 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Hobgoblin Grenadier | Uncommon | E5 | Lobs 25 every 2.2s. 56 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Barrel-Rolling Dwarf | Uncommon | D4 | Lobs 24 every 2.2s. 53 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Village Brawler | Common | A11 | Lobs 29 every 2.2s. 64 HP, 4 turns. Veteran: +10% power each turn it survives |
-| Tavern Bouncer | Common | F1 | Lobs 18 every 2.2s. 40 HP, 2 turns. Veteran: +10% power each turn it survives |
-| Mole Sapper | Common | A10 | Lobs 28 every 2.2s. 62 HP, 4 turns. Veteran: +10% power each turn it survives |
-| Badger | Common | F8 | Lobs 26 every 2.2s. 57 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Rampaging Rhino | Uncommon | B8 | Lobs 29 every 2.2s. 64 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Charging Bison | Common | C6 | Lobs 23 every 2.2s. 52 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Woolly Mammoth | Rare | F5 | Lobs 28 every 2.2s. 62 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Elephant Bird | Uncommon | A6 | Lobs 26 every 2.2s. 58 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Stone-Dropping Vulture | Common | F1 | Lobs 18 every 2.2s. 40 HP, 2 turns. Veteran: +10% power each turn it survives |
-| Thunder Ram | Uncommon | A9 | Lobs 30 every 2.2s. 66 HP, 4 turns. Veteran: +10% power each turn it survives |
-| Familiar Cat | Common | D7 | Heals you 5 every 2s. 54 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Tabby Familiar | Common | E7 | Heals you 5 every 2s. 54 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Owl Familiar | Common | F8 | Heals you 6 every 2s. 57 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Toad Familiar | Common | A6 | Heals you 5 every 2s. 52 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Raven Familiar | Uncommon | C9 | Heals you 7 every 2s. 66 HP, 4 turns. Veteran: +10% power each turn it survives |
-| Brownie | Common | B1 | Heals you 4 every 2s. 40 HP, 2 turns. Veteran: +10% power each turn it survives |
-| Domovoi | Uncommon | A12 | Heals you 7 every 2s. 74 HP, 4 turns. Veteran: +10% power each turn it survives |
-| Tomte | Common | F5 | Heals you 5 every 2s. 50 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Hob of the Hearth | Common | E11 | Heals you 6 every 2s. 64 HP, 4 turns. Veteran: +10% power each turn it survives |
-| Zashiki-warashi | Uncommon | D4 | Heals you 5 every 2s. 53 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Lares of the Home | Uncommon | C1 | Heals you 4 every 2s. 45 HP, 2 turns. Veteran: +10% power each turn it survives |
-| Household Kobold | Common | B9 | Heals you 6 every 2s. 59 HP, 4 turns. Veteran: +10% power each turn it survives |
-| Village Healer | Common | ✱2 | Heals you 4 every 2s. 42 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Wise Woman | Uncommon | F6 | Heals you 6 every 2s. 58 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Field Surgeon | Uncommon | F10 | Heals you 7 every 2s. 69 HP, 4 turns. Veteran: +10% power each turn it survives |
-| Herbwife | Common | A9 | Heals you 6 every 2s. 59 HP, 4 turns. Veteran: +10% power each turn it survives |
-| Midwife | Common | B7 | Heals you 5 every 2s. 54 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Saint Bernard | Uncommon | C10 | Heals you 7 every 2s. 69 HP, 4 turns. Veteran: +10% power each turn it survives |
-| Therapy Pony | Common | B10 | Heals you 6 every 2s. 62 HP, 4 turns. Veteran: +10% power each turn it survives |
-| Faithful Donkey | Common | C6 | Heals you 5 every 2s. 52 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Milk Cow | Common | D2 | Heals you 4 every 2s. 42 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Mother Hen | Common | E5 | Heals you 5 every 2s. 50 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Honeybadger | Uncommon | D8 | Heals you 6 every 2s. 64 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Sacred Ibis | Uncommon | E10 | Heals you 7 every 2s. 69 HP, 4 turns. Veteran: +10% power each turn it survives |
-| Beaver Builder | Common | E2 | Heals you 4 every 2s. 42 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Capybara | Common | D5 | Heals you 5 every 2s. 50 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Wandering Monk | Uncommon | A7 | Heals you 6 every 2s. 61 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Pilgrim | Common | F5 | Heals you 5 every 2s. 50 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Tea Master | Rare | C8 | Heals you 7 every 2s. 71 HP, 3 turns. Veteran: +10% power each turn it survives |
-| Camp Cook | Common | B12 | Heals you 7 every 2s. 66 HP, 4 turns. Veteran: +10% power each turn it survives |
-| Beowulf | Legendary | E2 | Blocks with 154 HP, hits for 9. 3 turns. Legend: your other Gray creatures deal +25% while it stands. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Gilgamesh | Legendary | D3 | Lobs 29 every 2.2s. 65 HP, 3 turns. Legend: your other Gray creatures deal +25% while it stands. Veteran: +10% power each turn it survives |
-| Enkidu | Rare | C12 | Blocks with 207 HP, hits for 12. 5 turns. Legend: your other Gray creatures deal +25% while it stands. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Hua Mulan | Legendary | B7 | Shoots 20 down its row. 79 HP, 3 turns. Legend: your other Gray creatures deal +25% while it stands. Veteran: +10% power each turn it survives |
-| Cu Chulainn | Legendary | D8 | Shoots 21 down its row. 82 HP, 3 turns. Legend: your other Gray creatures deal +25% while it stands. Veteran: +10% power each turn it survives |
-| Sundiata Keita | Legendary | E10 | Blocks with 223 HP, hits for 13. 4 turns. Legend: your other Gray creatures deal +25% while it stands. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Momotaro | Rare | B9 | Shoots 19 down its row. 74 HP, 4 turns. Legend: your other Gray creatures deal +25% while it stands. Veteran: +10% power each turn it survives |
-| Atalanta | Rare | C9 | Shoots 19 down its row. 74 HP, 4 turns. Legend: your other Gray creatures deal +25% while it stands. Veteran: +10% power each turn it survives |
-| Heracles | Legendary | F2 | Lobs 28 every 2.2s. 61 HP, 3 turns. Legend: your other Gray creatures deal +25% while it stands. Veteran: +10% power each turn it survives |
-| Perseus | Rare | A7 | Shoots 17 down its row. 68 HP, 3 turns. Legend: your other Gray creatures deal +25% while it stands. Veteran: +10% power each turn it survives |
-| Theseus | Rare | D8 | Blocks with 178 HP, hits for 11. 4 turns. Legend: your other Gray creatures deal +25% while it stands. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Achilles | Legendary | E2 | Shoots 15 down its row. 61 HP, 3 turns. Legend: your other Gray creatures deal +25% while it stands. Veteran: +10% power each turn it survives |
-| Hector of Troy | Rare | F3 | Blocks with 140 HP, hits for 8. 3 turns. Legend: your other Gray creatures deal +25% while it stands. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Rostam | Legendary | A11 | Blocks with 232 HP, hits for 14. 5 turns. Legend: your other Gray creatures deal +25% while it stands. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Arjuna | Legendary | C11 | Shoots 23 down its row. 93 HP, 4 turns. Legend: your other Gray creatures deal +25% while it stands. Veteran: +10% power each turn it survives |
-| Sigurd | Rare | B2 | Shoots 13 down its row. 53 HP, 3 turns. Legend: your other Gray creatures deal +25% while it stands. Veteran: +10% power each turn it survives |
-| Ilya Muromets | Rare | A11 | Blocks with 200 HP, hits for 12. 5 turns. Legend: your other Gray creatures deal +25% while it stands. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Lancelot | Rare | F4 | Blocks with 147 HP, hits for 9. 3 turns. Legend: your other Gray creatures deal +25% while it stands. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Gawain | Rare | A12 | Blocks with 207 HP, hits for 12. 5 turns. Legend: your other Gray creatures deal +25% while it stands. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| El Cid | Rare | F5 | Shoots 16 down its row. 62 HP, 3 turns. Legend: your other Gray creatures deal +25% while it stands. Veteran: +10% power each turn it survives |
-| Roland | Rare | E11 | Blocks with 200 HP, hits for 12. 5 turns. Legend: your other Gray creatures deal +25% while it stands. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Robin Hood | Rare | ✱1 | Shoots 13 down its row. 50 HP, 2 turns. Legend: your other Gray creatures deal +25% while it stands. Veteran: +10% power each turn it survives |
-| Mwindo | Rare | A6 | Heals you 7 every 2s. 65 HP, 3 turns. Legend: your other Gray creatures deal +25% while it stands. Veteran: +10% power each turn it survives |
-| Kintaro | Rare | F7 | Lobs 31 every 2.2s. 68 HP, 3 turns. Legend: your other Gray creatures deal +25% while it stands. Veteran: +10% power each turn it survives |
-| Fionn mac Cumhaill | Rare | B7 | Shoots 17 down its row. 68 HP, 3 turns. Legend: your other Gray creatures deal +25% while it stands. Veteran: +10% power each turn it survives |
-| Scathach | Legendary | C2 | Shoots 15 down its row. 61 HP, 3 turns. Legend: your other Gray creatures deal +25% while it stands. Veteran: +10% power each turn it survives |
-| Tomoe Gozen | Rare | D4 | Shoots 15 down its row. 59 HP, 3 turns. Legend: your other Gray creatures deal +25% while it stands. Veteran: +10% power each turn it survives |
-| Antarah the Poet-Knight | Rare | E2 | Blocks with 133 HP, hits for 8. 3 turns. Legend: your other Gray creatures deal +25% while it stands. Guardian: takes hits aimed at you. Veteran: +10% each turn |
-| Hunahpu and Xbalanque | Legendary | F3 | Lobs 29 every 2.2s. 65 HP, 3 turns. Legend: your other Gray creatures deal +25% while it stands. Veteran: +10% power each turn it survives |
-| Glooscap | Legendary | A2 | Heals you 6 every 2s. 61 HP, 3 turns. Legend: your other Gray creatures deal +25% while it stands. Veteran: +10% power each turn it survives |
+| Living Armor | Common | E1 | Blocks with 100 HP, hits for 6. 30 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Empty Helm Sentinel | Common | F4 | Blocks with 118 HP, hits for 7. 30 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Haunted Plate | Uncommon | A9 | Blocks with 166 HP, hits for 10. 40 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Rusted Suit of Armor | Common | B2 | Blocks with 106 HP, hits for 6. 30 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Gilded Parade Armor | Uncommon | C4 | Blocks with 132 HP, hits for 8. 30 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Black Knight's Armor | Rare | D10 | Blocks with 193 HP, hits for 12. 40 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Tin Soldier | Common | E12 | Blocks with 166 HP, hits for 10. 50 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Toy Knight | Common | B6 | Blocks with 130 HP, hits for 8. 40 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Clay Golem of Prague | Rare | C12 | Blocks with 207 HP, hits for 12. 50 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Mud Golem | Common | E6 | Blocks with 130 HP, hits for 8. 40 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Stone Golem | Common | D12 | Blocks with 166 HP, hits for 10. 50 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Iron Golem | Uncommon | C8 | Blocks with 159 HP, hits for 10. 40 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Talos, the Bronze Giant | Legendary | B2 | Blocks with 154 HP, hits for 9. 30 seconds. Legend: your other Gray creatures deal +25% while it stands. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Cathedral Gargoyle | Common | C6 | Blocks with 130 HP, hits for 8. 40 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Grotesque | Common | B5 | Blocks with 124 HP, hits for 7. 40 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Waterspout Gargoyle | Uncommon | A8 | Blocks with 159 HP, hits for 10. 40 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Shisa | Common | F3 | Blocks with 112 HP, hits for 7. 30 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Komainu | Uncommon | C1 | Blocks with 112 HP, hits for 7. 30 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Guardian Lion of the Gate | Rare | B5 | Blocks with 155 HP, hits for 9. 40 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Nio Temple Guardian | Rare | F9 | Blocks with 185 HP, hits for 11. 40 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Dvarapala | Uncommon | A9 | Blocks with 166 HP, hits for 10. 40 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Moai Watcher | Rare | D8 | Blocks with 178 HP, hits for 11. 40 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Terracotta Spearman | Common | E8 | Blocks with 142 HP, hits for 9. 40 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Terracotta General | Rare | D6 | Blocks with 163 HP, hits for 10. 40 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Ushabti Servant | Common | E7 | Blocks with 136 HP, hits for 8. 40 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Scarecrow Sentinel | Common | B10 | Blocks with 154 HP, hits for 9. 40 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Shield Maiden | Uncommon | C8 | Blocks with 159 HP, hits for 10. 40 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Hoplite | Common | B5 | Blocks with 124 HP, hits for 7. 40 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Roman Centurion | Uncommon | C7 | Blocks with 152 HP, hits for 9. 40 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Gatehouse Sergeant | Common | A2 | Blocks with 106 HP, hits for 6. 30 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Castle Warden | Uncommon | F11 | Blocks with 179 HP, hits for 11. 50 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Watchtower Guard | Common | C1 | Blocks with 100 HP, hits for 6. 30 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Loyal Mastiff | Common | B10 | Blocks with 154 HP, hits for 9. 40 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Kangal Shepherd Dog | Uncommon | C7 | Blocks with 152 HP, hits for 9. 40 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Old Gray Bear | Uncommon | B9 | Blocks with 166 HP, hits for 10. 40 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Cave Bear | Common | E2 | Blocks with 106 HP, hits for 6. 30 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Wild Boar | Common | D4 | Blocks with 118 HP, hits for 7. 30 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Great Tortoise | Uncommon | C1 | Blocks with 112 HP, hits for 7. 30 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Snapping Turtle | Common | B12 | Blocks with 166 HP, hits for 10. 50 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Armadillo Knight | Uncommon | F9 | Blocks with 166 HP, hits for 10. 40 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Ironback Beetle | Common | A8 | Blocks with 142 HP, hits for 9. 40 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Mimic Chest | Uncommon | B5 | Blocks with 139 HP, hits for 8. 40 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| War Elephant | Rare | C3 | Blocks with 140 HP, hits for 8. 30 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Ox of the Plough | Common | B6 | Blocks with 130 HP, hits for 8. 40 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Aurochs | Uncommon | C4 | Blocks with 132 HP, hits for 8. 30 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Wandering Ronin | Uncommon | ✱12 | Blocks with 186 HP, hits for 11. 50 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Bridge Troll | Uncommon | E5 | Blocks with 139 HP, hits for 8. 40 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Ettin | Rare | B11 | Blocks with 200 HP, hits for 12. 50 seconds. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Longbow Yeoman | Common | C1 | Shoots 10 down its row. 40 HP, 20 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Village Archer | Common | ✱4 | Shoots 12 down its row. 47 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Shepherd Slinger | Common | F11 | Shoots 16 down its row. 64 HP, 40 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Scythian Horse Archer | Uncommon | E5 | Shoots 14 down its row. 56 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Steppe Rider | Uncommon | D9 | Shoots 17 down its row. 66 HP, 40 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Amazon Archer | Uncommon | C11 | Shoots 18 down its row. 72 HP, 40 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Mounted Bowman | Common | B2 | Shoots 11 down its row. 42 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Javelin Thrower | Common | A11 | Shoots 16 down its row. 64 HP, 40 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Spear Hunter | Common | F5 | Shoots 12 down its row. 50 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Woodcutter | Common | C4 | Shoots 12 down its row. 47 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Bounty Hunter | Uncommon | B4 | Shoots 13 down its row. 53 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Wandering Ranger | Uncommon | F1 | Shoots 11 down its row. 45 HP, 20 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Tracker | Common | A3 | Shoots 11 down its row. 45 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Falconer | Uncommon | ✱3 | Shoots 13 down its row. 50 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Hunting Falcon | Common | E5 | Shoots 12 down its row. 50 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Peregrine | Common | B8 | Shoots 14 down its row. 57 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Kestrel | Common | C9 | Shoots 15 down its row. 59 HP, 40 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Osprey | Common | F3 | Shoots 11 down its row. 45 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Golden Eagle | Uncommon | A12 | Shoots 19 down its row. 74 HP, 40 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Messenger Pigeon | Common | D8 | Shoots 14 down its row. 57 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Night Owl Scout | Common | E3 | Shoots 11 down its row. 45 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Horned Owl | Uncommon | E1 | Shoots 11 down its row. 45 HP, 20 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Quill Porcupine | Common | D2 | Shoots 11 down its row. 42 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Spiny Hedgehog | Common | A10 | Shoots 15 down its row. 62 HP, 40 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Spitting Llama | Common | F12 | Shoots 17 down its row. 66 HP, 40 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Bactrian Camel | Uncommon | C9 | Shoots 17 down its row. 66 HP, 40 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Gray Fox | Common | B2 | Shoots 11 down its row. 42 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Plains Wolf | Common | E9 | Shoots 15 down its row. 59 HP, 40 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Lone Wolf | Uncommon | D10 | Shoots 17 down its row. 69 HP, 40 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Alpha Wolf | Rare | A11 | Shoots 20 down its row. 80 HP, 40 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Hunting Hound | Common | F4 | Shoots 12 down its row. 47 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Alley Cat | Common | D3 | Shoots 11 down its row. 45 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Lynx | Uncommon | E10 | Shoots 17 down its row. 69 HP, 40 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Wildcat | Common | F10 | Shoots 15 down its row. 62 HP, 40 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Sea Eagle | Uncommon | A3 | Shoots 13 down its row. 50 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Mountain Goat | Common | B4 | Shoots 12 down its row. 47 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Ibex | Uncommon | C5 | Shoots 14 down its row. 56 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Hippogriff | Uncommon | D6 | Shoots 15 down its row. 58 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Hippogriff Rider | Rare | E1 | Shoots 13 down its row. 50 HP, 20 seconds. Veteran: +10% power for every 10 seconds it survives |
+| War Griffin | Rare | F3 | Shoots 14 down its row. 56 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Royal Griffin | Legendary | ✱4 | Shoots 17 down its row. 68 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Sleipnir, the Eight-Legged Steed | Legendary | E12 | Shoots 24 down its row. 96 HP, 40 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Arion, the Swift Horse | Rare | D12 | Shoots 21 down its row. 83 HP, 40 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Bayard, the Magic Bay | Rare | C8 | Shoots 18 down its row. 71 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Uchchaihshravas | Legendary | B3 | Shoots 16 down its row. 65 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Wandering Bard | Common | C10 | Shoots 15 down its row. 62 HP, 40 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Crossbow Militia | Common | B10 | Shoots 15 down its row. 62 HP, 40 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Pikeman | Common | A6 | Shoots 13 down its row. 52 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Sellsword | Uncommon | F6 | Shoots 15 down its row. 58 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Veteran Captain | Rare | A11 | Shoots 20 down its row. 80 HP, 40 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Errant Knight | Uncommon | F7 | Shoots 15 down its row. 61 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Cossack Rider | Uncommon | C8 | Shoots 16 down its row. 64 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Gaucho with Bolas | Uncommon | B1 | Shoots 11 down its row. 45 HP, 20 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Mongol Outrider | Rare | A7 | Shoots 17 down its row. 68 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Maasai Spearman | Uncommon | F4 | Shoots 13 down its row. 53 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Zulu Impi | Uncommon | A10 | Shoots 17 down its row. 69 HP, 40 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Viking Raider | Common | F11 | Shoots 16 down its row. 64 HP, 40 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Hill Giant | Uncommon | E12 | Lobs 33 every 2.2s. 74 HP, 40 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Rock-Throwing Cyclops | Rare | D7 | Lobs 31 every 2.2s. 68 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Stone Troll | Uncommon | E6 | Lobs 26 every 2.2s. 58 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Ogre Brute | Common | D9 | Lobs 27 every 2.2s. 59 HP, 40 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Mountain Gorilla | Uncommon | B12 | Lobs 33 every 2.2s. 74 HP, 40 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Sling Monkey | Common | C3 | Lobs 20 every 2.2s. 45 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Howler Monkey | Common | D8 | Lobs 26 every 2.2s. 57 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Coconut Crab | Common | E4 | Lobs 21 every 2.2s. 47 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Boulder Golem | Uncommon | F3 | Lobs 23 every 2.2s. 50 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Pebble Golem | Common | A9 | Lobs 27 every 2.2s. 59 HP, 40 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Rock Elemental | Rare | B3 | Lobs 25 every 2.2s. 56 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Siege Ogre | Rare | C4 | Lobs 27 every 2.2s. 59 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Two-Headed Giant | Rare | D1 | Lobs 23 every 2.2s. 50 HP, 20 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Jotun Hurler | Rare | E1 | Lobs 23 every 2.2s. 50 HP, 20 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Fomorian Brute | Uncommon | C7 | Lobs 27 every 2.2s. 61 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Oni Pebble-Tosser | Common | B3 | Lobs 20 every 2.2s. 45 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Gremlin Pot-Thrower | Common | E11 | Lobs 29 every 2.2s. 64 HP, 40 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Kobold Sapper | Common | D7 | Lobs 24 every 2.2s. 54 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Hobgoblin Grenadier | Uncommon | E5 | Lobs 25 every 2.2s. 56 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Barrel-Rolling Dwarf | Uncommon | D4 | Lobs 24 every 2.2s. 53 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Village Brawler | Common | A11 | Lobs 29 every 2.2s. 64 HP, 40 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Tavern Bouncer | Common | F1 | Lobs 18 every 2.2s. 40 HP, 20 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Mole Sapper | Common | A10 | Lobs 28 every 2.2s. 62 HP, 40 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Badger | Common | F8 | Lobs 26 every 2.2s. 57 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Rampaging Rhino | Uncommon | B8 | Lobs 29 every 2.2s. 64 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Charging Bison | Common | C6 | Lobs 23 every 2.2s. 52 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Woolly Mammoth | Rare | F5 | Lobs 28 every 2.2s. 62 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Elephant Bird | Uncommon | A6 | Lobs 26 every 2.2s. 58 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Stone-Dropping Vulture | Common | F1 | Lobs 18 every 2.2s. 40 HP, 20 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Thunder Ram | Uncommon | A9 | Lobs 30 every 2.2s. 66 HP, 40 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Familiar Cat | Common | D7 | Heals you 5 every 2s. 54 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Tabby Familiar | Common | E7 | Heals you 5 every 2s. 54 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Owl Familiar | Common | F8 | Heals you 6 every 2s. 57 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Toad Familiar | Common | A6 | Heals you 5 every 2s. 52 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Raven Familiar | Uncommon | C9 | Heals you 7 every 2s. 66 HP, 40 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Brownie | Common | B1 | Heals you 4 every 2s. 40 HP, 20 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Domovoi | Uncommon | A12 | Heals you 7 every 2s. 74 HP, 40 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Tomte | Common | F5 | Heals you 5 every 2s. 50 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Hob of the Hearth | Common | E11 | Heals you 6 every 2s. 64 HP, 40 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Zashiki-warashi | Uncommon | D4 | Heals you 5 every 2s. 53 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Lares of the Home | Uncommon | C1 | Heals you 4 every 2s. 45 HP, 20 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Household Kobold | Common | B9 | Heals you 6 every 2s. 59 HP, 40 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Village Healer | Common | ✱2 | Heals you 4 every 2s. 42 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Wise Woman | Uncommon | F6 | Heals you 6 every 2s. 58 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Field Surgeon | Uncommon | F10 | Heals you 7 every 2s. 69 HP, 40 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Herbwife | Common | A9 | Heals you 6 every 2s. 59 HP, 40 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Midwife | Common | B7 | Heals you 5 every 2s. 54 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Saint Bernard | Uncommon | C10 | Heals you 7 every 2s. 69 HP, 40 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Therapy Pony | Common | B10 | Heals you 6 every 2s. 62 HP, 40 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Faithful Donkey | Common | C6 | Heals you 5 every 2s. 52 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Milk Cow | Common | D2 | Heals you 4 every 2s. 42 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Mother Hen | Common | E5 | Heals you 5 every 2s. 50 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Honeybadger | Uncommon | D8 | Heals you 6 every 2s. 64 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Sacred Ibis | Uncommon | E10 | Heals you 7 every 2s. 69 HP, 40 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Beaver Builder | Common | E2 | Heals you 4 every 2s. 42 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Capybara | Common | D5 | Heals you 5 every 2s. 50 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Wandering Monk | Uncommon | A7 | Heals you 6 every 2s. 61 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Pilgrim | Common | F5 | Heals you 5 every 2s. 50 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Tea Master | Rare | C8 | Heals you 7 every 2s. 71 HP, 30 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Camp Cook | Common | B12 | Heals you 7 every 2s. 66 HP, 40 seconds. Veteran: +10% power for every 10 seconds it survives |
+| Beowulf | Legendary | E2 | Blocks with 154 HP, hits for 9. 30 seconds. Legend: your other Gray creatures deal +25% while it stands. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Gilgamesh | Legendary | D3 | Lobs 29 every 2.2s. 65 HP, 30 seconds. Legend: your other Gray creatures deal +25% while it stands. Veteran: +10% power for every 10 seconds it survives |
+| Enkidu | Rare | C12 | Blocks with 207 HP, hits for 12. 50 seconds. Legend: your other Gray creatures deal +25% while it stands. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Hua Mulan | Legendary | B7 | Shoots 20 down its row. 79 HP, 30 seconds. Legend: your other Gray creatures deal +25% while it stands. Veteran: +10% power for every 10 seconds it survives |
+| Cu Chulainn | Legendary | D8 | Shoots 21 down its row. 82 HP, 30 seconds. Legend: your other Gray creatures deal +25% while it stands. Veteran: +10% power for every 10 seconds it survives |
+| Sundiata Keita | Legendary | E10 | Blocks with 223 HP, hits for 13. 40 seconds. Legend: your other Gray creatures deal +25% while it stands. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Momotaro | Rare | B9 | Shoots 19 down its row. 74 HP, 40 seconds. Legend: your other Gray creatures deal +25% while it stands. Veteran: +10% power for every 10 seconds it survives |
+| Atalanta | Rare | C9 | Shoots 19 down its row. 74 HP, 40 seconds. Legend: your other Gray creatures deal +25% while it stands. Veteran: +10% power for every 10 seconds it survives |
+| Heracles | Legendary | F2 | Lobs 28 every 2.2s. 61 HP, 30 seconds. Legend: your other Gray creatures deal +25% while it stands. Veteran: +10% power for every 10 seconds it survives |
+| Perseus | Rare | A7 | Shoots 17 down its row. 68 HP, 30 seconds. Legend: your other Gray creatures deal +25% while it stands. Veteran: +10% power for every 10 seconds it survives |
+| Theseus | Rare | D8 | Blocks with 178 HP, hits for 11. 40 seconds. Legend: your other Gray creatures deal +25% while it stands. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Achilles | Legendary | E2 | Shoots 15 down its row. 61 HP, 30 seconds. Legend: your other Gray creatures deal +25% while it stands. Veteran: +10% power for every 10 seconds it survives |
+| Hector of Troy | Rare | F3 | Blocks with 140 HP, hits for 8. 30 seconds. Legend: your other Gray creatures deal +25% while it stands. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Rostam | Legendary | A11 | Blocks with 232 HP, hits for 14. 50 seconds. Legend: your other Gray creatures deal +25% while it stands. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Arjuna | Legendary | C11 | Shoots 23 down its row. 93 HP, 40 seconds. Legend: your other Gray creatures deal +25% while it stands. Veteran: +10% power for every 10 seconds it survives |
+| Sigurd | Rare | B2 | Shoots 13 down its row. 53 HP, 30 seconds. Legend: your other Gray creatures deal +25% while it stands. Veteran: +10% power for every 10 seconds it survives |
+| Ilya Muromets | Rare | A11 | Blocks with 200 HP, hits for 12. 50 seconds. Legend: your other Gray creatures deal +25% while it stands. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Lancelot | Rare | F4 | Blocks with 147 HP, hits for 9. 30 seconds. Legend: your other Gray creatures deal +25% while it stands. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Gawain | Rare | A12 | Blocks with 207 HP, hits for 12. 50 seconds. Legend: your other Gray creatures deal +25% while it stands. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| El Cid | Rare | F5 | Shoots 16 down its row. 62 HP, 30 seconds. Legend: your other Gray creatures deal +25% while it stands. Veteran: +10% power for every 10 seconds it survives |
+| Roland | Rare | E11 | Blocks with 200 HP, hits for 12. 50 seconds. Legend: your other Gray creatures deal +25% while it stands. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Robin Hood | Rare | ✱1 | Shoots 13 down its row. 50 HP, 20 seconds. Legend: your other Gray creatures deal +25% while it stands. Veteran: +10% power for every 10 seconds it survives |
+| Mwindo | Rare | A6 | Heals you 7 every 2s. 65 HP, 30 seconds. Legend: your other Gray creatures deal +25% while it stands. Veteran: +10% power for every 10 seconds it survives |
+| Kintaro | Rare | F7 | Lobs 31 every 2.2s. 68 HP, 30 seconds. Legend: your other Gray creatures deal +25% while it stands. Veteran: +10% power for every 10 seconds it survives |
+| Fionn mac Cumhaill | Rare | B7 | Shoots 17 down its row. 68 HP, 30 seconds. Legend: your other Gray creatures deal +25% while it stands. Veteran: +10% power for every 10 seconds it survives |
+| Scathach | Legendary | C2 | Shoots 15 down its row. 61 HP, 30 seconds. Legend: your other Gray creatures deal +25% while it stands. Veteran: +10% power for every 10 seconds it survives |
+| Tomoe Gozen | Rare | D4 | Shoots 15 down its row. 59 HP, 30 seconds. Legend: your other Gray creatures deal +25% while it stands. Veteran: +10% power for every 10 seconds it survives |
+| Antarah the Poet-Knight | Rare | E2 | Blocks with 133 HP, hits for 8. 30 seconds. Legend: your other Gray creatures deal +25% while it stands. Guardian: takes hits aimed at you. Veteran: +10% every 10 seconds |
+| Hunahpu and Xbalanque | Legendary | F3 | Lobs 29 every 2.2s. 65 HP, 30 seconds. Legend: your other Gray creatures deal +25% while it stands. Veteran: +10% power for every 10 seconds it survives |
+| Glooscap | Legendary | A2 | Heals you 6 every 2s. 61 HP, 30 seconds. Legend: your other Gray creatures deal +25% while it stands. Veteran: +10% power for every 10 seconds it survives |
 
 ## Walls & shields (10)
 
 | Card | Rarity | Rune | What it does |
 |---|---|---|---|
-| Shield Wall | Common | F5 | 2 walls of 43 HP, 2 turns |
-| Phalanx | Uncommon | C3 | 2 walls of 44 HP, 2 turns |
-| Testudo | Uncommon | B5 | Shield of 62 for 2 turns; replaces your current shield |
-| Schiltron | Rare | C11 | 3 walls of 70 HP that hit back for 12, 3 turns |
-| Hedge of Spears | Common | B9 | 3 walls of 52 HP that hit back for 9, 2 turns |
-| Wagon Circle | Common | E1 | 2 walls of 35 HP, 2 turns |
-| Shield Brace | Common | D3 | Shield of 50 for 2 turns; replaces your current shield |
-| Hold the Gate | Uncommon | E6 | 2 walls of 51 HP, 2 turns |
-| Last Stand | Rare | D6 | Shield of 73 for 3 turns; replaces your current shield |
-| Iron Ring Fort | Legendary | F2 | 2 walls of 54 HP, 3 turns |
+| Shield Wall | Common | F5 | 2 walls of 43 HP, 20 seconds |
+| Phalanx | Uncommon | C3 | 2 walls of 44 HP, 20 seconds |
+| Testudo | Uncommon | B5 | Shield of 62 for 20 seconds; replaces your current shield |
+| Schiltron | Rare | C11 | 3 walls of 70 HP that hit back for 12, 30 seconds |
+| Hedge of Spears | Common | B9 | 3 walls of 52 HP that hit back for 9, 20 seconds |
+| Wagon Circle | Common | E1 | 2 walls of 35 HP, 20 seconds |
+| Shield Brace | Common | D3 | Shield of 50 for 20 seconds; replaces your current shield |
+| Hold the Gate | Uncommon | E6 | 2 walls of 51 HP, 20 seconds |
+| Last Stand | Rare | D6 | Shield of 73 for 30 seconds; replaces your current shield |
+| Iron Ring Fort | Legendary | F2 | 2 walls of 54 HP, 30 seconds |
 
 ## Buffs (10)
 

@@ -70,7 +70,7 @@ const GEAR={
   iron_helm:     {slot:'head', tier:2, name:'Iron Helm',          icon:'⛑', mods:{hp:15, guard:.05, slow:1.05}},
   kabuto:        {slot:'head', tier:3, name:'Kabuto',             icon:'🪖', mods:{hp:20, guard:.08}},
   // off-hand
-  buckler:       {slot:'offhand', tier:1, name:'Buckler',         icon:'🛡', mods:{block:1}, text:'Blocks the first hit each turn'},
+  buckler:       {slot:'offhand', tier:1, name:'Buckler',         icon:'🛡', mods:{block:1}, text:'Blocks the first hit every 10 seconds'},
   tower_shield:  {slot:'offhand', tier:2, name:'Tower Shield',    icon:'🛡', mods:{block:1, guard:.1, slow:1.1}},
   // arms
   leather_bracers:{slot:'arms', tier:1, name:'Leather Bracers',   icon:'🧤', mods:{cd:.9}},
@@ -169,7 +169,7 @@ function modsText(m){ const t=[];
   if(m.glow) t.push('charged shots heal '+m.glow); if(m.burn) t.push('shots burn '+m.burn+'s');
   if(m.hp) t.push('+'+m.hp+' max HP'); if(m.guard) t.push('take '+Math.round(m.guard*100)+'% less damage'); if(m.shield) t.push(m.shield+' shield each fight');
   if(m.surge) t.push(Math.round(m.surge*100)+'% chance of a 4th slot');
-  if(m.dodge) t.push('dodge '+Math.round(m.dodge*100)+'% of hits'); if(m.block) t.push('blocks the first hit each turn'); if(m.counter) t.push('strikes back for '+m.counter);
+  if(m.dodge) t.push('dodge '+Math.round(m.dodge*100)+'% of hits'); if(m.block) t.push('blocks the first hit every 10 seconds'); if(m.counter) t.push('strikes back for '+m.counter);
   if(m.regen) t.push('heal '+m.regen+' HP a second'); if(m.gold) t.push('+'+Math.round(m.gold*100)+'% gold');
   if(m.power) for(const c in m.power) t.push(c+' cards +'+Math.round((m.power[c]-1)*100)+'%');
   if(m.castSlow) t.push('cast '+Math.round((m.castSlow-1)*100)+'% slower');

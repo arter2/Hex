@@ -264,7 +264,7 @@ enchantments, artifacts and instants in Magic: The Gathering.
 
 Gray:
 - No weakness: Gray deals and takes even damage against every color.
-- Veteran: a Gray creature gets +10% power for each turn it survives.
+- Veteran: a Gray creature gets +10% power for every 10 seconds it survives.
 - Guardian: armor and guard creatures step in and take hits aimed at you.
 - Legend: Gray mythical heroes make your other Gray creatures stronger while they stand.
 

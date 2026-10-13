@@ -8,56 +8,56 @@ Common 86 · Uncommon 82 · Legendary 17 · Rare 44
 
 | Card | Rarity | Rune | What it does |
 |---|---|---|---|
-| Dwarven Cannon Nest | Common | D9 | Turret: 13 every 1.4s, 67 HP, 3 turns. Dwarven tech: +10% for each other Dwarven card in your hand |
-| Steam Cannon | Uncommon | A9 | Turret: 15 every 1.4s, 75 HP, 3 turns. Dwarven tech: +10% for each other Dwarven card in your hand |
-| Dwarven Runic Battery | Legendary | F10 | Turret: 20 every 1.4s, 100 HP, 3 turns. Dwarven tech: +10% for each other Dwarven card in your hand |
-| Gnomish Arc Turret | Uncommon | A4 | Turret: 12 every 1.4s, 59 HP, 3 turns. Gnomish tech: +10% for each other Gnomish card in your hand |
-| Clockwork Owl | Common | F6 | Turret: 12 every 1.4s, 59 HP, 3 turns. Gnomish tech: +10% for each other Gnomish card in your hand |
-| Elven Moonbow Ballista | Uncommon | C12 | Turret: 17 every 1.4s, 84 HP, 3 turns. Elven tech: +10% for each other Elven card in your hand |
-| Elven Starglass Spire | Rare | B12 | Turret: 19 every 1.4s, 93 HP, 3 turns. Elven tech: +10% for each other Elven card in your hand |
-| Goblin Junk Cannon | Common | A2 | Unstable: 1 in 5 misfires and hurts you. Turret: 13 every 1.4s, 62 HP, 3 turns. Goblin tech: +10% for each other Goblin card in your hand |
-| Harbor Ballista | Common | F6 | Turret: 12 every 1.4s, 59 HP, 3 turns. Sea-folk tech: +10% for each other Sea-folk card in your hand |
-| Lighthouse Lens Beam | Rare | D3 | Turret: 13 every 1.4s, 63 HP, 3 turns. Sea-folk tech: +10% for each other Sea-folk card in your hand |
-| Sky-Ship Deck Gun | Rare | E1 | Turret: 11 every 1.4s, 56 HP, 3 turns. Sky-folk tech: +10% for each other Sky-folk card in your hand |
-| Djinn Brass Idol | Rare | B4 | Turret: 13 every 1.4s, 66 HP, 3 turns. Djinn tech: +10% for each other Djinn card in your hand |
-| Troll Bone Ballista | Common | C4 | Turret: 11 every 1.4s, 53 HP, 3 turns. Troll tech: +10% for each other Troll card in your hand |
-| Alchemist's Fire Siphon | Uncommon | B11 | Turret: 16 every 1.4s, 81 HP, 3 turns. Desert alchemy tech: +10% for each other Desert alchemy card in your hand |
-| Brass Crossbow Turret | Common | C5 | Turret: 11 every 1.4s, 56 HP, 3 turns. Human tech: +10% for each other Human card in your hand |
-| Antikythera Sentinel | Legendary | F3 | Turret: 15 every 1.4s, 73 HP, 3 turns. Human tech: +10% for each other Human card in your hand |
-| Gnomish Gatling | Common | A8 | Repeater: 7 every 0.5s, 50 HP, 2 turns. Gnomish tech: +10% for each other Gnomish card in your hand |
-| Brass Hornet Swarm | Rare | F2 | Repeater: 7 every 0.5s, 46 HP, 2 turns. Gnomish tech: +10% for each other Gnomish card in your hand |
-| Goblin Rattle-Gun | Common | ✱7 | Unstable: 1 in 5 misfires and hurts you. Repeater: 9 every 0.5s, 62 HP, 2 turns. Goblin tech: +10% for each other Goblin card in your hand |
-| Chu-ko-nu Repeater | Uncommon | A3 | Repeater: 6 every 0.5s, 44 HP, 2 turns. Human tech: +10% for each other Human card in your hand |
-| Elven Spinning Glaive | Uncommon | F5 | Repeater: 7 every 0.5s, 49 HP, 2 turns. Elven tech: +10% for each other Elven card in your hand |
-| Coral Spitter | Common | E9 | Repeater: 7 every 0.5s, 52 HP, 2 turns. Sea-folk tech: +10% for each other Sea-folk card in your hand |
-| Sky-Folk Kite Drone | Uncommon | D10 | Repeater: 9 every 0.5s, 60 HP, 2 turns. Sky-folk tech: +10% for each other Sky-folk card in your hand |
-| Dwarven Rivet Gun | Rare | E1 | Repeater: 6 every 0.5s, 44 HP, 2 turns. Dwarven tech: +10% for each other Dwarven card in your hand |
-| Troll Pebble Hurler | Common | D10 | Repeater: 8 every 0.5s, 54 HP, 2 turns. Troll tech: +10% for each other Troll card in your hand |
-| Al-Jazari's Elephant Clock | Legendary | C9 | Repeater: 11 every 0.5s, 75 HP, 2 turns. Djinn tech: +10% for each other Djinn card in your hand |
-| Siege Mangonel | Common | B8 | Mortar: lobs 31 every 2.5s, 43 HP, 2 turns. Human tech: +10% for each other Human card in your hand |
-| Castle Trebuchet | Uncommon | E1 | Mortar: lobs 25 every 2.5s, 34 HP, 2 turns. Human tech: +10% for each other Human card in your hand |
-| Goblin Rocket Rack | Common | D8 | Unstable: 1 in 5 misfires and hurts you. Mortar: lobs 40 every 2.5s, 56 HP, 2 turns. Goblin tech: +10% for each other Goblin card in your hand |
-| Gnomish Bomb Lobber | Common | F1 | Mortar: lobs 22 every 2.5s, 30 HP, 2 turns. Gnomish tech: +10% for each other Gnomish card in your hand |
-| Alchemist's Acid Mortar | Uncommon | A7 | Mortar: lobs 34 every 2.5s, 46 HP, 2 turns. Desert alchemy tech: +10% for each other Desert alchemy card in your hand |
-| Troll Boulder Sling | Common | B8 | Mortar: lobs 31 every 2.5s, 43 HP, 2 turns. Troll tech: +10% for each other Troll card in your hand |
-| Depth Charge Launcher | Rare | C5 | Mortar: lobs 34 every 2.5s, 47 HP, 2 turns. Sea-folk tech: +10% for each other Sea-folk card in your hand |
-| Sky-Folk Bomb Balloon | Uncommon | D4 | Mortar: lobs 29 every 2.5s, 40 HP, 2 turns. Sky-folk tech: +10% for each other Sky-folk card in your hand |
-| Dwarven Thunder Mortar | Rare | E2 | Mortar: lobs 29 every 2.5s, 40 HP, 2 turns. Dwarven tech: +10% for each other Dwarven card in your hand |
-| Byzantine Fire Engine | Rare | F4 | Mortar: lobs 32 every 2.5s, 44 HP, 2 turns. Desert alchemy tech: +10% for each other Desert alchemy card in your hand |
-| Djinn Sand Cannon | Legendary | A5 | Mortar: lobs 40 every 2.5s, 54 HP, 2 turns. Djinn tech: +10% for each other Djinn card in your hand |
-| Elven Seed Catapult | Uncommon | D10 | Mortar: lobs 38 every 2.5s, 52 HP, 2 turns. Elven tech: +10% for each other Elven card in your hand |
-| Iron Bastion | Common | E12 | 2 iron walls of 149 HP, 3 turns. Dwarven tech: +10% for each other Dwarven card in your hand |
-| Dwarven Gate of Iron | Rare | A9 | 2 iron walls of 167 HP, 3 turns. Dwarven tech: +10% for each other Dwarven card in your hand |
-| Gnomish Pop-Up Wall | Common | F7 | 2 iron walls of 122 HP, 3 turns. Gnomish tech: +10% for each other Gnomish card in your hand |
-| Elven Thornglass Barrier | Uncommon | C2 | 1 iron wall of 107 HP, 3 turns. Elven tech: +10% for each other Elven card in your hand |
-| Goblin Scrap Barricade | Common | B11 | Unstable: 1 in 5 misfires and hurts you. 2 iron walls of 187 HP, 3 turns. Goblin tech: +10% for each other Goblin card in your hand |
-| Coral Rampart | Uncommon | E3 | 1 iron wall of 113 HP, 3 turns. Sea-folk tech: +10% for each other Sea-folk card in your hand |
-| Sky-Folk Wind Sail Wall | Uncommon | D11 | 2 iron walls of 161 HP, 3 turns. Sky-folk tech: +10% for each other Sky-folk card in your hand |
-| Troll Stone Rampart | Common | A8 | 2 iron walls of 128 HP, 3 turns. Troll tech: +10% for each other Troll card in your hand |
-| Pike Palisade | Common | F5 | 2 iron walls of 112 HP, 3 turns. Human tech: +10% for each other Human card in your hand |
-| Alchemist's Glass Bulwark | Uncommon | C4 | 2 iron walls of 119 HP, 3 turns. Desert alchemy tech: +10% for each other Desert alchemy card in your hand |
-| Djinn Mirage Wall | Rare | B8 | 2 iron walls of 160 HP, 3 turns. Djinn tech: +10% for each other Djinn card in your hand |
-| Brass Tortoise Wall | Legendary | B3 | 1 iron wall of 146 HP, 3 turns. Human tech: +10% for each other Human card in your hand |
+| Dwarven Cannon Nest | Common | D9 | Turret: 13 every 1.4s, 67 HP, 30 seconds. Dwarven tech: +10% for each other Dwarven card in your hand |
+| Steam Cannon | Uncommon | A9 | Turret: 15 every 1.4s, 75 HP, 30 seconds. Dwarven tech: +10% for each other Dwarven card in your hand |
+| Dwarven Runic Battery | Legendary | F10 | Turret: 20 every 1.4s, 100 HP, 30 seconds. Dwarven tech: +10% for each other Dwarven card in your hand |
+| Gnomish Arc Turret | Uncommon | A4 | Turret: 12 every 1.4s, 59 HP, 30 seconds. Gnomish tech: +10% for each other Gnomish card in your hand |
+| Clockwork Owl | Common | F6 | Turret: 12 every 1.4s, 59 HP, 30 seconds. Gnomish tech: +10% for each other Gnomish card in your hand |
+| Elven Moonbow Ballista | Uncommon | C12 | Turret: 17 every 1.4s, 84 HP, 30 seconds. Elven tech: +10% for each other Elven card in your hand |
+| Elven Starglass Spire | Rare | B12 | Turret: 19 every 1.4s, 93 HP, 30 seconds. Elven tech: +10% for each other Elven card in your hand |
+| Goblin Junk Cannon | Common | A2 | Unstable: 1 in 5 misfires and hurts you. Turret: 13 every 1.4s, 62 HP, 30 seconds. Goblin tech: +10% for each other Goblin card in your hand |
+| Harbor Ballista | Common | F6 | Turret: 12 every 1.4s, 59 HP, 30 seconds. Sea-folk tech: +10% for each other Sea-folk card in your hand |
+| Lighthouse Lens Beam | Rare | D3 | Turret: 13 every 1.4s, 63 HP, 30 seconds. Sea-folk tech: +10% for each other Sea-folk card in your hand |
+| Sky-Ship Deck Gun | Rare | E1 | Turret: 11 every 1.4s, 56 HP, 30 seconds. Sky-folk tech: +10% for each other Sky-folk card in your hand |
+| Djinn Brass Idol | Rare | B4 | Turret: 13 every 1.4s, 66 HP, 30 seconds. Djinn tech: +10% for each other Djinn card in your hand |
+| Troll Bone Ballista | Common | C4 | Turret: 11 every 1.4s, 53 HP, 30 seconds. Troll tech: +10% for each other Troll card in your hand |
+| Alchemist's Fire Siphon | Uncommon | B11 | Turret: 16 every 1.4s, 81 HP, 30 seconds. Desert alchemy tech: +10% for each other Desert alchemy card in your hand |
+| Brass Crossbow Turret | Common | C5 | Turret: 11 every 1.4s, 56 HP, 30 seconds. Human tech: +10% for each other Human card in your hand |
+| Antikythera Sentinel | Legendary | F3 | Turret: 15 every 1.4s, 73 HP, 30 seconds. Human tech: +10% for each other Human card in your hand |
+| Gnomish Gatling | Common | A8 | Repeater: 7 every 0.5s, 50 HP, 20 seconds. Gnomish tech: +10% for each other Gnomish card in your hand |
+| Brass Hornet Swarm | Rare | F2 | Repeater: 7 every 0.5s, 46 HP, 20 seconds. Gnomish tech: +10% for each other Gnomish card in your hand |
+| Goblin Rattle-Gun | Common | ✱7 | Unstable: 1 in 5 misfires and hurts you. Repeater: 9 every 0.5s, 62 HP, 20 seconds. Goblin tech: +10% for each other Goblin card in your hand |
+| Chu-ko-nu Repeater | Uncommon | A3 | Repeater: 6 every 0.5s, 44 HP, 20 seconds. Human tech: +10% for each other Human card in your hand |
+| Elven Spinning Glaive | Uncommon | F5 | Repeater: 7 every 0.5s, 49 HP, 20 seconds. Elven tech: +10% for each other Elven card in your hand |
+| Coral Spitter | Common | E9 | Repeater: 7 every 0.5s, 52 HP, 20 seconds. Sea-folk tech: +10% for each other Sea-folk card in your hand |
+| Sky-Folk Kite Drone | Uncommon | D10 | Repeater: 9 every 0.5s, 60 HP, 20 seconds. Sky-folk tech: +10% for each other Sky-folk card in your hand |
+| Dwarven Rivet Gun | Rare | E1 | Repeater: 6 every 0.5s, 44 HP, 20 seconds. Dwarven tech: +10% for each other Dwarven card in your hand |
+| Troll Pebble Hurler | Common | D10 | Repeater: 8 every 0.5s, 54 HP, 20 seconds. Troll tech: +10% for each other Troll card in your hand |
+| Al-Jazari's Elephant Clock | Legendary | C9 | Repeater: 11 every 0.5s, 75 HP, 20 seconds. Djinn tech: +10% for each other Djinn card in your hand |
+| Siege Mangonel | Common | B8 | Mortar: lobs 31 every 2.5s, 43 HP, 20 seconds. Human tech: +10% for each other Human card in your hand |
+| Castle Trebuchet | Uncommon | E1 | Mortar: lobs 25 every 2.5s, 34 HP, 20 seconds. Human tech: +10% for each other Human card in your hand |
+| Goblin Rocket Rack | Common | D8 | Unstable: 1 in 5 misfires and hurts you. Mortar: lobs 40 every 2.5s, 56 HP, 20 seconds. Goblin tech: +10% for each other Goblin card in your hand |
+| Gnomish Bomb Lobber | Common | F1 | Mortar: lobs 22 every 2.5s, 30 HP, 20 seconds. Gnomish tech: +10% for each other Gnomish card in your hand |
+| Alchemist's Acid Mortar | Uncommon | A7 | Mortar: lobs 34 every 2.5s, 46 HP, 20 seconds. Desert alchemy tech: +10% for each other Desert alchemy card in your hand |
+| Troll Boulder Sling | Common | B8 | Mortar: lobs 31 every 2.5s, 43 HP, 20 seconds. Troll tech: +10% for each other Troll card in your hand |
+| Depth Charge Launcher | Rare | C5 | Mortar: lobs 34 every 2.5s, 47 HP, 20 seconds. Sea-folk tech: +10% for each other Sea-folk card in your hand |
+| Sky-Folk Bomb Balloon | Uncommon | D4 | Mortar: lobs 29 every 2.5s, 40 HP, 20 seconds. Sky-folk tech: +10% for each other Sky-folk card in your hand |
+| Dwarven Thunder Mortar | Rare | E2 | Mortar: lobs 29 every 2.5s, 40 HP, 20 seconds. Dwarven tech: +10% for each other Dwarven card in your hand |
+| Byzantine Fire Engine | Rare | F4 | Mortar: lobs 32 every 2.5s, 44 HP, 20 seconds. Desert alchemy tech: +10% for each other Desert alchemy card in your hand |
+| Djinn Sand Cannon | Legendary | A5 | Mortar: lobs 40 every 2.5s, 54 HP, 20 seconds. Djinn tech: +10% for each other Djinn card in your hand |
+| Elven Seed Catapult | Uncommon | D10 | Mortar: lobs 38 every 2.5s, 52 HP, 20 seconds. Elven tech: +10% for each other Elven card in your hand |
+| Iron Bastion | Common | E12 | 2 iron walls of 149 HP, 30 seconds. Dwarven tech: +10% for each other Dwarven card in your hand |
+| Dwarven Gate of Iron | Rare | A9 | 2 iron walls of 167 HP, 30 seconds. Dwarven tech: +10% for each other Dwarven card in your hand |
+| Gnomish Pop-Up Wall | Common | F7 | 2 iron walls of 122 HP, 30 seconds. Gnomish tech: +10% for each other Gnomish card in your hand |
+| Elven Thornglass Barrier | Uncommon | C2 | 1 iron wall of 107 HP, 30 seconds. Elven tech: +10% for each other Elven card in your hand |
+| Goblin Scrap Barricade | Common | B11 | Unstable: 1 in 5 misfires and hurts you. 2 iron walls of 187 HP, 30 seconds. Goblin tech: +10% for each other Goblin card in your hand |
+| Coral Rampart | Uncommon | E3 | 1 iron wall of 113 HP, 30 seconds. Sea-folk tech: +10% for each other Sea-folk card in your hand |
+| Sky-Folk Wind Sail Wall | Uncommon | D11 | 2 iron walls of 161 HP, 30 seconds. Sky-folk tech: +10% for each other Sky-folk card in your hand |
+| Troll Stone Rampart | Common | A8 | 2 iron walls of 128 HP, 30 seconds. Troll tech: +10% for each other Troll card in your hand |
+| Pike Palisade | Common | F5 | 2 iron walls of 112 HP, 30 seconds. Human tech: +10% for each other Human card in your hand |
+| Alchemist's Glass Bulwark | Uncommon | C4 | 2 iron walls of 119 HP, 30 seconds. Desert alchemy tech: +10% for each other Desert alchemy card in your hand |
+| Djinn Mirage Wall | Rare | B8 | 2 iron walls of 160 HP, 30 seconds. Djinn tech: +10% for each other Djinn card in your hand |
+| Brass Tortoise Wall | Legendary | B3 | 1 iron wall of 146 HP, 30 seconds. Human tech: +10% for each other Human card in your hand |
 
 ## Charges (ammo) (12)
 
@@ -158,14 +158,14 @@ Common 86 · Uncommon 82 · Legendary 17 · Rare 44
 | Copying Press | Uncommon | B1 | Instant: Copy the next queued card. Human tech |
 | Gnomish Duplicator | Rare | C4 | Instant: Copy the next queued card. Gnomish tech |
 | Grappling Hook | Common | D7 | Instant: Put the top card of your deck into your queue. Sea-folk tech |
-| Pop-Up Umbrella Shield | Common | E12 | Instant: Shield of 75 for 2 turns; replaces your current shield. Gnomish tech: +10% for each other Gnomish card in your hand |
-| Dwarven Shield Charm | Common | C2 | Instant: Shield of 48 for 2 turns; replaces your current shield. Dwarven tech: +10% for each other Dwarven card in your hand |
-| Gnomish Force Bubble | Uncommon | B12 | Instant: Shield of 84 for 2 turns; replaces your current shield. Gnomish tech: +10% for each other Gnomish card in your hand |
-| Elven Glass Ward | Uncommon | E3 | Instant: Shield of 56 for 2 turns; replaces your current shield. Elven tech: +10% for each other Elven card in your hand |
-| Sea-Folk Shell Guard | Common | D6 | Instant: Shield of 59 for 2 turns; replaces your current shield. Sea-folk tech: +10% for each other Sea-folk card in your hand |
-| Djinn Mirage Cloak | Rare | A6 | Instant: Shield of 73 for 3 turns; replaces your current shield. Djinn tech: +10% for each other Djinn card in your hand |
+| Pop-Up Umbrella Shield | Common | E12 | Instant: Shield of 75 for 20 seconds; replaces your current shield. Gnomish tech: +10% for each other Gnomish card in your hand |
+| Dwarven Shield Charm | Common | C2 | Instant: Shield of 48 for 20 seconds; replaces your current shield. Dwarven tech: +10% for each other Dwarven card in your hand |
+| Gnomish Force Bubble | Uncommon | B12 | Instant: Shield of 84 for 20 seconds; replaces your current shield. Gnomish tech: +10% for each other Gnomish card in your hand |
+| Elven Glass Ward | Uncommon | E3 | Instant: Shield of 56 for 20 seconds; replaces your current shield. Elven tech: +10% for each other Elven card in your hand |
+| Sea-Folk Shell Guard | Common | D6 | Instant: Shield of 59 for 20 seconds; replaces your current shield. Sea-folk tech: +10% for each other Sea-folk card in your hand |
+| Djinn Mirage Cloak | Rare | A6 | Instant: Shield of 73 for 30 seconds; replaces your current shield. Djinn tech: +10% for each other Djinn card in your hand |
 | Healing Draught | Common | B3 | Instant: Heal 40. Desert alchemy tech: +10% for each other Desert alchemy card in your hand |
-| Iron Tonic | Common | A5 | Instant: Shield of 40 for 2 turns; replaces your current shield. Desert alchemy tech: +10% for each other Desert alchemy card in your hand |
+| Iron Tonic | Common | A5 | Instant: Shield of 40 for 20 seconds; replaces your current shield. Desert alchemy tech: +10% for each other Desert alchemy card in your hand |
 | Quicksilver Elixir | Uncommon | A7 | Instant: Faster moves and casts for 10s. Desert alchemy tech |
 | Second Wind | Uncommon | D9 | Instant: Draw 2 cards into your hand. Desert alchemy tech |
 
@@ -198,10 +198,10 @@ Common 86 · Uncommon 82 · Legendary 17 · Rare 44
 | Dwarven Aegis Plate | Rare | E12 | Equip your strongest creature: +62 HP, it steps in front of hits aimed at you. Dwarven tech: +10% for each other Dwarven card in your hand |
 | Elven Mirror Shield | Uncommon | B5 | Equip your strongest creature: +42 HP, it steps in front of hits aimed at you. Elven tech: +10% for each other Elven card in your hand |
 | Gnomish Deflector Dish | Uncommon | C1 | Equip your strongest creature: +34 HP, it steps in front of hits aimed at you. Gnomish tech: +10% for each other Gnomish card in your hand |
-| War Banner Pole | Common | F5 | Equip your strongest creature: +10% power, +1 turn. Human tech: +10% for each other Human card in your hand |
-| Regimental Drum | Uncommon | A9 | Equip your strongest creature: +20% power, +1 turn. Human tech: +10% for each other Human card in your hand |
-| Dwarven Clan Standard | Rare | B2 | Equip your strongest creature: +10% power, +1 turn. Dwarven tech: +10% for each other Dwarven card in your hand |
-| Conch War Horn | Uncommon | C10 | Equip your strongest creature: +20% power, +1 turn. Sea-folk tech: +10% for each other Sea-folk card in your hand |
+| War Banner Pole | Common | F5 | Equip your strongest creature: +10% power, +10 seconds. Human tech: +10% for each other Human card in your hand |
+| Regimental Drum | Uncommon | A9 | Equip your strongest creature: +20% power, +10 seconds. Human tech: +10% for each other Human card in your hand |
+| Dwarven Clan Standard | Rare | B2 | Equip your strongest creature: +10% power, +10 seconds. Dwarven tech: +10% for each other Dwarven card in your hand |
+| Conch War Horn | Uncommon | C10 | Equip your strongest creature: +20% power, +10 seconds. Sea-folk tech: +10% for each other Sea-folk card in your hand |
 | Dwarven Fire Rune | Uncommon | C3 | Equip your strongest creature: +40% power, and its attacks carry this card's effects. Dwarven tech: +10% for each other Dwarven card in your hand. Burn 3s |
 | Elven Frost Sigil | Uncommon | B5 | Equip your strongest creature: +40% power, and its attacks carry this card's effects. Elven tech: +10% for each other Elven card in your hand. Freeze 1.8s |
 | Sky-Folk Spark Coil | Rare | E6 | Equip your strongest creature: +40% power, and its attacks carry this card's effects. Sky-folk tech: +10% for each other Sky-folk card in your hand. Stun 1.4s |

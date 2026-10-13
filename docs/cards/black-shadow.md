@@ -74,123 +74,123 @@ Common 85 · Rare 50 · Uncommon 75 · Legendary 24
 
 | Card | Rarity | Rune | What it does |
 |---|---|---|---|
-| Skeleton Warrior | Common | D9 | Blocks with 148 HP, hits for 9. 3 turns |
-| Skeleton Archer | Common | A4 | Shoots 12 down its row. 47 HP, 2 turns |
-| Bone Rattler | Common | F3 | Lobs 20 every 2.2s. 45 HP, 2 turns |
-| Shambling Zombie | Common | C6 | Blocks with 130 HP, hits for 8. 3 turns |
-| Plague Zombie | Common | B8 | Lobs 26 every 2.2s. 57 HP, 2 turns |
-| Ghoul | Common | E11 | Lobs 29 every 2.2s. 64 HP, 3 turns |
-| Poltergeist | Common | ✱6 | Lobs 23 every 2.2s. 52 HP, 2 turns |
-| Vampire Thrall | Common | A9 | Blocks with 148 HP, hits for 9. 3 turns |
-| Vampire Bat | Common | F12 | Shoots 17 down its row. 66 HP, 3 turns |
-| Tokoloshe | Common | ✱11 | Lobs 29 every 2.2s. 64 HP, 3 turns |
-| Adze | Common | E10 | Shoots 15 down its row. 62 HP, 3 turns |
-| Night-Pack Wolf | Common | B6 | Lobs 23 every 2.2s. 52 HP, 2 turns |
-| Cave Spider | Common | C12 | Shoots 17 down its row. 66 HP, 3 turns |
-| Death's-Head Moth | Common | F3 | Shoots 11 down its row. 45 HP, 2 turns |
-| Carrion Beetle | Common | A3 | Blocks with 112 HP, hits for 7. 2 turns |
-| Cave Centipede | Common | D1 | Lobs 18 every 2.2s. 40 HP, 1 turn |
-| Plague Rat | Common | E2 | Lobs 19 every 2.2s. 42 HP, 2 turns |
-| Bog Leech | Common | B8 | Heals you 6 every 2s. 57 HP, 2 turns |
-| Gravedigger | Common | C3 | Blocks with 112 HP, hits for 7. 2 turns |
-| Dungeon Jailer | Common | E10 | Blocks with 154 HP, hits for 9. 3 turns |
-| Brimstone Imp | Common | D11 | Lobs 29 every 2.2s. 64 HP, 3 turns |
-| Murder of Crows | Common | C12 | Shoots 17 down its row. 66 HP, 3 turns |
-| Witch's Toad | Common | B11 | Heals you 6 every 2s. 64 HP, 3 turns |
-| Black Cat Familiar | Common | C1 | Shoots 10 down its row. 40 HP, 1 turn |
-| Haugbui | Uncommon | B3 | Blocks with 125 HP, hits for 8. 2 turns |
-| Jiangshi | Uncommon | A10 | Blocks with 172 HP, hits for 10. 3 turns |
-| Nachzehrer | Uncommon | F10 | Shoots 17 down its row. 69 HP, 3 turns |
-| Yurei | Uncommon | A7 | Shoots 15 down its row. 61 HP, 2 turns |
-| Vetala | Uncommon | F3 | Shoots 13 down its row. 50 HP, 2 turns |
-| Mara | Uncommon | F6 | Shoots 15 down its row. 58 HP, 2 turns |
-| Pontianak | Uncommon | A10 | Lobs 31 every 2.2s. 69 HP, 3 turns |
-| Bog Revenant | Uncommon | B4 | Blocks with 132 HP, hits for 8. 2 turns |
-| Loup-Garou | Uncommon | A5 | Lobs 25 every 2.2s. 56 HP, 2 turns |
-| Bayou Rougarou | Uncommon | B5 | Blocks with 139 HP, hits for 8. 3 turns |
-| Barghest | Uncommon | C4 | Blocks with 132 HP, hits for 8. 2 turns |
-| Black Cadejo | Uncommon | D12 | Lobs 33 every 2.2s. 74 HP, 3 turns |
-| Night Mare | Uncommon | E1 | Lobs 20 every 2.2s. 45 HP, 1 turn |
-| Black Widow | Uncommon | F9 | Lobs 30 every 2.2s. 66 HP, 3 turns |
-| Bog Witch | Uncommon | A7 | Heals you 6 every 2s. 61 HP, 2 turns |
-| Plague Doctor | Uncommon | A11 | Heals you 7 every 2s. 72 HP, 3 turns |
-| Necromancer | Uncommon | F12 | Shoots 19 down its row. 74 HP, 3 turns |
-| Horned Night Visitor | Uncommon | C4 | Lobs 24 every 2.2s. 53 HP, 2 turns |
-| Omen Raven | Uncommon | B8 | Shoots 16 down its row. 64 HP, 2 turns |
-| Draugr | Rare | C10 | Blocks with 193 HP, hits for 12. 3 turns |
-| Onryo | Rare | B9 | Lobs 33 every 2.2s. 74 HP, 3 turns |
-| Bean Sidhe | Rare | E8 | Shoots 18 down its row. 71 HP, 2 turns |
-| Lich | Rare | D12 | Shoots 21 down its row. 83 HP, 3 turns |
-| Ankou | Rare | C6 | Lobs 29 every 2.2s. 65 HP, 2 turns |
-| Strigoi | Rare | B9 | Shoots 19 down its row. 74 HP, 3 turns |
-| Aswang | Rare | F10 | Lobs 35 every 2.2s. 77 HP, 3 turns |
-| Manananggal | Rare | A12 | Lobs 37 every 2.2s. 83 HP, 3 turns |
-| Asanbosam | Rare | D2 | Blocks with 133 HP, hits for 8. 2 turns |
-| Werewolf | Rare | E6 | Blocks with 163 HP, hits for 10. 3 turns |
-| Black Shuck | Rare | D4 | Lobs 27 every 2.2s. 59 HP, 2 turns |
-| Antlered Hunger | Rare | E6 | Lobs 29 every 2.2s. 65 HP, 2 turns |
-| Jorogumo | Rare | B3 | Shoots 14 down its row. 56 HP, 2 turns |
-| Rat King | Rare | C2 | Blocks with 133 HP, hits for 8. 2 turns |
-| Black Annis | Rare | F11 | Lobs 36 every 2.2s. 80 HP, 3 turns |
-| Pit Fiend | Rare | A4 | Blocks with 147 HP, hits for 9. 2 turns |
-| Rakshasa | Rare | C4 | Shoots 15 down its row. 59 HP, 2 turns |
-| Morrigan's Raven | Rare | B4 | Shoots 15 down its row. 59 HP, 2 turns |
-| Gashadokuro | Legendary | ✱9 | Blocks with 215 HP, hits for 13. 3 turns |
-| La Llorona | Legendary | F8 | Shoots 21 down its row. 82 HP, 2 turns |
-| Dullahan | Legendary | A1 | Blocks with 145 HP, hits for 9. 2 turns |
-| Grim Reaper | Legendary | F11 | Blocks with 232 HP, hits for 14. 4 turns |
-| Baba Yaga | Legendary | E3 | Heals you 6 every 2s. 65 HP, 2 turns |
-| The Erlking | Legendary | D1 | Shoots 15 down its row. 58 HP, 1 turn |
+| Skeleton Warrior | Common | D9 | Blocks with 148 HP, hits for 9. 30 seconds |
+| Skeleton Archer | Common | A4 | Shoots 12 down its row. 47 HP, 20 seconds |
+| Bone Rattler | Common | F3 | Lobs 20 every 2.2s. 45 HP, 20 seconds |
+| Shambling Zombie | Common | C6 | Blocks with 130 HP, hits for 8. 30 seconds |
+| Plague Zombie | Common | B8 | Lobs 26 every 2.2s. 57 HP, 20 seconds |
+| Ghoul | Common | E11 | Lobs 29 every 2.2s. 64 HP, 30 seconds |
+| Poltergeist | Common | ✱6 | Lobs 23 every 2.2s. 52 HP, 20 seconds |
+| Vampire Thrall | Common | A9 | Blocks with 148 HP, hits for 9. 30 seconds |
+| Vampire Bat | Common | F12 | Shoots 17 down its row. 66 HP, 30 seconds |
+| Tokoloshe | Common | ✱11 | Lobs 29 every 2.2s. 64 HP, 30 seconds |
+| Adze | Common | E10 | Shoots 15 down its row. 62 HP, 30 seconds |
+| Night-Pack Wolf | Common | B6 | Lobs 23 every 2.2s. 52 HP, 20 seconds |
+| Cave Spider | Common | C12 | Shoots 17 down its row. 66 HP, 30 seconds |
+| Death's-Head Moth | Common | F3 | Shoots 11 down its row. 45 HP, 20 seconds |
+| Carrion Beetle | Common | A3 | Blocks with 112 HP, hits for 7. 20 seconds |
+| Cave Centipede | Common | D1 | Lobs 18 every 2.2s. 40 HP, 10 seconds |
+| Plague Rat | Common | E2 | Lobs 19 every 2.2s. 42 HP, 20 seconds |
+| Bog Leech | Common | B8 | Heals you 6 every 2s. 57 HP, 20 seconds |
+| Gravedigger | Common | C3 | Blocks with 112 HP, hits for 7. 20 seconds |
+| Dungeon Jailer | Common | E10 | Blocks with 154 HP, hits for 9. 30 seconds |
+| Brimstone Imp | Common | D11 | Lobs 29 every 2.2s. 64 HP, 30 seconds |
+| Murder of Crows | Common | C12 | Shoots 17 down its row. 66 HP, 30 seconds |
+| Witch's Toad | Common | B11 | Heals you 6 every 2s. 64 HP, 30 seconds |
+| Black Cat Familiar | Common | C1 | Shoots 10 down its row. 40 HP, 10 seconds |
+| Haugbui | Uncommon | B3 | Blocks with 125 HP, hits for 8. 20 seconds |
+| Jiangshi | Uncommon | A10 | Blocks with 172 HP, hits for 10. 30 seconds |
+| Nachzehrer | Uncommon | F10 | Shoots 17 down its row. 69 HP, 30 seconds |
+| Yurei | Uncommon | A7 | Shoots 15 down its row. 61 HP, 20 seconds |
+| Vetala | Uncommon | F3 | Shoots 13 down its row. 50 HP, 20 seconds |
+| Mara | Uncommon | F6 | Shoots 15 down its row. 58 HP, 20 seconds |
+| Pontianak | Uncommon | A10 | Lobs 31 every 2.2s. 69 HP, 30 seconds |
+| Bog Revenant | Uncommon | B4 | Blocks with 132 HP, hits for 8. 20 seconds |
+| Loup-Garou | Uncommon | A5 | Lobs 25 every 2.2s. 56 HP, 20 seconds |
+| Bayou Rougarou | Uncommon | B5 | Blocks with 139 HP, hits for 8. 30 seconds |
+| Barghest | Uncommon | C4 | Blocks with 132 HP, hits for 8. 20 seconds |
+| Black Cadejo | Uncommon | D12 | Lobs 33 every 2.2s. 74 HP, 30 seconds |
+| Night Mare | Uncommon | E1 | Lobs 20 every 2.2s. 45 HP, 10 seconds |
+| Black Widow | Uncommon | F9 | Lobs 30 every 2.2s. 66 HP, 30 seconds |
+| Bog Witch | Uncommon | A7 | Heals you 6 every 2s. 61 HP, 20 seconds |
+| Plague Doctor | Uncommon | A11 | Heals you 7 every 2s. 72 HP, 30 seconds |
+| Necromancer | Uncommon | F12 | Shoots 19 down its row. 74 HP, 30 seconds |
+| Horned Night Visitor | Uncommon | C4 | Lobs 24 every 2.2s. 53 HP, 20 seconds |
+| Omen Raven | Uncommon | B8 | Shoots 16 down its row. 64 HP, 20 seconds |
+| Draugr | Rare | C10 | Blocks with 193 HP, hits for 12. 30 seconds |
+| Onryo | Rare | B9 | Lobs 33 every 2.2s. 74 HP, 30 seconds |
+| Bean Sidhe | Rare | E8 | Shoots 18 down its row. 71 HP, 20 seconds |
+| Lich | Rare | D12 | Shoots 21 down its row. 83 HP, 30 seconds |
+| Ankou | Rare | C6 | Lobs 29 every 2.2s. 65 HP, 20 seconds |
+| Strigoi | Rare | B9 | Shoots 19 down its row. 74 HP, 30 seconds |
+| Aswang | Rare | F10 | Lobs 35 every 2.2s. 77 HP, 30 seconds |
+| Manananggal | Rare | A12 | Lobs 37 every 2.2s. 83 HP, 30 seconds |
+| Asanbosam | Rare | D2 | Blocks with 133 HP, hits for 8. 20 seconds |
+| Werewolf | Rare | E6 | Blocks with 163 HP, hits for 10. 30 seconds |
+| Black Shuck | Rare | D4 | Lobs 27 every 2.2s. 59 HP, 20 seconds |
+| Antlered Hunger | Rare | E6 | Lobs 29 every 2.2s. 65 HP, 20 seconds |
+| Jorogumo | Rare | B3 | Shoots 14 down its row. 56 HP, 20 seconds |
+| Rat King | Rare | C2 | Blocks with 133 HP, hits for 8. 20 seconds |
+| Black Annis | Rare | F11 | Lobs 36 every 2.2s. 80 HP, 30 seconds |
+| Pit Fiend | Rare | A4 | Blocks with 147 HP, hits for 9. 20 seconds |
+| Rakshasa | Rare | C4 | Shoots 15 down its row. 59 HP, 20 seconds |
+| Morrigan's Raven | Rare | B4 | Shoots 15 down its row. 59 HP, 20 seconds |
+| Gashadokuro | Legendary | ✱9 | Blocks with 215 HP, hits for 13. 30 seconds |
+| La Llorona | Legendary | F8 | Shoots 21 down its row. 82 HP, 20 seconds |
+| Dullahan | Legendary | A1 | Blocks with 145 HP, hits for 9. 20 seconds |
+| Grim Reaper | Legendary | F11 | Blocks with 232 HP, hits for 14. 40 seconds |
+| Baba Yaga | Legendary | E3 | Heals you 6 every 2s. 65 HP, 20 seconds |
+| The Erlking | Legendary | D1 | Shoots 15 down its row. 58 HP, 10 seconds |
 
 ## Machines (8)
 
 | Card | Rarity | Rune | What it does |
 |---|---|---|---|
-| Bone Ballista | Common | F9 | Turret: 13 every 1.4s, 67 HP, 3 turns |
-| Skull Catapult | Common | E5 | Mortar: lobs 27 every 2.5s, 37 HP, 2 turns |
-| Torture Rack | Uncommon | D5 | 2 iron walls of 125 HP, 3 turns |
-| Coffin Cannon | Uncommon | C7 | Turret: 14 every 1.4s, 69 HP, 3 turns |
-| Plague Trebuchet | Uncommon | B1 | Mortar: lobs 25 every 2.5s, 34 HP, 2 turns |
-| Iron Maiden | Rare | C12 | 2 iron walls of 187 HP, 3 turns |
-| Gibbet Tower | Rare | B10 | Turret: 17 every 1.4s, 87 HP, 3 turns |
-| Hut on Chicken Legs | Legendary | A12 | Mortar: lobs 53 every 2.5s, 72 HP, 2 turns |
+| Bone Ballista | Common | F9 | Turret: 13 every 1.4s, 67 HP, 30 seconds |
+| Skull Catapult | Common | E5 | Mortar: lobs 27 every 2.5s, 37 HP, 20 seconds |
+| Torture Rack | Uncommon | D5 | 2 iron walls of 125 HP, 30 seconds |
+| Coffin Cannon | Uncommon | C7 | Turret: 14 every 1.4s, 69 HP, 30 seconds |
+| Plague Trebuchet | Uncommon | B1 | Mortar: lobs 25 every 2.5s, 34 HP, 20 seconds |
+| Iron Maiden | Rare | C12 | 2 iron walls of 187 HP, 30 seconds |
+| Gibbet Tower | Rare | B10 | Turret: 17 every 1.4s, 87 HP, 30 seconds |
+| Hut on Chicken Legs | Legendary | A12 | Mortar: lobs 53 every 2.5s, 72 HP, 20 seconds |
 
 ## Walls & shields (14)
 
 | Card | Rarity | Rune | What it does |
 |---|---|---|---|
-| ★ Bone Wall | Common | E4 | 2 walls of 50 HP, 2 turns |
-| Skull-Topped Fence | Common | E4 | 2 walls of 41 HP, 2 turns |
-| Coffin Lid | Common | F8 | Shield of 64 for 2 turns; replaces your current shield |
-| Cobweb Veil | Common | A1 | Shield of 45 for 2 turns; replaces your current shield |
-| Hook Fence | Common | F6 | 2 walls of 46 HP that hit back for 8, 2 turns |
-| Beetle Carapace | Common | A9 | Shield of 67 for 2 turns; replaces your current shield |
-| Lead-Lined Coffin | Uncommon | B11 | Shield of 81 for 2 turns; replaces your current shield |
-| Ossuary Wall | Uncommon | C2 | 2 walls of 42 HP, 2 turns |
-| Crypt Door | Uncommon | F3 | 2 walls of 44 HP, 2 turns |
-| Demon Hide | Uncommon | A7 | Shield of 69 for 2 turns; replaces your current shield |
-| Shroud of Fog | Uncommon | E8 | Shield of 72 for 2 turns; replaces your current shield |
-| Iron Maiden Shell | Rare | D9 | 3 walls of 65 HP that hit back for 11, 3 turns |
-| Barrow Mound | Rare | C1 | 2 walls of 44 HP, 3 turns |
-| Hell's Gate | Legendary | B3 | 2 walls of 57 HP that hit back for 10, 3 turns |
+| ★ Bone Wall | Common | E4 | 2 walls of 50 HP, 20 seconds |
+| Skull-Topped Fence | Common | E4 | 2 walls of 41 HP, 20 seconds |
+| Coffin Lid | Common | F8 | Shield of 64 for 20 seconds; replaces your current shield |
+| Cobweb Veil | Common | A1 | Shield of 45 for 20 seconds; replaces your current shield |
+| Hook Fence | Common | F6 | 2 walls of 46 HP that hit back for 8, 20 seconds |
+| Beetle Carapace | Common | A9 | Shield of 67 for 20 seconds; replaces your current shield |
+| Lead-Lined Coffin | Uncommon | B11 | Shield of 81 for 20 seconds; replaces your current shield |
+| Ossuary Wall | Uncommon | C2 | 2 walls of 42 HP, 20 seconds |
+| Crypt Door | Uncommon | F3 | 2 walls of 44 HP, 20 seconds |
+| Demon Hide | Uncommon | A7 | Shield of 69 for 20 seconds; replaces your current shield |
+| Shroud of Fog | Uncommon | E8 | Shield of 72 for 20 seconds; replaces your current shield |
+| Iron Maiden Shell | Rare | D9 | 3 walls of 65 HP that hit back for 11, 30 seconds |
+| Barrow Mound | Rare | C1 | 2 walls of 44 HP, 30 seconds |
+| Hell's Gate | Legendary | B3 | 2 walls of 57 HP that hit back for 10, 30 seconds |
 
 ## Turrets (13)
 
 | Card | Rarity | Rune | What it does |
 |---|---|---|---|
-| ★ Wraith Totem | Uncommon | D6 | Tower: 10 every 1s, 40 HP, 1 turn. Drain 50% |
-| Skull Lantern | Common | D7 | Tower: 15 every 1.2s, 40 HP, 2 turns |
-| Stingy Jack's Lantern | Common | A5 | Tower: 6 every 0.6s, 40 HP, 2 turns. Burn 3.7s |
-| Crow Perch | Common | F1 | Tower: 11 every 1.2s, 40 HP, 1 turn |
-| Will-o'-the-Wisp | Common | A11 | Tower: 11 every 0.9s, 40 HP, 2 turns. Confuse 5.2s |
-| Rot Censer | Common | F6 | Tower: 12 every 1.2s, 40 HP, 2 turns. Poison 9 |
-| Bone Totem | Common | C1 | Tower: 11 every 1.2s, 40 HP, 1 turn |
-| Pin Doll | Uncommon | B4 | Tower: 6 every 0.6s, 40 HP, 1 turn. Curse 4.2s |
-| Gallows Tree | Uncommon | A9 | Tower: 17 every 1.2s, 40 HP, 2 turns. Pull |
-| Bubbling Cauldron | Uncommon | F12 | Tower: 9 every 0.6s, 40 HP, 2 turns. Poison 15 |
-| Spider Nest | Uncommon | D2 | Tower: 8 every 0.9s, 40 HP, 1 turn. Slow 2.6s |
-| Blood Fountain | Rare | E1 | Tower: 14 every 1.5s, 40 HP, 1 turn. Drain 30% |
-| Cursed Mirror | Rare | B11 | Tower: 14 every 0.9s, 40 HP, 2 turns. Confuse 5.2s |
+| ★ Wraith Totem | Uncommon | D6 | Tower: 10 every 1s, 40 HP, 10 seconds. Drain 50% |
+| Skull Lantern | Common | D7 | Tower: 15 every 1.2s, 40 HP, 20 seconds |
+| Stingy Jack's Lantern | Common | A5 | Tower: 6 every 0.6s, 40 HP, 20 seconds. Burn 3.7s |
+| Crow Perch | Common | F1 | Tower: 11 every 1.2s, 40 HP, 10 seconds |
+| Will-o'-the-Wisp | Common | A11 | Tower: 11 every 0.9s, 40 HP, 20 seconds. Confuse 5.2s |
+| Rot Censer | Common | F6 | Tower: 12 every 1.2s, 40 HP, 20 seconds. Poison 9 |
+| Bone Totem | Common | C1 | Tower: 11 every 1.2s, 40 HP, 10 seconds |
+| Pin Doll | Uncommon | B4 | Tower: 6 every 0.6s, 40 HP, 10 seconds. Curse 4.2s |
+| Gallows Tree | Uncommon | A9 | Tower: 17 every 1.2s, 40 HP, 20 seconds. Pull |
+| Bubbling Cauldron | Uncommon | F12 | Tower: 9 every 0.6s, 40 HP, 20 seconds. Poison 15 |
+| Spider Nest | Uncommon | D2 | Tower: 8 every 0.9s, 40 HP, 10 seconds. Slow 2.6s |
+| Blood Fountain | Rare | E1 | Tower: 14 every 1.5s, 40 HP, 10 seconds. Drain 30% |
+| Cursed Mirror | Rare | B11 | Tower: 14 every 0.9s, 40 HP, 20 seconds. Confuse 5.2s |
 
 ## Buffs (15)
 
@@ -253,31 +253,31 @@ Common 85 · Rare 50 · Uncommon 75 · Legendary 24
 
 | Card | Rarity | Rune | What it does |
 |---|---|---|---|
-| Rusted Mantrap | Common | B2 | Spike trap: 40 when an enemy steps on the tile you aim; 2 turns |
-| Open Grave | Common | E12 | Snare: 30 and roots when an enemy steps on the tile you aim; 2 turns. Stun 2.7s |
-| Sucking Bog | Uncommon | ✱2 | Snare: 18 and roots when an enemy steps on the tile you aim; 2 turns. Stun 1.7s, Slow 2.6s |
-| Trapdoor Spider Lair | Uncommon | A5 | Snare: 21 and roots when an enemy steps on the tile you aim; 2 turns. Stun 2s, Poison 8 |
-| Plague Mine | Uncommon | F1 | Blast trap: 25 to it and around it when an enemy steps on the tile you aim; 2 turns. Poison 4 |
-| Rigged Coffin | Common | C9 | Blast trap: 38 to it and around it when an enemy steps on the tile you aim; 2 turns |
-| Oubliette | Rare | B3 | Snare: 21 and roots when an enemy steps on the tile you aim; 2 turns. Stun 1.8s |
-| The Hanged Man | Rare | E5 | Snare: 27 and roots when an enemy steps on the tile you aim; 2 turns. Stun 2s, Pull |
-| Cursed Tomb | Rare | D2 | Blast trap: 29 to it and around it when an enemy steps on the tile you aim; 2 turns. Curse 3.6s |
+| Rusted Mantrap | Common | B2 | Spike trap: 40 when an enemy steps on the tile you aim; 20 seconds |
+| Open Grave | Common | E12 | Snare: 30 and roots when an enemy steps on the tile you aim; 20 seconds. Stun 2.7s |
+| Sucking Bog | Uncommon | ✱2 | Snare: 18 and roots when an enemy steps on the tile you aim; 20 seconds. Stun 1.7s, Slow 2.6s |
+| Trapdoor Spider Lair | Uncommon | A5 | Snare: 21 and roots when an enemy steps on the tile you aim; 20 seconds. Stun 2s, Poison 8 |
+| Plague Mine | Uncommon | F1 | Blast trap: 25 to it and around it when an enemy steps on the tile you aim; 20 seconds. Poison 4 |
+| Rigged Coffin | Common | C9 | Blast trap: 38 to it and around it when an enemy steps on the tile you aim; 20 seconds |
+| Oubliette | Rare | B3 | Snare: 21 and roots when an enemy steps on the tile you aim; 20 seconds. Stun 1.8s |
+| The Hanged Man | Rare | E5 | Snare: 27 and roots when an enemy steps on the tile you aim; 20 seconds. Stun 2s, Pull |
+| Cursed Tomb | Rare | D2 | Blast trap: 29 to it and around it when an enemy steps on the tile you aim; 20 seconds. Curse 3.6s |
 
 ## Field effects (11)
 
 | Card | Rarity | Rune | What it does |
 |---|---|---|---|
-| Haunted Bog | Common | F2 | Grows brambles that deal 8 per step on the tile you aim and around it for 1 turn |
-| Graveyard Fog | Common | E6 | Grows brambles that deal 10 per step along the aimed tile's row for 1 turn |
-| Webbed Hollow | Common | D2 | Grows brambles that deal 8 per step in a cross on the tile you aim for 1 turn |
-| Graveyard Chill | Common | C1 | Ices the ground, halving enemy speed, along the aimed tile's row for 1 turn |
+| Haunted Bog | Common | F2 | Grows brambles that deal 8 per step on the tile you aim and around it for 10 seconds |
+| Graveyard Fog | Common | E6 | Grows brambles that deal 10 per step along the aimed tile's row for 10 seconds |
+| Webbed Hollow | Common | D2 | Grows brambles that deal 8 per step in a cross on the tile you aim for 10 seconds |
+| Graveyard Chill | Common | C1 | Ices the ground, halving enemy speed, along the aimed tile's row for 10 seconds |
 | Restless Graves | Uncommon | B9 | Tremor deals 23 on the tile you aim and around it. Stun 1.5s |
-| Hellfire Rift | Uncommon | A7 | Sets the ground burning down the aimed tile's column for 2 turns |
-| Acid Rain | Uncommon | F10 | Sets the ground burning along the aimed tile's row for 2 turns |
-| Draugr's Barrow Frost | Uncommon | ✱8 | Ices the ground, halving enemy speed, on the tile you aim and around it for 2 turns |
-| Witch's Thicket | Common | F6 | Grows brambles that deal 10 per step down the aimed tile's column for 1 turn |
+| Hellfire Rift | Uncommon | A7 | Sets the ground burning down the aimed tile's column for 20 seconds |
+| Acid Rain | Uncommon | F10 | Sets the ground burning along the aimed tile's row for 20 seconds |
+| Draugr's Barrow Frost | Uncommon | ✱8 | Ices the ground, halving enemy speed, on the tile you aim and around it for 20 seconds |
+| Witch's Thicket | Common | F6 | Grows brambles that deal 10 per step down the aimed tile's column for 10 seconds |
 | Catacomb Collapse | Rare | F5 | Tremor deals 22 along the aimed tile's row. Stun 1.2s |
-| Mouth of Hell | Legendary | A11 | Sets the ground burning on the tile you aim and around it for 2 turns |
+| Mouth of Hell | Legendary | A11 | Sets the ground burning on the tile you aim and around it for 20 seconds |
 
 ## Legendary pieces (5)
 

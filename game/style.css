@@ -629,7 +629,7 @@ body.wide .camp{grid-template-areas:"logo logo" "area area" "scene depth" "scene
 #xTop .info{display:flex; flex-direction:column; align-items:flex-end; gap:2px; font-size:13px;}
 #xGold{color:#f2c94c;}
 #xMini{position:absolute; top:52px; right:10px; width:120px; height:120px; image-rendering:pixelated; border:2px solid #2a2f3e; background:#05060a; touch-action:none; user-select:none; -webkit-user-select:none; -webkit-touch-callout:none;}
-#xMini.big{position:fixed; zoom:1; top:50%!important; left:50%; right:auto; width:min(94vw,70vh)!important; height:min(94vw,70vh)!important; transform:translate(-50%,-50%); z-index:20; border:3px solid #7fd4ff; box-shadow:0 0 0 100vmax rgba(0,0,0,.55);}
+#xMini.big{position:fixed; zoom:1; top:50%!important; left:50%; right:auto; width:min(94vw,70vh)!important; height:min(94vw,70vh)!important; transform:translate(-50%,-50%); z-index:20; border:3px solid #7fd4ff; cursor:pointer;}
 #xLog{max-width:min(560px,100%); margin-bottom:8px; font-size:13px; line-height:1.35; text-shadow:0 1px 0 #000,0 0 4px #000; pointer-events:none;}
 #xLog .dim{color:#9aa3b5;} #xLog .good{color:#7dffb0;} #xLog .bad{color:#ff7a85;} #xLog .warn{color:#ffd166;} #xLog .gold{color:#f2c94c;} #xLog .loot{color:#c9a7ff;}
 #xBottom{position:absolute; left:0; right:0; bottom:0; padding:8px 12px 10px; background:linear-gradient(#05060800,#050608ee);}
@@ -1128,3 +1128,9 @@ body.ui-phone:not(.wide) .depthbox .quick small{display:none;}
 body.ui-phone:not(.wide) .depthbox .depthpick #btnDescend{white-space:nowrap; font-size:clamp(15px,4.6vw,20px); padding-left:4px; padding-right:4px;}
 body.ui-phone:not(.wide) .panel.log:empty{display:none;}
 body.ui-phone:not(.wide) .panel.scene{width:fit-content; max-width:100%; margin:0 auto;}
+
+/* the big map: a dark shade behind it (tap it to close) and a close button at its corner */
+.x-map-shade{position:fixed; inset:0; background:rgba(0,0,0,.6); z-index:19; touch-action:none;}
+.x-map-shade[hidden],.x-map-close[hidden]{display:none;}
+.x-map-close{position:fixed; z-index:21; width:44px; height:44px; border-radius:50%; border:2px solid #7fd4ff; background:#0b141e; color:#fff; font-size:20px; padding:0; cursor:pointer;
+  top:calc(50% - min(94vw,70vh)/2 - 22px); left:calc(50% + min(94vw,70vh)/2 - 30px); touch-action:none;}

@@ -249,11 +249,14 @@ function xInit3D(){
     XHOLD.on=false; XHOLD.id=null; XHOLD.stick=false; xStickDraw(); };   // in Walk to touch, letting go keeps you walking to the goal
   cv.addEventListener('pointerup',end); cv.addEventListener('pointercancel',e=>{ XHOLD.on=false; XHOLD.id=null; XHOLD.stick=false; xStickDraw(); });
   cv.addEventListener('contextmenu',e=>e.preventDefault());
-  // hold a finger on the minimap to see it big; let go to shrink it back
-  const mm=$('#xMini'); let mmT=0;
-  const mmOff=()=>{ clearTimeout(mmT); mm.classList.remove('big'); };
-  mm.addEventListener('pointerdown',e=>{ e.preventDefault(); try{ mm.setPointerCapture(e.pointerId); }catch(_){} clearTimeout(mmT); mmT=setTimeout(()=>{ if(EX) xMini(); mm.classList.add('big'); },250); });
-  mm.addEventListener('pointerup',mmOff); mm.addEventListener('pointercancel',mmOff); mm.addEventListener('contextmenu',e=>e.preventDefault());
+  // the minimap: a tap opens it big, and it stays open. Tap a place you have discovered and the map
+  // closes while you walk there on your own; tap the dark (or ✕) to close it.
+  const mm=$('#xMini');
+  mm.addEventListener('pointerdown',e=>{ e.preventDefault(); e.stopPropagation(); try{ mm.setPointerCapture(e.pointerId); }catch(_){} });
+  mm.addEventListener('pointerup',e=>{ e.preventDefault(); e.stopPropagation(); if(!EX||!EX.active) return; if(!mm.classList.contains('big')) return xMapOpen(); xMapTap(e); });
+  mm.addEventListener('contextmenu',e=>e.preventDefault());
+  $('#xMapShade').addEventListener('pointerdown',e=>{ e.preventDefault(); e.stopPropagation(); xMapClose(); });
+  $('#xMapClose').addEventListener('pointerdown',e=>{ e.preventDefault(); e.stopPropagation(); xMapClose(); });
   return X3;
 }
 function xTex(cv,rep){ const t=new THREE.CanvasTexture(cv); t.magFilter=THREE.NearestFilter; t.minFilter=THREE.NearestFilter; if(rep){ t.wrapS=t.wrapT=THREE.RepeatWrapping; } return t; }
@@ -390,14 +393,28 @@ function xBuildScene(){
     g.add(hinge); d.mesh=g; d.leaf=hinge; d.ew=ew; d.cell=i; hinge.visible=d.state!=='secret'; if(d.state==='open') xDoorPose(d,1,1); g.visible=false; grp.add(g); }
   // stairs
   const glow=new THREE.Color(isBossDepth(EX.depth)?'#ff5d6c':A.glow);
+  // the way down: a stairwell. Its steps run away from you (north), each lower and darker than the
+  // last, between low stone walls, into the dark; a thin glow of the area's colour rims the top
+  const W=XCS*.86, D=XCS*.86, N=5, stoneC=new THREE.Color(A.lit).lerp(new THREE.Color(0x6a6458),.55);
   const down=new THREE.Group(); down.position.set(xw(EX.down),0,xz(EX.down));
-  down.add(xBox(XCS*.8,.32,XCS*.8,xMat(0x050507),0,.02,0));
-  const ring=new THREE.Mesh(new THREE.TorusGeometry(.75,.08,6,20),new THREE.MeshBasicMaterial({color:glow})); ring.rotation.x=Math.PI/2; ring.position.y=.2; down.add(ring);
-  down.userData.ring=ring; down.visible=false; grp.add(down); EX.downMesh=down;
-  // the way back up: a worn stone circle under a shaft of daylight
+  down.add(xBox(W,.02,D,xMat(0x020203),0,.012,0));   // the dark at the bottom
+  for(let k=0;k<N;k++){ const d=D/N, z=D/2-d*(k+.5), h=.3*(1-k/N);   // the nearest step is at floor level, the far ones sink
+    const col=stoneC.clone().multiplyScalar(1-.17*k); down.add(xBox(W-.2,Math.max(.02,h),d*.96,xMat(col),0,Math.max(.01,h/2),z));
+    down.add(xBox(W-.2,.012,d*.22,xMat(0x050506),0,Math.max(.02,h)+.004,z-d*.38)); }   // the dark lip where each step drops to the next
+  const rimM=xMat(stoneC.clone().multiplyScalar(.8));
+  down.add(xBox(.12,.42,D,rimM,-W/2,.21,0), xBox(.12,.42,D,rimM,W/2,.21,0), xBox(W+.12,.42,.12,rimM,0,.21,-D/2));
+  const ring=new THREE.Mesh(new THREE.TorusGeometry(.12,.05,6,12),new THREE.MeshBasicMaterial({color:glow})); ring.rotation.x=Math.PI/2; ring.position.set(0,.45,-D/2);
+  const rim=new THREE.Mesh(new THREE.BoxGeometry(W+.16,.03,.06),new THREE.MeshBasicMaterial({color:glow})); rim.position.set(0,.44,-D/2); down.add(rim);
+  ring.visible=false; down.add(ring); down.userData.ring=ring; down.visible=false; grp.add(down); EX.downMesh=down;
+  // the way up: worn stone steps climbing away from you toward a pale glow of daylight
   const up=new THREE.Group(); up.position.set(xw(EX.up),0,xz(EX.up));
-  const disc=new THREE.Mesh(new THREE.CylinderGeometry(.82,.88,.05,20),xMat(new THREE.Color(A.lit).lerp(new THREE.Color(0x8a8478),.5))); disc.position.y=.025; up.add(disc);
-  const halo=new THREE.Mesh(new THREE.TorusGeometry(.72,.06,6,20),new THREE.MeshBasicMaterial({color:0xfff2c0})); halo.rotation.x=Math.PI/2; halo.position.y=.08; up.add(halo);
+  const upC=new THREE.Color(A.lit).lerp(new THREE.Color(0x9a9488),.5);
+  for(let k=0;k<N;k++){ const d=D/N, z=D/2-d*(k+.5), h=.1+.11*k;
+    const col=upC.clone().multiplyScalar(.8+.06*k); up.add(xBox(W-.2,h,d*.98,xMat(col),0,h/2,z));
+    const h0=k?.1+.11*(k-1):0; up.add(xBox(W-.2,h-h0,.02,xMat(col.clone().multiplyScalar(.45)),0,h0+(h-h0)/2,z+d*.49+.011));   // each riser in shadow
+    up.add(xBox(W-.2,.012,d*.12,xMat(col.clone().lerp(new THREE.Color(0xffffff),.25)),0,h+.006,z+d*.43)); }   // a worn, lighter nosing on each tread
+  up.add(xBox(.12,.7,D,rimM,-W/2,.35,0), xBox(.12,.7,D,rimM,W/2,.35,0));
+  const sky=new THREE.Mesh(new THREE.BoxGeometry(W-.2,.03,.08),new THREE.MeshBasicMaterial({color:0xfff2c0})); sky.position.set(0,.66,-D/2+.04); up.add(sky);
   up.visible=false; grp.add(up); EX.upMesh=up;
   // chests
   for(const c of EX.chests) grp.add(xChestMesh(c));
@@ -557,7 +574,7 @@ function xStickDraw(){ const el=$('#xStick'); if(!el) return; const m=xMoveMode(
 // paused (ui.js): the floor stands still and keys and touches are let go
 let xPaused=false;
 function xPause(on){ xPaused=!!on; for(const k in XKEY) XKEY[k]=false; XHOLD.on=false; XHOLD.id=null; if(EX){ EX.vx=EX.vz=0; } }
-document.addEventListener('keydown',e=>{ if(!EX||!EX.active||xPaused) return; const k=e.key.toLowerCase(), a=keyAct(k,'map'); XKEY[k]=true;
+document.addEventListener('keydown',e=>{ if(EX&&xMapIsOpen()&&(e.key==='Escape'||e.key==='m')){ xMapClose(); return; } if(!EX||!EX.active||xPaused) return; const k=e.key.toLowerCase(), a=keyAct(k,'map'); XKEY[k]=true;
   if(a==='fire'&&!e.repeat) xStrike();
   if(a==='search'){ if(EX.aim) xSearch(); else xSearchAt(EX.pc); } else if(a==='disarm') xDisarm(); else if(a==='camp') xToCamp();
   if(a||k===' '){ e.preventDefault(); } if(['up','down','left','right'].includes(a)){ EX.path=[]; EX.goal=null; } });
@@ -566,7 +583,9 @@ document.addEventListener('keyup',e=>{ XKEY[e.key.toLowerCase()]=false; });
    under the finger becomes your goal, the walk there takes the shortest way round walls, and you
    keep going after you let go. Holding still does not drift the goal as the camera follows you:
    it only changes when the finger moves. */
-function xPathToCell(goal){ const blocked=n=>xKnownTrap(n)||xChestAt(n)&&n!==goal||typeof xSolid==='function'&&xSolid(n)&&n!==goal;
+// walking somewhere on your own goes round the stairs (stepping on them climbs or descends), unless they are where you are going
+const xStairCell=(n,goal)=>n!==goal&&(n===EX.up||n===EX.down);
+function xPathToCell(goal){ const blocked=n=>xKnownTrap(n)||xStairCell(n,goal)||xChestAt(n)&&n!==goal||typeof xSolid==='function'&&xSolid(n)&&n!==goal;
   const d=xbfs(EX.t,EX.doors,goal,EX.seen,n=>blocked(n)&&n!==EX.pc);
   if(d[EX.pc]<0) return null; const path=[]; let cur=EX.pc;
   while(cur!==goal){ const x=xcx(cur), y=xcy(cur); let best=-1;
@@ -587,7 +606,7 @@ function xTap(e){ const [ax,ay]=appXY(e.clientX,e.clientY); xGoalAt(ax,ay); }
 // can you walk straight from (x,z) to the middle of cell n? (open floor all the way, with room for you)
 function xStraight(x,z,n){ const tx=xw(n), tz=xz(n), L=Math.hypot(tx-x,tz-z), steps=Math.ceil(L/.3), r=.45;
   for(let k=1;k<=steps;k++){ const px=x+(tx-x)*k/steps, pz=z+(tz-z)*k/steps;
-    for(const [ox,oz] of [[-r,-r],[r,-r],[-r,r],[r,r]]){ const c=xcell(px+ox,pz+oz); if(c===EX.pc) continue; if(!xClear(c)||xKnownTrap(c)||xChestAt(c)||typeof xSolid==='function'&&xSolid(c)) return false; } }
+    for(const [ox,oz] of [[-r,-r],[r,-r],[-r,r],[r,r]]){ const c=xcell(px+ox,pz+oz); if(c===EX.pc) continue; if(!xClear(c)||xKnownTrap(c)||xChestAt(c)||xStairCell(c,EX.goal&&EX.goal.cell)||typeof xSolid==='function'&&xSolid(c)) return false; } }
   return true; }
 // the point on the floor under a screen point (app coordinates), or null
 function xFloorAt(ax,ay){ const G=X3; if(!G) return null; const r=appBox($('#xView')); if(!r.width) return null;
@@ -657,6 +676,7 @@ function xEnter(c){
   if(EX.busy) return;
   if(typeof xEnterExtra==='function') xEnterExtra(c);
   if(c===EX.down&&!EX.busy) xStairsDown();
+  else if(c===EX.up&&!EX.busy) xStairsUp();   // stepping back onto the stairs up climbs them (from depth 1, to camp)
   xHud();
 }
 // experience on the map: a line in the log, and the level-up panel when a level comes
@@ -846,7 +866,7 @@ function xDie(why){
   XPARK=null; if(typeof XRUN!=='undefined') XRUN=null;
   logCamp('Killed by '+why+' at depth '+depth+', dropped '+lost+' gold.'+(save.corpse?' Your body lies there.':''),'curse'); stopExplore();
   reveal('Defeated…','Brought down by '+why+' at depth '+depth+'. You dropped '+lost+' gold.'+xBodyNote(body),[],[['Camp',()=>{ EX=null; openCamp(); },true],...(typeof peekPoint==='function'&&peekPoint()?[['Load save',()=>loadPoint()]]:[])]); }
-function stopExplore(){ if(EX) EX.active=false; xPause(false); }
+function stopExplore(){ if(EX) EX.active=false; if(xMapIsOpen()) xMapClose(); xPause(false); }
 
 /* ---------------- loop, hud ---------------- */
 let xRaf=0, xLast=0;
@@ -870,7 +890,7 @@ function xLoopStart(){ cancelAnimationFrame(xRaf); xLast=performance.now(); xRaf
 function xLoop(ts){
   if(!EX||!EX.active||!$('#scrExplore').classList.contains('on')) return;
   const dt=Math.min(.1,(ts-xLast)/1000); xLast=ts;
-  if(!EX.busy&&!xPaused&&!EX.aim){ xMove(dt); xEnemies(dt); if(EX.active&&!EX.busy&&typeof xDungeonTick==='function') xDungeonTick(dt); if(EX.active&&!EX.busy) xTipScan(dt);
+  if(!EX.busy&&!xPaused&&!EX.aim){ xMove(dt); if(!EX||!EX.active){ return; } xEnemies(dt); if(EX.active&&!EX.busy&&typeof xDungeonTick==='function') xDungeonTick(dt); if(EX.active&&!EX.busy) xTipScan(dt);
     EX.regenT+=dt; if(EX.regenT>3){ EX.regenT=0; if(EX.hp<xmaxHp()){ EX.hp++; xHud(); } } }
   xDoorTick(dt||.016); xDraw(ts/1000,dt); xRaf=requestAnimationFrame(xLoop);
 }
@@ -916,7 +936,7 @@ function xMini(){
   let x0=0, y0=0, n=XN;
   if(big){ let a=XN, b=XN, A=0, B=0; for(let i=0;i<XN*XN;i++) if(EX.seen[i]){ const x=xcx(i), y=xcy(i); a=Math.min(a,x); b=Math.min(b,y); A=Math.max(A,x); B=Math.max(B,y); }
     if(A>=a){ n=Math.min(XN,Math.max(16,A-a+5,B-b+5)); x0=Math.max(0,Math.min(XN-n,Math.round((a+A)/2-n/2))); y0=Math.max(0,Math.min(XN-n,Math.round((b+B)/2-n/2))); } }
-  const s=big?Math.max(3,Math.floor(384/n)):3; cv.width=cv.height=n*s;
+  const s=big?Math.max(3,Math.floor(384/n)):3; cv.width=cv.height=n*s; EX.miniView={x0,y0,s,n};
   c.fillStyle='rgba(5,6,10,.8)'; c.fillRect(0,0,cv.width,cv.height); c.translate(-x0*s,-y0*s);
   for(let i=0;i<XN*XN;i++){ if(!EX.seen[i]) continue; const d=EX.doors.get(i); if(EX.t[i]===T_ROCK||(d&&d.state==='secret')){ c.fillStyle='#1a1d26'; c.fillRect(xcx(i)*s,xcy(i)*s,s,s); continue; }
     c.fillStyle=d?'#a0703a':EX.vis[i]?'#7c8aa6':'#3c4458'; c.fillRect(xcx(i)*s,xcy(i)*s,s,s); }
@@ -929,6 +949,20 @@ function xMini(){
   xStairsMark(c,s);
   dot(EX.pc,'#ffffff',2);
 }
+const xMapIsOpen=()=>$('#xMini').classList.contains('big');
+function xMapOpen(){ if(!EX||EX.busy) return; xPause(true); $('#xMini').classList.add('big'); $('#xMapShade').hidden=false; $('#xMapClose').hidden=false; xMini(); }
+function xMapClose(){ $('#xMini').classList.remove('big'); $('#xMapShade').hidden=true; $('#xMapClose').hidden=true; if(EX) xMini(); xPause(false); }
+// a tap on the big map: a discovered floor (or the nearest floor to a discovered wall) is where you walk
+function xMapTap(e){ const cv=$('#xMini'), r=appBox(cv), V=EX.miniView; if(!V||!r.width) return xMapClose();
+  const [ax,ay]=appXY(e.clientX,e.clientY), x=Math.floor((ax-r.left)/r.width*cv.width/V.s)+V.x0, y=Math.floor((ay-r.top)/r.height*cv.height/V.s)+V.y0;
+  if(x<0||y<0||x>=XN||y>=XN) return xMapClose();
+  let c=xi(x,y);
+  if(!EX.seen[c]) return xMapClose();   // the dark: close
+  if(!xPassable(c)){ const n=[c-1,c+1,c-XN,c+XN,c-XN-1,c-XN+1,c+XN-1,c+XN+1].find(k=>k>=0&&k<XN*XN&&EX.seen[k]&&xPassable(k)); if(n==null) return; c=n; }
+  xMapClose();
+  if(c===EX.pc) return;
+  const path=xPathToCell(c); if(!path){ xSay('mapway','You know no way there yet.'); return; }
+  EX.goal={cell:c, x:xw(c), z:xz(c)}; EX.path=path; xLog('You set off across the floor…','dim'); }
 function xLog(t,c){ if(!EX) return; EX.log.push({t,c}); if(EX.log.length>5) EX.log.shift();
   const el=$('#xLog'); if(el) el.innerHTML=EX.log.map((l,i)=>`<div class="${l.c||''}" style="opacity:${.45+.55*(i+1)/EX.log.length}">${esc(l.t)}</div>`).join(''); }
 function xSay(k,t){ const now=performance.now(); if((EX.msgT[k]||0)>now) return; EX.msgT[k]=now+2500; xLog(t,'warn'); }

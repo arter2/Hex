@@ -231,6 +231,7 @@ function xInit3D(){
   const dgeo=new THREE.BufferGeometry(); dgeo.setAttribute('position',new THREE.BufferAttribute(dpos,3));
   const dust=new THREE.Points(dgeo,new THREE.PointsMaterial({color:0xffffff,size:.08,transparent:true,opacity:.5,blending:THREE.AdditiveBlending,depthWrite:false}));
   dust.renderOrder=3; scene.add(dust);
+  lookWatch(renderer,()=>scene);
   X3={renderer,scene,cam,amb,sun,lamp,dust,pool,group:null,ray:new THREE.Raycaster(),plane:new THREE.Plane(new THREE.Vector3(0,1,0),0)};
   // the search reticle: pixel art laid on the floor over the 3 x 3 tiles a search covers (xRetTex)
   const rm=new THREE.MeshBasicMaterial({map:xRetTex(),transparent:true,opacity:.9,depthTest:false,depthWrite:false,fog:false}), ret=new THREE.Group();

@@ -30,7 +30,7 @@ function arenaInit(){
     base:{pos:new THREE.Vector3(),look:new THREE.Vector3()},
     // the camera's moves on top of its base view (arenaCamera)
     shot:{t:0,fly:1,drift:new THREE.Vector3(),swing:0,punch:0,shake:0}};
-  arSpellPool(AR); arPropLights(AR);   // made up front: a change in the number of lights would rebuild every material
+  lookWatch(renderer,()=>scene); arSpellPool(AR); arPropLights(AR);   // made up front: a change in the number of lights would rebuild every material
   return AR; }
 
 /* ---------------- fitting the camera to the board ----------------

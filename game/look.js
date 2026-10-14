@@ -256,3 +256,23 @@ if(typeof document!=='undefined'){ if(document.readyState==='loading') document.
 let xFpsN=0, xFpsT=0, xFpsMax=0;
 function lookFps(dt,renderer){ if(!XLIT.fps) return; xFpsN++; xFpsT+=dt; xFpsMax=Math.max(xFpsMax,dt);
   if(xFpsT>=1){ const f=document.getElementById('xFps'); if(f){ const ri=renderer.info.render; f.textContent=Math.round(xFpsN/xFpsT)+' fps · worst '+Math.round(xFpsMax*1000)+' ms · '+ri.calls+' calls · q'+LQ.step; } xFpsN=0; xFpsT=0; xFpsMax=0; } }
+/* Coming back to the game: a phone can drop the GPU's copy of everything while the browser is in
+   the background (the WebGL context is lost) and hand back an empty one. three.js restores the
+   context, but some phones come back with every texture blank: floors black, lights gone, sprites
+   invisible. So on a restored context, and whenever the page is shown again, every texture, material
+   and buffer the screen uses is sent to the GPU again. */
+function lookRevive(renderer,scene){ if(!renderer||!scene) return; const seen=new Set();
+  const tex=t=>{ if(t&&t.isTexture&&!seen.has(t)){ seen.add(t); t.needsUpdate=true; } };
+  scene.traverse(o=>{ const M=o.material; if(M) for(const m of Array.isArray(M)?M:[M]){ for(const k of ['map','emissiveMap','normalMap','alphaMap','aoMap','lightMap','bumpMap','specularMap']) tex(m[k]); if(m.uniforms) for(const u in m.uniforms) tex(m.uniforms[u]&&m.uniforms[u].value); m.needsUpdate=true; }
+    const g=o.geometry; if(g&&g.attributes) for(const a in g.attributes) g.attributes[a].needsUpdate=true; if(g&&g.index) g.index.needsUpdate=true;
+    if(o.isInstancedMesh){ o.instanceMatrix.needsUpdate=true; if(o.instanceColor) o.instanceColor.needsUpdate=true; } });
+  for(const u in XLITU) tex(XLITU[u].value); if(scene.background) tex(scene.background);
+  if(XSSAO.ok){ XSSAO.ok=null; }   // its render targets belonged to the old context: made again on next use
+}
+// a renderer's canvas: revive its scene when the context comes back
+function lookWatch(renderer,getScene){ const cv=renderer.domElement;
+  cv.addEventListener('webglcontextlost',e=>{ e.preventDefault(); },false);
+  cv.addEventListener('webglcontextrestored',()=>setTimeout(()=>lookRevive(renderer,getScene()),0),false);
+  (lookWatch.all||(lookWatch.all=[])).push([renderer,getScene]); }
+if(typeof document!=='undefined') document.addEventListener('visibilitychange',()=>{ if(document.hidden) return;
+  setTimeout(()=>{ for(const [r,g] of lookWatch.all||[]) try{ lookRevive(r,g()); }catch(e){ console.warn('revive',e); } },250); });

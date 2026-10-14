@@ -429,6 +429,14 @@
   <div id="peek" class="peek"></div>
   <div id="tip" class="tip"></div>
 </div>
+<script>
+/* Painted art (stone, sprites, glows) lives in canvases the page never shows. On a phone the browser
+   may keep a canvas in GPU memory and throw it away while the game is in the background, so it comes
+   back blank: black floors, invisible sprites. A canvas asked for with willReadFrequently is kept in
+   ordinary memory instead, and survives. Every canvas not on the page is made that way. */
+(function(){ const g=HTMLCanvasElement.prototype.getContext;
+  HTMLCanvasElement.prototype.getContext=function(type,opts){ if(type==='2d'&&!this.isConnected&&!(opts&&'willReadFrequently' in opts)) opts=Object.assign({},opts,{willReadFrequently:true}); return g.call(this,type,opts); }; })();
+</script>
 <script src="cardsets.js"></script>
 <script src="cards.js"></script>
 <script src="chars.js"></script>

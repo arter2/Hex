@@ -26,10 +26,11 @@ function arenaInit(){
   const amb=new THREE.AmbientLight(0xffffff,.2), sun=new THREE.DirectionalLight(0xffffff,.22); sun.position.set(-4,10,6);
   const lamp=new THREE.PointLight(0xffd9a0,1.6,16,1.4);   // your light, as in the dungeon
   scene.add(amb,sun,lamp);
-  AR={renderer,scene,cam,amb,sun,lamp,grp:null,key:null,w:0,h:0,unit:1.15,
+  AR={renderer,scene,cam,amb,sun,lamp,grp:null,key:null,w:0,h:0,unit:1.15,frameN:0,
     base:{pos:new THREE.Vector3(),look:new THREE.Vector3()},
     // the camera's moves on top of its base view (arenaCamera)
     shot:{t:0,fly:1,drift:new THREE.Vector3(),swing:0,punch:0,shake:0}};
+  arSpellPool(AR);   // made up front: a change in the number of lights would rebuild every material
   return AR; }
 
 /* ---------------- fitting the camera to the board ----------------
@@ -175,7 +176,7 @@ function arenaLights(T){ const A=AR, p=B&&B.player; if(!A) return; const FL=XLIT
 function arenaDraw(dt,T){ const A=AR; if(!A||!A.grp||!A.w) return;
   const pr=Math.min(window.devicePixelRatio||1,2); if(A.renderer.getPixelRatio()!==pr) A.renderer.setPixelRatio(pr);
   const s=A.renderer.getSize(new THREE.Vector2()); if(s.x!==A.w||s.y!==A.h) A.renderer.setSize(A.w,A.h,false);
-  arenaLights(T); if(DEC.tex) DEC.tex.needsUpdate=true;
+  arenaLights(T); arenaSpellLights(T); if(DEC.tex) DEC.tex.needsUpdate=true;
   const a=A.ao; lookUse(A.aoTex,a&&a.scale,a&&a.ox,a&&a.oz);
   xRender({renderer:A.renderer,scene:A.scene,cam:A.cam,unit:A.unit}); lookFps(dt,A.renderer); }
 
@@ -184,3 +185,70 @@ function arenaCamera(dt,T){ const A=AR; if(!A) return; const c=A.cam, sh=(View.s
   c.position.copy(A.base.pos); c.lookAt(A.base.look);
   if(sh>.005){ c.position.x+=(Math.random()-.5)*sh; c.position.y+=(Math.random()-.5)*sh; }
   c.updateMatrixWorld(); }
+
+/* ---------------- units ----------------
+   A unit is its pixel sprite on a quad that always faces the camera, standing on its tile (feet at
+   the sprite's bottom art row). The quad is lit: it shows its own colours at most of their strength,
+   and the lights around it (your lamp, the area's lights, spells) add to that, so a fireball going
+   past lights up the monsters. A soft round shadow sits under it. A second quad just in front shows
+   the white flash when hit, or a frozen or stunned tint. Each picture's texture is made once. */
+const AR_TEX=new WeakMap();
+function arPic(img,flip){ let p=AR_TEX.get(img); if(!p){ const a=xTex(img,true), b=xTex(img,true); b.repeat.x=-1; b.offset.x=1; p=[a,b]; AR_TEX.set(img,p); } return p[flip?1:0]; }
+let AR_SHADOW=null;
+function arShadowTex(){ if(AR_SHADOW) return AR_SHADOW; const c=document.createElement('canvas'); c.width=c.height=64; const x=c.getContext('2d'), g=x.createRadialGradient(32,32,0,32,32,32);
+  g.addColorStop(0,'rgba(0,0,0,.6)'); g.addColorStop(.6,'rgba(0,0,0,.3)'); g.addColorStop(1,'rgba(0,0,0,0)'); x.fillStyle=g; x.fillRect(0,0,64,64); return AR_SHADOW=new THREE.CanvasTexture(c); }
+function arenaUnit(u,spr,o){ const A=AR; if(!A||!A.grp) return; let U=A.units.get(u);
+  if(!U){ const geo=A.uGeo||(A.uGeo=new THREE.PlaneGeometry(1,1).translate(0,.5-1/32,0));
+    const body=new THREE.Mesh(geo,new THREE.MeshLambertMaterial({color:0x8c8c8c,alphaTest:.35,emissive:0xffffff,emissiveIntensity:.62,side:THREE.DoubleSide}));
+    const over=new THREE.Mesh(geo,new THREE.MeshBasicMaterial({transparent:true,depthWrite:false,fog:false})); over.position.z=.02; over.renderOrder=6; body.add(over);
+    const shadow=new THREE.Mesh(A.sGeo||(A.sGeo=new THREE.PlaneGeometry(2,2).rotateX(-Math.PI/2)),new THREE.MeshBasicMaterial({map:arShadowTex(),transparent:true,depthWrite:false,fog:false}));
+    shadow.renderOrder=4; const g=new THREE.Group(); g.add(body,shadow); A.grp.add(g); U={g,body,over,shadow}; A.units.set(u,U); }
+  U.seen=A.frameN; U.g.visible=true;
+  const [wx,wz]=posOf(u); U.g.position.copy(arW(wx,0,wz));
+  const tex=arPic(spr.img,o.flip), m=U.body.material; if(m.map!==tex){ m.map=tex; m.emissiveMap=tex; m.needsUpdate=true; }
+  const a=o.alpha==null?1:o.alpha, tr=a<.999; if(m.transparent!==tr){ m.transparent=tr; m.needsUpdate=true; } m.opacity=a; m.depthWrite=!tr;
+  U.body.scale.set(o.h,o.h,1); U.body.position.y=o.lift||0; U.body.quaternion.copy(A.cam.quaternion);
+  // the flash (white) or the tint over the body
+  const om=U.over.material; let ot=null, oa=0;
+  if(o.flash>0){ ot=arPic(spr.wht,o.flip); oa=Math.min(1,o.flash)*a; } else if(o.tint){ ot=arPic(tinted(spr.img,o.tint),o.flip); oa=.45*a; }
+  U.over.visible=!!ot; if(ot&&om.map!==ot){ om.map=ot; om.needsUpdate=true; } om.opacity=oa;
+  U.shadow.scale.set(o.shadow,1,o.shadow); U.shadow.position.y=.035; U.shadow.material.opacity=a; }
+// rocks and card walls: lit blocks standing on their tiles, in the area's stone or the card's colour
+function arenaBlock(u,kind,col){ const A=AR; if(!A||!A.grp) return; let U=A.units.get(u);
+  if(!U){ let mesh; const wall=kind==='wall';
+    const geo=new THREE.CylinderGeometry(wall?.62:.7,wall?.66:.74,wall?.9:.75,6,1,false,Math.PI/6); geo.translate(0,(wall?.9:.75)/2,0);
+    if(wall) mesh=new THREE.Mesh(geo,arMat(xPhong({color:new THREE.Color(col).lerp(new THREE.Color('#ffffff'),.1),emissive:new THREE.Color(col).multiplyScalar(.25)})));
+    else { const t=A.rockTex||(A.rockTex=arTex(xTex(xRockWall(A.area.stone||AREAS[0].stone,(A.area.index||0)*7+2),true))); mesh=new THREE.Mesh(geo,arMat(xLitTag(xPhong({map:t,color:0xc8d0d8}),2,t.image))); xLit(mesh.material); }
+    A.grp.add(mesh); U={g:mesh,block:true}; A.units.set(u,U); }
+  U.seen=A.frameN; U.g.visible=true; U.g.position.copy(arW(u.tile.wx,0,u.tile.wz));
+  if(kind==='rock'&&U.g.material.emissive) U.g.material.emissive.set(col?0x303840:0x000000); }
+// a unit not drawn this frame (gone, or under the ground) is hidden; one gone for good is let go
+function arenaUnitsEnd(){ const A=AR; if(!A||!A.units) return;
+  for(const [u,U] of A.units) if(U.seen!==A.frameN){ U.g.visible=false;
+    if(U.seen<A.frameN-120){ A.grp.remove(U.g); U.g.traverse(o=>{ if(o.material&&!U.block) o.material.dispose(); if(U.block&&o.geometry) o.geometry.dispose(); }); A.units.delete(u); } }
+  A.frameN=(A.frameN||0)+1; }
+
+/* ---------------- spell lights ----------------
+   A small pool of real lights (4, plus 1 kept for the boss) goes to the biggest moments of the
+   frame: card shots and big shots in flight, lobs, beams, bolts and rings, tiles flashing from a
+   hit, and a boss winding up. Each throws its colour on the stone, the walls and the units around
+   it for a moment. Small sparks and particles only glow (they stay on the flat canvas). */
+const AR_SPELL_N=4;
+let AR_Q={lights:AR_SPELL_N};   // how many spell lights auto quality allows (look.js)
+function arSpellPool(A){ if(A.spell) return A.spell; A.spell=[]; for(let k=0;k<AR_SPELL_N+1;k++){ const L=new THREE.PointLight(0xffffff,0,6,1.6); L.position.set(0,-50,0); A.scene.add(L); A.spell.push(L); } return A.spell; }
+function arenaSpellLights(T){ const A=AR, b=B; if(!A||!b) return; const pool=arSpellPool(A), want=[];
+  const add=(wx,y,wz,col,k,r)=>{ if(k>.04&&col) want.push({wx,y,wz,col,k,r:r||5}); };
+  for(const s of b.shots||[]){ if(!(s.card||s.big)) continue; const from=s.i<0?s.a:s.tiles[s.i], to=s.tiles[s.i+1]||from; if(!from) continue; const k=Math.max(0,Math.min(1,s.stepT/s.speed));
+    add(from.wx+(to.wx-from.wx)*k,1,from.wz+(to.wz-from.wz)*k,s.card?colorOf(s.card):s.color||'#e6f4ff',s.big?2.6:1.9,s.big?6:5); }
+  for(const l of b.lobs||[]){ const k=l.t/l.dur; add(l.a.wx+(l.b.wx-l.a.wx)*k,1+Math.sin(k*Math.PI)*3,l.a.wz+(l.b.wz-l.a.wz)*k,colorOf(l.card),1.8,5.5); }
+  for(const f of b.fx||[]){ if(!['beam','bolt','ring','arc'].includes(f.kind)) continue; const e=(f.b||f.a), al=1-f.t/f.life;
+    add((f.a.wx+e.wx)/2,1,(f.a.wz+e.wz)/2,f.color,(f.kind==='ring'?2.2:3.6)*al,f.kind==='ring'?4:8); }
+  for(const t of TILES) if(t.flash>.3&&t.flashC&&t.flashC[0]==='#') add(t.wx,.9,t.wz,t.flashC.length===7?t.flashC:'#ffffff',t.flash*2.4,4.5);
+  want.sort((a,c)=>c.k-a.k);
+  // the boss's light: red while it winds up an attack or casts
+  const boss=(b.enemies||[]).find(e=>e.def&&e.def.bossId&&e.hp>0); const bl=pool[AR_SPELL_N];
+  if(boss&&(boss.windT>0||boss.casting)){ const [wx,wz]=posOf(boss); bl.position.copy(arW(wx,1.6,wz)); bl.color.set(boss.casting?COLORS[boss.casting.color].c:'#ff4a3a'); bl.distance=8; bl.intensity=2.2*(.8+.2*Math.sin(T*20)); }
+  else bl.intensity=Math.max(0,bl.intensity-.15);
+  const n=Math.min(AR_SPELL_N,AR_Q.lights);
+  for(let i=0;i<AR_SPELL_N;i++){ const L=pool[i], w=i<n?want[i]:null;
+    if(w){ L.position.copy(arW(w.wx,w.y,w.wz)); L.color.set(w.col); L.distance=w.r; L.intensity=Math.min(4,w.k); } else L.intensity=0; } }

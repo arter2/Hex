@@ -1259,7 +1259,7 @@ function render(){
   ctx.textAlign='center';
   for(const f of b.floaters){ const [x,y]=proj(f.wx,f.y,f.wz), S=scaleAt(f.wx,f.wz), pop=1+.7*Math.max(0,1-f.t/.14); ctx.globalAlpha=Math.min(1,(1-f.t/.9)*1.6); ctx.font=(f.big?'800 ':'700 ')+Math.round(S*(f.big?.55:.42)*pop)+'px "Pixelify Sans",system-ui,sans-serif';
     ctx.lineWidth=3; ctx.strokeStyle='rgba(0,0,0,.7)'; ctx.strokeText(f.text,x,y); ctx.fillStyle=f.color; ctx.fillText(f.text,x,y); } ctx.globalAlpha=1;
-  if(G3) arenaDraw(dt,T);
+  if(G3){ arenaUnitsEnd(); arenaDraw(dt,T); }
 }
 
 // The next card's reach, drawn again over the units so nothing hides it: the outline of every
@@ -1293,19 +1293,23 @@ function tinted(img,c){ let m=TINTS.get(img); if(!m) TINTS.set(img,m={}); if(m[c
 function drawSprite(ctx,u,T,S,o){
   const spr=typeof unitSprite==='function'?unitSprite(u):null, [wx,wz]=posOf(u), [x,y]=proj(wx,0,wz);
   const sc=(o.scale||1)*((spr&&spr.zoom)||1), H=S*2.7*sc, k=H/32, alpha=o.alpha==null?1:o.alpha;
-  const g=ctx.createRadialGradient(x,y,0,x,y,S*.62*sc); g.addColorStop(0,'rgba(0,0,0,.55)'); g.addColorStop(1,'rgba(0,0,0,0)');
-  ctx.globalAlpha=alpha; ctx.fillStyle=g; ctx.beginPath(); ctx.ellipse(x,y,S*.62*sc,S*.62*sc*View.iy,0,0,TAU); ctx.fill();
-  if(!spr){ ctx.globalAlpha=1; return {x,top:y-H}; }
+  if(!spr){ if(gl3()) return {x,top:y-H};
+    const g=ctx.createRadialGradient(x,y,0,x,y,S*.62*sc); g.addColorStop(0,'rgba(0,0,0,.55)'); g.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.globalAlpha=alpha; ctx.fillStyle=g; ctx.beginPath(); ctx.ellipse(x,y,S*.62*sc,S*.62*sc*View.iy,0,0,TAU); ctx.fill(); ctx.globalAlpha=1; return {x,top:y-H}; }
+  if(!gl3()){ const g=ctx.createRadialGradient(x,y,0,x,y,S*.62*sc); g.addColorStop(0,'rgba(0,0,0,.55)'); g.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.globalAlpha=alpha; ctx.fillStyle=g; ctx.beginPath(); ctx.ellipse(x,y,S*.62*sc,S*.62*sc*View.iy,0,0,TAU); ctx.fill(); }
   if(spr.front) o=Object.assign({},o,{flip:!!spr.mirror});   // drawn facing the viewer: mirrored only for a side walk reused the other way
+  // pixel art is never squashed: it rises one art pixel on a step (o.step, or a slow breath when o.bob is set),
+  // and the offset is a whole number of the sprite's own pixels so its pixels stay square
+  const ap=H/(spr.hand?spr.img.width:32), seed=(u.tile?u.tile.q*3+u.tile.r:0), step=o.step!=null?o.step:o.bob?Math.floor(T*1.6+seed*.37)%2:0, lift=Math.round(step*ap);
+  const bob=lift/S;
+  // the 3D arena stands the sprite on its tile (arena.js); the flat canvas keeps only bars and labels
+  if(gl3()){ arenaUnit(u,spr,{flip:!!o.flip,flash:o.flash||0,tint:o.tint||null,alpha,h:2.7*sc,lift:step*2.7*sc/(spr.hand?spr.img.width:32),shadow:.62*sc}); return {x,top:y-30*k-bob*S,H,k}; }
   ctx.imageSmoothingEnabled=false;
   // cast shadow: the silhouette laid flat on the ground toward the lower right
   ctx.save(); ctx.globalAlpha=.3*alpha; ctx.translate(x,y); ctx.transform(1,0,-.7,-.28,0,0); if(o.flip) ctx.scale(-1,1);
   ctx.drawImage(spr.sil,-H/2,-31*k,H,H); ctx.restore();
   // body
-  // pixel art is never squashed: it rises one art pixel on a step (o.step, or a slow breath when o.bob is set),
-  // and the offset is a whole number of the sprite's own pixels so its pixels stay square
-  const ap=H/(spr.hand?spr.img.width:32), seed=(u.tile?u.tile.q*3+u.tile.r:0), step=o.step!=null?o.step:o.bob?Math.floor(T*1.6+seed*.37)%2:0, lift=Math.round(step*ap);
-  const bob=lift/S;
   ctx.save(); ctx.globalAlpha=alpha; ctx.translate(Math.round(x),Math.round(y)-lift); ctx.scale(o.flip?-1:1,1);
   ctx.drawImage(spr.img,-H/2,-31*k,H,H);
   if(o.flash){ ctx.globalAlpha=alpha*o.flash; ctx.drawImage(spr.wht,-H/2,-31*k,H,H); }
@@ -1369,20 +1373,23 @@ const DRAW={
     ctx.globalAlpha=1;
   },
   rock(ctx,r,T,S){
-    const top=hexCorners(r.tile,.7,.75), bot=hexCorners(r.tile,.7,0);
-    ctx.fillStyle='#2a3138'; frontFaces(ctx,top,bot[0][1]-top[0][1]);
-    ctx.fillStyle=r.tile.rockT>0&&r.tile.rockT<2?'#7d8894':'#56606a'; poly(ctx,top); ctx.fill();
-    ctx.strokeStyle='rgba(0,0,0,.35)'; ctx.lineWidth=1; ctx.stroke();
+    if(gl3()) arenaBlock(r,'rock',r.tile.rockT>0&&r.tile.rockT<2?'#a8b4c0':null);
+    else { const top=hexCorners(r.tile,.7,.75), bot=hexCorners(r.tile,.7,0);
+      ctx.fillStyle='#2a3138'; frontFaces(ctx,top,bot[0][1]-top[0][1]);
+      ctx.fillStyle=r.tile.rockT>0&&r.tile.rockT<2?'#7d8894':'#56606a'; poly(ctx,top); ctx.fill();
+      ctx.strokeStyle='rgba(0,0,0,.35)'; ctx.lineWidth=1; ctx.stroke(); }
     // cracks as it takes hits
     const k=r.maxHp?1-r.hp/r.maxHp:0;
     if(k>.05){ const [cx,cy]=proj(r.tile.wx,.76,r.tile.wz); ctx.strokeStyle='rgba(10,14,18,.85)'; ctx.lineWidth=1.5; ctx.beginPath();
       for(let i=0;i<1+Math.floor(k*4);i++){ const a=i*2.1+.4, l=S*.35*(.5+k); ctx.moveTo(cx,cy); ctx.lineTo(cx+Math.cos(a)*l*.6,cy+Math.sin(a)*l*.3); ctx.lineTo(cx+Math.cos(a+.4)*l,cy+Math.sin(a+.4)*l*.5); } ctx.stroke(); }
   },
   wall(ctx,w,T,S){
-    const col=colorOf(w.card), top=hexCorners(w.tile,.62,.9), bot=hexCorners(w.tile,.62,0);
-    ctx.fillStyle=mixHex(col,'#000000',.5); ctx.beginPath();
-    frontFaces(ctx,top,bot[0][1]-top[0][1]);
-    ctx.fillStyle=mixHex(col,'#ffffff',.15); poly(ctx,top); ctx.fill();
+    const col=colorOf(w.card);
+    if(gl3()) arenaBlock(w,'wall',col);
+    else { const top=hexCorners(w.tile,.62,.9), bot=hexCorners(w.tile,.62,0);
+      ctx.fillStyle=mixHex(col,'#000000',.5); ctx.beginPath();
+      frontFaces(ctx,top,bot[0][1]-top[0][1]);
+      ctx.fillStyle=mixHex(col,'#ffffff',.15); poly(ctx,top); ctx.fill(); }
     if(w.thorns){ ctx.fillStyle='#fff'; const [x,y]=proj(w.tile.wx,1,w.tile.wz); ctx.font='700 '+Math.round(S*.3)+'px system-ui'; ctx.textAlign='center'; ctx.fillText('✶',x,y); }
     const [x,y]=proj(w.tile.wx,1.15,w.tile.wz); bar(ctx,x,y,S*.7,w.hp/w.maxHp,'#6fd6ff'); turnPips(ctx,x,y-S*.12,w.life,S);
   },

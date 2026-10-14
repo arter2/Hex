@@ -1,4 +1,4 @@
-/* Hexmancers deck prototype — real-time battle on an 8 x 12 hex board, drawn with an
+/* Hexmancers deck prototype — real-time battle on a 7 x 12 hex board, drawn with an
    orthographic isometric projection on a 2D canvas. Your side is the six columns
    nearest you, the enemy side the six across from you. A turn ends each time the
    Custom screen opens; shields and everything cards put on the board last a set
@@ -9,7 +9,7 @@ const rnd=(a,b)=>a+Math.random()*(b-a), pick=a=>a[(Math.random()*a.length)|0];
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 
 /* ---------------- board ---------------- */
-const BOARD_ROWS=8, BOARD_COLS=12;
+const BOARD_ROWS=7, BOARD_COLS=12;
 const DIRS={E:[1,0],NE:[1,-1],NW:[0,-1],W:[-1,0],SW:[-1,1],SE:[0,1]}, DIRLIST=Object.values(DIRS);
 // The arrays below are rebuilt in place by buildBoard, so references to them stay valid.
 const BOARD=new Map(), CR=new Map(), TILES=[], P_TILES=[], E_TILES=[];

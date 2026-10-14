@@ -388,7 +388,8 @@
       <div class="srow"><span>Light bands<small>0 keeps light smooth. Otherwise light is rounded to this many levels per full brightness, for a banded pixel-art look.</small></span><span class="srange"><input id="dbgSteps" type="range" min="0" max="8" step="1"><b id="dbgStepsV"></b></span></div>
       <h3>Normal maps</h3>
       <div class="srow"><span>Normal maps<small>Bumps shaped for each material: sunk mortar and proud, worn stones on built walls and slabs, ledges in cave rock, cracks and pebbles on rock floors.</small></span><label class="scheck"><input id="dbgNmap" type="checkbox"></label></div>
-      <div class="srow"><span>Bump strength<small>How deep the bumps look. 1 is the normal depth.</small></span><span class="srange"><input id="dbgNStr" type="range" min="0" max="3" step="0.05"><b id="dbgNStrV"></b></span></div>
+      <div class="srow"><span>Floor bump strength<small>How deep the bumps look on floors: slab joints, cracks and pebbles. 0 is flat.</small></span><span class="srange"><input id="dbgNStrF" type="range" min="0" max="2" step="0.01"><b id="dbgNStrFV"></b></span></div>
+      <div class="srow"><span>Wall bump strength<small>How deep the bumps look on wall blocks: mortar, stone edges and rock ledges. 0 is flat.</small></span><span class="srange"><input id="dbgNStrW" type="range" min="0" max="2" step="0.01"><b id="dbgNStrWV"></b></span></div>
       <h3>Ambient occlusion</h3>
       <div class="srow"><span>Baked AO<small>Floors darken toward the walls and into corners; walls and pillars darken toward their feet. Worked out once per floor, so it costs almost nothing.</small></span><label class="scheck"><input id="dbgAO" type="checkbox"></label></div>
       <div class="srow"><span>Baked AO strength<small>How dark the shading gets. 1 is about the old look.</small></span><span class="srange"><input id="dbgAOStr" type="range" min="0" max="2" step="0.05"><b id="dbgAOStrV"></b></span></div>

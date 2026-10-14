@@ -20,7 +20,7 @@ const XB={ ball:xSetF('hexmancers-xball',XB_DEF.ball), strip:xSetF('hexmancers-x
      darken toward their feet.
    - Screen-space AO: a pass over the depth of the whole frame shades every crease (xSSAO). */
 const xSetB=(k,d)=>{ try{ const v=localStorage.getItem(k); return v==null?d:v==='1'; }catch(e){ return d; } };
-const XLIT_DEF={ amb:1, sun:1, lamp:1, lampRad:1, lampY:2.6, torch:1, torchRad:1, flick:1, myGlow:1, fogNear:20, fogFar:46, texel:true, steps:0, nmap:true, nstrF:.35, nstrW:.35, ao:true, aoStr:1, aoRad:1, ssao:false, ssaoStr:1, ssaoRad:.6, fps:false };
+const XLIT_DEF={ amb:1, sun:1, lamp:1, lampRad:1, lampY:2.6, torch:1, torchRad:1, flick:1, myGlow:1, fogNear:20, fogFar:46, texel:true, steps:0, nmap:true, nstrF:.35, nstrW:.35, ao:true, aoStr:1, aoRad:1, ssao:false, ssaoStr:1, ssaoRad:.6, fps:false, autoQ:true };
 const XLIT={}; for(const k in XLIT_DEF) XLIT[k]=typeof XLIT_DEF[k]==='boolean'?xSetB('hexmancers-xl-'+k,XLIT_DEF[k]):xSetF('hexmancers-xl-'+k,XLIT_DEF[k]);
 const XLITU={ uXSteps:{value:XLIT.steps}, uXAO:{value:XLIT.ao?XLIT.aoStr:0}, uXAOTex:{value:null}, uXFoot:{value:1.75*XLIT.aoRad}, uXAOScale:{value:96}, uXAOOrg:{value:new THREE.Vector2()} };
 const XLITMATS=new Set();
@@ -115,8 +115,21 @@ void main(){ float a=0.0; for(int y=-1;y<=1;y++) for(int x=-1;x<=1;x++) a+=textu
   const q=new THREE.Mesh(new THREE.PlaneGeometry(2,2),aoM); q.frustumCulled=false; const qs=new THREE.Scene(); qs.add(q);
   Object.assign(XSSAO,{rt,ao,aoM,cM,q,qs,cam:new THREE.OrthographicCamera(-1,1,1,-1,0,1),sz:new THREE.Vector2()});
   return XSSAO.ok=true; }
+/* Auto quality: a slow phone keeps its frame rate. A running average of frame time above 20 ms for a
+   second and a half steps down (sharpness 2, 1.5, 1 then .75 screen pixels per pixel; then no
+   screen-space AO; then half the spell lights); below 13 ms for 3 s steps back up. Off in the debug
+   menu, the look stays as set. */
+const LQ_STEPS=[{pr:2,lights:4},{pr:1.5,lights:4},{pr:1,lights:4},{pr:.75,lights:4},{pr:.75,lights:4,noSsao:1},{pr:.75,lights:2,noSsao:1}];
+const LQ={step:0,avg:16,slowT:0,fastT:0};
+function lookQuality(dt){ if(!XLIT.autoQ){ LQ.step=0; return LQ_STEPS[0]; } const ms=Math.min(250,dt*1000); LQ.avg+=(ms-LQ.avg)/30;
+  if(LQ.avg>20){ LQ.slowT+=dt; LQ.fastT=0; if(LQ.slowT>1.5&&LQ.step<LQ_STEPS.length-1){ LQ.step++; LQ.slowT=0; LQ.avg=16; } }
+  else if(LQ.avg<13){ LQ.fastT+=dt; LQ.slowT=0; if(LQ.fastT>3&&LQ.step>0){ LQ.step--; LQ.fastT=0; } }
+  else { LQ.slowT=0; LQ.fastT=0; }
+  return LQ_STEPS[LQ.step]; }
+// the pixel ratio a renderer should draw at now
+const lookPR=()=>Math.min(window.devicePixelRatio||1,LQ_STEPS[LQ.step].pr);
 function xRender(G){ const r=G.renderer; r.info.autoReset=false; r.info.reset();
-  if(!XLIT.ssao||!xSSAOInit(r)){ r.render(G.scene,G.cam); return; }
+  if(!XLIT.ssao||LQ_STEPS[LQ.step].noSsao||!xSSAOInit(r)){ r.render(G.scene,G.cam); return; }
   const S=XSSAO; r.getDrawingBufferSize(S.sz); const w=S.sz.x|0, h=S.sz.y|0, hw=Math.max(1,w>>1), hh=Math.max(1,h>>1);
   if(S.rt.width!==w||S.rt.height!==h){ S.rt.setSize(w,h); S.ao.setSize(hw,hh); }
   r.setRenderTarget(S.rt); r.render(G.scene,G.cam);
@@ -194,7 +207,7 @@ const XDBG=[   // [element id, object, key, saved as, decimals (null: a checkbox
   ['dbgAO',()=>XLIT,'ao','hexmancers-xl-ao',null,'lit'], ['dbgAOStr',()=>XLIT,'aoStr','hexmancers-xl-aoStr',2,'lit'], ['dbgAORad',()=>XLIT,'aoRad','hexmancers-xl-aoRad',2,'bake'],
   ['dbgSSAO',()=>XLIT,'ssao','hexmancers-xl-ssao',null,''], ['dbgSSAOStr',()=>XLIT,'ssaoStr','hexmancers-xl-ssaoStr',2,''], ['dbgSSAORad',()=>XLIT,'ssaoRad','hexmancers-xl-ssaoRad',2,''],
   ['setXBall',()=>XB,'ball','hexmancers-xball',2,''], ['setXStrip',()=>XB,'strip','hexmancers-xstrip',2,''],
-  ['dbgFps',()=>XLIT,'fps','hexmancers-xl-fps',null,'fps'],
+  ['dbgFps',()=>XLIT,'fps','hexmancers-xl-fps',null,'fps'], ['dbgAutoQ',()=>XLIT,'autoQ','hexmancers-xl-autoQ',null,''],
   ...[['dbgAmb','amb'],['dbgSun','sun'],['dbgLamp','lamp'],['dbgLampRad','lampRad'],['dbgLampY','lampY'],['dbgTorch','torch'],['dbgTorchRad','torchRad'],['dbgFlick','flick'],['dbgMyGlow','myGlow']].map(([id,k])=>[id,()=>XLIT,k,'hexmancers-xl-'+k,2,'']),
   ['dbgFogNear',()=>XLIT,'fogNear','hexmancers-xl-fogNear',0,''], ['dbgFogFar',()=>XLIT,'fogFar','hexmancers-xl-fogFar',0,''] ];
 let xBakeT=0;
@@ -241,4 +254,4 @@ if(typeof document!=='undefined'){ if(document.readyState==='loading') document.
 // the frame-rate readout (debug menu): frames a second and the slowest frame of the last second
 let xFpsN=0, xFpsT=0, xFpsMax=0;
 function lookFps(dt,renderer){ if(!XLIT.fps) return; xFpsN++; xFpsT+=dt; xFpsMax=Math.max(xFpsMax,dt);
-  if(xFpsT>=1){ const f=document.getElementById('xFps'); if(f){ const ri=renderer.info.render; f.textContent=Math.round(xFpsN/xFpsT)+' fps · worst '+Math.round(xFpsMax*1000)+' ms · '+ri.calls+' calls'; } xFpsN=0; xFpsT=0; xFpsMax=0; } }
+  if(xFpsT>=1){ const f=document.getElementById('xFps'); if(f){ const ri=renderer.info.render; f.textContent=Math.round(xFpsN/xFpsT)+' fps · worst '+Math.round(xFpsMax*1000)+' ms · '+ri.calls+' calls · q'+LQ.step; } xFpsN=0; xFpsT=0; xFpsMax=0; } }

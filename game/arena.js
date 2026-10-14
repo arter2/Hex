@@ -179,7 +179,7 @@ function arenaLights(T,dt){ const A=AR, p=B&&B.player; if(!A) return; const FL=X
   A.amb.intensity+=(A.flashAmb||0)*.8; if(A.tick) A.tick(T,dt||1/60); }
 
 function arenaDraw(dt,T){ const A=AR; if(!A||!A.grp||!A.w) return;
-  const pr=Math.min(window.devicePixelRatio||1,2); if(A.renderer.getPixelRatio()!==pr) A.renderer.setPixelRatio(pr);
+  const q=lookQuality(dt), pr=lookPR(); AR_Q.lights=q.lights; if(A.renderer.getPixelRatio()!==pr) A.renderer.setPixelRatio(pr);
   const s=A.renderer.getSize(new THREE.Vector2()); if(s.x!==A.w||s.y!==A.h) A.renderer.setSize(A.w,A.h,false);
   arenaLights(T,dt); arenaSpellLights(T); if(DEC.tex) DEC.tex.needsUpdate=true;
   const a=A.ao; lookUse(A.aoTex,a&&a.scale,a&&a.ox,a&&a.oz);

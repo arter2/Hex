@@ -1359,9 +1359,9 @@ function xLoop(ts){
     EX.regenT+=dt; if(EX.regenT>3){ EX.regenT=0; if(EX.hp<xmaxHp()){ EX.hp++; xHud(); } } }
   xDoorTick(dt||.016); xDraw(ts/1000,dt); xRaf=requestAnimationFrame(xLoop);
 }
-function xResize(){ const G=X3, cv=$('#xView'), w=cv.clientWidth||400, h=cv.clientHeight||600; if(G.w===w&&G.h===h) return; G.w=w; G.h=h; G.renderer.setSize(w,h,false); G.cam.aspect=w/h; G.cam.updateProjectionMatrix(); }
+function xResize(){ const G=X3, cv=$('#xView'), w=cv.clientWidth||400, h=cv.clientHeight||600, pr=lookPR(); if(G.renderer.getPixelRatio()!==pr){ G.renderer.setPixelRatio(pr); G.w=0; } if(G.w===w&&G.h===h) return; G.w=w; G.h=h; G.renderer.setSize(w,h,false); G.cam.aspect=w/h; G.cam.updateProjectionMatrix(); }
 function xDraw(T,dt){
-  dt=dt||.016; const G=X3; xResize(); xFadeCells(dt);
+  dt=dt||.016; const G=X3; lookQuality(dt); xResize(); xFadeCells(dt);
   // a two-step walk: the walking pose and the standing pose in turn, rising one art pixel on the step;
   // searching or disarming shows the casting pose
   const ART=XSPR/96, step=EX.walk?Math.floor(EX.walk/1.5)%2:0;

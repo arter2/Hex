@@ -1192,3 +1192,6 @@ button[hidden]{display:none!important;}
 
 /* the edges of the screen pulse red when your health is low (explore.js) */
 #xLowHp{position:absolute; inset:0; pointer-events:none; z-index:3; opacity:0; background:radial-gradient(ellipse at center, transparent 55%, rgba(200,20,40,.55) 100%); transition:opacity .2s;}
+
+/* test sliders in Settings */
+.srange{display:flex!important; flex-direction:row!important; align-items:center; gap:8px; min-width:150px;} .srange input{width:120px; accent-color:var(--blue);} .srange b{min-width:44px; text-align:right; font:700 15px var(--font-b); color:var(--blue);}

@@ -185,11 +185,45 @@ function arenaDraw(dt,T){ const A=AR; if(!A||!A.grp||!A.w) return;
   const a=A.ao; lookUse(A.aoTex,a&&a.scale,a&&a.ox,a&&a.oz);
   xRender({renderer:A.renderer,scene:A.scene,cam:A.cam,unit:A.unit}); lookFps(dt,A.renderer); }
 
-/* The camera: its base view, plus the moves of the moment (arenaShot) */
-function arenaCamera(dt,T){ const A=AR; if(!A) return; const c=A.cam, sh=(View.shake||0)*.02;
-  c.position.copy(A.base.pos); c.lookAt(A.base.look);
+/* The camera: its base view, plus the moves of the moment:
+   - a fly-in over the arena as the fight opens (1.2 s, from high behind the enemy; a tap skips it)
+   - a slow drift (up to 6% of the board's width) toward whoever is winding up a cast
+   - a swing (up to 4 degrees) and a shake when a boss attacks, and the shake of any heavy hit
+   - a punch in (6%) on a crit or a kill
+   While your finger is down on the board, every move eases back to the base view within .15 s
+   and holds there, so the board never moves under your aim. */
+const AR_FLY=1.2;
+function arFocus(){ const b=B; if(!b) return null;
+  const boss=(b.enemies||[]).find(e=>e.def&&e.def.bossId&&e.hp>0&&(e.windT>0||e.casting)); if(boss) return {u:boss,boss:true};
+  const e=(b.enemies||[]).find(e=>e.hp>0&&(e.windT>0||e.casting)); if(e) return {u:e};
+  const p=b.player; if(p&&(p.charging||(b.time-(p.poseT??-9))<.4)) return {u:p};
+  return null; }
+function arenaCamera(dt,T){ const A=AR; if(!A) return; const c=A.cam, S=A.shot, held=A.hold>0, k=1-Math.exp(-dt*(held?30:4));
+  if(A.key!==S.key){ S.key=A.key; S.fly=0; S.drift.set(0,0,0); S.swing=0; S.punch=0; }
+  S.fly=Math.min(1,S.fly+dt/AR_FLY); if(held) S.fly=1;
+  // what the moment asks for
+  const f=held?null:arFocus(), tgt=new THREE.Vector3(), b=B;
+  if(f){ const [wx,wz]=posOf(f.u); tgt.copy(arW(wx,0,wz)).sub(A.base.look).multiplyScalar(.06); tgt.y=0; }
+  S.drift.lerp(tgt,held?k:k*.6);
+  S.swing+=((f&&f.boss&&!held?Math.sin(T*1.3)*4:0)-S.swing)*(held?k:k*.5);
+  if(b&&!held) for(const fl of b.floaters||[]) if(fl.big&&fl.t<.05&&!fl._pun){ fl._pun=1; S.punch=1; }
+  S.punch=held?0:Math.max(0,S.punch-dt/.4);
+  // the base view, turned by the swing about the aim point, pulled in by the punch, slid by the drift
+  const look=A.base.look.clone().add(S.drift), off=A.base.pos.clone().sub(A.base.look);
+  off.applyAxisAngle(new THREE.Vector3(0,1,0),S.swing*Math.PI/180);
+  const pk=Math.sin(Math.min(1,S.punch)*Math.PI); off.multiplyScalar(1-.06*pk);
+  // the fly-in: from high above and behind the enemy, easing into the base view
+  if(S.fly<1){ const e=1-Math.pow(1-S.fly,3); off.lerpVectors(new THREE.Vector3(0,A.dist*.9,-A.dist*.55),off.clone(),e); }
+  c.position.copy(look).add(off); c.lookAt(look);
+  const sh=held?0:(View.shake||0)*.025+(f&&f.boss?.02:0);
   if(sh>.005){ c.position.x+=(Math.random()-.5)*sh; c.position.y+=(Math.random()-.5)*sh; }
   c.updateMatrixWorld(); }
+// a finger on the board holds the camera still (and skips the fly-in)
+function arHoldBind(){ const bd=document.getElementById('board'); if(!bd) return; const down=new Set();
+  bd.addEventListener('pointerdown',e=>{ down.add(e.pointerId); if(AR) AR.hold=down.size; },true);
+  const up=e=>{ down.delete(e.pointerId); if(AR) AR.hold=down.size; };
+  bd.addEventListener('pointerup',up,true); bd.addEventListener('pointercancel',up,true); }
+if(typeof document!=='undefined'){ if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',arHoldBind); else arHoldBind(); }
 
 /* ---------------- units ----------------
    A unit is its pixel sprite on a quad that always faces the camera, standing on its tile (feet at

@@ -399,9 +399,7 @@
       <div class="srow"><span>Screen-space AO reach<small>How far each crease's shading spreads, in tiles.</small></span><span class="srange"><input id="dbgSSAORad" type="range" min="0.1" max="1.5" step="0.05"><b id="dbgSSAORadV"></b></span></div>
       <h3>Walls</h3>
       <div class="srow"><span>See-through ball<small>Radius in tiles of the dither ball in front of you, on walls that are not cut.</small></span><span class="srange"><input id="setXBall" type="range" min="0" max="6" step="0.05"><b id="setXBallV"></b></span></div>
-      <div class="srow"><span>Cut ball size<small>Radius in tiles of the ball that travels with you and cuts the walls away. Walls inside it are carved, deepest near its middle, curving up to full height at its edge.</small></span><span class="srange"><input id="setXVR" type="range" min="1" max="6" step="0.05"><b id="setXVRV"></b></span></div>
-      <div class="srow"><span>Cut ball depth<small>How much of a wall still stands at the ball's lowest point (0 to 1 of the wall).</small></span><span class="srange"><input id="setXVLo" type="range" min="0" max="1" step="0.01"><b id="setXVLoV"></b></span></div>
-      <div class="srow"><span>Cut ball toward camera<small>How far the ball's middle sits from you toward the camera, in tiles. 0 centres it on you.</small></span><span class="srange"><input id="setXVOff" type="range" min="-1" max="4" step="0.05"><b id="setXVOffV"></b></span></div>
+      <div class="srow"><span>See-through strip<small>How far either side of you, in tiles, the walls in front fade with alpha.</small></span><span class="srange"><input id="setXStrip" type="range" min="0" max="6" step="0.05"><b id="setXStripV"></b></span></div>
       <h3>Info</h3>
       <div class="srow"><span>Frame rate<small>Shows frames a second, the slowest frame of the last second and draw calls, top left in the dungeon.</small></span><label class="scheck"><input id="dbgFps" type="checkbox"></label></div>
       <div class="controls two"><button id="dbgReset" class="btn ghost">Reset all</button><button id="dbgClose" class="btn">Done</button></div>

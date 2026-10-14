@@ -30,7 +30,7 @@ function arenaInit(){
     base:{pos:new THREE.Vector3(),look:new THREE.Vector3()},
     // the camera's moves on top of its base view (arenaCamera)
     shot:{t:0,fly:1,drift:new THREE.Vector3(),swing:0,punch:0,shake:0}};
-  arSpellPool(AR);   // made up front: a change in the number of lights would rebuild every material
+  arSpellPool(AR); arPropLights(AR);   // made up front: a change in the number of lights would rebuild every material
   return AR; }
 
 /* ---------------- fitting the camera to the board ----------------
@@ -119,7 +119,7 @@ function arenaCave(A,Ar,R,boss){ const out=[], S=Ar.stone||AREAS[0].stone;
   // the floor: raw rock, sunk a slab below the tiles so the board stands up out of it
   const ft=arTex(xTex(xRockFloor(S,(Ar.index||0)*17+3),true)); ft.repeat.set((2*side+8)/8,(back-near+8)/8);
   const fm=arMat(xLitTag(xPhong({map:ft}),1,ft.image)), floor=new THREE.Mesh(new THREE.PlaneGeometry(2*side+8,back-near+8),fm);
-  floor.rotation.x=-Math.PI/2; floor.position.set(0,-SLAB,-(back+near)/2); out.push(floor);
+  floor.rotation.x=-Math.PI/2; floor.position.set(0,-SLAB,-(back+near)/2); floor.userData.caveFloor=1; out.push(floor);
   // the walls: dungeon blocks (rough rock), each its own height, in an instanced mesh
   const wt=arTex(xTex(xRockWall(S,(Ar.index||0)*13+1),true)), wm=arMat(xLitTag(xPhong({map:wt}),2,wt.image)), geo=xWallGeo(true,(Ar.index||0)+3);
   const cells=[]; const B2=XCS;
@@ -145,7 +145,10 @@ function arenaBuild(depth,seed){ const A=arenaInit(); arenaClear(); const Ar=are
   A.area=Ar; A.boss=boss; A.depth=depth; A.grp=new THREE.Group(); A.units=new Map();
   for(const o of arenaBoard(A,Ar,R)) A.grp.add(o);
   A.grp.add(A.decal=arenaDecal(A));
+  A.voidWalls=false; A.flashAmb=0; A.tick=null;
   for(const o of arenaCave(A,Ar,R,boss)) A.grp.add(o);
+  arenaProps(A,Ar,R,boss);
+  if(A.voidWalls) A.grp.children.forEach(o=>{ if(o.isInstancedMesh||o.userData.caveFloor) o.visible=false; });
   // the area's light and air, as in its dungeon
   const glowC=new THREE.Color(Ar.glow);
   A.scene.background=new THREE.Color(Ar.fog).multiplyScalar(.3);
@@ -166,17 +169,19 @@ function arenaTiles(list){ const A=AR; if(!A||!A.board) return; const ca=A.board
   ca.needsUpdate=true; ga.needsUpdate=true; }
 
 // the lights, set from the shared settings (as in the dungeon) and the area's flicker
-function arenaLights(T){ const A=AR, p=B&&B.player; if(!A) return; const FL=XLIT.flick;
+function arenaLights(T,dt){ const A=AR, p=B&&B.player; if(!A) return; const FL=XLIT.flick;
   A.amb.intensity=.2*XLIT.amb*1.35; A.sun.intensity=.22*XLIT.sun*1.4;
   if(p&&p.tile){ const [wx,wz]=posOf(p); A.lamp.position.copy(arW(wx,XLIT.lampY,wz)); }
   A.lamp.intensity=1.6*XLIT.lamp*(.95+FL*(.04*Math.sin(T*9.3)+.03*Math.sin(T*21.1))); A.lamp.distance=16*XLIT.lampRad;
   const d=A.cam.position.distanceTo(A.base.look), off=Math.max(0,d-19);
-  if(A.scene.fog){ A.scene.fog.near=XLIT.fogNear+off; A.scene.fog.far=Math.max(XLIT.fogNear+1,XLIT.fogFar)+off; } }
+  const deep=(areaFloor(A.depth||1)-1)*2.5;   // each floor deeper in the area, the haze closes in a little
+  if(A.scene.fog){ A.scene.fog.near=XLIT.fogNear+off-deep; A.scene.fog.far=Math.max(XLIT.fogNear+1,XLIT.fogFar)+off-deep*1.5; }
+  A.amb.intensity+=(A.flashAmb||0)*.8; if(A.tick) A.tick(T,dt||1/60); }
 
 function arenaDraw(dt,T){ const A=AR; if(!A||!A.grp||!A.w) return;
   const pr=Math.min(window.devicePixelRatio||1,2); if(A.renderer.getPixelRatio()!==pr) A.renderer.setPixelRatio(pr);
   const s=A.renderer.getSize(new THREE.Vector2()); if(s.x!==A.w||s.y!==A.h) A.renderer.setSize(A.w,A.h,false);
-  arenaLights(T); arenaSpellLights(T); if(DEC.tex) DEC.tex.needsUpdate=true;
+  arenaLights(T,dt); arenaSpellLights(T); if(DEC.tex) DEC.tex.needsUpdate=true;
   const a=A.ao; lookUse(A.aoTex,a&&a.scale,a&&a.ox,a&&a.oz);
   xRender({renderer:A.renderer,scene:A.scene,cam:A.cam,unit:A.unit}); lookFps(dt,A.renderer); }
 
@@ -252,3 +257,104 @@ function arenaSpellLights(T){ const A=AR, b=B; if(!A||!b) return; const pool=arS
   const n=Math.min(AR_SPELL_N,AR_Q.lights);
   for(let i=0;i<AR_SPELL_N;i++){ const L=pool[i], w=i<n?want[i]:null;
     if(w){ L.position.copy(arW(w.wx,w.y,w.wz)); L.color.set(w.col); L.distance=w.r; L.intensity=Math.min(4,w.k); } else L.intensity=0; } }
+
+/* ---------------- the area's arena ----------------
+   Each area dresses its cave from its dungeon look (world.js), with its own moving parts and two
+   or three lights of its own (on a boss floor, all three and a set piece behind the enemy):
+     Glowworm Hollows  crystal grotto: green crystals on the walls that pulse, glowworm motes drifting
+     Frozen Deeps      ice cavern: icicles along the walls, snow falling, a cold rim light
+     Storm Vault       ruined vault: broken pillars, storm-stones, lightning that lights everything
+     Ember Rifts       lava rift: lava channels beside the board, embers rising, warm flicker
+     Gilded Ruins      gilded hall: braziers, fallen statues, motes in shafts of light
+     The Abyss         starfield void: floating rocks over the dark, stars wheeling, ghost lights
+   Floors 1 to 3 shuffle the layout, how many lights there are and how warm; the haze thickens. */
+const AR_PROP_N=3;
+function arPropLights(A){ if(A.plights) return A.plights; A.plights=[]; for(let k=0;k<AR_PROP_N;k++){ const L=new THREE.PointLight(0xffffff,0,12,1.4); L.position.set(0,-50,0); A.scene.add(L); A.plights.push(L); } return A.plights; }
+const arGlow=(col,k,o)=>arMat(xPhong(Object.assign({color:new THREE.Color(col).multiplyScalar(.6),emissive:new THREE.Color(col).multiplyScalar(k==null?.6:k),shininess:30,specular:0x333333},o||{})));
+function arPut(A,geo,mat,wx,y,wz,ry,s){ const m=new THREE.Mesh(geo,mat); m.position.copy(arW(wx,y,wz)); if(ry) m.rotation.y=ry; if(s!=null) (typeof s==='number'?m.scale.setScalar(s):m.scale.set(...s)); A.props.add(m); return m; }
+// a cluster of crystal spikes (octahedra stretched up), leaning out from a point
+function arCrystals(A,R,wx,wz,col,n,big){ const mat=arGlow(col,.7,{transparent:true,opacity:.92}), out=[];
+  for(let k=0;k<n;k++){ const g=new THREE.OctahedronGeometry(.25,0); g.scale(1,3.2,1); const s=(big?1.8:1)*(.6+R()*.8);
+    const m=arPut(A,g,mat,wx+(R()-.5)*.6*s,.6*s,wz+(R()-.5)*.6*s,R()*3,s); m.rotation.z=(R()-.5)*.7; m.rotation.x=(R()-.5)*.7; out.push(m); }
+  return {mat,out}; }
+// a particle cloud over the arena: drifting motes, falling snow, rising embers or still stars
+function arCloud(A,n,col,size,box,mode,R){ const pos=new Float32Array(n*3), sp=new Float32Array(n);
+  for(let k=0;k<n;k++){ pos[k*3]=box[0]+R()*(box[1]-box[0]); pos[k*3+1]=box[2]+R()*(box[3]-box[2]); pos[k*3+2]=box[4]+R()*(box[5]-box[4]); sp[k]=.4+R(); }
+  const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.BufferAttribute(pos,3));
+  const p=new THREE.Points(g,arMat(new THREE.PointsMaterial({color:col,size,transparent:true,opacity:.8,blending:THREE.AdditiveBlending,depthWrite:false,fog:mode!=='stars'})));
+  p.renderOrder=5; A.props.add(p); return {p,pos,sp,box,mode}; }
+function arCloudTick(c,T,dt){ const a=c.pos, b=c.box;
+  for(let k=0;k<c.sp.length;k++){ const i=k*3, v=c.sp[k];
+    if(c.mode==='snow'){ a[i+1]-=dt*.8*v; a[i]+=Math.sin(T*.7+k)*dt*.25; if(a[i+1]<b[2]) a[i+1]=b[3]; }
+    else if(c.mode==='embers'){ a[i+1]+=dt*1.1*v; a[i]+=Math.sin(T*1.3+k)*dt*.3; if(a[i+1]>b[3]){ a[i+1]=b[2]; } }
+    else if(c.mode==='motes'){ a[i]+=Math.sin(T*.4+k*1.7)*dt*.35; a[i+1]+=Math.cos(T*.5+k)*dt*.18; a[i+2]+=Math.cos(T*.3+k*2.3)*dt*.35; } }
+  c.p.geometry.attributes.position.needsUpdate=true; if(c.mode==='stars') c.p.rotation.y=T*.01; }
+// a lava texture: dark crust with glowing veins (it scrolls, so the lava flows)
+function arLavaTex(R){ const N=64, f=xFbm(N,R,4), c=xPaint(N,(i,j)=>{ const v=f(i,j), k=Math.abs(v-.5); return k<.05?[255,210,90]:k<.1?[255,120,30]:k<.16?[150,40,10]:[40,12,8]; }); const t=xTex(c,true); return arTex(t); }
+
+const ARENA_LOOK={
+  hollows:{ build(A,R,Ar,boss,m){ const L=A.plights, s=[];
+      for(let k=0;k<(boss?6:3+(R()*3|0));k++){ const sd=R()<.5?-1:1, wx=m.near+3+R()*(m.back-m.near-4); s.push(arCrystals(A,R,wx,sd*(m.side-.4),Ar.glow,3+(R()*3|0))); }
+      for(let k=0;k<3;k++) s.push(arCrystals(A,R,m.back-.6,(R()*2-1)*(m.side-1),Ar.glow,3));
+      if(boss){ s.push(arCrystals(A,R,m.dais,0,'#9affc8',9,true)); }
+      const cl=arCloud(A,60,Ar.glow,.12,[-m.side,m.side,.3,3.4,-m.back,-m.near],'motes',R);
+      L[0].position.copy(arW(m.back-1,2.4,-m.side*.6)); L[1].position.copy(arW(m.back-1,2.4,m.side*.6)); L[2].position.copy(arW(m.dais||0,3,0));
+      L.forEach(l=>{ l.color.set(Ar.glow); l.distance=14; });
+      return (T,dt)=>{ const p=.75+.25*Math.sin(T*1.6); s.forEach((c,i)=>c.mat.emissive.set(Ar.glow).multiplyScalar(.45+.3*Math.sin(T*1.6+i)));
+        L[0].intensity=1.1*p; L[1].intensity=1.1*(1.5-p); L[2].intensity=boss?1.6*p:0; arCloudTick(cl,T,dt); }; } },
+  deeps:{ build(A,R,Ar,boss,m){ const L=A.plights, ice=arGlow('#bfeaff',.25,{transparent:true,opacity:.85,shininess:80});
+      for(let k=0;k<(boss?40:24);k++){ const sd=R()<.5?-1:1, along=R(); const wx=m.near+2+along*(m.back-m.near-2), wz=sd*(m.side-.3+R()*.3);
+        const g=new THREE.ConeGeometry(.12+R()*.12,.8+R()*1.6,5); g.rotateX(Math.PI); arPut(A,g,ice,wx,3.2+R()*1.2,wz); }
+      for(let k=0;k<12;k++){ const g=new THREE.ConeGeometry(.15+R()*.1,1+R()*1.4,5); g.rotateX(Math.PI); arPut(A,g,ice,m.back-.4,4+R(),(R()*2-1)*m.side); }
+      let falls=null; if(boss){ falls=arGlow('#e6f6ff',.4,{transparent:true,opacity:.7,shininess:90}); for(let k=0;k<7;k++){ const h=4+R()*3; arPut(A,new THREE.BoxGeometry(.9,h,.5),falls,m.dais+1.2,h/2-.35,(k-3)*1.3); } }
+      const sn=arCloud(A,140,'#eef8ff',.09,[-m.side,m.side,0,6,-m.back,-m.near],'snow',R);
+      L[0].position.copy(arW(m.near+3,4,-m.side)); L[1].position.copy(arW(m.back-1,3,m.side*.5)); L[2].position.copy(arW(m.dais||0,3,0));
+      L.forEach(l=>{ l.color.set('#9fd8ff'); l.distance=16; });
+      return (T,dt)=>{ L[0].intensity=.9; L[1].intensity=.8+.15*Math.sin(T*.8); L[2].intensity=boss?1.4+.3*Math.sin(T*2):0;
+        ice.emissive.set('#bfeaff').multiplyScalar(.2+.08*Math.sin(T*1.2)); if(falls) falls.emissive.set('#e6f6ff').multiplyScalar(.35+.15*Math.sin(T*2.4)); arCloudTick(sn,T,dt); }; } },
+  vault:{ build(A,R,Ar,boss,m){ const L=A.plights, st=arMat(xPhong({color:0x5a5878})), glow=arGlow(Ar.glow,.8);
+      const tex=A.rockTex||(A.rockTex=arTex(xTex(xBlockWall(Ar.stone,(Ar.index||0)*7+2,false),true))), pil=arMat(xLitTag(xPhong({map:tex}),2,tex.image));
+      for(let k=0;k<(boss?6:4);k++){ const sd=k%2?1:-1, wx=m.near+3+(k>>1)*((m.back-m.near-4)/2.5), h=1.5+R()*2.5; arPut(A,new THREE.CylinderGeometry(.45,.5,h,8),pil,wx,h/2-SLAB,sd*(m.side-.6)); }
+      const stones=[]; for(let k=0;k<4;k++){ const sd=k%2?1:-1; stones.push(arPut(A,new THREE.OctahedronGeometry(.35,0),glow,m.near+5+k*3,2.4,sd*(m.side-.7))); }
+      if(boss){ A.scene.background=new THREE.Color('#2a2650'); }
+      const cl=arCloud(A,50,'#fff39a',.08,[-m.side,m.side,.3,3.4,-m.back,-m.near],'motes',R);
+      L.forEach((l,i)=>{ l.color.set(Ar.glow); l.distance=18; l.position.copy(arW(i===2?(m.dais||m.back-2):m.near+4+i*6,5,(i-1)*m.side*.4)); });
+      let flash=0, next=1+R()*3;
+      return (T,dt)=>{ next-=dt; if(next<=0){ flash=1; next=(boss?1.2:2.5)+Math.random()*4; } flash=Math.max(0,flash-dt*7);
+        const k=flash>0?(Math.random()<.6?flash:flash*.3):0;
+        L[0].intensity=.5+3*k; L[1].intensity=.4+2.4*k; L[2].intensity=(boss?.8:0)+3*k; A.flashAmb=k;
+        stones.forEach((s,i)=>{ s.rotation.y=T*(.6+i*.1); s.position.y=2.4+Math.sin(T*1.4+i)*.15; }); glow.emissive.set(Ar.glow).multiplyScalar(.5+.5*k+.2*Math.sin(T*3)); arCloudTick(cl,T,dt); }; } },
+  rifts:{ build(A,R,Ar,boss,m){ const L=A.plights, lt=arLavaTex(R), lava=arMat(new THREE.MeshBasicMaterial({map:lt,fog:true})); lt.repeat.set(1,6);
+      const len=m.back-m.near; for(const sd of [-1,1]){ const p=arPut(A,new THREE.PlaneGeometry(1.4,len),lava,(m.back+m.near)/2,-SLAB+.03,sd*(m.side-1.1)); p.rotation.x=-Math.PI/2; }
+      if(boss){ const lk=arPut(A,new THREE.PlaneGeometry(2*m.side,5),lava,m.dais+1.5,-SLAB+.04,0); lk.rotation.x=-Math.PI/2; }
+      const bas=arMat(xPhong({color:0x2a1a14})); for(let k=0;k<10;k++){ const s=.4+R()*.7; arPut(A,new THREE.DodecahedronGeometry(s,0),bas,m.near+R()*len,s*.3-SLAB,(R()<.5?-1:1)*(m.side-R()*.6)); }
+      const em=arCloud(A,90,'#ffb25a',.1,[-m.side,m.side,-SLAB,5,-m.back,-m.near],'embers',R);
+      L[0].position.copy(arW(m.near+len*.3,.6,-(m.side-1.1))); L[1].position.copy(arW(m.near+len*.7,.6,m.side-1.1)); L[2].position.copy(arW(m.dais||0,1,0));
+      L.forEach(l=>{ l.color.set('#ff7a2a'); l.distance=10; });
+      return (T,dt)=>{ lt.offset.y=-T*.05; const f=XLIT.flick; L[0].intensity=1.5*(.85+f*.15*Math.sin(T*7.3)); L[1].intensity=1.5*(.85+f*.15*Math.sin(T*6.1+1)); L[2].intensity=boss?2*(.85+f*.15*Math.sin(T*5)):0; arCloudTick(em,T,dt); }; } },
+  ruins:{ build(A,R,Ar,boss,m){ const L=A.plights, gold=arGlow(Ar.glow,.35,{shininess:60,specular:0x886622}), stone=arMat(xPhong({color:0x8a8478}));
+      const flames=[]; const spots=[[m.near+4,-(m.side-.8)],[m.near+4,m.side-.8],[m.back-2,-(m.side-.8)]];
+      spots.forEach(([wx,wz],i)=>{ arPut(A,new THREE.CylinderGeometry(.3,.38,1.2,8),gold,wx,.6-SLAB,wz); const f=arPut(A,new THREE.ConeGeometry(.22,.6,6),arGlow('#ffcf6a',1.4),wx,1.6-SLAB,wz); flames.push(f);
+        L[i].position.copy(arW(wx,1.9,wz)); L[i].color.set('#ffc060'); L[i].distance=11; });
+      for(let k=0;k<3;k++){ const g=new THREE.BoxGeometry(.7,2.2,.7); const s=arPut(A,g,stone,m.near+5+R()*(m.back-m.near-8),.2,(R()<.5?-1:1)*(m.side-.9)); s.rotation.z=Math.PI/2*.92; }
+      if(boss){ const vine=arMat(xPhong({color:0x3f7a3a})); for(let k=0;k<8;k++){ const h=3+R()*2; arPut(A,new THREE.CylinderGeometry(.3,.4,h,8),gold,m.dais+1,h/2-SLAB,(k-3.5)*1.4); arPut(A,new THREE.CylinderGeometry(.08,.08,h,5),vine,m.dais+.6,h/2-SLAB,(k-3.5)*1.4+.3); } }
+      const sh=arMat(new THREE.MeshBasicMaterial({color:'#fff3b0',transparent:true,opacity:.07,blending:THREE.AdditiveBlending,depthWrite:false,side:THREE.DoubleSide}));
+      for(let k=0;k<3;k++){ const p=arPut(A,new THREE.PlaneGeometry(1.6,9),sh,m.near+5+k*4,3,(k-1)*2.5); p.rotation.z=.35; }
+      const cl=arCloud(A,70,'#fff3b0',.07,[-m.side,m.side,.3,4,-m.back,-m.near],'motes',R);
+      return (T,dt)=>{ const fl=XLIT.flick; flames.forEach((f,i)=>{ f.scale.set(1,.85+fl*.25*Math.sin(T*11+i*2),1); L[i].intensity=1.4*(.85+fl*(.1*Math.sin(T*11+i)+.07*Math.sin(T*23.7+i*3))); }); arCloudTick(cl,T,dt); }; } },
+  abyss:{ build(A,R,Ar,boss,m){ const L=A.plights, rock=arMat(xPhong({color:0x2a3040})), isl=[];
+      A.voidWalls=true;   // no cave walls here: the board floats in the dark
+      for(let k=0;k<(boss?14:9);k++){ const s=.4+R()*1.1, ang=R()*6.28, r=m.side+2+R()*6; isl.push({m:arPut(A,new THREE.DodecahedronGeometry(s,0),rock,(R()*2-1)*(m.back-2),-1-R()*3,Math.cos(ang)*r),y:-1-R()*3,ph:R()*6}); }
+      const stars=arCloud(A,260,'#e9fbff',.14,[-40,40,-30,-4,-60,10],'stars',R);
+      const ghosts=arCloud(A,24,'#9fe8ff',.2,[-m.side,m.side,.5,3,-m.back,-m.near],'motes',R);
+      L.forEach((l,i)=>{ l.color.set(i===2?'#c9b6ff':'#e9fbff'); l.distance=14; l.position.copy(arW(i===2?(m.dais||0):m.near+5+i*8,3,(i-.5)*m.side*.8)); });
+      return (T,dt)=>{ isl.forEach((o,i)=>{ o.m.position.y=o.y+Math.sin(T*.5+o.ph)*.3; o.m.rotation.y=T*.1+o.ph; }); L[0].intensity=.7+.3*Math.sin(T*.9); L[1].intensity=.6+.3*Math.sin(T*1.1+2); L[2].intensity=boss?1.4+.4*Math.sin(T*1.7):0;
+        arCloudTick(stars,T,dt); arCloudTick(ghosts,T,dt); }; } },
+};
+// the boss floor's dais: a raised hex platform behind the enemy half, where the boss holds court
+function arDais(A,Ar,m){ const t=A.rockTex||(A.rockTex=arTex(xTex(xRockWall(Ar.stone,(Ar.index||0)*7+2),true))), mat=arMat(xLitTag(xPhong({map:t}),2,t.image));
+  const g=new THREE.CylinderGeometry(3.2,3.6,.9,6,1,false,Math.PI/6); arPut(A,g,mat,m.dais,.45-SLAB,0); }
+function arenaProps(A,Ar,R,boss){ const m=Object.assign({},A.room); if(boss) m.dais=m.back-3.4;
+  A.props=new THREE.Group(); A.grp.add(A.props); arPropLights(A).forEach(l=>{ l.intensity=0; });
+  if(boss) arDais(A,Ar,m);
+  const L=ARENA_LOOK[Ar.id]||ARENA_LOOK.hollows; A.tick=L.build(A,R,Ar,boss,m)||null; }

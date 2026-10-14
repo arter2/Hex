@@ -401,7 +401,6 @@ function xBuildScene(){
     wm.instanceMatrix.setUsage(THREE.DynamicDrawUsage); grp.add(wm); EX.wms.push(wm);
     for(let k=0;k<wm.count;k++){ wm.setMatrixAt(k,zero); wm.setColorAt(k,black); }
     list.forEach((c,k)=>EX.wIdx.set(c,[wm,k])); });
-  xWallDress(grp,A,S,seed);
   // doors: an arched doorway of the area's stone, and while it is closed a plank door with iron
   // bands and studs, its top rounded to the arch; a locked door shows its lock: a bronze, silver or
   // gold plate, iron bars on a shortcut gate, red bands on a boss door
@@ -464,7 +463,7 @@ function xBuildScene(){
   EX.myGlow.rotation.x=-Math.PI/2; EX.myGlow.position.y=.05; EX.myGlow.renderOrder=2; grp.add(EX.myGlow);
   xFloorTrim(grp,A,S,seed); xChasm(grp,A,S,seed); xFloorDecals(grp,A,S,seed); xMotes(grp,A);
   G.amb.color.set(0xffffff).lerp(glowC,.25); G.lamp.color.set(0xffd9a0).lerp(glowC,.3); G.dust.material.color.copy(glowC);
-  xAreaLights(grp,A); xStairLights(grp,A);
+  xAreaLights(grp,A); xStairLights(grp,A); xWallDress(grp,A,S,seed);
   // you and the enemies are flat sprites standing in the 3D rooms, like the old dungeon crawlers
   // you are seen from behind and above, as in battle: the same four poses (stand, walk, cast, attack)
   EX.me=xSprite(()=>unitSprite({kind:'player',look:gearLook(save),view:EX.view||'front',pose:EX.pose||'idle'}),XSPR); grp.add(EX.me);
@@ -575,13 +574,25 @@ function xChasm(grp,A,S,seed){ const span=XN*XCS, t=xTex(xChasmTex(A,S,seed),tru
   const m=new THREE.Mesh(new THREE.PlaneGeometry(span*1.6,span*1.6),new THREE.MeshBasicMaterial({map:t,fog:false}));
   m.rotation.x=-Math.PI/2; m.position.set(span/2,-9,span/2); grp.add(m);
   // dust rising out of the dark below, around you
-  const N=90, pos=new Float32Array(N*3); for(let k=0;k<N;k++){ pos[k*3]=(Math.random()-.5)*34; pos[k*3+1]=-9+Math.random()*9; pos[k*3+2]=(Math.random()-.5)*26; }
+  // floating islands far below: knobbly rocks with a rim of the area's light underneath
+  { const R=caveRng(seed+71), I=xMerger(), G2=xMerger(), dk=new THREE.Color('rgb('+xTone(S,.18).join(',')+')'), rim=new THREE.Color(A.glow);
+    for(let n=0;n<26;n++){ const cx=R()*span, cz=R()*span; if(EX.t[xcell(cx,cz)]!==T_ROCK) continue; const y=-3.5-R()*4, s=1.2+R()*2.6;
+      I.add(XG.rock,dk,cx,y,cz,R()*3,R()*3,0,s*1.4,s*.7,s*1.2); I.add(XG.rock,dk,cx+(R()-.5)*s,y-s*.45,cz+(R()-.5)*s,R()*3,R()*3,0,s*.7,s*.6,s*.6);
+      G2.add(XG.ball,rim,cx,y-s*.25,cz,0,0,0,s*1.3,.08,s*1.1); }
+    if(I.size()){ grp.add(I.build(new THREE.MeshBasicMaterial({vertexColors:true,fog:false}))); const gl=G2.build(new THREE.MeshBasicMaterial({vertexColors:true,transparent:true,opacity:.5,blending:THREE.AdditiveBlending,depthWrite:false,fog:false})); gl.renderOrder=0; grp.add(gl); } }
+  // a slow fog drifting over the deep
+  { const N=128, c=document.createElement('canvas'); c.width=c.height=N; const x=c.getContext('2d'), R=caveRng(seed+9), f=xFbm(N,R,4), im=x.createImageData(N,N), fg=xHexRGB(A.glow);
+    for(let j=0;j<N;j++) for(let i=0;i<N;i++){ const v=Math.max(0,f(i,j)-.5)*2.2, o=(j*N+i)*4; im.data[o]=fg[0]; im.data[o+1]=fg[1]; im.data[o+2]=fg[2]; im.data[o+3]=Math.round(Math.min(1,v)*120); }
+    x.putImageData(im,0,0); const t=xTex(c,true); t.magFilter=t.minFilter=THREE.LinearFilter; t.repeat.set(3,3);
+    EX.deepFog=new THREE.Mesh(new THREE.PlaneGeometry(span*1.6,span*1.6),new THREE.MeshBasicMaterial({map:t,transparent:true,opacity:.6,depthWrite:false,fog:false,blending:THREE.AdditiveBlending}));
+    EX.deepFog.rotation.x=-Math.PI/2; EX.deepFog.position.set(span/2,-2.2,span/2); EX.deepFog.renderOrder=0; grp.add(EX.deepFog); }
+  const N=170, pos=new Float32Array(N*3); for(let k=0;k<N;k++){ pos[k*3]=(Math.random()-.5)*34; pos[k*3+1]=-9+Math.random()*9; pos[k*3+2]=(Math.random()-.5)*26; }
   const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.BufferAttribute(pos,3));
-  EX.rise=new THREE.Points(g,new THREE.PointsMaterial({color:new THREE.Color(A.glow).lerp(new THREE.Color(0xffffff),.3),size:.12,transparent:true,opacity:.55,blending:THREE.AdditiveBlending,depthWrite:false,fog:false}));
+  EX.rise=new THREE.Points(g,new THREE.PointsMaterial({color:new THREE.Color(A.glow).lerp(new THREE.Color(0xffffff),.3),size:.15,transparent:true,opacity:.65,blending:THREE.AdditiveBlending,depthWrite:false,fog:false}));
   EX.rise.renderOrder=0; grp.add(EX.rise); }
 /* Floor details: cracks, moss, scorch or frost by area, and pools that glow in the area's colour
    and pulse, drawn from one small sheet of pixel decals and merged into two meshes. */
-function xDecalSheet(A,S){ const T=64, c=document.createElement('canvas'); c.width=T*4; c.height=T; const x=c.getContext('2d'), R=caveRng(17), dk='rgba(0,0,0,.6)';
+function xDecalSheet(A,S){ const T=64, c=document.createElement('canvas'); c.width=T*8; c.height=T; const x=c.getContext('2d'), R=caveRng(17), dk='rgba(0,0,0,.6)';
   // 0: a crack
   x.strokeStyle=dk; x.lineWidth=2; for(let b=0;b<3;b++){ let px=32, py=32, a=R()*6.3; x.beginPath(); x.moveTo(px,py); for(let m=0;m<9;m++){ a+=(R()-.5)*.9; px+=Math.cos(a)*4; py+=Math.sin(a)*4; x.lineTo(px,py); } x.stroke(); }
   // 1: the area's stain (moss, scorch, frost or dust)
@@ -592,24 +603,47 @@ function xDecalSheet(A,S){ const T=64, c=document.createElement('canvas'); c.wid
   x.fillStyle='rgba(255,255,255,.9)'; for(let n=0;n<6;n++) x.fillRect(T*2+20+R()*24|0,24+R()*16|0,2,1);
   // 3: loose stones and grit
   for(let n=0;n<14;n++){ const px=T*3+8+R()*48|0, py=8+R()*48|0, w=2+R()*3|0; x.fillStyle='rgba(0,0,0,.5)'; x.fillRect(px+1,py+1,w,w-1); x.fillStyle='rgb('+xTone(S,.7).join(',')+')'; x.fillRect(px,py,w,w-1); }
+  // 4: a broken slab: a jagged dark hole with a lit lip and rubble in it
+  { const o=T*4, pts=[]; for(let k=0;k<9;k++){ const a=k/9*6.28, r=18+R()*10; pts.push([o+32+Math.cos(a)*r,32+Math.sin(a)*r*.8]); }
+    x.fillStyle='rgb('+xTone(S,.8).join(',')+')'; x.beginPath(); pts.forEach(([px,py],k)=>k?x.lineTo(px,py-2):x.moveTo(px,py-2)); x.closePath(); x.fill();
+    x.fillStyle='rgba(10,10,12,.72)'; x.beginPath(); pts.forEach(([px,py],k)=>k?x.lineTo(px,py):x.moveTo(px,py)); x.closePath(); x.fill();
+    for(let n=0;n<9;n++){ const px=o+20+R()*24|0, py=24+R()*16|0, w=2+R()*4|0; x.fillStyle='rgb('+xTone(S,.35+R()*.3).join(',')+')'; x.fillRect(px,py,w,w-1); } }
+  // 5: worn stone: a lighter, smoother patch
+  { const g=x.createRadialGradient(T*5+32,32,2,T*5+32,32,30); g.addColorStop(0,'rgba(255,255,255,.16)'); g.addColorStop(1,'rgba(255,255,255,0)'); x.fillStyle=g; x.fillRect(T*5,0,T,T); }
+  // 6: a wet puddle (the mesh makes it shine)
+  for(let s=0;s<3;s++){ x.fillStyle='rgba(255,255,255,'+(.35+s*.25)+')'; x.beginPath(); x.ellipse(T*6+32,32,26-s*6,17-s*4,0,0,7); x.fill(); }
+  // 7: grime along a wall: dark at the top edge, gone by the bottom
+  { const g=x.createLinearGradient(0,0,0,T); g.addColorStop(0,'rgba(0,0,0,.6)'); g.addColorStop(.6,'rgba(0,0,0,.15)'); g.addColorStop(1,'rgba(0,0,0,0)'); x.fillStyle=g; x.fillRect(T*7,0,T,T);
+    for(let n=0;n<60;n++){ x.fillStyle='rgba(0,0,0,'+(.2+R()*.3)+')'; x.fillRect(T*7+R()*T|0,R()*R()*T|0,1+R()*2|0,1); } }
   return xTex(c); }
 function xFloorDecals(grp,A,S,seed){ const R=caveRng(seed+333), sheet=xDecalSheet(A,S), P=[[],[]], U=[[],[]];
-  const quad=(L,cx,cz,size,k,rot)=>{ const h=size/2, cs=Math.cos(rot), sn=Math.sin(rot), pt=(u,v)=>[cx+(u*cs-v*sn)*h,.02,cz+(u*sn+v*cs)*h], a=pt(-1,-1), b=pt(-1,1), c=pt(1,1), d=pt(1,-1), u0=k/4, u1=(k+1)/4;
+  P.push([]); U.push([]);   // layer 2: wet puddles that shine
+  const quad=(L,cx,cz,size,k,rot,len)=>{ const h=size/2, hl=(len||size)/2, cs=Math.cos(rot), sn=Math.sin(rot), pt=(u,v)=>[cx+(u*hl*cs-v*h*sn),.02,cz+(u*hl*sn+v*h*cs)], a=pt(-1,-1), b=pt(-1,1), c=pt(1,1), d=pt(1,-1), u0=k/8, u1=(k+1)/8;
     P[L].push(...a,...b,...c,...a,...c,...d); U[L].push(u0,1, u0,0, u1,0, u0,1, u1,0, u1,1); };
   for(let c=0;c<XN*XN;c++){ if(EX.t[c]!==T_FLOOR||c===EX.up||c===EX.down||EX.traps.some(t=>t.cell===c)) continue; const r=R(), room=EX.room[c]>=0;
     const cx=xw(c)+(R()-.5)*1.2, cz=xz(c)+(R()-.5)*1.2;
+    const wet=A.veins==='ice'?.1:.04;
     if(r<.05) quad(1,cx,cz,1.6+R()*1.2,2,R()*6.3);              // a glowing pool
     else if(r<.17) quad(0,cx,cz,1.4+R()*1,room?1:3,R()*6.3);     // a stain, or grit in a corridor
-    else if(r<.27) quad(0,cx,cz,1.2+R()*.8,0,R()*6.3); }          // a crack
+    else if(r<.27) quad(0,cx,cz,1.2+R()*.8,0,R()*6.3);            // a crack
+    else if(r<.27+wet) quad(2,cx,cz,1.3+R()*1.1,6,R()*6.3);       // a wet puddle
+    else if(r<.29+wet&&room) quad(0,xw(c),xz(c),1.5,4,(R()*4|0)*Math.PI/2); }   // a broken slab
+  // grime gathers along every room wall, and the stone is worn pale on the way in from each door
+  for(const r of EX.rooms){ if(r.nook) continue; const X0=r.x*XCS, X1=(r.x+r.w)*XCS, Z0=r.y*XCS, Z1=(r.y+r.h)*XCS, d=.9;
+    quad(0,(X0+X1)/2,Z0+d/2,d,7,0,X1-X0); quad(0,(X0+X1)/2,Z1-d/2,d,7,Math.PI,X1-X0); quad(0,X0+d/2,(Z0+Z1)/2,d,7,-Math.PI/2,Z1-Z0); quad(0,X1-d/2,(Z0+Z1)/2,d,7,Math.PI/2,Z1-Z0); }
+  for(const [i] of EX.doors){ for(const n of xAdj4(i)){ if(EX.t[n]!==T_FLOOR||EX.room[n]<0) continue; const dx=xcx(n)-xcx(i), dy=xcy(n)-xcy(i);
+      for(let k=0;k<3;k++){ const c=n+k*(dx+dy*XN); if(c<0||EX.t[c]!==T_FLOOR) break; quad(0,xw(c),xz(c),2.4-k*.4,5,0); } } }
   const mk=(L,mat)=>{ if(!P[L].length) return null; const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.Float32BufferAttribute(P[L],3)); g.setAttribute('uv',new THREE.Float32BufferAttribute(U[L],2)); g.computeVertexNormals(); const m=new THREE.Mesh(g,mat); m.renderOrder=1; grp.add(m); return m; };
   mk(0,new THREE.MeshPhongMaterial({map:sheet,transparent:true,depthWrite:false,shininess:2,polygonOffset:true,polygonOffsetFactor:-2}));
-  EX.puddles=mk(1,new THREE.MeshBasicMaterial({map:sheet,color:new THREE.Color(A.glow),transparent:true,opacity:.5,blending:THREE.AdditiveBlending,depthWrite:false})); }
+  EX.puddles=mk(1,new THREE.MeshBasicMaterial({map:sheet,color:new THREE.Color(A.glow),transparent:true,opacity:.5,blending:THREE.AdditiveBlending,depthWrite:false}));
+  mk(2,new THREE.MeshPhongMaterial({map:sheet,color:new THREE.Color(A.fog).lerp(new THREE.Color(0x203040),.5),transparent:true,opacity:.55,depthWrite:false,shininess:60,specular:0x3a4a5a,polygonOffset:true,polygonOffsetFactor:-3})); }
 // glowing motes that rise and wink around the lights near you
 function xMotes(grp,A){ const N=48, pos=new Float32Array(N*3).fill(-50), g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.BufferAttribute(pos,3));
   EX.motes=new THREE.Points(g,new THREE.PointsMaterial({color:0xffd9a0,size:.14,transparent:true,opacity:.8,blending:THREE.AdditiveBlending,depthWrite:false})); EX.motes.userData.ph=Array.from({length:N},()=>Math.random()); grp.add(EX.motes); }
 function xAirTick(T,dt){
   if(EX.rise){ const a=EX.rise.geometry.attributes.position.array; for(let k=0;k<a.length;k+=3){ a[k+1]+=dt*(.6+((k*7)%5)*.12); if(a[k+1]>-.3) a[k+1]=-9; } EX.rise.geometry.attributes.position.needsUpdate=true; EX.rise.position.set(EX.px,0,EX.pz); }
   if(EX.puddles) EX.puddles.material.opacity=.42+.12*Math.sin(T*1.6);
+  if(EX.deepFog){ EX.deepFog.material.map.offset.x=T*.006; EX.deepFog.material.map.offset.y=T*.004; }
   if(EX.motes){ const a=EX.motes.geometry.attributes.position.array, ph=EX.motes.userData.ph, L=(X3.pool||[]).map(P=>P.userData.L).filter(Boolean);
     for(let k=0;k<ph.length;k++){ const src=L[k%Math.max(1,L.length)]; if(!src){ a[k*3+1]=-50; continue; } ph[k]=(ph[k]+dt*.22)%1;
       const wp=X3.pool[k%L.length].position, s=Math.sin(k*12.9)*.5+.5, c=Math.cos(k*7.3)*.5+.5;
@@ -643,11 +677,27 @@ function xFurnish(M0,L0,kind,x,z,ry,R,A,S){ const K=1.4, sc=T=>({add:(g,c,px,py,
     case 'rubble': for(let k=0;k<4;k++){ const s=.15+R()*.25; M.add(XG.rock,R()<.5?st:dk,x+(R()-.5)*.6,s*.4,z+(R()-.5)*.6,R()*3,R()*3,0,s,s,s); } break;
     case 'statue': M.add(XG.box,dk,x,.25,z,0,ry,0,.62,.5,.62); M.add(XG.box,st,x,.6,z,0,ry,0,.36,.3,.3); M.add(XG.ball,st,x,.92,z,0,0,0,.28,.3,.28); M.add(XG.box,st,x,.62,z,0,ry,0,.62,.1,.14); break;
     case 'candles': for(let k=0;k<3;k++){ const cx=x+(k-1)*.16, h=.14+R()*.14; M.add(XG.cyl,0xeae2c8,cx,h/2,z+(R()-.5)*.1,0,0,0,.07,h,.07); L.add(XG.cone,0xffc060,cx,h+.06,z,0,0,0,.05,.1,.05); } break;
+    case 'shelf': { const cs=Math.cos(ry), sn=Math.sin(ry), at=(u,v)=>[x+u*cs+v*sn,z-u*sn+v*cs];   // u along the wall, v out from it
+      const [a0,b0]=at(0,0); M.add(XG.box,W2,a0,.68,b0,0,ry,0,.92,1.36,.3);
+      for(let r=0;r<3;r++){ const y=.18+r*.4; const [a1,b1]=at(0,.02); M.add(XG.box,W,a1,y,b1,0,ry,0,.88,.04,.3);
+        let u=-.38; while(u<.36){ const w=.06+R()*.06, h=.22+R()*.1, [bx,bz]=at(u+w/2,.04); M.add(XG.box,[0x7a2a24,0x2a4a6a,0x3a5a2a,0x8a6a2a,0x5a2a5a][R()*5|0],bx,y+.02+h/2,bz,0,ry,R()<.15?.25:0,w,h,.2); u+=w+.01; } } break; }
+    case 'rack': { const cs=Math.cos(ry), sn=Math.sin(ry), at=(u,v)=>[x+u*cs+v*sn,z-u*sn+v*cs]; for(const u of [-.36,.36]){ const [a,b]=at(u,0); M.add(XG.box,W2,a,.5,b,0,ry,0,.06,1,.06); }
+      { const [a,b]=at(0,0); M.add(XG.box,W2,a,.82,b,0,ry,0,.82,.05,.06); M.add(XG.box,W2,a,.3,b,0,ry,0,.82,.05,.06); }
+      for(let k=0;k<4;k++){ const u=-.27+k*.18, [a,b]=at(u,.06); M.add(XG.cyl,0x5a4030,a,.6,b,0,0,(R()-.5)*.1,.025,1.2,.025); L.add(XG.cone,0xb8c0c8,a,1.24,b,0,0,0,.05,.12,.05); }
+      if(R()<.6){ const [a,b]=at(0,.12); M.add(XG.cyl,0x7a2a24,a,.35,b,Math.PI/2,ry,0,.3,.04,.3); M.add(XG.cyl,0xc8a040,a,.35,b,Math.PI/2,ry,0,.08,.05,.08); } break; }
+    case 'table': M.add(XG.box,W,x,.42,z,0,ry,0,.8,.06,.5); for(const [u,v] of [[-.34,-.2],[.34,-.2],[-.34,.2],[.34,.2]]){ const cs=Math.cos(ry), sn=Math.sin(ry); M.add(XG.box,W2,x+u*cs+v*sn,.2,z-u*sn+v*cs,0,ry,0,.06,.4,.06); }
+      M.add(XG.cyl,0x8a8070,x+.15,.5,z,0,0,0,.08,.1,.08); M.add(XG.cyl,0xeae2c8,x-.18,.52,z+.05,0,0,0,.05,.14,.05); L.add(XG.cone,0xffc060,x-.18,.63,z+.05,0,0,0,.04,.08,.04);
+      if(R()<.6) M.add(XG.box,0xd8c8a0,x+.02,.47,z-.12,0,R()*2,0,.22,.02,.16); break;
+    case 'skeleton': { const cs=Math.cos(ry), sn=Math.sin(ry), at=(u,v)=>[x+u*cs+v*sn,z-u*sn+v*cs], P=(u,v,y,sx,sy,sz,g)=>{ const [a,b]=at(u,v); M.add(g||XG.box,BONE,a,y,b,0,ry,0,sx,sy,sz); };
+      P(0,-.05,.3,.18,.36,.1); P(0,-.04,.56,.2,.18,.18,XG.ball); P(0,.02,.62,.04,.04,.04); for(const u of [-.1,.1]){ P(u,.18,.06,.06,.06,.4); P(u*1.6,.05,.32,.04,.3,.04); }
+      for(let r=0;r<3;r++) P(0,-.02,.22+r*.08,.22,.03,.08); break; }
     case 'mushrooms': for(let k=0;k<3;k++){ const mx=x+(R()-.5)*.5, mz=z+(R()-.5)*.4, h=.1+R()*.2, r=.12+R()*.12; M.add(XG.cyl,0xd8d0c0,mx,h/2,mz,0,0,0,.06,h,.06); L.add(XG.half,glow,mx,h-.01,mz,0,0,0,r*2,r*1.4,r*2); } break;
   } }
 // pick what a room holds, by its kind and the area
-const XROOM_KINDS={ store:['barrel','barrel','crate','crate','sack'], shrine:['urn','urn','candles','statue'], crypt:['bones','skulls','urn','candles'], cave:['rubble','rubble','mushrooms','bones'] };
-const XAREA_KIND={ hollows:['cave','cave','store','crypt'], deeps:['store','cave','crypt'], vault:['store','shrine','store'], rifts:['cave','crypt','store'], ruins:['shrine','shrine','store','crypt'], abyss:['crypt','shrine','cave'] };
+const XROOM_KINDS={ store:['barrel','barrel','crate','crate','sack','table','rack'], shrine:['urn','urn','candles','statue','brazier','shelf'], crypt:['bones','skulls','urn','candles','skeleton','skeleton'],
+  cave:['rubble','rubble','mushrooms','bones','skeleton'], study:['shelf','shelf','table','candles','urn','brazier'] };
+const XAREA_KIND={ hollows:['cave','cave','store','crypt','study'], deeps:['store','cave','crypt','study'], vault:['store','shrine','study','store'], rifts:['cave','crypt','store','shrine'], ruins:['shrine','shrine','study','store','crypt'], abyss:['crypt','shrine','cave','study'] };
+const XWALLSIDE=['shelf','rack','skeleton'];   // these stand right against a wall
 function xWallDress(grp,A,S,seed){ const R=caveRng(seed+211), floorAt=(x,y)=>x>=0&&y>=0&&x<XN&&y<XN&&EX.t[xi(x,y)]!==T_ROCK, rock=(x,y)=>!floorAt(x,y);
   EX.dress=new Map(); EX.decor=[]; EX.onWall=[];
   // the top-edge trim and the pillars are instanced, so they can sink with the cutaway like the walls
@@ -660,19 +710,32 @@ function xWallDress(grp,A,S,seed){ const R=caveRng(seed+211), floorAt=(x,y)=>x>=
   const tm=new THREE.InstancedMesh(trimGeo,new THREE.MeshBasicMaterial({color:acc,fog:true}),Math.max(1,trims.length)), zero=new THREE.Matrix4().makeScale(0,0,0);
   for(let k=0;k<tm.count;k++) tm.setMatrixAt(k,zero); grp.add(tm); EX.trimMesh=tm;
   trims.forEach(([c,dx,dy],k)=>{ const a=EX.dress.get(c)||{}; (a.trim=a.trim||[]).push([k,dx,dy]); EX.dress.set(c,a); });
-  // a pillar: a wide base, a shaft a little proud of the wall and a capital above the wall top
-  const pg=new THREE.BoxGeometry(1,1,1), pm=new THREE.InstancedMesh(pg,xPhong({color:new THREE.Color('rgb('+xTone(S,.42).join(',')+')')}),Math.max(1,pills.length*3));
-  for(let k=0;k<pm.count;k++) pm.setMatrixAt(k,zero); grp.add(pm); EX.pillMesh=pm;
-  pills.forEach((c,k)=>{ const a=EX.dress.get(c)||{}; a.pill=k*3; EX.dress.set(c,a); });
+  // along the same room faces: a stone cornice at the top (the lit line sits on it) and a dark skirting at the foot
+  const tone=v=>new THREE.Color('rgb('+xTone(S,v).join(',')+')'), inst=(mat,n)=>{ const im=new THREE.InstancedMesh(XG.box,mat,Math.max(1,n)); for(let k=0;k<im.count;k++) im.setMatrixAt(k,zero); grp.add(im); return im; };
+  EX.corMesh=inst(xPhong({color:tone(.62)}),trims.length); EX.skirtMesh=inst(xPhong({color:tone(.16)}),trims.length);
+  // pillars by area: carved columns (a base, a round shaft standing proud of the wall, a capital)
+  // where the halls are built, rough rock columns in the caves
+  const cave=['crystal','lava','stars'].includes(A.veins), shaftG=cave?xRockShaft():new THREE.CylinderGeometry(.5,.5,1,12), pc=tone(cave?.34:.48), pc2=tone(cave?.26:.6);
+  EX.pillBase=inst(xPhong({color:pc2}),pills.length); EX.pillShaft=new THREE.InstancedMesh(shaftG,xPhong({color:pc}),Math.max(1,pills.length)); for(let k=0;k<EX.pillShaft.count;k++) EX.pillShaft.setMatrixAt(k,zero); grp.add(EX.pillShaft);
+  EX.pillCap=inst(xPhong({color:pc2}),pills.length); EX.pillCave=cave;
+  pills.forEach((c,k)=>{ const a=EX.dress.get(c)||{}; a.pill=k; EX.dress.set(c,a); });
   // furniture, room by room
   const used=new Set([...EX.wallAt.keys(),...(EX.glows||[]).map(L=>L.wall)]), area=A.id||'hollows';
   EX.rooms.forEach((r,ri)=>{ if(r.nook||r.w<3||r.h<3) return; const kinds=XAREA_KIND[area]||XAREA_KIND.hollows, rk=r.side==='cell'?'crypt':kinds[R()*kinds.length|0], pool=XROOM_KINDS[rk];
     const M=xMerger(), L=xMerger(), cells=[];
     const ok=c=>EX.t[c]===T_FLOOR&&!EX.taken.has(c)&&!EX.itemAt.has(c)&&!EX.chests.some(ch=>ch.cell===c)&&c!==EX.up&&c!==EX.down&&!EX.traps.some(t=>t.cell===c)&&!xAdj4(c).some(n=>EX.doors.has(n));
     const edge=[]; for(let x=r.x;x<r.x+r.w;x++){ edge.push([x,r.y,0,-1],[x,r.y+r.h-1,0,1]); } for(let y=r.y+1;y<r.y+r.h-1;y++){ edge.push([r.x,y,-1,0],[r.x+r.w-1,y,1,0]); }
-    const n=Math.max(1,Math.round((r.w+r.h)/3.5));
+    const n=Math.max(2,Math.round((r.w+r.h)/1.8));
     for(let k=0;k<n&&edge.length;k++){ const [x,y,dx,dy]=edge.splice(R()*edge.length|0,1)[0], c=xi(x,y); if(!ok(c)||!rock(x+dx,y+dy)) continue;
-      const wx=(x+.5+dx*.28)*XCS, wz=(y+.5+dy*.28)*XCS, kind=pool[R()*pool.length|0]; xFurnish(M,L,kind,wx,wz,Math.atan2(dx,dy),R,A,S); cells.push(c); }
+      const kind=pool[R()*pool.length|0], against=XWALLSIDE.includes(kind), off=against?.33:.28, wx=(x+.5+dx*off)*XCS, wz=(y+.5+dy*off)*XCS, ry=Math.atan2(-dx,-dy);
+      if(kind==='brazier'){ xBrazier(grp,wx-dx*.4,wz-dy*.4,c,A); cells.push(c); continue; }
+      xFurnish(M,L,kind,wx,wz,ry,R,A,S); cells.push(c);
+      // barrels, crates and sacks gather in twos and threes
+      if(['barrel','crate','sack'].includes(kind)) for(let j=0;j<1+(R()*2|0);j++){ const s=(j?-1:1)*(.7+R()*.2); xFurnish(M,L,R()<.6?kind:pool[R()*3|0],wx+(dy?s:0)-dx*R()*.3,wz+(dx?s:0)-dy*R()*.3,ry+R(),R,A,S); } }
+    // chains hang on crypt walls
+    if(rk==='crypt') for(let x=r.x;x<r.x+r.w;x++) if(rock(x,r.y-1)&&!used.has(xi(x,r.y-1))&&R()<.25){ used.add(xi(x,r.y-1)); const g=new THREE.Group(); g.position.set((x+.5)*XCS,0,r.y*XCS+.06);
+      for(const cx of [-.35,.35]){ const n2=4+(R()*4|0); for(let k=0;k<n2;k++){ const ln=new THREE.Mesh(new THREE.TorusGeometry(.06,.015,4,8),xMat(0x3a3a40)); ln.position.set(cx,XWALL-.25-k*.11,0); ln.rotation.y=k%2?Math.PI/2:0; g.add(ln); } }
+      g.visible=false; grp.add(g); EX.onWall.push({g,wall:xi(x,r.y-1),floor:xi(x,r.y)}); }
     // in the corners: a cobweb in crypts and caves
     if(rk==='crypt'||rk==='cave') for(const [x,y,sx,sy] of [[r.x,r.y,-1,-1],[r.x+r.w-1,r.y,1,-1]]) if(R()<.6){ const w=xi(x,y);
       const web=new THREE.Mesh(new THREE.PlaneGeometry(1.1,1.1),new THREE.MeshBasicMaterial({map:xWebTex(),transparent:true,opacity:.55,depthWrite:false,side:THREE.DoubleSide}));
@@ -690,18 +753,35 @@ function xWallDress(grp,A,S,seed){ const R=caveRng(seed+211), floorAt=(x,y)=>x>=
     const grpR=new THREE.Group(); if(M.size()) grpR.add(M.build(xPhong({vertexColors:true}))); if(L.size()){ const lm=L.build(new THREE.MeshBasicMaterial({vertexColors:true})); grpR.add(lm); grpR.userData.glow=lm; }
     grpR.visible=false; grp.add(grpR); EX.decor.push({mesh:grpR,cells:cells.length?cells:[xi(r.x,r.y)],ph:R()*6}); });
 }
+// a standing brazier: an iron bowl on three legs, a fire and a real light (it joins the floor's lights)
+function xBrazier(grp,x,z,cell,A){ const g=new THREE.Group(), iron=xMat(0x2c2a28), mats=[], tex=xGlowTex.t||(xGlowTex.t=xGlowTex()); g.position.set(x,0,z);
+  for(let k=0;k<3;k++){ const a=k*2.1; g.add(xBox(.05,.9,.05,iron,Math.cos(a)*.22,.45,Math.sin(a)*.22)); }
+  const bowl=new THREE.Mesh(new THREE.CylinderGeometry(.38,.22,.24,10),iron); bowl.position.y=.95; g.add(bowl);
+  const coal=new THREE.Mesh(new THREE.CylinderGeometry(.33,.33,.04,10),new THREE.MeshBasicMaterial({color:0xff5a20})); coal.position.y=1.06; g.add(coal);
+  const flame=new THREE.Group(), fm=c=>{ const m=new THREE.MeshBasicMaterial({color:c,transparent:true}); mats.push(m); return m; };
+  const f1=new THREE.Mesh(new THREE.ConeGeometry(.3,.75,7),fm(0xff7a2a)), f2=new THREE.Mesh(new THREE.ConeGeometry(.16,.5,7),fm(0xffe08a)); f1.position.y=.37; f2.position.y=.25; flame.add(f1,f2); flame.position.y=1.06; g.add(flame);
+  const halo=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,color:0xffa040,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false})); halo.scale.set(4,4,1); halo.position.y=1.5; halo.renderOrder=2; g.add(halo);
+  g.visible=false; grp.add(g); EX.glows.push({g,floor:cell,mats,halo,flame,torch:true,ph:Math.random()*6}); }
 function xWebTex(){ if(xWebTex.c) return xWebTex.c; const N=32, c=document.createElement('canvas'); c.width=c.height=N; const x=c.getContext('2d'); x.strokeStyle='rgba(230,235,240,.9)'; x.lineWidth=1;
   for(let a=0;a<5;a++){ x.beginPath(); x.moveTo(0,0); x.lineTo(Math.cos(a*.39)*N,Math.sin(a*.39)*N); x.stroke(); }
   for(let r=6;r<N;r+=6){ x.beginPath(); for(let a=0;a<5;a++){ const px=Math.cos(a*.39)*r, py=Math.sin(a*.39)*r; a?x.lineTo(px,py):x.moveTo(px,py); } x.stroke(); }
   return xWebTex.c=xTex(c); }
 // a wall cell shown or sinking: its trim line and pillar follow its height
 function xDressShow(c,cut,touched){ const a=EX.dress&&EX.dress.get(c); if(!a) return; const m=new THREE.Matrix4(), top=XWALL*cut-.04;
-  if(a.trim){ for(const [k,dx,dy] of a.trim){ const x=xw(c)+dx*XCS*.5, z=xz(c)+dy*XCS*.5; m.makeScale(dx?.06:XCS,.07,dx?XCS:.06); m.setPosition(x+dx*.02,top,z+dy*.02); EX.trimMesh.setMatrixAt(k,m); }
-    EX.trimMesh.instanceMatrix.needsUpdate=true; }
-  if(a.pill!=null){ const P=EX.pillMesh, x=xw(c), z=xz(c), h=XWALL*cut;
-    m.makeScale(XCS*1.1,.28,XCS*1.1); m.setPosition(x,.14,z); P.setMatrixAt(a.pill,m);
-    m.makeScale(XCS*1.02,Math.max(.05,h),XCS*1.02); m.setPosition(x,h/2,z); P.setMatrixAt(a.pill+1,m);
-    m.makeScale(XCS*1.1,.18*Math.max(.3,cut),XCS*1.1); m.setPosition(x,h+.06,z); P.setMatrixAt(a.pill+2,m); P.instanceMatrix.needsUpdate=true; } }
+  if(a.trim){ for(const [k,dx,dy] of a.trim){ const x=xw(c)+dx*XCS*.5, z=xz(c)+dy*XCS*.5, L=XCS, sx=dx?1:L, sz=dx?L:1, ch=Math.min(.24,XWALL*cut*.25);
+      m.makeScale(dx?.22:sx,ch,dx?sz:.22); m.setPosition(x+dx*.07,top-ch/2+.02,z+dy*.07); EX.corMesh.setMatrixAt(k,m);       // the cornice, standing out from the face
+      m.makeScale(dx?.06:XCS*.98,.06,dx?XCS*.98:.06); m.setPosition(x+dx*.19,top-ch*.55,z+dy*.19); EX.trimMesh.setMatrixAt(k,m);   // the lit line along it
+      m.makeScale(dx?.14:sx,.3,dx?sz:.14); m.setPosition(x+dx*.04,.15,z+dy*.04); EX.skirtMesh.setMatrixAt(k,m); }               // the skirting
+    EX.trimMesh.instanceMatrix.needsUpdate=EX.corMesh.instanceMatrix.needsUpdate=EX.skirtMesh.instanceMatrix.needsUpdate=true; }
+  if(a.pill!=null){ const k=a.pill, x=xw(c), z=xz(c), h=XWALL*cut, cv=EX.pillCave;
+    m.makeScale(XCS*(cv?1.2:1.16),cv?.4:.34,XCS*(cv?1.2:1.16)); m.setPosition(x,cv?.12:.17,z); EX.pillBase.setMatrixAt(k,m);
+    m.makeScale(XCS*1.16,Math.max(.05,h),XCS*1.16); m.setPosition(x,h/2,z); EX.pillShaft.setMatrixAt(k,m);
+    m.makeScale(XCS*(cv?1.0:1.22),(cv?.12:.24)*Math.max(.3,cut),XCS*(cv?1.0:1.22)); m.setPosition(x,h+.08,z); EX.pillCap.setMatrixAt(k,m);
+    EX.pillBase.instanceMatrix.needsUpdate=EX.pillShaft.instanceMatrix.needsUpdate=EX.pillCap.instanceMatrix.needsUpdate=true; } }
+// a rough rock column: a tapered, knobbly cylinder
+function xRockShaft(){ const g=new THREE.CylinderGeometry(.42,.5,1,7,4), P=g.attributes.position;
+  for(let k=0;k<P.count;k++){ const x=P.getX(k), y=P.getY(k), z=P.getZ(k), n=Math.sin(x*17.3+y*29.1+z*11.7)*43758.5453, r=n-Math.floor(n), w=1+(r-.5)*.22-(Math.abs(y)<.3?.06:0); P.setXYZ(k,x*w,y,z*w); }
+  g.computeVertexNormals(); return g; }
 function xDecorTick(T){ for(const W of EX.onWall||[]) if(W.sway&&W.g.visible) W.sway.rotation.x=Math.sin(T*1.3+W.ph)*.06;
   for(const D of EX.decor||[]) if(D.mesh.visible&&D.mesh.userData.glow){ const v=.75+.25*Math.sin(T*2+D.ph); D.mesh.userData.glow.material.color.setRGB(v,v,v); } }
 /* Room floors are dressed: a border band of patterned trim just inside the walls (a meander of the
@@ -759,7 +839,7 @@ function xGroupSprites(gp,grp){ const id=gp.ids[0], d=ENEMY_DEFS[id], h=XSPR*Mat
   if(gp.mini){ const r=new THREE.Mesh(new THREE.TorusGeometry(.95,.07,6,24),new THREE.MeshBasicMaterial({color:new THREE.Color(COLORS[d.color].c)})); r.rotation.x=Math.PI/2; r.position.y=.06; r.visible=false; grp.add(r); gp.ring=r; }
   // a mission's mark over the group: ♛ a bounty, ☠ a nest's brood (missions.js)
   if(gp.tagTxt){ gp.tag=(typeof xmTagSprite==='function'?xmTagSprite:xTextSprite)(gp.tagTxt,gp.tagCol||'#ffd166'); gp.tag.visible=false; grp.add(gp.tag); } }
-const xNearSeen=c=>{ const x=xcx(c), y=xcy(c); for(let dy=-1;dy<=1;dy++) for(let dx=-1;dx<=1;dx++){ const nx=x+dx, ny=y+dy; if(nx>=0&&ny>=0&&nx<XN&&ny<XN&&EX.seen[xi(nx,ny)]&&EX.t[xi(nx,ny)]===T_ROCK&&EX.wIdx.has(xi(nx,ny))) return true; } return false; };
+const xNearSeen=c=>{ const x=xcx(c), y=xcy(c); for(let dy=-2;dy<=2;dy++) for(let dx=-2;dx<=2;dx++){ const nx=x+dx, ny=y+dy; if(nx>=0&&ny>=0&&nx<XN&&ny<XN&&EX.seen[xi(nx,ny)]&&EX.t[xi(nx,ny)]===T_ROCK&&EX.wIdx.has(xi(nx,ny))) return true; } return false; };
 function xPaintCells(){
   // brightness each cell is heading for: full near you and dimmer toward the edge of sight,
   // a low glow where you have been, black where you have not

@@ -1211,3 +1211,9 @@ button[hidden]{display:none!important;}
    the bars, labels and numbers on top; resizeView lays it over #board's box */
 #board3d{position:absolute; left:0; top:0; width:100%; height:100%; display:block; pointer-events:none; z-index:0;}
 #board{position:relative; z-index:1; background:transparent;}
+
+/* tuning a debug slider: the menu fades away but for the row being dragged, so the field of play shows (look.js) */
+.panel.debug, .panel.debug .dbgbody>*{transition:opacity .2s, background-color .2s, border-color .2s;}
+#debug.tuning .panel.debug{background:transparent; border-image-source:none; border-color:transparent; box-shadow:none;}
+#debug.tuning .panel.debug .dbgbody>*:not(.dbgActive), #debug.tuning .dbggrip{opacity:0;}
+#debug.tuning .srow.dbgActive{background:rgba(10,12,16,.82); border-radius:6px; padding-left:6px; padding-right:6px;}

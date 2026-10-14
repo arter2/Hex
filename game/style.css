@@ -1202,6 +1202,7 @@ button[hidden]{display:none!important;}
 .dbgbody{flex:1; min-height:0; overflow-y:auto; -webkit-overflow-scrolling:touch; padding-bottom:10px;}
 .panel.debug .dbggrip{position:relative; left:auto; top:auto; bottom:auto; width:auto; height:28px; margin:0 -6px -4px; cursor:ns-resize; z-index:auto;}   /* the same in landscape: the deck builder's grip turns sideways there */
 .panel.debug .dbggrip::before{top:12px; left:50%; width:56px; height:5px; margin:0 0 0 -28px;}
+select.dbgsel{font:inherit; font-size:15px; background:#0b0e13; color:var(--text); border:2px solid #4a586c; padding:4px 6px; min-width:130px;}
 #debug.gripping{user-select:none; -webkit-user-select:none;}
 .panel.debug .controls{margin-top:12px;}
 .scheck{display:flex; align-items:center; justify-content:flex-end; min-width:150px;} .scheck input{width:26px; height:26px; margin:0; accent-color:var(--blue); cursor:pointer;}

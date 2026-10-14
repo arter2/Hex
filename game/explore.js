@@ -232,10 +232,9 @@ function xInit3D(){
   const dust=new THREE.Points(dgeo,new THREE.PointsMaterial({color:0xffffff,size:.08,transparent:true,opacity:.5,blending:THREE.AdditiveBlending,depthWrite:false}));
   dust.renderOrder=3; scene.add(dust);
   X3={renderer,scene,cam,amb,sun,lamp,dust,pool,group:null,ray:new THREE.Raycaster(),plane:new THREE.Plane(new THREE.Vector3(0,1,0),0)};
-  // the search reticle: a ring as wide as the area a search covers, with a cross at its heart
-  const rm=new THREE.MeshBasicMaterial({color:0x7fe3ff,transparent:true,opacity:.9,depthTest:false}), ret=new THREE.Group();
-  const ring=new THREE.Mesh(new THREE.RingGeometry(XCS*2.3,XCS*2.5,40),rm); ring.rotation.x=-Math.PI/2; ret.add(ring);
-  for(const [w,d] of [[XCS*1.2,.14],[.14,XCS*1.2]]){ const b=new THREE.Mesh(new THREE.PlaneGeometry(w,d),rm); b.rotation.x=-Math.PI/2; ret.add(b); }
+  // the search reticle: pixel art laid on the floor over the 3 x 3 tiles a search covers (xRetTex)
+  const rm=new THREE.MeshBasicMaterial({map:xRetTex(),transparent:true,opacity:.9,depthTest:false,depthWrite:false,fog:false}), ret=new THREE.Group();
+  const rq=new THREE.Mesh(new THREE.PlaneGeometry(XCS*3,XCS*3),rm); rq.rotation.x=-Math.PI/2; ret.add(rq);
   ret.renderOrder=6; ret.traverse(o=>o.renderOrder=6); ret.visible=false; scene.add(ret); X3.reticle=ret;
   cv.addEventListener('pointerdown',e=>{ if(!EX||!EX.active||xPaused) return; e.preventDefault(); EX.needInput=false; try{ cv.setPointerCapture(e.pointerId); }catch(_){}
     const [ax,ay]=appXY(e.clientX,e.clientY);
@@ -958,6 +957,33 @@ const XB={ ball:xSetF('hexmancers-xball',XB_DEF.ball), strip:xSetF('hexmancers-x
 /* The debug menu: test sliders and switches for the dungeon's look. Three fingers tapped three
    times anywhere opens it (` on a keyboard); it sits low on the screen over a clear backdrop, so
    the dungeon behind changes live as you slide. Every value is saved in this browser. */
+/* The search reticle, in four looks to choose from (debug menu): pixel art on a 96 x 96 canvas,
+   32 art pixels to a tile as on the floors, over the 3 x 3 tiles a search covers. Each has a dark rim so it reads on
+   any floor. */
+const XRET_DEF={style:'brackets', color:'gold'}, XRET={};
+for(const k in XRET_DEF){ let v=null; try{ v=localStorage.getItem('hexmancers-xret-'+k); }catch(e){} XRET[k]=v||XRET_DEF[k]; }
+const XRET_COL={gold:'#f2c94c', cyan:'#7fd4ff', white:'#f4f1e6', green:'#39ff8a'};
+function xRetTex(){ const N=96, T=32, cv=document.createElement('canvas'); cv.width=cv.height=N; const c=cv.getContext('2d'), C=XRET_COL[XRET.color]||XRET_COL.gold, D='rgba(0,0,0,.7)', M=N/2;
+  const box=(r,col)=>{ c.fillStyle=col; for(const [x,y,w,h] of r) c.fillRect(x,y,w,h); };
+  const rim=r=>box(r.map(([x,y,w,h])=>[x-1,y-1,w+2,h+2]),D), draw=(r,col)=>{ rim(r); box(r,col||C); };
+  const st=XRET.style;
+  if(st==='brackets'){   // four corner brackets round the area and a small cross on the middle tile
+    const L=14, t=2, r=[]; for(const [x,y,sx,sy] of [[2,2,1,1],[N-3,2,-1,1],[2,N-3,1,-1],[N-3,N-3,-1,-1]]){ r.push([sx>0?x:x-L+1,sy>0?y:y-t+1,L,t],[sx>0?x:x-t+1,sy>0?y:y-L+1,t,L]); }
+    draw(r); draw([[M-1,M-7,2,4],[M-1,M+3,2,4],[M-7,M-1,4,2],[M+3,M-1,4,2]]); }
+  else if(st==='tiles'){   // the nine tiles outlined in dashes, the middle one solid with corner studs
+    c.globalAlpha=.14; box([[T+2,T+2,T-4,T-4]],C); c.globalAlpha=1;
+    const r=[]; for(let ty=0;ty<3;ty++) for(let tx=0;tx<3;tx++){ if(tx===1&&ty===1) continue; const x0=tx*T+2, y0=ty*T+2, w=T-4;
+      for(let k=0;k<w;k+=6){ const n=Math.min(3,w-k); r.push([x0+k,y0,n,1],[x0+k,y0+w-1,n,1],[x0,y0+k,1,n],[x0+w-1,y0+k,1,n]); } }
+    draw(r); const a=T+2, w=T-4; draw([[a,a,w,1],[a,a+w-1,w,1],[a,a,1,w],[a+w-1,a,1,w]]); draw([[a-1,a-1,3,3],[a+w-2,a-1,3,3],[a-1,a+w-2,3,3],[a+w-2,a+w-2,3,3]]); }
+  else if(st==='rune'){   // a stepped pixel ring with four notches pointing in and a dot at its heart
+    const r=[], R0=M-6; for(let y=0;y<N;y++) for(let x=0;x<N;x++){ const dx=x+.5-M, dy=y+.5-M, d=Math.hypot(dx,dy); if(d>=R0&&d<R0+2&&Math.abs(dx)>4&&Math.abs(dy)>4) r.push([x,y,1,1]); }
+    draw(r); draw([[M-1,3,2,8],[M-1,N-11,2,8],[3,M-1,8,2],[N-11,M-1,8,2]]); draw([[M-1,M-1,2,2]]); }
+  else {   // 'glow': the nine tiles lit like a lantern sweep, the middle one brightest, each with a bevel
+    for(let ty=0;ty<3;ty++) for(let tx=0;tx<3;tx++){ const x0=tx*T+2, y0=ty*T+2, w=T-4, mid=tx===1&&ty===1;
+      c.globalAlpha=mid?.36:.18; box([[x0,y0,w,w]],C); c.globalAlpha=mid?.9:.55; box([[x0,y0,w,1],[x0,y0,1,w]],C); c.globalAlpha=mid?.55:.3; box([[x0,y0+w-1,w,1],[x0+w-1,y0,1,w]],D); }
+    c.globalAlpha=1; draw([[M-1,M-5,2,10],[M-5,M-1,10,2]],'#fff8e0'); }
+  return xTex(cv); }
+function xRetApply(){ const R=X3&&X3.reticle; if(!R) return; const m=R.children[0].material; if(m.map) m.map.dispose(); m.map=xRetTex(); m.needsUpdate=true; }
 const XDBG=[   // [element id, object, key, saved as, decimals (null: a checkbox), what a change does]
   ['dbgTexel',()=>XLIT,'texel','hexmancers-xl-texel',null,'lit'], ['dbgSteps',()=>XLIT,'steps','hexmancers-xl-steps',0,'lit'],
   ['dbgNmap',()=>XLIT,'nmap','hexmancers-xl-nmap',null,'lit'], ['dbgNStrF',()=>XLIT,'nstrF','hexmancers-xl-nstrF',2,'lit'], ['dbgNStrW',()=>XLIT,'nstrW','hexmancers-xl-nstrW',2,'lit'],
@@ -966,18 +992,20 @@ const XDBG=[   // [element id, object, key, saved as, decimals (null: a checkbox
   ['setXBall',()=>XB,'ball','hexmancers-xball',2,''], ['setXStrip',()=>XB,'strip','hexmancers-xstrip',2,''],
   ['dbgFps',()=>XLIT,'fps','hexmancers-xl-fps',null,'fps'],
   ...[['dbgAmb','amb'],['dbgSun','sun'],['dbgLamp','lamp'],['dbgLampRad','lampRad'],['dbgLampY','lampY'],['dbgTorch','torch'],['dbgTorchRad','torchRad'],['dbgFlick','flick'],['dbgMyGlow','myGlow']].map(([id,k])=>[id,()=>XLIT,k,'hexmancers-xl-'+k,2,'']),
-  ['dbgFogNear',()=>XLIT,'fogNear','hexmancers-xl-fogNear',0,''], ['dbgFogFar',()=>XLIT,'fogFar','hexmancers-xl-fogFar',0,''] ];
+  ['dbgFogNear',()=>XLIT,'fogNear','hexmancers-xl-fogNear',0,''], ['dbgFogFar',()=>XLIT,'fogFar','hexmancers-xl-fogFar',0,''],
+  ['dbgRetStyle',()=>XRET,'style','hexmancers-xret-style','s','ret'], ['dbgRetColor',()=>XRET,'color','hexmancers-xret-color','s','ret'] ];
 let xBakeT=0;
 function xDbgApply(what){ if(what==='lit') xLitRefresh(); else if(what==='bake'){ xLitRefresh(); clearTimeout(xBakeT); xBakeT=setTimeout(xBakeAO,120); }
+  else if(what==='ret') xRetApply();
   else if(what==='fps'){ const f=document.getElementById('xFps'); if(f) f.style.display=XLIT.fps?'':'none'; } }
 function xBindSliders(){ for(const [id,obj,k,key,dec,what] of XDBG){ const el=document.getElementById(id), out=document.getElementById(id+'V'), O=obj(); if(!el) continue;
-    const show=()=>{ if(dec==null) el.checked=!!O[k]; else { el.value=O[k]; if(out) out.textContent=(+O[k]).toFixed(dec); } };
-    show(); el.oninput=el.onchange=()=>{ O[k]=dec==null?el.checked:+el.value; show(); try{ localStorage.setItem(key,dec==null?(O[k]?'1':'0'):String(O[k])); }catch(e){} xDbgApply(what); }; }
+    const show=()=>{ if(dec==='s') el.value=O[k]; else if(dec==null) el.checked=!!O[k]; else { el.value=O[k]; if(out) out.textContent=(+O[k]).toFixed(dec); } };
+    show(); el.oninput=el.onchange=()=>{ O[k]=dec==='s'?el.value:dec==null?el.checked:+el.value; show(); try{ localStorage.setItem(key,dec==null?(O[k]?'1':'0'):String(O[k])); }catch(e){} xDbgApply(what); }; }
   const box=document.getElementById('debug'); if(!box||xBindSliders.done) return; xBindSliders.done=1;
   document.getElementById('dbgClose').onclick=xDbgClose; xDbgGrip();
   box.addEventListener('pointerdown',e=>{ if(e.target===box) xDbgClose(); });
-  document.getElementById('dbgReset').onclick=()=>{ for(const [id,obj,k,key,dec,what] of XDBG){ const O=obj(); O[k]=(O===XB?XB_DEF:XLIT_DEF)[k]; try{ localStorage.removeItem(key); }catch(e){} }
-    xBindSliders(); xLitRefresh(); xBakeAO(); xDbgApply('fps'); };
+  document.getElementById('dbgReset').onclick=()=>{ for(const [id,obj,k,key,dec,what] of XDBG){ const O=obj(); O[k]=(O===XB?XB_DEF:O===XRET?XRET_DEF:XLIT_DEF)[k]; try{ localStorage.removeItem(key); }catch(e){} }
+    xBindSliders(); xLitRefresh(); xBakeAO(); xDbgApply('fps'); xRetApply(); };
   // three fingers down together, three times within a second and a half
   let taps=[], counted=false;
   document.addEventListener('touchstart',e=>{ if(e.touches.length<3||counted) return; counted=true; const t=performance.now(); taps=taps.filter(x=>t-x<1500); taps.push(t);
@@ -1356,29 +1384,44 @@ function xSpring(tr,remote){ const T=TRAPS[tr.kind]; tr.known=true; xTrapMesh(tr
   if(T.fall&&!remote&&EX.hp>0&&typeof xFall==='function') xFall(1,'You tumble down to the floor below!'); }
 
 /* ---------------- search, disarm, chests ---------------- */
-// Search: a reticle appears and follows your finger (the floor holds still while you aim); let go
-// to search the 5 x 5 tiles under it. Pressing Search again (or F) searches where it is.
-const XAIM_R=4;   // how far from you the reticle can go, in tiles
+// Search: a quick tap (or F) searches the 3 x 3 tiles around you. Holding Search brings up the
+// reticle: slide your finger off the button onto the dungeon and let go to search the 3 x 3 tiles
+// under it, or lift on the button and then tap or drag on the dungeon (the floor holds still while
+// you aim). Pressing Search again while aiming searches where the reticle is.
+const XAIM_R=6, XSEARCH_R=1, XHOLD_MS=300;   // how far from you the reticle can go, a search's reach, the hold that brings up the reticle
 function xSearch(){ if(!EX||EX.action||EX.busy) return;
   if(EX.aim) return xSearchAt(EX.aim.cell);
-  EX.path=[]; XHOLD.on=false; EX.aim={cell:EX.pc}; xLog('Drag to aim your search; let go to search there.','dim'); xHud(); }
+  EX.path=[]; XHOLD.on=false; EX.aim={cell:EX.pc}; xLog('Slide onto the dungeon to aim, or tap where to search.','dim'); xHud(); }
+// the Search button: a tap searches around you (or where the reticle is); a hold brings up the reticle
+(function(){ const b=document.getElementById('xSearch'); if(!b) return; let h=null;
+  const off=e=>{ const r=appBox(b), [x,y]=appXY(e.clientX,e.clientY); return x<r.left-6||x>r.right+6||y<r.top-6||y>r.bottom+6; };
+  const aim=()=>{ if(!h||h.aim||!EX||!EX.active||xPaused||EX.action||EX.busy) return; h.aim=true; clearTimeout(h.t); xSearch(); if(navigator.vibrate) try{ navigator.vibrate(12); }catch(_){} };
+  b.addEventListener('pointerdown',e=>{ if(!EX||!EX.active||xPaused||b.disabled) return; e.preventDefault(); try{ b.setPointerCapture(e.pointerId); }catch(_){}
+    h={id:e.pointerId,was:!!EX.aim,aim:false,out:false,t0:e.timeStamp}; if(!h.was) h.t=setTimeout(aim,XHOLD_MS); });
+  b.addEventListener('pointermove',e=>{ if(!h||e.pointerId!==h.id||h.was) return; if(off(e)){ if(!h.aim) aim(); if(h.aim&&EX.aim){ h.out=true; const [x,y]=appXY(e.clientX,e.clientY); EX.aim.cell=xAimCell(x,y); } } });
+  const end=e=>{ if(!h||e.pointerId!==h.id) return; if(e.type==='pointerup'&&!h.was&&!h.aim&&e.timeStamp-h.t0>=XHOLD_MS) aim();   // held long enough, even if a slow frame kept the timer back
+    const d=h; h=null; clearTimeout(d.t); if(e.type!=='pointerup'||!EX) return;
+    if(d.was) xSearch();                                  // aiming already: search where the reticle is
+    else if(!d.aim) xSearchAt(EX.pc);                     // a quick tap: search around you
+    else if(d.out&&EX.aim) xSearchAt(EX.aim.cell); };     // slid out onto the dungeon: search there; lifted on the button: keep aiming
+  b.addEventListener('pointerup',end); b.addEventListener('pointercancel',end); b.addEventListener('contextmenu',e=>e.preventDefault()); })();
 function xSearchAt(c){ if(!EX||EX.action||EX.busy) return; EX.aim=null; EX.path=[]; EX.searchCell=c; xLog('You search the area…','dim');
-  EX.action={t:1.1, done(){ EX.searchCell=null; if(!xSearchRoll(1,false,c)) xLog('You find nothing.','dim'); } };
+  EX.action={t:1.1, done(){ EX.searchCell=null; if(!xSearchRoll(1,false,c,XSEARCH_R)) xLog('You find nothing.','dim'); } };
   xHud(); }
 // the cell under a screen point, kept within reach of you
 function xAimCell(ex,ey){ const G=X3, r=appBox($('#xView')), v=new THREE.Vector2((ex-r.left)/r.width*2-1,-(ey-r.top)/r.height*2+1), hit=new THREE.Vector3();
   G.ray.setFromCamera(v,G.cam); if(!G.ray.ray.intersectPlane(G.plane,hit)) return EX.aim.cell;
   const px=xcx(EX.pc), py=xcy(EX.pc), cl=(a,b)=>Math.max(b-XAIM_R,Math.min(b+XAIM_R,a));
   return xi(Math.max(0,Math.min(XN-1,cl(Math.floor(hit.x/XCS),px))),Math.max(0,Math.min(XN-1,cl(Math.floor(hit.z/XCS),py)))); }
-// one search of everything within 2 tiles you can see: k is the chance (1 for the Search button,
-// a third while you stand still); deeper traps are a little harder to spot
-function xSearchRoll(k,quiet,at){ k*=(typeof gearMods==='function'&&gearMods(save).search)||1; const ctr=at==null?EX.pc:at, x=xcx(ctr), y=xcy(ctr); let found=0; const hard=Math.max(.75,1-EX.depth*.01);
-  for(let dy=-2;dy<=2;dy++) for(let dx=-2;dx<=2;dx++){ const i=xi(x+dx,y+dy), d=EX.doors.get(i);
+// one search of everything within r tiles (2 unless given) that you can see: k is the chance (1 for
+// the Search button, a third while you stand still); deeper traps are a little harder to spot
+function xSearchRoll(k,quiet,at,r){ if(r==null) r=2; k*=(typeof gearMods==='function'&&gearMods(save).search)||1; const ctr=at==null?EX.pc:at, x=xcx(ctr), y=xcy(ctr); let found=0; const hard=Math.max(.75,1-EX.depth*.01);
+  for(let dy=-r;dy<=r;dy++) for(let dx=-r;dx<=r;dx++){ const i=xi(x+dx,y+dy), d=EX.doors.get(i);
     if(d&&d.state==='secret'&&xLos(EX.pc,i)&&Math.random()<.55*k){ d.state='closed'; d.leaf.visible=true; xDoorPose(d,0,1); found++; xLog(quiet?'Standing still, you notice the outline of a hidden door!':'You find a hidden door!','good');
       const w=EX.wIdx.get(i); if(w){ w[0].setMatrixAt(w[1],new THREE.Matrix4().makeScale(0,0,0)); w[0].instanceMatrix.needsUpdate=true; EX.wIdx.delete(i); } EX.seen[i]=1; } }
-  for(const tr of EX.traps) if(tr.armed&&!tr.known&&xLos(EX.pc,tr.cell)&&Math.max(Math.abs(xcx(tr.cell)-x),Math.abs(xcy(tr.cell)-y))<=2&&Math.random()<.65*k*hard){ tr.known=true; xTrapMesh(tr); found++; xLog('You find a '+TRAPS[tr.kind].name+'.','good'); }
+  for(const tr of EX.traps) if(tr.armed&&!tr.known&&xLos(EX.pc,tr.cell)&&Math.max(Math.abs(xcx(tr.cell)-x),Math.abs(xcy(tr.cell)-y))<=r&&Math.random()<.65*k*hard){ tr.known=true; xTrapMesh(tr); found++; xLog('You find a '+TRAPS[tr.kind].name+'.','good'); }
   for(const ch of EX.chests) if(!ch.open&&ch.trap&&!ch.trapKnown&&Math.max(Math.abs(xcx(ch.cell)-x),Math.abs(xcy(ch.cell)-y))<=1&&Math.random()<.65*k){ ch.trapKnown=true; found++; xLog('The chest\'s lock is trapped.','good'); }
-  if(typeof xSearchExtra==='function') found+=xSearchExtra(k,quiet,at);
+  if(typeof xSearchExtra==='function') found+=xSearchExtra(k,quiet,at,r);
   if(found){ xUpdateVis(); xHud(); xXp(found*(10+EX.depth),found>1?found+' secrets found':'secret found'); } return found; }
 function xDisarmTarget(){ const x=xcx(EX.pc), y=xcy(EX.pc), near=c=>Math.max(Math.abs(xcx(c)-x),Math.abs(xcy(c)-y))<=1;
   return EX.traps.find(t=>t.armed&&t.known&&near(t.cell))||EX.chests.find(c=>!c.open&&c.trap&&c.trapKnown&&near(c.cell)); }
@@ -1597,7 +1640,10 @@ function xDraw(T,dt){
   xFov(dt); xTellDraw(T);
   if(typeof xDungeonDraw==='function') xDungeonDraw(T);
   { const rc=EX.aim?EX.aim.cell:EX.searchCell, R=G.reticle; R.visible=rc!=null;
-    if(R.visible){ R.position.set(xw(rc),.12,xz(rc)); const k=EX.aim?1+.05*Math.sin(T*8):1+.12*Math.sin(T*14); R.scale.set(k,1,k); R.children[0].material.opacity=EX.aim?.9:.6+.3*Math.sin(T*14); } }
+    if(R.visible){ R.position.set(xw(rc),.12,xz(rc)); const st=XRET.style, m=R.children[0].material;
+      // the brackets step in and out by an art pixel while you aim; the others breathe; a search under way blinks
+      const k=EX.aim?(st==='brackets'?1+(Math.sin(T*6)>0?2/96:0):1):1; R.scale.set(k,1,k);
+      m.opacity=EX.aim?(st==='brackets'?.95:.72+.23*Math.sin(T*5)):(Math.sin(T*18)>0?.95:.45); } }
   EX.downMesh.userData.ring.rotation.z+=.02;
   for(const Ln of EX.lanterns||[]) for(const h of Ln.halos) h.material.opacity=(Ln.boss?.75:.6)+.25*Math.sin(T*(Ln.boss?5:2)+Ln.ph);
   if(EX.runeRing){ EX.runeRing.rotation.z=T*.25; EX.runeRing.visible=EX.downMesh.visible; EX.runeRing.material.opacity=.45+.2*Math.sin(T*1.8); }
@@ -1746,7 +1792,6 @@ function resumeExplore(hp,won,info){
   setTimeout(()=>{ if(typeof maybeLevelUp==='function'&&EX&&EX.active&&!EX.busy) maybeLevelUp(); },300);
   xHud(); xLoopStart();
 }
-$('#xSearch').onclick=()=>xSearch();
 $('#xStrike').onclick=()=>xStrike();
 $('#xDisarm').onclick=()=>xDisarm();
 $('#xCamp').onclick=()=>xToCamp();

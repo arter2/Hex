@@ -816,13 +816,13 @@ function xNearestSecret(rad){ const pc=EX.pc, px=xcx(pc), py=xcy(pc), out=[]; co
   for(const ch of EX.chests) if((ch.mimic||ch.giant)&&!ch.mimicKnown&&!ch.open&&near(ch.cell)) out.push({cell:ch.cell,cue:'Something nearby breathes, slow and patient.'});
   out.sort((a,b)=>Math.hypot(xcx(a.cell)-px,xcy(a.cell)-py)-Math.hypot(xcx(b.cell)-px,xcy(b.cell)-py)); return out[0]||null; }
 // searching (F, or standing still at a third of the chance) also finds caches, switches, loose stones and mimics
-function xSearchExtra(k,quiet,at){ const pc=EX.pc, ctr=at==null?pc:at, px=xcx(ctr), py=xcy(ctr); let found=0; const near=(c,r)=>Math.max(Math.abs(xcx(c)-px),Math.abs(xcy(c)-py))<=r;
-  for(const p of EX.props){ if(p.gone||p.found!==false||!near(p.cell,2)) continue; const see=p.wall?xLos(pc,p.front):xLos(pc,p.cell); if(!see) continue;
+function xSearchExtra(k,quiet,at,r){ if(r==null) r=2; const pc=EX.pc, ctr=at==null?pc:at, px=xcx(ctr), py=xcy(ctr); let found=0; const near=(c,r)=>Math.max(Math.abs(xcx(c)-px),Math.abs(xcy(c)-py))<=r;
+  for(const p of EX.props){ if(p.gone||p.found!==false||!near(p.cell,r)) continue; const see=p.wall?xLos(pc,p.front):xLos(pc,p.cell); if(!see) continue;
     if(XR()<(p.kind==='loose'?.5:.6)*k){ p.found=true; found++;
       if(p.kind==='cache'){ if(p.mesh) p.mesh.visible=true; xLog('One stone in the wall sits loose: a hidden cache! Walk into it to open it.','good'); }
       if(p.kind==='switch'){ if(p.handle) p.handle.visible=true; xLog('That sconce is no sconce: a lever is hidden in it.','good'); }
       if(p.kind==='loose'){ if(p.mat) p.mat.opacity=.3; xLog('One floor stone sits a little proud of the rest. Stand on it?','good'); } } }
-  for(const ch of EX.chests) if((ch.mimic||ch.giant)&&!ch.mimicKnown&&!ch.open&&near(ch.cell,2)&&XR()<.7*k){ ch.mimicKnown=true; found++; xLog('That chest’s lid rises and falls. It is breathing: a mimic!','good'); }
+  for(const ch of EX.chests) if((ch.mimic||ch.giant)&&!ch.mimicKnown&&!ch.open&&near(ch.cell,r)&&XR()<.7*k){ ch.mimicKnown=true; found++; xLog('That chest’s lid rises and falls. It is breathing: a mimic!','good'); }
   if(found) xSfx('click'); return found; }
 
 /* ---------------- people on the move ---------------- */

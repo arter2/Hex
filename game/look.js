@@ -20,7 +20,7 @@ const XB={ ball:xSetF('hexmancers-xball',XB_DEF.ball), strip:xSetF('hexmancers-x
      darken toward their feet.
    - Screen-space AO: a pass over the depth of the whole frame shades every crease (xSSAO). */
 const xSetB=(k,d)=>{ try{ const v=localStorage.getItem(k); return v==null?d:v==='1'; }catch(e){ return d; } };
-const XLIT_DEF={ amb:1, sun:1, lamp:1, lampRad:1, lampY:2.6, torch:1, torchRad:1, flick:1, myGlow:1, fogNear:20, fogFar:46, texel:true, steps:0, nmap:true, nstrF:.35, nstrW:.35, ao:true, aoStr:1, aoRad:1, ssao:false, ssaoStr:1, ssaoRad:.6, fps:false, autoQ:true };
+const XLIT_DEF={ amb:1, sun:1, lamp:1, lampRad:1, lampY:2.6, torch:1, torchRad:1, flick:1, myGlow:1, fogNear:20, fogFar:46, texel:true, steps:0, nmap:true, nstrF:.35, nstrW:.35, ao:true, aoStr:1, aoRad:1, ssao:false, ssaoStr:1, ssaoRad:.6, fps:false, autoQ:true, camPitch:0, camFov:0, arWalls:true };
 const XLIT={}; for(const k in XLIT_DEF) XLIT[k]=typeof XLIT_DEF[k]==='boolean'?xSetB('hexmancers-xl-'+k,XLIT_DEF[k]):xSetF('hexmancers-xl-'+k,XLIT_DEF[k]);
 const XLITU={ uXSteps:{value:XLIT.steps}, uXAO:{value:XLIT.ao?XLIT.aoStr:0}, uXAOTex:{value:null}, uXFoot:{value:1.75*XLIT.aoRad}, uXAOScale:{value:96}, uXAOOrg:{value:new THREE.Vector2()} };
 const XLITMATS=new Set();
@@ -207,11 +207,12 @@ const XDBG=[   // [element id, object, key, saved as, decimals (null: a checkbox
   ['dbgAO',()=>XLIT,'ao','hexmancers-xl-ao',null,'lit'], ['dbgAOStr',()=>XLIT,'aoStr','hexmancers-xl-aoStr',2,'lit'], ['dbgAORad',()=>XLIT,'aoRad','hexmancers-xl-aoRad',2,'bake'],
   ['dbgSSAO',()=>XLIT,'ssao','hexmancers-xl-ssao',null,''], ['dbgSSAOStr',()=>XLIT,'ssaoStr','hexmancers-xl-ssaoStr',2,''], ['dbgSSAORad',()=>XLIT,'ssaoRad','hexmancers-xl-ssaoRad',2,''],
   ['setXBall',()=>XB,'ball','hexmancers-xball',2,''], ['setXStrip',()=>XB,'strip','hexmancers-xstrip',2,''],
-  ['dbgFps',()=>XLIT,'fps','hexmancers-xl-fps',null,'fps'], ['dbgAutoQ',()=>XLIT,'autoQ','hexmancers-xl-autoQ',null,''],
+  ['dbgFps',()=>XLIT,'fps','hexmancers-xl-fps',null,'fps'], ['dbgAutoQ',()=>XLIT,'autoQ','hexmancers-xl-autoQ',null,''], ['dbgCamPitch',()=>XLIT,'camPitch','hexmancers-xl-camPitch',0,'cam'], ['dbgCamFov',()=>XLIT,'camFov','hexmancers-xl-camFov',0,'cam'], ['dbgArWalls',()=>XLIT,'arWalls','hexmancers-xl-arWalls',null,''],
   ...[['dbgAmb','amb'],['dbgSun','sun'],['dbgLamp','lamp'],['dbgLampRad','lampRad'],['dbgLampY','lampY'],['dbgTorch','torch'],['dbgTorchRad','torchRad'],['dbgFlick','flick'],['dbgMyGlow','myGlow']].map(([id,k])=>[id,()=>XLIT,k,'hexmancers-xl-'+k,2,'']),
   ['dbgFogNear',()=>XLIT,'fogNear','hexmancers-xl-fogNear',0,''], ['dbgFogFar',()=>XLIT,'fogFar','hexmancers-xl-fogFar',0,''] ];
 let xBakeT=0;
 function xDbgApply(what){ if(what==='lit') xLitRefresh(); else if(what==='bake'){ xLitRefresh(); clearTimeout(xBakeT); xBakeT=setTimeout(lookBake,120); }
+  else if(what==='cam'){ if(typeof resizeView==='function'&&typeof B!=='undefined'&&B) resizeView(); }
   else if(what==='fps'){ const f=document.getElementById('xFps'); if(f) f.style.display=XLIT.fps?'':'none'; } }
 function xBindSliders(){ for(const [id,obj,k,key,dec,what] of XDBG){ const el=document.getElementById(id), out=document.getElementById(id+'V'), O=obj(); if(!el) continue;
     const show=()=>{ if(dec==null) el.checked=!!O[k]; else { el.value=O[k]; if(out) out.textContent=(+O[k]).toFixed(dec); } };

@@ -34,23 +34,30 @@ function arenaInit(){
   return AR; }
 
 /* ---------------- fitting the camera to the board ----------------
-   The dungeon's tilt (about 48 degrees down; 40 on a wide screen) and lens. The distance is the smallest that keeps
-   every tile, and a unit's height above it, inside the canvas with a small margin; the aim point
-   is slid along the board so it sits in the middle of the screen. */
-function arenaFit(w,h){ const A=arenaInit(); A.w=w; A.h=h; A.cam.aspect=w/h; A.cam.updateProjectionMatrix();
-  const portrait=h>w*1.05, mx=portrait?12:36, my=12, AR_PITCH=(portrait?48:40)*Math.PI/180;   // a wide screen looks in a little lower, so the long board fills more of it
+   By default the camera is the old 2D board's view, matched exactly: the flat board was drawn as
+   seen from a camera tilted down by asin(View.iy) (53 degrees in portrait, 38 on a wide screen) at
+   View.dist from the middle of the board, with View.S * View.dist pixels of focal length, its centre
+   at (View.cx, View.cy) on the canvas. resizeView works those out first, as it always did.
+   The debug menu's Angle and Lens, when set (not 0), fit a camera of that tilt and field of view
+   instead: the nearest that keeps every tile and a unit's height inside the canvas. */
+function arenaFit(w,h){ const A=arenaInit(), c=A.cam; A.w=w; A.h=h; c.aspect=w/h; c.clearViewOffset();
+  if(!(XLIT.camPitch>0)){ const iy=View.iy2D, cp=Math.sqrt(1-iy*iy), d=View.dist, f=View.S*d, look=arW(-View.v0,0,View.u0).clone();
+    c.fov=2*Math.atan(h/2/f)*180/Math.PI; c.setViewOffset(w,h,w/2-View.cx,h/2-View.cy,w,h); c.updateProjectionMatrix();
+    c.position.set(look.x,d*iy,look.z+d*cp); c.lookAt(look); c.updateMatrixWorld();
+    A.base.pos.copy(c.position); A.base.look.copy(look); A.dist=d; return; }
+  c.fov=XLIT.camFov>0?XLIT.camFov:46; c.updateProjectionMatrix();
+  const portrait=h>w*1.05, mx=portrait?12:36, my=12, AR_PITCH=Math.max(10,XLIT.camPitch-(portrait?0:8))*Math.PI/180;   // the debug menu's angle (8 degrees lower on a wide screen)
   let x0=1e9,x1=-1e9,z0=1e9,z1=-1e9; for(const t of TILES){ x0=Math.min(x0,t.wx); x1=Math.max(x1,t.wx); z0=Math.min(z0,t.wz); z1=Math.max(z1,t.wz); }
   const pts=[]; for(const t of TILES) if(t.wx<=x0+.1||t.wx>=x1-.1||t.wz<=z0+.1||t.wz>=z1-.1) for(const y of [0,2.2]) for(let i=0;i<6;i++){ const a=Math.PI/6+i*Math.PI/3; pts.push([t.wx+Math.cos(a),y,t.wz+Math.sin(a)]); }
   pts.push([x0-1,-SLAB,0],[x1+1,-SLAB,0]);
-  const v=new THREE.Vector3(), fit=(d,off)=>{ A.cam.position.set(0,Math.sin(AR_PITCH)*d,Math.cos(AR_PITCH)*d+off); A.cam.lookAt(0,0,off); A.cam.updateMatrixWorld(); A.cam.updateProjectionMatrix();
-    let a=1e9,b=-1e9,c=1e9,e=-1e9; for(const [px,py,pz] of pts){ v.set(pz,py,-px).project(A.cam); if(v.z>1) return null; const sx=(v.x+1)/2*w, sy=(1-v.y)/2*h; a=Math.min(a,sx); b=Math.max(b,sx); c=Math.min(c,sy); e=Math.max(e,sy); }
-    return [a,b,c,e]; };
-  // slide the aim point until the board is centred top to bottom, then find the distance that fits
-  let lo=6, hi=120, off=0;
-  for(let it=0;it<28;it++){ const d=(lo+hi)/2; let r=fit(d,off);
+  const v=new THREE.Vector3(), fit=(d,off)=>{ c.position.set(0,Math.sin(AR_PITCH)*d,Math.cos(AR_PITCH)*d+off); c.lookAt(0,0,off); c.updateMatrixWorld(); c.updateProjectionMatrix();
+    let a=1e9,b=-1e9,cc=1e9,e=-1e9; for(const [px,py,pz] of pts){ v.set(pz,py,-px).project(c); if(v.z>1) return null; const sx=(v.x+1)/2*w, sy=(1-v.y)/2*h; a=Math.min(a,sx); b=Math.max(b,sx); cc=Math.min(cc,sy); e=Math.max(e,sy); }
+    return [a,b,cc,e]; };
+  let lo=6, hi=400, off=0;
+  for(let it=0;it<30;it++){ const d=(lo+hi)/2; let r=fit(d,off);
     for(let k=0;k<6&&r;k++){ const mid=(r[2]+r[3])/2-h/2; off+=mid/h*d*.9; r=fit(d,off); }
     if(r&&r[0]>=mx&&r[1]<=w-mx&&r[2]>=my&&r[3]<=h-my) hi=d; else lo=d; }
-  fit(hi,off); A.base.pos.copy(A.cam.position); A.base.look.set(0,0,off); A.dist=hi; }
+  fit(hi,off); A.base.pos.copy(c.position); A.base.look.set(0,0,off); A.dist=hi; }
 
 // a battle point (wx, height, wz) to #board canvas pixels, through the camera as drawn this frame
 function arenaProject(wx,y,wz){ const A=AR; if(!A||!A.w) return [0,0]; const v=arW(wx,y,wz).project(A.cam); return [(v.x+1)/2*A.w,(1-v.y)/2*A.h]; }
@@ -116,7 +123,17 @@ function arenaCave(A,Ar,R,boss){ const out=[], S=Ar.stone||AREAS[0].stone;
   let x0=1e9,x1=-1e9,z1=-1e9; for(const t of TILES){ x0=Math.min(x0,t.wx); x1=Math.max(x1,t.wx); z1=Math.max(z1,t.wz); }
   const back=x1+(boss?6:3.2), near=x0-7, side=z1+(boss?4.2:2.6);
   A.room={back,near,side};
+  // walls only some of the time (always on a boss floor): otherwise the board stands on an island of
+  // rock over the dungeon's chasm, in the area's haze, so you can see it is the same place
+  A.open=!boss&&(!XLIT.arWalls||R()<.65);
+  if(A.open){ A.room.back=x1+1.7; A.room.near=x0-1.9; const back=A.room.back, near=A.room.near;   // the island ends just past the board, so the chasm shows beyond
+    const t=arTex(xTex(xRockFloor(S,(Ar.index||0)*17+3),true)); t.repeat.set((2*side+3)/8,(back-near)/8);
+    const sideT=arTex(xTex(xRockWall(S,(Ar.index||0)*13+1),true)); sideT.repeat.set(6,1);
+    const top=arMat(xLitTag(xPhong({map:t}),1,t.image)), rim=arMat(xLitTag(xPhong({map:sideT}),2,sideT.image));
+    const g=new THREE.BoxGeometry(2*side+3,1.6,back-near), isl=new THREE.Mesh(g,[rim,rim,top,rim,rim,rim]); isl.position.set(0,-SLAB-.8,-(back+near)/2); isl.userData.caveFloor=1; out.push(isl);
+    out.push(...arChasm(A,Ar,S)); A.wallCells=[]; return out; }
   // the floor: raw rock, sunk a slab below the tiles so the board stands up out of it
+  out.push(...arChasm(A,Ar,S));
   const ft=arTex(xTex(xRockFloor(S,(Ar.index||0)*17+3),true)); ft.repeat.set((2*side+8)/8,(back-near+8)/8);
   const fm=arMat(xLitTag(xPhong({map:ft}),1,ft.image)), floor=new THREE.Mesh(new THREE.PlaneGeometry(2*side+8,back-near+8),fm);
   floor.rotation.x=-Math.PI/2; floor.position.set(0,-SLAB,-(back+near)/2); floor.userData.caveFloor=1; out.push(floor);
@@ -145,7 +162,7 @@ function arenaBuild(depth,seed){ const A=arenaInit(); arenaClear(); const Ar=are
   A.area=Ar; A.boss=boss; A.depth=depth; A.grp=new THREE.Group(); A.units=new Map();
   for(const o of arenaBoard(A,Ar,R)) A.grp.add(o);
   A.grp.add(A.decal=arenaDecal(A));
-  A.voidWalls=false; A.flashAmb=0; A.tick=null;
+  A.voidWalls=false; A.flashAmb=0; A.tick=null; A.chasm=null;
   for(const o of arenaCave(A,Ar,R,boss)) A.grp.add(o);
   arenaProps(A,Ar,R,boss);
   if(A.voidWalls) A.grp.children.forEach(o=>{ if(o.isInstancedMesh||o.userData.caveFloor) o.visible=false; });
@@ -176,9 +193,12 @@ function arenaLights(T,dt){ const A=AR, p=B&&B.player; if(!A) return; const FL=X
   const d=A.cam.position.distanceTo(A.base.look), off=Math.max(0,d-19);
   const deep=(areaFloor(A.depth||1)-1)*2.5;   // each floor deeper in the area, the haze closes in a little
   if(A.scene.fog){ A.scene.fog.near=XLIT.fogNear+off-deep; A.scene.fog.far=Math.max(XLIT.fogNear+1,XLIT.fogFar)+off-deep*1.5; }
-  A.amb.intensity+=(A.flashAmb||0)*.8; if(A.tick) A.tick(T,dt||1/60); }
+  A.amb.intensity+=(A.flashAmb||0)*.8; if(A.tick) A.tick(T,dt||1/60); arChasmTick(T,dt||1/60); }
 
 function arenaDraw(dt,T){ const A=AR; if(!A||!A.grp||!A.w) return;
+  // keep the 3D canvas exactly under the flat one (the HUD around it can change size without a resize)
+  { const cv=View.canvas, g=A.renderer.domElement, k=cv.offsetLeft+','+cv.offsetTop+','+cv.offsetWidth+','+cv.offsetHeight;
+    if(A.box!==k){ A.box=k; g.style.left=cv.offsetLeft+'px'; g.style.top=cv.offsetTop+'px'; g.style.width=cv.offsetWidth+'px'; g.style.height=cv.offsetHeight+'px'; } }
   const q=lookQuality(dt), pr=lookPR(); AR_Q.lights=q.lights; if(A.renderer.getPixelRatio()!==pr) A.renderer.setPixelRatio(pr);
   const s=A.renderer.getSize(new THREE.Vector2()); if(s.x!==A.w||s.y!==A.h) A.renderer.setSize(A.w,A.h,false);
   arenaLights(T,dt); arenaSpellLights(T); if(DEC.tex) DEC.tex.needsUpdate=true;
@@ -392,3 +412,20 @@ function arenaProps(A,Ar,R,boss){ const m=Object.assign({},A.room); if(boss) m.d
   A.props=new THREE.Group(); A.grp.add(A.props); arPropLights(A).forEach(l=>{ l.intensity=0; });
   if(boss) arDais(A,Ar,m);
   const L=ARENA_LOOK[Ar.id]||ARENA_LOOK.hollows; A.tick=L.build(A,R,Ar,boss,m)||null; }
+
+/* The dungeon's chasm under the arena: the same deep (xChasmTex) far below, a slow fog drifting over
+   it and dust rising out of it, in the area's light. Seen past the island's edge, and over the
+   walls' tops when there are walls. */
+function arChasm(A,Ar,S){ const out=[], t=arTex(xTex(xChasmTex(Ar,S,(Ar.index||0)*29+11),true)); t.repeat.set(6,6);
+  const deep=new THREE.Mesh(new THREE.PlaneGeometry(160,160),arMat(new THREE.MeshBasicMaterial({map:t,fog:false}))); deep.rotation.x=-Math.PI/2; deep.position.set(0,-12,-8); out.push(deep);
+  const N=128, c=document.createElement('canvas'); c.width=c.height=N; const x=c.getContext('2d'), R=caveRng((Ar.index||0)*5+9), f=xFbm(N,R,4), im=x.createImageData(N,N), fg=xHexRGB(Ar.glow);
+  for(let j=0;j<N;j++) for(let i=0;i<N;i++){ const v=Math.max(0,f(i,j)-.5)*2.2, o=(j*N+i)*4; im.data[o]=fg[0]; im.data[o+1]=fg[1]; im.data[o+2]=fg[2]; im.data[o+3]=Math.round(Math.min(1,v)*120); }
+  x.putImageData(im,0,0); const ft=arTex(xTex(c,true)); ft.magFilter=ft.minFilter=THREE.LinearFilter; ft.repeat.set(4,4);
+  const fog=new THREE.Mesh(new THREE.PlaneGeometry(160,160),arMat(new THREE.MeshBasicMaterial({map:ft,transparent:true,opacity:.6,depthWrite:false,fog:false,blending:THREE.AdditiveBlending})));
+  fog.rotation.x=-Math.PI/2; fog.position.set(0,-4,-8); out.push(fog);
+  const M=200, pos=new Float32Array(M*3); for(let k=0;k<M;k++){ pos[k*3]=(Math.random()-.5)*60; pos[k*3+1]=-12+Math.random()*10; pos[k*3+2]=(Math.random()-.5)*60-8; }
+  const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.BufferAttribute(pos,3));
+  const rise=new THREE.Points(g,arMat(new THREE.PointsMaterial({color:new THREE.Color(Ar.glow).lerp(new THREE.Color(0xffffff),.3),size:.15,transparent:true,opacity:.65,blending:THREE.AdditiveBlending,depthWrite:false,fog:false})));
+  out.push(rise); A.chasm={fog:ft,rise}; return out; }
+function arChasmTick(T,dt){ const C=AR&&AR.chasm; if(!C) return; C.fog.offset.x=T*.006; C.fog.offset.y=T*.004;
+  const a=C.rise.geometry.attributes.position.array; for(let k=0;k<a.length;k+=3){ a[k+1]+=dt*(.6+((k*7)%5)*.12); if(a[k+1]>-2) a[k+1]=-12; } C.rise.geometry.attributes.position.needsUpdate=true; }

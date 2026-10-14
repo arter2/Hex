@@ -997,7 +997,7 @@ function frame(now){
     if(!(View.w>0&&View.h>0)) resizeView();
     if(!paused) update(dt);
     // The Custom screen never opens by itself: when the gauge is full the Custom button glows and you open it.
-    try{ render(); }catch(e){ View.cave=null; resizeView(); }   // e.g. the board was resized to nothing in the background: rebuild it next frame
+    try{ render(); }catch(e){ if(!View.errShown){ View.errShown=1; console.error('battle draw:',e); } View.cave=null; resizeView(); }   // e.g. the board was resized to nothing in the background: rebuild it next frame
     hud();
   }
 }

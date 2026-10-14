@@ -289,35 +289,44 @@ function xSpeck(c,S,R,n,small){ const x=c.getContext('2d'), N=c.width;
     else if(S.detail==='gold'){ if(R()<.4){ x.fillStyle=S.spark; x.globalAlpha=.6; x.fillRect(cx,cy,small?1:2,1); x.globalAlpha=1; } }
     else { x.fillStyle=R()<.5?S.spark:S.moss; x.globalAlpha=.3+R()*.5; x.fillRect(cx,cy,1,1); x.globalAlpha=1; } } }
 // raw cave rock: blotchy fbm, a few ridged cracks, pebbles with a lit top and a shadow
-function xRockFloor(S,seed){ const N=256, R=caveRng(seed), f=xFbm(N,R,4), cr=xNoise(N,12,R), cr2=xNoise(N,7,R);
-  const c=xPaint(N,(i,j)=>{ let t=f(i,j)*1.25-.12; const k=Math.abs(cr(i,j)-.5), k2=Math.abs(cr2(i,j)-.5);
+function xRockFloor(S,seed){ const N=256, R=caveRng(seed), f=xFbm(N,R,4), cr=xNoise(N,12,R), cr2=xNoise(N,7,R), H=new Float32Array(N*N);
+  const c=xPaint(N,(i,j)=>{ let t=f(i,j)*1.25-.12; const k=Math.abs(cr(i,j)-.5), k2=Math.abs(cr2(i,j)-.5), fv=f(i,j);
+    H[j*N+i]=fv*7-(k<.03?(.03-k)*80:0)-(k2<.02?(.02-k2)*90:0);   // lumpy rock, the cracks sunk in
     if(k<.012||k2<.008) t-=.35; else if(k<.03) t+=.06; return xTone(S,Math.max(0,Math.min(1,t))); });
   const x=c.getContext('2d');
   for(let n=0;n<90;n++){ const px=R()*N|0, py=R()*N|0, w=1+R()*3|0, h=1+R()*2|0, tt=.5+R()*.4;
-    x.fillStyle='rgba(0,0,0,.45)'; x.fillRect(px+1,py+1,w,h); x.fillStyle='rgb('+xTone(S,tt).join(',')+')'; x.fillRect(px,py,w,h); x.fillStyle='rgb('+xTone(S,1).join(',')+')'; x.fillRect(px,py,w,1); }
-  xSpeck(c,S,R,40); return c; }
+    x.fillStyle='rgba(0,0,0,.45)'; x.fillRect(px+1,py+1,w,h); x.fillStyle='rgb('+xTone(S,tt).join(',')+')'; x.fillRect(px,py,w,h); x.fillStyle='rgb('+xTone(S,1).join(',')+')'; x.fillRect(px,py,w,1);
+    for(let j=py;j<py+h;j++) for(let i=px;i<px+w;i++) H[(j%N)*N+i%N]+=1.6; }   // pebbles stand up
+  xSpeck(c,S,R,40); c.h=H; c.hk=.55; return c; }
 // cut stone: irregular slabs in staggered rows (style 0) or a tighter running bond of smaller tiles (style 1)
-function xSlabFloor(S,seed,style){ const N=256, R=caveRng(seed), f=xFbm(N,R,8), id=new Int16Array(N*N), edge=new Uint8Array(N*N), tone=[];
+function xSlabFloor(S,seed,style){ const N=256, R=caveRng(seed), f=xFbm(N,R,8), id=new Int16Array(N*N), edge=new Uint8Array(N*N), dist=new Uint8Array(N*N), tone=[], tilt=[], H=new Float32Array(N*N);
   const rowsH=[]; let y=0; while(y<N){ const h=style?16:(20+R()*20|0); rowsH.push([y,Math.min(h,N-y)]); y+=h; }
   let sid=0;
   for(const [y0,h] of rowsH){ const off=R()*N|0; let x0=0; while(x0<N){ const w=style?32:(26+R()*40|0), ww=Math.min(w,N-x0);
       for(let j=y0;j<y0+h;j++) for(let i=x0;i<x0+ww;i++){ const X=(i+off)%N; id[j*N+X]=sid;
-        edge[j*N+X]=(j===y0?1:0)|(j===y0+h-1?2:0)|(i===x0?4:0)|(i===x0+ww-1?8:0); }
-      tone.push(.35+R()*.35); sid++; x0+=ww; } }
-  const c=xPaint(N,(i,j)=>{ const k=j*N+i, e=edge[k]; let t=tone[id[k]]+(f(i,j)-.5)*.35;
+        edge[j*N+X]=(j===y0?1:0)|(j===y0+h-1?2:0)|(i===x0?4:0)|(i===x0+ww-1?8:0); dist[j*N+X]=Math.min(j-y0,y0+h-1-j,i-x0,x0+ww-1-i); }
+      tone.push(.35+R()*.35); tilt.push([(R()-.5)*.06,(R()-.5)*.06]); sid++; x0+=ww; } }
+  // the slabs' height: each one a little tilted, its edges worn round, sunk joints between them
+  const c=xPaint(N,(i,j)=>{ const k=j*N+i, e=edge[k], tl=tilt[id[k]]; let t=tone[id[k]]+(f(i,j)-.5)*.35;
+    H[k]=(e&(2|8)?-1:Math.min(dist[k],3)*.9)+tone[id[k]]*2+tl[0]*i+tl[1]*j+f(i,j)*1.6;
     if(e&(2|8)) t=.05; else if(e&(1|4)) t=Math.min(1,t+.28); return xTone(S,Math.max(0,Math.min(1,t))); });
   const x=c.getContext('2d');
-  for(let n=0;n<26;n++){ let px=R()*N, py=R()*N, a=R()*6.3; x.fillStyle='rgba(0,0,0,.55)'; for(let m=0;m<6+R()*12;m++){ x.fillRect(px|0,py|0,1,1); a+=(R()-.5); px+=Math.cos(a); py+=Math.sin(a); } }
-  xSpeck(c,S,R,style?18:26,true); return c; }
+  for(let n=0;n<26;n++){ let px=R()*N, py=R()*N, a=R()*6.3; x.fillStyle='rgba(0,0,0,.55)'; for(let m=0;m<6+R()*12;m++){ x.fillRect(px|0,py|0,1,1); H[((py|0)%N+N)%N*N+((px|0)%N+N)%N]-=1.4; a+=(R()-.5); px+=Math.cos(a); py+=Math.sin(a); } }
+  xSpeck(c,S,R,style?18:26,true); c.h=H; c.hk=.6; return c; }
 // walls: rough rock with strata (corridors), large ashlar blocks or small rubble stones (rooms)
-function xRockWall(S,seed){ const N=64, R=caveRng(seed), f=xFbm(N,R,2), st=xNoise(N,4,R);
-  return xPaint(N,(i,j)=>{ let t=f(i,j)*1.1-.05+Math.sin((j+st(i,j)*14)*.55)*.08; if(j<2) t+=.3; return xTone(S,Math.max(0,Math.min(1,t))); }); }
+function xRockWall(S,seed){ const N=64, R=caveRng(seed), f=xFbm(N,R,2), st=xNoise(N,4,R), H=new Float32Array(N*N);
+  // the height: rough lumps with the strata standing out as ledges
+  const c=xPaint(N,(i,j)=>{ const sb=Math.sin((j+st(i,j)*14)*.55); H[j*N+i]=f(i,j)*6+Math.max(0,sb)*1.6; let t=f(i,j)*1.1-.05+sb*.08; if(j<2) t+=.3; return xTone(S,Math.max(0,Math.min(1,t))); });
+  c.h=H; c.hk=.5; return c; }
 function xBlockWall(S,seed,rubble){ const N=64, R=caveRng(seed), f=xFbm(N,R,4);
-  const rows=rubble?[0,9,18,27,36,45,54]:[0,16,32,48], H=rubble?9:16, out=new Float32Array(N*N).fill(-1);
-  rows.forEach((y0,r)=>{ let x0=-(R()*20|0); while(x0<N){ const w=rubble?(8+R()*10|0):(18+R()*22|0), tn=.3+R()*.4;
-      for(let j=y0;j<Math.min(N,y0+H);j++) for(let i=Math.max(0,x0);i<Math.min(N,x0+w);i++){ const e=j===y0||i===x0?.3:j===y0+H-1||i===x0+w-1?-1:0; out[j*N+i]=e<0?.04:tn+e; }
+  const rows=rubble?[0,9,18,27,36,45,54]:[0,16,32,48], H=rubble?9:16, out=new Float32Array(N*N).fill(-1), Hm=new Float32Array(N*N).fill(-1.5);
+  // the height: each stone stands proud of the mortar with rounded edges (rubble more domed) and a chiselled face
+  rows.forEach((y0,r)=>{ let x0=-(R()*20|0); while(x0<N){ const w=rubble?(8+R()*10|0):(18+R()*22|0), tn=.3+R()*.4, sk=R()-.5;
+      for(let j=y0;j<Math.min(N,y0+H);j++) for(let i=Math.max(0,x0);i<Math.min(N,x0+w);i++){ const e=j===y0||i===x0?.3:j===y0+H-1||i===x0+w-1?-1:0; out[j*N+i]=e<0?.04:tn+e;
+        const d=Math.min(j-y0,y0+H-1-j,i-x0,x0+w-1-i); Hm[j*N+i]=e<0?-1.5:Math.min(d,rubble?4:3)*(rubble?.75:.8)+sk*(i-x0)*.04+tn; }
       x0+=w; } });
-  return xPaint(N,(i,j)=>{ const b=out[j*N+i]; let t=b<0?.05:b+(f(i,j)-.5)*.25; if(j<2) t+=.25; return xTone(S,Math.max(0,Math.min(1,t))); }); }
+  const c=xPaint(N,(i,j)=>{ const b=out[j*N+i]; if(Hm[j*N+i]>-1.5) Hm[j*N+i]+=f(i,j)*1.4; let t=b<0?.05:b+(f(i,j)-.5)*.25; if(j<2) t+=.25; return xTone(S,Math.max(0,Math.min(1,t))); });
+  c.h=Hm; c.hk=.6; return c; }
 function xTextSprite(txt,col){ const c=document.createElement('canvas'); c.width=c.height=32; const x=c.getContext('2d');
   x.font='700 22px "Pixelify Sans",monospace'; x.textAlign='center'; x.textBaseline='middle'; x.lineWidth=4; x.strokeStyle='#000'; x.strokeText(txt,16,17); x.fillStyle=col; x.fillText(txt,16,17);
   const s=new THREE.Sprite(new THREE.SpriteMaterial({map:xTex(c),transparent:true,depthTest:false})); s.scale.set(.9,.9,1); s.renderOrder=5; return s; }
@@ -350,7 +359,7 @@ function xWallGeo(rough,seed){ const g=new THREE.BoxGeometry(XCS,XWALL,XCS,4,5,4
     P.setXYZ(k,x,y,z); }
   g.computeVertexNormals();
   const N=g.attributes.normal, c=[];   // foot shadow up the face, a lit bevel, a near-black cap
-  for(let k=0;k<P.count;k++){ const y=P.getY(k)/XWALL+.5, ny=N.getY(k); const a=ny>.85?.34:ny<-.5?.2:ny>.3?1.05:.45+.55*Math.min(1,y*1.4)-(y>.97?.12:0); c.push(a,a,a); }
+  for(let k=0;k<P.count;k++){ const y=P.getY(k)/XWALL+.5, ny=N.getY(k); const a=ny>.85?.34:ny<-.5?.2:ny>.3?1.05:1-(y>.97?.12:0); c.push(a,a,a); }   // the foot shadow is AO (xLit)
   g.setAttribute('color',new THREE.Float32BufferAttribute(c,3)); return g; }
 // where a wall block stands: turned a quarter (or not) and, for cave rock, a little taller or shorter, so no two look alike
 function xWallSy(c,rock){ const h=Math.sin(c*91.7+EX.depth*7.3)*43758.5453, r=h-Math.floor(h); return rock?.9+r*.22:1; }
@@ -358,7 +367,8 @@ function xWallMatrix(m,c,rock,cut){ const h=Math.sin(c*91.7+EX.depth*7.3)*43758.
   m.makeRotationY(Math.floor(r*4)*Math.PI/2); m.scale(new THREE.Vector3(1,sy,1)); m.setPosition(xw(c),XWALL*sy/2-.05,xz(c)); }
 function xBuildScene(){
   const G=xInit3D();
-  if(G.group){ G.scene.remove(G.group); G.group.traverse(o=>{ if(o.geometry) o.geometry.dispose(); if(o.material&&o.material.map) o.material.map.dispose(); }); }
+  if(G.group){ G.scene.remove(G.group); G.group.traverse(o=>{ if(o.geometry) o.geometry.dispose(); if(o.material&&o.material.map) o.material.map.dispose(); if(o.material&&o.material.userData&&o.material.userData.nmap) o.material.userData.nmap.dispose(); }); }
+  XLITMATS.clear();
   const grp=new THREE.Group(); G.group=grp; G.scene.add(grp);
   const A=EX.area, S=A.stone||AREAS[0].stone, seed=EX.depth*31;
   // floor: one plane per stone kind, cut to its cells with a mask, so textures run across cells without seams
@@ -372,13 +382,11 @@ function xBuildScene(){
       pos.push(x0,0,z0, x0,0,z1, x1,0,z1,  x0,0,z0, x1,0,z1, x1,0,z0);
       uv.push(x0/k,-z0/k, x0/k,-z1/k, x1/k,-z1/k,  x0/k,-z0/k, x1/k,-z1/k, x1/k,-z0/k); }
     if(!pos.length) return;
-    // shade: each corner darkens with the rock around it, so floors sink softly into the walls
-    const rock=(x,y)=>x<0||y<0||x>=XN||y>=XN||EX.t[xi(x,y)]===T_ROCK?1:0, col=[];
-    for(let k=0;k<pos.length;k+=3){ const gx=Math.round(pos[k]/XCS), gy=Math.round(pos[k+2]/XCS);
-      const n=rock(gx-1,gy-1)+rock(gx,gy-1)+rock(gx-1,gy)+rock(gx,gy); const a=n>=3?.38:n===2?.6:n===1?.78:1; col.push(a,a,a); }
+    // a slight tone per cell; floors sinking into the walls is the baked AO (xBakeAO)
+    const col=new Array(pos.length).fill(1);
     for(let k=0;k<col.length;k+=18){ const t=.9+((Math.sin(k*12.9898+seed)*43758.5453)%1+1)%1*.1; for(let j=0;j<18;j++) col[k+j]*=t; }
     const geo=new THREE.BufferGeometry(); geo.setAttribute('position',new THREE.Float32BufferAttribute(pos,3)); geo.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2)); geo.setAttribute('color',new THREE.Float32BufferAttribute(col,3)); geo.computeVertexNormals();
-    grp.add(new THREE.Mesh(geo,xPhong({map:xTex(cv,true),vertexColors:true}))); });
+    grp.add(new THREE.Mesh(geo,xLitTag(xPhong({map:xTex(cv,true),vertexColors:true}),1,cv))); });
   // darkness: a black veil over the floor whose alpha comes from a per-cell light map with linear
   // filtering, so light fades smoothly from cell to cell instead of cutting off
   EX.fog=new Uint8Array(XN*XN*4).fill(255); EX.fogCur=new Float32Array(XN*XN); EX.fogTgt=new Float32Array(XN*XN);
@@ -399,13 +407,13 @@ function xBuildScene(){
   // stone with worn edges (and a groove runs between neighbours); cave rock is also knobbly
   const wgeos=[xWallGeo(true,seed),xWallGeo(false,seed),xWallGeo(false,seed+1)];
   EX.wGhost=[]; EX.gSlot=new Int32Array(XN*XN).fill(-1);
-  walls.forEach((list,v)=>{ const wgeo=wgeos[v], n=Math.max(1,list.length), tex=xTex(wallTex[v]), wm=new THREE.InstancedMesh(wgeo,xDitherMat(xPhong({map:tex,vertexColors:true})),n);
+  walls.forEach((list,v)=>{ const wgeo=wgeos[v], n=Math.max(1,list.length), tex=xTex(wallTex[v]), wm=new THREE.InstancedMesh(wgeo,xLitTag(xDitherMat(xPhong({map:tex,vertexColors:true})),2,wallTex[v]),n);
     wm.instanceMatrix.setUsage(THREE.DynamicDrawUsage); grp.add(wm); EX.wms.push(wm);
     // the same walls again, sliced: a wall between the camera and you moves here and is cut off at a
     // height (aCut), its cut top showing the stone inside; aEdge says which of its sides face open ground
     wgeo.setAttribute('aCut',new THREE.InstancedBufferAttribute(new Float32Array(n).fill(99),1));
     wgeo.setAttribute('aEdge',new THREE.InstancedBufferAttribute(new Float32Array(n),1));
-    const gm=new THREE.InstancedMesh(wgeo,xCutMat(xPhong({map:tex,vertexColors:true,side:THREE.DoubleSide}),v,S),n); gm.instanceMatrix.setUsage(THREE.DynamicDrawUsage); grp.add(gm); EX.wGhost.push(gm);
+    const gm=new THREE.InstancedMesh(wgeo,xLitTag(xCutMat(xPhong({map:tex,vertexColors:true,side:THREE.DoubleSide}),v,S),2,wallTex[v]),n); gm.instanceMatrix.setUsage(THREE.DynamicDrawUsage); grp.add(gm); EX.wGhost.push(gm);
     for(let k=0;k<n;k++){ wm.setMatrixAt(k,zero); wm.setColorAt(k,black); gm.setMatrixAt(k,zero); gm.setColorAt(k,black); }
     gm.count=0; gm.userData.cells=[];   // only the walls that are see-through right now are packed in here
     list.forEach((c,k)=>EX.wIdx.set(c,[wm,k])); });
@@ -490,6 +498,7 @@ function xBuildScene(){
   EX.me=xSprite(()=>unitSprite({kind:'player',look:gearLook(save),view:EX.view||'front',pose:EX.pose||'idle'}),XSPR); grp.add(EX.me);
   for(const gp of EX.groups) xGroupSprites(gp,grp);
   if(typeof xBuildProps==='function') xBuildProps();   // people, puzzles, keys and the rest (dungeon.js)
+  xBakeAO(); xLitAll();
 }
 /* The stairs are landmarks: a beam of light stands over each (the area's colour going down, red on a
    boss floor, pale daylight going up), and two torches on posts flank the way down. The beams and
@@ -795,7 +804,7 @@ function xWallDress(grp,A,S,seed){ const R=caveRng(seed+211), floorAt=(x,y)=>x>=
   // pillars by area: carved columns (a base, a round shaft standing proud of the wall, a capital)
   // where the halls are built, rough rock columns in the caves
   const cave=['crystal','lava','stars'].includes(A.veins), shaftG=cave?xRockShaft():new THREE.CylinderGeometry(.5,.5,1,12), pc=tone(cave?.34:.48), pc2=tone(cave?.26:.6);
-  EX.pillBase=inst(xDitherMat(xPhong({color:pc2})),pills.length); EX.pillShaft=new THREE.InstancedMesh(shaftG,xDitherMat(xPhong({color:pc})),Math.max(1,pills.length)); for(let k=0;k<EX.pillShaft.count;k++) EX.pillShaft.setMatrixAt(k,zero); grp.add(EX.pillShaft);
+  EX.pillBase=inst(xLitTag(xDitherMat(xPhong({color:pc2})),2),pills.length); EX.pillShaft=new THREE.InstancedMesh(shaftG,xLitTag(xDitherMat(xPhong({color:pc})),2),Math.max(1,pills.length)); for(let k=0;k<EX.pillShaft.count;k++) EX.pillShaft.setMatrixAt(k,zero); grp.add(EX.pillShaft);
   EX.pillCap=inst(xDitherMat(xPhong({color:pc2})),pills.length); EX.pillCave=cave;
   // a see-through twin of each: the trim and pillars of a cut wall stay whole, at 40% (xDressShow)
   const twin=(im,mat)=>{ const t=new THREE.InstancedMesh(im.geometry,mat,im.count); for(let k=0;k<t.count;k++) t.setMatrixAt(k,zero); t.renderOrder=7; t.visible=false; grp.add(t); im.userData.twin=t; }, see={transparent:true,opacity:.4,depthWrite:false};
@@ -893,7 +902,7 @@ function xInlayTex(S,R,kind,w,h){ const N=64, c=document.createElement('canvas')
       x.fillStyle=edge?((i+j)/4%2?t(.7):t(.35)):d===4?hi:d<2?t(.6):t(.28); if(!edge&&d===4) x.globalAlpha=.3; x.fillRect(i,j,3,3); x.globalAlpha=1; } }
   return c; }
 function xFloorTrim(grp,A,S,seed){ const R=caveRng(seed+99), trim=xTex(xTrimTex(S,R),true), quads=[];
-  const mat=new THREE.MeshPhongMaterial({map:trim,shininess:4,specular:0x111111,transparent:true,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-1});
+  const mat=xLitTag(new THREE.MeshPhongMaterial({map:trim,shininess:4,specular:0x111111,transparent:true,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-1}),1);
   const ins=.32, bw=.62, pos=[], uv=[], seg=(x0,z0,x1,z1,horiz)=>{ const L=horiz?x1-x0:z1-z0, u=L/(bw*3.2);
     if(horiz){ pos.push(x0,0,z0, x0,0,z1, x1,0,z1, x0,0,z0, x1,0,z1, x1,0,z0); uv.push(0,1, 0,0, u,0, 0,1, u,0, u,1); }
     else { pos.push(x0,0,z0, x0,0,z1, x1,0,z1, x0,0,z0, x1,0,z1, x1,0,z0); uv.push(0,1, u,1, u,0, 0,1, u,0, 0,0); } };
@@ -901,7 +910,7 @@ function xFloorTrim(grp,A,S,seed){ const R=caveRng(seed+99), trim=xTex(xTrimTex(
     seg(X0,Z0,X1,Z0+bw,true); seg(X0,Z1-bw,X1,Z1,true); seg(X0,Z0+bw,X0+bw,Z1-bw,false); seg(X1-bw,Z0+bw,X1,Z1-bw,false);
     if(r.w>=5&&r.h>=5){ const kinds=['mosaic','rug','seal'], kind=r.w===r.h||Math.abs(r.w-r.h)<=1?kinds[R()*3|0]:kinds[R()*2|0];
       const cw=kind==='seal'?Math.max(2,Math.round(Math.min(r.w,r.h)*.55)):Math.max(2,Math.round(r.w*.55)), ch=kind==='seal'?cw:Math.max(2,Math.round(r.h*.5)), cx=(r.x+r.w/2)*XCS, cz=(r.y+r.h/2)*XCS;
-      const m=new THREE.Mesh(new THREE.PlaneGeometry(cw*XCS-.6,ch*XCS-.6),new THREE.MeshPhongMaterial({map:xTex(xInlayTex(S,R,kind,Math.min(4,cw),Math.min(4,ch))),shininess:4,specular:0x111111,polygonOffset:true,polygonOffsetFactor:-1}));
+      const m=new THREE.Mesh(new THREE.PlaneGeometry(cw*XCS-.6,ch*XCS-.6),xLitTag(new THREE.MeshPhongMaterial({map:xTex(xInlayTex(S,R,kind,Math.min(4,cw),Math.min(4,ch))),shininess:4,specular:0x111111,polygonOffset:true,polygonOffsetFactor:-1}),1));
       m.rotation.x=-Math.PI/2; m.position.set(cx,.008,cz); grp.add(m); } }
   if(pos.length){ const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3)); g.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2)); g.computeVertexNormals();
     const band=new THREE.Mesh(g,mat); band.position.y=.012; grp.add(band); } }
@@ -952,13 +961,47 @@ function xPaintCells(){
    place, never moved: lowest nearest the camera, highest just in front of you, so it never hides you
    or the room you are in. The cut top shows the wall's inside (xCutMat). Doors, torches, trim and
    pillars on a cut wall stay whole, at 40%. Walls behind you grow back to full height. */
-// test values, tuned by hand in Settings: the dither ball's radius in tiles, and the cut heights
+// test values, tuned by hand in the debug menu: the dither ball's radius in tiles, and the cut heights
 // (a share of the wall) nearest the camera and just in front of you
 const xSetF=(k,d)=>{ try{ const v=parseFloat(localStorage.getItem(k)); return isNaN(v)?d:v; }catch(e){ return d; } };
-const XB={ ball:xSetF('hexmancers-xball',1.5), lo:xSetF('hexmancers-xcutlo',.12), hi:xSetF('hexmancers-xcuthi',.35) };
-function xBindSliders(){ for(const [id,key,k] of [['setXBall','hexmancers-xball','ball'],['setXCutLo','hexmancers-xcutlo','lo'],['setXCutHi','hexmancers-xcuthi','hi']]){ const el=document.getElementById(id), out=document.getElementById(id+'V'); if(!el) continue;
-    el.value=XB[k]; out.textContent=(+XB[k]).toFixed(2);
-    el.oninput=()=>{ XB[k]=+el.value; out.textContent=XB[k].toFixed(2); try{ localStorage.setItem(key,String(XB[k])); }catch(e){} }; } }
+const XB_DEF={ ball:1.5, lo:.12, hi:.35 };
+const XB={ ball:xSetF('hexmancers-xball',XB_DEF.ball), lo:xSetF('hexmancers-xcutlo',XB_DEF.lo), hi:xSetF('hexmancers-xcuthi',XB_DEF.hi) };
+/* The debug menu: test sliders and switches for the dungeon's look. Three fingers tapped three
+   times anywhere opens it (` on a keyboard); it sits low on the screen over a clear backdrop, so
+   the dungeon behind changes live as you slide. Every value is saved in this browser. */
+const XDBG=[   // [element id, object, key, saved as, decimals (null: a checkbox), what a change does]
+  ['dbgTexel',()=>XLIT,'texel','hexmancers-xl-texel',null,'lit'], ['dbgSteps',()=>XLIT,'steps','hexmancers-xl-steps',0,'lit'],
+  ['dbgNmap',()=>XLIT,'nmap','hexmancers-xl-nmap',null,'lit'], ['dbgNStr',()=>XLIT,'nstr','hexmancers-xl-nstr',2,'lit'],
+  ['dbgAO',()=>XLIT,'ao','hexmancers-xl-ao',null,'lit'], ['dbgAOStr',()=>XLIT,'aoStr','hexmancers-xl-aoStr',2,'lit'], ['dbgAORad',()=>XLIT,'aoRad','hexmancers-xl-aoRad',2,'bake'],
+  ['dbgSSAO',()=>XLIT,'ssao','hexmancers-xl-ssao',null,''], ['dbgSSAOStr',()=>XLIT,'ssaoStr','hexmancers-xl-ssaoStr',2,''], ['dbgSSAORad',()=>XLIT,'ssaoRad','hexmancers-xl-ssaoRad',2,''],
+  ['setXBall',()=>XB,'ball','hexmancers-xball',2,''], ['setXCutLo',()=>XB,'lo','hexmancers-xcutlo',2,''], ['setXCutHi',()=>XB,'hi','hexmancers-xcuthi',2,''],
+  ['dbgFps',()=>XLIT,'fps','hexmancers-xl-fps',null,'fps'] ];
+let xBakeT=0;
+function xDbgApply(what){ if(what==='lit') xLitRefresh(); else if(what==='bake'){ xLitRefresh(); clearTimeout(xBakeT); xBakeT=setTimeout(xBakeAO,120); }
+  else if(what==='fps'){ const f=document.getElementById('xFps'); if(f) f.style.display=XLIT.fps?'':'none'; } }
+function xBindSliders(){ for(const [id,obj,k,key,dec,what] of XDBG){ const el=document.getElementById(id), out=document.getElementById(id+'V'), O=obj(); if(!el) continue;
+    const show=()=>{ if(dec==null) el.checked=!!O[k]; else { el.value=O[k]; if(out) out.textContent=(+O[k]).toFixed(dec); } };
+    show(); el.oninput=el.onchange=()=>{ O[k]=dec==null?el.checked:+el.value; show(); try{ localStorage.setItem(key,dec==null?(O[k]?'1':'0'):String(O[k])); }catch(e){} xDbgApply(what); }; }
+  const box=document.getElementById('debug'); if(!box||xBindSliders.done) return; xBindSliders.done=1;
+  document.getElementById('dbgClose').onclick=xDbgClose;
+  box.addEventListener('pointerdown',e=>{ if(e.target===box) xDbgClose(); });
+  document.getElementById('dbgReset').onclick=()=>{ for(const [id,obj,k,key,dec,what] of XDBG){ const O=obj(); O[k]=(O===XB?XB_DEF:XLIT_DEF)[k]; try{ localStorage.removeItem(key); }catch(e){} }
+    xBindSliders(); xLitRefresh(); xBakeAO(); xDbgApply('fps'); };
+  // three fingers down together, three times within a second and a half
+  let taps=[], counted=false;
+  document.addEventListener('touchstart',e=>{ if(e.touches.length<3||counted) return; counted=true; const t=performance.now(); taps=taps.filter(x=>t-x<1500); taps.push(t);
+    if(taps.length>=3){ taps=[]; xDbgToggle(); } },{capture:true,passive:true});
+  document.addEventListener('touchend',e=>{ if(e.touches.length===0) counted=false; },{capture:true,passive:true});
+  document.addEventListener('touchcancel',e=>{ if(e.touches.length===0) counted=false; },{capture:true,passive:true});
+  window.addEventListener('keydown',e=>{ if(e.key!=='`'||e.repeat) return; const t=e.target; if(t&&(t.tagName==='INPUT'&&t.type!=='range'&&t.type!=='checkbox'||t.tagName==='TEXTAREA')) return; if(document.getElementById('settings').classList.contains('on')) return; e.preventDefault(); xDbgToggle(); });
+  xDbgApply('fps'); }
+function xDbgToggle(){ const b=document.getElementById('debug'); if(b.classList.contains('on')) xDbgClose(); else { b.classList.add('on'); } }
+function xDbgClose(){ document.getElementById('debug').classList.remove('on'); }
+// the frame-rate readout (debug menu): frames a second and the slowest frame of the last second
+let xFpsN=0, xFpsT=0, xFpsMax=0;
+function xFpsTick(dt){ if((EX.miniT||0)%120===0) xLitAll();   // lights for anything added since the floor was built
+  if(!XLIT.fps) return; xFpsN++; xFpsT+=dt; xFpsMax=Math.max(xFpsMax,dt);
+  if(xFpsT>=1){ const f=document.getElementById('xFps'); if(f){ const ri=X3.renderer.info.render; f.textContent=Math.round(xFpsN/xFpsT)+' fps · worst '+Math.round(xFpsMax*1000)+' ms · '+ri.calls+' calls'; } xFpsN=0; xFpsT=0; xFpsMax=0; } }
 if(typeof document!=='undefined'){ if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',xBindSliders); else xBindSliders(); }
 /* The dither ball: a sphere around you, on the camera's side of you only, cuts the walls with a
    pixel dither (holes thickest near you, thinning to solid at its edge) instead of blending them:
@@ -987,6 +1030,7 @@ function xCutMat(m,kind,S){ const col=v=>{ const t=xTone(S,v); return new THREE.
       .replace('#include <color_fragment>','#include <color_fragment>\n  if(xIn){ float fb=1.0-texture2D(uFog,vec2(xP.x/'+(XCS*XN).toFixed(1)+',1.0-xP.z/'+(XCS*XN).toFixed(1)+')).r; diffuseColor.rgb=xCap(xP)*vec3(fb,fb,fb*1.05); } else if(vCut-vXWP.y<.05) diffuseColor.rgb*=1.35;')
       .replace('#include <emissivemap_fragment>','#include <emissivemap_fragment>\n  if(xIn) totalEmissiveRadiance+=diffuseColor.rgb*.3;')
       .replace('#include <normal_fragment_begin>','#include <normal_fragment_begin>\n  if(xIn) normal=normalize((viewMatrix*vec4(0.0,1.0,0.0,0.0)).xyz);')
+      .replace('#include <normal_fragment_maps>','if(!xIn){\n#include <normal_fragment_maps>\n}')
       .replace('#include <lights_fragment_begin>',THREE.ShaderChunk.lights_fragment_begin.replace('geometry.position = - vViewPosition;','geometry.position = xIn ? (viewMatrix*vec4(xP,1.0)).xyz : - vViewPosition;')); };
   return m; }
 const XCUT_GLSL=`
@@ -1025,6 +1069,125 @@ vec3 xCap(vec3 P){ vec2 g=P.xz/${XCS.toFixed(1)}, l=fract(g), cid=floor(g); floa
 #endif
   return c*mix(1.0,.82,smoothstep(.1,.5,e)); }
 `;
+/* Lighting, tuned in the debug menu (three fingers, three taps; ` on a keyboard). Every lit
+   material on the floor goes through xLit:
+   - Texture-pixel lighting: each light is worked out at the middle of the texture pixel, not at
+     the screen pixel, so light falls across walls and floors in crisp art-pixel steps. Off: smooth.
+   - Light bands: the light is rounded to a few levels (0 keeps it smooth).
+   - Normal maps, shaped per material from the same layout as the colour (xNormalMap).
+   - Baked AO: floors darken toward the walls from a per-floor map (xBakeAO); walls and pillars
+     darken toward their feet.
+   - Screen-space AO: a pass over the depth of the whole frame shades every crease (xSSAO). */
+const xSetB=(k,d)=>{ try{ const v=localStorage.getItem(k); return v==null?d:v==='1'; }catch(e){ return d; } };
+const XLIT_DEF={ texel:true, steps:0, nmap:true, nstr:1, ao:true, aoStr:1, aoRad:1, ssao:false, ssaoStr:1, ssaoRad:.6, fps:false };
+const XLIT={}; for(const k in XLIT_DEF) XLIT[k]=typeof XLIT_DEF[k]==='boolean'?xSetB('hexmancers-xl-'+k,XLIT_DEF[k]):xSetF('hexmancers-xl-'+k,XLIT_DEF[k]);
+const XLITU={ uXSteps:{value:XLIT.steps}, uXAO:{value:XLIT.ao?XLIT.aoStr:0}, uXAOTex:{value:null}, uXFoot:{value:1.75*XLIT.aoRad} };
+const XLITMATS=new Set();
+// a tangent-space normal map from a height field (in texel units, times k)
+function xNormalMap(H,N,k){ const c=document.createElement('canvas'); c.width=c.height=N; const x=c.getContext('2d'), im=x.createImageData(N,N), at=(i,j)=>H[((j+N)%N)*N+((i+N)%N)];
+  for(let j=0;j<N;j++) for(let i=0;i<N;i++){ const nx=-(at(i+1,j)-at(i-1,j))*k, ny=(at(i,j+1)-at(i,j-1))*k, l=Math.hypot(nx,ny,1), o=(j*N+i)*4;
+    im.data[o]=(nx/l*.5+.5)*255; im.data[o+1]=(ny/l*.5+.5)*255; im.data[o+2]=(1/l*.5+.5)*255; im.data[o+3]=255; }
+  x.putImageData(im,0,0); return c; }
+// mark a material for xLit: ao 1 = floor (the AO map), 2 = stands on the floor (darker at its foot);
+// a painted texture with a height field (cv.h) gets its normal map
+function xLitTag(m,ao,cv){ m.userData.xao=ao||0;
+  if(cv&&cv.h){ const nm=cv.nm||(cv.nm=xNormalMap(cv.h,cv.width,cv.hk||.5)), t=xTex(nm,m.map&&m.map.wrapS===THREE.RepeatWrapping); m.userData.nmap=t; }
+  return m; }
+function xLitAll(){ if(!X3||!X3.group) return; X3.group.traverse(o=>{ const M=o.material; if(!M) return; for(const m of Array.isArray(M)?M:[M]) if(m.isMeshPhongMaterial) xLit(m); }); }
+function xLitDefines(m){ const d=m.defines||(m.defines={}); delete d.XLIT_TEXEL; delete d.XTEXN;
+  if(XLIT.texel&&m.map&&m.map.image){ d.XLIT_TEXEL=''; d.XTEXN=(m.map.image.width||64).toFixed(1); }
+  d.XLIT_AO=XLIT.ao?(m.userData.xao||0):0;
+  const nm=XLIT.nmap?m.userData.nmap||null:null; if(m.normalMap!==nm) m.normalMap=nm; m.normalScale.set(XLIT.nstr,XLIT.nstr); }
+function xLit(m){ if(m.userData.xlit) return m; m.userData.xlit=1; XLITMATS.add(m);
+  const prev=m.onBeforeCompile, pk=m.customProgramCacheKey!==THREE.Material.prototype.customProgramCacheKey?m.customProgramCacheKey:null;
+  m.extensions=Object.assign(m.extensions||{},{derivatives:true});
+  m.onBeforeCompile=(sh,r)=>{ prev.call(m,sh,r); xLitShader(sh); };
+  m.customProgramCacheKey=()=>(pk?pk.call(m):'p')+'|xlit';
+  xLitDefines(m); m.needsUpdate=true; return m; }
+// a lighting switch changed: every lit material is rebuilt with its new defines
+function xLitRefresh(){ XLITU.uXSteps.value=XLIT.steps; XLITU.uXAO.value=XLIT.ao?XLIT.aoStr:0; XLITU.uXFoot.value=1.75*XLIT.aoRad;
+  for(const m of XLITMATS){ const d=JSON.stringify(m.defines), n=m.normalMap; xLitDefines(m); if(d!==JSON.stringify(m.defines)||n!==m.normalMap) m.needsUpdate=true; } }
+function xLitShader(sh){ Object.assign(sh.uniforms,XLITU);
+  sh.vertexShader='varying vec3 vXLW;\n'+sh.vertexShader.replace('#include <project_vertex>','#include <project_vertex>\n  vec4 xlw=vec4(transformed,1.0);\n  #ifdef USE_INSTANCING\n  xlw=instanceMatrix*xlw;\n  #endif\n  vXLW=(modelMatrix*xlw).xyz;');
+  let f=sh.fragmentShader;
+  if(f.includes('#include <lights_fragment_begin>')) f=f.replace('#include <lights_fragment_begin>',THREE.ShaderChunk.lights_fragment_begin);
+  f=f.replace(/(geometry\.position = [^;]*?)- vViewPosition;/,'$1xLitPos(- vViewPosition);');
+  f=f.replace('void main() {',`varying vec3 vXLW; uniform float uXSteps; uniform float uXAO; uniform sampler2D uXAOTex; uniform float uXFoot;
+// the point lit, moved to the middle of its texture pixel: the screen-space step to there, from the
+// change of uv across the pixel, taken along the change of position
+vec3 xLitPos(vec3 p){
+#if defined(XLIT_TEXEL)&&defined(USE_MAP)
+  vec2 t=vUv*XTEXN, d=(floor(t)+.5-t)/XTEXN, ux=dFdx(vUv), uy=dFdy(vUv); float det=ux.x*uy.y-uy.x*ux.y;
+  if(abs(det)>1e-12) p+=dFdx(p)*((d.x*uy.y-uy.x*d.y)/det)+dFdy(p)*((ux.x*d.y-d.x*ux.y)/det);
+#endif
+  return p; }
+void main() {`);
+  f=f.replace('#include <lights_fragment_end>',`#include <lights_fragment_end>
+  {
+#ifdef XKIND
+  if(!xIn){
+#endif
+#if XLIT_AO==1
+  float xa=1.0-uXAO*.6*texture2D(uXAOTex,vXLW.xz/${(XN*XCS).toFixed(1)}).r;
+#elif XLIT_AO==2
+  float xu=1.0-smoothstep(0.0,uXFoot,vXLW.y); float xa=1.0-uXAO*.55*xu*xu*(3.0-2.0*xu);
+#else
+  float xa=1.0;
+#endif
+  reflectedLight.directDiffuse*=xa; reflectedLight.indirectDiffuse*=xa;
+#ifdef XKIND
+  }
+#endif
+  if(uXSteps>.5){ vec3 xd=reflectedLight.directDiffuse+reflectedLight.indirectDiffuse, xl3=xd/max(diffuseColor.rgb,vec3(.004)); float xl=max(xl3.r,max(xl3.g,xl3.b));
+    if(xl>.0005){ float xs=ceil(xl*uXSteps-.25)/uXSteps/xl; reflectedLight.directDiffuse*=xs; reflectedLight.indirectDiffuse*=xs; } }
+  }`);
+  sh.fragmentShader=f; }
+// the AO map: for each spot of floor, how shut in it is by the wall blocks around it (8 texels a cell)
+const XAO_R=8;
+function xBakeAO(){ if(!EX||!EX.wIdx) return; const R=XAO_R, W=XN*R, d=EX.aoData||(EX.aoData=new Uint8Array(W*W*4)), rad=Math.max(.05,XLIT.aoRad)*XCS, sz=XCS/R;
+  const wall=(x,y)=>x<0||y<0||x>=XN||y>=XN||EX.wIdx.has(xi(x,y)), reach=Math.ceil(rad/XCS)+1;
+  for(let ty=0;ty<W;ty++) for(let tx=0;tx<W;tx++){ const wx=(tx+.5)*sz, wz=(ty+.5)*sz, cx=Math.floor(wx/XCS), cy=Math.floor(wz/XCS); let o=0;
+    if(wall(cx,cy)) o=9; else for(let dy=-reach;dy<=reach;dy++) for(let dx=-reach;dx<=reach;dx++){ if(!wall(cx+dx,cy+dy)) continue;
+      const x0=(cx+dx)*XCS, z0=(cy+dy)*XCS, ex=Math.max(x0-wx,0,wx-x0-XCS), ez=Math.max(z0-wz,0,wz-z0-XCS), w=Math.max(0,1-Math.hypot(ex,ez)/rad); o+=w*w; }
+    d[(ty*W+tx)*4]=Math.round(255*(1-Math.exp(-o*.9))); }
+  if(!EX.aoTex){ const t=new THREE.DataTexture(d,W,W,THREE.RGBAFormat); t.magFilter=t.minFilter=THREE.LinearFilter; EX.aoTex=t; }
+  EX.aoTex.needsUpdate=true; XLITU.uXAOTex.value=EX.aoTex; }
+/* Screen-space AO: the frame is drawn into a target with its depth; a half-size pass rebuilds each
+   pixel's position, takes twelve samples in a disc around it (the disc as wide on screen as
+   ssaoRad tiles at that depth) and counts how much of what is near rises in front of its surface;
+   the last pass blurs that a little and darkens the frame by it. */
+const XSSAO={ ok:null };
+function xSSAOInit(r){ if(XSSAO.ok!=null) return XSSAO.ok;
+  if(!r.capabilities.isWebGL2&&!r.extensions.get('WEBGL_depth_texture')) return XSSAO.ok=false;
+  const rt=new THREE.WebGLRenderTarget(1,1,{minFilter:THREE.NearestFilter,magFilter:THREE.NearestFilter}); rt.depthTexture=new THREE.DepthTexture(1,1); rt.depthTexture.type=THREE.UnsignedIntType;
+  const ao=new THREE.WebGLRenderTarget(1,1,{minFilter:THREE.LinearFilter,magFilter:THREE.LinearFilter,depthBuffer:false});
+  const vs='varying vec2 vUv; void main(){ vUv=uv; gl_Position=vec4(position.xy,0.0,1.0); }';
+  const aoM=new THREE.ShaderMaterial({ depthTest:false, depthWrite:false, vertexShader:vs,
+    uniforms:{ tDepth:{value:rt.depthTexture}, uInvProj:{value:new THREE.Matrix4()}, uP11:{value:1}, uRes:{value:new THREE.Vector2(1,1)}, uRad:{value:1}, uStr:{value:1} },
+    fragmentShader:`uniform sampler2D tDepth; uniform mat4 uInvProj; uniform float uP11, uRad, uStr; uniform vec2 uRes; varying vec2 vUv;
+vec3 xv(vec2 uv){ float d=texture2D(tDepth,uv).x; vec4 v=uInvProj*vec4(uv*2.0-1.0,d*2.0-1.0,1.0); return v.xyz/v.w; }
+void main(){ if(texture2D(tDepth,vUv).x>=.99999){ gl_FragColor=vec4(1.0); return; }
+  vec2 px=1.0/uRes; vec3 P=xv(vUv), r=xv(vUv+vec2(px.x,0.0)), l=xv(vUv-vec2(px.x,0.0)), u=xv(vUv+vec2(0.0,px.y)), b=xv(vUv-vec2(0.0,px.y));
+  vec3 N=normalize(cross(abs(r.z-P.z)<abs(P.z-l.z)?r-P:P-l, abs(u.z-P.z)<abs(P.z-b.z)?u-P:P-b));
+  float sr=uRad*uP11*.5/max(.1,-P.z), a0=6.2831*fract(52.9829189*fract(dot(gl_FragCoord.xy,vec2(.06711056,.00583715)))), occ=0.0;
+  for(int i=0;i<12;i++){ float t=(float(i)+.5)/12.0, a=a0+float(i)*2.39996; vec2 o=vec2(cos(a)*uRes.y/uRes.x,sin(a))*sqrt(t)*sr;
+    vec2 su=vUv+o; if(su.x<0.0||su.y<0.0||su.x>1.0||su.y>1.0) continue;   // off the screen: nothing known there
+    vec3 v=xv(su)-P; float vv=dot(v,v); occ+=max(0.0,dot(v,N)*inversesqrt(vv+1e-4)-.12)*(1.0-smoothstep(.4*uRad*uRad,uRad*uRad,vv)); }
+  gl_FragColor=vec4(vec3(clamp(1.0-uStr*occ/12.0*2.2,0.0,1.0)),1.0); }` });
+  const cM=new THREE.ShaderMaterial({ depthTest:false, depthWrite:false, vertexShader:vs, uniforms:{ tColor:{value:rt.texture}, tAO:{value:ao.texture}, uTx:{value:new THREE.Vector2()} },
+    fragmentShader:`uniform sampler2D tColor, tAO; uniform vec2 uTx; varying vec2 vUv;
+void main(){ float a=0.0; for(int y=-1;y<=1;y++) for(int x=-1;x<=1;x++) a+=texture2D(tAO,vUv+vec2(float(x),float(y))*uTx).r; gl_FragColor=vec4(texture2D(tColor,vUv).rgb*a/9.0,1.0); }` });
+  const q=new THREE.Mesh(new THREE.PlaneGeometry(2,2),aoM); q.frustumCulled=false; const qs=new THREE.Scene(); qs.add(q);
+  Object.assign(XSSAO,{rt,ao,aoM,cM,q,qs,cam:new THREE.OrthographicCamera(-1,1,1,-1,0,1),sz:new THREE.Vector2()});
+  return XSSAO.ok=true; }
+function xRender(G){ const r=G.renderer; r.info.autoReset=false; r.info.reset();
+  if(!XLIT.ssao||!xSSAOInit(r)){ r.render(G.scene,G.cam); return; }
+  const S=XSSAO; r.getDrawingBufferSize(S.sz); const w=S.sz.x|0, h=S.sz.y|0, hw=Math.max(1,w>>1), hh=Math.max(1,h>>1);
+  if(S.rt.width!==w||S.rt.height!==h){ S.rt.setSize(w,h); S.ao.setSize(hw,hh); }
+  r.setRenderTarget(S.rt); r.render(G.scene,G.cam);
+  const U=S.aoM.uniforms; U.uInvProj.value.copy(G.cam.projectionMatrixInverse); U.uP11.value=G.cam.projectionMatrix.elements[5]; U.uRes.value.set(hw,hh); U.uRad.value=XLIT.ssaoRad*XCS; U.uStr.value=XLIT.ssaoStr;
+  S.q.material=S.aoM; r.setRenderTarget(S.ao); r.render(S.qs,S.cam);
+  S.cM.uniforms.uTx.value.set(1/hw,1/hh); S.q.material=S.cM; r.setRenderTarget(null); r.render(S.qs,S.cam); }
 // put a wall in the solid mesh (v=1) or the cut one, sliced at v of its height
 function xWallFade(c,v){ const w=EX.wIdx.get(c); if(!w) return; const [wm,k]=w, vi=EX.wms.indexOf(wm), gm=EX.wGhost[vi], m=new THREE.Matrix4(), zero=new THREE.Matrix4().makeScale(0,0,0);
   xWallMatrix(m,c,vi===0,1); const solid=v>=.995, L=gm.userData.cells, A=gm.geometry.attributes.aCut, E=gm.geometry.attributes.aEdge, col=new THREE.Color();
@@ -1501,7 +1664,7 @@ function xDraw(T,dt){
   G.lamp.intensity=1.6*(.95+.04*Math.sin(T*9.3)+.03*Math.sin(T*21.1));
   xLightPool(T,dt); xDecorTick(T); xAirTick(T,dt); xWeatherTick(T,dt); xLifeTick(T,dt);
   { const lo=$('#xLowHp'); if(lo){ const r=EX.hp/xmaxHp(); lo.style.opacity=r<.3?(.55+.35*Math.sin(T*(r<.15?7:4))).toFixed(2):'0'; } } if(EX.myGlow){ EX.myGlow.position.x=EX.px; EX.myGlow.position.z=EX.pz; EX.myGlow.material.opacity=.18+.03*Math.sin(T*2.1); }
-  G.renderer.render(G.scene,G.cam);
+  xRender(G); xFpsTick(dt);
   if((EX.miniT=(EX.miniT||0)+1)%6===0) xMini();
 }
 function xMini(){

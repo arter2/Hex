@@ -1195,3 +1195,9 @@ button[hidden]{display:none!important;}
 
 /* test sliders in Settings */
 .srange{display:flex!important; flex-direction:row!important; align-items:center; gap:8px; min-width:150px;} .srange input{width:120px; accent-color:var(--blue);} .srange b{min-width:44px; text-align:right; font:700 15px var(--font-b); color:var(--blue);}
+/* the debug menu: low on the screen over a clear backdrop, so the dungeon shows above it */
+#debug{background:transparent; align-items:flex-end; z-index:9;}
+.panel.debug{max-height:58%; background:rgba(10,12,16,.92); padding-bottom:10px;}
+.panel.debug .controls{margin-top:12px;}
+.scheck{display:flex; align-items:center; justify-content:flex-end; min-width:150px;} .scheck input{width:26px; height:26px; margin:0; accent-color:var(--blue); cursor:pointer;}
+#xFps{position:absolute; left:8px; top:96px; z-index:4; pointer-events:none; padding:2px 6px; background:rgba(0,0,0,.6); color:#9fe0ff; font:700 13px monospace; border-radius:4px;}

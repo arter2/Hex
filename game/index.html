@@ -177,6 +177,7 @@
   <!-- battle -->
   <section id="scrExplore" class="screen">
     <canvas id="xView"></canvas>
+    <div id="xFps" style="display:none"></div>
     <div id="xVig"></div>
     <div class="x-vignette"></div>
     <div id="xTop">
@@ -363,9 +364,6 @@
       <div class="srow"><span>Touch movement<small>How a finger moves you on the dungeon floor. Tap + hold (the default): a quick tap walks you there; hold or slide your finger and you steer like a thumbstick (nothing is drawn under your finger). Walk to touch: go where you tap or drag, and keep going after you let go. Floating stick: put a finger down anywhere and slide it like a thumbstick. Fixed stick: a thumbstick in the bottom-left corner (tap elsewhere to walk there). Follow finger: hold and you chase your finger; let go to stop. Trackpad: slide anywhere and you move the same way, as in battle.</small></span><button id="setXMove" class="btn ghost small"></button></div>
       <div class="srow"><span>Dungeon tips<small>A short tip the first time you meet doors, chests, traps, sleeping enemies and more. Turning them back on shows every tip again.</small></span><button id="setXTips" class="btn ghost small"></button></div>
       <div class="srow"><span>Stairs marker<small>Marks the stairs down on the minimap once you have seen them</small></span><button id="setXStairs" class="btn ghost small"></button></div>
-      <div class="srow"><span>See-through ball (test)<small>Radius in tiles of the dither ball in front of you on the dungeon floor</small></span><span class="srange"><input id="setXBall" type="range" min="0" max="6" step="0.05"><b id="setXBallV"></b></span></div>
-      <div class="srow"><span>Wall cut near camera (test)<small>How much of a wall stands, nearest the camera, where walls in front of you are cut down (0 to 1)</small></span><span class="srange"><input id="setXCutLo" type="range" min="0" max="1" step="0.01"><b id="setXCutLoV"></b></span></div>
-      <div class="srow"><span>Wall cut in front (test)<small>How much of a wall stands just in front of you; the cut slopes down from here to the camera (0 to 1)</small></span><span class="srange"><input id="setXCutHi" type="range" min="0" max="1" step="0.01"><b id="setXCutHiV"></b></span></div>
       <div class="srow"><span>Testing tools<small>Boss tests at camp and free gear on the Character screen</small></span><button id="setDev" class="btn ghost small"></button></div>
       <details id="setKbd">
         <summary><h3>Keyboard controls</h3></summary>
@@ -379,6 +377,32 @@
       <h3>Save</h3>
       <div class="srow"><span>Erase this save<small>Your cards, decks, gold and gear in this browser. Cannot be undone.</small></span><button id="btnReset" class="btn ghost small danger">Erase</button></div>
       <button id="setClose" class="btn">Done</button>
+    </div>
+  </div>
+  <div id="debug" class="overlay">
+    <div class="panel settings debug">
+      <div class="bar"><h2>Debug</h2></div>
+      <p class="hint">Test settings for the dungeon's look. The dungeon behind this panel changes as you slide. Saved in this browser. Open with three fingers tapped three times (or the ` key).</p>
+      <h3>Lighting</h3>
+      <div class="srow"><span>Texture-pixel lighting<small>On: light is worked out once per texture pixel, so it falls across walls and floors in crisp art-pixel steps. Off: smooth light.</small></span><label class="scheck"><input id="dbgTexel" type="checkbox"></label></div>
+      <div class="srow"><span>Light bands<small>0 keeps light smooth. Otherwise light is rounded to this many levels per full brightness, for a banded pixel-art look.</small></span><span class="srange"><input id="dbgSteps" type="range" min="0" max="8" step="1"><b id="dbgStepsV"></b></span></div>
+      <h3>Normal maps</h3>
+      <div class="srow"><span>Normal maps<small>Bumps shaped for each material: sunk mortar and proud, worn stones on built walls and slabs, ledges in cave rock, cracks and pebbles on rock floors.</small></span><label class="scheck"><input id="dbgNmap" type="checkbox"></label></div>
+      <div class="srow"><span>Bump strength<small>How deep the bumps look. 1 is the normal depth.</small></span><span class="srange"><input id="dbgNStr" type="range" min="0" max="3" step="0.05"><b id="dbgNStrV"></b></span></div>
+      <h3>Ambient occlusion</h3>
+      <div class="srow"><span>Baked AO<small>Floors darken toward the walls and into corners; walls and pillars darken toward their feet. Worked out once per floor, so it costs almost nothing.</small></span><label class="scheck"><input id="dbgAO" type="checkbox"></label></div>
+      <div class="srow"><span>Baked AO strength<small>How dark the shading gets. 1 is about the old look.</small></span><span class="srange"><input id="dbgAOStr" type="range" min="0" max="2" step="0.05"><b id="dbgAOStrV"></b></span></div>
+      <div class="srow"><span>Baked AO reach<small>How far the shading spreads from a wall, in tiles.</small></span><span class="srange"><input id="dbgAORad" type="range" min="0.25" max="2.5" step="0.05"><b id="dbgAORadV"></b></span></div>
+      <div class="srow"><span>Screen-space AO<small>Shades every crease in the frame (props, steps, doors, monsters too). Draws the frame twice more, so it is heavy on phones.</small></span><label class="scheck"><input id="dbgSSAO" type="checkbox"></label></div>
+      <div class="srow"><span>Screen-space AO strength<small>How dark the creases get.</small></span><span class="srange"><input id="dbgSSAOStr" type="range" min="0" max="3" step="0.05"><b id="dbgSSAOStrV"></b></span></div>
+      <div class="srow"><span>Screen-space AO reach<small>How far each crease's shading spreads, in tiles.</small></span><span class="srange"><input id="dbgSSAORad" type="range" min="0.1" max="1.5" step="0.05"><b id="dbgSSAORadV"></b></span></div>
+      <h3>Walls</h3>
+      <div class="srow"><span>See-through ball<small>Radius in tiles of the dither ball in front of you, on walls that are not cut.</small></span><span class="srange"><input id="setXBall" type="range" min="0" max="6" step="0.05"><b id="setXBallV"></b></span></div>
+      <div class="srow"><span>Wall cut near camera<small>How much of a wall stands, nearest the camera, where walls in front of you are cut down (0 to 1).</small></span><span class="srange"><input id="setXCutLo" type="range" min="0" max="1" step="0.01"><b id="setXCutLoV"></b></span></div>
+      <div class="srow"><span>Wall cut in front<small>How much of a wall stands just in front of you; the cut slopes down from here to the camera (0 to 1).</small></span><span class="srange"><input id="setXCutHi" type="range" min="0" max="1" step="0.01"><b id="setXCutHiV"></b></span></div>
+      <h3>Info</h3>
+      <div class="srow"><span>Frame rate<small>Shows frames a second, the slowest frame of the last second and draw calls, top left in the dungeon.</small></span><label class="scheck"><input id="dbgFps" type="checkbox"></label></div>
+      <div class="controls two"><button id="dbgReset" class="btn ghost">Reset all</button><button id="dbgClose" class="btn">Done</button></div>
     </div>
   </div>
   <div id="peek" class="peek"></div>

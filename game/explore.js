@@ -404,7 +404,7 @@ function xBuildScene(){
   // doors: an arched doorway of the area's stone, and while it is closed a plank door with iron
   // bands and studs, its top rounded to the arch; a locked door shows its lock: a bronze, silver or
   // gold plate, iron bars on a shortcut gate, red bands on a boss door
-  const LOCK_COL={bronze:0xc8843a, silver:0xcfd8e6, gold:0xf2c94c, boss:0xff5d6c}, HR=1.4, AR=.78;
+  const LOCK_COL={bronze:0xc8843a, silver:0xcfd8e6, gold:0xf2c94c, boss:0xff5d6c}, HR=1.4, AR=.78; EX.lanterns=[];
   const doorC=new THREE.Color('rgb('+xTone(S,.5).join(',')+')'), arcG=new THREE.TorusGeometry(.9,.13,6,14,Math.PI), topG=new THREE.CylinderGeometry(AR-.01,AR-.01,.15,16,1,false,-Math.PI/2,Math.PI), ringG=new THREE.TorusGeometry(.09,.02,4,10);
   for(const [i,d] of EX.doors){ const ew=EX.t[i-1]!==T_ROCK&&EX.t[i+1]!==T_ROCK, g=new THREE.Group(); g.position.set(xw(i),0,xz(i)); if(ew) g.rotation.y=Math.PI/2;
     // the stone: jambs, the arch, the stone above it and in its corners, merged into one mesh
@@ -421,6 +421,12 @@ function xBuildScene(){
       L.add(ringG,0x2a2a30,.5,.78,.11);
       if(LOCK_COL[d.lock]) for(const zz of [-.1,.1]) L.add(XG.box,LOCK_COL[d.lock],.38,.78,zz,0,0,0,.26,.32,.04); }
     leaf.add(L.build(xPhong({vertexColors:true,emissive:boss?0x200808:0x000000})));
+    // a locked door hangs a lantern of its key's colour over the arch, both sides, seen from across the room
+    if(LOCK_COL[d.lock]){ const lc=new THREE.Color(LOCK_COL[d.lock]), tex=xGlowTex.t||(xGlowTex.t=xGlowTex()), lan=[];
+      for(const zz of [-.34,.34]){ const lg=new THREE.Group(); lg.position.set(0,HR+1.12,zz); lg.add(xBox(.05,.2,.05,xMat(0x2a2620),0,.12,0));
+        const bulb=new THREE.Mesh(XG.ball,new THREE.MeshBasicMaterial({color:lc})); bulb.scale.set(.2,.24,.2); lg.add(bulb);
+        const h=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,color:lc,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false})); h.scale.set(boss?2.6:1.8,boss?2.6:1.8,1); h.renderOrder=3; lg.add(h); g.add(lg); lan.push(h); }
+      (EX.lanterns=EX.lanterns||[]).push({halos:lan,ph:Math.random()*6,boss}); }
     // the leaf hangs on a hinge at one jamb so it can swing (a gate's bars lift instead)
     const LW=XCS-.44, hinge=new THREE.Group(); if(d.lock!=='gate'){ hinge.position.x=-LW/2; leaf.position.x=LW/2; } hinge.add(leaf);
     g.add(hinge); d.mesh=g; d.leaf=hinge; d.ew=ew; d.cell=i; hinge.visible=d.state!=='secret'; if(d.state==='open') xDoorPose(d,1,1); g.visible=false; grp.add(g); }
@@ -461,7 +467,8 @@ function xBuildScene(){
   // your own light on the floor: a soft circle in the area's colour, as in the old pixel crawlers
   EX.myGlow=new THREE.Mesh(new THREE.PlaneGeometry(9,9),new THREE.MeshBasicMaterial({map:xGlowTex(),color:new THREE.Color(A.glow).lerp(new THREE.Color(0xffe8c0),.5),transparent:true,opacity:.2,blending:THREE.AdditiveBlending,depthWrite:false}));
   EX.myGlow.rotation.x=-Math.PI/2; EX.myGlow.position.y=.05; EX.myGlow.renderOrder=2; grp.add(EX.myGlow);
-  xFloorTrim(grp,A,S,seed); xChasm(grp,A,S,seed); xFloorDecals(grp,A,S,seed); xMotes(grp,A);
+  xFloorTrim(grp,A,S,seed); xChasm(grp,A,S,seed); xFloorDecals(grp,A,S,seed); xMotes(grp,A); xWeather(grp,A); EX.bats=[]; EX.drips=[]; EX.camX=null;
+  if(!$('#xLowHp')){ const lo=document.createElement('div'); lo.id='xLowHp'; $('#xHurt').after(lo); }
   G.amb.color.set(0xffffff).lerp(glowC,.25); G.lamp.color.set(0xffd9a0).lerp(glowC,.3); G.dust.material.color.copy(glowC);
   xAreaLights(grp,A); xStairLights(grp,A); xWallDress(grp,A,S,seed);
   // you and the enemies are flat sprites standing in the 3D rooms, like the old dungeon crawlers
@@ -479,6 +486,8 @@ function xStairLights(grp,A){ const tex=xGlowTex(), boss=isBossDepth(EX.depth);
     beam.position.set(xw(cell),3.5,xz(cell)); beam.renderOrder=3; beam.visible=false; grp.add(beam);
     const halo=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,color:new THREE.Color(col),transparent:true,blending:THREE.AdditiveBlending,depthWrite:false})); halo.scale.set(3,3,1); halo.position.set(xw(cell),.6,xz(cell)); halo.renderOrder=3; halo.visible=false; grp.add(halo);
     EX.glows.push({g:beam,floor:cell,mats:[beam.material],halo,ph:Math.random()*6,beam:true});
+    if(torches){ const rr=new THREE.Mesh(new THREE.PlaneGeometry(4.2,4.2),new THREE.MeshBasicMaterial({map:xRuneTex(),color:new THREE.Color(col),transparent:true,opacity:.5,blending:THREE.AdditiveBlending,depthWrite:false}));
+      rr.rotation.x=-Math.PI/2; rr.position.set(xw(cell),.03,xz(cell)); rr.renderOrder=2; rr.visible=false; grp.add(rr); EX.runeRing=rr; }
     if(torches) for(const sx of [-1,1]){ const g=new THREE.Group(); g.position.set(xw(cell)+sx*XCS*.55,0,xz(cell)-XCS*.42); const iron=xMat(0x2a2620), mats=[];
       g.add(xBox(.1,1.5,.1,iron,0,.75,0), xBox(.3,.08,.3,iron,0,1.52,0));
       const flame=new THREE.Group(), fm=c=>{ const m=new THREE.MeshBasicMaterial({color:c,transparent:true}); mats.push(m); return m; };
@@ -559,6 +568,60 @@ function xCoins(cell,n){ const G=X3, gold=$('#xGold'); if(!G||!gold) return; con
     const dx=(Math.random()-.5)*60, dy=-30-Math.random()*40, ex=t.left+12-sx, ey=t.top+t.height/2-sy;
     const an=c.animate([{transform:'translate(-50%,-50%) scale(.6)'},{transform:`translate(calc(-50% + ${dx}px),calc(-50% + ${dy}px)) scale(1)`,offset:.35},{transform:`translate(calc(-50% + ${ex}px),calc(-50% + ${ey}px)) scale(.7)`}],{duration:650+k*45,easing:'cubic-bezier(.3,.1,.4,1)',fill:'forwards'});
     an.onfinish=()=>{ c.remove(); gold.animate([{transform:'scale(1)'},{transform:'scale(1.3)'},{transform:'scale(1)'}],{duration:180}); }; } }
+// a burst of light that swells and fades (a chest opening)
+function xBloom(x,y,z,col,size){ if(!X3||!X3.group) return; const tex=xGlowTex.t||(xGlowTex.t=xGlowTex()), s=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,color:col,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false}));
+  s.position.set(x,y,z); s.renderOrder=4; s.userData={vx:0,vz:0,vy:.4,t:0,life:.6,g:0,s:size*.5,grow:1.2,a0:1}; X3.group.add(s); (EX.fx=EX.fx||[]).push(s); }
+// a wide text label for names over monsters
+function xLabel(txt,col){ const c=document.createElement('canvas'); c.width=256; c.height=40; const x=c.getContext('2d');
+  x.font='700 24px "Pixelify Sans",monospace'; x.textAlign='center'; x.textBaseline='middle'; x.lineWidth=5; x.strokeStyle='rgba(0,0,0,.85)'; x.strokeText(txt,128,21); x.fillStyle=col; x.fillText(txt,128,21);
+  const s=new THREE.Sprite(new THREE.SpriteMaterial({map:xTex(c),transparent:true,depthTest:false})); s.scale.set(3.2,.5,1); s.center.set(.5,0); s.renderOrder=5; return s; }
+// a ring of runes for the floor round the stairs down
+function xRuneTex(){ if(xRuneTex.t) return xRuneTex.t; const N=128, c=document.createElement('canvas'); c.width=c.height=N; const x=c.getContext('2d'), m=N/2;
+  x.strokeStyle='#fff'; x.lineWidth=3; x.beginPath(); x.arc(m,m,58,0,7); x.stroke(); x.lineWidth=2; x.beginPath(); x.arc(m,m,44,0,7); x.stroke();
+  x.fillStyle='#fff'; for(let k=0;k<12;k++){ const a=k/12*Math.PI*2; x.save(); x.translate(m+Math.cos(a)*51,m+Math.sin(a)*51); x.rotate(a+Math.PI/2); x.fillRect(-3,-4,2,8); x.fillRect(-3,-4,6,2); if(k%2) x.fillRect(1,0,2,4); else x.fillRect(-1,2,4,2); x.restore(); }
+  return xRuneTex.t=xTex(c); }
+/* ---------------- weather and small life ----------------
+   Each area has its own air around you: fireflies in the Hollows, snow in the Deeps, crackling
+   sparks in the Storm Vault, ash falling in the Ember Rifts, gold dust in the Ruins and twinkling
+   motes in the Abyss. Now and then bats flit over, and in damp places drips ripple on the floor. */
+const XWEATHER={ crystal:'fireflies', ice:'snow', storm:'sparks', lava:'ash', gold:'gold', stars:'twinkle' };
+function xWeather(grp,A){ const kind=XWEATHER[A.veins]||'twinkle', N=kind==='snow'?160:kind==='ash'?140:90, pos=new Float32Array(N*3), col=new Float32Array(N*3), st=[];
+  const base=new THREE.Color({fireflies:'#9dff7a',snow:'#eef6ff',sparks:'#fff39a',ash:'#a09890',gold:'#f2c94c',twinkle:'#e9f0ff'}[kind]);
+  for(let k=0;k<N;k++){ pos[k*3]=(Math.random()-.5)*30; pos[k*3+1]=Math.random()*6; pos[k*3+2]=(Math.random()-.5)*24; st.push({ph:Math.random()*6.3,sp:.5+Math.random(),ember:kind==='ash'&&Math.random()<.25}); col[k*3]=base.r; col[k*3+1]=base.g; col[k*3+2]=base.b; }
+  const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.BufferAttribute(pos,3)); g.setAttribute('color',new THREE.BufferAttribute(col,3));
+  const p=new THREE.Points(g,new THREE.PointsMaterial({size:kind==='snow'?.12:kind==='ash'?.11:kind==='fireflies'?.24:.18,vertexColors:true,transparent:true,opacity:.85,blending:kind==='ash'?THREE.NormalBlending:THREE.AdditiveBlending,depthWrite:false}));
+  p.renderOrder=3; p.userData={kind,st,base}; grp.add(p); EX.weather=p; EX.lifeT=6+Math.random()*6; EX.dripT=2; }
+function xWeatherTick(T,dt){ const W=EX.weather; if(!W) return; const a=W.geometry.attributes.position.array, c=W.geometry.attributes.color.array, {kind,st,base}=W.userData, cx=EX.px, cz=EX.pz;
+  for(let k=0;k<st.length;k++){ const s=st[k], i=k*3; let x=a[i], y=a[i+1], z=a[i+2], b=1;
+    if(kind==='snow'){ y-=dt*.9*s.sp; x+=Math.sin(T*.7+s.ph)*dt*.4; if(y<0) y=6; }
+    else if(kind==='ash'){ if(s.ember){ y+=dt*1.1*s.sp; if(y>6) y=0; b=.6+.4*Math.sin(T*9+s.ph); } else { y-=dt*.45*s.sp; x+=Math.sin(T*.5+s.ph)*dt*.3; if(y<0) y=6; } }
+    else if(kind==='fireflies'){ x+=Math.sin(T*.6*s.sp+s.ph)*dt*.6; z+=Math.cos(T*.5*s.sp+s.ph*2)*dt*.6; y=.4+1.8*(.5+.5*Math.sin(T*.3+s.ph)); b=Math.max(0,Math.sin(T*1.7*s.sp+s.ph))**3; }
+    else if(kind==='sparks'){ b=Math.random()<.04?1:Math.max(0,b*.0); if(Math.random()<.01){ x=cx+(Math.random()-.5)*30; z=cz+(Math.random()-.5)*24; y=Math.random()*4; } }
+    else if(kind==='gold'){ y+=dt*.25*s.sp; x+=Math.sin(T*.4+s.ph)*dt*.15; if(y>5) y=0; b=.5+.5*Math.sin(T*2*s.sp+s.ph); }
+    else { y+=Math.sin(T*.3+s.ph)*dt*.1; b=.3+.7*Math.max(0,Math.sin(T*1.2*s.sp+s.ph)); }
+    // keep the air around you
+    if(x<cx-15) x+=30; else if(x>cx+15) x-=30; if(z<cz-12) z+=24; else if(z>cz+12) z-=24;
+    a[i]=x; a[i+1]=y; a[i+2]=z;
+    const col=s.ember?[1,.45,.15]:[base.r,base.g,base.b]; c[i]=col[0]*b; c[i+1]=col[1]*b; c[i+2]=col[2]*b; }
+  W.geometry.attributes.position.needsUpdate=true; W.geometry.attributes.color.needsUpdate=true; }
+function xBatTex(up){ const N=32, c=document.createElement('canvas'); c.width=N; c.height=16; const x=c.getContext('2d'); x.fillStyle='#0b0a10';
+  x.fillRect(14,6,4,5); x.fillRect(15,4,1,2); x.fillRect(17,4,1,2);
+  if(up){ x.beginPath(); x.moveTo(14,8); x.lineTo(2,1); x.lineTo(6,7); x.lineTo(1,9); x.closePath(); x.fill(); x.beginPath(); x.moveTo(18,8); x.lineTo(30,1); x.lineTo(26,7); x.lineTo(31,9); x.closePath(); x.fill(); }
+  else { x.beginPath(); x.moveTo(14,8); x.lineTo(2,13); x.lineTo(7,10); x.lineTo(1,15); x.closePath(); x.fill(); x.beginPath(); x.moveTo(18,8); x.lineTo(30,13); x.lineTo(25,10); x.lineTo(31,15); x.closePath(); x.fill(); }
+  return xTex(c); }
+function xLifeTick(T,dt){ if(EX.busy) return;
+  // bats: a little flock crosses high over the room now and then
+  EX.lifeT=(EX.lifeT||8)-dt;
+  if(EX.lifeT<=0&&['crystal','lava','stars','ice'].includes(EX.area.veins)){ EX.lifeT=9+Math.random()*10; const tu=xBatTex.u||(xBatTex.u=xBatTex(1)), td=xBatTex.d||(xBatTex.d=xBatTex(0)), dir=Math.random()<.5?1:-1, z0=EX.pz-4+Math.random()*6;
+    for(let k=0;k<2+(Math.random()*3|0);k++){ const s=new THREE.Sprite(new THREE.SpriteMaterial({map:tu,transparent:true,depthWrite:false})); s.scale.set(1.1,.55,1); s.renderOrder=4;
+      s.position.set(EX.px-dir*16-dir*k*1.2,3.6+Math.random()*1.4,z0+(Math.random()-.5)*3); s.userData={bat:1,dir,t:0,ph:Math.random()*6,tu,td,y0:s.position.y}; X3.group.add(s); (EX.bats=EX.bats||[]).push(s); } }
+  if(EX.bats) EX.bats=EX.bats.filter(s=>{ const u=s.userData; u.t+=dt; s.position.x+=u.dir*dt*8; s.position.y=u.y0+Math.sin(u.t*5+u.ph)*.35; s.material.map=Math.floor(u.t*12+u.ph)%2?u.tu:u.td;
+    if(u.t>4.2){ X3.group.remove(s); s.material.dispose(); return false; } return true; });
+  // drips: a ring spreads on the floor near you in damp places
+  if(['crystal','ice'].includes(EX.area.veins)){ EX.dripT-=dt; if(EX.dripT<=0){ EX.dripT=1.5+Math.random()*2.5; const x=EX.px+(Math.random()-.5)*12, z=EX.pz+(Math.random()-.5)*9, c=xcell(x,z);
+      if(c>=0&&EX.t[c]===T_FLOOR&&EX.vis[c]){ const r=new THREE.Mesh(new THREE.RingGeometry(.12,.17,20),new THREE.MeshBasicMaterial({color:0xcfe8ff,transparent:true,opacity:.6,depthWrite:false}));
+        r.rotation.x=-Math.PI/2; r.position.set(x,.04,z); r.renderOrder=2; X3.group.add(r); (EX.drips=EX.drips||[]).push(r); r.userData.t=0; } } }
+  if(EX.drips) EX.drips=EX.drips.filter(r=>{ r.userData.t+=dt; const k=r.userData.t/1.1, s=1+k*5; r.scale.set(s,s,1); r.material.opacity=.6*(1-k); if(k>=1){ X3.group.remove(r); r.geometry.dispose(); r.material.dispose(); return false; } return true; }); }
 function xFlashView(ms){ const v=$('#xView'); if(v&&v.animate) v.animate([{filter:'brightness(1)'},{filter:'brightness(2.6) saturate(.6)'},{filter:'brightness(1)'}],{duration:ms||300}); }
 /* ---------------- the depth around the dungeon ----------------
    The rooms are cut into rock that stands over a deep chasm. Behind the walls you have seen, the
@@ -829,12 +892,14 @@ function xGroupSprites(gp,grp){ const id=gp.ids[0], d=ENEMY_DEFS[id], h=XSPR*Mat
   gp.sprite=xSprite(()=>unitSprite({kind:'enemy',id,color:d.color}),h); gp.sprite.visible=false; grp.add(gp.sprite);
   gp.zz=xTextSprite('z','#9fd8ff'); gp.bang=xTextSprite('!','#ff4d5e'); gp.zz.visible=gp.bang.visible=false; grp.add(gp.zz,gp.bang); gp.h=h;
   // every group stands on a shadow and a thin ring of its colour; a red ring pulses when it closes on you
-  { const col=new THREE.Color(COLORS[d.color]?COLORS[d.color].c:'#ff5d6c'), base=new THREE.Group();
+  // the ring tells the threat: grey-green for vermin, the element's colour for most, a big red ring for a boss
+  { const col=new THREE.Color(gp.boss?'#ff3b4e':d.vermin?'#8fae7a':COLORS[d.color]?COLORS[d.color].c:'#ff5d6c'), base=new THREE.Group(); if(gp.boss) base.scale.set(1.6,1,1.6);
     const sh=new THREE.Mesh(new THREE.CircleGeometry(.75*Math.max(.8,d.scale||1),20),new THREE.MeshBasicMaterial({color:0x000000,transparent:true,opacity:.45,depthWrite:false}));
     const rg=new THREE.Mesh(new THREE.RingGeometry(.62*Math.max(.8,d.scale||1),.72*Math.max(.8,d.scale||1),28),new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:.7,depthWrite:false}));
     const warn=new THREE.Mesh(new THREE.RingGeometry(1.05,1.25,32),new THREE.MeshBasicMaterial({color:0xff3b4e,transparent:true,opacity:0,depthWrite:false,blending:THREE.AdditiveBlending}));
     for(const o of [sh,rg,warn]){ o.rotation.x=-Math.PI/2; o.renderOrder=2; base.add(o); } sh.position.y=.03; rg.position.y=.045; warn.position.y=.05;
-    base.visible=false; grp.add(base); gp.base=base; gp.warn=warn; }
+    base.visible=false; grp.add(base); gp.base=base; gp.warn=warn; gp.shadow=sh; gp.tring=rg;
+    gp.label=xLabel(d.name,gp.boss?'#ff8a8a':d.vermin?'#cfe0c0':'#f2e6c8'); gp.label.visible=false; grp.add(gp.label); }
   // a miniboss stands on a ring of its colour, so you know it for a big threat from afar
   if(gp.mini){ const r=new THREE.Mesh(new THREE.TorusGeometry(.95,.07,6,24),new THREE.MeshBasicMaterial({color:new THREE.Color(COLORS[d.color].c)})); r.rotation.x=Math.PI/2; r.position.y=.06; r.visible=false; grp.add(r); gp.ring=r; }
   // a mission's mark over the group: ♛ a bounty, ☠ a nest's brood (missions.js)
@@ -1105,7 +1170,7 @@ function xOpenChest(ch){
   if(typeof xChestExtra==='function'&&xChestExtra(ch)) return;   // a mimic (dungeon.js)
   if(ch.trap&&ch.trapKnown){ xSay('chest','The lock is trapped. Disarm it first (E).'); return; }
   if(ch.trap){ ch.trap=false; xLog('A needle in the lock pricks you!','bad'); xHurt(Math.round(5+EX.depth),'a trapped chest'); if(EX.hp<=0) return; }
-  ch.open=true; xLidOpen(ch); EX.path=[];
+  ch.open=true; xLidOpen(ch); EX.path=[]; xSparks(xw(ch.cell),xz(ch.cell),0xffd75a,ch.rich?24:16,3); xBloom(xw(ch.cell),.6,xz(ch.cell),0xffe08a,3.5);
   const rolls=ch.rich?2:1; for(let n=0;n<rolls;n++) xLoot(ch.rich); xXp(ch.rich?15:5,'chest opened');
   if(typeof xChestAfter==='function') xChestAfter(ch);
   persist(); xHud();
@@ -1250,7 +1315,7 @@ let xRaf=0, xLast=0;
 function xDoorPose(d,k,sign){ if(d.lock==='gate'||d.gate){ d.leaf.position.y=k*1.9; return; } d.leaf.rotation.y=sign*k*1.65; }
 function xDoorOpen(d,by){ if(!d||!d.leaf) return; d.leaf.visible=true;
   const bx=by!=null?xw(by):EX.px, bz=by!=null?xz(by):EX.pz, rel=d.ew?bx-xw(d.cell):bz-xz(d.cell);
-  d.sign=d.ew?(rel>0?-1:1):(rel>0?1:-1); d.gate=d.gate||d.lock==='gate'; d.anim=0;
+  d.sign=d.ew?(rel>0?-1:1):(rel>0?1:-1); d.gate=d.gate||d.lock==='gate'; d.anim=0; if(typeof xPuff==='function'&&EX.seen&&EX.seen[d.cell]) for(let k=0;k<3;k++) xPuff(xw(d.cell)+(Math.random()-.5),xz(d.cell)+(Math.random()-.5));
   if(EX.seen&&EX.seen[d.cell]){ const near=Math.hypot(xw(d.cell)-EX.px,xz(d.cell)-EX.pz)/XCS; if(near<9) xSfx(d.gate?'gate':'door',(xw(d.cell)-EX.px)/(XCS*6)); } }
 // A chest lid pops up past open, falls back and bounces; gold light spills out of it.
 function xLidOpen(ch){ const l=ch&&ch.mesh&&ch.mesh.userData.lid; if(!l) return; ch.lidT=0; xSfx('door'); }
@@ -1283,21 +1348,31 @@ function xDraw(T,dt){
   const k=Math.max(1,Math.min(1.8,.8/G.cam.aspect)), hgt=14*k, back=12.5*k;
   let zk=1; if(EX.fighting&&EX.busy){ EX.engT=(EX.engT||0)+dt; const e=Math.min(1,EX.engT/.7); zk=1-.32*e*e; } else EX.engT=0;   // a fight starting: the camera rushes in
   const sh=EX.shakeT>0?(EX.shakeT-=dt,EX.shakeT*.9):0, jx=sh?(Math.random()-.5)*sh:0, jy=sh?(Math.random()-.5)*sh:0;
-  const fx=EX.fighting&&EX.busy?EX.fighting.x:EX.px, fz=EX.fighting&&EX.busy?EX.fighting.z:EX.pz, cx=EX.px+(fx-EX.px)*(1-zk)*1.4, cz=EX.pz+(fz-EX.pz)*(1-zk)*1.4;
+  // the camera eases after you and looks a little ahead of where you are walking
+  { const ax=EX.px+(EX.vx||0)*.22, az=EX.pz+(EX.vz||0)*.18, kk=1-Math.exp(-dt*5); if(EX.camX==null||Math.hypot(EX.camX-EX.px,EX.camZ-EX.pz)>12){ EX.camX=EX.px; EX.camZ=EX.pz; } EX.camX+=(ax-EX.camX)*kk; EX.camZ+=(az-EX.camZ)*kk; }
+  const fx=EX.fighting&&EX.busy?EX.fighting.x:EX.camX, fz=EX.fighting&&EX.busy?EX.fighting.z:EX.camZ, cx=EX.camX+(fx-EX.camX)*(1-zk)*1.4, cz=EX.camZ+(fz-EX.camZ)*(1-zk)*1.4;
   G.cam.position.set(cx+jx,hgt*zk+jy,cz+back*zk); G.cam.lookAt(cx+jx,.6,cz-1.2); xWallCut(dt); xFxTick(T,dt);
   // enemies show only while in sight; a Shadow Assassin only when it is close; a dormant guardian not at all
   for(const g of EX.groups){ if(!g.sprite) continue; const v=!!EX.vis[g.cell]&&!g.dormant&&!(g.stealth&&Math.hypot(g.x-EX.px,g.z-EX.pz)/XCS>3.2); g.sprite.visible=v; g.zz.visible=v&&g.state==='sleep'; g.bang.visible=v&&g.state==='chase';
     if(g.ring){ g.ring.visible=v; g.ring.position.set(g.x,.06,g.z); }
-    if(g.base){ g.base.visible=v; if(v){ g.base.position.set(g.x,0,g.z); const near=g.state==='chase'&&Math.hypot(g.x-EX.px,g.z-EX.pz)<XCS*3.5; g.warn.material.opacity=near?.45+.4*Math.sin(T*10):0; const s=near?1+.12*Math.sin(T*10):1; g.warn.scale.set(s,s,1); } }
+    if(g.base){ g.base.visible=v; if(v){ g.base.position.set(g.x,0,g.z); const dist=Math.hypot(g.x-EX.px,g.z-EX.pz), near=g.state==='chase'&&dist<XCS*3.5; g.warn.material.opacity=near?.45+.4*Math.sin(T*10):0; const s=near?1+.12*Math.sin(T*10):1; g.warn.scale.set(s,s,1);
+      if(g.boss) g.tring.material.opacity=.55+.35*Math.sin(T*4);
+      const hop=g.state==='chase'?Math.abs(Math.sin(T*9+g.bob)):0, ss=1-hop*.35; g.shadow.scale.set(ss,ss,1);   // the shadow shrinks as it leaves the ground
+      const lv=dist<XCS*4&&g.state!=='sleep'||dist<XCS*2.2; g.label.visible=lv; if(lv) g.label.position.set(g.x,g.h+.25,g.z); } else g.label.visible=false; }
     if(g.tag){ g.tag.visible=v; if(v) g.tag.position.set(g.x,g.h+(g.state==='chase'?1.1:.5)+Math.sin(T*2.5+g.bob)*.08,g.z); }
     if(v){ g.sprite.position.set(g.x,g.state==='sleep'?0:g.state==='chase'?Math.abs(Math.sin(T*9+g.bob))*.28:(Math.floor(T*1.6+g.bob)%2)*g.h/96,g.z); xRefresh(g.sprite,(g.face||-1)<0);   // chasers hop
-      g.zz.position.set(g.x+.5,g.h+.2+Math.sin(T*2+g.bob)*.15,g.z); g.bang.position.set(g.x,g.h+.35,g.z); } }
-  G.cam.updateMatrixWorld(); xStand(EX.me); for(const g of EX.groups) if(g.sprite&&g.sprite.visible) xStand(g.sprite);
+      g.zz.position.set(g.x+.5,g.h+.2+Math.sin(T*2+g.bob)*.15,g.z); g.bang.position.set(g.x,g.h+(g.label&&g.label.visible?.95:.35)+Math.abs(Math.sin(T*6))*.12,g.z); } }
+  G.cam.updateMatrixWorld(); xStand(EX.me); for(const g of EX.groups) if(g.sprite&&g.sprite.visible){ xStand(g.sprite);
+    // idle monsters breathe; a hopping chaser squashes as it lands
+    const hop=g.state==='chase'?Math.abs(Math.sin(T*9+g.bob)):1, sq=g.state==='chase'&&hop<.25?.88+hop*.48:1+(g.state==='sleep'?.02:.03)*Math.sin(T*2.2+g.bob);
+    g.sprite.scale.y*=sq; g.sprite.scale.x*=g.state==='chase'&&hop<.25?1.08-hop*.32:1; }
   xFov(dt); xTellDraw(T);
   if(typeof xDungeonDraw==='function') xDungeonDraw(T);
   { const rc=EX.aim?EX.aim.cell:EX.searchCell, R=G.reticle; R.visible=rc!=null;
     if(R.visible){ R.position.set(xw(rc),.12,xz(rc)); const k=EX.aim?1+.05*Math.sin(T*8):1+.12*Math.sin(T*14); R.scale.set(k,1,k); R.children[0].material.opacity=EX.aim?.9:.6+.3*Math.sin(T*14); } }
   EX.downMesh.userData.ring.rotation.z+=.02;
+  for(const Ln of EX.lanterns||[]) for(const h of Ln.halos) h.material.opacity=(Ln.boss?.75:.6)+.25*Math.sin(T*(Ln.boss?5:2)+Ln.ph);
+  if(EX.runeRing){ EX.runeRing.rotation.z=T*.25; EX.runeRing.visible=EX.downMesh.visible; EX.runeRing.material.opacity=.45+.2*Math.sin(T*1.8); }
   for(const L of EX.glows){ if(!L.g.visible) continue; const f=EX.fogCur[L.floor];
     const fl=L.torch?.8+.12*Math.sin(T*11+L.ph)+.08*Math.sin(T*23.7+L.ph*3):.85+.15*Math.sin(T*1.7+L.ph);
     L.halo.material.opacity=.6*f*fl; for(const m of L.mats) m.opacity=L.beam?(.06+.06*Math.sin(T*1.5+L.ph))*(.4+.6*f):.3+.7*f;
@@ -1308,7 +1383,8 @@ function xDraw(T,dt){
     G.dust.position.set(EX.px,0,EX.pz); G.dust.material.opacity=.35+.15*Math.sin(T*.7); }
   for(const c of EX.chests) if(c.rich&&!c.open) c.mesh.position.y=Math.abs(Math.sin(T*2))*.05;
   G.lamp.intensity=1.6*(.95+.04*Math.sin(T*9.3)+.03*Math.sin(T*21.1));
-  xLightPool(T,dt); xDecorTick(T); xAirTick(T,dt); if(EX.myGlow){ EX.myGlow.position.x=EX.px; EX.myGlow.position.z=EX.pz; EX.myGlow.material.opacity=.18+.03*Math.sin(T*2.1); }
+  xLightPool(T,dt); xDecorTick(T); xAirTick(T,dt); xWeatherTick(T,dt); xLifeTick(T,dt);
+  { const lo=$('#xLowHp'); if(lo){ const r=EX.hp/xmaxHp(); lo.style.opacity=r<.3?(.55+.35*Math.sin(T*(r<.15?7:4))).toFixed(2):'0'; } } if(EX.myGlow){ EX.myGlow.position.x=EX.px; EX.myGlow.position.z=EX.pz; EX.myGlow.material.opacity=.18+.03*Math.sin(T*2.1); }
   G.renderer.render(G.scene,G.cam);
   if((EX.miniT=(EX.miniT||0)+1)%6===0) xMini();
 }

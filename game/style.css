@@ -1189,3 +1189,6 @@ button[hidden]{display:none!important;}
 
 /* a coin flying from the dungeon floor up to your gold (explore.js xCoins) */
 .xcoin{position:fixed; z-index:30; width:14px; height:14px; pointer-events:none; background:var(--px-coin) center/contain no-repeat; image-rendering:pixelated; filter:drop-shadow(0 0 4px #ffd75a);}
+
+/* the edges of the screen pulse red when your health is low (explore.js) */
+#xLowHp{position:absolute; inset:0; pointer-events:none; z-index:3; opacity:0; background:radial-gradient(ellipse at center, transparent 55%, rgba(200,20,40,.55) 100%); transition:opacity .2s;}

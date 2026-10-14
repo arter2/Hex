@@ -236,6 +236,10 @@ function xInit3D(){
   const rm=new THREE.MeshBasicMaterial({map:xRetTex(),transparent:true,opacity:.9,depthTest:false,depthWrite:false,fog:false}), ret=new THREE.Group();
   const rq=new THREE.Mesh(new THREE.PlaneGeometry(XCS*3,XCS*3),rm); rq.rotation.x=-Math.PI/2; ret.add(rq);
   ret.renderOrder=6; ret.traverse(o=>o.renderOrder=6); ret.visible=false; scene.add(ret); X3.reticle=ret;
+  // the searched wave: nine tiles that light up from the middle out when a search ends (xWaveTick)
+  const wt=xWaveTex(), wave=new THREE.Group(); for(let k=0;k<9;k++){ const q=new THREE.Mesh(new THREE.PlaneGeometry(XCS,XCS),new THREE.MeshBasicMaterial({map:wt,transparent:true,opacity:0,depthWrite:false,fog:false,blending:THREE.AdditiveBlending}));
+    q.rotation.x=-Math.PI/2; q.position.set((k%3-1)*XCS,0,(Math.floor(k/3)-1)*XCS); q.userData.ring=k!==4; q.renderOrder=7; wave.add(q); }
+  wave.visible=false; scene.add(wave); X3.wave=wave;
   cv.addEventListener('pointerdown',e=>{ if(!EX||!EX.active||xPaused) return; e.preventDefault(); EX.needInput=false; try{ cv.setPointerCapture(e.pointerId); }catch(_){}
     const [ax,ay]=appXY(e.clientX,e.clientY);
     if(EX.aim){ EX.aim.id=e.pointerId; EX.aim.cell=xAimCell(ax,ay); return; }
@@ -249,7 +253,7 @@ function xInit3D(){
     xStickDraw(); });
   cv.addEventListener('pointermove',e=>{ if(EX&&EX.aim&&e.pointerId===EX.aim.id){ const [ax,ay]=appXY(e.clientX,e.clientY); EX.aim.cell=xAimCell(ax,ay); return; }
     if(e.pointerId===XHOLD.id){ [XHOLD.x,XHOLD.y]=appXY(e.clientX,e.clientY); if(xMoveMode()==='goal'||xMoveMode()==='fixed'&&!XHOLD.stick) xGoalAt(XHOLD.x,XHOLD.y); xStickDraw(); } });
-  const end=e=>{ if(EX&&EX.aim&&e.pointerId===EX.aim.id) return xSearchAt(EX.aim.cell);
+  const end=e=>{ if(EX&&EX.aim&&e.pointerId===EX.aim.id) return xSearchAt(EX.aim.cell,true);
     if(e.pointerId!==XHOLD.id) return;
     if(xMoveMode()==='tapstick'&&!XHOLD.stick&&performance.now()-XHOLD.t0<XTAP_MS&&Math.hypot(XHOLD.x-XHOLD.x0,XHOLD.y-XHOLD.y0)<XTAP_PX) xGoalAt(XHOLD.x0,XHOLD.y0);   // a quick tap: walk there
     XHOLD.on=false; XHOLD.id=null; XHOLD.stick=false; xStickDraw(); };   // in Walk to touch, letting go keeps you walking to the goal
@@ -957,33 +961,22 @@ const XB={ ball:xSetF('hexmancers-xball',XB_DEF.ball), strip:xSetF('hexmancers-x
 /* The debug menu: test sliders and switches for the dungeon's look. Three fingers tapped three
    times anywhere opens it (` on a keyboard); it sits low on the screen over a clear backdrop, so
    the dungeon behind changes live as you slide. Every value is saved in this browser. */
-/* The search reticle, in four looks to choose from (debug menu): pixel art on a 96 x 96 canvas,
-   32 art pixels to a tile as on the floors, over the 3 x 3 tiles a search covers. Each has a dark rim so it reads on
-   any floor. */
-const XRET_DEF={style:'brackets', color:'gold'}, XRET={};
-for(const k in XRET_DEF){ let v=null; try{ v=localStorage.getItem('hexmancers-xret-'+k); }catch(e){} XRET[k]=v||XRET_DEF[k]; }
-const XRET_COL={gold:'#f2c94c', cyan:'#7fd4ff', white:'#f4f1e6', green:'#39ff8a'};
-function xRetTex(){ const N=96, T=32, cv=document.createElement('canvas'); cv.width=cv.height=N; const c=cv.getContext('2d'), C=XRET_COL[XRET.color]||XRET_COL.gold, D='rgba(0,0,0,.7)', M=N/2;
+/* The search reticle: the nine tiles a search covers outlined in bone-white dashes, the middle one
+   solid with corner studs, as pixel art at the floors' 32 art pixels a tile (96 x 96), with a dark rim
+   so it reads on any floor. */
+const XRET_C='#f4f1e6';
+function xRetTex(){ const N=96, T=32, cv=document.createElement('canvas'); cv.width=cv.height=N; const c=cv.getContext('2d'), C=XRET_C, D='rgba(0,0,0,.55)';
   const box=(r,col)=>{ c.fillStyle=col; for(const [x,y,w,h] of r) c.fillRect(x,y,w,h); };
-  const rim=r=>box(r.map(([x,y,w,h])=>[x-1,y-1,w+2,h+2]),D), draw=(r,col)=>{ rim(r); box(r,col||C); };
-  const st=XRET.style;
-  if(st==='brackets'){   // four corner brackets round the area and a small cross on the middle tile
-    const L=14, t=2, r=[]; for(const [x,y,sx,sy] of [[2,2,1,1],[N-3,2,-1,1],[2,N-3,1,-1],[N-3,N-3,-1,-1]]){ r.push([sx>0?x:x-L+1,sy>0?y:y-t+1,L,t],[sx>0?x:x-t+1,sy>0?y:y-L+1,t,L]); }
-    draw(r); draw([[M-1,M-7,2,4],[M-1,M+3,2,4],[M-7,M-1,4,2],[M+3,M-1,4,2]]); }
-  else if(st==='tiles'){   // the nine tiles outlined in dashes, the middle one solid with corner studs
-    c.globalAlpha=.14; box([[T+2,T+2,T-4,T-4]],C); c.globalAlpha=1;
-    const r=[]; for(let ty=0;ty<3;ty++) for(let tx=0;tx<3;tx++){ if(tx===1&&ty===1) continue; const x0=tx*T+2, y0=ty*T+2, w=T-4;
-      for(let k=0;k<w;k+=6){ const n=Math.min(3,w-k); r.push([x0+k,y0,n,1],[x0+k,y0+w-1,n,1],[x0,y0+k,1,n],[x0+w-1,y0+k,1,n]); } }
-    draw(r); const a=T+2, w=T-4; draw([[a,a,w,1],[a,a+w-1,w,1],[a,a,1,w],[a+w-1,a,1,w]]); draw([[a-1,a-1,3,3],[a+w-2,a-1,3,3],[a-1,a+w-2,3,3],[a+w-2,a+w-2,3,3]]); }
-  else if(st==='rune'){   // a stepped pixel ring with four notches pointing in and a dot at its heart
-    const r=[], R0=M-6; for(let y=0;y<N;y++) for(let x=0;x<N;x++){ const dx=x+.5-M, dy=y+.5-M, d=Math.hypot(dx,dy); if(d>=R0&&d<R0+2&&Math.abs(dx)>4&&Math.abs(dy)>4) r.push([x,y,1,1]); }
-    draw(r); draw([[M-1,3,2,8],[M-1,N-11,2,8],[3,M-1,8,2],[N-11,M-1,8,2]]); draw([[M-1,M-1,2,2]]); }
-  else {   // 'glow': the nine tiles lit like a lantern sweep, the middle one brightest, each with a bevel
-    for(let ty=0;ty<3;ty++) for(let tx=0;tx<3;tx++){ const x0=tx*T+2, y0=ty*T+2, w=T-4, mid=tx===1&&ty===1;
-      c.globalAlpha=mid?.36:.18; box([[x0,y0,w,w]],C); c.globalAlpha=mid?.9:.55; box([[x0,y0,w,1],[x0,y0,1,w]],C); c.globalAlpha=mid?.55:.3; box([[x0,y0+w-1,w,1],[x0+w-1,y0,1,w]],D); }
-    c.globalAlpha=1; draw([[M-1,M-5,2,10],[M-5,M-1,10,2]],'#fff8e0'); }
+  const draw=(r)=>{ box(r.map(([x,y,w,h])=>[x-1,y-1,w+2,h+2]),D); box(r,C); };
+  c.globalAlpha=.08; box([[T+2,T+2,T-4,T-4]],C); c.globalAlpha=1;
+  const r=[]; for(let ty=0;ty<3;ty++) for(let tx=0;tx<3;tx++){ if(tx===1&&ty===1) continue; const x0=tx*T+2, y0=ty*T+2, w=T-4;
+    for(let k=0;k<w;k+=6){ const n=Math.min(3,w-k); r.push([x0+k,y0,n,1],[x0+k,y0+w-1,n,1],[x0,y0+k,1,n],[x0+w-1,y0+k,1,n]); } }
+  draw(r); const a=T+2, w=T-4; draw([[a,a,w,1],[a,a+w-1,w,1],[a,a,1,w],[a+w-1,a,1,w]]); draw([[a-1,a-1,3,3],[a+w-2,a-1,3,3],[a-1,a+w-2,3,3],[a+w-2,a+w-2,3,3]]);
   return xTex(cv); }
-function xRetApply(){ const R=X3&&X3.reticle; if(!R) return; const m=R.children[0].material; if(m.map) m.map.dispose(); m.map=xRetTex(); m.needsUpdate=true; }
+// one tile of the searched wave: a bone-white tile with a bright bevelled rim (32 x 32 art pixels)
+function xWaveTex(){ const cv=document.createElement('canvas'); cv.width=cv.height=32; const c=cv.getContext('2d');
+  c.fillStyle='rgba(244,241,230,.35)'; c.fillRect(2,2,28,28); c.fillStyle='rgba(255,252,240,.95)'; c.fillRect(2,2,28,2); c.fillRect(2,2,2,28);
+  c.fillStyle='rgba(244,241,230,.6)'; c.fillRect(2,28,28,2); c.fillRect(28,2,2,28); return xTex(cv); }
 const XDBG=[   // [element id, object, key, saved as, decimals (null: a checkbox), what a change does]
   ['dbgTexel',()=>XLIT,'texel','hexmancers-xl-texel',null,'lit'], ['dbgSteps',()=>XLIT,'steps','hexmancers-xl-steps',0,'lit'],
   ['dbgNmap',()=>XLIT,'nmap','hexmancers-xl-nmap',null,'lit'], ['dbgNStrF',()=>XLIT,'nstrF','hexmancers-xl-nstrF',2,'lit'], ['dbgNStrW',()=>XLIT,'nstrW','hexmancers-xl-nstrW',2,'lit'],
@@ -992,20 +985,18 @@ const XDBG=[   // [element id, object, key, saved as, decimals (null: a checkbox
   ['setXBall',()=>XB,'ball','hexmancers-xball',2,''], ['setXStrip',()=>XB,'strip','hexmancers-xstrip',2,''],
   ['dbgFps',()=>XLIT,'fps','hexmancers-xl-fps',null,'fps'],
   ...[['dbgAmb','amb'],['dbgSun','sun'],['dbgLamp','lamp'],['dbgLampRad','lampRad'],['dbgLampY','lampY'],['dbgTorch','torch'],['dbgTorchRad','torchRad'],['dbgFlick','flick'],['dbgMyGlow','myGlow']].map(([id,k])=>[id,()=>XLIT,k,'hexmancers-xl-'+k,2,'']),
-  ['dbgFogNear',()=>XLIT,'fogNear','hexmancers-xl-fogNear',0,''], ['dbgFogFar',()=>XLIT,'fogFar','hexmancers-xl-fogFar',0,''],
-  ['dbgRetStyle',()=>XRET,'style','hexmancers-xret-style','s','ret'], ['dbgRetColor',()=>XRET,'color','hexmancers-xret-color','s','ret'] ];
+  ['dbgFogNear',()=>XLIT,'fogNear','hexmancers-xl-fogNear',0,''], ['dbgFogFar',()=>XLIT,'fogFar','hexmancers-xl-fogFar',0,''] ];
 let xBakeT=0;
 function xDbgApply(what){ if(what==='lit') xLitRefresh(); else if(what==='bake'){ xLitRefresh(); clearTimeout(xBakeT); xBakeT=setTimeout(xBakeAO,120); }
-  else if(what==='ret') xRetApply();
   else if(what==='fps'){ const f=document.getElementById('xFps'); if(f) f.style.display=XLIT.fps?'':'none'; } }
 function xBindSliders(){ for(const [id,obj,k,key,dec,what] of XDBG){ const el=document.getElementById(id), out=document.getElementById(id+'V'), O=obj(); if(!el) continue;
-    const show=()=>{ if(dec==='s') el.value=O[k]; else if(dec==null) el.checked=!!O[k]; else { el.value=O[k]; if(out) out.textContent=(+O[k]).toFixed(dec); } };
-    show(); el.oninput=el.onchange=()=>{ O[k]=dec==='s'?el.value:dec==null?el.checked:+el.value; show(); try{ localStorage.setItem(key,dec==null?(O[k]?'1':'0'):String(O[k])); }catch(e){} xDbgApply(what); }; }
+    const show=()=>{ if(dec==null) el.checked=!!O[k]; else { el.value=O[k]; if(out) out.textContent=(+O[k]).toFixed(dec); } };
+    show(); el.oninput=el.onchange=()=>{ O[k]=dec==null?el.checked:+el.value; show(); try{ localStorage.setItem(key,dec==null?(O[k]?'1':'0'):String(O[k])); }catch(e){} xDbgApply(what); }; }
   const box=document.getElementById('debug'); if(!box||xBindSliders.done) return; xBindSliders.done=1;
   document.getElementById('dbgClose').onclick=xDbgClose; xDbgGrip();
   box.addEventListener('pointerdown',e=>{ if(e.target===box) xDbgClose(); });
-  document.getElementById('dbgReset').onclick=()=>{ for(const [id,obj,k,key,dec,what] of XDBG){ const O=obj(); O[k]=(O===XB?XB_DEF:O===XRET?XRET_DEF:XLIT_DEF)[k]; try{ localStorage.removeItem(key); }catch(e){} }
-    xBindSliders(); xLitRefresh(); xBakeAO(); xDbgApply('fps'); xRetApply(); };
+  document.getElementById('dbgReset').onclick=()=>{ for(const [id,obj,k,key,dec,what] of XDBG){ const O=obj(); O[k]=(O===XB?XB_DEF:XLIT_DEF)[k]; try{ localStorage.removeItem(key); }catch(e){} }
+    xBindSliders(); xLitRefresh(); xBakeAO(); xDbgApply('fps'); };
   // three fingers down together, three times within a second and a half
   let taps=[], counted=false;
   document.addEventListener('touchstart',e=>{ if(e.touches.length<3||counted) return; counted=true; const t=performance.now(); taps=taps.filter(x=>t-x<1500); taps.push(t);
@@ -1390,7 +1381,7 @@ function xSpring(tr,remote){ const T=TRAPS[tr.kind]; tr.known=true; xTrapMesh(tr
 // you aim). Pressing Search again while aiming searches where the reticle is.
 const XAIM_R=6, XSEARCH_R=1, XHOLD_MS=300;   // how far from you the reticle can go, a search's reach, the hold that brings up the reticle
 function xSearch(){ if(!EX||EX.action||EX.busy) return;
-  if(EX.aim) return xSearchAt(EX.aim.cell);
+  if(EX.aim) return xSearchAt(EX.aim.cell,true);
   EX.path=[]; XHOLD.on=false; EX.aim={cell:EX.pc}; xLog('Slide onto the dungeon to aim, or tap where to search.','dim'); xHud(); }
 // the Search button: a tap searches around you (or where the reticle is); a hold brings up the reticle
 (function(){ const b=document.getElementById('xSearch'); if(!b) return; let h=null;
@@ -1403,10 +1394,10 @@ function xSearch(){ if(!EX||EX.action||EX.busy) return;
     const d=h; h=null; clearTimeout(d.t); if(e.type!=='pointerup'||!EX) return;
     if(d.was) xSearch();                                  // aiming already: search where the reticle is
     else if(!d.aim) xSearchAt(EX.pc);                     // a quick tap: search around you
-    else if(d.out&&EX.aim) xSearchAt(EX.aim.cell); };     // slid out onto the dungeon: search there; lifted on the button: keep aiming
+    else if(d.out&&EX.aim) xSearchAt(EX.aim.cell,true); };     // slid out onto the dungeon: search there; lifted on the button: keep aiming
   b.addEventListener('pointerup',end); b.addEventListener('pointercancel',end); b.addEventListener('contextmenu',e=>e.preventDefault()); })();
-function xSearchAt(c){ if(!EX||EX.action||EX.busy) return; EX.aim=null; EX.path=[]; EX.searchCell=c; xLog('You search the area…','dim');
-  EX.action={t:1.1, done(){ EX.searchCell=null; if(!xSearchRoll(1,false,c,XSEARCH_R)) xLog('You find nothing.','dim'); } };
+function xSearchAt(c,aimed){ if(!EX||EX.action||EX.busy) return; EX.aim=null; EX.path=[]; EX.searchCell=c; EX.searchAimed=!!aimed; xLog('You search the area…','dim');
+  EX.action={t:1.1, done(){ EX.searchCell=null; EX.wave={cell:c,t:0}; if(!xSearchRoll(1,false,c,XSEARCH_R)) xLog('You find nothing.','dim'); } };
   xHud(); }
 // the cell under a screen point, kept within reach of you
 function xAimCell(ex,ey){ const G=X3, r=appBox($('#xView')), v=new THREE.Vector2((ex-r.left)/r.width*2-1,-(ey-r.top)/r.height*2+1), hit=new THREE.Vector3();
@@ -1550,7 +1541,7 @@ function xKeep(){ const m=xFloors(); if(m&&EX&&!EX.branch) m.set(EX.depth,EX); }
 // go to a floor, arriving on its stairs up or down (or a cell): a kept floor comes back as it was;
 // a new one reached from below has its guardian already beaten, since you came past it
 function xGoFloor(depth,hp,at){ const m=xFloors(), F=m&&m.get(depth), ail=EX&&EX.ail;
-  if(F){ EX=F; EX.hp=hp; EX.busy=false; EX.path=[]; EX.action=null; EX.aim=null; EX.searchCell=null; EX.stuckT=0; EX.fighting=null; if(ail) EX.ail=ail; xBuildScene(); for(const tr of EX.traps) if(tr.known&&tr.armed) xTrapMesh(tr); }
+  if(F){ EX=F; EX.hp=hp; EX.busy=false; EX.path=[]; EX.action=null; EX.aim=null; EX.searchCell=null; EX.wave=null; EX.stuckT=0; EX.fighting=null; if(ail) EX.ail=ail; xBuildScene(); for(const tr of EX.traps) if(tr.known&&tr.armed) xTrapMesh(tr); }
   else { buildFloor(depth,hp);
     if(at==='down') for(const g of EX.groups.filter(g=>g.boss)){ EX.groups.splice(EX.groups.indexOf(g),1); xDropGroup(g); EX.bossDead=true; } }
   const c=typeof at==='number'?at:at==='down'?EX.down:EX.up; EX.pc=c; EX.px=xw(c); EX.pz=xz(c); EX.view=at==='down'?'back':'front'; xUpdateVis(); }
@@ -1639,11 +1630,9 @@ function xDraw(T,dt){
     g.sprite.scale.y*=sq; g.sprite.scale.x*=g.state==='chase'&&hop<.25?1.08-hop*.32:1; }
   xFov(dt); xTellDraw(T);
   if(typeof xDungeonDraw==='function') xDungeonDraw(T);
-  { const rc=EX.aim?EX.aim.cell:EX.searchCell, R=G.reticle; R.visible=rc!=null;
-    if(R.visible){ R.position.set(xw(rc),.12,xz(rc)); const st=XRET.style, m=R.children[0].material;
-      // the brackets step in and out by an art pixel while you aim; the others breathe; a search under way blinks
-      const k=EX.aim?(st==='brackets'?1+(Math.sin(T*6)>0?2/96:0):1):1; R.scale.set(k,1,k);
-      m.opacity=EX.aim?(st==='brackets'?.95:.72+.23*Math.sin(T*5)):(Math.sin(T*18)>0?.95:.45); } }
+  { const rc=EX.aim?EX.aim.cell:EX.searchAimed?EX.searchCell:null, R=G.reticle; R.visible=rc!=null;   // a quick search around you shows no reticle, only the wave
+    if(R.visible){ R.position.set(xw(rc),.12,xz(rc)); R.children[0].material.opacity=EX.aim?.5+.12*Math.sin(T*5):(Math.sin(T*18)>0?.6:.3); } }   // it breathes while you aim and blinks while you search
+  xWaveTick(dt);
   EX.downMesh.userData.ring.rotation.z+=.02;
   for(const Ln of EX.lanterns||[]) for(const h of Ln.halos) h.material.opacity=(Ln.boss?.75:.6)+.25*Math.sin(T*(Ln.boss?5:2)+Ln.ph);
   if(EX.runeRing){ EX.runeRing.rotation.z=T*.25; EX.runeRing.visible=EX.downMesh.visible; EX.runeRing.material.opacity=.45+.2*Math.sin(T*1.8); }
@@ -1663,6 +1652,13 @@ function xDraw(T,dt){
   xRender(G); xFpsTick(dt);
   if((EX.miniT=(EX.miniT||0)+1)%6===0) xMini();
 }
+// the searched wave: the middle tile flashes, then the eight round it a beat later, each fading out in
+// steps of a quarter (a pixel-art fade) over the floor where the search was
+function xWaveTick(dt){ const W=X3.wave, w=EX.wave; if(!W) return; if(!w){ W.visible=false; return; }
+  w.t+=dt; W.visible=true; W.position.set(xw(w.cell),.13,xz(w.cell));
+  const f=(t0)=>{ const u=(w.t-t0)/.5; if(u<0||u>1) return 0; const a=u<.15?u/.15:1-(u-.15)/.85; return Math.round(a*4)/4; };
+  for(const q of W.children) q.material.opacity=q.userData.ring?.8*f(.16):f(0);
+  if(w.t>.7){ EX.wave=null; W.visible=false; } }
 function xMini(){
   const cv=$('#xMini'), c=cv.getContext('2d'), big=cv.classList.contains('big');
   // held big, the map zooms to the part of the floor you have explored

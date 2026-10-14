@@ -421,7 +421,9 @@ function xBuildScene(){
   EX.wEdge=new Uint8Array(XN*XN);
   for(const c of EX.wIdx.keys()){ const x=xcx(c), y=xcy(c), open=(a,b)=>a<0||b<0||a>=XN||b>=XN||!EX.wIdx.has(xi(a,b));
     EX.wEdge[c]=(open(x+1,y)?1:0)|(open(x-1,y)?2:0)|(open(x,y+1)?4:0)|(open(x,y-1)?8:0); }
-  { const d=new Uint8Array(XN*XN*4); for(let c=0;c<XN*XN;c++) d[(xcy(c)*XN+xcx(c))*4]=EX.wEdge[c];
+  // also each wall cell's flag (b) and top (g, in 4ths of a unit... 0-4 world units): the cut volume's carved face only shows inside a block
+  { const d=new Uint8Array(XN*XN*4); for(let c=0;c<XN*XN;c++){ const o=(xcy(c)*XN+xcx(c))*4, w=EX.wIdx.get(c); d[o]=EX.wEdge[c];
+      if(w){ d[o+1]=Math.min(255,Math.round((XWALL*xWallSy(c,EX.wms.indexOf(w[0])===0)-.05)/4*255)); d[o+2]=255; } }
     const et=new THREE.DataTexture(d,XN,XN,THREE.RGBAFormat); et.magFilter=et.minFilter=THREE.NearestFilter; et.needsUpdate=true; EX.wEdgeTex=et; for(const gm of EX.wGhost) gm.material.userData.U.uEdge.value=et; }
   // doors: an arched doorway of the area's stone, and while it is closed a plank door with iron
   // bands and studs, its top rounded to the arch; a locked door shows its lock: a bronze, silver or
@@ -964,8 +966,11 @@ function xPaintCells(){
 // test values, tuned by hand in the debug menu: the dither ball's radius in tiles, and the cut heights
 // (a share of the wall) nearest the camera and just in front of you
 const xSetF=(k,d)=>{ try{ const v=parseFloat(localStorage.getItem(k)); return isNaN(v)?d:v; }catch(e){ return d; } };
-const XB_DEF={ ball:1.5, lo:.12, hi:.35 };
-const XB={ ball:xSetF('hexmancers-xball',XB_DEF.ball), lo:xSetF('hexmancers-xcutlo',XB_DEF.lo), hi:xSetF('hexmancers-xcuthi',XB_DEF.hi) };
+const XB_DEF={ ball:1.5, vr:3, vlo:.12, voff:1.5 };
+const XB={ ball:xSetF('hexmancers-xball',XB_DEF.ball), vr:xSetF('hexmancers-xvr',XB_DEF.vr), vlo:xSetF('hexmancers-xvlo',XB_DEF.vlo), voff:xSetF('hexmancers-xvoff',XB_DEF.voff) };
+const XVOL={ uVol:{value:new THREE.Vector4(0,-99,0,0)} };
+// the cut ball follows you: its radius, and its centre toward the camera and high enough that its lowest point cuts walls to XB.vlo
+function xVolSet(){ const R=XB.vr*XCS; XVOL.uVol.value.set(EX.px,XB.vlo*XWALL-.05+R,EX.pz+XB.voff*XCS,R); }
 /* The debug menu: test sliders and switches for the dungeon's look. Three fingers tapped three
    times anywhere opens it (` on a keyboard); it sits low on the screen over a clear backdrop, so
    the dungeon behind changes live as you slide. Every value is saved in this browser. */
@@ -974,7 +979,7 @@ const XDBG=[   // [element id, object, key, saved as, decimals (null: a checkbox
   ['dbgNmap',()=>XLIT,'nmap','hexmancers-xl-nmap',null,'lit'], ['dbgNStrF',()=>XLIT,'nstrF','hexmancers-xl-nstrF',2,'lit'], ['dbgNStrW',()=>XLIT,'nstrW','hexmancers-xl-nstrW',2,'lit'],
   ['dbgAO',()=>XLIT,'ao','hexmancers-xl-ao',null,'lit'], ['dbgAOStr',()=>XLIT,'aoStr','hexmancers-xl-aoStr',2,'lit'], ['dbgAORad',()=>XLIT,'aoRad','hexmancers-xl-aoRad',2,'bake'],
   ['dbgSSAO',()=>XLIT,'ssao','hexmancers-xl-ssao',null,''], ['dbgSSAOStr',()=>XLIT,'ssaoStr','hexmancers-xl-ssaoStr',2,''], ['dbgSSAORad',()=>XLIT,'ssaoRad','hexmancers-xl-ssaoRad',2,''],
-  ['setXBall',()=>XB,'ball','hexmancers-xball',2,''], ['setXCutLo',()=>XB,'lo','hexmancers-xcutlo',2,''], ['setXCutHi',()=>XB,'hi','hexmancers-xcuthi',2,''],
+  ['setXBall',()=>XB,'ball','hexmancers-xball',2,''], ['setXVR',()=>XB,'vr','hexmancers-xvr',2,''], ['setXVLo',()=>XB,'vlo','hexmancers-xvlo',2,''], ['setXVOff',()=>XB,'voff','hexmancers-xvoff',2,''],
   ['dbgFps',()=>XLIT,'fps','hexmancers-xl-fps',null,'fps'] ];
 let xBakeT=0;
 function xDbgApply(what){ if(what==='lit') xLitRefresh(); else if(what==='bake'){ xLitRefresh(); clearTimeout(xBakeT); xBakeT=setTimeout(xBakeAO,120); }
@@ -1021,19 +1026,28 @@ function xDitherMat(m){ m.customProgramCacheKey=()=>'xdither'+(m.vertexColors?'v
    its strata under a weathered rind; built walls show the dressed face stones along every open side
    with mortared rubble packed in the core (looser and darker in rubble walls). */
 function xCutMat(m,kind,S){ const col=v=>{ const t=xTone(S,v); return new THREE.Color(t[0]/255,t[1]/255,t[2]/255); };
-  const U={ uCL:{value:col(.66)}, uCM:{value:col(.42)}, uCD:{value:col(.16)}, uEdge:{value:null}, uFog:{value:EX.fogTex} };
+  const U={ uCL:{value:col(.66)}, uCM:{value:col(.42)}, uCD:{value:col(.16)}, uEdge:{value:null}, uFog:{value:EX.fogTex}, uVol:XVOL.uVol };
   m.userData.U=U; m.extensions={fragDepth:true}; m.defines=Object.assign(m.defines||{},{XKIND:kind}); m.customProgramCacheKey=()=>'xcut'+kind;
   m.onBeforeCompile=sh=>{ Object.assign(sh.uniforms,U);
     sh.vertexShader='attribute float aCut;\nattribute float aEdge;\nvarying float vCut;\nvarying float vEdge;\nvarying vec3 vXWP;\nvarying vec3 vXIC;\n'+sh.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\n  vec4 xwp=instanceMatrix*vec4(transformed,1.0);\n  vXWP=(modelMatrix*xwp).xyz; vCut=aCut; vEdge=aEdge;\n  #ifdef USE_INSTANCING_COLOR\n  vXIC=instanceColor;\n  #else\n  vXIC=vec3(1.0);\n  #endif');
-    sh.fragmentShader='varying float vCut;\nvarying float vEdge;\nvarying vec3 vXWP;\nvarying vec3 vXIC;\nuniform vec3 uCL;\nuniform vec3 uCM;\nuniform vec3 uCD;\nuniform mat4 projectionMatrix;\nuniform sampler2D uEdge;\nuniform sampler2D uFog;\n'+XCUT_GLSL
-      +sh.fragmentShader.replace('void main() {','void main() {\n  if(vXWP.y>vCut) discard;\n  bool xIn=!gl_FrontFacing; vec3 xP=vXWP;\n  if(xIn){ vec3 rd=vXWP-cameraPosition; xP=cameraPosition+rd*((vCut-cameraPosition.y)/rd.y); vec4 cp=projectionMatrix*viewMatrix*vec4(xP,1.0); gl_FragDepthEXT=cp.z/cp.w*.5+.5; } else gl_FragDepthEXT=gl_FragCoord.z;')
-      .replace('#include <color_fragment>','#include <color_fragment>\n  if(xIn){ float fb=1.0-texture2D(uFog,vec2(xP.x/'+(XCS*XN).toFixed(1)+',1.0-xP.z/'+(XCS*XN).toFixed(1)+')).r; diffuseColor.rgb=xCap(xP)*vec3(fb,fb,fb*1.05); } else if(vCut-vXWP.y<.05) diffuseColor.rgb*=1.35;')
+    sh.fragmentShader='varying float vCut;\nvarying float vEdge;\nvarying vec3 vXWP;\nvarying vec3 vXIC;\nuniform vec3 uCL;\nuniform vec3 uCM;\nuniform vec3 uCD;\nuniform mat4 projectionMatrix;\nuniform sampler2D uEdge;\nuniform sampler2D uFog;\nuniform vec4 uVol;\n'+XCUT_GLSL
+      +sh.fragmentShader.replace('void main() {','void main() {\n  bool xIn=!gl_FrontFacing; vec3 xP=vXWP;\n  if(!xIn){ if(xVolH(vXWP.xz)<vXWP.y) discard; gl_FragDepthEXT=gl_FragCoord.z; }\n  else { if(!xVolHit(vXWP,xP)) discard; vec4 cp=projectionMatrix*viewMatrix*vec4(xP,1.0); gl_FragDepthEXT=cp.z/cp.w*.5+.5; }')
+      .replace('#include <color_fragment>','#include <color_fragment>\n  if(xIn){ float fb=1.0-texture2D(uFog,vec2(xP.x/'+(XCS*XN).toFixed(1)+',1.0-xP.z/'+(XCS*XN).toFixed(1)+')).r; diffuseColor.rgb=xCap(xP)*vec3(fb,fb,fb*1.05); } else if(xVolH(vXWP.xz)-vXWP.y<.05) diffuseColor.rgb*=1.35;')
       .replace('#include <emissivemap_fragment>','#include <emissivemap_fragment>\n  if(xIn) totalEmissiveRadiance+=diffuseColor.rgb*.3;')
-      .replace('#include <normal_fragment_begin>','#include <normal_fragment_begin>\n  if(xIn) normal=normalize((viewMatrix*vec4(0.0,1.0,0.0,0.0)).xyz);')
+      .replace('#include <normal_fragment_begin>','#include <normal_fragment_begin>\n  if(xIn) normal=normalize((viewMatrix*vec4(normalize(uVol.xyz-xP),0.0)).xyz);')
       .replace('#include <normal_fragment_maps>','if(!xIn){\n#include <normal_fragment_maps>\n}')
       .replace('#include <lights_fragment_begin>',THREE.ShaderChunk.lights_fragment_begin.replace('geometry.position = - vViewPosition;','geometry.position = xIn ? (viewMatrix*vec4(xP,1.0)).xyz : - vViewPosition;')); };
   return m; }
 const XCUT_GLSL=`
+// the cut volume: a ball around you (uVol: centre, radius) and everything above its lower half. xVolH is
+// the height it cuts down to over a point of the floor (far above where the ball does not reach)
+float xVolH(vec2 xz){ vec2 q=xz-uVol.xz; float d2=dot(q,q), r2=uVol.w*uVol.w; return d2<r2?uVol.y-sqrt(r2-d2):1e4; }
+// looking into a cut block through its inside faces: the carved face is where the view ray leaves the
+// ball, if that point is still inside a wall block (below its top, above the floor)
+bool xVolHit(vec3 Q,out vec3 X){ vec3 rd=normalize(Q-cameraPosition), oc=cameraPosition-uVol.xyz; float b=dot(oc,rd), h=b*b-dot(oc,oc)+uVol.w*uVol.w;
+  if(h<0.0) return false; float s=-b+sqrt(h); X=cameraPosition+rd*s;
+  if(s>length(Q-cameraPosition)+.002||X.y>=uVol.y||X.y<-.05) return false;
+  vec4 E=texture2D(uEdge,(floor(X.xz/${XCS.toFixed(1)})+.5)/${XN.toFixed(1)}); return E.b>.5&&X.y<E.g*4.0; }
 float xh(vec2 p){ vec3 q=fract(vec3(p.xyx)*.1031); q+=dot(q,q.yzx+33.33); return fract((q.x+q.y)*q.z); }
 float xn(vec2 p){ vec2 i=floor(p), f=fract(p); f=f*f*(3.0-2.0*f); return mix(mix(xh(i),xh(i+vec2(1.0,0.0)),f.x),mix(xh(i+vec2(0.0,1.0)),xh(i+vec2(1.0,1.0)),f.x),f.y); }
 // cells: x = distance to the nearest centre, y = gap to the second (small on a seam), z = the cell's random value
@@ -1197,16 +1211,18 @@ function xWallFade(c,v){ const w=EX.wIdx.get(c); if(!w) return; const [wm,k]=w, 
   else if(EX.gSlot[c]>=0){ const slot=EX.gSlot[c], last=L.pop(); EX.gSlot[c]=-1; if(last!==c){ L[slot]=last; EX.gSlot[last]=slot; put(last,slot); } gm.count=L.length; }
   A.needsUpdate=E.needsUpdate=true; gm.instanceMatrix.needsUpdate=true; if(gm.instanceColor) gm.instanceColor.needsUpdate=true;
   xDressShow(c,!solid); }
-// how much of a wall stands: 1 unless it is between the camera and you; then from XB.hi just in front
-// of you down to XB.lo three rows nearer the camera, following you smoothly as you walk
-function xCutTarget(c){ if(!EX) return 1; const dy=xcy(c)-xcy(EX.pc); if(!(dy>0&&dy<=9&&Math.abs(xcx(c)-xcx(EX.pc))<=11)) return 1;
-  const t=Math.min(1,Math.max(0,((xz(c)-EX.pz)/XCS-1)/3)); return Math.max(.02,Math.min(.99,XB.hi+(XB.lo-XB.hi)*t)); }
+// is a cell (a wall, or the door or wall light on it) touched by the cut ball? 1 = no, .5 = yes: the
+// ball dips below the cell's top somewhere over its square
+function xCutTarget(c){ if(!EX) return 1; const V=XVOL.uVol.value, R=V.w, x0=xcx(c)*XCS, z0=xcy(c)*XCS, dx=Math.max(x0-V.x,0,V.x-x0-XCS), dz=Math.max(z0-V.z,0,V.z-z0-XCS), d2=dx*dx+dz*dz;
+  if(d2>=R*R) return 1; const w=EX.wIdx.get(c), top=w?XWALL*xWallSy(c,EX.wms.indexOf(w[0])===0)-.05:XWALL; return V.y-Math.sqrt(R*R-d2)<top?.5:1; }
 // fade a whole object (a torch, a banner, a door) to a share of its own opacity
 function xFadeObj(g,a){ g.traverse(o=>{ const M=o.material; if(!M) return; for(const mm of Array.isArray(M)?M:[M]){ const u=mm.userData; if(u.op0==null){ u.op0=mm.opacity; u.tr0=mm.transparent; u.dw0=mm.depthWrite; }
     const f=a<.995; mm.transparent=f||u.tr0; mm.depthWrite=f?false:u.dw0; mm.opacity=u.op0*a; } }); }
 function xWallCut(dt){ const k=Math.min(1,dt*7); let touched=new Set();
-  for(const c of EX.wList){ const tg=xCutTarget(c), cur=EX.wCut[c]; if(Math.abs(cur-tg)<.003) continue;
-    const v=Math.abs(cur-tg)<.01?tg:cur+(tg-cur)*k; EX.wCut[c]=v; xWallFade(c,v); const w=EX.wIdx.get(c); touched.add(w[0]); touched.add(EX.wGhost[EX.wms.indexOf(w[0])]); }
+  // a wall moves to the cut mesh the moment the ball touches it, and back once it leaves: the ball itself
+  // does the cutting, per pixel, so nothing eases or steps
+  for(const c of EX.wList){ const tg=xCutTarget(c), cur=EX.wCut[c]; if((tg<.995)===(cur<.995)) continue;
+    EX.wCut[c]=tg; xWallFade(c,tg); const w=EX.wIdx.get(c); touched.add(w[0]); touched.add(EX.wGhost[EX.wms.indexOf(w[0])]); }
   for(const wm of touched) wm.instanceMatrix.needsUpdate=true;
   for(const [i,d] of EX.doors){ if(!d.mesh) continue; const tg=xCutTarget(i)<.995?.4:1, cur=d.cutY==null?1:d.cutY; if(Math.abs(cur-tg)<.005) continue; d.cutY=Math.abs(cur-tg)<.02?tg:cur+(tg-cur)*k;
     const op=d.cutY, solid=op>=.995; d.mesh.traverse(o=>{ if(!o.isMesh) return; const M=o.material; M.transparent=!solid; M.opacity=solid?1:op; M.depthWrite=solid; o.renderOrder=solid?0:7; }); }
@@ -1629,7 +1645,7 @@ function xDraw(T,dt){
   // the camera eases after you and looks a little ahead of where you are walking
   { const ax=EX.px+(EX.vx||0)*.22, az=EX.pz+(EX.vz||0)*.18, kk=1-Math.exp(-dt*5); if(EX.camX==null||Math.hypot(EX.camX-EX.px,EX.camZ-EX.pz)>12){ EX.camX=EX.px; EX.camZ=EX.pz; } EX.camX+=(ax-EX.camX)*kk; EX.camZ+=(az-EX.camZ)*kk; }
   const fx=EX.fighting&&EX.busy?EX.fighting.x:EX.camX, fz=EX.fighting&&EX.busy?EX.fighting.z:EX.camZ, cx=EX.camX+(fx-EX.camX)*(1-zk)*1.4, cz=EX.camZ+(fz-EX.camZ)*(1-zk)*1.4;
-  G.cam.position.set(cx+jx,hgt*zk+jy,cz+back*zk); G.cam.lookAt(cx+jx,.6,cz-1.2); xWallCut(dt); xFxTick(T,dt);
+  G.cam.position.set(cx+jx,hgt*zk+jy,cz+back*zk); G.cam.lookAt(cx+jx,.6,cz-1.2); xVolSet(); xWallCut(dt); xFxTick(T,dt);
   XDITHER.uBall.value.set(EX.px,1.2,EX.pz); XDITHER.uRad.value=XB.ball*XCS; XDITHER.uPx.value=Math.max(1,Math.round(G.renderer.getPixelRatio()*2));
   // enemies show only while in sight; a Shadow Assassin only when it is close; a dormant guardian not at all
   for(const g of EX.groups){ if(!g.sprite) continue; const v=!!EX.vis[g.cell]&&!g.dormant&&!(g.stealth&&Math.hypot(g.x-EX.px,g.z-EX.pz)/XCS>3.2); g.sprite.visible=v; g.zz.visible=v&&g.state==='sleep'; g.bang.visible=v&&g.state==='chase';

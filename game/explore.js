@@ -353,6 +353,7 @@ function xWallGeo(rough,seed){ const g=new THREE.BoxGeometry(XCS,XWALL,XCS,4,5,4
   for(let k=0;k<P.count;k++){ const y=P.getY(k)/XWALL+.5, ny=N.getY(k); const a=ny>.85?.34:ny<-.5?.2:ny>.3?1.05:.45+.55*Math.min(1,y*1.4)-(y>.97?.12:0); c.push(a,a,a); }
   g.setAttribute('color',new THREE.Float32BufferAttribute(c,3)); return g; }
 // where a wall block stands: turned a quarter (or not) and, for cave rock, a little taller or shorter, so no two look alike
+function xWallSy(c,rock){ const h=Math.sin(c*91.7+EX.depth*7.3)*43758.5453, r=h-Math.floor(h); return rock?.9+r*.22:1; }
 function xWallMatrix(m,c,rock,cut){ const h=Math.sin(c*91.7+EX.depth*7.3)*43758.5453, r=h-Math.floor(h), sy=(rock?.9+r*.22:1)*(cut==null?1:cut);
   m.makeRotationY(Math.floor(r*4)*Math.PI/2); m.scale(new THREE.Vector3(1,sy,1)); m.setPosition(xw(c),XWALL*sy/2-.05,xz(c)); }
 function xBuildScene(){
@@ -400,12 +401,20 @@ function xBuildScene(){
   EX.wGhost=[]; EX.gSlot=new Int32Array(XN*XN).fill(-1);
   walls.forEach((list,v)=>{ const wgeo=wgeos[v], n=Math.max(1,list.length), tex=xTex(wallTex[v]), wm=new THREE.InstancedMesh(wgeo,xDitherMat(xPhong({map:tex,vertexColors:true})),n);
     wm.instanceMatrix.setUsage(THREE.DynamicDrawUsage); grp.add(wm); EX.wms.push(wm);
-    // the same walls again, see-through: a wall between the camera and you moves here and fades (xWallCut)
-    wgeo.setAttribute('aAlpha',new THREE.InstancedBufferAttribute(new Float32Array(n).fill(1),1));
-    const gm=new THREE.InstancedMesh(wgeo,xGhostMat(xPhong({map:tex,vertexColors:true})),n); gm.instanceMatrix.setUsage(THREE.DynamicDrawUsage); gm.renderOrder=6; grp.add(gm); EX.wGhost.push(gm);
+    // the same walls again, sliced: a wall between the camera and you moves here and is cut off at a
+    // height (aCut), its cut top showing the stone inside; aEdge says which of its sides face open ground
+    wgeo.setAttribute('aCut',new THREE.InstancedBufferAttribute(new Float32Array(n).fill(99),1));
+    wgeo.setAttribute('aEdge',new THREE.InstancedBufferAttribute(new Float32Array(n),1));
+    const gm=new THREE.InstancedMesh(wgeo,xCutMat(xPhong({map:tex,vertexColors:true,side:THREE.DoubleSide}),v,S),n); gm.instanceMatrix.setUsage(THREE.DynamicDrawUsage); grp.add(gm); EX.wGhost.push(gm);
     for(let k=0;k<n;k++){ wm.setMatrixAt(k,zero); wm.setColorAt(k,black); gm.setMatrixAt(k,zero); gm.setColorAt(k,black); }
     gm.count=0; gm.userData.cells=[];   // only the walls that are see-through right now are packed in here
     list.forEach((c,k)=>EX.wIdx.set(c,[wm,k])); });
+  // which sides of each wall block face open ground (+x 1, -x 2, +z 4, -z 8): the cut shows its face stones there
+  EX.wEdge=new Uint8Array(XN*XN);
+  for(const c of EX.wIdx.keys()){ const x=xcx(c), y=xcy(c), open=(a,b)=>a<0||b<0||a>=XN||b>=XN||!EX.wIdx.has(xi(a,b));
+    EX.wEdge[c]=(open(x+1,y)?1:0)|(open(x-1,y)?2:0)|(open(x,y+1)?4:0)|(open(x,y-1)?8:0); }
+  { const d=new Uint8Array(XN*XN*4); for(let c=0;c<XN*XN;c++) d[(xcy(c)*XN+xcx(c))*4]=EX.wEdge[c];
+    const et=new THREE.DataTexture(d,XN,XN,THREE.RGBAFormat); et.magFilter=et.minFilter=THREE.NearestFilter; et.needsUpdate=true; EX.wEdgeTex=et; for(const gm of EX.wGhost) gm.material.userData.U.uEdge.value=et; }
   // doors: an arched doorway of the area's stone, and while it is closed a plank door with iron
   // bands and studs, its top rounded to the arch; a locked door shows its lock: a bronze, silver or
   // gold plate, iron bars on a shortcut gate, red bands on a boss door
@@ -788,6 +797,10 @@ function xWallDress(grp,A,S,seed){ const R=caveRng(seed+211), floorAt=(x,y)=>x>=
   const cave=['crystal','lava','stars'].includes(A.veins), shaftG=cave?xRockShaft():new THREE.CylinderGeometry(.5,.5,1,12), pc=tone(cave?.34:.48), pc2=tone(cave?.26:.6);
   EX.pillBase=inst(xDitherMat(xPhong({color:pc2})),pills.length); EX.pillShaft=new THREE.InstancedMesh(shaftG,xDitherMat(xPhong({color:pc})),Math.max(1,pills.length)); for(let k=0;k<EX.pillShaft.count;k++) EX.pillShaft.setMatrixAt(k,zero); grp.add(EX.pillShaft);
   EX.pillCap=inst(xDitherMat(xPhong({color:pc2})),pills.length); EX.pillCave=cave;
+  // a see-through twin of each: the trim and pillars of a cut wall stay whole, at 40% (xDressShow)
+  const twin=(im,mat)=>{ const t=new THREE.InstancedMesh(im.geometry,mat,im.count); for(let k=0;k<t.count;k++) t.setMatrixAt(k,zero); t.renderOrder=7; t.visible=false; grp.add(t); im.userData.twin=t; }, see={transparent:true,opacity:.4,depthWrite:false};
+  twin(tm,new THREE.MeshBasicMaterial(Object.assign({color:acc,fog:true},see))); twin(EX.corMesh,xPhong(Object.assign({color:tone(.62)},see))); twin(EX.skirtMesh,xPhong(Object.assign({color:tone(.16)},see)));
+  twin(EX.pillBase,xPhong(Object.assign({color:pc2},see))); twin(EX.pillShaft,xPhong(Object.assign({color:pc},see))); twin(EX.pillCap,xPhong(Object.assign({color:pc2},see)));
   pills.forEach((c,k)=>{ const a=EX.dress.get(c)||{}; a.pill=k; EX.dress.set(c,a); });
   // furniture, room by room
   const used=new Set([...EX.wallAt.keys(),...(EX.glows||[]).map(L=>L.wall)]), area=A.id||'hollows';
@@ -836,20 +849,18 @@ function xWebTex(){ if(xWebTex.c) return xWebTex.c; const N=32, c=document.creat
   for(let a=0;a<5;a++){ x.beginPath(); x.moveTo(0,0); x.lineTo(Math.cos(a*.39)*N,Math.sin(a*.39)*N); x.stroke(); }
   for(let r=6;r<N;r+=6){ x.beginPath(); for(let a=0;a<5;a++){ const px=Math.cos(a*.39)*r, py=Math.sin(a*.39)*r; a?x.lineTo(px,py):x.moveTo(px,py); } x.stroke(); }
   return xWebTex.c=xTex(c); }
-// a wall cell shown or sinking: its trim line and pillar follow its height
-function xDressShow(c,cut,touched){ const a=EX.dress&&EX.dress.get(c); if(!a) return; const m=new THREE.Matrix4(), top=XWALL*cut-.04;
-  if(cut<=0){ const z=new THREE.Matrix4().makeScale(0,0,0); if(a.trim){ for(const [k] of a.trim){ EX.corMesh.setMatrixAt(k,z); EX.trimMesh.setMatrixAt(k,z); EX.skirtMesh.setMatrixAt(k,z); } EX.trimMesh.instanceMatrix.needsUpdate=EX.corMesh.instanceMatrix.needsUpdate=EX.skirtMesh.instanceMatrix.needsUpdate=true; }
-    if(a.pill!=null){ for(const P of [EX.pillBase,EX.pillShaft,EX.pillCap]){ P.setMatrixAt(a.pill,z); P.instanceMatrix.needsUpdate=true; } } return; }
-  if(a.trim){ for(const [k,dx,dy] of a.trim){ const x=xw(c)+dx*XCS*.5, z=xz(c)+dy*XCS*.5, L=XCS, sx=dx?1:L, sz=dx?L:1, ch=Math.min(.24,XWALL*cut*.25);
-      m.makeScale(dx?.22:sx,ch,dx?sz:.22); m.setPosition(x+dx*.07,top-ch/2+.02,z+dy*.07); EX.corMesh.setMatrixAt(k,m);       // the cornice, standing out from the face
-      m.makeScale(dx?.06:XCS*.98,.06,dx?XCS*.98:.06); m.setPosition(x+dx*.19,top-ch*.55,z+dy*.19); EX.trimMesh.setMatrixAt(k,m);   // the lit line along it
-      m.makeScale(dx?.14:sx,.3,dx?sz:.14); m.setPosition(x+dx*.04,.15,z+dy*.04); EX.skirtMesh.setMatrixAt(k,m); }               // the skirting
-    EX.trimMesh.instanceMatrix.needsUpdate=EX.corMesh.instanceMatrix.needsUpdate=EX.skirtMesh.instanceMatrix.needsUpdate=true; }
-  if(a.pill!=null){ const k=a.pill, x=xw(c), z=xz(c), h=XWALL*cut, cv=EX.pillCave;
-    m.makeScale(XCS*(cv?1.2:1.16),cv?.4:.34,XCS*(cv?1.2:1.16)); m.setPosition(x,cv?.12:.17,z); EX.pillBase.setMatrixAt(k,m);
-    m.makeScale(XCS*1.16,Math.max(.05,h),XCS*1.16); m.setPosition(x,h/2,z); EX.pillShaft.setMatrixAt(k,m);
-    m.makeScale(XCS*(cv?1.0:1.22),(cv?.12:.24)*Math.max(.3,cut),XCS*(cv?1.0:1.22)); m.setPosition(x,h+.08,z); EX.pillCap.setMatrixAt(k,m);
-    EX.pillBase.instanceMatrix.needsUpdate=EX.pillShaft.instanceMatrix.needsUpdate=EX.pillCap.instanceMatrix.needsUpdate=true; } }
+// a wall cell shown: its trim line and pillar, solid, or (ghost) in their see-through twins while the wall is cut
+function xDressShow(c,ghost){ const a=EX.dress&&EX.dress.get(c); if(!a) return; const m=new THREE.Matrix4(), z=new THREE.Matrix4().makeScale(0,0,0), top=XWALL-.04;
+  const put=(M,k)=>{ const T=M.userData.twin, on=ghost?T:M, off=ghost?M:T, S=T.userData.on||(T.userData.on=new Set()); on.setMatrixAt(k,m); off.setMatrixAt(k,z); on.instanceMatrix.needsUpdate=off.instanceMatrix.needsUpdate=true;
+    if(ghost) S.add(k); else S.delete(k); T.visible=S.size>0; };
+  if(a.trim){ for(const [k,dx,dy] of a.trim){ const x=xw(c)+dx*XCS*.5, zz=xz(c)+dy*XCS*.5, L=XCS, sx=dx?1:L, sz=dx?L:1, ch=.24;
+      m.makeScale(dx?.22:sx,ch,dx?sz:.22); m.setPosition(x+dx*.07,top-ch/2+.02,zz+dy*.07); put(EX.corMesh,k);       // the cornice, standing out from the face
+      m.makeScale(dx?.06:XCS*.98,.06,dx?XCS*.98:.06); m.setPosition(x+dx*.19,top-ch*.55,zz+dy*.19); put(EX.trimMesh,k);   // the lit line along it
+      m.makeScale(dx?.14:sx,.3,dx?sz:.14); m.setPosition(x+dx*.04,.15,zz+dy*.04); put(EX.skirtMesh,k); } }               // the skirting
+  if(a.pill!=null){ const k=a.pill, x=xw(c), zz=xz(c), h=XWALL, cv=EX.pillCave;
+    m.makeScale(XCS*(cv?1.2:1.16),cv?.4:.34,XCS*(cv?1.2:1.16)); m.setPosition(x,cv?.12:.17,zz); put(EX.pillBase,k);
+    m.makeScale(XCS*1.16,h,XCS*1.16); m.setPosition(x,h/2,zz); put(EX.pillShaft,k);
+    m.makeScale(XCS*(cv?1.0:1.22),cv?.12:.24,XCS*(cv?1.0:1.22)); m.setPosition(x,h+.08,zz); put(EX.pillCap,k); } }
 // a rough rock column: a tapered, knobbly cylinder
 function xRockShaft(){ const g=new THREE.CylinderGeometry(.42,.5,1,7,4), P=g.attributes.position;
   for(let k=0;k<P.count;k++){ const x=P.getX(k), y=P.getY(k), z=P.getZ(k), n=Math.sin(x*17.3+y*29.1+z*11.7)*43758.5453, r=n-Math.floor(n), w=1+(r-.5)*.22-(Math.abs(y)<.3?.06:0); P.setXYZ(k,x*w,y,z*w); }
@@ -934,18 +945,18 @@ function xPaintCells(){
   for(const [i,d] of EX.doors) if(d.mesh) d.mesh.visible=!!EX.seen[i]&&d.state!=='secret';
   for(const c of EX.chests) c.mesh.visible=!!EX.seen[c.cell];
   EX.downMesh.visible=!!EX.seen[EX.down]; EX.upMesh.visible=!!EX.seen[EX.up];
-  for(const L of EX.glows){ L.g.visible=!!EX.seen[L.floor]&&(L.cut==null||L.cut>.6); if(L.beam) L.halo.visible=L.g.visible; }
+  for(const L of EX.glows){ L.g.visible=!!EX.seen[L.floor]; if(L.beam) L.halo.visible=L.g.visible; }
   if(typeof xPaintExtra==='function') xPaintExtra();
 }
-/* See-through walls: a wall nearer the camera than you (south of you, within sight) fades to glass,
-   so it never hides you or the room you are in; walls behind you turn solid again. Each wall eases
-   between the solid wall mesh and a see-through copy of it (its own opacity per wall); doors on
-   those walls fade with them, and their torches, crystals, trim and pillars step aside. */
-const XCUT=.28;
-// two values to tune by hand in Settings while testing: the dither ball's radius and the alpha strip's half-width, in tiles
+/* Cut walls: every wall nearer the camera than you (south of you, within sight) is sliced off in
+   place, never moved: lowest nearest the camera, highest just in front of you, so it never hides you
+   or the room you are in. The cut top shows the wall's inside (xCutMat). Doors, torches, trim and
+   pillars on a cut wall stay whole, at 40%. Walls behind you grow back to full height. */
+// test values, tuned by hand in Settings: the dither ball's radius in tiles, and the cut heights
+// (a share of the wall) nearest the camera and just in front of you
 const xSetF=(k,d)=>{ try{ const v=parseFloat(localStorage.getItem(k)); return isNaN(v)?d:v; }catch(e){ return d; } };
-const XB={ ball:xSetF('hexmancers-xball',1.5), strip:xSetF('hexmancers-xstrip',1) };
-function xBindSliders(){ for(const [id,key,k] of [['setXBall','hexmancers-xball','ball'],['setXStrip','hexmancers-xstrip','strip']]){ const el=document.getElementById(id), out=document.getElementById(id+'V'); if(!el) continue;
+const XB={ ball:xSetF('hexmancers-xball',1.5), lo:xSetF('hexmancers-xcutlo',.12), hi:xSetF('hexmancers-xcuthi',.35) };
+function xBindSliders(){ for(const [id,key,k] of [['setXBall','hexmancers-xball','ball'],['setXCutLo','hexmancers-xcutlo','lo'],['setXCutHi','hexmancers-xcuthi','hi']]){ const el=document.getElementById(id), out=document.getElementById(id+'V'); if(!el) continue;
     el.value=XB[k]; out.textContent=(+XB[k]).toFixed(2);
     el.oninput=()=>{ XB[k]=+el.value; out.textContent=XB[k].toFixed(2); try{ localStorage.setItem(key,String(XB[k])); }catch(e){} }; } }
 if(typeof document!=='undefined'){ if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',xBindSliders); else xBindSliders(); }
@@ -961,28 +972,82 @@ function xDitherMat(m){ m.customProgramCacheKey=()=>'xdither'+(m.vertexColors?'v
       +'float xb2(vec2 a){ a=floor(a); return fract(dot(a,vec2(.5,a.y*.75))); }\nfloat xb4(vec2 a){ return xb2(.5*a)*.25+xb2(a); }\n'
       +sh.fragmentShader.replace('void main() {','void main() {\n  if(uRad>0.0&&vXWP.z>uBall.z+.25){ float d=distance(vXWP,uBall); if(d<uRad){ float f=1.0-smoothstep(uRad*.5,uRad,d); if(xb4(floor(gl_FragCoord.xy/uPx))<f*.94) discard; } }'); };
   return m; }
-// a material that takes each instance's opacity from the aAlpha attribute
-function xGhostMat(m){ m.transparent=true; m.depthWrite=false; m.customProgramCacheKey=()=>'xghost';
-  m.onBeforeCompile=sh=>{ sh.vertexShader='attribute float aAlpha;\nvarying float vAlpha;\n'+sh.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\n  vAlpha=aAlpha;');
-    sh.fragmentShader='varying float vAlpha;\n'+sh.fragmentShader.replace('#include <dithering_fragment>','#include <dithering_fragment>\n  gl_FragColor.a*=vAlpha;'); };
+/* The cut wall material: each block is clipped at its own height (aCut). Looking into the cut you see
+   the block's inner faces; those are shaded as the flat cut top instead (the view ray is taken on to
+   the cut plane), lit as a face looking up, in a cross-section of the wall's stone: cave rock shows
+   its strata under a weathered rind; built walls show the dressed face stones along every open side
+   with mortared rubble packed in the core (looser and darker in rubble walls). */
+function xCutMat(m,kind,S){ const col=v=>{ const t=xTone(S,v); return new THREE.Color(t[0]/255,t[1]/255,t[2]/255); };
+  const U={ uCL:{value:col(.66)}, uCM:{value:col(.42)}, uCD:{value:col(.16)}, uEdge:{value:null}, uFog:{value:EX.fogTex} };
+  m.userData.U=U; m.extensions={fragDepth:true}; m.defines=Object.assign(m.defines||{},{XKIND:kind}); m.customProgramCacheKey=()=>'xcut'+kind;
+  m.onBeforeCompile=sh=>{ Object.assign(sh.uniforms,U);
+    sh.vertexShader='attribute float aCut;\nattribute float aEdge;\nvarying float vCut;\nvarying float vEdge;\nvarying vec3 vXWP;\nvarying vec3 vXIC;\n'+sh.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\n  vec4 xwp=instanceMatrix*vec4(transformed,1.0);\n  vXWP=(modelMatrix*xwp).xyz; vCut=aCut; vEdge=aEdge;\n  #ifdef USE_INSTANCING_COLOR\n  vXIC=instanceColor;\n  #else\n  vXIC=vec3(1.0);\n  #endif');
+    sh.fragmentShader='varying float vCut;\nvarying float vEdge;\nvarying vec3 vXWP;\nvarying vec3 vXIC;\nuniform vec3 uCL;\nuniform vec3 uCM;\nuniform vec3 uCD;\nuniform mat4 projectionMatrix;\nuniform sampler2D uEdge;\nuniform sampler2D uFog;\n'+XCUT_GLSL
+      +sh.fragmentShader.replace('void main() {','void main() {\n  if(vXWP.y>vCut) discard;\n  bool xIn=!gl_FrontFacing; vec3 xP=vXWP;\n  if(xIn){ vec3 rd=vXWP-cameraPosition; xP=cameraPosition+rd*((vCut-cameraPosition.y)/rd.y); vec4 cp=projectionMatrix*viewMatrix*vec4(xP,1.0); gl_FragDepthEXT=cp.z/cp.w*.5+.5; } else gl_FragDepthEXT=gl_FragCoord.z;')
+      .replace('#include <color_fragment>','#include <color_fragment>\n  if(xIn){ float fb=1.0-texture2D(uFog,vec2(xP.x/'+(XCS*XN).toFixed(1)+',1.0-xP.z/'+(XCS*XN).toFixed(1)+')).r; diffuseColor.rgb=xCap(xP)*vec3(fb,fb,fb*1.05); } else if(vCut-vXWP.y<.05) diffuseColor.rgb*=1.35;')
+      .replace('#include <emissivemap_fragment>','#include <emissivemap_fragment>\n  if(xIn) totalEmissiveRadiance+=diffuseColor.rgb*.3;')
+      .replace('#include <normal_fragment_begin>','#include <normal_fragment_begin>\n  if(xIn) normal=normalize((viewMatrix*vec4(0.0,1.0,0.0,0.0)).xyz);')
+      .replace('#include <lights_fragment_begin>',THREE.ShaderChunk.lights_fragment_begin.replace('geometry.position = - vViewPosition;','geometry.position = xIn ? (viewMatrix*vec4(xP,1.0)).xyz : - vViewPosition;')); };
   return m; }
-// put a wall in the solid mesh (v=1) or the see-through one at opacity v
+const XCUT_GLSL=`
+float xh(vec2 p){ vec3 q=fract(vec3(p.xyx)*.1031); q+=dot(q,q.yzx+33.33); return fract((q.x+q.y)*q.z); }
+float xn(vec2 p){ vec2 i=floor(p), f=fract(p); f=f*f*(3.0-2.0*f); return mix(mix(xh(i),xh(i+vec2(1.0,0.0)),f.x),mix(xh(i+vec2(0.0,1.0)),xh(i+vec2(1.0,1.0)),f.x),f.y); }
+// cells: x = distance to the nearest centre, y = gap to the second (small on a seam), z = the cell's random value
+vec3 xvor(vec2 p){ vec2 i=floor(p), f=fract(p); float d1=8.0, d2=8.0, id=0.0;
+  for(int y=-1;y<=1;y++) for(int x=-1;x<=1;x++){ vec2 g=vec2(float(x),float(y)), r=g+vec2(xh(i+g),xh(i+g+17.3))*.8+.1-f; float d=length(r);
+    if(d<d1){ d2=d1; d1=d; id=xh(i+g+3.1); } else if(d<d2) d2=d; }
+  return vec3(d1,d2-d1,id); }
+vec3 xCap(vec3 P){ vec2 g=P.xz/${XCS.toFixed(1)}, l=fract(g), cid=floor(g); float e=9.0, s=0.0, vEdge=floor(texture2D(uEdge,(cid+.5)/${XN.toFixed(1)}).r*255.0+.5);
+  if(mod(vEdge,2.0)>.5&&1.0-l.x<e){ e=1.0-l.x; s=g.y; }
+  if(mod(floor(vEdge/2.0),2.0)>.5&&l.x<e){ e=l.x; s=g.y; }
+  if(mod(floor(vEdge/4.0),2.0)>.5&&1.0-l.y<e){ e=1.0-l.y; s=g.x; }
+  if(mod(floor(vEdge/8.0),2.0)>.5&&l.y<e){ e=l.y; s=g.x; }
+  vec3 c;
+#if XKIND==0
+  float q=(g.x*.55+g.y*.8+xn(g*1.3)*.9+xn(g*4.1)*.15)*3.2, bi=floor(q), bf=fract(q);
+  float hb=xn(vec2(q*.9,3.7)); c=mix(uCD*.85,uCL*1.2,smoothstep(.15,.85,hb))*(.86+.28*xn(g*7.0));
+  c=mix(c,uCD*.55,1.0-smoothstep(0.0,.1,bf));
+  c=mix(c,uCM*.75+uCD*.35,1.0-smoothstep(.12,.22,e));
+  c=mix(c,uCL,(1.0-smoothstep(0.0,.05,e))*.75);
+#else
+  float W=.27;
+  if(e<W){ float js=s*2.0+.5*mod(cid.x+cid.y,2.0), jf=fract(js), ji=floor(js);
+    c=mix(uCM,uCL,.3+.45*xh(vec2(ji,cid.x*3.0+cid.y)))*(.9+.16*xn(g*8.0));
+    if(jf<.035||jf>.965||e>W-.035) c=mix(uCD,uCM,.35);
+    c*=1.0+.3*(1.0-smoothstep(0.0,.035,e)); }
+  else {
+  #if XKIND==2
+    vec3 v=xvor(g*3.2); c=mix(uCD*1.2,uCM*.85,v.z)*(.85+.25*xn(g*7.0)); if(v.y<.1) c=uCD*.45;
+  #else
+    vec3 v=xvor(g*4.6); c=mix(uCD*1.4,uCM*.95,v.z)*(.85+.2*xn(g*8.0)); if(v.y<.07) c=mix(uCD,uCM,.4);
+  #endif
+    c*=.85; }
+#endif
+  return c*mix(1.0,.82,smoothstep(.1,.5,e)); }
+`;
+// put a wall in the solid mesh (v=1) or the cut one, sliced at v of its height
 function xWallFade(c,v){ const w=EX.wIdx.get(c); if(!w) return; const [wm,k]=w, vi=EX.wms.indexOf(wm), gm=EX.wGhost[vi], m=new THREE.Matrix4(), zero=new THREE.Matrix4().makeScale(0,0,0);
-  xWallMatrix(m,c,vi===0,1); const solid=v>=.995, L=gm.userData.cells, A=gm.geometry.attributes.aAlpha, col=new THREE.Color();
-  const put=(cell,slot)=>{ xWallMatrix(m,cell,vi===0,1); gm.setMatrixAt(slot,m); A.setX(slot,EX.wCut[cell]); const f=EX.fogCur[cell]; col.setRGB(f,f,f*1.05); gm.setColorAt(slot,col); };
+  xWallMatrix(m,c,vi===0,1); const solid=v>=.995, L=gm.userData.cells, A=gm.geometry.attributes.aCut, E=gm.geometry.attributes.aEdge, col=new THREE.Color();
+  const put=(cell,slot)=>{ xWallMatrix(m,cell,vi===0,1); gm.setMatrixAt(slot,m); A.setX(slot,(XWALL*xWallSy(cell,vi===0)-.05)*EX.wCut[cell]-.05); E.setX(slot,EX.wEdge[cell]); const f=EX.fogCur[cell]; col.setRGB(f,f,f*1.05); gm.setColorAt(slot,col); };
   wm.setMatrixAt(k,solid?m:zero);
   if(!solid){ if(EX.gSlot[c]<0){ EX.gSlot[c]=L.length; L.push(c); gm.count=L.length; } put(c,EX.gSlot[c]); }
   else if(EX.gSlot[c]>=0){ const slot=EX.gSlot[c], last=L.pop(); EX.gSlot[c]=-1; if(last!==c){ L[slot]=last; EX.gSlot[last]=slot; put(last,slot); } gm.count=L.length; }
-  A.needsUpdate=true; gm.instanceMatrix.needsUpdate=true; if(gm.instanceColor) gm.instanceColor.needsUpdate=true;
-  xDressShow(c,solid?1:0); }
-function xCutTarget(c){ if(!EX) return 1; const dy=xcy(c)-xcy(EX.pc), dx=Math.abs(xw(c)-EX.px)/XCS; return dy>0&&dy<=9&&dx<XB.strip+.5?XCUT:1; }
-function xWallCut(dt){ const m=new THREE.Matrix4(), k=Math.min(1,dt*7); let touched=new Set();
-  for(const c of EX.wList){ const tg=xCutTarget(c), cur=EX.wCut[c]; if(Math.abs(cur-tg)<.005) continue;
-    const v=Math.abs(cur-tg)<.02?tg:cur+(tg-cur)*k; EX.wCut[c]=v; xWallFade(c,v); const w=EX.wIdx.get(c); touched.add(w[0]); touched.add(EX.wGhost[EX.wms.indexOf(w[0])]); }
+  A.needsUpdate=E.needsUpdate=true; gm.instanceMatrix.needsUpdate=true; if(gm.instanceColor) gm.instanceColor.needsUpdate=true;
+  xDressShow(c,!solid); }
+// how much of a wall stands: 1 unless it is between the camera and you; then from XB.hi just in front
+// of you down to XB.lo three rows nearer the camera, following you smoothly as you walk
+function xCutTarget(c){ if(!EX) return 1; const dy=xcy(c)-xcy(EX.pc); if(!(dy>0&&dy<=9&&Math.abs(xcx(c)-xcx(EX.pc))<=11)) return 1;
+  const t=Math.min(1,Math.max(0,((xz(c)-EX.pz)/XCS-1)/3)); return Math.max(.02,Math.min(.99,XB.hi+(XB.lo-XB.hi)*t)); }
+// fade a whole object (a torch, a banner, a door) to a share of its own opacity
+function xFadeObj(g,a){ g.traverse(o=>{ const M=o.material; if(!M) return; for(const mm of Array.isArray(M)?M:[M]){ const u=mm.userData; if(u.op0==null){ u.op0=mm.opacity; u.tr0=mm.transparent; u.dw0=mm.depthWrite; }
+    const f=a<.995; mm.transparent=f||u.tr0; mm.depthWrite=f?false:u.dw0; mm.opacity=u.op0*a; } }); }
+function xWallCut(dt){ const k=Math.min(1,dt*7); let touched=new Set();
+  for(const c of EX.wList){ const tg=xCutTarget(c), cur=EX.wCut[c]; if(Math.abs(cur-tg)<.003) continue;
+    const v=Math.abs(cur-tg)<.01?tg:cur+(tg-cur)*k; EX.wCut[c]=v; xWallFade(c,v); const w=EX.wIdx.get(c); touched.add(w[0]); touched.add(EX.wGhost[EX.wms.indexOf(w[0])]); }
   for(const wm of touched) wm.instanceMatrix.needsUpdate=true;
-  for(const [i,d] of EX.doors){ if(!d.mesh) continue; const tg=xCutTarget(i), cur=d.cutY==null?1:d.cutY; if(Math.abs(cur-tg)<.005) continue; d.cutY=Math.abs(cur-tg)<.02?tg:cur+(tg-cur)*k;
+  for(const [i,d] of EX.doors){ if(!d.mesh) continue; const tg=xCutTarget(i)<.995?.4:1, cur=d.cutY==null?1:d.cutY; if(Math.abs(cur-tg)<.005) continue; d.cutY=Math.abs(cur-tg)<.02?tg:cur+(tg-cur)*k;
     const op=d.cutY, solid=op>=.995; d.mesh.traverse(o=>{ if(!o.isMesh) return; const M=o.material; M.transparent=!solid; M.opacity=solid?1:op; M.depthWrite=solid; o.renderOrder=solid?0:7; }); }
-  for(const L of (EX.glows||[]).concat(EX.onWall||[])){ if(L.wall==null) continue; const tg=xCutTarget(L.wall), cur=L.cut==null?1:L.cut; if(Math.abs(cur-tg)<.005) continue; L.cut=Math.abs(cur-tg)<.02?tg:cur+(tg-cur)*k; L.g.scale.y=1; L.g.visible=L.cut>.6&&!!EX.seen[L.floor]; } }
+  for(const L of (EX.glows||[]).concat(EX.onWall||[])){ if(L.wall==null) continue; const tg=xCutTarget(L.wall)<.995?.4:1, cur=L.fa==null?1:L.fa; if(Math.abs(cur-tg)<.005) continue; L.fa=Math.abs(cur-tg)<.02?tg:cur+(tg-cur)*k; xFadeObj(L.g,L.fa); } }
 // ease every cell toward its brightness, so newly seen ground fades in and ground you leave fades out
 function xFadeCells(dt){
   const k=Math.min(1,dt*5), col=new THREE.Color(); let moved=false;
@@ -1426,8 +1491,8 @@ function xDraw(T,dt){
   if(EX.runeRing){ EX.runeRing.rotation.z=T*.25; EX.runeRing.visible=EX.downMesh.visible; EX.runeRing.material.opacity=.45+.2*Math.sin(T*1.8); }
   for(const L of EX.glows){ if(!L.g.visible) continue; const f=EX.fogCur[L.floor];
     const fl=L.torch?.8+.12*Math.sin(T*11+L.ph)+.08*Math.sin(T*23.7+L.ph*3):.85+.15*Math.sin(T*1.7+L.ph);
-    L.halo.material.opacity=.6*f*fl; for(const m of L.mats) m.opacity=L.beam?(.06+.06*Math.sin(T*1.5+L.ph))*(.4+.6*f):.3+.7*f;
-    for(const o of L.g.children) if(o.userData.pool) o.material.opacity=(L.torch?.6:.3)*f*fl;
+    const fa=L.fa==null?1:L.fa; L.halo.material.opacity=.6*f*fl*fa; for(const m of L.mats) m.opacity=(L.beam?(.06+.06*Math.sin(T*1.5+L.ph))*(.4+.6*f):.3+.7*f)*fa;
+    for(const o of L.g.children) if(o.userData.pool) o.material.opacity=(L.torch?.6:.3)*f*fl*fa;
     if(L.flame){ L.flame.scale.set(.9+.15*Math.sin(T*17+L.ph),.85+.3*fl,.9+.15*Math.cos(T*13+L.ph)); L.flame.rotation.z=Math.sin(T*7+L.ph)*.12; }
     if(EX.area.veins==='stars') L.g.children.forEach((o,i)=>{ if(o.userData.y0!=null) o.position.y=o.userData.y0+Math.sin(T*1.3+i+L.ph)*.12; }); }
   { const P=G.dust.geometry.attributes.position, a=P.array; for(let k=0;k<a.length;k+=3){ a[k+1]+=dt*.25; a[k]+=Math.sin(T+k)*dt*.1; if(a[k+1]>3.2) a[k+1]=0; } P.needsUpdate=true;

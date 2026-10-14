@@ -687,6 +687,8 @@ function xResetBlocks(){ const pz=EX.puzzle; if(!pz||pz.kind!=='plates'||pz.solv
   for(const b of pz.blocks){ if(b.cell===b.home||xSolid(b.home)&&EX.propAt.get(b.home)!==b) continue; EX.propAt.delete(b.cell); EX.taken.delete(b.cell); b.cell=b.home; EX.propAt.set(b.home,b); EX.taken.add(b.home); b.mesh.position.set(xw(b.home),0,xz(b.home)); moved++; }
   if(moved){ xLog('The rune flashes and the blocks slide home.','dim'); xSfx('grind'); } }
 function xPickup(it){ EX.items=EX.items.filter(x=>x!==it); EX.itemAt.delete(it.cell); EX.taken.delete(it.cell); if(it.mesh) it.mesh.visible=false;
+  if(typeof xSparks==='function') xSparks(xw(it.cell),xz(it.cell),it.kind==='gold'?0xffd75a:it.kind==='key'?0xffe9a0:new THREE.Color(EX.area.glow).lerp(new THREE.Color(0xffffff),.4),12);
+  if(it.kind==='gold'&&typeof xCoins==='function') xCoins(it.cell,Math.min(10,3+((it.n||10)/12|0)));
   if(it.kind==='key'){ addKey(it.key); xLog('You pick up a '+KEYS[it.key].name+'.','good'); xSfx('unlock'); }
   else if(it.kind==='mat'){ addMat(it.mat,it.n||1); xLog('You gather '+(it.n||1)+' '+MATS[it.mat].name+'.','loot'); }
   else if(it.kind==='gold'){ save.gold+=it.n; xLog('You scoop up '+it.n+' gold.','gold'); }
@@ -1152,7 +1154,7 @@ function xPlacePots(){ if(EX.branch) return;
 function xBreakPot(p){ if(p.gone) return; xRemoveProp(p); xSfx(p.crate?'thud':'shatter');
   xShards(xw(p.cell),xz(p.cell),p.crate?0x7a4a22:(p.tint||0xa0603a));
   const r=Math.random(), d=EX.depth;
-  if(r<.32){ const g=Math.round((4+d*3)*rnd(.6,1.4)); save.gold+=g; xLog('+'+g+' gold from the '+(p.crate?'crate':'pot')+'.','gold'); xPopText('+'+g,'#f2c94c',p.cell); }
+  if(r<.32){ const g=Math.round((4+d*3)*rnd(.6,1.4)); save.gold+=g; xLog('+'+g+' gold from the '+(p.crate?'crate':'pot')+'.','gold'); xPopText('+'+g,'#f2c94c',p.cell); if(typeof xCoins==='function') xCoins(p.cell,4); }
   else if(r<.42){ const h=Math.min(xmaxHp(),EX.hp+10)-EX.hp; if(h>0){ EX.hp+=h; xLog('A healing herb: +'+h+' HP.','good'); xPopText('+'+h+' HP','#39ff8a',p.cell); } }
   else if(r<.45){ const c=rollCard({depth:d}); const res=addCards(save,[c]); xLog('Tucked inside: '+c.name+(res[0]&&res[0].isNew?' (new!)':'')+'.','loot'); xPopText('Card!','#8fe4ff',p.cell); }
   xHud(); }

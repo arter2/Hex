@@ -1186,3 +1186,6 @@ body.ui-phone:not(.wide) .panel.scene{width:fit-content; max-width:100%; margin:
 .haswinx>h2:first-of-type,.haswinx .xdh{padding-right:44px;}
 #xDialog .xdh #xdGold{margin-right:34px;}
 button[hidden]{display:none!important;}
+
+/* a coin flying from the dungeon floor up to your gold (explore.js xCoins) */
+.xcoin{position:fixed; z-index:30; width:14px; height:14px; pointer-events:none; background:var(--px-coin) center/contain no-repeat; image-rendering:pixelated; filter:drop-shadow(0 0 4px #ffd75a);}

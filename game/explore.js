@@ -402,16 +402,26 @@ function xBuildScene(){
     for(let k=0;k<wm.count;k++){ wm.setMatrixAt(k,zero); wm.setColorAt(k,black); }
     list.forEach((c,k)=>EX.wIdx.set(c,[wm,k])); });
   xWallDress(grp,A,S,seed);
-  // doors: a frame on every doorway, a plank door while it is closed
-  const wood=xMat(0x6a4426), iron=xMat(0x2a2a30), frame=xMat(0x3a2414);
-  // a locked door shows its lock: a bronze, silver or gold plate, iron bars on a shortcut gate, red bands on a boss door
-  const LOCK_COL={bronze:0xc8843a, silver:0xcfd8e6, gold:0xf2c94c, boss:0xff5d6c};
+  // doors: an arched doorway of the area's stone, and while it is closed a plank door with iron
+  // bands and studs, its top rounded to the arch; a locked door shows its lock: a bronze, silver or
+  // gold plate, iron bars on a shortcut gate, red bands on a boss door
+  const LOCK_COL={bronze:0xc8843a, silver:0xcfd8e6, gold:0xf2c94c, boss:0xff5d6c}, HR=1.4, AR=.78;
+  const doorC=new THREE.Color('rgb('+xTone(S,.5).join(',')+')'), arcG=new THREE.TorusGeometry(.9,.13,6,14,Math.PI), topG=new THREE.CylinderGeometry(AR-.01,AR-.01,.15,16,1,false,-Math.PI/2,Math.PI), ringG=new THREE.TorusGeometry(.09,.02,4,10);
   for(const [i,d] of EX.doors){ const ew=EX.t[i-1]!==T_ROCK&&EX.t[i+1]!==T_ROCK, g=new THREE.Group(); g.position.set(xw(i),0,xz(i)); if(ew) g.rotation.y=Math.PI/2;
-    g.add(xBox(.22,XWALL,.4,frame,-XCS/2+.11,XWALL/2,0), xBox(.22,XWALL,.4,frame,XCS/2-.11,XWALL/2,0), xBox(XCS,.22,.4,frame,0,XWALL-.11,0));
-    const leaf=new THREE.Group();
-    if(d.lock==='gate'){ for(let k=0;k<5;k++) leaf.add(xBox(.07,XWALL-.24,.07,iron,-.6+k*.3,(XWALL-.24)/2,0)); leaf.add(xBox(XCS-.44,.08,.09,iron,0,.5,0), xBox(XCS-.44,.08,.09,iron,0,1.2,0)); }
-    else { leaf.add(xBox(XCS-.44,XWALL-.24,.16,d.lock==='boss'?xMat(0x3a1418):wood,0,(XWALL-.24)/2,0), xBox(XCS-.44,.1,.18,d.lock==='boss'?xMat(0xff5d6c,{emissive:0x401010}):iron,0,.4,0), xBox(XCS-.44,.1,.18,d.lock==='boss'?xMat(0xff5d6c,{emissive:0x401010}):iron,0,1.1,0));
-      if(LOCK_COL[d.lock]) for(const zz of [-.1,.1]) leaf.add(xBox(.26,.32,.04,xMat(LOCK_COL[d.lock],{emissive:new THREE.Color(LOCK_COL[d.lock]).multiplyScalar(.25)}),.38,.78,zz)); }
+    // the stone: jambs, the arch, the stone above it and in its corners, merged into one mesh
+    const F=xMerger(); F.add(XG.box,doorC,-XCS/2+.12,HR/2,0,0,0,0,.24,HR,.5); F.add(XG.box,doorC,XCS/2-.12,HR/2,0,0,0,0,.24,HR,.5); F.add(arcG,doorC,0,HR,0);
+    F.add(XG.box,doorC,0,(XWALL+HR+1.02)/2,0,0,0,0,XCS,XWALL-(HR+1.02),.5); for(const sx of [-1,1]) F.add(XG.box,doorC,sx*.81,HR+.78,0,0,0,0,.38,.5,.5);
+    g.add(F.build(xPhong({vertexColors:true})));
+    const leaf=new THREE.Group(), boss=d.lock==='boss', planks=boss?0x3a1418:0x6a4426, band=boss?0xff5d6c:0x2a2a30, L=xMerger();
+    if(d.lock==='gate'){ for(let k=0;k<5;k++){ const x=-.6+k*.3, top=HR+Math.sqrt(Math.max(0,AR*AR-x*x))-.04; L.add(XG.box,0x2a2a30,x,top/2,0,0,0,0,.07,top,.07); } L.add(XG.box,0x2a2a30,0,.5,0,0,0,0,XCS-.44,.08,.09); L.add(XG.box,0x2a2a30,0,1.2,0,0,0,0,XCS-.44,.08,.09); }
+    else { const LW=XCS-.44;
+      for(let k=0;k<4;k++) L.add(XG.box,k%2?(boss?0x2e1014:0x5a3820):planks,-LW/2+LW/8+k*LW/4,HR/2,0,0,0,0,LW/4-.025,HR,.15);
+      L.add(topG,planks,0,HR,0,Math.PI/2,Math.PI,0);
+      L.add(XG.box,band,0,.38,0,0,0,0,LW,.1,.18); L.add(XG.box,band,0,1.12,0,0,0,0,LW,.1,.18);
+      for(const y of [.38,1.12]) for(const x of [-.55,0,.55]) for(const z of [-.1,.1]) L.add(XG.ball,0x2a2a30,x,y,z,0,0,0,.07,.07,.05);
+      L.add(ringG,0x2a2a30,.5,.78,.11);
+      if(LOCK_COL[d.lock]) for(const zz of [-.1,.1]) L.add(XG.box,LOCK_COL[d.lock],.38,.78,zz,0,0,0,.26,.32,.04); }
+    leaf.add(L.build(xPhong({vertexColors:true,emissive:boss?0x200808:0x000000})));
     // the leaf hangs on a hinge at one jamb so it can swing (a gate's bars lift instead)
     const LW=XCS-.44, hinge=new THREE.Group(); if(d.lock!=='gate'){ hinge.position.x=-LW/2; leaf.position.x=LW/2; } hinge.add(leaf);
     g.add(hinge); d.mesh=g; d.leaf=hinge; d.ew=ew; d.cell=i; hinge.visible=d.state!=='secret'; if(d.state==='open') xDoorPose(d,1,1); g.visible=false; grp.add(g); }
@@ -454,13 +464,28 @@ function xBuildScene(){
   EX.myGlow.rotation.x=-Math.PI/2; EX.myGlow.position.y=.05; EX.myGlow.renderOrder=2; grp.add(EX.myGlow);
   xFloorTrim(grp,A,S,seed); xChasm(grp,A,S,seed); xFloorDecals(grp,A,S,seed); xMotes(grp,A);
   G.amb.color.set(0xffffff).lerp(glowC,.25); G.lamp.color.set(0xffd9a0).lerp(glowC,.3); G.dust.material.color.copy(glowC);
-  xAreaLights(grp,A);
+  xAreaLights(grp,A); xStairLights(grp,A);
   // you and the enemies are flat sprites standing in the 3D rooms, like the old dungeon crawlers
   // you are seen from behind and above, as in battle: the same four poses (stand, walk, cast, attack)
   EX.me=xSprite(()=>unitSprite({kind:'player',look:gearLook(save),view:EX.view||'front',pose:EX.pose||'idle'}),XSPR); grp.add(EX.me);
   for(const gp of EX.groups) xGroupSprites(gp,grp);
   if(typeof xBuildProps==='function') xBuildProps();   // people, puzzles, keys and the rest (dungeon.js)
 }
+/* The stairs are landmarks: a beam of light stands over each (the area's colour going down, red on a
+   boss floor, pale daylight going up), and two torches on posts flank the way down. The beams and
+   torches join the floor's lights, so the real lights find them too. */
+function xStairLights(grp,A){ const tex=xGlowTex(), boss=isBossDepth(EX.depth);
+  for(const [cell,col,torches] of [[EX.down,boss?'#ff5d6c':A.glow,true],[EX.up,'#fff2c0',false]]){
+    const beam=new THREE.Mesh(new THREE.CylinderGeometry(.75,.95,7,16,1,true),new THREE.MeshBasicMaterial({color:new THREE.Color(col),transparent:true,opacity:.1,blending:THREE.AdditiveBlending,depthWrite:false,side:THREE.DoubleSide}));
+    beam.position.set(xw(cell),3.5,xz(cell)); beam.renderOrder=3; beam.visible=false; grp.add(beam);
+    const halo=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,color:new THREE.Color(col),transparent:true,blending:THREE.AdditiveBlending,depthWrite:false})); halo.scale.set(3,3,1); halo.position.set(xw(cell),.6,xz(cell)); halo.renderOrder=3; halo.visible=false; grp.add(halo);
+    EX.glows.push({g:beam,floor:cell,mats:[beam.material],halo,ph:Math.random()*6,beam:true});
+    if(torches) for(const sx of [-1,1]){ const g=new THREE.Group(); g.position.set(xw(cell)+sx*XCS*.55,0,xz(cell)-XCS*.42); const iron=xMat(0x2a2620), mats=[];
+      g.add(xBox(.1,1.5,.1,iron,0,.75,0), xBox(.3,.08,.3,iron,0,1.52,0));
+      const flame=new THREE.Group(), fm=c=>{ const m=new THREE.MeshBasicMaterial({color:c,transparent:true}); mats.push(m); return m; };
+      const f1=new THREE.Mesh(new THREE.ConeGeometry(.2,.6,6),fm(0xff7a2a)), f2=new THREE.Mesh(new THREE.ConeGeometry(.11,.38,6),fm(0xffe08a)); f1.position.y=.3; f2.position.y=.2; flame.add(f1,f2); flame.position.set(0,1.56,0); g.add(flame);
+      const th=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,color:0xffa040,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false})); th.scale.set(3,3,1); th.position.set(0,1.85,0); th.renderOrder=2; g.add(th);
+      g.visible=false; grp.add(g); EX.glows.push({g,floor:cell,mats,halo:th,flame,torch:true,ph:Math.random()*6}); } } }
 // a chest: plain wood, a purple lid when rich, gold trim glowing on a legendary hoard
 function xChestMesh(c){ const cwood=xMat(0x7a4a22), gold=xMat(0xf2c94c,{emissive:c.legend?0x806010:0x402a08});
   const g=new THREE.Group(); g.position.set(xw(c.cell),0,xz(c.cell)); g.rotation.y=(Math.random()-.5)*.6;
@@ -515,6 +540,27 @@ function xLightPool(T,dt){ const G=X3; if(!G.pool) return; EX.lpT=(EX.lpT||0)-dt
     G.pool.forEach((P,i)=>{ const L=near[i]; P.userData.L=L||null; if(L){ const wp=new THREE.Vector3(); (L.flame||L.halo).getWorldPosition(wp); P.position.copy(wp); P.position.y=L.torch?2.1:1.1; P.color.set(L.torch?0xffa448:EX.area.glow); P.distance=L.torch?11:8; } }); }
   for(const P of G.pool){ const L=P.userData.L, tg=L?(L.torch?1.5*(.85+.1*Math.sin(T*11+L.ph)+.07*Math.sin(T*23.7+L.ph*3)):.9*(.85+.15*Math.sin(T*1.7+L.ph)))*Math.min(1,EX.fogCur[L.floor]*1.3):0;
     P.intensity+=(tg-P.intensity)*Math.min(1,dt*8); } }
+/* ---------------- juice: sparks, dust, coins, flashes ----------------
+   Small, short-lived effects: sparkles when you pick something up, dust puffs as you walk, coins
+   that fly up to your gold, a flash as a fight begins, and the camera shake of a sprung trap. */
+function xSparks(x,z,col,n,up){ if(!X3||!X3.group) return; const tex=xGlowTex.t||(xGlowTex.t=xGlowTex()); EX.fx=EX.fx||[];
+  for(let k=0;k<(n||10);k++){ const s=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,color:col,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false})); const a=Math.random()*6.3, v=.8+Math.random()*1.6;
+    s.position.set(x,.5,z); s.scale.set(.35,.35,1); s.renderOrder=4; s.userData={vx:Math.cos(a)*v,vz:Math.sin(a)*v,vy:(up||2)+Math.random()*2,t:0,life:.55+Math.random()*.35,g:4,s:.35}; X3.group.add(s); EX.fx.push(s); } }
+function xPuff(x,z){ if(!X3||!X3.group) return; const tex=xGlowTex.t||(xGlowTex.t=xGlowTex()); EX.fx=EX.fx||[];
+  for(let k=0;k<2;k++){ const s=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,color:0x9a948a,transparent:true,opacity:.35,depthWrite:false})); s.position.set(x+(Math.random()-.5)*.4,.15,z+(Math.random()-.5)*.3+.2);
+    s.scale.set(.4,.4,1); s.renderOrder=3; s.userData={vx:(Math.random()-.5)*.4,vz:(Math.random()-.5)*.4,vy:.4,t:0,life:.5,g:0,s:.4,grow:1.6,a0:.35}; X3.group.add(s); EX.fx.push(s); } }
+function xFxTick(T,dt){
+  if(EX.fx) EX.fx=EX.fx.filter(s=>{ const u=s.userData; u.t+=dt; u.vy-=u.g*dt; s.position.x+=u.vx*dt; s.position.y=Math.max(.05,s.position.y+u.vy*dt); s.position.z+=u.vz*dt;
+    const k=u.t/u.life, sc=u.s*(1+(u.grow||0)*k); s.scale.set(sc,sc,1); s.material.opacity=(u.a0||1)*(1-k); if(k>=1){ X3.group.remove(s); s.material.dispose(); return false; } return true; });
+  if(EX.walk&&!EX.busy){ EX.puffT=(EX.puffT||0)-dt; if(EX.puffT<=0){ EX.puffT=.26; xPuff(EX.px,EX.pz); } } }
+// coins rise from where you are and fly up to the gold counter, which pops as they land
+function xCoins(cell,n){ const G=X3, gold=$('#xGold'); if(!G||!gold) return; const r=appBox($('#xView')), v=new THREE.Vector3(xw(cell),1,xz(cell)).project(G.cam);
+  const sx=r.left+(v.x+1)/2*r.width, sy=r.top+(1-v.y)/2*r.height, t=gold.getBoundingClientRect();
+  for(let k=0;k<n;k++){ const c=document.createElement('span'); c.className='xcoin'; c.style.left=sx+'px'; c.style.top=sy+'px'; document.body.appendChild(c);
+    const dx=(Math.random()-.5)*60, dy=-30-Math.random()*40, ex=t.left+12-sx, ey=t.top+t.height/2-sy;
+    const an=c.animate([{transform:'translate(-50%,-50%) scale(.6)'},{transform:`translate(calc(-50% + ${dx}px),calc(-50% + ${dy}px)) scale(1)`,offset:.35},{transform:`translate(calc(-50% + ${ex}px),calc(-50% + ${ey}px)) scale(.7)`}],{duration:650+k*45,easing:'cubic-bezier(.3,.1,.4,1)',fill:'forwards'});
+    an.onfinish=()=>{ c.remove(); gold.animate([{transform:'scale(1)'},{transform:'scale(1.3)'},{transform:'scale(1)'}],{duration:180}); }; } }
+function xFlashView(ms){ const v=$('#xView'); if(v&&v.animate) v.animate([{filter:'brightness(1)'},{filter:'brightness(2.6) saturate(.6)'},{filter:'brightness(1)'}],{duration:ms||300}); }
 /* ---------------- the depth around the dungeon ----------------
    The rooms are cut into rock that stands over a deep chasm. Behind the walls you have seen, the
    darkness thins and you look down: a faint glow of the area's colour far below, distant specks
@@ -522,7 +568,7 @@ function xLightPool(T,dt){ const G=X3; if(!G.pool) return; EX.lpT=(EX.lpT||0)-dt
 function xChasmTex(A,S,seed){ const N=256, R=caveRng(seed+5), f=xFbm(N,R,3), c=document.createElement('canvas'); c.width=c.height=N; const x=c.getContext('2d'), im=x.createImageData(N,N);
   const g=xHexRGB(A.glow), fg=xHexRGB(A.fog);
   for(let j=0;j<N;j++) for(let i=0;i<N;i++){ const v=f(i,j), k=Math.max(0,v-.45)*1.6, o=(j*N+i)*4, q=Math.round(k*6)/6;
-    im.data[o]=Math.min(255,fg[0]*1.1+g[0]*q*.9); im.data[o+1]=Math.min(255,fg[1]*1.1+g[1]*q*.9); im.data[o+2]=Math.min(255,fg[2]*1.1+g[2]*q*.9); im.data[o+3]=255; }
+    im.data[o]=Math.min(255,fg[0]*.8+g[0]*q*.55); im.data[o+1]=Math.min(255,fg[1]*.8+g[1]*q*.55); im.data[o+2]=Math.min(255,fg[2]*.8+g[2]*q*.55); im.data[o+3]=255; }
   x.putImageData(im,0,0); for(let n=0;n<420;n++){ x.fillStyle=n%4?'rgba(255,255,255,.55)':A.glow; x.fillRect(R()*N|0,R()*N|0,n%9?1:2,1); }
   return c; }
 function xChasm(grp,A,S,seed){ const span=XN*XCS, t=xTex(xChasmTex(A,S,seed),true); t.repeat.set(5,5);
@@ -702,6 +748,13 @@ function xPool(tex,col,size){ const m=new THREE.Mesh(new THREE.PlaneGeometry(siz
 function xGroupSprites(gp,grp){ const id=gp.ids[0], d=ENEMY_DEFS[id], h=XSPR*Math.max(.75,Math.min(1.7,d.scale||1));
   gp.sprite=xSprite(()=>unitSprite({kind:'enemy',id,color:d.color}),h); gp.sprite.visible=false; grp.add(gp.sprite);
   gp.zz=xTextSprite('z','#9fd8ff'); gp.bang=xTextSprite('!','#ff4d5e'); gp.zz.visible=gp.bang.visible=false; grp.add(gp.zz,gp.bang); gp.h=h;
+  // every group stands on a shadow and a thin ring of its colour; a red ring pulses when it closes on you
+  { const col=new THREE.Color(COLORS[d.color]?COLORS[d.color].c:'#ff5d6c'), base=new THREE.Group();
+    const sh=new THREE.Mesh(new THREE.CircleGeometry(.75*Math.max(.8,d.scale||1),20),new THREE.MeshBasicMaterial({color:0x000000,transparent:true,opacity:.45,depthWrite:false}));
+    const rg=new THREE.Mesh(new THREE.RingGeometry(.62*Math.max(.8,d.scale||1),.72*Math.max(.8,d.scale||1),28),new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:.7,depthWrite:false}));
+    const warn=new THREE.Mesh(new THREE.RingGeometry(1.05,1.25,32),new THREE.MeshBasicMaterial({color:0xff3b4e,transparent:true,opacity:0,depthWrite:false,blending:THREE.AdditiveBlending}));
+    for(const o of [sh,rg,warn]){ o.rotation.x=-Math.PI/2; o.renderOrder=2; base.add(o); } sh.position.y=.03; rg.position.y=.045; warn.position.y=.05;
+    base.visible=false; grp.add(base); gp.base=base; gp.warn=warn; }
   // a miniboss stands on a ring of its colour, so you know it for a big threat from afar
   if(gp.mini){ const r=new THREE.Mesh(new THREE.TorusGeometry(.95,.07,6,24),new THREE.MeshBasicMaterial({color:new THREE.Color(COLORS[d.color].c)})); r.rotation.x=Math.PI/2; r.position.y=.06; r.visible=false; grp.add(r); gp.ring=r; }
   // a mission's mark over the group: ♛ a bounty, ☠ a nest's brood (missions.js)
@@ -715,14 +768,14 @@ function xPaintCells(){
   for(let c=0;c<XN*XN;c++){ let b=0;
     if(EX.vis[c]){ const d=Math.hypot(xcx(c)-px,xcy(c)-py); b=1-.55*Math.min(1,Math.max(0,(d-1)/rad)); }
     else if(EX.seen[c]) b=.24;
-    else if(EX.t[c]===T_ROCK&&xNearSeen(c)) b=.7;   // behind a wall you have seen: the chasm below shows
+    else if(EX.t[c]===T_ROCK&&xNearSeen(c)) b=.6;   // behind a wall you have seen: the chasm below shows
     EX.fogTgt[c]=b;
     if(EX.seen[c]&&!EX.shown[c]){ EX.shown[c]=1; const w=EX.wIdx.get(c); if(w){ EX.wCut[c]=xCutTarget(c); xWallMatrix(m,c,EX.wms.indexOf(w[0])===0,EX.wCut[c]); w[0].setMatrixAt(w[1],m); w[0].instanceMatrix.needsUpdate=true; EX.wList.push(c); xDressShow(c,EX.wCut[c]); } } }
   for(const D of EX.decor||[]) D.mesh.visible=D.cells.some(c=>EX.seen[c]);
   for(const [i,d] of EX.doors) if(d.mesh) d.mesh.visible=!!EX.seen[i]&&d.state!=='secret';
   for(const c of EX.chests) c.mesh.visible=!!EX.seen[c.cell];
   EX.downMesh.visible=!!EX.seen[EX.down]; EX.upMesh.visible=!!EX.seen[EX.up];
-  for(const L of EX.glows) L.g.visible=!!EX.seen[L.floor]&&(L.cut==null||L.cut>.4);
+  for(const L of EX.glows){ L.g.visible=!!EX.seen[L.floor]&&(L.cut==null||L.cut>.4); if(L.beam) L.halo.visible=L.g.visible; }
   if(typeof xPaintExtra==='function') xPaintExtra();
 }
 /* The cutaway: a wall nearer the camera than you (south of you, within sight) sinks to a low rim,
@@ -917,7 +970,7 @@ function xEnter(c){
 function xXp(n,why){ if(typeof gainXp!=='function'||!save) return; const up=gainXp(save,n); persist(); xLog('+'+Math.round(n)+' XP · '+why,'xp');
   if(up){ xLog('Level up! You are now level '+save.level+'.','good'); setTimeout(()=>{ if(EX&&EX.active&&!EX.busy) maybeLevelUp(); },400); } xHud(); }
 function xHurt(n,why){ EX.hp=Math.max(0,EX.hp-n); xFlash(); xHud(); if(EX.hp<=0) xDie(why); }
-function xSpring(tr,remote){ const T=TRAPS[tr.kind]; tr.known=true; xTrapMesh(tr);
+function xSpring(tr,remote){ const T=TRAPS[tr.kind]; tr.known=true; xTrapMesh(tr); EX.shakeT=.45; xSparks(xw(tr.cell),xz(tr.cell),0xffd08a,10,1.4);
   xLog(remote&&tr.kind==='pit'?'The pit\'s lid snaps and catches your arm!':T.text,'bad'); const dmg=T.dmg[1]?Math.round(rnd(T.dmg[0],T.dmg[1])+EX.depth*.8):0;
   if(tr.kind==='alarm'){ tr.armed=false; if(tr.mesh) tr.mesh.visible=false; for(const g of EX.groups) if(!g.boss&&!g.dormant){ g.state='chase'; g.lostT=0; }
     // from depth 3 the alarm also calls the floor's Dungeon Warden
@@ -980,7 +1033,7 @@ function xOpenChest(ch){
 // chest loot: a card, gold or a piece of gear
 function xLoot(rich){ const d=EX.depth+(rich?2:0), r=Math.random();
   if(r<.42){ const c=rollCard({depth:d,min:rich?'uncommon':null}); const res=addCards(save,[c]); xLog('The chest holds a card: '+c.name+(res[0]&&res[0].isNew?' (new!)':'')+'.','loot'); xCardPop(c,res[0]&&res[0].isNew); }
-  else if(r<.76){ const g=Math.round(battleGold(d,false)*rnd(.5,1.1)); save.gold+=g; xLog('The chest holds '+g+' gold.','gold'); tip('+'+g+' gold'); }
+  else if(r<.76){ const g=Math.round(battleGold(d,false)*rnd(.5,1.1)); save.gold+=g; xLog('The chest holds '+g+' gold.','gold'); tip('+'+g+' gold'); xCoins(EX.pc,Math.min(10,3+(g/12|0))); }
   else { const k=rollLoot(d,Math.random,rich); const l=lootLabel(save,k), res=addLoot(save,k); xLog('The chest holds '+l.name+'.'+(res&&res.cursed?' '+res.msg:''),'loot'); tip(l.name); }
 }
 
@@ -1064,6 +1117,7 @@ function xEngage(g,forced){
   const name=ENEMY_DEFS[g.ids[0]].name;
   if(opening==='ambush') xLog('You catch the '+name+' asleep!','good'); else if(opening==='surprised') xLog('The '+name+' was waiting for you!','bad');
   if(opening==='strike') xLog('First strike on the '+name+'!','good');
+  xFlashView(500); setTimeout(()=>xFlashView(260),560);
   const b=$('#xBang'); b.textContent=opening==='strike'?'First Strike!':opening==='ambush'?'Ambush!':opening==='surprised'?'Surprised!':'!'; b.dataset.key='fight'; b.className='x-bang on '+(opening==='strike'?'ambush':opening||'');
   setTimeout(()=>{ b.className='x-bang'; if(!EX||EX.fighting!==g) return; EX.active=false; fight(EX.depth,[g.ids.slice()],{hp:EX.hp,opening,explore:true,rule:g.rule||null}); },700);
 }
@@ -1113,7 +1167,7 @@ function stopExplore(){ if(EX) EX.active=false; if(xMapIsOpen()) xMapClose(); xP
 let xRaf=0, xLast=0;
 /* Doors swing open on their hinge, away from whoever opens them; a shortcut gate's bars slide up.
    xDoorOpen starts the animation, xDoorTick runs it every frame. */
-function xDoorPose(d,k,sign){ if(d.lock==='gate'||d.gate){ d.leaf.position.y=k*(XWALL-.3); return; } d.leaf.rotation.y=sign*k*1.65; }
+function xDoorPose(d,k,sign){ if(d.lock==='gate'||d.gate){ d.leaf.position.y=k*1.9; return; } d.leaf.rotation.y=sign*k*1.65; }
 function xDoorOpen(d,by){ if(!d||!d.leaf) return; d.leaf.visible=true;
   const bx=by!=null?xw(by):EX.px, bz=by!=null?xz(by):EX.pz, rel=d.ew?bx-xw(d.cell):bz-xz(d.cell);
   d.sign=d.ew?(rel>0?-1:1):(rel>0?1:-1); d.gate=d.gate||d.lock==='gate'; d.anim=0;
@@ -1147,12 +1201,16 @@ function xDraw(T,dt){
   // the camera looks in at about 48 degrees, so you see the faces of the walls, not just their tops
   // (tall screens pull back so a room still fits across); walls between it and you sink (xWallCut)
   const k=Math.max(1,Math.min(1.8,.8/G.cam.aspect)), hgt=14*k, back=12.5*k;
-  G.cam.position.set(EX.px,hgt,EX.pz+back); G.cam.lookAt(EX.px,.6,EX.pz-1.2); xWallCut(dt);
+  let zk=1; if(EX.fighting&&EX.busy){ EX.engT=(EX.engT||0)+dt; const e=Math.min(1,EX.engT/.7); zk=1-.32*e*e; } else EX.engT=0;   // a fight starting: the camera rushes in
+  const sh=EX.shakeT>0?(EX.shakeT-=dt,EX.shakeT*.9):0, jx=sh?(Math.random()-.5)*sh:0, jy=sh?(Math.random()-.5)*sh:0;
+  const fx=EX.fighting&&EX.busy?EX.fighting.x:EX.px, fz=EX.fighting&&EX.busy?EX.fighting.z:EX.pz, cx=EX.px+(fx-EX.px)*(1-zk)*1.4, cz=EX.pz+(fz-EX.pz)*(1-zk)*1.4;
+  G.cam.position.set(cx+jx,hgt*zk+jy,cz+back*zk); G.cam.lookAt(cx+jx,.6,cz-1.2); xWallCut(dt); xFxTick(T,dt);
   // enemies show only while in sight; a Shadow Assassin only when it is close; a dormant guardian not at all
   for(const g of EX.groups){ if(!g.sprite) continue; const v=!!EX.vis[g.cell]&&!g.dormant&&!(g.stealth&&Math.hypot(g.x-EX.px,g.z-EX.pz)/XCS>3.2); g.sprite.visible=v; g.zz.visible=v&&g.state==='sleep'; g.bang.visible=v&&g.state==='chase';
     if(g.ring){ g.ring.visible=v; g.ring.position.set(g.x,.06,g.z); }
+    if(g.base){ g.base.visible=v; if(v){ g.base.position.set(g.x,0,g.z); const near=g.state==='chase'&&Math.hypot(g.x-EX.px,g.z-EX.pz)<XCS*3.5; g.warn.material.opacity=near?.45+.4*Math.sin(T*10):0; const s=near?1+.12*Math.sin(T*10):1; g.warn.scale.set(s,s,1); } }
     if(g.tag){ g.tag.visible=v; if(v) g.tag.position.set(g.x,g.h+(g.state==='chase'?1.1:.5)+Math.sin(T*2.5+g.bob)*.08,g.z); }
-    if(v){ g.sprite.position.set(g.x,g.state==='sleep'?0:(Math.floor(T*(g.state==='chase'?4:1.6)+g.bob)%2)*g.h/96,g.z); xRefresh(g.sprite,(g.face||-1)<0);
+    if(v){ g.sprite.position.set(g.x,g.state==='sleep'?0:g.state==='chase'?Math.abs(Math.sin(T*9+g.bob))*.28:(Math.floor(T*1.6+g.bob)%2)*g.h/96,g.z); xRefresh(g.sprite,(g.face||-1)<0);   // chasers hop
       g.zz.position.set(g.x+.5,g.h+.2+Math.sin(T*2+g.bob)*.15,g.z); g.bang.position.set(g.x,g.h+.35,g.z); } }
   G.cam.updateMatrixWorld(); xStand(EX.me); for(const g of EX.groups) if(g.sprite&&g.sprite.visible) xStand(g.sprite);
   xFov(dt); xTellDraw(T);
@@ -1162,7 +1220,7 @@ function xDraw(T,dt){
   EX.downMesh.userData.ring.rotation.z+=.02;
   for(const L of EX.glows){ if(!L.g.visible) continue; const f=EX.fogCur[L.floor];
     const fl=L.torch?.8+.12*Math.sin(T*11+L.ph)+.08*Math.sin(T*23.7+L.ph*3):.85+.15*Math.sin(T*1.7+L.ph);
-    L.halo.material.opacity=.6*f*fl; for(const m of L.mats) m.opacity=.3+.7*f;
+    L.halo.material.opacity=.6*f*fl; for(const m of L.mats) m.opacity=L.beam?(.06+.06*Math.sin(T*1.5+L.ph))*(.4+.6*f):.3+.7*f;
     for(const o of L.g.children) if(o.userData.pool) o.material.opacity=(L.torch?.6:.3)*f*fl;
     if(L.flame){ L.flame.scale.set(.9+.15*Math.sin(T*17+L.ph),.85+.3*fl,.9+.15*Math.cos(T*13+L.ph)); L.flame.rotation.z=Math.sin(T*7+L.ph)*.12; }
     if(EX.area.veins==='stars') L.g.children.forEach((o,i)=>{ if(o.userData.y0!=null) o.position.y=o.userData.y0+Math.sin(T*1.3+i+L.ph)*.12; }); }

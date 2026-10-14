@@ -231,7 +231,7 @@ function xInit3D(){
   const dgeo=new THREE.BufferGeometry(); dgeo.setAttribute('position',new THREE.BufferAttribute(dpos,3));
   const dust=new THREE.Points(dgeo,new THREE.PointsMaterial({color:0xffffff,size:.08,transparent:true,opacity:.5,blending:THREE.AdditiveBlending,depthWrite:false}));
   dust.renderOrder=3; scene.add(dust);
-  X3={renderer,scene,cam,amb,lamp,dust,pool,group:null,ray:new THREE.Raycaster(),plane:new THREE.Plane(new THREE.Vector3(0,1,0),0)};
+  X3={renderer,scene,cam,amb,sun,lamp,dust,pool,group:null,ray:new THREE.Raycaster(),plane:new THREE.Plane(new THREE.Vector3(0,1,0),0)};
   // the search reticle: a ring as wide as the area a search covers, with a cross at its heart
   const rm=new THREE.MeshBasicMaterial({color:0x7fe3ff,transparent:true,opacity:.9,depthTest:false}), ret=new THREE.Group();
   const ring=new THREE.Mesh(new THREE.RingGeometry(XCS*2.3,XCS*2.5,40),rm); ring.rotation.x=-Math.PI/2; ret.add(ring);
@@ -561,8 +561,8 @@ function xAreaLights(grp,A){
 function xCamSide(L){ if(L.wall==null) return false; const dy=xcy(L.wall)-xcy(EX.pc); return dy>0&&dy<=9&&Math.abs(xcx(L.wall)-xcx(EX.pc))<=11; }
 function xLightPool(T,dt){ const G=X3; if(!G.pool) return; EX.lpT=(EX.lpT||0)-dt;
   if(EX.lpT<=0){ EX.lpT=.3; const near=(EX.glows||[]).filter(L=>L.g.visible&&EX.fogCur[L.floor]>.3&&!xCamSide(L)).map(L=>[L,Math.hypot(L.g.position.x-EX.px,L.g.position.z-EX.pz)]).filter(a=>a[1]<16).sort((a,b)=>a[1]-b[1]).slice(0,G.pool.length).map(a=>a[0]);
-    G.pool.forEach((P,i)=>{ const L=near[i]; P.userData.L=L||null; if(L){ const wp=new THREE.Vector3(); (L.flame||L.halo).getWorldPosition(wp); P.position.copy(wp); P.position.y=L.torch?2.1:1.1; P.color.set(L.torch?0xffa448:EX.area.glow); P.distance=L.torch?11:8; } }); }
-  for(const P of G.pool){ const L=P.userData.L, tg=L?(L.torch?1.5*(.85+.1*Math.sin(T*11+L.ph)+.07*Math.sin(T*23.7+L.ph*3)):.9*(.85+.15*Math.sin(T*1.7+L.ph)))*Math.min(1,EX.fogCur[L.floor]*1.3):0;
+    G.pool.forEach((P,i)=>{ const L=near[i]; P.userData.L=L||null; if(L){ const wp=new THREE.Vector3(); (L.flame||L.halo).getWorldPosition(wp); P.position.copy(wp); P.position.y=L.torch?2.1:1.1; P.color.set(L.torch?0xffa448:EX.area.glow); P.distance=(L.torch?11:8)*XLIT.torchRad; } }); }
+  for(const P of G.pool){ const L=P.userData.L, FL=XLIT.flick, tg=L?(L.torch?1.5*(.85+FL*(.1*Math.sin(T*11+L.ph)+.07*Math.sin(T*23.7+L.ph*3))):.9*(.85+FL*.15*Math.sin(T*1.7+L.ph)))*Math.min(1,EX.fogCur[L.floor]*1.3)*XLIT.torch:0;
     P.intensity+=(tg-P.intensity)*Math.min(1,dt*8); } }
 /* ---------------- juice: sparks, dust, coins, flashes ----------------
    Small, short-lived effects: sparkles when you pick something up, dust puffs as you walk, coins
@@ -964,7 +964,9 @@ const XDBG=[   // [element id, object, key, saved as, decimals (null: a checkbox
   ['dbgAO',()=>XLIT,'ao','hexmancers-xl-ao',null,'lit'], ['dbgAOStr',()=>XLIT,'aoStr','hexmancers-xl-aoStr',2,'lit'], ['dbgAORad',()=>XLIT,'aoRad','hexmancers-xl-aoRad',2,'bake'],
   ['dbgSSAO',()=>XLIT,'ssao','hexmancers-xl-ssao',null,''], ['dbgSSAOStr',()=>XLIT,'ssaoStr','hexmancers-xl-ssaoStr',2,''], ['dbgSSAORad',()=>XLIT,'ssaoRad','hexmancers-xl-ssaoRad',2,''],
   ['setXBall',()=>XB,'ball','hexmancers-xball',2,''], ['setXStrip',()=>XB,'strip','hexmancers-xstrip',2,''],
-  ['dbgFps',()=>XLIT,'fps','hexmancers-xl-fps',null,'fps'] ];
+  ['dbgFps',()=>XLIT,'fps','hexmancers-xl-fps',null,'fps'],
+  ...[['dbgAmb','amb'],['dbgSun','sun'],['dbgLamp','lamp'],['dbgLampRad','lampRad'],['dbgLampY','lampY'],['dbgTorch','torch'],['dbgTorchRad','torchRad'],['dbgFlick','flick'],['dbgMyGlow','myGlow']].map(([id,k])=>[id,()=>XLIT,k,'hexmancers-xl-'+k,2,'']),
+  ['dbgFogNear',()=>XLIT,'fogNear','hexmancers-xl-fogNear',0,''], ['dbgFogFar',()=>XLIT,'fogFar','hexmancers-xl-fogFar',0,''] ];
 let xBakeT=0;
 function xDbgApply(what){ if(what==='lit') xLitRefresh(); else if(what==='bake'){ xLitRefresh(); clearTimeout(xBakeT); xBakeT=setTimeout(xBakeAO,120); }
   else if(what==='fps'){ const f=document.getElementById('xFps'); if(f) f.style.display=XLIT.fps?'':'none'; } }
@@ -972,7 +974,7 @@ function xBindSliders(){ for(const [id,obj,k,key,dec,what] of XDBG){ const el=do
     const show=()=>{ if(dec==null) el.checked=!!O[k]; else { el.value=O[k]; if(out) out.textContent=(+O[k]).toFixed(dec); } };
     show(); el.oninput=el.onchange=()=>{ O[k]=dec==null?el.checked:+el.value; show(); try{ localStorage.setItem(key,dec==null?(O[k]?'1':'0'):String(O[k])); }catch(e){} xDbgApply(what); }; }
   const box=document.getElementById('debug'); if(!box||xBindSliders.done) return; xBindSliders.done=1;
-  document.getElementById('dbgClose').onclick=xDbgClose;
+  document.getElementById('dbgClose').onclick=xDbgClose; xDbgGrip();
   box.addEventListener('pointerdown',e=>{ if(e.target===box) xDbgClose(); });
   document.getElementById('dbgReset').onclick=()=>{ for(const [id,obj,k,key,dec,what] of XDBG){ const O=obj(); O[k]=(O===XB?XB_DEF:XLIT_DEF)[k]; try{ localStorage.removeItem(key); }catch(e){} }
     xBindSliders(); xLitRefresh(); xBakeAO(); xDbgApply('fps'); };
@@ -984,6 +986,25 @@ function xBindSliders(){ for(const [id,obj,k,key,dec,what] of XDBG){ const el=do
   document.addEventListener('touchcancel',e=>{ if(e.touches.length===0) counted=false; },{capture:true,passive:true});
   window.addEventListener('keydown',e=>{ if(e.key!=='`'||e.repeat) return; const t=e.target; if(t&&(t.tagName==='INPUT'&&t.type!=='range'&&t.type!=='checkbox'||t.tagName==='TEXTAREA')) return; if(document.getElementById('settings').classList.contains('on')) return; e.preventDefault(); xDbgToggle(); });
   xDbgApply('fps'); }
+/* The debug menu is a drawer at the top of the screen: drag its grip down for more menu, up for more
+   dungeon. A tap on the grip folds it to its title bar or unfolds it. The height is remembered here. */
+function xDbgGrip(){ const grip=document.getElementById('dbgGrip'), pan=grip&&grip.parentElement, box=document.getElementById('debug'), KEY='hexmancers-dbgh'; if(!grip) return;
+  const MIN=120, def=()=>Math.round(box.clientHeight*.42), maxH=()=>Math.max(MIN,box.clientHeight-24);
+  const set=h=>{ h=Math.round(Math.max(MIN,Math.min(maxH(),h))); pan.style.height=h+'px'; return h; };
+  let saved=null; try{ const v=localStorage.getItem(KEY); if(v!==null&&+v>0) saved=+v; }catch(e){}
+  const keep=h=>{ saved=h; try{ localStorage.setItem(KEY,String(h)); }catch(e){} };
+  const fit=()=>{ if(box.classList.contains('on')&&saved!=null) set(saved); };
+  new MutationObserver(()=>requestAnimationFrame(fit)).observe(box,{attributes:true,attributeFilter:['class']});
+  addEventListener('resize',fit);
+  const P=e=>typeof appXY==='function'?appXY(e.clientX,e.clientY):[e.clientX,e.clientY];
+  let drag=null;
+  grip.addEventListener('pointerdown',e=>{ e.preventDefault(); try{ grip.setPointerCapture(e.pointerId); }catch(_){}
+    drag={id:e.pointerId,p0:P(e)[1],s0:pan.offsetHeight,moved:false}; grip.classList.add('on'); box.classList.add('gripping'); });
+  grip.addEventListener('pointermove',e=>{ if(!drag||e.pointerId!==drag.id) return; const d=P(e)[1]-drag.p0; if(Math.abs(d)>4) drag.moved=true; if(drag.moved) set(drag.s0+d); });
+  const end=e=>{ if(!drag||e.pointerId!==drag.id) return; const d=drag; drag=null; grip.classList.remove('on'); box.classList.remove('gripping');
+    if(d.moved) keep(pan.offsetHeight);
+    else if(e.type==='pointerup'){ pan.style.transition='height .2s'; keep(set(d.s0>MIN+20?MIN:(saved>MIN+20?saved:def()))); setTimeout(()=>pan.style.transition='',250); } };
+  grip.addEventListener('pointerup',end); grip.addEventListener('pointercancel',end); }
 function xDbgToggle(){ const b=document.getElementById('debug'); if(b.classList.contains('on')) xDbgClose(); else { b.classList.add('on'); } }
 function xDbgClose(){ document.getElementById('debug').classList.remove('on'); }
 // the frame-rate readout (debug menu): frames a second and the slowest frame of the last second
@@ -1019,7 +1040,7 @@ function xGhostMat(m){ m.transparent=true; m.depthWrite=false; m.customProgramCa
      darken toward their feet.
    - Screen-space AO: a pass over the depth of the whole frame shades every crease (xSSAO). */
 const xSetB=(k,d)=>{ try{ const v=localStorage.getItem(k); return v==null?d:v==='1'; }catch(e){ return d; } };
-const XLIT_DEF={ texel:true, steps:0, nmap:true, nstrF:.35, nstrW:.35, ao:true, aoStr:1, aoRad:1, ssao:false, ssaoStr:1, ssaoRad:.6, fps:false };
+const XLIT_DEF={ amb:1, sun:1, lamp:1, lampRad:1, lampY:2.6, torch:1, torchRad:1, flick:1, myGlow:1, fogNear:20, fogFar:46, texel:true, steps:0, nmap:true, nstrF:.35, nstrW:.35, ao:true, aoStr:1, aoRad:1, ssao:false, ssaoStr:1, ssaoRad:.6, fps:false };
 const XLIT={}; for(const k in XLIT_DEF) XLIT[k]=typeof XLIT_DEF[k]==='boolean'?xSetB('hexmancers-xl-'+k,XLIT_DEF[k]):xSetF('hexmancers-xl-'+k,XLIT_DEF[k]);
 const XLITU={ uXSteps:{value:XLIT.steps}, uXAO:{value:XLIT.ao?XLIT.aoStr:0}, uXAOTex:{value:null}, uXFoot:{value:1.75*XLIT.aoRad} };
 const XLITMATS=new Set();
@@ -1548,7 +1569,7 @@ function xDraw(T,dt){
   const ART=XSPR/96, step=EX.walk?Math.floor(EX.walk/1.5)%2:0;
   EX.pose=EX.action||EX.swingT>0?'cast':EX.walk?(step?'walk':'idle'):'idle';
   EX.me.position.set(EX.px,step*ART,EX.pz); xRefresh(EX.me,EX.face<0);
-  G.lamp.position.set(EX.px,2.6,EX.pz);
+  G.lamp.position.set(EX.px,XLIT.lampY,EX.pz);
   // the camera looks in at about 48 degrees, so you see the faces of the walls, not just their tops
   // (tall screens pull back so a room still fits across); walls between it and you sink (xWallCut)
   const k=Math.max(1,Math.min(1.8,.8/G.cam.aspect)), hgt=14*k, back=12.5*k;
@@ -1581,7 +1602,7 @@ function xDraw(T,dt){
   for(const Ln of EX.lanterns||[]) for(const h of Ln.halos) h.material.opacity=(Ln.boss?.75:.6)+.25*Math.sin(T*(Ln.boss?5:2)+Ln.ph);
   if(EX.runeRing){ EX.runeRing.rotation.z=T*.25; EX.runeRing.visible=EX.downMesh.visible; EX.runeRing.material.opacity=.45+.2*Math.sin(T*1.8); }
   for(const L of EX.glows){ if(!L.g.visible) continue; const f=EX.fogCur[L.floor];
-    const fl=L.torch?.8+.12*Math.sin(T*11+L.ph)+.08*Math.sin(T*23.7+L.ph*3):.85+.15*Math.sin(T*1.7+L.ph);
+    const FL=XLIT.flick, fl=L.torch?.8+FL*(.12*Math.sin(T*11+L.ph)+.08*Math.sin(T*23.7+L.ph*3)):.85+FL*.15*Math.sin(T*1.7+L.ph);
     L.halo.material.opacity=.6*f*fl; for(const m of L.mats) m.opacity=L.beam?(.06+.06*Math.sin(T*1.5+L.ph))*(.4+.6*f):.3+.7*f;
     for(const o of L.g.children) if(o.userData.pool) o.material.opacity=(L.torch?.6:.3)*f*fl;
     if(L.flame){ L.flame.scale.set(.9+.15*Math.sin(T*17+L.ph),.85+.3*fl,.9+.15*Math.cos(T*13+L.ph)); L.flame.rotation.z=Math.sin(T*7+L.ph)*.12; }
@@ -1589,9 +1610,10 @@ function xDraw(T,dt){
   { const P=G.dust.geometry.attributes.position, a=P.array; for(let k=0;k<a.length;k+=3){ a[k+1]+=dt*.25; a[k]+=Math.sin(T+k)*dt*.1; if(a[k+1]>3.2) a[k+1]=0; } P.needsUpdate=true;
     G.dust.position.set(EX.px,0,EX.pz); G.dust.material.opacity=.35+.15*Math.sin(T*.7); }
   for(const c of EX.chests) if(c.rich&&!c.open) c.mesh.position.y=Math.abs(Math.sin(T*2))*.05;
-  G.lamp.intensity=1.6*(.95+.04*Math.sin(T*9.3)+.03*Math.sin(T*21.1));
+  const FL=XLIT.flick; G.lamp.intensity=1.6*XLIT.lamp*(.95+FL*(.04*Math.sin(T*9.3)+.03*Math.sin(T*21.1))); G.lamp.distance=16*XLIT.lampRad;
+  G.amb.intensity=.2*XLIT.amb; G.sun.intensity=.22*XLIT.sun; if(G.scene.fog){ G.scene.fog.near=XLIT.fogNear; G.scene.fog.far=Math.max(XLIT.fogNear+1,XLIT.fogFar); }
   xLightPool(T,dt); xDecorTick(T); xAirTick(T,dt); xWeatherTick(T,dt); xLifeTick(T,dt);
-  { const lo=$('#xLowHp'); if(lo){ const r=EX.hp/xmaxHp(); lo.style.opacity=r<.3?(.55+.35*Math.sin(T*(r<.15?7:4))).toFixed(2):'0'; } } if(EX.myGlow){ EX.myGlow.position.x=EX.px; EX.myGlow.position.z=EX.pz; EX.myGlow.material.opacity=.18+.03*Math.sin(T*2.1); }
+  { const lo=$('#xLowHp'); if(lo){ const r=EX.hp/xmaxHp(); lo.style.opacity=r<.3?(.55+.35*Math.sin(T*(r<.15?7:4))).toFixed(2):'0'; } } if(EX.myGlow){ EX.myGlow.position.x=EX.px; EX.myGlow.position.z=EX.pz; EX.myGlow.material.opacity=(.18+.03*FL*Math.sin(T*2.1))*XLIT.myGlow; }
   xRender(G); xFpsTick(dt);
   if((EX.miniT=(EX.miniT||0)+1)%6===0) xMini();
 }

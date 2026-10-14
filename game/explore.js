@@ -548,8 +548,10 @@ function xAreaLights(grp,A){
       g.visible=false; grp.add(g); EX.glows.push({g,floor,wall:xi(wx,wy),mats,halo,pool,flame,torch:true,ph:R()*6}); } }
 }
 // the four real lights go to the lit torches and crystals nearest you; each fades in and out as it moves
+// a light on a wall between the camera and you shines into a room you see past, so it gives up its slot
+function xCamSide(L){ if(L.wall==null) return false; const dy=xcy(L.wall)-xcy(EX.pc); return dy>0&&dy<=9&&Math.abs(xcx(L.wall)-xcx(EX.pc))<=11; }
 function xLightPool(T,dt){ const G=X3; if(!G.pool) return; EX.lpT=(EX.lpT||0)-dt;
-  if(EX.lpT<=0){ EX.lpT=.3; const near=(EX.glows||[]).filter(L=>L.g.visible&&EX.fogCur[L.floor]>.3).map(L=>[L,Math.hypot(L.g.position.x-EX.px,L.g.position.z-EX.pz)]).filter(a=>a[1]<16).sort((a,b)=>a[1]-b[1]).slice(0,G.pool.length).map(a=>a[0]);
+  if(EX.lpT<=0){ EX.lpT=.3; const near=(EX.glows||[]).filter(L=>L.g.visible&&EX.fogCur[L.floor]>.3&&!xCamSide(L)).map(L=>[L,Math.hypot(L.g.position.x-EX.px,L.g.position.z-EX.pz)]).filter(a=>a[1]<16).sort((a,b)=>a[1]-b[1]).slice(0,G.pool.length).map(a=>a[0]);
     G.pool.forEach((P,i)=>{ const L=near[i]; P.userData.L=L||null; if(L){ const wp=new THREE.Vector3(); (L.flame||L.halo).getWorldPosition(wp); P.position.copy(wp); P.position.y=L.torch?2.1:1.1; P.color.set(L.torch?0xffa448:EX.area.glow); P.distance=L.torch?11:8; } }); }
   for(const P of G.pool){ const L=P.userData.L, tg=L?(L.torch?1.5*(.85+.1*Math.sin(T*11+L.ph)+.07*Math.sin(T*23.7+L.ph*3)):.9*(.85+.15*Math.sin(T*1.7+L.ph)))*Math.min(1,EX.fogCur[L.floor]*1.3):0;
     P.intensity+=(tg-P.intensity)*Math.min(1,dt*8); } }

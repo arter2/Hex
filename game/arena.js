@@ -89,7 +89,7 @@ function arenaBoard(A,Ar,R){
     t._v1=k; });
   const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.BufferAttribute(pos,3)); g.setAttribute('normal',new THREE.BufferAttribute(nor,3));
   g.setAttribute('uv',new THREE.BufferAttribute(uv,2)); g.setAttribute('color',new THREE.BufferAttribute(col,3));
-  const m=arMat(xLitTag(xPhong({map:tex,vertexColors:true}),1,cvs)), mesh=new THREE.Mesh(g,m); mesh.renderOrder=0;
+  const m=arMat(xLitTag(xPhong({map:tex,vertexColors:true,pbr:'slab'}),1,cvs)), mesh=new THREE.Mesh(g,m); mesh.renderOrder=0;
   // the glow layer: the same tiles' tops again, unlit and added on, black where nothing glows
   const gpos=[], gcol=[]; TILES.forEach(t=>{ t._g0=gpos.length/3; const cx=t.wz, cz=-t.wx;
     for(let i=0;i<6;i++){ const a=Math.PI/6+i*Math.PI/3, b=a+Math.PI/3; gpos.push(cx,.012,cz, cx+Math.sin(b)*rad,.012,cz-Math.cos(b)*rad, cx+Math.sin(a)*rad,.012,cz-Math.cos(a)*rad); gcol.push(0,0,0,0,0,0,0,0,0); } });
@@ -171,6 +171,7 @@ function arenaBuild(depth,seed){ const A=arenaInit(); arenaClear(); const Ar=are
   A.scene.background=new THREE.Color(Ar.fog).multiplyScalar(.3);
   A.scene.fog=new THREE.Fog(new THREE.Color(Ar.fog).multiplyScalar(.35),20,46);
   A.amb.color.set(0xffffff).lerp(glowC,.25); A.lamp.color.set(0xffd9a0).lerp(glowC,.3);
+  A.scene.environment=lookEnv(A.renderer,Ar);
   A.scene.add(A.grp); arenaBakeAO(); xLitAll(A.grp); }
 
 /* ---------------- each frame ---------------- */
@@ -327,7 +328,7 @@ function arPropLights(A){ if(A.plights) return A.plights; A.plights=[]; for(let 
 const arGlow=(col,k,o)=>arMat(xPhong(Object.assign({color:new THREE.Color(col).multiplyScalar(.6),emissive:new THREE.Color(col).multiplyScalar(k==null?.6:k),shininess:30,specular:0x333333},o||{})));
 function arPut(A,geo,mat,wx,y,wz,ry,s){ const m=new THREE.Mesh(geo,mat); m.position.copy(arW(wx,y,wz)); if(ry) m.rotation.y=ry; if(s!=null) (typeof s==='number'?m.scale.setScalar(s):m.scale.set(...s)); A.props.add(m); return m; }
 // a cluster of crystal spikes (octahedra stretched up), leaning out from a point
-function arCrystals(A,R,wx,wz,col,n,big){ const mat=arGlow(col,.7,{transparent:true,opacity:.92}), out=[];
+function arCrystals(A,R,wx,wz,col,n,big){ const mat=arGlow(col,.7,{transparent:true,opacity:.92,pbr:'gloss'}), out=[];
   for(let k=0;k<n;k++){ const g=new THREE.OctahedronGeometry(.25,0); g.scale(1,3.2,1); const s=(big?1.8:1)*(.6+R()*.8);
     const m=arPut(A,g,mat,wx+(R()-.5)*.6*s,.6*s,wz+(R()-.5)*.6*s,R()*3,s); m.rotation.z=(R()-.5)*.7; m.rotation.x=(R()-.5)*.7; out.push(m); }
   return {mat,out}; }
@@ -356,17 +357,17 @@ const ARENA_LOOK={
       L.forEach(l=>{ l.color.set(Ar.glow); l.distance=14; });
       return (T,dt)=>{ const p=.75+.25*Math.sin(T*1.6); s.forEach((c,i)=>c.mat.emissive.set(Ar.glow).multiplyScalar(.45+.3*Math.sin(T*1.6+i)));
         L[0].intensity=1.1*p; L[1].intensity=1.1*(1.5-p); L[2].intensity=boss?1.6*p:0; arCloudTick(cl,T,dt); }; } },
-  deeps:{ build(A,R,Ar,boss,m){ const L=A.plights, ice=arGlow('#bfeaff',.25,{transparent:true,opacity:.85,shininess:80});
+  deeps:{ build(A,R,Ar,boss,m){ const L=A.plights, ice=arGlow('#bfeaff',.25,{transparent:true,opacity:.85,shininess:80,pbr:'ice'});
       for(let k=0;k<(boss?40:24);k++){ const sd=R()<.5?-1:1, along=R(); const wx=m.near+2+along*(m.back-m.near-2), wz=sd*(m.side-.3+R()*.3);
         const g=new THREE.ConeGeometry(.12+R()*.12,.8+R()*1.6,5); g.rotateX(Math.PI); arPut(A,g,ice,wx,3.2+R()*1.2,wz); }
       for(let k=0;k<12;k++){ const g=new THREE.ConeGeometry(.15+R()*.1,1+R()*1.4,5); g.rotateX(Math.PI); arPut(A,g,ice,m.back-.4,4+R(),(R()*2-1)*m.side); }
-      let falls=null; if(boss){ falls=arGlow('#e6f6ff',.4,{transparent:true,opacity:.7,shininess:90}); for(let k=0;k<7;k++){ const h=4+R()*3; arPut(A,new THREE.BoxGeometry(.9,h,.5),falls,m.dais+1.2,h/2-.35,(k-3)*1.3); } }
+      let falls=null; if(boss){ falls=arGlow('#e6f6ff',.4,{transparent:true,opacity:.7,shininess:90,pbr:'ice'}); for(let k=0;k<7;k++){ const h=4+R()*3; arPut(A,new THREE.BoxGeometry(.9,h,.5),falls,m.dais+1.2,h/2-.35,(k-3)*1.3); } }
       const sn=arCloud(A,140,'#eef8ff',.09,[-m.side,m.side,0,6,-m.back,-m.near],'snow',R);
       L[0].position.copy(arW(m.near+3,4,-m.side)); L[1].position.copy(arW(m.back-1,3,m.side*.5)); L[2].position.copy(arW(m.dais||0,3,0));
       L.forEach(l=>{ l.color.set('#9fd8ff'); l.distance=16; });
       return (T,dt)=>{ L[0].intensity=.9; L[1].intensity=.8+.15*Math.sin(T*.8); L[2].intensity=boss?1.4+.3*Math.sin(T*2):0;
         ice.emissive.set('#bfeaff').multiplyScalar(.2+.08*Math.sin(T*1.2)); if(falls) falls.emissive.set('#e6f6ff').multiplyScalar(.35+.15*Math.sin(T*2.4)); arCloudTick(sn,T,dt); }; } },
-  vault:{ build(A,R,Ar,boss,m){ const L=A.plights, st=arMat(xPhong({color:0x5a5878})), glow=arGlow(Ar.glow,.8);
+  vault:{ build(A,R,Ar,boss,m){ const L=A.plights, st=arMat(xPhong({color:0x5a5878})), glow=arGlow(Ar.glow,.8,{pbr:'gloss'});
       const tex=A.rockTex||(A.rockTex=arTex(xTex(xBlockWall(Ar.stone,(Ar.index||0)*7+2,false),true))), pil=arMat(xLitTag(xPhong({map:tex}),2,tex.image));
       for(let k=0;k<(boss?6:4);k++){ const sd=k%2?1:-1, wx=m.near+3+(k>>1)*((m.back-m.near-4)/2.5), h=1.5+R()*2.5; arPut(A,new THREE.CylinderGeometry(.45,.5,h,8),pil,wx,h/2-SLAB,sd*(m.side-.6)); }
       const stones=[]; for(let k=0;k<4;k++){ const sd=k%2?1:-1; stones.push(arPut(A,new THREE.OctahedronGeometry(.35,0),glow,m.near+5+k*3,2.4,sd*(m.side-.7))); }
@@ -386,7 +387,7 @@ const ARENA_LOOK={
       L[0].position.copy(arW(m.near+len*.3,.6,-(m.side-1.1))); L[1].position.copy(arW(m.near+len*.7,.6,m.side-1.1)); L[2].position.copy(arW(m.dais||0,1,0));
       L.forEach(l=>{ l.color.set('#ff7a2a'); l.distance=10; });
       return (T,dt)=>{ lt.offset.y=-T*.05; const f=XLIT.flick; L[0].intensity=1.5*(.85+f*.15*Math.sin(T*7.3)); L[1].intensity=1.5*(.85+f*.15*Math.sin(T*6.1+1)); L[2].intensity=boss?2*(.85+f*.15*Math.sin(T*5)):0; arCloudTick(em,T,dt); }; } },
-  ruins:{ build(A,R,Ar,boss,m){ const L=A.plights, gold=arGlow(Ar.glow,.35,{shininess:60,specular:0x886622}), stone=arMat(xPhong({color:0x8a8478}));
+  ruins:{ build(A,R,Ar,boss,m){ const L=A.plights, gold=arGlow(Ar.glow,.35,{shininess:60,specular:0x886622,pbr:'gold'}), stone=arMat(xPhong({color:0x8a8478}));
       const flames=[]; const spots=[[m.near+4,-(m.side-.8)],[m.near+4,m.side-.8],[m.back-2,-(m.side-.8)]];
       spots.forEach(([wx,wz],i)=>{ arPut(A,new THREE.CylinderGeometry(.3,.38,1.2,8),gold,wx,.6-SLAB,wz); const f=arPut(A,new THREE.ConeGeometry(.22,.6,6),arGlow('#ffcf6a',1.4),wx,1.6-SLAB,wz); flames.push(f);
         L[i].position.copy(arW(wx,1.9,wz)); L[i].color.set('#ffc060'); L[i].distance=11; });

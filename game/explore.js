@@ -287,7 +287,7 @@ function xRefresh(s,flip){ const sp=s.userData.getImg(), im=sp&&sp.img; if(sp&&s
     const cache=s.userData.tex||(s.userData.tex=new Map()), key=im; let pair=cache.get(key);
     if(!pair){ const a=xTex(im,true), b=xTex(im,true); b.repeat.x=-1; b.offset.x=1; pair=[a,b]; cache.set(key,pair); }
     s.material.map=pair[flip?1:0]; s.material.needsUpdate=true; } }
-const xMat=(c,o)=>new THREE.MeshPhongMaterial(Object.assign({color:c,shininess:6,specular:0x111111},o||{}));
+const xMat=(c,o)=>xPhong(Object.assign({color:c,shininess:6,specular:0x111111},o||{}));
 const xBox=(w,h,d,m,x,y,z)=>{ const o=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m); o.position.set(x,y,z); return o; };
 
 // a wall block: a box with chamfered top edges and corners; rough=true pushes its faces in and
@@ -328,7 +328,7 @@ function xBuildScene(){
     const col=new Array(pos.length).fill(1);
     for(let k=0;k<col.length;k+=18){ const t=.9+((Math.sin(k*12.9898+seed)*43758.5453)%1+1)%1*.1; for(let j=0;j<18;j++) col[k+j]*=t; }
     const geo=new THREE.BufferGeometry(); geo.setAttribute('position',new THREE.Float32BufferAttribute(pos,3)); geo.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2)); geo.setAttribute('color',new THREE.Float32BufferAttribute(col,3)); geo.computeVertexNormals();
-    grp.add(new THREE.Mesh(geo,xLitTag(xPhong({map:xTex(cv,true),vertexColors:true}),1,cv))); });
+    grp.add(new THREE.Mesh(geo,xLitTag(xPhong({map:xTex(cv,true),vertexColors:true,pbr:cv.pbr||null}),1,cv))); });
   // darkness: a black veil over the floor whose alpha comes from a per-cell light map with linear
   // filtering, so light fades smoothly from cell to cell instead of cutting off
   EX.fog=new Uint8Array(XN*XN*4).fill(255); EX.fogCur=new Float32Array(XN*XN); EX.fogTgt=new Float32Array(XN*XN);
@@ -419,7 +419,8 @@ function xBuildScene(){
   // crystals, lava, veins or motes along the room walls
   const glowC=new THREE.Color(A.glow);
   G.scene.background=new THREE.Color(A.fog).multiplyScalar(.3);
-  G.scene.fog=new THREE.Fog(new THREE.Color(A.fog).multiplyScalar(.35),20,46);   // far things fade into the area's air
+  G.scene.fog=new THREE.Fog(new THREE.Color(A.fog).multiplyScalar(.35),20,46);
+  G.scene.environment=lookEnv(G.renderer,A);   // what PBR surfaces reflect (none without PBR)   // far things fade into the area's air
   // your own light on the floor: a soft circle in the area's colour, as in the old pixel crawlers
   EX.myGlow=new THREE.Mesh(new THREE.PlaneGeometry(9,9),new THREE.MeshBasicMaterial({map:xGlowTex(),color:new THREE.Color(A.glow).lerp(new THREE.Color(0xffe8c0),.5),transparent:true,opacity:.2,blending:THREE.AdditiveBlending,depthWrite:false}));
   EX.myGlow.rotation.x=-Math.PI/2; EX.myGlow.position.y=.05; EX.myGlow.renderOrder=2; grp.add(EX.myGlow);

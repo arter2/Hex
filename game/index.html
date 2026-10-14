@@ -399,6 +399,9 @@
       <div class="srow"><span>Floor glow around you<small>The soft painted circle of light on the floor around you. 1 is normal.</small></span><span class="srange"><input id="dbgMyGlow" type="range" min="0" max="3" step="0.05"><b id="dbgMyGlowV"></b></span></div>
       <div class="srow"><span>Haze start<small>How far from the camera, in tiles, the area's haze starts.</small></span><span class="srange"><input id="dbgFogNear" type="range" min="0" max="60" step="1"><b id="dbgFogNearV"></b></span></div>
       <div class="srow"><span>Haze end<small>How far away things fade fully into the haze.</small></span><span class="srange"><input id="dbgFogFar" type="range" min="5" max="120" step="1"><b id="dbgFogFarV"></b></span></div>
+      <h3>PBR</h3>
+      <div class="srow"><span>PBR materials<small>On: gold, steel, crystals, ice and cut-stone floors become physically based (roughness and metalness, the area's light reflected in them). Off: as before. Rebuilds the scene; costs more to draw on a phone.</small></span><label class="scheck"><input id="dbgPbr" type="checkbox"></label></div>
+      <div class="srow"><span>Reflections<small>How strongly PBR surfaces reflect the area's light. 1 is normal.</small></span><span class="srange"><input id="dbgPbrEnv" type="range" min="0" max="3" step="0.05"><b id="dbgPbrEnvV"></b></span></div>
       <h3>Normal maps</h3>
       <div class="srow"><span>Normal maps<small>Bumps shaped for each material: sunk mortar and proud, worn stones on built walls and slabs, ledges in cave rock, cracks and pebbles on rock floors.</small></span><label class="scheck"><input id="dbgNmap" type="checkbox"></label></div>
       <div class="srow"><span>Floor bump strength<small>How deep the bumps look on floors: slab joints, cracks and pebbles. 0 is flat.</small></span><span class="srange"><input id="dbgNStrF" type="range" min="0" max="2" step="0.01"><b id="dbgNStrFV"></b></span></div>

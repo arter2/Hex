@@ -20,7 +20,7 @@ const XB={ ball:xSetF('hexmancers-xball',XB_DEF.ball), strip:xSetF('hexmancers-x
      darken toward their feet.
    - Screen-space AO: a pass over the depth of the whole frame shades every crease (xSSAO). */
 const xSetB=(k,d)=>{ try{ const v=localStorage.getItem(k); return v==null?d:v==='1'; }catch(e){ return d; } };
-const XLIT_DEF={ amb:1, sun:1, lamp:1, lampRad:1, lampY:2.6, torch:1, torchRad:1, flick:1, myGlow:1, fogNear:20, fogFar:46, texel:true, steps:0, nmap:true, nstrF:.35, nstrW:.35, ao:true, aoStr:1, aoRad:1, ssao:false, ssaoStr:1, ssaoRad:.6, fps:false, autoQ:true, camPitch:0, camFov:0, arWalls:true };
+const XLIT_DEF={ amb:1, sun:1, lamp:1, lampRad:1, lampY:2.6, torch:1, torchRad:1, flick:1, myGlow:1, fogNear:20, fogFar:46, texel:true, steps:0, nmap:true, nstrF:.35, nstrW:.35, ao:true, aoStr:1, aoRad:1, ssao:false, ssaoStr:1, ssaoRad:.6, fps:false, autoQ:true, camPitch:0, camFov:0, arWalls:true, pbr:false, pbrEnv:1 };
 const XLIT={}; for(const k in XLIT_DEF) XLIT[k]=typeof XLIT_DEF[k]==='boolean'?xSetB('hexmancers-xl-'+k,XLIT_DEF[k]):xSetF('hexmancers-xl-'+k,XLIT_DEF[k]);
 const XLITU={ uXSteps:{value:XLIT.steps}, uXAO:{value:XLIT.ao?XLIT.aoStr:0}, uXAOTex:{value:null}, uXFoot:{value:1.75*XLIT.aoRad}, uXAOScale:{value:96}, uXAOOrg:{value:new THREE.Vector2()} };
 const XLITMATS=new Set();
@@ -32,9 +32,10 @@ function xNormalMap(H,N,k){ const c=document.createElement('canvas'); c.width=c.
 // mark a material for xLit: ao 1 = floor (the AO map), 2 = stands on the floor (darker at its foot);
 // a painted texture with a height field (cv.h) gets its normal map
 function xLitTag(m,ao,cv){ m.userData.xao=ao||0;
-  if(cv&&cv.h){ const nm=cv.nm||(cv.nm=xNormalMap(cv.h,cv.width,cv.hk||.5)), t=xTex(nm,m.map&&m.map.wrapS===THREE.RepeatWrapping); m.userData.nmap=t; }
+  if(cv&&cv.h){ const nm=cv.nm||(cv.nm=xNormalMap(cv.h,cv.width,cv.hk||.5)), t=xTex(nm,m.map&&m.map.wrapS===THREE.RepeatWrapping); m.userData.nmap=t;
+    if(m.isMeshStandardMaterial){ const rm=cv.rm||(cv.rm=xRoughMap(cv.h,cv.width)), rt=xTex(rm,m.map&&m.map.wrapS===THREE.RepeatWrapping); if(m.map) rt.repeat.copy(m.map.repeat); m.roughnessMap=rt; } }
   return m; }
-function xLitAll(root){ root=root||(typeof X3!=='undefined'&&X3&&X3.group); if(!root) return; root.traverse(o=>{ const M=o.material; if(!M) return; for(const m of Array.isArray(M)?M:[M]) if(m.isMeshPhongMaterial) xLit(m); }); }
+function xLitAll(root){ root=root||(typeof X3!=='undefined'&&X3&&X3.group); if(!root) return; root.traverse(o=>{ const M=o.material; if(!M) return; for(const m of Array.isArray(M)?M:[M]) if(m.isMeshPhongMaterial||m.isMeshStandardMaterial) xLit(m); }); }
 function xLitDefines(m){ const d=m.defines||(m.defines={}); delete d.XLIT_TEXEL; delete d.XTEXN;
   if(XLIT.texel&&m.map&&m.map.image){ d.XLIT_TEXEL=''; d.XTEXN=(m.map.image.width||64).toFixed(1); }
   d.XLIT_AO=XLIT.ao?(m.userData.xao||0):0;
@@ -141,7 +142,37 @@ function lookBake(){ if(typeof xBakeAO==='function') xBakeAO(); if(typeof arenaB
 // the shared AO uniforms point at the map of the screen about to draw (its texture, where it starts, how wide it is)
 function lookUse(tex,scale,ox,oz){ XLITU.uXAOTex.value=tex||null; XLITU.uXAOScale.value=scale||96; XLITU.uXAOOrg.value.set(ox||0,oz||0); }
 function xTex(cv,rep){ const t=new THREE.CanvasTexture(cv); t.magFilter=THREE.NearestFilter; t.minFilter=THREE.NearestFilter; if(rep){ t.wrapS=t.wrapT=THREE.RepeatWrapping; } return t; }
-const xPhong=(o)=>new THREE.MeshPhongMaterial(Object.assign({shininess:4,specular:0x111111},o||{}));
+/* PBR (a debug switch, to compare): the surfaces where it shows become MeshStandardMaterial, with a
+   roughness and metalness of their own, a roughness map made from the painted stone's height (worn
+   tops smoother, grout and cracks rougher), and the area's light reflected in them (lookEnv). Plain
+   rock stays as it is: it is matte either way, and costs less to light.
+     gold   polished metal          steel  bright metal (blades, gear, mirrors)
+     gloss  crystals and storm-stones   ice  glassy ice
+     slab   cut-stone floors, a dull sheen on the worn tops */
+const XPBR_KIND={ gold:{r:.32,m:1,e:1.1}, steel:{r:.26,m:.9,e:1}, gloss:{r:.14,m:0,e:1.2}, ice:{r:.08,m:0,e:1.4}, slab:{r:.7,m:0,e:.6} };
+function xPBRKind(o){ if(o.pbr!==undefined) return o.pbr; if(o.color==null) return null; const c=new THREE.Color(o.color).getHex();
+  if(c===0xf2c94c) return 'gold'; if((o.shininess||0)>=60) return 'steel'; return null; }
+const xPhong=(o)=>{ o=o||{}; const k=XLIT.pbr&&xPBRKind(o), q=Object.assign({shininess:4,specular:0x111111},o); delete q.pbr;
+  if(!k||!XPBR_KIND[k]) return new THREE.MeshPhongMaterial(q);
+  const K=XPBR_KIND[k]; delete q.shininess; delete q.specular;
+  const m=new THREE.MeshStandardMaterial(Object.assign(q,{roughness:K.r,metalness:K.m,envMapIntensity:K.e*XLIT.pbrEnv})); m.userData.pbr=k; return m; };
+// a roughness map from a painted height field: the high, worn faces smoother, the low joints rougher
+function xRoughMap(H,N){ const c=document.createElement('canvas'); c.width=c.height=N; const x=c.getContext('2d'), im=x.createImageData(N,N); let lo=1e9, hi=-1e9;
+  for(let i=0;i<H.length;i++){ lo=Math.min(lo,H[i]); hi=Math.max(hi,H[i]); }
+  for(let i=0;i<H.length;i++){ const t=(H[i]-lo)/Math.max(1e-6,hi-lo), v=Math.round(255*Math.max(.35,Math.min(1,1.25-t*.8))); im.data[i*4]=im.data[i*4+1]=im.data[i*4+2]=v; im.data[i*4+3]=255; }
+  x.putImageData(im,0,0); return c; }
+/* The area's light, for PBR surfaces to reflect: a small sky of the area's air (darker above, its
+   haze around the horizon, its glow in a few bright patches low down), filtered once per renderer
+   and area. */
+const LOOK_ENV=new WeakMap();
+function lookEnv(renderer,A){ if(!XLIT.pbr||!renderer||!A) return null; const c=LOOK_ENV.get(renderer); if(c&&c.key===A.id) return c.tex; if(c) c.tex.dispose();
+  const sc=new THREE.Scene(), g=new THREE.SphereGeometry(10,32,16), fog=new THREE.Color(A.fog), glow=new THREE.Color(A.glow), col=[], P=g.attributes.position;
+  for(let i=0;i<P.count;i++){ const y=P.getY(i)/10, h=Math.max(0,1-Math.abs(y+.1)*2.2), top=Math.max(0,y);
+    const cc=fog.clone().multiplyScalar(.25+.9*h).lerp(new THREE.Color(0x000000),top*.7).add(glow.clone().multiplyScalar(.35*h*h)); col.push(cc.r,cc.g,cc.b); }
+  g.setAttribute('color',new THREE.Float32BufferAttribute(col,3)); sc.add(new THREE.Mesh(g,new THREE.MeshBasicMaterial({vertexColors:true,side:THREE.BackSide})));
+  for(let k=0;k<5;k++){ const a=k*1.26, b=new THREE.Mesh(new THREE.SphereGeometry(.9,8,6),new THREE.MeshBasicMaterial({color:glow.clone().multiplyScalar(2.2)})); b.position.set(Math.cos(a)*8,-1+k%2*1.5,Math.sin(a)*8); sc.add(b); }
+  const pm=new THREE.PMREMGenerator(renderer), tex=pm.fromScene(sc,.02).texture; pm.dispose(); g.dispose();
+  LOOK_ENV.set(renderer,{key:A.id,tex}); return tex; }
 /* Stone, drawn once per area from its `stone` look in world.js: periodic noise so big textures tile without seams, quantized to a
    few tones so it still reads as pixel art. Corridors are raw rock; rooms are cut stone in one
    of two patterns; walls are rough rock along corridors and chiseled blocks around rooms. */
@@ -186,7 +217,7 @@ function xSlabFloor(S,seed,style){ const N=256, R=caveRng(seed), f=xFbm(N,R,8), 
     if(e&(2|8)) t=.05; else if(e&(1|4)) t=Math.min(1,t+.28); return xTone(S,Math.max(0,Math.min(1,t))); });
   const x=c.getContext('2d');
   for(let n=0;n<26;n++){ let px=R()*N, py=R()*N, a=R()*6.3; x.fillStyle='rgba(0,0,0,.55)'; for(let m=0;m<6+R()*12;m++){ x.fillRect(px|0,py|0,1,1); H[((py|0)%N+N)%N*N+((px|0)%N+N)%N]-=1.4; a+=(R()-.5); px+=Math.cos(a); py+=Math.sin(a); } }
-  xSpeck(c,S,R,style?18:26,true); c.h=H; c.hk=.6; return c; }
+  xSpeck(c,S,R,style?18:26,true); c.h=H; c.hk=.6; c.pbr='slab'; return c; }
 // walls: rough rock with strata (corridors), large ashlar blocks or small rubble stones (rooms)
 function xRockWall(S,seed){ const N=64, R=caveRng(seed), f=xFbm(N,R,2), st=xNoise(N,4,R), H=new Float32Array(N*N);
   // the height: rough lumps with the strata standing out as ledges
@@ -207,11 +238,13 @@ const XDBG=[   // [element id, object, key, saved as, decimals (null: a checkbox
   ['dbgAO',()=>XLIT,'ao','hexmancers-xl-ao',null,'lit'], ['dbgAOStr',()=>XLIT,'aoStr','hexmancers-xl-aoStr',2,'lit'], ['dbgAORad',()=>XLIT,'aoRad','hexmancers-xl-aoRad',2,'bake'],
   ['dbgSSAO',()=>XLIT,'ssao','hexmancers-xl-ssao',null,''], ['dbgSSAOStr',()=>XLIT,'ssaoStr','hexmancers-xl-ssaoStr',2,''], ['dbgSSAORad',()=>XLIT,'ssaoRad','hexmancers-xl-ssaoRad',2,''],
   ['setXBall',()=>XB,'ball','hexmancers-xball',2,''], ['setXStrip',()=>XB,'strip','hexmancers-xstrip',2,''],
-  ['dbgFps',()=>XLIT,'fps','hexmancers-xl-fps',null,'fps'], ['dbgAutoQ',()=>XLIT,'autoQ','hexmancers-xl-autoQ',null,''], ['dbgCamPitch',()=>XLIT,'camPitch','hexmancers-xl-camPitch',0,'cam'], ['dbgCamFov',()=>XLIT,'camFov','hexmancers-xl-camFov',0,'cam'], ['dbgArWalls',()=>XLIT,'arWalls','hexmancers-xl-arWalls',null,''],
+  ['dbgFps',()=>XLIT,'fps','hexmancers-xl-fps',null,'fps'], ['dbgAutoQ',()=>XLIT,'autoQ','hexmancers-xl-autoQ',null,''], ['dbgCamPitch',()=>XLIT,'camPitch','hexmancers-xl-camPitch',0,'cam'], ['dbgCamFov',()=>XLIT,'camFov','hexmancers-xl-camFov',0,'cam'], ['dbgArWalls',()=>XLIT,'arWalls','hexmancers-xl-arWalls',null,''], ['dbgPbr',()=>XLIT,'pbr','hexmancers-xl-pbr',null,'pbr'], ['dbgPbrEnv',()=>XLIT,'pbrEnv','hexmancers-xl-pbrEnv',2,'pbrEnv'],
   ...[['dbgAmb','amb'],['dbgSun','sun'],['dbgLamp','lamp'],['dbgLampRad','lampRad'],['dbgLampY','lampY'],['dbgTorch','torch'],['dbgTorchRad','torchRad'],['dbgFlick','flick'],['dbgMyGlow','myGlow']].map(([id,k])=>[id,()=>XLIT,k,'hexmancers-xl-'+k,2,'']),
   ['dbgFogNear',()=>XLIT,'fogNear','hexmancers-xl-fogNear',0,''], ['dbgFogFar',()=>XLIT,'fogFar','hexmancers-xl-fogFar',0,''] ];
 let xBakeT=0;
 function xDbgApply(what){ if(what==='lit') xLitRefresh(); else if(what==='bake'){ xLitRefresh(); clearTimeout(xBakeT); xBakeT=setTimeout(lookBake,120); }
+  else if(what==='pbr') lookRebuild();
+  else if(what==='pbrEnv') for(const m of XLITMATS) if(m.isMeshStandardMaterial&&m.userData.pbr) m.envMapIntensity=XPBR_KIND[m.userData.pbr].e*XLIT.pbrEnv;
   else if(what==='cam'){ if(typeof resizeView==='function'&&typeof B!=='undefined'&&B) resizeView(); }
   else if(what==='fps'){ const f=document.getElementById('xFps'); if(f) f.style.display=XLIT.fps?'':'none'; } }
 function xBindSliders(){ for(const [id,obj,k,key,dec,what] of XDBG){ const el=document.getElementById(id), out=document.getElementById(id+'V'), O=obj(); if(!el) continue;
@@ -276,3 +309,7 @@ function lookWatch(renderer,getScene){ const cv=renderer.domElement;
   (lookWatch.all||(lookWatch.all=[])).push([renderer,getScene]); }
 if(typeof document!=='undefined') document.addEventListener('visibilitychange',()=>{ if(document.hidden) return;
   setTimeout(()=>{ for(const [r,g] of lookWatch.all||[]) try{ lookRevive(r,g()); }catch(e){ console.warn('revive',e); } },250); });
+// PBR switched: both screens are built again with the other materials
+function lookRebuild(){ if(typeof EX!=='undefined'&&EX&&typeof xBuildScene==='function'&&typeof X3!=='undefined'&&X3){ xBuildScene(); for(const tr of EX.traps||[]) if(tr.known&&tr.armed&&typeof xTrapMesh==='function') xTrapMesh(tr);
+    xUpdateVis(); xFadeCells(10); }   // what you can see, at once (a new scene starts all in the dark)
+  if(typeof AR!=='undefined'&&AR) AR.key=null; }

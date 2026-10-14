@@ -10,7 +10,7 @@
    puzzles, minibosses, visible traps and secrets) lives in dungeon.js, which this file calls
    through a few hooks (xFloorPlan, xPopulate, xBumpExtra, xEnterExtra, xDungeonTick...). */
 
-const XN=48, XCS=2, XWALL=1.7;           // grid cells per side, world units per cell, wall height
+const XN=48, XCS=2, XWALL=2.5;           // grid cells per side, world units per cell, wall height
 const XSPEED=7;                          // your walking speed, in world units a second (3.5 tiles)
 const XSPR=2.8;                          // height of a person on the map, in world units
 const T_ROCK=0, T_FLOOR=1, T_DOOR=2;
@@ -220,15 +220,18 @@ function xInit3D(){
   renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
   const scene=new THREE.Scene(); scene.background=new THREE.Color('#050608');
   const cam=new THREE.PerspectiveCamera(46,1,.1,200);
-  const amb=new THREE.AmbientLight(0xffffff,.34), sun=new THREE.DirectionalLight(0xffffff,.3); sun.position.set(-4,10,6);
+  const amb=new THREE.AmbientLight(0xffffff,.2), sun=new THREE.DirectionalLight(0xffffff,.22); sun.position.set(-4,10,6);
   const lamp=new THREE.PointLight(0xffd9a0,1.6,16,1.4);   // your light: a soft pool that falls off with distance
   scene.add(amb,sun,lamp);
+  // four real lights, moved to the torches and crystals nearest you (xLightPool): each throws a warm
+  // or coloured pool on the floor and walls around it, and the rest of the room sinks into shadow
+  const pool=[]; for(let k=0;k<4;k++){ const L=new THREE.PointLight(0xffa040,0,10,1.6); L.position.set(0,-50,0); scene.add(L); pool.push(L); }
   // dust drifting through the light around you, in the area's glow, as in the battle cave
   const DN=70, dpos=new Float32Array(DN*3); for(let k=0;k<DN;k++){ dpos[k*3]=(Math.random()-.5)*20; dpos[k*3+1]=Math.random()*3.2; dpos[k*3+2]=(Math.random()-.5)*16; }
   const dgeo=new THREE.BufferGeometry(); dgeo.setAttribute('position',new THREE.BufferAttribute(dpos,3));
   const dust=new THREE.Points(dgeo,new THREE.PointsMaterial({color:0xffffff,size:.08,transparent:true,opacity:.5,blending:THREE.AdditiveBlending,depthWrite:false}));
   dust.renderOrder=3; scene.add(dust);
-  X3={renderer,scene,cam,amb,lamp,dust,group:null,ray:new THREE.Raycaster(),plane:new THREE.Plane(new THREE.Vector3(0,1,0),0)};
+  X3={renderer,scene,cam,amb,lamp,dust,pool,group:null,ray:new THREE.Raycaster(),plane:new THREE.Plane(new THREE.Vector3(0,1,0),0)};
   // the search reticle: a ring as wide as the area a search covers, with a cross at its heart
   const rm=new THREE.MeshBasicMaterial({color:0x7fe3ff,transparent:true,opacity:.9,depthTest:false}), ret=new THREE.Group();
   const ring=new THREE.Mesh(new THREE.RingGeometry(XCS*2.3,XCS*2.5,40),rm); ring.rotation.x=-Math.PI/2; ret.add(ring);
@@ -347,10 +350,10 @@ function xWallGeo(rough,seed){ const g=new THREE.BoxGeometry(XCS,XWALL,XCS,4,5,4
     P.setXYZ(k,x,y,z); }
   g.computeVertexNormals();
   const N=g.attributes.normal, c=[];   // foot shadow up the face, a lit bevel, a near-black cap
-  for(let k=0;k<P.count;k++){ const y=P.getY(k)/XWALL+.5, ny=N.getY(k); const a=ny>.85?.22:ny<-.5?.2:ny>.3?.85:.5+.5*Math.min(1,y*1.6)-(y>.97?.15:0); c.push(a,a,a); }
+  for(let k=0;k<P.count;k++){ const y=P.getY(k)/XWALL+.5, ny=N.getY(k); const a=ny>.85?.34:ny<-.5?.2:ny>.3?1.05:.45+.55*Math.min(1,y*1.4)-(y>.97?.12:0); c.push(a,a,a); }
   g.setAttribute('color',new THREE.Float32BufferAttribute(c,3)); return g; }
 // where a wall block stands: turned a quarter (or not) and, for cave rock, a little taller or shorter, so no two look alike
-function xWallMatrix(m,c,rock){ const h=Math.sin(c*91.7+EX.depth*7.3)*43758.5453, r=h-Math.floor(h), sy=rock?.9+r*.22:1;
+function xWallMatrix(m,c,rock,cut){ const h=Math.sin(c*91.7+EX.depth*7.3)*43758.5453, r=h-Math.floor(h), sy=(rock?.9+r*.22:1)*(cut==null?1:cut);
   m.makeRotationY(Math.floor(r*4)*Math.PI/2); m.scale(new THREE.Vector3(1,sy,1)); m.setPosition(xw(c),XWALL*sy/2-.05,xz(c)); }
 function xBuildScene(){
   const G=xInit3D();
@@ -389,7 +392,7 @@ function xBuildScene(){
     for(let dy=-1;dy<=1;dy++) for(let dx=-1;dx<=1;dx++){ const nx=x+dx, ny=y+dy; if((dx||dy)&&nx>=0&&ny>=0&&nx<XN&&ny<XN){ const n=xi(nx,ny); if(EX.t[n]!==T_ROCK&&!(EX.doors.get(n)&&EX.doors.get(n).state==='secret')){ const r=EX.room[n]; near=Math.max(near,r>=0?1+EX.rooms[r].style:0); } } }
     if(near>=0) walls[near].push(i); }
   const wallTex=[xRockWall(S,seed+4),xBlockWall(S,seed+5,false),xBlockWall(S,seed+6,true)];
-  EX.wIdx=new Map(); EX.wms=[]; EX.shown=new Uint8Array(XN*XN);
+  EX.wIdx=new Map(); EX.wms=[]; EX.shown=new Uint8Array(XN*XN); EX.wCut=new Float32Array(XN*XN).fill(1); EX.wList=[];
   const zero=new THREE.Matrix4().makeScale(0,0,0), black=new THREE.Color(0,0,0);
   // each wall block is bevelled: its top edges and its corners are cut back, so blocks read as
   // stone with worn edges (and a groove runs between neighbours); cave rock is also knobbly
@@ -398,6 +401,7 @@ function xBuildScene(){
     wm.instanceMatrix.setUsage(THREE.DynamicDrawUsage); grp.add(wm); EX.wms.push(wm);
     for(let k=0;k<wm.count;k++){ wm.setMatrixAt(k,zero); wm.setColorAt(k,black); }
     list.forEach((c,k)=>EX.wIdx.set(c,[wm,k])); });
+  xWallDress(grp,A,S,seed);
   // doors: a frame on every doorway, a plank door while it is closed
   const wood=xMat(0x6a4426), iron=xMat(0x2a2a30), frame=xMat(0x3a2414);
   // a locked door shows its lock: a bronze, silver or gold plate, iron bars on a shortcut gate, red bands on a boss door
@@ -444,6 +448,11 @@ function xBuildScene(){
   // crystals, lava, veins or motes along the room walls
   const glowC=new THREE.Color(A.glow);
   G.scene.background=new THREE.Color(A.fog).multiplyScalar(.3);
+  G.scene.fog=new THREE.Fog(new THREE.Color(A.fog).multiplyScalar(.35),20,46);   // far things fade into the area's air
+  // your own light on the floor: a soft circle in the area's colour, as in the old pixel crawlers
+  EX.myGlow=new THREE.Mesh(new THREE.PlaneGeometry(9,9),new THREE.MeshBasicMaterial({map:xGlowTex(),color:new THREE.Color(A.glow).lerp(new THREE.Color(0xffe8c0),.5),transparent:true,opacity:.2,blending:THREE.AdditiveBlending,depthWrite:false}));
+  EX.myGlow.rotation.x=-Math.PI/2; EX.myGlow.position.y=.05; EX.myGlow.renderOrder=2; grp.add(EX.myGlow);
+  xFloorTrim(grp,A,S,seed);
   G.amb.color.set(0xffffff).lerp(glowC,.25); G.lamp.color.set(0xffd9a0).lerp(glowC,.3); G.dust.material.color.copy(glowC);
   xAreaLights(grp,A);
   // you and the enemies are flat sprites standing in the 3D rooms, like the old dungeon crawlers
@@ -486,20 +495,153 @@ function xAreaLights(grp,A){
       else { for(let m=0;m<4;m++){ const s=new THREE.Mesh(new THREE.SphereGeometry(.045,6,4),mat(pale)); s.position.set((R()-.5)*1.1,.5+R()*1.1,.2+R()*.4); s.userData.y0=s.position.y; g.add(s); } }
       const halo=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,color:col,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false}));
       halo.scale.set(2.6,2.6,1); halo.position.set(0,.55,.25); halo.renderOrder=2; g.add(halo);
-      g.add(xPool(tex,col,2.4)); g.visible=false; grp.add(g); EX.glows.push({g,floor,mats,halo,ph:R()*6}); }
+      g.add(xPool(tex,col,2.4)); g.visible=false; grp.add(g); EX.glows.push({g,floor,wall:xi(wx,wy),mats,halo,ph:R()*6}); }
     // one or two wall torches: an iron bracket, a flickering flame and a warm pool on the floor
     for(let k=Math.min(ok.length,1+(R()<.4?1:0));k>0;k--){ const [wx,wy,dx,dy]=ok.splice(R()*ok.length|0,1)[0], floor=xi(wx+dx,wy+dy);
       const g=new THREE.Group(); g.position.set((wx+.5+dx*.5)*XCS+dx*.04,0,(wy+.5+dy*.5)*XCS+dy*.04); g.rotation.y=Math.atan2(dx,dy);
       const iron=xMat(0x2a2620), warm=new THREE.Color(0xffa040), mats=[];
-      g.add(xBox(.1,.45,.1,iron,0,1.0,.1), xBox(.26,.08,.26,iron,0,1.24,.18), xBox(.3,.05,.06,iron,0,1.0,.04));
+      g.add(xBox(.12,.55,.12,iron,0,1.45,.12), xBox(.34,.1,.34,iron,0,1.75,.22), xBox(.36,.06,.07,iron,0,1.45,.04));
       const flame=new THREE.Group(), fm=c=>{ const m=new THREE.MeshBasicMaterial({color:c,transparent:true}); mats.push(m); return m; };
-      const f1=new THREE.Mesh(new THREE.ConeGeometry(.17,.5,6),fm(0xff7a2a)), f2=new THREE.Mesh(new THREE.ConeGeometry(.09,.32,6),fm(0xffe08a));
-      f1.position.y=.25; f2.position.y=.17; flame.add(f1,f2); flame.position.set(0,1.28,.18); g.add(flame);
+      const f1=new THREE.Mesh(new THREE.ConeGeometry(.24,.7,6),fm(0xff7a2a)), f2=new THREE.Mesh(new THREE.ConeGeometry(.13,.45,6),fm(0xffe08a));
+      f1.position.y=.35; f2.position.y=.24; flame.add(f1,f2); flame.position.set(0,1.8,.22); g.add(flame);
       const halo=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,color:warm,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false}));
-      halo.scale.set(3.2,3.2,1); halo.position.set(0,1.5,.3); halo.renderOrder=2; g.add(halo);
+      halo.scale.set(4,4,1); halo.position.set(0,2.05,.35); halo.renderOrder=2; g.add(halo);
       const pool=xPool(tex,warm,4.2); g.add(pool);
-      g.visible=false; grp.add(g); EX.glows.push({g,floor,mats,halo,pool,flame,torch:true,ph:R()*6}); } }
+      g.visible=false; grp.add(g); EX.glows.push({g,floor,wall:xi(wx,wy),mats,halo,pool,flame,torch:true,ph:R()*6}); } }
 }
+// the four real lights go to the lit torches and crystals nearest you; each fades in and out as it moves
+function xLightPool(T,dt){ const G=X3; if(!G.pool) return; EX.lpT=(EX.lpT||0)-dt;
+  if(EX.lpT<=0){ EX.lpT=.3; const near=(EX.glows||[]).filter(L=>L.g.visible&&EX.fogCur[L.floor]>.3).map(L=>[L,Math.hypot(L.g.position.x-EX.px,L.g.position.z-EX.pz)]).filter(a=>a[1]<16).sort((a,b)=>a[1]-b[1]).slice(0,G.pool.length).map(a=>a[0]);
+    G.pool.forEach((P,i)=>{ const L=near[i]; P.userData.L=L||null; if(L){ const wp=new THREE.Vector3(); (L.flame||L.halo).getWorldPosition(wp); P.position.copy(wp); P.position.y=L.torch?2.1:1.1; P.color.set(L.torch?0xffa448:EX.area.glow); P.distance=L.torch?11:8; } }); }
+  for(const P of G.pool){ const L=P.userData.L, tg=L?(L.torch?1.5*(.85+.1*Math.sin(T*11+L.ph)+.07*Math.sin(T*23.7+L.ph*3)):.9*(.85+.15*Math.sin(T*1.7+L.ph)))*Math.min(1,EX.fogCur[L.floor]*1.3):0;
+    P.intensity+=(tg-P.intensity)*Math.min(1,dt*8); } }
+/* ---------------- dressing the walls and rooms ----------------
+   Room walls get a lit trim line along their top edge in the area's accent; pillars stand at room
+   corners and either side of every doorway; and each room is furnished by its kind (a store, a
+   shrine, a crypt or a cave) and the area: barrels, crates, sacks, urns, bones, rubble, glowing
+   mushrooms, candles, statues, banners, vines and cobwebs. Furniture is merged into one mesh per
+   room (and one for the things that glow) so a floor stays cheap to draw. Nothing here blocks you. */
+// collect boxes, cylinders and the rest into one vertex-coloured geometry
+function xMerger(){ const P=[], N=[], C=[], tmp=new THREE.Matrix4(), q=new THREE.Quaternion(), e=new THREE.Euler();
+  return { add(geo,col,x,y,z,rx,ry,rz,sx,sy,sz){ const g=geo.index?geo.toNonIndexed():geo.clone(); e.set(rx||0,ry||0,rz||0); q.setFromEuler(e);
+      tmp.compose(new THREE.Vector3(x,y,z),q,new THREE.Vector3(sx||1,sy||1,sz||1)); g.applyMatrix4(tmp); const p=g.attributes.position.array, n=g.attributes.normal.array, c=new THREE.Color(col);
+      for(let i=0;i<p.length;i++){ P.push(p[i]); N.push(n[i]); } for(let i=0;i<p.length/3;i++) C.push(c.r,c.g,c.b); g.dispose(); },
+    size:()=>P.length,
+    build(mat){ const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.Float32BufferAttribute(P,3)); g.setAttribute('normal',new THREE.Float32BufferAttribute(N,3)); g.setAttribute('color',new THREE.Float32BufferAttribute(C,3)); return new THREE.Mesh(g,mat); } }; }
+const XG={ box:new THREE.BoxGeometry(1,1,1), cyl:new THREE.CylinderGeometry(.5,.5,1,10), cone:new THREE.ConeGeometry(.5,1,8), ball:new THREE.SphereGeometry(.5,8,6), rock:new THREE.DodecahedronGeometry(.5,0), half:new THREE.SphereGeometry(.5,8,4,0,Math.PI*2,0,Math.PI/2) };
+// one piece of furniture at (x,z), facing into the room (ry); S: the area's stone, A: the area
+function xFurnish(M0,L0,kind,x,z,ry,R,A,S){ const K=1.4, sc=T=>({add:(g,c,px,py,pz,rx,ry2,rz,sx,sy,sz)=>T.add(g,c,x+(px-x)*K,py*K,z+(pz-z)*K,rx,ry2,rz,(sx||1)*K,(sy||1)*K,(sz||1)*K)}), M=sc(M0), L=sc(L0);   // furniture scaled to stand by a person
+  const st=new THREE.Color('rgb('+xTone(S,.55).join(',')+')'), dk=new THREE.Color('rgb('+xTone(S,.25).join(',')+')'), glow=A.glow;
+  const W=0x6e4a2a, W2=0x4a3018, IRON=0x2c2a28, BONE=0xd8d0b8;
+  switch(kind){
+    case 'barrel': M.add(XG.cyl,W,x,.34,z,0,ry,0,.56,.68,.56); M.add(XG.cyl,IRON,x,.14,z,0,0,0,.58,.05,.58); M.add(XG.cyl,IRON,x,.54,z,0,0,0,.58,.05,.58); M.add(XG.cyl,W2,x,.69,z,0,0,0,.5,.02,.5); break;
+    case 'crate': { const s=.5+R()*.15; M.add(XG.box,0x8a6034,x,s/2,z,0,ry+R()*.4,0,s,s,s); M.add(XG.box,W2,x,s/2,z,0,ry,0,s*1.02,s*.14,s*1.02); if(R()<.5) M.add(XG.box,0x8a6034,x+.05,s+s*.35,z,0,ry+.6,0,s*.7,s*.7,s*.7); break; }
+    case 'sack': M.add(XG.ball,0xb09060,x,.22,z,0,ry,0,.5,.44,.46); M.add(XG.cone,0xa08050,x,.48,z,0,0,0,.2,.16,.2); break;
+    case 'urn': { const c=R()<.5?0xb05a30:0x8a6a4a; M.add(XG.ball,c,x,.3,z,0,0,0,.42,.5,.42); M.add(XG.cyl,c,x,.6,z,0,0,0,.2,.16,.2); M.add(XG.cyl,0x3a2014,x,.67,z,0,0,0,.26,.03,.26); M.add(XG.cyl,0x1a0e08,x,.3,z,0,0,0,.43,.05,.43); break; }
+    case 'bones': for(let k=0;k<3;k++) M.add(XG.box,BONE,x+(R()-.5)*.5,.03,z+(R()-.5)*.5,0,R()*3,0,.42,.05,.06); M.add(XG.ball,BONE,x+(R()-.5)*.3,.1,z+(R()-.5)*.3,0,0,0,.2,.18,.2); break;
+    case 'skulls': for(let k=0;k<4;k++) M.add(XG.ball,BONE,x+(k%2-.5)*.22,.1+(k>1?.15:0),z+(k>1?0:(R()-.5)*.2),0,0,0,.2,.18,.2); break;
+    case 'rubble': for(let k=0;k<4;k++){ const s=.15+R()*.25; M.add(XG.rock,R()<.5?st:dk,x+(R()-.5)*.6,s*.4,z+(R()-.5)*.6,R()*3,R()*3,0,s,s,s); } break;
+    case 'statue': M.add(XG.box,dk,x,.25,z,0,ry,0,.62,.5,.62); M.add(XG.box,st,x,.6,z,0,ry,0,.36,.3,.3); M.add(XG.ball,st,x,.92,z,0,0,0,.28,.3,.28); M.add(XG.box,st,x,.62,z,0,ry,0,.62,.1,.14); break;
+    case 'candles': for(let k=0;k<3;k++){ const cx=x+(k-1)*.16, h=.14+R()*.14; M.add(XG.cyl,0xeae2c8,cx,h/2,z+(R()-.5)*.1,0,0,0,.07,h,.07); L.add(XG.cone,0xffc060,cx,h+.06,z,0,0,0,.05,.1,.05); } break;
+    case 'mushrooms': for(let k=0;k<3;k++){ const mx=x+(R()-.5)*.5, mz=z+(R()-.5)*.4, h=.1+R()*.2, r=.12+R()*.12; M.add(XG.cyl,0xd8d0c0,mx,h/2,mz,0,0,0,.06,h,.06); L.add(XG.half,glow,mx,h-.01,mz,0,0,0,r*2,r*1.4,r*2); } break;
+  } }
+// pick what a room holds, by its kind and the area
+const XROOM_KINDS={ store:['barrel','barrel','crate','crate','sack'], shrine:['urn','urn','candles','statue'], crypt:['bones','skulls','urn','candles'], cave:['rubble','rubble','mushrooms','bones'] };
+const XAREA_KIND={ hollows:['cave','cave','store','crypt'], deeps:['store','cave','crypt'], vault:['store','shrine','store'], rifts:['cave','crypt','store'], ruins:['shrine','shrine','store','crypt'], abyss:['crypt','shrine','cave'] };
+function xWallDress(grp,A,S,seed){ const R=caveRng(seed+211), floorAt=(x,y)=>x>=0&&y>=0&&x<XN&&y<XN&&EX.t[xi(x,y)]!==T_ROCK, rock=(x,y)=>!floorAt(x,y);
+  EX.dress=new Map(); EX.decor=[]; EX.onWall=[];
+  // the top-edge trim and the pillars are instanced, so they can sink with the cutaway like the walls
+  const trimGeo=new THREE.BoxGeometry(1,1,1), trims=[], pills=[];
+  for(const c of EX.wIdx.keys()){ const x=xcx(c), y=xcy(c);
+    for(const [dx,dy] of [[0,1],[0,-1],[1,0],[-1,0]]) if(floorAt(x+dx,y+dy)&&EX.room[xi(x+dx,y+dy)]>=0&&EX.t[xi(x+dx,y+dy)]===T_FLOOR) trims.push([c,dx,dy]); }
+  for(const r of EX.rooms){ if(r.nook) continue; for(const [x,y] of [[r.x-1,r.y-1],[r.x+r.w,r.y-1],[r.x-1,r.y+r.h],[r.x+r.w,r.y+r.h]]) if(rock(x,y)&&EX.wIdx.has(xi(x,y))) pills.push(xi(x,y)); }
+  for(const [i] of EX.doors){ const x=xcx(i), y=xcy(i), ew=floorAt(x-1,y)&&floorAt(x+1,y); for(const [dx,dy] of ew?[[0,-1],[0,1]]:[[-1,0],[1,0]]){ const n=xi(x+dx,y+dy); if(EX.wIdx.has(n)&&!pills.includes(n)) pills.push(n); } }
+  const acc=new THREE.Color(S.spark).lerp(new THREE.Color('rgb('+xTone(S,.6).join(',')+')'),.55);
+  const tm=new THREE.InstancedMesh(trimGeo,new THREE.MeshBasicMaterial({color:acc,fog:true}),Math.max(1,trims.length)), zero=new THREE.Matrix4().makeScale(0,0,0);
+  for(let k=0;k<tm.count;k++) tm.setMatrixAt(k,zero); grp.add(tm); EX.trimMesh=tm;
+  trims.forEach(([c,dx,dy],k)=>{ const a=EX.dress.get(c)||{}; (a.trim=a.trim||[]).push([k,dx,dy]); EX.dress.set(c,a); });
+  // a pillar: a wide base, a shaft a little proud of the wall and a capital above the wall top
+  const pg=new THREE.BoxGeometry(1,1,1), pm=new THREE.InstancedMesh(pg,xPhong({color:new THREE.Color('rgb('+xTone(S,.62).join(',')+')')}),Math.max(1,pills.length*3));
+  for(let k=0;k<pm.count;k++) pm.setMatrixAt(k,zero); grp.add(pm); EX.pillMesh=pm;
+  pills.forEach((c,k)=>{ const a=EX.dress.get(c)||{}; a.pill=k*3; EX.dress.set(c,a); });
+  // furniture, room by room
+  const used=new Set([...EX.wallAt.keys(),...(EX.glows||[]).map(L=>L.wall)]), area=A.id||'hollows';
+  EX.rooms.forEach((r,ri)=>{ if(r.nook||r.w<3||r.h<3) return; const kinds=XAREA_KIND[area]||XAREA_KIND.hollows, rk=r.side==='cell'?'crypt':kinds[R()*kinds.length|0], pool=XROOM_KINDS[rk];
+    const M=xMerger(), L=xMerger(), cells=[];
+    const ok=c=>EX.t[c]===T_FLOOR&&!EX.taken.has(c)&&!EX.itemAt.has(c)&&!EX.chests.some(ch=>ch.cell===c)&&c!==EX.up&&c!==EX.down&&!EX.traps.some(t=>t.cell===c)&&!xAdj4(c).some(n=>EX.doors.has(n));
+    const edge=[]; for(let x=r.x;x<r.x+r.w;x++){ edge.push([x,r.y,0,-1],[x,r.y+r.h-1,0,1]); } for(let y=r.y+1;y<r.y+r.h-1;y++){ edge.push([r.x,y,-1,0],[r.x+r.w-1,y,1,0]); }
+    const n=Math.max(1,Math.round((r.w+r.h)/3.5));
+    for(let k=0;k<n&&edge.length;k++){ const [x,y,dx,dy]=edge.splice(R()*edge.length|0,1)[0], c=xi(x,y); if(!ok(c)||!rock(x+dx,y+dy)) continue;
+      const wx=(x+.5+dx*.28)*XCS, wz=(y+.5+dy*.28)*XCS, kind=pool[R()*pool.length|0]; xFurnish(M,L,kind,wx,wz,Math.atan2(dx,dy),R,A,S); cells.push(c); }
+    // in the corners: a cobweb in crypts and caves
+    if(rk==='crypt'||rk==='cave') for(const [x,y,sx,sy] of [[r.x,r.y,-1,-1],[r.x+r.w-1,r.y,1,-1]]) if(R()<.6){ const w=xi(x,y);
+      const web=new THREE.Mesh(new THREE.PlaneGeometry(1.1,1.1),new THREE.MeshBasicMaterial({map:xWebTex(),transparent:true,opacity:.55,depthWrite:false,side:THREE.DoubleSide}));
+      web.position.set((x+.5+sx*.5)*XCS-sx*.45,XWALL-.5,(y+.5+sy*.5)*XCS-sy*.08); web.rotation.y=sx<0?.6:-.6; web.visible=false; grp.add(web); EX.onWall.push({g:web,wall:xi(x+sx*0,y+sy),floor:w}); }
+    // banners in shrines and stores, vines in Hollows caves, on free wall faces
+    const faces=[]; for(let x=r.x;x<r.x+r.w;x++) if(rock(x,r.y-1)&&!used.has(xi(x,r.y-1))) faces.push([x,r.y-1,0,1]);
+    for(let k=0;k<(rk==='shrine'?2:rk==='store'?1:area==='hollows'?2:0)&&faces.length;k++){ const [x,y,dx,dy]=faces.splice(R()*faces.length|0,1)[0]; used.add(xi(x,y));
+      const g=new THREE.Group(); g.position.set((x+.5)*XCS,0,(y+1)*XCS+.03);
+      if(rk==='cave'&&area==='hollows'){ for(let v=0;v<3;v++){ const h=.8+R()*1.2; g.add(xBox(.07,h,.03,xMat(0x3f7a3a),(v-1)*.35+(R()-.5)*.1,XWALL-h/2,0)); g.add(xBox(.2,.12,.03,xMat(0x5a9a4a),(v-1)*.35,XWALL-h+.1,0)); } }
+      else { const cl=new THREE.Color(COLORS[A.color]?COLORS[A.color].c:'#8a2a2a').multiplyScalar(.55), cloth=new THREE.Group();
+        cloth.add(xBox(.9,1.3,.03,xMat(cl),0,-.65,0), xBox(.9,.08,.04,xMat(0x2a2620),0,0,0), xBox(.24,.24,.04,xMat(new THREE.Color(A.glow).multiplyScalar(.8)),0,-.6,.01));
+        cloth.position.y=XWALL-.15; g.add(xBox(1.05,.06,.06,xMat(0x2a2620),0,XWALL-.12,0), cloth); g.userData.sway=cloth; }
+      g.visible=false; grp.add(g); EX.onWall.push({g,wall:xi(x,y),floor:xi(x,y+1),sway:g.userData.sway,ph:R()*6}); }
+    if(!M.size()&&!L.size()) return;
+    const grpR=new THREE.Group(); if(M.size()) grpR.add(M.build(xPhong({vertexColors:true}))); if(L.size()){ const lm=L.build(new THREE.MeshBasicMaterial({vertexColors:true})); grpR.add(lm); grpR.userData.glow=lm; }
+    grpR.visible=false; grp.add(grpR); EX.decor.push({mesh:grpR,cells:cells.length?cells:[xi(r.x,r.y)],ph:R()*6}); });
+}
+function xWebTex(){ if(xWebTex.c) return xWebTex.c; const N=32, c=document.createElement('canvas'); c.width=c.height=N; const x=c.getContext('2d'); x.strokeStyle='rgba(230,235,240,.9)'; x.lineWidth=1;
+  for(let a=0;a<5;a++){ x.beginPath(); x.moveTo(0,0); x.lineTo(Math.cos(a*.39)*N,Math.sin(a*.39)*N); x.stroke(); }
+  for(let r=6;r<N;r+=6){ x.beginPath(); for(let a=0;a<5;a++){ const px=Math.cos(a*.39)*r, py=Math.sin(a*.39)*r; a?x.lineTo(px,py):x.moveTo(px,py); } x.stroke(); }
+  return xWebTex.c=xTex(c); }
+// a wall cell shown or sinking: its trim line and pillar follow its height
+function xDressShow(c,cut,touched){ const a=EX.dress&&EX.dress.get(c); if(!a) return; const m=new THREE.Matrix4(), top=XWALL*cut-.04;
+  if(a.trim){ for(const [k,dx,dy] of a.trim){ const x=xw(c)+dx*XCS*.5, z=xz(c)+dy*XCS*.5; m.makeScale(dx?.06:XCS,.07,dx?XCS:.06); m.setPosition(x+dx*.02,top,z+dy*.02); EX.trimMesh.setMatrixAt(k,m); }
+    EX.trimMesh.instanceMatrix.needsUpdate=true; }
+  if(a.pill!=null){ const P=EX.pillMesh, x=xw(c), z=xz(c), h=XWALL*cut;
+    m.makeScale(XCS*1.18,.3,XCS*1.18); m.setPosition(x,.15,z); P.setMatrixAt(a.pill,m);
+    m.makeScale(XCS*1.06,Math.max(.05,h),XCS*1.06); m.setPosition(x,h/2,z); P.setMatrixAt(a.pill+1,m);
+    m.makeScale(XCS*1.22,.26*Math.max(.3,cut),XCS*1.22); m.setPosition(x,h+.1,z); P.setMatrixAt(a.pill+2,m); P.instanceMatrix.needsUpdate=true; } }
+function xDecorTick(T){ for(const W of EX.onWall||[]) if(W.sway&&W.g.visible) W.sway.rotation.x=Math.sin(T*1.3+W.ph)*.06;
+  for(const D of EX.decor||[]) if(D.mesh.visible&&D.mesh.userData.glow){ const v=.75+.25*Math.sin(T*2+D.ph); D.mesh.userData.glow.material.color.setRGB(v,v,v); } }
+/* Room floors are dressed: a border band of patterned trim just inside the walls (a meander of the
+   area's dark stone and its accent), and in bigger rooms a centre piece: a mosaic, a rug or a rune
+   seal. Pixel textures, laid over the floor at an even scale. */
+function xTrimTex(S,R){ const W=32, H=10, c=document.createElement('canvas'); c.width=W; c.height=H; const x=c.getContext('2d');
+  const dark='rgb('+xTone(S,.05).join(',')+')', mid='rgb('+xTone(S,.45).join(',')+')', hi=S.spark;
+  x.fillStyle=mid; x.fillRect(0,0,W,H); x.fillStyle=dark; x.fillRect(0,0,W,1); x.fillRect(0,H-1,W,1); x.fillStyle='rgb('+xTone(S,.8).join(',')+')'; x.fillRect(0,1,W,1);
+  const U=['XXXXXX.X','X....X.X','X.XX.X.X','X.X..X.X','X.XXXX.X','X......X'];
+  for(let u=0;u<4;u++) U.forEach((row,j)=>[...row].forEach((ch,i)=>{ if(ch==='X'){ x.fillStyle=dark; x.fillRect(u*8+i,j+2,1,1); } }));
+  x.globalAlpha=.55; x.fillStyle=hi; for(let u=0;u<4;u++) x.fillRect(u*8+3,4,2,1); x.globalAlpha=1; return c; }
+function xInlayTex(S,R,kind,w,h){ const N=64, c=document.createElement('canvas'); c.width=N*w; c.height=N*h; const x=c.getContext('2d'), W=c.width, H=c.height;
+  const t=v=>'rgb('+xTone(S,v).join(',')+')', hi=S.spark;
+  if(kind==='rug'){ const cols=R()<.5?['#5a1e1e','#8a3a24','#c8903a','#2a1a14']:['#1e2a4a','#3a4a7a','#c8b070','#141a2a'];
+    x.fillStyle=cols[0]; x.fillRect(0,0,W,H); x.fillStyle=cols[3]; x.fillRect(4,4,W-8,H-8); x.fillStyle=cols[1]; x.fillRect(8,8,W-16,H-16);
+    x.fillStyle=cols[2]; for(let i=12;i<W-12;i+=8) for(let j=12;j<H-12;j+=8) if(((i+j)/8)%2<1) x.fillRect(i,j,4,4);
+    x.fillStyle=cols[0]; x.fillRect(W/2-12,H/2-12,24,24); x.fillStyle=cols[2]; x.fillRect(W/2-6,H/2-6,12,12);
+    x.fillStyle=cols[2]; for(let i=2;i<W-2;i+=3){ x.fillRect(i,0,1,3); x.fillRect(i,H-3,1,3); } }
+  else if(kind==='seal'){ x.fillStyle=t(.12); x.fillRect(0,0,W,H); const cx=W/2, cy=H/2, r=Math.min(W,H)/2-6;
+    x.strokeStyle=t(.55); x.lineWidth=3; x.beginPath(); x.arc(cx,cy,r,0,7); x.stroke(); x.lineWidth=2; x.beginPath(); x.arc(cx,cy,r*.72,0,7); x.stroke();
+    x.strokeStyle=hi; x.globalAlpha=.7; x.lineWidth=2; for(const rr of [.66,.4]){ x.beginPath(); for(let k=0;k<=6;k++){ const a=k*Math.PI/3+Math.PI/6, px=cx+Math.cos(a)*r*rr, py=cy+Math.sin(a)*r*rr; k?x.lineTo(px,py):x.moveTo(px,py); } x.stroke(); }   // a hex seal
+    x.globalAlpha=1;
+    x.fillStyle=hi; for(let k=0;k<12;k++){ const a=k/12*Math.PI*2; x.fillRect(cx+Math.cos(a)*r*.86-2,cy+Math.sin(a)*r*.86-2,4,4); } }
+  else { x.fillStyle=t(.18); x.fillRect(0,0,W,H);   // mosaic: a border of small tiles round a diamond lattice
+    for(let i=0;i<W;i+=4) for(let j=0;j<H;j+=4){ const edge=i<8||j<8||i>=W-8||j>=H-8, d=(Math.abs(((i/4)%8)-4)+Math.abs(((j/4)%8)-4));
+      x.fillStyle=edge?((i+j)/4%2?t(.7):t(.35)):d===4?hi:d<2?t(.6):t(.28); if(!edge&&d===4) x.globalAlpha=.3; x.fillRect(i,j,3,3); x.globalAlpha=1; } }
+  return c; }
+function xFloorTrim(grp,A,S,seed){ const R=caveRng(seed+99), trim=xTex(xTrimTex(S,R),true), quads=[];
+  const mat=new THREE.MeshPhongMaterial({map:trim,shininess:4,specular:0x111111,transparent:true,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-1});
+  const ins=.32, bw=.62, pos=[], uv=[], seg=(x0,z0,x1,z1,horiz)=>{ const L=horiz?x1-x0:z1-z0, u=L/(bw*3.2);
+    if(horiz){ pos.push(x0,0,z0, x0,0,z1, x1,0,z1, x0,0,z0, x1,0,z1, x1,0,z0); uv.push(0,1, 0,0, u,0, 0,1, u,0, u,1); }
+    else { pos.push(x0,0,z0, x0,0,z1, x1,0,z1, x0,0,z0, x1,0,z1, x1,0,z0); uv.push(0,1, u,1, u,0, 0,1, u,0, 0,0); } };
+  for(const r of EX.rooms){ if(r.nook||r.w<3||r.h<3) continue; const X0=r.x*XCS+ins, X1=(r.x+r.w)*XCS-ins, Z0=r.y*XCS+ins, Z1=(r.y+r.h)*XCS-ins;
+    seg(X0,Z0,X1,Z0+bw,true); seg(X0,Z1-bw,X1,Z1,true); seg(X0,Z0+bw,X0+bw,Z1-bw,false); seg(X1-bw,Z0+bw,X1,Z1-bw,false);
+    if(r.w>=5&&r.h>=5){ const kinds=['mosaic','rug','seal'], kind=r.w===r.h||Math.abs(r.w-r.h)<=1?kinds[R()*3|0]:kinds[R()*2|0];
+      const cw=kind==='seal'?Math.max(2,Math.round(Math.min(r.w,r.h)*.55)):Math.max(2,Math.round(r.w*.55)), ch=kind==='seal'?cw:Math.max(2,Math.round(r.h*.5)), cx=(r.x+r.w/2)*XCS, cz=(r.y+r.h/2)*XCS;
+      const m=new THREE.Mesh(new THREE.PlaneGeometry(cw*XCS-.6,ch*XCS-.6),new THREE.MeshPhongMaterial({map:xTex(xInlayTex(S,R,kind,Math.min(4,cw),Math.min(4,ch))),shininess:4,specular:0x111111,polygonOffset:true,polygonOffsetFactor:-1}));
+      m.rotation.x=-Math.PI/2; m.position.set(cx,.008,cz); grp.add(m); } }
+  if(pos.length){ const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3)); g.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2)); g.computeVertexNormals();
+    const band=new THREE.Mesh(g,mat); band.position.y=.012; grp.add(band); } }
 // a soft pool of colored light on the floor in front of a wall light (an additive decal: cheap, no real light)
 function xPool(tex,col,size){ const m=new THREE.Mesh(new THREE.PlaneGeometry(size,size),new THREE.MeshBasicMaterial({map:tex,color:col,transparent:true,opacity:.35,blending:THREE.AdditiveBlending,depthWrite:false}));
   m.rotation.x=-Math.PI/2; m.position.set(0,.06,size*.32); m.renderOrder=2; m.userData.pool=1; return m; }
@@ -519,13 +661,25 @@ function xPaintCells(){
     if(EX.vis[c]){ const d=Math.hypot(xcx(c)-px,xcy(c)-py); b=1-.55*Math.min(1,Math.max(0,(d-1)/rad)); }
     else if(EX.seen[c]) b=.24;
     EX.fogTgt[c]=b;
-    if(EX.seen[c]&&!EX.shown[c]){ EX.shown[c]=1; const w=EX.wIdx.get(c); if(w){ xWallMatrix(m,c,EX.wms.indexOf(w[0])===0); w[0].setMatrixAt(w[1],m); w[0].instanceMatrix.needsUpdate=true; } } }
+    if(EX.seen[c]&&!EX.shown[c]){ EX.shown[c]=1; const w=EX.wIdx.get(c); if(w){ EX.wCut[c]=xCutTarget(c); xWallMatrix(m,c,EX.wms.indexOf(w[0])===0,EX.wCut[c]); w[0].setMatrixAt(w[1],m); w[0].instanceMatrix.needsUpdate=true; EX.wList.push(c); xDressShow(c,EX.wCut[c]); } } }
+  for(const D of EX.decor||[]) D.mesh.visible=D.cells.some(c=>EX.seen[c]);
   for(const [i,d] of EX.doors) if(d.mesh) d.mesh.visible=!!EX.seen[i]&&d.state!=='secret';
   for(const c of EX.chests) c.mesh.visible=!!EX.seen[c.cell];
   EX.downMesh.visible=!!EX.seen[EX.down]; EX.upMesh.visible=!!EX.seen[EX.up];
-  for(const L of EX.glows) L.g.visible=!!EX.seen[L.floor];
+  for(const L of EX.glows) L.g.visible=!!EX.seen[L.floor]&&(L.cut==null||L.cut>.4);
   if(typeof xPaintExtra==='function') xPaintExtra();
 }
+/* The cutaway: a wall nearer the camera than you (south of you, within sight) sinks to a low rim,
+   so it never hides you or the room you are in; walls behind you rise again. Heights ease, and
+   door frames, torches and crystals on those walls sink with them. */
+const XCUT=.16;
+function xCutTarget(c){ if(!EX) return 1; const dy=xcy(c)-xcy(EX.pc), dx=Math.abs(xcx(c)-xcx(EX.pc)); return dy>0&&dy<=9&&dx<=11?XCUT:1; }
+function xWallCut(dt){ const m=new THREE.Matrix4(), k=Math.min(1,dt*7); let touched=new Set();
+  for(const c of EX.wList){ const tg=xCutTarget(c), cur=EX.wCut[c]; if(Math.abs(cur-tg)<.005) continue;
+    const v=Math.abs(cur-tg)<.02?tg:cur+(tg-cur)*k; EX.wCut[c]=v; const w=EX.wIdx.get(c); xWallMatrix(m,c,EX.wms.indexOf(w[0])===0,v); w[0].setMatrixAt(w[1],m); touched.add(w[0]); xDressShow(c,v,touched); }
+  for(const wm of touched) wm.instanceMatrix.needsUpdate=true;
+  for(const [i,d] of EX.doors){ if(!d.mesh) continue; const tg=xCutTarget(i), cur=d.cutY==null?1:d.cutY; if(Math.abs(cur-tg)<.005) continue; d.cutY=cur+(tg-cur)*k; d.mesh.scale.y=d.cutY; }
+  for(const L of (EX.glows||[]).concat(EX.onWall||[])){ if(L.wall==null) continue; const tg=xCutTarget(L.wall), cur=L.cut==null?1:L.cut; if(Math.abs(cur-tg)<.005) continue; L.cut=cur+(tg-cur)*k; L.g.scale.y=Math.max(.05,L.cut); L.g.visible=L.cut>.4&&!!EX.seen[L.floor]; } }
 // ease every cell toward its brightness, so newly seen ground fades in and ground you leave fades out
 function xFadeCells(dt){
   const k=Math.min(1,dt*5), col=new THREE.Color(); let moved=false;
@@ -934,8 +1088,10 @@ function xDraw(T,dt){
   EX.pose=EX.action||EX.swingT>0?'cast':EX.walk?(step?'walk':'idle'):'idle';
   EX.me.position.set(EX.px,step*ART,EX.pz); xRefresh(EX.me,EX.face<0);
   G.lamp.position.set(EX.px,2.6,EX.pz);
-  const k=Math.max(1,Math.min(1.8,.8/G.cam.aspect)), hgt=18*k, back=10*k;   // tall screens pull back so a room still fits across
-  G.cam.position.set(EX.px,hgt,EX.pz+back); G.cam.lookAt(EX.px,0,EX.pz-.5);
+  // the camera looks in at about 48 degrees, so you see the faces of the walls, not just their tops
+  // (tall screens pull back so a room still fits across); walls between it and you sink (xWallCut)
+  const k=Math.max(1,Math.min(1.8,.8/G.cam.aspect)), hgt=14*k, back=12.5*k;
+  G.cam.position.set(EX.px,hgt,EX.pz+back); G.cam.lookAt(EX.px,.6,EX.pz-1.2); xWallCut(dt);
   // enemies show only while in sight; a Shadow Assassin only when it is close; a dormant guardian not at all
   for(const g of EX.groups){ if(!g.sprite) continue; const v=!!EX.vis[g.cell]&&!g.dormant&&!(g.stealth&&Math.hypot(g.x-EX.px,g.z-EX.pz)/XCS>3.2); g.sprite.visible=v; g.zz.visible=v&&g.state==='sleep'; g.bang.visible=v&&g.state==='chase';
     if(g.ring){ g.ring.visible=v; g.ring.position.set(g.x,.06,g.z); }
@@ -958,6 +1114,7 @@ function xDraw(T,dt){
     G.dust.position.set(EX.px,0,EX.pz); G.dust.material.opacity=.35+.15*Math.sin(T*.7); }
   for(const c of EX.chests) if(c.rich&&!c.open) c.mesh.position.y=Math.abs(Math.sin(T*2))*.05;
   G.lamp.intensity=1.6*(.95+.04*Math.sin(T*9.3)+.03*Math.sin(T*21.1));
+  xLightPool(T,dt); xDecorTick(T); if(EX.myGlow){ EX.myGlow.position.x=EX.px; EX.myGlow.position.z=EX.pz; EX.myGlow.material.opacity=.18+.03*Math.sin(T*2.1); }
   G.renderer.render(G.scene,G.cam);
   if((EX.miniT=(EX.miniT||0)+1)%6===0) xMini();
 }

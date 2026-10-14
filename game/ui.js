@@ -6,7 +6,8 @@ let save=loadSave();
 const persist=()=>writeSave(save);
 const activeDeck=()=>save.decks[save.active];
 
-function show(id){ $('#tip').classList.remove('on'); document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('on',s.id===id)); if(id==='scrBattle') resizeView(); window.scrollTo(0,0); }
+function show(id){ $('#tip').classList.remove('on'); document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('on',s.id===id)); if(id==='scrBattle') resizeView(); window.scrollTo(0,0);
+  if(id==='scrExplore'&&typeof EX!=='undefined'&&EX&&EX.active&&typeof xLoopStart==='function') xLoopStart(); }   // the dungeon's loop stops while another screen covers it
 let tipT=0; function tip(msg){ const t=$('#tip'); t.textContent=msg; t.classList.add('on'); clearTimeout(tipT); tipT=setTimeout(()=>t.classList.remove('on'),1400); }
 const esc=s=>String(s).replace(/[&<>"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]));
 // the same HP bar and gold readout everywhere: battle, dungeon, camp, shop, character

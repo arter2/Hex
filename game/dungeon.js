@@ -953,7 +953,7 @@ function xCardShow(){ if(!EX) return; EX.cardQT=0; const q=EX.cardQ||[]; if(!q.l
   xDlg({title:one?(q[0].isNew?'New card!':'Card found'):q.length+' cards found', sub:one?COLORS[q[0].c.color].name+' · '+RARITY[q[0].c.rarity].n+' · '+TYPES[q[0].c.type].name:q.map(x=>x.c.name).join(' · '),
     text:(one?'It goes':'They go')+' into your collection. Add '+(one?'it':'them')+' to a deck from the bag (tap its title) or at camp.',
     body:b=>{ const row=document.createElement('div'); row.className='xcards'; q.forEach(({c,isNew})=>{ const el=cardEl(c,isNew?'<span class="xnew">NEW</span>':''); el.tabIndex=-1; row.appendChild(el); }); b.appendChild(row); },
-    buttons:[['Got it',null],['Build deck',()=>{ if(typeof openDeckUI==='function') openDeckUI('bag'); },true]]}); xSfx('chime'); }
+    buttons:[['Got it',null],['Build deck',()=>{ if(typeof openDeckUI==='function') openDeckUI('dungeon'); },true]]}); xSfx('chime'); }
 function xDlg(o){ if(!EX) return; xPause(true); EX.dlg=o;
   $('#xdTitle').textContent=o.title||''; $('#xdSub').textContent=o.sub||''; $('#xdText').textContent=o.text||''; xDlgPic(o);
   goldText($('#xdGold'));

@@ -10,7 +10,8 @@ const dkDeck=()=>save.decks[DK.slot];
 const dkCount=(d,id)=>d.list.reduce((a,x)=>a+(x===id),0);
 const dkMax=c=>Math.min(copyLimit(c),save.owned[c.id]||0);
 function openDeckUI(from){ DK.from=from||'camp'; DK.slot=save.active; DK.multi=false; DK.sel.clear(); DK.snap=JSON.stringify(save.decks);
-  if(from==='bag'){ if(typeof closeBag==='function') closeBag(); if(typeof xPause==='function') xPause(true); }
+  // from the dungeon: 'bag' (the bag's title) goes back to the bag, 'dungeon' (a found card) straight to the floor
+  if(from==='bag'||from==='dungeon'){ if(from==='bag'&&typeof closeBag==='function') closeBag(); if(typeof xPause==='function') xPause(true); }
   makeFilters($('#dkFilters'),DK.filt,dkRender,false); $('#dkFilters').querySelector('.chips').hidden=true; $('#dkFilters').querySelector('[data-f="q"]').remove(); $('#dkFilters').hidden=true;
   show('scrDeck'); dkRender(); }
 function dkAdd(c,d,quiet){ d=d||dkDeck(); const have=dkCount(d,c.id);
@@ -98,12 +99,12 @@ $('#dkSelAdd').onclick=()=>{ let n=0; for(const id of DK.sel) if(dkAdd(CARDS[id]
 $('#dkSelNew').onclick=()=>{ const i=save.decks.findIndex(x=>!x.list.length); if(i<0) return tip('Every deck slot holds a deck. Empty one first (Remove All).');
   const d=save.decks[i]; d.name='New deck '+(i+1); for(const id of DK.sel) dkAdd(CARDS[id],d,true); DK.slot=i; DK.multi=false; DK.sel.clear(); tip('Started '+d.name+' with '+d.list.length+' cards'); dkChange(); };
 // leaving: back to the camp, or to the dungeon bag (which needs a deck you can fight with)
-function dkLeave(){ if(DK.from==='bag'){ const v=validateDeck(activeDeck().list,CARDS,save.owned); if(!v.ok) return tip('Your active deck is not ready: '+(v.errors[0]||'invalid')+'. Fix it first.');
-    show('scrExplore'); if(typeof xBag==='function'&&EX){ EX.busy=false; xBag(); } return; }
+function dkLeave(){ if(DK.from==='bag'||DK.from==='dungeon'){ const v=validateDeck(activeDeck().list,CARDS,save.owned); if(!v.ok) return tip('Your active deck is not ready: '+(v.errors[0]||'invalid')+'. Fix it first.');
+    show('scrExplore'); if(EX){ EX.busy=false; if(DK.from==='bag'&&typeof xBag==='function') xBag(); else xPause(false); } return; }
   openCamp(); }
 $('#dkOK').onclick=dkLeave;
 $('#dkBack').onclick=e=>{ const v=validateDeck(activeDeck().list,CARDS,save.owned);
-  if(DK.from==='bag'&&!v.ok) return armed(e.currentTarget,'Discard changes?',()=>{ save.decks=JSON.parse(DK.snap); persist(); dkLeave(); });
+  if((DK.from==='bag'||DK.from==='dungeon')&&!v.ok) return armed(e.currentTarget,'Discard changes?',()=>{ save.decks=JSON.parse(DK.snap); persist(); dkLeave(); });
   dkLeave(); };
 
 /* The library drawer slides: drag its grip up for more library, down for more deck (portrait),

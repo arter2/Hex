@@ -579,7 +579,7 @@ function xBloom(x,y,z,col,size){ if(!X3||!X3.group) return; const tex=xGlowTex.t
 // a wide text label for names over monsters
 function xLabel(txt,col){ const c=document.createElement('canvas'); c.width=256; c.height=40; const x=c.getContext('2d');
   x.font='700 24px "Pixelify Sans",monospace'; x.textAlign='center'; x.textBaseline='middle'; x.lineWidth=5; x.strokeStyle='rgba(0,0,0,.85)'; x.strokeText(txt,128,21); x.fillStyle=col; x.fillText(txt,128,21);
-  const s=new THREE.Sprite(new THREE.SpriteMaterial({map:xTex(c),transparent:true,depthTest:false})); s.scale.set(3.2,.5,1); s.center.set(.5,0); s.renderOrder=5; return s; }
+  const s=new THREE.Sprite(new THREE.SpriteMaterial({map:xTex(c),transparent:true,depthTest:false})); s.scale.set(3.2,.5,1); s.center.set(.5,0); s.renderOrder=5; s.userData.text=txt; return s; }
 // a ring of runes for the floor round the stairs down
 function xRuneTex(){ if(xRuneTex.t) return xRuneTex.t; const N=128, c=document.createElement('canvas'); c.width=c.height=N; const x=c.getContext('2d'), m=N/2;
   x.strokeStyle='#fff'; x.lineWidth=3; x.beginPath(); x.arc(m,m,58,0,7); x.stroke(); x.lineWidth=2; x.beginPath(); x.arc(m,m,44,0,7); x.stroke();
@@ -895,6 +895,9 @@ function xFloorTrim(grp,A,S,seed){ const R=caveRng(seed+99), trim=xTex(xTrimTex(
 // a soft pool of colored light on the floor in front of a wall light (an additive decal: cheap, no real light)
 function xPool(tex,col,size){ const m=new THREE.Mesh(new THREE.PlaneGeometry(size,size),new THREE.MeshBasicMaterial({map:tex,color:col,transparent:true,opacity:.35,blending:THREE.AdditiveBlending,depthWrite:false}));
   m.rotation.x=-Math.PI/2; m.position.set(0,.06,size*.32); m.renderOrder=2; m.userData.pool=1; return m; }
+// a group is gone (beaten): take every piece of it off the map, its name tag and rings too
+function xDropGroup(g){ for(const o of [g.sprite,g.zz,g.bang,g.ring,g.tag,g.base,g.label]){ if(!o) continue; if(o.parent) o.parent.remove(o);
+    o.traverse(q=>{ if(q.geometry&&!Object.values(XG).includes(q.geometry)) q.geometry.dispose(); const M=q.material; if(M){ if(M.map&&M.map!==xGlowTex.t) M.map.dispose(); M.dispose(); } }); } }
 function xGroupSprites(gp,grp){ const id=gp.ids[0], d=ENEMY_DEFS[id], h=XSPR*Math.max(.75,Math.min(1.7,d.scale||1));
   gp.sprite=xSprite(()=>unitSprite({kind:'enemy',id,color:d.color}),h); gp.sprite.visible=false; grp.add(gp.sprite);
   gp.zz=xTextSprite('z','#9fd8ff'); gp.bang=xTextSprite('!','#ff4d5e'); gp.zz.visible=gp.bang.visible=false; grp.add(gp.zz,gp.bang); gp.h=h;
@@ -906,7 +909,9 @@ function xGroupSprites(gp,grp){ const id=gp.ids[0], d=ENEMY_DEFS[id], h=XSPR*Mat
     const warn=new THREE.Mesh(new THREE.RingGeometry(1.05,1.25,32),new THREE.MeshBasicMaterial({color:0xff3b4e,transparent:true,opacity:0,depthWrite:false,blending:THREE.AdditiveBlending}));
     for(const o of [sh,rg,warn]){ o.rotation.x=-Math.PI/2; o.renderOrder=2; base.add(o); } sh.position.y=.03; rg.position.y=.045; warn.position.y=.05;
     base.visible=false; grp.add(base); gp.base=base; gp.warn=warn; gp.shadow=sh; gp.tring=rg;
-    gp.label=xLabel(d.name,gp.boss?'#ff8a8a':d.vermin?'#cfe0c0':'#f2e6c8'); gp.label.visible=false; grp.add(gp.label); }
+    // the name tag names the group's strongest member
+    const top=gp.ids.map(i=>ENEMY_DEFS[i]).filter(Boolean).sort((a,b)=>(b.hp||0)*(1+(b.dmg||0)/10)-(a.hp||0)*(1+(a.dmg||0)/10))[0]||d;
+    gp.label=xLabel(top.name,gp.boss?'#ff8a8a':top.vermin?'#cfe0c0':'#f2e6c8'); gp.label.visible=false; grp.add(gp.label); }
   // a miniboss stands on a ring of its colour, so you know it for a big threat from afar
   if(gp.mini){ const r=new THREE.Mesh(new THREE.TorusGeometry(.95,.07,6,24),new THREE.MeshBasicMaterial({color:new THREE.Color(COLORS[d.color].c)})); r.rotation.x=Math.PI/2; r.position.y=.06; r.visible=false; grp.add(r); gp.ring=r; }
   // a mission's mark over the group: ♛ a bounty, ☠ a nest's brood (missions.js)
@@ -1074,6 +1079,7 @@ const xChestAt=c=>EX.chests.find(ch=>ch.cell===c&&!ch.open);
 function xMove(dt){
   if(EX.action){ EX.stillT=0; EX.action.t-=dt; if(EX.action.t<=0){ const a=EX.action; EX.action=null; a.done(); } return; }
   if(EX.stuckT>0){ EX.stuckT-=dt; if(EX.stuckT<=0) xHud(); return; }
+  if(EX.dragT>0){ EX.dragT-=dt; return; }   // a moment's pause after dragging a block
   let ix=0, iz=0;
   const held=id=>keysFor(id).some(k=>XKEY[k]);   // your bindings, from Settings (keys.js)
   if(held('left')) ix-=1; if(held('right')) ix+=1; if(held('up')) iz-=1; if(held('down')) iz+=1;
@@ -1305,7 +1311,7 @@ function xKeep(){ const m=xFloors(); if(m&&EX&&!EX.branch) m.set(EX.depth,EX); }
 function xGoFloor(depth,hp,at){ const m=xFloors(), F=m&&m.get(depth), ail=EX&&EX.ail;
   if(F){ EX=F; EX.hp=hp; EX.busy=false; EX.path=[]; EX.action=null; EX.aim=null; EX.searchCell=null; EX.stuckT=0; EX.fighting=null; if(ail) EX.ail=ail; xBuildScene(); for(const tr of EX.traps) if(tr.known&&tr.armed) xTrapMesh(tr); }
   else { buildFloor(depth,hp);
-    if(at==='down') for(const g of EX.groups.filter(g=>g.boss)){ EX.groups.splice(EX.groups.indexOf(g),1); [g.sprite,g.zz,g.bang,g.ring].forEach(o=>o&&X3.group.remove(o)); EX.bossDead=true; } }
+    if(at==='down') for(const g of EX.groups.filter(g=>g.boss)){ EX.groups.splice(EX.groups.indexOf(g),1); xDropGroup(g); EX.bossDead=true; } }
   const c=typeof at==='number'?at:at==='down'?EX.down:EX.up; EX.pc=c; EX.px=xw(c); EX.pz=xz(c); EX.view=at==='down'?'back':'front'; xUpdateVis(); }
 // the stairs up: to the floor above (or the main floor, from a hidden branch); from depth 1, to camp
 function xStairsUp(){
@@ -1531,7 +1537,7 @@ function enterExplore(depth){
 function resumeExplore(hp,won,info){
   if(!EX) return openCamp();
   const g=EX.fighting; EX.fighting=null;
-  if(won&&g){ EX.groups=EX.groups.filter(x=>x!==g); [g.sprite,g.zz,g.bang,g.ring,g.tag].forEach(o=>{ if(!o) return; X3.group.remove(o); if(o.material.map) o.material.map.dispose(); o.material.dispose(); }); if(g.boss){ EX.bossDead=true; xLog(ENEMY_DEFS[g.ids[0]].name+' falls. The stairs down to '+areaOf(EX.depth+1).name+' are open.','good'); } }
+  if(won&&g){ EX.groups=EX.groups.filter(x=>x!==g); xDropGroup(g); if(g.boss){ EX.bossDead=true; xLog(ENEMY_DEFS[g.ids[0]].name+' falls. The stairs down to '+areaOf(EX.depth+1).name+' are open.','good'); } }
   EX.hp=Math.max(1,hp); EX.busy=false; EX.active=true; EX.path=[]; EX.aim=null;
   xPause($('#lvlUp').classList.contains('on'));   // let go of a pause left over from before the fight (keys and touches too)
   show('scrExplore'); xUpdateVis();

@@ -583,7 +583,11 @@ function xMeshProp(p){
       break; }
     case 'plate': g.add(xBox(1.3,.06,1.3,xMat(0x8a7a4a,{emissive:0x201808}),0,.03,0)); p.top=g.children[0]; break;
     case 'reset': { const r=new THREE.Mesh(new THREE.TorusGeometry(.45,.05,4,16),xGlowMat(0x7fd4ff)); r.rotation.x=Math.PI/2; r.position.y=.06; g.add(r); break; }
-    case 'block': g.add(xBox(1.55,1.4,1.55,xMat(0x77736a),0,.7,0), xBox(1.6,.1,1.6,xMat(0x5a5650),0,1.42,0)); break;
+    case 'block': { const sand=xMat(0xc0904a), dark=xMat(0x6a4a24), rc=new THREE.Color(EX.area.glow);
+      g.add(xBox(1.5,1.25,1.5,sand,0,.68,0), xBox(1.6,.12,1.6,dark,0,.06,0), xBox(1.58,.1,1.58,dark,0,1.3,0));
+      const rune=new THREE.Mesh(new THREE.PlaneGeometry(1.1,1.1),new THREE.MeshBasicMaterial({map:xBlockRuneTex(),color:rc,transparent:true,depthWrite:false})); rune.rotation.x=-Math.PI/2; rune.position.y=1.36; g.add(rune);
+      for(const [x,z,ry] of [[0,.76,0],[0,-.76,Math.PI],[.76,0,Math.PI/2],[-.76,0,-Math.PI/2]]){ const ar=new THREE.Mesh(new THREE.PlaneGeometry(.7,.7),new THREE.MeshBasicMaterial({map:xBlockRuneTex(true),color:rc,transparent:true,depthWrite:false})); ar.position.set(x,.68,z); ar.rotation.y=ry; g.add(ar); }
+      break; }
     case 'trialaltar': { g.add(xBox(1.2,.7,1.2,dark,0,.35,0)); p.flame=xCone(.3,.7,xGlowMat(0xff5d6c,{transparent:true,opacity:.85}),0,1.05,0); g.add(p.flame); break; }
     case 'blade': { const pv=new THREE.Group(); pv.position.y=XWALL-.1; pv.add(xBox(.06,1.1,.06,xMat(0x5c656e),0,-.55,0)); const bl=xBox(.7,.28,.05,xMat(0xc7d0d8,{shininess:80,specular:0xffffff}),0,-1.15,0); pv.add(bl); g.add(pv); p.pivot=pv; if(!p.ew) g.rotation.y=Math.PI/2; break; }
     case 'jet': { g.add(xBox(.9,.05,.9,dark,0,.03,0)); const f=xCone(.32,1.6,xGlowMat(0xff7a2a,{transparent:true,opacity:.85}),0,.8,0); f.visible=false; g.add(f); p.flame=f; break; }
@@ -680,9 +684,24 @@ function xOpenCloset(id,how){ let n=0; for(const [i,d] of EX.doors) if(d.state==
 function xPushBlock(p){ const now=performance.now(); if(now<(p.pushT||0)) return; const [dx,dy]=EX.moveDir||[0,0]; if(!dx&&!dy) return;
   const to=xi(xcx(p.cell)+dx,xcy(p.cell)+dy), r=roomOf(p.cell);
   const ok=to>=0&&EX.room[to]===(r?r.id:-2)&&!xSolid(to)&&!EX.itemAt.has(to)&&!EX.chests.some(c=>c.cell===to)&&!EX.groups.some(g=>g.cell===to);
-  if(!ok){ xSay('block','The block will not move that way.'); return; }
+  if(!ok){ xPullBlock(p,dx,dy,r,now); return; }
+  if(now<(p.pulledT||0)) return;   // just dragged: don't shove it straight back
   p.pushT=now+260; EX.propAt.delete(p.cell); EX.taken.delete(p.cell); p.cell=to; EX.propAt.set(to,p); EX.taken.add(to);
   p.mesh.position.set(xw(to),0,xz(to)); xSfx('grind'); xCheckPuzzle(); }
+// A block that will not go further (a wall, a corner) is dragged instead: you step back and it follows
+// into the cell you left, so a block is never stuck for good.
+function xPullBlock(p,dx,dy,r,now){ const back=xi(xcx(EX.pc)-dx,xcy(EX.pc)-dy), here=EX.pc;
+  const ok=here===xi(xcx(p.cell)-dx,xcy(p.cell)-dy)&&back>=0&&xPassable(back)&&EX.room[back]===(r?r.id:-2)&&EX.room[here]===(r?r.id:-2)&&!xSolid(back)&&!EX.chests.some(c=>c.cell===back)&&!EX.groups.some(g=>g.cell===back)&&!(EX.doors&&EX.doors.has(back));
+  if(!ok){ xSay('block','The block will not move that way, and there is no room to drag it.'); return; }
+  p.pushT=now+700; p.pulledT=now+900; EX.path=[]; EX.goal=null; EX.dragT=.35; EX.vx=EX.vz=0;
+  EX.pc=back; EX.px=xw(back); EX.pz=xz(back);
+  EX.propAt.delete(p.cell); EX.taken.delete(p.cell); p.cell=here; EX.propAt.set(here,p); EX.taken.add(here);
+  p.mesh.position.set(xw(here),0,xz(here)); xSfx('grind'); xSay('pull','You brace and drag the block toward you.'); xUpdateVis(); xCheckPuzzle(); }
+// the marks on a push block: a glowing hand on top, arrows on its sides
+function xBlockRuneTex(arrow){ const k=arrow?'a':'h'; if(xBlockRuneTex[k]) return xBlockRuneTex[k]; const N=32, c=document.createElement('canvas'); c.width=c.height=N; const x=c.getContext('2d'); x.fillStyle='#fff';
+  if(arrow){ x.fillRect(14,6,4,14); x.beginPath(); x.moveTo(8,18); x.lineTo(24,18); x.lineTo(16,27); x.closePath(); x.fill(); x.fillRect(14,2,4,2); }
+  else { x.strokeStyle='#fff'; x.lineWidth=2; x.strokeRect(3,3,26,26); x.fillRect(11,12,10,11); for(let i=0;i<4;i++) x.fillRect(11+i*2.6,6,2,7); x.fillRect(7,15,4,3); }
+  const t=new THREE.CanvasTexture(c); t.magFilter=t.minFilter=THREE.NearestFilter; return xBlockRuneTex[k]=t; }
 function xResetBlocks(){ const pz=EX.puzzle; if(!pz||pz.kind!=='plates'||pz.solved) return; let moved=0;
   for(const b of pz.blocks){ if(b.cell===b.home||xSolid(b.home)&&EX.propAt.get(b.home)!==b) continue; EX.propAt.delete(b.cell); EX.taken.delete(b.cell); b.cell=b.home; EX.propAt.set(b.home,b); EX.taken.add(b.home); b.mesh.position.set(xw(b.home),0,xz(b.home)); moved++; }
   if(moved){ xLog('The rune flashes and the blocks slide home.','dim'); xSfx('grind'); } }

@@ -919,11 +919,20 @@ const SLAB=.35;
 let ISO_Y=.6;
 const boardUV=(wx,wz)=>[wx*View.ca+wz*View.sa, -wx*View.sa+wz*View.ca];
 // how much nearer than the board's centre a point is: 1 at the centre, above 1 close to the camera
-function nearK(wx,y,wz){ const dv=-wx*View.sa+wz*View.ca-View.v0; return View.dist/(View.dist-y*View.iy-dv*View.cp); }
-function proj(wx,y,wz){ const [u,v]=boardUV(wx,wz), du=u-View.u0, dv=v-View.v0, k=nearK(wx,y,wz);
+function nearK2D(wx,y,wz){ const dv=-wx*View.sa+wz*View.ca-View.v0; return View.dist/(View.dist-y*View.iy-dv*View.cp); }
+function proj2D(wx,y,wz){ const [u,v]=boardUV(wx,wz), du=u-View.u0, dv=v-View.v0, k=nearK2D(wx,y,wz);
   return [View.cx+View.S*k*du, View.cy+View.S*k*(dv*View.iy-y)]; }
 // the pixel size of one tile at a point on the board, for sizing units, rings and labels
-const scaleAt=(wx,wz)=>View.S*nearK(wx,0,wz);
+const scaleAt2D=(wx,wz)=>View.S*nearK2D(wx,0,wz);
+/* Where things land on the #board canvas. With the 3D arena up (arena.js) that is through its camera;
+   while battle.js draws the floor layer (aim areas, traps, telegraphs, claimed land) it is the
+   top-down canvas laid on the board (PJ.decal); without WebGL it is the old flat projection. */
+const PJ={decal:false};
+const gl3=()=>!!View.gl;
+function proj(wx,y,wz){ if(PJ.decal) return [(wz-DEC.wz0)*DEC.k,(DEC.wx1-wx)*DEC.k]; return gl3()?arenaProject(wx,y,wz):proj2D(wx,y,wz); }
+function scaleAt(wx,wz){ if(PJ.decal) return DEC.k; if(!gl3()) return scaleAt2D(wx,wz); const a=arenaProject(wx,0,wz), b=arenaProject(wx,0,wz+1); return Math.hypot(b[0]-a[0],b[1]-a[1]); }
+// how flat a circle on the floor looks (its height over its width), for rings drawn on the flat canvas
+function viewIY(){ if(PJ.decal) return 1; if(!gl3()) return View.iy2D; const a=arenaProject(0,0,0), b=arenaProject(1,0,0), c=arenaProject(0,0,1); return Math.min(1,Math.abs(b[1]-a[1])/Math.max(1e-3,Math.hypot(c[0]-a[0],c[1]-a[1]))); }
 const depthOf=t=>-t.wx*View.sa+t.wz*View.ca;
 function hexCorners(t,rad,y){ const out=[];
   for(let i=0;i<6;i++){ const a=Math.PI/6+i*Math.PI/3; out.push(proj(t.wx+Math.cos(a)*rad,y||0,t.wz+Math.sin(a)*rad)); } return out; }
@@ -934,7 +943,8 @@ function frontFaces(ctx,top,drop){ const n=top.length, cx=top.reduce((a,p)=>a+p[
 
 function resizeView(){
   const cv=View.canvas, r=appBox(cv), dpr=Math.min(window.devicePixelRatio||1,2);
-  if(!(r.width>0&&r.height>0)) return;   // hidden (the app is in the background): keep the last size, a 0-size board can't be drawn
+  if(!(r.width>0&&r.height>0)) return;
+  if(View.gl) View.gl=null;   // the flat fit below is worked out with the flat projection   // hidden (the app is in the background): keep the last size, a 0-size board can't be drawn
   View.dpr=dpr; View.w=r.width; View.h=r.height; cv.width=Math.round(r.width*dpr); cv.height=Math.round(r.height*dpr);
   const portrait=r.height>r.width*1.05, ang=Math.PI/2;
   View.ca=Math.cos(ang); View.sa=Math.sin(ang); View.iy=ISO_Y=portrait?.8:.62; View.cp=Math.sqrt(1-View.iy*View.iy);
@@ -949,6 +959,12 @@ function resizeView(){
   y1+=SLAB+.2;
   View.S=Math.min((r.width-(portrait?24:72))/(x1-x0),(r.height-16)/(y1-y0));
   View.cx=r.width/2-View.S*(x0+x1)/2; View.cy=r.height/2-View.S*(y0+y1)/2;
+  View.iy2D=View.iy;
+  // the 3D arena: its canvas sits right under this one, and the camera is fitted to the board
+  if(View.gl!==false&&typeof arenaInit==='function'){ try{ arenaInit(); const g=document.getElementById('board3d');
+      g.style.left=cv.offsetLeft+'px'; g.style.top=cv.offsetTop+'px'; g.style.width=cv.offsetWidth+'px'; g.style.height=cv.offsetHeight+'px';
+      arenaFit(r.width,r.height); View.gl=true; View.S=scaleAt(0,0); View.iy=ISO_Y=viewIY(); }
+    catch(e){ console.warn('3D arena off:',e); View.gl=false; } }
 }
 // screen -> tile: the tile whose top face is under the finger, or the nearest one close by
 function pickTile(clientX,clientY){
@@ -1115,17 +1131,10 @@ function paveTile(ctx,t,top,A,alpha){
   ctx.stroke(); ctx.restore();
 }
 
-function render(){
-  const ctx=View.ctx, b=B; if(!ctx) return;
-  ctx.setTransform(View.dpr,0,0,View.dpr,0,0);
-  ctx.clearRect(0,0,View.w,View.h);
-  if(!b) return;
-  const T=b.time, S=View.S;
-  if(View.shake>.3) ctx.translate(rnd(-1,1)*View.shake,rnd(-1,1)*View.shake);
-  drawCave(ctx,b,T);
-  const telMap=new Map();
-  for(const tl of b.teles) for(const t of tl.tiles) telMap.set(t,tl);
-
+/* The floor layer: every tile's state, then aim areas, the lob reticle, traps and the path. Flat:
+   onto the board itself; 3D: into the top-down canvas laid over the arena's tiles (the tiles'
+   colours go to arenaTiles instead, as tl3). */
+function floorLayer(ctx,b,T,S,telMap,G3,tl3){
   const tiles=TILES.slice().sort((a,c)=>depthOf(a)-depthOf(c));
   for(const t of tiles){
     const top=hexCorners(t,.96), land=t.claim&&LAND_LOOK[t.claim.land], base=land?(t.claim.t<3&&Math.sin(T*12)>0?mixHex(land.base,'#23292f',.6):land.base):{p:'#123756',e:'#23292f',n:'#0a1a14'}[t.side];   // claimed ground blinks in its last 3 seconds
@@ -1140,20 +1149,21 @@ function render(){
     else if(t.voidT>0) fill=mixHex(fill,'#3a0f3f',.6+.1*Math.sin(T*4));
     if(t.gT>0&&t.gEl&&!t.holeT) fill=mixHex(fill,COLORS[t.gEl].c,(.2+.12*Math.sin(T*5+t.r))*Math.min(1,t.gT/1.5));
     if(t.flash>0) fill=mixHex(base,t.flashC[0]==='#'&&t.flashC.length===7?t.flashC:'#ffffff',Math.min(.8,t.flash));
-    ctx.fillStyle='#020406'; poly(ctx,top.map(([x,y])=>[x,y+SLAB*S])); ctx.fill();
-    ctx.fillStyle=mixHex(base,'#000000',.45);
-    frontFaces(ctx,top,SLAB*S);
-    ctx.fillStyle=fill; poly(ctx,top); ctx.fill();
-    if(!(t.holeT>0)) paveTile(ctx,t,top,View.cave.area,t.side==='n'?.4:land?.25:.7);
+    if(G3) tl3.push({t,base,fill});   // the 3D board takes the tile's colour; its stone is already there
+    else { ctx.fillStyle='#020406'; poly(ctx,top.map(([x,y])=>[x,y+SLAB*S])); ctx.fill();
+      ctx.fillStyle=mixHex(base,'#000000',.45);
+      frontFaces(ctx,top,SLAB*S);
+      ctx.fillStyle=fill; poly(ctx,top); ctx.fill();
+      if(!(t.holeT>0)) paveTile(ctx,t,top,View.cave.area,t.side==='n'?.4:land?.25:.7); }
     if(land&&!(t.holeT>0)) drawLand(ctx,t,top,T,S);
     // an incoming attack fills its tile as it gets closer; it lands when the tile is full
     if(tl&&!tl.friendly){ ctx.fillStyle='rgba(255,50,70,.6)'; poly(ctx,hexCorners(t,.96*Math.min(1,tl.t/tl.dur))); ctx.fill(); }
     if(t.holeT>0){ ctx.save(); ctx.globalAlpha=.35+.15*Math.sin(T*5+t.q); ctx.fillStyle='#ff5a1f'; poly(ctx,hexCorners(t,.72)); ctx.fill(); ctx.globalAlpha=1; ctx.fillStyle='#0b0506'; poly(ctx,hexCorners(t,.55)); ctx.fill(); ctx.restore(); poly(ctx,top); }
     if(b.fog&&t.side==='e'){ ctx.save(); ctx.globalAlpha=.42+.06*Math.sin(T*.8+t.q); ctx.fillStyle='#0a0610'; poly(ctx,top); ctx.fill(); ctx.restore(); poly(ctx,top); }
     // a light triangle grid: every hex split into its six triangles, a steady guide to walk by
-    if(!(t.holeT>0)&&t.side!=='n'){ const [mx,my]=proj(t.wx,0,t.wz); ctx.beginPath(); for(const [x,y] of top){ ctx.moveTo(mx,my); ctx.lineTo(x,y); }
+    if(!G3&&!(t.holeT>0)&&t.side!=='n'){ const [mx,my]=proj(t.wx,0,t.wz); ctx.beginPath(); for(const [x,y] of top){ ctx.moveTo(mx,my); ctx.lineTo(x,y); }
       ctx.strokeStyle=t.side==='p'?'rgba(127,212,255,.13)':'rgba(170,185,200,.09)'; ctx.lineWidth=1; ctx.stroke(); }
-    poly(ctx,top); ctx.strokeStyle=t.side==='p'?'rgba(127,212,255,.5)':t.side==='e'?'rgba(150,165,180,.35)':'rgba(57,255,138,.5)'; ctx.lineWidth=1; ctx.stroke();
+    if(!G3){ poly(ctx,top); ctx.strokeStyle=t.side==='p'?'rgba(127,212,255,.5)':t.side==='e'?'rgba(150,165,180,.35)':'rgba(57,255,138,.5)'; ctx.lineWidth=1; ctx.stroke(); }
     if(t.side==='n'){ const [x,y]=proj(t.wx,.1,t.wz); ctx.fillStyle='rgba(57,255,138,.85)'; ctx.beginPath();
       ctx.moveTo(x,y-S*1.1-Math.sin(T*2+t.r)*3); ctx.lineTo(x+S*.22,y-S*.45); ctx.lineTo(x,y); ctx.lineTo(x-S*.22,y-S*.45); ctx.closePath(); ctx.fill(); }
   }
@@ -1179,6 +1189,24 @@ function render(){
   // path preview
   if(b.player.path.length){ ctx.fillStyle='rgba(127,212,255,.4)'; for(const t of b.player.path){ const [x,y]=proj(t.wx,0,t.wz), S=scaleAt(t.wx,t.wz); ctx.beginPath(); ctx.ellipse(x,y,S*.18,S*.18*ISO_Y,0,0,TAU); ctx.fill(); } }
 
+}
+function render(){
+  const ctx=View.ctx, b=B; if(!ctx) return;
+  ctx.setTransform(View.dpr,0,0,View.dpr,0,0);
+  ctx.clearRect(0,0,View.w,View.h);
+  if(!b) return;
+  const T=b.time, G3=gl3(), dt=Math.max(0,Math.min(.1,T-(View.lastT??T))); View.lastT=T;
+  if(G3){ const key=b.depth+':'+(b.uid||(b.uid=Math.random()*1e9|0)); if(AR.key!==key){ arenaBuild(b.depth,b.depth*977+(b.uid%1000)); AR.key=key; }
+    arenaCamera(dt,T); View.S=scaleAt(0,0); View.iy=ISO_Y=viewIY(); }
+  const S=View.S;
+  if(!G3){ if(View.shake>.3) ctx.translate(rnd(-1,1)*View.shake,rnd(-1,1)*View.shake); drawCave(ctx,b,T); }
+  const telMap=new Map();
+  for(const tl of b.teles) for(const t of tl.tiles) telMap.set(t,tl);
+
+  const tl3=[];
+  if(G3){ const dc=DEC.ctx; dc.setTransform(1,0,0,1,0,0); dc.clearRect(0,0,DEC.cv.width,DEC.cv.height); PJ.decal=true; View.iy=ISO_Y=1;
+    try{ floorLayer(dc,b,T,DEC.k,telMap,true,tl3); } finally{ PJ.decal=false; View.iy=ISO_Y=viewIY(); } arenaTiles(tl3); }
+  else floorLayer(ctx,b,T,S,telMap,false,tl3);
   const rocks=TILES.filter(t=>t.occ&&t.occ.kind==='rock').map(t=>t.occ);
   const dying=b.enemies.filter(e=>e.hp<=0&&e.deathT>0);
   const units=[b.player,...b.walls,...b.allies,...rocks,...alive(),...dying].sort((a,c)=>depthOf(a.tile)-depthOf(c.tile));
@@ -1231,6 +1259,7 @@ function render(){
   ctx.textAlign='center';
   for(const f of b.floaters){ const [x,y]=proj(f.wx,f.y,f.wz), S=scaleAt(f.wx,f.wz), pop=1+.7*Math.max(0,1-f.t/.14); ctx.globalAlpha=Math.min(1,(1-f.t/.9)*1.6); ctx.font=(f.big?'800 ':'700 ')+Math.round(S*(f.big?.55:.42)*pop)+'px "Pixelify Sans",system-ui,sans-serif';
     ctx.lineWidth=3; ctx.strokeStyle='rgba(0,0,0,.7)'; ctx.strokeText(f.text,x,y); ctx.fillStyle=f.color; ctx.fillText(f.text,x,y); } ctx.globalAlpha=1;
+  if(G3) arenaDraw(dt,T);
 }
 
 // The next card's reach, drawn again over the units so nothing hides it: the outline of every

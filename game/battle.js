@@ -1284,11 +1284,11 @@ function render(){
     ctx.fillStyle='rgba(0,0,0,.75)'; ctx.fillRect(x0-3,y0-3,w+6,h+6); ctx.fillStyle='#2a0e12'; ctx.fillRect(x0,y0,w,h);
     ctx.fillStyle=boss.guardT>0?'#e6f4ff':mini?'#ff9a3a':'#ff5d6c'; ctx.fillRect(x0,y0,w*boss.hp/boss.maxHp,h);
     ctx.fillStyle='#000'; for(const f of mini?[1/2]:[1/3,2/3]) ctx.fillRect(x0+w*f-1,y0,2,h);
-    ctx.font='600 '+Math.round(Math.max(13,S*.3))+'px "Pixelify Sans",system-ui,sans-serif'; ctx.textAlign='center'; ctx.fillStyle='#fff';
+    ctx.font='600 '+Math.round(Math.max(13,S*.3))+'px "Jersey 15",system-ui,sans-serif'; ctx.textAlign='center'; ctx.fillStyle='#fff';
     ctx.fillText(boss.name+'  '+(mini?(boss.enraged?'· enraged':'· miniboss'):['','I','II','III'][boss.phase||1])+(boss.under?'  · out of reach':''),View.w/2,y0+h+Math.max(15,S*.34)); }
   // expected damage on each enemy the next card would hit (★ = its weak color)
-  if(b.preview&&b.preview.card.pow){ const pv=b.preview; ctx.textAlign='center'; ctx.font='800 '+Math.round(S*.34)+'px "Pixelify Sans",system-ui,sans-serif';
-    for(const t of new Set(pv.hit)){ const e=t.occ; if(!e||e.kind!=='enemy') continue; const [x,y]=proj(posOf(e)[0],0,posOf(e)[1]), S=scaleAt(...posOf(e)); ctx.font='800 '+Math.round(S*.34)+'px "Pixelify Sans",system-ui,sans-serif';
+  if(b.preview&&b.preview.card.pow){ const pv=b.preview; ctx.textAlign='center'; ctx.font='800 '+Math.round(S*.34)+'px "Jersey 15",system-ui,sans-serif';
+    for(const t of new Set(pv.hit)){ const e=t.occ; if(!e||e.kind!=='enemy') continue; const [x,y]=proj(posOf(e)[0],0,posOf(e)[1]), S=scaleAt(...posOf(e)); ctx.font='800 '+Math.round(S*.34)+'px "Jersey 15",system-ui,sans-serif';
       const d=estDamage(pv.card,e,pv.mult), weak=bossMult(pv.card.color,e)>1, txt=(pv.card.shape==='missiles'?pv.card.n+'× ':'')+'−'+d+(weak?' ★':'');
       const w=ctx.measureText(txt).width+12, yy=y-S*.35; ctx.fillStyle=weak?'#ffe066':'rgba(4,8,12,.88)'; ctx.strokeStyle=colorOf(pv.card); ctx.lineWidth=2;
       ctx.beginPath(); ctx.roundRect(x-w/2,yy-S*.28,w,S*.4,6); ctx.fill(); ctx.stroke(); ctx.fillStyle=weak?'#1a1206':'#fff'; ctx.fillText(txt,x,yy); } }
@@ -1329,7 +1329,7 @@ function render(){
   }
   for(const q of b.parts) drawPart(ctx,q); ctx.globalAlpha=1; ctx.globalCompositeOperation='source-over';
   ctx.textAlign='center';
-  for(const f of b.floaters){ const [x,y]=proj(f.wx,f.y,f.wz), S=scaleAt(f.wx,f.wz), pop=1+.7*Math.max(0,1-f.t/.14); ctx.globalAlpha=Math.min(1,(1-f.t/.9)*1.6); ctx.font=(f.big?'800 ':'700 ')+Math.round(S*(f.big?.55:.42)*pop)+'px "Pixelify Sans",system-ui,sans-serif';
+  for(const f of b.floaters){ const [x,y]=proj(f.wx,f.y,f.wz), S=scaleAt(f.wx,f.wz), pop=1+.7*Math.max(0,1-f.t/.14); ctx.globalAlpha=Math.min(1,(1-f.t/.9)*1.6); ctx.font=(f.big?'800 ':'700 ')+Math.round(S*(f.big?.55:.42)*pop)+'px "Jersey 15",system-ui,sans-serif';
     ctx.lineWidth=3; ctx.strokeStyle='rgba(0,0,0,.7)'; ctx.strokeText(f.text,x,y); ctx.fillStyle=f.color; ctx.fillText(f.text,x,y); } ctx.globalAlpha=1;
   if(G3){ arenaUnitsEnd(); arenaDraw(dt,T); }
 }
@@ -1437,14 +1437,14 @@ const DRAW={
     if(e.barrier>0){ ctx.strokeStyle='rgba(255,240,179,.85)'; ctx.lineWidth=2.5; ctx.beginPath(); ctx.ellipse(x,y-h,S*.7*sc,h*1.2,0,0,TAU); ctx.stroke(); }
     const top=r.top-S*.1;
     bar(ctx,x,top,S*.9,e.hp/e.maxHp,'#ff5d6c');
-    ctx.font='700 '+Math.round(S*.28)+'px "Pixelify Sans",system-ui,sans-serif'; ctx.textAlign='center';
+    ctx.font='700 '+Math.round(S*.28)+'px "Jersey 15",system-ui,sans-serif'; ctx.textAlign='center';
     const st=[]; if(e.burnT>0) st.push('🔥'); if(frozen) st.push('❄️'); if(e.stunT>0) st.push('💫'); if(e.slowT>0) st.push('🐌'); if(e.poisonT>0) st.push('☠'); if(e.curseT>0) st.push('☾'); if(e.powerT>0) st.push('⬆'); if(e.confuseT>0) st.push('❓');
     ctx.fillStyle='#fff'; { const kn=typeof bKnown!=='function'||bKnown(e); ctx.fillText(e.name+'  weak: '+(kn?COLORS[e.weak||WEAK_TO[e.color]].icon:'?')+(e.resist?(e.reflect?'  reflects: ':'  resists: ')+(kn?COLORS[e.resist].icon:'?'):''),x,top-4); }   // learned in the bestiary (reading.js)
     if(st.length) ctx.fillText(st.join(''),x,top-4-S*.3);
     if(e.casting){ const w=Math.max(S*1.6,ctx.measureText(e.casting.name).width+14), yy=top-S*.75;   // the card it is about to cast
       ctx.fillStyle='rgba(4,8,12,.9)'; ctx.strokeStyle=COLORS[e.casting.color].c; ctx.lineWidth=2; ctx.beginPath(); ctx.roundRect(x-w/2,yy-S*.32,w,S*.44,6); ctx.fill(); ctx.stroke();
       ctx.fillStyle=COLORS[e.casting.color].c; ctx.fillText(TYPES[e.casting.type].icon+' '+e.casting.name,x,yy); }
-    if(e.windT>0||e.casting){ const pu=1+.25*Math.sin(T*25); ctx.fillStyle='#ff5d6c'; ctx.font='800 '+Math.round(S*.6*pu)+'px "Pixelify Sans",system-ui,sans-serif'; ctx.fillText('!',x+S*.5,y-h*1.6); }
+    if(e.windT>0||e.casting){ const pu=1+.25*Math.sin(T*25); ctx.fillStyle='#ff5d6c'; ctx.font='800 '+Math.round(S*.6*pu)+'px "Jersey 15",system-ui,sans-serif'; ctx.fillText('!',x+S*.5,y-h*1.6); }
     // intent: what it will do next, with a ring that closes as the attack nears
     if(e.hp>0&&!e.casting&&!e.windT&&e.nextMove&&e.atkT<1.6&&e.freezeT<=0&&e.stunT<=0){ const ix=x+S*.62, iy=top-S*.05, r=S*.26, k=1-e.atkT/1.6;
       ctx.fillStyle='rgba(4,8,12,.85)'; ctx.beginPath(); ctx.arc(ix,iy,r,0,TAU); ctx.fill();
@@ -1490,7 +1490,7 @@ const DRAW={
     ctx.globalAlpha=1; ctx.fillStyle=g; ctx.fillRect(gx-S*.55,gy-S*3,S*1.1,S*3);
     const moving=Math.hypot(posOf(a)[0]-a.tile.wx,posOf(a)[1]-a.tile.wz)>.05;
     const r=drawSprite(ctx,a,T,S,{scale:1.05,bob:.04,step:moving?Math.floor(T*7)%2:null,flip:facing(a,alive()[0],false),flash:a.hitT>0?.8:0});
-    const top=r.top-S*.1; ctx.textAlign='center'; ctx.font='800 '+Math.round(S*.3)+'px "Pixelify Sans",system-ui,sans-serif';
+    const top=r.top-S*.1; ctx.textAlign='center'; ctx.font='800 '+Math.round(S*.3)+'px "Jersey 15",system-ui,sans-serif';
     ctx.lineWidth=3; ctx.strokeStyle='rgba(0,0,0,.7)'; const nm='♔ '+a.card.name.split(',')[0]; ctx.strokeText(nm,r.x,top-S*.18); ctx.fillStyle='#ffe066'; ctx.fillText(nm,r.x,top-S*.18);
     bar(ctx,r.x,top,S*.9,a.hp/a.maxHp,col); turnPips(ctx,r.x,top+S*.16,a.life,S);
   },

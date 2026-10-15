@@ -513,7 +513,7 @@ function renderGearDetail(){
   const id=chSel.id, G=GEAR[id], wornIn=SLOTS.filter(k=>s.gear[k]===id), on=wornIn.length>0, stuck=isStuck(save,id), set=setOf(id), lv=s.gearLv[id]||0;
   const kindTxt=G.slot==='weapon'?WEAPON_KINDS[kindOf(id)].name+': '+WEAPON_KINDS[kindOf(id)].text:G.weight?G.weight[0].toUpperCase()+G.weight.slice(1)+' armor'+(G.weight==='heavy'&&!s.ench[id]?' (slows casting until enchanted)':''):SLOT_NAMES[G.slot==='ring'?'ring1':G.slot];
   box.className='gdetail'+(stuck?' cursed':'')+(G.legendary?' legend':''); box.style.setProperty('--fc',COLORS[G.family].c);
-  box.innerHTML=`<button class="dx" aria-label="Close">✕</button><div class="dh"><b class="ic">${gearIcon(id,64)}</b><div><b>${esc(gearName(save,id))}</b> <span class="tier">${G.legendary?'✹ Legendary':G.tier?'★'.repeat(G.tier):'junk'}</span>${s.items[id]>1?` <span class="cnt">×${s.items[id]}</span>`:''}
+  box.innerHTML=`<button class="winx dx" aria-label="Close"></button><div class="dh"><b class="ic">${gearIcon(id,64)}</b><div><b>${esc(gearName(save,id))}</b> <span class="tier">${G.legendary?'✹ Legendary':G.tier?'★'.repeat(G.tier):'junk'}</span>${s.items[id]>1?` <span class="cnt">×${s.items[id]}</span>`:''}
       <small class="kind"><span class="chip" style="--c:${COLORS[G.family].c}">${COLORS[G.family].icon} ${COLORS[G.family].name}</span> ${esc(kindTxt)}</small></div></div>
     <p>${esc(gearText(save,id))}${G.text?' · '+esc(G.text):''}</p>
     ${set?`<p class="set${activeSets(save).includes(set)?' on':''}">Set: ${esc(SETS[set].name)} (${SETS[set].pieces.filter(x=>s.items[x]).length}/3 owned, ${SETS[set].pieces.filter(x=>SLOTS.some(k=>s.gear[k]===x)).length}/3 worn) · ${esc(modsText(SETS[set].mods))}</p>`:''}
@@ -1215,14 +1215,14 @@ const CLOSERS={
   pause:()=>closePause(), settings:()=>closeSettings(), slots:()=>$('#slots').classList.remove('on'),
   detail:()=>$('#detail').classList.remove('on'), pick:()=>$('#pick').classList.remove('on'),
   dkPeek:()=>$('#dkpClose').onclick(), xDialog:()=>xDlgClose(), bagUI:()=>closeBag(), picker:()=>closePicker(),
-  lvlUp:()=>closeLevelUp(false),
+  lvlUp:()=>closeLevelUp(false), shopSheet:()=>$('#shopSheet').classList.remove('on'), runSheet:()=>closeRun(),
   reveal:()=>{ const b=$('#rvBtns .btn'); if(b) b.click(); else $('#reveal').classList.remove('on'); },
 };
 const NO_BACKDROP=['reveal'], OWN_X=['bagUI'];
-for(const id of ['dtClose','slClose','dkpClose','setClose','pkCancel','pickCancel','lvLater']){ const b=$('#'+id); if(b) b.hidden=true; }
+for(const id of ['dtClose','slClose','dkpClose','setClose','pkCancel','pickCancel','lvLater','shopSheetClose']){ const b=$('#'+id); if(b) b.hidden=true; }
 for(const id in CLOSERS){ const ov=$('#'+id); if(!ov) continue;
   if(!OWN_X.includes(id)){ const panel=ov.querySelector('.panel')||ov.firstElementChild, x=document.createElement('button');
-    x.className='winx'; x.type='button'; x.setAttribute('aria-label','Close'); x.textContent='✕'; x.onclick=e=>{ e.stopPropagation(); CLOSERS[id](); };
+    x.className='winx'; x.type='button'; x.setAttribute('aria-label','Close'); x.onclick=e=>{ e.stopPropagation(); CLOSERS[id](); };
     panel.classList.add('haswinx'); panel.prepend(x); }
   if(!NO_BACKDROP.includes(id)&&!['bagUI','dkPeek'].includes(id)) ov.addEventListener('click',e=>{ if(e.target===ov&&ov.classList.contains('on')) CLOSERS[id](); }); }
 window.addEventListener('keydown',e=>{ if(e.key!=='Escape'||keyCapture) return;

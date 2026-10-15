@@ -31,7 +31,7 @@
   <!-- new game, step 1: your hexmancer: race, body and stats -->
   <section id="scrNewChar" class="screen">
     <div class="cc">
-      <div class="bar"><button id="ccBack" class="btn ghost back">←</button><h2>Your hexmancer</h2><span id="ccStep" class="dim">Step 1 of 2</span></div>
+      <div class="bar"><button id="ccBack" class="backbtn back" aria-label="Back"></button><h2>Your hexmancer</h2><span id="ccStep" class="dim">Step 1 of 2</span></div>
       <div class="cctop">
         <canvas id="ccSprite" width="192" height="192"></canvas>
         <div class="ccinfo">
@@ -51,7 +51,7 @@
 
   <!-- new game: pick a starter deck -->
   <section id="scrStart" class="screen">
-    <button id="startBack" class="btn ghost back startback">← Character</button>
+    <button id="startBack" class="backbtn back startback" aria-label="Back to your character"></button>
     <h1>Hexmancers</h1>
     <p class="sub">New game</p>
     <p class="hint center">Choose your first deck. Win fights and open chests to collect cards from 1,000, then build your own decks at camp.</p>
@@ -97,7 +97,7 @@
 
   <!-- deck builder -->
   <section id="scrBuilder" class="screen">
-    <div class="bar"><button class="btn ghost back">←</button><input id="bName" maxlength="24"><span id="bCount" class="count"></span></div>
+    <div class="bar"><button class="backbtn back" aria-label="Back"></button><input id="bName" maxlength="24"><span id="bCount" class="count"></span></div>
     <div id="bSlots" class="slotsel"></div>
     <div class="soulpick" hidden><label>♔ Soul <select id="bSoul"></select></label><small id="bSoulTxt" class="dim"></small></div>
     <div id="bStats" class="stats"></div>
@@ -112,7 +112,7 @@
 
   <!-- deck builder (deckui.js) -->
   <section id="scrDeck" class="screen dkscr">
-    <div class="dkhead"><button id="dkBack" class="dkpill sq" aria-label="Back">←</button><input id="dkName" maxlength="24"><div id="dkSlots" class="dkslots"></div><button id="dkUse" class="dkpill">Use ★</button></div>
+    <div class="dkhead"><button id="dkBack" class="backbtn" aria-label="Back"></button><input id="dkName" maxlength="24"><div id="dkSlots" class="dkslots"></div><button id="dkUse" class="dkpill">Use ★</button></div>
     <div class="dktools"><button id="dkClear" class="dkpill red">— Remove All</button><button id="dkAuto" class="dkpill">Auto-build</button>
       <div class="dkpill zoom"><button id="dkZo" aria-label="Zoom out">⊖</button><span id="dkZoom">50%</span><button id="dkZi" aria-label="Zoom in">⊕</button></div></div>
     <div id="dkDeck" class="dkdeck"></div>
@@ -129,7 +129,7 @@
   </section>
   <!-- collection -->
   <section id="scrCollection" class="screen">
-    <div class="bar"><button class="btn ghost back">←</button><h2 id="cTitle">My cards</h2><span id="cCount" class="count"></span></div>
+    <div class="bar"><button class="backbtn back" aria-label="Back"></button><h2 id="cTitle">My cards</h2><span id="cCount" class="count"></span></div>
     <div class="tabs"><button id="cTabMine" class="chip on">My cards</button><button id="cTabAll" class="chip">All cards</button><button id="cTabBook" class="chip">Recipes</button>
       <select id="cSort"><option value="family">Sort: color</option><option value="rank">Sort: rank</option><option value="rarity">Sort: rarity</option><option value="copies">Sort: most copies</option><option value="name">Sort: name</option></select></div>
     <div id="cProgress" class="stats"></div>
@@ -140,7 +140,7 @@
 
   <!-- character and gear -->
   <section id="scrCharacter" class="screen">
-    <div class="bar"><button class="btn ghost back">←</button><h2>Character</h2><span id="chGold" class="count gold"></span></div>
+    <div class="bar"><button class="backbtn back" aria-label="Back"></button><h2>Character</h2><span id="chGold" class="count gold"></span></div>
     <!-- the paper doll: your wizard with the seven slots around it -->
     <div id="chDoll" class="doll">
       <div class="dcol left"></div>
@@ -164,17 +164,17 @@
 
   <!-- shop -->
   <section id="scrBounty" class="screen">
-    <div class="bar"><button class="btn ghost back">←</button><h2>Bounty board</h2><span id="bShards" class="count"></span></div>
+    <div class="bar"><button class="backbtn back" aria-label="Back"></button><h2>Bounty board</h2><span id="bShards" class="count"></span></div>
     <p class="hint bhint">Contracts stay until you finish them. A fight counts for a contract when the deck you fight with meets it.</p>
     <div id="bountyList" class="bountylist"></div>
   </section>
   <section id="scrBestiary" class="screen">
-    <div class="bar"><button class="btn ghost back">←</button><h2>Bestiary</h2><span id="bestCount" class="count"></span></div>
+    <div class="bar"><button class="backbtn back" aria-label="Back"></button><h2>Bestiary</h2><span id="bestCount" class="count"></span></div>
     <p class="hint bhint">Every creature you fight is written down here. Beat 3 of a kind (1 boss, miniboss or rare foe) to learn its weakness.</p>
     <div id="bestList" class="bestlist"></div>
   </section>
   <section id="scrMastery" class="screen">
-    <div class="bar"><button class="btn ghost back">←</button><h2>Mastery</h2><span id="mShards" class="count"></span></div>
+    <div class="bar"><button class="backbtn back" aria-label="Back"></button><h2>Mastery</h2><span id="mShards" class="count"></span></div>
     <p class="hint bhint">Win fights to master the colours in your deck. Each colour has 10 levels.</p>
     <div id="masteryList" class="masterylist"></div>
     <h3 class="msub">Card sets</h3>
@@ -182,7 +182,7 @@
     <div id="setList" class="setlist"></div>
   </section>
   <section id="scrShop" class="screen">
-    <div class="bar"><button class="btn ghost back">←</button><h2>Shop</h2><span id="sGold" class="count gold"></span></div>
+    <div class="bar"><button class="backbtn back" aria-label="Back"></button><h2>Shop</h2><span id="sGold" class="count gold"></span></div>
     <div class="stall"><canvas id="shopScene" width="200" height="88"></canvas><div class="stallname">Madame Oriel's</div><p id="shopSay" class="say"></p></div>
     <div id="shopTabs" class="shoptabs"><button data-tab="wares" class="on">Wares</button><button data-tab="sell">Sell</button></div>
     <div id="shopBody" class="shopbody"></div>
@@ -200,7 +200,7 @@
     </div>
     <div id="xMapShade" class="x-map-shade" hidden></div>
     <canvas id="xMini"></canvas>
-    <button id="xMapClose" class="x-map-close" hidden aria-label="Close the map">✕</button>
+    <button id="xMapClose" class="x-map-close" hidden aria-label="Close the map"></button>
     <div id="xStick" class="x-stick" hidden><i class="x-knob"></i></div>
     <div id="xStatus"></div>
     <div id="xHurt" class="hurt-fx"></div>
@@ -283,7 +283,7 @@
   </section>
 
   <!-- shared overlays -->
-  <div id="shopSheet" class="overlay sheet"><div class="panel ssheet"><div id="shopSheetBody" class="sbody"></div><div class="controls two"><button id="shopSheetClose" class="btn ghost">Back</button><button id="shopBuy" class="btn"></button></div></div></div>
+  <div id="shopSheet" class="overlay sheet"><div class="panel ssheet"><div id="shopSheetBody" class="sbody"></div><div class="controls"><button id="shopSheetClose" class="btn ghost">Back</button><button id="shopBuy" class="btn"></button></div></div></div>
   <div id="packOpen" class="overlay"><div class="pobox"><div id="poStage" class="postage"></div><div id="poFan" class="pofan"></div><p class="hint center">Tap a card to turn it over</p><button id="poDone" class="btn" hidden>Collect</button></div></div>
   <!-- one pause menu for the dungeon and the battle -->
   <div id="runSheet" class="overlay">
@@ -351,13 +351,13 @@
     <div class="panel">
       <h2 id="pkTitle"></h2><p id="pkBody" class="hint"></p>
       <div id="pkCards" class="grid mini"></div>
-      <div class="controls two"><button id="pkCancel" class="btn ghost">Cancel</button><button id="pkOk" class="btn">Sacrifice</button></div>
+      <div class="controls"><button id="pkCancel" class="btn ghost">Cancel</button><button id="pkOk" class="btn">Sacrifice</button></div>
     </div>
   </div>
   <!-- the dungeon's dialog: people, merchants, sanctuaries, tablets, your bag -->
   <div id="bagUI" class="overlay">
     <div class="bagframe">
-      <div class="bghead"><span class="bgbag"></span><h2 id="bgTitle"></h2><span id="bgGold" class="bggold"></span><button id="bgClose" class="bgx" aria-label="Close">✕</button></div>
+      <div class="bghead"><span class="bgbag"></span><h2 id="bgTitle"></h2><span id="bgGold" class="bggold"></span><button id="bgClose" class="bgx" aria-label="Close"></button></div>
       <div class="bgbody">
         <div class="bgchar">
           <div class="bgdoll"><div id="bgLeft" class="bgcol"></div><div class="bgfig"><canvas id="bgSprite" width="192" height="192"></canvas></div><div id="bgRight" class="bgcol"></div></div>

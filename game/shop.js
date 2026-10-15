@@ -41,7 +41,7 @@ function packArt(color,W=64){ const H=Math.round(W*1.38), cv=document.createElem
   x.fillStyle='rgba(8,10,14,.75)'; x.beginPath(); x.arc(W/2,H*.42,W*.24,0,Math.PI*2); x.fill();
   x.font=Math.round(W*.3)+'px system-ui,sans-serif'; x.textAlign='center'; x.textBaseline='middle'; x.fillStyle='#fff';
   x.fillText(color?COLORS[color].icon:'✦',W/2,H*.43);
-  x.font='700 '+Math.round(W*.13)+'px "Pixelify Sans",monospace'; x.fillText(PACK_SIZE+' CARDS',W/2,H*.78);
+  x.font='700 '+Math.round(W*.13)+'px "Jersey 15",monospace'; x.fillText(PACK_SIZE+' CARDS',W/2,H*.78);
   return cv; }
 // the stall: a striped awning, two lanterns, a counter, and Madame Oriel behind it (her dungeon look)
 function shopScene(cv,T){ const W=cv.width, H=cv.height, x=cv.getContext('2d'); x.imageSmoothingEnabled=false;

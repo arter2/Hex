@@ -1,8 +1,8 @@
-Pixelify Sans, VT323 and Jacquard 12 (latin subsets, from the Fontsource packages).
+Jersey 15, VT323 and Jacquard 12 (latin subsets, from the Fontsource packages).
 All three are licensed under the SIL Open Font License, Version 1.1.
 
-==== pixelify-sans-5.3.0
-Copyright 2021 The Pixelify Sans Project Authors (https://github.com/eifetx/Pixelify-Sans)
+==== jersey-15-5.3.0
+Copyright 2023 The Soft Type Project Authors (https://github.com/scfried/soft-type-jersey)
 
 This Font Software is licensed under the SIL Open Font License, Version 1.1.
 This license is copied below, and is also available with a FAQ at:

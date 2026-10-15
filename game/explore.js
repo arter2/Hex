@@ -272,7 +272,7 @@ function xInit3D(){
   return X3;
 }
 function xTextSprite(txt,col){ const c=document.createElement('canvas'); c.width=c.height=32; const x=c.getContext('2d');
-  x.font='700 22px "Pixelify Sans",monospace'; x.textAlign='center'; x.textBaseline='middle'; x.lineWidth=4; x.strokeStyle='#000'; x.strokeText(txt,16,17); x.fillStyle=col; x.fillText(txt,16,17);
+  x.font='700 22px "Jersey 15",monospace'; x.textAlign='center'; x.textBaseline='middle'; x.lineWidth=4; x.strokeStyle='#000'; x.strokeText(txt,16,17); x.fillStyle=col; x.fillText(txt,16,17);
   const s=new THREE.Sprite(new THREE.SpriteMaterial({map:xTex(c),transparent:true,depthTest:false})); s.scale.set(.9,.9,1); s.renderOrder=5; return s; }
 function xSprite(getImg,h){ const s=new THREE.Sprite(new THREE.SpriteMaterial({transparent:true,alphaTest:.35})); s.center.set(.5,.03); s.scale.set(h,h,1); s.userData={getImg,img:null,flip:false,h}; return s; }
 /* A sprite always faces the camera, so it leans back as the camera looks down, and its head
@@ -541,7 +541,7 @@ function xBloom(x,y,z,col,size){ if(!X3||!X3.group) return; const tex=xGlowTex.t
   s.position.set(x,y,z); s.renderOrder=4; s.userData={vx:0,vz:0,vy:.4,t:0,life:.6,g:0,s:size*.5,grow:1.2,a0:1}; X3.group.add(s); (EX.fx=EX.fx||[]).push(s); }
 // a wide text label for names over monsters
 function xLabel(txt,col){ const c=document.createElement('canvas'); c.width=256; c.height=40; const x=c.getContext('2d');
-  x.font='700 24px "Pixelify Sans",monospace'; x.textAlign='center'; x.textBaseline='middle'; x.lineWidth=5; x.strokeStyle='rgba(0,0,0,.85)'; x.strokeText(txt,128,21); x.fillStyle=col; x.fillText(txt,128,21);
+  x.font='700 24px "Jersey 15",monospace'; x.textAlign='center'; x.textBaseline='middle'; x.lineWidth=5; x.strokeStyle='rgba(0,0,0,.85)'; x.strokeText(txt,128,21); x.fillStyle=col; x.fillText(txt,128,21);
   const s=new THREE.Sprite(new THREE.SpriteMaterial({map:xTex(c),transparent:true,depthTest:false})); s.scale.set(3.2,.5,1); s.center.set(.5,0); s.renderOrder=5; s.userData.text=txt; return s; }
 // a ring of runes for the floor round the stairs down
 function xRuneTex(){ if(xRuneTex.t) return xRuneTex.t; const N=128, c=document.createElement('canvas'); c.width=c.height=N; const x=c.getContext('2d'), m=N/2;

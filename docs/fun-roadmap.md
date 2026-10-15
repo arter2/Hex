@@ -1,6 +1,6 @@
 # Hexmancers: making it more fun
 
-Date: 2026-10-15 · Status: Part 1 idea 5 is built (v59); Part 2 is built (v58)
+Date: 2026-10-15 · Status: Part 1 ideas 1 and 5 are built (v59, v60) with rare foes; Part 2 is built (v58)
 
 The game already has a deep loop: dungeon crawling (secrets, mimics, puzzles, escorts, branches),
 a real-time card battle (combos, curses, telegraphs), a deck builder, gear, missions, a shop and
@@ -14,20 +14,36 @@ players have reasons to build new decks.
 
 ## Part 1: Five ways to make it more fun
 
-### 1. Big moments that feel big (battle juice)
+### 1. Big moments that feel big (built in v60)
 
-The 3D arena can now do lights, camera punches and swings. Use them harder.
+- **Hit-stop:** a kill freezes the moment for 0.07 s with a white flash on the target (0.2 s for a
+  boss), a WEAK hit for 0.045 s, a rune combo for 0.09 s. The tile flash also throws a spell light.
+- **Hit chain:** card hits that land within 1.5 s of each other build a chain. From 3 hits a
+  "×N chain" counter grows under the top bar. A chain of 5 or more bursts when it ends ("CHAIN ×N!"),
+  with a freeze, a shake, a camera swing and Soul charge (4 per hit); 8 or more also powers you up
+  for 3 s. Wand shots don't count.
+- **Boss phases as events:** at 2/3 and 1/3 health the moment freezes for 0.3 s, the screen shakes,
+  the camera swings and the arena's light turns toward the boss's colour (more at phase 3).
+- **Finishing blow (boss fights only):** the last kill of a boss fight plays in slow motion
+  (quarter speed for 0.55 s) with "FINISH!", a ring and a camera swing. Ordinary fights end as before.
 
-- **Hit-stop:** a 60 to 90 ms freeze on crits, kills and finished combos, with a white flash on
-  the target and a spell light at the hit.
-- **Combo counter:** a counter that grows on screen as a combo chains. At the payoff it bursts,
-  with a sound and a short camera punch.
-- **Boss phases as events:** at 66% and 33% health the boss roars. The arena lighting shifts to a
-  new colour, the camera swings, and a new attack pattern begins.
-- **Kill finish:** the last enemy's death plays in slow motion for 0.4 s before the victory
-  screen.
+### Rare foes (built in v60)
 
-Cost: small. Players feel it in every fight.
+Past floor 4, about 3% of encounters (rising to 5% deep down, never on a boss floor) are a single
+rare foe instead. In the dungeon its group carries a ★ and wanders. Rare foes are tougher than a
+miniboss and short of a boss, shimmer gold, keep their own element, and each has a trait:
+
+| Rare foe | Element | Trait |
+|---|---|---|
+| Gilded Scarab | Light | Runs off with its loot after 30 s of fighting |
+| Prism Ram | Storm | Shields itself every 10 s |
+| Void Lantern | Shadow | Vanishes and reappears when hit hard |
+| Rimeborn Matron | Frost | Calls frost mites at half health |
+| Cinder Champion | Fire | Enrages at 40% health (attacks 30% faster) |
+| Old Mossback | Verdant | Regrows 1% of its health every second |
+
+When one falls it drops a rare card, a second card that is legendary 40% of the time, boss-grade
+gear, a sealed pack, triple gold and 40 + 4 per depth shards. One that gets away drops nothing.
 
 ### 2. Every run its own story (run-shaping choices)
 

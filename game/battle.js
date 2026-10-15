@@ -183,6 +183,8 @@ function hitEnemy(e,base,card,opts){
   const counter=!opts.raw&&card&&card.id!=='wand'&&e.hp>0&&!(e.stunT>0)&&!(e.freezeT>0)&&(e.windT>0||!!e.casting||B.teles.some(t=>t.owner===e&&!t.friendly));
   const weak=mult>=WEAK_MULT; if(counter) mult*=2;
   if(weak&&!opts.raw&&typeof bountyWeak==='function') bountyWeak(e);
+  if(weak&&!opts.raw) B.hitStop=Math.max(B.hitStop||0,.045);
+  if(card&&!opts.raw&&card.id!=='wand'&&card.id!=='unison') chainHit();
   const resisted=!opts.raw&&card&&e.resist&&card.color===e.resist&&!e.reflect;
   let dmg=Math.max(1,Math.round(base*mult));
   if(counter) counterHit(e);
@@ -198,6 +200,7 @@ function hitEnemy(e,base,card,opts){
   if(heroOn('widow')&&!opts.raw) healPlayer(Math.round(dmg*.2),true);
   if(heroAura('drain')&&!opts.raw) healPlayer(Math.round(dmg*heroAura('drain')),true);
   if(onLand('swamp')&&!opts.raw) healPlayer(Math.round(dmg*.1),true);
+  if(typeof rareHit==='function') rareHit(e,dmg);
   if(e.hp<=0) killEnemy(e);
   return dmg;
 }
@@ -306,6 +309,20 @@ function counterHit(e){
   spray(t,22,{shape:'spark',color:['#ffffff','#ff3b5c','#ffd0d8'],v0:4,v:10,up0:-1,up:5,g:0,drag:4,life:.35,s:3,add:true});
   B.counters=(B.counters||0)+1; soulGain(15);
 }
+/* The hit chain: card hits that land within 1.5 s of each other build a chain. From 3 hits a counter
+   grows on screen; a chain of 5 or more bursts when it ends, with a freeze, a shake and Soul charge
+   (4 per hit); 8 or more also powers you up for 3 s. Wand shots don't count. */
+const CHAIN_GAP=1.5;
+function chainHit(){ const b=B, c=b.chain||(b.chain={n:0,last:-9,best:0}); c.n=b.time-c.last<=CHAIN_GAP?c.n+1:1; c.last=b.time; c.best=Math.max(c.best,c.n); chainShow(); }
+function chainTick(){ const c=B.chain; if(!c||!c.n||B.time-c.last<=CHAIN_GAP) return; const n=c.n; c.n=0; if(n>=5) chainBurst(n); else chainShow(); }
+function chainBurst(n){ const p=B.player; B.hitStop=Math.max(B.hitStop||0,.1); shake(4+Math.min(6,n/2)); ring(p.tile,'#ffd166',2.2,.5,8);
+  spray(p.tile,24,{shape:'glow',color:['#ffd166','#ffffff'],v0:1,v:5,up0:1,up:5,g:-1,drag:2,life:.8,s:6,add:true,shrink:1}); soulGain(4*n);
+  if(n>=8){ p.powerT=Math.max(p.powerT||0,3); floater('Power up!',p.tile,'#ffe24d',true); } if(typeof arenaKick==='function') arenaKick(.5); chainShow(n); }
+function chainShow(burst){ const el=typeof document!=='undefined'&&document.getElementById('chainCtr'); if(!el) return; const n=B&&B.chain?B.chain.n:0;
+  if(burst){ el.textContent='CHAIN ×'+burst+'!'; el.className='chainctr on burst'; clearTimeout(el._t); el._t=setTimeout(()=>{ el.className='chainctr'; },1100); return; }
+  if(el.classList.contains('burst')) return;
+  if(n>=3){ el.textContent='×'+n+' chain'; el.className='chainctr on'; el.style.setProperty('--s',Math.min(1.8,1+(n-3)*.08).toFixed(2)); el.classList.remove('pop'); void el.offsetWidth; el.classList.add('pop'); }
+  else el.className='chainctr'; }
 /* Elements and you. Your deck's element is the colour that makes up at least 40% of it (none for a
    mixed deck). Enemies of the colour that beats it hit you 30% harder; enemies it beats hit 20% softer. */
 const ELEM_HURT=1.3, ELEM_GUARD=.8;
@@ -338,11 +355,15 @@ function cancelAttack(e){
 }
 function killEnemy(e){
   if(typeof arRuleKill==='function') arRuleKill(e);
+  // a kill lands hard: a short freeze and a white flash; the last kill of a boss fight goes slow
+  B.hitStop=Math.max(B.hitStop||0,e.def.boss?.2:.07); flash(e.tile,'#ffffff',1);
   e.hp=0; e.deathT=.5; if(e.tile.occ===e) e.tile.occ=null; cancelAttack(e);
   if(e.def.bossId&&typeof bossDown==='function') bossDown(e); burst(e.tile,COLORS[e.color].c,30,1); shake(4);
   if(e.loot&&e.loot.length){ const room=handRoom(B.piles); B.piles.hand.push(...e.loot.slice(0,room)); B.piles.draw.push(...e.loot.slice(room)); floater('Got back '+e.loot.map(c=>c.card.name).join(', '),e.tile,'#39ff8a',true); e.loot=null; }   // a Cutpurse drops what it stole   // past a full hand, the rest go back on top of the deck
   if(e.def.mini&&typeof helpers==='function') for(const m of helpers(e)) if(m.hp>0) killEnemy(m);   // a miniboss's helpers fall with it
   if(typeof extraKill==='function') extraKill(e);
+  if(B.enemies.some(x=>x.def.boss)&&!alive().length&&Number.isInteger(B.wave)&&B.wave>=B.waves.length-1){
+    B.slowMo=.55; floater('FINISH!',e.tile,'#ffffff',true); ring(e.tile,'#ffffff',2.4,.7,10); shake(10); if(typeof arenaKick==='function') arenaKick(); }
   if(e.def.split){ const spots=around(e.tile).filter(t=>t.side==='e'&&!t.occ).slice(0,2);   // a Gloop splits in two
     if(!spots.length&&!e.tile.occ) spots.push(e.tile);
     spots.forEach(t=>{ const m=makeEnemy(e.def.split,t,B.depth); m.atkT+=1; B.enemies.push(m); }); }
@@ -793,7 +814,8 @@ function fireWand(charged){ if(B&&B.player){ B.player.poseT=B.time; B.player.pos
 const PACE=.7;
 function update(dt){
   const b=B; if(!b) return;
-  if(b.hitStop>0){ b.hitStop-=dt; dt*=.08; }   // a Counter Hit freezes the moment for a beat
+  if(b.hitStop>0){ b.hitStop-=dt; dt*=.08; }   // a Counter Hit, a kill or a WEAK hit freezes the moment for a beat
+  else if(b.slowMo>0){ b.slowMo-=dt; dt*=.25; }   // the killing blow of a boss fight plays in slow motion
   b.time+=dt;
   // Effects keep animating on the Custom screen, the fight itself is paused.
   for(const f of b.fx) f.t+=dt; b.fx=b.fx.filter(f=>f.t<f.life);
@@ -805,6 +827,7 @@ function update(dt){
   for(const q of b.parts){ q.t+=dt; q.vy-=(q.g==null?9:q.g)*dt; if(q.drag){ const d=Math.max(0,1-q.drag*dt); q.vx*=d; q.vz*=d; q.vy*=d; } if(q.spin) q.rot=(q.rot||0)+q.spin*dt; q.wx+=q.vx*dt; q.wz+=q.vz*dt; q.y=Math.max(0,q.y+q.vy*dt); } b.parts=b.parts.filter(q=>q.t<q.life);
   for(const t of TILES) t.flash=Math.max(0,t.flash-dt*3);
   if(b.phase==='custom') return;
+  if(b.phase==='fight') chainTick();
   // The fight runs at PACE speed (70%) so enemies, shots and attacks are easier to follow.
   // Your own moving, firing and charging stay at full speed.
   const rdt=dt; dt*=PACE;

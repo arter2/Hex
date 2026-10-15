@@ -162,7 +162,7 @@ function arenaBuild(depth,seed){ const A=arenaInit(); arenaClear(); const Ar=are
   A.area=Ar; A.boss=boss; A.depth=depth; A.grp=new THREE.Group(); A.units=new Map();
   for(const o of arenaBoard(A,Ar,R)) A.grp.add(o);
   A.grp.add(A.decal=arenaDecal(A));
-  A.voidWalls=false; A.flashAmb=0; A.tick=null; A.chasm=null;
+  A.voidWalls=false; A.flashAmb=0; A.tick=null; A.chasm=null; A.phaseCol=null; A.phaseK=0; A.phaseNow=0; A.phaseFlash=0; A.amb.color.set(0xffffff); A.sun.color.set(0xffffff);
   for(const o of arenaCave(A,Ar,R,boss)) A.grp.add(o);
   arenaProps(A,Ar,R,boss);
   if(A.voidWalls) A.grp.children.forEach(o=>{ if(o.isInstancedMesh||o.userData.caveFloor) o.visible=false; });
@@ -194,7 +194,13 @@ function arenaLights(T,dt){ const A=AR, p=B&&B.player; if(!A) return; const FL=X
   const d=A.cam.position.distanceTo(A.base.look), off=Math.max(0,d-19);
   const deep=(areaFloor(A.depth||1)-1)*2.5;   // each floor deeper in the area, the haze closes in a little
   if(A.scene.fog){ A.scene.fog.near=XLIT.fogNear+off-deep; A.scene.fog.far=Math.max(XLIT.fogNear+1,XLIT.fogFar)+off-deep*1.5; }
-  A.amb.intensity+=(A.flashAmb||0)*.8; if(A.tick) A.tick(T,dt||1/60); arChasmTick(T,dt||1/60); }
+  A.amb.intensity+=(A.flashAmb||0)*.8; if(A.tick) A.tick(T,dt||1/60); arChasmTick(T,dt||1/60);
+  // a boss's phase: the light turns toward its colour, a little more each phase, after a bright flash
+  if(A.phaseCol){ const s=dt||1/60; A.phaseNow+=(A.phaseK-A.phaseNow)*Math.min(1,s*1.5); A.phaseFlash=Math.max(0,A.phaseFlash-s);
+    A.amb.color.set(0xffffff).lerp(A.phaseCol,.6*A.phaseNow); A.sun.color.set(0xffffff).lerp(A.phaseCol,.45*A.phaseNow); A.amb.intensity*=1+.5*A.phaseNow; A.amb.intensity+=A.phaseFlash*1.4; } }
+function arenaPhase(col,ph){ const A=AR; if(!A) return; A.phaseCol=new THREE.Color(col); A.phaseK=Math.min(1,(ph-1)/2); A.phaseFlash=1; arenaKick(1); }
+// a camera swing for big moments (a boss phase, a finishing blow, a long chain), k from 0 to 1
+function arenaKick(k){ const A=AR; if(!A) return; A.shot.kick=Math.max(A.shot.kick||0,k==null?1:k); A.shot.kickDir=Math.random()<.5?-1:1; A.shot.punch=1; }
 
 function arenaDraw(dt,T){ const A=AR; if(!A||!A.grp||!A.w) return;
   // keep the 3D canvas exactly under the flat one (the HUD around it can change size without a resize)
@@ -227,11 +233,12 @@ function arenaCamera(dt,T){ const A=AR; if(!A) return; const c=A.cam, S=A.shot, 
   if(f){ const [wx,wz]=posOf(f.u); tgt.copy(arW(wx,0,wz)).sub(A.base.look).multiplyScalar(.06); tgt.y=0; }
   S.drift.lerp(tgt,held?k:k*.6);
   S.swing+=((f&&f.boss&&!held?Math.sin(T*1.3)*4:0)-S.swing)*(held?k:k*.5);
+  S.kick=held?0:Math.max(0,(S.kick||0)-dt/1.2); const kick=Math.sin(Math.min(1,S.kick)*Math.PI)*9*(S.kickDir||1);
   if(b&&!held) for(const fl of b.floaters||[]) if(fl.big&&fl.t<.05&&!fl._pun){ fl._pun=1; S.punch=1; }
   S.punch=held?0:Math.max(0,S.punch-dt/.4);
   // the base view, turned by the swing about the aim point, pulled in by the punch, slid by the drift
   const look=A.base.look.clone().add(S.drift), off=A.base.pos.clone().sub(A.base.look);
-  off.applyAxisAngle(new THREE.Vector3(0,1,0),S.swing*Math.PI/180); off.multiplyScalar(1/XLIT.camZoom);   // the debug menu's zoom
+  off.applyAxisAngle(new THREE.Vector3(0,1,0),(S.swing+kick)*Math.PI/180); off.multiplyScalar(1/XLIT.camZoom);   // the debug menu's zoom
   const pk=Math.sin(Math.min(1,S.punch)*Math.PI); off.multiplyScalar(1-.06*pk);
   // the fly-in: from high above and behind the enemy, easing into the base view
   if(S.fly<1){ const e=1-Math.pow(1-S.fly,3); off.lerpVectors(new THREE.Vector3(0,A.dist*.9,-A.dist*.55),off.clone(),e); }

@@ -589,7 +589,7 @@ function fight(depth,waves,xo){
     onTurn:n=>banner('Turn '+n,'#4fb3ff'),
     onBoss:(t,c,info)=>{ banner(t,c); if(info) tip(info); },
     onWave:i=>banner('Wave '+(i+1),'#ff5d6c'),
-    onCombo:label=>{ B.combos=(B.combos||0)+1; banner('✦ '+label.split(':')[0],'#ffe066'); },
+    onCombo:label=>{ B.combos=(B.combos||0)+1; B.hitStop=Math.max(B.hitStop||0,.09); if(typeof arenaKick==='function') arenaKick(.4); banner('✦ '+label.split(':')[0],'#ffe066'); },
     onRecipe:r=>{ const first=!(save.recipes||{})[r.id]; save.recipes=save.recipes||{}; save.recipes[r.id]=1; persist(); banner((first?'⚗ New recipe! ':'⚗ ')+r.name,'#39ff8a'); },
     onHero:c=>banner('♔ '+c.name.split(',')[0]+' joins the fight!','#ffe066'),
     onEnd:win=>win?victory():defeat(),
@@ -606,6 +606,7 @@ function victory(){
   const b=B, boss=b.enemies.some(e=>e.def.boss);
   const rw=battleRewards(b.enemies.filter(e=>!e.def.minion).map(e=>e.def.outlaw?e.weak:e.color),b.depth,boss,null,save.owned);
   if(b.bonusGold) rw.gold+=b.bonusGold;   // the Gilded Ruins' gold tiles
+  const rareX=typeof rareLoot==='function'?rareLoot(b,rw):null;   // a rare foe's great loot (rares.js)
   const outlaws=b.enemies.filter(e=>e.def.outlaw).length; if(outlaws) rw.gold=Math.round(rw.gold*(1+.2*outlaws));   // outlaws carry coin
   if(rw.gold) rw.gold=Math.round(rw.gold*(1+(gearMods(save).gold||0)));   // Ring of Fortune
   const xp=fightXp(b.enemies.map(e=>({minion:e.def.minion,boss:e.def.boss,mini:e.def.mini})),b.depth), lvUp=gainXp(save,xp);
@@ -616,7 +617,7 @@ function victory(){
   const depth=b.depth;
   const hero=rw.cards.find(c=>c.rarity==='hero');
   // a sealed pack, now and then: 2 area bosses in 5, 1 miniboss in 5 (opened before the victory screen)
-  const mini=!boss&&b.enemies.some(e=>e.def.mini), pack=typeof packReward==='function'&&!b.trial&&Math.random()<(boss?.4:mini?.2:0), packC=pack?packFor(depth):null;
+  const mini=!boss&&b.enemies.some(e=>e.def.mini), pack=typeof packReward==='function'&&!b.trial&&(!!rareX||Math.random()<(boss?.4:mini?.2:0)), packC=pack?packFor(depth):null;
   const got=[...rw.cards.map(c=>c.name),...(rw.gold?[rw.gold+' gold']:[]),...rw.items.map(k=>{ const l=lootLabel(save,k); return l.icon+' '+l.name; })];
   logCamp((boss?'Boss defeated':'Won')+' at depth '+depth+'.','win'); got.forEach(g=>logCamp('Found '+g.replace(/^[^A-Za-z0-9]+/u,'')+'.',/gold$/.test(g)?'gold':'loot'));
   loot.forEach(l=>{ if(l.res&&l.res.cursed) logCamp(l.res.msg,'curse'); });
@@ -626,7 +627,7 @@ function victory(){
   const show=()=>{
   if(bDone.length) setTimeout(()=>banner('📜 Contract complete!','#f2c94c'),300);
   if(mUp.length) setTimeout(()=>banner('★ '+cName(mUp[0].color)+' mastery '+mUp[0].level,COLORS[mUp[0].color].c),bDone.length?1900:300);
-  reveal(hero?'♔ A hero joins you!':boss?'Boss defeated!':'Victory!',(hero?hero.name+' answers your call. ':'')+(boss&&!b.trial?'The way down to '+areaOf(depth+1).name+' is open. ':'')+(b.explore?'Won in '+Math.round(b.time)+'s. ':'Depth '+depth+' cleared in '+Math.round(b.time)+'s. ')+(boss?'Boss rewards: ':'Your reward: ')+got.join(', ')+'.'+loot.map(l=>l.res&&l.res.cursed?' '+l.res.msg:l.res&&l.res.ok?' You put it on.':'').join('')+burnt,res,
+  reveal(hero?'♔ A hero joins you!':boss?'Boss defeated!':rareX?'★ Rare foe defeated!':b.rareFled?'It got away…':'Victory!',(hero?hero.name+' answers your call. ':'')+(rareX?'It leaves a hoard behind: +'+rareX.shards+' shards. ':b.rareFled?'The rare foe escaped with its loot. ':'')+(boss&&!b.trial?'The way down to '+areaOf(depth+1).name+' is open. ':'')+(b.explore?'Won in '+Math.round(b.time)+'s. ':'Depth '+depth+' cleared in '+Math.round(b.time)+'s. ')+(boss?'Boss rewards: ':'Your reward: ')+got.join(', ')+'.'+loot.map(l=>l.res&&l.res.cursed?' '+l.res.msg:l.res&&l.res.ok?' You put it on.':'').join('')+burnt,res,
     b.explore?[['Keep exploring',()=>{ const ruleOK=!!(b.rule&&b.rule.ok); B=null; resumeExplore(hpLeft,true,{ruleOK}); }]]
     :[['Camp',()=>{ B=null; pickDepth=depth+1; openCamp(); },true],['Depth '+(depth+1)+' →',()=>fight(depth+1)]],
     [{pic:'<b class="xpic">XP</b>',name:'+'+xp+' XP',text:lvUp?'Level '+save.level+'! +'+(lvUp*LEVEL_POINTS)+' stat points':xpLine()},...(rw.gold?[{pic:uiIcon('coin',64),name:rw.gold+' gold',text:'Spend it on packs in the shop'}]:[]),...rw.items.map(k=>Object.assign(lootLabel(save,k),{pic:lootPic(k)}))]);

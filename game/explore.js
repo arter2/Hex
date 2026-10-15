@@ -178,7 +178,7 @@ function buildFloor(depth,hp,opt){
   const nG=Math.min(open.length,(opt.branch?1:3)+Math.floor(depth/3));
   const rooms=open.slice().sort(()=>Math.random()-.5).filter(r=>r!==F.exit||!isBossDepth(depth)).slice(0,nG);
   for(const r of rooms){ const c=freeCell(r); if(c<0) continue; const wave=makeEncounter(depth)[0], ids=wave.slice(0,1+Math.floor(Math.random()*Math.min(3,wave.length)));
-    EX.groups.push(xGroup(ids,c,Math.random()<.45?'sleep':'wander')); }
+    const g=xGroup(ids,c,Math.random()<.45?'sleep':'wander'); if(ids.some(id=>ENEMY_DEFS[id]&&ENEMY_DEFS[id].rare)) Object.assign(g,{tagTxt:'★',tagCol:'#ffd166',state:'wander'}); EX.groups.push(g); }
   if(isBossDepth(depth)&&!opt.branch){ const c=xi(F.exit.cx-1,F.exit.cy); taken.add(c); EX.groups.push(Object.assign(xGroup([bossFor(depth)],c,'guard'),{boss:true})); }
   // most groups keep to their own room until they see you; from depth 3 one (two from depth 8)
   // goes looking for you instead. Vermin never hunt.

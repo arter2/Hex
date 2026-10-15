@@ -83,6 +83,8 @@ function evolve(e,ph){ e.phase=ph; if(ph>=3&&e.tile&&typeof palHas==='function'&
                treant:['','','Vines stir under you','The grove wakes'], wyrm:['','','It burrows','Molten core!'], roc:['','','It takes to the sky','The storm chains']};
   const txt=e.name+(ph===2?' II':' III')+' · '+lines[e.def.bossId][ph];
   floater(txt,e.tile||B.player.tile,COLORS[e.color].c,true); B.hooks.onBoss&&B.hooks.onBoss(txt,COLORS[e.color].c);
+  // a phase change is an event: the arena's light turns to the boss's colour, the camera swings, the moment freezes
+  B.hitStop=Math.max(B.hitStop||0,.3); shake(12); if(typeof arenaPhase==='function') arenaPhase(COLORS[e.color].c,ph);
   if(e.def.bossId==='glacier'&&ph===3){ for(const t of P_TILES) t.iceT=Math.max(t.iceT||0,999); summon(e,'mite',2); }
   if(e.def.bossId==='golem'&&ph>=2) e.reflect=true;
   if(e.def.bossId==='golem'&&ph===3){ e.def={...e.def, moves:['quake','quake','boulders'], rate:[2.6,3.4]}; }

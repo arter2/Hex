@@ -1344,3 +1344,13 @@ select.dbgsel{font:inherit; font-size:15px; background:#0b0e13; color:var(--text
 .mbadge[hidden]{display:none}
 body.ui-phone:not(.wide) #goChar{grid-column:1 / -1}
 .affin .arule{display:inline-block;margin-top:4px;color:#e6f4ff}
+
+/* the hit chain counter, under the top bar of the battle */
+.chainctr{position:absolute;left:50%;top:calc(100% + 10px);z-index:6;pointer-events:none;opacity:0;transform:translateX(-50%) scale(var(--s,1));transform-origin:50% 0;
+  font:700 26px var(--font-t,'Pixelify Sans',system-ui);color:#ffd166;text-shadow:2px 2px 0 #000,0 0 10px rgba(255,209,102,.6);white-space:nowrap;transition:opacity .2s}
+.chainctr.on{opacity:1}
+.chainctr.pop{animation:chainPop .18s ease-out}
+.chainctr.burst{font-size:34px;color:#fff;text-shadow:2px 2px 0 #000,0 0 16px #ffd166;animation:chainBurst 1.1s ease-out forwards}
+@keyframes chainPop{from{transform:translateX(-50%) scale(calc(var(--s,1) * 1.25))}to{transform:translateX(-50%) scale(var(--s,1))}}
+@keyframes chainBurst{0%{transform:translateX(-50%) scale(.6);opacity:1}25%{transform:translateX(-50%) scale(1.5)}70%{opacity:1}100%{transform:translateX(-50%) scale(1.2) translateY(-10px);opacity:0}}
+@media (prefers-reduced-motion:reduce){.chainctr.pop,.chainctr.burst{animation:none}}

@@ -62,6 +62,8 @@ function makeEncounter(depth){
   const A=typeof areaOf==='function'?areaOf(depth):null;
   const one=list=>{ const home=A?list.filter(id=>ENEMY_DEFS[id].color===A.color):[]; return home.length&&Math.random()<.5?pick(home):pick(list); };
   const out=[];
+  // now and then, past floor 4, the fight is one rare foe (rares.js)
+  if(!(typeof isBossDepth==='function'?isBossDepth(depth):depth%4===0)&&typeof rollRareEncounter==='function'){ const r=rollRareEncounter(depth); if(r) return r; }
   // an outlaw gang: a wave of outlaws (from depth 1), otherwise monsters with casters mixed in
   // a nest of vermin: one kind or a mix, a little bigger than other packs since each is weak
   if(Math.random()<verminChance(depth)){ const one=Math.random()<.6?pick(VERMIN):null;
@@ -84,7 +86,7 @@ function enemyDeck(color,depth){
    colour that beats it and resists its own (cards of its colour do 60%). Bosses keep their own rules. */
 const ELEM_WORD={fire:'Ember', frost:'Rime', storm:'Volt', verdant:'Moss', light:'Gilded', shadow:'Gloom'};
 const RESIST_MULT=.6;
-function enemyElement(d,depth){ if(d.boss||d.mini) return null;
+function enemyElement(d,depth){ if(d.boss||d.mini||d.rare) return null;
   const A=typeof areaOf==='function'?areaOf(depth):null, home=A&&SIX.includes(A.color)?A.color:null, x=Math.random();
   if(home&&x<.55) return home;
   if(x<.75) return pick(SIX);
@@ -139,6 +141,7 @@ function updateTerrain(dt){
   for(const e of alive()) groundTick(e,dt);
   for(const e of alive()) if(burning(e.tile)){ e.lavaAcc=(e.lavaAcc||0)+dt; if(e.lavaAcc>=.5){ e.lavaAcc=0; hitEnemy(e,3,null,{raw:true}); } }
   if(typeof arRuleTick==='function') arRuleTick(dt);
+  if(typeof rareTick==='function') rareTick(dt);
 }
 
 /* ---------------- enemy turns ---------------- */

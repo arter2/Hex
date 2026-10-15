@@ -274,14 +274,16 @@ function arShadowTex(){ if(AR_SHADOW) return AR_SHADOW; const c=document.createE
   g.addColorStop(0,'rgba(0,0,0,.6)'); g.addColorStop(.6,'rgba(0,0,0,.3)'); g.addColorStop(1,'rgba(0,0,0,0)'); x.fillStyle=g; x.fillRect(0,0,64,64); return AR_SHADOW=new THREE.CanvasTexture(c); }
 function arenaUnit(u,spr,o){ const A=AR; if(!A||!A.grp) return; let U=A.units.get(u);
   if(!U){ const geo=A.uGeo||(A.uGeo=new THREE.PlaneGeometry(1,1).translate(0,.5-1/32,0));
-    const body=new THREE.Mesh(geo,new THREE.MeshLambertMaterial({color:0x8c8c8c,alphaTest:.35,emissive:0xffffff,emissiveIntensity:.62,side:THREE.DoubleSide}));
+    // the body always sits in the see-through pass, after everything laid on the floor (tile glow 1, outlines 2,
+    // the floor decals 3, shadows 4): floor effects can then never draw over a unit, faded or not
+    const body=new THREE.Mesh(geo,new THREE.MeshLambertMaterial({color:0x8c8c8c,alphaTest:.35,emissive:0xffffff,emissiveIntensity:.62,side:THREE.DoubleSide,transparent:true})); body.renderOrder=4.5;
     const over=new THREE.Mesh(geo,new THREE.MeshBasicMaterial({transparent:true,depthWrite:false,fog:false})); over.position.z=.02; over.renderOrder=6; body.add(over);
     const shadow=new THREE.Mesh(A.sGeo||(A.sGeo=new THREE.PlaneGeometry(2,2).rotateX(-Math.PI/2)),new THREE.MeshBasicMaterial({map:arShadowTex(),transparent:true,depthWrite:false,fog:false}));
     shadow.renderOrder=4; const g=new THREE.Group(); g.add(body,shadow); A.grp.add(g); U={g,body,over,shadow}; A.units.set(u,U); }
   U.seen=A.frameN; U.g.visible=true;
   const [wx,wz]=posOf(u); U.g.position.copy(arW(wx,0,wz));
   const tex=arPic(spr.img,o.flip), m=U.body.material; if(m.map!==tex){ m.map=tex; m.emissiveMap=tex; m.needsUpdate=true; }
-  const a=o.alpha==null?1:o.alpha, tr=a<.999; if(m.transparent!==tr){ m.transparent=tr; m.needsUpdate=true; } m.opacity=a; m.depthWrite=!tr;
+  const a=o.alpha==null?1:o.alpha, tr=a<.999; m.opacity=a; m.depthWrite=!tr;
   U.body.scale.set(o.h,o.h,1); U.body.position.y=o.lift||0; U.body.quaternion.copy(A.cam.quaternion);
   // the flash (white) or the tint over the body
   const om=U.over.material; let ot=null, oa=0;

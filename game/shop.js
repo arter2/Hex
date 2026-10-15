@@ -120,13 +120,13 @@ function shopBuy(o){ if(save.gold<o.price) return; const st=shopStock(); save.go
 function shopSell(o){ if(shopSpare(o.id)<1) return; save.owned[o.id]--; if(save.owned[o.id]<=0) delete save.owned[o.id]; save.gold+=o.price; persist(); tip('Sold '+CARDS[o.id].name+' for '+o.price+' gold'); renderShop(); }
 
 /* ---------------- the back of a card ----------------
-   Pixel art at 50 x 70 art pixels (scaled up hard-edged), in three looks to choose from:
+   Pixel art at 50 x 70 art pixels (scaled up hard-edged). The Hex sigil is the back in use; two more looks are kept:
      sigil   deep navy, a gold frame with corner studs, the Hexmancers hex sigil (an eye in a hexagon)
              in the middle and a ring of small runes
      weave   violet, a lattice of fine diamonds, a four-point star in a gold ring
      stars   near-black, scattered stars and a hexagon traced in starlight, a thin silver frame */
 const CARD_BACK_STYLES=['sigil','weave','stars'];
-let CARD_BACK=(()=>{ try{ return localStorage.getItem('hexmancers-cardback')||'sigil'; }catch(e){ return 'sigil'; } })();
+const CARD_BACK='sigil';   // the chosen back (the other two stay drawn here, for later)
 const CARD_BACK_ART={};
 function cardBackArt(style){ style=style||CARD_BACK; if(CARD_BACK_ART[style]) return CARD_BACK_ART[style];
   const W=50, H=70, cv=document.createElement('canvas'); cv.width=W; cv.height=H; const x=cv.getContext('2d'), R=caveRng(style.length*97+13);
@@ -182,5 +182,3 @@ $('#shopSheetClose').onclick=()=>$('#shopSheet').classList.remove('on');
 // the Trading post: trading cards with other players is coming
 $('#goTrade').onclick=()=>tip('Trading post: trading cards with other players is coming soon.');
 
-// the debug menu's card back picker (until one is chosen for good)
-{ const sel=document.getElementById('dbgCardBack'); if(sel){ sel.value=CARD_BACK; sel.onchange=()=>{ CARD_BACK=sel.value; try{ localStorage.setItem('hexmancers-cardback',CARD_BACK); }catch(e){} }; } }

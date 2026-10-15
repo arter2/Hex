@@ -653,18 +653,18 @@ function leaveFight(){ paused=false; $('#custom').classList.remove('on');
   const burnt=settleCharges(); if(burnt) tip(burnt.trim());
   if(B.explore){ fleeCost('Fled a fight at depth '+B.depth); if(typeof stopExplore==='function'){ stopExplore(); EX=null; XPARK=null; if(typeof XRUN!=='undefined') XRUN=null; } }
   B=null; openCamp(); }
-/* Running from a fight. The Run button (top bar of the battle) asks what you drop to get away:
+/* Running from a fight. The Run button (on the Spell screen, beside its title) asks what you drop to get away:
    15% of your gold (at least 10), or a random card: one this run found if you are in the dungeon,
    otherwise a spare card no deck needs. In the dungeon you land back on the map with your run
    intact, and the foes you ran from stand dazed for 4 s; from a battle-only fight you go to camp.
-   Bosses and boss tests can't be run from. */
+   Run lives on the Spell (card) screen only. Bosses and boss tests can't be run from. */
 const runCost=()=>Math.max(10,Math.floor(save.gold*.15));
 function runLootPool(){ const out=[];
   if(B&&B.explore&&typeof XRUN!=='undefined'&&XRUN&&XRUN.snap) for(const id in save.owned){ if(CARDS[id]&&save.owned[id]-(XRUN.snap.owned[id]||0)>0&&CARDS[id].rarity!=='hero') out.push(id); }
   if(!out.length) for(const id in save.owned) if(CARDS[id]&&CARDS[id].rarity!=='hero'&&!CARDS[id].mastery&&spareCopies(save,id)>0) out.push(id);
   return out; }
-const runBlocked=()=>!B||B.phase!=='fight'?'':B.trial?'This is a test: end it from the pause menu':B.enemies.some(e=>e.def.boss&&e.hp>0)?'You can’t run from a boss':'';
-function openRun(){ if(!B||B.phase!=='fight') return; const why=runBlocked(); if(why) return tip(why);
+const runBlocked=()=>!B||(B.phase!=='fight'&&B.phase!=='custom')?'':B.trial?'This is a test: end it from the pause menu':B.enemies.some(e=>e.def.boss&&e.hp>0)?'You can’t run from a boss':'';
+function openRun(){ if(!B||B.phase!=='custom') return; const why=runBlocked(); if(why) return tip(why);
   paused=true; B.player.charging=false; $('#btnWand').classList.remove('charging');
   const cost=runCost(), pool=runLootPool(), found=B.explore&&typeof XRUN!=='undefined'&&XRUN&&XRUN.snap&&pool.some(id=>save.owned[id]-(XRUN.snap.owned[id]||0)>0);
   $('#runText').textContent=(B.explore?'You get away and land back in the dungeon; the foes are dazed for a moment.':'You get away and go back to camp.')+' Drop something to cover your escape:';
@@ -673,7 +673,8 @@ function openRun(){ if(!B||B.phase!=='fight') return; const why=runBlocked(); if
   if(g.disabled&&c.disabled){ g.disabled=false; g.innerHTML=uiIcon('coin',22)+' Drop all '+save.gold+' gold'; }
   $('#runSheet').classList.add('on'); }
 function closeRun(){ $('#runSheet').classList.remove('on'); paused=false; }
-function doRun(kind){ const b=B; $('#runSheet').classList.remove('on'); if(!b||b.phase!=='fight'){ paused=false; return; }
+function doRun(kind){ const b=B; $('#runSheet').classList.remove('on'); if(!b||b.phase!=='custom'){ paused=false; return; }
+  $('#custom').classList.remove('on');
   let lost;
   if(kind==='gold'){ const c=Math.min(save.gold,runCost()); save.gold-=c; lost=c+' gold'; }
   else { const id=pick(runLootPool()); save.owned[id]--; if(save.owned[id]<=0) delete save.owned[id];
@@ -722,7 +723,8 @@ function openPause(){ const w=pauseWhere(); if(!w||$('#pause').classList.contain
   $('#pauseHint').textContent=w==='map'?'Tap a spot to walk there, or hold to walk toward your finger. Search for secret doors and traps, and disarm a trap before you cross it.'
     :'Tap your side of the board to move and the enemy side to aim lobs. Hold Fire to charge a shot; open Spell when it glows.';
   const L=$('#mLeave'); delete L.dataset.armed;
-  L.textContent=w==='trial'?'End the test':w==='battle'||w==='xfight'?(runBlocked()?'Give up the fight':'Run from the fight'):onStairs?'Climb to camp':'Flee to camp · lose 10% gold';
+  L.textContent=w==='trial'?'End the test':w==='battle'||w==='xfight'?'Give up the fight':onStairs?'Climb to camp':'Flee to camp · lose 10% gold';
+  L.hidden=(w==='battle'||w==='xfight')&&!runBlocked();   // to get out of an ordinary fight, Run from the Spell screen
   pausePoint(); $('#pause').classList.add('on'); setTimeout(()=>$('#mResume').focus(),30); }
 // the save point line and buttons on the pause screen (savepoint.js)
 function pausePoint(){ const P=peekPoint(), why=canSavePoint(), S=$('#mSave'), L=$('#mLoad'); delete S.dataset.armed; delete L.dataset.armed; S.textContent='Save game'; L.textContent='Load save';
@@ -737,7 +739,6 @@ $('#mResume').onclick=closePause;
 $('#mSettings').onclick=()=>openSettings();
 $('#mLeave').onclick=e=>{ const w=pauseWhere(); if(!w) return closePause();
   if(w==='map'&&EX.pc===EX.up){ closePause(); return xToCamp(); }   // free from the stairs up, and the floor waits for you
-  if((w==='battle'||w==='xfight')&&!runBlocked()){ $('#pause').classList.remove('on'); return openRun(); }   // running costs gold or a card (openRun)
   armed(e.currentTarget,w==='battle'||w==='trial'?'Tap again to leave':'Tap again to flee',()=>{ $('#pause').classList.remove('on');
     if(w==='map'){ xPause(false); fleeCost('Fled depth '+EX.depth); stopExplore(); EX=null; XPARK=null; if(typeof XRUN!=='undefined') XRUN=null; openCamp(); }
     else leaveFight(); }); };

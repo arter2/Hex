@@ -1240,3 +1240,52 @@ body.lsS #custDrawer #custHand, body.wide #custDrawer #custHand{grid-row:auto; f
    moves (as the deck builder's library drawer does); brighter still while its grip is held */
 .cust-drawer{background:linear-gradient(rgba(70,100,140,.32),rgba(40,60,90,.2) 60px,rgba(30,45,70,.16)); border-radius:14px 14px 0 0; box-shadow:0 -4px 14px #0008, inset 0 1px 0 #7fd4ff33; padding:0 6px 6px; margin:0 -6px; transition:background .15s, box-shadow .15s;}
 .cust-drawer:has(.custgrip.on){background:linear-gradient(rgba(90,130,180,.42),rgba(50,75,110,.28) 70px,rgba(40,60,90,.22)); box-shadow:0 -4px 18px #000a, inset 0 1px 0 #7fd4ff88;}
+
+/* ---------- the shop: Madame Oriel's stall (shop.js) ---------- */
+.stall{position:relative; margin:0 0 8px; border:6px solid transparent; border-image:var(--px-frame) 10 round; background:#0b0d12;}
+.stall canvas{display:block; width:100%; height:auto; image-rendering:pixelated;}
+.stallname{position:absolute; left:50%; top:4px; transform:translateX(-50%); font:700 13px var(--font-b); color:#ffe9b0; text-shadow:2px 2px 0 #000; white-space:nowrap;}
+.stall .say{margin:0; padding:6px 10px; background:#151821; border-top:2px solid #2a2f3c; font-size:14px; color:#d8d4c8; font-style:italic;}
+.shoptabs{display:flex; gap:6px; margin:0 0 8px;}
+.shoptabs button{flex:1; padding:8px; font:700 15px var(--font-b); color:#a8b0bc; background:#141821; border:2px solid #2a2f3c; cursor:pointer;}
+.shoptabs button.on{color:#ffe066; border-color:#8a6a2a; background:#1d1a12;}
+.shopbody .shelf{margin:0 0 12px;}
+.shopbody .shelf h3{margin:0 0 4px; font-size:16px;}
+.shopbody .wares{display:grid; grid-template-columns:repeat(auto-fill,minmax(96px,1fr)); gap:8px; padding:8px 8px 14px; background:linear-gradient(transparent calc(100% - 12px),#5a3a22 calc(100% - 12px),#3a2414); box-shadow:inset 0 -2px 0 #7a4e2c;}
+.ware{position:relative; display:flex; flex-direction:column; align-items:center; gap:3px; padding:6px 4px 4px; background:rgba(12,14,20,.75); border:2px solid var(--wc,#3a4050); color:var(--text); cursor:pointer; min-width:0;}
+.ware .wpic{display:flex; align-items:flex-end; justify-content:center; height:92px; width:100%; overflow:hidden;}
+.ware .wpic canvas{image-rendering:pixelated; max-height:100%;}
+.ware .wpic .card{width:64px; pointer-events:none; transform-origin:bottom center;}
+.ware .wname{font:700 12px var(--font-b); text-align:center; line-height:1.1; max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.ware .wtag{display:inline-flex; align-items:center; gap:3px; padding:1px 6px; background:#e8dcc0; color:#2a1a0e; font:700 12px monospace; clip-path:polygon(6px 0,100% 0,100% 100%,6px 100%,0 50%);}
+.ware.cant .wtag{background:#8a7e68; color:#3a2a1a;}
+.ware.sold{opacity:.45;} .ware.sold .wtag{background:#4a4a4a; color:#ddd;}
+.ware:active{transform:translateY(2px);}
+/* the ware sheet */
+#shopSheet{align-items:flex-end;}
+.ssheet{max-width:480px; animation:sheetUp .2s ease-out;}
+@keyframes sheetUp{from{transform:translateY(40px); opacity:.4;} to{transform:none; opacity:1;}}
+.ssheet .sbody{display:flex; gap:12px; align-items:flex-start; text-align:left;}
+.ssheet .sbig{flex:none; width:128px; display:flex; justify-content:center;}
+.ssheet .sbig canvas{image-rendering:pixelated; width:120px; height:auto;}
+.ssheet .sbig .card{width:120px;} .ssheet .sbig svg,.ssheet .sbig img{width:96px; height:96px;}
+.ssheet .stext h2{margin:0 0 4px; font-size:18px;}
+/* opening a pack */
+#packOpen{background:rgba(0,0,0,.86); z-index:20;}
+.pobox{display:flex; flex-direction:column; align-items:center; gap:14px; width:100%;}
+.postage{height:220px; display:flex; align-items:center; justify-content:center;}
+.popack{image-rendering:pixelated; width:150px; animation:poShake .7s ease-in-out;}
+@keyframes poShake{0%,100%{transform:none;} 15%{transform:rotate(-6deg) scale(1.02);} 30%{transform:rotate(6deg);} 45%{transform:rotate(-8deg) scale(1.04);} 60%{transform:rotate(8deg);} 75%{transform:rotate(-4deg) scale(1.08);} 90%{transform:rotate(3deg) scale(1.1);}}
+#packOpen.burst .popack{animation:poBurst .38s ease-out forwards;}
+@keyframes poBurst{to{transform:scale(1.7); opacity:0; filter:brightness(3);}}
+#packOpen.burst .postage{height:0;}
+.pofan{display:flex; justify-content:center; gap:10px; min-height:200px; perspective:900px;}
+.poslot{position:relative; width:104px; aspect-ratio:5/7; transform-style:preserve-3d; transition:transform .45s ease; animation:poLand .4s ease-out backwards; animation-delay:calc((var(--i) + 1) * .08s);}
+@keyframes poLand{from{transform:translateY(-120px) rotate(calc(var(--i) * 25deg)) scale(.4); opacity:0;}}
+.poslot .poback,.poslot .poface{position:absolute; inset:0; backface-visibility:hidden;}
+.poslot .poback{background:repeating-linear-gradient(45deg,#2a1f3a 0 8px,#3a2a52 8px 16px); border:4px solid #c9a03a; box-shadow:0 0 0 2px #000;}
+.poslot .poface{transform:rotateY(180deg); width:100%;}
+.poslot.up{transform:rotateY(180deg);}
+.poslot.shine.up .poface{animation:poGlow 1.2s ease-in-out infinite alternate;}
+@keyframes poGlow{from{filter:drop-shadow(0 0 4px #ffe066);} to{filter:drop-shadow(0 0 14px #ffe066);}}
+#shopBuy{display:inline-flex; align-items:center; justify-content:center; gap:4px; white-space:nowrap;}

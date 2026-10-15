@@ -3,7 +3,7 @@
 // Card ids come from the templates; when they change, older saves start over (v4: 1,000 cards, ranks 1-12 everywhere).
 const SAVE_KEY='hexmancers-deck-v4';
 const DECK_SLOTS=5;
-const PACK_PRICE={booster:100, family:150};
+const PACK_PRICE={booster:60, family:90};   // 3 cards a pack
 
 function copyLimit(c){ return c.rarity==='legendary'||c.rarity==='hero'?RULES.legendaryCopies:RULES.copies; }
 
@@ -49,10 +49,13 @@ function battleRewards(enemyColors,depth,boss,rng,owned){
   return {cards:[], gold:0, items:[item()]};
 }
 // Five cards; the last is uncommon or better.
+// A pack is 3 cards, each rolled on its own (no slot is promised a rarity), so every pack is a real
+// gamble; very rarely one of them is a hero.
+const PACK_SIZE=3;
 function openPack(depth,color,rng){
   rng=rng||Math.random;
-  const out=[]; for(let i=0;i<5;i++) out.push(rollCard({depth,color,min:i===4?'uncommon':null},rng));
-  if(rng()<.01){ const h=rollHero(rng); if(!color||h.color===color) out[4]=h; }
+  const out=[]; for(let i=0;i<PACK_SIZE;i++) out.push(rollCard({depth,color},rng));
+  if(rng()<.01){ const h=rollHero(rng); if(!color||h.color===color) out[Math.floor(rng()*PACK_SIZE)]=h; }
   return out;
 }
 
@@ -148,4 +151,4 @@ function migrate(s){ s.items=s.items||{}; s.gear=s.gear||{}; if(typeof ensureSta
 function writeSave(s){ try{ localStorage.setItem(slotKey(SAVE_SLOT),JSON.stringify(s)); }catch(e){} }
 function clearSave(n){ try{ localStorage.removeItem(slotKey(n||SAVE_SLOT)); }catch(e){} }
 
-if(typeof module!=='undefined') module.exports={loadSave,SAVE_SLOTS,slotKey,setSlot,battleRewards,heroChance,rollHero,assignChargeUses,settleChargeUses,chargeLeft,SAVE_KEY,DECK_SLOTS,PACK_PRICE,copyLimit,rarityWeights,rollRarity,rollCard,battleGold,openPack,autoFill,newSave,addCards,ownedUnique};
+if(typeof module!=='undefined') module.exports={PACK_SIZE,loadSave,SAVE_SLOTS,slotKey,setSlot,battleRewards,heroChance,rollHero,assignChargeUses,settleChargeUses,chargeLeft,SAVE_KEY,DECK_SLOTS,PACK_PRICE,copyLimit,rarityWeights,rollRarity,rollCard,battleGold,openPack,autoFill,newSave,addCards,ownedUnique};

@@ -545,26 +545,6 @@ $('#chTestAll').onclick=()=>{ Object.keys(GEAR).forEach(id=>{ gearState(save).it
 $('#chTestScrolls').onclick=()=>{ addScroll(save,'enchant',2); addScroll(save,'purify',2); persist(); charMsg({ok:true,msg:'+2 of each scroll'}); };
 
 /* ---------------- shop ---------------- */
-function openShop(){
-  goldText($('#sGold'));
-  $('#buyBooster').textContent='Buy · '+PACK_PRICE.booster+' gold'; $('#buyBooster').disabled=save.gold<PACK_PRICE.booster;
-  const box=$('#famPacks'); box.innerHTML='';
-  for(const k of FAM_ORDER){ const b=document.createElement('button'); b.className='btn ghost fam'; b.style.setProperty('--c',COLORS[k].c);
-    b.innerHTML=`${COLORS[k].icon} ${COLORS[k].name}<small>${PACK_PRICE.family} gold</small>`; b.disabled=save.gold<PACK_PRICE.family; b.onclick=()=>buyPack(k); box.appendChild(b); }
-  renderScrollShop();
-  show('scrShop');
-}
-$('#buyBooster').onclick=()=>buyPack(null);
-function renderScrollShop(){ const box=$('#scrollShop'); box.innerHTML='';
-  for(const k in SCROLLS){ const sc=SCROLLS[k], b=document.createElement('button'); b.className='btn ghost fam'; b.style.setProperty('--c','#7fd4ff');
-    b.innerHTML=`${lootPic('scroll:'+k,32)} ${sc.name}<small>${sc.price} gold · you have ${gearState(save).scrolls[k]||0}</small>`; b.disabled=save.gold<sc.price;
-    b.onclick=()=>{ if(save.gold<sc.price) return; save.gold-=sc.price; addScroll(save,k); persist(); tip(sc.name+' bought'); openShop(); }; box.appendChild(b); } }
-function buyPack(color){
-  const price=color?PACK_PRICE.family:PACK_PRICE.booster; if(save.gold<price) return;
-  save.gold-=price; const res=addCards(save,openPack(save.deepest,color)); persist(); openShop();
-  reveal(color?COLORS[color].name+' pack':'Booster pack',res.filter(r=>r.isNew).length+' new cards',res,[['Continue',()=>{}]]);
-}
-
 /* ---------------- battle flow ---------------- */
 // xo (from the overworld): {hp, opening, explore} — wounds carry in and the fight returns to the map
 function fight(depth,waves,xo){

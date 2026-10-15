@@ -80,6 +80,7 @@
         <button id="goBuilder" class="btn ghost mi" data-icon="deck">Deck builder</button>
         <button id="goCollection" class="btn ghost mi" data-icon="cards">My cards</button>
         <button id="goShop" class="btn ghost mi" data-icon="bag">Shop</button>
+        <button id="goTrade" class="btn ghost mi" data-icon="cards">Trading post</button>
         <button id="goChar" class="btn ghost mi" data-icon="hero">Character</button>
         <button id="goSettings" class="btn ghost mi" data-icon="scroll">Settings</button>
       </div>
@@ -160,18 +161,9 @@
   <!-- shop -->
   <section id="scrShop" class="screen">
     <div class="bar"><button class="btn ghost back">←</button><h2>Shop</h2><span id="sGold" class="count gold"></span></div>
-    <div class="panel flat">
-      <h3>Booster pack</h3><p class="hint">5 cards from any family. The last card is uncommon or better.</p>
-      <button id="buyBooster" class="btn"></button>
-    </div>
-    <div class="panel flat">
-      <h3>Family pack</h3><p class="hint">5 cards from one family of your choice.</p>
-      <div id="famPacks" class="fams"></div>
-    </div>
-    <div class="panel flat">
-      <h3>Scrolls</h3><p class="hint">Use them on the Character screen.</p>
-      <div id="scrollShop" class="fams two"></div>
-    </div>
+    <div class="stall"><canvas id="shopScene" width="200" height="88"></canvas><div class="stallname">Madame Oriel's</div><p id="shopSay" class="say"></p></div>
+    <div id="shopTabs" class="shoptabs"><button data-tab="wares" class="on">Wares</button><button data-tab="sell">Sell</button></div>
+    <div id="shopBody" class="shopbody"></div>
   </section>
 
   <!-- battle -->
@@ -268,6 +260,8 @@
   </section>
 
   <!-- shared overlays -->
+  <div id="shopSheet" class="overlay sheet"><div class="panel ssheet"><div id="shopSheetBody" class="sbody"></div><div class="controls two"><button id="shopSheetClose" class="btn ghost">Back</button><button id="shopBuy" class="btn"></button></div></div></div>
+  <div id="packOpen" class="overlay"><div class="pobox"><div id="poStage" class="postage"></div><div id="poFan" class="pofan"></div><p class="hint center">Tap to turn them all</p><button id="poDone" class="btn" hidden>Collect</button></div></div>
   <!-- one pause menu for the dungeon and the battle -->
   <div id="pause" class="overlay">
     <div class="panel narrow">
@@ -474,6 +468,7 @@
 <script src="minibosses.js"></script>
 <script src="uikit.js"></script>
 <script src="ui.js"></script>
+<script src="shop.js"></script>
 <script src="keys.js"></script>
 <script src="three.min.js"></script>
 <script src="look.js"></script>

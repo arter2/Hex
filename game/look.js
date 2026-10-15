@@ -20,7 +20,9 @@ const XB={ ball:xSetF('hexmancers-xball',XB_DEF.ball), strip:xSetF('hexmancers-x
      darken toward their feet.
    - Screen-space AO: a pass over the depth of the whole frame shades every crease (xSSAO). */
 const xSetB=(k,d)=>{ try{ const v=localStorage.getItem(k); return v==null?d:v==='1'; }catch(e){ return d; } };
-const XLIT_DEF={ amb:1, sun:1, lamp:1, lampRad:1, lampY:2.6, torch:1, torchRad:1, flick:1, myGlow:1, fogNear:20, fogFar:46, texel:true, steps:0, nmap:true, nstrF:.35, nstrW:.35, ao:true, aoStr:1, aoRad:1, ssao:false, ssaoStr:1, ssaoRad:.6, fps:false, autoQ:true, camPitch:0, camFov:0, arWalls:true, pbr:false, pbrEnv:1, pbrR_gold:0.32, pbrM_gold:1, pbrR_steel:0.26, pbrM_steel:0.9, pbrR_gloss:0.14, pbrM_gloss:0, pbrR_ice:0.08, pbrM_ice:0, pbrR_slab:0.7, pbrM_slab:0, pbrRMap:1 };
+const XLIT_DEF={ amb:1, sun:1, lamp:1, lampRad:1, lampY:2.6, torch:1, torchRad:1, flick:1, myGlow:1, fogNear:20, fogFar:46, texel:true, steps:0, nmap:true, nstrF:.35, nstrW:.35, ao:true, aoStr:1, aoRad:1, ssao:false, ssaoStr:1, ssaoRad:.6, fps:false, autoQ:true, camPitch:0, camFov:0, arWalls:true, camZoom:1, pbr:false, pbrEnv:1, pbrR_gold:0.32, pbrM_gold:1, pbrR_steel:0.26, pbrM_steel:0.9, pbrR_gloss:0.14, pbrM_gloss:0, pbrR_ice:0.08, pbrM_ice:0, pbrR_slab:0.7, pbrM_slab:0, pbrRMap:1 };
+// the debug menu's pause: the game holds still (no moves, no clocks) but keeps being drawn; never saved
+const DBG={pause:false};
 const XLIT={}; for(const k in XLIT_DEF) XLIT[k]=typeof XLIT_DEF[k]==='boolean'?xSetB('hexmancers-xl-'+k,XLIT_DEF[k]):xSetF('hexmancers-xl-'+k,XLIT_DEF[k]);
 const XLITU={ uXSteps:{value:XLIT.steps}, uXAO:{value:XLIT.ao?XLIT.aoStr:0}, uXAOTex:{value:null}, uXFoot:{value:1.75*XLIT.aoRad}, uXAOScale:{value:96}, uXAOOrg:{value:new THREE.Vector2()} };
 const XLITMATS=new Set();
@@ -241,7 +243,7 @@ const XDBG=[   // [element id, object, key, saved as, decimals (null: a checkbox
   ['dbgAO',()=>XLIT,'ao','hexmancers-xl-ao',null,'lit'], ['dbgAOStr',()=>XLIT,'aoStr','hexmancers-xl-aoStr',2,'lit'], ['dbgAORad',()=>XLIT,'aoRad','hexmancers-xl-aoRad',2,'bake'],
   ['dbgSSAO',()=>XLIT,'ssao','hexmancers-xl-ssao',null,''], ['dbgSSAOStr',()=>XLIT,'ssaoStr','hexmancers-xl-ssaoStr',2,''], ['dbgSSAORad',()=>XLIT,'ssaoRad','hexmancers-xl-ssaoRad',2,''],
   ['setXBall',()=>XB,'ball','hexmancers-xball',2,''], ['setXStrip',()=>XB,'strip','hexmancers-xstrip',2,''],
-  ['dbgFps',()=>XLIT,'fps','hexmancers-xl-fps',null,'fps'], ['dbgAutoQ',()=>XLIT,'autoQ','hexmancers-xl-autoQ',null,''], ['dbgCamPitch',()=>XLIT,'camPitch','hexmancers-xl-camPitch',0,'cam'], ['dbgCamFov',()=>XLIT,'camFov','hexmancers-xl-camFov',0,'cam'], ['dbgArWalls',()=>XLIT,'arWalls','hexmancers-xl-arWalls',null,''], ['dbgPbr',()=>XLIT,'pbr','hexmancers-xl-pbr',null,'pbr'], ['dbgPbrEnv',()=>XLIT,'pbrEnv','hexmancers-xl-pbrEnv',2,'pbrEnv'], ['dbgPbrRMap',()=>XLIT,'pbrRMap','hexmancers-xl-pbrRMap',null,'pbrEnv'],
+  ['dbgFps',()=>XLIT,'fps','hexmancers-xl-fps',null,'fps'], ['dbgAutoQ',()=>XLIT,'autoQ','hexmancers-xl-autoQ',null,''], ['dbgCamPitch',()=>XLIT,'camPitch','hexmancers-xl-camPitch',0,'cam'], ['dbgCamFov',()=>XLIT,'camFov','hexmancers-xl-camFov',0,'cam'], ['dbgCamZoom',()=>XLIT,'camZoom','hexmancers-xl-camZoom',2,''], ['dbgArWalls',()=>XLIT,'arWalls','hexmancers-xl-arWalls',null,''], ['dbgPbr',()=>XLIT,'pbr','hexmancers-xl-pbr',null,'pbr'], ['dbgPbrEnv',()=>XLIT,'pbrEnv','hexmancers-xl-pbrEnv',2,'pbrEnv'], ['dbgPbrRMap',()=>XLIT,'pbrRMap','hexmancers-xl-pbrRMap',null,'pbrEnv'],
   ...['gold','steel','gloss','ice','slab'].flatMap(k=>[['dbgPbrR_'+k,()=>XLIT,'pbrR_'+k,'hexmancers-xl-pbrR_'+k,2,'pbrEnv'],['dbgPbrM_'+k,()=>XLIT,'pbrM_'+k,'hexmancers-xl-pbrM_'+k,2,'pbrEnv']]),
   ...[['dbgAmb','amb'],['dbgSun','sun'],['dbgLamp','lamp'],['dbgLampRad','lampRad'],['dbgLampY','lampY'],['dbgTorch','torch'],['dbgTorchRad','torchRad'],['dbgFlick','flick'],['dbgMyGlow','myGlow']].map(([id,k])=>[id,()=>XLIT,k,'hexmancers-xl-'+k,2,'']),
   ['dbgFogNear',()=>XLIT,'fogNear','hexmancers-xl-fogNear',0,''], ['dbgFogFar',()=>XLIT,'fogFar','hexmancers-xl-fogFar',0,''] ];
@@ -256,6 +258,7 @@ function xBindSliders(){ for(const [id,obj,k,key,dec,what] of XDBG){ const el=do
     show(); el.oninput=el.onchange=()=>{ O[k]=dec==null?el.checked:+el.value; show(); try{ localStorage.setItem(key,dec==null?(O[k]?'1':'0'):String(O[k])); }catch(e){} xDbgApply(what); }; }
   const box=document.getElementById('debug'); if(!box||xBindSliders.done) return; xBindSliders.done=1;
   document.getElementById('dbgClose').onclick=xDbgClose; xDbgGrip();
+  { const pz=document.getElementById('dbgPause'); if(pz){ pz.checked=DBG.pause; pz.onchange=()=>{ DBG.pause=pz.checked; document.body.classList.toggle('dbgPaused',DBG.pause); }; } }
   // while a slider is dragged the menu fades away but for that slider's row, so the whole field of play shows
   { let row=null, t=0; const end=()=>{ clearTimeout(t); t=setTimeout(()=>{ box.classList.remove('tuning'); if(row) row.classList.remove('dbgActive'); row=null; },250); };
     box.addEventListener('pointerdown',e=>{ const r=e.target.closest&&e.target.closest('input[type=range]'); if(!r) return; clearTimeout(t); if(row) row.classList.remove('dbgActive');

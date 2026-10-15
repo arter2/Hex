@@ -329,7 +329,7 @@ function cancelAttack(e){
 function killEnemy(e){
   e.hp=0; e.deathT=.5; if(e.tile.occ===e) e.tile.occ=null; cancelAttack(e);
   if(e.def.bossId&&typeof bossDown==='function') bossDown(e); burst(e.tile,COLORS[e.color].c,30,1); shake(4);
-  if(e.loot&&e.loot.length){ B.piles.hand.push(...e.loot); floater('Got back '+e.loot.map(c=>c.card.name).join(', '),e.tile,'#39ff8a',true); e.loot=null; }   // a Cutpurse drops what it stole
+  if(e.loot&&e.loot.length){ const room=handRoom(B.piles); B.piles.hand.push(...e.loot.slice(0,room)); B.piles.draw.push(...e.loot.slice(room)); floater('Got back '+e.loot.map(c=>c.card.name).join(', '),e.tile,'#39ff8a',true); e.loot=null; }   // a Cutpurse drops what it stole   // past a full hand, the rest go back on top of the deck
   if(e.def.mini&&typeof helpers==='function') for(const m of helpers(e)) if(m.hp>0) killEnemy(m);   // a miniboss's helpers fall with it
   if(typeof extraKill==='function') extraKill(e);
   if(e.def.split){ const spots=around(e.tile).filter(t=>t.side==='e'&&!t.occ).slice(0,2);   // a Gloop splits in two
@@ -454,7 +454,7 @@ const CAST={
   charge(c,p){ if(c.fx==='lob') lobFrom(p.tile,c,c.pow,0,.45,B.aim); else shoot(p.tile,lineTiles(p.tile,DIRS.E),{card:c,dmg:c.pow,from:'p'}); },
   utility(c,p){
     const pl=B.piles;
-    if(c.util==='search'){ const got=deckSearch(c); floater(got?'Found: '+got.card.name:'nothing found',p.tile,'#c08a55'); if(got) B.justDrawn=new Set([got.uid]); burst(p.tile,colorOf(c),10,1); return; }
+    if(c.util==='search'){ const got=deckSearch(c); floater(got?'Found: '+got.card.name:handRoom(B.piles)?'nothing found':'hand full',p.tile,'#c08a55'); if(got) B.justDrawn=new Set([got.uid]); burst(p.tile,colorOf(c),10,1); return; }
     if(c.util==='reshuffle'){ const r=reshuffleHand(pl); floater('Reshuffle: '+r.got.length+' new',p.tile,'#c08a55'); B.justDrawn=new Set(r.got.map(x=>x.uid)); burst(p.tile,colorOf(c),10,1); return; }
     if(c.util==='keep'){ const r=reshuffleHand(pl,B.keepSet||new Set()); B.keepSet=null; floater('Kept '+pl.hand.filter(x=>!r.got.includes(x)).length+', drew '+r.got.length,p.tile,'#c08a55'); B.justDrawn=new Set(r.got.map(x=>x.uid)); burst(p.tile,colorOf(c),10,1); return; }
     if(c.util==='recharge'){ const k=rechargeAll(pl,c.n); floater(k?'Recharged '+k+' card'+(k>1?'s':''):'no Charge cards',p.tile,'#c08a55'); burst(p.tile,colorOf(c),10,1); return; }
@@ -546,7 +546,7 @@ function useInstant(inst,choice){
   if(misfire(c,p)) return true;
   if(c.type==='tinker'){ const t=choice&&choice.target||bestTinkerTarget(); if(t) tinkerCard(c,t); else floater('nothing to tinker',p.tile,'#c08a55'); return true; }
   if(c.as==='utility'&&c.util==='keep') B.keepSet=choice&&choice.keep||new Set();
-  if(c.as==='utility'&&c.util==='search'&&c.find==='pick'){ const got=deckSearch(c,choice&&choice.uid); floater(got?'Found: '+got.card.name:'nothing found',p.tile,'#c08a55'); if(got) B.justDrawn=new Set([got.uid]); return true; }
+  if(c.as==='utility'&&c.util==='search'&&c.find==='pick'){ const got=deckSearch(c,choice&&choice.uid); floater(got?'Found: '+got.card.name:handRoom(B.piles)?'nothing found':'hand full',p.tile,'#c08a55'); if(got) B.justDrawn=new Set([got.uid]); return true; }
   if(c.self&&c.as!=='boon') payHp(c.self);
   CAST[c.as](c,p);
   return true;

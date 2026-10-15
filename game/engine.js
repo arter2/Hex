@@ -67,11 +67,17 @@ const canQueue=(p,inst)=>p.queue.length<slotsOf(p)&&!(inst&&isInstant(inst.card)
 // one rune (wild cards fit any) — what a Flush or a Straight needs
 const oneRune=cards=>new Set(cards.map(c=>c.code).filter(k=>k&&k!==WILD_RUNE)).size<=1;
 
+/* The hand holds 6 cards at most, at any time. Only a card in the hand that says so raises that
+   (handPlus: +n while it is in your hand). Cards that would go past it stay in the deck. */
+function handMax(p){ return RULES.hand+p.hand.reduce((a,c)=>a+(c.card.handPlus||0),0); }
+const handRoom=p=>Math.max(0,handMax(p)-p.hand.length);
 // Opening the Custom screen: queued cards not yet cast go back to the hand, then the hand refills to 6.
 function openCustom(p){
   p.hand=p.queue.filter(c=>!c.temp).concat(p.hand); p.queue=[];
   const drawn=[];
-  const size=RULES.hand+(p.bonus||0); p.bonus=0;
+  // queued cards not cast come back first; any past the limit go back on top of the deck, to be drawn next
+  while(p.hand.length>handMax(p)){ const c=p.hand.pop(); if(c.temp) continue; p.draw.push(c); }
+  const size=handMax(p); p.bonus=0;
   while(p.hand.length<size && p.draw.length){ const c=p.draw.pop(); p.hand.push(c); drawn.push(c); }
   // Rune Surge opens a 4th slot this turn; some gear can open it by chance (p.surge)
   p.surge=surgeRune(p.hand); p.slots=RULES.slots;
@@ -177,7 +183,7 @@ function castNext(p){
 }
 
 // Utility cards
-function drawCards(p,n){ const got=[]; while(got.length<n&&p.draw.length){ const c=p.draw.pop(); p.hand.push(c); got.push(c); } return got; }
+function drawCards(p,n){ const got=[]; n=Math.min(n,handRoom(p)); while(got.length<n&&p.draw.length){ const c=p.draw.pop(); p.hand.push(c); got.push(c); } return got; }
 function recallTop(p){ if(!p.draw.length||p.queue.length>=slotsOf(p)) return null; const c=p.draw.pop(); p.queue.push(c); return c; }
 function copyNext(p){ const c=p.queue[0]; if(!c||p.queue.length>=slotsOf(p)) return null;
   const cp={uid:p.uid++, card:c.card, temp:true}; p.queue.unshift(cp); return cp; }
@@ -186,13 +192,13 @@ function copyNext(p){ const c=p.queue[0]; if(!c||p.queue.length>=slotsOf(p)) ret
    Search: a random card of your deck that passes `test` goes to your hand.
    Reshuffle: the hand (but the cards you keep) goes back into the deck, the deck is shuffled,
    and you draw back up to a full hand. */
-function searchDeck(p,test){ const ok=p.draw.filter(c=>!test||test(c.card)); if(!ok.length) return null;
+function searchDeck(p,test){ if(!handRoom(p)) return null; const ok=p.draw.filter(c=>!test||test(c.card)); if(!ok.length) return null;
   const c=ok[Math.floor((p.rng||Math.random)()*ok.length)]; p.draw.splice(p.draw.indexOf(c),1); p.hand.push(c); return c; }
-function takeFromDeck(p,uid){ const i=p.draw.findIndex(c=>c.uid===uid); if(i<0) return null; const c=p.draw.splice(i,1)[0]; p.hand.push(c); return c; }
+function takeFromDeck(p,uid){ if(!handRoom(p)) return null; const i=p.draw.findIndex(c=>c.uid===uid); if(i<0) return null; const c=p.draw.splice(i,1)[0]; p.hand.push(c); return c; }
 function reshuffleHand(p,keep){ keep=keep||new Set();
   const back=p.hand.filter(c=>!keep.has(c.uid)&&!c.temp); p.hand=p.hand.filter(c=>keep.has(c.uid));
   p.draw.push(...back); shuffle(p.draw,p.rng);
-  const got=drawCards(p,Math.max(0,RULES.hand-p.hand.length)); return {back:back.length, got}; }
+  const got=drawCards(p,handRoom(p)); return {back:back.length, got}; }
 // Recharge: every Charge card in this battle gets uses back (never past its full count)
 function rechargeAll(p,n){ let k=0;
   for(const c of [...p.draw,...p.hand,...p.queue,...p.discard]) if(c.card.uses&&!c.temp){ const was=c.left==null?c.card.uses:c.left, now=Math.min(c.card.uses,was+n); if(now>was){ c.left=now; k++; } }
@@ -201,4 +207,4 @@ function rechargeAll(p,n){ let k=0;
 // Nothing left to draw, hold or cast: the fight continues with the wand only.
 function wandOnly(p){ return !p.draw.length && !p.hand.length && !p.queue.length; }
 
-if(typeof module!=='undefined') module.exports={isInstant,TAP_TYPES,searchDeck,takeFromDeck,reshuffleHand,rechargeAll,oneRune,slotsOf,surgeRune,runesFit,canQueue,findRecipe,RULES,detectCombos,placeCard,validateDeck,shuffle,createPiles,openCustom,commitCustom,toggleQueue,castNext,drawCards,recallTop,copyNext,wandOnly};
+if(typeof module!=='undefined') module.exports={handMax,handRoom,isInstant,TAP_TYPES,searchDeck,takeFromDeck,reshuffleHand,rechargeAll,oneRune,slotsOf,surgeRune,runesFit,canQueue,findRecipe,RULES,detectCombos,placeCard,validateDeck,shuffle,createPiles,openCustom,commitCustom,toggleQueue,castNext,drawCards,recallTop,copyNext,wandOnly};

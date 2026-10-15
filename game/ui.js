@@ -715,6 +715,31 @@ function recipesInHand(p){ const pool=[...p.queue,...p.hand].filter(c=>!c.temp),
     for(const id of r.cards){ const i=free.findIndex(c=>c.card.id===id); if(i<0){ used.length=0; break; } used.push(free.splice(i,1)[0].uid); }
     if(used.length===r.cards.length) out.push({r, uids:used}); }
   return out; }
+/* The hand's drawer on the Spell screen: drag the grip up or down for more or less hand (a tap switches
+   between a big hand and the usual split); hold it still for a moment, then slide sideways to make the
+   cards bigger (right) or smaller (left). Both are remembered in this browser. */
+(function(){ const grip=$('#custGrip'), dr=$('#custDrawer'), hand=$('#custHand'), pan=dr&&dr.parentElement; if(!grip) return;
+  const HK='hexmancers-custh', WK='hexmancers-custcw', get=k=>{ try{ const v=localStorage.getItem(k); return v==null?null:+v; }catch(e){ return null; } }, put=(k,v)=>{ try{ localStorage.setItem(k,String(v)); }catch(e){} };
+  const tall=()=>!document.body.classList.contains('lsS')&&!document.body.classList.contains('wide');
+  const setH=h=>{ const max=Math.max(140,pan.clientHeight-90); h=Math.round(Math.max(110,Math.min(max,h))); pan.style.setProperty('--custH',h+'px'); return h; };
+  const setW=w=>{ w=Math.round(Math.max(56,Math.min(240,w))); hand.style.setProperty('--cardw',w+'px'); return w; };   // the card grid's own width (style.css --cardw)
+  const fit=()=>{ const h=get(HK), w=get(WK); if(h!=null&&tall()) setH(h); if(w!=null) setW(w); };
+  new MutationObserver(()=>requestAnimationFrame(fit)).observe($('#custom'),{attributes:true,attributeFilter:['class']}); addEventListener('resize',fit);
+  const P=e=>typeof appXY==='function'?appXY(e.clientX,e.clientY):[e.clientX,e.clientY];
+  let d=null;
+  grip.addEventListener('pointerdown',e=>{ e.preventDefault(); e.stopPropagation(); try{ grip.setPointerCapture(e.pointerId); }catch(_){} const [x,y]=P(e);
+    const c=hand.querySelector('.card'); d={id:e.pointerId,x0:x,y0:y,h0:dr.offsetHeight,w0:c?c.offsetWidth:90,mode:null,t0:e.timeStamp};
+    d.timer=setTimeout(()=>{ if(d&&!d.mode){ grip.classList.add('sizing'); if(navigator.vibrate) try{ navigator.vibrate(12); }catch(_){} } },320); grip.classList.add('on'); });
+  grip.addEventListener('pointermove',e=>{ if(!d||e.pointerId!==d.id) return; const [x,y]=P(e), dx=x-d.x0, dy=y-d.y0;
+    // the first real move decides, by the time since the finger went down: held still first -> card size, else the drawer's height
+    if(!d.mode&&Math.hypot(dx,dy)>6){ d.mode=e.timeStamp-d.t0>=320?'size':tall()&&Math.abs(dy)>=Math.abs(dx)?'height':null; if(d.mode==='size') grip.classList.add('sizing'); clearTimeout(d.timer); }
+    if(d.mode==='height') setH(d.h0-dy);
+    else if(d.mode==='size') setW(d.w0+dx*.6); });
+  const end=e=>{ if(!d||e.pointerId!==d.id) return; const D=d; d=null; clearTimeout(D.timer); grip.classList.remove('on','sizing');
+    if(D.mode==='height') put(HK,dr.offsetHeight);
+    else if(D.mode==='size'){ const v=parseFloat(hand.style.getPropertyValue('--cardw')); if(v) put(WK,v); }
+    else if(!D.mode&&e.type==='pointerup'&&tall()&&e.timeStamp-D.t0<320){ const big=pan.clientHeight*.8; dr.style.transition='height .2s'; put(HK,setH(D.h0>big*.9?pan.clientHeight*.52:big)); setTimeout(()=>dr.style.transition='',250); } };
+  grip.addEventListener('pointerup',end); grip.addEventListener('pointercancel',end); grip.addEventListener('contextmenu',e=>e.preventDefault()); })();
 function renderCustom(){
   const p=B.piles, dealt=B.justDrawn||new Set();
   if(!$('#custom').classList.contains('on')){ custShownT=performance.now(); custPressed=false; }
@@ -734,7 +759,7 @@ function renderCustom(){
   for(let i=0;i<slots;i++){
     const inst=p.queue[i];
     if(inst){ const el=cardEl(inst.card,`<span class="ord">${i+1}</span>`+instBadge(inst,true)); el.dataset.zone='queue'; el.dataset.i=i; if(inCombo.has(inst.uid)) el.classList.add('combo'); dragCard(el,inst); q.appendChild(el); }
-    else { const s=document.createElement('div'); s.className='slot'; s.dataset.zone='queue'; s.dataset.i=i; s.innerHTML='Slot '+(i+1)+'<small>+1 draw next</small>'; q.appendChild(s); }
+    else { const s=document.createElement('div'); s.className='slot'; s.dataset.zone='queue'; s.dataset.i=i; s.innerHTML='Slot '+(i+1); q.appendChild(s); }
   }
   const h=$('#custHand'); h.innerHTML='';
   const base=combos.length, lay=handLayout(p), byUid=new Map(p.hand.map((c,i)=>[c.uid,i]));
@@ -756,7 +781,7 @@ function renderCustom(){
   $('#custAce').innerHTML=B.sidearm?`<b>♠ Sidearm:</b> ${esc(B.sidearm.name)} ×${B.sidearm.mult.toFixed(1)}`:(B.acePending||[]).length?`<b>♤</b> ${B.acePending.length} Ace Enchantment${B.acePending.length>1?'s':''} waiting for an Ace`:'';
   $('#custEmpty').textContent=wandOnly(p)?'Your deck is empty. Fight on with your wand!':!p.draw.length?'Deck empty: these are your last cards.':'';
   const empty=Math.max(0,RULES.slots-p.queue.length);
-  $('#btnFight').textContent=wandOnly(p)?'Fight!':'Fight!'+(empty?' (+'+empty+' draw next time)':'');
+  $('#btnFight').textContent='Fight!';   // (empty slots no longer draw extra: the hand holds 6 at most)
 }
 // small marks on a card in hand or queue: Charge uses left, a Tinker upgrade, an instant
 function instBadge(inst,inQueue){ let h='';
@@ -995,7 +1020,7 @@ function frame(now){
   requestAnimationFrame(frame);
   if(B&&$('#scrBattle').classList.contains('on')){
     if(!(View.w>0&&View.h>0)) resizeView();
-    if(!paused) update(dt);
+    if(!paused&&!DBG.pause) update(dt);   // the debug menu's pause holds the fight but keeps drawing it
     // The Custom screen never opens by itself: when the gauge is full the Custom button glows and you open it.
     try{ render(); }catch(e){ if(!View.errShown){ View.errShown=1; console.error('battle draw:',e); } View.cave=null; resizeView(); }   // e.g. the board was resized to nothing in the background: rebuild it next frame
     hud();

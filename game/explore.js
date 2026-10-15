@@ -1357,7 +1357,7 @@ function xLoopStart(){ cancelAnimationFrame(xRaf); xLast=performance.now(); xRaf
 function xLoop(ts){
   if(!EX||!EX.active||!$('#scrExplore').classList.contains('on')) return;
   const dt=Math.min(.1,(ts-xLast)/1000); xLast=ts;
-  if(!EX.busy&&!xPaused&&!EX.aim){ xMove(dt); if(!EX||!EX.active){ return; } xEnemies(dt); if(EX.active&&!EX.busy&&typeof xDungeonTick==='function') xDungeonTick(dt); if(EX.active&&!EX.busy) xTipScan(dt);
+  if(!EX.busy&&!xPaused&&!EX.aim&&!DBG.pause){ xMove(dt); if(!EX||!EX.active){ return; } xEnemies(dt); if(EX.active&&!EX.busy&&typeof xDungeonTick==='function') xDungeonTick(dt); if(EX.active&&!EX.busy) xTipScan(dt);
     EX.regenT+=dt; if(EX.regenT>3){ EX.regenT=0; if(EX.hp<xmaxHp()){ EX.hp++; xHud(); } } }
   xDoorTick(dt||.016); xDraw(ts/1000,dt); xRaf=requestAnimationFrame(xLoop);
 }
@@ -1372,7 +1372,7 @@ function xDraw(T,dt){
   G.lamp.position.set(EX.px,XLIT.lampY,EX.pz);
   // the camera looks in at about 48 degrees, so you see the faces of the walls, not just their tops
   // (tall screens pull back so a room still fits across); walls between it and you sink (xWallCut)
-  const k=Math.max(1,Math.min(1.8,.8/G.cam.aspect)), hgt=14*k, back=12.5*k;
+  const k=Math.max(1,Math.min(1.8,.8/G.cam.aspect))/XLIT.camZoom, hgt=14*k, back=12.5*k;   // the debug menu's zoom brings it closer
   let zk=1; if(EX.fighting&&EX.busy){ EX.engT=(EX.engT||0)+dt; const e=Math.min(1,EX.engT/.7); zk=1-.32*e*e; } else EX.engT=0;   // a fight starting: the camera rushes in
   const sh=EX.shakeT>0?(EX.shakeT-=dt,EX.shakeT*.9):0, jx=sh?(Math.random()-.5)*sh:0, jy=sh?(Math.random()-.5)*sh:0;
   // the camera eases after you and looks a little ahead of where you are walking

@@ -1217,3 +1217,22 @@ button[hidden]{display:none!important;}
 #debug.tuning .panel.debug{background:transparent; border-image-source:none; border-color:transparent; box-shadow:none;}
 #debug.tuning .panel.debug .dbgbody>*:not(.dbgActive), #debug.tuning .dbggrip{opacity:0;}
 #debug.tuning .srow.dbgActive{background:rgba(10,12,16,.82); border-radius:6px; padding-left:6px; padding-right:6px;}
+
+/* the debug menu's pause: a small tag so a held game is never mistaken for a hang */
+body.dbgPaused #app::after{content:'PAUSED (debug)'; position:absolute; right:8px; bottom:8px; z-index:12; padding:2px 8px; background:rgba(0,0,0,.7); color:#ffe066; font:700 13px monospace; border-radius:4px; pointer-events:none;}
+
+/* the Spell screen's hand in a drawer (ui.js): drag the grip up or down to give the hand more or less room
+   (a tap switches between a big hand and the usual split); hold it and slide sideways to make the cards
+   smaller or bigger. On a wide screen the hand keeps its own column and the grip only sizes the cards. */
+.cust-top{min-height:0;}
+.cust-drawer{display:flex; flex-direction:column; min-height:0;}
+.custgrip{margin:0 0 4px; height:24px; flex:none;}
+.custgrip::before{top:9px;}
+.custgrip.sizing::before{background:#ffe066; width:84px; margin-left:-42px;}
+body:not(.lsS):not(.wide) #custom .panel.custom{overflow:hidden!important; height:100%;}
+body:not(.lsS):not(.wide) #custom .cust-top{flex:1 1 auto; overflow-y:auto; -webkit-overflow-scrolling:touch;}
+body:not(.lsS):not(.wide) #custom .cust-drawer{flex:none; height:var(--custH,52%);}
+body:not(.lsS):not(.wide) #custom #custHand{flex:1; overflow-y:auto!important; margin-bottom:0; align-content:start;}
+body.lsS #custTop, body.wide #custTop{grid-column:1; grid-row:2;}
+body.lsS #custDrawer, body.wide #custDrawer{grid-column:2; grid-row:2; min-height:0; overflow:hidden;}
+body.lsS #custDrawer #custHand, body.wide #custDrawer #custHand{grid-row:auto; flex:1; overflow-y:auto!important;}

@@ -231,7 +231,7 @@ function arenaCamera(dt,T){ const A=AR; if(!A) return; const c=A.cam, S=A.shot, 
   S.punch=held?0:Math.max(0,S.punch-dt/.4);
   // the base view, turned by the swing about the aim point, pulled in by the punch, slid by the drift
   const look=A.base.look.clone().add(S.drift), off=A.base.pos.clone().sub(A.base.look);
-  off.applyAxisAngle(new THREE.Vector3(0,1,0),S.swing*Math.PI/180);
+  off.applyAxisAngle(new THREE.Vector3(0,1,0),S.swing*Math.PI/180); off.multiplyScalar(1/XLIT.camZoom);   // the debug menu's zoom
   const pk=Math.sin(Math.min(1,S.punch)*Math.PI); off.multiplyScalar(1-.06*pk);
   // the fly-in: from high above and behind the enemy, easing into the base view
   if(S.fly<1){ const e=1-Math.pow(1-S.fly,3); off.lerpVectors(new THREE.Vector3(0,A.dist*.9,-A.dist*.55),off.clone(),e); }

@@ -791,6 +791,16 @@ function springTrap(t,e){ const c=t.trap.card; t.trap=null; floater(c.name,t,col
 const WAND_BUFF={power:{c:'#ff6a3d', c2:'#ffd27a', size:1.55, trail:2.2, name:'Power'},
                  pact:{c:'#1a3fd1', c2:'#6fa8ff', size:1.3, trail:1.8, name:'Pact'},
                  courage:{c:'#f2c94c', c2:'#fff3b0', size:1.3, trail:1.6, name:'Courage'}};
+// The trail of a buffed shot: pixels laid by a 4x4 ordered dither, fading from the shot back to its
+// tail and thinning toward the edges, and swaying in a travelling wave, so it shimmers like heat in the air.
+const BAYER4=[0,8,2,10,12,4,14,6,3,11,1,9,15,7,13,5].map(v=>(v+.5)/16);
+function wandTrail(ctx,tx,ty,hx,hy,r,L,S){ const dx=hx-tx, dy=hy-ty, len=Math.hypot(dx,dy); if(len<2) return;
+  const px=Math.max(2,Math.round(S*.035)), ux=dx/len, uy=dy/len, nx=-uy, ny=ux, W=r*L.trail*.6, T=B.time, steps=Math.ceil(len/px);
+  for(let i=0;i<=steps;i++){ const t=i/steps, f=Math.pow(t,1.4), w=W*(.35+.65*t), sway=Math.sin(t*9-T*26)*r*.45*(1-t), cx=tx+dx*t+nx*sway, cy=ty+dy*t+ny*sway;
+    for(let j=-Math.ceil(w/px);j<=Math.ceil(w/px);j++){ const e=1-Math.abs(j*px)/(w+px); if(e<=0) continue; const a=f*e*(.75+.25*Math.sin(t*14-T*30+j));
+      const X=Math.round((cx+nx*j*px)/px), Y=Math.round((cy+ny*j*px)/px); if(a<=BAYER4[(Y&3)*4+(X&3)]) continue;
+      ctx.fillStyle=e>.6&&t>.45?L.c2:L.c; ctx.globalAlpha=Math.min(1,.35+.55*a); ctx.fillRect(X*px,Y*px,px,px); } }
+  ctx.globalAlpha=1; }
 const wandBuff=p=>!p?null:p.powerT>0?'power':p.pactT>0?'pact':p.courageT>0?'courage':null;
 function shoot(from,tiles,o){ B.shots.push(Object.assign({a:from,tiles,i:-1,stepT:0,speed:o.from==='p'?.045*((B.player&&B.player.shotSpeed)||1):.08,hit:new Set()},o)); }
 
@@ -1280,8 +1290,8 @@ function render(){
     if(s.buff&&WAND_BUFF[s.buff]){ const L=WAND_BUFF[s.buff], [tx,ty]=proj(from.wx,1,from.wz), wx=from.wx+(to.wx-from.wx)*k, wz=from.wz+(to.wz-from.wz)*k, [x,y]=proj(wx,1,wz), r=S*(s.big?.26:.13)*L.size;
       // a glowing trail back to the last tile, a hot core over a coloured halo
       ctx.save(); ctx.globalCompositeOperation='lighter'; ctx.lineCap='round';
-      ctx.strokeStyle=L.c; ctx.globalAlpha=.4; ctx.lineWidth=r*L.trail; ctx.beginPath(); ctx.moveTo(tx,ty); ctx.lineTo(x,y); ctx.stroke();
-      ctx.strokeStyle=L.c2; ctx.globalAlpha=.55; ctx.lineWidth=r*.7; ctx.beginPath(); ctx.moveTo(tx,ty); ctx.lineTo(x,y); ctx.stroke();
+      { const [ox,oy]=proj(s.a.wx,1,s.a.wz), back=Math.min(Math.hypot(x-ox,y-oy),S*2.2), dl=Math.hypot(x-tx,y-ty)||1, ux=(x-tx)/dl, uy=(y-ty)/dl;
+        wandTrail(ctx,x-ux*back,y-uy*back,x,y,r,L,S); }   // about two tiles of trail, never back past where it was fired
       const g=ctx.createRadialGradient(x,y,0,x,y,r*2.4); g.addColorStop(0,'#ffffff'); g.addColorStop(.3,L.c2); g.addColorStop(.6,L.c); g.addColorStop(1,'rgba(0,0,0,0)');
       ctx.globalAlpha=1; ctx.fillStyle=g; ctx.beginPath(); ctx.arc(x,y,r*2.4*(1+.12*Math.sin(B.time*40)),0,TAU); ctx.fill(); ctx.restore(); continue; }
     { const tc=s.card?colorOf(s.card):s.color||'#e6f4ff', [tx,ty]=proj(from.wx,1,from.wz), [hx,hy]=proj(from.wx+(to.wx-from.wx)*k,1,from.wz+(to.wz-from.wz)*k);

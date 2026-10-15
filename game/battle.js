@@ -181,11 +181,13 @@ function hitEnemy(e,base,card,opts){
   // marked on the board does double damage, stuns it and cancels the attack.
   const counter=!opts.raw&&card&&card.id!=='wand'&&e.hp>0&&!(e.stunT>0)&&!(e.freezeT>0)&&(e.windT>0||!!e.casting||B.teles.some(t=>t.owner===e&&!t.friendly));
   const weak=mult>=WEAK_MULT; if(counter) mult*=2;
+  if(weak&&!opts.raw&&typeof bountyWeak==='function') bountyWeak(e);
+  const resisted=!opts.raw&&card&&e.resist&&card.color===e.resist&&!e.reflect;
   let dmg=Math.max(1,Math.round(base*mult));
   if(counter) counterHit(e);
   if(e.barrier>0&&!opts.raw&&!opts.dig){ const a=Math.min(e.barrier,dmg); e.barrier-=a; dmg-=a; if(!dmg){ floater('🛡',e.tile,'#fff0b3'); return 0; } }
   e.hp-=dmg; e.hitT=.18; if(typeof palPlay==='function') palPlay(e,'hurt'); if(dmg>=40||weak) shake(dmg>=60?5:3);
-  floater(dmg+(weak?' WEAK!':''),e.tile,counter?'#ff8fa3':weak?'#ffe24d':opts.raw?'#b8ffb0':'#fff',weak||counter);
+  floater(dmg+(weak?' WEAK!':resisted?' resist':''),e.tile,counter?'#ff8fa3':weak?'#ffe24d':opts.raw?'#b8ffb0':'#fff',weak||counter);
   flash(e.tile,colorOf(card),.8);
   if(card&&!opts.raw) applyStatus(e,card);
   if(card&&!opts.raw) react(e,card,base);
@@ -303,6 +305,12 @@ function counterHit(e){
   spray(t,22,{shape:'spark',color:['#ffffff','#ff3b5c','#ffd0d8'],v0:4,v:10,up0:-1,up:5,g:0,drag:4,life:.35,s:3,add:true});
   B.counters=(B.counters||0)+1; soulGain(15);
 }
+/* Elements and you. Your deck's element is the colour that makes up at least 40% of it (none for a
+   mixed deck). Enemies of the colour that beats it hit you 30% harder; enemies it beats hit 20% softer. */
+const ELEM_HURT=1.3, ELEM_GUARD=.8;
+function deckElem(cards){ const n={}; let all=0; for(const c of cards){ if(!c) continue; all++; if(SIX.includes(c.color)) n[c.color]=(n[c.color]||0)+1; }
+  const top=SIX.slice().sort((a,b)=>(n[b]||0)-(n[a]||0))[0]; return all&&(n[top]||0)/all>=.4?top:null; }
+function playerElem(){ const b=B; if(!b) return null; if(b.pElem===undefined){ const P=b.piles||{}; b.pElem=deckElem([...(P.draw||[]),...(P.hand||[]),...(P.queue||[]),...(P.discard||[])].map(c=>c.card)); } return b.pElem; }
 const bossMult=(atk,e)=>typeof bossColorMult==='function'?bossColorMult(atk,e):colorMult(atk,e.color);
 function applyStatus(e,c){
   if(c.burn) e.burnT=Math.max(e.burnT,c.burn);
@@ -341,8 +349,10 @@ function killEnemy(e){
     B.phase='win'; B.player.charging=false; later(1.2,()=>B.hooks.onEnd&&B.hooks.onEnd(true)); }
 }
 function healPlayer(n,quiet){ const p=B.player; if(n<=0||p.hp<=0) return; const h=Math.min(n,p.maxHp-p.hp); p.hp+=h; if(h>0&&!quiet) floater('+'+h,p.tile,'#39ff8a'); }
-function hitPlayer(dmg){
+function hitPlayer(dmg,src){
   const p=B.player; if(B.phase!=='fight') return;
+  // your deck's element: an enemy whose colour beats it hits you harder; one it beats hits you softer
+  { const el=playerElem(), sc=src&&src.color; if(el&&sc&&SIX.includes(sc)){ if(BEATS[sc]===el){ dmg=Math.round(dmg*ELEM_HURT); floater('weak!',p.tile,COLORS[sc].c); } else if(BEATS[el]===sc) dmg=Math.max(1,Math.round(dmg*ELEM_GUARD)); } }
   if(p.invT>0){ floater('miss',p.tile,'#7fd4ff'); return; }
   if(p.dodge){ p.dodge=false; floater('dodge',p.tile,'#6fd6ff'); return; }
   if(p.dodgeChance&&Math.random()<p.dodgeChance){ floater('dodge',p.tile,'#9fdcff'); return; }
@@ -830,7 +840,7 @@ function update(dt){
         hitEnemy(o,s.dmg,s.card,{dig:s.dig}); if(s.push&&o.hp>0) shove(o,{push:1},s.dmg);
         if(s.pierce>0){ s.pierce--; s.dmg=Math.max(1,Math.round(s.dmg*(s.falloff||1))); burst(t,'#ffffff',4,.8); } else s.done=true; }
       else if(s.from==='p'&&o&&o.enemy){ hitBlock(o,s.dmg,null); s.done=true; }
-      else if(s.from==='e'&&o&&o.kind!=='enemy'&&!o.enemy){ palImpact(s.owner,t,s); if(o.kind==='player') hitPlayer(s.dmg); else hitBlock(o,s.dmg,s.owner); s.done=true; }
+      else if(s.from==='e'&&o&&o.kind!=='enemy'&&!o.enemy){ palImpact(s.owner,t,s); if(o.kind==='player') hitPlayer(s.dmg,s.owner); else hitBlock(o,s.dmg,s.owner); s.done=true; }
       if(s.done) burst(t,s.card?colorOf(s.card):s.color||'#fff',6,.8);
     }
   }
@@ -841,7 +851,7 @@ function update(dt){
   for(const tl of b.teles){ tl.t+=dt;
     if(tl.t>=tl.dur&&!tl.friendly){ if(tl.owner&&tl.owner.hp<=0) continue;
       for(const t of tl.tiles){ flash(t,'#ff5d6c',1); const o=t.occ; if(!o) continue;
-        if(o.kind==='player') hitPlayer(tl.dmg); else if(o.kind!=='enemy'&&o.kind!=='rock'&&!o.enemy) hitBlock(o,tl.dmg,tl.owner); }
+        if(o.kind==='player') hitPlayer(tl.dmg,tl.owner); else if(o.kind!=='enemy'&&o.kind!=='rock'&&!o.enemy) hitBlock(o,tl.dmg,tl.owner); }
       if(tl.after) tl.after(); } }
   b.teles=b.teles.filter(tl=>tl.t<tl.dur);
 
@@ -1304,7 +1314,7 @@ function drawSprite(ctx,u,T,S,o){
   const ap=H/(spr.hand?spr.img.width:32), seed=(u.tile?u.tile.q*3+u.tile.r:0), step=o.step!=null?o.step:o.bob?Math.floor(T*1.6+seed*.37)%2:0, lift=Math.round(step*ap);
   const bob=lift/S;
   // the 3D arena stands the sprite on its tile (arena.js); the flat canvas keeps only bars and labels
-  if(gl3()){ arenaUnit(u,spr,{flip:!!o.flip,flash:o.flash||0,tint:o.tint||null,alpha,h:2.7*sc,lift:step*2.7*sc/(spr.hand?spr.img.width:32),shadow:.62*sc}); return {x,top:y-30*k-bob*S,H,k}; }
+  if(gl3()){ arenaUnit(u,spr,{flip:!!o.flip,flash:o.flash||0,tint:o.tint||null,tintA:o.tintA,alpha,h:2.7*sc,lift:step*2.7*sc/(spr.hand?spr.img.width:32),shadow:.62*sc}); return {x,top:y-30*k-bob*S,H,k}; }
   ctx.imageSmoothingEnabled=false;
   // cast shadow: the silhouette laid flat on the ground toward the lower right
   ctx.save(); ctx.globalAlpha=.3*alpha; ctx.translate(x,y); ctx.transform(1,0,-.7,-.28,0,0); if(o.flip) ctx.scale(-1,1);
@@ -1313,7 +1323,7 @@ function drawSprite(ctx,u,T,S,o){
   ctx.save(); ctx.globalAlpha=alpha; ctx.translate(Math.round(x),Math.round(y)-lift); ctx.scale(o.flip?-1:1,1);
   ctx.drawImage(spr.img,-H/2,-31*k,H,H);
   if(o.flash){ ctx.globalAlpha=alpha*o.flash; ctx.drawImage(spr.wht,-H/2,-31*k,H,H); }
-  if(o.tint){ ctx.globalAlpha=alpha*.45; ctx.drawImage(tinted(spr.img,o.tint),-H/2,-31*k,H,H); }
+  if(o.tint){ ctx.globalAlpha=alpha*(o.tintA||.45); ctx.drawImage(tinted(spr.img,o.tint),-H/2,-31*k,H,H); }
   ctx.restore(); ctx.globalAlpha=1; ctx.imageSmoothingEnabled=true;
   return {x,top:y-30*k-bob*S,H,k};
 }
@@ -1348,7 +1358,7 @@ const DRAW={
     if(e.under) return;
     const dk=e.hp<=0?Math.max(0,e.deathT/.5):1, sc=(e.def.scale||1)*(e.def.minion?.7:1)*(e.hp<=0?.6+.4*dk:1)*(e.hitT>0?1.08:1);
     const col=COLORS[e.color].c, frozen=e.freezeT>0;
-    const r=drawSprite(ctx,e,T,S,{scale:sc,alpha:dk*(B.fog&&!e.def.boss?.4:1),flip:facing(e,B.player,FACES_LEFT.has(e.id)),bob:frozen?0:.05,flash:e.hitT>0?.85:0,tint:frozen?'#bfefff':e.stunT>0?'#fff39a':null});
+    const r=drawSprite(ctx,e,T,S,{scale:sc,alpha:dk*(B.fog&&!e.def.boss?.4:1),flip:facing(e,B.player,FACES_LEFT.has(e.id)),bob:frozen?0:.05,flash:e.hitT>0?.85:0,tint:frozen?'#bfefff':e.stunT>0?'#fff39a':e.elem?COLORS[e.color].c:null,tintA:frozen||e.stunT>0?.45:.3});
     const x=r.x, y=r.top+30*r.k, h=r.H*.45;
     ctx.globalAlpha=dk;
     if(e.markT>0&&e.mark){ const mc=COLORS[e.mark].c, pu=.55+.35*Math.sin(T*6); ctx.globalAlpha=dk*pu*Math.min(1,e.markT/1.2);   // element mark, waiting for its partner
@@ -1359,7 +1369,7 @@ const DRAW={
     bar(ctx,x,top,S*.9,e.hp/e.maxHp,'#ff5d6c');
     ctx.font='700 '+Math.round(S*.28)+'px "Pixelify Sans",system-ui,sans-serif'; ctx.textAlign='center';
     const st=[]; if(e.burnT>0) st.push('🔥'); if(frozen) st.push('❄️'); if(e.stunT>0) st.push('💫'); if(e.slowT>0) st.push('🐌'); if(e.poisonT>0) st.push('☠'); if(e.curseT>0) st.push('☾'); if(e.powerT>0) st.push('⬆'); if(e.confuseT>0) st.push('❓');
-    ctx.fillStyle='#fff'; ctx.fillText(e.name+'  weak: '+COLORS[e.weak||WEAK_TO[e.color]].icon+(e.resist?'  reflects: '+COLORS[e.resist].icon:''),x,top-4);
+    ctx.fillStyle='#fff'; ctx.fillText(e.name+'  weak: '+COLORS[e.weak||WEAK_TO[e.color]].icon+(e.resist?(e.reflect?'  reflects: ':'  resists: ')+COLORS[e.resist].icon:''),x,top-4);
     if(st.length) ctx.fillText(st.join(''),x,top-4-S*.3);
     if(e.casting){ const w=Math.max(S*1.6,ctx.measureText(e.casting.name).width+14), yy=top-S*.75;   // the card it is about to cast
       ctx.fillStyle='rgba(4,8,12,.9)'; ctx.strokeStyle=COLORS[e.casting.color].c; ctx.lineWidth=2; ctx.beginPath(); ctx.roundRect(x-w/2,yy-S*.32,w,S*.44,6); ctx.fill(); ctx.stroke();

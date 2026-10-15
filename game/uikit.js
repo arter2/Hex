@@ -112,6 +112,14 @@ const ICON={};
 const dark=(c,t=.45)=>mix(c,C.k,t), light=(c,t=.45)=>mix(c,C.white,t);
 const ICONS={
   coin(I){ I.ellipse(11.5,11.5,9,9,C.gold2); I.ellipse(11,11,8,8,C.gold); I.ring(11,11,6,6,1,C.gold2); I.rect(10,7,11,15,C.gold2); I.set(7,5,C.white); I.set(6,6,C.white); I.set(8,5,light(C.gold)); },
+  // a Hex Shard: a tall violet crystal with a smaller one leaning on it
+  shard(I){ const v=hx('#b98cff'); I.poly([[12,1],[18,8],[15,21],[9,21],[6,8]],dark(v,.35)); I.poly([[12,2],[16,8],[14,20],[12,20]],v); I.poly([[12,2],[12,20],[10,20],[7,8]],light(v));
+    I.poly([[5,12],[9,15],[8,22],[4,22],[2,16]],dark(v,.2)); I.line(5,13,4,21,light(v)); I.set(12,4,C.white); I.set(11,6,C.white); I.set(15,9,light(v)); },
+  // the Bounty board: a nailed plank with a pinned notice
+  bounty(I){ I.rect(2,4,21,18,C.wood2); I.rect(3,5,20,17,C.wood3); I.line(3,10,20,10,C.wood2); I.rect(5,19,6,23,C.wood2); I.rect(17,19,18,23,C.wood2);
+    I.rect(7,6,16,16,C.paper); I.rect(8,7,15,15,C.white); for(const y of [9,11,13]) I.line(9,y,14,y,C.paper2); I.set(11,6,FIRE[3]); I.set(12,6,FIRE[3]); },
+  // mastery: a gold star in a laurel
+  mastery(I,a){ I.ring(11.5,12,9,9,1.2,dark(a,.3)); I.poly([[12,3],[14,9],[20,9],[15,13],[17,20],[12,16],[7,20],[9,13],[4,9],[10,9]],a); I.poly([[12,5],[13,9],[12,14]],light(a)); I.set(12,6,C.white); },
   deck(I){ I.rect(8,2,19,19,C.deep); I.rect(9,3,18,18,C.deep2); I.rect(9,3,18,3,C.blue3); I.rect(3,5,14,22,C.paper); I.rect(4,6,13,21,C.white); I.rect(5,7,12,20,C.paper);
     I.line(8,9,8,18,C.blue3); I.line(5,13,11,13,C.blue3); I.set(8,13,C.blue); },
   cards(I){ [[1,1,C.blue],[13,1,C.gold],[1,13,C.neon],[13,13,FIRE[3]]].forEach(([x,y,c])=>{ I.rect(x,y,x+9,y+9,C.paper); I.rect(x+1,y+1,x+8,y+8,C.white); I.rect(x+3,y+3,x+6,y+6,c); I.set(x+3,y+3,light(c)); }); },

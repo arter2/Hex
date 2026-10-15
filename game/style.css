@@ -1292,3 +1292,54 @@ body.lsS #custDrawer #custHand, body.wide #custDrawer #custHand{grid-row:auto; f
 #shopBuy{display:inline-flex; align-items:center; justify-content:center; gap:4px; white-space:nowrap;}
 
 select.dbgsel{font:inherit; font-size:15px; background:#0b0e13; color:var(--text); border:2px solid #4a586c; padding:4px 6px; min-width:130px;}
+
+/* shards on the card detail */
+.dtshard{display:grid;gap:8px;margin:6px 0 10px}
+.dtshard .shardline{margin:0;display:flex;align-items:center;gap:6px;justify-content:center;color:#d9c8ff;font-size:14px}
+.dtshard .row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.dtshard .btn[disabled]{opacity:.45}
+.count .pxi{vertical-align:-2px}
+.campshard{margin-left:10px;display:inline-flex;align-items:center;gap:2px}
+.affin{margin:4px 0 0;font-size:14px;line-height:1.35;color:#c9d2da;text-align:center}
+.affin .bad{color:#ff8f8f} .affin .good{color:#8fffb0}
+
+/* Bounty board and Mastery */
+#scrBounty,#scrMastery{max-width:760px;margin:0 auto;padding-bottom:90px}
+.bhint{margin:4px 12px 10px}
+.mbadge{display:inline-grid;place-items:center;min-width:22px;height:22px;padding:0 5px;margin-left:auto;border-radius:11px;background:#f2c94c;color:#1a1408;font:700 14px var(--font-t,system-ui)}
+.bountylist,.masterylist,.setlist{display:grid;gap:10px;padding:0 10px}
+.bounty,.mrow,.setrow{--c:#c9b6ff;background:rgba(14,22,34,.85);border:2px solid #2a3a52;border-left:5px solid var(--c);border-radius:8px;padding:10px 12px;display:grid;gap:8px}
+.bounty.done{border-color:#f2c94c;box-shadow:0 0 14px rgba(242,201,76,.35)}
+.btext{margin:0;font-size:17px;line-height:1.35;color:#eef3f6}
+.bprog{position:relative;height:16px;background:#0a1018;border:1px solid #2a3a52;border-radius:8px;overflow:hidden}
+.bprog i{position:absolute;inset:0 auto 0 0;background:var(--c);opacity:.75}
+.bprog span{position:relative;display:block;text-align:center;font-size:12px;line-height:16px;color:#fff;text-shadow:1px 1px 0 #000}
+.bcheck{margin:0;font-size:13px} .bcheck.ok{color:#8fffb0} .bcheck.no{color:#ffb38f}
+.breward,.setfoot{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.bchip{display:inline-flex;align-items:center;gap:3px;padding:2px 8px;border-radius:12px;background:#0a1018;border:1px solid #2a3a52;font-size:13px;color:#e6edf2}
+.bchip.pack{border-color:var(--c);color:var(--c)}
+.bbtns{display:flex;gap:8px}
+.mhead{display:flex;align-items:center;gap:8px;font-size:18px} .mhead .mlv{margin-left:auto;color:#c9d2da;font-size:14px}
+.mnext{margin:0;font-size:13px;color:#c9d2da}
+.mcards{display:flex;gap:6px;overflow-x:auto} .mcards .card{width:var(--cardw,92px);flex:none}
+.mpacks{justify-self:start}
+.msub{margin:18px 12px 0;font:400 20px var(--font-t,system-ui);color:#eef3f6}
+.mbacks{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end}
+.mbacks .hint{flex-basis:100%;margin:0}
+.mback{display:grid;justify-items:center;gap:4px;background:none;border:2px solid transparent;border-radius:8px;padding:4px;color:#e6edf2;font-size:12px;cursor:pointer}
+.mback img{width:50px;height:70px;image-rendering:pixelated}
+.mback.on{border-color:#f2c94c} .mback.locked img{filter:grayscale(1) brightness(.45)}
+.settabs{display:flex;flex-wrap:wrap;gap:6px}
+.settabs .chip{border-color:var(--c)}
+.sethead{display:flex;justify-content:space-between;font-size:15px}
+.setcards{display:flex;flex-wrap:wrap;gap:4px}
+.setcards .sc{font-size:11px;padding:1px 6px;border-radius:9px;background:#0a1018;color:#6c7884;border:1px solid #1e2a3a}
+.setcards .sc.own{color:#eef3f6;border-color:var(--c)}
+.setrow.ready{border-color:#f2c94c} .setrow.done{opacity:.7}
+.setfoot .btn{margin-left:auto}
+.setfoot .good{color:#8fffb0}
+/* mastery cards and mastered colours */
+.card.mcard{box-shadow:0 0 0 2px #e7c9ff,0 0 12px rgba(200,150,255,.55)}
+.card.mframe{box-shadow:0 0 0 3px #f2c94c,0 0 10px rgba(242,201,76,.5)}
+.mbadge[hidden]{display:none}
+body.ui-phone:not(.wide) #goChar{grid-column:1 / -1}

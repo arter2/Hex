@@ -126,9 +126,9 @@ function shopSell(o){ if(shopSpare(o.id)<1) return; save.owned[o.id]--; if(save.
      weave   violet, a lattice of fine diamonds, a four-point star in a gold ring
      stars   near-black, scattered stars and a hexagon traced in starlight, a thin silver frame */
 const CARD_BACK_STYLES=['sigil','weave','stars'];
-const CARD_BACK='sigil';   // the chosen back (the other two stay drawn here, for later)
+const CARD_BACK='sigil';   // the starting back; Arcane weave and Starfield unlock with finished card sets (mastery.js)
 const CARD_BACK_ART={};
-function cardBackArt(style){ style=style||CARD_BACK; if(CARD_BACK_ART[style]) return CARD_BACK_ART[style];
+function cardBackArt(style){ style=style||(typeof save!=='undefined'&&save&&save.back)||CARD_BACK; if(CARD_BACK_ART[style]) return CARD_BACK_ART[style];
   const W=50, H=70, cv=document.createElement('canvas'); cv.width=W; cv.height=H; const x=cv.getContext('2d'), R=caveRng(style.length*97+13);
   const px=(a,b,c)=>{ x.fillStyle=c; x.fillRect(a,b,1,1); }, rect=(a,b,w,h,c)=>{ x.fillStyle=c; x.fillRect(a,b,w,h); };
   const hex=(cx,cy,r,c,fill)=>{ x.beginPath(); for(let i=0;i<6;i++){ const a=Math.PI/6+i*Math.PI/3; x.lineTo(Math.round(cx+Math.cos(a)*r)+.5,Math.round(cy+Math.sin(a)*r)+.5); } x.closePath(); if(fill){ x.fillStyle=fill; x.fill(); } x.strokeStyle=c; x.lineWidth=1; x.stroke(); };

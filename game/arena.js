@@ -270,7 +270,7 @@ function arenaUnit(u,spr,o){ const A=AR; if(!A||!A.grp) return; let U=A.units.ge
   U.body.scale.set(o.h,o.h,1); U.body.position.y=o.lift||0; U.body.quaternion.copy(A.cam.quaternion);
   // the flash (white) or the tint over the body
   const om=U.over.material; let ot=null, oa=0;
-  if(o.flash>0){ ot=arPic(spr.wht,o.flip); oa=Math.min(1,o.flash)*a; } else if(o.tint){ ot=arPic(tinted(spr.img,o.tint),o.flip); oa=.45*a; }
+  if(o.flash>0){ ot=arPic(spr.wht,o.flip); oa=Math.min(1,o.flash)*a; } else if(o.tint){ ot=arPic(tinted(spr.img,o.tint),o.flip); oa=(o.tintA||.45)*a; }
   U.over.visible=!!ot; if(ot&&om.map!==ot){ om.map=ot; om.needsUpdate=true; } om.opacity=oa;
   U.shadow.scale.set(o.shadow,1,o.shadow); U.shadow.position.y=.035; U.shadow.material.opacity=a; }
 // rocks and card walls: lit blocks standing on their tiles, in the area's stone or the card's colour

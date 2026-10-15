@@ -78,6 +78,19 @@ function enemyDeck(color,depth){
   const pool=CARD_LIST.filter(c=>c.color===color&&ENEMY_CARD_TYPES.includes(c.type)&&rar.includes(c.rarity));
   return Array.from({length:8},()=>pick(pool));
 }
+/* Elemental versions. Any enemy can come in any of the six elements: a Rime Rat, a Gloom Bandit, an
+   Ember Gloop. In an area, most enemies take its element (so the Frozen Deeps are full of frost foes,
+   weak to Storm and resisting Frost); some take another. An enemy of an element is weak to the
+   colour that beats it and resists its own (cards of its colour do 60%). Bosses keep their own rules. */
+const ELEM_WORD={fire:'Ember', frost:'Rime', storm:'Volt', verdant:'Moss', light:'Gilded', shadow:'Gloom'};
+const RESIST_MULT=.6;
+function enemyElement(d,depth){ if(d.boss||d.mini) return null;
+  const A=typeof areaOf==='function'?areaOf(depth):null, home=A&&SIX.includes(A.color)?A.color:null, x=Math.random();
+  if(home&&x<.55) return home;
+  if(x<.75) return pick(SIX);
+  return SIX.includes(d.color)?d.color:pick(SIX); }
+// "Frost Mite" becomes "Ember Mite": the old colour word goes, the new one comes in front
+function elemName(d,el){ const w=d.name.split(' '); return ELEM_WORD[el]+' '+(SIX.includes(d.color)&&w.length>1?w.slice(1).join(' '):d.name); }
 function makeEnemy(id,t,depth){
   // HP grows 13% a depth; past depth 12 a boss's growth tapers (−2.5% a depth, at most −30%) so deep
   // boss floors do not turn into long damage sponges
@@ -86,6 +99,8 @@ function makeEnemy(id,t,depth){
            tile:t, atkT:rnd(1.8,3.2), moveT:rnd(.8,1.8), windT:0, burnT:0, burnAcc:0, freezeT:0, stunT:0, slowT:0, poisonT:0, poisonAmt:0, curseT:0, hitT:0,
            barrier:0, powerT:0, castT:0, casting:null, weak:d.weak||null, nextMove:pick(d.moves), deck:d.deck?enemyDeck(d.color,depth):null, deckCd:rnd(3,5)};
   if(d.collector) e.deck=[];   // a Card Collector's deck is whatever it takes from you
+  const el=enemyElement(d,depth);
+  if(el){ e.elem=el!==d.color||!SIX.includes(d.color); e.color=el; e.weak=WEAK_TO[el]; e.resist=el; if(e.elem) e.name=elemName(d,el); if(d.deck) e.deck=enemyDeck(el,depth); }
   t.occ=e; return e;
 }
 const openEnemyTiles=()=>E_TILES.filter(t=>!t.occ&&t.terrain!=='lava');

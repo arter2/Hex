@@ -72,6 +72,7 @@
       <div class="panel depthbox">
         <div class="drow"><span><span id="campDeck"></span> <span id="campDeckCount" class="count"></span></span><span id="campBoss"></span></div>
         <p id="campDeckErr" class="hint warn"></p>
+        <p id="campAffinity" class="affin"></p>
         <canvas id="depthMap"></canvas>
         <div class="depthpick"><button id="depthDown" class="btn ghost sq" aria-label="Shallower">◄</button><button id="btnDescend" class="btn big"></button><button id="depthUp" class="btn ghost sq" aria-label="Deeper">►</button></div>
         <button id="btnQuick" class="btn ghost quick">⚔ Battle only <small>skip the dungeon, fight straight away</small></button>
@@ -81,6 +82,8 @@
         <button id="goCollection" class="btn ghost mi" data-icon="cards">My cards</button>
         <button id="goShop" class="btn ghost mi" data-icon="bag">Shop</button>
         <button id="goTrade" class="btn ghost mi" data-icon="cards">Trading post</button>
+        <button id="goBounty" class="btn ghost mi" data-icon="bounty">Bounty board<b id="bountyBadge" class="mbadge" hidden></b></button>
+        <button id="goMastery" class="btn ghost mi" data-icon="mastery">Mastery</button>
         <button id="goChar" class="btn ghost mi" data-icon="hero">Character</button>
         <button id="goSettings" class="btn ghost mi" data-icon="scroll">Settings</button>
       </div>
@@ -159,6 +162,19 @@
   </section>
 
   <!-- shop -->
+  <section id="scrBounty" class="screen">
+    <div class="bar"><button class="btn ghost back">←</button><h2>Bounty board</h2><span id="bShards" class="count"></span></div>
+    <p class="hint bhint">Contracts stay until you finish them. A fight counts for a contract when the deck you fight with meets it.</p>
+    <div id="bountyList" class="bountylist"></div>
+  </section>
+  <section id="scrMastery" class="screen">
+    <div class="bar"><button class="btn ghost back">←</button><h2>Mastery</h2><span id="mShards" class="count"></span></div>
+    <p class="hint bhint">Win fights to master the colours in your deck. Each colour has 10 levels.</p>
+    <div id="masteryList" class="masterylist"></div>
+    <h3 class="msub">Card sets</h3>
+    <p class="hint bhint">Own every card in a set for its reward.</p>
+    <div id="setList" class="setlist"></div>
+  </section>
   <section id="scrShop" class="screen">
     <div class="bar"><button class="btn ghost back">←</button><h2>Shop</h2><span id="sGold" class="count gold"></span></div>
     <div class="stall"><canvas id="shopScene" width="200" height="88"></canvas><div class="stallname">Madame Oriel's</div><p id="shopSay" class="say"></p></div>
@@ -309,6 +325,7 @@
     <div class="panel narrow">
       <div id="dtCard"></div>
       <p id="dtInfo" class="hint"></p>
+      <div id="dtShard" class="dtshard" hidden></div>
       <button id="dtClose" class="btn ghost">Close</button>
     </div>
   </div>
@@ -469,6 +486,8 @@
 <script src="uikit.js"></script>
 <script src="ui.js"></script>
 <script src="shop.js"></script>
+<script src="bounty.js"></script>
+<script src="mastery.js"></script>
 <script src="keys.js"></script>
 <script src="three.min.js"></script>
 <script src="look.js"></script>

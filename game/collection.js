@@ -101,6 +101,23 @@ function newSave(starter){
   const sv={v:1, gold:100, depth:1, deepest:1, owned, seen:Object.assign({},owned), decks, active:0, wins:0, items:{basic_wand:1}, gear:{weapon:'basic_wand'}, heroCards:1};
   giveStarterHeroes(sv); return sv;
 }
+/* Shards. Break a spare card (one that no deck needs) for shards, and spend shards to craft any
+   card you have seen. Breaking is always your choice; nothing turns to shards on its own.
+   Heroes and recipe cards can't be broken or crafted. [break for, craft for] */
+const SHARDS={common:[5,20], uncommon:[15,60], rare:[40,160], legendary:[150,600]};
+const shardOf=c=>c&&!c.recipe&&!c.mastery&&SHARDS[c.rarity]||null;
+const deckKeeps=(save,id)=>Math.max(0,...(save.decks||[]).map(d=>(d.list||[]).filter(x=>x===id).length));
+const spareCopies=(save,id)=>Math.max(0,(save.owned[id]||0)-deckKeeps(save,id));
+const canBreak=(save,c)=>!!shardOf(c)&&spareCopies(save,c.id)>0;
+// you can craft a card you have seen, up to the copies a deck can hold
+const craftRoom=(save,c)=>!!shardOf(c)&&!!save.seen[c.id]&&(save.owned[c.id]||0)<copyLimit(c);
+const canCraft=(save,c)=>craftRoom(save,c)&&(save.shards||0)>=shardOf(c)[1];
+function breakCard(save,id){ const c=CARDS[id]; if(!canBreak(save,c)) return 0;
+  save.owned[id]--; if(save.owned[id]<=0) delete save.owned[id];
+  const a=save.charge&&save.charge[id]; if(a&&a.length>(save.owned[id]||0)) a.length=save.owned[id]||0;
+  const n=shardOf(c)[0]; save.shards=(save.shards||0)+n; return n; }
+function craftCard(save,id){ const c=CARDS[id]; if(!canCraft(save,c)) return null;
+  save.shards-=shardOf(c)[1]; return addCards(save,[c])[0]; }
 function addCards(save,cards){ return cards.map(c=>{ const isNew=!save.owned[c.id]; save.owned[c.id]=(save.owned[c.id]||0)+1; save.seen[c.id]=1; return {card:c,isNew}; }); }
 function ownedUnique(save){ return Object.keys(save.owned).filter(id=>CARDS[id]&&save.owned[id]>0).length; }
 
@@ -151,4 +168,4 @@ function migrate(s){ s.items=s.items||{}; s.gear=s.gear||{}; if(typeof ensureSta
 function writeSave(s){ try{ localStorage.setItem(slotKey(SAVE_SLOT),JSON.stringify(s)); }catch(e){} }
 function clearSave(n){ try{ localStorage.removeItem(slotKey(n||SAVE_SLOT)); }catch(e){} }
 
-if(typeof module!=='undefined') module.exports={PACK_SIZE,loadSave,SAVE_SLOTS,slotKey,setSlot,battleRewards,heroChance,rollHero,assignChargeUses,settleChargeUses,chargeLeft,SAVE_KEY,DECK_SLOTS,PACK_PRICE,copyLimit,rarityWeights,rollRarity,rollCard,battleGold,openPack,autoFill,newSave,addCards,ownedUnique};
+if(typeof module!=='undefined') module.exports={SHARDS,shardOf,spareCopies,canBreak,canCraft,craftRoom,breakCard,craftCard,PACK_SIZE,loadSave,SAVE_SLOTS,slotKey,setSlot,battleRewards,heroChance,rollHero,assignChargeUses,settleChargeUses,chargeLeft,SAVE_KEY,DECK_SLOTS,PACK_PRICE,copyLimit,rarityWeights,rollRarity,rollCard,battleGold,openPack,autoFill,newSave,addCards,ownedUnique};

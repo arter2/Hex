@@ -28,7 +28,7 @@ const CARD_PAL={
 };
 function cardEl(c,extra,locked){
   const el=document.createElement('button'), col=COLORS[c.color];
-  el.className='card'+(c.rarity==='legendary'?' leg':'')+(c.rarity==='hero'?' hero':'')+(locked?' locked':''); el.style.setProperty('--c',col.c);
+  el.className='card'+(c.rarity==='legendary'?' leg':'')+(c.rarity==='hero'?' hero':'')+(locked?' locked':'')+(c.mastery?' mcard':'')+(typeof masteryFrame==='function'&&masteryFrame(c.color)?' mframe':''); el.style.setProperty('--c',col.c);
   const stat=c.pow||(c.boon!=='gauge'&&c.amt)||c.hp||'';
   const rune=c.code?`<span class="rune${c.code==='✱'?' wild':''}" title="Rune ${c.code}">${c.code}</span>`:'';
   const R=ROLES[cardRole(c)]; el.style.setProperty('--rc',R.c);
@@ -52,8 +52,23 @@ function showDetail(c){
     :'Not found yet. '+RARITY[c.rarity].n+' '+COLORS[c.color].name+' '+TYPES[c.type].name+'.';
   { const found=RECIPES.filter(r=>recipeKnown(r)&&r.cards.includes(c.id)); if(found.length) $('#dtInfo').textContent+=' · ⚗ Part of: '+found.map(r=>r.name).join(', '); }
   if(c.uses&&save.owned[c.id]) $('#dtInfo').textContent+=' · uses left per copy: '+Array.from({length:save.owned[c.id]},(_,k)=>chargeLeft(save,c.id,k)+'/'+c.uses).join(', ');
+  dtShards(c);
   $('#detail').classList.add('on');
 }
+// Break and Craft on the card detail: shards come from spare copies only, so a deck never loses a card
+function dtShards(c){ const box=$('#dtShard'); box.innerHTML=''; const sh=shardOf(c); box.hidden=!sh||!save.seen[c.id]; if(box.hidden) return;
+  const have=save.shards||0, spare=spareCopies(save,c.id), own=save.owned[c.id]||0;
+  box.innerHTML=`<p class="shardline">${uiIcon('shard',18)}<b>${have}</b> shards · ${spare} spare</p>`;
+  const row=document.createElement('div'); row.className='row'; box.appendChild(row);
+  const b1=document.createElement('button'); b1.id='dtBreak'; b1.className='btn ghost'; b1.textContent='Break for '+sh[0];
+  b1.disabled=!canBreak(save,c); b1.title=spare?'':own?'Every copy is in a deck':'You have none';
+  b1.onclick=e=>armed(e.currentTarget,'Tap again to break',()=>{ const n=breakCard(save,c.id); if(!n) return; persist(); tip('+'+n+' shards'); showDetail(c); dtRefresh(); });
+  const b2=document.createElement('button'); b2.id='dtCraft'; b2.className='btn'; b2.textContent='Craft for '+sh[1];
+  b2.disabled=!canCraft(save,c); if(!craftRoom(save,c)) b2.title='You have the most a deck can use';
+  b2.onclick=()=>{ const r=craftCard(save,c.id); if(!r) return; persist(); tip((r.isNew?'New: ':'Crafted ')+c.name); if(typeof cardPop==='function') cardPop(c); showDetail(c); dtRefresh(); };
+  row.append(b1,b2); }
+function dtRefresh(){ const on=id=>{ const el=document.getElementById(id); return el&&el.classList.contains('on'); };
+  if(on('scrCollection')) renderCollection(); if(on('scrBuilder')&&typeof renderBuilder==='function') renderBuilder(); if(on('scrCamp')&&typeof openCamp==='function') openCamp(); }
 $('#dtClose').onclick=()=>$('#detail').classList.remove('on');
 // Hold a card in a grid to peek at it: it grows to a big, readable card for as long as the
 // finger stays down and shrinks back on release (the tap that ends a peek does nothing else).
@@ -213,17 +228,29 @@ function buildStart(){
 
 /* ---------------- camp ---------------- */
 let pickDepth=null;   // null until you first open camp or the menu, then your choice sticks (1 included)
+// An area's element and how your deck fares there: foes lean to the area's colour (enemies.js),
+// so they are weak to what beats it and resist it; and your deck's element (battle.js) can be weak to them.
+function affinityHTML(A,list){ const k=A.color; if(!SIX.includes(k)) return '';
+  const ic=c=>`<b style="color:${COLORS[c].c}">${COLORS[c].icon} ${COLORS[c].name}</b>`, el=deckElem(list.map(id=>CARDS[id]));
+  let you=el?'Your deck is '+ic(el)+'. ':'Your deck is mixed (no element). ';
+  if(el&&BEATS[k]===el) you+='<span class="bad">Foes here hit you 30% harder.</span>';
+  else if(el&&BEATS[el]===k) you+='<span class="good">Foes here hit you 20% softer.</span>';
+  else if(el===k) you+='<span class="bad">Your '+COLORS[k].name+' cards are resisted here.</span>';
+  else if(el===WEAK_TO[k]) you+='<span class="good">Your cards hit most foes here for WEAK damage.</span>';
+  return `Foes here are mostly ${ic(k)}: weak to ${ic(WEAK_TO[k])}, resist ${ic(k)}.<br>${you}`; }
 function openCamp(){
   if(typeof stopExplore==='function'){ stopExplore(); EX=null; }
   if(pickDepth==null) pickDepth=save.deepest;
   pickDepth=Math.min(Math.max(1,pickDepth),save.deepest);
   const d=activeDeck(), v=validateDeck(d.list,CARDS,save.owned);
   $('#campGold').innerHTML=uiIcon('coin',32)+save.gold; xpBar($('#campLevel'));
-  $('#campColl').innerHTML=uiIcon('cards',32)+ownedUnique(save)+(Object.keys(gearState(save).cursed).length?' <em class="curse">cursed</em>':'');
+  $('#campColl').innerHTML=uiIcon('cards',32)+ownedUnique(save)+'<span class="campshard">'+uiIcon('shard',28)+(save.shards||0)+'</span>'+(Object.keys(gearState(save).cursed).length?' <em class="curse">cursed</em>':'');
   $('#campDeck').textContent=d.name;
+  { const n=typeof bountyReady==='function'?bountyReady():0, bb=$('#bountyBadge'); bb.hidden=!n; bb.textContent=n; }
   const cnt=$('#campDeckCount'); cnt.textContent=v.count+'/'+RULES.max; cnt.classList.toggle('bad',!v.ok);
   $('#campDeckErr').textContent=v.ok?'':v.errors[0]+(v.errors.length>1?' (+'+(v.errors.length-1)+' more)':'')+'. Fix it in the deck builder.';
   const A=areaOf(pickDepth); $('#campArea').textContent=areaLabel(pickDepth); $('#campArea').style.color=A.glow;
+  $('#campAffinity').innerHTML=affinityHTML(A,d.list);
   $('#campBoss').innerHTML=isBossDepth(pickDepth)?'<b class="gold">'+ENEMY_DEFS[bossFor(pickDepth)].name+' here</b>':'Boss at <b class="gold">'+areaBossDepth(pickDepth)+'</b>';
   $('#btnDescend').textContent='Explore depth '+pickDepth;
   $('#btnDescend').disabled=!v.ok; $('#btnQuick').disabled=!v.ok;
@@ -394,6 +421,7 @@ function renderCollection(){
   const copies=Object.keys(save.owned).reduce((a,id)=>a+(CARDS[id]?save.owned[id]:0),0);
   $('#cTitle').textContent=cf.mine?'My cards':'All cards';
   $('#cCount').textContent=cf.mine?ownedUnique(save)+' cards · '+copies+' copies':ownedUnique(save)+' / '+CARD_LIST.length;
+  $('#cCount').innerHTML+=' · '+uiIcon('shard',14)+(save.shards||0);
   $('#cItems').innerHTML=`<button class="item" onclick="openCharacter()">⚔ Gear, enchanting and curses are on the Character screen →</button>`; $('#cItems').hidden=!cf.mine;
   if(cf.mine){ const inDeck={}; activeDeck().list.forEach(id=>inDeck[id]=(inDeck[id]||0)+1);
     const fam={}; Object.keys(save.owned).forEach(id=>{ const c=CARDS[id]; if(c&&save.owned[id]>0) fam[c.color]=(fam[c.color]||0)+save.owned[id]; });
@@ -561,7 +589,7 @@ function fight(depth,waves,xo){
     onTurn:n=>banner('Turn '+n,'#4fb3ff'),
     onBoss:(t,c,info)=>{ banner(t,c); if(info) tip(info); },
     onWave:i=>banner('Wave '+(i+1),'#ff5d6c'),
-    onCombo:label=>banner('✦ '+label.split(':')[0],'#ffe066'),
+    onCombo:label=>{ B.combos=(B.combos||0)+1; banner('✦ '+label.split(':')[0],'#ffe066'); },
     onRecipe:r=>{ const first=!(save.recipes||{})[r.id]; save.recipes=save.recipes||{}; save.recipes[r.id]=1; persist(); banner((first?'⚗ New recipe! ':'⚗ ')+r.name,'#39ff8a'); },
     onHero:c=>banner('♔ '+c.name.split(',')[0]+' joins the fight!','#ffe066'),
     onEnd:win=>win?victory():defeat(),
@@ -591,7 +619,12 @@ function victory(){
   const got=[...rw.cards.map(c=>c.name),...(rw.gold?[rw.gold+' gold']:[]),...rw.items.map(k=>{ const l=lootLabel(save,k); return l.icon+' '+l.name; })];
   logCamp((boss?'Boss defeated':'Won')+' at depth '+depth+'.','win'); got.forEach(g=>logCamp('Found '+g.replace(/^[^A-Za-z0-9]+/u,'')+'.',/gold$/.test(g)?'gold':'loot'));
   loot.forEach(l=>{ if(l.res&&l.res.cursed) logCamp(l.res.msg,'curse'); });
+  // contracts (bounty.js) and colour mastery (mastery.js) count the win
+  const bDone=typeof bountyWin==='function'?bountyWin(b,boss):[]; bDone.forEach(k=>logCamp('Contract complete: claim it at the Bounty board.','win'));
+  const mUp=typeof masteryWin==='function'?masteryWin(b,boss):[]; mUp.forEach(m=>logCamp(cName(m.color)+' mastery level '+m.level+'!','win'));
   const show=()=>{
+  if(bDone.length) setTimeout(()=>banner('📜 Contract complete!','#f2c94c'),300);
+  if(mUp.length) setTimeout(()=>banner('★ '+cName(mUp[0].color)+' mastery '+mUp[0].level,COLORS[mUp[0].color].c),bDone.length?1900:300);
   reveal(hero?'♔ A hero joins you!':boss?'Boss defeated!':'Victory!',(hero?hero.name+' answers your call. ':'')+(boss&&!b.trial?'The way down to '+areaOf(depth+1).name+' is open. ':'')+(b.explore?'Won in '+Math.round(b.time)+'s. ':'Depth '+depth+' cleared in '+Math.round(b.time)+'s. ')+(boss?'Boss rewards: ':'Your reward: ')+got.join(', ')+'.'+loot.map(l=>l.res&&l.res.cursed?' '+l.res.msg:l.res&&l.res.ok?' You put it on.':'').join('')+burnt,res,
     b.explore?[['Keep exploring',()=>{ const ruleOK=!!(b.rule&&b.rule.ok); B=null; resumeExplore(hpLeft,true,{ruleOK}); }]]
     :[['Camp',()=>{ B=null; pickDepth=depth+1; openCamp(); },true],['Depth '+(depth+1)+' →',()=>fight(depth+1)]],

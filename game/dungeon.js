@@ -446,6 +446,7 @@ function xFillBranch(){ const reach=xReach(), rooms=xOpenRooms(reach,{notStart:t
   const r3=xpick(rooms); if(r3){ const c=xFreeCell(r3); if(c>=0) xChest(c,{rich:true}); } }
 // what you hear as you arrive: hints, never the secrets themselves
 function xArrival(){ const F=EX.plan?EX.plan.feats:{};
+  { const A=areaOf(EX.depth); if(A&&SIX.includes(A.color)&&areaFloor(EX.depth)===1&&!EX.branch) xLog('The foes here lean '+COLORS[A.color].name+': weak to '+COLORS[WEAK_TO[A.color]].name+'.','dim'); }
   if(EX.branch){ xLog('A hidden stair has led you somewhere older and quieter.','good'); return; }
   if(F.merchant) xLog('Somewhere a merchant calls out prices.','dim');
   if(F.sanct) xLog('A calm warmth lingers somewhere on this floor.','good');

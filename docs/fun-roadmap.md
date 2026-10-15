@@ -1,6 +1,6 @@
 # Hexmancers: making it more fun
 
-Date: 2026-10-15 · Status: Part 1 ideas 1 and 5 are built (v59, v60) with rare foes; Part 2 is built (v58)
+Date: 2026-10-15 · Status: Part 1 ideas 1 and 5 are built (v59, v60) with rare foes; Part 2 is built (v58); Part 3 round 1 is built (v66)
 
 The game already has a deep loop: dungeon crawling (secrets, mimics, puzzles, escorts, branches),
 a real-time card battle (combos, curses, telegraphs), a deck builder, gear, missions, a shop and
@@ -46,6 +46,10 @@ When one falls it drops a rare card, a second card that is legendary 40% of the 
 gear, a sealed pack, triple gold and 40 + 4 per depth shards. One that gets away drops nothing.
 
 ### 2. Every run its own story (run-shaping choices)
+
+Decided 15 Oct: boons and risk doors were set aside. Runs get their story from the dungeon itself
+instead: see Part 3 (the path map, falls, the stirring dark, and new rooms and puzzles).
+The original idea is kept below for reference.
 
 Right now a run mostly differs by which cards you happen to draw.
 
@@ -237,3 +241,76 @@ Random drops alone make it hard to finish a build. Shards fix that.
 - Breaking cards into shards is manual only.
 - Contracts stay until you finish them.
 - Every enemy has elemental versions, and your deck's element can be weak to them.
+
+---
+
+## Part 3: The dungeon plan
+
+Decided 15 Oct. Every run should feel different because of the dungeon you move through.
+Four rounds, one update each.
+
+### Round 1: floors and flow (built in v66)
+
+- **Bigger floors.** A floor is 68 × 68 cells (it was 48 × 48), about twice the area, with about
+  20 rooms instead of 10, and the stairs down are at least 34 steps from the stairs up. Groups,
+  traps and chests scale with it.
+  - Walls are drawn in chunks and only once seen, so a big floor draws fewer triangles at the start
+    than the old small floor did. Old save points (from the smaller floors) no longer load.
+- **The path map.** At the stairs down you choose from 2 ways (floors 1–2) or 3 ways, each listing
+  what its floor holds (merchant, sanctuary, puzzle, miniboss, vault, prisoner, stranger, cache,
+  gauntlet, curse totem, locked rooms, shortcut gate):
+
+  | Way | What it changes |
+  |---|---|
+  | The Worn Stair | The floor as it comes |
+  | The Quiet Way | 60% of the foes, half the traps, 80% of the chests; no miniboss, gauntlet, totem or mimic |
+  | The Perilous Way | 125% foes, all a tier tougher; a miniboss and a gauntlet; 130% chests |
+  | The Gilded Way | A locked vault, a cache and more chests (160%), but 170% traps and a mimic |
+
+  A floor you have been on is kept, so going back down needs no choice. The way to a boss floor is
+  always the one way.
+- **The stirring dark** (replaces the Executioner's bell). 75 s after you arrive, and every 40–55 s
+  after, a new group comes out of the dark in a room out of sight and well away. Each wave raises
+  the floor's threat by one, up to its cap (2 on early floors, up to 6 deep down; −1 on the Quiet
+  Way, +1 on the Perilous Way). At the cap the waves keep coming but grow no worse, so you can stay
+  and farm. Threat shows as ▲ N/cap on the dungeon screen; stirred foes carry a ▲N tag.
+  - A tier makes each foe 18% tougher and 10% harder-hitting per tier, and pays 25% more XP and
+    20% more gold per tier.
+  - At most 3 stirred groups (plus one per two threat levels) roam at once.
+- **Teleport runes** (from depth 2): a hidden trap that throws you to a random spot on the floor at
+  least 12 cells away. It keeps glowing afterwards, so you can avoid it or use it again.
+- **Deep falls.** Trapdoors (from depth 3) drop you 2 or 3 floors, never past a boss floor you
+  have not beaten.
+  - **Fallen Seal:** the stairs down where you land are sealed. The seal's **Wayshard** lies on the
+    floor directly above, in a room a short walk (10 to 30 steps) from that floor's stairs down.
+    Bring it back down and the seal breaks (with XP).
+  - **Lost Satchel:** your satchel stays on the floor you fell from, holding gold (60 + 22 per
+    depth), shards (8 + 2 per depth) and sometimes a sealed pack. Climbing back for it is optional.
+  - The dungeon screen shows ⛓ Sealed, ◆ Wayshard and 🎒 D<depth> while they apply.
+
+### Round 2: rooms for risk, people and the new features (next)
+
+Monster nest (spawns until its egg sacs are smashed; farm on purpose), teleporter hub, pit room (a
+marked drop of two floors with treasure at the bottom), collapsing treasury, mirror room (fight a
+copy of yourself with your deck), gambler's den, forge, shrine of trade, wounded adventurer camp,
+haunted chapel.
+
+### Round 3: exploration rooms
+
+Flooded room, dark room, collapsed bridge, overgrown library, crystal cave.
+
+### Round 4: puzzles
+
+Pressure path, braziers, echo bells, sliding ice, weight scales, shifting rooms, memory tiles,
+guardian riddle, and three of yours:
+
+- **Switch circuit:** 4 to 6 switches around the whole floor, pulled in the order a clue gives,
+  open a sealed room. A wrong switch resets them with a clang that draws foes.
+- **The ghost's table:** bring 3 element items found around the floor (in chests, behind secrets,
+  carried by foes) back to a table and a rare ghost rises. The 3 elements returned decide which of
+  20 rare artifacts it drops.
+- **Cursed find:** picking up a cursed item by surprise fills one of your three card slots with a
+  bad card in every fight on that floor and seals the stairs down, until you cleanse at an altar
+  placed far away.
+
+Rare rooms appear every 2 to 3 floors. Colour locks were dropped.

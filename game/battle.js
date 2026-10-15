@@ -91,6 +91,8 @@ function startBattle(list,depth,hooks,opts){
   // fights that start on the overworld carry your wounds in, and how the fight began matters:
   // catching a sleeping enemy holds its first attacks back; being caught off guard lets it strike first
   if(opts&&opts.hp!=null) p.hp=Math.max(1,Math.min(p.maxHp,opts.hp));
+  // a threat tier (deepways.js): foes the stirring dark sent, or a perilous way, are tougher and pay more
+  B.tier=opts&&opts.tier||0; if(B.tier) B.enemies.forEach(e=>{ const k=1+.18*B.tier; e.hp=e.maxHp=Math.round(e.maxHp*k); e.dmg=Math.round(e.dmg*(1+.1*B.tier)); });
   B.opening=opts&&opts.opening||null;
   // a trial's rule (minibosses.js): fight in order, survive, or light the switches
   B.rule=opts&&opts.rule?Object.assign({},opts.rule):null; if(B.rule&&typeof ruleSetup==='function') ruleSetup(B.rule);

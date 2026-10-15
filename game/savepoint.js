@@ -44,12 +44,12 @@ function canSavePoint(){ if(!save) return 'No game to save.';
   return ''; }
 function savePoint(){ const why=canSavePoint(); if(why) return {ok:false,msg:why};
   const ex=EX, keep={action:ex.action, aim:ex.aim, path:ex.path}; ex.action=null; ex.aim=null; ex.path=[];
-  let txt; try{ txt=JSON.stringify({v:1, time:Date.now(), depth:ex.depth, area:areaLabel(ex.depth), level:save.level||1,
+  let txt; try{ txt=JSON.stringify({v:2, time:Date.now(), depth:ex.depth, area:areaLabel(ex.depth), level:save.level||1,
     save:JSON.parse(JSON.stringify(save)), run:snapEncode({ex, run:typeof XRUN!=='undefined'?XRUN:null})}); }
   finally{ Object.assign(ex,keep); }
   try{ localStorage.setItem(pointKey(),txt); }catch(e){ return {ok:false,msg:'Not enough storage space to save.'}; }
   return {ok:true,msg:'Game saved at depth '+ex.depth+'.'}; }
-function peekPoint(n){ try{ const p=JSON.parse(localStorage.getItem(pointKey(n))||'null'); return p&&p.v===1?p:null; }catch(e){ return null; } }
+function peekPoint(n){ try{ const p=JSON.parse(localStorage.getItem(pointKey(n))||'null'); return p&&p.v===2?p:null; /* v1 points hold the old, smaller floors */ }catch(e){ return null; } }
 function clearPoint(n){ try{ localStorage.removeItem(pointKey(n)); }catch(e){} }
 // back to the save point: everything since is undone
 function loadPoint(){ const p=peekPoint(); if(!p) return false;

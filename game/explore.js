@@ -10,7 +10,7 @@
    puzzles, minibosses, visible traps and secrets) lives in dungeon.js, which this file calls
    through a few hooks (xFloorPlan, xPopulate, xBumpExtra, xEnterExtra, xDungeonTick...). */
 
-const XN=48, XCS=2, XWALL=2.5;           // grid cells per side, world units per cell, wall height
+const XN=68, XCS=2, XWALL=2.5, XWCH=12;           // grid cells per side, world units per cell, wall height
 const XSPEED=7;                          // your walking speed, in world units a second (3.5 tiles)
 const XSPR=2.8;                          // height of a person on the map, in world units
 const T_ROCK=0, T_FLOOR=1, T_DOOR=2;
@@ -23,10 +23,11 @@ const TRAPS={
   blocks:{name:'falling block trap', dmg:[10,15], col:'#8a8398', text:'Stones crash down from the ceiling!', stun:1},
   explosive:{name:'explosive rune', dmg:[14,20], col:'#ff9a3a', text:'A rune detonates under your feet!'},
   trapdoor:{name:'trapdoor', dmg:[6,9], col:'#140a10', text:'The floor collapses beneath you!', fall:true},
+  teleport:{name:'teleport rune', dmg:[0,0], col:'#b48cff', text:'A violet rune flares and the world lurches sideways!', warp:true},
 };
 // which hidden traps a floor can hold: deeper floors add worse ones (a trapdoor never sits on a boss floor, so no one falls past a boss)
 function xTrapKinds(depth){ const k=['spike','spike','dart','dart'];
-  if(depth>=2) k.push('fire','pit'); if(depth>=3) k.push('alarm','blocks'); if(depth>=4) k.push('explosive','fire'); if(depth>=5&&!isBossDepth(depth)) k.push('trapdoor');
+  if(depth>=2) k.push('fire','pit','teleport','teleport'); if(depth>=3) k.push('alarm','blocks'); if(depth>=3&&!isBossDepth(depth)) k.push('trapdoor'); if(depth>=4) k.push('explosive','fire'); if(depth>=6&&!isBossDepth(depth)) k.push('trapdoor');
   return k; }
 let EX=null, X3=null;
 const xi=(x,y)=>y*XN+x, xcx=i=>i%XN, xcy=i=>(i/XN)|0;
@@ -57,10 +58,10 @@ function tryFloor(depth,R,plan){
   const ri=(a,b)=>a+Math.floor(R()*(b-a+1));
   const t=new Uint8Array(XN*XN), room=new Int16Array(XN*XN).fill(-1), rooms=[];
   const free=(x,y,w,h,m)=>!rooms.some(r=>x<r.x+r.w+m&&x+w+m>r.x&&y<r.y+r.h+m&&y+h+m>r.y);
-  const want=plan.small?6:10;
-  for(let k=0;k<400&&rooms.length<want;k++){ const w=ri(5,10), h=ri(4,8), x=ri(2,XN-w-3), y=ri(2,XN-h-3);
+  const want=plan.small?8:20;   // a floor is about twice the size it once was (68 x 68 cells)
+  for(let k=0;k<900&&rooms.length<want;k++){ const w=ri(5,10), h=ri(4,8), x=ri(2,XN-w-3), y=ri(2,XN-h-3);
     if(free(x,y,w,h,4)) rooms.push({x,y,w,h,lit:R()<.68}); }
-  if(rooms.length<(plan.small?4:6)) return null;
+  if(rooms.length<(plan.small?5:13)) return null;
   rooms.sort((a,b)=>(a.x+a.w/2)-(b.x+b.w/2));
   // side rooms: the closet (secret door), a vault (silver or gold lock), a prison cell (bronze lock)
   const sides=plan.side||[{kind:'closet',lock:'secret'}];
@@ -86,7 +87,7 @@ function tryFloor(depth,R,plan){
   };
   const main=rooms.filter(r=>!r.side), sideRooms=rooms.filter(r=>r.side);
   for(let k=1;k<main.length;k++) carve(main[k-1],main[k],null);
-  for(let n=0;n<2;n++){ const a=pick(main), b=pick(main); if(a!==b) carve(a,b,R()<.6?b:null); }
+  for(let n=0;n<4;n++){ const a=pick(main), b=pick(main); if(a!==b) carve(a,b,R()<.6?b:null); }
   for(const s of sideRooms){ const near=main.slice().sort((p,q)=>Math.hypot(p.cx-s.cx,p.cy-s.cy)-Math.hypot(q.cx-s.cx,q.cy-s.cy))[0]; carve(s,near,null); }
   // a shortcut: one more corridor from the first room toward the far end of the floor
   const startI=xi(main[0].cx,main[0].cy);
@@ -111,7 +112,7 @@ function tryFloor(depth,R,plan){
   const all=xbfs(t,doors,startI,false); if(main.some(r=>all[xi(r.cx,r.cy)]<0)) return null;
   const start=main[0];
   let exit=main[main.length-1], far=-1; for(const r of main){ const d=all[xi(r.cx,r.cy)]; if(d>far){ far=d; exit=r; } }
-  if(far<(plan.small?14:22)) return null;
+  if(far<(plan.small?16:34)) return null;
   const exitI=xi(exit.cx,exit.cy), reach=()=>xbfs(t,doors,startI,false);
   // bronze-locked doors on the main rooms: never on the way to the stairs down, at most two rooms behind each
   let locks=0;
@@ -153,11 +154,11 @@ function xbfs(t,doors,s,seenOnly,blockFn){
    with people, puzzles, keys and secrets. The rooms without a role get chests, traps and enemies. */
 function buildFloor(depth,hp,opt){
   opt=opt||{};
-  const plan=typeof xFloorPlan==='function'?xFloorPlan(depth,opt):null;
+  const plan=opt.plan||(typeof xFloorPlan==='function'?xFloorPlan(depth,opt):null), route=opt.route||null, RT=typeof routeMods==='function'?routeMods(route):{foes:1,traps:1,chests:1,tier:0};
   const F=genFloor(depth,plan), A=areaOf(depth);
   EX=Object.assign({depth, area:A, hp:hp==null?xmaxHp():hp, vis:new Uint8Array(XN*XN), seen:new Uint8Array(XN*XN),
     chests:[], traps:[], groups:[], log:[], action:null, stuckT:0, regenT:0, active:false, busy:false, path:[], msgT:{}, bossDead:false,
-    plan, branch:!!opt.branch, props:[], items:[], propAt:new Map(), wallAt:new Map(), itemAt:new Map(), safe:new Set(), clock:0, stillT:0, sight:0, ail:{poison:0,curse:0}}, F);
+    plan, route, branch:!!opt.branch, props:[], items:[], propAt:new Map(), wallAt:new Map(), itemAt:new Map(), safe:new Set(), clock:0, stillT:0, sight:0, ail:{poison:0,curse:0}}, F);
   const ri=(a,b)=>a+Math.floor(Math.random()*(b-a+1));
   const cellIn=r=>xi(r.x+ri(0,r.w-1), r.y+ri(0,r.h-1));
   const taken=new Set([xi(F.start.cx,F.start.cy), xi(F.exit.cx,F.exit.cy)]);
@@ -166,23 +167,23 @@ function buildFloor(depth,hp,opt){
   if(typeof xAssignRooms==='function') xAssignRooms();
   const others=F.rooms.filter(r=>r!==F.start&&!r.side&&!r.nook), open=others.filter(r=>!r.role);
   // chests: about every other ordinary room, sometimes trapped (side rooms are filled by dungeon.js)
-  for(const r of open) if(Math.random()<.5){ const c=freeCell(r); if(c>=0) EX.chests.push({cell:c, open:false, trap:Math.random()<.12, trapKnown:false}); }
+  for(const r of open) if(Math.random()<.5*RT.chests){ const c=freeCell(r); if(c>=0) EX.chests.push({cell:c, open:false, trap:Math.random()<.12, trapKnown:false}); }
   if(typeof xFloorPlan!=='function'){ const cl=F.rooms.find(r=>r.closet); if(cl){ const c=xi(cl.cx,cl.cy); taken.add(c); EX.chests.push({cell:c, open:false, trap:false, trapKnown:false, rich:true}); } }
   // hidden traps in ordinary rooms and corridors, never on the stairs or in the first room; deeper floors hold more and worse
   const kinds=typeof xTrapKinds==='function'?xTrapKinds(depth):['spike','spike','dart','dart','fire','pit','alarm'];
   const quiet=i=>{ const r=F.room[i]; return r>=0&&(F.rooms[r]===F.start||F.rooms[r].role||F.rooms[r].side); };
   const floorCells=[]; for(let i=0;i<XN*XN;i++) if(F.t[i]===T_FLOOR&&!quiet(i)&&!taken.has(i)) floorCells.push(i);
-  const nT=Math.max(0,Math.min(5,1+Math.floor(depth*.25))-(opt.branch?1:0));   // a few, not a minefield: 1 early, up to 5 deep down
+  const nT=Math.round(Math.max(0,Math.min(9,2+Math.floor(depth*.4))-(opt.branch?1:0))*RT.traps);   // a few, not a minefield: 2 early, up to 9 deep down on a floor this size
   for(let n=0;n<nT&&floorCells.length;n++){ const c=floorCells.splice(Math.floor(Math.random()*floorCells.length),1)[0]; taken.add(c); EX.traps.push({cell:c, kind:pick(kinds), known:false, armed:true}); }
   // enemy groups: some asleep, some wandering; on a boss depth the boss waits by the stairs down
-  const nG=Math.min(open.length,(opt.branch?1:3)+Math.floor(depth/3));
+  const nG=Math.min(open.length,Math.round(((opt.branch?1:5)+Math.floor(depth/2))*RT.foes));
   const rooms=open.slice().sort(()=>Math.random()-.5).filter(r=>r!==F.exit||!isBossDepth(depth)).slice(0,nG);
   for(const r of rooms){ const c=freeCell(r); if(c<0) continue; const wave=makeEncounter(depth)[0], ids=wave.slice(0,1+Math.floor(Math.random()*Math.min(3,wave.length)));
-    const g=xGroup(ids,c,Math.random()<.45?'sleep':'wander'); if(ids.some(id=>ENEMY_DEFS[id]&&ENEMY_DEFS[id].rare)) Object.assign(g,{tagTxt:'★',tagCol:'#ffd166',state:'wander'}); EX.groups.push(g); }
+    const g=xGroup(ids,c,Math.random()<.45?'sleep':'wander'); if(RT.tier) g.tier=RT.tier; if(ids.some(id=>ENEMY_DEFS[id]&&ENEMY_DEFS[id].rare)) Object.assign(g,{tagTxt:'★',tagCol:'#ffd166',state:'wander'}); EX.groups.push(g); }
   if(isBossDepth(depth)&&!opt.branch){ const c=xi(F.exit.cx-1,F.exit.cy); taken.add(c); EX.groups.push(Object.assign(xGroup([bossFor(depth)],c,'guard'),{boss:true})); }
   // most groups keep to their own room until they see you; from depth 3 one (two from depth 8)
   // goes looking for you instead. Vermin never hunt.
-  { const can=EX.groups.filter(g=>!g.boss&&!g.ids.every(id=>ENEMY_DEFS[id].vermin)), n=depth>=8?2:depth>=3?1:0;
+  { const can=EX.groups.filter(g=>!g.boss&&!g.ids.every(id=>ENEMY_DEFS[id].vermin)), n=depth>=8?3:depth>=3?2:0;
     can.sort(()=>Math.random()-.5).slice(0,n).forEach(g=>{ g.hunter=true; g.state='wander'; }); }
   EX.px=xw(EX.up); EX.pz=xz(EX.up); EX.pc=EX.up; EX.face=1; EX.view='front';
   if(typeof xPopulate==='function') xPopulate();
@@ -349,14 +350,21 @@ function xBuildScene(){
   // stone with worn edges (and a groove runs between neighbours); cave rock is also knobbly
   const wgeos=[xWallGeo(true,seed),xWallGeo(false,seed),xWallGeo(false,seed+1)];
   EX.wGhost=[]; EX.gSlot=new Int32Array(XN*XN).fill(-1);
-  walls.forEach((list,v)=>{ const wgeo=wgeos[v], n=Math.max(1,list.length), tex=xTex(wallTex[v]), wm=new THREE.InstancedMesh(wgeo,xLitTag(xDitherMat(xPhong({map:tex,vertexColors:true})),2,wallTex[v]),n);
-    wm.instanceMatrix.setUsage(THREE.DynamicDrawUsage); grp.add(wm); EX.wms.push(wm);
+  // the solid walls come in chunks of the floor (XWCH x XWCH cells), each with its own bounds, so
+  // the renderer skips the chunks off screen: a big floor costs little more than a small one
+  walls.forEach((list,v)=>{ const wgeo=wgeos[v], n=Math.max(1,list.length), tex=xTex(wallTex[v]), mat=xLitTag(xDitherMat(xPhong({map:tex,vertexColors:true})),2,wallTex[v]);
+    const chunks=new Map(); for(const c of list){ const key=((xcy(c)/XWCH)|0)*64+((xcx(c)/XWCH)|0); if(!chunks.has(key)) chunks.set(key,[]); chunks.get(key).push(c); }
+    for(const [key,cells] of chunks){ const g=new THREE.BufferGeometry(); g.index=wgeo.index; for(const a in wgeo.attributes) g.setAttribute(a,wgeo.attributes[a]);
+      const cx=((key%64)+.5)*XWCH*XCS, cz=(((key/64)|0)+.5)*XWCH*XCS; g.boundingSphere=new THREE.Sphere(new THREE.Vector3(cx,XWALL/2,cz),XWCH*XCS*.75+XWALL);
+      const wm=new THREE.InstancedMesh(g,mat,cells.length); wm.userData.v=v; wm.instanceMatrix.setUsage(THREE.DynamicDrawUsage); grp.add(wm); EX.wms.push(wm);
+      for(let k=0;k<cells.length;k++){ wm.setMatrixAt(k,zero); wm.setColorAt(k,black); }
+      // a wall takes a slot the first time it is seen (xPaintCells), so walls you have not found cost nothing to draw
+      cells.forEach(c=>EX.wIdx.set(c,[wm,-1])); wm.count=0; wm.userData.n=0; wm.visible=false; }
     // the same walls again, see-through: a wall between the camera and you moves here and fades (xWallCut)
     wgeo.setAttribute('aAlpha',new THREE.InstancedBufferAttribute(new Float32Array(n).fill(1),1));
-    const gm=new THREE.InstancedMesh(wgeo,xLitTag(xGhostMat(xPhong({map:tex,vertexColors:true})),2,wallTex[v]),n); gm.instanceMatrix.setUsage(THREE.DynamicDrawUsage); gm.renderOrder=6; grp.add(gm); EX.wGhost.push(gm);
-    for(let k=0;k<n;k++){ wm.setMatrixAt(k,zero); wm.setColorAt(k,black); gm.setMatrixAt(k,zero); gm.setColorAt(k,black); }
-    gm.count=0; gm.userData.cells=[];   // only the walls that are see-through right now are packed in here
-    list.forEach((c,k)=>EX.wIdx.set(c,[wm,k])); });
+    const gm=new THREE.InstancedMesh(wgeo,xLitTag(xGhostMat(xPhong({map:tex,vertexColors:true})),2,wallTex[v]),n); gm.instanceMatrix.setUsage(THREE.DynamicDrawUsage); gm.renderOrder=6; gm.frustumCulled=false; grp.add(gm); EX.wGhost.push(gm);
+    for(let k=0;k<n;k++){ gm.setMatrixAt(k,zero); gm.setColorAt(k,black); }
+    gm.count=0; gm.visible=false; gm.userData.cells=[]; });   // only the walls that are see-through right now are packed in here
   // doors: an arched doorway of the area's stone, and while it is closed a plank door with iron
   // bands and studs, its top rounded to the arch; a locked door shows its lock: a bronze, silver or
   // gold plate, iron bars on a shortcut gate, red bands on a boss door
@@ -882,7 +890,7 @@ function xPaintCells(){
     else if(EX.seen[c]) b=.24;
     else if(EX.t[c]===T_ROCK&&xNearSeen(c)) b=.6;   // behind a wall you have seen: the chasm below shows
     EX.fogTgt[c]=b;
-    if(EX.seen[c]&&!EX.shown[c]){ EX.shown[c]=1; const w=EX.wIdx.get(c); if(w){ EX.wCut[c]=xCutTarget(c); EX.wList.push(c); xWallFade(c,EX.wCut[c]); for(const M of [w[0],EX.wGhost[EX.wms.indexOf(w[0])]]) M.instanceMatrix.needsUpdate=true; } } }
+    if(EX.seen[c]&&!EX.shown[c]){ EX.shown[c]=1; const w=EX.wIdx.get(c); if(w){ if(w[1]<0){ const wm=w[0], f=EX.fogCur[c]; w[1]=wm.userData.n++; wm.count=wm.userData.n; wm.visible=true; wm.setColorAt(w[1],new THREE.Color(f,f,f*1.05)); wm.instanceColor.needsUpdate=true; } EX.wCut[c]=xCutTarget(c); EX.wList.push(c); xWallFade(c,EX.wCut[c]); for(const M of [w[0],EX.wGhost[w[0].userData.v]]) M.instanceMatrix.needsUpdate=true; } } }
   for(const D of EX.decor||[]) D.mesh.visible=D.cells.some(c=>EX.seen[c]);
   for(const [i,d] of EX.doors) if(d.mesh) d.mesh.visible=!!EX.seen[i]&&d.state!=='secret';
   for(const c of EX.chests) c.mesh.visible=!!EX.seen[c.cell];
@@ -929,18 +937,18 @@ function xGhostMat(m){ m.transparent=true; m.depthWrite=false; m.customProgramCa
     sh.fragmentShader='varying float vAlpha;\n'+sh.fragmentShader.replace('#include <dithering_fragment>','#include <dithering_fragment>\n  gl_FragColor.a*=vAlpha;'); };
   return m; }
 // put a wall in the solid mesh (v=1) or the see-through one at opacity v
-function xWallFade(c,v){ const w=EX.wIdx.get(c); if(!w) return; const [wm,k]=w, vi=EX.wms.indexOf(wm), gm=EX.wGhost[vi], m=new THREE.Matrix4(), zero=new THREE.Matrix4().makeScale(0,0,0);
+function xWallFade(c,v){ const w=EX.wIdx.get(c); if(!w||w[1]<0) return; const [wm,k]=w, vi=wm.userData.v, gm=EX.wGhost[vi], m=new THREE.Matrix4(), zero=new THREE.Matrix4().makeScale(0,0,0);
   xWallMatrix(m,c,vi===0,1); const solid=v>=.995, L=gm.userData.cells, A=gm.geometry.attributes.aAlpha, col=new THREE.Color();
   const put=(cell,slot)=>{ xWallMatrix(m,cell,vi===0,1); gm.setMatrixAt(slot,m); A.setX(slot,EX.wCut[cell]); const f=EX.fogCur[cell]; col.setRGB(f,f,f*1.05); gm.setColorAt(slot,col); };
   wm.setMatrixAt(k,solid?m:zero);
-  if(!solid){ if(EX.gSlot[c]<0){ EX.gSlot[c]=L.length; L.push(c); gm.count=L.length; } put(c,EX.gSlot[c]); }
-  else if(EX.gSlot[c]>=0){ const slot=EX.gSlot[c], last=L.pop(); EX.gSlot[c]=-1; if(last!==c){ L[slot]=last; EX.gSlot[last]=slot; put(last,slot); } gm.count=L.length; }
+  if(!solid){ if(EX.gSlot[c]<0){ EX.gSlot[c]=L.length; L.push(c); gm.count=L.length; gm.visible=true; } put(c,EX.gSlot[c]); }
+  else if(EX.gSlot[c]>=0){ const slot=EX.gSlot[c], last=L.pop(); EX.gSlot[c]=-1; if(last!==c){ L[slot]=last; EX.gSlot[last]=slot; put(last,slot); } gm.count=L.length; gm.visible=L.length>0; }
   A.needsUpdate=true; gm.instanceMatrix.needsUpdate=true; if(gm.instanceColor) gm.instanceColor.needsUpdate=true;
   xDressShow(c,solid?1:0); }
 function xCutTarget(c){ if(!EX) return 1; const dy=xcy(c)-xcy(EX.pc), dx=Math.abs(xw(c)-EX.px)/XCS; return dy>0&&dy<=9&&dx<XB.strip+.5?XCUT:1; }
 function xWallCut(dt){ const m=new THREE.Matrix4(), k=Math.min(1,dt*7); let touched=new Set();
   for(const c of EX.wList){ const tg=xCutTarget(c), cur=EX.wCut[c]; if(Math.abs(cur-tg)<.005) continue;
-    const v=Math.abs(cur-tg)<.02?tg:cur+(tg-cur)*k; EX.wCut[c]=v; xWallFade(c,v); const w=EX.wIdx.get(c); touched.add(w[0]); touched.add(EX.wGhost[EX.wms.indexOf(w[0])]); }
+    const v=Math.abs(cur-tg)<.02?tg:cur+(tg-cur)*k; EX.wCut[c]=v; xWallFade(c,v); const w=EX.wIdx.get(c); touched.add(w[0]); touched.add(EX.wGhost[w[0].userData.v]); }
   for(const wm of touched) wm.instanceMatrix.needsUpdate=true;
   for(const [i,d] of EX.doors){ if(!d.mesh) continue; const tg=xCutTarget(i), cur=d.cutY==null?1:d.cutY; if(Math.abs(cur-tg)<.005) continue; d.cutY=Math.abs(cur-tg)<.02?tg:cur+(tg-cur)*k;
     const op=d.cutY, solid=op>=.995; d.mesh.traverse(o=>{ if(!o.isMesh) return; const M=o.material; M.transparent=!solid; M.opacity=solid?1:op; M.depthWrite=solid; o.renderOrder=solid?0:7; }); }
@@ -950,7 +958,7 @@ function xFadeCells(dt){
   const k=Math.min(1,dt*5), col=new THREE.Color(); let moved=false;
   for(let c=0;c<XN*XN;c++){ const cur=EX.fogCur[c], tg=EX.fogTgt[c]; if(Math.abs(cur-tg)<.004) continue; moved=true;
     const v=cur+(tg-cur)*k; EX.fogCur[c]=v; const y=XN-1-xcy(c), o=(y*XN+xcx(c))*4; EX.fog[o]=EX.fog[o+1]=EX.fog[o+2]=Math.round((1-v)*255);
-    const w=EX.wIdx.get(c); if(w){ col.setRGB(v,v,v*1.05); w[0].setColorAt(w[1],col); w[0].instanceColor.needsUpdate=true; const gm=EX.wGhost[EX.wms.indexOf(w[0])], gs=EX.gSlot[c]; if(gs>=0){ gm.setColorAt(gs,col); gm.instanceColor.needsUpdate=true; } } }
+    const w=EX.wIdx.get(c); if(w&&w[1]>=0){ col.setRGB(v,v,v*1.05); w[0].setColorAt(w[1],col); w[0].instanceColor.needsUpdate=true; const gm=EX.wGhost[w[0].userData.v], gs=EX.gSlot[c]; if(gs>=0){ gm.setColorAt(gs,col); gm.instanceColor.needsUpdate=true; } } }
   if(moved) EX.fogTex.needsUpdate=true;
 }
 /* Trap tells: a hidden trap is never shown, but it leaves small signs an attentive player can
@@ -1138,7 +1146,8 @@ function xSpring(tr,remote){ const T=TRAPS[tr.kind]; tr.known=true; xTrapMesh(tr
   if(tr.kind==='dart') EX.ail.poison=Math.max(EX.ail.poison||0,10+EX.depth);
   if(tr.kind==='explosive'||tr.kind==='blocks'||tr.kind==='trapdoor'){ tr.armed=false; }
   if(dmg) xHurt(dmg,'a '+T.name);
-  if(T.fall&&!remote&&EX.hp>0&&typeof xFall==='function') xFall(1,'You tumble down to the floor below!'); }
+  if(T.warp&&!remote&&EX.hp>0&&typeof xWarp==='function') xWarp(tr);
+  if(T.fall&&!remote&&EX.hp>0&&typeof xFall==='function'){ const n=typeof xFallDepth==='function'?xFallDepth():1; xFall(n,n>1?'The floor collapses and you fall, and fall… down '+n+' floors!':'You tumble down to the floor below!',n>1); } }
 
 /* ---------------- search, disarm, chests ---------------- */
 // Search: a quick tap (or F) searches the 3 x 3 tiles around you. Holding Search brings up the
@@ -1294,24 +1303,27 @@ function xEngage(g,forced){
   if(opening==='strike') xLog('First strike on the '+name+'!','good');
   xFlashView(500); setTimeout(()=>xFlashView(260),560);
   const b=$('#xBang'); b.textContent=opening==='strike'?'First Strike!':opening==='ambush'?'Ambush!':opening==='surprised'?'Surprised!':'!'; b.dataset.key='fight'; b.className='x-bang on '+(opening==='strike'?'ambush':opening||'');
-  setTimeout(()=>{ b.className='x-bang'; if(!EX||EX.fighting!==g) return; EX.active=false; fight(EX.depth,[g.ids.slice()],{hp:EX.hp,opening,explore:true,rule:g.rule||null}); },700);
+  setTimeout(()=>{ b.className='x-bang'; if(!EX||EX.fighting!==g) return; EX.active=false; fight(EX.depth,[g.ids.slice()],{hp:EX.hp,opening,explore:true,rule:g.rule||null,tier:g.tier||0}); },700);
 }
 
 /* ---------------- floors, camp, death ---------------- */
 function xStairsDown(){
   if(EX.groups.some(g=>g.boss)){ xSay('boss','The stairs are sealed while the guardian of this floor lives.'); return; }
+  if(typeof xSealCheck==='function'&&!xSealCheck()) return;   // a Fallen Seal (deepways.js)
+  if(!EX.routeOk&&typeof xRouteChoose==='function'&&xRouteChoose()) return;   // the path map: choose the next floor first
   EX.busy=true; if(typeof xEscortCheck==='function') xEscortCheck(); xLog('You descend…','dim'); const nd=EX.depth+1, hp=Math.min(xmaxHp(),EX.hp+Math.round(xmaxHp()*.2));
   if(nd>save.deepest) xXp(20+2*nd,'new depth'); save.deepest=Math.max(save.deepest,nd); persist(); if(typeof XRUN!=='undefined'&&XRUN){ XRUN.keys.boss=0; if(XRUN.chute===EX.depth) XRUN.chute=0; }
-  xKeep(); setTimeout(()=>{ xGoFloor(nd,hp,'up'); EX.active=true; xHud(); xLoopStart(); xBanner(nd); },500);
+  const route=EX.routeOk; EX.routeOk=null;
+  xKeep(); setTimeout(()=>{ xGoFloor(nd,hp,'up',route); EX.active=true; xHud(); xLoopStart(); xBanner(nd); if(typeof xRouteArrive==='function') xRouteArrive(); },500);
 }
 // floors you have been on this run are kept as you left them, so the stairs work both ways
 function xFloors(){ return typeof XRUN!=='undefined'&&XRUN?(XRUN.floors||(XRUN.floors=new Map())):null; }
 function xKeep(){ const m=xFloors(); if(m&&EX&&!EX.branch) m.set(EX.depth,EX); }
 // go to a floor, arriving on its stairs up or down (or a cell): a kept floor comes back as it was;
 // a new one reached from below has its guardian already beaten, since you came past it
-function xGoFloor(depth,hp,at){ const m=xFloors(), F=m&&m.get(depth), ail=EX&&EX.ail;
-  if(F){ EX=F; EX.hp=hp; EX.busy=false; EX.path=[]; EX.action=null; EX.aim=null; EX.searchCell=null; EX.wave=null; EX.stuckT=0; EX.fighting=null; if(ail) EX.ail=ail; xBuildScene(); for(const tr of EX.traps) if(tr.known&&tr.armed) xTrapMesh(tr); }
-  else { buildFloor(depth,hp);
+function xGoFloor(depth,hp,at,route){ const m=xFloors(), F=m&&m.get(depth), ail=EX&&EX.ail;
+  if(F){ EX=F; EX.hp=hp; EX.busy=false; EX.path=[]; EX.action=null; EX.aim=null; EX.searchCell=null; EX.wave=null; EX.stuckT=0; EX.fighting=null; if(ail) EX.ail=ail; if(typeof xPlaceWayshard==='function') xPlaceWayshard(); xBuildScene(); for(const tr of EX.traps) if(tr.known&&tr.armed) xTrapMesh(tr); }
+  else { buildFloor(depth,hp,route?{plan:route.plan,route:route.kind}:undefined);
     if(at==='down') for(const g of EX.groups.filter(g=>g.boss)){ EX.groups.splice(EX.groups.indexOf(g),1); xDropGroup(g); EX.bossDead=true; } }
   const c=typeof at==='number'?at:at==='down'?EX.down:EX.up; EX.pc=c; EX.px=xw(c); EX.pz=xz(c); EX.view=at==='down'?'back':'front'; xUpdateVis(); }
 // the stairs up: to the floor above (or the main floor, from a hidden branch); from depth 1, to camp
@@ -1415,7 +1427,7 @@ function xDraw(T,dt){
     G.dust.position.set(EX.px,0,EX.pz); G.dust.material.opacity=.35+.15*Math.sin(T*.7); }
   for(const c of EX.chests) if(c.rich&&!c.open) c.mesh.position.y=Math.abs(Math.sin(T*2))*.05;
   const FL=XLIT.flick; G.lamp.intensity=1.6*XLIT.lamp*(.95+FL*(.04*Math.sin(T*9.3)+.03*Math.sin(T*21.1))); G.lamp.distance=16*XLIT.lampRad;
-  G.amb.intensity=.2*XLIT.amb; G.sun.intensity=.22*XLIT.sun; if(G.scene.fog){ G.scene.fog.near=XLIT.fogNear; G.scene.fog.far=Math.max(XLIT.fogNear+1,XLIT.fogFar); }
+  G.amb.intensity=.2*XLIT.amb; G.sun.intensity=.22*XLIT.sun; if(G.scene.fog){ G.scene.fog.near=XLIT.fogNear; G.scene.fog.far=Math.max(XLIT.fogNear+1,XLIT.fogFar); const fa=G.scene.fog.far+4; if(G.cam.far!==fa){ G.cam.far=fa; G.cam.updateProjectionMatrix(); } }
   xLightPool(T,dt); xDecorTick(T); xAirTick(T,dt); xWeatherTick(T,dt); xLifeTick(T,dt);
   { const lo=$('#xLowHp'); if(lo){ const r=EX.hp/xmaxHp(); lo.style.opacity=r<.3?(.55+.35*Math.sin(T*(r<.15?7:4))).toFixed(2):'0'; } } if(EX.myGlow){ EX.myGlow.position.x=EX.px; EX.myGlow.position.z=EX.pz; EX.myGlow.material.opacity=(.18+.03*FL*Math.sin(T*2.1))*XLIT.myGlow; }
   lookUse(EX.aoTex,XN*XCS,0,0); xRender(G); xFpsTick(dt);

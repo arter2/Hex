@@ -593,7 +593,7 @@ function fight(depth,waves,xo){
     onRecipe:r=>{ const first=!(save.recipes||{})[r.id]; save.recipes=save.recipes||{}; save.recipes[r.id]=1; persist(); banner((first?'⚗ New recipe! ':'⚗ ')+r.name,'#39ff8a'); },
     onHero:c=>banner('♔ '+c.name.split(',')[0]+' joins the fight!','#ffe066'),
     onEnd:win=>win?victory():defeat(),
-  },{prepare:p=>assignChargeUses(save,p,d.list), gear:gearMods(save), look:gearLook(save), waves, hp:xo&&xo.hp, opening:xo&&xo.opening, rule:xo&&xo.rule, soul});
+  },{prepare:p=>assignChargeUses(save,p,d.list), gear:gearMods(save), look:gearLook(save), waves, hp:xo&&xo.hp, opening:xo&&xo.opening, rule:xo&&xo.rule, tier:xo&&xo.tier||0, soul});
   B.explore=!!(xo&&xo.explore); B.trial=!!(xo&&xo.trial);
   if(B.opening==='strike') setTimeout(()=>banner('First Strike! They reel back','#39ff8a'),300);
   else if(B.opening) setTimeout(()=>banner(B.opening==='ambush'?'Ambush! They\'re slow to react':'Surprised! They strike first',B.opening==='ambush'?'#39ff8a':'#ff5d6c'),300);
@@ -609,7 +609,8 @@ function victory(){
   const rareX=typeof rareLoot==='function'?rareLoot(b,rw):null;   // a rare foe's great loot (rares.js)
   const outlaws=b.enemies.filter(e=>e.def.outlaw).length; if(outlaws) rw.gold=Math.round(rw.gold*(1+.2*outlaws));   // outlaws carry coin
   if(rw.gold) rw.gold=Math.round(rw.gold*(1+(gearMods(save).gold||0)));   // Ring of Fortune
-  const xp=fightXp(b.enemies.map(e=>({minion:e.def.minion,boss:e.def.boss,mini:e.def.mini})),b.depth), lvUp=gainXp(save,xp);
+  if(b.tier) rw.gold=Math.round(rw.gold*(1+.2*b.tier));   // foes the stirring dark made stronger carry more
+  const xp=Math.round(fightXp(b.enemies.map(e=>({minion:e.def.minion,boss:e.def.boss,mini:e.def.mini})),b.depth)*(1+.25*(b.tier||0))), lvUp=gainXp(save,xp);
   save.gold+=rw.gold; save.wins++; if(!b.explore&&!b.trial&&b.depth>=save.deepest) save.deepest=b.depth+1;
   const hpLeft=b.player.hp;
   const loot=rw.items.map(k=>({k, res:addLoot(save,k)}));

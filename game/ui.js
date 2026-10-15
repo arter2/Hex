@@ -595,6 +595,7 @@ function fight(depth,waves,xo){
     onEnd:win=>win?victory():defeat(),
   },{prepare:p=>assignChargeUses(save,p,d.list), gear:gearMods(save), look:gearLook(save), waves, hp:xo&&xo.hp, opening:xo&&xo.opening, rule:xo&&xo.rule, tier:xo&&xo.tier||0, soul});
   B.explore=!!(xo&&xo.explore); B.trial=!!(xo&&xo.trial);
+  if(B.explore&&typeof roomAllyStart==='function') roomAllyStart();   // a hired adventurer fights beside you (rooms.js)
   if(B.opening==='strike') setTimeout(()=>banner('First Strike! They reel back','#39ff8a'),300);
   else if(B.opening) setTimeout(()=>banner(B.opening==='ambush'?'Ambush! They\'re slow to react':'Surprised! They strike first',B.opening==='ambush'?'#39ff8a':'#ff5d6c'),300);
   hud(true);

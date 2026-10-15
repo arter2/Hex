@@ -1,6 +1,6 @@
 # Hexmancers: making it more fun
 
-Date: 2026-10-15 · Status: Part 1 ideas 1 and 5 are built (v59, v60) with rare foes; Part 2 is built (v58); Part 3 round 1 is built (v66)
+Date: 2026-10-15 · Status: Part 1 ideas 1 and 5 are built (v59, v60) with rare foes; Part 2 is built (v58); Part 3 rounds 1 and 2 are built (v66, v67)
 
 The game already has a deep loop: dungeon crawling (secrets, mimics, puzzles, escorts, branches),
 a real-time card battle (combos, curses, telegraphs), a deck builder, gear, missions, a shop and
@@ -288,12 +288,25 @@ Four rounds, one update each.
     depth), shards (8 + 2 per depth) and sometimes a sealed pack. Climbing back for it is optional.
   - The dungeon screen shows ⛓ Sealed, ◆ Wayshard and 🎒 D<depth> while they apply.
 
-### Round 2: rooms for risk, people and the new features (next)
+### Round 2: special rooms (built in v67)
 
-Monster nest (spawns until its egg sacs are smashed; farm on purpose), teleporter hub, pit room (a
-marked drop of two floors with treasure at the bottom), collapsing treasury, mirror room (fight a
-copy of yourself with your deck), gambler's den, forge, shrine of trade, wounded adventurer camp,
-haunted chapel.
+From depth 2, every 2 to 3 floors (never a boss floor or a hidden branch) a floor holds a special
+room, and 1 time in 4 two. The path map shows them before you choose a way (`game/rooms.js`).
+
+| Room | What happens |
+|---|---|
+| 🥚 Monster nest | 3 egg sacs (3 hits each). While one stands, a group of 1–2 foes hatches every 20 s (at most 3 out at once): farm it, or smash every sac for XP and a rich chest. |
+| 🌀 Teleporter hub | 3 pads, each with a pad back: two go to other rooms, the gold one into the floor's secret closet. Step off a pad before it works again. |
+| 🕳 Pit room | A marked drop: jump and fall 2 floors (never past an unbeaten boss), with a rich chest (sometimes legendary) beside you at the bottom. The Fallen Seal rules apply. |
+| 🏛 Collapsing treasury | A rich chest, 3 piles of gold and a piece of gear. Take anything and the ceiling falls for 14 s: stones hit you while inside, and at the end you are buried (25% of your health) and what is left is lost. |
+| 🪞 Mirror room | Touch the glass and your reflection fights you: a miniboss with a deck of your deck's colour. Beat it for a rare card of your colour, gold and XP. |
+| 🎲 Gambler's den | Dice for 3 stakes (higher roll doubles your bet, a tie returns it), or a blind card draw (4% legendary, 16% rare). 6 games per gambler. |
+| ⚒ Forge | Temper one piece of gear you wear: +1 level, free, once. |
+| ⚖ Shrine of trade | Give one spare card (one no deck needs) and get a random card one rarity higher, once. |
+| 🔥 Wounded adventurer | Rest by their fire (heal 35%, once), buy 2 Healing Draughts, or hire them (gold, or a Healing Draught) to fight beside you in your next 3 fights, shooting a foe every 3.5 s. |
+| 👻 Haunted chapel | A ghost asks you to bring back its bones, which lie in a far room of the floor. Return them for a rich reward and a tale. |
+
+Safe rooms (the den, forge, shrine, camp and chapel) keep monsters out.
 
 ### Round 3: exploration rooms
 

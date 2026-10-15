@@ -231,6 +231,7 @@ function xFloorPlan(depth,opt){
   const cap=F.merchant||F.sanct?3:5, extra=()=>Object.keys(F).filter(k=>!['merchant','sanct'].includes(k));
   while(extra().length<2){ const left=pool.filter(([k,p])=>!F[k]&&p>0); if(!left.length) break; F[xweighted(left)]=1; }
   while(extra().length>cap) delete F[xpick(extra())];
+  if(typeof xRarePlan==='function') xRarePlan(depth,F,boss);   // a special room every 2 to 3 floors (rooms.js)
   if(F.vault) pl.side.push({kind:'vault', lock:depth>=6&&XR()<.35?'gold':'silver', w:4, h:3, content:depth>=3&&XR()<.3?'mimic':depth>=4&&XR()<.3?'construct':'treasure'});
   if(F.prisoner) pl.side.push({kind:'cell', lock:'bronze'});
   if(F.lock) pl.locks=1+(depth>=8&&XR()<.4?1:0);
@@ -255,6 +256,7 @@ function xAssignRooms(){
   if(F.sanct&&!give(take(()=>true),'sanctuary',true)){ delete F.sanct; XRUN.next.sanct=EX.depth+1; }
   if(F.puzzle&&!give(take(r=>r.w>=5&&r.h>=5),'puzzle')) delete F.puzzle;
   if(F.mini&&MINI_MAP[F.mini].beh==='guard'&&!give(take(r=>r.w*r.h>=20),'lair')) F.mini='corruptknight';
+  if(typeof xRareAssign==='function') xRareAssign(F,give,take);
 }
 
 /* ---------------- filling a floor ---------------- */
@@ -276,7 +278,7 @@ function xChest(cell,o){ const ch=Object.assign({cell,open:false,trap:false,trap
 // a rock cell beside a room, for things mounted on walls
 function xWallSpot(r,avoid){ const out=[]; for(const c of xRoomCells(r)) for(const n of xAdj4(c)) if(EX.t[n]===T_ROCK&&!EX.wallAt.has(n)&&!(avoid&&avoid(n,c))) out.push([n,c]); return out.length?xpick(out):null; }
 // rooms anyone can reach from the stairs up without a key
-function xOpenRooms(reach,o){ return EX.rooms.filter(r=>!r.side&&!r.nook&&!r.safe&&r.role!=='puzzle'&&reach[xi(r.cx,r.cy)]>=0&&(!o||!o.notStart||r!==EX.start)&&(!o||o.not!==r)); }
+function xOpenRooms(reach,o){ return EX.rooms.filter(r=>!r.side&&!r.nook&&!r.safe&&r.role!=='puzzle'&&!r.rare&&reach[xi(r.cx,r.cy)]>=0&&(!o||!o.notStart||r!==EX.start)&&(!o||o.not!==r)); }
 /* Loose finds lying on the floor where you can see them: a potion or two, sometimes a scroll,
    and now and then a weapon or a piece of armor (more often deeper down). */
 function xPlaceFinds(){ const reach=xReach(), d=EX.depth, put=(kind,o)=>{ const c=xReachableCell(reach); if(c>=0) xItem(kind,c,o); };
@@ -291,7 +293,7 @@ function xPopulate(){
   EX.give={bronze:0, silver:0, gold:0, boss:0};   // keys this floor still has to hand out somewhere
   for(const r of EX.rooms){ if(r.side==='closet') xFillCloset(r); else if(r.side==='vault') xFillVault(r); else if(r.side==='cell') xFillCell(r); }
   for(const r of EX.rooms) if(r.behind){ const c=xFreeCell(r); if(c>=0) xChest(c,{rich:true}); }
-  for(const r of EX.rooms){ if(r.role==='merchant'&&!xPlaceMerchant(r,F.merchant)){ r.role=null; XRUN.next.merchant=d+1; } else if(r.role==='sanctuary'&&!xPlaceSanctuary(r,F.sanct)){ r.role=null; XRUN.next.sanct=d+1; } else if(r.role==='puzzle') xPlacePuzzle(r); else if(r.role==='lair') xPlaceLair(r,F.mini); }
+  for(const r of EX.rooms){ if(r.role==='merchant'&&!xPlaceMerchant(r,F.merchant)){ r.role=null; XRUN.next.merchant=d+1; } else if(r.role==='sanctuary'&&!xPlaceSanctuary(r,F.sanct)){ r.role=null; XRUN.next.sanct=d+1; } else if(r.role==='puzzle') xPlacePuzzle(r); else if(r.role==='lair') xPlaceLair(r,F.mini); else if(r.rare&&typeof xRareFill==='function') xRareFill(r); }
   if(F.mini&&MINI_MAP[F.mini].beh!=='guard') xPlaceMini(F.mini);
   if(F.npc) xPlaceNPC(xpick(['quest','quest','lost','scholar','peddler','rival']));
   if(EX.gate) xWallProp('lever',EX.gate.lever,EX.gate.side,{gate:true, on:false});
@@ -618,7 +620,7 @@ function xMeshProp(p){
       else { g.add(xBall(.3,clay,0,.3,0), xCyl(.16,.2,clay,0,.62,0), xCyl(.2,.06,rim,0,.72,0)); g.children[0].scale.y=1.1; }
       g.rotation.y=p.rot||0; break; }
     case 'seal': if(typeof xSealMesh==='function') xSealMesh(p,g); break;
-    default: if(typeof xMissionMesh==='function') xMissionMesh(p,g);
+    default: if(typeof xRareMesh==='function'&&xRareMesh(p,g)) break; if(typeof xMissionMesh==='function') xMissionMesh(p,g);
   }
   g.visible=false; p.mesh=g; X3.group.add(g); return g; }
 function xMeshItem(it){ if(!X3||!X3.group) return null; const g=new THREE.Group(); g.position.set(xw(it.cell),0,xz(it.cell));
@@ -639,6 +641,7 @@ function xMeshItem(it){ if(!X3||!X3.group) return null; const g=new THREE.Group(
     else if(slot==='head'){ const h=new THREE.Mesh(new THREE.SphereGeometry(.22,12,8,0,Math.PI*2,0,Math.PI/2),steel); m.add(h, xBox(.46,.05,.05,gold,0,.02,.18)); }
     else { m.add(xBox(.42,.4,.16,steel,0,0,0), xBox(.44,.06,.18,gold,0,.12,0), xBox(.14,.14,.14,steel,-.26,.13,0), xBox(.14,.14,.14,steel,.26,.13,0)); } }
   else if(typeof xDeepItemMesh==='function'&&(m=xDeepItemMesh(it))){}
+  else if(typeof xRareItemMesh==='function'&&(m=xRareItemMesh(it))){}
   else { m=new THREE.Group(); m.add(xBall(.2,xMat(0x8a5a32),0,0,0), xBox(.12,.08,.12,xMat(0xf2c94c),0,.18,0)); }
   m.position.y=.55; g.add(m); it.spin=m; g.visible=false; it.mesh=g; X3.group.add(g); return g; }
 function xMeshChest(ch){ if(typeof xChestMesh==='function'&&X3&&X3.group) X3.group.add(xChestMesh(ch)); }
@@ -666,6 +669,7 @@ function xBumpExtra(c,front){
 function xEnterExtra(c){
   const it=EX.itemAt.get(c); if(it) xPickup(it);
   for(const p of EX.props){ if(p.cell!==c||p.wall||p.gone) continue;
+    if(typeof xRareEnter==='function'&&xRareEnter(p)) return;
     if(p.kind==='pot'){ xBreakPot(p); continue; }
     if(p.kind==='corpse'){ xTakeBody(p); continue; }
     if(p.kind==='reset') xResetBlocks();
@@ -724,11 +728,13 @@ function xPickup(it){ EX.items=EX.items.filter(x=>x!==it); EX.itemAt.delete(it.c
   else if(it.kind==='crate'){ EX.carrying=it; xLog('You heave up '+it.owner+'’s crate. Bring it back to them.','loot'); }
   else if(it.kind==='mpage'&&typeof xMissionPickup==='function') xMissionPickup(it);
   else if(typeof xDeepPickup==='function'&&xDeepPickup(it)){}
+  else if(typeof xRarePickup==='function'&&xRarePickup(it)){}
   else if(it.kind==='quest'){ const q=XRUN&&XRUN.quests.find(x=>x.id===it.qid); if(q&&!q.done){ q.done=true; xLog('You find '+q.giver+'’s '+q.item+'. Their token glows warm in your pocket.','good'); xGrant(q.reward,'Quest reward'); } }
   persist(); xHud(); }
 
 /* ---------------- using things ---------------- */
 function xInteract(p){
+  if(typeof xRareInteract==='function'&&xRareInteract(p)) return;   // special rooms (rooms.js)
   const pz=EX.puzzle;
   switch(p.kind){
     case 'npc': return xTalk(p);
@@ -808,6 +814,7 @@ function xDungeonTick(dt){
   for(const p of EX.props) if(p.role==='rival'&&p.state==='idle'&&EX.vis[p.cell]){ p.seenT=(p.seenT||0)+dt; if(p.seenT>20){ p.state='race'; xLog(p.name+' laughs and sprints off toward the treasure!','warn'); } }
   if(typeof xMissionTick==='function') xMissionTick(dt);
   if(typeof xStirTick==='function') xStirTick(dt);
+  if(typeof xRareTick==='function') xRareTick(dt);
   if(EX.bellAt){ if(!EX.bellWarned&&EX.clock>EX.bellAt-25){ EX.bellWarned=1; xLog('A distant bell tolls. You have lingered too long.','warn'); xSfx('thud'); }
     if(EX.clock>=EX.bellAt){ EX.bellAt=0; const reach=xReach(); let c=EX.up; if(Math.hypot(xcx(c)-xcx(pc),xcy(c)-xcy(pc))<7){ const far=EX.rooms.filter(r=>!r.side&&!r.safe&&reach[xi(r.cx,r.cy)]>=0).sort((a,b)=>Math.hypot(b.cx-xcx(pc),b.cy-xcy(pc))-Math.hypot(a.cx-xcx(pc),a.cy-xcy(pc)))[0]; if(far) c=xi(far.cx,far.cy); }
       const g=xMiniGroup('executioner',c,{huntT:0}); EX.groups.push(g); xGroupSprites(g,X3.group); xLog('Heavy steps. The Executioner has come for you.','bad'); xSfx('thud'); } }
@@ -892,6 +899,7 @@ function xAfterFight(g,won,info){
   if(drops.length){ xLog((g.mini?'The '+ENEMY_DEFS[g.mini].name:'They')+' dropped '+drops.join(', ')+'.','loot'); xSfx('chime'); }
   if(g.mimicChest){ const ch=g.mimicChest; ch.mimic=ch.giant=false; ch.open=true; xLidOpen(ch); xLoot(true); if(ch.rich) xLoot(true); xChestAfter(ch); }
   if(typeof xMissionFight==='function') xMissionFight(g);
+  if(typeof xRareAfterFight==='function') xRareAfterFight(g);
   if(g.trial){ const p=g.trial; p.spent=true; if(p.flame) p.flame.visible=false;
     if(info&&info.ruleOK) xPuzzleSolved(); else xLog('The trial was broken. The altar goes dark.','bad'); }
   persist(); xHud(); }
@@ -931,7 +939,8 @@ const LINES={
   rival:['Another treasure hunter? Hah. Try to keep up.','The gilded chest on this floor is mine. Fair warning.'],
   hermit:['Sit. The ward holds. It always holds.','I have been down here longer than the stairs.'],
 };
-function xTalk(p){ if((p.role==='captive'||p.role==='scout')&&typeof xMissionTalk==='function') return xMissionTalk(p);
+function xTalk(p){ if(typeof xRareTalk==='function'&&xRareTalk(p)) return;
+  if((p.role==='captive'||p.role==='scout')&&typeof xMissionTalk==='function') return xMissionTalk(p);
   const L=xpick(LINES[p.role]||['…']), d=EX.depth;
   const done=t=>xDlg({look:p.look, title:p.name, sub:p.title, text:t, buttons:[['Farewell',null]]});
   if(p.role==='quest'){ if(p.state==='idle') return xDlg({look:p.look,title:p.name,sub:p.title,text:L+' I lost my '+p.item+(p.where===d?' somewhere on this floor':' on the floor below')+'. Find it and you’ll have '+rewardText(p.reward)+'.',
@@ -1090,6 +1099,7 @@ function xPaintExtra(){
 // every frame: things bob, spin, glow and swing
 function xDungeonDraw(T){
   for(const it of EX.items) if(it.spin&&it.mesh.visible){ it.spin.rotation.y=T*1.6; it.spin.position.y=.55+Math.sin(T*2.4+it.cell)*.08; }
+  if(typeof xRareAnim==='function') xRareAnim(T);
   for(const p of EX.props){ if(!p.mesh||!p.mesh.visible) continue;
     if(p.spr){ xRefresh(p.spr,false); p.spr.position.y=(Math.floor(T*1.4+p.cell*.37)%2)*2.2/96; }
     if(p.mark&&p.mark.isSprite){ const st=p.kind==='merchant'?'$':p.role==='prisoner'||p.state==='done'?'':p.state==='idle'?'!':p.state==='shop'?'$':'?'; p.mark.visible=!!st;
@@ -1122,6 +1132,7 @@ function xHudExtra(){ const el=$('#xStatus'); if(!el) return; const out=[];
   if(EX.ail&&EX.ail.poison>0) out.push('<span class="xs bad">☠ Poisoned</span>'); if(EX.ail&&EX.ail.curse) out.push('<span class="xs bad">☾ Cursed</span>');
   if(XRUN&&XRUN.attuned) out.push('<span class="xs good">✦ Blessed</span>');
   if(typeof xDeepHud==='function') xDeepHud(out);
+  if(typeof xRareHud==='function') xRareHud(out);
   if(typeof xMissionHud==='function') xMissionHud(out);
   const q=XRUN?XRUN.quests.filter(x=>!x.done&&!x.failed).length:0; if(q) out.push('<span class="xs">📜 '+q+'</span>');
   if(EX.carrying) out.push('<span class="xs">📦 crate</span>');

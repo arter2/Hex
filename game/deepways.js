@@ -23,7 +23,7 @@ const routeMods=k=>ROUTES[k]||ROUTES.plain;
 // what a planned floor holds, as icons
 const FEAT_ICON=[['merchant','🛒','merchant'],['sanct','✦','sanctuary'],['puzzle','🧩','puzzle'],['mini','👹','miniboss'],['vault','🔒','vault'],['prisoner','⛓','prisoner'],
   ['npc','👤','stranger'],['cache','💎','hidden cache'],['gauntlet','⚔','blade gauntlet'],['totem','☾','curse totem'],['lock','🗝','locked rooms'],['gate','🚪','shortcut gate']];
-function routeFeats(plan){ const F=plan&&plan.feats||{}; return FEAT_ICON.filter(([k])=>F[k]); }
+function routeFeats(plan){ const F=plan&&plan.feats||{}; return [...(F.rare||[]).map(k=>typeof RARE_ROOMS!=='undefined'&&RARE_ROOMS[k]?['rare',RARE_ROOMS[k].icon,RARE_ROOMS[k].name]:null).filter(Boolean),...FEAT_ICON.filter(([k])=>F[k])]; }
 // shape a plan to its way: the Quiet Way loses its dangers, the Perilous Way gains a miniboss, the Gilded Way a vault
 function routeShape(plan,kind,d){ const F=plan.feats;
   if(kind==='quiet'){ delete F.mini; delete F.gauntlet; delete F.totem; delete F.mimic; }

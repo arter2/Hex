@@ -305,8 +305,8 @@ let AR_Q={lights:AR_SPELL_N};   // how many spell lights auto quality allows (lo
 function arSpellPool(A){ if(A.spell) return A.spell; A.spell=[]; for(let k=0;k<AR_SPELL_N+1;k++){ const L=new THREE.PointLight(0xffffff,0,6,1.6); L.position.set(0,-50,0); A.scene.add(L); A.spell.push(L); } return A.spell; }
 function arenaSpellLights(T){ const A=AR, b=B; if(!A||!b) return; const pool=arSpellPool(A), want=[];
   const add=(wx,y,wz,col,k,r)=>{ if(k>.04&&col) want.push({wx,y,wz,col,k,r:r||5}); };
-  for(const s of b.shots||[]){ if(!(s.card||s.big)) continue; const from=s.i<0?s.a:s.tiles[s.i], to=s.tiles[s.i+1]||from; if(!from) continue; const k=Math.max(0,Math.min(1,s.stepT/s.speed));
-    add(from.wx+(to.wx-from.wx)*k,1,from.wz+(to.wz-from.wz)*k,s.card?colorOf(s.card):s.color||'#e6f4ff',s.big?2.6:1.9,s.big?6:5); }
+  for(const s of b.shots||[]){ if(!(s.card||s.big||s.buff)) continue; const from=s.i<0?s.a:s.tiles[s.i], to=s.tiles[s.i+1]||from; if(!from) continue; const k=Math.max(0,Math.min(1,s.stepT/s.speed));
+    add(from.wx+(to.wx-from.wx)*k,1,from.wz+(to.wz-from.wz)*k,s.buff&&WAND_BUFF[s.buff]?WAND_BUFF[s.buff].c:s.card?colorOf(s.card):s.color||'#e6f4ff',s.buff?(s.big?3:2.3):s.big?2.6:1.9,s.big?6:5); }
   for(const l of b.lobs||[]){ const k=l.t/l.dur; add(l.a.wx+(l.b.wx-l.a.wx)*k,1+Math.sin(k*Math.PI)*3,l.a.wz+(l.b.wz-l.a.wz)*k,colorOf(l.card),1.8,5.5); }
   for(const f of b.fx||[]){ if(!['beam','bolt','ring','arc'].includes(f.kind)) continue; const e=(f.b||f.a), al=1-f.t/f.life;
     add((f.a.wx+e.wx)/2,1,(f.a.wz+e.wz)/2,f.color,(f.kind==='ring'?2.2:3.6)*al,f.kind==='ring'?4:8); }

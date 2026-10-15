@@ -784,6 +784,14 @@ function updateAlly(a,dt){
 // a trap springs when an enemy steps on it
 function springTrap(t,e){ const c=t.trap.card; t.trap=null; floater(c.name,t,colorOf(c));
   const ts=c.trap==='blast'?patternTiles(t,'burst','e'):[t]; ts.forEach(x=>{ flash(x,colorOf(c),1); burst(x,colorOf(c),8,.3); hitAt(x,c.pow,c); }); }
+/* How a buffed wand looks. While a Power boon runs (wand x2.5) your shots fly big, orange-red and
+   burning; under a Pact (+30%, paid in health) they are dark crimson; under Courage (+30%) golden.
+   Each leaves a trail of sparks and lights the arena as it flies, and the weapon's tip wears the same
+   colour with an aura that gives off sparks. Power wins when more than one is running. */
+const WAND_BUFF={power:{c:'#ff6a3d', c2:'#ffd27a', size:1.55, trail:2.2, name:'Power'},
+                 pact:{c:'#c0183c', c2:'#ff5a7a', size:1.3, trail:1.8, name:'Pact'},
+                 courage:{c:'#f2c94c', c2:'#fff3b0', size:1.3, trail:1.6, name:'Courage'}};
+const wandBuff=p=>!p?null:p.powerT>0?'power':p.pactT>0?'pact':p.courageT>0?'courage':null;
 function shoot(from,tiles,o){ B.shots.push(Object.assign({a:from,tiles,i:-1,stepT:0,speed:o.from==='p'?.045*((B.player&&B.player.shotSpeed)||1):.08,hit:new Set()},o)); }
 
 function fireWand(charged){ if(B&&B.player){ B.player.poseT=B.time; B.player.poseK='attack'; }
@@ -798,7 +806,7 @@ function fireWand(charged){ if(B&&B.player){ B.player.poseT=B.time; B.player.pos
     freeze:charged?w.chill:0, stun:w.zap&&Math.random()<w.zap?.5:0, mend:charged?w.glow:0}:null;
   const un=soulUnison();
   if(un){ card=un(charged); dmg=Math.round(dmg*1.5); }
-  const row=lineTiles(p.tile,DIRS.E), o=()=>({dmg,from:'p',wand:true,big:charged,card});
+  const row=lineTiles(p.tile,DIRS.E), buff=wandBuff(p), o=()=>({dmg,from:'p',wand:true,big:charged,card,buff});
   // each kind of weapon fires its own way (see WEAPON_KINDS in gear.js)
   switch(w.kind){
     case 'staff': shoot(p.tile,row,Object.assign(o(),{pierce:charged?1:0})); break;
@@ -857,6 +865,8 @@ function update(dt){
   // your shots and enemy shots travel tile by tile
   for(const s of b.shots){
     s.stepT+=dt;
+    if(s.buff&&!s.done){ s.sparkT=(s.sparkT||0)-dt; if(s.sparkT<=0){ s.sparkT=.035; const L=WAND_BUFF[s.buff], f=s.i<0?s.a:s.tiles[s.i], t2=s.tiles[s.i+1]||f;
+      if(f){ const k=clamp(s.stepT/s.speed,0,1); spray({wx:f.wx+(t2.wx-f.wx)*k, wz:f.wz+(t2.wz-f.wz)*k},1,{shape:'glow',color:[L.c,L.c2],y:1,v0:.1,v:.6,up0:-.3,up:.6,g:s.buff==='power'?-1.5:0,drag:2,life:.35,s:s.big?5:3.5,add:true,shrink:1}); } } }
     while(s.stepT>=s.speed&&!s.done){ s.stepT-=s.speed; s.i++;
       const t=s.tiles[s.i]; if(!t){ s.done=true; break; }
       const o=t.occ;
@@ -1267,6 +1277,13 @@ function render(){
 
   for(const s of b.shots){
     const from=s.i<0?s.a:s.tiles[s.i], to=s.tiles[s.i+1]||from, k=clamp(s.stepT/s.speed,0,1), S=scaleAt(from.wx,from.wz);
+    if(s.buff&&WAND_BUFF[s.buff]){ const L=WAND_BUFF[s.buff], [tx,ty]=proj(from.wx,1,from.wz), wx=from.wx+(to.wx-from.wx)*k, wz=from.wz+(to.wz-from.wz)*k, [x,y]=proj(wx,1,wz), r=S*(s.big?.26:.13)*L.size;
+      // a glowing trail back to the last tile, a hot core over a coloured halo
+      ctx.save(); ctx.globalCompositeOperation='lighter'; ctx.lineCap='round';
+      ctx.strokeStyle=L.c; ctx.globalAlpha=.4; ctx.lineWidth=r*L.trail; ctx.beginPath(); ctx.moveTo(tx,ty); ctx.lineTo(x,y); ctx.stroke();
+      ctx.strokeStyle=L.c2; ctx.globalAlpha=.55; ctx.lineWidth=r*.7; ctx.beginPath(); ctx.moveTo(tx,ty); ctx.lineTo(x,y); ctx.stroke();
+      const g=ctx.createRadialGradient(x,y,0,x,y,r*2.4); g.addColorStop(0,'#ffffff'); g.addColorStop(.3,L.c2); g.addColorStop(.6,L.c); g.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.globalAlpha=1; ctx.fillStyle=g; ctx.beginPath(); ctx.arc(x,y,r*2.4*(1+.12*Math.sin(B.time*40)),0,TAU); ctx.fill(); ctx.restore(); continue; }
     { const tc=s.card?colorOf(s.card):s.color||'#e6f4ff', [tx,ty]=proj(from.wx,1,from.wz), [hx,hy]=proj(from.wx+(to.wx-from.wx)*k,1,from.wz+(to.wz-from.wz)*k);
       ctx.strokeStyle=tc; ctx.globalAlpha=.45; ctx.lineWidth=S*(s.wand?.08:.14); ctx.beginPath(); ctx.moveTo(tx,ty); ctx.lineTo(hx,hy); ctx.stroke(); ctx.globalAlpha=1; }
     const wx=from.wx+(to.wx-from.wx)*k, wz=from.wz+(to.wz-from.wz)*k, [x,y]=proj(wx,1,wz);
@@ -1373,9 +1390,17 @@ const DRAW={
     const flip=facing(p,foe,false), r=drawSprite(ctx,p,T,S,{alpha:p.invT>0?.45:1,flip,step:moving?Math.floor(T*7)%2:Math.floor(T*1.6)%2,flash:p.hurtT>0?p.hurtT*3:0});
     // the staff's orb glows, and grows while the wand charges
     const wc=p.wand&&p.wand.color?COLORS[p.wand.color].c:null;
-    const glow=p.charging?(p.chargeT>=chargeNeed(p)?'#ffffff':wc||'#7fd4ff'):p.powerT>0?'#ff6a3d':wc;
+    const bf=wandBuff(p), BL=bf&&WAND_BUFF[bf];
+    const glow=p.charging?(p.chargeT>=chargeNeed(p)?'#ffffff':BL?BL.c:wc||'#7fd4ff'):BL?BL.c:wc;
     if(glow&&(!p.look||['staff','wand'].includes(p.look.weapon))){ const sp=unitSprite(p), tp=sp&&sp.tip, ox=tp?r.x+(flip?-1:1)*(tp[0]-.5)*r.H:r.x+(flip?-1:1)*9*r.k, oy=tp?r.top-r.k+tp[1]*r.H:r.top+4*r.k; ctx.fillStyle=glow; ctx.shadowColor=glow; ctx.shadowBlur=10+(p.charging?p.chargeT*18:0);
-      ctx.globalAlpha=.85; ctx.beginPath(); ctx.arc(ox,oy,S*(.12+(p.charging?p.chargeT*.12:0)),0,TAU); ctx.fill(); ctx.shadowBlur=0; ctx.globalAlpha=1; }
+      ctx.globalAlpha=.85; ctx.beginPath(); ctx.arc(ox,oy,S*(.12+(p.charging?p.chargeT*.12:0)),0,TAU); ctx.fill(); ctx.shadowBlur=0; ctx.globalAlpha=1;
+      // a buff's aura around the weapon: a pulsing halo, a ring turning about the tip, and sparks
+      if(BL){ const pu=.5+.5*Math.sin(T*7), R=S*(.62+.1*pu); ctx.save(); ctx.globalCompositeOperation='lighter';
+        const g=ctx.createRadialGradient(ox,oy,0,ox,oy,R); g.addColorStop(0,BL.c2); g.addColorStop(.35,BL.c); g.addColorStop(1,'rgba(0,0,0,0)');
+        ctx.globalAlpha=.5+.25*pu; ctx.fillStyle=g; ctx.beginPath(); ctx.arc(ox,oy,R,0,TAU); ctx.fill();
+        ctx.strokeStyle=BL.c2; ctx.lineWidth=Math.max(1.5,S*.03); ctx.globalAlpha=.7; ctx.setLineDash([S*.08,S*.06]); ctx.lineDashOffset=-T*S*.6;
+        ctx.beginPath(); ctx.arc(ox,oy,S*.36,0,TAU); ctx.stroke(); ctx.setLineDash([]); ctx.restore();
+        if(Math.random()<.5) spray(p.tile,1,{shape:'glow',color:[BL.c,BL.c2],y:2.1,v0:.2,v:.9,up0:.6,up:2,g:bf==='power'?-2:-.5,drag:1.5,life:.7,s:5,add:true,shrink:1}); } }
     const [x,y]=proj(posOf(p)[0],0,posOf(p)[1]);
     if(p.barrier>0){ ctx.strokeStyle='rgba(111,214,255,.85)'; ctx.lineWidth=2.5; ctx.beginPath(); ctx.ellipse(x,y-r.H*.45,S*.75,r.H*.55,0,0,TAU); ctx.stroke();
       ctx.globalAlpha=.12; ctx.fillStyle='#6fd6ff'; ctx.fill(); ctx.globalAlpha=1; }

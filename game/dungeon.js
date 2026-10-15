@@ -137,6 +137,7 @@ function xRollReward(depth,kinds,rich){
   if(k==='chute') return isBossDepth(depth+1)||!EX||EX.branch?{key:'silver'}:{chute:depth+1};
   if(k==='solution') return {solution:1};
   if(k==='card') return {card:rollCard({depth:depth+2,min:rich?'rare':'uncommon'},XR)};
+  if(k==='pack') return {pack:true, color:typeof packFor==='function'?packFor(depth):null};
   if(k==='lore'){ const u=unreadLore(); return u.length?{lore:xpick(u).id}:{mat:'essence',n:1}; }
   return {gold:60};
 }
@@ -150,6 +151,7 @@ function rewardText(r){
   if(r.chute) return 'a chute on the next floor that drops you a floor further';
   if(r.solution) return 'the answer to the next lever or rune puzzle';
   if(r.card) return 'the card '+r.card.name;
+  if(r.pack) return 'a sealed '+(typeof packName==='function'?packName(r.color):'card pack');
   if(r.lore) return 'the tale "'+loreOf(r.lore).title+'"';
   return 'nothing';
 }
@@ -164,6 +166,7 @@ function xGrant(r,why){ if(why) xXp(15+2*EX.depth,why.toLowerCase());
   if(r.chute&&XRUN) XRUN.chute=r.chute;
   if(r.solution&&XRUN) XRUN.solution++;
   if(r.card){ const res=addCards(save,[r.card]); xCardPop(r.card,res[0]&&res[0].isNew); }
+  if(r.pack&&typeof packReward==='function') packReward(r.color,EX.depth);   // opens over whatever is showing
   if(r.lore) addLore(r.lore);
   persist(); xLog((why?why+': ':'')+t+'.',r.perm?'good':r.gold?'gold':'loot'); tip(t.charAt(0).toUpperCase()+t.slice(1)); xSfx('chime');
   if(typeof xHud==='function') xHud();

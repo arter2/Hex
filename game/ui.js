@@ -586,13 +586,18 @@ function victory(){
   const res=addCards(save,rw.cards); const burnt=settleCharges();
   const depth=b.depth;
   const hero=rw.cards.find(c=>c.rarity==='hero');
+  // a sealed pack, now and then: 2 area bosses in 5, 1 miniboss in 5 (opened before the victory screen)
+  const mini=!boss&&b.enemies.some(e=>e.def.mini), pack=typeof packReward==='function'&&!b.trial&&Math.random()<(boss?.4:mini?.2:0), packC=pack?packFor(depth):null;
   const got=[...rw.cards.map(c=>c.name),...(rw.gold?[rw.gold+' gold']:[]),...rw.items.map(k=>{ const l=lootLabel(save,k); return l.icon+' '+l.name; })];
   logCamp((boss?'Boss defeated':'Won')+' at depth '+depth+'.','win'); got.forEach(g=>logCamp('Found '+g.replace(/^[^A-Za-z0-9]+/u,'')+'.',/gold$/.test(g)?'gold':'loot'));
   loot.forEach(l=>{ if(l.res&&l.res.cursed) logCamp(l.res.msg,'curse'); });
+  const show=()=>{
   reveal(hero?'♔ A hero joins you!':boss?'Boss defeated!':'Victory!',(hero?hero.name+' answers your call. ':'')+(boss&&!b.trial?'The way down to '+areaOf(depth+1).name+' is open. ':'')+(b.explore?'Won in '+Math.round(b.time)+'s. ':'Depth '+depth+' cleared in '+Math.round(b.time)+'s. ')+(boss?'Boss rewards: ':'Your reward: ')+got.join(', ')+'.'+loot.map(l=>l.res&&l.res.cursed?' '+l.res.msg:l.res&&l.res.ok?' You put it on.':'').join('')+burnt,res,
     b.explore?[['Keep exploring',()=>{ const ruleOK=!!(b.rule&&b.rule.ok); B=null; resumeExplore(hpLeft,true,{ruleOK}); }]]
     :[['Camp',()=>{ B=null; pickDepth=depth+1; openCamp(); },true],['Depth '+(depth+1)+' →',()=>fight(depth+1)]],
     [{pic:'<b class="xpic">XP</b>',name:'+'+xp+' XP',text:lvUp?'Level '+save.level+'! +'+(lvUp*LEVEL_POINTS)+' stat points':xpLine()},...(rw.gold?[{pic:uiIcon('coin',64),name:rw.gold+' gold',text:'Spend it on packs in the shop'}]:[]),...rw.items.map(k=>Object.assign(lootLabel(save,k),{pic:lootPic(k)}))]);
+  };
+  if(pack){ logCamp('Won a sealed '+packName(packC)+'.','loot'); packReward(packC,depth,show); } else show();
 }
 function defeat(){
   const lost=Math.floor(save.gold*.2); save.gold-=lost; const burnt=settleCharges();

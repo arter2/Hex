@@ -122,7 +122,7 @@ function shopSell(o){ if(shopSpare(o.id)<1) return; save.owned[o.id]--; if(save.
 /* ---------------- opening a pack ----------------
    The pack shakes, then bursts in a flash; its cards land face down in a fan and turn over one at a
    time in a random order (a rare or better one glows as it turns). Tap to turn the rest at once. */
-function packOpen(color,res){ const ov=$('#packOpen'), stage=$('#poStage'), fan=$('#poFan'), done=$('#poDone'); fan.innerHTML=''; stage.innerHTML=''; done.hidden=true;
+function packOpen(color,res,onDone){ const ov=$('#packOpen'), stage=$('#poStage'), fan=$('#poFan'), done=$('#poDone'); fan.innerHTML=''; stage.innerHTML=''; done.hidden=true;
   const pk=packArt(color,150); pk.className='popack'; stage.appendChild(pk); ov.classList.add('on'); ov.classList.remove('burst');
   const order=res.map((_,i)=>i).sort(()=>Math.random()-.5), slots=[];
   res.forEach((r,i)=>{ const s=document.createElement('div'); s.className='poslot'; s.style.setProperty('--i',i-(res.length-1)/2);
@@ -132,7 +132,13 @@ function packOpen(color,res){ const ov=$('#packOpen'), stage=$('#poStage'), fan=
   let k=0, t=null; const turn=()=>{ if(k>=order.length){ done.hidden=false; return; } slots[order[k++]].classList.add('up'); if(typeof buzz==='function') buzz(8); t=setTimeout(turn,380+Math.random()*320); };
   setTimeout(()=>{ ov.classList.add('burst'); if(typeof buzz==='function') buzz(30); setTimeout(()=>{ stage.innerHTML=''; t=setTimeout(turn,350); },380); },700);
   ov.onclick=()=>{ if(ov.classList.contains('burst')&&k<order.length){ clearTimeout(t); while(k<order.length) slots[order[k++]].classList.add('up'); done.hidden=false; } };
-  done.onclick=e=>{ e.stopPropagation(); clearTimeout(t); ov.classList.remove('on','burst'); const n=res.filter(r=>r.isNew).length; if(n) tip(n+' new card'+(n>1?'s':'')+' for your collection'); }; }
+  done.onclick=e=>{ e.stopPropagation(); clearTimeout(t); ov.classList.remove('on','burst'); const n=res.filter(r=>r.isNew).length; if(n) tip(n+' new card'+(n>1?'s':'')+' for your collection'); if(onDone) onDone(); }; }
+/* A pack found or won (a chest, a boss, a mission): the area's own family more often than not, else a
+   booster; its cards go to your collection and it opens at once. Packs are uncommon finds: about 1 rich
+   chest in 8, 1 plain chest in 30, 2 boss fights in 5, 1 miniboss in 5 and 1 mission reward in 12. */
+function packFor(depth){ const A=areaOf(depth||1); return Math.random()<.6&&COLORS[A.color]?A.color:null; }
+const packName=c=>c?COLORS[c].name+' pack':'Booster pack';
+function packReward(color,depth,onDone){ const res=addCards(save,openPack(Math.max(depth||1,save.deepest||1),color)); persist(); packOpen(color,res,onDone); return res; }
 
 // the tabs, and closing the sheet by tapping outside it
 document.querySelectorAll('#shopTabs button').forEach(b=>b.onclick=()=>{ shopTab=b.dataset.tab; renderShop(); });

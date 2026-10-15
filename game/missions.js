@@ -54,7 +54,7 @@ const XM_START={
       const c=xFreeSolid(r,true); if(c<0) continue; const gc=xFreeCell(r); if(gc<0) continue;
       const d=EX.depth, p=xPlaceNPCAt('captive',c,{state:'captive'});
       const dist=xbfs(EX.t,EX.doors,c,null,n=>xSolid(n)&&n!==c)[EX.pc], secs=Math.round(30+Math.max(8,dist)/3.5*1.7);
-      const q=xmQuestAdd({kind:'rescue', giver:p.name, cell:c, room:r.id, left:secs, reward:xRollReward(d,[['gold',2],['gear',2],['perm',1],['bag',1.5],['key',1]],true)});
+      const q=xmQuestAdd({kind:'rescue', giver:p.name, cell:c, room:r.id, left:secs, reward:xRollReward(d,[['gold',2],['gear',2],['perm',1],['bag',1.5],['key',1],['pack',.7]],true)});
       p.qid=q.id; xMeshProp(p);
       const wave=makeEncounter(d)[0]; xmGroup(wave.slice(0,Math.min(wave.length,2+(d>=4?1:0))),gc,'guard',{mission:q.id});
       xUpdateVis(); xSfx('whisper',Math.sign(xcx(c)-xcx(EX.pc)));
@@ -63,7 +63,7 @@ const XM_START={
     return false; },
   bounty(){ const r=xmFarRooms()[0]; if(!r) return false; const c=xFreeCell(r); if(c<0) return false; const d=EX.depth;
     const wave=makeEncounter(d+1)[0], ids=wave.slice(0,Math.min(3,wave.length)), name=xpick(BOUNTY_NAMES), what=ENEMY_DEFS[ids[0]].name;
-    const q=xmQuestAdd({kind:'bounty', giver:'the Hunters’ Lodge', name, what, reward:xRollReward(d+1,[['gold',4],['gear',2],['mat',1]],true)});
+    const q=xmQuestAdd({kind:'bounty', giver:'the Hunters’ Lodge', name, what, reward:xRollReward(d+1,[['gold',4],['gear',2],['mat',1],['pack',.7]],true)});
     xmGroup(ids,c,'wander',{mission:q.id, elite:true, tagTxt:'♛', tagCol:'#ffd166'});
     xSfx('chime'); xDlg({title:'Wanted', sub:'A messenger bird drops a note', icon:['scroll','#f2c94c'], text:'WANTED: '+name+', a '+what+' and its pack, loose on this floor. Look for the gold crown (♛). Bring it down and the Hunters’ Lodge pays '+rewardText(q.reward)+'.', buttons:[['Take the bounty',null]]});
     xLog('Bounty: hunt down '+name+' (♛) on this floor.','loot'); return true; },
@@ -71,25 +71,25 @@ const XM_START={
     for(let dy=-6;dy<=6;dy++) for(let dx=-6;dx<=6;dx++){ const c=xi(px+dx,py+dy), n=Math.max(Math.abs(dx),Math.abs(dy)); if(n<3||px+dx<0||py+dy<0||px+dx>=XN||py+dy>=XN) continue;
       if(EX.t[c]===T_FLOOR&&reach[c]>=0&&!EX.taken.has(c)&&!EX.safe.has(c)&&!EX.traps.some(t=>t.cell===c)) cs.push(c); }
     if(!cs.length) return false; const c=xpick(cs), d=EX.depth;
-    const p=xPlaceNPCAt('scout',c,{state:'idle', hp:3, reward:xRollReward(d,[['gold',2],['bag',2],['perm',1],['chute',1],['key',1.5]])}); p.solid=false; xMeshProp(p);
+    const p=xPlaceNPCAt('scout',c,{state:'idle', hp:3, reward:xRollReward(d,[['gold',2],['bag',2],['perm',1],['chute',1],['key',1.5],['pack',.7]])}); p.solid=false; xMeshProp(p);
     for(let i=0;i<XN*XN;i++) if(Math.hypot(xcx(i)-xcx(c),xcy(i)-xcy(c))<1.6) EX.seen[i]=1;
     xUpdateVis(); xSfx('whisper',Math.sign(xcx(c)-px)); xLog('Someone limps out of the dark to the '+xmDir(c)+'.','loot'); xTalk(p); return true; },
   purge(){ const rooms=xmFarRooms().concat(xOpenRooms(xReach(),{notStart:true}).filter(r=>!r.role)), used=new Set(), cells=[];
     for(const r of rooms){ if(cells.length>=3) break; if(used.has(r.id)) continue; const c=xFreeSolid(r,true); if(c<0) continue; used.add(r.id); cells.push(c); }
     if(cells.length<3) return false;
-    const q=xmQuestAdd({kind:'purge', giver:'the floor’s curse', need:3, got:0, reward:xRollReward(EX.depth,[['perm',1.5],['gold',2],['mat',2],['lore',1]],true)});
+    const q=xmQuestAdd({kind:'purge', giver:'the floor’s curse', need:3, got:0, reward:xRollReward(EX.depth,[['perm',1.5],['gold',2],['mat',2],['lore',1],['pack',.7]],true)});
     for(const c of cells){ const b=xProp('brazier',c,{qid:q.id, lit:true}); xMeshProp(b); }
     xUpdateVis(); xSfx('grind'); xDlg({title:'Violet fire', icon:['skull','#b48cff'], text:'Somewhere on this floor three braziers flare up in violet fire, and the air turns cold and sour. Find them and snuff them out (walk into each) to lift the curse.', buttons:[['On it',null]]});
     xLog('Snuff the 3 cursed braziers on this floor.','loot'); return true; },
   collect(){ const reach=xReach(), cells=[]; for(let k=0;k<40&&cells.length<5;k++){ const c=xReachableCell(reach,{notStart:k>10}); if(c>=0&&!cells.includes(c)&&!EX.vis[c]) cells.push(c); }
     if(cells.length<5) return false;
-    const q=xmQuestAdd({kind:'collect', giver:'a lost explorer', need:5, got:0, reward:xRollReward(EX.depth,[['lore',2],['gold',2],['bag',1],['solution',1],['perm',.7]],true)});
+    const q=xmQuestAdd({kind:'collect', giver:'a lost explorer', need:5, got:0, reward:xRollReward(EX.depth,[['lore',2],['gold',2],['bag',1],['solution',1],['perm',.7],['pack',.7]],true)});
     for(const c of cells){ const it=xItem('mpage',c,{qid:q.id}); xMeshItem(it); }
     xUpdateVis(); xDlg({title:'Scattered pages', icon:['scroll','#e8e0c8'], text:'A cold gust sweeps through the halls and something flutters past you: the pages of an old explorer’s journal, scattered across this floor. Find all five.', buttons:[['Gather them',null]]});
     xLog('Find the 5 journal pages on this floor.','loot'); return true; },
   nest(){ const r=xmFarRooms()[0]; if(!r) return false; const d=EX.depth, cells=[]; for(let k=0;k<12&&cells.length<3;k++){ const c=xFreeCell(r); if(c>=0&&!cells.includes(c)){ cells.push(c); EX.taken.add(c); } }
     if(cells.length<3) return false;
-    const q=xmQuestAdd({kind:'nest', giver:'the nest', need:3, got:0, reward:xRollReward(d,[['gold',3],['mat',2],['gear',1.5],['bag',1]],true)});
+    const q=xmQuestAdd({kind:'nest', giver:'the nest', need:3, got:0, reward:xRollReward(d,[['gold',3],['mat',2],['gear',1.5],['bag',1],['pack',.7]],true)});
     for(const c of cells){ const wave=makeEncounter(d)[0]; xmGroup(wave.slice(0,1+Math.floor(XR()*2)),c,XR()<.5?'sleep':'wander',{mission:q.id, tagTxt:'☠', tagCol:'#ff6b6b'}); }
     xSfx('thud'); xDlg({title:'A nest hatches', icon:['skull','#ff6b6b'], text:'Skittering fills the walls and a wet, hungry chittering comes from the '+xmDir(xi(r.cx,r.cy))+'. A nest has hatched on this floor. Wipe out its three broods (☠).', buttons:[['Hunt them',null]]});
     xLog('Wipe out the nest’s 3 broods (☠).','loot'); return true; },

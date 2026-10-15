@@ -1204,6 +1204,8 @@ function xOpenChest(ch){
 }
 // chest loot: a card, gold or a piece of gear
 function xLoot(rich){ const d=EX.depth+(rich?2:0), r=Math.random();
+  if(Math.random()<(rich?.12:.035)&&typeof packReward==='function'){ const c=packFor(EX.depth); xLog('The chest holds a sealed '+packName(c)+'!','loot'); tip(packName(c)+'!');   // a pack: opened at once, the dungeon holding still
+    xPause(true); packReward(c,d,()=>xPause(false)); return; }
   if(r<.42){ const c=rollCard({depth:d,min:rich?'uncommon':null}); const res=addCards(save,[c]); xLog('The chest holds a card: '+c.name+(res[0]&&res[0].isNew?' (new!)':'')+'.','loot'); xCardPop(c,res[0]&&res[0].isNew); }
   else if(r<.76){ const g=Math.round(battleGold(d,false)*rnd(.5,1.1)); save.gold+=g; xLog('The chest holds '+g+' gold.','gold'); tip('+'+g+' gold'); xCoins(EX.pc,Math.min(10,3+(g/12|0))); }
   else { const k=rollLoot(d,Math.random,rich); const l=lootLabel(save,k), res=addLoot(save,k); xLog('The chest holds '+l.name+'.'+(res&&res.cursed?' '+res.msg:''),'loot'); tip(l.name); }

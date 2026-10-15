@@ -1354,3 +1354,9 @@ body.ui-phone:not(.wide) #goChar{grid-column:1 / -1}
 @keyframes chainPop{from{transform:translateX(-50%) scale(calc(var(--s,1) * 1.25))}to{transform:translateX(-50%) scale(var(--s,1))}}
 @keyframes chainBurst{0%{transform:translateX(-50%) scale(.6);opacity:1}25%{transform:translateX(-50%) scale(1.5)}70%{opacity:1}100%{transform:translateX(-50%) scale(1.2) translateY(-10px);opacity:0}}
 @media (prefers-reduced-motion:reduce){.chainctr.pop,.chainctr.burst{animation:none}}
+/* the Run button in the battle's top bar */
+#hudTop{grid-template-columns:1fr auto auto auto}
+#btnRun.runbtn{min-height:34px;padding:0 10px;font-size:14px}
+#btnRun[hidden]{display:none}
+#runSheet{z-index:9}
+#runSheet .btn{flex-direction:row; justify-content:center; gap:6px}

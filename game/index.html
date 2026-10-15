@@ -219,6 +219,7 @@
     <div id="hudTop">
       <div class="hp"><div class="meter big hpmeter"><i id="hpBar"></i><span id="hpTxt"></span></div></div>
       <div class="info"><span id="depthTxt"></span><span id="pileTxt"></span></div>
+      <button id="btnRun" class="btn ghost small runbtn" aria-label="Run from the fight">Run</button>
       <button id="btnMenu" class="btn ghost sq small" aria-label="Pause">⋯</button>
       <button id="btnCustom" class="btn custgauge" disabled><i id="gaugeBar"></i><span id="custLbl">Spell</span></button>
       <div id="buffs"></div>
@@ -280,6 +281,17 @@
   <div id="shopSheet" class="overlay sheet"><div class="panel ssheet"><div id="shopSheetBody" class="sbody"></div><div class="controls two"><button id="shopSheetClose" class="btn ghost">Back</button><button id="shopBuy" class="btn"></button></div></div></div>
   <div id="packOpen" class="overlay"><div class="pobox"><div id="poStage" class="postage"></div><div id="poFan" class="pofan"></div><p class="hint center">Tap a card to turn it over</p><button id="poDone" class="btn" hidden>Collect</button></div></div>
   <!-- one pause menu for the dungeon and the battle -->
+  <div id="runSheet" class="overlay">
+    <div class="panel narrow">
+      <h2>Run away?</h2>
+      <p id="runText" class="hint center"></p>
+      <div class="stack">
+        <button id="runGold" class="btn"></button>
+        <button id="runCard" class="btn"></button>
+        <button id="runStay" class="btn ghost">Stay and fight</button>
+      </div>
+    </div>
+  </div>
   <div id="pause" class="overlay">
     <div class="panel narrow">
       <h2>Paused</h2>

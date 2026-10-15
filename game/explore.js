@@ -1220,7 +1220,8 @@ function xEnemies(dt){
     if(g.dormant) continue;
     const d=Math.hypot(g.x-EX.px,g.z-EX.pz), cells=d/XCS;
     if(EX.vis[g.cell]&&g.state!=='sleep'&&cells>2.2&&!(g.stealth&&cells>3.2)){ g.seen=true; g.surprise=false; }
-    if(g.mini&&typeof xMiniStep==='function') xMiniStep(g,dt,cells);
+    if(g.dazeT>0) g.dazeT-=dt;
+    else if(g.mini&&typeof xMiniStep==='function') xMiniStep(g,dt,cells);
     else if(g.state==='sleep'){ g.wakeT-=dt; if(g.wakeT<=0){ g.wakeT=1; if(xSeesCell(g,EX.pc,sn)&&Math.random()<.3*sn){ g.state='chase'; g.surprise=!EX.vis[g.cell]; if(EX.vis[g.cell]) xLog(ENEMY_DEFS[g.ids[0]].name+' wakes up!','warn'); } } }
     else if(g.state==='guard'){ if(EX.room[EX.pc]===EX.room[g.home]&&EX.room[EX.pc]>=0){ g.state='chase'; xLog(ENEMY_DEFS[g.ids[0]].name+' rises to face you!','warn'); } }
     else { const sees=!safe&&xSeesCell(g,EX.pc,sn);
@@ -1236,7 +1237,7 @@ function xEnemies(dt){
         if(l<.2){ g.path.shift(); const dr=EX.doors.get(n); if(dr&&dr.state==='closed'){ dr.state='open'; xDoorOpen(dr,g.cell); if(EX.seen[n]) xUpdateVis(); } }
         else { g.x+=tx/l*Math.min(sp,l); g.z+=tz/l*Math.min(sp,l); g.face=tx<0?-1:1; g.head=Math.atan2(tz,tx); } }
       const c=xcell(g.x,g.z); if(c>=0) g.cell=c; }
-    if(d<1.15&&!EX.busy&&!safe){ xEngage(g); return; }   // nothing fights you inside a sanctuary or a merchant's room
+    if(d<1.15&&!EX.busy&&!safe&&!(g.dazeT>0)){ xEngage(g); return; }   // nothing fights you inside a sanctuary or a merchant's room
   }
 }
 /* What an enemy can see. Awake, it looks the way it walks: a 120° cone out to 7.5 tiles, plus
@@ -1549,6 +1550,7 @@ function enterExplore(depth){
 function resumeExplore(hp,won,info){
   if(!EX) return openCamp();
   const g=EX.fighting; EX.fighting=null;
+  if(info&&info.fled&&g){ g.dazeT=4; g.state='wander'; g.path=[]; g.seen=false; g.lostT=0; }   // you ran: they stand dazed a moment
   if(won&&g){ EX.groups=EX.groups.filter(x=>x!==g); xDropGroup(g); if(g.boss){ EX.bossDead=true; xLog(ENEMY_DEFS[g.ids[0]].name+' falls. The stairs down to '+areaOf(EX.depth+1).name+' are open.','good'); } }
   EX.hp=Math.max(1,hp); EX.busy=false; EX.active=true; EX.path=[]; EX.aim=null;
   xPause($('#lvlUp').classList.contains('on'));   // let go of a pause left over from before the fight (keys and touches too)

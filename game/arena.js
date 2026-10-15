@@ -42,9 +42,12 @@ function arenaInit(){
    instead: the nearest that keeps every tile and a unit's height inside the canvas. */
 function arenaFit(w,h){ const A=arenaInit(), c=A.cam; A.w=w; A.h=h; c.aspect=w/h; c.clearViewOffset();
   if(!(XLIT.camPitch>0)){ const iy=View.iy2D, cp=Math.sqrt(1-iy*iy), d=View.dist, f=View.S*d, look=arW(-View.v0,0,View.u0).clone();
-    c.fov=2*Math.atan(h/2/f)*180/Math.PI; c.setViewOffset(w,h,w/2-View.cx,h/2-View.cy,w,h); c.updateProjectionMatrix();
-    c.position.set(look.x,d*iy,look.z+d*cp); c.lookAt(look); c.updateMatrixWorld();
-    A.base.pos.copy(c.position); A.base.look.copy(look); A.dist=d; return; }
+    let fov=2*Math.atan(h/2/f)*180/Math.PI, dd=d;
+    // the debug menu's Lens: a wider or narrower lens, the camera moved back or in so the board stays the same size
+    if(XLIT.camFov>0){ dd=d*Math.tan(fov/2*Math.PI/180)/Math.tan(XLIT.camFov/2*Math.PI/180); fov=XLIT.camFov; }
+    c.fov=fov; c.setViewOffset(w,h,w/2-View.cx,h/2-View.cy,w,h); c.updateProjectionMatrix();
+    c.position.set(look.x,dd*iy,look.z+dd*cp); c.lookAt(look); c.updateMatrixWorld();
+    A.base.pos.copy(c.position); A.base.look.copy(look); A.dist=dd; return; }
   c.fov=XLIT.camFov>0?XLIT.camFov:46; c.updateProjectionMatrix();
   const portrait=h>w*1.05, mx=portrait?12:36, my=12, AR_PITCH=Math.max(10,XLIT.camPitch-(portrait?0:8))*Math.PI/180;   // the debug menu's angle (8 degrees lower on a wide screen)
   let x0=1e9,x1=-1e9,z0=1e9,z1=-1e9; for(const t of TILES){ x0=Math.min(x0,t.wx); x1=Math.max(x1,t.wx); z0=Math.min(z0,t.wz); z1=Math.max(z1,t.wz); }
@@ -210,7 +213,7 @@ function arenaDraw(dt,T){ const A=AR; if(!A||!A.grp||!A.w) return;
   const s=A.renderer.getSize(new THREE.Vector2()); if(s.x!==A.w||s.y!==A.h) A.renderer.setSize(A.w,A.h,false);
   arenaLights(T,dt); arenaSpellLights(T); if(DEC.tex) DEC.tex.needsUpdate=true;
   const a=A.ao; lookUse(A.aoTex,a&&a.scale,a&&a.ox,a&&a.oz);
-  xRender({renderer:A.renderer,scene:A.scene,cam:A.cam,unit:A.unit}); lookFps(dt,A.renderer); }
+  xRender({renderer:A.renderer,scene:A.scene,cam:A.cam,unit:A.unit,dof:A.focusD||A.dist}); lookFps(dt,A.renderer); }
 
 /* The camera: its base view, plus the moves of the moment:
    - a fly-in over the arena as the fight opens (1.2 s, from high behind the enemy; a tap skips it)
@@ -243,6 +246,11 @@ function arenaCamera(dt,T){ const A=AR; if(!A) return; const c=A.cam, S=A.shot, 
   // the fly-in: from high above and behind the enemy, easing into the base view
   if(S.fly<1){ const e=1-Math.pow(1-S.fly,3); off.lerpVectors(new THREE.Vector3(0,A.dist*.9,-A.dist*.55),off.clone(),e); }
   c.position.copy(look).add(off); c.lookAt(look);
+  // the debug menu's free camera: slide along the camera's own right, up and forward (in tiles), then turn it
+  // about those same axes (tilt, pan, roll, in degrees). The board's taps follow, as they go through this camera.
+  const TL=1.732; if(XLIT.camX) c.translateX(XLIT.camX*TL); if(XLIT.camY) c.translateY(XLIT.camY*TL); if(XLIT.camZ) c.translateZ(-XLIT.camZ*TL);
+  if(XLIT.camRY) c.rotateY(-XLIT.camRY*Math.PI/180); if(XLIT.camRX) c.rotateX(XLIT.camRX*Math.PI/180); if(XLIT.camRZ) c.rotateZ(XLIT.camRZ*Math.PI/180);
+  A.focusD=off.length()-XLIT.camZ*TL;   // how far the board's middle is, for the depth of field
   const sh=held?0:(View.shake||0)*.025+(f&&f.boss?.02:0);
   if(sh>.005){ c.position.x+=(Math.random()-.5)*sh; c.position.y+=(Math.random()-.5)*sh; }
   c.updateMatrixWorld(); }

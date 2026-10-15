@@ -1218,7 +1218,8 @@ const CLOSERS={
   lvlUp:()=>closeLevelUp(false), shopSheet:()=>$('#shopSheet').classList.remove('on'), runSheet:()=>closeRun(),
   reveal:()=>{ const b=$('#rvBtns .btn'); if(b) b.click(); else $('#reveal').classList.remove('on'); },
 };
-const NO_BACKDROP=['reveal'], OWN_X=['bagUI'];
+const NO_BACKDROP=['reveal'], OWN_X=['bagUI','settings'];   // settings goes back with the ← every full screen has
+$('#setBack').onclick=()=>CLOSERS.settings();
 for(const id of ['dtClose','slClose','dkpClose','setClose','pkCancel','pickCancel','lvLater','shopSheetClose']){ const b=$('#'+id); if(b) b.hidden=true; }
 for(const id in CLOSERS){ const ov=$('#'+id); if(!ov) continue;
   if(!OWN_X.includes(id)){ const panel=ov.querySelector('.panel')||ov.firstElementChild, x=document.createElement('button');

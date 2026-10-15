@@ -185,7 +185,7 @@ function buildFloor(depth,hp,opt){
   // goes looking for you instead. Vermin never hunt.
   { const can=EX.groups.filter(g=>!g.boss&&!g.ids.every(id=>ENEMY_DEFS[id].vermin)), n=depth>=8?3:depth>=3?2:0;
     can.sort(()=>Math.random()-.5).slice(0,n).forEach(g=>{ g.hunter=true; g.state='wander'; }); }
-  EX.px=xw(EX.up); EX.pz=xz(EX.up); EX.pc=EX.up; EX.face=1; EX.view='front';
+  EX.px=xw(EX.up); EX.pz=xz(EX.up); EX.pc=EX.up; EX.stairLock=EX.up; EX.face=1; EX.view='front';
   if(typeof xPopulate==='function') xPopulate();
   xBuildScene(); xUpdateVis();
   xLog('Depth '+depth+' · '+(opt.branch?'Hidden Sanctum':areaLabel(depth))+'. Find the stairs down.','dim');
@@ -310,7 +310,12 @@ function xWallMatrix(m,c,rock,cut){ const h=Math.sin(c*91.7+EX.depth*7.3)*43758.
   m.makeRotationY(Math.floor(r*4)*Math.PI/2); m.scale(new THREE.Vector3(1,sy,1)); m.setPosition(xw(c),XWALL*sy/2-.05,xz(c)); }
 function xBuildScene(){
   const G=xInit3D();
-  if(G.group){ G.scene.remove(G.group); G.group.traverse(o=>{ if(o.geometry) o.geometry.dispose(); if(o.material&&o.material.map) o.material.map.dispose(); if(o.material&&o.material.userData&&o.material.userData.nmap) o.material.userData.nmap.dispose(); }); }
+  // the old floor's scene is freed in full (geometry, materials and every texture they hold), so going
+  // up and down the stairs never piles up graphics memory; a shared texture is simply uploaded again
+  if(G.group){ G.scene.remove(G.group); const done=new Set(), free=x=>{ if(x&&x.dispose&&!done.has(x)){ done.add(x); x.dispose(); } };
+    G.group.traverse(o=>{ free(o.geometry); for(const m of Array.isArray(o.material)?o.material:o.material?[o.material]:[]){
+      for(const k of ['map','emissiveMap','normalMap','alphaMap','aoMap','lightMap','bumpMap','specularMap','roughnessMap','metalnessMap']) free(m[k]);
+      if(m.userData&&m.userData.nmap) free(m.userData.nmap); free(m); } }); }
   XLITMATS.clear();
   const grp=new THREE.Group(); G.group=grp; G.scene.add(grp);
   const A=EX.area, S=A.stone||AREAS[0].stone, seed=EX.depth*31;
@@ -1096,7 +1101,7 @@ function xMove(dt){ if(typeof xPuzzBusy==='function'&&xPuzzBusy()) return;   // 
   const kv=1-Math.exp(-dt*(len0>.1?22:30)); EX.vx=(EX.vx||0)+(ix-(EX.vx||0))*kv; EX.vz=(EX.vz||0)+(iz-(EX.vz||0))*kv;
   if(len0<=.1&&Math.hypot(EX.vx,EX.vz)<.15){ EX.vx=EX.vz=0; }
   ix=EX.vx; iz=EX.vz;
-  const len=Math.hypot(ix,iz); if(len<.05){ EX.walk=0; EX.stillT=(EX.stillT||0)+dt; return; }   // standing still: you notice hidden things (dungeon.js)
+  const len=Math.hypot(ix,iz); if(len<.05){ EX.walk=0; EX.stillT=(EX.stillT||0)+dt; if(EX.stairLock!=null&&EX.pc!==EX.stairLock&&EX.stillT>.3) EX.stairLock=null; return; }   // or once you stop off them   // standing still: you notice hidden things (dungeon.js)
   EX.stillT=0;
   const amt=Math.min(1,len); ix/=len; iz/=len; const sp=XSPEED*dt*amt*(typeof xRareSpeed==='function'?xRareSpeed():1), r=.42;   // wading through a flooded room is slow
   EX.moveDir=Math.abs(ix)>Math.abs(iz)?[Math.sign(ix),0]:[0,Math.sign(iz)];   // which way a pushed block goes
@@ -1111,6 +1116,9 @@ function xMove(dt){ if(typeof xPuzzBusy==='function'&&xPuzzBusy()) return;   // 
   if(Math.abs(ix)>.2) EX.face=ix<0?-1:1; if(iz<-.35) EX.view='back'; else if(iz>.35) EX.view='front'; EX.walk=(EX.walk||0)+dt*10*XSPEED/5.4;
   // walking into something that will not give (a locked door, a person): give up the goal
   if((EX.path.length||EX.goal)&&!okX&&!okZ){ EX.blockT=(EX.blockT||0)+dt; if(EX.blockT>.5){ EX.path=[]; EX.goal=null; EX.blockT=0; } } else EX.blockT=0;
+  // arrived by the stairs: they come alive again once you are a cell and a half from them, so a finger
+  // or key still held (pushing into the wall beside them) cannot bounce you up and down the floors
+  if(EX.stairLock!=null&&Math.hypot(EX.px-xw(EX.stairLock),EX.pz-xz(EX.stairLock))>XCS*1.5) EX.stairLock=null;
   const c=xcell(EX.px,EX.pz); if(c!==EX.pc&&c>=0){ EX.pc=c; xEnter(c); }
 }
 // walking into a cell: walls stop you, doors open, chests open, a trap you know about stops you
@@ -1127,6 +1135,7 @@ function xEnter(c){
   const tr=EX.traps.find(t=>t.cell===c&&t.armed); if(tr) xSpring(tr);
   if(EX.busy) return;
   if(typeof xEnterExtra==='function') xEnterExtra(c);
+  if(EX.stairLock!=null) return xHud();   // just arrived on stairs: they wait until you have walked clear of them
   if(c===EX.down&&!EX.busy) xStairsDown();
   else if(c===EX.up&&!EX.busy) xStairsUp();   // stepping back onto the stairs up climbs them (from depth 1, to camp)
   xHud();
@@ -1325,7 +1334,7 @@ function xGoFloor(depth,hp,at,route){ const m=xFloors(), F=m&&m.get(depth), ail=
   if(F){ EX=F; EX.hp=hp; EX.busy=false; EX.path=[]; EX.action=null; EX.aim=null; EX.searchCell=null; EX.wave=null; EX.stuckT=0; EX.fighting=null; if(ail) EX.ail=ail; if(typeof xPlaceWayshard==='function') xPlaceWayshard(); xBuildScene(); for(const tr of EX.traps) if(tr.known&&tr.armed) xTrapMesh(tr); }
   else { buildFloor(depth,hp,route?{plan:route.plan,route:route.kind}:undefined);
     if(at==='down') for(const g of EX.groups.filter(g=>g.boss)){ EX.groups.splice(EX.groups.indexOf(g),1); xDropGroup(g); EX.bossDead=true; } }
-  const c=typeof at==='number'?at:at==='down'?EX.down:EX.up; EX.pc=c; EX.px=xw(c); EX.pz=xz(c); EX.view=at==='down'?'back':'front'; xUpdateVis(); }
+  const c=typeof at==='number'?at:at==='down'?EX.down:EX.up; EX.pc=c; EX.px=xw(c); EX.pz=xz(c); EX.stairLock=c; EX.vx=EX.vz=0; EX.view=at==='down'?'back':'front'; xUpdateVis(); }
 // the stairs up: to the floor above (or the main floor, from a hidden branch); from depth 1, to camp
 function xStairsUp(){
   if(!EX||EX.busy||EX.pc!==EX.up) return;
@@ -1342,7 +1351,7 @@ function xToCamp(){ if(!EX||EX.busy||EX.pc!==EX.up) return; if(typeof xEscortChe
 function xDie(why){
   // a sanctuary's blessing pulls you back once: to the stairs up of this floor, at half health
   if(typeof xTryRevive==='function'&&xTryRevive()){ const lost=Math.floor(save.gold*.1); save.gold-=lost; persist(); EX.hp=Math.round(xmaxHp()*.5); EX.ail={poison:0,curse:0};
-    EX.pc=EX.up; EX.px=xw(EX.up); EX.pz=xz(EX.up); EX.path=[]; EX.stuckT=0; xUpdateVis(); xHud(); xFlash();
+    EX.pc=EX.up; EX.stairLock=EX.up; EX.px=xw(EX.up); EX.pz=xz(EX.up); EX.path=[]; EX.stuckT=0; xUpdateVis(); xHud(); xFlash();
     xLog('Brought down by '+why+', but the shrine pulls you back to the stairs up. You dropped '+lost+' gold.','good'); return; }
   EX.busy=true; const lost=Math.floor(save.gold*.2); save.gold-=lost; const depth=EX.depth, body=xDropBody(depth,lost); persist();
   XPARK=null; if(typeof XRUN!=='undefined') XRUN=null;
@@ -1552,7 +1561,7 @@ function enterExplore(depth){
   const v=validateDeck(activeDeck().list,CARDS,save.owned); if(!v.ok) return;
   if(typeof THREE==='undefined'){ tip('The 3D map could not load; fighting directly.'); return fight(depth); }
   show('scrExplore'); xInit3D();
-  if(XPARK&&XPARK.depth===depth){ EX=XPARK; XPARK=null; EX.hp=xmaxHp(); EX.busy=false; EX.path=[]; EX.px=xw(EX.up); EX.pz=xz(EX.up); EX.pc=EX.up; xUpdateVis(); xLog('You climb back down. You feel rested.','dim'); }
+  if(XPARK&&XPARK.depth===depth){ EX=XPARK; XPARK=null; EX.hp=xmaxHp(); EX.busy=false; EX.path=[]; EX.px=xw(EX.up); EX.pz=xz(EX.up); EX.pc=EX.up; EX.stairLock=EX.up; xUpdateVis(); xLog('You climb back down. You feel rested.','dim'); }
   else { XPARK=null; if(typeof xNewRun==='function') xNewRun(depth); buildFloor(depth); }
   EX.active=true; xHud(); xLoopStart(); xTip('move');
   xBanner(depth);

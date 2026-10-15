@@ -936,7 +936,7 @@ function xEnterBranch(){ if(EX.busy) return; EX.busy=true; xEscortCheck(); xLog(
 function xTryRevive(){ if(!XRUN||!XRUN.attuned||!EX) return false; XRUN.attuned=0; return true; }
 function xRevived(){ const g=EX.fighting; resumeExplore(Math.round(xmaxHp()*.5),false);
   if(g&&g.sprite){ g.x=xw(g.home); g.z=xz(g.home); g.cell=g.home; g.state=g.boss?'guard':'sleep'; g.wakeT=6; g.path=[]; }
-  EX.pc=EX.up; EX.px=xw(EX.up); EX.pz=xz(EX.up); EX.ail={poison:0,curse:0}; xUpdateVis(); xHud(); xLog('The shrine’s light pulls you back to the stairs up. Its blessing is spent.','good'); }
+  EX.pc=EX.up; EX.stairLock=EX.up; EX.px=xw(EX.up); EX.pz=xz(EX.up); EX.ail={poison:0,curse:0}; xUpdateVis(); xHud(); xLog('The shrine’s light pulls you back to the stairs up. Its blessing is spent.','good'); }
 
 /* ---------------- talking ---------------- */
 const LINES={

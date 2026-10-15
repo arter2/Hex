@@ -785,11 +785,11 @@ function updateAlly(a,dt){
 function springTrap(t,e){ const c=t.trap.card; t.trap=null; floater(c.name,t,colorOf(c));
   const ts=c.trap==='blast'?patternTiles(t,'burst','e'):[t]; ts.forEach(x=>{ flash(x,colorOf(c),1); burst(x,colorOf(c),8,.3); hitAt(x,c.pow,c); }); }
 /* How a buffed wand looks. While a Power boon runs (wand x2.5) your shots fly big, orange-red and
-   burning; under a Pact (+30%, paid in health) they are dark crimson; under Courage (+30%) golden.
+   burning; under a Pact (+30%, paid in health) they are a dark glowing blue; under Courage (+30%) golden.
    Each leaves a trail of sparks and lights the arena as it flies, and the weapon's tip wears the same
    colour with an aura that gives off sparks. Power wins when more than one is running. */
 const WAND_BUFF={power:{c:'#ff6a3d', c2:'#ffd27a', size:1.55, trail:2.2, name:'Power'},
-                 pact:{c:'#c0183c', c2:'#ff5a7a', size:1.3, trail:1.8, name:'Pact'},
+                 pact:{c:'#1a3fd1', c2:'#6fa8ff', size:1.3, trail:1.8, name:'Pact'},
                  courage:{c:'#f2c94c', c2:'#fff3b0', size:1.3, trail:1.6, name:'Courage'}};
 const wandBuff=p=>!p?null:p.powerT>0?'power':p.pactT>0?'pact':p.courageT>0?'courage':null;
 function shoot(from,tiles,o){ B.shots.push(Object.assign({a:from,tiles,i:-1,stepT:0,speed:o.from==='p'?.045*((B.player&&B.player.shotSpeed)||1):.08,hit:new Set()},o)); }

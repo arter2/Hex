@@ -1,6 +1,6 @@
 # Hexmancers: making it more fun
 
-Date: 2026-10-15 · Status: Part 1 ideas 1 and 5 are built (v59, v60) with rare foes; Part 2 is built (v58); Part 3 rounds 1 and 2 are built (v66, v67)
+Date: 2026-10-15 · Status: Part 1 ideas 1 and 5 are built (v59, v60) with rare foes; Part 2 is built (v58); Part 3 rounds 1 to 3 are built (v66 to v68)
 
 The game already has a deep loop: dungeon crawling (secrets, mimics, puzzles, escorts, branches),
 a real-time card battle (combos, curses, telegraphs), a deck builder, gear, missions, a shop and
@@ -291,7 +291,7 @@ Four rounds, one update each.
 ### Round 2: special rooms (built in v67)
 
 From depth 2, every 2 to 3 floors (never a boss floor or a hidden branch) a floor holds a special
-room, and 1 time in 4 two. The path map shows them before you choose a way (`game/rooms.js`).
+room, and about 1 time in 3 two (from v68). The path map shows them before you choose a way (`game/rooms.js`).
 
 | Room | What happens |
 |---|---|
@@ -308,9 +308,17 @@ room, and 1 time in 4 two. The path map shows them before you choose a way (`gam
 
 Safe rooms (the den, forge, shrine, camp and chapel) keep monsters out.
 
-### Round 3: exploration rooms
+### Round 3: exploration rooms (built in v68)
 
-Flooded room, dark room, collapsed bridge, overgrown library, crystal cave.
+They join the same pool as the round 2 rooms, so 15 kinds share the special-room slot.
+
+| Room | What happens |
+|---|---|
+| 🌊 Flooded room | Rippling water: you wade at 55% speed. 3 finds lie sunk in it (gold, a key, gear or a draught), shown only by searching, then picked up. |
+| 🌑 Dark room | You see 1 cell around you and your lamp is dim. A torch lies in a nearby room: with it you see 3–4 cells and the lamp burns bright on this floor. Glowing moss marks the way from the door to a rich chest, and something sleeps inside. |
+| 🌉 Collapsed bridge | A chasm cuts off a ledge with a rich chest (sometimes legendary) and a tale. Find the planks elsewhere on the floor and walk into the edge to lay a bridge. |
+| 📚 Overgrown library | 3–4 vine-covered shelves: one holds a tale, one a scroll, one a spell tome (an uncommon or better card), one gold, and one only dust. A safe room. |
+| 💎 Crystal cave | A geode is buried in the cave. The crystals glow and ring faster the nearer you stand ("hum faintly", "ring louder", "sing"); search on the spot to dig it up: 2 Relic Shards, Arcane Essence and gold. You can also prise one crystal loose for essence. |
 
 ### Round 4: puzzles
 

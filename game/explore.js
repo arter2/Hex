@@ -204,7 +204,7 @@ function xUpdateVis(){
   const v=EX.vis; v.fill(0); const pc=EX.pc;
   const lightRoom=r=>{ for(let y=r.y-1;y<=r.y+r.h;y++) for(let x=r.x-1;x<=r.x+r.w;x++) v[xi(x,y)]=1; };
   const here=EX.room[pc]; let rad=1.6;
-  if(here>=0){ const r=EX.rooms[here]; if(r.lit){ lightRoom(r); rad=7; } else rad=2.6; }
+  if(here>=0){ const r=EX.rooms[here]; if(r.lit){ lightRoom(r); rad=7; } else rad=2.6; if(r.dark) rad=EX.torch?3.6:1.2; }   // a dark room (rooms.js): almost nothing without a torch
   if(EX.t[pc]===T_DOOR) for(const n of [pc-1,pc+1,pc-XN,pc+XN]){ const r=EX.room[n]; if(r>=0&&EX.rooms[r].lit&&EX.doors.get(pc).state==='open') lightRoom(EX.rooms[r]); }
   rad+=((save&&save.perm&&save.perm.insight)||0)+(EX.sight||0);   // Insight blessings and lantern oil
   const R=Math.ceil(rad), x=xcx(pc), y=xcy(pc);
@@ -1098,7 +1098,7 @@ function xMove(dt){
   ix=EX.vx; iz=EX.vz;
   const len=Math.hypot(ix,iz); if(len<.05){ EX.walk=0; EX.stillT=(EX.stillT||0)+dt; return; }   // standing still: you notice hidden things (dungeon.js)
   EX.stillT=0;
-  const amt=Math.min(1,len); ix/=len; iz/=len; const sp=XSPEED*dt*amt, r=.42;
+  const amt=Math.min(1,len); ix/=len; iz/=len; const sp=XSPEED*dt*amt*(typeof xRareSpeed==='function'?xRareSpeed():1), r=.42;   // wading through a flooded room is slow
   EX.moveDir=Math.abs(ix)>Math.abs(iz)?[Math.sign(ix),0]:[0,Math.sign(iz)];   // which way a pushed block goes
   const front=xcell(EX.px+ix*XCS*.6,EX.pz+iz*XCS*.6);
   const tryAxis=(nx,nz)=>{ for(const [ox,oz] of [[-r,-r],[r,-r],[-r,r],[r,r]]){ const c=xcell(nx+ox,nz+oz); if(c===EX.pc) continue; if(!xBump(c,c===front)) return false; } return true; };
@@ -1426,7 +1426,7 @@ function xDraw(T,dt){
   { const P=G.dust.geometry.attributes.position, a=P.array; for(let k=0;k<a.length;k+=3){ a[k+1]+=dt*.25; a[k]+=Math.sin(T+k)*dt*.1; if(a[k+1]>3.2) a[k+1]=0; } P.needsUpdate=true;
     G.dust.position.set(EX.px,0,EX.pz); G.dust.material.opacity=.35+.15*Math.sin(T*.7); }
   for(const c of EX.chests) if(c.rich&&!c.open) c.mesh.position.y=Math.abs(Math.sin(T*2))*.05;
-  const FL=XLIT.flick; G.lamp.intensity=1.6*XLIT.lamp*(.95+FL*(.04*Math.sin(T*9.3)+.03*Math.sin(T*21.1))); G.lamp.distance=16*XLIT.lampRad;
+  const FL=XLIT.flick; G.lamp.intensity=1.6*XLIT.lamp*(EX.lampMul||1)*(.95+FL*(.04*Math.sin(T*9.3)+.03*Math.sin(T*21.1))); G.lamp.distance=16*XLIT.lampRad;
   G.amb.intensity=.2*XLIT.amb; G.sun.intensity=.22*XLIT.sun; if(G.scene.fog){ G.scene.fog.near=XLIT.fogNear; G.scene.fog.far=Math.max(XLIT.fogNear+1,XLIT.fogFar); const fa=G.scene.fog.far+4; if(G.cam.far!==fa){ G.cam.far=fa; G.cam.updateProjectionMatrix(); } }
   xLightPool(T,dt); xDecorTick(T); xAirTick(T,dt); xWeatherTick(T,dt); xLifeTick(T,dt);
   { const lo=$('#xLowHp'); if(lo){ const r=EX.hp/xmaxHp(); lo.style.opacity=r<.3?(.55+.35*Math.sin(T*(r<.15?7:4))).toFixed(2):'0'; } } if(EX.myGlow){ EX.myGlow.position.x=EX.px; EX.myGlow.position.z=EX.pz; EX.myGlow.material.opacity=(.18+.03*FL*Math.sin(T*2.1))*XLIT.myGlow; }

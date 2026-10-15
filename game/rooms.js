@@ -42,15 +42,15 @@ Object.assign(LINES,{
 function xRarePlan(depth,F,boss){ if(!XRUN||boss||depth<2) return; if(XRUN.next.rare==null) XRUN.next.rare=depth+xri(0,1);
   if(depth<XRUN.next.rare) return; XRUN.next.rare=depth+xri(2,3);
   const pool=Object.keys(RARE_ROOMS).filter(k=>RARE_ROOMS[k].min<=depth&&!(k==='pit'&&isBossDepth(depth+1)));
-  const n=XR()<.25?2:1; F.rare=pool.sort(()=>XR()-.5).slice(0,n); }
+  const n=XR()<.35?2:1; F.rare=pool.sort(()=>XR()-.5).slice(0,n); }
 // rooms get their role once the floor is dug; one with no room to fit tries again next floor
 function xRareAssign(F,give,take){ if(!F.rare) return;
-  for(const k of F.rare){ const R=RARE_ROOMS[k], r=give(take(x=>x.w>=R.w&&x.h>=R.h),'rare',R.safe); if(r) r.rare=k; else if(XRUN) XRUN.next.rare=EX.depth+1; } }
+  for(const k of F.rare){ const R=RARE_ROOMS[k], r=give(take(x=>x.w>=R.w&&x.h>=R.h&&(!R.fit||R.fit(x))),'rare',R.safe); if(r) r.rare=k; else if(XRUN) XRUN.next.rare=EX.depth+1; } }
 const rareRoom=k=>EX.rooms.find(r=>r.rare===k);
 const xRareName=k=>RARE_ROOMS[k]?RARE_ROOMS[k].icon+' '+RARE_ROOMS[k].name:k;
 
 /* ---------------- filling the rooms ---------------- */
-function xRareFill(r){ const d=EX.depth, c=xFreeSolid(r,true); if(c<0) return;
+function xRareFill(r){ if(xFillExplore(r)) return; const d=EX.depth, c=xFreeSolid(r,true); if(c<0) return;
   switch(r.rare){
     case 'nest': { xProp('nestcore',c,{room:r.id, solid:false}); for(let k=0;k<3;k++){ const s=xFreeSolid(r,true); if(s>=0) xProp('eggsac',s,{room:r.id, hp:3}); } r.nest={next:12, alive:3}; break; }
     case 'hub': { xRareHub(r,c); break; }
@@ -75,7 +75,7 @@ function xRareHub(r,c0){ const reach=xReach(), others=xOpenRooms(reach,{notStart
     const pa=xProp('tpad',a,{solid:false, col:i, secret:!!dst.secret}), pb=xProp('tpad',b,{solid:false, col:i, back:true}); pa.to=b; pb.to=a; }); }
 
 /* ---------------- touching things ---------------- */
-function xRareInteract(p){ const d=EX.depth;
+function xRareInteract(p){ const d=EX.depth; if(xInteractExplore(p)) return true;
   switch(p.kind){
     case 'eggsac': { p.hp--; xSfx('thud'); xSparks(xw(p.cell),xz(p.cell),0x8fd14f,10,1); if(p.hp>0){ xLog('You tear into the egg sac. It quivers.','dim'); return true; }
       xRemoveProp(p); const r=EX.rooms[p.room]; r.nest.alive--; xLog(r.nest.alive>0?'The egg sac bursts. '+r.nest.alive+' left.':'The last egg sac bursts. The nest is dead.','good');
@@ -99,7 +99,7 @@ function xRareEnter(p){ if(p.kind!=='tpad') return false; if(EX.padLock===p.cell
   xSfx('chime'); if(typeof xFlashView==='function') xFlashView(300); xLog(p.secret?'The gold pad hums and you stand somewhere sealed and secret.':p.back?'The pad sends you back to the hub.':'The pad flares and the room around you changes.',p.secret?'good':'dim'); return true; }
 
 /* ---------------- every frame ---------------- */
-function xRareTick(dt){ if(!EX||EX.busy) return; const d=EX.depth;
+function xRareTick(dt){ if(!EX||EX.busy) return; const d=EX.depth; xTickExplore(dt);
   if(EX.padLock!=null&&EX.pc!==EX.padLock) EX.padLock=null;
   for(const r of EX.rooms){
     // the nest hatches a group every 20 s (at most 3 out at once) while a sac still stands
@@ -120,11 +120,12 @@ function xRareTick(dt){ if(!EX||EX.busy) return; const d=EX.depth;
         xHud(); } } } }
 function xRareHud(out){ for(const r of EX.rooms) if(r.tre&&r.tre.state==='fall') out.push('<span class="xs bad">⏳ '+Math.ceil(r.tre.t)+'s</span>');
   if(XRUN&&XRUN.ally&&XRUN.ally.fights>0) out.push('<span class="xs good" title="Fights beside you">⚔ '+XRUN.ally.name+' ×'+XRUN.ally.fights+'</span>');
-  if(EX.bones) out.push('<span class="xs">🦴 bones</span>'); }
+  if(EX.bones) out.push('<span class="xs">🦴 bones</span>');
+  if(EX.torch) out.push('<span class="xs good" title="Dark rooms are lit for you on this floor">🔥 torch</span>'); if(EX.planks) out.push('<span class="xs" title="Walk into a chasm\'s edge to bridge it">🪵 planks</span>'); }
 
 /* ---------------- items ---------------- */
-function xRarePickup(it){ if(it.kind!=='ghostbones') return false; EX.bones=it.ghost; xSfx('click'); xLog('You gather up '+it.ghost+'’s bones. Bring them back to the chapel.','loot'); return true; }
-function xRareItemMesh(it){ if(it.kind!=='ghostbones') return null; const m=new THREE.Group(), bone=xMat(0xe8e0c8);
+function xRarePickup(it){ if(xPickupExplore(it)) return true; if(it.kind!=='ghostbones') return false; EX.bones=it.ghost; xSfx('click'); xLog('You gather up '+it.ghost+'’s bones. Bring them back to the chapel.','loot'); return true; }
+function xRareItemMesh(it){ const em=xItemMeshExplore(it); if(em) return em; if(it.kind!=='ghostbones') return null; const m=new THREE.Group(), bone=xMat(0xe8e0c8);
   for(let k=0;k<4;k++){ const b=xBox(.36,.07,.07,bone,(k%2-.5)*.1,-.1+k*.05,(k-1.5)*.08); b.rotation.y=k*.8; m.add(b); } m.add(xBall(.12,bone,0,.1,0), xBall(.18,xGlowMat(0xcfe6ff,{transparent:true,opacity:.35}),0,.1,0)); return m; }
 
 /* ---------------- the pit ---------------- */
@@ -207,7 +208,7 @@ function roomAllyStart(){ const A=XRUN&&XRUN.ally; if(!B||!A||A.fights<=0) retur
   later(2,shot); }
 
 /* ---------------- how they look ---------------- */
-function xRareMesh(p,g){ const stone=xMat(0x6e6a64), dark=xMat(0x2a2a30);
+function xRareMesh(p,g){ if(xMeshExplore(p,g)) return true; const stone=xMat(0x6e6a64), dark=xMat(0x2a2a30);
   switch(p.kind){
     case 'eggsac': { const m=xMat(0x6a8a3a,{emissive:0x1a3008}); for(let k=0;k<3;k++){ const b=xBall(.28-k*.05,m,(k-1)*.2,.28+k*.12,(k%2)*.12); b.scale.y=1.2; g.add(b); } g.add(xBall(.12,xGlowMat(0xb8ff6a),0,.55,.2)); p.pulse=g.children[0]; return true; }
     case 'nestcore': { const c=new THREE.Mesh(new THREE.CircleGeometry(1.2,16),new THREE.MeshBasicMaterial({color:0x2a3a10,transparent:true,opacity:.6})); c.rotation.x=-Math.PI/2; c.position.y=.04; g.add(c); return true; }
@@ -224,6 +225,116 @@ function xRareMesh(p,g){ const stone=xMat(0x6e6a64), dark=xMat(0x2a2a30);
     case 'chapelaltar': { g.add(xBox(1.2,.7,.6,stone,0,.35,0)); for(const x of [-.4,0,.4]){ g.add(xCyl(.05,.25,xMat(0xf0e2bc),x,.82,0), xBall(.05,xGlowMat(0xcfe6ff),x,1,0)); } return true; }
   }
   return false; }
-function xRareAnim(T){ if(!EX) return; for(const p of EX.props){ if(!p.mesh||!p.mesh.visible) continue;
+function xRareAnim(T){ if(!EX) return; xAnimExplore(T); for(const p of EX.props){ if(!p.mesh||!p.mesh.visible) continue;
   if(p.kind==='eggsac'&&p.pulse) p.pulse.scale.setScalar(1+.06*Math.sin(T*3+p.cell));
   if(p.kind==='campfire'&&p.flame) p.flame.scale.y=.85+.2*Math.sin(T*9+p.cell); } }
+
+/* ---------------- round 3: exploration rooms ----------------
+     flood     Flooded room: you wade at half speed; things lie sunk under the water, found by searching.
+     dark      Dark room: you see almost nothing without the torch left somewhere on the floor. Glowing
+               moss marks the way from the door to a rich chest; something sleeps in there.
+     bridge    Collapsed bridge: a chasm cuts off a ledge holding treasure. Find the planks on the floor
+               and walk into the edge to lay a bridge.
+     library   Overgrown library: search the shelves for a tale, a scroll, a tome (a card) or gold.
+     crystal   Crystal cave: a geode is buried in the cave; the crystals glow and ring louder the
+               nearer you are. Search to dig it up (Relic Shards, essence, gold). */
+Object.assign(RARE_ROOMS,{
+  flood:  {name:'Flooded room',     icon:'🌊', min:2, w:5, h:4, safe:false},
+  dark:   {name:'Dark room',        icon:'🌑', min:2, w:5, h:4, safe:false},
+  bridge: {name:'Collapsed bridge', icon:'🌉', min:2, w:6, h:4, safe:false, fit:r=>!!xBridgeSplit(r)},
+  library:{name:'Overgrown library',icon:'📚', min:1, w:4, h:3, safe:true},
+  crystal:{name:'Crystal cave',     icon:'💎', min:2, w:4, h:4, safe:false},
+});
+// a chasm line across a room that cuts off a ledge with no door of its own: [chasm cells, ledge cells] or null
+function xBridgeSplit(r){ const cells=xRoomCells(r), doorSide=f=>[...EX.doors.keys()].some(i=>xAdj4(i).some(c=>EX.room[c]===r.id&&f(c)));
+  const tries=[];
+  for(const s of [r.x+2,r.x+r.w-3]) tries.push({line:c=>xcx(c)===s, ledge:s<r.x+r.w/2?c=>xcx(c)<s:c=>xcx(c)>s});
+  for(const s of [r.y+1,r.y+r.h-2]) tries.push({line:c=>xcy(c)===s, ledge:s<r.y+r.h/2?c=>xcy(c)<s:c=>xcy(c)>s});
+  for(const t of tries){ const ledge=cells.filter(t.ledge), line=cells.filter(t.line); if(ledge.length<3||doorSide(c=>t.ledge(c)||t.line(c))) continue; return [line,ledge]; }
+  return null; }
+const xRareSpeed=()=>{ const i=EX&&EX.room[EX.pc]; return i>=0&&EX.rooms[i].flood?.55:1; };
+function xFillExplore(r){ const d=EX.depth, c=xFreeSolid(r,true);
+  switch(r.rare){
+    case 'flood': { r.flood=true; xProp('water',xi(r.cx,r.cy),{solid:false, room:r.id});
+      const finds=[{kind:'gold',n:Math.round(50+18*d)},{kind:'key',key:d>=5&&XR()<.4?'silver':'bronze'},{kind:'gear',gear:rollLoot(d+1,XR)},{kind:'potion',bag:'draught'}].sort(()=>XR()-.5).slice(0,3);
+      for(const f of finds){ const s=xFreeCell(r,true); if(s>=0) xProp('sunken',s,{solid:false, found:false, find:f}); } return true; }
+    case 'dark': { r.dark=true; r.lit=false; const far=xRoomCells(r).filter(x=>!EX.taken.has(x)&&!nearDoor(x)).sort((a,b)=>xDoorDist(r,b)-xDoorDist(r,a))[0];
+      if(far!=null){ xChest(far,{rich:true}); const path=xMossPath(r,far); path.forEach((m,i)=>{ if(i%1===0&&!EX.taken.has(m)) xProp('moss',m,{solid:false}); }); }
+      const g=xFreeCell(r,true); if(g>=0){ const w=makeEncounter(d)[0].filter(id=>!ENEMY_DEFS[id].rare); if(w.length) EX.groups.push(xGroup(w.slice(0,2),g,'sleep')); }
+      const reach=xReach(), rs=xOpenRooms(reach,{notStart:true}).filter(x=>x!==r), tr=rs.length?rs.sort((a,b)=>Math.hypot(a.cx-r.cx,a.cy-r.cy)-Math.hypot(b.cx-r.cx,b.cy-r.cy))[Math.min(rs.length-1,1)]:null, tc=tr?xFreeCell(tr):-1;
+      if(tc>=0) xItem('torch',tc,{}); return true; }
+    case 'bridge': { const sp=xBridgeSplit(r); if(!sp) return true; const [line,ledge]=sp;
+      for(const x of line) xProp('chasm',x,{room:r.id, solid:true});
+      const lc=ledge.filter(x=>!EX.taken.has(x)&&!nearDoor(x)); if(lc.length) xChest(lc[Math.floor(lc.length/2)],{rich:true,legend:XR()<.2}); if(lc.length>2){ const u=unreadLore(); xProp('pedestal',lc[0],{lore:xpick(u.length?u:LORE).id}); }
+      const reach=xReach(), rs=xOpenRooms(reach,{notStart:true}).filter(x=>x!==r), pr=rs.length?xpick(rs):null, pc=pr?xFreeCell(pr):-1; if(pc>=0) xItem('planks',pc,{}); return true; }
+    case 'library': { const n=Math.min(4,Math.max(3,Math.floor(r.w*r.h/6))), loot=['lore','scroll','tome','gold','dust'].sort(()=>XR()-.5);
+      for(let k=0;k<n;k++){ const s=xFreeSolid(r,true); if(s>=0) xProp('libshelf',s,{loot:loot[k]}); } return true; }
+    case 'crystal': { const g=xFreeCell(r,true); if(g>=0) r.geode=xProp('geode',g,{solid:false, found:false});
+      for(let k=0;k<4;k++){ const s=xFreeSolid(r,false); if(s>=0) xProp('cavecrystal',s,{room:r.id, ph:XR()*6}); } return true; }
+  }
+  return false; }
+const xDoorDist=(r,c)=>Math.min(...[...EX.doors.keys()].filter(i=>xAdj4(i).some(x=>EX.room[x]===r.id)).map(i=>Math.abs(xcx(i)-xcx(c))+Math.abs(xcy(i)-xcy(c))),99);
+// glowing moss: the cells from the room's nearest door to its chest
+function xMossPath(r,goal){ const door=[...EX.doors.keys()].filter(i=>xAdj4(i).some(x=>EX.room[x]===r.id)).sort((a,b)=>Math.hypot(xcx(a)-xcx(goal),xcy(a)-xcy(goal))-Math.hypot(xcx(b)-xcx(goal),xcy(b)-xcy(goal)))[0]; if(door==null) return [];
+  const dist=xbfs(EX.t,EX.doors,goal,false,n=>EX.room[n]!==r.id&&n!==door), out=[]; let cur=door;
+  for(let k=0;k<60&&cur!==goal;k++){ const nx=xAdj4(cur).filter(n=>dist[n]>=0&&dist[n]<dist[cur]).sort((a,b)=>dist[a]-dist[b])[0]; if(nx==null) break; cur=nx; if(cur!==goal) out.push(cur); }
+  return out; }
+function xInteractExplore(p){ const d=EX.depth;
+  switch(p.kind){
+    case 'chasm': { if(p.bridged) return true; if(!EX.planks) return xSay('chasm','The bridge here fell long ago. The gap is too wide to jump. Planks would span it.'), true;
+      EX.planks=false; for(const q of EX.props) if(q.kind==='chasm'&&q.room===p.room){ q.bridged=true; q.solid=false; if(q.plank) q.plank.visible=true; }
+      xSfx('grind'); xLog('You lay the planks across the gap. A rickety bridge, but it holds.','good'); xXp(15+2*d,'bridge laid'); xUpdateVis(); return true; }
+    case 'libshelf': { if(p.searched) return xSay('shelf','You have already searched these shelves.'), true; p.searched=true; xSfx('click');
+      if(p.loot==='lore'){ const u=unreadLore(); if(u.length){ addLore(u[0].id); persist(); return xDlgText(u[0].title,'Under the vines, a book still dry enough to read. '+u[0].text), true; } addMat('essence'); xLog('A crumbling book leaves a mote of Arcane Essence in your hands.','loot'); }
+      else if(p.loot==='scroll'){ const k=XR()<.6?'enchant':'purify'; addScroll(save,k); xLog('Rolled inside a hollow book: a Scroll of '+(k==='purify'?'Purifying':'Enchanting')+'.','loot'); }
+      else if(p.loot==='tome'){ const c=rollCard({depth:d+2,min:'uncommon'}), res=addCards(save,[c]); xCardPop(c,res[0]&&res[0].isNew); xLog('A spell tome, its pages still bright: '+c.name+'.','loot'); }
+      else if(p.loot==='gold'){ const g=Math.round(30+12*d); save.gold+=g; xLog('Someone hid '+g+' gold behind the books.','gold'); }
+      else xLog('Dust, rot and a very angry spider. Nothing here.','dim');
+      persist(); xHud(); return true; }
+    case 'cavecrystal': { if(EX.crystalTaken) return xSay('crystal2','The crystals ring when you touch them, but the rest are rooted deep.'), true;
+      EX.crystalTaken=true; addMat('essence'); xSfx('chime'); xLog('You prise loose a small crystal: Arcane Essence. The rest ring louder near something buried here.','loot'); return true; }
+    case 'water': case 'moss': case 'sunken': case 'geode': return true;
+  }
+  return false; }
+function xTickExplore(dt,T){ const here=EX.room[EX.pc], r=here>=0?EX.rooms[here]:null;
+  EX.lampMul=r&&r.dark?(EX.torch?1.25:.3):1;
+  for(const p of EX.props){ if(p.gone) continue;
+    // a sunken find spotted by searching rises to the surface as an item to pick up
+    if(p.kind==='sunken'&&p.found){ p.gone=true; if(p.mesh) p.mesh.visible=false; EX.taken.delete(p.cell); if(EX.propAt.get(p.cell)===p) EX.propAt.delete(p.cell);
+      const it=xItem(p.find.kind,p.cell,p.find); xMeshItem(it); xLog('Something glints under the water!','good'); }
+    if(p.kind==='geode'&&p.found){ p.gone=true; const R=EX.rooms[EX.room[p.cell]]; addMat('shard',2); addMat('essence'); const g=Math.round(60+20*EX.depth); save.gold+=g; persist(); xSfx('chime');
+      xLog('You dig where the crystals ring loudest: a geode, split open. 2 Relic Shards, Arcane Essence and '+g+' gold.','loot'); xXp(20+2*EX.depth,'geode found'); if(R) R.geodeDone=true; xHud(); } }
+  // the crystals ring as you near the geode
+  for(const R of EX.rooms){ if(!R.geode||R.geodeDone) continue; const dd=Math.hypot(xcx(R.geode.cell)-xcx(EX.pc),xcy(R.geode.cell)-xcy(EX.pc)), k=Math.max(0,1-dd/14);
+    R.glow=k; if(here===R.id){ const lvl=dd<2.5?3:dd<5?2:1; if(lvl!==R.hum){ R.hum=lvl; xLog(['','The crystals hum faintly.','The crystals ring louder. Something is buried close.','The crystals sing! It is right under your feet: search.'][lvl],'dim'); if(lvl>=2) xSfx('chime'); } } else R.hum=0; } }
+function xPickupExplore(it){
+  if(it.kind==='torch'){ EX.torch=true; xSfx('click'); xLog('You take up a torch. Dark rooms will not stay dark for you now, on this floor.','good'); tip('Torch!'); xUpdateVis(); return true; }
+  if(it.kind==='planks'){ EX.planks=true; xSfx('click'); xLog('A bundle of sound planks. Long enough to bridge a gap.','loot'); return true; }
+  return false; }
+function xItemMeshExplore(it){
+  if(it.kind==='torch'){ const m=new THREE.Group(); m.add(xCyl(.05,.6,xMat(0x6a4020),0,0,0), xCone(.12,.3,xGlowMat(0xff9a3a),0,.4,0,6)); m.rotation.z=.4; return m; }
+  if(it.kind==='planks'){ const m=new THREE.Group(), w=xMat(0x8a6a42); for(let k=0;k<3;k++) m.add(xBox(.9,.06,.18,w,0,k*.07-.07,(k-1)*.2)); return m; }
+  return null; }
+function xMeshExplore(p,g){
+  switch(p.kind){
+    case 'water': { const r=EX.rooms[p.room], ox=(r.x+r.w/2)*XCS-xw(p.cell), oz=(r.y+r.h/2)*XCS-xz(p.cell);
+      const m=new THREE.Mesh(new THREE.PlaneGeometry(r.w*XCS,r.h*XCS),new THREE.MeshBasicMaterial({color:0x1d5a8a,transparent:true,opacity:.5,depthWrite:false})); m.rotation.x=-Math.PI/2; m.position.set(ox,.2,oz); g.add(m); p.waterMat=m.material;
+      // light ripples drifting over the water
+      const tex=xRippleTex(); tex.repeat.set(r.w/2,r.h/2);
+      const rip=new THREE.Mesh(new THREE.PlaneGeometry(r.w*XCS,r.h*XCS),new THREE.MeshBasicMaterial({map:tex,color:0x9fdcff,transparent:true,opacity:.55,blending:THREE.AdditiveBlending,depthWrite:false})); rip.rotation.x=-Math.PI/2; rip.position.set(ox,.22,oz); g.add(rip); p.ripTex=tex; return true; }
+    case 'sunken': { const m=xBall(.08,xGlowMat(0xcfe6ff,{transparent:true,opacity:.0}),0,.22,0); g.add(m); p.glint=m.material; return true; }
+    case 'moss': { const m=new THREE.Mesh(new THREE.CircleGeometry(.26,8),xGlowMat(0x7dffa8,{transparent:true,opacity:.6})); m.rotation.x=-Math.PI/2; m.position.y=.04; g.add(m); return true; }
+    case 'chasm': { g.add(xBox(XCS,.04,XCS,xMat(0x020203),0,.03,0)); p.plank=new THREE.Group(); for(let k=0;k<4;k++) p.plank.add(xBox(XCS*.9,.06,.32,xMat(0x8a6a42),0,.08,(k-1.5)*.42)); p.plank.visible=!!p.bridged; g.add(p.plank); return true; }
+    case 'libshelf': { const wood=xMat(0x5a3a22); g.add(xBox(1.3,1.9,.5,wood,0,.95,0)); for(let k=0;k<3;k++) g.add(xBox(1.15,.28,.4,xMat([0x7a3a2a,0x3a5a7a,0x6a6a3a][k]),0,.45+k*.55,.06));
+      g.add(xBox(.25,1.6,.06,xMat(0x3a7a3a),.45,.9,.27), xBox(.6,.2,.06,xMat(0x3a7a3a),-.2,1.7,.27)); return true; }
+    case 'cavecrystal': { const m=new THREE.MeshBasicMaterial({color:0x8fe4ff}); for(let k=0;k<3;k++){ const c=xCone(.16+k*.04,.9-k*.2,m,(k-1)*.22,.45-k*.08,(k%2)*.15,5); c.rotation.z=(k-1)*.3; g.add(c); } p.cmat=m; return true; }
+    case 'geode': return true;
+  }
+  return false; }
+function xAnimExplore(T){ for(const p of EX.props){ if(!p.mesh||!p.mesh.visible) continue;
+  if(p.kind==='water'&&p.waterMat){ p.waterMat.opacity=.46+.06*Math.sin(T*1.7); if(p.ripTex){ p.ripTex.offset.x=(T*.05)%1; p.ripTex.offset.y=(Math.sin(T*.4)*.08)%1; } }
+  if(p.kind==='sunken'&&p.glint) p.glint.opacity=Math.max(0,Math.sin(T*1.3+p.cell))**8*.8;
+  if(p.kind==='cavecrystal'&&p.cmat){ const R=EX.rooms[p.room], k=R&&!R.geodeDone?R.glow||0:0, pulse=.5+.5*Math.sin(T*(2+10*k)+p.ph); p.cmat.color.setRGB(.35+.4*k*pulse+.1,.6+.35*k*pulse,.75+.25*k*pulse); } } }
+function xRippleTex(){ if(xRippleTex.c) return xRippleTex.c.clone(); const N=64, c=document.createElement('canvas'); c.width=c.height=N; const x=c.getContext('2d'); x.strokeStyle='rgba(255,255,255,.8)'; x.lineWidth=1.5;
+  for(let k=0;k<5;k++){ x.beginPath(); const y0=k*13+4; for(let i=0;i<=N;i+=4) x.lineTo(i,y0+Math.sin(i/N*Math.PI*2+k)*3); x.stroke(); }
+  const t=new THREE.CanvasTexture(c); t.wrapS=t.wrapT=THREE.RepeatWrapping; t.magFilter=THREE.NearestFilter; xRippleTex.c=t; const o=t.clone(); o.needsUpdate=true; return o; }

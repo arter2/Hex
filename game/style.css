@@ -1343,3 +1343,4 @@ select.dbgsel{font:inherit; font-size:15px; background:#0b0e13; color:var(--text
 .card.mframe{box-shadow:0 0 0 3px #f2c94c,0 0 10px rgba(242,201,76,.5)}
 .mbadge[hidden]{display:none}
 body.ui-phone:not(.wide) #goChar{grid-column:1 / -1}
+.affin .arule{display:inline-block;margin-top:4px;color:#e6f4ff}

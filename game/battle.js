@@ -83,6 +83,7 @@ function startBattle(list,depth,hooks,opts){
      timers:[], gauge:0, phase:'custom', time:0, log:[]};
   B.waves=(opts&&opts.waves)||makeEncounter(depth); B.wave=0;
   makeTerrain(depth);
+  if(typeof arRuleInit==='function') arRuleInit(depth);   // the area's own rule (arearules.js)
   spawnWave(0);
   if(opts&&opts.prepare) opts.prepare(B.piles);
   soulInit(opts&&opts.soul);
@@ -325,6 +326,7 @@ function applyStatus(e,c){
 // Pull drags it one column toward you.
 function shove(e,c,base){
   if(e.hp<=0||(!c.push&&!c.pull)) return;
+  if(typeof arRuleShove==='function'&&arRuleShove(e,c,base)) return;   // Black ice: it slides
   const to=tileCR(e.tile.col+(c.push?1:-1),e.tile.r);
   if(to&&to.side==='e'&&!to.occ){ e.tile.occ=null; e.tile=to; to.occ=e; burst(to,'#e6f4ff',6,.3); if(to.trap) springTrap(to,e); }
   else if(c.push){ floater('slam!',e.tile,'#ffe24d'); hitEnemy(e,Math.round(base*.5),null,{raw:true}); }
@@ -335,6 +337,7 @@ function cancelAttack(e){
   if(had) floater('cancelled',e.tile,'#6fd6ff');
 }
 function killEnemy(e){
+  if(typeof arRuleKill==='function') arRuleKill(e);
   e.hp=0; e.deathT=.5; if(e.tile.occ===e) e.tile.occ=null; cancelAttack(e);
   if(e.def.bossId&&typeof bossDown==='function') bossDown(e); burst(e.tile,COLORS[e.color].c,30,1); shake(4);
   if(e.loot&&e.loot.length){ const room=handRoom(B.piles); B.piles.hand.push(...e.loot.slice(0,room)); B.piles.draw.push(...e.loot.slice(room)); floater('Got back '+e.loot.map(c=>c.card.name).join(', '),e.tile,'#39ff8a',true); e.loot=null; }   // a Cutpurse drops what it stole   // past a full hand, the rest go back on top of the deck
@@ -397,7 +400,7 @@ function raceFrac(c,m){ if(m===1) return c; const o=Object.assign({},c); for(con
 function misfire(c,p){ if(!c.unstable||Math.random()>=.2) return false;
   const d=Math.round(6+(c.pow||c.amt||c.hp||20)*.15); payHp(d); floater('Misfire!',p.tile,'#ff8a3d',true); spray(p.tile,14,{shape:'spark',color:['#ffb04d','#5a4a3a','#ffffff'],v0:2,v:5,up0:1,up:4,g:6,drag:1,life:.5,s:4,add:true}); shake(4); return true; }
 function playCard(inst){ if(B&&B.player){ B.player.poseT=B.time; B.player.poseK='cast'; }
-  const b=B, p=b.player; let c=scaled(inst.card,(inst.mult||1)*(p.spell||1)*raceMult(inst.card,inst));
+  const b=B, p=b.player; let c=scaled(inst.card,(inst.mult||1)*(p.spell||1)*raceMult(inst.card,inst)*(typeof arRuleCard==='function'?arRuleCard(inst):1));
   c=raceFrac(c,raceMult(inst.card,inst));
   if(inst.extra) c=Object.assign({},c,inst.extra);   // a Tinker's keyword
   if(inst.brood) c=Object.assign({},c,{broodN:inst.brood,leader:inst.leader});
@@ -1157,6 +1160,7 @@ function floorLayer(ctx,b,T,S,telMap,G3,tl3){
     else if(t.thornT>0) fill=mixHex(fill,'#4f8a3a',.45);
     else if(t.zapT>0) fill=mixHex(fill,'#ffe24d',.22+.25*Math.max(0,Math.sin(T*23+t.q*5)));
     else if(t.voidT>0) fill=mixHex(fill,'#3a0f3f',.6+.1*Math.sin(T*4));
+    if(!(t.holeT>0)&&typeof arRuleFill==='function') fill=arRuleFill(t,fill,T);
     if(t.gT>0&&t.gEl&&!t.holeT) fill=mixHex(fill,COLORS[t.gEl].c,(.2+.12*Math.sin(T*5+t.r))*Math.min(1,t.gT/1.5));
     if(t.flash>0) fill=mixHex(base,t.flashC[0]==='#'&&t.flashC.length===7?t.flashC:'#ffffff',Math.min(.8,t.flash));
     if(G3) tl3.push({t,base,fill});   // the 3D board takes the tile's colour; its stone is already there
@@ -1168,7 +1172,7 @@ function floorLayer(ctx,b,T,S,telMap,G3,tl3){
     if(land&&!(t.holeT>0)) drawLand(ctx,t,top,T,S);
     // an incoming attack fills its tile as it gets closer; it lands when the tile is full
     if(tl&&!tl.friendly){ ctx.fillStyle='rgba(255,50,70,.6)'; poly(ctx,hexCorners(t,.96*Math.min(1,tl.t/tl.dur))); ctx.fill(); }
-    if(t.holeT>0){ ctx.save(); ctx.globalAlpha=.35+.15*Math.sin(T*5+t.q); ctx.fillStyle='#ff5a1f'; poly(ctx,hexCorners(t,.72)); ctx.fill(); ctx.globalAlpha=1; ctx.fillStyle='#0b0506'; poly(ctx,hexCorners(t,.55)); ctx.fill(); ctx.restore(); poly(ctx,top); }
+    if(t.holeT>0){ ctx.save(); ctx.globalAlpha=.35+.15*Math.sin(T*5+t.q); ctx.fillStyle=t.voidHole?'#9b4dff':'#ff5a1f'; poly(ctx,hexCorners(t,.72)); ctx.fill(); ctx.globalAlpha=1; ctx.fillStyle='#0b0506'; poly(ctx,hexCorners(t,.55)); ctx.fill(); ctx.restore(); poly(ctx,top); }
     if(b.fog&&t.side==='e'){ ctx.save(); ctx.globalAlpha=.42+.06*Math.sin(T*.8+t.q); ctx.fillStyle='#0a0610'; poly(ctx,top); ctx.fill(); ctx.restore(); poly(ctx,top); }
     // a light triangle grid: every hex split into its six triangles, a steady guide to walk by
     if(!G3&&!(t.holeT>0)&&t.side!=='n'){ const [mx,my]=proj(t.wx,0,t.wz); ctx.beginPath(); for(const [x,y] of top){ ctx.moveTo(mx,my); ctx.lineTo(x,y); }

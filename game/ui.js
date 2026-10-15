@@ -8,7 +8,7 @@ const activeDeck=()=>save.decks[save.active];
 
 function show(id){ $('#tip').classList.remove('on'); document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('on',s.id===id)); if(id==='scrBattle') resizeView(); window.scrollTo(0,0);
   if(id==='scrExplore'&&typeof EX!=='undefined'&&EX&&EX.active&&typeof xLoopStart==='function') xLoopStart(); }   // the dungeon's loop stops while another screen covers it
-let tipT=0; function tip(msg){ const t=$('#tip'); t.textContent=msg; t.classList.add('on'); clearTimeout(tipT); tipT=setTimeout(()=>t.classList.remove('on'),1400); }
+let tipT=0; function tip(msg,ms){ const t=$('#tip'); t.textContent=msg; t.classList.add('on'); clearTimeout(tipT); tipT=setTimeout(()=>t.classList.remove('on'),ms||1400); }
 const esc=s=>String(s).replace(/[&<>"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]));
 // the same HP bar and gold readout everywhere: battle, dungeon, camp, shop, character
 function hpMeter(bar,txt,hp,max){ hp=Math.max(0,Math.ceil(hp)); bar.style.width=Math.min(100,hp/max*100)+'%'; txt.textContent='HP '+hp+'/'+max; bar.parentElement.classList.toggle('low',hp/max<=.3); }
@@ -237,7 +237,7 @@ function affinityHTML(A,list){ const k=A.color; if(!SIX.includes(k)) return '';
   else if(el&&BEATS[el]===k) you+='<span class="good">Foes here hit you 20% softer.</span>';
   else if(el===k) you+='<span class="bad">Your '+COLORS[k].name+' cards are resisted here.</span>';
   else if(el===WEAK_TO[k]) you+='<span class="good">Your cards hit most foes here for WEAK damage.</span>';
-  return `Foes here are mostly ${ic(k)}: weak to ${ic(WEAK_TO[k])}, resist ${ic(k)}.<br>${you}`; }
+  return `Foes here are mostly ${ic(k)}: weak to ${ic(WEAK_TO[k])}, resist ${ic(k)}.<br>${you}`+(typeof areaRuleHTML==='function'?'<br>'+areaRuleHTML(A):''); }
 function openCamp(){
   if(typeof stopExplore==='function'){ stopExplore(); EX=null; }
   if(pickDepth==null) pickDepth=save.deepest;
@@ -605,6 +605,7 @@ function settleCharges(){ const burned=settleChargeUses(save,B.piles); persist()
 function victory(){
   const b=B, boss=b.enemies.some(e=>e.def.boss);
   const rw=battleRewards(b.enemies.filter(e=>!e.def.minion).map(e=>e.def.outlaw?e.weak:e.color),b.depth,boss,null,save.owned);
+  if(b.bonusGold) rw.gold+=b.bonusGold;   // the Gilded Ruins' gold tiles
   const outlaws=b.enemies.filter(e=>e.def.outlaw).length; if(outlaws) rw.gold=Math.round(rw.gold*(1+.2*outlaws));   // outlaws carry coin
   if(rw.gold) rw.gold=Math.round(rw.gold*(1+(gearMods(save).gold||0)));   // Ring of Fortune
   const xp=fightXp(b.enemies.map(e=>({minion:e.def.minion,boss:e.def.boss,mini:e.def.mini})),b.depth), lvUp=gainXp(save,xp);

@@ -1,6 +1,6 @@
 # Hexmancers: making it more fun
 
-Date: 2026-10-15 · Status: Part 1 is ideas; Part 2 is built (v58)
+Date: 2026-10-15 · Status: Part 1 idea 5 is built (v59); Part 2 is built (v58)
 
 The game already has a deep loop: dungeon crawling (secrets, mimics, puzzles, escorts, branches),
 a real-time card battle (combos, curses, telegraphs), a deck builder, gear, missions, a shop and
@@ -63,20 +63,21 @@ Each of these leans on the shop and packs that are already built (Part 2 covers 
 - a daily seeded dungeon with a score
 - unlockable card backs (Arcane Weave and Starfield are already drawn)
 
-### 5. Each area plays differently
+### 5. Each area plays differently (built in v59, battle side)
 
-Each of the six areas gets one signature rule, in both the dungeon and the battle:
+Each area has one signature rule on its battle board (`game/arearules.js`). It is announced when a
+fight starts and shown on the camp screen.
 
 | Area | Rule |
 |---|---|
-| Glowworm Hollows | Glowing crystals on some tiles; standing on one charges your next card. |
-| Frozen Deeps | Ice tiles: a unit that is pushed slides until it hits something. |
-| Storm Vault | Every 8 s lightning strikes a marked tile, hurting whoever is on it. |
-| Ember Rifts | Lava creeps one tile each round from the edges. |
-| Gilded Ruins | Gold tiles: a kill on one drops extra gold. |
-| The Abyss | Void tiles flicker in and out; a unit on one when it vanishes falls. |
+| Glowworm Hollows | 2 glowing crystals grow on your side. Stand on one for 0.6 s and your next card hits 50% harder; a new crystal grows 7 s later. |
+| Frozen Deeps | Extra ice on the enemy side. A pushed or pulled enemy slides until it hits something, and slams harder the further it slid. |
+| Storm Vault | Every 5 to 7.5 s lightning marks a tile (often one someone stands on). 1.6 s later it strikes whoever is there, you or an enemy (enemies take 60% more and are stunned). |
+| Ember Rifts | Every 7 to 9 s a tile near the edge of each side glows, then turns to lava; up to 5 per side. |
+| Gilded Ruins | 4 gold tiles on the enemy side. An enemy that dies on one drops 10 + 3 per depth extra gold. |
+| The Abyss | 3 void tiles on each side flicker: solid, a warning flash, then gone for 1.8 s. Whoever is on one falls (you lose 12% of your health; enemies lose 25%, bosses 6%) and climbs out on the nearest free tile. |
 
-Cost: medium to large. It makes each area memorable, not just a new colour.
+Still to do: a dungeon version of each rule.
 
 **Recommended order:** 1, then 2, then Part 2, then 3, then 5.
 

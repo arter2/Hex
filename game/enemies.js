@@ -138,6 +138,7 @@ function updateTerrain(dt){
   if(burning(p.tile)&&p.invT<=0){ p.burnAcc=(p.burnAcc||0)+dt; if(p.burnAcc>=.5){ p.burnAcc=0; hitPlayer(3); } } else p.burnAcc=0;
   for(const e of alive()) groundTick(e,dt);
   for(const e of alive()) if(burning(e.tile)){ e.lavaAcc=(e.lavaAcc||0)+dt; if(e.lavaAcc>=.5){ e.lavaAcc=0; hitEnemy(e,3,null,{raw:true}); } }
+  if(typeof arRuleTick==='function') arRuleTick(dt);
 }
 
 /* ---------------- enemy turns ---------------- */

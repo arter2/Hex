@@ -119,6 +119,37 @@ function shopBuy(o){ if(save.gold<o.price) return; const st=shopStock(); save.go
   persist(); renderShop(); if(typeof buzz==='function') buzz(15); }
 function shopSell(o){ if(shopSpare(o.id)<1) return; save.owned[o.id]--; if(save.owned[o.id]<=0) delete save.owned[o.id]; save.gold+=o.price; persist(); tip('Sold '+CARDS[o.id].name+' for '+o.price+' gold'); renderShop(); }
 
+/* ---------------- the back of a card ----------------
+   Pixel art at 50 x 70 art pixels (scaled up hard-edged), in three looks to choose from:
+     sigil   deep navy, a gold frame with corner studs, the Hexmancers hex sigil (an eye in a hexagon)
+             in the middle and a ring of small runes
+     weave   violet, a lattice of fine diamonds, a four-point star in a gold ring
+     stars   near-black, scattered stars and a hexagon traced in starlight, a thin silver frame */
+const CARD_BACK_STYLES=['sigil','weave','stars'];
+let CARD_BACK=(()=>{ try{ return localStorage.getItem('hexmancers-cardback')||'sigil'; }catch(e){ return 'sigil'; } })();
+const CARD_BACK_ART={};
+function cardBackArt(style){ style=style||CARD_BACK; if(CARD_BACK_ART[style]) return CARD_BACK_ART[style];
+  const W=50, H=70, cv=document.createElement('canvas'); cv.width=W; cv.height=H; const x=cv.getContext('2d'), R=caveRng(style.length*97+13);
+  const px=(a,b,c)=>{ x.fillStyle=c; x.fillRect(a,b,1,1); }, rect=(a,b,w,h,c)=>{ x.fillStyle=c; x.fillRect(a,b,w,h); };
+  const hex=(cx,cy,r,c,fill)=>{ x.beginPath(); for(let i=0;i<6;i++){ const a=Math.PI/6+i*Math.PI/3; x.lineTo(Math.round(cx+Math.cos(a)*r)+.5,Math.round(cy+Math.sin(a)*r)+.5); } x.closePath(); if(fill){ x.fillStyle=fill; x.fill(); } x.strokeStyle=c; x.lineWidth=1; x.stroke(); };
+  if(style==='weave'){ rect(0,0,W,H,'#241238'); for(let j=0;j<H;j++) for(let i=0;i<W;i++) if((i+j)%6===0||(i-j+60)%6===0) px(i,j,'#3a1f5a');
+    rect(0,0,W,2,'#0c0614'); rect(0,H-2,W,2,'#0c0614'); rect(0,0,2,H,'#0c0614'); rect(W-2,0,2,H,'#0c0614'); x.strokeStyle='#b48cff'; x.strokeRect(3.5,3.5,W-7,H-7);
+    x.fillStyle='#120a1e'; x.beginPath(); x.arc(25,35,12,0,Math.PI*2); x.fill(); x.strokeStyle='#d9b45a'; x.lineWidth=1; x.beginPath(); x.arc(25,35,12.5,0,Math.PI*2); x.stroke();
+    for(const [dx,dy,l] of [[0,-1,10],[0,1,10],[-1,0,10],[1,0,10]]) for(let k=0;k<l;k++){ const w=Math.max(0,3-Math.floor(k/3)); for(let q=-w;q<=w;q++) px(25+dx*k+(dy?q:0),35+dy*k+(dx?q:0),k<2?'#fff6d0':'#f2c94c'); } }
+  else if(style==='stars'){ rect(0,0,W,H,'#06080e'); for(let n=0;n<70;n++){ const a=R()*W|0, b=R()*H|0, c=R(); px(a,b,c<.1?'#ffffff':c<.4?'#8fa8c8':'#3a4a60'); }
+    x.strokeStyle='#c8d4e0'; x.strokeRect(2.5,2.5,W-5,H-5); rect(0,0,W,2,'#000'); rect(0,H-2,W,2,'#000');
+    for(let i=0;i<6;i++){ const a=Math.PI/6+i*Math.PI/3, b=a+Math.PI/3; for(let t=0;t<=1;t+=.08) px(Math.round(25+Math.cos(a)*14*(1-t)+Math.cos(b)*14*t),Math.round(35+Math.sin(a)*14*(1-t)+Math.sin(b)*14*t),t<.05?'#ffffff':'#7fd4ff'); }
+    px(25,35,'#ffffff'); px(24,35,'#7fd4ff'); px(26,35,'#7fd4ff'); px(25,34,'#7fd4ff'); px(25,36,'#7fd4ff'); }
+  else { rect(0,0,W,H,'#0e1830'); for(let j=0;j<H;j+=2) for(let i=(j/2)%2?1:0;i<W;i+=4) px(i,j,'#14213e');
+    rect(0,0,W,H,'rgba(0,0,0,0)'); x.strokeStyle='#d9b45a'; x.strokeRect(2.5,2.5,W-5,H-5); x.strokeStyle='#6a4e1a'; x.strokeRect(4.5,4.5,W-9,H-9);
+    for(const [a,b] of [[2,2],[W-5,2],[2,H-5],[W-5,H-5]]){ rect(a,b,3,3,'#f2c94c'); px(a+1,b+1,'#fff6d0'); }
+    for(let k=0;k<12;k++){ const a=k/12*Math.PI*2, cx=Math.round(25+Math.cos(a)*16), cy=Math.round(35+Math.sin(a)*16); rect(cx,cy,2,2,'#3a5a8a'); if(k%3===0) px(cx,cy,'#8fe4ff'); }
+    hex(25,35,11,'#f2c94c','#081022'); hex(25,35,8,'#8a6a2a');
+    rect(20,34,11,3,'#f2c94c'); rect(22,33,7,5,'#f2c94c'); rect(24,34,3,3,'#0e1830'); px(25,35,'#8fe4ff'); rect(19,35,1,1,'#f2c94c'); rect(31,35,1,1,'#f2c94c'); }
+  return CARD_BACK_ART[style]=cv; }
+// a face-down card, as a block element showing the chosen back
+function cardBackEl(style){ const d=document.createElement('div'); d.className='cardback'; const im=cardBackArt(style); d.style.backgroundImage='url('+im.toDataURL()+')'; return d; }
+
 /* ---------------- opening a pack ----------------
    The pack shakes, then bursts in a flash; its cards land face down in a fan and turn over one at a
    time in a random order (a rare or better one glows as it turns). Tap to turn the rest at once. */
@@ -126,12 +157,16 @@ function packOpen(color,res,onDone){ const ov=$('#packOpen'), stage=$('#poStage'
   const pk=packArt(color,150); pk.className='popack'; stage.appendChild(pk); ov.classList.add('on'); ov.classList.remove('burst');
   const order=res.map((_,i)=>i).sort(()=>Math.random()-.5), slots=[];
   res.forEach((r,i)=>{ const s=document.createElement('div'); s.className='poslot'; s.style.setProperty('--i',i-(res.length-1)/2);
-    const back=document.createElement('div'); back.className='poback'; const face=cardEl(r.card,r.isNew?'<span class="badge new">NEW</span>':''); face.classList.add('poface'); face.onclick=e=>{ e.stopPropagation(); showDetail(r.card); };
+    const back=cardBackEl(); back.classList.add('poback'); const face=cardEl(r.card,r.isNew?'<span class="badge new">NEW</span>':''); face.classList.add('poface'); face.onclick=e=>{ e.stopPropagation(); showDetail(r.card); };
     if(['rare','legendary','hero'].includes(r.card.rarity)) s.classList.add('shine');
     s.append(back,face); fan.appendChild(s); slots.push(s); });
-  let k=0, t=null; const turn=()=>{ if(k>=order.length){ done.hidden=false; return; } slots[order[k++]].classList.add('up'); if(typeof buzz==='function') buzz(8); t=setTimeout(turn,380+Math.random()*320); };
-  setTimeout(()=>{ ov.classList.add('burst'); if(typeof buzz==='function') buzz(30); setTimeout(()=>{ stage.innerHTML=''; t=setTimeout(turn,350); },380); },700);
-  ov.onclick=()=>{ if(ov.classList.contains('burst')&&k<order.length){ clearTimeout(t); while(k<order.length) slots[order[k++]].classList.add('up'); done.hidden=false; } };
+  // they land face down, wait a beat, then turn over one by one in a random order; tap one to turn it yourself
+  let k=0, t=null; const left=()=>order.filter(i=>!slots[i].classList.contains('up'));
+  const flip=i=>{ if(slots[i].classList.contains('up')) return; slots[i].classList.add('up'); if(typeof buzz==='function') buzz(8); if(!left().length){ clearTimeout(t); setTimeout(()=>done.hidden=false,350); } };
+  const turn=()=>{ const l=left(); if(!l.length) return; flip(l[0]); t=setTimeout(turn,650); };
+  slots.forEach((s,i)=>s.addEventListener('click',e=>{ if(!s.classList.contains('up')){ e.stopPropagation(); flip(i); } }));
+  setTimeout(()=>{ ov.classList.add('burst'); if(typeof buzz==='function') buzz(30); setTimeout(()=>{ stage.innerHTML=''; t=setTimeout(turn,900); },380); },700);
+  ov.onclick=()=>{ if(ov.classList.contains('burst')&&left().length){ clearTimeout(t); left().forEach(flip); } };   // a tap beside the cards turns the rest
   done.onclick=e=>{ e.stopPropagation(); clearTimeout(t); ov.classList.remove('on','burst'); const n=res.filter(r=>r.isNew).length; if(n) tip(n+' new card'+(n>1?'s':'')+' for your collection'); if(onDone) onDone(); }; }
 /* A pack found or won (a chest, a boss, a mission): the area's own family more often than not, else a
    booster; its cards go to your collection and it opens at once. Packs are uncommon finds: about 1 rich
@@ -146,3 +181,6 @@ $('#shopSheet').addEventListener('pointerdown',e=>{ if(e.target.id==='shopSheet'
 $('#shopSheetClose').onclick=()=>$('#shopSheet').classList.remove('on');
 // the Trading post: trading cards with other players is coming
 $('#goTrade').onclick=()=>tip('Trading post: trading cards with other players is coming soon.');
+
+// the debug menu's card back picker (until one is chosen for good)
+{ const sel=document.getElementById('dbgCardBack'); if(sel){ sel.value=CARD_BACK; sel.onchange=()=>{ CARD_BACK=sel.value; try{ localStorage.setItem('hexmancers-cardback',CARD_BACK); }catch(e){} }; } }

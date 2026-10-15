@@ -261,7 +261,7 @@
 
   <!-- shared overlays -->
   <div id="shopSheet" class="overlay sheet"><div class="panel ssheet"><div id="shopSheetBody" class="sbody"></div><div class="controls two"><button id="shopSheetClose" class="btn ghost">Back</button><button id="shopBuy" class="btn"></button></div></div></div>
-  <div id="packOpen" class="overlay"><div class="pobox"><div id="poStage" class="postage"></div><div id="poFan" class="pofan"></div><p class="hint center">Tap to turn them all</p><button id="poDone" class="btn" hidden>Collect</button></div></div>
+  <div id="packOpen" class="overlay"><div class="pobox"><div id="poStage" class="postage"></div><div id="poFan" class="pofan"></div><p class="hint center">Tap a card to turn it over</p><button id="poDone" class="btn" hidden>Collect</button></div></div>
   <!-- one pause menu for the dungeon and the battle -->
   <div id="pause" class="overlay">
     <div class="panel narrow">
@@ -432,6 +432,8 @@
       <h3>Walls</h3>
       <div class="srow"><span>See-through ball<small>Radius in tiles of the dither ball in front of you, on walls that are not cut.</small></span><span class="srange"><input id="setXBall" type="range" min="0" max="6" step="0.05"><b id="setXBallV"></b></span></div>
       <div class="srow"><span>See-through strip<small>How far either side of you, in tiles, the walls in front fade with alpha.</small></span><span class="srange"><input id="setXStrip" type="range" min="0" max="6" step="0.05"><b id="setXStripV"></b></span></div>
+      <h3>Cards</h3>
+      <div class="srow"><span>Card back<small>The back shown on face-down cards (the pack opening). A: Hex sigil, B: Arcane weave, C: Starfield. Saved in this browser.</small></span><select id="dbgCardBack" class="dbgsel"><option value="sigil">A Hex sigil</option><option value="weave">B Arcane weave</option><option value="stars">C Starfield</option></select></div>
       <h3>Info</h3>
       <div class="srow"><span>Frame rate<small>Shows frames a second, the slowest frame of the last second and draw calls, top left in the dungeon.</small></span><label class="scheck"><input id="dbgFps" type="checkbox"></label></div>
       <div class="srow"><span>Auto quality<small>On: a phone that falls behind lowers sharpness, then screen-space AO, then spell lights, to keep its frame rate (q0 is full quality in the readout). Off: always full quality.</small></span><label class="scheck"><input id="dbgAutoQ" type="checkbox"></label></div>

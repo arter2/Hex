@@ -160,6 +160,7 @@ function openCustomScreen(){
   if(b.turn!=null) endTurn(); b.turn=(b.turn==null?0:b.turn+1);
   b.phase='custom'; b.player.charging=false; b.player.path=[];
   b.justDrawn=new Set(openCustom(b.piles).map(c=>c.uid));
+  if(typeof curseSlot==='function') curseSlot(b);   // a cursed idol's hex takes a slot (puzzles.js)
   b.hooks.onCustom&&b.hooks.onCustom();
 }
 function closeCustomScreen(){
@@ -423,6 +424,7 @@ function raceFrac(c,m){ if(m===1) return c; const o=Object.assign({},c); for(con
 function misfire(c,p){ if(!c.unstable||Math.random()>=.2) return false;
   const d=Math.round(6+(c.pow||c.amt||c.hp||20)*.15); payHp(d); floater('Misfire!',p.tile,'#ff8a3d',true); spray(p.tile,14,{shape:'spark',color:['#ffb04d','#5a4a3a','#ffffff'],v0:2,v:5,up0:1,up:4,g:6,drag:1,life:.5,s:4,add:true}); shake(4); return true; }
 function playCard(inst){ if(B&&B.player){ B.player.poseT=B.time; B.player.poseK='cast'; }
+  if(inst.card.curseFx&&typeof curseCast==='function') return curseCast(inst.card,B.player);
   const b=B, p=b.player; let c=scaled(inst.card,(inst.mult||1)*(p.spell||1)*raceMult(inst.card,inst)*(typeof arRuleCard==='function'?arRuleCard(inst):1));
   c=raceFrac(c,raceMult(inst.card,inst));
   if(inst.extra) c=Object.assign({},c,inst.extra);   // a Tinker's keyword

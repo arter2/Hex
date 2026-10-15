@@ -157,10 +157,11 @@ function placeCard(p,uid,zone,index){
   const qi=p.queue.findIndex(c=>c.uid===uid), hi=p.hand.findIndex(c=>c.uid===uid);
   if(qi<0&&hi<0) return false;
   const src=qi>=0?p.queue:p.hand, si=qi>=0?qi:hi, dst=zone==='queue'?p.queue:p.hand, card=src[si];
+  if(card.cursed) return false;
   if(zone==='queue'&&isInstant(card.card)) return false;
   if(index==null) index=dst.length;
   if(src!==dst&&zone==='queue'&&p.queue.length>=slotsOf(p)){ const ti=Math.min(index,slotsOf(p)-1), other=p.queue[ti];
-    p.queue[ti]=card; p.hand[si]=other; return true; }
+    if(other&&other.cursed) return false; p.queue[ti]=card; p.hand[si]=other; return true; }
   if(src!==dst&&zone==='queue'&&!canQueue(p,card)) return false;
   src.splice(si,1); dst.splice(Math.max(0,Math.min(index,dst.length)),0,card); return true;
 }
@@ -168,6 +169,7 @@ function placeCard(p,uid,zone,index){
 // Tap a card: hand -> queue (if a slot is free), or queue -> hand. Returns true if it moved.
 function toggleQueue(p,uid){
   let i=p.queue.findIndex(c=>c.uid===uid);
+  if(i>=0&&p.queue[i].cursed) return false;   // a hex can't be moved
   if(i>=0){ p.hand.push(p.queue.splice(i,1)[0]); return true; }
   i=p.hand.findIndex(c=>c.uid===uid);
   if(i>=0 && canQueue(p,p.hand[i])){ p.queue.push(p.hand.splice(i,1)[0]); return true; }

@@ -225,13 +225,14 @@ function xFloorPlan(depth,opt){
   if(!boss&&depth>=XRUN.next.merchant){ F.merchant=xPickMerchant(depth); XRUN.next.merchant=depth+xri(3,6); }
   if(depth>=XRUN.next.sanct){ if(boss) XRUN.next.sanct=depth+1; else { F.sanct=xpick(Object.keys(SANCTUARIES)); XRUN.next.sanct=depth+xri(5,6); } }
   // the rest: each has its own chance, and every floor gets at least two
-  const pool=[['npc',.55],['puzzle',.45],['lock',.4],['cache',.35],
+  const pool=[['npc',.55],['puzzle',.6],['lock',.4],['cache',.35],
     ...(depth>=2?[['prisoner',.3],['vault',.35],['mini',depth>=8?.45:.3],['gate',.3],['gauntlet',.35],['mimic',.25],['totem',depth>=4?.3:0]]:[])];
   for(const [k,p] of pool) if(XR()<p) F[k]=1;
   const cap=F.merchant||F.sanct?3:5, extra=()=>Object.keys(F).filter(k=>!['merchant','sanct'].includes(k));
   while(extra().length<2){ const left=pool.filter(([k,p])=>!F[k]&&p>0); if(!left.length) break; F[xweighted(left)]=1; }
   while(extra().length>cap) delete F[xpick(extra())];
   if(typeof xRarePlan==='function') xRarePlan(depth,F,boss);   // a special room every 2 to 3 floors (rooms.js)
+  if(typeof xPuzzPlan==='function') xPuzzPlan(depth,F,boss);   // now and then a cursed idol (puzzles.js), never shown on the path map
   if(F.vault) pl.side.push({kind:'vault', lock:depth>=6&&XR()<.35?'gold':'silver', w:4, h:3, content:depth>=3&&XR()<.3?'mimic':depth>=4&&XR()<.3?'construct':'treasure'});
   if(F.prisoner) pl.side.push({kind:'cell', lock:'bronze'});
   if(F.lock) pl.locks=1+(depth>=8&&XR()<.4?1:0);
@@ -311,6 +312,7 @@ function xPopulate(){
     if(!have.includes('cache')) xPlaceCache(); else if(!have.includes('npc')) xPlaceNPC(xpick(['quest','lost','scholar'])); else if(!have.includes('gauntlet')) xPlaceGauntlet(); else xMakeMimic(); }
   xPlacePots(); xPlaceBody(); if(!EX.branch) xPlaceFinds();
   if(typeof xPlanEvents==='function') xPlanEvents();   // missions that start partway through (missions.js)
+  if(typeof xPuzzPopulate==='function') xPuzzPopulate();
   if(typeof xPlaceWayshard==='function') xPlaceWayshard();   // a Wayshard owed to a sealed floor below (deepways.js)
   if(typeof xStirInit==='function') xStirInit();   // linger and the dark stirs: more foes, harder, up to the floor's cap
 }
@@ -472,7 +474,7 @@ function xArrival(){ const F=EX.plan?EX.plan.feats:{};
 const DIRV=[[0,-1],[1,0],[0,1],[-1,0]];   // north, east, south, west
 const WHEEL_ICON={fire:'🔥',frost:'❄',storm:'⚡',verdant:'🌿',light:'☀',shadow:'☾'};
 function xPlacePuzzle(r){
-  const kinds=['plates','statues','mirrors','runes','levers','trial'].sort(()=>XR()-.5);
+  const kinds=Object.keys(PUZZLE_BUILD).sort(()=>XR()-.5);   // the old six and the round 4 puzzles (puzzles.js)
   for(const k of kinds){ const snap={props:EX.props.length, taken:new Set(EX.taken)};
     const pz=PUZZLE_BUILD[k](r); if(pz){ EX.puzzle=Object.assign(pz,{kind:k, room:r.id, solved:false}); return; }
     // undo a half-built attempt
@@ -620,7 +622,7 @@ function xMeshProp(p){
       else { g.add(xBall(.3,clay,0,.3,0), xCyl(.16,.2,clay,0,.62,0), xCyl(.2,.06,rim,0,.72,0)); g.children[0].scale.y=1.1; }
       g.rotation.y=p.rot||0; break; }
     case 'seal': if(typeof xSealMesh==='function') xSealMesh(p,g); break;
-    default: if(typeof xRareMesh==='function'&&xRareMesh(p,g)) break; if(typeof xMissionMesh==='function') xMissionMesh(p,g);
+    default: if(typeof xRareMesh==='function'&&xRareMesh(p,g)) break; if(typeof xPuzzMesh==='function'&&xPuzzMesh(p,g)) break; if(typeof xMissionMesh==='function') xMissionMesh(p,g);
   }
   g.visible=false; p.mesh=g; X3.group.add(g); return g; }
 function xMeshItem(it){ if(!X3||!X3.group) return null; const g=new THREE.Group(); g.position.set(xw(it.cell),0,xz(it.cell));
@@ -642,6 +644,7 @@ function xMeshItem(it){ if(!X3||!X3.group) return null; const g=new THREE.Group(
     else { m.add(xBox(.42,.4,.16,steel,0,0,0), xBox(.44,.06,.18,gold,0,.12,0), xBox(.14,.14,.14,steel,-.26,.13,0), xBox(.14,.14,.14,steel,.26,.13,0)); } }
   else if(typeof xDeepItemMesh==='function'&&(m=xDeepItemMesh(it))){}
   else if(typeof xRareItemMesh==='function'&&(m=xRareItemMesh(it))){}
+  else if(typeof xPuzzItemMesh==='function'&&(m=xPuzzItemMesh(it))){}
   else { m=new THREE.Group(); m.add(xBall(.2,xMat(0x8a5a32),0,0,0), xBox(.12,.08,.12,xMat(0xf2c94c),0,.18,0)); }
   m.position.y=.55; g.add(m); it.spin=m; g.visible=false; it.mesh=g; X3.group.add(g); return g; }
 function xMeshChest(ch){ if(typeof xChestMesh==='function'&&X3&&X3.group) X3.group.add(xChestMesh(ch)); }
@@ -661,7 +664,8 @@ const xCanAct=()=>{ if(EX.needInput) return false; const now=performance.now(); 
 function xBumpExtra(c,front){
   if(c<0) return;
   const w=EX.wallAt.get(c); if(w){ if(front&&(w.found!==false||w.kind==='switch')&&xCanAct()) xInteract(w); return false; }
-  const d=EX.doors.get(c); if(d&&d.state==='locked'){ if(front&&xCanAct()) xTryUnlock(c,d); return false; }
+  const d=EX.doors.get(c); if(d&&d.state==='locked'&&d.lock==='circuit'){ if(front&&xCanAct()&&typeof xCircuitDoor==='function') xCircuitDoor(c,d); return false; }
+  if(d&&d.state==='locked'){ if(front&&xCanAct()) xTryUnlock(c,d); return false; }
   const p=EX.propAt.get(c);
   if(p&&p.solid&&!p.gone){ if(front){ if(p.kind==='block') xPushBlock(p); else if(xCanAct()) xInteract(p); } return false; }
 }
@@ -670,6 +674,7 @@ function xEnterExtra(c){
   const it=EX.itemAt.get(c); if(it) xPickup(it);
   for(const p of EX.props){ if(p.cell!==c||p.wall||p.gone) continue;
     if(typeof xRareEnter==='function'&&xRareEnter(p)) return;
+    if(typeof xPuzzEnter==='function'&&xPuzzEnter(p)) continue;
     if(p.kind==='pot'){ xBreakPot(p); continue; }
     if(p.kind==='corpse'){ xTakeBody(p); continue; }
     if(p.kind==='reset') xResetBlocks();
@@ -729,12 +734,14 @@ function xPickup(it){ EX.items=EX.items.filter(x=>x!==it); EX.itemAt.delete(it.c
   else if(it.kind==='mpage'&&typeof xMissionPickup==='function') xMissionPickup(it);
   else if(typeof xDeepPickup==='function'&&xDeepPickup(it)){}
   else if(typeof xRarePickup==='function'&&xRarePickup(it)){}
+  else if(typeof xPuzzPickup==='function'&&xPuzzPickup(it)){}
   else if(it.kind==='quest'){ const q=XRUN&&XRUN.quests.find(x=>x.id===it.qid); if(q&&!q.done){ q.done=true; xLog('You find '+q.giver+'’s '+q.item+'. Their token glows warm in your pocket.','good'); xGrant(q.reward,'Quest reward'); } }
   persist(); xHud(); }
 
 /* ---------------- using things ---------------- */
 function xInteract(p){
   if(typeof xRareInteract==='function'&&xRareInteract(p)) return;   // special rooms (rooms.js)
+  if(typeof xPuzzInteract==='function'&&xPuzzInteract(p)) return;   // round 4 puzzles (puzzles.js)
   const pz=EX.puzzle;
   switch(p.kind){
     case 'npc': return xTalk(p);
@@ -815,6 +822,7 @@ function xDungeonTick(dt){
   if(typeof xMissionTick==='function') xMissionTick(dt);
   if(typeof xStirTick==='function') xStirTick(dt);
   if(typeof xRareTick==='function') xRareTick(dt);
+  if(typeof xPuzzTick==='function') xPuzzTick(dt);
   if(EX.bellAt){ if(!EX.bellWarned&&EX.clock>EX.bellAt-25){ EX.bellWarned=1; xLog('A distant bell tolls. You have lingered too long.','warn'); xSfx('thud'); }
     if(EX.clock>=EX.bellAt){ EX.bellAt=0; const reach=xReach(); let c=EX.up; if(Math.hypot(xcx(c)-xcx(pc),xcy(c)-xcy(pc))<7){ const far=EX.rooms.filter(r=>!r.side&&!r.safe&&reach[xi(r.cx,r.cy)]>=0).sort((a,b)=>Math.hypot(b.cx-xcx(pc),b.cy-xcy(pc))-Math.hypot(a.cx-xcx(pc),a.cy-xcy(pc)))[0]; if(far) c=xi(far.cx,far.cy); }
       const g=xMiniGroup('executioner',c,{huntT:0}); EX.groups.push(g); xGroupSprites(g,X3.group); xLog('Heavy steps. The Executioner has come for you.','bad'); xSfx('thud'); } }
@@ -900,6 +908,7 @@ function xAfterFight(g,won,info){
   if(g.mimicChest){ const ch=g.mimicChest; ch.mimic=ch.giant=false; ch.open=true; xLidOpen(ch); xLoot(true); if(ch.rich) xLoot(true); xChestAfter(ch); }
   if(typeof xMissionFight==='function') xMissionFight(g);
   if(typeof xRareAfterFight==='function') xRareAfterFight(g);
+  if(typeof xPuzzAfterFight==='function') xPuzzAfterFight(g);
   if(g.trial){ const p=g.trial; p.spent=true; if(p.flame) p.flame.visible=false;
     if(info&&info.ruleOK) xPuzzleSolved(); else xLog('The trial was broken. The altar goes dark.','bad'); }
   persist(); xHud(); }
@@ -1100,6 +1109,7 @@ function xPaintExtra(){
 function xDungeonDraw(T){
   for(const it of EX.items) if(it.spin&&it.mesh.visible){ it.spin.rotation.y=T*1.6; it.spin.position.y=.55+Math.sin(T*2.4+it.cell)*.08; }
   if(typeof xRareAnim==='function') xRareAnim(T);
+  if(typeof xPuzzAnim==='function') xPuzzAnim(T);
   for(const p of EX.props){ if(!p.mesh||!p.mesh.visible) continue;
     if(p.spr){ xRefresh(p.spr,false); p.spr.position.y=(Math.floor(T*1.4+p.cell*.37)%2)*2.2/96; }
     if(p.mark&&p.mark.isSprite){ const st=p.kind==='merchant'?'$':p.role==='prisoner'||p.state==='done'?'':p.state==='idle'?'!':p.state==='shop'?'$':'?'; p.mark.visible=!!st;
@@ -1133,6 +1143,7 @@ function xHudExtra(){ const el=$('#xStatus'); if(!el) return; const out=[];
   if(XRUN&&XRUN.attuned) out.push('<span class="xs good">✦ Blessed</span>');
   if(typeof xDeepHud==='function') xDeepHud(out);
   if(typeof xRareHud==='function') xRareHud(out);
+  if(typeof xPuzzHud==='function') xPuzzHud(out);
   if(typeof xMissionHud==='function') xMissionHud(out);
   const q=XRUN?XRUN.quests.filter(x=>!x.done&&!x.failed).length:0; if(q) out.push('<span class="xs">📜 '+q+'</span>');
   if(EX.carrying) out.push('<span class="xs">📦 crate</span>');

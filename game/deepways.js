@@ -97,7 +97,7 @@ function xSealFloor(n){ if(!XRUN||!EX||EX.branch||n<2) return; const nd=EX.depth
   xLog('Your Lost Satchel tore loose in the fall. It waits on depth '+(nd-n)+', if you climb all the way back.','dim');
   tip('Find the Wayshard on depth '+(nd-1)+' to open the stairs down',5000); xHud(); }
 // the stairs down: false while a Fallen Seal still holds them
-function xSealCheck(){ const s=XRUN&&(XRUN.seals||[]).find(x=>x.depth===EX.depth&&!x.open); if(!s) return true;
+function xSealCheck(){ if(typeof xCurseBlocks==='function'&&xCurseBlocks()) return false; const s=XRUN&&(XRUN.seals||[]).find(x=>x.depth===EX.depth&&!x.open); if(!s) return true;
   if(!s.got){ xSay('seal','A Fallen Seal holds these stairs shut. Its Wayshard lies on depth '+s.shard+', up the stairs and a short walk from the stairs down there.'); return false; }
   s.open=true; const p=EX.props.find(q=>q.kind==='seal'&&!q.gone); if(p){ p.gone=true; if(p.mesh) p.mesh.visible=false; }
   xLog('The Wayshard melts into the Fallen Seal. The stairs down are open.','good'); xSfx('unlock'); xXp(20+2*EX.depth,'seal broken'); return true; }

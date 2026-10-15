@@ -50,7 +50,7 @@ const rareRoom=k=>EX.rooms.find(r=>r.rare===k);
 const xRareName=k=>RARE_ROOMS[k]?RARE_ROOMS[k].icon+' '+RARE_ROOMS[k].name:k;
 
 /* ---------------- filling the rooms ---------------- */
-function xRareFill(r){ if(xFillExplore(r)) return; const d=EX.depth, c=xFreeSolid(r,true); if(c<0) return;
+function xRareFill(r){ if(xFillExplore(r)) return; if(typeof xFillPuzzRoom==='function'&&xFillPuzzRoom(r)) return; const d=EX.depth, c=xFreeSolid(r,true); if(c<0) return;
   switch(r.rare){
     case 'nest': { xProp('nestcore',c,{room:r.id, solid:false}); for(let k=0;k<3;k++){ const s=xFreeSolid(r,true); if(s>=0) xProp('eggsac',s,{room:r.id, hp:3}); } r.nest={next:12, alive:3}; break; }
     case 'hub': { xRareHub(r,c); break; }

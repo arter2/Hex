@@ -1,6 +1,6 @@
 # Hexmancers: making it more fun
 
-Date: 2026-10-15 · Status: Part 1 ideas 1 and 5 are built (v59, v60) with rare foes; Part 2 is built (v58); Part 3 rounds 1 to 3 are built (v66 to v68)
+Date: 2026-10-15 · Status: Part 1 ideas 1 and 5 are built (v59, v60) with rare foes; Part 2 is built (v58); Part 3 is built (v66 to v69)
 
 The game already has a deep loop: dungeon crawling (secrets, mimics, puzzles, escorts, branches),
 a real-time card battle (combos, curses, telegraphs), a deck builder, gear, missions, a shop and
@@ -320,18 +320,40 @@ They join the same pool as the round 2 rooms, so 15 kinds share the special-room
 | 📚 Overgrown library | 3–4 vine-covered shelves: one holds a tale, one a scroll, one a spell tome (an uncommon or better card), one gold, and one only dust. A safe room. |
 | 💎 Crystal cave | A geode is buried in the cave. The crystals glow and ring faster the nearer you stand ("hum faintly", "ring louder", "sing"); search on the spot to dig it up: 2 Relic Shards, Arcane Essence and gold. You can also prise one crystal loose for essence. |
 
-### Round 4: puzzles
+### Round 4: puzzles (built in v69)
 
-Pressure path, braziers, echo bells, sliding ice, weight scales, shifting rooms, memory tiles,
-guardian riddle, and three of yours:
+`game/puzzles.js`. A floor now has a puzzle room 60% of the time (was 45%), picked from 14 kinds:
+the 6 old ones and these 8. Solving one opens a rich chest at its heart, as before.
 
-- **Switch circuit:** 4 to 6 switches around the whole floor, pulled in the order a clue gives,
-  open a sealed room. A wrong switch resets them with a clang that draws foes.
-- **The ghost's table:** bring 3 element items found around the floor (in chests, behind secrets,
-  carried by foes) back to a table and a rare ghost rises. The 3 elements returned decide which of
-  20 rare artifacts it drops.
-- **Cursed find:** picking up a cursed item by surprise fills one of your three card slots with a
-  bad card in every fight on that floor and seals the stairs down, until you cleanse at an altar
-  placed far away.
+| Puzzle | How it works |
+|---|---|
+| Pressure path | A field of carved stones (☀ ❄, and ☾ from depth 6) between two plates. The tablet by the start plate gives the order to step in, repeating. A wrong stone bites (spikes) and ends the run; stepping off the field ends it too. |
+| Memory tiles | Step on the start plate and the safe path glows for 3 seconds, then goes dark. Walk it from memory to the far plate; a dead stone sends you back. |
+| Echo bells | Strike the gong and 4 bells (5 from depth 6) play a tune. Ring it back; a wrong bell clangs (and wakes the floor), and you strike the gong again. |
+| Sliding ice | On the ice you slide until a boulder, a wall or the dry rim stops you. Reach the pedestal; at least two slides are always needed. |
+| Weight scales | Five numbered stones and a scale. Put exactly three on it to make the weight carved below. |
+| Shifting stones | A 3 × 3 field of channel stones; stepping on one turns it. Join the channel from the inlet to the outlet and it lights up. |
+| Guardian riddle | A statue asks about the colour wheel or about a tale you have read. A wrong answer hurts; two and it falls silent for good. |
+| Braziers | Take fire from the lit brazier and light three cold ones in other rooms (23–48 steps away) before the flame dies: it lasts 30 s, and any lit brazier gives a fresh one. |
+
+Your three:
+
+- **Switch circuit** (a special room, from depth 3): a vault sealed by a circuit lock. 4 coloured
+  switches (5 from depth 7) sit in walls all over the floor. Walk into the vault door to see the
+  mural with their order; pull them in that order. A wrong one resets every switch with a clang
+  that wakes the floor. The vault holds a rich chest (30% legendary), gold and boss-grade gear. It is
+  only placed where sealing it cuts nothing else off.
+- **The ghost's table** (a special room, from depth 3): a table with 3 dishes for 3 of the 6
+  element relics. One relic lies in a far room, one is in the secret closet, one is carried by a
+  foe (win the fight to take it). Lay them on the table and the Hungry Ghost rises (a miniboss).
+  Beat it for the artifact those 3 elements make: 20 artifacts, one for every combination, each a
+  ring with +12% card damage in its 3 colours and +8 max HP (for example "Diadem of Rime, Thorn
+  and Dusk").
+- **Cursed idol** (18% of floors from depth 3, never on a boss floor, never shown on the path map):
+  a glittering gold idol lying about. Pick it up and one of three hexes takes your first card slot
+  in every fight on that floor (it can't be moved): Hex of Thorns hurts you, Leaden Hex roots and
+  slows you, Hollow Hex breaks your shield and heals the enemies 5%. The stairs down won't let you
+  pass. Cleanse it at the altar in the room farthest from the idol: the curse lifts, the idol
+  becomes gold (80 + 20 per depth) and you heal 20%.
 
 Rare rooms appear every 2 to 3 floors. Colour locks were dropped.

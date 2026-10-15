@@ -610,6 +610,7 @@ const AREA_TEXT={burst:' on the tile you aim and around it', cross:' in a cross 
 const lobPattern=c=>c.pattern||(c.radius?'burst':'single');
 const tn=n=>n*10+' seconds';   // a card's turns are 10 s of fighting each (TURN_S in battle.js)
 function cardText(c){
+  if(c.curseText) return c.curseText;
   const kw=[];
   if(c.burn) kw.push('Burn '+c.burn+'s'); if(c.freeze) kw.push('Freeze '+c.freeze+'s'); if(c.stun) kw.push('Stun '+c.stun+'s');
   if(c.slow) kw.push('Slow '+c.slow+'s'); if(c.poison) kw.push('Poison '+c.poison); if(c.curse) kw.push('Curse '+c.curse+'s');

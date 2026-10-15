@@ -1067,7 +1067,7 @@ const xKnownTrap=c=>EX.traps.find(t=>t.cell===c&&t.armed&&t.known);
 const xChestAt=c=>EX.chests.find(ch=>ch.cell===c&&!ch.open);
 
 /* ---------------- you ---------------- */
-function xMove(dt){
+function xMove(dt){ if(typeof xPuzzBusy==='function'&&xPuzzBusy()) return;   // sliding on ice (puzzles.js)
   if(EX.action){ EX.stillT=0; EX.action.t-=dt; if(EX.action.t<=0){ const a=EX.action; EX.action=null; a.done(); } return; }
   if(EX.stuckT>0){ EX.stuckT-=dt; if(EX.stuckT<=0) xHud(); return; }
   if(EX.dragT>0){ EX.dragT-=dt; return; }   // a moment's pause after dragging a block

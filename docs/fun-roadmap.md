@@ -63,17 +63,30 @@ Right now a run mostly differs by which cards you happen to draw.
 
 Cost: medium. This is the biggest boost to replay value.
 
-### 3. Read and outplay the enemy (intent and counters)
+### 3. Read and outplay the enemy (built in v70)
 
-The fun in a real-time card fight is seeing a threat coming and answering it.
+`game/reading.js`.
 
-- Give every enemy one readable tell: a pose, a glow, a sound and a tile telegraph.
-- A **perfect answer** (dodging off a telegraphed tile at the last moment, or stunning a
-  wind-up) draws a card or gives a burst of mana, with a "Perfect!" pop.
-- The enemy weaknesses that already exist (`weak:` in `enemies.js`) show as a small icon over
-  each enemy once you have beaten that kind before.
-
-Cost: medium. This turns fights from trading hits into a skill game.
+- **Attack bar:** the outline of the tile under each enemy fills counter-clockwise from its front
+  corner as its next attack comes (yellow, then orange, then red). When it is full it flashes white
+  twice (0.4 s), then the attack goes; it stays red while the attack winds up, casts or is marked.
+  Stunned or frozen, it turns blue. This replaced the small ring around the intent icon.
+- **Counter Hit window:** a card that lands while the bar flashes counts as a Counter Hit too
+  (double damage, a 1.5 s stun, the attack cancelled and its bar starting over), as do cards that
+  land during a wind-up, a cast or a marked attack, as before.
+- **Perfect Dodge:** leave a marked tile, or the tile a shot is about to enter, within 0.4 s of it
+  landing: "PERFECT!", a white flash, a short slow-down and 15% of the Spell gauge. Leaving early
+  gets nothing extra.
+- **Tells:** each attack marks its tiles its own way: a rush sweeps chevrons, a snipe draws a laser
+  from the shooter that turns solid just before it fires, a quake cracks the ground, falling rocks
+  cast growing shadows, a cleave sweeps an arc, a hex spins a sigil, an ice slam spreads frost, a
+  bomb counts down a fuse ring, lightning draws a cross and a snare curls vines. They flicker in
+  their last 0.4 s.
+- **Bestiary** (camp › Bestiary): every creature you fight is written down. Its weakness and
+  resistance read "?" over it until you have beaten 3 of its kind (1 for a boss, a miniboss or a
+  rare foe); then they show for good, with a "Learned" pop. The page lists each creature's colour,
+  how many you have beaten, its weakness once known and how its attacks are told.
+- **Not built (decided 15 Oct):** showing upcoming moves on the Spell screen; it gave away too much.
 
 ### 4. Goals beyond a single run
 

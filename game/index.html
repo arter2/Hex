@@ -84,6 +84,7 @@
         <button id="goTrade" class="btn ghost mi" data-icon="cards">Trading post</button>
         <button id="goBounty" class="btn ghost mi" data-icon="bounty">Bounty board<b id="bountyBadge" class="mbadge" hidden></b></button>
         <button id="goMastery" class="btn ghost mi" data-icon="mastery">Mastery</button>
+        <button id="goBestiary" class="btn ghost mi" data-icon="skull">Bestiary</button>
         <button id="goChar" class="btn ghost mi" data-icon="hero">Character</button>
         <button id="goSettings" class="btn ghost mi" data-icon="scroll">Settings</button>
       </div>
@@ -166,6 +167,11 @@
     <div class="bar"><button class="btn ghost back">←</button><h2>Bounty board</h2><span id="bShards" class="count"></span></div>
     <p class="hint bhint">Contracts stay until you finish them. A fight counts for a contract when the deck you fight with meets it.</p>
     <div id="bountyList" class="bountylist"></div>
+  </section>
+  <section id="scrBestiary" class="screen">
+    <div class="bar"><button class="btn ghost back">←</button><h2>Bestiary</h2><span id="bestCount" class="count"></span></div>
+    <p class="hint bhint">Every creature you fight is written down here. Beat 3 of a kind (1 boss, miniboss or rare foe) to learn its weakness.</p>
+    <div id="bestList" class="bestlist"></div>
   </section>
   <section id="scrMastery" class="screen">
     <div class="bar"><button class="btn ghost back">←</button><h2>Mastery</h2><span id="mShards" class="count"></span></div>
@@ -512,6 +518,7 @@
 <script src="deepways.js"></script>
 <script src="rooms.js"></script>
 <script src="puzzles.js"></script>
+<script src="reading.js"></script>
 <script src="bagui.js"></script>
 <script src="deckui.js"></script>
 <script src="savepoint.js"></script>

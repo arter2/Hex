@@ -1366,3 +1366,11 @@ body.ui-phone:not(.wide) #goChar{grid-column:1 / -1}
 .xroutes .nm b{color:var(--rc,#fff);}
 .rfeats{display:flex; flex-wrap:wrap; gap:4px 8px; margin-top:4px;}
 .rfeats span{font:400 13px/1.2 var(--font-t); color:#e6e0d4; background:rgba(255,255,255,.06); padding:2px 6px;}
+/* the bestiary (reading.js) */
+.bestlist{display:grid; gap:8px; padding:0 12px 16px; grid-template-columns:repeat(auto-fill,minmax(260px,1fr));}
+.bentry{background:rgba(255,255,255,.04); border:1px solid #1c2026; border-left:3px solid var(--bc,#888); padding:8px 10px;}
+.bentry .bhead{display:flex; justify-content:space-between; gap:8px; align-items:baseline;}
+.bentry .bk{color:var(--dim); font:400 14px/1 var(--font-t);}
+.bentry .bline{font:400 15px/1.3 var(--font-t); margin-top:3px;} .bentry .bline.dim{color:var(--dim);}
+.bentry .btells{margin:4px 0 0 16px; padding:0; font:400 14px/1.3 var(--font-t); color:#cfc6b8;}
+.bentry:not(.known){opacity:.85;}

@@ -183,7 +183,7 @@ function hitEnemy(e,base,card,opts){
   let mult=opts.raw?1:bossMult(card&&card.color,e)*(e.curseT>0?1.3:1)*(pl.pactT>0||pl.courageT>0?1.3:1)*(card&&card.valor&&pl.hp<=pl.maxHp/2?1.5:1)*heroMult(card)*(onLand('flood')&&!opts.raw?1.2:1)*((card&&pl.power&&pl.power[card.color])||1);
   // Counter Hit (Battle Network): a card that lands while the enemy winds up, casts or has an attack
   // marked on the board does double damage, stuns it and cancels the attack.
-  const counter=!opts.raw&&card&&card.id!=='wand'&&e.hp>0&&!(e.stunT>0)&&!(e.freezeT>0)&&(e.windT>0||!!e.casting||B.teles.some(t=>t.owner===e&&!t.friendly));
+  const counter=!opts.raw&&card&&card.id!=='wand'&&e.hp>0&&!(e.stunT>0)&&!(e.freezeT>0)&&(e.windT>0||!!e.casting||B.teles.some(t=>t.owner===e&&!t.friendly)||(typeof inCounterWindow==='function'&&inCounterWindow(e)));   // or while its attack bar flashes (reading.js)
   const weak=mult>=WEAK_MULT; if(counter) mult*=2;
   if(weak&&!opts.raw&&typeof bountyWeak==='function') bountyWeak(e);
   if(weak&&!opts.raw) B.hitStop=Math.max(B.hitStop||0,.045);
@@ -305,6 +305,7 @@ function soulUnison(){ const s=B.soul; if(!s||!(s.unisonT>0)) return null; const
   return charged=>Object.assign({id:'unison', name:'Unison', color:c}, UNISON_FX[c]||{}, charged&&c==='frost'?{freeze:1}:{}); }
 function counterHit(e){
   const t=e.tile; cancelAttack(e); e.stunT=Math.max(e.stunT,1.5);
+  if(typeof FLASH_T!=='undefined'&&e.atkT<FLASH_T) e.atkT=e.atkMax||2;   // countered while its bar flashed: the attack starts over
   floater('COUNTER!',{wx:t.wx,wz:t.wz},'#ff3b5c',true); B.floaters[B.floaters.length-1].y=2.4;
   B.hitStop=.12; shake(7); flash(t,'#ffffff',1);
   spray(t,1,{shape:'glow',color:'#ffffff',v0:0,v:0,up0:0,up:0,g:0,life:.25,s:30,add:true,shrink:1});
@@ -357,6 +358,7 @@ function cancelAttack(e){
   if(had) floater('cancelled',e.tile,'#6fd6ff');
 }
 function killEnemy(e){
+  if(typeof bestiaryKill==='function'&&!e.def.minion) bestiaryKill(e);
   if(typeof arRuleKill==='function') arRuleKill(e);
   // a kill lands hard: a short freeze and a white flash; the last kill of a boss fight goes slow
   B.hitStop=Math.max(B.hitStop||0,e.def.boss?.2:.07); flash(e.tile,'#ffffff',1);
@@ -850,6 +852,7 @@ function update(dt){
   for(const t of TILES) t.flash=Math.max(0,t.flash-dt*3);
   if(b.phase==='custom') return;
   if(b.phase==='fight') chainTick();
+  if(b.phase==='fight'&&typeof readingTick==='function') readingTick(dt);   // perfect dodges, the bestiary (reading.js)
   // The fight runs at PACE speed (70%) so enemies, shots and attacks are easier to follow.
   // Your own moving, firing and charging stay at full speed.
   const rdt=dt; dt*=PACE;
@@ -883,6 +886,7 @@ function update(dt){
       if(f){ const k=clamp(s.stepT/s.speed,0,1); spray({wx:f.wx+(t2.wx-f.wx)*k, wz:f.wz+(t2.wz-f.wz)*k},1,{shape:'glow',color:[L.c,L.c2],y:1,v0:.1,v:.6,up0:-.3,up:.6,g:s.buff==='power'?-1.5:0,drag:2,life:.35,s:s.big?5:3.5,add:true,shrink:1}); } } }
     while(s.stepT>=s.speed&&!s.done){ s.stepT-=s.speed; s.i++;
       const t=s.tiles[s.i]; if(!t){ s.done=true; break; }
+      if(s.from==='e'&&typeof perfectShot==='function') perfectShot(s,t);
       const o=t.occ;
       if(s.dig&&o&&(o.kind==='rock'||o.enemy)) continue;   // diggers tunnel under walls and rocks
       if(o&&o.kind==='rock'){ hitRock(o,s.dmg); s.done=true; }
@@ -899,7 +903,7 @@ function update(dt){
   for(const l of b.lobs) l.t+=dt; b.lobs=b.lobs.filter(l=>l.t<l.dur);
 
   for(const tl of b.teles){ tl.t+=dt;
-    if(tl.t>=tl.dur&&!tl.friendly){ if(tl.owner&&tl.owner.hp<=0) continue;
+    if(tl.t>=tl.dur&&!tl.friendly){ if(tl.owner&&tl.owner.hp<=0) continue; if(typeof perfectCheck==='function') perfectCheck(tl);
       for(const t of tl.tiles){ flash(t,'#ff5d6c',1); const o=t.occ; if(!o) continue;
         if(o.kind==='player') hitPlayer(tl.dmg,tl.owner); else if(o.kind!=='enemy'&&o.kind!=='rock'&&!o.enemy) hitBlock(o,tl.dmg,tl.owner); }
       if(tl.after) tl.after(); } }
@@ -1218,7 +1222,7 @@ function floorLayer(ctx,b,T,S,telMap,G3,tl3){
       if(!(t.holeT>0)) paveTile(ctx,t,top,View.cave.area,t.side==='n'?.4:land?.25:.7); }
     if(land&&!(t.holeT>0)) drawLand(ctx,t,top,T,S);
     // an incoming attack fills its tile as it gets closer; it lands when the tile is full
-    if(tl&&!tl.friendly){ ctx.fillStyle='rgba(255,50,70,.6)'; poly(ctx,hexCorners(t,.96*Math.min(1,tl.t/tl.dur))); ctx.fill(); }
+    if(tl&&!tl.friendly){ if(typeof teleLook==='function') teleLook(ctx,t,tl,T); else { ctx.fillStyle='rgba(255,50,70,.6)'; poly(ctx,hexCorners(t,.96*Math.min(1,tl.t/tl.dur))); ctx.fill(); } }
     if(t.holeT>0){ ctx.save(); ctx.globalAlpha=.35+.15*Math.sin(T*5+t.q); ctx.fillStyle=t.voidHole?'#9b4dff':'#ff5a1f'; poly(ctx,hexCorners(t,.72)); ctx.fill(); ctx.globalAlpha=1; ctx.fillStyle='#0b0506'; poly(ctx,hexCorners(t,.55)); ctx.fill(); ctx.restore(); poly(ctx,top); }
     if(b.fog&&t.side==='e'){ ctx.save(); ctx.globalAlpha=.42+.06*Math.sin(T*.8+t.q); ctx.fillStyle='#0a0610'; poly(ctx,top); ctx.fill(); ctx.restore(); poly(ctx,top); }
     // a light triangle grid: every hex split into its six triangles, a steady guide to walk by
@@ -1266,8 +1270,8 @@ function render(){
 
   const tl3=[];
   if(G3){ const dc=DEC.ctx; dc.setTransform(1,0,0,1,0,0); dc.clearRect(0,0,DEC.cv.width,DEC.cv.height); PJ.decal=true; View.iy=ISO_Y=1;
-    try{ floorLayer(dc,b,T,DEC.k,telMap,true,tl3); } finally{ PJ.decal=false; View.iy=ISO_Y=viewIY(); } arenaTiles(tl3); }
-  else floorLayer(ctx,b,T,S,telMap,false,tl3);
+    try{ floorLayer(dc,b,T,DEC.k,telMap,true,tl3); if(typeof atkBars==='function') atkBars(dc,b,T); } finally{ PJ.decal=false; View.iy=ISO_Y=viewIY(); } arenaTiles(tl3); }
+  else { floorLayer(ctx,b,T,S,telMap,false,tl3); if(typeof atkBars==='function') atkBars(ctx,b,T); }
   const rocks=TILES.filter(t=>t.occ&&t.occ.kind==='rock').map(t=>t.occ);
   const dying=b.enemies.filter(e=>e.hp<=0&&e.deathT>0);
   const units=[b.player,...b.walls,...b.allies,...rocks,...alive(),...dying].sort((a,c)=>depthOf(a.tile)-depthOf(c.tile));
@@ -1435,7 +1439,7 @@ const DRAW={
     bar(ctx,x,top,S*.9,e.hp/e.maxHp,'#ff5d6c');
     ctx.font='700 '+Math.round(S*.28)+'px "Pixelify Sans",system-ui,sans-serif'; ctx.textAlign='center';
     const st=[]; if(e.burnT>0) st.push('🔥'); if(frozen) st.push('❄️'); if(e.stunT>0) st.push('💫'); if(e.slowT>0) st.push('🐌'); if(e.poisonT>0) st.push('☠'); if(e.curseT>0) st.push('☾'); if(e.powerT>0) st.push('⬆'); if(e.confuseT>0) st.push('❓');
-    ctx.fillStyle='#fff'; ctx.fillText(e.name+'  weak: '+COLORS[e.weak||WEAK_TO[e.color]].icon+(e.resist?(e.reflect?'  reflects: ':'  resists: ')+COLORS[e.resist].icon:''),x,top-4);
+    ctx.fillStyle='#fff'; { const kn=typeof bKnown!=='function'||bKnown(e); ctx.fillText(e.name+'  weak: '+(kn?COLORS[e.weak||WEAK_TO[e.color]].icon:'?')+(e.resist?(e.reflect?'  reflects: ':'  resists: ')+(kn?COLORS[e.resist].icon:'?'):''),x,top-4); }   // learned in the bestiary (reading.js)
     if(st.length) ctx.fillText(st.join(''),x,top-4-S*.3);
     if(e.casting){ const w=Math.max(S*1.6,ctx.measureText(e.casting.name).width+14), yy=top-S*.75;   // the card it is about to cast
       ctx.fillStyle='rgba(4,8,12,.9)'; ctx.strokeStyle=COLORS[e.casting.color].c; ctx.lineWidth=2; ctx.beginPath(); ctx.roundRect(x-w/2,yy-S*.32,w,S*.44,6); ctx.fill(); ctx.stroke();
@@ -1444,7 +1448,7 @@ const DRAW={
     // intent: what it will do next, with a ring that closes as the attack nears
     if(e.hp>0&&!e.casting&&!e.windT&&e.nextMove&&e.atkT<1.6&&e.freezeT<=0&&e.stunT<=0){ const ix=x+S*.62, iy=top-S*.05, r=S*.26, k=1-e.atkT/1.6;
       ctx.fillStyle='rgba(4,8,12,.85)'; ctx.beginPath(); ctx.arc(ix,iy,r,0,TAU); ctx.fill();
-      ctx.strokeStyle=k>.75?'#ff3a4a':'#ffb3a0'; ctx.lineWidth=2.5; ctx.beginPath(); ctx.arc(ix,iy,r,-Math.PI/2,-Math.PI/2+TAU*k); ctx.stroke();
+      if(typeof atkBars!=='function'){ ctx.strokeStyle=k>.75?'#ff3a4a':'#ffb3a0'; ctx.lineWidth=2.5; ctx.beginPath(); ctx.arc(ix,iy,r,-Math.PI/2,-Math.PI/2+TAU*k); ctx.stroke(); }   // the tile's attack bar shows the timing now
       ctx.font=Math.round(S*.28)+'px system-ui'; ctx.fillStyle='#fff'; ctx.fillText(INTENT_ICON[e.nextMove]||'!',ix,iy+S*.1); }
     ctx.globalAlpha=1;
   },

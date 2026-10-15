@@ -147,7 +147,7 @@ function updateTerrain(dt){
 /* ---------------- enemy turns ---------------- */
 function tele(e,tiles,dur,dmg,after){ tiles=tiles.filter(Boolean);
   if(e&&e.confuseT>0) tiles=tiles.map(t=>pick(neighbors(t).filter(x=>x.side==='p'))||t);   // confusion throws attacks off by a tile
-  B.teles.push({tiles,t:0,dur,dmg,owner:e,after}); }
+  B.teles.push({tiles,t:0,dur,dmg,owner:e,after,kind:e&&e.curMove}); }   // kind: which move, for its tell (reading.js)
 const pTilesInRow=r=>P_TILES.filter(t=>t.r===r);
 function stepEnemy(e,to){ e.tile.occ=null; e.tile=to; to.occ=e; if(e.poisonT>0) hitEnemy(e,e.poisonAmt,null,{raw:true});
   if(to.thornT>0&&e.hp>0) hitEnemy(e,to.thornPow,null,{raw:true});
@@ -272,7 +272,7 @@ function updateEnemy(e,dt){
   if(e.moveT<=0&&!b.teles.some(t=>t.owner===e)){ e.moveT=rnd(1.4,2.4)*(icy(e.tile)?2:1); moveEnemy(e); if(e.hp<=0) return; }
   if(e.deck){ e.deckCd-=dt; if(e.deckCd<=0&&e.deck.length){ e.deckCd=rnd(4,6); e.casting=e.deck.shift(); e.castT=.9; return; } }
   e.atkT-=dt;
-  if(e.atkT<=0){ e.atkT=rnd(e.def.rate[0],e.def.rate[1]); const ms=e.moves||e.def.moves, mv=e.nextMove||pick(ms); MOVES[mv](e); e.nextMove=pick(e.moves||e.def.moves); if(typeof palPlay==='function') palPlay(e,mv==='quake'?'quake':(mv==='shot'||mv==='boulders')?'throw':''); }   // the next move is picked early so it can be shown
+  if(e.atkT<=0){ e.atkT=rnd(e.def.rate[0],e.def.rate[1]); e.atkMax=e.atkT; const ms=e.moves||e.def.moves, mv=e.nextMove||pick(ms); e.curMove=mv; MOVES[mv](e); e.curMove=null; e.nextMove=pick(e.moves||e.def.moves); if(typeof palPlay==='function') palPlay(e,mv==='quake'?'quake':(mv==='shot'||mv==='boulders')?'throw':''); }   // the next move is picked early so it can be shown
 }
 
 if(typeof module!=='undefined') module.exports={VERMIN,verminChance,ENEMY_DEFS,MONSTERS,HUMANOIDS,OUTLAWS,SPELLFOLK,makeEncounter};

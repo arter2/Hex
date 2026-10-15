@@ -1238,5 +1238,5 @@ body.lsS #custDrawer, body.wide #custDrawer{grid-column:2; grid-row:2; min-heigh
 body.lsS #custDrawer #custHand, body.wide #custDrawer #custHand{grid-row:auto; flex:1; overflow-y:auto!important;}
 /* the hand's drawer is lit a little lighter than the screen around it, so it reads as a panel that
    moves (as the deck builder's library drawer does); brighter still while its grip is held */
-.cust-drawer{background:linear-gradient(#1f2a3a,#141b26 60px,#121822); border-radius:14px 14px 0 0; box-shadow:0 -4px 14px #0008, inset 0 1px 0 #7fd4ff33; padding:0 6px 6px; margin:0 -6px; transition:background .15s, box-shadow .15s;}
-.cust-drawer:has(.custgrip.on){background:linear-gradient(#2a3a50,#18212e 70px,#141b26); box-shadow:0 -4px 18px #000a, inset 0 1px 0 #7fd4ff88;}
+.cust-drawer{background:linear-gradient(rgba(70,100,140,.32),rgba(40,60,90,.2) 60px,rgba(30,45,70,.16)); border-radius:14px 14px 0 0; box-shadow:0 -4px 14px #0008, inset 0 1px 0 #7fd4ff33; padding:0 6px 6px; margin:0 -6px; transition:background .15s, box-shadow .15s;}
+.cust-drawer:has(.custgrip.on){background:linear-gradient(rgba(90,130,180,.42),rgba(50,75,110,.28) 70px,rgba(40,60,90,.22)); box-shadow:0 -4px 18px #000a, inset 0 1px 0 #7fd4ff88;}

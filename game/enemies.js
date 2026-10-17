@@ -149,7 +149,8 @@ function tele(e,tiles,dur,dmg,after){ tiles=tiles.filter(Boolean);
   if(e&&e.confuseT>0) tiles=tiles.map(t=>pick(neighbors(t).filter(x=>x.side==='p'))||t);   // confusion throws attacks off by a tile
   B.teles.push({tiles,t:0,dur,dmg,owner:e,after,kind:e&&e.curMove}); }   // kind: which move, for its tell (reading.js)
 const pTilesInRow=r=>P_TILES.filter(t=>t.r===r);
-function stepEnemy(e,to){ e.tile.occ=null; e.tile=to; to.occ=e; if(e.poisonT>0) hitEnemy(e,e.poisonAmt,null,{raw:true});
+function stepEnemy(e,to){ if(typeof caged==='function'&&caged(e)) return;   // a cage holds it where it is
+  e.tile.occ=null; e.tile=to; to.occ=e; if(e.poisonT>0) hitEnemy(e,e.poisonAmt,null,{raw:true});
   if(to.thornT>0&&e.hp>0) hitEnemy(e,to.thornPow,null,{raw:true});
   if(to.trap&&e.hp>0) springTrap(to,e); }
 function moveEnemy(e){

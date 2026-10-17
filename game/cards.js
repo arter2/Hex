@@ -517,13 +517,29 @@ const BROOD=[
 const BROOD_LEADER={id:'brood_ogre', name:'Bramble Ogre', color:'verdant', type:'summon', ai:'critter', rank:4, rarity:'rare', pow:22, hp:70, rate:1.2, turns:2, slow:1};
 const GROVEBEAST={id:'hero_grovebeast', name:'Elder Grovebeast', color:'verdant', type:'hero', hero:'grovebeast', style:'burst', rank:7, rarity:'hero', turns:3,
   pow:34, rate:1.4, hp:300, poison:4, aurae:{regen:3}, attack:'stamps thorns of {pow} around an enemy', aura:'you heal 3 a second, and it calls two Sprout Imps'};
-const CARD_LIST=SIGNATURE.concat(generateCards(),HEROES,POTIONS,BROOD);
+/* Wall forms (v77): ward cards that build in a shape other than the usual run up your lane. Each color leans
+   on its own: frost and shadow the sturdy rampart, verdant and light the arc, fire a burning
+   rampart, storm, gray and brown the corridor; verdant and light have the rare cage.
+   A cage is aimed at an enemy and lasts only a few seconds. Their own list, so no other card moves. */
+const FORM_WALLS=[
+  {id:'cinder_rampart', name:'Cinder Rampart',   color:'fire',    rank:4,  rarity:'uncommon', ward:'thorns', form:'rampart',  n:4, hp:30, thorns:10},
+  {id:'glacier_rampart',name:'Glacier Rampart',  color:'frost',   rank:6,  rarity:'uncommon', ward:'wall',   form:'rampart',  n:5, hp:45},
+  {id:'static_corridor',name:'Static Corridor',  color:'storm',   rank:6,  rarity:'uncommon', ward:'thorns', form:'corridor', n:4, hp:35, thorns:8},
+  {id:'briar_arc',      name:'Briar Arc',        color:'verdant', rank:5,  rarity:'uncommon', ward:'thorns', form:'arc',      n:5, hp:35, thorns:8},
+  {id:'thornwood_cage', name:'Thornwood Cage',   color:'verdant', rank:9,  rarity:'rare',     ward:'thorns', form:'cage',     n:6, hp:40, thorns:10},
+  {id:'halo_arc',       name:'Halo Arc',         color:'light',   rank:4,  rarity:'uncommon', ward:'wall',   form:'arc',      n:5, hp:40},
+  {id:'prism_cage',     name:'Prism Cage',       color:'light',   rank:8,  rarity:'rare',     ward:'wall',   form:'cage',     n:6, hp:55},
+  {id:'grave_rampart',  name:'Grave Rampart',    color:'shadow',  rank:5,  rarity:'uncommon', ward:'wall',   form:'rampart',  n:4, hp:50},
+  {id:'shieldwall_lane',name:'Shieldwall Lane',  color:'gray',    rank:5,  rarity:'uncommon', ward:'wall',   form:'corridor', n:4, hp:45},
+  {id:'iron_corridor',  name:'Iron Corridor',    color:'brown',   rank:6,  rarity:'uncommon', ward:'wall',   form:'corridor', n:4, hp:50},
+].map(c=>Object.assign({type:'ward'},c));
+const CARD_LIST=SIGNATURE.concat(generateCards(),HEROES,POTIONS,BROOD,FORM_WALLS);
 /* Nothing a card puts on the board lasts forever: shields, walls, towers, summons, machines,
    traps and changed ground each have HP (or a strength) and a time limit, written as turns
    here: each is 10 seconds of fighting (TURN_S in battle.js). Applied after generation, so card ids are unchanged. */
 function boardTurns(c){
   const k=c.type==='piece'?c.base:c.type==='instant'?c.as:c.type, big=c.rarity==='rare'||c.rarity==='legendary';
-  if(k==='ward') c.turns=big?3:2;
+  if(k==='ward') c.turns=c.form==='cage'?.4:big?3:2;   // a cage holds only a few seconds
   else if(k==='sentry'){ c.turns=Math.max(1,Math.round(c.dur/7)); c.hp=40; delete c.dur; }
   else if(k==='summon'||(k==='machine'&&c.ai!=='bulwark')){ c.turns=Math.max(1,Math.round(c.dur/10)); delete c.dur; }
   else if(k==='machine') c.turns=3;
@@ -608,7 +624,7 @@ function cardRole(c){ const k=c.type==='piece'?c.base:c.type==='instant'?c.as:c.
 const PATTERN_TEXT={single:'', burst:' and around it', ring:' in a ring around it', cross:' in a cross', column:' down its column', row:' along its row'};
 const AREA_TEXT={burst:' on the tile you aim and around it', cross:' in a cross on the tile you aim', column:" down the aimed tile's column", row:" along the aimed tile's row"};
 const lobPattern=c=>c.pattern||(c.radius?'burst':'single');
-const tn=n=>n*10+' seconds';   // a card's turns are 10 s of fighting each (TURN_S in battle.js)
+const tn=n=>Math.round(n*10)+' seconds';   // a card's turns are 10 s of fighting each (TURN_S in battle.js)
 function cardText(c){
   if(c.curseText) return c.curseText;
   const kw=[];
@@ -627,7 +643,9 @@ function cardText(c){
   else if(kind==='trap') t={spike:'Spike trap: '+c.pow, snare:'Snare: '+c.pow+' and roots', blast:'Blast trap: '+c.pow+' to it and around it'}[c.trap]+' when an enemy steps on the tile you aim; '+tn(c.turns);
   else if(kind==='environment') t={burn:'Sets the ground burning', freeze:'Ices the ground, halving enemy speed,', bramble:'Grows brambles that deal '+c.pow+' per step',
                                    tremor:'Tremor deals '+c.pow}[c.env]+AREA_TEXT[c.pattern]+(c.turns?' for '+tn(c.turns):'');
-  else if(kind==='ward') t=c.ward==='barrier'?'Shield of '+c.amt+' for '+tn(c.turns)+'; replaces your current shield':c.n+' walls of '+c.hp+' HP'+(c.ward==='thorns'?' that hit back for '+c.thorns:'')+', '+tn(c.turns);
+  else if(kind==='ward') t=c.ward==='barrier'?'Shield of '+c.amt+' for '+tn(c.turns)+'; replaces your current shield'
+    :c.form==='cage'?'Cages the enemy you aim in walls of '+c.hp+' HP'+(c.ward==='thorns'?' that hit back for '+c.thorns:'')+': it can\'t move and its shots hit the bars; yours pass through. '+tn(c.turns)
+    :c.n+' walls of '+c.hp+' HP'+(c.ward==='thorns'?' that hit back for '+c.thorns:'')+({arc:' in a half-ring around you',rampart:' across the lanes in front of you',corridor:' up the lanes on both sides of you'}[c.form]||'')+', '+tn(c.turns);
   else if(kind==='sentry') t='Tower: '+c.pow+' every '+c.rate+'s, '+c.hp+' HP, '+tn(c.turns);
   else if(kind==='boon') t={power:'Wand ×2.5 for '+c.dur+'s', pact:'Cards and wand +30% for '+c.dur+'s', haste:'Faster moves and casts for '+c.dur+'s',
                            dodge:'Dodge the next hit', phase:'Untouchable for '+c.dur+'s', regen:'Heal '+c.amt+'/s for '+c.dur+'s', heal:'Heal '+c.amt,

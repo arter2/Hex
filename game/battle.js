@@ -474,7 +474,11 @@ const CAST={
   lob(c,p){ lobFrom(p.tile,c,c.pow,c.radius,c.delay||.6,B.aim); B.aim=null; },
   ward(c,p){
     if(c.ward==='barrier'){ p.barrier=c.amt; p.shieldT=secs(c.turns||2); floater('🛡'+c.amt,p.tile,'#6fd6ff'); return; }   // shields replace, never stack
-    placementTiles(c.n).forEach(t=>{ const w={kind:'wall',card:c,tile:t,hp:c.hp,maxHp:c.hp,thorns:c.thorns||0,life:secs(c.turns||2),maxLife:secs(c.turns||2)}; t.occ=w; B.walls.push(w); burst(t,colorOf(c),8,.3); });
+    let cage=null, ts;
+    if(c.form==='cage'){ cage=cageTarget(B.aim); B.aim=null; ts=cage?cageTiles(cage):[]; if(!ts.length){ floater(cage?'no room':'no target',p.tile,'#ffb3a0'); return; } }
+    else { ts=placementTiles(c.n,c.form); if(!ts.length){ floater('no room',p.tile,'#ffb3a0'); return; } }
+    ts.forEach(t=>{ const w={kind:'wall',card:c,tile:t,hp:c.hp,maxHp:c.hp,thorns:c.thorns||0,life:secs(c.turns||2),maxLife:secs(c.turns||2),cage}; t.occ=w; B.walls.push(w); burst(t,colorOf(c),8,.3); });
+    if(cage){ cage.path=[]; floater('Caged!',cage.tile,colorOf(c),true); }
   },
   sentry(c,p){ placeAlly(c,'sentry',c.hp||40,c.turns); },
   trap(c,p){ // on the aimed tile, or a free tile next to the nearest enemy
@@ -551,7 +555,29 @@ function lobFrom(from,c,pow,radius,dur,target){
 }
 // Sentries, summons and machines stand on a free tile of your side, nearest your row and the rift.
 // where walls, towers, summons and machines go: free tiles on your side, nearest your row and the front
-function placementTiles(n){ const p=B.player; return P_TILES.filter(t=>!t.occ).sort((a,b)=>Math.abs(a.r-p.tile.r)-Math.abs(b.r-p.tile.r)||b.x-a.x).slice(0,n); }
+/* Where a ward's walls go, by the card's form. The camera looks down your row at the enemy, so a
+   row is a lane running up the screen.
+     (none)    the usual: straight up your lane, from the front of your side back towards you
+     arc       hugging you: the 3 tiles in front, then the 2 behind-diagonals; the tile behind stays open
+     rampart   across the lanes, one tile in front of you: your lane first, then out to each side
+     corridor  up the lanes on either side of you, from where you stand forward; your lane stays open
+   A cage (cageTiles) goes around an enemy instead. */
+function placementTiles(n,form){ const p=B.player, P=p.tile, free=t=>t&&t.side==='p'&&!t.occ&&!(t.holeT>0);
+  if(form==='arc') return ['E','NE','SE','NW','SW'].map(d=>tileAt(P.q+DIRS[d][0],P.r+DIRS[d][1])).filter(free).slice(0,n);
+  if(form==='rampart'){ const out=[], ahead=P.x+1;
+    for(const r of [...Array(BOARD_ROWS).keys()].sort((a,b)=>Math.abs(a-P.r)-Math.abs(b-P.r)||a-b)){ if(out.length>=n) break;
+      const t=P_TILES.filter(x=>x.r===r&&x.x>P.x-1&&free(x)).sort((a,b)=>Math.abs(a.x-ahead)-Math.abs(b.x-ahead))[0]; if(t) out.push(t); }
+    return out; }
+  if(form==='corridor'){ const runs=[P.r-1,P.r+1].map(r=>P_TILES.filter(t=>t.r===r&&t.x>=P.x-.5&&free(t)).sort((a,b)=>a.x-b.x)), out=[];
+    for(let i=0;out.length<n&&runs.some(x=>x.length>i);i++) for(const run of runs) if(run[i]&&out.length<n) out.push(run[i]);
+    return out; }
+  return P_TILES.filter(t=>!t.occ).sort((a,b)=>Math.abs(a.r-P.r)-Math.abs(b.r-P.r)||b.x-a.x).slice(0,n); }
+// a cage: the enemy on the aimed tile (or nearest it, or nearest you), walled in on every free side.
+// Your shots pass through your own walls; its shots stop on them, and it cannot move while caged.
+function cageTarget(aim){ const at=aim&&aim.occ&&aim.occ.kind==='enemy'&&aim.occ.hp>0?aim.occ:null; if(at) return at;
+  const from=aim||B.player.tile; return alive().sort((a,b)=>hexDist(from,a.tile)-hexDist(from,b.tile))[0]||null; }
+const cageTiles=e=>around(e.tile).filter(t=>!t.occ&&!(t.holeT>0)&&!t.trap);
+const caged=e=>!!(B&&B.walls.some(w=>w.cage===e&&w.hp>0));
 // a Brood critter: a small ally that pounces on the nearest enemy
 function spawnCritter(c){ const free=P_TILES.filter(t=>!t.occ&&!(t.holeT>0)&&t!==B.player.tile).sort((x,y)=>y.col-x.col||Math.random()-.5);
   const front=free.filter(t=>t.col>=free[0].col-1); const a=placeAlly(c,'critter',c.hp,c.turns,front.length?pick(front):free[0]); if(!a) return null; a.fireT=.3+Math.random()*.3;
@@ -951,12 +977,13 @@ function castPreview(){
     const t=b.aim||nearestEnemyTile(p.tile); if(t){ const ts=patternTiles(t,aimPattern(),'e'); out.area.push(...ts); out.arc=t; if(k!=='trap') out.hit.push(...ts.filter(x=>x.occ&&x.occ.kind==='enemy')); }
   }
   else if(k==='ward'&&c.ward==='barrier') out.self=true;
-  else if(k==='ward'||(k==='machine'&&c.ai==='bulwark')) out.place.push(...placementTiles(c.n||1));
+  else if(k==='ward'&&c.form==='cage'){ const e=cageTarget(b.aim); if(e){ out.place.push(...cageTiles(e)); out.arc=e.tile; } }
+  else if(k==='ward'||(k==='machine'&&c.ai==='bulwark')) out.place.push(...placementTiles(c.n||1,c.form));
   else if(k==='sentry'||k==='summon'||k==='machine'||k==='hero') out.place.push(...placementTiles(1));
   else out.self=true;   // boons and utilities act on you
   return out;
 }
-function nextIsLob(){ const q=B&&B.piles.queue[0]; if(!q) return false; const c=q.card, k=c.type==='piece'?c.base:c.type; return k==='lob'||k==='trap'||k==='environment'||(k==='charge'&&c.fx==='lob'); }
+function nextIsLob(){ const q=B&&B.piles.queue[0]; if(!q) return false; const c=q.card, k=c.type==='piece'?c.base:c.type; return k==='lob'||k==='trap'||k==='environment'||(k==='charge'&&c.fx==='lob')||(k==='ward'&&c.form==='cage'); }
 function aimPattern(){ const q=B.piles.queue[0]; if(!q) return 'single'; const c=q.card; return c.type==='trap'?(c.trap==='blast'?'burst':'single'):c.type==='environment'?c.pattern:lobPattern(c); }
 function setAim(t){ const b=B; if(!b||b.phase!=='fight'||!t||t.side!=='e') return; b.aim=b.aim===t?null:t; }
 function cycleAim(){ const b=B; if(!b||b.phase!=='fight') return; const ts=alive().map(e=>e.tile).sort((a,c)=>a.r-c.r||a.q-c.q); if(!ts.length) return;
@@ -1465,7 +1492,7 @@ const DRAW={
   },
   wall(ctx,w,T,S){
     const col=colorOf(w.card);
-    if(gl3()) arenaBlock(w,'wall',col);
+    if(gl3()) arenaBlock(w,w.cage?'cage':'wall',col);
     else { const top=hexCorners(w.tile,.62,.9), bot=hexCorners(w.tile,.62,0);
       ctx.fillStyle=mixHex(col,'#000000',.5); ctx.beginPath();
       frontFaces(ctx,top,bot[0][1]-top[0][1]);

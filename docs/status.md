@@ -1,6 +1,6 @@
 # Hexmancers: where we are
 
-Date: 2026-10-16 · Latest build: **v76** (`hexmancers-itch-v76.zip`) · Branch `claude/hopeful-hypatia-stzuj0`, merged to `main`
+Date: 2026-10-16 · Latest build: **v77** (`hexmancers-itch-v77.zip`) · Branch `claude/hopeful-hypatia-stzuj0`, merged to `main`
 
 This is a snapshot of the game: what is in it, what changed recently, what we plan next, and what
 is still open. The design reasoning behind each feature is in [fun-roadmap.md](fun-roadmap.md).
@@ -39,7 +39,7 @@ JavaScript with three.js (r128) and has no build step.
 | **Settings** | Phone and tablet layouts, text size, orientation, full screen, sound, cast-card style, 4 touch movement modes, dungeon tips, and rebindable keyboard controls. |
 | **Debug menu** | Lighting, PBR, normal maps, baked AO and SSAO, haze, a full battle camera (angle, field of view, zoom, move and rotate on X/Y/Z), depth of field, wall see-through, frame rate, auto quality, pause. |
 
-### Recent changes (v71 to v76)
+### Recent changes (v71 to v77)
 
 | Build | Change |
 |---|---|
@@ -49,6 +49,7 @@ JavaScript with three.js (r128) and has no build step.
 | v74 | The depth-of-field blur fades in smoothly. New sliders: blur fade, near blur, far blur. Focus dials 25 tiles forward or back. |
 | v75 | **Crash fix:** pushing into the wall beside the stairs could bounce you up and down floors until the screen went black. Stairs you arrive on now wait until you walk clear, and old floors are fully freed from graphics memory. |
 | v76 | **Stirring dark rebalanced:** no waves until every enemy the floor started with is dead (bosses, minibosses and dormant guardians don't count). Then a wave every 90 to 120 s (180 s once the floor is at its worst), 1 to 3 enemies a wave, at most 2 stirred groups alive (3 from depth 16), hunting only from threat 4. Killing a stirred group holds the next wave back 45 s. |
+| v77 | **Wall shapes.** Walls used to go only straight up your lane. Ten new ward cards build other shapes: **Rampart** (across the lanes in front of you), **Arc** (a half-ring around you, open behind), **Corridor** (up the lanes on both sides of you) and the rare **Cage** (aimed at an enemy: it can't move for 4 s and its shots hit the bars, while yours pass through). The older wall cards are unchanged. |
 
 ---
 

@@ -292,9 +292,9 @@ function arenaUnit(u,spr,o){ const A=AR; if(!A||!A.grp) return; let U=A.units.ge
   U.shadow.scale.set(o.shadow,1,o.shadow); U.shadow.position.y=.035; U.shadow.material.opacity=a; }
 // rocks and card walls: lit blocks standing on their tiles, in the area's stone or the card's colour
 function arenaBlock(u,kind,col){ const A=AR; if(!A||!A.grp) return; let U=A.units.get(u);
-  if(!U){ let mesh; const wall=kind==='wall';
-    const geo=new THREE.CylinderGeometry(wall?.62:.7,wall?.66:.74,wall?.9:.75,6,1,false,Math.PI/6); geo.translate(0,(wall?.9:.75)/2,0);
-    if(wall) mesh=new THREE.Mesh(geo,arMat(xPhong({color:new THREE.Color(col).lerp(new THREE.Color('#ffffff'),.1),emissive:new THREE.Color(col).multiplyScalar(.25)})));
+  if(!U){ let mesh; const cage=kind==='cage', wall=kind==='wall'||cage, h=cage?.5:wall?.9:.75;   // a cage is low and see-through, so the enemy inside and its tells stay readable
+    const geo=new THREE.CylinderGeometry(wall?.62:.7,wall?.66:.74,h,6,1,false,Math.PI/6); geo.translate(0,h/2,0);
+    if(wall) mesh=new THREE.Mesh(geo,arMat(xPhong(Object.assign({color:new THREE.Color(col).lerp(new THREE.Color('#ffffff'),.1),emissive:new THREE.Color(col).multiplyScalar(cage?.45:.25)},cage?{transparent:true,opacity:.45,depthWrite:false}:{}))));
     else { const t=A.rockTex||(A.rockTex=arTex(xTex(xRockWall(A.area.stone||AREAS[0].stone,(A.area.index||0)*7+2),true))); mesh=new THREE.Mesh(geo,arMat(xLitTag(xPhong({map:t,color:0xc8d0d8}),2,t.image))); xLit(mesh.material); }
     A.grp.add(mesh); U={g:mesh,block:true}; A.units.set(u,U); }
   U.seen=A.frameN; U.g.visible=true; U.g.position.copy(arW(u.tile.wx,0,u.tile.wz));

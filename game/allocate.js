@@ -263,3 +263,98 @@ function alPartsOf(c){ const kw=alOld(c)||'';
   return (kdParts(c)||[]).map(x=>x==null?'':x); }
 function alTable(){ const o={}; for(const c of CARD_LIST) if(c.alloc) o[c.id]=alPartsOf(c).join('|').replace(/\|+$/,''); return o; }
 
+
+/* ---------------- card mix and themes (the Colour Weights page) ----------------
+   AL_WEIGHTS[colour].type   how many of each kind a colour has (creatures, machines, towers, strikes,
+                             lobs, wards, boons, charges, traps, ground); cards change kind to match
+   AL_WEIGHTS[colour].theme  a theme raises every part that belongs to it, across all kinds
+   Names stay: a card that changes kind takes new parts that suit its name. */
+const AL_MIX_TYPES={creature:'summon', machine:'machine', tower:'sentry', strike:'strike', lob:'lob', ward:'ward', boon:'boon', charge:'charge', trap:'trap', environment:'environment'};
+// the words that name each kind of card (matched as whole words, plural allowed)
+const AL_TYPE_WORDS={
+  summon:'wolf hound dog bear cat dragon drake whelp wyvern wyrm imp sprite fairy pixie golem giant troll ogre knight guard guardian sentinel warden soldier warrior spirit ghost wraith shade serpent snake viper spider owl hawk falcon eagle crow raven boar bull ox elephant mammoth tortoise turtle beetle ant wasp hornet bee fox kitsune monkey ape tiger lion panther lynx stag deer elk horse mare stallion eel shark whale crab squid kraken yeti oni djinn ifrit angel saint monk priest cleric witch mage wizard sorcerer shaman druid archer hunter ranger captain king queen lord lady maiden mother hag crone familiar beast hydra griffin phoenix unicorn pegasus centaur minotaur satyr nymph dryad ent treant mole rat bat moth scorpion lizard salamander frog toad mantis cobra jackal coyote hyena vulture skeleton zombie ghoul lich vampire banshee reaper demon devil fiend gargoyle statue sphinx automaton construct homunculus gnome dwarf elf goblin gremlin kobold orc swarm horde pack herd flock legion mammoth rhino yak camel walrus seal penguin narwhal orca leviathan behemoth colossus titan cyclops ettin',
+  machine:'cannon turret engine automaton catapult ballista trebuchet mortar gatling repeater machine drill mech contraption launcher nest bombard culverin crossbow',
+  sentry:'tower totem spire obelisk beacon lantern brazier shrine idol pillar altar torch pylon lighthouse post monolith menhir',
+  strike:'shot bolt dart arrow lance spear slash strike blade bite claw fist punch kick whip lash ray beam blast breath roar gust wave charge rush thrust volley smite wrath judgment judgement sting stab jab cut cleave swipe rake shout howl bash blow hit flurry',
+  lob:'pot flask jar bomb grenade barrel keg boulder rock stone meteor comet egg seed nut lob toss throw hurl vial bottle cask urn coconut',
+  ward:'wall shield ward barrier rampart palisade fence gate bulwark aegis veil cloak mantle armor armour skin shell dome bubble cage fort fortress bastion mantlet buckler screen hedge',
+  boon:'blessing grace prayer potion elixir draught tonic brew feast song hymn chant dance courage fury rage haste focus vigor vigour strength luck favor favour gift boon rest mead wine girdle charm amulet talisman ring crown oath vow pact tea',
+  charge:'quiver bandolier ammo arrows bolts darts shells rounds pouch bundle belt stock supply crate battery batteries cells cartridge cartridges magazine clip satchel',
+  trap:'trap pit snare net mine landmine caltrop caltrops spike spikes tripwire pitfall noose jaws lure web',
+  environment:'field ground land swamp bog marsh desert tundra forest grove garden storm quake earthquake eruption flood tide fog mist blizzard rain sky night eclipse sands plain valley canyon wastes waste barrens sea ocean winter summer dusk dawn',
+};
+const AL_TYPE_SET={}; for(const t in AL_TYPE_WORDS) AL_TYPE_SET[t]=new Set(AL_TYPE_WORDS[t].split(/\s+/));
+const alWords=name=>name.toLowerCase().replace(/[’']s\b/g,'').split(/[^a-z]+/).filter(Boolean);
+// a card's head noun: the last word before "of" ("Crown of the Volcano King" → crown), else the last word
+const alHead=name=>{ const w=alWords(name), i=w.indexOf('of'); return i>0?w[i-1]:w[w.length-1]; };
+const alIsWord=(t,w)=>AL_TYPE_SET[t].has(w)||AL_TYPE_SET[t].has(w.replace(/e?s$/,''));
+// the parts each theme raises (part: values), and how strongly a theme weight carries over
+const AL_THEMES={
+  poison:  {kw:['poison'], trait:['plague'], beh:[], extra:{}},
+  curse:   {kw:['curse'], trait:['dread','harvest'], extra:{}},
+  burn:    {kw:['burn'], trait:['scorched','explodes'], wfx:['burning'], side:['embers','scorch'], after:['ground']},
+  freeze:  {kw:['freeze','slow'], trait:['chilling','shatter'], wfx:['freezing'], side:['chill','rime']},
+  stun:    {kw:['stun','confuse'], trait:['static','overcharge','dread'], wfx:['shocking'], side:['jolt']},
+  drain:   {kw:['drain'], trait:['lifesteal'], wfx:['draining'], side:['siphon','blood']},
+  knockback:{kw:['push','pull'], trait:['tidal'], after:['knock']},
+  healing: {kw:['mend'], beh:['mends','shields'], boon:['heal','regen','intervene'], wfx:['healing'], side:['glow','sprout','radiance']},
+  chain:   {shape:['chain','zigzag'], beh:['chain','zigzag','beam']},
+  bombs:   {shape:['cluster','mine','burst'], beh:['blast','cross','lob','barrage'], pattern:['burst','ring','cross'], type:['lob']},
+  bounce:  {shape:['ricochet','boomerang','diag'], beh:['diag','zigzag']},
+  turrets: {type:['machine','tower']},
+  traps:   {type:['trap'], shape:['mine'], size:['three']},
+  board:   {type:['environment'], after:['ground']},
+  buffs:   {type:['boon'], beh:['empower'], trait:['rallying'], side:['rally','muster']},
+  horde:   {type:['creature'], beh:['summoner'], trait:['seeds','rises','pack','drilled']},
+  fortress:{type:['ward'], beh:['wardmaker','guards','taunt'], form:['rampart','arc','corridor'], build:['heavy']},
+  combos:  {},   // rune focus: handled by alRunes
+};
+const AL_KW_PARTS=['strike.kw','creature.kw','lob.kw','charge.kw','trap.kw','environment.kw'];
+// fold each colour's themes into its part weights (a theme weight multiplies what is already there)
+function alExpandThemes(W){ const out=JSON.parse(JSON.stringify(W||{}));
+  for(const col in out){ const th=out[col].theme||{};
+    for(const t in th){ const m=th[t], T=AL_THEMES[t]; if(!T||m===1) continue;
+      const mul=(g,v)=>{ out[col][g]=out[col][g]||{}; const cur=out[col][g][v]==null?1:out[col][g][v]; out[col][g][v]=+(cur*m).toFixed(3); };
+      for(const g in T){ if(g==='extra') continue; for(const v of T[g]){ if(g==='kw') AL_KW_PARTS.forEach(p=>mul(p,v)); else mul(g,v); } } } }
+  return out; }
+// how a card's name fits each kind (higher fits better); its own kind gets a head start so few cards move
+function alTypeFit(c,type){ const head=alHead(c.name);
+  let s=alIsWord(type,head)?3:alWords(c.name).some(w=>alIsWord(type,w))?1:0;
+  if(type==='summon'&&(c.body||alHints(head,AL_CR_HINTS).beh)) s+=2; if(type==='summon'&&c.body) s+=2; /* drawn as a creature: it stays one unless pushed hard */ if(type==='machine'&&c.mach) s+=2; if(type==='strike'&&alHints(c.name,AL_ST_HINTS).shape) s+=1; return s; }
+/* change kinds to reach each colour's card mix: target count = now × weight (shares renormalised).
+   A kind under its target takes, one at a time, the card whose name suits it better than its own kind
+   does, from a kind still over its target. A card whose name doesn't suit the new kind is never forced
+   over: the kind falls short instead (reported in `short`). */
+function alRetype(list,W){ const moved=[], short=[]; const T=Object.values(AL_MIX_TYPES);
+  const byCol={}; for(const c of list) if(T.includes(c.type)&&!c.brood&&!c.piece&&!c.legend&&!c.sig&&COLORS[c.color]) (byCol[c.color]=byCol[c.color]||[]).push(c);
+  for(const col in byCol){ const w=W[col]&&W[col].type; if(!w) continue; const cards=byCol[col], n=cards.length, kinds=Object.keys(AL_MIX_TYPES);
+    const cnt=k=>cards.filter(c=>c.type===AL_MIX_TYPES[k]).length, now={}; kinds.forEach(k=>now[k]=cnt(k));
+    const raw={}; let tot=0; for(const k of kinds){ const wk=w[k]==null?1:w[k]; raw[k]=(now[k]||(wk>1?1:0))*wk; tot+=raw[k]; }
+    const target={}; for(const k of kinds) target[k]=Math.round(n*raw[k]/(tot||1));
+    const kindOf=t=>kinds.find(k=>AL_MIX_TYPES[k]===t);
+    for(let guard=0;guard<n;guard++){
+      // the kind furthest under its target
+      const under=kinds.filter(k=>cnt(k)<target[k]).sort((a,b)=>(target[b]-cnt(b))-(target[a]-cnt(a)));
+      let done=false;
+      for(const k of under){ const t=AL_MIX_TYPES[k];
+        const cand=cards.filter(c=>c.type!==t&&cnt(kindOf(c.type))>target[kindOf(c.type)]).map(c=>({c,gain:alTypeFit(c,t)-alTypeFit(c,c.type)})).filter(x=>x.gain>0&&alTypeFit(x.c,t)>=2).sort((a,b)=>b.gain-a.gain||(a.c.id<b.c.id?-1:1));
+        if(!cand.length) continue; const c=cand[0].c; moved.push({id:c.id,name:c.name,from:c.type,to:t}); c.type=t; delete c.np; done=true; break; }
+      if(!done) break; }
+    for(const k of kinds) if(cnt(k)<target[k]) short.push({color:col,kind:k,target:target[k],got:cnt(k)}); }
+  alRetype.short=short; return moved; }
+/* rune focus (the Combos theme): above ×1 a colour's cards gather on its two most common runes (more
+   Flushes, Straights and Rune Sets), below ×1 they spread out. Signature cards keep their runes. */
+function alRunes(list,W){ const changed=[];
+  for(const col of Object.keys(COLORS)){ const f=W[col]&&W[col].theme&&W[col].theme.combos; if(!f||f===1) continue;
+    const cards=list.filter(c=>c.color===col&&c.code&&c.code!==WILD&&c.rarity!=='hero'&&!c.brood&&!SIG_RUNES_ID[c.id]);
+    const n={}; cards.forEach(c=>n[c.code]=(n[c.code]||0)+1); const home=Object.keys(n).sort((a,b)=>n[b]-n[a]).slice(0,2);
+    for(const c of cards){ const r=alRng('rune2:'+c.id)();
+      if(f>1&&!home.includes(c.code)&&r<1-1/f){ const to=home[Math.floor(alRng('rh:'+c.id)()*home.length)]; changed.push({id:c.id,from:c.code,to}); c.code=to; c.rune=to; }
+      if(f<1&&home.includes(c.code)&&r<1-f){ const others=RUNES.filter(x=>!home.includes(x)), to=others[Math.floor(alRng('ro:'+c.id)()*others.length)]; changed.push({id:c.id,from:c.code,to}); c.code=to; c.rune=to; } } }
+  return changed; }
+const SIG_RUNES_ID=(()=>{ const o={}; if(typeof SIG_RUNES!=='undefined') for(const k in SIG_RUNES) SIG_RUNES[k].forEach(id=>o[id]=k); return o; })();
+/* the whole deal with a weight set: themes fold in, kinds change to the mix, then every card that
+   changed kind (or all, with fresh=true) takes new parts, and runes gather or spread */
+function alDeal(W,fresh){ window.AL_WEIGHTS=alExpandThemes(W); const moved=alRetype(CARD_LIST,W), ids=new Set(moved.map(m=>m.id));
+  const rep=allocateCards(CARD_LIST,c=>!fresh&&c.np&&!ids.has(c.id)); const runes=alRunes(CARD_LIST,W);
+  return {moved,runes,rep}; }

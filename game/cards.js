@@ -223,7 +223,7 @@ function generateCards(){
    variant (shape, pattern, ward...), keyword and art. Ranks 1-12 are still spread evenly and
    shuffled, and BUILD makes the stats, so power follows rank and rarity as everywhere else.
    Ids stay color_type_NN, so cards in a save keep their place (with the new card's look). */
-const SET_FIELDS=['shape','pattern','ward','boon','util','trap','env','ai','fx','as','find','eq','race','reach'];
+const SET_FIELDS=['shape','pattern','ward','boon','util','trap','env','ai','fx','as','find','eq','race','reach','rune'];
 function authoredCards(fam,list,rng,pk,ri,tr,names){
   const out=[], count={}, ranks=list.map((_,i)=>i%12+1);
   for(let i=ranks.length-1;i>0;i--){ const j=Math.floor(rng()*(i+1)); [ranks[i],ranks[j]]=[ranks[j],ranks[i]]; }
@@ -572,6 +572,7 @@ const SIG_RUNES={
   for(const c of CARD_LIST){
     if(c.rarity==='hero'||c.brood) c.code=WILD;
     else if(sig[c.id]) c.code=sig[c.id];
+    else if(c.rune) c.code=c.rune;   // a rune written on the card's line (rune=…), set by the Combos weight
     else { const h=seedOf('rune:'+c.id); c.code=h%33===0?WILD:RUNES[h%6]; } } }
 
 /* Recipes (Program Advance style): queue exactly these cards, in any order, and they fuse into

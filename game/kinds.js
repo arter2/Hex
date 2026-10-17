@@ -209,7 +209,7 @@ const partKind=type=>['summon','machine','sentry'].includes(type)?'creature':PAR
 // the kind of parts a card has: an instant or a Legendary piece has those of what it plays as
 const cardPartKind=c=>partKind(kdBase(c));
 // what a card keeps of what it had: who it is, its rune and its look
-const PART_KEEP=['id','name','color','type','rank','rarity','code','body','mod','mach','race','legend','sig','art','look','parts','as','base','piece'];
+const PART_KEEP=['id','name','color','type','rank','rarity','code','rune','body','mod','mach','race','legend','sig','art','look','parts','as','base','piece'];
 const partF=kdF;
 function partsBuild(c,P){ const kind=cardPartKind(c); if(!kind) return c;
   const v=k=>P[k]==null||P[k]===''||P[k]==='-'?null:P[k];

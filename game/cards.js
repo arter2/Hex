@@ -62,67 +62,62 @@ const RARITY={common:{n:'Common',g:'●'}, uncommon:{n:'Uncommon',g:'◆'}, rare
 // Signature cards: hand-authored, they define each color's strategies.
 const SIGNATURE=[
   // Fire — raw damage: burn, splash, self-damage for power
-  {id:'ember_dart',  name:'Ember Dart',   color:'fire', type:'strike', rank:1, rarity:'common',   pow:24, shape:'line', burn:3},
-  {id:'cinder_lance',name:'Cinder Lance', color:'fire', type:'strike', rank:2, rarity:'common',   pow:40, shape:'line'},
-  {id:'flame_fan',   name:'Flame Fan',    color:'fire', type:'strike', rank:3, rarity:'uncommon', pow:34, shape:'wedge', burn:3},
-  {id:'blaze_bolt',  name:'Blaze Bolt',   color:'fire', type:'strike', rank:5, rarity:'rare',     pow:72, shape:'line', self:10},
-  {id:'fire_pot',    name:'Fire Pot',     color:'fire', type:'lob',    rank:3, rarity:'common',   pow:34, radius:1, burn:2},
-  {id:'ember_wall',  name:'Ember Wall',   color:'fire', type:'ward',   rank:2, rarity:'common',   ward:'thorns', n:2, hp:30, thorns:10},
-  {id:'brazier',     name:'Brazier',      color:'fire', type:'sentry', rank:4, rarity:'uncommon', pow:10, rate:1.2, dur:10, burn:2},
-  {id:'kindle',      name:'Kindle',       color:'fire', type:'boon',   rank:4, rarity:'uncommon', boon:'power', dur:10},
-  {id:'meteor',      name:'Meteor',       color:'fire', type:'lob',    rank:6, rarity:'legendary',pow:110, radius:1, burn:4, delay:1},
-
+  {id:'ember_dart', name:'Ember Dart', color:'fire', type:'strike', rank:1, rarity:'common', parts:{shape:'line', kw:'burn', rider:'pierce', cast:'quick'}},
+  {id:'cinder_lance', name:'Cinder Lance', color:'fire', type:'strike', rank:2, rarity:'common', parts:{shape:'spear', rider:'pierce', cast:'charged'}},
+  {id:'flame_fan', name:'Flame Fan', color:'fire', type:'strike', rank:3, rarity:'uncommon', parts:{shape:'fan', kw:'burn', cast:'quick'}},
+  {id:'blaze_bolt', name:'Blaze Bolt', color:'fire', type:'strike', rank:5, rarity:'rare', parts:{shape:'line', kw:'self', cast:'quick'}},
+  {id:'fire_pot', name:'Fire Pot', color:'fire', type:'lob', rank:3, rarity:'common', parts:{pattern:'cross', fuse:'heavy', kw:'push', after:'ground'}},
+  {id:'ember_wall', name:'Ember Wall', color:'fire', type:'ward', rank:2, rarity:'common', parts:{form:'rampart', build:'heavy', wfx:'thorns'}},
+  {id:'brazier', name:'Brazier', color:'fire', type:'sentry', rank:4, rarity:'uncommon', parts:{beh:'snipe', tier:'sturdy', speed:'steady', kw:'burn', trait:'fury'}},
+  {id:'kindle', name:'Kindle', color:'fire', type:'boon', rank:4, rarity:'uncommon', parts:{boon:'power', len:'short'}},
+  {id:'meteor', name:'Meteor', color:'fire', type:'lob', rank:6, rarity:'legendary', parts:{pattern:'row', fuse:'heavy', kw:'burn', after:'knock'}},
   // Frost — control: freeze, slow, shields
-  {id:'ice_shard',   name:'Ice Shard',    color:'frost', type:'strike', rank:1, rarity:'common',   pow:30, shape:'line'},
-  {id:'frost_lance', name:'Frost Lance',  color:'frost', type:'strike', rank:3, rarity:'uncommon', pow:36, shape:'row', freeze:1.5},
-  {id:'hail_lob',    name:'Hail Lob',     color:'frost', type:'lob',    rank:2, rarity:'common',   pow:28, radius:1, slow:4},
-  {id:'rime_wall',   name:'Rime Wall',    color:'frost', type:'ward',   rank:2, rarity:'common',   ward:'wall', n:3, hp:40},
-  {id:'frost_ward',  name:'Frost Ward',   color:'frost', type:'ward',   rank:1, rarity:'common',   ward:'barrier', amt:50},
-  {id:'icicle_spire',name:'Icicle Spire', color:'frost', type:'sentry', rank:3, rarity:'uncommon', pow:12, rate:1.4, dur:12, slow:2},
-  {id:'glacial_veil',name:'Glacial Veil', color:'frost', type:'boon',   rank:2, rarity:'common',   boon:'dodge'},
-  {id:'absolute_zero',name:'Absolute Zero',color:'frost',type:'strike', rank:6, rarity:'legendary',pow:45, shape:'all', freeze:3},
-
+  {id:'ice_shard', name:'Ice Shard', color:'frost', type:'strike', rank:1, rarity:'common', parts:{shape:'twin', rider:'pierce', cast:'charged'}},
+  {id:'frost_lance', name:'Frost Lance', color:'frost', type:'strike', rank:3, rarity:'uncommon', parts:{shape:'spear', kw:'freeze', rider:'pierce', cast:'quick'}},
+  {id:'hail_lob', name:'Hail Lob', color:'frost', type:'lob', rank:2, rarity:'common', parts:{pattern:'column', fuse:'heavy', kw:'slow', after:'ground'}},
+  {id:'rime_wall', name:'Rime Wall', color:'frost', type:'ward', rank:2, rarity:'common', parts:{form:'rampart', build:'heavy', wfx:'freezing'}},
+  {id:'frost_ward', name:'Frost Ward', color:'frost', type:'ward', rank:1, rarity:'common', parts:{form:'arc', build:'light', wfx:'freezing', len:'long'}},
+  {id:'icicle_spire', name:'Icicle Spire', color:'frost', type:'sentry', rank:3, rarity:'uncommon', parts:{beh:'chain', tier:'sturdy', speed:'steady', kw:'slow', trait:'submerge'}},
+  {id:'glacial_veil', name:'Glacial Veil', color:'frost', type:'boon', rank:2, rarity:'common', parts:{boon:'dodge'}},
+  {id:'absolute_zero', name:'Absolute Zero', color:'frost', type:'strike', rank:6, rarity:'legendary', parts:{shape:'all', kw:'freeze'}},
   // Storm — speed: chain lightning, stun, cast-speed boosts
-  {id:'spark',       name:'Spark',        color:'storm', type:'strike', rank:1, rarity:'common',   pow:22, shape:'line'},
-  {id:'thunder_row', name:'Thunder Row',  color:'storm', type:'strike', rank:3, rarity:'uncommon', pow:46, shape:'row', stun:1.2},
-  {id:'chain_light', name:'Chain Lightning',color:'storm',type:'strike',rank:4, rarity:'uncommon', pow:26, shape:'all'},
-  {id:'ball_light',  name:'Ball Lightning',color:'storm', type:'lob',   rank:2, rarity:'common',   pow:34, radius:0, stun:1},
-  {id:'static_ward', name:'Static Ward',  color:'storm', type:'ward',   rank:1, rarity:'common',   ward:'barrier', amt:35},
-  {id:'coil_sentry', name:'Coil Sentry',  color:'storm', type:'sentry', rank:3, rarity:'common',   pow:8, rate:.6, dur:12},
-  {id:'tailwind',    name:'Tailwind',     color:'storm', type:'boon',   rank:2, rarity:'common',   boon:'haste', dur:12},
-  {id:'stormcall',   name:'Stormcall',    color:'storm', type:'lob',    rank:6, rarity:'legendary',pow:120, radius:0, stun:2, delay:.8},
-
+  {id:'spark', name:'Spark', color:'storm', type:'strike', rank:1, rarity:'common', parts:{shape:'chain', rider:'crit', cast:'quick'}},
+  {id:'thunder_row', name:'Thunder Row', color:'storm', type:'strike', rank:3, rarity:'uncommon', parts:{shape:'column', kw:'stun', cast:'charged'}},
+  {id:'chain_light', name:'Chain Lightning', color:'storm', type:'strike', rank:4, rarity:'uncommon', parts:{shape:'chain'}},
+  {id:'ball_light', name:'Ball Lightning', color:'storm', type:'lob', rank:2, rarity:'common', parts:{pattern:'ring', kw:'stun'}},
+  {id:'static_ward', name:'Static Ward', color:'storm', type:'ward', rank:1, rarity:'common', parts:{form:'arc', wfx:'shocking', len:'short'}},
+  {id:'coil_sentry', name:'Coil Sentry', color:'storm', type:'sentry', rank:3, rarity:'common', parts:{beh:'chain', tier:'sturdy', speed:'quick', kw:'push'}},
+  {id:'tailwind', name:'Tailwind', color:'storm', type:'boon', rank:2, rarity:'common', parts:{boon:'haste', len:'long', side:'jolt', timing:'echo'}},
+  {id:'stormcall', name:'Stormcall', color:'storm', type:'lob', rank:6, rarity:'legendary', parts:{pattern:'row', fuse:'heavy', kw:'stun', after:'ground'}},
   // Verdant — growth: heal, regeneration, poison, walls and thorns
-  {id:'thorn_dart',  name:'Thorn Dart',   color:'verdant', type:'strike', rank:1, rarity:'common',   pow:24, shape:'line', poison:6},
-  {id:'vine_lash',   name:'Vine Lash',    color:'verdant', type:'strike', rank:3, rarity:'uncommon', pow:36, shape:'wedge', slow:3},
-  {id:'briar_bomb',  name:'Briar Bomb',   color:'verdant', type:'lob',    rank:2, rarity:'common',   pow:30, radius:1},
-  {id:'bramble_wall',name:'Bramble Wall', color:'verdant', type:'ward',   rank:2, rarity:'common',   ward:'thorns', n:3, hp:40, thorns:10},
-  {id:'bark_skin',   name:'Bark Skin',    color:'verdant', type:'ward',   rank:4, rarity:'uncommon', ward:'barrier', amt:70},
-  {id:'spore_pod',   name:'Spore Pod',    color:'verdant', type:'sentry', rank:2, rarity:'common',   pow:6, rate:1, dur:14, poison:4},
-  {id:'regrowth',    name:'Regrowth',     color:'verdant', type:'boon',   rank:3, rarity:'uncommon', boon:'regen', amt:5, dur:8},
-  {id:'mend',        name:'Mend',         color:'verdant', type:'boon',   rank:1, rarity:'common',   boon:'heal', amt:40},
-  {id:'world_tree',  name:'World Tree',   color:'verdant', type:'boon',   rank:6, rarity:'legendary',boon:'heal', amt:120},
-
+  {id:'thorn_dart', name:'Thorn Dart', color:'verdant', type:'strike', rank:1, rarity:'common', parts:{shape:'twin', kw:'poison', cast:'quick'}},
+  {id:'vine_lash', name:'Vine Lash', color:'verdant', type:'strike', rank:3, rarity:'uncommon', parts:{shape:'boomerang', kw:'slow'}},
+  {id:'briar_bomb', name:'Briar Bomb', color:'verdant', type:'lob', rank:2, rarity:'common', parts:{pattern:'row', fuse:'heavy'}},
+  {id:'bramble_wall', name:'Bramble Wall', color:'verdant', type:'ward', rank:2, rarity:'common', parts:{form:'cage', wfx:'thorns', len:'short'}},
+  {id:'bark_skin', name:'Bark Skin', color:'verdant', type:'ward', rank:4, rarity:'uncommon', parts:{form:'shield', build:'light', wfx:'thorns', len:'short'}},
+  {id:'spore_pod', name:'Spore Pod', color:'verdant', type:'sentry', rank:2, rarity:'common', parts:{beh:'barrage', tier:'sturdy', speed:'steady', kw:'poison', trait:'seeds'}},
+  {id:'regrowth', name:'Regrowth', color:'verdant', type:'boon', rank:3, rarity:'uncommon', parts:{boon:'regen', len:'short', side:'sprout'}},
+  {id:'mend', name:'Mend', color:'verdant', type:'boon', rank:1, rarity:'common', parts:{boon:'heal', side:'sprout', timing:'echo'}},
+  {id:'world_tree', name:'World Tree', color:'verdant', type:'boon', rank:6, rarity:'legendary', parts:{boon:'heal'}},
   // Light — healing, divine intervention, courage
-  {id:'holy_bolt',   name:'Holy Bolt',    color:'light', type:'strike', rank:1, rarity:'common',   pow:26, shape:'line', mend:4},
-  {id:'radiant_motes',name:'Radiant Motes',color:'light',type:'strike', rank:3, rarity:'uncommon', pow:14, shape:'missiles', n:4, mend:2},
-  {id:'judgment',    name:'Judgment',     color:'light', type:'lob',    rank:2, rarity:'common',   pow:48, radius:0, delay:.9},
-  {id:'sanctuary',   name:'Sanctuary',    color:'light', type:'ward',   rank:2, rarity:'common',   ward:'barrier', amt:55},
-  {id:'beacon_hope', name:'Beacon of Hope',color:'light',type:'sentry', rank:3, rarity:'uncommon', pow:7, rate:1, dur:12, mend:3},
-  {id:'blessing',    name:'Blessing',     color:'light', type:'boon',   rank:1, rarity:'common',   boon:'heal', amt:45},
-  {id:'courage',     name:'Courage',      color:'light', type:'boon',   rank:4, rarity:'uncommon', boon:'courage', dur:8},
-  {id:'intervention',name:'Divine Intervention',color:'light',type:'boon',rank:5,rarity:'rare',   boon:'intervene', amt:60},
-  {id:'dawnbreaker', name:'Dawnbreaker',  color:'light', type:'strike', rank:6, rarity:'legendary',pow:55, shape:'all', mend:10, valor:1},
-
+  {id:'holy_bolt', name:'Holy Bolt', color:'light', type:'strike', rank:1, rarity:'common', parts:{shape:'line', kw:'mend', rider:'pierce'}},
+  {id:'radiant_motes', name:'Radiant Motes', color:'light', type:'strike', rank:3, rarity:'uncommon', parts:{shape:'missiles', kw:'mend', rider:'onkill'}},
+  {id:'judgment', name:'Judgment', color:'light', type:'lob', rank:2, rarity:'common', parts:{pattern:'burst', fuse:'heavy', after:'ground'}},
+  {id:'sanctuary', name:'Sanctuary', color:'light', type:'ward', rank:2, rarity:'common', parts:{form:'shield', build:'light', wfx:'healing', len:'short'}},
+  {id:'beacon_hope', name:'Beacon of Hope', color:'light', type:'sentry', rank:3, rarity:'uncommon', parts:{beh:'snipe', tier:'sturdy', speed:'steady', kw:'mend', trait:'blessed'}},
+  {id:'blessing', name:'Blessing', color:'light', type:'boon', rank:1, rarity:'common', parts:{boon:'regen', side:'radiance', timing:'delayed'}},
+  {id:'courage', name:'Courage', color:'light', type:'boon', rank:4, rarity:'uncommon', parts:{boon:'courage', len:'long', side:'radiance'}},
+  {id:'intervention', name:'Divine Intervention', color:'light', type:'boon', rank:5, rarity:'rare', parts:{boon:'intervene'}},
+  {id:'dawnbreaker', name:'Dawnbreaker', color:'light', type:'strike', rank:6, rarity:'legendary', parts:{shape:'all', kw:'mend'}},
   // Shadow — sacrifice: curses, drain, trade HP for power
-  {id:'hex_bolt',    name:'Hex Bolt',     color:'shadow', type:'strike', rank:1, rarity:'common',   pow:26, shape:'line', curse:5},
-  {id:'soul_drain',  name:'Soul Drain',   color:'shadow', type:'strike', rank:2, rarity:'common',   pow:32, shape:'line', drain:.5},
-  {id:'blood_lance', name:'Blood Lance',  color:'shadow', type:'strike', rank:4, rarity:'rare',     pow:80, shape:'row', self:15},
-  {id:'grave_pit',   name:'Grave Pit',    color:'shadow', type:'lob',    rank:3, rarity:'uncommon', pow:34, radius:1, curse:4},
-  {id:'bone_wall',   name:'Bone Wall',    color:'shadow', type:'ward',   rank:2, rarity:'common',   ward:'wall', n:2, hp:50},
-  {id:'wraith_totem',name:'Wraith Totem', color:'shadow', type:'sentry', rank:3, rarity:'uncommon', pow:10, rate:1, dur:10, drain:.5},
-  {id:'dark_pact',   name:'Dark Pact',    color:'shadow', type:'boon',   rank:3, rarity:'uncommon', boon:'pact', dur:10, self:15},
-  {id:'eclipse',     name:'Eclipse',      color:'shadow', type:'strike', rank:6, rarity:'legendary',pow:70, shape:'all', curse:5, drain:.3},
+  {id:'hex_bolt', name:'Hex Bolt', color:'shadow', type:'strike', rank:1, rarity:'common', parts:{shape:'spear', kw:'curse'}},
+  {id:'soul_drain', name:'Soul Drain', color:'shadow', type:'strike', rank:2, rarity:'common', parts:{shape:'column', kw:'drain', rider:'onkill', cast:'charged'}},
+  {id:'blood_lance', name:'Blood Lance', color:'shadow', type:'strike', rank:4, rarity:'rare', parts:{shape:'spear', kw:'self', rider:'pierce'}},
+  {id:'grave_pit', name:'Grave Pit', color:'shadow', type:'lob', rank:3, rarity:'uncommon', parts:{pattern:'column', kw:'curse', after:'knock'}},
+  {id:'bone_wall', name:'Bone Wall', color:'shadow', type:'ward', rank:2, rarity:'common', parts:{form:'cage', build:'light', wfx:'thorns'}},
+  {id:'wraith_totem', name:'Wraith Totem', color:'shadow', type:'sentry', rank:3, rarity:'uncommon', parts:{beh:'empower', tier:'sturdy', speed:'steady', kw:'drain', trait:'rises'}},
+  {id:'dark_pact', name:'Dark Pact', color:'shadow', type:'boon', rank:3, rarity:'uncommon', parts:{boon:'pact', side:'siphon', timing:'echo'}},
+  {id:'eclipse', name:'Eclipse', color:'shadow', type:'strike', rank:6, rarity:'legendary', parts:{shape:'all', kw:'curse', rider:'crit'}},
 ];
 SIGNATURE.forEach(c=>c.sig=true);
 
@@ -241,10 +236,12 @@ function authoredCards(fam,list,rng,pk,ri,tr,names){
     const kwChance={common:.4,uncommon:.6,rare:.8,legendary:1}[rarity];
     const kw=e.o.kw!=null?(e.o.kw==='-'?null:e.o.kw):rng()<kwChance?pk(tr.kws):null;
     const base=type==='piece'?tr.piece:type;
-    BUILD[base](c,F,rank,kw,tr,pk,ri);
-    if(type==='piece'){ c.base=base; c.piece=true; }
     if(e.o.body) c.body=e.o.body; if(e.o.mod) c.mod=e.o.mod; if(e.o.mach) c.mach=e.o.mach;
     if(e.o.legend) c.legend=true;
+    // a creature, strike, lob, ward, boon, charge, trap or ground card is written with its parts (kinds.js)
+    const P=lineParts(type,e.o); if(P){ partsBuild(c,P); if(names.has(e.name)) throw new Error('card set '+fam+': the name "'+e.name+'" is taken'); names.add(e.name); c.name=e.name; out.push(c); continue; }
+    BUILD[base](c,F,rank,kw,tr,pk,ri);
+    if(type==='piece'){ c.base=base; c.piece=true; }
     // Unstable (goblin and gremlin tech): 30% stronger, but 1 in 5 casts misfire
     if(e.o.unstable){ c.unstable=true; for(const k of ['pow','amt','hp','eqHp']) if(typeof c[k]==='number') c[k]=Math.round(c[k]*1.3); if(c.tk) c.tk=r1(c.tk*1.3); if(c.upPow) c.upPow=r1(c.upPow*1.3); }
     if(names.has(e.name)) throw new Error('card set '+fam+': the name "'+e.name+'" is taken');
@@ -522,17 +519,17 @@ const GROVEBEAST={id:'hero_grovebeast', name:'Elder Grovebeast', color:'verdant'
    rampart, storm, gray and brown the corridor; verdant and light have the rare cage.
    A cage is aimed at an enemy and lasts only a few seconds. Their own list, so no other card moves. */
 const FORM_WALLS=[
-  {id:'cinder_rampart', name:'Cinder Rampart',   color:'fire',    rank:4,  rarity:'uncommon', ward:'thorns', form:'rampart',  n:4, hp:30, thorns:10},
-  {id:'glacier_rampart',name:'Glacier Rampart',  color:'frost',   rank:6,  rarity:'uncommon', ward:'wall',   form:'rampart',  n:5, hp:45},
-  {id:'static_corridor',name:'Static Corridor',  color:'storm',   rank:6,  rarity:'uncommon', ward:'thorns', form:'corridor', n:4, hp:35, thorns:8},
-  {id:'briar_arc',      name:'Briar Arc',        color:'verdant', rank:5,  rarity:'uncommon', ward:'thorns', form:'arc',      n:5, hp:35, thorns:8},
-  {id:'thornwood_cage', name:'Thornwood Cage',   color:'verdant', rank:9,  rarity:'rare',     ward:'thorns', form:'cage',     n:6, hp:40, thorns:10},
-  {id:'halo_arc',       name:'Halo Arc',         color:'light',   rank:4,  rarity:'uncommon', ward:'wall',   form:'arc',      n:5, hp:40},
-  {id:'prism_cage',     name:'Prism Cage',       color:'light',   rank:8,  rarity:'rare',     ward:'wall',   form:'cage',     n:6, hp:55},
-  {id:'grave_rampart',  name:'Grave Rampart',    color:'shadow',  rank:5,  rarity:'uncommon', ward:'wall',   form:'rampart',  n:4, hp:50},
-  {id:'shieldwall_lane',name:'Shieldwall Lane',  color:'gray',    rank:5,  rarity:'uncommon', ward:'wall',   form:'corridor', n:4, hp:45},
-  {id:'iron_corridor',  name:'Iron Corridor',    color:'brown',   rank:6,  rarity:'uncommon', ward:'wall',   form:'corridor', n:4, hp:50},
-].map(c=>Object.assign({type:'ward'},c));
+  {id:'cinder_rampart', name:'Cinder Rampart', color:'fire', rank:4, rarity:'uncommon', parts:{form:'rampart', build:'light', wfx:'thorns', len:'short'}},
+  {id:'glacier_rampart', name:'Glacier Rampart', color:'frost', rank:6, rarity:'uncommon', parts:{form:'rampart', build:'light', wfx:'freezing', len:'short'}},
+  {id:'static_corridor', name:'Static Corridor', color:'storm', rank:6, rarity:'uncommon', parts:{form:'corridor', build:'light', wfx:'thorns', len:'long'}},
+  {id:'briar_arc', name:'Briar Arc', color:'verdant', rank:5, rarity:'uncommon', parts:{form:'arc', wfx:'thorns', len:'long'}},
+  {id:'thornwood_cage', name:'Thornwood Cage', color:'verdant', rank:9, rarity:'rare', parts:{form:'cage', build:'heavy', wfx:'thorns', len:'long'}},
+  {id:'halo_arc', name:'Halo Arc', color:'light', rank:4, rarity:'uncommon', parts:{form:'arc', build:'heavy', wfx:'healing', len:'long'}},
+  {id:'prism_cage', name:'Prism Cage', color:'light', rank:8, rarity:'rare', parts:{form:'cage', build:'light', len:'short'}},
+  {id:'grave_rampart', name:'Grave Rampart', color:'shadow', rank:5, rarity:'uncommon', parts:{form:'rampart', build:'light', len:'short'}},
+  {id:'shieldwall_lane', name:'Shieldwall Lane', color:'gray', rank:5, rarity:'uncommon', parts:{form:'shield', build:'light', len:'short'}},
+  {id:'iron_corridor', name:'Iron Corridor', color:'brown', rank:6, rarity:'uncommon', parts:{form:'corridor', build:'heavy'}},].map(c=>Object.assign({type:'ward'},c));
+SIGNATURE.concat(FORM_WALLS).forEach(c=>{ if(c.parts) partsBuild(c,c.parts); });   // signature cards and the form walls are written with their parts too
 const CARD_LIST=SIGNATURE.concat(generateCards(),HEROES,POTIONS,BROOD,FORM_WALLS);
 // The collection is frozen at 2,000 cards (decided 2026-10-17): 1,949 now, so 51 slots are left.
 // A new card takes one of those slots or replaces an old one; the list never grows past the cap.
@@ -541,7 +538,7 @@ if(CARD_LIST.length>CARD_CAP) console.error('Hexmancers: '+CARD_LIST.length+' ca
 /* Nothing a card puts on the board lasts forever: shields, walls, towers, summons, machines,
    traps and changed ground each have HP (or a strength) and a time limit, written as turns
    here: each is 10 seconds of fighting (TURN_S in battle.js). Applied after generation, so card ids are unchanged. */
-function boardTurns(c){
+function boardTurns(c){ if(c.np) return;   // a card built from parts sets its own time (kinds.js)
   const k=c.type==='piece'?c.base:c.type==='instant'?c.as:c.type, big=c.rarity==='rare'||c.rarity==='legendary';
   if(k==='ward') c.turns=c.form==='cage'?.4:big?3:2;   // a cage holds only a few seconds
   else if(k==='sentry'){ c.turns=Math.max(1,Math.round(c.dur/7)); c.hp=40; delete c.dur; }
@@ -552,7 +549,7 @@ function boardTurns(c){
 }
 CARD_LIST.forEach(boardTurns);
 // Gray creatures stay 10 seconds longer: Veteran makes them better the longer they stand
-CARD_LIST.forEach(c=>{ if(c.color==='gray'&&c.type==='summon'&&c.turns) c.turns++; });
+CARD_LIST.forEach(c=>{ if(c.color==='gray'&&c.type==='summon'&&c.turns&&!c.np) c.turns++; });
 
 /* Rune codes (Battle Network style). Every card carries a rune, A to F, or the rare wild ✱.
    The cards you queue in one turn must share a rune or a name (✱ fits any rune), so a combo
@@ -641,8 +638,9 @@ function cardText(c){
   let t='';
   const kind=c.type==='piece'?c.base:c.type;
   // a creature built from parts (creatures.js)
-  if(c.beh&&typeof crText==='function'&&['summon','machine','sentry'].includes(kind)) return crText(c)+(kw.length?'. '+kw.join(', '):'');
-  if(kind==='strike'&&typeof STRIKE_SHAPES!=='undefined'&&STRIKE_SHAPES[c.shape]) return strikeText(c)+(kw.length?'. '+kw.join(', '):'');   // the newer shapes (strikes.js)
+  if(c.beh&&typeof crText==='function'&&['summon','machine','sentry'].includes(kind)) return crText(c)+(typeof kdStanceText==='function'?kdStanceText(c):'')+(kw.length?'. '+kw.join(', '):'');
+  if(kind==='strike'&&typeof STRIKE_SHAPES!=='undefined'&&STRIKE_SHAPES[c.shape]) return strikeText(c)+(typeof kdCastText==='function'?kdCastText(c):'')+(kw.length?'. '+kw.join(', '):'');
+  if(c.kd&&typeof kdText==='function') return kdText(c,kw);   // lobs, wards, boons, charges, traps and ground built from parts (kinds.js)   // the newer shapes (strikes.js)
   if(kind==='strike') t={line:c.pow+' to the first enemy in your row', row:c.pow+' to every enemy in your row', wedge:c.pow+' in a short cone ahead',
                          all:c.pow+' to every enemy', missiles:c.n+' missiles of '+c.pow+' at random enemies',
                          dig:c.pow+' tunnelling under walls and shields to the first enemy in your row', zigzag:c.pow+' zigzagging between your row and the next',
@@ -682,6 +680,7 @@ function cardText(c){
   else if(kind==='ace') t='Ace: loads into your Sidearm. Fire it for '+c.pow+' '+{line:'to the first enemy in your row',row:'to every enemy in your row',all:'to every enemy',nova:'to the nearest enemy and around it',twin:'twice down your row'}[c.shape]+'. Ace Enchantments build it up to ×3';
   else if(kind==='aceup') t='Ace Enchantment: your Sidearm\'s Ace gets +'+Math.round(c.upPow*100)+'% power'+(c.upShape?' and now hits '+{row:'every enemy in your row',all:'every enemy',nova:'around its target',twin:'twice'}[c.upShape]:'')+(kw.length?' and these effects':'')+'. With no Ace loaded it waits for the next one';
   if(kind==='strike'&&c.rider&&typeof STRIKE_RIDERS!=='undefined'&&STRIKE_RIDERS[c.rider]) t+='. '+STRIKE_RIDERS[c.rider].name+': '+STRIKE_RIDERS[c.rider].text;
+  if(kind==='strike'&&typeof kdCastText==='function') t+=kdCastText(c);
   if(c.piece) t='Legendary piece. '+t;
   if(c.unstable) t='Unstable: 1 in 5 misfires and hurts you. '+t;
   if(c.legend) t+='. Legend: your other Gray creatures deal +25% while it stands';

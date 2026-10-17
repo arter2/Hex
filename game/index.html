@@ -515,6 +515,9 @@
   HTMLCanvasElement.prototype.getContext=function(type,opts){ if(type==='2d'&&!this.isConnected&&!(opts&&'willReadFrequently' in opts)) opts=Object.assign({},opts,{willReadFrequently:true}); return g.call(this,type,opts); }; })();
 </script>
 <script src="cardsets.js"></script>
+<script src="creatures.js"></script>
+<script src="strikes.js"></script>
+<script src="kinds.js"></script>
 <script src="cards.js"></script>
 <script src="chars.js"></script>
 <script src="engine.js"></script>
@@ -523,10 +526,6 @@
 <script src="gear.js"></script>
 <script src="battle.js"></script>
 <script src="enemies.js"></script>
-<script src="creatures.js"></script>
-<script src="strikes.js"></script>
-<script src="cardparts.js"></script>
-<script src="allocate.js"></script>
 <script src="bosses.js"></script>
 <script src="sprites.js"></script>
 <script src="sprites_pal.js"></script>

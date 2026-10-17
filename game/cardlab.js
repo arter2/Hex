@@ -6,7 +6,7 @@
 const LAB_KEY='hexCardLab';
 const labOn=()=>{ try{ return localStorage.getItem(LAB_KEY)==='1'; }catch(e){ return false; } };
 function labSync(){ const b=document.getElementById('mmLab'); if(b) b.hidden=!labOn(); }
-const LAB={kind:'creature', shape:'twin', rider:null, cluster:'ring', color:'fire', beh:'bolt', tier:'sturdy', speed:'steady', kw:null, trait:null, race:'dwarf', body:null, rune:'A', rank:6, rarity:'rare', foes:'mixed', depth:5, calm:false};
+const LAB={kind:'creature', shape:'twin', rider:null, cluster:'ring', color:'fire', beh:'bolt', tier:'sturdy', speed:'steady', kw:null, trait:null, race:'dwarf', cast:'normal', stance:null, body:null, rune:'A', rank:6, rarity:'rare', foes:'mixed', depth:5, calm:false};
 const LAB_FOES={
   pack:   {name:'Vermin pack', ids:['rat','bat','spider','worm']},
   mixed:  {name:'Mixed',       ids:['gloop','beetle','sellsword']},
@@ -22,10 +22,8 @@ const labBodies=()=>LAB.color==='brown'?LAB_MACHINES.map(x=>x[0]):NOUNS.summon;
 function labStrike(){ const S=LAB, F=(1+.06*(S.rank-1))*RARITY_MULT[S.rarity], nouns=NOUNS.strike;
   const bi=S.body==null?Object.keys(STRIKE_SHAPES).concat(Object.keys(STRIKE_OLD)).indexOf(S.shape):S.body;   // Auto: a name that follows the shape
   const name=WORDS[S.color][(S.rank+S.shape.length)%WORDS[S.color].length]+' '+nouns[bi%nouns.length];
-  const c={id:'lab_st_'+[S.color,S.shape,S.kw||'-',S.rider||'-',S.cluster,S.rank,S.rarity,bi,S.rune].join('_'), name, color:S.color, type:'strike', rank:S.rank, rarity:S.rarity, shape:S.shape, code:S.rune, lab:true};
-  if(S.rider) c.rider=S.rider; if(S.shape==='cluster') c.cluster=S.cluster;
-  if(STRIKE_SHAPES[S.shape]) return strikeBuild(c,F,S.rank,S.kw);
-  BUILD.strike(c,F,S.rank,S.kw,{},x=>x[0],(a,b)=>a); return strikeRiders(c); }
+  const c={id:'lab_st_'+[S.color,S.shape,S.kw||'-',S.rider||'-',S.cluster,S.cast,S.rank,S.rarity,bi,S.rune].join('_'), name, color:S.color, type:'strike', rank:S.rank, rarity:S.rarity, code:S.rune, lab:true};
+  partsBuild(c,{shape:S.shape, kw:S.kw, rider:S.rider, cast:S.cast, cluster:S.cluster}); c.lab=true; c.code=S.rune; return c; }
 function labCard(){ if(LAB.kind==='strike') return labStrike();
   const S=LAB, F=(1+.06*(S.rank-1))*RARITY_MULT[S.rarity], body=labBodies()[(S.body==null?Object.keys(CR_BEH).indexOf(S.beh):S.body)%labBodies().length];
   const word=WORDS[S.color][(Object.keys(CR_BEH).indexOf(S.beh)+S.rank)%WORDS[S.color].length];
@@ -34,8 +32,9 @@ function labCard(){ if(LAB.kind==='strike') return labStrike();
   if(S.color==='brown') c.ai=LAB_MACHINES.find(x=>x[0]===body)[1];
   if(S.trait) c.trait=S.trait;
   if(S.trait==='racetech') c.race=S.race;
+  if(S.color==='gray'&&S.stance) c.stance=S.stance;   // Gray creatures take a stance (kinds.js)
   c.code=S.rune;   // a rune, so lab cards make Flushes and Straights like real ones (no rune counted as wild)
-  c.id+='_'+[S.beh,S.tier,S.speed,S.kw||'-',S.trait||'-',c.race||'-',S.rank,S.rarity,S.rune].join('_');
+  c.id+='_'+[S.beh,S.tier,S.speed,S.kw||'-',S.trait||'-',c.race||'-',c.stance||'-',S.rank,S.rarity,S.rune].join('_');
   return crBuild(c,F,S.rank,S.kw);
 }
 
@@ -79,6 +78,7 @@ function labStrikeForm(f,col){ const S=LAB;
   // Pierce is for shapes that fire shots
   const shot=['line','dig','zigzag','diag','twin','fan','spear','boomerang','gun','burst','ricochet'].includes(S.shape); if(!shot&&S.rider==='pierce') S.rider=null;
   f.appendChild(labRow('Rider','rider',[[null,'None'],...Object.keys(STRIKE_RIDERS).filter(k=>shot||!STRIKE_RIDERS[k].shots).map(k=>[k,STRIKE_RIDERS[k].name,STRIKE_RIDERS[k].text])],col));
+  f.appendChild(labRow('Cast','cast',Object.keys(KD_CAST).map(k=>[k,KD_CAST[k].name||'Normal',KD_CAST[k].text]),col));
   f.appendChild(labRow('Rune','rune',['A','B','C','D','E','F','✱'].map(k=>[k,k]),col));
   f.appendChild(labRow('Name','body',[[null,'Auto'],...NOUNS.strike.map((n,i)=>[i,n])],col)); }
 function labCreatureForm(f,col){ const S=LAB;
@@ -89,6 +89,7 @@ function labCreatureForm(f,col){ const S=LAB;
   f.appendChild(labRow('Speed','speed',Object.keys(CR_SPEED).map(k=>[k,CR_SPEED[k].name+' '+CR_SPEED[k].rate+'s']),col));
   f.appendChild(labRow('Keyword','kw',[[null,'None'],...CR_KWS[S.color].map(k=>[k,k[0].toUpperCase()+k.slice(1)])],col));
   f.appendChild(labRow('Trait','trait',[[null,'None'],...crTraitsOf(S.color).map(k=>[k,CR_TRAITS[k].name,CR_TRAITS[k].text])],col));
+  if(S.color==='gray') f.appendChild(labRow('Stance','stance',[[null,'None'],...Object.keys(KD_STANCE).map(k=>[k,KD_STANCE[k].name,KD_STANCE[k].text])],col));
   if(S.trait==='racetech') f.appendChild(labRow('Race','race',Object.keys(CR_RACE).map(k=>[k,RACES_TECH[k],CR_RACE[k]]),col));
   f.appendChild(labRow('Rune','rune',['A','B','C','D','E','F','✱'].map(k=>[k,k]),col));
   f.appendChild(labRow('Body','body',[[null,'Auto'],...labBodies().map((n,i)=>[i,n])],col)); }

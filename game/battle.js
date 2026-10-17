@@ -394,7 +394,7 @@ function hitPlayer(dmg,src){
   if(p.dodge){ p.dodge=false; floater('dodge',p.tile,'#6fd6ff'); return; }
   if(p.dodgeChance&&Math.random()<p.dodgeChance){ floater('dodge',p.tile,'#9fdcff'); return; }
   if(p.blocksLeft>0){ p.blocksLeft--; floater('blocked',p.tile,'#f2c94c'); burst(p.tile,'#f2c94c',8,1); return; }
-  if(p.barrier>0){ const a=Math.min(p.barrier,dmg); p.barrier-=a; dmg-=a; floater('🛡'+a,p.tile,'#6fd6ff'); }
+  if(p.barrier>0){ const a=Math.min(p.barrier,dmg); p.barrier-=a; dmg-=a; floater('🛡'+a,p.tile,'#6fd6ff'); if(p.barrierCard&&src) kdWallHit({card:p.barrierCard},src,a); }
   // Gray Guardians, Guards creatures and Aegis gear take an attack's hit (not burning ground); they
   // see who hit, so their thorns and shocks answer it. A Light Guardian takes half, while above half HP.
   if(src&&dmg>0){ const g=guards().sort((x,y)=>y.hp-x.hp)[0];
@@ -417,6 +417,7 @@ function hitPlayer(dmg,src){
 }
 function hitBlock(o,dmg,src){
   if(o.cr){ dmg=crHurt(o,dmg,src); if(dmg<=0) return; }   // a creature's traits (creatures.js)
+  if(o.kind==='wall'&&!o.enemy&&o.card&&o.card.wfx) dmg=kdWallHit(o,src,dmg);   // a ward's wall effect (kinds.js)
   o.hp-=dmg; floater('-'+dmg,o.tile,'#ffb3a0'); flash(o.tile,'#ffb3a0',.6);
   if(o.thorns&&src&&src.hp>0) hitEnemy(src,o.thorns,o.card);
   if(o.hp<=0&&!(o.cr&&crSave(o))) removeBlock(o);
@@ -452,6 +453,11 @@ function playCard(inst){ if(B&&B.player){ B.player.poseT=B.time; B.player.poseK=
   b.hooks.onCast&&b.hooks.onCast(c,inst);
   B.fx.push({kind:'ring',a:p.tile,color:colorOf(c),t:0,life:.45}); burst(p.tile,colorOf(c),10,1.2);
   if(c.self&&c.type!=='boon') payHp(c.self);
+  // a strike's cast (kinds.js): Quick brings your next card sooner; Charged winds up half a second first
+  if(c.type==='strike'&&c.cast==='quick') p.castCd*=.5;
+  if(c.type==='boon'&&c.timing==='delayed'&&!c.late){ ring(p.tile,colorOf(c),1,.6); floater('…',p.tile,colorOf(c)); return later(2,()=>{ if(B===b&&b.phase==='fight') CAST.boon(Object.assign({},c,{late:1}),p); }); }
+  if(c.type==='strike'&&c.cast==='charged'){ ring(p.tile,colorOf(c),1.2,.5); floater('charging…',p.tile,colorOf(c)); p.castCd=Math.max(p.castCd,.6);
+    return later(.5,()=>{ if(B===b&&b.phase==='fight') CAST.strike(c,p); }); }
   CAST[c.type==='piece'?c.base:c.type](c,p);
 }
 function castCard(){
@@ -491,7 +497,7 @@ const CAST={
   },
   lob(c,p){ lobFrom(p.tile,c,c.pow,c.radius,c.delay||.6,B.aim); B.aim=null; },
   ward(c,p){
-    if(c.ward==='barrier'){ p.barrier=c.amt; p.shieldT=secs(c.turns||2); floater('🛡'+c.amt,p.tile,'#6fd6ff'); return; }   // shields replace, never stack
+    if(c.ward==='barrier'){ p.barrier=c.amt; p.shieldT=secs(c.turns||2); p.barrierCard=c.wfx?c:null; floater('🛡'+c.amt,p.tile,'#6fd6ff'); return; }   // shields replace, never stack
     let cage=null, ts;
     if(c.form==='cage'){ cage=cageTarget(B.aim); B.aim=null; ts=cage?cageTiles(cage):[]; if(!ts.length){ floater(cage?'no room':'no target',p.tile,'#ffb3a0'); return; } }
     else { ts=placementTiles(c.n,c.form); if(!ts.length){ floater('no room',p.tile,'#ffb3a0'); return; } }
@@ -504,7 +510,8 @@ const CAST={
     let t=B.aim&&!B.aim.occ&&!B.aim.trap?B.aim:null; B.aim=null;
     if(!t&&e) t=pick(around(e.tile).filter(x=>x.side==='e'&&!x.occ&&!x.trap));
     if(!t){ floater('no room',p.tile,'#ffb3a0'); return; }
-    t.trap={card:c,life:secs(c.turns||2)}; burst(t,colorOf(c),10,.2); },
+    t.trap={card:c,life:secs(c.turns||2)}; burst(t,colorOf(c),10,.2);
+    if(c.size==='three') around(t).filter(x=>x.side==='e'&&!x.occ&&!x.trap).slice(0,2).forEach(x=>{ x.trap={card:c,life:secs(c.turns||2)}; burst(x,colorOf(c),10,.2); }); },
   environment(c,p){
     const t=B.aim||nearestEnemyTile(p.tile); B.aim=null; if(!t) return;
     for(const x of patternTiles(t,c.pattern,'e')){ flash(x,colorOf(c),.8);
@@ -512,8 +519,9 @@ const CAST={
       if(c.env==='burn') x.burnT=1e9;
       if(c.env==='freeze'){ x.iceT=1e9; if(x.occ&&x.occ.kind==='enemy') x.occ.slowT=Math.max(x.occ.slowT,2); }
       if(c.env==='bramble'){ x.thornT=1e9; x.thornPow=c.pow; x.thornCard=c; }
-      if(c.env==='tremor') hitAt(x,c.pow,c); } },
-  charge(c,p){ if(c.fx==='lob') lobFrom(p.tile,c,c.pow,0,.45,B.aim); else shoot(p.tile,lineTiles(p.tile,DIRS.E),{card:c,dmg:c.pow,from:'p'}); },
+      if(c.env==='tremor') hitAt(x,c.pow,c);
+      else if(c.envKw&&x.occ&&x.occ.kind==='enemy'&&x.occ.hp>0) hitEnemy(x.occ,1,c); } },   // ground with a keyword (kinds.js)
+  charge(c,p){ if(c.kd) return kdCharge(c,p); if(c.fx==='lob') lobFrom(p.tile,c,c.pow,0,.45,B.aim); else shoot(p.tile,lineTiles(p.tile,DIRS.E),{card:c,dmg:c.pow,from:'p'}); },
   utility(c,p){
     const pl=B.piles;
     if(c.util==='search'){ const got=deckSearch(c); floater(got?'Found: '+got.card.name:handRoom(B.piles)?'nothing found':'hand full',p.tile,'#c08a55'); if(got) B.justDrawn=new Set([got.uid]); burst(p.tile,colorOf(c),10,1); return; }
@@ -557,6 +565,8 @@ const CAST={
       case 'courage': p.courageT=c.dur; break;
       case 'intervene': p.intervene=c.amt; break;
     }
+    if(c.side&&typeof kdSide==='function') kdSide(c,p);   // a colour side effect (kinds.js)
+    if(c.timing==='echo'&&!c.echoed) later(5,()=>{ if(B&&B.phase==='fight') CAST.boon(scaled(Object.assign({},c,{echoed:1,side:null,dur:c.dur&&Math.max(1,Math.round(c.dur/2))}),.5),p); });
     burst(p.tile,col,16,1); floater(c.name,p.tile,col);
   },
 };
@@ -570,7 +580,7 @@ function lobFrom(from,c,pow,radius,dur,target){
   const ts=patternTiles(t,c.pattern||(radius?'burst':'single'),'e');
   B.lobs.push({a:from,b:t,t:0,dur,card:c});
   B.teles.push({tiles:ts,t:0,dur,friendly:true});
-  later(dur,()=>ts.forEach(x=>{ flash(x,colorOf(c),1); burst(x,colorOf(c),6,.2); hitAt(x,pow,c); }));
+  later(dur,()=>{ ts.forEach(x=>{ flash(x,colorOf(c),1); burst(x,colorOf(c),6,.2); hitAt(x,pow,c); }); if(c.after&&typeof kdAfter==='function') kdAfter(c,ts); });
 }
 // Sentries, summons and machines stand on a free tile of your side, nearest your row and the rift.
 // where walls, towers, summons and machines go: free tiles on your side, nearest your row and the front
@@ -813,7 +823,8 @@ function heroStyle(a,near,c,col,es){
 const TURN_S=10, secs=n=>n*TURN_S;
 function timeTick(dt){
   const b=B, p=b.player;
-  if(p.shieldT>0&&(p.shieldT-=dt)<=0&&p.barrier>0){ p.barrier=0; floater('shield fades',p.tile,'#6fd6ff'); }
+  if(p.shieldT>0&&(p.shieldT-=dt)<=0&&p.barrier>0){ p.barrier=0; p.barrierCard=null; floater('shield fades',p.tile,'#6fd6ff'); }
+  if(typeof kdTick==='function') kdTick(dt);   // healing walls, Rally (kinds.js)
   for(const e of alive()) if(e.shieldT>0&&(e.shieldT-=dt)<=0) e.barrier=0;
   for(const o of [...b.walls,...b.allies]) if((o.life-=dt)<=0){ floater('expired',o.tile,'#9fdcff'); removeBlock(o); }
   for(const a of b.allies) if(a.hp>0&&a.card.color==='gray'&&a.ai!=='hero'&&!a.enemy&&(!a.cr||a.card.trait==='veteran')&&(a.vetT=(a.vetT||0)+dt)>=TURN_S){ a.vetT-=TURN_S; a.vet=(a.vet||0)+1; floater('Veteran +'+a.vet*10+'%',a.tile,'#b4b8c8'); }   // Gray: Veteran
@@ -868,7 +879,7 @@ function wandTrail(ctx,tx,ty,hx,hy,r,L,S){ const dx=hx-tx, dy=hy-ty, len=Math.hy
       ctx.fillStyle=e>.6&&t>.45?L.c2:L.c; ctx.globalAlpha=Math.min(1,.35+.55*a); ctx.fillRect(X*px,Y*px,px,px); } }
   ctx.globalAlpha=1; }
 const wandBuff=p=>!p?null:p.powerT>0?'power':p.pactT>0?'pact':p.courageT>0?'courage':null;
-function shoot(from,tiles,o){ if(o.from==='p'&&o.card&&o.card.rider==='pierce') o.dig=true;   // the Pierce rider (strikes.js)
+function shoot(from,tiles,o){ if(o.from==='p'&&o.card&&(o.card.rider==='pierce'||o.card.edge==='pierce')) o.dig=true;   // the Pierce rider (strikes.js) and a charge's Pierce edge (kinds.js)
   B.shots.push(Object.assign({a:from,tiles,i:-1,stepT:0,speed:o.from==='p'?.045*((B.player&&B.player.shotSpeed)||1):.08,hit:new Set()},o)); }
 
 function fireWand(charged){ if(B&&B.player){ B.player.poseT=B.time; B.player.poseK='attack'; }

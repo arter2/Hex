@@ -149,6 +149,7 @@ const crRace=(a,r)=>a.card.trait==='racetech'&&a.card.race===r;
 function foeAim(){ const t=B&&B.allies.find(a=>a.hp>0&&a.cr&&!a.enemy&&a.card.beh==='taunt'); return t?t.tile:B.player.tile; }
 // a creature card goes on the board
 function crSpawn(c,at){
+  if(!at&&c.stance&&typeof kdStanceTile==='function') at=kdStanceTile(c);   // a Gray creature's stance (kinds.js)
   if(!at&&c.trait==='loyal'){ const P=B.player.tile; at=around(P).filter(t=>t.side==='p'&&!t.occ&&!(t.holeT>0)).sort((x,y)=>y.col-x.col)[0]; }   // Loyal stands by you
   const a=placeAlly(c,'cr',c.hp,c.turns,at); if(!a) return null;
   // the first act comes sooner for quick creatures (a flat .5 s gave slow ones a free early hit)
@@ -165,6 +166,7 @@ function crPowMult(a){ const c=a.card, mine=crMine(); let m=1;
   if(crOn(a,'harvest')) m*=1+.08*Math.min(10,a.souls);
   if(mine.some(o=>o!==a&&crOn(o,'rallying'))) m*=1.2;
   if(crRace(a,'goblin')) m*=1.4; if(crRace(a,'human')) m*=1.15;
+  if(a.card.stance==='rear') m*=1.2; if(B.player.rallyT>0) m*=1.2;   // kinds.js
   return m; }
 function crRateMult(a){ let m=1;
   if(crOn(a,'bloodlust')) m*=Math.max(.5,Math.pow(.85,a.kills));
@@ -263,6 +265,7 @@ function crTick(a,dt){ const c0=a.card;
   if(crOn(a,'regrows')||crRace(a,'troll')){ a.regAcc=(a.regAcc||0)+a.maxHp*(crRace(a,'troll')?.03:.02)*dt; if(a.regAcc>=1&&a.hp<a.maxHp){ const h=Math.floor(a.regAcc); a.regAcc-=h; a.hp=Math.min(a.maxHp,a.hp+h); } }
   if(crOn(a,'overclock')){ a.ocAcc=(a.ocAcc||0)+a.maxHp*.05*dt; if(a.ocAcc>=1){ const h=Math.floor(a.ocAcc); a.ocAcc-=h; a.hp-=h; if(a.hp<=0){ a.hp=0; floater('burnt out',a.tile,'#c08a55',true); burst(a.tile,'#c08a55',12,.6); removeBlock(a); return; } } }
   if((crOn(a,'swift')||crRace(a,'djinn'))&&(a.swiftT=(a.swiftT||0)+dt)>=TURN_S){ a.swiftT=0; crHop(a); }
+  if(c0.stance) kdEscort(a,dt);
   if(a.busyT>0){ a.busyT-=dt; return; }   // a dash still running
   a.fireT-=dt; if(a.fireT>0) return;
   const c=allyCard(a); a.fireT=(c.rate||1)*crRateMult(a);
@@ -288,6 +291,7 @@ function crHurt(a,dmg,src){
   if(crOn(a,'camouflage')&&crCamo(a)){ floater('unseen',a.tile,'#6fdc7a'); return 0; }
   if(crOn(a,'loyal')&&hexDist(a.tile,B.player.tile)===1) dmg*=.65;
   if(crRace(a,'dwarf')) dmg*=.75;
+  if(a.card.stance==='front') dmg*=.8;
   if(crOn(a,'steadfast')) dmg=Math.min(dmg,a.maxHp*.2);
   dmg=Math.max(1,Math.round(dmg));
   if(a.armor>0){ const s=Math.min(a.armor,dmg); a.armor-=s; dmg-=s; floater('armour',a.tile,'#ffb070'); if(!dmg) return 0; }

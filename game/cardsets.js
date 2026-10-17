@@ -14,130 +14,130 @@ const CARD_SETS={
    the beasts of the mountain; fury, meat and wine. Dwarf-like, Japanese-, Chinese- and
    Tibetan-like, Native American-like and Spanish (duende) folk. */
 fire:`
-Musket Shot | strike | c | shape=line kw=-
-Flintlock Ball | strike | c | shape=line kw=push
-Bottle Rocket | strike | c | shape=zigzag kw=push
-Skyrocket | strike | u | shape=diag kw=stun
+Musket Shot | strike | c | shape=snipe rider=crit
+Flintlock Ball | strike | c | shape=twin kw=push cast=charged
+Bottle Rocket | strike | c | shape=missiles kw=push cast=quick
+Skyrocket | strike | u | shape=missiles kw=stun rider=onkill
 Rocket Barrage | strike | r | shape=missiles kw=burn
-Dragon's Breath | strike | r | shape=wedge kw=burn
-Wyvern Spit | strike | u | shape=line kw=-
-Kitsune Foxfire | strike | u | shape=missiles kw=burn
-Oni Club Swing | strike | u | shape=wedge kw=self
-Minotaur Charge | strike | r | shape=dig kw=push
-Bull Rush | strike | c | shape=dig kw=push
-Pickaxe Strike | strike | c | shape=line kw=stun
-Miner's Drill | strike | u | shape=dig kw=-
-Forge Hammer Throw | strike | c | shape=line kw=stun
-Red-Hot Rivet | strike | c | shape=line kw=burn
-Molten Slag Spray | strike | u | shape=wedge kw=slow
+Dragon's Breath | strike | r | shape=fan kw=burn rider=pierce
+Wyvern Spit | strike | u | shape=spear cast=quick
+Kitsune Foxfire | strike | u | shape=cluster kw=burn rider=crit cast=charged cluster=ring
+Oni Club Swing | strike | u | shape=wedge kw=self rider=crit cast=quick
+Minotaur Charge | strike | r | shape=spear kw=push rider=recoil
+Bull Rush | strike | c | shape=line kw=push rider=recoil cast=quick
+Pickaxe Strike | strike | c | shape=burst kw=stun rider=crit
+Miner's Drill | strike | u | shape=mine
+Forge Hammer Throw | strike | c | shape=spear kw=stun rider=pierce
+Red-Hot Rivet | strike | c | shape=snipe kw=burn rider=recoil
+Molten Slag Spray | strike | u | shape=fan kw=slow rider=pierce cast=quick
 Lava Jet | strike | c | shape=row kw=slow
-Volcanic Vent | strike | r | shape=row kw=burn
+Volcanic Vent | strike | r | shape=row kw=burn rider=crit
 Cyclone of Cinders | strike | r | shape=all kw=push
-Fire Whirl | strike | u | shape=zigzag kw=push
-Phoenix Feather | strike | u | shape=line kw=mend
-Griffin Talon | strike | c | shape=line kw=-
-Coyote's Trick Shot | strike | c | shape=diag kw=-
-Goblin Slingshot | strike | c | shape=line kw=-
-Gremlin Sparkler | strike | c | shape=zigzag kw=confuse
-Duende's Ember | strike | c | shape=line kw=confuse
-Shishi Roar | strike | u | shape=wedge kw=push
-Iaido Slash | strike | r | shape=line kw=-
-Flaming Shuriken | strike | c | shape=missiles kw=burn
-Dragon Fist | strike | u | shape=line kw=push
-Rockslide | strike | u | shape=all kw=stun
-Obsidian Spear | strike | c | shape=line kw=-
+Fire Whirl | strike | u | shape=zigzag kw=push rider=pierce
+Phoenix Feather | strike | u | shape=snipe kw=mend rider=onkill
+Griffin Talon | strike | c | shape=twin rider=onkill
+Coyote's Trick Shot | strike | c | shape=line rider=pierce
+Goblin Slingshot | strike | c | shape=spear kw=self rider=onkill
+Gremlin Sparkler | strike | c | shape=chain kw=confuse cast=quick
+Duende's Ember | strike | c | shape=boomerang kw=confuse cast=charged
+Shishi Roar | strike | u | shape=shockwave kw=push rider=onkill
+Iaido Slash | strike | r | shape=wedge rider=crit cast=charged
+Flaming Shuriken | strike | c | shape=cluster kw=burn rider=recoil cast=quick cluster=x
+Dragon Fist | strike | u | shape=wedge kw=push rider=crit
+Rockslide | strike | u | shape=wave kw=stun
+Obsidian Spear | strike | c | shape=spear kw=self rider=pierce cast=quick
 Vampire's Kiss | strike | r | shape=line kw=drain
-Purifying Flame | strike | l | shape=all kw=burn
-Great Dragon's Roar | strike | l | shape=wedge kw=burn
-Oni King's Kanabo | strike | l | shape=line kw=self
+Purifying Flame | strike | l | shape=all kw=burn rider=onkill
+Great Dragon's Roar | strike | l | shape=shockwave kw=burn cast=charged
+Oni King's Kanabo | strike | l | shape=line kw=self rider=crit
 
-Dynamite Bundle | lob | c | pattern=single kw=push
-Black Powder Keg | lob | u | pattern=burst kw=push
+Dynamite Bundle | lob | c | pattern=single fuse=quick after=knock
+Black Powder Keg | lob | u | pattern=burst fuse=quick kw=push after=ground
 Grenado | lob | c | pattern=single kw=push
-Greek Fire Jar | lob | u | pattern=burst kw=burn
-Volcano Bomb | lob | r | pattern=ring kw=burn
-Lava Glob | lob | c | pattern=single kw=burn
-Magma Geyser | lob | u | pattern=column kw=burn
-Meteor Shard | lob | c | pattern=single kw=-
-Firework Shell | lob | u | pattern=cross kw=confuse
-Paper Lantern Bomb | lob | c | pattern=burst kw=confuse
-Dragon Egg | lob | r | pattern=burst kw=burn
-Goblin Bomb | lob | c | pattern=single kw=self
-Gremlin Grenade | lob | c | pattern=cross kw=-
-Mortar Round | lob | c | pattern=column kw=push
-Cannonball | lob | u | pattern=single kw=push
-Basalt Boulder | lob | c | pattern=single kw=stun
-Rockfall | lob | u | pattern=row kw=stun
-Phoenix Ash Bomb | lob | u | pattern=ring kw=mend
-Sake Firebomb | lob | c | pattern=burst kw=self
-Thunder-Egg Geode | lob | u | pattern=single kw=stun
-Cinder Cone | lob | r | pattern=ring kw=burn
-Pyroclastic Cloud | lob | r | pattern=row kw=burn
+Greek Fire Jar | lob | u | pattern=burst fuse=heavy kw=burn after=ground
+Volcano Bomb | lob | r | pattern=ring fuse=heavy kw=burn
+Lava Glob | lob | c | pattern=single fuse=quick kw=burn after=ground
+Magma Geyser | lob | u | pattern=column kw=burn after=knock
+Meteor Shard | lob | c | pattern=single fuse=heavy after=ground
+Firework Shell | lob | u | pattern=cross kw=confuse after=ground
+Paper Lantern Bomb | lob | c | pattern=burst fuse=heavy kw=confuse after=knock
+Dragon Egg | lob | r | pattern=burst fuse=quick kw=burn after=knock
+Goblin Bomb | lob | c | pattern=single fuse=heavy kw=self
+Gremlin Grenade | lob | c | pattern=cross fuse=quick
+Mortar Round | lob | c | pattern=column fuse=quick kw=push after=knock
+Cannonball | lob | u | pattern=single fuse=heavy kw=push after=knock
+Basalt Boulder | lob | c | pattern=single kw=stun after=knock
+Rockfall | lob | u | pattern=row fuse=quick kw=stun after=knock
+Phoenix Ash Bomb | lob | u | pattern=ring fuse=heavy kw=mend after=knock
+Sake Firebomb | lob | c | pattern=burst kw=self after=knock
+Thunder-Egg Geode | lob | u | pattern=single fuse=quick kw=stun
+Cinder Cone | lob | r | pattern=ring kw=burn after=ground
+Pyroclastic Cloud | lob | r | pattern=row fuse=quick kw=burn
 Eruption | lob | l | pattern=burst kw=burn
 
-Dwarven Shieldwall | ward | u | ward=wall
-Forge-Iron Plate | ward | c | ward=barrier
-Basalt Wall | ward | c | ward=wall
-Obsidian Bulwark | ward | u | ward=wall
-Wall of Fire | ward | c | ward=thorns
-Lava Moat | ward | u | ward=thorns
-Mountain Pass Gate | ward | r | ward=wall
-Samurai Armor | ward | u | ward=barrier
-Dragon Scale Shield | ward | r | ward=barrier
-Oni Mask | ward | c | ward=thorns
-Brimstone Rampart | ward | c | ward=wall
-Anvil Guard | ward | c | ward=barrier
-Great Wall Bricks | ward | r | ward=wall
-Molten Shell | ward | l | ward=thorns
+Dwarven Shieldwall | ward | u | form=shield len=short
+Forge-Iron Plate | ward | c | form=shield build=heavy wfx=burning len=short
+Basalt Wall | ward | c | form=arc len=long
+Obsidian Bulwark | ward | u | form=rampart
+Wall of Fire | ward | c | build=heavy wfx=thorns len=short form=line
+Lava Moat | ward | u | form=corridor build=light wfx=burning
+Mountain Pass Gate | ward | r | form=corridor build=heavy len=short
+Samurai Armor | ward | u | form=shield build=light len=long
+Dragon Scale Shield | ward | r | form=shield build=heavy
+Oni Mask | ward | c | wfx=thorns len=long form=line
+Brimstone Rampart | ward | c | form=rampart wfx=burning len=short
+Anvil Guard | ward | c | form=shield build=light wfx=thorns
+Great Wall Bricks | ward | r | form=rampart build=heavy len=long
+Molten Shell | ward | l | form=cage build=heavy wfx=thorns len=long
 
-Bonfire | sentry | c | kw=burn
-Forge Bellows | sentry | c | kw=-
-Lava Totem | sentry | c | kw=slow
-Shishi Guardian Statue | sentry | u | kw=push
-Fox Lantern | sentry | u | kw=confuse
-Dragon Kiln | sentry | r | kw=burn
-Smoking Chimney | sentry | c | kw=-
-Torch Post | sentry | c | kw=-
-Fire Lookout Tower | sentry | u | kw=-
-Goblin Flamethrower Post | sentry | u | kw=burn
-Phoenix Nest | sentry | r | kw=burn
+Bonfire | sentry | c | beh=chain tier=sturdy speed=quick kw=burn
+Forge Bellows | sentry | c | beh=snipe tier=sturdy speed=steady kw=push trait=explodes
+Lava Totem | sentry | c | beh=empower tier=sturdy speed=steady
+Shishi Guardian Statue | sentry | u | beh=guards tier=tough speed=slow kw=push trait=explodes
+Fox Lantern | sentry | u | beh=mends tier=tough speed=quick trait=bloodlust
+Dragon Kiln | sentry | r | beh=cone tier=sturdy speed=steady kw=burn trait=bloodlust
+Smoking Chimney | sentry | c | beh=chain tier=sturdy speed=steady kw=push trait=forged
+Torch Post | sentry | c | beh=bolt tier=sturdy speed=frantic kw=burn trait=explodes
+Fire Lookout Tower | sentry | u | beh=snipe tier=sturdy speed=steady trait=scorched
+Goblin Flamethrower Post | sentry | u | beh=lob tier=sturdy speed=slow kw=burn trait=bloodlust
+Phoenix Nest | sentry | r | beh=summoner tier=sturdy speed=steady kw=burn trait=scorched
 
-Battle Fury | boon | u | boon=pact
-Blood Oath of the Oni | boon | r | boon=pact
-Berserker's Rage | boon | c | boon=power
-Forge Heat | boon | c | boon=power
-Hot Coals Dash | boon | c | boon=haste
-Fox's Quickness | boon | c | boon=haste
-Dragon Heart | boon | r | boon=power
-Hearty Feast | boon | c | boon=heal
-Mulled Wine | boon | c | boon=regen
-Smith's Focus | boon | u | boon=gauge
-Molten Courage | boon | u | boon=courage
-Mountain Strength | boon | u | boon=power
-Kitsune Blessing | boon | u | boon=dodge
+Battle Fury | boon | u | boon=pact len=long side=scorch timing=echo
+Blood Oath of the Oni | boon | r | boon=pact len=long side=embers
+Berserker's Rage | boon | c | boon=power len=long side=scorch
+Forge Heat | boon | c | boon=power len=long timing=echo
+Hot Coals Dash | boon | c | boon=haste len=long
+Fox's Quickness | boon | c | boon=haste len=short timing=delayed
+Dragon Heart | boon | r | boon=power side=embers timing=delayed
+Hearty Feast | boon | c | boon=heal side=embers
+Mulled Wine | boon | c | boon=regen len=short timing=echo
+Smith's Focus | boon | u | boon=gauge timing=echo
+Molten Courage | boon | u | boon=courage len=long timing=delayed
+Mountain Strength | boon | u | boon=power side=scorch timing=echo
+Kitsune Blessing | boon | u | boon=dodge timing=delayed
 Phoenix Rebirth | boon | l | boon=intervene
-War Drums | boon | c | boon=haste
-Bull's Endurance | boon | u | boon=regen
-Dwarven Ale | boon | c | boon=heal
+War Drums | boon | c | boon=haste len=short side=embers timing=echo
+Bull's Endurance | boon | u | boon=regen len=short side=scorch timing=delayed
+Dwarven Ale | boon | c | boon=heal side=scorch timing=delayed
 
-Powder Horn | charge | c | fx=bolt kw=-
-Musket Cartridges | charge | c | fx=bolt kw=push
-Rocket Crate | charge | u | fx=lob kw=push
-Bandolier of Flares | charge | c | fx=bolt kw=confuse
-Ore Cart | charge | u | fx=lob kw=stun
-Coal Sack | charge | c | fx=lob kw=-
-Goblin Junk Sack | charge | c | fx=lob kw=-
-Rivet Pouch | charge | c | fx=bolt kw=-
-Dragon Tooth Quiver | charge | r | fx=bolt kw=-
-Firecracker String | charge | c | fx=bolt kw=push
-Lantern Oil Flask | charge | u | fx=bolt kw=burn
-Pistol Case | charge | u | fx=bolt kw=push
-Blasting Caps | charge | u | fx=lob kw=push
-Shishi Pearl | charge | r | fx=bolt kw=-
-Fox-Fire Jar | charge | u | fx=bolt kw=burn
-Wineskin of Flame | charge | c | fx=bolt kw=self
-Meteorite Fragments | charge | r | fx=lob kw=stun
-Bottomless Powder Keg | charge | l | fx=lob kw=push
+Powder Horn | charge | c | shot=bolt uses=few kw=push
+Musket Cartridges | charge | c | shot=bolt uses=many kw=push edge=crit
+Rocket Crate | charge | u | shot=lob kw=push edge=crit
+Bandolier of Flares | charge | c | shot=bolt uses=many kw=confuse edge=splash
+Ore Cart | charge | u | shot=lob uses=few kw=stun
+Coal Sack | charge | c | shot=lob uses=few edge=splash
+Goblin Junk Sack | charge | c | shot=lob
+Rivet Pouch | charge | c | shot=bolt edge=pierce
+Dragon Tooth Quiver | charge | r | shot=bolt uses=many
+Firecracker String | charge | c | shot=burst kw=push edge=pierce
+Lantern Oil Flask | charge | u | shot=bolt kw=burn
+Pistol Case | charge | u | shot=bolt kw=push edge=splash
+Blasting Caps | charge | u | shot=lob uses=few kw=push edge=pierce
+Shishi Pearl | charge | r | shot=bolt uses=few edge=crit
+Fox-Fire Jar | charge | u | shot=bolt uses=few kw=burn edge=pierce
+Wineskin of Flame | charge | c | shot=burst uses=few edge=pierce
+Meteorite Fragments | charge | r | shot=lob kw=stun edge=pierce
+Bottomless Powder Keg | charge | l | shot=lob uses=many kw=push
 
 Prospector's Map | utility | c | util=draw
 Miner's Lamp | utility | c | util=draw
@@ -150,29 +150,29 @@ Goblin Scavenge | utility | c | util=recall
 Ancestor's Tale | utility | r | util=draw
 Red Envelope | utility | c | util=draw
 
-Landmine | trap | u | trap=blast
+Landmine | trap | u | trap=blast len=short size=three
 Powder Tripwire | trap | c | trap=blast
-Iron Caltrops | trap | c | trap=spike
-Magma Pit | trap | u | trap=spike kw=burn
-Cave-In | trap | r | trap=blast kw=stun
-Goblin Snare | trap | c | trap=snare
-Fox Den Snare | trap | c | trap=snare
-Minotaur's Labyrinth | trap | r | trap=snare
-Ember Spike Pit | trap | c | trap=spike kw=burn
-Firework Mine | trap | u | trap=blast kw=push
+Iron Caltrops | trap | c | trap=spike len=long size=three
+Magma Pit | trap | u | trap=spike kw=burn size=three
+Cave-In | trap | r | trap=blast kw=stun size=three
+Goblin Snare | trap | c | trap=snare size=three
+Fox Den Snare | trap | c | trap=snare kw=burn len=short
+Minotaur's Labyrinth | trap | r | trap=snare len=long
+Ember Spike Pit | trap | c | trap=spike kw=push len=short size=three
+Firework Mine | trap | u | trap=blast kw=push len=short
 
-Lava Field | environment | c | env=burn
-Scorched Earth | environment | c | env=burn
-Volcanic Ash Fall | environment | u | env=burn
-Earthquake | environment | r | env=tremor
-Rumbling Mine | environment | c | env=tremor
-Fire Cyclone | environment | u | env=burn
-Ember Rain | environment | c | env=burn
-Sulfur Springs | environment | u | env=burn
-Forge Floor | environment | c | env=burn
-Rockslide Valley | environment | u | env=tremor
-Mountain's Wrath | environment | r | env=tremor
-Sea of Flames | environment | l | env=burn
+Lava Field | environment | c | env=burn pattern=cross len=long
+Scorched Earth | environment | c | env=burn pattern=row len=long kw=push
+Volcanic Ash Fall | environment | u | env=burn pattern=burst len=long kw=burn
+Earthquake | environment | r | env=tremor pattern=burst
+Rumbling Mine | environment | c | env=tremor pattern=burst len=long kw=push
+Fire Cyclone | environment | u | env=burn pattern=burst kw=push
+Ember Rain | environment | c | env=burn pattern=cross kw=burn
+Sulfur Springs | environment | u | env=burn pattern=row
+Forge Floor | environment | c | env=burn pattern=column len=short kw=burn
+Rockslide Valley | environment | u | env=tremor pattern=column len=short
+Mountain's Wrath | environment | r | env=tremor pattern=burst len=short kw=burn
+Sea of Flames | environment | l | env=burn pattern=burst len=short
 
 Crown of the Volcano King | piece | l | kw=burn
 Heart of the Phoenix | piece | l | kw=mend
@@ -180,195 +180,195 @@ Eye of the Dragon | piece | l | kw=burn
 Anvil of the First Forge | piece | l | kw=stun
 Tail of the Nine-Tailed Fox | piece | l | kw=push
 
-Red Dragon Whelp | summon | u | ai=shooter body=Dragon mod=Tiny
-Great Red Dragon | summon | l | ai=bomber body=Dragon mod=Dire
-Wyvern | summon | r | ai=bomber body=Wyvern
-Fire Drake | summon | u | ai=shooter body=Wyvern
-Griffin | summon | r | ai=guardian body=Griffin mod=Noble
-Phoenix | summon | l | ai=healer body=Phoenix
-Phoenix Chick | summon | c | ai=healer body=Phoenix mod=Tiny
-Kitsune | summon | r | ai=shooter body=Kitsune
-Nine-Tailed Kitsune | summon | l | ai=shooter body=Kitsune mod=Ancient
-Fire Fox | summon | c | ai=shooter body=Fox
-Coyote Trickster | summon | u | ai=shooter body=Wolf mod=Sly
-Ember Coyote | summon | c | ai=bomber body=Wolf
-Shishi Lion-Dog | summon | u | ai=guardian body=Shishi
-Oni Brute | summon | r | ai=guardian body=Oni
-Red Oni | summon | u | ai=bomber body=Oni mod=Grim
-Oni Warlord | summon | l | ai=guardian body=Oni mod=Dire
-Minotaur | summon | r | ai=guardian body=Minotaur
-Fire Bull | summon | c | ai=guardian body=Bull
-Goblin Sapper | summon | c | ai=bomber body=Goblin
-Goblin Gunner | summon | c | ai=shooter body=Goblin
-Goblin Chieftain | summon | u | ai=guardian body=Goblin mod=Grim
-Gremlin | summon | c | ai=bomber body=Gremlin
-Gremlin Tinkerer | summon | u | ai=healer body=Gremlin mod=Clever
-Duende | summon | u | ai=shooter body=Duende
-Salamander | summon | c | ai=shooter body=Salamander
-Lava Golem | summon | r | ai=guardian body=Golem mod=Stone
-Magma Elemental | summon | u | ai=bomber body=Spirit
-Dwarven Smith | summon | u | ai=healer body=Dwarf
-Dwarven Miner | summon | c | ai=guardian body=Dwarf
-Dwarven Musketeer | summon | c | ai=shooter body=Dwarf
-Dwarven Rocketeer | summon | u | ai=bomber body=Dwarf
-Mountain Hermit | summon | c | ai=healer body=Dwarf mod=Old
-Samurai | summon | r | ai=guardian body=Knight
-Ronin Archer | summon | u | ai=shooter body=Squire mod=Grim
-Mountain Monk | summon | u | ai=healer body=Squire mod=Gentle
-Tengu | summon | u | ai=shooter body=Tengu
-Lantern Ghost | summon | c | ai=bomber body=Spirit mod=Lucky
-Fire Vampire | summon | r | ai=shooter body=Vampire
-Cinder Bat Swarm | summon | c | ai=shooter body=Bat
-Cinder Hound | summon | c | ai=bomber body=Hound
-Mole Miner | summon | c | ai=guardian body=Mole
-Lava Beetle | summon | c | ai=guardian body=Beetle
-Imperial Lung Dragon | summon | l | ai=shooter body=Lung
-Firebird | summon | r | ai=healer body=Phoenix mod=Noble
-Ember Imp | summon | c | ai=bomber body=Imp
+Red Dragon Whelp | summon | u | body=Dragon mod=Tiny beh=cone tier=frail speed=quick
+Great Red Dragon | summon | l | body=Dragon mod=Dire beh=cone tier=sturdy speed=slow kw=burn trait=fury
+Wyvern | summon | r | body=Wyvern beh=beam tier=sturdy speed=slow trait=forged
+Fire Drake | summon | u | body=Wyvern beh=beam tier=sturdy speed=quick kw=burn trait=scorched
+Griffin | summon | r | body=Griffin mod=Noble beh=guards tier=tough speed=steady trait=explodes
+Phoenix | summon | l | body=Phoenix beh=cone tier=sturdy speed=slow trait=scorched
+Phoenix Chick | summon | c | body=Phoenix mod=Tiny beh=cone tier=sturdy speed=slow kw=push trait=bloodlust
+Kitsune | summon | r | body=Kitsune beh=pierce tier=sturdy speed=steady trait=fury
+Nine-Tailed Kitsune | summon | l | body=Kitsune mod=Ancient beh=bolt tier=sturdy speed=steady trait=bloodlust
+Fire Fox | summon | c | body=Fox beh=dash tier=tough speed=steady kw=burn trait=bloodlust
+Coyote Trickster | summon | u | body=Wolf mod=Sly beh=dash tier=sturdy speed=steady kw=push trait=bloodlust
+Ember Coyote | summon | c | body=Wolf beh=pounce tier=sturdy speed=slow kw=burn trait=explodes
+Shishi Lion-Dog | summon | u | body=Shishi beh=pounce tier=tough speed=steady kw=push trait=bloodlust
+Oni Brute | summon | r | body=Oni beh=pounce tier=tough speed=steady kw=burn trait=scorched
+Red Oni | summon | u | body=Oni mod=Grim beh=trample tier=tough speed=slow trait=forged
+Oni Warlord | summon | l | body=Oni mod=Dire beh=pounce tier=tough speed=steady trait=forged
+Minotaur | summon | r | body=Minotaur beh=trample tier=tough speed=steady trait=bloodlust
+Fire Bull | summon | c | body=Bull beh=trample tier=tough speed=steady kw=burn
+Goblin Sapper | summon | c | body=Goblin beh=blast tier=sturdy speed=slow trait=bloodlust
+Goblin Gunner | summon | c | body=Goblin beh=twin tier=sturdy speed=frantic kw=push
+Goblin Chieftain | summon | u | body=Goblin mod=Grim beh=taunt tier=tough speed=steady kw=push trait=forged
+Gremlin | summon | c | body=Gremlin beh=zigzag tier=frail speed=quick kw=push
+Gremlin Tinkerer | summon | u | body=Gremlin mod=Clever beh=zigzag tier=frail speed=quick kw=burn trait=explodes
+Duende | summon | u | body=Duende beh=pierce tier=sturdy speed=quick kw=burn trait=fury
+Salamander | summon | c | body=Salamander beh=beam tier=sturdy speed=steady trait=explodes
+Lava Golem | summon | r | body=Golem mod=Stone beh=guards tier=tough speed=slow kw=burn trait=scorched
+Magma Elemental | summon | u | body=Spirit beh=blast tier=sturdy speed=slow kw=push trait=scorched
+Dwarven Smith | summon | u | body=Dwarf beh=shields tier=sturdy speed=slow trait=explodes
+Dwarven Miner | summon | c | body=Dwarf beh=burrow tier=tough speed=steady trait=scorched
+Dwarven Musketeer | summon | c | body=Dwarf beh=pierce tier=sturdy speed=steady kw=push
+Dwarven Rocketeer | summon | u | body=Dwarf beh=cross tier=sturdy speed=slow kw=push trait=fury
+Mountain Hermit | summon | c | body=Dwarf mod=Old beh=shields tier=sturdy speed=quick
+Samurai | summon | r | body=Knight beh=taunt tier=tough speed=steady trait=fury
+Ronin Archer | summon | u | body=Squire mod=Grim beh=snipe tier=tough speed=steady
+Mountain Monk | summon | u | body=Squire mod=Gentle beh=mends tier=sturdy speed=slow kw=push trait=forged
+Tengu | summon | u | body=Tengu beh=twin tier=sturdy speed=steady kw=push trait=fury
+Lantern Ghost | summon | c | body=Spirit mod=Lucky beh=mends tier=sturdy speed=quick kw=push trait=fury
+Fire Vampire | summon | r | body=Vampire beh=bolt tier=sturdy speed=steady kw=push trait=scorched
+Cinder Bat Swarm | summon | c | body=Bat beh=barrage tier=frail speed=frantic kw=burn trait=scorched
+Cinder Hound | summon | c | body=Hound beh=dash tier=sturdy speed=slow kw=burn trait=forged
+Mole Miner | summon | c | body=Mole beh=burrow tier=tough speed=steady kw=burn trait=fury
+Lava Beetle | summon | c | body=Beetle beh=taunt tier=tough speed=slow kw=burn
+Imperial Lung Dragon | summon | l | body=Lung beh=beam tier=frail speed=quick kw=push trait=explodes
+Firebird | summon | r | body=Phoenix mod=Noble beh=mends tier=sturdy speed=slow kw=burn trait=scorched
+Ember Imp | summon | c | body=Imp beh=zigzag tier=frail speed=slow kw=burn trait=scorched
 
-Hand Cannon | machine | c | ai=turret mach=Cannon
-Fire Lance Turret | machine | c | ai=turret mach=Crossbow
-Goblin Gatling | machine | u | ai=repeater mach=Gatling
-Rocket Battery | machine | u | ai=mortar mach=Catapult
-Hwacha Rocket Cart | machine | r | ai=mortar mach=Engine
-Dwarven Siege Cannon | machine | r | ai=turret mach=Cannon
-Iron Barricade | machine | c | ai=bulwark mach=Barricade
-Mine Cart Barricade | machine | c | ai=bulwark mach=Palisade
-Gremlin Clockwork Drone | machine | c | ai=repeater mach=Drone
-Dragon-Mouth Cannon | machine | u | ai=turret mach=Cannon
-Volley Gun | machine | u | ai=repeater mach=Repeater
-Ember Trebuchet | machine | u | ai=mortar mach=Trebuchet
-Stone Bastion | machine | u | ai=bulwark mach=Bastion
-Firework Launcher | machine | c | ai=mortar mach=Catapult
-The Great Bombard | machine | l | ai=mortar mach=Cannon
+Hand Cannon | machine | c | mach=Cannon beh=bolt tier=sturdy speed=frantic
+Fire Lance Turret | machine | c | mach=Crossbow beh=pierce tier=sturdy speed=frantic kw=burn trait=scorched
+Goblin Gatling | machine | u | mach=Gatling beh=pierce tier=sturdy speed=steady kw=burn trait=explodes
+Rocket Battery | machine | u | mach=Catapult beh=zigzag tier=frail speed=quick trait=forged
+Hwacha Rocket Cart | machine | r | mach=Engine beh=lob tier=sturdy speed=slow trait=fury
+Dwarven Siege Cannon | machine | r | mach=Cannon beh=bolt tier=sturdy speed=steady kw=burn trait=forged
+Iron Barricade | machine | c | mach=Barricade beh=wardmaker tier=huge speed=slow kw=burn
+Mine Cart Barricade | machine | c | mach=Palisade beh=wardmaker tier=huge speed=slow kw=push trait=forged
+Gremlin Clockwork Drone | machine | c | mach=Drone beh=guards tier=tough speed=slow
+Dragon-Mouth Cannon | machine | u | mach=Cannon beh=twin tier=sturdy speed=steady kw=burn
+Volley Gun | machine | u | mach=Repeater beh=bolt tier=sturdy speed=slow kw=push
+Ember Trebuchet | machine | u | mach=Trebuchet beh=blast tier=sturdy speed=slow kw=burn
+Stone Bastion | machine | u | mach=Bastion beh=wardmaker tier=huge speed=slow trait=bloodlust
+Firework Launcher | machine | c | mach=Catapult beh=lob tier=huge speed=slow kw=burn trait=scorched
+The Great Bombard | machine | l | mach=Cannon beh=lob tier=sturdy speed=slow kw=push trait=explodes
 `,
 /* ---------------- Blue · Frost: water, ice and the great unknown ---------------- */
 frost:`
-Harpoon Throw | strike | c | shape=line kw=pull
-Whaler's Harpoon | strike | u | shape=line kw=pull
-Tidal Wave | strike | r | shape=row kw=push
-Breaking Surf | strike | c | shape=row kw=push
-Riptide | strike | u | shape=zigzag kw=pull
-Undertow | strike | c | shape=line kw=pull
-Maelstrom | strike | l | shape=all kw=pull
-Hurricane's Eye | strike | l | shape=all kw=push
-Typhoon Lash | strike | r | shape=wedge kw=push
-Narwhal Tusk | strike | c | shape=line kw=-
-Shark Bite | strike | c | shape=line kw=-
-Frenzy of Sharks | strike | u | shape=missiles kw=valor
-Cutlass Slash | strike | c | shape=wedge kw=-
-Boarding Axe | strike | c | shape=line kw=stun
-Grapeshot Volley | strike | u | shape=wedge kw=push
-Siren's Song | strike | u | shape=missiles kw=confuse
-Lorelei's Lure | strike | r | shape=line kw=pull
-Kelpie's Plunge | strike | u | shape=dig kw=pull
-Nixie's Whirlpool | strike | c | shape=zigzag kw=confuse
-Frostbite | strike | c | shape=line kw=freeze
-Blizzard Gale | strike | u | shape=all kw=slow
-Avalanche Rush | strike | r | shape=dig kw=stun
-Hailstone Barrage | strike | u | shape=missiles kw=stun
-Sleet Volley | strike | c | shape=missiles kw=slow
-Winter Wolf Fangs | strike | c | shape=line kw=slow
-Yeti's Swipe | strike | c | shape=wedge kw=stun
-Icebreaker Ram | strike | u | shape=dig kw=push
-Kappa's Sumo Shove | strike | c | shape=line kw=push
-Rusalka's Embrace | strike | r | shape=line kw=drain
-Umibozu's Grasp | strike | r | shape=wedge kw=pull
-Ningyo Scale Dart | strike | c | shape=diag kw=mend
-Ice Skate Slash | strike | c | shape=diag kw=-
-Glacier Calving | strike | u | shape=row kw=stun
-Waterspout | strike | u | shape=zigzag kw=push
-Leviathan's Wake | strike | l | shape=row kw=push
-World Serpent's Coil | strike | l | shape=all kw=stun
-Bunyip's Bellow | strike | u | shape=wedge kw=confuse
-Leister Spear | strike | c | shape=line kw=-
+Harpoon Throw | strike | c | shape=spear kw=pull rider=pierce
+Whaler's Harpoon | strike | u | shape=spear kw=pull cast=quick
+Tidal Wave | strike | r | shape=wave kw=push rider=crit
+Breaking Surf | strike | c | shape=row kw=push rider=crit cast=quick
+Riptide | strike | u | shape=wave kw=pull cast=charged
+Undertow | strike | c | shape=snipe kw=pull rider=crit
+Maelstrom | strike | l | shape=all kw=pull rider=recoil
+Hurricane's Eye | strike | l | shape=snipe kw=push
+Typhoon Lash | strike | r | shape=zigzag kw=push rider=crit cast=charged
+Narwhal Tusk | strike | c | shape=twin
+Shark Bite | strike | c | shape=wedge rider=crit
+Frenzy of Sharks | strike | u | shape=missiles kw=valor cast=quick
+Cutlass Slash | strike | c | shape=wedge cast=quick
+Boarding Axe | strike | c | shape=fan kw=stun rider=pierce
+Grapeshot Volley | strike | u | shape=line kw=push cast=quick
+Siren's Song | strike | u | shape=missiles kw=confuse rider=crit cast=quick
+Lorelei's Lure | strike | r | shape=zigzag kw=pull
+Kelpie's Plunge | strike | u | shape=line kw=pull rider=pierce cast=charged
+Nixie's Whirlpool | strike | c | shape=zigzag kw=confuse rider=pierce
+Frostbite | strike | c | shape=burst kw=freeze rider=crit
+Blizzard Gale | strike | u | shape=fan kw=slow rider=crit
+Avalanche Rush | strike | r | shape=line kw=stun rider=recoil cast=quick
+Hailstone Barrage | strike | u | shape=column kw=stun rider=crit
+Sleet Volley | strike | c | shape=gun kw=slow
+Winter Wolf Fangs | strike | c | shape=fan kw=slow cast=quick
+Yeti's Swipe | strike | c | shape=wedge kw=stun rider=recoil
+Icebreaker Ram | strike | u | shape=spear kw=push rider=recoil cast=charged
+Kappa's Sumo Shove | strike | c | shape=line kw=push rider=onkill cast=charged
+Rusalka's Embrace | strike | r | shape=line kw=drain rider=onkill
+Umibozu's Grasp | strike | r | shape=boomerang kw=pull rider=recoil cast=charged
+Ningyo Scale Dart | strike | c | shape=snipe kw=mend cast=quick
+Ice Skate Slash | strike | c | shape=burst rider=crit cast=charged
+Glacier Calving | strike | u | shape=row kw=stun cast=quick
+Waterspout | strike | u | shape=chain kw=push rider=recoil
+Leviathan's Wake | strike | l | shape=row kw=push cast=charged
+World Serpent's Coil | strike | l | shape=wave kw=stun
+Bunyip's Bellow | strike | u | shape=wedge kw=confuse cast=charged
+Leister Spear | strike | c | shape=spear rider=crit cast=quick
 
-Twelve-Pound Shot | lob | c | pattern=single kw=push
-Chain Shot | lob | c | pattern=single kw=slow
-Powder Monkey's Keg | lob | u | pattern=burst kw=push
-Depth Charge | lob | u | pattern=burst kw=stun
-Frozen Comet | lob | r | pattern=burst kw=freeze
-Ice Floe Drop | lob | c | pattern=single kw=freeze
-Geyser Burst | lob | u | pattern=column kw=push
-Rain of Fish | lob | c | pattern=burst kw=-
-Coconut Lob | lob | c | pattern=single kw=stun
-Ink Cloud | lob | c | pattern=burst kw=confuse
-Holy Water Flask | lob | u | pattern=burst kw=mend
-Spring Water Gourd | lob | c | pattern=single kw=mend
-Hailstone Cross | lob | u | pattern=cross kw=stun
-Whirlpool Ring | lob | r | pattern=ring kw=pull
-Falling Iceberg | lob | r | pattern=column kw=stun
-Message in a Bottle | lob | c | pattern=single kw=confuse
-Jellyfish Bloom | lob | u | pattern=burst kw=poison
-Pufferfish Toss | lob | c | pattern=single kw=poison
-Monsoon Downpour | lob | r | pattern=row kw=slow
-Rogue Wave | lob | l | pattern=row kw=push
+Twelve-Pound Shot | lob | c | pattern=single fuse=heavy kw=push after=knock
+Chain Shot | lob | c | pattern=single fuse=heavy kw=slow
+Powder Monkey's Keg | lob | u | pattern=burst fuse=heavy kw=push
+Depth Charge | lob | u | pattern=burst fuse=heavy kw=stun after=ground
+Frozen Comet | lob | r | pattern=burst fuse=heavy kw=freeze after=knock
+Ice Floe Drop | lob | c | pattern=single fuse=quick kw=freeze after=ground
+Geyser Burst | lob | u | pattern=column fuse=quick kw=push
+Rain of Fish | lob | c | pattern=burst after=knock
+Coconut Lob | lob | c | pattern=single kw=stun after=knock
+Ink Cloud | lob | c | pattern=burst kw=confuse after=ground
+Holy Water Flask | lob | u | pattern=burst fuse=quick kw=mend
+Spring Water Gourd | lob | c | pattern=single fuse=heavy kw=mend after=ground
+Hailstone Cross | lob | u | pattern=cross kw=stun after=ground
+Whirlpool Ring | lob | r | pattern=ring fuse=heavy kw=pull after=ground
+Falling Iceberg | lob | r | pattern=column fuse=quick kw=stun after=ground
+Message in a Bottle | lob | c | pattern=single fuse=quick kw=confuse after=knock
+Jellyfish Bloom | lob | u | pattern=burst fuse=quick kw=poison after=knock
+Pufferfish Toss | lob | c | pattern=single fuse=quick kw=poison
+Monsoon Downpour | lob | r | pattern=row kw=slow after=ground
+Rogue Wave | lob | l | pattern=row fuse=quick kw=push after=knock
 
-Sea Wall | ward | c | ward=wall
-Beaver Dam | ward | c | ward=wall
-Great Dam | ward | r | ward=wall
-Ice Palace Gate | ward | u | ward=wall
-Snow Fort | ward | c | ward=wall
-Igloo | ward | c | ward=barrier
-Coral Reef | ward | u | ward=thorns
-Sea Urchin Bed | ward | c | ward=thorns
-Bubble Shield | ward | c | ward=barrier
-Mirror of Still Water | ward | u | ward=barrier
-Kelp Curtain | ward | c | ward=barrier
-Pack Ice Bulwark | ward | u | ward=wall
-Walls of Ys | ward | l | ward=wall
-Dome of Atlantis | ward | r | ward=barrier
+Sea Wall | ward | c | form=cage
+Beaver Dam | ward | c | wfx=freezing form=line
+Great Dam | ward | r | form=corridor build=heavy wfx=freezing len=long
+Ice Palace Gate | ward | u | form=shield build=light wfx=freezing
+Snow Fort | ward | c | len=long form=line
+Igloo | ward | c | form=shield len=short
+Coral Reef | ward | u | form=rampart build=light wfx=thorns
+Sea Urchin Bed | ward | c | form=corridor wfx=thorns len=long
+Bubble Shield | ward | c | form=shield wfx=thorns
+Mirror of Still Water | ward | u | form=shield build=heavy
+Kelp Curtain | ward | c | form=shield build=light len=long
+Pack Ice Bulwark | ward | u | form=rampart wfx=freezing len=long
+Walls of Ys | ward | l | form=shield build=light wfx=thorns len=short
+Dome of Atlantis | ward | r | form=shield build=heavy wfx=freezing len=short
 
-Inuksuk Watcher | sentry | c | kw=-
-Lighthouse | sentry | u | kw=stun
-Ice Spike Totem | sentry | c | kw=freeze
-Narwhal Horn Totem | sentry | c | kw=-
-Figurehead Sentinel | sentry | u | kw=curse
-Coral Spire | sentry | c | kw=poison
-Siren Rock | sentry | r | kw=confuse
-Fountain of Youth | sentry | r | kw=mend
-Rime Giant Cairn | sentry | u | kw=slow
-Whale Bone Arch | sentry | c | kw=push
-Lantern of the Drowned | sentry | r | kw=drain
-Tide Pole | sentry | c | kw=pull
+Inuksuk Watcher | sentry | c | beh=snipe tier=sturdy speed=steady kw=freeze trait=submerge
+Lighthouse | sentry | u | beh=snipe tier=sturdy speed=steady trait=chilling
+Ice Spike Totem | sentry | c | beh=empower tier=sturdy speed=steady kw=freeze trait=chilling
+Narwhal Horn Totem | sentry | c | beh=empower tier=sturdy speed=steady kw=pull trait=tidal
+Figurehead Sentinel | sentry | u | beh=taunt tier=tough speed=quick trait=shatter
+Coral Spire | sentry | c | beh=chain tier=sturdy speed=quick kw=slow
+Siren Rock | sentry | r | beh=bolt tier=sturdy speed=steady kw=freeze trait=tidal
+Fountain of Youth | sentry | r | beh=snipe tier=sturdy speed=quick trait=shatter
+Rime Giant Cairn | sentry | u | beh=lob tier=huge speed=slow kw=slow trait=chilling
+Whale Bone Arch | sentry | c | beh=bolt tier=sturdy speed=quick kw=pull trait=tidal
+Lantern of the Drowned | sentry | r | beh=mends tier=sturdy speed=steady trait=submerge
+Tide Pole | sentry | c | beh=snipe tier=sturdy speed=steady kw=pull
 
-Sea Legs | boon | c | boon=dodge
-Fair Winds | boon | c | boon=haste
-Grog Ration | boon | c | boon=heal
-Hot Spring Soak | boon | c | boon=regen
-Sauna Steam | boon | c | boon=regen
-Cleansing Rain | boon | u | boon=heal
-Polar Bear Plunge | boon | u | boon=power
-Mead of the Longhall | boon | u | boon=courage
-Selkie Skin | boon | r | boon=phase
-Become the Tide | boon | u | boon=phase
-Sorcerer's Trance | boon | u | boon=gauge
-Sea Witch's Bargain | boon | r | boon=pact
+Sea Legs | boon | c | boon=dodge side=chill timing=echo
+Fair Winds | boon | c | boon=haste len=short
+Grog Ration | boon | c | boon=heal side=rime timing=echo
+Hot Spring Soak | boon | c | boon=regen timing=echo
+Sauna Steam | boon | c | boon=regen len=long side=rime timing=echo
+Cleansing Rain | boon | u | boon=heal side=chill timing=delayed
+Polar Bear Plunge | boon | u | boon=power len=short timing=delayed
+Mead of the Longhall | boon | u | boon=courage len=long
+Selkie Skin | boon | r | boon=phase len=long side=chill
+Become the Tide | boon | u | boon=phase len=long timing=delayed
+Sorcerer's Trance | boon | u | boon=gauge side=chill
+Sea Witch's Bargain | boon | r | boon=pact len=long side=rime
 Blood Price of the Deep | boon | r | boon=pact
-Northern Lights | boon | r | boon=gauge
-Lucky Doubloon | boon | c | boon=dodge
-Gift of the River Mother | boon | l | boon=intervene
+Northern Lights | boon | r | boon=gauge timing=delayed
+Lucky Doubloon | boon | c | boon=dodge side=rime timing=delayed
+Gift of the River Mother | boon | l | boon=intervene side=rime
 
-Pirate's Pistol | charge | c | fx=bolt kw=-
-Brace of Pistols | charge | u | fx=bolt kw=push
-Harpoon Quiver | charge | c | fx=bolt kw=pull
-Icicle Darts | charge | c | fx=bolt kw=freeze
-Snowball Stockpile | charge | c | fx=lob kw=slow
-Cannon Shot Crate | charge | u | fx=lob kw=push
-Grapeshot Bag | charge | c | fx=lob kw=-
-Blowfish Spines | charge | c | fx=bolt kw=poison
-Sea Urchin Quills | charge | c | fx=bolt kw=-
-Conch Shell Blasts | charge | u | fx=bolt kw=confuse
-Frozen Arrows | charge | c | fx=bolt kw=slow
-Hail Pouch | charge | c | fx=lob kw=stun
-Bottled Waves | charge | u | fx=lob kw=push
-Ice Javelins | charge | u | fx=bolt kw=-
-Rusalka's Tears | charge | r | fx=bolt kw=drain
-Ghost Ship Volley | charge | r | fx=lob kw=curse
-Sorcerer's Orbs | charge | u | fx=bolt kw=confuse
-Glass Fishing Floats | charge | c | fx=lob kw=-
-Holy Spring Droplets | charge | u | fx=bolt kw=mend
-Narwhal Ivory Darts | charge | c | fx=bolt kw=-
+Pirate's Pistol | charge | c | shot=bolt uses=few
+Brace of Pistols | charge | u | shot=bolt kw=push edge=pierce
+Harpoon Quiver | charge | c | shot=bolt uses=many kw=pull
+Icicle Darts | charge | c | shot=bolt uses=few kw=freeze edge=splash
+Snowball Stockpile | charge | c | shot=lob kw=slow edge=pierce
+Cannon Shot Crate | charge | u | shot=lob uses=many kw=push edge=crit
+Grapeshot Bag | charge | c | shot=lob uses=few edge=crit
+Blowfish Spines | charge | c | shot=bolt uses=few kw=poison edge=pierce
+Sea Urchin Quills | charge | c | shot=bolt uses=many edge=pierce
+Conch Shell Blasts | charge | u | shot=bolt kw=confuse
+Frozen Arrows | charge | c | shot=bolt uses=many kw=slow edge=splash
+Hail Pouch | charge | c | shot=lob uses=few kw=stun
+Bottled Waves | charge | u | shot=lob kw=push
+Ice Javelins | charge | u | shot=bolt edge=splash
+Rusalka's Tears | charge | r | shot=bolt kw=drain edge=crit
+Ghost Ship Volley | charge | r | shot=lob uses=many kw=curse
+Sorcerer's Orbs | charge | u | shot=bolt uses=few kw=confuse edge=crit
+Glass Fishing Floats | charge | c | shot=lob uses=many edge=splash
+Holy Spring Droplets | charge | u | shot=bolt uses=many kw=mend edge=crit
+Narwhal Ivory Darts | charge | c | shot=burst uses=few edge=splash
 
 Mirror Lake | utility | u | util=copy
 Treasure Map | utility | c | util=draw
@@ -381,30 +381,30 @@ Return to the Sea | utility | u | util=recall
 Water Mirror Twin | utility | r | util=copy
 Sorcerer's Grimoire | utility | l | util=draw
 
-Ice Hole | trap | c | trap=snare kw=freeze
-Thin Ice | trap | c | trap=snare kw=-
-Hidden Reef | trap | c | trap=spike kw=-
-Fishing Net | trap | c | trap=snare kw=slow
-Sunken Mine | trap | u | trap=blast kw=push
-Sea Mine | trap | u | trap=blast kw=stun
-Kelp Tangle | trap | c | trap=snare kw=slow
-Ice Spike Pit | trap | u | trap=spike kw=freeze
-Siren's Shoal | trap | r | trap=snare kw=confuse
-Davy Jones' Locker | trap | l | trap=blast kw=drain
+Ice Hole | trap | c | trap=snare kw=freeze len=short size=three
+Thin Ice | trap | c | trap=snare size=three
+Hidden Reef | trap | c | trap=spike len=long
+Fishing Net | trap | c | trap=snare kw=slow len=long
+Sunken Mine | trap | u | trap=blast kw=push len=long size=three
+Sea Mine | trap | u | trap=blast kw=stun len=long
+Kelp Tangle | trap | c | trap=snare len=short
+Ice Spike Pit | trap | u | trap=spike kw=freeze len=long size=three
+Siren's Shoal | trap | r | trap=snare kw=confuse len=long size=three
+Davy Jones' Locker | trap | l | trap=blast kw=drain len=short size=three
 
-Frozen Lake | environment | c | env=freeze pattern=burst
-Permafrost | environment | c | env=freeze pattern=row
-Black Ice | environment | u | env=freeze pattern=cross
-Snowfield | environment | c | env=freeze pattern=burst
-Tsunami Surge | environment | r | env=tremor pattern=row
-Rolling Breakers | environment | u | env=tremor pattern=row
-Flood Plain | environment | u | env=tremor pattern=column
-Iceberg Field | environment | u | env=freeze pattern=cross
+Frozen Lake | environment | c | env=freeze pattern=burst len=long kw=slow
+Permafrost | environment | c | env=freeze pattern=row kw=slow
+Black Ice | environment | u | env=freeze pattern=cross len=short
+Snowfield | environment | c | env=freeze pattern=burst len=short kw=freeze
+Tsunami Surge | environment | r | env=tremor pattern=row len=short
+Rolling Breakers | environment | u | env=tremor pattern=row kw=freeze
+Flood Plain | environment | u | env=tremor pattern=column len=long
+Iceberg Field | environment | u | env=freeze pattern=cross len=long kw=freeze
 Polar Night | environment | r | env=freeze pattern=burst
-Kelp Forest | environment | c | env=bramble pattern=burst
+Kelp Forest | environment | c | env=bramble pattern=burst len=short
 Mangrove Roots | environment | c | env=bramble pattern=column
-Sargasso Sea | environment | u | env=bramble pattern=cross
-Fimbulwinter | environment | l | env=freeze pattern=row
+Sargasso Sea | environment | u | env=bramble pattern=cross len=long
+Fimbulwinter | environment | l | env=freeze pattern=row len=long
 
 Crown of the Sea Dragon King | piece | l | kw=pull
 Pearl of the Tide Jewels | piece | l | kw=push
@@ -413,181 +413,181 @@ Heart of the Leviathan | piece | l | kw=valor
 Eye of the Frost Giant | piece | l | kw=freeze
 Bell of the Sunken City | piece | l | kw=confuse
 
-Merrow | summon | c | ai=shooter body=Merfolk
-Mermaid Singer | summon | u | ai=healer body=Merfolk mod=Gentle
-Merman Spearman | summon | c | ai=guardian body=Merfolk mod=Brave
-Merfolk Tidecaller | summon | u | ai=bomber body=Merfolk mod=Clever
-Ningyo | summon | u | ai=healer body=Fish mod=Pale
-Siren | summon | r | ai=shooter body=Merfolk mod=Sly
-Selkie | summon | u | ai=healer body=Seal
-Nixie | summon | c | ai=shooter body=Sprite mod=Pale
-Rusalka | summon | r | ai=shooter body=Spirit mod=Pale
-Kappa | summon | c | ai=guardian body=Kappa
-Umibozu | summon | r | ai=guardian body=Ogre mod=Ancient
-Yeti | summon | u | ai=guardian body=Yeti
-Yeti Cub | summon | c | ai=guardian body=Yeti mod=Tiny
-Yeti Matriarch | summon | r | ai=guardian body=Yeti mod=Dire
-Snowman | summon | c | ai=guardian body=Snowman
-Winter Wolf | summon | c | ai=shooter body=Wolf mod=Pale
-Frost Wolf Alpha | summon | u | ai=guardian body=Wolf mod=Dire
-Rockhopper Penguin | summon | c | ai=bomber body=Penguin mod=Scrappy
-Walrus | summon | u | ai=guardian body=Walrus
-Narwhal | summon | u | ai=shooter body=Narwhal
-Orca | summon | r | ai=bomber body=Orca
-Hammerhead Shark | summon | u | ai=shooter body=Shark
-Great White Shark | summon | r | ai=bomber body=Shark mod=Hungry
-Sea Turtle | summon | c | ai=healer body=Turtle mod=Gentle
-Zaratan the Island Turtle | summon | l | ai=guardian body=Turtle mod=Ancient
-King Crab | summon | u | ai=guardian body=Crab mod=Iron
-Giant Squid | summon | r | ai=bomber body=Kraken mod=Wild
-The Kraken | summon | l | ai=guardian body=Kraken mod=Dire
-Kraken Spawn | summon | c | ai=bomber body=Kraken mod=Tiny
-Leviathan | summon | l | ai=guardian body=Leviathan mod=Ancient
-Bunyip of the Billabong | summon | u | ai=guardian body=Seal mod=Feral
-Sea Serpent | summon | r | ai=shooter body=Serpent mod=Wild
-Dragon King of the Deep | summon | l | ai=bomber body=Lung mod=Noble
-River Lung | summon | u | ai=healer body=Lung mod=Gentle
-Frost Giant | summon | r | ai=guardian body=Ogre mod=Pale
-Pirate Deckhand | summon | c | ai=shooter body=Squire mod=Scrappy
-Buccaneer Captain | summon | r | ai=shooter body=Knight mod=Sly
-Powder Monkey | summon | c | ai=bomber body=Squire mod=Tiny
-Flying Dutchman's Captain | summon | l | ai=shooter body=Spirit mod=Grim
-Drowned Sailor | summon | c | ai=bomber body=Spirit mod=Pale
-Snow Maiden | summon | c | ai=healer body=Sprite mod=Gentle
-Yuki-onna | summon | r | ai=shooter body=Spirit mod=Pale
-Kayak Hunter | summon | c | ai=shooter body=Squire mod=Brave
-Polar Bear | summon | u | ai=guardian body=Bear mod=Pale
-River Mother's Herald | summon | u | ai=healer body=Merfolk mod=Noble
-Vodyanoy | summon | u | ai=bomber body=Toad mod=Old
-Ahuizotl | summon | u | ai=shooter body=Hound mod=Sly
-Taniwha | summon | r | ai=guardian body=Serpent mod=Ancient
+Merrow | summon | c | body=Merfolk beh=pierce tier=sturdy speed=quick kw=freeze
+Mermaid Singer | summon | u | body=Merfolk mod=Gentle beh=mends tier=sturdy speed=slow kw=pull trait=submerge
+Merman Spearman | summon | c | body=Merfolk mod=Brave beh=taunt tier=tough speed=steady kw=pull
+Merfolk Tidecaller | summon | u | body=Merfolk mod=Clever beh=blast tier=sturdy speed=slow trait=tidal
+Ningyo | summon | u | body=Fish mod=Pale beh=shields tier=sturdy speed=slow trait=pack
+Siren | summon | r | body=Merfolk mod=Sly beh=pierce tier=sturdy speed=steady trait=tidal
+Selkie | summon | u | body=Seal beh=mends tier=sturdy speed=slow kw=freeze trait=tidal
+Nixie | summon | c | body=Sprite mod=Pale beh=twin tier=sturdy speed=steady
+Rusalka | summon | r | body=Spirit mod=Pale beh=bolt tier=sturdy speed=steady kw=slow
+Kappa | summon | c | body=Kappa beh=guards tier=tough speed=steady kw=freeze
+Umibozu | summon | r | body=Ogre mod=Ancient beh=taunt tier=tough speed=steady kw=slow trait=pack
+Yeti | summon | u | body=Yeti beh=pounce tier=huge speed=slow trait=shatter
+Yeti Cub | summon | c | body=Yeti mod=Tiny beh=trample tier=huge speed=quick
+Yeti Matriarch | summon | r | body=Yeti mod=Dire beh=lob tier=huge speed=slow trait=tidal
+Snowman | summon | c | body=Snowman beh=taunt tier=tough speed=steady kw=freeze trait=shatter
+Winter Wolf | summon | c | body=Wolf mod=Pale beh=dash tier=sturdy speed=steady kw=freeze
+Frost Wolf Alpha | summon | u | body=Wolf mod=Dire beh=dash tier=tough speed=steady kw=freeze trait=pack
+Rockhopper Penguin | summon | c | body=Penguin mod=Scrappy beh=cross tier=sturdy speed=slow trait=shatter
+Walrus | summon | u | body=Walrus beh=guards tier=tough speed=steady kw=pull trait=tidal
+Narwhal | summon | u | body=Narwhal beh=pierce tier=sturdy speed=steady kw=pull trait=chilling
+Orca | summon | r | body=Orca beh=lob tier=sturdy speed=slow kw=pull trait=tidal
+Hammerhead Shark | summon | u | body=Shark beh=twin tier=sturdy speed=steady kw=slow trait=tidal
+Great White Shark | summon | r | body=Shark mod=Hungry beh=blast tier=sturdy speed=slow kw=pull
+Sea Turtle | summon | c | body=Turtle mod=Gentle beh=wardmaker tier=tough speed=slow kw=pull trait=tidal
+Zaratan the Island Turtle | summon | l | body=Turtle mod=Ancient beh=guards tier=tough speed=slow kw=freeze trait=pack
+King Crab | summon | u | body=Crab mod=Iron beh=taunt tier=tough speed=slow
+Giant Squid | summon | r | body=Kraken mod=Wild beh=trample tier=huge speed=slow kw=freeze
+The Kraken | summon | l | body=Kraken mod=Dire beh=trample tier=huge speed=slow kw=pull trait=tidal
+Kraken Spawn | summon | c | body=Kraken mod=Tiny beh=trample tier=huge speed=slow kw=slow trait=submerge
+Leviathan | summon | l | body=Leviathan mod=Ancient beh=trample tier=huge speed=slow trait=chilling
+Bunyip of the Billabong | summon | u | body=Seal mod=Feral beh=guards tier=tough speed=steady trait=submerge
+Sea Serpent | summon | r | body=Serpent mod=Wild beh=pounce tier=sturdy speed=slow kw=slow trait=tidal
+Dragon King of the Deep | summon | l | body=Lung mod=Noble beh=cone tier=sturdy speed=slow kw=freeze trait=submerge
+River Lung | summon | u | body=Lung mod=Gentle beh=shields tier=sturdy speed=slow kw=freeze trait=shatter
+Frost Giant | summon | r | body=Ogre mod=Pale beh=trample tier=huge speed=steady kw=freeze trait=chilling
+Pirate Deckhand | summon | c | body=Squire mod=Scrappy beh=zigzag tier=frail speed=quick kw=slow
+Buccaneer Captain | summon | r | body=Knight mod=Sly beh=pierce tier=sturdy speed=steady kw=freeze trait=shatter
+Powder Monkey | summon | c | body=Squire mod=Tiny beh=blast tier=sturdy speed=frantic
+Flying Dutchman's Captain | summon | l | body=Spirit mod=Grim beh=bolt tier=sturdy speed=steady trait=shatter
+Drowned Sailor | summon | c | body=Spirit mod=Pale beh=lob tier=sturdy speed=slow trait=submerge
+Snow Maiden | summon | c | body=Sprite mod=Gentle beh=mends tier=sturdy speed=slow trait=chilling
+Yuki-onna | summon | r | body=Spirit mod=Pale beh=twin tier=sturdy speed=steady kw=pull trait=submerge
+Kayak Hunter | summon | c | body=Squire mod=Brave beh=snipe tier=sturdy speed=frantic trait=pack
+Polar Bear | summon | u | body=Bear mod=Pale beh=pounce tier=tough speed=steady
+River Mother's Herald | summon | u | body=Merfolk mod=Noble beh=empower tier=frail speed=quick
+Vodyanoy | summon | u | body=Toad mod=Old beh=cross tier=sturdy speed=slow kw=freeze trait=pack
+Ahuizotl | summon | u | body=Hound mod=Sly beh=bolt tier=sturdy speed=steady kw=pull trait=pack
+Taniwha | summon | r | body=Serpent mod=Ancient beh=guards tier=tough speed=steady kw=slow trait=shatter
 
-Ship's Cannon | machine | u | ai=turret mach=Cannon
-Broadside Battery | machine | r | ai=repeater mach=Cannon
-Harpoon Ballista | machine | u | ai=turret mach=Ballista
-Harpoon Launcher | machine | c | ai=turret mach=Crossbow
-Ice Catapult | machine | c | ai=mortar mach=Catapult
-Mortar Ketch | machine | u | ai=mortar mach=Cannon
-Sluice Gate Bulwark | machine | u | ai=bulwark mach=Bulwark
-Icebreaker Engine | machine | r | ai=bulwark mach=Engine
-Waterwheel Repeater | machine | c | ai=repeater mach=Repeater
-Diving Bell Automaton | machine | r | ai=turret mach=Automaton
+Ship's Cannon | machine | u | mach=Cannon beh=bolt tier=sturdy speed=slow
+Broadside Battery | machine | r | mach=Cannon beh=zigzag tier=frail speed=quick kw=freeze trait=pack
+Harpoon Ballista | machine | u | mach=Ballista beh=snipe tier=sturdy speed=steady kw=slow trait=pack
+Harpoon Launcher | machine | c | mach=Crossbow beh=beam tier=sturdy speed=steady kw=slow trait=shatter
+Ice Catapult | machine | c | mach=Catapult beh=blast tier=sturdy speed=slow kw=freeze trait=chilling
+Mortar Ketch | machine | u | mach=Cannon beh=lob tier=sturdy speed=slow kw=slow
+Sluice Gate Bulwark | machine | u | mach=Bulwark beh=wardmaker tier=huge speed=slow kw=freeze trait=chilling
+Icebreaker Engine | machine | r | mach=Engine beh=wardmaker tier=tough speed=steady kw=freeze trait=chilling
+Waterwheel Repeater | machine | c | mach=Repeater beh=barrage tier=frail speed=frantic kw=slow trait=submerge
+Diving Bell Automaton | machine | r | mach=Automaton beh=guards tier=tough speed=slow kw=slow trait=submerge
 `,
 
 /* ---------------- Yellow · Storm: lightning, sand, invention and greed ---------------- */
 storm:`
-Lightning Lash | strike | c | shape=line kw=stun
-Forked Bolt | strike | c | shape=zigzag kw=stun
-Thunderclap | strike | u | shape=wedge kw=push
-Static Discharge | strike | c | shape=missiles kw=-
-Sky-Splitter | strike | r | shape=line kw=stun
-Leyden Jar Shock | strike | c | shape=line kw=stun
+Lightning Lash | strike | c | shape=zigzag kw=stun rider=crit cast=charged
+Forked Bolt | strike | c | shape=snipe kw=stun rider=recoil cast=charged
+Thunderclap | strike | u | shape=shockwave kw=push rider=recoil cast=quick
+Static Discharge | strike | c | shape=boomerang rider=recoil
+Sky-Splitter | strike | r | shape=line kw=stun rider=pierce cast=quick
+Leyden Jar Shock | strike | c | shape=shockwave kw=stun cast=quick
 Voltaic Arc | strike | u | shape=zigzag kw=stun
-Tesla Arc | strike | r | shape=all kw=stun
+Tesla Arc | strike | r | shape=chain kw=stun rider=onkill cast=charged
 Scorpion Sting | strike | c | shape=line kw=poison
-Manticore Tail Spikes | strike | u | shape=missiles kw=poison
-Cobra Spit | strike | c | shape=line kw=poison
-Sandblast | strike | c | shape=wedge kw=slow
-Dune Lash | strike | c | shape=row kw=slow
-Sirocco Gust | strike | u | shape=row kw=push
-Haboob Wall | strike | r | shape=all kw=slow
-Scimitar Sweep | strike | c | shape=wedge kw=-
-Bedouin Lance | strike | c | shape=line kw=-
-Camel Kick | strike | c | shape=line kw=push
-Ifrit's Flame | strike | u | shape=wedge kw=burn
-Sun Disk Ray | strike | u | shape=line kw=burn
-Noon Sun Glare | strike | c | shape=diag kw=burn
-Mirage Dagger | strike | u | shape=diag kw=confuse
-Djinn's Whirlwind | strike | r | shape=all kw=confuse
-Coin Toss | strike | c | shape=missiles kw=-
-Golden Touch | strike | r | shape=line kw=drain
-Bronze Fist | strike | c | shape=dig kw=push
-Talos's Boulder | strike | r | shape=dig kw=push
-Serpent Whip | strike | c | shape=line kw=pull
-Lodestone Pull | strike | u | shape=row kw=pull
-Raiju's Pounce | strike | u | shape=dig kw=stun
-Plumed Serpent Gale | strike | r | shape=missiles kw=push
-Perun's Oak-Splitter | strike | l | shape=line kw=stun
-Midas's Last Embrace | strike | l | shape=line kw=drain
-Heaven-Rending Bolt | strike | l | shape=all kw=stun
+Manticore Tail Spikes | strike | u | shape=spear kw=poison rider=pierce
+Cobra Spit | strike | c | shape=snipe kw=poison rider=crit
+Sandblast | strike | c | shape=burst kw=slow cast=quick
+Dune Lash | strike | c | shape=zigzag kw=slow rider=pierce cast=quick
+Sirocco Gust | strike | u | shape=fan kw=push cast=quick
+Haboob Wall | strike | r | shape=all kw=slow cast=charged
+Scimitar Sweep | strike | c | shape=fan rider=pierce
+Bedouin Lance | strike | c | shape=spear rider=pierce cast=quick
+Camel Kick | strike | c | shape=twin kw=push cast=charged
+Ifrit's Flame | strike | u | shape=wedge kw=burn cast=charged
+Sun Disk Ray | strike | u | shape=row kw=burn
+Noon Sun Glare | strike | c | shape=diag kw=burn rider=pierce
+Mirage Dagger | strike | u | shape=diag kw=confuse cast=charged
+Djinn's Whirlwind | strike | r | shape=all kw=confuse rider=onkill
+Coin Toss | strike | c | shape=missiles cast=charged
+Golden Touch | strike | r | shape=spear kw=drain
+Bronze Fist | strike | c | shape=wedge kw=push rider=crit
+Talos's Boulder | strike | r | shape=dig kw=push rider=onkill cast=quick
+Serpent Whip | strike | c | shape=boomerang kw=pull cast=quick
+Lodestone Pull | strike | u | shape=row kw=pull rider=onkill
+Raiju's Pounce | strike | u | shape=dig kw=stun rider=onkill
+Plumed Serpent Gale | strike | r | shape=fan kw=push rider=onkill cast=charged
+Perun's Oak-Splitter | strike | l | shape=line kw=stun rider=recoil
+Midas's Last Embrace | strike | l | shape=line kw=drain rider=onkill cast=quick
+Heaven-Rending Bolt | strike | l | shape=spear kw=stun rider=crit
 
-Lightning in a Bottle | lob | u | pattern=burst kw=stun
-Alembic Flask | lob | c | pattern=single kw=poison
-Quicklime Pot | lob | c | pattern=burst kw=burn
-Naphtha Jar | lob | c | pattern=single kw=burn
-Sulfur Bomb | lob | u | pattern=burst kw=poison
-Thunder Gourd | lob | c | pattern=single kw=stun
-Sand Urn | lob | c | pattern=burst kw=slow
-Sack of Coins | lob | c | pattern=single kw=push
-Golden Hail | lob | u | pattern=row kw=-
-Mercury Flask | lob | u | pattern=cross kw=poison
-Scarab Swarm Jar | lob | u | pattern=ring kw=poison
-Roc's Egg | lob | r | pattern=single kw=push
-Saltpeter Charge | lob | c | pattern=column kw=push
-Storm Cloud Seed | lob | u | pattern=cross kw=stun
-Hail of Dinars | lob | r | pattern=ring kw=drain
-Great Work Detonation | lob | l | pattern=burst kw=burn
+Lightning in a Bottle | lob | u | pattern=burst fuse=quick kw=stun after=knock
+Alembic Flask | lob | c | pattern=single fuse=quick kw=poison
+Quicklime Pot | lob | c | pattern=burst fuse=quick kw=burn after=ground
+Naphtha Jar | lob | c | pattern=single fuse=quick kw=burn after=knock
+Sulfur Bomb | lob | u | pattern=burst fuse=heavy kw=poison
+Thunder Gourd | lob | c | pattern=single fuse=quick kw=stun after=ground
+Sand Urn | lob | c | pattern=burst fuse=quick kw=slow
+Sack of Coins | lob | c | pattern=single fuse=heavy kw=push
+Golden Hail | lob | u | pattern=row after=ground
+Mercury Flask | lob | u | pattern=cross fuse=quick kw=poison after=knock
+Scarab Swarm Jar | lob | u | pattern=ring fuse=quick kw=poison after=ground
+Roc's Egg | lob | r | pattern=single kw=push after=knock
+Saltpeter Charge | lob | c | pattern=column fuse=heavy kw=push after=knock
+Storm Cloud Seed | lob | u | pattern=cross kw=stun after=knock
+Hail of Dinars | lob | r | pattern=ring kw=drain after=ground
+Great Work Detonation | lob | l | pattern=burst fuse=heavy kw=burn after=knock
 
-Copper Lattice | ward | c | ward=barrier
-Bronze Aegis | ward | u | ward=barrier
-Sandbag Wall | ward | c | ward=wall
-Mudbrick Wall | ward | c | ward=wall
-Kasbah Gate | ward | r | ward=wall
-Cactus Hedge | ward | c | ward=thorns
-Scorpion Pit Ring | ward | u | ward=thorns
-Faraday Cage | ward | u | ward=barrier
-Charged Fence | ward | c | ward=thorns
-Caravan Circle | ward | c | ward=wall
-Djinn's Veil | ward | u | ward=barrier
-Lightning Rod Array | ward | r | ward=thorns
-Walls of the City of Brass | ward | l | ward=wall
+Copper Lattice | ward | c | form=shield wfx=shocking
+Bronze Aegis | ward | u | form=shield build=light len=short
+Sandbag Wall | ward | c | form=cage
+Mudbrick Wall | ward | c | form=corridor build=light wfx=shocking len=short
+Kasbah Gate | ward | r | form=rampart build=light
+Cactus Hedge | ward | c | form=cage build=heavy wfx=thorns len=short
+Scorpion Pit Ring | ward | u | form=arc build=heavy wfx=thorns
+Faraday Cage | ward | u | form=cage build=heavy len=long
+Charged Fence | ward | c | form=shield build=light wfx=thorns
+Caravan Circle | ward | c | form=arc build=light len=long
+Djinn's Veil | ward | u | form=shield build=heavy
+Lightning Rod Array | ward | r | form=shield wfx=thorns len=short
+Walls of the City of Brass | ward | l | len=short form=line
 
-Lightning Rod | sentry | c | kw=stun
-Tesla Coil | sentry | u | kw=stun
-Sun Obelisk | sentry | c | kw=burn
-Scarab Totem | sentry | c | kw=poison
-Brazen Head | sentry | r | kw=confuse
-Foo Dog Statue | sentry | u | kw=push
-Snake Charmer's Basket | sentry | c | kw=poison
-Oil Lamp Brazier | sentry | c | kw=burn
-Storm Kite | sentry | u | kw=stun
-Sandstone Idol | sentry | c | kw=slow
-Thunder Drum | sentry | c | kw=push
-Burning Mirror | sentry | r | kw=burn
+Lightning Rod | sentry | c | beh=beam tier=sturdy speed=steady kw=confuse trait=overcharge
+Tesla Coil | sentry | u | beh=chain tier=sturdy speed=steady kw=stun trait=sandstorm
+Sun Obelisk | sentry | c | beh=bolt tier=sturdy speed=steady trait=sandstorm
+Scarab Totem | sentry | c | beh=empower tier=sturdy speed=steady kw=push
+Brazen Head | sentry | r | beh=snipe tier=sturdy speed=steady kw=confuse trait=greedy
+Foo Dog Statue | sentry | u | beh=bolt tier=tough speed=slow kw=push trait=overcharge
+Snake Charmer's Basket | sentry | c | beh=zigzag tier=sturdy speed=steady trait=overcharge
+Oil Lamp Brazier | sentry | c | beh=snipe tier=sturdy speed=steady kw=push trait=overcharge
+Storm Kite | sentry | u | beh=beam tier=sturdy speed=steady kw=stun trait=static
+Sandstone Idol | sentry | c | beh=empower tier=sturdy speed=steady trait=greedy
+Thunder Drum | sentry | c | beh=chain tier=sturdy speed=steady kw=push trait=greedy
+Burning Mirror | sentry | r | beh=bolt tier=sturdy speed=steady kw=confuse trait=static
 
-Overcharge | boon | c | boon=power
-Galvanic Surge | boon | u | boon=power
-Djinn's Bargain | boon | r | boon=pact
-Wish of the Lamp | boon | l | boon=intervene
-Desert Mirage | boon | u | boon=dodge
-Sand Step | boon | c | boon=haste
+Overcharge | boon | c | boon=power timing=echo
+Galvanic Surge | boon | u | boon=power len=short side=jolt timing=echo
+Djinn's Bargain | boon | r | boon=pact len=short side=spark
+Wish of the Lamp | boon | l | boon=intervene side=spark timing=echo
+Desert Mirage | boon | u | boon=dodge side=spark
+Sand Step | boon | c | boon=haste len=long
 Camel's Endurance | boon | c | boon=regen
-Date Palm Oasis | boon | c | boon=heal
-Mint Tea | boon | c | boon=heal
-Hoard Fever | boon | u | boon=courage
-Merchant's Luck | boon | c | boon=gauge
-Aurum Potabile | boon | r | boon=regen
-Lightning Step | boon | u | boon=phase
-Horus's Watch | boon | r | boon=dodge
+Date Palm Oasis | boon | c | boon=heal side=jolt timing=echo
+Mint Tea | boon | c | boon=heal side=spark timing=delayed
+Hoard Fever | boon | u | boon=courage len=short
+Merchant's Luck | boon | c | boon=gauge timing=delayed
+Aurum Potabile | boon | r | boon=regen len=short side=jolt
+Lightning Step | boon | u | boon=phase side=jolt
+Horus's Watch | boon | r | boon=dodge side=jolt timing=delayed
 
-Leyden Jar Battery | charge | c | fx=bolt kw=stun
-Baghdad Battery | charge | u | fx=bolt kw=stun
-Copper Coil Spool | charge | c | fx=bolt kw=-
-Bag of Dirhams | charge | c | fx=lob kw=push
-Quiver of Sand Darts | charge | c | fx=bolt kw=slow
-Venom Vials | charge | c | fx=bolt kw=poison
-Scorpion Jar | charge | u | fx=lob kw=poison
-Naphtha Grenades | charge | u | fx=lob kw=burn
-Sling of Thunderstones | charge | c | fx=lob kw=stun
-Alchemist's Bandolier | charge | u | fx=lob kw=poison
-Sun-Glass Lenses | charge | c | fx=bolt kw=burn
-Magnet Shot | charge | c | fx=bolt kw=pull
-Thunderbolt Sheaf | charge | r | fx=bolt kw=stun
-Golden Arrow Quiver | charge | u | fx=bolt kw=-
-Bottled Sirocco | charge | u | fx=bolt kw=push
-Ifrit Embers | charge | r | fx=lob kw=burn
-Canopic Jars | charge | r | fx=lob kw=curse
-Forty Thieves' Hoard | charge | l | fx=lob kw=drain
+Leyden Jar Battery | charge | c | shot=bolt uses=few kw=stun edge=splash
+Baghdad Battery | charge | u | shot=bolt kw=stun
+Copper Coil Spool | charge | c | shot=bolt edge=pierce
+Bag of Dirhams | charge | c | shot=lob uses=few kw=push edge=crit
+Quiver of Sand Darts | charge | c | shot=bolt uses=many kw=slow
+Venom Vials | charge | c | shot=bolt kw=poison edge=crit
+Scorpion Jar | charge | u | shot=lob kw=poison edge=pierce
+Naphtha Grenades | charge | u | shot=lob uses=few kw=burn
+Sling of Thunderstones | charge | c | shot=lob uses=few kw=stun edge=pierce
+Alchemist's Bandolier | charge | u | shot=lob uses=many kw=poison edge=crit
+Sun-Glass Lenses | charge | c | shot=bolt uses=few kw=burn edge=crit
+Magnet Shot | charge | c | shot=bolt uses=few kw=pull
+Thunderbolt Sheaf | charge | r | shot=bolt uses=many kw=stun edge=pierce
+Golden Arrow Quiver | charge | u | shot=bolt uses=many edge=splash
+Bottled Sirocco | charge | u | shot=bolt kw=push edge=splash
+Ifrit Embers | charge | r | shot=lob kw=burn edge=splash
+Canopic Jars | charge | r | shot=lob kw=curse
+Forty Thieves' Hoard | charge | l | shot=lob uses=many kw=drain
 
 Astrolabe | utility | c | util=draw
 Bazaar Haggle | utility | c | util=draw
@@ -599,31 +599,31 @@ Open Sesame | utility | r | util=recall
 Moneylender's Loan | utility | u | util=recall
 Inventor's Codex | utility | r | util=draw
 
-Pit of Gold Coins | trap | u | trap=snare kw=drain
-Quicksand | trap | c | trap=snare kw=slow
+Pit of Gold Coins | trap | u | trap=snare kw=drain len=short
+Quicksand | trap | c | trap=snare kw=slow size=three
 Tripwire Spark | trap | c | trap=blast kw=stun
-Scorpion Nest | trap | c | trap=spike kw=poison
-Pressure Plate Darts | trap | c | trap=spike kw=poison
-Tomb Boulder | trap | u | trap=blast kw=push
-Antlion Pit | trap | u | trap=snare kw=pull
-Shocking Floor Tiles | trap | c | trap=spike kw=stun
-Djinn Bottle | trap | r | trap=snare kw=confuse
-Collapsing Tomb Floor | trap | u | trap=blast kw=slow
-Electrified Gold Idol | trap | r | trap=blast kw=stun
-Cobra Basket Trap | trap | c | trap=spike kw=poison
-Mirage Oasis | trap | u | trap=snare kw=confuse
-Pharaoh's Curse Seal | trap | r | trap=blast kw=curse
+Scorpion Nest | trap | c | trap=spike kw=poison size=three
+Pressure Plate Darts | trap | c | trap=spike kw=poison len=short
+Tomb Boulder | trap | u | trap=blast kw=push size=three
+Antlion Pit | trap | u | trap=snare kw=pull len=long size=three
+Shocking Floor Tiles | trap | c | trap=spike kw=stun len=short size=three
+Djinn Bottle | trap | r | trap=snare kw=confuse len=long
+Collapsing Tomb Floor | trap | u | trap=blast kw=slow len=short size=three
+Electrified Gold Idol | trap | r | trap=blast kw=stun len=long size=three
+Cobra Basket Trap | trap | c | trap=spike kw=confuse
+Mirage Oasis | trap | u | trap=snare
+Pharaoh's Curse Seal | trap | r | trap=blast kw=curse len=long
 
-Scorching Sun | environment | c | env=burn pattern=row
-Salt Flats | environment | c | env=burn pattern=burst
-Sahara Noon | environment | u | env=burn
+Scorching Sun | environment | c | env=burn pattern=row len=short
+Salt Flats | environment | c | env=burn pattern=burst len=short kw=confuse
+Sahara Noon | environment | u | env=burn pattern=burst len=long
 Sandworm Burrows | environment | r | env=tremor pattern=column
-Thunder Rumble | environment | c | env=tremor pattern=burst
-Dune Shift | environment | c | env=tremor pattern=row
+Thunder Rumble | environment | c | env=tremor pattern=burst kw=confuse
+Dune Shift | environment | c | env=tremor pattern=row kw=push
 Lightning Field | environment | u | env=burn pattern=cross
-Sun-Baked Wadi | environment | c | env=burn pattern=column
-Storm Front | environment | u | env=tremor pattern=row
-Great Sand Sea | environment | l | env=tremor
+Sun-Baked Wadi | environment | c | env=burn pattern=column kw=confuse
+Storm Front | environment | u | env=tremor pattern=row len=long
+Great Sand Sea | environment | l | env=tremor pattern=burst len=short
 
 Lamp of the Bound Djinn | piece | l | kw=confuse
 Crown of the Brass City | piece | l | kw=drain
@@ -631,196 +631,196 @@ Scale of the World Fish | piece | l | kw=push
 Tail of the Manticore | piece | l | kw=poison
 Heart of the Bronze Giant | piece | l | kw=stun
 
-Thunder Raiju | summon | r | ai=shooter body=Raiju
-Lamp Djinn | summon | r | ai=shooter body=Djinn
-Ifrit | summon | r | ai=bomber body=Djinn mod=Dire
-Ifrit Sultan | summon | l | ai=bomber body=Djinn mod=Ancient
-Si'lat Shapeshifter | summon | u | ai=shooter body=Djinn mod=Sly
-Dybbuk | summon | u | ai=bomber body=Spirit mod=Grim
-Sand Scarab | summon | c | ai=guardian body=Scarab
-Golden Scarab | summon | u | ai=healer body=Scarab mod=Lucky
-Khepri's Dawn Beetle | summon | r | ai=healer body=Scarab mod=Noble
-Desert Camel | summon | c | ai=guardian body=Camel
-War Camel | summon | u | ai=guardian body=Camel mod=Brave
-Manticore | summon | r | ai=shooter body=Manticore
-Chimera | summon | r | ai=bomber body=Chimera
-Emperor Scorpion | summon | u | ai=guardian body=Scorpion
-Sand Scorpion | summon | c | ai=shooter body=Scorpion
-Girtablilu Gatewarden | summon | r | ai=guardian body=Scorpion mod=Noble
-Jackal Tomb Guard | summon | u | ai=guardian body=Jackal
-Nile Crocodile | summon | c | ai=guardian body=Crocodile
-Great River Crocodile | summon | r | ai=guardian body=Crocodile mod=Dire
-Roc | summon | r | ai=bomber body=Roc
-Simurgh | summon | l | ai=healer body=Simurgh
-Great Sphinx | summon | l | ai=guardian body=Sphinx mod=Ancient
-Riddling Sphinx | summon | r | ai=healer body=Sphinx mod=Clever
-Bronze Automaton | summon | u | ai=guardian body=Automaton
-Talos the Bronze Giant | summon | l | ai=guardian body=Automaton mod=Dire
-Clockwork Falcon | summon | u | ai=shooter body=Hawk mod=Iron
-Horus the Far-Seeing | summon | l | ai=shooter body=Hawk mod=Noble
-Ibis Scribe | summon | c | ai=healer body=Hawk mod=Gentle
-Frilled Lizard | summon | c | ai=shooter body=Lizard
-Horned Viper | summon | c | ai=shooter body=Serpent
-Uraeus Cobra | summon | u | ai=shooter body=Serpent mod=Noble
-Plumed Serpent | summon | r | ai=bomber body=Serpent mod=Wild
-Chupacabra | summon | u | ai=bomber body=Chupacabra
-Foo Dog Sentinel | summon | u | ai=guardian body=Shishi mod=Loyal
-Brass Foo Pup | summon | c | ai=guardian body=Shishi mod=Tiny
-Bahamut | summon | l | ai=guardian body=Bahamut
-Falak the Abyss Serpent | summon | l | ai=bomber body=Sandworm mod=Ancient
-Sandworm | summon | r | ai=bomber body=Sandworm
-Linen-Wrapped Sentinel | summon | u | ai=guardian body=Knight mod=Pale
-Sand Golem | summon | c | ai=guardian body=Golem
-Wandering Alchemist | summon | u | ai=healer body=Squire mod=Clever
-Bedouin Raider | summon | c | ai=shooter body=Squire mod=Swift
-Parthian Horse Archer | summon | u | ai=shooter body=Squire mod=Brave
-Bazaar Pickpocket | summon | c | ai=bomber body=Goblin mod=Sly
-Mamluk Lancer | summon | u | ai=guardian body=Knight
-Persian Immortal | summon | r | ai=guardian body=Knight mod=Noble
-Storm Imp | summon | c | ai=shooter body=Imp
-Spark Sprite | summon | c | ai=shooter body=Sprite
-Thunder Hawk | summon | c | ai=shooter body=Hawk
-Coin-Hoard Dragon | summon | r | ai=guardian body=Dragon mod=Hungry
+Thunder Raiju | summon | r | body=Raiju beh=beam tier=sturdy speed=steady trait=swift
+Lamp Djinn | summon | r | body=Djinn beh=blast tier=sturdy speed=steady kw=stun trait=overcharge
+Ifrit | summon | r | body=Djinn mod=Dire beh=lob tier=sturdy speed=slow kw=stun trait=greedy
+Ifrit Sultan | summon | l | body=Djinn mod=Ancient beh=lob tier=sturdy speed=slow trait=static
+Si'lat Shapeshifter | summon | u | body=Djinn mod=Sly beh=pounce tier=tough speed=steady kw=stun
+Dybbuk | summon | u | body=Spirit mod=Grim beh=cross tier=sturdy speed=slow trait=sandstorm
+Sand Scarab | summon | c | body=Scarab beh=taunt tier=tough speed=frantic
+Golden Scarab | summon | u | body=Scarab mod=Lucky beh=shields tier=sturdy speed=slow kw=confuse
+Khepri's Dawn Beetle | summon | r | body=Scarab mod=Noble beh=taunt tier=tough speed=slow kw=push trait=static
+Desert Camel | summon | c | body=Camel beh=guards tier=tough speed=frantic trait=swift
+War Camel | summon | u | body=Camel mod=Brave beh=taunt tier=tough speed=steady kw=confuse
+Manticore | summon | r | body=Manticore beh=cone tier=sturdy speed=steady kw=confuse trait=sandstorm
+Chimera | summon | r | body=Chimera beh=cone tier=sturdy speed=slow trait=overcharge
+Emperor Scorpion | summon | u | body=Scorpion beh=zigzag tier=tough speed=steady
+Sand Scorpion | summon | c | body=Scorpion beh=pounce tier=sturdy speed=steady kw=push trait=sandstorm
+Girtablilu Gatewarden | summon | r | body=Scorpion mod=Noble beh=guards tier=tough speed=slow trait=greedy
+Jackal Tomb Guard | summon | u | body=Jackal beh=dash tier=tough speed=steady kw=push trait=swift
+Nile Crocodile | summon | c | body=Crocodile beh=taunt tier=tough speed=steady kw=stun trait=static
+Great River Crocodile | summon | r | body=Crocodile mod=Dire beh=taunt tier=tough speed=steady trait=swift
+Roc | summon | r | body=Roc beh=lob tier=sturdy speed=slow kw=confuse trait=sandstorm
+Simurgh | summon | l | body=Simurgh beh=mends tier=sturdy speed=slow kw=confuse trait=overcharge
+Great Sphinx | summon | l | body=Sphinx mod=Ancient beh=guards tier=tough speed=steady trait=sandstorm
+Riddling Sphinx | summon | r | body=Sphinx mod=Clever beh=mends tier=sturdy speed=slow trait=swift
+Bronze Automaton | summon | u | body=Automaton beh=trample tier=tough speed=slow kw=push
+Talos the Bronze Giant | summon | l | body=Automaton mod=Dire beh=trample tier=huge speed=slow kw=confuse trait=sandstorm
+Clockwork Falcon | summon | u | body=Hawk mod=Iron beh=diag tier=tough speed=slow kw=stun trait=overcharge
+Horus the Far-Seeing | summon | l | body=Hawk mod=Noble beh=bolt tier=sturdy speed=steady kw=stun trait=greedy
+Ibis Scribe | summon | c | body=Hawk mod=Gentle beh=shields tier=sturdy speed=slow kw=stun trait=swift
+Frilled Lizard | summon | c | body=Lizard beh=pierce tier=sturdy speed=quick kw=stun trait=sandstorm
+Horned Viper | summon | c | body=Serpent beh=bolt tier=sturdy speed=steady kw=push trait=swift
+Uraeus Cobra | summon | u | body=Serpent mod=Noble beh=zigzag tier=sturdy speed=steady kw=stun
+Plumed Serpent | summon | r | body=Serpent mod=Wild beh=pounce tier=sturdy speed=slow kw=confuse trait=greedy
+Chupacabra | summon | u | body=Chupacabra beh=lob tier=sturdy speed=slow kw=push
+Foo Dog Sentinel | summon | u | body=Shishi mod=Loyal beh=dash tier=tough speed=steady trait=static
+Brass Foo Pup | summon | c | body=Shishi mod=Tiny beh=trample tier=frail speed=quick trait=static
+Bahamut | summon | l | body=Bahamut beh=guards tier=tough speed=steady kw=stun trait=swift
+Falak the Abyss Serpent | summon | l | body=Sandworm mod=Ancient beh=bolt tier=sturdy speed=slow kw=stun trait=overcharge
+Sandworm | summon | r | body=Sandworm beh=burrow tier=sturdy speed=slow
+Linen-Wrapped Sentinel | summon | u | body=Knight mod=Pale beh=guards tier=tough speed=steady kw=confuse trait=greedy
+Sand Golem | summon | c | body=Golem beh=trample tier=tough speed=slow trait=overcharge
+Wandering Alchemist | summon | u | body=Squire mod=Clever beh=mends tier=sturdy speed=slow kw=stun trait=static
+Bedouin Raider | summon | c | body=Squire mod=Swift beh=pierce tier=sturdy speed=slow kw=stun
+Parthian Horse Archer | summon | u | body=Squire mod=Brave beh=snipe tier=sturdy speed=steady
+Bazaar Pickpocket | summon | c | body=Goblin mod=Sly beh=blast tier=sturdy speed=slow kw=confuse trait=swift
+Mamluk Lancer | summon | u | body=Knight beh=wardmaker tier=tough speed=steady kw=confuse trait=swift
+Persian Immortal | summon | r | body=Knight mod=Noble beh=guards tier=tough speed=steady kw=push
+Storm Imp | summon | c | body=Imp beh=zigzag tier=frail speed=quick kw=confuse trait=sandstorm
+Spark Sprite | summon | c | body=Sprite beh=dash tier=frail speed=quick kw=stun trait=static
+Thunder Hawk | summon | c | body=Hawk beh=diag tier=sturdy speed=quick trait=greedy
+Coin-Hoard Dragon | summon | r | body=Dragon mod=Hungry beh=cone tier=tough speed=steady kw=stun trait=overcharge
 
-Ornithopter | machine | c | ai=repeater mach=Drone
-Spiral Aerial Screw | machine | u | ai=repeater mach=Drone
-Tesla Tower | machine | r | ai=turret mach=Tower
-Voltaic Pile Turret | machine | c | ai=turret mach=Tower
-Arc Gatling | machine | u | ai=repeater mach=Gatling
-Brass Automaton Archer | machine | u | ai=turret mach=Automaton
-Scorpio Bolt Thrower | machine | c | ai=turret mach=Ballista
-Naphtha Siphon | machine | u | ai=turret mach=Engine
-Desert Onager | machine | c | ai=mortar mach=Catapult
-Caravan Mangonel | machine | u | ai=mortar mach=Trebuchet
-Architronito | machine | r | ai=turret mach=Cannon
-Zhuge Repeater | machine | u | ai=repeater mach=Repeater
-Tortoise War Wagon | machine | r | ai=bulwark mach=Bulwark
-Sandstone Rampart | machine | c | ai=bulwark mach=Rampart
-Palm-Log Palisade | machine | c | ai=bulwark mach=Palisade
-Bronze Barricade | machine | c | ai=bulwark mach=Barricade
-Elephant Clock Automaton | machine | r | ai=turret mach=Automaton
-Coin-Spitting Mortar | machine | c | ai=mortar mach=Cannon
-Clockwork Flying Carpet | machine | r | ai=repeater mach=Drone
-Hang-Glider Scout | machine | c | ai=repeater mach=Drone
-The Thunder Engine | machine | l | ai=repeater mach=Engine
-The Bronze Colossus | machine | l | ai=bulwark mach=Automaton
+Ornithopter | machine | c | mach=Drone beh=twin tier=sturdy speed=quick kw=stun
+Spiral Aerial Screw | machine | u | mach=Drone beh=twin tier=sturdy speed=quick trait=sandstorm
+Tesla Tower | machine | r | mach=Tower beh=chain tier=sturdy speed=steady trait=static
+Voltaic Pile Turret | machine | c | mach=Tower beh=pierce tier=sturdy speed=steady kw=stun trait=swift
+Arc Gatling | machine | u | mach=Gatling beh=pierce tier=sturdy speed=steady kw=confuse
+Brass Automaton Archer | machine | u | mach=Automaton beh=snipe tier=tough speed=slow kw=confuse
+Scorpio Bolt Thrower | machine | c | mach=Ballista beh=blast tier=sturdy speed=slow kw=stun trait=sandstorm
+Naphtha Siphon | machine | u | mach=Engine beh=pierce tier=sturdy speed=steady kw=push trait=static
+Desert Onager | machine | c | mach=Catapult beh=cross tier=sturdy speed=slow kw=push trait=overcharge
+Caravan Mangonel | machine | u | mach=Trebuchet beh=blast tier=sturdy speed=slow trait=greedy
+Architronito | machine | r | mach=Cannon beh=pounce tier=tough speed=steady trait=overcharge
+Zhuge Repeater | machine | u | mach=Repeater beh=barrage tier=frail speed=frantic kw=push trait=static
+Tortoise War Wagon | machine | r | mach=Bulwark beh=taunt tier=tough speed=slow trait=sandstorm
+Sandstone Rampart | machine | c | mach=Rampart beh=wardmaker tier=huge speed=slow
+Palm-Log Palisade | machine | c | mach=Palisade beh=wardmaker tier=huge speed=slow kw=stun trait=swift
+Bronze Barricade | machine | c | mach=Barricade beh=wardmaker tier=huge speed=slow kw=push trait=greedy
+Elephant Clock Automaton | machine | r | mach=Automaton beh=trample tier=tough speed=slow kw=confuse trait=static
+Coin-Spitting Mortar | machine | c | mach=Cannon beh=lob tier=sturdy speed=quick
+Clockwork Flying Carpet | machine | r | mach=Drone beh=guards tier=tough speed=slow kw=push trait=swift
+Hang-Glider Scout | machine | c | mach=Drone beh=twin tier=sturdy speed=quick kw=push trait=greedy
+The Thunder Engine | machine | l | mach=Engine beh=chain tier=sturdy speed=quick kw=stun trait=swift
+The Bronze Colossus | machine | l | mach=Automaton beh=trample tier=huge speed=slow trait=greedy
 `,
 
 /* ---------------- Black · Shadow: death, horror and dark magic ---------------- */
 shadow:`
-Bone Splinter | strike | c | shape=line kw=-
-Gravedigger's Spade | strike | c | shape=dig kw=-
-Miasma Wave | strike | c | shape=row kw=poison
-Mold Spore Volley | strike | c | shape=missiles kw=poison
-Acid Vial Splash | strike | c | shape=wedge kw=poison
-Evil Eye | strike | c | shape=line kw=curse
-Hook and Chain | strike | c | shape=line kw=pull
-Crow Swarm | strike | c | shape=missiles kw=-
-Creeping Fog | strike | c | shape=row kw=confuse
-Spider Silk Shot | strike | c | shape=zigzag kw=slow
-Bog Muck Splash | strike | c | shape=row kw=slow
-Yurei's Lament | strike | c | shape=zigzag kw=confuse
-Banshee Wail | strike | u | shape=wedge kw=confuse
-Strigoi Bite | strike | u | shape=line kw=drain
-Plague Breath | strike | u | shape=wedge kw=poison
-Hellfire Lash | strike | u | shape=zigzag kw=burn
-Gallows Rope | strike | u | shape=line kw=pull
-Raven of Ill Omen | strike | u | shape=diag kw=curse
-Moonlit Rake | strike | u | shape=wedge kw=valor
-Bloodletting Blade | strike | u | shape=line kw=self
-Web Spray | strike | u | shape=wedge kw=slow
-Jiangshi Hop | strike | u | shape=dig kw=stun
-Asanbosam Hook | strike | u | shape=line kw=pull
-Hellhound Howl | strike | u | shape=wedge kw=push
-Infernal Brand | strike | r | shape=line kw=self
-Reaper's Scythe | strike | r | shape=wedge kw=-
-Danse Macabre | strike | r | shape=all kw=confuse
-Onryo's Grudge | strike | r | shape=diag kw=curse
-Manananggal Swoop | strike | r | shape=dig kw=drain
-Mara's Ride | strike | r | shape=zigzag kw=confuse
-Death Card | strike | r | shape=all kw=-
-Wild Hunt of the Dead | strike | l | shape=all kw=confuse
-Gashadokuro's Fist | strike | l | shape=dig kw=stun
-Maw of the Abyss | strike | l | shape=wedge kw=self
+Bone Splinter | strike | c | shape=line rider=pierce
+Gravedigger's Spade | strike | c | shape=dig cast=quick
+Miasma Wave | strike | c | shape=wave kw=poison rider=onkill cast=charged
+Mold Spore Volley | strike | c | shape=gun kw=poison rider=onkill
+Acid Vial Splash | strike | c | shape=burst kw=poison rider=pierce cast=charged
+Evil Eye | strike | c | shape=snipe kw=curse rider=recoil
+Hook and Chain | strike | c | shape=chain kw=pull rider=crit cast=charged
+Crow Swarm | strike | c | shape=missiles rider=crit cast=quick
+Creeping Fog | strike | c | shape=row kw=confuse cast=quick
+Spider Silk Shot | strike | c | shape=spear kw=slow rider=crit
+Bog Muck Splash | strike | c | shape=burst kw=slow rider=pierce
+Yurei's Lament | strike | c | shape=zigzag kw=confuse rider=crit
+Banshee Wail | strike | u | shape=fan kw=confuse rider=pierce
+Strigoi Bite | strike | u | shape=wedge kw=drain rider=recoil cast=quick
+Plague Breath | strike | u | shape=fan kw=poison cast=charged
+Hellfire Lash | strike | u | shape=zigzag kw=burn cast=charged
+Gallows Rope | strike | u | shape=line kw=pull cast=charged
+Raven of Ill Omen | strike | u | shape=mark kw=curse rider=onkill
+Moonlit Rake | strike | u | shape=burst kw=valor rider=crit
+Bloodletting Blade | strike | u | shape=boomerang kw=self rider=pierce cast=quick
+Web Spray | strike | u | shape=fan kw=slow
+Jiangshi Hop | strike | u | shape=dig kw=stun rider=crit
+Asanbosam Hook | strike | u | shape=zigzag kw=pull rider=pierce cast=charged
+Hellhound Howl | strike | u | shape=shockwave kw=push cast=charged
+Infernal Brand | strike | r | shape=line kw=self rider=recoil
+Reaper's Scythe | strike | r | shape=boomerang rider=onkill
+Danse Macabre | strike | r | shape=all kw=confuse rider=crit cast=quick
+Onryo's Grudge | strike | r | shape=diag kw=curse rider=crit cast=quick
+Manananggal Swoop | strike | r | shape=dig kw=drain rider=onkill
+Mara's Ride | strike | r | shape=line kw=confuse
+Death Card | strike | r | shape=mark rider=onkill cast=quick
+Wild Hunt of the Dead | strike | l | shape=snipe kw=confuse rider=onkill
+Gashadokuro's Fist | strike | l | shape=wedge kw=stun rider=crit cast=quick
+Maw of the Abyss | strike | l | shape=wedge kw=self cast=quick
 
-Plague Flask | lob | c | pattern=single kw=poison
-Skull Bomb | lob | c | pattern=single kw=-
-Grave Dirt Handful | lob | c | pattern=burst kw=curse
+Plague Flask | lob | c | pattern=single fuse=quick kw=poison after=knock
+Skull Bomb | lob | c | pattern=single fuse=heavy after=knock
+Grave Dirt Handful | lob | c | pattern=burst fuse=quick kw=curse after=ground
 Hex Bag | lob | c | pattern=single kw=curse
-Bat Cloud | lob | c | pattern=burst kw=drain
-Swamp Gas Bubble | lob | c | pattern=burst kw=burn
-Ossuary Urn | lob | c | pattern=column kw=-
+Bat Cloud | lob | c | pattern=burst kw=drain after=ground
+Swamp Gas Bubble | lob | c | pattern=burst fuse=heavy kw=burn after=knock
+Ossuary Urn | lob | c | pattern=column fuse=heavy after=ground
 Cauldron Spill | lob | u | pattern=burst kw=poison
-Witch's Brew Toss | lob | u | pattern=cross kw=poison
-Coffin Drop | lob | u | pattern=single kw=stun
-Spider Egg Sac | lob | u | pattern=burst kw=slow
-Funeral Wreath | lob | u | pattern=ring kw=curse
-Brimstone Hail | lob | u | pattern=column kw=burn
-The Tower Card | lob | r | pattern=column kw=stun
-Pox Cloud | lob | r | pattern=ring kw=poison
-Bottled Nightmare | lob | r | pattern=cross kw=confuse
-Black Death | lob | l | pattern=ring kw=poison
+Witch's Brew Toss | lob | u | pattern=cross kw=poison after=knock
+Coffin Drop | lob | u | pattern=single kw=stun after=ground
+Spider Egg Sac | lob | u | pattern=burst fuse=heavy kw=slow after=ground
+Funeral Wreath | lob | u | pattern=ring fuse=heavy kw=curse after=knock
+Brimstone Hail | lob | u | pattern=column fuse=quick kw=burn after=ground
+The Tower Card | lob | r | pattern=column fuse=heavy kw=stun after=knock
+Pox Cloud | lob | r | pattern=ring fuse=heavy kw=poison
+Bottled Nightmare | lob | r | pattern=cross fuse=quick kw=confuse after=ground
+Black Death | lob | l | pattern=ring fuse=quick kw=poison after=ground
 
-Skull-Topped Fence | ward | c | ward=wall
-Coffin Lid | ward | c | ward=barrier
-Cobweb Veil | ward | c | ward=barrier
-Hook Fence | ward | c | ward=thorns
-Beetle Carapace | ward | c | ward=barrier
-Lead-Lined Coffin | ward | u | ward=barrier
-Ossuary Wall | ward | u | ward=wall
-Crypt Door | ward | u | ward=wall
-Demon Hide | ward | u | ward=barrier
-Shroud of Fog | ward | u | ward=barrier
-Iron Maiden Shell | ward | r | ward=thorns
-Barrow Mound | ward | r | ward=wall
-Hell's Gate | ward | l | ward=thorns
+Skull-Topped Fence | ward | c | build=light len=long form=line
+Coffin Lid | ward | c | form=cage len=long
+Cobweb Veil | ward | c | form=shield wfx=thorns len=long
+Hook Fence | ward | c | build=light wfx=thorns len=short form=line
+Beetle Carapace | ward | c | form=shield build=light wfx=draining len=short
+Lead-Lined Coffin | ward | u | form=cage build=light wfx=draining len=long
+Ossuary Wall | ward | u | wfx=draining form=line
+Crypt Door | ward | u | form=arc build=light
+Demon Hide | ward | u | form=shield build=heavy len=long
+Shroud of Fog | ward | u | form=shield len=short
+Iron Maiden Shell | ward | r | form=shield build=heavy wfx=thorns
+Barrow Mound | ward | r | form=rampart
+Hell's Gate | ward | l | form=corridor build=heavy wfx=thorns len=long
 
-Skull Lantern | sentry | c | kw=-
-Stingy Jack's Lantern | sentry | c | kw=burn
-Crow Perch | sentry | c | kw=-
-Will-o'-the-Wisp | sentry | c | kw=confuse
-Rot Censer | sentry | c | kw=poison
-Bone Totem | sentry | c | kw=-
-Pin Doll | sentry | u | kw=curse
-Gallows Tree | sentry | u | kw=pull
-Bubbling Cauldron | sentry | u | kw=poison
-Spider Nest | sentry | u | kw=slow
-Blood Fountain | sentry | r | kw=drain
-Cursed Mirror | sentry | r | kw=confuse
+Skull Lantern | sentry | c | beh=shields tier=sturdy speed=steady kw=confuse trait=plague
+Stingy Jack's Lantern | sentry | c | beh=mends tier=sturdy speed=quick trait=lifesteal
+Crow Perch | sentry | c | beh=chain tier=sturdy speed=steady
+Will-o'-the-Wisp | sentry | c | beh=barrage tier=frail speed=quick kw=confuse trait=phantom
+Rot Censer | sentry | c | beh=beam tier=sturdy speed=steady trait=lifesteal
+Bone Totem | sentry | c | beh=empower tier=sturdy speed=steady kw=curse trait=harvest
+Pin Doll | sentry | u | beh=snipe tier=sturdy speed=quick kw=curse trait=lifesteal
+Gallows Tree | sentry | u | beh=summoner tier=sturdy speed=slow kw=pull
+Bubbling Cauldron | sentry | u | beh=snipe tier=sturdy speed=quick trait=dread
+Spider Nest | sentry | u | beh=summoner tier=sturdy speed=steady kw=curse trait=lifesteal
+Blood Fountain | sentry | r | beh=snipe tier=sturdy speed=steady kw=drain trait=lifesteal
+Cursed Mirror | sentry | r | beh=bolt tier=sturdy speed=steady trait=harvest
 
-Shadow Step | boon | c | boon=dodge
-Bat Form | boon | c | boon=haste
-Black Cat's Luck | boon | c | boon=dodge
-Sip of Blood | boon | c | boon=heal
-Embalming Salts | boon | c | boon=regen
-Ritual Candles | boon | c | boon=gauge
+Shadow Step | boon | c | boon=dodge timing=delayed
+Bat Form | boon | c | boon=haste len=long timing=echo
+Black Cat's Luck | boon | c | boon=dodge side=blood timing=echo
+Sip of Blood | boon | c | boon=heal side=siphon timing=delayed
+Embalming Salts | boon | c | boon=regen len=short timing=echo
+Ritual Candles | boon | c | boon=gauge timing=echo
 Demon's Bargain | boon | u | boon=pact
-Witching Hour | boon | u | boon=courage
-Mist Form | boon | u | boon=phase
-Full Moon Frenzy | boon | u | boon=power
-Blood Moon | boon | r | boon=power
-Crossroads Bargain | boon | r | boon=pact
-Undying Will | boon | r | boon=intervene
-Infernal Contract | boon | l | boon=pact
+Witching Hour | boon | u | boon=courage len=long
+Mist Form | boon | u | boon=phase len=long side=siphon
+Full Moon Frenzy | boon | u | boon=power len=short
+Blood Moon | boon | r | boon=power side=siphon
+Crossroads Bargain | boon | r | boon=pact len=long side=blood
+Undying Will | boon | r | boon=intervene side=blood
+Infernal Contract | boon | l | boon=pact len=short timing=delayed
 
-Bag of Teeth | charge | c | fx=bolt kw=-
-Coffin Nails | charge | c | fx=bolt kw=-
-Spider Fangs | charge | c | fx=bolt kw=poison
-Bone Darts | charge | c | fx=bolt kw=-
-Belfry Bats | charge | c | fx=bolt kw=drain
-Crow Feathers | charge | c | fx=bolt kw=-
-Nightshade Berries | charge | c | fx=bolt kw=poison
-Jar of Carrion Beetles | charge | c | fx=lob kw=-
-Plague Vials | charge | u | fx=lob kw=poison
-Leech Jar | charge | u | fx=bolt kw=drain
-Mold Jars | charge | u | fx=lob kw=poison
-Dungeon Chains | charge | u | fx=bolt kw=pull
-Mandrake Roots | charge | u | fx=lob kw=stun
-Ferryman's Coins | charge | u | fx=bolt kw=curse
-Hellfire Embers | charge | r | fx=lob kw=burn
-Banshee's Comb | charge | r | fx=bolt kw=confuse
-Vampire Fang Necklace | charge | r | fx=bolt kw=drain
-Pandora's Jar | charge | l | fx=lob kw=curse
+Bag of Teeth | charge | c | shot=bolt uses=few edge=pierce
+Coffin Nails | charge | c | shot=bolt uses=few kw=curse
+Spider Fangs | charge | c | shot=bolt uses=few kw=poison edge=splash
+Bone Darts | charge | c | shot=bolt edge=crit
+Belfry Bats | charge | c | shot=bolt uses=few kw=confuse edge=crit
+Crow Feathers | charge | c | shot=bolt uses=many edge=splash
+Nightshade Berries | charge | c | shot=bolt uses=many kw=poison edge=pierce
+Jar of Carrion Beetles | charge | c | shot=lob edge=splash
+Plague Vials | charge | u | shot=lob kw=poison edge=pierce
+Leech Jar | charge | u | shot=bolt kw=drain
+Mold Jars | charge | u | shot=lob uses=few kw=poison
+Dungeon Chains | charge | u | shot=bolt kw=pull edge=pierce
+Mandrake Roots | charge | u | shot=lob kw=stun
+Ferryman's Coins | charge | u | shot=bolt kw=curse edge=splash
+Hellfire Embers | charge | r | shot=lob uses=many kw=burn edge=splash
+Banshee's Comb | charge | r | shot=bolt uses=many kw=confuse
+Vampire Fang Necklace | charge | r | shot=bolt uses=many kw=drain edge=crit
+Pandora's Jar | charge | l | shot=lob uses=many kw=curse
 
 Three-Card Reading | utility | c | util=draw
 Casting the Bones | utility | c | util=draw
@@ -832,27 +832,27 @@ Raise the Dead | utility | r | util=recall
 Doppelganger | utility | r | util=copy
 Necromancer's Grimoire | utility | l | util=copy
 
-Rusted Mantrap | trap | c | trap=spike kw=-
-Open Grave | trap | c | trap=snare kw=-
-Sucking Bog | trap | u | trap=snare kw=slow
+Rusted Mantrap | trap | c | trap=spike len=short size=three
+Open Grave | trap | c | trap=snare size=three
+Sucking Bog | trap | u | trap=snare kw=slow len=long size=three
 Trapdoor Spider Lair | trap | u | trap=snare kw=poison
-Plague Mine | trap | u | trap=blast kw=poison
-Rigged Coffin | trap | c | trap=blast kw=-
-Oubliette | trap | r | trap=snare kw=stun
-The Hanged Man | trap | r | trap=snare kw=pull
-Cursed Tomb | trap | r | trap=blast kw=curse
+Plague Mine | trap | u | trap=blast kw=poison len=short size=three
+Rigged Coffin | trap | c | trap=blast
+Oubliette | trap | r | trap=snare len=short
+The Hanged Man | trap | r | trap=snare kw=pull len=long
+Cursed Tomb | trap | r | trap=blast kw=curse len=long
 
-Haunted Bog | environment | c | env=bramble pattern=burst
-Graveyard Fog | environment | c | env=bramble pattern=row
+Haunted Bog | environment | c | env=bramble pattern=burst len=short kw=curse
+Graveyard Fog | environment | c | env=bramble pattern=row len=long
 Webbed Hollow | environment | c | env=bramble pattern=cross
-Graveyard Chill | environment | c | env=freeze pattern=row
+Graveyard Chill | environment | c | env=freeze pattern=row kw=curse
 Restless Graves | environment | u | env=tremor pattern=burst
-Hellfire Rift | environment | u | env=burn pattern=column
+Hellfire Rift | environment | u | env=burn pattern=column len=short
 Acid Rain | environment | u | env=burn pattern=row
-Draugr's Barrow Frost | environment | u | env=freeze pattern=burst
-Witch's Thicket | environment | c | env=bramble pattern=column
-Catacomb Collapse | environment | r | env=tremor pattern=row
-Mouth of Hell | environment | l | env=burn pattern=burst
+Draugr's Barrow Frost | environment | u | env=freeze pattern=burst len=short
+Witch's Thicket | environment | c | env=bramble pattern=column kw=curse
+Catacomb Collapse | environment | r | env=tremor pattern=row len=short
+Mouth of Hell | environment | l | env=burn pattern=burst len=long
 
 Crown of the Lich King | piece | l | kw=curse
 Fang of the First Vampire | piece | l | kw=drain
@@ -860,201 +860,201 @@ Candle of the Hanged Man | piece | l | kw=stun
 Cauldron of the Bone Mother | piece | l | kw=poison
 Mask of the Plague Doctor | piece | l | kw=mend
 
-Skeleton Warrior | summon | c | ai=guardian body=Skeleton
-Skeleton Archer | summon | c | ai=shooter body=Skeleton
-Bone Rattler | summon | c | ai=bomber body=Skeleton mod=Scrappy
-Shambling Zombie | summon | c | ai=guardian body=Zombie
-Plague Zombie | summon | c | ai=bomber body=Zombie mod=Hungry
-Ghoul | summon | c | ai=bomber body=Ghoul
-Poltergeist | summon | c | ai=bomber body=Ghost mod=Scrappy
-Vampire Thrall | summon | c | ai=guardian body=Vampire mod=Scrappy
-Vampire Bat | summon | c | ai=shooter body=Bat mod=Hungry
-Tokoloshe | summon | c | ai=bomber body=Imp mod=Sly
-Adze | summon | c | ai=shooter body=Moth mod=Tiny
-Night-Pack Wolf | summon | c | ai=bomber body=Wolf mod=Grim
-Cave Spider | summon | c | ai=shooter body=Spider
-Death's-Head Moth | summon | c | ai=shooter body=Moth
-Carrion Beetle | summon | c | ai=guardian body=Beetle mod=Mossy
-Cave Centipede | summon | c | ai=bomber body=Centipede
-Plague Rat | summon | c | ai=bomber body=Rat mod=Mossy
-Bog Leech | summon | c | ai=healer body=Leech
-Gravedigger | summon | c | ai=guardian body=Squire mod=Old
-Dungeon Jailer | summon | c | ai=guardian body=Ogre mod=Iron
-Brimstone Imp | summon | c | ai=bomber body=Imp
-Murder of Crows | summon | c | ai=shooter body=Crow
-Witch's Toad | summon | c | ai=healer body=Toad mod=Mossy
-Black Cat Familiar | summon | c | ai=shooter body=Cat
-Haugbui | summon | u | ai=guardian body=Skeleton mod=Old
-Jiangshi | summon | u | ai=guardian body=Jiangshi
-Nachzehrer | summon | u | ai=shooter body=Ghoul mod=Hungry
-Yurei | summon | u | ai=shooter body=Ghost mod=Pale
-Vetala | summon | u | ai=shooter body=Ghost mod=Clever
-Mara | summon | u | ai=shooter body=Ghost mod=Sly
-Pontianak | summon | u | ai=bomber body=Banshee mod=Sly
-Bog Revenant | summon | u | ai=guardian body=Zombie mod=Mossy
-Loup-Garou | summon | u | ai=bomber body=Werewolf mod=Wild
-Bayou Rougarou | summon | u | ai=guardian body=Werewolf mod=Mossy
-Barghest | summon | u | ai=guardian body=Hound mod=Feral
-Black Cadejo | summon | u | ai=bomber body=Hound mod=Grim
-Night Mare | summon | u | ai=bomber body=Nightmare
-Black Widow | summon | u | ai=bomber body=Spider mod=Grim
-Bog Witch | summon | u | ai=healer body=Witch mod=Mossy
-Plague Doctor | summon | u | ai=healer body=Plaguemask
-Necromancer | summon | u | ai=shooter body=Witch mod=Clever
-Horned Night Visitor | summon | u | ai=bomber body=Demon mod=Feral
-Omen Raven | summon | u | ai=shooter body=Crow mod=Clever
-Draugr | summon | r | ai=guardian body=Zombie mod=Ancient
-Onryo | summon | r | ai=bomber body=Ghost mod=Grim
-Bean Sidhe | summon | r | ai=shooter body=Banshee
-Lich | summon | r | ai=shooter body=Lich
-Ankou | summon | r | ai=bomber body=Reaper mod=Old
-Strigoi | summon | r | ai=shooter body=Vampire mod=Pale
-Aswang | summon | r | ai=bomber body=Werewolf mod=Sly
-Manananggal | summon | r | ai=bomber body=Bat mod=Grim
-Asanbosam | summon | r | ai=guardian body=Vampire mod=Feral
-Werewolf | summon | r | ai=guardian body=Werewolf
-Black Shuck | summon | r | ai=bomber body=Hound mod=Dire
-Antlered Hunger | summon | r | ai=bomber body=Gaunt mod=Hungry
-Jorogumo | summon | r | ai=shooter body=Spider mod=Sly
-Rat King | summon | r | ai=guardian body=Rat mod=Dire
-Black Annis | summon | r | ai=bomber body=Witch mod=Grim
-Pit Fiend | summon | r | ai=guardian body=Demon
-Rakshasa | summon | r | ai=shooter body=Demon mod=Sly
-Morrigan's Raven | summon | r | ai=shooter body=Crow mod=Ancient
-Gashadokuro | summon | l | ai=guardian body=Skeleton mod=Dire
-La Llorona | summon | l | ai=shooter body=Banshee mod=Pale
-Dullahan | summon | l | ai=guardian body=Knight mod=Grim
-Grim Reaper | summon | l | ai=guardian body=Reaper mod=Ancient
-Baba Yaga | summon | l | ai=healer body=Witch mod=Ancient
-The Erlking | summon | l | ai=shooter body=Spirit mod=Pale
+Skeleton Warrior | summon | c | body=Skeleton beh=taunt tier=tough speed=steady kw=confuse trait=lifesteal
+Skeleton Archer | summon | c | body=Skeleton beh=snipe tier=sturdy speed=frantic trait=rises
+Bone Rattler | summon | c | body=Skeleton mod=Scrappy beh=dash tier=frail speed=quick kw=drain trait=rises
+Shambling Zombie | summon | c | body=Zombie beh=trample tier=tough speed=steady kw=drain trait=rises
+Plague Zombie | summon | c | body=Zombie mod=Hungry beh=lob tier=sturdy speed=quick
+Ghoul | summon | c | body=Ghoul beh=blast tier=sturdy speed=slow kw=drain trait=rises
+Poltergeist | summon | c | body=Ghost mod=Scrappy beh=zigzag tier=sturdy speed=slow kw=drain trait=dread
+Vampire Thrall | summon | c | body=Vampire mod=Scrappy beh=guards tier=tough speed=steady kw=drain
+Vampire Bat | summon | c | body=Bat mod=Hungry beh=dash tier=frail speed=quick trait=lifesteal
+Tokoloshe | summon | c | body=Imp mod=Sly beh=cross tier=sturdy speed=slow kw=confuse trait=phantom
+Adze | summon | c | body=Moth mod=Tiny beh=bolt tier=sturdy speed=quick kw=curse
+Night-Pack Wolf | summon | c | body=Wolf mod=Grim beh=pounce tier=sturdy speed=slow kw=drain trait=plague
+Cave Spider | summon | c | body=Spider beh=pounce tier=sturdy speed=steady kw=curse trait=phantom
+Death's-Head Moth | summon | c | body=Moth beh=zigzag tier=frail speed=quick kw=curse
+Carrion Beetle | summon | c | body=Beetle mod=Mossy beh=wardmaker tier=tough speed=slow kw=drain
+Cave Centipede | summon | c | body=Centipede beh=pounce tier=sturdy speed=slow kw=curse trait=rises
+Plague Rat | summon | c | body=Rat mod=Mossy beh=dash tier=frail speed=quick kw=pull trait=plague
+Bog Leech | summon | c | body=Leech beh=bolt tier=sturdy speed=slow kw=drain trait=lifesteal
+Gravedigger | summon | c | body=Squire mod=Old beh=burrow tier=tough speed=steady kw=pull
+Dungeon Jailer | summon | c | body=Ogre mod=Iron beh=taunt tier=tough speed=frantic kw=pull
+Brimstone Imp | summon | c | body=Imp beh=zigzag tier=frail speed=frantic
+Murder of Crows | summon | c | body=Crow beh=barrage tier=frail speed=frantic kw=curse trait=dread
+Witch's Toad | summon | c | body=Toad mod=Mossy beh=chain tier=sturdy speed=slow kw=drain trait=harvest
+Black Cat Familiar | summon | c | body=Cat beh=shields tier=sturdy speed=steady kw=pull trait=phantom
+Haugbui | summon | u | body=Skeleton mod=Old beh=trample tier=tough speed=steady trait=phantom
+Jiangshi | summon | u | body=Jiangshi beh=guards tier=tough speed=steady kw=curse trait=rises
+Nachzehrer | summon | u | body=Ghoul mod=Hungry beh=twin tier=sturdy speed=slow
+Yurei | summon | u | body=Ghost mod=Pale beh=zigzag tier=sturdy speed=steady trait=phantom
+Vetala | summon | u | body=Ghost mod=Clever beh=bolt tier=sturdy speed=quick trait=plague
+Mara | summon | u | body=Ghost mod=Sly beh=pierce tier=sturdy speed=frantic kw=drain
+Pontianak | summon | u | body=Banshee mod=Sly beh=blast tier=sturdy speed=slow kw=curse trait=harvest
+Bog Revenant | summon | u | body=Zombie mod=Mossy beh=taunt tier=tough speed=steady
+Loup-Garou | summon | u | body=Werewolf mod=Wild beh=cross tier=sturdy speed=slow kw=drain
+Bayou Rougarou | summon | u | body=Werewolf mod=Mossy beh=trample tier=tough speed=steady kw=curse
+Barghest | summon | u | body=Hound mod=Feral beh=guards tier=tough speed=slow kw=pull trait=plague
+Black Cadejo | summon | u | body=Hound mod=Grim beh=pounce tier=sturdy speed=slow trait=dread
+Night Mare | summon | u | body=Nightmare beh=barrage tier=sturdy speed=slow kw=curse
+Black Widow | summon | u | body=Spider mod=Grim beh=lob tier=sturdy speed=slow kw=pull trait=harvest
+Bog Witch | summon | u | body=Witch mod=Mossy beh=chain tier=sturdy speed=slow kw=curse trait=lifesteal
+Plague Doctor | summon | u | body=Plaguemask beh=mends tier=sturdy speed=slow kw=curse trait=plague
+Necromancer | summon | u | body=Witch mod=Clever beh=summoner tier=sturdy speed=steady trait=dread
+Horned Night Visitor | summon | u | body=Demon mod=Feral beh=blast tier=sturdy speed=slow kw=confuse
+Omen Raven | summon | u | body=Crow mod=Clever beh=twin tier=sturdy speed=steady kw=drain trait=harvest
+Draugr | summon | r | body=Zombie mod=Ancient beh=taunt tier=tough speed=steady kw=pull trait=rises
+Onryo | summon | r | body=Ghost mod=Grim beh=zigzag tier=sturdy speed=slow kw=curse trait=phantom
+Bean Sidhe | summon | r | body=Banshee beh=pierce tier=sturdy speed=steady kw=curse trait=dread
+Lich | summon | r | body=Lich beh=twin tier=sturdy speed=steady trait=rises
+Ankou | summon | r | body=Reaper mod=Old beh=lob tier=sturdy speed=slow kw=curse trait=dread
+Strigoi | summon | r | body=Vampire mod=Pale beh=bolt tier=sturdy speed=steady kw=drain
+Aswang | summon | r | body=Werewolf mod=Sly beh=blast tier=sturdy speed=slow trait=plague
+Manananggal | summon | r | body=Bat mod=Grim beh=lob tier=sturdy speed=slow kw=drain trait=phantom
+Asanbosam | summon | r | body=Vampire mod=Feral beh=guards tier=tough speed=steady kw=confuse trait=harvest
+Werewolf | summon | r | body=Werewolf beh=pounce tier=tough speed=steady kw=pull trait=phantom
+Black Shuck | summon | r | body=Hound mod=Dire beh=dash tier=sturdy speed=slow trait=lifesteal
+Antlered Hunger | summon | r | body=Gaunt mod=Hungry beh=blast tier=sturdy speed=slow kw=pull trait=dread
+Jorogumo | summon | r | body=Spider mod=Sly beh=pierce tier=sturdy speed=steady kw=drain trait=phantom
+Rat King | summon | r | body=Rat mod=Dire beh=zigzag tier=frail speed=quick trait=plague
+Black Annis | summon | r | body=Witch mod=Grim beh=cross tier=sturdy speed=slow trait=harvest
+Pit Fiend | summon | r | body=Demon beh=taunt tier=tough speed=steady kw=curse trait=dread
+Rakshasa | summon | r | body=Demon mod=Sly beh=twin tier=sturdy speed=steady kw=curse
+Morrigan's Raven | summon | r | body=Crow mod=Ancient beh=bolt tier=sturdy speed=steady kw=curse trait=rises
+Gashadokuro | summon | l | body=Skeleton mod=Dire beh=guards tier=tough speed=steady kw=pull trait=lifesteal
+La Llorona | summon | l | body=Banshee mod=Pale beh=bolt tier=sturdy speed=steady kw=confuse trait=dread
+Dullahan | summon | l | body=Knight mod=Grim beh=guards tier=tough speed=steady trait=plague
+Grim Reaper | summon | l | body=Reaper mod=Ancient beh=pounce tier=tough speed=steady trait=harvest
+Baba Yaga | summon | l | body=Witch mod=Ancient beh=mends tier=sturdy speed=slow trait=phantom
+The Erlking | summon | l | body=Spirit mod=Pale beh=bolt tier=sturdy speed=steady kw=pull trait=lifesteal
 
-Bone Ballista | machine | c | ai=turret mach=Ballista
-Skull Catapult | machine | c | ai=mortar mach=Catapult
-Torture Rack | machine | u | ai=bulwark mach=Barricade
-Coffin Cannon | machine | u | ai=turret mach=Cannon
-Plague Trebuchet | machine | u | ai=mortar mach=Trebuchet
-Iron Maiden | machine | r | ai=bulwark mach=Bastion
-Gibbet Tower | machine | r | ai=turret mach=Tower
-Hut on Chicken Legs | machine | l | ai=mortar mach=Automaton
+Bone Ballista | machine | c | mach=Ballista beh=snipe tier=sturdy speed=steady kw=confuse trait=rises
+Skull Catapult | machine | c | mach=Catapult beh=cross tier=sturdy speed=frantic
+Torture Rack | machine | u | mach=Barricade beh=wardmaker tier=tough speed=steady kw=curse trait=harvest
+Coffin Cannon | machine | u | mach=Cannon beh=pierce tier=sturdy speed=steady kw=confuse
+Plague Trebuchet | machine | u | mach=Trebuchet beh=lob tier=sturdy speed=slow kw=confuse trait=plague
+Iron Maiden | machine | r | mach=Bastion beh=wardmaker tier=tough speed=steady trait=rises
+Gibbet Tower | machine | r | mach=Tower beh=pierce tier=sturdy speed=steady trait=plague
+Hut on Chicken Legs | machine | l | mach=Automaton beh=lob tier=sturdy speed=slow trait=rises
 `,
 
 
 /* ---------------- White · Light: knowledge, faith, safety and human achievement ---------------- */
 light:`
-Pilum Volley | strike | c | shape=missiles kw=-
-Gladius Thrust | strike | c | shape=line kw=-
-Lance Charge | strike | c | shape=dig kw=valor
-Crusader's Charge | strike | u | shape=dig kw=valor
-Longbow Volley | strike | c | shape=missiles kw=-
-Agincourt Arrowstorm | strike | r | shape=missiles kw=-
-West Wind Gust | strike | c | shape=row kw=push
-Zephyr's Breath | strike | c | shape=wedge kw=push
-Mistral Gale | strike | u | shape=all kw=push
-Owl's Silent Dive | strike | c | shape=line kw=stun
-Pegasus Hoofbeat | strike | u | shape=diag kw=push
-Centaur's Arrow | strike | c | shape=line kw=-
-Unicorn Horn Thrust | strike | u | shape=line kw=mend
-Aegis Bash | strike | u | shape=wedge kw=stun
-Starlight Lance | strike | u | shape=line kw=burn
-Astrolabe Sightline | strike | c | shape=diag kw=-
-Bright Comet | strike | r | shape=zigzag kw=burn
-Gavel of Justice | strike | c | shape=line kw=stun
-Shield Bash | strike | c | shape=line kw=stun
-Phalanx Advance | strike | u | shape=row kw=push
-Crane Wing Sweep | strike | c | shape=wedge kw=slow
-Qilin's Flame | strike | r | shape=wedge kw=burn
-White Stag's Antlers | strike | u | shape=dig kw=push
-Simurgh Feather Gust | strike | r | shape=all kw=push
-Paladin's Oath Blade | strike | r | shape=line kw=valor
-Martyr's Last Stand | strike | r | shape=all kw=self
+Pilum Volley | strike | c | shape=gun rider=onkill cast=quick
+Gladius Thrust | strike | c | shape=spear
+Lance Charge | strike | c | shape=spear kw=valor cast=charged
+Crusader's Charge | strike | u | shape=spear kw=valor rider=pierce
+Longbow Volley | strike | c | shape=snipe rider=crit cast=quick
+Agincourt Arrowstorm | strike | r | shape=line cast=quick
+West Wind Gust | strike | c | shape=fan rider=recoil
+Zephyr's Breath | strike | c | shape=fan kw=push rider=pierce cast=charged
+Mistral Gale | strike | u | shape=fan kw=push
+Owl's Silent Dive | strike | c | shape=line kw=stun rider=pierce cast=quick
+Pegasus Hoofbeat | strike | u | shape=diag kw=push cast=quick
+Centaur's Arrow | strike | c | shape=snipe rider=onkill
+Unicorn Horn Thrust | strike | u | shape=spear kw=mend rider=crit
+Aegis Bash | strike | u | shape=wedge kw=stun cast=quick
+Starlight Lance | strike | u | shape=spear kw=burn rider=pierce cast=charged
+Astrolabe Sightline | strike | c | shape=diag rider=pierce
+Bright Comet | strike | r | shape=column kw=burn rider=crit cast=charged
+Gavel of Justice | strike | c | shape=twin kw=stun
+Shield Bash | strike | c | shape=line kw=stun cast=charged
+Phalanx Advance | strike | u | shape=row kw=push rider=crit
+Crane Wing Sweep | strike | c | shape=wedge kw=slow rider=crit cast=charged
+Qilin's Flame | strike | r | shape=wedge kw=burn cast=charged
+White Stag's Antlers | strike | u | shape=dig kw=push rider=recoil
+Simurgh Feather Gust | strike | r | shape=fan kw=push rider=recoil cast=quick
+Paladin's Oath Blade | strike | r | shape=boomerang kw=valor rider=pierce cast=charged
+Martyr's Last Stand | strike | r | shape=all kw=self rider=onkill
 Riddle of the Sphinx | strike | r | shape=missiles kw=confuse
-Scholar's Paradox | strike | c | shape=zigzag kw=confuse
-Marble Shard Spray | strike | c | shape=wedge kw=slow
-Valkyrie's Descent | strike | r | shape=diag kw=valor
+Scholar's Paradox | strike | c | shape=zigzag kw=confuse cast=quick
+Marble Shard Spray | strike | c | shape=row kw=slow cast=quick
+Valkyrie's Descent | strike | r | shape=diag kw=valor rider=recoil
 Durandal's Stroke | strike | l | shape=line kw=valor
-Excalibur's Arc | strike | l | shape=wedge kw=valor
+Excalibur's Arc | strike | l | shape=chain kw=valor rider=onkill
 
-Mortar of Bricks | lob | c | pattern=single kw=slow
-Font of Blessed Water | lob | c | pattern=burst kw=mend
-Incense Censer | lob | u | pattern=burst kw=confuse
+Mortar of Bricks | lob | c | pattern=single kw=slow after=knock
+Font of Blessed Water | lob | c | pattern=burst fuse=heavy kw=mend
+Incense Censer | lob | u | pattern=burst fuse=heavy kw=confuse after=knock
 Falling Masonry | lob | u | pattern=column kw=stun
-Onager Stone | lob | c | pattern=single kw=stun
-Toppled Marble Column | lob | u | pattern=column kw=slow
-Falling Star | lob | c | pattern=single kw=burn
-Alchemist's Flask | lob | c | pattern=burst kw=-
-Salve Jar | lob | c | pattern=burst kw=mend
-Quicksilver Retort | lob | u | pattern=burst kw=poison
-Abbey Bell Toll | lob | u | pattern=ring kw=stun
-Slinger's Hail | lob | c | pattern=row kw=-
-Southern Cross Starfall | lob | r | pattern=cross kw=burn
-Downdraft | lob | u | pattern=column kw=push
-Owl Pellet | lob | c | pattern=single kw=-
-Siege Stone of Acre | lob | r | pattern=burst kw=push
+Onager Stone | lob | c | pattern=single fuse=heavy kw=stun
+Toppled Marble Column | lob | u | pattern=column kw=slow after=ground
+Falling Star | lob | c | pattern=single fuse=heavy kw=burn after=knock
+Alchemist's Flask | lob | c | pattern=burst fuse=quick
+Salve Jar | lob | c | pattern=burst fuse=quick kw=mend after=ground
+Quicksilver Retort | lob | u | pattern=burst kw=poison after=knock
+Abbey Bell Toll | lob | u | pattern=ring fuse=heavy kw=stun after=knock
+Slinger's Hail | lob | c | pattern=row fuse=quick after=ground
+Southern Cross Starfall | lob | r | pattern=cross fuse=heavy kw=burn after=ground
+Downdraft | lob | u | pattern=column kw=push after=knock
+Owl Pellet | lob | c | pattern=single fuse=quick after=knock
+Siege Stone of Acre | lob | r | pattern=burst fuse=quick kw=push after=knock
 
-Kite Shield | ward | c | ward=barrier
-Tower Shield | ward | c | ward=barrier
-Marble Wall | ward | c | ward=wall
-Brick Rampart | ward | c | ward=wall
-Cloister Arches | ward | c | ward=wall
-Spiked Pavise | ward | c | ward=thorns
-Chevaux-de-Frise | ward | c | ward=thorns
-Testudo Formation | ward | u | ward=barrier
-Castle Portcullis | ward | u | ward=wall
-Shieldwall of the Fyrd | ward | u | ward=barrier
-Sheltering Wings | ward | u | ward=barrier
-Hadrian's Wall | ward | r | ward=wall
-Sacsayhuaman Stones | ward | r | ward=wall
-Great Zimbabwe Walls | ward | r | ward=wall
-Ishtar Gate | ward | r | ward=wall
-White Heron Castle | ward | r | ward=wall
-Aegis of Athena | ward | l | ward=barrier
-Theodosian Walls | ward | l | ward=wall
+Kite Shield | ward | c | form=shield build=light wfx=steady len=long
+Tower Shield | ward | c | form=shield build=heavy wfx=steady len=short
+Marble Wall | ward | c | form=rampart wfx=healing len=long
+Brick Rampart | ward | c | form=rampart build=heavy len=short
+Cloister Arches | ward | c | form=cage build=heavy wfx=healing len=short
+Spiked Pavise | ward | c | form=arc build=light wfx=healing
+Chevaux-de-Frise | ward | c | wfx=steady len=long form=line
+Testudo Formation | ward | u | form=shield wfx=healing
+Castle Portcullis | ward | u | form=corridor
+Shieldwall of the Fyrd | ward | u | form=shield build=heavy len=long
+Sheltering Wings | ward | u | form=arc wfx=steady
+Hadrian's Wall | ward | r | form=arc len=long
+Sacsayhuaman Stones | ward | r | form=arc build=heavy
+Great Zimbabwe Walls | ward | r | form=rampart build=heavy wfx=steady len=long
+Ishtar Gate | ward | r | len=short form=line
+White Heron Castle | ward | r | form=cage build=heavy wfx=steady
+Aegis of Athena | ward | l | form=shield build=light
+Theodosian Walls | ward | l | form=corridor build=light len=long
 
-Harbor Lighthouse | sentry | c | kw=-
-Arrow-Slit Tower | sentry | c | kw=-
-Owl on the Parapet | sentry | c | kw=-
-Windmill of La Mancha | sentry | c | kw=push
-Weathervane Cockerel | sentry | c | kw=push
-Wayside Shrine | sentry | c | kw=mend
-Bell Tower | sentry | u | kw=stun
-Stone Lions of Delos | sentry | u | kw=-
-Obelisk of the Sun | sentry | u | kw=burn
-Caracol Observatory | sentry | u | kw=slow
-Lamassu Gate Statue | sentry | r | kw=stun
-Pharos of Alexandria | sentry | l | kw=burn
+Harbor Lighthouse | sentry | c | beh=chain tier=sturdy speed=steady trait=radiant
+Arrow-Slit Tower | sentry | c | beh=chain tier=sturdy speed=steady kw=push
+Owl on the Parapet | sentry | c | beh=diag tier=tough speed=steady kw=mend trait=blessed
+Windmill of La Mancha | sentry | c | beh=bolt tier=sturdy speed=steady kw=push trait=guardian
+Weathervane Cockerel | sentry | c | beh=pierce tier=sturdy speed=steady kw=push trait=rallying
+Wayside Shrine | sentry | c | beh=shields tier=sturdy speed=quick kw=mend trait=blessed
+Bell Tower | sentry | u | beh=snipe tier=sturdy speed=quick kw=valor trait=radiant
+Stone Lions of Delos | sentry | u | beh=bolt tier=sturdy speed=steady kw=valor trait=blessed
+Obelisk of the Sun | sentry | u | beh=snipe tier=sturdy speed=steady kw=push trait=radiant
+Caracol Observatory | sentry | u | beh=pierce tier=sturdy speed=steady kw=mend trait=martyr
+Lamassu Gate Statue | sentry | r | beh=guards tier=tough speed=slow kw=push trait=blessed
+Pharos of Alexandria | sentry | l | beh=bolt tier=sturdy speed=quick trait=guardian
 
-Knight's Vigil | boon | c | boon=courage
-Oath of Fealty | boon | c | boon=power
-Westerly Breeze | boon | c | boon=haste
-Owl's Foresight | boon | c | boon=dodge
-Physician's Balm | boon | c | boon=heal
-Herbal Poultice | boon | c | boon=regen
-Vigil Candle | boon | c | boon=gauge
-Rally the Legion | boon | u | boon=courage
-Pegasus Flight | boon | u | boon=dodge
-Crusader's Vow | boon | u | boon=pact
-Sushruta's Stitches | boon | u | boon=heal
-Angelic Veil | boon | r | boon=phase
-Valkyrie's Reprieve | boon | r | boon=intervene
+Knight's Vigil | boon | c | boon=courage len=short
+Oath of Fealty | boon | c | boon=power len=short side=radiance
+Westerly Breeze | boon | c | boon=haste len=long
+Owl's Foresight | boon | c | boon=dodge side=glow
+Physician's Balm | boon | c | boon=heal timing=delayed
+Herbal Poultice | boon | c | boon=regen len=long timing=echo
+Vigil Candle | boon | c | boon=gauge side=glow
+Rally the Legion | boon | u | boon=courage timing=delayed
+Pegasus Flight | boon | u | boon=dodge timing=echo
+Crusader's Vow | boon | u | boon=pact side=radiance timing=echo
+Sushruta's Stitches | boon | u | boon=heal side=radiance
+Angelic Veil | boon | r | boon=phase side=glow timing=echo
+Valkyrie's Reprieve | boon | r | boon=intervene side=glow timing=delayed
 
-Swan-Feather Quiver | charge | c | fx=bolt kw=-
-Legionary's Javelins | charge | c | fx=bolt kw=push
-Yew Longbow Quiver | charge | c | fx=bolt kw=-
-Holy Water Vials | charge | c | fx=lob kw=mend
-Huaraca Stones | charge | c | fx=bolt kw=stun
-Brick Hod | charge | c | fx=lob kw=slow
-Salve Tin | charge | c | fx=lob kw=mend
-Owl-Feather Darts | charge | c | fx=bolt kw=-
-Tesserae Pouch | charge | c | fx=bolt kw=-
-Genoese Crossbow Bolts | charge | u | fx=bolt kw=push
-Censer Coals | charge | u | fx=lob kw=burn
-Sealed Edict Scrolls | charge | u | fx=lob kw=stun
-Silver Arrows of the Hunt | charge | u | fx=bolt kw=-
-Apothecary's Vials | charge | u | fx=lob kw=-
-Bag of Winds | charge | r | fx=bolt kw=push
-Thousand Paper Cranes | charge | r | fx=bolt kw=slow
-Burning Lens of Archimedes | charge | r | fx=bolt kw=burn
-Arrows of Heracles | charge | l | fx=bolt kw=poison
+Swan-Feather Quiver | charge | c | shot=bolt uses=many edge=crit
+Legionary's Javelins | charge | c | shot=bolt uses=few kw=mend edge=crit
+Yew Longbow Quiver | charge | c | shot=bolt uses=many kw=mend edge=splash
+Holy Water Vials | charge | c | shot=lob kw=mend edge=splash
+Huaraca Stones | charge | c | shot=bolt uses=few kw=stun
+Brick Hod | charge | c | shot=lob uses=many kw=slow edge=pierce
+Salve Tin | charge | c | shot=lob uses=few kw=mend
+Owl-Feather Darts | charge | c | shot=bolt uses=few kw=valor edge=splash
+Tesserae Pouch | charge | c | shot=bolt uses=many kw=valor
+Genoese Crossbow Bolts | charge | u | shot=bolt uses=few kw=push edge=pierce
+Censer Coals | charge | u | shot=lob kw=burn
+Sealed Edict Scrolls | charge | u | shot=lob kw=stun edge=crit
+Silver Arrows of the Hunt | charge | u | shot=bolt edge=splash
+Apothecary's Vials | charge | u | shot=lob edge=pierce
+Bag of Winds | charge | r | shot=bolt kw=push
+Thousand Paper Cranes | charge | r | shot=bolt kw=slow edge=crit
+Burning Lens of Archimedes | charge | r | shot=bolt kw=burn edge=pierce
+Arrows of Heracles | charge | l | shot=bolt uses=many kw=poison edge=pierce
 
 Imperial Scribe's Brush | utility | c | util=draw
 Cai Lun's Paper | utility | c | util=draw
@@ -1071,24 +1071,24 @@ Emerald Tablet | utility | r | util=copy
 Canon of Medicine | utility | r | util=cleanse
 Library of Alexandria | utility | l | util=draw
 
-Roman Caltrops | trap | c | trap=spike kw=slow
-Drawbridge Slam | trap | c | trap=blast kw=stun
-Gladiator's Net | trap | c | trap=snare kw=slow
-Sunfire Glyph | trap | c | trap=blast kw=burn
-Lilia Pits | trap | u | trap=spike kw=-
-Murder Hole | trap | u | trap=blast kw=burn
-Riddle at the Gate | trap | u | trap=snare kw=confuse
-Tomb Builder's Pitfall | trap | u | trap=spike kw=-
-Daedalus's Snare | trap | r | trap=snare kw=pull
+Roman Caltrops | trap | c | trap=spike kw=slow size=three
+Drawbridge Slam | trap | c | trap=blast kw=stun len=long
+Gladiator's Net | trap | c | trap=snare kw=slow len=long
+Sunfire Glyph | trap | c | trap=blast len=short size=three
+Lilia Pits | trap | u | trap=spike len=long size=three
+Murder Hole | trap | u | trap=blast kw=burn size=three
+Riddle at the Gate | trap | u | trap=snare kw=confuse size=three
+Tomb Builder's Pitfall | trap | u | trap=spike kw=mend len=short size=three
+Daedalus's Snare | trap | r | trap=snare kw=pull len=long size=three
 
 Noon Sun on Marble | environment | c | env=burn pattern=row
-Hedge Maze | environment | c | env=bramble pattern=cross
-Monastery Herb Garden | environment | c | env=bramble pattern=burst
-Marble Quarry | environment | c | env=tremor pattern=column
-Pure Snowfield | environment | c | env=freeze pattern=burst
-Consecrated Ground | environment | u | env=burn pattern=burst
-Rose Garden of Shiraz | environment | u | env=bramble pattern=row
-Collapsing Colonnade | environment | r | env=tremor pattern=row
+Hedge Maze | environment | c | env=bramble pattern=cross len=short
+Monastery Herb Garden | environment | c | env=bramble pattern=burst len=long kw=mend
+Marble Quarry | environment | c | env=tremor pattern=column len=long
+Pure Snowfield | environment | c | env=freeze pattern=burst len=short
+Consecrated Ground | environment | u | env=burn pattern=burst len=long
+Rose Garden of Shiraz | environment | u | env=bramble pattern=row len=long
+Collapsing Colonnade | environment | r | env=tremor pattern=row len=short
 Hanging Gardens of Babylon | environment | l | env=bramble pattern=burst
 
 Crown of the Round Table | piece | l | kw=valor
@@ -1097,201 +1097,201 @@ Stone of the Philosophers | piece | l | kw=-
 Bridle of the Pegasus | piece | l | kw=push
 Scales of the Final Judge | piece | l | kw=stun
 
-Pegasus Foal | summon | c | ai=healer body=Pegasus mod=Tiny
-Pegasus | summon | r | ai=shooter body=Pegasus mod=Noble
-Centaur Archer | summon | u | ai=shooter body=Centaur
-Chiron, Healer of Heroes | summon | l | ai=healer body=Centaur mod=Ancient
-White Unicorn | summon | r | ai=healer body=Unicorn mod=Pale
-White Stag | summon | u | ai=guardian body=Stag mod=Pale
-Snow Crane | summon | c | ai=shooter body=Crane
-Thousand-Year Crane | summon | r | ai=healer body=Crane mod=Ancient
-Barn Owl | summon | c | ai=shooter body=Owl
-Owl of Athena | summon | u | ai=shooter body=Owl mod=Clever
-White Wolf | summon | c | ai=guardian body=Wolf mod=Pale
-White Wolf Matriarch | summon | r | ai=guardian body=Wolf mod=Noble
-Talbot Hound | summon | c | ai=bomber body=Hound mod=Loyal
-Royal Gyrfalcon | summon | c | ai=shooter body=Hawk mod=Pale
-Heraldic Griffin | summon | u | ai=guardian body=Griffin mod=Noble
-Lamassu | summon | r | ai=guardian body=Lamassu
-Guardian Sphinx of Giza | summon | u | ai=shooter body=Sphinx mod=Clever
-Great Sphinx of Giza | summon | l | ai=guardian body=Sphinx mod=Ancient
-White Elephant | summon | r | ai=healer body=Elephant mod=Pale
-Hannibal's War Elephant | summon | r | ai=guardian body=Elephant mod=Brave
-Qilin | summon | l | ai=healer body=Qilin
-Valkyrie Herald | summon | u | ai=shooter body=Valkyrie mod=Swift
-Valkyrie Shieldmaiden | summon | r | ai=guardian body=Valkyrie
-Cherub | summon | c | ai=healer body=Angel mod=Tiny
-Guardian Angel | summon | u | ai=healer body=Angel
-Forbidden City Lion | summon | u | ai=guardian body=Shishi mod=Stone
-Rose-Garden Simurgh | summon | l | ai=healer body=Phoenix mod=Ancient
-Sylph of the Gale | summon | c | ai=bomber body=Sprite mod=Swift
-Roman Legionary | summon | c | ai=guardian body=Knight mod=Iron
-Centurion | summon | u | ai=guardian body=Knight mod=Old
-Crusader Knight | summon | u | ai=guardian body=Knight mod=Brave
-Knight of the Round Table | summon | r | ai=guardian body=Knight mod=Noble
-Sir Galahad, the Pure | summon | l | ai=guardian body=Knight mod=Pale
-El Cid Campeador | summon | l | ai=guardian body=Knight mod=Noble
-Longbowman | summon | c | ai=shooter body=Squire mod=Loyal
-Inca Stonemason | summon | c | ai=guardian body=Squire mod=Stone
-Village Physician | summon | c | ai=healer body=Cleric mod=Gentle
-Battle Cleric | summon | c | ai=bomber body=Cleric mod=Brave
-Vaidya of Taxila | summon | u | ai=healer body=Cleric mod=Gentle
-Hanlin Academy Scribe | summon | c | ai=shooter body=Scholar
-Persian Astronomer | summon | u | ai=shooter body=Scholar mod=Clever
-Astronomer of Copan | summon | u | ai=shooter body=Scholar mod=Old
-Imhotep the Builder | summon | l | ai=healer body=Scholar mod=Ancient
-Terracotta Warrior | summon | u | ai=guardian body=Golem mod=Stone
-Talos, the Bronze Guard | summon | r | ai=guardian body=Golem mod=Iron
+Pegasus Foal | summon | c | body=Pegasus mod=Tiny beh=summoner tier=sturdy speed=slow trait=martyr
+Pegasus | summon | r | body=Pegasus mod=Noble beh=bolt tier=sturdy speed=steady
+Centaur Archer | summon | u | body=Centaur beh=snipe tier=tough speed=steady trait=martyr
+Chiron, Healer of Heroes | summon | l | body=Centaur mod=Ancient beh=mends tier=sturdy speed=slow trait=blessed
+White Unicorn | summon | r | body=Unicorn mod=Pale beh=shields tier=sturdy speed=slow kw=valor trait=blessed
+White Stag | summon | u | body=Stag mod=Pale beh=pounce tier=tough speed=steady kw=mend
+Snow Crane | summon | c | body=Crane beh=twin tier=sturdy speed=steady kw=valor trait=martyr
+Thousand-Year Crane | summon | r | body=Crane mod=Ancient beh=empower tier=sturdy speed=slow kw=mend trait=radiant
+Barn Owl | summon | c | body=Owl beh=diag tier=sturdy speed=steady kw=valor trait=guardian
+Owl of Athena | summon | u | body=Owl mod=Clever beh=diag tier=sturdy speed=steady trait=blessed
+White Wolf | summon | c | body=Wolf mod=Pale beh=pounce tier=tough speed=steady kw=push trait=radiant
+White Wolf Matriarch | summon | r | body=Wolf mod=Noble beh=pounce tier=tough speed=steady trait=rallying
+Talbot Hound | summon | c | body=Hound mod=Loyal beh=dash tier=sturdy speed=slow trait=guardian
+Royal Gyrfalcon | summon | c | body=Hawk mod=Pale beh=diag tier=sturdy speed=quick
+Heraldic Griffin | summon | u | body=Griffin mod=Noble beh=empower tier=tough speed=steady kw=mend trait=guardian
+Lamassu | summon | r | body=Lamassu beh=taunt tier=tough speed=steady kw=mend trait=martyr
+Guardian Sphinx of Giza | summon | u | body=Sphinx mod=Clever beh=guards tier=tough speed=slow trait=rallying
+Great Sphinx of Giza | summon | l | body=Sphinx mod=Ancient beh=guards tier=tough speed=steady trait=radiant
+White Elephant | summon | r | body=Elephant mod=Pale beh=trample tier=tough speed=slow kw=mend trait=rallying
+Hannibal's War Elephant | summon | r | body=Elephant mod=Brave beh=trample tier=tough speed=steady
+Qilin | summon | l | body=Qilin beh=mends tier=sturdy speed=slow kw=mend trait=martyr
+Valkyrie Herald | summon | u | body=Valkyrie mod=Swift beh=empower tier=sturdy speed=steady trait=rallying
+Valkyrie Shieldmaiden | summon | r | body=Valkyrie beh=guards tier=tough speed=steady kw=valor trait=guardian
+Cherub | summon | c | body=Angel mod=Tiny beh=mends tier=sturdy speed=slow kw=push trait=radiant
+Guardian Angel | summon | u | body=Angel beh=taunt tier=tough speed=slow kw=mend trait=blessed
+Forbidden City Lion | summon | u | body=Shishi mod=Stone beh=dash tier=tough speed=steady kw=valor
+Rose-Garden Simurgh | summon | l | body=Phoenix mod=Ancient beh=shields tier=sturdy speed=slow trait=radiant
+Sylph of the Gale | summon | c | body=Sprite mod=Swift beh=cross tier=sturdy speed=slow kw=push trait=rallying
+Roman Legionary | summon | c | body=Knight mod=Iron beh=pounce tier=tough speed=steady kw=valor trait=martyr
+Centurion | summon | u | body=Knight mod=Old beh=guards tier=tough speed=quick trait=guardian
+Crusader Knight | summon | u | body=Knight mod=Brave beh=taunt tier=tough speed=steady kw=push trait=rallying
+Knight of the Round Table | summon | r | body=Knight mod=Noble beh=taunt tier=tough speed=steady kw=valor trait=radiant
+Sir Galahad, the Pure | summon | l | body=Knight mod=Pale beh=guards tier=tough speed=steady kw=mend trait=rallying
+El Cid Campeador | summon | l | body=Knight mod=Noble beh=taunt tier=tough speed=steady trait=guardian
+Longbowman | summon | c | body=Squire mod=Loyal beh=snipe tier=sturdy speed=frantic
+Inca Stonemason | summon | c | body=Squire mod=Stone beh=guards tier=tough speed=steady kw=push
+Village Physician | summon | c | body=Cleric mod=Gentle beh=shields tier=sturdy speed=slow kw=mend trait=guardian
+Battle Cleric | summon | c | body=Cleric mod=Brave beh=zigzag tier=frail speed=quick kw=valor trait=blessed
+Vaidya of Taxila | summon | u | body=Cleric mod=Gentle beh=mends tier=sturdy speed=frantic trait=guardian
+Hanlin Academy Scribe | summon | c | body=Scholar beh=pierce tier=sturdy speed=quick kw=valor trait=rallying
+Persian Astronomer | summon | u | body=Scholar mod=Clever beh=pierce tier=sturdy speed=steady kw=valor
+Astronomer of Copan | summon | u | body=Scholar mod=Old beh=bolt tier=sturdy speed=frantic trait=radiant
+Imhotep the Builder | summon | l | body=Scholar mod=Ancient beh=mends tier=sturdy speed=slow kw=valor trait=guardian
+Terracotta Warrior | summon | u | body=Golem mod=Stone beh=trample tier=tough speed=slow kw=valor trait=blessed
+Talos, the Bronze Guard | summon | r | body=Golem mod=Iron beh=guards tier=tough speed=frantic trait=martyr
 
-Roman Ballista | machine | c | ai=turret mach=Ballista
-Legion Scorpio Engine | machine | c | ai=turret mach=Crossbow
-Mangonel | machine | c | ai=mortar mach=Catapult
-Battering Ram | machine | c | ai=bulwark mach=Engine
-Wicker Mantlet | machine | c | ai=bulwark mach=Barricade
-Legion Camp Palisade | machine | c | ai=bulwark mach=Palisade
-Curtain Wall Rampart | machine | c | ai=bulwark mach=Rampart
-Norman Keep | machine | c | ai=bulwark mach=Bulwark
-Onager Catapult | machine | u | ai=mortar mach=Catapult
-Counterweight Trebuchet | machine | u | ai=mortar mach=Trebuchet
-Zhuge Nu Repeater | machine | u | ai=repeater mach=Repeater
-Siege Tower | machine | u | ai=bulwark mach=Tower
-Motte-and-Bailey Palisade | machine | u | ai=bulwark mach=Palisade
-Marble Bastion | machine | u | ai=bulwark mach=Bastion
-Turtle Ship Bulwark | machine | u | ai=bulwark mach=Bulwark
-Hero's Automaton | machine | u | ai=turret mach=Automaton
-Kite of Han Xin | machine | u | ai=repeater mach=Drone
-Polybolos | machine | r | ai=repeater mach=Repeater
-Helepolis | machine | r | ai=bulwark mach=Tower
-Star Fort Bastion | machine | r | ai=bulwark mach=Bastion
-Claw of Archimedes | machine | r | ai=turret mach=Engine
-Al-Jazari's Automaton | machine | r | ai=repeater mach=Automaton
-Su Song's Clock Tower | machine | r | ai=turret mach=Tower
-Warwolf Trebuchet | machine | l | ai=mortar mach=Trebuchet
-Krak des Chevaliers | machine | l | ai=bulwark mach=Bastion
+Roman Ballista | machine | c | mach=Ballista beh=snipe tier=sturdy speed=slow kw=mend
+Legion Scorpio Engine | machine | c | mach=Crossbow beh=beam tier=sturdy speed=steady kw=mend
+Mangonel | machine | c | mach=Catapult beh=blast tier=sturdy speed=slow kw=push trait=martyr
+Battering Ram | machine | c | mach=Engine beh=zigzag tier=tough speed=quick kw=push trait=martyr
+Wicker Mantlet | machine | c | mach=Barricade beh=wardmaker tier=tough speed=steady kw=valor trait=rallying
+Legion Camp Palisade | machine | c | mach=Palisade beh=wardmaker tier=huge speed=slow kw=mend
+Curtain Wall Rampart | machine | c | mach=Rampart beh=wardmaker tier=huge speed=slow kw=push trait=blessed
+Norman Keep | machine | c | mach=Bulwark beh=wardmaker tier=huge speed=steady
+Onager Catapult | machine | u | mach=Catapult beh=lob tier=sturdy speed=slow kw=push
+Counterweight Trebuchet | machine | u | mach=Trebuchet beh=blast tier=sturdy speed=slow
+Zhuge Nu Repeater | machine | u | mach=Repeater beh=barrage tier=frail speed=frantic kw=valor
+Siege Tower | machine | u | mach=Tower beh=lob tier=tough speed=slow kw=valor trait=guardian
+Motte-and-Bailey Palisade | machine | u | mach=Palisade beh=wardmaker tier=huge speed=slow kw=valor trait=rallying
+Marble Bastion | machine | u | mach=Bastion beh=wardmaker tier=huge speed=steady kw=valor trait=radiant
+Turtle Ship Bulwark | machine | u | mach=Bulwark beh=taunt tier=tough speed=slow
+Hero's Automaton | machine | u | mach=Automaton beh=trample tier=tough speed=slow kw=push
+Kite of Han Xin | machine | u | mach=Drone beh=twin tier=sturdy speed=quick kw=mend trait=martyr
+Polybolos | machine | r | mach=Repeater beh=twin tier=sturdy speed=quick trait=blessed
+Helepolis | machine | r | mach=Tower beh=wardmaker tier=tough speed=steady trait=blessed
+Star Fort Bastion | machine | r | mach=Bastion beh=wardmaker tier=huge speed=slow trait=radiant
+Claw of Archimedes | machine | r | mach=Engine beh=bolt tier=sturdy speed=steady kw=mend trait=rallying
+Al-Jazari's Automaton | machine | r | mach=Automaton beh=trample tier=tough speed=slow trait=martyr
+Su Song's Clock Tower | machine | r | mach=Tower beh=pierce tier=sturdy speed=steady trait=guardian
+Warwolf Trebuchet | machine | l | mach=Trebuchet beh=lob tier=sturdy speed=slow trait=rallying
+Krak des Chevaliers | machine | l | mach=Bastion beh=wardmaker tier=tough speed=steady kw=push trait=martyr
 `,
 
 
 /* ---------------- Green · Verdant: nature, the forest and the wild ---------------- */
 verdant:`
-Hunter's Longbow Shot | strike | c | shape=line kw=-
-Yew Arrow | strike | c | shape=line kw=-
-Woodsman's Throwing Axe | strike | c | shape=line kw=-
-Atlatl Dart | strike | c | shape=line kw=-
-Bear Swipe | strike | c | shape=wedge kw=-
-Volley of the Greenwood | strike | u | shape=missiles kw=-
-Outlaw's Split Arrow | strike | u | shape=diag kw=-
-Jaguar Pounce | strike | u | shape=diag kw=-
-Tiger's Rake | strike | r | shape=wedge kw=-
-Army Ant March | strike | r | shape=all kw=-
-Blowgun Dart | strike | c | shape=line kw=poison
-Viper Strike | strike | c | shape=line kw=poison
-Cobra Venom Spray | strike | u | shape=wedge kw=poison
+Hunter's Longbow Shot | strike | c | shape=line rider=pierce cast=charged
+Yew Arrow | strike | c | shape=spear cast=charged
+Woodsman's Throwing Axe | strike | c | shape=fan rider=onkill cast=charged
+Atlatl Dart | strike | c | shape=snipe rider=crit cast=quick
+Bear Swipe | strike | c | shape=burst rider=crit
+Volley of the Greenwood | strike | u | shape=gun rider=recoil cast=charged
+Outlaw's Split Arrow | strike | u | shape=line
+Jaguar Pounce | strike | u | shape=diag rider=recoil
+Tiger's Rake | strike | r | shape=wedge rider=crit cast=charged
+Army Ant March | strike | r | shape=chain cast=quick
+Blowgun Dart | strike | c | shape=twin kw=poison rider=crit
+Viper Strike | strike | c | shape=line kw=poison rider=recoil cast=charged
+Cobra Venom Spray | strike | u | shape=fan kw=poison rider=pierce
 Hornet Swarm | strike | u | shape=missiles kw=poison
-Komodo Bite | strike | u | shape=line kw=drain
-Curare Needle | strike | u | shape=line kw=slow
-Creeping Ivy | strike | c | shape=row kw=slow
-Root Grasp | strike | c | shape=dig kw=slow
-Anaconda Squeeze | strike | r | shape=line kw=slow
-Liana Whip | strike | c | shape=zigzag kw=pull
-Strangler Fig | strike | u | shape=row kw=pull
-Will-o'-Wisp Lure | strike | u | shape=zigzag kw=pull
-Stag Leap | strike | c | shape=diag kw=push
-Grizzly Charge | strike | u | shape=dig kw=push
-Moose Antler Rush | strike | u | shape=dig kw=push
-Highland Caber Toss | strike | r | shape=line kw=push
-Tanuki Leaf Trick | strike | c | shape=zigzag kw=confuse
-Ratatoskr's Insult | strike | c | shape=zigzag kw=confuse
-Leshy's Wrong Turn | strike | u | shape=zigzag kw=confuse
+Komodo Bite | strike | u | shape=wedge kw=drain cast=quick
+Curare Needle | strike | u | shape=spear kw=slow cast=quick
+Creeping Ivy | strike | c | shape=row kw=slow rider=crit cast=quick
+Root Grasp | strike | c | shape=boomerang kw=slow rider=pierce cast=quick
+Anaconda Squeeze | strike | r | shape=line kw=slow rider=crit
+Liana Whip | strike | c | shape=zigzag kw=pull rider=pierce
+Strangler Fig | strike | u | shape=row kw=pull rider=recoil cast=charged
+Will-o'-Wisp Lure | strike | u | shape=zigzag kw=pull cast=quick
+Stag Leap | strike | c | shape=diag kw=push cast=charged
+Grizzly Charge | strike | u | shape=line kw=push rider=recoil
+Moose Antler Rush | strike | u | shape=spear kw=push
+Highland Caber Toss | strike | r | shape=spear kw=push rider=recoil cast=quick
+Tanuki Leaf Trick | strike | c | shape=chain kw=confuse rider=crit cast=quick
+Ratatoskr's Insult | strike | c | shape=ricochet kw=confuse cast=charged
+Leshy's Wrong Turn | strike | u | shape=zigzag kw=confuse rider=crit cast=charged
 Curupira's Backward Trail | strike | r | shape=zigzag kw=confuse
-Pan's Panic Pipes | strike | r | shape=all kw=confuse
-Monkey Coconut Toss | strike | c | shape=zigzag kw=stun
-Elf-Shot | strike | u | shape=line kw=stun
-Mapinguari Roar | strike | r | shape=wedge kw=stun
-Druid's Golden Sickle | strike | c | shape=line kw=mend
-Ride of the Wild Hunt | strike | l | shape=missiles kw=drain
-Green Knight's Axe | strike | l | shape=wedge kw=valor
-Caledfwlch | strike | l | shape=line kw=valor
+Pan's Panic Pipes | strike | r | shape=all kw=confuse rider=onkill
+Monkey Coconut Toss | strike | c | shape=chain kw=stun rider=crit
+Elf-Shot | strike | u | shape=snipe kw=stun
+Mapinguari Roar | strike | r | shape=shockwave kw=stun cast=quick
+Druid's Golden Sickle | strike | c | shape=boomerang kw=mend rider=pierce
+Ride of the Wild Hunt | strike | l | shape=snipe kw=drain rider=recoil
+Green Knight's Axe | strike | l | shape=wedge kw=valor rider=crit cast=quick
+Caledfwlch | strike | l | shape=line kw=valor rider=pierce
 
-Wasp Nest | lob | c | pattern=burst kw=poison
-Squirting Cucumber | lob | c | pattern=cross kw=poison
-Bog Belch | lob | u | pattern=burst kw=poison
-Dart Frog Leap | lob | u | pattern=single kw=poison
-Rafflesia Bloom | lob | r | pattern=ring kw=poison
-Coconut Drop | lob | c | pattern=single kw=stun
-Falling Deadwood | lob | c | pattern=single kw=stun
-Felled Oak | lob | r | pattern=column kw=stun
-Pinecone Shower | lob | c | pattern=cross kw=-
-Acorn Rain | lob | c | pattern=ring kw=-
-Seed Pod Barrage | lob | c | pattern=row kw=-
-Sticky Sap Glob | lob | c | pattern=burst kw=slow
-Wild Honeycomb Hurl | lob | u | pattern=burst kw=slow
-Kapok Fluff Burst | lob | u | pattern=burst kw=confuse
-Toadstool Ring | lob | u | pattern=ring kw=confuse
-Sasquatch Boulder | lob | u | pattern=single kw=push
-Treefolk Stomp | lob | u | pattern=column kw=push
-Mokele-mbembe's Wake | lob | r | pattern=row kw=push
-Fall of the Great Ceiba | lob | l | pattern=row kw=stun
+Wasp Nest | lob | c | pattern=burst fuse=quick kw=poison after=ground
+Squirting Cucumber | lob | c | pattern=cross kw=poison after=ground
+Bog Belch | lob | u | pattern=burst kw=poison after=knock
+Dart Frog Leap | lob | u | pattern=single fuse=heavy kw=poison
+Rafflesia Bloom | lob | r | pattern=ring fuse=heavy kw=poison after=ground
+Coconut Drop | lob | c | pattern=single kw=stun after=knock
+Falling Deadwood | lob | c | pattern=single fuse=quick kw=stun after=ground
+Felled Oak | lob | r | pattern=column fuse=heavy kw=stun after=knock
+Pinecone Shower | lob | c | pattern=cross
+Acorn Rain | lob | c | pattern=ring fuse=quick after=knock
+Seed Pod Barrage | lob | c | pattern=row after=ground
+Sticky Sap Glob | lob | c | pattern=burst fuse=quick kw=slow
+Wild Honeycomb Hurl | lob | u | pattern=burst kw=slow after=ground
+Kapok Fluff Burst | lob | u | pattern=burst fuse=heavy kw=confuse
+Toadstool Ring | lob | u | pattern=ring fuse=quick kw=confuse after=ground
+Sasquatch Boulder | lob | u | pattern=single fuse=heavy kw=push after=ground
+Treefolk Stomp | lob | u | pattern=column fuse=heavy kw=push
+Mokele-mbembe's Wake | lob | r | pattern=row fuse=heavy kw=push after=knock
+Fall of the Great Ceiba | lob | l | pattern=row fuse=heavy kw=stun after=ground
 
-Hawthorn Hedge | ward | c | ward=thorns
-Holly Thicket | ward | c | ward=thorns
-Briar Rose Hedge | ward | u | ward=thorns
-Stacked Log Wall | ward | c | ward=wall
-Strangler Fig Roots | ward | u | ward=wall
-Living Hedge Maze | ward | r | ward=wall
-Baobab Bulwark | ward | r | ward=wall
-Turtle Shell Guard | ward | c | ward=barrier
-Bear Hide Cloak | ward | c | ward=barrier
-Moss Mantle | ward | c | ward=barrier
-Oak Heartwood Shield | ward | u | ward=barrier
-Ghillie Suit | ward | u | ward=barrier
-Pangolin Scales | ward | u | ward=barrier
-Green Chapel Gate | ward | l | ward=wall
+Hawthorn Hedge | ward | c | form=corridor build=heavy wfx=thorns
+Holly Thicket | ward | c | form=corridor wfx=healing
+Briar Rose Hedge | ward | u | wfx=thorns form=line
+Stacked Log Wall | ward | c | form=rampart len=long
+Strangler Fig Roots | ward | u | build=heavy len=long form=line
+Living Hedge Maze | ward | r | form=shield build=light
+Baobab Bulwark | ward | r | form=rampart build=heavy
+Turtle Shell Guard | ward | c | form=cage
+Bear Hide Cloak | ward | c | form=arc build=heavy len=short
+Moss Mantle | ward | c | form=corridor build=light len=long
+Oak Heartwood Shield | ward | u | form=shield wfx=healing len=long
+Ghillie Suit | ward | u | form=shield len=short
+Pangolin Scales | ward | u | form=shield build=heavy wfx=healing len=short
+Green Chapel Gate | ward | l | form=cage build=light len=short
 
-Pitcher Plant | sentry | c | kw=poison
-Sundew Patch | sentry | c | kw=slow
-Venus Flytrap | sentry | c | kw=pull
-Beltane Maypole | sentry | c | kw=mend
-Puffball Sentinel | sentry | c | kw=confuse
-Carved Stag Post | sentry | c | kw=push
-Treehouse Archer Post | sentry | u | kw=-
-Hornet Hive | sentry | u | kw=poison
-Whispering Oak | sentry | u | kw=confuse
-Druid's Standing Stone | sentry | u | kw=stun
-Weeping Willow | sentry | r | kw=slow
-Mandrake Patch | sentry | r | kw=stun
+Pitcher Plant | sentry | c | beh=bolt tier=sturdy speed=frantic kw=poison trait=ambush
+Sundew Patch | sentry | c | beh=bolt tier=sturdy speed=quick kw=slow
+Venus Flytrap | sentry | c | beh=snipe tier=sturdy speed=steady kw=pull
+Beltane Maypole | sentry | c | beh=pierce tier=sturdy speed=steady kw=poison trait=thorny
+Puffball Sentinel | sentry | c | beh=taunt tier=tough speed=quick trait=camouflage
+Carved Stag Post | sentry | c | beh=beam tier=sturdy speed=steady kw=slow trait=regrows
+Treehouse Archer Post | sentry | u | beh=snipe tier=sturdy speed=slow trait=thorny
+Hornet Hive | sentry | u | beh=barrage tier=frail speed=frantic kw=poison trait=seeds
+Whispering Oak | sentry | u | beh=summoner tier=sturdy speed=slow kw=pull trait=regrows
+Druid's Standing Stone | sentry | u | beh=chain tier=sturdy speed=steady kw=slow
+Weeping Willow | sentry | r | beh=lob tier=sturdy speed=slow kw=slow trait=regrows
+Mandrake Patch | sentry | r | beh=cone tier=sturdy speed=steady trait=camouflage
 
-Bear's Might | boon | c | boon=power
-Stag's Grace | boon | c | boon=haste
-Chameleon Skin | boon | c | boon=dodge
-Wild Herb Poultice | boon | c | boon=heal
-Willow Bark Tea | boon | c | boon=regen
-Mistletoe Sprig | boon | c | boon=gauge
-Shaman's Vision Quest | boon | u | boon=gauge
-Wolfskin Frenzy | boon | u | boon=pact
-Fern Seed Vanishing | boon | u | boon=phase
-Green Man's Blessing | boon | u | boon=courage
-Tapio's Favour | boon | r | boon=power
-Demeter's Bounty | boon | r | boon=heal
-Green Knight's Girdle | boon | l | boon=intervene
+Bear's Might | boon | c | boon=power len=long side=cleanse
+Stag's Grace | boon | c | boon=haste len=short
+Chameleon Skin | boon | c | boon=dodge side=sprout
+Wild Herb Poultice | boon | c | boon=haste side=cleanse
+Willow Bark Tea | boon | c | boon=regen len=long timing=delayed
+Mistletoe Sprig | boon | c | boon=gauge side=sprout timing=delayed
+Shaman's Vision Quest | boon | u | boon=gauge timing=echo
+Wolfskin Frenzy | boon | u | boon=pact len=long timing=echo
+Fern Seed Vanishing | boon | u | boon=phase len=short timing=delayed
+Green Man's Blessing | boon | u | boon=courage len=long side=cleanse timing=delayed
+Tapio's Favour | boon | r | boon=power len=short side=cleanse timing=echo
+Demeter's Bounty | boon | r | boon=heal side=cleanse timing=delayed
+Green Knight's Girdle | boon | l | boon=intervene timing=delayed
 
-Quiver of Yew Arrows | charge | c | fx=bolt kw=-
-Fletcher's Bundle | charge | c | fx=bolt kw=-
-Acorn Sack | charge | c | fx=lob kw=-
-Chestnut Basket | charge | c | fx=lob kw=stun
-Hunter's Sling Pouch | charge | c | fx=bolt kw=stun
-Poison Dart Pouch | charge | c | fx=bolt kw=poison
-Herb Bundle | charge | c | fx=bolt kw=mend
-Monkey's Fruit Stash | charge | c | fx=lob kw=confuse
-Seed Satchel | charge | c | fx=lob kw=slow
-Hornet Jar | charge | u | fx=bolt kw=poison
-Mushroom Basket | charge | u | fx=lob kw=poison
-Bola Set | charge | u | fx=bolt kw=slow
-Gourd of Pine Sap | charge | u | fx=lob kw=slow
-Marsh Leech Pouch | charge | u | fx=bolt kw=drain
-Elven Moonshaft Quiver | charge | r | fx=bolt kw=-
-Silver Arrow Prize | charge | r | fx=bolt kw=-
-Annwn Hunting Quiver | charge | r | fx=bolt kw=drain
-Horn of Plenty | charge | l | fx=lob kw=mend
+Quiver of Yew Arrows | charge | c | shot=bolt uses=many kw=poison edge=pierce
+Fletcher's Bundle | charge | c | shot=bolt uses=few edge=splash
+Acorn Sack | charge | c | shot=lob edge=crit
+Chestnut Basket | charge | c | shot=lob kw=stun edge=pierce
+Hunter's Sling Pouch | charge | c | shot=bolt uses=few kw=stun
+Poison Dart Pouch | charge | c | shot=bolt uses=few kw=poison edge=crit
+Herb Bundle | charge | c | shot=bolt uses=few kw=mend edge=pierce
+Monkey's Fruit Stash | charge | c | shot=lob uses=few kw=confuse
+Seed Satchel | charge | c | shot=lob uses=many kw=slow edge=crit
+Hornet Jar | charge | u | shot=bolt kw=poison
+Mushroom Basket | charge | u | shot=lob kw=poison edge=splash
+Bola Set | charge | u | shot=bolt kw=slow edge=splash
+Gourd of Pine Sap | charge | u | shot=lob kw=slow
+Marsh Leech Pouch | charge | u | shot=bolt kw=drain edge=crit
+Elven Moonshaft Quiver | charge | r | shot=bolt uses=many
+Silver Arrow Prize | charge | r | shot=bolt edge=pierce
+Annwn Hunting Quiver | charge | r | shot=bolt uses=many kw=drain edge=splash
+Horn of Plenty | charge | l | shot=lob uses=many kw=mend
 
 Tracker's Instinct | utility | c | util=draw
 Forest Spring | utility | c | util=cleanse
@@ -1302,28 +1302,28 @@ Mycelium Network | utility | u | util=copy
 Lyrebird Mimicry | utility | r | util=copy
 Anansi's Bag of Tales | utility | r | util=draw
 
-Hunter's Net | trap | c | trap=snare kw=-
-Root Tripwire | trap | c | trap=snare kw=pull
-Bear Pit | trap | c | trap=spike kw=-
-Punji Stakes | trap | c | trap=spike kw=poison
+Hunter's Net | trap | c | trap=snare len=short size=three
+Root Tripwire | trap | c | trap=snare len=long
+Bear Pit | trap | c | trap=spike kw=poison len=long size=three
+Punji Stakes | trap | c | trap=spike kw=slow len=short size=three
 Stinkhorn Patch | trap | c | trap=blast kw=poison
-Pitfall of Thorns | trap | u | trap=spike kw=-
-Deadfall | trap | u | trap=blast kw=stun
+Pitfall of Thorns | trap | u | trap=spike size=three
+Deadfall | trap | u | trap=blast kw=stun len=short size=three
 Fairy Ring | trap | u | trap=snare kw=confuse
-Peat Bog Mire | trap | u | trap=snare kw=slow
-Giant Puffball | trap | u | trap=blast kw=confuse
-Strangler Vine Snare | trap | r | trap=snare kw=pull
-Pixie-Led Path | trap | r | trap=snare kw=confuse
+Peat Bog Mire | trap | u | trap=snare kw=slow size=three
+Giant Puffball | trap | u | trap=blast kw=confuse size=three
+Strangler Vine Snare | trap | r | trap=snare kw=pull len=short
+Pixie-Led Path | trap | r | trap=snare kw=confuse len=long size=three
 
-Bramble Thicket | environment | c | env=bramble pattern=burst
-Tangled Undergrowth | environment | c | env=bramble pattern=row
-Kudzu Spread | environment | c | env=bramble pattern=cross
-Heather Moor | environment | c | env=bramble pattern=row
-Rainforest Canopy | environment | u | env=bramble pattern=cross
-Mire of the Fens | environment | u | env=bramble pattern=column
+Bramble Thicket | environment | c | env=bramble pattern=burst len=long kw=poison
+Tangled Undergrowth | environment | c | env=bramble pattern=row kw=poison
+Kudzu Spread | environment | c | env=bramble pattern=cross kw=slow
+Heather Moor | environment | c | env=bramble pattern=row len=short kw=slow
+Rainforest Canopy | environment | u | env=bramble pattern=cross len=short
+Mire of the Fens | environment | u | env=bramble pattern=column len=long
 Stampede | environment | u | env=tremor pattern=row
-Birnam Wood Marches | environment | r | env=tremor pattern=column
-Ent Moot | environment | r | env=tremor pattern=burst
+Birnam Wood Marches | environment | r | env=tremor pattern=column len=short
+Ent Moot | environment | r | env=tremor pattern=burst len=long
 Primeval Wildwood | environment | l | env=bramble pattern=burst
 
 Antlers of the Forest King | piece | l | kw=push
@@ -1333,73 +1333,73 @@ Pipes of the Goat-Footed | piece | l | kw=confuse
 Pelt of the Jaguar King | piece | l | kw=-
 Mask of the Green Man | piece | l | kw=slow
 
-Elder Ent | summon | r | ai=guardian body=Ent mod=Ancient
-Jack-in-the-Green | summon | r | ai=guardian body=Ent mod=Mossy
-Leshy of the Birchwood | summon | r | ai=guardian body=Leshy
-Kodama | summon | c | ai=healer body=Kodama
-Oak Dryad | summon | u | ai=healer body=Fairy mod=Gentle
-Pixie Swarm | summon | c | ai=shooter body=Fairy mod=Tiny
-Robin Goodfellow | summon | r | ai=shooter body=Fairy mod=Sly
-Queen Mab | summon | l | ai=healer body=Fairy mod=Noble
-Will-o'-Wisp | summon | c | ai=bomber body=Spirit mod=Pale
-Faun Reveler | summon | c | ai=healer body=Satyr mod=Lucky
-Elven Pathfinder | summon | c | ai=shooter body=Elf
-Patupaiarehe Mist Folk | summon | u | ai=shooter body=Elf mod=Sly
-Curupira | summon | r | ai=shooter body=Elf mod=Wild
-Chullachaqui | summon | u | ai=bomber body=Duende mod=Sly
-Alux Field Keeper | summon | c | ai=guardian body=Duende mod=Mossy
-Grove Druid | summon | c | ai=healer body=Druid
-Rainforest Curandero | summon | u | ai=healer body=Druid mod=Wild
-Archdruid of the Oaks | summon | r | ai=healer body=Druid mod=Ancient
-Greenwood Outlaw | summon | c | ai=shooter body=Squire mod=Sly
-Hooded Outlaw Captain | summon | r | ai=shooter body=Squire mod=Clever
-Mountain Man Trapper | summon | c | ai=guardian body=Squire mod=Scrappy
-Sir Gawain | summon | r | ai=guardian body=Knight mod=Brave
-The Green Knight | summon | l | ai=guardian body=Knight mod=Mossy
-Arthur, the Once King | summon | l | ai=guardian body=Knight mod=Noble
-Gwyn ap Nudd | summon | l | ai=shooter body=Knight mod=Pale
-Cwn Annwn Hound | summon | u | ai=bomber body=Hound mod=Pale
-Herne the Hunter | summon | l | ai=shooter body=Deer mod=Ancient
-Tapio, King of the Forest | summon | l | ai=guardian body=Leshy mod=Mossy
-Sasquatch | summon | u | ai=guardian body=Sasquatch
-Yowie | summon | u | ai=bomber body=Sasquatch mod=Feral
-Basajaun | summon | r | ai=guardian body=Sasquatch mod=Noble
-Kapre Tree Giant | summon | r | ai=bomber body=Sasquatch mod=Old
-Orang Pendek | summon | c | ai=shooter body=Ape mod=Tiny
-Mapinguari | summon | r | ai=guardian body=Ape mod=Dire
-Old Man of the Forest | summon | u | ai=healer body=Ape mod=Old
-Capuchin Thief | summon | c | ai=bomber body=Monkey mod=Clever
-Monkey King's Vanguard | summon | u | ai=guardian body=Monkey mod=Brave
-Tanuki Drummer | summon | c | ai=bomber body=Tanuki mod=Lucky
-Grizzly Matriarch | summon | u | ai=guardian body=Bear mod=Dire
-Otso the Honey-Paw | summon | r | ai=guardian body=Bear mod=Ancient
-Bull Moose | summon | u | ai=guardian body=Moose
-Dappled Fawn | summon | c | ai=healer body=Deer mod=Gentle
-Balam Jaguar Knight | summon | r | ai=guardian body=Panther mod=Noble
-Clouded Leopard | summon | c | ai=shooter body=Panther mod=Swift
-Sundarbans Tiger | summon | r | ai=guardian body=Tiger mod=Dire
-Horangi Mountain Tiger | summon | u | ai=guardian body=Tiger mod=Old
-Greenwood Wolf Pack | summon | c | ai=bomber body=Wolf mod=Wild
-Wild Tusker Boar | summon | c | ai=guardian body=Boar
-Twrch Trwyth | summon | l | ai=guardian body=Boar mod=Dire
-Komodo Monitor | summon | r | ai=guardian body=Lizard mod=Dire
-Fer-de-Lance | summon | c | ai=shooter body=Serpent mod=Swift
-Green Anaconda | summon | r | ai=guardian body=Serpent mod=Dire
-Poison Dart Frog | summon | c | ai=bomber body=Toad mod=Tiny
-Army Ant Soldier | summon | c | ai=bomber body=Ant mod=Hungry
-Giant Forest Hornet | summon | c | ai=bomber body=Hornet
-Sporeling Thallid | summon | c | ai=bomber body=Mushroom
-Thallid Germinator | summon | u | ai=healer body=Mushroom
-Fungal Thallid Brute | summon | r | ai=guardian body=Mushroom mod=Dire
-Moss-Shelled Tortoise | summon | c | ai=guardian body=Tortoise mod=Mossy
-Galapagos Giant Tortoise | summon | r | ai=guardian body=Tortoise mod=Ancient
-Resplendent Quetzal | summon | u | ai=healer body=Quetzal
-Mokele-mbembe | summon | l | ai=guardian body=Sauropod
+Elder Ent | summon | r | body=Ent mod=Ancient beh=lob tier=tough speed=slow trait=regrows
+Jack-in-the-Green | summon | r | body=Ent mod=Mossy beh=trample tier=tough speed=steady kw=pull
+Leshy of the Birchwood | summon | r | body=Leshy beh=guards tier=tough speed=quick trait=seeds
+Kodama | summon | c | body=Kodama beh=mends tier=sturdy speed=slow kw=drain
+Oak Dryad | summon | u | body=Fairy mod=Gentle beh=lob tier=sturdy speed=quick trait=regrows
+Pixie Swarm | summon | c | body=Fairy mod=Tiny beh=twin tier=frail speed=frantic kw=drain
+Robin Goodfellow | summon | r | body=Fairy mod=Sly beh=bolt tier=sturdy speed=steady kw=slow trait=ambush
+Queen Mab | summon | l | body=Fairy mod=Noble beh=summoner tier=sturdy speed=slow trait=seeds
+Will-o'-Wisp | summon | c | body=Spirit mod=Pale beh=zigzag tier=frail speed=quick
+Faun Reveler | summon | c | body=Satyr mod=Lucky beh=shields tier=sturdy speed=slow kw=pull
+Elven Pathfinder | summon | c | body=Elf beh=twin tier=sturdy speed=steady trait=seeds
+Patupaiarehe Mist Folk | summon | u | body=Elf mod=Sly beh=pierce tier=sturdy speed=steady
+Curupira | summon | r | body=Elf mod=Wild beh=pierce tier=sturdy speed=steady kw=pull trait=camouflage
+Chullachaqui | summon | u | body=Duende mod=Sly beh=blast tier=sturdy speed=slow kw=poison trait=thorny
+Alux Field Keeper | summon | c | body=Duende mod=Mossy beh=guards tier=tough speed=frantic kw=poison trait=ambush
+Grove Druid | summon | c | body=Druid beh=chain tier=sturdy speed=slow kw=pull trait=thorny
+Rainforest Curandero | summon | u | body=Druid mod=Wild beh=mends tier=sturdy speed=slow trait=camouflage
+Archdruid of the Oaks | summon | r | body=Druid mod=Ancient beh=chain tier=sturdy speed=slow kw=drain trait=regrows
+Greenwood Outlaw | summon | c | body=Squire mod=Sly beh=pierce tier=sturdy speed=frantic kw=poison trait=camouflage
+Hooded Outlaw Captain | summon | r | body=Squire mod=Clever beh=bolt tier=sturdy speed=steady kw=poison
+Mountain Man Trapper | summon | c | body=Squire mod=Scrappy beh=taunt tier=tough speed=steady kw=slow
+Sir Gawain | summon | r | body=Knight mod=Brave beh=taunt tier=tough speed=steady kw=pull trait=seeds
+The Green Knight | summon | l | body=Knight mod=Mossy beh=guards tier=tough speed=steady trait=ambush
+Arthur, the Once King | summon | l | body=Knight mod=Noble beh=guards tier=tough speed=steady kw=slow trait=camouflage
+Gwyn ap Nudd | summon | l | body=Knight mod=Pale beh=bolt tier=sturdy speed=steady trait=thorny
+Cwn Annwn Hound | summon | u | body=Hound mod=Pale beh=dash tier=sturdy speed=slow trait=regrows
+Herne the Hunter | summon | l | body=Deer mod=Ancient beh=snipe tier=sturdy speed=steady trait=regrows
+Tapio, King of the Forest | summon | l | body=Leshy mod=Mossy beh=taunt tier=tough speed=steady kw=drain trait=ambush
+Sasquatch | summon | u | body=Sasquatch beh=trample tier=huge speed=slow
+Yowie | summon | u | body=Sasquatch mod=Feral beh=cross tier=sturdy speed=slow kw=poison
+Basajaun | summon | r | body=Sasquatch mod=Noble beh=trample tier=tough speed=steady trait=camouflage
+Kapre Tree Giant | summon | r | body=Sasquatch mod=Old beh=trample tier=huge speed=slow kw=drain trait=regrows
+Orang Pendek | summon | c | body=Ape mod=Tiny beh=twin tier=sturdy speed=steady kw=drain trait=ambush
+Mapinguari | summon | r | body=Ape mod=Dire beh=pounce tier=tough speed=steady
+Old Man of the Forest | summon | u | body=Ape mod=Old beh=mends tier=sturdy speed=slow kw=poison trait=ambush
+Capuchin Thief | summon | c | body=Monkey mod=Clever beh=dash tier=sturdy speed=slow kw=slow trait=ambush
+Monkey King's Vanguard | summon | u | body=Monkey mod=Brave beh=shields tier=tough speed=steady kw=pull trait=thorny
+Tanuki Drummer | summon | c | body=Tanuki mod=Lucky beh=empower tier=sturdy speed=slow kw=drain trait=thorny
+Grizzly Matriarch | summon | u | body=Bear mod=Dire beh=summoner tier=tough speed=steady kw=poison trait=thorny
+Otso the Honey-Paw | summon | r | body=Bear mod=Ancient beh=guards tier=tough speed=steady kw=drain
+Bull Moose | summon | u | body=Moose beh=trample tier=tough speed=steady kw=drain trait=seeds
+Dappled Fawn | summon | c | body=Deer mod=Gentle beh=mends tier=sturdy speed=slow kw=pull trait=seeds
+Balam Jaguar Knight | summon | r | body=Panther mod=Noble beh=taunt tier=tough speed=steady kw=poison trait=camouflage
+Clouded Leopard | summon | c | body=Panther mod=Swift beh=pounce tier=sturdy speed=steady trait=ambush
+Sundarbans Tiger | summon | r | body=Tiger mod=Dire beh=pounce tier=tough speed=steady kw=poison trait=ambush
+Horangi Mountain Tiger | summon | u | body=Tiger mod=Old beh=dash tier=tough speed=steady kw=drain trait=camouflage
+Greenwood Wolf Pack | summon | c | body=Wolf mod=Wild beh=dash tier=sturdy speed=quick trait=ambush
+Wild Tusker Boar | summon | c | body=Boar beh=trample tier=tough speed=steady kw=poison trait=regrows
+Twrch Trwyth | summon | l | body=Boar mod=Dire beh=guards tier=tough speed=steady kw=poison trait=seeds
+Komodo Monitor | summon | r | body=Lizard mod=Dire beh=pounce tier=tough speed=steady kw=drain trait=thorny
+Fer-de-Lance | summon | c | body=Serpent mod=Swift beh=bolt tier=sturdy speed=steady kw=drain trait=camouflage
+Green Anaconda | summon | r | body=Serpent mod=Dire beh=wardmaker tier=tough speed=steady kw=poison
+Poison Dart Frog | summon | c | body=Toad mod=Tiny beh=cross tier=sturdy speed=frantic trait=regrows
+Army Ant Soldier | summon | c | body=Ant mod=Hungry beh=guards tier=tough speed=slow
+Giant Forest Hornet | summon | c | body=Hornet beh=barrage tier=frail speed=frantic kw=drain trait=camouflage
+Sporeling Thallid | summon | c | body=Mushroom beh=blast tier=sturdy speed=quick kw=poison trait=seeds
+Thallid Germinator | summon | u | body=Mushroom beh=blast tier=sturdy speed=slow kw=slow trait=seeds
+Fungal Thallid Brute | summon | r | body=Mushroom mod=Dire beh=pounce tier=tough speed=steady kw=slow trait=seeds
+Moss-Shelled Tortoise | summon | c | body=Tortoise mod=Mossy beh=wardmaker tier=tough speed=slow trait=seeds
+Galapagos Giant Tortoise | summon | r | body=Tortoise mod=Ancient beh=trample tier=huge speed=slow kw=pull trait=thorny
+Resplendent Quetzal | summon | u | body=Quetzal beh=guards tier=sturdy speed=slow kw=poison trait=regrows
+Mokele-mbembe | summon | l | body=Sauropod beh=taunt tier=tough speed=steady trait=thorny
 
-Hunter's Crossbow Rig | machine | c | ai=turret mach=Crossbow
-Sharpened Log Palisade | machine | c | ai=bulwark mach=Palisade
-Sapling Catapult | machine | u | ai=mortar mach=Catapult
-Treehouse Lookout | machine | u | ai=turret mach=Tower
+Hunter's Crossbow Rig | machine | c | mach=Crossbow beh=snipe tier=sturdy speed=steady kw=poison trait=ambush
+Sharpened Log Palisade | machine | c | mach=Palisade beh=wardmaker tier=huge speed=slow kw=poison trait=camouflage
+Sapling Catapult | machine | u | mach=Catapult beh=blast tier=sturdy speed=slow trait=ambush
+Treehouse Lookout | machine | u | mach=Tower beh=lob tier=sturdy speed=slow
 `,
 
 /* ---------------- Gray · the normal type ----------------
@@ -1409,238 +1409,238 @@ Treehouse Lookout | machine | u | ai=turret mach=Tower
    Guardian: Gray guardians step in front of hits aimed at you. Legend: a Gray hero makes your
    other Gray creatures stronger while it stands. */
 gray:`
-Living Armor | summon | c | ai=guardian body=Armor
-Empty Helm Sentinel | summon | c | ai=guardian body=Armor
-Haunted Plate | summon | u | ai=guardian body=Armor mod=Grim
-Rusted Suit of Armor | summon | c | ai=guardian body=Armor mod=Old
-Gilded Parade Armor | summon | u | ai=guardian body=Armor mod=Noble
-Black Knight's Armor | summon | r | ai=guardian body=Armor mod=Dire
-Tin Soldier | summon | c | ai=guardian body=Squire mod=Tiny
-Toy Knight | summon | c | ai=guardian body=Knight mod=Tiny
-Clay Golem of Prague | summon | r | ai=guardian body=Golem
-Mud Golem | summon | c | ai=guardian body=Golem mod=Mossy
-Stone Golem | summon | c | ai=guardian body=Golem mod=Stone
-Iron Golem | summon | u | ai=guardian body=Golem mod=Iron
-Talos, the Bronze Giant | summon | l | ai=guardian body=Golem mod=Iron legend=1
-Cathedral Gargoyle | summon | c | ai=guardian body=Gargoyle
-Grotesque | summon | c | ai=guardian body=Gargoyle mod=Grim
-Waterspout Gargoyle | summon | u | ai=guardian body=Gargoyle mod=Old
-Shisa | summon | c | ai=guardian body=Shishi
-Komainu | summon | u | ai=guardian body=Shishi mod=Stone
-Guardian Lion of the Gate | summon | r | ai=guardian body=Shishi mod=Noble
-Nio Temple Guardian | summon | r | ai=guardian body=Oni mod=Stone
-Dvarapala | summon | u | ai=guardian body=Hero mod=Stone
-Moai Watcher | summon | r | ai=guardian body=Golem mod=Ancient
-Terracotta Spearman | summon | c | ai=guardian body=Squire mod=Stone
-Terracotta General | summon | r | ai=guardian body=Knight mod=Stone
-Ushabti Servant | summon | c | ai=guardian body=Squire mod=Tiny
-Scarecrow Sentinel | summon | c | ai=guardian body=Squire mod=Scrappy
-Shield Maiden | summon | u | ai=guardian body=Heroine
-Hoplite | summon | c | ai=guardian body=Knight
-Roman Centurion | summon | u | ai=guardian body=Knight mod=Brave
-Gatehouse Sergeant | summon | c | ai=guardian body=Squire
-Castle Warden | summon | u | ai=guardian body=Knight mod=Old
-Watchtower Guard | summon | c | ai=guardian body=Squire mod=Loyal
-Loyal Mastiff | summon | c | ai=guardian body=Hound mod=Loyal
-Kangal Shepherd Dog | summon | u | ai=guardian body=Hound mod=Brave
-Old Gray Bear | summon | u | ai=guardian body=Bear mod=Old
-Cave Bear | summon | c | ai=guardian body=Bear
-Wild Boar | summon | c | ai=guardian body=Boar mod=Wild
-Great Tortoise | summon | u | ai=guardian body=Tortoise mod=Ancient
-Snapping Turtle | summon | c | ai=guardian body=Turtle mod=Hungry
-Armadillo Knight | summon | u | ai=guardian body=Beetle mod=Brave
-Ironback Beetle | summon | c | ai=guardian body=Beetle mod=Iron
-Mimic Chest | summon | u | ai=guardian body=Mimic
-War Elephant | summon | r | ai=guardian body=Elephant
-Ox of the Plough | summon | c | ai=guardian body=Bull mod=Gentle
-Aurochs | summon | u | ai=guardian body=Bull mod=Ancient
-Wandering Ronin | summon | u | ai=guardian body=Hero mod=Scrappy
-Bridge Troll | summon | u | ai=guardian body=Ogre mod=Mossy
-Ettin | summon | r | ai=guardian body=Ogre mod=Dire
+Living Armor | summon | c | body=Armor beh=guards tier=tough speed=quick stance=rear
+Empty Helm Sentinel | summon | c | body=Armor beh=taunt tier=tough speed=frantic trait=drilled stance=rear
+Haunted Plate | summon | u | body=Armor mod=Grim beh=wardmaker tier=tough speed=steady trait=loyal stance=escort
+Rusted Suit of Armor | summon | c | body=Armor mod=Old beh=guards tier=frail speed=steady stance=rear
+Gilded Parade Armor | summon | u | body=Armor mod=Noble beh=taunt tier=tough speed=slow stance=front
+Black Knight's Armor | summon | r | body=Armor mod=Dire beh=guards tier=tough speed=steady trait=steadfast stance=rear
+Tin Soldier | summon | c | body=Squire mod=Tiny beh=taunt tier=huge speed=steady trait=veteran stance=escort
+Toy Knight | summon | c | body=Knight mod=Tiny beh=trample tier=tough speed=steady trait=loyal stance=rear
+Clay Golem of Prague | summon | r | body=Golem beh=trample tier=tough speed=slow trait=loyal stance=front
+Mud Golem | summon | c | body=Golem mod=Mossy beh=bolt tier=tough speed=slow trait=laststand stance=escort
+Stone Golem | summon | c | body=Golem mod=Stone beh=bolt tier=tough speed=slow trait=drilled stance=rear
+Iron Golem | summon | u | body=Golem mod=Iron beh=guards tier=tough speed=slow stance=escort
+Talos, the Bronze Giant | summon | l | body=Golem mod=Iron legend=1 beh=trample tier=huge speed=slow trait=drilled stance=front
+Cathedral Gargoyle | summon | c | body=Gargoyle beh=dash tier=tough speed=steady trait=steadfast stance=escort
+Grotesque | summon | c | body=Gargoyle mod=Grim beh=wardmaker tier=tough speed=quick trait=veteran stance=front
+Waterspout Gargoyle | summon | u | body=Gargoyle mod=Old beh=wardmaker tier=tough speed=steady trait=laststand stance=rear
+Shisa | summon | c | body=Shishi beh=wardmaker tier=tough speed=quick stance=escort
+Komainu | summon | u | body=Shishi mod=Stone beh=taunt tier=frail speed=steady trait=veteran stance=front
+Guardian Lion of the Gate | summon | r | body=Shishi mod=Noble beh=dash tier=tough speed=slow trait=laststand stance=front
+Nio Temple Guardian | summon | r | body=Oni mod=Stone beh=taunt tier=huge speed=steady trait=loyal stance=front
+Dvarapala | summon | u | body=Hero mod=Stone beh=wardmaker tier=tough speed=frantic trait=loyal stance=front
+Moai Watcher | summon | r | body=Golem mod=Ancient beh=trample tier=tough speed=slow trait=steadfast stance=escort
+Terracotta Spearman | summon | c | body=Squire mod=Stone beh=bolt tier=tough speed=frantic trait=steadfast stance=front
+Terracotta General | summon | r | body=Knight mod=Stone beh=guards tier=tough speed=slow trait=veteran stance=rear
+Ushabti Servant | summon | c | body=Squire mod=Tiny beh=guards tier=huge speed=steady stance=escort
+Scarecrow Sentinel | summon | c | body=Squire mod=Scrappy beh=taunt tier=tough speed=frantic stance=escort
+Shield Maiden | summon | u | body=Heroine beh=taunt tier=tough speed=frantic trait=laststand stance=front
+Hoplite | summon | c | body=Knight beh=guards tier=tough speed=frantic trait=laststand stance=rear
+Roman Centurion | summon | u | body=Knight mod=Brave beh=guards tier=huge speed=steady trait=veteran stance=front
+Gatehouse Sergeant | summon | c | body=Squire beh=wardmaker tier=huge speed=slow trait=steadfast stance=front
+Castle Warden | summon | u | body=Knight mod=Old beh=taunt tier=tough speed=quick trait=steadfast stance=escort
+Watchtower Guard | summon | c | body=Squire mod=Loyal beh=taunt tier=tough speed=quick trait=laststand stance=rear
+Loyal Mastiff | summon | c | body=Hound mod=Loyal beh=pounce tier=frail speed=steady trait=loyal stance=front
+Kangal Shepherd Dog | summon | u | body=Hound mod=Brave beh=dash tier=tough speed=steady trait=veteran stance=front
+Old Gray Bear | summon | u | body=Bear mod=Old beh=pounce tier=tough speed=steady trait=veteran stance=escort
+Cave Bear | summon | c | body=Bear beh=pounce tier=tough speed=quick trait=drilled stance=rear
+Wild Boar | summon | c | body=Boar mod=Wild beh=trample tier=huge speed=steady stance=front
+Great Tortoise | summon | u | body=Tortoise mod=Ancient beh=wardmaker tier=tough speed=slow trait=drilled stance=front
+Snapping Turtle | summon | c | body=Turtle mod=Hungry beh=wardmaker tier=tough speed=frantic trait=drilled stance=escort
+Armadillo Knight | summon | u | body=Beetle mod=Brave beh=wardmaker tier=tough speed=slow trait=loyal stance=rear
+Ironback Beetle | summon | c | body=Beetle mod=Iron beh=wardmaker tier=huge speed=slow trait=loyal stance=escort
+Mimic Chest | summon | u | body=Mimic beh=guards tier=frail speed=steady trait=steadfast stance=front
+War Elephant | summon | r | body=Elephant beh=trample tier=tough speed=steady trait=drilled stance=front
+Ox of the Plough | summon | c | body=Bull mod=Gentle beh=trample tier=frail speed=steady trait=laststand stance=front
+Aurochs | summon | u | body=Bull mod=Ancient beh=trample tier=tough speed=steady stance=escort
+Wandering Ronin | summon | u | body=Hero mod=Scrappy beh=pounce tier=tough speed=steady stance=rear
+Bridge Troll | summon | u | body=Ogre mod=Mossy beh=pounce tier=tough speed=frantic stance=front
+Ettin | summon | r | body=Ogre mod=Dire beh=pounce tier=huge speed=slow trait=laststand stance=front
 
-Longbow Yeoman | summon | c | ai=shooter body=Hero
-Village Archer | summon | c | ai=shooter body=Squire
-Shepherd Slinger | summon | c | ai=shooter body=Squire mod=Swift
-Scythian Horse Archer | summon | u | ai=shooter body=Centaur
-Steppe Rider | summon | u | ai=shooter body=Horse mod=Swift
-Amazon Archer | summon | u | ai=shooter body=Heroine
-Mounted Bowman | summon | c | ai=shooter body=Horse
-Javelin Thrower | summon | c | ai=shooter body=Hero mod=Swift
-Spear Hunter | summon | c | ai=shooter body=Hero mod=Wild
-Woodcutter | summon | c | ai=shooter body=Squire mod=Old
-Bounty Hunter | summon | u | ai=shooter body=Hero mod=Sly
-Wandering Ranger | summon | u | ai=shooter body=Heroine mod=Swift
-Tracker | summon | c | ai=shooter body=Hero mod=Clever
-Falconer | summon | u | ai=shooter body=Hero mod=Noble
-Hunting Falcon | summon | c | ai=shooter body=Hawk mod=Swift
-Peregrine | summon | c | ai=shooter body=Hawk
-Kestrel | summon | c | ai=shooter body=Hawk mod=Tiny
-Osprey | summon | c | ai=shooter body=Hawk mod=Hungry
-Golden Eagle | summon | u | ai=shooter body=Hawk mod=Noble
-Messenger Pigeon | summon | c | ai=shooter body=Hawk mod=Gentle
-Night Owl Scout | summon | c | ai=shooter body=Owl
-Horned Owl | summon | u | ai=shooter body=Owl mod=Grim
-Quill Porcupine | summon | c | ai=shooter body=Boar mod=Scrappy
-Spiny Hedgehog | summon | c | ai=shooter body=Mole mod=Scrappy
-Spitting Llama | summon | c | ai=shooter body=Camel mod=Sly
-Bactrian Camel | summon | u | ai=shooter body=Camel mod=Old
-Gray Fox | summon | c | ai=shooter body=Fox mod=Sly
-Plains Wolf | summon | c | ai=shooter body=Wolf
-Lone Wolf | summon | u | ai=shooter body=Wolf mod=Scrappy
-Alpha Wolf | summon | r | ai=shooter body=Wolf mod=Dire
-Hunting Hound | summon | c | ai=shooter body=Hound
-Alley Cat | summon | c | ai=shooter body=Cat mod=Scrappy
-Lynx | summon | u | ai=shooter body=Cat mod=Wild
-Wildcat | summon | c | ai=shooter body=Cat mod=Feral
-Sea Eagle | summon | u | ai=shooter body=Hawk mod=Dire
-Mountain Goat | summon | c | ai=shooter body=Stag mod=Scrappy
-Ibex | summon | u | ai=shooter body=Stag mod=Wild
-Hippogriff | summon | u | ai=shooter body=Hippogriff
-Hippogriff Rider | summon | r | ai=shooter body=Hippogriff mod=Noble
-War Griffin | summon | r | ai=shooter body=Griffin mod=Brave
-Royal Griffin | summon | l | ai=shooter body=Griffin mod=Noble
-Sleipnir, the Eight-Legged Steed | summon | l | ai=shooter body=Horse mod=Swift
-Arion, the Swift Horse | summon | r | ai=shooter body=Horse mod=Swift
-Bayard, the Magic Bay | summon | r | ai=shooter body=Horse mod=Lucky
-Uchchaihshravas | summon | l | ai=shooter body=Pegasus mod=Noble
-Wandering Bard | summon | c | ai=shooter body=Hero mod=Gentle
-Crossbow Militia | summon | c | ai=shooter body=Squire mod=Brave
-Pikeman | summon | c | ai=shooter body=Knight
-Sellsword | summon | u | ai=shooter body=Hero mod=Scrappy
-Veteran Captain | summon | r | ai=shooter body=Knight mod=Old
-Errant Knight | summon | u | ai=shooter body=Knight mod=Brave
-Cossack Rider | summon | u | ai=shooter body=Horse mod=Brave
-Gaucho with Bolas | summon | u | ai=shooter body=Hero mod=Wild
-Mongol Outrider | summon | r | ai=shooter body=Horse mod=Dire
-Maasai Spearman | summon | u | ai=shooter body=Hero mod=Brave
-Zulu Impi | summon | u | ai=shooter body=Hero mod=Swift
-Viking Raider | summon | c | ai=shooter body=Hero mod=Feral
+Longbow Yeoman | summon | c | body=Hero beh=snipe tier=huge speed=steady trait=veteran stance=rear
+Village Archer | summon | c | body=Squire beh=snipe tier=frail speed=steady stance=front
+Shepherd Slinger | summon | c | body=Squire mod=Swift beh=summoner tier=frail speed=steady trait=loyal stance=rear
+Scythian Horse Archer | summon | u | body=Centaur beh=snipe tier=frail speed=steady trait=steadfast stance=rear
+Steppe Rider | summon | u | body=Horse mod=Swift beh=bolt tier=huge speed=steady stance=rear
+Amazon Archer | summon | u | body=Heroine beh=snipe tier=sturdy speed=frantic trait=laststand stance=rear
+Mounted Bowman | summon | c | body=Horse beh=snipe tier=huge speed=steady trait=drilled stance=escort
+Javelin Thrower | summon | c | body=Hero mod=Swift beh=lob tier=frail speed=slow trait=loyal stance=rear
+Spear Hunter | summon | c | body=Hero mod=Wild beh=pierce tier=huge speed=steady trait=laststand stance=escort
+Woodcutter | summon | c | body=Squire mod=Old beh=cone tier=sturdy speed=frantic trait=steadfast stance=front
+Bounty Hunter | summon | u | body=Hero mod=Sly beh=snipe tier=tough speed=steady trait=drilled stance=rear
+Wandering Ranger | summon | u | body=Heroine mod=Swift beh=snipe tier=sturdy speed=quick stance=front
+Tracker | summon | c | body=Hero mod=Clever beh=twin tier=sturdy speed=quick trait=drilled stance=front
+Falconer | summon | u | body=Hero mod=Noble beh=diag tier=sturdy speed=steady trait=drilled stance=rear
+Hunting Falcon | summon | c | body=Hawk mod=Swift beh=diag tier=sturdy speed=quick trait=loyal stance=escort
+Peregrine | summon | c | body=Hawk beh=zigzag tier=frail speed=steady trait=laststand stance=rear
+Kestrel | summon | c | body=Hawk mod=Tiny beh=cone tier=frail speed=steady trait=veteran stance=rear
+Osprey | summon | c | body=Hawk mod=Hungry beh=twin tier=frail speed=steady trait=drilled stance=rear
+Golden Eagle | summon | u | body=Hawk mod=Noble beh=diag tier=sturdy speed=steady trait=loyal stance=front
+Messenger Pigeon | summon | c | body=Hawk mod=Gentle beh=chain tier=sturdy speed=frantic trait=veteran stance=escort
+Night Owl Scout | summon | c | body=Owl beh=diag tier=sturdy speed=quick trait=laststand stance=front
+Horned Owl | summon | u | body=Owl mod=Grim beh=diag tier=sturdy speed=frantic stance=rear
+Quill Porcupine | summon | c | body=Boar mod=Scrappy beh=beam tier=huge speed=steady trait=drilled stance=rear
+Spiny Hedgehog | summon | c | body=Mole mod=Scrappy beh=zigzag tier=frail speed=steady trait=loyal stance=escort
+Spitting Llama | summon | c | body=Camel mod=Sly beh=pierce tier=huge speed=steady trait=steadfast stance=front
+Bactrian Camel | summon | u | body=Camel mod=Old beh=cone tier=sturdy speed=steady trait=laststand stance=escort
+Gray Fox | summon | c | body=Fox mod=Sly beh=dash tier=tough speed=quick trait=drilled stance=front
+Plains Wolf | summon | c | body=Wolf beh=dash tier=frail speed=steady trait=drilled stance=front
+Lone Wolf | summon | u | body=Wolf mod=Scrappy beh=dash tier=sturdy speed=frantic trait=veteran stance=front
+Alpha Wolf | summon | r | body=Wolf mod=Dire beh=dash tier=sturdy speed=steady stance=front
+Hunting Hound | summon | c | body=Hound beh=dash tier=huge speed=steady trait=laststand stance=front
+Alley Cat | summon | c | body=Cat mod=Scrappy beh=dash tier=frail speed=steady trait=veteran stance=escort
+Lynx | summon | u | body=Cat mod=Wild beh=dash tier=sturdy speed=quick trait=loyal stance=front
+Wildcat | summon | c | body=Cat mod=Feral beh=pounce tier=huge speed=steady trait=steadfast stance=rear
+Sea Eagle | summon | u | body=Hawk mod=Dire beh=diag tier=frail speed=steady stance=escort
+Mountain Goat | summon | c | body=Stag mod=Scrappy beh=cone tier=huge speed=steady trait=loyal stance=rear
+Ibex | summon | u | body=Stag mod=Wild beh=pierce tier=sturdy speed=frantic trait=loyal stance=escort
+Hippogriff | summon | u | body=Hippogriff beh=twin tier=sturdy speed=frantic trait=steadfast stance=escort
+Hippogriff Rider | summon | r | body=Hippogriff mod=Noble beh=twin tier=sturdy speed=quick trait=laststand stance=escort
+War Griffin | summon | r | body=Griffin mod=Brave beh=snipe tier=sturdy speed=quick trait=steadfast stance=rear
+Royal Griffin | summon | l | body=Griffin mod=Noble beh=pierce tier=sturdy speed=steady trait=steadfast stance=escort
+Sleipnir, the Eight-Legged Steed | summon | l | body=Horse mod=Swift beh=twin tier=sturdy speed=steady trait=loyal stance=escort
+Arion, the Swift Horse | summon | r | body=Horse mod=Swift beh=zigzag tier=sturdy speed=steady stance=rear
+Bayard, the Magic Bay | summon | r | body=Horse mod=Lucky beh=bolt tier=sturdy speed=quick trait=veteran stance=rear
+Uchchaihshravas | summon | l | body=Pegasus mod=Noble beh=bolt tier=sturdy speed=frantic trait=drilled stance=rear
+Wandering Bard | summon | c | body=Hero mod=Gentle beh=empower tier=frail speed=steady trait=steadfast stance=escort
+Crossbow Militia | summon | c | body=Squire mod=Brave beh=snipe tier=huge speed=frantic trait=drilled stance=rear
+Pikeman | summon | c | body=Knight beh=twin tier=huge speed=steady trait=laststand stance=rear
+Sellsword | summon | u | body=Hero mod=Scrappy beh=zigzag tier=huge speed=steady trait=steadfast stance=escort
+Veteran Captain | summon | r | body=Knight mod=Old beh=diag tier=sturdy speed=steady trait=veteran stance=escort
+Errant Knight | summon | u | body=Knight mod=Brave beh=taunt tier=tough speed=slow trait=veteran stance=escort
+Cossack Rider | summon | u | body=Horse mod=Brave beh=pierce tier=sturdy speed=slow trait=drilled stance=rear
+Gaucho with Bolas | summon | u | body=Hero mod=Wild beh=twin tier=frail speed=steady trait=laststand stance=escort
+Mongol Outrider | summon | r | body=Horse mod=Dire beh=pierce tier=sturdy speed=steady trait=laststand stance=rear
+Maasai Spearman | summon | u | body=Hero mod=Brave beh=guards tier=tough speed=frantic trait=loyal stance=escort
+Zulu Impi | summon | u | body=Hero mod=Swift beh=zigzag tier=frail speed=quick trait=steadfast stance=escort
+Viking Raider | summon | c | body=Hero mod=Feral beh=pierce tier=frail speed=steady trait=drilled stance=escort
 
-Hill Giant | summon | u | ai=bomber body=Ogre
-Rock-Throwing Cyclops | summon | r | ai=bomber body=Ogre mod=Dire
-Stone Troll | summon | u | ai=bomber body=Ogre mod=Stone
-Ogre Brute | summon | c | ai=bomber body=Ogre
-Mountain Gorilla | summon | u | ai=bomber body=Ape
-Sling Monkey | summon | c | ai=bomber body=Monkey mod=Sly
-Howler Monkey | summon | c | ai=bomber body=Monkey mod=Wild
-Coconut Crab | summon | c | ai=bomber body=Crab
-Boulder Golem | summon | u | ai=bomber body=Golem mod=Stone
-Pebble Golem | summon | c | ai=bomber body=Golem mod=Tiny
-Rock Elemental | summon | r | ai=bomber body=Golem mod=Ancient
-Siege Ogre | summon | r | ai=bomber body=Ogre mod=Iron
-Two-Headed Giant | summon | r | ai=bomber body=Ogre mod=Grim
-Jotun Hurler | summon | r | ai=bomber body=Ogre mod=Ancient
-Fomorian Brute | summon | u | ai=bomber body=Ogre mod=Feral
-Oni Pebble-Tosser | summon | c | ai=bomber body=Oni mod=Tiny
-Gremlin Pot-Thrower | summon | c | ai=bomber body=Gremlin mod=Scrappy
-Kobold Sapper | summon | c | ai=bomber body=Goblin mod=Clever
-Hobgoblin Grenadier | summon | u | ai=bomber body=Goblin mod=Brave
-Barrel-Rolling Dwarf | summon | u | ai=bomber body=Dwarf mod=Lucky
-Village Brawler | summon | c | ai=bomber body=Hero mod=Scrappy
-Tavern Bouncer | summon | c | ai=bomber body=Ogre mod=Gentle
-Mole Sapper | summon | c | ai=bomber body=Mole mod=Clever
-Badger | summon | c | ai=bomber body=Mole mod=Feral
-Rampaging Rhino | summon | u | ai=bomber body=Bull mod=Dire
-Charging Bison | summon | c | ai=bomber body=Bull mod=Wild
-Woolly Mammoth | summon | r | ai=bomber body=Elephant mod=Ancient
-Elephant Bird | summon | u | ai=bomber body=Roc mod=Tiny
-Stone-Dropping Vulture | summon | c | ai=bomber body=Crow mod=Hungry
-Thunder Ram | summon | u | ai=bomber body=Bull mod=Brave
+Hill Giant | summon | u | body=Ogre beh=lob tier=huge speed=slow trait=drilled stance=rear
+Rock-Throwing Cyclops | summon | r | body=Ogre mod=Dire beh=trample tier=huge speed=slow trait=veteran stance=rear
+Stone Troll | summon | u | body=Ogre mod=Stone beh=pounce tier=tough speed=slow trait=veteran stance=front
+Ogre Brute | summon | c | body=Ogre beh=lob tier=huge speed=slow trait=steadfast stance=escort
+Mountain Gorilla | summon | u | body=Ape beh=pounce tier=tough speed=slow trait=steadfast stance=rear
+Sling Monkey | summon | c | body=Monkey mod=Sly beh=mends tier=frail speed=slow trait=laststand stance=escort
+Howler Monkey | summon | c | body=Monkey mod=Wild beh=diag tier=huge speed=slow trait=steadfast stance=rear
+Coconut Crab | summon | c | body=Crab beh=wardmaker tier=frail speed=slow trait=laststand stance=front
+Boulder Golem | summon | u | body=Golem mod=Stone beh=trample tier=tough speed=slow stance=rear
+Pebble Golem | summon | c | body=Golem mod=Tiny beh=trample tier=tough speed=quick trait=loyal stance=escort
+Rock Elemental | summon | r | body=Golem mod=Ancient beh=lob tier=sturdy speed=slow trait=steadfast stance=front
+Siege Ogre | summon | r | body=Ogre mod=Iron beh=blast tier=huge speed=slow trait=loyal stance=rear
+Two-Headed Giant | summon | r | body=Ogre mod=Grim beh=trample tier=huge speed=slow trait=laststand stance=escort
+Jotun Hurler | summon | r | body=Ogre mod=Ancient beh=cross tier=sturdy speed=slow stance=rear
+Fomorian Brute | summon | u | body=Ogre mod=Feral beh=pounce tier=tough speed=slow trait=drilled stance=escort
+Oni Pebble-Tosser | summon | c | body=Oni mod=Tiny beh=pounce tier=tough speed=quick trait=steadfast stance=front
+Gremlin Pot-Thrower | summon | c | body=Gremlin mod=Scrappy beh=blast tier=frail speed=slow stance=rear
+Kobold Sapper | summon | c | body=Goblin mod=Clever beh=barrage tier=sturdy speed=frantic trait=veteran stance=rear
+Hobgoblin Grenadier | summon | u | body=Goblin mod=Brave beh=blast tier=sturdy speed=slow stance=front
+Barrel-Rolling Dwarf | summon | u | body=Dwarf mod=Lucky beh=cross tier=sturdy speed=slow trait=laststand stance=escort
+Village Brawler | summon | c | body=Hero mod=Scrappy beh=cross tier=sturdy speed=quick trait=laststand stance=rear
+Tavern Bouncer | summon | c | body=Ogre mod=Gentle beh=barrage tier=sturdy speed=quick stance=rear
+Mole Sapper | summon | c | body=Mole mod=Clever beh=burrow tier=huge speed=slow trait=loyal stance=front
+Badger | summon | c | body=Mole mod=Feral beh=blast tier=sturdy speed=quick trait=drilled stance=rear
+Rampaging Rhino | summon | u | body=Bull mod=Dire beh=trample tier=tough speed=quick stance=front
+Charging Bison | summon | c | body=Bull mod=Wild beh=trample tier=frail speed=slow stance=front
+Woolly Mammoth | summon | r | body=Elephant mod=Ancient beh=zigzag tier=tough speed=quick trait=veteran stance=rear
+Elephant Bird | summon | u | body=Roc mod=Tiny beh=trample tier=tough speed=frantic trait=veteran stance=front
+Stone-Dropping Vulture | summon | c | body=Crow mod=Hungry beh=cross tier=sturdy speed=frantic trait=loyal stance=rear
+Thunder Ram | summon | u | body=Bull mod=Brave beh=chain tier=tough speed=slow trait=loyal stance=escort
 
-Familiar Cat | summon | c | ai=healer body=Cat mod=Gentle
-Tabby Familiar | summon | c | ai=healer body=Cat mod=Lucky
-Owl Familiar | summon | c | ai=healer body=Owl mod=Clever
-Toad Familiar | summon | c | ai=healer body=Toad mod=Gentle
-Raven Familiar | summon | u | ai=healer body=Crow mod=Clever
-Brownie | summon | c | ai=healer body=Duende mod=Gentle
-Domovoi | summon | u | ai=healer body=Duende mod=Old
-Tomte | summon | c | ai=healer body=Duende mod=Ancient
-Hob of the Hearth | summon | c | ai=healer body=Duende mod=Mossy
-Zashiki-warashi | summon | u | ai=healer body=Kodama mod=Lucky
-Lares of the Home | summon | u | ai=healer body=Spirit mod=Gentle
-Household Kobold | summon | c | ai=healer body=Goblin mod=Gentle
-Village Healer | summon | c | ai=healer body=Heroine mod=Gentle
-Wise Woman | summon | u | ai=healer body=Heroine mod=Old
-Field Surgeon | summon | u | ai=healer body=Hero mod=Clever
-Herbwife | summon | c | ai=healer body=Heroine mod=Mossy
-Midwife | summon | c | ai=healer body=Heroine mod=Gentle
-Saint Bernard | summon | u | ai=healer body=Hound mod=Gentle
-Therapy Pony | summon | c | ai=healer body=Horse mod=Tiny
-Faithful Donkey | summon | c | ai=healer body=Horse mod=Loyal
-Milk Cow | summon | c | ai=healer body=Bull mod=Gentle
-Mother Hen | summon | c | ai=healer body=Crane mod=Tiny
-Honeybadger | summon | u | ai=healer body=Mole mod=Brave
-Sacred Ibis | summon | u | ai=healer body=Crane mod=Noble
-Beaver Builder | summon | c | ai=healer body=Rat mod=Clever
-Capybara | summon | c | ai=healer body=Rat mod=Gentle
-Wandering Monk | summon | u | ai=healer body=Hero mod=Gentle
-Pilgrim | summon | c | ai=healer body=Hero mod=Old
-Tea Master | summon | r | ai=healer body=Hero mod=Clever
-Camp Cook | summon | c | ai=healer body=Ogre mod=Gentle
+Familiar Cat | summon | c | body=Cat mod=Gentle beh=dash tier=huge speed=slow trait=veteran stance=front
+Tabby Familiar | summon | c | body=Cat mod=Lucky beh=shields tier=sturdy speed=quick trait=steadfast stance=escort
+Owl Familiar | summon | c | body=Owl mod=Clever beh=snipe tier=tough speed=slow trait=laststand stance=rear
+Toad Familiar | summon | c | body=Toad mod=Gentle beh=empower tier=sturdy speed=quick trait=veteran stance=escort
+Raven Familiar | summon | u | body=Crow mod=Clever beh=mends tier=sturdy speed=slow trait=loyal stance=rear
+Brownie | summon | c | body=Duende mod=Gentle beh=summoner tier=huge speed=slow stance=rear
+Domovoi | summon | u | body=Duende mod=Old beh=shields tier=sturdy speed=slow trait=loyal stance=front
+Tomte | summon | c | body=Duende mod=Ancient beh=summoner tier=frail speed=slow trait=drilled stance=rear
+Hob of the Hearth | summon | c | body=Duende mod=Mossy beh=mends tier=sturdy speed=quick trait=veteran stance=front
+Zashiki-warashi | summon | u | body=Kodama mod=Lucky beh=empower tier=sturdy speed=slow trait=steadfast stance=escort
+Lares of the Home | summon | u | body=Spirit mod=Gentle beh=mends tier=sturdy speed=quick stance=escort
+Household Kobold | summon | c | body=Goblin mod=Gentle beh=shields tier=huge speed=slow trait=veteran stance=escort
+Village Healer | summon | c | body=Heroine mod=Gentle beh=empower tier=huge speed=slow stance=escort
+Wise Woman | summon | u | body=Heroine mod=Old beh=shields tier=sturdy speed=slow trait=steadfast stance=rear
+Field Surgeon | summon | u | body=Hero mod=Clever beh=empower tier=sturdy speed=slow trait=laststand stance=front
+Herbwife | summon | c | body=Heroine mod=Mossy beh=summoner tier=sturdy speed=quick trait=loyal stance=rear
+Midwife | summon | c | body=Heroine mod=Gentle beh=mends tier=sturdy speed=frantic stance=front
+Saint Bernard | summon | u | body=Hound mod=Gentle beh=mends tier=sturdy speed=frantic trait=laststand stance=escort
+Therapy Pony | summon | c | body=Horse mod=Tiny beh=shields tier=sturdy speed=frantic trait=laststand stance=front
+Faithful Donkey | summon | c | body=Horse mod=Loyal beh=empower tier=frail speed=slow trait=loyal stance=escort
+Milk Cow | summon | c | body=Bull mod=Gentle beh=summoner tier=frail speed=slow stance=escort
+Mother Hen | summon | c | body=Crane mod=Tiny beh=summoner tier=frail speed=quick stance=rear
+Honeybadger | summon | u | body=Mole mod=Brave beh=summoner tier=sturdy speed=slow trait=drilled stance=escort
+Sacred Ibis | summon | u | body=Crane mod=Noble beh=shields tier=sturdy speed=frantic trait=drilled stance=escort
+Beaver Builder | summon | c | body=Rat mod=Clever beh=mends tier=huge speed=slow trait=drilled stance=escort
+Capybara | summon | c | body=Rat mod=Gentle beh=shields tier=frail speed=slow trait=steadfast stance=escort
+Wandering Monk | summon | u | body=Hero mod=Gentle beh=empower tier=sturdy speed=frantic stance=escort
+Pilgrim | summon | c | body=Hero mod=Old beh=empower tier=sturdy speed=quick trait=steadfast stance=front
+Tea Master | summon | r | body=Hero mod=Clever beh=mends tier=sturdy speed=slow trait=drilled stance=front
+Camp Cook | summon | c | body=Ogre mod=Gentle beh=mends tier=huge speed=slow stance=front
 
-Beowulf | summon | l | ai=guardian body=Hero mod=Brave legend=1
-Gilgamesh | summon | l | ai=bomber body=Hero mod=Noble legend=1
-Enkidu | summon | r | ai=guardian body=Ape mod=Wild legend=1
-Hua Mulan | summon | l | ai=shooter body=Heroine mod=Brave legend=1
-Cu Chulainn | summon | l | ai=shooter body=Hero mod=Feral legend=1
-Sundiata Keita | summon | l | ai=guardian body=Hero mod=Noble legend=1
-Momotaro | summon | r | ai=shooter body=Hero mod=Lucky legend=1
-Atalanta | summon | r | ai=shooter body=Heroine mod=Swift legend=1
-Heracles | summon | l | ai=bomber body=Hero mod=Brave legend=1
-Perseus | summon | r | ai=shooter body=Hero mod=Clever legend=1
-Theseus | summon | r | ai=guardian body=Hero mod=Brave legend=1
-Achilles | summon | l | ai=shooter body=Hero mod=Swift legend=1
-Hector of Troy | summon | r | ai=guardian body=Knight mod=Noble legend=1
-Rostam | summon | l | ai=guardian body=Hero mod=Brave legend=1
-Arjuna | summon | l | ai=shooter body=Hero mod=Noble legend=1
-Sigurd | summon | r | ai=shooter body=Hero mod=Brave legend=1
-Ilya Muromets | summon | r | ai=guardian body=Hero mod=Old legend=1
-Lancelot | summon | r | ai=guardian body=Knight mod=Noble legend=1
-Gawain | summon | r | ai=guardian body=Knight mod=Brave legend=1
-El Cid | summon | r | ai=shooter body=Knight mod=Noble legend=1
-Roland | summon | r | ai=guardian body=Knight mod=Brave legend=1
-Robin Hood | summon | r | ai=shooter body=Hero mod=Sly legend=1
-Mwindo | summon | r | ai=healer body=Hero mod=Lucky legend=1
-Kintaro | summon | r | ai=bomber body=Hero mod=Tiny legend=1
-Fionn mac Cumhaill | summon | r | ai=shooter body=Hero mod=Clever legend=1
-Scathach | summon | l | ai=shooter body=Heroine mod=Grim legend=1
-Tomoe Gozen | summon | r | ai=shooter body=Heroine mod=Brave legend=1
-Antarah the Poet-Knight | summon | r | ai=guardian body=Hero mod=Noble legend=1
-Hunahpu and Xbalanque | summon | l | ai=bomber body=Hero mod=Lucky legend=1
-Glooscap | summon | l | ai=healer body=Hero mod=Ancient legend=1
+Beowulf | summon | l | body=Hero mod=Brave legend=1 beh=guards tier=tough speed=steady trait=loyal stance=front
+Gilgamesh | summon | l | body=Hero mod=Noble legend=1 beh=lob tier=sturdy speed=slow trait=veteran stance=rear
+Enkidu | summon | r | body=Ape mod=Wild legend=1 beh=taunt tier=tough speed=steady trait=drilled stance=escort
+Hua Mulan | summon | l | body=Heroine mod=Brave legend=1 beh=bolt tier=sturdy speed=steady trait=steadfast stance=rear
+Cu Chulainn | summon | l | body=Hero mod=Feral legend=1 beh=bolt tier=sturdy speed=steady trait=laststand stance=front
+Sundiata Keita | summon | l | body=Hero mod=Noble legend=1 beh=guards tier=tough speed=steady trait=laststand stance=escort
+Momotaro | summon | r | body=Hero mod=Lucky legend=1 beh=twin tier=sturdy speed=steady trait=steadfast stance=front
+Atalanta | summon | r | body=Heroine mod=Swift legend=1 beh=snipe tier=sturdy speed=steady trait=loyal stance=rear
+Heracles | summon | l | body=Hero mod=Brave legend=1 beh=lob tier=sturdy speed=slow trait=loyal stance=escort
+Perseus | summon | r | body=Hero mod=Clever legend=1 beh=bolt tier=sturdy speed=slow trait=veteran stance=front
+Theseus | summon | r | body=Hero mod=Brave legend=1 beh=guards tier=tough speed=quick trait=laststand stance=front
+Achilles | summon | l | body=Hero mod=Swift legend=1 beh=pierce tier=sturdy speed=steady trait=veteran stance=front
+Hector of Troy | summon | r | body=Knight mod=Noble legend=1 beh=taunt tier=tough speed=steady trait=veteran stance=rear
+Rostam | summon | l | body=Hero mod=Brave legend=1 beh=taunt tier=tough speed=steady trait=steadfast stance=front
+Arjuna | summon | l | body=Hero mod=Noble legend=1 beh=bolt tier=sturdy speed=steady trait=drilled stance=escort
+Sigurd | summon | r | body=Hero mod=Brave legend=1 beh=pierce tier=sturdy speed=quick trait=drilled stance=escort
+Ilya Muromets | summon | r | body=Hero mod=Old legend=1 beh=guards tier=tough speed=slow trait=steadfast stance=front
+Lancelot | summon | r | body=Knight mod=Noble legend=1 beh=taunt tier=tough speed=quick trait=loyal stance=front
+Gawain | summon | r | body=Knight mod=Brave legend=1 beh=pounce tier=tough speed=steady trait=laststand stance=front
+El Cid | summon | r | body=Knight mod=Noble legend=1 beh=twin tier=sturdy speed=steady trait=veteran stance=rear
+Roland | summon | r | body=Knight mod=Brave legend=1 beh=wardmaker tier=tough speed=steady stance=front
+Robin Hood | summon | r | body=Hero mod=Sly legend=1 beh=snipe tier=sturdy speed=steady stance=escort
+Mwindo | summon | r | body=Hero mod=Lucky legend=1 beh=shields tier=sturdy speed=slow stance=escort
+Kintaro | summon | r | body=Hero mod=Tiny legend=1 beh=lob tier=sturdy speed=frantic trait=steadfast stance=rear
+Fionn mac Cumhaill | summon | r | body=Hero mod=Clever legend=1 beh=bolt tier=sturdy speed=frantic trait=loyal stance=front
+Scathach | summon | l | body=Heroine mod=Grim legend=1 beh=pounce tier=sturdy speed=steady trait=drilled stance=front
+Tomoe Gozen | summon | r | body=Heroine mod=Brave legend=1 beh=pierce tier=sturdy speed=frantic trait=drilled stance=front
+Antarah the Poet-Knight | summon | r | body=Hero mod=Noble legend=1 beh=guards tier=tough speed=frantic trait=drilled stance=front
+Hunahpu and Xbalanque | summon | l | body=Hero mod=Lucky legend=1 beh=blast tier=sturdy speed=slow trait=laststand stance=rear
+Glooscap | summon | l | body=Hero mod=Ancient legend=1 beh=mends tier=sturdy speed=slow trait=veteran stance=escort
 
-Shield Wall | ward | c | ward=wall
-Phalanx | ward | u | ward=wall
-Testudo | ward | u | ward=barrier
-Schiltron | ward | r | ward=thorns
-Hedge of Spears | ward | c | ward=thorns
-Wagon Circle | ward | c | ward=wall
-Shield Brace | ward | c | ward=barrier
-Hold the Gate | ward | u | ward=wall
-Last Stand | ward | r | ward=barrier
-Iron Ring Fort | ward | l | ward=wall
+Shield Wall | ward | c | form=shield build=heavy wfx=steady len=short
+Phalanx | ward | u | form=rampart build=heavy wfx=thorns
+Testudo | ward | u | form=shield build=heavy
+Schiltron | ward | r | form=corridor build=heavy wfx=thorns len=short
+Hedge of Spears | ward | c | form=rampart build=light wfx=thorns len=short
+Wagon Circle | ward | c | form=arc len=short
+Shield Brace | ward | c | form=shield build=heavy wfx=thorns len=long
+Hold the Gate | ward | u | wfx=steady form=line
+Last Stand | ward | r | form=shield wfx=steady len=long
+Iron Ring Fort | ward | l | form=arc build=heavy len=long
 
-Battle Cry | boon | c | boon=courage
-Rallying Horn | boon | c | boon=courage
-Haka War Dance | boon | u | boon=power
-Kiai Shout | boon | c | boon=power
-Oath of Brotherhood | boon | u | boon=courage
-Hunter's Focus | boon | c | boon=haste
-Stubborn Will | boon | u | boon=dodge
-Campfire Rest | boon | c | boon=heal
-Trusty Steed | boon | u | boon=haste
-Song of the Old Heroes | boon | r | boon=courage
+Battle Cry | boon | c | boon=courage len=long timing=delayed
+Rallying Horn | boon | c | boon=courage side=muster timing=delayed
+Haka War Dance | boon | u | boon=power timing=echo
+Kiai Shout | boon | c | boon=power len=long
+Oath of Brotherhood | boon | u | boon=courage len=short timing=echo
+Hunter's Focus | boon | c | boon=haste side=rally
+Stubborn Will | boon | u | boon=dodge side=muster
+Campfire Rest | boon | c | boon=heal timing=delayed
+Trusty Steed | boon | u | boon=haste len=short
+Song of the Old Heroes | boon | r | boon=courage len=long side=rally timing=echo
 
-Sling Stones | charge | c | fx=bolt kw=-
-Hunter's Quiver | charge | c | fx=bolt kw=-
-Bag of Rocks | charge | c | fx=lob kw=-
-Throwing Axes | charge | u | fx=bolt kw=-
-Javelin Bundle | charge | u | fx=bolt kw=-
-Caltrop Pouch | charge | c | fx=lob kw=slow
-Boomerang Belt | charge | u | fx=bolt kw=-
-Bundle of Darts | charge | c | fx=bolt kw=-
-Hurling Stones | charge | r | fx=lob kw=push
-Legendary Quiver | charge | l | fx=bolt kw=-
+Sling Stones | charge | c | shot=burst uses=few edge=crit
+Hunter's Quiver | charge | c | shot=twin uses=many edge=pierce
+Bag of Rocks | charge | c | shot=lob edge=splash
+Throwing Axes | charge | u | shot=bolt
+Javelin Bundle | charge | u | shot=bolt uses=few edge=pierce
+Caltrop Pouch | charge | c | shot=lob uses=few kw=slow
+Boomerang Belt | charge | u | shot=lob uses=many
+Bundle of Darts | charge | c | shot=twin uses=few
+Hurling Stones | charge | r | shot=lob uses=many kw=push edge=pierce
+Legendary Quiver | charge | l | shot=bolt uses=many edge=splash
 `,
 
 /* ---------------- Brown · technology ----------------
@@ -1652,59 +1652,59 @@ Legendary Quiver | charge | l | fx=bolt kw=-
    race=  Race tech: +10% for each other card of that race in your hand.
    unstable=1  Goblin and gremlin tech: 30% stronger, 1 in 5 misfires. */
 brown:`
-Dwarven Cannon Nest | machine | c | ai=turret mach=Cannon race=dwarf
-Steam Cannon | machine | u | ai=turret mach=Cannon race=dwarf
-Dwarven Runic Battery | machine | l | ai=turret mach=Tower race=dwarf kw=stun
-Gnomish Arc Turret | machine | u | ai=turret mach=Tower race=gnome kw=stun
-Clockwork Owl | machine | c | ai=turret mach=Drone race=gnome
-Elven Moonbow Ballista | machine | u | ai=turret mach=Ballista race=elf
-Elven Starglass Spire | machine | r | ai=turret mach=Tower race=elf kw=mend
-Goblin Junk Cannon | machine | c | ai=turret mach=Cannon race=goblin unstable=1
-Harbor Ballista | machine | c | ai=turret mach=Ballista race=sea
-Lighthouse Lens Beam | machine | r | ai=turret mach=Tower race=sea kw=burn
-Sky-Ship Deck Gun | machine | r | ai=turret mach=Cannon race=sky
-Djinn Brass Idol | machine | r | ai=turret mach=Tower race=djinn kw=confuse
-Troll Bone Ballista | machine | c | ai=turret mach=Ballista race=troll
-Alchemist's Fire Siphon | machine | u | ai=turret mach=Cannon race=alchemy kw=burn
-Brass Crossbow Turret | machine | c | ai=turret mach=Crossbow race=human
-Antikythera Sentinel | machine | l | ai=turret mach=Automaton race=human
+Dwarven Cannon Nest | machine | c | mach=Cannon beh=summoner tier=huge speed=steady trait=racetech race=dwarf
+Steam Cannon | machine | u | mach=Cannon race=dwarf beh=twin tier=sturdy speed=steady
+Dwarven Runic Battery | machine | l | mach=Tower beh=zigzag tier=frail speed=quick trait=racetech race=dwarf
+Gnomish Arc Turret | machine | u | mach=Tower race=gnome beh=bolt tier=sturdy speed=frantic trait=selfrepair
+Clockwork Owl | machine | c | mach=Drone race=gnome beh=snipe tier=tough speed=slow
+Elven Moonbow Ballista | machine | u | mach=Ballista beh=snipe tier=sturdy speed=frantic trait=racetech race=elf
+Elven Starglass Spire | machine | r | mach=Tower race=elf beh=bolt tier=sturdy speed=quick
+Goblin Junk Cannon | machine | c | mach=Cannon race=goblin beh=bolt tier=tough speed=steady trait=overclock
+Harbor Ballista | machine | c | mach=Ballista race=sea beh=snipe tier=sturdy speed=quick trait=selfrepair
+Lighthouse Lens Beam | machine | r | mach=Tower race=sea beh=pierce tier=sturdy speed=steady trait=overclock
+Sky-Ship Deck Gun | machine | r | mach=Cannon race=sky beh=bolt tier=sturdy speed=slow trait=overclock
+Djinn Brass Idol | machine | r | mach=Tower race=djinn beh=empower tier=sturdy speed=steady trait=selfrepair
+Troll Bone Ballista | machine | c | mach=Ballista race=troll beh=snipe tier=tough speed=steady trait=selfrepair
+Alchemist's Fire Siphon | machine | u | mach=Cannon beh=pierce tier=frail speed=steady trait=racetech race=alchemy
+Brass Crossbow Turret | machine | c | mach=Crossbow race=human beh=snipe tier=huge speed=steady
+Antikythera Sentinel | machine | l | mach=Automaton beh=guards tier=tough speed=steady trait=racetech race=human
 
-Gnomish Gatling | machine | c | ai=repeater mach=Gatling race=gnome
-Brass Hornet Swarm | machine | r | ai=repeater mach=Drone race=gnome kw=poison
-Goblin Rattle-Gun | machine | c | ai=repeater mach=Gatling race=goblin unstable=1
-Chu-ko-nu Repeater | machine | u | ai=repeater mach=Repeater race=human
-Elven Spinning Glaive | machine | u | ai=repeater mach=Repeater race=elf
-Coral Spitter | machine | c | ai=repeater mach=Repeater race=sea
-Sky-Folk Kite Drone | machine | u | ai=repeater mach=Drone race=sky
-Dwarven Rivet Gun | machine | r | ai=repeater mach=Gatling race=dwarf
-Troll Pebble Hurler | machine | c | ai=repeater mach=Repeater race=troll
-Al-Jazari's Elephant Clock | machine | l | ai=repeater mach=Automaton race=djinn
+Gnomish Gatling | machine | c | mach=Gatling race=gnome beh=pierce tier=huge speed=steady trait=selfrepair
+Brass Hornet Swarm | machine | r | mach=Drone beh=barrage tier=frail speed=frantic trait=racetech race=gnome
+Goblin Rattle-Gun | machine | c | mach=Gatling race=goblin beh=zigzag tier=frail speed=steady
+Chu-ko-nu Repeater | machine | u | mach=Repeater race=human beh=barrage tier=frail speed=quick
+Elven Spinning Glaive | machine | u | mach=Repeater race=elf beh=twin tier=sturdy speed=quick trait=overclock
+Coral Spitter | machine | c | mach=Repeater race=sea beh=twin tier=frail speed=quick trait=selfrepair
+Sky-Folk Kite Drone | machine | u | mach=Drone beh=twin tier=huge speed=quick trait=racetech race=sky
+Dwarven Rivet Gun | machine | r | mach=Gatling beh=pierce tier=sturdy speed=slow trait=racetech race=dwarf
+Troll Pebble Hurler | machine | c | mach=Repeater race=troll beh=blast tier=tough speed=slow trait=overclock
+Al-Jazari's Elephant Clock | machine | l | mach=Automaton beh=trample tier=tough speed=quick trait=racetech race=djinn
 
-Siege Mangonel | machine | c | ai=mortar mach=Catapult race=human
-Castle Trebuchet | machine | u | ai=mortar mach=Trebuchet race=human
-Goblin Rocket Rack | machine | c | ai=mortar mach=Engine race=goblin unstable=1 kw=burn
-Gnomish Bomb Lobber | machine | c | ai=mortar mach=Catapult race=gnome
-Alchemist's Acid Mortar | machine | u | ai=mortar mach=Engine race=alchemy kw=poison
-Troll Boulder Sling | machine | c | ai=mortar mach=Catapult race=troll
-Depth Charge Launcher | machine | r | ai=mortar mach=Engine race=sea kw=slow
-Sky-Folk Bomb Balloon | machine | u | ai=mortar mach=Drone race=sky
-Dwarven Thunder Mortar | machine | r | ai=mortar mach=Engine race=dwarf kw=stun
-Byzantine Fire Engine | machine | r | ai=mortar mach=Engine race=alchemy kw=burn
-Djinn Sand Cannon | machine | l | ai=mortar mach=Engine race=djinn kw=slow
-Elven Seed Catapult | machine | u | ai=mortar mach=Catapult race=elf kw=poison
+Siege Mangonel | machine | c | mach=Catapult race=human beh=cross tier=huge speed=slow trait=selfrepair
+Castle Trebuchet | machine | u | mach=Trebuchet beh=lob tier=tough speed=slow trait=racetech race=human
+Goblin Rocket Rack | machine | c | mach=Engine race=goblin beh=lob tier=frail speed=slow trait=overclock
+Gnomish Bomb Lobber | machine | c | mach=Catapult beh=blast tier=tough speed=frantic trait=racetech race=gnome
+Alchemist's Acid Mortar | machine | u | mach=Engine beh=blast tier=frail speed=slow trait=racetech race=alchemy
+Troll Boulder Sling | machine | c | mach=Catapult race=troll beh=pounce tier=tough speed=quick
+Depth Charge Launcher | machine | r | mach=Engine race=sea beh=lob tier=sturdy speed=slow
+Sky-Folk Bomb Balloon | machine | u | mach=Drone race=sky beh=cross tier=sturdy speed=frantic
+Dwarven Thunder Mortar | machine | r | mach=Engine beh=lob tier=sturdy speed=quick trait=racetech race=dwarf
+Byzantine Fire Engine | machine | r | mach=Engine race=alchemy beh=blast tier=sturdy speed=slow trait=selfrepair
+Djinn Sand Cannon | machine | l | mach=Engine beh=bolt tier=sturdy speed=steady trait=racetech race=djinn
+Elven Seed Catapult | machine | u | mach=Catapult race=elf beh=lob tier=sturdy speed=frantic trait=overclock
 
-Iron Bastion | machine | c | ai=bulwark mach=Bastion race=dwarf
-Dwarven Gate of Iron | machine | r | ai=bulwark mach=Bulwark race=dwarf
-Gnomish Pop-Up Wall | machine | c | ai=bulwark mach=Barricade race=gnome
-Elven Thornglass Barrier | machine | u | ai=bulwark mach=Palisade race=elf
-Goblin Scrap Barricade | machine | c | ai=bulwark mach=Barricade race=goblin unstable=1
-Coral Rampart | machine | u | ai=bulwark mach=Rampart race=sea
-Sky-Folk Wind Sail Wall | machine | u | ai=bulwark mach=Palisade race=sky
-Troll Stone Rampart | machine | c | ai=bulwark mach=Rampart race=troll
-Pike Palisade | machine | c | ai=bulwark mach=Palisade race=human
-Alchemist's Glass Bulwark | machine | u | ai=bulwark mach=Bulwark race=alchemy
-Djinn Mirage Wall | machine | r | ai=bulwark mach=Bastion race=djinn
-Brass Tortoise Wall | machine | l | ai=bulwark mach=Bulwark race=human
+Iron Bastion | machine | c | mach=Bastion beh=taunt tier=huge speed=frantic trait=racetech race=dwarf
+Dwarven Gate of Iron | machine | r | mach=Bulwark beh=wardmaker tier=huge speed=slow trait=racetech race=dwarf
+Gnomish Pop-Up Wall | machine | c | mach=Barricade race=gnome beh=wardmaker tier=huge speed=quick trait=selfrepair
+Elven Thornglass Barrier | machine | u | mach=Palisade race=elf beh=wardmaker tier=tough speed=steady
+Goblin Scrap Barricade | machine | c | mach=Barricade race=goblin beh=guards tier=huge speed=frantic trait=selfrepair
+Coral Rampart | machine | u | mach=Rampart race=sea beh=taunt tier=huge speed=slow
+Sky-Folk Wind Sail Wall | machine | u | mach=Palisade race=sky beh=wardmaker tier=huge speed=frantic
+Troll Stone Rampart | machine | c | mach=Rampart race=troll beh=pounce tier=tough speed=frantic trait=selfrepair
+Pike Palisade | machine | c | mach=Palisade race=human beh=taunt tier=huge speed=quick trait=overclock
+Alchemist's Glass Bulwark | machine | u | mach=Bulwark race=alchemy beh=guards tier=huge speed=slow trait=overclock
+Djinn Mirage Wall | machine | r | mach=Bastion race=djinn beh=wardmaker tier=huge speed=steady trait=overclock
+Brass Tortoise Wall | machine | l | mach=Bulwark race=human beh=guards tier=tough speed=slow trait=selfrepair
 
 Dwarven Stout | instant | c | as=boon boon=heal race=dwarf
 Elven Dew | instant | c | as=boon boon=heal race=elf
@@ -1848,18 +1848,18 @@ Goibniu's Hammer | tinker | r | race=human kw=-
 Ilmarinen's Forge | tinker | l | race=human kw=-
 Hephaestus's Anvil | tinker | l | race=human kw=burn
 
-Goblin Bomb Bag | charge | c | fx=lob race=goblin unstable=1 kw=push
-Dwarven Blasting Keg | charge | u | fx=lob race=dwarf kw=push
-Gnomish Spark Canister | charge | c | fx=bolt race=gnome kw=stun
-Harpoon Rack | charge | c | fx=bolt race=sea kw=pull
-Pebble Pouch | charge | c | fx=bolt race=sky kw=-
-Elven Arrow Pouch | charge | u | fx=bolt race=elf kw=-
-Acid Vial Belt | charge | u | fx=lob race=alchemy kw=poison
-Troll Rock Satchel | charge | c | fx=lob race=troll kw=-
-Brass Shot Bundle | charge | c | fx=bolt race=human kw=-
-Djinn Ember Censer | charge | r | fx=lob race=djinn kw=burn
-Clockwork Bolt Feeder | charge | r | fx=bolt race=gnome kw=-
-Bottomless Quiver | charge | l | fx=bolt race=elf kw=-
+Goblin Bomb Bag | charge | c | race=goblin shot=lob uses=few kw=push edge=crit
+Dwarven Blasting Keg | charge | u | race=dwarf shot=lob kw=push edge=splash
+Gnomish Spark Canister | charge | c | race=gnome shot=bolt uses=few kw=stun
+Harpoon Rack | charge | c | race=sea shot=bolt kw=pull
+Pebble Pouch | charge | c | race=sky shot=twin
+Elven Arrow Pouch | charge | u | race=elf shot=bolt uses=few edge=crit
+Acid Vial Belt | charge | u | race=alchemy shot=lob uses=many kw=poison edge=pierce
+Troll Rock Satchel | charge | c | race=troll shot=lob uses=few
+Brass Shot Bundle | charge | c | race=human shot=twin uses=few edge=splash
+Djinn Ember Censer | charge | r | race=djinn shot=lob uses=many kw=burn edge=crit
+Clockwork Bolt Feeder | charge | r | race=gnome shot=bolt edge=pierce
+Bottomless Quiver | charge | l | race=elf shot=bolt uses=many
 
 Flintlock Pistol | ace | c | shape=line race=human kw=-
 Dwarven Hand Cannon | ace | u | shape=nova race=dwarf kw=push

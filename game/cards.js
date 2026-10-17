@@ -639,6 +639,8 @@ function cardText(c){
   if(c.self) kw.push('Costs '+c.self+' HP');
   let t='';
   const kind=c.type==='piece'?c.base:c.type;
+  // a creature built from parts (creatures.js)
+  if(c.beh&&typeof crText==='function'&&['summon','machine','sentry'].includes(kind)) return crText(c)+(kw.length?'. '+kw.join(', '):'');
   if(kind==='strike') t={line:c.pow+' to the first enemy in your row', row:c.pow+' to every enemy in your row', wedge:c.pow+' in a short cone ahead',
                          all:c.pow+' to every enemy', missiles:c.n+' missiles of '+c.pow+' at random enemies',
                          dig:c.pow+' tunnelling under walls and shields to the first enemy in your row', zigzag:c.pow+' zigzagging between your row and the next',

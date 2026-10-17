@@ -1,6 +1,6 @@
 # Every card plays differently (plan)
 
-Date: 2026-10-17 · Status: **agreed, nothing built yet** · Comes from [card-overlap.md](card-overlap.md)
+Date: 2026-10-17 · Status: **step 1 under way**: creatures and the Card lab are in (v78); strike shapes next · Comes from [card-overlap.md](card-overlap.md)
 
 955 of the 1,865 regular cards repeat a rule their colour already has. Creatures are the worst: every
 creature in a colour is one of 4 behaviours with the same HP formula and no keyword. This plan

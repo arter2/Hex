@@ -149,6 +149,7 @@ function tele(e,tiles,dur,dmg,after){ tiles=tiles.filter(Boolean);
   if(e&&e.confuseT>0) tiles=tiles.map(t=>pick(neighbors(t).filter(x=>x.side==='p'))||t);   // confusion throws attacks off by a tile
   B.teles.push({tiles,t:0,dur,dmg,owner:e,after,kind:e&&e.curMove}); }   // kind: which move, for its tell (reading.js)
 const pTilesInRow=r=>P_TILES.filter(t=>t.r===r);
+const aimT=()=>typeof foeAim==='function'?foeAim():B.player.tile;   // a Taunt creature draws the enemy's aim (creatures.js)
 function stepEnemy(e,to){ if(typeof caged==='function'&&caged(e)) return;   // a cage holds it where it is
   e.tile.occ=null; e.tile=to; to.occ=e; if(e.poisonT>0) hitEnemy(e,e.poisonAmt,null,{raw:true});
   if(to.thornT>0&&e.hp>0) hitEnemy(e,to.thornPow,null,{raw:true});
@@ -163,7 +164,8 @@ function moveEnemy(e){
   const open=t=>!lineTiles(t,DIRS.W).some(x=>x.side==='e'&&x.occ&&(x.occ.kind==='rock'||x.occ.enemy));
   const good=opts.filter(open), pool=good.length?good:opts;
   let to=null;
-  if(e.def.ai==='align'&&e.tile.r!==p.tile.r&&Math.random()<.75){ const d=Math.sign(p.tile.r-e.tile.r); to=pick(pool.filter(t=>Math.sign(t.r-e.tile.r)===d)); }
+  const aimR=aimT().r;
+  if(e.def.ai==='align'&&e.tile.r!==aimR&&Math.random()<.75){ const d=Math.sign(aimR-e.tile.r); to=pick(pool.filter(t=>Math.sign(t.r-e.tile.r)===d)); }
   // back-liners keep their distance early on, then press in once the fight drags (from turn 3)
   else if(e.def.ai==='back') to=pick(pool.filter(t=>(B.turn||0)<2&&Math.random()<.6?t.col>=e.tile.col:t.col<=e.tile.col));
   else if((B.turn||0)>=3&&Math.random()<.4) to=pick(pool.filter(t=>t.col<e.tile.col));
@@ -174,28 +176,28 @@ function enemyShot(e,dmg){ const from=e.confuseT>0&&pick([tileCR(e.tile.col,e.ti
   shoot(from,lineTiles(from,DIRS.W),{dmg:Math.round(dmg),from:'e',owner:e,color:COLORS[e.color].c}); }
 const MOVES={
   shot(e){ e.windT=.7; },
-  firebomb(e){ const t=B.player.tile; tele(e,[t],1,e.dmg,()=>{ t.burnT=5; burst(t,'#ff6a3d',14,.3); }); },
-  iceslam(e){ const t=B.player.tile, n=pick(neighbors(t).filter(x=>x.side==='p')); tele(e,[t,n],1,e.dmg,()=>[t,n].forEach(x=>x&&(x.iceT=6))); },
-  cross(e){ const t=B.player.tile; tele(e,P_TILES.filter(x=>x.r===t.r||(x.col===t.col&&Math.abs(x.r-t.r)<=2)),1.1,e.dmg); },
+  firebomb(e){ const t=aimT(); tele(e,[t],1,e.dmg,()=>{ t.burnT=5; burst(t,'#ff6a3d',14,.3); }); },
+  iceslam(e){ const t=aimT(), n=pick(neighbors(t).filter(x=>x.side==='p')); tele(e,[t,n],1,e.dmg,()=>[t,n].forEach(x=>x&&(x.iceT=6))); },
+  cross(e){ const t=aimT(); tele(e,P_TILES.filter(x=>x.r===t.r||(x.col===t.col&&Math.abs(x.r-t.r)<=2)),1.1,e.dmg); },
   rush(e){ tele(e,pTilesInRow(e.tile.r),1.1,e.dmg); },
-  blink(e){ const p=B.player, to=pick(E_TILES.filter(t=>!t.occ&&!burning(t)&&t.col<=BOARD_COLS/2+1&&Math.abs(t.r-p.tile.r)<=1));
+  blink(e){ const p={tile:aimT()}, to=pick(E_TILES.filter(t=>!t.occ&&!burning(t)&&t.col<=BOARD_COLS/2+1&&Math.abs(t.r-p.tile.r)<=1));
     if(to){ burst(e.tile,'#e0588f',10); stepEnemy(e,to); burst(to,'#e0588f',10); }
     tele(e,[p.tile].concat(neighbors(p.tile).filter(t=>t.side==='p'&&t.col>=p.tile.col)),.85,e.dmg); },
   // Bandit: closes to the front of its side and slashes your tile and the ones beside it
-  lunge(e){ const p=B.player, to=E_TILES.filter(t=>!t.occ&&!burning(t)&&Math.abs(t.r-p.tile.r)<=1).sort((a,b)=>a.col-b.col)[0];
+  lunge(e){ const p={tile:aimT()}, to=E_TILES.filter(t=>!t.occ&&!burning(t)&&Math.abs(t.r-p.tile.r)<=1).sort((a,b)=>a.col-b.col)[0];
     if(to&&to.col<e.tile.col){ stepEnemy(e,to); burst(to,'#b4b8c8',8,.4); }
     tele(e,[p.tile].concat(neighbors(p.tile).filter(t=>t.side==='p'&&t.r!==p.tile.r)),.8,e.dmg); },
   // Cutpurse: grabs at you; if it lands it steals the next card in your queue. Kill it to get it back.
-  steal(e){ const t=B.player.tile; tele(e,[t],.9,Math.round(e.dmg*.6),()=>{ if(B.player.tile!==t) return; const q=B.piles.queue;
+  steal(e){ const t=aimT(); tele(e,[t],.9,Math.round(e.dmg*.6),()=>{ if(B.player.tile!==t) return; const q=B.piles.queue;
     const card=q.find(c=>!c.combo); if(card&&e.hp>0){ q.splice(q.indexOf(card),1); (e.loot=e.loot||[]).push(card); floater('Stole '+card.card.name+'!',e.tile,'#ffe066',true); } }); },
   // Crossbowman: a long, slow aim on where you stand, then a heavy bolt. Move!
-  snipe(e){ const t=B.player.tile; tele(e,[t],1.5,Math.round(e.dmg*1.4)); },
+  snipe(e){ const t=aimT(); tele(e,[t],1.5,Math.round(e.dmg*1.4)); },
   // Sellsword: raises a shield for itself and the weakest ally, or swings across two rows
   guard(e){ const ally=alive().filter(x=>x!==e).sort((a,b)=>a.hp/a.maxHp-b.hp/b.maxHp)[0];
     for(const x of [e,ally]) if(x){ x.barrier=Math.max(x.barrier,30); floater('🛡30',x.tile,'#e6f4ff'); burst(x.tile,'#e6f4ff',8,1); } },
   cleave(e){ const p=B.player, rows=[p.tile.r,p.tile.r+(Math.random()<.5?-1:1)]; tele(e,P_TILES.filter(t=>rows.includes(t.r)&&t.col<=2),1.1,e.dmg); },
   // Powder Monkey: a fizzing bomb on and around you that leaves the floor burning
-  bomb(e){ const t=B.player.tile, ts=[t,...neighbors(t).filter(x=>x.side==='p')].filter(()=>true).slice(0,4); tele(e,ts,1.3,e.dmg,()=>ts.forEach(x=>{ x.burnT=Math.max(x.burnT||0,3); burst(x,'#ff9a3a',10,.5); })); },
+  bomb(e){ const t=aimT(), ts=[t,...neighbors(t).filter(x=>x.side==='p')].filter(()=>true).slice(0,4); tele(e,ts,1.3,e.dmg,()=>ts.forEach(x=>{ x.burnT=Math.max(x.burnT||0,3); burst(x,'#ff9a3a',10,.5); })); },
   // Dark Wizard: hexes your row (you take 30% more for 6 s), or calls a shade to its side
   hex(e){ const p=B.player, row=p.tile.r; tele(e,pTilesInRow(row),.9,Math.round(e.dmg*.5),()=>{ if(p.tile.r===row){ p.hexT=6; floater('Hexed!',p.tile,'#e0588f',true); burst(p.tile,'#7a2a8f',16,1); } }); },
   summon(e){ if(alive().length>=4) return MOVES.hex(e); const t=pick(openEnemyTiles()); if(!t) return MOVES.shot(e);
@@ -205,12 +207,12 @@ const MOVES={
   shift(e){ const f=pick(SHIFT_FORMS.filter(x=>x!==e.form)), d=ENEMY_DEFS[f]; e.form=f; e.color=d.color; e.weak=null; e.moves=d.moves.concat(['shift']);
     e.nextMove=pick(d.moves); burst(e.tile,COLORS[d.color].c,26,1.2); burst(e.tile,'#ffffff',10,1); floater('→ '+d.name,e.tile,COLORS[d.color].c,true); },
   // Card Collector: snatches a card from your hand, then casts it back at you. Kill it for all of them back.
-  collect(e){ const t=B.player.tile; tele(e,[t],.9,Math.round(e.dmg*.5),()=>{ if(B.player.tile!==t||e.hp<=0) return; const src=B.piles.hand.length?B.piles.hand:B.piles.queue.filter(c=>!c.combo);
+  collect(e){ const t=aimT(); tele(e,[t],.9,Math.round(e.dmg*.5),()=>{ if(B.player.tile!==t||e.hp<=0) return; const src=B.piles.hand.length?B.piles.hand:B.piles.queue.filter(c=>!c.combo);
     const card=pick(src); if(!card) return; const L=B.piles.hand.includes(card)?B.piles.hand:B.piles.queue; L.splice(L.indexOf(card),1);
     (e.loot=e.loot||[]).push(card); e.deck.push(card.card); e.deckCd=Math.min(e.deckCd,1.2); floater('Collected '+card.card.name+'!',e.tile,'#ffe066',true); }); },
   // Witch Healer: a brew that heals every ally a little, a root that pins you in place, or a strong mend
   brew(e){ for(const x of alive()){ const h=Math.round(x.maxHp*.08); if(x.hp<x.maxHp){ x.hp=Math.min(x.maxHp,x.hp+h); floater('+'+h,x.tile,'#6dff9a'); burst(x.tile,'#6fdc7a',8,1); } } },
-  snare(e){ const t=B.player.tile; tele(e,[t],.8,Math.round(e.dmg*.5),()=>{ if(B.player.tile===t){ B.player.rootT=Math.max(B.player.rootT||0,1.8); floater('Rooted!',t,'#6fdc7a',true); burst(t,'#6fdc7a',14,.4); } }); },
+  snare(e){ const t=aimT(); tele(e,[t],.8,Math.round(e.dmg*.5),()=>{ if(B.player.tile===t){ B.player.rootT=Math.max(B.player.rootT||0,1.8); floater('Rooted!',t,'#6fdc7a',true); burst(t,'#6fdc7a',14,.4); } }); },
   // Priest: brings a fallen ally back once each, or blesses the living with a shield and strength
   revive(e){ const dead=B.enemies.find(x=>x.hp<=0&&x!==e&&!x.revived&&!x.def.boss&&!x.def.mini), t=dead&&pick(openEnemyTiles());
     if(!dead||!t) return MOVES.bless(e);
@@ -223,7 +225,7 @@ const MOVES={
     B.fx.push({kind:'bolt',a:e.tile,b:hurt.tile,color:'#fff0b3',t:0,life:.3}); },
   quake(e){ const safe=[pick(P_TILES.filter(t=>!t.occ||t.occ.kind==='player'))]; safe.push(...neighbors(safe[0]).filter(t=>t.side==='p').slice(0,2));
     tele(e,P_TILES.filter(t=>!safe.includes(t)),1.7,e.dmg); },
-  boulders(e){ const ts=[B.player.tile,pick(P_TILES.filter(t=>!t.occ))].filter(Boolean);
+  boulders(e){ const ts=[aimT(),pick(P_TILES.filter(t=>!t.occ))].filter(Boolean);
     tele(e,ts,1.3,e.dmg,()=>ts.forEach(t=>{ if(typeof palImpact==='function') palImpact(e,t); if(!t.occ) dropRock(t,10); })); },
 };
 
@@ -269,10 +271,12 @@ function updateEnemy(e,dt){
   if(typeof heroAura==='function'&&heroAura('slowfoes')) dt*=1-heroAura('slowfoes');   // Old Man Winter
   if(e.windT>0){ e.windT-=dt; if(e.windT<=0) enemyShot(e,e.dmg*(e.powerT>0?1.3:1)); return; }
   if(e.casting){ e.castT-=dt; if(e.castT<=0){ const c=e.casting; e.casting=null; enemyCast(e,c); } return; }
+  if(b.lab&&b.lab.calm) return;   // Card lab: foes that stand still and never attack
   e.moveT-=dt;
   if(e.moveT<=0&&!b.teles.some(t=>t.owner===e)){ e.moveT=rnd(1.4,2.4)*(icy(e.tile)?2:1); moveEnemy(e); if(e.hp<=0) return; }
   if(e.deck){ e.deckCd-=dt; if(e.deckCd<=0&&e.deck.length){ e.deckCd=rnd(4,6); e.casting=e.deck.shift(); e.castT=.9; return; } }
   e.atkT-=dt;
+  if(e.atkT<=0&&typeof crSandstorm==='function'&&crSandstorm(e)){ e.atkT=rnd(e.def.rate[0],e.def.rate[1]); e.atkMax=e.atkT; return; }   // Sandstorm (creatures.js)
   if(e.atkT<=0){ e.atkT=rnd(e.def.rate[0],e.def.rate[1]); e.atkMax=e.atkT; const ms=e.moves||e.def.moves, mv=e.nextMove||pick(ms); e.curMove=mv; MOVES[mv](e); e.curMove=null; e.nextMove=pick(e.moves||e.def.moves); if(typeof palPlay==='function') palPlay(e,mv==='quake'?'quake':(mv==='shot'||mv==='boulders')?'throw':''); }   // the next move is picked early so it can be shown
 }
 

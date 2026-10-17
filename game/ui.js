@@ -576,7 +576,7 @@ $('#chTestScrolls').onclick=()=>{ addScroll(save,'enchant',2); addScroll(save,'p
 /* ---------------- battle flow ---------------- */
 // xo (from the overworld): {hp, opening, explore} — wounds carry in and the fight returns to the map
 function fight(depth,waves,xo){
-  const d=activeDeck(); if(!validateDeck(d.list,CARDS,save.owned).ok) return openCamp();
+  const lab=xo&&xo.lab, d=lab?{list:lab.list}:activeDeck(); if(!lab&&!validateDeck(d.list,CARDS,save.owned).ok) return openCamp();   // lab: a Card lab test (cardlab.js)
   $('#reveal').classList.remove('on');
   show('scrBattle');
   const soul=null, list=d.list;   // heroes are cards in the deck now: drawn and played to summon them
@@ -593,8 +593,8 @@ function fight(depth,waves,xo){
     onRecipe:r=>{ const first=!(save.recipes||{})[r.id]; save.recipes=save.recipes||{}; save.recipes[r.id]=1; persist(); banner((first?'⚗ New recipe! ':'⚗ ')+r.name,'#39ff8a'); },
     onHero:c=>banner('♔ '+c.name.split(',')[0]+' joins the fight!','#ffe066'),
     onEnd:win=>win?victory():defeat(),
-  },{prepare:p=>assignChargeUses(save,p,d.list), gear:gearMods(save), look:gearLook(save), waves, hp:xo&&xo.hp, opening:xo&&xo.opening, rule:xo&&xo.rule, tier:xo&&xo.tier||0, soul});
-  B.explore=!!(xo&&xo.explore); B.trial=!!(xo&&xo.trial);
+  },{prepare:p=>lab?null:assignChargeUses(save,p,d.list), gear:gearMods(save), look:gearLook(save), waves, hp:xo&&xo.hp, opening:xo&&xo.opening, rule:xo&&xo.rule, tier:xo&&xo.tier||0, soul});
+  B.explore=!!(xo&&xo.explore); B.trial=!!(xo&&(xo.trial||lab)); B.lab=lab||null;
   if(B.explore&&typeof roomAllyStart==='function') roomAllyStart();   // a hired adventurer fights beside you (rooms.js)
   if(B.opening==='strike') setTimeout(()=>banner('First Strike! They reel back','#39ff8a'),300);
   else if(B.opening) setTimeout(()=>banner(B.opening==='ambush'?'Ambush! They\'re slow to react':'Surprised! They strike first',B.opening==='ambush'?'#39ff8a':'#ff5d6c'),300);
@@ -604,6 +604,7 @@ function fight(depth,waves,xo){
 function settleCharges(){ const burned=settleChargeUses(save,B.piles); persist();
   return burned.length?' Burned up: '+burned.map(x=>x.card.name+(x.n>1?' ×'+x.n:'')).join(', ')+'.':''; }
 function victory(){
+  if(B.lab) return labEnd(true);
   const b=B, boss=b.enemies.some(e=>e.def.boss);
   const rw=battleRewards(b.enemies.filter(e=>!e.def.minion).map(e=>e.def.outlaw?e.weak:e.color),b.depth,boss,null,save.owned);
   if(b.bonusGold) rw.gold+=b.bonusGold;   // the Gilded Ruins' gold tiles
@@ -637,6 +638,7 @@ function victory(){
   if(pack){ logCamp('Won a sealed '+packName(packC)+'.','loot'); packReward(packC,depth,show); } else show();
 }
 function defeat(){
+  if(B.lab) return labEnd(false);
   const lost=Math.floor(save.gold*.2); save.gold-=lost; const burnt=settleCharges();
   const depth=B.depth, xp=B.explore;
   // a sanctuary's blessing (dungeon.js): you wake at the floor's stairs up instead, for half the gold
@@ -651,6 +653,7 @@ function defeat(){
 // leaving a fight early: a battle-only fight costs nothing; fleeing a dungeon fight costs 10% of
 // your gold and the floor; a fight you have already lost still counts as a defeat
 function leaveFight(){ paused=false; $('#custom').classList.remove('on');
+  if(B.lab){ B=null; return openLab(); }
   if(B.phase==='lose'||B.player.hp<=0) return defeat();
   const burnt=settleCharges(); if(burnt) tip(burnt.trim());
   if(B.explore){ fleeCost('Fled a fight at depth '+B.depth); if(typeof stopExplore==='function'){ stopExplore(); EX=null; XPARK=null; if(typeof XRUN!=='undefined') XRUN=null; } }

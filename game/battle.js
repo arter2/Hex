@@ -180,7 +180,7 @@ function hitEnemy(e,base,card,opts){
   opts=opts||{};
   if(e.def.bossId&&typeof bossHit==='function'){ const r=bossHit(e,card,base); if(r!==null) return r; }
   const pl=B.player;
-  let mult=opts.raw?1:bossMult(card&&card.color,e)*(e.curseT>0?1.3:1)*(pl.pactT>0||pl.courageT>0?1.3:1)*(card&&card.valor&&pl.hp<=pl.maxHp/2?1.5:1)*heroMult(card)*(onLand('flood')&&!opts.raw?1.2:1)*((card&&pl.power&&pl.power[card.color])||1);
+  let mult=opts.raw?1:bossMult(card&&card.color,e)*(e.curseT>0?1.3:1)*(pl.pactT>0||pl.courageT>0?1.3:1)*(card&&card.valor&&pl.hp<=pl.maxHp/2?1.5:1)*heroMult(card)*(e.radiantT>B.time&&!opts.raw?1.15:1)*(onLand('flood')&&!opts.raw?1.2:1)*((card&&pl.power&&pl.power[card.color])||1);
   // Counter Hit (Battle Network): a card that lands while the enemy winds up, casts or has an attack
   // marked on the board does double damage, stuns it and cancels the attack.
   const counter=!opts.raw&&card&&card.id!=='wand'&&e.hp>0&&!(e.stunT>0)&&!(e.freezeT>0)&&(e.windT>0||!!e.casting||B.teles.some(t=>t.owner===e&&!t.friendly)||(typeof inCounterWindow==='function'&&inCounterWindow(e)));   // or while its attack bar flashes (reading.js)
@@ -358,7 +358,7 @@ function cancelAttack(e){
   if(had) floater('cancelled',e.tile,'#6fd6ff');
 }
 function killEnemy(e){
-  if(typeof bestiaryKill==='function'&&!e.def.minion) bestiaryKill(e);
+  if(typeof bestiaryKill==='function'&&!e.def.minion&&!B.lab) bestiaryKill(e);
   if(typeof arRuleKill==='function') arRuleKill(e);
   // a kill lands hard: a short freeze and a white flash; the last kill of a boss fight goes slow
   B.hitStop=Math.max(B.hitStop||0,e.def.boss?.2:.07); flash(e.tile,'#ffffff',1);
@@ -367,6 +367,7 @@ function killEnemy(e){
   if(e.loot&&e.loot.length){ const room=handRoom(B.piles); B.piles.hand.push(...e.loot.slice(0,room)); B.piles.draw.push(...e.loot.slice(room)); floater('Got back '+e.loot.map(c=>c.card.name).join(', '),e.tile,'#39ff8a',true); e.loot=null; }   // a Cutpurse drops what it stole   // past a full hand, the rest go back on top of the deck
   if(e.def.mini&&typeof helpers==='function') for(const m of helpers(e)) if(m.hp>0) killEnemy(m);   // a miniboss's helpers fall with it
   if(typeof extraKill==='function') extraKill(e);
+  crEnemyDied(e);
   if(B.enemies.some(x=>x.def.boss)&&!alive().length&&Number.isInteger(B.wave)&&B.wave>=B.waves.length-1){
     B.slowMo=.55; floater('FINISH!',e.tile,'#ffffff',true); ring(e.tile,'#ffffff',2.4,.7,10); shake(10); if(typeof arenaKick==='function') arenaKick(); }
   if(e.def.split){ const spots=around(e.tile).filter(t=>t.side==='e'&&!t.occ).slice(0,2);   // a Gloop splits in two
@@ -403,11 +404,13 @@ function hitPlayer(dmg,src){
   if(p.hp<=0){ p.hp=0; B.phase='lose'; p.charging=false; later(1.2,()=>B.hooks.onEnd&&B.hooks.onEnd(false)); }
 }
 function hitBlock(o,dmg,src){
+  if(o.cr){ dmg=crHurt(o,dmg,src); if(dmg<=0) return; }   // a creature's traits (creatures.js)
   o.hp-=dmg; floater('-'+dmg,o.tile,'#ffb3a0'); flash(o.tile,'#ffb3a0',.6);
   if(o.thorns&&src&&src.hp>0) hitEnemy(src,o.thorns,o.card);
-  if(o.hp<=0) removeBlock(o);
+  if(o.hp<=0&&!(o.cr&&crSave(o))) removeBlock(o);
 }
 function removeBlock(o){
+  if(o.cr&&o.hp<=0&&!o.fell){ o.fell=1; crFell(o); }
   if(o.tile.occ===o) o.tile.occ=null; burst(o.tile,colorOf(o.card),12);
   if(o.gear&&o.gear.length){ (B.gearDrop=B.gearDrop||[]).push(...o.gear); o.gear=null; floater('gear dropped',o.tile,'#c08a55'); }
   if(o===B.player.hero) heroLeaves();
@@ -431,6 +434,7 @@ function playCard(inst){ if(B&&B.player){ B.player.poseT=B.time; B.player.poseK=
   c=raceFrac(c,raceMult(inst.card,inst));
   if(inst.extra) c=Object.assign({},c,inst.extra);   // a Tinker's keyword
   if(inst.brood) c=Object.assign({},c,{broodN:inst.brood,leader:inst.leader});
+  if(p.empower&&!isInstant(c)) c=scaled(c,crEmpowerUse());   // an Empower creature's boost
   if(misfire(c,p)) return;
   b.log.push(c.name);
   b.hooks.onCast&&b.hooks.onCast(c,inst);
@@ -480,7 +484,7 @@ const CAST={
     ts.forEach(t=>{ const w={kind:'wall',card:c,tile:t,hp:c.hp,maxHp:c.hp,thorns:c.thorns||0,life:secs(c.turns||2),maxLife:secs(c.turns||2),cage}; t.occ=w; B.walls.push(w); burst(t,colorOf(c),8,.3); });
     if(cage){ cage.path=[]; floater('Caged!',cage.tile,colorOf(c),true); }
   },
-  sentry(c,p){ placeAlly(c,'sentry',c.hp||40,c.turns); },
+  sentry(c,p){ if(c.beh) return crSpawn(c); placeAlly(c,'sentry',c.hp||40,c.turns); },
   trap(c,p){ // on the aimed tile, or a free tile next to the nearest enemy
     const e=alive().sort((a,b)=>hexDist(p.tile,a.tile)-hexDist(p.tile,b.tile))[0];
     let t=B.aim&&!B.aim.occ&&!B.aim.trap?B.aim:null; B.aim=null;
@@ -509,11 +513,12 @@ const CAST={
       if(n) floater('cleansed',p.tile,'#e6f4ff'); healPlayer(c.amt); }
     burst(p.tile,colorOf(c),10,1);
   },
-  summon(c,p){ if(c.ai!=='critter') return placeAlly(c,c.ai,c.hp,c.turns);
+  summon(c,p){ if(c.beh) return crSpawn(c);   // a creature built from parts (creatures.js)
+    if(c.ai!=='critter') return placeAlly(c,c.ai,c.hp,c.turns);
     const n=c.broodN>=2?2:1; for(let i=0;i<n;i++) later(i*.15,()=>spawnCritter(c));
     if(c.leader&&typeof BROOD_LEADER!=='undefined') later(.35,()=>{ const o=spawnCritter(scaled(BROOD_LEADER,1.25)); if(o) floater('Bramble Ogre!',o.tile,'#6fdc7a',true); }); },
   hero(c,p){ callHero(c); if(c.hero==='grovebeast'){ shake(9); spray(p.tile,40,{shape:'leaf',color:['#6fdc7a','#3fa856','#b6f59a'],v0:1,v:6,up0:2,up:6,g:5,life:1.2,s:7,spin:9}); } },
-  machine(c,p){
+  machine(c,p){ if(c.beh) return crSpawn(c);
     if(c.ai==='bulwark') return CAST.ward({ward:'wall',n:c.n,hp:c.hp,turns:c.turns,color:c.color,name:c.name},p);
     placeAlly(c,c.ai,c.hp,c.turns);
   },
@@ -638,7 +643,7 @@ function allyCard(a){ const c=a.card; if(a.ai==='hero'||a.enemy) return c;
   for(const g of a.gear||[]){ if(g.eqPow) m+=g.eqPow; if(g.eqRate) rate*=g.eqRate; for(const k of ['burn','freeze','stun','slow','poison','curse','drain','mend','confuse']) if(g[k]) kw[k]=g[k]; }
   if(m===1&&rate===1&&!Object.keys(kw).length) return c;
   return Object.assign(scaled(c,m),kw,{rate:(c.rate||1)*rate}); }
-const guards=()=>B.allies.filter(a=>a.hp>0&&(a.card.color==='gray'&&a.ai==='guardian'||(a.gear||[]).some(g=>g.eq==='aegis')));
+const guards=()=>B.allies.filter(a=>a.hp>0&&!a.enemy&&(a.card.color==='gray'&&a.ai==='guardian'||a.cr&&(a.card.beh==='guards'||a.card.trait==='guardian')||(a.gear||[]).some(g=>g.eq==='aegis')));
 
 /* ---------------- the Sidearm and its Ace ----------------
    An Ace card loads into your Sidearm instead of going off. Ace Enchantments (from any color)
@@ -783,7 +788,7 @@ function timeTick(dt){
   if(p.shieldT>0&&(p.shieldT-=dt)<=0&&p.barrier>0){ p.barrier=0; floater('shield fades',p.tile,'#6fd6ff'); }
   for(const e of alive()) if(e.shieldT>0&&(e.shieldT-=dt)<=0) e.barrier=0;
   for(const o of [...b.walls,...b.allies]) if((o.life-=dt)<=0){ floater('expired',o.tile,'#9fdcff'); removeBlock(o); }
-  for(const a of b.allies) if(a.hp>0&&a.card.color==='gray'&&a.ai!=='hero'&&!a.enemy&&(a.vetT=(a.vetT||0)+dt)>=TURN_S){ a.vetT-=TURN_S; a.vet=(a.vet||0)+1; floater('Veteran +'+a.vet*10+'%',a.tile,'#b4b8c8'); }   // Gray: Veteran
+  for(const a of b.allies) if(a.hp>0&&a.card.color==='gray'&&a.ai!=='hero'&&!a.enemy&&(!a.cr||a.card.trait==='veteran')&&(a.vetT=(a.vetT||0)+dt)>=TURN_S){ a.vetT-=TURN_S; a.vet=(a.vet||0)+1; floater('Veteran +'+a.vet*10+'%',a.tile,'#b4b8c8'); }   // Gray: Veteran
   for(const t of TILES){
     if(t.trap&&(t.trap.life-=dt)<=0) t.trap=null;
     if(t.envT>0&&(t.envT-=dt)<=0){ t.burnT=0; t.iceT=0; t.thornT=0; }
@@ -796,6 +801,7 @@ function timeTick(dt){
 function endTurn(){}
 function updateAlly(a,dt){
   if(a.ai==='hero') heroWalk(a,dt);
+  if(a.cr){ if(!a.down) crTick(a,dt); return; }
   a.fireT-=dt;
   if(a.fireT>0) return;
   const c=allyCard(a); a.fireT=c.rate||1;
@@ -871,7 +877,7 @@ function update(dt){
   for(const f of b.fx) f.t+=dt; b.fx=b.fx.filter(f=>f.t<f.life);
   for(const f of b.floaters){ f.t+=dt; f.y+=dt*1.2; } b.floaters=b.floaters.filter(f=>f.t<.9);
   const k=1-Math.exp(-dt*16);
-  for(const u of [b.player,...b.enemies,...b.allies]){ u.rx=u.rx==null?u.tile.wx:u.rx+(u.tile.wx-u.rx)*k; u.rz=u.rz==null?u.tile.wz:u.rz+(u.tile.wz-u.rz)*k; }
+  for(const u of [b.player,...b.enemies,...b.allies]){ const g=u.goTo||u.tile; u.rx=u.rx==null?g.wx:u.rx+(g.wx-u.rx)*k; u.rz=u.rz==null?g.wz:u.rz+(g.wz-u.rz)*k; }   // goTo: a creature's run or dash
   for(const e of b.enemies) if(e.hp<=0&&e.deathT>0) e.deathT-=dt;
   View.shake=(View.shake||0)*Math.exp(-dt*9);
   for(const q of b.parts){ q.t+=dt; q.vy-=(q.g==null?9:q.g)*dt; if(q.drag){ const d=Math.max(0,1-q.drag*dt); q.vx*=d; q.vz*=d; q.vy*=d; } if(q.spin) q.rot=(q.rot||0)+q.spin*dt; q.wx+=q.vx*dt; q.wz+=q.vz*dt; q.y=Math.max(0,q.y+q.vy*dt); } b.parts=b.parts.filter(q=>q.t<q.life);
@@ -917,9 +923,10 @@ function update(dt){
       if(s.dig&&o&&(o.kind==='rock'||o.enemy)) continue;   // diggers tunnel under walls and rocks
       if(o&&o.kind==='rock'){ hitRock(o,s.dmg); s.done=true; }
       else if(s.from==='p'&&o&&o.kind==='enemy'&&o.hp>0){ if(s.hit.has(o)) continue; s.hit.add(o);
-        hitEnemy(o,s.dmg,s.card,{dig:s.dig}); if(s.push&&o.hp>0) shove(o,{push:1},s.dmg);
+        if(s.ally) crShotHit(s,o); else hitEnemy(o,s.dmg,s.card,{dig:s.dig}); if(s.push&&o.hp>0) shove(o,{push:1},s.dmg);
         if(s.pierce>0){ s.pierce--; s.dmg=Math.max(1,Math.round(s.dmg*(s.falloff||1))); burst(t,'#ffffff',4,.8); } else s.done=true; }
       else if(s.from==='p'&&o&&o.enemy){ hitBlock(o,s.dmg,null); s.done=true; }
+      else if(s.from==='e'&&o&&o.cr&&crPassThrough(o)) continue;   // Submerge, Camouflage
       else if(s.from==='e'&&o&&o.kind!=='enemy'&&!o.enemy){ palImpact(s.owner,t,s); if(o.kind==='player') hitPlayer(s.dmg,s.owner); else hitBlock(o,s.dmg,s.owner); s.done=true; }
       if(s.done) burst(t,s.card?colorOf(s.card):s.color||'#fff',6,.8);
     }
@@ -1502,7 +1509,7 @@ const DRAW={
   },
   ally(ctx,a,T,S){
     if(a.ai==='hero') return DRAW.hero(ctx,a,T,S);
-    const col=colorOf(a.card), unit=['shooter','bomber','healer','guardian'].includes(a.ai);
+    const col=colorOf(a.card), unit=a.cr||['shooter','bomber','healer','guardian'].includes(a.ai);
     const r=drawSprite(ctx,a,T,S,{scale:unit?.85:.8,bob:unit?.04:0,flip:facing(a,a.enemy?B.player:alive()[0],false),flash:a.hitT>0?.8:0});
     const x=r.x, top=r.top-S*.05;
     ctx.strokeStyle=col; ctx.lineWidth=3; ctx.beginPath(); ctx.arc(x-S*.45,top+S*.1,S*.12,-Math.PI/2,-Math.PI/2+TAU*clamp(a.life/a.maxLife,0,1)); ctx.stroke();

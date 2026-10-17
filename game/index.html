@@ -25,7 +25,20 @@
       <button id="mmNew" class="hot"><span class="sr">New game: choose a starter deck</span></button>
       <button id="mmSettings" class="hot"><span class="sr">Settings</span></button>
       <p id="mmWarn" class="mmtxt"></p>
+      <button id="mmLab" class="mmlab" hidden>🧪 Card lab</button>
     </div>
+  </section>
+
+  <!-- the Card lab (cardlab.js): build a card from parts and try it. Shown when Debug › Show Card lab is ticked -->
+  <section id="scrLab" class="screen">
+    <div class="bar"><button id="labBack" class="backbtn back" aria-label="Back"></button><h2>Card lab</h2><span class="dim">testing</span></div>
+    <p class="hint">Build a card from its parts and try it in a test battle. Nothing here is saved, and test battles give no rewards. End a test from the pause menu.</p>
+    <div class="labwrap">
+      <div class="labside"><div id="labCard" class="labcard"></div><p id="labParts" class="hint labparts"></p></div>
+      <div id="labForm" class="labform"></div>
+    </div>
+    <p id="labWarn" class="hint warn"></p>
+    <div class="sticky labsticky"><button id="labRandom" class="btn ghost">🎲 Random</button><button id="labTry" class="btn">Try it ▶</button></div>
   </section>
 
   <!-- new game, step 1: your hexmancer: race, body and stats -->
@@ -419,6 +432,7 @@
       <div class="bar"><h2>Debug</h2></div>
       <p class="hint">Test settings for the look of the dungeon and the battle (they share them). The view behind this panel changes as you slide. Saved in this browser. Open with three fingers tapped three times (or the ` key). Drag the bar at the bottom to resize; tap it to fold or unfold.</p>
       <div class="srow"><span>Pause the game<small>Holds the fight or the dungeon still (nothing moves, no timers run) while everything keeps being drawn, so you can tune with the debug menu open. Not saved.</small></span><label class="scheck"><input id="dbgPause" type="checkbox"></label></div>
+      <div class="srow"><span>Show Card lab<small>Adds a Card lab button to the front page, to build a card from its parts and try it in a test battle. Saved in this browser only.</small></span><label class="scheck"><input id="dbgLab" type="checkbox"></label></div>
       <h3>Lighting</h3>
       <div class="srow"><span>Texture-pixel lighting<small>On: light is worked out once per texture pixel, so it falls across walls and floors in crisp art-pixel steps. Off: smooth light.</small></span><label class="scheck"><input id="dbgTexel" type="checkbox"></label></div>
       <div class="srow"><span>Light bands<small>0 keeps light smooth. Otherwise light is rounded to this many levels per full brightness, for a banded pixel-art look.</small></span><span class="srange"><input id="dbgSteps" type="range" min="0" max="8" step="1"><b id="dbgStepsV"></b></span></div>
@@ -509,6 +523,7 @@
 <script src="gear.js"></script>
 <script src="battle.js"></script>
 <script src="enemies.js"></script>
+<script src="creatures.js"></script>
 <script src="bosses.js"></script>
 <script src="sprites.js"></script>
 <script src="sprites_pal.js"></script>
@@ -535,5 +550,6 @@
 <script src="bagui.js"></script>
 <script src="deckui.js"></script>
 <script src="savepoint.js"></script>
+<script src="cardlab.js"></script>
 </body>
 </html>

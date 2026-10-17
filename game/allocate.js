@@ -103,12 +103,13 @@ const alSame=(a,b)=>a.reduce((n,x,i)=>n+(x===b[i]),0);
 // order the options: what the name hints first, then what the old rule hints, then the rest shuffled;
 // within each group the least used go first (`use` counts), so a colour gets a spread of them
 function alOrder(all,named,family,rng,use,w){ const seen=new Set(), out=[];
-  if(w) all=all.filter(x=>w[x]!==0); if(!all.length) return out;
+  const wk=x=>x==null?'none':x;   // the page calls "no keyword", "no trait" and the like 'none'
+  if(w) all=all.filter(x=>w[wk(x)]!==0); if(!all.length) return out;
   for(const g of [named||[],family||[],all]){ const grp=g.filter(x=>all.includes(x)&&!seen.has(x)).filter((x,i,a)=>a.indexOf(x)===i);
     grp.forEach(x=>seen.add(x)); const keyed=grp.map((x,i)=>({x,k:(g===all?rng()*3:i*.3)+(use&&use[x]||0)*.25})); out.push(...keyed); }
   // a colour's weight (AL_WEIGHTS) divides an option's place: weight 3 moves it well up, even past the name's hints
   const base=x=>(named||[]).includes(x)?0:(family||[]).includes(x)?1:2;
-  return out.map(o=>({x:o.x,k:(base(o.x)+o.k)/((w&&w[o.x]!=null?w[o.x]:1)||.01)})).sort((a,b)=>a.k-b.k).map(o=>o.x); }
+  return out.map(o=>({x:o.x,k:(base(o.x)+o.k)/((w&&w[wk(o.x)]!=null?w[wk(o.x)]:1)||.01)})).sort((a,b)=>a.k-b.k).map(o=>o.x); }
 
 /* Give each part in turn its first choice, then while the card is too close to one already given
    (fewer than 2 parts different), move to the next choice of the least important part. */
@@ -199,6 +200,10 @@ const alKwOpts=(want,kws)=>[want||null,...[null,...kws].filter(k=>k!==(want||nul
 function alSpec(c,kind,col,U){ const rng=alRng(c.id), kh=alHints(c.name,AL_KD_HINTS);
   const W=g=>typeof AL_WEIGHTS!=='undefined'&&AL_WEIGHTS&&AL_WEIGHTS[col]&&AL_WEIGHTS[col][g]||null, first=(h,all,dflt,g)=>alOrder(all,h,dflt,rng,null,g&&W(g));
   const bump=(k,v)=>{ if(v!=null) U(k)[v]=(U(k)[v]||0)+1; };
+  // a colour's usual list plus anything the colour has been weighted up for from another colour
+  const plus=(list,g)=>{ const w=W(g); return w?list.concat(Object.keys(w).filter(k=>w[k]>0&&k!=='none'&&!list.includes(k))):list; };
+  const kwOpts=(want,kws,g)=>alOrder([null,...plus(kws,g)],[want||null],null,rng,null,W(g));
+  const Lk=g=>first(kh.len,['normal','short','long'],null,g);
   if(kind==='creature'){ const h=alHints(c.name,AL_CR_HINTS), old=c.type==='sentry'?'sentry':c.ai;
     let behs=Object.keys(CR_BEH); if(c.type==='sentry') behs=behs.filter(b=>!AL_TOWER_NO.has(b));
     const bOpts=alOrder(behs,h.beh,(AL_AI_FAMILY[old]||[]).filter(b=>behs.includes(b)),rng,U('beh'),W('beh'));
@@ -207,14 +212,15 @@ function alSpec(c,kind,col,U){ const rng=alRng(c.id), kh=alHints(c.name,AL_KD_HI
     const sOpts=alOrder(Object.keys(CR_SPEED),h.speed,[c.rate&&c.rate<=.6?'quick':c.rate&&c.rate>=1.8?'slow':'steady'],rng,null,W('speed'));
     const kws=CR_KWS[col]||[], oldKw=AL_KWS.find(k=>c[k]!=null&&kws.includes(k));
     const wantKw=oldKw||(h.kw||[]).find(k=>kws.includes(k))||(kws.length&&rng()<.5?kws[Math.floor(rng()*kws.length)]:null);
-    let traits=crTraitsOf(col).filter(t=>!(c.type==='sentry'&&['swift','loyal'].includes(t)));
+    let traits=plus(crTraitsOf(col),'trait').filter(t=>!(c.type==='sentry'&&['swift','loyal'].includes(t)));
     if(col==='brown'&&!c.race) traits=traits.filter(t=>t!=='racetech');
     const uT=U('trait'), wantTr=col==='brown'&&c.race?'racetech':(h.trait||[]).find(t=>traits.includes(t))||(rng()<AL_TRAIT_RATE[c.rarity]&&traits.length?traits.slice().sort((a,b)=>(uT[a]||0)-(uT[b]||0)+rng()-.5)[0]:null);
-    const trOpts=[wantTr,...alOrder([null,...traits].filter(t=>t!==wantTr),null,null,rng,uT)];
+    const trOpts=alOrder([null,...traits],[wantTr],null,rng,uT,W('trait'));
     // Gray creatures have no keyword, so they take a stance instead
-    const stOpts=col==='gray'?alOrder(['front','rear','escort'],[AL_STANCE_OF[bOpts[0]]].filter(Boolean),null,rng,U('stance')):[null];
+    const extraSt=plus([],'stance');
+    const stOpts=col==='gray'?alOrder(['front','rear','escort'],[AL_STANCE_OF[bOpts[0]]].filter(Boolean),null,rng,U('stance'),W('stance')):extraSt.length?alOrder([null,...extraSt],[null],null,rng,U('stance'),W('stance')):[null];
     const race=c.race;
-    return {opts:[bOpts,tOpts,sOpts,alKwOpts(wantKw,kws),trOpts,stOpts], cost:[16,4,3,2,1,1.5],
+    return {opts:[bOpts,tOpts,sOpts,kwOpts(wantKw,kws,'creature.kw'),trOpts,stOpts], cost:[16,4,3,2,1,1.5],
       used:p=>{ bump('beh',p[0]); bump('trait',p[4]); bump('stance',p[5]); },
       apply:p=>alApplyCr(c,[...p.slice(0,5),race,p[5]]) }; }
   if(kind==='strike'){ const h=alHints(c.name,AL_ST_HINTS), shapes=Object.keys(STRIKE_SHAPES).concat(Object.keys(STRIKE_OLD));
@@ -223,26 +229,25 @@ function alSpec(c,kind,col,U){ const rng=alRng(c.id), kh=alHints(c.name,AL_KD_HI
     const wantR=(h.rider||[])[0]||(rng()<AL_RIDER_RATE[c.rarity]?Object.keys(STRIKE_RIDERS)[Math.floor(rng()*Object.keys(STRIKE_RIDERS).length)]:null);
     const rOpts=alOrder([null,...Object.keys(STRIKE_RIDERS)],[wantR],null,rng,null,W('rider'));
     const cOpts=alOrder(['normal','quick','charged'],kh.cast,rng()<.5?['normal']:null,rng,U('cast'),W('cast'));
-    const cl=Object.keys(CLUSTER_SHAPES)[Math.floor(rng()*Object.keys(CLUSTER_SHAPES).length)];
-    return {opts:[shOpts,alKwOpts(alOld(c),kws),rOpts,cOpts], cost:[6,2,1,1.5], ok:p=>!(p[2]==='pierce'&&!AL_SHOT_SHAPES.includes(p[0])),   // Pierce only rides on shots
+    const cl=alOrder(Object.keys(CLUSTER_SHAPES),null,null,rng,null,W('cluster'))[0];
+    return {opts:[shOpts,kwOpts(alOld(c),kws,'strike.kw'),rOpts,cOpts], cost:[6,2,1,1.5], ok:p=>!(p[2]==='pierce'&&!AL_SHOT_SHAPES.includes(p[0])),   // Pierce only rides on shots
       used:p=>{ bump('shape',p[0]); bump('cast',p[3]); },
       apply:p=>alApplySt(c,[p[0],p[1],p[2]&&!(STRIKE_RIDERS[p[2]].shots&&!AL_SHOT_SHAPES.includes(p[0]))?p[2]:null,p[0]==='cluster'?cl:null,p[3]]) }; }
   const kws=((TRAITS[col]&&TRAITS[col].kws)||[]).filter((k,i,a)=>k&&k!=='self'&&a.indexOf(k)===i);
-  const L=first(kh.len,['normal','short','long'],null);
   let opts, cost;
-  if(kind==='lob'){ opts=[alOrder(KD_PATTERNS,[c.pattern].filter(Boolean),null,rng,U('pattern'),W('pattern')),first(kh.fuse,['normal','quick','heavy'],null,'fuse'),alKwOpts(alOld(c),kws),
+  if(kind==='lob'){ opts=[alOrder(KD_PATTERNS,[c.pattern].filter(Boolean),null,rng,U('pattern'),W('pattern')),first(kh.fuse,['normal','quick','heavy'],null,'fuse'),kwOpts(alOld(c),kws,'lob.kw'),
       first(kh.after||(c.push?['knock']:null),['none','ground','knock'],null,'after')]; cost=[6,2,2,1]; }
-  if(kind==='ward'){ const fxs=KD_WALL_FX_OF[col]||[];
+  if(kind==='ward'){ const fxs=plus(KD_WALL_FX_OF[col]||[],'wfx');
     const form=c.ward==='barrier'?['shield']:c.form?[c.form]:null;
     opts=[alOrder(Object.keys(KD_FORMS),(kh.form||[]).concat(form||[]),null,rng,U('form'),W('form')),first(kh.build,['normal','light','heavy'],null,'build'),
-      alOrder([null,...fxs],(c.ward==='thorns'?['thorns']:[]).concat((kh.wfx||[]).filter(f=>fxs.includes(f))),rng()<.5?[null]:null,rng,U('wfx')),L]; cost=[6,2,3,1]; }
-  if(kind==='boon'){ const sides=kdSidesOf(col);
-    opts=[alOrder(KD_BOONS,[c.boon],null,rng,U('boon'),W('boon')),KD_TIMED.includes(c.boon)?L:['normal'],alOrder([null,...sides],null,null,rng,U('side')),alOrder(['now','echo','delayed'],null,rng()<.5?['now']:null,rng,U('timing'),W('timing'))]; cost=[6,1,2,1.5]; }
+      alOrder([null,...fxs],(c.ward==='thorns'?['thorns']:[]).concat((kh.wfx||[]).filter(f=>fxs.includes(f))),rng()<.5?[null]:null,rng,U('wfx'),W('wfx')),Lk('ward.len')]; cost=[6,2,3,1]; }
+  if(kind==='boon'){ const sides=plus(kdSidesOf(col),'side');
+    opts=[alOrder(KD_BOONS,[c.boon],null,rng,U('boon'),W('boon')),KD_TIMED.includes(c.boon)?Lk('boon.len'):['normal'],alOrder([null,...sides],null,null,rng,U('side'),W('side')),alOrder(['now','echo','delayed'],null,rng()<.5?['now']:null,rng,U('timing'),W('timing'))]; cost=[6,1,2,1.5]; }
   if(kind==='charge'){ const u=c.uses<=4?'few':c.uses>=10?'many':'normal';
-    opts=[alOrder(['bolt','twin','lob','burst'],(kh.shot||[]).concat([c.fx]),null,rng,U('shot'),W('shot')),first(kh.uses,['normal','few','many'],[u],'uses'),alKwOpts(alOld(c),kws),
+    opts=[alOrder(['bolt','twin','lob','burst'],(kh.shot||[]).concat([c.fx]),null,rng,U('shot'),W('shot')),first(kh.uses,['normal','few','many'],[u],'uses'),kwOpts(alOld(c),kws,'charge.kw'),
       alOrder(['none','pierce','crit','splash'],kh.edge,rng()<.5?['none']:null,rng,U('edge'),W('edge'))]; cost=[6,2,2,1]; }
-  if(kind==='trap'){ opts=[alOrder(KD_TRAPS,[c.trap],null,rng,U('trap'),W('trap')),alKwOpts(alOld(c),kws),L,first(kh.size,['one','three'],null,'size')]; cost=[6,2,1,2]; }
-  if(kind==='environment'){ opts=[alOrder(KD_ENVS,[c.env],null,rng,U('env'),W('env')),alOrder(KD_ENV_PAT,[c.pattern],null,rng,U('envpat'),W('envpat')),L,alKwOpts(null,kws.filter(k=>k!=='stun'))]; cost=[6,2,1,1.5]; }
+  if(kind==='trap'){ opts=[alOrder(KD_TRAPS,[c.trap],null,rng,U('trap'),W('trap')),kwOpts(alOld(c),kws,'trap.kw'),Lk('trap.len'),first(kh.size,['one','three'],null,'size')]; cost=[6,2,1,2]; }
+  if(kind==='environment'){ opts=[alOrder(KD_ENVS,[c.env],null,rng,U('env'),W('env')),alOrder(KD_ENV_PAT,[c.pattern],null,rng,U('envpat'),W('envpat')),Lk('environment.len'),kwOpts(null,kws.filter(k=>k!=='stun'),'environment.kw')]; cost=[6,2,1,1.5]; }
   const K0={lob:'pattern',ward:'form',boon:'boon',charge:'shot',trap:'trap',environment:'env'}[kind], K2={ward:[2,'wfx'],boon:[2,'side'],charge:[3,'edge']}[kind];
   return {opts, cost, used:p=>{ bump(K0,p[0]); if(K2) bump(K2[1],p[K2[0]]); if(kind==='environment') bump('envpat',p[1]); }, apply:p=>alApplyKd(c,p)}; }
 

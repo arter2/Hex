@@ -68,7 +68,7 @@ const CR_TRAITS={
   chilling:  {color:'frost',   name:'Chilling',       text:'whatever hits it is slowed'},
   pack:      {color:'frost',   name:'Pack',           text:'+35% power next to another creature of its colour'},
   tidal:     {color:'frost',   name:'Tidal',          text:'every 3rd hit pushes the enemy back'},
-  shatter:   {color:'frost',   name:'Shatter',        text:'double damage to frozen enemies'},
+  shatter:   {color:'frost', also:['shadow'], never:['gray'], name:'Shatter',        text:'double damage to frozen enemies'},
   submerge:  {color:'frost',   name:'Submerge',       text:'can\'t be hit for a moment after it acts'},
   static:    {color:'storm',   name:'Static',         text:'shocks and stuns enemies that hit it'},
   swift:     {color:'storm',   name:'Swift',          text:'moves to a new row every 10 seconds, toward the enemy'},
@@ -100,7 +100,7 @@ const CR_TRAITS={
   overclock: {color:'brown',   name:'Overclock',      text:'acts 35% faster but loses 5% of its HP every second'},
   selfrepair:{color:'brown',   name:'Self-repair',    text:'mends 4% of its HP after each act'},
 };
-const crTraitsOf=color=>Object.keys(CR_TRAITS).filter(k=>CR_TRAITS[k].color===color);
+const crTraitsOf=color=>Object.keys(CR_TRAITS).filter(k=>CR_TRAITS[k].color===color||(CR_TRAITS[k].also||[]).includes(color));
 // Brown's race tech on a creature
 const CR_RACE={dwarf:'Dwarven armour: takes 25% less damage', gnome:'Gnomish gears: acts 20% faster', elf:'Elven sights: +30% power on enemies 4 or more tiles away',
   goblin:'Goblin powder: +40% power, but 1 act in 6 blows up in its face', alchemy:'Desert alchemy: its hits carry a random effect', sea:'Sea-folk: every 3rd hit pushes',

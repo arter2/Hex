@@ -212,7 +212,7 @@ function alSpec(c,kind,col,U){ const rng=alRng(c.id), kh=alHints(c.name,AL_KD_HI
     const sOpts=alOrder(Object.keys(CR_SPEED),h.speed,[c.rate&&c.rate<=.6?'quick':c.rate&&c.rate>=1.8?'slow':'steady'],rng,null,W('speed'));
     const kws=CR_KWS[col]||[], oldKw=AL_KWS.find(k=>c[k]!=null&&kws.includes(k));
     const wantKw=oldKw||(h.kw||[]).find(k=>kws.includes(k))||(kws.length&&rng()<.5?kws[Math.floor(rng()*kws.length)]:null);
-    let traits=plus(crTraitsOf(col),'trait').filter(t=>!(c.type==='sentry'&&['swift','loyal'].includes(t)));
+    let traits=plus(crTraitsOf(col),'trait').filter(t=>!(c.type==='sentry'&&['swift','loyal'].includes(t))&&!(CR_TRAITS[t]&&(CR_TRAITS[t].never||[]).includes(col)));
     if(col==='brown'&&!c.race) traits=traits.filter(t=>t!=='racetech');
     const uT=U('trait'), wantTr=col==='brown'&&c.race?'racetech':(h.trait||[]).find(t=>traits.includes(t))||(rng()<AL_TRAIT_RATE[c.rarity]&&traits.length?traits.slice().sort((a,b)=>(uT[a]||0)-(uT[b]||0)+rng()-.5)[0]:null);
     const trOpts=alOrder([null,...traits],[wantTr],null,rng,uT,W('trait'));

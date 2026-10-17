@@ -330,7 +330,7 @@ Fountain of Youth | sentry | r | beh=mends tier=sturdy speed=steady kw=mend trai
 Rime Giant Cairn | sentry | u | beh=lob tier=huge speed=slow kw=slow trait=rallying rune=B
 Whale Bone Arch | sentry | c | beh=mends tier=sturdy speed=quick kw=curse trait=tidal rune=C
 Lantern of the Drowned | sentry | r | beh=shields tier=sturdy speed=steady trait=rallying kw=- rune=C
-Tide Pole | sentry | c | beh=snipe tier=sturdy speed=steady kw=pull trait=harvest rune=F
+Tide Pole | sentry | c | beh=snipe tier=sturdy speed=steady kw=pull trait=shatter rune=F
 
 Sea Legs | boon | c | boon=dodge side=muster timing=echo kw=- rune=C
 Fair Winds | boon | c | boon=haste len=short side=glow timing=delayed kw=- rune=D
@@ -424,14 +424,14 @@ Nixie | summon | c | body=Sprite mod=Pale beh=wardmaker tier=sturdy speed=steady
 Rusalka | summon | r | body=Spirit mod=Pale beh=mends tier=sturdy speed=steady kw=curse trait=explodes rune=F
 Kappa | summon | c | body=Kappa beh=wardmaker tier=sturdy speed=steady kw=mend trait=tidal rune=C
 Umibozu | summon | r | body=Ogre mod=Ancient beh=mends tier=sturdy speed=steady kw=pull trait=tidal rune=E
-Yeti | summon | u | body=Yeti beh=pounce tier=huge speed=slow trait=harvest kw=- rune=B
+Yeti | summon | u | body=Yeti beh=pounce tier=huge speed=slow kw=- trait=shatter rune=B
 Yeti Cub | summon | c | body=Yeti mod=Tiny beh=trample tier=huge speed=slow kw=mend trait=rallying rune=C
 Yeti Matriarch | summon | r | body=Yeti mod=Dire beh=lob tier=huge speed=slow trait=scorched kw=- rune=B
 Snowman | summon | c | body=Snowman beh=mends tier=tough speed=steady kw=freeze trait=chilling rune=C
 Winter Wolf | summon | c | body=Wolf mod=Pale beh=dash tier=sturdy speed=steady kw=freeze trait=dread rune=F
 Frost Wolf Alpha | summon | u | body=Wolf mod=Dire beh=pounce tier=sturdy speed=steady kw=freeze trait=pack rune=A
 Rockhopper Penguin | summon | c | body=Penguin mod=Scrappy beh=mends tier=frail speed=slow kw=- rune=F
-Walrus | summon | u | body=Walrus beh=mends tier=sturdy speed=frantic kw=pull trait=harvest rune=✱
+Walrus | summon | u | body=Walrus beh=mends tier=sturdy speed=frantic kw=pull trait=shatter rune=✱
 Narwhal | summon | u | body=Narwhal beh=mends tier=sturdy speed=quick kw=pull trait=dread rune=F
 Orca | summon | r | body=Orca beh=mends tier=sturdy speed=slow kw=pull trait=rallying rune=F
 Hammerhead Shark | summon | u | body=Shark beh=mends tier=huge speed=steady kw=slow trait=tidal rune=C
@@ -441,11 +441,11 @@ Zaratan the Island Turtle | summon | l | body=Turtle mod=Ancient beh=guards tier
 King Crab | summon | u | body=Crab mod=Iron beh=guards tier=tough speed=slow kw=mend trait=rallying rune=C
 Giant Squid | summon | r | body=Kraken mod=Wild beh=trample tier=huge speed=slow kw=freeze trait=dread rune=B
 The Kraken | summon | l | body=Kraken mod=Dire beh=trample tier=huge speed=slow kw=pull trait=tidal rune=E
-Kraken Spawn | summon | c | body=Kraken mod=Tiny beh=trample tier=huge speed=slow kw=slow trait=harvest rune=F
+Kraken Spawn | summon | c | body=Kraken mod=Tiny beh=trample tier=huge speed=slow kw=slow trait=shatter rune=F
 Leviathan | summon | l | body=Leviathan mod=Ancient beh=trample tier=huge speed=slow trait=explodes kw=- rune=F
 Bunyip of the Billabong | summon | u | body=Seal mod=Feral beh=mends tier=sturdy speed=quick kw=- rune=C
 Sea Serpent | summon | r | body=Serpent mod=Wild beh=bolt tier=sturdy speed=slow kw=slow trait=tidal rune=B
-Dragon King of the Deep | summon | l | body=Lung mod=Noble beh=cone tier=sturdy speed=slow kw=freeze trait=harvest rune=C
+Dragon King of the Deep | summon | l | body=Lung mod=Noble beh=cone tier=sturdy speed=slow kw=freeze trait=shatter rune=C
 River Lung | summon | u | body=Lung mod=Gentle beh=shields tier=sturdy speed=slow kw=freeze trait=scorched rune=D
 Frost Giant | summon | r | body=Ogre mod=Pale beh=lob tier=huge speed=slow kw=freeze trait=chilling rune=E
 Pirate Deckhand | summon | c | body=Squire mod=Scrappy beh=zigzag tier=frail speed=quick kw=slow rune=F
@@ -460,7 +460,7 @@ Polar Bear | summon | u | body=Bear mod=Pale beh=taunt tier=tough speed=steady k
 River Mother's Herald | summon | u | body=Merfolk mod=Noble beh=empower tier=frail speed=quick trait=rallying kw=- rune=F
 Vodyanoy | summon | u | body=Toad mod=Old beh=mends tier=sturdy speed=slow kw=burn trait=harvest rune=C
 Ahuizotl | summon | u | body=Hound mod=Sly beh=empower tier=sturdy speed=steady kw=pull rune=F
-Taniwha | summon | r | body=Serpent mod=Ancient beh=mends tier=sturdy speed=quick kw=slow trait=harvest rune=E
+Taniwha | summon | r | body=Serpent mod=Ancient beh=mends tier=sturdy speed=quick kw=slow trait=shatter rune=E
 
 Ship's Cannon | machine | u | mach=Cannon beh=bolt tier=sturdy speed=steady trait=submerge kw=- rune=B
 Broadside Battery | machine | r | mach=Cannon beh=zigzag tier=frail speed=quick kw=freeze trait=shatter rune=F
@@ -468,7 +468,7 @@ Harpoon Ballista | machine | u | mach=Ballista beh=snipe tier=sturdy speed=stead
 Harpoon Launcher | machine | c | mach=Crossbow beh=shields tier=sturdy speed=slow kw=slow rune=F
 Ice Catapult | machine | c | mach=Catapult beh=blast tier=sturdy speed=slow kw=freeze trait=pack rune=F
 Mortar Ketch | machine | u | mach=Cannon beh=blast tier=sturdy speed=slow kw=slow trait=dread rune=C
-Sluice Gate Bulwark | machine | u | mach=Bulwark beh=wardmaker tier=huge speed=slow kw=freeze trait=harvest rune=C
+Sluice Gate Bulwark | machine | u | mach=Bulwark beh=wardmaker tier=huge speed=slow kw=freeze trait=shatter rune=C
 Icebreaker Engine | machine | r | mach=Engine beh=mends tier=sturdy speed=slow kw=freeze trait=chilling rune=F
 Waterwheel Repeater | machine | c | mach=Repeater beh=barrage tier=frail speed=frantic kw=slow rune=F
 Diving Bell Automaton | machine | r | mach=Automaton beh=guards tier=tough speed=slow kw=slow trait=dread rune=B
@@ -776,7 +776,7 @@ Barrow Mound | ward | r | form=rampart wfx=healing len=long kw=- rune=C
 Hell's Gate | ward | l | form=corridor build=light wfx=thorns len=long kw=- rune=B
 
 Skull Lantern | sentry | c | beh=shields tier=sturdy speed=steady kw=confuse trait=seeds rune=D
-Stingy Jack's Lantern | sentry | c | beh=shields tier=sturdy speed=steady trait=chilling kw=- rune=A
+Stingy Jack's Lantern | sentry | c | beh=shields tier=sturdy speed=steady kw=- trait=shatter rune=A
 Crow Perch | sentry | c | beh=pierce tier=sturdy speed=steady trait=dread kw=- rune=F
 Will-o'-the-Wisp | sentry | c | beh=zigzag tier=frail speed=quick kw=confuse trait=lifesteal rune=A
 Rot Censer | sentry | c | beh=bolt tier=sturdy speed=slow trait=plague kw=- rune=F
@@ -784,7 +784,7 @@ Bone Totem | sentry | c | beh=empower tier=sturdy speed=slow kw=curse trait=life
 Pin Doll | sentry | u | beh=snipe tier=sturdy speed=steady kw=curse trait=lifesteal rune=B
 Gallows Tree | sentry | u | beh=guards tier=sturdy speed=slow kw=pull trait=seeds rune=A
 Bubbling Cauldron | sentry | u | beh=bolt tier=sturdy speed=steady trait=drilled kw=- rune=F
-Spider Nest | sentry | u | beh=summoner tier=sturdy speed=slow kw=stun trait=chilling rune=D
+Spider Nest | sentry | u | beh=summoner tier=sturdy speed=slow kw=stun trait=shatter rune=D
 Blood Fountain | sentry | r | beh=bolt tier=sturdy speed=steady kw=drain trait=lifesteal rune=E
 Cursed Mirror | sentry | r | beh=snipe tier=sturdy speed=steady trait=static kw=- rune=B
 
@@ -871,9 +871,9 @@ Vampire Thrall | summon | c | body=Vampire mod=Scrappy beh=shields tier=sturdy s
 Vampire Bat | summon | c | body=Bat mod=Hungry beh=dash tier=frail speed=quick kw=curse trait=lifesteal rune=F
 Tokoloshe | summon | c | body=Imp mod=Sly beh=trample tier=sturdy speed=slow kw=confuse rune=✱
 Adze | summon | c | body=Moth mod=Tiny beh=taunt tier=sturdy speed=steady kw=curse trait=drilled rune=E
-Night-Pack Wolf | summon | c | body=Wolf mod=Grim beh=pounce tier=sturdy speed=slow kw=drain trait=chilling rune=B
+Night-Pack Wolf | summon | c | body=Wolf mod=Grim beh=pounce tier=sturdy speed=slow kw=drain trait=shatter rune=B
 Cave Spider | summon | c | body=Spider beh=bolt tier=sturdy speed=steady kw=curse rune=C
-Death's-Head Moth | summon | c | body=Moth beh=zigzag tier=frail speed=quick kw=curse trait=overcharge rune=F
+Death's-Head Moth | summon | c | body=Moth beh=zigzag tier=frail speed=quick kw=curse trait=shatter rune=F
 Carrion Beetle | summon | c | body=Beetle mod=Mossy beh=guards tier=tough speed=slow kw=drain rune=A
 Cave Centipede | summon | c | body=Centipede beh=pounce tier=sturdy speed=slow kw=curse rune=D
 Plague Rat | summon | c | body=Rat mod=Mossy beh=dash tier=frail speed=quick kw=pull trait=plague rune=E
@@ -894,11 +894,11 @@ Pontianak | summon | u | body=Banshee mod=Sly beh=mends tier=sturdy speed=slow k
 Bog Revenant | summon | u | body=Zombie mod=Mossy beh=mends tier=sturdy speed=frantic trait=rises kw=- rune=B
 Loup-Garou | summon | u | body=Werewolf mod=Wild beh=mends tier=sturdy speed=slow kw=drain trait=drilled rune=A
 Bayou Rougarou | summon | u | body=Werewolf mod=Mossy beh=twin tier=sturdy speed=steady kw=curse trait=dread rune=B
-Barghest | summon | u | body=Hound mod=Feral beh=mends tier=sturdy speed=slow kw=pull trait=chilling rune=C
+Barghest | summon | u | body=Hound mod=Feral beh=mends tier=sturdy speed=slow kw=pull trait=shatter rune=C
 Black Cadejo | summon | u | body=Hound mod=Grim beh=pounce tier=sturdy speed=slow trait=static kw=- rune=D
 Night Mare | summon | u | body=Nightmare beh=burrow tier=sturdy speed=slow kw=pull trait=lifesteal rune=E
 Black Widow | summon | u | body=Spider mod=Grim beh=summoner tier=sturdy speed=slow kw=poison trait=pack rune=F
-Bog Witch | summon | u | body=Witch mod=Mossy beh=chain tier=sturdy speed=slow kw=curse trait=overcharge rune=A
+Bog Witch | summon | u | body=Witch mod=Mossy beh=chain tier=sturdy speed=slow kw=curse trait=shatter rune=A
 Plague Doctor | summon | u | body=Plaguemask beh=cross tier=sturdy speed=slow kw=curse trait=plague rune=A
 Necromancer | summon | u | body=Witch mod=Clever beh=summoner tier=sturdy speed=slow kw=drain trait=harvest rune=F
 Horned Night Visitor | summon | u | body=Demon mod=Feral beh=barrage tier=sturdy speed=slow kw=confuse trait=pack rune=C
@@ -909,7 +909,7 @@ Bean Sidhe | summon | r | body=Banshee beh=summoner tier=sturdy speed=steady kw=
 Lich | summon | r | body=Lich beh=mends tier=sturdy speed=steady kw=poison trait=rises rune=D
 Ankou | summon | r | body=Reaper mod=Old beh=burrow tier=sturdy speed=slow kw=curse trait=drilled rune=C
 Strigoi | summon | r | body=Vampire mod=Pale beh=pierce tier=sturdy speed=steady kw=drain trait=drilled rune=B
-Aswang | summon | r | body=Werewolf mod=Sly beh=twin tier=sturdy speed=slow trait=chilling kw=- rune=F
+Aswang | summon | r | body=Werewolf mod=Sly beh=twin tier=sturdy speed=slow kw=- trait=shatter rune=F
 Manananggal | summon | r | body=Bat mod=Grim beh=blast tier=sturdy speed=slow kw=drain trait=pack rune=A
 Asanbosam | summon | r | body=Vampire mod=Feral beh=lob tier=sturdy speed=steady kw=confuse rune=D
 Werewolf | summon | r | body=Werewolf beh=pounce tier=sturdy speed=steady kw=pull trait=harvest rune=E
@@ -917,8 +917,8 @@ Black Shuck | summon | r | body=Hound mod=Dire beh=dash tier=sturdy speed=slow t
 Antlered Hunger | summon | r | body=Gaunt mod=Hungry beh=summoner tier=sturdy speed=slow kw=curse trait=static rune=E
 Jorogumo | summon | r | body=Spider mod=Sly beh=twin tier=sturdy speed=steady kw=drain rune=B
 Rat King | summon | r | body=Rat mod=Dire beh=zigzag tier=frail speed=quick trait=plague kw=- rune=C
-Black Annis | summon | r | body=Witch mod=Grim beh=summoner tier=sturdy speed=frantic trait=overcharge kw=- rune=F
-Pit Fiend | summon | r | body=Demon beh=mends tier=sturdy speed=steady kw=curse trait=chilling rune=A
+Black Annis | summon | r | body=Witch mod=Grim beh=summoner tier=sturdy speed=frantic kw=- trait=shatter rune=F
+Pit Fiend | summon | r | body=Demon beh=mends tier=sturdy speed=steady kw=curse trait=shatter rune=A
 Rakshasa | summon | r | body=Demon mod=Sly beh=mends tier=sturdy speed=steady kw=stun trait=dread rune=C
 Morrigan's Raven | summon | r | body=Crow mod=Ancient beh=beam tier=sturdy speed=steady kw=curse trait=seeds rune=B
 Gashadokuro | summon | l | body=Skeleton mod=Dire beh=summoner tier=sturdy speed=steady kw=pull trait=seeds rune=✱
@@ -931,7 +931,7 @@ The Erlking | summon | l | body=Spirit mod=Pale beh=mends tier=sturdy speed=stea
 Bone Ballista | machine | c | mach=Ballista beh=snipe tier=sturdy speed=steady kw=confuse trait=rises rune=F
 Skull Catapult | machine | c | mach=Catapult beh=lob tier=sturdy speed=slow kw=pull trait=pack rune=E
 Torture Rack | machine | u | mach=Barricade beh=summoner tier=sturdy speed=quick kw=curse rune=D
-Coffin Cannon | machine | u | mach=Cannon beh=bolt tier=sturdy speed=steady kw=confuse trait=overcharge rune=C
+Coffin Cannon | machine | u | mach=Cannon beh=bolt tier=sturdy speed=steady kw=confuse trait=shatter rune=C
 Plague Trebuchet | machine | u | mach=Trebuchet beh=lob tier=sturdy speed=slow kw=confuse trait=plague rune=B
 Iron Maiden | summon | r | beh=summoner tier=sturdy speed=slow kw=- rune=C
 Gibbet Tower | sentry | r | mach=Tower beh=bolt tier=sturdy speed=steady kw=pull trait=rises rune=B
@@ -1428,7 +1428,7 @@ Waterspout Gargoyle | summon | u | body=Gargoyle mod=Old beh=barrage tier=sturdy
 Shisa | summon | c | body=Shishi beh=barrage tier=sturdy speed=slow trait=veteran stance=front kw=- rune=C
 Komainu | summon | u | body=Shishi mod=Stone beh=pierce tier=sturdy speed=steady stance=escort kw=- rune=C
 Guardian Lion of the Gate | summon | r | body=Shishi mod=Noble beh=pounce tier=tough speed=slow trait=static stance=front kw=- rune=B
-Nio Temple Guardian | summon | r | body=Oni mod=Stone beh=guards tier=tough speed=steady trait=shatter stance=escort kw=- rune=F
+Nio Temple Guardian | summon | r | body=Oni mod=Stone beh=guards tier=tough speed=steady stance=escort kw=- trait=laststand rune=F
 Dvarapala | summon | u | body=Hero mod=Stone beh=barrage tier=sturdy speed=steady trait=laststand stance=front kw=- rune=A
 Moai Watcher | summon | r | body=Golem mod=Ancient beh=bolt tier=tough speed=slow trait=loyal stance=escort kw=- rune=D
 Terracotta Spearman | summon | c | body=Squire mod=Stone beh=guards tier=tough speed=slow kw=slow trait=chilling stance=front rune=B
@@ -1448,7 +1448,7 @@ Cave Bear | summon | c | body=Bear beh=pounce tier=tough speed=steady kw=freeze 
 Wild Boar | summon | c | body=Boar mod=Wild beh=trample tier=tough speed=steady kw=push trait=drilled stance=front rune=C
 Great Tortoise | summon | u | body=Tortoise mod=Ancient beh=wardmaker tier=tough speed=slow trait=steadfast stance=front kw=- rune=C
 Snapping Turtle | summon | c | body=Turtle mod=Hungry beh=wardmaker tier=tough speed=slow kw=pull stance=front rune=B
-Armadillo Knight | summon | u | body=Beetle mod=Brave beh=taunt tier=tough speed=slow trait=shatter stance=front kw=- rune=C
+Armadillo Knight | summon | u | body=Beetle mod=Brave beh=taunt tier=tough speed=slow stance=front kw=- trait=loyal rune=C
 Ironback Beetle | summon | c | body=Beetle mod=Iron beh=wardmaker tier=tough speed=slow trait=static stance=escort kw=- rune=C
 Mimic Chest | summon | u | body=Mimic beh=barrage tier=sturdy speed=frantic trait=veteran stance=rear kw=- rune=B
 War Elephant | summon | r | body=Elephant beh=trample tier=tough speed=steady trait=laststand stance=front kw=- rune=C
@@ -1459,7 +1459,7 @@ Bridge Troll | summon | u | body=Ogre mod=Mossy beh=taunt tier=tough speed=quick
 Ettin | summon | r | body=Ogre mod=Dire beh=trample tier=huge speed=slow kw=slow trait=drilled stance=front rune=B
 
 Longbow Yeoman | summon | c | body=Hero beh=pierce tier=sturdy speed=steady trait=static stance=front kw=- rune=C
-Village Archer | summon | c | body=Squire beh=pierce tier=sturdy speed=steady kw=pull trait=shatter stance=escort rune=✱
+Village Archer | summon | c | body=Squire beh=pierce tier=sturdy speed=steady kw=pull trait=steadfast stance=escort rune=✱
 Shepherd Slinger | summon | c | body=Squire mod=Swift beh=snipe tier=sturdy speed=slow kw=stun trait=drilled stance=rear rune=F
 Scythian Horse Archer | summon | u | body=Centaur beh=snipe tier=sturdy speed=steady trait=steadfast stance=rear kw=- rune=C
 Steppe Rider | summon | u | body=Horse mod=Swift beh=empower tier=sturdy speed=steady trait=laststand stance=escort kw=- rune=D
@@ -1468,7 +1468,7 @@ Mounted Bowman | summon | c | body=Horse beh=pierce tier=sturdy speed=steady tra
 Javelin Thrower | summon | c | body=Hero mod=Swift beh=lob tier=sturdy speed=frantic stance=rear kw=- rune=A
 Spear Hunter | summon | c | body=Hero mod=Wild beh=snipe tier=sturdy speed=steady kw=slow trait=static stance=rear rune=B
 Woodcutter | summon | c | body=Squire mod=Old beh=zigzag tier=sturdy speed=quick trait=drilled stance=escort kw=- rune=C
-Bounty Hunter | summon | u | body=Hero mod=Sly beh=snipe tier=sturdy speed=steady kw=push trait=shatter stance=rear rune=B
+Bounty Hunter | summon | u | body=Hero mod=Sly beh=snipe tier=sturdy speed=steady kw=push trait=laststand stance=rear rune=B
 Wandering Ranger | summon | u | body=Heroine mod=Swift beh=snipe tier=sturdy speed=steady kw=pull stance=rear rune=B
 Tracker | summon | c | body=Hero mod=Clever beh=blast tier=sturdy speed=steady kw=stun trait=tidal stance=rear rune=B
 Falconer | summon | u | body=Hero mod=Noble beh=diag tier=sturdy speed=steady trait=loyal stance=escort kw=- rune=✱
@@ -1483,10 +1483,10 @@ Horned Owl | summon | u | body=Owl mod=Grim beh=snipe tier=sturdy speed=quick tr
 Quill Porcupine | summon | c | body=Boar mod=Scrappy beh=lob tier=sturdy speed=slow kw=pull trait=tidal stance=rear rune=B
 Spiny Hedgehog | summon | c | body=Mole mod=Scrappy beh=chain tier=sturdy speed=steady kw=pull stance=front rune=C
 Spitting Llama | summon | c | body=Camel mod=Sly beh=burrow tier=sturdy speed=steady kw=freeze stance=escort rune=C
-Bactrian Camel | summon | u | body=Camel mod=Old beh=wardmaker tier=sturdy speed=steady kw=curse trait=shatter stance=front rune=C
-Gray Fox | summon | c | body=Fox mod=Sly beh=dash tier=tough speed=steady trait=shatter stance=front kw=- rune=B
-Plains Wolf | summon | c | body=Wolf beh=dash tier=sturdy speed=steady kw=freeze trait=shatter stance=front rune=E
-Lone Wolf | summon | u | body=Wolf mod=Scrappy beh=dash tier=sturdy speed=quick trait=shatter stance=front kw=- rune=C
+Bactrian Camel | summon | u | body=Camel mod=Old beh=wardmaker tier=sturdy speed=steady kw=curse trait=loyal stance=front rune=C
+Gray Fox | summon | c | body=Fox mod=Sly beh=dash tier=tough speed=steady stance=front kw=- trait=drilled rune=B
+Plains Wolf | summon | c | body=Wolf beh=dash tier=sturdy speed=steady kw=freeze trait=steadfast stance=front rune=E
+Lone Wolf | summon | u | body=Wolf mod=Scrappy beh=dash tier=sturdy speed=quick stance=front kw=- trait=veteran rune=C
 Alpha Wolf | summon | r | body=Wolf mod=Dire beh=dash tier=sturdy speed=steady stance=front kw=- rune=A
 Hunting Hound | summon | c | body=Hound beh=pounce tier=sturdy speed=steady kw=slow stance=front rune=C
 Alley Cat | summon | c | body=Cat mod=Scrappy beh=dash tier=sturdy speed=steady kw=slow trait=overcharge stance=front rune=B
@@ -1498,7 +1498,7 @@ Ibex | summon | u | body=Stag mod=Wild beh=lob tier=sturdy speed=quick kw=curse 
 Hippogriff | summon | u | body=Hippogriff beh=twin tier=sturdy speed=quick trait=drilled stance=rear kw=- rune=B
 Hippogriff Rider | summon | r | body=Hippogriff mod=Noble beh=taunt tier=sturdy speed=steady stance=rear kw=- rune=B
 War Griffin | summon | r | body=Griffin mod=Brave beh=wardmaker tier=sturdy speed=steady kw=slow trait=tidal stance=front rune=C
-Royal Griffin | summon | l | body=Griffin mod=Noble beh=lob tier=sturdy speed=steady kw=freeze trait=shatter stance=rear rune=✱
+Royal Griffin | summon | l | body=Griffin mod=Noble beh=lob tier=sturdy speed=steady kw=freeze trait=laststand stance=rear rune=✱
 Sleipnir, the Eight-Legged Steed | summon | l | body=Horse mod=Swift beh=barrage tier=sturdy speed=steady trait=static stance=rear kw=- rune=E
 Arion, the Swift Horse | summon | r | body=Horse mod=Swift beh=blast tier=sturdy speed=steady trait=steadfast stance=escort kw=- rune=D
 Bayard, the Magic Bay | summon | r | body=Horse mod=Lucky beh=cross tier=sturdy speed=steady kw=curse trait=veteran stance=rear rune=C
@@ -1507,7 +1507,7 @@ Wandering Bard | summon | c | body=Hero mod=Gentle beh=empower tier=sturdy speed
 Crossbow Militia | summon | c | body=Squire mod=Brave beh=bolt tier=sturdy speed=quick trait=loyal stance=escort kw=- rune=B
 Pikeman | summon | c | body=Knight beh=cross tier=sturdy speed=steady kw=push trait=overcharge stance=rear rune=A
 Sellsword | summon | u | body=Hero mod=Scrappy beh=blast tier=sturdy speed=steady kw=push trait=steadfast stance=rear rune=C
-Veteran Captain | summon | r | body=Knight mod=Old beh=cone tier=sturdy speed=steady trait=shatter stance=escort kw=- rune=A
+Veteran Captain | summon | r | body=Knight mod=Old beh=cone tier=sturdy speed=frantic kw=- rune=A trait=veteran stance=escort
 Errant Knight | summon | u | body=Knight mod=Brave beh=guards tier=tough speed=slow kw=stun trait=steadfast stance=front rune=C
 Cossack Rider | summon | u | body=Horse mod=Brave beh=taunt tier=sturdy speed=slow trait=steadfast stance=rear kw=- rune=C
 Gaucho with Bolas | summon | u | body=Hero mod=Wild beh=cross tier=sturdy speed=steady kw=stun trait=drilled stance=rear rune=B
@@ -1544,25 +1544,25 @@ Rampaging Rhino | summon | u | body=Bull mod=Dire beh=trample tier=tough speed=s
 Charging Bison | summon | c | body=Bull mod=Wild beh=trample tier=tough speed=slow stance=front kw=- rune=C
 Woolly Mammoth | summon | r | body=Elephant mod=Ancient beh=zigzag tier=tough speed=quick trait=chilling stance=escort kw=- rune=F
 Elephant Bird | summon | u | body=Roc mod=Tiny beh=trample tier=tough speed=quick trait=tidal stance=front kw=- rune=C
-Stone-Dropping Vulture | summon | c | body=Crow mod=Hungry beh=summoner tier=sturdy speed=quick trait=shatter stance=escort kw=- rune=B
+Stone-Dropping Vulture | summon | c | body=Crow mod=Hungry beh=summoner tier=sturdy speed=quick stance=escort kw=- trait=laststand rune=B
 Thunder Ram | summon | u | body=Bull mod=Brave beh=chain tier=tough speed=slow trait=laststand stance=rear kw=- rune=B
 
 Familiar Cat | summon | c | body=Cat mod=Gentle beh=dash tier=sturdy speed=slow trait=tidal stance=front kw=- rune=D
 Tabby Familiar | summon | c | body=Cat mod=Lucky beh=mends tier=sturdy speed=steady kw=stun stance=escort rune=B
 Owl Familiar | summon | c | body=Owl mod=Clever beh=diag tier=sturdy speed=slow trait=laststand stance=escort kw=- rune=F
 Toad Familiar | summon | c | body=Toad mod=Gentle beh=shields tier=sturdy speed=slow stance=front kw=- rune=B
-Raven Familiar | summon | u | body=Crow mod=Clever beh=mends tier=sturdy speed=slow trait=shatter stance=escort kw=- rune=C
+Raven Familiar | summon | u | body=Crow mod=Clever beh=mends tier=sturdy speed=slow kw=- rune=C trait=drilled stance=rear
 Brownie | summon | c | body=Duende mod=Gentle beh=barrage tier=sturdy speed=slow kw=push stance=rear rune=B
 Domovoi | summon | u | body=Duende mod=Old beh=taunt tier=sturdy speed=slow kw=pull trait=overcharge stance=front rune=C
 Tomte | summon | c | body=Duende mod=Ancient beh=blast tier=sturdy speed=slow kw=curse trait=veteran stance=rear rune=F
 Hob of the Hearth | summon | c | body=Duende mod=Mossy beh=cone tier=sturdy speed=steady kw=push trait=loyal stance=escort rune=E
 Zashiki-warashi | summon | u | body=Kodama mod=Lucky beh=shields tier=sturdy speed=slow trait=chilling stance=escort kw=- rune=D
 Lares of the Home | summon | u | body=Spirit mod=Gentle beh=taunt tier=sturdy speed=steady kw=curse stance=front rune=C
-Household Kobold | summon | c | body=Goblin mod=Gentle beh=wardmaker tier=sturdy speed=slow kw=slow trait=shatter stance=front rune=B
+Household Kobold | summon | c | body=Goblin mod=Gentle beh=wardmaker tier=sturdy speed=slow kw=slow trait=steadfast stance=front rune=B
 Village Healer | summon | c | body=Heroine mod=Gentle beh=empower tier=sturdy speed=slow trait=veteran stance=escort kw=- rune=✱
 Wise Woman | summon | u | body=Heroine mod=Old beh=cross tier=sturdy speed=slow trait=steadfast stance=escort kw=- rune=C
 Field Surgeon | summon | u | body=Hero mod=Clever beh=diag tier=sturdy speed=slow trait=static stance=rear kw=- rune=C
-Herbwife | summon | c | body=Heroine mod=Mossy beh=chain tier=sturdy speed=slow trait=shatter stance=front kw=- rune=A
+Herbwife | summon | c | body=Heroine mod=Mossy beh=chain tier=sturdy speed=slow stance=front kw=- trait=laststand rune=A
 Midwife | summon | c | body=Heroine mod=Gentle beh=blast tier=sturdy speed=quick trait=overcharge stance=escort kw=- rune=B
 Saint Bernard | summon | u | body=Hound mod=Gentle beh=mends tier=sturdy speed=quick stance=escort kw=- rune=C
 Therapy Pony | summon | c | body=Horse mod=Tiny beh=empower tier=sturdy speed=quick trait=tidal stance=escort kw=- rune=B
@@ -1584,12 +1584,12 @@ Enkidu | summon | r | body=Ape mod=Wild legend=1 beh=blast tier=sturdy speed=ste
 Hua Mulan | summon | l | body=Heroine mod=Brave legend=1 beh=lob tier=sturdy speed=steady trait=overcharge stance=escort kw=- rune=B
 Cu Chulainn | summon | l | body=Hero mod=Feral legend=1 beh=blast tier=sturdy speed=steady trait=laststand stance=rear kw=- rune=D
 Sundiata Keita | summon | l | body=Hero mod=Noble legend=1 beh=wardmaker tier=sturdy speed=steady trait=steadfast stance=front kw=- rune=C
-Momotaro | summon | r | body=Hero mod=Lucky legend=1 beh=wardmaker tier=sturdy speed=steady trait=shatter stance=rear kw=- rune=B
+Momotaro | summon | r | body=Hero mod=Lucky legend=1 beh=wardmaker tier=sturdy speed=frantic kw=- rune=B trait=veteran stance=front
 Atalanta | summon | r | body=Heroine mod=Swift legend=1 beh=lob tier=sturdy speed=steady trait=tidal stance=front kw=- rune=C
 Heracles | summon | l | body=Hero mod=Brave legend=1 beh=taunt tier=sturdy speed=slow trait=drilled stance=front kw=- rune=F
 Perseus | summon | r | body=Hero mod=Clever legend=1 beh=wardmaker tier=sturdy speed=slow stance=escort kw=- rune=A
 Theseus | summon | r | body=Hero mod=Brave legend=1 beh=cross tier=sturdy speed=steady trait=static stance=escort kw=- rune=D
-Achilles | summon | l | body=Hero mod=Swift legend=1 beh=taunt tier=sturdy speed=steady trait=shatter stance=front kw=- rune=E
+Achilles | summon | l | body=Hero mod=Swift legend=1 beh=taunt tier=sturdy speed=quick kw=- rune=E trait=steadfast stance=front
 Hector of Troy | summon | r | body=Knight mod=Noble legend=1 beh=taunt tier=sturdy speed=steady trait=chilling stance=escort kw=- rune=F
 Rostam | summon | l | body=Hero mod=Brave legend=1 beh=cross tier=sturdy speed=steady trait=tidal stance=rear kw=- rune=A
 Arjuna | summon | l | body=Hero mod=Noble legend=1 beh=wardmaker tier=sturdy speed=steady trait=veteran stance=escort kw=- rune=C
@@ -1604,7 +1604,7 @@ Mwindo | summon | r | body=Hero mod=Lucky legend=1 beh=blast tier=sturdy speed=s
 Kintaro | summon | r | body=Hero mod=Tiny legend=1 beh=lob tier=sturdy speed=quick trait=steadfast stance=rear kw=- rune=F
 Fionn mac Cumhaill | summon | r | body=Hero mod=Clever legend=1 beh=lob tier=sturdy speed=quick trait=chilling stance=escort kw=- rune=B
 Scathach | summon | l | body=Heroine mod=Grim legend=1 beh=pounce tier=sturdy speed=steady trait=veteran stance=front kw=- rune=C
-Tomoe Gozen | summon | r | body=Heroine mod=Brave legend=1 beh=barrage tier=sturdy speed=quick trait=shatter stance=rear kw=- rune=C
+Tomoe Gozen | summon | r | body=Heroine mod=Brave legend=1 beh=barrage tier=sturdy speed=quick stance=rear kw=- trait=loyal rune=C
 Antarah the Poet-Knight | summon | r | body=Hero mod=Noble legend=1 beh=guards tier=tough speed=quick trait=static stance=front kw=- rune=E
 Hunahpu and Xbalanque | summon | l | body=Hero mod=Lucky legend=1 beh=wardmaker tier=sturdy speed=slow trait=chilling stance=front kw=- rune=F
 Glooscap | summon | l | body=Hero mod=Ancient legend=1 beh=barrage tier=sturdy speed=slow trait=tidal stance=rear kw=- rune=A

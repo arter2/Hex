@@ -6,7 +6,7 @@
 const LAB_KEY='hexCardLab';
 const labOn=()=>{ try{ return localStorage.getItem(LAB_KEY)==='1'; }catch(e){ return false; } };
 function labSync(){ const b=document.getElementById('mmLab'); if(b) b.hidden=!labOn(); }
-const LAB={kind:'creature', shape:'twin', rider:null, cluster:'ring', color:'fire', beh:'bolt', tier:'sturdy', speed:'steady', kw:null, trait:null, race:'dwarf', body:0, rank:6, rarity:'rare', foes:'mixed', depth:5, calm:false};
+const LAB={kind:'creature', shape:'twin', rider:null, cluster:'ring', color:'fire', beh:'bolt', tier:'sturdy', speed:'steady', kw:null, trait:null, race:'dwarf', body:null, rune:'A', rank:6, rarity:'rare', foes:'mixed', depth:5, calm:false};
 const LAB_FOES={
   pack:   {name:'Vermin pack', ids:['rat','bat','spider','worm']},
   mixed:  {name:'Mixed',       ids:['gloop','beetle','sellsword']},
@@ -20,20 +20,22 @@ const labBodies=()=>LAB.color==='brown'?LAB_MACHINES.map(x=>x[0]):NOUNS.summon;
 
 // a strike from its parts: shape, keyword and rider
 function labStrike(){ const S=LAB, F=(1+.06*(S.rank-1))*RARITY_MULT[S.rarity], nouns=NOUNS.strike;
-  const name=WORDS[S.color][(S.rank+S.shape.length)%WORDS[S.color].length]+' '+nouns[S.body%nouns.length];
-  const c={id:'lab_st_'+[S.color,S.shape,S.kw||'-',S.rider||'-',S.cluster,S.rank,S.rarity,S.body].join('_'), name, color:S.color, type:'strike', rank:S.rank, rarity:S.rarity, shape:S.shape, lab:true};
+  const bi=S.body==null?Object.keys(STRIKE_SHAPES).concat(Object.keys(STRIKE_OLD)).indexOf(S.shape):S.body;   // Auto: a name that follows the shape
+  const name=WORDS[S.color][(S.rank+S.shape.length)%WORDS[S.color].length]+' '+nouns[bi%nouns.length];
+  const c={id:'lab_st_'+[S.color,S.shape,S.kw||'-',S.rider||'-',S.cluster,S.rank,S.rarity,bi,S.rune].join('_'), name, color:S.color, type:'strike', rank:S.rank, rarity:S.rarity, shape:S.shape, code:S.rune, lab:true};
   if(S.rider) c.rider=S.rider; if(S.shape==='cluster') c.cluster=S.cluster;
   if(STRIKE_SHAPES[S.shape]) return strikeBuild(c,F,S.rank,S.kw);
   BUILD.strike(c,F,S.rank,S.kw,{},x=>x[0],(a,b)=>a); return strikeRiders(c); }
 function labCard(){ if(LAB.kind==='strike') return labStrike();
-  const S=LAB, F=(1+.06*(S.rank-1))*RARITY_MULT[S.rarity], body=labBodies()[S.body%labBodies().length];
+  const S=LAB, F=(1+.06*(S.rank-1))*RARITY_MULT[S.rarity], body=labBodies()[(S.body==null?Object.keys(CR_BEH).indexOf(S.beh):S.body)%labBodies().length];
   const word=WORDS[S.color][(Object.keys(CR_BEH).indexOf(S.beh)+S.rank)%WORDS[S.color].length];
   const c={id:'lab_'+S.color+'_'+body.toLowerCase(), name:word+' '+body, color:S.color, type:S.color==='brown'?'machine':'summon', rank:S.rank, rarity:S.rarity,
     beh:S.beh, tier:S.tier, speed:S.speed, lab:true};
   if(S.color==='brown') c.ai=LAB_MACHINES.find(x=>x[0]===body)[1];
   if(S.trait) c.trait=S.trait;
   if(S.trait==='racetech') c.race=S.race;
-  c.id+='_'+[S.beh,S.tier,S.speed,S.kw||'-',S.trait||'-',S.rank,S.rarity].join('_');
+  c.code=S.rune;   // a rune, so lab cards make Flushes and Straights like real ones (no rune counted as wild)
+  c.id+='_'+[S.beh,S.tier,S.speed,S.kw||'-',S.trait||'-',c.race||'-',S.rank,S.rarity,S.rune].join('_');
   return crBuild(c,F,S.rank,S.kw);
 }
 
@@ -45,8 +47,8 @@ function labRow(label,key,opts,col){ const row=document.createElement('div'); ro
   return row; }
 // keep the parts valid together after one changes
 function labFix(key){ const S=LAB;
-  if(key==='kind'){ S.kw=null; S.body=0; }
-  if(key==='color'){ S.trait=crTraitsOf(S.color)[0]||null; if(!(S.kind==='strike'?TRAITS[S.color].kws||[]:CR_KWS[S.color]).includes(S.kw)) S.kw=null; S.body=0; }
+  if(key==='kind'){ S.kw=null; S.body=null; }
+  if(key==='color'){ S.trait=crTraitsOf(S.color)[0]||null; if(!(S.kind==='strike'?TRAITS[S.color].kws||[]:CR_KWS[S.color]).includes(S.kw)) S.kw=null; S.body=null; }
   if(key==='tier'&&S.tier==='colossal'&&!['rare','legendary'].includes(S.rarity)) S.rarity='rare';
   if(key==='rarity'&&S.tier==='colossal'&&!['rare','legendary'].includes(S.rarity)) S.tier='huge'; }
 function renderLab(){
@@ -74,8 +76,11 @@ function labStrikeForm(f,col){ const S=LAB;
     f.appendChild(row); }
   if(S.shape==='cluster') f.appendChild(labRow('Bomblets','cluster',Object.keys(CLUSTER_SHAPES).map(k=>[k,CLUSTER_SHAPES[k]]),col));
   f.appendChild(labRow('Keyword','kw',[[null,'None'],...(TRAITS[S.color].kws||[]).filter((k,i,a)=>k&&a.indexOf(k)===i).map(k=>[k,k[0].toUpperCase()+k.slice(1)])],col));
-  f.appendChild(labRow('Rider','rider',[[null,'None'],...Object.keys(STRIKE_RIDERS).map(k=>[k,STRIKE_RIDERS[k].name,STRIKE_RIDERS[k].text])],col));
-  f.appendChild(labRow('Name','body',NOUNS.strike.map((n,i)=>[i,n]),col)); }
+  // Pierce is for shapes that fire shots
+  const shot=['line','dig','zigzag','diag','twin','fan','spear','boomerang','gun','burst','ricochet'].includes(S.shape); if(!shot&&S.rider==='pierce') S.rider=null;
+  f.appendChild(labRow('Rider','rider',[[null,'None'],...Object.keys(STRIKE_RIDERS).filter(k=>shot||!STRIKE_RIDERS[k].shots).map(k=>[k,STRIKE_RIDERS[k].name,STRIKE_RIDERS[k].text])],col));
+  f.appendChild(labRow('Rune','rune',['A','B','C','D','E','F','✱'].map(k=>[k,k]),col));
+  f.appendChild(labRow('Name','body',[[null,'Auto'],...NOUNS.strike.map((n,i)=>[i,n])],col)); }
 function labCreatureForm(f,col){ const S=LAB;
   { const row=document.createElement('div'); row.className='lrow'; row.innerHTML='<label>Behaviour</label>';
     for(const g in CR_GROUPS){ const sub=labRow(CR_GROUPS[g],'beh',Object.keys(CR_BEH).filter(k=>CR_BEH[k].group===g).map(k=>[k,CR_BEH[k].icon+' '+CR_BEH[k].name,CR_BEH[k].text]),col); sub.classList.add('lsub'); row.appendChild(sub); }
@@ -85,7 +90,8 @@ function labCreatureForm(f,col){ const S=LAB;
   f.appendChild(labRow('Keyword','kw',[[null,'None'],...CR_KWS[S.color].map(k=>[k,k[0].toUpperCase()+k.slice(1)])],col));
   f.appendChild(labRow('Trait','trait',[[null,'None'],...crTraitsOf(S.color).map(k=>[k,CR_TRAITS[k].name,CR_TRAITS[k].text])],col));
   if(S.trait==='racetech') f.appendChild(labRow('Race','race',Object.keys(CR_RACE).map(k=>[k,RACES_TECH[k],CR_RACE[k]]),col));
-  f.appendChild(labRow('Body','body',labBodies().map((n,i)=>[i,n]),col)); }
+  f.appendChild(labRow('Rune','rune',['A','B','C','D','E','F','✱'].map(k=>[k,k]),col));
+  f.appendChild(labRow('Body','body',[[null,'Auto'],...labBodies().map((n,i)=>[i,n])],col)); }
 function openLab(){ renderLab(); show('scrLab'); }
 function labRandom(){ const S=LAB; S.color=pick(LAB_COLORS); labFix('color');
   if(S.kind==='strike'){ S.shape=pick([...Object.keys(STRIKE_SHAPES),...Object.keys(STRIKE_OLD)]); S.kw=pick([null,...(TRAITS[S.color].kws||[]).filter(k=>k&&k!=='self')]); S.rider=pick([null,...Object.keys(STRIKE_RIDERS)]);

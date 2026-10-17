@@ -195,7 +195,7 @@ const MOVES={
   // Sellsword: raises a shield for itself and the weakest ally, or swings across two rows
   guard(e){ const ally=alive().filter(x=>x!==e).sort((a,b)=>a.hp/a.maxHp-b.hp/b.maxHp)[0];
     for(const x of [e,ally]) if(x){ x.barrier=Math.max(x.barrier,30); floater('🛡30',x.tile,'#e6f4ff'); burst(x.tile,'#e6f4ff',8,1); } },
-  cleave(e){ const p=B.player, rows=[p.tile.r,p.tile.r+(Math.random()<.5?-1:1)]; tele(e,P_TILES.filter(t=>rows.includes(t.r)&&t.col<=2),1.1,e.dmg); },
+  cleave(e){ const p={tile:aimT()}, rows=[p.tile.r,p.tile.r+(Math.random()<.5?-1:1)]; tele(e,P_TILES.filter(t=>rows.includes(t.r)&&t.col<=2),1.1,e.dmg); },
   // Powder Monkey: a fizzing bomb on and around you that leaves the floor burning
   bomb(e){ const t=aimT(), ts=[t,...neighbors(t).filter(x=>x.side==='p')].filter(()=>true).slice(0,4); tele(e,ts,1.3,e.dmg,()=>ts.forEach(x=>{ x.burnT=Math.max(x.burnT||0,3); burst(x,'#ff9a3a',10,.5); })); },
   // Dark Wizard: hexes your row (you take 30% more for 6 s), or calls a shade to its side
@@ -232,7 +232,8 @@ const MOVES={
 /* A humanoid casts a card from its deck: announce it (.9s), then play it mirrored
    toward you at 60% power. */
 function enemyCast(e,c){
-  const k=.6*e.ds*(e.powerT>0?1.3:1), p=B.player, col=COLORS[c.color].c, kind=c.type==='piece'?c.base:c.type;
+  // enemy decks already hold stronger cards deeper down (enemyDeck), so depth counts only half here
+  const k=.6*Math.sqrt(e.ds)*(e.powerT>0?1.3:1), p=B.player, col=COLORS[c.color].c, kind=c.type==='piece'?c.base:c.type;
   const pow=Math.round((c.pow||0)*k);
   switch(kind){
     case 'strike':

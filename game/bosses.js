@@ -49,7 +49,7 @@ Object.assign(MOVES,{
     tele(e,[t],1,Math.round(e.dmg*.5),()=>{ if(B.player.tile===t){ B.player.rootT=2.2; floater('Rooted!',t,'#9fdca8',true); } }); },
   // a Root Node pours life into its boss
   mendboss(e){ const boss=e.summoner; if(!boss||boss.hp<=0) return;
-    const h=Math.round(boss.maxHp*.015); boss.hp=Math.min(boss.maxHp,boss.hp+h); floater('+'+h,boss.tile||e.tile,'#9fdca8');
+    const h=Math.round(boss.maxHp*.007);   // was 1.5%: with the deck spent, the wand alone couldn't outpace two nodes boss.hp=Math.min(boss.maxHp,boss.hp+h); floater('+'+h,boss.tile||e.tile,'#9fdca8');
     if(boss.tile) B.fx.push({kind:'bolt',a:e.tile,b:boss.tile,color:'#9fdca8',t:0,life:.35}); },
 });
 Object.assign(INTENT_ICON,{icewall:'▤',crack:'◎',rods:'⚡',vines:'❦',mendboss:'✚'});
@@ -89,7 +89,7 @@ function evolve(e,ph){ e.phase=ph; if(ph>=3&&e.tile&&typeof palHas==='function'&
   if(e.def.bossId==='golem'&&ph>=2) e.reflect=true;
   if(e.def.bossId==='golem'&&ph===3){ e.def={...e.def, moves:['quake','quake','boulders'], rate:[2.6,3.4]}; }
   if(e.def.bossId==='hollow'&&ph===3) summon(e,'clone',2);
-  if(e.def.bossId==='treant'&&ph===3){ summon(e,'rootnode',Math.max(0,2-helpers(e,'rootnode').length),nodeTiles()); summon(e,'sapling',2); }
+  if(e.def.bossId==='treant'&&ph===3){ summon(e,'rootnode',Math.max(0,1-helpers(e,'rootnode').length),nodeTiles()); summon(e,'sapling',2); }
   if(e.def.bossId==='wyrm'&&ph===3){ e.def={...e.def, rate:[2.4,3.2]}; }
 }
 function bossTick(e,dt){

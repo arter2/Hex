@@ -631,6 +631,7 @@ const lobPattern=c=>c.pattern||(c.radius?'burst':'single');
 const tn=n=>Math.round(n*10)+' seconds';   // a card's turns are 10 s of fighting each (TURN_S in battle.js)
 function cardText(c){
   if(c.curseText) return c.curseText;
+  if(c.flush) return 'Flush of '+c.flush.join(', ')+': '+cardText(Object.assign({},c,{flush:null}));   // a Flush's merged attack (engine.js flushCard)
   const kw=[];
   if(c.burn) kw.push('Burn '+c.burn+'s'); if(c.freeze) kw.push('Freeze '+c.freeze+'s'); if(c.stun) kw.push('Stun '+c.stun+'s');
   if(c.slow) kw.push('Slow '+c.slow+'s'); if(c.poison) kw.push('Poison '+c.poison); if(c.curse) kw.push('Curse '+c.curse+'s');
@@ -645,7 +646,7 @@ function cardText(c){
   if(kind==='strike') t={line:c.pow+' to the first enemy in your row', row:c.pow+' to every enemy in your row', wedge:c.pow+' in a short cone ahead',
                          all:c.pow+' to every enemy', missiles:c.n+' missiles of '+c.pow+' at random enemies',
                          dig:c.pow+' tunnelling under walls and shields to the first enemy in your row', zigzag:c.pow+' zigzagging between your row and the next',
-                         diag:c.pow+' in two diagonal bolts'}[c.shape];
+                         diag:c.pow+' in two diagonal bolts that bounce off the board\'s edges'}[c.shape];
   else if(kind==='lob') t=c.pow+' on the tile you aim'+PATTERN_TEXT[lobPattern(c)]+', over blockers';
   else if(kind==='trap') t={spike:'Spike trap: '+c.pow, snare:'Snare: '+c.pow+' and roots', blast:'Blast trap: '+c.pow+' to it and around it'}[c.trap]+' when an enemy steps on the tile you aim; '+tn(c.turns);
   else if(kind==='environment') t={burn:'Sets the ground burning', freeze:'Ices the ground, halving enemy speed,', bramble:'Grows brambles that deal '+c.pow+' per step',

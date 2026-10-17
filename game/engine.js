@@ -78,6 +78,11 @@ function openCustom(p){
   // queued cards not cast come back first; any past the limit go back on top of the deck, to be drawn next
   while(p.hand.length>handMax(p)){ const c=p.hand.pop(); if(c.temp) continue; p.draw.push(c); }
   const size=handMax(p); p.bonus=0;
+  // a long fight: when the deck can't fill your hand, your discard pile is shuffled back in under it
+  // (spent Charge cards stay out). Before, a 60-card deck ran dry at about 4 minutes and deep fights
+  // dragged on with the wand alone.
+  if(p.draw.length<size-p.hand.length){ const back=p.discard.filter(c=>!c.temp&&!(c.card.uses&&c.left!=null&&c.left<=0));
+    if(back.length){ p.discard=p.discard.filter(c=>!back.includes(c)); p.draw=shuffle(back,p.rng).concat(p.draw); p.reshuffles=(p.reshuffles||0)+1; } }
   while(p.hand.length<size && p.draw.length){ const c=p.draw.pop(); p.hand.push(c); drawn.push(c); }
   // Rune Surge opens a 4th slot this turn; some gear can open it by chance (p.surge)
   p.surge=surgeRune(p.hand); p.slots=RULES.slots;
@@ -88,7 +93,8 @@ function openCustom(p){
 /* Combos, read from the queue as it stands (runes already keep a queue to one rune):
    - Recipe: exactly the cards of a recipe fuse into one named card (beats everything else)
    - Double / Triple: copies of the same card merge into one cast at 1.5x / 2x power (charge uses add up)
-   - Flush: 3 or more cards of one rune, one of the six colors AND one type, +25% each (+40% for 4)
+   - Flush: 3 or more different cards of one rune and one of the six colors merge into ONE attack (flushCard):
+     all their power +25% in one cast, carrying every effect they had
    - Straight: 3 ranks in a row of one rune, cast as one chain with a finisher; 4 in a row is a Grand Straight */
 const NEUTRAL=['gray','brown'];
 function findRecipe(cards){ const list=typeof RECIPES!=='undefined'?RECIPES:[];
@@ -104,7 +110,7 @@ function detectCombos(queue){
   if(cards.length>=3&&oneRune(cards)&&!NEUTRAL.includes(cards[0].color)&&cards.every(c=>c.color===cards[0].color)&&new Set(cards.map(c=>c.id)).size===cards.length){   // every card different: copies merge (Double), which would make it a 2-card Flush
     // one bonus for any Flush: a stronger 4-card Flush made the 4th slot too strong
     const m=1.25, nm=cards[0].color[0].toUpperCase()+cards[0].color.slice(1);
-    out.push({kind:'flush', color:cards[0].color, mult:m, label:'Flush: '+nm+' +'+Math.round((m-1)*100)+'%'}); }
+    out.push({kind:'flush', color:cards[0].color, mult:m, label:'Flush: '+nm+', merged into one attack +'+Math.round((m-1)*100)+'%'}); }
   const brood=cards.filter(c=>c.brood).length;
   if(brood>=2) out.push({kind:'brood', n:Math.min(4,brood), label:brood>=4?'Elder Grovebeast!':brood===3?'Brood Swarm: two each +50%, an Ogre leads':'Brood Pack: two each +25%'});
   const ranks=cards.map(c=>c.rank).sort((a,b)=>a-b);
@@ -129,6 +135,24 @@ function runeRun(cards){ if(cards.length<3) return null;
     if(start===null) start=k-i; else if(k-i!==start) return null; real++; }
   if(real<2||start<0||start+cards.length>L.length) return null;
   return L.slice(start,start+cards.length); }
+/* A Flush's merged attack. Every card counts for the same budget whatever its type (30 power at
+   rank 1 common, growing with rank and rarity, as cards.js builds them), times any boost on its slot.
+   The attack takes the shape of the first strike in the Flush (else its first lob, else a bolt down
+   your row), its power is the whole budget +25%, and it carries the strongest of every effect. */
+const FLUSH_KWS=['burn','freeze','stun','slow','poison','curse','drain','mend','confuse','push','pull','valor'];
+const flushBudget=c=>30*(1+.06*((c.rank||1)-1))*(typeof RARITY_MULT!=='undefined'&&RARITY_MULT[c.rarity]||1.45);
+function flushCard(insts,mult){
+  const cards=insts.map(i=>i.card), kind=c=>c.type==='piece'?c.base:c.type;
+  const total=insts.reduce((a,i)=>a+flushBudget(i.card)*(i.mult||1),0)*mult;
+  const tpl=cards.find(c=>kind(c)==='strike')||cards.find(c=>kind(c)==='lob')||null;
+  const color=cards[0].color, nm=color[0].toUpperCase()+color.slice(1);
+  let o;
+  if(tpl){ const k=total/flushBudget(tpl); o=Object.assign({},tpl,{type:kind(tpl)}); for(const f of ['pow','bomblet']) if(typeof o[f]==='number') o[f]=Math.round(o[f]*k); }
+  else o={type:'strike', shape:'line', pow:Math.round(total)};
+  for(const f of FLUSH_KWS){ const v=Math.max(0,...cards.map(c=>c[f]||0)); if(v) o[f]=v; else delete o[f]; }
+  delete o.self; delete o.uses; delete o.sig;
+  return Object.assign(o,{id:'flush_'+color+'_'+cards.map(c=>c.id).join('_'), name:nm+' Flush', color, rank:Math.max(...cards.map(c=>c.rank||1)),
+    rarity:'legendary', code:cards.map(c=>c.code).find(k=>k&&k!==WILD_RUNE)||WILD_RUNE, flush:cards.map(c=>c.name)}); }
 // Leaving the Custom screen: combos lock in, and every empty slot adds 1 card to the next
 // draw (Battle Network style). A recipe replaces its cards with the fused card.
 function commitCustom(p){
@@ -143,7 +167,9 @@ function commitCustom(p){
     if(cb.kind==='brood'){ const bs=p.queue.filter(c=>c.card.brood&&!c.temp);
       if(cb.n>=4&&typeof GROVEBEAST!=='undefined'){ p.discard.push(...bs); p.queue=p.queue.filter(c=>!bs.includes(c)); p.queue.unshift({uid:p.uid++, card:GROVEBEAST, temp:true, recipe:true, combo:cb.label}); }
       else bs.forEach((c,i)=>{ c.brood=cb.n; c.mult=(c.mult||1)*(cb.n>=3?1.5:1.25); c.combo=cb.label; c.leader=cb.n>=3&&i===0; }); }
-    if(cb.kind==='flush') p.queue.forEach(c=>{ c.mult=(c.mult||1)*cb.mult; c.combo=c.combo||cb.label; });
+    // a Flush merges into one attack (a Brood keeps its own combo instead)
+    if(cb.kind==='flush'&&!combos.some(x=>x.kind==='brood')){ const used=p.queue.filter(c=>!c.temp); p.discard.push(...used);
+      p.queue=[...p.queue.filter(c=>c.temp),{uid:p.uid++, card:flushCard(used,cb.mult), temp:true, recipe:true, combo:cb.label}]; }
     if(cb.kind==='run'||cb.kind==='set') p.queue.forEach(c=>c.combo=c.combo||cb.label);
     if(cb.kind==='straight'&&p.queue.length>=3){ p.queue[0].straight=cb.ranks; p.queue.forEach(c=>c.combo=c.combo||cb.label); }
   }

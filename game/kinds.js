@@ -67,7 +67,19 @@ const KD_USES={few:{name:'Few', u:.5, k:1.5}, normal:{name:'', u:1, k:1}, many:{
 const KD_EDGE={none:'', pierce:'Pierce: its bolts go through one more enemy, and through walls, rocks and shields', crit:'Crit: 1 use in 4 deals double', splash:'Splash: also hits around what it hits for half'};
 
 /* ---------- traps ---------- */
-const KD_TRAPS=['spike','snare','blast'];
+const KD_TRAPS=['spike','snare','blast','shock','zombie','pendulum'];
+// traps that belong to one colour (others take them only when weighted in)
+const KD_TRAP_HOME={shock:'storm', zombie:'shadow', pendulum:'brown'};
+/* how far a trap reaches: the shock field around a caught enemy, or the line a pendulum swings down.
+   k: strength (a wider field zaps softer) */
+const KD_SPREAD={
+  single:{name:'Single', text:'the tiles either side of it in its row', k:1,   of:'shock'},
+  plus:  {name:'Plus',   text:'a + around it',                           k:.8,  of:'shock'},
+  ring:  {name:'Circle', text:'all 6 tiles around it',                   k:.65, of:'shock'},
+  row:   {name:'Row',    text:'across its row',                          k:1,   of:'pendulum'},
+  column:{name:'Column', text:'down its column',                         k:.9,  of:'pendulum'},
+};
+const KD_SPREAD_OF=t=>Object.keys(KD_SPREAD).filter(k=>KD_SPREAD[k].of===t);
 const KD_SIZE={one:{name:'', n:1, k:1}, three:{name:'Triple', n:3, k:.55}};
 
 /* ---------- ground ---------- */
@@ -108,8 +120,13 @@ const KD_BUILDERS={
   charge(c,[shot,uses,kw,edge]){ const F=kdF(c), U=KD_USES[uses||'normal']; c.fx=shot||'bolt'; c.usesK=uses||'normal'; if(edge&&edge!=='none') c.edge=edge;
     const base={common:4,uncommon:6,rare:10,legendary:15}[c.rarity]; c.uses=Math.max(2,Math.round(base*U.u));
     const k=applyKw(c,kw,c.rank); c.pow=Math.max(3,Math.round(16*F*k*U.k/Math.sqrt(base/3)*(c.fx==='twin'||c.fx==='burst'?.65:1)*(c.edge?.85:1))); },
-  trap(c,[trap,kw,len,size]){ const F=kdF(c), L=KD_LEN[len||'normal'], S=KD_SIZE[size||'one']; c.trap=trap||'spike'; c.len=len||'normal'; c.size=size||'one';
-    const k=applyKw(c,kw,c.rank); c.pow=Math.round({spike:38,snare:18,blast:26}[c.trap]*F*k*L.k*S.k); if(c.trap==='snare') c.stun=r1(1.5+c.rank*.1);
+  trap(c,[trap,kw,len,size,spread]){ const F=kdF(c), L=KD_LEN[len||'normal'], S=KD_SIZE[size||'one']; c.trap=trap||'spike'; c.len=len||'normal'; c.size=size||'one';
+    const sp=KD_SPREAD_OF(c.trap); if(sp.length) c.spread=sp.includes(spread)?spread:sp[0];
+    const k=applyKw(c,kw,c.rank); c.pow=Math.round({spike:38,snare:18,blast:26,shock:16,zombie:10,pendulum:30}[c.trap]*F*k*L.k*S.k*(c.trap==='pendulum'?KD_SPREAD[c.spread].k:1)); if(c.trap==='snare') c.stun=r1(1.5+c.rank*.1);
+    // shock: holds the enemy it catches, and zaps any other enemy that comes into the field around it
+    if(c.trap==='shock'){ c.hold=r1((2.5+c.rank*.1)*L.k); c.zap=Math.max(3,Math.round(12*F*S.k*KD_SPREAD[c.spread].k)); }
+    // zombie: the enemy it catches turns on its own side for a while
+    if(c.trap==='zombie') c.infect=r1((4+c.rank*.2)*L.k*S.k);
     c.turns=+(2*L.t).toFixed(1); },
   environment(c,[env,pattern,len,kw]){ const F=kdF(c), L=KD_LEN[len||'normal']; c.env=env||'burn'; c.pattern=pattern||'burst'; c.len=len||'normal'; if(kw) c.envKw=kw;
     if(c.env==='bramble') c.pow=Math.round(8*F*L.k); if(c.env==='tremor'){ c.pow=Math.round(14*F*L.k); c.stun=r1((.8+c.rank*.08)*L.k); }
@@ -123,7 +140,7 @@ function kdParts(c){ const T=kdBase(c), kw=['burn','freeze','stun','slow','poiso
     case 'ward': return [c.form||'line',c.build,c.wfx||null,c.len];
     case 'boon': return [c.boon,c.len,c.side||null,c.timing||'now'];
     case 'charge': return [c.fx,c.usesK,kw,c.edge||'none'];
-    case 'trap': return [c.trap,kw,c.len,c.size];
+    case 'trap': return [c.trap,kw,c.len,c.size,c.spread||null];
     case 'environment': return [c.env,c.pattern,c.len,c.envKw||null]; }
   return null; }
 
@@ -136,7 +153,11 @@ function kdText(c,kw){ const T=kdBase(c), K=kw&&kw.length?'. '+kw.join(', '):'',
       return len+(c.build!=='normal'?KD_BUILD[c.build].name+'. ':'')+(c.form==='cage'?'Cages the enemy you aim in walls of '+c.hp+' HP: it can\'t move and its shots hit the bars; yours pass through':c.n+' wall'+(c.n>1?'s':'')+' of '+c.hp+' HP '+KD_FORMS[c.form||'line'])+', '+tn(c.turns)+(fx?'. '+fx.name+': they '+fxT:''); }
     case 'boon': { const S=c.side?KD_SIDE[c.side]:null, T=KD_TIMING[c.timing||'now']; return len+cardText(Object.assign({},c,{len:null,side:null,kd:null}))+(S?'. '+S.name+': '+S.text.replace('{v}',c.sideV):'')+(T.name?'. '+T.name+': '+T.text:''); }
     case 'charge': return (c.usesK!=='normal'?KD_USES[c.usesK].name+' uses. ':'')+c.uses+' uses: '+KD_SHOT[c.fx].replace('{pow}',c.pow)+(c.edge?'. '+KD_EDGE[c.edge]:'')+K;
-    case 'trap': return len+(c.size==='three'?'Three traps: ':'')+{spike:'Spike trap: '+c.pow, snare:'Snare: '+c.pow+' and roots', blast:'Blast trap: '+c.pow+' to it and around it'}[c.trap]+' when an enemy steps on '+(c.size==='three'?'the tile you aim or the 2 next to it':'the tile you aim')+'; '+tn(c.turns)+K;
+    case 'trap': { const on=c.size==='three'?'the tile you aim or the 2 next to it':'the tile you aim', sp=(KD_SPREAD[c.spread]||{}).text;
+      if(c.trap==='shock') return len+(c.size==='three'?'Three shock traps':'Shock trap')+' on '+on+', '+tn(c.turns)+': the enemy that steps on it takes '+c.pow+' and is held in place for '+c.hold+'s, and while it is held any other enemy that comes onto '+sp+' is shocked for '+c.zap+' and stunned'+K;
+      if(c.trap==='zombie') return len+(c.size==='three'?'Three zombie traps':'Zombie trap')+' on '+on+', '+tn(c.turns)+': the enemy that steps on it takes '+c.pow+' and is infected for '+c.infect+'s, attacking the other enemies instead of you'+K;
+      if(c.trap==='pendulum') return len+(c.size==='three'?'Three pendulum traps':'Pendulum trap')+' on '+on+', '+tn(c.turns)+': when an enemy steps on it a blade swings '+sp+', '+c.pow+' to every enemy in its path; the others can dodge it'+K;
+      return len+(c.size==='three'?'Three traps: ':'')+{spike:'Spike trap: '+c.pow, snare:'Snare: '+c.pow+' and roots', blast:'Blast trap: '+c.pow+' to it and around it'}[c.trap]+' when an enemy steps on '+on+'; '+tn(c.turns)+K; }
     case 'environment': return len+{burn:'Sets the ground burning', freeze:'Ices the ground, halving enemy speed,', bramble:'Grows brambles that deal '+c.pow+' per step', tremor:'Tremor deals '+c.pow}[c.env]+AREA_TEXT[c.pattern]+(c.turns?' for '+tn(c.turns):'')+(c.envKw?'; enemies standing there when it appears get the keyword':'')+K; }
   return ''; }
 // the extra line a strike's cast or a Gray creature's stance adds
@@ -204,7 +225,7 @@ function kdEscort(a,dt){ if(a.card.stance!=='escort'||(a.escT=(a.escT||0)+dt)<.8
    keyword is none. allocate.js (a tool, not loaded by the game) is what first chose every card's parts. */
 const PART_KEYS={creature:['beh','tier','speed','kw','trait','race','stance'], strike:['shape','kw','rider','cast','cluster'],
   lob:['pattern','fuse','kw','after'], ward:['form','build','wfx','len'], boon:['boon','len','side','timing'],
-  charge:['shot','uses','kw','edge'], trap:['trap','kw','len','size'], environment:['env','pattern','len','kw']};
+  charge:['shot','uses','kw','edge'], trap:['trap','kw','len','size','spread'], environment:['env','pattern','len','kw']};
 const partKind=type=>['summon','machine','sentry'].includes(type)?'creature':PART_KEYS[type]?type:null;
 // the kind of parts a card has: an instant or a Legendary piece has those of what it plays as
 const cardPartKind=c=>partKind(kdBase(c));

@@ -234,7 +234,7 @@ function alSpec(c,kind,col,U){ const rng=alRng(c.id), kh=alHints(c.name,AL_KD_HI
       used:p=>{ bump('shape',p[0]); bump('cast',p[3]); },
       apply:p=>alApplySt(c,[p[0],p[1],p[2]&&!(STRIKE_RIDERS[p[2]].shots&&!AL_SHOT_SHAPES.includes(p[0]))?p[2]:null,p[0]==='cluster'?cl:null,p[3]]) }; }
   const kws=((TRAITS[col]&&TRAITS[col].kws)||[]).filter((k,i,a)=>k&&k!=='self'&&a.indexOf(k)===i);
-  let opts, cost;
+  let opts, cost, ok;
   if(kind==='lob'){ opts=[alOrder(KD_PATTERNS,[c.pattern].filter(Boolean),null,rng,U('pattern'),W('pattern')),first(kh.fuse,['normal','quick','heavy'],null,'fuse'),kwOpts(alOld(c),kws,'lob.kw'),
       first(kh.after||(c.push?['knock']:null),['none','ground','knock'],null,'after')]; cost=[6,2,2,1]; }
   if(kind==='ward'){ const fxs=plus(KD_WALL_FX_OF[col]||[],'wfx');
@@ -246,10 +246,13 @@ function alSpec(c,kind,col,U){ const rng=alRng(c.id), kh=alHints(c.name,AL_KD_HI
   if(kind==='charge'){ const u=c.uses<=4?'few':c.uses>=10?'many':'normal';
     opts=[alOrder(['bolt','twin','lob','burst'],(kh.shot||[]).concat([c.fx]),null,rng,U('shot'),W('shot')),first(kh.uses,['normal','few','many'],[u],'uses'),kwOpts(alOld(c),kws,'charge.kw'),
       alOrder(['none','pierce','crit','splash'],kh.edge,rng()<.5?['none']:null,rng,U('edge'),W('edge'))]; cost=[6,2,2,1]; }
-  if(kind==='trap'){ opts=[alOrder(KD_TRAPS,[c.trap],null,rng,U('trap'),W('trap')),kwOpts(alOld(c),kws,'trap.kw'),Lk('trap.len'),first(kh.size,['one','three'],null,'size')]; cost=[6,2,1,2]; }
+  if(kind==='trap'){ const wt=W('trap')||{}, traps=KD_TRAPS.filter(t=>!KD_TRAP_HOME[t]||KD_TRAP_HOME[t]===col||wt[t]>0);   // a colour's own traps, plus any weighted in
+    opts=[alOrder(traps,[c.trap],null,rng,U('trap'),W('trap')),kwOpts(alOld(c),kws,'trap.kw'),Lk('trap.len'),first(kh.size,['one','three'],null,'size'),
+      alOrder([null,...Object.keys(KD_SPREAD)],[c.spread||null],null,rng,null,W('spread'))]; cost=[6,2,1,2,1];
+    ok=p=>{ const sp=KD_SPREAD_OF(p[0]); return sp.length?sp.includes(p[4]):p[4]==null; }; }
   if(kind==='environment'){ opts=[alOrder(KD_ENVS,[c.env],null,rng,U('env'),W('env')),alOrder(KD_ENV_PAT,[c.pattern],null,rng,U('envpat'),W('envpat')),Lk('environment.len'),kwOpts(null,kws.filter(k=>k!=='stun'),'environment.kw')]; cost=[6,2,1,1.5]; }
   const K0={lob:'pattern',ward:'form',boon:'boon',charge:'shot',trap:'trap',environment:'env'}[kind], K2={ward:[2,'wfx'],boon:[2,'side'],charge:[3,'edge']}[kind];
-  return {opts, cost, used:p=>{ bump(K0,p[0]); if(K2) bump(K2[1],p[K2[0]]); if(kind==='environment') bump('envpat',p[1]); }, apply:p=>alApplyKd(c,p)}; }
+  return {opts, cost, ok, used:p=>{ bump(K0,p[0]); if(K2) bump(K2[1],p[K2[0]]); if(kind==='environment') bump('envpat',p[1]); }, apply:p=>alApplyKd(c,p)}; }
 
 // put a card's parts on it and work out its numbers (kinds.js partsBuild)
 const alBuild=(c,kind,vals)=>{ const P={}; PART_KEYS[kind].forEach((k,i)=>{ if(vals[i]!=null) P[k]=vals[i]; }); partsBuild(c,P); c.alloc=1; };
@@ -291,10 +294,10 @@ const alIsWord=(t,w)=>AL_TYPE_SET[t].has(w)||AL_TYPE_SET[t].has(w.replace(/e?s$/
 // the parts each theme raises (part: values), and how strongly a theme weight carries over
 const AL_THEMES={
   poison:  {kw:['poison'], trait:['plague'], beh:[], extra:{}},
-  curse:   {kw:['curse'], trait:['dread','harvest'], extra:{}},
+  curse:   {kw:['curse'], trait:['dread','harvest'], trap:['zombie'], extra:{}},
   burn:    {kw:['burn'], trait:['scorched','explodes'], wfx:['burning'], side:['embers','scorch'], after:['ground']},
   freeze:  {kw:['freeze','slow'], trait:['chilling','shatter'], wfx:['freezing'], side:['chill','rime']},
-  stun:    {kw:['stun','confuse'], trait:['static','overcharge','dread'], wfx:['shocking'], side:['jolt']},
+  stun:    {kw:['stun','confuse'], trait:['static','overcharge','dread'], wfx:['shocking'], side:['jolt'], trap:['shock']},
   drain:   {kw:['drain'], trait:['lifesteal'], wfx:['draining'], side:['siphon','blood']},
   knockback:{kw:['push','pull'], trait:['tidal'], after:['knock']},
   healing: {kw:['mend'], beh:['mends','shields'], boon:['heal','regen','intervene'], wfx:['healing'], side:['glow','sprout','radiance']},
@@ -316,7 +319,8 @@ const AL_EFFECTS={
   poison:  {kw:['poison'], trait:['plague']},
   freeze:  {kw:['freeze'], trait:['shatter'], wfx:['freezing'], env:['freeze']},
   slow:    {kw:['slow'], trait:['chilling'], side:['chill'], trap:['snare']},
-  stun:    {kw:['stun'], trait:['static','overcharge'], wfx:['shocking'], side:['jolt'], env:['tremor']},
+  stun:    {kw:['stun'], trait:['static','overcharge'], wfx:['shocking'], side:['jolt'], env:['tremor'], trap:['shock']},
+  infect:  {trap:['zombie']},
   confuse: {kw:['confuse'], trait:['dread','sandstorm']},
   curse:   {kw:['curse']},
   drain:   {kw:['drain'], trait:['lifesteal'], wfx:['draining'], side:['siphon']},
@@ -333,10 +337,10 @@ const AL_ATTACKS={
   bolt:{shape:['line'], beh:['bolt'], shot:['bolt'], pattern:['single']}, pierce:{beh:['pierce'], rider:['pierce'], edge:['pierce']},
   twin:{shape:['twin'], beh:['twin'], shot:['twin']}, row:{shape:['row','wave'], pattern:['row']}, cone:{shape:['wedge','fan'], beh:['cone']},
   diag:{shape:['diag'], beh:['diag']}, zigzag:{shape:['zigzag'], beh:['zigzag']}, bounce:{shape:['ricochet','boomerang']},
-  chain:{shape:['chain'], beh:['chain']}, snipe:{shape:['snipe'], beh:['snipe']}, beam:{shape:['spear','column'], beh:['beam'], pattern:['column']},
+  chain:{shape:['chain'], beh:['chain'], trap:['shock']}, snipe:{shape:['snipe'], beh:['snipe']}, beam:{shape:['spear','column'], beh:['beam'], pattern:['column']},
   burrow:{shape:['dig'], beh:['burrow']}, barrage:{shape:['missiles','gun'], beh:['barrage']}, all:{shape:['all','shockwave']},
   lob:{beh:['lob'], shot:['lob']}, blast:{shape:['burst'], beh:['blast'], pattern:['burst','ring'], shot:['burst'], edge:['splash'], trap:['blast']},
-  cross:{beh:['cross'], pattern:['cross']}, cluster:{shape:['cluster']}, mine:{shape:['mine'], trap:['spike']}, mark:{shape:['mark']},
+  cross:{beh:['cross'], pattern:['cross']}, cluster:{shape:['cluster']}, mine:{shape:['mine'], trap:['spike']}, mark:{shape:['mark']}, pendulum:{trap:['pendulum']},
   pounce:{beh:['pounce']}, trample:{beh:['trample']}, dash:{beh:['dash']},
   crit:{rider:['crit'], edge:['crit']}, reaper:{rider:['onkill']},
   heal:{beh:['mends'], boon:['heal','regen']}, shield:{beh:['shields'], boon:['dodge','phase']}, guard:{beh:['guards','taunt'], boon:['intervene']},

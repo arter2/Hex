@@ -601,15 +601,15 @@ Inventor's Codex | utility | r | util=draw
 
 Pit of Gold Coins | trap | u | trap=snare kw=drain len=short
 Quicksand | trap | c | trap=snare kw=slow size=three
-Tripwire Spark | trap | c | trap=blast kw=stun
+Tripwire Spark | trap | c | trap=shock spread=single
 Scorpion Nest | trap | c | trap=spike kw=poison size=three
 Pressure Plate Darts | trap | c | trap=spike kw=poison len=short
 Tomb Boulder | trap | u | trap=blast kw=push size=three
 Antlion Pit | trap | u | trap=snare kw=pull len=long size=three
-Shocking Floor Tiles | trap | c | trap=spike kw=stun len=short size=three
+Shocking Floor Tiles | trap | c | trap=shock spread=plus len=short size=three
 Djinn Bottle | trap | r | trap=snare kw=confuse len=long
 Collapsing Tomb Floor | trap | u | trap=blast kw=slow len=short size=three
-Electrified Gold Idol | trap | r | trap=blast kw=stun len=long size=three
+Electrified Gold Idol | trap | r | trap=shock spread=ring len=long
 Cobra Basket Trap | trap | c | trap=spike kw=confuse
 Mirage Oasis | trap | u | trap=snare
 Pharaoh's Curse Seal | trap | r | trap=blast kw=curse len=long
@@ -833,14 +833,14 @@ Doppelganger | utility | r | util=copy
 Necromancer's Grimoire | utility | l | util=copy
 
 Rusted Mantrap | trap | c | trap=spike len=short size=three
-Open Grave | trap | c | trap=snare size=three
+Open Grave | trap | c | trap=zombie size=three
 Sucking Bog | trap | u | trap=snare kw=slow len=long size=three
 Trapdoor Spider Lair | trap | u | trap=snare kw=poison
 Plague Mine | trap | u | trap=blast kw=poison len=short size=three
-Rigged Coffin | trap | c | trap=blast
+Rigged Coffin | trap | c | trap=zombie kw=drain len=short
 Oubliette | trap | r | trap=snare len=short
 The Hanged Man | trap | r | trap=snare kw=pull len=long
-Cursed Tomb | trap | r | trap=blast kw=curse len=long
+Cursed Tomb | trap | r | trap=zombie kw=curse len=long
 
 Haunted Bog | environment | c | env=bramble pattern=burst len=short kw=curse
 Graveyard Fog | environment | c | env=bramble pattern=row len=long
@@ -1860,6 +1860,10 @@ Brass Shot Bundle | charge | c | race=human shot=twin uses=few edge=splash
 Djinn Ember Censer | charge | r | race=djinn shot=lob uses=many kw=burn edge=crit
 Clockwork Bolt Feeder | charge | r | race=gnome shot=bolt edge=pierce
 Bottomless Quiver | charge | l | race=elf shot=bolt uses=many
+Dwarven Pendulum Axe | trap | c | race=dwarf trap=pendulum spread=row
+Gnomish Clockwork Pendulum | trap | u | race=gnome trap=pendulum spread=column len=long
+Goblin Swinging Saw | trap | c | race=goblin unstable=1 trap=pendulum spread=row len=short size=three
+Grand Pendulum Engine | trap | r | race=human trap=pendulum spread=column kw=push size=three
 
 Flintlock Pistol | ace | c | shape=line race=human kw=-
 Dwarven Hand Cannon | ace | u | shape=nova race=dwarf kw=push

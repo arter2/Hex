@@ -82,7 +82,7 @@ function startBattle(list,depth,hooks,opts){
   const p={kind:'player', hp:120, maxHp:120, tile:P_TILES.find(t=>t.col===1&&t.r===(BOARD_ROWS>>1)), path:[], moveCd:0, castCd:0, wandCd:0, charging:false, chargeT:0,
            barrier:0, shieldT:0, hurtT:0, invT:0, dodge:false, powerT:0, pactT:0, courageT:0, intervene:0, hasteT:0, regenT:0, regenAmt:0, hero:null};
   p.tile.occ=p;
-  B={depth, hooks:hooks||{}, piles:createPiles(list), player:p, aim:null, enemies:[], allies:[], walls:[], shots:[], lobs:[], teles:[], fx:[], floaters:[], parts:[],
+  B={depth, hooks:hooks||{}, piles:createPiles(list), player:p, aim:null, enemies:[], allies:[], walls:[], shots:[], lobs:[], shocks:[], teles:[], fx:[], floaters:[], parts:[],
      timers:[], gauge:0, phase:'custom', time:0, log:[]};
   B.waves=(opts&&opts.waves)||makeEncounter(depth); B.wave=0;
   makeTerrain(depth);
@@ -832,6 +832,7 @@ function timeTick(dt){
     if(t.trap&&(t.trap.life-=dt)<=0) t.trap=null;
     if(t.envT>0&&(t.envT-=dt)<=0){ t.burnT=0; t.iceT=0; t.thornT=0; }
   }
+  shockTick(dt);
   if((p.beatT=(p.beatT||0)+dt)>=TURN_S){ p.beatT-=TURN_S;
     if(heroOn('ysolde')||heroAura('shield')) heroShield();
     p.blocksLeft=p.block||0; }   // a Buckler's block comes back
@@ -860,7 +861,38 @@ function updateAlly(a,dt){
 }
 // a trap springs when an enemy steps on it
 function springTrap(t,e){ const c=t.trap.card; t.trap=null; floater(c.name,t,colorOf(c));
-  const ts=c.trap==='blast'?patternTiles(t,'burst','e'):[t]; ts.forEach(x=>{ flash(x,colorOf(c),1); burst(x,colorOf(c),8,.3); hitAt(x,c.pow,c); }); }
+  if(c.trap==='pendulum') return swingPendulum(t,e,c);
+  const ts=c.trap==='blast'?patternTiles(t,'burst','e'):[t]; ts.forEach(x=>{ flash(x,colorOf(c),1); burst(x,colorOf(c),8,.3); hitAt(x,c.pow,c); });
+  if(e.hp<=0) return;
+  // Shock trap: it holds the enemy, and a field around it zaps any other enemy that comes in
+  if(c.trap==='shock'){ e.stunT=Math.max(e.stunT,c.hold); cancelAttack(e); floater('Held!',t,'#ffe24d',true);
+    B.shocks.push({e,life:c.hold,card:c,seen:new Map()}); }
+  // Zombie trap: it turns on its own side for a while (enemies.js zombieAttack); bosses shake it off sooner
+  if(c.trap==='zombie'){ e.infectT=Math.max(e.infectT||0,c.infect*(e.def.bossId||e.def.mini?.5:1)); cancelAttack(e); floater('Infected!',t,'#9be36a',true); burst(t,'#9be36a',14,.6); } }
+// the tiles a shock field covers around a held enemy (kinds.js KD_SPREAD)
+function shockTiles(t,sp){ const row=[tileCR(t.col-1,t.r),tileCR(t.col+1,t.r)];
+  const ts=sp==='ring'?around(t):sp==='plus'?[...row,tileCR(t.col,t.r-1),tileCR(t.col,t.r+1)]:row;
+  return ts.filter(x=>x&&x.side==='e'); }
+function shockTick(dt){
+  for(const f of B.shocks){ f.life-=dt; const e=f.e; if(e.hp<=0||f.life<=0){ f.life=0; continue; }
+    const c=f.card, ts=shockTiles(e.tile,c.spread);
+    if(Math.random()<dt*6) spray(pick(ts)||e.tile,2,{shape:'spark',color:['#fff6a8','#ffe24d'],v0:1,v:3,g:0,drag:4,life:.2,s:2,add:true});
+    for(const x of ts){ const o=x.occ; if(!o||o.kind!=='enemy'||o===e||o.hp<=0) continue;
+      if(B.time-(f.seen.get(o)||-9)<1) continue; f.seen.set(o,B.time);   // once a second while it stays close
+      B.fx.push({kind:'bolt',a:e.tile,b:x,color:'#ffe24d',t:0,life:.25}); hitEnemy(o,c.zap,c,{raw:true});
+      if(o.hp>0){ o.stunT=Math.max(o.stunT,.8); cancelAttack(o); } } }
+  B.shocks=B.shocks.filter(f=>f.life>0); }
+/* Pendulum: the blade swings down the row or column after a short warning; every enemy in its path
+   is hit, but one that isn't stuck may step out of the way (not the one that sprang it) */
+function swingPendulum(t,e,c){ const line=patternTiles(t,c.spread==='column'?'column':'row','e'), dur=.7;
+  B.teles.push({tiles:line,t:0,dur,friendly:true}); line.forEach(x=>flash(x,colorOf(c),.6));
+  if(e.hp>0){ e.stunT=Math.max(e.stunT,dur); cancelAttack(e); }
+  later(dur,()=>{
+    for(const x of line){ const o=x.occ; if(!o||o.kind!=='enemy'||o===e||o.hp<=0||o.stunT>0||o.freezeT>0) continue;
+      const out=neighbors(o.tile).filter(n=>n.side==='e'&&!n.occ&&!line.includes(n)&&!(n.holeT>0));
+      if(out.length&&Math.random()<.35){ floater('dodged',o.tile,'#9fdcff'); stepEnemy(o,pick(out)); } }
+    const a=line[0], b=line[line.length-1]; if(a&&b) B.fx.push({kind:'bolt',a,b,color:'#c8a070',t:0,life:.3});
+    line.forEach(x=>{ burst(x,'#c8a070',6,.6); if(x.occ&&x.occ.kind==='enemy') hitEnemy(x.occ,c.pow,c); }); }); }
 /* How a buffed wand looks. While a Power boon runs (wand x2.5) your shots fly big, orange-red and
    burning; under a Pact (+30%, paid in health) they are a dark glowing blue; under Courage (+30%) golden.
    Each leaves a trail of sparks and lights the arena as it flies, and the weapon's tip wears the same
@@ -1034,7 +1066,7 @@ function castPreview(){
   return out;
 }
 function nextIsLob(){ const q=B&&B.piles.queue[0]; if(!q) return false; const c=q.card, k=c.type==='piece'?c.base:c.type; return k==='lob'||k==='trap'||k==='environment'||(k==='charge'&&c.fx==='lob')||(k==='ward'&&c.form==='cage')||(k==='strike'&&!!STRIKE_AIMED[c.shape]); }
-function aimPattern(){ const q=B.piles.queue[0]; if(!q) return 'single'; const c=q.card; return c.type==='trap'?(c.trap==='blast'?'burst':'single'):c.type==='environment'?c.pattern:lobPattern(c); }
+function aimPattern(){ const q=B.piles.queue[0]; if(!q) return 'single'; const c=q.card; return c.type==='trap'?(c.trap==='blast'?'burst':c.trap==='pendulum'?(c.spread==='column'?'column':'row'):'single'):c.type==='environment'?c.pattern:lobPattern(c); }
 function setAim(t){ const b=B; if(!b||b.phase!=='fight'||!t||t.side!=='e') return; b.aim=b.aim===t?null:t; }
 function cycleAim(){ const b=B; if(!b||b.phase!=='fight') return; const ts=alive().map(e=>e.tile).sort((a,c)=>a.r-c.r||a.q-c.q); if(!ts.length) return;
   b.aim=ts[(ts.indexOf(b.aim)+1)%ts.length]; }
@@ -1520,7 +1552,7 @@ const DRAW={
     const top=r.top-S*.1;
     bar(ctx,x,top,S*.9,e.hp/e.maxHp,'#ff5d6c');
     ctx.font='700 '+Math.round(S*.28)+'px "Jersey 15",system-ui,sans-serif'; ctx.textAlign='center';
-    const st=[]; if(e.burnT>0) st.push('🔥'); if(frozen) st.push('❄️'); if(e.stunT>0) st.push('💫'); if(e.slowT>0) st.push('🐌'); if(e.poisonT>0) st.push('☠'); if(e.curseT>0) st.push('☾'); if(e.powerT>0) st.push('⬆'); if(e.confuseT>0) st.push('❓');
+    const st=[]; if(e.burnT>0) st.push('🔥'); if(frozen) st.push('❄️'); if(e.stunT>0) st.push('💫'); if(e.slowT>0) st.push('🐌'); if(e.poisonT>0) st.push('☠'); if(e.curseT>0) st.push('☾'); if(e.powerT>0) st.push('⬆'); if(e.confuseT>0) st.push('❓'); if(e.infectT>0) st.push('🧟');
     ctx.fillStyle='#fff'; { const kn=typeof bKnown!=='function'||bKnown(e); ctx.fillText(e.name+'  weak: '+(kn?COLORS[e.weak||WEAK_TO[e.color]].icon:'?')+(e.resist?(e.reflect?'  reflects: ':'  resists: ')+(kn?COLORS[e.resist].icon:'?'):''),x,top-4); }   // learned in the bestiary (reading.js)
     if(st.length) ctx.fillText(st.join(''),x,top-4-S*.3);
     if(e.casting){ const w=Math.max(S*1.6,ctx.measureText(e.casting.name).width+14), yy=top-S*.75;   // the card it is about to cast

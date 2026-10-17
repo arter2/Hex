@@ -258,9 +258,14 @@ function enemyCast(e,c){
   enemyShot(e,e.dmg);
 }
 
+// infected: it bites the nearest other enemy instead of attacking you (with no one else left, it just shambles)
+function zombieAttack(e){ const o=B.enemies.filter(x=>x!==e&&x.hp>0&&!x.under).sort((a,b)=>hexDist(e.tile,a.tile)-hexDist(e.tile,b.tile))[0];
+  if(!o){ floater('shambles',e.tile,'#9be36a'); return; }
+  B.fx.push({kind:'bolt',a:e.tile,b:o.tile,color:'#9be36a',t:0,life:.3}); burst(o.tile,'#9be36a',10,.6);
+  hitEnemy(o,Math.round(e.dmg*1.5),null,{raw:true}); floater('bitten',o.tile,'#9be36a'); }
 function updateEnemy(e,dt){
   const b=B;
-  e.confuseT=Math.max(0,(e.confuseT||0)-dt);
+  e.confuseT=Math.max(0,(e.confuseT||0)-dt); if(e.infectT>0&&(e.infectT-=dt)<=0) floater('cured',e.tile,'#9be36a');
   e.hitT=Math.max(0,e.hitT-dt); e.curseT=Math.max(0,e.curseT-dt); e.poisonT=Math.max(0,e.poisonT-dt); e.powerT=Math.max(0,e.powerT-dt);
   if(e.markT>0&&(e.markT-=dt)<=0) e.mark=null;
   if(e.burnT>0){ e.burnT-=dt; e.burnAcc+=5*dt; if(e.burnAcc>=5){ e.burnAcc-=5; hitEnemy(e,5,null,{raw:true}); if(e.hp<=0) return; } }
@@ -275,6 +280,7 @@ function updateEnemy(e,dt){
   if(b.lab&&b.lab.calm) return;   // Card lab: foes that stand still and never attack
   e.moveT-=dt;
   if(e.moveT<=0&&!b.teles.some(t=>t.owner===e)){ e.moveT=rnd(1.4,2.4)*(icy(e.tile)?2:1); moveEnemy(e); if(e.hp<=0) return; }
+  if(e.infectT>0){ e.atkT-=dt; if(e.atkT<=0){ e.atkT=rnd(e.def.rate[0],e.def.rate[1]); e.atkMax=e.atkT; zombieAttack(e); } return; }   // a Zombie trap's victim (battle.js springTrap)
   if(e.deck){ e.deckCd-=dt; if(e.deckCd<=0&&e.deck.length){ e.deckCd=rnd(4,6); e.casting=e.deck.shift(); e.castT=.9; return; } }
   e.atkT-=dt;
   if(e.atkT<=0&&typeof crSandstorm==='function'&&crSandstorm(e)){ e.atkT=rnd(e.def.rate[0],e.def.rate[1]); e.atkMax=e.atkT; return; }   // Sandstorm (creatures.js)

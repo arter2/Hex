@@ -3,8 +3,9 @@
      icons for what it holds (a merchant, a sanctuary, a puzzle, a miniboss, a vault…) and a flavour:
      the Worn Stair (as it comes), the Quiet Way (fewer foes and traps), the Perilous Way (tougher
      foes, a miniboss, richer chests) or the Gilded Way (a vault and more chests, more traps).
-   - The stirring dark: linger on a floor and more foes come, each wave a little harder, up to the
-     floor's cap. Past the cap the waves keep coming but grow no worse, so you can stay and farm.
+   - The stirring dark: once every foe a floor started with is dead, more foes come, each wave a
+     little harder, up to the floor's cap. Past the cap the waves keep coming (slower) but grow no
+     worse, so you can stay and farm.
      (This replaces the Executioner's bell.)
    - Teleport runes: a hidden trap that throws you to a random spot on the floor.
    - Deep falls: a trapdoor drops you 2 or 3 floors (never past a boss floor you have not beaten).
@@ -50,15 +51,28 @@ function xRouteChoose(){ if(!EX||!XRUN||typeof xFloorPlan!=='function') return f
 function xRouteArrive(){ if(!EX||!EX.route||EX.route==='plain') return; const R=ROUTES[EX.route]; xLog('You took '+R.name.replace(/^The /,'the ')+': '+R.text.charAt(0).toLowerCase()+R.text.slice(1),'good'); }
 
 /* ---------------- the stirring dark ---------------- */
-const STIR_FIRST=75, STIR_GAP=[40,55];
+// The dark sleeps until every foe the floor started with is dead (bosses, minibosses and dormant
+// guardians don't count). Then it wakes: a wave every 90 to 120 s, one level worse each time, up to the
+// floor's cap; past the cap a wave every 180 s. Killing a stirred group holds the next wave back 45 s.
+const STIR_WAKE=[90,120], STIR_GAP=[90,120], STIR_AT_CAP=180, STIR_HOLD=45;
 const stirCap=d=>Math.max(1,Math.min(6,2+Math.floor(d/4))+routeMods(EX&&EX.route).stir);
-function xStirInit(){ EX.stir=EX.branch?null:{lvl:0, cap:stirCap(EX.depth), next:STIR_FIRST}; }
+const stirCrowd=d=>d>=16?3:2;   // stirred groups alive at once
+function xStirInit(){ if(EX.branch){ EX.stir=null; return; }
+  for(const g of EX.groups) if(!g.boss&&!g.mini&&!g.dormant) g.initial=true;
+  EX.stir={lvl:0, cap:stirCap(EX.depth), next:0, awake:false, alive:0}; }
 const STIR_COL=['#f2c94c','#f2c94c','#ff9a3a','#ff7a3a','#ff5d6c','#e0588f','#c04dff'];
-function xStirTick(dt){ const s=EX.stir; if(!s||EX.busy||!EX.active) return; s.next-=dt; if(s.next>0) return;
-  s.next=s.lvl>=s.cap?STIR_GAP[1]+10:rnd(STIR_GAP[0],STIR_GAP[1]);
-  if(EX.groups.filter(g=>g.stirred).length>=3+Math.floor(s.lvl/2)) return;   // the floor is crowded enough already
+function xStirTick(dt){ const s=EX.stir; if(!s||EX.busy||!EX.active) return;
+  if(s.awake===undefined) s.awake=true;   // a save from before v76: the dark was already counting
+  if(!s.awake){ if(EX.groups.some(g=>g.initial)) return;
+    s.awake=true; s.next=rnd(STIR_WAKE[0],STIR_WAKE[1]); xLog('The floor falls quiet. Somewhere below, the dark begins to stir.','warn'); return; }
+  const alive=EX.groups.filter(g=>g.stirred).length;
+  if(alive<(s.alive||0)) s.next+=STIR_HOLD*((s.alive||0)-alive);   // you cut a stirred group down: the dark holds back
+  s.alive=alive;
+  s.next-=dt; if(s.next>0) return;
+  s.next=s.lvl>=s.cap?STIR_AT_CAP:rnd(STIR_GAP[0],STIR_GAP[1]);
+  if(alive>=stirCrowd(EX.depth)) return;   // the floor is crowded enough already
   const rose=s.lvl<s.cap; if(rose) s.lvl++;
-  if(xStirSpawn(s.lvl)){ xSfx('thud');
+  if(xStirSpawn(s.lvl)){ xSfx('thud'); s.alive++;
     if(rose) xLog(s.lvl>=s.cap?'The dark is at its worst on this floor (threat '+s.lvl+'/'+s.cap+'). It will send no worse, but it will keep sending.':'The dark stirs: new foes prowl this floor, and they are stronger (threat '+s.lvl+'/'+s.cap+').',s.lvl>=s.cap?'bad':'warn');
     else xLog('Somewhere, more creatures crawl out of the dark.','dim');
     xHud(); } }
@@ -67,8 +81,8 @@ function xStirSpawn(lvl){ const dist=xbfs(EX.t,EX.doors,EX.pc,false,n=>typeof xS
   const rooms=EX.rooms.filter(r=>!r.side&&!r.safe&&r.role!=='puzzle'&&r!==EX.start&&dist[xi(r.cx,r.cy)]>=14&&!EX.vis[xi(r.cx,r.cy)]);
   if(!rooms.length) return false; const r=xpick(rooms), c=xFreeCell(r); if(c<0) return false;
   const wave=makeEncounter(EX.depth)[0].filter(id=>!(ENEMY_DEFS[id]&&ENEMY_DEFS[id].rare)); if(!wave.length) return false;
-  const ids=wave.slice(0,Math.min(wave.length,1+Math.ceil(lvl/2)));
-  const g=xGroup(ids,c,'wander'); Object.assign(g,{stirred:true, tier:lvl+routeMods(EX.route).tier, tagTxt:'▲'+lvl, tagCol:STIR_COL[Math.min(lvl,6)], hunter:lvl>=2});
+  const ids=wave.slice(0,Math.min(wave.length,1+Math.floor(lvl/3)));   // 1 foe, 2 from threat 3, 3 at threat 6
+  const g=xGroup(ids,c,'wander'); Object.assign(g,{stirred:true, tier:lvl+routeMods(EX.route).tier, tagTxt:'▲'+lvl, tagCol:STIR_COL[Math.min(lvl,6)], hunter:lvl>=4});
   EX.groups.push(g); if(X3&&X3.group) xGroupSprites(g,X3.group); return true; }
 
 /* ---------------- teleport runes ---------------- */

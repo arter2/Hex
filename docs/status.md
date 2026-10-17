@@ -1,6 +1,6 @@
 # Hexmancers: where we are
 
-Date: 2026-10-16 · Latest build: **v75** (`hexmancers-itch-v75.zip`) · Branch `claude/hopeful-hypatia-stzuj0`, merged to `main`
+Date: 2026-10-16 · Latest build: **v76** (`hexmancers-itch-v76.zip`) · Branch `claude/hopeful-hypatia-stzuj0`, merged to `main`
 
 This is a snapshot of the game: what is in it, what changed recently, what we plan next, and what
 is still open. The design reasoning behind each feature is in [fun-roadmap.md](fun-roadmap.md).
@@ -39,7 +39,7 @@ JavaScript with three.js (r128) and has no build step.
 | **Settings** | Phone and tablet layouts, text size, orientation, full screen, sound, cast-card style, 4 touch movement modes, dungeon tips, and rebindable keyboard controls. |
 | **Debug menu** | Lighting, PBR, normal maps, baked AO and SSAO, haze, a full battle camera (angle, field of view, zoom, move and rotate on X/Y/Z), depth of field, wall see-through, frame rate, auto quality, pause. |
 
-### Recent changes (v71 to v75)
+### Recent changes (v71 to v76)
 
 | Build | Change |
 |---|---|
@@ -48,6 +48,7 @@ JavaScript with three.js (r128) and has no build step.
 | v73 | Floor effects (tile glow, telegraphs, decals) can no longer draw over a faded character. The default battle camera is now Angle 36, Lens 61, Zoom 1.1. |
 | v74 | The depth-of-field blur fades in smoothly. New sliders: blur fade, near blur, far blur. Focus dials 25 tiles forward or back. |
 | v75 | **Crash fix:** pushing into the wall beside the stairs could bounce you up and down floors until the screen went black. Stairs you arrive on now wait until you walk clear, and old floors are fully freed from graphics memory. |
+| v76 | **Stirring dark rebalanced:** no waves until every enemy the floor started with is dead (bosses, minibosses and dormant guardians don't count). Then a wave every 90 to 120 s (180 s once the floor is at its worst), 1 to 3 enemies a wave, at most 2 stirred groups alive (3 from depth 16), hunting only from threat 4. Killing a stirred group holds the next wave back 45 s. |
 
 ---
 
@@ -71,7 +72,7 @@ These are agreed or proposed and waiting on a decision or a turn.
 |---|---|
 | **Goals beyond a single run** (roadmap idea 4) | Collection book completion rewards, a daily seeded dungeon with a score, unlockable card backs (Arcane Weave and Starfield are already drawn). |
 | **Battle sound effects** | The dungeon has sound effects; battles don't yet. |
-| **Area rules in the dungeon** | Each area has its own battle rule, but there is no matching rule for exploring. |
+| **Area rules in the dungeon** | Designed, on hold: [area-rules-dungeon.md](area-rules-dungeon.md). Rifts are fire vents, embers and a magma-belt puzzle; the Abyss is the forgetting dark and void watchers. |
 | **Trading post** | The camp button exists but only says "coming soon": trading cards with other players. |
 | **Polish and accessibility** (point 9) | Deferred until you call it. |
 

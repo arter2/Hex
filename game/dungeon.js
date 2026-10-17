@@ -51,7 +51,7 @@ const LORE=[
   {id:'ruins', title:'The Gilded City', text:'We buried the gold so the dark would not want it. A seed of the old forest grew through the vault anyway, and became the Treant.'},
   {id:'abyss', title:'The Hollow King', text:'A king who traded his shadow for a crown. Now the crown wears him.'},
   {id:'mimics', title:'Field Notes: Mimics', text:'A mimic is a chest that learned to wait. If a lid breathes, search before you touch it.'},
-  {id:'executioner', title:'The Stirring Dark', text:'Linger on a floor and the dark stirs. More of its creatures wake, and each wave is worse than the last, until the floor can give no more.'},
+  {id:'executioner', title:'The Stirring Dark', text:'Clear a floor of every foe it holds and the dark stirs. More of its creatures come, and each wave is worse than the last, until the floor can give no more.'},
   {id:'wardens', title:'Wardens’ Oath', text:'We keep the doors. We answer every alarm. We do not stop.'},
   {id:'keys', title:'A Locksmith’s Boast', text:'Bronze for the common door, silver for the vault, gold for the gate. And for every lock but the boss’s, a skeleton key.'},
   {id:'shrines', title:'Pilgrim’s Prayer', text:'Rest where the old light burns. Bind your name to the shrine, and if you fall it will pull you back, once.'},
@@ -314,7 +314,7 @@ function xPopulate(){
   if(typeof xPlanEvents==='function') xPlanEvents();   // missions that start partway through (missions.js)
   if(typeof xPuzzPopulate==='function') xPuzzPopulate();
   if(typeof xPlaceWayshard==='function') xPlaceWayshard();   // a Wayshard owed to a sealed floor below (deepways.js)
-  if(typeof xStirInit==='function') xStirInit();   // linger and the dark stirs: more foes, harder, up to the floor's cap
+  if(typeof xStirInit==='function') xStirInit();   // clear the floor and the dark stirs: more foes, harder, up to the floor's cap
 }
 // what a floor really ended up holding (a planned feature may not have fitted)
 function xRealized(){ const out=new Set();

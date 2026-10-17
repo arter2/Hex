@@ -310,10 +310,43 @@ const AL_THEMES={
   combos:  {},   // rune focus: handled by alRunes
 };
 const AL_KW_PARTS=['strike.kw','creature.kw','lob.kw','charge.kw','trap.kw','environment.kw'];
-// fold each colour's themes into its part weights (a theme weight multiplies what is already there)
+/* every status effect a card can put on enemies (or on you), and everything that carries it */
+const AL_EFFECTS={
+  burn:    {kw:['burn'], trait:['scorched'], wfx:['burning'], side:['embers'], env:['burn']},
+  poison:  {kw:['poison'], trait:['plague']},
+  freeze:  {kw:['freeze'], trait:['shatter'], wfx:['freezing'], env:['freeze']},
+  slow:    {kw:['slow'], trait:['chilling'], side:['chill'], trap:['snare']},
+  stun:    {kw:['stun'], trait:['static','overcharge'], wfx:['shocking'], side:['jolt'], env:['tremor']},
+  confuse: {kw:['confuse'], trait:['dread','sandstorm']},
+  curse:   {kw:['curse']},
+  drain:   {kw:['drain'], trait:['lifesteal'], wfx:['draining'], side:['siphon']},
+  mend:    {kw:['mend'], beh:['mends'], wfx:['healing'], side:['glow','sprout','muster']},
+  valor:   {kw:['valor'], trait:['rallying'], side:['rally']},
+  push:    {kw:['push'], trait:['tidal'], after:['knock']},
+  pull:    {kw:['pull']},
+  self:    {kw:['self'], side:['scorch','blood'], rider:['recoil']},
+  thorns:  {trait:['thorny'], wfx:['thorns'], env:['bramble']},
+};
+/* every way a card hits (or helps), across kinds: one weight moves the creature behaviour, the strike
+   shape, the lob pattern, the charge shot and the trap that do the same thing */
+const AL_ATTACKS={
+  bolt:{shape:['line'], beh:['bolt'], shot:['bolt'], pattern:['single']}, pierce:{beh:['pierce'], rider:['pierce'], edge:['pierce']},
+  twin:{shape:['twin'], beh:['twin'], shot:['twin']}, row:{shape:['row','wave'], pattern:['row']}, cone:{shape:['wedge','fan'], beh:['cone']},
+  diag:{shape:['diag'], beh:['diag']}, zigzag:{shape:['zigzag'], beh:['zigzag']}, bounce:{shape:['ricochet','boomerang']},
+  chain:{shape:['chain'], beh:['chain']}, snipe:{shape:['snipe'], beh:['snipe']}, beam:{shape:['spear','column'], beh:['beam'], pattern:['column']},
+  burrow:{shape:['dig'], beh:['burrow']}, barrage:{shape:['missiles','gun'], beh:['barrage']}, all:{shape:['all','shockwave']},
+  lob:{beh:['lob'], shot:['lob']}, blast:{shape:['burst'], beh:['blast'], pattern:['burst','ring'], shot:['burst'], edge:['splash'], trap:['blast']},
+  cross:{beh:['cross'], pattern:['cross']}, cluster:{shape:['cluster']}, mine:{shape:['mine'], trap:['spike']}, mark:{shape:['mark']},
+  pounce:{beh:['pounce']}, trample:{beh:['trample']}, dash:{beh:['dash']},
+  crit:{rider:['crit'], edge:['crit']}, reaper:{rider:['onkill']},
+  heal:{beh:['mends'], boon:['heal','regen']}, shield:{beh:['shields'], boon:['dodge','phase']}, guard:{beh:['guards','taunt'], boon:['intervene']},
+  summon:{beh:['summoner']}, wall:{beh:['wardmaker']}, empower:{beh:['empower'], boon:['power','courage']}, haste:{boon:['haste','gauge']},
+};
+const AL_FOLD={theme:AL_THEMES, effect:AL_EFFECTS, attack:AL_ATTACKS};
+// fold each colour's themes, effects and attacks into its part weights (a theme weight multiplies what is already there)
 function alExpandThemes(W){ const out=JSON.parse(JSON.stringify(W||{}));
-  for(const col in out){ const th=out[col].theme||{};
-    for(const t in th){ const m=th[t], T=AL_THEMES[t]; if(!T||m===1) continue;
+  for(const col in out) for(const f in AL_FOLD){ const th=out[col][f]||{};
+    for(const t in th){ const m=th[t], T=AL_FOLD[f][t]; if(!T||m===1) continue;
       const mul=(g,v)=>{ out[col][g]=out[col][g]||{}; const cur=out[col][g][v]==null?1:out[col][g][v]; out[col][g][v]=+(cur*m).toFixed(3); };
       for(const g in T){ if(g==='extra') continue; for(const v of T[g]){ if(g==='kw') AL_KW_PARTS.forEach(p=>mul(p,v)); else mul(g,v); } } } }
   return out; }

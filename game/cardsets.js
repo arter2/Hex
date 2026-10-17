@@ -174,11 +174,11 @@ Rockslide Valley | environment | u | env=tremor pattern=column len=short
 Mountain's Wrath | environment | r | env=tremor pattern=burst len=short kw=burn
 Sea of Flames | environment | l | env=burn pattern=burst len=short
 
-Crown of the Volcano King | piece | l | kw=burn
-Heart of the Phoenix | piece | l | kw=mend
-Eye of the Dragon | piece | l | kw=burn
-Anvil of the First Forge | piece | l | kw=stun
-Tail of the Nine-Tailed Fox | piece | l | kw=push
+Crown of the Volcano King | piece | l | pattern=ring fuse=heavy kw=burn after=knock
+Heart of the Phoenix | piece | l | pattern=cross fuse=quick kw=mend after=knock
+Eye of the Dragon | piece | l | pattern=cross fuse=heavy kw=burn
+Anvil of the First Forge | piece | l | pattern=column fuse=heavy kw=stun after=knock
+Tail of the Nine-Tailed Fox | piece | l | pattern=single fuse=heavy kw=push after=knock
 
 Red Dragon Whelp | summon | u | body=Dragon mod=Tiny beh=cone tier=frail speed=quick
 Great Red Dragon | summon | l | body=Dragon mod=Dire beh=cone tier=sturdy speed=slow kw=burn trait=fury
@@ -406,12 +406,12 @@ Mangrove Roots | environment | c | env=bramble pattern=column
 Sargasso Sea | environment | u | env=bramble pattern=cross len=long
 Fimbulwinter | environment | l | env=freeze pattern=row len=long
 
-Crown of the Sea Dragon King | piece | l | kw=pull
-Pearl of the Tide Jewels | piece | l | kw=push
-Trident of the Sunken King | piece | l | kw=stun
-Heart of the Leviathan | piece | l | kw=valor
-Eye of the Frost Giant | piece | l | kw=freeze
-Bell of the Sunken City | piece | l | kw=confuse
+Crown of the Sea Dragon King | piece | l | shape=row kw=pull rider=crit
+Pearl of the Tide Jewels | piece | l | shape=wave kw=push rider=onkill
+Trident of the Sunken King | piece | l | shape=line kw=stun rider=recoil cast=quick
+Heart of the Leviathan | piece | l | shape=dig kw=valor rider=recoil cast=quick
+Eye of the Frost Giant | piece | l | shape=snipe kw=freeze rider=crit
+Bell of the Sunken City | piece | l | shape=row kw=confuse
 
 Merrow | summon | c | body=Merfolk beh=pierce tier=sturdy speed=quick kw=freeze
 Mermaid Singer | summon | u | body=Merfolk mod=Gentle beh=mends tier=sturdy speed=slow kw=pull trait=submerge
@@ -625,11 +625,11 @@ Sun-Baked Wadi | environment | c | env=burn pattern=column kw=confuse
 Storm Front | environment | u | env=tremor pattern=row len=long
 Great Sand Sea | environment | l | env=tremor pattern=burst len=short
 
-Lamp of the Bound Djinn | piece | l | kw=confuse
-Crown of the Brass City | piece | l | kw=drain
-Scale of the World Fish | piece | l | kw=push
-Tail of the Manticore | piece | l | kw=poison
-Heart of the Bronze Giant | piece | l | kw=stun
+Lamp of the Bound Djinn | piece | l | pattern=column fuse=heavy kw=confuse after=ground
+Crown of the Brass City | piece | l | pattern=single fuse=quick kw=drain
+Scale of the World Fish | piece | l | pattern=single fuse=quick kw=push after=knock
+Tail of the Manticore | piece | l | pattern=column fuse=quick kw=poison
+Heart of the Bronze Giant | piece | l | pattern=row kw=stun after=ground
 
 Thunder Raiju | summon | r | body=Raiju beh=beam tier=sturdy speed=steady trait=swift
 Lamp Djinn | summon | r | body=Djinn beh=blast tier=sturdy speed=steady kw=stun trait=overcharge
@@ -854,11 +854,11 @@ Witch's Thicket | environment | c | env=bramble pattern=column kw=curse
 Catacomb Collapse | environment | r | env=tremor pattern=row len=short
 Mouth of Hell | environment | l | env=burn pattern=burst len=long
 
-Crown of the Lich King | piece | l | kw=curse
-Fang of the First Vampire | piece | l | kw=drain
-Candle of the Hanged Man | piece | l | kw=stun
-Cauldron of the Bone Mother | piece | l | kw=poison
-Mask of the Plague Doctor | piece | l | kw=mend
+Crown of the Lich King | piece | l | shape=line kw=curse rider=pierce
+Fang of the First Vampire | piece | l | shape=fan kw=drain rider=recoil
+Candle of the Hanged Man | piece | l | shape=line kw=stun rider=recoil cast=quick
+Cauldron of the Bone Mother | piece | l | shape=spear kw=poison rider=recoil cast=quick
+Mask of the Plague Doctor | piece | l | shape=line kw=mend rider=onkill
 
 Skeleton Warrior | summon | c | body=Skeleton beh=taunt tier=tough speed=steady kw=confuse trait=lifesteal
 Skeleton Archer | summon | c | body=Skeleton beh=snipe tier=sturdy speed=frantic trait=rises
@@ -1091,11 +1091,11 @@ Rose Garden of Shiraz | environment | u | env=bramble pattern=row len=long
 Collapsing Colonnade | environment | r | env=tremor pattern=row len=short
 Hanging Gardens of Babylon | environment | l | env=bramble pattern=burst
 
-Crown of the Round Table | piece | l | kw=valor
-Grail of the Fisher King | piece | l | kw=mend
-Stone of the Philosophers | piece | l | kw=-
-Bridle of the Pegasus | piece | l | kw=push
-Scales of the Final Judge | piece | l | kw=stun
+Crown of the Round Table | piece | l | boon=intervene side=radiance timing=echo
+Grail of the Fisher King | piece | l | boon=intervene side=glow
+Stone of the Philosophers | piece | l | boon=heal side=radiance
+Bridle of the Pegasus | piece | l | boon=courage
+Scales of the Final Judge | piece | l | boon=heal timing=echo
 
 Pegasus Foal | summon | c | body=Pegasus mod=Tiny beh=summoner tier=sturdy speed=slow trait=martyr
 Pegasus | summon | r | body=Pegasus mod=Noble beh=bolt tier=sturdy speed=steady
@@ -1326,12 +1326,12 @@ Birnam Wood Marches | environment | r | env=tremor pattern=column len=short
 Ent Moot | environment | r | env=tremor pattern=burst len=long
 Primeval Wildwood | environment | l | env=bramble pattern=burst
 
-Antlers of the Forest King | piece | l | kw=push
-Seed of the World Ash | piece | l | kw=mend
-Horn of the Wild Hunt | piece | l | kw=drain
-Pipes of the Goat-Footed | piece | l | kw=confuse
-Pelt of the Jaguar King | piece | l | kw=-
-Mask of the Green Man | piece | l | kw=slow
+Antlers of the Forest King | piece | l | boon=heal timing=echo
+Seed of the World Ash | piece | l | boon=regen len=long side=cleanse
+Horn of the Wild Hunt | piece | l | boon=regen len=short timing=delayed
+Pipes of the Goat-Footed | piece | l | boon=regen side=sprout
+Pelt of the Jaguar King | piece | l | boon=heal side=sprout timing=delayed
+Mask of the Green Man | piece | l | boon=heal side=cleanse
 
 Elder Ent | summon | r | body=Ent mod=Ancient beh=lob tier=tough speed=slow trait=regrows
 Jack-in-the-Green | summon | r | body=Ent mod=Mossy beh=trample tier=tough speed=steady kw=pull
@@ -1706,47 +1706,47 @@ Alchemist's Glass Bulwark | machine | u | mach=Bulwark race=alchemy beh=guards t
 Djinn Mirage Wall | machine | r | mach=Bastion race=djinn beh=wardmaker tier=huge speed=steady trait=overclock
 Brass Tortoise Wall | machine | l | mach=Bulwark race=human beh=guards tier=tough speed=slow trait=selfrepair
 
-Dwarven Stout | instant | c | as=boon boon=heal race=dwarf
-Elven Dew | instant | c | as=boon boon=heal race=elf
-Troll Blood Tonic | instant | u | as=boon boon=regen race=troll
-Panacea | instant | r | as=boon boon=heal race=alchemy
-Elixir of Life | instant | l | as=boon boon=heal race=alchemy
-Peach of Immortality | instant | l | as=boon boon=regen race=human
-Soma Draught | instant | u | as=boon boon=power race=human
-Berserker Brew | instant | c | as=boon boon=power race=troll
-Giant's Strength Potion | instant | u | as=boon boon=power race=alchemy
-Haoma Cup | instant | r | as=boon boon=courage race=djinn
-Liquid Courage | instant | c | as=boon boon=courage race=dwarf
-Mead of Poetry | instant | u | as=boon boon=gauge race=human
-Mana Potion | instant | c | as=boon boon=gauge race=alchemy
-Gnomish Coffee | instant | c | as=boon boon=haste race=gnome
-Kahve of the Bazaar | instant | u | as=boon boon=haste race=djinn
-Sea-Folk Kelp Tea | instant | c | as=boon boon=regen race=sea
-Smoke Bomb | instant | c | as=boon boon=dodge race=goblin
-Cat's Eye Tonic | instant | u | as=boon boon=dodge race=elf
-Invisibility Draught | instant | r | as=boon boon=phase race=alchemy
-Bottled Lightning | instant | u | as=boon boon=haste race=sky unstable=1
-Guardian Angel Vial | instant | r | as=boon boon=intervene race=human
-Goblin Rage Juice | instant | u | as=boon boon=power race=goblin unstable=1
+Dwarven Stout | instant | c | as=boon race=dwarf boon=heal side=wound timing=echo
+Elven Dew | instant | c | as=boon race=elf boon=pact side=parts timing=echo
+Troll Blood Tonic | instant | u | as=boon race=troll boon=regen len=long
+Panacea | instant | r | as=boon race=alchemy boon=heal side=parts timing=delayed
+Elixir of Life | instant | l | as=boon race=alchemy boon=heal
+Peach of Immortality | instant | l | as=boon race=human boon=regen len=long side=wound timing=echo
+Soma Draught | instant | u | as=boon race=human boon=power side=wound
+Berserker Brew | instant | c | as=boon race=troll boon=power len=short side=wound timing=echo
+Giant's Strength Potion | instant | u | as=boon race=alchemy boon=power len=long side=parts
+Haoma Cup | instant | r | as=boon race=djinn boon=courage len=long side=parts timing=echo
+Liquid Courage | instant | c | as=boon race=dwarf boon=courage len=short timing=echo
+Mead of Poetry | instant | u | as=boon race=human boon=gauge timing=delayed
+Mana Potion | instant | c | as=boon race=alchemy boon=gauge timing=delayed
+Gnomish Coffee | instant | c | as=boon race=gnome boon=haste len=short side=parts timing=delayed
+Kahve of the Bazaar | instant | u | as=boon race=djinn boon=haste len=short side=wound
+Sea-Folk Kelp Tea | instant | c | as=boon race=sea boon=regen len=short side=parts
+Smoke Bomb | instant | c | as=boon race=goblin boon=dodge side=parts
+Cat's Eye Tonic | instant | u | as=boon race=elf boon=dodge side=parts
+Invisibility Draught | instant | r | as=boon race=alchemy boon=phase len=short
+Bottled Lightning | instant | u | as=boon race=sky boon=haste side=wound timing=delayed
+Guardian Angel Vial | instant | r | as=boon race=human boon=intervene timing=echo
+Goblin Rage Juice | instant | u | as=boon race=goblin boon=power len=long side=wound timing=delayed
 
-Throwing Knives | instant | c | as=strike shape=missiles race=human kw=-
-Goblin Firecracker | instant | c | as=strike shape=missiles race=goblin unstable=1 kw=burn
-Flash Bang Powder | instant | u | as=strike shape=all race=gnome kw=stun
-Shock Glove | instant | c | as=strike shape=line race=gnome kw=stun
-Elven Flechette | instant | c | as=strike shape=line race=elf kw=-
-Bolas | instant | c | as=strike shape=line race=human kw=slow
-Boomerang | instant | c | as=strike shape=zigzag race=human kw=-
-Chakram | instant | u | as=strike shape=diag race=human kw=-
-Net Gun | instant | u | as=strike shape=line race=sea kw=stun
-Coral Shrapnel | instant | c | as=strike shape=wedge race=sea kw=-
-Djinn Smoke Puff | instant | u | as=strike shape=all race=djinn kw=confuse
-Dwarven Blasting Charge | instant | u | as=lob pattern=burst race=dwarf kw=push
-Gnomish Grenade | instant | c | as=lob pattern=single race=gnome kw=-
-Sticky Tar Bomb | instant | c | as=lob pattern=burst race=troll kw=slow
-Acid Flask | instant | c | as=lob pattern=single race=alchemy kw=poison
-Sky-Folk Lightning Jar | instant | r | as=lob pattern=burst race=sky kw=stun
-Troll Snot Bomb | instant | u | as=lob pattern=burst race=troll unstable=1 kw=poison
-Dwarven Rune Grenade | instant | r | as=lob pattern=cross race=dwarf kw=-
+Throwing Knives | instant | c | as=strike race=human shape=missiles
+Goblin Firecracker | instant | c | as=strike race=goblin shape=missiles kw=burn rider=crit
+Flash Bang Powder | instant | u | as=strike race=gnome shape=cluster kw=stun rider=recoil cast=quick cluster=cross
+Shock Glove | instant | c | as=strike race=gnome shape=shockwave kw=stun cast=charged
+Elven Flechette | instant | c | as=strike race=elf shape=line rider=crit
+Bolas | instant | c | as=strike race=human shape=spear kw=slow rider=onkill cast=charged
+Boomerang | instant | c | as=strike race=human shape=boomerang cast=charged
+Chakram | instant | u | as=strike race=human shape=boomerang rider=recoil
+Net Gun | instant | u | as=strike race=sea shape=line kw=stun rider=pierce
+Coral Shrapnel | instant | c | as=strike race=sea shape=wedge rider=onkill
+Djinn Smoke Puff | instant | u | as=strike race=djinn shape=all kw=confuse
+Dwarven Blasting Charge | instant | u | as=lob race=dwarf pattern=burst kw=push after=knock
+Gnomish Grenade | instant | c | as=lob race=gnome pattern=single fuse=quick after=knock
+Sticky Tar Bomb | instant | c | as=lob race=troll pattern=burst fuse=heavy kw=slow
+Acid Flask | instant | c | as=lob race=alchemy pattern=single fuse=quick kw=poison after=ground
+Sky-Folk Lightning Jar | instant | r | as=lob race=sky pattern=burst fuse=quick kw=stun after=ground
+Troll Snot Bomb | instant | u | as=lob race=troll pattern=burst fuse=heavy kw=poison after=knock
+Dwarven Rune Grenade | instant | r | as=lob race=dwarf pattern=cross fuse=quick
 
 Spyglass Peek | instant | c | as=utility util=draw race=sea
 Pocket Almanac | instant | c | as=utility util=draw race=human
@@ -1787,12 +1787,12 @@ Copying Press | instant | u | as=utility util=copy race=human
 Gnomish Duplicator | instant | r | as=utility util=copy race=gnome
 Grappling Hook | instant | c | as=utility util=recall race=sea
 
-Pop-Up Umbrella Shield | instant | c | as=ward ward=barrier race=gnome
-Dwarven Shield Charm | instant | c | as=ward ward=barrier race=dwarf
-Gnomish Force Bubble | instant | u | as=ward ward=barrier race=gnome
-Elven Glass Ward | instant | u | as=ward ward=barrier race=elf
-Sea-Folk Shell Guard | instant | c | as=ward ward=barrier race=sea
-Djinn Mirage Cloak | instant | r | as=ward ward=barrier race=djinn
+Pop-Up Umbrella Shield | instant | c | as=ward race=gnome form=shield len=short
+Dwarven Shield Charm | instant | c | as=ward race=dwarf form=shield wfx=steady len=long
+Gnomish Force Bubble | instant | u | as=ward race=gnome form=shield build=heavy
+Elven Glass Ward | instant | u | as=ward race=elf form=arc build=light
+Sea-Folk Shell Guard | instant | c | as=ward race=sea form=shield build=heavy wfx=steady len=short
+Djinn Mirage Cloak | instant | r | as=ward race=djinn form=shield build=light len=long
 
 Dwarven War Axe | equip | c | eq=blade race=dwarf
 Elven Moon Blade | equip | u | eq=blade race=elf

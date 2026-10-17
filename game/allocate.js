@@ -102,10 +102,13 @@ const alSame=(a,b)=>a.reduce((n,x,i)=>n+(x===b[i]),0);
 
 // order the options: what the name hints first, then what the old rule hints, then the rest shuffled;
 // within each group the least used go first (`use` counts), so a colour gets a spread of them
-function alOrder(all,named,family,rng,use){ const seen=new Set(), out=[];
+function alOrder(all,named,family,rng,use,w){ const seen=new Set(), out=[];
+  if(w) all=all.filter(x=>w[x]!==0); if(!all.length) return out;
   for(const g of [named||[],family||[],all]){ const grp=g.filter(x=>all.includes(x)&&!seen.has(x)).filter((x,i,a)=>a.indexOf(x)===i);
-    grp.forEach(x=>seen.add(x)); const keyed=grp.map((x,i)=>({x,k:(g===all?rng()*3:i*.3)+(use&&use[x]||0)*.25})).sort((a,b)=>a.k-b.k); out.push(...keyed.map(o=>o.x)); }
-  return out; }
+    grp.forEach(x=>seen.add(x)); const keyed=grp.map((x,i)=>({x,k:(g===all?rng()*3:i*.3)+(use&&use[x]||0)*.25})); out.push(...keyed); }
+  // a colour's weight (AL_WEIGHTS) divides an option's place: weight 3 moves it well up, even past the name's hints
+  const base=x=>(named||[]).includes(x)?0:(family||[]).includes(x)?1:2;
+  return out.map(o=>({x:o.x,k:(base(o.x)+o.k)/((w&&w[o.x]!=null?w[o.x]:1)||.01)})).sort((a,b)=>a.k-b.k).map(o=>o.x); }
 
 /* Give each part in turn its first choice, then while the card is too close to one already given
    (fewer than 2 parts different), move to the next choice of the least important part. */
@@ -161,8 +164,11 @@ const AL_KINDS=['summon','machine','sentry','strike','lob','ward','boon','charge
 
 /* Work out every card's parts. Each kind in each colour is worked out on its own: rarer cards first,
    then each card takes its first-choice parts unless they are too close to a card already done. */
-function allocateCards(list){
-  const byCol={}; for(const c of list) if(AL_KINDS.includes(c.type)&&!c.brood&&!c.piece&&c.color&&COLORS[c.color]) (byCol[c.color]=byCol[c.color]||[]).push(c);
+/* fixed(c): cards that keep the parts they have (others are still kept apart from them).
+   Colour weights (AL_WEIGHTS, from the colour weights page): {fire:{shape:{cluster:3, mine:2}, beh:{...}}, ...};
+   a weight of 2 makes a choice about twice as likely for that colour, 0 rules it out, 1 is the usual. */
+function allocateCards(list,fixed){ fixed=fixed||(()=>false);
+  const byCol={}; for(const c of list) if(AL_KINDS.includes(kdBase(c))&&!c.brood&&c.color&&COLORS[c.color]&&!(c.type==='instant'&&c.as==='utility')&&!/^potion_/.test(c.id)) (byCol[c.color]=byCol[c.color]||[]).push(c);
   const report={cards:0, clashes:0, byKind:{}};
   const R=['legendary','rare','uncommon','common'];
   for(const col in byCol){
@@ -170,27 +176,35 @@ function allocateCards(list){
     const taken={}, use={};
     const U=k=>use[k]=use[k]||{};
     for(const c of cards){
-      const kind=['summon','machine','sentry'].includes(c.type)?'creature':c.type, spec=alSpec(c,kind,col,U);
-      const T=taken[kind]=taken[kind]||[];
+      const kind=cardPartKind(c), group=kind+(c.type==='instant'?'/instant':c.piece?'/piece':'');
+      const T=taken[group]=taken[group]||[];
+      if(fixed(c)){ T.push(alNow(c,kind)); continue; }
+      const spec=alSpec(c,kind,col,U);
       const p=alPick(spec.opts,T,2,spec.cost,spec.ok);
       if(T.some(t=>p.length-alSame(p,t)<2)) report.clashes++;
       T.push(p); spec.used(p); spec.apply(p); c.alloc=1; c.alParts=p;
-      report.cards++; report.byKind[kind]=(report.byKind[kind]||0)+1;
+      report.cards++; report.byKind[group]=(report.byKind[group]||0)+1;
     }
   }
   return report;
 }
+// a card's parts as the allocator compares them (as alSpec lists them)
+function alNow(c,kind){ const kw=alOld(c);
+  if(kind==='creature') return [c.beh,c.tier,c.speed,kw,c.trait||null,c.stance||null];
+  if(kind==='strike') return [c.shape,kw,c.rider||null,c.cast||'normal'];
+  return kdParts(c); }
 const alOld=c=>AL_KWS.find(k=>c[k]!=null&&!(c.type==='trap'&&c.trap==='snare'&&k==='stun')&&!(c.type==='environment'&&k==='stun'))||null;
 const alKwOpts=(want,kws)=>[want||null,...[null,...kws].filter(k=>k!==(want||null))];
 // the choices for each part of one card, most important part first
-function alSpec(c,kind,col,U){ const rng=alRng(c.id), kh=alHints(c.name,AL_KD_HINTS), first=(h,all,dflt)=>alOrder(all,h,dflt,rng,null);
+function alSpec(c,kind,col,U){ const rng=alRng(c.id), kh=alHints(c.name,AL_KD_HINTS);
+  const W=g=>typeof AL_WEIGHTS!=='undefined'&&AL_WEIGHTS&&AL_WEIGHTS[col]&&AL_WEIGHTS[col][g]||null, first=(h,all,dflt,g)=>alOrder(all,h,dflt,rng,null,g&&W(g));
   const bump=(k,v)=>{ if(v!=null) U(k)[v]=(U(k)[v]||0)+1; };
   if(kind==='creature'){ const h=alHints(c.name,AL_CR_HINTS), old=c.type==='sentry'?'sentry':c.ai;
     let behs=Object.keys(CR_BEH); if(c.type==='sentry') behs=behs.filter(b=>!AL_TOWER_NO.has(b));
-    const bOpts=alOrder(behs,h.beh,(AL_AI_FAMILY[old]||[]).filter(b=>behs.includes(b)),rng,U('beh'));
+    const bOpts=alOrder(behs,h.beh,(AL_AI_FAMILY[old]||[]).filter(b=>behs.includes(b)),rng,U('beh'),W('beh'));
     const tierAll=Object.keys(CR_TIER).filter(t=>!CR_TIER[t].rare||['rare','legendary'].includes(c.rarity));
-    const tOpts=alOrder(tierAll,h.tier,[old==='guardian'||old==='bulwark'?'tough':'sturdy'],rng);
-    const sOpts=alOrder(Object.keys(CR_SPEED),h.speed,[c.rate&&c.rate<=.6?'quick':c.rate&&c.rate>=1.8?'slow':'steady'],rng);
+    const tOpts=alOrder(tierAll,h.tier,[old==='guardian'||old==='bulwark'?'tough':'sturdy'],rng,null,W('tier'));
+    const sOpts=alOrder(Object.keys(CR_SPEED),h.speed,[c.rate&&c.rate<=.6?'quick':c.rate&&c.rate>=1.8?'slow':'steady'],rng,null,W('speed'));
     const kws=CR_KWS[col]||[], oldKw=AL_KWS.find(k=>c[k]!=null&&kws.includes(k));
     const wantKw=oldKw||(h.kw||[]).find(k=>kws.includes(k))||(kws.length&&rng()<.5?kws[Math.floor(rng()*kws.length)]:null);
     let traits=crTraitsOf(col).filter(t=>!(c.type==='sentry'&&['swift','loyal'].includes(t)));
@@ -204,11 +218,11 @@ function alSpec(c,kind,col,U){ const rng=alRng(c.id), kh=alHints(c.name,AL_KD_HI
       used:p=>{ bump('beh',p[0]); bump('trait',p[4]); bump('stance',p[5]); },
       apply:p=>alApplyCr(c,[...p.slice(0,5),race,p[5]]) }; }
   if(kind==='strike'){ const h=alHints(c.name,AL_ST_HINTS), shapes=Object.keys(STRIKE_SHAPES).concat(Object.keys(STRIKE_OLD));
-    const shOpts=alOrder(shapes,h.shape,AL_SHAPE_FAMILY[c.shape],rng,U('shape'));
+    const shOpts=alOrder(shapes,h.shape,AL_SHAPE_FAMILY[c.shape],rng,U('shape'),W('shape'));
     const kws=((TRAITS[col]&&TRAITS[col].kws)||[]).filter((k,i,a)=>k&&a.indexOf(k)===i);
     const wantR=(h.rider||[])[0]||(rng()<AL_RIDER_RATE[c.rarity]?Object.keys(STRIKE_RIDERS)[Math.floor(rng()*Object.keys(STRIKE_RIDERS).length)]:null);
-    const rOpts=[wantR,...[null,...Object.keys(STRIKE_RIDERS)].filter(r=>r!==wantR)];
-    const cOpts=alOrder(['normal','quick','charged'],kh.cast,rng()<.5?['normal']:null,rng,U('cast'));
+    const rOpts=alOrder([null,...Object.keys(STRIKE_RIDERS)],[wantR],null,rng,null,W('rider'));
+    const cOpts=alOrder(['normal','quick','charged'],kh.cast,rng()<.5?['normal']:null,rng,U('cast'),W('cast'));
     const cl=Object.keys(CLUSTER_SHAPES)[Math.floor(rng()*Object.keys(CLUSTER_SHAPES).length)];
     return {opts:[shOpts,alKwOpts(alOld(c),kws),rOpts,cOpts], cost:[6,2,1,1.5], ok:p=>!(p[2]==='pierce'&&!AL_SHOT_SHAPES.includes(p[0])),   // Pierce only rides on shots
       used:p=>{ bump('shape',p[0]); bump('cast',p[3]); },
@@ -216,38 +230,31 @@ function alSpec(c,kind,col,U){ const rng=alRng(c.id), kh=alHints(c.name,AL_KD_HI
   const kws=((TRAITS[col]&&TRAITS[col].kws)||[]).filter((k,i,a)=>k&&k!=='self'&&a.indexOf(k)===i);
   const L=first(kh.len,['normal','short','long'],null);
   let opts, cost;
-  if(kind==='lob'){ opts=[alOrder(KD_PATTERNS,[c.pattern].filter(Boolean),null,rng,U('pattern')),first(kh.fuse,['normal','quick','heavy']),alKwOpts(alOld(c),kws),
-      first(kh.after||(c.push?['knock']:null),['none','ground','knock'])]; cost=[6,2,2,1]; }
+  if(kind==='lob'){ opts=[alOrder(KD_PATTERNS,[c.pattern].filter(Boolean),null,rng,U('pattern'),W('pattern')),first(kh.fuse,['normal','quick','heavy'],null,'fuse'),alKwOpts(alOld(c),kws),
+      first(kh.after||(c.push?['knock']:null),['none','ground','knock'],null,'after')]; cost=[6,2,2,1]; }
   if(kind==='ward'){ const fxs=KD_WALL_FX_OF[col]||[];
     const form=c.ward==='barrier'?['shield']:c.form?[c.form]:null;
-    opts=[alOrder(Object.keys(KD_FORMS),(kh.form||[]).concat(form||[]),null,rng,U('form')),first(kh.build,['normal','light','heavy']),
+    opts=[alOrder(Object.keys(KD_FORMS),(kh.form||[]).concat(form||[]),null,rng,U('form'),W('form')),first(kh.build,['normal','light','heavy'],null,'build'),
       alOrder([null,...fxs],(c.ward==='thorns'?['thorns']:[]).concat((kh.wfx||[]).filter(f=>fxs.includes(f))),rng()<.5?[null]:null,rng,U('wfx')),L]; cost=[6,2,3,1]; }
   if(kind==='boon'){ const sides=kdSidesOf(col);
-    opts=[alOrder(KD_BOONS,[c.boon],null,rng,U('boon')),KD_TIMED.includes(c.boon)?L:['normal'],alOrder([null,...sides],null,null,rng,U('side')),alOrder(['now','echo','delayed'],null,rng()<.5?['now']:null,rng,U('timing'))]; cost=[6,1,2,1.5]; }
+    opts=[alOrder(KD_BOONS,[c.boon],null,rng,U('boon'),W('boon')),KD_TIMED.includes(c.boon)?L:['normal'],alOrder([null,...sides],null,null,rng,U('side')),alOrder(['now','echo','delayed'],null,rng()<.5?['now']:null,rng,U('timing'),W('timing'))]; cost=[6,1,2,1.5]; }
   if(kind==='charge'){ const u=c.uses<=4?'few':c.uses>=10?'many':'normal';
-    opts=[alOrder(['bolt','twin','lob','burst'],(kh.shot||[]).concat([c.fx]),null,rng,U('shot')),first(kh.uses,['normal','few','many'],[u]),alKwOpts(alOld(c),kws),
-      alOrder(['none','pierce','crit','splash'],kh.edge,rng()<.5?['none']:null,rng,U('edge'))]; cost=[6,2,2,1]; }
-  if(kind==='trap'){ opts=[alOrder(KD_TRAPS,[c.trap],null,rng,U('trap')),alKwOpts(alOld(c),kws),L,first(kh.size,['one','three'])]; cost=[6,2,1,2]; }
-  if(kind==='environment'){ opts=[alOrder(KD_ENVS,[c.env],null,rng,U('env')),alOrder(KD_ENV_PAT,[c.pattern],null,rng,U('envpat')),L,alKwOpts(null,kws.filter(k=>k!=='stun'))]; cost=[6,2,1,1.5]; }
+    opts=[alOrder(['bolt','twin','lob','burst'],(kh.shot||[]).concat([c.fx]),null,rng,U('shot'),W('shot')),first(kh.uses,['normal','few','many'],[u],'uses'),alKwOpts(alOld(c),kws),
+      alOrder(['none','pierce','crit','splash'],kh.edge,rng()<.5?['none']:null,rng,U('edge'),W('edge'))]; cost=[6,2,2,1]; }
+  if(kind==='trap'){ opts=[alOrder(KD_TRAPS,[c.trap],null,rng,U('trap'),W('trap')),alKwOpts(alOld(c),kws),L,first(kh.size,['one','three'],null,'size')]; cost=[6,2,1,2]; }
+  if(kind==='environment'){ opts=[alOrder(KD_ENVS,[c.env],null,rng,U('env'),W('env')),alOrder(KD_ENV_PAT,[c.pattern],null,rng,U('envpat'),W('envpat')),L,alKwOpts(null,kws.filter(k=>k!=='stun'))]; cost=[6,2,1,1.5]; }
   const K0={lob:'pattern',ward:'form',boon:'boon',charge:'shot',trap:'trap',environment:'env'}[kind], K2={ward:[2,'wfx'],boon:[2,'side'],charge:[3,'edge']}[kind];
   return {opts, cost, used:p=>{ bump(K0,p[0]); if(K2) bump(K2[1],p[K2[0]]); if(kind==='environment') bump('envpat',p[1]); }, apply:p=>alApplyKd(c,p)}; }
 
-// put a card's parts on it and work out its numbers
-function alApplyCr(c,p){ p=p.map(x=>x===''||x==null?null:x); const race=c.race; alClear(c);
-  Object.assign(c,{beh:p[0], tier:p[1], speed:p[2]}); if(p[4]) c.trait=p[4];
-  if(c.trait==='racetech') c.race=p[5]||race; if(p[6]) c.stance=p[6];
-  crBuild(c,alF(c),c.rank,p[3]); c.alloc=1; }
-function alApplySt(c,p){ p=p.map(x=>x===''||x==null?null:x); alClear(c); c.shape=p[0];
-  if(p[2]) c.rider=p[2]; if(c.shape==='cluster') c.cluster=p[3]||'ring'; if(p[4]&&p[4]!=='normal') c.cast=p[4];
-  if(STRIKE_SHAPES[c.shape]) strikeBuild(c,alF(c),c.rank,p[1]);
-  else { BUILD.strike(c,alF(c),c.rank,p[1],{},x=>x[0],(a,b)=>a); strikeRiders(c); }
-  if(c.cast){ const k=KD_CAST[c.cast].k; c.pow=Math.round(c.pow*k); if(c.bomblet) c.bomblet=Math.round(c.bomblet*k); }
-  c.alloc=1; }
-function alApplyKd(c,p){ p=p.map(x=>x===''||x==null?null:x); alClear(c); KD_BUILDERS[c.type](c,p); c.kd=1; c.alloc=1; }
+// put a card's parts on it and work out its numbers (kinds.js partsBuild)
+const alBuild=(c,kind,vals)=>{ const P={}; PART_KEYS[kind].forEach((k,i)=>{ if(vals[i]!=null) P[k]=vals[i]; }); partsBuild(c,P); c.alloc=1; };
+const alApplyCr=(c,p)=>alBuild(c,'creature',p);                                  // beh tier speed kw trait race stance
+const alApplySt=(c,p)=>alBuild(c,'strike',[p[0],p[1],p[2],p[4],p[3]]);            // given as shape kw rider cluster cast
+const alApplyKd=(c,p)=>alBuild(c,cardPartKind(c),p);
 // a card's parts as text, in the order its kind lists them (cardparts.js, the review sheet)
 function alPartsOf(c){ const kw=alOld(c)||'';
   if(c.beh) return [c.beh,c.tier,c.speed,kw,c.trait||'',c.trait==='racetech'?c.race:'',c.stance||''];
-  if(c.type==='strike') return [c.shape,kw,c.rider||'',c.cast||'normal',c.cluster||''];
+  if(kdBase(c)==='strike') return [c.shape,kw,c.rider||'',c.cast||'normal',c.cluster||''];
   return (kdParts(c)||[]).map(x=>x==null?'':x); }
 function alTable(){ const o={}; for(const c of CARD_LIST) if(c.alloc) o[c.id]=alPartsOf(c).join('|').replace(/\|+$/,''); return o; }
 

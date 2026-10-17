@@ -83,7 +83,10 @@ const KD_STANCE={front:{name:'Front line', text:'stands at the front of your sid
 /* ---------------- building the cards ----------------
    kdBuild(c,parts) sets a card's numbers from its parts. c keeps its id, name, colour, type, rank,
    rarity and rune; the parts are an array in the order listed at the top. */
-const kdF=c=>(1+.06*(c.rank-1))*RARITY_MULT[c.rarity];
+// what a card plays as: an instant plays as its `as`, a Legendary piece as its `base`
+const kdBase=c=>c.type==='instant'?c.as:c.type==='piece'?c.base:c.type;
+// power: an instant's attack is a little weaker (it costs no slot), a Legendary piece's stronger
+const kdF=c=>(1+.06*(c.rank-1))*RARITY_MULT[c.rarity]*(c.type==='instant'&&['strike','lob'].includes(c.as)?.8:1)*(c.type==='piece'?1.2:1);
 const kdNoKw=c=>{ for(const k of ['burn','freeze','stun','slow','poison','curse','drain','mend','valor','push','pull','confuse','self']) delete c[k]; };
 const KD_BUILDERS={
   lob(c,[pattern,fuse,kw,after]){ const F=kdF(c); c.pattern=pattern||'single'; c.fuse=fuse||'normal'; c.after=after||'none';
@@ -114,8 +117,8 @@ const KD_BUILDERS={
     if(kw) applyKw(c,kw,c.rank); },
 };
 // the parts a card of this kind has, read back from the card
-function kdParts(c){ const kw=['burn','freeze','stun','slow','poison','curse','drain','mend','valor','push','pull','confuse','self'].find(k=>c[k]!=null&&!(c.type==='trap'&&c.trap==='snare'&&k==='stun')&&!(c.type==='environment'&&k==='stun'))||null;
-  switch(c.type){
+function kdParts(c){ const T=kdBase(c), kw=['burn','freeze','stun','slow','poison','curse','drain','mend','valor','push','pull','confuse','self'].find(k=>c[k]!=null&&!(T==='trap'&&c.trap==='snare'&&k==='stun')&&!(T==='environment'&&k==='stun'))||null;
+  switch(T){
     case 'lob': return [c.pattern,c.fuse,kw,c.after];
     case 'ward': return [c.form||'line',c.build,c.wfx||null,c.len];
     case 'boon': return [c.boon,c.len,c.side||null,c.timing||'now'];
@@ -125,8 +128,8 @@ function kdParts(c){ const kw=['burn','freeze','stun','slow','poison','curse','d
   return null; }
 
 /* ---------------- card text ---------------- */
-function kdText(c,kw){ const K=kw&&kw.length?'. '+kw.join(', '):'', cap=s=>s[0].toUpperCase()+s.slice(1), len=c.len&&c.len!=='normal'?KD_LEN[c.len].name+'. ':'';
-  switch(c.type){
+function kdText(c,kw){ const T=kdBase(c), K=kw&&kw.length?'. '+kw.join(', '):'', cap=s=>s[0].toUpperCase()+s.slice(1), len=c.len&&c.len!=='normal'?KD_LEN[c.len].name+'. ':'';
+  switch(T){
     case 'lob': return (c.fuse!=='normal'?KD_FUSE[c.fuse].name+'. ':'')+c.pow+' on the tile you aim'+PATTERN_TEXT[lobPattern(c)]+', over blockers, '+c.delay+'s after you cast'+(c.after&&c.after!=='none'?'. It '+KD_AFTER[c.after].text:'')+K;
     case 'ward': { const fx=c.wfx?KD_WALL_FX[c.wfx]:null, fxT=fx?fx.text.replace('{v}',c.thorns||c.wheal||c.wdrain):'';
       if(c.ward==='barrier') return len+(c.build!=='normal'?KD_BUILD[c.build].name+'. ':'')+'Shield of '+c.amt+' for '+tn(c.turns)+'; replaces your current shield'+(fx?'. '+fx.name+': hits on it '+fxT.replace('whatever hits them','the attacker').replace('while they stand','while it lasts').replace('each time they are hit','each time it is hit').replace('their HP','the shield'):'');
@@ -203,10 +206,12 @@ const PART_KEYS={creature:['beh','tier','speed','kw','trait','race','stance'], s
   lob:['pattern','fuse','kw','after'], ward:['form','build','wfx','len'], boon:['boon','len','side','timing'],
   charge:['shot','uses','kw','edge'], trap:['trap','kw','len','size'], environment:['env','pattern','len','kw']};
 const partKind=type=>['summon','machine','sentry'].includes(type)?'creature':PART_KEYS[type]?type:null;
+// the kind of parts a card has: an instant or a Legendary piece has those of what it plays as
+const cardPartKind=c=>partKind(kdBase(c));
 // what a card keeps of what it had: who it is, its rune and its look
-const PART_KEEP=['id','name','color','type','rank','rarity','code','body','mod','mach','race','legend','sig','art','look','parts'];
-const partF=c=>(1+.06*(c.rank-1))*RARITY_MULT[c.rarity];
-function partsBuild(c,P){ const kind=partKind(c.type); if(!kind) return c;
+const PART_KEEP=['id','name','color','type','rank','rarity','code','body','mod','mach','race','legend','sig','art','look','parts','as','base','piece'];
+const partF=kdF;
+function partsBuild(c,P){ const kind=cardPartKind(c); if(!kind) return c;
   const v=k=>P[k]==null||P[k]===''||P[k]==='-'?null:P[k];
   for(const k of Object.keys(c)) if(!PART_KEEP.includes(k)) delete c[k];
   if(kind==='creature'){ Object.assign(c,{beh:v('beh'), tier:v('tier')||'sturdy', speed:v('speed')||'steady'}); if(v('trait')) c.trait=v('trait');
@@ -216,7 +221,7 @@ function partsBuild(c,P){ const kind=partKind(c.type); if(!kind) return c;
     if(STRIKE_SHAPES[c.shape]) strikeBuild(c,partF(c),c.rank,v('kw'));
     else { BUILD.strike(c,partF(c),c.rank,v('kw'),{},x=>x[0],(a,b)=>a); strikeRiders(c); }
     if(c.cast){ const k=KD_CAST[c.cast].k; c.pow=Math.round(c.pow*k); if(c.bomblet) c.bomblet=Math.round(c.bomblet*k); } }
-  else { KD_BUILDERS[c.type](c,PART_KEYS[kind].map(v)); c.kd=1; }
+  else { KD_BUILDERS[kind](c,PART_KEYS[kind].map(v)); c.kd=1; }
   c.np=1; return c; }
 // a card set line's parts (cardsets.js), if it has them
 function lineParts(type,o){ const kind=partKind(type); if(!kind||o[PART_KEYS[kind][0]]==null) return null;

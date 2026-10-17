@@ -238,8 +238,10 @@ function authoredCards(fam,list,rng,pk,ri,tr,names){
     const base=type==='piece'?tr.piece:type;
     if(e.o.body) c.body=e.o.body; if(e.o.mod) c.mod=e.o.mod; if(e.o.mach) c.mach=e.o.mach;
     if(e.o.legend) c.legend=true;
-    // a creature, strike, lob, ward, boon, charge, trap or ground card is written with its parts (kinds.js)
-    const P=lineParts(type,e.o); if(P){ partsBuild(c,P); if(names.has(e.name)) throw new Error('card set '+fam+': the name "'+e.name+'" is taken'); names.add(e.name); c.name=e.name; out.push(c); continue; }
+    // a creature, strike, lob, ward, boon, charge, trap or ground card is written with its parts (kinds.js),
+    // and so are the instants and Legendary pieces that play as one
+    if(type==='piece'){ c.base=base; c.piece=true; }
+    const P=lineParts(type==='instant'?e.o.as:base,e.o); if(P){ partsBuild(c,P); if(names.has(e.name)) throw new Error('card set '+fam+': the name "'+e.name+'" is taken'); names.add(e.name); c.name=e.name; out.push(c); continue; }
     BUILD[base](c,F,rank,kw,tr,pk,ri);
     if(type==='piece'){ c.base=base; c.piece=true; }
     // Unstable (goblin and gremlin tech): 30% stronger, but 1 in 5 casts misfire
@@ -639,8 +641,8 @@ function cardText(c){
   const kind=c.type==='piece'?c.base:c.type;
   // a creature built from parts (creatures.js)
   if(c.beh&&typeof crText==='function'&&['summon','machine','sentry'].includes(kind)) return crText(c)+(typeof kdStanceText==='function'?kdStanceText(c):'')+(kw.length?'. '+kw.join(', '):'');
-  if(kind==='strike'&&typeof STRIKE_SHAPES!=='undefined'&&STRIKE_SHAPES[c.shape]) return strikeText(c)+(typeof kdCastText==='function'?kdCastText(c):'')+(kw.length?'. '+kw.join(', '):'');
-  if(c.kd&&typeof kdText==='function') return kdText(c,kw);   // lobs, wards, boons, charges, traps and ground built from parts (kinds.js)   // the newer shapes (strikes.js)
+  if(kind==='strike'&&typeof STRIKE_SHAPES!=='undefined'&&STRIKE_SHAPES[c.shape]) return (c.piece?'Legendary piece. ':'')+strikeText(c)+(typeof kdCastText==='function'?kdCastText(c):'')+(kw.length?'. '+kw.join(', '):'');
+  if(c.kd&&c.type!=='instant'&&typeof kdText==='function') return (c.piece?'Legendary piece. ':'')+kdText(c,kw);   // lobs, wards, boons, charges, traps and ground built from parts (kinds.js)   // the newer shapes (strikes.js)
   if(kind==='strike') t={line:c.pow+' to the first enemy in your row', row:c.pow+' to every enemy in your row', wedge:c.pow+' in a short cone ahead',
                          all:c.pow+' to every enemy', missiles:c.n+' missiles of '+c.pow+' at random enemies',
                          dig:c.pow+' tunnelling under walls and shields to the first enemy in your row', zigzag:c.pow+' zigzagging between your row and the next',

@@ -27,7 +27,7 @@ JavaScript with three.js (r128) and has no build step.
 |---|---|
 | **World** | 6 areas of 4 floors each (Glowworm Hollows, Frozen Deeps, Storm Vault, Ember Rifts, Gilded Ruins, The Abyss). Each area ends in a boss floor and has its own battle rule (v59). |
 | **Character** | 8 races, man or woman, stat dials (STR, DEX, CON, INT and more), levels, and gear (head, body, arms, weapon, off hand, rings). |
-| **Cards** | A collection of about 1,000 cards in 8 colours, 5 deck slots and a deck builder. Combos are copies, Flush, Straight, Rune Run, Rune Set and secret recipes. Instants, aces and the wild rune ✱. |
+| **Cards** | A collection of 1,949 cards in 8 colours (**frozen at 2,000**: 51 slots left, after that a new card must replace one), 5 deck slots and a deck builder. Combos are copies, Flush, Straight, Rune Run, Rune Set and secret recipes. Instants, aces and the wild rune ✱. |
 | **Battle** | Real-time hex board in 3D (sprites, lights, spell effects, camera moves). Telegraphs, attack bars, counters, perfect dodges, a combo gauge, elemental weaknesses, minibosses, rare foes and 18 bosses. |
 | **Reading enemies (v70)** | Each enemy's tile has an attack bar that fills counter-clockwise and flashes twice before it casts. Each kind of move has its own tell. Countering during the flash and perfect dodges are rewarded. The Bestiary records creatures as you fight them. |
 | **Collecting (v58)** | Contracts on the bounty board, area affinities with elemental enemy variants, shards and crafting (breaking cards is manual), and colour mastery with set rewards. |

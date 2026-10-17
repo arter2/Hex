@@ -534,6 +534,10 @@ const FORM_WALLS=[
   {id:'iron_corridor',  name:'Iron Corridor',    color:'brown',   rank:6,  rarity:'uncommon', ward:'wall',   form:'corridor', n:4, hp:50},
 ].map(c=>Object.assign({type:'ward'},c));
 const CARD_LIST=SIGNATURE.concat(generateCards(),HEROES,POTIONS,BROOD,FORM_WALLS);
+// The collection is frozen at 2,000 cards (decided 2026-10-17): 1,949 now, so 51 slots are left.
+// A new card takes one of those slots or replaces an old one; the list never grows past the cap.
+const CARD_CAP=2000;
+if(CARD_LIST.length>CARD_CAP) console.error('Hexmancers: '+CARD_LIST.length+' cards, over the cap of '+CARD_CAP+'. Replace a card instead of adding one.');
 /* Nothing a card puts on the board lasts forever: shields, walls, towers, summons, machines,
    traps and changed ground each have HP (or a strength) and a time limit, written as turns
    here: each is 10 seconds of fighting (TURN_S in battle.js). Applied after generation, so card ids are unchanged. */

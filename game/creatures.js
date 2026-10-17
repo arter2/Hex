@@ -66,7 +66,7 @@ const CR_TRAITS={
   scorched:  {color:'fire',    name:'Scorched earth', text:'its hits leave the ground burning for 3 seconds'},
   bloodlust: {color:'fire',    name:'Bloodlust',      text:'each kill makes it act 15% faster'},
   chilling:  {color:'frost',   name:'Chilling',       text:'whatever hits it is slowed'},
-  pack:      {color:'frost',   name:'Pack',           text:'+35% power next to another Frost creature'},
+  pack:      {color:'frost',   name:'Pack',           text:'+35% power next to another creature of its colour'},
   tidal:     {color:'frost',   name:'Tidal',          text:'every 3rd hit pushes the enemy back'},
   shatter:   {color:'frost',   name:'Shatter',        text:'double damage to frozen enemies'},
   submerge:  {color:'frost',   name:'Submerge',       text:'can\'t be hit for a moment after it acts'},
@@ -94,7 +94,7 @@ const CR_TRAITS={
   veteran:   {color:'gray',    name:'Veteran',        text:'+10% power for every 10 seconds it survives'},
   loyal:     {color:'gray',    name:'Loyal',          text:'stands next to you and takes 35% less damage there'},
   steadfast: {color:'gray',    name:'Steadfast',      text:'no single hit takes more than a fifth of its HP'},
-  drilled:   {color:'gray',    name:'Drilled',        text:'+12% power for every other Gray creature on the board'},
+  drilled:   {color:'gray',    name:'Drilled',        text:'+12% power for every other creature of its colour on the board'},
   laststand: {color:'gray',    name:'Last stand',     text:'survives a killing blow once, at 1 HP'},
   racetech:  {color:'brown',   name:'Race tech',      text:'its race\'s tech (see below)'},
   overclock: {color:'brown',   name:'Overclock',      text:'acts 35% faster but loses 5% of its HP every second'},
@@ -161,8 +161,8 @@ function crSpawn(c,at){
 // how hard it hits right now (traits and its friends)
 function crPowMult(a){ const c=a.card, mine=crMine(); let m=1;
   if(crOn(a,'fury')) m*=1+.8*(1-a.hp/a.maxHp);
-  if(crOn(a,'pack')&&mine.some(o=>o!==a&&o.card.color==='frost'&&hexDist(o.tile,a.tile)===1)) m*=1.35;
-  if(crOn(a,'drilled')) m*=1+.12*mine.filter(o=>o!==a&&o.card.color==='gray').length;
+  if(crOn(a,'pack')&&mine.some(o=>o!==a&&o.card.color===a.card.color&&hexDist(o.tile,a.tile)===1)) m*=1.35;
+  if(crOn(a,'drilled')) m*=1+.12*mine.filter(o=>o!==a&&o.card.color===a.card.color).length;
   if(crOn(a,'harvest')) m*=1+.08*Math.min(10,a.souls);
   if(mine.some(o=>o!==a&&crOn(o,'rallying'))) m*=1.2;
   if(crRace(a,'goblin')) m*=1.4; if(crRace(a,'human')) m*=1.15;

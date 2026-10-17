@@ -1405,3 +1405,11 @@ body.wide .labside{align-self:start; position:sticky; top:0;}
 .lrow.lsub{padding-left:8px;} .lrow.lsub>label{font-size:12px; color:#8a97a6;}
 .lrow input[type=range]{width:100%;}
 .labsticky{grid-template-columns:1fr 1.4fr;}
+
+/* deck tools waiting in a slot: they pulse and say how to use them; slots they shut stay greyed out */
+#custQueue .card.primed{animation:toolPulse 1.1s ease-in-out infinite; position:relative; box-shadow:0 0 0 2px #c08a55,0 0 14px #c08a55;}
+@keyframes toolPulse{0%,100%{box-shadow:0 0 0 2px #c08a55,0 0 6px rgba(192,138,85,.5);} 50%{box-shadow:0 0 0 3px #ffd08a,0 0 22px #ffb35a;}}
+#custQueue .card.primed .primer{position:absolute; left:4px; right:4px; bottom:6px; padding:4px 2px; border-radius:6px; background:rgba(30,18,6,.86); color:#ffd08a;
+  font-size:11px; font-weight:bold; text-align:center; line-height:1.15; pointer-events:none;}
+#custQueue .card.primed .primer small{display:block; font-weight:normal; color:#e6cfa8; font-size:10px;}
+#custQueue .slot.shut{opacity:.55; background:repeating-linear-gradient(45deg,rgba(255,255,255,.04) 0 6px,rgba(0,0,0,.12) 6px 12px); color:#c08a55; white-space:normal; text-align:center;}

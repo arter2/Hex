@@ -811,27 +811,32 @@ function renderCustom(){
   $('#custom').classList.add('on');
   $('#custPiles').textContent='Deck '+p.draw.length+' · Discard '+p.discard.length;
   const combos=detectCombos(p.queue), inCombo=new Set();
-  for(const cb of combos){ if(cb.kind==='simple') p.queue.forEach(c=>{ if(c.card.id===cb.id) inCombo.add(c.uid); }); else p.queue.forEach(c=>inCombo.add(c.uid)); }
+  for(const cb of combos){ if(cb.kind==='simple') p.queue.forEach(c=>{ if(c.card.id===cb.id) inCombo.add(c.uid); }); else p.queue.forEach(c=>{ if(!isDeckTool(c.card)) inCombo.add(c.uid); }); }
   $('#custCombo').innerHTML=comboChips(combos)||'<span class="none">No combo yet</span>';
   const q=$('#custQueue'); q.innerHTML='';
   const slots=slotsOf(p), runeNow=p.queue.map(c=>c.card.code).find(k=>k&&k!=='✱');
-  $('#custSurge').innerHTML=slots>RULES.slots?`<b>ᚱ Rune Surge${p.surge&&p.surge!=='luck'?' ('+p.surge+')':''}!</b> A 4th slot is open this turn: 4-card recipes and Grand Straights are possible.`:'';
-  q.classList.toggle('four',slots>RULES.slots);
+  $('#custSurge').innerHTML=(p.slots||RULES.slots)>RULES.slots?`<b>ᚱ Rune Surge${p.surge&&p.surge!=='luck'?' ('+p.surge+')':''}!</b> A 4th slot is open this turn: 4-card recipes and Grand Straights are possible.`:'';
+  q.classList.toggle('four',(p.slots||RULES.slots)>RULES.slots);
   const ready=recipesInHand(p), inRecipe=new Set(ready.flatMap(x=>x.uids));
   const inQ=new Set(p.queue.map(c=>c.uid));
   $('#custRecipe').innerHTML=ready.map(({r,uids})=>`<b>⚗ ${recipeKnown(r)?'Recipe in hand: '+esc(r.name)+'.':'A hidden recipe is in your hand!'}</b> `
     +(uids.every(u=>inQ.has(u))&&p.queue.length===r.cards.length?'Ready: press Fight! to fuse them.':r.cards.length>slots?'It needs the 4th slot.':'Queue the glowing cards together, on their own.')).join('<br>');
   for(let i=0;i<slots;i++){
     const inst=p.queue[i];
-    if(inst){ const el=cardEl(inst.card,`<span class="ord">${i+1}</span>`+instBadge(inst,true)); el.dataset.zone='queue'; el.dataset.i=i; if(inCombo.has(inst.uid)) el.classList.add('combo'); dragCard(el,inst); q.appendChild(el); }
+    if(inst){ const tool=isDeckTool(inst.card), n=tool&&toolLock(inst.card);
+      const el=cardEl(inst.card,`<span class="ord">${i+1}</span>`+instBadge(inst,true)+(tool?`<span class="primer">Double-tap to use<small>shuts this slot ${n>1?'for '+n+' hands':'this hand'}</small></span>`:''));
+      el.dataset.zone='queue'; el.dataset.i=i; if(inCombo.has(inst.uid)) el.classList.add('combo'); if(tool) el.classList.add('primed'); dragCard(el,inst); q.appendChild(el); }
     else { const s=document.createElement('div'); s.className='slot'; s.dataset.zone='queue'; s.dataset.i=i; s.innerHTML='Slot '+(i+1); q.appendChild(s); }
   }
+  // slots shut by a deck tool: they open again at the next hand (or later, if the card says so)
+  for(const l of p.locks||[]){ const s=document.createElement('div'); s.className='slot shut';
+    s.innerHTML='🔒 Shut<small>'+esc(l.name)+(l.n>1?' · '+l.n+' hands':'')+'</small>'; q.appendChild(s); }
   const h=$('#custHand'); h.innerHTML='';
   const base=combos.length, lay=handLayout(p), byUid=new Map(p.hand.map((c,i)=>[c.uid,i]));
   // a queued card leaves an empty outline where it sat, so the rest of the hand stays put
   lay.forEach(u=>{ if(byUid.has(u)) return; const s=document.createElement('div'); s.className='slot hole'; s.dataset.zone='hand'; s.dataset.uid=u;
     const nxt=lay.slice(lay.indexOf(u)+1).find(v=>byUid.has(v)); s.dataset.i=nxt==null?p.hand.length:byUid.get(nxt); s.style.order=lay.indexOf(u); h.appendChild(s); });
-  p.hand.forEach((inst,i)=>{ const el=cardEl(inst.card,instBadge(inst)); el.title='Key '+(i+1)+(isInstant(inst.card)?' · tap to use now':'');
+  p.hand.forEach((inst,i)=>{ const el=cardEl(inst.card,instBadge(inst)); el.title='Key '+(i+1)+(isInstant(inst.card)?' · tap to use now':isDeckTool(inst.card)?' · put it in a slot, then double-tap it':'');
     if(isInstant(inst.card)) el.classList.add('instant');
     el.dataset.zone='hand'; el.dataset.i=i;
     // glow if adding this card to the queue would make a new combo
@@ -853,7 +858,27 @@ function instBadge(inst,inQueue){ let h='';
   if(inst.left!=null) h+=`<span class="badge">${inst.left} left</span>`;
   if(inst.tinker) h+=`<span class="badge tink">🔧 +${Math.round(inst.tinker*100)}%</span>`;
   else if(!inQueue&&isInstant(inst.card)) h+=`<span class="badge inst">✧ tap</span>`;
+  else if(!inQueue&&isDeckTool(inst.card)) h+=`<span class="badge inst">✧ slot</span>`;
   return h; }
+/* Deck tools on the hand screen: one tap on a tool in a slot takes it back out (after a short wait),
+   two taps use it. */
+let toolTapT=null;
+function toolTap(inst){
+  if(toolTapT&&toolTapT.uid===inst.uid){ clearTimeout(toolTapT.timer); toolTapT=null; fireTool(inst); return; }
+  if(toolTapT) clearTimeout(toolTapT.timer);
+  toolTapT={uid:inst.uid, timer:setTimeout(()=>{ toolTapT=null; if(B&&B.phase==='custom'){ toggleQueue(B.piles,inst.uid); renderCustom(); } },320)}; }
+function fireTool(inst){ const c=inst.card, P=B.piles, before=new Set(P.hand.map(x=>x.uid)), n=toolLock(c);
+  const done=()=>{ const got=P.hand.filter(x=>!before.has(x.uid)), shut=' · slot shut '+(n>1?'for '+n+' hands':'this hand');
+    tip((c.util==='search'?(got.length?'Found: '+got[0].card.name:handRoom(P)?'Nothing found':'Hand full'):'Drew '+got.length+' new card'+(got.length===1?'':'s'))+shut);
+    buzz(14); renderCustom(); hud(true); };
+  if(c.util==='keep'){ const opts=P.hand.slice();
+    return openPicker({title:'✧ '+c.name, hint:'Tap the cards to keep. The rest go back into your deck and you draw back up to '+RULES.hand+'.', items:opts, max:opts.length, min:0,
+      ok:sel=>{ useDeckTool(inst,{keep:new Set(sel.map(x=>x.uid))}); done(); }}); }
+  if(c.util==='search'&&c.find==='pick'){ const opts=P.draw.slice().sort((a,b)=>a.card.name.localeCompare(b.card.name));
+    if(!opts.length){ tip('Your deck is empty'); return; }
+    return openPicker({title:'✧ '+c.name, hint:'Pick any card from your deck to put in your hand.', items:opts, max:1,
+      ok:sel=>{ useDeckTool(inst,{uid:sel[0].uid}); done(); }}); }
+  useDeckTool(inst); done(); }
 /* Instants: a tap uses one at once. Tinker, Keep and Reshuffle and a pick-any Search first ask
    which cards (the picker); the fight waits while it is open. */
 function tapInstant(inst){ const c=inst.card, P=B.piles;
@@ -922,7 +947,9 @@ function dragCard(el,inst){
     if(d.moved){ const t=e.type==='pointercancel'?null:dropTarget(e.clientX,e.clientY);
       if(t){ const zone=t.dataset.zone, i=t.dataset.i!=null?+t.dataset.i:null, spot=t.dataset.uid;
         if(placeCard(p,d.inst.uid,zone,i)&&zone==='hand'&&spot&&spot!==String(d.inst.uid)) layDrop(d.inst.uid,isNaN(+spot)?spot:+spot); buzz(10); } }
-    else if(!d.long){ if(isInstant(d.inst.card)){ tapInstant(d.inst); return; } if(!toggleQueue(p,d.inst.uid)) tip('The queue is full'); }
+    else if(!d.long){ if(isInstant(d.inst.card)){ tapInstant(d.inst); return; }
+      if(isDeckTool(d.inst.card)&&p.queue.includes(d.inst)){ toolTap(d.inst); return; }
+      if(!toggleQueue(p,d.inst.uid)) tip(slotsOf(p)?'The queue is full':'Every slot is shut this hand'); }
     renderCustom();
   };
   el.addEventListener('pointerup',end); el.addEventListener('pointercancel',end);
@@ -1057,6 +1084,7 @@ window.addEventListener('keydown',e=>{
     const n=parseInt(k,10);
     if($('#picker').classList.contains('on')) return;
     if(n>=1&&n<=9&&B.piles.hand[n-1]){ const h=B.piles.hand[n-1]; if(isInstant(h.card)) tapInstant(h); else { toggleQueue(B.piles,h.uid); renderCustom(); } }
+    else if(k==='u'){ const t=B.piles.queue.find(c=>isDeckTool(c.card)); if(t) fireTool(t); }   // use the deck tool in your slots
     else if(k==='backspace'&&B.piles.queue.length){ toggleQueue(B.piles,B.piles.queue[B.piles.queue.length-1].uid); renderCustom(); }
     else if((k==='enter'||k===' ')&&!e.repeat&&!held.has(k)){ e.preventDefault(); closeCustomScreen(); }
     return;

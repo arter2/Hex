@@ -42,7 +42,8 @@ function createPiles(list,rng,cards){
   const draw=shuffle(list.map(id=>({uid:uid++, card:cards[id]})),rng);
   return {draw, hand:[], queue:[], discard:[], uid, bonus:0, slots:RULES.slots};
 }
-const slotsOf=p=>p.slots||RULES.slots;
+// a used deck tool shuts a slot (p.locks) for the hand it was used in, or longer if the card says so
+const slotsOf=p=>Math.max(0,(p.slots||RULES.slots)-(p.locks||[]).length);
 const WILD_RUNE='✱';
 // Rune Surge: the rune with the most cards in hand (wild cards count for every rune)
 function surgeRune(hand){ const n={}, wild=hand.filter(c=>c.card.code===WILD_RUNE).length;
@@ -60,9 +61,15 @@ function runesFit(cards){
 // true if these cards are all part of one recipe (any order, copies counted)
 function fitsRecipe(r,cards){ const need=r.cards.slice(); return cards.every(c=>{ const i=need.indexOf(c.id); if(i<0) return false; need.splice(i,1); return true; }); }
 function recipeStep(cards){ const list=typeof RECIPES!=='undefined'?RECIPES:[]; return list.some(r=>fitsRecipe(r,cards)); }
+/* Brown's deck tools (Search, Keep, Reshuffle) are used on the hand screen: put one in a slot and
+   double-tap it there. It goes to the discard pile and its slot stays shut for `lock` hands
+   (1 = only the hand it was used in; a full Reshuffle shuts it for 2). */
+const DECK_TOOLS=['search','keep','reshuffle'];
+const isDeckTool=c=>!!c&&c.type==='instant'&&c.as==='utility'&&DECK_TOOLS.includes(c.util);
+const toolLock=c=>c.lock||(c.util==='reshuffle'?2:1);
 // Instants (and Tinker) are never queued: you tap them in your hand and they act at once.
 const TAP_TYPES=['instant','tinker'];
-const isInstant=c=>!!c&&TAP_TYPES.includes(c.type);
+const isInstant=c=>!!c&&TAP_TYPES.includes(c.type)&&!isDeckTool(c);
 const canQueue=(p,inst)=>p.queue.length<slotsOf(p)&&!(inst&&isInstant(inst.card));
 // one rune (wild cards fit any) — what a Flush or a Straight needs
 const oneRune=cards=>new Set(cards.map(c=>c.code).filter(k=>k&&k!==WILD_RUNE)).size<=1;
@@ -74,6 +81,7 @@ const handRoom=p=>Math.max(0,handMax(p)-p.hand.length);
 // Opening the Custom screen: queued cards not yet cast go back to the hand, then the hand refills to 6.
 function openCustom(p){
   p.hand=p.queue.filter(c=>!c.temp).concat(p.hand); p.queue=[];
+  p.locks=(p.locks||[]).map(l=>Object.assign({},l,{n:l.n-1})).filter(l=>l.n>0);   // shut slots open again
   const drawn=[];
   // queued cards not cast come back first; any past the limit go back on top of the deck, to be drawn next
   while(p.hand.length>handMax(p)){ const c=p.hand.pop(); if(c.temp) continue; p.draw.push(c); }
@@ -100,7 +108,7 @@ const NEUTRAL=['gray','brown'];
 function findRecipe(cards){ const list=typeof RECIPES!=='undefined'?RECIPES:[];
   return list.find(r=>r.cards.length===cards.length&&fitsRecipe(r,cards))||null; }
 function detectCombos(queue){
-  const cards=queue.filter(c=>!c.temp).map(c=>c.card), out=[];
+  const cards=queue.filter(c=>!c.temp&&!isDeckTool(c.card)).map(c=>c.card), out=[];   // a deck tool waiting in a slot is no part of a combo
   const r=cards.length>=3&&findRecipe(cards);
   if(r) return [{kind:'recipe', recipe:r, label:'Recipe: '+r.name}];
   const by={}; cards.forEach(c=>by[c.id]=(by[c.id]||0)+1);
@@ -235,4 +243,4 @@ function rechargeAll(p,n){ let k=0;
 // Nothing left to draw, hold or cast: the fight continues with the wand only.
 function wandOnly(p){ return !p.draw.length && !p.hand.length && !p.queue.length; }
 
-if(typeof module!=='undefined') module.exports={handMax,handRoom,isInstant,TAP_TYPES,searchDeck,takeFromDeck,reshuffleHand,rechargeAll,oneRune,slotsOf,surgeRune,runesFit,canQueue,findRecipe,RULES,detectCombos,placeCard,validateDeck,shuffle,createPiles,openCustom,commitCustom,toggleQueue,castNext,drawCards,recallTop,copyNext,wandOnly};
+if(typeof module!=='undefined') module.exports={handMax,handRoom,isInstant,isDeckTool,toolLock,DECK_TOOLS,TAP_TYPES,searchDeck,takeFromDeck,reshuffleHand,rechargeAll,oneRune,slotsOf,surgeRune,runesFit,canQueue,findRecipe,RULES,detectCombos,placeCard,validateDeck,shuffle,createPiles,openCustom,commitCustom,toggleQueue,castNext,drawCards,recallTop,copyNext,wandOnly};

@@ -168,6 +168,8 @@ function openCustomScreen(){
 }
 function closeCustomScreen(){
   const b=B; if(!b||b.phase!=='custom') return;
+  const pl=b.piles, unused=pl.queue.filter(c=>isDeckTool(c.card));   // a deck tool left in a slot unused goes back to the hand
+  if(unused.length){ pl.queue=pl.queue.filter(c=>!unused.includes(c)); pl.hand.push(...unused); }
   commitCustom(b.piles); b.phase='fight'; b.gauge=0;
   for(const cb of b.piles.combos||[]) if(cb.kind==='run'){ const p=b.player; p.hasteT=Math.max(p.hasteT,cb.dur); p.courageT=Math.max(p.courageT,cb.dur); }   // Rune Run
   for(const cb of b.piles.combos||[]) if(cb.kind==='set'){ const p=b.player; p.powerT=Math.max(p.powerT,cb.dur); }   // Rune Set
@@ -632,6 +634,20 @@ function useInstant(inst,choice){
   if(c.as==='utility'&&c.util==='search'&&c.find==='pick'){ const got=deckSearch(c,choice&&choice.uid); floater(got?'Found: '+got.card.name:handRoom(B.piles)?'nothing found':'hand full',p.tile,'#c08a55'); if(got) B.justDrawn=new Set([got.uid]); return true; }
   if(c.self&&c.as!=='boon') payHp(c.self);
   CAST[c.as](c,p);
+  return true;
+}
+/* A deck tool double-tapped in its slot on the hand screen: it acts, goes to the discard pile and
+   shuts its slot (see toolLock). `choice` as for useInstant: {keep} or {uid}. */
+function useDeckTool(inst,choice){
+  const b=B; if(!b||b.phase!=='custom') return false;
+  const pl=b.piles, p=b.player, i=pl.queue.indexOf(inst); if(i<0||!isDeckTool(inst.card)) return false;
+  const c=inst.card; pl.queue.splice(i,1); pl.discard.push(inst);
+  (pl.locks=pl.locks||[]).push({n:toolLock(c), name:c.name});
+  b.log.push(c.name); b.hooks.onCast&&b.hooks.onCast(c,inst); soulGain(5);
+  if(misfire(c,p)) return true;
+  if(c.util==='keep') B.keepSet=choice&&choice.keep||new Set();
+  if(c.util==='search'&&c.find==='pick'){ const got=deckSearch(c,choice&&choice.uid); if(got) B.justDrawn=new Set([got.uid]); return true; }
+  CAST.utility(c,p);
   return true;
 }
 // mid-fight, a Tinker with nobody to ask picks your strongest card waiting in queue or hand

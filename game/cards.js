@@ -672,6 +672,8 @@ function cardText(c){
   else if(kind==='machine') t=c.ai==='bulwark'?c.n+' iron wall'+(c.n>1?'s':'')+' of '+c.hp+' HP, '+tn(c.turns):
                               {turret:'Turret: '+c.pow+' every '+c.rate+'s', repeater:'Repeater: '+c.pow+' every '+c.rate+'s', mortar:'Mortar: lobs '+c.pow+' every '+c.rate+'s'}[c.ai]+', '+c.hp+' HP, '+tn(c.turns);
   else if(kind==='hero') t='Calls '+c.name.split(',')[0]+' for '+tn(c.turns)+' ('+c.hp+' HP), who '+c.attack.replace('{pow}',c.pow)+'. While it stands, '+c.aura;
+  else if(kind==='instant'&&typeof isDeckTool==='function'&&isDeckTool(c)){ const n=toolLock(c);
+    t='Deck tool: put it in a slot on the hand screen and double-tap it. '+cardText(Object.assign({},c,{type:c.as,race:null,unstable:false,legend:false})).replace(/\. (Costs).*$/,'')+'. Shuts that slot '+(n>1?'for '+n+' hands':'for this hand'); }
   else if(kind==='instant') t='Instant: '+cardText(Object.assign({},c,{type:c.as,race:null,unstable:false,legend:false})).replace(/\. (Burn|Freeze|Stun|Slow|Poison|Curse|Drain|Mend|Valor|Confuse|Knockback|Pull|Costs).*$/,'');
   else if(kind==='equip') t='Equip your strongest creature: '+[c.eqPow?'+'+Math.round(c.eqPow*100)+'% power':'', c.eqHp?'+'+c.eqHp+' HP':'', c.eqRate?'attacks '+Math.round((1/c.eqRate-1)*100)+'% faster':'',
                               c.eq==='aegis'?'it steps in front of hits aimed at you':'', c.eqTurns?'+'+tn(c.eqTurns):''].filter(Boolean).join(', ')+(kw.length?', and its attacks carry this card\'s effects':'');

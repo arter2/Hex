@@ -212,8 +212,24 @@ function openSlots(mode){ const isNew=mode==='new', box=$('#slList'); box.innerH
   $('#slots').classList.add('on'); }
 
 /* ---------------- start ---------------- */
+/* New game: pick the color your 80 random cards lean to, or roll one. (The premade starter decks
+   are kept for later: set USE_STARTERS to offer them again.) */
+const USE_STARTERS=false;
 function buildStart(){
   const box=$('#starters'); box.innerHTML='';
+  const begin=lean=>{ if(typeof XPARK!=='undefined') XPARK=null; save=newSave({lean});
+    clearPoint(); if(ccChar) Object.assign(save,{char:lockChar(ccChar), look:ccChar.look, hat:true, level:1, xp:0}); persist(); pickDepth=1; openCamp();
+    tip('Your 80 cards lean '+COLORS[lean].name+'. Your first deck is ready at camp.'); };
+  if(!USE_STARTERS){
+    const d=document.createElement('div'); d.className='starter deal';
+    d.innerHTML=`<h3>Your first cards</h3><p>You get 80 cards dealt at random: mostly commons, a few uncommons and rares, with Gray and Brown cards and some of 2 or 3 other colors. Pick the color they lean to, and every new character gets a different mix.</p>
+      <div class="dealcols">${SIX.map(k=>`<button class="btn dealc" data-k="${k}" style="--c:${COLORS[k].c}">${COLORS[k].icon} ${COLORS[k].name}</button>`).join('')}</div>
+      <div class="row"><button class="btn dealr">🎲 Surprise me</button></div>`;
+    d.querySelectorAll('.dealc').forEach(b=>b.onclick=()=>begin(b.dataset.k));
+    d.querySelector('.dealr').onclick=()=>begin(SIX[Math.floor(Math.random()*SIX.length)]);
+    box.appendChild(d);
+    $('#startWarn').textContent=save?'Starting a new game replaces your current save: your cards, gold and gear.':'';
+    show('scrStart'); return; }
   for(const s of STARTERS){
     const d=document.createElement('div'); d.className='starter';
     d.innerHTML=`<h3>${s.name}</h3><div class="cols">${s.colors.map(c=>`<span class="chip" style="--c:${COLORS[c].c}">${COLORS[c].icon} ${COLORS[c].name}</span>`).join('')}</div>

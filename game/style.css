@@ -1413,3 +1413,7 @@ body.wide .labside{align-self:start; position:sticky; top:0;}
   font-size:11px; font-weight:bold; text-align:center; line-height:1.15; pointer-events:none;}
 #custQueue .card.primed .primer small{display:block; font-weight:normal; color:#e6cfa8; font-size:10px;}
 #custQueue .slot.shut{opacity:.55; background:repeating-linear-gradient(45deg,rgba(255,255,255,.04) 0 6px,rgba(0,0,0,.12) 6px 12px); color:#c08a55; white-space:normal; text-align:center;}
+
+/* new game: the color picker for the 80 dealt cards */
+.starter.deal .dealcols{display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:10px 0;}
+.starter.deal .dealc{border-color:var(--c); color:var(--c); padding:10px 4px; font-size:14px;}

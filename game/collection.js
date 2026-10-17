@@ -93,7 +93,39 @@ function addHeroToDeck(list,id){ if(!id||list.some(x=>CARDS[x]&&CARDS[x].rarity=
     const cut=Object.keys(n).filter(x=>CARDS[x]&&CARDS[x].rarity!=='legendary'&&n[x]>1).sort((x,y)=>n[y]-n[x]||CARDS[x].rank-CARDS[y].rank)[0];
     if(!cut) return; list.splice(list.lastIndexOf(cut),1); }
   list.push(id); }
+/* A new character's cards: 80 dealt at random, leaning to one of the six colors (STARTER_DEAL).
+   About 32 of that color, 8 Gray, 8 Brown and the rest from 2 or 3 other colors; about 64 commons,
+   12 uncommons and 4 rares, all rank 1-6. The lean color's cards favor one "home" rune, so a few
+   Flushes and Straights are there to find. The 60-card first deck is built from them (startDeck).
+   (The premade starter decks, STARTERS in cards.js, are kept for later: newSave still takes one.) */
+const STARTER_DEAL={size:80, lean:32, gray:8, brown:8, rare:4, uncommon:12, maxRank:6, homeRune:3};
+function dealStart(lean,rng){ rng=rng||Math.random; const D=STARTER_DEAL;
+  const pk=a=>a[Math.floor(rng()*a.length)], shuf=a=>{ for(let i=a.length-1;i>0;i--){ const j=Math.floor(rng()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; };
+  const pool=CARD_LIST.filter(c=>c.rank<=D.maxRank&&['common','uncommon','rare'].includes(c.rarity)&&!c.brood&&!c.recipe&&!c.mastery&&c.type!=='claim');
+  // how many cards of each color: the lean, the two neutrals, and 2-3 others sharing the rest
+  const others=shuf(SIX.filter(k=>k!==lean)).slice(0,rng()<.5?2:3), rest=D.size-D.lean-D.gray-D.brown, by={[lean]:D.lean, gray:D.gray, brown:D.brown};
+  const w=others.map(()=>.6+rng()), ws=w.reduce((a,b)=>a+b,0); let left=rest;
+  others.forEach((k,i)=>{ const n=i===others.length-1?left:Math.round(rest*w[i]/ws); by[k]=n; left-=n; });
+  // rarity: half the rares and a third of the uncommons go to the lean color, the rest anywhere
+  const slots=[]; for(const k in by) for(let i=0;i<by[k];i++) slots.push({color:k, rarity:'common'});
+  const give=(r,n,pref)=>{ let k=0; for(const sl of shuf(slots.slice())){ if(k>=n) break; if(sl.rarity!=='common'||(pref&&sl.color!==pref)) continue; sl.rarity=r; k++; } return k; };
+  give('rare',D.rare-give('rare',Math.ceil(D.rare/2),lean)); give('uncommon',D.uncommon-give('uncommon',Math.ceil(D.uncommon/3),lean));
+  const home=pk(RUNES), out=[];
+  const groups={}; slots.forEach(sl=>{ const g=sl.color+'|'+sl.rarity; groups[g]=(groups[g]||0)+1; });
+  for(const g in groups){ const [col,rar]=g.split('|'); let n=groups[g];
+    // the lean color's home rune is a few times likelier, so Flushes and Straights can form
+    const cand=pool.filter(c=>c.color===col&&c.rarity===rar).map(c=>({c, k:rng()*(col===lean&&c.code===home?D.homeRune:1)})).sort((a,b)=>b.k-a.k).map(x=>x.c);
+    let i=0; while(n>0&&cand.length){ const c=cand[i%cand.length]; i++;
+      const have=out.filter(x=>x===c.id).length, cap=Math.min(copyLimit(c), rar==='common'?3:rar==='uncommon'?2:1)-have; if(cap<=0){ if(i>cand.length*4) break; continue; }
+      const k=Math.min(n,cap,1+Math.floor(rng()*cap)); for(let j=0;j<k;j++) out.push(c.id); n-=k; } }
+  return {lean, home, list:out}; }
+// the first deck: every card of the lean color and the neutrals, then the biggest other colors, to 60 with the hero
+function startDeck(ids,lean){ const n={}; ids.forEach(id=>{ const k=CARDS[id].color; n[k]=(n[k]||0)+1; });
+  const rank=k=>k===lean?0:k==='gray'||k==='brown'?1:2+1/(1+n[k]);
+  const list=ids.slice().sort((a,b)=>rank(CARDS[a].color)-rank(CARDS[b].color)||CARDS[a].rank-CARDS[b].rank).slice(0,RULES.max-1);
+  list.push(heroOfColor(lean)); return list; }
 function newSave(starter){
+  if(starter&&starter.lean) return newDealtSave(starter.lean,starter.rng);
   const list=starterList(starter.colors,60,starter.recipe), owned={};
   addHeroToDeck(list,heroOfColor(starter.colors[0]));
   list.forEach(id=>owned[id]=(owned[id]||0)+1);
@@ -101,6 +133,12 @@ function newSave(starter){
   const sv={v:1, gold:100, depth:1, deepest:1, owned, seen:Object.assign({},owned), decks, active:0, wins:0, items:{basic_wand:1}, gear:{weapon:'basic_wand'}, heroCards:1};
   giveStarterHeroes(sv); return sv;
 }
+function newDealtSave(lean,rng){
+  const deal=dealStart(lean,rng), owned={}; deal.list.forEach(id=>owned[id]=(owned[id]||0)+1);
+  const list=startDeck(deal.list,lean), decks=[{name:COLORS[lean].name+' deck', list}];
+  for(let i=1;i<DECK_SLOTS;i++) decks.push({name:'Deck '+(i+1), list:[]});
+  const sv={v:1, gold:100, depth:1, deepest:1, owned, seen:Object.assign({},owned), decks, active:0, wins:0, items:{basic_wand:1}, gear:{weapon:'basic_wand'}, heroCards:1, lean, homeRune:deal.home};
+  giveStarterHeroes(sv); return sv; }
 /* Shards. Break a spare card (one that no deck needs) for shards, and spend shards to craft any
    card you have seen. Breaking is always your choice; nothing turns to shards on its own.
    Heroes and recipe cards can't be broken or crafted. [break for, craft for] */

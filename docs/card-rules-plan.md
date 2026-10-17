@@ -1,6 +1,6 @@
 # Every card plays differently (plan)
 
-Date: 2026-10-17 · Status: **step 1 done** (creatures and the Card lab in v78, strike shapes and riders in v79); **step 2 in v84**: every creature, strike, lob, ward, boon, charge, trap and ground card is written with its parts (cardsets.js, cards.js) and built by kinds.js; strikes gained a cast part and Gray creatures a stance so the 2-part rule holds (3 boon pairs left). Waiting on: your review, the cuts, and the remaining kinds (instants, pieces, aces, equipment, tinkers)
+Date: 2026-10-17 · Status: **step 1 done** (creatures and the Card lab in v78, strike shapes and riders in v79); **step 2 in v84**: every creature, strike, lob, ward, boon, charge, trap and ground card is written with its parts (cardsets.js, cards.js) and built by kinds.js; strikes gained a cast part and Gray creatures a stance so the 2-part rule holds (3 boon pairs left). Brown instants and Legendary pieces are on parts too. Colour weights: the Colour Weights page (https://claude.ai/artifact/3m6dfKxLsSuu5ZEBGkpJEL, source docs/card-list/colour-weights.html) saves per-colour weights that allocate.js reads as AL_WEIGHTS. Waiting on: your review and weights; the collection may stay a little over 200 per colour for now; aces, equipment, tinkers and utility keep their own rules
 
 955 of the 1,865 regular cards repeat a rule their colour already has. Creatures are the worst: every
 creature in a colour is one of 4 behaviours with the same HP formula and no keyword. This plan

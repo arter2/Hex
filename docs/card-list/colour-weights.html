@@ -1,0 +1,213 @@
+<title>Hexmancers Colour Weights</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;700&family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: a part picker on top, the chip tray, then eight colour lanes (a 4×2 grid, one column on phones). */
+:root{
+  --bg:#141821; --panel:#1c2230; --panel2:#232b3c; --line:#33405a; --fg:#e8ecf4; --dim:#9aa6bd; --accent:#ffd27a; --danger:#ff7a8a;
+  --f-display:"Pixelify Sans", "Courier New", monospace; --f-body:"Atkinson Hyperlegible", system-ui, sans-serif; --f-data:"JetBrains Mono", ui-monospace, monospace;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){ :root:not([data-theme="dark"]){ --bg:#eef1f6; --panel:#ffffff; --panel2:#f4f6fa; --line:#c9d1df; --fg:#1b2130; --dim:#5b6780; --accent:#a8640a; --danger:#c43048; color-scheme:light; } }
+:root[data-theme="light"]{ --bg:#eef1f6; --panel:#ffffff; --panel2:#f4f6fa; --line:#c9d1df; --fg:#1b2130; --dim:#5b6780; --accent:#a8640a; --danger:#c43048; color-scheme:light; }
+html,body{background:var(--bg); color:var(--fg);}
+body{font:15px/1.45 var(--f-body); padding-block:18px 40px; padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px));}
+.wrap{max-width:1240px; margin:0 auto; display:grid; gap:16px;}
+h1{font:700 28px/1.1 var(--f-display); margin:0; letter-spacing:.5px; text-wrap:balance;}
+.top{display:flex; flex-wrap:wrap; gap:10px 18px; align-items:flex-end; justify-content:space-between;}
+.lede{color:var(--dim); margin:4px 0 0; max-width:70ch;}
+.status{font:500 12px var(--f-data); color:var(--dim);}
+.status b{color:var(--accent); font-weight:500;}
+.bar{display:flex; flex-wrap:wrap; gap:8px; align-items:center;}
+button,select,input{font:inherit; color:var(--fg); background:var(--panel2); border:1px solid var(--line); border-radius:8px; padding:6px 11px;}
+button{cursor:pointer;} button:hover{border-color:var(--accent);} button:focus-visible,select:focus-visible,input:focus-visible,.chip:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+.kinds{display:flex; flex-wrap:wrap; gap:6px;}
+.kinds button{font:700 14px var(--f-display); letter-spacing:.4px;}
+.kinds button[aria-pressed="true"],.parts button[aria-pressed="true"]{background:var(--accent); color:#1b1408; border-color:var(--accent);}
+.parts{display:flex; flex-wrap:wrap; gap:6px;}
+.parts button{font-size:13px; padding:4px 10px;}
+.tray{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:12px; display:grid; gap:8px;}
+.tray h2{font:700 15px var(--f-display); margin:0; letter-spacing:.4px;}
+.tray .hint{color:var(--dim); font-size:13px; margin:0;}
+.chips{display:flex; flex-wrap:wrap; gap:6px;}
+.chip{display:inline-flex; align-items:center; gap:6px; background:var(--panel2); border:1px solid var(--line); border-radius:999px; padding:4px 10px; font-size:13px; cursor:grab; user-select:none; touch-action:none;}
+.chip.sel{border-color:var(--accent); box-shadow:0 0 0 2px color-mix(in srgb, var(--accent) 35%, transparent);}
+.chip .w{font:500 12px var(--f-data); color:var(--accent);}
+.ghost{position:fixed; z-index:50; pointer-events:none; opacity:.92; transform:translate(-50%,-60%) rotate(-3deg); box-shadow:0 8px 20px rgba(0,0,0,.35);}
+.lanes{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px;}
+@media (max-width:980px){ .lanes{grid-template-columns:repeat(2,minmax(0,1fr));} }
+@media (max-width:560px){ .lanes{grid-template-columns:minmax(0,1fr);} }
+.lane{--c:#888; background:var(--panel); border:1px solid var(--line); border-top:4px solid var(--c); border-radius:12px; padding:10px; display:grid; gap:8px; align-content:start; min-width:0;}
+.lane.over{border-color:var(--c); box-shadow:0 0 0 2px var(--c) inset;}
+.lane header{display:flex; justify-content:space-between; align-items:baseline; gap:8px;}
+.lane h3{margin:0; font:700 17px var(--f-display); color:var(--c); letter-spacing:.4px;}
+.lane .n{font:500 12px var(--f-data); color:var(--dim);}
+.drop{min-height:40px; border:1px dashed var(--line); border-radius:8px; padding:6px; display:flex; flex-wrap:wrap; gap:6px; align-content:flex-start;}
+.drop:empty::before{content:"Drop effects here"; color:var(--dim); font-size:12px; padding:4px;}
+.drop .chip{border-color:var(--c);}
+.step{display:inline-flex; align-items:center; gap:2px;}
+.step button{padding:0 6px; border-radius:6px; font:500 12px var(--f-data); line-height:18px;}
+.zero{text-decoration:line-through; opacity:.7;}
+.dist{display:grid; gap:3px; font-size:12px;}
+.row{display:grid; grid-template-columns:minmax(0,1fr) 92px 34px; gap:6px; align-items:center;}
+.row .nm{overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.bars{position:relative; height:10px; background:var(--panel2); border-radius:3px; overflow:hidden;}
+.bars i{position:absolute; left:0; top:0; bottom:0; display:block;}
+.bars .now{background:var(--dim); opacity:.35;}
+.bars .new{background:var(--c); height:5px; top:5px;}
+.row .ct{font:500 12px var(--f-data); text-align:right; font-variant-numeric:tabular-nums;}
+.row.up .ct{color:var(--accent);} .row.down .ct{color:var(--danger);}
+.more{color:var(--dim); font-size:12px;}
+.na{color:var(--dim); font-size:13px;}
+.legend{display:flex; flex-wrap:wrap; gap:14px; color:var(--dim); font-size:12px; align-items:center;}
+.legend span{display:inline-flex; align-items:center; gap:6px;}
+.legend i{display:inline-block; width:18px; height:8px; border-radius:2px;}
+.json{font:500 12px var(--f-data); background:var(--panel2); border:1px solid var(--line); border-radius:8px; padding:10px; white-space:pre-wrap; word-break:break-word; max-height:220px; overflow:auto; margin:0;}
+details summary{cursor:pointer; color:var(--dim);}
+@media (prefers-reduced-motion: reduce){ *{transition:none!important;} }
+</style>
+
+<div class="wrap">
+  <div class="top">
+    <div>
+      <h1>Colour Weights</h1>
+      <p class="lede">Drag an effect onto a colour to make it more common there: ×2 is twice as likely, ×0 rules it out. Each colour shows its cards now (grey bar) and an estimate with your weights (coloured bar). When a set looks right, ask Claude to deal the cards' parts again with it. Weights change which parts a colour's cards get, not how many strikes or creatures it has.</p>
+    </div>
+    <div class="bar">
+      <select id="presetSel" aria-label="Saved weight sets"></select>
+      <button id="loadBtn" type="button">Load</button>
+      <input id="presetName" placeholder="Name this set" aria-label="Name for a new weight set" size="14">
+      <button id="saveBtn" type="button">Save as</button>
+      <button id="copyBtn" type="button">Copy JSON</button>
+    </div>
+  </div>
+  <div class="status" id="status">Loading saved weights…</div>
+
+  <nav class="kinds" id="kinds" aria-label="Card kind"></nav>
+  <nav class="parts" id="parts" aria-label="Part"></nav>
+
+  <section class="tray" id="tray">
+    <h2 id="trayTitle">Effects</h2>
+    <p class="hint">Drag a chip onto a colour (or tap a chip, then tap a colour). Drop it again to raise it. In a colour, use − and + or drag it back here to reset it to ×1.</p>
+    <div class="chips" id="palette"></div>
+  </section>
+
+  <div class="legend"><span><i style="background:var(--dim);opacity:.35"></i>now</span><span><i style="background:var(--accent)"></i>with your weights (estimate)</span><span>numbers: cards now → estimated</span></div>
+  <div class="lanes" id="lanes"></div>
+
+  <details><summary>Weights as JSON (what Claude reads)</summary><pre class="json" id="json"></pre></details>
+</div>
+
+<script>
+const DATA={"groups":[{"kind":"strike","key":"shape","label":"Shape","vals":[{"id":"line","name":"Line","text":""},{"id":"row","name":"Row","text":""},{"id":"wedge","name":"Wedge","text":""},{"id":"all","name":"All","text":""},{"id":"dig","name":"Dig","text":""},{"id":"zigzag","name":"Zigzag","text":""},{"id":"diag","name":"Diagonals","text":""},{"id":"missiles","name":"Missiles","text":""},{"id":"twin","name":"Twin","text":"X down your row and the next"},{"id":"fan","name":"Fan","text":"X down your row and both diagonals (they bounce off the board's edges)"},{"id":"spear","name":"Spear","text":"X through the first enemy in your row into the one behind it"},{"id":"boomerang","name":"Boomerang","text":"X down your row and back up the next, hitting each enemy once"},{"id":"gun","name":"Machine gun","text":"a stream of bolts of X for X seconds, following you as you move"},{"id":"wave","name":"Wave","text":"X in a line across every row, sweeping forward over the enemy side; each enemy is hit once"},{"id":"burst","name":"Burst","text":"X to the first enemy in your row, and half that around it"},{"id":"chain","name":"Chain","text":"X to the first enemy in your row (or the nearest), then it jumps to 2 more, weaker each jump"},{"id":"ricochet","name":"Ricochet","text":"X on a shot that bounces off the board's edges and comes back, through rocks, so it can hit from behind"},{"id":"snipe","name":"Snipe","text":"X to the enemy with the least HP, anywhere"},{"id":"shockwave","name":"Shockwave","text":"X to every enemy within 4 tiles of you"},{"id":"column","name":"Column","text":"X at once to a line across every row of the enemy side, where you aim (or at the nearest enemy)"},{"id":"mark","name":"Delayed mark","text":"marks an enemy (the one you aim at, or the nearest); 1.5 seconds later it explodes for X"},{"id":"cluster","name":"Cluster bomb","text":"lobs X where you aim, then it breaks into bomblets of X in a X"},{"id":"mine","name":"Proximity mine","text":"lays a mine on the enemy side where you aim (or in front of the nearest enemy); it blows up for X around it when an enemy steps on or next to it, or when you shoot it. Lasts X"}]},{"kind":"strike","key":"rider","label":"Rider","vals":[{"id":"none","name":"No rider","text":""},{"id":"pierce","name":"Pierce","text":"its shots go through one more enemy, and through walls, rocks and shields"},{"id":"crit","name":"Crit","text":"1 hit in 4 deals double"},{"id":"recoil","name":"Recoil","text":"+30% power, but it throws you one tile back (or hurts you for 5 if you can't move)"},{"id":"onkill","name":"Reaper","text":"a kill with it fills 15% of the Spell gauge"}]},{"kind":"strike","key":"cast","label":"Cast","vals":[{"id":"quick","name":"Quick","text":"casts in a flash: your next card comes sooner"},{"id":"normal","name":"Normal","text":""},{"id":"charged","name":"Charged","text":"charges for half a second first, then hits harder"}]},{"kind":"creature","key":"beh","label":"Behaviour","vals":[{"id":"bolt","name":"Bolt","text":"shoots the first enemy in its row"},{"id":"pierce","name":"Pierce","text":"shoots through every enemy in its row"},{"id":"twin","name":"Twin","text":"shoots down its row and the next"},{"id":"diag","name":"Diagonals","text":"shoots along both diagonals, bouncing off the edges of the board"},{"id":"zigzag","name":"Zigzag","text":"shoots a zigzag between its row and the next"},{"id":"cone","name":"Cone","text":"blasts a wedge 4 tiles long in front of it"},{"id":"snipe","name":"Snipe","text":"snipes the weakest enemy anywhere"},{"id":"chain","name":"Chain","text":"zaps the nearest enemy, then jumps to 2 more (weaker each jump)"},{"id":"beam","name":"Beam","text":"charges, then burns its whole row across the board, walls and rocks too"},{"id":"burrow","name":"Burrow","text":"tunnels under walls and rocks to the first enemy in its row"},{"id":"barrage","name":"Barrage","text":"rains 4 small hits on random enemy tiles"},{"id":"lob","name":"Lob","text":"lobs at the nearest enemy, over walls"},{"id":"blast","name":"Blast","text":"lobs a bomb that splashes around where it lands"},{"id":"cross","name":"Cross","text":"lobs a bomb that bursts in a + shape"},{"id":"pounce","name":"Pounce","text":"leaps at the nearest enemy"},{"id":"trample","name":"Trample","text":"charges down its row into the enemy side, hitting everything on the way, then runs back"},{"id":"dash","name":"Dash","text":"dashes at 2 enemies in turn; each one flashes first and may sidestep"},{"id":"mends","name":"Mends","text":"heals you X"},{"id":"shields","name":"Shields","text":"shields you for X"},{"id":"guards","name":"Guards","text":"takes the hits meant for you"},{"id":"taunt","name":"Taunt","text":"enemies must aim at it"},{"id":"summoner","name":"Summoner","text":"calls a small helper that pounces (2 at most)"},{"id":"wardmaker","name":"Ward-maker","text":"raises a small wall in front of you"},{"id":"empower","name":"Empower","text":"doesn't attack; your next card cast while it stands hits X% harder"}]},{"kind":"creature","key":"tier","label":"HP tier","vals":[{"id":"frail","name":"Frail","text":"HP ×0.6"},{"id":"sturdy","name":"Sturdy","text":"HP ×1"},{"id":"tough","name":"Tough","text":"HP ×1.6"},{"id":"huge","name":"Huge","text":"HP ×2.5"},{"id":"colossal","name":"Colossal","text":"HP ×3.5"}]},{"kind":"creature","key":"speed","label":"Speed","vals":[{"id":"frantic","name":"Frantic","text":"acts every 0.4s"},{"id":"quick","name":"Quick","text":"acts every 0.7s"},{"id":"steady","name":"Steady","text":"acts every 1.2s"},{"id":"slow","name":"Slow","text":"acts every 2s"}]},{"kind":"lob","key":"pattern","label":"Pattern","vals":[{"id":"single","name":"Single","text":""},{"id":"burst","name":"Burst","text":""},{"id":"cross","name":"Cross","text":""},{"id":"column","name":"Column","text":""},{"id":"ring","name":"Ring","text":""},{"id":"row","name":"Row","text":""}]},{"kind":"lob","key":"fuse","label":"Fuse","vals":[{"id":"quick","name":"Quick fuse","text":"0.35s"},{"id":"normal","name":"Normal","text":"0.6s"},{"id":"heavy","name":"Heavy","text":"1s"}]},{"kind":"lob","key":"after","label":"Aftermath","vals":[{"id":"none","name":"None","text":""},{"id":"ground","name":"Scorches","text":"leaves its colour's ground there for 4 seconds"},{"id":"knock","name":"Knocks back","text":"knocks what it hits back a tile"}]},{"kind":"ward","key":"form","label":"Form","vals":[{"id":"line","name":"Line","text":"up your lane"},{"id":"arc","name":"Arc","text":"in a half-ring around you"},{"id":"rampart","name":"Rampart","text":"across the lanes in front of you"},{"id":"corridor","name":"Corridor","text":"up the lanes on both sides of you"},{"id":"cage","name":"Cage","text":"around the enemy you aim"},{"id":"shield","name":"Shield","text":"as a shield on you"}]},{"kind":"ward","key":"build","label":"Build","vals":[{"id":"light","name":"Light","text":""},{"id":"normal","name":"Normal","text":""},{"id":"heavy","name":"Heavy","text":""}]},{"kind":"boon","key":"boon","label":"Effect","vals":[{"id":"power","name":"Power","text":""},{"id":"pact","name":"Pact","text":""},{"id":"haste","name":"Haste","text":""},{"id":"dodge","name":"Dodge","text":""},{"id":"phase","name":"Phase","text":""},{"id":"regen","name":"Regen","text":""},{"id":"heal","name":"Heal","text":""},{"id":"gauge","name":"Gauge","text":""},{"id":"courage","name":"Courage","text":""},{"id":"intervene","name":"Intervene","text":""}]},{"kind":"boon","key":"timing","label":"Timing","vals":[{"id":"now","name":"Now","text":""},{"id":"echo","name":"Echo","text":"it happens again at half strength 5 seconds later"},{"id":"delayed","name":"Delayed","text":"it lands 2 seconds after you cast, 30% stronger"}]},{"kind":"charge","key":"shot","label":"Shot","vals":[{"id":"bolt","name":"Bolt","text":"bolt of X down your row"},{"id":"twin","name":"Twin","text":"bolts of X down your row and the next"},{"id":"lob","name":"Lob","text":"lob of X on the tile you aim"},{"id":"burst","name":"Burst","text":"lob of X that splashes around where it lands"}]},{"kind":"charge","key":"uses","label":"Uses","vals":[{"id":"few","name":"Few","text":""},{"id":"normal","name":"Normal","text":""},{"id":"many","name":"Many","text":""}]},{"kind":"charge","key":"edge","label":"Edge","vals":[{"id":"none","name":"None","text":""},{"id":"pierce","name":"Pierce","text":"Pierce: its bolts go through one more enemy, and through walls, rocks and shields"},{"id":"crit","name":"Crit","text":"Crit: 1 use in 4 deals double"},{"id":"splash","name":"Splash","text":"Splash: also hits around what it hits for half"}]},{"kind":"trap","key":"trap","label":"Trap","vals":[{"id":"spike","name":"Spike","text":""},{"id":"snare","name":"Snare","text":""},{"id":"blast","name":"Blast","text":""}]},{"kind":"trap","key":"size","label":"Size","vals":[{"id":"one","name":"One tile","text":""},{"id":"three","name":"Three tiles","text":""}]},{"kind":"environment","key":"env","label":"Ground","vals":[{"id":"burn","name":"Burn","text":""},{"id":"freeze","name":"Freeze","text":""},{"id":"bramble","name":"Bramble","text":""},{"id":"tremor","name":"Tremor","text":""}]},{"kind":"environment","key":"envpat","label":"Area","vals":[{"id":"burst","name":"Burst","text":""},{"id":"cross","name":"Cross","text":""},{"id":"column","name":"Column","text":""},{"id":"row","name":"Row","text":""}]}],"counts":{"fire":{"shape":{"line":6,"spear":6,"fan":3,"snipe":3,"twin":2,"missiles":3,"cluster":2,"wedge":3,"burst":1,"mine":1,"row":2,"all":2,"zigzag":1,"chain":1,"boomerang":1,"shockwave":2,"wave":1},"rider":{"pierce":8,"none":14,"crit":8,"onkill":6,"recoil":4},"cast":{"quick":11,"charged":6,"normal":23},"pattern":{"cross":5,"row":3,"single":9,"burst":6,"ring":4,"column":3},"fuse":{"heavy":13,"quick":10,"normal":7},"after":{"ground":7,"knock":15,"none":8},"form":{"rampart":5,"shield":5,"arc":1,"line":2,"corridor":2,"cage":1},"build":{"heavy":7,"normal":5,"light":4},"beh":{"snipe":4,"chain":2,"empower":1,"guards":4,"mends":4,"cone":5,"bolt":6,"lob":4,"summoner":1,"beam":4,"pierce":5,"dash":3,"pounce":4,"trample":3,"blast":3,"twin":3,"taunt":3,"zigzag":4,"shields":2,"burrow":2,"cross":1,"barrage":1,"wardmaker":3},"tier":{"sturdy":43,"tough":18,"frail":7,"huge":4},"speed":{"steady":29,"quick":11,"slow":27,"frantic":5},"boon":{"power":5,"pact":2,"haste":3,"heal":2,"regen":2,"gauge":1,"courage":1,"dodge":1,"intervene":1},"timing":{"now":6,"echo":6,"delayed":6},"shot":{"bolt":9,"lob":7,"burst":2},"uses":{"few":7,"many":4,"normal":7},"edge":{"none":6,"crit":3,"splash":3,"pierce":6},"trap":{"blast":4,"spike":3,"snare":3},"size":{"three":6,"one":4},"env":{"burn":8,"tremor":4},"envpat":{"cross":2,"row":2,"burst":6,"column":2}},"frost":{"shape":{"twin":2,"spear":5,"all":2,"wave":4,"row":5,"snipe":4,"zigzag":3,"wedge":4,"missiles":2,"fan":3,"line":6,"burst":2,"column":1,"gun":1,"boomerang":1,"chain":1,"dig":1},"rider":{"pierce":6,"none":17,"crit":13,"recoil":8,"onkill":3},"cast":{"charged":10,"quick":14,"normal":23},"pattern":{"column":3,"single":7,"burst":7,"cross":1,"ring":1,"row":2},"fuse":{"heavy":8,"quick":8,"normal":5},"after":{"ground":9,"knock":7,"none":5},"form":{"rampart":4,"arc":1,"cage":1,"line":2,"corridor":2,"shield":7},"build":{"heavy":4,"light":6,"normal":7},"beh":{"chain":2,"snipe":6,"empower":3,"taunt":5,"bolt":6,"lob":5,"mends":4,"pierce":4,"blast":4,"shields":2,"twin":3,"guards":6,"pounce":3,"trample":6,"dash":2,"cross":2,"wardmaker":3,"cone":1,"zigzag":2,"beam":1,"barrage":1},"tier":{"sturdy":42,"tough":15,"huge":10,"frail":4},"speed":{"steady":31,"quick":9,"slow":28,"frantic":3},"boon":{"dodge":3,"haste":1,"heal":2,"regen":2,"power":1,"courage":1,"phase":2,"gauge":2,"pact":2,"intervene":1},"timing":{"now":8,"echo":4,"delayed":5},"shot":{"bolt":12,"lob":7,"burst":1},"uses":{"few":7,"normal":6,"many":7},"edge":{"none":6,"pierce":4,"splash":5,"crit":5},"trap":{"snare":5,"spike":2,"blast":3},"size":{"three":6,"one":4},"env":{"freeze":7,"tremor":3,"bramble":3},"envpat":{"burst":4,"row":4,"cross":3,"column":2}},"storm":{"shape":{"chain":3,"column":1,"zigzag":3,"snipe":2,"shockwave":2,"boomerang":2,"line":4,"spear":4,"burst":1,"fan":3,"all":2,"twin":1,"wedge":2,"row":2,"diag":2,"missiles":1,"dig":2},"rider":{"crit":5,"none":15,"recoil":4,"pierce":6,"onkill":7},"cast":{"quick":11,"charged":10,"normal":16},"pattern":{"ring":3,"row":3,"burst":5,"single":7,"cross":2,"column":3},"fuse":{"normal":6,"heavy":6,"quick":11},"after":{"none":7,"ground":8,"knock":8},"form":{"arc":3,"shield":5,"cage":3,"corridor":2,"rampart":1,"line":1},"build":{"normal":5,"light":6,"heavy":4},"beh":{"chain":5,"beam":3,"bolt":6,"empower":2,"snipe":4,"zigzag":4,"blast":4,"lob":5,"pounce":4,"cross":2,"taunt":6,"shields":2,"guards":7,"cone":3,"dash":3,"mends":3,"trample":6,"diag":2,"pierce":5,"burrow":1,"wardmaker":4,"twin":3,"barrage":1},"tier":{"sturdy":50,"tough":26,"huge":5,"frail":4},"speed":{"quick":11,"steady":37,"slow":34,"frantic":3},"boon":{"haste":2,"power":2,"pact":1,"intervene":1,"dodge":2,"regen":2,"heal":2,"courage":1,"gauge":1,"phase":1},"timing":{"echo":5,"now":7,"delayed":3},"shot":{"bolt":10,"lob":8},"uses":{"few":6,"normal":7,"many":5},"edge":{"splash":4,"none":6,"pierce":4,"crit":4},"trap":{"snare":5,"blast":5,"spike":4},"size":{"one":7,"three":7},"env":{"burn":5,"tremor":5},"envpat":{"row":3,"burst":4,"column":2,"cross":1}},"verdant":{"shape":{"twin":2,"boomerang":3,"line":6,"spear":4,"fan":2,"snipe":3,"burst":1,"gun":1,"diag":2,"wedge":3,"chain":3,"missiles":1,"row":2,"zigzag":4,"ricochet":1,"all":1,"shockwave":1},"rider":{"none":15,"pierce":6,"onkill":2,"crit":10,"recoil":7},"cast":{"quick":12,"normal":18,"charged":10},"pattern":{"row":4,"burst":5,"cross":2,"single":4,"ring":3,"column":2},"fuse":{"heavy":9,"quick":5,"normal":6},"after":{"none":6,"ground":9,"knock":5},"form":{"cage":4,"shield":5,"corridor":3,"line":2,"rampart":2,"arc":2},"build":{"normal":8,"light":4,"heavy":6},"beh":{"barrage":3,"bolt":6,"snipe":4,"pierce":4,"taunt":6,"beam":1,"summoner":3,"chain":3,"lob":4,"cone":1,"trample":7,"guards":8,"mends":4,"twin":3,"zigzag":1,"shields":2,"blast":4,"dash":4,"cross":2,"pounce":5,"empower":1,"wardmaker":3},"tier":{"sturdy":44,"tough":27,"frail":4,"huge":4},"speed":{"steady":38,"frantic":7,"quick":7,"slow":27},"boon":{"regen":5,"heal":6,"power":2,"haste":2,"dodge":1,"gauge":2,"pact":1,"phase":1,"courage":1,"intervene":1},"timing":{"now":9,"echo":5,"delayed":8},"shot":{"bolt":11,"lob":7},"uses":{"many":5,"few":5,"normal":8},"edge":{"pierce":4,"splash":4,"crit":4,"none":6},"trap":{"snare":6,"spike":3,"blast":3},"size":{"three":8,"one":4},"env":{"bramble":7,"tremor":3},"envpat":{"burst":3,"row":3,"cross":2,"column":2}},"light":{"shape":{"line":5,"missiles":2,"all":2,"gun":1,"spear":5,"snipe":2,"fan":4,"diag":3,"wedge":3,"column":1,"twin":1,"row":2,"dig":1,"boomerang":1,"zigzag":1,"chain":1},"rider":{"pierce":7,"onkill":5,"none":14,"crit":5,"recoil":4},"cast":{"normal":18,"quick":9,"charged":8},"pattern":{"burst":7,"single":4,"column":3,"ring":1,"row":1,"cross":1},"fuse":{"heavy":7,"normal":5,"quick":5},"after":{"ground":5,"knock":8,"none":4},"form":{"shield":6,"rampart":3,"cage":3,"arc":5,"line":2,"corridor":2},"build":{"light":6,"heavy":8,"normal":7},"beh":{"snipe":6,"chain":2,"diag":4,"bolt":6,"pierce":5,"shields":4,"guards":8,"summoner":1,"mends":5,"pounce":4,"twin":3,"empower":3,"dash":2,"taunt":6,"trample":5,"cross":1,"zigzag":2,"beam":1,"blast":2,"wardmaker":9,"lob":3,"barrage":1},"tier":{"sturdy":43,"tough":32,"frail":2,"huge":6},"speed":{"steady":39,"quick":10,"slow":29,"frantic":5},"boon":{"regen":2,"courage":4,"intervene":4,"power":1,"haste":1,"dodge":2,"heal":4,"gauge":1,"pact":1,"phase":1},"timing":{"delayed":4,"now":11,"echo":6},"shot":{"bolt":12,"lob":6},"uses":{"many":5,"few":5,"normal":8},"edge":{"crit":4,"splash":4,"none":5,"pierce":5},"trap":{"spike":3,"blast":3,"snare":3},"size":{"three":7,"one":2},"env":{"burn":2,"bramble":4,"tremor":2,"freeze":1},"envpat":{"row":3,"cross":1,"burst":4,"column":1}},"shadow":{"shape":{"spear":4,"column":1,"all":2,"line":7,"dig":3,"wave":1,"gun":1,"burst":3,"snipe":2,"chain":1,"missiles":1,"row":1,"zigzag":3,"fan":4,"wedge":3,"mark":2,"boomerang":2,"shockwave":1,"diag":1},"rider":{"none":10,"onkill":9,"pierce":8,"crit":10,"recoil":6},"cast":{"normal":22,"charged":9,"quick":12},"pattern":{"column":4,"single":4,"burst":5,"cross":2,"ring":3},"fuse":{"normal":6,"quick":5,"heavy":7},"after":{"knock":7,"ground":8,"none":3},"form":{"cage":3,"line":3,"shield":5,"arc":1,"rampart":2,"corridor":1},"build":{"light":7,"normal":5,"heavy":3},"beh":{"empower":2,"shields":2,"mends":3,"chain":3,"barrage":3,"beam":1,"snipe":5,"summoner":3,"bolt":8,"taunt":5,"dash":4,"trample":3,"lob":6,"blast":5,"zigzag":6,"guards":6,"cross":4,"pounce":6,"wardmaker":3,"burrow":1,"twin":4,"pierce":5},"tier":{"sturdy":60,"frail":8,"tough":20},"speed":{"steady":41,"quick":12,"slow":29,"frantic":6},"boon":{"pact":4,"dodge":2,"haste":1,"heal":1,"regen":1,"gauge":1,"courage":1,"phase":1,"power":2,"intervene":1},"timing":{"echo":5,"delayed":3,"now":7},"shot":{"bolt":12,"lob":6},"uses":{"few":5,"normal":7,"many":6},"edge":{"pierce":4,"none":6,"splash":5,"crit":3},"trap":{"spike":1,"snare":5,"blast":3},"size":{"three":4,"one":5},"env":{"bramble":4,"freeze":2,"tremor":2,"burn":3},"envpat":{"burst":4,"row":4,"cross":1,"column":2}},"gray":{"beh":{"guards":15,"taunt":14,"wardmaker":12,"trample":15,"bolt":11,"dash":11,"pounce":13,"snipe":12,"summoner":7,"lob":7,"pierce":10,"cone":4,"twin":9,"diag":8,"zigzag":6,"chain":2,"beam":1,"empower":8,"mends":10,"blast":5,"cross":4,"barrage":2,"burrow":1,"shields":8},"tier":{"tough":60,"frail":29,"huge":34,"sturdy":72},"speed":{"quick":33,"frantic":30,"steady":70,"slow":62},"form":{"shield":5,"rampart":2,"corridor":1,"arc":2,"line":1},"build":{"heavy":6,"light":2,"normal":3},"boon":{"courage":4,"power":2,"haste":2,"dodge":1,"heal":1},"timing":{"delayed":3,"echo":3,"now":4},"shot":{"burst":1,"twin":2,"lob":4,"bolt":3},"uses":{"few":4,"many":4,"normal":2},"edge":{"crit":1,"pierce":3,"splash":2,"none":4}},"brown":{"beh":{"summoner":1,"twin":4,"zigzag":2,"bolt":5,"snipe":5,"pierce":4,"empower":1,"guards":4,"barrage":2,"blast":4,"trample":1,"cross":2,"lob":5,"pounce":2,"taunt":3,"wardmaker":5},"tier":{"huge":14,"sturdy":16,"frail":8,"tough":12},"speed":{"steady":14,"quick":12,"frantic":10,"slow":14},"boon":{"heal":3,"pact":1,"regen":3,"power":4,"courage":2,"gauge":2,"haste":3,"dodge":2,"phase":1,"intervene":1},"timing":{"echo":7,"now":9,"delayed":6},"shape":{"missiles":2,"cluster":1,"shockwave":1,"line":2,"spear":1,"boomerang":2,"wedge":1,"all":1},"rider":{"none":4,"crit":2,"recoil":2,"onkill":2,"pierce":1},"cast":{"normal":7,"quick":1,"charged":3},"pattern":{"burst":4,"single":2,"cross":1},"fuse":{"normal":1,"quick":4,"heavy":2},"after":{"knock":3,"none":2,"ground":2},"form":{"shield":5,"arc":1,"corridor":1},"build":{"normal":2,"heavy":3,"light":2},"shot":{"lob":5,"bolt":5,"twin":2},"uses":{"few":5,"normal":4,"many":3},"edge":{"crit":3,"splash":2,"none":5,"pierce":2}}},"kinds":{"fire":{"strike":40,"lob":30,"ward":16,"creature":72,"boon":18,"charge":18,"trap":10,"environment":12},"frost":{"strike":47,"lob":21,"ward":17,"creature":71,"boon":17,"charge":20,"trap":10,"environment":13},"storm":{"strike":37,"lob":23,"ward":15,"creature":85,"boon":15,"charge":18,"trap":14,"environment":10},"verdant":{"strike":40,"lob":20,"ward":18,"creature":79,"boon":22,"charge":18,"trap":12,"environment":10},"light":{"strike":35,"lob":17,"ward":21,"creature":83,"boon":21,"charge":18,"trap":9,"environment":9},"shadow":{"strike":43,"lob":18,"ward":15,"creature":88,"boon":15,"charge":18,"trap":9,"environment":11},"gray":{"creature":195,"ward":11,"boon":10,"charge":10},"brown":{"creature":50,"boon":22,"strike":11,"lob":7,"ward":7,"charge":12}},"colors":[{"id":"fire","name":"Fire","c":"#ff6a3d"},{"id":"frost","name":"Frost","c":"#6fd6ff"},{"id":"storm","name":"Storm","c":"#ffe24d"},{"id":"verdant","name":"Verdant","c":"#6fdc7a"},{"id":"light","name":"Light","c":"#fff0b3"},{"id":"shadow","name":"Shadow","c":"#e0588f"},{"id":"gray","name":"Gray","c":"#b4b8c8"},{"id":"brown","name":"Brown","c":"#c08a55"}]};
+const STEPS=[0,.5,1,2,3,4];
+const KIND_NAMES={strike:'Strikes',creature:'Creatures',lob:'Lobs',ward:'Wards',boon:'Boons',charge:'Charges',trap:'Traps',environment:'Ground'};
+let W={};                 // {colour:{part:{value:weight}}}
+let kind='strike', part='shape', picked=null, db=null, canSave=false, saveT=null, lastSaved='';
+const groupsOf=k=>DATA.groups.filter(g=>g.kind===k);
+const G=()=>DATA.groups.find(g=>g.key===part&&g.kind===kind);
+const $=id=>document.getElementById(id);
+const fmt=w=>w===.5?'½':String(w);
+const wOf=(col,v)=>{ const x=W[col]&&W[col][part]&&W[col][part][v]; return x==null?1:x; };
+function setW(col,v,w){ W[col]=W[col]||{}; W[col][part]=W[col][part]||{};
+  if(w===1) delete W[col][part][v]; else W[col][part][v]=w;
+  if(!Object.keys(W[col][part]).length) delete W[col][part]; if(!Object.keys(W[col]).length) delete W[col];
+  render(); queueSave(); }
+const bump=(col,v,d)=>{ const i=STEPS.indexOf(wOf(col,v)); setW(col,v,STEPS[Math.max(0,Math.min(STEPS.length-1,(i<0?2:i)+d))]); };
+
+/* the estimate: each value keeps its share of the colour's cards, multiplied by its weight, and the
+   rest shrink to make room; a value the colour has none of counts as one card once you weight it up */
+function estimate(col){ const g=G(), now=(DATA.counts[col]||{})[g.key]||{}, n=Object.values(now).reduce((a,b)=>a+b,0);
+  const base=g.vals.map(v=>{ const c=now[v.id]||0, w=wOf(col,v.id); return {v, now:c, b:(c||(w>1?1:0))*w}; });
+  const tot=base.reduce((a,x)=>a+x.b,0)||1;
+  return {n, rows:base.map(x=>({...x, p:x.b/tot}))}; }
+
+function render(){
+  $('kinds').innerHTML=''; for(const k of Object.keys(KIND_NAMES)){ const b=document.createElement('button'); b.type='button'; b.textContent=KIND_NAMES[k]; b.setAttribute('aria-pressed',k===kind);
+    b.onclick=()=>{ kind=k; part=groupsOf(k)[0].key; picked=null; render(); }; $('kinds').appendChild(b); }
+  $('parts').innerHTML=''; for(const g of groupsOf(kind)){ const b=document.createElement('button'); b.type='button'; b.textContent=g.label; b.setAttribute('aria-pressed',g.key===part);
+    b.onclick=()=>{ part=g.key; picked=null; render(); }; $('parts').appendChild(b); }
+  const g=G(); $('trayTitle').textContent=KIND_NAMES[kind]+': '+g.label;
+  const pal=$('palette'); pal.innerHTML='';
+  for(const v of g.vals){ const c=chip(v,null); if(picked===v.id) c.classList.add('sel'); pal.appendChild(c); }
+  const lanes=$('lanes'); lanes.innerHTML='';
+  for(const col of DATA.colors){ const L=document.createElement('section'); L.className='lane'; L.style.setProperty('--c',col.c); L.dataset.col=col.id;
+    const n=(DATA.kinds[col.id]||{})[kind]||0;
+    L.innerHTML=`<header><h3>${col.name}</h3><span class="n">${n} ${KIND_NAMES[kind].toLowerCase()}</span></header>`;
+    const drop=document.createElement('div'); drop.className='drop';
+    for(const v of g.vals){ const w=wOf(col.id,v.id); if(w!==1) drop.appendChild(chip(v,col.id)); }
+    L.appendChild(drop);
+    if(!n){ const p=document.createElement('div'); p.className='na'; p.textContent='No cards of this kind; weights here have no effect.'; L.appendChild(p); }
+    else { const E=estimate(col.id), d=document.createElement('div'); d.className='dist';
+      const rows=E.rows.slice().sort((a,b)=>b.p-a.p||b.now-a.now), show=rows.filter((r,i)=>i<7||r.now||wOf(col.id,r.v.id)!==1).slice(0,10);
+      for(const r of show){ const est=Math.round(r.p*n), row=document.createElement('div'); row.className='row'+(est>r.now?' up':est<r.now?' down':'');
+        row.innerHTML=`<span class="nm" title="${esc(r.v.text||r.v.name)}">${esc(r.v.name)}</span><span class="bars"><i class="now" style="width:${n?r.now/n*100:0}%"></i><i class="new" style="width:${r.p*100}%"></i></span><span class="ct">${r.now}→${est}</span>`;
+        d.appendChild(row); }
+      if(rows.length>show.length){ const m=document.createElement('div'); m.className='more'; m.textContent=(rows.length-show.length)+' more, all near 0'; d.appendChild(m); }
+      L.appendChild(d); }
+    L.onclick=e=>{ if(picked&&!e.target.closest('.chip')){ const cur=wOf(col.id,picked); setW(col.id,picked,cur===1?2:STEPS[Math.min(STEPS.length-1,STEPS.indexOf(cur)+1)]); } };
+    lanes.appendChild(L); }
+  $('json').textContent=JSON.stringify(W,null,1);
+}
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+// a chip: in the tray (col null) or in a colour's lane, with its weight and − / + there
+function chip(v,col){ const c=document.createElement('span'); c.className='chip'; c.tabIndex=0; c.title=v.text||v.name; c.dataset.v=v.id; if(col) c.dataset.col=col;
+  const w=col?wOf(col,v.id):null;
+  c.innerHTML=`<span class="${w===0?'zero':''}">${esc(v.name)}</span>`+(col?`<span class="step"><button type="button" aria-label="Lower ${esc(v.name)}">−</button><span class="w">×${fmt(w)}</span><button type="button" aria-label="Raise ${esc(v.name)}">+</button></span>`:'');
+  if(col){ const [dn,up]=c.querySelectorAll('button'); dn.onclick=e=>{ e.stopPropagation(); bump(col,v.id,-1); }; up.onclick=e=>{ e.stopPropagation(); bump(col,v.id,1); }; }
+  c.addEventListener('keydown',e=>{ if(!col&&(e.key==='Enter'||e.key===' ')){ e.preventDefault(); picked=picked===v.id?null:v.id; render(); } });
+  dragify(c,v,col); return c; }
+
+/* drag with the pointer (works with touch): drop on a colour to add or raise, on another colour to move,
+   or back on the tray to reset; a tap without moving picks a tray chip for tap-to-place */
+let drag=null;
+function dragify(el,v,col){
+  el.addEventListener('pointerdown',e=>{ if(e.button>0||e.target.closest('button')) return; drag={el,v,col,x:e.clientX,y:e.clientY,moved:false,ghost:null}; el.setPointerCapture(e.pointerId); });
+  el.addEventListener('pointermove',e=>{ if(!drag||drag.el!==el) return;
+    if(!drag.moved&&Math.hypot(e.clientX-drag.x,e.clientY-drag.y)>6){ drag.moved=true; const g=el.cloneNode(true); g.classList.add('ghost'); document.body.appendChild(g); drag.ghost=g; }
+    if(drag.moved){ drag.ghost.style.left=e.clientX+'px'; drag.ghost.style.top=e.clientY+'px'; const t=laneAt(e.clientX,e.clientY);
+      document.querySelectorAll('.lane.over').forEach(x=>{ if(x!==t) x.classList.remove('over'); }); if(t) t.classList.add('over'); } });
+  const end=e=>{ if(!drag||drag.el!==el) return; const d=drag; drag=null; if(d.ghost) d.ghost.remove(); document.querySelectorAll('.lane.over').forEach(x=>x.classList.remove('over'));
+    if(!d.moved){ if(!d.col){ picked=picked===v.id?null:v.id; render(); } return; }
+    if(e.type==='pointercancel') return;
+    const t=laneAt(e.clientX,e.clientY), to=t&&t.dataset.col;
+    if(to&&to!==d.col){ if(d.col){ const w=wOf(d.col,v.id); setWsilent(d.col,v.id,1); const cur=wOf(to,v.id); setW(to,v.id,cur===1?w:Math.max(cur,w)); }
+      else { const cur=wOf(to,v.id); setW(to,v.id,cur===1?2:STEPS[Math.min(STEPS.length-1,STEPS.indexOf(cur)+1)]); } }
+    else if(!to&&d.col&&overTray(e.clientX,e.clientY)) setW(d.col,v.id,1); };
+  el.addEventListener('pointerup',end); el.addEventListener('pointercancel',end); }
+function setWsilent(col,v,w){ W[col]=W[col]||{}; W[col][part]=W[col][part]||{}; if(w===1) delete W[col][part][v]; else W[col][part][v]=w; }
+const laneAt=(x,y)=>{ const el=document.elementFromPoint(x,y); return el&&el.closest('.lane'); };
+const overTray=(x,y)=>{ const el=document.elementFromPoint(x,y); return !!(el&&el.closest('#tray')); };
+
+/* saving: the working set lives in the shared store (presets/working), where Claude reads it;
+   named sets sit beside it. Without the store, the weights stay in this browser only. */
+const say=t=>$('status').innerHTML=t;
+const clean=o=>JSON.parse(JSON.stringify(o));
+function queueSave(){ try{ localStorage.setItem('hexWeights',JSON.stringify(W)); }catch(_){}
+  if(!db||!canSave) return; clearTimeout(saveT); say('Saving…');
+  saveT=setTimeout(async()=>{ const body=JSON.stringify(W); try{ await db.doc('presets/working').set({name:'Working set', weights:clean(W), updated:Date.now()}); lastSaved=body; saveT=null; say('<b>Saved.</b> Claude reads this set when you ask it to deal the parts again.'); }
+    catch(e){ saveT=null; canSave=false; say('Could not save to the shared store ('+esc(e.code||e.message||'error')+'). Your weights stay in this browser; use Copy JSON to share them.'); } },700); }
+$('copyBtn').onclick=async()=>{ const t=JSON.stringify(W,null,1); try{ await navigator.clipboard.writeText(t); say('<b>Copied</b> the weights as JSON.'); }catch(_){ document.querySelector('details').open=true; const r=document.createRange(); r.selectNodeContents($('json')); const s=getSelection(); s.removeAllRanges(); s.addRange(r); say('Select-all is ready on the JSON below; copy it from there.'); } };
+let presets={};
+function fillPresets(){ const s=$('presetSel'), cur=s.value; s.innerHTML='';
+  const ids=Object.keys(presets).filter(id=>id!=='working').sort();
+  if(!ids.length){ const o=document.createElement('option'); o.textContent='No saved sets yet'; o.value=''; s.appendChild(o); }
+  for(const id of ids){ const o=document.createElement('option'); o.value=id; o.textContent=presets[id].name||id; s.appendChild(o); }
+  if(ids.includes(cur)) s.value=cur; }
+$('loadBtn').onclick=()=>{ const p=presets[$('presetSel').value]; if(!p) return; W=clean(p.weights||{}); render(); queueSave(); say('Loaded <b>'+esc(p.name||'set')+'</b> into the working set.'); };
+$('saveBtn').onclick=async()=>{ const name=$('presetName').value.trim(); if(!name){ $('presetName').focus(); say('Type a name for the set first.'); return; }
+  if(!db||!canSave){ say('Saving named sets needs the shared store, which is not available here. Use Copy JSON instead.'); return; }
+  const id=name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,40)||'set';
+  try{ await db.doc('presets/'+id).set({name, weights:clean(W), updated:Date.now()}); $('presetName').value=''; say('Saved as <b>'+esc(name)+'</b>.'); }catch(e){ say('Could not save ('+esc(e.code||e.message)+').'); } };
+
+try{ const s=localStorage.getItem('hexWeights'); if(s) W=JSON.parse(s)||{}; }catch(_){}
+render();
+(async()=>{ db=window.claude&&await window.claude.use('db');
+  if(!db){ say('The shared store is not available here: your weights are kept in this browser. Use Copy JSON to send them to Claude.'); return; }
+  canSave=true; say('Connected. Changes save on their own.');
+  db.collection('presets').onSnapshot(q=>{ presets={}; for(const d of q.docs) presets[d.id]=d.data(); fillPresets();
+      const w=presets.working; if(w&&w.weights){ const body=JSON.stringify(w.weights); if(body!==JSON.stringify(W)&&body!==lastSaved&&!saveT){ W=clean(w.weights); lastSaved=body; render(); } } },
+    e=>say('Lost the shared store ('+esc(e.code||'error')+'); changes stay in this browser.'));
+})();
+</script>

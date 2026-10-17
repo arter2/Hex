@@ -1,6 +1,6 @@
 # Every card plays differently (plan)
 
-Date: 2026-10-17 · Status: **step 1 under way**: creatures and the Card lab are in (v78); strike shapes next · Comes from [card-overlap.md](card-overlap.md)
+Date: 2026-10-17 · Status: **step 1 done** (creatures and the Card lab in v78, strike shapes and riders in v79); step 2, the card list, is next · Comes from [card-overlap.md](card-overlap.md)
 
 955 of the 1,865 regular cards repeat a rule their colour already has. Creatures are the worst: every
 creature in a colour is one of 4 behaviours with the same HP formula and no keyword. This plan
@@ -73,7 +73,7 @@ stronger traits. Machines and towers use the same behaviours and tiers (towers n
 | Today (8) | Line · Row · Wedge · All · Dig · Zigzag · Diagonals · Missiles |
 | Shots (6) | **Twin** (your row and the next) · **Fan** (your row and both diagonals) · **Spear** (through the first enemy into the one behind) · **Boomerang** (down your row, back up the next) · **Machine gun** (a stream of fast bolts for a few seconds, following you as you move) · **Wave** (a horizontal line sweeping forward across the whole enemy side, hitting each enemy once) |
 | Spread (4) | **Burst** (first enemy in your row, splashing around it) · **Chain** (first enemy, then jumps to the 2 nearest, weaker each jump) · **Ricochet** (bounces off the board's edge walls, can hit from behind) · **Snipe** (the enemy with the least HP anywhere) |
-| Areas and timing (3) | **Shockwave** (every enemy within 3 tiles of you) · **Column** (one horizontal line across all rows of the enemy side, instantly) · **Delayed mark** (marks an enemy; 1.5 s later it explodes for big damage) |
+| Areas and timing (3) | **Shockwave** (every enemy within 4 tiles of you; 3 barely reached past the middle) · **Column** (one horizontal line across all rows of the enemy side, instantly) · **Delayed mark** (marks an enemy; 1.5 s later it explodes for big damage) |
 | Bombs (2) | **Cluster bomb** (a lob that breaks into bomblets in the card's own shape: ring, cross, X, forward fan, scatter) · **Proximity mine** (laid on the enemy side; goes off when an enemy steps on or next to it, or when you shoot it) |
 
 Strike parts: **shape**, **keyword**, and a **rider** (pierce, crit chance, recoil, bonus on a kill).

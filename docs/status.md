@@ -1,6 +1,6 @@
 # Hexmancers: where we are
 
-Date: 2026-10-17 · Latest build: **v78** (`hexmancers-itch-v78.zip`) · Branch `claude/hopeful-hypatia-stzuj0`, merged to `main`
+Date: 2026-10-17 · Latest build: **v79** (`hexmancers-itch-v79.zip`) · Branch `claude/hopeful-hypatia-stzuj0`, merged to `main`
 
 This is a snapshot of the game: what is in it, what changed recently, what we plan next, and what
 is still open. The design reasoning behind each feature is in [fun-roadmap.md](fun-roadmap.md).
@@ -39,7 +39,7 @@ JavaScript with three.js (r128) and has no build step.
 | **Settings** | Phone and tablet layouts, text size, orientation, full screen, sound, cast-card style, 4 touch movement modes, dungeon tips, and rebindable keyboard controls. |
 | **Debug menu** | Lighting, PBR, normal maps, baked AO and SSAO, haze, a full battle camera (angle, field of view, zoom, move and rotate on X/Y/Z), depth of field, wall see-through, frame rate, auto quality, pause. |
 
-### Recent changes (v71 to v78)
+### Recent changes (v71 to v79)
 
 | Build | Change |
 |---|---|
@@ -51,6 +51,7 @@ JavaScript with three.js (r128) and has no build step.
 | v76 | **Stirring dark rebalanced:** no waves until every enemy the floor started with is dead (bosses, minibosses and dormant guardians don't count). Then a wave every 90 to 120 s (180 s once the floor is at its worst), 1 to 3 enemies a wave, at most 2 stirred groups alive (3 from depth 16), hunting only from threat 4. Killing a stirred group holds the next wave back 45 s. |
 | v77 | **Wall shapes.** Walls used to go only straight up your lane. Ten new ward cards build other shapes: **Rampart** (across the lanes in front of you), **Arc** (a half-ring around you, open behind), **Corridor** (up the lanes on both sides of you) and the rare **Cage** (aimed at an enemy: it can't move for 4 s and its shots hit the bars, while yours pass through). The older wall cards are unchanged. |
 | v78 | **Creature rules and the Card lab** (step 1 of the [card rules plan](card-rules-plan.md)). A creature card can now be built from five parts: 24 behaviours (the old shooter, bomber, healer and guardian plus Pierce, Twin, Diagonals, Zigzag, Cone, Snipe, Chain, Beam, Burrow, Barrage, Blast, Cross, Pounce, Trample, a dodgeable Dash, Mends, Shields, Guards, Taunt, Summoner, Ward-maker and Empower), 5 HP tiers, 4 speeds, a colour keyword and one of 41 colour traits (`game/creatures.js`). No card in the collection uses them yet: that is step 2. The **Card lab** builds any mix and tries it in a test battle with no rewards; its front-page button shows only when *Show Card lab* is ticked in the debug menu (saved per browser). |
+| v79 | **15 new strike shapes and 4 riders** (`game/strikes.js`): Twin, Fan, Spear, Boomerang, Machine gun, Wave, Burst, Chain, Ricochet, Snipe, Shockwave (4 tiles around you), Column, Delayed mark, Cluster bomb (ring, +, X, fan or scatter) and Proximity mine (set off by an enemy stepping on or next to it, or by your shot). Riders on any strike: Pierce, Crit, Recoil (+30% power, throws you back a tile) and Reaper (a kill fills the Spell gauge). Each has its cast preview. The Card lab gets a Strike tab. Step 1 of the card rules plan is done; no collection card uses the new parts until step 2. |
 
 ---
 

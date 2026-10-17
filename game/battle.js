@@ -185,6 +185,7 @@ function hitEnemy(e,base,card,opts){
   // marked on the board does double damage, stuns it and cancels the attack.
   const counter=!opts.raw&&card&&card.id!=='wand'&&e.hp>0&&!(e.stunT>0)&&!(e.freezeT>0)&&(e.windT>0||!!e.casting||B.teles.some(t=>t.owner===e&&!t.friendly)||(typeof inCounterWindow==='function'&&inCounterWindow(e)));   // or while its attack bar flashes (reading.js)
   const weak=mult>=WEAK_MULT; if(counter) mult*=2;
+  const crit=!opts.raw&&card&&card.crit&&Math.random()<card.crit; if(crit) mult*=2;   // a strike's Crit rider
   if(weak&&!opts.raw&&typeof bountyWeak==='function') bountyWeak(e);
   if(weak&&!opts.raw) B.hitStop=Math.max(B.hitStop||0,.045);
   if(card&&!opts.raw&&card.id!=='wand'&&card.id!=='unison') chainHit();
@@ -193,7 +194,7 @@ function hitEnemy(e,base,card,opts){
   if(counter) counterHit(e);
   if(e.barrier>0&&!opts.raw&&!opts.dig){ const a=Math.min(e.barrier,dmg); e.barrier-=a; dmg-=a; if(!dmg){ floater('🛡',e.tile,'#fff0b3'); return 0; } }
   e.hp-=dmg; e.hitT=.18; if(typeof palPlay==='function') palPlay(e,'hurt'); if(dmg>=40||weak) shake(dmg>=60?5:3);
-  floater(dmg+(weak?' WEAK!':resisted?' resist':''),e.tile,counter?'#ff8fa3':weak?'#ffe24d':opts.raw?'#b8ffb0':'#fff',weak||counter);
+  floater(dmg+(crit?' CRIT!':weak?' WEAK!':resisted?' resist':''),e.tile,counter?'#ff8fa3':crit?'#ffb347':weak?'#ffe24d':opts.raw?'#b8ffb0':'#fff',weak||counter||crit);
   flash(e.tile,colorOf(card),.8);
   if(card&&!opts.raw) applyStatus(e,card);
   if(card&&!opts.raw) react(e,card,base);
@@ -205,6 +206,7 @@ function hitEnemy(e,base,card,opts){
   if(onLand('swamp')&&!opts.raw) healPlayer(Math.round(dmg*.1),true);
   if(typeof rareHit==='function') rareHit(e,dmg);
   if(e.hp<=0) killEnemy(e);
+  if(e.hp<=0&&card&&card.onkill&&!opts.raw){ B.gauge=Math.min(GAUGE_MAX,B.gauge+card.onkill*GAUGE_MAX); floater('Reaper +gauge',B.player.tile,'#e0588f'); }   // a strike's Reaper rider
   return dmg;
 }
 /* Reactions: a colored hit leaves its element on the enemy for 6 s. Hitting it with the
@@ -462,16 +464,18 @@ function castCard(){
 }
 const CAST={
   strike(c,p){
+    strikeRecoil(c,p);   // riders and the newer shapes are in strikes.js
+    if(STRIKE_SHAPES[c.shape]) return STRIKE_CAST[c.shape](c,p);
     const row=lineTiles(p.tile,DIRS.E);
-    if(c.shape==='line') shoot(p.tile,row,{card:c,dmg:c.pow,from:'p'});
+    if(c.shape==='line') shoot(p.tile,row,{card:c,dmg:c.pow,from:'p',pierce:c.rider==='pierce'?1:0});
     else if(c.shape==='row'){ row.forEach((t,i)=>{ flash(t,colorOf(c),1); hitAt(t,c.pow,c); });
       B.fx.push({kind:'beam',a:p.tile,b:row[row.length-1]||p.tile,color:colorOf(c),t:0,life:.3}); }
     else if(c.shape==='wedge'){ const ts=wedgeTiles(p.tile,2.6); ts.forEach(t=>{ flash(t,colorOf(c),1); hitAt(t,c.pow,c); }); }
     else if(c.shape==='all') alive().forEach(e=>{ B.fx.push({kind:'bolt',a:p.tile,b:e.tile,color:colorOf(c),t:0,life:.35}); hitEnemy(e,c.pow,c); });
-    else if(c.shape==='dig') shoot(p.tile,row,{card:c,dmg:c.pow,from:'p',dig:true});
+    else if(c.shape==='dig') shoot(p.tile,row,{card:c,dmg:c.pow,from:'p',dig:true,pierce:c.rider==='pierce'?1:0});
     else if(c.shape==='zigzag'){ const alt=tileCR(p.tile.col,p.tile.r+1)?1:-1, path=[];
-      for(let i=1;i<BOARD_COLS;i++){ const t=tileCR(p.tile.col+i,p.tile.r+(i%2?alt:0)); if(t) path.push(t); } shoot(p.tile,path,{card:c,dmg:c.pow,from:'p'}); }
-    else if(c.shape==='diag') for(const d of [-1,1]){ const path=[]; for(let i=1;i<BOARD_COLS;i++){ const t=tileCR(p.tile.col+i,p.tile.r+d*i); if(!t) break; path.push(t); } shoot(p.tile,path,{card:c,dmg:c.pow,from:'p'}); }
+      for(let i=1;i<BOARD_COLS;i++){ const t=tileCR(p.tile.col+i,p.tile.r+(i%2?alt:0)); if(t) path.push(t); } shoot(p.tile,path,{card:c,dmg:c.pow,from:'p',pierce:c.rider==='pierce'?1:0}); }
+    else if(c.shape==='diag') for(const d of [-1,1]){ const path=[]; for(let i=1;i<BOARD_COLS;i++){ const t=tileCR(p.tile.col+i,p.tile.r+d*i); if(!t) break; path.push(t); } shoot(p.tile,path,{card:c,dmg:c.pow,from:'p',pierce:c.rider==='pierce'?1:0}); }
     else if(c.shape==='missiles') for(let i=0;i<c.n;i++) later(i*.09,()=>{ const e=pick(alive()); if(!e) return;
       B.fx.push({kind:'arc',a:p.tile,b:e.tile,color:colorOf(c),t:0,life:.25}); hitEnemy(e,c.pow,c); });
   },
@@ -898,7 +902,7 @@ function update(dt){
   if(typeof extraTick==='function'){ extraTick(dt); if(b.phase!=='fight') return; }
   const p=b.player, haste=p.hasteT>0;
   b.gauge=Math.min(GAUGE_MAX,b.gauge+dt*(heroOn('volta')?1.5:1)*(heroAura('gauge')||1)*(p.gaugeMult||1));
-  landTick(dt); timeTick(dt);
+  landTick(dt); timeTick(dt); strikeTick(dt);
   ['moveCd','wandCd','hurtT'].forEach(k=>p[k]=Math.max(0,p[k]-rdt));
   ['castCd','invT','powerT','pactT','courageT','hasteT','regenT'].forEach(k=>p[k]=Math.max(0,p[k]-dt));
   if(p.regenT>0){ p.regenAcc=(p.regenAcc||0)+p.regenAmt*dt; if(p.regenAcc>=5){ healPlayer(5); p.regenAcc-=5; } }
@@ -921,9 +925,10 @@ function update(dt){
       if(s.from==='e'&&typeof perfectShot==='function') perfectShot(s,t);
       const o=t.occ;
       if(s.dig&&o&&(o.kind==='rock'||o.enemy)) continue;   // diggers tunnel under walls and rocks
-      if(o&&o.kind==='rock'){ hitRock(o,s.dmg); s.done=true; }
+      if(s.from==='p'&&t.mine){ mineBlow(t); s.done=true; }   // your shot sets off your mine (strikes.js)
+      else if(o&&o.kind==='rock'){ hitRock(o,s.dmg); s.done=true; }
       else if(s.from==='p'&&o&&o.kind==='enemy'&&o.hp>0){ if(s.hit.has(o)) continue; s.hit.add(o);
-        if(s.ally) crShotHit(s,o); else hitEnemy(o,s.dmg,s.card,{dig:s.dig}); if(s.push&&o.hp>0) shove(o,{push:1},s.dmg);
+        if(s.ally) crShotHit(s,o); else hitEnemy(o,s.dmg,s.card,{dig:s.dig}); if(s.onHit) s.onHit(o,t); if(s.push&&o.hp>0) shove(o,{push:1},s.dmg);
         if(s.pierce>0){ s.pierce--; s.dmg=Math.max(1,Math.round(s.dmg*(s.falloff||1))); burst(t,'#ffffff',4,.8); } else s.done=true; }
       else if(s.from==='p'&&o&&o.enemy){ hitBlock(o,s.dmg,null); s.done=true; }
       else if(s.from==='e'&&o&&o.cr&&crPassThrough(o)) continue;   // Submerge, Camouflage
@@ -979,6 +984,7 @@ function castPreview(){
     else if(sh==='diag'){ for(const d of [-1,1]) path(route(i=>tileCR(p.tile.col+i,p.tile.r+d*i)),false); }
     else if(sh==='all'){ out.hit.push(...enemyTiles()); out.area.push(...out.hit); }
     else if(sh==='missiles'){ out.hit.push(...enemyTiles()); out.area.push(...out.hit); out.note=c.n+' random hits'; }
+    else if(STRIKE_SHAPES[sh]) strikePreview(c,p,out,path);
   }
   else if(k==='lob'||k==='trap'||k==='environment'||(k==='charge'&&c.fx==='lob')){
     const t=b.aim||nearestEnemyTile(p.tile); if(t){ const ts=patternTiles(t,aimPattern(),'e'); out.area.push(...ts); out.arc=t; if(k!=='trap') out.hit.push(...ts.filter(x=>x.occ&&x.occ.kind==='enemy')); }
@@ -990,7 +996,7 @@ function castPreview(){
   else out.self=true;   // boons and utilities act on you
   return out;
 }
-function nextIsLob(){ const q=B&&B.piles.queue[0]; if(!q) return false; const c=q.card, k=c.type==='piece'?c.base:c.type; return k==='lob'||k==='trap'||k==='environment'||(k==='charge'&&c.fx==='lob')||(k==='ward'&&c.form==='cage'); }
+function nextIsLob(){ const q=B&&B.piles.queue[0]; if(!q) return false; const c=q.card, k=c.type==='piece'?c.base:c.type; return k==='lob'||k==='trap'||k==='environment'||(k==='charge'&&c.fx==='lob')||(k==='ward'&&c.form==='cage')||(k==='strike'&&!!STRIKE_AIMED[c.shape]); }
 function aimPattern(){ const q=B.piles.queue[0]; if(!q) return 'single'; const c=q.card; return c.type==='trap'?(c.trap==='blast'?'burst':'single'):c.type==='environment'?c.pattern:lobPattern(c); }
 function setAim(t){ const b=B; if(!b||b.phase!=='fight'||!t||t.side!=='e') return; b.aim=b.aim===t?null:t; }
 function cycleAim(){ const b=B; if(!b||b.phase!=='fight') return; const ts=alive().map(e=>e.tile).sort((a,c)=>a.r-c.r||a.q-c.q); if(!ts.length) return;
@@ -1282,6 +1288,11 @@ function floorLayer(ctx,b,T,S,telMap,G3,tl3){
     ctx.strokeStyle=b.aim?'#ffe24d':'rgba(255,226,77,.45)'; ctx.lineWidth=b.aim?3:2; if(!b.aim) ctx.setLineDash([5,5]);
     ctx.beginPath(); ctx.ellipse(x,y,S*.62*pulse,S*.62*ISO_Y*pulse,0,0,TAU); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(x-S*.8,y); ctx.lineTo(x-S*.45,y); ctx.moveTo(x+S*.45,y); ctx.lineTo(x+S*.8,y); ctx.stroke(); ctx.setLineDash([]); }
+  // mines (strikes.js): a spiked disc that pulses; a Delayed mark: a crosshair closing in on the enemy
+  for(const t of TILES) if(t.mine){ const [x,y]=proj(t.wx,.03,t.wz), S=scaleAt(t.wx,t.wz), col=colorOf(t.mine.card), k=.5+.5*Math.sin(T*8); ctx.strokeStyle=col; ctx.fillStyle=col; ctx.lineWidth=2; ctx.globalAlpha=.55+.35*k;
+    ctx.beginPath(); ctx.ellipse(x,y,S*.22,S*.22*View.iy,0,0,TAU); ctx.fill(); ctx.beginPath(); for(let i=0;i<8;i++){ const a=i*TAU/8; ctx.moveTo(x+Math.cos(a)*S*.25,y+Math.sin(a)*S*.25*View.iy); ctx.lineTo(x+Math.cos(a)*S*.42,y+Math.sin(a)*S*.42*View.iy); } ctx.stroke(); ctx.globalAlpha=1; }
+  for(const e of b.enemies) if(e.hp>0&&e.markBomb){ const [x,y]=proj(...posOf(e).slice(0,1),.04,posOf(e)[1]), S=scaleAt(e.tile.wx,e.tile.wz), r=S*(.3+.5*e.markBomb.t/1.5); ctx.strokeStyle='#ff5d6c'; ctx.lineWidth=3; ctx.globalAlpha=.9;
+    ctx.beginPath(); ctx.ellipse(x,y,r,r*View.iy,0,0,TAU); ctx.moveTo(x-r*1.2,y); ctx.lineTo(x+r*1.2,y); ctx.moveTo(x,y-r*1.2*View.iy); ctx.lineTo(x,y+r*1.2*View.iy); ctx.stroke(); ctx.globalAlpha=1; }
   // traps: a rune only you can see
   for(const t of TILES) if(t.trap){ const [x,y]=proj(t.wx,.03,t.wz), S=scaleAt(t.wx,t.wz); ctx.strokeStyle=colorOf(t.trap.card); ctx.lineWidth=2; ctx.globalAlpha=.6+.3*Math.sin(T*4);
     ctx.beginPath(); ctx.ellipse(x,y,S*.4,S*.4*View.iy,0,0,TAU); ctx.moveTo(x-S*.25,y); ctx.lineTo(x+S*.25,y); ctx.moveTo(x,y-S*.25*View.iy); ctx.lineTo(x,y+S*.25*View.iy); ctx.stroke(); ctx.globalAlpha=1; }

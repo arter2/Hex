@@ -92,6 +92,6 @@ Strike parts: **shape**, **keyword**, and a **rider** (pierce, crit chance, reco
 
 | Step | What |
 |---|---|
-| 1. Rules | The 24 creature behaviours, 5 HP tiers, 4 speeds, the colour traits and the 15 new strike shapes in the battle code, each with its own effect on screen and clear card text. A **Card lab** in the debug menu: pick any behaviour, trait or shape and try it in a test battle. |
+| 1. Rules | The 24 creature behaviours, 5 HP tiers, 4 speeds, the colour traits and the 15 new strike shapes in the battle code, each with its own effect on screen and clear card text. A **Card lab** on the front page: pick any behaviour, trait or shape and try it in a test battle. Its button is hidden until **Show Card lab** is ticked in the debug menu; the tick is saved in that browser only, so it shows on your devices and nobody else's. |
 | 2. Card list, one colour at a time | An allocator gives each card its parts from its name and colour, and picks the cuts. You review each colour as a spreadsheet and a readable page before it goes in. |
 | 3. Checks | `cards.js` reports any two cards that break the 2-part rule (or the 1-part rule across colours), and any colour that isn't 200. `card-overlap.md` is rebuilt and reads 0. |

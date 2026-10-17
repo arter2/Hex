@@ -1,6 +1,6 @@
 # Every card plays differently (plan)
 
-Date: 2026-10-17 · Status: **step 1 done** (creatures and the Card lab in v78, strike shapes and riders in v79); step 2, the card list, is next · Comes from [card-overlap.md](card-overlap.md)
+Date: 2026-10-17 · Status: **step 1 done** (creatures and the Card lab in v78, strike shapes and riders in v79); **step 2 first pass in v83**: every creature and strike has parts (allocate.js, cardparts.js, docs/card-list/new-rules-cards.csv), waiting on review, the cuts and the other kinds. The 2-part rule can't hold for all strikes and Gray creatures with these parts (see playtest-stats-newcards-v83.md) · Comes from [card-overlap.md](card-overlap.md)
 
 955 of the 1,865 regular cards repeat a rule their colour already has. Creatures are the worst: every
 creature in a colour is one of 4 behaviours with the same HP formula and no keyword. This plan

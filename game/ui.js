@@ -779,9 +779,20 @@ document.addEventListener('fullscreenchange',onFullChange); document.addEventLis
    WebKit's gesture events and any multi-finger move before the browser acts on them. */
 ['gesturestart','gesturechange','gestureend'].forEach(ev=>document.addEventListener(ev,e=>e.preventDefault(),{passive:false}));
 document.addEventListener('touchmove',e=>{ if(e.touches.length>1||(e.scale!=null&&e.scale!==1)) e.preventDefault(); },{passive:false});
-document.addEventListener('visibilitychange',()=>{ if(document.hidden) openPause();
-  // back from the background: re-measure the board (and its cached cave) at its real size
-  else if(B&&$('#scrBattle').classList.contains('on')){ View.cave=null; resizeView(); } });
+document.addEventListener('visibilitychange',()=>{ if(document.hidden){ openPause(); return; } backFromBackground(); });
+/* Back from the background: a phone browser often sends a stale size (or none) while the page is
+   hidden, which left the layout sized for the wrong screen and the Fire and Cast bar off screen.
+   Measure everything again now and once more after the browser settles, and drop any held input. */
+function backFromBackground(){ const again=()=>{ applyViewport(); if(B&&$('#scrBattle').classList.contains('on')){ View.cave=null; resizeView(); } };
+  if(B&&B.player){ B.player.charging=false; $('#btnWand').classList.remove('charging'); }
+  again(); setTimeout(again,250); setTimeout(again,1000); }
+addEventListener('pageshow',e=>{ if(e.persisted) backFromBackground(); });
+addEventListener('focus',()=>{ if(!document.hidden) setTimeout(()=>{ applyViewport(); },100); });
+// safety net: if the battle controls ever end up off screen or squashed to nothing, lay the screen out again
+let ctrlCheckT=0;
+function checkControls(dt){ if((ctrlCheckT-=dt)>0) return; ctrlCheckT=1;
+  const b=$('#btnCast'), r=b&&b.getBoundingClientRect(); if(!r) return;
+  if(r.width<8||r.height<8||r.bottom>innerHeight+2||r.top<-2||r.right>innerWidth+2||r.left<-2){ applyViewport(); View.cave=null; resizeView(); } }
 // Esc opens and closes the pause menu (the settings screen takes Esc first while it is open)
 window.addEventListener('keydown',e=>{ if(e.key!=='Escape') return; if($('#pause').classList.contains('on')){ e.preventDefault(); closePause(); } else if(pauseWhere()){ e.preventDefault(); openPause(); } });
 
@@ -1130,6 +1141,7 @@ function frame(now){
   requestAnimationFrame(frame);
   if(B&&$('#scrBattle').classList.contains('on')){
     if(!(View.w>0&&View.h>0)) resizeView();
+    if(!document.hidden) checkControls(dt);
     if(!paused&&!DBG.pause) update(dt);   // the debug menu's pause holds the fight but keeps drawing it
     // The Custom screen never opens by itself: when the gauge is full the Custom button glows and you open it.
     try{ render(); }catch(e){ if(!View.errShown){ View.errShown=1; console.error('battle draw:',e); } View.cave=null; resizeView(); }   // e.g. the board was resized to nothing in the background: rebuild it next frame

@@ -91,7 +91,7 @@ function gainXp(save,n){ const ch=ensureChar(save); n=Math.max(0,Math.round(n));
   if(up){ ch.earned=(ch.earned||0)+up*LEVEL_POINTS; save.lvlNew=true; }
   return up; }
 // how much a won fight is worth: every foe by depth, a miniboss double, a boss four times
-function fightXp(enemies,depth){ return enemies.reduce((a,e)=>a+(e.minion?3:8+4*depth)*(e.boss?4:e.mini?2:1),0); }
+function fightXp(enemies,depth){ const d=Math.min(depth,20)+.35*Math.max(0,depth-20); return Math.round(enemies.reduce((a,e)=>a+(e.minion?3:8+4*d)*(e.boss?4:e.mini?2:1),0)); }   // slower past depth 20
 
 const API={LEVEL_POINTS,STAT_CAP,xpNeed,lockChar,statCap,ensureChar,gainXp,fightXp,STAT_POINTS,STAT_MAX,STAT_KEYS,STATS,RACES,RACE_KEYS,newChar,statOf,pointsLeft,spendPoint,statMods,statEffect};
 Object.assign(root,API);

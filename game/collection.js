@@ -3,7 +3,7 @@
 // Card ids come from the templates; when they change, older saves start over (v4: 1,000 cards, ranks 1-12 everywhere).
 const SAVE_KEY='hexmancers-deck-v4';
 const DECK_SLOTS=5;
-const PACK_PRICE={booster:60, family:90};   // 3 cards a pack
+const PACK_PRICE={booster:90, family:130};   // 3 cards a pack
 
 function copyLimit(c){ return c.rarity==='legendary'||c.rarity==='hero'?RULES.legendaryCopies:RULES.copies; }
 
@@ -31,11 +31,12 @@ const heroChance=depth=>Math.min(.15,.03+.012*depth);
 function rollHero(rng,owned){ const fresh=HEROES.filter(h=>!(owned&&owned[h.id])), pool=fresh.length?fresh:HEROES; return pool[Math.floor(rng()*pool.length)]; }
 /* Gear (weapons, armor, scrolls) lives in gear.js. */
 
-/* Rewards. A normal fight gives exactly one thing: a card (55%, half the time in the color of
-   a monster you beat), a pile of gold (30%) or loot (15%: gear or a scroll, see gear.js). A boss gives more:
+/* Rewards. A normal fight gives exactly one thing: a card (70%, half the time in the color of
+   a monster you beat), a pile of gold (20%) or loot (10%: gear or a scroll, see gear.js). A boss gives more:
    gold, a rare or better card, another card, loot, and sometimes a hero.
    Returns {cards:[], gold, items:[]}. */
-function battleGold(depth,boss){ return boss?60+20*depth:40+15*depth; }
+// gold grows with depth up to 20, then slowly (deep runs were buying 80+ packs)
+function battleGold(depth,boss){ const d=Math.min(depth,20)+.35*Math.max(0,depth-20); return Math.round(boss?60+20*d:40+15*d); }
 function battleRewards(enemyColors,depth,boss,rng,owned){
   rng=rng||Math.random;
   const color=()=>rng()<.5&&enemyColors.length?enemyColors[Math.floor(rng()*enemyColors.length)]:null;
@@ -44,8 +45,8 @@ function battleRewards(enemyColors,depth,boss,rng,owned){
     if(rng()<heroChance(depth)) r.cards.push(rollHero(rng,owned));
     return r; }
   const x=rng();
-  if(x<.55) return {cards:[rollCard({depth,color:color()},rng)], gold:0, items:[]};
-  if(x<.85) return {cards:[], gold:battleGold(depth,false), items:[]};
+  if(x<.7) return {cards:[rollCard({depth,color:color()},rng)], gold:0, items:[]};
+  if(x<.9) return {cards:[], gold:battleGold(depth,false), items:[]};
   return {cards:[], gold:0, items:[item()]};
 }
 // Five cards; the last is uncommon or better.

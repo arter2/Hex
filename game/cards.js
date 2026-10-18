@@ -252,7 +252,7 @@ function authoredCards(fam,list,rng,pk,ri,tr,names){
 const r1=v=>Math.round(v*10)/10;
 function applyKw(c,kw,rank){
   if(!kw) return 1;
-  const v={burn:r1(2+rank/3), freeze:r1(1+rank*.15), stun:r1(.8+rank*.1), slow:r1(2+rank*.3), poison:3+rank, curse:r1(3+rank*.3), drain:r1(.25+rank*.03), self:8+rank,
+  const v={burn:r1(2+rank/3), freeze:r1(1+rank*.15), stun:r1(.8+rank*.1), slow:r1(2+rank*.3), poison:3+rank, curse:r1(3+rank*.3), drain:r1(.25+rank*.03), self:Math.round(5+rank*.6),
            mend:2+Math.round(rank/3), valor:1, push:1, pull:1, confuse:r1(3+rank*.2)}[kw];
   c[kw]=v; return kw==='self'?1.4:kw==='valor'||kw==='push'||kw==='pull'?.95:.85;
 }

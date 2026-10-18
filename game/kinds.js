@@ -119,7 +119,7 @@ const KD_BUILDERS={
     if(side==='rime'||side==='radiance') c.sideV=Math.round(10*F); if(side==='glow') c.sideV=Math.round(8*F); if(side==='siphon') c.sideV=Math.round(8*F); },
   charge(c,[shot,uses,kw,edge]){ const F=kdF(c), U=KD_USES[uses||'normal']; c.fx=shot||'bolt'; c.usesK=uses||'normal'; if(edge&&edge!=='none') c.edge=edge;
     const base={common:4,uncommon:6,rare:10,legendary:15}[c.rarity]; c.uses=Math.max(2,Math.round(base*U.u));
-    const k=applyKw(c,kw,c.rank); c.pow=Math.max(3,Math.round(20*F*k*U.k/Math.sqrt(base/3)*(c.fx==='twin'||c.fx==='burst'?.65:1)*(c.edge?.85:1))); },
+    const k=applyKw(c,kw,c.rank); c.pow=Math.max(3,Math.round(24*F*k*U.k/Math.sqrt(base/3)*(c.fx==='twin'||c.fx==='burst'?.65:1)*(c.edge?.85:1))); },
   trap(c,[trap,kw,len,size,spread]){ const F=kdF(c), L=KD_LEN[len||'normal'], S=KD_SIZE[size||'one']; c.trap=trap||'spike'; c.len=len||'normal'; c.size=size||'one';
     const sp=KD_SPREAD_OF(c.trap); if(sp.length) c.spread=sp.includes(spread)?spread:sp[0];
     const k=applyKw(c,kw,c.rank); c.pow=Math.round({spike:38,snare:18,blast:26,shock:16,zombie:10,pendulum:30}[c.trap]*F*k*L.k*S.k*(c.trap==='pendulum'?KD_SPREAD[c.spread].k:1)); if(c.trap==='snare') c.stun=r1(1.5+c.rank*.1);

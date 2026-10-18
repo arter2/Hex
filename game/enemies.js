@@ -96,8 +96,8 @@ function elemName(d,el){ const w=d.name.split(' '); return ELEM_WORD[el]+' '+(SI
 function makeEnemy(id,t,depth){
   // HP grows 13% a depth; past depth 12 a boss's growth tapers (−2.5% a depth, at most −30%) so deep
   // boss floors do not turn into long damage sponges
-  const d=ENEMY_DEFS[id], hs=(1+.13*(depth-1))*(d.boss&&depth>12?1-Math.min(.3,.025*(depth-12)):1), ds=1+.1*(depth-1);
-  const e={kind:'enemy', id, def:d, name:d.name, color:d.color, hp:Math.round(d.hp*hs), maxHp:Math.round(d.hp*hs), dmg:Math.round(d.dmg*ds), ds,
+  const d=ENEMY_DEFS[id], hs=(1+.13*(depth-1))*(d.boss&&depth>12?1-Math.min(.3,.025*(depth-12)):1), ds=1+.1*(depth-1), spd=depth>12?Math.max(.65,1-.012*(depth-12)):1;
+  const e={kind:'enemy', id, def:d, name:d.name, color:d.color, hp:Math.round(d.hp*hs), maxHp:Math.round(d.hp*hs), dmg:Math.round(d.dmg*ds), ds, spd,
            tile:t, atkT:rnd(1.8,3.2), moveT:rnd(.8,1.8), windT:0, burnT:0, burnAcc:0, freezeT:0, stunT:0, slowT:0, poisonT:0, poisonAmt:0, curseT:0, hitT:0,
            barrier:0, powerT:0, castT:0, casting:null, weak:d.weak||null, nextMove:pick(d.moves), deck:d.deck?enemyDeck(d.color,depth):null, deckCd:rnd(3,5)};
   if(d.collector) e.deck=[];   // a Card Collector's deck is whatever it takes from you
@@ -281,11 +281,11 @@ function updateEnemy(e,dt){
   if(b.lab&&b.lab.calm) return;   // Card lab: foes that stand still and never attack
   e.moveT-=dt;
   if(e.moveT<=0&&!b.teles.some(t=>t.owner===e)){ e.moveT=rnd(1.4,2.4)*(icy(e.tile)?2:1); moveEnemy(e); if(e.hp<=0) return; }
-  if(e.infectT>0){ e.atkT-=dt; if(e.atkT<=0){ e.atkT=rnd(e.def.rate[0],e.def.rate[1]); e.atkMax=e.atkT; zombieAttack(e); } return; }   // a Zombie trap's victim (battle.js springTrap)
+  if(e.infectT>0){ e.atkT-=dt; if(e.atkT<=0){ e.atkT=rnd(e.def.rate[0],e.def.rate[1])*(e.spd||1); e.atkMax=e.atkT; zombieAttack(e); } return; }   // a Zombie trap's victim (battle.js springTrap)
   if(e.deck){ e.deckCd-=dt; if(e.deckCd<=0&&e.deck.length){ e.deckCd=rnd(4,6); e.casting=e.deck.shift(); e.castT=.9; return; } }
   e.atkT-=dt;
-  if(e.atkT<=0&&typeof crSandstorm==='function'&&crSandstorm(e)){ e.atkT=rnd(e.def.rate[0],e.def.rate[1]); e.atkMax=e.atkT; return; }   // Sandstorm (creatures.js)
-  if(e.atkT<=0){ e.atkT=rnd(e.def.rate[0],e.def.rate[1]); e.atkMax=e.atkT; const ms=e.moves||e.def.moves, mv=e.nextMove||pick(ms); e.curMove=mv; MOVES[mv](e); e.curMove=null; e.nextMove=pick(e.moves||e.def.moves); if(typeof palPlay==='function') palPlay(e,mv==='quake'?'quake':(mv==='shot'||mv==='boulders')?'throw':''); }   // the next move is picked early so it can be shown
+  if(e.atkT<=0&&typeof crSandstorm==='function'&&crSandstorm(e)){ e.atkT=rnd(e.def.rate[0],e.def.rate[1])*(e.spd||1); e.atkMax=e.atkT; return; }   // Sandstorm (creatures.js)
+  if(e.atkT<=0){ e.atkT=rnd(e.def.rate[0],e.def.rate[1])*(e.spd||1); e.atkMax=e.atkT; const ms=e.moves||e.def.moves, mv=e.nextMove||pick(ms); e.curMove=mv; MOVES[mv](e); e.curMove=null; e.nextMove=pick(e.moves||e.def.moves); if(typeof palPlay==='function') palPlay(e,mv==='quake'?'quake':(mv==='shot'||mv==='boulders')?'throw':''); }   // the next move is picked early so it can be shown
 }
 
 if(typeof module!=='undefined') module.exports={VERMIN,verminChance,ENEMY_DEFS,MONSTERS,HUMANOIDS,OUTLAWS,SPELLFOLK,makeEncounter};

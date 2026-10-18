@@ -39,7 +39,7 @@ const STRIKE_OLD={line:'Line', row:'Row', wedge:'Wedge', all:'All', dig:'Dig', z
 // a strike card's numbers from its shape (F: rank and rarity, kw: its keyword)
 function strikeBuild(c,F,rank,kw){
   const S=STRIKE_SHAPES[c.shape], k=kw&&typeof applyKw==='function'?applyKw(c,kw,rank):1;
-  c.pow=Math.max(2,Math.round(S.pow*F*k));
+  c.pow=Math.max(2,Math.round(S.pow*F*k*(c.rarity==='rare'||c.rarity==='legendary'?1.2:1)));   // a rare strike keeps up with rare creatures
   if(c.shape==='gun') c.dur=+(2+rank*.08).toFixed(1);
   if(c.shape==='cluster'){ c.cluster=c.cluster||'ring'; c.bomblet=Math.max(2,Math.round(c.pow*.6)); }
   if(c.shape==='mine') c.turns=2;

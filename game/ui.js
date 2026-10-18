@@ -1109,6 +1109,14 @@ const dragEnd=e=>{ const d=dragging; if(!d||e.pointerId!==d.id) return; dragging
 window.addEventListener('resize',()=>{ if($('#scrBattle').classList.contains('on')) resizeView(); if($('#scrCamp').classList.contains('on')) campScene(); });
 
 const held=new Set();
+/* Holding a move key keeps walking, one tile after another, until you let go (the browser's own key
+   repeat stops the moment another key goes down, so holding a direction while pressing Fire or Cast
+   used to stop you after one step). The last direction pressed wins. */
+const MOVE_ACTS=['left','right','up','down'];
+let moveHeld=[];
+function stepAct(a){ if(a==='left') stepDir(DIRS.W); else if(a==='right') stepDir(DIRS.E); else if(a==='up') stepVertical(true); else if(a==='down') stepVertical(false); }
+function heldWalk(){ if(!moveHeld.length||!B||B.phase!=='fight'||paused) return; const p=B.player; if(p.path.length||p.moveCd>0) return; stepAct(moveHeld[moveHeld.length-1]); }
+addEventListener('blur',()=>{ held.clear(); moveHeld=[]; });
 window.addEventListener('keydown',e=>{
   if(!B||!$('#scrBattle').classList.contains('on')) return; const k=e.key.toLowerCase();
   if(B.phase==='custom'){
@@ -1123,10 +1131,7 @@ window.addEventListener('keydown',e=>{
   if(B.phase!=='fight'||paused||held.has(k)) return; held.add(k);
   const a=typeof keyAct==='function'?keyAct(k,'battle'):null;   // your bindings, from Settings (keys.js)
   if(a) e.preventDefault();
-  if(a==='left') stepDir(DIRS.W);
-  else if(a==='right') stepDir(DIRS.E);
-  else if(a==='up') stepVertical(true);
-  else if(a==='down') stepVertical(false);
+  if(MOVE_ACTS.includes(a)){ moveHeld=moveHeld.filter(x=>x!==a).concat(a); stepAct(a); }
   else if(a==='fire') wandDown();
   else if(a==='cast') castCard();
   else if(a==='custom') tryCustom();
@@ -1135,7 +1140,8 @@ window.addEventListener('keydown',e=>{
   else if($('#soulMenu').classList.contains('on')&&(k==='1'||k==='2')){ (k==='1'?soulSummon:soulUnite)(); soulMenu(false); }
   else if(a==='aim') cycleAim();
 });
-window.addEventListener('keyup',e=>{ const k=e.key.toLowerCase(); held.delete(k); if(typeof keyAct==='function'&&keyAct(k,'battle')==='fire') wandUp(); });
+window.addEventListener('keyup',e=>{ const k=e.key.toLowerCase(); held.delete(k); const a=typeof keyAct==='function'?keyAct(k,'battle'):null;
+  if(a==='fire') wandUp(); if(MOVE_ACTS.includes(a)) moveHeld=moveHeld.filter(x=>x!==a); });
 
 /* ---------------- loop ---------------- */
 let prev=performance.now();
@@ -1146,7 +1152,7 @@ function frame(now){
   if(B&&$('#scrBattle').classList.contains('on')){
     if(!(View.w>0&&View.h>0)) resizeView();
     if(!document.hidden) checkControls(dt);
-    if(!paused&&!DBG.pause) update(dt);   // the debug menu's pause holds the fight but keeps drawing it
+    if(!paused&&!DBG.pause){ heldWalk(); update(dt); }   // the debug menu's pause holds the fight but keeps drawing it
     // The Custom screen never opens by itself: when the gauge is full the Custom button glows and you open it.
     try{ render(); }catch(e){ if(!View.errShown){ View.errShown=1; console.error('battle draw:',e); } View.cave=null; resizeView(); }   // e.g. the board was resized to nothing in the background: rebuild it next frame
     hud();

@@ -286,6 +286,7 @@ body.ui-tablet .hand{grid-template-columns:repeat(7,1fr);} body.ui-tablet .fams{
 .card.blocked{opacity:.38; filter:grayscale(.6);}
 .card.recipe-step{box-shadow:0 0 0 2px #b46cff,0 0 12px rgba(180,108,255,.45);}
 .surge:empty{display:none;}
+#custHand .card.nofit{opacity:.45; filter:saturate(.5);}   /* won't fit the open 4th slot */
 .surge{margin:2px auto 6px; max-width:420px; text-align:center; font-size:13px; color:#d8f6ff; padding:6px 10px; border-radius:10px;
   background:#0a2016; border:2px solid #39ff8a; box-shadow:0 0 0 2px #000; animation:surgeGlow 1.4s steps(2) infinite;}
 .surge b{color:#39ff8a;}

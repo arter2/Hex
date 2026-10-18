@@ -45,7 +45,7 @@ function createPiles(list,rng,cards){
 // a used deck tool shuts a slot (p.locks) for the hand it was used in, or longer if the card says so
 const slotsOf=p=>Math.max(0,(p.slots||RULES.slots)-(p.locks||[]).length);
 const WILD_RUNE='✱';
-// Rune Surge: the rune with the most cards in hand (wild cards count for every rune)
+// the rune with the most cards in hand (wild cards count for every rune), if 4 or more
 function surgeRune(hand){ const n={}, wild=hand.filter(c=>c.card.code===WILD_RUNE).length;
   hand.forEach(c=>{ const k=c.card.code; if(k&&k!==WILD_RUNE) n[k]=(n[k]||0)+1; });
   let best=null; for(const k in n) if(!best||n[k]>n[best]) best=k;
@@ -70,7 +70,25 @@ const toolLock=c=>c.lock||(c.util==='reshuffle'?2:1);
 // Instants (and Tinker) are never queued: you tap them in your hand and they act at once.
 const TAP_TYPES=['instant','tinker'];
 const isInstant=c=>!!c&&TAP_TYPES.includes(c.type)&&!isDeckTool(c);
-const canQueue=(p,inst)=>p.queue.length<slotsOf(p)&&!(inst&&isInstant(inst.card));
+const canQueue=(p,inst)=>p.queue.length<slotsOf(p)&&!(inst&&isInstant(inst.card))&&(p.queue.length!==RULES.slots||!inst||fitsFourth(p,inst.card));
+/* Rune Surge, read from the slots: 3 queued cards of one rune (✱ fits any) open a 4th slot, and only
+   a card of that rune (or a ✱) fits it; 3 queued cards of a 4-card recipe open it for the recipe's
+   last card. Some gear opens it by chance at the start of a hand (p.surge 'luck'), for any card. */
+function queueSurge(q){ const cards=q.slice(0,RULES.slots).map(c=>c.card);
+  if(cards.length<RULES.slots) return null;
+  if(cards.every(c=>c.code)&&oneRune(cards)) return cards.map(c=>c.code).find(k=>k!==WILD_RUNE)||WILD_RUNE;
+  const list=typeof RECIPES!=='undefined'?RECIPES:[];
+  return list.some(r=>r.cards.length===RULES.surgeSlots&&fitsRecipe(r,cards))?'recipe':null; }
+function fitsFourth(p,card){ const s=p.surge;
+  if(!s||s==='luck') return true;
+  if(s==='recipe'){ const list=typeof RECIPES!=='undefined'?RECIPES:[], cards=[...p.queue.slice(0,RULES.slots).map(c=>c.card),card];
+    return list.some(r=>r.cards.length===cards.length&&fitsRecipe(r,cards)); }
+  return !!card.code&&(card.code===WILD_RUNE||s===WILD_RUNE||card.code===s); }
+// after the queue changes on the Custom screen: open or shut the 4th slot, and send back a 4th card that no longer fits
+function refreshSurge(p){ if(p.surge==='luck') return;
+  p.surge=queueSurge(p.queue); p.slots=p.surge?RULES.surgeSlots:RULES.slots;
+  while(p.queue.length>slotsOf(p)||(p.queue.length>RULES.slots&&!fitsFourth(p,p.queue[RULES.slots].card))){
+    const i=p.queue.length-1; if(p.queue[i].cursed) break; p.hand.push(p.queue.splice(i,1)[0]); } }
 // one rune (wild cards fit any) — what a Flush or a Straight needs
 const oneRune=cards=>new Set(cards.map(c=>c.code).filter(k=>k&&k!==WILD_RUNE)).size<=1;
 
@@ -92,10 +110,9 @@ function openCustom(p){
   if(p.draw.length<size-p.hand.length){ const back=p.discard.filter(c=>!c.temp&&!(c.card.uses&&c.left!=null&&c.left<=0));
     if(back.length){ p.discard=p.discard.filter(c=>!back.includes(c)); p.draw=shuffle(back,p.rng).concat(p.draw); p.reshuffles=(p.reshuffles||0)+1; } }
   while(p.hand.length<size && p.draw.length){ const c=p.draw.pop(); p.hand.push(c); drawn.push(c); }
-  // Rune Surge opens a 4th slot this turn; some gear can open it by chance (p.surge)
-  p.surge=surgeRune(p.hand); p.slots=RULES.slots;
-  if(p.surge) p.slots=RULES.surgeSlots;
-  else if(p.surgeLuck&&(p.rng||Math.random)()<p.surgeLuck){ p.slots=RULES.surgeSlots; p.surge='luck'; }
+  // the 4th slot opens from the queue (refreshSurge); some gear can open it by chance for the whole hand
+  p.surge=null; p.slots=RULES.slots;
+  if(p.surgeLuck&&(p.rng||Math.random)()<p.surgeLuck){ p.slots=RULES.surgeSlots; p.surge='luck'; }
   return drawn;
 }
 /* Combos, read from the queue as it stands (runes already keep a queue to one rune):
@@ -195,18 +212,20 @@ function placeCard(p,uid,zone,index){
   if(zone==='queue'&&isInstant(card.card)) return false;
   if(index==null) index=dst.length;
   if(src!==dst&&zone==='queue'&&p.queue.length>=slotsOf(p)){ const ti=Math.min(index,slotsOf(p)-1), other=p.queue[ti];
-    if(other&&other.cursed) return false; p.queue[ti]=card; p.hand[si]=other; return true; }
+    if(other&&other.cursed) return false;
+    if(ti===RULES.slots&&!fitsFourth(p,card.card)) return false;
+    p.queue[ti]=card; p.hand[si]=other; refreshSurge(p); return true; }
   if(src!==dst&&zone==='queue'&&!canQueue(p,card)) return false;
-  src.splice(si,1); dst.splice(Math.max(0,Math.min(index,dst.length)),0,card); return true;
+  src.splice(si,1); dst.splice(Math.max(0,Math.min(index,dst.length)),0,card); refreshSurge(p); return true;
 }
 
 // Tap a card: hand -> queue (if a slot is free), or queue -> hand. Returns true if it moved.
 function toggleQueue(p,uid){
   let i=p.queue.findIndex(c=>c.uid===uid);
   if(i>=0&&p.queue[i].cursed) return false;   // a hex can't be moved
-  if(i>=0){ p.hand.push(p.queue.splice(i,1)[0]); return true; }
+  if(i>=0){ p.hand.push(p.queue.splice(i,1)[0]); refreshSurge(p); return true; }
   i=p.hand.findIndex(c=>c.uid===uid);
-  if(i>=0 && canQueue(p,p.hand[i])){ p.queue.push(p.hand.splice(i,1)[0]); return true; }
+  if(i>=0 && canQueue(p,p.hand[i])){ p.queue.push(p.hand.splice(i,1)[0]); refreshSurge(p); return true; }
   return false;
 }
 
@@ -243,4 +262,4 @@ function rechargeAll(p,n){ let k=0;
 // Nothing left to draw, hold or cast: the fight continues with the wand only.
 function wandOnly(p){ return !p.draw.length && !p.hand.length && !p.queue.length; }
 
-if(typeof module!=='undefined') module.exports={handMax,handRoom,isInstant,isDeckTool,toolLock,DECK_TOOLS,TAP_TYPES,searchDeck,takeFromDeck,reshuffleHand,rechargeAll,oneRune,slotsOf,surgeRune,runesFit,canQueue,findRecipe,RULES,detectCombos,placeCard,validateDeck,shuffle,createPiles,openCustom,commitCustom,toggleQueue,castNext,drawCards,recallTop,copyNext,wandOnly};
+if(typeof module!=='undefined') module.exports={queueSurge,fitsFourth,refreshSurge,handMax,handRoom,isInstant,isDeckTool,toolLock,DECK_TOOLS,TAP_TYPES,searchDeck,takeFromDeck,reshuffleHand,rechargeAll,oneRune,slotsOf,surgeRune,runesFit,canQueue,findRecipe,RULES,detectCombos,placeCard,validateDeck,shuffle,createPiles,openCustom,commitCustom,toggleQueue,castNext,drawCards,recallTop,copyNext,wandOnly};

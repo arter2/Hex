@@ -842,18 +842,21 @@ function renderCustom(){
   $('#custCombo').innerHTML=comboChips(combos)||'<span class="none">No combo yet</span>';
   const q=$('#custQueue'); q.innerHTML='';
   const slots=slotsOf(p), runeNow=p.queue.map(c=>c.card.code).find(k=>k&&k!=='✱');
-  $('#custSurge').innerHTML=(p.slots||RULES.slots)>RULES.slots?`<b>ᚱ Rune Surge${p.surge&&p.surge!=='luck'?' ('+p.surge+')':''}!</b> A 4th slot is open this turn: 4-card recipes and Grand Straights are possible.`:'';
-  q.classList.toggle('four',(p.slots||RULES.slots)>RULES.slots);
+  const four=(p.slots||RULES.slots)>RULES.slots, fourth=p.surge==='luck'?'any card':p.surge==='recipe'?'the recipe\'s last card':p.surge==='✱'?'any card with a rune':'only '+p.surge+' or ✱';
+  $('#custSurge').innerHTML=!four?'':p.surge==='luck'?`<b>ᚱ Rune Surge!</b> Your gear opened a 4th slot this hand: any card fits.`
+    :p.surge==='recipe'?`<b>⚗ Rune Surge!</b> 3 cards of a 4-card recipe opened the 4th slot: only the recipe's last card fits.`
+    :`<b>ᚱ Rune Surge (${p.surge})!</b> 3 queued ${p.surge} cards opened a 4th slot: ${p.surge==='✱'?'any card with a rune fits':'only an '+p.surge+' card (or ✱) fits'} it.`;
+  q.classList.toggle('four',four);
   const ready=recipesInHand(p), inRecipe=new Set(ready.flatMap(x=>x.uids));
   const inQ=new Set(p.queue.map(c=>c.uid));
   $('#custRecipe').innerHTML=ready.map(({r,uids})=>`<b>⚗ ${recipeKnown(r)?'Recipe in hand: '+esc(r.name)+'.':'A hidden recipe is in your hand!'}</b> `
-    +(uids.every(u=>inQ.has(u))&&p.queue.length===r.cards.length?'Ready: press Fight! to fuse them.':r.cards.length>slots?'It needs the 4th slot.':'Queue the glowing cards together, on their own.')).join('<br>');
+    +(uids.every(u=>inQ.has(u))&&p.queue.length===r.cards.length?'Ready: press Fight! to fuse them.':r.cards.length>slots?'Queue 3 of its cards to open the 4th slot.':'Queue the glowing cards together, on their own.')).join('<br>');
   for(let i=0;i<slots;i++){
     const inst=p.queue[i];
     if(inst){ const tool=isDeckTool(inst.card), n=tool&&toolLock(inst.card);
       const el=cardEl(inst.card,`<span class="ord">${i+1}</span>`+instBadge(inst,true)+(tool?`<span class="primer">Double-tap to use<small>shuts this slot ${n>1?'for '+n+' hands':'this hand'}</small></span>`:''));
       el.dataset.zone='queue'; el.dataset.i=i; if(inCombo.has(inst.uid)) el.classList.add('combo'); if(tool) el.classList.add('primed'); dragCard(el,inst); q.appendChild(el); }
-    else { const s=document.createElement('div'); s.className='slot'; s.dataset.zone='queue'; s.dataset.i=i; s.innerHTML='Slot '+(i+1); q.appendChild(s); }
+    else { const s=document.createElement('div'); s.className='slot'; s.dataset.zone='queue'; s.dataset.i=i; s.innerHTML='Slot '+(i+1)+(i===RULES.slots?'<small>'+fourth+'</small>':''); q.appendChild(s); }
   }
   // slots shut by a deck tool: they open again at the next hand (or later, if the card says so)
   for(const l of p.locks||[]){ const s=document.createElement('div'); s.className='slot shut';
@@ -869,6 +872,7 @@ function renderCustom(){
     // glow if adding this card to the queue would make a new combo
     if(inRecipe.has(inst.uid)) el.classList.add('recipe-ready');   // part of a recipe you can make right now: purple
     else if(isInstant(inst.card)) {}
+    else if(p.queue.length===RULES.slots&&four&&!fitsFourth(p,inst.card)) el.classList.add('nofit');   // won't fit the 4th slot
     else if(p.queue.length<slots&&detectCombos([...p.queue,inst]).length>base) el.classList.add('hint');
     else if(p.queue.length&&p.queue.length<slots&&recipeStep([...p.queue.map(c=>c.card),inst.card])&&!oneRune([...p.queue.map(c=>c.card),inst.card])) el.classList.add('recipe-step');   // part of a recipe with what is queued
     else if(p.queue.length&&oneRune([...p.queue.map(c=>c.card),inst.card])) el.classList.add('rune-match');   // same rune as the queue
@@ -976,7 +980,7 @@ function dragCard(el,inst){
         if(placeCard(p,d.inst.uid,zone,i)&&zone==='hand'&&spot&&spot!==String(d.inst.uid)) layDrop(d.inst.uid,isNaN(+spot)?spot:+spot); buzz(10); } }
     else if(!d.long){ if(isInstant(d.inst.card)){ tapInstant(d.inst); return; }
       if(isDeckTool(d.inst.card)&&p.queue.includes(d.inst)){ toolTap(d.inst); return; }
-      if(!toggleQueue(p,d.inst.uid)) tip(slotsOf(p)?'The queue is full':'Every slot is shut this hand'); }
+      if(!toggleQueue(p,d.inst.uid)) tip(!slotsOf(p)?'Every slot is shut this hand':p.queue.length===RULES.slots&&slotsOf(p)>RULES.slots?'That card doesn\'t fit the 4th slot':p.queue.length>=slotsOf(p)?'The queue is full':'That card can\'t go in a slot'); }
     renderCustom();
   };
   el.addEventListener('pointerup',end); el.addEventListener('pointercancel',end);

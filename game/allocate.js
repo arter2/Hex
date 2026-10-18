@@ -221,6 +221,7 @@ function alSpec(c,kind,col,U){ const rng=alRng(c.id), kh=alHints(c.name,AL_KD_HI
     const stOpts=col==='gray'?alOrder(['front','rear','escort'],[AL_STANCE_OF[bOpts[0]]].filter(Boolean),null,rng,U('stance'),W('stance')):extraSt.length?alOrder([null,...extraSt],[null],null,rng,U('stance'),W('stance')):[null];
     const race=c.race;
     return {opts:[bOpts,tOpts,sOpts,kwOpts(wantKw,kws,'creature.kw'),trOpts,stOpts], cost:[16,4,3,2,1,1.5],
+      ok:p=>!(p[0]==='cone'&&p[5]==='rear'),   // a cone reaches 4 tiles: from the back column it would never reach the enemy
       used:p=>{ bump('beh',p[0]); bump('trait',p[4]); bump('stance',p[5]); },
       apply:p=>alApplyCr(c,[...p.slice(0,5),race,p[5]]) }; }
   if(kind==='strike'){ const h=alHints(c.name,AL_ST_HINTS), shapes=Object.keys(STRIKE_SHAPES).concat(Object.keys(STRIKE_OLD));

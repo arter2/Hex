@@ -152,7 +152,8 @@ const pTilesInRow=r=>P_TILES.filter(t=>t.r===r);
 const aimT=()=>typeof foeAim==='function'?foeAim():B.player.tile;   // a Taunt creature draws the enemy's aim (creatures.js)
 function stepEnemy(e,to){ if(typeof caged==='function'&&caged(e)) return;   // a cage holds it where it is
   e.tile.occ=null; e.tile=to; to.occ=e; if(e.poisonT>0) hitEnemy(e,e.poisonAmt,null,{raw:true});
-  if(to.thornT>0&&e.hp>0) hitEnemy(e,to.thornPow,null,{raw:true});
+  if(to.thornT>0&&e.hp>0) hitEnemy(e,to.thornPow,to.thornCard||null,{raw:true});
+  if(to.burnT>0&&e.hp>0) e.burnT=Math.max(e.burnT||0,3);   // stepping onto burning ground sets it alight
   if(to.trap&&e.hp>0) springTrap(to,e); }
 function moveEnemy(e){
   if(e.def.ai==='still'||e.under) return;

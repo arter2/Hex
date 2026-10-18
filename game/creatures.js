@@ -26,7 +26,7 @@ const CR_BEH={
   blast:    {name:'Blast',      icon:'✺', group:'lob',     k:.65,  text:'lobs a bomb that splashes around where it lands'},
   cross:    {name:'Cross',      icon:'✢', group:'lob',     k:.65,  text:'lobs a bomb that bursts in a + shape'},
   // close
-  pounce:   {name:'Pounce',     icon:'⤳', group:'close',   k:.95,  text:'leaps at the nearest enemy'},
+  pounce:   {name:'Pounce',     icon:'⤳', group:'close',   k:.76,  text:'leaps at the nearest enemy'},
   trample:  {name:'Trample',    icon:'⇛', group:'close',   k:.85,  text:'charges down its row into the enemy side, hitting everything on the way, then runs back'},
   dash:     {name:'Dash',       icon:'↯', group:'close',   k:.45,  text:'dashes at {n} enemies in turn; each one flashes first and may sidestep'},
   // support
@@ -115,7 +115,8 @@ function crBuild(c,F,rank,kw){
   c.rate=S.rate*(B0.group==='support'&&CR_SLOW_SUPPORT[c.beh]?4:1)*(c.beh==='beam'?1.6:1);
   // a Steady, Sturdy Bolt hits for 10 at rank 1. Push and pull are worth more on a creature than on a
   // card (it lands them again and again), so they cost a little more here
-  const per=10*F*T.k*S.k*k*(kw==='push'||kw==='pull'?.85:1);
+  // Gray creatures come in every deck (and carry a stance), so they hit 18% softer than a colour's
+  const per=10*F*T.k*S.k*k*(kw==='push'||kw==='pull'?.85:1)*(c.color==='gray'?.82:1);
   if(B0.group==='support'){ delete c.pow;
     if(c.beh==='mends') c.amt=Math.max(1,Math.round(3*F*T.k*S.k));
     if(c.beh==='shields') c.amt=Math.max(2,Math.round(7*F*T.k*S.k));

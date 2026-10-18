@@ -486,7 +486,7 @@ const CAST={
     if(c.shape==='line') shoot(p.tile,row,{card:c,dmg:c.pow,from:'p',pierce:c.rider==='pierce'?1:0});
     else if(c.shape==='row'){ row.forEach((t,i)=>{ flash(t,colorOf(c),1); hitAt(t,c.pow,c); });
       B.fx.push({kind:'beam',a:p.tile,b:row[row.length-1]||p.tile,color:colorOf(c),t:0,life:.3}); }
-    else if(c.shape==='wedge'){ const ts=wedgeTiles(p.tile,2.6); ts.forEach(t=>{ flash(t,colorOf(c),1); hitAt(t,c.pow,c); }); }
+    else if(c.shape==='wedge'){ const ts=wedgeTiles(p.tile,4.5); ts.forEach(t=>{ flash(t,colorOf(c),1); hitAt(t,c.pow,c); }); }
     else if(c.shape==='all') alive().forEach(e=>{ B.fx.push({kind:'bolt',a:p.tile,b:e.tile,color:colorOf(c),t:0,life:.35}); hitEnemy(e,c.pow,c); });
     else if(c.shape==='dig') shoot(p.tile,row,{card:c,dmg:c.pow,from:'p',dig:true,pierce:c.rider==='pierce'?1:0});
     else if(c.shape==='zigzag'){ const alt=tileCR(p.tile.col,p.tile.r+1)?1:-1, path=[];
@@ -516,8 +516,9 @@ const CAST={
     const t=B.aim||nearestEnemyTile(p.tile); B.aim=null; if(!t) return;
     for(const x of patternTiles(t,c.pattern,'e')){ flash(x,colorOf(c),.8);
       if(c.turns) x.envT=Math.max(x.envT||0,secs(c.turns));   // lasts that many seconds of fighting
-      if(c.env==='burn') x.burnT=1e9;
-      if(c.env==='freeze'){ x.iceT=1e9; if(x.occ&&x.occ.kind==='enemy') x.occ.slowT=Math.max(x.occ.slowT,2); }
+      const foe=x.occ&&x.occ.kind==='enemy'&&x.occ.hp>0?x.occ:null;
+      if(c.env==='burn'){ x.burnT=1e9; if(foe){ if(c.pow) hitEnemy(foe,c.pow,c); foe.burnT=Math.max(foe.burnT||0,4); } }
+      if(c.env==='freeze'){ x.iceT=1e9; if(foe){ foe.slowT=Math.max(foe.slowT,2); if(c.pow) hitEnemy(foe,c.pow,c); } }
       if(c.env==='bramble'){ x.thornT=1e9; x.thornPow=c.pow; x.thornCard=c; }
       if(c.env==='tremor') hitAt(x,c.pow,c);
       else if(c.envKw&&x.occ&&x.occ.kind==='enemy'&&x.occ.hp>0) hitEnemy(x.occ,1,c); } },   // ground with a keyword (kinds.js)
@@ -868,7 +869,7 @@ function springTrap(t,e){ const c=t.trap.card; t.trap=null; floater(c.name,t,col
   if(c.trap==='shock'){ e.stunT=Math.max(e.stunT,c.hold); cancelAttack(e); floater('Held!',t,'#ffe24d',true);
     B.shocks.push({e,life:c.hold,card:c,seen:new Map()}); }
   // Zombie trap: it turns on its own side for a while (enemies.js zombieAttack); bosses shake it off sooner
-  if(c.trap==='zombie'){ e.infectT=Math.max(e.infectT||0,c.infect*(e.def.bossId||e.def.mini?.5:1)); cancelAttack(e); floater('Infected!',t,'#9be36a',true); burst(t,'#9be36a',14,.6); } }
+  if(c.trap==='zombie'){ e.infectT=Math.max(e.infectT||0,c.infect*(e.def.bossId||e.def.mini?.5:1)); cancelAttack(e); e.atkT=Math.min(e.atkT||0,.5); /* the first bite comes soon */ floater('Infected!',t,'#9be36a',true); burst(t,'#9be36a',14,.6); } }
 // the tiles a shock field covers around a held enemy (kinds.js KD_SPREAD)
 function shockTiles(t,sp){ const row=[tileCR(t.col-1,t.r),tileCR(t.col+1,t.r)];
   const ts=sp==='ring'?around(t):sp==='plus'?[...row,tileCR(t.col,t.r-1),tileCR(t.col,t.r+1)]:row;
@@ -893,7 +894,7 @@ function swingPendulum(t,e,c){ const line=patternTiles(t,c.spread==='column'?'co
       if(out.length&&Math.random()<.35){ floater('dodged',o.tile,'#9fdcff'); stepEnemy(o,pick(out)); } }
     const a=line[0], b=line[line.length-1]; if(a&&b) B.fx.push({kind:'bolt',a,b,color:'#c8a070',t:0,life:.3});
     line.forEach(x=>{ burst(x,'#c8a070',6,.6); if(x.occ&&x.occ.kind==='enemy') hitEnemy(x.occ,c.pow,c); }); }); }
-/* How a buffed wand looks. While a Power boon runs (wand x2.5) your shots fly big, orange-red and
+/* How a buffed wand looks. While a Power boon runs (wand x1.8) your shots fly big, orange-red and
    burning; under a Pact (+30%, paid in health) they are a dark glowing blue; under Courage (+30%) golden.
    Each leaves a trail of sparks and lights the arena as it flies, and the weapon's tip wears the same
    colour with an aura that gives off sparks. Power wins when more than one is running. */
@@ -920,7 +921,7 @@ function fireWand(charged){ if(B&&B.player){ B.player.poseT=B.time; B.player.pos
   p.wandCd=charged?w.ccd||.5:w.cd||.3;
   if(w.hpPerShot) payHp(w.hpPerShot);
   if(w.misfire&&Math.random()<w.misfire){ floater('fizzle',p.tile,'#93a9ba'); burst(p.tile,'#56606a',5,1); return; }
-  let dmg=Math.max(1,Math.round((charged?w.charged:w.tap)*(w.mult||1)*(p.powerT>0?2.5:1)));
+  let dmg=Math.max(1,Math.round((charged?w.charged:w.tap)*(w.mult||1)*(p.powerT>0?1.8:1)));
   // an elemental weapon shoots in its color, and its effects ride on the shot like a card's
   let card=w.color||w.burn||w.drain||w.zap||w.chill||w.glow?{id:'wand', name:'Wand', color:w.color, burn:w.burn||0, drain:w.drain||0,
     freeze:charged?w.chill:0, stun:w.zap&&Math.random()<w.zap?.5:0, mend:charged?w.glow:0}:null;
@@ -1048,7 +1049,7 @@ function castPreview(){
     if(sh==='line') path(row,false);
     else if(sh==='dig') path(row,true);
     else if(sh==='row'){ out.area.push(...row); out.paths.push(row); out.hit.push(...row.filter(t=>t.occ&&t.occ.kind==='enemy')); }
-    else if(sh==='wedge'){ const ts=wedgeTiles(p.tile,2.6); out.area.push(...ts); out.hit.push(...ts.filter(t=>t.occ&&t.occ.kind==='enemy')); }
+    else if(sh==='wedge'){ const ts=wedgeTiles(p.tile,4.5); out.area.push(...ts); out.hit.push(...ts.filter(t=>t.occ&&t.occ.kind==='enemy')); }
     else if(sh==='zigzag'){ const alt=tileCR(p.tile.col,p.tile.r+1)?1:-1; path(route(i=>tileCR(p.tile.col+i,p.tile.r+(i%2?alt:0))),false); }
     else if(sh==='diag'){ for(const d of [-1,1]) path(diagPath(p.tile,d),false); }
     else if(sh==='all'){ out.hit.push(...enemyTiles()); out.area.push(...out.hit); }

@@ -63,7 +63,7 @@ const KD_TIMED=['power','pact','haste','phase','regen','courage'];
 
 /* ---------- charges ---------- */
 const KD_SHOT={bolt:'bolt of {pow} down your row', twin:'bolts of {pow} down your row and the next', lob:'lob of {pow} on the tile you aim', burst:'lob of {pow} that splashes around where it lands'};
-const KD_USES={few:{name:'Few', u:.5, k:1.5}, normal:{name:'', u:1, k:1}, many:{name:'Many', u:1.7, k:.7}};
+const KD_USES={few:{name:'Few', u:.5, k:1.5}, normal:{name:'', u:1, k:1}, many:{name:'Many', u:1.7, k:.85}};
 const KD_EDGE={none:'', pierce:'Pierce: its bolts go through one more enemy, and through walls, rocks and shields', crit:'Crit: 1 use in 4 deals double', splash:'Splash: also hits around what it hits for half'};
 
 /* ---------- traps ---------- */
@@ -119,17 +119,19 @@ const KD_BUILDERS={
     if(side==='rime'||side==='radiance') c.sideV=Math.round(10*F); if(side==='glow') c.sideV=Math.round(8*F); if(side==='siphon') c.sideV=Math.round(8*F); },
   charge(c,[shot,uses,kw,edge]){ const F=kdF(c), U=KD_USES[uses||'normal']; c.fx=shot||'bolt'; c.usesK=uses||'normal'; if(edge&&edge!=='none') c.edge=edge;
     const base={common:4,uncommon:6,rare:10,legendary:15}[c.rarity]; c.uses=Math.max(2,Math.round(base*U.u));
-    const k=applyKw(c,kw,c.rank); c.pow=Math.max(3,Math.round(16*F*k*U.k/Math.sqrt(base/3)*(c.fx==='twin'||c.fx==='burst'?.65:1)*(c.edge?.85:1))); },
+    const k=applyKw(c,kw,c.rank); c.pow=Math.max(3,Math.round(20*F*k*U.k/Math.sqrt(base/3)*(c.fx==='twin'||c.fx==='burst'?.65:1)*(c.edge?.85:1))); },
   trap(c,[trap,kw,len,size,spread]){ const F=kdF(c), L=KD_LEN[len||'normal'], S=KD_SIZE[size||'one']; c.trap=trap||'spike'; c.len=len||'normal'; c.size=size||'one';
     const sp=KD_SPREAD_OF(c.trap); if(sp.length) c.spread=sp.includes(spread)?spread:sp[0];
     const k=applyKw(c,kw,c.rank); c.pow=Math.round({spike:38,snare:18,blast:26,shock:16,zombie:10,pendulum:30}[c.trap]*F*k*L.k*S.k*(c.trap==='pendulum'?KD_SPREAD[c.spread].k:1)); if(c.trap==='snare') c.stun=r1(1.5+c.rank*.1);
     // shock: holds the enemy it catches, and zaps any other enemy that comes into the field around it
     if(c.trap==='shock'){ c.hold=r1((2.5+c.rank*.1)*L.k); c.zap=Math.max(3,Math.round(12*F*S.k*KD_SPREAD[c.spread].k)); }
     // zombie: the enemy it catches turns on its own side for a while
-    if(c.trap==='zombie') c.infect=r1((4+c.rank*.2)*L.k*S.k);
+    if(c.trap==='zombie') c.infect=Math.max(6,r1((6.5+c.rank*.25)*L.k*S.k));
     c.turns=+(2*L.t).toFixed(1); },
   environment(c,[env,pattern,len,kw]){ const F=kdF(c), L=KD_LEN[len||'normal']; c.env=env||'burn'; c.pattern=pattern||'burst'; c.len=len||'normal'; if(kw) c.envKw=kw;
-    if(c.env==='bramble') c.pow=Math.round(8*F*L.k); if(c.env==='tremor'){ c.pow=Math.round(14*F*L.k); c.stun=r1((.8+c.rank*.08)*L.k); }
+    if(c.env==='bramble') c.pow=Math.round(8*F*L.k);
+    // burning and icy ground also hit whoever is on it when it lands (enemies just step off the tiles after)
+    if(c.env==='burn') c.pow=Math.round(12*F*L.k); if(c.env==='freeze') c.pow=Math.round(7*F*L.k); if(c.env==='tremor'){ c.pow=Math.round(14*F*L.k); c.stun=r1((.8+c.rank*.08)*L.k); }
     else c.turns=+((6+Math.round(c.rank/2)>=10?2:1)*L.t).toFixed(1);
     if(kw) applyKw(c,kw,c.rank); },
 };
@@ -158,7 +160,7 @@ function kdText(c,kw){ const T=kdBase(c), K=kw&&kw.length?'. '+kw.join(', '):'',
       if(c.trap==='zombie') return len+(c.size==='three'?'Three zombie traps':'Zombie trap')+' on '+on+', '+tn(c.turns)+': the enemy that steps on it takes '+c.pow+' and is infected for '+c.infect+'s, attacking the other enemies instead of you'+K;
       if(c.trap==='pendulum') return len+(c.size==='three'?'Three pendulum traps':'Pendulum trap')+' on '+on+', '+tn(c.turns)+': when an enemy steps on it a blade swings '+sp+', '+c.pow+' to every enemy in its path; the others can dodge it'+K;
       return len+(c.size==='three'?'Three traps: ':'')+{spike:'Spike trap: '+c.pow, snare:'Snare: '+c.pow+' and roots', blast:'Blast trap: '+c.pow+' to it and around it'}[c.trap]+' when an enemy steps on '+on+'; '+tn(c.turns)+K; }
-    case 'environment': return len+{burn:'Sets the ground burning', freeze:'Ices the ground, halving enemy speed,', bramble:'Grows brambles that deal '+c.pow+' per step', tremor:'Tremor deals '+c.pow}[c.env]+AREA_TEXT[c.pattern]+(c.turns?' for '+tn(c.turns):'')+(c.envKw?'; enemies standing there when it appears get the keyword':'')+K; }
+    case 'environment': return len+{burn:'Sets the ground burning (enemies on it take '+c.pow+' and catch fire; burning ground sets alight whatever steps on it)', freeze:'Ices the ground (enemies on it take '+c.pow+'), halving enemy speed,', bramble:'Grows brambles that deal '+c.pow+' per step', tremor:'Tremor deals '+c.pow}[c.env]+AREA_TEXT[c.pattern]+(c.turns?' for '+tn(c.turns):'')+(c.envKw?'; enemies standing there when it appears get the keyword':'')+K; }
   return ''; }
 // the extra line a strike's cast or a Gray creature's stance adds
 const kdCastText=c=>c.cast&&c.cast!=='normal'?'. '+KD_CAST[c.cast].name+': '+KD_CAST[c.cast].text:'';

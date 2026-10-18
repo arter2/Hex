@@ -125,10 +125,10 @@ function detectCombos(queue){
   if(cards.length>=3&&oneRune(cards)&&ranks.every((x,i)=>!i||x===ranks[i-1]+1))
     out.push({kind:'straight', ranks, label:(cards.length>=4?'Grand Straight ':'Straight ')+ranks.join('-')+': chain cast + finisher'});
   const run=runeRun(cards);
-  // Rune Set: every queued card has the same rune (✱ fits any): Power, wand ×2.5, for 5s (8s with 4)
+  // Rune Set: every queued card has the same rune (✱ fits any): Power, wand ×1.8, for 5s (8s with 4)
   const real=cards.map(c=>c.code).filter(k=>k&&k!==WILD_RUNE);
   if(cards.length>=3&&real.length&&cards.every(c=>c.code)&&oneRune(cards)){ const dur=cards.length>=4?8:5;
-    out.push({kind:'set', rune:real[0], n:cards.length, dur, label:(cards.length>=4?'Grand Rune Set ':'Rune Set ')+real[0]+'×'+cards.length+': Wand ×2.5 '+dur+'s'}); }
+    out.push({kind:'set', rune:real[0], n:cards.length, dur, label:(cards.length>=4?'Grand Rune Set ':'Rune Set ')+real[0]+'×'+cards.length+': Wand ×1.8 '+dur+'s'}); }
   if(run){ const dur=run.length>=4?12:8; out.push({kind:'run', runes:run, dur, label:(run.length>=4?'Grand Rune Run ':'Rune Run ')+run.join('-')+': Haste + Courage '+dur+'s'}); }
   return out;
 }

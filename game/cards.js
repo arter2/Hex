@@ -58,7 +58,7 @@ const RARITY={common:{n:'Common',g:'●'}, uncommon:{n:'Uncommon',g:'◆'}, rare
 // shape (strike): line = first enemy in row, row = every enemy in row, wedge = short cone,
 //                 all = every enemy, missiles = n hits on random enemies
 // ward: wall (n blocks with hp), thorns (walls that hit back), barrier (absorbs amt)
-// boon: power (wand x2.5), pact (cards and wand +30%), haste, dodge, phase, regen, heal, gauge
+// boon: power (wand x1.8), pact (cards and wand +30%), haste, dodge, phase, regen, heal, gauge
 // Signature cards: hand-authored, they define each color's strategies.
 const SIGNATURE=[
   // Fire — raw damage: burn, splash, self-damage for power
@@ -644,7 +644,7 @@ function cardText(c){
   if(c.beh&&typeof crText==='function'&&['summon','machine','sentry'].includes(kind)) return crText(c)+(typeof kdStanceText==='function'?kdStanceText(c):'')+(kw.length?'. '+kw.join(', '):'');
   if(kind==='strike'&&typeof STRIKE_SHAPES!=='undefined'&&STRIKE_SHAPES[c.shape]) return (c.piece?'Legendary piece. ':'')+strikeText(c)+(typeof kdCastText==='function'?kdCastText(c):'')+(kw.length?'. '+kw.join(', '):'');
   if(c.kd&&c.type!=='instant'&&typeof kdText==='function') return (c.piece?'Legendary piece. ':'')+kdText(c,kw);   // lobs, wards, boons, charges, traps and ground built from parts (kinds.js)   // the newer shapes (strikes.js)
-  if(kind==='strike') t={line:c.pow+' to the first enemy in your row', row:c.pow+' to every enemy in your row', wedge:c.pow+' in a short cone ahead',
+  if(kind==='strike') t={line:c.pow+' to the first enemy in your row', row:c.pow+' to every enemy in your row', wedge:c.pow+' in a cone ahead',
                          all:c.pow+' to every enemy', missiles:c.n+' missiles of '+c.pow+' at random enemies',
                          dig:c.pow+' tunnelling under walls and shields to the first enemy in your row', zigzag:c.pow+' zigzagging between your row and the next',
                          diag:c.pow+' in two diagonal bolts that bounce off the board\'s edges'}[c.shape];
@@ -656,7 +656,7 @@ function cardText(c){
     :c.form==='cage'?'Cages the enemy you aim in walls of '+c.hp+' HP'+(c.ward==='thorns'?' that hit back for '+c.thorns:'')+': it can\'t move and its shots hit the bars; yours pass through. '+tn(c.turns)
     :c.n+' walls of '+c.hp+' HP'+(c.ward==='thorns'?' that hit back for '+c.thorns:'')+({arc:' in a half-ring around you',rampart:' across the lanes in front of you',corridor:' up the lanes on both sides of you'}[c.form]||'')+', '+tn(c.turns);
   else if(kind==='sentry') t='Tower: '+c.pow+' every '+c.rate+'s, '+c.hp+' HP, '+tn(c.turns);
-  else if(kind==='boon') t={power:'Wand ×2.5 for '+c.dur+'s', pact:'Cards and wand +30% for '+c.dur+'s', haste:'Faster moves and casts for '+c.dur+'s',
+  else if(kind==='boon') t={power:'Wand ×1.8 for '+c.dur+'s', pact:'Cards and wand +30% for '+c.dur+'s', haste:'Faster moves and casts for '+c.dur+'s',
                            dodge:'Dodge the next hit', phase:'Untouchable for '+c.dur+'s', regen:'Heal '+c.amt+'/s for '+c.dur+'s', heal:'Heal '+c.amt,
                            gauge:'Fill '+Math.round(c.amt*100)+'% of the Spell gauge', courage:'Cards and wand +30% for '+c.dur+'s, no HP cost',
                            intervene:'The next hit that would defeat you leaves you standing and heals '+c.amt}[c.boon];

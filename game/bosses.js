@@ -119,7 +119,8 @@ function bossTick(e,dt){
 function bossHit(e,card,base){
   if(e.under){ return 0; }
   if(e.guardT>0){ floater('guarded',e.tile,'#e6f4ff'); return 0; }
-  if(e.reflect&&card&&card.color===e.resist){ floater('reflected!',e.tile,COLORS[e.resist].c,true); hitPlayer(Math.max(1,Math.round(base*.35))); return 0; }
+  // only what you cast or shoot bounces back: your creatures' hits are just resisted (half damage)
+  if(e.reflect&&card&&card.color===e.resist&&!card.beh&&!/^cr_/.test(card.id||'')){ floater('reflected!',e.tile,COLORS[e.resist].c,true); hitPlayer(Math.max(1,Math.round(base*.35))); return 0; }
   return null;
 }
 function bossColorMult(atk,e){ if(e&&e.weak) return atk===e.weak?WEAK_MULT:atk&&atk===e.resist?(e.def&&e.def.boss||e.reflect?.5:typeof RESIST_MULT!=='undefined'?RESIST_MULT:.5):1; return colorMult(atk,e&&e.color); }

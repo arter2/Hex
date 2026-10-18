@@ -319,18 +319,18 @@ Pack Ice Bulwark | ward | u | form=rampart build=heavy wfx=freezing kw=- rune=E
 Walls of Ys | ward | l | form=shield build=heavy wfx=healing len=long kw=- rune=D
 Dome of Atlantis | ward | r | form=shield build=light wfx=healing len=short kw=- rune=E
 
-Inuksuk Watcher | sentry | c | beh=wardmaker tier=sturdy speed=steady kw=freeze rune=F
-Lighthouse | sentry | u | beh=mends tier=sturdy speed=slow trait=pack kw=- rune=F
-Ice Spike Totem | sentry | c | beh=empower tier=sturdy speed=slow kw=freeze trait=rallying rune=F
-Narwhal Horn Totem | sentry | c | beh=empower tier=sturdy speed=slow kw=pull trait=dread rune=C
-Figurehead Sentinel | sentry | u | beh=taunt tier=tough speed=steady trait=submerge kw=- rune=B
-Coral Spire | sentry | c | beh=bolt tier=sturdy speed=steady kw=slow trait=dread rune=C
-Siren Rock | sentry | r | beh=mends tier=sturdy speed=steady kw=freeze trait=submerge rune=F
-Fountain of Youth | sentry | r | beh=mends tier=sturdy speed=steady kw=mend trait=pack rune=C
-Rime Giant Cairn | sentry | u | beh=lob tier=huge speed=slow kw=slow trait=rallying rune=B
-Whale Bone Arch | sentry | c | beh=mends tier=sturdy speed=quick kw=curse trait=tidal rune=C
-Lantern of the Drowned | sentry | r | beh=shields tier=sturdy speed=steady trait=rallying kw=- rune=C
-Tide Pole | sentry | c | beh=snipe tier=sturdy speed=steady kw=pull trait=shatter rune=F
+Inuksuk Watcher | sentry | c | rune=F beh=bolt tier=sturdy speed=slow kw=freeze
+Lighthouse | sentry | u | rune=F beh=snipe tier=sturdy speed=slow trait=pack kw=-
+Ice Spike Totem | sentry | c | rune=F beh=shields tier=sturdy speed=slow kw=freeze trait=rallying
+Narwhal Horn Totem | sentry | c | rune=C beh=empower tier=sturdy speed=slow kw=pull trait=rallying
+Figurehead Sentinel | sentry | u | rune=B beh=taunt tier=tough speed=steady trait=submerge kw=-
+Coral Spire | sentry | c | rune=C beh=snipe tier=sturdy speed=steady kw=curse trait=shatter
+Siren Rock | sentry | r | rune=F beh=bolt tier=sturdy speed=steady kw=freeze trait=submerge
+Fountain of Youth | sentry | r | rune=C beh=bolt tier=sturdy speed=steady trait=rallying kw=-
+Rime Giant Cairn | sentry | u | rune=B beh=lob tier=huge speed=slow kw=slow trait=rallying
+Whale Bone Arch | sentry | c | rune=C beh=pierce tier=sturdy speed=steady kw=pull trait=dread
+Lantern of the Drowned | sentry | r | rune=C beh=mends tier=sturdy speed=steady trait=submerge kw=-
+Tide Pole | sentry | c | rune=F beh=bolt tier=sturdy speed=steady kw=pull trait=harvest
 
 Sea Legs | boon | c | boon=dodge side=muster timing=echo kw=- rune=C
 Fair Winds | boon | c | boon=haste len=short side=glow timing=delayed kw=- rune=D
@@ -413,65 +413,65 @@ Heart of the Leviathan | piece | l | shape=mine kw=mend cast=quick rune=C
 Eye of the Frost Giant | piece | l | shape=snipe kw=freeze rider=onkill cast=charged rune=C
 Bell of the Sunken City | piece | l | shape=row kw=mend rune=F
 
-Merrow | summon | c | body=Merfolk beh=mends tier=frail speed=steady kw=freeze trait=scorched rune=D
-Mermaid Singer | summon | u | body=Merfolk mod=Gentle beh=mends tier=sturdy speed=slow kw=curse rune=A
-Merman Spearman | summon | c | body=Merfolk mod=Brave beh=taunt tier=tough speed=steady kw=pull trait=dread rune=F
-Merfolk Tidecaller | summon | u | body=Merfolk mod=Clever beh=mends tier=sturdy speed=slow kw=slow trait=submerge rune=A
-Ningyo | summon | u | body=Fish mod=Pale beh=empower tier=sturdy speed=slow kw=slow trait=shatter rune=F
-Siren | summon | r | body=Merfolk mod=Sly beh=mends tier=sturdy speed=steady kw=slow trait=rallying rune=C
-Selkie | summon | u | body=Seal beh=mends tier=sturdy speed=frantic kw=freeze trait=tidal rune=B
-Nixie | summon | c | body=Sprite mod=Pale beh=wardmaker tier=sturdy speed=steady trait=shatter kw=- rune=F
-Rusalka | summon | r | body=Spirit mod=Pale beh=mends tier=sturdy speed=steady kw=curse trait=explodes rune=F
-Kappa | summon | c | body=Kappa beh=wardmaker tier=sturdy speed=steady kw=mend trait=tidal rune=C
-Umibozu | summon | r | body=Ogre mod=Ancient beh=mends tier=sturdy speed=steady kw=pull trait=tidal rune=E
-Yeti | summon | u | body=Yeti beh=pounce tier=huge speed=slow kw=- trait=shatter rune=B
-Yeti Cub | summon | c | body=Yeti mod=Tiny beh=trample tier=huge speed=slow kw=mend trait=rallying rune=C
-Yeti Matriarch | summon | r | body=Yeti mod=Dire beh=lob tier=huge speed=slow trait=scorched kw=- rune=B
-Snowman | summon | c | body=Snowman beh=mends tier=tough speed=steady kw=freeze trait=chilling rune=C
-Winter Wolf | summon | c | body=Wolf mod=Pale beh=dash tier=sturdy speed=steady kw=freeze trait=dread rune=F
-Frost Wolf Alpha | summon | u | body=Wolf mod=Dire beh=pounce tier=sturdy speed=steady kw=freeze trait=pack rune=A
-Rockhopper Penguin | summon | c | body=Penguin mod=Scrappy beh=mends tier=frail speed=slow kw=- rune=F
-Walrus | summon | u | body=Walrus beh=mends tier=sturdy speed=frantic kw=pull trait=shatter rune=✱
-Narwhal | summon | u | body=Narwhal beh=mends tier=sturdy speed=quick kw=pull trait=dread rune=F
-Orca | summon | r | body=Orca beh=mends tier=sturdy speed=slow kw=pull trait=rallying rune=F
-Hammerhead Shark | summon | u | body=Shark beh=mends tier=huge speed=steady kw=slow trait=tidal rune=C
-Great White Shark | summon | r | body=Shark mod=Hungry beh=mends tier=sturdy speed=slow kw=mend trait=tidal rune=F
-Sea Turtle | summon | c | body=Turtle mod=Gentle beh=guards tier=tough speed=slow kw=pull trait=tidal rune=E
-Zaratan the Island Turtle | summon | l | body=Turtle mod=Ancient beh=guards tier=tough speed=slow kw=freeze trait=scorched rune=F
-King Crab | summon | u | body=Crab mod=Iron beh=guards tier=tough speed=slow kw=mend trait=rallying rune=C
-Giant Squid | summon | r | body=Kraken mod=Wild beh=trample tier=huge speed=slow kw=freeze trait=dread rune=B
-The Kraken | summon | l | body=Kraken mod=Dire beh=trample tier=huge speed=slow kw=pull trait=tidal rune=E
-Kraken Spawn | summon | c | body=Kraken mod=Tiny beh=trample tier=huge speed=slow kw=slow trait=shatter rune=F
-Leviathan | summon | l | body=Leviathan mod=Ancient beh=trample tier=huge speed=slow trait=explodes kw=- rune=F
-Bunyip of the Billabong | summon | u | body=Seal mod=Feral beh=mends tier=sturdy speed=quick kw=- rune=C
-Sea Serpent | summon | r | body=Serpent mod=Wild beh=bolt tier=sturdy speed=slow kw=slow trait=tidal rune=B
-Dragon King of the Deep | summon | l | body=Lung mod=Noble beh=cone tier=sturdy speed=slow kw=freeze trait=shatter rune=C
-River Lung | summon | u | body=Lung mod=Gentle beh=shields tier=sturdy speed=slow kw=freeze trait=scorched rune=D
-Frost Giant | summon | r | body=Ogre mod=Pale beh=lob tier=huge speed=slow kw=freeze trait=chilling rune=E
-Pirate Deckhand | summon | c | body=Squire mod=Scrappy beh=zigzag tier=frail speed=quick kw=slow rune=F
-Buccaneer Captain | summon | r | body=Knight mod=Sly beh=mends tier=sturdy speed=quick kw=freeze trait=pack rune=A
-Powder Monkey | summon | c | body=Squire mod=Tiny beh=cross tier=sturdy speed=quick trait=explodes kw=- rune=C
-Flying Dutchman's Captain | summon | l | body=Spirit mod=Grim beh=mends tier=sturdy speed=steady trait=chilling kw=- rune=E
-Drowned Sailor | summon | c | body=Spirit mod=Pale beh=mends tier=sturdy speed=frantic trait=rallying kw=- rune=C
-Snow Maiden | summon | c | body=Sprite mod=Gentle beh=mends tier=sturdy speed=quick kw=mend trait=chilling rune=B
-Yuki-onna | summon | r | body=Spirit mod=Pale beh=mends tier=sturdy speed=steady kw=burn trait=shatter rune=F
-Kayak Hunter | summon | c | body=Squire mod=Brave beh=snipe tier=sturdy speed=quick kw=pull rune=F
-Polar Bear | summon | u | body=Bear mod=Pale beh=taunt tier=tough speed=steady kw=slow rune=F
-River Mother's Herald | summon | u | body=Merfolk mod=Noble beh=empower tier=frail speed=quick trait=rallying kw=- rune=F
-Vodyanoy | summon | u | body=Toad mod=Old beh=mends tier=sturdy speed=slow kw=burn trait=harvest rune=C
-Ahuizotl | summon | u | body=Hound mod=Sly beh=empower tier=sturdy speed=steady kw=pull rune=F
-Taniwha | summon | r | body=Serpent mod=Ancient beh=mends tier=sturdy speed=quick kw=slow trait=shatter rune=E
+Merrow | summon | c | body=Merfolk rune=D beh=mends tier=sturdy speed=quick kw=curse trait=scorched
+Mermaid Singer | summon | u | body=Merfolk mod=Gentle rune=A beh=burrow tier=sturdy speed=slow kw=-
+Merman Spearman | summon | c | body=Merfolk mod=Brave rune=F beh=taunt tier=tough speed=steady kw=pull
+Merfolk Tidecaller | summon | u | body=Merfolk mod=Clever rune=A beh=mends tier=sturdy speed=slow kw=slow
+Ningyo | summon | u | body=Fish mod=Pale rune=F beh=empower tier=sturdy speed=slow kw=slow trait=shatter
+Siren | summon | r | body=Merfolk mod=Sly rune=C beh=mends tier=sturdy speed=steady kw=slow trait=rallying
+Selkie | summon | u | body=Seal rune=B beh=mends tier=sturdy speed=steady kw=freeze trait=harvest
+Nixie | summon | c | body=Sprite mod=Pale rune=F beh=cross tier=sturdy speed=slow trait=submerge kw=-
+Rusalka | summon | r | body=Spirit mod=Pale rune=F beh=mends tier=sturdy speed=steady kw=mend trait=tidal
+Kappa | summon | c | body=Kappa rune=C beh=cone tier=sturdy speed=slow kw=pull trait=dread
+Umibozu | summon | r | body=Ogre mod=Ancient rune=E beh=mends tier=sturdy speed=steady kw=pull trait=chilling
+Yeti | summon | u | body=Yeti rune=B beh=trample tier=huge speed=slow kw=mend trait=rallying
+Yeti Cub | summon | c | body=Yeti mod=Tiny rune=C beh=trample tier=huge speed=slow kw=slow trait=chilling
+Yeti Matriarch | summon | r | body=Yeti mod=Dire rune=B beh=lob tier=huge speed=slow trait=harvest kw=-
+Snowman | summon | c | body=Snowman rune=C beh=mends tier=sturdy speed=quick kw=freeze trait=chilling
+Winter Wolf | summon | c | body=Wolf mod=Pale rune=F beh=pounce tier=sturdy speed=steady kw=freeze
+Frost Wolf Alpha | summon | u | body=Wolf mod=Dire rune=A beh=dash tier=sturdy speed=steady kw=freeze trait=dread
+Rockhopper Penguin | summon | c | body=Penguin mod=Scrappy rune=F beh=zigzag tier=sturdy speed=slow trait=rallying kw=-
+Walrus | summon | u | body=Walrus rune=✱ beh=chain tier=sturdy speed=steady kw=pull trait=tidal
+Narwhal | summon | u | body=Narwhal rune=F beh=mends tier=sturdy speed=quick kw=pull trait=tidal
+Orca | summon | r | body=Orca rune=F beh=beam tier=sturdy speed=slow kw=pull trait=tidal
+Hammerhead Shark | summon | u | body=Shark rune=C beh=mends tier=sturdy speed=frantic kw=slow trait=tidal
+Great White Shark | summon | r | body=Shark mod=Hungry rune=F beh=mends tier=sturdy speed=slow kw=pull trait=harvest
+Sea Turtle | summon | c | body=Turtle mod=Gentle rune=E beh=guards tier=tough speed=slow kw=pull trait=tidal
+Zaratan the Island Turtle | summon | l | body=Turtle mod=Ancient rune=F beh=guards tier=tough speed=slow kw=freeze trait=scorched
+King Crab | summon | u | body=Crab mod=Iron rune=C beh=guards tier=tough speed=slow kw=mend trait=explodes
+Giant Squid | summon | r | body=Kraken mod=Wild rune=B beh=trample tier=huge speed=slow kw=freeze trait=dread
+The Kraken | summon | l | body=Kraken mod=Dire rune=E beh=trample tier=huge speed=slow kw=pull trait=tidal
+Kraken Spawn | summon | c | body=Kraken mod=Tiny rune=F beh=lob tier=huge speed=slow kw=pull trait=dread
+Leviathan | summon | l | body=Leviathan mod=Ancient rune=F beh=trample tier=huge speed=slow trait=explodes kw=-
+Bunyip of the Billabong | summon | u | body=Seal mod=Feral rune=C beh=mends tier=sturdy speed=steady kw=curse
+Sea Serpent | summon | r | body=Serpent mod=Wild rune=B beh=pounce tier=sturdy speed=slow kw=slow trait=tidal
+Dragon King of the Deep | summon | l | body=Lung mod=Noble rune=C beh=cone tier=sturdy speed=slow kw=freeze trait=harvest
+River Lung | summon | u | body=Lung mod=Gentle rune=D beh=mends tier=sturdy speed=slow kw=mend trait=scorched
+Frost Giant | summon | r | body=Ogre mod=Pale rune=E beh=lob tier=huge speed=slow kw=freeze trait=chilling
+Pirate Deckhand | summon | c | body=Squire mod=Scrappy rune=F beh=zigzag tier=frail speed=quick kw=slow
+Buccaneer Captain | summon | r | body=Knight mod=Sly rune=A beh=pierce tier=sturdy speed=steady kw=freeze trait=pack
+Powder Monkey | summon | c | body=Squire mod=Tiny rune=C beh=blast tier=sturdy speed=steady trait=dread kw=-
+Flying Dutchman's Captain | summon | l | body=Spirit mod=Grim rune=E beh=mends tier=sturdy speed=slow trait=chilling kw=-
+Drowned Sailor | summon | c | body=Spirit mod=Pale rune=C beh=burrow tier=sturdy speed=steady trait=harvest kw=-
+Snow Maiden | summon | c | body=Sprite mod=Gentle rune=B beh=blast tier=sturdy speed=quick kw=freeze
+Yuki-onna | summon | r | body=Spirit mod=Pale rune=F beh=diag tier=sturdy speed=steady trait=explodes kw=-
+Kayak Hunter | summon | c | body=Squire mod=Brave rune=F beh=snipe tier=sturdy speed=steady kw=pull trait=rallying
+Polar Bear | summon | u | body=Bear mod=Pale rune=F beh=pounce tier=tough speed=steady kw=slow trait=chilling
+River Mother's Herald | summon | u | body=Merfolk mod=Noble rune=F beh=empower tier=frail speed=quick trait=rallying kw=-
+Vodyanoy | summon | u | body=Toad mod=Old rune=C beh=dash tier=sturdy speed=slow trait=explodes kw=-
+Ahuizotl | summon | u | body=Hound mod=Sly rune=F beh=chain tier=sturdy speed=slow kw=pull
+Taniwha | summon | r | body=Serpent mod=Ancient rune=E beh=pounce tier=sturdy speed=steady trait=scorched kw=-
 
-Ship's Cannon | machine | u | mach=Cannon beh=bolt tier=sturdy speed=steady trait=submerge kw=- rune=B
-Broadside Battery | machine | r | mach=Cannon beh=zigzag tier=frail speed=quick kw=freeze trait=shatter rune=F
-Harpoon Ballista | machine | u | mach=Ballista beh=snipe tier=sturdy speed=steady kw=slow rune=F
-Harpoon Launcher | machine | c | mach=Crossbow beh=shields tier=sturdy speed=slow kw=slow rune=F
-Ice Catapult | machine | c | mach=Catapult beh=blast tier=sturdy speed=slow kw=freeze trait=pack rune=F
-Mortar Ketch | machine | u | mach=Cannon beh=blast tier=sturdy speed=slow kw=slow trait=dread rune=C
-Sluice Gate Bulwark | machine | u | mach=Bulwark beh=wardmaker tier=huge speed=slow kw=freeze trait=shatter rune=C
-Icebreaker Engine | machine | r | mach=Engine beh=mends tier=sturdy speed=slow kw=freeze trait=chilling rune=F
-Waterwheel Repeater | machine | c | mach=Repeater beh=barrage tier=frail speed=frantic kw=slow rune=F
-Diving Bell Automaton | machine | r | mach=Automaton beh=guards tier=tough speed=slow kw=slow trait=dread rune=B
+Ship's Cannon | machine | u | mach=Cannon rune=B beh=bolt tier=sturdy speed=steady kw=mend trait=shatter
+Broadside Battery | machine | r | mach=Cannon rune=F beh=zigzag tier=frail speed=quick kw=freeze trait=shatter
+Harpoon Ballista | machine | u | mach=Ballista rune=F beh=snipe tier=sturdy speed=steady kw=slow
+Harpoon Launcher | machine | c | mach=Crossbow rune=F beh=twin tier=sturdy speed=steady kw=slow trait=dread
+Ice Catapult | machine | c | mach=Catapult rune=F beh=blast tier=sturdy speed=slow kw=freeze trait=pack
+Mortar Ketch | machine | u | mach=Cannon rune=C beh=blast tier=sturdy speed=slow kw=slow trait=dread
+Sluice Gate Bulwark | machine | u | mach=Bulwark rune=C beh=wardmaker tier=huge speed=slow kw=freeze trait=harvest
+Icebreaker Engine | machine | r | mach=Engine rune=F beh=mends tier=sturdy speed=slow kw=freeze trait=dread
+Waterwheel Repeater | machine | c | mach=Repeater rune=F beh=barrage tier=frail speed=frantic kw=slow
+Diving Bell Automaton | machine | r | mach=Automaton rune=B beh=guards tier=tough speed=slow kw=slow trait=pack
 `,
 
 /* ---------------- Yellow · Storm: lightning, sand, invention and greed ---------------- */
@@ -1572,7 +1572,7 @@ Mother Hen | summon | c | body=Crane mod=Tiny beh=summoner tier=frail speed=quic
 Honeybadger | summon | u | body=Mole mod=Brave beh=wardmaker tier=sturdy speed=slow kw=freeze trait=loyal stance=front rune=B
 Sacred Ibis | summon | u | body=Crane mod=Noble beh=lob tier=sturdy speed=quick trait=static stance=front kw=- rune=E
 Beaver Builder | summon | c | body=Rat mod=Clever beh=lob tier=sturdy speed=slow kw=slow stance=rear rune=C
-Capybara | summon | c | body=Rat mod=Gentle beh=cone tier=sturdy speed=slow stance=rear kw=- rune=D
+Capybara | summon | c | body=Rat mod=Gentle beh=cone tier=sturdy speed=quick stance=front kw=- rune=D
 Wandering Monk | summon | u | body=Hero mod=Gentle beh=mends tier=sturdy speed=steady trait=tidal stance=escort kw=- rune=B
 Pilgrim | summon | c | body=Hero mod=Old beh=barrage tier=sturdy speed=slow kw=freeze stance=escort rune=F
 Tea Master | summon | r | body=Hero mod=Clever beh=blast tier=sturdy speed=slow trait=overcharge stance=rear kw=- rune=C

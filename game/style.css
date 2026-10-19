@@ -1059,6 +1059,13 @@ body.lsS #custHand .slot.hole{min-height:104px;}
 .peek,.cast-fx{zoom:var(--uib,1);}
 #cGrid,#dkColl,#custHand,#rvCards,#pkCards,#bColl{display:grid!important; grid-template-columns:repeat(auto-fill,var(--cardw,104px))!important; justify-content:center; gap:6px!important;}
 #cGrid>.card,#dkColl>.card,#custHand>.card,#custHand>.slot,#rvCards>.card,#rvCards>*,#pkCards>.card,#bColl>.card{width:var(--cardw,104px); height:calc(var(--cardw,104px)*1.7)!important; min-height:0!important; aspect-ratio:auto!important;}
+/* a reward that isn't a card (XP, gold, gear) keeps a card's size: its picture sits at the top at a
+   fixed size and long text is cut to fit, so nothing spills out of the box */
+#rvCards>.reward{justify-content:flex-start; overflow:hidden; padding:8px 6px; gap:3px;}
+#rvCards>.reward>b{flex:none; height:calc(var(--cardw,104px)*.5); display:flex; align-items:center; justify-content:center;}
+#rvCards>.reward>b img,#rvCards>.reward>b .xpic{width:auto; height:100%; max-width:100%; aspect-ratio:1; object-fit:contain; box-sizing:border-box; font-size:22px;}
+#rvCards>.reward>span{flex:none; max-width:100%; overflow-wrap:anywhere;}
+#rvCards>.reward>small{font-size:12px; line-height:1.25; display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:4; overflow:hidden; min-height:0; flex:none;}
 #cGrid .card .art,#dkColl .card .art,#custHand .card .art,#rvCards .card .art,#pkCards .card .art,#bColl .card .art{height:calc(var(--cardw,104px)*.5)!important; flex:none;}
 #cGrid .card .tx,#dkColl .card .tx,#custHand .card .tx,#rvCards .card .tx,#pkCards .card .tx,#bColl .card .tx{display:-webkit-box!important; -webkit-box-orient:vertical; -webkit-line-clamp:3; overflow:hidden; flex:0 1 auto; min-height:0;}
 #cGrid .card .cn,#dkColl .card .cn,#custHand .card .cn,#rvCards .card .cn,#pkCards .card .cn,#bColl .card .cn{white-space:nowrap; overflow:hidden; text-overflow:ellipsis; flex:none;}

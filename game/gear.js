@@ -273,7 +273,7 @@ function rollLoot(depth,rng,boss){
 const SCROLLS={enchant:{name:'Scroll of Enchanting', icon:'📜', text:'Adds an enchantment to a piece of gear', price:120},
                purify: {name:'Scroll of Purifying',  icon:'🕊', text:'Breaks the curse on a piece of gear',  price:150}};
 function lootLabel(save,k){ if(k.startsWith('scroll:')){ const sc=SCROLLS[k.slice(7)]; return {icon:sc.icon,name:sc.name,text:sc.text}; }
-  const g=GEAR[k]; return {icon:g.icon, name:gearName(save,k)+(g.legendary?' ✹':''), text:SLOT_NAMES[g.slot==='ring'?'ring1':g.slot]+': '+gearText(save,k)+(unworn(save,k)?' · Not worn yet: it may be enchanted or cursed':'')}; }
+  const g=GEAR[k]; return {icon:g.icon, name:gearName(save,k)+(g.legendary?' ✹':''), text:SLOT_NAMES[g.slot==='ring'?'ring1':g.slot]+': '+gearText(save,k)+(unworn(save,k)?' · Unworn: may be enchanted or cursed':'')}; }
 function addLoot(save,k,rng){ if(k.startsWith('scroll:')){ addScroll(save,k.slice(7)); return null; } return addGear(save,k,rng||Math.random); }
 // every save starts with the basic wand in hand
 function ensureStarterGear(save){ const s=gearState(save);

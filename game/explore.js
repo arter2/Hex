@@ -341,6 +341,11 @@ function xBuildScene(){
   const ft=new THREE.DataTexture(EX.fog,XN,XN,THREE.RGBAFormat); ft.magFilter=ft.minFilter=THREE.LinearFilter; ft.needsUpdate=true; EX.fogTex=ft;
   const veil=new THREE.Mesh(new THREE.PlaneGeometry(span,span),new THREE.MeshBasicMaterial({color:0x000000,transparent:true,alphaMap:ft,depthWrite:false}));
   veil.rotation.x=-Math.PI/2; veil.position.set(span/2,.04,span/2); veil.renderOrder=1; grp.add(veil); EX.veil=veil;
+  // past the edge of the map there is no light map: four dark bands carry the darkness on, so a room by
+  // the edge doesn't open onto a bright chasm (the chasm shows faintly only behind walls you have seen)
+  { const W=span*3, m=new THREE.MeshBasicMaterial({color:0x000000,transparent:true,opacity:.85,depthWrite:false});
+    for(const [w,h,x,z] of [[W,span,span/2,-span/2],[W,span,span/2,span*1.5],[span,span,-span/2,span/2],[span,span,span*1.5,span/2]]){
+      const b=new THREE.Mesh(new THREE.PlaneGeometry(w,h),m); b.rotation.x=-Math.PI/2; b.position.set(x,.04,z); b.renderOrder=1; grp.add(b); } }
   xFovMesh(grp);
   // walls: rough rock beside corridors, chiseled blocks (large or rubble) around rooms
   const walls=[[],[],[]];
@@ -1386,12 +1391,21 @@ function xDoorTick(dt){ xLidTick(dt); if(typeof xBitsTick==='function'&&EX) xBit
   // a swung door overshoots a hair and settles
   xDoorPose(d,d.gate?e:Math.min(1.06,e+.08*Math.sin(k*Math.PI)),d.sign||1); if(k>=1){ d.anim=null; xDoorPose(d,1,d.sign||1); } } }
 function xLoopStart(){ cancelAnimationFrame(xRaf); xLast=performance.now(); xRaf=requestAnimationFrame(xLoop); }
+/* The next frame is asked for first and each part runs on its own guard, so one bad frame (an error in
+   a monster's step, a prop or the drawing) can never stop the dungeon for good: before, an error froze
+   the picture and left a search "Working…" forever, so you could not move. */
+let xErrShown=0;
+function xGuard(f){ try{ f(); }catch(e){ if(xErrShown++<3) console.error('dungeon:',e); } }
 function xLoop(ts){
   if(!EX||!EX.active||!$('#scrExplore').classList.contains('on')) return;
+  xRaf=requestAnimationFrame(xLoop);
   const dt=Math.min(.1,(ts-xLast)/1000); xLast=ts;
-  if(!EX.busy&&!xPaused&&!EX.aim&&!DBG.pause){ xMove(dt); if(!EX||!EX.active){ return; } xEnemies(dt); if(EX.active&&!EX.busy&&typeof xDungeonTick==='function') xDungeonTick(dt); if(EX.active&&!EX.busy) xTipScan(dt);
+  // a search or disarm never takes more than a few seconds, whatever happens
+  if(EX.action){ EX.action.age=(EX.action.age||0)+dt; if(EX.action.age>5){ const a=EX.action; EX.action=null; xGuard(()=>a.done()); xHud(); } }
+  if(!EX.busy&&!xPaused&&!EX.aim&&!DBG.pause){ xGuard(()=>xMove(dt)); if(!EX||!EX.active){ cancelAnimationFrame(xRaf); return; } xGuard(()=>xEnemies(dt)); if(EX.active&&!EX.busy&&typeof xDungeonTick==='function') xGuard(()=>xDungeonTick(dt)); if(EX.active&&!EX.busy) xGuard(()=>xTipScan(dt));
     EX.regenT+=dt; if(EX.regenT>3){ EX.regenT=0; if(EX.hp<xmaxHp()){ EX.hp++; xHud(); } } }
-  xDoorTick(dt||.016); xDraw(ts/1000,dt); xRaf=requestAnimationFrame(xLoop);
+  if(!EX||!EX.active){ cancelAnimationFrame(xRaf); return; }
+  xGuard(()=>xDoorTick(dt||.016)); xGuard(()=>xDraw(ts/1000,dt));
 }
 function xResize(){ const G=X3, cv=$('#xView'), w=cv.clientWidth||400, h=cv.clientHeight||600, pr=lookPR(); if(G.renderer.getPixelRatio()!==pr){ G.renderer.setPixelRatio(pr); G.w=0; } if(G.w===w&&G.h===h) return; G.w=w; G.h=h; G.renderer.setSize(w,h,false); G.cam.aspect=w/h; G.cam.updateProjectionMatrix(); }
 function xDraw(T,dt){

@@ -708,7 +708,7 @@ The Bronze Colossus | machine | l | mach=Automaton beh=trample tier=huge speed=s
 
 /* ---------------- Black · Shadow: death, horror and dark magic ---------------- */
 shadow:`
-Bone Splinter | strike | c | shape=mine kw=- rune=A
+Bone Splinter | strike | c | shape=mine kw=freeze rune=A
 Gravedigger's Spade | strike | c | shape=dig rider=recoil kw=- rune=B
 Miasma Wave | strike | c | shape=wave kw=poison rune=C
 Mold Spore Volley | strike | c | shape=gun kw=poison cast=quick rune=D
@@ -733,7 +733,7 @@ Jiangshi Hop | strike | u | shape=dig kw=stun rider=crit cast=charged rune=B
 Asanbosam Hook | strike | u | shape=zigzag kw=pull rider=crit cast=quick rune=C
 Hellhound Howl | strike | u | shape=shockwave kw=curse cast=quick rune=B
 Infernal Brand | strike | r | shape=mine kw=self rider=crit cast=quick rune=C
-Reaper's Scythe | strike | r | shape=boomerang rider=onkill kw=- rune=F
+Reaper's Scythe | strike | r | shape=boomerang rider=onkill kw=freeze rune=F
 Danse Macabre | strike | r | shape=all kw=confuse rider=crit cast=quick rune=A
 Onryo's Grudge | strike | r | shape=ricochet kw=curse rider=recoil rune=F
 Manananggal Swoop | strike | r | shape=dig kw=drain rider=onkill cast=quick rune=A
@@ -744,12 +744,12 @@ Gashadokuro's Fist | strike | l | shape=wedge kw=stun rider=crit cast=quick rune
 Maw of the Abyss | strike | l | shape=mine kw=self rider=recoil rune=✱
 
 Plague Flask | lob | c | pattern=single fuse=quick kw=poison after=knock rune=B
-Skull Bomb | lob | c | pattern=single fuse=heavy after=knock kw=- rune=A
+Skull Bomb | lob | c | pattern=single fuse=heavy after=knock kw=freeze rune=A
 Grave Dirt Handful | lob | c | pattern=burst fuse=quick kw=curse after=ground rune=F
 Hex Bag | lob | c | pattern=single fuse=heavy kw=curse after=ground rune=E
 Bat Cloud | lob | c | pattern=burst kw=drain rune=D
 Swamp Gas Bubble | lob | c | pattern=burst kw=curse after=knock rune=C
-Ossuary Urn | lob | c | pattern=column fuse=heavy after=ground kw=- rune=B
+Ossuary Urn | lob | c | pattern=column fuse=heavy after=ground kw=freeze rune=B
 Cauldron Spill | lob | u | pattern=burst fuse=quick kw=poison rune=A
 Witch's Brew Toss | lob | u | pattern=cross fuse=heavy kw=poison rune=F
 Coffin Drop | lob | u | pattern=single kw=stun after=ground rune=B
@@ -803,12 +803,12 @@ Crossroads Bargain | boon | r | boon=pact side=jolt timing=echo kw=- rune=C
 Undying Will | boon | r | boon=intervene side=sprout kw=- rune=B
 Infernal Contract | boon | l | boon=pact len=long side=siphon kw=- rune=C
 
-Bag of Teeth | charge | c | shot=twin uses=few edge=splash kw=- rune=A
+Bag of Teeth | charge | c | shot=twin uses=few edge=splash kw=freeze rune=A
 Coffin Nails | charge | c | shot=bolt uses=few kw=curse rune=D
 Spider Fangs | charge | c | shot=bolt uses=few kw=poison edge=pierce rune=E
-Bone Darts | strike | c | shape=line cast=quick kw=- rune=D
+Bone Darts | strike | c | shape=line cast=quick kw=freeze rune=D
 Belfry Bats | summon | c | beh=dash tier=frail speed=quick kw=confuse trait=harvest rune=E
-Crow Feathers | charge | c | shot=bolt kw=- rune=B
+Crow Feathers | charge | c | shot=bolt kw=freeze rune=B
 Nightshade Berries | charge | c | shot=twin kw=poison rune=C
 Jar of Carrion Beetles | lob | c | pattern=row fuse=quick kw=- rune=B
 Plague Vials | charge | u | shot=lob kw=poison edge=splash rune=C
@@ -832,7 +832,7 @@ Raise the Dead | utility | r | util=recall rune=A
 Doppelganger | utility | r | util=copy rune=B
 Necromancer's Grimoire | utility | l | util=copy rune=C
 
-Rusted Mantrap | trap | c | trap=spike len=long size=three kw=- rune=B
+Rusted Mantrap | trap | c | trap=spike len=long size=three kw=freeze rune=B
 Open Grave | trap | c | trap=zombie len=short size=three kw=- rune=E
 Sucking Bog | trap | u | trap=snare kw=slow len=long size=three rune=✱
 Trapdoor Spider Lair | trap | u | trap=snare kw=poison rune=A

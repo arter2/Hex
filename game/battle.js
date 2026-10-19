@@ -80,7 +80,7 @@ const GAUGE_MAX=10;
 function startBattle(list,depth,hooks,opts){
   buildBoard();
   const p={kind:'player', hp:120, maxHp:120, tile:P_TILES.find(t=>t.col===1&&t.r===(BOARD_ROWS>>1)), path:[], moveCd:0, castCd:0, wandCd:0, charging:false, chargeT:0,
-           barrier:0, shieldT:0, hurtT:0, invT:0, dodge:false, powerT:0, pactT:0, courageT:0, intervene:0, hasteT:0, regenT:0, regenAmt:0, hero:null};
+           barrier:0, shieldT:0, hurtT:0, invT:0, dodge:false, powerT:0, setT:0, pactT:0, courageT:0, intervene:0, hasteT:0, regenT:0, regenAmt:0, hero:null};
   p.tile.occ=p;
   B={depth, hooks:hooks||{}, piles:createPiles(list), player:p, aim:null, enemies:[], allies:[], walls:[], shots:[], lobs:[], shocks:[], teles:[], fx:[], floaters:[], parts:[],
      timers:[], gauge:0, phase:'custom', time:0, log:[]};
@@ -172,7 +172,7 @@ function closeCustomScreen(){
   if(unused.length){ pl.queue=pl.queue.filter(c=>!unused.includes(c)); pl.hand.push(...unused); }
   commitCustom(b.piles); b.phase='fight'; b.gauge=0;
   for(const cb of b.piles.combos||[]) if(cb.kind==='run'){ const p=b.player; p.hasteT=Math.max(p.hasteT,cb.dur); p.courageT=Math.max(p.courageT,cb.dur); }   // Rune Run
-  for(const cb of b.piles.combos||[]) if(cb.kind==='set'){ const p=b.player; p.powerT=Math.max(p.powerT,cb.dur); }   // Rune Set
+  for(const cb of b.piles.combos||[]) if(cb.kind==='set'){ const p=b.player; p.setT=Math.max(p.setT||0,cb.dur); }   // Rune Set: wand ×2.5 (a Power boon is ×1.8)
   if(b.turn>0&&b.hooks.onTurn) b.hooks.onTurn(b.turn+1);
   for(const cb of b.piles.combos||[]){ if(cb.kind==='recipe'){ b.hooks.onRecipe&&b.hooks.onRecipe(cb.recipe); continue; } if(cb.kind!=='straight') b.hooks.onCombo&&b.hooks.onCombo(cb.label); }
   b.hooks.onFight&&b.hooks.onFight();
@@ -912,7 +912,7 @@ function wandTrail(ctx,tx,ty,hx,hy,r,L,S){ const dx=hx-tx, dy=hy-ty, len=Math.hy
       const X=Math.round((cx+nx*j*px)/px), Y=Math.round((cy+ny*j*px)/px); if(a<=BAYER4[(Y&3)*4+(X&3)]) continue;
       ctx.fillStyle=e>.6&&t>.45?L.c2:L.c; ctx.globalAlpha=Math.min(1,.35+.55*a); ctx.fillRect(X*px,Y*px,px,px); } }
   ctx.globalAlpha=1; }
-const wandBuff=p=>!p?null:p.powerT>0?'power':p.pactT>0?'pact':p.courageT>0?'courage':null;
+const wandBuff=p=>!p?null:p.powerT>0||p.setT>0?'power':p.pactT>0?'pact':p.courageT>0?'courage':null;
 function shoot(from,tiles,o){ if(o.from==='p'&&o.card&&(o.card.rider==='pierce'||o.card.edge==='pierce')) o.dig=true;   // the Pierce rider (strikes.js) and a charge's Pierce edge (kinds.js)
   B.shots.push(Object.assign({a:from,tiles,i:-1,stepT:0,speed:o.from==='p'?.045*((B.player&&B.player.shotSpeed)||1):.08,hit:new Set()},o)); }
 
@@ -922,7 +922,7 @@ function fireWand(charged){ if(B&&B.player){ B.player.poseT=B.time; B.player.pos
   p.wandCd=charged?w.ccd||.5:w.cd||.3;
   if(w.hpPerShot) payHp(w.hpPerShot);
   if(w.misfire&&Math.random()<w.misfire){ floater('fizzle',p.tile,'#93a9ba'); burst(p.tile,'#56606a',5,1); return; }
-  let dmg=Math.max(1,Math.round((charged?w.charged:w.tap)*(w.mult||1)*(p.powerT>0?1.8:1)));
+  let dmg=Math.max(1,Math.round((charged?w.charged:w.tap)*(w.mult||1)*(p.setT>0?2.5:p.powerT>0?1.8:1)));
   // an elemental weapon shoots in its color, and its effects ride on the shot like a card's
   let card=w.color||w.burn||w.drain||w.zap||w.chill||w.glow?{id:'wand', name:'Wand', color:w.color, burn:w.burn||0, drain:w.drain||0,
     freeze:charged?w.chill:0, stun:w.zap&&Math.random()<w.zap?.5:0, mend:charged?w.glow:0}:null;
@@ -974,7 +974,7 @@ function update(dt){
   b.gauge=Math.min(GAUGE_MAX,b.gauge+dt*(heroOn('volta')?1.5:1)*(heroAura('gauge')||1)*(p.gaugeMult||1));
   landTick(dt); timeTick(dt); strikeTick(dt);
   ['moveCd','wandCd','hurtT'].forEach(k=>p[k]=Math.max(0,p[k]-rdt));
-  ['castCd','invT','powerT','pactT','courageT','hasteT','regenT'].forEach(k=>p[k]=Math.max(0,p[k]-dt));
+  ['castCd','invT','powerT','setT','pactT','courageT','hasteT','regenT'].forEach(k=>p[k]=Math.max(0,p[k]-dt));
   if(p.regenT>0){ p.regenAcc=(p.regenAcc||0)+p.regenAmt*dt; if(p.regenAcc>=5){ healPlayer(5); p.regenAcc-=5; } }
   if(p.regenGear){ p.gearAcc=(p.gearAcc||0)+p.regenGear*dt; if(p.gearAcc>=3){ healPlayer(3,true); p.gearAcc-=3; } }
   if(onLand('overgrowth')){ p.landAcc=(p.landAcc||0)+3*dt; if(p.landAcc>=3){ healPlayer(3); p.landAcc-=3; } }

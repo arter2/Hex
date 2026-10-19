@@ -52,7 +52,7 @@ The testers played down the levels, took the game's real rewards (cards, gold, p
 - **Charges** +25%, and "many uses" ones lose less per use.
 - **Pounce** ×0.8; every Gray creature ×0.82.
 - **Zombie infection** lasts at least 6s, and the first bite comes at once.
-- **Power boons and the Rune Set combo** give wand ×1.8, down from ×2.5.
+- **Power boons** give wand ×1.8, down from ×2.5. (The Rune Set combo was put back to ×2.5 in v95.)
 - **The Golem** reflects only cast cards and wand shots; creature hits are just resisted.
 - **Burning and icy ground** hit enemies standing on them when cast. Burning ground sets alight anything that steps onto it.
 

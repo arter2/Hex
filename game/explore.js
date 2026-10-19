@@ -481,8 +481,10 @@ function xGlowTex(){ const c=document.createElement('canvas'); c.width=c.height=
    floating motes (Abyss). They show once you have seen the floor in front of them and dim with
    it, so a remembered room glows faintly and the room you stand in glows bright. */
 function xAreaLights(grp,A){
+  for(const p of EX.props||[]) if(/brazier/.test(p.kind)&&p.lit&&EX.room[p.cell]>=0&&!EX.rooms[EX.room[p.cell]].dark) EX.rooms[EX.room[p.cell]].lit=true;   // a burning brazier lights its room
   EX.glows=[]; const R=caveRng(EX.depth*53+7), tex=xGlowTex(), col=new THREE.Color(A.glow), pale=col.clone().lerp(new THREE.Color(0xffffff),.55);
-  for(const r of EX.rooms){ if(r.side||r.nook) continue; const cand=[];
+  // only a lit room has torches and glowing walls: a dark one you find by walking it with your own light
+  for(const r of EX.rooms){ if(r.side||r.nook||!r.lit) continue; const cand=[];
     for(let x=r.x;x<r.x+r.w;x++){ cand.push([x,r.y-1,0,1],[x,r.y+r.h,0,-1]); }
     for(let y=r.y;y<r.y+r.h;y++){ cand.push([r.x-1,y,1,0],[r.x+r.w,y,-1,0]); }
     const ok=cand.filter(([x,y])=>x>=0&&y>=0&&x<XN&&y<XN&&EX.t[xi(x,y)]===T_ROCK);
@@ -669,7 +671,7 @@ function xFloorDecals(grp,A,S,seed){ const R=caveRng(seed+333), sheet=xDecalShee
     quad(0,(X0+X1)/2,Z0+d/2,d,7,0,X1-X0); quad(0,(X0+X1)/2,Z1-d/2,d,7,Math.PI,X1-X0); quad(0,X0+d/2,(Z0+Z1)/2,d,7,-Math.PI/2,Z1-Z0); quad(0,X1-d/2,(Z0+Z1)/2,d,7,Math.PI/2,Z1-Z0); }
   for(const [i] of EX.doors){ for(const n of xAdj4(i)){ if(EX.t[n]!==T_FLOOR||EX.room[n]<0) continue; const dx=xcx(n)-xcx(i), dy=xcy(n)-xcy(i);
       for(let k=0;k<3;k++){ const c=n+k*(dx+dy*XN); if(c<0||EX.t[c]!==T_FLOOR) break; quad(0,xw(c),xz(c),2.4-k*.4,5,0); } } }
-  const mk=(L,mat)=>{ if(!P[L].length) return null; const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.Float32BufferAttribute(P[L],3)); g.setAttribute('uv',new THREE.Float32BufferAttribute(U[L],2)); g.computeVertexNormals(); const m=new THREE.Mesh(g,mat); m.renderOrder=1; grp.add(m); return m; };
+  const mk=(L,mat)=>{ if(!P[L].length) return null; const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.Float32BufferAttribute(P[L],3)); g.setAttribute('uv',new THREE.Float32BufferAttribute(U[L],2)); g.computeVertexNormals(); const m=new THREE.Mesh(g,mat); m.renderOrder=0; grp.add(m); return m; };   // drawn before the darkness veil (1), so ground you have not found hides its stains, puddles and glowing pools
   mk(0,new THREE.MeshPhongMaterial({map:sheet,transparent:true,depthWrite:false,shininess:2,polygonOffset:true,polygonOffsetFactor:-2}));
   EX.puddles=mk(1,new THREE.MeshBasicMaterial({map:sheet,color:new THREE.Color(A.glow),transparent:true,opacity:.5,blending:THREE.AdditiveBlending,depthWrite:false}));
   mk(2,new THREE.MeshPhongMaterial({map:sheet,color:new THREE.Color(A.fog).lerp(new THREE.Color(0x203040),.5),transparent:true,opacity:.55,depthWrite:false,shininess:60,specular:0x3a4a5a,polygonOffset:true,polygonOffsetFactor:-3})); }
@@ -884,7 +886,12 @@ function xGroupSprites(gp,grp){ const id=gp.ids[0], d=ENEMY_DEFS[id], h=XSPR*Mat
   if(gp.mini){ const r=new THREE.Mesh(new THREE.TorusGeometry(.95,.07,6,24),new THREE.MeshBasicMaterial({color:new THREE.Color(COLORS[d.color].c)})); r.rotation.x=Math.PI/2; r.position.y=.06; r.visible=false; grp.add(r); gp.ring=r; }
   // a mission's mark over the group: ♛ a bounty, ☠ a nest's brood (missions.js)
   if(gp.tagTxt){ gp.tag=(typeof xmTagSprite==='function'?xmTagSprite:xTextSprite)(gp.tagTxt,gp.tagCol||'#ffd166'); gp.tag.visible=false; grp.add(gp.tag); } }
-const xNearSeen=c=>{ const x=xcx(c), y=xcy(c); for(let dy=-2;dy<=2;dy++) for(let dx=-2;dx<=2;dx++){ const nx=x+dx, ny=y+dy; if(nx>=0&&ny>=0&&nx<XN&&ny<XN&&EX.seen[xi(nx,ny)]&&EX.t[xi(nx,ny)]===T_ROCK&&EX.wIdx.has(xi(nx,ny))) return true; } return false; };
+// rock right behind a wall you have seen shows the chasm below, but never next to ground you have not
+// found (that would draw the outline of rooms and halls still in the dark)
+const xNearSeen=c=>{ const x=xcx(c), y=xcy(c); let wall=false;
+  for(let dy=-1;dy<=1;dy++) for(let dx=-1;dx<=1;dx++){ const nx=x+dx, ny=y+dy; if(nx<0||ny<0||nx>=XN||ny>=XN) continue; const n=xi(nx,ny);
+    if(EX.t[n]!==T_ROCK&&!EX.seen[n]) return false; if(EX.seen[n]&&EX.t[n]===T_ROCK&&EX.wIdx.has(n)) wall=true; }
+  return wall; };
 function xPaintCells(){
   // brightness each cell is heading for: full near you and dimmer toward the edge of sight,
   // a low glow where you have been, black where you have not
@@ -893,7 +900,7 @@ function xPaintCells(){
   for(let c=0;c<XN*XN;c++){ let b=0;
     if(EX.vis[c]){ const d=Math.hypot(xcx(c)-px,xcy(c)-py); b=1-.55*Math.min(1,Math.max(0,(d-1)/rad)); }
     else if(EX.seen[c]) b=.24;
-    else if(EX.t[c]===T_ROCK&&xNearSeen(c)) b=.6;   // behind a wall you have seen: the chasm below shows
+    else if(EX.t[c]===T_ROCK&&xNearSeen(c)) b=.35;   // behind a wall you have seen: the chasm below shows, faintly
     EX.fogTgt[c]=b;
     if(EX.seen[c]&&!EX.shown[c]){ EX.shown[c]=1; const w=EX.wIdx.get(c); if(w){ if(w[1]<0){ const wm=w[0], f=EX.fogCur[c]; w[1]=wm.userData.n++; wm.count=wm.userData.n; wm.visible=true; wm.setColorAt(w[1],new THREE.Color(f,f,f*1.05)); wm.instanceColor.needsUpdate=true; } EX.wCut[c]=xCutTarget(c); EX.wList.push(c); xWallFade(c,EX.wCut[c]); for(const M of [w[0],EX.wGhost[w[0].userData.v]]) M.instanceMatrix.needsUpdate=true; } } }
   for(const D of EX.decor||[]) D.mesh.visible=D.cells.some(c=>EX.seen[c]);
@@ -1181,7 +1188,8 @@ function xSearch(){ if(!EX||EX.action||EX.busy) return;
     else if(d.out&&EX.aim) xSearchAt(EX.aim.cell,true); };     // slid out onto the dungeon: search there; lifted on the button: keep aiming
   b.addEventListener('pointerup',end); b.addEventListener('pointercancel',end); b.addEventListener('contextmenu',e=>e.preventDefault()); })();
 function xSearchAt(c,aimed){ if(!EX||EX.action||EX.busy) return; EX.aim=null; EX.path=[]; EX.searchCell=c; EX.searchAimed=!!aimed; xLog('You search the area…','dim');
-  EX.action={t:1.1, done(){ EX.searchCell=null; EX.wave={cell:c,t:0}; if(!xSearchRoll(1,false,c,XSEARCH_R)) xLog('You find nothing.','dim'); } };
+  EX.wave={cell:c,t:0};   // the search wave goes out the moment you press, and what it finds shows as it passes
+  EX.action={t:.35, done(){ EX.searchCell=null; if(!xSearchRoll(1,false,c,XSEARCH_R)) xLog('You find nothing.','dim'); } };
   xHud(); }
 // the cell under a screen point, kept within reach of you
 function xAimCell(ex,ey){ const G=X3, r=appBox($('#xView')), v=new THREE.Vector2((ex-r.left)/r.width*2-1,-(ey-r.top)/r.height*2+1), hit=new THREE.Vector3();

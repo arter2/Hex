@@ -126,7 +126,7 @@ function xPuzzInteract(p){ const pz=EX.puzzle, d=EX.depth;
     case 'pbrazier': { const P=EX.puzzle&&EX.puzzle.kind==='braziers'?EX.puzzle:null; if(!P) return true;
       if(p.lit){ EX.flameT=30; xSfx('click'); xLog('You take a flame from the brazier. It will last 30 seconds.','good'); return true; }
       if(!(EX.flameT>0)) return xSay('brazier','A cold brazier. It needs a flame from a lit one.'), true;
-      p.lit=true; if(p.flame) p.flame.visible=true; xSfx('chime'); const left=P.cold.filter(b=>!b.lit).length; xLog(left?'The brazier catches. '+left+' still cold.':'The last brazier roars to life!','good');
+      p.lit=true; if(p.flame) p.flame.visible=true; { const ri=EX.room[p.cell]; if(ri>=0&&!EX.rooms[ri].dark){ EX.rooms[ri].lit=true; xUpdateVis(); } } xSfx('chime'); const left=P.cold.filter(b=>!b.lit).length; xLog(left?'The brazier catches. '+left+' still cold.':'The last brazier roars to life!','good');
       if(!left&&!P.solved) xPuzzleSolved(); return true; }
     case 'cswitch': return pzCircuitPull(p), true;
     case 'ghosttable': return pzTable(p), true;

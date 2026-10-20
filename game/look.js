@@ -20,7 +20,8 @@ const XB={ ball:xSetF('hexmancers-xball',XB_DEF.ball), strip:xSetF('hexmancers-x
      darken toward their feet.
    - Screen-space AO: a pass over the depth of the whole frame shades every crease (xSSAO). */
 const xSetB=(k,d)=>{ try{ const v=localStorage.getItem(k); return v==null?d:v==='1'; }catch(e){ return d; } };
-const XLIT_DEF={ amb:1, sun:1, lamp:1, lampRad:1, lampY:2.6, torch:1, torchRad:1, flick:1, myGlow:1, fogNear:20, fogFar:46, texel:true, steps:0, nmap:true, nstrF:.35, nstrW:.35, ao:true, aoStr:1, aoRad:1, ssao:false, ssaoStr:1, ssaoRad:.6, fps:false, autoQ:true, camPitch:36, camFov:61, arWalls:true, camZoom:1.1, camX:0, camY:0, camZ:0, camRX:0, camRY:0, camRZ:0, dof:false, dofFocus:0, dofRange:2, dofFade:4, dofNear:1, dofFar:1, dofBlur:6, pbr:false, pbrEnv:1, pbrR_gold:0.32, pbrM_gold:1, pbrR_steel:0.26, pbrM_steel:0.9, pbrR_gloss:0.14, pbrM_gloss:0, pbrR_ice:0.08, pbrM_ice:0, pbrR_slab:0.7, pbrM_slab:0, pbrRMap:1 };
+const XLIT_DEF={ amb:1, sun:1, lamp:1, lampRad:1, lampY:2.6, torch:1, torchRad:1, flick:1, myGlow:1, fogNear:20, fogFar:46, texel:true, steps:0, nmap:true, nstrF:.35, nstrW:.35, ao:true, aoStr:1, aoRad:1, ssao:false, ssaoStr:1, ssaoRad:.6, fps:false, autoQ:true, camPitch:36, camFov:61, arWalls:true, camZoom:1.1, camX:0, camY:0, camZ:0, camRX:0, camRY:0, camRZ:0, dof:false, dofFocus:0, dofRange:2, dofFade:4, dofNear:1, dofFar:1, dofBlur:6, pbr:false, pbrEnv:1, pbrR_gold:0.32, pbrM_gold:1, pbrR_steel:0.26, pbrM_steel:0.9, pbrR_gloss:0.14, pbrM_gloss:0, pbrR_ice:0.08, pbrM_ice:0, pbrR_slab:0.7, pbrM_slab:0, pbrRMap:1,
+  dPitch:48, dDist:9.4, dFov:46, dAhead:1, dAim:0, dFog:true, dFogStart:6, dFogLen:14, dMemLit:.7, dMemDark:.35, dLightMem:1, dCut:false, dCutH:.3, dDoorMin:.75, dDoorGlow:.3 };   // d...: the dungeon camera, haze, what you remember and walls
 // the debug menu's pause: the game holds still (no moves, no clocks) but keeps being drawn; never saved
 const DBG={pause:false};
 const XLIT={}; for(const k in XLIT_DEF) XLIT[k]=typeof XLIT_DEF[k]==='boolean'?xSetB('hexmancers-xl-'+k,XLIT_DEF[k]):xSetF('hexmancers-xl-'+k,XLIT_DEF[k]);
@@ -270,12 +271,14 @@ const XDBG=[   // [element id, object, key, saved as, decimals (null: a checkbox
   ['dbgFps',()=>XLIT,'fps','hexmancers-xl-fps',null,'fps'], ['dbgAutoQ',()=>XLIT,'autoQ','hexmancers-xl-autoQ',null,''], ['dbgCamPitch',()=>XLIT,'camPitch','hexmancers-xl-camPitch',0,'cam'], ['dbgCamFov',()=>XLIT,'camFov','hexmancers-xl-camFov',0,'cam'], ['dbgCamZoom',()=>XLIT,'camZoom','hexmancers-xl-camZoom',2,''], ...['camX','camY','camZ','camRX','camRY','camRZ'].map(k=>['dbgC'+k.slice(1),()=>XLIT,k,'hexmancers-xl-'+k,k.length>4?0:1,'']), ['dbgDof',()=>XLIT,'dof','hexmancers-xl-dof',null,''], ['dbgDofFocus',()=>XLIT,'dofFocus','hexmancers-xl-dofFocus',1,''], ['dbgDofRange',()=>XLIT,'dofRange','hexmancers-xl-dofRange',1,''], ['dbgDofBlur',()=>XLIT,'dofBlur','hexmancers-xl-dofBlur',1,''], ['dbgDofFade',()=>XLIT,'dofFade','hexmancers-xl-dofFade',1,''], ['dbgDofNear',()=>XLIT,'dofNear','hexmancers-xl-dofNear',2,''], ['dbgDofFar',()=>XLIT,'dofFar','hexmancers-xl-dofFar',2,''], ['dbgArWalls',()=>XLIT,'arWalls','hexmancers-xl-arWalls',null,''], ['dbgPbr',()=>XLIT,'pbr','hexmancers-xl-pbr',null,'pbr'], ['dbgPbrEnv',()=>XLIT,'pbrEnv','hexmancers-xl-pbrEnv',2,'pbrEnv'], ['dbgPbrRMap',()=>XLIT,'pbrRMap','hexmancers-xl-pbrRMap',null,'pbrEnv'],
   ...['gold','steel','gloss','ice','slab'].flatMap(k=>[['dbgPbrR_'+k,()=>XLIT,'pbrR_'+k,'hexmancers-xl-pbrR_'+k,2,'pbrEnv'],['dbgPbrM_'+k,()=>XLIT,'pbrM_'+k,'hexmancers-xl-pbrM_'+k,2,'pbrEnv']]),
   ...[['dbgAmb','amb'],['dbgSun','sun'],['dbgLamp','lamp'],['dbgLampRad','lampRad'],['dbgLampY','lampY'],['dbgTorch','torch'],['dbgTorchRad','torchRad'],['dbgFlick','flick'],['dbgMyGlow','myGlow']].map(([id,k])=>[id,()=>XLIT,k,'hexmancers-xl-'+k,2,'']),
-  ['dbgFogNear',()=>XLIT,'fogNear','hexmancers-xl-fogNear',0,''], ['dbgFogFar',()=>XLIT,'fogFar','hexmancers-xl-fogFar',0,''] ];
+  ['dbgFogNear',()=>XLIT,'fogNear','hexmancers-xl-fogNear',0,''], ['dbgFogFar',()=>XLIT,'fogFar','hexmancers-xl-fogFar',0,''],
+  ...[['dPitch',0,''],['dDist',1,''],['dFov',0,''],['dAhead',2,''],['dAim',1,''],['dFog',null,''],['dFogStart',0,''],['dFogLen',0,''],['dMemLit',2,'xpaint'],['dMemDark',2,'xpaint'],['dLightMem',2,''],['dCut',null,'xwalls'],['dCutH',2,'xwalls'],['dDoorMin',2,'xwalls'],['dDoorGlow',2,'xwalls']].map(([k,dec,what])=>['dbg_'+k,()=>XLIT,k,'hexmancers-xl-'+k,dec,what]) ];
 let xBakeT=0;
 function xDbgApply(what){ if(what==='lit') xLitRefresh(); else if(what==='bake'){ xLitRefresh(); clearTimeout(xBakeT); xBakeT=setTimeout(lookBake,120); }
   else if(what==='pbr') lookRebuild();
   else if(what==='pbrEnv') xPBRTune();
   else if(what==='cam'){ if(typeof resizeView==='function'&&typeof B!=='undefined'&&B) resizeView(); }
+  else if(what==='xpaint'||what==='xwalls'){ if(typeof xDbgDungeon==='function') xDbgDungeon(what); }
   else if(what==='fps'){ const f=document.getElementById('xFps'); if(f) f.style.display=XLIT.fps?'':'none'; } }
 function xBindSliders(){ for(const [id,obj,k,key,dec,what] of XDBG){ const el=document.getElementById(id), out=document.getElementById(id+'V'), O=obj(); if(!el) continue;
     const show=()=>{ if(dec==null) el.checked=!!O[k]; else { el.value=O[k]; if(out) out.textContent=(+O[k]).toFixed(dec); } };
@@ -290,7 +293,7 @@ function xBindSliders(){ for(const [id,obj,k,key,dec,what] of XDBG){ const el=do
     addEventListener('pointerup',()=>{ if(row) end(); },true); addEventListener('pointercancel',()=>{ if(row) end(); },true); }
   box.addEventListener('pointerdown',e=>{ if(e.target===box) xDbgClose(); });
   document.getElementById('dbgReset').onclick=()=>{ for(const [id,obj,k,key,dec,what] of XDBG){ const O=obj(); O[k]=(O===XB?XB_DEF:XLIT_DEF)[k]; try{ localStorage.removeItem(key); }catch(e){} }
-    xBindSliders(); xLitRefresh(); lookBake(); xDbgApply('fps'); };
+    xBindSliders(); xLitRefresh(); lookBake(); xDbgApply('fps'); xDbgApply('xwalls'); };
   // three fingers down together, three times within a second and a half
   let taps=[], counted=false;
   document.addEventListener('touchstart',e=>{ if(e.touches.length<3||counted) return; counted=true; const t=performance.now(); taps=taps.filter(x=>t-x<1500); taps.push(t);

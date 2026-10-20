@@ -403,6 +403,9 @@ function xBuildScene(){
       (EX.lanterns=EX.lanterns||[]).push({halos:lan,ph:Math.random()*6,boss}); }
     // the leaf hangs on a hinge at one jamb so it can swing (a gate's bars lift instead)
     const LW=XCS-.44, hinge=new THREE.Group(); if(d.lock!=='gate'){ hinge.position.x=-LW/2; leaf.position.x=LW/2; } hinge.add(leaf);
+    // a warm glow on the threshold, so a doorway reads from across the room even in shadow
+    { const sill=new THREE.Mesh(new THREE.PlaneGeometry(XCS*1.3,XCS*1.3),new THREE.MeshBasicMaterial({map:xGlowTex.t||(xGlowTex.t=xGlowTex()),color:0xffb060,transparent:true,opacity:XLIT.dDoorGlow,blending:THREE.AdditiveBlending,depthWrite:false,fog:false}));
+      sill.rotation.x=-Math.PI/2; sill.position.y=.06; sill.renderOrder=2; sill.userData.keep=1; g.add(sill); d.sill=sill; }
     g.add(hinge); d.mesh=g; d.leaf=hinge; d.ew=ew; d.cell=i; hinge.visible=d.state!=='secret'; if(d.state==='open') xDoorPose(d,1,1); g.visible=false; grp.add(g); }
   // stairs
   const glow=new THREE.Color(isBossDepth(EX.depth)?'#ff5d6c':A.glow);
@@ -521,12 +524,14 @@ function xAreaLights(grp,A){
       g.visible=false; grp.add(g); EX.glows.push({g,floor,wall:xi(wx,wy),mats,halo,pool,flame,torch:true,ph:R()*6}); } }
 }
 // the four real lights go to the lit torches and crystals nearest you; each fades in and out as it moves
+// how bright a torch or crystal burns: once found it keeps burning (the debug menu's light memory), fading in as it is first seen
+function xLightF(L){ const f=EX.fogCur[L.floor]; return Math.max(f,Math.min(1,XLIT.dLightMem)*Math.min(1,f/.2)); }
 // a light on a wall between the camera and you shines into a room you see past, so it gives up its slot
 function xCamSide(L){ if(L.wall==null) return false; const dy=xcy(L.wall)-xcy(EX.pc); return dy>0&&dy<=9&&Math.abs(xcx(L.wall)-xcx(EX.pc))<=11; }
 function xLightPool(T,dt){ const G=X3; if(!G.pool) return; EX.lpT=(EX.lpT||0)-dt;
   if(EX.lpT<=0){ EX.lpT=.3; const near=(EX.glows||[]).filter(L=>L.g.visible&&EX.fogCur[L.floor]>.3&&!xCamSide(L)).map(L=>[L,Math.hypot(L.g.position.x-EX.px,L.g.position.z-EX.pz)]).filter(a=>a[1]<16).sort((a,b)=>a[1]-b[1]).slice(0,G.pool.length).map(a=>a[0]);
     G.pool.forEach((P,i)=>{ const L=near[i]; P.userData.L=L||null; if(L){ const wp=new THREE.Vector3(); (L.flame||L.halo).getWorldPosition(wp); P.position.copy(wp); P.position.y=L.torch?2.1:1.1; P.color.set(L.torch?0xffa448:EX.area.glow); P.distance=(L.torch?11:8)*XLIT.torchRad; } }); }
-  for(const P of G.pool){ const L=P.userData.L, FL=XLIT.flick, tg=L?(L.torch?1.5*(.85+FL*(.1*Math.sin(T*11+L.ph)+.07*Math.sin(T*23.7+L.ph*3))):.9*(.85+FL*.15*Math.sin(T*1.7+L.ph)))*Math.min(1,EX.fogCur[L.floor]*1.3)*XLIT.torch:0;
+  for(const P of G.pool){ const L=P.userData.L, FL=XLIT.flick, tg=L?(L.torch?1.5*(.85+FL*(.1*Math.sin(T*11+L.ph)+.07*Math.sin(T*23.7+L.ph*3))):.9*(.85+FL*.15*Math.sin(T*1.7+L.ph)))*Math.min(1,xLightF(L)*1.3)*XLIT.torch:0;
     P.intensity+=(tg-P.intensity)*Math.min(1,dt*8); } }
 /* ---------------- juice: sparks, dust, coins, flashes ----------------
    Small, short-lived effects: sparkles when you pick something up, dust puffs as you walk, coins
@@ -897,6 +902,8 @@ const xNearSeen=c=>{ const x=xcx(c), y=xcy(c); let wall=false;
   for(let dy=-1;dy<=1;dy++) for(let dx=-1;dx<=1;dx++){ const nx=x+dx, ny=y+dy; if(nx<0||ny<0||nx>=XN||ny>=XN) continue; const n=xi(nx,ny);
     if(EX.t[n]!==T_ROCK&&!EX.seen[n]) return false; if(EX.seen[n]&&EX.t[n]===T_ROCK&&EX.wIdx.has(n)) wall=true; }
   return wall; };
+// a cell in (or a wall beside) a room whose lights burn
+const xLitAt=c=>{ const r=EX.room[c]; if(r>=0) return !!EX.rooms[r].lit; for(const n of [c-1,c+1,c-XN,c+XN]){ const q=EX.room[n]; if(q>=0&&EX.rooms[q]&&EX.rooms[q].lit) return true; } return false; };
 function xPaintCells(){
   // brightness each cell is heading for: full near you and dimmer toward the edge of sight,
   // a low glow where you have been, black where you have not
@@ -904,7 +911,7 @@ function xPaintCells(){
   const m=new THREE.Matrix4();
   for(let c=0;c<XN*XN;c++){ let b=0;
     if(EX.vis[c]){ const d=Math.hypot(xcx(c)-px,xcy(c)-py); b=1-.55*Math.min(1,Math.max(0,(d-1)/rad)); }
-    else if(EX.seen[c]) b=.24;
+    else if(EX.seen[c]) b=xLitAt(c)?XLIT.dMemLit:XLIT.dMemDark;   // remembered: a lit room stays lit, a dark one dim
     else if(EX.t[c]===T_ROCK&&xNearSeen(c)) b=.35;   // behind a wall you have seen: the chasm below shows, faintly
     EX.fogTgt[c]=b;
     if(EX.seen[c]&&!EX.shown[c]){ EX.shown[c]=1; const w=EX.wIdx.get(c); if(w){ if(w[1]<0){ const wm=w[0], f=EX.fogCur[c]; w[1]=wm.userData.n++; wm.count=wm.userData.n; wm.visible=true; wm.setColorAt(w[1],new THREE.Color(f,f,f*1.05)); wm.instanceColor.needsUpdate=true; } EX.wCut[c]=xCutTarget(c); EX.wList.push(c); xWallFade(c,EX.wCut[c]); for(const M of [w[0],EX.wGhost[w[0].userData.v]]) M.instanceMatrix.needsUpdate=true; } } }
@@ -955,21 +962,31 @@ function xGhostMat(m){ m.transparent=true; m.depthWrite=false; m.customProgramCa
   return m; }
 // put a wall in the solid mesh (v=1) or the see-through one at opacity v
 function xWallFade(c,v){ const w=EX.wIdx.get(c); if(!w||w[1]<0) return; const [wm,k]=w, vi=wm.userData.v, gm=EX.wGhost[vi], m=new THREE.Matrix4(), zero=new THREE.Matrix4().makeScale(0,0,0);
-  xWallMatrix(m,c,vi===0,1); const solid=v>=.995, L=gm.userData.cells, A=gm.geometry.attributes.aAlpha, col=new THREE.Color();
+  const cutH=XLIT.dCut?1-(1-v)/(1-XCUT)*(1-XLIT.dCutH):1;   // cut-down walls sink to a stub instead of turning to glass
+  xWallMatrix(m,c,vi===0,cutH); const solid=XLIT.dCut||v>=.995, L=gm.userData.cells, A=gm.geometry.attributes.aAlpha, col=new THREE.Color();
   const put=(cell,slot)=>{ xWallMatrix(m,cell,vi===0,1); gm.setMatrixAt(slot,m); A.setX(slot,EX.wCut[cell]); const f=EX.fogCur[cell]; col.setRGB(f,f,f*1.05); gm.setColorAt(slot,col); };
   wm.setMatrixAt(k,solid?m:zero);
   if(!solid){ if(EX.gSlot[c]<0){ EX.gSlot[c]=L.length; L.push(c); gm.count=L.length; gm.visible=true; } put(c,EX.gSlot[c]); }
   else if(EX.gSlot[c]>=0){ const slot=EX.gSlot[c], last=L.pop(); EX.gSlot[c]=-1; if(last!==c){ L[slot]=last; EX.gSlot[last]=slot; put(last,slot); } gm.count=L.length; gm.visible=L.length>0; }
   A.needsUpdate=true; gm.instanceMatrix.needsUpdate=true; if(gm.instanceColor) gm.instanceColor.needsUpdate=true;
-  xDressShow(c,solid?1:0); }
+  xDressShow(c,XLIT.dCut?cutH:solid?1:0); }
 function xCutTarget(c){ if(!EX) return 1; const dy=xcy(c)-xcy(EX.pc), dx=Math.abs(xw(c)-EX.px)/XCS; return dy>0&&dy<=9&&dx<XB.strip+.5?XCUT:1; }
 function xWallCut(dt){ const m=new THREE.Matrix4(), k=Math.min(1,dt*7); let touched=new Set();
   for(const c of EX.wList){ const tg=xCutTarget(c), cur=EX.wCut[c]; if(Math.abs(cur-tg)<.005) continue;
     const v=Math.abs(cur-tg)<.02?tg:cur+(tg-cur)*k; EX.wCut[c]=v; xWallFade(c,v); const w=EX.wIdx.get(c); touched.add(w[0]); touched.add(EX.wGhost[w[0].userData.v]); }
   for(const wm of touched) wm.instanceMatrix.needsUpdate=true;
   for(const [i,d] of EX.doors){ if(!d.mesh) continue; const tg=xCutTarget(i), cur=d.cutY==null?1:d.cutY; if(Math.abs(cur-tg)<.005) continue; d.cutY=Math.abs(cur-tg)<.02?tg:cur+(tg-cur)*k;
-    const op=d.cutY, solid=op>=.995; d.mesh.traverse(o=>{ if(!o.isMesh) return; const M=o.material; M.transparent=!solid; M.opacity=solid?1:op; M.depthWrite=solid; o.renderOrder=solid?0:7; }); }
+    xDoorOp(d); }
   for(const L of (EX.glows||[]).concat(EX.onWall||[])){ if(L.wall==null) continue; const tg=xCutTarget(L.wall), cur=L.cut==null?1:L.cut; if(Math.abs(cur-tg)<.005) continue; L.cut=Math.abs(cur-tg)<.02?tg:cur+(tg-cur)*k; L.g.scale.y=1; L.g.visible=L.cut>.6&&!!EX.seen[L.floor]; } }
+// a door on a fading wall fades less than the wall (the debug menu's door minimum), so you can always find it; its threshold glow stays
+function xDoorOp(d){ const op=Math.max(XLIT.dDoorMin,d.cutY==null?1:d.cutY), solid=op>=.995;
+  d.mesh.traverse(o=>{ if(!o.isMesh||o.userData.keep) return; const M=o.material; M.transparent=!solid; M.opacity=solid?1:op; M.depthWrite=solid; o.renderOrder=solid?0:7; });
+  if(d.sill) d.sill.material.opacity=XLIT.dDoorGlow; }
+// the debug menu changed how walls, doors or remembered ground look: show it now
+function xDbgDungeon(what){ if(!EX||!EX.wList) return;
+  if(what==='xwalls'){ const touched=new Set(); for(const c of EX.wList){ xWallFade(c,EX.wCut[c]); const w=EX.wIdx.get(c); if(w){ touched.add(w[0]); touched.add(EX.wGhost[w[0].userData.v]); } }
+    for(const M of touched) M.instanceMatrix.needsUpdate=true; for(const [,d] of EX.doors) if(d.mesh) xDoorOp(d); }
+  xUpdateVis(); }
 // ease every cell toward its brightness, so newly seen ground fades in and ground you leave fades out
 function xFadeCells(dt){
   const k=Math.min(1,dt*5), col=new THREE.Color(); let moved=false;
@@ -1417,14 +1434,16 @@ function xDraw(T,dt){
   EX.me.position.set(EX.px,step*ART,EX.pz); xRefresh(EX.me,EX.face<0);
   G.lamp.position.set(EX.px,XLIT.lampY,EX.pz);
   // the camera looks in at about 48 degrees, so you see the faces of the walls, not just their tops
-  // (tall screens pull back so a room still fits across); walls between it and you sink (xWallCut)
-  const k=Math.max(1,Math.min(1.8,.8/G.cam.aspect))/XLIT.camZoom, hgt=14*k, back=12.5*k;   // the debug menu's zoom brings it closer
+  // (tall screens pull back so a room still fits across); walls between it and you sink (xWallCut).
+  // Its angle, distance, lens, look-ahead and aim are the debug menu's Dungeon camera
+  if(G.cam.fov!==XLIT.dFov){ G.cam.fov=XLIT.dFov; G.cam.updateProjectionMatrix(); }
+  const pitch=XLIT.dPitch*Math.PI/180, k=Math.max(1,Math.min(1.8,.8/G.cam.aspect))/XLIT.camZoom, D=XLIT.dDist*XCS*k, hgt=D*Math.sin(pitch), back=D*Math.cos(pitch);   // the debug menu's zoom brings it closer
   let zk=1; if(EX.fighting&&EX.busy){ EX.engT=(EX.engT||0)+dt; const e=Math.min(1,EX.engT/.7); zk=1-.32*e*e; } else EX.engT=0;   // a fight starting: the camera rushes in
   const sh=EX.shakeT>0?(EX.shakeT-=dt,EX.shakeT*.9):0, jx=sh?(Math.random()-.5)*sh:0, jy=sh?(Math.random()-.5)*sh:0;
   // the camera eases after you and looks a little ahead of where you are walking
-  { const ax=EX.px+(EX.vx||0)*.22, az=EX.pz+(EX.vz||0)*.18, kk=1-Math.exp(-dt*5); if(EX.camX==null||Math.hypot(EX.camX-EX.px,EX.camZ-EX.pz)>12){ EX.camX=EX.px; EX.camZ=EX.pz; } EX.camX+=(ax-EX.camX)*kk; EX.camZ+=(az-EX.camZ)*kk; }
+  { const ax=EX.px+(EX.vx||0)*.22*XLIT.dAhead, az=EX.pz+(EX.vz||0)*.18*XLIT.dAhead, kk=1-Math.exp(-dt*5); if(EX.camX==null||Math.hypot(EX.camX-EX.px,EX.camZ-EX.pz)>12){ EX.camX=EX.px; EX.camZ=EX.pz; } EX.camX+=(ax-EX.camX)*kk; EX.camZ+=(az-EX.camZ)*kk; }
   const fx=EX.fighting&&EX.busy?EX.fighting.x:EX.camX, fz=EX.fighting&&EX.busy?EX.fighting.z:EX.camZ, cx=EX.camX+(fx-EX.camX)*(1-zk)*1.4, cz=EX.camZ+(fz-EX.camZ)*(1-zk)*1.4;
-  G.cam.position.set(cx+jx,hgt*zk+jy,cz+back*zk); G.cam.lookAt(cx+jx,.6,cz-1.2); xWallCut(dt); xFxTick(T,dt);
+  G.cam.position.set(cx+jx,hgt*zk+jy,cz+back*zk); G.cam.lookAt(cx+jx,.6,cz-1.2-XLIT.dAim*XCS); EX.camD=D*zk; xWallCut(dt); xFxTick(T,dt);
   XDITHER.uBall.value.set(EX.px,1.2,EX.pz); XDITHER.uRad.value=XB.ball*XCS; XDITHER.uPx.value=Math.max(1,Math.round(G.renderer.getPixelRatio()*2));
   // enemies show only while in sight; a Shadow Assassin only when it is close; a dormant guardian not at all
   for(const g of EX.groups){ if(!g.sprite) continue; const v=!!EX.vis[g.cell]&&!g.dormant&&!(g.stealth&&Math.hypot(g.x-EX.px,g.z-EX.pz)/XCS>3.2); g.sprite.visible=v; g.zz.visible=v&&g.state==='sleep'; g.bang.visible=v&&g.state==='chase';
@@ -1448,7 +1467,7 @@ function xDraw(T,dt){
   EX.downMesh.userData.ring.rotation.z+=.02;
   for(const Ln of EX.lanterns||[]) for(const h of Ln.halos) h.material.opacity=(Ln.boss?.75:.6)+.25*Math.sin(T*(Ln.boss?5:2)+Ln.ph);
   if(EX.runeRing){ EX.runeRing.rotation.z=T*.25; EX.runeRing.visible=EX.downMesh.visible; EX.runeRing.material.opacity=.45+.2*Math.sin(T*1.8); }
-  for(const L of EX.glows){ if(!L.g.visible) continue; const f=EX.fogCur[L.floor];
+  for(const L of EX.glows){ if(!L.g.visible) continue; const f=xLightF(L);
     const FL=XLIT.flick, fl=L.torch?.8+FL*(.12*Math.sin(T*11+L.ph)+.08*Math.sin(T*23.7+L.ph*3)):.85+FL*.15*Math.sin(T*1.7+L.ph);
     L.halo.material.opacity=.6*f*fl; for(const m of L.mats) m.opacity=L.beam?(.06+.06*Math.sin(T*1.5+L.ph))*(.4+.6*f):.3+.7*f;
     for(const o of L.g.children) if(o.userData.pool) o.material.opacity=(L.torch?.6:.3)*f*fl;
@@ -1458,7 +1477,8 @@ function xDraw(T,dt){
     G.dust.position.set(EX.px,0,EX.pz); G.dust.material.opacity=.35+.15*Math.sin(T*.7); }
   for(const c of EX.chests) if(c.rich&&!c.open) c.mesh.position.y=Math.abs(Math.sin(T*2))*.05;
   const FL=XLIT.flick; G.lamp.intensity=1.6*XLIT.lamp*(EX.lampMul||1)*(.95+FL*(.04*Math.sin(T*9.3)+.03*Math.sin(T*21.1))); G.lamp.distance=16*XLIT.lampRad;
-  G.amb.intensity=.2*XLIT.amb; G.sun.intensity=.22*XLIT.sun; if(G.scene.fog){ G.scene.fog.near=XLIT.fogNear; G.scene.fog.far=Math.max(XLIT.fogNear+1,XLIT.fogFar); const fa=G.scene.fog.far+4; if(G.cam.far!==fa){ G.cam.far=fa; G.cam.updateProjectionMatrix(); } }
+  G.amb.intensity=.2*XLIT.amb; G.sun.intensity=.22*XLIT.sun; if(G.scene.fog){   // the dungeon's haze starts a few tiles past you, never between the camera and you
+    const n0=XLIT.dFog?(EX.camD||25)+XLIT.dFogStart*XCS:900; G.scene.fog.near=n0; G.scene.fog.far=n0+Math.max(1,XLIT.dFogLen)*XCS; const fa=Math.min(300,G.scene.fog.far+4); if(G.cam.far!==fa){ G.cam.far=fa; G.cam.updateProjectionMatrix(); } }
   xLightPool(T,dt); xDecorTick(T); xAirTick(T,dt); xWeatherTick(T,dt); xLifeTick(T,dt);
   { const lo=$('#xLowHp'); if(lo){ const r=EX.hp/xmaxHp(); lo.style.opacity=r<.3?(.55+.35*Math.sin(T*(r<.15?7:4))).toFixed(2):'0'; } } if(EX.myGlow){ EX.myGlow.position.x=EX.px; EX.myGlow.position.z=EX.pz; EX.myGlow.material.opacity=(.18+.03*FL*Math.sin(T*2.1))*XLIT.myGlow; }
   lookUse(EX.aoTex,XN*XCS,0,0); xRender(G); xFpsTick(dt);
@@ -1482,7 +1502,7 @@ function xMini(){
   const s=big?Math.max(3,Math.floor(384/n)):3; cv.width=cv.height=n*s; EX.miniView={x0,y0,s,n};
   c.fillStyle='rgba(5,6,10,.8)'; c.fillRect(0,0,cv.width,cv.height); c.translate(-x0*s,-y0*s);
   for(let i=0;i<XN*XN;i++){ if(!EX.seen[i]) continue; const d=EX.doors.get(i); if(EX.t[i]===T_ROCK||(d&&d.state==='secret')){ c.fillStyle='#1a1d26'; c.fillRect(xcx(i)*s,xcy(i)*s,s,s); continue; }
-    c.fillStyle=d?'#a0703a':EX.vis[i]?'#7c8aa6':'#3c4458'; c.fillRect(xcx(i)*s,xcy(i)*s,s,s); }
+    c.fillStyle=d?'#f0a850':EX.vis[i]?'#7c8aa6':'#3c4458'; c.fillRect(xcx(i)*s,xcy(i)*s,s,s); }
   const dot=(i,col,r)=>{ c.fillStyle=col; c.fillRect(xcx(i)*s-r+1,xcy(i)*s-r+1,s+2*r-2,s+2*r-2); };
   if(EX.seen[EX.down]) dot(EX.down,isBossDepth(EX.depth)?'#ff5d6c':EX.area.glow,2); if(EX.seen[EX.up]) dot(EX.up,'#fff2c0',2);
   for(const ch of EX.chests) if(EX.seen[ch.cell]&&!ch.open) dot(ch.cell,'#f2c94c',1);

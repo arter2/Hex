@@ -1235,7 +1235,14 @@ button[hidden]{display:none!important;}
 /* tuning a debug slider: the menu fades away but for the row being dragged, so the field of play shows (look.js) */
 .panel.debug, .panel.debug .dbgbody>*{transition:opacity .2s, background-color .2s, border-color .2s;}
 #debug.tuning .panel.debug{background:transparent; border-image-source:none; border-color:transparent; box-shadow:none;}
-#debug.tuning .panel.debug .dbgbody>*:not(.dbgActive), #debug.tuning .dbggrip{opacity:0;}
+#debug.tuning .panel.debug .dbgbody>*:not(.dbgPane), #debug.tuning .panel.debug .dbgPane>*:not(.dbgActive), #debug.tuning .dbggrip{opacity:0;}
+/* the debug menu's tabs: one pane of settings at a time (look.js) */
+.dbgTabs{position:sticky; top:0; z-index:2; display:flex; flex-wrap:wrap; gap:4px; padding:6px 0; background:rgba(10,12,16,.96);}
+.dbgTabs{flex-wrap:nowrap;}
+.dbgTabs button{flex:1 1 0; min-width:0; min-height:0; width:auto; margin:0; padding:7px 2px; font:inherit; font-size:12px; letter-spacing:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; color:#cfd6e4; background:#1c2230; border:1px solid #2e3648; border-radius:6px; cursor:pointer;}
+.dbgTabs button.on{color:#14161c; background:#ffd166; border-color:#ffd166; font-weight:700;}
+.dbgPane[hidden]{display:none;}
+.dbgPane>h3:first-child{margin-top:4px;}
 #debug.tuning .srow.dbgActive{background:rgba(10,12,16,.82); border-radius:6px; padding-left:6px; padding-right:6px;}
 
 /* the debug menu's pause: a small tag so a held game is never mistaken for a hang */

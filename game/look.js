@@ -284,6 +284,7 @@ function xBindSliders(){ for(const [id,obj,k,key,dec,what] of XDBG){ const el=do
     const show=()=>{ if(dec==null) el.checked=!!O[k]; else { el.value=O[k]; if(out) out.textContent=(+O[k]).toFixed(dec); } };
     show(); el.oninput=el.onchange=()=>{ O[k]=dec==null?el.checked:+el.value; show(); try{ localStorage.setItem(key,dec==null?(O[k]?'1':'0'):String(O[k])); }catch(e){} xDbgApply(what); }; }
   const box=document.getElementById('debug'); if(!box||xBindSliders.done) return; xBindSliders.done=1;
+  xDbgPanes();
   document.getElementById('dbgClose').onclick=xDbgClose; xDbgGrip();
   { const pz=document.getElementById('dbgPause'); if(pz){ pz.checked=DBG.pause; pz.onchange=()=>{ DBG.pause=pz.checked; document.body.classList.toggle('dbgPaused',DBG.pause); }; } }
   // while a slider is dragged the menu fades away but for that slider's row, so the whole field of play shows
@@ -302,6 +303,24 @@ function xBindSliders(){ for(const [id,obj,k,key,dec,what] of XDBG){ const el=do
   document.addEventListener('touchcancel',e=>{ if(e.touches.length===0) counted=false; },{capture:true,passive:true});
   window.addEventListener('keydown',e=>{ if(e.key!=='`'||e.repeat) return; const t=e.target; if(t&&(t.tagName==='INPUT'&&t.type!=='range'&&t.type!=='checkbox'||t.tagName==='TEXTAREA')) return; if(document.getElementById('settings').classList.contains('on')) return; e.preventDefault(); xDbgToggle(); });
   xDbgApply('fps'); }
+/* The debug menu's panes: its sections are sorted under a row of tabs at the top, so only one group of
+   settings shows at a time. The pane last opened is remembered in this browser. */
+const XDBG_PANES=[['Dungeon',['Dungeon camera','Dungeon view','Walls']],['Battle',['Battle camera']],['Lights',['Lighting','Lights']],['Surfaces',['PBR','Normal maps','Ambient occlusion']],['General',['Info']]];
+function xDbgPanes(){ const body=document.getElementById('dbgBody'); if(!body||body.querySelector('.dbgTabs')) return;
+  const panes={}, tabs=document.createElement('div'); tabs.className='dbgTabs';
+  for(const [name] of XDBG_PANES){ const d=document.createElement('div'); d.className='dbgPane'; d.dataset.pane=name; panes[name]=d; }
+  const kids=[...body.children], first=kids.findIndex(e=>e.tagName==='H3'), end=kids.findIndex(e=>e.classList.contains('controls'));
+  let cur='General';
+  kids.forEach((e,i)=>{ if(e.classList.contains('bar')||e.classList.contains('controls')||i>end&&end>=0) return;
+    if(e.tagName==='H3'){ const t=e.textContent.trim(), P=XDBG_PANES.find(([,h])=>h.includes(t)); cur=P?P[0]:'General'; }
+    else if(i<first&&!e.classList.contains('hint')) cur='General';
+    (e.classList.contains('hint')?panes.General:panes[cur]).appendChild(e); });
+  // the General pane opens with the pause and lab switches and the note on how the menu works
+  const G=panes.General, hint=G.querySelector('.hint'); if(hint) G.prepend(hint);
+  const show=n=>{ for(const k in panes) panes[k].hidden=k!==n; for(const b of tabs.children) b.classList.toggle('on',b.dataset.pane===n); body.scrollTop=0; try{ localStorage.setItem('hexmancers-dbgpane',n); }catch(e){} };
+  for(const [name] of XDBG_PANES){ const b=document.createElement('button'); b.type='button'; b.textContent=name; b.dataset.pane=name; b.onclick=()=>show(name); tabs.appendChild(b); }
+  const bar=body.querySelector('.bar'), ctl=body.querySelector('.controls'); bar.after(tabs); let at=tabs; for(const [name] of XDBG_PANES){ at.after(panes[name]); at=panes[name]; }
+  let saved=null; try{ saved=localStorage.getItem('hexmancers-dbgpane'); }catch(e){} show(panes[saved]?saved:'Dungeon'); }
 /* The debug menu is a drawer at the top of the screen: drag its grip down for more menu, up for more
    dungeon. A tap on the grip folds it to its title bar or unfolds it. The height is remembered here. */
 function xDbgGrip(){ const grip=document.getElementById('dbgGrip'), pan=grip&&grip.parentElement, box=document.getElementById('debug'), KEY='hexmancers-dbgh'; if(!grip) return;

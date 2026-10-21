@@ -51,7 +51,7 @@ function arenaFit(w,h){ const A=arenaInit(), c=A.cam; A.w=w; A.h=h; c.aspect=w/h
   c.fov=XLIT.camFov>0?XLIT.camFov:46; c.updateProjectionMatrix();
   const portrait=h>w*1.05, mx=portrait?12:36, my=12, AR_PITCH=Math.max(10,XLIT.camPitch-(portrait?0:8))*Math.PI/180;   // the debug menu's angle (8 degrees lower on a wide screen)
   let x0=1e9,x1=-1e9,z0=1e9,z1=-1e9; for(const t of TILES){ x0=Math.min(x0,t.wx); x1=Math.max(x1,t.wx); z0=Math.min(z0,t.wz); z1=Math.max(z1,t.wz); }
-  const pts=[]; for(const t of TILES) if(t.wx<=x0+.1||t.wx>=x1-.1||t.wz<=z0+.1||t.wz>=z1-.1) for(const y of [0,2.2]) for(let i=0;i<6;i++){ const a=Math.PI/6+i*Math.PI/3; pts.push([t.wx+Math.cos(a),y,t.wz+Math.sin(a)]); }
+  const pts=[]; for(const t of TILES) if(t.wx<=x0+.1||t.wx>=x1-.1||t.wz<=z0+.1||t.wz>=z1-.1) for(const y of [0,2.2]) for(const [dx,dz] of tileCornerOffs(1)) pts.push([t.wx+dx,y,t.wz+dz]);
   pts.push([x0-1,-SLAB,0],[x1+1,-SLAB,0]);
   const v=new THREE.Vector3(), fit=(d,off)=>{ c.position.set(0,Math.sin(AR_PITCH)*d,Math.cos(AR_PITCH)*d+off); c.lookAt(0,0,off); c.updateMatrixWorld(); c.updateProjectionMatrix();
     let a=1e9,b=-1e9,cc=1e9,e=-1e9; for(const [px,py,pz] of pts){ v.set(pz,py,-px).project(c); if(v.z>1) return null; const sx=(v.x+1)/2*w, sy=(1-v.y)/2*h; a=Math.min(a,sx); b=Math.max(b,sx); cc=Math.min(cc,sy); e=Math.max(e,sy); }
@@ -82,11 +82,11 @@ function arenaBoard(A,Ar,R){
   const rad=.96, lo=-SLAB; let k=0;
   const put=(x,y,z,nx,ny,nz,u,w)=>{ pos.set([x,y,z],k*3); nor.set([nx,ny,nz],k*3); uv.set([u,w],k*2); k++; };
   TILES.forEach((t,ti)=>{ t._v0=k; const cx=t.wz, cz=-t.wx, h=Math.imul(t.q*73856093^t.r*19349663,2654435761)>>>0, ou=(h%97)/97, ov=((h>>>8)%89)/89;
-    const C=[]; for(let i=0;i<6;i++){ const a=Math.PI/6+i*Math.PI/3; C.push([cx+Math.sin(a)*rad, cz-Math.cos(a)*rad]); }
+    const C=tileCornerOffs(rad).map(([dx,dz])=>[cx+dz,cz-dx]), NC=C.length;
     const U=(x,z)=>[ou+(x-cx)*.17, ov+(z-cz)*.17];
-    for(let i=0;i<6;i++){ const a=C[i], b=C[(i+1)%6];
+    for(let i=0;i<NC;i++){ const a=C[i], b=C[(i+1)%NC];
       put(cx,0,cz,0,1,0,...U(cx,cz)); put(b[0],0,b[1],0,1,0,...U(b[0],b[1])); put(a[0],0,a[1],0,1,0,...U(a[0],a[1])); }
-    for(let i=0;i<6;i++){ const a=C[i], b=C[(i+1)%6], mx=(a[0]+b[0])/2-cx, mz=(a[1]+b[1])/2-cz, l=Math.hypot(mx,mz), nx=mx/l, nz=mz/l, u0=ou+i*.1, u1=u0+.1;
+    for(let i=0;i<NC;i++){ const a=C[i], b=C[(i+1)%NC], mx=(a[0]+b[0])/2-cx, mz=(a[1]+b[1])/2-cz, l=Math.hypot(mx,mz), nx=mx/l, nz=mz/l, u0=ou+i*.1, u1=u0+.1;
       put(a[0],0,a[1],nx,0,nz,u0,.6); put(b[0],0,b[1],nx,0,nz,u1,.6); put(b[0],lo,b[1],nx,0,nz,u1,.55);
       put(a[0],0,a[1],nx,0,nz,u0,.6); put(b[0],lo,b[1],nx,0,nz,u1,.55); put(a[0],lo,a[1],nx,0,nz,u0,.55); }
     t._v1=k; });
@@ -95,15 +95,15 @@ function arenaBoard(A,Ar,R){
   const m=arMat(xLitTag(xPhong({map:tex,vertexColors:true,pbr:'slab'}),1,cvs)), mesh=new THREE.Mesh(g,m); mesh.renderOrder=0;
   // the glow layer: the same tiles' tops again, unlit and added on, black where nothing glows
   const gpos=[], gcol=[]; TILES.forEach(t=>{ t._g0=gpos.length/3; const cx=t.wz, cz=-t.wx;
-    for(let i=0;i<6;i++){ const a=Math.PI/6+i*Math.PI/3, b=a+Math.PI/3; gpos.push(cx,.012,cz, cx+Math.sin(b)*rad,.012,cz-Math.cos(b)*rad, cx+Math.sin(a)*rad,.012,cz-Math.cos(a)*rad); gcol.push(0,0,0,0,0,0,0,0,0); } });
+    const C=tileCornerOffs(rad).map(([dx,dz])=>[cx+dz,cz-dx]); for(let i=0;i<C.length;i++){ const a=C[i], b=C[(i+1)%C.length]; gpos.push(cx,.012,cz, b[0],.012,b[1], a[0],.012,a[1]); gcol.push(0,0,0,0,0,0,0,0,0); } });
   const gg=new THREE.BufferGeometry(); gg.setAttribute('position',new THREE.Float32BufferAttribute(gpos,3)); gg.setAttribute('color',new THREE.Float32BufferAttribute(gcol,3));
   const glow=new THREE.Mesh(gg,arMat(new THREE.MeshBasicMaterial({vertexColors:true,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false,fog:false}))); glow.renderOrder=1;
   // the outline of every tile and a faint triangle grid inside it, a steady guide to walk by
   const lp=[], lc=[]; const side=t=>t.side==='p'?[.5,.83,1]:t.side==='e'?[.59,.65,.7]:[.22,1,.54];
   for(const t of TILES){ const cx=t.wz, cz=-t.wx, c=side(t), f=t.side==='p'?.5:t.side==='e'?.32:.5, fi=t.side==='p'?.14:.08;
-    for(let i=0;i<6;i++){ const a=Math.PI/6+i*Math.PI/3, b=a+Math.PI/3, ax=cx+Math.sin(a)*rad, az=cz-Math.cos(a)*rad, bx=cx+Math.sin(b)*rad, bz=cz-Math.cos(b)*rad;
+    const C=tileCornerOffs(rad).map(([dx,dz])=>[cx+dz,cz-dx]); for(let i=0;i<C.length;i++){ const [ax,az]=C[i], [bx,bz]=C[(i+1)%C.length];
       lp.push(ax,.02,az,bx,.02,bz); lc.push(...c.map(v=>v*f),...c.map(v=>v*f));
-      if(t.side!=='n'){ lp.push(cx,.02,cz,ax,.02,az); lc.push(...c.map(v=>v*fi),...c.map(v=>v*fi)); } } }
+      if(t.side!=='n'&&!SQUARE){ lp.push(cx,.02,cz,ax,.02,az); lc.push(...c.map(v=>v*fi),...c.map(v=>v*fi)); } } }
   const lg=new THREE.BufferGeometry(); lg.setAttribute('position',new THREE.Float32BufferAttribute(lp,3)); lg.setAttribute('color',new THREE.Float32BufferAttribute(lc,3));
   const lines=new THREE.LineSegments(lg,arMat(new THREE.LineBasicMaterial({vertexColors:true,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false,fog:false}))); lines.renderOrder=2;
   A.board={mesh,glow,lines}; return [mesh,glow,lines]; }
@@ -186,7 +186,7 @@ function arenaTiles(list){ const A=AR; if(!A||!A.board) return; const ca=A.board
     const r=Math.min(1.6,AR_C.r*2.6+.25), g=Math.min(1.6,AR_C.g*2.6+.25), b=Math.min(1.6,AR_C.b*2.6+.25);
     for(let v=t._v0;v<t._v1;v++) ca.setXYZ(v,r,g,b);
     const gr=Math.max(0,AR_C.r-AR_G.r)*1.4, gg=Math.max(0,AR_C.g-AR_G.g)*1.4, gb=Math.max(0,AR_C.b-AR_G.b)*1.4;
-    for(let v=t._g0;v<t._g0+18;v++) ga.setXYZ(v,gr,gg,gb); }
+    for(let v=t._g0;v<t._g0+(SQUARE?12:18);v++) ga.setXYZ(v,gr,gg,gb); }
   ca.needsUpdate=true; ga.needsUpdate=true; }
 
 // the lights, set from the shared settings (as in the dungeon) and the area's flicker
@@ -293,7 +293,7 @@ function arenaUnit(u,spr,o){ const A=AR; if(!A||!A.grp) return; let U=A.units.ge
 // rocks and card walls: lit blocks standing on their tiles, in the area's stone or the card's colour
 function arenaBlock(u,kind,col){ const A=AR; if(!A||!A.grp) return; let U=A.units.get(u);
   if(!U){ let mesh; const cage=kind==='cage', wall=kind==='wall'||cage, h=cage?.5:wall?.9:.75;   // a cage is low and see-through, so the enemy inside and its tells stay readable
-    const geo=new THREE.CylinderGeometry(wall?.62:.7,wall?.66:.74,h,6,1,false,Math.PI/6); geo.translate(0,h/2,0);
+    const geo=SQUARE?new THREE.CylinderGeometry(wall?.86:.94,wall?.9:1,h,4,1,false,Math.PI/4):new THREE.CylinderGeometry(wall?.62:.7,wall?.66:.74,h,6,1,false,Math.PI/6); geo.translate(0,h/2,0);
     if(wall) mesh=new THREE.Mesh(geo,arMat(xPhong(Object.assign({color:new THREE.Color(col).lerp(new THREE.Color('#ffffff'),.1),emissive:new THREE.Color(col).multiplyScalar(cage?.45:.25)},cage?{transparent:true,opacity:.45,depthWrite:false}:{}))));
     else { const t=A.rockTex||(A.rockTex=arTex(xTex(xRockWall(A.area.stone||AREAS[0].stone,(A.area.index||0)*7+2),true))); mesh=new THREE.Mesh(geo,arMat(xLitTag(xPhong({map:t,color:0xc8d0d8}),2,t.image))); xLit(mesh.material); }
     A.grp.add(mesh); U={g:mesh,block:true}; A.units.set(u,U); }

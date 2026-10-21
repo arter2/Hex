@@ -11,10 +11,24 @@ const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 /* ---------------- board ---------------- */
 const BOARD_ROWS=7, BOARD_COLS=12;
 const DIRS={E:[1,0],NE:[1,-1],NW:[0,-1],W:[-1,0],SW:[-1,1],SE:[0,1]}, DIRLIST=Object.values(DIRS);
+/* TEST ONLY (debug menu › Battle › Square board): the board as a square grid, to try how it plays on a
+   phone. Off by default; read at each battle's start. Squares touch their 8 neighbours, distance counts
+   diagonal steps as 1, and the hex shapes are drawn as squares. */
+let SQUARE=false; const SQS=1.6;   // a square's side, in board units
+const sqBoardOn=()=>{ try{ return localStorage.getItem('hexmancers-xl-sqBoard')==='1'; }catch(e){ return false; } };
+const SQ_NB=[[1,0],[1,-1],[0,-1],[-1,-1],[-1,0],[-1,1],[0,1],[1,1]];
+// a tile's corners as offsets on the board (wx, wz), going round: a hex's six, or a square's four
+function tileCornerOffs(rad){ if(SQUARE){ const h=rad*SQS/2; return [[h,h],[-h,h],[-h,-h],[h,-h]]; }
+  const out=[]; for(let i=0;i<6;i++){ const a=Math.PI/6+i*Math.PI/3; out.push([Math.cos(a)*rad,Math.sin(a)*rad]); } return out; }
 // The arrays below are rebuilt in place by buildBoard, so references to them stay valid.
 const BOARD=new Map(), CR=new Map(), TILES=[], P_TILES=[], E_TILES=[];
 function buildBoard(){
   BOARD.clear(); CR.clear(); TILES.length=0; P_TILES.length=0; E_TILES.length=0;
+  SQUARE=sqBoardOn(); Object.assign(DIRS,SQUARE?{NE:[1,-1],NW:[0,-1],SW:[0,1],SE:[1,1]}:{NE:[1,-1],NW:[0,-1],SW:[-1,1],SE:[0,1]}); DIRLIST.splice(0,6,...Object.values(DIRS));
+  if(SQUARE){ for(let r=0;r<BOARD_ROWS;r++) for(let c=0;c<BOARD_COLS;c++){ const x=c-(BOARD_COLS-1)/2, side=c<BOARD_COLS/2?'p':'e';
+      const t={q:c,r,col:c,x,side,wx:SQS*x,wz:SQS*(r-(BOARD_ROWS-1)/2),key:c+','+r,occ:null,flash:0,flashC:'#fff'};
+      BOARD.set(t.key,t); CR.set(c+','+r,t); TILES.push(t); (side==='p'?P_TILES:E_TILES).push(t); }
+    return; }
   for(let r=0;r<BOARD_ROWS;r++) for(let c=0;c<BOARD_COLS;c++){
     // odd rows are offset by half a tile; q is the axial column so a row keeps one r
     const q=c-Math.floor(r/2), x=c+(r%2)*.5-(BOARD_COLS-.5)/2, side=c<BOARD_COLS/2?'p':'e';
@@ -38,9 +52,9 @@ function patternTiles(t,pat,side){
   }
   return side?ts.filter(x=>x.side===side):ts;
 }
-const neighbors=t=>DIRLIST.map(d=>tileAt(t.q+d[0],t.r+d[1])).filter(Boolean);
+const neighbors=t=>(SQUARE?SQ_NB:DIRLIST).map(d=>tileAt(t.q+d[0],t.r+d[1])).filter(Boolean);
 const around=neighbors;   // area effects hit the 6 surrounding tiles
-const hexDist=(a,b)=>{ const dq=a.q-b.q, dr=a.r-b.r; return (Math.abs(dq)+Math.abs(dr)+Math.abs(dq+dr))/2; };
+const hexDist=(a,b)=>{ const dq=a.q-b.q, dr=a.r-b.r; if(SQUARE) return Math.max(Math.abs(dq),Math.abs(dr)); return (Math.abs(dq)+Math.abs(dr)+Math.abs(dq+dr))/2; };
 // a diagonal shot: forward a column each step, bouncing off the top and bottom rows (a straight
 // diagonal ran off the 7-row board before it reached most of the enemy side)
 function diagPath(t,d){ const out=[]; let r=t.r; for(let i=1;t.col+i<BOARD_COLS;i++){ if(r+d<0||r+d>=BOARD_ROWS) d=-d; r+=d; const n=tileCR(t.col+i,r); if(n) out.push(n); } return out; }
@@ -1110,7 +1124,7 @@ function scaleAt(wx,wz){ if(PJ.decal) return DEC.k; if(!gl3()) return scaleAt2D(
 function viewIY(){ if(PJ.decal) return 1; if(!gl3()) return View.iy2D; const a=arenaProject(0,0,0), b=arenaProject(1,0,0), c=arenaProject(0,0,1); return Math.min(1,Math.abs(b[1]-a[1])/Math.max(1e-3,Math.hypot(c[0]-a[0],c[1]-a[1]))); }
 const depthOf=t=>-t.wx*View.sa+t.wz*View.ca;
 function hexCorners(t,rad,y){ const out=[];
-  for(let i=0;i<6;i++){ const a=Math.PI/6+i*Math.PI/3; out.push(proj(t.wx+Math.cos(a)*rad,y||0,t.wz+Math.sin(a)*rad)); } return out; }
+  for(const [dx,dz] of tileCornerOffs(rad)) out.push(proj(t.wx+dx,y||0,t.wz+dz)); return out; }
 // the sides of a raised tile that face the camera (edges whose outward normal points down the screen)
 function frontFaces(ctx,top,drop){ const n=top.length, cx=top.reduce((a,p)=>a+p[0],0)/n, cy=top.reduce((a,p)=>a+p[1],0)/n;
   for(let i=0;i<n;i++){ const a=top[i], b=top[(i+1)%n]; if((a[1]+b[1])/2<=cy) continue;
@@ -1148,7 +1162,7 @@ function pickTile(clientX,clientY){
 function pickAt(x,y){
   let best=null, bd=1e9;
   for(const t of TILES){ const hc=hexCorners(t,1);
-    let inside=false; for(let i=0,j=5;i<6;j=i++){ const [xi,yi]=hc[i], [xj,yj]=hc[j]; if((yi>y)!==(yj>y)&&x<(xj-xi)*(y-yi)/(yj-yi)+xi) inside=!inside; }
+    let inside=false; for(let i=0,j=hc.length-1;i<hc.length;j=i++){ const [xi,yi]=hc[i], [xj,yj]=hc[j]; if((yi>y)!==(yj>y)&&x<(xj-xi)*(y-yi)/(yj-yi)+xi) inside=!inside; }
     if(inside) return t;
     const [cx,cy]=proj(t.wx,0,t.wz), d=Math.hypot(x-cx,(y-cy)/View.iy)/scaleAt(t.wx,t.wz); if(d<bd){ bd=d; best=t; } }
   return bd<1.1?best:null;

@@ -15,7 +15,7 @@ const TAU2=Math.PI*2;
 
 /* ---------------- the attack bar ---------------- */
 // the tile's outline, as screen points, going counter-clockwise from the bottom (front) corner, which the enemy never hides
-function barPoints(t){ const hc=hexCorners(t,.9), cx=hc.reduce((a,p)=>a+p[0],0)/6, cy=hc.reduce((a,p)=>a+p[1],0)/6;
+function barPoints(t){ const hc=hexCorners(t,.9), cx=hc.reduce((a,p)=>a+p[0],0)/hc.length, cy=hc.reduce((a,p)=>a+p[1],0)/hc.length;
   const ang=p=>{ let a=Math.atan2(-(p[1]-cy),p[0]-cx)+Math.PI/2; while(a<0) a+=TAU2; while(a>=TAU2) a-=TAU2; return a; };   // 0 at the bottom, growing counter-clockwise on screen
   return hc.slice().sort((a,b)=>ang(a)-ang(b)); }
 function atkBars(ctx,b,T){ if(!b||b.phase!=='fight') return;
@@ -29,9 +29,9 @@ function atkBars(ctx,b,T){ if(!b||b.phase!=='fight') return;
     // the filled part, from the bottom corner round counter-clockwise
     const col=held?'#7fd4ff':on?'#ffffff':busy?'#ff3a4a':k>.75?'#ff5d3a':k>.45?'#ffb03a':'#f2e27a';
     ctx.strokeStyle=col; if(on||busy){ ctx.shadowColor=col; ctx.shadowBlur=10; }
-    const segs=pts.map((p,i)=>[p,pts[(i+1)%6]]), len=segs.map(([a,c])=>Math.hypot(c[0]-a[0],c[1]-a[1])), tot=len.reduce((a,b)=>a+b,0); let left=tot*(flashing?1:k);
+    const segs=pts.map((p,i)=>[p,pts[(i+1)%pts.length]]), len=segs.map(([a,c])=>Math.hypot(c[0]-a[0],c[1]-a[1])), tot=len.reduce((a,b)=>a+b,0); let left=tot*(flashing?1:k);
     ctx.beginPath(); ctx.moveTo(pts[0][0],pts[0][1]);
-    for(let i=0;i<6&&left>0;i++){ const [a,c]=segs[i], f=Math.min(1,left/len[i]); ctx.lineTo(a[0]+(c[0]-a[0])*f,a[1]+(c[1]-a[1])*f); left-=len[i]; }
+    for(let i=0;i<segs.length&&left>0;i++){ const [a,c]=segs[i], f=Math.min(1,left/len[i]); ctx.lineTo(a[0]+(c[0]-a[0])*f,a[1]+(c[1]-a[1])*f); left-=len[i]; }
     if(!flashing||on) ctx.stroke(); ctx.restore(); } }
 // a card that lands while the bar flashes counts as a Counter Hit too
 const inCounterWindow=e=>e.atkT>0&&e.atkT<FLASH_T&&!(e.stunT>0)&&!(e.freezeT>0);

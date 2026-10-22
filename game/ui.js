@@ -1028,7 +1028,10 @@ function heldWalk(){ if(!B||B.phase!=='fight'||paused) return; const p=B.player;
   if(B.time-moveHeldT<.15&&p.path.length) return;   // the first tile walks as a tap would
   let vx=0, vz=0; for(const a of moveHeld){ vx+=MOVE_VEC[a][0]; vz+=MOVE_VEC[a][1]; }
   const L=Math.hypot(vx,vz); if(!L){ if(p.free&&p.free.key) p.free=null; return; }
-  freeTarget((p.fx??p.tile.wx)+vx/L*4,(p.fz??p.tile.wz)+vz/L*4,true); }
+  // straight along a row, the magnet also draws you onto the row's middle line, so you don't run along the
+  // line between two rows (on squares, a column's too)
+  const fx=p.fx??p.tile.wx, fz=p.fz??p.tile.wz, m=MV('mvSnap');
+  freeTarget(fx+vx/L*4+(!vx&&SQUARE?(p.tile.wx-fx)*m:0),fz+vz/L*4+(!vz?(p.tile.wz-fz)*m:0),true); }
 addEventListener('blur',()=>{ held.clear(); moveHeld=[]; });
 window.addEventListener('keydown',e=>{
   if(!B||!$('#scrBattle').classList.contains('on')) return; const k=e.key.toLowerCase();

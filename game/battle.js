@@ -1103,7 +1103,7 @@ function cycleAim(){ const b=B; if(!b||b.phase!=='fight') return; const ts=alive
    (p.path) to the middle of the last one. p.fx/p.fz is where your mage is. */
 function nearestTile(x,z){ let best=null, bd=1e9; for(const t of TILES){ const d=(t.wx-x)**2+(t.wz-z)**2; if(d<bd){ bd=d; best=t; } } return best; }
 // the walking settings (debug menu › Battle › Battle movement, and the Movement lab), kept in look.js
-const MV_DEF={mvSpeed:1, mvSnap:.5, mvSnapR:.5, mvSnapSpd:1, mvRest:.25, mvDrag:1.15, mvAccel:0};
+const MV_DEF={mvSpeed:1.2, mvSnap:1, mvSnapR:.46, mvSnapSpd:2.3, mvRest:.6, mvDrag:2.5, mvAccel:.5};
 const MV=k=>typeof XLIT!=='undefined'&&XLIT[k]!=null?XLIT[k]:MV_DEF[k];
 function freeTarget(x,z,key){ const b=B; if(!b||b.phase!=='fight') return; const p=b.player;
   const xs=P_TILES.map(t=>t.wx), zs=P_TILES.map(t=>t.wz), o=p.free;
@@ -1140,6 +1140,26 @@ function freeTick(p,rdt,haste){
     if(!n||Math.hypot(x-p.fx,z-p.fz)<1e-6){ if(!p.free) p.path=[]; break; }
     p.fx=x; p.fz=z; p.fmov=true; budget-=m;
     if(n!==p.tile){ p.tile.occ=null; p.tile=n; n.occ=p; p.fTile=n; } } }
+/* Show movement (debug menu › Battle movement, or the Movement lab): what the walking settings do, drawn
+   on the board. Cyan: each tile's magnet zone (stop inside it and you are pulled to the middle). Yellow
+   outline: the tile you are hit on. White: where your mage stands, a line to where your finger points, and
+   a ring that fills while your finger rests (the magnet pulls when it closes). Pink: where the magnet is
+   taking you. */
+function mvOverlay(ctx,b){ const p=b.player; if(!p||p.fx==null) return;
+  const sp=Math.min(...neighbors(p.tile).map(n=>Math.hypot(n.wx-p.tile.wx,n.wz-p.tile.wz))), R=MV('mvSnapR')*sp;
+  const poly=pts=>{ ctx.beginPath(); pts.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y)); ctx.closePath(); };
+  const ring=(wx,wz,r,n=28)=>Array.from({length:n},(_,i)=>proj(wx+Math.cos(i/n*TAU)*r,0,wz+Math.sin(i/n*TAU)*r));
+  ctx.save();
+  if(MV('mvSnap')>0&&R>0) for(const t of P_TILES){ if(t.occ&&t.occ!==p) continue;
+    ctx.save(); poly(hexCorners(t,1)); ctx.clip(); poly(ring(t.wx,t.wz,R)); ctx.fillStyle='rgba(80,220,255,'+(.1+.16*MV('mvSnap'))+')'; ctx.fill();
+    ctx.strokeStyle='rgba(120,235,255,.55)'; ctx.lineWidth=1.2; ctx.stroke(); ctx.restore(); }
+  poly(hexCorners(p.tile,.97)); ctx.strokeStyle='#ffe066'; ctx.lineWidth=2.5; ctx.stroke();
+  const [mx,my]=proj(p.fx,0,p.fz), dot=(x,y,r,c)=>{ ctx.fillStyle=c; ctx.beginPath(); ctx.arc(x,y,r,0,TAU); ctx.fill(); };
+  if(p.free){ const [fx,fy]=proj(p.free.x,0,p.free.z); ctx.setLineDash([5,4]); ctx.strokeStyle='rgba(255,255,255,.8)'; ctx.lineWidth=1.5; ctx.beginPath(); ctx.moveTo(mx,my); ctx.lineTo(fx,fy); ctx.stroke(); ctx.setLineDash([]);
+    ctx.beginPath(); ctx.moveTo(fx-6,fy-6); ctx.lineTo(fx+6,fy+6); ctx.moveTo(fx+6,fy-6); ctx.lineTo(fx-6,fy+6); ctx.stroke();
+    const k=MV('mvRest')>0?Math.min(1,(b.time-p.free.t)/MV('mvRest')):1; if(!p.snap&&k<1){ ctx.strokeStyle='#ffffff'; ctx.lineWidth=3; ctx.beginPath(); ctx.arc(mx,my,13,-Math.PI/2,-Math.PI/2+k*TAU); ctx.stroke(); } }
+  if(p.snap){ const [sx,sy]=proj(p.snap.x,0,p.snap.z); ctx.strokeStyle='#ff6ad5'; ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(mx,my); ctx.lineTo(sx,sy); ctx.stroke(); dot(sx,sy,4.5,'#ff6ad5'); }
+  dot(mx,my,4,'#ffffff'); ctx.restore(); }
 // canvas point -> board point (x,z), solved from proj() a few times over, starting near (wx,wz)
 function unprojGround(x,y,wx,wz){ for(let i=0;i<5;i++){ const [a,b]=proj(wx,0,wz), [a1,b1]=proj(wx+.5,0,wz), [a2,b2]=proj(wx,0,wz+.5);
     const j11=(a1-a)*2, j21=(b1-b)*2, j12=(a2-a)*2, j22=(b2-b)*2, det=j11*j22-j12*j21; if(Math.abs(det)<1e-9) break;
@@ -1464,6 +1484,7 @@ function render(){
   if(G3){ const dc=DEC.ctx; dc.setTransform(1,0,0,1,0,0); dc.clearRect(0,0,DEC.cv.width,DEC.cv.height); PJ.decal=true; View.iy=ISO_Y=1;
     try{ floorLayer(dc,b,T,DEC.k,telMap,true,tl3); if(typeof atkBars==='function') atkBars(dc,b,T); } finally{ PJ.decal=false; View.iy=ISO_Y=viewIY(); } arenaTiles(tl3); }
   else { floorLayer(ctx,b,T,S,telMap,false,tl3); if(typeof atkBars==='function') atkBars(ctx,b,T); }
+  if(XLIT.mvShow) mvOverlay(ctx,b);
   const rocks=TILES.filter(t=>t.occ&&t.occ.kind==='rock').map(t=>t.occ);
   const dying=b.enemies.filter(e=>e.hp<=0&&e.deathT>0);
   const units=[b.player,...b.walls,...b.allies,...rocks,...alive(),...dying].sort((a,c)=>depthOf(a.tile)-depthOf(c.tile));

@@ -5,7 +5,7 @@
    changes both screens. */
 // test values, tuned by hand in the debug menu: the dither ball's radius and the alpha strip's half-width, in tiles
 const xSetF=(k,d)=>{ try{ const v=parseFloat(localStorage.getItem(k)); return isNaN(v)?d:v; }catch(e){ return d; } };
-const XB_DEF={ ball:1.5, strip:1 };
+const XB_DEF={ ball:1.25, strip:6 };
 const XB={ ball:xSetF('hexmancers-xball',XB_DEF.ball), strip:xSetF('hexmancers-xstrip',XB_DEF.strip) };
 /* The debug menu: test sliders and switches for the dungeon's look. Three fingers tapped three
    times anywhere opens it (` on a keyboard); it sits low on the screen over a clear backdrop, so
@@ -20,8 +20,8 @@ const XB={ ball:xSetF('hexmancers-xball',XB_DEF.ball), strip:xSetF('hexmancers-x
      darken toward their feet.
    - Screen-space AO: a pass over the depth of the whole frame shades every crease (xSSAO). */
 const xSetB=(k,d)=>{ try{ const v=localStorage.getItem(k); return v==null?d:v==='1'; }catch(e){ return d; } };
-const XLIT_DEF={ amb:1, sun:1, lamp:1, lampRad:1, lampY:2.6, torch:1, torchRad:1, flick:1, myGlow:1, fogNear:20, fogFar:46, texel:true, steps:0, nmap:true, nstrF:.35, nstrW:.35, ao:true, aoStr:1, aoRad:1, ssao:false, ssaoStr:1, ssaoRad:.6, fps:false, autoQ:true, camPitch:36, camFov:61, arWalls:true, camZoom:1.1, camX:0, camY:0, camZ:0, camRX:0, camRY:0, camRZ:0, dof:false, dofFocus:0, dofRange:2, dofFade:4, dofNear:1, dofFar:1, dofBlur:6, pbr:false, pbrEnv:1, pbrR_gold:0.32, pbrM_gold:1, pbrR_steel:0.26, pbrM_steel:0.9, pbrR_gloss:0.14, pbrM_gloss:0, pbrR_ice:0.08, pbrM_ice:0, pbrR_slab:0.7, pbrM_slab:0, pbrRMap:1,
-  dPitch:48, dDist:9.4, dFov:46, dAhead:1, dAim:0, dFog:true, dFogStart:6, dFogLen:14, dMemLit:.7, dMemDark:.35, dLightMem:1, dCut:false, dCutH:.3, dDoorMin:.75, dDoorGlow:.3, dofShow:false, vig:.35, vigR:.55, vigSoft:.7, mvSpeed:1, mvSnap:.5, mvSnapR:.5, mvSnapSpd:1, mvRest:.25, mvDrag:1.15, mvAccel:0 };   // mv...: how you walk in battle (battle.js freeTick)   // d...: the dungeon camera, haze, what you remember and walls
+const XLIT_DEF={ amb:4, sun:3.5, lamp:2.05, lampRad:0.4, lampY:3.7, torch:0.55, torchRad:0.75, flick:2.15, myGlow:1.2, fogNear:51, fogFar:119, texel:true, steps:8, nmap:true, nstrF:1.05, nstrW:0.23, ao:true, aoStr:0.9, aoRad:0.6, ssao:true, ssaoStr:1.25, ssaoRad:0.55, fps:false, autoQ:true, camPitch:42, camFov:64, arWalls:true, camZoom:1.05, camX:0, camY:-0.5, camZ:0.3, camRX:11, camRY:0, camRZ:0, dof:true, dofFocus:7.9, dofRange:10, dofFade:16.3, dofNear:0.35, dofFar:0.5, dofBlur:12.5, pbr:true, pbrEnv:1.25, pbrR_gold:0.68, pbrM_gold:1, pbrR_steel:1, pbrM_steel:1, pbrR_gloss:0.14, pbrM_gloss:0, pbrR_ice:0.97, pbrM_ice:0, pbrR_slab:0.7, pbrM_slab:0, pbrRMap:1,
+  dPitch:48, dDist:9.4, dFov:46, dAhead:1, dAim:0, dFog:true, dFogStart:6, dFogLen:14, dMemLit:.7, dMemDark:.35, dLightMem:1, dCut:false, dCutH:.3, dDoorMin:.75, dDoorGlow:.3, dofShow:false, vig:0.98, vigR:0.79, vigSoft:0.38, mvSpeed:1.2, mvSnap:1, mvSnapR:0.46, mvSnapSpd:2.3, mvRest:0.6, mvDrag:2.5, mvAccel:0.5, mvShow:false };   // d...: the dungeon camera, haze, what you remember and walls; mv...: how you walk in battle (battle.js freeTick)
 // the debug menu's pause: the game holds still (no moves, no clocks) but keeps being drawn; never saved
 const DBG={pause:false};
 const XLIT={}; for(const k in XLIT_DEF) XLIT[k]=typeof XLIT_DEF[k]==='boolean'?xSetB('hexmancers-xl-'+k,XLIT_DEF[k]):xSetF('hexmancers-xl-'+k,XLIT_DEF[k]);
@@ -289,7 +289,7 @@ const XDBG=[   // [element id, object, key, saved as, decimals (null: a checkbox
   ...['gold','steel','gloss','ice','slab'].flatMap(k=>[['dbgPbrR_'+k,()=>XLIT,'pbrR_'+k,'hexmancers-xl-pbrR_'+k,2,'pbrEnv'],['dbgPbrM_'+k,()=>XLIT,'pbrM_'+k,'hexmancers-xl-pbrM_'+k,2,'pbrEnv']]),
   ...[['dbgAmb','amb'],['dbgSun','sun'],['dbgLamp','lamp'],['dbgLampRad','lampRad'],['dbgLampY','lampY'],['dbgTorch','torch'],['dbgTorchRad','torchRad'],['dbgFlick','flick'],['dbgMyGlow','myGlow']].map(([id,k])=>[id,()=>XLIT,k,'hexmancers-xl-'+k,2,'']),
   ['dbgFogNear',()=>XLIT,'fogNear','hexmancers-xl-fogNear',0,''], ['dbgFogFar',()=>XLIT,'fogFar','hexmancers-xl-fogFar',0,''],
-  ...[['dPitch',0,''],['dDist',1,''],['dFov',0,''],['dAhead',2,''],['dAim',1,''],['dFog',null,''],['dFogStart',0,''],['dFogLen',0,''],['dMemLit',2,'xpaint'],['dMemDark',2,'xpaint'],['dLightMem',2,''],['dCut',null,'xwalls'],['dCutH',2,'xwalls'],['dDoorMin',2,'xwalls'],['dDoorGlow',2,'xwalls'],['dofShow',null,''],['vig',2,''],['vigR',2,''],['vigSoft',2,''],['mvSpeed',2,''],['mvSnap',2,''],['mvSnapR',2,''],['mvSnapSpd',2,''],['mvRest',2,''],['mvDrag',2,''],['mvAccel',2,'']].map(([k,dec,what])=>['dbg_'+k,()=>XLIT,k,'hexmancers-xl-'+k,dec,what]) ];
+  ...[['dPitch',0,''],['dDist',1,''],['dFov',0,''],['dAhead',2,''],['dAim',1,''],['dFog',null,''],['dFogStart',0,''],['dFogLen',0,''],['dMemLit',2,'xpaint'],['dMemDark',2,'xpaint'],['dLightMem',2,''],['dCut',null,'xwalls'],['dCutH',2,'xwalls'],['dDoorMin',2,'xwalls'],['dDoorGlow',2,'xwalls'],['dofShow',null,''],['vig',2,''],['vigR',2,''],['vigSoft',2,''],['mvSpeed',2,''],['mvSnap',2,''],['mvSnapR',2,''],['mvSnapSpd',2,''],['mvRest',2,''],['mvDrag',2,''],['mvAccel',2,''],['mvShow',null,'']].map(([k,dec,what])=>['dbg_'+k,()=>XLIT,k,'hexmancers-xl-'+k,dec,what]) ];
 let xBakeT=0;
 function xDbgApply(what){ if(what==='lit') xLitRefresh(); else if(what==='bake'){ xLitRefresh(); clearTimeout(xBakeT); xBakeT=setTimeout(lookBake,120); }
   else if(what==='pbr') lookRebuild();
@@ -297,7 +297,7 @@ function xDbgApply(what){ if(what==='lit') xLitRefresh(); else if(what==='bake')
   else if(what==='cam'){ if(typeof resizeView==='function'&&typeof B!=='undefined'&&B) resizeView(); }
   else if(what==='xpaint'||what==='xwalls'){ if(typeof xDbgDungeon==='function') xDbgDungeon(what); }
   else if(what==='fps'){ const f=document.getElementById('xFps'); if(f) f.style.display=XLIT.fps?'':'none'; } }
-function xBindSliders(){ for(const [id,obj,k,key,dec,what] of XDBG){ const el=document.getElementById(id), out=document.getElementById(id+'V'), O=obj(); if(!el) continue;
+function xBindSliders(){ xFineSliders(document.getElementById('debug')); for(const [id,obj,k,key,dec,what] of XDBG){ const el=document.getElementById(id), out=document.getElementById(id+'V'), O=obj(); if(!el) continue;
     const show=()=>{ if(dec==null) el.checked=!!O[k]; else { el.value=O[k]; if(out) out.textContent=(+O[k]).toFixed(dec); } };
     show(); el.oninput=el.onchange=()=>{ O[k]=dec==null?el.checked:+el.value; show(); try{ localStorage.setItem(key,dec==null?(O[k]?'1':'0'):String(O[k])); }catch(e){} xDbgApply(what); }; }
   const box=document.getElementById('debug'); if(!box||xBindSliders.done) return; xBindSliders.done=1;
@@ -321,6 +321,34 @@ function xBindSliders(){ for(const [id,obj,k,key,dec,what] of XDBG){ const el=do
   document.addEventListener('touchcancel',e=>{ if(e.touches.length===0) counted=false; },{capture:true,passive:true});
   window.addEventListener('keydown',e=>{ if(e.key!=='`'||e.repeat) return; const t=e.target; if(t&&(t.tagName==='INPUT'&&t.type!=='range'&&t.type!=='checkbox'||t.tagName==='TEXTAREA')) return; if(document.getElementById('settings').classList.contains('on')) return; e.preventDefault(); xDbgToggle(); });
   xDbgApply('fps'); }
+/* Fine sliders (the debug menu and the Movement lab), like a phone's scrubbing: drag along a slider and
+   it moves at full speed; slide your finger up or down away from it and it moves at half, a quarter, then a
+   tenth of the speed, for a fine setting. A tap still jumps to where you tap. The value is kept to the
+   slider's last decimal place (a slider in steps of 0.05 can stop on 0.01s). */
+const xStepQ=s=>{ const t=String(s); return Math.pow(10,-(t.includes('.')?t.split('.')[1].length:0)); };   // a slider's finest stop: its step's last decimal place
+function xFineSliders(root){ if(!root||root.dataset.fine) return; root.dataset.fine='1';
+  const prep=el=>{ if(el.dataset.q) return; el.dataset.q=String(xStepQ(el.getAttribute('step')||'1')); el.step='any'; };
+  root.querySelectorAll('input[type=range]').forEach(prep);
+  const XY=e=>typeof appXY==='function'?appXY(e.clientX,e.clientY):[e.clientX,e.clientY];
+  let S=null, badge=null;
+  const set=(el,v)=>{ const mn=+el.min, mx=+el.max, q=+el.dataset.q; v=Math.min(mx,Math.max(mn,Math.round((v-mn)/q)*q+mn)); v=+v.toFixed(6);
+    if(+el.value!==v){ el.value=v; el.dispatchEvent(new Event('input',{bubbles:true})); } };
+  const box=el=>{ const r=typeof appBox==='function'?appBox(el):el.getBoundingClientRect(); return r; };
+  root.addEventListener('pointerdown',e=>{ const el=e.target; if(!(el instanceof HTMLInputElement)||el.type!=='range'||e.button>0) return;
+    prep(el); e.preventDefault(); try{ el.setPointerCapture(e.pointerId); }catch(_){}
+    const [x,y]=XY(e); S={el,id:e.pointerId,x0:x,y0:y,lx:x,acc:+el.value,moved:false}; });
+  root.addEventListener('touchstart',e=>{ if(e.target instanceof HTMLInputElement&&e.target.type==='range') e.preventDefault(); },{passive:false});
+  root.addEventListener('pointermove',e=>{ if(!S||e.pointerId!==S.id) return; const [x,y]=XY(e), el=S.el;
+    if(!S.moved&&Math.hypot(x-S.x0,y-S.y0)<4) return; S.moved=true;
+    const off=Math.abs(y-S.y0), rate=off<45?1:off<95?.5:off<150?.25:.1, r=box(el);
+    S.acc=Math.min(+el.max,Math.max(+el.min,S.acc+(x-S.lx)/Math.max(40,r.width)*(el.max-el.min)*rate)); S.lx=x; set(el,S.acc);
+    if(!badge){ badge=document.createElement('div'); badge.className='finebadge'; document.body.appendChild(badge); }
+    badge.textContent=(rate===1?'Full speed':rate===.5?'Half speed':rate===.25?'Quarter speed':'Fine ×0.1')+' · '+(+el.value).toFixed(Math.max(0,-Math.round(Math.log10(+el.dataset.q))));
+    badge.style.left=e.clientX+'px'; badge.style.top=(e.clientY-44)+'px'; badge.hidden=false; });
+  const end=e=>{ if(!S||e.pointerId!==S.id) return; const el=S.el;
+    if(!S.moved&&e.type==='pointerup'){ const r=box(el), [x]=XY(e); set(el,+el.min+(x-r.left)/r.width*(el.max-el.min)); }
+    el.dispatchEvent(new Event('change',{bubbles:true})); S=null; if(badge) badge.hidden=true; };
+  root.addEventListener('pointerup',end); root.addEventListener('pointercancel',end); }
 /* Copy settings: every setting in the menu that differs from its default goes to the clipboard, as a
    list and as JSON, ready to paste into a message so they can become the new defaults. The text also shows
    under the buttons, selected, in case the browser won't let the page copy. */

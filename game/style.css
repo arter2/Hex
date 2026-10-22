@@ -1245,7 +1245,7 @@ button[hidden]{display:none!important;}
 .dbgTabs button.on{color:#14161c; background:#ffd166; border-color:#ffd166; font-weight:700;}
 .dbgPane[hidden]{display:none;}
 .dbgPane>h3:first-child{margin-top:4px;}
-#debug.tuning .srow.dbgActive{background:rgba(10,12,16,.82); border-radius:6px; padding-left:6px; padding-right:6px;}
+#debug.tuning .srow.dbgActive{background:rgba(10,12,16,.82); border-radius:6px; box-shadow:0 0 0 6px rgba(10,12,16,.82);}   /* a shadow, not padding: the slider must not shift under your finger */
 
 /* the debug menu's pause: a small tag so a held game is never mistaken for a hang */
 body.dbgPaused #app::after{content:'PAUSED (debug)'; position:absolute; right:8px; bottom:8px; z-index:12; padding:2px 8px; background:rgba(0,0,0,.7); color:#ffe066; font:700 13px monospace; border-radius:4px; pointer-events:none;}
@@ -1456,3 +1456,6 @@ body.wide .labside{align-self:start; position:sticky; top:0;}
 .mlrow input[type=range]{width:100%;}
 .mlrow b{text-align:right; font-variant-numeric:tabular-nums;}
 .mlbtns{display:flex; flex-wrap:wrap; gap:6px; margin-top:8px;}
+.finebadge{position:fixed; z-index:9999; transform:translateX(-50%); pointer-events:none; background:#0d0f12f0; color:#ffe066; border:1px solid #ffe06699; border-radius:6px; padding:3px 8px; font:600 12px/1.2 system-ui,sans-serif; white-space:nowrap;}
+.finebadge[hidden]{display:none;}
+#debug input[type=range], .mlabpanel input[type=range]{touch-action:none;}

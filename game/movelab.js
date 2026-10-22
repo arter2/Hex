@@ -6,7 +6,7 @@
    a hit is counted, then healed. Nothing here touches your game; the lab's own settings are kept in
    this browser. With no game loaded it borrows a starter hexmancer that is never saved. */
 const MLAB_KEY='hexmancers-movelab', MLAB_FOE='marksman';
-const MLAB_DEF={cols:6, rows:7, square:false, turrets:1, every:1.5, shotSpd:12};
+const MLAB_DEF={cols:6, rows:8, square:false, turrets:0, every:4, shotSpd:12};
 const MLAB=Object.assign({},MLAB_DEF,(()=>{ try{ return JSON.parse(localStorage.getItem(MLAB_KEY))||{}; }catch(e){ return {}; } })());
 const mlabKeep=()=>{ try{ localStorage.setItem(MLAB_KEY,JSON.stringify(MLAB)); }catch(e){} };
 const mlabOn=()=>!!(B&&B.lab&&B.lab.move);
@@ -35,16 +35,18 @@ function mlabHud(){ const s=$('#mlabScore'); if(s) s.textContent='Shots '+MLAB_S
 
 // the panel: [key, label, min, max, step, what a change needs] — 'board' rebuilds the battle, 'turret' and 'mv' apply at once
 const MLAB_ROWS=[
-  ['Board',[['cols','Columns per side',2,9,1,'board'],['rows','Rows',3,11,1,'board']]],
-  ['Turrets',[['turrets','Crossbowmen',0,6,1,'board'],['every','Fire every (s)',.3,4,.1,'turret'],['shotSpd','Shot speed (tiles/s)',3,30,1,'turret']]],
-  ['Walking',[['mvSpeed','Walk speed',.3,3,.05,'mv'],['mvSnap','Magnet',0,1,.05,'mv'],['mvSnapR','Magnet range (tiles)',0,.75,.01,'mv'],['mvSnapSpd','Magnet speed',.1,3,.05,'mv'],
-    ['mvRest','Finger rest (s)',0,1,.05,'mv'],['mvDrag','Drag reach',.5,2.5,.05,'mv'],['mvAccel','Speed-up (s)',0,.5,.01,'mv']]]];
+  ['Board',[['cols','Columns per side',2,12,1,'board'],['rows','Rows',3,15,1,'board']]],
+  ['Turrets',[['turrets','Crossbowmen',0,6,1,'board'],['every','Fire every (s)',.2,10,.1,'turret'],['shotSpd','Shot speed (tiles/s)',2,60,1,'turret']]],
+  ['Walking',[['mvSpeed','Walk speed',.3,5,.05,'mv'],['mvSnap','Magnet',0,1,.01,'mv'],['mvSnapR','Magnet range (tiles)',0,1.5,.01,'mv'],['mvSnapSpd','Magnet speed',.1,6,.05,'mv'],
+    ['mvRest','Finger rest (s)',0,2,.05,'mv'],['mvDrag','Drag reach',.5,6,.05,'mv'],['mvAccel','Speed-up (s)',0,2,.01,'mv']]]];
 function renderMlab(){ const f=$('#mlabForm'); f.innerHTML='';
   for(const [head,rows] of MLAB_ROWS){ const h=document.createElement('h4'); h.textContent=head; f.appendChild(h);
+    if(head==='Walking'){ const r=document.createElement('div'); r.className='mlrow'; r.innerHTML='<span>Show movement</span><div class="chips"><button class="chip" style="--c:#ff6ad5">'+(XLIT.mvShow?'On':'Off')+'</button></div>';
+      const c=r.querySelector('button'); c.classList.toggle('on',!!XLIT.mvShow); c.onclick=()=>{ XLIT.mvShow=!XLIT.mvShow; try{ localStorage.setItem('hexmancers-xl-mvShow',XLIT.mvShow?'1':'0'); }catch(e){} renderMlab(); }; f.appendChild(r); }
     if(head==='Board'){ const r=document.createElement('div'); r.className='mlrow'; r.innerHTML='<span>Shape</span><div class="chips"><button class="chip" data-sq="0" style="--c:#8fe4ff">⬡ Hex</button><button class="chip" data-sq="1" style="--c:#8fe4ff">◻ Square</button></div>';
       r.querySelectorAll('[data-sq]').forEach(b=>{ b.classList.toggle('on',+b.dataset.sq===+MLAB.square); b.onclick=()=>{ MLAB.square=b.dataset.sq==='1'; mlabKeep(); renderMlab(); mlabStart(); }; }); f.appendChild(r); }
     for(const [k,label,mn,mx,st,what] of rows){ const mv=what==='mv', val=mv?XLIT[k]:MLAB[k], dec=st<.1?2:st<1?1:0;
-      const r=document.createElement('div'); r.className='mlrow'; r.innerHTML=`<span>${label}</span><input type="range" min="${mn}" max="${mx}" step="${st}" value="${val}"><b>${(+val).toFixed(dec)}</b>`;
+      const r=document.createElement('div'); r.className='mlrow'; r.innerHTML=`<span>${label}</span><input type="range" min="${mn}" max="${mx}" step="any" data-q="${xStepQ(st)}" value="${val}"><b>${(+val).toFixed(dec)}</b>`;
       const inp=r.querySelector('input'), out=r.querySelector('b');
       inp.oninput=()=>{ const v=+inp.value; out.textContent=v.toFixed(dec);
         if(mv){ XLIT[k]=v; try{ localStorage.setItem('hexmancers-xl-'+k,String(v)); }catch(e){} } else { MLAB[k]=v; mlabKeep(); } };
@@ -53,6 +55,7 @@ function renderMlab(){ const f=$('#mlabForm'); f.innerHTML='';
 function mlabDefaults(){ Object.assign(MLAB,MLAB_DEF); mlabKeep(); for(const k in MV_DEF){ XLIT[k]=MV_DEF[k]; try{ localStorage.removeItem('hexmancers-xl-'+k); }catch(e){} } renderMlab(); mlabStart(); }
 
 $('#mmMove').onclick=()=>mlabStart();
+xFineSliders($('#mlabPanel'));
 $('#mlabBtn').onclick=()=>{ const P=$('#mlabPanel'); P.classList.toggle('on'); if(P.classList.contains('on')) renderMlab(); };
 $('#mlabHide').onclick=()=>$('#mlabPanel').classList.remove('on');
 $('#mlabReset').onclick=()=>{ MLAB_HITS=0; MLAB_SHOTS=0; mlabHud(); };

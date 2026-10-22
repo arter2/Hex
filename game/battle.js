@@ -9,12 +9,12 @@ const rnd=(a,b)=>a+Math.random()*(b-a), pick=a=>a[(Math.random()*a.length)|0];
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 
 /* ---------------- board ---------------- */
-const BOARD_ROWS=7, BOARD_COLS=12;
+const BOARD_ROWS=7; let BOARD_COLS=12;   // the square-board test makes it 14 (two 7 x 7 halves)
 const DIRS={E:[1,0],NE:[1,-1],NW:[0,-1],W:[-1,0],SW:[-1,1],SE:[0,1]}, DIRLIST=Object.values(DIRS);
 /* TEST ONLY (debug menu › Battle › Square board): the board as a square grid, to try how it plays on a
-   phone. Off by default; read at each battle's start. Squares touch their 8 neighbours, distance counts
+   phone. Off by default; read at each battle's start. Each half is 7 x 7, so the board is 14 columns. Squares touch their 8 neighbours, distance counts
    diagonal steps as 1, and the hex shapes are drawn as squares. */
-let SQUARE=false; const SQS=1.6;   // a square's side, in board units
+let SQUARE=false; const SQS=1.5;   // a square's side, in board units
 const sqBoardOn=()=>{ try{ return localStorage.getItem('hexmancers-xl-sqBoard')==='1'; }catch(e){ return false; } };
 const SQ_NB=[[1,0],[1,-1],[0,-1],[-1,-1],[-1,0],[-1,1],[0,1],[1,1]];
 // a tile's corners as offsets on the board (wx, wz), going round: a hex's six, or a square's four
@@ -24,7 +24,7 @@ function tileCornerOffs(rad){ if(SQUARE){ const h=rad*SQS/2; return [[h,h],[-h,h
 const BOARD=new Map(), CR=new Map(), TILES=[], P_TILES=[], E_TILES=[];
 function buildBoard(){
   BOARD.clear(); CR.clear(); TILES.length=0; P_TILES.length=0; E_TILES.length=0;
-  SQUARE=sqBoardOn(); Object.assign(DIRS,SQUARE?{NE:[1,-1],NW:[0,-1],SW:[0,1],SE:[1,1]}:{NE:[1,-1],NW:[0,-1],SW:[-1,1],SE:[0,1]}); DIRLIST.splice(0,6,...Object.values(DIRS));
+  SQUARE=sqBoardOn(); BOARD_COLS=SQUARE?14:12; Object.assign(DIRS,SQUARE?{NE:[1,-1],NW:[0,-1],SW:[0,1],SE:[1,1]}:{NE:[1,-1],NW:[0,-1],SW:[-1,1],SE:[0,1]}); DIRLIST.splice(0,6,...Object.values(DIRS));
   if(SQUARE){ for(let r=0;r<BOARD_ROWS;r++) for(let c=0;c<BOARD_COLS;c++){ const x=c-(BOARD_COLS-1)/2, side=c<BOARD_COLS/2?'p':'e';
       const t={q:c,r,col:c,x,side,wx:SQS*x,wz:SQS*(r-(BOARD_ROWS-1)/2),key:c+','+r,occ:null,flash:0,flashC:'#fff'};
       BOARD.set(t.key,t); CR.set(c+','+r,t); TILES.push(t); (side==='p'?P_TILES:E_TILES).push(t); }

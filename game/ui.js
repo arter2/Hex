@@ -1018,7 +1018,17 @@ const held=new Set();
 const MOVE_ACTS=['left','right','up','down'];
 let moveHeld=[];
 function stepAct(a){ if(a==='left') stepDir(DIRS.W); else if(a==='right') stepDir(DIRS.E); else if(a==='up') stepVertical(true); else if(a==='down') stepVertical(false); }
-function heldWalk(){ if(!moveHeld.length||!B||B.phase!=='fight'||paused) return; const p=B.player; if(p.path.length||p.moveCd>0||(p.step&&p.step.t<p.step.dur*.7)) return; stepAct(moveHeld[moveHeld.length-1]); }
+/* A quick press walks one tile (stepAct); held past a moment, the keys steer you as a float, straight
+   along the board (Up and Down too, and two keys together go diagonally), and letting go stops you where
+   you are. */
+const MOVE_VEC={left:[-1,0],right:[1,0],up:[0,-1],down:[0,1]};
+let moveHeldT=0;
+function heldWalk(){ if(!B||B.phase!=='fight'||paused) return; const p=B.player;
+  if(!moveHeld.length){ if(p.free&&p.free.key) p.free=null; return; }
+  if(B.time-moveHeldT<.15&&p.path.length) return;   // the first tile walks as a tap would
+  let vx=0, vz=0; for(const a of moveHeld){ vx+=MOVE_VEC[a][0]; vz+=MOVE_VEC[a][1]; }
+  const L=Math.hypot(vx,vz); if(!L){ if(p.free&&p.free.key) p.free=null; return; }
+  freeTarget((p.fx??p.tile.wx)+vx/L*4,(p.fz??p.tile.wz)+vz/L*4,true); }
 addEventListener('blur',()=>{ held.clear(); moveHeld=[]; });
 window.addEventListener('keydown',e=>{
   if(!B||!$('#scrBattle').classList.contains('on')) return; const k=e.key.toLowerCase();
@@ -1034,7 +1044,7 @@ window.addEventListener('keydown',e=>{
   if(B.phase!=='fight'||paused||held.has(k)) return; held.add(k);
   const a=typeof keyAct==='function'?keyAct(k,'battle'):null;   // your bindings, from Settings (keys.js)
   if(a) e.preventDefault();
-  if(MOVE_ACTS.includes(a)){ moveHeld=moveHeld.filter(x=>x!==a).concat(a); stepAct(a); }
+  if(MOVE_ACTS.includes(a)){ if(!moveHeld.length) moveHeldT=B.time; moveHeld=moveHeld.filter(x=>x!==a).concat(a); stepAct(a); }
   else if(a==='fire') wandDown();
   else if(a==='cast') castCard();
   else if(a==='custom') tryCustom();

@@ -310,6 +310,7 @@ function xBindSliders(){ for(const [id,obj,k,key,dec,what] of XDBG){ const el=do
       row=r.closest('.srow'); if(row) row.classList.add('dbgActive'); box.classList.add('tuning'); },true);
     addEventListener('pointerup',()=>{ if(row) end(); },true); addEventListener('pointercancel',()=>{ if(row) end(); },true); }
   box.addEventListener('pointerdown',e=>{ if(e.target===box) xDbgClose(); });
+  document.getElementById('dbgCopy').onclick=xDbgCopy;
   document.getElementById('dbgReset').onclick=()=>{ for(const [id,obj,k,key,dec,what] of XDBG){ const O=obj(); O[k]=(O===XB?XB_DEF:XLIT_DEF)[k]; try{ localStorage.removeItem(key); }catch(e){} }
     xBindSliders(); xLitRefresh(); lookBake(); xDbgApply('fps'); xDbgApply('xwalls'); };
   // three fingers down together, three times within a second and a half
@@ -320,6 +321,17 @@ function xBindSliders(){ for(const [id,obj,k,key,dec,what] of XDBG){ const el=do
   document.addEventListener('touchcancel',e=>{ if(e.touches.length===0) counted=false; },{capture:true,passive:true});
   window.addEventListener('keydown',e=>{ if(e.key!=='`'||e.repeat) return; const t=e.target; if(t&&(t.tagName==='INPUT'&&t.type!=='range'&&t.type!=='checkbox'||t.tagName==='TEXTAREA')) return; if(document.getElementById('settings').classList.contains('on')) return; e.preventDefault(); xDbgToggle(); });
   xDbgApply('fps'); }
+/* Copy settings: every setting in the menu that differs from its default goes to the clipboard, as a
+   list and as JSON, ready to paste into a message so they can become the new defaults. The text also shows
+   under the buttons, selected, in case the browser won't let the page copy. */
+function xDbgCopy(){ const ch={}, lines=[];
+  for(const [id,obj,k,key,dec] of XDBG){ const O=obj(), D=(O===XB?XB_DEF:XLIT_DEF)[k], v=O[k]; if(v===D||(dec!=null&&Math.abs(+v-+D)<1e-9)) continue;
+    const val=dec==null?!!v:+(+v).toFixed(Math.max(dec,2)); ch[k]=val; lines.push(k+': '+val+'  (default '+D+')'); }
+  const txt=lines.length?'Hexmancers debug settings changed from the defaults:\n'+lines.join('\n')+'\n\n'+JSON.stringify(ch):'Hexmancers debug settings: all at their defaults.';
+  const ta=document.getElementById('dbgCopyText'); ta.hidden=false; ta.value=txt; ta.focus(); ta.select();
+  const done=ok=>{ const b=document.getElementById('dbgCopy'); b.textContent=ok?'Copied ✓':'Select & copy ↓'; setTimeout(()=>{ b.textContent='Copy settings'; },1800); };
+  let ok=false; try{ ok=document.execCommand('copy'); }catch(e){}
+  if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(()=>done(true),()=>done(ok)); else done(ok); }
 /* The debug menu's panes: its sections are sorted under a row of tabs at the top, so only one group of
    settings shows at a time. The pane last opened is remembered in this browser. */
 const XDBG_PANES=[['Dungeon',['Dungeon camera','Dungeon view','Walls']],['Battle',['Battle camera']],['Post',['Post effects']],['Lights',['Lighting','Lights']],['Surfaces',['PBR','Normal maps','Ambient occlusion']],['General',['Info']]];

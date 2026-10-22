@@ -1103,7 +1103,7 @@ function cycleAim(){ const b=B; if(!b||b.phase!=='fight') return; const ts=alive
    (p.path) to the middle of the last one. p.fx/p.fz is where your mage is. */
 function nearestTile(x,z){ let best=null, bd=1e9; for(const t of TILES){ const d=(t.wx-x)**2+(t.wz-z)**2; if(d<bd){ bd=d; best=t; } } return best; }
 // the walking settings (debug menu › Battle › Battle movement, and the Movement lab), kept in look.js
-const MV_DEF={mvSpeed:1.2, mvSnap:1, mvSnapR:.46, mvSnapSpd:2.3, mvRest:.6, mvDrag:2.5, mvAccel:0, mvStick:true, mvStickShow:true, mvStickR:56, mvDead:.18, mvStickMin:.25, mvStickFull:.8, mvCurve:1, mvTapMs:200, mvTapPx:12};
+const MV_DEF={mvSpeed:1.2, mvSnap:1, mvSnapR:.46, mvSnapSpd:2.3, mvRest:.6, mvDrag:2.5, mvAccel:0, mvStick:true, mvStickShow:true, mvStickR:56, mvDead:.18, mvStickMin:.25, mvStickFull:.8, mvCurve:1, mvTapMs:200, mvTapPx:12, mvStickSpeed:5, mvEven:1, mvSnapTime:.12, mvSnapAhead:true, mvStride:.5, mvFaceWalk:true};
 const MV=k=>typeof XLIT!=='undefined'&&XLIT[k]!=null?XLIT[k]:MV_DEF[k];
 function freeTarget(x,z,key,k,raw){ const b=B; if(!b||b.phase!=='fight') return; const p=b.player;
   const xs=P_TILES.map(t=>t.wx), zs=P_TILES.map(t=>t.wz), o=p.free;
@@ -1123,13 +1123,24 @@ function freeTick(p,rdt,haste){
      you slide part of the way (mvSnap) into the middle of your tile, if you are within mvSnapR tiles of it. */
   const tag=p.free?p.free.t:-1;
   const still=!p.path.length&&(p.snap&&p.snap.tag===tag||!p.free||B.time-p.free.t>=MV('mvRest')&&Math.hypot(p.free.x-p.fx,p.free.z-p.fz)<.02);
-  if(!still) p.snap=null;
+  if(!still){ p.snap=null; if(!p.moving){ p.moving=true; p.moveFrom=p.tile; } }   // the tile a move set off from
   else if(p.snap&&p.snap.tag!==tag&&Math.hypot(p.snap.x-p.fx,p.snap.z-p.fz)<.01) p.snap.tag=tag;   // letting go after the magnet pulled you in: no second pull
-  else if(!p.snap||p.snap.tag!==tag){ const ox=p.tile.wx-p.fx, oz=p.tile.wz-p.fz, k=Math.hypot(ox,oz)/sp<=MV('mvSnapR')+1e-6?MV('mvSnap'):0; p.snap={tag,x:p.fx+ox*k,z:p.fz+oz*k}; }
+  else if(!p.snap||p.snap.tag!==tag){ const ox=p.tile.wx-p.fx, oz=p.tile.wz-p.fz;
+    let k=Math.hypot(ox,oz)/sp<=MV('mvSnapR')+1e-6?MV('mvSnap'):0;
+    // mvSnapAhead: the magnet never pulls you back into the tile you set off from, so a small deliberate move
+    // stays put; in any other tile it settles you into the middle from either side
+    if(MV('mvSnapAhead')&&p.tile===p.moveFrom&&p.lastDir&&ox*p.lastDir[0]+oz*p.lastDir[1]<-1e-6) k=0;
+    p.snap={tag,x:p.fx+ox*k,z:p.fz+oz*k}; }
+  if(still) p.moving=false;
   if(!still&&!p.free&&!p.path.length){ p.fv=0; return; }
-  let budget=rdt*sp*MV('mvSpeed')/((haste?.08:.14)*(icy(p.tile)?2.2:1)*(p.slow||1));
-  if(still){ budget*=MV('mvSnapSpd'); p.fv=0; }
-  else { p.fv=MV('mvAccel')>0?Math.min(1,(p.fv||0)+rdt/MV('mvAccel')):1; budget*=p.fv*(p.free?p.free.k:1); }   // speeding up from a stand; a joystick's push
+  // walking speed in tiles a second: a joystick's own top speed (mvStickSpeed), or the step speed of taps and keys
+  const walkTps=MV('mvSpeed')/(haste?.08:.14), tps=!still&&p.free&&p.free.tps?p.free.tps*(haste?1.75:1):walkTps;
+  let budget=rdt*sp*tps/((icy(p.tile)?2.2:1)*(p.slow||1));
+  if(still){ budget*=MV('mvSnapSpd')*walkTps/tps; p.fv=0;
+    // the magnet eases you in (mvSnapTime): fast at first, slowing into the middle, never faster than Magnet speed
+    if(MV('mvSnapTime')>0&&p.snap){ const d=Math.hypot(p.snap.x-p.fx,p.snap.z-p.fz); budget=Math.min(budget,d<.01?d:d*(1-Math.exp(-rdt/MV('mvSnapTime')))); } }
+  else { p.fv=MV('mvAccel')>0?Math.min(1,(p.fv||0)+rdt/MV('mvAccel')):1; budget*=p.fv*(p.free?p.free.k:1);   // speeding up from a stand; a joystick's push
+    const go=p.free||(p.path.length?{x:p.path[0].wx,z:p.path[0].wz}:null); if(go) budget*=evenK(p.fx,p.fz,go.x-p.fx,go.z-p.fz); }
   const ok=(x,z)=>{ const n=nearestTile(x,z); return n===p.tile||(n&&n.side==='p'&&!n.occ&&!(n.holeT>0)&&neighbors(p.tile).includes(n))?n:null; };
   for(let i=0;i<12&&budget>1e-6;i++){
     const go=still?p.snap:p.free||(p.path.length?{x:p.path[0].wx,z:p.path[0].wz}:null); if(!go) break;
@@ -1143,8 +1154,24 @@ function freeTick(p,rdt,haste){
     if(!n&&Math.abs(dx)/d>.35){ x=p.fx+dx/d*m; z=p.fz; n=ok(x,z); }
     if(!n&&Math.abs(dz)/d>.35){ x=p.fx; z=p.fz+dz/d*m; n=ok(x,z); }
     if(!n||Math.hypot(x-p.fx,z-p.fz)<1e-6){ if(!p.free) p.path=[]; break; }
+    const hx=x-p.fx, hz=z-p.fz, hl=Math.hypot(hx,hz); p.walkDist=(p.walkDist||0)+hl; if(!still) p.lastDir=[hx/hl,hz/hl];
     p.fx=x; p.fz=z; p.fmov=true; budget-=m;
     if(n!==p.tile){ p.tile.occ=null; p.tile=n; n.occ=p; p.fTile=n; } } }
+/* Even speed on screen (mvEven): the camera looks down the board at a slant, so a board unit toward the enemies
+   is shorter on screen than one across, and everything nearer the camera is bigger. Walking is sped up or slowed
+   by the way you go so it covers the same screen distance a second as walking across the middle of the board
+   (1: fully even, 0: the same speed on the board every way). */
+function evenK(x,z,dx,dz){ const e=MV('mvEven'), l=Math.hypot(dx,dz); if(!(e>0)||l<1e-6) return 1;
+  const a=proj(x,0,z), b=proj(x+dx/l*.1,0,z+dz/l*.1), c0=proj(0,0,0), c1=proj(0,0,.1);
+  const sDir=Math.hypot(b[0]-a[0],b[1]-a[1]), sRef=Math.hypot(c1[0]-c0[0],c1[1]-c0[1]); if(!(sDir>0)) return 1;
+  return 1+(clamp(sRef/sDir,.5,2)-1)*e; }
+/* Which way your mage faces (mvFaceWalk): the way you walk while you walk (left or right on screen; walking
+   straight up or down keeps the last), and the nearest enemy when you stand, charge or fire. */
+function playerFlip(p,foe){ const busy=p.charging||(B.time-(p.poseT??-9))<.28;
+  if(MV('mvFaceWalk')&&p.fmov&&!busy&&p.lastDir){ const [x,z]=posOf(p), a=proj(x,0,z), b=proj(x+p.lastDir[0],0,z+p.lastDir[1]), sx=b[0]-a[0], sy=b[1]-a[1];
+    if(Math.abs(sx)>.3*Math.hypot(sx,sy)) p.faceL=sx<0; return p.faceL??facing(p,foe,false); }
+  if(foe||!MV('mvFaceWalk')){ p.faceL=facing(p,foe,false); return p.faceL; }
+  return !!p.faceL; }
 /* Show movement (debug menu › Battle movement, or the Movement lab): what the walking settings do, drawn
    on the board. Cyan: each tile's magnet zone (stop inside it and you are pulled to the middle). Yellow
    outline: the tile you are hit on. White: where your mage stands, a line to where your finger points, and
@@ -1619,11 +1646,13 @@ const DRAW={
     const foe=alive().sort((m,n)=>hexDist(p.tile,m.tile)-hexDist(p.tile,n.tile))[0];
     // the pose: attack just after a shot, cast after a card or while charging, a walk cycle while moving, else standing
     const moving=p.fx!=null?!!p.fmov:!!p.step||Math.hypot((p.rx??p.tile.wx)-p.tile.wx,(p.rz??p.tile.wz)-p.tile.wz)>.04||p.path.length>0, since=B.time-(p.poseT??-9);
-    p.pose=since<.28?p.poseK:p.charging?'cast':moving?(Math.floor(T*7)%2?'walk':'idle'):'idle';
+    // the walk cycle steps with the ground covered (mvStride tiles a step), so the feet keep up at any speed
+    const ph=MV('mvStride')>0&&p.walkDist!=null?Math.floor(p.walkDist/(MV('mvStride')*1.732))%2:Math.floor(T*7)%2;
+    p.pose=since<.28?p.poseK:p.charging?'cast':moving?(ph?'walk':'idle'):'idle';
     if(B.soul&&B.soul.unisonT>0){ const [ux,uy]=proj(posOf(p)[0],0,posOf(p)[1]), uc=COLORS[B.soul.card.color].c, k=.75+.25*Math.sin(T*8);
       ctx.save(); ctx.globalCompositeOperation='lighter'; ctx.strokeStyle=uc; ctx.lineWidth=3; ctx.globalAlpha=.8*k; ctx.beginPath(); ctx.ellipse(ux,uy,S*.75,S*.75*View.iy,0,0,TAU); ctx.stroke();
       ctx.globalAlpha=.25*k; ctx.fillStyle=uc; ctx.fill(); ctx.restore(); if(Math.random()<.3) spray(p.tile,1,{shape:'glow',color:uc,v:.4,up0:1,up:2,g:-1,life:.6,s:5,add:true,shrink:1}); }
-    const flip=facing(p,foe,false), r=drawSprite(ctx,p,T,S,{alpha:p.invT>0?.45:1,flip,step:moving?Math.floor(T*7)%2:Math.floor(T*1.6)%2,flash:p.hurtT>0?p.hurtT*3:0});
+    const flip=playerFlip(p,foe), r=drawSprite(ctx,p,T,S,{alpha:p.invT>0?.45:1,flip,step:moving?ph:Math.floor(T*1.6)%2,flash:p.hurtT>0?p.hurtT*3:0});
     // the staff's orb glows, and grows while the wand charges
     const wc=p.wand&&p.wand.color?COLORS[p.wand.color].c:null;
     const bf=wandBuff(p), BL=bf&&WAND_BUFF[bf];

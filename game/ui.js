@@ -1026,7 +1026,7 @@ function stickWalk(){ const d=dragging; if(!d||!XLIT.mvStick||!B||B.phase!=='fig
   const u=Math.min(1,(l-MV('mvDead'))/Math.max(.01,MV('mvStickFull')-MV('mvDead'))), k=MV('mvStickMin')+(1-MV('mvStickMin'))*Math.pow(u,MV('mvCurve'));
   // the push, on screen, turned into a way across the board
   const [sx,sy]=proj(fx,0,fz), [wx,wz]=unprojGround(sx+dx/(l*R)*60,sy+dy/(l*R)*60,fx,fz), wl=Math.hypot(wx-fx,wz-fz)||1;
-  freeTarget(fx+(wx-fx)/wl*3,fz+(wz-fz)/wl*3,false,k,true); }
+  freeTarget(fx+(wx-fx)/wl*3,fz+(wz-fz)/wl*3,false,k,true); if(B.player.free) B.player.free.tps=MV('mvStickSpeed'); }
 function stickDraw(){ const el=$('#bStick'); if(!el) return; const d=dragging, on=!!(d&&d.stick&&XLIT.mvStick&&XLIT.mvStickShow);
   el.hidden=!on; if(!on) return; const R=MV('mvStickR'); el.style.width=el.style.height=2*R+'px'; const sb=appBox($('#scrBattle')); el.style.left=(d.x0-sb.left-R)+'px'; el.style.top=(d.y0-sb.top-R)+'px';
   let dx=d.x-d.x0, dy=d.y-d.y0; const l=Math.hypot(dx,dy); if(l>R){ dx*=R/l; dy*=R/l; }

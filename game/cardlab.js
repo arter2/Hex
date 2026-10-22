@@ -104,7 +104,7 @@ function labRandom(){ const S=LAB; S.color=pick(LAB_COLORS); labFix('color');
 function labTry(){ if(!save) return; const c=labCard(); CARDS[c.id]=c;
   const ids=LAB_FOES[LAB.foes].ids, waves=Array.from({length:30},()=>ids.slice());
   withChar(()=>fight(LAB.depth,waves,{lab:{list:Array(10).fill(c.id), calm:LAB.calm, card:c}})); }
-function labEnd(win){ const b=B; B=null;
+function labEnd(win){ if(B&&B.lab&&B.lab.move) return mlabExit(); const b=B; B=null;
   reveal(win?'Test cleared':'Test lost',(win?'Every wave is down. ':'You fell. ')+'Lasted '+Math.round(b.time)+' s.',[],[['Back to the lab',()=>openLab(),true],['Again',()=>labTry()]]); }
 
 $('#mmLab').onclick=()=>openLab();

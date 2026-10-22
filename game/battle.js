@@ -9,12 +9,25 @@ const rnd=(a,b)=>a+Math.random()*(b-a), pick=a=>a[(Math.random()*a.length)|0];
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 
 /* ---------------- board ---------------- */
-const BOARD_ROWS=7, BOARD_COLS=12;
+let BOARD_ROWS=7, BOARD_COLS=12;   // every real fight is 7 x 12; only the Movement lab changes them (BOARD_TEST)
 const DIRS={E:[1,0],NE:[1,-1],NW:[0,-1],W:[-1,0],SW:[-1,1],SE:[0,1]}, DIRLIST=Object.values(DIRS);
+/* TEST ONLY: the Movement lab (movelab.js) can build a board of another size, or of squares, to try how
+   walking feels. BOARD_TEST is null for every real fight, which is always 12 x 7 hexes. Squares touch
+   their 8 neighbours, distance counts a diagonal step as 1, and the hex shapes are drawn as squares. */
+let BOARD_TEST=null, SQUARE=false; const SQS=1.5;   // a square's side, in board units
+const SQ_NB=[[1,0],[1,-1],[0,-1],[-1,-1],[-1,0],[-1,1],[0,1],[1,1]];
+// a tile's corners as offsets on the board (wx, wz), going round: a hex's six, or a square's four
+function tileCornerOffs(rad){ if(SQUARE){ const h=rad*SQS/2; return [[h,h],[-h,h],[-h,-h],[h,-h]]; }
+  const out=[]; for(let i=0;i<6;i++){ const a=Math.PI/6+i*Math.PI/3; out.push([Math.cos(a)*rad,Math.sin(a)*rad]); } return out; }
 // The arrays below are rebuilt in place by buildBoard, so references to them stay valid.
 const BOARD=new Map(), CR=new Map(), TILES=[], P_TILES=[], E_TILES=[];
 function buildBoard(){
   BOARD.clear(); CR.clear(); TILES.length=0; P_TILES.length=0; E_TILES.length=0;
+  const L=BOARD_TEST; SQUARE=!!(L&&L.square); BOARD_ROWS=L?L.rows:7; BOARD_COLS=L?L.cols*2:12; Object.assign(DIRS,SQUARE?{NE:[1,-1],NW:[0,-1],SW:[0,1],SE:[1,1]}:{NE:[1,-1],NW:[0,-1],SW:[-1,1],SE:[0,1]}); DIRLIST.splice(0,6,...Object.values(DIRS));
+  if(SQUARE){ for(let r=0;r<BOARD_ROWS;r++) for(let c=0;c<BOARD_COLS;c++){ const x=c-(BOARD_COLS-1)/2, side=c<BOARD_COLS/2?'p':'e';
+      const t={q:c,r,col:c,x,side,wx:SQS*x,wz:SQS*(r-(BOARD_ROWS-1)/2),key:c+','+r,occ:null,flash:0,flashC:'#fff'};
+      BOARD.set(t.key,t); CR.set(c+','+r,t); TILES.push(t); (side==='p'?P_TILES:E_TILES).push(t); }
+    return; }
   for(let r=0;r<BOARD_ROWS;r++) for(let c=0;c<BOARD_COLS;c++){
     // odd rows are offset by half a tile; q is the axial column so a row keeps one r
     const q=c-Math.floor(r/2), x=c+(r%2)*.5-(BOARD_COLS-.5)/2, side=c<BOARD_COLS/2?'p':'e';
@@ -38,9 +51,9 @@ function patternTiles(t,pat,side){
   }
   return side?ts.filter(x=>x.side===side):ts;
 }
-const neighbors=t=>DIRLIST.map(d=>tileAt(t.q+d[0],t.r+d[1])).filter(Boolean);
+const neighbors=t=>(SQUARE?SQ_NB:DIRLIST).map(d=>tileAt(t.q+d[0],t.r+d[1])).filter(Boolean);
 const around=neighbors;   // area effects hit the 6 surrounding tiles
-const hexDist=(a,b)=>{ const dq=a.q-b.q, dr=a.r-b.r; return (Math.abs(dq)+Math.abs(dr)+Math.abs(dq+dr))/2; };
+const hexDist=(a,b)=>{ const dq=a.q-b.q, dr=a.r-b.r; if(SQUARE) return Math.max(Math.abs(dq),Math.abs(dr)); return (Math.abs(dq)+Math.abs(dr)+Math.abs(dq+dr))/2; };
 // a diagonal shot: forward a column each step, bouncing off the top and bottom rows (a straight
 // diagonal ran off the 7-row board before it reached most of the enemy side)
 function diagPath(t,d){ const out=[]; let r=t.r; for(let i=1;t.col+i<BOARD_COLS;i++){ if(r+d<0||r+d>=BOARD_ROWS) d=-d; r+=d; const n=tileCR(t.col+i,r); if(n) out.push(n); } return out; }
@@ -1089,22 +1102,37 @@ function cycleAim(){ const b=B; if(!b||b.phase!=='fight') return; const ts=alive
    sets a point to walk toward (p.free); a tapped tile or a quick key press walks a path of tiles
    (p.path) to the middle of the last one. p.fx/p.fz is where your mage is. */
 function nearestTile(x,z){ let best=null, bd=1e9; for(const t of TILES){ const d=(t.wx-x)**2+(t.wz-z)**2; if(d<bd){ bd=d; best=t; } } return best; }
+// the walking settings (debug menu › Battle › Battle movement, and the Movement lab), kept in look.js
+const MV_DEF={mvSpeed:1, mvSnap:.5, mvSnapR:.5, mvSnapSpd:1, mvRest:.25, mvDrag:1.15, mvAccel:0};
+const MV=k=>typeof XLIT!=='undefined'&&XLIT[k]!=null?XLIT[k]:MV_DEF[k];
 function freeTarget(x,z,key){ const b=B; if(!b||b.phase!=='fight') return; const p=b.player;
-  const xs=P_TILES.map(t=>t.wx), zs=P_TILES.map(t=>t.wz);
-  p.free={x:Math.max(Math.min(...xs),Math.min(Math.max(...xs),x)), z:Math.max(Math.min(...zs),Math.min(Math.max(...zs),z)), key:!!key}; p.path=[]; p.lane=null; }
+  const xs=P_TILES.map(t=>t.wx), zs=P_TILES.map(t=>t.wz), o=p.free;
+  const f={x:Math.max(Math.min(...xs),Math.min(Math.max(...xs),x)), z:Math.max(Math.min(...zs),Math.min(Math.max(...zs),z)), key:!!key};
+  f.t=o&&Math.hypot(o.x-f.x,o.z-f.z)<.02?o.t:b.time;   // when the finger last moved
+  p.free=f; p.path=[]; p.lane=null; }
 function freeEnd(){ if(B&&B.player) B.player.free=null; }
 function freeTick(p,rdt,haste){
   // a fight's start, or knocked, pulled or pushed elsewhere: carry on from the new tile (drawn sliding there)
-  if(p.fx==null||p.fTile!==p.tile){ if(p.fx!=null) p.fLerp=true; p.fx=p.tile.wx; p.fz=p.tile.wz; p.fTile=p.tile; }
+  if(p.fx==null||p.fTile!==p.tile){ if(p.fx!=null) p.fLerp=true; p.fx=p.tile.wx; p.fz=p.tile.wz; p.fTile=p.tile; p.snap=null; }
   while(p.path.length>1&&p.path[0]===p.tile) p.path.shift();   // once in a tile on the way, head for the next
-  p.fmov=false; if(p.rootT>0||p.moveCd>0||(!p.free&&!p.path.length)) return;
+  p.fmov=false; if(p.rootT>0||p.moveCd>0){ p.fv=0; return; }
   const sp=Math.min(...neighbors(p.tile).map(n=>Math.hypot(n.wx-p.tile.wx,n.wz-p.tile.wz)));
-  let budget=rdt*sp/((haste?.08:.14)*(icy(p.tile)?2.2:1)*(p.slow||1));
+  /* The magnet: once you stop (you let go, or your finger has rested a moment where your mage stands),
+     you slide part of the way (mvSnap) into the middle of your tile, if you are within mvSnapR tiles of it. */
+  const tag=p.free?p.free.t:-1;
+  const still=!p.path.length&&(p.snap&&p.snap.tag===tag||!p.free||B.time-p.free.t>=MV('mvRest')&&Math.hypot(p.free.x-p.fx,p.free.z-p.fz)<.02);
+  if(!still) p.snap=null;
+  else if(p.snap&&p.snap.tag!==tag&&Math.hypot(p.snap.x-p.fx,p.snap.z-p.fz)<.01) p.snap.tag=tag;   // letting go after the magnet pulled you in: no second pull
+  else if(!p.snap||p.snap.tag!==tag){ const ox=p.tile.wx-p.fx, oz=p.tile.wz-p.fz, k=Math.hypot(ox,oz)/sp<=MV('mvSnapR')+1e-6?MV('mvSnap'):0; p.snap={tag,x:p.fx+ox*k,z:p.fz+oz*k}; }
+  if(!still&&!p.free&&!p.path.length){ p.fv=0; return; }
+  let budget=rdt*sp*MV('mvSpeed')/((haste?.08:.14)*(icy(p.tile)?2.2:1)*(p.slow||1));
+  if(still){ budget*=MV('mvSnapSpd'); p.fv=0; }
+  else { p.fv=MV('mvAccel')>0?Math.min(1,(p.fv||0)+rdt/MV('mvAccel')):1; budget*=p.fv; }   // speeding up from a stand
   const ok=(x,z)=>{ const n=nearestTile(x,z); return n===p.tile||(n&&n.side==='p'&&!n.occ&&!(n.holeT>0)&&neighbors(p.tile).includes(n))?n:null; };
   for(let i=0;i<12&&budget>1e-6;i++){
-    const go=p.free||(p.path.length?{x:p.path[0].wx,z:p.path[0].wz}:null); if(!go) break;
+    const go=still?p.snap:p.free||(p.path.length?{x:p.path[0].wx,z:p.path[0].wz}:null); if(!go) break;
     const dx=go.x-p.fx, dz=go.z-p.fz, d=Math.hypot(dx,dz);
-    if(d<1e-4){ if(!p.free&&p.path.length){ p.path.shift(); continue; } break; }
+    if(d<1e-4){ if(!still&&!p.free&&p.path.length){ p.path.shift(); continue; } break; }
     const m=Math.min(d,budget,sp*.25);   // short hops, so a slow frame can't jump a tile
     let x=p.fx+dx/d*m, z=p.fz+dz/d*m, n=ok(x,z);
     if(!n){ x=p.fx+dx/d*m; z=p.fz; n=ok(x,z); }   // blocked: slide along whatever is in the way
@@ -1158,7 +1186,7 @@ function scaleAt(wx,wz){ if(PJ.decal) return DEC.k; if(!gl3()) return scaleAt2D(
 function viewIY(){ if(PJ.decal) return 1; if(!gl3()) return View.iy2D; const a=arenaProject(0,0,0), b=arenaProject(1,0,0), c=arenaProject(0,0,1); return Math.min(1,Math.abs(b[1]-a[1])/Math.max(1e-3,Math.hypot(c[0]-a[0],c[1]-a[1]))); }
 const depthOf=t=>-t.wx*View.sa+t.wz*View.ca;
 function hexCorners(t,rad,y){ const out=[];
-  for(let i=0;i<6;i++){ const a=Math.PI/6+i*Math.PI/3; out.push(proj(t.wx+Math.cos(a)*rad,y||0,t.wz+Math.sin(a)*rad)); } return out; }
+  for(const [dx,dz] of tileCornerOffs(rad)) out.push(proj(t.wx+dx,y||0,t.wz+dz)); return out; }
 // the sides of a raised tile that face the camera (edges whose outward normal points down the screen)
 function frontFaces(ctx,top,drop){ const n=top.length, cx=top.reduce((a,p)=>a+p[0],0)/n, cy=top.reduce((a,p)=>a+p[1],0)/n;
   for(let i=0;i<n;i++){ const a=top[i], b=top[(i+1)%n]; if((a[1]+b[1])/2<=cy) continue;
@@ -1196,7 +1224,7 @@ function pickTile(clientX,clientY){
 function pickAt(x,y){
   let best=null, bd=1e9;
   for(const t of TILES){ const hc=hexCorners(t,1);
-    let inside=false; for(let i=0,j=5;i<6;j=i++){ const [xi,yi]=hc[i], [xj,yj]=hc[j]; if((yi>y)!==(yj>y)&&x<(xj-xi)*(y-yi)/(yj-yi)+xi) inside=!inside; }
+    let inside=false; for(let i=0,j=hc.length-1;i<hc.length;j=i++){ const [xi,yi]=hc[i], [xj,yj]=hc[j]; if((yi>y)!==(yj>y)&&x<(xj-xi)*(y-yi)/(yj-yi)+xi) inside=!inside; }
     if(inside) return t;
     const [cx,cy]=proj(t.wx,0,t.wz), d=Math.hypot(x-cx,(y-cy)/View.iy)/scaleAt(t.wx,t.wz); if(d<bd){ bd=d; best=t; } }
   return bd<1.1?best:null;

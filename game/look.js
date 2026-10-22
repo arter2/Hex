@@ -21,7 +21,7 @@ const XB={ ball:xSetF('hexmancers-xball',XB_DEF.ball), strip:xSetF('hexmancers-x
    - Screen-space AO: a pass over the depth of the whole frame shades every crease (xSSAO). */
 const xSetB=(k,d)=>{ try{ const v=localStorage.getItem(k); return v==null?d:v==='1'; }catch(e){ return d; } };
 const XLIT_DEF={ amb:1, sun:1, lamp:1, lampRad:1, lampY:2.6, torch:1, torchRad:1, flick:1, myGlow:1, fogNear:20, fogFar:46, texel:true, steps:0, nmap:true, nstrF:.35, nstrW:.35, ao:true, aoStr:1, aoRad:1, ssao:false, ssaoStr:1, ssaoRad:.6, fps:false, autoQ:true, camPitch:36, camFov:61, arWalls:true, camZoom:1.1, camX:0, camY:0, camZ:0, camRX:0, camRY:0, camRZ:0, dof:false, dofFocus:0, dofRange:2, dofFade:4, dofNear:1, dofFar:1, dofBlur:6, pbr:false, pbrEnv:1, pbrR_gold:0.32, pbrM_gold:1, pbrR_steel:0.26, pbrM_steel:0.9, pbrR_gloss:0.14, pbrM_gloss:0, pbrR_ice:0.08, pbrM_ice:0, pbrR_slab:0.7, pbrM_slab:0, pbrRMap:1,
-  dPitch:48, dDist:9.4, dFov:46, dAhead:1, dAim:0, dFog:true, dFogStart:6, dFogLen:14, dMemLit:.7, dMemDark:.35, dLightMem:1, dCut:false, dCutH:.3, dDoorMin:.75, dDoorGlow:.3, dofShow:false, vig:.35, vigR:.55, vigSoft:.7 };   // d...: the dungeon camera, haze, what you remember and walls
+  dPitch:48, dDist:9.4, dFov:46, dAhead:1, dAim:0, dFog:true, dFogStart:6, dFogLen:14, dMemLit:.7, dMemDark:.35, dLightMem:1, dCut:false, dCutH:.3, dDoorMin:.75, dDoorGlow:.3, dofShow:false, vig:.35, vigR:.55, vigSoft:.7, mvSpeed:1, mvSnap:.5, mvSnapR:.5, mvSnapSpd:1, mvRest:.25, mvDrag:1.15, mvAccel:0 };   // mv...: how you walk in battle (battle.js freeTick)   // d...: the dungeon camera, haze, what you remember and walls
 // the debug menu's pause: the game holds still (no moves, no clocks) but keeps being drawn; never saved
 const DBG={pause:false};
 const XLIT={}; for(const k in XLIT_DEF) XLIT[k]=typeof XLIT_DEF[k]==='boolean'?xSetB('hexmancers-xl-'+k,XLIT_DEF[k]):xSetF('hexmancers-xl-'+k,XLIT_DEF[k]);
@@ -289,7 +289,7 @@ const XDBG=[   // [element id, object, key, saved as, decimals (null: a checkbox
   ...['gold','steel','gloss','ice','slab'].flatMap(k=>[['dbgPbrR_'+k,()=>XLIT,'pbrR_'+k,'hexmancers-xl-pbrR_'+k,2,'pbrEnv'],['dbgPbrM_'+k,()=>XLIT,'pbrM_'+k,'hexmancers-xl-pbrM_'+k,2,'pbrEnv']]),
   ...[['dbgAmb','amb'],['dbgSun','sun'],['dbgLamp','lamp'],['dbgLampRad','lampRad'],['dbgLampY','lampY'],['dbgTorch','torch'],['dbgTorchRad','torchRad'],['dbgFlick','flick'],['dbgMyGlow','myGlow']].map(([id,k])=>[id,()=>XLIT,k,'hexmancers-xl-'+k,2,'']),
   ['dbgFogNear',()=>XLIT,'fogNear','hexmancers-xl-fogNear',0,''], ['dbgFogFar',()=>XLIT,'fogFar','hexmancers-xl-fogFar',0,''],
-  ...[['dPitch',0,''],['dDist',1,''],['dFov',0,''],['dAhead',2,''],['dAim',1,''],['dFog',null,''],['dFogStart',0,''],['dFogLen',0,''],['dMemLit',2,'xpaint'],['dMemDark',2,'xpaint'],['dLightMem',2,''],['dCut',null,'xwalls'],['dCutH',2,'xwalls'],['dDoorMin',2,'xwalls'],['dDoorGlow',2,'xwalls'],['dofShow',null,''],['vig',2,''],['vigR',2,''],['vigSoft',2,'']].map(([k,dec,what])=>['dbg_'+k,()=>XLIT,k,'hexmancers-xl-'+k,dec,what]) ];
+  ...[['dPitch',0,''],['dDist',1,''],['dFov',0,''],['dAhead',2,''],['dAim',1,''],['dFog',null,''],['dFogStart',0,''],['dFogLen',0,''],['dMemLit',2,'xpaint'],['dMemDark',2,'xpaint'],['dLightMem',2,''],['dCut',null,'xwalls'],['dCutH',2,'xwalls'],['dDoorMin',2,'xwalls'],['dDoorGlow',2,'xwalls'],['dofShow',null,''],['vig',2,''],['vigR',2,''],['vigSoft',2,''],['mvSpeed',2,''],['mvSnap',2,''],['mvSnapR',2,''],['mvSnapSpd',2,''],['mvRest',2,''],['mvDrag',2,''],['mvAccel',2,'']].map(([k,dec,what])=>['dbg_'+k,()=>XLIT,k,'hexmancers-xl-'+k,dec,what]) ];
 let xBakeT=0;
 function xDbgApply(what){ if(what==='lit') xLitRefresh(); else if(what==='bake'){ xLitRefresh(); clearTimeout(xBakeT); xBakeT=setTimeout(lookBake,120); }
   else if(what==='pbr') lookRebuild();
@@ -324,17 +324,18 @@ function xBindSliders(){ for(const [id,obj,k,key,dec,what] of XDBG){ const el=do
 /* Copy settings: every setting in the menu that differs from its default goes to the clipboard, as a
    list and as JSON, ready to paste into a message so they can become the new defaults. The text also shows
    under the buttons, selected, in case the browser won't let the page copy. */
-function xDbgCopy(){ const ch={}, lines=[];
+function xDbgCopy(taId,btnId){ taId=typeof taId==='string'?taId:'dbgCopyText'; btnId=btnId||'dbgCopy'; const ch={}, lines=[];
   for(const [id,obj,k,key,dec] of XDBG){ const O=obj(), D=(O===XB?XB_DEF:XLIT_DEF)[k], v=O[k]; if(v===D||(dec!=null&&Math.abs(+v-+D)<1e-9)) continue;
     const val=dec==null?!!v:+(+v).toFixed(Math.max(dec,2)); ch[k]=val; lines.push(k+': '+val+'  (default '+D+')'); }
+  if(typeof MLAB!=='undefined') for(const k in MLAB) if(MLAB[k]!==MLAB_DEF[k]){ ch['lab.'+k]=MLAB[k]; lines.push('Movement lab '+k+': '+MLAB[k]+'  (default '+MLAB_DEF[k]+')'); }
   const txt=lines.length?'Hexmancers debug settings changed from the defaults:\n'+lines.join('\n')+'\n\n'+JSON.stringify(ch):'Hexmancers debug settings: all at their defaults.';
-  const ta=document.getElementById('dbgCopyText'); ta.hidden=false; ta.value=txt; ta.focus(); ta.select();
-  const done=ok=>{ const b=document.getElementById('dbgCopy'); b.textContent=ok?'Copied ✓':'Select & copy ↓'; setTimeout(()=>{ b.textContent='Copy settings'; },1800); };
+  const ta=document.getElementById(taId); ta.hidden=false; ta.value=txt; ta.focus(); ta.select();
+  const done=ok=>{ const b=document.getElementById(btnId); b.textContent=ok?'Copied ✓':'Select & copy ↓'; setTimeout(()=>{ b.textContent='Copy settings'; },1800); };
   let ok=false; try{ ok=document.execCommand('copy'); }catch(e){}
   if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(()=>done(true),()=>done(ok)); else done(ok); }
 /* The debug menu's panes: its sections are sorted under a row of tabs at the top, so only one group of
    settings shows at a time. The pane last opened is remembered in this browser. */
-const XDBG_PANES=[['Dungeon',['Dungeon camera','Dungeon view','Walls']],['Battle',['Battle camera']],['Post',['Post effects']],['Lights',['Lighting','Lights']],['Surfaces',['PBR','Normal maps','Ambient occlusion']],['General',['Info']]];
+const XDBG_PANES=[['Dungeon',['Dungeon camera','Dungeon view','Walls']],['Battle',['Battle camera','Battle movement']],['Post',['Post effects']],['Lights',['Lighting','Lights']],['Surfaces',['PBR','Normal maps','Ambient occlusion']],['General',['Info']]];
 function xDbgPanes(){ const body=document.getElementById('dbgBody'); if(!body||body.querySelector('.dbgTabs')) return;
   const panes={}, tabs=document.createElement('div'); tabs.className='dbgTabs';
   for(const [name] of XDBG_PANES){ const d=document.createElement('div'); d.className='dbgPane'; d.dataset.pane=name; panes[name]=d; }

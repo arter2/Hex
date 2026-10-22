@@ -3,7 +3,7 @@
 
 const $=s=>document.querySelector(s);
 let save=loadSave();
-const persist=()=>writeSave(save);
+const persist=()=>{ if(save&&save.temp) return; writeSave(save); };   // the Movement lab's borrowed hexmancer is never saved
 const activeDeck=()=>save.decks[save.active];
 
 function show(id){ $('#tip').classList.remove('on'); document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('on',s.id===id)); if(id==='scrBattle') resizeView(); window.scrollTo(0,0);
@@ -519,7 +519,7 @@ function fight(depth,waves,xo){
     onHero:c=>banner('♔ '+c.name.split(',')[0]+' joins the fight!','#ffe066'),
     onEnd:win=>win?victory():defeat(),
   },{prepare:p=>lab?null:assignChargeUses(save,p,d.list), gear:gearMods(save), look:gearLook(save), waves, hp:xo&&xo.hp, opening:xo&&xo.opening, rule:xo&&xo.rule, tier:xo&&xo.tier||0, soul});
-  B.explore=!!(xo&&xo.explore); B.trial=!!(xo&&(xo.trial||lab)); B.lab=lab||null;
+  B.explore=!!(xo&&xo.explore); B.trial=!!(xo&&(xo.trial||lab)); B.lab=lab||null; if(typeof mlabSync==='function') mlabSync();
   if(B.explore&&typeof roomAllyStart==='function') roomAllyStart();   // a hired adventurer fights beside you (rooms.js)
   if(B.opening==='strike') setTimeout(()=>banner('First Strike! They reel back','#39ff8a'),300);
   else if(B.opening) setTimeout(()=>banner(B.opening==='ambush'?'Ambush! They\'re slow to react':'Surprised! They strike first',B.opening==='ambush'?'#39ff8a':'#ff5d6c'),300);
@@ -578,7 +578,7 @@ function defeat(){
 // leaving a fight early: a battle-only fight costs nothing; fleeing a dungeon fight costs 10% of
 // your gold and the floor; a fight you have already lost still counts as a defeat
 function leaveFight(){ paused=false; $('#custom').classList.remove('on');
-  if(B.lab){ B=null; return openLab(); }
+  if(B.lab){ if(B.lab.move) return mlabExit(); B=null; return openLab(); }
   if(B.phase==='lose'||B.player.hp<=0) return defeat();
   const burnt=settleCharges(); if(burnt) tip(burnt.trim());
   if(B.explore){ fleeCost('Fled a fight at depth '+B.depth); if(typeof stopExplore==='function'){ stopExplore(); EX=null; XPARK=null; if(typeof XRUN!=='undefined') XRUN=null; } }
@@ -1006,7 +1006,7 @@ View.canvas.addEventListener('pointermove',e=>{ const d=dragging; if(!d||e.point
   if(!d.moved&&Math.hypot(ax-d.x0,ay-d.y0)>12) d.moved=true;
   if(!d.moved) return;
   // your mage glides after the finger as a float and is hit on the nearest tile (freeTarget, battle.js)
-  const [wx,wz]=unprojGround(d.px+(ax-d.x0)*1.15,d.py+(ay-d.y0)*1.15,d.wx,d.wz); freeTarget(wx,wz); });
+  const [wx,wz]=unprojGround(d.px+(ax-d.x0)*MV('mvDrag'),d.py+(ay-d.y0)*MV('mvDrag'),d.wx,d.wz); freeTarget(wx,wz); });
 const dragEnd=e=>{ const d=dragging; if(!d||e.pointerId!==d.id) return; dragging=null; if(d.moved) freeEnd(); if(!d.moved&&e.type==='pointerup'&&d.tap&&d.tap.side==='p') moveTo(d.tap); };
 ['pointerup','pointercancel'].forEach(ev=>View.canvas.addEventListener(ev,dragEnd));
 window.addEventListener('resize',()=>{ if($('#scrBattle').classList.contains('on')) resizeView(); if($('#scrCamp').classList.contains('on')) campScene(); });

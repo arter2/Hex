@@ -26,6 +26,7 @@
       <button id="mmSettings" class="hot"><span class="sr">Settings</span></button>
       <p id="mmWarn" class="mmtxt"></p>
       <button id="mmLab" class="mmlab" hidden>🧪 Card lab</button>
+      <button id="mmMove" class="mmlab mmmove">🏃 Movement lab</button>
     </div>
   </section>
 
@@ -213,6 +214,14 @@
   </section>
 
   <section id="scrBattle" class="screen">
+    <!-- the Movement lab (movelab.js): its score and settings, shown only in a lab battle -->
+    <div id="mlabHud" class="mlabhud" hidden><button id="mlabBtn" class="btn small">⚙ Lab</button><span id="mlabScore"></span></div>
+    <div id="mlabPanel" class="mlabpanel">
+      <div class="mlbar"><b>Movement lab</b><button id="mlabHide" class="btn ghost small">Hide</button></div>
+      <div id="mlabForm"></div>
+      <div class="mlbtns"><button id="mlabReset" class="btn ghost small">Reset score</button><button id="mlabDefaults" class="btn ghost small">Defaults</button><button id="mlabCopy" class="btn ghost small">Copy settings</button><button id="mlabExit" class="btn small">Exit lab</button></div>
+      <textarea id="mlabCopyNote" class="dbgcopy" readonly hidden></textarea>
+    </div>
     <div id="hudTop">
       <div class="hp"><div class="meter big hpmeter"><i id="hpBar"></i><span id="hpTxt"></span></div></div>
       <div class="info"><span id="depthTxt"></span><span id="pileTxt"></span></div>
@@ -479,6 +488,14 @@
       <div class="srow"><span>Rotate Y (pan)<small>Turns the battle camera left (below 0) or right, in degrees.</small></span><span class="srange"><input id="dbgCamRY" type="range" min="-60" max="60" step="1"><b id="dbgCamRYV"></b></span></div>
       <div class="srow"><span>Rotate Z (roll)<small>Rolls the battle camera, in degrees.</small></span><span class="srange"><input id="dbgCamRZ" type="range" min="-45" max="45" step="1"><b id="dbgCamRZV"></b></span></div>
       <div class="srow"><span>Arena walls<small>On: some fights (and every boss floor) are walled in by the area's rock; the rest stand on an island over the dungeon's chasm, in its haze. Off: always the island (boss floors keep their walls).</small></span><label class="scheck"><input id="dbgArWalls" type="checkbox"></label></div>
+      <h3>Battle movement</h3>
+      <div class="srow"><span>Walk speed<small>How fast you walk. 1 is normal (a tile in 0.14 s).</small></span><span class="srange"><input id="dbg_mvSpeed" type="range" min="0.3" max="3" step="0.05"><b id="dbg_mvSpeedV"></b></span></div>
+      <div class="srow"><span>Magnet<small>When you stop, how much of the way you slide into the middle of your tile. 0 stays where you stopped, 1 snaps right to the middle.</small></span><span class="srange"><input id="dbg_mvSnap" type="range" min="0" max="1" step="0.05"><b id="dbg_mvSnapV"></b></span></div>
+      <div class="srow"><span>Magnet range<small>How near the middle, in tiles, you must stop for the magnet to pull (0.5 reaches anywhere in a hex, 0.71 the corners of a square).</small></span><span class="srange"><input id="dbg_mvSnapR" type="range" min="0" max="0.75" step="0.01"><b id="dbg_mvSnapRV"></b></span></div>
+      <div class="srow"><span>Magnet speed<small>How fast the magnet slides you, against your walk speed.</small></span><span class="srange"><input id="dbg_mvSnapSpd" type="range" min="0.1" max="3" step="0.05"><b id="dbg_mvSnapSpdV"></b></span></div>
+      <div class="srow"><span>Finger rest<small>Seconds a dragging finger must rest before the magnet pulls (letting go pulls at once).</small></span><span class="srange"><input id="dbg_mvRest" type="range" min="0" max="1" step="0.05"><b id="dbg_mvRestV"></b></span></div>
+      <div class="srow"><span>Drag reach<small>How far your mage goes for each bit your finger moves.</small></span><span class="srange"><input id="dbg_mvDrag" type="range" min="0.5" max="2.5" step="0.05"><b id="dbg_mvDragV"></b></span></div>
+      <div class="srow"><span>Speed-up<small>Seconds to reach full speed from a stand. 0 is instant.</small></span><span class="srange"><input id="dbg_mvAccel" type="range" min="0" max="0.5" step="0.01"><b id="dbg_mvAccelV"></b></span></div>
       <h3>Post effects</h3>
       <div class="srow"><span>Depth of field<small>Blurs what is nearer or further than the focus, like a camera lens: the middle of the board in a battle, you in the dungeon. Draws the frame once more, so it costs a little on phones.</small></span><label class="scheck"><input id="dbgDof" type="checkbox"></label></div>
       <div class="srow"><span>Focus distance<small>Dials the sharp spot forward toward the camera (below 0) or back past the middle of the board, in tiles. 0 is the middle of the board in a battle, you in the dungeon.</small></span><span class="srange"><input id="dbgDofFocus" type="range" min="-25" max="25" step="0.1"><b id="dbgDofFocusV"></b></span></div>
@@ -554,5 +571,6 @@
 <script src="deckui.js"></script>
 <script src="savepoint.js"></script>
 <script src="cardlab.js"></script>
+<script src="movelab.js"></script>
 </body>
 </html>

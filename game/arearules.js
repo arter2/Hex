@@ -20,7 +20,7 @@ const AREA_RULES={
 const arOn=id=>!!(B&&B.ar&&B.ar.id===id);
 const arFree=(list,also)=>list.filter(t=>!t.occ&&!t.terrain&&!(t.holeT>0)&&!t.crystal&&!t.gild&&!t.voidTile&&(!also||also(t)));
 
-function arRuleInit(depth){ const A=typeof areaOf==='function'?areaOf(depth):null; if(!A||!AREA_RULES[A.id]) { B.ar=null; return; }
+function arRuleInit(depth){ const A=typeof areaOf==='function'?areaOf(depth):null; if(!A||!AREA_RULES[A.id]||BOARD_TEST) { B.ar=null; return; }   // the Movement lab's board has no area rule
   const ar=B.ar={id:A.id, t:0, intro:false, next:0}, edge=t=>t.col!==1||t.r!==(BOARD_ROWS>>1);
   if(ar.id==='hollows'){ for(let i=0;i<2;i++) arCrystal(); }
   if(ar.id==='deeps'){ for(let i=0;i<3;i++){ const t=pick(arFree(E_TILES)); if(t) t.terrain='ice'; } }

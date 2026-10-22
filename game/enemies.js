@@ -278,6 +278,7 @@ function updateEnemy(e,dt){
   if(typeof heroAura==='function'&&heroAura('slowfoes')) dt*=1-heroAura('slowfoes');   // Old Man Winter
   if(e.windT>0){ e.windT-=dt; if(e.windT<=0) enemyShot(e,e.dmg*(e.powerT>0?1.3:1)); return; }
   if(e.casting){ e.castT-=dt; if(e.castT<=0){ const c=e.casting; e.casting=null; enemyCast(e,c); } return; }
+  if(b.lab&&b.lab.move){ mlabTurret(e,dt); return; }   // Movement lab: a turret that only fires straight (movelab.js)
   if(b.lab&&b.lab.calm) return;   // Card lab: foes that stand still and never attack
   e.moveT-=dt;
   if(e.moveT<=0&&!b.teles.some(t=>t.owner===e)){ e.moveT=rnd(1.4,2.4)*(icy(e.tile)?2:1); moveEnemy(e); if(e.hp<=0) return; }

@@ -951,7 +951,7 @@ function update(dt){
   for(const f of b.fx) f.t+=dt; b.fx=b.fx.filter(f=>f.t<f.life);
   for(const f of b.floaters){ f.t+=dt; f.y+=dt*1.2; } b.floaters=b.floaters.filter(f=>f.t<.9);
   const k=1-Math.exp(-dt*16);
-  for(const u of [b.player,...b.enemies,...b.allies]){ const s=u.step; if(s&&u.rx!=null&&Math.hypot(u.rx-s.from.wx,u.rz-s.from.wz)<2.5){ const f=Math.min(1,s.t/s.dur); u.rx=s.from.wx+(s.to.wx-s.from.wx)*f; u.rz=s.from.wz+(s.to.wz-s.from.wz)*f; continue; }   // your glide (above)
+  for(const u of [b.player,...b.enemies,...b.allies]){ if(u.fx!=null){ u.rx=u.fx; u.rz=u.fz; continue; } const s=u.step; if(s&&u.rx!=null&&Math.hypot(u.rx-s.from.wx,u.rz-s.from.wz)<2.5){ const f=Math.min(1,s.t/s.dur); u.rx=s.from.wx+(s.to.wx-s.from.wx)*f; u.rz=s.from.wz+(s.to.wz-s.from.wz)*f; continue; }   // your glide (above)
     const g=u.goTo||u.tile; u.rx=u.rx==null?g.wx:u.rx+(g.wx-u.rx)*k; u.rz=u.rz==null?g.wz:u.rz+(g.wz-u.rz)*k; }   // goTo: a creature's run or dash
   for(const e of b.enemies) if(e.hp<=0&&e.deathT>0) e.deathT-=dt;
   View.shake=(View.shake||0)*Math.exp(-dt*9);
@@ -993,7 +993,8 @@ function update(dt){
         else { s.half=true; s.from.occ=null; p.tile=s.to; s.to.occ=p; } }
       if(p.step&&p.step.t>=p.step.dur){ p.stepOver=p.step.t-p.step.dur; p.step=null; } } }
   while(p.path.length&&p.path[0]===p.tile) p.path.shift();
-  if(!p.step&&p.path.length&&p.moveCd<=0&&p.rootT<=0){ const n=p.path[0]; if(n.side==='p'&&!n.occ&&!(n.holeT>0)&&neighbors(p.tile).includes(n)){ p.path.shift(); const dur=(haste?.08:.14)*(icy(n)?2.2:1)*(p.slow||1); p.step={from:p.tile,to:n,t:Math.min(p.stepOver||0,dur*.5),dur}; } else p.path=[]; }
+  freeTick(p,rdt,haste);
+  if(!p.step&&p.path.length&&p.moveCd<=0&&p.rootT<=0&&p.fx==null&&!p.free){ const n=p.path[0]; if(n.side==='p'&&!n.occ&&!(n.holeT>0)&&neighbors(p.tile).includes(n)){ p.path.shift(); const dur=(haste?.08:.14)*(icy(n)?2.2:1)*(p.slow||1); p.step={from:p.tile,to:n,t:Math.min(p.stepOver||0,dur*.5),dur}; } else p.path=[]; }
   p.stepOver=0;   // time left over from a step just ended carries into the next, so a run keeps an even pace
 
   // your shots and enemy shots travel tile by tile
@@ -1084,6 +1085,35 @@ function setAim(t){ const b=B; if(!b||b.phase!=='fight'||!t||t.side!=='e') retur
 function cycleAim(){ const b=B; if(!b||b.phase!=='fight') return; const ts=alive().map(e=>e.tile).sort((a,c)=>a.r-c.r||a.q-c.q); if(!ts.length) return;
   b.aim=ts[(ts.indexOf(b.aim)+1)%ts.length]; }
 // where your next move starts: the tile your current step ends on
+/* Dragging a finger walks you as a float: your mage glides after the finger at walking speed and stands
+   wherever it stops, between tiles if need be, while the tile you are on for hits (p.tile) is always the
+   one nearest your mage, so it changes at the halfway line just as a step does. Let go and you settle
+   onto that tile. p.free is where the finger points, p.fx/p.fz where your mage is drawn. */
+function nearestTile(x,z){ let best=null, bd=1e9; for(const t of TILES){ const d=(t.wx-x)**2+(t.wz-z)**2; if(d<bd){ bd=d; best=t; } } return best; }
+function freeTarget(x,z){ const b=B; if(!b||b.phase!=='fight') return; const p=b.player;
+  const xs=P_TILES.map(t=>t.wx), zs=P_TILES.map(t=>t.wz);
+  p.free={x:Math.max(Math.min(...xs),Math.min(Math.max(...xs),x)), z:Math.max(Math.min(...zs),Math.min(Math.max(...zs),z))}; p.path=[]; p.lane=null; }
+function freeEnd(){ if(B&&B.player) B.player.free=null; }
+function freeTick(p,rdt,haste){
+  if(p.fx!=null&&p.fTile!==p.tile) p.fx=p.fz=null;   // knocked, pulled or pushed elsewhere: start again from the new tile
+  if(!p.free&&p.fx==null) return;
+  if(p.fx==null){ if(p.step) return; p.fx=p.tile.wx; p.fz=p.tile.wz; p.fTile=p.tile; }   // a step under way finishes first
+  const sp=Math.min(...neighbors(p.tile).map(n=>Math.hypot(n.wx-p.tile.wx,n.wz-p.tile.wz)));
+  const tx=p.free?p.free.x:p.tile.wx, tz=p.free?p.free.z:p.tile.wz, dx=tx-p.fx, dz=tz-p.fz, d=Math.hypot(dx,dz);
+  const v=sp/((haste?.08:.14)*(icy(p.tile)?2.2:1)*(p.slow||1)), m=p.rootT>0||p.moveCd>0?0:Math.min(d,v*rdt);
+  p.fmov=false;
+  if(m>1e-5){ const ok=(x,z)=>{ const n=nearestTile(x,z); return n===p.tile||(n&&n.side==='p'&&!n.occ&&!(n.holeT>0)&&neighbors(p.tile).includes(n))?n:null; };
+    let x=p.fx+dx/d*m, z=p.fz+dz/d*m, n=ok(x,z);
+    if(!n){ x=p.fx+dx/d*m; z=p.fz; n=ok(x,z); }   // blocked: slide along whatever is in the way
+    if(!n){ x=p.fx; z=p.fz+dz/d*m; n=ok(x,z); }
+    if(n){ p.fx=x; p.fz=z; p.fmov=true; if(n!==p.tile){ p.tile.occ=null; p.tile=n; n.occ=p; p.fTile=n; } } }
+  if(!p.free&&d<1e-3) p.fx=p.fz=null;   // settled on the tile
+}
+// canvas point -> board point (x,z), solved from proj() a few times over, starting near (wx,wz)
+function unprojGround(x,y,wx,wz){ for(let i=0;i<5;i++){ const [a,b]=proj(wx,0,wz), [a1,b1]=proj(wx+.5,0,wz), [a2,b2]=proj(wx,0,wz+.5);
+    const j11=(a1-a)*2, j21=(b1-b)*2, j12=(a2-a)*2, j22=(b2-b)*2, det=j11*j22-j12*j21; if(Math.abs(det)<1e-9) break;
+    const ex=x-a, ey=y-b; wx+=(j22*ex-j12*ey)/det; wz+=(j11*ey-j21*ex)/det; }
+  return [wx,wz]; }
 const walkFrom=p=>p.step?p.step.to:p.tile;
 // heading back to the tile you are still leaving turns you round on the spot
 function walkBack(p,t){ const s=p.step; if(!s||s.half||t!==s.from) return false; p.step={from:s.to,to:s.from,t:s.dur-s.t,dur:s.dur,half:true}; p.path=[]; return true; }
@@ -1531,7 +1561,7 @@ const DRAW={
   player(ctx,p,T,S){
     const foe=alive().sort((m,n)=>hexDist(p.tile,m.tile)-hexDist(p.tile,n.tile))[0];
     // the pose: attack just after a shot, cast after a card or while charging, a walk cycle while moving, else standing
-    const moving=!!p.step||Math.hypot((p.rx??p.tile.wx)-p.tile.wx,(p.rz??p.tile.wz)-p.tile.wz)>.04||p.path.length>0, since=B.time-(p.poseT??-9);
+    const moving=p.fx!=null?!!p.fmov:!!p.step||Math.hypot((p.rx??p.tile.wx)-p.tile.wx,(p.rz??p.tile.wz)-p.tile.wz)>.04||p.path.length>0, since=B.time-(p.poseT??-9);
     p.pose=since<.28?p.poseK:p.charging?'cast':moving?(Math.floor(T*7)%2?'walk':'idle'):'idle';
     if(B.soul&&B.soul.unisonT>0){ const [ux,uy]=proj(posOf(p)[0],0,posOf(p)[1]), uc=COLORS[B.soul.card.color].c, k=.75+.25*Math.sin(T*8);
       ctx.save(); ctx.globalCompositeOperation='lighter'; ctx.strokeStyle=uc; ctx.lineWidth=3; ctx.globalAlpha=.8*k; ctx.beginPath(); ctx.ellipse(ux,uy,S*.75,S*.75*View.iy,0,0,TAU); ctx.stroke();

@@ -1001,19 +1001,13 @@ View.canvas=$('#board'); View.ctx=View.canvas.getContext('2d');
 View.canvas.addEventListener('pointerdown',e=>{ const t=pickTile(e.clientX,e.clientY); if(t&&t.side==='e'){ setAim(t); return; }
   if(!B||!B.player) return; try{ View.canvas.setPointerCapture(e.pointerId); }catch(_){}
   const [ax,ay]=appXY(e.clientX,e.clientY), [wx,wz]=posOf(B.player), [px,py]=proj(wx,0,wz);
-  dragging={id:e.pointerId,x0:ax,y0:ay,px,py,tap:t,moved:false,cur:B.player.tile}; });
-// how far a canvas point is from a tile's centre, in tiles (flattened the way the board is)
-const tileOff=(t,x,y)=>{ const [cx,cy]=proj(t.wx,0,t.wz); return Math.hypot(x-cx,(y-cy)/View.iy)/scaleAt(t.wx,t.wz); };
+  dragging={id:e.pointerId,x0:ax,y0:ay,px,py,wx,wz,tap:t,moved:false}; });
 View.canvas.addEventListener('pointermove',e=>{ const d=dragging; if(!d||e.pointerId!==d.id) return; const [ax,ay]=appXY(e.clientX,e.clientY);
   if(!d.moved&&Math.hypot(ax-d.x0,ay-d.y0)>12) d.moved=true;
   if(!d.moved) return;
-  // the target only changes once the finger is well into the next tile, so a finger resting near
-  // an edge doesn't flick the mage back and forth between two tiles
-  const x=d.px+(ax-d.x0)*1.15, y=d.py+(ay-d.y0)*1.15, t=pickAt(x,y);
-  if(!t||t.side!=='p'||t===d.cur) return;
-  if(d.cur&&tileOff(t,x,y)>tileOff(d.cur,x,y)-.3) return;
-  d.cur=t; moveTo(t); });
-const dragEnd=e=>{ const d=dragging; if(!d||e.pointerId!==d.id) return; dragging=null; if(!d.moved&&e.type==='pointerup'&&d.tap&&d.tap.side==='p') moveTo(d.tap); };
+  // your mage glides after the finger as a float and is hit on the nearest tile (freeTarget, battle.js)
+  const [wx,wz]=unprojGround(d.px+(ax-d.x0)*1.15,d.py+(ay-d.y0)*1.15,d.wx,d.wz); freeTarget(wx,wz); });
+const dragEnd=e=>{ const d=dragging; if(!d||e.pointerId!==d.id) return; dragging=null; if(d.moved) freeEnd(); if(!d.moved&&e.type==='pointerup'&&d.tap&&d.tap.side==='p') moveTo(d.tap); };
 ['pointerup','pointercancel'].forEach(ev=>View.canvas.addEventListener(ev,dragEnd));
 window.addEventListener('resize',()=>{ if($('#scrBattle').classList.contains('on')) resizeView(); if($('#scrCamp').classList.contains('on')) campScene(); });
 

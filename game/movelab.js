@@ -43,7 +43,8 @@ const MLAB_ROWS=[
   ['Walking',[['mvShow','Show movement',0,0,0,'tog'],['mvEven','Even screen speed',0,1,.01,'mv'],['mvSpeed','Tap/key speed',.3,5,.05,'mv'],['mvFaceWalk','Face where you walk',0,0,0,'tog'],['mvStride','Stride (tiles)',0,1.5,.01,'mv']]],
   ['Magnet',[['mvSnap','Magnet',0,1,.01,'mv'],['mvSnapAhead','Only forward',0,0,0,'tog'],['mvSnapR','Range (tiles)',0,1.5,.01,'mv'],['mvSnapTime','Ease (s)',0,.6,.01,'mv'],['mvSnapSpd','Top speed',.1,6,.05,'mv'],
     ['mvRest','Finger rest (s)',0,2,.05,'mv']]],
-  ['Other',[['mvAccel','Speed-up (s)',0,2,.01,'mv'],['mvDrag','Drag reach (follow finger)',.5,6,.05,'mv']]]];
+  ['Momentum',[['mvMomentum','Momentum',0,0,0,'tog'],['mvMAccel','Speed-up (s)',0,1,.01,'mv'],['mvMBrake','Braking (s)',.02,1.5,.01,'mv'],['mvGrip','Turn grip',0,1,.01,'mv']]],
+  ['Other',[['mvAccel','Speed-up, no momentum (s)',0,2,.01,'mv'],['mvDrag','Drag reach (follow finger)',.5,6,.05,'mv']]]];
 const mlabSet=(k,v)=>{ XLIT[k]=v; try{ localStorage.setItem('hexmancers-xl-'+k,typeof v==='boolean'?(v?'1':'0'):String(v)); }catch(e){} };
 function renderMlab(){ const f=$('#mlabForm'); f.innerHTML='';
   for(const [head,rows] of MLAB_ROWS){ const h=document.createElement('h4'); h.textContent=head; f.appendChild(h);

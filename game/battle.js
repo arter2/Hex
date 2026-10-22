@@ -1103,7 +1103,7 @@ function cycleAim(){ const b=B; if(!b||b.phase!=='fight') return; const ts=alive
    (p.path) to the middle of the last one. p.fx/p.fz is where your mage is. */
 function nearestTile(x,z){ let best=null, bd=1e9; for(const t of TILES){ const d=(t.wx-x)**2+(t.wz-z)**2; if(d<bd){ bd=d; best=t; } } return best; }
 // the walking settings (debug menu › Battle › Battle movement, and the Movement lab), kept in look.js
-const MV_DEF={mvSpeed:1.2, mvSnap:1, mvSnapR:.46, mvSnapSpd:2.3, mvRest:.6, mvDrag:2.5, mvAccel:0, mvStick:true, mvStickShow:true, mvStickR:56, mvDead:.18, mvStickMin:.25, mvStickFull:.8, mvCurve:1, mvTapMs:200, mvTapPx:12, mvStickSpeed:5, mvEven:1, mvSnapTime:.12, mvSnapAhead:true, mvStride:.5, mvFaceWalk:true};
+const MV_DEF={mvSpeed:1.2, mvSnap:1, mvSnapR:.46, mvSnapSpd:2.3, mvRest:.6, mvDrag:2.5, mvAccel:0, mvStick:true, mvStickShow:true, mvStickR:56, mvDead:.18, mvStickMin:.25, mvStickFull:.8, mvCurve:1, mvTapMs:200, mvTapPx:12, mvStickSpeed:5, mvEven:1, mvSnapTime:.12, mvSnapAhead:true, mvStride:.5, mvFaceWalk:true, mvMomentum:true, mvMAccel:.1, mvMBrake:.22, mvGrip:.7};
 const MV=k=>typeof XLIT!=='undefined'&&XLIT[k]!=null?XLIT[k]:MV_DEF[k];
 function freeTarget(x,z,key,k,raw){ const b=B; if(!b||b.phase!=='fight') return; const p=b.player;
   const xs=P_TILES.map(t=>t.wx), zs=P_TILES.map(t=>t.wz), o=p.free;
@@ -1115,10 +1115,11 @@ function freeTarget(x,z,key,k,raw){ const b=B; if(!b||b.phase!=='fight') return;
 function freeEnd(){ if(B&&B.player) B.player.free=null; }
 function freeTick(p,rdt,haste){
   // a fight's start, or knocked, pulled or pushed elsewhere: carry on from the new tile (drawn sliding there)
-  if(p.fx==null||p.fTile!==p.tile){ if(p.fx!=null) p.fLerp=true; p.fx=p.tile.wx; p.fz=p.tile.wz; p.fTile=p.tile; p.snap=null; }
+  if(p.fx==null||p.fTile!==p.tile){ if(p.fx!=null) p.fLerp=true; p.fx=p.tile.wx; p.fz=p.tile.wz; p.fTile=p.tile; p.snap=null; p.vx=p.vz=0; }
   while(p.path.length>1&&p.path[0]===p.tile) p.path.shift();   // once in a tile on the way, head for the next
-  p.fmov=false; if(p.rootT>0||p.moveCd>0){ p.fv=0; return; }
+  p.fmov=false; if(p.rootT>0||p.moveCd>0){ p.fv=0; p.vx=p.vz=0; return; }
   const sp=Math.min(...neighbors(p.tile).map(n=>Math.hypot(n.wx-p.tile.wx,n.wz-p.tile.wz)));
+  if(MV('mvMomentum')) return momentumTick(p,rdt,haste,sp);
   /* The magnet: once you stop (you let go, or your finger has rested a moment where your mage stands),
      you slide part of the way (mvSnap) into the middle of your tile, if you are within mvSnapR tiles of it. */
   const tag=p.free?p.free.t:-1;
@@ -1157,6 +1158,75 @@ function freeTick(p,rdt,haste){
     const hx=x-p.fx, hz=z-p.fz, hl=Math.hypot(hx,hz); p.walkDist=(p.walkDist||0)+hl; if(!still) p.lastDir=[hx/hl,hz/hl];
     p.fx=x; p.fz=z; p.fmov=true; budget-=m;
     if(n!==p.tile){ p.tile.occ=null; p.tile=n; n.occ=p; p.fTile=n; } } }
+/* Momentum (mvMomentum): your mage has a velocity (p.vx, p.vz) that the input steers rather than sets. It
+   speeds up to what your push asks for in mvMAccel seconds, brakes from full speed in mvMBrake seconds, and
+   turns toward a new way at a rate set by mvGrip (1 turns at once; lower keeps some of the old way, a hard
+   turn back brakes first). Let go and you coast: the magnet picks the tile where your slide would end (not the
+   one under you when you let go), and the slide bends and brakes smoothly into that tile's middle (or just
+   stops where it ends, if the magnet would not pull there). The tile you are hit on is still the nearest. */
+function momentumTick(p,rdt,haste,sp){
+  const walkTps=MV('mvSpeed')/(haste?.08:.14), slowK=1/((icy(p.tile)?2.2:1)*(p.slow||1));
+  const top=(p.free&&p.free.tps?p.free.tps*(haste?1.75:1):walkTps)*sp*slowK, ref=(MV('mvStickSpeed')||walkTps)*sp*slowK;   // board units a second
+  const A=ref/Math.max(.01,MV('mvMAccel')), Bk=ref/Math.max(.01,MV('mvMBrake'));   // speeding up and braking, units/s²
+  let vx=p.vx||0, vz=p.vz||0, v=Math.hypot(vx,vz);
+  const tag=p.free?p.free.t:-1;
+  const resting=p.free&&!p.free.raw&&!p.free.key&&B.time-p.free.t>=MV('mvRest')&&Math.hypot(p.free.x-p.fx,p.free.z-p.fz)<.02;   // a dragging finger at rest
+  const still=!p.path.length&&(!p.free||resting||!!(p.snap&&p.snap.tag===tag));
+  if(!still){ p.snap=null; if(!p.moving){ p.moving=true; p.moveFrom=p.tile; } }
+  else { p.moving=false;
+    if(!p.snap||p.snap.tag!==tag){   // where the slide will end, and the magnet's pull there
+      const s=v>1e-4?v/(2*Bk):0, stand=t=>t&&(t===p.tile||t.side==='p'&&!t.occ&&!(t.holeT>0));
+      let Sx=p.fx+vx*s, Sz=p.fz+vz*s;
+      // a slide aimed past the border or into something stops where you can last stand
+      for(let f=1;f>0&&!stand(nearestTile(Sx,Sz));f-=.125){ Sx=p.fx+vx*s*f; Sz=p.fz+vz*s*f; }
+      if(!stand(nearestTile(Sx,Sz))){ Sx=p.fx; Sz=p.fz; }
+      const t=nearestTile(Sx,Sz)||p.tile, ox=t.wx-Sx, oz=t.wz-Sz, dir=v>1e-4?[vx/v,vz/v]:p.lastDir;
+      // in range, or held against a wall or the border (which leaves you on a tile's edge): the magnet pulls
+      let k=Math.hypot(ox,oz)/sp<=MV('mvSnapR')+1e-6||p.walled&&t===p.tile?MV('mvSnap'):0;
+      if(t.side!=='p'||t.occ&&t.occ!==p||t.holeT>0) k=0;   // never into a tile you can't stand on
+      if(MV('mvSnapAhead')&&t===p.moveFrom&&dir&&ox*dir[0]+oz*dir[1]<-1e-6) k=0;   // nor back into the tile you set off from
+      p.snap={tag,x:Sx+ox*k,z:Sz+oz*k}; } }
+  // what the input asks for: a point to reach, and whether to brake to a stop on it (arrive) or run on through it
+  let gx=null, gz=null, arrive=true, want=0;
+  if(still){ if(p.snap){ gx=p.snap.x; gz=p.snap.z; want=walkTps*sp*slowK*MV('mvSnapSpd'); } }
+  else if(p.free){ gx=p.free.x; gz=p.free.z; arrive=!p.free.raw; want=top*(p.free.k==null?1:p.free.k); }
+  else if(p.path.length){ gx=p.path[0].wx; gz=p.path[0].wz; arrive=p.path.length===1; want=top; }
+  let tx=0, tz=0, d=0;
+  if(gx!=null){ const dx=gx-p.fx, dz=gz-p.fz; d=Math.hypot(dx,dz);
+    if(d<1e-3&&v<.05){ if(!still&&!p.free&&p.path.length) p.path.shift(); d=0; }
+    else if(d>1e-6){ let s=want*(still?1:evenK(p.fx,p.fz,dx,dz)); if(arrive) s=Math.min(s,Math.sqrt(2*Bk*d)); tx=dx/d*s; tz=dz/d*s; } }
+  // steer the velocity toward that: speed up at A, slow at Bk, turn at the grip's rate
+  const ts=Math.hypot(tx,tz), g=MV('mvGrip');
+  if(v<1e-4) v=0;
+  let ux=v?vx/v:(ts?tx/ts:0), uz=v?vz/v:(ts?tz/ts:0);
+  if(ts>1e-6){ const wx=tx/ts, wz=tz/ts, dot=ux*wx+uz*wz;
+    if(g>=.999||v===0){ ux=wx; uz=wz; v=v+clamp(ts-v,-Bk*rdt,A*rdt); }
+    else if(dot<-.3){ v=Math.max(0,v-Bk*rdt); if(v===0){ ux=wx; uz=wz; } }   // a hard turn back: brake first
+    else { const f=1-Math.exp(-rdt*3/(1-g)); let nx=ux+(wx-ux)*f, nz=uz+(wz-uz)*f; const nl=Math.hypot(nx,nz)||1; ux=nx/nl; uz=nz/nl; v=v+clamp(ts-v,-Bk*rdt,A*rdt); } }
+  else v=Math.max(0,v-Bk*rdt);
+  // arriving: never step past the point
+  let mx=ux*v*rdt, mz=uz*v*rdt;
+  if(arrive&&gx!=null&&d>0&&Math.hypot(mx,mz)>=d){ mx=gx-p.fx; mz=gz-p.fz; v=0; }
+  const [rx,rz]=freeMoveBy(p,mx,mz,sp), moved=Math.hypot(rx,rz);
+  // what stopped you (a wall, the border) takes that part of your speed away
+  p.walled=Math.hypot(mx,mz)>1e-6&&moved<Math.hypot(mx,mz)*.98;
+  if(p.walled&&rdt>0){ v=moved/rdt; if(moved>1e-7){ ux=rx/moved; uz=rz/moved; } else v=0; }
+  p.vx=ux*v; p.vz=uz*v; p.fmov=moved>1e-5;
+  if(p.fmov&&!still) p.lastDir=[rx/moved,rz/moved];
+  { const s=v>1e-4?v/(2*Bk):0; p.coast=[p.fx+p.vx*s,p.fz+p.vz*s]; }   // for Show movement
+  if(!still&&!p.free&&!p.path.length) p.snap=null; }
+// move your mage by (mx, mz) in short hops, stopping at (or sliding along) what is in the way; returns the move made
+function freeMoveBy(p,mx,mz,sp){ const L=Math.hypot(mx,mz); if(L<1e-7) return [0,0];
+  const ok=(x,z)=>{ const n=nearestTile(x,z); return n===p.tile||(n&&n.side==='p'&&!n.occ&&!(n.holeT>0)&&neighbors(p.tile).includes(n))?n:null; };
+  const ux=mx/L, uz=mz/L; let left=L, rx=0, rz=0;
+  for(let i=0;i<16&&left>1e-6;i++){ const m=Math.min(left,sp*.25); let x=p.fx+ux*m, z=p.fz+uz*m, n=ok(x,z);
+    for(let f=.5;!n&&f>.03;f*=.5){ x=p.fx+ux*m*f; z=p.fz+uz*m*f; n=ok(x,z); }
+    if(!n&&Math.abs(ux)>.35){ x=p.fx+ux*m; z=p.fz; n=ok(x,z); }
+    if(!n&&Math.abs(uz)>.35){ x=p.fx; z=p.fz+uz*m; n=ok(x,z); }
+    if(!n) break; const hx=x-p.fx, hz=z-p.fz, hl=Math.hypot(hx,hz); if(hl<1e-7) break;
+    p.fx=x; p.fz=z; rx+=hx; rz+=hz; left-=m; p.walkDist=(p.walkDist||0)+hl;
+    if(n!==p.tile){ p.tile.occ=null; p.tile=n; n.occ=p; p.fTile=n; } }
+  return [rx,rz]; }
 /* Even speed on screen (mvEven): the camera looks down the board at a slant, so a board unit toward the enemies
    is shorter on screen than one across, and everything nearer the camera is bigger. Walking is sped up or slowed
    by the way you go so it covers the same screen distance a second as walking across the middle of the board
@@ -1190,6 +1260,7 @@ function mvOverlay(ctx,b){ const p=b.player; if(!p||p.fx==null) return;
   if(p.free){ const [fx,fy]=proj(p.free.x,0,p.free.z); ctx.setLineDash([5,4]); ctx.strokeStyle='rgba(255,255,255,.8)'; ctx.lineWidth=1.5; ctx.beginPath(); ctx.moveTo(mx,my); ctx.lineTo(fx,fy); ctx.stroke(); ctx.setLineDash([]);
     ctx.beginPath(); ctx.moveTo(fx-6,fy-6); ctx.lineTo(fx+6,fy+6); ctx.moveTo(fx+6,fy-6); ctx.lineTo(fx-6,fy+6); ctx.stroke();
     const k=MV('mvRest')>0?Math.min(1,(b.time-p.free.t)/MV('mvRest')):1; if(!p.snap&&k<1){ ctx.strokeStyle='#ffffff'; ctx.lineWidth=3; ctx.beginPath(); ctx.arc(mx,my,13,-Math.PI/2,-Math.PI/2+k*TAU); ctx.stroke(); } }
+  if(MV('mvMomentum')&&p.coast&&p.fmov){ const [cx,cy]=proj(p.coast[0],0,p.coast[1]); ctx.strokeStyle='rgba(255,106,213,.8)'; ctx.lineWidth=1.5; ctx.setLineDash([3,3]); ctx.beginPath(); ctx.moveTo(mx,my); ctx.lineTo(cx,cy); ctx.stroke(); ctx.setLineDash([]); ctx.beginPath(); ctx.arc(cx,cy,6,0,TAU); ctx.stroke(); }   // momentum: where you would stop if you let go now
   if(p.snap){ const [sx,sy]=proj(p.snap.x,0,p.snap.z); ctx.strokeStyle='#ff6ad5'; ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(mx,my); ctx.lineTo(sx,sy); ctx.stroke(); dot(sx,sy,4.5,'#ff6ad5'); }
   dot(mx,my,4,'#ffffff'); ctx.restore(); }
 // canvas point -> board point (x,z), solved from proj() a few times over, starting near (wx,wz)

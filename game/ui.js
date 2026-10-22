@@ -1021,7 +1021,7 @@ function stickWalk(){ const d=dragging; if(!d||!XLIT.mvStick||!B||B.phase!=='fig
   if(!d.stick&&(d.moved||performance.now()-d.t0>=MV('mvTapMs'))) d.stick=true;
   if(!d.stick) return; stickDraw();
   const p=B.player, R=MV('mvStickR'), dx=d.x-d.x0, dy=d.y-d.y0, l=Math.hypot(dx,dy)/R, fx=p.fx??p.tile.wx, fz=p.fz??p.tile.wz;
-  if(l<MV('mvDead')){ if(!d.still){ d.still=true; freeTarget(fx,fz); } return; }   // in the dead zone: stand (the magnet pulls after the rest)
+  if(l<MV('mvDead')){ if(!d.still){ d.still=true; if(MV('mvMomentum')) freeEnd(); else freeTarget(fx,fz); } return; }   // in the dead zone: stand (the magnet pulls after the rest; with momentum, you coast to a stop as if you let go)
   d.still=false;
   const u=Math.min(1,(l-MV('mvDead'))/Math.max(.01,MV('mvStickFull')-MV('mvDead'))), k=MV('mvStickMin')+(1-MV('mvStickMin'))*Math.pow(u,MV('mvCurve'));
   // the push, on screen, turned into a way across the board

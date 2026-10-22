@@ -20,9 +20,9 @@ const SQ_NB=[[1,0],[1,-1],[0,-1],[-1,-1],[-1,0],[-1,1],[0,1],[1,1]];
 function tileCornerOffs(rad){ if(SQUARE){ const h=rad*SQS/2; return [[h,h],[-h,h],[-h,-h],[h,-h]]; }
   const out=[]; for(let i=0;i<6;i++){ const a=Math.PI/6+i*Math.PI/3; out.push([Math.cos(a)*rad,Math.sin(a)*rad]); } return out; }
 // The arrays below are rebuilt in place by buildBoard, so references to them stay valid.
-const BOARD=new Map(), CR=new Map(), TILES=[], P_TILES=[], E_TILES=[];
+const BOARD=new Map(), CR=new Map(), TILES=[], P_TILES=[], E_TILES=[]; let P_RECT=null;   // your half's standing box (pRect)
 function buildBoard(){
-  BOARD.clear(); CR.clear(); TILES.length=0; P_TILES.length=0; E_TILES.length=0;
+  BOARD.clear(); CR.clear(); TILES.length=0; P_TILES.length=0; E_TILES.length=0; P_RECT=null;
   const L=BOARD_TEST; SQUARE=!!(L&&L.square); BOARD_ROWS=L?L.rows:7; BOARD_COLS=L?L.cols*2:12; Object.assign(DIRS,SQUARE?{NE:[1,-1],NW:[0,-1],SW:[0,1],SE:[1,1]}:{NE:[1,-1],NW:[0,-1],SW:[-1,1],SE:[0,1]}); DIRLIST.splice(0,6,...Object.values(DIRS));
   if(SQUARE){ for(let r=0;r<BOARD_ROWS;r++) for(let c=0;c<BOARD_COLS;c++){ const x=c-(BOARD_COLS-1)/2, side=c<BOARD_COLS/2?'p':'e';
       const t={q:c,r,col:c,x,side,wx:SQS*x,wz:SQS*(r-(BOARD_ROWS-1)/2),key:c+','+r,occ:null,flash:0,flashC:'#fff'};
@@ -1107,11 +1107,24 @@ function onTile(t,x,z){ const C=tileCornerOffs(1); let sg=0;
   for(let i=0;i<C.length;i++){ const [ax,az]=C[i], [bx,bz]=C[(i+1)%C.length], c=(bx-ax)*(z-t.wz-az)-(bz-az)*(x-t.wx-ax);
     if(Math.abs(c)<1e-7) continue; const s=c>0?1:-1; if(!sg) sg=s; else if(s!==sg) return false; }
   return true; }
-function standAt(p,x,z){ const n=nearestTile(x,z); if(!n||!onTile(n,x,z)) return null;
+/* Where your mage may stand: the biggest box your half's tiles fully cover. Hexes leave a zigzag at every edge of
+   your half (and at the line with the enemy's), and a push along one caught in its notches; the box's edges are
+   straight, so you glide along them, and you never stand off the grid. Squares fill their box exactly. */
+function pRect(){ if(P_RECT) return P_RECT;
+  const xs=P_TILES.map(t=>t.wx), zs=P_TILES.map(t=>t.wz), R={x0:Math.min(...xs),x1:Math.max(...xs),z0:Math.min(...zs),z1:Math.max(...zs)};
+  const mine=(x,z)=>{ const t=nearestTile(x,z); return t&&t.side==='p'&&onTile(t,x,z); };
+  // (each end kept a hair in, off the point where two tiles' corners meet)
+  const covered=(ax,az,bx,bz)=>{ const L=Math.hypot(bx-ax,bz-az), n=Math.max(2,Math.ceil(L/.04)), e=Math.min(.02,L/4)/(L||1); for(let i=0;i<=n;i++){ const f=e+(1-2*e)*i/n; if(!mine(ax+(bx-ax)*f,az+(bz-az)*f)) return false; } return true; };
+  for(let grew=true,k=0;grew&&k<400;k++){ grew=false; const e=.01;
+    if(covered(R.x1+e,R.z0,R.x1+e,R.z1)){ R.x1+=e; grew=true; } if(covered(R.x0-e,R.z0,R.x0-e,R.z1)){ R.x0-=e; grew=true; }
+    if(covered(R.x0,R.z1+e,R.x1,R.z1+e)){ R.z1+=e; grew=true; } if(covered(R.x0,R.z0-e,R.x1,R.z0-e)){ R.z0-=e; grew=true; } }
+  return P_RECT=R; }
+const inPRect=(x,z)=>{ const R=pRect(); return x>=R.x0-1e-9&&x<=R.x1+1e-9&&z>=R.z0-1e-9&&z<=R.z1+1e-9; };
+function standAt(p,x,z){ if(!inPRect(x,z)) return null; const n=nearestTile(x,z); if(!n||!onTile(n,x,z)) return null;
   return n===p.tile||(n.side==='p'&&!n.occ&&!(n.holeT>0)&&neighbors(p.tile).includes(n))?n:null; }
 function nearestTile(x,z){ let best=null, bd=1e9; for(const t of TILES){ const d=(t.wx-x)**2+(t.wz-z)**2; if(d<bd){ bd=d; best=t; } } return best; }
 // the walking settings (debug menu › Battle › Battle movement, and the Movement lab), kept in look.js
-const MV_DEF={mvSpeed:1.2, mvSnap:1, mvSnapR:.46, mvSnapSpd:2.3, mvRest:.6, mvDrag:2.5, mvAccel:0, mvStick:true, mvStickShow:true, mvStickR:56, mvDead:.18, mvStickMin:.25, mvStickFull:.8, mvCurve:1, mvTapMs:200, mvTapPx:12, mvStickSpeed:5, mvEven:1, mvSnapTime:.12, mvSnapAhead:true, mvStride:.5, mvFaceWalk:true, mvMomentum:true, mvMAccel:.1, mvMBrake:.22, mvGrip:.7};
+const MV_DEF={mvSpeed:1.2, mvSnap:1, mvSnapR:.46, mvSnapSpd:2.3, mvRest:.6, mvDrag:2.5, mvAccel:0, mvStick:true, mvStickShow:true, mvStickR:56, mvDead:.18, mvStickMin:.25, mvStickFull:.8, mvCurve:1, mvTapMs:200, mvTapPx:12, mvStickSpeed:5, mvEven:1, mvSnapTime:.12, mvSnapAhead:true, mvStride:.5, mvFaceWalk:true, mvMomentum:true, mvMAccel:.1, mvMBrake:.22, mvMSkid:.22, mvGrip:.7};
 const MV=k=>typeof XLIT!=='undefined'&&XLIT[k]!=null?XLIT[k]:MV_DEF[k];
 function freeTarget(x,z,key,k,raw){ const b=B; if(!b||b.phase!=='fight') return; const p=b.player;
   const xs=P_TILES.map(t=>t.wx), zs=P_TILES.map(t=>t.wz), o=p.free;
@@ -1193,17 +1206,26 @@ function momentumTick(p,rdt,haste,sp){
   if(!still){ p.snap=null; if(!p.moving){ p.moving=true; p.moveFrom=p.tile; } }
   else { p.moving=false;
     if(!p.snap||p.snap.tag!==tag){   // where the slide will end, and the magnet's pull there
-      const s=v>1e-4?v/(2*Bk):0, stand=(x,z)=>{ const t=nearestTile(x,z); return t&&onTile(t,x,z)&&(t===p.tile||t.side==='p'&&!t.occ&&!(t.holeT>0)); };
+      const s=v>1e-4?v/(2*Bk):0, stand=(x,z)=>{ const t=inPRect(x,z)&&nearestTile(x,z); return t&&onTile(t,x,z)&&(t===p.tile||t.side==='p'&&!t.occ&&!(t.holeT>0)); };
       let Sx=p.fx+vx*s, Sz=p.fz+vz*s;
       // a slide aimed off the grid, past the border or into something stops where you can last stand
       for(let f=1;f>0&&!stand(Sx,Sz);f-=.125){ Sx=p.fx+vx*s*f; Sz=p.fz+vz*s*f; }
       if(!stand(Sx,Sz)){ Sx=p.fx; Sz=p.fz; }
-      const t=nearestTile(Sx,Sz)||p.tile, ox=t.wx-Sx, oz=t.wz-Sz, dir=v>1e-4?[vx/v,vz/v]:p.lastDir;
-      // in range, or held against a wall or the border (which leaves you on a tile's edge): the magnet pulls
-      let k=Math.hypot(ox,oz)/sp<=MV('mvSnapR')+1e-6||p.walled&&t===p.tile?MV('mvSnap'):0;
-      if(t.side!=='p'||t.occ&&t.occ!==p||t.holeT>0) k=0;   // never into a tile you can't stand on
-      if(MV('mvSnapAhead')&&t===p.moveFrom&&dir&&ox*dir[0]+oz*dir[1]<-1e-6) k=0;   // nor back into the tile you set off from
-      p.snap={tag,x:Sx+ox*k,z:Sz+oz*k}; } }
+      const t0=nearestTile(Sx,Sz)||p.tile, dir=v>1e-4?[vx/v,vz/v]:p.lastDir, sliding=v>.05;
+      /* The magnet: the middle of the tile you would stop in, or of one next to it, if it is in range. Sliding, it
+         only ever takes you on ahead of where you are (never back against the way you go), and it lands you
+         there by braking a little harder or softer (p.snap.a), never by pulling: in reach of that, or none. */
+      let best=null, bd=1e9;
+      if(MV('mvSnap')>0) for(const t of [t0,...neighbors(t0)]){
+        if(t.side!=='p'||t.occ&&t.occ!==p||t.holeT>0) continue;   // never into a tile you can't stand on
+        const ox=t.wx-Sx, oz=t.wz-Sz, dS=Math.hypot(ox,oz);
+        if(!(dS/sp<=MV('mvSnapR')+1e-6||p.walled&&t===p.tile)||dS>=bd) continue;
+        if(MV('mvSnapAhead')&&t===p.moveFrom&&dir&&ox*dir[0]+oz*dir[1]<-1e-6) continue;   // nor back into the tile you set off from
+        if(sliding){ const gx=Sx+ox*MV('mvSnap'), gz=Sz+oz*MV('mvSnap'), ahead=(gx-p.fx)*dir[0]+(gz-p.fz)*dir[1];
+          if(ahead<-1e-6) continue; const a=v*v/(2*Math.max(1e-4,Math.hypot(gx-p.fx,gz-p.fz))); if(a>Bk*2.5||a<Bk*.5) continue; }
+        best=t; bd=dS; }
+      const k=best?MV('mvSnap'):0, ox=best?best.wx-Sx:0, oz=best?best.wz-Sz:0, gx=Sx+ox*k, gz=Sz+oz*k, gd=Math.hypot(gx-p.fx,gz-p.fz);
+      p.snap={tag,x:gx,z:gz,a:sliding&&gd>1e-4?clamp(v*v/(2*gd),Bk*.5,Bk*2.5):0}; } }
   // what the input asks for: a point to reach, and whether to brake to a stop on it (arrive) or run on through it
   let gx=null, gz=null, arrive=true, want=0;
   if(still){ if(p.snap){ gx=p.snap.x; gz=p.snap.z; want=walkTps*sp*slowK*MV('mvSnapSpd'); } }
@@ -1212,20 +1234,21 @@ function momentumTick(p,rdt,haste,sp){
   let tx=0, tz=0, d=0;
   if(gx!=null){ const dx=gx-p.fx, dz=gz-p.fz; d=Math.hypot(dx,dz);
     if(d<1e-3&&v<.05){ if(!still&&!p.free&&p.path.length) p.path.shift(); d=0; }
-    else if(d>1e-6){ let s=want*(still?1:evenK(p.fx,p.fz,dx,dz)); if(arrive) s=Math.min(s,Math.sqrt(2*Bk*d)); tx=dx/d*s; tz=dz/d*s; } }
-  // steer the velocity toward that: speed up at A, slow at Bk, turn at the grip's rate
-  const ts=Math.hypot(tx,tz), g=MV('mvGrip');
+    else if(d>1e-6){ let s=want*(still?1:evenK(p.fx,p.fz,dx,dz)); if(arrive) s=Math.min(s,Math.sqrt(2*(still&&p.snap&&p.snap.a||Bk)*d)); if(still&&p.snap&&p.snap.a) s=Math.max(s,Math.min(v,Math.sqrt(2*p.snap.a*d))); tx=dx/d*s; tz=dz/d*s; } }
+  // steer the velocity toward that: speed up at A, slow at Bk (landing on the magnet's point: at its own rate), turn
+  // at the grip's rate; a hard turn back skids to a stop at Sk first
+  const ts=Math.hypot(tx,tz), g=still?1:MV('mvGrip'), Sk=ref/Math.max(.01,MV('mvMSkid')), Bd=still&&p.snap&&p.snap.a?Math.max(Bk,p.snap.a*1.25):Bk;
   if(v<1e-4) v=0;
   let ux=v?vx/v:(ts?tx/ts:0), uz=v?vz/v:(ts?tz/ts:0);
   const v0=v, ux0=ux, uz0=uz, dot0=ts>1e-6?ux*tx/ts+uz*tz/ts:1;
   if(ts>1e-6){ const wx=tx/ts, wz=tz/ts, dot=ux*wx+uz*wz;
-    if(g>=.999||v===0){ ux=wx; uz=wz; v=v+clamp(ts-v,-Bk*rdt,A*rdt); }
-    else if(dot<-.3){ v=Math.max(0,v-Bk*rdt); if(v===0){ ux=wx; uz=wz; } }   // a hard turn back: brake first
+    if(v>0&&dot<-.3&&!still){ v=Math.max(0,v-Sk*rdt); if(v===0){ ux=wx; uz=wz; } }   // a hard turn back: skid first
+    else if(g>=.999||v===0){ ux=wx; uz=wz; v=v+clamp(ts-v,-Bd*rdt,A*rdt); }
     else { const f=1-Math.exp(-rdt*3/(1-g)); let nx=ux+(wx-ux)*f, nz=uz+(wz-uz)*f; const nl=Math.hypot(nx,nz)||1; ux=nx/nl; uz=nz/nl; v=v+clamp(ts-v,-Bk*rdt,A*rdt); } }
   else v=Math.max(0,v-Bk*rdt);
   // arriving: never step past the point
   let mx=ux*v*rdt, mz=uz*v*rdt;
-  if(arrive&&gx!=null&&d>0&&Math.hypot(mx,mz)>=d){ mx=gx-p.fx; mz=gz-p.fz; v=0; }
+  if(arrive&&gx!=null&&d>0&&Math.hypot(mx,mz)>=d&&mx*(gx-p.fx)+mz*(gz-p.fz)>0){ mx=gx-p.fx; mz=gz-p.fz; v=0; }   // (only while heading there)
   const [rx,rz]=freeMoveBy(p,mx,mz,sp), moved=Math.hypot(rx,rz);
   // what stopped you (a wall, the border) takes that part of your speed away
   p.walled=Math.hypot(mx,mz)>1e-6&&moved<Math.hypot(mx,mz)*.98;
@@ -1253,7 +1276,17 @@ function freeMoveBy(p,mx,mz,sp){ const L=Math.hypot(mx,mz); if(L<1e-7) return [0
   const ok=(x,z)=>standAt(p,x,z);
   const ux=mx/L, uz=mz/L; let left=L, rx=0, rz=0;
   for(let i=0;i<16&&left>1e-6;i++){ const m=Math.min(left,sp*.25); let x=p.fx+ux*m, z=p.fz+uz*m, n=ok(x,z);
+    // blocked: up to what is in the way, then the rest of the hop slides along it (straight across or down the
+    // board, else turned toward the way it was going), so a push at the edge glides along it instead of creeping
+    // ever closer and stopping
     for(let f=.5;!n&&f>.03;f*=.5){ x=p.fx+ux*m*f; z=p.fz+uz*m*f; n=ok(x,z); }
+    if(!n){ x=p.fx; z=p.fz; }   // already against it
+    if(x!==p.fx+ux*m||z!==p.fz+uz*m){ const r=m-Math.hypot(x-p.fx,z-p.fz), x0=x, z0=z;
+      let s2=null; if(Math.abs(ux)>.35&&ok(x0+ux*r,z0)) s2=[x0+ux*r,z0]; else if(Math.abs(uz)>.35&&ok(x0,z0+uz*r)) s2=[x0,z0+uz*r];
+      for(let a=15;!s2&&a<=75;a+=15){ const c=Math.cos(a*Math.PI/180), sn=Math.sin(a*Math.PI/180);
+        const L2=r*Math.min(1,2*c);   // a glancing push keeps its speed along it (a hex edge's zigzag would eat it); a hard one slows
+        for(const sg of [1,-1]){ const dx=ux*c-uz*sn*sg, dz=uz*c+ux*sn*sg; if(ok(x0+dx*L2,z0+dz*L2)){ s2=[x0+dx*L2,z0+dz*L2]; break; } } }
+      if(s2){ x=s2[0]; z=s2[1]; n=ok(x,z); } else if(x===p.fx&&z===p.fz) n=null; }
     if(!n&&Math.abs(ux)>.35){ x=p.fx+ux*m; z=p.fz; n=ok(x,z); }
     if(!n&&Math.abs(uz)>.35){ x=p.fx; z=p.fz+uz*m; n=ok(x,z); }
     if(!n) break; const hx=x-p.fx, hz=z-p.fz, hl=Math.hypot(hx,hz); if(hl<1e-7) break;

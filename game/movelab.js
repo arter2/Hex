@@ -43,7 +43,7 @@ const MLAB_ROWS=[
   ['Walking',[['mvShow','Show movement',0,0,0,'tog'],['mvEven','Even screen speed',0,1,.01,'mv'],['mvSpeed','Tap/key speed',.3,5,.05,'mv'],['mvFaceWalk','Face where you walk',0,0,0,'tog'],['mvStride','Stride (tiles)',0,1.5,.01,'mv']]],
   ['Magnet',[['mvSnap','Magnet',0,1,.01,'mv'],['mvSnapAhead','Only forward',0,0,0,'tog'],['mvSnapR','Range (tiles)',0,1.5,.01,'mv'],['mvSnapTime','Ease (s)',0,.6,.01,'mv'],['mvSnapSpd','Top speed',.1,6,.05,'mv'],
     ['mvRest','Finger rest (s)',0,2,.05,'mv']]],
-  ['Momentum',[['mvMomentum','Momentum',0,0,0,'tog'],['mvMAccel','Speed-up (s)',0,1,.01,'mv'],['mvMBrake','Braking (s)',.02,1.5,.01,'mv'],['mvGrip','Turn grip',0,1,.01,'mv']]],
+  ['Momentum',[['mvMomentum','Momentum',0,0,0,'tog'],['mvMAccel','Speed-up (s)',0,1,.01,'mv'],['mvMBrake','Braking (s)',.02,1.5,.01,'mv'],['mvMSkid','Skid (s)',.02,1.5,.01,'mv'],['mvGrip','Turn grip',0,1,.01,'mv']]],
   ['Other',[['mvAccel','Speed-up, no momentum (s)',0,2,.01,'mv'],['mvDrag','Drag reach (follow finger)',.5,6,.05,'mv']]]];
 const mlabSet=(k,v)=>{ XLIT[k]=v; try{ localStorage.setItem('hexmancers-xl-'+k,typeof v==='boolean'?(v?'1':'0'):String(v)); }catch(e){} if(typeof mlabProfMark==='function') mlabProfMark(); };
 // what each lab setting does (press and hold its name); the walking settings take theirs from the debug menu
@@ -70,26 +70,36 @@ function renderMlab(){ const f=$('#mlabForm'); f.innerHTML=''; mlabProfiles(f);
    browser. */
 const MLAB_PKEY='hexmancers-mlab-profiles', MLAB_PCUR='hexmancers-mlab-profile';
 const mlabProfs=()=>{ try{ return JSON.parse(localStorage.getItem(MLAB_PKEY))||{}; }catch(e){ return {}; } };
+/* Two built-in profiles (★), tuned with a scored test of scripted thumb input on hex and square boards: start,
+   stop, skid, turns, edges, flicks, dodges and how often a stop lands on the tile you meant. Both keep your board.
+   Tight: near-instant, like a phone action game; a short slide, and every stop lands on a tile's middle.
+   Mario: a little weight, keeping Super Mario Bros.' proportions (letting go slows you a touch faster than you
+   speed up, and pushing the other way skids round faster still), scaled down to a dodge on a small board. */
+const MLAB_PRESETS={
+  '★ Tight':{mv:{mvMAccel:.03, mvMBrake:.08, mvMSkid:.03, mvGrip:1, mvSnapR:.6, mvSnapSpd:5, mvStickSpeed:5.5, mvDead:.15, mvStickMin:.3, mvStickFull:.7}},
+  '★ Mario':{mv:{mvMAccel:.05, mvMBrake:.1, mvMSkid:.04, mvGrip:.93, mvSnapR:.7, mvSnapSpd:5, mvStickSpeed:5.5, mvDead:.15, mvStickMin:.3, mvStickFull:.7}}};
+const mlabPreset=n=>MLAB_PRESETS[n]&&{mv:Object.assign({},MV_DEF,{mvMomentum:true, mvStick:true},MLAB_PRESETS[n].mv)};
+const mlabProf=n=>mlabPreset(n)||mlabProfs()[n];
 const mlabProfsKeep=P=>{ try{ localStorage.setItem(MLAB_PKEY,JSON.stringify(P)); }catch(e){} };
 let mlabCur=(()=>{ try{ return localStorage.getItem(MLAB_PCUR)||''; }catch(e){ return ''; } })();
 const mlabSetCur=n=>{ mlabCur=n; try{ localStorage.setItem(MLAB_PCUR,n); }catch(e){} };
 function mlabSnap(){ const mv={}; for(const k in MV_DEF) mv[k]=XLIT[k]; return {mv, lab:Object.assign({},MLAB)}; }
 const mlabSame=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
-function mlabLoad(n){ const P=mlabProfs()[n]; if(!P) return; const was=Object.assign({},MLAB);
+function mlabLoad(n){ const P=mlabProf(n); if(!P) return; const was=Object.assign({},MLAB);
   for(const k in MV_DEF) if(P.mv&&k in P.mv) mlabSet(k,P.mv[k]);
-  Object.assign(MLAB,MLAB_DEF,P.lab||{}); mlabKeep(); mlabSetCur(n); renderMlab();
+  if(P.lab) Object.assign(MLAB,MLAB_DEF,P.lab); mlabKeep(); mlabSetCur(n); renderMlab();
   if(['cols','rows','square','turrets'].some(k=>was[k]!==MLAB[k])) mlabStart(); }
-function mlabProfMark(){ const b=document.querySelector('#mlabForm .mlprof .chip.on'); if(!b) return; const P=mlabProfs()[mlabCur]; b.classList.toggle('dirty',!!P&&!mlabSame(P,mlabSnap())); }
-function mlabProfiles(f){ const P=mlabProfs(), names=Object.keys(P);
+function mlabProfMark(){ const b=document.querySelector('#mlabForm .mlprof .chip.on'); if(!b) return; const P=mlabProf(mlabCur), now=mlabSnap(); b.classList.toggle('dirty',!!P&&!mlabSame(P.mv,now.mv)||!!(P&&P.lab)&&!mlabSame(P.lab,now.lab)); }
+function mlabProfiles(f){ const P=mlabProfs(), names=[...Object.keys(MLAB_PRESETS),...Object.keys(P).filter(n=>!MLAB_PRESETS[n])];
   const h=document.createElement('h4'); h.textContent='Profiles'; f.appendChild(h);
   const box=document.createElement('div'); box.className='mlprof';
-  box.innerHTML=(names.length?names.map(n=>`<button class="chip${n===mlabCur?' on':''}" data-p="${n.replace(/"/g,'&quot;')}" style="--c:#ffe066"></button>`).join(''):'<span class="dim">No profiles yet: name this setup and save it.</span>');
+  box.innerHTML=(names.length?names.map(n=>`<button class="chip${n===mlabCur?' on':''}" data-p="${n.replace(/"/g,'&quot;')}" style="--c:${MLAB_PRESETS[n]?'#8fe4ff':'#ffe066'}"></button>`).join(''):'<span class="dim">No profiles yet: name this setup and save it.</span>');
   box.querySelectorAll('[data-p]').forEach(b=>{ b.textContent=b.dataset.p; b.onclick=()=>mlabLoad(b.dataset.p); });
   f.appendChild(box);
   const bar=document.createElement('div'); bar.className='mlprofbar';
   bar.innerHTML='<input id="mlabPName" type="text" maxlength="24" placeholder="Name this setup"><button class="btn small" data-a="save">Save</button><button class="btn ghost small" data-a="del">Delete</button>';
   const name=bar.querySelector('input'); name.value=mlabCur;
-  bar.querySelector('[data-a=save]').onclick=()=>{ const n=(name.value.trim()||mlabCur||'Profile '+(names.length+1)); const Q=mlabProfs(); Q[n]=mlabSnap(); mlabProfsKeep(Q); mlabSetCur(n); renderMlab(); tip&&tip('Saved “'+n+'”'); };
+  bar.querySelector('[data-a=save]').onclick=()=>{ let n=(name.value.trim()||mlabCur||'Profile '+(names.length+1)); if(MLAB_PRESETS[n]) n=n.replace(/^★ */,'')+' (mine)';   /* the built-ins stay as they are */ const Q=mlabProfs(); Q[n]=mlabSnap(); mlabProfsKeep(Q); mlabSetCur(n); renderMlab(); tip&&tip('Saved “'+n+'”'); };
   const del=bar.querySelector('[data-a=del]'); del.disabled=!P[mlabCur];
   del.onclick=()=>{ if(!del.dataset.armed){ del.dataset.armed='1'; del.textContent='Tap to delete “'+mlabCur+'”'; setTimeout(()=>{ if(del.isConnected){ delete del.dataset.armed; del.textContent='Delete'; } },2500); return; }
     const Q=mlabProfs(); delete Q[mlabCur]; mlabProfsKeep(Q); mlabSetCur(''); renderMlab(); };

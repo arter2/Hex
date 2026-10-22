@@ -998,16 +998,39 @@ wandBtn.addEventListener('contextmenu',e=>e.preventDefault());
    same way from where it stood, so your finger never has to cover it. */
 let dragging=null;
 View.canvas=$('#board'); View.ctx=View.canvas.getContext('2d');
+/* Touch walking in battle, two styles (Debug › Battle movement, or the Movement lab):
+   Joystick (mvStick, like the dungeon's Tap + hold): a quick tap walks to that tile; touch and slide, or
+     hold, and wherever your thumb landed becomes a floating stick: the way you push is the way you walk,
+     how far you push sets your speed (a dead zone in the middle, then mvStickMin rising to full speed at
+     mvStickFull of the stick's reach, along mvCurve). Let go and you stop.
+   Follow finger: your mage walks toward the point your finger marks on the board (mvDrag times as far). */
 View.canvas.addEventListener('pointerdown',e=>{ const t=pickTile(e.clientX,e.clientY); if(t&&t.side==='e'){ setAim(t); return; }
   if(!B||!B.player) return; try{ View.canvas.setPointerCapture(e.pointerId); }catch(_){}
   const [ax,ay]=appXY(e.clientX,e.clientY), [wx,wz]=posOf(B.player), [px,py]=proj(wx,0,wz);
-  dragging={id:e.pointerId,x0:ax,y0:ay,px,py,wx,wz,tap:t,moved:false}; });
-View.canvas.addEventListener('pointermove',e=>{ const d=dragging; if(!d||e.pointerId!==d.id) return; const [ax,ay]=appXY(e.clientX,e.clientY);
-  if(!d.moved&&Math.hypot(ax-d.x0,ay-d.y0)>12) d.moved=true;
-  if(!d.moved) return;
-  // your mage glides after the finger as a float and is hit on the nearest tile (freeTarget, battle.js)
+  dragging={id:e.pointerId,x0:ax,y0:ay,x:ax,y:ay,t0:performance.now(),px,py,wx,wz,tap:t,moved:false,stick:false}; });
+View.canvas.addEventListener('pointermove',e=>{ const d=dragging; if(!d||e.pointerId!==d.id) return; const [ax,ay]=appXY(e.clientX,e.clientY); d.x=ax; d.y=ay;
+  if(!d.moved&&Math.hypot(ax-d.x0,ay-d.y0)>MV('mvTapPx')) d.moved=true;
+  if(!d.moved||XLIT.mvStick) return;   // the joystick steers every frame (stickWalk)
+  // follow finger: your mage glides after the finger as a float and is hit on the nearest tile (freeTarget, battle.js)
   const [wx,wz]=unprojGround(d.px+(ax-d.x0)*MV('mvDrag'),d.py+(ay-d.y0)*MV('mvDrag'),d.wx,d.wz); freeTarget(wx,wz); });
-const dragEnd=e=>{ const d=dragging; if(!d||e.pointerId!==d.id) return; dragging=null; if(d.moved) freeEnd(); if(!d.moved&&e.type==='pointerup'&&d.tap&&d.tap.side==='p') moveTo(d.tap); };
+const dragEnd=e=>{ const d=dragging; if(!d||e.pointerId!==d.id) return; dragging=null; stickDraw();
+  const tap=!d.moved&&!d.stick&&e.type==='pointerup'&&(!XLIT.mvStick||performance.now()-d.t0<MV('mvTapMs'));
+  if(d.moved||d.stick) freeEnd(); if(tap&&d.tap&&d.tap.side==='p') moveTo(d.tap); };
+// the joystick, each frame: from where your thumb is against where it landed
+function stickWalk(){ const d=dragging; if(!d||!XLIT.mvStick||!B||B.phase!=='fight') return;
+  if(!d.stick&&(d.moved||performance.now()-d.t0>=MV('mvTapMs'))) d.stick=true;
+  if(!d.stick) return; stickDraw();
+  const p=B.player, R=MV('mvStickR'), dx=d.x-d.x0, dy=d.y-d.y0, l=Math.hypot(dx,dy)/R, fx=p.fx??p.tile.wx, fz=p.fz??p.tile.wz;
+  if(l<MV('mvDead')){ if(!d.still){ d.still=true; freeTarget(fx,fz); } return; }   // in the dead zone: stand (the magnet pulls after the rest)
+  d.still=false;
+  const u=Math.min(1,(l-MV('mvDead'))/Math.max(.01,MV('mvStickFull')-MV('mvDead'))), k=MV('mvStickMin')+(1-MV('mvStickMin'))*Math.pow(u,MV('mvCurve'));
+  // the push, on screen, turned into a way across the board
+  const [sx,sy]=proj(fx,0,fz), [wx,wz]=unprojGround(sx+dx/(l*R)*60,sy+dy/(l*R)*60,fx,fz), wl=Math.hypot(wx-fx,wz-fz)||1;
+  freeTarget(fx+(wx-fx)/wl*3,fz+(wz-fz)/wl*3,false,k,true); }
+function stickDraw(){ const el=$('#bStick'); if(!el) return; const d=dragging, on=!!(d&&d.stick&&XLIT.mvStick&&XLIT.mvStickShow);
+  el.hidden=!on; if(!on) return; const R=MV('mvStickR'); el.style.width=el.style.height=2*R+'px'; const sb=appBox($('#scrBattle')); el.style.left=(d.x0-sb.left-R)+'px'; el.style.top=(d.y0-sb.top-R)+'px';
+  let dx=d.x-d.x0, dy=d.y-d.y0; const l=Math.hypot(dx,dy); if(l>R){ dx*=R/l; dy*=R/l; }
+  const dz=el.firstElementChild; dz.style.width=dz.style.height=2*R*MV('mvDead')+'px'; el.lastElementChild.style.transform='translate('+dx+'px,'+dy+'px)'; }
 ['pointerup','pointercancel'].forEach(ev=>View.canvas.addEventListener(ev,dragEnd));
 window.addEventListener('resize',()=>{ if($('#scrBattle').classList.contains('on')) resizeView(); if($('#scrCamp').classList.contains('on')) campScene(); });
 
@@ -1068,7 +1091,7 @@ function frame(now){
   if(B&&$('#scrBattle').classList.contains('on')){
     if(!(View.w>0&&View.h>0)) resizeView();
     if(!document.hidden) checkControls(dt);
-    if(!paused&&!DBG.pause){ heldWalk(); update(dt); }   // the debug menu's pause holds the fight but keeps drawing it
+    if(!paused&&!DBG.pause){ heldWalk(); stickWalk(); update(dt); }   // the debug menu's pause holds the fight but keeps drawing it
     // The Custom screen never opens by itself: when the gauge is full the Custom button glows and you open it.
     try{ render(); }catch(e){ if(!View.errShown){ View.errShown=1; console.error('battle draw:',e); } View.cave=null; resizeView(); }   // e.g. the board was resized to nothing in the background: rebuild it next frame
     hud();

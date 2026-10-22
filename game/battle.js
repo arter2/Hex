@@ -1103,11 +1103,13 @@ function cycleAim(){ const b=B; if(!b||b.phase!=='fight') return; const ts=alive
    (p.path) to the middle of the last one. p.fx/p.fz is where your mage is. */
 function nearestTile(x,z){ let best=null, bd=1e9; for(const t of TILES){ const d=(t.wx-x)**2+(t.wz-z)**2; if(d<bd){ bd=d; best=t; } } return best; }
 // the walking settings (debug menu › Battle › Battle movement, and the Movement lab), kept in look.js
-const MV_DEF={mvSpeed:1.2, mvSnap:1, mvSnapR:.46, mvSnapSpd:2.3, mvRest:.6, mvDrag:2.5, mvAccel:.5};
+const MV_DEF={mvSpeed:1.2, mvSnap:1, mvSnapR:.46, mvSnapSpd:2.3, mvRest:.6, mvDrag:2.5, mvAccel:0, mvStick:true, mvStickShow:true, mvStickR:56, mvDead:.18, mvStickMin:.25, mvStickFull:.8, mvCurve:1, mvTapMs:200, mvTapPx:12};
 const MV=k=>typeof XLIT!=='undefined'&&XLIT[k]!=null?XLIT[k]:MV_DEF[k];
-function freeTarget(x,z,key){ const b=B; if(!b||b.phase!=='fight') return; const p=b.player;
+function freeTarget(x,z,key,k,raw){ const b=B; if(!b||b.phase!=='fight') return; const p=b.player;
   const xs=P_TILES.map(t=>t.wx), zs=P_TILES.map(t=>t.wz), o=p.free;
-  const f={x:Math.max(Math.min(...xs),Math.min(Math.max(...xs),x)), z:Math.max(Math.min(...zs),Math.min(Math.max(...zs),z)), key:!!key};
+  // kept on your half of the board, but for a joystick's (raw), which only gives the way to go: clamped, a push
+  // into the border would turn into a slide along it
+  const f=raw?{x,z,key:!!key,k:k==null?1:k}:{x:Math.max(Math.min(...xs),Math.min(Math.max(...xs),x)), z:Math.max(Math.min(...zs),Math.min(Math.max(...zs),z)), key:!!key, k:k==null?1:k};   // k: the share of walking speed (a joystick pushed part way)
   f.t=o&&Math.hypot(o.x-f.x,o.z-f.z)<.02?o.t:b.time;   // when the finger last moved
   p.free=f; p.path=[]; p.lane=null; }
 function freeEnd(){ if(B&&B.player) B.player.free=null; }
@@ -1127,7 +1129,7 @@ function freeTick(p,rdt,haste){
   if(!still&&!p.free&&!p.path.length){ p.fv=0; return; }
   let budget=rdt*sp*MV('mvSpeed')/((haste?.08:.14)*(icy(p.tile)?2.2:1)*(p.slow||1));
   if(still){ budget*=MV('mvSnapSpd'); p.fv=0; }
-  else { p.fv=MV('mvAccel')>0?Math.min(1,(p.fv||0)+rdt/MV('mvAccel')):1; budget*=p.fv; }   // speeding up from a stand
+  else { p.fv=MV('mvAccel')>0?Math.min(1,(p.fv||0)+rdt/MV('mvAccel')):1; budget*=p.fv*(p.free?p.free.k:1); }   // speeding up from a stand; a joystick's push
   const ok=(x,z)=>{ const n=nearestTile(x,z); return n===p.tile||(n&&n.side==='p'&&!n.occ&&!(n.holeT>0)&&neighbors(p.tile).includes(n))?n:null; };
   for(let i=0;i<12&&budget>1e-6;i++){
     const go=still?p.snap:p.free||(p.path.length?{x:p.path[0].wx,z:p.path[0].wz}:null); if(!go) break;
@@ -1135,8 +1137,11 @@ function freeTick(p,rdt,haste){
     if(d<1e-4){ if(!still&&!p.free&&p.path.length){ p.path.shift(); continue; } break; }
     const m=Math.min(d,budget,sp*.25);   // short hops, so a slow frame can't jump a tile
     let x=p.fx+dx/d*m, z=p.fz+dz/d*m, n=ok(x,z);
-    if(!n){ x=p.fx+dx/d*m; z=p.fz; n=ok(x,z); }   // blocked: slide along whatever is in the way
-    if(!n){ x=p.fx; z=p.fz+dz/d*m; n=ok(x,z); }
+    for(let f=.5;!n&&f>.03;f*=.5){ x=p.fx+dx/d*m*f; z=p.fz+dz/d*m*f; n=ok(x,z); }   // a shorter hop, right up to what is in the way
+    // blocked: slide along whatever is in the way, if you are pushing along it at least a little (a thumb a
+    // hair off straight into the border shouldn't creep you sideways into the next row)
+    if(!n&&Math.abs(dx)/d>.35){ x=p.fx+dx/d*m; z=p.fz; n=ok(x,z); }
+    if(!n&&Math.abs(dz)/d>.35){ x=p.fx; z=p.fz+dz/d*m; n=ok(x,z); }
     if(!n||Math.hypot(x-p.fx,z-p.fz)<1e-6){ if(!p.free) p.path=[]; break; }
     p.fx=x; p.fz=z; p.fmov=true; budget-=m;
     if(n!==p.tile){ p.tile.occ=null; p.tile=n; n.occ=p; p.fTile=n; } } }

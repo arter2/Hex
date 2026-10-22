@@ -1445,10 +1445,15 @@ body.wide .labside{align-self:start; position:sticky; top:0;}
 
 /* the Movement lab (movelab.js) */
 .mmlab.mmmove{top:auto; bottom:2%; color:#8fe4ff; border-color:#8fe4ff99;}
-.mlabhud{position:absolute; left:8px; top:64px; z-index:30; display:flex; gap:8px; align-items:center; font:600 12px/1.2 var(--font-b,sans-serif); color:#e8eef8; text-shadow:0 1px 2px #000;}
+.mlabhud{position:absolute; left:50%; top:auto; transform:translateX(-50%); z-index:30; display:flex; flex-direction:column; gap:4px; align-items:center; font:600 12px/1.2 var(--font-b,sans-serif); color:#e8eef8; text-shadow:0 1px 2px #000; pointer-events:none;}
+.mlabhud #mlabBtn{pointer-events:auto; min-width:96px; min-height:40px;}
 .mlabhud[hidden]{display:none;}
-.mlabpanel{display:none; position:absolute; left:8px; right:8px; bottom:8px; max-height:44%; overflow-y:auto; z-index:31; background:#0d0f12ee; border:1px solid #8fe4ff66; border-radius:10px; padding:8px 10px; color:#e8eef8; font-size:12px;}
-.mlabpanel.on{display:block;}
+.mlabpanel{display:none; position:absolute; left:6px; right:6px; top:6px; height:46%; z-index:31; background:#0d0f12f0; border:1px solid #8fe4ff66; border-radius:10px; padding:8px 10px 0; color:#e8eef8; font-size:12px; flex-direction:column; box-sizing:border-box;}
+.mlabpanel.on{display:flex;}
+.mlabpanel .mlbody{flex:1; overflow-y:auto; min-height:0;}
+.mlabpanel .mlgrip{position:relative; left:auto; top:auto; bottom:auto; width:auto; height:28px; margin:0 -10px; cursor:ns-resize; flex:none;}
+.mlabpanel .mlgrip::before{top:12px; left:50%; width:56px; height:5px; margin:0 0 0 -28px;}
+#mlabCurve{display:block; width:100%; max-width:300px; height:auto; margin:4px 0 2px;}
 .mlabpanel .mlbar{display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;}
 .mlabpanel h4{margin:8px 0 2px; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:#8fe4ff;}
 .mlrow{display:grid; grid-template-columns:42% 1fr 38px; gap:6px; align-items:center; min-height:28px;}
@@ -1459,3 +1464,8 @@ body.wide .labside{align-self:start; position:sticky; top:0;}
 .finebadge{position:fixed; z-index:9999; transform:translateX(-50%); pointer-events:none; background:#0d0f12f0; color:#ffe066; border:1px solid #ffe06699; border-radius:6px; padding:3px 8px; font:600 12px/1.2 system-ui,sans-serif; white-space:nowrap;}
 .finebadge[hidden]{display:none;}
 #debug input[type=range], .mlabpanel input[type=range]{touch-action:none;}
+/* the battle's joystick (ui.js stickDraw): the stick's reach, its dead zone and the knob */
+.bstick{z-index:6; display:block;}
+.bstick>i{position:absolute; left:50%; top:50%;}
+.bstick .bdead{border-radius:50%; border:1px dashed rgba(255,255,255,.35); transform:translate(-50%,-50%);}
+.bstick .x-knob{margin:-24px 0 0 -24px;}

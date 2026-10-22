@@ -215,12 +215,15 @@
 
   <section id="scrBattle" class="screen">
     <!-- the Movement lab (movelab.js): its score and settings, shown only in a lab battle -->
-    <div id="mlabHud" class="mlabhud" hidden><button id="mlabBtn" class="btn small">⚙ Lab</button><span id="mlabScore"></span></div>
+    <div id="mlabHud" class="mlabhud" hidden><span id="mlabScore"></span><button id="mlabBtn" class="btn">⚙ Lab</button></div>
     <div id="mlabPanel" class="mlabpanel">
       <div class="mlbar"><b>Movement lab</b><button id="mlabHide" class="btn ghost small">Hide</button></div>
-      <div id="mlabForm"></div>
-      <div class="mlbtns"><button id="mlabReset" class="btn ghost small">Reset score</button><button id="mlabDefaults" class="btn ghost small">Defaults</button><button id="mlabCopy" class="btn ghost small">Copy settings</button><button id="mlabExit" class="btn small">Exit lab</button></div>
-      <textarea id="mlabCopyNote" class="dbgcopy" readonly hidden></textarea>
+      <div class="mlbody">
+        <div id="mlabForm"></div>
+        <div class="mlbtns"><button id="mlabReset" class="btn ghost small">Reset score</button><button id="mlabDefaults" class="btn ghost small">Defaults</button><button id="mlabCopy" class="btn ghost small">Copy settings</button><button id="mlabExit" class="btn small">Exit lab</button></div>
+        <textarea id="mlabCopyNote" class="dbgcopy" readonly hidden></textarea>
+      </div>
+      <div id="mlabGrip" class="dkgrip mlgrip" role="separator" aria-orientation="horizontal" aria-label="Drag to resize the lab panel"></div>
     </div>
     <div id="hudTop">
       <div class="hp"><div class="meter big hpmeter"><i id="hpBar"></i><span id="hpTxt"></span></div></div>
@@ -239,6 +242,7 @@
     <button id="btnAce" class="ace-btn" hidden aria-label="Fire the Ace"><span class="ace-ic">♠</span><span id="aceName" class="ace-nm"></span></button>
     <canvas id="board3d"></canvas>
     <canvas id="board"></canvas>
+    <div id="bStick" class="x-stick bstick" hidden><i class="bdead"></i><i class="x-knob"></i></div>
     <div id="castFx" class="cast-fx"></div>
     <div id="banner" class="banner"></div>
     <div id="hurtFx" class="hurt-fx"></div>
@@ -496,6 +500,15 @@
       <div class="srow"><span>Finger rest<small>Seconds a dragging finger must rest before the magnet pulls (letting go pulls at once).</small></span><span class="srange"><input id="dbg_mvRest" type="range" min="0" max="2" step="0.05"><b id="dbg_mvRestV"></b></span></div>
       <div class="srow"><span>Drag reach<small>How far your mage goes for each bit your finger moves.</small></span><span class="srange"><input id="dbg_mvDrag" type="range" min="0.5" max="6" step="0.05"><b id="dbg_mvDragV"></b></span></div>
       <div class="srow"><span>Speed-up<small>Seconds to reach full speed from a stand. 0 is instant.</small></span><span class="srange"><input id="dbg_mvAccel" type="range" min="0" max="2" step="0.01"><b id="dbg_mvAccelV"></b></span></div>
+      <div class="srow"><span>Joystick<small>On: like the dungeon's Tap + hold: a quick tap walks to that tile; touch and slide (or hold) and a stick appears where your thumb landed: push the way to walk, further for faster. Off: your mage follows the point your finger marks (Drag reach).</small></span><label class="scheck"><input id="dbg_mvStick" type="checkbox"></label></div>
+      <div class="srow"><span>Show the stick<small>Draws the stick, its dead zone and the knob under your thumb.</small></span><label class="scheck"><input id="dbg_mvStickShow" type="checkbox"></label></div>
+      <div class="srow"><span>Stick reach<small>How far the knob travels, in screen pixels.</small></span><span class="srange"><input id="dbg_mvStickR" type="range" min="20" max="160" step="1"><b id="dbg_mvStickRV"></b></span></div>
+      <div class="srow"><span>Dead zone<small>The middle of the stick that does nothing, as a share of its reach.</small></span><span class="srange"><input id="dbg_mvDead" type="range" min="0" max="0.7" step="0.01"><b id="dbg_mvDeadV"></b></span></div>
+      <div class="srow"><span>Slowest<small>Your speed just past the dead zone, as a share of walking speed.</small></span><span class="srange"><input id="dbg_mvStickMin" type="range" min="0" max="1" step="0.01"><b id="dbg_mvStickMinV"></b></span></div>
+      <div class="srow"><span>Full speed at<small>How far you push, as a share of the reach, to walk at full speed.</small></span><span class="srange"><input id="dbg_mvStickFull" type="range" min="0.1" max="1" step="0.01"><b id="dbg_mvStickFullV"></b></span></div>
+      <div class="srow"><span>Curve<small>How speed rises between Slowest and full: 1 a straight line, below 1 quick to get going, above 1 slow then sudden.</small></span><span class="srange"><input id="dbg_mvCurve" type="range" min="0.2" max="4" step="0.05"><b id="dbg_mvCurveV"></b></span></div>
+      <div class="srow"><span>Tap time<small>A touch shorter than this (ms) that hardly moves is a tap: walk to that tile.</small></span><span class="srange"><input id="dbg_mvTapMs" type="range" min="50" max="600" step="10"><b id="dbg_mvTapMsV"></b></span></div>
+      <div class="srow"><span>Tap slop<small>How far (px) a finger can wander and still be a tap.</small></span><span class="srange"><input id="dbg_mvTapPx" type="range" min="2" max="40" step="1"><b id="dbg_mvTapPxV"></b></span></div>
       <div class="srow"><span>Show movement<small>Draws what the walking settings do on the battle board: each tile's magnet zone (cyan), the tile you are hit on (yellow), where your mage stands and where your finger points (white, with a ring that fills while your finger rests), and where the magnet is taking you (pink).</small></span><label class="scheck"><input id="dbg_mvShow" type="checkbox"></label></div>
       <h3>Post effects</h3>
       <div class="srow"><span>Depth of field<small>Blurs what is nearer or further than the focus, like a camera lens: the middle of the board in a battle, you in the dungeon. Draws the frame once more, so it costs a little on phones.</small></span><label class="scheck"><input id="dbgDof" type="checkbox"></label></div>

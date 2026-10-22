@@ -535,11 +535,18 @@ function xAreaLights(grp,A){
 function xLightF(L){ const f=EX.fogCur[L.floor]; return Math.max(f,Math.min(1,XLIT.dLightMem)*Math.min(1,f/.2)); }
 // a light on a wall between the camera and you shines into a room you see past, so it gives up its slot
 function xCamSide(L){ if(L.wall==null) return false; const dy=xcy(L.wall)-xcy(EX.pc); return dy>0&&dy<=9&&Math.abs(xcx(L.wall)-xcx(EX.pc))<=11; }
+/* The four torch lights follow the torches and crystals nearest you. A light stays with its torch
+   while that torch is still among the nearest; one that is no longer wanted fades out fully before it
+   moves to the next torch and fades in there, so lights never jump or blink as you walk about. */
 function xLightPool(T,dt){ const G=X3; if(!G.pool) return; EX.lpT=(EX.lpT||0)-dt;
-  if(EX.lpT<=0){ EX.lpT=.3; const near=(EX.glows||[]).filter(L=>L.g.visible&&EX.fogCur[L.floor]>.3&&!xCamSide(L)).map(L=>[L,Math.hypot(L.g.position.x-EX.px,L.g.position.z-EX.pz)]).filter(a=>a[1]<16).sort((a,b)=>a[1]-b[1]).slice(0,G.pool.length).map(a=>a[0]);
-    G.pool.forEach((P,i)=>{ const L=near[i]; P.userData.L=L||null; if(L){ const wp=new THREE.Vector3(); (L.flame||L.halo).getWorldPosition(wp); P.position.copy(wp); P.position.y=L.torch?2.1:1.1; P.color.set(L.torch?0xffa448:EX.area.glow); P.distance=(L.torch?11:8)*XLIT.torchRad; } }); }
-  for(const P of G.pool){ const L=P.userData.L, FL=XLIT.flick, tg=L?(L.torch?1.5*(.85+FL*(.1*Math.sin(T*11+L.ph)+.07*Math.sin(T*23.7+L.ph*3))):.9*(.85+FL*.15*Math.sin(T*1.7+L.ph)))*Math.min(1,xLightF(L)*1.3)*XLIT.torch:0;
-    P.intensity+=(tg-P.intensity)*Math.min(1,dt*8); } }
+  const place=(P,L)=>{ P.userData.L=L; P.userData.next=undefined; if(!L) return; const wp=new THREE.Vector3(); (L.flame||L.halo).getWorldPosition(wp); P.position.copy(wp); P.position.y=L.torch?2.1:1.1; P.color.set(L.torch?0xffa448:EX.area.glow); P.distance=(L.torch?11:8)*XLIT.torchRad; };
+  if(EX.lpT<=0){ EX.lpT=.3; const want=(EX.glows||[]).filter(L=>L.g.visible&&EX.fogCur[L.floor]>.3&&!xCamSide(L)).map(L=>[L,Math.hypot(L.g.position.x-EX.px,L.g.position.z-EX.pz)]).filter(a=>a[1]<16).sort((a,b)=>a[1]-b[1]).slice(0,G.pool.length).map(a=>a[0]);
+    const shown=new Set(G.pool.map(P=>P.userData.L).filter(L=>L&&want.includes(L))), todo=want.filter(L=>!shown.has(L));
+    for(const P of G.pool){ const L=P.userData.L; if(L&&shown.has(L)){ P.userData.next=undefined; continue; } P.userData.next=todo.shift()||null; } }
+  for(const P of G.pool){ const nx=P.userData.next;
+    if(nx!==undefined&&nx!==P.userData.L){ if(!P.userData.L||P.intensity<.03) place(P,nx); }   // the old light is out: move to the new one
+    const L=P.userData.L, leaving=nx!==undefined&&nx!==L, FL=XLIT.flick, tg=L&&!leaving?(L.torch?1.5*(.85+FL*(.1*Math.sin(T*11+L.ph)+.07*Math.sin(T*23.7+L.ph*3))):.9*(.85+FL*.15*Math.sin(T*1.7+L.ph)))*Math.min(1,xLightF(L)*1.3)*XLIT.torch:0;
+    P.intensity+=(tg-P.intensity)*Math.min(1,dt*(leaving?8:5)); } }
 /* ---------------- juice: sparks, dust, coins, flashes ----------------
    Small, short-lived effects: sparkles when you pick something up, dust puffs as you walk, coins
    that fly up to your gold, a flash as a fight begins, and the camera shake of a sprung trap. */

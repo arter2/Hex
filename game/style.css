@@ -1469,3 +1469,16 @@ body.wide .labside{align-self:start; position:sticky; top:0;}
 .bstick>i{position:absolute; left:50%; top:50%;}
 .bstick .bdead{border-radius:50%; border:1px dashed rgba(255,255,255,.35); transform:translate(-50%,-50%);}
 .bstick .x-knob{margin:-24px 0 0 -24px;}
+/* Show movement's speed graph (battle.js mvGraph) */
+.mvgraph{position:absolute; right:8px; top:96px; width:260px; height:96px; z-index:7; pointer-events:none; border-radius:8px; border:1px solid rgba(127,212,255,.3);}
+.mvgraph[hidden]{display:none;}
+/* setting names: hold for a tooltip, double-tap to A/B (look.js xRowTools) */
+.srow>span:first-child, .mlrow>span{-webkit-user-select:none; user-select:none; -webkit-touch-callout:none;}
+.rowtip{position:fixed; z-index:10000; max-width:min(320px,calc(100vw - 16px)); background:#0d0f12f5; color:#e8eef8; border:1px solid #ffe06699; border-radius:8px; padding:8px 10px; font:500 12px/1.4 system-ui,sans-serif; box-shadow:0 6px 24px rgba(0,0,0,.6); pointer-events:none;}
+.abv{font-style:normal; color:#ffe066; font-size:.9em; white-space:nowrap;}
+@keyframes abflash{0%{background:rgba(255,224,102,.35);} 100%{background:transparent;}}
+.abflash{animation:abflash .45s ease-out;}
+.mlprof{display:flex; flex-wrap:wrap; gap:6px; margin:2px 0 6px;}
+.mlprof .chip.dirty::after{content:' •'; color:#ff9a3a;}
+.mlprofbar{display:flex; gap:6px; align-items:center; margin-bottom:4px;}
+.mlprofbar input{flex:1; min-width:0; background:#05070a; color:#e8eef8; border:1px solid #3a4656; border-radius:6px; padding:6px 8px; font-size:13px;}

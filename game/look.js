@@ -301,7 +301,7 @@ function xBindSliders(){ xFineSliders(document.getElementById('debug')); for(con
     const show=()=>{ if(dec==null) el.checked=!!O[k]; else { el.value=O[k]; if(out) out.textContent=(+O[k]).toFixed(dec); } };
     show(); el.oninput=el.onchange=()=>{ O[k]=dec==null?el.checked:+el.value; show(); try{ localStorage.setItem(key,dec==null?(O[k]?'1':'0'):String(O[k])); }catch(e){} xDbgApply(what); }; }
   const box=document.getElementById('debug'); if(!box||xBindSliders.done) return; xBindSliders.done=1;
-  xDbgPanes();
+  xDbgPanes(); xRowTools(box,'.srow',row=>{ const s=row.querySelector('small'); return s?s.textContent:''; });
   document.getElementById('dbgClose').onclick=xDbgClose; xDbgGrip();
   { const pz=document.getElementById('dbgPause'); if(pz){ pz.checked=DBG.pause; pz.onchange=()=>{ DBG.pause=pz.checked; document.body.classList.toggle('dbgPaused',DBG.pause); }; } }
   // while a slider is dragged the menu fades away but for that slider's row, so the whole field of play shows
@@ -349,6 +349,40 @@ function xFineSliders(root){ if(!root||root.dataset.fine) return; root.dataset.f
     if(!S.moved&&e.type==='pointerup'){ const r=box(el), [x]=XY(e); set(el,+el.min+(x-r.left)/r.width*(el.max-el.min)); }
     el.dispatchEvent(new Event('change',{bubbles:true})); S=null; if(badge) badge.hidden=true; };
   root.addEventListener('pointerup',end); root.addEventListener('pointercancel',end); }
+/* Setting names in the debug menu and the Movement lab: press and hold one for what it does; double-tap one to
+   swap the setting back to the value it had before you last moved it, and again to swap forward (an A/B test;
+   the other value shows beside the name, ⇄). A switch just flips. The other values last until the page reloads. */
+const XAB={};   // a slider's other value, by its id (debug menu) or data-k (lab)
+const xABKey=el=>el&&(el.dataset.k||el.id);
+function xABMark(el){ const k=xABKey(el), row=el&&el.closest('.srow,.mlrow'), lab=row&&row.firstElementChild; if(!lab) return;
+  let i=lab.querySelector('.abv'); if(XAB[k]==null){ if(i) i.remove(); return; }
+  if(!i){ i=document.createElement('i'); i.className='abv'; const sm=lab.querySelector('small'); sm?lab.insertBefore(i,sm):lab.appendChild(i); }
+  const q=+el.dataset.q||xStepQ(el.getAttribute('step')||'1'); i.textContent=' ⇄ '+(+XAB[k]).toFixed(Math.max(0,-Math.round(Math.log10(q)))); }
+function xABFlash(row){ row.classList.remove('abflash'); void row.offsetWidth; row.classList.add('abflash'); }
+function xABSwap(row){ const r=row.querySelector('input[type=range]'), c=row.querySelector('input[type=checkbox]'), chip=row.querySelector('[data-tog]');
+  if(r){ const k=xABKey(r); if(XAB[k]==null){ if(typeof tip==='function') tip('Move it first: then a double-tap swaps between the two values'); return; }
+    const cur=+r.value; r.dataset.abbing='1'; r.value=XAB[k]; r.dispatchEvent(new Event('input',{bubbles:true})); r.dispatchEvent(new Event('change',{bubbles:true})); delete r.dataset.abbing;
+    XAB[k]=cur; if(r.isConnected){ xABMark(r); xABFlash(row); } }
+  else if(c){ c.checked=!c.checked; c.dispatchEvent(new Event('change',{bubbles:true})); xABFlash(row); }
+  else if(chip) chip.click(); }
+function xRowTools(root,rowSel,tipOf){ if(!root||root.dataset.rowtools) return; root.dataset.rowtools='1';
+  // a slider's value when you take hold of it becomes its other value once you let go somewhere new
+  root.addEventListener('pointerdown',e=>{ const el=e.target; if(el instanceof HTMLInputElement&&el.type==='range') el.dataset.v0=el.value; },true);
+  root.addEventListener('change',e=>{ const el=e.target; if(!(el instanceof HTMLInputElement)||el.type!=='range') return;
+    if(el.dataset.v0!=null&&!el.dataset.abbing&&Math.abs(+el.dataset.v0-+el.value)>1e-9){ XAB[xABKey(el)]=+el.dataset.v0; xABMark(el); } delete el.dataset.v0; },true);
+  let hold=null, last={row:null,t:0}, tipEl=null;
+  const hideTip=()=>{ if(tipEl){ tipEl.remove(); tipEl=null; } };
+  root.addEventListener('pointerdown',e=>{ hideTip(); const lab=e.target.closest&&e.target.closest(rowSel+' > span:first-child'); if(!lab||!root.contains(lab)) return; const row=lab.parentElement;
+    hold={row,x:e.clientX,y:e.clientY,tipped:false,t:setTimeout(()=>{ const txt=tipOf(row); if(!txt||!hold) return; hold.tipped=true;
+      tipEl=document.createElement('div'); tipEl.className='rowtip'; tipEl.textContent=txt; document.body.appendChild(tipEl);
+      const r=lab.getBoundingClientRect(), h=tipEl.offsetHeight, w=tipEl.offsetWidth;
+      tipEl.style.left=Math.max(8,Math.min(innerWidth-w-8,r.left))+'px'; tipEl.style.top=(r.bottom+8+h>innerHeight?r.top-h-8:r.bottom+8)+'px'; if(navigator.vibrate) navigator.vibrate(8); },450)}; });
+  root.addEventListener('pointermove',e=>{ if(hold&&Math.hypot(e.clientX-hold.x,e.clientY-hold.y)>10){ clearTimeout(hold.t); hold=null; } });
+  root.addEventListener('pointerup',()=>{ if(!hold) return; clearTimeout(hold.t); const h=hold; hold=null; if(h.tipped) return;
+    const now=performance.now(); if(last.row===h.row&&now-last.t<350){ last={row:null,t:0}; xABSwap(h.row); } else last={row:h.row,t:now}; });
+  root.addEventListener('pointercancel',()=>{ if(hold){ clearTimeout(hold.t); hold=null; } });
+  root.addEventListener('contextmenu',e=>{ if(e.target.closest&&e.target.closest(rowSel)) e.preventDefault(); });
+  addEventListener('pointerdown',e=>{ if(tipEl&&!root.contains(e.target)) hideTip(); },true); }
 /* Copy settings: every setting in the menu that differs from its default goes to the clipboard, as a
    list and as JSON, ready to paste into a message so they can become the new defaults. The text also shows
    under the buttons, selected, in case the browser won't let the page copy. */
@@ -398,7 +432,7 @@ function xDbgGrip(){ const grip=document.getElementById('dbgGrip'), pan=grip&&gr
     if(d.moved) keep(pan.offsetHeight);
     else if(e.type==='pointerup'){ pan.style.transition='height .2s'; keep(set(d.s0>MIN+20?MIN:(saved>MIN+20?saved:def()))); setTimeout(()=>pan.style.transition='',250); } };
   grip.addEventListener('pointerup',end); grip.addEventListener('pointercancel',end); }
-function xDbgToggle(){ const b=document.getElementById('debug'); if(b.classList.contains('on')) xDbgClose(); else { b.classList.add('on'); } }
+function xDbgToggle(){ const b=document.getElementById('debug'); if(b.classList.contains('on')) xDbgClose(); else { xBindSliders(); b.classList.add('on'); } }   // opening shows each setting as it is now (the Movement lab may have changed some)
 function xDbgClose(){ document.getElementById('debug').classList.remove('on'); }
 if(typeof document!=='undefined'){ if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',xBindSliders); else xBindSliders(); }
 // the frame-rate readout (debug menu): frames a second and the slowest frame of the last second

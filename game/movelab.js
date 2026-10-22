@@ -45,21 +45,55 @@ const MLAB_ROWS=[
     ['mvRest','Finger rest (s)',0,2,.05,'mv']]],
   ['Momentum',[['mvMomentum','Momentum',0,0,0,'tog'],['mvMAccel','Speed-up (s)',0,1,.01,'mv'],['mvMBrake','Braking (s)',.02,1.5,.01,'mv'],['mvGrip','Turn grip',0,1,.01,'mv']]],
   ['Other',[['mvAccel','Speed-up, no momentum (s)',0,2,.01,'mv'],['mvDrag','Drag reach (follow finger)',.5,6,.05,'mv']]]];
-const mlabSet=(k,v)=>{ XLIT[k]=v; try{ localStorage.setItem('hexmancers-xl-'+k,typeof v==='boolean'?(v?'1':'0'):String(v)); }catch(e){} };
-function renderMlab(){ const f=$('#mlabForm'); f.innerHTML='';
+const mlabSet=(k,v)=>{ XLIT[k]=v; try{ localStorage.setItem('hexmancers-xl-'+k,typeof v==='boolean'?(v?'1':'0'):String(v)); }catch(e){} if(typeof mlabProfMark==='function') mlabProfMark(); };
+// what each lab setting does (press and hold its name); the walking settings take theirs from the debug menu
+const MLAB_TIPS={cols:'How many columns each side of the board has. The board is rebuilt when you let go.', rows:'How many rows the board has. The board is rebuilt when you let go.',
+  shape:'Hex tiles (the game\'s) or square ones (the lab only), to compare how walking feels.', turrets:'How many Crossbowmen stand at the back of the enemy side. They never move; each fires straight down its row.',
+  every:'Seconds between each Crossbowman\'s shots. Its attack bar fills as the shot comes.', shotSpd:'How fast their shots fly, in tiles a second.'};
+const mlabTip=k=>MLAB_TIPS[k]||(()=>{ const el=document.getElementById('dbg_'+k), sm=el&&el.closest('.srow')&&el.closest('.srow').querySelector('small'); return sm?sm.textContent:''; })();
+function renderMlab(){ const f=$('#mlabForm'); f.innerHTML=''; mlabProfiles(f);
   for(const [head,rows] of MLAB_ROWS){ const h=document.createElement('h4'); h.textContent=head; f.appendChild(h);
-    if(head==='Board'){ const r=document.createElement('div'); r.className='mlrow'; r.innerHTML='<span>Shape</span><div class="chips"><button class="chip" data-sq="0" style="--c:#8fe4ff">⬡ Hex</button><button class="chip" data-sq="1" style="--c:#8fe4ff">◻ Square</button></div>';
+    if(head==='Board'){ const r=document.createElement('div'); r.className='mlrow'; r.dataset.tip=mlabTip('shape'); r.innerHTML='<span>Shape</span><div class="chips"><button class="chip" data-sq="0" style="--c:#8fe4ff">⬡ Hex</button><button class="chip" data-sq="1" style="--c:#8fe4ff">◻ Square</button></div>';
       r.querySelectorAll('[data-sq]').forEach(b=>{ b.classList.toggle('on',+b.dataset.sq===+MLAB.square); b.onclick=()=>{ MLAB.square=b.dataset.sq==='1'; mlabKeep(); renderMlab(); mlabStart(); }; }); f.appendChild(r); }
-    for(const [k,label,mn,mx,st,what] of rows){ const r=document.createElement('div'); r.className='mlrow';
-      if(what==='tog'){ r.innerHTML='<span>'+label+'</span><div class="chips"><button class="chip" style="--c:#ff6ad5">'+(XLIT[k]?'On':'Off')+'</button></div>';
+    for(const [k,label,mn,mx,st,what] of rows){ const r=document.createElement('div'); r.className='mlrow'; r.dataset.k=k; r.dataset.tip=mlabTip(k);
+      if(what==='tog'){ r.innerHTML='<span>'+label+'</span><div class="chips"><button class="chip" data-tog="1" style="--c:#ff6ad5">'+(XLIT[k]?'On':'Off')+'</button></div>';
         const c=r.querySelector('button'); c.classList.toggle('on',!!XLIT[k]); c.onclick=()=>{ mlabSet(k,!XLIT[k]); renderMlab(); }; f.appendChild(r); continue; }
       const mv=what==='mv', val=mv?XLIT[k]:MLAB[k], dec=st<.1?2:st<1?1:0;
-      r.innerHTML=`<span>${label}</span><input type="range" min="${mn}" max="${mx}" step="any" data-q="${xStepQ(st)}" value="${val}"><b>${(+val).toFixed(dec)}</b>`;
+      r.innerHTML=`<span>${label}</span><input type="range" min="${mn}" max="${mx}" step="any" data-q="${xStepQ(st)}" data-k="${k}" value="${val}"><b>${(+val).toFixed(dec)}</b>`;
       const inp=r.querySelector('input'), out=r.querySelector('b');
-      inp.oninput=()=>{ const v=+inp.value; out.textContent=v.toFixed(dec); if(mv){ mlabSet(k,v); mlabCurve(); } else { MLAB[k]=v; mlabKeep(); } };
+      inp.oninput=()=>{ const v=+inp.value; out.textContent=v.toFixed(dec); if(mv){ mlabSet(k,v); mlabCurve(); } else { MLAB[k]=v; mlabKeep(); } mlabProfMark(); };
       if(what==='board') inp.onchange=()=>mlabStart();   // the board is rebuilt once you let go of the slider
-      f.appendChild(r); }
+      f.appendChild(r); xABMark(inp); }
     if(head==='Joystick'){ const c=document.createElement('canvas'); c.id='mlabCurve'; c.width=300; c.height=90; f.appendChild(c); mlabCurve(); } } }
+/* Profiles: name and keep a whole setup (every walking setting and the lab's board and Crossbowmen) to switch
+   between tests. Tap a profile to load it; a dot marks the loaded one once you change something. Kept in this
+   browser. */
+const MLAB_PKEY='hexmancers-mlab-profiles', MLAB_PCUR='hexmancers-mlab-profile';
+const mlabProfs=()=>{ try{ return JSON.parse(localStorage.getItem(MLAB_PKEY))||{}; }catch(e){ return {}; } };
+const mlabProfsKeep=P=>{ try{ localStorage.setItem(MLAB_PKEY,JSON.stringify(P)); }catch(e){} };
+let mlabCur=(()=>{ try{ return localStorage.getItem(MLAB_PCUR)||''; }catch(e){ return ''; } })();
+const mlabSetCur=n=>{ mlabCur=n; try{ localStorage.setItem(MLAB_PCUR,n); }catch(e){} };
+function mlabSnap(){ const mv={}; for(const k in MV_DEF) mv[k]=XLIT[k]; return {mv, lab:Object.assign({},MLAB)}; }
+const mlabSame=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
+function mlabLoad(n){ const P=mlabProfs()[n]; if(!P) return; const was=Object.assign({},MLAB);
+  for(const k in MV_DEF) if(P.mv&&k in P.mv) mlabSet(k,P.mv[k]);
+  Object.assign(MLAB,MLAB_DEF,P.lab||{}); mlabKeep(); mlabSetCur(n); renderMlab();
+  if(['cols','rows','square','turrets'].some(k=>was[k]!==MLAB[k])) mlabStart(); }
+function mlabProfMark(){ const b=document.querySelector('#mlabForm .mlprof .chip.on'); if(!b) return; const P=mlabProfs()[mlabCur]; b.classList.toggle('dirty',!!P&&!mlabSame(P,mlabSnap())); }
+function mlabProfiles(f){ const P=mlabProfs(), names=Object.keys(P);
+  const h=document.createElement('h4'); h.textContent='Profiles'; f.appendChild(h);
+  const box=document.createElement('div'); box.className='mlprof';
+  box.innerHTML=(names.length?names.map(n=>`<button class="chip${n===mlabCur?' on':''}" data-p="${n.replace(/"/g,'&quot;')}" style="--c:#ffe066"></button>`).join(''):'<span class="dim">No profiles yet: name this setup and save it.</span>');
+  box.querySelectorAll('[data-p]').forEach(b=>{ b.textContent=b.dataset.p; b.onclick=()=>mlabLoad(b.dataset.p); });
+  f.appendChild(box);
+  const bar=document.createElement('div'); bar.className='mlprofbar';
+  bar.innerHTML='<input id="mlabPName" type="text" maxlength="24" placeholder="Name this setup"><button class="btn small" data-a="save">Save</button><button class="btn ghost small" data-a="del">Delete</button>';
+  const name=bar.querySelector('input'); name.value=mlabCur;
+  bar.querySelector('[data-a=save]').onclick=()=>{ const n=(name.value.trim()||mlabCur||'Profile '+(names.length+1)); const Q=mlabProfs(); Q[n]=mlabSnap(); mlabProfsKeep(Q); mlabSetCur(n); renderMlab(); tip&&tip('Saved “'+n+'”'); };
+  const del=bar.querySelector('[data-a=del]'); del.disabled=!P[mlabCur];
+  del.onclick=()=>{ if(!del.dataset.armed){ del.dataset.armed='1'; del.textContent='Tap to delete “'+mlabCur+'”'; setTimeout(()=>{ if(del.isConnected){ delete del.dataset.armed; del.textContent='Delete'; } },2500); return; }
+    const Q=mlabProfs(); delete Q[mlabCur]; mlabProfsKeep(Q); mlabSetCur(''); renderMlab(); };
+  f.appendChild(bar); mlabProfMark(); }
 /* The joystick's speed against how far you push, drawn under its settings: grey, the dead zone; the line,
    your share of walking speed from the middle of the stick (left) to its rim (right). */
 function mlabCurve(){ const c=document.getElementById('mlabCurve'); if(!c) return; const g=c.getContext('2d'), W=c.width, H=c.height, L=28, T=8, w=W-L-8, h=H-T-18;
@@ -85,7 +119,7 @@ addEventListener('resize',mlabPlace);
 function mlabDefaults(){ Object.assign(MLAB,MLAB_DEF); mlabKeep(); for(const k in MV_DEF){ XLIT[k]=MV_DEF[k]; try{ localStorage.removeItem('hexmancers-xl-'+k); }catch(e){} } renderMlab(); mlabStart(); }
 
 $('#mmMove').onclick=()=>mlabStart();
-xFineSliders($('#mlabPanel')); mlabGrip();
+xFineSliders($('#mlabPanel')); mlabGrip(); xRowTools($('#mlabPanel'),'.mlrow',row=>row.dataset.tip||'');
 $('#mlabBtn').onclick=()=>{ const P=$('#mlabPanel'); P.classList.toggle('on'); if(P.classList.contains('on')) renderMlab(); };
 $('#mlabHide').onclick=()=>$('#mlabPanel').classList.remove('on');
 $('#mlabReset').onclick=()=>{ MLAB_HITS=0; MLAB_SHOTS=0; mlabHud(); };

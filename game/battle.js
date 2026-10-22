@@ -1173,7 +1173,9 @@ function freeTick(p,rdt,haste){
     const hx=x-p.fx, hz=z-p.fz, hl=Math.hypot(hx,hz); p.walkDist=(p.walkDist||0)+hl; if(!still) p.lastDir=[hx/hl,hz/hl];
     p.fx=x; p.fz=z; p.fmov=true; budget-=m;
     if(n!==p.tile){ p.tile.occ=null; p.tile=n; n.occ=p; p.fTile=n; } }
-  if(rdt>0) p.lastSpd=Math.hypot(p.fx-x0,p.fz-z0)/rdt; }
+  if(rdt>0) p.lastSpd=Math.hypot(p.fx-x0,p.fz-z0)/rdt;
+  { const d=p.lastDir, full=tps*sp/((icy(p.tile)?2.2:1)*(p.slow||1))*(d?evenK(p.fx,p.fz,d[0],d[1]):1);
+    mvNote(p,{ph:p.fmov?(still?'magnet':'glide'):'idle', f:full>0?p.lastSpd/full:0, v:p.lastSpd, lat:0, lag:0, walled:false, ux:d?d[0]:0, uz:d?d[1]:0, tx:0, tz:0, momo:false},rdt); } }
 /* Momentum (mvMomentum): your mage has a velocity (p.vx, p.vz) that the input steers rather than sets. It
    speeds up to what your push asks for in mvMAccel seconds, brakes from full speed in mvMBrake seconds, and
    turns toward a new way at a rate set by mvGrip (1 turns at once; lower keeps some of the old way, a hard
@@ -1215,6 +1217,7 @@ function momentumTick(p,rdt,haste,sp){
   const ts=Math.hypot(tx,tz), g=MV('mvGrip');
   if(v<1e-4) v=0;
   let ux=v?vx/v:(ts?tx/ts:0), uz=v?vz/v:(ts?tz/ts:0);
+  const v0=v, ux0=ux, uz0=uz, dot0=ts>1e-6?ux*tx/ts+uz*tz/ts:1;
   if(ts>1e-6){ const wx=tx/ts, wz=tz/ts, dot=ux*wx+uz*wz;
     if(g>=.999||v===0){ ux=wx; uz=wz; v=v+clamp(ts-v,-Bk*rdt,A*rdt); }
     else if(dot<-.3){ v=Math.max(0,v-Bk*rdt); if(v===0){ ux=wx; uz=wz; } }   // a hard turn back: brake first
@@ -1230,7 +1233,21 @@ function momentumTick(p,rdt,haste,sp){
   p.vx=ux*v; p.vz=uz*v; p.fmov=moved>1e-5;
   if(p.fmov&&!still) p.lastDir=[rx/moved,rz/moved];
   { const s=v>1e-4?v/(2*Bk):0; p.coast=[p.fx+p.vx*s,p.fz+p.vz*s]; }   // for Show movement
+  // for Show movement's gizmos: which part of the move you are in, how fast against full push, how hard you turn
+  { const k=p.free&&p.free.k!=null?p.free.k:1, full=!still&&ts>1e-6&&k>0?ts/k:top*evenK(p.fx,p.fz,v?ux:1,v?uz:0);
+    let ph; if(still) ph=v>.05?'coast':'idle';
+    else if(ts>1e-6&&dot0<-.3&&g<.999&&v0>0&&v<v0) ph='brake';
+    else if(v<ts*.995&&v>=v0-1e-6&&ts>1e-6) ph='accel';
+    else if(v<v0-1e-6) ph='brake';
+    else ph=v>.05?(k>=.999?'top':'cruise'):'idle';
+    const turned=Math.acos(clamp(ux0*ux+uz0*uz,-1,1)), lag=ts>1e-6&&v>.05?Math.acos(clamp(ux*tx/ts+uz*tz/ts,-1,1))*180/Math.PI:0;
+    const side=Math.sign(ux*(tz||0)-uz*(tx||0))||0;
+    mvNote(p,{ph, f:full>0?v/full:0, v, A, Bk, lat:v0>.05&&rdt>0?v*turned/rdt:0, lag, side, walled:p.walled, ux, uz, tx:ts>1e-6?tx/ts:0, tz:ts>1e-6?tz/ts:0, momo:true}, rdt); }
   if(!still&&!p.free&&!p.path.length) p.snap=null; }
+// keeps Show movement's notes: the latest (p.mvDiag, with how long you have been in this part of the move) and a
+// few seconds of history for its speed graph
+function mvNote(p,d,rdt){ const o=p.mvDiag; d.phT=o&&o.ph===d.ph?o.phT+rdt:0; p.mvDiag=d;
+  (p.mvHist||(p.mvHist=[])).push([Math.min(1.6,d.f),d.ph,d.walled]); if(p.mvHist.length>150) p.mvHist.shift(); }
 // move your mage by (mx, mz) in short hops, stopping at (or sliding along) what is in the way; returns the move made
 function freeMoveBy(p,mx,mz,sp){ const L=Math.hypot(mx,mz); if(L<1e-7) return [0,0];
   const ok=(x,z)=>standAt(p,x,z);
@@ -1278,7 +1295,51 @@ function mvOverlay(ctx,b){ const p=b.player; if(!p||p.fx==null) return;
     const k=MV('mvRest')>0?Math.min(1,(b.time-p.free.t)/MV('mvRest')):1; if(!p.snap&&k<1){ ctx.strokeStyle='#ffffff'; ctx.lineWidth=3; ctx.beginPath(); ctx.arc(mx,my,13,-Math.PI/2,-Math.PI/2+k*TAU); ctx.stroke(); } }
   if(MV('mvMomentum')&&p.coast&&p.fmov){ const [cx,cy]=proj(p.coast[0],0,p.coast[1]); ctx.strokeStyle='rgba(255,106,213,.8)'; ctx.lineWidth=1.5; ctx.setLineDash([3,3]); ctx.beginPath(); ctx.moveTo(mx,my); ctx.lineTo(cx,cy); ctx.stroke(); ctx.setLineDash([]); ctx.beginPath(); ctx.arc(cx,cy,6,0,TAU); ctx.stroke(); }   // momentum: where you would stop if you let go now
   if(p.snap){ const [sx,sy]=proj(p.snap.x,0,p.snap.z); ctx.strokeStyle='#ff6ad5'; ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(mx,my); ctx.lineTo(sx,sy); ctx.stroke(); dot(sx,sy,4.5,'#ff6ad5'); }
+  mvGizmos(ctx,p,mx,my);
   dot(mx,my,4,'#ffffff'); ctx.restore(); }
+/* Show movement's gizmos, at your mage. The ring fills with your speed against a full push and takes the colour
+   of the part of the move you are in (MV_COL); a thicker rim means you have hit top speed. The arrow is your
+   velocity, the thin white line the way the stick points, and the line square to the arrow is the turn (normal)
+   force: cyan while the turn keeps up, red while grip holds it back (you are moving more than 8° off the stick).
+   A red cross: a wall or the edge is stopping you. */
+const MV_COL={idle:'#6b7785', accel:'#ffd23f', top:'#39ff8a', cruise:'#5fd4ff', brake:'#ff5d6c', coast:'#ff9a3a', glide:'#bfeaff', magnet:'#ff6ad5'};
+const MV_NAME={idle:'Standing', accel:'Speeding up', top:'Top speed', cruise:'Cruising', brake:'Braking', coast:'Coasting', glide:'Gliding', magnet:'Magnet'};
+function mvGizmos(ctx,p,mx,my){ const d=p.mvDiag; if(!d) return; const c=MV_COL[d.ph]||'#fff', f=Math.min(1,d.f), R=17;
+  const at=(dx,dz,len)=>{ const [x,y]=proj(p.fx+dx*.4,0,p.fz+dz*.4), l=Math.hypot(x-mx,y-my)||1; return [mx+(x-mx)/l*len,my+(y-my)/l*len]; };   // a board direction, drawn len px long on screen
+  ctx.lineCap='round';
+  ctx.strokeStyle='rgba(0,0,0,.45)'; ctx.lineWidth=5; ctx.beginPath(); ctx.arc(mx,my,R,0,TAU); ctx.stroke();
+  if(f>0){ ctx.strokeStyle=c; ctx.lineWidth=d.ph==='top'?6:4; ctx.beginPath(); ctx.arc(mx,my,R,-Math.PI/2,-Math.PI/2+f*TAU); ctx.stroke(); }
+  if(d.tx||d.tz){ const [x,y]=at(d.tx,d.tz,46); ctx.strokeStyle='rgba(255,255,255,.75)'; ctx.lineWidth=1.5; ctx.beginPath(); ctx.moveTo(mx,my); ctx.lineTo(x,y); ctx.stroke(); }
+  if(d.f>.02){ const L=R+8+30*Math.min(1.4,d.f), [x,y]=at(d.ux,d.uz,L), a=Math.atan2(y-my,x-mx);
+    ctx.strokeStyle=c; ctx.lineWidth=3; ctx.beginPath(); ctx.moveTo(mx+Math.cos(a)*R,my+Math.sin(a)*R); ctx.lineTo(x,y); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x,y); ctx.lineTo(x-Math.cos(a-.5)*8,y-Math.sin(a-.5)*8); ctx.moveTo(x,y); ctx.lineTo(x-Math.cos(a+.5)*8,y-Math.sin(a+.5)*8); ctx.stroke();
+    // the normal: square to the arrow, toward the way you are turning, as long as the turn is hard
+    if(d.momo&&d.lat>.05){ const n=Math.min(42,8+34*d.lat/Math.max(1e-3,d.A)), s=d.side||1, [nx,ny]=at(-d.uz*s,d.ux*s,n), mx2=(mx+x)/2, my2=(my+y)/2;
+      ctx.strokeStyle=d.lag>8?'#ff5d6c':'#5fe8ff'; ctx.lineWidth=2.5; ctx.beginPath(); ctx.moveTo(mx2,my2); ctx.lineTo(mx2+(nx-mx),my2+(ny-my)); ctx.stroke(); } }
+  if(d.walled){ ctx.strokeStyle='#ff5d6c'; ctx.lineWidth=3; ctx.beginPath(); ctx.moveTo(mx-7,my-R-14); ctx.lineTo(mx+7,my-R); ctx.moveTo(mx+7,my-R-14); ctx.lineTo(mx-7,my-R); ctx.stroke(); }
+  ctx.font='700 11px system-ui,sans-serif'; ctx.textAlign='center'; ctx.lineWidth=3; ctx.strokeStyle='rgba(0,0,0,.75)';
+  const t=(MV_NAME[d.ph]||d.ph)+' '+Math.round(d.f*100)+'%'; ctx.strokeText(t,mx,my+R+15); ctx.fillStyle=c; ctx.fillText(t,mx,my+R+15); }
+/* Show movement's speed graph (top left of the battle): the last 2.5 s of your speed against a full push, coloured by
+   the part of the move (MV_COL), with a line at top speed; and the part you are in now, how long you have been in
+   it against its setting, and the turn. */
+function mvGraph(p){ const c=document.getElementById('mvGraph'); if(!c) return; const on=!!(XLIT.mvShow&&p&&p.mvHist); c.hidden=!on; if(!on) return;
+  const g=c.getContext('2d'), W=c.width, H=c.height, top=16, gh=H-top-28, y=f=>top+gh-Math.min(1.25,f)/1.25*gh, h=p.mvHist, d=p.mvDiag||{};
+  g.clearRect(0,0,W,H); g.fillStyle='rgba(8,11,15,.82)'; g.fillRect(0,0,W,H);
+  g.strokeStyle='rgba(57,255,138,.45)'; g.setLineDash([4,3]); g.beginPath(); g.moveTo(0,y(1)); g.lineTo(W,y(1)); g.stroke(); g.setLineDash([]);
+  g.fillStyle='rgba(57,255,138,.7)'; g.font='9px system-ui,sans-serif'; g.textAlign='right'; g.fillText('top',W-3,y(1)-2);
+  const dx=W/150; for(let i=1;i<h.length;i++){ const x0=(150-h.length+i-1)*dx; g.strokeStyle=MV_COL[h[i][1]]||'#fff'; g.lineWidth=2; g.beginPath(); g.moveTo(x0,y(h[i-1][0])); g.lineTo(x0+dx,y(h[i][0])); g.stroke();
+    if(h[i][2]){ g.fillStyle='rgba(255,93,108,.5)'; g.fillRect(x0,top,dx,gh); } }
+  const col=MV_COL[d.ph]||'#fff'; g.textAlign='left'; g.font='700 11px system-ui,sans-serif'; g.fillStyle=col;
+  g.fillText((MV_NAME[d.ph]||'—')+'  '+Math.round((d.f||0)*100)+'%',4,12);
+  let info=''; const s=x=>x.toFixed(2)+' s';
+  if(d.ph==='accel') info='speed-up '+s(d.phT)+' of '+s(MV('mvMAccel'));
+  else if(d.ph==='top') info='at top for '+s(d.phT);
+  else if(d.ph==='brake'||d.ph==='coast') info=(d.ph==='coast'?'coast ':'braking ')+s(d.phT)+' · stop in '+s(d.Bk?d.v/d.Bk:0)+' of '+s(MV('mvMBrake'));
+  else if(d.ph==='cruise') info='part push · '+s(d.phT);
+  else if(d.ph==='magnet'||d.ph==='glide') info=(d.ph==='glide'?'tap / key glide · ':'magnet · ')+s(d.phT);
+  if(d.lag>1) info+='  ·  turn '+Math.round(d.lag)+'°'+(d.lag>8?' (grip)':'');
+  if(d.walled) info+='  ·  wall';
+  g.font='10px system-ui,sans-serif'; g.fillStyle='#d8e2ee'; g.fillText(info,4,H-8); }
 // canvas point -> board point (x,z), solved from proj() a few times over, starting near (wx,wz)
 function unprojGround(x,y,wx,wz){ for(let i=0;i<5;i++){ const [a,b]=proj(wx,0,wz), [a1,b1]=proj(wx+.5,0,wz), [a2,b2]=proj(wx,0,wz+.5);
     const j11=(a1-a)*2, j21=(b1-b)*2, j12=(a2-a)*2, j22=(b2-b)*2, det=j11*j22-j12*j21; if(Math.abs(det)<1e-9) break;
@@ -1604,6 +1665,7 @@ function render(){
     try{ floorLayer(dc,b,T,DEC.k,telMap,true,tl3); if(typeof atkBars==='function') atkBars(dc,b,T); } finally{ PJ.decal=false; View.iy=ISO_Y=viewIY(); } arenaTiles(tl3); }
   else { floorLayer(ctx,b,T,S,telMap,false,tl3); if(typeof atkBars==='function') atkBars(ctx,b,T); }
   if(XLIT.mvShow) mvOverlay(ctx,b);
+  mvGraph(b.player);
   const rocks=TILES.filter(t=>t.occ&&t.occ.kind==='rock').map(t=>t.occ);
   const dying=b.enemies.filter(e=>e.hp<=0&&e.deathT>0);
   const units=[b.player,...b.walls,...b.allies,...rocks,...alive(),...dying].sort((a,c)=>depthOf(a.tile)-depthOf(c.tile));

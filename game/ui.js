@@ -1115,7 +1115,7 @@ const held=new Set();
 const MOVE_ACTS=['left','right','up','down'];
 let moveHeld=[];
 function stepAct(a){ if(a==='left') stepDir(DIRS.W); else if(a==='right') stepDir(DIRS.E); else if(a==='up') stepVertical(true); else if(a==='down') stepVertical(false); }
-function heldWalk(){ if(!moveHeld.length||!B||B.phase!=='fight'||paused) return; const p=B.player; if(p.path.length||p.moveCd>0) return; stepAct(moveHeld[moveHeld.length-1]); }
+function heldWalk(){ if(!moveHeld.length||!B||B.phase!=='fight'||paused) return; const p=B.player; if(p.path.length||p.moveCd>0||(p.step&&p.step.t<p.step.dur*.7)) return; stepAct(moveHeld[moveHeld.length-1]); }
 addEventListener('blur',()=>{ held.clear(); moveHeld=[]; });
 window.addEventListener('keydown',e=>{
   if(!B||!$('#scrBattle').classList.contains('on')) return; const k=e.key.toLowerCase();

@@ -175,7 +175,7 @@ function colorOf(card){ return card&&card.color?COLORS[card.color].c:'#e6f4ff'; 
 function openCustomScreen(){
   const b=B; if(!b||b.phase==='win'||b.phase==='lose') return;
   if(b.turn!=null) endTurn(); b.turn=(b.turn==null?0:b.turn+1);
-  b.phase='custom'; b.player.charging=false; b.player.path=[];
+  b.phase='custom'; b.player.charging=false; b.player.path=[]; if(b.player.step&&!b.player.step.half) b.player.step=null;
   b.justDrawn=new Set(openCustom(b.piles).map(c=>c.uid));
   if(typeof curseSlot==='function') curseSlot(b);   // a cursed idol's hex takes a slot (puzzles.js)
   b.hooks.onCustom&&b.hooks.onCustom();
@@ -965,7 +965,8 @@ function update(dt){
   for(const f of b.fx) f.t+=dt; b.fx=b.fx.filter(f=>f.t<f.life);
   for(const f of b.floaters){ f.t+=dt; f.y+=dt*1.2; } b.floaters=b.floaters.filter(f=>f.t<.9);
   const k=1-Math.exp(-dt*16);
-  for(const u of [b.player,...b.enemies,...b.allies]){ const g=u.goTo||u.tile; u.rx=u.rx==null?g.wx:u.rx+(g.wx-u.rx)*k; u.rz=u.rz==null?g.wz:u.rz+(g.wz-u.rz)*k; }   // goTo: a creature's run or dash
+  for(const u of [b.player,...b.enemies,...b.allies]){ const s=u.step; if(s&&u.rx!=null&&Math.hypot(u.rx-s.from.wx,u.rz-s.from.wz)<2.5){ const f=Math.min(1,s.t/s.dur); u.rx=s.from.wx+(s.to.wx-s.from.wx)*f; u.rz=s.from.wz+(s.to.wz-s.from.wz)*f; continue; }   // your glide (above)
+    const g=u.goTo||u.tile; u.rx=u.rx==null?g.wx:u.rx+(g.wx-u.rx)*k; u.rz=u.rz==null?g.wz:u.rz+(g.wz-u.rz)*k; }   // goTo: a creature's run or dash
   for(const e of b.enemies) if(e.hp<=0&&e.deathT>0) e.deathT-=dt;
   View.shake=(View.shake||0)*Math.exp(-dt*9);
   for(const q of b.parts){ q.t+=dt; q.vy-=(q.g==null?9:q.g)*dt; if(q.drag){ const d=Math.max(0,1-q.drag*dt); q.vx*=d; q.vz*=d; q.vy*=d; } if(q.spin) q.rot=(q.rot||0)+q.spin*dt; q.wx+=q.vx*dt; q.wz+=q.vz*dt; q.y=Math.max(0,q.y+q.vy*dt); } b.parts=b.parts.filter(q=>q.t<q.life);
@@ -997,7 +998,17 @@ function update(dt){
   if(p.charging) p.chargeT=Math.min(1.2,p.chargeT+rdt);
   if(B.soul&&B.soul.unisonT>0&&b.phase==='fight'){ B.soul.unisonT-=dt; if(B.soul.unisonT<=0){ floater('Unison ends',p.tile,COLORS[B.soul.card.color].c); B.hooks.onSoul&&B.hooks.onSoul(); } }
   p.rootT=Math.max(0,(p.rootT||0)-dt); p.hexT=Math.max(0,(p.hexT||0)-dt); for(const q of b.piles.queue) if(q.frozenT>0) q.frozenT-=dt;
-  if(p.path.length&&p.moveCd<=0&&p.rootT<=0){ const n=p.path[0]; if(n.side==='p'&&!n.occ&&!(n.holeT>0)){ p.tile.occ=null; p.tile=n; n.occ=p; p.path.shift(); p.moveCd=(haste?.08:.14)*(icy(n)?2.2:1)*(p.slow||1); } else p.path=[]; }
+  /* Walking glides: you slide from tile to tile at a steady speed, and a walk of several tiles is one
+     smooth run. Hits still go by whole tiles: you stand on the tile you are leaving until you are halfway,
+     then on the one you are entering. A tile taken from under you mid-step sends you back; being knocked,
+     pulled or pushed elsewhere ends the step. */
+  if(p.step){ const s=p.step; if(p.tile!==(s.half?s.to:s.from)) p.step=null; else { s.t+=rdt;
+      if(!s.half&&s.t>=s.dur/2){ if((s.to.occ&&s.to.occ!==p)||s.to.holeT>0){ p.step={from:s.to,to:s.from,t:s.dur-s.t,dur:s.dur,half:true}; p.path=[]; }
+        else { s.half=true; s.from.occ=null; p.tile=s.to; s.to.occ=p; } }
+      if(p.step&&p.step.t>=p.step.dur){ p.stepOver=p.step.t-p.step.dur; p.step=null; } } }
+  while(p.path.length&&p.path[0]===p.tile) p.path.shift();
+  if(!p.step&&p.path.length&&p.moveCd<=0&&p.rootT<=0){ const n=p.path[0]; if(n.side==='p'&&!n.occ&&!(n.holeT>0)&&neighbors(p.tile).includes(n)){ p.path.shift(); const dur=(haste?.08:.14)*(icy(n)?2.2:1)*(p.slow||1); p.step={from:p.tile,to:n,t:Math.min(p.stepOver||0,dur*.5),dur}; } else p.path=[]; }
+  p.stepOver=0;   // time left over from a step just ended carries into the next, so a run keeps an even pace
 
   // your shots and enemy shots travel tile by tile
   for(const s of b.shots){
@@ -1086,12 +1097,16 @@ function aimPattern(){ const q=B.piles.queue[0]; if(!q) return 'single'; const c
 function setAim(t){ const b=B; if(!b||b.phase!=='fight'||!t||t.side!=='e') return; b.aim=b.aim===t?null:t; }
 function cycleAim(){ const b=B; if(!b||b.phase!=='fight') return; const ts=alive().map(e=>e.tile).sort((a,c)=>a.r-c.r||a.q-c.q); if(!ts.length) return;
   b.aim=ts[(ts.indexOf(b.aim)+1)%ts.length]; }
-function moveTo(t){ const b=B; if(!b||b.phase!=='fight'||!t) return; const p=b.player; p.lane=null; if(t===p.tile){ p.path=[]; return; } const last=p.path[p.path.length-1]; if(last===t) return; p.path=pathTo(p.tile,t); }
-function stepDir(d){ const b=B; if(!b||b.phase!=='fight') return; const p=b.player, t=tileAt(p.tile.q+d[0],p.tile.r+d[1]); p.lane=null; if(t&&t.side==='p'&&!t.occ) p.path=[t]; }
+// where your next move starts: the tile your current step ends on
+const walkFrom=p=>p.step?p.step.to:p.tile;
+// heading back to the tile you are still leaving turns you round on the spot
+function walkBack(p,t){ const s=p.step; if(!s||s.half||t!==s.from) return false; p.step={from:s.to,to:s.from,t:s.dur-s.t,dur:s.dur,half:true}; p.path=[]; return true; }
+function moveTo(t){ const b=B; if(!b||b.phase!=='fight'||!t) return; const p=b.player, at=walkFrom(p); p.lane=null; if(walkBack(p,t)) return; if(t===at){ p.path=[]; return; } const last=p.path[p.path.length-1]; if(last===t) return; const pt=pathTo(at,t); p.path=pt.length||!p.step?pt:[]; }
+function stepDir(d){ const b=B; if(!b||b.phase!=='fight') return; const p=b.player, at=walkFrom(p), t=tileAt(at.q+d[0],at.r+d[1]); p.lane=null; if(t&&t.side==='p'&&!t.occ) p.path=[t]; else if(t&&p.step&&!p.step.half){ const u=tileAt(p.step.from.q+d[0],p.step.from.r+d[1]); if(u===p.step.from||(d[0]===p.step.from.q-p.step.to.q&&d[1]===p.step.from.r-p.step.to.r)) walkBack(p,p.step.from); } }
 // rows are offset by half a tile, so a step to the next row goes half a tile one way or the other:
 // keep to the column you started in (lane), so repeated steps run straight instead of wandering
-function stepVertical(up){ const p=B.player, ts=neighbors(p.tile).filter(t=>(up?t.r<p.tile.r:t.r>p.tile.r)&&t.side==='p'&&!t.occ&&!(t.holeT>0)); if(!ts.length) return;
-  if(p.lane==null) p.lane=p.tile.wx;
+function stepVertical(up){ const p=B.player, at=walkFrom(p), ts=neighbors(at).filter(t=>(up?t.r<at.r:t.r>at.r)&&t.side==='p'&&!t.occ&&!(t.holeT>0)); if(!ts.length) return;
+  if(p.lane==null) p.lane=at.wx;
   ts.sort((a,c)=>Math.abs(a.wx-p.lane)-Math.abs(c.wx-p.lane)||(a.wx-c.wx)); p.path=[ts[0]]; }
 function wandDown(){ const b=B; if(!b||b.phase!=='fight') return; b.player.charging=true; b.player.chargeT=0; }
 function wandUp(){ const b=B; if(!b) return; const p=b.player; if(!p.charging) return; p.charging=false; const ch=p.chargeT>=chargeNeed(p); p.chargeT=0; fireWand(ch); }
@@ -1530,7 +1545,7 @@ const DRAW={
   player(ctx,p,T,S){
     const foe=alive().sort((m,n)=>hexDist(p.tile,m.tile)-hexDist(p.tile,n.tile))[0];
     // the pose: attack just after a shot, cast after a card or while charging, a walk cycle while moving, else standing
-    const moving=Math.hypot((p.rx??p.tile.wx)-p.tile.wx,(p.rz??p.tile.wz)-p.tile.wz)>.04||p.path.length>0, since=B.time-(p.poseT??-9);
+    const moving=!!p.step||Math.hypot((p.rx??p.tile.wx)-p.tile.wx,(p.rz??p.tile.wz)-p.tile.wz)>.04||p.path.length>0, since=B.time-(p.poseT??-9);
     p.pose=since<.28?p.poseK:p.charging?'cast':moving?(Math.floor(T*7)%2?'walk':'idle'):'idle';
     if(B.soul&&B.soul.unisonT>0){ const [ux,uy]=proj(posOf(p)[0],0,posOf(p)[1]), uc=COLORS[B.soul.card.color].c, k=.75+.25*Math.sin(T*8);
       ctx.save(); ctx.globalCompositeOperation='lighter'; ctx.strokeStyle=uc; ctx.lineWidth=3; ctx.globalAlpha=.8*k; ctx.beginPath(); ctx.ellipse(ux,uy,S*.75,S*.75*View.iy,0,0,TAU); ctx.stroke();

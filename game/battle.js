@@ -1101,6 +1101,14 @@ function cycleAim(){ const b=B; if(!b||b.phase!=='fight') return; const ts=alive
    halfway line. Nothing snaps you back to a tile's middle when you stop. A dragged finger or a held key
    sets a point to walk toward (p.free); a tapped tile or a quick key press walks a path of tiles
    (p.path) to the middle of the last one. p.fx/p.fz is where your mage is. */
+/* Where your mage may stand: on the board (inside the hexagon, or square, of the tile nearest the point, so
+   never off the grid's outer edge), on your side, on your own tile or a free neighbour. Returns that tile. */
+function onTile(t,x,z){ const C=tileCornerOffs(1); let sg=0;
+  for(let i=0;i<C.length;i++){ const [ax,az]=C[i], [bx,bz]=C[(i+1)%C.length], c=(bx-ax)*(z-t.wz-az)-(bz-az)*(x-t.wx-ax);
+    if(Math.abs(c)<1e-7) continue; const s=c>0?1:-1; if(!sg) sg=s; else if(s!==sg) return false; }
+  return true; }
+function standAt(p,x,z){ const n=nearestTile(x,z); if(!n||!onTile(n,x,z)) return null;
+  return n===p.tile||(n.side==='p'&&!n.occ&&!(n.holeT>0)&&neighbors(p.tile).includes(n))?n:null; }
 function nearestTile(x,z){ let best=null, bd=1e9; for(const t of TILES){ const d=(t.wx-x)**2+(t.wz-z)**2; if(d<bd){ bd=d; best=t; } } return best; }
 // the walking settings (debug menu › Battle › Battle movement, and the Movement lab), kept in look.js
 const MV_DEF={mvSpeed:1.2, mvSnap:1, mvSnapR:.46, mvSnapSpd:2.3, mvRest:.6, mvDrag:2.5, mvAccel:0, mvStick:true, mvStickShow:true, mvStickR:56, mvDead:.18, mvStickMin:.25, mvStickFull:.8, mvCurve:1, mvTapMs:200, mvTapPx:12, mvStickSpeed:5, mvEven:1, mvSnapTime:.12, mvSnapAhead:true, mvStride:.5, mvFaceWalk:true, mvMomentum:true, mvMAccel:.1, mvMBrake:.22, mvGrip:.7};
@@ -1109,7 +1117,7 @@ function freeTarget(x,z,key,k,raw){ const b=B; if(!b||b.phase!=='fight') return;
   const xs=P_TILES.map(t=>t.wx), zs=P_TILES.map(t=>t.wz), o=p.free;
   // kept on your half of the board, but for a joystick's (raw), which only gives the way to go: clamped, a push
   // into the border would turn into a slide along it
-  const f=raw?{x,z,key:!!key,k:k==null?1:k}:{x:Math.max(Math.min(...xs),Math.min(Math.max(...xs),x)), z:Math.max(Math.min(...zs),Math.min(Math.max(...zs),z)), key:!!key, k:k==null?1:k};   // k: the share of walking speed (a joystick pushed part way)
+  const f=raw?{x,z,key:!!key,k:k==null?1:k,raw:true}:{x:Math.max(Math.min(...xs),Math.min(Math.max(...xs),x)), z:Math.max(Math.min(...zs),Math.min(Math.max(...zs),z)), key:!!key, k:k==null?1:k};   // k: the share of walking speed (a joystick pushed part way)
   f.t=o&&Math.hypot(o.x-f.x,o.z-f.z)<.02?o.t:b.time;   // when the finger last moved
   p.free=f; p.path=[]; p.lane=null; }
 function freeEnd(){ if(B&&B.player) B.player.free=null; }
@@ -1119,7 +1127,14 @@ function freeTick(p,rdt,haste){
   while(p.path.length>1&&p.path[0]===p.tile) p.path.shift();   // once in a tile on the way, head for the next
   p.fmov=false; if(p.rootT>0||p.moveCd>0){ p.fv=0; p.vx=p.vz=0; return; }
   const sp=Math.min(...neighbors(p.tile).map(n=>Math.hypot(n.wx-p.tile.wx,n.wz-p.tile.wz)));
-  if(MV('mvMomentum')) return momentumTick(p,rdt,haste,sp);
+  /* Momentum is the joystick's alone: it starts when the stick steers (carrying on at the speed you were going)
+     and lasts through the coast after you let go, until a tap, a key or a dragged point takes over. */
+  if(MV('mvMomentum')){
+    if(p.free&&p.free.raw){ if(!p.momo){ p.momo=true; const s=p.lastSpd||0, d=p.lastDir; p.vx=d?d[0]*s:0; p.vz=d?d[1]*s:0; } }
+    else if(p.path.length||p.free) p.momo=false;
+    if(p.momo) return momentumTick(p,rdt,haste,sp); }
+  else p.momo=false;
+  const x0=p.fx, z0=p.fz; p.lastSpd=0;
   /* The magnet: once you stop (you let go, or your finger has rested a moment where your mage stands),
      you slide part of the way (mvSnap) into the middle of your tile, if you are within mvSnapR tiles of it. */
   const tag=p.free?p.free.t:-1;
@@ -1142,7 +1157,7 @@ function freeTick(p,rdt,haste){
     if(MV('mvSnapTime')>0&&p.snap){ const d=Math.hypot(p.snap.x-p.fx,p.snap.z-p.fz); budget=Math.min(budget,d<.01?d:d*(1-Math.exp(-rdt/MV('mvSnapTime')))); } }
   else { p.fv=MV('mvAccel')>0?Math.min(1,(p.fv||0)+rdt/MV('mvAccel')):1; budget*=p.fv*(p.free?p.free.k:1);   // speeding up from a stand; a joystick's push
     const go=p.free||(p.path.length?{x:p.path[0].wx,z:p.path[0].wz}:null); if(go) budget*=evenK(p.fx,p.fz,go.x-p.fx,go.z-p.fz); }
-  const ok=(x,z)=>{ const n=nearestTile(x,z); return n===p.tile||(n&&n.side==='p'&&!n.occ&&!(n.holeT>0)&&neighbors(p.tile).includes(n))?n:null; };
+  const ok=(x,z)=>standAt(p,x,z);
   for(let i=0;i<12&&budget>1e-6;i++){
     const go=still?p.snap:p.free||(p.path.length?{x:p.path[0].wx,z:p.path[0].wz}:null); if(!go) break;
     const dx=go.x-p.fx, dz=go.z-p.fz, d=Math.hypot(dx,dz);
@@ -1157,7 +1172,8 @@ function freeTick(p,rdt,haste){
     if(!n||Math.hypot(x-p.fx,z-p.fz)<1e-6){ if(!p.free) p.path=[]; break; }
     const hx=x-p.fx, hz=z-p.fz, hl=Math.hypot(hx,hz); p.walkDist=(p.walkDist||0)+hl; if(!still) p.lastDir=[hx/hl,hz/hl];
     p.fx=x; p.fz=z; p.fmov=true; budget-=m;
-    if(n!==p.tile){ p.tile.occ=null; p.tile=n; n.occ=p; p.fTile=n; } } }
+    if(n!==p.tile){ p.tile.occ=null; p.tile=n; n.occ=p; p.fTile=n; } }
+  if(rdt>0) p.lastSpd=Math.hypot(p.fx-x0,p.fz-z0)/rdt; }
 /* Momentum (mvMomentum): your mage has a velocity (p.vx, p.vz) that the input steers rather than sets. It
    speeds up to what your push asks for in mvMAccel seconds, brakes from full speed in mvMBrake seconds, and
    turns toward a new way at a rate set by mvGrip (1 turns at once; lower keeps some of the old way, a hard
@@ -1175,11 +1191,11 @@ function momentumTick(p,rdt,haste,sp){
   if(!still){ p.snap=null; if(!p.moving){ p.moving=true; p.moveFrom=p.tile; } }
   else { p.moving=false;
     if(!p.snap||p.snap.tag!==tag){   // where the slide will end, and the magnet's pull there
-      const s=v>1e-4?v/(2*Bk):0, stand=t=>t&&(t===p.tile||t.side==='p'&&!t.occ&&!(t.holeT>0));
+      const s=v>1e-4?v/(2*Bk):0, stand=(x,z)=>{ const t=nearestTile(x,z); return t&&onTile(t,x,z)&&(t===p.tile||t.side==='p'&&!t.occ&&!(t.holeT>0)); };
       let Sx=p.fx+vx*s, Sz=p.fz+vz*s;
-      // a slide aimed past the border or into something stops where you can last stand
-      for(let f=1;f>0&&!stand(nearestTile(Sx,Sz));f-=.125){ Sx=p.fx+vx*s*f; Sz=p.fz+vz*s*f; }
-      if(!stand(nearestTile(Sx,Sz))){ Sx=p.fx; Sz=p.fz; }
+      // a slide aimed off the grid, past the border or into something stops where you can last stand
+      for(let f=1;f>0&&!stand(Sx,Sz);f-=.125){ Sx=p.fx+vx*s*f; Sz=p.fz+vz*s*f; }
+      if(!stand(Sx,Sz)){ Sx=p.fx; Sz=p.fz; }
       const t=nearestTile(Sx,Sz)||p.tile, ox=t.wx-Sx, oz=t.wz-Sz, dir=v>1e-4?[vx/v,vz/v]:p.lastDir;
       // in range, or held against a wall or the border (which leaves you on a tile's edge): the magnet pulls
       let k=Math.hypot(ox,oz)/sp<=MV('mvSnapR')+1e-6||p.walled&&t===p.tile?MV('mvSnap'):0;
@@ -1217,7 +1233,7 @@ function momentumTick(p,rdt,haste,sp){
   if(!still&&!p.free&&!p.path.length) p.snap=null; }
 // move your mage by (mx, mz) in short hops, stopping at (or sliding along) what is in the way; returns the move made
 function freeMoveBy(p,mx,mz,sp){ const L=Math.hypot(mx,mz); if(L<1e-7) return [0,0];
-  const ok=(x,z)=>{ const n=nearestTile(x,z); return n===p.tile||(n&&n.side==='p'&&!n.occ&&!(n.holeT>0)&&neighbors(p.tile).includes(n))?n:null; };
+  const ok=(x,z)=>standAt(p,x,z);
   const ux=mx/L, uz=mz/L; let left=L, rx=0, rz=0;
   for(let i=0;i<16&&left>1e-6;i++){ const m=Math.min(left,sp*.25); let x=p.fx+ux*m, z=p.fz+uz*m, n=ok(x,z);
     for(let f=.5;!n&&f>.03;f*=.5){ x=p.fx+ux*m*f; z=p.fz+uz*m*f; n=ok(x,z); }

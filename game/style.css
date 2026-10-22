@@ -1432,3 +1432,11 @@ body.wide .labside{align-self:start; position:sticky; top:0;}
 /* new game: the color picker for the 80 dealt cards */
 .starter.deal .dealcols{display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:10px 0;}
 .starter.deal .dealc{border-color:var(--c); color:var(--c); padding:10px 4px; font-size:14px;}
+
+/* the bag as the Character screen: gear details and the Stats and Look tabs (bagui.js) */
+.bgdetail .nm .tier{color:#f2c94c; font-size:13px;}
+.bgdetail .nm small.set{color:#93a9ba;} .bgdetail .nm small.set.on{color:#39ff8a;}
+.bgdetail .nm small.fresh{color:#f2c94c;} .bgdetail .nm small.curse,.bgdetail .curse{color:#ff5d6c;}
+.bgdetail .acts{display:flex; flex-wrap:wrap; gap:4px; justify-content:flex-end; max-width:48%;}
+.bglist h3{margin:4px 0 2px; color:#f2d9a0;} .bglist .charstats{grid-template-columns:1fr!important;} .bglist .invtabs.looks{flex-wrap:wrap;}
+.bgtabs{flex-wrap:nowrap;} .bgtabs .bgtab{flex:1 1 auto; font-size:12px; letter-spacing:-.03em; white-space:nowrap; padding-left:0; padding-right:0;}

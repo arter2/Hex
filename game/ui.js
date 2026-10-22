@@ -178,7 +178,7 @@ let lvBefore=null;
 function closeLevelUp(keep){ const ch=save.char; if(!keep&&lvBefore) ch.spent=lvBefore; else lockChar(ch); persist(); $('#lvlUp').classList.remove('on');
   // un-pause the map even if a fight started while this was open, or you stay frozen after it
   if(typeof xPause==='function'&&EX&&!$('#pause').classList.contains('on')&&!$('#xDialog').classList.contains('on')&&!$('#bagUI').classList.contains('on')) xPause(false);
-  if($('#scrCamp').classList.contains('on')) xpBar($('#campLevel')); if($('#scrCharacter').classList.contains('on')) renderCharacter(); if(typeof xHud==='function'&&EX) xHud();
+  if($('#scrCamp').classList.contains('on')) xpBar($('#campLevel')); if($('#bagUI').classList.contains('on')) renderBag(); if(typeof xHud==='function'&&EX) xHud();
   if(lvBack) lvBack(); }
 $('#lvDone').onclick=()=>closeLevelUp(true);
 $('#campLevel').onclick=()=>{ if(pointsLeft(ensureChar(save))>0) openLevelUp(()=>openCamp()); else openCharacter(); };
@@ -453,124 +453,35 @@ function renderCollection(){
 }
 
 /* ---------------- character and gear ----------------
-   Your wizard, what the equipped gear adds up to, the two slots, your scrolls, and every piece
-   you own: equip it, merge two copies to upgrade it, enchant it, or break its curse. */
-function openCharacter(){ ensureStarterGear(save); persist(); $('#chMsg').textContent=''; renderCharacter(); show('scrCharacter'); }
-function charMsg(r){ $('#chMsg').textContent=r.msg||''; $('#chMsg').className='hint'+(r.cursed?' curse':r.ok?'':' warn'); if(r.ok) persist(); renderCharacter(); }
-/* The Character screen is a paper doll: your wizard in the middle, the seven slots around it
-   with dashed lines to where each piece is worn, and your inventory below as a grid of pieces.
-   Tap a piece (or a slot) to see it and act on it, or drag a piece onto a slot to put it on and
-   drag it off a slot to take it off. */
-const DOLL_LEFT=['head','arms','offhand','ring1'], DOLL_RIGHT=['body','weapon','ring2'];
-// where on the 32 x 32 sprite each slot's piece is worn
-const DOLL_ANCHOR={head:[16,7], body:[16,20], arms:[9,21], offhand:[6,18], weapon:[25,12], ring1:[9,24], ring2:[23,24]};
-const INV_TABS=[['all','All'],['weapon','Weapons'],['offhand','Off-hand'],['head','Head'],['body','Body'],['arms','Arms'],['ring','Rings']];
-let chTab='all', chSel=null;
+   The Character screen is the bag (bagui.js), opened at camp: the same paper doll, items grid, drag
+   and drop and detail strip, with the camp's own actions on gear (merge, enchant, purify, sacrifice)
+   and the Stats and Look tabs. */
+function openCharacter(){ ensureStarterGear(save); persist(); openBagUI(); }
+function charMsg(r){ if(r.msg) tip(r.msg); if(r.ok) persist(); if($('#bagUI').classList.contains('on')) renderBag(); }
 // pick how your hexmancer looks: wizard, elf, dwarf or orc (man or woman), dark witch or necromancer; hat on or off
-function renderLooks(){ const box=$('#chLooks'); if(!box||typeof PLAYER_LOOKS==='undefined') return; const cur=(typeof LOOK_ALIAS!=='undefined'&&LOOK_ALIAS[save.look])||save.look||'wizard';
-  box.innerHTML='<span class="lbl">Look</span>'+Object.keys(PLAYER_LOOKS).map(id=>{ const L=PLAYER_LOOKS[id]; return `<button class="chip${id===cur?' on':''}" data-look="${id}" style="--c:#8fe4ff">${L.name}${L.gender?' · '+L.gender:''}</button>`; }).join('');
-  box.innerHTML+=`<button class="chip${save.hat===false?'':' on'}" data-hat="1" style="--c:#f2c94c">${save.hat===false?'Hat off':'Hat on'}</button>`;
-  box.querySelectorAll('[data-look]').forEach(b=>b.onclick=()=>{ save.look=b.dataset.look; persist(); renderCharacter(); });
-  box.querySelector('[data-hat]').onclick=()=>{ save.hat=save.hat===false; persist(); renderCharacter(); }; }
-window.onLookLoaded=()=>{ if($('#scrCharacter').classList.contains('on')) renderCharacter(); if($('#scrNewChar').classList.contains('on')) renderNewChar(); };
-function renderCharacter(){
-  const s=gearState(save), m=gearMods(save), K=WEAPON_KINDS[m.kind]||WEAPON_KINDS.wand;
-  goldText($('#chGold'));
-  // the wizard, large, glowing in the weapon's element
-  const cv=$('#chSprite'), cx=cv.getContext('2d'); cx.clearRect(0,0,256,256); cx.imageSmoothingEnabled=false;
-  const col=m.color?COLORS[m.color].c:'#7fd4ff';
-  // the weapon's element glows around the wizard in two dithered rings of sprite-sized pixels
-  cx.fillStyle=col; for(let y=0;y<32;y++) for(let x=0;x<32;x++){ const r=Math.hypot(x-15.5,(y-18)*1.1);
-    if(r<9||(r<14&&(x+y)%2===0)){ cx.globalAlpha=r<9?.22:.16; cx.fillRect(x*8,y*8,8,8); } } cx.globalAlpha=1;
-  cx.fillStyle='rgba(0,0,0,.5)'; cx.fillRect(72,240,112,8); cx.fillRect(88,248,80,4);
-  const spr=unitSprite({kind:'player',look:gearLook(save),view:'front'}); cx.drawImage(spr.img,0,0,spr.img.width,spr.img.height,0,0,256,256);
-  renderLooks();
-  // the slots
-  const slotEl=slot=>{ const id=s.gear[slot], d=document.createElement('div'); if(id) d.style.setProperty('--fc',COLORS[GEAR[id].family].c); d.className='dslot'+(id&&isStuck(save,id)?' cursed':'')+(id?' full':'')+(chSel&&chSel.slot===slot?' sel':''); d.dataset.slot=slot;
-    d.innerHTML=`<span class="lbl">${SLOT_NAMES[slot]}</span>`+(id?`<b class="ic">${gearIcon(id,48)}</b><small>${esc(gearName(save,id))}</small>`:'<b class="ic dim">·</b><small class="dim">empty</small>');
-    d.onclick=()=>{ chSel=id?{id,slot}:null; if(!id){ chTab=slotType(slot); } renderCharacter(); };
-    if(id) dragGear(d,id,slot);
-    return d; };
-  const L=$('#chDoll .dcol.left'), R=$('#chDoll .dcol.right'); L.innerHTML=''; R.innerHTML='';
-  DOLL_LEFT.forEach(k=>L.appendChild(slotEl(k))); DOLL_RIGHT.forEach(k=>R.appendChild(slotEl(k)));
-  requestAnimationFrame(dollLines);
-  // what it all adds up to
+function renderLooks(box){ if(!box||typeof PLAYER_LOOKS==='undefined') return; const cur=(typeof LOOK_ALIAS!=='undefined'&&LOOK_ALIAS[save.look])||save.look||'wizard';
+  box.innerHTML='<div class="invtabs looks">'+Object.keys(PLAYER_LOOKS).map(id=>{ const L=PLAYER_LOOKS[id]; return `<button class="chip${id===cur?' on':''}" data-look="${id}" style="--c:#8fe4ff">${L.name}${L.gender?' · '+L.gender:''}</button>`; }).join('')
+    +`<button class="chip${save.hat===false?'':' on'}" data-hat="1" style="--c:#f2c94c">${save.hat===false?'Hat off':'Hat on'}</button></div>`;
+  box.querySelectorAll('[data-look]').forEach(b=>b.onclick=()=>{ save.look=b.dataset.look; persist(); renderBag(); });
+  box.querySelector('[data-hat]').onclick=()=>{ save.hat=save.hat===false; persist(); renderBag(); }; }
+window.onLookLoaded=()=>{ if($('#bagUI').classList.contains('on')) renderBag(); if($('#scrNewChar').classList.contains('on')) renderNewChar(); };
+// the Stats tab: your level and stats, then what your gear and blessings add up to
+function charStatsHTML(){ const m=gearMods(save), K=WEAPON_KINDS[m.kind]||WEAPON_KINDS.wand, ch=save.char&&RACES[save.char.race]?save.char:null, left=ch?pointsLeft(ch):0;
   const w=(k,v)=>`<div><span>${k}</span><b>${v}</b></div>`, pct=x=>Math.round(x*100)+'%';
-  const ch=save.char&&RACES[save.char.race]?save.char:null;
-  const left=ch?pointsLeft(ch):0;
-  $('#chAbil').innerHTML=(ch?w('Level',xpLine())+(left?`<div class="wide"><button id="chSpend" class="btn small">Spend ${left} stat point${left>1?'s':''}</button></div>`:''):'')+(ch?w('Race',RACES[ch.race].name+' · '+(ch.body?'woman':'man'))+STAT_KEYS.map(k=>{ const g=(m.stats&&m.stats[k])||0; return w(STATS[k].icon+' '+STATS[k].ab+' '+statOf(ch,k,m.stats)+(g?` <small class="${g>0?'up':'down'}">(${g>0?'+':'−'}${Math.abs(g)} gear)</small>`:''),statEffect(ch,k,m.stats)); }).join(''):'<p class="hint">Characters made before stats existed have average stats (10 in each). Start a new game to make a character.</p>');
-  if($('#chSpend')) $('#chSpend').onclick=()=>openLevelUp(()=>renderCharacter());
-  $('#chStats').innerHTML=w('Max HP',120+(m.hp||0))+w(K.name,Math.max(1,K.tap+m.tap)+' · charged '+Math.max(2,K.charged+m.charged))+w('Element',m.color?COLORS[m.color].icon+' '+COLORS[m.color].name:'none')
+  return '<h3>Abilities</h3><div class="charstats">'+(ch?w('Level',xpLine())+(left?`<div class="wide"><button id="chSpend" class="btn small">Spend ${left} stat point${left>1?'s':''}</button></div>`:''):'')
+    +(ch?w('Race',RACES[ch.race].name+' · '+(ch.body?'woman':'man'))+STAT_KEYS.map(k=>{ const g=(m.stats&&m.stats[k])||0; return w(STATS[k].icon+' '+STATS[k].ab+' '+statOf(ch,k,m.stats)+(g?` <small class="${g>0?'up':'down'}">(${g>0?'+':'−'}${Math.abs(g)} gear)</small>`:''),statEffect(ch,k,m.stats)); }).join(''):'<p class="hint">Characters made before stats existed have average stats (10 in each). Start a new game to make a character.</p>')+'</div>'
+    +'<h3>Gear stats</h3><div class="charstats">'+w('Max HP',120+(m.hp||0))+w(K.name,Math.max(1,K.tap+m.tap)+' · charged '+Math.max(2,K.charged+m.charged))+w('Element',m.color?COLORS[m.color].icon+' '+COLORS[m.color].name:'none')
     +w('Fire rate',m.cd&&m.cd!==1?Math.round((1/m.cd-1)*100)+'% faster':'normal')+w('Guard',pct(m.guard||0))+w('Start shield',m.shield||0)
     +(m.dodge?w('Dodge',pct(m.dodge)):'')+(m.block?w('Shield block',m.block+' hit'+(m.block>1?'s':'')+' a turn'):'')+(m.regen?w('Regeneration',m.regen+' HP/s'):'')+(m.counter?w('Counter',m.counter):'')
     +(m.slow&&m.slow!==1?w('Move speed',m.slow<1?Math.round((1-m.slow)*100)+'% faster':Math.round((m.slow-1)*100)+'% slower'):'')+(m.castSlow&&m.castSlow>1?w('Casting',Math.round((m.castSlow-1)*100)+'% slower'):'')
     +(m.surge?w('4th slot chance',pct(m.surge)):'')+(m.gold?w('Gold','+'+pct(m.gold)):'')+(m.gauge||m.hurt||m.hpPerShot||m.misfire?w('Curses',modsText({gauge:m.gauge,hurt:m.hurt,hpPerShot:m.hpPerShot,misfire:m.misfire})):'')
     +activeSets(save).map(k=>w('Set ✦',SETS[k].name)).join('')
-    +(typeof PERM!=='undefined'?Object.keys(PERM).filter(k=>save.perm&&save.perm[k]).map(k=>w('Blessing',PERM[k].name+' ×'+save.perm[k])).join(''):'');
-  $('#chScrolls').innerHTML='<span class="lbl">Scrolls</span>'+Object.keys(SCROLLS).map(k=>`<span class="chip" style="--c:#7fd4ff">${lootPic('scroll:'+k,24)} ${SCROLLS[k].name} ×${s.scrolls[k]||0}</span>`).join('')
-    +(typeof MATS!=='undefined'?Object.keys(MATS).filter(k=>save.mats&&save.mats[k]).map(k=>`<span class="chip" style="--c:${MATS[k].col}">${MATS[k].name} ×${save.mats[k]}</span>`).join('')+Object.keys(BAG).filter(k=>save.bag&&save.bag[k]).map(k=>`<span class="chip" style="--c:${BAG[k].col}">${BAG[k].name} ×${save.bag[k]}</span>`).join(''):'');
-  // inventory tabs and grid
-  const tabs=$('#chTabs'); tabs.innerHTML='';
-  for(const [k,label] of INV_TABS){ const b=document.createElement('button'); b.className='chip'+(chTab===k?' on':''); b.textContent=label; b.onclick=()=>{ chTab=k; renderCharacter(); }; tabs.appendChild(b); }
-  const order=['weapon','offhand','head','body','arms','ring'];
-  const ids=Object.keys(GEAR).filter(id=>s.items[id]>0&&(chTab==='all'||GEAR[id].slot===chTab)).sort((a,b)=>order.indexOf(GEAR[a].slot)-order.indexOf(GEAR[b].slot)||GEAR[b].tier-GEAR[a].tier);
-  const inv=$('#chInv'); inv.innerHTML=ids.length?'':'<p class="hint">Nothing here yet. Fights drop gear now and then; bosses always drop loot.</p>';
-  for(const id of ids){ const G=GEAR[id], on=SLOTS.some(k=>s.gear[k]===id), t=document.createElement('div');
-    t.style.setProperty('--fc',COLORS[G.family].c);
-    t.className='itile'+(on?' on':'')+(G.legendary?' legend':'')+(isStuck(save,id)?' cursed':'')+(chSel&&chSel.id===id?' sel':'');
-    t.innerHTML=`<span class="fam">${COLORS[G.family].icon}</span><b class="ic">${gearIcon(id,48)}</b><small>${esc(gearName(save,id))}</small><span class="st">${G.legendary?'✹':G.tier?'★'.repeat(G.tier):'·'}</span>`+(s.items[id]>1?`<span class="cnt">×${s.items[id]}</span>`:'')+(on?'<span class="worn">✓</span>':'')+(unworn(save,id)?'<span class="new">?</span>':'');
-    t.onclick=()=>{ chSel={id}; renderCharacter(); };
-    dragGear(t,id,null); inv.appendChild(t); }
-  renderGearDetail();
-}
-// the selected piece: what it does, its set, and what you can do with it
-function renderGearDetail(){
-  const box=$('#chDetail'), s=gearState(save); if(!chSel||!s.items[chSel.id]){ box.innerHTML=''; box.className='gdetail empty'; return; }
-  const id=chSel.id, G=GEAR[id], wornIn=SLOTS.filter(k=>s.gear[k]===id), on=wornIn.length>0, stuck=isStuck(save,id), set=setOf(id), lv=s.gearLv[id]||0;
-  const kindTxt=G.slot==='weapon'?WEAPON_KINDS[kindOf(id)].name+': '+WEAPON_KINDS[kindOf(id)].text:G.weight?G.weight[0].toUpperCase()+G.weight.slice(1)+' armor'+(G.weight==='heavy'&&!s.ench[id]?' (slows casting until enchanted)':''):SLOT_NAMES[G.slot==='ring'?'ring1':G.slot];
-  box.className='gdetail'+(stuck?' cursed':'')+(G.legendary?' legend':''); box.style.setProperty('--fc',COLORS[G.family].c);
-  box.innerHTML=`<button class="winx dx" aria-label="Close"></button><div class="dh"><b class="ic">${gearIcon(id,64)}</b><div><b>${esc(gearName(save,id))}</b> <span class="tier">${G.legendary?'✹ Legendary':G.tier?'★'.repeat(G.tier):'junk'}</span>${s.items[id]>1?` <span class="cnt">×${s.items[id]}</span>`:''}
-      <small class="kind"><span class="chip" style="--c:${COLORS[G.family].c}">${COLORS[G.family].icon} ${COLORS[G.family].name}</span> ${esc(kindTxt)}</small></div></div>
-    <p>${esc(gearText(save,id))}${G.text?' · '+esc(G.text):''}</p>
-    ${set?`<p class="set${activeSets(save).includes(set)?' on':''}">Set: ${esc(SETS[set].name)} (${SETS[set].pieces.filter(x=>s.items[x]).length}/3 owned, ${SETS[set].pieces.filter(x=>SLOTS.some(k=>s.gear[k]===x)).length}/3 worn) · ${esc(modsText(SETS[set].mods))}</p>`:''}
-    ${unworn(save,id)?'<p class="fresh">Not worn yet: it may be enchanted or cursed.</p>':''}
-    ${stuck?`<p class="curse">☠ Cursed ${esc(CURSES[s.cursed[id]].name)}: ${esc(CURSES[s.cursed[id]].text)}. Break it with a Scroll of Purifying or 3 rune ${curseRune(save,id)} cards.</p>`:''}
-    <div class="ga"></div>`;
-  box.querySelector('.dx').onclick=()=>{ chSel=null; renderCharacter(); };
-  const act=box.querySelector('.ga'), btn=(label,fn,dis)=>{ const b=document.createElement('button'); b.className='btn ghost small'; b.textContent=label; b.disabled=!!dis; b.onclick=fn; act.appendChild(b); };
-  if(on) btn('Take off',()=>charMsg(equip(save,wornIn[0],null)),stuck);
-  if(!on||(G.slot==='ring'&&s.items[id]>1&&wornIn.length<2)) btn('Equip',()=>charMsg(equip(save,G.slot==='ring'?'ring':G.slot,id)));
-  if(s.items[id]>1) btn('Merge → +'+(lv+1),()=>charMsg(mergeGear(save,id)),lv>=MAX_LEVEL);
-  if(!s.ench[id]) btn('Enchant ('+(s.scrolls.enchant||0)+')',()=>charMsg(enchantGear(save,id)),!(s.scrolls.enchant>0));
-  if(stuck){ btn('Purify ('+(s.scrolls.purify||0)+')',()=>charMsg(purifyGear(save,id)),!(s.scrolls.purify>0)); btn('Sacrifice 3 rune '+curseRune(save,id),()=>pickSacrifice(id)); }
-}
-// dashed lines from each slot to where it sits on the wizard
-function dollLines(){
-  const doll=$('#chDoll'), svg=doll.querySelector('.dlines'), cv=$('#chSprite'); if(!doll.offsetParent) return;
-  const d=doll.getBoundingClientRect(), c=cv.getBoundingClientRect(), k=c.width/32; let html='';
-  doll.querySelectorAll('.dslot').forEach(el=>{ const r=el.getBoundingClientRect(), slot=el.dataset.slot, [ax,ay]=DOLL_ANCHOR[slot], left=DOLL_LEFT.includes(slot);
-    const x1=(left?r.right:r.left)-d.left, y1=r.top+r.height/2-d.top, x2=c.left-d.left+ax*k, y2=c.top-d.top+ay*k, full=!!gearState(save).gear[slot];
-    html+=`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" class="${full?'full':''}"/><circle cx="${x2}" cy="${y2}" r="3" class="${full?'full':''}"/>`; });
-  svg.setAttribute('viewBox','0 0 '+d.width+' '+d.height); svg.innerHTML=html;
-}
-window.addEventListener('resize',()=>{ if($('#scrCharacter').classList.contains('on')) dollLines(); });
-// drag a piece from the inventory onto a slot, or from a slot off the doll
-let gdrag=null;
-function dragGear(el,id,fromSlot){
-  el.addEventListener('pointerdown',e=>{ if(e.button>0) return; gdrag={el,id,fromSlot,x0:e.clientX,y0:e.clientY,moved:false}; try{ el.setPointerCapture(e.pointerId); }catch(_){} });
-  el.addEventListener('pointermove',e=>{ if(!gdrag||gdrag.el!==el) return;
-    if(!gdrag.moved&&Math.hypot(e.clientX-gdrag.x0,e.clientY-gdrag.y0)>8){ gdrag.moved=true; const g=document.createElement('div'); g.className='gghost'; g.innerHTML=gearIcon(id,64); document.body.appendChild(g); gdrag.ghost=g; }
-    if(gdrag.moved){ gdrag.ghost.style.left=e.clientX+'px'; gdrag.ghost.style.top=e.clientY+'px';
-      document.querySelectorAll('.dslot.drop').forEach(x=>x.classList.remove('drop')); const t=document.elementFromPoint(e.clientX,e.clientY), sl=t&&t.closest('.dslot');
-      if(sl&&slotType(sl.dataset.slot)===GEAR[id].slot) sl.classList.add('drop'); } });
-  const end=e=>{ if(!gdrag||gdrag.el!==el) return; const d=gdrag; gdrag=null; if(d.ghost) d.ghost.remove(); document.querySelectorAll('.dslot.drop').forEach(x=>x.classList.remove('drop'));
-    if(!d.moved||e.type==='pointercancel') return;
-    const t=document.elementFromPoint(e.clientX,e.clientY), sl=t&&t.closest('.dslot');
-    if(sl){ if(slotType(sl.dataset.slot)!==GEAR[id].slot) return tip('That goes in the '+SLOT_NAMES[GEAR[id].slot==='ring'?'ring1':GEAR[id].slot]+' slot');
-      if(sl.dataset.slot!==d.fromSlot){ if(d.fromSlot){ const r=equip(save,d.fromSlot,null); if(!r.ok) return charMsg(r); } chSel={id,slot:sl.dataset.slot}; charMsg(equip(save,sl.dataset.slot,id)); } }
-    else if(d.fromSlot&&t&&t.closest('#chInv,#chDetail,.invhead,#chTabs')){ chSel={id}; charMsg(equip(save,d.fromSlot,null)); } };
-  el.addEventListener('pointerup',end); el.addEventListener('pointercancel',end);
-}
+    +(typeof PERM!=='undefined'?Object.keys(PERM).filter(k=>save.perm&&save.perm[k]).map(k=>w('Blessing',PERM[k].name+' ×'+save.perm[k])).join(''):'')+'</div>'
+    +'<div class="testbar devonly"><span class="dim">Testing</span><button id="chTestAll" class="btn ghost small">Get one of every piece</button><button id="chTestScrolls" class="btn ghost small">+2 of each scroll</button></div>'; }
+// the Stats tab's buttons, once it is drawn
+function charStatsBind(){ if($('#chSpend')) $('#chSpend').onclick=()=>openLevelUp(()=>renderBag());
+  if($('#chTestAll')) $('#chTestAll').onclick=()=>{ Object.keys(GEAR).forEach(id=>{ gearState(save).items[id]=(gearState(save).items[id]||0)+1; }); persist(); charMsg({ok:true,msg:'One of every piece added (cursed ones are still in disguise).'}); };
+  if($('#chTestScrolls')) $('#chTestScrolls').onclick=()=>{ addScroll(save,'enchant',2); addScroll(save,'purify',2); persist(); charMsg({ok:true,msg:'+2 of each scroll'}); }; }
 // choose the cards to give up to break a curse
 function pickSacrifice(id){ const G=Object.assign({},GEAR[id],{rune:curseRune(save,id)}), chosen=[];
   $('#pkTitle').textContent='Break the curse'; $('#pkBody').textContent='Give up '+SACRIFICE+' cards of rune '+G.rune+'. They leave your collection and your decks for good.';
@@ -585,8 +496,6 @@ function pickSacrifice(id){ const G=Object.assign({},GEAR[id],{rune:curseRune(sa
   $('#pkCancel').onclick=()=>$('#pick').classList.remove('on');
   $('#pick').classList.add('on');
 }
-$('#chTestAll').onclick=()=>{ Object.keys(GEAR).forEach(id=>{ gearState(save).items[id]=(gearState(save).items[id]||0)+1; }); persist(); charMsg({ok:true,msg:'One of every piece added (cursed ones are still in disguise).'}); };
-$('#chTestScrolls').onclick=()=>{ addScroll(save,'enchant',2); addScroll(save,'purify',2); persist(); charMsg({ok:true,msg:'+2 of each scroll'}); };
 
 /* ---------------- shop ---------------- */
 /* ---------------- battle flow ---------------- */
@@ -1092,19 +1001,13 @@ View.canvas=$('#board'); View.ctx=View.canvas.getContext('2d');
 View.canvas.addEventListener('pointerdown',e=>{ const t=pickTile(e.clientX,e.clientY); if(t&&t.side==='e'){ setAim(t); return; }
   if(!B||!B.player) return; try{ View.canvas.setPointerCapture(e.pointerId); }catch(_){}
   const [ax,ay]=appXY(e.clientX,e.clientY), [wx,wz]=posOf(B.player), [px,py]=proj(wx,0,wz);
-  dragging={id:e.pointerId,x0:ax,y0:ay,px,py,tap:t,moved:false,cur:B.player.tile}; });
-// how far a canvas point is from a tile's centre, in tiles (flattened the way the board is)
-const tileOff=(t,x,y)=>{ const [cx,cy]=proj(t.wx,0,t.wz); return Math.hypot(x-cx,(y-cy)/View.iy)/scaleAt(t.wx,t.wz); };
+  dragging={id:e.pointerId,x0:ax,y0:ay,px,py,wx,wz,tap:t,moved:false}; });
 View.canvas.addEventListener('pointermove',e=>{ const d=dragging; if(!d||e.pointerId!==d.id) return; const [ax,ay]=appXY(e.clientX,e.clientY);
   if(!d.moved&&Math.hypot(ax-d.x0,ay-d.y0)>12) d.moved=true;
   if(!d.moved) return;
-  // the target only changes once the finger is well into the next tile, so a finger resting near
-  // an edge doesn't flick the mage back and forth between two tiles
-  const x=d.px+(ax-d.x0)*1.15, y=d.py+(ay-d.y0)*1.15, t=pickAt(x,y);
-  if(!t||t.side!=='p'||t===d.cur) return;
-  if(d.cur&&tileOff(t,x,y)>tileOff(d.cur,x,y)-.3) return;
-  d.cur=t; moveTo(t); });
-const dragEnd=e=>{ const d=dragging; if(!d||e.pointerId!==d.id) return; dragging=null; if(!d.moved&&e.type==='pointerup'&&d.tap&&d.tap.side==='p') moveTo(d.tap); };
+  // your mage glides after the finger as a float and is hit on the nearest tile (freeTarget, battle.js)
+  const [wx,wz]=unprojGround(d.px+(ax-d.x0)*1.15,d.py+(ay-d.y0)*1.15,d.wx,d.wz); freeTarget(wx,wz); });
+const dragEnd=e=>{ const d=dragging; if(!d||e.pointerId!==d.id) return; dragging=null; if(d.moved) freeEnd(); if(!d.moved&&e.type==='pointerup'&&d.tap&&d.tap.side==='p') moveTo(d.tap); };
 ['pointerup','pointercancel'].forEach(ev=>View.canvas.addEventListener(ev,dragEnd));
 window.addEventListener('resize',()=>{ if($('#scrBattle').classList.contains('on')) resizeView(); if($('#scrCamp').classList.contains('on')) campScene(); });
 

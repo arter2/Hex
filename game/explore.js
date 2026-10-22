@@ -454,8 +454,15 @@ function xBuildScene(){
   EX.me=xSprite(()=>unitSprite({kind:'player',look:gearLook(save),view:EX.view||'front',pose:EX.pose||'idle'}),XSPR); grp.add(EX.me);
   for(const gp of EX.groups) xGroupSprites(gp,grp);
   if(typeof xBuildProps==='function') xBuildProps();   // people, puzzles, keys and the rest (dungeon.js)
-  xBakeAO(); xLitAll();
+  xBakeAO(); xLitAll(); xWarmShaders();
 }
+/* Every shader the floor needs is built now, while the floor loads, not the first time a door, chest
+   or room comes into sight (a phone can freeze for a moment on each new one). Hidden things are
+   shown for the build and hidden again. */
+function xWarmShaders(){ const G=X3; if(!G||!G.renderer||!G.renderer.compile) return; const hid=[];
+  G.scene.traverse(o=>{ if(!o.visible){ hid.push(o); o.visible=true; } });
+  try{ G.renderer.compile(G.scene,G.cam); }catch(e){ console.warn('warm-up:',e); }
+  for(const o of hid) o.visible=false; }
 /* The stairs are landmarks: a beam of light stands over each (the area's colour going down, red on a
    boss floor, pale daylight going up), and two torches on posts flank the way down. The beams and
    torches join the floor's lights, so the real lights find them too. */
@@ -1481,7 +1488,7 @@ function xDraw(T,dt){
     const n0=XLIT.dFog?(EX.camD||25)+XLIT.dFogStart*XCS:900; G.scene.fog.near=n0; G.scene.fog.far=n0+Math.max(1,XLIT.dFogLen)*XCS; const fa=Math.min(300,G.scene.fog.far+4); if(G.cam.far!==fa){ G.cam.far=fa; G.cam.updateProjectionMatrix(); } }
   xLightPool(T,dt); xDecorTick(T); xAirTick(T,dt); xWeatherTick(T,dt); xLifeTick(T,dt);
   { const lo=$('#xLowHp'); if(lo){ const r=EX.hp/xmaxHp(); lo.style.opacity=r<.3?(.55+.35*Math.sin(T*(r<.15?7:4))).toFixed(2):'0'; } } if(EX.myGlow){ EX.myGlow.position.x=EX.px; EX.myGlow.position.z=EX.pz; EX.myGlow.material.opacity=(.18+.03*FL*Math.sin(T*2.1))*XLIT.myGlow; }
-  lookUse(EX.aoTex,XN*XCS,0,0); xRender(G); xFpsTick(dt);
+  lookUse(EX.aoTex,XN*XCS,0,0); { const v=new THREE.Vector3(EX.px,1,EX.pz).applyMatrix4(G.cam.matrixWorldInverse); G.dof=-v.z; } G.tile=XCS; xRender(G);   // the blur's focus: you xFpsTick(dt);
   if((EX.miniT=(EX.miniT||0)+1)%6===0) xMini();
 }
 // the searched wave: the middle tile flashes, then the eight round it a beat later, each fading out in

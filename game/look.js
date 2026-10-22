@@ -21,7 +21,7 @@ const XB={ ball:xSetF('hexmancers-xball',XB_DEF.ball), strip:xSetF('hexmancers-x
    - Screen-space AO: a pass over the depth of the whole frame shades every crease (xSSAO). */
 const xSetB=(k,d)=>{ try{ const v=localStorage.getItem(k); return v==null?d:v==='1'; }catch(e){ return d; } };
 const XLIT_DEF={ amb:1, sun:1, lamp:1, lampRad:1, lampY:2.6, torch:1, torchRad:1, flick:1, myGlow:1, fogNear:20, fogFar:46, texel:true, steps:0, nmap:true, nstrF:.35, nstrW:.35, ao:true, aoStr:1, aoRad:1, ssao:false, ssaoStr:1, ssaoRad:.6, fps:false, autoQ:true, camPitch:36, camFov:61, arWalls:true, camZoom:1.1, camX:0, camY:0, camZ:0, camRX:0, camRY:0, camRZ:0, dof:false, dofFocus:0, dofRange:2, dofFade:4, dofNear:1, dofFar:1, dofBlur:6, pbr:false, pbrEnv:1, pbrR_gold:0.32, pbrM_gold:1, pbrR_steel:0.26, pbrM_steel:0.9, pbrR_gloss:0.14, pbrM_gloss:0, pbrR_ice:0.08, pbrM_ice:0, pbrR_slab:0.7, pbrM_slab:0, pbrRMap:1,
-  dPitch:48, dDist:9.4, dFov:46, dAhead:1, dAim:0, dFog:true, dFogStart:6, dFogLen:14, dMemLit:.7, dMemDark:.35, dLightMem:1, dCut:false, dCutH:.3, dDoorMin:.75, dDoorGlow:.3 };   // d...: the dungeon camera, haze, what you remember and walls
+  dPitch:48, dDist:9.4, dFov:46, dAhead:1, dAim:0, dFog:true, dFogStart:6, dFogLen:14, dMemLit:.7, dMemDark:.35, dLightMem:1, dCut:false, dCutH:.3, dDoorMin:.75, dDoorGlow:.3, dofShow:false, vig:.35, vigR:.55, vigSoft:.7 };   // d...: the dungeon camera, haze, what you remember and walls
 // the debug menu's pause: the game holds still (no moves, no clocks) but keeps being drawn; never saved
 const DBG={pause:false};
 const XLIT={}; for(const k in XLIT_DEF) XLIT[k]=typeof XLIT_DEF[k]==='boolean'?xSetB('hexmancers-xl-'+k,XLIT_DEF[k]):xSetF('hexmancers-xl-'+k,XLIT_DEF[k]);
@@ -124,45 +124,62 @@ void main(){ float a=0.0; for(int y=-1;y<=1;y++) for(int x=-1;x<=1;x++) a+=textu
    screen-space AO; then half the spell lights); below 13 ms for 3 s steps back up. Off in the debug
    menu, the look stays as set. */
 const LQ_STEPS=[{pr:2,lights:4},{pr:1.5,lights:4},{pr:1,lights:4},{pr:.75,lights:4},{pr:.75,lights:4,noSsao:1},{pr:.75,lights:2,noSsao:1}];
-const LQ={step:0,avg:16,slowT:0,fastT:0};
+const LQ={step:0,avg:16,slowT:0,fastT:0,upWait:3,upAt:-1e9};
 function lookQuality(dt){ if(!XLIT.autoQ){ LQ.step=0; return LQ_STEPS[0]; } const ms=Math.min(250,dt*1000); LQ.avg+=(ms-LQ.avg)/30;
-  if(LQ.avg>20){ LQ.slowT+=dt; LQ.fastT=0; if(LQ.slowT>1.5&&LQ.step<LQ_STEPS.length-1){ LQ.step++; LQ.slowT=0; LQ.avg=16; } }
-  else if(LQ.avg<13){ LQ.fastT+=dt; LQ.slowT=0; if(LQ.fastT>3&&LQ.step>0){ LQ.step--; LQ.fastT=0; } }
+  // a step back up that soon has to come down again (walking between a heavy room and a light one)
+  // doubles the wait before the next step up, so the sharpness does not flip back and forth: each
+  // flip resizes the frame, a hitch of its own
+  const now=performance.now();
+  if(LQ.avg>20){ LQ.slowT+=dt; LQ.fastT=0; if(LQ.slowT>1.5&&LQ.step<LQ_STEPS.length-1){ LQ.step++; LQ.slowT=0; LQ.avg=16; if(now-LQ.upAt<12000) LQ.upWait=Math.min(60,LQ.upWait*2); } }
+  else if(LQ.avg<13){ LQ.fastT+=dt; LQ.slowT=0; if(LQ.fastT>LQ.upWait&&LQ.step>0){ LQ.step--; LQ.fastT=0; LQ.upAt=now; } }
   else { LQ.slowT=0; LQ.fastT=0; }
   return LQ_STEPS[LQ.step]; }
 // the pixel ratio a renderer should draw at now
 const lookPR=()=>Math.min(window.devicePixelRatio||1,LQ_STEPS[LQ.step].pr);
 function xRender(G){ const r=G.renderer; r.info.autoReset=false; r.info.reset();
-  const ssao=XLIT.ssao&&!LQ_STEPS[LQ.step].noSsao, dof=!!(G.dof&&XLIT.dof&&XLIT.dofBlur>0);   // depth of field: the battle only (it passes its focus distance)
-  if((!ssao&&!dof)||!xSSAOInit(r)){ r.render(G.scene,G.cam); return; }
+  // depth of field and its focus view need the focus distance (the battle's board, you in the dungeon); the vignette goes on any frame
+  const ssao=XLIT.ssao&&!LQ_STEPS[LQ.step].noSsao, dof=!!(G.dof&&XLIT.dof&&XLIT.dofBlur>0), show=!!(G.dof&&XLIT.dofShow), post=dof||show||XLIT.vig>0;
+  if((!ssao&&!post)||!xSSAOInit(r)){ r.render(G.scene,G.cam); return; }
   const S=XSSAO; r.getDrawingBufferSize(S.sz); const w=S.sz.x|0, h=S.sz.y|0, hw=Math.max(1,w>>1), hh=Math.max(1,h>>1);
   if(S.rt.width!==w||S.rt.height!==h){ S.rt.setSize(w,h); S.ao.setSize(hw,hh); }
-  if(dof) xDofInit(w,h);
+  if(post) xDofInit(w,h);
   r.setRenderTarget(S.rt); r.render(G.scene,G.cam);
   if(ssao){ const U=S.aoM.uniforms; U.uInvProj.value.copy(G.cam.projectionMatrixInverse); U.uP11.value=G.cam.projectionMatrix.elements[5]; U.uRes.value.set(hw,hh); U.uRad.value=XLIT.ssaoRad*(G.unit||2); U.uStr.value=XLIT.ssaoStr;
     S.q.material=S.aoM; r.setRenderTarget(S.ao); r.render(S.qs,S.cam);
-    S.cM.uniforms.uTx.value.set(1/hw,1/hh); S.q.material=S.cM; r.setRenderTarget(dof?S.rt2:null); r.render(S.qs,S.cam); }
-  if(dof){ const U=S.dM.uniforms; U.tColor.value=ssao?S.rt2.texture:S.rt.texture; U.uInvProj.value.copy(G.cam.projectionMatrixInverse); U.uRes.value.set(w,h);
-    const tl=1.732; U.uFocus.value=G.dof+XLIT.dofFocus*tl; U.uRange.value=XLIT.dofRange*tl; U.uFade.value=Math.max(.05,XLIT.dofFade)*tl; U.uNear.value=XLIT.dofNear; U.uFar.value=XLIT.dofFar; U.uBlur.value=XLIT.dofBlur*r.getPixelRatio();
+    S.cM.uniforms.uTx.value.set(1/hw,1/hh); S.q.material=S.cM; r.setRenderTarget(post?S.rt2:null); r.render(S.qs,S.cam); }
+  if(post){ const U=S.dM.uniforms; U.tColor.value=ssao?S.rt2.texture:S.rt.texture; U.uInvProj.value.copy(G.cam.projectionMatrixInverse); U.uRes.value.set(w,h);
+    const tl=G.tile||1.732; U.uFocus.value=(G.dof||10)+XLIT.dofFocus*tl; U.uRange.value=XLIT.dofRange*tl; U.uFade.value=Math.max(.05,XLIT.dofFade)*tl; U.uNear.value=XLIT.dofNear; U.uFar.value=XLIT.dofFar; U.uBlur.value=dof?XLIT.dofBlur*r.getPixelRatio():0;
+    U.uShow.value=show?1:0; U.uVig.value=XLIT.vig; U.uVigR.value=XLIT.vigR; U.uVigSoft.value=Math.max(.05,XLIT.vigSoft);
     S.q.material=S.dM; r.setRenderTarget(null); r.render(S.qs,S.cam); } }
 /* Depth of field (debug menu, battle camera): each pixel's distance from the camera, from the depth
    the frame was drawn with. Within the sharp depth of the focus it stays sharp; beyond that the blur eases
    in (a smooth curve, no edge) over the fade distance up to dofBlur screen pixels, times the near strength
    in front of the focus and the far strength behind it. The blur gathers 32 samples in a disc (a sample
    counts as far as it is itself blurred that far, so sharp things keep their edges), and the result is
-   mixed in by how blurred the pixel is, so sharp and blurred meet without a seam. */
+   mixed in by how blurred the pixel is, so sharp and blurred meet without a seam.
+   The same pass shows the focus (debug menu: a yellow line on the focus, green over the sharp depth,
+   pink deepening in front of it and blue behind it as the blur grows) and lays the vignette on last. */
 function xDofInit(w,h){ const S=XSSAO;
   if(!S.dM){ S.rt2=new THREE.WebGLRenderTarget(1,1,{minFilter:THREE.LinearFilter,magFilter:THREE.LinearFilter,depthBuffer:false});
     S.dM=new THREE.ShaderMaterial({ depthTest:false, depthWrite:false, vertexShader:'varying vec2 vUv; void main(){ vUv=uv; gl_Position=vec4(position.xy,0.0,1.0); }',
-      uniforms:{ tColor:{value:null}, tDepth:{value:S.rt.depthTexture}, uInvProj:{value:new THREE.Matrix4()}, uRes:{value:new THREE.Vector2(1,1)}, uFocus:{value:10}, uRange:{value:2}, uFade:{value:4}, uNear:{value:1}, uFar:{value:1}, uBlur:{value:6} },
-      fragmentShader:`uniform sampler2D tColor, tDepth; uniform mat4 uInvProj; uniform vec2 uRes; uniform float uFocus, uRange, uFade, uNear, uFar, uBlur; varying vec2 vUv;
-float coc(vec2 uv){ float d=texture2D(tDepth,uv).x; if(d>=.99999) return uBlur*uFar; vec4 v=uInvProj*vec4(uv*2.0-1.0,d*2.0-1.0,1.0); float z=-v.z/v.w-uFocus;
-  return uBlur*smoothstep(uRange,uRange+uFade,abs(z))*(z<0.0?uNear:uFar); }
-void main(){ float C=coc(vUv); vec3 col=texture2D(tColor,vUv).rgb; if(C<.05){ gl_FragColor=vec4(col,1.0); return; }
-  vec3 acc=col; float ws=1.0; float a0=6.2831*fract(52.9829189*fract(dot(gl_FragCoord.xy,vec2(.06711056,.00583715))));
-  for(int i=0;i<32;i++){ float t=(float(i)+.5)/32.0, a=a0+float(i)*2.39996, rr=sqrt(t)*C; vec2 su=vUv+vec2(cos(a),sin(a))*rr/uRes;
-    float w=smoothstep(rr*.6-1.0,rr+1.0,coc(su)); acc+=texture2D(tColor,su).rgb*w; ws+=w; }
-  gl_FragColor=vec4(mix(col,acc/ws,smoothstep(0.0,1.5,C)),1.0); }` }); }
+      extensions:{derivatives:true},
+      uniforms:{ tColor:{value:null}, tDepth:{value:S.rt.depthTexture}, uInvProj:{value:new THREE.Matrix4()}, uRes:{value:new THREE.Vector2(1,1)}, uFocus:{value:10}, uRange:{value:2}, uFade:{value:4}, uNear:{value:1}, uFar:{value:1}, uBlur:{value:6},
+        uShow:{value:0}, uVig:{value:0}, uVigR:{value:.55}, uVigSoft:{value:.7} },
+      fragmentShader:`uniform sampler2D tColor, tDepth; uniform mat4 uInvProj; uniform vec2 uRes; uniform float uFocus, uRange, uFade, uNear, uFar, uBlur, uShow, uVig, uVigR, uVigSoft; varying vec2 vUv;
+float zof(vec2 uv){ float d=texture2D(tDepth,uv).x; if(d>=.99999) return 1e4; vec4 v=uInvProj*vec4(uv*2.0-1.0,d*2.0-1.0,1.0); return -v.z/v.w-uFocus; }
+float coc(vec2 uv){ float z=zof(uv); return uBlur*smoothstep(uRange,uRange+uFade,abs(z))*(z<0.0?uNear:uFar); }
+void main(){ float C=uBlur>0.0?coc(vUv):0.0; vec3 col=texture2D(tColor,vUv).rgb;
+  if(C>=.05){ vec3 acc=col; float ws=1.0; float a0=6.2831*fract(52.9829189*fract(dot(gl_FragCoord.xy,vec2(.06711056,.00583715))));
+    for(int i=0;i<32;i++){ float t=(float(i)+.5)/32.0, a=a0+float(i)*2.39996, rr=sqrt(t)*C; vec2 su=vUv+vec2(cos(a),sin(a))*rr/uRes;
+      float w=smoothstep(rr*.6-1.0,rr+1.0,coc(su)); acc+=texture2D(tColor,su).rgb*w; ws+=w; }
+    col=mix(col,acc/ws,smoothstep(0.0,1.5,C)); }
+  if(uShow>.5){ float z=zof(vUv), a=abs(z), k=smoothstep(uRange,uRange+uFade,a)*(z<0.0?min(1.0,uNear):min(1.0,uFar)), e=min(fwidth(z),.06)*1.5;   // capped, so object edges do not light up as lines
+    vec3 tint=a<uRange?vec3(.25,1.0,.35):z<0.0?vec3(1.0,.3,.7):vec3(.3,.55,1.0);
+    col=mix(col,tint,a<uRange?.22:.22+.5*k);
+    if(abs(a-uRange)<e) col=mix(col,vec3(.25,1.0,.35),.9);   // the edges of the sharp depth
+    if(a<e*1.4) col=vec3(1.0,.92,.2); }                       // the focus itself
+  if(uVig>0.0){ float r=length(vUv-.5)*1.414; col*=1.0-uVig*smoothstep(uVigR,uVigR+uVigSoft,r); }
+  gl_FragColor=vec4(col,1.0); }` }); }
   if(S.rt2.width!==w||S.rt2.height!==h) S.rt2.setSize(w,h); }
 // a change to the AO's reach re-bakes whichever map is in use: the dungeon floor's, or the battle arena's
 function lookBake(){ if(typeof xBakeAO==='function') xBakeAO(); if(typeof arenaBakeAO==='function') arenaBakeAO(); }
@@ -272,7 +289,7 @@ const XDBG=[   // [element id, object, key, saved as, decimals (null: a checkbox
   ...['gold','steel','gloss','ice','slab'].flatMap(k=>[['dbgPbrR_'+k,()=>XLIT,'pbrR_'+k,'hexmancers-xl-pbrR_'+k,2,'pbrEnv'],['dbgPbrM_'+k,()=>XLIT,'pbrM_'+k,'hexmancers-xl-pbrM_'+k,2,'pbrEnv']]),
   ...[['dbgAmb','amb'],['dbgSun','sun'],['dbgLamp','lamp'],['dbgLampRad','lampRad'],['dbgLampY','lampY'],['dbgTorch','torch'],['dbgTorchRad','torchRad'],['dbgFlick','flick'],['dbgMyGlow','myGlow']].map(([id,k])=>[id,()=>XLIT,k,'hexmancers-xl-'+k,2,'']),
   ['dbgFogNear',()=>XLIT,'fogNear','hexmancers-xl-fogNear',0,''], ['dbgFogFar',()=>XLIT,'fogFar','hexmancers-xl-fogFar',0,''],
-  ...[['dPitch',0,''],['dDist',1,''],['dFov',0,''],['dAhead',2,''],['dAim',1,''],['dFog',null,''],['dFogStart',0,''],['dFogLen',0,''],['dMemLit',2,'xpaint'],['dMemDark',2,'xpaint'],['dLightMem',2,''],['dCut',null,'xwalls'],['dCutH',2,'xwalls'],['dDoorMin',2,'xwalls'],['dDoorGlow',2,'xwalls']].map(([k,dec,what])=>['dbg_'+k,()=>XLIT,k,'hexmancers-xl-'+k,dec,what]) ];
+  ...[['dPitch',0,''],['dDist',1,''],['dFov',0,''],['dAhead',2,''],['dAim',1,''],['dFog',null,''],['dFogStart',0,''],['dFogLen',0,''],['dMemLit',2,'xpaint'],['dMemDark',2,'xpaint'],['dLightMem',2,''],['dCut',null,'xwalls'],['dCutH',2,'xwalls'],['dDoorMin',2,'xwalls'],['dDoorGlow',2,'xwalls'],['dofShow',null,''],['vig',2,''],['vigR',2,''],['vigSoft',2,'']].map(([k,dec,what])=>['dbg_'+k,()=>XLIT,k,'hexmancers-xl-'+k,dec,what]) ];
 let xBakeT=0;
 function xDbgApply(what){ if(what==='lit') xLitRefresh(); else if(what==='bake'){ xLitRefresh(); clearTimeout(xBakeT); xBakeT=setTimeout(lookBake,120); }
   else if(what==='pbr') lookRebuild();
@@ -305,7 +322,7 @@ function xBindSliders(){ for(const [id,obj,k,key,dec,what] of XDBG){ const el=do
   xDbgApply('fps'); }
 /* The debug menu's panes: its sections are sorted under a row of tabs at the top, so only one group of
    settings shows at a time. The pane last opened is remembered in this browser. */
-const XDBG_PANES=[['Dungeon',['Dungeon camera','Dungeon view','Walls']],['Battle',['Battle camera']],['Lights',['Lighting','Lights']],['Surfaces',['PBR','Normal maps','Ambient occlusion']],['General',['Info']]];
+const XDBG_PANES=[['Dungeon',['Dungeon camera','Dungeon view','Walls']],['Battle',['Battle camera']],['Post',['Post effects']],['Lights',['Lighting','Lights']],['Surfaces',['PBR','Normal maps','Ambient occlusion']],['General',['Info']]];
 function xDbgPanes(){ const body=document.getElementById('dbgBody'); if(!body||body.querySelector('.dbgTabs')) return;
   const panes={}, tabs=document.createElement('div'); tabs.className='dbgTabs';
   for(const [name] of XDBG_PANES){ const d=document.createElement('div'); d.className='dbgPane'; d.dataset.pane=name; panes[name]=d; }

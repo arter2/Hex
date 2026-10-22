@@ -1015,18 +1015,21 @@ View.canvas.addEventListener('pointermove',e=>{ const d=dragging; if(!d||e.point
   const [wx,wz]=unprojGround(d.px+(ax-d.x0)*MV('mvDrag'),d.py+(ay-d.y0)*MV('mvDrag'),d.wx,d.wz); freeTarget(wx,wz); });
 const dragEnd=e=>{ const d=dragging; if(!d||e.pointerId!==d.id) return; dragging=null; stickDraw();
   const tap=!d.moved&&!d.stick&&e.type==='pointerup'&&(!XLIT.mvStick||performance.now()-d.t0<MV('mvTapMs'));
-  if(d.moved||d.stick) freeEnd(); if(tap&&d.tap&&d.tap.side==='p') moveTo(d.tap); };
+  if(d.moved||d.stick) freeEnd(); if(tap&&d.tap&&d.tap.side==='p') moveTo(d.tap);
+  // a flick: a short push let go mid-swipe dodges a whole tile (battle.js flickDodge)
+  if(d.stick&&!d.still&&d.dir&&d.f0!=null&&XLIT.mvStick&&MV('mvFlick')&&B&&B.time-d.f0<=MV('mvFlickMs')/1000) flickDodge(d.dir[0],d.dir[1]); };
 // the joystick, each frame: from where your thumb is against where it landed
 function stickWalk(){ const d=dragging; if(!d||!XLIT.mvStick||!B||B.phase!=='fight') return;
   if(!d.stick&&(d.moved||performance.now()-d.t0>=MV('mvTapMs'))) d.stick=true;
   if(!d.stick) return; stickDraw();
   const p=B.player, R=MV('mvStickR'), dx=d.x-d.x0, dy=d.y-d.y0, l=Math.hypot(dx,dy)/R, fx=p.fx??p.tile.wx, fz=p.fz??p.tile.wz;
   if(l<MV('mvDead')){ if(!d.still){ d.still=true; if(MV('mvMomentum')) freeEnd(); else freeTarget(fx,fz); } return; }   // in the dead zone: stand (the magnet pulls after the rest; with momentum, you coast to a stop as if you let go)
+  if(d.still||d.f0==null) d.f0=B.time;   // when this push left the middle (a flick is a short one)
   d.still=false;
   const u=Math.min(1,(l-MV('mvDead'))/Math.max(.01,MV('mvStickFull')-MV('mvDead'))), k=MV('mvStickMin')+(1-MV('mvStickMin'))*Math.pow(u,MV('mvCurve'));
   // the push, on screen, turned into a way across the board
   const [sx,sy]=proj(fx,0,fz), [wx,wz]=unprojGround(sx+dx/(l*R)*60,sy+dy/(l*R)*60,fx,fz), wl=Math.hypot(wx-fx,wz-fz)||1;
-  freeTarget(fx+(wx-fx)/wl*3,fz+(wz-fz)/wl*3,false,k,true); if(B.player.free) B.player.free.tps=MV('mvStickSpeed'); }
+  freeTarget(fx+(wx-fx)/wl*3,fz+(wz-fz)/wl*3,false,k,true); if(B.player.free) B.player.free.tps=MV('mvStickSpeed'); d.dir=[wx-fx,wz-fz]; }
 function stickDraw(){ const el=$('#bStick'); if(!el) return; const d=dragging, on=!!(d&&d.stick&&XLIT.mvStick&&XLIT.mvStickShow);
   el.hidden=!on; if(!on) return; const R=MV('mvStickR'); el.style.width=el.style.height=2*R+'px'; const sb=appBox($('#scrBattle')); el.style.left=(d.x0-sb.left-R)+'px'; el.style.top=(d.y0-sb.top-R)+'px';
   let dx=d.x-d.x0, dy=d.y-d.y0; const l=Math.hypot(dx,dy); if(l>R){ dx*=R/l; dy*=R/l; }

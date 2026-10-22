@@ -81,3 +81,18 @@ Above about 95 the scorer can't tell profiles apart. Telling them apart is up to
 | Full speed at | 0.7 | 0.7 | 0.8 |
 
 Everything else is the default.
+
+## Flicks (v114)
+
+A quick flick, measured with real touch timing, did almost nothing. A 70–100 ms push carried you 0.4–0.5 of a
+tile, short of the next tile's magnet, so you stopped between tiles in the same lane, and the flick back landed you
+on your old middle. With the old 0.22 s skid, rocking your thumb fast drifted you about a quarter tile one way per
+swing, because each reverse came before the old speed had bled off.
+
+- **Flick to dodge** (`mvFlick`, on): a push that leaves the stick's middle and is let go mid-swipe within
+  **Flick time** (`mvFlickMs`, 180 ms) dodges a whole tile, to the middle of the next tile that way at full speed.
+  A flick back returns you to your tile's middle. On hex, the tiles beside you sit half a tile up or down, so
+  flicks in a row keep to the line the first set off from: left, right, left, right returns to the same tile every
+  time.
+- **Skid** now defaults to 0.08 s (it was 0.22 s, the same as braking), so rocking the stick turns you round
+  instead of drifting.

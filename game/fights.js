@@ -78,7 +78,10 @@ const ELITE={shielded:{name:'Shielded',col:'#9fdcff'}, hasty:{name:'Hasty',col:'
 const eliteChance=depth=>depth<5?0:Math.min(.35,.06+(depth-5)*.012);
 /* the danger ramp: how much harder an enemy hits, how much quicker its cycle runs, and how soon it opens, by depth.
    Tuned with the bots against docs/fight-patterns.md's targets for HP lost a fight */
-const fxDanger=depth=>({dmg:depth<=3?2.6:depth<=7?2.7:depth<=12?1.85:depth<=20?2.35:1.7, rate:Math.max(.75,1-.01*depth), first:depth<4?.8:.6});
+// dungeon groups are small, so they hit hard; battle mode's whole encounters (waves of squads) ramp gently
+const fxOnMap=()=>typeof EX!=='undefined'&&!!EX&&!!EX.fighting;
+const fxDanger=depth=>fxOnMap()?{dmg:depth<=3?2.6:depth<=7?2.7:depth<=12?1.85:depth<=20?2.35:1.7, rate:Math.max(.75,1-.01*depth), first:depth<4?.8:.6}
+  :{dmg:1+.01*depth, rate:Math.max(.85,1-.005*depth), first:.85};
 function fxInit(e,depth){ e.seq=fxRhythm(e,depth); e.si=Math.floor(Math.random()*3); if(e.seq) e.nextMove=fxNext(e);
   if(!e.def.boss){ const D=fxDanger(depth); e.dmg=Math.round(e.dmg*D.dmg); e.spd=(e.spd||1)*D.rate; e.atkT*=D.first; }
   const d=e.def; if(d.boss||d.mini||d.rare||d.minion||d.vermin||e.noElite||!ROLE[e.id]) return;

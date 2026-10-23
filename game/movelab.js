@@ -28,7 +28,7 @@ function mlabStart(){
 function mlabTurret(e,dt){ e.atkT-=dt; if(e.atkT>0) return; e.atkT=e.atkMax=MLAB.every;
   shoot(e.tile,lineTiles(e.tile,DIRS.W),{dmg:5,from:'e',owner:e,color:COLORS[e.color].c,speed:1/MLAB.shotSpd}); MLAB_SHOTS++; mlabHud(); }
 function mlabExit(){ $('#mlabPanel').classList.remove('on'); BOARD_TEST=null; buildBoard(); B=null; paused=false;
-  if(save&&save.temp) save=null; mlabSync(); openMenu(); }
+  mlabSync(); if(save&&save.temp){ save=null; openMenu(); } else openCamp(); }   // back where you came from: camp, with your own save
 // the lab's button and score show only in a lab battle
 function mlabSync(){ const on=mlabOn(); $('#mlabHud').hidden=!on; if(!on) $('#mlabPanel').classList.remove('on'); else { mlabHud(); requestAnimationFrame(mlabPlace); } }
 function mlabHud(){ const s=$('#mlabScore'); if(s) s.textContent='Shots '+MLAB_SHOTS+' · Hits '+MLAB_HITS+(MLAB_SHOTS?' · '+Math.round(100*(1-MLAB_HITS/MLAB_SHOTS))+'% dodged':''); }
@@ -130,7 +130,7 @@ function mlabPlace(){ const hud=$('#mlabHud'), hb=$('#hudBottom'); if(!hud||hud.
 addEventListener('resize',mlabPlace);
 function mlabDefaults(){ Object.assign(MLAB,MLAB_DEF); mlabKeep(); for(const k in MV_DEF){ XLIT[k]=MV_DEF[k]; try{ localStorage.removeItem('hexmancers-xl-'+k); }catch(e){} } renderMlab(); mlabStart(); }
 
-$('#mmMove').onclick=()=>mlabStart();
+$('#goMove').onclick=()=>mlabStart();   // from camp (the Movement lab button)
 xFineSliders($('#mlabPanel')); mlabGrip(); xRowTools($('#mlabPanel'),'.mlrow',row=>row.dataset.tip||'');
 $('#mlabBtn').onclick=()=>{ const P=$('#mlabPanel'); P.classList.toggle('on'); if(P.classList.contains('on')) renderMlab(); };
 $('#mlabHide').onclick=()=>$('#mlabPanel').classList.remove('on');

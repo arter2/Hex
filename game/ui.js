@@ -515,7 +515,7 @@ function fight(depth,waves,xo){
     onBoss:(t,c,info)=>{ banner(t,c); if(info) tip(info); },
     onWave:i=>banner('Wave '+(i+1),'#ff5d6c'),
     onCombo:label=>{ B.combos=(B.combos||0)+1; B.hitStop=Math.max(B.hitStop||0,.09); if(typeof arenaKick==='function') arenaKick(.4); banner('✦ '+label.split(':')[0],'#ffe066'); },
-    onRecipe:r=>{ const first=!(save.recipes||{})[r.id]; save.recipes=save.recipes||{}; save.recipes[r.id]=1; persist(); banner((first?'⚗ New recipe! ':'⚗ ')+r.name,'#39ff8a'); },
+    onRecipe:r=>{ if(B&&B.lab) return; const first=!(save.recipes||{})[r.id]; save.recipes=save.recipes||{}; save.recipes[r.id]=1; persist(); banner((first?'⚗ New recipe! ':'⚗ ')+r.name,'#39ff8a'); },
     onHero:c=>banner('♔ '+c.name.split(',')[0]+' joins the fight!','#ffe066'),
     onEnd:win=>win?victory():defeat(),
   },{prepare:p=>lab?null:assignChargeUses(save,p,d.list), gear:gearMods(save), look:gearLook(save), waves, hp:xo&&xo.hp, opening:xo&&xo.opening, rule:xo&&xo.rule, tier:xo&&xo.tier||0, soul});

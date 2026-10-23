@@ -7,7 +7,7 @@ const arg=JSON.parse(process.argv[2]||'{}'), list=Array.isArray(arg)?arg:[arg], 
 (async()=>{const br=await chromium.launch({executablePath:'/opt/pw-browsers/chromium-1194/chrome-linux/chrome',args:['--use-gl=swiftshader','--enable-unsafe-swiftshader']});
 const ctx=await br.newContext({viewport:{width:400,height:860},hasTouch:true,isMobile:true}); const pg=await ctx.newPage(); const errs=[]; pg.on('pageerror',e=>errs.push(e.message));
 await pg.goto('file://'+require('path').resolve(__dirname,'../game/index.html')); await pg.evaluate(()=>localStorage.clear()); await pg.reload(); await pg.waitForTimeout(1200);
-await pg.evaluate(()=>openMenu()); await pg.tap('#mmMove'); await pg.waitForTimeout(2500);
+await pg.evaluate(()=>mlabStart()); await pg.waitForTimeout(2500);
 const all=[];
 for(const [ix,over] of [[-1,list[0]],...list.map((o,i)=>[i,o])]){ const out={};
 for(const square of [false,true]){

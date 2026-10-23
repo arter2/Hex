@@ -167,6 +167,10 @@ Object.assign(ICONS,{
   potion(I,a){ I.rect(10,2,13,6,C.paper2); I.rect(9,1,14,2,C.wood); I.ellipse(11.5,15,8,7,a); I.ellipse(11.5,17,7,4,dark(a,.3)); I.set(8,12,C.white); I.set(9,11,C.white); },
   smoke(I,a){ I.ellipse(11.5,15,7,7,STONE[3]); I.ellipse(11,14,6,6,STONE[5]); I.line(15,7,18,3,C.wood,1); I.set(19,2,FIRE[4]); I.set(18,1,FIRE[3]); I.set(9,11,STONE[7]); },
   gem(I,a){ I.poly([[11.5,2],[20,10],[11.5,22],[3,10]],a); I.poly([[11.5,2],[20,10],[11.5,10]],light(a)); I.poly([[3,10],[11.5,10],[11.5,22]],dark(a,.35)); I.set(9,6,C.white); },
+  // the Movement lab: a winged boot, with speed lines behind it
+  boot(I){ I.line(1,10,4,10,C.blue2); I.line(2,14,5,14,C.blue2); I.line(1,18,4,18,C.blue2);
+    I.rect(7,4,13,14,C.wood); I.poly([[7,14],[13,13],[20,16],[20,20],[7,20]],C.wood); I.rect(7,20,20,21,C.wood2); I.rect(6,3,14,5,C.wood3); I.line(8,6,8,18,C.wood3);
+    I.poly([[13,7],[22,3],[20,7],[23,8],[19,11],[14,12]],C.blue); I.line(15,8,20,5,C.white); I.line(15,10,20,9,C.blue2); },
   map(I,a){ I.poly([[2,4],[8,2],[15,4],[21,2],[21,19],[15,21],[8,19],[2,21]],C.paper); I.line(8,2,8,19,C.paper2); I.line(15,4,15,21,C.paper2); I.line(4,15,10,10,FIRE[2]); I.line(10,10,13,13,FIRE[2]); I.line(13,13,19,7,FIRE[2]); I.rect(17,6,19,8,C.k); },
 });
 function icon(name,accent){ const key=name+'|'+(accent||''); if(ICON[key]) return ICON[key];

@@ -103,6 +103,7 @@ These are agreed or proposed and waiting on a decision or a turn.
 
 ### Waiting on your decision
 
+- **Balance from the human-like playtest** ([playtest-human-v121.md](playtest-human-v121.md)): the Fire decks win 21-24% where Verdant wins 88-98% (depths 8-20); a loss is 4-5 hits; enemy shots do half the damage; mid fights run 150-250 s. Options are in the doc's findings.
 - **Hiding enemy patterns (reading enemies, option 3).** You didn't want the player to know which
   cards are coming. The proposal is:
   - hide the next-move icon over an enemy until you have learned that creature in the Bestiary;

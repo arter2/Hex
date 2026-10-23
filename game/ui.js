@@ -272,6 +272,7 @@ function openCamp(){
   $('#btnDescend').disabled=!v.ok; $('#btnQuick').disabled=!v.ok;
   $('#depthDown').disabled=pickDepth<=1; $('#depthUp').disabled=pickDepth>=save.deepest;
   drawDepthMap($('#depthMap'),pickDepth,save.deepest);
+  { const lc=lowChargeNote(), now=performance.now(); if(lc&&now>(openCamp.lcT||0)){ openCamp.lcT=now+120000; setTimeout(()=>tip(lc.trim(),4500),400); } }   // nearly spent Charge cards: the shop recharges them
   $('#campLog').innerHTML=(campLog.length?campLog:[{t:'Each win gives a reward: a card, gold or a piece of gear. Every area is '+DEPTHS_PER_AREA+' floors deep and its boss waits on the last one. Losing costs 20% of your gold.',c:'dim'}])
     .slice(-4).map(l=>`<div class="${l.c||''}">${esc(l.t)}</div>`).join('');
   show('scrCamp'); campScene(); setTimeout(()=>{ if($('#scrCamp').classList.contains('on')) campScene(); },120);   // again once the log and fonts have settled, so the fit is right
@@ -443,13 +444,13 @@ function renderCollection(){
     const fam={}; Object.keys(save.owned).forEach(id=>{ const c=CARDS[id]; if(c&&save.owned[id]>0) fam[c.color]=(fam[c.color]||0)+save.owned[id]; });
     $('#cProgress').innerHTML=FAM_ORDER.filter(k=>fam[k]).map(k=>`<span class="chip" style="--c:${COLORS[k].c}">${COLORS[k].icon} ${fam[k]}</span>`).join('');
     const items=Object.keys(save.owned).map(id=>CARDS[id]).filter(c=>c&&save.owned[c.id]>0&&passes(c,cf)).sort(SORTS[cf.sort]);
-    paged($('#cGrid'),items,c=>{ const el=cardEl(c,`<span class="badge" title="${inDeck[c.id]||0} in this deck, ${save.owned[c.id]} owned">${inDeck[c.id]?inDeck[c.id]+'/'+save.owned[c.id]+' deck':'×'+save.owned[c.id]}</span>`); longPress(el,c); el.onclick=()=>{ if(!pressed) showDetail(c); }; return el; });
+    paged($('#cGrid'),items,c=>{ const el=cardEl(c,chargeMark(c)+`<span class="badge" title="${inDeck[c.id]||0} in this deck, ${save.owned[c.id]} owned">${inDeck[c.id]?inDeck[c.id]+'/'+save.owned[c.id]+' deck':'×'+save.owned[c.id]}</span>`); longPress(el,c); el.onclick=()=>{ if(!pressed) showDetail(c); }; return el; });
     if(!items.length) $('#cGrid').innerHTML='<p class="hint">No cards match.</p>';
     return; }
   const fam={}; CARD_LIST.forEach(c=>{ fam[c.color]=fam[c.color]||[0,0]; fam[c.color][1]++; if(save.seen[c.id]) fam[c.color][0]++; });
   $('#cProgress').innerHTML=FAM_ORDER.map(k=>`<span class="chip" style="--c:${COLORS[k].c}">${COLORS[k].icon} ${fam[k][0]}/${fam[k][1]}</span>`).join('');
   const items=CARD_LIST.filter(c=>passes(c,cf)).sort(SORTS[cf.sort]);
-  paged($('#cGrid'),items,c=>{ const own=save.owned[c.id]||0; const el=cardEl(c,own?`<span class="badge">×${own}</span>`:'',!save.seen[c.id]); longPress(el,c); el.onclick=()=>{ if(!pressed) showDetail(c); }; return el; });
+  paged($('#cGrid'),items,c=>{ const own=save.owned[c.id]||0; const el=cardEl(c,own?chargeMark(c)+`<span class="badge">×${own}</span>`:'',!save.seen[c.id]); longPress(el,c); el.onclick=()=>{ if(!pressed) showDetail(c); }; return el; });
 }
 
 /* ---------------- character and gear ----------------
@@ -523,6 +524,8 @@ function fight(depth,waves,xo){
     onRecipe:r=>{ if(B&&B.lab) return; const first=!(save.recipes||{})[r.id]; save.recipes=save.recipes||{}; save.recipes[r.id]=1; persist(); banner((first?'⚗ New recipe! ':'⚗ ')+r.name,'#39ff8a'); },
     onHero:c=>banner('♔ '+c.name.split(',')[0]+' joins the fight!','#ffe066'),
     onEnd:win=>win?victory():defeat(),
+    onLowCharge:inst=>{ const c=inst.card; if(inst.left===1){ banner('⚠ '+c.name+': last charge','#ffd23f'); tip('Last charge on '+c.name+'. Recharge it at the camp shop, or it burns up when it runs out.',3500); }
+      else if(inst.left<=0){ banner('🔥 '+c.name+' is spent','#ff4d5e'); tip(c.name+' is spent: this copy burns up after the fight. Recharge before it runs out next time.',3500); } },
   },{prepare:p=>lab?null:assignChargeUses(save,p,d.list), gear:gearMods(save), look:gearLook(save), waves, hp:xo&&xo.hp, opening:xo&&xo.opening, rule:xo&&xo.rule, tier:xo&&xo.tier||0, soul});
   B.explore=!!(xo&&xo.explore); B.trial=!!(xo&&(xo.trial||lab)); B.lab=lab||null; if(typeof mlabSync==='function') mlabSync();
   if(B.explore&&typeof roomAllyStart==='function') roomAllyStart();   // a hired adventurer fights beside you (rooms.js)
@@ -530,6 +533,9 @@ function fight(depth,waves,xo){
   else if(B.opening) setTimeout(()=>banner(B.opening==='ambush'?'Ambush! They\'re slow to react':'Surprised! They strike first',B.opening==='ambush'?'#39ff8a':'#ff5d6c'),300);
   hud(true);
 }
+// the deck's Charge cards down to their last use or two, for the victory screen and camp
+function lowChargeNote(){ const d=activeDeck(), out=[]; for(const id of [...new Set(d?d.list:[])]){ const c=CARDS[id]; if(!c||!c.uses) continue; const lo=lowCharge(c); if(lo!=null&&(lo<=1||lo/c.uses<=.25)) out.push(c.name+' '+lo+'/'+c.uses); }
+  return out.length?' Low on charges: '+out.join(', ')+'. Recharge at the camp shop or they burn up.':''; }
 // charge uses spent this fight carry over; a copy that ran dry burns up
 function settleCharges(){ const burned=settleChargeUses(save,B.piles); persist();
   return burned.length?' Burned up: '+burned.map(x=>x.card.name+(x.n>1?' ×'+x.n:'')).join(', ')+'.':''; }
@@ -546,7 +552,7 @@ function victory(){
   save.gold+=rw.gold; save.wins++; if(!b.explore&&!b.trial&&b.depth>=save.deepest) save.deepest=b.depth+1;
   const hpLeft=b.player.hp;
   const loot=rw.items.map(k=>({k, res:addLoot(save,k)}));
-  const res=addCards(save,rw.cards); const burnt=settleCharges();
+  const res=addCards(save,rw.cards); const burnt=settleCharges()+lowChargeNote();
   const depth=b.depth;
   const hero=rw.cards.find(c=>c.rarity==='hero');
   // a sealed pack, now and then: 2 area bosses in 5, 1 miniboss in 5 (opened before the victory screen)
@@ -798,9 +804,14 @@ function renderCustom(){
   const empty=Math.max(0,RULES.slots-p.queue.length);
   $('#btnFight').textContent='Fight!';   // (empty slots no longer draw extra: the hand holds 6 at most)
 }
+// a Charge card's uses, big on the card: white while it has plenty, yellow at half, red at a quarter or its last one
+function chargeBadge(left,max){ const f=left/Math.max(1,max), cls=left<=1||f<=.25?' low':f<=.5?' mid':''; return `<span class="chg${cls}" title="${left} of ${max} uses left">${left}/${max}</span>`; }
+// the copy you own with the fewest uses left (for the collection and the deck builder), or null
+function lowCharge(c){ if(!c.uses||!save||!save.owned[c.id]) return null; let lo=c.uses; for(let k=0;k<save.owned[c.id];k++) lo=Math.min(lo,chargeLeft(save,c.id,k)); return lo; }
+const chargeMark=c=>{ const lo=lowCharge(c); return lo==null?'':chargeBadge(lo,c.uses); };
 // small marks on a card in hand or queue: Charge uses left, a Tinker upgrade, an instant
 function instBadge(inst,inQueue){ let h='';
-  if(inst.left!=null) h+=`<span class="badge">${inst.left} left</span>`;
+  if(inst.card.uses&&!inst.temp) h+=chargeBadge(inst.left==null?inst.card.uses:inst.left,inst.card.uses);
   if(inst.tinker) h+=`<span class="badge tink">🔧 +${Math.round(inst.tinker*100)}%</span>`;
   else if(!inQueue&&isInstant(inst.card)) h+=`<span class="badge inst">✧ tap</span>`;
   else if(!inQueue&&isDeckTool(inst.card)) h+=`<span class="badge inst">✧ slot</span>`;
@@ -935,7 +946,7 @@ function hud(force){
     for(let i=0;i<Math.max(RULES.slots,pl.queue.length);i++){ const inst=pl.queue[i], d=document.createElement('div');
       d.className='qslot'+(inst?' full':'')+(i===0&&inst?' next':'')+(inst&&inst.combo?' combo':'')+(inst&&inst.frozenT>0?' frozen':'');
       const rx=inst&&inst.card.pow&&reactWith(inst.card.color); if(rx){ d.classList.add('react'); d.style.setProperty('--xc',rx.c); }
-      if(inst){ const c=inst.card, uses=c.uses?' ×'+(inst.left==null?c.uses:inst.left):'', R=ROLES[cardRole(c)]; d.style.setProperty('--c',COLORS[c.color].c); d.style.setProperty('--rc',R.c);
+      if(inst){ const c=inst.card, uses=c.uses&&!inst.temp?' '+chargeBadge(inst.left==null?c.uses:inst.left,c.uses):'', R=ROLES[cardRole(c)]; d.style.setProperty('--c',COLORS[c.color].c); d.style.setProperty('--rc',R.c);
         d.innerHTML=`<span class="role">${R.icon} ${R.name}${rx?`<span class="rx">✦ ${rx.name}</span>`:''}</span><span class="nm">${inst.frozenT>0?'❄ ':''}${esc(c.name)}${uses}${inst.temp&&!inst.recipe?' (copy)':''}</span>`; }
       else d.textContent='—';
       row.appendChild(d); }

@@ -61,6 +61,13 @@ P('## Dialogs'); P(''); P(`${f0(sum(runs,r=>r.dlgN)/H)} an hour. Most often: ${O
 P('## Money and packs'); P('');
 tbl(['Player','Packs bought','Gold spent on packs','Gold at the end','Level','Deck value start → end','Cards burned up'],STY.map(s=>{ const a=by(s), n=a.length;
   return [s,f1(sum(a,r=>r.packs)/n),f0(sum(a,r=>r.spent)/n),f0(sum(a,r=>r.gold)/n),f1(sum(a,r=>r.level)/n),f0(sum(a,r=>r.startDeck.avgVal)/n)+' → '+f0(sum(a,r=>r.endDeck.avgVal)/n),f1(sum(a,r=>r.burned)/n)]; }));
+P('## Traps'); P('');
+{ const fl=sum(runs,r=>r.floorsCounted), tp=sum(runs,r=>r.trapsPlaced), hist={}; for(const r of runs) for(const [k,v] of Object.entries(r.trapHist||{})) hist[k]=(hist[k]||0)+v;
+  P(`${f1(tp/Math.max(1,fl))} hidden traps a floor on average over ${fl} floors (how many floors held each number: ${Object.keys(hist).sort((a,b)=>a-b).map(k=>k+': '+hist[k]).join(', ')}). `+
+    `Tells that came into view within 3 tiles: ${sum(runs,r=>r.tells)}, noticed: ${sum(runs,r=>r.tellsSeen)}; clicks heard: ${sum(runs,r=>r.clicks)}.`); P(''); }
+P('## Where the gold goes (per career)'); P('');
+{ const K=['packs','gear','card','recharges','upgrades','blessings','potions','materials','curses']; const have=K.filter(k=>runs.some(r=>r.spend&&r.spend[k]));
+  tbl(['Player',...have,'Sold gear for','Gold at the end'],STY.map(st=>{ const a=by(st), n=a.length; return [st,...have.map(k=>f0(sum(a,r=>(r.spend||{})[k])/n)),f0(sum(a,r=>r.sold)/n),f0(sum(a,r=>r.gold)/n)]; })); }
 P('## Secrets'); P(''); P(`Searches: ${sum(runs,r=>r.searches)}, found something: ${sum(runs,r=>r.searchHits)}; whispered hints heard: ${sum(runs,r=>r.cues)}.`); P('');
 const errs={}; for(const r of runs) for(const e of [...r.errors,...(r.pageErrors||[])]){ const k=e.slice(0,90); errs[k]=(errs[k]||0)+1; }
 if(Object.keys(errs).length){ P('## Errors'); P(''); P(Object.entries(errs).sort((a,b)=>b[1]-a[1]).slice(0,12).map(([k,v])=>'- '+k+' ×'+v).join('\n')); P(''); }

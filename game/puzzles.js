@@ -10,7 +10,7 @@
      shift     Shifting stones: step on a channel stone to turn it; join the light from inlet to outlet.
      riddle    Guardian riddle: a statue asks a question. Two wrong answers and it falls silent.
      braziers  Braziers: take fire from the lit brazier and light the three cold ones in other rooms
-               before the flame you carry dies (30 s; any lit brazier gives you a fresh flame).
+               before the flame you carry dies (45 s; any lit brazier gives you a fresh flame).
    Floor features (yours):
      circuit   Switch circuit (a special room): coloured switches all over the floor, pulled in the
                order of the mural on the sealed door, open a vault. A wrong one resets them all.
@@ -107,6 +107,7 @@ function pzPipesJoined(pz){ const at=(x,y)=>pz.tiles.find(t=>t.gx===x&&t.gy===y)
   return false; }
 
 /* ---------------- touching puzzle things ---------------- */
+const BRAZIER_FLAME=45;   // seconds a carried flame lasts (30 before v123: it kept dying between rooms)
 const BELL_F=[392,494,587,698], BELL_C=[0xff7a5a,0xf2c94c,0x7fe3ff,0xb48cff];
 function pzRing(b){ pzTone(BELL_F[b.idx],.7); b.flashT=.5; }
 function xPuzzInteract(p){ const pz=EX.puzzle, d=EX.depth;
@@ -124,7 +125,7 @@ function xPuzzInteract(p){ const pz=EX.puzzle, d=EX.depth;
     case 'scale': { if(!pz) return true; const on=pz.stones.filter(s=>s.on); return xSay('scale','The scale reads '+on.reduce((a,s)=>a+s.v,0)+'. It wants '+pz.target+', with three stones.'), true; }
     case 'guardian': return pzRiddle(p), true;
     case 'pbrazier': { const P=EX.puzzle&&EX.puzzle.kind==='braziers'?EX.puzzle:null; if(!P) return true;
-      if(p.lit){ EX.flameT=30; xSfx('click'); xLog('You take a flame from the brazier. It will last 30 seconds.','good'); return true; }
+      if(p.lit){ EX.flameT=BRAZIER_FLAME; xSfx('click'); xLog('You take a flame from the brazier. It will last '+BRAZIER_FLAME+' seconds.','good'); return true; }
       if(!(EX.flameT>0)) return xSay('brazier','A cold brazier. It needs a flame from a lit one.'), true;
       p.lit=true; if(p.flame) p.flame.visible=true; { const ri=EX.room[p.cell]; if(ri>=0&&!EX.rooms[ri].dark){ EX.rooms[ri].lit=true; xUpdateVis(); } } xSfx('chime'); const left=P.cold.filter(b=>!b.lit).length; xLog(left?'The brazier catches. '+left+' still cold.':'The last brazier roars to life!','good');
       if(!left&&!P.solved) xPuzzleSolved(); return true; }
@@ -142,7 +143,8 @@ function xPuzzEnter(p){ const pz=EX.puzzle;
     else xLog('Start from the other plate.','dim'); return true; }
   if(p.kind==='ptile'&&pz&&(pz.kind==='path'||pz.kind==='memory')){ if(pz.solved) return true;
     if(p.safe&&pz.run) return true;
-    if(!p.safe&&(pz.run||!pz.mem)){ pz.run=false; p.badT=.6; if(pz.mem){ pzTone(130,.5); xLog('The stone goes cold and dead under you. Start again from the plate.','bad'); xHurt(Math.round(2+EX.depth*.3),'a dead stone'); }
+    // a stone only bites once you have started from the plate (before v123, the pressure path's stones bit anyone crossing the room)
+    if(!p.safe&&pz.run){ pz.run=false; p.badT=.6; if(pz.mem){ pzTone(130,.5); xLog('The stone goes cold and dead under you. Start again from the plate.','bad'); xHurt(Math.round(2+EX.depth*.3),'a dead stone'); }
       else { xLog('The stone bites! Spikes jab up through the cracks.','bad'); xHurt(Math.round(6+EX.depth*.6),'a biting stone'); } }
     return true; }
   if(p.kind==='pipe'&&pz&&pz.kind==='shift'&&!pz.solved){ p.rot=(p.rot+1)%4; xSfx('grind'); if(pzPipesJoined(pz)){ pz.lit=true; setTimeout(()=>xPuzzleSolved(),400); } return true; }

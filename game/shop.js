@@ -83,6 +83,7 @@ function renderShop(){ goldText($('#sGold')); const box=$('#shopBody'); box.inne
     {kind:'pack',color:null,name:'Booster',price:packPrice(false,save.deepest),pic:packArt(null),text:PACK_SIZE+' cards from any family. Each card is rolled on its own: any of them could be rare.'},
     ...FAM_ORDER.map(k=>({kind:'pack',color:k,name:COLORS[k].name,price:packPrice(true,save.deepest),pic:packArt(k),text:PACK_SIZE+' cards of the '+COLORS[k].name+' family, each rolled on its own.'}))
   ].map(o=>Object.assign(o,{cant:g<o.price,color:o.color?COLORS[o.color].c:null,fam:o.color}))));
+  const rc=shopRecharges(); if(rc.length) box.appendChild(shopShelf('Recharge','every copy back to full uses',rc.map(o=>Object.assign(o,{cant:g<o.price}))));
   box.appendChild(shopShelf("Today's cards",'new stock at midnight',st.cards.map(id=>{ const c=CARDS[id], sold=st.sold.includes('c:'+id), el=cardEl(c); el.tabIndex=-1;
     return {kind:'card',id,name:c.name,price:SHOP_CARD_PRICE[c.rarity]||80,pic:el,sold,cant:g<(SHOP_CARD_PRICE[c.rarity]||80),color:COLORS[c.color].c,card:c}; })));
   box.appendChild(shopShelf("Today's gear",'',st.gear.map(id=>{ const G=GEAR[id], sold=st.sold.includes('g:'+id), pr=SHOP_GEAR_PRICE(G);
@@ -108,10 +109,20 @@ function shopSheet(o){ const sh=$('#shopSheet'), body=$('#shopSheetBody'); body.
   t.innerHTML=`<h2>${esc(o.name)}</h2><p class="hint">${esc(o.text||(o.card?cardText(o.card):''))}</p>`+(own!=null?`<p class="dim">You own ${own}.</p>`:'');
   body.appendChild(t);
   const btn=$('#shopBuy'), sell=o.kind==='sell';
-  btn.innerHTML=(o.sold?'Sold out':(sell?'Sell for ':'Buy · ')+uiIcon('coin',18)+o.price); btn.disabled=!!o.sold||(!sell&&save.gold<o.price);
+  btn.innerHTML=(o.sold?'Sold out':(sell?'Sell for ':o.kind==='recharge'?'Recharge · ':'Buy · ')+uiIcon('coin',18)+o.price); btn.disabled=!!o.sold||(!sell&&save.gold<o.price);
   btn.onclick=()=>{ sh.classList.remove('on'); sell?shopSell(o):shopBuy(o); };
   sh.classList.add('on'); }
+// Recharge (v123): a Charge card's spent uses come back for gold, so a card on its last charge need not burn up.
+// Priced per use missing, by rarity, a little dearer the deeper you have been
+const RECHARGE_USE={common:6, uncommon:10, rare:20, legendary:40, hero:40};
+function shopRecharges(){ const out=[]; for(const id in save.owned){ const c=CARDS[id]; if(!c||!c.uses||!save.owned[id]) continue;
+    let miss=0, lo=c.uses; for(let k=0;k<save.owned[id];k++){ const l=chargeLeft(save,id,k); miss+=c.uses-l; lo=Math.min(lo,l); } if(miss<=0) continue;
+    const el=cardEl(c,chargeMark(c)); el.tabIndex=-1;
+    out.push({kind:'recharge', id, name:c.name, price:Math.round((RECHARGE_USE[c.rarity]||10)*miss*(1+(save.deepest||1)/10)), pic:el, color:COLORS[c.color].c, card:c, low:lo,
+      text:'Every copy back to '+c.uses+' uses (the lowest has '+lo+'). A copy that runs out burns up for good.'}); }
+  return out.sort((a,b)=>a.low/CARDS[a.id].uses-b.low/CARDS[b.id].uses); }
 function shopBuy(o){ if(save.gold<o.price) return; const st=shopStock(); save.gold-=o.price;
+  if(o.kind==='recharge'){ const c=CARDS[o.id]; save.charge=save.charge||{}; save.charge[o.id]=Array(save.owned[o.id]||0).fill(c.uses); persist(); renderShop(); tip(c.name+' recharged: '+c.uses+'/'+c.uses); if(typeof buzz==='function') buzz(15); return; }
   if(o.kind==='pack'){ const res=addCards(save,openPack(save.deepest,o.fam||null)); persist(); renderShop(); packOpen(o.fam||null,res); return; }
   if(o.kind==='card'){ const res=addCards(save,[CARDS[o.id]]); st.sold.push('c:'+o.id); tip((res[0].isNew?'New: ':'Bought ')+CARDS[o.id].name); }
   if(o.kind==='gear'){ addGear(save,o.id); st.sold.push('g:'+o.id); tip('Bought '+GEAR[o.id].name); }

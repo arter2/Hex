@@ -56,7 +56,7 @@ addEventListener('resize',()=>{ if($('#scrDeck').classList.contains('on')) dkRow
 function dkLibrary(){ const d=dkDeck(), f=DK.filt;
   const items=Object.keys(save.owned).map(id=>CARDS[id]).filter(c=>c&&save.owned[c.id]>0&&(DK.tab==='all'||c.color===DK.tab)&&passes(c,f)).sort(SORTS[DK.sort]);
   paged($('#dkColl'),items,c=>{ const n=dkCount(d,c.id), mx=dkMax(c), el=cardEl(c,
-      (n?`<span class="dkfrac"><b>${n}</b><i>/</i><b>${mx}</b></span><span class="dkminus" title="Remove one">−</span>`:'')+`<span class="dkown">${save.owned[c.id]}</span>`+(DK.multi?`<span class="dkcheck">${DK.sel.has(c.id)?'✓':''}</span>`:''));
+      chargeMark(c)+(n?`<span class="dkfrac"><b>${n}</b><i>/</i><b>${mx}</b></span><span class="dkminus" title="Remove one">−</span>`:'')+`<span class="dkown">${save.owned[c.id]}</span>`+(DK.multi?`<span class="dkcheck">${DK.sel.has(c.id)?'✓':''}</span>`:''));
     if(n) el.classList.add('indeck'); if(n>=mx) el.classList.add('full'); if(DK.multi&&DK.sel.has(c.id)) el.classList.add('dksel');
     const minus=el.querySelector('.dkminus'); if(minus) minus.addEventListener('click',e=>{ e.stopPropagation(); dkRemove(c); dkChange(); });
     dkHold(el,c,()=>{ if(DK.multi){ DK.sel.has(c.id)?DK.sel.delete(c.id):DK.sel.add(c.id); dkRender(); } else if(dkAdd(c)) dkChange(); });

@@ -830,6 +830,9 @@ function xDungeonTick(dt){
   if(EX.bellAt){ if(!EX.bellWarned&&EX.clock>EX.bellAt-25){ EX.bellWarned=1; xLog('A distant bell tolls. You have lingered too long.','warn'); xSfx('thud'); }
     if(EX.clock>=EX.bellAt){ EX.bellAt=0; const reach=xReach(); let c=EX.up; if(Math.hypot(xcx(c)-xcx(pc),xcy(c)-xcy(pc))<7){ const far=EX.rooms.filter(r=>!r.side&&!r.safe&&reach[xi(r.cx,r.cy)]>=0).sort((a,b)=>Math.hypot(b.cx-xcx(pc),b.cy-xcy(pc))-Math.hypot(a.cx-xcx(pc),a.cy-xcy(pc)))[0]; if(far) c=xi(far.cx,far.cy); }
       const g=xMiniGroup('executioner',c,{huntT:0}); EX.groups.push(g); xGroupSprites(g,X3.group); xLog('Heavy steps. The Executioner has come for you.','bad'); xSfx('thud'); } }
+  // a hidden trap close by and in sight clicks once, faintly, on its side: listen, then search before you step
+  for(const tr of EX.traps){ if(tr.heard||!tr.armed||tr.known) continue; const dx=xcx(tr.cell)-xcx(pc), dy=xcy(tr.cell)-xcy(pc);
+    if(Math.max(Math.abs(dx),Math.abs(dy))<=2&&(dx||dy)&&EX.vis[tr.cell]&&xLos(pc,tr.cell)){ tr.heard=true; xSfx('tick',Math.sign(dx)); xLog('A faint click, close by. Something underfoot is set.','dim'); } }
   // secrets: standing still you notice things; nearby secrets whisper
   if(EX.stillT>=2.5&&!EX.action&&now>(EX.passiveT||0)){ EX.passiveT=now+1500; xSearchRoll(.35,true); }
   if(now>(EX.whisperT||0)&&now>(EX.whisperCheck||0)){ EX.whisperCheck=now+1000; const s=xNearestSecret(4); if(s&&XR()<(EX.stillT>.8?.3:.12)){ EX.whisperT=now+12000; xLog(s.cue,'dim'); xSfx('whisper',Math.sign(xcx(s.cell)-xcx(pc))); } }
@@ -1001,7 +1004,11 @@ function xDlgPic(o){ const cv=$('#xdPic'), c=cv.getContext('2d'); c.clearRect(0,
 /* A card you get in the dungeon pops up so you can read it. Cards found together (a rich chest)
    show in one box; if another box is open, it waits for that one to close. */
 function xCardPop(c,isNew){ if(!EX||!c) return; (EX.cardQ=EX.cardQ||[]).push({c,isNew:!!isNew}); if(!EX.cardQT) EX.cardQT=setTimeout(xCardShow,300); }
-function xCardShow(){ if(!EX) return; EX.cardQT=0; const q=EX.cardQ||[]; if(!q.length) return;
+const XCARD_BIG=['rare','legendary','hero'];
+function xCardShow(){ if(!EX) return; EX.cardQT=0; let q=EX.cardQ||[]; if(!q.length) return;
+  // commons and uncommons: a toast and a line in the log, no stop; rares and better get the full box
+  const small=q.filter(x=>!XCARD_BIG.includes(x.c.rarity)); if(small.length){ q=q.filter(x=>XCARD_BIG.includes(x.c.rarity)); EX.cardQ=q;
+    const t=small.map(x=>(x.isNew?'New: ':'')+x.c.name).join(' · '); tip('🂠 '+t,2600); xLog('Card'+(small.length>1?'s':'')+' found: '+t+'.','loot'); xSfx('click'); if(!q.length) return; }
   if($('#xDialog').classList.contains('on')||$('#bagUI').classList.contains('on')){ EX.cardQT=setTimeout(xCardShow,400); return; }
   EX.cardQ=[]; const one=q.length===1;
   xDlg({title:one?(q[0].isNew?'New card!':'Card found'):q.length+' cards found', sub:one?COLORS[q[0].c.color].name+' · '+RARITY[q[0].c.rarity].n+' · '+TYPES[q[0].c.type].name:q.map(x=>x.c.name).join(' · '),
@@ -1169,6 +1176,7 @@ function xSfx(kind,pan){ if(!sfxOn()) return; try{
   out.gain.value=.6;
   if(kind==='whisper') noise(1.2,600,1700,.09);
   else if(kind==='click') tone(320,0,.06,'square',.05);
+  else if(kind==='tick'){ tone(1650,0,.025,'square',.035); tone(1400,.09,.025,'square',.03); }   // a hidden trap's mechanism, close by
   else if(kind==='swing'){ noise(.16,2400,600,.14,'bandpass'); }
   else if(kind==='shatter'){ noise(.22,3200,1200,.22,'highpass'); for(let k=0;k<4;k++) tone(1400+Math.random()*1600,k*.03,.07,'triangle',.04); }
   else if(kind==='door'){ noise(.32,420,180,.18,'bandpass'); tone(150+Math.random()*30,.02,.28,'sawtooth',.025); tone(90,.3,.12,'triangle',.08); }   // creak, then the knock against the wall

@@ -1493,3 +1493,11 @@ body.wide .labside{align-self:start; position:sticky; top:0;}
 /* the Soul orb only shows when a fight has a Soul (none do since heroes became deck cards) */
 .soul[hidden]{display:none;}
 
+
+/* a Charge card's uses (v123): big in the top left; yellow at half, red (and blinking) at a quarter or the last one */
+.card .chg{position:absolute; top:3px; left:3px; z-index:3; font-family:var(--font-t); font-size:19px; line-height:1; padding:2px 5px; background:#f4f1e6; color:#04080c; border:2px solid #000; pointer-events:none;}
+.card .chg.mid{background:#ffd23f;}
+.card .chg.low{background:#ff4d5e; color:#fff; animation:chgLow 1s steps(2) infinite;}
+@keyframes chgLow{50%{background:#a8182a;}}
+.qslot .chg{font-family:var(--font-t); font-size:14px; padding:0 4px; background:#f4f1e6; color:#04080c; border:2px solid #000; margin-left:4px;}
+.qslot .chg.mid{background:#ffd23f;} .qslot .chg.low{background:#ff4d5e; color:#fff;}

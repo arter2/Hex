@@ -78,12 +78,13 @@ function wrapGame(){ if(wrapped) return; wrapped=true;
   w('settleChargeUses',null,(burned)=>{ if(!R||!Array.isArray(burned)) return; for(const x of burned){ R.burned+=x.n||1; ev('card:burned',{frus:2*(x.n||1),note:x.card&&x.card.name}); } });
 }
 function hurtKind(why){ if(/rune’s backlash|biting stone|dead stone|guardian’s anger/.test(why)) return 'puzzle';   // not 'fire rune' or 'explosive rune': those are traps
-  if(/blade|flame jet/.test(why)) return 'hazard'; if(/lock|needle|trapped chest/.test(why)) return 'chest'; if(/ceiling|treasury|rubble/.test(why)) return 'room';
-  if(TRAPS&&Object.values(TRAPS).some(T=>T.name&&why.indexOf(T.name)>=0)) return 'trap'; return 'other:'+why.slice(0,24); }
+  if(/blade|flame jet/.test(why)) return 'hazard'; if(/trapped chest|trapped lock|needle/.test(why)) return 'chest';
+  if(TRAPS&&Object.values(TRAPS).some(T=>T.name&&why.indexOf(T.name)>=0)) return 'trap'; if(/ceiling|treasury|rubble/.test(why)) return 'room'; return 'other:'+why.slice(0,24); }
 // the lines a player reads, sorted into the moments that matter
 const LINES=[
   [/was waiting for you|Spikes shoot|dart flies|Stones crash|rune flares|needle in the lock|You catch the|First strike on/,'dup',{}],
   [/cold draft brushes|sounds hollow when you breathe|sconces here flickers/,'cue',{cue:true}],
+  [/A faint click, close by/,'trap:click',{click:true}],
   [/hidden door|wall slides open|stone grinds aside|loose stone/i,'secret',{fun:4}],
   [/You find a (?!hidden)/,'trap:spotted',{fun:1}],
   [/You disarm/,'disarm',{fun:1}],
@@ -113,6 +114,8 @@ const LINES=[
 ];
 function logLine(t,cls){ R.logN++; for(const [re,k,o] of LINES){ if(!re.test(t)) continue;
     if(o.seal&&EX){ const m=/lies on depth (\d+)/.exec(t); if(m&&+m[1]<EX.depth) R.sealUp={from:EX.depth,to:+m[1],t:R.T}; }
+    if(o.click&&EX){ const tr=EX.traps.filter(t=>t.heard&&t.armed&&!t.known).sort((a,b)=>Math.hypot(xcx(a.cell)-xcx(EX.pc),xcy(a.cell)-xcy(EX.pc))-Math.hypot(xcx(b.cell)-xcx(EX.pc),xcy(b.cell)-xcy(EX.pc)))[0];
+      R.clicks++; if(chance(P.listen)){ R.click={t:R.T,cell:EX.pc,side:tr?Math.sign(xcx(tr.cell)-xcx(EX.pc)):0}; TASK=null; releaseKeys(); EX.path=[]; EX.goal=null; } return; }
     if(o.cue&&EX){ const s=xNearestSecret(4); R.cue={t:R.T,cell:EX.pc,side:s?Math.sign(xcx(s.cell)-xcx(EX.pc)):0,d:EX.depth}; R.cues++; return; }
     if(o.once){ const key=k+':'+(EX?EX.depth:0)+':'+t; if(R.onceSeen[key]) return; R.onceSeen[key]=1; }
     if(o.every){ if(R.T-(R.lastK[k]||-1e9)<o.every) return; R.lastK[k]=R.T; }
@@ -138,8 +141,9 @@ function avoidSet(){ const s=new Set(), pz=EX.puzzle; if(pz&&!pz.solved&&(TASKNA
   return s; }
 // a path over cells you have seen, like the game's own path-to-tap, but stepping around puzzle fields
 function pathTo(goal,allow){ const av=avoidSet(); if(allow) for(const c of allow) av.delete(c);
-  const blocked=n=>n!==EX.pc&&n!==goal&&(xKnownTrap(n)||xStairCell(n,goal)||xChestAt(n)||xSolid(n)||av.has(n)||EX.groups.some(g=>g.cell===n&&g.dormant));
-  const d=xbfs(EX.t,EX.doors,goal,EX.seen,blocked); if(d[EX.pc]<0) return null;
+  const field=TASKNAME.startsWith('puzzle')||typeof xPuzzField!=='function'?new Set():xPuzzField(); if(field.has(goal)||field.has(EX.pc)||allow&&allow.length) field.clear();
+  const blocked=f=>n=>n!==EX.pc&&n!==goal&&(xKnownTrap(n)||xStairCell(n,goal)||xChestAt(n)||xSolid(n)||av.has(n)||f&&field.has(n)||EX.groups.some(g=>g.cell===n&&g.dormant));
+  let d=xbfs(EX.t,EX.doors,goal,EX.seen,blocked(true)); EX.fieldAvoid=field.size?field:null; if(d[EX.pc]<0&&field.size){ d=xbfs(EX.t,EX.doors,goal,EX.seen,blocked(false)); EX.fieldAvoid=null; } if(d[EX.pc]<0) return null;   // fieldAvoid: the game's corner-cutting keeps off it too
   const path=[]; let cur=EX.pc; for(let k=0;k<400&&cur!==goal;k++){ let best=-1; for(const n of adj4(cur)) if(d[n]>=0&&d[n]<d[cur]&&(best<0||d[n]<d[best])) best=n; if(best<0) return null; path.push(best); cur=best; }
   return path; }
 function distMap(){ const av=avoidSet(); return xbfs(EX.t,EX.doors,EX.pc,EX.seen,n=>n!==EX.pc&&(xKnownTrap(n)||xSolid(n)||xChestAt(n)||av.has(n)||n===EX.up||n===EX.down)); }
@@ -180,7 +184,8 @@ function whatBlocks(){ const n=EX.path[0]!=null?EX.path[0]:EX.goal&&EX.goal.cell
 
 /* ---------------- deciding what to do on the map ---------------- */
 let TASK=null, TASKNAME='', DONE=null, PZ=null;
-function newFloor(){ DONE={props:new Set(), chests:new Set(), doors:new Set(), items:new Set(), searched:new Set(), fails:new Map()}; PZ=null; R.floorT0=R.T; R.stairsSeenT=null; R.seen0=0;
+function newFloor(){ if(EX&&!EX.botCounted){ EX.botCounted=1; R.trapsPlaced=(R.trapsPlaced||0)+EX.traps.length; R.floorsCounted=(R.floorsCounted||0)+1; (R.trapHist=R.trapHist||{})[EX.traps.length]=(R.trapHist[EX.traps.length]||0)+1; (R.trapByDepth=R.trapByDepth||{})[EX.depth]=EX.traps.length; }
+  DONE={props:new Set(), chests:new Set(), doors:new Set(), items:new Set(), searched:new Set(), fails:new Map()}; PZ=null; R.floorT0=R.T; R.stairsSeenT=null; R.seen0=0;
   R.floors++; }
 function failed(key){ const n=(DONE.fails.get(key)||0)+1; DONE.fails.set(key,n); return n; }
 const wantMore=key=>(DONE.fails.get(key)||0)<2;
@@ -223,6 +228,10 @@ function chooseTask(){
   // hurt: a draught first
   if(EX.hp<m*P.drinkAt&&bagN('draught')>0){ xUseBag('draught'); return null; }
   if(EX.ail&&(EX.ail.poison>3||EX.ail.curse)&&bagN('antidote')>0&&chance(.5)){ xUseBag('antidote'); return null; }
+  // a trap's tell spotted, or its click heard: stop and search there before stepping on
+  if(R.spot!=null){ const c=R.spot; R.spot=null; return ['trap-look',(function*(){ yield* think(between(.3,.8)); EX.needInput=false; xSearchAt(c,true); R.searchT=R.T; while(EX.action) yield; })()]; }
+  if(R.click&&R.T-R.click.t<6){ const cl=R.click; R.click=null; const cand=[]; for(let dy=-2;dy<=2;dy++) for(let dx=-2;dx<=2;dx++){ if(cl.side&&Math.sign(dx)===-cl.side) continue; const c=xi(xcx(cl.cell)+dx,xcy(cl.cell)+dy); if(EX.seen[c]&&xPassable(c)&&(dx||dy)) cand.push(c); }
+    const picks=cand.sort(()=>rand()-.5).slice(0,2); return ['trap-listen',(function*(){ for(const c of picks){ yield* think(between(.3,.7)); EX.needInput=false; xSearchAt(c,true); R.searchT=R.T; while(EX.action) yield; if(EX.traps.some(t=>t.heard&&t.known)) break; } })()]; }
   // stuck out on the ice of an unsolved ice room: get back to the rim first
   { const pz=EX.puzzle; if(pz&&pz.kind==='ice'&&pz.ice.includes(EX.pc)) return ['off-ice',offIce(pz)]; }
   // the puzzle on this floor, if it is in sight and this player wants it
@@ -419,10 +428,7 @@ function dialogTick(){ const o=EX&&EX.dlg; if(!o){ DLG=null; return; } if(!DLG||
   if(title==='The guardian'){ const pz=EX.puzzle, Q=pz&&pz.q; const right=btns.find(b=>Q&&b.textContent===Q.a); const lore=/tale/.test(($('#xdText').textContent||''));
     const p=lore?P.lore:P.wheel; const b=right&&chance(p)?right:pick(btns); return click(b); }
   if(/^Trial of/.test(title)){ const go=btns.find(b=>/Begin/.test(b.textContent)); if(go&&chance(P.trialP)) return click(go); if(EX.puzzle&&PZ) giveUp('declined the trial'); return closeIt(); }
-  if(o.tabs&&o.tabs.some(t=>t[0]==='buy')){ // a merchant: a healing draught if it is cheap enough, then leave
-    if(o.tab==='buy'&&!DLG.bought){ DLG.bought=1; const r=rows.find(r=>/Healing Draught/.test(r.textContent)); const b=r&&r.querySelector('button:not([disabled])'); const price=b?parseInt(b.textContent,10):1e9;
-      if(b&&bagN('draught')<P.draughts&&save.gold-price>=P.reserve()){ R.shopBuys++; b.click(); DLG.t=R.T+1; return; } }
-    return closeIt(); }
+  if(o.tabs&&o.tabs.some(t=>t[0]==='buy')) return merchantTick(o,rows,closeIt);
   if(o.sub==='Sanctuary'){ const rest=btns.find(b=>b.textContent==='Rest'), bind=btns.find(b=>/Bind/.test(b.textContent)); if(bind) return click(bind); if(rest&&EX.hp<xmaxHp()*.8) return click(rest); return closeIt(); }
   // people: take a quest now and then
   const yes=btns.find(b=>/I’ll find it|Follow me|Agreed|Show me|Trade a shard|Go, quickly|Face it|Get up|Keep exploring|Got it/.test(b.textContent));
@@ -432,6 +438,39 @@ function dialogTick(){ const o=EX&&EX.dlg; if(!o){ DLG=null; return; } if(!DLG||
   if(main&&/\d/.test(main.textContent)){ const price=parseInt(main.textContent.replace(/[^\d]/g,''),10)||0; if(save.gold-price>=P.reserve()&&chance(P.spendP)) return click(main); return closeIt(); }
   if(main&&!/Build deck/.test(main.textContent)) return click(main);
   return closeIt(); }
+/* ---------------- merchants and the camp shop ----------------
+   What a player buys: gear better than what they wear, an upgrade for the weapon or armour they wear,
+   a card worth having, a blessing, healing; what they sell: gear they do not wear. Careful players keep a
+   reserve (P.reserve); the shopaholic spends nearly everything. Every gold piece spent is logged by kind. */
+const spendLog=(k,n)=>{ if(n>0) R.spend[k]=(R.spend[k]||0)+n; };
+function wornTier(slot){ const g=gearState(save).gear; const ids=slot==='ring'?[g.ring1,g.ring2]:[g[slot]]; let lo=99; for(const id of ids){ const G=id&&GEAR[id]; lo=Math.min(lo,G?(G.legendary?9:G.tier||0):-1); } return lo; }
+const gearBetter=id=>{ const G=GEAR[id]; return G&&(G.legendary?9:G.tier||0)>wornTier(G.slot); };
+const budget=price=>save.gold-price>=(P.shopaholic?60:P.reserve());
+function cardWanted(c){ if(!c) return false; const good=['rare','legendary'].includes(c.rarity)||c.rarity==='uncommon'&&c.color===P.lean; return good&&(c.color===P.lean||NEUTRAL.includes(c.color)||P.shopaholic)&&(save.owned[c.id]||0)<copyLimit(c); }
+function merchantTick(o,rows,closeIt){ const p=EX.props.find(q=>q.name===o.title&&q.stock); if(!p) return closeIt(); DLG.n=0;
+  const rowFor=name=>rows.find(r=>{ const b=r.querySelector('.nm b'); return b&&b.textContent.replace(' ✹','').indexOf(name)===0; });
+  const go=(r,kind,price)=>{ const b=r&&r.querySelector('button:not([disabled])'); if(!b) return false; const g0=save.gold; b.click(); spendLog(kind,g0-save.gold); if(save.gold<g0) R.shopBuys++; DLG.t=R.T+between(.8,1.6); return true; };
+  if(o.tab==='buy'){ for(const it of p.stock){ if(it.sold||save.gold<it.price||!budget(it.price)) continue;
+      let want=false, name='';
+      if(it.kind==='gear'){ want=gearBetter(it.id)&&(!it.shady||P.shopaholic||chance(.5)); name=GEAR[it.id].name; }
+      else if(it.kind==='card'){ want=cardWanted(it.card)&&chance(P.spendP+.3); name=it.card.name; }
+      else if(it.kind==='bag'){ want=it.k==='draught'&&bagN('draught')<P.draughts||it.k==='antidote'&&bagN('antidote')<1&&chance(.5); name=BAG[it.k].name; }
+      else if(it.kind==='perm'){ want=chance(P.shopaholic?.9:.6); name='Vial of '+PERM[it.k].name; }
+      else if(it.kind==='mat'){ want=it.k==='ore'&&matN('ore')<3&&chance(.6); name=MATS[it.k].name; }
+      if(!want||DLG['x'+name]) continue; DLG['x'+name]=1; const r=rowFor(name); if(r&&go(r,it.kind==='bag'?'potions':it.kind==='perm'?'blessings':it.kind==='mat'?'materials':it.kind,it.price)){ if(it.kind==='gear') PT.run.wearBetter(save,[it.id]); return; } }
+    const sell=document.querySelector('#xdTabs .chip:nth-child(2)'); if(sell&&!DLG.sold){ DLG.sold=1; sell.click(); DLG.t=R.T+between(.5,1); return; } }
+  if(o.tab==='sell'){ if(chance(P.sellP||.8)){ const r=rows.find(r=>/Not worn/.test(r.textContent)&&r.querySelector('button:not([disabled])')); if(r){ const g0=save.gold; r.querySelector('button').click(); R.sold=(R.sold||0)+(save.gold-g0); DLG.t=R.T+between(.5,1); return; } }
+    const sv=document.querySelector('#xdTabs .chip:nth-child(3)'); if(sv&&!DLG.serv){ DLG.serv=1; sv.click(); DLG.t=R.T+between(.5,1); return; } }
+  if(o.tab==='services'){ for(const r of rows){ const b=r.querySelector('button:not([disabled])'); if(!b||DLG['s'+r.textContent.slice(0,30)]) continue; const t=r.textContent, m=/(\d+) gold/.exec(t), price=m?+m[1]:0;
+      const want=/^Upgrade/.test(t)&&matN('ore')>=1&&budget(price)||/Lift the curse/.test(t)&&budget(price)||/Shards for a blessing/.test(t)&&matN('shard')>=3; DLG['s'+t.slice(0,30)]=1;
+      if(want&&go(r,/Upgrade/.test(t)?'upgrades':/curse/.test(t)?'curses':'blessings',price)) return; } }
+  return closeIt(); }
+// the camp shop: recharge the deck's spent Charge cards, then better gear and a good card from today's stock (packs come after)
+function campShop(){ const st=shopStock(), buyO=(o,kind)=>{ if(save.gold<o.price||!budget(o.price)) return false; const g0=save.gold; shopBuy(o); spendLog(kind,g0-save.gold); R.T+=between(2,5)*P.read; return save.gold<g0; };
+  const deck=new Set(save.decks[0].list); for(const o of shopRecharges()){ if(!deck.has(o.id)&&!P.shopaholic) continue; const c=CARDS[o.id]; if(o.low/c.uses>(P.rechargeAt||.5)) continue; buyO(o,'recharges'); }
+  for(const id of st.gear){ if(st.sold.includes('g:'+id)||!gearBetter(id)) continue; if(buyO({kind:'gear',id,price:SHOP_GEAR_PRICE(GEAR[id])},'gear')) PT.run.wearBetter(save,[id]); }
+  for(const id of st.cards){ if(st.sold.includes('c:'+id)||!cardWanted(CARDS[id])||!chance(P.spendP+.3)) continue; buyO({kind:'card',id,price:SHOP_CARD_PRICE[CARDS[id].rarity]||80},'card'); }
+  try{ $('#scrShop').classList.remove('on'); }catch(e){} }
 let RV=null;
 function revealTick(){ if(!on('reveal')){ RV=null; return; } if(!RV) RV={t:R.T+between(1,2.5)*P.read}; if(R.T<RV.t) return;
   const bs=[...document.querySelectorAll('#rvBtns .btn')]; const b=bs.find(x=>!x.classList.contains('ghost'))||bs[0]; RV=null; if(b) b.click(); }
@@ -449,8 +488,9 @@ function campVisit(why){ const t0=R.T; if(R.shopTrip&&why!=='death'){ why='shop'
   try{ PT.run.wearBetter(save,Object.keys(gearState(save).items)); }catch(e){ err('gear',e); }
   if(pointsLeft(save.char)>0){ PT.run.spendAll(save.char,P.statStyle); lockChar(save.char); }
   // the shop: packs at the price for the depth you have reached
+  try{ campShop(); }catch(e){ err('camp shop',e); }
   const fam=packPrice(true,save.deepest), boo=packPrice(false,save.deepest); let bought=0;
-  const buy=f=>{ const pr=f?fam:boo; if(save.gold<pr) return false; save.gold-=pr; R.spent+=pr; R.packs++; bought++; const res=addCards(save,openPack(save.deepest,f?lean:null)); R.T+=between(4,9)*P.read; return true; };
+  const buy=f=>{ const pr=f?fam:boo; if(save.gold<pr) return false; save.gold-=pr; R.spent+=pr; spendLog('packs',pr); R.packs++; bought++; const res=addCards(save,openPack(save.deepest,f?lean:null)); R.T+=between(4,9)*P.read; return true; };
   if(P.shopaholic){ while(save.gold>=boo){ if(!buy(chance(.7)&&save.gold>=fam)) break; } }
   else { const reserve=P.reserve(); for(let k=0;k<P.packsPerVisit;k++){ if(save.gold-fam>=reserve) buy(true); else if(P.boosters&&save.gold-boo>=reserve) buy(false); else break; } }
   if(!bought&&save.gold<boo) ev('shop:broke',{frus:.6,note:'pack '+boo+' gold, have '+save.gold});
@@ -472,7 +512,7 @@ C.run=function(cfg){
   VT=0; Q.length=0; DBASE=1.7e12+(cfg.seed||1)*86400000;
   P=Object.assign({lean:cfg.lean},cfg.p); const resv=P.reserveBase||200; P.reserve=()=>resv+10*(save?save.deepest:1);
   R={label:cfg.label, lean:cfg.lean, seed:cfg.seed, T:0, fun:0, frus:0, mood:0, moodMin:0, win10:[], quits:[], events:[], errors:[], deaths:[], camps:[], puzzles:[], fights:[],
-     hurt:{}, cards:{}, dlgs:{}, cues:0, trace:[], traceOn:!!cfg.trace, dlgN:0, recentDlg:[], onceSeen:{}, lastK:{}, bag:{}, time:{walk:0,fight:0,puzzle:0,dialog:0,camp:0,other:0}, logN:0,
+     hurt:{}, cards:{}, dlgs:{}, cues:0, clicks:0, tells:0, tellsSeen:0, spend:{}, trace:[], traceOn:!!cfg.trace, dlgN:0, recentDlg:[], onceSeen:{}, lastK:{}, bag:{}, time:{walk:0,fight:0,puzzle:0,dialog:0,camp:0,other:0}, logN:0,
      floors:0, stuck:0, searches:0, searchHits:0, campTrips:0, burned:0, spent:0, packs:0, packsOpened:0, shopBuys:0, idolsSeen:0, entered:0, lastNovel:0, depthT:{}, maxDepth:1};
   // a new character: the one-colour deal, the bot's stats, a deck in its style
   const ch=newChar('human',0); PT.run.spendAll(ch,P.statStyle);
@@ -521,6 +561,7 @@ C.run=function(cfg){
     // a first strike on a monster in reach
     if(P.strikeP&&!EX.action&&EX.groups.some(g=>!g.dormant&&EX.vis[g.cell]&&Math.hypot(g.x-EX.px,g.z-EX.pz)<XCS*1.7)&&chance(P.strikeP*DT*4)) xStrike();
     R.depthT[EX.depth]=(R.depthT[EX.depth]||0)+DT;
+    for(const tr of EX.traps){ if(tr.eyed||!tr.armed||tr.known||!EX.vis[tr.cell]) continue; if(Math.hypot(xw(tr.cell)-EX.px,xz(tr.cell)-EX.pz)/XCS>3) continue; tr.eyed=true; R.tells++; if(chance(P.eye)){ R.tellsSeen++; R.spot=tr.cell; TASK=null; releaseKeys(); EX.path=[]; EX.goal=null; } }
     if(EX.slide&&!R.sliding&&!TASKNAME.startsWith('puzzle')&&TASKNAME!=='off-ice'){ R.iceSlid=(R.iceSlid||0)+1; ev('puzzle:crossed',{frus:2,note:'slid across the ice crossing the room on the way somewhere else'}); } R.sliding=!!EX.slide;
     if(!TASK){ const t=chooseTask(); if(t){ TASKNAME=t[0]; TASK=t[1]; R.tasks=(R.tasks||{}); R.tasks[TASKNAME.split(':')[0]]=(R.tasks[TASKNAME.split(':')[0]]||0)+1; } }
     if(TASK){ let r; try{ r=TASK.next(); }catch(e){ err('task '+TASKNAME,e); r={done:true}; } if(r.done){ TASK=null; releaseKeys(); } }
@@ -532,7 +573,7 @@ C.run=function(cfg){
   const sum=(a,f)=>a.reduce((s,x)=>s+f(x),0);
   return {label:R.label, lean:R.lean, seed:R.seed, hours:+(R.T/3600).toFixed(2), maxDepth:R.maxDepth, level:save.level, gold:save.gold, spent:R.spent, packs:R.packs, fun:+R.fun.toFixed(1), frus:+R.frus.toFixed(1), moodMin:+R.moodMin.toFixed(1),
     quits:R.quits, deaths:R.deaths, camps:R.camps, puzzles:R.puzzles.map(p=>({kind:p.kind,d:p.d,ok:!!p.ok,gaveUp:!!p.gaveUp&&!p.skipped,skipped:!!p.skipped,time:p.time,mistakes:p.mistakes,dmg:p.dmg,steps:p.steps,why:p.why})),
-    fights:R.fights, hurt:R.hurt, cards:R.cards, dlgN:R.dlgN, dlgs:R.dlgs, time:Object.fromEntries(Object.entries(R.time).map(([k,v])=>[k,Math.round(v)])), floors:R.floors, stuck:R.stuck, searches:R.searches, searchHits:R.searchHits, cues:R.cues, fieldBitten:R.fieldBitten||0, iceSlid:R.iceSlid||0, burned:R.burned, fled:R.fled||0, stairRetry:R.stairRetry||0, floorMoves:R.floorMoves||0, routeFail:R.routeFail||0, routeWhy:R.routeWhy, stairMap:R.stairMap, climbLog:R.climbLog, climbWhy:R.climbWhy,
+    fights:R.fights, hurt:R.hurt, cards:R.cards, dlgN:R.dlgN, dlgs:R.dlgs, time:Object.fromEntries(Object.entries(R.time).map(([k,v])=>[k,Math.round(v)])), floors:R.floors, stuck:R.stuck, searches:R.searches, searchHits:R.searchHits, cues:R.cues, clicks:R.clicks, tells:R.tells, tellsSeen:R.tellsSeen, spend:R.spend, trapsPlaced:R.trapsPlaced||0, floorsCounted:R.floorsCounted||0, trapHist:R.trapHist, sold:R.sold||0, fieldBitten:R.fieldBitten||0, iceSlid:R.iceSlid||0, burned:R.burned, fled:R.fled||0, stairRetry:R.stairRetry||0, floorMoves:R.floorMoves||0, routeFail:R.routeFail||0, routeWhy:R.routeWhy, stairMap:R.stairMap, climbLog:R.climbLog, climbWhy:R.climbWhy,
     bag:R.bag, campTrips:R.campTrips, tasks:R.tasks, depthT:Object.fromEntries(Object.entries(R.depthT).map(([k,v])=>[k,Math.round(v)])), startDeck:R.startDeck, endDeck:PT.run.deckInfo(save.decks[0].list), events:R.events, trace:R.trace, ring:R.ringDump, doorLog:R.doorLog, upLog:R.upLog, bossLog:R.bossLog, errors:R.errors.slice(0,20)};
 };
 // an ASCII picture of the floor around you, for debugging: # rock, . seen floor, ? unseen, + door, D stairs down, @ you, F frontier

@@ -25,6 +25,11 @@ const TRAPS={
   trapdoor:{name:'trapdoor', dmg:[6,9], col:'#140a10', text:'The floor collapses beneath you!', fall:true},
   teleport:{name:'teleport rune', dmg:[0,0], col:'#b48cff', text:'A violet rune flares and the world lurches sideways!', warp:true},
 };
+// how many hidden traps a floor holds: rare, and a different number every floor. An easy floor (the first three,
+// or the Quiet Way) has 2 at most; no floor ever more than 8; deeper floors can hold more but often hold fewer
+function xTrapCount(depth,RT,branch){ RT=RT||{traps:1}; const easy=depth<=3||RT.traps<1;
+  const cap=easy?2:Math.min(8,Math.round((2+Math.floor(depth/4))*RT.traps)), lo=easy?0:Math.max(1,Math.floor(cap/3));
+  return Math.max(0,lo+Math.floor(Math.random()*(cap-lo+1))-(branch?1:0)); }
 // which hidden traps a floor can hold: deeper floors add worse ones (a trapdoor never sits on a boss floor, so no one falls past a boss)
 function xTrapKinds(depth){ const k=['spike','spike','dart','dart'];
   if(depth>=2) k.push('fire','pit','teleport','teleport'); if(depth>=3) k.push('alarm','blocks'); if(depth>=3&&!isBossDepth(depth)) k.push('trapdoor'); if(depth>=4) k.push('explosive','fire'); if(depth>=6&&!isBossDepth(depth)) k.push('trapdoor');
@@ -173,8 +178,9 @@ function buildFloor(depth,hp,opt){
   const kinds=typeof xTrapKinds==='function'?xTrapKinds(depth):['spike','spike','dart','dart','fire','pit','alarm'];
   const quiet=i=>{ const r=F.room[i]; return r>=0&&(F.rooms[r]===F.start||F.rooms[r].role||F.rooms[r].side); };
   const floorCells=[]; for(let i=0;i<XN*XN;i++) if(F.t[i]===T_FLOOR&&!quiet(i)&&!taken.has(i)) floorCells.push(i);
-  const nT=Math.round(Math.max(0,Math.min(9,2+Math.floor(depth*.4))-(opt.branch?1:0))*RT.traps);   // a few, not a minefield: 2 early, up to 9 deep down on a floor this size
-  for(let n=0;n<nT&&floorCells.length;n++){ const c=floorCells.splice(Math.floor(Math.random()*floorCells.length),1)[0]; taken.add(c); EX.traps.push({cell:c, kind:pick(kinds), known:false, armed:true}); }
+  // varied: each kind once before any comes again, so a floor rarely holds two of the same
+  const nT=xTrapCount(depth,RT,opt.branch), bag=[...new Set(kinds)].sort(()=>Math.random()-.5);
+  for(let n=0;n<nT&&floorCells.length;n++){ const c=floorCells.splice(Math.floor(Math.random()*floorCells.length),1)[0]; taken.add(c); EX.traps.push({cell:c, kind:bag[n%bag.length], known:false, armed:true}); }
   // enemy groups: some asleep, some wandering; on a boss depth the boss waits by the stairs down
   const nG=Math.min(open.length,Math.round(((opt.branch?1:5)+Math.floor(depth/2))*RT.foes));
   const rooms=open.slice().sort(()=>Math.random()-.5).filter(r=>r!==F.exit||!isBossDepth(depth)).slice(0,nG);
@@ -1020,11 +1026,11 @@ const XTELL={spike:{dots:5,glint:'#dfe6f0'}, dart:{glint:'#c8ffb8'}, fire:{rune:
 function xTrapTell(tr,grp){ const T=TRAPS[tr.kind], K=XTELL[tr.kind]||{}, g=new THREE.Group(); g.position.set(xw(tr.cell),0,xz(tr.cell));
   const m=(c,o)=>new THREE.MeshBasicMaterial({color:c,transparent:true,opacity:o,depthWrite:false}), flat=(geo,mat,x,z,y)=>{ const o=new THREE.Mesh(geo,mat); o.rotation.x=-Math.PI/2; o.position.set(x||0,y||.012,z||0); g.add(o); return o; };
   // the seam: four thin dark strips round a stone a little smaller than the cell
-  const s=XCS*.42, w=.035, seam=m(0x000000,K.dark?.32:.18);
+  const s=XCS*.42, w=.05, seam=m(0x000000,K.dark?.5:.38);   // the seam reads clearly once you are looking for it
   for(const [x,z,a,b] of [[0,-s,2*s,w],[0,s,2*s,w],[-s,0,w,2*s],[s,0,w,2*s]]) flat(new THREE.PlaneGeometry(a,b),seam,x,z);
   if(K.dark){ const sc=m(0x000000,.16); flat(new THREE.PlaneGeometry(.5,.03),sc,-.2,.25); flat(new THREE.PlaneGeometry(.35,.03),sc,.25,-.15); }
-  if(K.dots){ const h=m(0x000000,.3); for(let k=0;k<K.dots;k++) flat(new THREE.CircleGeometry(.035,6),h,-.4+k*.2,(k%2-.5)*.4); }
-  if(K.grit){ const gm=m(0xb8b0c8,.22); for(let k=0;k<7;k++) flat(new THREE.CircleGeometry(.025,5),gm,Math.sin(k*2.3)*.5,Math.cos(k*1.7)*.5); }
+  if(K.dots){ const h=m(0x000000,.5); for(let k=0;k<K.dots;k++) flat(new THREE.CircleGeometry(.035,6),h,-.4+k*.2,(k%2-.5)*.4); }
+  if(K.grit){ const gm=m(0xb8b0c8,.4); for(let k=0;k<7;k++) flat(new THREE.CircleGeometry(.025,5),gm,Math.sin(k*2.3)*.5,Math.cos(k*1.7)*.5); }
   if(K.rune){ const r=flat(new THREE.RingGeometry(.3,.34,16),m(new THREE.Color(T.col),0),0,0,.014); g.userData.rune=r; }
   if(K.glint){ const sp=new THREE.Sprite(new THREE.SpriteMaterial({map:xGlowTex(),color:new THREE.Color(K.glint),transparent:true,opacity:0,depthWrite:false,blending:THREE.AdditiveBlending}));
     sp.scale.set(.32,.32,1); sp.position.set(.2,.08,-.1); g.add(sp); g.userData.glint=sp; }
@@ -1032,9 +1038,10 @@ function xTrapTell(tr,grp){ const T=TRAPS[tr.kind], K=XTELL[tr.kind]||{}, g=new 
 // each frame: show the tells you can see, pulse runes and flash glints
 function xTellDraw(T){ for(const tr of EX.traps){ const g=tr.tell; if(!g) continue;
   const on=tr.armed&&!tr.known&&!!EX.vis[tr.cell]; g.visible=on; if(!on) continue;
-  const near=Math.hypot(xw(tr.cell)-EX.px,xz(tr.cell)-EX.pz)/XCS<=3, ph=g.userData.ph, cyc=(T+ph)%4.5;
-  if(g.userData.rune) g.userData.rune.material.opacity=cyc<.9?.16*Math.sin(cyc/.9*Math.PI):0;   // a faint breath of colour every few seconds
-  if(g.userData.glint) g.userData.glint.material.opacity=near&&cyc>3.9&&cyc<4.15?.9*Math.sin((cyc-3.9)/.25*Math.PI):0; } }
+  const ph=g.userData.ph, cyc=(T+ph)%4.5;
+  if(g.userData.rune) g.userData.rune.material.opacity=.12+(cyc<1.2?.35*Math.sin(cyc/1.2*Math.PI):0);   // always faintly there, breathing brighter every few seconds
+  const near4=Math.hypot(xw(tr.cell)-EX.px,xz(tr.cell)-EX.pz)/XCS<=4, c2=(T+ph)%2.5;
+  if(g.userData.glint) g.userData.glint.material.opacity=near4&&c2>2.1&&c2<2.4?.95*Math.sin((c2-2.1)/.3*Math.PI):0; } }
 function xTrapMesh(tr){ if(tr.mesh||!X3) return; if(tr.tell) tr.tell.visible=false; const T=TRAPS[tr.kind], g=new THREE.Group(); g.position.set(xw(tr.cell),0,xz(tr.cell));
   g.add(xBox(1.3,.06,1.3,xMat(new THREE.Color(T.col).multiplyScalar(.6)),0,.03,0));
   if(tr.kind==='spike') for(let k=0;k<5;k++){ const s=new THREE.Mesh(new THREE.ConeGeometry(.1,.4,4),xMat(0xb8c0cc)); s.position.set(-.4+k*.2,.2,(k%2-.5)*.4); g.add(s); }
@@ -1084,8 +1091,13 @@ document.addEventListener('keyup',e=>{ XKEY[e.key.toLowerCase()]=false; });
    it only changes when the finger moves. */
 // walking somewhere on your own goes round the stairs (stepping on them climbs or descends), unless they are where you are going
 const xStairCell=(n,goal)=>n!==goal&&(n===EX.up||n===EX.down);
+// the cells of a puzzle you would rather not cross on the way somewhere else: its stones and pipes while unsolved,
+// and its ice (which stays slippery). A tap walks round them if it can, and over them only if there is no other way
+const xPuzzField=()=>{ const pz=EX.puzzle, s=new Set(); if(!pz) return s; if(!pz.solved&&pz.tiles) for(const t of pz.tiles) s.add(t.cell); if(pz.ice) for(const c of pz.ice) s.add(c); return s; };
 function xPathToCell(goal){ const blocked=n=>xKnownTrap(n)||xStairCell(n,goal)||xChestAt(n)&&n!==goal||typeof xSolid==='function'&&xSolid(n)&&n!==goal;
-  const d=xbfs(EX.t,EX.doors,goal,EX.seen,n=>blocked(n)&&n!==EX.pc);
+  const field=xPuzzField(); EX.fieldAvoid=field.size&&!field.has(goal)&&!field.has(EX.pc)?field:null;
+  let d=xbfs(EX.t,EX.doors,goal,EX.seen,n=>(blocked(n)||EX.fieldAvoid&&EX.fieldAvoid.has(n))&&n!==EX.pc);
+  if(d[EX.pc]<0&&EX.fieldAvoid){ EX.fieldAvoid=null; d=xbfs(EX.t,EX.doors,goal,EX.seen,n=>blocked(n)&&n!==EX.pc); }
   if(d[EX.pc]<0) return null; const path=[]; let cur=EX.pc;
   while(cur!==goal){ const x=xcx(cur), y=xcy(cur); let best=-1;
     for(const n of [xi(x+1,y),xi(x-1,y),xi(x,y+1),xi(x,y-1)]) if(d[n]>=0&&d[n]<d[cur]&&(best<0||d[n]<d[best])) best=n;
@@ -1105,7 +1117,7 @@ function xTap(e){ const [ax,ay]=appXY(e.clientX,e.clientY); xGoalAt(ax,ay); }
 // can you walk straight from (x,z) to the middle of cell n? (open floor all the way, with room for you)
 function xStraight(x,z,n){ const tx=xw(n), tz=xz(n), L=Math.hypot(tx-x,tz-z), steps=Math.ceil(L/.3), r=.45;
   for(let k=1;k<=steps;k++){ const px=x+(tx-x)*k/steps, pz=z+(tz-z)*k/steps;
-    for(const [ox,oz] of [[-r,-r],[r,-r],[-r,r],[r,r]]){ const c=xcell(px+ox,pz+oz); if(c===EX.pc) continue; if(!xClear(c)||xKnownTrap(c)||xChestAt(c)||xStairCell(c,EX.goal&&EX.goal.cell)||typeof xSolid==='function'&&xSolid(c)) return false; } }
+    for(const [ox,oz] of [[-r,-r],[r,-r],[-r,r],[r,r]]){ const c=xcell(px+ox,pz+oz); if(c===EX.pc) continue; if(!xClear(c)||xKnownTrap(c)||xChestAt(c)||xStairCell(c,EX.goal&&EX.goal.cell)||typeof xSolid==='function'&&xSolid(c)||EX.fieldAvoid&&EX.fieldAvoid.has(c)) return false; } }
   return true; }
 // the point on the floor under a screen point (app coordinates), or null
 function xFloorAt(ax,ay){ const G=X3; if(!G) return null; const r=appBox($('#xView')); if(!r.width) return null;

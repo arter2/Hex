@@ -479,6 +479,7 @@ function castCard(){
   const p=b.player; if(p.castCd>0) return;
   const fq=b.piles.queue[0]; if(fq&&fq.frozenT>0){ floater('Frozen ❄',p.tile,'#9fd0ff'); return; }
   const inst=castNext(b.piles); if(!inst) return;
+  if(inst.card.uses&&!inst.temp&&inst.left!=null&&inst.left<=1&&inst.warnedAt!==inst.left){ inst.warnedAt=inst.left; b.hooks.onLowCharge&&b.hooks.onLowCharge(inst); }   // last charge, or spent
   p.castCd=(p.hasteT>0||heroOn('volta')||heroAura('haste')?.25:.45)*(p.castSlow||1);
   playCard(inst); b.casts=(b.casts||0)+1; soulGain(B.soul&&inst.card.color===B.soul.card.color?18:8);
   if(inst.straight){ // Straight: the next two cards follow in one chain, then a finisher

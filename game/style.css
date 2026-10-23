@@ -1482,3 +1482,14 @@ body.wide .labside{align-self:start; position:sticky; top:0;}
 .mlprof .chip.dirty::after{content:' •'; color:#ff9a3a;}
 .mlprofbar{display:flex; gap:6px; align-items:center; margin-bottom:4px;}
 .mlprofbar input{flex:1; min-width:0; background:#05070a; color:#e8eef8; border:1px solid #3a4656; border-radius:6px; padding:6px 8px; font-size:13px;}
+/* the battle's top bar, compact (v121): HP, the Spell gauge and the menu on one row, then one line of where you are and
+   what is left in your deck; the buffs row takes room only when there is a buff */
+#hudTop{grid-template-columns:minmax(118px,32%) 1fr auto; grid-template-areas:"hp gauge menu" "info info info" "buffs buffs buffs"; gap:4px 8px; padding:6px 10px 2px;}
+#hudTop .hp{grid-area:hp; min-width:0;} #hudTop #btnMenu{grid-area:menu;} #hudTop #btnCustom.custgauge{grid-area:gauge; grid-column:auto; min-height:34px;}
+#hudTop .hp .meter.big{height:34px;} #hudTop .hp .meter.big span{font-size:16px; padding-left:8px; white-space:nowrap;}
+#hudTop .info{grid-area:info; flex-direction:row; justify-content:space-between; align-items:baseline; gap:12px; max-width:none; font-size:14px; line-height:1.1;}
+#hudTop #depthTxt{flex:1 1 auto; min-width:0;} #hudTop #depthTxt i{font-style:normal;} #hudTop #pileTxt{flex:none;}
+#hudTop #buffs{grid-area:buffs; min-height:0;} #hudTop #buffs:empty{display:none;}
+/* the Soul orb only shows when a fight has a Soul (none do since heroes became deck cards) */
+.soul[hidden]{display:none;}
+

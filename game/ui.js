@@ -913,8 +913,8 @@ function hud(force){
   const p=b.player, pl=b.piles;
   set('hp',p.hp+'/'+p.maxHp,()=>hpMeter($('#hpBar'),$('#hpTxt'),p.hp,p.maxHp));
   set('run',runBlocked()?0:1,()=>{ $('#btnRun').hidden=!!runBlocked(); });
-  set('depth',b.depth+'|'+Math.ceil(b.wave),()=>{ const t=$('#depthTxt'); t.textContent='Depth '+b.depth+' · '+areaOf(b.depth).name+(b.waves.length>1?' · Wave '+(Math.ceil(b.wave)+1)+'/'+b.waves.length:''); t.style.color=areaOf(b.depth).glow; });
-  set('piles',pl.draw.length+'|'+pl.hand.length+'|'+pl.discard.length,()=>$('#pileTxt').textContent='Deck '+pl.draw.length+' · Hand '+pl.hand.length+' · Used '+pl.discard.length);
+  set('depth',b.depth+'|'+Math.ceil(b.wave),()=>{ const t=$('#depthTxt'); t.innerHTML='Depth '+b.depth+(b.waves.length>1?' · Wave '+(Math.ceil(b.wave)+1)+'/'+b.waves.length:'')+' · <i>'+esc(areaOf(b.depth).name)+'</i>'; t.style.color=areaOf(b.depth).glow; });
+  set('piles',pl.draw.length+'|'+pl.hand.length+'|'+pl.discard.length,()=>$('#pileTxt').textContent='Deck '+pl.draw.length+' · Hand '+pl.hand.length);   // what you have used: on the Spell screen
   set('gauge',Math.round(b.gauge*10),()=>$('#gaugeBar').style.width=(b.gauge/GAUGE_MAX*100)+'%');
   const buffs=[]; if(p.barrier>0) buffs.push('🛡 '+Math.ceil(p.barrier)+' · '+Math.ceil(p.shieldT)+'s'); if(p.dodge) buffs.push('💨 Dodge'); if(p.invT>0) buffs.push('🌀 Phase');
   if(p.setT>0) buffs.push('ᚱ Wand ×2.5 '+Math.ceil(p.setT)+'s'); else if(p.powerT>0) buffs.push('⚡ Wand ×1.8 '+Math.ceil(p.powerT)+'s'); if(p.pactT>0) buffs.push('☾ Pact '+Math.ceil(p.pactT)+'s'); if(p.courageT>0) buffs.push('☀ Courage '+Math.ceil(p.courageT)+'s'); if(p.intervene) buffs.push('✟ Intervention');

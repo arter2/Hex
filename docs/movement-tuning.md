@@ -96,3 +96,24 @@ swing, because each reverse came before the old speed had bled off.
   time.
 - **Skid** now defaults to 0.08 s (it was 0.22 s, the same as braking), so rocking the stick turns you round
   instead of drifting.
+
+## Flick to throw (v115)
+
+The v114 flick still often didn't register on a phone. It only counted if your thumb left the stick's middle and let
+go within 180 ms, still outside the middle, and a natural flick is often longer than that or springs back first.
+It also only moved one tile, so it felt like no momentum was kept.
+
+Now a flick is read from how fast your thumb is still moving as you let go (its last 90 ms), however long you held
+before:
+
+| Setting | Default | What it does |
+|---|---|---|
+| Flick to throw (`mvFlick`) | on | |
+| Lightest flick (`mvFlickV0`) | 450 px/s | Slower lets go slide to a stop as usual |
+| Hardest flick (`mvFlickV1`) | 1400 px/s | |
+| Light flick tiles (`mvFlickMin`) | 2 | One tile glided, landing on the second |
+| Hard flick tiles (`mvFlickMax`) | 3 | Two tiles glided, slowing and landing on the third; flicks between round between |
+| Glide time (`mvFlickTime`) | 0.4 s | You're launched at the speed that covers the distance in this time, slowing evenly all the way, so you land on the tile's middle with no pull |
+
+A flick back returns you (counting your own tile's middle first if it is still ahead of you), and on hex,
+flicks in a row keep to the line the first started from.

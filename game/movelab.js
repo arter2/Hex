@@ -39,10 +39,11 @@ const MLAB_ROWS=[
   ['Board',[['cols','Columns per side',2,12,1,'board'],['rows','Rows',3,15,1,'board']]],
   ['Turrets',[['turrets','Crossbowmen',0,6,1,'board'],['every','Fire every (s)',.2,10,.1,'turret'],['shotSpd','Shot speed (tiles/s)',2,60,1,'turret']]],
   ['Joystick',[['mvStick','Joystick (off: follow finger)',0,0,0,'tog'],['mvStickShow','Show the stick',0,0,0,'tog'],['mvStickR','Stick reach (px)',20,160,1,'mv'],['mvDead','Dead zone',0,.7,.01,'mv'],
-    ['mvStickSpeed','Top speed (tiles/s)',1,12,.1,'mv'],['mvStickMin','Slowest',0,1,.01,'mv'],['mvStickFull','Full speed at',.1,1,.01,'mv'],['mvCurve','Curve',.2,4,.05,'mv'],['mvFlick','Flick to dodge',0,0,0,'tog'],['mvFlickMs','Flick time (ms)',60,400,10,'mv'],['mvTapMs','Tap time (ms)',50,600,10,'mv'],['mvTapPx','Tap slop (px)',2,40,1,'mv']]],
+    ['mvStickSpeed','Top speed (tiles/s)',1,12,.1,'mv'],['mvStickMin','Slowest',0,1,.01,'mv'],['mvStickFull','Full speed at',.1,1,.01,'mv'],['mvCurve','Curve',.2,4,.05,'mv'],['mvTapMs','Tap time (ms)',50,600,10,'mv'],['mvTapPx','Tap slop (px)',2,40,1,'mv']]],
   ['Walking',[['mvShow','Show movement',0,0,0,'tog'],['mvEven','Even screen speed',0,1,.01,'mv'],['mvSpeed','Tap/key speed',.3,5,.05,'mv'],['mvFaceWalk','Face where you walk',0,0,0,'tog'],['mvStride','Stride (tiles)',0,1.5,.01,'mv']]],
   ['Magnet',[['mvSnap','Magnet',0,1,.01,'mv'],['mvSnapAhead','Only forward',0,0,0,'tog'],['mvSnapR','Range (tiles)',0,1.5,.01,'mv'],['mvSnapTime','Ease (s)',0,.6,.01,'mv'],['mvSnapSpd','Top speed',.1,6,.05,'mv'],
     ['mvRest','Finger rest (s)',0,2,.05,'mv']]],
+  ['Flick',[['mvFlick','Flick to throw',0,0,0,'tog'],['mvFlickV0','Lightest flick (px/s)',100,3000,10,'mv'],['mvFlickV1','Hardest flick (px/s)',200,5000,10,'mv'],['mvFlickMin','Light flick (tiles)',1,6,1,'mv'],['mvFlickMax','Hard flick (tiles)',1,8,1,'mv'],['mvFlickTime','Glide time (s)',.1,1.2,.01,'mv']]],
   ['Momentum',[['mvMomentum','Momentum',0,0,0,'tog'],['mvMAccel','Speed-up (s)',0,1,.01,'mv'],['mvMBrake','Braking (s)',.02,1.5,.01,'mv'],['mvMSkid','Skid (s)',.02,1.5,.01,'mv'],['mvGrip','Turn grip',0,1,.01,'mv']]],
   ['Other',[['mvAccel','Speed-up, no momentum (s)',0,2,.01,'mv'],['mvDrag','Drag reach (follow finger)',.5,6,.05,'mv']]]];
 const mlabSet=(k,v)=>{ XLIT[k]=v; try{ localStorage.setItem('hexmancers-xl-'+k,typeof v==='boolean'?(v?'1':'0'):String(v)); }catch(e){} if(typeof mlabProfMark==='function') mlabProfMark(); };

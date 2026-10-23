@@ -1124,7 +1124,7 @@ function standAt(p,x,z){ if(!inPRect(x,z)) return null; const n=nearestTile(x,z)
   return n===p.tile||(n.side==='p'&&!n.occ&&!(n.holeT>0)&&neighbors(p.tile).includes(n))?n:null; }
 function nearestTile(x,z){ let best=null, bd=1e9; for(const t of TILES){ const d=(t.wx-x)**2+(t.wz-z)**2; if(d<bd){ bd=d; best=t; } } return best; }
 // the walking settings (debug menu › Battle › Battle movement, and the Movement lab), kept in look.js
-const MV_DEF={mvSpeed:1.2, mvSnap:1, mvSnapR:.46, mvSnapSpd:2.3, mvRest:.6, mvDrag:2.5, mvAccel:0, mvStick:true, mvStickShow:true, mvStickR:56, mvDead:.18, mvStickMin:.25, mvStickFull:.8, mvCurve:1, mvTapMs:200, mvTapPx:12, mvStickSpeed:5, mvEven:1, mvSnapTime:.12, mvSnapAhead:true, mvStride:.5, mvFaceWalk:true, mvMomentum:true, mvMAccel:.1, mvMBrake:.22, mvMSkid:.08, mvGrip:.7, mvFlick:true, mvFlickMs:180};
+const MV_DEF={mvSpeed:1.2, mvSnap:1, mvSnapR:.46, mvSnapSpd:2.3, mvRest:.6, mvDrag:2.5, mvAccel:0, mvStick:true, mvStickShow:true, mvStickR:56, mvDead:.18, mvStickMin:.25, mvStickFull:.8, mvCurve:1, mvTapMs:200, mvTapPx:12, mvStickSpeed:5, mvEven:1, mvSnapTime:.12, mvSnapAhead:true, mvStride:.5, mvFaceWalk:true, mvMomentum:true, mvMAccel:.1, mvMBrake:.22, mvMSkid:.08, mvGrip:.7, mvFlick:true, mvFlickV0:450, mvFlickV1:1400, mvFlickMin:2, mvFlickMax:3, mvFlickTime:.4};
 const MV=k=>typeof XLIT!=='undefined'&&XLIT[k]!=null?XLIT[k]:MV_DEF[k];
 function freeTarget(x,z,key,k,raw){ const b=B; if(!b||b.phase!=='fight') return; const p=b.player;
   const xs=P_TILES.map(t=>t.wx), zs=P_TILES.map(t=>t.wz), o=p.free;
@@ -1228,7 +1228,7 @@ function momentumTick(p,rdt,haste,sp){
       p.snap={tag,x:gx,z:gz,a:sliding&&gd>1e-4?clamp(v*v/(2*gd),Bk*.5,Bk*2.5):0}; } }
   // what the input asks for: a point to reach, and whether to brake to a stop on it (arrive) or run on through it
   let gx=null, gz=null, arrive=true, want=0;
-  if(still){ if(p.snap){ gx=p.snap.x; gz=p.snap.z; want=p.snap.flick?ref:walkTps*sp*slowK*MV('mvSnapSpd'); } }   // a flick dodges at full speed
+  if(still){ if(p.snap){ gx=p.snap.x; gz=p.snap.z; want=p.snap.flick?1e9:walkTps*sp*slowK*MV('mvSnapSpd'); } }   // a flick glides at its own pace
   else if(p.free){ gx=p.free.x; gz=p.free.z; arrive=!p.free.raw; want=top*(p.free.k==null?1:p.free.k); }
   else if(p.path.length){ gx=p.path[0].wx; gz=p.path[0].wz; arrive=p.path.length===1; want=top; }
   let tx=0, tz=0, d=0;
@@ -1267,22 +1267,32 @@ function momentumTick(p,rdt,haste,sp){
     const side=Math.sign(ux*(tz||0)-uz*(tx||0))||0;
     mvNote(p,{ph, f:full>0?v/full:0, v, A, Bk, lat:v0>.05&&rdt>0?v*turned/rdt:0, lag, side, walled:p.walled, ux, uz, tx:ts>1e-6?tx/ts:0, tz:ts>1e-6?tz/ts:0, momo:true}, rdt); }
   if(!still&&!p.free&&!p.path.length) p.snap=null; }
-/* A flick (mvFlick): a short push of the joystick, let go mid-swipe (ui.js dragEnd), dodges a whole tile, to the
-   middle of the next tile that way at full speed, or back to the middle of your own tile when that is well ahead
-   (a flick back after a flick). Without it a quick flick slid you under half a tile and left you in your lane. */
-function flickDodge(dx,dz){ const b=B; if(!b||b.phase!=='fight'||!MV('mvMomentum')) return false; const p=b.player, l=Math.hypot(dx,dz);
-  if(!p||p.fx==null||l<1e-6) return false; dx/=l; dz/=l;
+/* A flick (mvFlick): let go of the joystick while your thumb is still moving fast (ui.js dragEnd) and your mage is
+   thrown that way: a light flick (mvFlickV0 px/s) carries you mvFlickMin tiles, a hard one (mvFlickV1) mvFlickMax,
+   gliding and slowing all the way (over mvFlickTime seconds) until the magnet sets you on the last tile's middle.
+   The tiles are counted from your own tile (or its middle, if that is still well ahead of you), one beside the
+   next; flicks in a row keep to the line the first set off from (hexes to the side sit half a tile up or down, so
+   left, right, left, right would otherwise wander off down the board). */
+function flickThrow(dx,dz,str){ const b=B; if(!b||b.phase!=='fight'||!MV('mvMomentum')) return false; const p=b.player, l=Math.hypot(dx,dz);
+  if(!p||p.fx==null||l<1e-6||p.rootT>0) return false; dx/=l; dz/=l;
   const c=p.tile, sp=Math.min(...neighbors(c).map(n=>Math.hypot(n.wx-c.wx,n.wz-c.wz)));
-  // flicks in a row keep to the line the first set off from: hexes to the side sit half a tile up or down, so
-  // left, right, left, right would otherwise wander off down the board
   if(!p.flickHome||b.time-p.flickHome.t>1) p.flickHome={x:c.wx}; p.flickHome.t=b.time; const hx=p.flickHome.x;
-  let to=(c.wx-p.fx)*dx+(c.wz-p.fz)*dz>.25*sp?c:null, bc=-9;
-  if(!to) for(const n of neighbors(c)){ if(n.side!=='p'||n.occ&&n.occ!==p||n.holeT>0) continue;
-    const ox=n.wx-p.fx, oz=n.wz-p.fz, cos=(ox*dx+oz*dz)/(Math.hypot(ox,oz)||1); if(cos<.5) continue;
-    // the most that way; a tie, the one nearer that line, then the one further back
-    if(cos>bc+.02||Math.abs(cos-bc)<=.02&&(Math.abs(n.wx-hx)<Math.abs(to.wx-hx)-1e-6||Math.abs(Math.abs(n.wx-hx)-Math.abs(to.wx-hx))<=1e-6&&n.wx<to.wx)){ if(cos>bc) bc=cos; to=n; } }
+  const ok=n=>n.side==='p'&&!(n.occ&&n.occ!==p)&&!(n.holeT>0);
+  const next=(t,fx,fz)=>{ let to=null, bc=-9; for(const n of neighbors(t)){ if(!ok(n)) continue;
+      const ox=n.wx-fx, oz=n.wz-fz, cos=(ox*dx+oz*dz)/(Math.hypot(ox,oz)||1); if(cos<.5) continue;
+      // the most that way; a tie, the one nearer that line, then the one further back
+      if(cos>bc+.02||Math.abs(cos-bc)<=.02&&(Math.abs(n.wx-hx)<Math.abs(to.wx-hx)-1e-6||Math.abs(Math.abs(n.wx-hx)-Math.abs(to.wx-hx))<=1e-6&&n.wx<to.wx)){ if(cos>bc) bc=cos; to=n; } }
+    return to; };
+  const want=Math.max(1,Math.round(MV('mvFlickMin')+(MV('mvFlickMax')-MV('mvFlickMin'))*clamp(str,0,1)));
+  let to=null, k=0;
+  if((c.wx-p.fx)*dx+(c.wz-p.fz)*dz>.25*sp){ to=c; k=1; }   // your own tile's middle, ahead of you, counts as the first
+  for(let t=to||c, fx=to?c.wx:p.fx, fz=to?c.wz:p.fz;k<want;k++){ const n=next(t,fx,fz); if(!n) break; to=t=n; fx=n.wx; fz=n.wz; }
   if(!to) return false;
-  p.momo=true; p.free=null; p.path=[]; p.snap={tag:-1,x:to.wx,z:to.wz,a:0,flick:true}; return true; }
+  // launched at the speed that glides to that middle in mvFlickTime, slowing evenly the whole way
+  const ox=to.wx-p.fx, oz=to.wz-p.fz, d=Math.hypot(ox,oz); if(d<1e-3) return false;
+  const v0=2*d/Math.max(.05,MV('mvFlickTime')), a=v0*v0/(2*d);
+  p.momo=true; p.free=null; p.path=[]; p.vx=ox/d*v0; p.vz=oz/d*v0; p.moving=false;
+  p.snap={tag:-1,x:to.wx,z:to.wz,a,flick:true}; return true; }
 // keeps Show movement's notes: the latest (p.mvDiag, with how long you have been in this part of the move) and a
 // few seconds of history for its speed graph
 function mvNote(p,d,rdt){ const o=p.mvDiag; d.phT=o&&o.ph===d.ph?o.phT+rdt:0; p.mvDiag=d;

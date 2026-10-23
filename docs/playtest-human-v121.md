@@ -13,7 +13,7 @@ far too easy and that the wand did most of the work. That didn't match how the g
 | | Robot (old) | Good human | Casual human |
 |---|---|---|---|
 | Reaction to an attack | 0.3 s, to telegraphs only; shots and wind-ups at once | 0.5 s ± 0.12 (never under 0.3) | 0.7 s ± 0.18 (never under 0.4) |
-| Attacks never noticed | 0 | 8% | 18% |
+| Attacks never noticed | 0 | 8% | 19% |
 | Fire | every 0.3 s, all fight | ~2.2 taps a second, random gaps; a moment's rest after each move; 8% held charge shots | ~1.4 taps a second; 10% charge shots |
 | Taps the wrong tile | never | 4% | 8% |
 | Finds the best combo | always | 70% | 35% (otherwise its strongest cards) |

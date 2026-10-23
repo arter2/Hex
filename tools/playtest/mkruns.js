@@ -6,7 +6,9 @@ const BOT={
   good:H({react:.5,reactSd:.12,notice:.92,fireRate:2.2,focusPause:.2,evalGap:[.2,.4],misTap:.04,comboSkill:.75,instantP:.85,castDelay:[.3,1],gaugeDelay:[.4,1.4],stickNoise:7,flickP:.6}),
   fast:Object.assign(H({react:.5,reactSd:.12,notice:.9,fireRate:2.8,focusPause:.12,evalGap:[.2,.35],misTap:.05,comboSkill:.5,instantP:.7,castDelay:[.15,.5],gaugeDelay:[.2,.8],stickNoise:9,flickP:.75}),{fear:.55}),
   combo:H({react:.55,reactSd:.13,notice:.9,fireRate:2.0,focusPause:.2,evalGap:[.2,.4],misTap:.05,comboSkill:1,instantP:.85,castDelay:[.3,1],gaugeDelay:[.4,1.4],stickNoise:8,flickP:.5})};
+// the random player: no dodging, no combos, casts and taps as cards come, a careless thumb (the mastery gap's floor)
+BOT.random=Object.assign(H({react:.9,reactSd:.2,notice:.5,fireRate:1.5,focusPause:.3,evalGap:[.4,.9],misTap:.15,comboSkill:0,instantP:.3,castDelay:[.2,1],gaugeDelay:[.5,2],stickNoise:20,flickP:0}),{random:true,dodge:false,combos:false,smartCast:false,aim:false});
 BOT.shopaholic=BOT.good;
 const LEANS=['fire','frost','storm','verdant','light','shadow'];
-const jobs=[]; let seed=11; for(const st of (styles0||'average,good,fast,combo,shopaholic').split(',')) for(const lean of LEANS) for(let i=0;i<+n;i++) jobs.push({style:st==='shopaholic'?'good':st, label:st, shopaholic:st==='shopaholic', lean, bot:BOT[st], seed:(LEANS.indexOf(lean)*10+i+1)*977, maxFights:+maxFights, maxDepth:+maxDepth});
+const jobs=[]; let seed=11; for(const st of (styles0||'average,good,fast,combo,shopaholic').split(',')) for(const lean of LEANS) for(let i=0;i<+n;i++) jobs.push({style:st==='shopaholic'?'good':st==='random'?'average':st, label:st, shopaholic:st==='shopaholic', lean, bot:BOT[st], seed:(LEANS.indexOf(lean)*10+i+1)*977, maxFights:+maxFights, maxDepth:+maxDepth});
 fs.writeFileSync(name,JSON.stringify(jobs)); console.log(name,jobs.length);

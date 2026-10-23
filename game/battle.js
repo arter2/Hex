@@ -403,6 +403,7 @@ function killEnemy(e){
 function healPlayer(n,quiet){ const p=B.player; if(n<=0||p.hp<=0) return; const h=Math.min(n,p.maxHp-p.hp); p.hp+=h; if(h>0&&!quiet) floater('+'+h,p.tile,'#39ff8a'); }
 function hitPlayer(dmg,src){
   const p=B.player; if(B.phase!=='fight') return;
+  if(!isFinite(dmg)) return;   // a broken number must never reach your HP (it would stay NaN for the rest of the run)
   // your deck's element: an enemy whose colour beats it hits you harder; one it beats hits you softer
   { const el=playerElem(), sc=src&&src.color; if(el&&sc&&SIX.includes(sc)){ if(BEATS[sc]===el){ dmg=Math.round(dmg*ELEM_HURT); floater('weak!',p.tile,COLORS[sc].c); } else if(BEATS[el]===sc) dmg=Math.max(1,Math.round(dmg*ELEM_GUARD)); } }
   if(p.invT>0){ floater('miss',p.tile,'#7fd4ff'); return; }

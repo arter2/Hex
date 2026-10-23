@@ -252,7 +252,7 @@ function enemyCast(e,c){
         const w={kind:'wall',enemy:true,card:c,tile:t,hp:Math.round(c.hp*k),maxHp:Math.round(c.hp*k),thorns:0,life:secs(c.turns||2),maxLife:secs(c.turns||2)}; t.occ=w; B.walls.push(w); burst(t,col,8,.3); });
       return;
     case 'sentry': { const t=pick(E_TILES.filter(x=>!x.occ&&x.col>=BOARD_COLS/2+1)); if(!t) return;
-      const s={kind:'ally',enemy:true,ai:'sentry',card:c,tile:t,hp:40,maxHp:40,life:secs(c.turns||1),maxLife:secs(c.turns||1),fireT:.6,pow:Math.max(3,Math.round(c.pow*k))}; t.occ=s; B.allies.push(s); burst(t,col,10,.4); return; }
+      const s={kind:'ally',enemy:true,ai:'sentry',card:c,tile:t,hp:40,maxHp:40,life:secs(c.turns||1),maxLife:secs(c.turns||1),fireT:.6,pow:Math.max(3,Math.round((c.pow||6)*k)||3)}; t.occ=s; B.allies.push(s); burst(t,col,10,.4); return; }   // some sentries (totems, healers) have no power of their own: 6
     case 'boon':
       if(c.boon==='heal'||c.boon==='regen'){ const hurt=alive().sort((a,b)=>a.hp/a.maxHp-b.hp/b.maxHp)[0]; const h=Math.round((c.amt||30)*k*(c.boon==='regen'?4:1));
         hurt.hp=Math.min(hurt.maxHp,hurt.hp+h); floater('+'+h,hurt.tile,'#6dff9a'); return; }

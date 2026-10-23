@@ -134,14 +134,14 @@ function newSave(starter){
   addHeroToDeck(list,heroOfColor(starter.colors[0]));
   list.forEach(id=>owned[id]=(owned[id]||0)+1);
   const decks=[{name:starter.name, list}]; for(let i=1;i<DECK_SLOTS;i++) decks.push({name:'Deck '+(i+1), list:[]});
-  const sv={v:1, gold:100, depth:1, deepest:1, owned, seen:Object.assign({},owned), decks, active:0, wins:0, items:{basic_wand:1}, gear:{weapon:'basic_wand'}, heroCards:1};
+  const sv={v:1, gold:100, depth:1, deepest:1, owned, seen:Object.assign({},owned), decks, active:0, wins:0, items:{basic_wand:1}, gear:{weapon:'basic_wand'}, worn:{basic_wand:1}, heroCards:1};
   giveStarterHeroes(sv); return sv;
 }
 function newDealtSave(lean,rng){
   const deal=dealStart(lean,rng), owned={}; deal.list.forEach(id=>owned[id]=(owned[id]||0)+1);
   const list=startDeck(deal.list,lean), decks=[{name:COLORS[lean].name+' deck', list}];
   for(let i=1;i<DECK_SLOTS;i++) decks.push({name:'Deck '+(i+1), list:[]});
-  const sv={v:1, gold:100, depth:1, deepest:1, owned, seen:Object.assign({},owned), decks, active:0, wins:0, items:{basic_wand:1}, gear:{weapon:'basic_wand'}, heroCards:1, lean, homeRune:deal.home};
+  const sv={v:1, gold:100, depth:1, deepest:1, owned, seen:Object.assign({},owned), decks, active:0, wins:0, items:{basic_wand:1}, gear:{weapon:'basic_wand'}, worn:{basic_wand:1}, heroCards:1, lean, homeRune:deal.home};
   giveStarterHeroes(sv); return sv; }
 /* Shards. Break a spare card (one that no deck needs) for shards, and spend shards to craft any
    card you have seen. Breaking is always your choice; nothing turns to shards on its own.
@@ -193,8 +193,11 @@ const SAVE_SLOTS=3, SLOT_KEY='hexmancers-slot';
 const slotKey=n=>n===1?SAVE_KEY:SAVE_KEY+'-slot'+n;
 let SAVE_SLOT=1; try{ const n=+localStorage.getItem(SLOT_KEY); if(n>=1&&n<=SAVE_SLOTS) SAVE_SLOT=n; }catch(e){}
 function setSlot(n){ SAVE_SLOT=n; try{ localStorage.setItem(SLOT_KEY,String(n)); }catch(e){} }
-function loadSave(n){
-  try{ const s=JSON.parse(localStorage.getItem(slotKey(n||SAVE_SLOT))||'null'); if(s&&s.v===1) return migrate(s); }catch(e){}
+// a save that will not read is kept aside (never overwritten by a new game), and the game says so
+let SAVE_DAMAGED=null;
+function loadSave(n){ const k=slotKey(n||SAVE_SLOT); let raw=null;
+  try{ raw=localStorage.getItem(k); const s=JSON.parse(raw||'null'); if(s&&s.v===1) return migrate(s); }
+  catch(e){ if(raw){ const bk=k+'-damaged-'+Date.now(); try{ localStorage.setItem(bk,raw); localStorage.removeItem(k); }catch(e2){} SAVE_DAMAGED={slot:n||SAVE_SLOT, key:bk}; } }
   return null;
 }
 // Potions used to be items; they are cards now.
@@ -207,7 +210,11 @@ function migrate(s){ s.items=s.items||{}; s.gear=s.gear||{}; if(typeof ensureSta
       if(!id){ const n={}; d.list.forEach(x=>{ const c=CARDS[x]; if(c&&SIX.includes(c.color)) n[c.color]=(n[c.color]||0)+1; }); id=heroOfColor(Object.keys(n).sort((a,b)=>n[b]-n[a])[0]); }
       addHeroToDeck(d.list,id); delete d.soul; } }
   return s; }
-function writeSave(s){ try{ localStorage.setItem(slotKey(SAVE_SLOT),JSON.stringify(s)); }catch(e){} }
+// SAVE_STALE: another tab saved this slot since; saving here would undo it, so this tab stops saving
+let SAVE_STALE=false, SAVE_FAILT=0;
+function writeSave(s){ if(SAVE_STALE){ if(typeof saveStaleNote==='function') saveStaleNote(); return; }
+  try{ localStorage.setItem(slotKey(SAVE_SLOT),JSON.stringify(s)); }
+  catch(e){ const now=Date.now(); if(now-SAVE_FAILT>20000&&typeof tip==='function'){ SAVE_FAILT=now; tip('Could not save: this browser\'s storage is full or blocked. Your progress since the last save may be lost.',6000); } } }
 function clearSave(n){ try{ localStorage.removeItem(slotKey(n||SAVE_SLOT)); }catch(e){} }
 
 if(typeof module!=='undefined') module.exports={SHARDS,shardOf,spareCopies,canBreak,canCraft,craftRoom,breakCard,craftCard,PACK_SIZE,packPrice,loadSave,SAVE_SLOTS,slotKey,setSlot,battleRewards,heroChance,rollHero,assignChargeUses,settleChargeUses,chargeLeft,SAVE_KEY,DECK_SLOTS,PACK_PRICE,copyLimit,rarityWeights,rollRarity,rollCard,battleGold,openPack,autoFill,newSave,addCards,ownedUnique};

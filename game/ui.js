@@ -1196,7 +1196,11 @@ applyViewport();
 openMenu();
 // the very first launch (no save in any slot): go straight to making your character in slot 1
 { let any=false; for(let n=1;n<=SAVE_SLOTS;n++) if(n===SAVE_SLOT?save:loadSave(n)) any=true;
-  if(!any){ useSlot(1); openNewChar(); } }
+  if(!any){ useSlot(1); openNewChar(); }
+  if(SAVE_DAMAGED) setTimeout(()=>tip('The save in slot '+SAVE_DAMAGED.slot+' could not be read. A copy was kept in this browser ('+SAVE_DAMAGED.key+'), so nothing is overwritten.',9000),600); }
+// the same save open in another tab: when that tab saves, this one stops saving (it would undo that tab's progress)
+window.addEventListener('storage',e=>{ if(e.key!==slotKey(SAVE_SLOT)||SAVE_STALE) return; SAVE_STALE=true; saveStaleNote(); });
+function saveStaleNote(){ tip('This save was changed in another tab or window. Progress here is not saved: reload the page to carry on from there.',8000); }
 requestAnimationFrame(frame);
 
 /* ---------------- main menu ----------------

@@ -803,6 +803,7 @@ function xChestAfter(ch){
 
 /* ---------------- every frame ---------------- */
 function xDungeonTick(dt){
+  { const m=xmaxHp(); if(EX.hp>m) EX.hp=m; }   // a curse (or gear coming off) lowers your max HP: what you have comes down with it
   const now=performance.now(), pc=EX.pc, d=EX.depth;
   EX.clock+=dt;
   // ailments: poison bites every 1.5s but never past 1 HP; a curse lowers your max HP until cured

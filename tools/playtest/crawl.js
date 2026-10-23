@@ -48,6 +48,9 @@ function moodTick(dt){ R.mood*=Math.exp(-dt/180); while(R.win10.length&&R.T-R.wi
 let wrapped=false;
 function wrapGame(){ if(wrapped) return; wrapped=true;
   const w=(name,before,after)=>{ const f=window[name]; if(typeof f!=='function') return; window[name]=function(){ let s; try{ if(before) s=before.apply(this,arguments); }catch(e){ err('wrap '+name,e); } const r=f.apply(this,arguments); try{ if(after) after.call(this,r,arguments,s); }catch(e){ err('wrap '+name,e); } return r; }; };
+  // a number that is not a number reaching your HP: caught where it enters, with the call that sent it
+  const nanAt=(where,v)=>{ if(R&&!isFinite(v)&&(R.nanTrace=R.nanTrace||[]).length<6) R.nanTrace.push({where, v:String(v), t:Math.round(R.T), d:EX?EX.depth:0, stack:(new Error()).stack.split('\n').slice(3,7).map(x=>x.trim().replace(/\(?file:.*\/game\//,'').replace(/\)$/,'')).join(' < ')}); };
+  w('hitPlayer',(d,src)=>nanAt('hitPlayer dmg from '+(src?src.id+' dmg='+src.dmg+' elite='+src.elite+' minion='+!!(src.def&&src.def.minion)+' spd='+src.spd+' seq='+JSON.stringify(src.seq)+' move='+src.nextMove:'?'),d)); w('healPlayer',(n)=>nanAt('healPlayer',n)); w('resumeExplore',(hp)=>nanAt('resumeExplore hp',hp)); w('xHurt',(n)=>nanAt('xHurt',n));
   // every line in the dungeon log: the bot hears what a player reads
   w('xLog',null,(r,[t,cls])=>{ if(!R) return; t=String(t||''); logLine(t,cls); });
   w('xHurt',(n,why)=>({hp:EX&&EX.hp}),(r,[n,why],s)=>{ if(!R||!EX) return; const lost=(s.hp||0)-EX.hp; if(lost<=0) return; const k=hurtKind(String(why||''));
@@ -125,6 +128,48 @@ function logLine(t,cls){ R.logN++; for(const [re,k,o] of LINES){ if(!re.test(t))
   if(cls==='bad'){ ev('bad:other',{frus:.8,note:t}); } }
 function death(where,why,d,goldBefore){ const lost=Math.max(0,(goldBefore||0)-save.gold); R.deaths.push({t:Math.round(R.T),d,where,why:String(why||'').slice(0,40),lost});
   ev('death',{frus:12+lost/150,note:where+': '+why}); }
+
+/* ---------------- health checks: rules that must always hold, and the save ----------------
+   Each broken rule is logged once per kind and floor (inv), with where it happened, so the report can name it and
+   the seed replays it. The save is written and read back now and then and must come back the same; and what a
+   refresh at this moment would lose (the save in storage against the game in memory) is sampled. */
+function inv(kind,detail){ const key=kind+'@'+(EX?EX.depth:0); R.invSeen=R.invSeen||{}; R.invN=R.invN||{}; R.invN[kind]=(R.invN[kind]||0)+1; if(R.invSeen[key]) return; R.invSeen[key]=1;
+  (R.inv=R.inv||[]).push({t:Math.round(R.T),d:EX?EX.depth:0,kind,detail:String(detail).slice(0,200),task:TASKNAME}); }
+const okNum=(x,lo,hi)=>typeof x==='number'&&isFinite(x)&&x>=lo&&x<=hi;
+function canon(o){ return JSON.stringify(o,(k,v)=>v&&typeof v==='object'&&!Array.isArray(v)?Object.keys(v).sort().reduce((a,k2)=>(a[k2]=v[k2],a),{}):v); }
+function checkSave(){ if(!save) return;
+  if(!okNum(save.gold,0,1e9)||save.gold!==Math.round(save.gold)) inv('gold not a whole number ≥ 0',save.gold);
+  if(!okNum(save.level,1,999)||!okNum(save.xp||0,0,1e12)) inv('level or xp out of range',save.level+' / '+save.xp);
+  for(const id in save.owned){ const n=save.owned[id]; if(!CARDS[id]) inv('owned card that does not exist',id); else if(!(n>0)||n!==Math.round(n)) inv('owned count not a whole number > 0',id+'='+n); }
+  for(const d of save.decks||[]){ const c={}; for(const id of d.list||[]){ c[id]=(c[id]||0)+1; if(!CARDS[id]) inv('deck card that does not exist',id); }
+    for(const id in c) if(c[id]>(save.owned[id]||0)&&!(CARDS[id]&&CARDS[id].rarity==='hero')) inv('deck holds more copies than owned',id+' '+c[id]+'>'+(save.owned[id]||0)); }
+  for(const id in save.charge||{}){ const a=save.charge[id]; if(!Array.isArray(a)||a.some(v=>!okNum(v,0,999))) inv('charge uses broken',id+' '+JSON.stringify(a)); } }
+function checkMap(){ if(!EX||!EX.active) return;
+  if(!isFinite(EX.hp)&&!R.nanSeen){ R.nanSeen=1; inv('HP became NaN','log: '+EX.log.map(l=>l.t).join(' | ')+' · last events: '+R.events.slice(-4).map(e=>e.k+(e.note?' '+e.note:'')).join(', ')+' · last fight: '+JSON.stringify(R.fights[R.fights.length-1]||null).slice(0,200)); }
+  // above max for a moment is fine (a curse lands after the tick's own clamp); for over a second it is a bug
+  if(!isFinite(EX.hp)||EX.hp<0) inv('HP out of range',EX.hp+' / '+xmaxHp()); else if(EX.hp>xmaxHp()+1){ R.hpHiT=(R.hpHiT||0)+DT; if(R.hpHiT>1) inv('HP above max for over a second',EX.hp+' / '+xmaxHp()+' (curse '+(EX.ail&&EX.ail.curse)+', gear hp '+gearMods(save).hp+')'); } else R.hpHiT=0;
+  if(!okNum(EX.px,-1,XN*XCS+1)||!okNum(EX.pz,-1,XN*XCS+1)) inv('position not a number',EX.px+','+EX.pz);
+  else if(EX.t[EX.pc]===T_ROCK) inv('standing inside rock',xcx(EX.pc)+','+xcy(EX.pc));
+  else if(xcell(EX.px,EX.pz)!==EX.pc&&Math.hypot(EX.px-xw(EX.pc),EX.pz-xz(EX.pc))>XCS*1.2) inv('position and cell disagree',xcx(EX.pc)+','+xcy(EX.pc)+' vs '+(EX.px/XCS).toFixed(1)+','+(EX.pz/XCS).toFixed(1));
+  for(const g of EX.groups) if(!okNum(g.x,-1,XN*XCS+1)||!okNum(g.z,-1,XN*XCS+1)) inv('enemy position not a number',(g.ids||[]).join('+'));
+  if(save&&EX.gold!=null&&!okNum(EX.gold,0,1e9)) inv('run gold out of range',EX.gold); }
+// once a floor: can the stairs be reached at all (through every door, locked or secret)?
+function checkFloor(){ if(!EX||EX.botFloorChecked) return; EX.botFloorChecked=1;
+  const all=new Map(); for(const [c,d] of EX.doors) all.set(c,{state:'open'});
+  const d=xbfs(EX.t,all,EX.pc,null,null);
+  if(EX.down!=null&&EX.down>=0&&d[EX.down]<0) inv('stairs down cannot be reached',xcx(EX.down)+','+xcy(EX.down)+' from '+xcx(EX.pc)+','+xcy(EX.pc));
+  if(EX.up!=null&&EX.up>=0&&d[EX.up]<0) inv('stairs up cannot be reached',xcx(EX.up)+','+xcy(EX.up)); }
+// the save in storage: read back the same as what was written; and how much a refresh now would lose
+function checkStore(){ if(!save||typeof loadSave!=='function') return;
+  const st=loadSave(SAVE_SLOT); R.saveChecks=(R.saveChecks||0)+1;
+  if(st){ const lost={gold:Math.max(0,save.gold-(st.gold||0)), xp:Math.max(0,(save.xp||0)-(st.xp||0))+(save.level>(st.level||1)?1e6:0), cards:0};
+    for(const id in save.owned) lost.cards+=Math.max(0,save.owned[id]-((st.owned||{})[id]||0));
+    const U=R.unsaved||(R.unsaved={n:0,any:0,gold:0,cards:0,levels:0,maxGold:0,maxCards:0});
+    U.n++; if(lost.gold||lost.cards||lost.xp) U.any++; U.gold+=lost.gold; U.cards+=lost.cards; if(lost.xp>=1e6) U.levels++; U.maxGold=Math.max(U.maxGold,lost.gold); U.maxCards=Math.max(U.maxCards,lost.cards); }
+  // the round trip goes through a scratch key, so the game's own saving (and what is unsaved) is left alone
+  const mem=canon(save); let back=null; try{ localStorage.setItem('hexmancers-bot-rt',JSON.stringify(save)); const s2=JSON.parse(localStorage.getItem('hexmancers-bot-rt')); back=s2&&s2.v===1?migrate(s2):null; }catch(e){ inv('save does not serialize',e.message); return; }
+  if(!back) inv('save does not load back','null'); else if(canon(back)!==mem){ const a=JSON.parse(mem), b=JSON.parse(canon(back)), diff=Object.keys(Object.assign({},a,b)).filter(k=>JSON.stringify(a[k])!==JSON.stringify(b[k])); inv('save loads back different',diff.map(k=>{ const x=a[k], y=b[k]; if(x&&y&&typeof x==='object'&&typeof y==='object'){ const ks=Object.keys(Object.assign({},x,y)).filter(q=>JSON.stringify(x[q])!==JSON.stringify(y[q])).slice(0,4); return k+'{'+ks.map(q=>q+':'+JSON.stringify(x[q])+'→'+JSON.stringify(y[q])).join(' ')+'}'; } return k; }).join(', ')); } }
+function healthTick(){ try{ checkMap(); checkFloor(); if(R.T-(R.lastSaveCk||0)>=60){ R.lastSaveCk=R.T; checkSave(); checkStore(); } }catch(e){ err('health',e); } }
 
 /* ---------------- moving and touching ---------------- */
 const keyOf=dir=>{ const k=keysFor(dir); return k&&k[0]; };
@@ -543,11 +588,12 @@ C.run=function(cfg){
     if(B&&(B.phase==='fight'||B.phase==='custom')&&on('scrBattle')){ const fs=R.fightStart||{}; let r;
       try{ r=PT.runFight({adopt:true, depth:B.depth, bot:cfg.bot, botName:cfg.label, maxT:900, seed:(cfg.seed||1)*131+R.fights.length}); }catch(e){ err('fight',e); r={res:'error',errors:[e.message]}; }
       const secs=r.realSecs||r.time/.7||0; R.T+=secs; VT+=secs; R.time.fight+=secs;
-      const f={d:B?B.depth:(EX?EX.depth:0), res:r.res, secs:Math.round(secs), hpLost:r.dmgTaken, hp0:fs.hp, maxHp:r.maxHp, elites:PT.lastB?PT.lastB.enemies.filter(e=>e.elite).length:0, n:PT.lastB?PT.lastB.enemies.length:0, op:fs.op, boss:fs.boss, mini:fs.mini, combos:Object.values(r.combos||{}).reduce((a,b)=>a+b,0), name:fs.name};
+      const f={d:B?B.depth:(EX?EX.depth:0), res:r.res, secs:Math.round(secs), hpLost:r.dmgTaken, hp0:fs.hp, maxHp:r.maxHp, elites:PT.lastB?PT.lastB.enemies.filter(e=>e.elite).length:0, n:PT.lastB?PT.lastB.enemies.length:0, op:fs.op, boss:fs.boss, mini:fs.mini, combos:Object.values(r.combos||{}).reduce((a,b)=>a+b,0), name:fs.name, warn:r.warn};
       R.fights.push(f); if(r.errors&&r.errors.length) R.errors.push(...r.errors.slice(0,2).map(x=>'fight '+x));
       if(r.res==='win'){ const left=r.hpEnd/Math.max(1,r.maxHp); ev('fight:win',{fun:2+(fs.boss?8:fs.mini?5:0)+(left<.25?4:left<.45?2:0)+Math.min(2,f.combos*.3),note:f.name+(left<.25?' (close call)':'')});
         if(secs>100) ev('fight:long',{frus:Math.min(5,(secs-100)/30),note:f.name+' '+Math.round(secs)+'s'}); else if(r.dmgTaken<=3&&secs>30&&!fs.boss) ev('fight:dull',{frus:.6,note:f.name+' '+Math.round(secs)+'s, no danger'}); }
       else if(r.res!=='lose'){ ev('fight:'+r.res,{frus:2}); try{ B.phase='lose'; B.player.hp=0; B.hooks.onEnd&&B.hooks.onEnd(false); }catch(e){ err('fight end',e); } }
+      try{ checkSave(); }catch(e){ err('health',e); }
       R.fightStart=null; if(++fightGuard>3000) break; continue; }
     VT+=DT; R.T+=DT; fire(); moodTick(DT);
     if(packTick!==null&&$('#packOpen').classList.contains('on')){ packTick(); R.time.dialog+=DT; continue; }
@@ -559,6 +605,7 @@ C.run=function(cfg){
     R.otherT=0;
     if(EX.dlg||on('xDialog')){ dialogTick(); R.time.dialog+=DT; if(!EX||!EX.dlg) { if(on('xDialog')) xDlgClose(); } stepMap(); continue; }
     stepMap();
+    if(EX&&EX.active&&!EX.busy) healthTick();
     if(!EX||!EX.active||EX.busy) continue;
     if(EX.depth!==lastD){ if(EX.depth>R.maxDepth){ R.maxDepth=EX.depth; ev('depth:new',{fun:2+(isBossDepth(EX.depth-1)?4:0),note:'depth '+EX.depth}); } lastD=EX.depth; TASK=null; releaseKeys(); newFloor();
       // just arrived and badly hurt: a careful player goes up to camp to rest (the floor waits)
@@ -586,7 +633,7 @@ C.run=function(cfg){
   return {label:R.label, lean:R.lean, seed:R.seed, hours:+(R.T/3600).toFixed(2), maxDepth:R.maxDepth, level:save.level, gold:save.gold, spent:R.spent, packs:R.packs, fun:+R.fun.toFixed(1), frus:+R.frus.toFixed(1), moodMin:+R.moodMin.toFixed(1),
     quits:R.quits, deaths:R.deaths, camps:R.camps, puzzles:R.puzzles.map(p=>({kind:p.kind,d:p.d,ok:!!p.ok,gaveUp:!!p.gaveUp&&!p.skipped,skipped:!!p.skipped,time:p.time,mistakes:p.mistakes,dmg:p.dmg,steps:p.steps,why:p.why})),
     fights:R.fights, hurt:R.hurt, cards:R.cards, dlgN:R.dlgN, dlgs:R.dlgs, time:Object.fromEntries(Object.entries(R.time).map(([k,v])=>[k,Math.round(v)])), floors:R.floors, stuck:R.stuck, searches:R.searches, searchHits:R.searchHits, cues:R.cues, clicks:R.clicks, tells:R.tells, tellsSeen:R.tellsSeen, spend:R.spend, trapsPlaced:R.trapsPlaced||0, floorsCounted:R.floorsCounted||0, trapHist:R.trapHist, sold:R.sold||0, fieldBitten:R.fieldBitten||0, iceSlid:R.iceSlid||0, burned:R.burned, fled:R.fled||0, stairRetry:R.stairRetry||0, floorMoves:R.floorMoves||0, routeFail:R.routeFail||0, routeWhy:R.routeWhy, stairMap:R.stairMap, climbLog:R.climbLog, climbWhy:R.climbWhy, iceDump:R.iceDump,
-    bag:R.bag, campTrips:R.campTrips, tasks:R.tasks, depthT:Object.fromEntries(Object.entries(R.depthT).map(([k,v])=>[k,Math.round(v)])), startDeck:R.startDeck, endDeck:PT.run.deckInfo(save.decks[0].list), events:R.events, trace:R.trace, ring:R.ringDump, jumps:R.jumps, doorLog:R.doorLog, upLog:R.upLog, bossLog:R.bossLog, errors:R.errors.slice(0,20)};
+    bag:R.bag, campTrips:R.campTrips, tasks:R.tasks, depthT:Object.fromEntries(Object.entries(R.depthT).map(([k,v])=>[k,Math.round(v)])), startDeck:R.startDeck, endDeck:PT.run.deckInfo(save.decks[0].list), events:R.events, trace:R.trace, ring:R.ringDump, jumps:R.jumps, doorLog:R.doorLog, upLog:R.upLog, bossLog:R.bossLog, inv:R.inv||[], invN:R.invN||{}, nanTrace:R.nanTrace||null, saveChecks:R.saveChecks||0, unsaved:R.unsaved||null, errors:R.errors.slice(0,20)};
 };
 // an ASCII picture of the floor around you, for debugging: # rock, . seen floor, ? unseen, + door, D stairs down, @ you, F frontier
 C.map=function(rad,ctr){ rad=rad||14; const CC=ctr==null?EX.pc:ctr; const d=distMap(), out=[]; const fr=new Set(); for(let c=0;c<XN*XN;c++){ if(d[c]>0&&EX.seen[c]&&xPassable(c)&&adj4(c).some(n=>!EX.seen[n])) fr.add(c); }

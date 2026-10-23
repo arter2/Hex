@@ -73,6 +73,45 @@ P('## Where the gold goes (per career)'); P('');
 { const K=['packs','gear','card','recharges','upgrades','blessings','potions','materials','curses']; const have=K.filter(k=>runs.some(r=>r.spend&&r.spend[k]));
   tbl(['Player',...have,'Sold gear for','Gold at the end'],STY.map(st=>{ const a=by(st), n=a.length; return [st,...have.map(k=>f0(sum(a,r=>(r.spend||{})[k])/n)),f0(sum(a,r=>r.sold)/n),f0(sum(a,r=>r.gold)/n)]; })); }
 P('## Secrets'); P(''); P(`Searches: ${sum(runs,r=>r.searches)}, found something: ${sum(runs,r=>r.searchHits)}; whispered hints heard: ${sum(runs,r=>r.cues)}.`); P('');
+// ---- health: rules that must always hold, the save round trip, and what a refresh would lose
+{ const iv={}; for(const r of runs) for(const [k,n] of Object.entries(r.invN||{})){ const K=iv[k]||(iv[k]={n:0,careers:0,ex:null}); K.n+=n; K.careers++; } for(const r of runs) for(const x of r.inv||[]) if(iv[x.kind]&&!iv[x.kind].ex) iv[x.kind].ex=`depth ${x.d}, ${x.task||'-'}: ${x.detail} (seed ${r.seed})`;
+  const ck=sum(runs,r=>r.saveChecks), U=runs.map(r=>r.unsaved).filter(Boolean), un=sum(U,u=>u.n), ua=sum(U,u=>u.any);
+  P('## Health checks'); P('');
+  P(`Rules checked every 5 s on the map, the save after every fight, and the save's round trip (write, read back, compare) ${ck} times.`); P('');
+  if(Object.keys(iv).length) tbl(['Rule broken','Times','Careers','First example'],Object.entries(iv).sort((a,b)=>b[1].n-a[1].n).map(([k,v])=>[k,v.n,v.careers+'/'+runs.length,v.ex]));
+  else P('No rule was broken.');
+  if(un){ P(''); P(`**A refresh at a random moment** would lose something ${pc(ua/un)} of the time: on average ${f1(sum(U,u=>u.gold)/un)} gold and ${f1(sum(U,u=>u.cards)/un)} cards; at worst ${Math.max(...U.map(u=>u.maxGold))} gold and ${Math.max(...U.map(u=>u.maxCards))} cards; a level ${sum(U,u=>u.levels)} times.`); }
+  P(''); }
+// ---- fair hits: how long each hit's threat was on screen before it landed
+{ const W={hits:0,dmg:0,unfair:0,unfairDmg:0,tight:0,bins:[0,0,0,0,0,0],byKind:{},src:{}}, BB={};
+  for(const r of runs) for(const f of r.fights){ const w=f.warn; if(!w) continue; const b=BB[band(f.d)]||(BB[band(f.d)]={hits:0,unfair:0,tight:0,dmg:0,unfairDmg:0});
+    for(const k of ['hits','dmg','unfair','unfairDmg','tight']){ W[k]+=w[k]; b[k]+=w[k]; } w.bins.forEach((x,i)=>W.bins[i]+=x);
+    for(const [k,v] of Object.entries(w.byKind)){ const K=W.byKind[k]||(W.byKind[k]={n:0,dmg:0,warnSum:0,warnN:0}); for(const q in v) K[q]+=v[q]; }
+    for(const x of w.worst) { const k=(x.src||'?')+(x.move?' ('+x.move+')':''); W.src[k]=(W.src[k]||0)+1; } }
+  if(W.hits){ P('## Fair hits (dungeon fights)'); P('');
+    P(`For every hit that cost HP: how long its threat was on screen first (a ground telegraph's whole time; a shot's flight plus its owner's wind-up). **Unfair:** under 0.4 s (too quick to see and step away) while you stood on that tile all along. **Tight:** 0.4–0.7 s.`); P('');
+    P(`${W.hits} hits: **${pc(W.unfair/W.hits)} unfair** (${pc(W.unfairDmg/Math.max(1,W.dmg))} of the HP lost to hits), ${pc(W.tight/W.hits)} tight. Warning time: ${['<0.2 s','0.2–0.4','0.4–0.7','0.7–1','1–2','2 s+'].map((l,i)=>l+' '+pc(W.bins[i]/Math.max(1,W.bins.reduce((a,b)=>a+b,0)))).join(' · ')}.`); P('');
+    tbl(['Depths','Hits','Unfair','Tight','HP lost to unfair hits'],BANDS.filter(b=>BB[b]).map(b=>[b,BB[b].hits,pc(BB[b].unfair/Math.max(1,BB[b].hits)),pc(BB[b].tight/Math.max(1,BB[b].hits)),pc(BB[b].unfairDmg/Math.max(1,BB[b].dmg))])); P('');
+    tbl(['Hit by','Hits','HP','Average warning'],Object.entries(W.byKind).map(([k,v])=>[{tele:'ground telegraph',shot:'shot',other:'no telegraph (burning ground, thorns, scripted)'}[k]||k,v.n,v.dmg,v.warnN?f1(v.warnSum/v.warnN)+' s':'–']));
+    if(Object.keys(W.src).length){ P(''); P('Most unfair hits came from: '+top(W.src,8)+'.'); } P(''); } }
+// ---- where sessions stop: the hook (the next big reward within 2 minutes) and the mood at the stop
+{ const BIG=e=>['levelup','depth:new','quest:done','puzzle:solved','legendary','blessing','seal:open'].includes(e.k)||e.k==='fight:win'&&(e.fun||0)>=9||e.k==='card:new'&&/\((legendary|hero)\)/.test(e.note||'');
+  let seed=7; const rnd=()=>{ seed=(seed*16807)%2147483647; return seed/2147483647; };
+  const sess=()=>{ const u=Math.max(1e-6,rnd()), v=rnd(); return Math.max(180,Math.exp(Math.log(12*60)+.6*Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v))); };   // phone sessions: median 12 min
+  const S={}, G={};
+  for(const r of runs){ const big=r.events.filter(BIG).map(e=>e.t).sort((a,b)=>a-b), T=r.hours*3600, X=S[r.label]||(S[r.label]={n:0,hook:0,nat:0,high:0,quit:0,quitHook:0,next:[]});
+    const gg=G[r.label]||(G[r.label]=[]); for(let i=1;i<big.length;i++) gg.push(big[i]-big[i-1]);
+    const stops=[]; let t=0; const qs=r.quits.map(q=>q.t); while(true){ const nq=qs.find(q=>q>t+60); const end=t+sess(); const at=nq!=null&&nq<end?nq:end; if(at>=T-60) break; stops.push({t:at,quit:at===nq}); t=at; }
+    for(const st of stops){ const nx=big.find(b=>b>st.t), prev=[...big].reverse().find(b=>b<=st.t), next=nx==null?9999:nx-st.t;
+      const mood=r.events.filter(e=>e.t>st.t-300&&e.t<=st.t).reduce((a,e)=>a+(e.fun||0)-(e.frus||0),0)-(r.fun-r.frus)/T*300;   // against this player's own usual 5 minutes
+      X.n++; X.next.push(next); if(next<=120) X.hook++; if(prev!=null&&st.t-prev<=30) X.nat++; if(mood>0) X.high++; if(st.quit){ X.quit++; if(next<=120) X.quitHook++; } } }
+  const q=(a,p)=>{ const b=a.slice().sort((x,y)=>x-y); return b.length?b[Math.min(b.length-1,Math.floor(b.length*p))]:0; }, mm=x=>x>=60?f1(x/60)+' min':f0(x)+' s';
+  P('## Where sessions stop'); P('');
+  P('Each career is cut into phone-sized sessions (median 12 minutes, at least 3), and a session also ends at every moment the player would likely put the game down. At each stop: how soon the next big reward came in that career (a level, a new depth, a boss, a quest, a puzzle, a legendary or hero card, a blessing, a broken seal), and whether the last 5 minutes went better than that player’s usual 5 minutes (ended on a high).'); P('');
+  tbl(['Player','Stops','Next big reward within 2 min (a hook)','Typical wait to the next one','Stopped right after one (a natural break)','Ended on a high','Stops that were "would quit"','…of those, a reward was under 2 min away'],STY.filter(s=>S[s]).map(s=>{ const x=S[s]; return [s,x.n,pc(x.hook/x.n),mm(q(x.next,.5)),pc(x.nat/x.n),pc(x.high/x.n),x.quit,x.quit?pc(x.quitHook/x.quit):'–']; })); P('');
+  { const rr=sum(runs,r=>r.events.filter(e=>e.k==='card:new'&&/\(rare\)/.test(e.note||'')).length); P(`New rare cards: ${f1(rr/H)} an hour (not counted as a big reward: at this rate they are not rare).`); P(''); }
+  P('Time between big rewards:'); P('');
+  tbl(['Player','Median','1 in 10 waits longer than','Longest'],STY.filter(s=>G[s]&&G[s].length).map(s=>[s,mm(q(G[s],.5)),mm(q(G[s],.9)),mm(Math.max(...G[s]))])); P(''); }
 const errs={}; for(const r of runs) for(const e of [...r.errors,...(r.pageErrors||[])]){ const k=e.slice(0,90); errs[k]=(errs[k]||0)+1; }
 if(Object.keys(errs).length){ P('## Errors'); P(''); P(Object.entries(errs).sort((a,b)=>b[1]-a[1]).slice(0,12).map(([k,v])=>'- '+k+' ×'+v).join('\n')); P(''); }
 console.log(out.join('\n'));

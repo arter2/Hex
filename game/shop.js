@@ -80,8 +80,8 @@ function renderShop(){ goldText($('#sGold')); const box=$('#shopBody'); box.inne
   if(shopTab==='sell') return renderSell(box);
   const st=shopStock(), g=save.gold;
   box.appendChild(shopShelf('Packs',PACK_SIZE+' cards each, any rarity',[
-    {kind:'pack',color:null,name:'Booster',price:PACK_PRICE.booster,pic:packArt(null),text:PACK_SIZE+' cards from any family. Each card is rolled on its own: any of them could be rare.'},
-    ...FAM_ORDER.map(k=>({kind:'pack',color:k,name:COLORS[k].name,price:PACK_PRICE.family,pic:packArt(k),text:PACK_SIZE+' cards of the '+COLORS[k].name+' family, each rolled on its own.'}))
+    {kind:'pack',color:null,name:'Booster',price:packPrice(false,save.deepest),pic:packArt(null),text:PACK_SIZE+' cards from any family. Each card is rolled on its own: any of them could be rare.'},
+    ...FAM_ORDER.map(k=>({kind:'pack',color:k,name:COLORS[k].name,price:packPrice(true,save.deepest),pic:packArt(k),text:PACK_SIZE+' cards of the '+COLORS[k].name+' family, each rolled on its own.'}))
   ].map(o=>Object.assign(o,{cant:g<o.price,color:o.color?COLORS[o.color].c:null,fam:o.color}))));
   box.appendChild(shopShelf("Today's cards",'new stock at midnight',st.cards.map(id=>{ const c=CARDS[id], sold=st.sold.includes('c:'+id), el=cardEl(c); el.tabIndex=-1;
     return {kind:'card',id,name:c.name,price:SHOP_CARD_PRICE[c.rarity]||80,pic:el,sold,cant:g<(SHOP_CARD_PRICE[c.rarity]||80),color:COLORS[c.color].c,card:c}; })));

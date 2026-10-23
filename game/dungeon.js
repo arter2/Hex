@@ -216,6 +216,7 @@ const MINI_MAP={
 /* ---------------- planning a floor ----------------
    Before a floor is dug: which side rooms it gets, whether doors are locked, whether there is a
    shortcut gate and a boss door, and the features it will hold. */
+const PUZZLE_MIN_DEPTH=4;   // no puzzle rooms, circuits, ghost tables or cursed idols on the first three floors
 function xFloorPlan(depth,opt){
   if(!XRUN) xNewRun(depth);
   const boss=isBossDepth(depth)&&!opt.branch, pl={side:[], locks:0, gate:false, bossDoor:boss, small:!!opt.branch, feats:{}}, F=pl.feats;
@@ -225,7 +226,7 @@ function xFloorPlan(depth,opt){
   if(!boss&&depth>=XRUN.next.merchant){ F.merchant=xPickMerchant(depth); XRUN.next.merchant=depth+xri(3,6); }
   if(depth>=XRUN.next.sanct){ if(boss) XRUN.next.sanct=depth+1; else { F.sanct=xpick(Object.keys(SANCTUARIES)); XRUN.next.sanct=depth+xri(5,6); } }
   // the rest: each has its own chance, and every floor gets at least two
-  const pool=[['npc',.55],['puzzle',.6],['lock',.4],['cache',.35],
+  const pool=[['npc',.55],['puzzle',depth>=PUZZLE_MIN_DEPTH?.6:0],['lock',.4],['cache',.35],
     ...(depth>=2?[['prisoner',.3],['vault',.35],['mini',depth>=8?.45:.3],['gate',.3],['gauntlet',.35],['mimic',.25],['totem',depth>=4?.3:0]]:[])];
   for(const [k,p] of pool) if(XR()<p) F[k]=1;
   const cap=F.merchant||F.sanct?3:5, extra=()=>Object.keys(F).filter(k=>!['merchant','sanct'].includes(k));
@@ -528,7 +529,7 @@ const PUZZLE_BUILD={
 // a puzzle is solved: something grinds open at its heart
 function xPuzzleSolved(){ const pz=EX.puzzle; if(!pz||pz.solved) return; pz.solved=true; xXp(30+3*EX.depth,'puzzle solved'); const r=EX.rooms[pz.room];
   xSfx('chime'); xSfx('grind'); xLog('Something clicks into place, and stone grinds open.','good'); tip('Puzzle solved!');
-  const around=xRoomCells(r).filter(c=>!EX.taken.has(c)).sort((a,b)=>Math.hypot(xcx(a)-r.cx,xcy(a)-r.cy)-Math.hypot(xcx(b)-r.cx,xcy(b)-r.cy));
+  const around=xRoomCells(r).filter(c=>!EX.taken.has(c)&&c!==EX.pc&&!xUnderMe(c)).sort((a,b)=>Math.hypot(xcx(a)-r.cx,xcy(a)-r.cy)-Math.hypot(xcx(b)-r.cx,xcy(b)-r.cy));
   if(around[0]!=null){ const ch=xChest(around[0],{rich:true,legend:XR()<.12}); if(pz.key) ch.key=pz.key; else if(XR()<.4) ch.key=XR()<.25&&EX.depth>=5?'gold':'silver'; xMeshChest(ch); }
   const roll=XR(); if(around[1]!=null){ if(roll<.15) xMeshProp(xProp('pedestal',around[1],{orb:xpick(Object.keys(PERM))})); else if(roll<.35) xMeshProp(xProp('pedestal',around[1],{lore:xpick(unreadLore().length?unreadLore():LORE).id})); }
   xUpdateVis(); }
@@ -663,11 +664,14 @@ const xCanAct=()=>{ if(EX.needInput) return false; const now=performance.now(); 
 // explore.js asks this before its own rules: false = blocked, undefined = carry on as usual
 function xBumpExtra(c,front){
   if(c<0) return;
-  const w=EX.wallAt.get(c); if(w){ if(front&&(w.found!==false||w.kind==='switch')&&xCanAct()) xInteract(w); return false; }
+  // a tap on a thing walks you to it and uses it once; before, you kept pressing into it, and a statue turned every 0.35 s until you tapped elsewhere
+  const once=()=>{ if(EX.goal&&EX.goal.cell===c){ EX.goal=null; EX.path=[]; } };
+  const w=EX.wallAt.get(c); if(w){ if(front&&(w.found!==false||w.kind==='switch')&&xCanAct()){ xInteract(w); once(); } return false; }
   const d=EX.doors.get(c); if(d&&d.state==='locked'&&d.lock==='circuit'){ if(front&&xCanAct()&&typeof xCircuitDoor==='function') xCircuitDoor(c,d); return false; }
   if(d&&d.state==='locked'){ if(front&&xCanAct()) xTryUnlock(c,d); return false; }
   const p=EX.propAt.get(c);
-  if(p&&p.solid&&!p.gone){ if(front){ if(p.kind==='block') xPushBlock(p); else if(xCanAct()) xInteract(p); } return false; }
+  // a solid thing already under the edge of you (one that just appeared) does not pin you; it still stops you walking into it
+  if(p&&p.solid&&!p.gone){ if(!front&&xUnderMe(c)) return; if(front){ if(p.kind==='block') xPushBlock(p); else if(xCanAct()){ xInteract(p); once(); } } return false; }
 }
 // stepping onto a cell
 function xEnterExtra(c){
@@ -976,7 +980,8 @@ function xTalk(p){ if(typeof xRareTalk==='function'&&xRareTalk(p)) return;
     return done(L+' The thieves can’t have gone far. Find my crate on this floor and bring it back; you won’t regret it.'); }
   if(p.role==='rival'){ if(p.state==='idle'){ p.state='race'; const t=p.target; if(t){ EX.seen[t.cell]=1; xUpdateVis(); }
       return done(L+' The chest is marked on your map now, if you think you’re fast enough. Go!'); }
-    if(p.state==='lost'&&!p.sold){ const id=rollLoot(d+1,XR), price=Math.round(gearPrice(id)*(gearMods(save).price||1)); return xDlg({look:p.look,title:p.name,sub:p.title,text:'Fine, you won. I do have this spare: '+lootLabel(save,id).name+'. '+price+' gold?',
+    if(p.state==='lost'&&!p.sold){ let id=null; for(let k=0;k<30&&!(id&&GEAR[id]);k++) id=rollLoot(d+1,XR); if(!GEAR[id]) return done('Fine, you won. Next time, friend.');   // a scroll is not gear: it used to crash the talk
+      const price=Math.round(gearPrice(id)*(gearMods(save).price||1)); return xDlg({look:p.look,title:p.name,sub:p.title,text:'Fine, you won. I do have this spare: '+lootLabel(save,id).name+'. '+price+' gold?',
       buttons:[['Buy it ('+price+')',()=>{ if(save.gold<price) return tip('Not enough gold'); save.gold-=price; p.sold=true; const res=addLoot(save,id,XR); persist(); xLog('You buy '+lootLabel(save,id).name+'.'+(res&&res.cursed?' '+res.msg:''),'loot'); xHud(); }],['No',null,true]]}); }
     return done(p.state==='won'?'Too slow, friend. Better luck below.':'Out of my way!'); }
   if(p.role==='hermit'){ if(p.state==='idle'){ p.state='done'; if(XR()<.2){ const k=xpick(Object.keys(PERM)), ok=addPerm(k); persist(); return done(L+' Here. Take a little of my strength. ('+(ok?PERM[k].name+': '+PERM[k].text:'you are already strong')+')'); }

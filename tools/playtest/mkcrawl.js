@@ -1,0 +1,9 @@
+// node tools/playtest/mkcrawl.js <out.json> <runsPerColour> <hours> <maxDepth> [styles] [colours]
+// Whole careers in the real dungeon (crawl.js): the battle bots of mkruns.js plus how each style
+// explores, solves puzzles, reads, spends and how much it puts up with.
+const fs=require('fs'); const [,,name,n,hours,maxDepth,styles0,leans0]=process.argv;
+const {FIGHT,MAP}=require('./mkcrawl-profiles.js');
+const LEANS=['fire','frost','storm','verdant','light','shadow'];
+const jobs=[]; for(const st of (styles0||'average,good,fast,combo,shopaholic').split(',')) for(const lean of (leans0?leans0.split(','):LEANS)) for(let i=0;i<+n;i++)
+  jobs.push({label:st, lean, bot:FIGHT[st], p:MAP[st], seed:(LEANS.indexOf(lean)*10+i+1)*977+(st.length*31), hours:+hours, maxDepth:+maxDepth});
+fs.writeFileSync(name,JSON.stringify(jobs)); console.log(name,jobs.length);

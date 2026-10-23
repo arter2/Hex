@@ -129,6 +129,9 @@ function chooseTile(bot){
     else if(rowBlockedEnemy(t)) s+=12;
     if(wedge) s+=6*t.col;
     if(bot.dodge&&t.crystal&&!p.crystalCharge) s+=30;
+    // a dungeon trial's rule (minibosses.js), which a player reads on the board: step on the glowing tiles; break them in order
+    const rule=b.rule; if(rule&&rule.kind==='switches'&&rule.tiles&&rule.tiles.includes(t)&&!rule.lit.has(t)) s+=150;
+    if(rule&&rule.kind==='order'&&rule.ok&&tgt&&tgt.order&&tgt.order!==rule.next) s-=55;
     if(t===p.tile) curS=s;
     if(s>bestS){ bestS=s; best=t; }
   }
@@ -174,9 +177,9 @@ PT.runFight=function(cfg){
   let seed=(cfg.seed||1)>>>0; const rng=()=>{ seed=(seed+0x6D2B79F5)>>>0; let t=seed; t=Math.imul(t^t>>>15,t|1); t^=t+Math.imul(t^t>>>7,t|61); return ((t^t>>>14)>>>0)/4294967296; };
   HU=bot.human?{cfg:bot.human,rng}:null; SEEN=new Map(); ESTATE=new WeakMap(); ST={tgt:null, ang:0, rel:.35, flicks:0, held:0, bot};
   const H={nextTap:0, chargeUntil:-1, movedAt:-9, castAt:null, gaugeAt:null, nextEval:0};
-  B=null; fight(cfg.depth,cfg.waves);
+  if(!cfg.adopt){ B=null; fight(cfg.depth,cfg.waves); }   // adopt: a fight the dungeon started (crawl.js); its own end screens still run
   if(!B) return {error:'fight did not start'};
-  const b=B; b.hooks.onEnd=()=>{}; b.hooks.onCustom=()=>{}; b.hooks.onFight=()=>{}; b.hooks.onCast=()=>{}; b.hooks.onHurt=()=>{}; b.hooks.onTurn=()=>{}; b.hooks.onWave=()=>{}; b.hooks.onSoul=()=>{};
+  const b=B, keepEnd=b.hooks.onEnd; b.hooks.onEnd=()=>{}; b.hooks.onCustom=()=>{}; b.hooks.onFight=()=>{}; b.hooks.onCast=()=>{}; b.hooks.onHurt=()=>{}; b.hooks.onTurn=()=>{}; b.hooks.onWave=()=>{}; b.hooks.onSoul=()=>{};
   try{ document.getElementById('scrBattle').classList.remove('on'); document.getElementById('custom').classList.remove('on'); }catch(e){}
   const S=PT.cur={maxHit:{}, hitLog:cfg.debug?[]:null, dmg:{}, dmgByKind:{}, hurtBy:{}, dmgTaken:0, hitsTaken:0, selfPaid:0, healed:0, casts:0, castsByType:{}, labCasts:0, instants:0, wandShots:0, kills:0, combos:{}, spellScreens:0, lastNull:0, errors:[]};
   const maxT=cfg.maxT||420; let fullT=0, holdT=0, ticks=0, emptyT=0, moveEval=0, lastTarget=null, wandOnlyAt=null, stuck=null;
@@ -236,7 +239,9 @@ PT.runFight=function(cfg){
     wandShots:S.wandShots, kills:S.kills, counters:b.counters||0, reacts:b.reacts||0, combos:S.combos, spellScreens:S.spellScreens, dmg:S.dmg, dmgByKind:S.dmgByKind, hurtBy:S.hurtBy,
     waves:b.waves.length, waveReached:b.wave, enemies:en, enemyHpLeft:alive().reduce((a,e)=>a+e.hp,0), boss:b.enemies.filter(e=>e.def.boss).map(e=>e.id),
     wandOnlyAt, deckLeft:b.piles.draw.length, flicks:ST.flicks, stickSecs:+ST.held.toFixed(1), taps:S.taps, charged:S.charged, misTaps:S.misTaps, missedThreats:HU?[...SEEN.values()].filter(x=>x.miss).length:0, threatsSeen:HU?SEEN.size:0, stuck, maxHit:S.maxHit, errors:S.errors, hitLog:S.hitLog||undefined, trace:S.trace};
-  PT.lastB=b; PT.cur=null; B=null; HU=null;
+  PT.lastB=b; PT.cur=null; HU=null;
+  if(cfg.adopt){ b.hooks.onEnd=keepEnd; out.realSecs=+(ticks*DT).toFixed(1); for(let k=0;k<200&&B===b&&b.timers.length;k++){ try{ update(DT); }catch(e){ out.errors.push('end: '+e.message); break; } } }
+  else B=null;
   return out;
 };
 
@@ -306,6 +311,7 @@ function wearBetter(save,ids){ for(const g of ids){ const G=GEAR[g]; if(!G) cont
   for(const sl of slots){ const cur=st.gear[sl]; if(!cur||(GEAR[cur]&&GEAR[cur].tier<(G.tier||0))){ const r=equip(save,sl,g); if(r&&r.ok) break; } } } }
 function deckInfo(list){ const by=(f)=>{ const m={}; list.forEach(id=>{ const k=f(CARDS[id]); m[k]=(m[k]||0)+1; }); return m; };
   const runes=by(c=>c.code||'-'), top=Math.max(...Object.values(runes)); return {n:list.length, kinds:by(c=>isInstant(c)?'instant':kindOf2(c)), colors:by(c=>c.color), rarity:by(c=>c.rarity), topRune:top, avgVal:Math.round(list.reduce((a,id)=>a+cardVal(CARDS[id]),0)/list.length)}; }
+PT.run={dealRun,buildDeck,tweakDeck,spendAll,wearBetter,deckInfo,cardScore,STAT_PLAN};   // for crawl.js
 PT.runRun=function(cfg){
   let seed=(cfg.seed||1)>>>0; const rng=()=>{ seed=(seed+0x6D2B79F5)>>>0; let t=seed; t=Math.imul(t^t>>>15,t|1); t^=t+Math.imul(t^t>>>7,t|61); return ((t^t>>>14)>>>0)/4294967296; };
   const style=cfg.style, lean=cfg.lean;
@@ -335,9 +341,9 @@ PT.runRun=function(cfg){
       const gotGear=[]; for(const k of rw.items){ try{ addLoot(save,k,rng); if(GEAR[k]) gotGear.push(k); }catch(e){} } if(!cfg.noGear) wearBetter(save,gotGear);
       let cards=rw.cards.slice(); if(rng()<(boss?.4:mini?.2:0)) cards=cards.concat(openPack(Math.max(depth,save.deepest),packFor(depth),rng));
       // camp: the shop. Careful players keep a reserve and buy at most one pack; a shopaholic spends it all
-      const buy=fam=>{ const pr=fam?PACK_PRICE.family:PACK_PRICE.booster; if(save.gold<pr) return false; save.gold-=pr; const got=openPack(save.deepest,fam,rng); cards=cards.concat(got); spent+=pr; packs++; return true; };
-      if(cfg.shopaholic){ while(save.gold>=PACK_PRICE.booster){ if(!buy(rng()<.7&&save.gold>=PACK_PRICE.family?lean:null)) break; } }
-      else { const reserve=200+10*depth; if(save.gold-PACK_PRICE.family>=reserve) buy(lean); else if(style==='average'&&save.gold-PACK_PRICE.booster>=reserve) buy(null); }
+      const buy=fam=>{ const pr=packPrice(!!fam,save.deepest); if(save.gold<pr) return false; save.gold-=pr; const got=openPack(save.deepest,fam,rng); cards=cards.concat(got); spent+=pr; packs++; return true; };
+      if(cfg.shopaholic){ while(save.gold>=packPrice(false,save.deepest)){ if(!buy(rng()<.7&&save.gold>=packPrice(true,save.deepest)?lean:null)) break; } }
+      else { const reserve=200+10*depth; if(save.gold-packPrice(true,save.deepest)>=reserve) buy(lean); else if(style==='average'&&save.gold-packPrice(false,save.deepest)>=reserve) buy(null); }
       addCards(save,cards); lastNew=cards.map(c=>c.id);
       depth++; lossesHere=0;
     } else { save.gold-=Math.floor(save.gold*.2); lossesHere++; lastNew=[]; if(lossesHere>=3){ log.push('stuck at depth '+depth); break; } }

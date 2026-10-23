@@ -58,7 +58,7 @@ function xRareFill(r){ if(xFillExplore(r)) return; if(typeof xFillPuzzRoom==='fu
     case 'treasury': { const ch=xChest(c,{rich:true}); r.tre={state:'idle', t:0, chest:ch, items:[]};
       for(let k=0;k<3;k++){ const g=xFreeCell(r,true); if(g>=0) r.tre.items.push(xItem('gold',g,{n:Math.round((40+15*d)*(.8+XR()*.5))})); }
       const g=xFreeCell(r,true); if(g>=0) r.tre.items.push(xItem('gear',g,{gear:rollLoot(d+2,XR,true)})); break; }
-    case 'mirror': { xProp('mirror',c,{}); break; }
+    case 'mirror': { xProp('magicmirror',c,{}); break; }   // not 'mirror': that is the light puzzle's turning mirror (dungeon.js)
     case 'gambler': { xPlaceNPCAt('gambler',c,{games:0}); break; }
     case 'forge': { xProp('anvil',c,{}); break; }
     case 'trade': { xProp('tradeshrine',c,{}); break; }
@@ -83,7 +83,7 @@ function xRareInteract(p){ const d=EX.depth; if(xInteractExplore(p)) return true
       return true; }
     case 'pithole': return xDlg({title:'A marked drop', sub:'Pit room', icon:['skull','#b48cff'], text:'A sign is nailed beside the hole: “TWO FLOORS DOWN. TREASURE BELOW. NO WAY UP BUT THE STAIRS.” Far below, something glitters.',
       buttons:[['Jump in',()=>xPitJump()],['Not now',null,true]]}), true;
-    case 'mirror': if(p.used) return xSay('mirror','The mirror is cracked and dark.'), true;
+    case 'magicmirror': if(p.used) return xSay('mirror','The mirror is cracked and dark.'), true;
       return xDlg({title:'The mirror', sub:'Mirror room', icon:['hero','#cfe6ff'], text:'Your reflection does not move when you do. It smiles. Touch the glass and it steps out to fight you, with a deck of your own colour. Beat it and it leaves something of you behind.',
         buttons:[['Touch the glass',()=>xMirrorFight(p)],['Step back',null,true]]}), true;
     case 'anvil': return xForge(p), true;
@@ -216,7 +216,7 @@ function xRareMesh(p,g){ if(xMeshExplore(p,g)) return true; const stone=xMat(0x6
       const r=new THREE.Mesh(new THREE.TorusGeometry(.58,.04,6,24),xGlowMat(col)); r.rotation.x=Math.PI/2; r.position.y=.14; g.add(r); p.ring=r; return true; }
     case 'pithole': { g.add(xCyl(1.05,.12,xMat(0x050507),0,.03,0)); const rim=new THREE.Mesh(new THREE.TorusGeometry(1.05,.1,6,24),stone); rim.rotation.x=Math.PI/2; rim.position.y=.08; g.add(rim);
       g.add(xBox(.08,1.1,.08,xMat(0x5a3a22),.9,.55,.9), xBox(.6,.35,.05,xMat(0x8a6a42),.9,1.05,.9)); g.add(xBall(.06,xGlowMat(0xf2c94c),0,.12,0)); return true; }
-    case 'mirror': { g.add(xBox(1.1,2.1,.18,xMat(0x6a5a3a),0,1.05,0)); p.glass=xBox(.9,1.8,.04,xGlowMat(0xcfe6ff,{transparent:true,opacity:.55}),0,1.05,.1); g.add(p.glass); if(p.used) p.glass.visible=false; return true; }
+    case 'magicmirror': { g.add(xBox(1.1,2.1,.18,xMat(0x6a5a3a),0,1.05,0)); p.glass=xBox(.9,1.8,.04,xGlowMat(0xcfe6ff,{transparent:true,opacity:.55}),0,1.05,.1); g.add(p.glass); if(p.used) p.glass.visible=false; return true; }
     case 'anvil': { const iron=xMat(0x3a3a40,{shininess:40}); g.add(xBox(.5,.5,.4,stone,0,.25,0), xBox(.9,.22,.36,iron,0,.6,0), xBox(.3,.12,.3,iron,.52,.6,0));
       g.add(xBox(.6,.3,.6,dark,-.9,.15,.2), xBall(.18,xGlowMat(0xff7a2a),-.9,.34,.2)); return true; }
     case 'tradeshrine': { g.add(xBox(.5,.9,.5,stone,0,.45,0), xBox(1.2,.06,.08,xMat(0xf2c94c,{emissive:0x402a08}),0,1.1,0), xCyl(.04,.4,xMat(0xf2c94c),0,.95,0));

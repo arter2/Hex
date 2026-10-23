@@ -182,8 +182,8 @@ function pzRiddle(p){ const pz=EX.puzzle; if(!pz||pz.kind!=='riddle') return;
 
 /* ---------------- your three: the switch circuit ---------------- */
 Object.assign(RARE_ROOMS,{
-  circuit:   {name:'Switch circuit', icon:'🔌', min:3, w:3, h:3, safe:false},
-  ghosttable:{name:'The ghost’s table', icon:'🕯', min:3, w:4, h:3, safe:true},
+  circuit:   {name:'Switch circuit', icon:'🔌', min:PUZZLE_MIN_DEPTH, w:3, h:3, safe:false},
+  ghosttable:{name:'The ghost’s table', icon:'🕯', min:PUZZLE_MIN_DEPTH, w:4, h:3, safe:true},
 });
 LOCKS.circuit={name:'sealed vault', key:'boss', pick:0};
 function xFillPuzzRoom(r){ const d=EX.depth;
@@ -239,7 +239,7 @@ function xPuzzAfterFight(g){ if(!g) return;
     if(id){ const s=gearState(save); s.items[id]=(s.items[id]||0)+1; persist(); xLog('The ghost fades with a sigh, and leaves an artifact on the table: '+GEAR[id].name+'. Put it on from your Character screen.','loot'); tip(GEAR[id].name+'!',4000); xXp(40+4*EX.depth,'ghost laid to rest'); } } }
 
 /* ---------------- your three: the cursed idol ---------------- */
-function xPuzzPlan(depth,F,boss){ if(depth>=3&&!boss&&XR()<.18) F.cursedIdol=1; }
+function xPuzzPlan(depth,F,boss){ if(depth>=PUZZLE_MIN_DEPTH&&!boss&&XR()<.18) F.cursedIdol=1; }
 function xPuzzPopulate(){ const F=EX.plan?EX.plan.feats:{}; if(!F.cursedIdol||EX.branch) return;
   const reach=xReach(), rooms=xOpenRooms(reach,{notStart:true}); if(rooms.length<2) return; const r=xpick(rooms), c=xFreeCell(r); if(c<0) return;
   xItem('idol',c,{}); const far=rooms.filter(x=>x!==r).sort((a,b)=>Math.hypot(b.cx-r.cx,b.cy-r.cy)-Math.hypot(a.cx-r.cx,a.cy-r.cy))[0], a=far?xFreeSolid(far,true):-1; if(a>=0) xProp('cleanse',a,{}); }

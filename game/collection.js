@@ -3,7 +3,10 @@
 // Card ids come from the templates; when they change, older saves start over (v4: 1,000 cards, ranks 1-12 everywhere).
 const SAVE_KEY='hexmancers-deck-v4';
 const DECK_SLOTS=5;
-const PACK_PRICE={booster:90, family:130};   // 3 cards a pack
+const PACK_PRICE={booster:90, family:130};   // 3 cards a pack, at depth 0
+// packs cost more the deeper you have been (and hold better cards): about 1.5 fights' gold for a booster, 2 for a family pack
+const PACK_STEP={booster:15, family:20};
+function packPrice(fam,deepest){ const d=Math.max(1,deepest||1), k=fam?'family':'booster'; return PACK_PRICE[k]+PACK_STEP[k]*d; }
 
 function copyLimit(c){ return c.rarity==='legendary'||c.rarity==='hero'?RULES.legendaryCopies:RULES.copies; }
 
@@ -207,4 +210,4 @@ function migrate(s){ s.items=s.items||{}; s.gear=s.gear||{}; if(typeof ensureSta
 function writeSave(s){ try{ localStorage.setItem(slotKey(SAVE_SLOT),JSON.stringify(s)); }catch(e){} }
 function clearSave(n){ try{ localStorage.removeItem(slotKey(n||SAVE_SLOT)); }catch(e){} }
 
-if(typeof module!=='undefined') module.exports={SHARDS,shardOf,spareCopies,canBreak,canCraft,craftRoom,breakCard,craftCard,PACK_SIZE,loadSave,SAVE_SLOTS,slotKey,setSlot,battleRewards,heroChance,rollHero,assignChargeUses,settleChargeUses,chargeLeft,SAVE_KEY,DECK_SLOTS,PACK_PRICE,copyLimit,rarityWeights,rollRarity,rollCard,battleGold,openPack,autoFill,newSave,addCards,ownedUnique};
+if(typeof module!=='undefined') module.exports={SHARDS,shardOf,spareCopies,canBreak,canCraft,craftRoom,breakCard,craftCard,PACK_SIZE,packPrice,loadSave,SAVE_SLOTS,slotKey,setSlot,battleRewards,heroChance,rollHero,assignChargeUses,settleChargeUses,chargeLeft,SAVE_KEY,DECK_SLOTS,PACK_PRICE,copyLimit,rarityWeights,rollRarity,rollCard,battleGold,openPack,autoFill,newSave,addCards,ownedUnique};

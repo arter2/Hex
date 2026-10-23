@@ -501,7 +501,12 @@ function pickSacrifice(id){ const G=Object.assign({},GEAR[id],{rune:curseRune(sa
 /* ---------------- battle flow ---------------- */
 // xo (from the overworld): {hp, opening, explore} — wounds carry in and the fight returns to the map
 function fight(depth,waves,xo){
-  const lab=xo&&xo.lab, d=lab?{list:lab.list}:activeDeck(); if(!lab&&!validateDeck(d.list,CARDS,save.owned).ok) return openCamp();   // lab: a Card lab test (cardlab.js)
+  const lab=xo&&xo.lab, d=lab?{list:lab.list}:activeDeck();   // lab: a Card lab test (cardlab.js)
+  if(!lab){ const v=validateDeck(d.list,CARDS,save.owned);
+    // cards that burned up in the dungeon can leave the deck short: the dive goes on with what is left (a fight used to throw you back to camp without a word)
+    const short=v.errors.length&&v.errors.every(e=>/^Too few cards/.test(e))&&d.list.length>=20;
+    if(!v.ok&&!(xo&&xo.explore&&short)){ tip(v.errors[0]+'. Fix the deck at camp.',4000); return openCamp(); }
+    if(!v.ok&&!fight.warned){ fight.warned=true; setTimeout(()=>tip('Your deck is down to '+d.list.length+' cards (some burned up). Top it up at camp.',4000),900); } }
   $('#reveal').classList.remove('on');
   show('scrBattle');
   const soul=null, list=d.list;   // heroes are cards in the deck now: drawn and played to summon them

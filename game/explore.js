@@ -1169,10 +1169,12 @@ function xBump(c,front){
   if(typeof xBumpExtra==='function'){ const r=xBumpExtra(c,front); if(r!==undefined) return r; }   // locks, people, puzzles, levers (dungeon.js)
   if(c<0||!xPassable(c)) return false;
   const d=EX.doors.get(c); if(d&&d.state==='closed'){ if(!front) return false; d.state='open'; xDoorOpen(d); xLog('You open the door.','dim'); xUpdateVis(); return false; }
-  const ch=xChestAt(c); if(ch){ if(front) xOpenChest(ch); return false; }
-  const tr=xKnownTrap(c); if(tr){ xSay('trap'+c,'There is a '+TRAPS[tr.kind].name+' there. Disarm it (E) or go around.'); EX.path=[]; return false; }
+  const ch=xChestAt(c); if(ch){ if(front) xOpenChest(ch); else if(xUnderMe(c)) return true; return false; }   // a chest that appeared under the edge of you does not pin you
+  // a known trap stops you stepping onto it, never stepping off it: one you just set off, still under the edge of you, lets you go
+  const tr=xKnownTrap(c); if(tr&&!xUnderMe(c)){ xSay('trap'+c,'There is a '+TRAPS[tr.kind].name+' there. Disarm it (E) or go around.'); EX.path=[]; return false; }
   return true;
 }
+const xUnderMe=c=>[[-.42,-.42],[.42,-.42],[-.42,.42],[.42,.42]].some(([ox,oz])=>xcell(EX.px+ox,EX.pz+oz)===c);
 function xEnter(c){
   xUpdateVis();
   const tr=EX.traps.find(t=>t.cell===c&&t.armed); if(tr) xSpring(tr);
@@ -1298,6 +1300,8 @@ function xEnemies(dt){
       if(g.path.length){ const n=g.path[0], tx=xw(n)-g.x, tz=xz(n)-g.z, l=Math.hypot(tx,tz);
         if(l<.2){ g.path.shift(); const dr=EX.doors.get(n); if(dr&&dr.state==='closed'){ dr.state='open'; xDoorOpen(dr,g.cell); if(EX.seen[n]) xUpdateVis(); } }
         else { g.x+=tx/l*Math.min(sp,l); g.z+=tz/l*Math.min(sp,l); g.face=tx<0?-1:1; g.head=Math.atan2(tz,tx); } }
+      // a chaser in your cell has no path left: it closes the last step itself (it used to stop just short and wait while you stood still)
+      else if(g.state==='chase'&&g.cell===EX.pc&&!safe){ const tx=EX.px-g.x, tz=EX.pz-g.z, l=Math.hypot(tx,tz); if(l>.05){ g.x+=tx/l*Math.min(sp,l); g.z+=tz/l*Math.min(sp,l); g.face=tx<0?-1:1; } }
       const c=xcell(g.x,g.z); if(c>=0) g.cell=c; }
     if(d<1.15&&!EX.busy&&!safe&&!(g.dazeT>0)){ xEngage(g); return; }   // nothing fights you inside a sanctuary or a merchant's room
   }
@@ -1614,7 +1618,7 @@ function xHud(){ if(!EX) return; const m=xmaxHp();
 function enterExplore(depth){
   // the long how-to line under the buttons is replaced by first-time tips (xTip)
   document.querySelector('#xBottom .keys').classList.add('learned');
-  const v=validateDeck(activeDeck().list,CARDS,save.owned); if(!v.ok) return;
+  const v=validateDeck(activeDeck().list,CARDS,save.owned); if(!v.ok) return tip(v.errors[0]+'. Fix the deck in the deck builder first.',4000);
   if(typeof THREE==='undefined'){ tip('The 3D map could not load; fighting directly.'); return fight(depth); }
   show('scrExplore'); xInit3D();
   if(XPARK&&XPARK.depth===depth){ EX=XPARK; XPARK=null; EX.hp=xmaxHp(); EX.busy=false; EX.path=[]; EX.px=xw(EX.up); EX.pz=xz(EX.up); EX.pc=EX.up; EX.stairLock=EX.up; xUpdateVis(); xLog('You climb back down. You feel rested.','dim'); }

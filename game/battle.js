@@ -1348,6 +1348,8 @@ function playerFlip(p,foe){ const busy=p.charging||(B.time-(p.poseT??-9))<.28;
    outline: the tile you are hit on. White: where your mage stands, a line to where your finger points, and
    a ring that fills while your finger rests (the magnet pulls when it closes). Pink: where the magnet is
    taking you. */
+// the gizmos show in the Movement lab when its Show movement is on; in a real fight only with Debug › Battle movement › Show movement in fights
+function mvShowing(){ return !!(B&&(B.lab&&B.lab.move?XLIT.mvShow:XLIT.mvShowGame)); }
 function mvOverlay(ctx,b){ const p=b.player; if(!p||p.fx==null) return;
   const sp=Math.min(...neighbors(p.tile).map(n=>Math.hypot(n.wx-p.tile.wx,n.wz-p.tile.wz))), R=MV('mvSnapR')*sp;
   const poly=pts=>{ ctx.beginPath(); pts.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y)); ctx.closePath(); };
@@ -1390,7 +1392,7 @@ function mvGizmos(ctx,p,mx,my){ const d=p.mvDiag; if(!d) return; const c=MV_COL[
 /* Show movement's speed graph (top left of the battle): the last 2.5 s of your speed against a full push, coloured by
    the part of the move (MV_COL), with a line at top speed; and the part you are in now, how long you have been in
    it against its setting, and the turn. */
-function mvGraph(p){ const c=document.getElementById('mvGraph'); if(!c) return; const on=!!(XLIT.mvShow&&p&&p.mvHist); c.hidden=!on; if(!on) return;
+function mvGraph(p){ const c=document.getElementById('mvGraph'); if(!c) return; const on=!!(mvShowing()&&p&&p.mvHist); c.hidden=!on; if(!on) return;
   const g=c.getContext('2d'), W=c.width, H=c.height, top=16, gh=H-top-28, y=f=>top+gh-Math.min(1.25,f)/1.25*gh, h=p.mvHist, d=p.mvDiag||{};
   g.clearRect(0,0,W,H); g.fillStyle='rgba(8,11,15,.82)'; g.fillRect(0,0,W,H);
   g.strokeStyle='rgba(57,255,138,.45)'; g.setLineDash([4,3]); g.beginPath(); g.moveTo(0,y(1)); g.lineTo(W,y(1)); g.stroke(); g.setLineDash([]);
@@ -1732,7 +1734,7 @@ function render(){
   if(G3){ const dc=DEC.ctx; dc.setTransform(1,0,0,1,0,0); dc.clearRect(0,0,DEC.cv.width,DEC.cv.height); PJ.decal=true; View.iy=ISO_Y=1;
     try{ floorLayer(dc,b,T,DEC.k,telMap,true,tl3); if(typeof atkBars==='function') atkBars(dc,b,T); } finally{ PJ.decal=false; View.iy=ISO_Y=viewIY(); } arenaTiles(tl3); }
   else { floorLayer(ctx,b,T,S,telMap,false,tl3); if(typeof atkBars==='function') atkBars(ctx,b,T); }
-  if(XLIT.mvShow) mvOverlay(ctx,b);
+  if(mvShowing()) mvOverlay(ctx,b);
   mvGraph(b.player);
   const rocks=TILES.filter(t=>t.occ&&t.occ.kind==='rock').map(t=>t.occ);
   const dying=b.enemies.filter(e=>e.hp<=0&&e.deathT>0);

@@ -147,7 +147,7 @@ function xRender(G){ const r=G.renderer; r.info.autoReset=false; r.info.reset();
   if(ssao){ const U=S.aoM.uniforms; U.uInvProj.value.copy(G.cam.projectionMatrixInverse); U.uP11.value=G.cam.projectionMatrix.elements[5]; U.uRes.value.set(hw,hh); U.uRad.value=XLIT.ssaoRad*(G.unit||2); U.uStr.value=XLIT.ssaoStr;
     S.q.material=S.aoM; r.setRenderTarget(S.ao); r.render(S.qs,S.cam);
     S.cM.uniforms.uTx.value.set(1/hw,1/hh); S.q.material=S.cM; r.setRenderTarget(post?S.rt2:null); r.render(S.qs,S.cam); }
-  if(post){ const U=S.dM.uniforms; U.tColor.value=ssao?S.rt2.texture:S.rt.texture; U.tDepth.value=S.rt.depthTexture;   // (made again when the game comes back from the background: lookRevive) U.uInvProj.value.copy(G.cam.projectionMatrixInverse); U.uRes.value.set(w,h);
+  if(post){ const U=S.dM.uniforms; U.tColor.value=ssao?S.rt2.texture:S.rt.texture; U.tDepth.value=S.rt.depthTexture; U.uInvProj.value.copy(G.cam.projectionMatrixInverse); U.uRes.value.set(w,h);   // (the depth is made again when the game comes back from the background: lookRevive)
     const tl=G.tile||1.732; U.uFocus.value=(G.dof||10)+XLIT.dofFocus*tl; U.uRange.value=XLIT.dofRange*tl; U.uFade.value=Math.max(.05,XLIT.dofFade)*tl; U.uNear.value=XLIT.dofNear; U.uFar.value=XLIT.dofFar; U.uBlur.value=dof?XLIT.dofBlur*r.getPixelRatio():0;
     U.uShow.value=show?1:0; U.uVig.value=XLIT.vig; U.uVigR.value=XLIT.vigR; U.uVigSoft.value=Math.max(.05,XLIT.vigSoft);
     S.q.material=S.dM; r.setRenderTarget(null); r.render(S.qs,S.cam); } }

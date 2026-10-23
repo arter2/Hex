@@ -1,4 +1,4 @@
-# Fight patterns (design for v125)
+# Fight patterns (v125)
 
 Your answers (2026-10-23):
 - **Patterns:** all four: group tactics, move sequences, board shaping, phases.
@@ -71,7 +71,7 @@ Deeper enemies (from depth 12) learn a longer rhythm with one extra move.
 | Skirmisher | Slips back and heals 15% |
 | Controller | Casts its board-shaping move at once |
 
-## 6. Elites (from depth 6; 5% of enemies at depth 6, rising to 30% at depth 30)
+## 6. Elites (from depth 5; 6% of enemies at depth 5, rising to 35%)
 
 | Affix | Effect |
 |---|---|
@@ -82,7 +82,7 @@ Deeper enemies (from depth 12) learn a longer rhythm with one extra move.
 | Thorned | Reflects 15% of damage |
 | Volatile | Explodes on death (telegraphed, 1 s) |
 
-An elite shows a coloured ring and its affix in its name. It pays 50% more gold and XP.
+An elite shows a coloured ring and its affix in its name, has 25% more HP, and pays extra gold.
 
 ## 7. Stats and the danger ramp
 
@@ -98,3 +98,13 @@ An elite shows a coloured ring and its affix in its name. It pays 50% more gold 
 | 24+ | 25% |
 
   Some fights, about 1 in 6, should go well over the target.
+
+## As built and tuned (v125)
+
+Code: `game/fights.js`, with hooks in `enemies.js` and `battle.js`.
+
+- **Danger ramp (`fxDanger`):** enemies hit 2.6× harder at depths 1–3, 2.7× at 4–7, 1.85× at 8–12, 2.35× at 13–20
+  and 1.7× past 20. Their cycle runs 1% faster per depth (up to 25%), and they open sooner. The multipliers are uneven
+  because vermin nests (early) and bigger squads and elites (deep) already change the danger.
+- **Map group size:** 2 at depths 1–3, 3 from 4 to 11, 3–4 from 12 to 20, and 4 past 20.
+- The bot tuning runs and the final numbers are in [playtest-crawl-v125.md](playtest-crawl-v125.md).

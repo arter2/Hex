@@ -39,7 +39,7 @@ function makeSquad(depth,size){ const A=typeof areaOf==='function'?areaOf(depth)
   if(depth>=20&&roles.length<4) roles.push('striker');
   return roles.slice(0,Math.max(1,size||roles.length)).map(r=>roleFoe(r,depth,A)); }
 // how many foes a group on the map holds: one or two early, a full squad from the middle depths
-const mapSquadSize=depth=>depth<=3?1+(Math.random()<.4?1:0):depth<=7?2+(Math.random()<.35?1:0):depth<=15?3:3+(Math.random()<.5?1:0);
+const mapSquadSize=depth=>depth<=3?2:depth<=11?3:depth<=20?3+(Math.random()<.5?1:0):4;
 
 /* ---------------- rhythms ---------------- */
 const RHYTHM={ram:['shot','shot','rush'], mite:['iceslam','shot'], beetle:['cross','shot','shot'], wisp:['shot','firebomb'], shade:['blink','shot'],
@@ -75,8 +75,12 @@ Object.assign(MOVES,{
 /* ---------------- elites ---------------- */
 const ELITE={shielded:{name:'Shielded',col:'#9fdcff'}, hasty:{name:'Hasty',col:'#ffe066'}, vampiric:{name:'Vampiric',col:'#ff4d6d'},
   splitting:{name:'Splitting',col:'#6fdc7a'}, thorned:{name:'Thorned',col:'#c8a06a'}, volatile:{name:'Volatile',col:'#ff9a3a'}};
-const eliteChance=depth=>depth<6?0:Math.min(.3,.05+(depth-6)*.0105);
+const eliteChance=depth=>depth<5?0:Math.min(.35,.06+(depth-5)*.012);
+/* the danger ramp: how much harder an enemy hits, how much quicker its cycle runs, and how soon it opens, by depth.
+   Tuned with the bots against docs/fight-patterns.md's targets for HP lost a fight */
+const fxDanger=depth=>({dmg:depth<=3?2.6:depth<=7?2.7:depth<=12?1.85:depth<=20?2.35:1.7, rate:Math.max(.75,1-.01*depth), first:depth<4?.8:.6});
 function fxInit(e,depth){ e.seq=fxRhythm(e,depth); e.si=Math.floor(Math.random()*3); if(e.seq) e.nextMove=fxNext(e);
+  if(!e.def.boss){ const D=fxDanger(depth); e.dmg=Math.round(e.dmg*D.dmg); e.spd=(e.spd||1)*D.rate; e.atkT*=D.first; }
   const d=e.def; if(d.boss||d.mini||d.rare||d.minion||d.vermin||e.noElite||!ROLE[e.id]) return;
   if(Math.random()<eliteChance(depth)){ const a=pick(Object.keys(ELITE)); e.elite=a; e.name=ELITE[a].name+' '+e.name;
     if(a==='shielded'){ e.barrier=Math.round(e.maxHp*.2); e.shieldRe=8; }

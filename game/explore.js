@@ -1094,10 +1094,14 @@ const xStairCell=(n,goal)=>n!==goal&&(n===EX.up||n===EX.down);
 // the cells of a puzzle you would rather not cross on the way somewhere else: its stones and pipes while unsolved,
 // and its ice (which stays slippery). A tap walks round them if it can, and over them only if there is no other way
 const xPuzzField=()=>{ const pz=EX.puzzle, s=new Set(); if(!pz) return s; if(!pz.solved&&pz.tiles) for(const t of pz.tiles) s.add(t.cell); if(pz.ice) for(const c of pz.ice) s.add(c); return s; };
+// a teleport pad you are walking past (not to) would carry you off: the path goes round it when it can
+function xPadCell(c){ const p=EX.propAt.get(c); return !!(p&&p.kind==='tpad'&&!p.gone); }
 function xPathToCell(goal){ const blocked=n=>xKnownTrap(n)||xStairCell(n,goal)||xChestAt(n)&&n!==goal||typeof xSolid==='function'&&xSolid(n)&&n!==goal;
   const field=xPuzzField(); EX.fieldAvoid=field.size&&!field.has(goal)&&!field.has(EX.pc)?field:null;
-  let d=xbfs(EX.t,EX.doors,goal,EX.seen,n=>(blocked(n)||EX.fieldAvoid&&EX.fieldAvoid.has(n))&&n!==EX.pc);
-  if(d[EX.pc]<0&&EX.fieldAvoid){ EX.fieldAvoid=null; d=xbfs(EX.t,EX.doors,goal,EX.seen,n=>blocked(n)&&n!==EX.pc); }
+  const pad=n=>n!==goal&&xPadCell(n);
+  let d=xbfs(EX.t,EX.doors,goal,EX.seen,n=>(blocked(n)||pad(n)||EX.fieldAvoid&&EX.fieldAvoid.has(n))&&n!==EX.pc);
+  if(d[EX.pc]<0&&EX.fieldAvoid){ EX.fieldAvoid=null; d=xbfs(EX.t,EX.doors,goal,EX.seen,n=>(blocked(n)||pad(n))&&n!==EX.pc); }
+  if(d[EX.pc]<0) d=xbfs(EX.t,EX.doors,goal,EX.seen,n=>blocked(n)&&n!==EX.pc);
   if(d[EX.pc]<0) return null; const path=[]; let cur=EX.pc;
   while(cur!==goal){ const x=xcx(cur), y=xcy(cur); let best=-1;
     for(const n of [xi(x+1,y),xi(x-1,y),xi(x,y+1),xi(x,y-1)]) if(d[n]>=0&&d[n]<d[cur]&&(best<0||d[n]<d[best])) best=n;
@@ -1117,7 +1121,7 @@ function xTap(e){ const [ax,ay]=appXY(e.clientX,e.clientY); xGoalAt(ax,ay); }
 // can you walk straight from (x,z) to the middle of cell n? (open floor all the way, with room for you)
 function xStraight(x,z,n){ const tx=xw(n), tz=xz(n), L=Math.hypot(tx-x,tz-z), steps=Math.ceil(L/.3), r=.45;
   for(let k=1;k<=steps;k++){ const px=x+(tx-x)*k/steps, pz=z+(tz-z)*k/steps;
-    for(const [ox,oz] of [[-r,-r],[r,-r],[-r,r],[r,r]]){ const c=xcell(px+ox,pz+oz); if(c===EX.pc) continue; if(!xClear(c)||xKnownTrap(c)||xChestAt(c)||xStairCell(c,EX.goal&&EX.goal.cell)||typeof xSolid==='function'&&xSolid(c)||EX.fieldAvoid&&EX.fieldAvoid.has(c)) return false; } }
+    for(const [ox,oz] of [[-r,-r],[r,-r],[-r,r],[r,r]]){ const c=xcell(px+ox,pz+oz); if(c===EX.pc) continue; if(!xClear(c)||xKnownTrap(c)||xChestAt(c)||xStairCell(c,EX.goal&&EX.goal.cell)||typeof xSolid==='function'&&xSolid(c)||EX.fieldAvoid&&EX.fieldAvoid.has(c)||xPadCell(c)&&!(EX.goal&&EX.goal.cell===c)) return false; } }
   return true; }
 // the point on the floor under a screen point (app coordinates), or null
 function xFloorAt(ax,ay){ const G=X3; if(!G) return null; const r=appBox($('#xView')); if(!r.width) return null;

@@ -36,7 +36,7 @@ function ev(kind,o){ o=o||{}; if(!R) return; const d=EX?EX.depth:R.depth;
   R.events.push(e); R.fun+=fun; R.frus+=frus; R.mood+=fun-frus;
   if(R.traceOn&&(kind==='stuck'||kind==='lost')&&R.trace.length<8&&EX) try{ if(R.trace.length<2) R.trace.push({map:C.map(18)}); if(kind==='stuck'&&!R.ringDump) R.ringDump=(R.ring||[]).slice(); const dm=distMap(); R.trace.push({k:kind,t:e.t,task:TASKNAME,pc:[xcx(EX.pc),xcy(EX.pc)],goal:EX.goal&&[xcx(EX.goal.cell),xcy(EX.goal.cell)],path:EX.path.length,
     down:[xcx(EX.down),xcy(EX.down)],downSeen:!!EX.seen[EX.down],dDown:dm[EX.down],pathDown:!!pathTo(EX.down),busy:EX.busy,paused:xPaused,dlg:!!EX.dlg,stuckT:EX.stuckT,action:!!EX.action,cursed:!!(EX.cursed&&!EX.cursed.done),boss:EX.groups.some(g=>g.boss),
-    doors:[...EX.doors].filter(([i,d])=>EX.seen[i]&&d.state!=='open').map(([i,d])=>[xcx(i),xcy(i),d.state,d.lock]).slice(0,8), rooms:roomsSeenFrac().toFixed(2), pos:[+(EX.px/XCS).toFixed(2),+(EX.pz/XCS).toFixed(2)], block:R.blockInfo, keys:XRUN&&JSON.stringify(XRUN.keys), near:[...EX.props.filter(p=>!p.gone&&Math.abs(xcx(p.cell)-xcx(EX.pc))<=2&&Math.abs(xcy(p.cell)-xcy(EX.pc))<=2).map(p=>p.kind+(p.solid?'*':'')+'@'+xcx(p.cell)+','+xcy(p.cell)),...EX.chests.filter(c=>Math.abs(xcx(c.cell)-xcx(EX.pc))<=2&&Math.abs(xcy(c.cell)-xcy(EX.pc))<=2).map(c=>'chest'+(c.open?'o':'')+'@'+xcx(c.cell)+','+xcy(c.cell)),...EX.groups.filter(g=>Math.abs(xcx(g.cell)-xcx(EX.pc))<=3&&Math.abs(xcy(g.cell)-xcy(EX.pc))<=3).map(g=>'foe:'+g.state+(g.dormant?'D':'')+'@'+xcx(g.cell)+','+xcy(g.cell))], last:R.lastWalk, escort:EX.props.filter(p=>p.state==='follow').map(p=>p.role), note:o.note, sealUp:R.sealUp, seals:XRUN&&XRUN.seals, upSeen:seenCell(EX.up), upPath:!!pathTo(EX.up), fails:[...DONE.fails].join(' '), keystand:EX.props.filter(p=>p.kind==='keystand'&&p.key==='boss').map(p=>({at:[xcx(p.cell),xcy(p.cell)],taken:!!p.taken,seen:seenCell(p.cell),d:dm[p.cell],done:DONE.props.has(p)})), bossKeyItem:EX.items.filter(i=>i.kind==='key'&&i.key==='boss').map(i=>({at:[xcx(i.cell),xcy(i.cell)],seen:seenCell(i.cell),d:dm[i.cell]})), truth:[...EX.doors].filter(([i,dd])=>dd.state!=='open'&&adj4(i).some(n=>dm[n]>=0)).map(([i,dd])=>dd.state+(dd.lock?':'+dd.lock:'')+'@'+xcx(i)+','+xcy(i)+(roomOf(adj4(i).find(n=>dm[n]<0&&EX.t[n]!==T_ROCK)??-1)?'→'+(roomOf(adj4(i).find(n=>dm[n]<0&&EX.t[n]!==T_ROCK))||{}).id:'')), onRoute:(()=>{ const full=xbfs(EX.t,EX.doors,EX.down,null,null); if(full[EX.pc]<0) return 'none'; const out=[]; let cur=EX.pc; for(let k=0;k<300&&cur!==EX.down;k++){ let best=-1; for(const n of adj4(cur)) if(full[n]>=0&&full[n]<full[cur]&&(best<0||full[n]<full[best])) best=n; if(best<0) break; cur=best;
+    doors:[...EX.doors].filter(([i,d])=>EX.seen[i]&&d.state!=='open').map(([i,d])=>[xcx(i),xcy(i),d.state,d.lock]).slice(0,8), rooms:roomsSeenFrac().toFixed(2), pos:[+(EX.px/XCS).toFixed(2),+(EX.pz/XCS).toFixed(2)], block:R.blockInfo, keys:XRUN&&JSON.stringify(XRUN.keys), near:[...EX.props.filter(p=>!p.gone&&Math.abs(xcx(p.cell)-xcx(EX.pc))<=2&&Math.abs(xcy(p.cell)-xcy(EX.pc))<=2).map(p=>p.kind+(p.solid?'*':'')+'@'+xcx(p.cell)+','+xcy(p.cell)),...EX.chests.filter(c=>Math.abs(xcx(c.cell)-xcx(EX.pc))<=2&&Math.abs(xcy(c.cell)-xcy(EX.pc))<=2).map(c=>'chest'+(c.open?'o':'')+'@'+xcx(c.cell)+','+xcy(c.cell)),...EX.groups.filter(g=>Math.abs(xcx(g.cell)-xcx(EX.pc))<=3&&Math.abs(xcy(g.cell)-xcy(EX.pc))<=3).map(g=>'foe:'+g.state+(g.dormant?'D':'')+'@'+xcx(g.cell)+','+xcy(g.cell))], last:R.lastWalk, escort:EX.props.filter(p=>p.state==='follow').map(p=>p.role), note:o.note, pads:EX.props.filter(p=>p.kind==='tpad').map(p=>xcx(p.cell)+','+xcy(p.cell)+'>'+(p.to!=null?xcx(p.to)+','+xcy(p.to):'-')+(EX.seen[p.cell]?'':'?')+(p.gone?'G':'')+':'+(EX.propAt.get(p.cell)||{}).kind).join(' '), repaths:R.repaths&&R.repaths.slice(-12), walkPos:R.walkPos&&R.walkPos.slice(-40).join(' '), xpath:EX.path.slice(0,8).map(c=>xcx(c)+','+xcy(c)).join(' '), sealUp:R.sealUp, seals:XRUN&&XRUN.seals, upSeen:seenCell(EX.up), upPath:!!pathTo(EX.up), fails:[...DONE.fails].join(' '), keystand:EX.props.filter(p=>p.kind==='keystand'&&p.key==='boss').map(p=>({at:[xcx(p.cell),xcy(p.cell)],taken:!!p.taken,seen:seenCell(p.cell),d:dm[p.cell],done:DONE.props.has(p)})), bossKeyItem:EX.items.filter(i=>i.kind==='key'&&i.key==='boss').map(i=>({at:[xcx(i.cell),xcy(i.cell)],seen:seenCell(i.cell),d:dm[i.cell]})), truth:[...EX.doors].filter(([i,dd])=>dd.state!=='open'&&adj4(i).some(n=>dm[n]>=0)).map(([i,dd])=>dd.state+(dd.lock?':'+dd.lock:'')+'@'+xcx(i)+','+xcy(i)+(roomOf(adj4(i).find(n=>dm[n]<0&&EX.t[n]!==T_ROCK)??-1)?'→'+(roomOf(adj4(i).find(n=>dm[n]<0&&EX.t[n]!==T_ROCK))||{}).id:'')), onRoute:(()=>{ const full=xbfs(EX.t,EX.doors,EX.down,null,null); if(full[EX.pc]<0) return 'none'; const out=[]; let cur=EX.pc; for(let k=0;k<300&&cur!==EX.down;k++){ let best=-1; for(const n of adj4(cur)) if(full[n]>=0&&full[n]<full[cur]&&(best<0||full[n]<full[best])) best=n; if(best<0) break; cur=best;
     const why=[]; if(!EX.seen[cur]) why.push('unseen'); if(xKnownTrap(cur)) why.push('trap'); if(xSolid(cur)) why.push('solid:'+EX.propAt.get(cur).kind+(EX.propAt.get(cur).role?'/'+EX.propAt.get(cur).role:'')); if(xChestAt(cur)) why.push('chest'+(xChestAt(cur).trap?'(trapped'+(xChestAt(cur).trapKnown?',known':'')+')':'')); if(cur===EX.up) why.push('UP'); if(dm[cur]<0&&!why.length) why.push('dm<0'); if(why.length) out.push(xcx(cur)+','+xcy(cur)+':'+why.join('/')); if(out.length>4) break; } return out.join(' '); })(), upReach:(()=>{ const full=xbfs(EX.t,EX.doors,EX.pc,null,null); return {down:full[EX.down]>=0, downAll:xbfs(EX.t,new Map(),EX.pc,null,null)[EX.down]>=0}; })()}); }catch(x){ R.trace.push({err:x.message}); }
   if(frus){ R.win10.push([R.T,frus]); } if(fun||frus) R.lastNovel=R.T; }
 function moodTick(dt){ R.mood*=Math.exp(-dt/180); while(R.win10.length&&R.T-R.win10[0][0]>600) R.win10.shift();
@@ -142,10 +142,19 @@ function avoidSet(){ const s=new Set(), pz=EX.puzzle; if(pz&&!pz.solved&&(TASKNA
 // a path over cells you have seen, like the game's own path-to-tap, but stepping around puzzle fields
 function pathTo(goal,allow){ const av=avoidSet(); if(allow) for(const c of allow) av.delete(c);
   const field=TASKNAME.startsWith('puzzle')||typeof xPuzzField!=='function'?new Set():xPuzzField(); if(field.has(goal)||field.has(EX.pc)||allow&&allow.length) field.clear();
-  const blocked=f=>n=>n!==EX.pc&&n!==goal&&(xKnownTrap(n)||xStairCell(n,goal)||xChestAt(n)||xSolid(n)||av.has(n)||f&&field.has(n)||EX.groups.some(g=>g.cell===n&&g.dormant));
-  let d=xbfs(EX.t,EX.doors,goal,EX.seen,blocked(true)); EX.fieldAvoid=field.size?field:null; if(d[EX.pc]<0&&field.size){ d=xbfs(EX.t,EX.doors,goal,EX.seen,blocked(false)); EX.fieldAvoid=null; } if(d[EX.pc]<0) return null;   // fieldAvoid: the game's corner-cutting keeps off it too
+  const blocked=f=>n=>n!==EX.pc&&n!==goal&&(xKnownTrap(n)||xStairCell(n,goal)||xChestAt(n)||xSolid(n)||av.has(n)||f&&field.has(n)||typeof xPadCell==='function'&&xPadCell(n)||EX.groups.some(g=>g.cell===n&&g.dormant));
+  let d=xbfs(EX.t,EX.doors,goal,EX.seen,blocked(true)); EX.fieldAvoid=field.size?field:null; if(d[EX.pc]<0&&field.size){ d=xbfs(EX.t,EX.doors,goal,EX.seen,blocked(false)); EX.fieldAvoid=null; } if(d[EX.pc]<0) return padRoute(goal,blocked(false));   // fieldAvoid: the game's corner-cutting keeps off it too
   const path=[]; let cur=EX.pc; for(let k=0;k<400&&cur!==goal;k++){ let best=-1; for(const n of adj4(cur)) if(d[n]>=0&&d[n]<d[cur]&&(best<0||d[n]<d[best])) best=n; if(best<0) return null; path.push(best); cur=best; }
   return path; }
+// only a teleport pad leads there: walk to the first pad on the way (it carries you; walk() re-plans from where you land)
+function padRoute(goal,block){ const pads=new Map(); for(const p of EX.props) if(p.kind==='tpad'&&!p.gone&&p.to!=null&&EX.seen[p.cell]) pads.set(p.cell,p.to);
+  if(!pads.size) return null; const from=new Map([[EX.pc,-1]]), q=[EX.pc];
+  for(let h=0;h<q.length;h++){ const c=q[h]; if(c===goal) break;
+    for(const n of adj4(c)){ if(from.has(n)||EX.t[n]===T_ROCK||!EX.seen[n]) continue; const dr=EX.doors.get(n); if(dr&&(dr.state==='secret'||dr.state==='locked')) continue;
+      if(n!==goal&&block(n)&&!pads.has(n)) continue; from.set(n,c);
+      if(pads.has(n)&&n!==goal){ const to=pads.get(n); if(!from.has(to)){ from.set(to,n); q.push(to); } } else q.push(n); } }
+  if(!from.has(goal)) return null; const chain=[]; for(let c=goal;c!==EX.pc&&c!=null&&c>=0;c=from.get(c)) chain.unshift(c);
+  const k=chain.findIndex(c=>pads.has(c)); return k<0?chain:chain.slice(0,k+1); }
 function distMap(){ const av=avoidSet(); return xbfs(EX.t,EX.doors,EX.pc,EX.seen,n=>n!==EX.pc&&(xKnownTrap(n)||xSolid(n)||xChestAt(n)||av.has(n)||n===EX.up||n===EX.down)); }
 // walk to a cell (generator: one yield a tick). careful: feed the path one cell at a time (no corner cutting)
 function* walk(cell,o){ o=o||{}; let last=EX.pc, still=0, tries=0, el=0; R.lastWalk=[xcx(cell),xcy(cell)];
@@ -153,8 +162,9 @@ function* walk(cell,o){ o=o||{}; let last=EX.pc, still=0, tries=0, el=0; R.lastW
   while(EX.pc!==cell){ el+=DT; if(xKnownTrap(cell)||xSolid(cell)&&!o.allowSolid){ EX.path=[]; EX.goal=null; R.walkWhy='target became a trap or solid'; return false; } if(el>limit){ R.walkWhy='timeout'; R.stuck++; ev('stuck',{frus:2,note:'walk timeout'}); return false; }
     if(!EX.path.length&&!(EX.goal&&EX.goal.cell===EX.pc)||o.careful&&EX.path.length>1){ const p=pathTo(cell,o.allow); if(!p){ R.walkWhy='no path'; return false; }
       if(!p.length) return true; if(tries===0) limit=Math.max(limit,p.length/(XSPEED/XCS)*1.6+10);   // long walks get the time they need
+      if(R.traceOn){ (R.repaths=R.repaths||[]).push([+R.T.toFixed(1),xcx(EX.pc)+','+xcy(EX.pc),p.length,p.filter((c,i)=>i%10==0).map(c=>xcx(c)+','+xcy(c)).join(' '),p.filter(c=>xPadCell(c)).map(c=>xcx(c)+','+xcy(c)).join(' '),p.slice(-12).map(c=>xcx(c)+','+xcy(c)).join(' ')]); if(R.repaths.length>30) R.repaths.shift(); }
       EX.needInput=false; EX.path=o.careful?p.slice(0,1):p; const end=EX.path[EX.path.length-1]; EX.goal={cell:end,x:xw(end),z:xz(end)}; tries++; }
-    if(EX.pc!==last){ last=EX.pc; still=0; } else if((still+=DT)>3){ if(tries>6){ R.walkWhy='blocked'; R.stuck++; R.blockInfo=whatBlocks(); ev('stuck',{frus:2,note:'blocked walking'}); EX.path=[]; EX.goal=null; return false; } EX.path=[]; EX.goal=null; still=0; }
+    if(EX.pc!==last){ last=EX.pc; still=0; if(R.traceOn){ (R.walkPos=R.walkPos||[]).push(xcx(EX.pc)+','+xcy(EX.pc)); if(R.walkPos.length>80) R.walkPos.shift(); } } else if((still+=DT)>3){ if(tries>6){ R.walkWhy='blocked'; R.stuck++; R.blockInfo=whatBlocks(); ev('stuck',{frus:2,note:'blocked walking'}); EX.path=[]; EX.goal=null; return false; } EX.path=[]; EX.goal=null; still=0; }
     yield; }
   EX.path=[]; EX.goal=null; return true; }
 // a single step onto a neighbouring cell, with the stick (keys), for puzzle fields
@@ -185,7 +195,7 @@ function whatBlocks(){ const n=EX.path[0]!=null?EX.path[0]:EX.goal&&EX.goal.cell
 /* ---------------- deciding what to do on the map ---------------- */
 let TASK=null, TASKNAME='', DONE=null, PZ=null;
 function newFloor(){ if(EX&&!EX.botCounted){ EX.botCounted=1; R.trapsPlaced=(R.trapsPlaced||0)+EX.traps.length; R.floorsCounted=(R.floorsCounted||0)+1; (R.trapHist=R.trapHist||{})[EX.traps.length]=(R.trapHist[EX.traps.length]||0)+1; (R.trapByDepth=R.trapByDepth||{})[EX.depth]=EX.traps.length; }
-  DONE={props:new Set(), chests:new Set(), doors:new Set(), items:new Set(), searched:new Set(), fails:new Map()}; PZ=null; R.floorT0=R.T; R.stairsSeenT=null; R.seen0=0;
+  DONE={props:new Set(), chests:new Set(), doors:new Set(), items:new Set(), searched:new Set(), fails:new Map()}; PZ=null; TASK=null; R.floorT0=R.T; R.stairsSeenT=null; R.seen0=0;
   R.floors++; }
 function failed(key){ const n=(DONE.fails.get(key)||0)+1; DONE.fails.set(key,n); return n; }
 const wantMore=key=>(DONE.fails.get(key)||0)<2;
@@ -304,27 +314,27 @@ function puzzleDone(ok){ if(!PZ||PZ.done) return; PZ.done=true; PZ.ok=ok; PZ.tim
 function giveUp(why){ if(!PZ||PZ.done) return; PZ.gaveUp=true; PZ.time=Math.round(R.T-(PZ.t0||R.T)); PZ.why=why; ev('puzzle:gaveup',{frus:6,note:PZ.kind+': '+why}); }
 const propsOf=k=>EX.props.filter(p=>p.kind===k&&!p.gone);
 function* readTablet(){ const t=EX.props.find(p=>p.kind==='tablet'&&EX.room[p.cell]===EX.puzzle.room); if(t&&!DONE.props.has(t)){ yield* bump(t.cell); DONE.props.add(t); yield* think(.4); } return t; }
-PUZ.statues=pz=>(function*(){ for(const s of pz.statues){ let n=0; while(s.face!==s.want&&n<12){ yield* bump(s.cell); n++; PZ.steps++; yield* think(between(.2,.5)*P.slow); }
-    if(!chance(P.care)&&!pz.solved){ yield* bump(s.cell); PZ.steps++; ev('puzzle:fumble',{frus:.6,note:'turned a statue one too far'}); } } })();
-PUZ.mirrors=pz=>(function*(){ for(let k=0;k<8&&!pz.solved;k++){ const m=chance(P.logic)?pz.mirrors.find(x=>x.o!==x.want)||pick(pz.mirrors):pick(pz.mirrors); yield* bump(m.cell); PZ.steps++; yield* think(between(.4,1.2)*P.slow); }
+PUZ.statues=pz=>(function*(){ for(const s of pz.statues){ let n=0; while(s.face!==s.want&&n<12){ yield* bump(s.cell); n++; if(PZ) PZ.steps++; yield* think(between(.2,.5)*P.slow); }
+    if(!chance(P.care)&&!pz.solved){ yield* bump(s.cell); if(PZ) PZ.steps++; ev('puzzle:fumble',{frus:.6,note:'turned a statue one too far'}); } } })();
+PUZ.mirrors=pz=>(function*(){ for(let k=0;k<8&&!pz.solved;k++){ const m=chance(P.logic)?pz.mirrors.find(x=>x.o!==x.want)||pick(pz.mirrors):pick(pz.mirrors); yield* bump(m.cell); if(PZ) PZ.steps++; yield* think(between(.4,1.2)*P.slow); }
     if(!pz.solved) giveUp('the light never reached the crystal'); })();
 PUZ.runes=pz=>(function*(){ yield* readTablet(); const know=P.wheel;
   for(let att=0;att<6&&!pz.solved;att++){ // which stone next: the right one if the player knows the wheel, else a guess
     const want=pz.seq[pz.step], lit=pz.stones.filter(s=>!s.lit); const s=chance(know)?lit.find(x=>x.color===want):pick(lit); if(!s) break;
-    yield* bump(s.cell); PZ.steps++; yield* think(between(.3,.8)*P.slow); }
+    yield* bump(s.cell); if(PZ) PZ.steps++; yield* think(between(.3,.8)*P.slow); }
   if(!pz.solved) giveUp('could not work out the rune order'); })();
 PUZ.levers=pz=>(function*(){ const ins=EX.props.find(p=>p.kind==='inscription'); if(ins&&!DONE.props.has(ins)&&seenCell(ins.front)){ const ok=yield* bump(ins.cell,{max:60}); if(ok) DONE.props.add(ins); while(EX.dlg) yield; } const known=ins&&DONE.props.has(ins);
   if(!known&&ins&&!seenCell(ins.front)&&PZ.tries<3){ PZ.wait=()=>DONE.props.has(ins); return; }   // come back once the scratched order turns up
   for(let att=0;att<9&&!pz.solved;att++){ const want=pz.order[pz.step], left=pz.levers.filter(l=>!l.on); const l=(known||(ins&&DONE.props.has(ins)))&&chance(.97)?left.find(x=>x.sym===want):pick(left); if(!l) break;
-    yield* bump(l.cell); PZ.steps++; yield* think(between(.3,.8)*P.slow); }
+    yield* bump(l.cell); if(PZ) PZ.steps++; yield* think(between(.3,.8)*P.slow); }
   if(!pz.solved) giveUp(known?'pulled them wrong':'never found the order'); })();
 PUZ.plates=pz=>(function*(){ for(const pl of pz.plates){ if(pz.blocks.some(b=>b.cell===pl.cell)) continue;
     const b=pz.blocks.filter(b=>xcx(b.cell)===xcx(pl.cell)&&!pz.plates.some(q=>q.cell===b.cell)).sort((a,c)=>xcy(a.cell)-xcy(c.cell))[0]; if(!b) continue;
     for(let k=0;k<6&&b.cell!==pl.cell&&!pz.solved;k++){ const behind=b.cell+XN; if(behind!==EX.pc){ const ok=yield* walk(behind,{careful:true,max:30}); if(!ok) break; }
       // push up: hold until the block moves one cell, then let go (sometimes a beat late)
-      const c0=b.cell; hold('up'); const t0=R.T; while(b.cell===c0&&R.T-t0<1.5) yield; if(!chance(P.care)&&b.cell!==c0){ const t1=R.T; while(R.T-t1<.35) yield; } releaseKeys(); PZ.steps++; yield* think(.2); }
+      const c0=b.cell; hold('up'); const t0=R.T; while(b.cell===c0&&R.T-t0<1.5) yield; if(!chance(P.care)&&b.cell!==c0){ const t1=R.T; while(R.T-t1<.35) yield; } releaseKeys(); if(PZ) PZ.steps++; yield* think(.2); }
     if(b.cell!==pl.cell&&!pz.solved){ // overshot or stuck: the reset rune puts the blocks back
-      const rs=EX.props.find(p=>p.kind==='reset'); ev('puzzle:mistake',{frus:2,note:'pushed a block past its plate'}); PZ.mistakes++; if(rs){ yield* walk(rs.cell,{careful:true}); yield* think(.4); } } }
+      const rs=EX.props.find(p=>p.kind==='reset'); ev('puzzle:mistake',{frus:2,note:'pushed a block past its plate'}); if(PZ) PZ.mistakes++; if(rs){ yield* walk(rs.cell,{careful:true}); yield* think(.4); } } }
   if(!pz.solved&&PZ.tries>=3) giveUp('blocks would not sit on the plates'); })();
 PUZ.trial=pz=>(function*(){ const a=EX.props.find(p=>p.kind==='trialaltar'); if(!a||a.spent){ if(!pz.solved) PZ.gaveUp=true; return; } yield* bump(a.cell); yield* think(.5); if(a.spent||pz.solved) return; })();
 // stand on the start plate with a fresh run (the run starts when you step onto it)
@@ -339,7 +349,7 @@ PUZ.path=pz=>(function*(){ yield* readTablet(); const order=pz.order, tiles=new 
       const bad=PZ.bad||(PZ.bad=new Set()), good=PZ.good||(PZ.good=new Set());
       let cand=ns.filter(n=>tiles.get(n)&&tiles.get(n).sym===want&&!bad.has(n)); if(!chance(P.care)) cand=ns.filter(n=>!bad.has(n));   // a slip of the eye
       if(!cand.length) break; cand.sort((a,b)=>(good.has(b)-good.has(a))||(xcx(b)-xcx(a))); const go=cand.length>1&&!good.has(cand[0])&&chance(.5)?pick(cand):cand[0];
-      yield* think(between(.3,.9)*P.slow); const ok2=yield* step(go); PZ.steps++; if(!ok2) break; seen.add(go); idx++;
+      yield* think(between(.3,.9)*P.slow); const ok2=yield* step(go); if(PZ) PZ.steps++; if(!ok2) break; seen.add(go); idx++;
       if(!pz.run&&!pz.solved){ if(chance(P.memory)) bad.add(go); break; } else good.add(go); }
     if(!pz.solved){ yield* think(1); } }
   if(!pz.solved) giveUp('kept stepping on biting stones'); })();
@@ -351,14 +361,14 @@ PUZ.memory=pz=>(function*(){ for(let att=0;att<6&&!pz.solved;att++){ const ok=yi
     while(pz.run&&!pz.solved){ const ns=adj4(EX.pc).filter(n=>!seen.has(n)&&(pz.tiles.some(t=>t.cell===n)||n===pz.end.cell));
       if(ns.includes(pz.end.cell)){ yield* step(pz.end.cell); break; }
       let cand=ns.filter(n=>mem.has(n)&&!bad.has(n)); if(!cand.length) cand=ns.filter(n=>!bad.has(n)); if(!cand.length) break; cand.sort((a,b)=>xcx(b)-xcx(a));
-      const go=cand.length>1&&chance(.4)?pick(cand):cand[0]; yield* think(between(.3,.8)*P.slow); const ok2=yield* step(go); PZ.steps++; if(!ok2) break; seen.add(go);
+      const go=cand.length>1&&chance(.4)?pick(cand):cand[0]; yield* think(between(.3,.8)*P.slow); const ok2=yield* step(go); if(PZ) PZ.steps++; if(!ok2) break; seen.add(go);
       if(!pz.run&&!pz.solved){ bad.add(go); break; } }
   }
   if(!pz.solved) giveUp('could not remember the path'); })();
 PUZ.bells=pz=>(function*(){ const g=EX.props.find(p=>p.kind==='gong'&&!p.gone); if(!g){ PZ.gaveUp=true; return; }
   for(let att=0;att<5&&!pz.solved;att++){ yield* bump(g.cell); const t0=R.T; while((pz.playing||!pz.heard)&&R.T-t0<10) yield;
     const heard=pz.seq.map((k,i)=>chance(Math.max(.5,P.memory-.03*i))?k:Math.floor(rand()*4));
-    for(let i=0;i<heard.length&&pz.heard&&!pz.solved;i++){ const b=pz.bells[heard[i]]; yield* bump(b.cell); PZ.steps++; yield* think(between(.2,.6)*P.slow); }
+    for(let i=0;i<heard.length&&pz.heard&&!pz.solved;i++){ const b=pz.bells[heard[i]]; yield* bump(b.cell); if(PZ) PZ.steps++; yield* think(between(.2,.6)*P.slow); }
     const t1=R.T; while(!pz.solved&&R.T-t1<1) yield; }
   if(!pz.solved) giveUp('could not repeat the tune'); })();
 // sliding ice: a breadth-first search over where each slide stops, with some wasted slides for a weaker solver
@@ -378,7 +388,9 @@ function iceSolve(pz,start){ const rim=new Set(iceRim(pz)), prev=new Map([[start
 function iceEscape(pz){ const ice=new Set(pz.ice), prev=new Map([[EX.pc,null]]), q=[EX.pc];
   for(let h=0;h<q.length;h++){ const c=q[h]; for(const m of iceStops(pz,c)){ if(m.goal) continue; if(prev.has(m.to)) continue; prev.set(m.to,{c,dir:m.dir}); if(!ice.has(m.to)){ const plan=[]; let x=m.to; while(prev.get(x)){ plan.unshift({from:prev.get(x).c,dir:prev.get(x).dir}); x=prev.get(x).c; } return plan; } q.push(m.to); } }
   return null; }
-function* offIce(pz){ for(let k=0;k<8;k++){ while(EX.slide) yield; if(!new Set(pz.ice).has(EX.pc)) return true; const plan=iceEscape(pz); if(!plan||!plan.length) return false;
+function* offIce(pz){ for(let k=0;k<8;k++){ while(EX.slide) yield; const ice=new Set(pz.ice); if(!ice.has(EX.pc)) return true;
+    const dry=adj4(EX.pc).find(n=>!ice.has(n)&&xPassable(n)&&!xSolid(n)&&EX.t[n]!==T_ROCK&&!xKnownTrap(n)); if(dry){ yield* step(dry); continue; }   // the rim is right there: just step off
+    const plan=iceEscape(pz); if(!plan||!plan.length){ if(!R.iceDump){ R.iceDump={map:C.map(8,EX.pc),pc:[xcx(EX.pc),xcy(EX.pc)],stops:iceStops(pz,EX.pc).map(m=>[m.dir.join(','),xcx(m.to),xcy(m.to),!!m.goal]),solved:pz.solved,goal:[xcx(pz.goal.cell),xcy(pz.goal.cell)],ice:pz.ice.length}; } return false; }
     const mv=plan[0], to=xi(xcx(EX.pc)+mv.dir[0],xcy(EX.pc)+mv.dir[1]), D=dirTo(EX.pc,to); if(!D) return false; yield* think(between(.3,.8)); hold(D[0]); const t0=R.T; while(EX.pc===mv.from&&R.T-t0<.8) yield; releaseKeys(); const t1=R.T; while(EX.slide&&R.T-t1<6) yield; }
   return !new Set(pz.ice).has(EX.pc); }
 PUZ.ice=pz=>(function*(){ const ice=new Set(pz.ice);
@@ -386,24 +398,24 @@ PUZ.ice=pz=>(function*(){ const ice=new Set(pz.ice);
     let plan=iceSolve(pz,EX.room[EX.pc]===pz.room?EX.pc:iceRim(pz)[0]); if(!plan){ giveUp('no way across the ice'); return; }
     let mv=plan[0]; if(!chance(P.logic)){ const rim=iceRim(pz).filter(c=>adj4(c).some(n=>ice.has(n))); const f=ice.has(EX.pc)?EX.pc:pick(rim); const ms=iceStops(pz,f); if(ms.length){ const m=pick(ms); mv={from:f,dir:m.dir}; } }   // a slide that looked good
     if(EX.pc!==mv.from){ const ok=ice.has(EX.pc)?false:yield* walk(mv.from,{careful:true,max:30}); if(!ok&&!ice.has(EX.pc)) { yield* think(.5); continue; } if(ice.has(EX.pc)&&EX.pc!==mv.from) continue; }
-    const to=xi(xcx(EX.pc)+mv.dir[0],xcy(EX.pc)+mv.dir[1]); yield* think(between(.4,1.1)*P.slow); const D=dirTo(EX.pc,to); if(!D) continue; hold(D[0]); const t0=R.T; while(EX.pc===mv.from&&R.T-t0<.8) yield; releaseKeys(); PZ.steps++;
+    const to=xi(xcx(EX.pc)+mv.dir[0],xcy(EX.pc)+mv.dir[1]); yield* think(between(.4,1.1)*P.slow); const D=dirTo(EX.pc,to); if(!D) continue; hold(D[0]); const t0=R.T; while(EX.pc===mv.from&&R.T-t0<.8) yield; releaseKeys(); if(PZ) PZ.steps++;
     const t1=R.T; while(EX.slide&&R.T-t1<6) yield; }
   if(!pz.solved) giveUp('slid around the ice without reaching the pedestal'); })();
 PUZ.scales=pz=>(function*(){ yield* readTablet(); const vals=pz.stones; let want=null;
   const combos=[]; for(let a=0;a<5;a++) for(let b=a+1;b<5;b++) for(let c=b+1;c<5;c++) if(vals[a].v+vals[b].v+vals[c].v===pz.target) combos.push([vals[a],vals[b],vals[c]]);
   for(let att=0;att<4&&!pz.solved;att++){ want=chance(P.logic)&&combos.length?combos[0]:[...vals].sort(()=>rand()-.5).slice(0,3);
     if(att) yield* think(between(2,5)*P.slow); else yield* think(between(1,4)*P.slow);
-    for(const s of vals){ if(s.on!==want.includes(s)){ yield* bump(s.cell); PZ.steps++; yield* think(between(.2,.5)); if(pz.solved) break; } } }
+    for(const s of vals){ if(s.on!==want.includes(s)){ yield* bump(s.cell); if(PZ) PZ.steps++; yield* think(between(.2,.5)); if(pz.solved) break; } } }
   if(!pz.solved) giveUp('could not make the weight'); })();
 PUZ.shift=pz=>(function*(){ const fits=t=>pzFits(t), cells=new Set(pz.tiles.map(t=>t.cell));
   for(let k=0;k<40&&!pz.solved;k++){ const bad=pz.tiles.filter(t=>t.need&&!fits(t)); if(!bad.length){ yield* think(.5); if(!pz.solved){ giveUp('pipes looked joined but nothing happened'); } return; }
     // reach a wrong stone from outside the grid if you can (stepping on any stone turns it)
     let t=bad.find(x=>adj4(x.cell).some(n=>!cells.has(n)&&EX.room[n]===pz.room))||bad[0]; if(!chance(P.logic)) t=pick(pz.tiles);
     const out=adj4(t.cell).filter(n=>!cells.has(n)&&EX.room[n]===pz.room&&!xSolid(n));
-    if(out.length){ if(!out.includes(EX.pc)){ const ok=yield* walk(out[0],{careful:true,max:30}); if(!ok) break; } yield* think(between(.3,.9)*P.slow); yield* step(t.cell); PZ.steps++; if(pz.solved) break; const back=adj4(EX.pc).filter(n=>!cells.has(n)&&EX.room[n]===pz.room&&!xSolid(n)); if(back.length) yield* step(back[0]); }
+    if(out.length){ if(!out.includes(EX.pc)){ const ok=yield* walk(out[0],{careful:true,max:30}); if(!ok) break; } yield* think(between(.3,.9)*P.slow); yield* step(t.cell); if(PZ) PZ.steps++; if(pz.solved) break; const back=adj4(EX.pc).filter(n=>!cells.has(n)&&EX.room[n]===pz.room&&!xSolid(n)); if(back.length) yield* step(back[0]); }
     else { // the middle stone: through a neighbour and back
       const via=adj4(t.cell).find(n=>cells.has(n)&&adj4(n).some(m=>!cells.has(m)&&EX.room[m]===pz.room)); if(!via) break; const o2=adj4(via).find(m=>!cells.has(m)&&EX.room[m]===pz.room&&!xSolid(m));
-      if(EX.pc!==o2){ const ok=yield* walk(o2,{careful:true,max:30}); if(!ok) break; } yield* step(via); yield* step(t.cell); yield* step(via); yield* step(o2); PZ.steps+=4; } }
+      if(EX.pc!==o2){ const ok=yield* walk(o2,{careful:true,max:30}); if(!ok) break; } yield* step(via); yield* step(t.cell); yield* step(via); yield* step(o2); if(PZ) PZ.steps+=4; } }
   if(!pz.solved) giveUp('could not join the channel'); })();
 PUZ.riddle=pz=>(function*(){ const g=EX.props.find(p=>p.kind==='guardian'); if(!g||pz.wrong>=2){ if(!pz.solved) giveUp('the guardian fell silent'); return; } yield* bump(g.cell); const t0=R.T; while(R.T-t0<1&&!EX.dlg) yield; while(EX.dlg||xPaused) yield;
   if(pz.wrong>=2&&!pz.solved) giveUp('the guardian fell silent'); })();
@@ -411,7 +423,7 @@ PUZ.braziers=pz=>(function*(){ // carry the flame from the lit brazier to the co
   const cold=()=>pz.cold.filter(b=>!b.lit); if(cold().some(b=>!seenCell(b.cell))&&PZ.tries<3){ PZ.wait=()=>pz.cold.every(b=>seenCell(b.cell)); return; }
   for(let att=0;att<6&&!pz.solved;att++){ const lit=[pz.src,...pz.cold.filter(b=>b.lit)], d=distMap(); const src=lit.sort((a,b)=>(d[standFor(a.cell)]||999)-(d[standFor(b.cell)]||999))[0];
     yield* bump(src.cell); if(!(EX.flameT>0)) { yield* think(.5); continue; }
-    while(EX.flameT>0&&cold().length){ const d2=distMap(); const nx=cold().filter(b=>seenCell(b.cell)).sort((a,b)=>(d2[standFor(a.cell)]+1||999)-(d2[standFor(b.cell)]+1||999))[0]; if(!nx) break; const ok=yield* bump(nx.cell,{max:40}); PZ.steps++; if(!ok) break; } }
+    while(EX.flameT>0&&cold().length){ const d2=distMap(); const nx=cold().filter(b=>seenCell(b.cell)).sort((a,b)=>(d2[standFor(a.cell)]+1||999)-(d2[standFor(b.cell)]+1||999))[0]; if(!nx) break; const ok=yield* bump(nx.cell,{max:40}); if(PZ) PZ.steps++; if(!ok) break; } }
   if(!pz.solved) giveUp('the flame kept dying on the way'); })();
 
 /* ---------------- dialogs, screens and camp ---------------- */
@@ -531,7 +543,7 @@ C.run=function(cfg){
     if(B&&(B.phase==='fight'||B.phase==='custom')&&on('scrBattle')){ const fs=R.fightStart||{}; let r;
       try{ r=PT.runFight({adopt:true, depth:B.depth, bot:cfg.bot, botName:cfg.label, maxT:900, seed:(cfg.seed||1)*131+R.fights.length}); }catch(e){ err('fight',e); r={res:'error',errors:[e.message]}; }
       const secs=r.realSecs||r.time/.7||0; R.T+=secs; VT+=secs; R.time.fight+=secs;
-      const f={d:B?B.depth:(EX?EX.depth:0), res:r.res, secs:Math.round(secs), hpLost:r.dmgTaken, hp0:fs.hp, op:fs.op, boss:fs.boss, mini:fs.mini, combos:Object.values(r.combos||{}).reduce((a,b)=>a+b,0), name:fs.name};
+      const f={d:B?B.depth:(EX?EX.depth:0), res:r.res, secs:Math.round(secs), hpLost:r.dmgTaken, hp0:fs.hp, maxHp:r.maxHp, elites:PT.lastB?PT.lastB.enemies.filter(e=>e.elite).length:0, n:PT.lastB?PT.lastB.enemies.length:0, op:fs.op, boss:fs.boss, mini:fs.mini, combos:Object.values(r.combos||{}).reduce((a,b)=>a+b,0), name:fs.name};
       R.fights.push(f); if(r.errors&&r.errors.length) R.errors.push(...r.errors.slice(0,2).map(x=>'fight '+x));
       if(r.res==='win'){ const left=r.hpEnd/Math.max(1,r.maxHp); ev('fight:win',{fun:2+(fs.boss?8:fs.mini?5:0)+(left<.25?4:left<.45?2:0)+Math.min(2,f.combos*.3),note:f.name+(left<.25?' (close call)':'')});
         if(secs>100) ev('fight:long',{frus:Math.min(5,(secs-100)/30),note:f.name+' '+Math.round(secs)+'s'}); else if(r.dmgTaken<=3&&secs>30&&!fs.boss) ev('fight:dull',{frus:.6,note:f.name+' '+Math.round(secs)+'s, no danger'}); }
@@ -573,8 +585,8 @@ C.run=function(cfg){
   const sum=(a,f)=>a.reduce((s,x)=>s+f(x),0);
   return {label:R.label, lean:R.lean, seed:R.seed, hours:+(R.T/3600).toFixed(2), maxDepth:R.maxDepth, level:save.level, gold:save.gold, spent:R.spent, packs:R.packs, fun:+R.fun.toFixed(1), frus:+R.frus.toFixed(1), moodMin:+R.moodMin.toFixed(1),
     quits:R.quits, deaths:R.deaths, camps:R.camps, puzzles:R.puzzles.map(p=>({kind:p.kind,d:p.d,ok:!!p.ok,gaveUp:!!p.gaveUp&&!p.skipped,skipped:!!p.skipped,time:p.time,mistakes:p.mistakes,dmg:p.dmg,steps:p.steps,why:p.why})),
-    fights:R.fights, hurt:R.hurt, cards:R.cards, dlgN:R.dlgN, dlgs:R.dlgs, time:Object.fromEntries(Object.entries(R.time).map(([k,v])=>[k,Math.round(v)])), floors:R.floors, stuck:R.stuck, searches:R.searches, searchHits:R.searchHits, cues:R.cues, clicks:R.clicks, tells:R.tells, tellsSeen:R.tellsSeen, spend:R.spend, trapsPlaced:R.trapsPlaced||0, floorsCounted:R.floorsCounted||0, trapHist:R.trapHist, sold:R.sold||0, fieldBitten:R.fieldBitten||0, iceSlid:R.iceSlid||0, burned:R.burned, fled:R.fled||0, stairRetry:R.stairRetry||0, floorMoves:R.floorMoves||0, routeFail:R.routeFail||0, routeWhy:R.routeWhy, stairMap:R.stairMap, climbLog:R.climbLog, climbWhy:R.climbWhy,
-    bag:R.bag, campTrips:R.campTrips, tasks:R.tasks, depthT:Object.fromEntries(Object.entries(R.depthT).map(([k,v])=>[k,Math.round(v)])), startDeck:R.startDeck, endDeck:PT.run.deckInfo(save.decks[0].list), events:R.events, trace:R.trace, ring:R.ringDump, doorLog:R.doorLog, upLog:R.upLog, bossLog:R.bossLog, errors:R.errors.slice(0,20)};
+    fights:R.fights, hurt:R.hurt, cards:R.cards, dlgN:R.dlgN, dlgs:R.dlgs, time:Object.fromEntries(Object.entries(R.time).map(([k,v])=>[k,Math.round(v)])), floors:R.floors, stuck:R.stuck, searches:R.searches, searchHits:R.searchHits, cues:R.cues, clicks:R.clicks, tells:R.tells, tellsSeen:R.tellsSeen, spend:R.spend, trapsPlaced:R.trapsPlaced||0, floorsCounted:R.floorsCounted||0, trapHist:R.trapHist, sold:R.sold||0, fieldBitten:R.fieldBitten||0, iceSlid:R.iceSlid||0, burned:R.burned, fled:R.fled||0, stairRetry:R.stairRetry||0, floorMoves:R.floorMoves||0, routeFail:R.routeFail||0, routeWhy:R.routeWhy, stairMap:R.stairMap, climbLog:R.climbLog, climbWhy:R.climbWhy, iceDump:R.iceDump,
+    bag:R.bag, campTrips:R.campTrips, tasks:R.tasks, depthT:Object.fromEntries(Object.entries(R.depthT).map(([k,v])=>[k,Math.round(v)])), startDeck:R.startDeck, endDeck:PT.run.deckInfo(save.decks[0].list), events:R.events, trace:R.trace, ring:R.ringDump, jumps:R.jumps, doorLog:R.doorLog, upLog:R.upLog, bossLog:R.bossLog, errors:R.errors.slice(0,20)};
 };
 // an ASCII picture of the floor around you, for debugging: # rock, . seen floor, ? unseen, + door, D stairs down, @ you, F frontier
 C.map=function(rad,ctr){ rad=rad||14; const CC=ctr==null?EX.pc:ctr; const d=distMap(), out=[]; const fr=new Set(); for(let c=0;c<XN*XN;c++){ if(d[c]>0&&EX.seen[c]&&xPassable(c)&&adj4(c).some(n=>!EX.seen[n])) fr.add(c); }
@@ -610,6 +622,7 @@ C.puzzleLab=function(cfg){ installClock(); wrapGame();
   window.xFloorPlan=fp; window.xPlacePuzzle=pp; return out; };
 // the map's own frame, without the drawing (explore.js xLoop)
 function stepMap(){ if(!EX||!EX.active) return; const dt=DT;
+  if(R&&R.traceOn){ if(R.lastPc!=null&&Math.abs(xcx(R.lastPc)-xcx(EX.pc))+Math.abs(xcy(R.lastPc)-xcy(EX.pc))>2){ (R.jumps=R.jumps||[]).push({t:+R.T.toFixed(1),from:xcx(R.lastPc)+','+xcy(R.lastPc),to:xcx(EX.pc)+','+xcy(EX.pc),depth:EX.depth,task:TASKNAME,log:EX.log.map(l=>l.t).join(' | ')}); if(R.jumps.length>40) R.jumps.shift(); } R.lastPc=EX.pc; }
   if(R&&R.traceOn){ (R.ring=R.ring||[]).push([+R.T.toFixed(2),xcx(EX.pc),xcy(EX.pc),+(EX.px/XCS).toFixed(2),+(EX.pz/XCS).toFixed(2),EX.path.slice(0,2).map(c=>xcx(c)+','+xcy(c)).join(' '),EX.goal?xcx(EX.goal.cell)+','+xcy(EX.goal.cell):'-',+(EX.vx||0).toFixed(2),+(EX.vz||0).toFixed(2),EX.blockT?+EX.blockT.toFixed(2):0,TASKNAME]); if(R.ring.length>400) R.ring.shift(); }
   if(EX.action){ EX.action.age=(EX.action.age||0)+dt; if(EX.action.age>5){ const a=EX.action; EX.action=null; try{ a.done(); }catch(e){} } }
   if(!EX.busy&&!xPaused&&!EX.aim){ try{ xMove(dt); }catch(e){ err('xMove',e); } if(!EX||!EX.active) return; try{ xEnemies(dt); }catch(e){ err('xEnemies',e); }

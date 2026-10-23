@@ -44,6 +44,10 @@ P('## Fights in the dungeon'); P('');
 tbl(['Player','Fights','Won','Avg length','Over 100 s','No danger (≤3 HP lost)','Surprised','Ambush/strike'],STY.map(s=>{ const f=by(s).flatMap(r=>r.fights); const n=f.length||1;
   return [s,f.length,pc(f.filter(x=>x.res==='win').length/n),f0(f.reduce((a,x)=>a+x.secs,0)/n)+'s',pc(f.filter(x=>x.secs>100).length/n),pc(f.filter(x=>x.res==='win'&&x.hpLost<=3).length/n),pc(f.filter(x=>x.op==='surprised').length/n),pc(f.filter(x=>x.op==='ambush'||x.op==='strike').length/n)]; }));
 
+// danger by depth: HP lost per dungeon fight against the targets in docs/fight-patterns.md
+{ const T={'1–3':5,'4–7':10,'8–12':10,'13–20':17,'21+':25}; const fb={}; for(const r of runs) for(const f of r.fights){ if(!f.maxHp) continue; const b=fb[band(f.d)]||(fb[band(f.d)]={n:0,pct:0,big:0,win:0,secs:0,el:0,foes:0}); const pc=100*f.hpLost/f.maxHp; b.n++; b.pct+=pc; if(pc>2*T[band(f.d)]) b.big++; if(f.res==='win') b.win++; b.secs+=f.secs; b.el+=f.elites||0; b.foes+=f.n||0; }
+  if(Object.keys(fb).length){ P('## Danger by depth (dungeon fights)'); P('');
+    tbl(['Depth','Fights','HP lost a fight','Target','Fights over twice the target','Won','Avg length','Foes a fight','Elites a fight'],BANDS.filter(k=>fb[k]).map(k=>{ const b=fb[k]; return [k,b.n,f1(b.pct/b.n)+'%','~'+T[k]+'%',pc(b.big/b.n),pc(b.win/b.n),f0(b.secs/b.n)+'s',f1(b.foes/b.n),f1(b.el/b.n)]; })); } }
 // deaths and quits
 const dw={}; for(const r of runs) for(const d of r.deaths){ const k=d.where+': '+d.why; dw[k]=(dw[k]||0)+1; }
 P('## Deaths'); P(''); P(Object.keys(dw).length?Object.entries(dw).sort((a,b)=>b[1]-a[1]).slice(0,12).map(([k,v])=>'- '+k+' ×'+v).join('\n'):'None.'); P('');

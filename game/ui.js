@@ -1009,7 +1009,7 @@ View.canvas.addEventListener('pointerdown',e=>{ const t=pickTile(e.clientX,e.cli
   const [ax,ay]=appXY(e.clientX,e.clientY), [wx,wz]=posOf(B.player), [px,py]=proj(wx,0,wz);
   dragging={id:e.pointerId,x0:ax,y0:ay,x:ax,y:ay,t0:performance.now(),px,py,wx,wz,tap:t,moved:false,stick:false,hist:[[performance.now(),ax,ay]]}; });
 View.canvas.addEventListener('pointermove',e=>{ const d=dragging; if(!d||e.pointerId!==d.id) return; const [ax,ay]=appXY(e.clientX,e.clientY); d.x=ax; d.y=ay;
-  const now=performance.now(); d.hist.push([now,ax,ay]); while(d.hist.length>2&&now-d.hist[0][0]>120) d.hist.shift();   // the thumb's last moments, for a flick
+  const now=performance.now(); d.hist.push([now,ax,ay]); while(d.hist.length>2&&now-d.hist[0][0]>400) d.hist.shift();   // the thumb's last moments, for a flick
   if(!d.moved&&Math.hypot(ax-d.x0,ay-d.y0)>MV('mvTapPx')) d.moved=true;
   if(!d.moved||XLIT.mvStick) return;   // the joystick steers every frame (stickWalk)
   // follow finger: your mage glides after the finger as a float and is hit on the nearest tile (freeTarget, battle.js)
@@ -1018,7 +1018,7 @@ const dragEnd=e=>{ const d=dragging; if(!d||e.pointerId!==d.id) return; dragging
   const tap=!d.moved&&!d.stick&&e.type==='pointerup'&&(!XLIT.mvStick||performance.now()-d.t0<MV('mvTapMs'));
   if(d.moved||d.stick) freeEnd(); if(tap&&d.tap&&d.tap.side==='p') moveTo(d.tap);
   // a flick: let go with the thumb still moving fast and your mage is thrown that way (battle.js flickThrow)
-  if((d.moved||d.stick)&&XLIT.mvStick&&MV('mvFlick')&&B&&B.player&&d.hist){ const now=performance.now(), H=d.hist.filter(h=>now-h[0]<=90);
+  if((d.moved||d.stick)&&XLIT.mvStick&&MV('mvFlick')&&B&&B.player&&d.hist){ const now=performance.now(), H=d.hist.filter(h=>now-h[0]<=MV('mvFlickWin'));
     if(H.length>=2){ const [t0,x0,y0]=H[0], [,x1,y1]=H[H.length-1], vx=(x1-x0)/Math.max(16,now-t0)*1000, vy=(y1-y0)/Math.max(16,now-t0)*1000, v=Math.hypot(vx,vy);
       if(v>=MV('mvFlickV0')){ const p=B.player, fx=p.fx??p.tile.wx, fz=p.fz??p.tile.wz, [sx,sy]=proj(fx,0,fz), [wx,wz]=unprojGround(sx+vx/v*60,sy+vy/v*60,fx,fz);
         flickThrow(wx-fx,wz-fz,(v-MV('mvFlickV0'))/Math.max(1,MV('mvFlickV1')-MV('mvFlickV0'))); } } } };

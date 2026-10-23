@@ -117,3 +117,14 @@ before:
 
 A flick back returns you (counting your own tile's middle first if it is still ahead of you), and on hex,
 flicks in a row keep to the line the first started from.
+
+## The default feel (v118)
+
+The user tuned this in the Movement lab and it became the default (`MV_DEF` in battle.js, `XLIT_DEF` in look.js):
+`mvSnapR .7, mvSnapSpd 5, mvStickR 39, mvDead .15, mvStickMin .15, mvStickFull .7, mvCurve .49, mvTapMs 306, mvTapPx 17,
+mvStickSpeed 8, mvMAccel .36, mvMBrake .06, mvMSkid .22, mvGrip .93, mvFlickMin 1, mvFlickTime .35`.
+The v117 defaults are kept as `MV_V117`: the debug menu's Battle movement → Old (v117) button, and the lab's ★ Old (v117) profile.
+
+The scorer gives it 68 (held-out 62), against 95 for ★ Tight: it docks points for the slow build-up (start), the long skid
+before a turn-around (reverse) and the glide. Those are what the user asked for (momentum kept, not tight),
+so here the score measures distance from "tight", not quality.

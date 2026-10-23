@@ -6,7 +6,7 @@
    a hit is counted, then healed. Nothing here touches your game; the lab's own settings are kept in
    this browser. With no game loaded it borrows a starter hexmancer that is never saved. */
 const MLAB_KEY='hexmancers-movelab', MLAB_FOE='marksman';
-const MLAB_DEF={cols:6, rows:8, square:false, turrets:0, every:4, shotSpd:12};
+const MLAB_DEF={cols:7, rows:9, square:true, turrets:0, every:4, shotSpd:12};
 const MLAB=Object.assign({},MLAB_DEF,(()=>{ try{ return JSON.parse(localStorage.getItem(MLAB_KEY))||{}; }catch(e){ return {}; } })());
 const mlabKeep=()=>{ try{ localStorage.setItem(MLAB_KEY,JSON.stringify(MLAB)); }catch(e){} };
 const mlabOn=()=>!!(B&&B.lab&&B.lab.move);
@@ -78,7 +78,8 @@ const mlabProfs=()=>{ try{ return JSON.parse(localStorage.getItem(MLAB_PKEY))||{
    speed up, and pushing the other way skids round faster still), scaled down to a dodge on a small board. */
 const MLAB_PRESETS={
   '★ Tight':{mv:{mvMAccel:.03, mvMBrake:.08, mvMSkid:.03, mvGrip:1, mvSnapR:.6, mvSnapSpd:5, mvStickSpeed:5.5, mvDead:.15, mvStickMin:.3, mvStickFull:.7}},
-  '★ Mario':{mv:{mvMAccel:.05, mvMBrake:.1, mvMSkid:.04, mvGrip:.93, mvSnapR:.7, mvSnapSpd:5, mvStickSpeed:5.5, mvDead:.15, mvStickMin:.3, mvStickFull:.7}}};
+  '★ Mario':{mv:{mvMAccel:.05, mvMBrake:.1, mvMSkid:.04, mvGrip:.93, mvSnapR:.7, mvSnapSpd:5, mvStickSpeed:5.5, mvDead:.15, mvStickMin:.3, mvStickFull:.7}},
+  '★ Old (v117)':{mv:MV_V117}};   /* the walking feel before v118 */
 const mlabPreset=n=>MLAB_PRESETS[n]&&{mv:Object.assign({},MV_DEF,{mvMomentum:true, mvStick:true},MLAB_PRESETS[n].mv)};
 const mlabProf=n=>mlabPreset(n)||mlabProfs()[n];
 const mlabProfsKeep=P=>{ try{ localStorage.setItem(MLAB_PKEY,JSON.stringify(P)); }catch(e){} };

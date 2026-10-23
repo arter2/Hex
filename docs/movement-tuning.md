@@ -128,3 +128,18 @@ The v117 defaults are kept as `MV_V117`: the debug menu's Battle movement → Ol
 The scorer gives it 68 (held-out 62), against 95 for ★ Tight: it docks points for the slow build-up (start), the long skid
 before a turn-around (reverse) and the glide. Those are what the user asked for (momentum kept, not tight),
 so here the score measures distance from "tight", not quality.
+
+## Tested in real fights (v119)
+
+`node tools/battle-move-test.js [new,old] [depths]` starts real 12x7 hex fights (live enemies) and drives the stick at 60 fps:
+0.35 s pushes each way, flicks at 600/1000/1500 px/s, rocking the thumb, holding into each edge and corner, and 25 s of a
+live fight with an autopilot that steps out of incoming shots and lobs while firing.
+
+It found a real bug: with a hard brake (the v118 feel's mvMBrake .06; ★ Tight too) a let-go slide ends so soon that no
+tile middle ahead fits the magnet's braking window (0.5-2.5x the brake), so it picked none and you froze 0.3-0.5 tiles
+off the middle for good. Now a middle ahead that needs a softer brake is taken when nothing nearer fits (you glide on
+to it), and if the slide still found none, the magnet picks again once you have stopped (the nearest middle).
+
+Results with the v118 feel: a 0.35 s push goes 1.7-2 tiles and settles in 0.1-0.15 s; flicks go 1 / 1.7-2 / 2.6-3 tiles
+(light / medium / hard), each in 0.32 s; every stop ends on a tile middle. Scorer: the v118 default 67; ★ Tight 95 -> 90,
+because it used to "stop" fast by freezing between tiles, and now glides on to the middle.

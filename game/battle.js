@@ -1207,7 +1207,7 @@ function momentumTick(p,rdt,haste,sp){
   const still=!p.path.length&&(!p.free||resting||!!(p.snap&&p.snap.tag===tag));
   if(!still){ p.snap=null; if(!p.moving){ p.moving=true; p.moveFrom=p.tile; } }
   else { p.moving=false;
-    if(!p.snap||p.snap.tag!==tag){   // where the slide will end, and the magnet's pull there
+    if(!p.snap||p.snap.tag!==tag||p.snap.re&&v<.05){   // where the slide will end, and the magnet's pull there (again once stopped, if the slide found none)
       const s=v>1e-4?v/(2*Bk):0, stand=(x,z)=>{ const t=inPRect(x,z)&&nearestTile(x,z); return t&&onTile(t,x,z)&&(t===p.tile||t.side==='p'&&!t.occ&&!(t.holeT>0)); };
       let Sx=p.fx+vx*s, Sz=p.fz+vz*s;
       // a slide aimed off the grid, past the border or into something stops where you can last stand
@@ -1217,17 +1217,21 @@ function momentumTick(p,rdt,haste,sp){
       /* The magnet: the middle of the tile you would stop in, or of one next to it, if it is in range. Sliding, it
          only ever takes you on ahead of where you are (never back against the way you go), and it lands you
          there by braking a little harder or softer (p.snap.a), never by pulling: in reach of that, or none. */
-      let best=null, bd=1e9;
+      let best=null, bd=1e9, soft=null, sd=1e9, any=null, ad=1e9;
       if(MV('mvSnap')>0) for(const t of [t0,...neighbors(t0)]){
         if(t.side!=='p'||t.occ&&t.occ!==p||t.holeT>0) continue;   // never into a tile you can't stand on
         const ox=t.wx-Sx, oz=t.wz-Sz, dS=Math.hypot(ox,oz);
         if(!(dS/sp<=MV('mvSnapR')+1e-6||p.walled&&t===p.tile)||dS>=bd) continue;
+        if(dS<ad){ any=t; ad=dS; }
         if(MV('mvSnapAhead')&&t===p.moveFrom&&dir&&ox*dir[0]+oz*dir[1]<-1e-6) continue;   // nor back into the tile you set off from
         if(sliding){ const gx=Sx+ox*MV('mvSnap'), gz=Sz+oz*MV('mvSnap'), ahead=(gx-p.fx)*dir[0]+(gz-p.fz)*dir[1];
-          if(ahead<-1e-6) continue; const a=v*v/(2*Math.max(1e-4,Math.hypot(gx-p.fx,gz-p.fz))); if(a>Bk*2.5||a<Bk*.5) continue; }
+          if(ahead<-1e-6) continue; const a=v*v/(2*Math.max(1e-4,Math.hypot(gx-p.fx,gz-p.fz))); if(a>Bk*2.5) continue;
+          if(a<Bk*.5){ if(dS<sd){ soft=t; sd=dS; } continue; } }   // reached only by gliding on further: if nothing nearer fits
         best=t; bd=dS; }
+      if(!best) best=soft;   // a hard brake stops short of every middle ahead: glide on to the nearest
+      if(!best&&!sliding) best=any;   // stopped with nothing ahead in range: the nearest middle, whichever way, so you never stay off it
       const k=best?MV('mvSnap'):0, ox=best?best.wx-Sx:0, oz=best?best.wz-Sz:0, gx=Sx+ox*k, gz=Sz+oz*k, gd=Math.hypot(gx-p.fx,gz-p.fz);
-      p.snap={tag,x:gx,z:gz,a:sliding&&gd>1e-4?clamp(v*v/(2*gd),Bk*.5,Bk*2.5):0}; } }
+      p.snap={tag,x:gx,z:gz,a:sliding&&gd>1e-4?clamp(v*v/(2*gd),Bk*.1,Bk*2.5):0,re:sliding&&!best}; } }
   // what the input asks for: a point to reach, and whether to brake to a stop on it (arrive) or run on through it
   let gx=null, gz=null, arrive=true, want=0;
   if(still){ if(p.snap){ gx=p.snap.x; gz=p.snap.z; want=p.snap.flick?1e9:walkTps*sp*slowK*MV('mvSnapSpd'); } }   // a flick glides at its own pace

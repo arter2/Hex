@@ -1184,7 +1184,7 @@ function xEnter(c){
   xHud();
 }
 // experience on the map: a line in the log, and the level-up panel when a level comes
-function xXp(n,why){ if(typeof gainXp!=='function'||!save) return; const up=gainXp(save,n); persist(); xLog('+'+Math.round(n)+' XP · '+why,'xp');
+function xXp(n,why){ if(typeof gainXp!=='function'||!save) return; n=Math.round(n*xpScale(save.level,EX?EX.depth:save.deepest)); if(n<=0) return; const up=gainXp(save,n); persist(); xLog('+'+Math.round(n)+' XP · '+why,'xp');
   if(up){ xLog('Level up! You are now level '+save.level+'.','good'); setTimeout(()=>{ if(EX&&EX.active&&!EX.busy) maybeLevelUp(); },400); } xHud(); }
 function xHurt(n,why){ EX.hp=Math.max(0,EX.hp-n); xFlash(); xHud(); if(EX.hp<=0) xDie(why); }
 function xSpring(tr,remote){ const T=TRAPS[tr.kind]; tr.known=true; xTrapMesh(tr); EX.shakeT=.45; xSparks(xw(tr.cell),xz(tr.cell),0xffd08a,10,1.4);

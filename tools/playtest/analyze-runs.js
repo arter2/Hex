@@ -1,14 +1,14 @@
 // usage: node anr.js <dir with full_*.jsonl>
 const fs=require('fs'), DIR=process.argv[2]||__dirname, R=[];
-for(const f of fs.readdirSync(DIR).filter(f=>/^full_\d+\.jsonl$/.test(f))) for(const l of fs.readFileSync(DIR+'/'+f,'utf8').trim().split('\n')) if(l) R.push(JSON.parse(l));
-const styles=['average','good','fast','combo'], leans=['fire','frost','storm','verdant','light','shadow'];
+for(const f of fs.readdirSync(DIR).filter(f=>/^full_\d+\.jsonl$/.test(f))) for(const l of fs.readFileSync(DIR+'/'+f,'utf8').trim().split('\n')) if(l){ const r=JSON.parse(l); r.style=r.label||r.style; R.push(r); }
+const styles=['average','good','fast','combo','shopaholic'], leans=['fire','frost','storm','verdant','light','shadow'];
 const avg=a=>a.length?a.reduce((x,y)=>x+y,0)/a.length:0, med=a=>{ const s=a.slice().sort((x,y)=>x-y); return s.length?s[Math.floor(s.length/2)]:0; }, pct=x=>Math.round(100*x), f1=x=>(+x).toFixed(1);
 const ok=R.filter(r=>!r.error); console.log('runs',R.length,'failed',R.length-ok.length,'fights',ok.reduce((a,r)=>a+r.fights.length,0),'fight errors',ok.reduce((a,r)=>a+r.fights.reduce((b,f)=>b+f.errors,0),0),'page errors',ok.reduce((a,r)=>a+(r.pageErrors||[]).length,0));
 const band=d=>d<=4?'1-4':d<=8?'5-8':d<=16?'9-16':d<=24?'17-24':'25-40';
 console.log('\n## How far each style gets (12 runs each: 6 colours x 2)');
-console.log('| Style | Median depth | Mean | Reached d8 | d16 | d24 | d40 (cleared) | Fights | Losses | Level at end | Gold at end |'); console.log('|---|---|---|---|---|---|---|---|---|---|---|');
+console.log('| Style | Median depth | Mean | Reached d8 | d16 | d24 | d40 (cleared) | Fights | Losses | Level at end | Level at d10/20/30/40 | Packs bought | Gold spent | Gold at end |'); console.log('|---|---|---|---|---|---|---|---|---|---|---|---|---|---|');
 for(const s of styles){ const rs=ok.filter(r=>r.style===s), D=rs.map(r=>r.reached), at=x=>pct(rs.filter(r=>r.reached>x).length/rs.length)+'%';
-  console.log('| '+s+' | '+med(D)+' | '+f1(avg(D))+' | '+at(8)+' | '+at(16)+' | '+at(24)+' | '+at(40)+' | '+f1(avg(rs.map(r=>r.fights.length)))+' | '+f1(avg(rs.map(r=>r.losses)))+' | '+f1(avg(rs.map(r=>r.level)))+' | '+Math.round(avg(rs.map(r=>r.gold)))+' |'); }
+  console.log('| '+s+' | '+med(D)+' | '+f1(avg(D))+' | '+at(8)+' | '+at(16)+' | '+at(24)+' | '+at(40)+' | '+f1(avg(rs.map(r=>r.fights.length)))+' | '+f1(avg(rs.map(r=>r.losses)))+' | '+f1(avg(rs.map(r=>r.level)))+' | '+[10,20,30,40].map(d=>{ const v=rs.map(r=>r.levelAt&&r.levelAt[d]).filter(x=>x); return v.length?f1(avg(v)):'-'; }).join(' / ')+' | '+f1(avg(rs.map(r=>r.packs||0)))+' | '+Math.round(avg(rs.map(r=>r.spent||0)))+' | '+Math.round(avg(rs.map(r=>r.gold)))+' |'); }
 console.log('\n## Depth reached by colour (mean of the 8 runs, all styles)');
 console.log('| '+leans.join(' | ')+' |'); console.log('|'+leans.map(()=>'---').join('|')+'|'); console.log('| '+leans.map(l=>f1(avg(ok.filter(r=>r.lean===l).map(r=>r.reached)))).join(' | ')+' |');
 console.log('| Style | '+leans.join(' | ')+' |'); console.log('|---|'+leans.map(()=>'---').join('|')+'|');

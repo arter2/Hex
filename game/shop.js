@@ -153,20 +153,20 @@ function cardBackEl(style){ const d=document.createElement('div'); d.className='
 /* ---------------- opening a pack ----------------
    The pack shakes, then bursts in a flash; its cards land face down in a fan and turn over one at a
    time in a random order (a rare or better one glows as it turns). Tap to turn the rest at once. */
-function packOpen(color,res,onDone){ const ov=$('#packOpen'), stage=$('#poStage'), fan=$('#poFan'), done=$('#poDone'); fan.innerHTML=''; stage.innerHTML=''; done.hidden=true;
+function packOpen(color,res,onDone){ const ov=$('#packOpen'), stage=$('#poStage'), fan=$('#poFan'), done=$('#poDone'), all=$('#poAll'), hint=$('#poHint'); fan.innerHTML=''; stage.innerHTML=''; done.hidden=true; all.hidden=true; hint.hidden=false;
   const pk=packArt(color,150); pk.className='popack'; stage.appendChild(pk); ov.classList.add('on'); ov.classList.remove('burst');
   const order=res.map((_,i)=>i).sort(()=>Math.random()-.5), slots=[];
   res.forEach((r,i)=>{ const s=document.createElement('div'); s.className='poslot'; s.style.setProperty('--i',i-(res.length-1)/2);
     const back=cardBackEl(); back.classList.add('poback'); const face=cardEl(r.card,r.isNew?'<span class="badge new">NEW</span>':''); face.classList.add('poface'); face.onclick=e=>{ e.stopPropagation(); showDetail(r.card); };
     if(['rare','legendary','hero'].includes(r.card.rarity)) s.classList.add('shine');
     s.append(back,face); fan.appendChild(s); slots.push(s); });
-  // they land face down, wait a beat, then turn over one by one in a random order; tap one to turn it yourself
-  let k=0, t=null; const left=()=>order.filter(i=>!slots[i].classList.contains('up'));
-  const flip=i=>{ if(slots[i].classList.contains('up')) return; slots[i].classList.add('up'); if(typeof buzz==='function') buzz(8); if(!left().length){ clearTimeout(t); setTimeout(()=>done.hidden=false,350); } };
-  const turn=()=>{ const l=left(); if(!l.length) return; flip(l[0]); t=setTimeout(turn,650); };
+  // they land face down and stay that way: you turn each one over yourself (or Reveal all)
+  let t=null; const left=()=>order.filter(i=>!slots[i].classList.contains('up'));
+  const flip=i=>{ if(!ov.classList.contains('burst')||slots[i].classList.contains('up')) return; slots[i].classList.add('up'); if(typeof buzz==='function') buzz(8);
+    if(!left().length){ all.hidden=true; hint.hidden=true; t=setTimeout(()=>done.hidden=false,350); } };
   slots.forEach((s,i)=>s.addEventListener('click',e=>{ if(!s.classList.contains('up')){ e.stopPropagation(); flip(i); } }));
-  setTimeout(()=>{ ov.classList.add('burst'); if(typeof buzz==='function') buzz(30); setTimeout(()=>{ stage.innerHTML=''; t=setTimeout(turn,900); },380); },700);
-  ov.onclick=()=>{ if(ov.classList.contains('burst')&&left().length){ clearTimeout(t); left().forEach(flip); } };   // a tap beside the cards turns the rest
+  setTimeout(()=>{ ov.classList.add('burst'); if(typeof buzz==='function') buzz(30); t=setTimeout(()=>{ stage.innerHTML=''; all.hidden=false; },380); },700);
+  ov.onclick=null; all.onclick=e=>{ e.stopPropagation(); left().forEach((i,n)=>setTimeout(()=>flip(i),n*120)); };
   done.onclick=e=>{ e.stopPropagation(); clearTimeout(t); ov.classList.remove('on','burst'); const n=res.filter(r=>r.isNew).length; if(n) tip(n+' new card'+(n>1?'s':'')+' for your collection'); if(onDone) onDone(); }; }
 /* A pack found or won (a chest, a boss, a mission): the area's own family more often than not, else a
    booster; its cards go to your collection and it opens at once. Packs are uncommon finds: about 1 rich

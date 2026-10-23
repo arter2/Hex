@@ -314,7 +314,7 @@ PT.runRun=function(cfg){
   const ids=dealRun(lean,rng), owned={}; ids.forEach(id=>owned[id]=(owned[id]||0)+1);
   save={v:1, gold:100, depth:1, deepest:1, owned, seen:Object.assign({},owned), decks:[{name:'run',list:[]}], active:0, wins:0, items:{basic_wand:1}, gear:{weapon:'basic_wand'}, heroCards:1, lean, char:lockChar(ch), level:1, xp:0};
   const startInfo=deckInfo(ids);
-  const fights=[], log=[]; let depth=1, lossesHere=0, lastNew=[];
+  let spent=0, packs=0; const fights=[], log=[]; let depth=1, lossesHere=0, lastNew=[];
   const rebuild=()=>{ if(cfg.noCards&&save.decks[0].list.length){ const l=save.decks[0].list, c={}; let bad=false; l.forEach(id=>{ c[id]=(c[id]||0)+1; if(c[id]>(save.owned[id]||0)) bad=true; }); if(!bad) return; }
     if(style==='average'&&save.decks[0].list.length) save.decks[0].list=tweakDeck(save,lean,lastNew,rng); else { const d=buildDeck(style,save,lean); save.decks[0].list=d.list; } 
     const v=validateDeck(save.decks[0].list,CARDS,save.owned); if(!v.ok){ save.decks[0].list=buildDeck('good',save,lean).list; } };
@@ -331,9 +331,13 @@ PT.runRun=function(cfg){
       const boss=b.enemies.some(e=>e.def.boss), mini=b.enemies.some(e=>e.def.mini);
       const rw=battleRewards(b.enemies.filter(e=>!e.def.minion).map(e=>e.def.outlaw?e.weak:e.color),depth,boss,rng,save.owned);
       save.gold+=rw.gold||0; save.wins++; save.deepest=Math.max(save.deepest,depth+1);
-      const xp=fightXp(b.enemies.map(e=>({minion:e.def.minion,boss:e.def.boss,mini:e.def.mini})),depth), up=gainXp(save,xp); if(up&&!cfg.noStats) spendAll(save.char,style);
+      const xp=Math.round(fightXp(b.enemies.map(e=>({minion:e.def.minion,boss:e.def.boss,mini:e.def.mini})),depth)*(typeof xpScale==='function'?xpScale(save.level,depth):1)), up=gainXp(save,xp); if(up&&!cfg.noStats) spendAll(save.char,style);
       const gotGear=[]; for(const k of rw.items){ try{ addLoot(save,k,rng); if(GEAR[k]) gotGear.push(k); }catch(e){} } if(!cfg.noGear) wearBetter(save,gotGear);
       let cards=rw.cards.slice(); if(rng()<(boss?.4:mini?.2:0)) cards=cards.concat(openPack(Math.max(depth,save.deepest),packFor(depth),rng));
+      // camp: the shop. Careful players keep a reserve and buy at most one pack; a shopaholic spends it all
+      const buy=fam=>{ const pr=fam?PACK_PRICE.family:PACK_PRICE.booster; if(save.gold<pr) return false; save.gold-=pr; const got=openPack(save.deepest,fam,rng); cards=cards.concat(got); spent+=pr; packs++; return true; };
+      if(cfg.shopaholic){ while(save.gold>=PACK_PRICE.booster){ if(!buy(rng()<.7&&save.gold>=PACK_PRICE.family?lean:null)) break; } }
+      else { const reserve=200+10*depth; if(save.gold-PACK_PRICE.family>=reserve) buy(lean); else if(style==='average'&&save.gold-PACK_PRICE.booster>=reserve) buy(null); }
       addCards(save,cards); lastNew=cards.map(c=>c.id);
       depth++; lossesHere=0;
     } else { save.gold-=Math.floor(save.gold*.2); lossesHere++; lastNew=[]; if(lossesHere>=3){ log.push('stuck at depth '+depth); break; } }
@@ -341,8 +345,8 @@ PT.runRun=function(cfg){
   }
   const finalDeck=deckInfo(save.decks[0].list), gear=gearState(save).gear;
   const ch2=save.char, mods=statMods(ch2);
-  return {variant:cfg.variant||'full', stats:Object.fromEntries(STAT_KEYS.map(k=>[k,statOf(ch2,k)])), style, lean, seed:cfg.seed, deepest:depth-(fights.length&&fights[fights.length-1].res==='win'?0:0), reached:depth, fights, wins:fights.filter(f=>f.res==='win').length, losses:fights.filter(f=>f.res!=='win').length,
-    level:save.level, gold:save.gold, owned:Object.values(save.owned).reduce((a,b)=>a+b,0), startInfo, firstDeck, finalDeck, gear:Object.fromEntries(Object.entries(gear).map(([k,v])=>[k,v&&GEAR[v]?GEAR[v].tier:null])), log};
+  return {label:cfg.label||style, variant:cfg.variant||'full', stats:Object.fromEntries(STAT_KEYS.map(k=>[k,statOf(ch2,k)])), style, lean, seed:cfg.seed, deepest:depth-(fights.length&&fights[fights.length-1].res==='win'?0:0), reached:depth, fights, wins:fights.filter(f=>f.res==='win').length, losses:fights.filter(f=>f.res!=='win').length,
+    level:save.level, gold:save.gold, spent, packs, levelAt:{10:(fights.find(f=>f.depth===10)||{}).level, 20:(fights.find(f=>f.depth===20)||{}).level, 30:(fights.find(f=>f.depth===30)||{}).level, 40:(fights.find(f=>f.depth===40)||{}).level}, owned:Object.values(save.owned).reduce((a,b)=>a+b,0), startInfo, firstDeck, finalDeck, gear:Object.fromEntries(Object.entries(gear).map(([k,v])=>[k,v&&GEAR[v]?GEAR[v].tier:null])), log};
 };
 })();
 

@@ -90,10 +90,15 @@ function gainXp(save,n){ const ch=ensureChar(save); n=Math.max(0,Math.round(n));
   while(save.xp>=xpNeed(save.level)){ save.xp-=xpNeed(save.level); save.level++; up++; }
   if(up){ ch.earned=(ch.earned||0)+up*LEVEL_POINTS; save.lvlNew=true; }
   return up; }
+/* Slower levels (v122): you level at full speed up to the level your depth calls for (1 + depth/2: level 11 at
+   depth 20, 21 at depth 40); past it each level above takes 30% off what you earn, down to a tenth, so more fights
+   at one depth can't run your level far ahead of it. */
+const xpLevelFor=depth=>1+Math.max(1,depth||1)*.5;
+function xpScale(level,depth){ const over=(level||1)-xpLevelFor(depth); return over<=0?1:Math.max(.1,1-.3*over); }
 // how much a won fight is worth: every foe by depth, a miniboss double, a boss four times
 function fightXp(enemies,depth){ const d=Math.min(depth,20)+.35*Math.max(0,depth-20); return Math.round(enemies.reduce((a,e)=>a+(e.minion?3:8+4*d)*(e.boss?4:e.mini?2:1),0)); }   // slower past depth 20
 
-const API={LEVEL_POINTS,STAT_CAP,xpNeed,lockChar,statCap,ensureChar,gainXp,fightXp,STAT_POINTS,STAT_MAX,STAT_KEYS,STATS,RACES,RACE_KEYS,newChar,statOf,pointsLeft,spendPoint,statMods,statEffect};
+const API={xpScale,xpLevelFor,LEVEL_POINTS,STAT_CAP,xpNeed,lockChar,statCap,ensureChar,gainXp,fightXp,STAT_POINTS,STAT_MAX,STAT_KEYS,STATS,RACES,RACE_KEYS,newChar,statOf,pointsLeft,spendPoint,statMods,statEffect};
 Object.assign(root,API);
 if(typeof module!=='undefined') module.exports=API;
 })(typeof window!=='undefined'?window:globalThis);

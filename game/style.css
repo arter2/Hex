@@ -1311,7 +1311,7 @@ body.lsS #custDrawer #custHand, body.wide #custDrawer #custHand{grid-row:auto; f
 .pofan{display:flex; justify-content:center; gap:10px; min-height:200px; perspective:900px;}
 .poslot{position:relative; width:104px; aspect-ratio:5/7; transform-style:preserve-3d; transition:transform .45s ease; animation:poLand .4s ease-out backwards; animation-delay:calc((var(--i) + 1) * .08s);}
 @keyframes poLand{from{transform:translateY(-120px) rotate(calc(var(--i) * 25deg)) scale(.4); opacity:0;}}
-.poslot .poback,.poslot .poface{position:absolute; inset:0; backface-visibility:hidden;}
+.poslot .poback,.poslot .poface{position:absolute; inset:0; -webkit-backface-visibility:hidden; backface-visibility:hidden;}
 .cardback{background-size:100% 100%; image-rendering:pixelated; box-shadow:0 0 0 2px #000, 0 6px 14px #0008;}
 .poslot:not(.up){cursor:pointer;} .poslot:not(.up):active{transform:translateY(-4px);}
 .poslot .poface{transform:rotateY(180deg); width:100%;}

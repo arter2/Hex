@@ -537,7 +537,7 @@ function victory(){
   const outlaws=b.enemies.filter(e=>e.def.outlaw).length; if(outlaws) rw.gold=Math.round(rw.gold*(1+.2*outlaws));   // outlaws carry coin
   if(rw.gold) rw.gold=Math.round(rw.gold*(1+(gearMods(save).gold||0)));   // Ring of Fortune
   if(b.tier) rw.gold=Math.round(rw.gold*(1+.2*b.tier));   // foes the stirring dark made stronger carry more
-  const xp=Math.round(fightXp(b.enemies.map(e=>({minion:e.def.minion,boss:e.def.boss,mini:e.def.mini})),b.depth)*(1+.25*(b.tier||0))), lvUp=gainXp(save,xp);
+  const xp=Math.round(fightXp(b.enemies.map(e=>({minion:e.def.minion,boss:e.def.boss,mini:e.def.mini})),b.depth)*(1+.25*(b.tier||0))*xpScale(save.level,b.depth)), lvUp=gainXp(save,xp);
   save.gold+=rw.gold; save.wins++; if(!b.explore&&!b.trial&&b.depth>=save.deepest) save.deepest=b.depth+1;
   const hpLeft=b.player.hp;
   const loot=rw.items.map(k=>({k, res:addLoot(save,k)}));

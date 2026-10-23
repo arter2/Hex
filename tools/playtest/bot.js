@@ -1,7 +1,4 @@
-/* Hexmancers playtest bot (tools/playtest). bot.human plays like a person: each attack is noticed only after a
-   reaction time (some never), fire is tapped at a human rate, the thumb sometimes lands on the next tile, and the
-   best combo is found only some of the time. Without bot.human it is the old all-seeing robot.
-   Hexmancers playtest bot. Injected into the page; run with PT.runFight({...}). Read-only on the game:
+/* Hexmancers playtest bot. Injected into the page; run with PT.runFight({...}). Read-only on the game:
    it only wraps a few global functions to count things. */
 (function(){
 const PT=window.PT={};
@@ -54,6 +51,23 @@ const known=key=>{ if(!HU) return true; const s=noticeOf(key); return !s.miss&&B
 // an enemy's wind-up or cast is a new threat each time it starts
 function eKey(e,state){ let m=ESTATE.get(e); if(!m||m.state!==state){ m={state,key:{}}; ESTATE.set(e,m); } return m.key; }
 
+/* ---------- the joystick and flicks (bot.stick) ----------
+   What the game's own stick does each frame (ui.js stickWalk): a push sets a raw free target 3 units that way at
+   the stick's speed; letting go is freeEnd (momentum and the magnet finish); a flick is flickThrow. */
+let ST=null;
+const spOf=t=>Math.min(...neighbors(t).map(n=>Math.hypot(n.wx-t.wx,n.wz-t.wz)));
+function TH_URGENT(p){ return threatsAt(p.tile).some(th=>th.T<.7); }
+function stickGo(t,urgent){ const p=B.player, h=HU&&HU.cfg||{}, sp=spOf(p.tile), dx=t.wx-p.fx, dz=t.wz-p.fz, n=Math.hypot(dx,dz)/sp;
+  ST.tgt=t; ST.ang=(h.stickNoise||0)*Math.PI/180*gauss(); ST.rel=Math.max(.12,(h.release||.35)+(h.releaseSd||.1)*gauss());
+  if(urgent&&n>.6&&n<=3.2&&MV('mvFlick')&&urand()<(h.flickP||0)){   // a flick: as hard as the distance asks, give or take
+    const lo=MV('mvFlickMin'), hi=MV('mvFlickMax'), want=Math.round(n), str=Math.max(0,Math.min(1,(want-lo)/Math.max(1,hi-lo)+.15*gauss()));
+    const c=Math.cos(ST.ang), s2=Math.sin(ST.ang); freeEnd(); if(flickThrow(dx*c-dz*s2,dx*s2+dz*c,str)){ ST.flicks++; ST.tgt=null; } } }
+function stickTick(){ const p=B.player, t=ST.tgt; if(!t||p.fx==null) return;
+  const sp=spOf(p.tile), dx=t.wx-p.fx, dz=t.wz-p.fz, d=Math.hypot(dx,dz);
+  if(d/sp<ST.rel||t.occ&&t.occ!==p){ freeEnd(); ST.tgt=null; return; }   // let go: the slide and the magnet finish it
+  const c=Math.cos(ST.ang), s2=Math.sin(ST.ang), ux=(dx*c-dz*s2)/d, uz=(dx*s2+dz*c)/d;
+  freeTarget(p.fx+ux*3,p.fz+uz*3,false,1,true); if(p.free) p.free.tps=MV('mvStickSpeed'); ST.held+=DT; }
+
 /* ---------- helpers ---------- */
 const hostileTeles=()=>B.teles.filter(t=>!t.friendly&&!(t.owner&&t.owner.hp<=0));
 // real seconds until a hostile hit lands on tile t (teles, enemy shots, wind-ups in that row)
@@ -101,7 +115,7 @@ function chooseTile(bot){
     let s=-4*d;
     if(bot.dodge){
       for(const th of (TH.get(t)||[])){
-        if(th.T>=arr-.06) s-=(th.T-arr<1.6?900:150)*th.w;   // still to land after I get there
+        if(th.T>=arr-.06) s-=(th.T-arr<1.6?900:150)*th.w*(bot.fear||1);   // still to land after I get there
       }
       // tiles on the way, the start included: a hit that lands while I am still on one of them
       if(d>0&&TH.size){ let x=par.get(t), i=d-1; while(x){ const from=i===0?-1:dep0+(i-1)*STEP, to=dep0+i*STEP+.06;
@@ -158,7 +172,7 @@ PT.runFight=function(cfg){
   const bot=Object.assign({move:true,dodge:true,combos:true,instants:true,aim:true,smartCast:true},cfg.bot||{});
   // a human player (bot.human): a seeded dice, what they have noticed, and when their thumbs are next free
   let seed=(cfg.seed||1)>>>0; const rng=()=>{ seed=(seed+0x6D2B79F5)>>>0; let t=seed; t=Math.imul(t^t>>>15,t|1); t^=t+Math.imul(t^t>>>7,t|61); return ((t^t>>>14)>>>0)/4294967296; };
-  HU=bot.human?{cfg:bot.human,rng}:null; SEEN=new Map(); ESTATE=new WeakMap();
+  HU=bot.human?{cfg:bot.human,rng}:null; SEEN=new Map(); ESTATE=new WeakMap(); ST={tgt:null, ang:0, rel:.35, flicks:0, held:0, bot};
   const H={nextTap:0, chargeUntil:-1, movedAt:-9, castAt:null, gaugeAt:null, nextEval:0};
   B=null; fight(cfg.depth,cfg.waves);
   if(!B) return {error:'fight did not start'};
@@ -181,10 +195,10 @@ PT.runFight=function(cfg){
       // moving
       if(bot.move&&(HU?b.time>=H.nextEval:(--moveEval<=0||p.path.length===0))){ if(HU) H.nextEval=b.time+between(HU.cfg.evalGap)*PACE;
         moveEval=bot.evalEvery||3; const {best,bestS,curS}=chooseTile(bot); PT.lastTgt=best&&[best.col,best.r,Math.round(bestS),curS==null?null:Math.round(curS)];
-        if(best&&best!==p.tile&&(curS==null||bestS>curS+(curS<-100?0:12))){ if(best!==lastTarget||!p.path.length){ let go=best;
+        if(best&&best!==p.tile&&(curS==null||bestS>curS+(curS<-100?0:12))){ if(best!==lastTarget||(bot.stick?(!ST.tgt&&!(p.snap&&p.snap.flick)&&p.tile!==best):!p.path.length)){ let go=best;
             if(HU&&urand()<HU.cfg.misTap){ const ns=neighbors(best).filter(n=>n.side==='p'&&!n.occ&&!(n.holeT>0)); if(ns.length) go=ns[Math.floor(urand()*ns.length)]; S.misTaps=(S.misTaps||0)+1; }   // the thumb lands on the tile next to it
-            moveTo(go); lastTarget=best; H.movedAt=b.time; } }
-        else if(best===p.tile){ p.path=[]; lastTarget=null; }
+            if(bot.stick) stickGo(go,TH_URGENT(p)); else moveTo(go); lastTarget=best; H.movedAt=b.time; } }
+        else if(best===p.tile){ p.path=[]; lastTarget=null; if(bot.stick&&ST.tgt&&ST.tgt!==p.tile) stickGo(p.tile,false); }
       }
       // casting
       const q=b.piles.queue[0];
@@ -208,6 +222,7 @@ PT.runFight=function(cfg){
       if(b.sidearm&&rowTarget(p.tile)) fireAce();
       for(const e of b.enemies) startEnemies.add(e);
       if(cfg.trace&&ticks%300===0){ const bo=b.enemies.find(e=>e.def.boss); (S.trace=S.trace||[]).push({t:Math.round(b.time),boss:bo&&bo.hp,ph:bo&&bo.phase,nodes:alive().filter(e=>e.id==='rootnode').map(e=>e.hp+'@'+e.tile.col+','+e.tile.r+(e.barrier?'b'+e.barrier:'')+'|front:'+lineTiles(e.tile,DIRS.W).filter(x=>x.occ).map(x=>(x.occ.id||x.occ.kind)+x.col).join(',')).join('/'),sap:alive().filter(e=>e.id==='sapling').length,alive:alive().length,deck:b.piles.draw.length,php:p.hp,row:p.tile.r,tgt:(rowTarget(p.tile)||{}).id}); }
+      if(bot.stick) stickTick();
       update(DT);
       if(!alive().length&&b.phase==='fight'){ emptyT+=DT; if(emptyT>15&&!stuck) stuck='no enemies alive for 15s, wave='+b.wave+'/'+b.waves.length; } else emptyT=0;
       if(stuck&&emptyT>20) break;
@@ -220,8 +235,8 @@ PT.runFight=function(cfg){
     dmgTaken:S.dmgTaken, hitsTaken:S.hitsTaken, selfPaid:S.selfPaid, healed:S.healed, casts:S.casts, castsByType:S.castsByType, labCasts:S.labCasts, instants:S.instants,
     wandShots:S.wandShots, kills:S.kills, counters:b.counters||0, reacts:b.reacts||0, combos:S.combos, spellScreens:S.spellScreens, dmg:S.dmg, dmgByKind:S.dmgByKind, hurtBy:S.hurtBy,
     waves:b.waves.length, waveReached:b.wave, enemies:en, enemyHpLeft:alive().reduce((a,e)=>a+e.hp,0), boss:b.enemies.filter(e=>e.def.boss).map(e=>e.id),
-    wandOnlyAt, deckLeft:b.piles.draw.length, taps:S.taps, charged:S.charged, misTaps:S.misTaps, missedThreats:HU?[...SEEN.values()].filter(x=>x.miss).length:0, threatsSeen:HU?SEEN.size:0, stuck, maxHit:S.maxHit, errors:S.errors, hitLog:S.hitLog||undefined, trace:S.trace};
-  PT.cur=null; B=null; HU=null;
+    wandOnlyAt, deckLeft:b.piles.draw.length, flicks:ST.flicks, stickSecs:+ST.held.toFixed(1), taps:S.taps, charged:S.charged, misTaps:S.misTaps, missedThreats:HU?[...SEEN.values()].filter(x=>x.miss).length:0, threatsSeen:HU?SEEN.size:0, stuck, maxHit:S.maxHit, errors:S.errors, hitLog:S.hitLog||undefined, trace:S.trace};
+  PT.lastB=b; PT.cur=null; B=null; HU=null;
   return out;
 };
 
@@ -242,4 +257,92 @@ PT.setupDeck=function(i,labIds){
 };
 PT.makeLab=function(spec){ Object.assign(LAB,{kind:'creature',shape:'twin',rider:null,cluster:'ring',color:'fire',beh:'bolt',tier:'sturdy',speed:'steady',kw:null,trait:null,race:'dwarf',body:0,rank:6,rarity:'rare'},spec);
   const c=labCard(); CARDS[c.id]=c; return {id:c.id, name:c.name, type:c.type, pow:c.pow, hp:c.hp, amt:c.amt, rate:c.rate, text:(typeof cardText==='function'?cardText(c):'')}; };
+
+/* ---------- whole runs (PT.runRun) ----------
+   A new character picks one colour and is dealt 20 commons and 10 uncommons of it, 30 random commons and
+   uncommons, and 1 or 2 rares (all rank 1-6), plus the colour's hero. Each fight is a battle at the next depth;
+   a win pays what the game pays (cards, gold, gear, XP, a boss's pack); a loss costs 20% of the gold and the
+   fight is tried again (three losses in a row at one depth end the run). Between fights the bot rebuilds its
+   deck in its own style and puts on better gear. */
+const kindOf2=c=>c.type==='piece'?c.base:c.type;
+const ATTACK=['strike','lob','charge','trap','bomb','mine'], CREAT=['summon','sentry','machine','hero'];
+function dealRun(lean,rng){ const pick=a=>a[Math.floor(rng()*a.length)];
+  const pool=CARD_LIST.filter(c=>c.rank<=6&&!c.brood&&!c.recipe&&!c.mastery&&c.type!=='claim'&&!isDeckTool(c));
+  const out=[], add=(list,n,cap)=>{ let guard=0; while(n>0&&list.length&&guard++<5000){ const c=pick(list); if(out.filter(x=>x===c.id).length>=cap) continue; out.push(c.id); n--; } };
+  add(pool.filter(c=>c.color===lean&&c.rarity==='common'),20,3); add(pool.filter(c=>c.color===lean&&c.rarity==='uncommon'),10,2);
+  add(pool.filter(c=>c.rarity==='common'),22,3); add(pool.filter(c=>c.rarity==='uncommon'),8,2);
+  add(pool.filter(c=>c.rarity==='rare'&&(rng()<.5?c.color===lean:true)),rng()<.5?1:2,1);
+  const h=heroOfColor(lean); if(h) out.push(h); return out; }
+function cardScore(c,style,R,lean){ let v=cardVal(c); const k=kindOf2(c), atk=ATTACK.includes(k);
+  if(isInstant(c)) v*=.8;
+  if(c.rarity==='hero') v*=3;
+  if(style==='fast'){ v*=atk?1.35:CREAT.includes(k)?.8:.35; }
+  else if(style==='combo'){ v*=(c.code===R||c.code===WILD_RUNE?2.4:.45)*(c.color===lean?1.2:1); }
+  else { v*=c.color===lean?1.15:NEUTRAL.includes(c.color)?1:.9; }
+  return v; }
+// the rune a combo player builds around: the most total value among the cards they own
+function bestRune(owned,lean){ const sum={}; for(const id in owned){ const c=CARDS[id]; if(!c||!c.code||c.code===WILD_RUNE) continue; sum[c.code]=(sum[c.code]||0)+cardVal(c)*Math.min(owned[id],4)*(c.color===lean?1.3:1); }
+  return Object.keys(sum).sort((a,b)=>sum[b]-sum[a])[0]; }
+function buildDeck(style,save,lean){ const owned=save.owned, size={average:60,good:50,fast:45,combo:45}[style], R=style==='combo'?bestRune(owned,lean):null;
+  const copies=[]; for(const id in owned){ const c=CARDS[id]; if(!c||c.recipe||c.mastery||c.type==='claim') continue; const n=Math.min(owned[id],copyLimit(c)); for(let i=0;i<n;i++) copies.push({id,c,s:cardScore(c,style,R,lean)*(1-.03*i)}); }
+  copies.sort((a,b)=>b.s-a.s);
+  const cap={good:{ward:6,boon:7,creat:14,instant:6},average:{ward:9,boon:9,creat:16,instant:8},fast:{ward:2,boon:3,creat:8,instant:4},combo:{ward:8,boon:8,creat:14,instant:6}}[style], n={ward:0,boon:0,creat:0,instant:0,hero:0}, list=[];
+  for(const x of copies){ if(list.length>=size) break; const k=kindOf2(x.c), g=isInstant(x.c)?'instant':k==='ward'?'ward':k==='boon'?'boon':CREAT.includes(k)?'creat':null;
+    if(x.c.rarity==='hero'){ if(n.hero>=RULES.heroes) continue; n.hero++; }
+    if(g&&n[g]>=cap[g]) continue; if(g) n[g]++; list.push(x.id); }
+  for(const x of copies){ if(list.length>=RULES.min) break; if(list.filter(i=>i===x.id).length<Math.min(owned[x.id],copyLimit(x.c))&&!(x.c.rarity==='hero'&&n.hero>=RULES.heroes)) list.push(x.id); }
+  return {list,R}; }
+// an average player keeps their deck and now and then swaps a weak card for a new one
+function tweakDeck(save,lean,newIds,rng){ const list=save.decks[0].list.filter(id=>CARDS[id]);
+  const cnt={}; list.forEach(id=>cnt[id]=(cnt[id]||0)+1); for(const id in cnt) while(cnt[id]>(save.owned[id]||0)){ list.splice(list.lastIndexOf(id),1); cnt[id]--; }   // cards burned up
+  for(const id of newIds){ if(rng()>.6) continue; const c=CARDS[id]; if(!c||c.rarity==='hero'||(cnt[id]||0)>=Math.min(save.owned[id],copyLimit(c))) continue;
+    const sc=x=>cardScore(CARDS[x],'average',null,lean), weak=list.filter(x=>CARDS[x].rarity!=='hero').sort((a,b)=>sc(a)-sc(b))[0];
+    if(list.length<RULES.max){ list.push(id); cnt[id]=(cnt[id]||0)+1; }
+    else if(weak&&sc(id)>sc(weak)*1.15){ list.splice(list.indexOf(weak),1); cnt[weak]--; list.push(id); cnt[id]=(cnt[id]||0)+1; } }
+  if(list.length<RULES.min) return buildDeck('average',save,lean).list; return list; }
+const STAT_PLAN={average:['con','int','str','dex'], good:['int','con','cst','int','con','rch'], fast:['str','int','rch','str','int','cst'], combo:['int','cst','con','int','cst','rch']};
+function spendAll(ch,style){ const plan=STAT_PLAN[style]; let i=0, guard=0; while(pointsLeft(ch)>0&&guard++<200){ spendPoint(ch,plan[i%plan.length],1); i++; } }
+function wearBetter(save,ids){ for(const g of ids){ const G=GEAR[g]; if(!G) continue; const st=gearState(save), slots=G.slot==='ring'?['ring1','ring2']:[G.slot];
+  for(const sl of slots){ const cur=st.gear[sl]; if(!cur||(GEAR[cur]&&GEAR[cur].tier<(G.tier||0))){ const r=equip(save,sl,g); if(r&&r.ok) break; } } } }
+function deckInfo(list){ const by=(f)=>{ const m={}; list.forEach(id=>{ const k=f(CARDS[id]); m[k]=(m[k]||0)+1; }); return m; };
+  const runes=by(c=>c.code||'-'), top=Math.max(...Object.values(runes)); return {n:list.length, kinds:by(c=>isInstant(c)?'instant':kindOf2(c)), colors:by(c=>c.color), rarity:by(c=>c.rarity), topRune:top, avgVal:Math.round(list.reduce((a,id)=>a+cardVal(CARDS[id]),0)/list.length)}; }
+PT.runRun=function(cfg){
+  let seed=(cfg.seed||1)>>>0; const rng=()=>{ seed=(seed+0x6D2B79F5)>>>0; let t=seed; t=Math.imul(t^t>>>15,t|1); t^=t+Math.imul(t^t>>>7,t|61); return ((t^t>>>14)>>>0)/4294967296; };
+  const style=cfg.style, lean=cfg.lean;
+  // the character: a human, the creation points spent the bot's way
+  const ch=newChar('human',0); spendAll(ch,style);
+  const ids=dealRun(lean,rng), owned={}; ids.forEach(id=>owned[id]=(owned[id]||0)+1);
+  save={v:1, gold:100, depth:1, deepest:1, owned, seen:Object.assign({},owned), decks:[{name:'run',list:[]}], active:0, wins:0, items:{basic_wand:1}, gear:{weapon:'basic_wand'}, heroCards:1, lean, char:lockChar(ch), level:1, xp:0};
+  const startInfo=deckInfo(ids);
+  const fights=[], log=[]; let depth=1, lossesHere=0, lastNew=[];
+  const rebuild=()=>{ if(cfg.noCards&&save.decks[0].list.length){ const l=save.decks[0].list, c={}; let bad=false; l.forEach(id=>{ c[id]=(c[id]||0)+1; if(c[id]>(save.owned[id]||0)) bad=true; }); if(!bad) return; }
+    if(style==='average'&&save.decks[0].list.length) save.decks[0].list=tweakDeck(save,lean,lastNew,rng); else { const d=buildDeck(style,save,lean); save.decks[0].list=d.list; } 
+    const v=validateDeck(save.decks[0].list,CARDS,save.owned); if(!v.ok){ save.decks[0].list=buildDeck('good',save,lean).list; } };
+  if(style==='average') save.decks[0].list=buildDeck('average',save,lean).list;
+  rebuild();
+  const firstDeck=deckInfo(save.decks[0].list);
+  while(fights.length<cfg.maxFights&&depth<=cfg.maxDepth){
+    const r=PT.runFight({depth, botName:style, bot:cfg.bot, maxT:[4,8,12,16,20,24,28].includes(depth)?900:420, seed:(cfg.seed||1)*131+fights.length});
+    const b=PT.lastB; if(!b||r.error){ log.push('fight failed at '+depth+': '+(r.error||'')); break; }
+    try{ settleChargeUses(save,b.piles); }catch(e){}
+    const f={depth, res:r.res, time:r.time, hpLost:r.dmgTaken, dmg:r.dmg, casts:r.casts, wand:r.wandShots, combos:r.combos, flicks:r.flicks, stick:r.stickSecs, level:save.level, deck:save.decks[0].list.length, errors:r.errors.length+(r.pageErrors?r.pageErrors.length:0), hurtBy:r.hurtBy};
+    fights.push(f);
+    if(r.res==='win'){
+      const boss=b.enemies.some(e=>e.def.boss), mini=b.enemies.some(e=>e.def.mini);
+      const rw=battleRewards(b.enemies.filter(e=>!e.def.minion).map(e=>e.def.outlaw?e.weak:e.color),depth,boss,rng,save.owned);
+      save.gold+=rw.gold||0; save.wins++; save.deepest=Math.max(save.deepest,depth+1);
+      const xp=fightXp(b.enemies.map(e=>({minion:e.def.minion,boss:e.def.boss,mini:e.def.mini})),depth), up=gainXp(save,xp); if(up&&!cfg.noStats) spendAll(save.char,style);
+      const gotGear=[]; for(const k of rw.items){ try{ addLoot(save,k,rng); if(GEAR[k]) gotGear.push(k); }catch(e){} } if(!cfg.noGear) wearBetter(save,gotGear);
+      let cards=rw.cards.slice(); if(rng()<(boss?.4:mini?.2:0)) cards=cards.concat(openPack(Math.max(depth,save.deepest),packFor(depth),rng));
+      addCards(save,cards); lastNew=cards.map(c=>c.id);
+      depth++; lossesHere=0;
+    } else { save.gold-=Math.floor(save.gold*.2); lossesHere++; lastNew=[]; if(lossesHere>=3){ log.push('stuck at depth '+depth); break; } }
+    rebuild();
+  }
+  const finalDeck=deckInfo(save.decks[0].list), gear=gearState(save).gear;
+  const ch2=save.char, mods=statMods(ch2);
+  return {variant:cfg.variant||'full', stats:Object.fromEntries(STAT_KEYS.map(k=>[k,statOf(ch2,k)])), style, lean, seed:cfg.seed, deepest:depth-(fights.length&&fights[fights.length-1].res==='win'?0:0), reached:depth, fights, wins:fights.filter(f=>f.res==='win').length, losses:fights.filter(f=>f.res!=='win').length,
+    level:save.level, gold:save.gold, owned:Object.values(save.owned).reduce((a,b)=>a+b,0), startInfo, firstDeck, finalDeck, gear:Object.fromEntries(Object.entries(gear).map(([k,v])=>[k,v&&GEAR[v]?GEAR[v].tier:null])), log};
+};
 })();
+

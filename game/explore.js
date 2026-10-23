@@ -184,7 +184,7 @@ function buildFloor(depth,hp,opt){
   // enemy groups: some asleep, some wandering; on a boss depth the boss waits by the stairs down
   const nG=Math.min(open.length,Math.round(((opt.branch?1:5)+Math.floor(depth/2))*RT.foes));
   const rooms=open.slice().sort(()=>Math.random()-.5).filter(r=>r!==F.exit||!isBossDepth(depth)).slice(0,nG);
-  for(const r of rooms){ const c=freeCell(r); if(c<0) continue; const wave=makeEncounter(depth)[0], ids=wave.slice(0,1+Math.floor(Math.random()*Math.min(3,wave.length)));
+  for(const r of rooms){ const c=freeCell(r); if(c<0) continue; const wave=makeEncounter(depth)[0], odd=wave.some(id=>ENEMY_DEFS[id]&&(ENEMY_DEFS[id].vermin||ENEMY_DEFS[id].rare)), ids=odd||typeof makeSquad!=='function'?wave.slice(0,1+Math.floor(Math.random()*Math.min(3,wave.length))):makeSquad(depth,mapSquadSize(depth));   // a squad of roles, sized by depth (fights.js)
     const g=xGroup(ids,c,Math.random()<.45?'sleep':'wander'); if(RT.tier) g.tier=RT.tier; if(ids.some(id=>ENEMY_DEFS[id]&&ENEMY_DEFS[id].rare)) Object.assign(g,{tagTxt:'★',tagCol:'#ffd166',state:'wander'}); EX.groups.push(g); }
   if(isBossDepth(depth)&&!opt.branch){ const c=xi(F.exit.cx-1,F.exit.cy); taken.add(c); EX.groups.push(Object.assign(xGroup([bossFor(depth)],c,'guard'),{boss:true})); }
   // most groups keep to their own room until they see you; from depth 3 one (two from depth 8)

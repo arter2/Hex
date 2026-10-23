@@ -70,7 +70,7 @@ function makeEncounter(depth){
     for(let w=0;w<Math.max(1,waves-1);w++) out.push(Array.from({length:Math.min(5,size+1)},()=>one||pick(VERMIN)));
     if(!(typeof isBossDepth==='function'?isBossDepth(depth):depth%4===0)) return out; }
   for(let w=0;w<waves;w++){ if(Math.random()<(depth<2?.2:.25)){ out.push(Array.from({length:size},()=>pick(OUTLAWS))); continue; }
-    out.push(Array.from({length:size},()=>one(Math.random()<human?(Math.random()<.45?SPELLFOLK:HUMANOIDS):MONSTERS))); }
+    out.push(typeof makeSquad==='function'?makeSquad(depth,size):Array.from({length:size},()=>one(Math.random()<human?(Math.random()<.45?SPELLFOLK:HUMANOIDS):MONSTERS))); }   // a squad of roles (fights.js)
   const boss=typeof isBossDepth==='function'?isBossDepth(depth):depth%4===0;
   if(boss) out[out.length-1]=[typeof bossFor==='function'?bossFor(depth):'golem'].concat(depth>=8?[one(MONSTERS)]:[]);   // a boss and its helpers carry the fight
   return out;
@@ -96,13 +96,15 @@ function elemName(d,el){ const w=d.name.split(' '); return ELEM_WORD[el]+' '+(SI
 function makeEnemy(id,t,depth){
   // HP grows 13% a depth; past depth 12 a boss's growth tapers (−2.5% a depth, at most −30%) so deep
   // boss floors do not turn into long damage sponges
-  const d=ENEMY_DEFS[id], hs=(1+.13*(depth-1))*(d.boss&&depth>12?1-Math.min(.3,.025*(depth-12)):1), ds=1+.1*(depth-1), spd=depth>12?Math.max(.65,1-.012*(depth-12)):1;
+  // v125: past depth 12 HP and damage grow a little faster (+2% a depth more each)
+  const deep=Math.max(0,depth-12), d=ENEMY_DEFS[id], hs=(1+.13*(depth-1)+.02*deep)*(d.boss&&depth>12?1-Math.min(.3,.025*(depth-12)):1), ds=1+.1*(depth-1)+.02*deep, spd=depth>12?Math.max(.65,1-.012*(depth-12)):1;
   const e={kind:'enemy', id, def:d, name:d.name, color:d.color, hp:Math.round(d.hp*hs), maxHp:Math.round(d.hp*hs), dmg:Math.round(d.dmg*ds), ds, spd,
            tile:t, atkT:rnd(1.8,3.2), moveT:rnd(.8,1.8), windT:0, burnT:0, burnAcc:0, freezeT:0, stunT:0, slowT:0, poisonT:0, poisonAmt:0, curseT:0, hitT:0,
            barrier:0, powerT:0, castT:0, casting:null, weak:d.weak||null, nextMove:pick(d.moves), deck:d.deck?enemyDeck(d.color,depth):null, deckCd:rnd(3,5)};
   if(d.collector) e.deck=[];   // a Card Collector's deck is whatever it takes from you
   const el=enemyElement(d,depth);
   if(el){ e.elem=el!==d.color||!SIX.includes(d.color); e.color=el; e.weak=WEAK_TO[el]; e.resist=el; if(e.elem) e.name=elemName(d,el); if(d.deck) e.deck=enemyDeck(el,depth); }
+  if(typeof fxInit==='function') fxInit(e,depth);   // its rhythm, and maybe an elite affix (fights.js)
   t.occ=e; return e;
 }
 const openEnemyTiles=()=>E_TILES.filter(t=>!t.occ&&t.terrain!=='lava');
@@ -141,6 +143,7 @@ function updateTerrain(dt){
   for(const e of alive()) groundTick(e,dt);
   for(const e of alive()) if(burning(e.tile)){ e.lavaAcc=(e.lavaAcc||0)+dt; if(e.lavaAcc>=.5){ e.lavaAcc=0; hitEnemy(e,3,null,{raw:true}); } }
   if(typeof arRuleTick==='function') arRuleTick(dt);
+  if(typeof fxTick==='function') fxTick(dt);   // squad tactics, phases, elites (fights.js)
   if(typeof rareTick==='function') rareTick(dt);
 }
 
@@ -286,7 +289,7 @@ function updateEnemy(e,dt){
   if(e.deck){ e.deckCd-=dt; if(e.deckCd<=0&&e.deck.length){ e.deckCd=rnd(4,6); e.casting=e.deck.shift(); e.castT=.9; return; } }
   e.atkT-=dt;
   if(e.atkT<=0&&typeof crSandstorm==='function'&&crSandstorm(e)){ e.atkT=rnd(e.def.rate[0],e.def.rate[1])*(e.spd||1); e.atkMax=e.atkT; return; }   // Sandstorm (creatures.js)
-  if(e.atkT<=0){ e.atkT=rnd(e.def.rate[0],e.def.rate[1])*(e.spd||1); e.atkMax=e.atkT; const ms=e.moves||e.def.moves, mv=e.nextMove||pick(ms); e.curMove=mv; MOVES[mv](e); e.curMove=null; e.nextMove=pick(e.moves||e.def.moves); if(typeof palPlay==='function') palPlay(e,mv==='quake'?'quake':(mv==='shot'||mv==='boulders')?'throw':''); }   // the next move is picked early so it can be shown
+  if(e.atkT<=0){ e.atkT=rnd(e.def.rate[0],e.def.rate[1])*(e.spd||1); e.atkMax=e.atkT; const ms=e.moves||e.def.moves, mv=e.nextMove||pick(ms); e.curMove=mv; MOVES[mv](e); e.curMove=null; if(typeof fxAfterMove==='function') fxAfterMove(e,mv); e.nextMove=typeof fxNext==='function'?fxNext(e):pick(e.moves||e.def.moves); if(typeof palPlay==='function') palPlay(e,mv==='quake'?'quake':(mv==='shot'||mv==='boulders')?'throw':''); }   // the next move is picked early so it can be shown
 }
 
 if(typeof module!=='undefined') module.exports={VERMIN,verminChance,ENEMY_DEFS,MONSTERS,HUMANOIDS,OUTLAWS,SPELLFOLK,makeEncounter};

@@ -141,7 +141,7 @@ const lightShot=s=>typeof palHas==='function'&&palHas('golem','shard')&&!(s.owne
 function palImpact(e,t,s){ if(s&&lightShot(s)&&t){ B.fx.push({kind:'palfx',id:'golem',anim:'shardHit',a:t,t:0,life:4/14}); return; } if(e&&t&&!(e.phase>=2)&&typeof palHas==='function'&&palHas(e.id,'impact')) B.fx.push({kind:'palfx',id:e.id,anim:'impact',a:t,t:0,life:8/14}); }
 function later(sec,fn){ B.timers.push({t:sec,fn}); }
 // units slide between tiles instead of jumping
-const INTENT_ICON={hex:'☾',summon:'☠',shift:'⟳',collect:'🂠',brew:'⚗',snare:'❦',revive:'✝',bless:'✦',lunge:'⚔',steal:'✋',snipe:'◎',guard:'🛡',cleave:'⚔',bomb:'💣',shot:'➶',firebomb:'🔥',iceslam:'❄',cross:'✚',rush:'➤',blink:'☾',mend:'✚',quake:'⚠',boulders:'●'};
+const INTENT_ICON={hex:'☾',summon:'☠',shift:'⟳',collect:'🂠',brew:'⚗',snare:'❦',revive:'✝',bless:'✦',lunge:'⚔',steal:'✋',snipe:'◎',guard:'🛡',cleave:'⚔',bomb:'💣',shot:'➶',firebomb:'🔥',iceslam:'❄',cross:'✚',rush:'➤',blink:'☾',mend:'✚',quake:'⚠',boulders:'●',rest:'…',firelane:'♨',stonewall:'▦',frostfield:'❅',drag:'⛓'};
 const posOf=u=>[u.rx??u.tile.wx, u.rz??u.tile.wz];
 function shake(a){ View.shake=Math.max(View.shake||0,a); }
 function floater(text,t,color,big){ B.floaters.push({text,wx:t.wx,wz:t.wz,y:1.6,t:0,color:color||'#fff',big}); }
@@ -225,6 +225,7 @@ function hitEnemy(e,base,card,opts){
   if(typeof rareHit==='function') rareHit(e,dmg);
   if(e.hp<=0) killEnemy(e);
   if(e.hp<=0&&card&&card.onkill&&!opts.raw){ B.gauge=Math.min(GAUGE_MAX,B.gauge+card.onkill*GAUGE_MAX); floater('Reaper +gauge',B.player.tile,'#e0588f'); }   // a strike's Reaper rider
+  if(typeof fxHit==='function'&&!B.thornsIn) fxHit(e,dmg,card,opts);   // a thorned elite (fights.js)
   return dmg;
 }
 /* Reactions: a colored hit leaves its element on the enemy for 6 s. Hitting it with the
@@ -388,6 +389,7 @@ function killEnemy(e){
   if(e.def.mini&&typeof helpers==='function') for(const m of helpers(e)) if(m.hp>0) killEnemy(m);   // a miniboss's helpers fall with it
   if(typeof extraKill==='function') extraKill(e);
   crEnemyDied(e);
+  if(typeof fxKill==='function') fxKill(e);   // elites split, blow up and pay more (fights.js)
   if(B.enemies.some(x=>x.def.boss)&&!alive().length&&Number.isInteger(B.wave)&&B.wave>=B.waves.length-1){
     B.slowMo=.55; floater('FINISH!',e.tile,'#ffffff',true); ring(e.tile,'#ffffff',2.4,.7,10); shake(10); if(typeof arenaKick==='function') arenaKick(); }
   if(e.def.split){ const spots=around(e.tile).filter(t=>t.side==='e'&&!t.occ).slice(0,2);   // a Gloop splits in two
@@ -424,7 +426,7 @@ function hitPlayer(dmg,src){
   if(p.counter){ const foe=alive().filter(e=>hexDist(e.tile,p.tile)<=5).sort((a,b)=>hexDist(a.tile,p.tile)-hexDist(b.tile,p.tile))[0];
     if(foe){ B.fx.push({kind:'beam',a:p.tile,b:foe.tile,color:'#e6f4ff',t:0,life:.2}); hitEnemy(foe,p.counter,null,{raw:true}); } }
   if(src&&src.kind==='enemy') dmg=Math.min(dmg,Math.round(p.maxHp*.45));   // no one-shots: one enemy hit takes at most 45% of your HP
-  p.hp-=dmg; p.hurtT=.25; shake(dmg>=15?8:5); floater('-'+dmg,p.tile,'#ff5d6c',true); flash(p.tile,'#ff5d6c',1); B.hooks.onHurt&&B.hooks.onHurt(dmg);
+  p.hp-=dmg; if(typeof fxHurt==='function') fxHurt(src,dmg); p.hurtT=.25; shake(dmg>=15?8:5); floater('-'+dmg,p.tile,'#ff5d6c',true); flash(p.tile,'#ff5d6c',1); B.hooks.onHurt&&B.hooks.onHurt(dmg);
   // Divine Intervention: a lethal hit leaves you at 1 HP, then heals
   if(p.hp<=0&&p.intervene){ p.hp=1; const h=p.intervene; p.intervene=0; floater('Divine Intervention',p.tile,'#fff0b3',true); burst(p.tile,'#fff0b3',30,1); healPlayer(h); }
   if(p.hp<=0){ p.hp=0; B.phase='lose'; p.charging=false; later(1.2,()=>B.hooks.onEnd&&B.hooks.onEnd(false)); }
@@ -1896,6 +1898,7 @@ const DRAW={
     if(e.markT>0&&e.mark){ const mc=COLORS[e.mark].c, pu=.55+.35*Math.sin(T*6); ctx.globalAlpha=dk*pu*Math.min(1,e.markT/1.2);   // element mark, waiting for its partner
       ctx.strokeStyle=mc; ctx.lineWidth=3; ctx.setLineDash([6,5]); ctx.beginPath(); ctx.ellipse(x,r.top+r.H*.98,S*.62*sc,S*.62*sc*ISO_Y,T*.8,0,TAU); ctx.stroke(); ctx.setLineDash([]);
       ctx.font=Math.round(S*.32)+'px system-ui,sans-serif'; ctx.textAlign='center'; ctx.fillStyle=mc; ctx.fillText(COLORS[e.mark].icon,x-S*.7*sc,r.top+r.H*.9); ctx.globalAlpha=dk; }
+    if(typeof fxDrawElite==='function') fxDrawElite(ctx,e,x,r.top+r.H*.98,S,sc,T);
     if(e.barrier>0){ ctx.strokeStyle='rgba(255,240,179,.85)'; ctx.lineWidth=2.5; ctx.beginPath(); ctx.ellipse(x,y-h,S*.7*sc,h*1.2,0,0,TAU); ctx.stroke(); }
     const top=r.top-S*.1;
     bar(ctx,x,top,S*.9,e.hp/e.maxHp,'#ff5d6c');

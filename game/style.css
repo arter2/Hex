@@ -20,7 +20,7 @@ h2{font-size:20px;}
 .sub{text-align:center; color:var(--dim); margin:4px 0 18px;}
 .hint{color:var(--dim); font-size:14px; margin:8px 0; line-height:1.35;}
 .hint.warn{color:var(--gold);}
-.screen{position:absolute; inset:0; display:none; flex-direction:column; overflow:auto; padding:16px;}
+.screen{position:absolute; inset:0; display:none; flex-direction:column; overflow:auto; padding:calc(16px + env(safe-area-inset-top,0px)) 16px calc(16px + env(safe-area-inset-bottom,0px));}
 .screen.on{display:flex;}
 #scrStart,#scrCamp{align-items:center;}
 #scrStart{justify-content:center;}
@@ -125,7 +125,7 @@ select,.filters input{font:600 14px var(--font-b); color:var(--text); background
 
 /* battle */
 #scrBattle{padding:0; overflow:hidden;}
-#hudTop{display:grid; grid-template-columns:1fr auto auto; align-items:center; gap:4px 10px; padding:8px 12px 2px; font-weight:700; font-size:14px;}
+#hudTop{display:grid; grid-template-columns:1fr auto auto; align-items:center; gap:4px 10px; padding:calc(8px + env(safe-area-inset-top,0px)) calc(12px + env(safe-area-inset-right,0px)) 2px calc(12px + env(safe-area-inset-left,0px)); font-weight:700; font-size:14px;}
 #hudTop .info{display:flex; flex-direction:column; align-items:flex-end; color:var(--dim); font-size:12px; line-height:1.2; white-space:nowrap;}
 /* the Custom button sits across the top of the battle and is also the gauge: it fills as the next
    hand gets ready, and glows when you can open it, where your hands never cover it */
@@ -157,7 +157,8 @@ select,.filters input{font:600 14px var(--font-b); color:var(--text); background
 .keys{font-size:12px; color:var(--dim); text-align:center; margin:6px 0 0;}
 @media (pointer:coarse){ .keys{display:none;} }
 
-.overlay{position:absolute; inset:0; display:none; align-items:center; justify-content:center; background:rgba(2,4,6,.76); padding:12px; z-index:5;}
+/* screens and overlays fill #app's whole box (its safe-area padding does not reach them), so each keeps clear of the notch / Dynamic Island itself */
+.overlay{position:absolute; inset:0; display:none; align-items:center; justify-content:center; background:rgba(2,4,6,.76); padding:calc(12px + env(safe-area-inset-top,0px)) calc(12px + env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) calc(12px + env(safe-area-inset-left,0px)); z-index:5;}
 .overlay.on{display:flex;}
 .panel{background:var(--panel); border:1px solid var(--line); border-radius:18px; padding:14px; width:100%; max-width:560px; max-height:100%; overflow:auto; text-align:center;}
 .panel .bar{text-align:left;}
@@ -184,7 +185,7 @@ body.ui-tablet .hand{grid-template-columns:repeat(7,1fr);} body.ui-tablet .fams{
 
   body.lsS #scrBattle{display:none; grid-template-columns:1fr 250px; grid-template-rows:auto 1fr;}
   body.lsS #scrBattle.on{display:grid;}
-  body.lsS #hudTop{grid-column:1/-1; padding:6px 12px 0;}
+  body.lsS #hudTop{grid-column:1/-1; padding:calc(6px + env(safe-area-inset-top,0px)) calc(12px + env(safe-area-inset-right,0px)) 0 calc(12px + env(safe-area-inset-left,0px));}
   body.lsS #buffs{min-height:0;}
   body.lsS #board{grid-column:1; grid-row:2; height:100%;}
   body.lsS #hudBottom{grid-column:2; grid-row:2; display:flex; flex-direction:column; justify-content:flex-end; background:none; padding:4px 10px calc(8px + env(safe-area-inset-bottom,0px)) 0;}
@@ -458,7 +459,7 @@ select,.filters input,#bName{border-radius:0; border:6px solid transparent; bord
 .hand .card.hint::after{border-radius:0;}
 
 /* camp */
-#scrCamp{align-items:center; padding:10px 6px;}
+#scrCamp{align-items:center; padding:calc(10px + env(safe-area-inset-top,0px)) 6px calc(10px + env(safe-area-inset-bottom,0px));}
 .camp{width:100%; max-width:520px; display:flex; flex-direction:column; gap:8px; padding-bottom:12px;}
 .camp .logo{margin-top:4px;}
 .camp .area{text-align:center; font:400 21px var(--font-t); color:#9aa3ab; text-shadow:2px 2px 0 #000; margin-top:-6px;}
@@ -910,7 +911,7 @@ body.lsS #custHand .slot.hole{min-height:104px;}
 .soulpick{display:flex; flex-direction:column; gap:2px; margin:4px 0 6px;} .soulpick label{font-weight:700; color:var(--gold);} .soulpick select{font:600 15px var(--font-b); margin-left:6px; background:#0a0e16; color:#fff; border:2px solid #3a4258; padding:3px 6px; max-width:70vw;}
 
 /* ---------- the bag: a wooden frame, your gear around you, the Items Bag beside ---------- */
-#bagUI{display:none; align-items:center; justify-content:center; padding:10px;}
+#bagUI{display:none; align-items:center; justify-content:center; padding:calc(10px + env(safe-area-inset-top,0px)) 10px calc(10px + env(safe-area-inset-bottom,0px));}
 #bagUI.on{display:flex;}
 .bagframe{--wood:#5a3a22; --wood2:#3a2414; --leather:#2a1a10; --brass:#d8b060;
   width:min(900px,100%); max-height:100%; display:flex; flex-direction:column; overflow:hidden;
@@ -1484,7 +1485,7 @@ body.wide .labside{align-self:start; position:sticky; top:0;}
 .mlprofbar input{flex:1; min-width:0; background:#05070a; color:#e8eef8; border:1px solid #3a4656; border-radius:6px; padding:6px 8px; font-size:13px;}
 /* the battle's top bar, compact (v121): HP, the Spell gauge and the menu on one row, then one line of where you are and
    what is left in your deck; the buffs row takes room only when there is a buff */
-#hudTop{grid-template-columns:minmax(118px,32%) 1fr auto; grid-template-areas:"hp gauge menu" "info info info" "buffs buffs buffs"; gap:4px 8px; padding:6px 10px 2px;}
+#hudTop{grid-template-columns:minmax(118px,32%) 1fr auto; grid-template-areas:"hp gauge menu" "info info info" "buffs buffs buffs"; gap:4px 8px; padding:calc(6px + env(safe-area-inset-top,0px)) calc(10px + env(safe-area-inset-right,0px)) 2px calc(10px + env(safe-area-inset-left,0px));}
 #hudTop .hp{grid-area:hp; min-width:0;} #hudTop #btnMenu{grid-area:menu;} #hudTop #btnCustom.custgauge{grid-area:gauge; grid-column:auto; min-height:34px;}
 #hudTop .hp .meter.big{height:34px;} #hudTop .hp .meter.big span{font-size:16px; padding-left:8px; white-space:nowrap;}
 #hudTop .info{grid-area:info; flex-direction:row; justify-content:space-between; align-items:baseline; gap:12px; max-width:none; font-size:14px; line-height:1.1;}

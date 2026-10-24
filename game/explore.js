@@ -321,7 +321,7 @@ function xBuildScene(){
   if(G.group){ G.scene.remove(G.group); const done=new Set(), free=x=>{ if(x&&x.dispose&&!done.has(x)){ done.add(x); x.dispose(); } };
     G.group.traverse(o=>{ free(o.geometry); for(const m of Array.isArray(o.material)?o.material:o.material?[o.material]:[]){
       for(const k of ['map','emissiveMap','normalMap','alphaMap','aoMap','lightMap','bumpMap','specularMap','roughnessMap','metalnessMap']) free(m[k]);
-      if(m.userData&&m.userData.nmap) free(m.userData.nmap); free(m); } }); }
+      if(m.userData&&m.userData.nmap) free(m.userData.nmap); if(m.userData&&m.userData.rmap) free(m.userData.rmap); free(m); } }); }
   XLITMATS.clear();
   const grp=new THREE.Group(); G.group=grp; G.scene.add(grp);
   const A=EX.area, S=A.stone||AREAS[0].stone, seed=EX.depth*31;

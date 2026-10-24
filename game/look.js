@@ -36,8 +36,10 @@ function xNormalMap(H,N,k){ const c=document.createElement('canvas'); c.width=c.
 // a painted texture with a height field (cv.h) gets its normal map
 function xLitTag(m,ao,cv){ m.userData.xao=ao||0;
   if(cv&&cv.h){ const nm=cv.nm||(cv.nm=xNormalMap(cv.h,cv.width,cv.hk||.5)), t=xTex(nm,m.map&&m.map.wrapS===THREE.RepeatWrapping); m.userData.nmap=t;
-    if(m.isMeshStandardMaterial){ const rm=cv.rm||(cv.rm=xRoughMap(cv.h,cv.width)), rt=xTex(rm,m.map&&m.map.wrapS===THREE.RepeatWrapping); if(m.map) rt.repeat.copy(m.map.repeat); m.roughnessMap=rt; } }
+    if(m.isMeshStandardMaterial){ const rm=cv.rm||(cv.rm=xRoughMap(cv.h,cv.width)), rt=xTex(rm,m.map&&m.map.wrapS===THREE.RepeatWrapping); if(m.map) rt.repeat.copy(m.map.repeat); m.roughnessMap=rt; m.userData.rmap=rt; } }
   return m; }
+// free a material and the textures made for it alone (xLitTag's normal and roughness maps; material.dispose() leaves them)
+function xFreeMat(m){ if(!m) return; if(m.userData&&m.userData.nmap){ m.userData.nmap.dispose(); m.userData.nmap=null; } if(m.userData&&m.userData.rmap){ m.userData.rmap.dispose(); m.userData.rmap=null; } XLITMATS.delete(m); m.dispose(); }
 function xLitAll(root){ root=root||(typeof X3!=='undefined'&&X3&&X3.group); if(!root) return; root.traverse(o=>{ const M=o.material; if(!M) return; for(const m of Array.isArray(M)?M:[M]) if(m.isMeshPhongMaterial||m.isMeshStandardMaterial) xLit(m); }); }
 function xLitDefines(m){ const d=m.defines||(m.defines={}); delete d.XLIT_TEXEL; delete d.XTEXN;
   if(XLIT.texel&&m.map&&m.map.image){ d.XLIT_TEXEL=''; d.XTEXN=(m.map.image.width||64).toFixed(1); }

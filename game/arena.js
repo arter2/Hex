@@ -70,7 +70,7 @@ function arenaProject(wx,y,wz){ const A=AR; if(!A||!A.w) return [0,0]; const v=a
 function arMat(m){ (AR.mats||(AR.mats=[])).push(m); return m; }
 function arenaClear(){ const A=AR; if(!A||!A.grp) return; A.scene.remove(A.grp);
   A.grp.traverse(o=>{ if(o.geometry) o.geometry.dispose(); });
-  for(const m of A.mats||[]){ XLITMATS.delete(m); m.dispose(); } A.mats=[];
+  for(const m of A.mats||[]) xFreeMat(m); A.mats=[];   // with each material's own normal and roughness maps
   for(const t of A.texs||[]) t.dispose(); A.texs=[]; A.grp=null; A.units=new Map(); }
 const arTex=t=>{ (AR.texs||(AR.texs=[])).push(t); return t; };
 
@@ -302,7 +302,7 @@ function arenaBlock(u,kind,col){ const A=AR; if(!A||!A.grp) return; let U=A.unit
 // a unit not drawn this frame (gone, or under the ground) is hidden; one gone for good is let go
 function arenaUnitsEnd(){ const A=AR; if(!A||!A.units) return;
   for(const [u,U] of A.units) if(U.seen!==A.frameN){ U.g.visible=false;
-    if(U.seen<A.frameN-120){ A.grp.remove(U.g); U.g.traverse(o=>{ if(o.material&&!U.block) o.material.dispose(); if(U.block&&o.geometry) o.geometry.dispose(); }); A.units.delete(u); } }
+    if(U.seen<A.frameN-120){ A.grp.remove(U.g); U.g.traverse(o=>{ if(o.material&&!U.block) xFreeMat(o.material); if(U.block&&o.geometry) o.geometry.dispose(); }); A.units.delete(u); } }
   A.frameN=(A.frameN||0)+1; }
 
 /* ---------------- spell lights ----------------

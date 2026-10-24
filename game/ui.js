@@ -1177,6 +1177,10 @@ function applyViewport(){
   applyOrient();
   const rot=$('#app').classList.contains('rot'), w=rot?innerHeight:innerWidth, h=rot?innerWidth:innerHeight, wide=w>h*1.15;
   // size classes from the game's own frame (it may be turned), in place of media queries on the screen
+  // a notch or Dynamic Island at the top: the battle bar keeps HP and the menu beside it and drops the Spell gauge below it
+  { const pr=document.createElement('div'); pr.style.cssText='position:fixed;top:0;left:0;padding-top:env(safe-area-inset-top,0px);visibility:hidden;pointer-events:none';
+    document.body.appendChild(pr); const nt=parseFloat(getComputedStyle(pr).paddingTop)||0; pr.remove();
+    document.body.classList.toggle('notch',nt>20&&!rot); document.documentElement.style.setProperty('--notch',nt+'px'); }
   const B=document.body.classList; B.toggle('lsS',w>h&&h<=560); B.toggle('lsXS',w>h&&h<=500); B.toggle('hTall',h>=561); B.toggle('h460',h<=460); B.toggle('w420',w<=420); B.toggle('w520',w<=520);
   document.body.classList.toggle('wide',wide); document.body.classList.toggle('tall',!wide);
   const s=wide?Math.min(h/760,w/1250):Math.min(w/560,h/1000);

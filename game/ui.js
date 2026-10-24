@@ -927,10 +927,10 @@ function set(key,val,fn){ if(last[key]!==val){ last[key]=val; fn(val); } }
 function hud(force){
   const b=B; if(!b) return; if(force) for(const k in last) delete last[k];
   const p=b.player, pl=b.piles;
-  set('hp',p.hp+'/'+p.maxHp,()=>hpMeter($('#hpBar'),$('#hpTxt'),p.hp,p.maxHp));
+  set('hp',p.hp+'/'+p.maxHp,()=>{ hpMeter($('#hpBar'),$('#hpTxt'),p.hp,p.maxHp); $('#hpNum').textContent=Math.max(0,Math.ceil(p.hp))+' / '+p.maxHp; });
   set('run',runBlocked()?0:1,()=>{ $('#btnRun').hidden=!!runBlocked(); });
-  set('depth',b.depth+'|'+Math.ceil(b.wave),()=>{ const t=$('#depthTxt'); t.innerHTML='Depth '+b.depth+(b.waves.length>1?' · Wave '+(Math.ceil(b.wave)+1)+'/'+b.waves.length:'')+' · <i>'+esc(areaOf(b.depth).name)+'</i>'; t.style.color=areaOf(b.depth).glow; });
-  set('piles',pl.draw.length+'|'+pl.hand.length+'|'+pl.discard.length+'|'+wandOnly(pl),()=>$('#pileTxt').textContent=wandOnly(pl)?'Deck empty · wand only':'Deck '+pl.draw.length+' · Hand '+pl.hand.length);   // what you have used: on the Spell screen
+  set('depth',b.depth+'|'+Math.ceil(b.wave),()=>{ const t=$('#depthTxt'); t.textContent='D'+b.depth+(b.waves.length>1?' · W'+(Math.ceil(b.wave)+1)+'/'+b.waves.length:''); t.title='Depth '+b.depth+' · '+areaOf(b.depth).name; t.style.color=areaOf(b.depth).glow; });
+  set('piles',pl.draw.length+'|'+pl.hand.length+'|'+pl.discard.length+'|'+wandOnly(pl),()=>{ $('#pileDeck').textContent=wandOnly(pl)?'DECK EMPTY · WAND ONLY':'DECK '+pl.draw.length; $('#pileHand').textContent='HAND '+pl.hand.length; });   // what you have used: on the Spell screen
   set('gauge',Math.round(b.gauge*10),()=>$('#gaugeBar').style.width=(b.gauge/GAUGE_MAX*100)+'%');
   const buffs=[]; if(p.barrier>0) buffs.push('🛡 '+Math.ceil(p.barrier)+' · '+Math.ceil(p.shieldT)+'s'); if(p.dodge) buffs.push('💨 Dodge'); if(p.invT>0) buffs.push('🌀 Phase');
   if(p.setT>0) buffs.push('ᚱ Wand ×2.5 '+Math.ceil(p.setT)+'s'); else if(p.powerT>0) buffs.push('⚡ Wand ×1.8 '+Math.ceil(p.powerT)+'s'); if(p.pactT>0) buffs.push('☾ Pact '+Math.ceil(p.pactT)+'s'); if(p.courageT>0) buffs.push('☀ Courage '+Math.ceil(p.courageT)+'s'); if(p.intervene) buffs.push('✟ Intervention');
@@ -938,7 +938,10 @@ function hud(force){
   if(p.rootT>0) buffs.unshift('❦ Rooted '+p.rootT.toFixed(1)+'s');
   if(p.hexT>0) buffs.unshift('☾ Hexed '+Math.ceil(p.hexT)+'s (+30% damage taken)');
   if(p.hasteT>0) buffs.push('🌬 Haste '+Math.ceil(p.hasteT)+'s'); if(p.regenT>0) buffs.push('🌿 Regen '+Math.ceil(p.regenT)+'s');
-  set('buffs',buffs.join('|'),()=>$('#buffs').innerHTML=buffs.map(t=>'<b>'+esc(t.replace(/ \(.*\)$/,''))+'</b>').join(''));   // small chips by the pause button
+  // status: an icon and its time, half each side of the Spell timer (the full text on a long press, as a title)
+  set('buffs',buffs.join('|'),()=>{ const chip=t=>{ const w=t.replace(/ \(.*\)$/,'').split(' '), ic=w[0], tm=(t.match(/([\d.]+)s\b/)||[])[1], n=(t.match(/^\S+ (\d+) ·/)||[])[1];
+      return '<b title="'+esc(t)+'"><em>'+esc(ic)+'</em>'+(n?esc(n)+' ':'')+(tm?esc(Math.ceil(+tm))+'s':esc(w.slice(1).join(' ').split(' ·')[0]))+'</b>'; };
+    const h=Math.ceil(buffs.length/2); $('#buffs').innerHTML=buffs.slice(0,h).map(chip).join(''); $('#buffsR').innerHTML=buffs.slice(h).map(chip).join(''); });
   set('queue',pl.queue.map(c=>c.uid+':'+(c.left==null?'':c.left)+(c.frozenT>0?'f':'')).join(',')+'|'+alive().map(e=>e.markT>0?e.mark:'').join(','),()=>{
     const row=$('#queueRow'); row.innerHTML='';
     const locked=pl.queue.filter(c=>c.combo), cb=$('#comboBar');
@@ -964,7 +967,7 @@ function hud(force){
   set('soul',b.soul?[Math.round(b.soul.charge),Math.ceil(b.soul.unisonT),soulReady(),(pl.queue[0]||{}).uid].join('|'):'',soulHud);
   const canCustom=b.phase==='fight'&&gaugeFull()&&!wandOnly(pl);
   set('custom',canCustom+'|'+wandOnly(pl),()=>{ const bt=$('#btnCustom'); bt.disabled=!canCustom; bt.classList.toggle('ready',canCustom);
-    $('#custLbl').innerHTML=canCustom?'✦ SPELL':'Spell'; });
+    $('#custLbl').innerHTML=canCustom?'<span class="cardic"></span>SPELL':'SPELL'; });
 }
 
 /* The Soul: the deck's hero if it holds one, otherwise the hero of the deck's main color.
@@ -1145,9 +1148,9 @@ function applyXTips(){ let tips=true, mark=true; try{ tips=localStorage.getItem(
 $('#setXTips').onclick=()=>{ let on=true; try{ on=localStorage.getItem('hexmancers-xtips')!=='0'; localStorage.setItem('hexmancers-xtips',on?'0':'1'); }catch(e){}
   if(on){ if(typeof xTipHide==='function') xTipHide(); } else if(typeof xTipReset==='function') xTipReset(); applyXTips(); };
 // the battle's top bar: clear over the scene, or a stone bar
-const HUD_KEY='hexmancers-hudstyle';
-function applyHudStyle(){ let st='clear'; try{ st=localStorage.getItem(HUD_KEY)||'clear'; }catch(e){} document.body.classList.toggle('hudStone',st==='stone'); const b=$('#setHud'); if(b) b.textContent=st==='stone'?'Stone bar':'Clear'; }
-$('#setHud').onclick=()=>{ const st=document.body.classList.contains('hudStone')?'clear':'stone'; try{ localStorage.setItem(HUD_KEY,st); }catch(e){} applyHudStyle(); };
+const HUD_KEY='hexmancers-hudbar';
+function applyHudStyle(){ let st='panel'; try{ st=localStorage.getItem(HUD_KEY)||'panel'; }catch(e){} document.body.classList.toggle('hudClear',st==='clear'); const b=$('#setHud'); if(b) b.textContent=st==='clear'?'Clear':'Panel'; }
+$('#setHud').onclick=()=>{ const st=document.body.classList.contains('hudClear')?'panel':'clear'; try{ localStorage.setItem(HUD_KEY,st); }catch(e){} applyHudStyle(); };
 applyHudStyle();
 $('#setXStairs').onclick=()=>{ let on=true; try{ on=localStorage.getItem('hexmancers-xstairs')!=='0'; localStorage.setItem('hexmancers-xstairs',on?'0':'1'); }catch(e){} applyXTips(); if(typeof EX!=='undefined'&&EX&&typeof xMini==='function') xMini(); };
 applyXTips();

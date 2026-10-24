@@ -1494,7 +1494,7 @@ body.wide .labside{align-self:start; position:sticky; top:0;}
 /* a phone with a notch or Dynamic Island (body.notch, ui.js): HP and the menu stay up beside it, where the clock
    and battery sit, the island's middle stays empty, and the Spell gauge gets its own row just below the island */
 body.notch #hudTop{grid-template-areas:"hp . menu" "gauge gauge gauge" "info info info" "buffs buffs buffs"; padding-top:6px;}
-body.notch #hudTop #btnCustom.custgauge{grid-column:1/-1; margin-top:max(0px, calc(var(--notch,0px) / var(--ui,1) - 46px));}
+body.notch #hudTop #btnCustom.custgauge{grid-column:1/-1; justify-self:center; width:52%; margin-top:max(0px, calc(var(--notch,0px) / var(--ui,1) - 46px));}
 /* the Soul orb only shows when a fight has a Soul (none do since heroes became deck cards) */
 .soul[hidden]{display:none;}
 

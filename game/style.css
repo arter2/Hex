@@ -1483,19 +1483,40 @@ body.wide .labside{align-self:start; position:sticky; top:0;}
 .mlprof .chip.dirty::after{content:' •'; color:#ff9a3a;}
 .mlprofbar{display:flex; gap:6px; align-items:center; margin-bottom:4px;}
 .mlprofbar input{flex:1; min-width:0; background:#05070a; color:#e8eef8; border:1px solid #3a4656; border-radius:6px; padding:6px 8px; font-size:13px;}
-/* the battle's top bar, compact (v121): HP, the Spell gauge and the menu on one row, then one line of where you are and
-   what is left in your deck; the buffs row takes room only when there is a buff */
-#hudTop{grid-template-columns:minmax(118px,32%) 1fr auto; grid-template-areas:"hp gauge menu" "info info info" "buffs buffs buffs"; gap:4px 8px; padding:calc(6px + env(safe-area-inset-top,0px)) calc(10px + env(safe-area-inset-right,0px)) 2px calc(10px + env(safe-area-inset-left,0px));}
-#hudTop .hp{grid-area:hp; min-width:0;} #hudTop #btnMenu{grid-area:menu;} #hudTop #btnCustom.custgauge{grid-area:gauge; grid-column:auto; min-height:34px;}
-#hudTop .hp .meter.big{height:34px;} #hudTop .hp .meter.big span{font-size:16px; padding-left:8px; white-space:nowrap;}
-#hudTop .info{grid-area:info; flex-direction:row; justify-content:space-between; align-items:baseline; gap:12px; max-width:none; font-size:14px; line-height:1.1;}
+/* the battle's top bar (v133): small HP with the Spell timer under it on the left; status and pause on the right; the
+   middle left open (on a phone with a notch or Dynamic Island, body.notch, the island sits there). When the timer fills it
+   grows into a big glowing Spell button in the middle, just below the bar. Where you are and your deck are small text
+   over the top of the board. Two looks: clear over the scene (default) or a stone bar (body.hudStone, Settings). */
+#hudTop{grid-template-columns:minmax(0,var(--hpw,min(42%,240px))) 1fr auto; grid-template-areas:"hp . menu" "timer . ."; grid-template-rows:auto 16px; align-items:start; gap:3px 8px;
+  padding:calc(6px + env(safe-area-inset-top,0px)) calc(10px + env(safe-area-inset-right,0px)) 4px calc(10px + env(safe-area-inset-left,0px));
+  background:linear-gradient(#000000a0,#00000000);}
+body.notch #hudTop{--hpw:30%; padding-top:6px; min-height:calc(var(--notch,0px) / var(--ui,1) + 2px);}
+#hudTop .hp{grid-area:hp; min-width:0;}
+#hudTop .hp .meter.big{height:24px;} #hudTop .hp .meter.big span{font-size:13px; padding-left:6px; white-space:nowrap;}
+#hudTop #btnMenu{grid-area:menu; justify-self:end; width:44px; height:28px; min-height:28px; padding:0;}
+#hudTop #buffs{position:absolute; right:calc(10px + env(safe-area-inset-right,0px)); top:calc(34px + env(safe-area-inset-top,0px)); display:flex; flex-wrap:nowrap; justify-content:flex-end; gap:3px; max-width:46vw; overflow:hidden; pointer-events:none;}   /* floats: buffs coming and going never move the board */
+#hudTop #buffs:empty{display:none;}
+body.notch #hudTop #buffs{top:36px; max-width:calc((50vw - 86px) / var(--ui,1));}   /* stay right of the island */
+#hudTop #buffs b{font:700 10px var(--font-b); padding:1px 4px; border-radius:6px; background:#000000b0; border:1px solid #ffffff30; white-space:nowrap;}
+/* the timer: a thin bar under HP while it fills */
+#hudTop #btnCustom.custgauge{grid-area:timer; grid-column:auto; height:8px; min-height:0; padding:0; border-width:1px; border-radius:5px; margin:0;}
+#hudTop #btnCustom.custgauge #custLbl{display:none;}
+/* full: it grows into the Spell button, centred just below the bar, glowing and pulsing */
+#hudTop #btnCustom.custgauge.ready{grid-area:auto; position:absolute; left:0; right:0; margin:0 auto; top:calc(100% + 20px); width:min(64%,320px); height:48px; border-width:2px; border-radius:12px; z-index:7;
+  animation:spellGrow .35s ease-out, customReady 1.1s ease-in-out .35s infinite!important;}
+#hudTop #btnCustom.custgauge.ready #custLbl{display:inline; font-size:19px; letter-spacing:1px;}
+@keyframes spellGrow{ from{transform:scale(.3,.2); opacity:.3;} to{transform:scale(1); opacity:1;} }
+@media (prefers-reduced-motion:reduce){ #hudTop #btnCustom.custgauge.ready{animation:none!important;} }
+/* where you are and your deck: small text over the top of the board */
+#hudTop .info{position:absolute; left:calc(10px + env(safe-area-inset-left,0px)); right:calc(10px + env(safe-area-inset-right,0px)); top:100%; flex-direction:row; justify-content:space-between; align-items:baseline; gap:12px;
+  max-width:none; font-size:12px; line-height:1.1; opacity:.9; pointer-events:none; text-shadow:1px 1px 0 #000,0 0 4px #000;}
 #hudTop #depthTxt{flex:1 1 auto; min-width:0;} #hudTop #depthTxt i{font-style:normal;} #hudTop #pileTxt{flex:none;}
-#hudTop #buffs{grid-area:buffs; min-height:0;} #hudTop #buffs:empty{display:none;}
-/* a phone with a notch or Dynamic Island (body.notch, ui.js): HP and the menu stay up beside it, where the clock
-   and battery sit, the island's middle stays empty, and the Spell gauge gets its own row just below the island */
-body.notch #hudTop{grid-template-columns:minmax(118px,32%) 1fr minmax(118px,32%); grid-template-areas:"hp . menu" "gauge gauge gauge" "info info info" "buffs buffs buffs"; padding-top:6px;}
-body.notch #hudTop #btnMenu{justify-self:stretch; width:auto; height:34px; min-height:34px;}   /* the pause button matches the HP bar, either side of the island */
-body.notch #hudTop #btnCustom.custgauge{grid-column:1/-1; margin-top:max(0px, calc(var(--notch,0px) / var(--ui,1) - 38px));}
+/* the cast ribbon and the chain counter sit below where the Spell button appears */
+#hudTop .cast-rib{top:calc(100% + 72px);} #hudTop .chainctr{top:calc(100% + 76px);}
+/* the stone look: a solid bar, the info line inside it */
+body.hudStone #hudTop{grid-template-areas:"hp . menu" "timer . ." "info info info"; grid-template-rows:auto 18px auto; background:linear-gradient(#1a1e24,#0b0c0e); border-bottom:2px solid #000; box-shadow:inset 0 -2px 0 #383e45;}
+body.hudStone #hudTop .info{position:static; grid-area:info; margin-top:2px; text-shadow:2px 2px 0 #000;}
+body.hudStone #hudTop #btnCustom.custgauge.ready{top:calc(100% + 8px);} body.hudStone #hudTop .cast-rib{top:calc(100% + 60px);} body.hudStone #hudTop .chainctr{top:calc(100% + 64px);}
 /* the Soul orb only shows when a fight has a Soul (none do since heroes became deck cards) */
 .soul[hidden]{display:none;}
 

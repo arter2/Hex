@@ -1,0 +1,65 @@
+name: Player bot pilot
+on:
+  push:
+    branches: [review/bot-pilot-2026-10-25]
+    paths: ['.github/workflows/bot-pilot.yml', 'tools/playtest/**']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  pilot:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      BROWSER: chromium
+      SOURCE_SHA: ${{ github.sha }}
+      LIMIT_S: '360'
+      WALL_TIMEOUT_MS: '95000'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install browser tools
+        run: |
+          npm --prefix tools/playtest install
+          cd tools/playtest
+          npx playwright install --with-deps chromium
+      - name: Regression checks
+        run: node tools/playtest/selftest.js
+      - name: Prepare matched pilot jobs
+        run: |
+          mkdir -p playtest-pilot
+          node tools/playtest/mkruns.js playtest-pilot/battle-jobs.json 1 12 6 random,average,good,combo
+          node tools/playtest/mkcrawl.js playtest-pilot/crawl-jobs.json 1 0.25 8 average,good,combo fire,frost,verdant
+          node - <<'JS'
+          const fs=require('fs');
+          for(const file of ['battle-jobs.json','crawl-jobs.json']){
+            const path='playtest-pilot/'+file,jobs=JSON.parse(fs.readFileSync(path));
+            for(const job of jobs){job.realLimit=90;job.mode='strict';}
+            fs.writeFileSync(path,JSON.stringify(jobs,null,2));
+          }
+          JS
+      - name: Battle profiles
+        continue-on-error: true
+        run: node tools/playtest/run-runner.js playtest-pilot/battle-jobs.json playtest-pilot/battle.jsonl
+      - name: Dungeon profiles
+        continue-on-error: true
+        run: node tools/playtest/crawl-runner.js playtest-pilot/crawl-jobs.json playtest-pilot/crawl.jsonl
+      - name: Report actual results
+        if: always()
+        run: |
+          mkdir -p playtest-pilot
+          node tools/playtest/pilot-report.js playtest-pilot playtest-pilot/report.md
+      - name: Job summary
+        if: always()
+        run: |
+          if [ -f playtest-pilot/report.md ]; then
+            cat playtest-pilot/report.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: player-bot-pilot
+          path: playtest-pilot/
+          retention-days: 7

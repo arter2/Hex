@@ -1755,3 +1755,5 @@ body.wide.h460 #scrBattle #hudBottom #btnSpell{min-height:0;} body.wide.h460 #sc
 #hudBottom #btnWand, #hudBottom #btnCast{padding-bottom:15%;}
 #hudBottom #btnCast small{margin-top:-2px;}
 body.wide #scrBattle #hudBottom .pilerow{margin:4px auto 0; width:min(30vw,420px);}
+/* ready: only the art; the pre-skin gold fill and glow (v135) must not show behind it */
+#hudBottom #btnSpell.ready, #hudTop #btnCustom.custgauge.ready{background:none!important; border:0!important; box-shadow:none!important; animation:none!important;}

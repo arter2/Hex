@@ -1842,3 +1842,20 @@ body.wide #picker #pickList, body.ui-tablet #picker #pickList{grid-template-colu
 #picker #pickList .card .ty{white-space:normal; overflow-wrap:anywhere;}
 #picker #pickList .card.picked{opacity:1!important; filter:none; outline:3px solid var(--gold); outline-offset:-1px; box-shadow:0 0 12px #ffd84a99; transform:translateY(-3px);}
 #picker #pickOk:not(:disabled){animation:none;}
+/* enchanting (v152): the armed instant says what to do under it; cards that can take it pulse; an enchanted card
+   keeps a blue glow and a ✚ for the battle */
+#hudBottom .inst-row .btn.inst.arming{filter:drop-shadow(0 0 8px #5fc8ff);}
+#hudBottom .inst .ench-hint{position:absolute; top:calc(100% + 3px); right:0; white-space:nowrap; padding:2px 6px; border-radius:4px; background:#0b1a2ecc; border:1px solid #5fc8ff;
+  font:700 12px/1.2 var(--font-t); color:#bfe8ff; text-shadow:0 1px 0 #000; pointer-events:none; animation:incPulse .6s ease-in-out infinite alternate;}
+body.instL #hudBottom .inst .ench-hint{right:auto; left:0;}
+#hudBottom .qslot.enchable, .card.enchable{animation:enchPick .6s ease-in-out infinite alternate;}
+@keyframes enchPick{from{filter:drop-shadow(0 0 2px #5fc8ff88);} to{filter:drop-shadow(0 0 9px #7fd6ff);}}
+#hudBottom .qslot.ench, .card.ench{filter:drop-shadow(0 0 6px #4fb0ff) drop-shadow(0 0 2px #9fe0ff);}
+#hudBottom .qslot.ench::before, .card.ench::after{content:'✚'; position:absolute; top:-6px; right:-5px; z-index:3; width:16px; height:16px; display:flex; align-items:center; justify-content:center;
+  border-radius:50%; background:#1f6fd1; border:2px solid #bfe8ff; color:#fff; font:700 10px/1 sans-serif; box-shadow:0 0 6px #4fb0ff;}
+.card .badge.inst.arm{background:#1f6fd1; color:#fff;}
+#hudBottom .qslot.ench, .card.ench{filter:drop-shadow(0 0 3px #6fd0ff) drop-shadow(0 0 7px #2f8fff) drop-shadow(0 0 2px #bfe8ff);}
+#hudBottom .qslot.ench::before, .card.ench::after{left:auto; right:-6px; top:-7px; bottom:auto; transform:none;}
+@keyframes enchPick{from{filter:drop-shadow(0 0 2px #5fc8ff);} to{filter:drop-shadow(0 0 5px #7fd6ff) drop-shadow(0 0 10px #2f8fff);}}
+#hudBottom .qslot.ench{outline:2px solid #5fc8ff!important; outline-offset:-2px; box-shadow:0 0 10px 2px #2f8fffcc, inset 0 0 12px #2f8fff99!important;}
+.card.ench{outline:2px solid #5fc8ff; outline-offset:-2px; box-shadow:0 0 12px 3px #2f8fffcc;}

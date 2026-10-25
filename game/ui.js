@@ -777,7 +777,7 @@ function renderCustom(){
     const inst=p.queue[i];
     if(inst){ const tool=isDeckTool(inst.card), n=tool&&toolLock(inst.card);
       const el=cardEl(inst.card,`<span class="ord">${i+1}</span>`+instBadge(inst,true)+(tool?`<span class="primer">Double-tap to use<small>shuts this slot ${n>1?'for '+n+' hands':'this hand'}</small></span>`:''));
-      el.dataset.zone='queue'; el.dataset.i=i; if(inCombo.has(inst.uid)) el.classList.add('combo'); if(tool) el.classList.add('primed'); dragCard(el,inst); q.appendChild(el); }
+      el.dataset.zone='queue'; el.dataset.i=i; enchMark(el,inst); if(inCombo.has(inst.uid)) el.classList.add('combo'); if(tool) el.classList.add('primed'); dragCard(el,inst); q.appendChild(el); }
     else { const s=document.createElement('div'); s.className='slot'; s.dataset.zone='queue'; s.dataset.i=i; s.innerHTML='Slot '+(i+1)+(i===RULES.slots?'<small>'+fourth+'</small>':''); q.appendChild(s); }
   }
   // slots shut by a deck tool: they open again at the next hand (or later, if the card says so)
@@ -790,7 +790,7 @@ function renderCustom(){
     const nxt=lay.slice(lay.indexOf(u)+1).find(v=>byUid.has(v)); s.dataset.i=nxt==null?p.hand.length:byUid.get(nxt); s.style.order=lay.indexOf(u); h.appendChild(s); });
   p.hand.forEach((inst,i)=>{ const el=cardEl(inst.card,instBadge(inst)); el.title='Key '+(i+1)+(isInstant(inst.card)?' · tap to use now':isDeckTool(inst.card)?' · put it in a slot, then double-tap it':'');
     if(isInstant(inst.card)) el.classList.add('instant');
-    el.dataset.zone='hand'; el.dataset.i=i;
+    el.dataset.zone='hand'; el.dataset.i=i; enchMark(el,inst);
     // glow if adding this card to the queue would make a new combo
     if(inRecipe.has(inst.uid)) el.classList.add('recipe-ready');   // part of a recipe you can make right now: purple
     else if(isInstant(inst.card)) {}
@@ -814,7 +814,8 @@ const chargeMark=c=>{ const lo=lowCharge(c); return lo==null?'':chargeBadge(lo,c
 // small marks on a card in hand or queue: Charge uses left, a Tinker upgrade, an instant
 function instBadge(inst,inQueue){ let h='';
   if(inst.card.uses&&!inst.temp) h+=chargeBadge(inst.left==null?inst.card.uses:inst.left,inst.card.uses);
-  if(inst.tinker) h+=`<span class="badge tink">🔧 +${Math.round(inst.tinker*100)}%</span>`;
+  if(enchant&&enchant.inst===inst) h+=`<span class="badge inst arm">Tap a card to enchant</span>`;
+  if(inst.tinker) h+=`<span class="badge tink">✚ +${Math.round(inst.tinker*100)}%</span>`;
   else if(!inQueue&&isInstant(inst.card)) h+=`<span class="badge inst">✧ tap</span>`;
   else if(!inQueue&&isDeckTool(inst.card)) h+=`<span class="badge inst">✧ slot</span>`;
   return h; }
@@ -837,14 +838,23 @@ function fireTool(inst){ const c=inst.card, P=B.piles, before=new Set(P.hand.map
     return openPicker({title:'✧ '+c.name, hint:'Pick any card from your deck to put in your hand.', items:opts, max:1,
       ok:sel=>{ useDeckTool(inst,{uid:sel[0].uid}); done(); }}); }
   useDeckTool(inst); done(); }
+/* Enchanting (Whetstone, Tempering Oil…): a tap on the instant arms it. "Tap a card to enchant" shows under it and
+   the cards it can take glow; tap one (a queue tile, or a card on the hand screen) and it is enchanted for the battle:
+   a blue glow and a ✚. Tap the instant again to put it away. */
+let enchant=null;
+function enchMark(el,inst){ if(inst.tinker) el.classList.add('ench'); if(enchantLive()&&enchantTargets(enchant.inst).includes(inst)) el.classList.add('enchable'); }
+function enchantTargets(inst){ const P=B.piles; return [...P.queue,...P.hand].filter(x=>x!==inst&&!isInstant(x.card)&&!x.temp); }
+function enchantLive(){ if(enchant&&(!B||!B.piles||!B.piles.hand.includes(enchant.inst))) enchant=null; return enchant; }
+function tryEnchant(target){ if(!enchantLive()) return false; const inst=enchant.inst;
+  if(!enchantTargets(inst).includes(target)){ tip('That card can\'t be enchanted'); return true; }
+  enchant=null; useInstant(inst,{target}); buzz(14); hud(true); if(B.phase==='custom') renderCustom(); return true; }
 /* Instants: a tap uses one at once. Tinker, Keep and Reshuffle and a pick-any Search first ask
    which cards (the picker); the fight waits while it is open. */
 function tapInstant(inst){ const c=inst.card, P=B.piles;
   const done=()=>{ if(B.phase==='custom') renderCustom(); hud(true); };
-  if(c.type==='tinker'){ const opts=[...P.queue,...P.hand].filter(x=>x!==inst&&!isInstant(x.card)&&!x.temp);
-    if(!opts.length){ tip('Nothing to tinker'); return; }
-    return openPicker({title:'🔧 '+c.name, hint:'Pick the card to upgrade (+'+Math.round(c.tk*100)+'% for this battle).', items:opts, max:1,
-      ok:sel=>{ useInstant(inst,{target:sel[0]}); done(); }}); }
+  if(c.type==='tinker'){ if(enchant&&enchant.inst===inst){ if(performance.now()-enchant.t<400) return; enchant=null; done(); return; }   // tapped again: put it away (not the same tap's click)
+    if(!enchantTargets(inst).length){ tip('Nothing to enchant'); return; }
+    enchant={inst,t:performance.now()}; buzz(8); done(); return; }
   if(c.as==='utility'&&c.util==='keep'){ const opts=P.hand.filter(x=>x!==inst);
     return openPicker({title:'✧ '+c.name, hint:'Tap the cards to keep. The rest go back into your deck and you draw back up to '+RULES.hand+'.', items:opts, max:opts.length, min:0,
       ok:sel=>{ useInstant(inst,{keep:new Set(sel.map(x=>x.uid))}); done(); }}); }
@@ -905,7 +915,8 @@ function dragCard(el,inst){
     if(d.moved){ const t=e.type==='pointercancel'?null:dropTarget(e.clientX,e.clientY);
       if(t){ const zone=t.dataset.zone, i=t.dataset.i!=null?+t.dataset.i:null, spot=t.dataset.uid;
         if(placeCard(p,d.inst.uid,zone,i)&&zone==='hand'&&spot&&spot!==String(d.inst.uid)) layDrop(d.inst.uid,isNaN(+spot)?spot:+spot); buzz(10); } }
-    else if(!d.long){ if(isInstant(d.inst.card)){ tapInstant(d.inst); return; }
+    else if(!d.long){ if(enchantLive()&&!isInstant(d.inst.card)){ tryEnchant(d.inst); return; }
+      if(isInstant(d.inst.card)){ tapInstant(d.inst); return; }
       if(isDeckTool(d.inst.card)&&p.queue.includes(d.inst)){ toolTap(d.inst); return; }
       if(!toggleQueue(p,d.inst.uid)) tip(!slotsOf(p)?'Every slot is shut this hand':p.queue.length===RULES.slots&&slotsOf(p)>RULES.slots?'That card doesn\'t fit the 4th slot':p.queue.length>=slotsOf(p)?'The queue is full':'That card can\'t go in a slot'); }
     renderCustom();
@@ -951,16 +962,17 @@ function hud(force){
   const big=e=>e&&(e.def.boss||e.def.bossId||e.def.mini||e.elite);
   const inc=b.phase==='fight'&&(alive().some(e=>big(e)&&e.freezeT<=0&&e.stunT<=0&&(e.windT>0||e.casting||e.nextMove&&e.atkT<1.2))||b.teles.some(t=>!t.friendly&&(big(t.owner)||(t.dmg||0)>=p.maxHp*.2)));
   set('incoming',inc,()=>{ $('#incoming').hidden=!inc; });
-  set('queue',pl.queue.map(c=>c.uid+':'+(c.left==null?'':c.left)+(c.frozenT>0?'f':'')).join(',')+'|'+alive().map(e=>e.markT>0?e.mark:'').join(','),()=>{
+  const ench=enchantLive();
+  set('queue',pl.queue.map(c=>c.uid+':'+(c.left==null?'':c.left)+(c.frozenT>0?'f':'')+(c.tinker?'+':'')).join(',')+'|'+(ench?ench.inst.uid:'')+'|'+alive().map(e=>e.markT>0?e.mark:'').join(','),()=>{
     const row=$('#queueRow'); row.innerHTML='';
     const locked=pl.queue.filter(c=>c.combo), cb=$('#pileCombo');
     cb.classList.toggle('on',!!locked.length); cb.textContent=locked.length?'✦ '+(pl.combos||[]).map(c=>c.label.split(':')[0]).join(' · '):'No combo';
     for(let i=0;i<Math.max(RULES.slots,pl.queue.length);i++){ const inst=pl.queue[i], d=document.createElement('div');
-      d.className='qslot'+(inst?' full':'')+(i===0&&inst?' next':'')+(inst&&inst.combo?' combo':'')+(inst&&inst.frozenT>0?' frozen':'');
+      d.className='qslot'+(inst?' full':'')+(i===0&&inst?' next':'')+(inst&&inst.combo?' combo':'')+(inst&&inst.frozenT>0?' frozen':'')+(inst&&inst.tinker?' ench':'')+(inst&&ench&&enchantTargets(ench.inst).includes(inst)?' enchable':'');
       const rx=inst&&inst.card.pow&&reactWith(inst.card.color); if(rx){ d.classList.add('react'); d.style.setProperty('--xc',rx.c); }
       if(inst){ const c=inst.card, uses=c.uses&&!inst.temp?' '+chargeBadge(inst.left==null?c.uses:inst.left,c.uses):'', R=ROLES[cardRole(c)]; d.style.setProperty('--c',COLORS[c.color].c); d.style.setProperty('--rc',R.c);
         d.innerHTML=`${i===0?'<span class="nxt">NEXT</span>':''}<span class="role" title="${R.name}"><img class="qic" alt="${R.name}" src="ui/${cardArt(c)}.svg">${rx?`<span class="rx">✦ ${rx.name}</span>`:''}</span><span class="nm">${inst.frozenT>0?'❄ ':''}${esc(c.name)}${uses}${inst.temp&&!inst.recipe?' (copy)':''}</span>`;
-        if(i>0) d.addEventListener('pointerdown',e=>{ e.preventDefault(); const why=bringNext(pl,i); if(why) tip(why); else { buzz(8); hud(); } }); }   // the slot is redrawn at once, so no click follow-up
+        d.addEventListener('pointerdown',e=>{ e.preventDefault(); if(tryEnchant(inst)) return; if(!i) return; const why=bringNext(pl,i); if(why) tip(why); else { buzz(8); hud(); } }); }   // the slot is redrawn at once, so no click follow-up
       else d.textContent='—';
       row.appendChild(d); }
     const nx=pl.queue[0], NR=nx&&ROLES[cardRole(nx.card)]; $('#castName').textContent=nx?nx.card.name:'Queue empty';
@@ -968,10 +980,10 @@ function hud(force){
     $('#btnCast').disabled=!pl.queue.length;
   });
   // instants: a column of buttons up the side of the board (Settings › Instant buttons: right or left)
-  set('inst',pl.hand.filter(c=>isInstant(c.card)).map(c=>c.uid).join(',')+'|'+b.phase,()=>{ const row=$('#instRow'), ins=pl.hand.filter(c=>isInstant(c.card));
+  set('inst',pl.hand.filter(c=>isInstant(c.card)).map(c=>c.uid).join(',')+'|'+b.phase+'|'+(ench?ench.inst.uid:''),()=>{ const row=$('#instRow'), ins=pl.hand.filter(c=>isInstant(c.card));
     row.hidden=!ins.length||b.phase!=='fight'; row.innerHTML='';
     ins.forEach(inst=>{ const bt=document.createElement('button'), c=inst.card, R=ROLES[cardRole(c)]; bt.className='btn inst'; bt.style.setProperty('--c',COLORS[c.color].c); bt.title=c.name;
-      bt.innerHTML=`<img class="iic" alt="" src="ui/${cardArt(c)}.svg"><span class="inm">${esc(c.name)}</span>`; pressBtn(bt,()=>tapInstant(inst)); row.appendChild(bt); }); });
+      bt.innerHTML=`<img class="iic" alt="" src="ui/${cardArt(c)}.svg"><span class="inm">${esc(c.name)}</span>`+(ench&&ench.inst===inst?'<span class="ench-hint">Tap a card to enchant</span>':''); if(ench&&ench.inst===inst) bt.classList.add('arming'); pressBtn(bt,()=>tapInstant(inst)); row.appendChild(bt); }); });
   set('ace',b.sidearm?b.sidearm.name+'|'+b.sidearm.mult.toFixed(1)+'|'+b.sidearm.shape:'',()=>{ const bt=$('#btnAce'), s=b.sidearm;
     bt.hidden=!s;
     if(s){ $('#aceName').textContent='×'+s.mult.toFixed(1); bt.title=s.name+' ×'+s.mult.toFixed(1); bt.style.setProperty('--k',((s.mult-1)/(ACE_MAX-1)*100).toFixed(0)+'%'); bt.classList.toggle('hot',s.mult>=2); } });

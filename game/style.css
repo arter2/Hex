@@ -1563,9 +1563,10 @@ body.hudClear #hudTop{background:linear-gradient(#000000b0,#00000000); border-bo
 @keyframes incPulse{from{opacity:.65;} to{opacity:1;}}
 #hudTop .cast-rib{top:calc(100% + 38px);} #hudTop .chainctr{top:calc(100% + 46px);}
 
-/* see-through (no panel): the board's canvas still ends above it, so the camera is as it was */
-#scrBattle #hudBottom{position:relative; z-index:4; padding:14px calc(8px + env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) calc(8px + env(safe-area-inset-left,0px));
+/* see-through (no panel), over the board: the board's canvas runs on down behind it (the camera is untouched) */
+#scrBattle #hudBottom{position:absolute; left:0; right:0; bottom:0; z-index:4; pointer-events:none; padding:14px calc(8px + env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) calc(8px + env(safe-area-inset-left,0px));
   background:none; border:0; box-shadow:none;}
+#scrBattle #hudBottom .bctl>*, #scrBattle #hudBottom #instRow{pointer-events:auto;}
 #hudBottom .pilerow{text-shadow:0 2px 0 #000, 0 0 4px #000;}
 #hudBottom .bctl{display:grid; grid-template-columns:25% minmax(0,1fr) 25%; grid-template-areas:"fire queue cast" "fire spell cast"; gap:7px 6px;}
 body.fireR #hudBottom .bctl{grid-template-areas:"cast queue fire" "cast spell fire";}
@@ -1622,8 +1623,7 @@ body.instL #hudBottom #instRow{right:auto; left:calc(8px + env(safe-area-inset-l
    status and ⚠ INCOMING in the middle, depth · wave and pause top right. Bottom: Fire and Cast in the corners, the
    queue over the Spell button in the middle, Deck · Hand · combo under it; instants stack up over Cast (or Fire). */
 body.wide #app #scrBattle.on{display:block;}
-body.wide #scrBattle #board{position:absolute; left:0; right:0; top:calc(40px + env(safe-area-inset-top,0px)); bottom:auto; width:100%; height:calc(100% - 180px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));}   /* the board ends at the queue */
-body.wide.h460 #scrBattle #board{height:calc(100% - 152px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));}
+body.wide #scrBattle #board{position:absolute; left:0; right:0; top:calc(40px + env(safe-area-inset-top,0px)); bottom:auto; width:100%; height:calc(100% - 40px - env(safe-area-inset-top,0px));}   /* runs on down behind the bottom HUD */
 body.wide #scrBattle #hudTop{position:absolute; left:0; right:0; top:0; z-index:4; pointer-events:none; display:grid; align-items:start;
   grid-template-columns:minmax(0,min(36vw,440px)) minmax(0,1fr) auto auto; grid-template-areas:"num stat info menu" "hp stat . menu" "sp stat . menu"; gap:4px 12px;
   padding:calc(6px + env(safe-area-inset-top,0px)) calc(12px + env(safe-area-inset-right,0px)) 0 calc(14px + env(safe-area-inset-left,0px));

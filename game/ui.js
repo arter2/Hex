@@ -1034,12 +1034,12 @@ function fitQueue(){ const q=$('#queueRow'), bc=$('#hudBottom .bctl'), body=docu
   const leftAt=y=>Lb.left+Lb.width*(fireR?118-CAST_EDGE[band(Lb,y)]:FIRE_EDGE[band(Lb,y)])/118;
   const rightAt=y=>Rb.left+Rb.width*(fireR?118-FIRE_EDGE[band(Rb,y)]:CAST_EDGE[band(Rb,y)])/118;
   const g=R.width*.01, top=Math.min(Lb.top,Rb.top)+g, floor=S.top-g;
-  let h=floor-top, x0=0, x1=0;
-  for(let it=0;it<3;it++){ x0=-1e9; x1=1e9; for(let y=top;y<=top+h;y+=Math.max(1,h/12)){ x0=Math.max(x0,leftAt(y)); x1=Math.min(x1,rightAt(y)); }
+  let h=floor-top, x0=0, x1=0;   // the tiles rest just above Spell; the lower they sit the narrower the gap, so settle it
+  for(let it=0;it<4;it++){ x0=-1e9; x1=1e9; for(let y=floor-h;y<=floor;y+=Math.max(1,h/12)){ x0=Math.max(x0,leftAt(y)); x1=Math.min(x1,rightAt(y)); }
     x0+=g; x1-=g; h=Math.max(10,Math.min(floor-top,(x1-x0)/4*1.1)); }
   const pc=(v,d)=>(v/d*100).toFixed(2)+'%';
   q.style.setProperty('--qx',pc(x0-R.left,R.width)); q.style.setProperty('--qw',pc(Math.max(0,x1-x0),R.width));
-  q.style.setProperty('--qy',pc(top-R.top,R.height)); q.style.setProperty('--qh',pc(h,R.height)); }
+  q.style.setProperty('--qy',pc(floor-h-R.top,R.height)); q.style.setProperty('--qh',pc(h,R.height)); }
 pressBtn($('#btnSpell'),tryCustom);
 pressBtn($('#btnSoul'),trySoul);
 pressBtn($('#soulSummon'),()=>{ soulSummon(); soulMenu(false); });

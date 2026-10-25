@@ -6,7 +6,7 @@
    a hit is counted, then healed. Nothing here touches your game; the lab's own settings are kept in
    this browser. With no game loaded it borrows a starter hexmancer that is never saved. */
 const MLAB_KEY='hexmancers-movelab', MLAB_FOE='marksman';
-const MLAB_DEF={cols:7, rows:9, square:true, turrets:0, every:4, shotSpd:12};
+const MLAB_DEF={cols:7, rows:9, square:false, turrets:0, every:4, shotSpd:12};
 const MLAB=Object.assign({},MLAB_DEF,(()=>{ try{ return JSON.parse(localStorage.getItem(MLAB_KEY))||{}; }catch(e){ return {}; } })());
 const mlabKeep=()=>{ try{ localStorage.setItem(MLAB_KEY,JSON.stringify(MLAB)); }catch(e){} };
 const mlabOn=()=>!!(B&&B.lab&&B.lab.move);

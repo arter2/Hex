@@ -1708,7 +1708,7 @@ body.fireR #hudBottom #btnWand::before, body.fireR #hudBottom #btnCast::before{t
 #hudBottom #btnCast small{font-size:12px; line-height:1.1; text-shadow:0 2px 0 #000; max-width:78%;}
 #hudBottom #btnCast:disabled .bic, #hudBottom #btnCast:disabled b{opacity:.55;}
 /* the big Spell button: its drawn shape, blue rising from the base as the timer fills, gold and pulsing when ready */
-#hudBottom #btnSpell{min-height:0; height:auto; aspect-ratio:119/37; border:0!important; border-radius:0; box-shadow:none!important; animation:none!important; background:url(ui/portrait_spell_empty.svg) center/100% 100% no-repeat!important; overflow:visible;}
+#hudBottom #btnSpell{min-height:0; height:auto; aspect-ratio:119/52; border:0!important; border-radius:0; box-shadow:none!important; animation:none!important; background:url(ui/portrait_spell_empty.svg) center/100% 100% no-repeat!important; overflow:visible;}
 #hudBottom #btnSpell #gaugeBar2{inset:0; width:auto!important; background:url(ui/portrait_spell_blue_full.svg) center/100% 100% no-repeat; clip-path:inset(calc((1 - var(--k,0)) * 100%) 0 0 0); transition:clip-path .15s;}
 #hudBottom #btnSpell::before, #hudBottom #btnSpell::after{content:''; position:absolute; inset:0; background:center/100% 100% no-repeat; opacity:0; pointer-events:none;}
 #hudBottom #btnSpell.ready::before{background-image:url(ui/portrait_spell_ready_dim.svg); opacity:1;}

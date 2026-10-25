@@ -1807,3 +1807,19 @@ body.wide #hudBottom #btnSpell span{font-size:calc(var(--bw) * .09)!important;}
 #hudBottom #btnWand.chfull::after{-webkit-mask:none; mask:none; animation:chFull .35s ease-in-out infinite alternate;}
 @keyframes chFull{from{filter:brightness(1);} to{filter:brightness(1.45) drop-shadow(0 0 6px #ffb347);}}
 body.fireR #hudBottom #btnWand::after{transform:scaleX(-1);}
+/* v148: the queue is its own row above Fire and Cast (never over them): three or four slim tiles of one size, centred;
+   the name takes up to two lines beside its icon. Spell stays inside its column; ready, it glows and pulses. */
+#hudBottom #queueRow{display:flex; justify-content:center; gap:4px; padding:0; width:100%; position:relative; z-index:2;}
+body.wide #scrBattle #hudBottom #queueRow{width:min(48vw,620px);}
+#hudBottom .qslot, #hudBottom .qslot.full, #hudBottom .qslot.next{flex:0 0 calc((100% - 12px) / 4); min-width:0; height:46px; min-height:0; padding:0; flex-direction:row; justify-content:flex-start; gap:3px;
+  border-width:5px 8px 9px!important; border-image-width:5px 8px 9px!important;}
+#hudBottom .qslot .role{flex:none; width:18px; height:18px;} #hudBottom .qslot .qic{width:18px; height:18px;}
+#hudBottom .qslot .nm{flex:1; min-width:0; font-size:10.5px; line-height:1.05; text-align:left; -webkit-line-clamp:2;}
+#hudBottom .qslot:not(.full){justify-content:center;}
+#hudBottom .qslot .nxt{top:-12px; left:50%;}
+#hudBottom #btnWand, #hudBottom #btnCast{margin-top:0;}
+body.wide #scrBattle #hudBottom #btnWand, body.wide #scrBattle #hudBottom #btnCast{margin-top:-30px;}
+#hudBottom #btnSpell{width:100%; min-width:0; justify-self:stretch;}
+#hudBottom #btnSpell.ready{animation:spellPulse .9s ease-in-out infinite alternate!important;}
+#hudTop #btnCustom.custgauge.ready{animation:spellPulse .9s ease-in-out infinite alternate!important;}
+@keyframes spellPulse{from{filter:drop-shadow(0 0 2px #ffd84a88);} to{filter:drop-shadow(0 0 9px #ffe27af0) brightness(1.12);}}

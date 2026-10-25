@@ -1772,3 +1772,13 @@ body.wide.h460 #scrBattle #hudBottom .bctl .btn b{font-size:26px!important;}
 /* NEXT: a gold badge drawn in CSS (the art's badge has its word painted in) with real text */
 #hudBottom .qslot .nxt{top:-14px; width:auto; height:auto; padding:1px 7px 0; font:400 14px/1 var(--font-h)!important; letter-spacing:1px; color:#2e1d00; background:linear-gradient(#ffe27a,#f2b51c 55%,#c98a0c)!important;
   border:2px solid #1a1000; clip-path:polygon(5px 0,calc(100% - 5px) 0,100% 5px,100% calc(100% - 5px),calc(100% - 5px) 100%,5px 100%,0 calc(100% - 5px),0 5px); text-shadow:0 1px 0 #fff2b0;}
+/* the words fit inside their buttons on any screen: sized from the button's own width (container units) */
+#hudBottom #btnWand, #hudBottom #btnCast, #hudBottom #btnSpell{container-type:inline-size;}
+#hudBottom #btnWand b, #hudBottom #btnCast b, body.wide.h460 #scrBattle #hudBottom .bctl .btn b{font-size:19cqw!important; letter-spacing:0;}
+#hudBottom #btnWand b{margin-right:8%;} #hudBottom #btnCast b{margin-left:8%;}
+body.fireR #hudBottom #btnWand b{margin:0 0 0 8%;} body.fireR #hudBottom #btnCast b{margin:0 8% 0 0;}
+#hudBottom #btnCast small{font-size:max(10px,9cqw); max-width:64%;}
+#hudBottom #btnSpell span, body.wide #hudBottom #btnSpell span{font-size:17cqw!important; letter-spacing:0;}
+body.wide #hudBottom #btnSpell span{font-size:11cqw!important;}
+#hudBottom #btnWand b, #hudBottom #btnCast b, #hudBottom #btnSpell span{text-shadow:1px 0 0 #000,-1px 0 0 #000,0 1px 0 #000,0 -1px 0 #000,1px 1px 0 #000,-1px 1px 0 #000,1px -1px 0 #000,-1px -1px 0 #000,0 2px 0 #000;}
+#hudBottom #btnSpell.ready span{text-shadow:1px 1px 0 #fff2b0,-1px -1px 0 #a86a00!important;}

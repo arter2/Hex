@@ -1823,3 +1823,14 @@ body.wide #scrBattle #hudBottom #btnWand, body.wide #scrBattle #hudBottom #btnCa
 #hudBottom #btnSpell.ready{animation:spellPulse .9s ease-in-out infinite alternate!important;}
 #hudTop #btnCustom.custgauge.ready{animation:spellPulse .9s ease-in-out infinite alternate!important;}
 @keyframes spellPulse{from{filter:drop-shadow(0 0 2px #ffd84a88);} to{filter:drop-shadow(0 0 9px #ffe27af0) brightness(1.12);}}
+/* v149, portrait: the queue sits in the gap between Fire's and Cast's curves, above Spell. ui.js fitQueue() measures
+   the frames' drawn edges and sets --qx --qy --qw --qh (in % of the row), so the tiles never touch either frame; four
+   fit, and three are centred at the same size. Each tile: its icon over a name of up to two lines. */
+body:not(.wide) #hudBottom .bctl{position:relative; grid-template-areas:"fire spell cast";}
+body:not(.wide).fireR #hudBottom .bctl{grid-template-areas:"cast spell fire";}
+body:not(.wide) #hudBottom #queueRow{position:absolute; left:var(--qx,35%); top:var(--qy,0%); width:var(--qw,30%); height:var(--qh,45%); gap:2px; align-items:stretch; container-type:inline-size;}
+body:not(.wide) #hudBottom .qslot, body:not(.wide) #hudBottom .qslot.full, body:not(.wide) #hudBottom .qslot.next{flex:0 0 calc((100% - 6px) / 4); height:auto; flex-direction:column; justify-content:center; align-items:center; gap:1px;
+  border-width:4px 5px 6px!important; border-image-width:4px 5px 6px!important;}
+body:not(.wide) #hudBottom .qslot .role, body:not(.wide) #hudBottom .qslot .qic{width:min(20px,7.5cqw); height:min(20px,7.5cqw);}
+body:not(.wide) #hudBottom .qslot .nm{flex:none; width:100%; font-size:clamp(8px,5cqw,12px); line-height:1.05; text-align:center; overflow-wrap:normal; word-break:break-word;}
+body:not(.wide) #hudBottom .qslot .nxt{top:-11px; padding:1px 4px 0; font-size:clamp(8px,4cqw,12px)!important;}

@@ -1018,8 +1018,28 @@ function pressBtn(el,fn){
 }
 pressBtn($('#btnCustom'),tryCustom);
 // the HUD's big buttons: their drawn width as --bw, so the icon and word inside are sized to fit the frame on any screen
-if(typeof ResizeObserver!=='undefined'){ const ro=new ResizeObserver(es=>{ for(const e of es) e.target.style.setProperty('--bw',e.contentRect.width.toFixed(1)+'px'); });
-  ['#btnWand','#btnCast','#btnSpell'].forEach(q=>ro.observe($(q))); }
+if(typeof ResizeObserver!=='undefined'){ const ro=new ResizeObserver(es=>{ for(const e of es) e.target.style.setProperty('--bw',e.contentRect.width.toFixed(1)+'px'); fitQueue(); });
+  ['#btnWand','#btnCast','#btnSpell','#hudBottom .bctl'].forEach(q=>ro.observe($(q))); }
+// portrait: the queue goes in the gap between Fire's and Cast's curves, above Spell. FIRE_EDGE: for each 3-pixel band of
+// rows of the 118×126 Fire art (all its states), how far right the art reaches; CAST_EDGE: where Cast's art starts from
+// the left. The tiles' band is tried at the frames' top and the row set to the narrowest gap across it.
+const FIRE_EDGE=[20,29,42,50,56,62,66,70,74,78,82,85,87,90,93,95,97,99,101,103,105,106,107,108,110,110,112,112,113,114,115,115,115,115,117,117,117,117,117,117,115,111],
+  CAST_EDGE=[98,91,78,71,64,58,53,49,45,40,37,34,31,27,25,22,20,18,16,14,12,11,9,8,7,6,5,5,4,3,3,2,2,2,0,0,0,0,0,0,4,7];
+function fitQueue(){ const q=$('#queueRow'), bc=$('#hudBottom .bctl'), body=document.body.classList;
+  if(body.contains('wide')){ ['--qx','--qy','--qw','--qh'].forEach(k=>q.style.removeProperty(k)); return; }
+  const R=bc.getBoundingClientRect(); if(!R.width||!R.height) return;
+  const fireR=body.contains('fireR'), Lb=$(fireR?'#btnCast':'#btnWand').getBoundingClientRect(), Rb=$(fireR?'#btnWand':'#btnCast').getBoundingClientRect(), S=$('#btnSpell').getBoundingClientRect();
+  // how far the left frame reaches right, and where the right one starts, at screen height y (both art tables are 42 bands)
+  const band=(b,y)=>Math.max(0,Math.min(41,Math.floor((y-b.top)/b.height*42)));
+  const leftAt=y=>Lb.left+Lb.width*(fireR?118-CAST_EDGE[band(Lb,y)]:FIRE_EDGE[band(Lb,y)])/118;
+  const rightAt=y=>Rb.left+Rb.width*(fireR?118-FIRE_EDGE[band(Rb,y)]:CAST_EDGE[band(Rb,y)])/118;
+  const g=R.width*.01, top=Math.min(Lb.top,Rb.top)+g, floor=S.top-g;
+  let h=floor-top, x0=0, x1=0;
+  for(let it=0;it<3;it++){ x0=-1e9; x1=1e9; for(let y=top;y<=top+h;y+=Math.max(1,h/12)){ x0=Math.max(x0,leftAt(y)); x1=Math.min(x1,rightAt(y)); }
+    x0+=g; x1-=g; h=Math.max(10,Math.min(floor-top,(x1-x0)/4*1.1)); }
+  const pc=(v,d)=>(v/d*100).toFixed(2)+'%';
+  q.style.setProperty('--qx',pc(x0-R.left,R.width)); q.style.setProperty('--qw',pc(Math.max(0,x1-x0),R.width));
+  q.style.setProperty('--qy',pc(top-R.top,R.height)); q.style.setProperty('--qh',pc(h,R.height)); }
 pressBtn($('#btnSpell'),tryCustom);
 pressBtn($('#btnSoul'),trySoul);
 pressBtn($('#soulSummon'),()=>{ soulSummon(); soulMenu(false); });
@@ -1176,7 +1196,7 @@ applyHudStyle();
 // which side Fire sits on (Cast takes the other), and which edge the instants stack up: for left and right hands
 const SIDE_KEYS={fire:['hexmancers-fireside','left','fireR','#setFire'], inst:['hexmancers-instside','right','instL','#setInst']};
 const sideOf=k=>{ try{ return localStorage.getItem(SIDE_KEYS[k][0])||SIDE_KEYS[k][1]; }catch(e){ return SIDE_KEYS[k][1]; } };
-function applySides(){ for(const k in SIDE_KEYS){ const [,def,cls,btn]=SIDE_KEYS[k], v=sideOf(k); document.body.classList.toggle(cls,v!==def); const b=$(btn); if(b) b.textContent=v==='left'?'Left':'Right'; } }
+function applySides(){ for(const k in SIDE_KEYS){ const [,def,cls,btn]=SIDE_KEYS[k], v=sideOf(k); document.body.classList.toggle(cls,v!==def); const b=$(btn); if(b) b.textContent=v==='left'?'Left':'Right'; } if(typeof fitQueue==='function') fitQueue(); }
 for(const k in SIDE_KEYS) $(SIDE_KEYS[k][3]).onclick=()=>{ try{ localStorage.setItem(SIDE_KEYS[k][0],sideOf(k)==='left'?'right':'left'); }catch(e){} applySides(); };
 applySides();
 $('#setXStairs').onclick=()=>{ let on=true; try{ on=localStorage.getItem('hexmancers-xstairs')!=='0'; localStorage.setItem('hexmancers-xstairs',on?'0':'1'); }catch(e){} applyXTips(); if(typeof EX!=='undefined'&&EX&&typeof xMini==='function') xMini(); };

@@ -1795,3 +1795,12 @@ body.fireR #hudBottom #btnWand .bic, body.fireR #hudBottom #btnWand b{left:59%;}
 #hudBottom #btnSpell{--bw:150px;}
 #hudBottom #btnSpell span, body.wide #hudBottom #btnSpell span{font-size:calc(var(--bw) * .15)!important; width:auto; white-space:nowrap;}
 body.wide #hudBottom #btnSpell span{font-size:calc(var(--bw) * .09)!important;}
+/* Fire's charge meter (v144): while held, the dim frame, with the glowing one sweeping up the curve from the bottom
+   (a conic mask about the frame's square corner, --ch 0..1, set by hud()); full: the whole glow, pulsing */
+#hudBottom #btnWand.chg::before{background-image:url(ui/fire_inactive.svg);}
+#hudBottom #btnWand::after{content:''; position:absolute; inset:0; z-index:-1; pointer-events:none; opacity:0; background:url(ui/fire_pressed.svg) center/100% 100% no-repeat;
+  -webkit-mask:conic-gradient(from 0deg at 6% 94%, transparent calc(90deg - 90deg * var(--ch,0)), #000 0 90deg, transparent 0); mask:conic-gradient(from 0deg at 6% 94%, transparent calc(90deg - 90deg * var(--ch,0)), #000 0 90deg, transparent 0);}
+#hudBottom #btnWand.chg::after{opacity:1;}
+#hudBottom #btnWand.chfull::after{-webkit-mask:none; mask:none; animation:chFull .35s ease-in-out infinite alternate;}
+@keyframes chFull{from{filter:brightness(1);} to{filter:brightness(1.45) drop-shadow(0 0 6px #ffb347);}}
+body.fireR #hudBottom #btnWand::after{transform:scaleX(-1);}

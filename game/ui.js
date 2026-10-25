@@ -933,6 +933,9 @@ function hud(force){
   set('run',runBlocked()?0:1,()=>{ $('#btnRun').hidden=!!runBlocked(); });
   set('depth',b.depth+'|'+Math.ceil(b.wave),()=>{ const t=$('#depthTxt'); t.textContent='D'+b.depth+(b.waves.length>1?' · W'+(Math.ceil(b.wave)+1)+'/'+b.waves.length:''); t.title='Depth '+b.depth+' · '+areaOf(b.depth).name; t.style.color=areaOf(b.depth).glow; });
   set('piles',pl.draw.length+'|'+pl.hand.length+'|'+pl.discard.length+'|'+wandOnly(pl),()=>{ $('#pileDeck').textContent=wandOnly(pl)?'Deck empty · wand only':'Deck '+pl.draw.length; $('#pileHand').textContent='Hand '+pl.hand.length; });   // what you have used: on the Spell screen
+  // Fire's charge: the glowing frame sweeps up the curve as you hold, and pulses when the charged shot is ready
+  { const ch=p.charging?Math.min(1,p.chargeT/Math.max(.01,chargeNeed(p))):0;
+    set('charge',Math.round(ch*40)+'|'+p.charging,()=>{ const w=$('#btnWand'); w.style.setProperty('--ch',ch.toFixed(3)); w.classList.toggle('chg',!!p.charging); w.classList.toggle('chfull',ch>=1); }); }
   set('gauge',Math.round(b.gauge*10),()=>{ const k=Math.max(0,Math.min(1,b.gauge/GAUGE_MAX)).toFixed(3); $('#btnCustom').style.setProperty('--k',k); $('#btnSpell').style.setProperty('--k',k); });
   const buffs=[]; if(p.barrier>0) buffs.push('🛡 '+Math.ceil(p.barrier)+' · '+Math.ceil(p.shieldT)+'s'); if(p.dodge) buffs.push('💨 Dodge'); if(p.invT>0) buffs.push('🌀 Phase');
   if(p.setT>0) buffs.push('ᚱ Wand ×2.5 '+Math.ceil(p.setT)+'s'); else if(p.powerT>0) buffs.push('⚡ Wand ×1.8 '+Math.ceil(p.powerT)+'s'); if(p.pactT>0) buffs.push('☾ Pact '+Math.ceil(p.pactT)+'s'); if(p.courageT>0) buffs.push('☀ Courage '+Math.ceil(p.courageT)+'s'); if(p.intervene) buffs.push('✟ Intervention');

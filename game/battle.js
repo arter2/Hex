@@ -639,14 +639,20 @@ function placeAlly(c,ai,hp,turns,at){
 }
 
 /* ---------------- Brown: instants, the deck tools, equipment and tinkering ---------------- */
-// Search: which deck cards a search card can find
+// Search: which deck cards a search card can find. On the hand screen it turns up 3 of them at random (searchOffer)
+// and you keep one (pickUid); with no pick it takes one at random.
+function searchOffer(c,n){ const pl=B.piles, t=searchTest(c), ok=pl.draw.filter(x=>!t||t(x.card)).slice();
+  shuffle(ok,pl.rng); return ok.slice(0,n||3); }
 function deckSearch(c,pickUid){ const pl=B.piles;
-  if(c.find==='pick') return pickUid!=null?takeFromDeck(pl,pickUid):searchDeck(pl,x=>x.rank===Math.max(...pl.draw.map(d=>d.card.rank)));
+  if(pickUid!=null&&pl.draw.some(x=>x.uid===pickUid)) return takeFromDeck(pl,pickUid);
+  return searchDeck(pl,searchTest(c)); }
+function searchTest(c){ const pl=B.piles;
+  if(c.find==='pick') return null;
   if(c.find==='rune'){ const q=pl.queue.map(x=>x.card.code).find(k=>k&&k!==WILD_RUNE)||surgeRune(pl.hand)||(()=>{ const n={}; pl.hand.forEach(h=>{ const k=h.card.code; if(k&&k!==WILD_RUNE) n[k]=(n[k]||0)+1; }); return Object.keys(n).sort((a,b)=>n[b]-n[a])[0]; })();
-    return searchDeck(pl,x=>!q||x.code===q||x.code===WILD_RUNE); }
-  if(c.find==='attack'||c.find==='defense') return searchDeck(pl,x=>cardRole(x)===c.find);
-  if(c.find==='creature') return searchDeck(pl,x=>['summon','machine','sentry'].includes(x.type==='piece'?x.base:x.type));
-  return searchDeck(pl); }
+    return x=>!q||x.code===q||x.code===WILD_RUNE; }
+  if(c.find==='attack'||c.find==='defense') return x=>cardRole(x)===c.find;
+  if(c.find==='creature') return x=>['summon','machine','sentry'].includes(x.type==='piece'?x.base:x.type);
+  return null; }
 /* Use an instant from your hand, on the Spell screen or mid-fight. `choice` carries a pick when
    the card needs one: {target: a card instance} for Tinker, {keep: Set of uids} for Keep and
    Reshuffle, {uid} for a pick-any search. Returns false if it could not be used. */
@@ -675,7 +681,7 @@ function useDeckTool(inst,choice){
   b.log.push(c.name); b.hooks.onCast&&b.hooks.onCast(c,inst); soulGain(5);
   if(misfire(c,p)) return true;
   if(c.util==='keep') B.keepSet=choice&&choice.keep||new Set();
-  if(c.util==='search'&&c.find==='pick'){ const got=deckSearch(c,choice&&choice.uid); if(got) B.justDrawn=new Set([got.uid]); return true; }
+  if(c.util==='search'){ const got=deckSearch(c,choice&&choice.uid); if(got) B.justDrawn=new Set([got.uid]); return true; }
   CAST.utility(c,p);
   return true;
 }

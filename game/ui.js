@@ -832,11 +832,14 @@ function fireTool(inst){ const c=inst.card, P=B.piles, before=new Set(P.hand.map
     tip((c.util==='search'?(got.length?'Found: '+got[0].card.name:handRoom(P)?'Nothing found':'Hand full'):'Drew '+got.length+' new card'+(got.length===1?'':'s'))+shut);
     buzz(14); renderCustom(); hud(true); };
   if(c.util==='keep') return startChoose('keep',inst,ch=>{ useDeckTool(inst,ch); done(); });
-  if(c.util==='search'&&c.find==='pick'){ if(!P.draw.length){ tip('Your deck is empty'); return; }
-    return startChoose('search',inst,ch=>{ useDeckTool(inst,ch); done(); }); }
+  if(c.util==='search'){ if(!handRoom(P)){ tip('Hand full'); return; }
+    // the 3 it turns up stay the same for this hand, so Cancel and use again can't reroll them
+    const offer=(inst.offer||[]).filter(x=>P.draw.includes(x)); if(!offer.length) inst.offer=searchOffer(c,3); else inst.offer=offer;
+    if(!inst.offer.length){ tip('Nothing in your deck for '+c.name); return; }
+    return startChoose('search',inst,ch=>{ inst.offer=null; useDeckTool(inst,ch); done(); }); }
   useDeckTool(inst); done(); }
-/* Keep and a pick-any Search are chosen right on the hand screen, no other window: Keep marks the hand cards you tap
-   (gold) until Done; Search lays your deck out in a row above your hand and takes the card you tap. Cancel leaves the
+/* Keep and Search are chosen right on the hand screen, no other window: Keep marks the hand cards you tap (gold)
+   until Done; Search turns up 3 random cards it can find, laid out above your hand, and you keep the one you tap. Cancel leaves the
    card unused. */
 let choose=null;
 function startChoose(kind,inst,fire){ choose={kind,inst,fire,sel:new Set()}; buzz(8); renderCustom(); }
@@ -846,9 +849,9 @@ function renderChoose(){ const bar=$('#custChoose'), deck=$('#custDeck'), p=B.pi
   bar.hidden=!choose; deck.hidden=!(choose&&choose.kind==='search'); deck.innerHTML='';
   if(!choose) return;
   $('#chooseMsg').innerHTML=choose.kind==='keep'?'<b>✧ '+esc(choose.inst.card.name)+':</b> tap the cards to keep ('+choose.sel.size+'). The rest go back into your deck and you draw up to '+RULES.hand+'.'
-    :'<b>✧ '+esc(choose.inst.card.name)+':</b> tap a card from your deck to take it into your hand.';
+    :'<b>✧ '+esc(choose.inst.card.name)+':</b> it turned up '+choose.inst.offer.length+' card'+(choose.inst.offer.length>1?'s':'')+' from your deck. Tap one to keep; the rest go back.';
   $('#chooseOk').hidden=choose.kind!=='keep';
-  if(choose.kind==='search') p.draw.slice().sort((a,b)=>a.card.name.localeCompare(b.card.name)).forEach(inst=>{ const el=cardEl(inst.card,'');
+  if(choose.kind==='search') choose.inst.offer.forEach(inst=>{ const el=cardEl(inst.card,'');
     el.onclick=()=>{ if(!choose) return; choose.sel=new Set([inst.uid]); endChoose(true); }; longPress&&longPress(el,inst.card); deck.appendChild(el); }); }
 $('#chooseOk').onclick=()=>endChoose(true); $('#chooseNo').onclick=()=>endChoose(false);
 /* Enchanting (Whetstone, Tempering Oil…): a tap on the instant arms it. "Tap a card to enchant" shows under it and
@@ -861,15 +864,14 @@ function enchantLive(){ if(enchant&&(!B||!B.piles||!B.piles.hand.includes(enchan
 function tryEnchant(target){ if(!enchantLive()) return false; const inst=enchant.inst;
   if(!enchantTargets(inst).includes(target)){ tip('That card can\'t be enchanted'); return true; }
   enchant=null; useInstant(inst,{target}); buzz(14); hud(true); if(B.phase==='custom') renderCustom(); return true; }
-/* Instants: a tap uses one at once. A Tinker arms (above); Keep and a pick-any Search are chosen on the hand screen. */
+/* Instants: a tap uses one at once. A Tinker arms (above); Keep is chosen on the hand screen. */
 function tapInstant(inst){ const c=inst.card, P=B.piles;
   const done=()=>{ if(B.phase==='custom') renderCustom(); hud(true); };
   if(c.type==='tinker'){ if(enchant&&enchant.inst===inst){ if(performance.now()-enchant.t<400) return; enchant=null; done(); return; }   // tapped again: put it away (not the same tap's click)
     if(!enchantTargets(inst).length){ tip('Nothing to enchant'); return; }
     enchant={inst,t:performance.now()}; buzz(8); done(); return; }
-  const pick=c.as==='utility'&&(c.util==='keep'||c.util==='search'&&c.find==='pick');
+  const pick=c.as==='utility'&&c.util==='keep';
   if(pick&&B.phase!=='custom'){ tip('Use '+c.name+' on the hand screen'); return; }
-  if(pick&&c.util==='search'&&!P.draw.length){ tip('Your deck is empty'); return; }
   if(pick) return startChoose(c.util,inst,ch=>{ useInstant(inst,ch); done(); });
   useInstant(inst); done(); }
 /* Every card keeps its own spot in the hand for the whole fight: taking one into the queue leaves
@@ -913,7 +915,7 @@ function dragCard(el,inst){
       if(t){ const zone=t.dataset.zone, i=t.dataset.i!=null?+t.dataset.i:null, spot=t.dataset.uid;
         if(placeCard(p,d.inst.uid,zone,i)&&zone==='hand'&&spot&&spot!==String(d.inst.uid)) layDrop(d.inst.uid,isNaN(+spot)?spot:+spot); buzz(10); } }
     else if(!d.long){ if(choose){ if(choose.kind==='keep'&&p.hand.includes(d.inst)&&d.inst!==choose.inst){ choose.sel.has(d.inst.uid)?choose.sel.delete(d.inst.uid):choose.sel.add(d.inst.uid); buzz(6); }
-        else if(choose.kind==='search') tip('Tap a card from your deck, above your hand'); renderCustom(); return; }
+        else if(choose.kind==='search') tip('Tap one of the cards it found, above your hand'); renderCustom(); return; }
       if(enchantLive()&&!isInstant(d.inst.card)){ tryEnchant(d.inst); return; }
       if(isInstant(d.inst.card)){ tapInstant(d.inst); return; }
       if(isDeckTool(d.inst.card)&&p.queue.includes(d.inst)){ toolTap(d.inst); return; }

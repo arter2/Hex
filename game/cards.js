@@ -664,8 +664,8 @@ function cardText(c){
   else if(kind==='utility') t={draw:'Draw '+c.n+' card'+(c.n>1?'s':'')+' into your hand', recall:'Put the top card of your deck into your queue',
                               copy:'Copy the next queued card', cleanse:'Cancel incoming attacks and heal '+c.amt,
                               recharge:'Every Charge card in this battle gets '+c.n+' use'+(c.n>1?'s':'')+' back',
-                              search:{any:'Search your deck: a random card goes to your hand', attack:'Search your deck for a random attack card', defense:'Search your deck for a random defense card',
-                                      creature:'Search your deck for a random creature, machine or tower', rune:'Search your deck for a card with the rune of your queue (or your hand\'s most common rune)', pick:'Search your deck and pick any card'}[c.find],
+                              search:{any:'Search your deck: 3 random cards turn up, keep 1', attack:'Search your deck: 3 random attack cards turn up, keep 1', defense:'Search your deck: 3 random defense cards turn up, keep 1',
+                                      creature:'Search your deck: 3 random creatures, machines or towers turn up, keep 1', rune:'Search your deck: 3 random cards with the rune of your queue (or your hand\'s most common rune) turn up, keep 1', pick:'Search your deck: 3 random cards turn up, keep 1'}[c.find],
                               reshuffle:'Shuffle your hand into your deck and draw a fresh hand',
                               keep:'Pick cards to keep, shuffle the rest into your deck and draw back up to a full hand'}[c.util];
   else if(kind==='summon') t={critter:'Pounces on the nearest enemy for '+c.pow+' every '+c.rate+'s. Brood: 2 queued = Pack, 3 = Swarm, 4 = Elder Grovebeast', shooter:'Shoots '+c.pow+' down its row', bomber:'Lobs '+c.pow+' every '+c.rate+'s', healer:'Heals you '+c.amt+' every '+c.rate+'s',

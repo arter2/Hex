@@ -1804,3 +1804,16 @@ body.wide #hudBottom #btnSpell span{font-size:calc(var(--bw) * .09)!important;}
 #hudBottom #btnWand.chfull::after{-webkit-mask:none; mask:none; animation:chFull .35s ease-in-out infinite alternate;}
 @keyframes chFull{from{filter:brightness(1);} to{filter:brightness(1.45) drop-shadow(0 0 6px #ffb347);}}
 body.fireR #hudBottom #btnWand::after{transform:scaleX(-1);}
+/* the charge bands (v145): drawn to run the frames' whole curved lane, bottom bolt to top bolt (tools/ui-bands.py).
+   Fire: the lane sits empty (dim) and fills from the bottom up as you hold; full, it glows and pulses. The sweep is
+   a conic mask about the lane's circle (centre -15% 88.3% of the frame; the lane runs 0.5 to 70 degrees up from
+   level). Cast: its lane is lit along its whole length, dim when the queue is empty. */
+#hudBottom #btnWand::before, #hudBottom #btnWand.chg::before, #hudBottom #btnWand.charging::before{background-image:url(ui/fire_band_dim.svg),url(ui/fire_normal.svg); background-size:100% 100%;}
+#hudBottom #btnWand::after{background-image:url(ui/fire_band_lit.svg); opacity:1;
+  -webkit-mask:conic-gradient(from 0deg at -14.96% 88.31%, transparent calc(90deg - 70deg * var(--ch,0)), #000 0 90deg, transparent 0);
+  mask:conic-gradient(from 0deg at -14.96% 88.31%, transparent calc(90deg - 70deg * var(--ch,0)), #000 0 90deg, transparent 0);}
+#hudBottom #btnWand:not(.chg)::after{opacity:0;}
+#hudBottom #btnWand.chfull::after{-webkit-mask:none; mask:none; animation:chFull .35s ease-in-out infinite alternate;}
+#hudBottom #btnCast::before{background-image:url(ui/cast_band_lit.svg),url(ui/cast_normal.svg); background-size:100% 100%;}
+#hudBottom #btnCast:active::before{background-image:url(ui/cast_band_lit.svg),url(ui/cast_pressed.svg);}
+#hudBottom #btnCast:disabled::before{background-image:url(ui/cast_band_dim.svg),url(ui/cast_inactive.svg);}

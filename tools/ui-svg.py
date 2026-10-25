@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""python3 tools/ui-svg.py <unzipped hexmancers-ui-keygreen folder> [out=game/ui] [names|all]
+"""python3 tools/ui-svg.py <unzipped hexmancers-ui-keygreen folder> [out=game/ui] [names|all|used] [--div N] [--colors K]
 
 Cuts the HUD art out of the key-green export and writes each piece as a pixel-exact SVG:
   - the export is a whole-pixel 2x enlargement, so every other pixel is the art's own pixel;
@@ -8,7 +8,10 @@ Cuts the HUD art out of the key-green export and writes each piece as a pixel-ex
   - the padding is trimmed;
   - each colour becomes one <path> of 1-pixel-tall runs, drawn with crispEdges, so the SVG scales to
     any size and still shows the art's exact pixels.
-With no names it writes the pieces the battle HUD uses (USED below)."""
+  - --div N makes it real pixel art first: the art is shrunk N times (each new pixel the average of an NxN block,
+    see-through where under half of the block is art), then cut to K colours (default 32, no dithering), so it
+    has big clean pixels, few colours and a small SVG.
+With no names (or "used") it writes the pieces the battle HUD uses (USED below)."""
 import sys, os, json, numpy as np
 from PIL import Image
 USED=('fire_normal fire_pressed fire_inactive cast_normal cast_pressed cast_inactive '
@@ -30,6 +33,13 @@ def cut(src,name):
     bg|=(g>200)&(r<90)&(b<90)
     ys,xs=np.where(~bg); y0,y1,x0,x1=ys.min(),ys.max()+1,xs.min(),xs.max()+1
     return a[y0:y1,x0:x1].astype(np.uint8), ~bg[y0:y1,x0:x1]
+def pixelate(rgb,on,div,k):
+    h,w=on.shape; H,W=h//div,w//div; rgb=rgb[:H*div,:W*div].astype(float); on=on[:H*div,:W*div].astype(float)
+    cov=on.reshape(H,div,W,div).mean(axis=(1,3))
+    sm=(rgb*on[...,None]).reshape(H,div,W,div,3).sum(axis=(1,3))/np.maximum(1e-9,on.reshape(H,div,W,div).sum(axis=(1,3)))[...,None]
+    keep=cov>=.5; small=np.clip(sm,0,255).astype(np.uint8)
+    q=Image.fromarray(small,'RGB').quantize(k,method=Image.Quantize.MEDIANCUT,dither=Image.Dither.NONE).convert('RGB')
+    return np.array(q), keep
 def svg(rgb,on):
     h,w=on.shape; runs={}
     for y in range(h):
@@ -42,11 +52,16 @@ def svg(rgb,on):
     body=''.join(f'<path fill="#{c[0]:02x}{c[1]:02x}{c[2]:02x}" d="{"".join(d)}"/>' for c,d in runs.items())
     return f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" width="{w}" height="{h}" shape-rendering="crispEdges">{body}</svg>', (w,h)
 if __name__=='__main__':
-    src=sys.argv[1]; out=sys.argv[2] if len(sys.argv)>2 else 'game/ui'
-    names=USED if len(sys.argv)<4 else [a['name'] for a in json.load(open(src+'/manifest.json'))['assets']] if sys.argv[3]=='all' else sys.argv[3].split(',')
-    if len(sys.argv)<4: names=names+[a['name'] for a in json.load(open(src+'/manifest.json'))['assets'] if a['name'].startswith(('status_','warning_'))]
+    args=sys.argv[1:]; div=k=None
+    if '--div' in args: i=args.index('--div'); div=int(args[i+1]); del args[i:i+2]
+    if '--colors' in args: i=args.index('--colors'); k=int(args[i+1]); del args[i:i+2]
+    src=args[0]; out=args[1] if len(args)>1 else 'game/ui'; pick=args[2] if len(args)>2 else 'used'
+    every=[a['name'] for a in json.load(open(src+'/manifest.json'))['assets']]
+    names=every if pick=='all' else USED+[n for n in every if n.startswith(('status_','warning_'))] if pick=='used' else pick.split(',')
     os.makedirs(out,exist_ok=True); sizes={}
     for n in names:
-        s,wh=svg(*cut(src,n)); open(f'{out}/{n}.svg','w').write(s); sizes[n]=wh
+        rgb,on=cut(src,n)
+        if div: rgb,on=pixelate(rgb,on,div,k or 32)
+        s,wh=svg(rgb,on); open(f'{out}/{n}.svg','w').write(s); sizes[n]=wh
     json.dump(sizes,open(f'{out}/sizes.json','w'),indent=0)
     print(len(names),'pieces')

@@ -1654,28 +1654,30 @@ body.wide.h460 #scrBattle #hudBottom .qslot{min-height:44px; padding-top:6px;} b
 body.wide.h460 #scrBattle #hudBottom .inst-row .btn.inst{width:54px; min-height:52px;} body.wide.h460 #scrBattle #hudBottom .inst .iic{font-size:20px;}
 body.wide.h460 #scrBattle #hudTop #btnMenu{width:48px; height:48px;}
 
-/* ---------------- the HUD skin (v137): the rock-and-metal art from the approved mock-ups, as pixel-exact SVGs in ui/
-   (tools/ui-svg.py cuts them out of the key-green export). Bars, queue tiles and instants stretch from the middle
+/* ---------------- the HUD skin (v137, pixel art v138): the rock-and-metal art from the approved mock-ups, as pixel-exact SVGs
+   in ui/ (tools/ui-svg.py cuts them out of the key-green export, shrinks them 4x into pixel art with 64 colours; the
+   border-image slices below are in those pixels). Bars, queue tiles and instants stretch from the middle
    (9-slice: border-image) so their corners keep their shape at any size; Fire, Cast, Spell and pause keep their drawn
    shape and scale whole. A fill (HP, the Spell timer) is the full piece laid over the empty one and clipped by --k. */
 .ui9{position:absolute; inset:0; box-sizing:border-box; border-style:solid; border-color:transparent; pointer-events:none;}
 /* HP: the empty bar, the full one (red when low) clipped from the right */
-#hudTop .hp .meter.big.hpmeter{height:24px; background:none; box-shadow:none; border-radius:0; overflow:visible;}
-#hudTop .hpmeter::before{content:''; position:absolute; inset:0; box-sizing:border-box; border:solid transparent; border-width:6px 12px; border-image:url(ui/hp_empty.svg) 20 40 fill / 6px 12px;}
+#hudTop .hp .meter.big.hpmeter{height:21px; background:none; box-shadow:none; border-radius:0; overflow:visible;}
+#hudTop .hpmeter::before{content:''; position:absolute; inset:0; box-sizing:border-box; border:solid transparent; border-width:6px 12px; border-image:url(ui/hp_empty.svg) 5 10 fill / 6px 12px;}
 #hudTop .hpmeter #hpBar{position:absolute; inset:0; width:auto!important; height:auto; background:none!important; border-radius:0!important; box-sizing:border-box; border:solid transparent; border-width:6px 12px;
-  border-image:url(ui/hp_full.svg) 20 40 fill / 6px 12px; clip-path:inset(0 calc((1 - var(--k,1)) * 100%) 0 0); transition:clip-path .15s;}
+  border-image:url(ui/hp_full.svg) 5 10 fill / 6px 12px; clip-path:inset(0 calc((1 - var(--k,1)) * 100%) 0 0); transition:clip-path .15s;}
 #hudTop .hpmeter.low #hpBar{border-image-source:url(ui/hp_red.svg);}
 /* the top Spell timer: the empty track, the full one clipped; ready: the big gold bar, pulsing dim to bright */
 #hudTop #btnCustom.custgauge{height:22px; margin:2px 0 0; padding:0; border:0!important; border-image:none; background:none!important; box-shadow:none!important; overflow:visible; animation:none!important; transform:none;}
 #hudTop #btnCustom.custgauge::before, #hudTop #btnCustom.custgauge::after{content:''; position:absolute; inset:0; box-sizing:border-box; border:solid transparent; border-width:5px 12px; pointer-events:none;}
-#hudTop #btnCustom.custgauge::before{border-image:url(ui/spell_track_empty.svg) 18 40 fill / 5px 12px;}
+#hudTop #btnCustom.custgauge::before{border-image:url(ui/spell_track_empty.svg) 5 10 fill / 5px 12px;}
 #hudTop #btnCustom.custgauge #gaugeBar{inset:0; width:auto!important; border-radius:0; opacity:1; box-sizing:border-box; border:solid transparent; border-width:5px 12px; background:none;
-  border-image:url(ui/spell_track_full.svg) 20 40 fill / 5px 12px; clip-path:inset(0 calc((1 - var(--k,0)) * 100%) 0 0); transition:clip-path .15s;}
+  border-image:url(ui/spell_track_full.svg) 5 10 fill / 5px 12px; clip-path:inset(0 calc((1 - var(--k,0)) * 100%) 0 0); transition:clip-path .15s;}
 #hudTop #btnCustom.custgauge #custLbl, #hudBottom #btnSpell span{font-size:0!important; color:transparent; background:url(ui/label_spell_white.svg) center/contain no-repeat; z-index:1;}
 #hudTop #btnCustom.custgauge #custLbl{width:44px; height:13px;}
-#hudTop #btnCustom.custgauge.ready{height:34px; margin-top:0;}
-#hudTop #btnCustom.custgauge.ready::before{border-width:7px 12px; border-image:url(ui/spell_top_ready_dim.svg) 30 42 fill / 7px 12px;}
-#hudTop #btnCustom.custgauge.ready::after{border-width:7px 12px; border-image:url(ui/spell_top_ready_bright.svg) 30 42 fill / 7px 12px; animation:skinPulse .9s ease-in-out infinite alternate;}
+#hudTop #btnCustom.custgauge.ready{height:22px; margin-top:2px;}   /* same size as charging: the top bar (and so the board) never changes height */
+#hudTop #btnCustom.custgauge.ready::before, #hudTop #btnCustom.custgauge.ready::after{inset:-6px 0;}
+#hudTop #btnCustom.custgauge.ready::before{border-width:7px 12px; border-image:url(ui/spell_top_ready_dim.svg) 8 11 fill / 7px 12px;}
+#hudTop #btnCustom.custgauge.ready::after{border-width:7px 12px; border-image:url(ui/spell_top_ready_bright.svg) 8 11 fill / 7px 12px; animation:skinPulse .9s ease-in-out infinite alternate;}
 #hudTop #btnCustom.custgauge.ready #gaugeBar{opacity:0;}
 #hudTop #btnCustom.custgauge.ready #custLbl{width:68px; height:20px; background-image:url(ui/label_spell_dark.svg);}
 @keyframes skinPulse{from{opacity:0;} to{opacity:1;}}
@@ -1720,7 +1722,7 @@ body.wide #hudBottom #btnSpell.ready::before{background-image:url(ui/landscape_s
 body.wide #hudBottom #btnSpell span{width:36%;}
 /* queue tiles (9-slice), the NEXT one gold with its badge */
 #hudBottom .qslot, #hudBottom .qslot.full, #hudBottom .qslot.next{border:solid transparent!important; border-width:7px 11px 11px!important; border-radius:0; background:none!important; box-shadow:none!important; outline:none;
-  border-image:url(ui/queue_blank.svg) 40 66 66 66 fill / 7px 11px 11px!important; padding:2px 0 0; min-height:52px; gap:1px;}
+  border-image:url(ui/queue_blank.svg) 10 17 17 17 fill / 7px 11px 11px!important; padding:2px 0 0; min-height:52px; gap:1px;}
 #hudBottom .qslot.next{border-image-source:url(ui/queue_selected.svg)!important;}
 #hudBottom .qslot.combo{filter:drop-shadow(0 0 5px #ffe066);} #hudBottom .qslot.react{filter:drop-shadow(0 0 6px var(--xc)); animation:none;}
 #hudBottom .qslot .qic{width:22px; height:22px; object-fit:contain; display:block;}
@@ -1729,7 +1731,7 @@ body.wide #hudBottom #btnSpell span{width:36%;}
 #hudBottom .qslot .nxt{top:-17px; width:44px; height:20px; padding:0; border-radius:0; box-shadow:none; font-size:0; background:url(ui/next_badge.svg) center/contain no-repeat;}
 /* instants (9-slice) with their ⚡ marks */
 #hudBottom .inst-row .btn.inst{border:solid transparent!important; border-width:10px!important; border-radius:0; background:none!important; box-shadow:none!important; padding:0; width:64px; min-height:62px;
-  border-image:url(ui/instant_blank.svg) 50 56 60 56 fill / 10px!important; filter:drop-shadow(0 0 5px color-mix(in srgb,var(--c) 60%,transparent));}
+  border-image:url(ui/instant_blank.svg) 12 14 15 14 fill / 10px!important; filter:drop-shadow(0 0 5px color-mix(in srgb,var(--c) 60%,transparent));}
 #hudBottom .inst-row .btn.inst::after{content:''; top:-4px; right:-4px; width:13px; height:16px; background:url(ui/icon_instant.svg) center/contain no-repeat;}
 #hudBottom .inst-row .btn.inst::before{content:''; position:absolute; top:-4px; left:-4px; width:13px; height:16px; background:url(ui/icon_instant.svg) center/contain no-repeat;}
 #hudBottom .inst .iic{width:26px; height:26px; object-fit:contain;}

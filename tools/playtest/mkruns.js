@@ -1,3 +1,4 @@
+const U=require('./support.js');
 // node tools/playtest/mkruns.js <out.json> <runsPerColour> <maxFights> <maxDepth> [styles]
 const fs=require('fs'); const [,,name,n,maxFights,maxDepth,styles0]=process.argv;
 const H=o=>({stick:true, human:Object.assign({reactMin:.3,tapMin:.25,blindTap:.1,chargeP:.08,release:.35,releaseSd:.1},o)});
@@ -10,5 +11,8 @@ const BOT={
 BOT.random=Object.assign(H({react:.9,reactSd:.2,notice:.5,fireRate:1.5,focusPause:.3,evalGap:[.4,.9],misTap:.15,comboSkill:0,instantP:.3,castDelay:[.2,1],gaugeDelay:[.5,2],stickNoise:20,flickP:0}),{random:true,dodge:false,combos:false,smartCast:false,aim:false});
 BOT.shopaholic=BOT.good;
 const LEANS=['fire','frost','storm','verdant','light','shadow'];
-const jobs=[]; let seed=11; for(const st of (styles0||'average,good,fast,combo,shopaholic').split(',')) for(const lean of LEANS) for(let i=0;i<+n;i++) jobs.push({style:st==='shopaholic'?'good':st==='random'?'average':st, label:st, shopaholic:st==='shopaholic', lean, bot:BOT[st], seed:(LEANS.indexOf(lean)*10+i+1)*977, maxFights:+maxFights, maxDepth:+maxDepth});
-fs.writeFileSync(name,JSON.stringify(jobs)); console.log(name,jobs.length);
+const jobs=[]; let seed=11; for(const st of (styles0||'average,good,fast,combo,shopaholic').split(',')) for(const lean of LEANS) for(let i=0;i<+n;i++) jobs.push({...U.scenario(st,lean,i),replicate:i,style:st==='shopaholic'?'good':st==='random'?'average':st, label:st, shopaholic:st==='shopaholic', lean, bot:BOT[st], maxFights:+maxFights, maxDepth:+maxDepth});
+if(!Number.isInteger(+n)||+n<1||!(+maxFights>0)||!(+maxDepth>=1))throw Error('Expected positive run count, fights and maxDepth');
+for(const j of jobs)if(!j.bot)throw Error('Unknown style');
+U.assertJobs(jobs);fs.writeFileSync(name,JSON.stringify(jobs)); console.log(name,jobs.length);
+

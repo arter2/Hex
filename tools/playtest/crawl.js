@@ -11,6 +11,7 @@
    points where a player of that type would likely have quit. */
 (function(){
 const C=PT.crawl={};
+const U=window.PTSupport; if(!U) throw Error('Load support.js before crawl.js');
 const DT=1/20;   // map ticks; fights run at bot.js's own 1/30
 let VT=0, Q=[], qid=1, installed=false, realNow=null, DBASE=1.7e12;
 function installClock(){ if(installed) return; installed=true; realNow=performance.now.bind(performance);
@@ -25,6 +26,11 @@ function fire(){ for(let k=0;k<200;k++){ let bi=-1; for(let i=0;i<Q.length;i++) 
 const on=id=>{ const e=document.getElementById(id); return !!(e&&e.classList.contains('on')); };
 let R=null, P=null, rng=Math.random;
 const rand=()=>rng(), chance=p=>rand()<p, pick=a=>a[Math.floor(rand()*a.length)], between=(a,b)=>a+(b-a)*rand();
+function recover(kind,detail,fn){
+  const event={t:+R.T.toFixed(2),kind,detail,applied:R.mode==='exploratory'}; R.recoveries.push(event);
+  if(!event.applied){ err('strict',kind+': '+detail); return false; }
+  try { fn(); return true; } catch(e){ err('recovery '+kind,e); return false; }
+}
 function err(where,e){ if(!R) return; R.errors.push(where+': '+(e&&e.message||e)+' '+((e&&e.stack)||'').split('\n').slice(1,3).join(' | ')); }
 
 /* ---------------- fun and frustration ----------------
@@ -38,9 +44,9 @@ function ev(kind,o){ o=o||{}; if(!R) return; const d=EX?EX.depth:R.depth;
     down:[xcx(EX.down),xcy(EX.down)],downSeen:!!EX.seen[EX.down],dDown:dm[EX.down],pathDown:!!pathTo(EX.down),busy:EX.busy,paused:xPaused,dlg:!!EX.dlg,stuckT:EX.stuckT,action:!!EX.action,cursed:!!(EX.cursed&&!EX.cursed.done),boss:EX.groups.some(g=>g.boss),
     doors:[...EX.doors].filter(([i,d])=>EX.seen[i]&&d.state!=='open').map(([i,d])=>[xcx(i),xcy(i),d.state,d.lock]).slice(0,8), rooms:roomsSeenFrac().toFixed(2), pos:[+(EX.px/XCS).toFixed(2),+(EX.pz/XCS).toFixed(2)], block:R.blockInfo, keys:XRUN&&JSON.stringify(XRUN.keys), near:[...EX.props.filter(p=>!p.gone&&Math.abs(xcx(p.cell)-xcx(EX.pc))<=2&&Math.abs(xcy(p.cell)-xcy(EX.pc))<=2).map(p=>p.kind+(p.solid?'*':'')+'@'+xcx(p.cell)+','+xcy(p.cell)),...EX.chests.filter(c=>Math.abs(xcx(c.cell)-xcx(EX.pc))<=2&&Math.abs(xcy(c.cell)-xcy(EX.pc))<=2).map(c=>'chest'+(c.open?'o':'')+'@'+xcx(c.cell)+','+xcy(c.cell)),...EX.groups.filter(g=>Math.abs(xcx(g.cell)-xcx(EX.pc))<=3&&Math.abs(xcy(g.cell)-xcy(EX.pc))<=3).map(g=>'foe:'+g.state+(g.dormant?'D':'')+'@'+xcx(g.cell)+','+xcy(g.cell))], last:R.lastWalk, escort:EX.props.filter(p=>p.state==='follow').map(p=>p.role), note:o.note, pads:EX.props.filter(p=>p.kind==='tpad').map(p=>xcx(p.cell)+','+xcy(p.cell)+'>'+(p.to!=null?xcx(p.to)+','+xcy(p.to):'-')+(EX.seen[p.cell]?'':'?')+(p.gone?'G':'')+':'+(EX.propAt.get(p.cell)||{}).kind).join(' '), repaths:R.repaths&&R.repaths.slice(-12), walkPos:R.walkPos&&R.walkPos.slice(-40).join(' '), xpath:EX.path.slice(0,8).map(c=>xcx(c)+','+xcy(c)).join(' '), sealUp:R.sealUp, seals:XRUN&&XRUN.seals, upSeen:seenCell(EX.up), upPath:!!pathTo(EX.up), fails:[...DONE.fails].join(' '), keystand:EX.props.filter(p=>p.kind==='keystand'&&p.key==='boss').map(p=>({at:[xcx(p.cell),xcy(p.cell)],taken:!!p.taken,seen:seenCell(p.cell),d:dm[p.cell],done:DONE.props.has(p)})), bossKeyItem:EX.items.filter(i=>i.kind==='key'&&i.key==='boss').map(i=>({at:[xcx(i.cell),xcy(i.cell)],seen:seenCell(i.cell),d:dm[i.cell]})), truth:[...EX.doors].filter(([i,dd])=>dd.state!=='open'&&adj4(i).some(n=>dm[n]>=0)).map(([i,dd])=>dd.state+(dd.lock?':'+dd.lock:'')+'@'+xcx(i)+','+xcy(i)+(roomOf(adj4(i).find(n=>dm[n]<0&&EX.t[n]!==T_ROCK)??-1)?'→'+(roomOf(adj4(i).find(n=>dm[n]<0&&EX.t[n]!==T_ROCK))||{}).id:'')), onRoute:(()=>{ const full=xbfs(EX.t,EX.doors,EX.down,null,null); if(full[EX.pc]<0) return 'none'; const out=[]; let cur=EX.pc; for(let k=0;k<300&&cur!==EX.down;k++){ let best=-1; for(const n of adj4(cur)) if(full[n]>=0&&full[n]<full[cur]&&(best<0||full[n]<full[best])) best=n; if(best<0) break; cur=best;
     const why=[]; if(!EX.seen[cur]) why.push('unseen'); if(xKnownTrap(cur)) why.push('trap'); if(xSolid(cur)) why.push('solid:'+EX.propAt.get(cur).kind+(EX.propAt.get(cur).role?'/'+EX.propAt.get(cur).role:'')); if(xChestAt(cur)) why.push('chest'+(xChestAt(cur).trap?'(trapped'+(xChestAt(cur).trapKnown?',known':'')+')':'')); if(cur===EX.up) why.push('UP'); if(dm[cur]<0&&!why.length) why.push('dm<0'); if(why.length) out.push(xcx(cur)+','+xcy(cur)+':'+why.join('/')); if(out.length>4) break; } return out.join(' '); })(), upReach:(()=>{ const full=xbfs(EX.t,EX.doors,EX.pc,null,null); return {down:full[EX.down]>=0, downAll:xbfs(EX.t,new Map(),EX.pc,null,null)[EX.down]>=0}; })()}); }catch(x){ R.trace.push({err:x.message}); }
-  if(frus){ R.win10.push([R.T,frus]); } if(fun||frus) R.lastNovel=R.T; }
+  if(fun||frus){ R.win10.push([R.T,frus-fun]); } if(fun||frus) R.lastNovel=R.T; }
 function moodTick(dt){ R.mood*=Math.exp(-dt/180); while(R.win10.length&&R.T-R.win10[0][0]>600) R.win10.shift();
-  const recent=R.win10.reduce((a,x)=>a+x[1],0); if(recent>P.patience&&R.T-(R.lastQuit||-1e9)>600){ R.lastQuit=R.T; const top={}; for(const e of R.events.filter(e=>e.frus&&R.T-e.t<=600)) top[e.k]=(top[e.k]||0)+e.frus;
+  const recent=Math.max(0,R.win10.reduce((a,x)=>a+x[1],0)); if(recent>P.patience&&R.T-(R.lastQuit||-1e9)>600){ R.lastQuit=R.T; const top={}; for(const e of R.events.filter(e=>e.frus&&R.T-e.t<=600)) top[e.k]=(top[e.k]||0)+e.frus;
     R.quits.push({t:Math.round(R.T),d:EX?EX.depth:R.depth,recent:Math.round(recent),why:Object.entries(top).sort((a,b)=>b[1]-a[1]).slice(0,3).map(([k,v])=>k+' '+Math.round(v)).join(', ')}); }
   R.moodMin=Math.min(R.moodMin,R.mood); }
 
@@ -475,9 +481,9 @@ PUZ.braziers=pz=>(function*(){ // carry the flame from the lit brazier to the co
 function readTime(){ const t=($('#xdText').textContent||'')+($('#xdSub').textContent||''); return Math.min(7,(.7+t.length/45)*P.read); }
 let DLG=null;
 function dialogTick(){ const o=EX&&EX.dlg; if(!o){ DLG=null; return; } if(!DLG||DLG.o!==o){ DLG={o,t:R.T+readTime()+between(.2,.6),n:0}; } if(R.T<DLG.t) return; DLG.n++;
-  if(DLG.n>4){ xDlgClose(); return; }
+  if(DLG.n>4){ recover('dialog timeout',String(o.title||'?'),()=>xDlgClose()); return; }
   const title=String(o.title||''), btns=[...document.querySelectorAll('#xdBtns .btn')], rows=[...document.querySelectorAll('#xdBody .xrow')];
-  const click=b=>{ DLG.t=R.T+between(.5,1.2); b.click(); }, closeIt=()=>{ const gh=btns.find(b=>b.classList.contains('ghost')); if(gh) gh.click(); else xDlgClose(); };
+  const click=b=>{ DLG.t=R.T+between(.5,1.2); b.click(); }, closeIt=()=>{ const gh=btns.find(b=>b.classList.contains('ghost')); if(gh) gh.click(); else { const close=btns.find(b=>/^(Close|Leave|Cancel)$/.test(b.textContent.trim())); if(close) close.click(); else recover('missing close control',String(o.title||'?'),()=>xDlgClose()); } };
   if(title.startsWith('Choose your way down')){ // the path map: each style likes its own kind of floor
     const ways=rows.map(r=>({r,name:(r.querySelector('.nm b')||{}).textContent||'',b:r.querySelector('button')})).filter(x=>x.b);
     const score=x=>{ const n=x.name.toLowerCase(); return (P.route[Object.keys(P.route).find(k=>n.indexOf(k)>=0)]||0)+rand(); };
@@ -561,14 +567,14 @@ function campVisit(why){ const t0=R.T; if(R.shopTrip&&why!=='death'){ why='shop'
   newFloor(); R.entered++; return true; }
 
 /* ---------------- one career ---------------- */
-C.run=function(cfg){
+function runCareer(cfg){
   installClock(); wrapGame();
-  let seed=(cfg.seed||1)>>>0; rng=()=>{ seed=(seed+0x6D2B79F5)>>>0; let t=seed; t=Math.imul(t^t>>>15,t|1); t^=t+Math.imul(t^t>>>7,t|61); return ((t^t>>>14)>>>0)/4294967296; };
-  let gs=((cfg.seed||1)*7919)>>>0; Math.random=()=>{ gs=(gs+0x6D2B79F5)>>>0; let t=gs; t=Math.imul(t^t>>>15,t|1); t^=t+Math.imul(t^t>>>7,t|61); return ((t^t>>>14)>>>0)/4294967296; };
+  rng=U.rng(cfg.policySeed??U.seedFor('crawl-policy',cfg.seed??1));
+  Math.random=U.rng(cfg.worldSeed??cfg.seed??1);
   if(typeof XR!=='undefined') XR=Math.random;   // dungeon.js keeps its own handle on the dice
-  VT=0; Q.length=0; DBASE=1.7e12+(cfg.seed||1)*86400000;
+  VT=0; Q.length=0; DBASE=1.7e12+(cfg.seed??1)*86400000;
   P=Object.assign({lean:cfg.lean},cfg.p); const resv=P.reserveBase||200; P.reserve=()=>resv+10*(save?save.deepest:1);
-  R={label:cfg.label, lean:cfg.lean, seed:cfg.seed, T:0, fun:0, frus:0, mood:0, moodMin:0, win10:[], quits:[], events:[], errors:[], deaths:[], camps:[], puzzles:[], fights:[],
+  R={mode:cfg.mode||'strict',recoveries:[],label:cfg.label, lean:cfg.lean, seed:cfg.seed, T:0, fun:0, frus:0, mood:0, moodMin:0, win10:[], quits:[], events:[], errors:[], deaths:[], camps:[], puzzles:[], fights:[],
      hurt:{}, cards:{}, dlgs:{}, cues:0, clicks:0, tells:0, tellsSeen:0, spend:{}, trace:[], traceOn:!!cfg.trace, dlgN:0, recentDlg:[], onceSeen:{}, lastK:{}, bag:{}, time:{walk:0,fight:0,puzzle:0,dialog:0,camp:0,other:0}, logN:0,
      floors:0, stuck:0, searches:0, searchHits:0, campTrips:0, burned:0, spent:0, packs:0, packsOpened:0, shopBuys:0, idolsSeen:0, entered:0, lastNovel:0, depthT:{}, maxDepth:1};
   // a new character: the one-colour deal, the bot's stats, a deck in its style
@@ -582,17 +588,17 @@ C.run=function(cfg){
   newFloor(); R.entered=1;
   const T_END=cfg.hours*3600; let fightGuard=0, lastD=1, seen0=0, lastSeenN=0;
   const real0=realNow();
-  while(R.T<T_END&&R.errors.length<20){
+  while(R.T<T_END&&R.errors.length<(R.mode==='strict'?1:20)&&!(R.mode==='strict'&&R.inv?.length)){
     if(realNow()-real0>(cfg.realLimit||900)*1000){ R.errors.push('real-time limit at '+Math.round(R.T)+'s, depth '+(EX?EX.depth:'-')+', task '+TASKNAME); break; }
     // a fight the map started
     if(B&&(B.phase==='fight'||B.phase==='custom')&&on('scrBattle')){ const fs=R.fightStart||{}; let r;
-      try{ r=PT.runFight({adopt:true, depth:B.depth, bot:cfg.bot, botName:cfg.label, maxT:900, seed:(cfg.seed||1)*131+R.fights.length}); }catch(e){ err('fight',e); r={res:'error',errors:[e.message]}; }
-      const secs=r.realSecs||r.time/.7||0; R.T+=secs; VT+=secs; R.time.fight+=secs;
+      try{ r=PT.runFight({adopt:true, depth:B.depth, bot:cfg.bot, botName:cfg.label, maxT:900, seed:U.seedFor('fight',cfg.seed??1,R.fights.length), policySeed:U.seedFor('fight-policy',cfg.policySeed??cfg.seed??1,R.fights.length)}); }catch(e){ err('fight',e); r={res:'error',errors:[e.message]}; }
+      const secs=r.realSecs??r.time??0; R.T+=secs; VT+=secs; R.time.fight+=secs;
       const f={d:B?B.depth:(EX?EX.depth:0), res:r.res, secs:Math.round(secs), hpLost:r.dmgTaken, hp0:fs.hp, maxHp:r.maxHp, elites:PT.lastB?PT.lastB.enemies.filter(e=>e.elite).length:0, n:PT.lastB?PT.lastB.enemies.length:0, op:fs.op, boss:fs.boss, mini:fs.mini, combos:Object.values(r.combos||{}).reduce((a,b)=>a+b,0), name:fs.name, warn:r.warn};
       R.fights.push(f); if(r.errors&&r.errors.length) R.errors.push(...r.errors.slice(0,2).map(x=>'fight '+x));
       if(r.res==='win'){ const left=r.hpEnd/Math.max(1,r.maxHp); ev('fight:win',{fun:2+(fs.boss?8:fs.mini?5:0)+(left<.25?4:left<.45?2:0)+Math.min(2,f.combos*.3),note:f.name+(left<.25?' (close call)':'')});
         if(secs>100) ev('fight:long',{frus:Math.min(5,(secs-100)/30),note:f.name+' '+Math.round(secs)+'s'}); else if(r.dmgTaken<=3&&secs>30&&!fs.boss) ev('fight:dull',{frus:.6,note:f.name+' '+Math.round(secs)+'s, no danger'}); }
-      else if(r.res!=='lose'){ ev('fight:'+r.res,{frus:2}); try{ B.phase='lose'; B.player.hp=0; B.hooks.onEnd&&B.hooks.onEnd(false); }catch(e){ err('fight end',e); } }
+      else if(r.res!=='lose'){ ev('fight:'+r.res,{frus:2}); recover('forced fight defeat',r.res,()=>{ B.phase='lose'; B.player.hp=0; B.hooks.onEnd&&B.hooks.onEnd(false); }); }
       try{ checkSave(); }catch(e){ err('health',e); }
       R.fightStart=null; if(++fightGuard>3000) break; continue; }
     VT+=DT; R.T+=DT; fire(); moodTick(DT);
@@ -601,7 +607,7 @@ C.run=function(cfg){
     if(lvlTick()) continue;
     if(on('scrCamp')||on('scrMenu')||!EX){ if(!campVisit(R.deaths.length&&R.lastDeathSeen!==R.deaths.length?'death':'rest')) break; R.lastDeathSeen=R.deaths.length; continue; }
     if(!on('scrExplore')){ // some other screen: close it
-      if(on('scrBattle')&&B&&B.phase!=='fight'){ continue; } try{ $('#xDialog').classList.remove('on'); }catch(e){} R.time.other+=DT; R.otherT=(R.otherT||0)+DT; if(R.otherT>30){ err('screen',[...document.querySelectorAll('.scr.on')].map(e=>e.id).join(',')); openCamp(); R.otherT=0; } continue; }
+      if(on('scrBattle')&&B&&B.phase!=='fight'){ continue; } R.time.other+=DT; R.otherT=(R.otherT||0)+DT; if(R.otherT>30){ err('screen',[...document.querySelectorAll('.scr.on')].map(e=>e.id).join(',')); recover('unexpected screen','no exploration screen for 30 seconds',()=>openCamp()); R.otherT=0; } continue; }
     R.otherT=0;
     if(EX.dlg||on('xDialog')){ dialogTick(); R.time.dialog+=DT; if(!EX||!EX.dlg) { if(on('xDialog')) xDlgClose(); } stepMap(); continue; }
     stepMap();
@@ -630,11 +636,12 @@ C.run=function(cfg){
   releaseKeys();
   // floor-by-floor: deepest reached, deaths, the report's numbers
   const sum=(a,f)=>a.reduce((s,x)=>s+f(x),0);
-  return {label:R.label, lean:R.lean, seed:R.seed, hours:+(R.T/3600).toFixed(2), maxDepth:R.maxDepth, level:save.level, gold:save.gold, spent:R.spent, packs:R.packs, fun:+R.fun.toFixed(1), frus:+R.frus.toFixed(1), moodMin:+R.moodMin.toFixed(1),
+  return {schemaVersion:U.VERSION,mode:R.mode,recoveries:R.recoveries,status:R.errors.length||R.inv?.length?'failed':R.recoveries.length?'recovered':'completed',label:R.label, lean:R.lean, seed:R.seed,policySeed:cfg.policySeed, hours:+(R.T/3600).toFixed(2), maxDepth:R.maxDepth, level:save.level, gold:save.gold, spent:R.spent, packs:R.packs, fun:+R.fun.toFixed(1), frus:+R.frus.toFixed(1), moodMin:+R.moodMin.toFixed(1),
     quits:R.quits, deaths:R.deaths, camps:R.camps, puzzles:R.puzzles.map(p=>({kind:p.kind,d:p.d,ok:!!p.ok,gaveUp:!!p.gaveUp&&!p.skipped,skipped:!!p.skipped,time:p.time,mistakes:p.mistakes,dmg:p.dmg,steps:p.steps,why:p.why})),
     fights:R.fights, hurt:R.hurt, cards:R.cards, dlgN:R.dlgN, dlgs:R.dlgs, time:Object.fromEntries(Object.entries(R.time).map(([k,v])=>[k,Math.round(v)])), floors:R.floors, stuck:R.stuck, searches:R.searches, searchHits:R.searchHits, cues:R.cues, clicks:R.clicks, tells:R.tells, tellsSeen:R.tellsSeen, spend:R.spend, trapsPlaced:R.trapsPlaced||0, floorsCounted:R.floorsCounted||0, trapHist:R.trapHist, sold:R.sold||0, fieldBitten:R.fieldBitten||0, iceSlid:R.iceSlid||0, burned:R.burned, fled:R.fled||0, stairRetry:R.stairRetry||0, floorMoves:R.floorMoves||0, routeFail:R.routeFail||0, routeWhy:R.routeWhy, stairMap:R.stairMap, climbLog:R.climbLog, climbWhy:R.climbWhy, iceDump:R.iceDump,
     bag:R.bag, campTrips:R.campTrips, tasks:R.tasks, depthT:Object.fromEntries(Object.entries(R.depthT).map(([k,v])=>[k,Math.round(v)])), startDeck:R.startDeck, endDeck:PT.run.deckInfo(save.decks[0].list), events:R.events, trace:R.trace, ring:R.ringDump, jumps:R.jumps, doorLog:R.doorLog, upLog:R.upLog, bossLog:R.bossLog, inv:R.inv||[], invN:R.invN||{}, nanTrace:R.nanTrace||null, saveChecks:R.saveChecks||0, unsaved:R.unsaved||null, errors:R.errors.slice(0,20)};
-};
+}
+C.run=function(cfg){if(!['strict','exploratory'].includes(cfg.mode||'strict'))throw Error('mode must be strict or exploratory');const prev=Math.random,xr=typeof XR!=='undefined'?XR:null;try{return runCareer(cfg);}finally{releaseKeys();Math.random=prev;if(typeof XR!=='undefined')XR=xr;}};
 // an ASCII picture of the floor around you, for debugging: # rock, . seen floor, ? unseen, + door, D stairs down, @ you, F frontier
 C.map=function(rad,ctr){ rad=rad||14; const CC=ctr==null?EX.pc:ctr; const d=distMap(), out=[]; const fr=new Set(); for(let c=0;c<XN*XN;c++){ if(d[c]>0&&EX.seen[c]&&xPassable(c)&&adj4(c).some(n=>!EX.seen[n])) fr.add(c); }
   for(let y=Math.max(0,xcy(CC)-rad);y<Math.min(XN,xcy(CC)+rad);y++){ let row=''; for(let x=Math.max(0,xcx(CC)-rad);x<Math.min(XN,xcx(CC)+rad);x++){ const c=xi(x,y), dr=EX.doors.get(c);
@@ -642,13 +649,13 @@ C.map=function(rad,ctr){ rad=rad||14; const CC=ctr==null?EX.pc:ctr; const d=dist
   return out.join('\n'); };
 // the puzzle lab: floors that always hold the puzzle you ask for; the bot walks there and solves it
 C.puzzleLab=function(cfg){ installClock(); wrapGame();
-  let gs=((cfg.seed||1)*7919)>>>0; Math.random=()=>{ gs=(gs+0x6D2B79F5)>>>0; let t=gs; t=Math.imul(t^t>>>15,t|1); t^=t+Math.imul(t^t>>>7,t|61); return ((t^t>>>14)>>>0)/4294967296; }; XR=Math.random; rng=Math.random;
-  VT=0; Q.length=0; DBASE=1.7e12+(cfg.seed||1)*86400000;
+  Math.random=U.rng(cfg.worldSeed??cfg.seed??1); XR=Math.random; rng=Math.random;
+  VT=0; Q.length=0; DBASE=1.7e12+(cfg.seed??1)*86400000;
   P=Object.assign({lean:'fire'},cfg.p); P.reserve=()=>99999;
   const want=cfg.kind, fp=window.xFloorPlan, pp=window.xPlacePuzzle; const out=[];
   window.xFloorPlan=function(d,o){ const pl=fp.apply(this,arguments); if(!o||!o.branch){ pl.feats.puzzle=1; delete pl.feats.merchant; delete pl.feats.sanct; } return pl; };
   const keys0=Object.keys(PUZZLE_BUILD);
-  for(let n=0;n<cfg.n;n++){ R={label:'lab',T:0,fun:0,frus:0,mood:0,moodMin:0,win10:[],quits:[],events:[],errors:[],deaths:[],camps:[],puzzles:[],fights:[],hurt:{},cards:{},dlgs:{},dlgN:0,recentDlg:[],onceSeen:{},lastK:{},bag:{},time:{walk:0,fight:0,puzzle:0,dialog:0,camp:0,other:0},cues:0,trace:[],floors:0,lastNovel:0,depthT:{}};
+  for(let n=0;n<cfg.n;n++){ R={mode:'strict',recoveries:[],label:'lab',T:0,fun:0,frus:0,mood:0,moodMin:0,win10:[],quits:[],events:[],errors:[],deaths:[],camps:[],puzzles:[],fights:[],hurt:{},cards:{},dlgs:{},dlgN:0,recentDlg:[],onceSeen:{},lastK:{},bag:{},time:{walk:0,fight:0,puzzle:0,dialog:0,camp:0,other:0},cues:0,trace:[],floors:0,lastNovel:0,depthT:{}};
     save=newSave(STARTERS[0]); save.char=lockChar(newChar('human',0)); save.deepest=cfg.depth||6; XRUN=null; pickDepth=save.deepest;
     // the wanted kind first
     const ord=Object.keys(PUZZLE_BUILD); const fn=PUZZLE_BUILD[want]; if(!fn) return {error:'no kind '+want};
@@ -658,22 +665,23 @@ C.puzzleLab=function(cfg){ installClock(); wrapGame();
     const pz=EX.puzzle; if(!pz||pz.kind!==want){ out.push({err:'not placed',got:pz&&pz.kind}); continue; }
     PZ={kind:pz.kind,t0:R.T,mistakes:0,dmg:0,steps:0,gaveUp:false,tries:0,will:true}; R.puzzles.push(PZ);
     let T=0, gen=null; TASKNAME='puzzle:'+pz.kind; EX.hp=9999;
-    while(T<(cfg.maxT||400)&&!pz.solved&&!PZ.gaveUp){ VT+=DT; R.T+=DT; T+=DT; fire();
+    while(T<(cfg.maxT||400)&&!pz.solved&&!PZ.gaveUp&&!R.errors.length){ VT+=DT; R.T+=DT; T+=DT; fire();
       if(B&&(B.phase==='fight'||B.phase==='custom')&&on('scrBattle')){ const r=PT.runFight({adopt:true,depth:B.depth,bot:cfg.bot,maxT:600,seed:n+1}); R.T+=r.realSecs||0; T+=r.realSecs||0; (R.labF=R.labF||[]).push(r.res+':'+Math.round(r.realSecs||0)+'s'+(B&&B.rule?':rule '+B.rule.kind+(B.rule.ok?' kept':' broken')+(B.rule.lit?' lit '+B.rule.lit.size:''):'')); continue; }
       if($('#packOpen').classList.contains('on')){ packTick(); continue; } if(on('reveal')){ revealTick(); continue; } if(lvlTick()) continue;
       if(EX&&(EX.dlg||on('xDialog'))){ dialogTick(); stepMap(); continue; }
       stepMap(); if(!EX||!EX.active||EX.busy) continue; EX.hp=9999;
       if(!gen){ if(PZ.wait){ PZ.wait=null; } PZ.tries++; if(PZ.tries>4){ PZ.gaveUp=true; PZ.why=PZ.why||'tries'; break; } gen=PUZ[pz.kind](pz); }
       let r; try{ r=gen.next(); }catch(e){ out.push({err:e.message+' '+(e.stack||'').split('\n')[1]}); break; } if(r.done){ gen=null; releaseKeys(); } }
-    releaseKeys(); out.push({ok:!!pz.solved, t:Math.round(T), mistakes:PZ.mistakes, steps:PZ.steps, why:(PZ.why||(pz.solved?'':'timeout'))+(PZ.why2?' / '+PZ.why2:'')+(R.bumpWhy&&!pz.solved?' / bump: '+R.bumpWhy:''), dmg:R.hurt.puzzle||0, fights:R.labF, scr:[...document.querySelectorAll('.scr.on,.overlay.on')].map(e=>e.id).join(','), task:TASKNAME, dlg:EX&&EX.dlg&&EX.dlg.title}); stopExplore(); EX=null; }
+    releaseKeys(); out.push({ok:!!pz.solved&&!R.errors.length,errors:R.errors,recoveries:R.recoveries, t:Math.round(T), mistakes:PZ.mistakes, steps:PZ.steps, why:(PZ.why||(pz.solved?'':'timeout'))+(PZ.why2?' / '+PZ.why2:'')+(R.bumpWhy&&!pz.solved?' / bump: '+R.bumpWhy:''), dmg:R.hurt.puzzle||0, fights:R.labF, scr:[...document.querySelectorAll('.scr.on,.overlay.on')].map(e=>e.id).join(','), task:TASKNAME, dlg:EX&&EX.dlg&&EX.dlg.title}); stopExplore(); EX=null; }
   window.xFloorPlan=fp; window.xPlacePuzzle=pp; return out; };
 // the map's own frame, without the drawing (explore.js xLoop)
 function stepMap(){ if(!EX||!EX.active) return; const dt=DT;
   if(R&&R.traceOn){ if(R.lastPc!=null&&Math.abs(xcx(R.lastPc)-xcx(EX.pc))+Math.abs(xcy(R.lastPc)-xcy(EX.pc))>2){ (R.jumps=R.jumps||[]).push({t:+R.T.toFixed(1),from:xcx(R.lastPc)+','+xcy(R.lastPc),to:xcx(EX.pc)+','+xcy(EX.pc),depth:EX.depth,task:TASKNAME,log:EX.log.map(l=>l.t).join(' | ')}); if(R.jumps.length>40) R.jumps.shift(); } R.lastPc=EX.pc; }
   if(R&&R.traceOn){ (R.ring=R.ring||[]).push([+R.T.toFixed(2),xcx(EX.pc),xcy(EX.pc),+(EX.px/XCS).toFixed(2),+(EX.pz/XCS).toFixed(2),EX.path.slice(0,2).map(c=>xcx(c)+','+xcy(c)).join(' '),EX.goal?xcx(EX.goal.cell)+','+xcy(EX.goal.cell):'-',+(EX.vx||0).toFixed(2),+(EX.vz||0).toFixed(2),EX.blockT?+EX.blockT.toFixed(2):0,TASKNAME]); if(R.ring.length>400) R.ring.shift(); }
-  if(EX.action){ EX.action.age=(EX.action.age||0)+dt; if(EX.action.age>5){ const a=EX.action; EX.action=null; try{ a.done(); }catch(e){} } }
+  if(EX.action){ EX.action.age=(EX.action.age||0)+dt; if(EX.action.age>5){ const a=EX.action; recover('action watchdog','action exceeded five seconds',()=>{ EX.action=null; a.done(); }); } }
   if(!EX.busy&&!xPaused&&!EX.aim){ try{ xMove(dt); }catch(e){ err('xMove',e); } if(!EX||!EX.active) return; try{ xEnemies(dt); }catch(e){ err('xEnemies',e); }
     if(EX.active&&!EX.busy) try{ xDungeonTick(dt); }catch(e){ err('xDungeonTick',e); }
     EX.regenT+=dt; if(EX.regenT>3){ EX.regenT=0; if(EX.hp<xmaxHp()){ EX.hp++; } } }
-  if(EX&&EX.active) try{ xDoorTick(dt); for(const g of EX.groups) if(g.sprite) g.sprite.visible=!!EX.vis[g.cell]&&!g.dormant&&!(g.stealth&&Math.hypot(g.x-EX.px,g.z-EX.pz)/XCS>3.2); }catch(e){} }
+  if(EX&&EX.active) try{ xDoorTick(dt); for(const g of EX.groups) if(g.sprite) g.sprite.visible=!!EX.vis[g.cell]&&!g.dormant&&!(g.stealth&&Math.hypot(g.x-EX.px,g.z-EX.pz)/XCS>3.2); }catch(e){ err('xDoorTick',e); } }
 })();
+

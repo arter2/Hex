@@ -1,5 +1,9 @@
 # Playtest tools: what each bot measures and how to run it
 
+Implementation update: [bot improvements and runner/UI commands](bot-improvements.md). Run
+`node tools/playtest/selftest.js` for browser-free regressions. Historical results before the
+clock, seed and model changes are not directly comparable with new runs.
+
 All tools live in `tools/playtest/` and drive the real game in headless Chromium. Results are compared build to
 build. The bots are not people: their fun and frustration weights are guesses until a few human playtests set them.
 
@@ -12,6 +16,7 @@ build. The bots are not people: their fun and frustration weights are guesses un
 | `save-torture.js` | What happens to a save when things go wrong | `node save-torture.js [out.json]` |
 | `soak.js` | A long session in real time, drawn every frame: memory, GPU objects, frame times | `node soak.js [minutes] [out.json]` |
 | `puzzle-lab.js` | Each puzzle kind on its own, many times | see the file |
+| `ui-runner.js` | Real coordinate taps and hit-region checks for phone/tablet menus | `BROWSER=webkit node tools/playtest/ui-runner.js out-ui` (WebKit, not physical Safari) |
 
 ## What each measures
 
@@ -82,3 +87,4 @@ Six scenarios on a real page with real reloads:
   - long tasks.
 - **Trend:** the first third of the session against the last third. Growth means a leak.
 - This machine draws with a software GPU, so absolute frame times are slow: watch the trend and compare builds.
+

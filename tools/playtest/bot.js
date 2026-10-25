@@ -1,23 +1,26 @@
-/* Hexmancers playtest bot. Injected into the page; run with PT.runFight({...}). Read-only on the game:
-   it only wraps a few global functions to count things. */
+/* Hexmancers simulation bot. Inject support.js first, then run PT.runFight({...}).
+   Drives game actions directly; temporarily replaces fight hooks. Use ui-runner.js for real input. */
 (function(){
 const PT=window.PT={};
 const DT=1/30;
+const U=window.PTSupport; if(!U) throw Error('Load tools/playtest/support.js before bot.js');
+let elapsed=0, ATTACKS=null, WARN_AT=null;
+const now=()=>elapsed;
 PT.WAND_OVR=null;
 
 /* ---------- instrumentation ---------- */
 /* Fair hits: for every hit that cost HP, how long its threat was on screen first (a ground telegraph's whole
    time; a shot's flight plus its owner's wind-up), and how long you had already stood on the tile it hit.
    Unfair: less warning than a person needs to see it and step away (REACT), while you stood there all along. */
-const REACT=.4, TIGHT=.7, WARN_BINS=[.2,.4,.7,1,2,99];
+const REACT=.4, TIGHT=.7, WARN_BINS=[.2,.4,.7,1,2,Infinity];
 function warnHit(S,b,p,lost){ let warn=null, k='other';
   const tl=b.teles.find(t=>!t.friendly&&t.t>=t.dur&&t.tiles.includes(p.tile));
-  if(tl){ warn=tl.dur; k='tele'; }
-  else { const sh=b.shots.find(x=>x.from==='e'&&!x.done&&x.tiles[x.i]===p.tile); if(sh){ warn=b.time-(sh._w0!=null?sh._w0:b.time); k='shot'; } }
+  if(tl){ warn=WARN_AT&&WARN_AT.has(tl)?now()-WARN_AT.get(tl):null; k='tele'; }
+  else { const sh=b.shots.find(x=>x.from==='e'&&!x.done&&x.tiles[x.i]===p.tile); if(sh){ warn=sh._w0!=null?now()-sh._w0:null; k='shot'; } }
   const W=S.warn||(S.warn={hits:0,dmg:0,unfair:0,unfairDmg:0,tight:0,pinned:0,byKind:{},bins:WARN_BINS.map(()=>0),worst:[]});
-  const stood=b.time-(S.tileT||0), pinned=p.rootT>0||p.stunT>0||p.freezeT>0;
+  const stood=now()-(S.tileT||0), pinned=p.rootT>0||p.stunT>0||p.freezeT>0;
   W.hits++; W.dmg+=lost; const K=W.byKind[k]||(W.byKind[k]={n:0,dmg:0,warnSum:0,warnN:0}); K.n++; K.dmg+=lost;
-  if(warn==null) return; K.warnSum+=warn; K.warnN++; W.bins[WARN_BINS.findIndex(x=>warn<x)]++;
+  if(warn==null){ W.unknown=(W.unknown||0)+1; return; } K.warnSum+=warn; K.warnN++; W.bins[WARN_BINS.findIndex(x=>warn<x)]++;
   if(pinned) W.pinned++;
   if(warn<REACT&&stood>=warn-.01){ W.unfair++; W.unfairDmg+=lost; if(W.worst.length<5) W.worst.push({k,warn:+warn.toFixed(2),lost,src:tl&&tl.owner?tl.owner.id:(b.shots.find(x=>x.from==='e'&&x.tiles[x.i]===p.tile)||{}).owner?.id,move:tl&&tl.kind}); }
   else if(warn<TIGHT) W.tight++; }
@@ -39,7 +42,7 @@ function wrap(){
   window.shoot=function(from,tiles,o){
     const S=PT.cur;
     if(S&&o&&o.wand){ S.wandShots++; const prev=o.onHit; o.onHit=function(e,t){ if(S.lastNull){ S.dmg.nullcard-=S.lastNull; S.dmg.wand=(S.dmg.wand||0)+S.lastNull; S.lastNull=0; } if(prev) prev.apply(this,arguments); }; }
-    if(o&&o.from==='e'&&B){ const ow=o.owner; o._w0=ow&&ow._wStart!=null?ow._wStart:B.time; }   // warning: from the wind-up (or the shot) on
+    if(o&&o.from==='e'&&B){ const ow=o.owner; o._w0=ow&&ow._wStart!=null?ow._wStart:now(); }   // warning: from the wind-up (or the shot) on
     return _shoot.apply(this,arguments); };
   window.hitPlayer=function(dmg,src){
     const S=PT.cur, b=B, p=b&&b.player; const hp0=p?p.hp:0;
@@ -59,14 +62,19 @@ function wrap(){
 }
 
 /* ---------- human perception (bot.human) ---------- */
-let HU=null, SEEN=null, ESTATE=null;
-const urand=()=>HU.rng(), gauss=()=>{ let u=0,v=0; while(!u) u=urand(); while(!v) v=urand(); return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v); };
+let HU=null, SEEN=null;
+function observeThreats(){
+  for(const t of B.teles) if(!t.friendly&&!WARN_AT.has(t)) WARN_AT.set(t,now());
+  for(const e of B.enemies){ ATTACKS.sync(e,'w',e.windT>0,e.windT); ATTACKS.sync(e,'c',!!e.casting,e.castT,e.casting); }
+  for(const t of TILES) ATTACKS.sync(t,'bolt',t.boltT>0,t.boltT);
+}
+const urand=()=>HU?HU.rng():Math.random(), gauss=()=>{ let u=0,v=0; while(!u) u=urand(); while(!v) v=urand(); return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v); };
 const between=([a,b])=>a+(b-a)*urand();
 // real seconds of reaction for one threat, and whether it is noticed at all
-function noticeOf(key){ let s=SEEN.get(key); if(!s){ const h=HU.cfg; s={t0:B.time, d:Math.max(h.reactMin,h.react+h.reactSd*gauss())*PACE, miss:urand()>h.notice}; SEEN.set(key,s); } return s; }
-const known=key=>{ if(!HU) return true; const s=noticeOf(key); return !s.miss&&B.time-s.t0>=s.d; };
+function noticeOf(key){ let s=SEEN.get(key); if(!s){ const h=HU.cfg; s={t0:now(), d:Math.max(h.reactMin,h.react+h.reactSd*gauss()), miss:urand()>h.notice}; SEEN.set(key,s); } return s; }
+const known=key=>{ if(!HU) return true; const s=noticeOf(key); return !s.miss&&now()-s.t0>=s.d; };
 // an enemy's wind-up or cast is a new threat each time it starts
-function eKey(e,state){ let m=ESTATE.get(e); if(!m||m.state!==state){ m={state,key:{}}; ESTATE.set(e,m); } return m.key; }
+function eKey(e,state){ return ATTACKS.key(e,state); }
 
 /* ---------- the joystick and flicks (bot.stick) ----------
    What the game's own stick does each frame (ui.js stickWalk): a push sets a raw free target 3 units that way at
@@ -99,7 +107,7 @@ function threatsAt(t){
   for(const e of alive()){ const dr=Math.abs(e.tile.r-t.r), rowHit=dr===0||(e.confuseT>0&&dr===1), d=Math.abs(e.tile.col-t.col);
     if(!rowHit) continue;
     if(e.windT>0&&(.7-e.windT)/PACE>=RT&&known(eKey(e,'w'))) out.push({T:(e.windT+d*.08)/PACE,w:.8});
-    if(e.casting&&(.9-e.castT)/PACE>=RT&&known(eKey(e,'c'+(e.casting.id||'')))){ const c=e.casting, k=c.type==='piece'?c.base:c.type;
+    if(e.casting&&(.9-e.castT)/PACE>=RT&&known(eKey(e,'c'))){ const c=e.casting, k=c.type==='piece'?c.base:c.type;
       if(k==='charge'){ for(let i=0;i<3;i++) out.push({T:(e.castT+i*.35+d*.08)/PACE,w:.8}); }
       else if(k==='strike'&&c.shape==='line') out.push({T:(e.castT+d*.08)/PACE,w:.8});
       else if(k==='strike'&&c.shape!=='all'&&c.shape!=='missiles'&&dr===0) out.push({T:(e.castT+.6)/PACE,w:.8}); } }
@@ -189,37 +197,40 @@ function lobTarget(){ const es=alive(); if(!es.length) return null;
   return pool.sort((a,b)=>hexDist(p.tile,a.tile)-hexDist(p.tile,b.tile))[0].tile; }
 
 /* ---------- one fight ---------- */
-PT.runFight=function(cfg){
+function runFight(cfg){
   wrap();
   const bot=Object.assign({move:true,dodge:true,combos:true,instants:true,aim:true,smartCast:true},cfg.bot||{});
   // a human player (bot.human): a seeded dice, what they have noticed, and when their thumbs are next free
-  let seed=(cfg.seed||1)>>>0; const rng=()=>{ seed=(seed+0x6D2B79F5)>>>0; let t=seed; t=Math.imul(t^t>>>15,t|1); t^=t+Math.imul(t^t>>>7,t|61); return ((t^t>>>14)>>>0)/4294967296; };
-  HU=bot.human?{cfg:bot.human,rng}:null; SEEN=new Map(); ESTATE=new WeakMap(); ST={tgt:null, ang:0, rel:.35, flicks:0, held:0, bot};
+  const rng=U.rng(cfg.policySeed??U.seedFor('fight-policy',cfg.seed??1));
+  HU=bot.human?{cfg:bot.human,rng}:null; SEEN=new Map(); ATTACKS=U.perception(); WARN_AT=new WeakMap(); elapsed=0; ST={tgt:null, ang:0, rel:.35, flicks:0, held:0, bot};
   const H={nextTap:0, chargeUntil:-1, movedAt:-9, castAt:null, gaugeAt:null, nextEval:0};
   if(!cfg.adopt){ B=null; fight(cfg.depth,cfg.waves); }   // adopt: a fight the dungeon started (crawl.js); its own end screens still run
   if(!B) return {error:'fight did not start'};
-  const b=B, keepEnd=b.hooks.onEnd; b.hooks.onEnd=()=>{}; b.hooks.onCustom=()=>{}; b.hooks.onFight=()=>{}; b.hooks.onCast=()=>{}; b.hooks.onHurt=()=>{}; b.hooks.onTurn=()=>{}; b.hooks.onWave=()=>{}; b.hooks.onSoul=()=>{};
+  const b=B, keepHooks=Object.assign({},b.hooks);
+  try {
+  const keepEnd=b.hooks.onEnd; b.hooks.onEnd=()=>{}; b.hooks.onCustom=()=>{}; b.hooks.onFight=()=>{}; b.hooks.onCast=()=>{}; b.hooks.onHurt=()=>{}; b.hooks.onTurn=()=>{}; b.hooks.onWave=()=>{}; b.hooks.onSoul=()=>{};
   try{ document.getElementById('scrBattle').classList.remove('on'); document.getElementById('custom').classList.remove('on'); }catch(e){}
   const S=PT.cur={maxHit:{}, hitLog:cfg.debug?[]:null, dmg:{}, dmgByKind:{}, hurtBy:{}, dmgTaken:0, hitsTaken:0, selfPaid:0, healed:0, casts:0, castsByType:{}, labCasts:0, instants:0, wandShots:0, kills:0, combos:{}, spellScreens:0, lastNull:0, errors:[]};
   const maxT=cfg.maxT||420; let fullT=0, holdT=0, ticks=0, emptyT=0, moveEval=0, lastTarget=null, wandOnlyAt=null, stuck=null;
   const startEnemies=new Set();
   try{ doCustom(bot,S); }catch(e){ S.errors.push('custom: '+e.message+' '+(e.stack||'').split('\n').slice(0,3).join(' | ')); }
-  while(b.phase==='fight'&&b.time<maxT){
+  while(b.phase==='fight'&&elapsed<maxT){
     ticks++;
+    observeThreats();
     const p=b.player;
     try{
       // the Spell screen: when the gauge is full and the queue is empty (or it has been full for a while)
       if(gaugeFull()&&!wandOnly(b.piles)){ fullT+=DT;
-        if(HU){ if(H.gaugeAt==null) H.gaugeAt=b.time+between(HU.cfg.gaugeDelay)*PACE*(b.piles.queue.length?3:1);   // noticed it is full (later while cards are still queued)
-          if(b.time>=H.gaugeAt){ H.gaugeAt=null; fullT=0; if(p.charging) wandUp(); openCustomScreen(); doCustom(bot,S); } }
+        if(HU){ if(H.gaugeAt==null) H.gaugeAt=now()+between(HU.cfg.gaugeDelay)*(b.piles.queue.length?3:1);   // noticed it is full (later while cards are still queued)
+          if(now()>=H.gaugeAt){ H.gaugeAt=null; fullT=0; if(p.charging) wandUp(); openCustomScreen(); doCustom(bot,S); } }
         else if(b.piles.queue.length===0||fullT>4){ fullT=0; openCustomScreen(); doCustom(bot,S); } } else { fullT=0; if(HU) H.gaugeAt=null; }
       if(wandOnly(b.piles)&&wandOnlyAt==null) wandOnlyAt=b.time;
       // moving
-      if(bot.move&&(HU?b.time>=H.nextEval:(--moveEval<=0||p.path.length===0))){ if(HU) H.nextEval=b.time+between(HU.cfg.evalGap)*PACE;
+      if(bot.move&&(HU?now()>=H.nextEval:(--moveEval<=0||p.path.length===0))){ if(HU) H.nextEval=now()+between(HU.cfg.evalGap);
         moveEval=bot.evalEvery||3; const {best,bestS,curS}=chooseTile(bot); PT.lastTgt=best&&[best.col,best.r,Math.round(bestS),curS==null?null:Math.round(curS)];
         if(best&&best!==p.tile&&(curS==null||bestS>curS+(curS<-100?0:12))){ if(best!==lastTarget||(bot.stick?(!ST.tgt&&!(p.snap&&p.snap.flick)&&p.tile!==best):!p.path.length)){ let go=best;
             if(HU&&urand()<HU.cfg.misTap){ const ns=neighbors(best).filter(n=>n.side==='p'&&!n.occ&&!(n.holeT>0)); if(ns.length) go=ns[Math.floor(urand()*ns.length)]; S.misTaps=(S.misTaps||0)+1; }   // the thumb lands on the tile next to it
-            if(bot.stick) stickGo(go,TH_URGENT(p)); else moveTo(go); lastTarget=best; H.movedAt=b.time; } }
+            if(bot.stick) stickGo(go,TH_URGENT(p)); else moveTo(go); lastTarget=best; H.movedAt=now(); } }
         else if(best===p.tile){ p.path=[]; lastTarget=null; if(bot.stick&&ST.tgt&&ST.tgt!==p.tile) stickGo(p.tile,false); }
       }
       // casting
@@ -229,33 +240,33 @@ PT.runFight=function(cfg){
         let go=true;
         if(bot.smartCast){ const pv=castPreview(); const att=pv&&(pv.hit.length||pv.self||pv.place.length);
           if(!att&&alive().length){ holdT+=DT; go=holdT>1.5; } else if(!alive().length) go=false; }
-        if(go&&HU){ if(H.castAt==null) H.castAt=b.time+between(HU.cfg.castDelay)*PACE; go=b.time>=H.castAt; }
+        if(go&&HU){ if(H.castAt==null) H.castAt=now()+between(HU.cfg.castDelay); go=now()>=H.castAt; }
         if(go){ holdT=0; H.castAt=null; castCard(); }
       }
       // wand
       if(HU){ // taps at a human rate, now and then a held charge shot; the thumb rests a moment after a move
         const h=HU.cfg;
-        if(p.charging){ if(b.time>=H.chargeUntil){ wandUp(); S.charged=(S.charged||0)+1; } }
-        else if(b.time>=H.nextTap&&b.time-H.movedAt>=h.focusPause*PACE&&p.wandCd<=0){
+        if(p.charging){ if(now()>=H.chargeUntil){ wandUp(); S.charged=(S.charged||0)+1; } }
+        else if(now()>=H.nextTap&&now()-H.movedAt>=h.focusPause&&p.wandCd<=0){
           const t=rowTarget(p.tile)||rowBlockedEnemy(p.tile);
-          if(t||urand()<h.blindTap){ if(urand()<h.chargeP){ wandDown(); H.chargeUntil=b.time+(chargeNeed(p)+.08); } else fireWand(false); S.taps=(S.taps||0)+1; }
-          H.nextTap=b.time+Math.max(h.tapMin,-Math.log(1-urand())/h.fireRate)*PACE; } }
+          if(t||urand()<h.blindTap){ if(urand()<h.chargeP){ wandDown(); H.chargeUntil=now()+(chargeNeed(p)+.08); } else fireWand(false); S.taps=(S.taps||0)+1; }
+          H.nextTap=now()+Math.max(h.tapMin,-Math.log(1-urand())/h.fireRate); } }
       else if(p.wandCd<=0){ const t=rowTarget(p.tile)||rowBlockedEnemy(p.tile); if(t||!bot.smartCast) fireWand(false); }
       if(b.sidearm&&rowTarget(p.tile)) fireAce();
       for(const e of b.enemies) startEnemies.add(e);
       if(cfg.trace&&ticks%300===0){ const bo=b.enemies.find(e=>e.def.boss); (S.trace=S.trace||[]).push({t:Math.round(b.time),boss:bo&&bo.hp,ph:bo&&bo.phase,nodes:alive().filter(e=>e.id==='rootnode').map(e=>e.hp+'@'+e.tile.col+','+e.tile.r+(e.barrier?'b'+e.barrier:'')+'|front:'+lineTiles(e.tile,DIRS.W).filter(x=>x.occ).map(x=>(x.occ.id||x.occ.kind)+x.col).join(',')).join('/'),sap:alive().filter(e=>e.id==='sapling').length,alive:alive().length,deck:b.piles.draw.length,php:p.hp,row:p.tile.r,tgt:(rowTarget(p.tile)||{}).id}); }
-      if(p.tile!==S.tile){ S.tile=p.tile; S.tileT=b.time; }
-      for(const e of b.enemies){ if(e.windT>0||e.casting){ if(e._wStart==null) e._wStart=b.time; } else e._wStart=null; }
+      if(p.tile!==S.tile){ S.tile=p.tile; S.tileT=now(); }
+      for(const e of b.enemies){ if(e.windT>0||e.casting){ if(e._wStart==null) e._wStart=now(); } else e._wStart=null; }
       if(bot.stick) stickTick();
-      update(DT);
+      elapsed+=DT; update(DT);
       if(!alive().length&&b.phase==='fight'){ emptyT+=DT; if(emptyT>15&&!stuck) stuck='no enemies alive for 15s, wave='+b.wave+'/'+b.waves.length; } else emptyT=0;
       if(stuck&&emptyT>20) break;
     }catch(e){ S.errors.push('tick: '+e.message+' | '+(e.stack||'').split('\n').slice(0,4).join(' | ')); if(S.errors.length>3) break; }
   }
   for(const e of b.enemies) startEnemies.add(e);
   const en={}; for(const e of startEnemies) en[e.id]=(en[e.id]||0)+1;
-  const res=b.phase==='win'?'win':b.phase==='lose'?'lose':S.errors.length?'error':stuck?'stuck':'timeout';
-  const out={deck:cfg.deck, depth:cfg.depth, bot:cfg.botName, res, time:+b.time.toFixed(1), ticks, hpEnd:b.player.hp, maxHp:b.player.maxHp,
+  const res=S.errors.length?'error':b.phase==='win'?'win':b.phase==='lose'?'lose':stuck?'stuck':'timeout';
+  const out={deck:cfg.deck, depth:cfg.depth, bot:cfg.botName, res, time:+elapsed.toFixed(1), battleTime:+b.time.toFixed(1), timing:'wall-seconds; warning from first simulation observation', seed:cfg.seed, policySeed:cfg.policySeed, botVersion:U.VERSION, ticks, hpEnd:b.player.hp, maxHp:b.player.maxHp,
     dmgTaken:S.dmgTaken, hitsTaken:S.hitsTaken, selfPaid:S.selfPaid, healed:S.healed, casts:S.casts, castsByType:S.castsByType, labCasts:S.labCasts, instants:S.instants,
     wandShots:S.wandShots, kills:S.kills, counters:b.counters||0, reacts:b.reacts||0, combos:S.combos, spellScreens:S.spellScreens, dmg:S.dmg, dmgByKind:S.dmgByKind, hurtBy:S.hurtBy,
     waves:b.waves.length, waveReached:b.wave, enemies:en, enemyHpLeft:alive().reduce((a,e)=>a+e.hp,0), boss:b.enemies.filter(e=>e.def.boss).map(e=>e.id),
@@ -264,6 +275,13 @@ PT.runFight=function(cfg){
   if(cfg.adopt){ b.hooks.onEnd=keepEnd; out.realSecs=+(ticks*DT).toFixed(1); for(let k=0;k<200&&B===b&&b.timers.length;k++){ try{ update(DT); }catch(e){ out.errors.push('end: '+e.message); break; } } }
   else B=null;
   return out;
+  } finally { Object.assign(b.hooks,keepHooks); PT.cur=null; HU=null; }
+}
+PT.runFight=function(cfg){
+  if(cfg.adopt) return runFight(cfg); // preserve the career's seeded combat stream
+  const prev=Math.random, xr=typeof XR!=='undefined'?XR:null;
+  Math.random=U.rng(cfg.worldSeed??cfg.seed??1); if(typeof XR!=='undefined') XR=Math.random;
+  try { return runFight(cfg); } finally { Math.random=prev; if(typeof XR!=='undefined') XR=xr; PT.cur=null; HU=null; }
 };
 
 /* ---------- decks ---------- */
@@ -333,8 +351,8 @@ function wearBetter(save,ids){ for(const g of ids){ const G=GEAR[g]; if(!G) cont
 function deckInfo(list){ const by=(f)=>{ const m={}; list.forEach(id=>{ const k=f(CARDS[id]); m[k]=(m[k]||0)+1; }); return m; };
   const runes=by(c=>c.code||'-'), top=Math.max(...Object.values(runes)); return {n:list.length, kinds:by(c=>isInstant(c)?'instant':kindOf2(c)), colors:by(c=>c.color), rarity:by(c=>c.rarity), topRune:top, avgVal:Math.round(list.reduce((a,id)=>a+cardVal(CARDS[id]),0)/list.length)}; }
 PT.run={dealRun,buildDeck,tweakDeck,spendAll,wearBetter,deckInfo,cardScore,STAT_PLAN};   // for crawl.js
-PT.runRun=function(cfg){
-  let seed=(cfg.seed||1)>>>0; const rng=()=>{ seed=(seed+0x6D2B79F5)>>>0; let t=seed; t=Math.imul(t^t>>>15,t|1); t^=t+Math.imul(t^t>>>7,t|61); return ((t^t>>>14)>>>0)/4294967296; };
+function runRun(cfg){
+  const rng=U.rng(cfg.policySeed??U.seedFor('run-policy',cfg.seed??1));
   const style=cfg.style, lean=cfg.lean;
   // the character: a human, the creation points spent the bot's way
   const ch=newChar('human',0); spendAll(ch,style);
@@ -349,7 +367,7 @@ PT.runRun=function(cfg){
   rebuild();
   const firstDeck=deckInfo(save.decks[0].list);
   while(fights.length<cfg.maxFights&&depth<=cfg.maxDepth){
-    const r=PT.runFight({depth, botName:style, bot:cfg.bot, maxT:[4,8,12,16,20,24,28].includes(depth)?900:420, seed:(cfg.seed||1)*131+fights.length});
+    const r=PT.runFight({depth, botName:style, bot:cfg.bot, maxT:[4,8,12,16,20,24,28].includes(depth)?900:420, seed:U.seedFor('fight',cfg.seed??1,fights.length), policySeed:U.seedFor('fight-policy',cfg.policySeed??cfg.seed??1,fights.length)});
     const b=PT.lastB; if(!b||r.error){ log.push('fight failed at '+depth+': '+(r.error||'')); break; }
     try{ settleChargeUses(save,b.piles); }catch(e){}
     const f={depth, res:r.res, time:r.time, hpLost:r.dmgTaken, dmg:r.dmg, casts:r.casts, wand:r.wandShots, combos:r.combos, flicks:r.flicks, stick:r.stickSecs, level:save.level, deck:save.decks[0].list.length, errors:r.errors.length+(r.pageErrors?r.pageErrors.length:0), hurtBy:r.hurtBy, warn:r.warn, list:save.decks[0].list.slice()};
@@ -374,6 +392,8 @@ PT.runRun=function(cfg){
   const ch2=save.char, mods=statMods(ch2);
   return {label:cfg.label||style, variant:cfg.variant||'full', stats:Object.fromEntries(STAT_KEYS.map(k=>[k,statOf(ch2,k)])), style, lean, seed:cfg.seed, deepest:depth-(fights.length&&fights[fights.length-1].res==='win'?0:0), reached:depth, fights, wins:fights.filter(f=>f.res==='win').length, losses:fights.filter(f=>f.res!=='win').length,
     level:save.level, gold:save.gold, spent, packs, levelAt:{10:(fights.find(f=>f.depth===10)||{}).level, 20:(fights.find(f=>f.depth===20)||{}).level, 30:(fights.find(f=>f.depth===30)||{}).level, 40:(fights.find(f=>f.depth===40)||{}).level}, owned:Object.values(save.owned).reduce((a,b)=>a+b,0), startInfo, firstDeck, finalDeck, names:Object.fromEntries([...new Set(fights.flatMap(f=>f.list||[]))].map(id=>[id,CARDS[id]?CARDS[id].name:id])), gear:Object.fromEntries(Object.entries(gear).map(([k,v])=>[k,v&&GEAR[v]?GEAR[v].tier:null])), log};
-};
+}
+PT.runRun=function(cfg){const prev=Math.random,xr=typeof XR!=='undefined'?XR:null;Math.random=U.rng(cfg.worldSeed??cfg.seed??1);if(typeof XR!=='undefined')XR=Math.random;try{return runRun(cfg);}finally{Math.random=prev;if(typeof XR!=='undefined')XR=xr;}};
 })();
+
 

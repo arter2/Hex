@@ -1,15 +1,20 @@
 // node tools/playtest/analyze-crawl.js <out.jsonl>...  → a Markdown report of the careers (crawl.js)
 const fs=require('fs');
-const runs=process.argv.slice(2).flatMap(f=>fs.readFileSync(f,'utf8').trim().split('\n').filter(Boolean).map(l=>JSON.parse(l))).filter(r=>!r.error);
+const U=require('./support.js');
+const records=U.readRecords(process.argv.slice(2),fs);
+for(const r of records)if(!r.error&&!(Array.isArray(r.fights)&&Array.isArray(r.events)&&Array.isArray(r.puzzles)&&Number.isFinite(r.hours))){r.error='Result does not match the report schema';r.status='failed';}
+const health=U.coverage(records),runs=records.filter(U.usable);
+if(health.failed||health.skipped)process.exitCode=1;
 const STY=['average','good','fast','combo','shopaholic'].filter(s=>runs.some(r=>r.label===s));
 const by=s=>runs.filter(r=>r.label===s), hrs=a=>a.reduce((x,r)=>x+r.hours,0), sum=(a,f)=>a.reduce((x,r)=>x+(f(r)||0),0);
 const f1=x=>(+x).toFixed(1), f0=x=>Math.round(x), pc=x=>Math.round(100*x)+'%';
 const out=[]; const P=s=>out.push(s);
+P('## Batch health');P('');P(`${health.requested} requested records: ${health.clean} clean, ${health.recovered} recovery-assisted, ${health.failed} failed, ${health.skipped} skipped. Errors: ${health.errors}.`);P('');P('Balance estimates below use clean runs only. Recovery-assisted and failed jobs are reported above, not counted as ordinary losses.');P('');for(const r of records.filter(r=>!U.usable(r)))P('- '+JSON.stringify({job:r.jobId||r.label||r.style||'unknown',seed:r.seed,issues:U.issues(r),recoveries:r.recoveries||[]}));P('');
 const tbl=(head,rows)=>{ P('| '+head.join(' | ')+' |'); P('|'+head.map((h,i)=>i?'---:':'---').join('|')+'|'); rows.forEach(r=>P('| '+r.join(' | ')+' |')); P(''); };
 P(`${runs.length} careers, ${f1(hrs(runs))} hours of play in all, ${sum(runs,r=>r.fights.length)} fights, ${sum(runs,r=>r.puzzles.length)} puzzles met. Errors: ${sum(runs,r=>r.errors.length+(r.pageErrors||[]).length)}.`); P('');
 
 P('## Each player'); P('');
-tbl(['Player','Hours','Deepest (avg, range)','Deaths / h','Fights / h','Fun / h','Frustration / h','Fun : frustration','Would quit (per h)'],STY.map(s=>{ const a=by(s), h=hrs(a), d=a.map(r=>r.maxDepth);
+tbl(['Player','Hours','Deepest (avg, range)','Deaths / h','Fights / h','Fun / h','Frustration / h','Fun : frustration','Modelled threshold crossings / h'],STY.map(s=>{ const a=by(s), h=hrs(a), d=a.map(r=>r.maxDepth);
   return [s,f1(h),f1(d.reduce((x,y)=>x+y,0)/d.length)+' ('+Math.min(...d)+'–'+Math.max(...d)+')',f1(sum(a,r=>r.deaths.length)/h),f0(sum(a,r=>r.fights.length)/h),f0(sum(a,r=>r.fun)/h),f0(sum(a,r=>r.frus)/h),f1(sum(a,r=>r.fun)/Math.max(1,sum(a,r=>r.frus))),f1(sum(a,r=>r.quits.length)/h)]; }));
 
 P('## Where the time goes'); P('');
@@ -24,7 +29,7 @@ P('## Pain points (frustration, all players)'); P('');
 tbl(['Kind','Share','Per hour','Times','Felt most by','Examples'],Object.entries(kinds).filter(([,k])=>k.frus>0).sort((a,b)=>b[1].frus-a[1].frus).slice(0,22).map(([name,k])=>{
   const most=Object.entries(k.by).map(([s,b])=>[s,b.frus/hrs(by(s))]).sort((a,b)=>b[1]-a[1])[0];
   return [name,pc(k.frus/totF),f1(k.frus/H),k.n,most?most[0]+' ('+f1(most[1])+'/h)':'',top(k.notes,3).slice(0,140)]; }));
-P('## What they enjoyed'); P('');
+P('## Reward events (model weights)'); P('');
 tbl(['Kind','Share','Per hour','Times','Examples'],Object.entries(kinds).filter(([,k])=>k.fun>0).sort((a,b)=>b[1].fun-a[1].fun).slice(0,14).map(([name,k])=>[name,pc(k.fun/totJ),f1(k.fun/H),k.n,top(k.notes,2).slice(0,100)]));
 
 // by depth
@@ -52,7 +57,7 @@ tbl(['Player','Fights','Won','Avg length','Over 100 s','No danger (≤3 HP lost)
 const dw={}; for(const r of runs) for(const d of r.deaths){ const k=d.where+': '+d.why; dw[k]=(dw[k]||0)+1; }
 P('## Deaths'); P(''); P(Object.keys(dw).length?Object.entries(dw).sort((a,b)=>b[1]-a[1]).slice(0,12).map(([k,v])=>'- '+k+' ×'+v).join('\n'):'None.'); P('');
 const qw={}; let qn=0; for(const r of runs) for(const q of r.quits){ qn++; const k=q.why.split(',')[0].replace(/ \d+$/,''); qw[k]=(qw[k]||0)+1; }
-P('## Moments a player would likely put the game down'); P('');
+P('## Modelled frustration threshold crossings'); P('');
 P(qn?`${qn} in all (${f1(qn/H)} an hour). What filled the 10 minutes before, by its biggest part:`:'None.'); P('');
 if(qn) P(Object.entries(qw).sort((a,b)=>b[1]-a[1]).map(([k,v])=>'- '+k+' ×'+v).join('\n')); P('');
 const qd={}; for(const r of runs) for(const q of r.quits){ const b=band(q.d); qd[b]=(qd[b]||0)+1; } if(qn){ P('By depth: '+BANDS.filter(b=>qd[b]).map(b=>b+': '+qd[b]).join(', ')+'.'); P(''); }
@@ -83,15 +88,15 @@ P('## Secrets'); P(''); P(`Searches: ${sum(runs,r=>r.searches)}, found something
   if(un){ P(''); P(`**A refresh at a random moment** would lose something ${pc(ua/un)} of the time: on average ${f1(sum(U,u=>u.gold)/un)} gold and ${f1(sum(U,u=>u.cards)/un)} cards; at worst ${Math.max(...U.map(u=>u.maxGold))} gold and ${Math.max(...U.map(u=>u.maxCards))} cards; a level ${sum(U,u=>u.levels)} times.`); }
   P(''); }
 // ---- fair hits: how long each hit's threat was on screen before it landed
-{ const W={hits:0,dmg:0,unfair:0,unfairDmg:0,tight:0,bins:[0,0,0,0,0,0],byKind:{},src:{}}, BB={};
-  for(const r of runs) for(const f of r.fights){ const w=f.warn; if(!w) continue; const b=BB[band(f.d)]||(BB[band(f.d)]={hits:0,unfair:0,tight:0,dmg:0,unfairDmg:0});
-    for(const k of ['hits','dmg','unfair','unfairDmg','tight']){ W[k]+=w[k]; b[k]+=w[k]; } w.bins.forEach((x,i)=>W.bins[i]+=x);
+{ const W={hits:0,unknown:0,dmg:0,unfair:0,unfairDmg:0,tight:0,bins:[0,0,0,0,0,0],byKind:{},src:{}}, BB={};
+  for(const r of runs) for(const f of r.fights){ const w=f.warn; if(!w) continue; const b=BB[band(f.d)]||(BB[band(f.d)]={hits:0,unknown:0,unfair:0,tight:0,dmg:0,unfairDmg:0});
+    for(const k of ['hits','dmg','unfair','unfairDmg','tight','unknown']){ W[k]+=w[k]||0; b[k]+=w[k]||0; } w.bins.forEach((x,i)=>W.bins[i]+=x);
     for(const [k,v] of Object.entries(w.byKind)){ const K=W.byKind[k]||(W.byKind[k]={n:0,dmg:0,warnSum:0,warnN:0}); for(const q in v) K[q]+=v[q]; }
     for(const x of w.worst) { const k=(x.src||'?')+(x.move?' ('+x.move+')':''); W.src[k]=(W.src[k]||0)+1; } }
   if(W.hits){ P('## Fair hits (dungeon fights)'); P('');
-    P(`For every hit that cost HP: how long its threat was on screen first (a ground telegraph's whole time; a shot's flight plus its owner's wind-up). **Unfair:** under 0.4 s (too quick to see and step away) while you stood on that tile all along. **Tight:** 0.4–0.7 s.`); P('');
-    P(`${W.hits} hits: **${pc(W.unfair/W.hits)} unfair** (${pc(W.unfairDmg/Math.max(1,W.dmg))} of the HP lost to hits), ${pc(W.tight/W.hits)} tight. Warning time: ${['<0.2 s','0.2–0.4','0.4–0.7','0.7–1','1–2','2 s+'].map((l,i)=>l+' '+pc(W.bins[i]/Math.max(1,W.bins.reduce((a,b)=>a+b,0)))).join(' · ')}.`); P('');
-    tbl(['Depths','Hits','Unfair','Tight','HP lost to unfair hits'],BANDS.filter(b=>BB[b]).map(b=>[b,BB[b].hits,pc(BB[b].unfair/Math.max(1,BB[b].hits)),pc(BB[b].tight/Math.max(1,BB[b].hits)),pc(BB[b].unfairDmg/Math.max(1,BB[b].dmg))])); P('');
+    P(`Warnings are simulation observations, not first-paint or human-visibility measurements. ${W.unknown} hits have unknown warning and are excluded from unfair/tight denominators. For every hit that cost HP: how long its threat was on screen first (a ground telegraph's whole time; a shot's flight plus its owner's wind-up). **Unfair:** under 0.4 s (too quick to see and step away) while you stood on that tile all along. **Tight:** 0.4–0.7 s.`); P('');
+    P(`${W.hits} hits: **${pc(W.unfair/Math.max(1,W.hits-W.unknown))} unfair** (${pc(W.unfairDmg/Math.max(1,W.dmg))} of the HP lost to hits), ${pc(W.tight/Math.max(1,W.hits-W.unknown))} tight. Warning time: ${['<0.2 s','0.2–0.4','0.4–0.7','0.7–1','1–2','2 s+'].map((l,i)=>l+' '+pc(W.bins[i]/Math.max(1,W.bins.reduce((a,b)=>a+b,0)))).join(' · ')}.`); P('');
+    tbl(['Depths','Hits','Unfair','Tight','HP lost to unfair hits'],BANDS.filter(b=>BB[b]).map(b=>[b,BB[b].hits,pc(BB[b].unfair/Math.max(1,BB[b].hits-BB[b].unknown)),pc(BB[b].tight/Math.max(1,BB[b].hits-BB[b].unknown)),pc(BB[b].unfairDmg/Math.max(1,BB[b].dmg))])); P('');
     tbl(['Hit by','Hits','HP','Average warning'],Object.entries(W.byKind).map(([k,v])=>[{tele:'ground telegraph',shot:'shot',other:'no telegraph (burning ground, thorns, scripted)'}[k]||k,v.n,v.dmg,v.warnN?f1(v.warnSum/v.warnN)+' s':'–']));
     if(Object.keys(W.src).length){ P(''); P('Most unfair hits came from: '+top(W.src,8)+'.'); } P(''); } }
 // ---- where sessions stop: the hook (the next big reward within 2 minutes) and the mood at the stop
@@ -107,7 +112,7 @@ P('## Secrets'); P(''); P(`Searches: ${sum(runs,r=>r.searches)}, found something
       X.n++; X.next.push(next); if(next<=120) X.hook++; if(prev!=null&&st.t-prev<=30) X.nat++; if(mood>0) X.high++; if(st.quit){ X.quit++; if(next<=120) X.quitHook++; } } }
   const q=(a,p)=>{ const b=a.slice().sort((x,y)=>x-y); return b.length?b[Math.min(b.length-1,Math.floor(b.length*p))]:0; }, mm=x=>x>=60?f1(x/60)+' min':f0(x)+' s';
   P('## Where sessions stop'); P('');
-  P('Each career is cut into phone-sized sessions (median 12 minutes, at least 3), and a session also ends at every moment the player would likely put the game down. At each stop: how soon the next big reward came in that career (a level, a new depth, a boss, a quest, a puzzle, a legendary or hero card, a blessing, a broken seal), and whether the last 5 minutes went better than that player’s usual 5 minutes (ended on a high).'); P('');
+  P('Illustrative model only, not observed retention. Each career is cut into phone-sized sessions (median 12 minutes, at least 3), and a session also ends at every moment the player would likely put the game down. At each stop: how soon the next big reward came in that career (a level, a new depth, a boss, a quest, a puzzle, a legendary or hero card, a blessing, a broken seal), and whether the last 5 minutes went better than that player’s usual 5 minutes (ended on a high).'); P('');
   tbl(['Player','Stops','Next big reward within 2 min (a hook)','Typical wait to the next one','Stopped right after one (a natural break)','Ended on a high','Stops that were "would quit"','…of those, a reward was under 2 min away'],STY.filter(s=>S[s]).map(s=>{ const x=S[s]; return [s,x.n,pc(x.hook/x.n),mm(q(x.next,.5)),pc(x.nat/x.n),pc(x.high/x.n),x.quit,x.quit?pc(x.quitHook/x.quit):'–']; })); P('');
   { const rr=sum(runs,r=>r.events.filter(e=>e.k==='card:new'&&/\(rare\)/.test(e.note||'')).length); P(`New rare cards: ${f1(rr/H)} an hour (not counted as a big reward: at this rate they are not rare).`); P(''); }
   P('Time between big rewards:'); P('');
@@ -115,3 +120,4 @@ P('## Secrets'); P(''); P(`Searches: ${sum(runs,r=>r.searches)}, found something
 const errs={}; for(const r of runs) for(const e of [...r.errors,...(r.pageErrors||[])]){ const k=e.slice(0,90); errs[k]=(errs[k]||0)+1; }
 if(Object.keys(errs).length){ P('## Errors'); P(''); P(Object.entries(errs).sort((a,b)=>b[1]-a[1]).slice(0,12).map(([k,v])=>'- '+k+' ×'+v).join('\n')); P(''); }
 console.log(out.join('\n'));
+

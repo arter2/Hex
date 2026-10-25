@@ -1,0 +1,11 @@
+{
+  "name": "hexmancers-playtest",
+  "private": true,
+  "scripts": {
+    "test": "node selftest.js",
+    "hit-test": "node ui-runner.js"
+  },
+  "devDependencies": {
+    "playwright": "1.56.1"
+  }
+}

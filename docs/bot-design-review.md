@@ -2,6 +2,8 @@
 
 Reviewed: 2026-10-25. Source: `main` at [`35009bc`](https://github.com/arter2/Hex/commit/35009bc0d0c73c968ffc37e4f3edb75b019e34d5).
 
+This review describes that baseline. See [implemented improvements and remaining work](bot-improvements.md) for subsequent changes on this branch.
+
 ## Assessment
 
 **Keep and improve these bots. They are useful gameplay and regression tools, but they do not yet establish that the game is usable on mobile, fair to humans, or enjoyable.** Their strongest evidence concerns simulation state and progression. Their weakest evidence concerns actual touch input, perception, human behavior, and the statistical interpretation of results.

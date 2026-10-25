@@ -226,17 +226,13 @@
       <div id="mlabGrip" class="dkgrip mlgrip" role="separator" aria-orientation="horizontal" aria-label="Drag to resize the lab panel"></div>
     </div>
     <div id="hudTop">
-      <div class="hrow r1">
+      <div class="hmain">
+        <div class="hrow r1"><span id="hpNum" class="hpnum"></span><div class="info"><span id="depthTxt"></span><span id="pileTxt"></span></div></div>
         <div class="hp"><div class="meter big hpmeter"><i id="hpBar"></i><span id="hpTxt"></span></div></div>
-        <span id="hpNum" class="hpnum"></span>
-        <div class="info"><span id="depthTxt"></span><span id="pileTxt"></span></div>
-        <button id="btnMenu" class="btn ghost sq small" aria-label="Pause"><span class="pauseic"></span></button>
+        <button id="btnCustom" class="btn custgauge" disabled><i id="gaugeBar"></i><span id="custLbl">SPELL</span></button>
       </div>
-      <div class="hrow r2">
-        <div id="buffs" class="bufs"></div>
-        <button id="btnCustom" class="btn custgauge" disabled><i id="gaugeBar"></i><span id="custLbl">Spell</span></button>
-        <div id="buffsR" class="bufs"></div>
-      </div>
+      <button id="btnMenu" class="btn ghost sq small" aria-label="Pause"><span class="pauseic"></span></button>
+      <div id="statRow" class="statrow"><div id="buffs" class="bufs"></div><span id="incoming" class="incoming" hidden><em>⚠</em>INCOMING</span></div>
       <div id="chainCtr" class="chainctr"></div>
       <div id="castRib" class="cast-rib"></div>
     </div>
@@ -255,13 +251,13 @@
     <div id="hurtFx" class="hurt-fx"></div>
     <div id="hudBottom">
       <div id="instRow" class="inst-row" hidden></div>
-      <div id="pileRow" class="pilerow"><span id="pileDeck"></span><i></i><span id="pileHand"></span></div>
-      <div id="queueRow"></div>
-      <div id="comboBar" class="combo-bar" hidden></div>
-      <div class="controls battle">
-        <button id="btnWand" class="btn wand">◀ Fire<small>hold to charge</small></button>
-        <button id="btnCast" class="btn">Cast ▶<small id="castName"></small></button>
+      <div class="bctl">
+        <button id="btnWand" class="btn wand"><span class="bic fireic">🔥</span><b>FIRE</b><small>hold to charge</small></button>
+        <div id="queueRow"></div>
+        <button id="btnSpell" class="btn spellbtn" disabled><i id="gaugeBar2"></i><span>SPELL</span></button>
+        <button id="btnCast" class="btn"><span class="bic castic">✦</span><b>CAST</b><small id="castName"></small></button>
       </div>
+      <div id="pileRow" class="pilerow"><span id="pileDeck"></span><span id="pileHand"></span><span id="pileCombo"></span></div>
       <p class="keys">Tap your side to move, the enemy side to aim lobs · keys: arrows/WASD move, Space fire, Enter cast, Q aim, C spell</p>
     </div>
 
@@ -319,6 +315,7 @@
         <div class="row2"><button id="mSave" class="btn ghost">Save game</button><button id="mLoad" class="btn ghost">Load save</button></div>
         <p id="mPoint" class="hint center"></p>
         <button id="mSettings" class="btn ghost">Settings</button>
+        <button id="mRun" class="btn ghost" hidden>Run from the fight</button>
         <button id="mFull" class="btn ghost fullBtn">Full screen</button>
         <button id="mLeave" class="btn ghost"></button>
       </div>
@@ -409,6 +406,8 @@
       <div class="srow"><span>Cast card<small>How a card shows when you cast it. Big: the full card in the middle. Side: a small card at the left edge. Ribbon: just its name under the top bar. Ghost: the big card, see-through and quick.</small></span><button id="setCastFx" class="btn ghost small"></button></div>
       <div class="srow"><span>Touch movement<small>How a finger moves you on the dungeon floor. Tap + hold (the default): a quick tap walks you there; hold or slide your finger and you steer like a thumbstick (nothing is drawn under your finger). Walk to touch: go where you tap or drag, and keep going after you let go. Floating stick: put a finger down anywhere and slide it like a thumbstick. Fixed stick: a thumbstick in the bottom-left corner (tap elsewhere to walk there). Follow finger: hold and you chase your finger; let go to stop. Trackpad: slide anywhere and you move the same way, as in battle.</small></span><button id="setXMove" class="btn ghost small"></button></div>
       <div class="srow"><span>Dungeon tips<small>A short tip the first time you meet doors, chests, traps, sleeping enemies and more. Turning them back on shows every tip again.</small></span><button id="setXTips" class="btn ghost small"></button></div>
+      <div class="srow"><span>Fire button<small>Which side of the screen Fire sits on. Cast takes the other side.</small></span><button id="setFire" class="btn ghost small"></button></div>
+      <div class="srow"><span>Instant buttons<small>Which edge the instants you can tap mid-fight (Heal, Draw…) stack up on.</small></span><button id="setInst" class="btn ghost small"></button></div>
       <div class="srow"><span>Battle top bar<small>Panel: a solid bar under the notch. Clear: the same bar over the scene, see-through.</small></span><button id="setHud" class="btn ghost small"></button></div>
       <div class="srow"><span>Stairs marker<small>Marks the stairs down on the minimap once you have seen them</small></span><button id="setXStairs" class="btn ghost small"></button></div>
       <div class="srow"><span>Testing tools<small>Boss tests at camp and free gear on the Character screen</small></span><button id="setDev" class="btn ghost small"></button></div>

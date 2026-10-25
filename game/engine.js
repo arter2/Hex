@@ -237,6 +237,14 @@ function castNext(p){
   p.queue.shift(); if(!c.temp) p.discard.push(c); return c;
 }
 
+// Tap a queued card mid-fight to make it the next one cast. A Straight casts in order, and a
+// frozen or cursed card can't be moved (or jumped over to the front). Returns why not, or ''.
+function bringNext(p,i){ const q=p.queue, c=q[i]; if(!c||i<=0) return c?'':'Empty slot';
+  if(q[0].straight) return 'A Straight casts in order';
+  if(q.slice(0,i+1).some(x=>x.frozenT>0)) return 'Frozen ❄';
+  if(q.slice(0,i+1).some(x=>x.cursed)) return 'A hex can\'t be moved';
+  q.splice(i,1); q.unshift(c); return ''; }
+
 // Utility cards
 function drawCards(p,n){ const got=[]; n=Math.min(n,handRoom(p)); while(got.length<n&&p.draw.length){ const c=p.draw.pop(); p.hand.push(c); got.push(c); } return got; }
 function recallTop(p){ if(!p.draw.length||p.queue.length>=slotsOf(p)) return null; const c=p.draw.pop(); p.queue.push(c); return c; }
@@ -262,4 +270,4 @@ function rechargeAll(p,n){ let k=0;
 // Nothing left to draw, hold or cast: the fight continues with the wand only.
 function wandOnly(p){ return !p.draw.length && !p.hand.length && !p.queue.length; }
 
-if(typeof module!=='undefined') module.exports={queueSurge,fitsFourth,refreshSurge,handMax,handRoom,isInstant,isDeckTool,toolLock,DECK_TOOLS,TAP_TYPES,searchDeck,takeFromDeck,reshuffleHand,rechargeAll,oneRune,slotsOf,surgeRune,runesFit,canQueue,findRecipe,RULES,detectCombos,placeCard,validateDeck,shuffle,createPiles,openCustom,commitCustom,toggleQueue,castNext,drawCards,recallTop,copyNext,wandOnly};
+if(typeof module!=='undefined') module.exports={queueSurge,fitsFourth,refreshSurge,handMax,handRoom,isInstant,isDeckTool,toolLock,DECK_TOOLS,TAP_TYPES,searchDeck,takeFromDeck,reshuffleHand,rechargeAll,oneRune,slotsOf,surgeRune,runesFit,canQueue,findRecipe,RULES,detectCombos,placeCard,validateDeck,shuffle,createPiles,openCustom,commitCustom,toggleQueue,castNext,bringNext,drawCards,recallTop,copyNext,wandOnly};

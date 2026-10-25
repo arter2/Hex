@@ -1530,3 +1530,126 @@ body.hudClear #hudTop{background:linear-gradient(#000000b0,#00000000); border-bo
 @keyframes chgLow{50%{background:#a8182a;}}
 .qslot .chg{font-family:var(--font-t); font-size:14px; padding:0 4px; background:#f4f1e6; color:#04080c; border:2px solid #000; margin-left:4px;}
 .qslot .chg.mid{background:#ffd23f;} .qslot .chg.low{background:#ff4d5e; color:#fff;}
+
+/* the battle HUD (v135), stone and metal drawn in CSS. Top: HP as numbers and depth · wave over a full-width HP bar
+   and the Spell timer, pause as a big square beside both; status and ⚠ INCOMING in a line over the top of the board.
+   Bottom: Fire and Cast as tall corner buttons, the queue (tap a card to make it NEXT) over the big Spell button,
+   then Deck · Hand · combo. Instants stack up the side of the board. Settings: Fire side, instants side. */
+#hudTop{display:grid; grid-template-columns:minmax(0,1fr) auto; gap:0 10px; align-items:stretch; padding:calc(6px + env(safe-area-inset-top,0px)) calc(10px + env(safe-area-inset-right,0px)) 8px calc(12px + env(safe-area-inset-left,0px));}
+#hudTop .hmain{display:flex; flex-direction:column; gap:5px; min-width:0;}
+#hudTop .r1{display:flex; align-items:baseline; justify-content:space-between; gap:10px;}
+#hudTop .hpnum{font:700 18px var(--font-t); color:#f2f5fa; text-shadow:0 2px 0 #000;}
+#hudTop .info{margin-left:auto; font:700 18px var(--font-t); text-shadow:0 2px 0 #000;}
+#hudTop .hp{max-width:none;}
+#hudTop .hp .meter.big{height:14px; border-radius:4px; background:#06080d; box-shadow:0 0 0 2px #5d6575, 0 0 0 4px #15181f;}
+#hudTop .hp .meter.big i{border-radius:2px;}
+#hudTop #btnCustom.custgauge{flex:none; width:100%; max-width:none; height:28px; margin:3px 0 0; padding:0 10px; border-radius:4px; border:2px solid #5d6575!important; background:#0b111c!important; box-shadow:0 0 0 2px #15181f; display:flex; align-items:center; justify-content:center;}
+#hudTop #btnCustom.custgauge #gaugeBar{border-radius:2px;}
+#hudTop #btnCustom.custgauge #custLbl{font:700 19px var(--font-t); letter-spacing:1px;}
+#hudTop #btnCustom.custgauge.ready, #hudBottom #btnSpell.ready{border-color:#fff0b0!important; background:linear-gradient(#ffe880,#f5c02a 55%,#d4900e)!important; animation:spellGlow 1s ease-in-out infinite alternate!important;}
+#hudTop #btnCustom.custgauge.ready{flex-basis:auto; max-width:none; height:32px; margin-top:1px;}
+#hudTop #btnCustom.custgauge.ready #custLbl, #hudBottom #btnSpell.ready span{color:#3a2500!important; text-shadow:0 1px 0 #fff6c8;}
+#hudTop #btnCustom.custgauge.ready #custLbl{font-size:22px;}
+@keyframes spellGlow{from{box-shadow:0 0 0 2px #7a5208, 0 0 6px 1px #ffd84a88;} to{box-shadow:0 0 0 2px #7a5208, 0 0 20px 6px #ffd84acc;}}
+#hudTop #btnMenu{grid-column:2; grid-row:1; align-self:stretch; width:60px; height:auto; min-height:0; border:3px solid #6c7588!important; border-radius:8px; background:linear-gradient(#2b3242,#11141b)!important; box-shadow:inset 0 0 0 2px #07090d, 0 0 0 2px #15181f, 0 0 12px #4aa3ff44;}
+#hudTop .pauseic{width:22px; height:28px; border-left-width:8px; border-right-width:8px; border-color:#e4f3ff; filter:drop-shadow(0 0 4px #7cc4ff);}
+/* status and INCOMING: over the top of the board, so they never move it */
+#hudTop .statrow{position:absolute; top:100%; left:calc(12px + env(safe-area-inset-left,0px)); right:calc(12px + env(safe-area-inset-right,0px)); margin-top:6px; display:flex; align-items:center; gap:16px; overflow:hidden; white-space:nowrap; pointer-events:none;}
+#hudTop .statrow .bufs{flex:none; gap:14px;}
+#hudTop .bufs b{text-shadow:0 2px 0 #000;}
+.incoming{display:inline-flex; align-items:center; gap:6px; font:700 19px var(--font-t); color:#ffcf3a; letter-spacing:.5px; text-shadow:0 2px 0 #000; animation:incPulse .5s ease-in-out infinite alternate;}
+.incoming em{font-style:normal; font-size:24px; line-height:1;}
+.incoming[hidden]{display:none;}
+@keyframes incPulse{from{opacity:.65;} to{opacity:1;}}
+#hudTop .cast-rib{top:calc(100% + 38px);} #hudTop .chainctr{top:calc(100% + 46px);}
+
+/* see-through (no panel): the board's canvas still ends above it, so the camera is as it was */
+#scrBattle #hudBottom{position:relative; z-index:4; padding:14px calc(8px + env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) calc(8px + env(safe-area-inset-left,0px));
+  background:none; border:0; box-shadow:none;}
+#hudBottom .pilerow{text-shadow:0 2px 0 #000, 0 0 4px #000;}
+#hudBottom .bctl{display:grid; grid-template-columns:25% minmax(0,1fr) 25%; grid-template-areas:"fire queue cast" "fire spell cast"; gap:7px 6px;}
+body.fireR #hudBottom .bctl{grid-template-areas:"cast queue fire" "cast spell fire";}
+#hudBottom #btnWand{grid-area:fire;} #hudBottom #queueRow{grid-area:queue;} #hudBottom #btnSpell{grid-area:spell;} #hudBottom #btnCast{grid-area:cast;}
+/* Fire and Cast: tall corner buttons */
+#hudBottom #btnWand, #hudBottom #btnCast{min-height:124px; min-width:0; margin:0; padding:8px 4px 10px; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; gap:2px; overflow:hidden;
+  border:3px solid #5d6575; border-image:none; background:radial-gradient(circle at 50% 38%,#2c2f38,#121419 72%); color:#fff;}
+#hudBottom #btnWand{border-radius:12px 56px 12px 12px; border-color:#c75a1c; box-shadow:inset 0 0 0 3px #15181f, inset 0 0 22px #ff6a1a66, 0 0 0 2px #000, 0 0 10px #ff6a1a44;}
+#hudBottom #btnCast{border-radius:56px 12px 12px 12px; border-color:#3a7cc8; box-shadow:inset 0 0 0 3px #15181f, inset 0 0 22px #3aa0ff55, 0 0 0 2px #000, 0 0 10px #3aa0ff44;}
+body.fireR #hudBottom #btnWand{border-radius:56px 12px 12px 12px;} body.fireR #hudBottom #btnCast{border-radius:12px 56px 12px 12px;}
+#hudBottom #btnWand.charging{border-color:#ffc24a; box-shadow:inset 0 0 0 3px #15181f, inset 0 0 30px #ffa040aa, 0 0 0 2px #000, 0 0 18px #ffb347aa;}
+#hudBottom .bctl .bic{font-size:36px; line-height:1; margin-bottom:auto; padding-top:8px;}
+#hudBottom .castic{color:#a8dcff; text-shadow:0 0 12px #3aa0ff, 0 0 4px #fff;}
+#hudBottom .fireic{filter:drop-shadow(0 0 8px #ff7a1a);}
+#hudBottom .bctl .btn b{font:700 30px/1 var(--font-t); letter-spacing:1px; color:#fff; text-shadow:0 3px 0 #000;}
+#hudBottom .bctl .btn small{font:700 13px var(--font-t); color:#aab3c2; max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+#hudBottom #castName{color:#5fe0ff;}
+#hudBottom #btnCast:disabled{opacity:1; filter:saturate(.25) brightness(.7);}
+#hudBottom #btnCast:disabled #castName{color:#aab3c2;}
+/* the big Spell button: fills as the timer fills, gold and glowing when ready */
+#hudBottom #btnSpell{position:relative; min-height:58px; margin:0; padding:0; overflow:hidden; border:3px solid #5d6575; border-image:none; border-radius:8px; background:#0b111c; box-shadow:inset 0 0 0 2px #000, 0 0 0 2px #15181f; opacity:1;}
+#hudBottom #btnSpell #gaugeBar2{position:absolute; left:0; top:0; bottom:0; width:0; background:linear-gradient(#4fb0ff,#1f6fd1 60%,#164f9a); transition:width .15s; pointer-events:none;}
+#hudBottom #btnSpell span{position:relative; font:700 32px/1 var(--font-t); letter-spacing:1.5px; color:#fff; text-shadow:0 3px 0 #000;}
+#hudBottom #btnSpell.ready #gaugeBar2{opacity:0;}
+/* the queue: three dark plates, the next one gold-edged with a NEXT tag */
+#hudBottom #queueRow{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:4px; margin:0;}
+#hudBottom .qslot{position:relative; min-height:58px; height:auto; padding:6px 2px 3px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; overflow:visible; text-align:center; color:#e8eef8;
+  border:2px solid #4a5160; border-image:none; border-radius:6px; background:linear-gradient(#262b36,#11141a); box-shadow:inset 0 0 0 1px #000; outline:none; font-weight:700;}
+#hudBottom .qslot.full{border-left-width:2px;}
+#hudBottom .qslot.full:not(.next){cursor:pointer;}
+#hudBottom .qslot.next{border-color:#f2c94c; box-shadow:inset 0 0 0 1px #000, 0 0 8px #f2c94c66;}
+#hudBottom .qslot.combo{border-color:#ffe066!important; outline:none; box-shadow:inset 0 0 0 1px #000, 0 0 10px #ffe066aa!important;}
+#hudBottom .qslot.react{border-color:var(--xc)!important; box-shadow:0 0 12px var(--xc)!important;}
+#hudBottom .qslot.frozen{outline:2px solid #9fd0ff; outline-offset:-2px;}
+#hudBottom .qslot .role{font-size:21px; line-height:1; color:var(--rc); text-transform:none; letter-spacing:0;}
+#hudBottom .qslot .rx{display:none;}
+#hudBottom .qslot .nm{font:700 13px/1 var(--font-t); max-width:100%; overflow:hidden; white-space:normal; overflow-wrap:anywhere; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;}
+#hudBottom .qslot .nxt{position:absolute; top:-10px; left:50%; transform:translateX(-50%); padding:1px 6px; border-radius:3px; background:#f2c94c; color:#2a1b00; font:700 12px/1.1 var(--font-t); letter-spacing:.5px; box-shadow:0 1px 0 #000;}
+/* Deck · Hand · combo */
+#hudBottom .pilerow{justify-content:center; gap:22px; margin:6px 0 0; font:700 16px var(--font-t); color:#c9d3e4; letter-spacing:.3px;}
+#pileCombo.on{color:#ffe066;}
+/* instants: a column of square buttons up the side of the board */
+#hudBottom #instRow{position:absolute; bottom:calc(100% + 12px); right:calc(8px + env(safe-area-inset-right,0px)); left:auto; margin:0; display:flex; flex-direction:column-reverse; gap:8px; max-height:52vh; overflow:visible;}
+#hudBottom #instRow[hidden]{display:none;}
+body.instL #hudBottom #instRow{right:auto; left:calc(8px + env(safe-area-inset-left,0px));}
+#hudBottom .inst-row .btn.inst{position:relative; flex:none; width:64px; min-height:64px; padding:6px 3px 4px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px; white-space:nowrap;
+  border:3px solid #5d6575; border-image:none; border-radius:8px; background:linear-gradient(#262b36,#11141a); box-shadow:inset 0 0 0 2px #000, 0 0 10px color-mix(in srgb,var(--c) 45%,transparent); color:#fff;}
+#hudBottom .inst .iic{font-size:26px; line-height:1; color:var(--c);}
+#hudBottom .inst .inm{font:700 13px/1 var(--font-t); max-width:100%; overflow:hidden; text-overflow:ellipsis;}
+#hudBottom .inst::after{content:'⚡'; position:absolute; top:1px; right:2px; font-size:13px; line-height:1;}
+/* sideways and wide screens: the bottom bar is a side column, so it stacks */
+
+/* landscape (v135): the board fills the screen and the HUD floats over it. Top: HP and the Spell timer top left,
+   status and ⚠ INCOMING in the middle, depth · wave and pause top right. Bottom: Fire and Cast in the corners, the
+   queue over the Spell button in the middle, Deck · Hand · combo under it; instants stack up over Cast (or Fire). */
+body.wide #app #scrBattle.on{display:block;}
+body.wide #scrBattle #board{position:absolute; left:0; right:0; top:calc(40px + env(safe-area-inset-top,0px)); bottom:auto; width:100%; height:calc(100% - 180px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));}   /* the board ends at the queue */
+body.wide.h460 #scrBattle #board{height:calc(100% - 152px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));}
+body.wide #scrBattle #hudTop{position:absolute; left:0; right:0; top:0; z-index:4; pointer-events:none; display:grid; align-items:start;
+  grid-template-columns:minmax(0,min(36vw,440px)) minmax(0,1fr) auto auto; grid-template-areas:"num stat info menu" "hp stat . menu" "sp stat . menu"; gap:4px 12px;
+  padding:calc(6px + env(safe-area-inset-top,0px)) calc(12px + env(safe-area-inset-right,0px)) 0 calc(14px + env(safe-area-inset-left,0px));
+  background:linear-gradient(#000000a0,#00000000); border:0; box-shadow:none;}
+body.wide #scrBattle #hudTop .hmain, body.wide #scrBattle #hudTop .r1{display:contents;}
+body.wide #scrBattle #hudTop .hpnum{grid-area:num;} body.wide #scrBattle #hudTop .hp{grid-area:hp;} body.wide #scrBattle #hudTop #btnCustom{grid-area:sp; pointer-events:auto;}
+body.wide #scrBattle #hudTop .info{grid-area:info; margin:0; align-self:start;}
+body.wide #scrBattle #hudTop #btnMenu{grid-area:menu; width:56px; height:56px; align-self:start; pointer-events:auto;}
+body.wide #scrBattle #hudTop .statrow{grid-area:stat; position:static; margin:0; justify-content:center; align-self:start; padding-top:2px;}
+body.wide #scrBattle #hudBottom{position:absolute; left:0; right:0; bottom:0; z-index:4; pointer-events:none; background:none; border:0; box-shadow:none; display:block;
+  padding:0 calc(10px + env(safe-area-inset-right,0px)) calc(4px + env(safe-area-inset-bottom,0px)) calc(10px + env(safe-area-inset-left,0px));}
+body.wide #scrBattle #hudBottom .bctl{grid-template-columns:minmax(0,1fr) minmax(0,min(560px,46vw)) minmax(0,1fr); grid-template-areas:"fire queue cast" "fire spell cast"; align-items:end; gap:6px 10px;}
+body.wide.fireR #scrBattle #hudBottom .bctl{grid-template-areas:"cast queue fire" "cast spell fire";}
+body.wide #scrBattle #hudBottom .bctl>*, body.wide #scrBattle #hudBottom #instRow{pointer-events:auto;}
+body.wide #scrBattle #hudBottom #btnWand, body.wide #scrBattle #hudBottom #btnCast{position:static; width:min(160px,19vw); min-height:150px; align-self:end;}
+body.wide #scrBattle #hudBottom #btnWand{justify-self:start;} body.wide #scrBattle #hudBottom #btnCast{justify-self:end;}
+body.wide.fireR #scrBattle #hudBottom #btnWand{justify-self:end;} body.wide.fireR #scrBattle #hudBottom #btnCast{justify-self:start;}
+body.wide #scrBattle #hudBottom #queueRow{grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px;}
+body.wide #scrBattle #hudBottom .qslot{min-height:58px; padding-top:8px;}
+body.wide #scrBattle #hudBottom #btnSpell{min-height:50px;}
+body.wide #scrBattle #hudBottom .pilerow{margin-top:3px; text-shadow:0 2px 0 #000;}
+body.wide #scrBattle #hudBottom #instRow{position:absolute; bottom:calc(100% + 10px); flex-direction:column-reverse; flex-wrap:nowrap; max-height:none; margin:0;}
+body.wide #scrBattle #hudBottom .keys{display:none!important;}
+/* short landscape phones: smaller pieces */
+body.wide.h460 #scrBattle #hudBottom #btnWand, body.wide.h460 #scrBattle #hudBottom #btnCast{min-height:120px; width:min(130px,18vw);}
+body.wide.h460 #scrBattle #hudBottom .bctl .bic{font-size:28px; padding-top:4px;} body.wide.h460 #scrBattle #hudBottom .bctl .btn b{font-size:24px;}
+body.wide.h460 #scrBattle #hudBottom .qslot{min-height:44px; padding-top:6px;} body.wide.h460 #scrBattle #hudBottom .qslot .role{font-size:16px;} body.wide.h460 #scrBattle #hudBottom #btnSpell{min-height:42px;} body.wide.h460 #scrBattle #hudBottom #btnSpell span{font-size:26px;}
+body.wide.h460 #scrBattle #hudBottom .inst-row .btn.inst{width:54px; min-height:52px;} body.wide.h460 #scrBattle #hudBottom .inst .iic{font-size:20px;}
+body.wide.h460 #scrBattle #hudTop #btnMenu{width:48px; height:48px;}

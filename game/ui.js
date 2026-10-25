@@ -598,14 +598,14 @@ function leaveFight(){ paused=false; $('#custom').classList.remove('on');
    15% of your gold (at least 10), or a random card: one this run found if you are in the dungeon,
    otherwise a spare card no deck needs. In the dungeon you land back on the map with your run
    intact, and the foes you ran from stand dazed for 4 s; from a battle-only fight you go to camp.
-   Run lives on the Spell (card) screen only. Bosses and boss tests can't be run from. */
+   Run is on the Spell (card) screen and in the pause menu. Bosses and boss tests can't be run from. */
 const runCost=()=>Math.max(10,Math.floor(save.gold*.15));
 function runLootPool(){ const out=[];
   if(B&&B.explore&&typeof XRUN!=='undefined'&&XRUN&&XRUN.snap) for(const id in save.owned){ if(CARDS[id]&&save.owned[id]-(XRUN.snap.owned[id]||0)>0&&CARDS[id].rarity!=='hero') out.push(id); }
   if(!out.length) for(const id in save.owned) if(CARDS[id]&&CARDS[id].rarity!=='hero'&&!CARDS[id].mastery&&spareCopies(save,id)>0) out.push(id);
   return out; }
 const runBlocked=()=>!B||(B.phase!=='fight'&&B.phase!=='custom')?'':B.trial?'This is a test: end it from the pause menu':B.enemies.some(e=>e.def.boss&&e.hp>0)?'You can’t run from a boss':'';
-function openRun(){ if(!B||B.phase!=='custom') return; const why=runBlocked(); if(why) return tip(why);
+function openRun(){ if(!B||(B.phase!=='custom'&&B.phase!=='fight')) return; const why=runBlocked(); if(why) return tip(why);
   paused=true; B.player.charging=false; $('#btnWand').classList.remove('charging');
   const cost=runCost(), pool=runLootPool(), found=B.explore&&typeof XRUN!=='undefined'&&XRUN&&XRUN.snap&&pool.some(id=>save.owned[id]-(XRUN.snap.owned[id]||0)>0);
   $('#runText').textContent=(B.explore?'You get away and land back in the dungeon; the foes are dazed for a moment.':'You get away and go back to camp.')+' Drop something to cover your escape:';
@@ -614,7 +614,7 @@ function openRun(){ if(!B||B.phase!=='custom') return; const why=runBlocked(); i
   if(g.disabled&&c.disabled){ g.disabled=false; g.innerHTML=uiIcon('coin',22)+' Drop all '+save.gold+' gold'; }
   $('#runSheet').classList.add('on'); }
 function closeRun(){ $('#runSheet').classList.remove('on'); paused=false; }
-function doRun(kind){ const b=B; $('#runSheet').classList.remove('on'); if(!b||b.phase!=='custom'){ paused=false; return; }
+function doRun(kind){ const b=B; $('#runSheet').classList.remove('on'); if(!b||(b.phase!=='custom'&&b.phase!=='fight')){ paused=false; return; }
   $('#custom').classList.remove('on');
   let lost;
   if(kind==='gold'){ const c=Math.min(save.gold,runCost()); save.gold-=c; lost=c+' gold'; }
@@ -665,7 +665,8 @@ function openPause(){ const w=pauseWhere(); if(!w||$('#pause').classList.contain
     :'Tap your side of the board to move and the enemy side to aim lobs. Hold Fire to charge a shot; open Spell when it glows.';
   const L=$('#mLeave'); delete L.dataset.armed;
   L.textContent=w==='trial'?'End the test':w==='battle'||w==='xfight'?'Give up the fight':onStairs?'Climb to camp':'Flee to camp · lose 10% gold';
-  L.hidden=(w==='battle'||w==='xfight')&&!runBlocked();   // to get out of an ordinary fight, Run from the Spell screen
+  L.hidden=(w==='battle'||w==='xfight')&&!runBlocked();   // to get out of an ordinary fight, Run (here or on the Spell screen)
+  $('#mRun').hidden=!((w==='battle'||w==='xfight')&&B&&!B.lab&&!runBlocked());
   pausePoint(); $('#pause').classList.add('on'); setTimeout(()=>$('#mResume').focus(),30); }
 // the save point line and buttons on the pause screen (savepoint.js)
 function pausePoint(){ const P=peekPoint(), why=canSavePoint(), S=$('#mSave'), L=$('#mLoad'); delete S.dataset.armed; delete L.dataset.armed; S.textContent='Save game'; L.textContent='Load save';
@@ -677,6 +678,7 @@ function closePause(){ if(!$('#pause').classList.contains('on')) return; $('#pau
 $('#btnMenu').onclick=openPause;
 $('#xMenu').onclick=openPause;
 $('#mResume').onclick=closePause;
+$('#mRun').onclick=()=>{ $('#pause').classList.remove('on'); openRun(); };
 $('#mSettings').onclick=()=>openSettings();
 $('#mLeave').onclick=e=>{ const w=pauseWhere(); if(!w) return closePause();
   if(w==='map'&&EX.pc===EX.up){ closePause(); return xToCamp(); }   // free from the stairs up, and the floor waits for you
@@ -930,44 +932,49 @@ function hud(force){
   set('hp',p.hp+'/'+p.maxHp,()=>{ hpMeter($('#hpBar'),$('#hpTxt'),p.hp,p.maxHp); $('#hpNum').textContent=Math.max(0,Math.ceil(p.hp))+' / '+p.maxHp; });
   set('run',runBlocked()?0:1,()=>{ $('#btnRun').hidden=!!runBlocked(); });
   set('depth',b.depth+'|'+Math.ceil(b.wave),()=>{ const t=$('#depthTxt'); t.textContent='D'+b.depth+(b.waves.length>1?' · W'+(Math.ceil(b.wave)+1)+'/'+b.waves.length:''); t.title='Depth '+b.depth+' · '+areaOf(b.depth).name; t.style.color=areaOf(b.depth).glow; });
-  set('piles',pl.draw.length+'|'+pl.hand.length+'|'+pl.discard.length+'|'+wandOnly(pl),()=>{ $('#pileDeck').textContent=wandOnly(pl)?'DECK EMPTY · WAND ONLY':'DECK '+pl.draw.length; $('#pileHand').textContent='HAND '+pl.hand.length; });   // what you have used: on the Spell screen
-  set('gauge',Math.round(b.gauge*10),()=>$('#gaugeBar').style.width=(b.gauge/GAUGE_MAX*100)+'%');
+  set('piles',pl.draw.length+'|'+pl.hand.length+'|'+pl.discard.length+'|'+wandOnly(pl),()=>{ $('#pileDeck').textContent=wandOnly(pl)?'Deck empty · wand only':'Deck '+pl.draw.length; $('#pileHand').textContent='Hand '+pl.hand.length; });   // what you have used: on the Spell screen
+  set('gauge',Math.round(b.gauge*10),()=>{ const w=(b.gauge/GAUGE_MAX*100)+'%'; $('#gaugeBar').style.width=w; $('#gaugeBar2').style.width=w; });
   const buffs=[]; if(p.barrier>0) buffs.push('🛡 '+Math.ceil(p.barrier)+' · '+Math.ceil(p.shieldT)+'s'); if(p.dodge) buffs.push('💨 Dodge'); if(p.invT>0) buffs.push('🌀 Phase');
   if(p.setT>0) buffs.push('ᚱ Wand ×2.5 '+Math.ceil(p.setT)+'s'); else if(p.powerT>0) buffs.push('⚡ Wand ×1.8 '+Math.ceil(p.powerT)+'s'); if(p.pactT>0) buffs.push('☾ Pact '+Math.ceil(p.pactT)+'s'); if(p.courageT>0) buffs.push('☀ Courage '+Math.ceil(p.courageT)+'s'); if(p.intervene) buffs.push('✟ Intervention');
   if(p.hero&&p.hero.hp>0) buffs.unshift('♔ '+p.hero.card.name.split(',')[0]+' · '+Math.ceil(p.hero.life)+'s');
   if(p.rootT>0) buffs.unshift('❦ Rooted '+p.rootT.toFixed(1)+'s');
   if(p.hexT>0) buffs.unshift('☾ Hexed '+Math.ceil(p.hexT)+'s (+30% damage taken)');
   if(p.hasteT>0) buffs.push('🌬 Haste '+Math.ceil(p.hasteT)+'s'); if(p.regenT>0) buffs.push('🌿 Regen '+Math.ceil(p.regenT)+'s');
-  // status: an icon and its time, half each side of the Spell timer (the full text on a long press, as a title)
+  // status: an icon and its time in a row under the top bar (the full text on a long press, as a title)
   set('buffs',buffs.join('|'),()=>{ const chip=t=>{ const w=t.replace(/ \(.*\)$/,'').split(' '), ic=w[0], tm=(t.match(/([\d.]+)s\b/)||[])[1], n=(t.match(/^\S+ (\d+) ·/)||[])[1];
       return '<b title="'+esc(t)+'"><em>'+esc(ic)+'</em>'+(n?esc(n)+' ':'')+(tm?esc(Math.ceil(+tm))+'s':esc(w.slice(1).join(' ').split(' ·')[0]))+'</b>'; };
-    const h=Math.ceil(buffs.length/2); $('#buffs').innerHTML=buffs.slice(0,h).map(chip).join(''); $('#buffsR').innerHTML=buffs.slice(h).map(chip).join(''); });
+    $('#buffs').innerHTML=buffs.map(chip).join(''); });
+  // INCOMING: a boss, mini-boss or elite winding up, or a heavy blow (a fifth of your max HP) marked on the ground
+  const big=e=>e&&(e.def.boss||e.def.bossId||e.def.mini||e.elite);
+  const inc=b.phase==='fight'&&(alive().some(e=>big(e)&&e.freezeT<=0&&e.stunT<=0&&(e.windT>0||e.casting||e.nextMove&&e.atkT<1.2))||b.teles.some(t=>!t.friendly&&(big(t.owner)||(t.dmg||0)>=p.maxHp*.2)));
+  set('incoming',inc,()=>{ $('#incoming').hidden=!inc; });
   set('queue',pl.queue.map(c=>c.uid+':'+(c.left==null?'':c.left)+(c.frozenT>0?'f':'')).join(',')+'|'+alive().map(e=>e.markT>0?e.mark:'').join(','),()=>{
     const row=$('#queueRow'); row.innerHTML='';
-    const locked=pl.queue.filter(c=>c.combo), cb=$('#comboBar');
-    cb.hidden=!locked.length; if(locked.length) cb.textContent='✦ '+(pl.combos||[]).map(c=>c.label.split(':')[0]).join(' · ');
+    const locked=pl.queue.filter(c=>c.combo), cb=$('#pileCombo');
+    cb.classList.toggle('on',!!locked.length); cb.textContent=locked.length?'✦ '+(pl.combos||[]).map(c=>c.label.split(':')[0]).join(' · '):'No combo';
     for(let i=0;i<Math.max(RULES.slots,pl.queue.length);i++){ const inst=pl.queue[i], d=document.createElement('div');
       d.className='qslot'+(inst?' full':'')+(i===0&&inst?' next':'')+(inst&&inst.combo?' combo':'')+(inst&&inst.frozenT>0?' frozen':'');
       const rx=inst&&inst.card.pow&&reactWith(inst.card.color); if(rx){ d.classList.add('react'); d.style.setProperty('--xc',rx.c); }
       if(inst){ const c=inst.card, uses=c.uses&&!inst.temp?' '+chargeBadge(inst.left==null?c.uses:inst.left,c.uses):'', R=ROLES[cardRole(c)]; d.style.setProperty('--c',COLORS[c.color].c); d.style.setProperty('--rc',R.c);
-        d.innerHTML=`<span class="role">${R.icon} ${R.name}${rx?`<span class="rx">✦ ${rx.name}</span>`:''}</span><span class="nm">${inst.frozenT>0?'❄ ':''}${esc(c.name)}${uses}${inst.temp&&!inst.recipe?' (copy)':''}</span>`; }
+        d.innerHTML=`${i===0?'<span class="nxt">NEXT</span>':''}<span class="role" title="${R.name}">${R.icon}${rx?`<span class="rx">✦ ${rx.name}</span>`:''}</span><span class="nm">${inst.frozenT>0?'❄ ':''}${esc(c.name)}${uses}${inst.temp&&!inst.recipe?' (copy)':''}</span>`;
+        if(i>0) d.addEventListener('pointerdown',e=>{ e.preventDefault(); const why=bringNext(pl,i); if(why) tip(why); else { buzz(8); hud(); } }); }   // the slot is redrawn at once, so no click follow-up
       else d.textContent='—';
       row.appendChild(d); }
-    const nx=pl.queue[0], NR=nx&&ROLES[cardRole(nx.card)]; $('#castName').textContent=nx?NR.icon+' '+nx.card.name:'queue empty';
+    const nx=pl.queue[0], NR=nx&&ROLES[cardRole(nx.card)]; $('#castName').textContent=nx?nx.card.name:'Queue empty';
     $('#btnCast').style.setProperty('--rc',NR?NR.c:'transparent'); $('#btnCast').classList.toggle('role',!!NR);
     $('#btnCast').disabled=!pl.queue.length;
   });
+  // instants: a column of buttons up the side of the board (Settings › Instant buttons: right or left)
   set('inst',pl.hand.filter(c=>isInstant(c.card)).map(c=>c.uid).join(',')+'|'+b.phase,()=>{ const row=$('#instRow'), ins=pl.hand.filter(c=>isInstant(c.card));
     row.hidden=!ins.length||b.phase!=='fight'; row.innerHTML='';
-    ins.forEach(inst=>{ const bt=document.createElement('button'), c=inst.card; bt.className='btn inst'; bt.style.setProperty('--c',COLORS[c.color].c);
-      bt.innerHTML=`✧ ${esc(c.name)}`; pressBtn(bt,()=>tapInstant(inst)); row.appendChild(bt); }); });
+    ins.forEach(inst=>{ const bt=document.createElement('button'), c=inst.card, R=ROLES[cardRole(c)]; bt.className='btn inst'; bt.style.setProperty('--c',COLORS[c.color].c); bt.title=c.name;
+      bt.innerHTML=`<span class="iic">${R.icon}</span><span class="inm">${esc(c.name)}</span>`; pressBtn(bt,()=>tapInstant(inst)); row.appendChild(bt); }); });
   set('ace',b.sidearm?b.sidearm.name+'|'+b.sidearm.mult.toFixed(1)+'|'+b.sidearm.shape:'',()=>{ const bt=$('#btnAce'), s=b.sidearm;
     bt.hidden=!s;
     if(s){ $('#aceName').textContent='×'+s.mult.toFixed(1); bt.title=s.name+' ×'+s.mult.toFixed(1); bt.style.setProperty('--k',((s.mult-1)/(ACE_MAX-1)*100).toFixed(0)+'%'); bt.classList.toggle('hot',s.mult>=2); } });
   set('soul',b.soul?[Math.round(b.soul.charge),Math.ceil(b.soul.unisonT),soulReady(),(pl.queue[0]||{}).uid].join('|'):'',soulHud);
   const canCustom=b.phase==='fight'&&gaugeFull()&&!wandOnly(pl);
-  set('custom',canCustom+'|'+wandOnly(pl),()=>{ const bt=$('#btnCustom'); bt.disabled=!canCustom; bt.classList.toggle('ready',canCustom);
-    $('#custLbl').innerHTML=canCustom?'<span class="cardic"></span>SPELL':'SPELL'; });
+  set('custom',canCustom+'|'+wandOnly(pl),()=>{ for(const bt of [$('#btnCustom'),$('#btnSpell')]){ bt.disabled=!canCustom; bt.classList.toggle('ready',canCustom); } });
 }
 
 /* The Soul: the deck's hero if it holds one, otherwise the hero of the deck's main color.
@@ -1000,6 +1007,7 @@ function pressBtn(el,fn){
   el.addEventListener('contextmenu',e=>e.preventDefault());
 }
 pressBtn($('#btnCustom'),tryCustom);
+pressBtn($('#btnSpell'),tryCustom);
 pressBtn($('#btnSoul'),trySoul);
 pressBtn($('#soulSummon'),()=>{ soulSummon(); soulMenu(false); });
 pressBtn($('#soulUnite'),()=>{ soulUnite(); soulMenu(false); });
@@ -1152,6 +1160,12 @@ const HUD_KEY='hexmancers-hudbar';
 function applyHudStyle(){ let st='panel'; try{ st=localStorage.getItem(HUD_KEY)||'panel'; }catch(e){} document.body.classList.toggle('hudClear',st==='clear'); const b=$('#setHud'); if(b) b.textContent=st==='clear'?'Clear':'Panel'; }
 $('#setHud').onclick=()=>{ const st=document.body.classList.contains('hudClear')?'panel':'clear'; try{ localStorage.setItem(HUD_KEY,st); }catch(e){} applyHudStyle(); };
 applyHudStyle();
+// which side Fire sits on (Cast takes the other), and which edge the instants stack up: for left and right hands
+const SIDE_KEYS={fire:['hexmancers-fireside','left','fireR','#setFire'], inst:['hexmancers-instside','right','instL','#setInst']};
+const sideOf=k=>{ try{ return localStorage.getItem(SIDE_KEYS[k][0])||SIDE_KEYS[k][1]; }catch(e){ return SIDE_KEYS[k][1]; } };
+function applySides(){ for(const k in SIDE_KEYS){ const [,def,cls,btn]=SIDE_KEYS[k], v=sideOf(k); document.body.classList.toggle(cls,v!==def); const b=$(btn); if(b) b.textContent=v==='left'?'Left':'Right'; } }
+for(const k in SIDE_KEYS) $(SIDE_KEYS[k][3]).onclick=()=>{ try{ localStorage.setItem(SIDE_KEYS[k][0],sideOf(k)==='left'?'right':'left'); }catch(e){} applySides(); };
+applySides();
 $('#setXStairs').onclick=()=>{ let on=true; try{ on=localStorage.getItem('hexmancers-xstairs')!=='0'; localStorage.setItem('hexmancers-xstairs',on?'0':'1'); }catch(e){} applyXTips(); if(typeof EX!=='undefined'&&EX&&typeof xMini==='function') xMini(); };
 applyXTips();
 // sound effects in the dungeon (dungeon.js), on unless switched off

@@ -1,0 +1,266 @@
+{
+"fire_normal": [
+365,
+392
+],
+"fire_pressed": [
+367,
+392
+],
+"fire_inactive": [
+367,
+392
+],
+"cast_normal": [
+375,
+395
+],
+"cast_pressed": [
+376,
+395
+],
+"cast_inactive": [
+375,
+395
+],
+"portrait_spell_empty": [
+384,
+263
+],
+"portrait_spell_blue_full": [
+384,
+262
+],
+"portrait_spell_ready_dim": [
+384,
+262
+],
+"portrait_spell_ready_bright": [
+384,
+262
+],
+"landscape_spell_empty": [
+391,
+134
+],
+"landscape_spell_blue_full": [
+391,
+135
+],
+"landscape_spell_ready_dim": [
+391,
+136
+],
+"landscape_spell_ready_bright": [
+391,
+136
+],
+"hp_empty": [
+1094,
+77
+],
+"hp_full": [
+1094,
+77
+],
+"hp_red": [
+1094,
+78
+],
+"spell_track_empty": [
+1094,
+68
+],
+"spell_track_full": [
+1094,
+78
+],
+"spell_top_ready_dim": [
+1116,
+147
+],
+"spell_top_ready_bright": [
+1118,
+149
+],
+"pause_base": [
+239,
+231
+],
+"pause_pressed": [
+240,
+232
+],
+"icon_pause": [
+240,
+259
+],
+"queue_blank": [
+389,
+223
+],
+"queue_selected": [
+422,
+228
+],
+"next_badge": [
+312,
+138
+],
+"instant_blank": [
+290,
+266
+],
+"icon_fire": [
+234,
+269
+],
+"icon_cast": [
+258,
+273
+],
+"icon_judgment": [
+274,
+266
+],
+"icon_shield": [
+253,
+264
+],
+"icon_regrowth": [
+282,
+264
+],
+"icon_courage": [
+287,
+279
+],
+"icon_heal": [
+251,
+241
+],
+"icon_draw": [
+294,
+252
+],
+"icon_instant": [
+209,
+257
+],
+"label_spell_white": [
+354,
+101
+],
+"label_spell_dark": [
+343,
+95
+],
+"label_fire": [
+276,
+103
+],
+"label_cast": [
+305,
+105
+],
+"label_incoming": [
+478,
+99
+],
+"status_courage": [
+189,
+191
+],
+"status_haste": [
+172,
+180
+],
+"status_shield": [
+158,
+186
+],
+"status_rooted": [
+206,
+181
+],
+"status_hexed": [
+178,
+195
+],
+"status_burn": [
+158,
+202
+],
+"status_frozen": [
+174,
+193
+],
+"status_stun": [
+171,
+190
+],
+"status_slow": [
+125,
+191
+],
+"status_poison": [
+150,
+198
+],
+"status_curse": [
+165,
+187
+],
+"status_drain": [
+175,
+170
+],
+"status_mend": [
+179,
+173
+],
+"status_confuse": [
+166,
+208
+],
+"status_valor": [
+192,
+223
+],
+"status_wand_power": [
+184,
+202
+],
+"warning_last_charge": [
+164,
+205
+],
+"warning_incoming": [
+188,
+176
+],
+"warning_low_hp": [
+180,
+171
+],
+"warning_low_deck": [
+205,
+202
+],
+"status_ambush": [
+186,
+195
+],
+"status_first_strike": [
+193,
+202
+],
+"status_surprised": [
+167,
+186
+],
+"status_perfect_dodge": [
+194,
+169
+]
+}

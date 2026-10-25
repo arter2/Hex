@@ -929,11 +929,11 @@ function set(key,val,fn){ if(last[key]!==val){ last[key]=val; fn(val); } }
 function hud(force){
   const b=B; if(!b) return; if(force) for(const k in last) delete last[k];
   const p=b.player, pl=b.piles;
-  set('hp',p.hp+'/'+p.maxHp,()=>{ hpMeter($('#hpBar'),$('#hpTxt'),p.hp,p.maxHp); $('#hpNum').textContent=Math.max(0,Math.ceil(p.hp))+' / '+p.maxHp; });
+  set('hp',p.hp+'/'+p.maxHp,()=>{ hpMeter($('#hpBar'),$('#hpTxt'),p.hp,p.maxHp); $('#hpBar').parentElement.style.setProperty('--k',Math.max(0,Math.min(1,p.hp/p.maxHp)).toFixed(3)); $('#hpNum').textContent=Math.max(0,Math.ceil(p.hp))+' / '+p.maxHp; });
   set('run',runBlocked()?0:1,()=>{ $('#btnRun').hidden=!!runBlocked(); });
   set('depth',b.depth+'|'+Math.ceil(b.wave),()=>{ const t=$('#depthTxt'); t.textContent='D'+b.depth+(b.waves.length>1?' · W'+(Math.ceil(b.wave)+1)+'/'+b.waves.length:''); t.title='Depth '+b.depth+' · '+areaOf(b.depth).name; t.style.color=areaOf(b.depth).glow; });
   set('piles',pl.draw.length+'|'+pl.hand.length+'|'+pl.discard.length+'|'+wandOnly(pl),()=>{ $('#pileDeck').textContent=wandOnly(pl)?'Deck empty · wand only':'Deck '+pl.draw.length; $('#pileHand').textContent='Hand '+pl.hand.length; });   // what you have used: on the Spell screen
-  set('gauge',Math.round(b.gauge*10),()=>{ const w=(b.gauge/GAUGE_MAX*100)+'%'; $('#gaugeBar').style.width=w; $('#gaugeBar2').style.width=w; });
+  set('gauge',Math.round(b.gauge*10),()=>{ const k=Math.max(0,Math.min(1,b.gauge/GAUGE_MAX)).toFixed(3); $('#btnCustom').style.setProperty('--k',k); $('#btnSpell').style.setProperty('--k',k); });
   const buffs=[]; if(p.barrier>0) buffs.push('🛡 '+Math.ceil(p.barrier)+' · '+Math.ceil(p.shieldT)+'s'); if(p.dodge) buffs.push('💨 Dodge'); if(p.invT>0) buffs.push('🌀 Phase');
   if(p.setT>0) buffs.push('ᚱ Wand ×2.5 '+Math.ceil(p.setT)+'s'); else if(p.powerT>0) buffs.push('⚡ Wand ×1.8 '+Math.ceil(p.powerT)+'s'); if(p.pactT>0) buffs.push('☾ Pact '+Math.ceil(p.pactT)+'s'); if(p.courageT>0) buffs.push('☀ Courage '+Math.ceil(p.courageT)+'s'); if(p.intervene) buffs.push('✟ Intervention');
   if(p.hero&&p.hero.hp>0) buffs.unshift('♔ '+p.hero.card.name.split(',')[0]+' · '+Math.ceil(p.hero.life)+'s');
@@ -942,7 +942,7 @@ function hud(force){
   if(p.hasteT>0) buffs.push('🌬 Haste '+Math.ceil(p.hasteT)+'s'); if(p.regenT>0) buffs.push('🌿 Regen '+Math.ceil(p.regenT)+'s');
   // status: an icon and its time in a row under the top bar (the full text on a long press, as a title)
   set('buffs',buffs.join('|'),()=>{ const chip=t=>{ const w=t.replace(/ \(.*\)$/,'').split(' '), ic=w[0], tm=(t.match(/([\d.]+)s\b/)||[])[1], n=(t.match(/^\S+ (\d+) ·/)||[])[1];
-      return '<b title="'+esc(t)+'"><em>'+esc(ic)+'</em>'+(n?esc(n)+' ':'')+(tm?esc(Math.ceil(+tm))+'s':esc(w.slice(1).join(' ').split(' ·')[0]))+'</b>'; };
+      return '<b title="'+esc(t)+'">'+(statusArt(t)?'<img class="sic" alt="" src="ui/'+statusArt(t)+'.svg">':'<em>'+esc(ic)+'</em>')+(n?esc(n)+' ':'')+(tm?esc(Math.ceil(+tm))+'s':esc(w.slice(1).join(' ').split(' ·')[0]))+'</b>'; };
     $('#buffs').innerHTML=buffs.map(chip).join(''); });
   // INCOMING: a boss, mini-boss or elite winding up, or a heavy blow (a fifth of your max HP) marked on the ground
   const big=e=>e&&(e.def.boss||e.def.bossId||e.def.mini||e.elite);
@@ -956,7 +956,7 @@ function hud(force){
       d.className='qslot'+(inst?' full':'')+(i===0&&inst?' next':'')+(inst&&inst.combo?' combo':'')+(inst&&inst.frozenT>0?' frozen':'');
       const rx=inst&&inst.card.pow&&reactWith(inst.card.color); if(rx){ d.classList.add('react'); d.style.setProperty('--xc',rx.c); }
       if(inst){ const c=inst.card, uses=c.uses&&!inst.temp?' '+chargeBadge(inst.left==null?c.uses:inst.left,c.uses):'', R=ROLES[cardRole(c)]; d.style.setProperty('--c',COLORS[c.color].c); d.style.setProperty('--rc',R.c);
-        d.innerHTML=`${i===0?'<span class="nxt">NEXT</span>':''}<span class="role" title="${R.name}">${R.icon}${rx?`<span class="rx">✦ ${rx.name}</span>`:''}</span><span class="nm">${inst.frozenT>0?'❄ ':''}${esc(c.name)}${uses}${inst.temp&&!inst.recipe?' (copy)':''}</span>`;
+        d.innerHTML=`${i===0?'<span class="nxt">NEXT</span>':''}<span class="role" title="${R.name}"><img class="qic" alt="${R.name}" src="ui/${cardArt(c)}.svg">${rx?`<span class="rx">✦ ${rx.name}</span>`:''}</span><span class="nm">${inst.frozenT>0?'❄ ':''}${esc(c.name)}${uses}${inst.temp&&!inst.recipe?' (copy)':''}</span>`;
         if(i>0) d.addEventListener('pointerdown',e=>{ e.preventDefault(); const why=bringNext(pl,i); if(why) tip(why); else { buzz(8); hud(); } }); }   // the slot is redrawn at once, so no click follow-up
       else d.textContent='—';
       row.appendChild(d); }
@@ -968,7 +968,7 @@ function hud(force){
   set('inst',pl.hand.filter(c=>isInstant(c.card)).map(c=>c.uid).join(',')+'|'+b.phase,()=>{ const row=$('#instRow'), ins=pl.hand.filter(c=>isInstant(c.card));
     row.hidden=!ins.length||b.phase!=='fight'; row.innerHTML='';
     ins.forEach(inst=>{ const bt=document.createElement('button'), c=inst.card, R=ROLES[cardRole(c)]; bt.className='btn inst'; bt.style.setProperty('--c',COLORS[c.color].c); bt.title=c.name;
-      bt.innerHTML=`<span class="iic">${R.icon}</span><span class="inm">${esc(c.name)}</span>`; pressBtn(bt,()=>tapInstant(inst)); row.appendChild(bt); }); });
+      bt.innerHTML=`<img class="iic" alt="" src="ui/${cardArt(c)}.svg"><span class="inm">${esc(c.name)}</span>`; pressBtn(bt,()=>tapInstant(inst)); row.appendChild(bt); }); });
   set('ace',b.sidearm?b.sidearm.name+'|'+b.sidearm.mult.toFixed(1)+'|'+b.sidearm.shape:'',()=>{ const bt=$('#btnAce'), s=b.sidearm;
     bt.hidden=!s;
     if(s){ $('#aceName').textContent='×'+s.mult.toFixed(1); bt.title=s.name+' ×'+s.mult.toFixed(1); bt.style.setProperty('--k',((s.mult-1)/(ACE_MAX-1)*100).toFixed(0)+'%'); bt.classList.toggle('hot',s.mult>=2); } });
@@ -976,6 +976,13 @@ function hud(force){
   const canCustom=b.phase==='fight'&&gaugeFull()&&!wandOnly(pl);
   set('custom',canCustom+'|'+wandOnly(pl),()=>{ for(const bt of [$('#btnCustom'),$('#btnSpell')]){ bt.disabled=!canCustom; bt.classList.toggle('ready',canCustom); } });
 }
+
+// the skin's status icon for a status chip (ui/status_*.svg), by the chip's symbol and words
+const STATUS_ART={'🛡':'status_shield','💨':'status_perfect_dodge','🌀':'status_perfect_dodge','ᚱ':'status_wand_power','⚡':'status_wand_power','☾':'status_drain','☀':'status_courage','✟':'status_valor','♔':'status_valor','❦':'status_rooted','🌬':'status_haste','🌿':'status_mend'};
+function statusArt(t){ if(/Hexed/.test(t)) return 'status_hexed'; return STATUS_ART[t.split(' ')[0]]||''; }
+// the skin's icon for a card's role (queue tiles and instants)
+const ROLE_ART={attack:'icon_judgment',defense:'icon_shield',turret:'icon_regrowth',status:'icon_courage'};
+function cardArt(c){ if(c.type==='instant'){ const t=(typeof cardText==='function'?cardText(c):'')+' '+(c.util||''); if(/\bheal|restore/i.test(t)) return 'icon_heal'; if(/\bdraw/i.test(t)) return 'icon_draw'; } return ROLE_ART[cardRole(c)]||'icon_courage'; }
 
 /* The Soul: the deck's hero if it holds one, otherwise the hero of the deck's main color.
    It stays beside the fight (left of the board) instead of being drawn as a card. */

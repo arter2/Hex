@@ -1638,7 +1638,7 @@ body.wide #scrBattle #hudBottom{position:absolute; left:0; right:0; bottom:0; z-
 body.wide #scrBattle #hudBottom .bctl{grid-template-columns:minmax(0,1fr) minmax(0,min(560px,46vw)) minmax(0,1fr); grid-template-areas:"fire queue cast" "fire spell cast"; align-items:end; gap:6px 10px;}
 body.wide.fireR #scrBattle #hudBottom .bctl{grid-template-areas:"cast queue fire" "cast spell fire";}
 body.wide #scrBattle #hudBottom .bctl>*, body.wide #scrBattle #hudBottom #instRow{pointer-events:auto;}
-body.wide #scrBattle #hudBottom #btnWand, body.wide #scrBattle #hudBottom #btnCast{position:static; width:min(160px,19vw); min-height:150px; align-self:end;}
+body.wide #scrBattle #hudBottom #btnWand, body.wide #scrBattle #hudBottom #btnCast{position:relative; width:min(160px,19vw); min-height:150px; align-self:end;}
 body.wide #scrBattle #hudBottom #btnWand{justify-self:start;} body.wide #scrBattle #hudBottom #btnCast{justify-self:end;}
 body.wide.fireR #scrBattle #hudBottom #btnWand{justify-self:end;} body.wide.fireR #scrBattle #hudBottom #btnCast{justify-self:start;}
 body.wide #scrBattle #hudBottom #queueRow{grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px;}
@@ -1653,3 +1653,103 @@ body.wide.h460 #scrBattle #hudBottom .bctl .bic{font-size:28px; padding-top:4px;
 body.wide.h460 #scrBattle #hudBottom .qslot{min-height:44px; padding-top:6px;} body.wide.h460 #scrBattle #hudBottom .qslot .role{font-size:16px;} body.wide.h460 #scrBattle #hudBottom #btnSpell{min-height:42px;} body.wide.h460 #scrBattle #hudBottom #btnSpell span{font-size:26px;}
 body.wide.h460 #scrBattle #hudBottom .inst-row .btn.inst{width:54px; min-height:52px;} body.wide.h460 #scrBattle #hudBottom .inst .iic{font-size:20px;}
 body.wide.h460 #scrBattle #hudTop #btnMenu{width:48px; height:48px;}
+
+/* ---------------- the HUD skin (v137): the rock-and-metal art from the approved mock-ups, as pixel-exact SVGs in ui/
+   (tools/ui-svg.py cuts them out of the key-green export). Bars, queue tiles and instants stretch from the middle
+   (9-slice: border-image) so their corners keep their shape at any size; Fire, Cast, Spell and pause keep their drawn
+   shape and scale whole. A fill (HP, the Spell timer) is the full piece laid over the empty one and clipped by --k. */
+.ui9{position:absolute; inset:0; box-sizing:border-box; border-style:solid; border-color:transparent; pointer-events:none;}
+/* HP: the empty bar, the full one (red when low) clipped from the right */
+#hudTop .hp .meter.big.hpmeter{height:24px; background:none; box-shadow:none; border-radius:0; overflow:visible;}
+#hudTop .hpmeter::before{content:''; position:absolute; inset:0; box-sizing:border-box; border:solid transparent; border-width:6px 12px; border-image:url(ui/hp_empty.svg) 20 40 fill / 6px 12px;}
+#hudTop .hpmeter #hpBar{position:absolute; inset:0; width:auto!important; height:auto; background:none!important; border-radius:0!important; box-sizing:border-box; border:solid transparent; border-width:6px 12px;
+  border-image:url(ui/hp_full.svg) 20 40 fill / 6px 12px; clip-path:inset(0 calc((1 - var(--k,1)) * 100%) 0 0); transition:clip-path .15s;}
+#hudTop .hpmeter.low #hpBar{border-image-source:url(ui/hp_red.svg);}
+/* the top Spell timer: the empty track, the full one clipped; ready: the big gold bar, pulsing dim to bright */
+#hudTop #btnCustom.custgauge{height:22px; margin:2px 0 0; padding:0; border:0!important; border-image:none; background:none!important; box-shadow:none!important; overflow:visible; animation:none!important; transform:none;}
+#hudTop #btnCustom.custgauge::before, #hudTop #btnCustom.custgauge::after{content:''; position:absolute; inset:0; box-sizing:border-box; border:solid transparent; border-width:5px 12px; pointer-events:none;}
+#hudTop #btnCustom.custgauge::before{border-image:url(ui/spell_track_empty.svg) 18 40 fill / 5px 12px;}
+#hudTop #btnCustom.custgauge #gaugeBar{inset:0; width:auto!important; border-radius:0; opacity:1; box-sizing:border-box; border:solid transparent; border-width:5px 12px; background:none;
+  border-image:url(ui/spell_track_full.svg) 20 40 fill / 5px 12px; clip-path:inset(0 calc((1 - var(--k,0)) * 100%) 0 0); transition:clip-path .15s;}
+#hudTop #btnCustom.custgauge #custLbl, #hudBottom #btnSpell span{font-size:0!important; color:transparent; background:url(ui/label_spell_white.svg) center/contain no-repeat; z-index:1;}
+#hudTop #btnCustom.custgauge #custLbl{width:44px; height:13px;}
+#hudTop #btnCustom.custgauge.ready{height:34px; margin-top:0;}
+#hudTop #btnCustom.custgauge.ready::before{border-width:7px 12px; border-image:url(ui/spell_top_ready_dim.svg) 30 42 fill / 7px 12px;}
+#hudTop #btnCustom.custgauge.ready::after{border-width:7px 12px; border-image:url(ui/spell_top_ready_bright.svg) 30 42 fill / 7px 12px; animation:skinPulse .9s ease-in-out infinite alternate;}
+#hudTop #btnCustom.custgauge.ready #gaugeBar{opacity:0;}
+#hudTop #btnCustom.custgauge.ready #custLbl{width:68px; height:20px; background-image:url(ui/label_spell_dark.svg);}
+@keyframes skinPulse{from{opacity:0;} to{opacity:1;}}
+/* pause */
+#hudTop #btnMenu{width:56px; height:auto; aspect-ratio:239/231; align-self:start; border:0!important; border-radius:0; box-shadow:none; background:url(ui/pause_base.svg) center/100% 100% no-repeat!important;}
+#hudTop #btnMenu:active{background-image:url(ui/pause_pressed.svg)!important;}
+#hudTop .pauseic{width:46%; height:46%; border:0; filter:none; background:url(ui/icon_pause.svg) center/contain no-repeat;}
+/* status and INCOMING */
+#hudTop .bufs b img.sic{width:24px; height:24px; object-fit:contain;}
+#hudTop .incoming{gap:6px; animation:incPulse .5s ease-in-out infinite alternate;}
+#hudTop .incoming .wic{width:24px; height:24px; background:url(ui/warning_incoming.svg) center/contain no-repeat;}
+#hudTop .incoming .wlab{width:97px; height:20px; font-size:0; background:url(ui/label_incoming.svg) center/contain no-repeat;}
+
+/* Fire and Cast: the corner art on a layer of its own (mirrored when they swap sides), icon and label on top */
+#hudBottom #btnWand, #hudBottom #btnCast{position:relative; min-height:0; height:auto; padding:0 0 9% 0; border:0!important; border-image:none!important; border-radius:0!important; background:none!important; box-shadow:none!important; justify-content:flex-end; gap:2%; overflow:visible; filter:none;}
+#hudBottom #btnWand{aspect-ratio:365/392;} #hudBottom #btnCast{aspect-ratio:375/395;}
+#hudBottom #btnWand::before, #hudBottom #btnCast::before{content:''; position:absolute; inset:0; z-index:-1; background:center/100% 100% no-repeat;}
+#hudBottom .bctl{isolation:isolate;}
+#hudBottom #btnWand::before{background-image:url(ui/fire_normal.svg);} #hudBottom #btnWand.charging::before{background-image:url(ui/fire_pressed.svg);}
+#hudBottom #btnCast::before{background-image:url(ui/cast_normal.svg);} #hudBottom #btnCast:active::before{background-image:url(ui/cast_pressed.svg);}
+#hudBottom #btnCast:disabled{filter:none;} #hudBottom #btnCast:disabled::before{background-image:url(ui/cast_inactive.svg);}
+body.fireR #hudBottom #btnWand::before, body.fireR #hudBottom #btnCast::before{transform:scaleX(-1);}
+#hudBottom #btnWand .bic, #hudBottom #btnCast .bic{width:34%; aspect-ratio:1; margin:auto 0 0; padding:0; font-size:0; background:center/contain no-repeat;}
+#hudBottom #btnWand .bic{background-image:url(ui/icon_fire.svg); filter:none;} #hudBottom #btnCast .bic{background-image:url(ui/icon_cast.svg); text-shadow:none;}
+#hudBottom #btnWand b, #hudBottom #btnCast b{width:62%; aspect-ratio:290/104; font-size:0!important; background:center/contain no-repeat;}
+#hudBottom #btnWand b{background-image:url(ui/label_fire.svg);} #hudBottom #btnCast b{background-image:url(ui/label_cast.svg);}
+#hudBottom #btnWand small{display:none;}
+#hudBottom #btnCast small{font-size:12px; line-height:1.1; text-shadow:0 2px 0 #000; max-width:78%;}
+#hudBottom #btnCast:disabled .bic, #hudBottom #btnCast:disabled b{opacity:.55;}
+/* the big Spell button: its drawn shape, blue rising from the base as the timer fills, gold and pulsing when ready */
+#hudBottom #btnSpell{min-height:0; height:auto; aspect-ratio:384/263; border:0!important; border-radius:0; box-shadow:none!important; animation:none!important; background:url(ui/portrait_spell_empty.svg) center/100% 100% no-repeat!important; overflow:visible;}
+#hudBottom #btnSpell #gaugeBar2{inset:0; width:auto!important; background:url(ui/portrait_spell_blue_full.svg) center/100% 100% no-repeat; clip-path:inset(calc((1 - var(--k,0)) * 100%) 0 0 0); transition:clip-path .15s;}
+#hudBottom #btnSpell::before, #hudBottom #btnSpell::after{content:''; position:absolute; inset:0; background:center/100% 100% no-repeat; opacity:0; pointer-events:none;}
+#hudBottom #btnSpell.ready::before{background-image:url(ui/portrait_spell_ready_dim.svg); opacity:1;}
+#hudBottom #btnSpell.ready::after{background-image:url(ui/portrait_spell_ready_bright.svg); animation:skinPulse .9s ease-in-out infinite alternate;}
+#hudBottom #btnSpell.ready #gaugeBar2{opacity:0;}
+#hudBottom #btnSpell span{position:relative; width:52%; aspect-ratio:354/101;}
+#hudBottom #btnSpell.ready span{background-image:url(ui/label_spell_dark.svg);}
+body.wide #hudBottom #btnSpell{aspect-ratio:391/134; background-image:url(ui/landscape_spell_empty.svg)!important;}
+body.wide #hudBottom #btnSpell #gaugeBar2{background-image:url(ui/landscape_spell_blue_full.svg);}
+body.wide #hudBottom #btnSpell.ready::before{background-image:url(ui/landscape_spell_ready_dim.svg);} body.wide #hudBottom #btnSpell.ready::after{background-image:url(ui/landscape_spell_ready_bright.svg);}
+body.wide #hudBottom #btnSpell span{width:36%;}
+/* queue tiles (9-slice), the NEXT one gold with its badge */
+#hudBottom .qslot, #hudBottom .qslot.full, #hudBottom .qslot.next{border:solid transparent!important; border-width:7px 11px 11px!important; border-radius:0; background:none!important; box-shadow:none!important; outline:none;
+  border-image:url(ui/queue_blank.svg) 40 66 66 66 fill / 7px 11px 11px!important; padding:2px 0 0; min-height:52px; gap:1px;}
+#hudBottom .qslot.next{border-image-source:url(ui/queue_selected.svg)!important;}
+#hudBottom .qslot.combo{filter:drop-shadow(0 0 5px #ffe066);} #hudBottom .qslot.react{filter:drop-shadow(0 0 6px var(--xc)); animation:none;}
+#hudBottom .qslot .qic{width:22px; height:22px; object-fit:contain; display:block;}
+#hudBottom .qslot .role{display:flex; justify-content:center;}
+#hudBottom .qslot .nm{font-size:12px; text-shadow:0 1px 0 #000;}
+#hudBottom .qslot .nxt{top:-17px; width:44px; height:20px; padding:0; border-radius:0; box-shadow:none; font-size:0; background:url(ui/next_badge.svg) center/contain no-repeat;}
+/* instants (9-slice) with their ⚡ marks */
+#hudBottom .inst-row .btn.inst{border:solid transparent!important; border-width:10px!important; border-radius:0; background:none!important; box-shadow:none!important; padding:0; width:64px; min-height:62px;
+  border-image:url(ui/instant_blank.svg) 50 56 60 56 fill / 10px!important; filter:drop-shadow(0 0 5px color-mix(in srgb,var(--c) 60%,transparent));}
+#hudBottom .inst-row .btn.inst::after{content:''; top:-4px; right:-4px; width:13px; height:16px; background:url(ui/icon_instant.svg) center/contain no-repeat;}
+#hudBottom .inst-row .btn.inst::before{content:''; position:absolute; top:-4px; left:-4px; width:13px; height:16px; background:url(ui/icon_instant.svg) center/contain no-repeat;}
+#hudBottom .inst .iic{width:26px; height:26px; object-fit:contain;}
+#hudBottom .inst .inm{font-size:11px;}
+
+/* portrait layout for the skin: the queue spans above Fire and Cast's curved tops, Spell between them below */
+#hudBottom .bctl{grid-template-columns:30% minmax(0,1fr) 30%; grid-template-areas:"queue queue queue" "fire spell cast"; gap:6px 4px; align-items:end;}
+body.fireR #hudBottom .bctl{grid-template-areas:"queue queue queue" "cast spell fire";}
+#hudBottom #queueRow{padding:0 17%; position:relative; z-index:2;}
+#hudBottom #btnWand, #hudBottom #btnCast{margin-top:-58px; align-self:end;}
+#hudBottom #btnSpell{align-self:end; margin-bottom:4px;}
+body.wide #scrBattle #hudBottom .bctl{grid-template-columns:minmax(0,1fr) minmax(0,min(30vw,420px)) minmax(0,1fr); grid-template-areas:"queue queue queue" "fire spell cast";}
+body.wide.fireR #scrBattle #hudBottom .bctl{grid-template-areas:"queue queue queue" "cast spell fire";}
+body.wide #scrBattle #hudBottom #queueRow{padding:0; width:min(48vw,620px); justify-self:center;}
+body.wide #scrBattle #hudBottom #btnWand, body.wide #scrBattle #hudBottom #btnCast{min-height:0; width:min(160px,19vw); margin-top:-60px;}
+body.wide.h460 #scrBattle #hudBottom #btnWand, body.wide.h460 #scrBattle #hudBottom #btnCast{min-height:0; width:min(124px,16vw);}
+body.wide.h460 #scrBattle #hudBottom #btnSpell{min-height:0;} body.wide.h460 #scrBattle #hudBottom .qslot{min-height:44px;}
+/* the footer sits between Fire and Cast's lower ends; the card name inside Cast clears its frame */
+#hudBottom .bctl{margin-bottom:-16px;}
+#hudBottom .pilerow{position:relative; z-index:3; margin:4px 30% 0; gap:10px; font-size:13px; white-space:nowrap; justify-content:center; min-height:18px;}
+#hudBottom #btnWand, #hudBottom #btnCast{padding-bottom:15%;}
+#hudBottom #btnCast small{margin-top:-2px;}
+body.wide #scrBattle #hudBottom .pilerow{margin:4px auto 0; width:min(30vw,420px);}

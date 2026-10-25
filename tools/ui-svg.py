@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""python3 tools/ui-svg.py <unzipped hexmancers-ui-keygreen folder> [out=game/ui] [names|all|used] [--div N] [--nearest] [--colors K]
+"""python3 tools/ui-svg.py <unzipped hexmancers-ui-keygreen folder> [out=game/ui] [names|all|used] [--div N] [--method box|nearest|lanczos] [--colors K]
 
 Cuts the HUD art out of the key-green export and writes each piece as a pixel-exact SVG:
   - the export is a whole-pixel 2x enlargement, so every other pixel is the art's own pixel;
@@ -9,8 +9,8 @@ Cuts the HUD art out of the key-green export and writes each piece as a pixel-ex
   - each colour becomes one <path> of 1-pixel-tall runs, drawn with crispEdges, so the SVG scales to
     any size and still shows the art's exact pixels.
   - --div N makes it real pixel art first: the art is shrunk N times (each new pixel the average of an NxN block,
-    see-through where under half of the block is art; with --nearest each new pixel is the one at the middle of its
-    block instead, no blending), then cut to K colours (default 32, no dithering), so it
+    see-through where under half of the block is art; --method nearest takes the pixel at the middle of its block,
+    no blending; --method lanczos is a sharper filtered shrink, see-through below half cover), then cut to K colours (default 32, no dithering), so it
     has big clean pixels, few colours and a small SVG.
 With no names (or "used") it writes the pieces the battle HUD uses (USED below)."""
 import sys, os, json, numpy as np
@@ -19,9 +19,9 @@ USED=('fire_normal fire_pressed fire_inactive cast_normal cast_pressed cast_inac
  'portrait_spell_empty portrait_spell_blue_full portrait_spell_ready_dim portrait_spell_ready_bright '
  'landscape_spell_empty landscape_spell_blue_full landscape_spell_ready_dim landscape_spell_ready_bright '
  'hp_empty hp_full hp_red spell_track_empty spell_track_full spell_top_ready_dim spell_top_ready_bright '
- 'pause_base pause_pressed icon_pause queue_blank queue_selected next_badge instant_blank '
- 'icon_fire icon_cast icon_judgment icon_shield icon_regrowth icon_courage icon_heal icon_draw icon_instant '
- 'label_spell_white label_spell_dark label_fire label_cast label_incoming').split()
+ 'pause_base pause_pressed icon_pause queue_blank queue_selected instant_blank '
+ 'icon_fire icon_cast icon_judgment icon_shield icon_regrowth icon_courage icon_heal icon_draw icon_instant'
+ ).split()   # the words (FIRE, CAST, SPELL, NEXT, INCOMING) are real text in the game's font, not art
 def cut(src,name):
     a=np.array(Image.open(f'{src}/individual/{name}.png').convert('RGB'))[::2,::2].astype(int)
     r,g,b=a[...,0],a[...,1],a[...,2]
@@ -34,9 +34,14 @@ def cut(src,name):
     bg|=(g>200)&(r<90)&(b<90)
     ys,xs=np.where(~bg); y0,y1,x0,x1=ys.min(),ys.max()+1,xs.min(),xs.max()+1
     return a[y0:y1,x0:x1].astype(np.uint8), ~bg[y0:y1,x0:x1]
-def pixelate(rgb,on,div,k,nearest=False):
+def pixelate(rgb,on,div,k,method='box'):
     h,w=on.shape; H,W=h//div,w//div
-    if nearest:
+    if method=='lanczos':   # Pillow weights colour by alpha when it resizes RGBA, so the see-through edge doesn't bleed in
+        im=Image.fromarray(np.dstack([rgb,np.where(on,255,0)]).astype(np.uint8),'RGBA').resize((W,H),Image.Resampling.LANCZOS)
+        a=np.array(im); small=a[...,:3]; keep=a[...,3]>=128
+        q=Image.fromarray(small,'RGB').quantize(k,method=Image.Quantize.MEDIANCUT,dither=Image.Dither.NONE).convert('RGB')
+        return np.array(q), keep
+    if method=='nearest':
         c=div//2; small=rgb[c:H*div:div,c:W*div:div][:H,:W].astype(np.uint8); keep=on[c:H*div:div,c:W*div:div][:H,:W]
         q=Image.fromarray(small,'RGB').quantize(k,method=Image.Quantize.MEDIANCUT,dither=Image.Dither.NONE).convert('RGB')
         return np.array(q), keep
@@ -60,8 +65,9 @@ def svg(rgb,on):
 if __name__=='__main__':
     args=sys.argv[1:]; div=k=None
     if '--div' in args: i=args.index('--div'); div=int(args[i+1]); del args[i:i+2]
-    nearest='--nearest' in args
-    if nearest: args.remove('--nearest')
+    method='box'
+    if '--method' in args: i=args.index('--method'); method=args[i+1]; del args[i:i+2]
+    if '--nearest' in args: args.remove('--nearest'); method='nearest'
     if '--colors' in args: i=args.index('--colors'); k=int(args[i+1]); del args[i:i+2]
     src=args[0]; out=args[1] if len(args)>1 else 'game/ui'; pick=args[2] if len(args)>2 else 'used'
     every=[a['name'] for a in json.load(open(src+'/manifest.json'))['assets']]
@@ -69,7 +75,7 @@ if __name__=='__main__':
     os.makedirs(out,exist_ok=True); sizes={}
     for n in names:
         rgb,on=cut(src,n)
-        if div: rgb,on=pixelate(rgb,on,div,k or 32,nearest)
+        if div: rgb,on=pixelate(rgb,on,div,k or 32,method)
         s,wh=svg(rgb,on); open(f'{out}/{n}.svg','w').write(s); sizes[n]=wh
     json.dump(sizes,open(f'{out}/sizes.json','w'),indent=0)
     print(len(names),'pieces')

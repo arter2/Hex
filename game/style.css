@@ -1757,3 +1757,18 @@ body.wide.h460 #scrBattle #hudBottom #btnSpell{min-height:0;} body.wide.h460 #sc
 body.wide #scrBattle #hudBottom .pilerow{margin:4px auto 0; width:min(30vw,420px);}
 /* ready: only the art; the pre-skin gold fill and glow (v135) must not show behind it */
 #hudBottom #btnSpell.ready, #hudTop #btnCustom.custgauge.ready{background:none!important; border:0!important; box-shadow:none!important; animation:none!important;}
+/* the words are real text in the game's font (v141), outlined like the art's lettering: white on stone, dark on gold */
+#hudTop #btnCustom.custgauge #custLbl, #hudBottom #btnSpell span, #hudBottom #btnWand b, #hudBottom #btnCast b, #hudTop .incoming .wlab{
+  background:none!important; width:auto!important; height:auto!important; aspect-ratio:auto!important; font-family:var(--font-h); font-weight:400; color:#fff; letter-spacing:1px; line-height:1;
+  text-shadow:2px 0 0 #000,-2px 0 0 #000,0 2px 0 #000,0 -2px 0 #000,2px 2px 0 #000,-2px 2px 0 #000,2px -2px 0 #000,-2px -2px 0 #000,0 4px 0 #000;}
+#hudTop #btnCustom.custgauge #custLbl{font-size:18px!important;}
+#hudTop #btnCustom.custgauge.ready #custLbl{font-size:24px!important;}
+#hudBottom #btnSpell span{font-size:36px!important;}
+body.wide #hudBottom #btnSpell span{font-size:34px!important;}
+#hudBottom #btnWand b, #hudBottom #btnCast b{font-size:32px!important;}
+body.wide.h460 #scrBattle #hudBottom .bctl .btn b{font-size:26px!important;}
+#hudTop #btnCustom.custgauge.ready #custLbl, #hudBottom #btnSpell.ready span{color:#2e1d00!important; text-shadow:1px 1px 0 #fff2b0,-1px -1px 0 #a86a00!important;}
+#hudTop .incoming .wlab{font-size:24px!important; color:#ffcf3a;}
+/* NEXT: a gold badge drawn in CSS (the art's badge has its word painted in) with real text */
+#hudBottom .qslot .nxt{top:-14px; width:auto; height:auto; padding:1px 7px 0; font:400 14px/1 var(--font-h)!important; letter-spacing:1px; color:#2e1d00; background:linear-gradient(#ffe27a,#f2b51c 55%,#c98a0c)!important;
+  border:2px solid #1a1000; clip-path:polygon(5px 0,calc(100% - 5px) 0,100% 5px,100% calc(100% - 5px),calc(100% - 5px) 100%,5px 100%,0 calc(100% - 5px),0 5px); text-shadow:0 1px 0 #fff2b0;}

@@ -1782,3 +1782,16 @@ body.fireR #hudBottom #btnWand b{margin:0 0 0 8%;} body.fireR #hudBottom #btnCas
 body.wide #hudBottom #btnSpell span{font-size:11cqw!important;}
 #hudBottom #btnWand b, #hudBottom #btnCast b, #hudBottom #btnSpell span{text-shadow:1px 0 0 #000,-1px 0 0 #000,0 1px 0 #000,0 -1px 0 #000,1px 1px 0 #000,-1px 1px 0 #000,1px -1px 0 #000,-1px -1px 0 #000,0 2px 0 #000;}
 #hudBottom #btnSpell.ready span{text-shadow:1px 1px 0 #fff2b0,-1px -1px 0 #a86a00!important;}
+/* Fire and Cast (v143): the icon, word and card name sit inside the frame's stone face (the curve and rim take the
+   top and outer side), placed in % of the button and sized from its width (--bw, set by ui.js) */
+#hudBottom #btnWand, #hudBottom #btnCast{--bw:110px; display:block; padding:0;}
+#hudBottom #btnWand .bic, #hudBottom #btnCast .bic{position:absolute; top:31%; width:25%; margin:0; transform:translateX(-50%);}
+#hudBottom #btnWand b, #hudBottom #btnCast b, body.wide.h460 #scrBattle #hudBottom .bctl .btn b{position:absolute; top:58%; margin:0!important; transform:translateX(-50%); font-size:calc(var(--bw) * .14)!important; white-space:nowrap;}
+#hudBottom #btnCast small{position:absolute; top:74%; margin:0; transform:translateX(-50%); width:52%; max-width:none; font-size:max(9px,calc(var(--bw) * .075)); text-align:center;}
+/* Fire's face is to the left (its curve on the right), Cast's to the right; swapped sides mirror */
+#hudBottom #btnWand .bic, #hudBottom #btnWand b{left:41%;} #hudBottom #btnCast .bic, #hudBottom #btnCast b, #hudBottom #btnCast small{left:59%;}
+body.fireR #hudBottom #btnWand .bic, body.fireR #hudBottom #btnWand b{left:59%;} body.fireR #hudBottom #btnCast .bic, body.fireR #hudBottom #btnCast b, body.fireR #hudBottom #btnCast small{left:41%;}
+/* Spell: the word inside the face */
+#hudBottom #btnSpell{--bw:150px;}
+#hudBottom #btnSpell span, body.wide #hudBottom #btnSpell span{font-size:calc(var(--bw) * .15)!important; width:auto; white-space:nowrap;}
+body.wide #hudBottom #btnSpell span{font-size:calc(var(--bw) * .09)!important;}

@@ -1014,6 +1014,9 @@ function pressBtn(el,fn){
   el.addEventListener('contextmenu',e=>e.preventDefault());
 }
 pressBtn($('#btnCustom'),tryCustom);
+// the HUD's big buttons: their drawn width as --bw, so the icon and word inside are sized to fit the frame on any screen
+if(typeof ResizeObserver!=='undefined'){ const ro=new ResizeObserver(es=>{ for(const e of es) e.target.style.setProperty('--bw',e.contentRect.width.toFixed(1)+'px'); });
+  ['#btnWand','#btnCast','#btnSpell'].forEach(q=>ro.observe($(q))); }
 pressBtn($('#btnSpell'),tryCustom);
 pressBtn($('#btnSoul'),trySoul);
 pressBtn($('#soulSummon'),()=>{ soulSummon(); soulMenu(false); });

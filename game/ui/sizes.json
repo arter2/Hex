@@ -1,266 +1,250 @@
 {
 "fire_normal": [
-121,
-130
+118,
+126
 ],
 "fire_pressed": [
-122,
-130
+118,
+126
 ],
 "fire_inactive": [
-122,
-130
+118,
+126
+],
+"fire_arc_empty": [
+118,
+126
+],
+"fire_arc_full": [
+118,
+126
 ],
 "cast_normal": [
-125,
-131
+118,
+126
 ],
 "cast_pressed": [
-125,
-131
+118,
+126
 ],
 "cast_inactive": [
-125,
-131
+118,
+126
 ],
 "portrait_spell_empty": [
-128,
-87
+119,
+37
 ],
 "portrait_spell_blue_full": [
-128,
-87
+119,
+37
 ],
 "portrait_spell_ready_dim": [
-128,
-87
+119,
+37
 ],
 "portrait_spell_ready_bright": [
-128,
-87
+119,
+37
 ],
 "landscape_spell_empty": [
-130,
-44
+119,
+26
 ],
 "landscape_spell_blue_full": [
-130,
-45
+119,
+26
 ],
 "landscape_spell_ready_dim": [
-130,
-45
+119,
+26
 ],
 "landscape_spell_ready_bright": [
-130,
-45
+119,
+26
 ],
 "hp_empty": [
-364,
-25
+365,
+27
 ],
 "hp_full": [
-364,
-25
+365,
+27
 ],
 "hp_red": [
-364,
-26
+365,
+27
 ],
 "spell_track_empty": [
-364,
-22
+365,
+27
 ],
 "spell_track_full": [
-364,
-26
+365,
+27
 ],
 "spell_top_ready_dim": [
-372,
-49
+373,
+51
 ],
 "spell_top_ready_bright": [
-372,
-49
+373,
+51
 ],
 "pause_base": [
-79,
-77
+81,
+78
 ],
 "pause_pressed": [
-80,
-77
-],
-"icon_pause": [
-80,
-86
+81,
+78
 ],
 "queue_blank": [
-129,
-74
-],
-"queue_selected": [
-140,
+118,
 76
 ],
-"next_badge": [
-104,
-46
+"queue_selected": [
+118,
+76
 ],
-"instant_blank": [
-96,
-88
+"icon_pause": [
+81,
+87
 ],
 "icon_fire": [
 78,
-89
+91
 ],
 "icon_cast": [
-86,
+87,
 91
 ],
 "icon_judgment": [
-91,
-88
+92,
+90
 ],
 "icon_shield": [
-84,
-88
+85,
+89
 ],
 "icon_regrowth": [
-94,
+95,
 88
 ],
 "icon_courage": [
-95,
+96,
 93
 ],
 "icon_heal": [
-83,
-80
+85,
+81
 ],
 "icon_draw": [
-98,
-84
-],
-"icon_instant": [
-69,
+99,
 85
 ],
-"label_spell_white": [
-118,
-33
+"icon_instant": [
+71,
+87
 ],
-"label_spell_dark": [
-114,
-31
+"instant_blank": [
+86,
+86
 ],
-"label_fire": [
-92,
-34
+"status_ambush": [
+62,
+66
 ],
-"label_cast": [
-101,
-35
+"status_burn": [
+53,
+68
 ],
-"label_incoming": [
-159,
-33
+"status_confuse": [
+56,
+70
 ],
 "status_courage": [
-63,
+64,
+64
+],
+"status_curse": [
+55,
 63
 ],
-"status_haste": [
-57,
-60
+"status_drain": [
+59,
+57
 ],
-"status_shield": [
-52,
-62
+"status_first_strike": [
+65,
+68
 ],
-"status_rooted": [
-68,
-60
-],
-"status_hexed": [
+"status_frozen": [
 59,
 65
 ],
-"status_burn": [
-52,
+"status_haste": [
+58,
+61
+],
+"status_hexed": [
+60,
+66
+],
+"status_mend": [
+60,
+58
+],
+"status_perfect_dodge": [
+65,
+57
+],
+"status_poison": [
+51,
 67
 ],
-"status_frozen": [
-58,
+"status_rooted": [
+69,
+61
+],
+"status_shield": [
+54,
+63
+],
+"status_slow": [
+43,
 64
 ],
 "status_stun": [
 57,
+64
+],
+"status_surprised": [
+56,
 63
-],
-"status_slow": [
-41,
-63
-],
-"status_poison": [
-50,
-66
-],
-"status_curse": [
-55,
-62
-],
-"status_drain": [
-58,
-56
-],
-"status_mend": [
-59,
-57
-],
-"status_confuse": [
-55,
-69
 ],
 "status_valor": [
 64,
-74
+75
 ],
 "status_wand_power": [
-61,
-67
-],
-"warning_last_charge": [
-54,
+62,
 68
 ],
 "warning_incoming": [
-62,
-58
+64,
+59
+],
+"warning_last_charge": [
+55,
+69
+],
+"warning_low_deck": [
+69,
+68
 ],
 "warning_low_hp": [
 60,
-57
-],
-"warning_low_deck": [
-68,
-67
-],
-"status_ambush": [
-62,
-65
-],
-"status_first_strike": [
-64,
-67
-],
-"status_surprised": [
-55,
-62
-],
-"status_perfect_dodge": [
-64,
-56
+58
 ]
 }

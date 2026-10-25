@@ -1682,7 +1682,7 @@ body.wide.h460 #scrBattle #hudTop #btnMenu{width:48px; height:48px;}
 #hudTop #btnCustom.custgauge.ready #custLbl{width:68px; height:20px; background-image:url(ui/label_spell_dark.svg);}
 @keyframes skinPulse{from{opacity:0;} to{opacity:1;}}
 /* pause */
-#hudTop #btnMenu{width:56px; height:auto; aspect-ratio:239/231; align-self:start; border:0!important; border-radius:0; box-shadow:none; background:url(ui/pause_base.svg) center/100% 100% no-repeat!important;}
+#hudTop #btnMenu{width:56px; height:auto; aspect-ratio:81/78; align-self:start; border:0!important; border-radius:0; box-shadow:none; background:url(ui/pause_base.svg) center/100% 100% no-repeat!important;}
 #hudTop #btnMenu:active{background-image:url(ui/pause_pressed.svg)!important;}
 #hudTop .pauseic{width:46%; height:46%; border:0; filter:none; background:url(ui/icon_pause.svg) center/contain no-repeat;}
 /* status and INCOMING */
@@ -1693,7 +1693,7 @@ body.wide.h460 #scrBattle #hudTop #btnMenu{width:48px; height:48px;}
 
 /* Fire and Cast: the corner art on a layer of its own (mirrored when they swap sides), icon and label on top */
 #hudBottom #btnWand, #hudBottom #btnCast{position:relative; min-height:0; height:auto; padding:0 0 9% 0; border:0!important; border-image:none!important; border-radius:0!important; background:none!important; box-shadow:none!important; justify-content:flex-end; gap:2%; overflow:visible; filter:none;}
-#hudBottom #btnWand{aspect-ratio:365/392;} #hudBottom #btnCast{aspect-ratio:375/395;}
+#hudBottom #btnWand, #hudBottom #btnCast{aspect-ratio:118/126;}
 #hudBottom #btnWand::before, #hudBottom #btnCast::before{content:''; position:absolute; inset:0; z-index:-1; background:center/100% 100% no-repeat;}
 #hudBottom .bctl{isolation:isolate;}
 #hudBottom #btnWand::before{background-image:url(ui/fire_normal.svg);} #hudBottom #btnWand.charging::before{background-image:url(ui/fire_pressed.svg);}
@@ -1708,7 +1708,7 @@ body.fireR #hudBottom #btnWand::before, body.fireR #hudBottom #btnCast::before{t
 #hudBottom #btnCast small{font-size:12px; line-height:1.1; text-shadow:0 2px 0 #000; max-width:78%;}
 #hudBottom #btnCast:disabled .bic, #hudBottom #btnCast:disabled b{opacity:.55;}
 /* the big Spell button: its drawn shape, blue rising from the base as the timer fills, gold and pulsing when ready */
-#hudBottom #btnSpell{min-height:0; height:auto; aspect-ratio:384/263; border:0!important; border-radius:0; box-shadow:none!important; animation:none!important; background:url(ui/portrait_spell_empty.svg) center/100% 100% no-repeat!important; overflow:visible;}
+#hudBottom #btnSpell{min-height:0; height:auto; aspect-ratio:119/37; border:0!important; border-radius:0; box-shadow:none!important; animation:none!important; background:url(ui/portrait_spell_empty.svg) center/100% 100% no-repeat!important; overflow:visible;}
 #hudBottom #btnSpell #gaugeBar2{inset:0; width:auto!important; background:url(ui/portrait_spell_blue_full.svg) center/100% 100% no-repeat; clip-path:inset(calc((1 - var(--k,0)) * 100%) 0 0 0); transition:clip-path .15s;}
 #hudBottom #btnSpell::before, #hudBottom #btnSpell::after{content:''; position:absolute; inset:0; background:center/100% 100% no-repeat; opacity:0; pointer-events:none;}
 #hudBottom #btnSpell.ready::before{background-image:url(ui/portrait_spell_ready_dim.svg); opacity:1;}
@@ -1716,7 +1716,7 @@ body.fireR #hudBottom #btnWand::before, body.fireR #hudBottom #btnCast::before{t
 #hudBottom #btnSpell.ready #gaugeBar2{opacity:0;}
 #hudBottom #btnSpell span{position:relative; width:52%; aspect-ratio:354/101;}
 #hudBottom #btnSpell.ready span{background-image:url(ui/label_spell_dark.svg);}
-body.wide #hudBottom #btnSpell{aspect-ratio:391/134; background-image:url(ui/landscape_spell_empty.svg)!important;}
+body.wide #hudBottom #btnSpell{aspect-ratio:119/26; background-image:url(ui/landscape_spell_empty.svg)!important;}
 body.wide #hudBottom #btnSpell #gaugeBar2{background-image:url(ui/landscape_spell_blue_full.svg);}
 body.wide #hudBottom #btnSpell.ready::before{background-image:url(ui/landscape_spell_ready_dim.svg);} body.wide #hudBottom #btnSpell.ready::after{background-image:url(ui/landscape_spell_ready_bright.svg);}
 body.wide #hudBottom #btnSpell span{width:36%;}
@@ -1733,7 +1733,6 @@ body.wide #hudBottom #btnSpell span{width:36%;}
 #hudBottom .inst-row .btn.inst{border:solid transparent!important; border-width:10px!important; border-radius:0; background:none!important; box-shadow:none!important; padding:0; width:64px; min-height:62px;
   border-image:url(ui/instant_blank.svg) 12 14 15 14 fill / 10px!important; filter:drop-shadow(0 0 5px color-mix(in srgb,var(--c) 60%,transparent));}
 #hudBottom .inst-row .btn.inst::after{content:''; top:-4px; right:-4px; width:13px; height:16px; background:url(ui/icon_instant.svg) center/contain no-repeat;}
-#hudBottom .inst-row .btn.inst::before{content:''; position:absolute; top:-4px; left:-4px; width:13px; height:16px; background:url(ui/icon_instant.svg) center/contain no-repeat;}
 #hudBottom .inst .iic{width:26px; height:26px; object-fit:contain;}
 #hudBottom .inst .inm{font-size:11px;}
 
@@ -1795,25 +1794,16 @@ body.fireR #hudBottom #btnWand .bic, body.fireR #hudBottom #btnWand b{left:59%;}
 #hudBottom #btnSpell{--bw:150px;}
 #hudBottom #btnSpell span, body.wide #hudBottom #btnSpell span{font-size:calc(var(--bw) * .15)!important; width:auto; white-space:nowrap;}
 body.wide #hudBottom #btnSpell span{font-size:calc(var(--bw) * .09)!important;}
-/* Fire's charge meter (v144): while held, the dim frame, with the glowing one sweeping up the curve from the bottom
-   (a conic mask about the frame's square corner, --ch 0..1, set by hud()); full: the whole glow, pulsing */
-#hudBottom #btnWand.chg::before{background-image:url(ui/fire_inactive.svg);}
-#hudBottom #btnWand::after{content:''; position:absolute; inset:0; z-index:-1; pointer-events:none; opacity:0; background:url(ui/fire_pressed.svg) center/100% 100% no-repeat;
-  -webkit-mask:conic-gradient(from 0deg at 6% 94%, transparent calc(90deg - 90deg * var(--ch,0)), #000 0 90deg, transparent 0); mask:conic-gradient(from 0deg at 6% 94%, transparent calc(90deg - 90deg * var(--ch,0)), #000 0 90deg, transparent 0);}
+/* Fire (v147, the tapered pack): the frame with the artist's own empty arc bar over it; held, the hotter pressed frame,
+   and the lit bar is revealed from the bottom bolt up to the top one (a conic mask about the frame's square corner,
+   --ch 0..1 set by hud(); the bar spans 7 to 85 degrees from straight up); full: the whole bar, pulsing.
+   Cast needs no overlay: its frame already has the blue lane lit when a card is queued, and the dark one when not. */
+#hudBottom #btnWand::before{background-image:url(ui/fire_arc_empty.svg),url(ui/fire_normal.svg); background-size:100% 100%;}
+#hudBottom #btnWand.chg::before, #hudBottom #btnWand.charging::before{background-image:url(ui/fire_arc_empty.svg),url(ui/fire_pressed.svg);}
+#hudBottom #btnWand::after{content:''; position:absolute; inset:0; z-index:-1; pointer-events:none; opacity:0; background:url(ui/fire_arc_full.svg) center/100% 100% no-repeat;
+  -webkit-mask:conic-gradient(from 0deg at 2.26% 97.88%, transparent calc(86deg - 79deg * var(--ch,0)), #000 0 100deg, transparent 0);
+  mask:conic-gradient(from 0deg at 2.26% 97.88%, transparent calc(86deg - 79deg * var(--ch,0)), #000 0 100deg, transparent 0);}
 #hudBottom #btnWand.chg::after{opacity:1;}
 #hudBottom #btnWand.chfull::after{-webkit-mask:none; mask:none; animation:chFull .35s ease-in-out infinite alternate;}
 @keyframes chFull{from{filter:brightness(1);} to{filter:brightness(1.45) drop-shadow(0 0 6px #ffb347);}}
 body.fireR #hudBottom #btnWand::after{transform:scaleX(-1);}
-/* the charge bars (v146): the art's own segmented arc bar, warped along an arc concentric with each button's curve,
-   top bolt to bottom bolt (tools/ui-warp-bar.py). Fire: the empty bar, with the lit one revealed from the bottom up as
-   you hold (a conic mask about the arc's centre, 4.1% 96.2% of the frame; the bar runs 4 to 76 degrees up from level);
-   full, it pulses. Cast: lit along its length, empty when the queue is empty. */
-#hudBottom #btnWand::before, #hudBottom #btnWand.chg::before, #hudBottom #btnWand.charging::before{background-image:url(ui/fire_bar_empty.svg),url(ui/fire_normal.svg); background-size:100% 100%;}
-#hudBottom #btnWand::after{background-image:url(ui/fire_bar_lit.svg); opacity:1;
-  -webkit-mask:conic-gradient(from 0deg at 4.13% 96.15%, transparent calc(88deg - 76deg * var(--ch,0)), #000 0 100deg, transparent 0);
-  mask:conic-gradient(from 0deg at 4.13% 96.15%, transparent calc(88deg - 76deg * var(--ch,0)), #000 0 100deg, transparent 0);}
-#hudBottom #btnWand:not(.chg)::after{opacity:0;}
-#hudBottom #btnWand.chfull::after{-webkit-mask:none; mask:none; animation:chFull .35s ease-in-out infinite alternate;}
-#hudBottom #btnCast::before{background-image:url(ui/cast_bar_lit.svg),url(ui/cast_normal.svg); background-size:100% 100%;}
-#hudBottom #btnCast:active::before{background-image:url(ui/cast_bar_lit.svg),url(ui/cast_pressed.svg);}
-#hudBottom #btnCast:disabled::before{background-image:url(ui/cast_bar_empty.svg),url(ui/cast_inactive.svg);}

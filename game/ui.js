@@ -198,14 +198,17 @@ function slotLine(s){ if(!s) return '<b>Empty</b>';
   return `<b>${esc(ch)} · Lv ${s.level||1}</b><small>Depth ${s.deepest} · ${s.gold} gold · ${ownedUnique(s)} cards</small>`; }
 function useSlot(n){ if(typeof stopExplore==='function'){ stopExplore(); EX=null; XPARK=null; if(typeof XRUN!=='undefined') XRUN=null; }
   B=null; setSlot(n); save=loadSave(); campLog.length=0; pickDepth=null; ccChar=null; }
-function openSlots(mode){ const isNew=mode==='new', box=$('#slList'); box.innerHTML='';
-  $('#slTitle').textContent=isNew?'New game':'Save slots';
+function openSlots(mode){ const isNew=mode==='new', cont=mode==='continue', box=$('#slList'); box.innerHTML='';
+  $('#slTitle').textContent=isNew?'New game':cont?'Continue which save?':'Save slots';
   $('#slHint').textContent=isNew?'Choose a slot for the new game. Starting in a used slot replaces that save.':'Pick a slot to play. Each keeps its own character, cards, gold and gear.';
   for(let n=1;n<=SAVE_SLOTS;n++){ const s=n===SAVE_SLOT?save:loadSave(n), row=document.createElement('div'); row.className='slrow'+(n===SAVE_SLOT?' cur':'');
     row.innerHTML=`<span class="sln">${n}</span><div class="slinfo">${slotLine(s)}</div><div class="slbtns"></div>`;
     const bb=row.querySelector('.slbtns'), btn=(label,cls,fn)=>{ const b=document.createElement('button'); b.className='btn small'+(cls?' '+cls:''); b.textContent=label; b.onclick=e=>fn(e); bb.appendChild(b); return b; };
     if(isNew){ const go=()=>{ useSlot(n); $('#slots').classList.remove('on'); openNewChar(); };
       if(s) btn('Replace','ghost',e=>{ armed(e.currentTarget,'Tap again to replace',go); $('#slHint').innerHTML='<b style="color:#ff8a8a">Tap again within 3 seconds to replace slot '+n+'. That save will be lost.</b>'; }); else btn('Start here','',go); }
+    // Continue: every save can be picked up from here, straight to its camp; an empty slot can start a new game
+    else if(cont){ if(s) btn('Continue','',()=>{ if(n!==SAVE_SLOT) useSlot(n); $('#slots').classList.remove('on'); withChar(()=>openCamp()); });
+      else btn('New game here','ghost',()=>{ useSlot(n); $('#slots').classList.remove('on'); openNewChar(); }); }
     else { if(n!==SAVE_SLOT) btn(s?'Play':'Use','',()=>{ useSlot(n); $('#slots').classList.remove('on'); openMenu(); }); else bb.insertAdjacentHTML('beforeend','<span class="slnow">In use</span>');
       if(s) btn('Delete','ghost',e=>armed(e.currentTarget,'Tap again',()=>{ clearSave(n); clearPoint(n); if(n===SAVE_SLOT){ save=null; pickDepth=null; } openSlots(); openMenu(); tip('Slot '+n+' deleted'); })); }
     box.appendChild(row); }
@@ -1283,8 +1286,8 @@ function openMenu(){
   const has=!!save;
   if(has){ if(pickDepth==null) pickDepth=save.deepest; pickDepth=Math.min(Math.max(1,pickDepth),save.deepest); }
   else pickDepth=1;
-  $('#mmContinue').disabled=!has;
-  const slotTag='<span class="mmslot">Slot '+SAVE_SLOT+' ▾</span>';
+  $('#mmContinue').disabled=!savedSlots().length;
+  const slotTag='<span class="mmslot">Slot '+SAVE_SLOT+' · change ▾</span>';
   $('#mmSave').innerHTML=slotTag+(has?'<span class="mmdeep">Deepest: depth <b>'+save.deepest+'</b></span><span class="mmname">'+esc(areaOf(save.deepest).name)+'</span><span class="mmgold">'+uiIcon('coin',20)+save.gold+'</span><span class="mmcards">'+ownedUnique(save)+' cards</span>'
     :'<span class="mmdeep">Slot '+SAVE_SLOT+' is empty.</span><span class="mmname">Start a new game.</span>');
   $('#mmDepth').textContent=pickDepth; $('#mmArea').textContent=areaLabel(pickDepth); $('#mmArea').style.color=areaOf(pickDepth).glow;
@@ -1296,7 +1299,11 @@ function openMenu(){
 }
 $('#mmDown').onclick=()=>{ pickDepth--; openMenu(); };
 $('#mmUp').onclick=()=>{ pickDepth++; openMenu(); };
-$('#mmContinue').onclick=()=>withChar(()=>openCamp());
+// with more than one save, Continue asks which; with one, it goes straight back to camp
+function savedSlots(){ const out=[]; for(let n=1;n<=SAVE_SLOTS;n++) if(n===SAVE_SLOT?save:loadSave(n)) out.push(n); return out; }
+$('#mmContinue').onclick=()=>{ const sl=savedSlots(); if(sl.length>1){ openSlots('continue'); return; }
+  if(sl.length&&sl[0]!==SAVE_SLOT) useSlot(sl[0]);   // the one save is in another slot: switch to it
+  withChar(()=>openCamp()); };
 $('#mmExplore').onclick=()=>withChar(()=>enterExplore(pickDepth));
 $('#mmBattle').onclick=()=>withChar(()=>fight(pickDepth));
 $('#mmNew').onclick=()=>openSlots('new');

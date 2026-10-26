@@ -1859,3 +1859,5 @@ body.instL #hudBottom .inst .ench-hint{right:auto; left:0;}
 /* v156: on short landscape screens the bottom bar scrolled (overflow-y:auto, from before it floated over the board),
    which clipped the instants column that sits above it: Whetstone and friends were invisible and untappable */
 body.h460.wide #scrBattle #hudBottom{overflow:visible;}
+/* the save slot chip on the menu is the way to switch saves: make it read as a button (v157) */
+.mmstats>.mmslot{font-size:2.9cqw; padding:.5cqw 1.2cqw; border-width:.3cqw; border-radius:.6cqw; background:rgba(10,30,48,.9); color:#bfe8ff; box-shadow:0 0 1.2cqw rgba(127,212,255,.55); white-space:nowrap;}

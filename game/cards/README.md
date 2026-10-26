@@ -34,3 +34,16 @@ Copied: frames, backgrounds, textures (compact/expanded), foils, effects, glows,
 - Fix to the kit: its holo trim covered the stone rail behind the count plaque, so the rainbow washed out the count.
   The plaque (x87-153) is cut out of trim-clip in all 32 trim foils.
 - The stat row's separator (.k-sdiv, ours) is now a thin dark line in the card colour; red's UI accent is v2.2's #ff9255.
+
+## v163 changes on top of the kit
+
+- **Molten accent line and glowing dividers** (`tools/card-molten.py`, run on game/cards): in every frame the inner trim's
+  dark band and its 1-px line are filled with pixel noise patterns built from the colour's dark/accent/light
+  (palettes.json), so they read as molten metal with hot spots. Each field divider's accent row is a glowing segment pattern
+  with grey metal breaks and a faint accent halo row above and below. Vertical separators are dark in the card colour.
+  Re-running on new kit frames is safe (it skips frames that already have the patterns).
+- **Count plaque stays black** (`tools/card-plaquemask.py`): every holo trim and every enchanted/buffed glow is masked
+  over layouts.json `count_bounds`, so no rim effect crosses the count.
+- **Texture behind text**: the texture layer now sits above the readability panels (style.css), so it shows faintly in
+  the text areas; its strength is still the 0.05 texture-ink.
+- Large cards now use the expanded buffed glow, and enchanted + buffed uses the kit's split rim (style.css "rim states").

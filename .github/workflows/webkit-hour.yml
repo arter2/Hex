@@ -1,8 +1,6 @@
 name: WebKit unattended session
+# On demand only: an hour-long WebKit soak. The nightly session (nightly.yml) covers the routine checks.
 on:
-  push:
-    branches: [review/webkit-hour-2026-10-25]
-    paths: ['.github/workflows/webkit-hour.yml', 'tools/playtest/webkit-session.js']
   workflow_dispatch:
 permissions:
   contents: read

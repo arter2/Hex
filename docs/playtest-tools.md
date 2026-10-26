@@ -4,6 +4,34 @@ Implementation update: [bot improvements and runner/UI commands](bot-improvement
 `node tools/playtest/selftest.js` for browser-free regressions. Historical results before the
 clock, seed and model changes are not directly comparable with new runs.
 
+## The routine (GitHub Actions)
+
+| When | Workflow | What runs | Where the results go |
+|---|---|---|---|
+| Every push to `main` and every pull request | `quick-test.yml` (~10 min) | Self-checks, menu taps, battle and hand-screen taps (Chromium, phone and tablet sizes) | The job summary; screenshots kept 14 days if something fails |
+| Every night at 09:23 UTC, or by hand | `nightly.yml` (~1–2 h) | The same tap tests in Chromium **and WebKit**, then the difficulty curve (depths 1–30) | Committed to [`docs/test-results/`](test-results/README.md), one row per night; raw data kept 30 days |
+| By hand only | `webkit-hour.yml` | An hour-long WebKit session with a real-time soak | The job summary and artifact |
+
+None of this replaces a real phone: run the [iPhone and iPad check](iphone-checklist.md) after a big UI change.
+
+### Running them here
+
+From the repository root (set `PLAYWRIGHT_MODULE` and `BROWSER_PATH` if Playwright isn't installed in `tools/playtest`):
+
+```sh
+node tools/playtest/selftest.js                               # 23 checks, no browser, seconds
+node tools/playtest/ui-runner.js out/ui                       # menu taps, 4 screen sizes
+node tools/playtest/battle-ui-runner.js out/battle-ui         # battle + hand screen, 5 screen sizes
+node tools/playtest/difficulty.js out/difficulty 1 30         # the difficulty curve
+node tools/playtest/test-summary.js out                       # one Markdown summary of all of the above
+```
+
+**Slow machines.** The test browsers draw the 3D board in software, so at tablet sizes one tap can take over a second
+to arrive. Two things in the game are timed (a deck tool's double-tap within 320 ms, and a 450 ms hold that opens a
+card's detail), so the battle tap test reports a double-tap it couldn't deliver in time as *skipped* (and uses the
+tool directly to test the rest), and closes a detail a slow tap opened and taps again. Both are listed in the
+results. Neither hides a real failure: a double-tap that arrived in time and did nothing still fails.
+
 All tools live in `tools/playtest/` and drive the real game in headless Chromium. Results are compared build to
 build. The bots are not people: their fun and frustration weights are guesses until a few human playtests set them.
 
@@ -16,7 +44,10 @@ build. The bots are not people: their fun and frustration weights are guesses un
 | `save-torture.js` | What happens to a save when things go wrong | `node save-torture.js [out.json]` |
 | `soak.js` | A long session in real time, drawn every frame: memory, GPU objects, frame times | `node soak.js [minutes] [out.json]` |
 | `puzzle-lab.js` | Each puzzle kind on its own, many times | see the file |
-| `ui-runner.js` | Real coordinate taps and hit-region checks for phone/tablet menus | `BROWSER=webkit node tools/playtest/ui-runner.js out-ui` (WebKit, not physical Safari) |
+| `ui-runner.js` | Real coordinate taps and hit-region checks for phone/tablet menus: camp, deck, collection, shop, bag, settings, dungeon HUD, pause | `node ui-runner.js out-ui` (`BROWSER=webkit` for WebKit; not physical Safari) |
+| `battle-ui-runner.js` | Real taps through a battle and the hand screen on 5 screen sizes (one left-handed): queueing, NEXT, Cast, holding Fire, Whetstone enchanting, Spell → hand screen, Keep, Search; checks no battle control is covered | `node battle-ui-runner.js out-battle-ui` |
+| `difficulty.js` | The difficulty curve: each bot profile plays runs from depth 1 to 30; win %, HP lost (% of max) and fight length by depth band, and where runs stop | `node difficulty.js out-dir [perColour] [maxDepth] [styles]` |
+| `test-summary.js`, `record-results.js` | One Markdown summary of a session; save it to `docs/test-results/` with a history row | `node test-summary.js out-dir`, `node record-results.js out-dir docs/test-results` |
 
 ## What each measures
 

@@ -1856,3 +1856,6 @@ body.instL #hudBottom .inst .ench-hint{right:auto; left:0;}
 #custDeck .card{flex:0 0 min(26%,120px); width:auto;}
 .card.keepsel{outline:3px solid var(--gold); outline-offset:-3px; box-shadow:0 0 10px #ffd84a99;}
 .card.keepoff{opacity:.55;}
+/* v156: on short landscape screens the bottom bar scrolled (overflow-y:auto, from before it floated over the board),
+   which clipped the instants column that sits above it: Whetstone and friends were invisible and untappable */
+body.h460.wide #scrBattle #hudBottom{overflow:visible;}

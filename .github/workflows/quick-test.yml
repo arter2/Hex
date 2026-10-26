@@ -1,0 +1,45 @@
+# Every push to main (and every pull request): the bot self-checks, then real coordinate taps on phone and tablet
+# sizes - menus, and the battle and hand screens. About 10 minutes. Screenshots are kept when something fails.
+name: Quick test
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: quick-test-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  quick:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      BROWSER: chromium
+      SOURCE_SHA: ${{ github.sha }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install the test browser
+        run: |
+          npm --prefix tools/playtest install
+          cd tools/playtest && npx playwright install --with-deps chromium
+      - name: Bot self-checks
+        run: node tools/playtest/selftest.js
+      - name: Menu taps (phone and tablet)
+        run: node tools/playtest/ui-runner.js test-results/ui
+      - name: Battle and hand-screen taps (phone and tablet)
+        if: always()
+        run: node tools/playtest/battle-ui-runner.js test-results/battle-ui
+      - name: Summary
+        if: always()
+        run: node tools/playtest/test-summary.js test-results >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: quick-test-screenshots
+          path: test-results/
+          retention-days: 14

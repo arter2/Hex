@@ -1,0 +1,69 @@
+# Every night (and on demand): the tap tests in Chromium and WebKit, then the difficulty curve (bot profiles
+# playing runs from depth 1 to 30). The summary is committed to docs/test-results/ so builds can be compared,
+# and the raw results, screenshots and logs are kept as an artifact for 30 days.
+name: Nightly test session
+on:
+  schedule:
+    - cron: '23 9 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: nightly-test-session
+  cancel-in-progress: false
+jobs:
+  nightly:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    env:
+      SOURCE_SHA: ${{ github.sha }}
+      LIBGL_ALWAYS_SOFTWARE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install the test browsers
+        run: |
+          npm --prefix tools/playtest install
+          cd tools/playtest && npx playwright install --with-deps chromium webkit
+      - name: Bot self-checks
+        run: node tools/playtest/selftest.js
+      - name: Menu taps (Chromium)
+        continue-on-error: true
+        env: { BROWSER: chromium }
+        run: node tools/playtest/ui-runner.js test-results/ui-chromium
+      - name: Battle and hand-screen taps (Chromium)
+        continue-on-error: true
+        env: { BROWSER: chromium }
+        run: node tools/playtest/battle-ui-runner.js test-results/battle-ui-chromium
+      - name: Menu taps (WebKit, the engine behind Safari)
+        continue-on-error: true
+        env: { BROWSER: webkit }
+        run: node tools/playtest/ui-runner.js test-results/ui-webkit
+      - name: Battle and hand-screen taps (WebKit)
+        continue-on-error: true
+        env: { BROWSER: webkit }
+        run: node tools/playtest/battle-ui-runner.js test-results/battle-ui-webkit
+      - name: Difficulty curve (depths 1-30)
+        continue-on-error: true
+        env: { BROWSER: chromium, LIMIT_S: '4800' }
+        run: node tools/playtest/difficulty.js test-results/difficulty 1 30 random,average,good,combo
+      - name: Save the results to docs/test-results
+        if: always()
+        run: |
+          node tools/playtest/test-summary.js test-results >> "$GITHUB_STEP_SUMMARY"
+          node tools/playtest/record-results.js test-results docs/test-results
+          git config user.name 'Hexmancers test bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add docs/test-results
+          git commit -m "Nightly test results $(date -u +%F)" || exit 0
+          for i in 1 2 3 4; do git pull --rebase origin main && git push origin HEAD:main && break; sleep $((i*5)); done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nightly-test-results
+          path: test-results/
+          retention-days: 30

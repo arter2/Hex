@@ -1327,6 +1327,8 @@
         res: r.res,
         time: r.time,
         hpLost: r.dmgTaken,
+        maxHp: b.player.maxHp,
+        hpLeft: Math.max(0, Math.round(b.player.hp)),
         dmg: r.dmg,
         casts: r.casts,
         wand: r.wandShots,

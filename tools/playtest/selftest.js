@@ -481,6 +481,28 @@ function botContext() {
     cover = { id: 'overlay', parentElement: body }; // an ordinary element over the edge: a real failure
     assert.equal((await c.PTHitAudit()).failures, 1);
   });
+  await test('difficulty curve: wins, HP share and where runs stop, by depth band', async () => {
+    const { curve } = require('./difficulty.js');
+    const fight = (depth, res, hpLost) => ({ depth, res, hpLost, maxHp: 100, time: 30 });
+    const run = (label, fights, reached) => ({ label, status: 'completed', fights, reached });
+    const c = curve(
+      [
+        run('good', [fight(1, 'win', 10), fight(2, 'win', 20), fight(3, 'win', 30), fight(4, 'win', 50)], 5),
+        run('good', [fight(1, 'win', 10), fight(4, 'loss', 100), fight(4, 'loss', 100), fight(4, 'loss', 100)], 4),
+        { label: 'good', error: 'Runner: crashed' }
+      ],
+      6
+    );
+    assert.equal(c.runs, 3);
+    assert.equal(c.clean, 2);
+    const g = c.styles.good;
+    assert.equal(g.rows[0].fights, 4);
+    assert.equal(g.rows[0].winPct, 100);
+    assert.equal(g.rows[0].hpLostPct, 17.5);
+    assert.equal(g.rows[1].winPct, 25); // 1 of 4 at depths 4-6
+    assert.equal(g.rows[1].stopped, 1);
+    assert.deepEqual(g.bitesAt, [4, 6]);
+  });
   await test('UI navigation refuses an intercepted tap and dispatches real coordinates', async () => {
     const { tap } = require('./ui-runner.js');
     let hit = false,

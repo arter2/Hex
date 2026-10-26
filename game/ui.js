@@ -73,17 +73,23 @@ function kitFooter(c){ const kind=c.type==='piece'?c.base:c.type==='instant'?c.a
   if(c.dur) out.push(['duration','Lasts',c.dur+'s']);
   out.push(['target','Target',KIT_TARGET[kind]||(TYPES[c.type]||{}).name||'—'],['range','Range',KIT_RANGE[c.shape]||'—']);
   return out.slice(0,2); }
-function cardEl(c,extra,locked,mode){
+function cardEl(c,extra,locked,mode,opts={}){
   const el=document.createElement('button'), col=COLORS[c.color], kc=KIT_COLOR[c.color]||'gray', P=KIT_PAL[kc], big=mode==='expanded', m=big?'expanded':'compact';
   el.className='card kit '+m+(c.rarity==='legendary'?' leg':'')+(c.rarity==='hero'?' hero':'')+(locked?' locked':'')+(c.mastery?' mcard':'')+(kc==='white'?' lt':' dk');
   el.style.setProperty('--c',col.c); const R=ROLES[cardRole(c)]; el.style.setProperty('--rc',R.c);
   const tex=kitTexture(c,kc), u=p=>'url(cards/'+p+')';
-  el.style.setProperty('--k-under',[u('backgrounds/'+m+'/'+kc+'-shade.svg'),u('textures/'+m+'/'+kc+'-'+tex+'.svg'),u('backgrounds/'+m+'/'+kc+'-base.svg')].join(','));
-  el.style.setProperty('--k-frame',u('frames/'+m+'/'+kc+'.svg'));
+  // the texture is its own layer so its strength can be set (style.css .k-tex); the shade goes over it
+  el.style.setProperty('--k-base',u('backgrounds/'+m+'/'+kc+'-base.svg')); el.style.setProperty('--k-tex',u('textures/'+m+'/'+kc+'-'+tex+'.svg'));
+  el.style.setProperty('--k-shade',u('backgrounds/'+m+'/'+kc+'-shade.svg')); el.style.setProperty('--k-frame',u('frames/'+m+'/'+kc+'.svg'));
+  // holo: a legendary you own a holo copy of (or one passed in as holo); the moving foil only on the big card
+  const holo=!locked&&c.rarity==='legendary'&&(opts.holo||typeof holoCount==='function'&&holoCount(save,c.id)>0);
+  if(holo){ const mv=big&&!(typeof matchMedia==='function'&&matchMedia('(prefers-reduced-motion: reduce)').matches)?'-animated':'';
+    el.classList.add('holo'); el.style.setProperty('--k-foil',[u('effects/'+m+'/foil-glints'+mv+'.svg'),u('effects/'+m+'/foil-shimmer'+mv+'.svg'),u('effects/'+m+'/foil-etch.svg'),u('foils/'+m+'/'+kc+'/art'+mv+'.svg')].join(','));
+    el.style.setProperty('--k-trim',u('foils/'+m+'/'+kc+'/trim'+mv+'.svg')); }
   el.style.setProperty('--k-acc',P.acc); el.style.setProperty('--k-text',P.text); el.style.setProperty('--k-muted',P.muted);
   const T=TYPES[c.type]||{name:''}, stat=kitStat(c), name=locked?'???':c.name, hero=c.rarity==='hero';
   const icon=(cls,n)=>`<img class="${cls}" src="cards/icons/${n}.svg" alt="" draggable="false">`;
-  let h=icon('k-el','element-'+kc)
+  let h='<i class="k-tex"></i><i class="k-shade"></i>'+(holo?'<i class="k-foil"></i>':'')+icon('k-el','element-'+kc)
     +(hero?'<img class="k-hero" src="cards/symbols/hero-star.svg" alt="Hero" draggable="false">':c.code&&!locked?`<b class="k-rune${c.code==='✱'?' wild':''}" title="Rune ${c.code}">${c.code}</b>`:'')
     +`<b class="k-rank">${c.rank}</b>`
     +`<b class="k-name" style="--ns:${kitNameSize(name,big)}">${esc(name)}</b>`
@@ -149,7 +155,7 @@ function reveal(title,body,results,buttons,extras){
   $('#rvTitle').textContent=title; $('#rvBody').textContent=body;
   const g=$('#rvCards'); g.innerHTML='';
   (extras||[]).forEach((x,i)=>{ const el=document.createElement('div'); el.className='reward flip'; el.style.animationDelay=(i*.12)+'s'; el.innerHTML=`<b>${x.pic||x.icon}</b><span>${esc(x.name)}</span><small>${esc(x.text)}</small>`; g.appendChild(el); });
-  results.forEach((r,i)=>{ const el=cardEl(r.card,r.isNew?'<span class="badge new">NEW</span>':''); el.style.animationDelay=(i*.12)+'s'; el.classList.add('flip'); el.onclick=()=>showDetail(r.card); g.appendChild(el); });
+  results.forEach((r,i)=>{ const el=cardEl(r.card,r.isNew?'<span class="badge new">NEW</span>':'',false,'compact',{holo:r.holo}); el.style.animationDelay=(i*.12)+'s'; el.classList.add('flip'); el.onclick=()=>showDetail(r.card); g.appendChild(el); });
   const bb=$('#rvBtns'); bb.innerHTML=''; bb.classList.toggle('two',buttons.length>1);
   // a lone button is always the main one
   buttons.forEach(([label,fn,ghost])=>{ const b=document.createElement('button'); b.className='btn'+(ghost&&buttons.length>1?' ghost':''); b.textContent=label; b.onclick=()=>{ $('#reveal').classList.remove('on'); fn(); }; bb.appendChild(b); });

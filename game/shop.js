@@ -168,7 +168,7 @@ function packOpen(color,res,onDone){ const ov=$('#packOpen'), stage=$('#poStage'
   const pk=packArt(color,150); pk.className='popack'; stage.appendChild(pk); ov.classList.add('on'); ov.classList.remove('burst');
   const order=res.map((_,i)=>i).sort(()=>Math.random()-.5), slots=[];
   res.forEach((r,i)=>{ const s=document.createElement('div'); s.className='poslot'; s.style.setProperty('--i',i-(res.length-1)/2);
-    const back=cardBackEl(); back.classList.add('poback'); const face=cardEl(r.card,r.isNew?'<span class="badge new">NEW</span>':''); face.classList.add('poface'); face.onclick=e=>{ e.stopPropagation(); showDetail(r.card); };
+    const back=cardBackEl(); back.classList.add('poback'); const face=cardEl(r.card,r.isNew?'<span class="badge new">NEW</span>':'',false,'compact',{holo:r.holo}); face.classList.add('poface'); face.onclick=e=>{ e.stopPropagation(); showDetail(r.card); };
     if(['rare','legendary','hero'].includes(r.card.rarity)) s.classList.add('shine');
     s.append(back,face); fan.appendChild(s); slots.push(s); });
   // they land face down and stay that way: you turn each one over yourself (or Reveal all)

@@ -160,7 +160,13 @@ function breakCard(save,id){ const c=CARDS[id]; if(!canBreak(save,c)) return 0;
   const n=shardOf(c)[0]; save.shards=(save.shards||0)+n; return n; }
 function craftCard(save,id){ const c=CARDS[id]; if(!canCraft(save,c)) return null;
   save.shards-=shardOf(c)[1]; return addCards(save,[c])[0]; }
-function addCards(save,cards){ return cards.map(c=>{ const isNew=!save.owned[c.id]; save.owned[c.id]=(save.owned[c.id]||0)+1; save.seen[c.id]=1; return {card:c,isNew}; }); }
+// Holographic legendaries: each legendary copy you get has HOLO_CHANCE of being holo (a prismatic foil over its art
+// and frame). save.holo counts holo copies per card; a copy you sell or break is never the holo one while a plain one is left.
+const HOLO_CHANCE=.2;
+const holoCount=(save,id)=>Math.min((save&&save.holo&&save.holo[id])||0,(save&&save.owned[id])||0);
+function addCards(save,cards){ return cards.map(c=>{ const isNew=!save.owned[c.id]; save.owned[c.id]=(save.owned[c.id]||0)+1; save.seen[c.id]=1;
+  const holo=c.rarity==='legendary'&&Math.random()<HOLO_CHANCE; if(holo){ save.holo=save.holo||{}; save.holo[c.id]=holoCount(save,c.id)+1; }
+  return {card:c,isNew,holo}; }); }
 function ownedUnique(save){ return Object.keys(save.owned).filter(id=>CARDS[id]&&save.owned[id]>0).length; }
 
 /* Charge cards wear out across battles: each owned copy keeps its remaining uses in

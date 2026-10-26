@@ -1946,3 +1946,15 @@ html body #dkColl .card.kit .dkown::before{content:'×';}
 html body #dkColl .card.kit .dkfrac~.dkown{display:none;}
 html body #dkColl .card.kit.full .dkfrac{color:#ffd866;}
 html body #dkColl .card.kit .dkfrac b,html body #dkColl .card.kit .dkfrac i{transform:none; font-size:inherit; opacity:1;}
+/* layers (v159): backing (::before), texture at reduced strength, shade, art, holo foil, frame + trim foil + glow (::after), text */
+.card.kit::before{background:var(--k-base) 0 0/100% 100% no-repeat;}
+html body .card.kit>.k-tex,html body .card.kit>.k-shade,html body .card.kit>.k-foil{position:absolute; inset:0; left:0; top:0; width:100%; height:100%; pointer-events:none; background-size:100% 100%; background-repeat:no-repeat;}
+html body .card.kit>.k-tex{z-index:0; background-image:var(--k-tex); opacity:var(--k-tex-o,.4);}
+html body .card.kit>.k-shade{z-index:0; background-image:var(--k-shade);}
+html body .card.kit>.k-art{z-index:1;}
+html body .card.kit>.k-foil{z-index:2; background-image:var(--k-foil); mix-blend-mode:normal;}
+.card.kit::after{z-index:3;}
+html body .card.kit>*:not(.k-tex):not(.k-shade):not(.k-art):not(.k-foil){z-index:4;}
+.card.kit.holo::after{background:var(--k-trim) 0 0/100% 100% no-repeat,var(--k-frame) 0 0/100% 100% no-repeat;}
+.card.kit.holo.ench::after{background:url(cards/glows/compact/enchanted.svg) 0 0/100% 100% no-repeat,url(cards/badges/compact/enchanted.svg) 0 0/100% 100% no-repeat,var(--k-trim) 0 0/100% 100% no-repeat,var(--k-frame) 0 0/100% 100% no-repeat;}
+.card.kit.expanded.holo.ench::after{background:url(cards/glows/expanded/enchanted.svg) 0 0/100% 100% no-repeat,url(cards/badges/expanded/enchanted.svg) 0 0/100% 100% no-repeat,var(--k-trim) 0 0/100% 100% no-repeat,var(--k-frame) 0 0/100% 100% no-repeat;}

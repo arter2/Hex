@@ -152,6 +152,7 @@ function tele(e,tiles,dur,dmg,after){ tiles=tiles.filter(Boolean);
   if(e&&e.confuseT>0) tiles=tiles.map(t=>pick(neighbors(t).filter(x=>x.side==='p'))||t);   // confusion throws attacks off by a tile
   B.teles.push({tiles,t:0,dur,dmg,owner:e,after,kind:e&&e.curMove}); }   // kind: which move, for its tell (reading.js)
 const pTilesInRow=r=>P_TILES.filter(t=>t.r===r);
+const DASH_STAY=.3;   // the share of a wall's or creature's full stay time a dash crashing into it takes off
 // the player-side tiles on a straight hex line from a (an enemy's tile) through b and one tile beyond, cut short
 // after the first tile holding a rock, a wall or a creature (that one is marked: it takes the hit)
 function dashPath(a,b){ const n=Math.max(1,(Math.abs(b.q-a.q)+Math.abs(b.r-a.r)+Math.abs(b.q-a.q+b.r-a.r))/2), out=[];
@@ -194,10 +195,13 @@ const MOVES={
   cross(e){ const t=aimT(); tele(e,P_TILES.filter(x=>x.r===t.r||(x.col===t.col&&Math.abs(x.r-t.r)<=2)),1.1,e.dmg); },
   rush(e){ tele(e,pTilesInRow(e.tile.r),1.1,e.dmg); },
   // Dash: marks a straight line from itself through where you stand (and one tile past), then shoots along it and
-  // springs back. Step off the line to dodge; a wall, rock or creature on the line stops it there and takes the hit.
+  // springs back. Step off the line to dodge; a wall or creature on the line stops it there, takes the hit and loses
+  // DASH_STAY of its full stay time (at least 2 s) from the crash; a rock just stops it.
   dash(e){ const path=dashPath(e.tile,aimT());
     if(!path.length) return MOVES.shot(e);
-    tele(e,path,1,Math.round(e.dmg*1.15),()=>{ const end=path[path.length-1];
+    tele(e,path,1,Math.round(e.dmg*1.15),()=>{ const end=path[path.length-1], o=end.occ;
+      if(o&&o.kind!=='player'&&!o.enemy&&o.life>0&&o.hp>0){ const cut=Math.max(2,(o.maxLife||o.life)*DASH_STAY); o.life-=cut;
+        floater('−'+Math.round(cut)+'s',o.tile,'#ffcf6a'); }
       e.goTo=end; burst(e.tile,'#ffffff',6,.3); path.forEach((t,i)=>later(i*.035,()=>burst(t,COLORS[e.color].c,5,.25))); shake(2);
       later(.3,()=>{ e.goTo=null; }); }); },
   blink(e){ const p={tile:aimT()}, to=pick(E_TILES.filter(t=>!t.occ&&!burning(t)&&t.col<=BOARD_COLS/2+1&&Math.abs(t.r-p.tile.r)<=1));

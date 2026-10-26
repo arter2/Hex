@@ -105,6 +105,7 @@ function makeEnemy(id,t,depth){
   const el=enemyElement(d,depth);
   if(el){ e.elem=el!==d.color||!SIX.includes(d.color); e.color=el; e.weak=WEAK_TO[el]; e.resist=el; if(e.elem) e.name=elemName(d,el); if(d.deck) e.deck=enemyDeck(el,depth); }
   if(typeof fxInit==='function') fxInit(e,depth);   // its rhythm, and maybe an elite affix (fights.js)
+  if(typeof elabLive==='function') elabLive(e,depth);   // the Enemy lab's changes, when "Use in real fights" is on (enemylab.js)
   t.occ=e; return e;
 }
 const openEnemyTiles=()=>E_TILES.filter(t=>!t.occ&&t.terrain!=='lava');

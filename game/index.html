@@ -217,7 +217,7 @@
     <!-- the Movement lab (movelab.js): its score and settings, shown only in a lab battle -->
     <div id="mlabHud" class="mlabhud" hidden><span id="mlabScore"></span><button id="mlabBtn" class="btn">⚙ Lab</button></div>
     <div id="mlabPanel" class="mlabpanel">
-      <div class="mlbar"><b>Movement lab</b><button id="mlabHide" class="btn ghost small">Hide</button></div>
+      <div class="mlbar"><b id="mlabTitle">Movement lab</b><button id="mlabHide" class="btn ghost small">Hide</button></div>
       <div class="mlbody">
         <div id="mlabForm"></div>
         <div class="mlbtns"><button id="mlabReset" class="btn ghost small">Reset score</button><button id="mlabDefaults" class="btn ghost small">Defaults</button><button id="mlabCopy" class="btn ghost small">Copy settings</button><button id="mlabExit" class="btn small">Exit lab</button></div>
@@ -349,6 +349,16 @@
       <p id="dtInfo" class="hint"></p>
       <div id="dtShard" class="dtshard" hidden></div>
       <button id="dtClose" class="btn ghost">Close</button>
+    </div>
+  </div>
+  <!-- the lab button asks which lab (enemylab.js) -->
+  <div id="labPick" class="overlay">
+    <div class="panel narrow labpick">
+      <h2>Lab</h2>
+      <p class="hint">What do you want to test?</p>
+      <button id="lpMove" class="btn">Movement<small>Walking, the joystick and dodging shots</small></button>
+      <button id="lpFoes" class="btn">Enemies<small>Summon any enemy, see and change its attacks</small></button>
+      <button id="lpCancel" class="btn ghost">Cancel</button>
     </div>
   </div>
   <div id="pick" class="overlay">
@@ -609,5 +619,6 @@
 <script src="savepoint.js"></script>
 <script src="cardlab.js"></script>
 <script src="movelab.js"></script>
+<script src="enemylab.js"></script>
 </body>
 </html>

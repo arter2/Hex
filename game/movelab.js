@@ -30,8 +30,9 @@ function mlabTurret(e,dt){ e.atkT-=dt; if(e.atkT>0) return; e.atkT=e.atkMax=MLAB
 function mlabExit(){ $('#mlabPanel').classList.remove('on'); BOARD_TEST=null; buildBoard(); B=null; paused=false;
   mlabSync(); if(save&&save.temp){ save=null; openMenu(); } else openCamp(); }   // back where you came from: camp, with your own save
 // the lab's button and score show only in a lab battle
-function mlabSync(){ const on=mlabOn(); $('#mlabHud').hidden=!on; if(!on) $('#mlabPanel').classList.remove('on'); else { mlabHud(); requestAnimationFrame(mlabPlace); } }
-function mlabHud(){ const s=$('#mlabScore'); if(s) s.textContent='Shots '+MLAB_SHOTS+' · Hits '+MLAB_HITS+(MLAB_SHOTS?' · '+Math.round(100*(1-MLAB_HITS/MLAB_SHOTS))+'% dodged':''); }
+function mlabSync(){ const on=mlabOn(), foes=on&&typeof elabOn==='function'&&elabOn(); $('#mlabHud').hidden=!on; if(!on) $('#mlabPanel').classList.remove('on'); else { mlabHud(); requestAnimationFrame(mlabPlace); }
+  $('#mlabTitle').textContent=foes?'Enemy lab':'Movement lab'; $('#mlabDefaults').hidden=$('#mlabCopy').hidden=!!foes; $('#mlabCopyNote').hidden=true; }
+function mlabHud(){ const s=$('#mlabScore'); if(s&&typeof elabOn==='function'&&elabOn()){ s.textContent='Hits taken '+ELAB_HITS; return; } if(s) s.textContent='Shots '+MLAB_SHOTS+' · Hits '+MLAB_HITS+(MLAB_SHOTS?' · '+Math.round(100*(1-MLAB_HITS/MLAB_SHOTS))+'% dodged':''); }
 
 // the panel: [key, label, min, max, step, what a change needs] — 'board' rebuilds the battle, 'turret' and 'mv' apply at
 // once, 'tog' is an on/off switch for a walking setting
@@ -130,11 +131,10 @@ function mlabPlace(){ const hud=$('#mlabHud'), hb=$('#hudBottom'); if(!hud||hud.
 addEventListener('resize',mlabPlace);
 function mlabDefaults(){ Object.assign(MLAB,MLAB_DEF); mlabKeep(); for(const k in MV_DEF){ XLIT[k]=MV_DEF[k]; try{ localStorage.removeItem('hexmancers-xl-'+k); }catch(e){} } renderMlab(); mlabStart(); }
 
-$('#goMove').onclick=()=>mlabStart();   // from camp (the Movement lab button)
 xFineSliders($('#mlabPanel')); mlabGrip(); xRowTools($('#mlabPanel'),'.mlrow',row=>row.dataset.tip||'');
-$('#mlabBtn').onclick=()=>{ const P=$('#mlabPanel'); P.classList.toggle('on'); if(P.classList.contains('on')) renderMlab(); };
+$('#mlabBtn').onclick=()=>{ const P=$('#mlabPanel'); P.classList.toggle('on'); if(P.classList.contains('on')) (elabOn()?renderElab:renderMlab)(); };
 $('#mlabHide').onclick=()=>$('#mlabPanel').classList.remove('on');
-$('#mlabReset').onclick=()=>{ MLAB_HITS=0; MLAB_SHOTS=0; mlabHud(); };
+$('#mlabReset').onclick=()=>{ MLAB_HITS=0; MLAB_SHOTS=0; if(typeof ELAB_HITS!=='undefined') ELAB_HITS=0; mlabHud(); };
 $('#mlabDefaults').onclick=mlabDefaults;
 $('#mlabCopy').onclick=()=>xDbgCopy('mlabCopyNote','mlabCopy');
 $('#mlabExit').onclick=mlabExit;

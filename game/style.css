@@ -1987,3 +1987,34 @@ html body .card>.popx:active{background:#2a2f35;}
 html body #peek .card.kit.big{border:0; border-image:none; padding:0; gap:0; box-shadow:0 18px 40px rgba(0,0,0,.6);}
 #peek.on{background:rgba(0,0,0,.72);}
 html body #peek .card.kit.big::before{inset:0; left:0; width:auto; height:auto;}
+/* the Enemy lab (enemylab.js) and the lab button's question */
+.labpick{display:flex; flex-direction:column; gap:10px; text-align:center;}
+.labpick .btn{display:flex; flex-direction:column; align-items:center; gap:2px; padding:12px;}
+.labpick .btn small{font:400 13px var(--font-t); opacity:.8; text-transform:none; letter-spacing:0;}
+.mlabpanel h4 small{margin-left:8px; text-transform:none; letter-spacing:0; color:#93a9ba; font-weight:400;}
+.mlrow.elsum{display:flex; flex-wrap:wrap; gap:6px; padding:2px 0;}
+.mlrow.elsum select,.eledit select{flex:1; min-width:0; max-width:100%; background:#15181c; color:#e8eef8; border:1px solid #3a4652; border-radius:6px; padding:5px; font-size:13px;}
+.eledit .mlrow select{grid-column:2 / 4;}
+.elboard{display:flex; flex-wrap:wrap; gap:6px; padding:2px 0 4px;}
+.elon{display:inline-flex; align-items:center; gap:4px; padding:3px 4px 3px 8px; border:1px solid #ff9a6a66; border-radius:12px; background:#2a1612;}
+.elon button,.elmove button{background:none; border:0; color:#ffb3a0; font-size:13px; cursor:pointer; padding:0 3px;}
+.elfind{width:100%; box-sizing:border-box; margin:2px 0 6px; padding:6px 8px; background:#15181c; color:#e8eef8; border:1px solid #3a4652; border-radius:6px; font-size:13px;}
+.ellist{display:flex; flex-direction:column; gap:3px; padding-bottom:6px;}
+.elgroup{margin:6px 0 0; font-size:11px; color:#93a9ba; text-transform:uppercase; letter-spacing:.06em;}
+.elkind{border:1px solid #2a323b; border-radius:8px; background:#12151a;}
+.elkind.changed{border-color:#ffe06688;}
+.elkind[hidden]{display:none;}
+.elhead{display:flex; flex-direction:column; align-items:flex-start; gap:1px; width:100%; padding:6px 8px; background:none; border:0; color:inherit; text-align:left; cursor:pointer; font:inherit;}
+.elhead b{font-size:13px;} .elhead b i{font-style:normal; font-size:10px; color:#ffe066; margin-left:6px;}
+.elhead span{font-size:11px; color:#a9c4d6;} .elhead em{font-style:normal; color:#93a9ba;}
+.elkind.open .elhead{border-bottom:1px solid #2a323b;}
+.eledit{padding:4px 8px 8px;}
+.eledit .mlrow{grid-template-columns:34% 1fr 38px;}
+.elmoves{grid-column:2 / 4; display:flex; flex-wrap:wrap; gap:4px;}
+.elmove{display:inline-flex; align-items:center; gap:1px; padding:2px 2px; border:1px solid #8fe4ff55; border-radius:10px; background:#10202a; font-size:12px;}
+.elmove button{color:#8fe4ff; padding:0 4px;} .elmove button[data-x]{color:#ffb3a0;}
+.elpaste{width:100%; min-height:90px; box-sizing:border-box; margin:4px 0;}
+.eledit .chips{flex-wrap:wrap;}
+.eledit .chip{padding:4px 8px; min-height:0; font-size:12px; line-height:1.2;}
+.eledit .chip.on{background:var(--c); color:#0b0d10; font-weight:700;}
+.labpick .btn,.labpick .btn small{white-space:normal; overflow:visible; text-overflow:clip;}

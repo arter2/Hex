@@ -301,10 +301,11 @@ function updateEnemy(e,dt){
   if(typeof heroAura==='function'&&heroAura('slowfoes')) dt*=1-heroAura('slowfoes');   // Old Man Winter
   if(e.windT>0){ e.windT-=dt; if(e.windT<=0) enemyShot(e,e.dmg*(e.powerT>0?1.3:1)); return; }
   if(e.casting){ e.castT-=dt; if(e.castT<=0){ const c=e.casting; e.casting=null; enemyCast(e,c); } return; }
-  if(b.lab&&b.lab.move){ mlabTurret(e,dt); return; }   // Movement lab: a turret that only fires straight (movelab.js)
+  if(b.lab&&b.lab.move&&!b.lab.foes){ mlabTurret(e,dt); return; }   // Movement lab: a turret that only fires straight (movelab.js)
   if(b.lab&&b.lab.calm) return;   // Card lab: foes that stand still and never attack
   e.moveT-=dt;
   if(e.moveT<=0&&!b.teles.some(t=>t.owner===e)){ e.moveT=rnd(1.4,2.4)*(icy(e.tile)?2:1); moveEnemy(e); if(e.hp<=0) return; }
+  if(b.lab&&b.lab.foes&&!ELAB.opt.attack) return;   // Enemy lab, They attack off: walking only (enemylab.js)
   if(e.infectT>0){ e.atkT-=dt; if(e.atkT<=0){ e.atkT=rnd(e.def.rate[0],e.def.rate[1])*(e.spd||1); e.atkMax=e.atkT; zombieAttack(e); } return; }   // a Zombie trap's victim (battle.js springTrap)
   if(e.deck){ e.deckCd-=dt; if(e.deckCd<=0&&e.deck.length){ e.deckCd=rnd(4,6); e.casting=e.deck.shift(); e.castT=.9; return; } }
   e.atkT-=dt;

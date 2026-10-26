@@ -395,6 +395,7 @@ function killEnemy(e){
   if(e.def.split){ const spots=around(e.tile).filter(t=>t.side==='e'&&!t.occ).slice(0,2);   // a Gloop splits in two
     if(!spots.length&&!e.tile.occ) spots.push(e.tile);
     spots.forEach(t=>{ const m=makeEnemy(e.def.split,t,B.depth); m.atkT+=1; B.enemies.push(m); }); }
+  if(B.lab&&B.lab.foes){ if(typeof elabKilled==='function') elabKilled(e); return; }   // the Enemy lab never ends (enemylab.js)
   if(!alive().length&&B.phase==='fight'){
     if(!Number.isInteger(B.wave)) return;   // the next wave is already on its way
     if(B.wave<B.waves.length-1){ const nx=B.wave+1; later(1.1,()=>spawnWave(nx)); B.wave=nx-.5; return; }
@@ -992,7 +993,7 @@ function update(dt){
   if(b.phase!=='fight'){ b.shots=[]; b.teles=[]; return; }
 
   // safety: a fight with nobody left and no wave coming is won
-  if(!alive().length&&Number.isInteger(b.wave)&&b.wave>=b.waves.length-1&&b.enemies.length){ b.phase='win'; b.player.charging=false; later(1.2,()=>b.hooks.onEnd&&b.hooks.onEnd(true)); return; }
+  if(!alive().length&&Number.isInteger(b.wave)&&b.wave>=b.waves.length-1&&b.enemies.length&&!(b.lab&&b.lab.foes)){ b.phase='win'; b.player.charging=false; later(1.2,()=>b.hooks.onEnd&&b.hooks.onEnd(true)); return; }
   if(typeof extraTick==='function'){ extraTick(dt); if(b.phase!=='fight') return; }
   const p=b.player, haste=p.hasteT>0;
   b.gauge=Math.min(GAUGE_MAX,b.gauge+dt*(heroOn('volta')?1.5:1)*(heroAura('gauge')||1)*(p.gaugeMult||1));

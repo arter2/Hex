@@ -1886,7 +1886,7 @@ body.h460.wide #scrBattle #hudBottom{overflow:visible;}
 .card.kit .k-tline{display:flex; align-items:center; justify-content:center; gap:2.083cqw; font-size:6.250cqw; text-transform:uppercase; letter-spacing:.04em; white-space:nowrap; overflow:hidden;}
 .card.kit .k-tline i{font-style:normal;} .card.kit .k-type{color:var(--k-acc);} .card.kit .k-dot{color:var(--k-muted);}
 .card.kit .k-stat{display:flex; align-items:center; font-size:15.000cqw; white-space:nowrap; text-shadow:0 0.833cqw 0 rgba(0,0,0,.7);}
-.card.kit .k-sdiv{background:color-mix(in srgb,var(--k-muted) 45%,transparent);}
+.card.kit .k-sdiv{background:color-mix(in srgb,var(--k-acc) 35%,#000); width:0.417%!important; margin-left:0.2%;}  /* v2.2: thin dark line in the card colour */
 .card.kit .k-rules{font-size:5.833cqw; line-height:1.05; color:var(--k-text); overflow-y:auto; pointer-events:auto; overscroll-behavior:contain; scrollbar-width:thin; white-space:normal;}
 .card.kit .k-foot{display:grid; grid-template-columns:9.167cqw 1fr; grid-template-rows:1fr 1fr; column-gap:2.083cqw; align-items:center; font-size:5.417cqw; line-height:1; overflow:hidden;}
 .card.kit .k-foot .k-ficon{position:static; grid-row:1/3; width:100%; height:auto;}

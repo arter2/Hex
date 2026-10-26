@@ -34,7 +34,7 @@ const CARD_PAL={
    glyphs and live text. The game's eight colours are the kit's eight. */
 const KIT_COLOR={fire:'red',frost:'blue',storm:'yellow',verdant:'green',light:'white',shadow:'black',gray:'gray',brown:'brown'};
 const KIT_PAL={
-  red:   {acc:'#fa693b',text:'#f4f0dc',muted:'#abc0cc',tex:['embers','lava-crust','volcanic-ridges']},
+  red:   {acc:'#ff9255',text:'#f4f0dc',muted:'#abc0cc',tex:['embers','lava-crust','volcanic-ridges']},
   blue:  {acc:'#4cbcf2',text:'#f4f0dc',muted:'#abc0cc',tex:['water-ripples','cracked-ice','frost-facets']},
   yellow:{acc:'#f3d441',text:'#f4f0dc',muted:'#abc0cc',tex:['dune-sand','static-arcs','sandstone']},
   green: {acc:'#70b84e',text:'#f4f0dc',muted:'#abc0cc',tex:['leaves','moss','bark']},

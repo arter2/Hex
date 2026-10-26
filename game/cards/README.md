@@ -19,3 +19,18 @@ brackets, and the textures now run into the bottom strip around it. Texture ink 
 0.12, v159) and the foils keep the v160 hue shift (v2.1 didn't change them). The count text sits inside the plaque's
 56×13 opening (style.css "cards (v158)" block). The kit's separate footer/rail/corner parts aren't copied: the frames
 already include them.
+
+## v2.2 update (v162)
+
+Card kit v2.2 (the full frame redraw): bricked stone rails, orange copper corner plates, a stepped accent line that wraps
+the count plaque, dark field separators with rivets, rounded panels, darker bases, new trim masks in the foils/glows.
+Copied: frames, backgrounds, textures (compact/expanded), foils, effects, glows, layouts.json, palettes.json.
+
+- The uploaded zip was cut off before its end; 546 of 612 files came through intact (checksums match). The 48 card
+  textures were in the missing part. They were rebuilt from the v2.1 patterns plus the v2.2 clip shapes embedded in
+  `components/*/COLOR/footer-assembly.svg`, and all 48 match the v2.2 SHA256SUMS exactly. Missing and unused by the game:
+  templates, footer/material textures, runtime/cards.js (identical to v2.1), symbols (identical).
+- Texture ink lowered to 0.05 again; foils re-tinted 40% toward their accent (v160).
+- Fix to the kit: its holo trim covered the stone rail behind the count plaque, so the rainbow washed out the count.
+  The plaque (x87-153) is cut out of trim-clip in all 32 trim foils.
+- The stat row's separator (.k-sdiv, ours) is now a thin dark line in the card colour; red's UI accent is v2.2's #ff9255.

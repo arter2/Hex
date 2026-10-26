@@ -69,14 +69,32 @@ async function run(out = process.argv[2] || 'playtest-ui-results') {
           ['deck', '#goBuilder', '#scrDeck.on,#scrBuilder.on', '#dkBack,#scrBuilder .back'],
           ['collection', '#goCollection', '#scrCollection.on', '#scrCollection .back'],
           ['shop', '#goShop', '#scrShop.on', '#scrShop .back'],
-          ['character', '#goChar', '#bagUI.on', '#bgClose'],
-          ['settings', '#goSettings', '#settings.on', '#setBack']
+          ['character', '#goChar', '#bagUI.on', '#bgClose']
         ];
         for (const [name, entry, active, back] of screens) {
           await tap(page, entry);
           await visible(active);
           await audit(name, active);
           await tap(page, back);
+          await visible('#scrCamp.on');
+        }
+        // Settings: a camp button on tablets and wide screens; on a phone the camp hides it and you go through
+        // ☰ Menu instead, the way a player would.
+        if (await page.locator('#goSettings').isVisible()) {
+          await tap(page, '#goSettings');
+          await visible('#settings.on');
+          await audit('settings', '#settings');
+          await tap(page, '#setBack');
+          await visible('#scrCamp.on');
+        } else {
+          await tap(page, '#campMenu');
+          await visible('#scrMenu.on');
+          await tap(page, '#mmSettings');
+          await visible('#settings.on');
+          await audit('settings', '#settings');
+          await tap(page, '#setBack');
+          await visible('#scrMenu.on');
+          await tap(page, '#mmContinue');
           await visible('#scrCamp.on');
         }
         await tap(page, '#btnDescend');

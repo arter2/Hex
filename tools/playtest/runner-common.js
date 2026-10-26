@@ -80,8 +80,15 @@ async function openPage(browser, url, options = {}) {
   page.on('crash', () => errors.push('page crash'));
   page.on('pageerror', e => errors.push('pageerror: ' + e.message));
   page.on('console', m => {
-    if (m.type() === 'error') errors.push('console: ' + m.text());
+    // a failed load is reported below with its URL, which the console message leaves out
+    if (m.type() === 'error' && !/^Failed to load resource/.test(m.text()))
+      errors.push('console: ' + m.text());
   });
+  page.on('response', r => {
+    if (r.status() >= 400)
+      errors.push('http ' + r.status() + ': ' + r.url().replace(/^https?:\/\/[^/]+/, ''));
+  });
+  page.on('requestfailed', r => errors.push('request failed: ' + r.url().replace(/^https?:\/\/[^/]+/, '')));
   try {
     await page.goto(url);
     await page.waitForFunction(

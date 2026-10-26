@@ -6,7 +6,13 @@
     const results = [],
       all = [...scope.querySelectorAll('button,input,select,textarea,summary,a[href]')];
     for (const [index, el] of all.entries()) {
+      // not drawn at all: no box, hidden, or inside a closed <details> / content-visibility:hidden
       if (!el.getClientRects().length || getComputedStyle(el).visibility === 'hidden') continue;
+      if (
+        el.checkVisibility &&
+        !el.checkVisibility({ contentVisibilityAuto: true, visibilityProperty: true })
+      )
+        continue;
       const item = {
         id: el.id || null,
         index,
@@ -16,6 +22,12 @@
       };
       if (el.disabled) {
         item.skipped = 'disabled';
+        results.push(item);
+        continue;
+      }
+      // decoration drawn as a button (a card preview inside a shop item): taps pass through it on purpose
+      if (getComputedStyle(el).pointerEvents === 'none') {
+        item.skipped = 'not tappable (pointer-events: none)';
         results.push(item);
         continue;
       }
@@ -39,10 +51,23 @@
         const top = document.elementFromPoint(x, y),
           outside = x < 0 || y < 0 || x >= innerWidth || y >= innerHeight,
           hit = !outside && (top === el || el.contains(top));
-        return { x, y, hit, cover: top ? top.id || top.tagName + '.' + top.className : null };
+        return { x, y, hit, cover: top ? top.id || top.tagName + '.' + top.className : null, coverEl: top };
       });
-      if (item.points.some(p => !p.hit))
-        item.issues.push('one or more hit samples are clipped or intercepted');
+      // Covered at the centre: a real problem. Covered only at an edge by a fixed or sticky bar (a footer over a
+      // scrolling list): the player can scroll it clear, so it is a warning, not a failure.
+      const pinned = n => {
+        for (let e = n; e && e !== document.body; e = e.parentElement) {
+          const pos = getComputedStyle(e).position;
+          if (pos === 'fixed' || pos === 'sticky') return true;
+        }
+        return false;
+      };
+      const missed = item.points.filter(p => !p.hit);
+      if (!item.points[0].hit) item.issues.push('the centre of the control is clipped or covered');
+      else if (missed.some(p => !p.coverEl || !pinned(p.coverEl)))
+        item.issues.push('an edge of the control is clipped or covered');
+      else if (missed.length) item.warnings.push('an edge sits under a fixed bar until scrolled');
+      for (const p of item.points) delete p.coverEl;
       results.push(item);
     }
     return {
@@ -50,6 +75,7 @@
       viewport: { width: innerWidth, height: innerHeight },
       checked: results.filter(r => !r.skipped).length,
       failures: results.filter(r => r.issues.length).length,
+      warnings: results.filter(r => r.warnings.length).length,
       results
     };
   }

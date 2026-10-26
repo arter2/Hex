@@ -435,6 +435,52 @@ function botContext() {
     assert.equal(result.checked, 0);
     assert.equal(result.results[0].skipped, 'disabled');
   });
+  await test('hit audit skips hidden and see-through controls, and only warns for an edge under a fixed bar', async () => {
+    const rect = { x: 10, y: 10, right: 110, bottom: 60, width: 100, height: 50 };
+    let style = { visibility: 'visible', pointerEvents: 'auto', position: 'static' },
+      shown = true,
+      cover = null;
+    const body = {},
+      footer = { id: 'footer', parentElement: body, _pos: 'fixed' },
+      el = {
+        id: 'target',
+        disabled: false,
+        textContent: 'Test',
+        tagName: 'BUTTON',
+        getClientRects: () => [rect],
+        getBoundingClientRect: () => rect,
+        getAttribute: () => null,
+        contains: () => false,
+        checkVisibility: () => shown
+      };
+    const c = {
+      innerWidth: 200,
+      innerHeight: 100,
+      getComputedStyle: n => (n === el ? style : { position: n._pos || 'static' }),
+      document: {
+        body,
+        querySelector: () => ({ querySelectorAll: () => [el] }),
+        // the centre (60,35) always hits; the bottom edge hits whatever `cover` is
+        elementFromPoint: (x, y) => (cover && y > 40 ? cover : el)
+      }
+    };
+    vm.createContext(c);
+    vm.runInContext(fs.readFileSync(path.join(__dirname, 'hit-audit.js'), 'utf8'), c);
+    shown = false; // inside a closed <details>
+    assert.equal((await c.PTHitAudit()).checked, 0);
+    shown = true;
+    style = { ...style, pointerEvents: 'none' }; // a decorative card preview
+    let r = await c.PTHitAudit();
+    assert.equal(r.checked, 0);
+    assert.match(r.results[0].skipped, /not tappable/);
+    style = { ...style, pointerEvents: 'auto' };
+    cover = footer; // a fixed footer over the lower edge: scroll it clear
+    r = await c.PTHitAudit();
+    assert.equal(r.failures, 0);
+    assert.equal(r.warnings, 1);
+    cover = { id: 'overlay', parentElement: body }; // an ordinary element over the edge: a real failure
+    assert.equal((await c.PTHitAudit()).failures, 1);
+  });
   await test('UI navigation refuses an intercepted tap and dispatches real coordinates', async () => {
     const { tap } = require('./ui-runner.js');
     let hit = false,

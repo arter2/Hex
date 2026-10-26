@@ -1861,3 +1861,88 @@ body.instL #hudBottom .inst .ench-hint{right:auto; left:0;}
 body.h460.wide #scrBattle #hudBottom{overflow:visible;}
 /* the save slot chip on the menu is the way to switch saves: make it read as a button (v157) */
 .mmstats>.mmslot{font-size:2.9cqw; padding:.5cqw 1.2cqw; border-width:.3cqw; border-radius:.6cqw; background:rgba(10,30,48,.9); color:#bfe8ff; box-shadow:0 0 1.2cqw rgba(127,212,255,.55); white-space:nowrap;}
+/* ---------------- cards (v158): the card kit's layers, cards/ (see cardEl in ui.js) ----------------
+   Every slot is placed in units of the kit's canvas (240 wide; 392 tall compact, 456 expanded) and text is sized in
+   cqw (1/240 of the card = 0.417cqw), so a card is the same picture at any size. Bottom up: backing + texture + shade
+   (::before), art, frame and any state glow (::after), then glyphs and text in the game's pixel font. */
+.card.kit{position:relative; display:block; align-self:start; aspect-ratio:240/392; height:auto; min-height:0; padding:0; margin:0; border:0!important; border-radius:0; background:none!important;
+  box-shadow:none; container-type:inline-size; overflow:visible; color:var(--k-text); text-align:left; font-family:var(--font-h); font-weight:400; line-height:1; outline-offset:-2px;}
+.card.kit.expanded{aspect-ratio:240/456;}
+.card.kit::before{content:''; position:absolute; inset:0; z-index:0; left:0; width:auto; bottom:0; opacity:1; background:var(--k-under); background-size:100% 100%; background-repeat:no-repeat; pointer-events:none;}
+.card.kit::after{content:''; position:absolute; inset:0; z-index:2; background:var(--k-frame) 0 0/100% 100% no-repeat; pointer-events:none;
+  width:auto; height:auto; top:0; right:0; border:0; border-radius:0; box-shadow:none; transform:none; display:block; font-size:0;}
+.card.kit>*{position:absolute; z-index:3; margin:0; padding:0; pointer-events:none;}
+.card.kit>.k-art{z-index:1; object-fit:cover; image-rendering:pixelated; background:rgba(0,0,0,.35); border-radius:0;}
+.card.kit>.k-hidden{background:repeating-linear-gradient(45deg,rgba(0,0,0,.55) 0 6px,rgba(0,0,0,.4) 6px 12px);}
+.card.kit>img:not(.k-art){image-rendering:pixelated; object-fit:contain;}
+/* the rune (blue plate) and the rank (red plate), as in the approved cards */
+.card.kit .k-rune,.card.kit .k-rank{display:flex; align-items:center; justify-content:center; font-size:10.833cqw; color:#fff; text-shadow:0 0.625cqw 0 #000;
+  box-sizing:border-box; border:0.833cqw solid; box-shadow:inset 0 0 0 0.417cqw rgba(0,0,0,.6);}
+.card.kit .k-rune{background:#1d4fae; border-color:#76b4ff;} .card.kit .k-rune.wild{background:#5a2c8c; border-color:#c8a0ff;}
+.card.kit .k-rank{background:#a4231c; border-color:#ff8a66;}
+.card.kit .k-name{display:flex; align-items:center; justify-content:center; text-align:center; font-size:calc(var(--ns,24) / 240 * 100cqw); line-height:.92; color:var(--k-text);
+  text-shadow:0 0.833cqw 0 rgba(0,0,0,.7); overflow:hidden; overflow-wrap:anywhere;}
+.card.kit.lt .k-name, .card.kit.lt .k-stat{text-shadow:none;}
+.card.kit .k-tline{display:flex; align-items:center; justify-content:center; gap:2.083cqw; font-size:6.250cqw; text-transform:uppercase; letter-spacing:.04em; white-space:nowrap; overflow:hidden;}
+.card.kit .k-tline i{font-style:normal;} .card.kit .k-type{color:var(--k-acc);} .card.kit .k-dot{color:var(--k-muted);}
+.card.kit .k-stat{display:flex; align-items:center; font-size:15.000cqw; white-space:nowrap; text-shadow:0 0.833cqw 0 rgba(0,0,0,.7);}
+.card.kit .k-sdiv{background:color-mix(in srgb,var(--k-muted) 45%,transparent);}
+.card.kit .k-rules{font-size:5.833cqw; line-height:1.05; color:var(--k-text); overflow-y:auto; pointer-events:auto; overscroll-behavior:contain; scrollbar-width:thin; white-space:normal;}
+.card.kit .k-foot{display:grid; grid-template-columns:9.167cqw 1fr; grid-template-rows:1fr 1fr; column-gap:2.083cqw; align-items:center; font-size:5.417cqw; line-height:1; overflow:hidden;}
+.card.kit .k-foot .k-ficon{position:static; grid-row:1/3; width:100%; height:auto;}
+.card.kit .k-foot small{font-size:inherit; color:var(--k-acc);} .card.kit .k-foot span{white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+.card.kit.lt .k-foot small,.card.kit.lt .k-type{color:#8a5a14;}
+/* states: enchanted (a Whetstone or oil on it) glows light blue with the kit's badge; buffed glows yellow */
+.card.kit.ench{outline:0; box-shadow:none; filter:none;}
+.card.kit.ench::after{background:url(cards/glows/compact/enchanted.svg) 0 0/100% 100% no-repeat,url(cards/badges/compact/enchanted.svg) 0 0/100% 100% no-repeat,var(--k-frame) 0 0/100% 100% no-repeat;
+  content:''; inset:0; width:auto; height:auto; top:0; right:0; border:0; border-radius:0; box-shadow:none; font-size:0;}
+.card.kit.expanded.ench::after{background:url(cards/glows/expanded/enchanted.svg) 0 0/100% 100% no-repeat,url(cards/badges/expanded/enchanted.svg) 0 0/100% 100% no-repeat,var(--k-frame) 0 0/100% 100% no-repeat;}
+.card.kit.buff::after{background:url(cards/glows/compact/buffed.svg) 0 0/100% 100% no-repeat,url(cards/badges/compact/buffed.svg) 0 0/100% 100% no-repeat,var(--k-frame) 0 0/100% 100% no-repeat;}
+/* a plain count badge (×2, 1/3 deck, Lv 2) sits in the kit's count tab at the bottom; other badges keep their places */
+.card.kit>.badge:not(.new):not(.inst):not(.tink){display:flex; align-items:center; justify-content:center; padding:0; margin:0; border:0; border-radius:0; background:none; box-shadow:none;
+  right:auto; bottom:auto; transform:none; color:#f5f1dc; font:400 7.917cqw/1 var(--font-h); white-space:nowrap; overflow:hidden; z-index:4;}
+.card.kit.compact .k-el{left:10.000%; top:5.612%; width:13.333%; height:8.163%;}
+.card.kit.compact .k-hero{left:56.250%; top:5.612%; width:13.333%; height:8.163%;}
+.card.kit.compact .k-rune{left:55.417%; top:5.867%; width:15.000%; height:7.143%;}
+.card.kit.compact .k-rank{left:76.667%; top:5.867%; width:15.000%; height:7.143%;}
+.card.kit.compact .k-name{left:8.333%; top:15.816%; width:83.333%; height:11.735%;}
+.card.kit.compact .k-art{left:7.500%; top:28.571%; width:85.000%; height:43.367%;}
+.card.kit.compact .k-tline{left:8.333%; top:73.980%; width:83.333%; height:4.082%;}
+.card.kit.compact .k-sicon{left:11.667%; top:82.908%; width:11.667%; height:7.143%;}
+.card.kit.compact .k-stat{left:25.833%; top:82.143%; width:49.167%; height:8.673%;}
+.card.kit.compact .k-sdiv{left:76.250%; top:82.908%; width:0.833%; height:7.143%;}
+.card.kit.compact .k-rar{left:81.250%; top:84.184%; width:7.500%; height:4.592%;}
+.card.kit.compact >.badge:not(.new):not(.inst):not(.tink){left:36.250%; top:93.112%; width:27.500%; height:4.592%;}
+.card.kit.expanded .k-el{left:10.000%; top:4.825%; width:13.333%; height:7.018%;}
+.card.kit.expanded .k-hero{left:56.250%; top:4.825%; width:13.333%; height:7.018%;}
+.card.kit.expanded .k-rune{left:55.417%; top:5.044%; width:15.000%; height:6.140%;}
+.card.kit.expanded .k-rank{left:76.667%; top:5.044%; width:15.000%; height:6.140%;}
+.card.kit.expanded .k-name{left:8.333%; top:13.596%; width:83.333%; height:10.088%;}
+.card.kit.expanded .k-art{left:7.500%; top:24.123%; width:85.000%; height:31.798%;}
+.card.kit.expanded .k-tline{left:8.333%; top:57.018%; width:83.333%; height:3.509%;}
+.card.kit.expanded .k-sicon{left:11.667%; top:62.061%; width:11.667%; height:6.140%;}
+.card.kit.expanded .k-stat{left:25.833%; top:61.404%; width:49.167%; height:7.456%;}
+.card.kit.expanded .k-sdiv{left:76.250%; top:62.061%; width:0.833%; height:6.140%;}
+.card.kit.expanded .k-rar{left:81.250%; top:63.158%; width:7.500%; height:3.947%;}
+.card.kit.expanded >.badge:not(.new):not(.inst):not(.tink){left:36.250%; top:94.079%; width:27.500%; height:3.947%;}
+.card.kit.expanded .k-rules{left:10.000%; top:71.053%; width:80.000%; height:15.789%;}
+.card.kit.expanded .k-f0{left:9.167%; top:87.939%; width:40.000%; height:5.921%;}
+.card.kit.expanded .k-f1{left:51.667%; top:87.939%; width:40.000%; height:5.921%;}
+.card.kit.expanded .k-rules{font-family:var(--font-h); font-size:6.25cqw; line-height:1; letter-spacing:.01em; color:var(--k-text); opacity:1;}
+.card.kit .k-foot{font-size:5.6cqw;}
+.card.kit.lt .k-sicon,.card.kit.lt .k-el,.card.kit.lt .k-ficon{filter:brightness(.4) contrast(1.4);}
+/* the kit's proportions win over every older per-screen card height (some of them !important) */
+html body .card.kit.compact{aspect-ratio:240/392!important; min-height:0!important; height:auto!important; max-height:none!important;}
+html body .card.kit.expanded{aspect-ratio:240/456!important; min-height:0!important; height:auto!important; max-height:none!important;}
+html body :is(#dtCard,#dkpCard,#peek) .card.kit{width:min(300px,82vw,calc(70vh * 240 / 456)); max-width:none; margin-inline:auto; font-size:inherit;}
+html body :is(#cGrid,#dkColl,#custHand,#rvCards,#pkCards,#bColl,#bDeck,#custQueue,#dkDeck) .card.kit.compact>.badge:not(.new):not(.inst):not(.tink){
+  left:36.25%; top:93.11%; width:27.5%; height:4.59%; right:auto; bottom:auto; max-width:none; font-size:7.9cqw; padding:0; background:none; border:0;}
+html body :is(#dtCard,#dkpCard,#peek) .card.kit{width:min(100%,300px,calc(66vh * 240 / 456));}
+/* the deck builder's library: in deck / max goes in the card's count tab (the owned count when none are in) */
+html body #dkColl .card.kit .dkfrac,html body #dkColl .card.kit .dkown{position:absolute; left:36.25%; top:93.11%; width:27.5%; height:4.59%; right:auto; bottom:auto; transform:none; display:flex; align-items:center; justify-content:center; gap:0;
+  padding:0; margin:0; border:0; border-radius:0; background:none; box-shadow:none; color:#f5f1dc; font:400 7.9cqw/1 var(--font-h); text-shadow:none; z-index:4; opacity:1;}
+html body #dkColl .card.kit .dkfrac b,html body #dkColl .card.kit .dkfrac i{font:inherit; color:inherit; font-style:normal;}
+html body #dkColl .card.kit .dkown::before{content:'×';}
+html body #dkColl .card.kit .dkfrac~.dkown{display:none;}
+html body #dkColl .card.kit.full .dkfrac{color:#ffd866;}
+html body #dkColl .card.kit .dkfrac b,html body #dkColl .card.kit .dkfrac i{transform:none; font-size:inherit; opacity:1;}

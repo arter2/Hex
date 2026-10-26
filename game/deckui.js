@@ -72,7 +72,7 @@ function dkHold(el,c,tap){ let t=0, held=false, x0=0, y0=0;
   el.addEventListener('click',e=>{ if(held){ held=false; return; } tap(); });
   el.addEventListener('contextmenu',e=>{ e.preventDefault(); clearTimeout(t); dkPeek(c); }); }
 // the big preview: read the card, add or remove copies, or add it to another deck
-function dkPeek(c){ DK.peek=c; const box=$('#dkpCard'); box.innerHTML=''; box.appendChild(cardEl(c));
+function dkPeek(c){ DK.peek=c; const box=$('#dkpCard'); box.innerHTML=''; box.appendChild(cardEl(c,'',false,'expanded'));
   const d=dkDeck(), n=dkCount(d,c.id);
   $('#dkpInfo').textContent=COLORS[c.color].name+' · '+TYPES[c.type].name+' · rank '+c.rank+' · '+RARITY[c.rarity].n+' · you own '+(save.owned[c.id]||0)+' · max '+dkMax(c)+' in a deck';
   $('#dkpN').textContent=n+' in '+d.name; $('#dkpMinus').disabled=!n; $('#dkpPlus').disabled=n>=dkMax(c)||d.list.length>=RULES.max;

@@ -1,0 +1,130 @@
+{
+  "red": {
+    "accent": "#fa693b",
+    "light": "#ffc082",
+    "dark": "#813222",
+    "label": "FIRE",
+    "element": "fire",
+    "base": "#351916",
+    "text": "#f4f0dc",
+    "muted": "#abc0cc",
+    "ui_accent": "#fa693b",
+    "variants": [
+      "embers",
+      "lava-crust",
+      "volcanic-ridges"
+    ]
+  },
+  "blue": {
+    "accent": "#4cbcf2",
+    "light": "#c0efff",
+    "dark": "#205c80",
+    "label": "WATER / ICE / WIND",
+    "element": "snow",
+    "base": "#10283f",
+    "text": "#f4f0dc",
+    "muted": "#abc0cc",
+    "ui_accent": "#4cbcf2",
+    "variants": [
+      "water-ripples",
+      "cracked-ice",
+      "frost-facets"
+    ]
+  },
+  "yellow": {
+    "accent": "#f3d441",
+    "light": "#fff1a0",
+    "dark": "#877029",
+    "label": "LIGHTNING / POISON",
+    "element": "bolt",
+    "base": "#4b3f17",
+    "text": "#f4f0dc",
+    "muted": "#abc0cc",
+    "ui_accent": "#f3d441",
+    "variants": [
+      "dune-sand",
+      "static-arcs",
+      "sandstone"
+    ]
+  },
+  "green": {
+    "accent": "#70b84e",
+    "light": "#c1e799",
+    "dark": "#365b2c",
+    "label": "NATURE",
+    "element": "leaf",
+    "base": "#14291a",
+    "text": "#f4f0dc",
+    "muted": "#abc0cc",
+    "ui_accent": "#70b84e",
+    "variants": [
+      "leaves",
+      "moss",
+      "bark"
+    ]
+  },
+  "brown": {
+    "accent": "#b58050",
+    "light": "#e2bd8a",
+    "dark": "#64452f",
+    "label": "WOOD / MACHINE",
+    "element": "gear",
+    "base": "#3b2b1f",
+    "text": "#f4f0dc",
+    "muted": "#abc0cc",
+    "ui_accent": "#b58050",
+    "variants": [
+      "parchment",
+      "technical-plans",
+      "clay"
+    ]
+  },
+  "gray": {
+    "accent": "#9daebe",
+    "light": "#e1eaf1",
+    "dark": "#535e6a",
+    "label": "METAL / STONE",
+    "element": "stone",
+    "base": "#30353c",
+    "text": "#f4f0dc",
+    "muted": "#abc0cc",
+    "ui_accent": "#9daebe",
+    "variants": [
+      "machine-plates",
+      "brushed-metal",
+      "weld-seams"
+    ]
+  },
+  "white": {
+    "accent": "#eee5bc",
+    "light": "#fffbea",
+    "dark": "#8d886f",
+    "label": "DIVINE / COURAGE",
+    "element": "sun",
+    "base": "#e8e4d7",
+    "text": "#28271f",
+    "muted": "#625c47",
+    "ui_accent": "#736337",
+    "variants": [
+      "ashlar-blocks",
+      "column-flutes",
+      "veined-marble"
+    ]
+  },
+  "black": {
+    "accent": "#b183b3",
+    "light": "#dfbde1",
+    "dark": "#563c5c",
+    "label": "DEATH / DARKNESS",
+    "element": "moon",
+    "base": "#17151e",
+    "text": "#f4f0dc",
+    "muted": "#abc0cc",
+    "ui_accent": "#b183b3",
+    "variants": [
+      "grave-stone",
+      "bog",
+      "dead-roots"
+    ]
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "compact": {
+    "width": 240,
+    "height": 392,
+    "delta": 0,
+    "art": [
+      18,
+      112,
+      204,
+      170
+    ],
+    "description": null,
+    "type_y": 302,
+    "stat_y": 352,
+    "stat_icon_y": 325,
+    "rarity_y": 341,
+    "quantity_y": 378,
+    "dividers": [
+      60,
+      110,
+      283,
+      313
+    ],
+    "name_area": [
+      20,
+      64,
+      200,
+      44
+    ],
+    "count_bounds": [
+      87,
+      365,
+      66,
+      18
+    ],
+    "viewBox": [
+      0,
+      0,
+      240,
+      392
+    ],
+    "intrinsic_size": [
+      1440,
+      2352
+    ],
+    "body_bounds": [
+      18,
+      18,
+      204,
+      348
+    ],
+    "outer_border": [
+      1,
+      1,
+      238,
+      390
+    ],
+    "body_font_size": 11.2,
+    "line_height": 15
+  },
+  "expanded": {
+    "width": 240,
+    "height": 456,
+    "delta": 64,
+    "art": [
+      18,
+      110,
+      204,
+      145
+    ],
+    "description": [
+      26,
+      326,
+      188,
+      69
+    ],
+    "type_y": 272,
+    "stat_y": 309,
+    "stat_icon_y": 283,
+    "rarity_y": 300,
+    "quantity_y": 442,
+    "dividers": [
+      60,
+      109,
+      256,
+      280,
+      320,
+      398
+    ],
+    "name_area": [
+      20,
+      64,
+      200,
+      44
+    ],
+    "count_bounds": [
+      87,
+      429,
+      66,
+      18
+    ],
+    "details": [
+      18,
+      400,
+      204,
+      29
+    ],
+    "viewBox": [
+      0,
+      0,
+      240,
+      456
+    ],
+    "intrinsic_size": [
+      1440,
+      2736
+    ],
+    "body_bounds": [
+      18,
+      18,
+      204,
+      412
+    ],
+    "outer_border": [
+      1,
+      1,
+      238,
+      454
+    ],
+    "body_font_size": 11.2,
+    "line_height": 15
+  }
+}

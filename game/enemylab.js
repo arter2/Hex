@@ -49,8 +49,8 @@ function elabDelStage(id,k){ const o=Object.assign({},ELAB.over[id]||{}), st=(o.
 function elabStageFrom(id,k,v){ const o=Object.assign({},ELAB.over[id]||{}), st=(o.stages||[]).map(x=>Object.assign({},x)), lo=k>1?st[k-2].from+1:2, hi=k<st.length?st[k].from-1:30;
   st[k-1].from=Math.max(lo,Math.min(hi,v)); o.stages=st; elabStore(id,o); }
 // the Share buttons follow how many enemies are changed
-function elabShareSync(){ const n=Object.keys(ELAB.over).length, c=document.querySelector('#mlabForm [data-a=copy]'), r=document.querySelector('#mlabForm .elshare [data-a=reset]');
-  if(c) c.textContent='Copy changes'+(n?' ('+n+')':''); if(r){ r.disabled=!n; delete r.dataset.armed; r.textContent='Reset all'; } }
+function elabShareSync(){ const n=Object.keys(ELAB.over).length, t=document.querySelector('#mlabForm .eltabs [data-t=share]');
+  if(t) t.innerHTML='Share'+(n?' <i>'+n+'</i>':''); }
 function elabCat(d){ return d.boss?'Bosses':d.mini?'Minibosses':d.rare?'Rare foes':d.minion?'Summoned helpers':d.vermin?'Vermin':d.outlaw?'Outlaws':d.spell?'Spellfolk':d.deck?'Card casters':'Monsters'; }
 
 /* ---------------- the battle ---------------- */
@@ -85,50 +85,94 @@ function elabLive(e,depth){ if(!ELAB.opt.live||!ELAB.over[e.id]||(B&&B.lab&&B.la
 // a kill: bring one of the same kind back after a moment, if Respawn is on (battle.js kill)
 function elabKilled(e){ renderElabBoard(); if(!ELAB.opt.respawn) return; const id=e.id; later(1.5,()=>{ if(elabOn()) elabSummon(id); }); }
 
-/* ---------------- the panel ---------------- */
-function renderElab(){ const f=$('#mlabForm'); f.innerHTML='';
-  const h=(t,sub)=>{ const x=document.createElement('h4'); x.textContent=t; if(sub){ const s=document.createElement('small'); s.textContent=sub; x.appendChild(s); } f.appendChild(x); return x; };
-  const ids=Object.keys(ENEMY_DEFS), groups={}; for(const id of ids) (groups[elabCat(ENEMY_DEFS[id])]=groups[elabCat(ENEMY_DEFS[id])]||[]).push(id);
-  const options=sel=>Object.entries(groups).map(([g,l])=>`<optgroup label="${g}">`+l.map(id=>`<option value="${id}"${id===sel?' selected':''}>${esc(ENEMY_DEFS[id].name)}</option>`).join('')+'</optgroup>').join('');
+/* ---------------- the panel ----------------
+   Built for a phone: a sheet along the bottom (the enemies stand at the top of the board), three tabs (Summon,
+   Edit, Share), one enemy at a time in the editor, big buttons, and − / + beside every number. */
+const elabIds=()=>Object.keys(ENEMY_DEFS);
+function elabOptions(sel){ const groups={}; for(const id of elabIds()) (groups[elabCat(ENEMY_DEFS[id])]=groups[elabCat(ENEMY_DEFS[id])]||[]).push(id);
+  return Object.entries(groups).map(([g,l])=>`<optgroup label="${g}">`+l.map(id=>`<option value="${id}"${id===sel?' selected':''}>${ELAB.over[id]?'● ':''}${esc(ENEMY_DEFS[id].name)}</option>`).join('')+'</optgroup>').join(''); }
+// a labelled block: the label (hold it for what it does) above its control
+function elabRow(parent,label,html,tipText){ const r=document.createElement('div'); r.className='mlrow elrow'; if(tipText) r.dataset.tip=tipText;
+  r.innerHTML=(label?`<span class="ellab">${label}</span>`:'')+`<div class="elctl">${html}</div>`; parent.appendChild(r); return r; }
+// a number: − [slider] + and its value; set(v) runs once a change is done (a tap, or letting go of the slider)
+function elabNum(parent,label,val,mn,mx,st,set,tipText){ const dec=st<1?1:0, fmt=v=>(+v).toFixed(dec);
+  const r=elabRow(parent,label,`<button class="elstep" data-d="-1" aria-label="Less">−</button><input type="range" min="${mn}" max="${mx}" step="${st}" value="${val}"><button class="elstep" data-d="1" aria-label="More">+</button><b>${fmt(val)}</b>`,tipText);
+  const i=r.querySelector('input'), o=r.querySelector('b');
+  i.oninput=()=>{ o.textContent=fmt(i.value); }; i.onchange=()=>set(+i.value);
+  r.querySelectorAll('.elstep').forEach(b=>b.onclick=()=>{ const v=Math.max(mn,Math.min(mx,Math.round((+i.value+st*+b.dataset.d)/st)*st)); i.value=v; o.textContent=fmt(v); set(+fmt(v)); });
+  return r; }
+function elabChips(parent,label,items,cur,color,onPick,tipText){ const r=elabRow(parent,label,`<div class="chips">${items.map(([k,v])=>`<button class="chip" data-k="${k}" style="--c:${color}">${v}</button>`).join('')}</div>`,tipText);
+  r.querySelectorAll('[data-k]').forEach(b=>{ b.classList.toggle('on',b.dataset.k===String(cur)); b.onclick=()=>onPick(b.dataset.k); }); return r; }
 
-  h('Summon');
-  const s=document.createElement('div'); s.className='mlrow elsum';
-  s.innerHTML=`<select id="elPick">${options(ELAB.pick)}</select><button class="btn small" data-a="sum">Summon</button><button class="btn ghost small" data-a="clear">Clear all</button>`;
-  s.querySelector('select').onchange=e=>{ ELAB.pick=e.target.value; };
-  s.querySelector('[data-a=sum]').onclick=()=>elabSummon(ELAB.pick);
-  s.querySelector('[data-a=clear]').onclick=()=>{ for(const e of B.enemies){ if(e.tile&&e.tile.occ===e) e.tile.occ=null; } B.enemies=[]; B.teles=B.teles.filter(t=>t.friendly); B.shots=B.shots.filter(x=>x.from!=='e'); renderElabBoard(); };
-  f.appendChild(s);
-  const tog=(k,label,tipText)=>{ const r=document.createElement('div'); r.className='mlrow'; r.dataset.tip=tipText;
-    r.innerHTML=`<span>${label}</span><div class="chips"><button class="chip" style="--c:#ff6ad5">${ELAB.opt[k]?'On':'Off'}</button></div>`;
-    const c=r.querySelector('button'); c.classList.toggle('on',!!ELAB.opt[k]);
-    c.onclick=()=>{ ELAB.opt[k]=!ELAB.opt[k]; elabKeep(); if(k==='tough') for(const e of B.enemies) if(e.hp>0) elabApply(e,true); renderElab(); }; f.appendChild(r); };
+function renderElab(){ const f=$('#mlabForm'); f.innerHTML='';
+  const tab=ELAB.tab||'sum', tabs=document.createElement('div'); tabs.className='eltabs';
+  tabs.innerHTML=[['sum','Summon'],['edit','Edit'],['share','Share']].map(([k,v])=>`<button data-t="${k}" class="${k===tab?'on':''}">${v}${k==='share'&&Object.keys(ELAB.over).length?' <i>'+Object.keys(ELAB.over).length+'</i>':''}</button>`).join('');
+  tabs.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>{ ELAB.tab=b.dataset.t; renderElab(); $('#mlabPanel .mlbody').scrollTop=0; });
+  f.appendChild(tabs);
+  const body=document.createElement('div'); body.className='eltab'; f.appendChild(body);
+  if(tab==='sum') elabSummonTab(body); else if(tab==='edit') elabEditTab(body); else elabShareTab(body); }
+
+function elabSummonTab(f){
+  const r=elabRow(f,'Enemy',`<select id="elPick">${elabOptions(ELAB.pick)}</select>`); r.querySelector('select').onchange=e=>{ ELAB.pick=e.target.value; };
+  const bt=document.createElement('div'); bt.className='elbig';
+  bt.innerHTML='<button class="btn" data-a="sum">Summon</button><button class="btn ghost" data-a="edit">Edit it</button><button class="btn ghost" data-a="clear">Clear all</button>'; f.appendChild(bt);
+  bt.querySelector('[data-a=sum]').onclick=()=>elabSummon(ELAB.pick);
+  bt.querySelector('[data-a=edit]').onclick=()=>{ ELAB.tab='edit'; renderElab(); };
+  bt.querySelector('[data-a=clear]').onclick=()=>{ for(const e of B.enemies){ if(e.tile&&e.tile.occ===e) e.tile.occ=null; } B.enemies=[]; B.teles=B.teles.filter(t=>t.friendly); B.shots=B.shots.filter(x=>x.from!=='e'); renderElabBoard(); };
+  const on=document.createElement('p'); on.className='ellab'; on.textContent='On the board'; f.appendChild(on);
+  const bd=document.createElement('div'); bd.id='elBoard'; bd.className='elboard'; f.appendChild(bd); renderElabBoard();
+  elabNum(f,'Depth',ELAB.opt.depth,1,30,1,v=>{ ELAB.opt.depth=v; elabKeep(); },'The dungeon depth new enemies are summoned at: deeper ones have more HP, hit harder, and use the depth stage for that depth.');
+  const tog=(k,label,tipText)=>elabChips(f,label,[['1','On'],['0','Off']],ELAB.opt[k]?'1':'0','#ff6ad5',v=>{ ELAB.opt[k]=v==='1'; elabKeep(); if(k==='tough') for(const e of B.enemies) if(e.hp>0) elabApply(e,true); renderElab(); },tipText);
   tog('attack','They attack','Off: enemies only walk about, so you can watch how they move.');
   tog('respawn','Respawn when killed','On: a killed enemy comes back (the same kind) after 1.5 s.');
   tog('tough',"Can't die",'On: enemies on the board have 99,999 HP, to watch them for as long as you like.');
-  tog('live','Use in real fights','On: enemies you meet in the dungeon (in this browser) use your changes too, each by the depth it is met at. Off: only the lab uses them.');
-  { const r=document.createElement('div'); r.className='mlrow'; r.dataset.tip='The dungeon depth new enemies are summoned at: deeper ones have more HP and hit harder, and use the depth stage for that depth.';
-    r.innerHTML=`<span>Depth</span><input type="range" min="1" max="30" step="1" value="${ELAB.opt.depth}"><b>${ELAB.opt.depth}</b>`;
-    const i=r.querySelector('input'), o=r.querySelector('b'); i.oninput=()=>{ ELAB.opt.depth=+i.value; o.textContent=i.value; elabKeep(); };
-    i.onchange=()=>{ if(ELAB.open){ const w=[...document.querySelectorAll('.elkind.open')][0]; if(w) w.replaceWith(elabKind(ELAB.open)); } }; f.appendChild(r); }
+  tog('live','Use in real fights','On: enemies you meet in the dungeon (in this browser) use your changes too, each by the depth it is met at. Off: only the lab uses them.'); }
 
-  h('On the board'); const bd=document.createElement('div'); bd.id='elBoard'; bd.className='elboard'; f.appendChild(bd); renderElabBoard();
+function elabEditTab(f){ const id=ENEMY_DEFS[ELAB.pick]?ELAB.pick:'ram';
+  const r=elabRow(f,'Enemy',`<select>${elabOptions(id)}</select>`,'● marks the enemies you have changed.'); r.querySelector('select').onchange=e=>{ ELAB.pick=e.target.value; renderElab(); };
+  const ch=Object.keys(ELAB.over);
+  if(ch.length){ const c=elabRow(f,'Changed',`<div class="chips">${ch.map(k=>`<button class="chip" data-k="${k}" style="--c:#ffe066">${esc(ENEMY_DEFS[k].name)}</button>`).join('')}</div>`);
+    c.querySelectorAll('[data-k]').forEach(b=>{ b.classList.toggle('on',b.dataset.k===id); b.onclick=()=>{ ELAB.pick=b.dataset.k; renderElab(); }; }); }
+  const box=document.createElement('div'); box.className='eledit'; f.appendChild(box); elabEditor(box,id); }
 
-  h('Enemies','tap one to see and change it');
-  const find=document.createElement('input'); find.type='search'; find.className='elfind'; find.placeholder='Find an enemy or an attack'; find.value=ELAB.find;
-  find.oninput=()=>{ ELAB.find=find.value; list.querySelectorAll('.elkind').forEach(x=>{ x.hidden=!!ELAB.find&&!x.dataset.find.includes(ELAB.find.toLowerCase()); }); };
-  f.appendChild(find);
-  const list=document.createElement('div'); list.className='ellist'; f.appendChild(list);
-  for(const [g,l] of Object.entries(groups)){ const gh=document.createElement('p'); gh.className='elgroup'; gh.textContent=g; list.appendChild(gh);
-    for(const id of l) list.appendChild(elabKind(id)); }
-  find.oninput();
+// the editor for one kind: its depth stages, then the chosen stage's settings
+function elabEditor(ed,id){ const st=elabStages(id), k=Math.min(ELAB.stage[id]||0,st.length), c=elabCur(id,k), changed=!!ELAB.over[id];
+  const redo=()=>{ const b=$('#mlabPanel .mlbody'), y=b.scrollTop; renderElab(); b.scrollTop=y; };   // the whole tab, so ● and Changed keep up
+  const now=elabStageAt(id,ELAB.opt.depth);
+  const tabs=elabRow(ed,'Depth stage',`<div class="chips">${[1,...st.map(x=>x.from)].map((f,i)=>`<button class="chip" data-st="${i}" style="--c:#b48cff">From ${f}${i===now?' ★':''}</button>`).join('')}<button class="chip" data-st="add" style="--c:#b48cff">+ Stage</button></div>`,
+    'Depth stages. Each is what this enemy does from that depth down, until the next stage; a new stage starts as a copy of the one before it, so change only what differs. ★: the stage the Summon tab\'s Depth uses.');
+  tabs.querySelectorAll('[data-st]').forEach(b=>{ b.classList.toggle('on',b.dataset.st===String(k)); b.onclick=()=>{ if(b.dataset.st==='add') elabAddStage(id); else ELAB.stage[id]=+b.dataset.st; redo(); }; });
+  if(k){ elabNum(ed,'This stage starts at depth',st[k-1].from,2,30,1,v=>{ elabStageFrom(id,k,v); redo(); },'The depth this stage takes over from.');
+    const del=document.createElement('button'); del.className='btn ghost elwide'; del.textContent='Remove this stage'; del.onclick=()=>{ elabDelStage(id,k); redo(); }; ed.appendChild(del); }
+  // attacks: one row each, with big ↑ ↓ ✕
+  const tellOf=m=>(typeof TELL!=='undefined'&&TELL[m]&&TELL[m].text)||'';
+  const mv=elabRow(ed,'Attacks'+(c.order?' (in this order)':' (one picked at random)'),`<div class="elmoves">${c.moves.map((m,i)=>`<div class="elmove"><span><b>${esc(m)}</b><small>${esc(tellOf(m))}</small></span><button data-l="${i}" aria-label="Earlier"${i?'':' disabled'}>↑</button><button data-r="${i}" aria-label="Later"${i<c.moves.length-1?'':' disabled'}>↓</button><button data-x="${i}" aria-label="Remove">✕</button></div>`).join('')}</div>`);
+  mv.querySelectorAll('[data-x]').forEach(b=>b.onclick=()=>{ const l=c.moves.slice(); l.splice(+b.dataset.x,1); if(!l.length){ tip('It needs at least one attack'); return; } elabSetOver(id,{moves:l}); redo(); });
+  mv.querySelectorAll('[data-l],[data-r]').forEach(b=>b.onclick=()=>{ const l=c.moves.slice(), i=+(b.dataset.l??b.dataset.r), j=b.dataset.l!=null?i-1:i+1; if(j<0||j>=l.length) return; [l[i],l[j]]=[l[j],l[i]]; elabSetOver(id,{moves:l}); redo(); });
+  const add=elabRow(ed,'Add an attack',`<select><option value="">Pick one…</option>${Object.keys(MOVES).sort().map(m=>`<option value="${m}">${m}${tellOf(m)?' — '+esc(tellOf(m)):''}</option>`).join('')}</select>`);
+  add.querySelector('select').onchange=e=>{ const m=e.target.value; if(!m) return; elabSetOver(id,{moves:c.moves.concat(m)}); redo(); };
+  elabChips(ed,'Order',[['1','In order'],['0','Random']],c.order?'1':'0','#8fe4ff',v=>{ elabSetOver(id,{order:v==='1'}); redo(); },'In order: it uses its attacks one after another and starts again. Random: it picks one each time.');
+  elabChips(ed,'Walking',Object.entries(ELAB_AI),c.ai,'#ffe066',v=>{ elabSetOver(id,{ai:v}); redo(); },
+    'How it moves between attacks. Lines up: steps into your row. Wanders: drifts, pressing in later. Keeps back: stays far early, then closes in. Still: never moves.');
+  elabNum(ed,'Attacks every, fastest (s)',c.rate[0],.5,12,.1,v=>{ elabSetOver(id,{rate:[v,Math.max(v,c.rate[1])]}); redo(); },'Seconds between its attacks: each wait is picked between the fastest and the slowest.');
+  elabNum(ed,'Attacks every, slowest (s)',c.rate[1],.5,12,.1,v=>{ elabSetOver(id,{rate:[Math.min(v,c.rate[0]),v]}); redo(); });
+  elabNum(ed,'Damage',c.dmg,0,80,1,v=>{ elabSetOver(id,{dmg:v}); redo(); },'Its hit before depth scaling (what it would do at depth 1); the game still makes it hit harder the deeper it is met.');
+  elabNum(ed,'HP',c.hp,5,3000,5,v=>{ elabSetOver(id,{hp:v}); redo(); },'Its health before depth scaling (what it would have at depth 1); the game still adds more the deeper it is met.');
+  const bt=document.createElement('div'); bt.className='elbig';
+  bt.innerHTML=`<button class="btn" data-a="sum">Summon one</button><button class="btn ghost" data-a="reset"${changed?'':' disabled'}>Back to the game's</button>`;
+  bt.querySelector('[data-a=sum]').onclick=()=>elabSummon(id);
+  const rs=bt.querySelector('[data-a=reset]'); rs.onclick=()=>{ if(!rs.dataset.armed){ rs.dataset.armed='1'; rs.textContent='Tap again: undo all its changes'; return; } ELAB.stage[id]=0; elabStore(id,{}); renderElab(); };
+  ed.appendChild(bt); }
 
-  h('Share changes');
-  const sh=document.createElement('div'); sh.className='mlrow elsum elshare';
-  const n=Object.keys(ELAB.over).length;
-  sh.innerHTML=`<button class="btn small" data-a="copy">Copy changes${n?' ('+n+')':''}</button><button class="btn ghost small" data-a="paste">Paste</button><button class="btn ghost small" data-a="reset"${n?'':' disabled'}>Reset all</button>`;
+function elabShareTab(f){
+  const n=Object.keys(ELAB.over).length, p=document.createElement('p'); p.className='hint elnote';
+  p.textContent=n?n+' enem'+(n>1?'ies':'y')+' changed: '+Object.keys(ELAB.over).map(k=>ENEMY_DEFS[k].name).join(', ')+'.':'Nothing changed yet. Change an enemy on the Edit tab.';
+  f.appendChild(p);
+  const sh=document.createElement('div'); sh.className='elbig elshare';
+  sh.innerHTML=`<button class="btn" data-a="copy">Copy changes</button><button class="btn ghost" data-a="paste">Paste</button><button class="btn ghost" data-a="reset"${n?'':' disabled'}>Reset all</button>`;
   f.appendChild(sh);
   const ta=document.createElement('textarea'); ta.className='dbgcopy elpaste'; ta.hidden=true; ta.placeholder='Paste copied enemy changes here, then Apply'; f.appendChild(ta);
-  const ap=document.createElement('button'); ap.className='btn small'; ap.textContent='Apply'; ap.hidden=true; f.appendChild(ap);
+  const ap=document.createElement('button'); ap.className='btn elwide'; ap.textContent='Apply'; ap.hidden=true; f.appendChild(ap);
   sh.querySelector('[data-a=copy]').onclick=()=>{ const txt=JSON.stringify({enemyLab:ELAB.over},null,1); ta.hidden=false; ap.hidden=true; ta.readOnly=true; ta.value=txt; ta.select();
     const ok=()=>tip(n?'Copied '+n+' changed enem'+(n>1?'ies':'y'):'Copied (no changes yet)');
     if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(ok,()=>{ try{ document.execCommand('copy'); }catch(e){} ok(); }); else { try{ document.execCommand('copy'); }catch(e){} ok(); } };
@@ -145,56 +189,14 @@ function renderElab(){ const f=$('#mlabForm'); f.innerHTML='';
       ELAB.stage[id]=0; elabStore(id,p); k++; }
     tip(k?'Applied changes to '+k+' enem'+(k>1?'ies':'y'):'Nothing in that to apply'); renderElab(); };
   const rs=sh.querySelector('[data-a=reset]'); rs.onclick=()=>{ if(!rs.dataset.armed){ rs.dataset.armed='1'; rs.textContent='Tap again to reset all'; return; }
-    const was=Object.keys(ELAB.over); ELAB.over={}; ELAB.stage={}; elabKeep(); for(const e of B.enemies) if(e.hp>0&&e.labDepth&&was.includes(e.id)) elabApply(e); renderElab(); };
-}
+    const was=Object.keys(ELAB.over); ELAB.over={}; ELAB.stage={}; elabKeep(); for(const e of B.enemies) if(e.hp>0&&e.labDepth&&was.includes(e.id)) elabApply(e); renderElab(); }; }
+
 // the enemies on the board, each with an ✕ to send it away
 function renderElabBoard(){ const bd=document.getElementById('elBoard'); if(!bd||!B) return; const live=B.enemies.filter(e=>e.hp>0);
   bd.innerHTML=live.length?'':'<span class="dim">Nobody yet: pick an enemy and Summon.</span>';
   for(const e of live){ const c=document.createElement('span'); c.className='elon'; c.innerHTML=`${esc(e.name)} <button aria-label="Remove">✕</button>`;
     c.querySelector('button').onclick=()=>{ if(e.tile&&e.tile.occ===e) e.tile.occ=null; B.enemies=B.enemies.filter(x=>x!==e); B.teles=B.teles.filter(t=>t.owner!==e); renderElabBoard(); };
     bd.appendChild(c); } }
-// one kind: a summary line; tap it for the editor
-function elabKind(id){ const d=ENEMY_DEFS[id], st=elabStages(id), k=Math.min(ELAB.stage[id]||0,st.length), c=elabCur(id,k), c0=elabCur(id,0), changed=!!ELAB.over[id], open=ELAB.open===id;
-  const w=document.createElement('div'); w.className='elkind'+(open?' open':'')+(changed?' changed':'');
-  w.dataset.find=(d.name+' '+c.moves.join(' ')+' '+elabCat(d)).toLowerCase();
-  const head=document.createElement('button'); head.className='elhead'; head.type='button';
-  head.innerHTML=`<b>${esc(d.name)}${changed?' <i>changed</i>':''}</b><span>${c0.moves.map(m=>esc(m)).join(c0.order?' → ':' · ')}${c0.order?'':' <em>(random)</em>'}${st.length?' <em>· '+st.length+' depth stage'+(st.length>1?'s':'')+'</em>':''}</span>`;
-  head.onclick=()=>{ ELAB.open=open?null:id; const nw=elabKind(id); w.replaceWith(nw); };
-  w.appendChild(head); if(!open) return w;
-
-  const ed=document.createElement('div'); ed.className='eledit';
-  const row=(label,html,tipText)=>{ const r=document.createElement('div'); r.className='mlrow'; if(tipText) r.dataset.tip=tipText; r.innerHTML=`<span>${label}</span>`+html; ed.appendChild(r); return r; };
-  const redo=()=>{ const nw=elabKind(id); w.replaceWith(nw); };
-  // depth stages: a tab for each (from depth 1, then each stage's own); the one the Depth slider uses is starred
-  const now=elabStageAt(id,ELAB.opt.depth), tabs=row('Depth',`<div class="chips">${[1,...st.map(x=>x.from)].map((f,i)=>`<button class="chip" data-st="${i}" style="--c:#b48cff">${f}+${i===now?' ★':''}</button>`).join('')}<button class="chip" data-st="add" style="--c:#b48cff">+ Stage</button></div>`,
-    'Depth stages. Each tab is what this enemy does from that depth down, until the next stage; a new stage starts as a copy of the one before it, so change only what differs. ★: the stage the Depth slider (above) uses for new summons.');
-  tabs.querySelectorAll('[data-st]').forEach(b=>{ b.classList.toggle('on',b.dataset.st===String(k)); b.onclick=()=>{ if(b.dataset.st==='add') elabAddStage(id); else ELAB.stage[id]=+b.dataset.st; redo(); }; });
-  if(k){ const r=row('Starts at depth',`<input type="range" min="2" max="30" step="1" value="${st[k-1].from}"><b>${st[k-1].from}</b>`,'The depth this stage takes over from.');
-    const i=r.querySelector('input'), o=r.querySelector('b'); i.oninput=()=>{ o.textContent=i.value; }; i.onchange=()=>{ elabStageFrom(id,k,+i.value); redo(); };
-    const del=document.createElement('button'); del.className='btn ghost small elstdel'; del.textContent='Remove this stage'; del.onclick=()=>{ elabDelStage(id,k); redo(); }; ed.appendChild(del); }
-  // attacks, in order: tap ✕ to drop one, ‹ › to move it, and add any move the game has
-  const mv=row('Attacks',`<div class="elmoves">${c.moves.map((m,i)=>`<span class="elmove" title="${esc((typeof TELL!=='undefined'&&TELL[m]&&TELL[m].text)||'')}"><button data-l="${i}" aria-label="Earlier">‹</button>${esc(m)}<button data-r="${i}" aria-label="Later">›</button><button data-x="${i}" aria-label="Remove">✕</button></span>`).join('')}</div>`,
-    'Its attacks. In order: it uses them one after another and starts again. Random: it picks one each time. Hold an attack name for what it does.');
-  mv.querySelectorAll('[data-x]').forEach(b=>b.onclick=()=>{ const l=c.moves.slice(); l.splice(+b.dataset.x,1); if(!l.length){ tip('It needs at least one attack'); return; } elabSetOver(id,{moves:l}); redo(); });
-  mv.querySelectorAll('[data-l],[data-r]').forEach(b=>b.onclick=()=>{ const l=c.moves.slice(), i=+(b.dataset.l??b.dataset.r), j=b.dataset.l!=null?i-1:i+1; if(j<0||j>=l.length) return; [l[i],l[j]]=[l[j],l[i]]; elabSetOver(id,{moves:l}); redo(); });
-  const add=row('Add attack',`<select>${'<option value="">Pick one…</option>'+Object.keys(MOVES).sort().map(m=>`<option value="${m}">${m}${typeof TELL!=='undefined'&&TELL[m]?' — '+esc(TELL[m].text):''}</option>`).join('')}</select>`);
-  add.querySelector('select').onchange=e=>{ const m=e.target.value; if(!m) return; elabSetOver(id,{moves:c.moves.concat(m)}); redo(); };
-  const ord=row('Order',`<div class="chips"><button class="chip" data-o="1" style="--c:#8fe4ff">In order</button><button class="chip" data-o="0" style="--c:#8fe4ff">Random</button></div>`);
-  ord.querySelectorAll('[data-o]').forEach(b=>{ b.classList.toggle('on',+b.dataset.o===+c.order); b.onclick=()=>{ elabSetOver(id,{order:b.dataset.o==='1'}); redo(); }; });
-  const ai=row('Walking',`<div class="chips">${Object.entries(ELAB_AI).map(([k,v])=>`<button class="chip" data-ai="${k}" style="--c:#ffe066">${v}</button>`).join('')}</div>`,
-    'How it moves between attacks. Lines up: steps into your row. Wanders: drifts, pressing in later. Keeps back: stays far early, then closes in. Stands still: never moves.');
-  ai.querySelectorAll('[data-ai]').forEach(b=>{ b.classList.toggle('on',b.dataset.ai===c.ai); b.onclick=()=>{ elabSetOver(id,{ai:b.dataset.ai}); redo(); }; });
-  const slide=(label,val,mn,mx,st,set,tipText)=>{ const r=row(label,`<input type="range" min="${mn}" max="${mx}" step="${st}" value="${val}"><b>${val}</b>`,tipText);
-    const i=r.querySelector('input'), o=r.querySelector('b'); i.oninput=()=>{ o.textContent=i.value; }; i.onchange=()=>{ set(+i.value); redo(); }; };
-  slide('Attacks every, fastest (s)',c.rate[0],.5,12,.1,v=>elabSetOver(id,{rate:[v,Math.max(v,c.rate[1])]}),'Seconds between its attacks: each wait is picked between the fastest and the slowest.');
-  slide('Attacks every, slowest (s)',c.rate[1],.5,12,.1,v=>elabSetOver(id,{rate:[Math.min(v,c.rate[0]),v]}));
-  slide('Damage',c.dmg,0,80,1,v=>elabSetOver(id,{dmg:v}),'Its hit before depth scaling (what it would do at depth 1); the game still makes it hit harder the deeper it is met.');
-  slide('HP',c.hp,5,3000,5,v=>elabSetOver(id,{hp:v}),'Its health before depth scaling (what it would have at depth 1); the game still adds more the deeper it is met.');
-  const bt=document.createElement('div'); bt.className='mlrow elsum';
-  bt.innerHTML=`<button class="btn small" data-a="sum">Summon one</button><button class="btn ghost small" data-a="reset"${changed?'':' disabled'}>Back to the game's (all stages)</button>`;
-  bt.querySelector('[data-a=sum]').onclick=()=>{ ELAB.pick=id; const s=document.getElementById('elPick'); if(s) s.value=id; elabSummon(id); };
-  bt.querySelector('[data-a=reset]').onclick=()=>{ ELAB.stage[id]=0; elabStore(id,{}); redo(); };
-  ed.appendChild(bt); w.appendChild(ed); return w; }
 
 /* ---------------- the lab button: which lab? ---------------- */
 $('#goMove').onclick=()=>$('#labPick').classList.add('on');

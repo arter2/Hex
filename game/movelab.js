@@ -31,7 +31,7 @@ function mlabExit(){ $('#mlabPanel').classList.remove('on'); BOARD_TEST=null; bu
   mlabSync(); if(save&&save.temp){ save=null; openMenu(); } else openCamp(); }   // back where you came from: camp, with your own save
 // the lab's button and score show only in a lab battle
 function mlabSync(){ const on=mlabOn(), foes=on&&typeof elabOn==='function'&&elabOn(); $('#mlabHud').hidden=!on; if(!on) $('#mlabPanel').classList.remove('on'); else { mlabHud(); requestAnimationFrame(mlabPlace); }
-  $('#mlabTitle').textContent=foes?'Enemy lab':'Movement lab'; $('#mlabDefaults').hidden=$('#mlabCopy').hidden=!!foes; $('#mlabCopyNote').hidden=true; }
+  $('#mlabTitle').textContent=foes?'Enemy lab':'Movement lab'; $('#mlabPanel').classList.toggle('bottom',!!foes); $('#mlabDefaults').hidden=$('#mlabCopy').hidden=!!foes; $('#mlabCopyNote').hidden=true; }
 function mlabHud(){ const s=$('#mlabScore'); if(s&&typeof elabOn==='function'&&elabOn()){ s.textContent='Hits taken '+ELAB_HITS; return; } if(s) s.textContent='Shots '+MLAB_SHOTS+' · Hits '+MLAB_HITS+(MLAB_SHOTS?' · '+Math.round(100*(1-MLAB_HITS/MLAB_SHOTS))+'% dodged':''); }
 
 // the panel: [key, label, min, max, step, what a change needs] — 'board' rebuilds the battle, 'turret' and 'mv' apply at
@@ -122,7 +122,7 @@ function mlabGrip(){ const grip=$('#mlabGrip'), pan=$('#mlabPanel'), KEY='hexman
   const keep=h=>{ saved=h; try{ localStorage.setItem(KEY,String(h)); }catch(e){} }, P=e=>appXY(e.clientX,e.clientY);
   let drag=null;
   grip.addEventListener('pointerdown',e=>{ e.preventDefault(); try{ grip.setPointerCapture(e.pointerId); }catch(_){} drag={id:e.pointerId,p0:P(e)[1],s0:pan.offsetHeight,moved:false}; grip.classList.add('on'); });
-  grip.addEventListener('pointermove',e=>{ if(!drag||e.pointerId!==drag.id) return; const d=P(e)[1]-drag.p0; if(Math.abs(d)>4) drag.moved=true; if(drag.moved) set(drag.s0+d); });
+  grip.addEventListener('pointermove',e=>{ if(!drag||e.pointerId!==drag.id) return; const d=P(e)[1]-drag.p0; if(Math.abs(d)>4) drag.moved=true; if(drag.moved) set(drag.s0+(pan.classList.contains('bottom')?-d:d)); });   // the Enemy lab's sheet grows upward
   const end=e=>{ if(!drag||e.pointerId!==drag.id) return; const d=drag; drag=null; grip.classList.remove('on');
     if(d.moved) keep(pan.offsetHeight); else if(e.type==='pointerup') keep(set(d.s0>MIN+20?MIN:Math.round(maxH()*.45))); };
   grip.addEventListener('pointerup',end); grip.addEventListener('pointercancel',end); }

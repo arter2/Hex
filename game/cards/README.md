@@ -11,3 +11,11 @@ own control for texture strength). To change it again: `sed -i 's/id="texture-in
 
 Holo foils (`foils/*/COLOR/`): each colour's hue is pulled 40% of the way round the colour wheel toward that card
 colour's accent (palettes.json), brightness and saturation kept, so the rainbow leans toward the card's colour.
+
+## v2.1 update (v161)
+
+Frames, the 48 card textures and layouts.json come from card kit v2.1: the count plaque has its own face, bezel and riveted
+brackets, and the textures now run into the bottom strip around it. Texture ink is still 0.05 (lowered from the kit's
+0.12, v159) and the foils keep the v160 hue shift (v2.1 didn't change them). The count text sits inside the plaque's
+56×13 opening (style.css "cards (v158)" block). The kit's separate footer/rail/corner parts aren't copied: the frames
+already include them.

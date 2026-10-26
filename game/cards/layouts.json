@@ -56,7 +56,19 @@
       390
     ],
     "body_font_size": 11.2,
-    "line_height": 15
+    "line_height": 15,
+    "texture_bounds": [
+      2,
+      2,
+      236,
+      388
+    ],
+    "count_hardware_bounds": [
+      81,
+      363,
+      80,
+      21
+    ]
   },
   "expanded": {
     "width": 240,
@@ -128,6 +140,18 @@
       454
     ],
     "body_font_size": 11.2,
-    "line_height": 15
+    "line_height": 15,
+    "texture_bounds": [
+      2,
+      2,
+      236,
+      452
+    ],
+    "count_hardware_bounds": [
+      81,
+      427,
+      80,
+      21
+    ]
   }
 }

@@ -23,7 +23,38 @@ function curve(records, maxDepth) {
   const label = r => r.label || r.metadata?.config?.label || r.style || 'unknown';
   const clean = records.filter(U.usable);
   const styles = [...new Set(clean.map(label))].sort((a, b) => STYLES.indexOf(a) - STYLES.indexOf(b));
-  const out = { maxDepth, runs: records.length, clean: clean.length, styles: {} };
+  const out = {
+    maxDepth,
+    runs: records.length,
+    clean: clean.length,
+    styles: {},
+    unfinished: [],
+    quickLosses: []
+  };
+  // fights that never ended inside the bots' time limit (a stalemate, or a fight the bot can't finish), from every
+  // record, clean or not: they are what made a run unclean
+  for (const r of records)
+    for (const x of r.fights || []) {
+      if (['timeout', 'stuck', 'error', 'evalerror'].includes(x.res))
+        out.unfinished.push({
+          profile: label(r),
+          lean: r.lean,
+          depth: x.depth,
+          res: x.res,
+          seconds: x.time,
+          hpLost: x.hpLost
+        });
+      // lost in under 20 seconds: a near one-shot
+      if (x.res !== 'win' && x.time != null && x.time < 20 && !['timeout', 'stuck'].includes(x.res))
+        out.quickLosses.push({
+          profile: label(r),
+          lean: r.lean,
+          depth: x.depth,
+          seconds: x.time,
+          hpLost: x.hpLost,
+          maxHp: x.maxHp
+        });
+    }
   for (const st of styles) {
     const runs = clean.filter(r => label(r) === st),
       fights = runs.flatMap(r => r.fights || []);
@@ -64,9 +95,30 @@ function markdown(c, meta) {
   out.push(
     `Build ${meta.source || 'unknown'}, ${meta.date}. ${c.clean} of ${c.runs} runs clean. Bots play whole runs from ` +
       `depth 1 to ${c.maxDepth}; a lost fight is retried, and three losses in a row at one depth end the run. ` +
-      'Bots are not people: read this as where the game gets harder, not as how hard it feels.',
+      'Bots are not people: read this as where the game gets harder, not as how hard it feels. Damage taken can ' +
+      'pass 100% of max HP because healing during a fight lets you take more.',
     ''
   );
+  if (c.unfinished.length) {
+    out.push('## Fights that never ended', '');
+    out.push(
+      "The fight was still going when the bot's time limit ran out. A run with one is left out of the tables.",
+      ''
+    );
+    out.push('| Profile | Deck | Depth | Seconds | Damage taken |', '|---|---|---|---|---|');
+    for (const u of c.unfinished)
+      out.push(`| ${u.profile} | ${u.lean || '—'} | ${u.depth} | ${f(u.seconds)} | ${f(u.hpLost)} |`);
+    out.push('');
+  }
+  if (c.quickLosses.length) {
+    out.push('## Fights lost in under 20 seconds', '');
+    out.push('| Profile | Deck | Depth | Seconds | Damage taken / max HP |', '|---|---|---|---|---|');
+    for (const u of c.quickLosses)
+      out.push(
+        `| ${u.profile} | ${u.lean || '—'} | ${u.depth} | ${f(u.seconds)} | ${f(u.hpLost)} / ${f(u.maxHp)} |`
+      );
+    out.push('');
+  }
   out.push('## Where it starts to bite', '');
   out.push(
     '| Profile | Runs | Median depth reached | Cleared all | First band under 80% wins |',
@@ -80,7 +132,7 @@ function markdown(c, meta) {
   for (const [st, s] of Object.entries(c.styles)) {
     out.push(`## ${st}`, '');
     out.push(
-      '| Depths | Fights | Won | HP lost (% of max) | Seconds / fight | Runs stopped here |',
+      '| Depths | Fights | Won | Damage taken (% of max HP) | Seconds / fight | Runs stopped here |',
       '|---|---|---|---|---|---|'
     );
     for (const r of s.rows)

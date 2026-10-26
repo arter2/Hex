@@ -26,7 +26,7 @@ function rows(data, kind) {
         if (v.failures)
           notes.push(`${v.name}: ${v.failures} control${v.failures > 1 ? 's' : ''} covered or clipped`);
     if (kind === 'battle') {
-      for (const s of r.steps || []) if (s.skipped) notes.push('skipped: ' + s.name);
+      for (const s of r.steps || []) if (s.skipped) notes.push('note: ' + s.name);
       const passed = (r.steps || []).filter(s => s.ok && !s.skipped).length;
       notes.unshift(`${passed} steps passed`);
     }

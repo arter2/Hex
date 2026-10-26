@@ -91,7 +91,10 @@ async function hold(page, context, selector, ms) {
   await sleep(ms);
   const during = await page.evaluate(() => ({
     charging: !!B.player.charging,
-    lit: document.getElementById('btnWand').classList.contains('chg')
+    lit: document.getElementById('btnWand').classList.contains('chg'),
+    phase: B.phase,
+    paused: typeof paused !== 'undefined' ? paused : null,
+    tip: !!document.querySelector('.tip.on, .tip:not([hidden])')
   }));
   await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
   await sleep(150);
@@ -154,6 +157,11 @@ async function useTool(page, context, engine, util, steps, readySelector) {
 // and tap again (up to twice more).
 async function tapCard(page, selector, notes) {
   for (let k = 0; k < 3; k++) {
+    if (await page.locator('#detail.on').isVisible()) {
+      notes.push('a detail left open by an earlier slow tap');
+      await page.evaluate(() => document.getElementById('detail').classList.remove('on'));
+      await sleep(100);
+    }
     await tap(page, selector);
     await sleep(150);
     if (!(await page.locator('#detail.on').isVisible())) return;
@@ -262,7 +270,9 @@ async function scenario(page, context, device, engine, shot, steps) {
 
   // Fire: hold to charge
   if (engine === 'chromium') {
-    const h = await hold(page, context, '#btnWand', 700);
+    let h = await hold(page, context, '#btnWand', 700);
+    // one more try if the first hold never registered (a slow page can drop a touch); both are reported
+    if (!h.charging) h = { first: h, ...(await hold(page, context, '#btnWand', 900)) };
     step('hold Fire: it charges and lights, and lets go', h.charging && h.lit && !h.chargingAfter, h);
   } else steps.push({ name: 'hold Fire', ok: true, detail: 'skipped: a held touch needs Chromium' });
 
@@ -370,7 +380,9 @@ async function run(out = process.argv[2] || 'playtest-battle-ui-results') {
   try {
     host = await R.serve();
     ({ browser, engine } = await R.launch());
-    for (const device of MATRIX) {
+    // DEVICES=phone-landscape,tablet-landscape runs only those
+    const only = (process.env.DEVICES || '').split(',').filter(Boolean);
+    for (const device of MATRIX.filter(d => !only.length || only.includes(d.name))) {
       let session,
         steps = [],
         error = null;

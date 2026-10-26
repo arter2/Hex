@@ -107,14 +107,14 @@ function cardEl(c,extra,locked,mode,opts={}){
 
 function showDetail(c){
   const box=$('#dtCard'); box.innerHTML=''; box.appendChild(cardEl(c,'',!c.recipe&&!save.seen[c.id],'expanded'));
-  if(c.recipe){ const r=RECIPES.find(x=>x.id===c.id); $('#dtInfo').textContent='Recipe: '+r.cards.map(id=>CARDS[id].name).join(' + ')+'. Queue these together and they fuse into this card.'; $('#detail').classList.add('on'); return; }
+  if(c.recipe){ const r=RECIPES.find(x=>x.id===c.id); $('#dtInfo').textContent='Recipe: '+r.cards.map(id=>CARDS[id].name).join(' + ')+'. Queue these together and they fuse into this card.'; $('#detail').classList.add('on'); cardPopWire($('#detail'),$('#dtCard'),()=>$('#detail').classList.remove('on')); return; }
   const inDeck=activeDeck().list.filter(id=>id===c.id).length;
   $('#dtInfo').textContent=save.seen[c.id]?COLORS[c.color].name+' · '+TYPES[c.type].name+' · rank '+c.rank+' · '+RARITY[c.rarity].n+' · owned '+(save.owned[c.id]||0)+' · in deck '+inDeck
     :'Not found yet. '+RARITY[c.rarity].n+' '+COLORS[c.color].name+' '+TYPES[c.type].name+'.';
   { const found=RECIPES.filter(r=>recipeKnown(r)&&r.cards.includes(c.id)); if(found.length) $('#dtInfo').textContent+=' · ⚗ Part of: '+found.map(r=>r.name).join(', '); }
   if(c.uses&&save.owned[c.id]) $('#dtInfo').textContent+=' · uses left per copy: '+Array.from({length:save.owned[c.id]},(_,k)=>chargeLeft(save,c.id,k)+'/'+c.uses).join(', ');
   dtShards(c);
-  $('#detail').classList.add('on');
+  $('#detail').classList.add('on'); cardPopWire($('#detail'),$('#dtCard'),()=>$('#detail').classList.remove('on'));
 }
 // Break and Craft on the card detail: shards come from spare copies only, so a deck never loses a card
 function dtShards(c){ const box=$('#dtShard'); box.innerHTML=''; const sh=shardOf(c); box.hidden=!sh||!save.seen[c.id]; if(box.hidden) return;
@@ -131,25 +131,46 @@ function dtShards(c){ const box=$('#dtShard'); box.innerHTML=''; const sh=shardO
 function dtRefresh(){ const on=id=>{ const el=document.getElementById(id); return el&&el.classList.contains('on'); };
   if(on('scrCollection')) renderCollection(); if(on('scrBuilder')&&typeof renderBuilder==='function') renderBuilder(); if(on('scrCamp')&&typeof openCamp==='function') openCamp(); }
 $('#dtClose').onclick=()=>$('#detail').classList.remove('on');
-// Hold a card in a grid to peek at it: it grows to a big, readable card for as long as the
-// finger stays down and shrinks back on release (the tap that ends a peek does nothing else).
-// Right-click still opens the full detail.
+// Hold a card to pop it up big. It stays up after you let go, its rules text scrolls with a finger or the
+// wheel, and a double-tap on it, a tap outside it, the ✕ beside it or Escape puts it away. The same three
+// ways close the card detail and the deck builder's card (cardPopWire). Right-click still opens the detail.
 let pressT=0, pressed=false;
+function cardPopWire(over,card,close){
+  // ✕ floating at the card's top-right corner
+  const face=card.querySelector('.card')||card;
+  let x=face.querySelector(':scope>.popx'); if(!x){ x=document.createElement('button'); x.className='popx'; x.type='button'; x.setAttribute('aria-label','Close'); x.textContent='✕'; face.appendChild(x); }
+  x.onclick=e=>{ e.stopPropagation(); close(); };
+  // a double-tap on the card: two quick taps that both started on it (the release that ends the hold doesn't count)
+  let down=null, last=0;
+  card.onpointerdown=e=>{ down={x:e.clientX,y:e.clientY,t:performance.now()}; };
+  card.onpointerup=e=>{ if(!down||e.target.closest('.popx')) return; const d=down; down=null;
+    if(Math.hypot(e.clientX-d.x,e.clientY-d.y)>10||performance.now()-d.t>350){ last=0; return; }
+    const t=performance.now(); if(t-last<330){ last=0; close(); } else last=t; };
+  card.ondblclick=e=>{ e.preventDefault(); close(); };   // a mouse's double-click
+  // a tap outside: on the dim backdrop itself
+  over.onclick=e=>{ if(e.target===over) close(); };
+  kitRulesMore(card);
+}
+// a fade at the bottom of a rules box that has more to read, gone once you've scrolled to the end
+function kitRulesMore(root){ root.querySelectorAll('.k-rules').forEach(r=>{
+  const upd=()=>r.classList.toggle('more',r.scrollHeight-r.clientHeight-r.scrollTop>2);
+  r.onscroll=upd; requestAnimationFrame(upd); }); }
 function peek(c,on){ const box=$('#peek');
-  if(!on){ box.classList.remove('on'); return; }
-  box.innerHTML=''; const el=cardEl(c,'',!c.recipe&&!save.seen[c.id],'expanded'); el.classList.add('big'); box.appendChild(el);
+  if(!on){ box.classList.remove('on'); box.innerHTML=''; return; }
+  box.innerHTML=''; const wrap=document.createElement('div'); wrap.className='popcard';
+  const el=cardEl(c,'',!c.recipe&&!save.seen[c.id],'expanded'); el.classList.add('big'); wrap.appendChild(el); box.appendChild(wrap);
   if(save.seen[c.id]){ const n=document.createElement('p'); n.className='peekinfo'; n.textContent=COLORS[c.color].name+' · '+TYPES[c.type].name+' · rank '+c.rank+' · '+RARITY[c.rarity].n+' · owned '+(save.owned[c.id]||0); box.appendChild(n); }
+  cardPopWire(box,wrap,()=>peek(null,false));
   box.classList.add('on'); }
 function longPress(el,c){
   let x0=0, y0=0;
   el.addEventListener('pointerdown',e=>{ pressed=false; x0=e.clientX; y0=e.clientY; clearTimeout(pressT); pressT=setTimeout(()=>{ pressed=true; peek(c,true); if(navigator.vibrate) navigator.vibrate(12); },320); });
   el.addEventListener('pointermove',e=>{ if(!pressed&&Math.hypot(e.clientX-x0,e.clientY-y0)>10) clearTimeout(pressT); });
-  const end=()=>{ clearTimeout(pressT); if(pressed) peek(c,false); };
-  ['pointerup','pointercancel','lostpointercapture'].forEach(ev=>el.addEventListener(ev,end));
+  ['pointerup','pointercancel','lostpointercapture'].forEach(ev=>el.addEventListener(ev,()=>clearTimeout(pressT)));
   el.addEventListener('pointerleave',()=>{ if(!pressed) clearTimeout(pressT); });
   el.addEventListener('contextmenu',e=>{ e.preventDefault(); if(!pressed) showDetail(c); });
 }
-addEventListener('pointerup',()=>{ if(pressed) setTimeout(()=>peek(null,false),0); });
+addEventListener('keydown',e=>{ if(e.key!=='Escape') return; const pk=$('#peek'); if(pk.classList.contains('on')){ peek(null,false); e.stopPropagation(); } },true);
 
 function reveal(title,body,results,buttons,extras){
   $('#rvTitle').textContent=title; $('#rvBody').textContent=body;
@@ -957,7 +978,7 @@ function dragCard(el,inst){
   el.addEventListener('pointerdown',e=>{
     if(e.button>0) return;
     drag={el,inst,x0:e.clientX,y0:e.clientY,moved:false,long:false,ghost:null,over:null};
-    drag.timer=setTimeout(()=>{ if(drag&&!drag.moved){ drag.long=true; showDetail(inst.card); } },450);
+    drag.timer=setTimeout(()=>{ if(drag&&!drag.moved){ drag.long=true; peek(inst.card,true); } },450);
     try{ el.setPointerCapture(e.pointerId); }catch(_){}
   });
   el.addEventListener('pointermove',e=>{

@@ -52,6 +52,10 @@ function serve() {
         '.js': 'text/javascript',
         '.css': 'text/css',
         '.png': 'image/png',
+        '.svg': 'image/svg+xml', // without it the browser refuses every SVG (the card kit, the HUD art)
+        '.json': 'application/json',
+        '.ttf': 'font/ttf',
+        '.woff': 'font/woff',
         '.woff2': 'font/woff2'
       };
       fs.readFile(file, (err, data) => {

@@ -1971,3 +1971,19 @@ html body .card.kit>*:not(.k-tex):not(.k-shade):not(.k-art):not(.k-foil){z-index
 .card.kit.expanded.holo.ench::after{background:url(cards/glows/expanded/enchanted.svg) 0 0/100% 100% no-repeat,url(cards/badges/expanded/enchanted.svg) 0 0/100% 100% no-repeat,var(--k-trim) 0 0/100% 100% no-repeat,var(--k-frame) 0 0/100% 100% no-repeat;}
 .card.kit.expanded.holo.buff::after{background:url(cards/glows/expanded/buffed.svg) 0 0/100% 100% no-repeat,url(cards/badges/expanded/buffed.svg) 0 0/100% 100% no-repeat,var(--k-trim) 0 0/100% 100% no-repeat,var(--k-frame) 0 0/100% 100% no-repeat;}
 .card.kit.expanded.holo.ench.buff::after{background:url(cards/glows/expanded/enchanted-and-buffed.svg) 0 0/100% 100% no-repeat,url(cards/badges/expanded/enchanted.svg) 0 0/100% 100% no-repeat,url(cards/badges/expanded/buffed.svg) 0 0/100% 100% no-repeat,var(--k-trim) 0 0/100% 100% no-repeat,var(--k-frame) 0 0/100% 100% no-repeat;}
+
+/* a held card pops up and stays (v164): it takes taps (double-tap to close, scroll its rules), a ✕ floats on its corner,
+   and a tap on the dim backdrop closes it */
+.peek.on{pointer-events:auto;}
+.peek .popcard{position:relative; width:min(300px,82vw,calc(66vh * 240 / 456));}
+html body #peek .popcard>.card.kit{width:100%;}
+.peek .card.big,#dtCard .card,#dkpCard .card{touch-action:manipulation; user-select:none; -webkit-user-select:none;}
+html body .card.kit .k-rules{touch-action:pan-y; -webkit-overflow-scrolling:touch;}
+html body .card.kit .k-rules.more{-webkit-mask-image:linear-gradient(#000 72%,transparent); mask-image:linear-gradient(#000 72%,transparent);}
+html body .card.kit>.popx,html body .card>.popx{position:absolute; left:auto; bottom:auto; top:-13px; right:-13px; width:34px; height:34px; min-width:0; min-height:0; margin:0; padding:0;
+  display:flex; align-items:center; justify-content:center; border-radius:50%; border:2px solid #000; background:#15181c; color:#f5f1dc;
+  box-shadow:0 0 0 2px #c96a2f,0 4px 10px rgba(0,0,0,.6); font:700 17px/1 system-ui,sans-serif; cursor:pointer; z-index:9; pointer-events:auto; transform:none; opacity:1;}
+html body .card>.popx:active{background:#2a2f35;}
+html body #peek .card.kit.big{border:0; border-image:none; padding:0; gap:0; box-shadow:0 18px 40px rgba(0,0,0,.6);}
+#peek.on{background:rgba(0,0,0,.72);}
+html body #peek .card.kit.big::before{inset:0; left:0; width:auto; height:auto;}

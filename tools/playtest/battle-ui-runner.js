@@ -152,21 +152,29 @@ async function useTool(page, context, engine, util, steps, readySelector) {
   }
 }
 
-// A tap on a hand-screen card. The game treats a press held 450 ms as "read this card" and opens its detail; a
-// software-rendered test page can take that long just to deliver one tap. If the detail opened, close it, note it,
-// and tap again (up to twice more).
+// A tap on a hand-screen card. The game treats a press held 450 ms as "read this card" and pops the card up big
+// (#peek; older builds opened #detail); a software-rendered test page can take that long just to deliver one tap. If
+// it opened, close it, note it, and tap again (up to twice more).
+const READ_OPEN = '#peek.on, #detail.on';
+const closeRead = page =>
+  page.evaluate(() => {
+    document.getElementById('detail').classList.remove('on');
+    const p = document.getElementById('peek');
+    p.classList.remove('on');
+    p.innerHTML = '';
+  });
 async function tapCard(page, selector, notes) {
   for (let k = 0; k < 3; k++) {
-    if (await page.locator('#detail.on').isVisible()) {
-      notes.push('a detail left open by an earlier slow tap');
-      await page.evaluate(() => document.getElementById('detail').classList.remove('on'));
+    if (await page.locator(READ_OPEN).first().isVisible()) {
+      notes.push('a card left open by an earlier slow tap');
+      await closeRead(page);
       await sleep(100);
     }
     await tap(page, selector);
     await sleep(150);
-    if (!(await page.locator('#detail.on').isVisible())) return;
+    if (!(await page.locator(READ_OPEN).first().isVisible())) return;
     notes.push('slow tap read as a hold on ' + selector);
-    await page.evaluate(() => document.getElementById('detail').classList.remove('on'));
+    await closeRead(page);
     await sleep(100);
   }
   throw Error('every tap on ' + selector + ' was read as a hold');
@@ -190,6 +198,23 @@ async function scenario(page, context, device, engine, shot, steps) {
   });
   await page.waitForSelector('#custom.on', { state: 'visible' });
   await shot('hand-1');
+
+  // hand screen: holding a card pops it up big and it stays after release; its ✕ puts it away
+  {
+    const box = await page.locator('#custHand .card').first().boundingBox();
+    await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+    await page.mouse.down();
+    // wait for the game's 450 ms hold to open it (a slow software-rendered page can take a while), then let go
+    await page.waitForSelector('#peek.on', { timeout: 4000 }).catch(() => {});
+    await page.mouse.up();
+    await sleep(250);
+    const up = await page.locator('#peek.on').isVisible();
+    step('hand screen: a held card pops up and stays after release', up);
+    await shot('hand-peek');
+    await tap(page, '#peek .popx');
+    await sleep(200);
+    step('hand screen: the ✕ closes the popped card', !(await page.locator('#peek.on').isVisible()));
+  }
 
   // hand screen: tap three ordinary cards into the queue
   const picks = await state(() =>

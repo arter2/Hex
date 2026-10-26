@@ -37,7 +37,10 @@ Open the itch.io page in **Safari**, not an in-app browser, and play in both ori
 
 ## Hand screen
 
-- [ ] Tap cards in and out of the queue. Drag one to a slot. Hold one to read it.
+- [ ] Tap cards in and out of the queue. Drag one to a slot.
+- [ ] **Hold a card** (here, in My cards and in the deck list): it pops up big and stays up when you let go. Swipe the
+      rules text to scroll it (it fades at the bottom while there's more). Close it each way: double-tap the card, tap
+      outside it, the ✕ on its corner. A single tap on it does nothing.
 - [ ] A deck tool in a slot works with a **double-tap** at a normal pace (this is the one the test machine can't
       check at tablet size).
 - [ ] **Keep:** cards you tap turn gold; Done draws the rest back up.

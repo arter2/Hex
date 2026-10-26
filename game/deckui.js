@@ -77,7 +77,7 @@ function dkPeek(c){ DK.peek=c; const box=$('#dkpCard'); box.innerHTML=''; box.ap
   $('#dkpInfo').textContent=COLORS[c.color].name+' · '+TYPES[c.type].name+' · rank '+c.rank+' · '+RARITY[c.rarity].n+' · you own '+(save.owned[c.id]||0)+' · max '+dkMax(c)+' in a deck';
   $('#dkpN').textContent=n+' in '+d.name; $('#dkpMinus').disabled=!n; $('#dkpPlus').disabled=n>=dkMax(c)||d.list.length>=RULES.max;
   $('#dkpOther').innerHTML=save.decks.map((x,i)=>i===DK.slot?'':`<option value="${i}">${esc(x.name)} (${dkCount(x,c.id)} · ${x.list.length}/${RULES.max})</option>`).join('');
-  $('#dkpOtherRow').hidden=save.decks.length<2; $('#dkPeek').classList.add('on'); }
+  $('#dkpOtherRow').hidden=save.decks.length<2; $('#dkPeek').classList.add('on'); cardPopWire($('#dkPeek'),$('#dkpCard'),()=>$('#dkpClose').onclick()); }
 $('#dkpClose').onclick=()=>{ $('#dkPeek').classList.remove('on'); DK.peek=null; };
 $('#dkPeek').addEventListener('pointerdown',e=>{ if(e.target.id==='dkPeek') $('#dkpClose').onclick(); });
 $('#dkpPlus').onclick=()=>{ if(DK.peek&&dkAdd(DK.peek)){ dkChange(); dkPeek(DK.peek); } };

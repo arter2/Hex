@@ -141,7 +141,7 @@ const lightShot=s=>typeof palHas==='function'&&palHas('golem','shard')&&!(s.owne
 function palImpact(e,t,s){ if(s&&lightShot(s)&&t){ B.fx.push({kind:'palfx',id:'golem',anim:'shardHit',a:t,t:0,life:4/14}); return; } if(e&&t&&!(e.phase>=2)&&typeof palHas==='function'&&palHas(e.id,'impact')) B.fx.push({kind:'palfx',id:e.id,anim:'impact',a:t,t:0,life:8/14}); }
 function later(sec,fn){ B.timers.push({t:sec,fn}); }
 // units slide between tiles instead of jumping
-const INTENT_ICON={hex:'☾',summon:'☠',shift:'⟳',collect:'🂠',brew:'⚗',snare:'❦',revive:'✝',bless:'✦',lunge:'⚔',steal:'✋',snipe:'◎',guard:'🛡',cleave:'⚔',bomb:'💣',shot:'➶',firebomb:'🔥',iceslam:'❄',cross:'✚',rush:'➤',blink:'☾',mend:'✚',quake:'⚠',boulders:'●',rest:'…',firelane:'♨',stonewall:'▦',frostfield:'❅',drag:'⛓'};
+const INTENT_ICON={hex:'☾',summon:'☠',shift:'⟳',collect:'🂠',brew:'⚗',snare:'❦',revive:'✝',bless:'✦',lunge:'⚔',steal:'✋',snipe:'◎',guard:'🛡',cleave:'⚔',bomb:'💣',shot:'➶',firebomb:'🔥',iceslam:'❄',cross:'✚',rush:'➤',blink:'☾',mend:'✚',quake:'⚠',boulders:'●',rest:'…',firelane:'♨',stonewall:'▦',frostfield:'❅',drag:'⛓',dash:'»'};
 const posOf=u=>[u.rx??u.tile.wx, u.rz??u.tile.wz];
 function shake(a){ View.shake=Math.max(View.shake||0,a); }
 function floater(text,t,color,big){ B.floaters.push({text,wx:t.wx,wz:t.wz,y:1.6,t:0,color:color||'#fff',big}); }

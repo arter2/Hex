@@ -42,7 +42,7 @@ function makeSquad(depth,size){ const A=typeof areaOf==='function'?areaOf(depth)
 const mapSquadSize=depth=>depth<=3?2:depth<=11?3:depth<=20?3+(Math.random()<.5?1:0):4;
 
 /* ---------------- rhythms ---------------- */
-const RHYTHM={ram:['shot','shot','rush'], mite:['iceslam','shot'], beetle:['cross','shot','shot'], wisp:['shot','firebomb'], shade:['blink','shot'],
+const RHYTHM={ram:['dash','shot','rush'], mite:['iceslam','shot'], beetle:['cross','shot','shot'], wisp:['shot','firebomb'], shade:['blink','shot'],
   sprite:['mend','shot'], gloop:['shot','shot'], bandit:['lunge','lunge','shot'], cutpurse:['steal','blink'], marksman:['snipe','snipe','rest'],
   sellsword:['guard','cleave','cleave'], bomber:['bomb','shot'], darkwiz:['hex','shot','summon'], hedgewitch:['snare','brew','mend'],
   priest:['bless','revive'], collector:['collect','shot'], cultist:['shot','shot'], witch:['shot','shot'], caller:['shot','shot'],

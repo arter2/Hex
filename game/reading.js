@@ -53,6 +53,7 @@ function perfectShot(s,t){ const p=B.player; if(s.perfectDone||t!==p.leftTile||B
 /* ---------------- tells: each attack marks the board its own way ---------------- */
 const TELL={
   rush:    {c:'255,140,60',  text:'charges down your row: chevrons sweep across it'},
+  dash:    {c:'255,170,70',  text:'dashes at you: arrows run along its line'},
   quake:   {c:'200,150,90',  text:'stamps: cracks run out across the ground'},
   snipe:   {c:'255,40,60',   text:'takes aim: a red laser marks your tile'},
   cleave:  {c:'255,90,90',   text:'raises its blade: an arc sweeps over two rows'},
@@ -75,6 +76,9 @@ function teleLook(ctx,t,tl,T){ const k=Math.min(1,tl.t/tl.dur), L=TELL[tl.kind]|
   const S=ctx===View.ctx?View.S:DEC.k, cx=cen[0], cy=cen[1]; ctx.strokeStyle='rgba(255,255,255,.8)'; ctx.lineWidth=Math.max(1.5,S*.04);
   switch(tl.kind){
     case 'rush': { const ph=(T*3)%1; for(let i=0;i<2;i++){ const ox=(i*.5+ph-.5)*S*.7; ctx.beginPath(); ctx.moveTo(cx+ox+S*.12,cy-S*.16); ctx.lineTo(cx+ox-S*.08,cy); ctx.lineTo(cx+ox+S*.12,cy+S*.16); ctx.stroke(); } break; }
+    case 'dash': { const o=tl.owner&&tl.owner.tile; if(o){ const a=hexCorners(o,0)[0], ang=Math.atan2(cy-a[1],cx-a[0]), ph=(T*3)%1, ca=Math.cos(ang), sa=Math.sin(ang);
+        for(let i=0;i<2;i++){ const d=(i*.5+ph-.5)*S*.7, px=cx+ca*d, py=cy+sa*d, w=S*.16, l=S*.18;
+          ctx.beginPath(); ctx.moveTo(px-ca*l-sa*w,py-sa*l+ca*w); ctx.lineTo(px,py); ctx.lineTo(px-ca*l+sa*w,py-sa*l-ca*w); ctx.stroke(); } } break; }
     case 'quake': case 'boulders': { ctx.beginPath(); for(let i=0;i<5;i++){ const a=i*1.26+t.q, r=S*.42*k; ctx.moveTo(cx,cy); ctx.lineTo(cx+Math.cos(a)*r*.5,cy+Math.sin(a)*r*.35); ctx.lineTo(cx+Math.cos(a+.3)*r,cy+Math.sin(a+.3)*r*.7); } ctx.stroke();
       if(tl.kind==='boulders'){ ctx.fillStyle='rgba(0,0,0,.45)'; ctx.beginPath(); ctx.ellipse(cx,cy,S*.36*k,S*.24*k,0,0,TAU2); ctx.fill(); } break; }
     case 'snipe': { const o=tl.owner&&tl.owner.tile; if(o){ const a=hexCorners(o,0)[0]; ctx.strokeStyle=late?'rgba(255,40,60,.95)':'rgba(255,40,60,'+(.25+.25*Math.sin(T*30))+')'; ctx.lineWidth=late?Math.max(2,S*.05):1.5; ctx.beginPath(); ctx.moveTo(a[0],a[1]); ctx.lineTo(cx,cy); ctx.stroke(); }

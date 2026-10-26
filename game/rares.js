@@ -7,7 +7,7 @@
 
 Object.assign(ENEMY_DEFS,{
   gildscarab:  {name:'★ Gilded Scarab',    color:'light',   hp:700, dmg:16, rate:[2.4,3.2], moves:['cross','coins','shot'],      ai:'wander', rare:'flee',   look:'beetle', tint:'#d4a017', scale:1.3},
-  prismram:    {name:'★ Prism Ram',        color:'storm',   hp:900, dmg:21, rate:[3,3.8],   moves:['rush','quake','shot'],       ai:'align',  rare:'ward',   look:'ram',    tint:'#b48cff', scale:1.35},
+  prismram:    {name:'★ Prism Ram',        color:'storm',   hp:900, dmg:21, rate:[3,3.8],   moves:['rush','dash','quake','shot'],       ai:'align',  rare:'ward',   look:'ram',    tint:'#b48cff', scale:1.35},
   voidlantern: {name:'★ Void Lantern',     color:'shadow',  hp:760, dmg:19, rate:[2.4,3.2], moves:['blink','firebomb','beam'],   ai:'wander', rare:'blink',  look:'wisp',   tint:'#5a2a8a', scale:1.35},
   rimematron:  {name:'★ Rimeborn Matron',  color:'frost',   hp:820, dmg:18, rate:[2.8,3.6], moves:['iceslam','shot','flask'],    ai:'back',   rare:'brood',  look:'witch',  tint:'#9fe3ff', scale:1.3},
   cinderchamp: {name:'★ Cinder Champion',  color:'fire',    hp:880, dmg:22, rate:[2.8,3.6], moves:['cleave','firebomb','lunge'], ai:'align',  rare:'enrage', look:'knight', tint:'#ff6a3d', scale:1.35},

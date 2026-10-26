@@ -5,3 +5,6 @@ Frames, colour backings and readability shades, the 24 material textures (both m
 badges, the 44 colored icons, the hero and rarity stars, and the kit's fonts (rules font under the DejaVu licence in
 `fonts/`). `layouts.json` and `palettes.json` are the kit's coordinates and colours; `cardEl` in `ui.js` and the
 "cards (v158)" block in `style.css` place every slot from them.
+
+One change from the kit: each texture SVG's `texture-ink` group opacity is 0.05 instead of the kit's 0.12 (the kit's
+own control for texture strength). To change it again: `sed -i 's/id="texture-ink" opacity="0.05"/id="texture-ink" opacity="X"/' game/cards/textures/*/*.svg`.

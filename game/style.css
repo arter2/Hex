@@ -1946,10 +1946,10 @@ html body #dkColl .card.kit .dkown::before{content:'×';}
 html body #dkColl .card.kit .dkfrac~.dkown{display:none;}
 html body #dkColl .card.kit.full .dkfrac{color:#ffd866;}
 html body #dkColl .card.kit .dkfrac b,html body #dkColl .card.kit .dkfrac i{transform:none; font-size:inherit; opacity:1;}
-/* layers (v159): backing (::before), texture at reduced strength, shade, art, holo foil, frame + trim foil + glow (::after), text */
+/* layers (v159): backing (::before), texture, shade, art, holo foil, frame + trim foil + glow (::after), text */
 .card.kit::before{background:var(--k-base) 0 0/100% 100% no-repeat;}
 html body .card.kit>.k-tex,html body .card.kit>.k-shade,html body .card.kit>.k-foil{position:absolute; inset:0; left:0; top:0; width:100%; height:100%; pointer-events:none; background-size:100% 100%; background-repeat:no-repeat;}
-html body .card.kit>.k-tex{z-index:0; background-image:var(--k-tex); opacity:var(--k-tex-o,.4);}
+html body .card.kit>.k-tex{z-index:0; background-image:var(--k-tex);}   /* its strength is the kit's own texture-ink opacity in each texture SVG (0.05; the kit shipped 0.12) */
 html body .card.kit>.k-shade{z-index:0; background-image:var(--k-shade);}
 html body .card.kit>.k-art{z-index:1;}
 html body .card.kit>.k-foil{z-index:2; background-image:var(--k-foil); mix-blend-mode:normal;}

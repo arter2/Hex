@@ -78,7 +78,7 @@ function cardEl(c,extra,locked,mode,opts={}){
   el.className='card kit '+m+(c.rarity==='legendary'?' leg':'')+(c.rarity==='hero'?' hero':'')+(locked?' locked':'')+(c.mastery?' mcard':'')+(kc==='white'?' lt':' dk');
   el.style.setProperty('--c',col.c); const R=ROLES[cardRole(c)]; el.style.setProperty('--rc',R.c);
   const tex=kitTexture(c,kc), u=p=>'url(cards/'+p+')';
-  // the texture is its own layer so its strength can be set (style.css .k-tex); the shade goes over it
+  // backing, texture and shade, in the kit's order (the texture's strength is its texture-ink group's opacity)
   el.style.setProperty('--k-base',u('backgrounds/'+m+'/'+kc+'-base.svg')); el.style.setProperty('--k-tex',u('textures/'+m+'/'+kc+'-'+tex+'.svg'));
   el.style.setProperty('--k-shade',u('backgrounds/'+m+'/'+kc+'-shade.svg')); el.style.setProperty('--k-frame',u('frames/'+m+'/'+kc+'.svg'));
   // holo: a legendary you own a holo copy of (or one passed in as holo); the moving foil only on the big card

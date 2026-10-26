@@ -1,0 +1,50 @@
+name: WebKit unattended session
+on:
+  push:
+    branches: [review/webkit-hour-2026-10-25]
+    paths: ['.github/workflows/webkit-hour.yml', 'tools/playtest/webkit-session.js']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: webkit-unattended-session
+  cancel-in-progress: false
+jobs:
+  webkit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 65
+    env:
+      BROWSER: webkit
+      SOURCE_SHA: ${{ github.sha }}
+      LIBGL_ALWAYS_SOFTWARE: '1'
+      SESSION_MINUTES: '55'
+      SOAK_MINUTES: '10'
+      SESSION_OUT: webkit-session
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install WebKit and dependencies
+        run: |
+          npm --prefix tools/playtest install
+          cd tools/playtest
+          npx playwright install --with-deps webkit
+      - name: Validate bot harness
+        run: |
+          node tools/playtest/selftest.js
+          node tools/playtest/webkit-session.js --plan
+      - name: Run bounded WebKit session
+        run: node tools/playtest/webkit-session.js
+      - name: Publish checkpoint or final summary
+        if: always()
+        run: |
+          if [ -f webkit-session/report.md ]; then
+            cat webkit-session/report.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: webkit-hour-results
+          path: webkit-session/
+          retention-days: 14

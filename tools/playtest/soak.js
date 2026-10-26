@@ -3,19 +3,20 @@
 // samples the JS heap, the GPU objects of both renderers, the page's size, frame times and long tasks. A leak shows as
 // growth from the first third of the session to the last; a hitch as frames over 50 ms. The machine here draws with a
 // software GPU, so absolute frame times are slow: compare builds, and watch the trend, not the number.
-const {chromium}=require('/opt/node22/lib/node_modules/playwright'); const fs=require('fs'), path=require('path');
+const Runner=require('./runner-common.js'); let host,browser; const fs=require('fs'), path=require('path');
 const MIN=+(process.argv[2]||20), OUT=process.argv[3];
-(async()=>{ const br=await chromium.launch({executablePath:'/opt/pw-browsers/chromium-1194/chrome-linux/chrome',args:['--use-gl=swiftshader','--enable-unsafe-swiftshader','--enable-precise-memory-info','--js-flags=--expose-gc']});
+(async()=>{ host=await Runner.serve(); const {browser:br}=await Runner.launch({preciseMemory:true}); browser=br;
   const pg=await br.newPage({viewport:{width:400,height:800}}); const errs=[]; pg.on('pageerror',e=>errs.push(e.message));
-  await pg.goto('file://'+path.resolve(__dirname,'../../game/index.html')); await pg.waitForTimeout(1500);
+  await pg.goto(host.url); await pg.waitForFunction(()=>typeof enterExplore==='function'&&typeof openCamp==='function');
   await pg.evaluate(()=>{ localStorage.clear(); save=newSave(STARTERS[0]); save.char=lockChar(newChar('human',0)); save.deepest=1; save.gold=5000; persist();
     // frame clock and long tasks
-    window.SOAK={frames:[], long:0, longMs:0}; let last=performance.now(); const tick=t=>{ SOAK.frames.push(t-last); last=t; requestAnimationFrame(tick); }; requestAnimationFrame(tick);
+    window.SOAK={frames:[], long:0, longMs:0,sampleAt:performance.now()}; let last=performance.now(); const tick=t=>{ SOAK.frames.push(t-last); last=t; requestAnimationFrame(tick); }; requestAnimationFrame(tick);
     try{ new PerformanceObserver(l=>{ for(const e of l.getEntries()){ SOAK.long++; SOAK.longMs+=e.duration; } }).observe({entryTypes:['longtask']}); }catch(e){}
     window.soakSample=(phase)=>{ const f=SOAK.frames.splice(0).sort((a,b)=>a-b), q=p=>f.length?+f[Math.min(f.length-1,Math.floor(f.length*p))].toFixed(1):null;
       if(window.gc) gc(); const mem=performance.memory?Math.round(performance.memory.usedJSHeapSize/1048576):null;
       const gl=r=>r?{geo:r.info.memory.geometries, tex:r.info.memory.textures, prog:(r.info.programs||[]).length}:null;
-      const s={phase, frames:f.length, p50:q(.5), p95:q(.95), p99:q(.99), over50:f.filter(x=>x>50).length, long:SOAK.long, longMs:Math.round(SOAK.longMs), heapMB:mem,
+      const now=performance.now(),durationMs=now-SOAK.sampleAt;SOAK.sampleAt=now;
+      const s={phase,durationMs, frames:f.length, p50:q(.5), p95:q(.95), p99:q(.99), over50:f.filter(x=>x>50).length, long:SOAK.long, longMs:Math.round(SOAK.longMs), heapMB:mem,
         dungeon:gl(typeof X3!=='undefined'&&X3&&X3.renderer), battle:gl(typeof AR!=='undefined'&&AR&&AR.renderer), dom:document.getElementsByTagName('*').length, depth:typeof EX!=='undefined'&&EX?EX.depth:null};
       SOAK.long=0; SOAK.longMs=0; return s; };
     // walking: a held key, changed every 1.5 s
@@ -44,6 +45,7 @@ const MIN=+(process.argv[2]||20), OUT=process.argv[3];
     const s=samples[samples.length-1]; console.log(`${s.t}s cycle ${cycle} depth ${s.depth} ${s.phase} heap ${s.heapMB}MB dungeon ${JSON.stringify(s.dungeon)} battle ${JSON.stringify(s.battle)} dom ${s.dom} p95 ${s.p95}ms over50 ${s.over50}/${s.frames} long ${s.long}`); }
   // first third against last third, per phase
   const trend={}; for(const ph of ['dungeon','battle']){ const a=samples.filter(s=>s.phase===ph); if(a.length<3) continue; const n=Math.max(1,Math.floor(a.length/3)), A=a.slice(0,n), Z=a.slice(-n), avg=(x,f)=>+(x.reduce((s,y)=>s+(f(y)||0),0)/x.length).toFixed(1);
-    trend[ph]={samples:a.length, heapMB:[avg(A,s=>s.heapMB),avg(Z,s=>s.heapMB)], geometries:[avg(A,s=>(s[ph]||{}).geo),avg(Z,s=>(s[ph]||{}).geo)], textures:[avg(A,s=>(s[ph]||{}).tex),avg(Z,s=>(s[ph]||{}).tex)], programs:[avg(A,s=>(s[ph]||{}).prog),avg(Z,s=>(s[ph]||{}).prog)], dom:[avg(A,s=>s.dom),avg(Z,s=>s.dom)], p95:[avg(A,s=>s.p95),avg(Z,s=>s.p95)], over50PerMin:[avg(A,s=>s.over50/Math.max(1,s.frames/60*1)),avg(Z,s=>s.over50/Math.max(1,s.frames/60*1))]}; }
+    trend[ph]={samples:a.length, heapMB:[avg(A,s=>s.heapMB),avg(Z,s=>s.heapMB)], geometries:[avg(A,s=>(s[ph]||{}).geo),avg(Z,s=>(s[ph]||{}).geo)], textures:[avg(A,s=>(s[ph]||{}).tex),avg(Z,s=>(s[ph]||{}).tex)], programs:[avg(A,s=>(s[ph]||{}).prog),avg(Z,s=>(s[ph]||{}).prog)], dom:[avg(A,s=>s.dom),avg(Z,s=>s.dom)], p95:[avg(A,s=>s.p95),avg(Z,s=>s.p95)], over50PerMin:[avg(A,s=>s.durationMs>0?s.over50*60000/s.durationMs:0),avg(Z,s=>s.durationMs>0?s.over50*60000/s.durationMs:0)]}; }
   const res={minutes:MIN, cycles:cycle, samples, trend, errors:errs.slice(0,10)}; if(OUT) fs.writeFileSync(OUT,JSON.stringify(res,null,1));
-  console.log('trend (first third → last third):',JSON.stringify(trend,null,1)); console.log('errors',errs.slice(0,5)); await br.close(); })();
+  console.log('trend (first third → last third):',JSON.stringify(trend,null,1)); console.log('errors',errs.slice(0,5)); })().catch(e=>{console.error(e);process.exitCode=1;}).finally(async()=>{try{if(browser)await browser.close();}finally{if(host)await host.close();}});
+

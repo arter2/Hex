@@ -6,8 +6,13 @@
 //    the game is built around whether you like it or not.
 //  · Fair hits: how long each hit's threat was on screen first (bot.js warnHit), by player.
 const fs=require('fs');
-const runs=process.argv.slice(2).flatMap(f=>fs.readFileSync(f,'utf8').trim().split('\n').filter(Boolean).map(l=>JSON.parse(l))).filter(r=>!r.error&&r.fights);
+const U=require('./support.js');
+const records=U.readRecords(process.argv.slice(2),fs);
+for(const r of records)if(!r.error&&!(Array.isArray(r.fights))){r.error='Result does not match the report schema';r.status='failed';}
+const health=U.coverage(records),runs=records.filter(U.usable);
+if(health.failed||health.skipped)process.exitCode=1;
 const out=[], P=s=>out.push(s), pc=x=>Math.round(100*x)+'%', f1=x=>(+x).toFixed(1);
+P('## Batch health');P('');P(`${health.requested} requested records: ${health.clean} clean, ${health.recovered} recovery-assisted, ${health.failed} failed, ${health.skipped} skipped. Errors: ${health.errors}.`);P('');P('Balance estimates below use clean runs only. Recovery-assisted and failed jobs are reported above, not counted as ordinary losses.');P('');for(const r of records.filter(r=>!U.usable(r)))P('- '+JSON.stringify({job:r.jobId||r.label||r.style||'unknown',seed:r.seed,issues:U.issues(r),recoveries:r.recoveries||[]}));P('');
 const tbl=(h,rows)=>{ P('| '+h.join(' | ')+' |'); P('|'+h.map((x,i)=>i?'---:':'---').join('|')+'|'); rows.forEach(r=>P('| '+r.join(' | ')+' |')); P(''); };
 const band=d=>d<=3?'1–3':d<=7?'4–7':d<=12?'8–12':d<=20?'13–20':'21+', BANDS=['1–3','4–7','8–12','13–20','21+'];
 const STY=['random','average','good','fast','combo','shopaholic'].filter(s=>runs.some(r=>r.label===s));
@@ -41,22 +46,24 @@ P('## Is there one best way to play?'); P('');
       const p=(pw*w.length+po*wo.length)/(w.length+wo.length); L.var+=k*k*p*(1-p)*(1/w.length+1/wo.length); } }
   const NAMES=Object.assign({},...runs.map(r=>r.names||{})), name=id=>NAMES[id]||id;
   const rows=Object.entries(lift).filter(([,L])=>L.n>=40).map(([id,L])=>({id, dw:L.dw/L.n, dh:L.dh/L.n, z:L.dw/Math.sqrt(Math.max(1e-9,L.var)), with:L.with}));
+  P('Exploratory association, not a causal estimate: fights from the same career are correlated, and levels, gear and style may confound these comparisons. Use matched card-swap experiments before tuning.'); P('');
   P('Card lift: in fights of the same colour and depth band, the win rate and the HP lost with the card in the deck against without it (weighted across colours and depths; cards in enough decks both ways).'); P('');
   if(rows.length){ const fmt=r=>[name(r.id),r.with,(r.dw>=0?'+':'')+f1(100*r.dw)+' pts',f1(r.dh)+' HP',f1(r.z)];
     P('Biggest help:'); P(''); tbl(['Card','Fights with it','Win rate','HP saved a fight','Sureness (z)'],rows.slice().sort((a,b)=>b.dh-a.dh).slice(0,10).map(fmt));
     P('Biggest drag:'); P(''); tbl(['Card','Fights with it','Win rate','HP saved a fight','Sureness (z)'],rows.slice().sort((a,b)=>a.dh-b.dh).slice(0,6).map(fmt));
     // hundreds of cards are tested at once, so a z of 2.5 turns up by chance alone: a must-have needs z > 3.5
     const dom=rows.filter(r=>r.dw>.08&&r.z>3.5), maybe=rows.filter(r=>r.dw>.08&&r.z>2.5&&r.z<=3.5);
-    P(dom.length?`**Possible must-haves** (win rate +8 points or more, z > 3.5, ${rows.length} cards tested): ${dom.map(r=>name(r.id)+' (+'+f1(100*r.dw)+' pts)').join(', ')}.`:`No card lifts the win rate by 8 points or more with confidence (z > 3.5, ${rows.length} cards tested): no must-have card.`);
+    P(dom.length?`**Possible must-haves** (win rate +8 points or more, z > 3.5, ${rows.length} cards tested): ${dom.map(r=>name(r.id)+' (+'+f1(100*r.dw)+' pts)').join(', ')}.`:`No card lifts the win rate by 8 points or more with confidence (z > 3.5, ${rows.length} cards tested): no card effect detected at this threshold in this sample; this does not establish that no must-have exists.`);
     if(maybe.length) P(`Worth watching (z 2.5–3.5, could be chance): ${maybe.length} cards, led by ${maybe.sort((a,b)=>b.z-a.z).slice(0,5).map(r=>name(r.id)).join(', ')}.`); P(''); }
   else P('Not enough fights with deck lists to measure card lift.'); P(''); }
 
 // ---- fair hits
 P('## Fair hits (battle runs)'); P('');
-P('How long each hit\'s threat was on screen before it landed. **Unfair:** under 0.4 s while you stood on that tile all along. **Tight:** 0.4–0.7 s.'); P('');
-{ const rows=[]; for(const s of STY){ const W={hits:0,unfair:0,tight:0,dmg:0,ud:0,bins:[0,0,0,0,0,0]}; for(const f of fights.filter(f=>f.style===s&&f.warn)){ W.hits+=f.warn.hits; W.unfair+=f.warn.unfair; W.tight+=f.warn.tight; W.dmg+=f.warn.dmg; W.ud+=f.warn.unfairDmg; f.warn.bins.forEach((x,i)=>W.bins[i]+=x); }
-    if(W.hits) rows.push([s,W.hits,pc(W.unfair/W.hits),pc(W.tight/W.hits),pc(W.ud/Math.max(1,W.dmg))]); }
-  tbl(['Player','Hits','Unfair','Tight','HP lost to unfair hits'],rows);
+P("Warning elapsed from the bot's first simulation observation, not first paint or human visibility. Unknown warnings are excluded from warning-rate denominators. **Unfair:** under 0.4 s while you stood on that tile all along. **Tight:** 0.4–0.7 s."); P('');
+{ const rows=[]; for(const s of STY){ const W={hits:0,unknown:0,unfair:0,tight:0,dmg:0,ud:0,bins:[0,0,0,0,0,0]}; for(const f of fights.filter(f=>f.style===s&&f.warn)){ W.hits+=f.warn.hits; W.unknown+=f.warn.unknown||0; W.unfair+=f.warn.unfair; W.tight+=f.warn.tight; W.dmg+=f.warn.dmg; W.ud+=f.warn.unfairDmg; f.warn.bins.forEach((x,i)=>W.bins[i]+=x); }
+    if(W.hits) rows.push([s,W.hits,W.hits-W.unknown,pc(W.unfair/Math.max(1,W.hits-W.unknown)),pc(W.tight/Math.max(1,W.hits-W.unknown)),pc(W.ud/Math.max(1,W.dmg))]); }
+  tbl(['Player','Hits','Measured warnings','Unfair (measured)','Tight (measured)','HP lost to unfair hits'],rows);
   const src={}; for(const f of fights) for(const x of (f.warn&&f.warn.worst)||[]){ const k=(x.src||'?')+(x.move?' ('+x.move+')':''); src[k]=(src[k]||0)+1; }
   if(Object.keys(src).length){ P('Most unfair hits came from: '+Object.entries(src).sort((a,b)=>b[1]-a[1]).slice(0,8).map(([k,v])=>k+' ×'+v).join('; ')+'.'); P(''); } }
 console.log(out.join('\n'));
+

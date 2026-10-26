@@ -1,11 +1,11 @@
 // node tools/playtest/save-torture.js [out.json] — what happens to your save when things go wrong (dev tool)
 // Real page, real timers, real reloads. Each scenario reports what was kept, what was lost, and any page errors:
 //   reload mid-dungeon · reload mid-fight · a corrupted save · two tabs on one save · storage full · an old, sparse save
-const {chromium}=require('/opt/node22/lib/node_modules/playwright'); const fs=require('fs'), path=require('path');
-const URL='file://'+path.resolve(__dirname,'../../game/index.html'), KEY='hexmancers-deck-v4';
-(async()=>{ const br=await chromium.launch({executablePath:'/opt/pw-browsers/chromium-1194/chrome-linux/chrome',args:['--use-gl=swiftshader','--enable-unsafe-swiftshader']});
+const Runner=require('./runner-common.js'); let host,browser; const fs=require('fs'), path=require('path');
+const KEY='hexmancers-deck-v4';
+(async()=>{ host=await Runner.serve(); const {browser:br}=await Runner.launch(); browser=br;
   const ctx=await br.newContext({viewport:{width:400,height:800}}); const out=[]; const errs=[];
-  const open=async()=>{ const pg=await ctx.newPage(); pg.on('pageerror',e=>errs.push(e.message)); await pg.goto(URL); await pg.waitForTimeout(1200); return pg; };
+  const open=async()=>{ const pg=await ctx.newPage(); pg.on('pageerror',e=>errs.push(e.message)); await pg.goto(host.url); await pg.waitForFunction(()=>typeof enterExplore==='function'&&typeof openCamp==='function'); return pg; };
   const sum=pg=>pg.evaluate(()=>save?{gold:save.gold, level:save.level, xp:save.xp||0, cards:Object.values(save.owned||{}).reduce((a,b)=>a+b,0), deepest:save.deepest, screen:[...document.querySelectorAll('.screen.on,.overlay.on')].map(e=>e.id).join(',')}:{none:true, screen:[...document.querySelectorAll('.screen.on,.overlay.on')].map(e=>e.id).join(',')});
   const stored=pg=>pg.evaluate(k=>{ try{ const s=JSON.parse(localStorage.getItem(k)); return s?{gold:s.gold, level:s.level, xp:s.xp||0, cards:Object.values(s.owned||{}).reduce((a,b)=>a+b,0), deepest:s.deepest}:null; }catch(e){ return {unreadable:true}; } },KEY);
   const fresh=async pg=>{ await pg.evaluate(()=>{ localStorage.clear(); save=newSave(STARTERS[0]); save.char=lockChar(newChar('human',0)); save.gold=500; persist(); openCamp(); }); };
@@ -16,7 +16,7 @@ const URL='file://'+path.resolve(__dirname,'../../game/index.html'), KEY='hexman
     const got=await pg.evaluate(()=>{ enterExplore(2); EX.groups=[]; let n=0; for(const ch of EX.chests.slice(0,3)){ if(ch.trap) ch.trap=null; xOpenChest(ch); n++; } return n; });
     await pg.waitForTimeout(500); const mem=await sum(pg); await pg.reload(); await pg.waitForTimeout(1200); const back=await sum(pg);
     const lost={gold:mem.gold-back.gold, cards:mem.cards-back.cards, xp:mem.xp-back.xp};
-    return {ok:!back.none&&lost.gold<=0&&lost.cards<=0, note:'opened '+got+' chests; a refresh lost '+lost.gold+' gold, '+lost.cards+' cards, '+lost.xp+' xp; back on '+back.screen, mem, back}; });
+    return {ok:!back.none&&lost.gold<=0&&lost.cards<=0&&lost.xp<=0, note:'opened '+got+' chests; a refresh lost '+lost.gold+' gold, '+lost.cards+' cards, '+lost.xp+' xp; back on '+back.screen, mem, back}; });
 
   await run('reload mid-fight',async()=>{ await fresh(pg); const before=await sum(pg);
     await pg.evaluate(()=>{ fight(3); closeCustomScreen(); }); await pg.waitForTimeout(3000); await pg.reload(); await pg.waitForTimeout(1200); const back=await sum(pg);
@@ -46,4 +46,6 @@ const URL='file://'+path.resolve(__dirname,'../../game/index.html'), KEY='hexman
     return {ok:!s.none&&!r.some(x=>/threw/.test(x)), note:(s.none?'did not load':'loaded')+'; '+r.join(' → ')}; });
 
   const file=process.argv[2]; if(file) fs.writeFileSync(file,JSON.stringify(out,null,1));
-  console.log(out.filter(r=>r.ok).length+'/'+out.length+' fine'); await br.close(); })();
+  if(out.some(r=>!r.ok))process.exitCode=1;
+  console.log(out.filter(r=>r.ok).length+'/'+out.length+' fine'); })().catch(e=>{console.error(e);process.exitCode=1;}).finally(async()=>{try{if(browser)await browser.close();}finally{if(host)await host.close();}});
+

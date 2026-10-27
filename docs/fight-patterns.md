@@ -109,3 +109,23 @@ Code: `game/fights.js`, with hooks in `enemies.js` and `battle.js`.
 - **Map group size:** 2 at depths 1–3, 3 from 4 to 11, 3–4 from 12 to 20, and 4 past 20.
 - **Battle mode** uses a gentler ramp (1% more damage a depth), because its fights are whole encounters of several waves.
 - The bot tuning runs and the final numbers are in [playtest-crawl-v125.md](playtest-crawl-v125.md).
+
+## Aggression (v174)
+
+`game/tactics.js`. Each enemy has `e.aggr` (0–1): how much it reads you instead of aiming where you stand.
+
+| Tactic | What it does | Chance |
+|---|---|---|
+| Lead | On the move, it aims where you will be in 0.35 s (at most 2 tiles on) | aggr × 0.85 per aimed attack |
+| Crossfire | Another enemy's warning is on you: it aims at the open tile you would step out to | aggr |
+| Follow-up | Its warning ends on tiles within 2 of you, and you dodged: a quick strike (0.55 s warning, 0.4 at 1; 60% damage) on you, and at 0.5+ the tile you are heading for. Not twice in 2.5 s | aggr × 0.7 |
+| Quick hands | Its warnings are shorter (×(1 − aggr/4)); a one-tile attack on you may take in your way out | aggr × 0.5 for the extra tile |
+| Footwork | Steps out of your shots' line and your charged wand's row; otherwise into your row (not Keeps back) | aggr / aggr × 0.6; walks up to 40% more often |
+| Pressure | Attack timer runs ×(1 + 0.35·aggr), +0.5·aggr while you stood still 1.5 s, +0.3·aggr when Enraged (below 40% HP, aggr 0.3+) | — |
+
+Dungeon default: `foeAggrAt(depth)` = 0.15 at depth 1, +0.06 a depth, at most 0.85. Bosses and minibosses: 0 (they have
+their own scripts). The Enemy lab's Edit tab sets it per enemy and depth stage ("By depth" or a number).
+
+The lab bots read every warning, so near-perfect settings still dodge almost everything; judge aggression with a
+human-like bot (Reaction 0.5 s, Misses 25%). Lead and Crossfire need you moving or two enemies, so a still bot alone
+with one enemy never sees them.

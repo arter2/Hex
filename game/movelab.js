@@ -31,7 +31,7 @@ function mlabExit(){ $('#mlabPanel').classList.remove('on'); if(typeof elabInfoH
   mlabSync(); if(save&&save.temp){ save=null; openMenu(); } else openCamp(); }   // back where you came from: camp, with your own save
 // the lab's button and score show only in a lab battle
 function mlabSync(){ const on=mlabOn(), foes=on&&typeof elabOn==='function'&&elabOn(); $('#mlabHud').hidden=!on; if(!on) $('#mlabPanel').classList.remove('on'); else { mlabHud(); requestAnimationFrame(mlabPlace); }
-  $('#mlabTitle').textContent=foes?'Enemy lab':'Movement lab'; $('#mlabPanel').classList.toggle('bottom',!!foes); $('#mlabDefaults').hidden=$('#mlabCopy').hidden=!!foes; $('#mlabCopyNote').hidden=true; }
+  $('#mlabTitle').textContent=foes?'Enemy lab':'Movement lab'; { const pan=$('#mlabPanel'); if(pan.classList.contains('sheet')!==!!foes){ pan.classList.toggle('sheet',!!foes); mlabGripMode(); } } $('#mlabDefaults').hidden=$('#mlabCopy').hidden=!!foes; $('#mlabCopyNote').hidden=true; }
 function mlabHud(){ const s=$('#mlabScore'); if(s&&typeof elabOn==='function'&&elabOn()){ s.textContent=(ELAB.opt.bot!=='off'?'Bot ('+ELAB_BOT[ELAB.opt.bot]+') · ':'')+'Hits taken '+ELAB_HITS+(ELAB.opt.bot!=='off'?' · Dodged '+ELAB_DODGED:'');
     $('#mlabTitle').innerHTML='Enemy lab<small>'+esc(s.textContent)+'</small>'; return; }   /* the score shows on the sheet too (it covers the one on the board) */ if(s) s.textContent='Shots '+MLAB_SHOTS+' · Hits '+MLAB_HITS+(MLAB_SHOTS?' · '+Math.round(100*(1-MLAB_HITS/MLAB_SHOTS))+'% dodged':''); }
 
@@ -116,14 +116,18 @@ function mlabCurve(){ const c=document.getElementById('mlabCurve'); if(!c) retur
   g.beginPath(); for(let i=0;i<=120;i++){ const l=i/120, d=MV('mvDead'), u=Math.min(1,(l-d)/Math.max(.01,MV('mvStickFull')-d)), k=l<d?0:MV('mvStickMin')+(1-MV('mvStickMin'))*Math.pow(u,MV('mvCurve'));
     const x=L+l*w, y=T+h-k*h; i?g.lineTo(x,y):g.moveTo(x,y); } g.strokeStyle='#8fe4ff'; g.lineWidth=2; g.stroke();
   g.fillStyle='#93a9ba'; g.font='10px system-ui,sans-serif'; g.fillText('speed',0,T+8); g.fillText('push →',L+w-34,H-4); g.fillText('0',L,H-4); g.fillText('rim',L+w-58,H-4); }
-// the panel's height: drag the grip at its foot, like the debug menu's; a tap on the grip folds it small or back
-function mlabGrip(){ const grip=$('#mlabGrip'), pan=$('#mlabPanel'), KEY='hexmancers-mlabh', MIN=120; if(!grip) return;
+// the panel's height: drag the grip at its foot, like the debug menu's; a tap on the grip folds it small or back.
+// Each lab keeps its own height (mlabGripMode puts the right one on when the lab changes).
+let mlabGripMode=()=>{};
+function mlabGrip(){ const grip=$('#mlabGrip'), pan=$('#mlabPanel'), MIN=120; if(!grip) return;
+  const KEY=()=>pan.classList.contains('sheet')?'hexmancers-elabh':'hexmancers-mlabh';
   const maxH=()=>Math.max(MIN,$('#scrBattle').clientHeight-24), set=h=>{ h=Math.round(Math.max(MIN,Math.min(maxH(),h))); pan.style.height=h+'px'; return h; };
-  let saved=null; try{ const v=localStorage.getItem(KEY); if(v!==null&&+v>0) saved=+v; }catch(e){} if(saved) set(saved);
-  const keep=h=>{ saved=h; try{ localStorage.setItem(KEY,String(h)); }catch(e){} }, P=e=>appXY(e.clientX,e.clientY);
+  mlabGripMode=()=>{ let v=null; try{ v=localStorage.getItem(KEY()); }catch(e){} if(v!==null&&+v>0) set(+v); else pan.style.height=''; };   // none kept: the stylesheet's
+  mlabGripMode();
+  const keep=h=>{ try{ localStorage.setItem(KEY(),String(h)); }catch(e){} }, P=e=>appXY(e.clientX,e.clientY);
   let drag=null;
   grip.addEventListener('pointerdown',e=>{ e.preventDefault(); try{ grip.setPointerCapture(e.pointerId); }catch(_){} drag={id:e.pointerId,p0:P(e)[1],s0:pan.offsetHeight,moved:false}; grip.classList.add('on'); });
-  grip.addEventListener('pointermove',e=>{ if(!drag||e.pointerId!==drag.id) return; const d=P(e)[1]-drag.p0; if(Math.abs(d)>4) drag.moved=true; if(drag.moved) set(drag.s0+(pan.classList.contains('bottom')?-d:d)); });   // the Enemy lab's sheet grows upward
+  grip.addEventListener('pointermove',e=>{ if(!drag||e.pointerId!==drag.id) return; const d=P(e)[1]-drag.p0; if(Math.abs(d)>4) drag.moved=true; if(drag.moved) set(drag.s0+d); });
   const end=e=>{ if(!drag||e.pointerId!==drag.id) return; const d=drag; drag=null; grip.classList.remove('on');
     if(d.moved) keep(pan.offsetHeight); else if(e.type==='pointerup') keep(set(d.s0>MIN+20?MIN:Math.round(maxH()*.45))); };
   grip.addEventListener('pointerup',end); grip.addEventListener('pointercancel',end); }

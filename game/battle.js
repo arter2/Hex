@@ -1049,7 +1049,7 @@ function update(dt){
     if(tl.t>=tl.dur&&!tl.friendly){ if(tl.owner&&tl.owner.hp<=0) continue; if(typeof perfectCheck==='function') perfectCheck(tl);
       for(const t of tl.tiles){ flash(t,'#ff5d6c',1); const o=t.occ; if(!o) continue;
         if(o.kind==='player') hitPlayer(tl.dmg,tl.owner); else if(o.kind!=='enemy'&&o.kind!=='rock'&&!o.enemy) hitBlock(o,tl.dmg,tl.owner); }
-      if(tl.after) tl.after(); } }
+      if(tl.after) tl.after(); if(typeof foeFollow==='function') foeFollow(tl); } }
   b.teles=b.teles.filter(tl=>tl.t<tl.dur);
 
   for(const a of b.allies.slice()) updateAlly(a,dt);

@@ -54,6 +54,7 @@ function perfectShot(s,t){ const p=B.player; if(s.perfectDone||t!==p.leftTile||B
 const TELL={
   rush:    {c:'255,140,60',  text:'charges down your row: chevrons sweep across it'},
   dash:    {c:'255,170,70',  text:'dashes at you: arrows run along its line'},
+  snap:    {c:'255,40,60',   text:'snaps a quick follow-up at you when you dodge close by'},
   quake:   {c:'200,150,90',  text:'stamps: cracks run out across the ground'},
   snipe:   {c:'255,40,60',   text:'takes aim: a red laser marks your tile'},
   cleave:  {c:'255,90,90',   text:'raises its blade: an arc sweeps over two rows'},

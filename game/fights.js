@@ -60,15 +60,15 @@ function fxNext(e){ if(e.moves||!e.seq) return pick(e.moves||e.def.moves); const
 Object.assign(MOVES,{
   rest(e){ floater('…',e.tile,'#9aa3b5'); },   // a breath in the rhythm: your window
   // a row on your side bursts into flame for 4 s (one tile spared)
-  firelane(e){ const r=aimT().r, ts=pTilesInRow(r), gap=pick(ts); tele(e,ts.filter(t=>t!==gap),1.2,Math.round(e.dmg*.5),()=>ts.forEach(t=>{ if(t!==gap){ t.burnT=Math.max(t.burnT||0,4); burst(t,'#ff6a3d',8,.4); } })); },
+  firelane(e){ const r=aimT(e).r, ts=pTilesInRow(r), gap=pick(ts); tele(e,ts.filter(t=>t!==gap),1.2,Math.round(e.dmg*.5),()=>ts.forEach(t=>{ if(t!==gap){ t.burnT=Math.max(t.burnT||0,4); burst(t,'#ff6a3d',8,.4); } })); },
   // stone walls rise beside you: they block your way for 8 s
-  stonewall(e){ const p=aimT(), ts=neighbors(p).filter(t=>t.side==='p'&&!t.occ).sort(()=>Math.random()-.5).slice(0,2); if(!ts.length) return MOVES.shot(e);
+  stonewall(e){ const p=aimT(e), ts=neighbors(p).filter(t=>t.side==='p'&&!t.occ).sort(()=>Math.random()-.5).slice(0,2); if(!ts.length) return MOVES.shot(e);
     tele(e,ts,.9,0,()=>ts.forEach(t=>{ if(!t.occ) dropRock(t,8); })); floater('Stone wall',e.tile,'#b8b0c8'); },
   // three tiles round you turn to ice (moving on ice takes twice as long)
-  frostfield(e){ const p=aimT(), ts=[p,...neighbors(p).filter(t=>t.side==='p')].sort(()=>Math.random()-.5).slice(0,3);
+  frostfield(e){ const p=aimT(e), ts=[p,...neighbors(p).filter(t=>t.side==='p')].sort(()=>Math.random()-.5).slice(0,3);
     tele(e,ts,.9,Math.round(e.dmg*.3),()=>ts.forEach(t=>{ t.iceT=Math.max(t.iceT||0,6); burst(t,'#bfefff',8,.4); })); },
   // a chain on your tile: if you are still there it drags you one tile toward the enemy
-  drag(e){ const t=aimT(); tele(e,[t],1,Math.round(e.dmg*.4),()=>{ const p=B.player; if(p.tile!==t) return; const to=tileCR(t.col+1,t.r);
+  drag(e){ const t=aimT(e); tele(e,[t],1,Math.round(e.dmg*.4),()=>{ const p=B.player; if(p.tile!==t) return; const to=tileCR(t.col+1,t.r);
     if(to&&to.side==='p'&&!to.occ&&!burning(to)){ if(t.occ===p) t.occ=null; p.tile=to; to.occ=p; p.path=[]; p.snap=null; floater('Dragged!',to,'#c8b8ff',true); burst(to,'#c8b8ff',12,.5); } }); },
 });
 

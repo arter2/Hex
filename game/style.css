@@ -2018,12 +2018,12 @@ html body #peek .card.kit.big::before{inset:0; left:0; width:auto; height:auto;}
 .eledit .chip{padding:4px 8px; min-height:0; font-size:12px; line-height:1.2;}
 .eledit .chip.on{background:var(--c); color:#0b0d10; font-weight:700;}
 .labpick .btn,.labpick .btn small{white-space:normal; overflow:visible; text-overflow:clip;}
-/* the Enemy lab's panel, for a phone (v169): a sheet along the bottom with its grip on top, three tabs, big targets,
-   labels above their controls */
-.mlabpanel.bottom{top:auto; bottom:6px; height:52%; font-size:14px; padding-top:0;}
-.mlabpanel.bottom .mlgrip{order:-1; height:24px;}
-.mlabpanel.bottom .mlgrip::before{top:9px;}
-.mlabpanel.bottom .mlbar b{font-size:15px;}
+/* the Enemy lab's panel, for a phone (v169; along the top since v174, so the fight below stays in view): a short
+   sheet over the bars and the back wall, its grip at its foot to pull it longer, three tabs, big targets */
+.mlabpanel.sheet{height:33%; font-size:14px;}
+.mlabpanel.sheet .mlgrip{height:24px;}
+.mlabpanel.sheet .mlgrip::before{top:10px;}
+.mlabpanel.sheet .mlbar b{font-size:15px;}
 .eltabs{position:sticky; top:0; z-index:2; display:flex; gap:6px; padding:4px 0 8px; background:#0d0f12;}
 .eltabs button{flex:1; min-height:42px; border-radius:8px; border:1px solid #3a4652; background:#15181c; color:#c9d6e2; font:700 15px var(--font-h,system-ui); cursor:pointer;}
 .eltabs button.on{background:#8fe4ff; color:#0b0d10; border-color:#8fe4ff;}

@@ -20,8 +20,8 @@ let ELAB_HITS=0;
 
 // what a kind does out of the box: its fixed order (fights.js RHYTHM) if it has one, otherwise its moves at random
 function elabBase(id){ const d=ENEMY_DEFS[id], r=typeof RHYTHM!=='undefined'&&RHYTHM[id];
-  return {moves:(r||d.moves||['shot']).slice(), order:!!r, ai:d.ai||'wander', rate:d.rate.slice(), dmg:d.dmg, hp:d.hp}; }
-const ELAB_FIELDS=['moves','order','ai','rate','dmg','hp'];
+  return {moves:(r||d.moves||['shot']).slice(), order:!!r, ai:d.ai||'wander', rate:d.rate.slice(), dmg:d.dmg, hp:d.hp, aggr:-1}; }   // aggr -1: the game's own, by depth (tactics.js)
+const ELAB_FIELDS=['moves','order','ai','rate','dmg','hp','aggr'];
 const elabPick=o=>{ const r={}; for(const k of ELAB_FIELDS) if(o&&o[k]!==undefined) r[k]=o[k]; return r; };
 const elabStages=id=>(ELAB.over[id]&&ELAB.over[id].stages)||[];
 // the settings of stage k (0: from depth 1; k: the k-th depth stage), each stage on top of the ones before it
@@ -73,11 +73,12 @@ function elabSummon(id){ if(!elabOn()||!ENEMY_DEFS[id]) return;
 // a kind's changes on one enemy, by the depth it was met at (fresh: just made, so its health is set from scratch;
 // real: a dungeon fight, where Can't die never applies). What a change doesn't touch stays as the game made it.
 function elabApply(e,fresh,real){ const d=ENEMY_DEFS[e.id], depth=e.labDepth||1, c=elabChain(e.id,elabStageAt(e.id,depth)), t=elabTouched(e.id,depth);
-  if(!e._orig) e._orig={seq:e.seq&&e.seq.slice(), moves:e.moves&&e.moves.slice(), dmg:e.dmg, maxHp:e.maxHp, def:e.def};
+  if(!e._orig) e._orig={seq:e.seq&&e.seq.slice(), moves:e.moves&&e.moves.slice(), dmg:e.dmg, maxHp:e.maxHp, def:e.def, aggr:e.aggr};
   const O=e._orig; e.def=Object.assign({},O.def,{ai:c.ai, rate:c.rate.slice()});
   if(t.has('moves')||t.has('order')){ if(c.order){ e.seq=c.moves.slice(); e.si=1; e.moves=undefined; e.nextMove=e.seq[0]; } else { e.moves=c.moves.slice(); e.seq=null; e.nextMove=pick(e.moves); } }
   else { e.seq=O.seq&&O.seq.slice(); e.moves=O.moves&&O.moves.slice(); e.si=1; e.nextMove=e.seq?e.seq[0]:pick(e.moves||d.moves); }
   e.dmg=t.has('dmg')?Math.round(c.dmg*e.ds):O.dmg;
+  e.aggr=t.has('aggr')&&c.aggr>=0?c.aggr:O.aggr;
   const full=t.has('hp')?Math.max(1,Math.round(c.hp*O.maxHp/d.hp)):O.maxHp, frac=fresh?1:e.hp/e.maxHp;
   e.maxHp=full; e.hp=Math.max(1,Math.round(full*frac)); }
 // "Use in real fights": every enemy made in a dungeon fight takes this browser's changes, by its depth (enemies.js makeEnemy)
@@ -90,7 +91,7 @@ function elabSaved(e){ if(!elabOn()||!ELAB.opt.tough) return false;
 function elabKilled(e){ renderElabBoard(); if(!ELAB.opt.respawn) return; const id=e.id; later(1.5,()=>{ if(elabOn()) elabSummon(id); }); }
 
 /* ---------------- the panel ----------------
-   Built for a phone: a sheet along the bottom (the enemies stand at the top of the board), three tabs (Summon,
+   Built for a phone: a short sheet along the top (pull its grip for more), three tabs (Summon,
    Edit, Share), one enemy at a time in the editor, big buttons, and − / + beside every number. */
 const elabIds=()=>Object.keys(ENEMY_DEFS);
 function elabOptions(sel){ const groups={}; for(const id of elabIds()) (groups[elabCat(ENEMY_DEFS[id])]=groups[elabCat(ENEMY_DEFS[id])]||[]).push(id);
@@ -170,6 +171,10 @@ function elabEditor(ed,id){ const st=elabStages(id), k=Math.min(ELAB.stage[id]||
   elabNum(ed,'Attacks every, slowest (s)',c.rate[1],.5,12,.1,v=>{ elabSetOver(id,{rate:[Math.min(v,c.rate[0]),v]}); redo(); });
   elabNum(ed,'Damage',c.dmg,0,80,1,v=>{ elabSetOver(id,{dmg:v}); redo(); },'Its hit before depth scaling (what it would do at depth 1); the game still makes it hit harder the deeper it is met.');
   elabNum(ed,'HP',c.hp,5,3000,5,v=>{ elabSetOver(id,{hp:v}); redo(); },'Its health before depth scaling (what it would have at depth 1); the game still adds more the deeper it is met.');
+  { const dep=k?st[k-1].from:ELAB.opt.depth, auto=!(c.aggr>=0), boss=ENEMY_DEFS[id].boss||ENEMY_DEFS[id].mini;
+    elabChips(ed,'Aggression',[['auto',boss?'Game (0)':'By depth ('+foeAggrAt(dep).toFixed(2)+')'],['set','Set it']],auto?'auto':'set','#ff6a7a',v=>{ elabSetOver(id,{aggr:v==='auto'?-1:(boss?.5:foeAggrAt(dep))}); redo(); },
+      'How much it reads you, 0 to 1. It leads its aim when you move, covers your way out when another enemy has you, snaps a quick follow-up when you dodge close by, steps out of your shots and into your row, and attacks more often (more while you stand still; angry below 40% HP). By depth: 0.15 at depth 1, up 0.06 a depth to 0.85.');
+    if(!auto) elabNum(ed,'Aggression (0 simple, 1 ruthless)',c.aggr,0,1,.05,v=>{ elabSetOver(id,{aggr:v}); redo(); }); }
   const bt=document.createElement('div'); bt.className='elbig';
   bt.innerHTML=`<button class="btn" data-a="sum">Summon one</button><button class="btn ghost" data-a="reset"${changed?'':' disabled'}>Back to the game's</button>`;
   bt.querySelector('[data-a=sum]').onclick=()=>elabSummon(id);
@@ -307,13 +312,13 @@ const ELAB_MOVE_INFO={
   beam:'A beam down your row and the row next to it (1.5 s warning). Damage: its hit.',
   bones:'Bones fall on four random tiles (five when it is enraged), 1.1 s warning. Damage: 80% of its hit.',
   raise:'Raises a Bonewalker (two when it is enraged) to its side, up to two. With two up it drops Bones instead.'};
-// the box above the drawer: an attack's name, what it does, how it warns you and who uses it
+// the box under the drawer: an attack's name, what it does, how it warns you and who uses it
 function elabMoveInfo(m){ let box=document.getElementById('elInfo'); const scr=$('#scrBattle'), pan=$('#mlabPanel');
   if(!box){ box=document.createElement('div'); box.id='elInfo'; box.className='elinfo'; scr.appendChild(box); }
   const users=elabIds().filter(id=>(elabBase(id).moves||[]).includes(m)).map(id=>ENEMY_DEFS[id].name), tell=typeof TELL!=='undefined'&&TELL[m];
   box.innerHTML=`<b>${esc((typeof INTENT_ICON!=='undefined'&&INTENT_ICON[m]?INTENT_ICON[m]+' ':'')+m)}</b><p>${esc(ELAB_MOVE_INFO[m]||'No notes for this one yet.')}</p>`
     +(tell?`<p class="dim">On the board: it ${esc(tell.text)}.</p>`:'')+`<p class="dim">${users.length?'Used by: '+esc([...new Set(users)].join(', ')):'No enemy uses it out of the box.'}</p>`;
-  box.style.bottom=(scr.clientHeight-pan.offsetTop+8)+'px'; box.style.maxHeight=Math.max(120,pan.offsetTop-96)+'px'; box.classList.add('on'); }
+  const top=pan.offsetTop+pan.offsetHeight+8; box.style.top=top+'px'; box.style.maxHeight=Math.max(120,scr.clientHeight-top-150)+'px'; box.classList.add('on'); }
 const elabInfoHide=()=>{ const b=document.getElementById('elInfo'); if(b) b.classList.remove('on'); };
 // press and hold an attack's row; the box stays up when you let go, and the next tap anywhere puts it away
 function elabHold(el,m){ let t=0, x0=0, y0=0;

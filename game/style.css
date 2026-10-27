@@ -2056,3 +2056,10 @@ html body #peek .card.kit.big::before{inset:0; left:0; width:auto; height:auto;}
 .elctl>.elmoves,.elctl>.chips{flex:1; min-width:0;}
 .elmove b{text-align:left; min-width:0; font-size:15px;}
 .elmove{width:100%; box-sizing:border-box; overflow:hidden;}
+/* an attack's details, in the space above the Enemy lab's drawer (hold an attack) */
+.elinfo{display:none; position:absolute; left:10px; right:10px; z-index:32; overflow-y:auto; box-sizing:border-box; padding:12px 14px; border-radius:10px;
+  background:#0d0f12f4; border:1px solid #ffe06699; box-shadow:0 8px 24px rgba(0,0,0,.55); color:#e8eef8; font-size:15px; line-height:1.35;}
+.elinfo.on{display:block; animation:peekIn .14s ease-out;}
+.elinfo b{display:block; font-size:18px; color:#ffe066; margin-bottom:6px;}
+.elinfo p{margin:0 0 6px;} .elinfo p.dim{font-size:13px; color:#a9c4d6;}
+.elmove{-webkit-touch-callout:none; user-select:none; -webkit-user-select:none;}

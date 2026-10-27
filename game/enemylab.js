@@ -146,7 +146,8 @@ function elabEditor(ed,id){ const st=elabStages(id), k=Math.min(ELAB.stage[id]||
     const del=document.createElement('button'); del.className='btn ghost elwide'; del.textContent='Remove this stage'; del.onclick=()=>{ elabDelStage(id,k); redo(); }; ed.appendChild(del); }
   // attacks: one row each, with big ↑ ↓ ✕
   const tellOf=m=>(typeof TELL!=='undefined'&&TELL[m]&&TELL[m].text)||'';
-  const mv=elabRow(ed,'Attacks'+(c.order?' (in this order)':' (one picked at random)'),`<div class="elmoves">${c.moves.map((m,i)=>`<div class="elmove"><span><b>${esc(m)}</b><small>${esc(tellOf(m))}</small></span><button data-l="${i}" aria-label="Earlier"${i?'':' disabled'}>↑</button><button data-r="${i}" aria-label="Later"${i<c.moves.length-1?'':' disabled'}>↓</button><button data-x="${i}" aria-label="Remove">✕</button></div>`).join('')}</div>`);
+  const mv=elabRow(ed,'Attacks'+(c.order?' (in this order)':' (one picked at random)')+' · hold one for details',`<div class="elmoves">${c.moves.map((m,i)=>`<div class="elmove"><span><b>${esc(m)}</b><small>${esc(tellOf(m))}</small></span><button data-l="${i}" aria-label="Earlier"${i?'':' disabled'}>↑</button><button data-r="${i}" aria-label="Later"${i<c.moves.length-1?'':' disabled'}>↓</button><button data-x="${i}" aria-label="Remove">✕</button></div>`).join('')}</div>`);
+  mv.querySelectorAll('.elmove').forEach((row,i)=>elabHold(row,c.moves[i]));
   mv.querySelectorAll('[data-x]').forEach(b=>b.onclick=()=>{ const l=c.moves.slice(); l.splice(+b.dataset.x,1); if(!l.length){ tip('It needs at least one attack'); return; } elabSetOver(id,{moves:l}); redo(); });
   mv.querySelectorAll('[data-l],[data-r]').forEach(b=>b.onclick=()=>{ const l=c.moves.slice(), i=+(b.dataset.l??b.dataset.r), j=b.dataset.l!=null?i-1:i+1; if(j<0||j>=l.length) return; [l[i],l[j]]=[l[j],l[i]]; elabSetOver(id,{moves:l}); redo(); });
   const add=elabRow(ed,'Add an attack',`<select><option value="">Pick one…</option>${Object.keys(MOVES).sort().map(m=>`<option value="${m}">${m}${tellOf(m)?' — '+esc(tellOf(m)):''}</option>`).join('')}</select>`);
@@ -197,6 +198,69 @@ function renderElabBoard(){ const bd=document.getElementById('elBoard'); if(!bd|
   for(const e of live){ const c=document.createElement('span'); c.className='elon'; c.innerHTML=`${esc(e.name)} <button aria-label="Remove">✕</button>`;
     c.querySelector('button').onclick=()=>{ if(e.tile&&e.tile.occ===e) e.tile.occ=null; B.enemies=B.enemies.filter(x=>x!==e); B.teles=B.teles.filter(t=>t.owner!==e); renderElabBoard(); };
     bd.appendChild(c); } }
+
+
+/* ---------------- what each attack does (hold an attack in the Edit tab) ---------------- */
+// "its hit" is the enemy's damage; marked tiles hit whoever is on them when the warning ends
+const ELAB_MOVE_INFO={
+  shot:'Winds up for 0.7 s, then fires a bolt straight down its own row. It hits the first thing in the way: you, a wall or a creature. Damage: its hit.',
+  firebomb:'Marks the tile you stand on for 1 s, then it explodes there. The tile keeps burning for 5 s (standing on it burns you). Damage: its hit.',
+  iceslam:'Marks your tile and one beside it for 1 s, then slams. Both tiles freeze for 6 s (walking on ice takes twice as long). Damage: its hit.',
+  cross:'Calls lightning in a cross centred on you: your whole row plus the tiles up to two above and below you, marked for 1.1 s. Damage: its hit.',
+  rush:'Charges down its own row: every tile of yours in that row is marked for 1.1 s. Get out of its row. Damage: its hit.',
+  dash:'Marks a straight line from itself through you and one tile past for 1 s, then shoots along it and springs back. Damage: 115% of its hit. A wall, rock or creature on the line stops it, takes the hit and loses 30% of its stay time.',
+  blink:'Teleports to a free tile near the front, within a row of you, then marks your tile and the tiles ahead of you for 0.85 s. Damage: its hit.',
+  lunge:'Steps to the front of its side, then slashes your tile and the tiles above and below you (0.8 s warning). Damage: its hit.',
+  steal:'Grabs at your tile (0.9 s). If you are still there it takes the next card in your queue; kill it to get the card back. Damage: 60% of its hit.',
+  snipe:'Takes a long aim at your tile (1.5 s, a red laser), then fires a heavy bolt. Damage: 140% of its hit.',
+  guard:'Puts a 30-point shield on itself and on its most hurt ally. No attack.',
+  cleave:'Raises its blade: a band of tiles across your row and the row next to it is marked for 1.1 s. Damage: its hit.',
+  bomb:'Lobs a bomb on you and up to three tiles around you (1.3 s fuse). The floor burns for 3 s after. Damage: its hit.',
+  hex:'Chants over your row for 0.9 s. If you are still in that row you are Hexed: you take 30% more damage for 6 s. Damage: 50% of its hit.',
+  summon:'Calls a Shade with half health to a free tile on its side. With four enemies already up it uses Hex instead.',
+  shift:'Takes another monster\'s shape (Gloop, Wisp, Mite, Beetle, Ram, Shade or Sprite): its element, weakness and attacks, and shifts again later.',
+  collect:'Grabs at your tile (0.9 s). If it lands it takes a card from your hand and later casts it at you; kill it to get your cards back. Damage: 50% of its hit.',
+  brew:'Heals every enemy for 8% of its full HP. No attack.',
+  snare:'Vines curl on your tile (0.8 s). If you are still there you are rooted for 1.8 s. Damage: 50% of its hit.',
+  revive:'Brings a fallen enemy back with 40% of its HP on a free tile (each one only once). With nobody to revive it uses Bless instead.',
+  bless:'Every enemy gets a 25-point shield and hits 30% harder for 6 s.',
+  mend:'Heals its most hurt ally for 20% of its full HP and shields it for 20. With nobody hurt it shoots instead.',
+  quake:'Stamps: your whole side is marked for 1.7 s except a small safe spot (one tile and two beside it). Find the gap. Damage: its hit.',
+  boulders:'Rocks fall on your tile and one random tile (1.3 s). They stay as rocks you can\'t walk or shoot through. Damage: its hit.',
+  rest:'Does nothing this turn: a breather in its pattern, and your chance to hit back.',
+  firelane:'Your row, with one tile spared, is marked for 1.2 s, then burns for 4 s. Damage: 50% of its hit.',
+  stonewall:'Two stone walls rise on free tiles beside you (0.9 s warning) and stand for 8 s, boxing you in. No damage.',
+  frostfield:'Up to three tiles around you turn to ice for 6 s (0.9 s warning). Damage: 30% of its hit.',
+  drag:'A chain lands on your tile (1 s). If you are still there it pulls you one tile toward the enemy. Damage: 40% of its hit.',
+  icewall:'A short wall of three or four ice blocks rises on your side (1.1 s warning) and blocks moving and shots for 9 s. Damage: 60% of its hit.',
+  crack:'Your tile and two to four others crack into lava pits (1.2 s warning) that can\'t be walked on for 8 to 12 s. Damage: its hit.',
+  rods:'Lightning rods mark your tile and two to four others for 2 s, then strike. Later in the fight the bolts chain along whole rows. Damage: 120% of its hit.',
+  vines:'Vines grab your tile (1 s); if you are still there you are rooted for 2.2 s. Damage: 50% of its hit. Early in the fight it shoots instead.',
+  mendboss:'Pours a little life (0.7% of its full HP) into the boss that called it. No attack.',
+  chomp:'A huge bite on your tile and the tiles in front of you (1 s). Damage: 140% of its hit.',
+  coins:'Gold rains on three random tiles (five when it is enraged), 1.2 s warning. Damage: 70% of its hit.',
+  chains:'Chains your tile (1 s); if you are still there you are rooted for 2 s. Damage: 60% of its hit.',
+  call:'Calls a Jailer to its side, up to two. With two up it uses Chains instead.',
+  flask:'Throws a flask at your tile and one beside it (1 s). Both become toxic puddles for 7 s. Damage: 60% of its hit.',
+  backstab:'Vanishes, comes back 0.9 s later at the front of your row, then strikes your tile and the one behind you (0.6 s warning). Damage: 140% of its hit.',
+  beam:'A beam down your row and the row next to it (1.5 s warning). Damage: its hit.',
+  bones:'Bones fall on four random tiles (five when it is enraged), 1.1 s warning. Damage: 80% of its hit.',
+  raise:'Raises a Bonewalker (two when it is enraged) to its side, up to two. With two up it drops Bones instead.'};
+// the box above the drawer: an attack's name, what it does, how it warns you and who uses it
+function elabMoveInfo(m){ let box=document.getElementById('elInfo'); const scr=$('#scrBattle'), pan=$('#mlabPanel');
+  if(!box){ box=document.createElement('div'); box.id='elInfo'; box.className='elinfo'; scr.appendChild(box); }
+  const users=elabIds().filter(id=>(elabBase(id).moves||[]).includes(m)).map(id=>ENEMY_DEFS[id].name), tell=typeof TELL!=='undefined'&&TELL[m];
+  box.innerHTML=`<b>${esc((typeof INTENT_ICON!=='undefined'&&INTENT_ICON[m]?INTENT_ICON[m]+' ':'')+m)}</b><p>${esc(ELAB_MOVE_INFO[m]||'No notes for this one yet.')}</p>`
+    +(tell?`<p class="dim">On the board: it ${esc(tell.text)}.</p>`:'')+`<p class="dim">${users.length?'Used by: '+esc([...new Set(users)].join(', ')):'No enemy uses it out of the box.'}</p>`;
+  box.style.bottom=(scr.clientHeight-pan.offsetTop+8)+'px'; box.style.maxHeight=Math.max(120,pan.offsetTop-96)+'px'; box.classList.add('on'); }
+const elabInfoHide=()=>{ const b=document.getElementById('elInfo'); if(b) b.classList.remove('on'); };
+// press and hold an attack's row; the box stays up when you let go, and the next tap anywhere puts it away
+function elabHold(el,m){ let t=0, x0=0, y0=0;
+  el.addEventListener('pointerdown',e=>{ if(e.target.closest('button')) return; x0=e.clientX; y0=e.clientY; clearTimeout(t); t=setTimeout(()=>{ elabMoveInfo(m); if(navigator.vibrate) navigator.vibrate(10); },350); });
+  el.addEventListener('pointermove',e=>{ if(Math.hypot(e.clientX-x0,e.clientY-y0)>10) clearTimeout(t); });
+  ['pointerup','pointercancel','pointerleave'].forEach(ev=>el.addEventListener(ev,()=>clearTimeout(t)));
+  el.addEventListener('contextmenu',e=>e.preventDefault()); }
+addEventListener('pointerdown',e=>{ const b=document.getElementById('elInfo'); if(b&&b.classList.contains('on')&&!b.contains(e.target)) elabInfoHide(); },true);
 
 /* ---------------- the lab button: which lab? ---------------- */
 $('#goMove').onclick=()=>$('#labPick').classList.add('on');

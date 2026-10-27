@@ -27,7 +27,7 @@ function mlabStart(){
 // a turret's turn (enemies.js): count down, then one straight shot down its row
 function mlabTurret(e,dt){ e.atkT-=dt; if(e.atkT>0) return; e.atkT=e.atkMax=MLAB.every;
   shoot(e.tile,lineTiles(e.tile,DIRS.W),{dmg:5,from:'e',owner:e,color:COLORS[e.color].c,speed:1/MLAB.shotSpd}); MLAB_SHOTS++; mlabHud(); }
-function mlabExit(){ $('#mlabPanel').classList.remove('on'); BOARD_TEST=null; buildBoard(); B=null; paused=false;
+function mlabExit(){ $('#mlabPanel').classList.remove('on'); if(typeof elabInfoHide==='function') elabInfoHide(); BOARD_TEST=null; buildBoard(); B=null; paused=false;
   mlabSync(); if(save&&save.temp){ save=null; openMenu(); } else openCamp(); }   // back where you came from: camp, with your own save
 // the lab's button and score show only in a lab battle
 function mlabSync(){ const on=mlabOn(), foes=on&&typeof elabOn==='function'&&elabOn(); $('#mlabHud').hidden=!on; if(!on) $('#mlabPanel').classList.remove('on'); else { mlabHud(); requestAnimationFrame(mlabPlace); }
@@ -133,7 +133,7 @@ function mlabDefaults(){ Object.assign(MLAB,MLAB_DEF); mlabKeep(); for(const k i
 
 xFineSliders($('#mlabPanel')); mlabGrip(); xRowTools($('#mlabPanel'),'.mlrow',row=>row.dataset.tip||'');
 $('#mlabBtn').onclick=()=>{ const P=$('#mlabPanel'); P.classList.toggle('on'); if(P.classList.contains('on')) (elabOn()?renderElab:renderMlab)(); };
-$('#mlabHide').onclick=()=>$('#mlabPanel').classList.remove('on');
+$('#mlabHide').onclick=()=>{ $('#mlabPanel').classList.remove('on'); if(typeof elabInfoHide==='function') elabInfoHide(); };
 $('#mlabReset').onclick=()=>{ MLAB_HITS=0; MLAB_SHOTS=0; if(typeof ELAB_HITS!=='undefined') ELAB_HITS=0; mlabHud(); };
 $('#mlabDefaults').onclick=mlabDefaults;
 $('#mlabCopy').onclick=()=>xDbgCopy('mlabCopyNote','mlabCopy');

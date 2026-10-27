@@ -884,6 +884,9 @@ function renderCustom(){
     else if(p.queue.length<slots&&detectCombos([...p.queue,inst]).length>base) el.classList.add('hint');
     else if(p.queue.length&&p.queue.length<slots&&recipeStep([...p.queue.map(c=>c.card),inst.card])&&!oneRune([...p.queue.map(c=>c.card),inst.card])) el.classList.add('recipe-step');   // part of a recipe with what is queued
     else if(p.queue.length&&oneRune([...p.queue.map(c=>c.card),inst.card])) el.classList.add('rune-match');   // same rune as the queue
+    // a kit card's frame is its ::after, so its combo or recipe tag is an element of its own
+    if(el.classList.contains('kit')){ const tg=el.classList.contains('hint')?['combo','hint']:el.classList.contains('recipe-ready')?['⚗ recipe','recipe']:null;
+      if(tg){ const i=document.createElement('i'); i.className='k-tag '+tg[1]; i.textContent=tg[0]; el.appendChild(i); } }
     if(dealt.has(inst.uid)){ el.classList.add('deal'); el.style.animationDelay=(i*.06)+'s'; }
     el.style.order=lay.indexOf(inst.uid); el.dataset.uid=inst.uid; dragCard(el,inst); h.appendChild(el); });
   B.justDrawn=null;

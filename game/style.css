@@ -237,7 +237,7 @@ body.ui-tablet .hand{grid-template-columns:repeat(7,1fr);} body.ui-tablet .fams{
 .combo-line .none{background:none; color:var(--dim); box-shadow:none; font-weight:600;}
 .slots .card.combo{box-shadow:0 0 0 2px #ffe066, 0 0 16px rgba(255,224,102,.8); animation:comboPulse 1.4s infinite;}
 .hand .card.hint{box-shadow:0 0 0 2px #39ff8a, 0 0 14px rgba(125,255,176,.6);}
-.hand .card.hint::after{content:'combo'; position:absolute; bottom:4px; left:50%; transform:translateX(-50%); font:800 10px var(--font-b); color:#062010; background:#39ff8a; padding:0 6px; border-radius:99px;}
+.hand .card:not(.kit).hint::after{content:'combo'; position:absolute; bottom:4px; left:50%; transform:translateX(-50%); font:800 10px var(--font-b); color:#062010; background:#39ff8a; padding:0 6px; border-radius:99px;}
 .card.deal{animation:deal .45s cubic-bezier(.2,.9,.3,1.2) both;}
 @keyframes deal{from{transform:translate(0,-60px) rotate(-8deg) scale(.6); opacity:0;} to{transform:none; opacity:1;}}
 #custom .card{touch-action:none;}
@@ -330,7 +330,7 @@ body.ui-tablet .hand{grid-template-columns:repeat(7,1fr);} body.ui-tablet .fams{
 .testbar{display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-top:16px; padding-top:10px; border-top:1px dashed var(--line);}
 .fams.two{grid-template-columns:1fr 1fr;}
 .card.chosen{outline:3px solid #ff5d6c; outline-offset:-3px;}
-.card.chosen::after{content:attr(data-n); position:absolute; bottom:4px; right:6px; background:#ff5d6c; color:#fff; font-weight:800; border-radius:99px; padding:0 6px;}
+.card:not(.kit).chosen::after{content:attr(data-n); position:absolute; bottom:4px; right:6px; background:#ff5d6c; color:#fff; font-weight:800; border-radius:99px; padding:0 6px;}
  body.w420 .charbox{grid-template-columns:96px 1fr;} body.w420 #chSprite{width:96px; height:96px;} body.w420 .charstats{grid-template-columns:1fr;} 
 .gearrow.on.cursed{border-color:#ff5d6c; background:color-mix(in srgb,#ff5d6c 8%,var(--panel));}
 .card .badge{top:auto; bottom:30px; right:6px;}
@@ -456,7 +456,7 @@ select,.filters input,#bName{border-radius:0; border:6px solid transparent; bord
 .pxi{image-rendering:pixelated; display:inline-block; vertical-align:middle;}
 .banner{font-family:var(--font-h); text-shadow:3px 3px 0 #000;}
 .cast-fx .tag{border-radius:0; border:2px solid #000;}
-.hand .card.hint::after{border-radius:0;}
+.hand .card:not(.kit).hint::after{border-radius:0;}
 
 /* camp */
 #scrCamp{align-items:center; padding:calc(10px + env(safe-area-inset-top,0px)) 6px calc(10px + env(safe-area-inset-bottom,0px));}
@@ -1088,7 +1088,7 @@ body.lsS #custHand .slot.hole{min-height:104px;}
 
 /* recipes: cards that make a recipe you hold glow purple with a ⚗ tag; the line above the queue says so */
 .hand .card.recipe-ready{box-shadow:0 0 0 2px #c58bff, 0 0 16px rgba(180,108,255,.75); animation:rcpGlow 1.6s ease-in-out infinite;}
-.hand .card.recipe-ready::after{content:'⚗ recipe'; position:absolute; bottom:4px; left:50%; transform:translateX(-50%); font:800 10px var(--font-b); color:#1a0630; background:#c58bff; padding:0 6px; white-space:nowrap;}
+.hand .card:not(.kit).recipe-ready::after{content:'⚗ recipe'; position:absolute; bottom:4px; left:50%; transform:translateX(-50%); font:800 10px var(--font-b); color:#1a0630; background:#c58bff; padding:0 6px; white-space:nowrap;}
 @keyframes rcpGlow{50%{box-shadow:0 0 0 2px #e0c2ff, 0 0 24px rgba(197,139,255,.95);}}
 #custRecipe:empty{display:none;}
 #custRecipe b{color:#d9b3ff;}
@@ -1876,10 +1876,13 @@ body.h460.wide #scrBattle #hudBottom{overflow:visible;}
 .card.kit>.k-hidden{background:repeating-linear-gradient(45deg,rgba(0,0,0,.55) 0 6px,rgba(0,0,0,.4) 6px 12px);}
 .card.kit>img:not(.k-art){image-rendering:pixelated; object-fit:contain;}
 /* the rune (blue plate) and the rank (red plate), as in the approved cards */
-.card.kit .k-rune,.card.kit .k-rank{display:flex; align-items:center; justify-content:center; font-size:10.833cqw; color:#fff; text-shadow:0 0.625cqw 0 #000;
-  box-sizing:border-box; border:0.833cqw solid; box-shadow:inset 0 0 0 0.417cqw rgba(0,0,0,.6);}
-.card.kit .k-rune{background:#1d4fae; border-color:#76b4ff;} .card.kit .k-rune.wild{background:#5a2c8c; border-color:#c8a0ff;}
-.card.kit .k-rank{background:#a4231c; border-color:#ff8a66;}
+/* v175: the frame draws both plates itself (its rune-plate and number-plate), so these sit exactly on them, clear, with
+   only the letter and the number, big and centred */
+.card.kit .k-rune,.card.kit .k-rank{display:flex; align-items:center; justify-content:center; font-size:15.5cqw; line-height:1; color:#fff;
+  text-shadow:0 0.833cqw 0 #000,0.833cqw 0 0 #000,-0.833cqw 0 0 #000,0 -0.417cqw 0 #000; box-sizing:border-box; border:0; background:none; box-shadow:none; padding-top:0.6cqw;}
+/* the bright plate fills the frame's plate inside its outline (1 kit unit in): blue rune, red number, violet wild rune */
+.card.kit .k-rune,.card.kit .k-rank{background-clip:padding-box; border:0.625cqw solid transparent; box-shadow:inset 0 0.833cqw 0 rgba(255,255,255,.22),inset 0 -0.833cqw 0 rgba(0,0,0,.35);}
+.card.kit .k-rune{background-color:#1d4fae;} .card.kit .k-rune.wild{background-color:#5a2c8c;} .card.kit .k-rank{background-color:#a4231c;}
 .card.kit .k-name{display:flex; align-items:center; justify-content:center; text-align:center; font-size:calc(var(--ns,24) / 240 * 100cqw); line-height:.92; color:var(--k-text);
   text-shadow:0 0.833cqw 0 rgba(0,0,0,.7); overflow:hidden; overflow-wrap:anywhere;}
 .card.kit.lt .k-name, .card.kit.lt .k-stat{text-shadow:none;}
@@ -1902,9 +1905,9 @@ body.h460.wide #scrBattle #hudBottom{overflow:visible;}
 .card.kit>.badge:not(.new):not(.inst):not(.tink){display:flex; align-items:center; justify-content:center; padding:0; margin:0; border:0; border-radius:0; background:none; box-shadow:none;
   right:auto; bottom:auto; transform:none; color:#f5f1dc; font:400 5.4cqw/1 var(--font-h); white-space:nowrap; overflow:hidden; z-index:4;}
 .card.kit.compact .k-el{left:10.000%; top:5.612%; width:13.333%; height:8.163%;}
-.card.kit.compact .k-hero{left:56.250%; top:5.612%; width:13.333%; height:8.163%;}
-.card.kit.compact .k-rune{left:55.417%; top:5.867%; width:15.000%; height:7.143%;}
-.card.kit.compact .k-rank{left:76.667%; top:5.867%; width:15.000%; height:7.143%;}
+.card.kit.compact .k-hero{left:56.875%; top:5.995%; width:12.500%; height:7.653%;}
+.card.kit.compact .k-rune{left:53.750%; top:5.102%; width:18.750%; height:9.439%;}
+.card.kit.compact .k-rank{left:75.417%; top:5.102%; width:16.250%; height:9.439%;}
 .card.kit.compact .k-name{left:8.333%; top:15.816%; width:83.333%; height:11.735%;}
 .card.kit.compact .k-art{left:7.500%; top:28.571%; width:85.000%; height:43.367%;}
 .card.kit.compact .k-tline{left:8.333%; top:73.980%; width:83.333%; height:4.082%;}
@@ -1914,9 +1917,9 @@ body.h460.wide #scrBattle #hudBottom{overflow:visible;}
 .card.kit.compact .k-rar{left:81.250%; top:84.184%; width:7.500%; height:4.592%;}
 .card.kit.compact >.badge:not(.new):not(.inst):not(.tink){left:38.333%; top:93.622%; width:23.333%; height:3.316%;}
 .card.kit.expanded .k-el{left:10.000%; top:4.825%; width:13.333%; height:7.018%;}
-.card.kit.expanded .k-hero{left:56.250%; top:4.825%; width:13.333%; height:7.018%;}
-.card.kit.expanded .k-rune{left:55.417%; top:5.044%; width:15.000%; height:6.140%;}
-.card.kit.expanded .k-rank{left:76.667%; top:5.044%; width:15.000%; height:6.140%;}
+.card.kit.expanded .k-hero{left:56.875%; top:5.154%; width:12.500%; height:6.579%;}
+.card.kit.expanded .k-rune{left:53.750%; top:4.386%; width:18.750%; height:8.114%;}
+.card.kit.expanded .k-rank{left:75.417%; top:4.386%; width:16.250%; height:8.114%;}
 .card.kit.expanded .k-name{left:8.333%; top:13.596%; width:83.333%; height:10.088%;}
 .card.kit.expanded .k-art{left:7.500%; top:24.123%; width:85.000%; height:31.798%;}
 .card.kit.expanded .k-tline{left:8.333%; top:57.018%; width:83.333%; height:3.509%;}
@@ -2065,3 +2068,10 @@ html body #peek .card.kit.big::before{inset:0; left:0; width:auto; height:auto;}
 .elmove{-webkit-touch-callout:none; user-select:none; -webkit-user-select:none;}
 .ellab.elhead2{margin:12px 0 2px; color:#8fe4ff; font-size:12px; text-transform:uppercase; letter-spacing:.06em;}
 #mlabTitle small{display:block; font:400 12px var(--font-t,system-ui); color:#a9c4d6; margin-top:2px;}
+
+/* v175: a kit card in the hand that would make a combo (or a recipe): a glow round the card and a tag over its
+   art's foot (the kit card's ::after is its frame, so the old ::after label covered the card in green) */
+.hand .card.kit.hint{box-shadow:0 0 0 2px #39ff8a,0 0 14px rgba(57,255,138,.7);}
+.hand .card.kit.recipe-ready{box-shadow:0 0 0 2px #c58bff,0 0 14px rgba(197,139,255,.7);}
+.card.kit>.k-tag{left:50%; top:66%; transform:translateX(-50%); z-index:5; font:800 10px/1.5 var(--font-b); font-style:normal; padding:0 7px; border-radius:99px; white-space:nowrap;}
+.card.kit>.k-tag.hint{color:#062010; background:#39ff8a;} .card.kit>.k-tag.recipe{color:#1a0630; background:#c58bff;}

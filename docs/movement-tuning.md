@@ -123,6 +123,12 @@ flicks in a row keep to the line the first started from.
 The user tuned this in the Movement lab and it became the default (`MV_DEF` in battle.js, `XLIT_DEF` in look.js):
 `mvSnapR .7, mvSnapSpd 5, mvStickR 39, mvDead .15, mvStickMin .15, mvStickFull .7, mvCurve .49, mvTapMs 306, mvTapPx 17,
 mvStickSpeed 8, mvMAccel .36, mvMBrake .06, mvMSkid .22, mvGrip .93, mvFlickMin 1, mvFlickTime .35`.
+**v172.** v118's defaults were tuned under the v161 camera (pitch 42, fov 64). Even screen speed (`mvEven` 1) then measured
+every way against walking across the middle of the board, so the v162 camera (pitch 58, fov 71, closer), which squeezes
+rows on screen, made you walk up to 1.5× as many tiles a second up and down (portrait: 10.1 across / 13.7 up and down,
+against 8.7 / 9.2 when it was tuned). Now `evenK` measures against walking across at your own spot, so across is always
+the top speed whatever the camera, and the defaults give back the tuned speeds: `mvStickSpeed 9, mvEven .2, mvSpeed 1.3`
+(portrait: 9.0 across, 9.9 up and down).
 The v117 defaults are kept as `MV_V117`: the debug menu's Battle movement → Old (v117) button, and the lab's ★ Old (v117) profile.
 
 The scorer gives it 68 (held-out 62), against 95 for ★ Tight: it docks points for the slow build-up (start), the long skid

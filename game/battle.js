@@ -1137,7 +1137,7 @@ function nearestTile(x,z){ let best=null, bd=1e9; for(const t of TILES){ const d
 // the walking settings (debug menu › Battle › Battle movement, and the Movement lab), kept in look.js
 // the walking feel up to v117, kept so the debug menu (Battle movement) and the Movement lab can go back to it
 const MV_V117={mvSpeed:1.2, mvSnap:1, mvSnapR:.46, mvSnapSpd:2.3, mvRest:.6, mvDrag:2.5, mvAccel:0, mvStick:true, mvStickShow:true, mvStickR:56, mvDead:.18, mvStickMin:.25, mvStickFull:.8, mvCurve:1, mvTapMs:200, mvTapPx:12, mvStickSpeed:5, mvEven:1, mvSnapTime:.12, mvSnapAhead:true, mvStride:.5, mvFaceWalk:true, mvMomentum:true, mvMAccel:.1, mvMBrake:.22, mvMSkid:.08, mvGrip:.7, mvFlick:true, mvFlickV0:450, mvFlickV1:1400, mvFlickMin:2, mvFlickMax:3, mvFlickTime:.4, mvFlickWin:90};
-const MV_DEF={mvSpeed:1.2, mvSnap:1, mvSnapR:.7, mvSnapSpd:5, mvRest:.6, mvDrag:2.5, mvAccel:.09, mvStick:true, mvStickShow:true, mvStickR:39, mvDead:.15, mvStickMin:.15, mvStickFull:.65, mvCurve:.56, mvTapMs:278, mvTapPx:17, mvStickSpeed:8, mvEven:1, mvSnapTime:.12, mvSnapAhead:true, mvStride:.5, mvFaceWalk:true, mvMomentum:true, mvMAccel:.15, mvMBrake:.88, mvMSkid:.22, mvGrip:.93, mvFlick:true, mvFlickV0:450, mvFlickV1:1400, mvFlickMin:1, mvFlickMax:3, mvFlickTime:.35, mvFlickWin:90};
+const MV_DEF={mvSpeed:1.3, mvSnap:1, mvSnapR:.7, mvSnapSpd:5, mvRest:.6, mvDrag:2.5, mvAccel:.09, mvStick:true, mvStickShow:true, mvStickR:39, mvDead:.15, mvStickMin:.15, mvStickFull:.65, mvCurve:.56, mvTapMs:278, mvTapPx:17, mvStickSpeed:9, mvEven:.2, mvSnapTime:.12, mvSnapAhead:true, mvStride:.5, mvFaceWalk:true, mvMomentum:true, mvMAccel:.15, mvMBrake:.88, mvMSkid:.22, mvGrip:.93, mvFlick:true, mvFlickV0:450, mvFlickV1:1400, mvFlickMin:1, mvFlickMax:3, mvFlickTime:.35, mvFlickWin:90};
 const MV=k=>typeof XLIT!=='undefined'&&XLIT[k]!=null?XLIT[k]:MV_DEF[k];
 function freeTarget(x,z,key,k,raw){ const b=B; if(!b||b.phase!=='fight') return; const p=b.player;
   const xs=P_TILES.map(t=>t.wx), zs=P_TILES.map(t=>t.wz), o=p.free;
@@ -1338,10 +1338,12 @@ function freeMoveBy(p,mx,mz,sp){ const L=Math.hypot(mx,mz); if(L<1e-7) return [0
   return [rx,rz]; }
 /* Even speed on screen (mvEven): the camera looks down the board at a slant, so a board unit toward the enemies
    is shorter on screen than one across, and everything nearer the camera is bigger. Walking is sped up or slowed
-   by the way you go so it covers the same screen distance a second as walking across the middle of the board
-   (1: fully even, 0: the same speed on the board every way). */
+   by the way you go so it covers the same screen distance a second as walking across the board where you stand
+   (1: fully even, 0: the same speed on the board every way). Walking across is never changed, so a new camera
+   never changes your top speed: until v172 it measured against the middle of the board, and the v162 camera made
+   you walk up to half as fast again. */
 function evenK(x,z,dx,dz){ const e=MV('mvEven'), l=Math.hypot(dx,dz); if(!(e>0)||l<1e-6) return 1;
-  const a=proj(x,0,z), b=proj(x+dx/l*.1,0,z+dz/l*.1), c0=proj(0,0,0), c1=proj(0,0,.1);
+  const a=proj(x,0,z), b=proj(x+dx/l*.1,0,z+dz/l*.1), c0=a, c1=proj(x,0,z+.1);
   const sDir=Math.hypot(b[0]-a[0],b[1]-a[1]), sRef=Math.hypot(c1[0]-c0[0],c1[1]-c0[1]); if(!(sDir>0)) return 1;
   return 1+(clamp(sRef/sDir,.5,2)-1)*e; }
 /* Which way your mage faces (mvFaceWalk): the way you walk while you walk (left or right on screen; walking

@@ -1251,6 +1251,9 @@ window.addEventListener('keyup',e=>{ const k=e.key.toLowerCase(); held.delete(k)
 
 /* ---------------- loop ---------------- */
 let prev=performance.now();
+// frames and fight updates a second, for Show movement's readout (battle.js mvGraph): two loops at once would show 2 a frame
+const PERF={f:0,u:0,t0:0,fps:0,upf:0};
+function perfTick(now,upd){ PERF.f++; if(upd) PERF.u++; if(now-PERF.t0>=1000){ if(PERF.t0){ PERF.fps=PERF.f*1000/(now-PERF.t0); PERF.upf=PERF.f?PERF.u/PERF.f:0; } PERF.t0=now; PERF.f=PERF.u=0; } }
 function frame(now){
   const dt=Math.min(.05,(now-prev)/1000); prev=now;
   // the next frame is asked for first, so one bad frame can never stop the fight for good
@@ -1258,6 +1261,7 @@ function frame(now){
   if(B&&$('#scrBattle').classList.contains('on')){
     if(!(View.w>0&&View.h>0)) resizeView();
     if(!document.hidden) checkControls(dt);
+    perfTick(now,!paused&&!DBG.pause);
     if(!paused&&!DBG.pause){ heldWalk(); stickWalk(); if(typeof elabBotTick==='function') elabBotTick(dt); update(dt); }   // the debug menu's pause holds the fight but keeps drawing it
     // The Custom screen never opens by itself: when the gauge is full the Custom button glows and you open it.
     try{ render(); }catch(e){ if(!View.errShown){ View.errShown=1; console.error('battle draw:',e); } View.cave=null; resizeView(); }   // e.g. the board was resized to nothing in the background: rebuild it next frame

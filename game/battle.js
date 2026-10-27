@@ -90,12 +90,12 @@ const appXY=(x,y)=>appRot()?[y,innerWidth-x]:[x,y];
 let B=null;
 const GAUGE_MAX=10;
 
-function startBattle(list,depth,hooks,opts){
+function startBattle(list,depth,hooks,opts){ startBattle.n=(startBattle.n||0)+1;   // how many fights this page has started (Show movement)
   buildBoard();
   const p={kind:'player', hp:120, maxHp:120, tile:P_TILES.find(t=>t.col===1&&t.r===(BOARD_ROWS>>1)), path:[], moveCd:0, castCd:0, wandCd:0, charging:false, chargeT:0,
            barrier:0, shieldT:0, hurtT:0, invT:0, dodge:false, powerT:0, setT:0, pactT:0, courageT:0, intervene:0, hasteT:0, regenT:0, regenAmt:0, hero:null};
   p.tile.occ=p;
-  B={depth, hooks:hooks||{}, piles:createPiles(list), player:p, aim:null, enemies:[], allies:[], walls:[], shots:[], lobs:[], shocks:[], teles:[], fx:[], floaters:[], parts:[],
+  B={no:startBattle.n, depth, hooks:hooks||{}, piles:createPiles(list), player:p, aim:null, enemies:[], allies:[], walls:[], shots:[], lobs:[], shocks:[], teles:[], fx:[], floaters:[], parts:[],
      timers:[], gauge:0, phase:'custom', time:0, log:[]};
   B.waves=(opts&&opts.waves)||makeEncounter(depth); B.wave=0;
   makeTerrain(depth);
@@ -1420,7 +1420,10 @@ function mvGraph(p){ const c=document.getElementById('mvGraph'); if(!c) return; 
   else if(d.ph==='magnet'||d.ph==='glide') info=(d.ph==='glide'?'tap / key glide · ':'magnet · ')+s(d.phT);
   if(d.lag>1) info+='  ·  turn '+Math.round(d.lag)+'°'+(d.lag>8?' (grip)':'');
   if(d.walled) info+='  ·  wall';
-  g.font='10px system-ui,sans-serif'; g.fillStyle='#d8e2ee'; g.fillText(info,4,H-8); }
+  g.font='10px system-ui,sans-serif'; g.fillStyle='#d8e2ee'; g.fillText(info,4,H-8);
+  // the numbers: speed now and the push's top, in tiles a second; frames a second and fight updates a frame; which battle
+  { const sp=Math.min(...neighbors(p.tile).map(n=>Math.hypot(n.wx-p.tile.wx,n.wz-p.tile.wz))), v=Math.hypot(p.vx||0,p.vz||0)/sp, P=typeof PERF!=='undefined'?PERF:null;
+    g.fillStyle='#ffe066'; g.fillText(v.toFixed(1)+' t/s · top '+((p.free&&p.free.tps)||MV('mvStickSpeed')).toFixed(1)+(P?' · '+Math.round(P.fps)+' fps · '+P.upf.toFixed(2)+'/f':'')+' · #'+(B.no||1),4,H-20); } }
 // canvas point -> board point (x,z), solved from proj() a few times over, starting near (wx,wz)
 function unprojGround(x,y,wx,wz){ for(let i=0;i<5;i++){ const [a,b]=proj(wx,0,wz), [a1,b1]=proj(wx+.5,0,wz), [a2,b2]=proj(wx,0,wz+.5);
     const j11=(a1-a)*2, j21=(b1-b)*2, j12=(a2-a)*2, j22=(b2-b)*2, det=j11*j22-j12*j21; if(Math.abs(det)<1e-9) break;

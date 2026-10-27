@@ -13,12 +13,14 @@ const pointKey=n=>slotKey(n||SAVE_SLOT)+'-point';
 
 // Game state to JSON and back, keeping shared objects shared (a floor's props are both in a list
 // and in a map by cell) and leaving out the 3D scene, the canvas and any function.
+const b64=v=>{ const u=new Uint8Array(v.buffer,v.byteOffset,v.byteLength); let s=''; for(let i=0;i<u.length;i+=8192) s+=String.fromCharCode.apply(null,u.subarray(i,i+8192)); return btoa(s); };
+const unb64=(T,b)=>{ const s=atob(b), u=new Uint8Array(s.length); for(let i=0;i<s.length;i++) u[i]=s.charCodeAt(i); return new root[T](u.buffer); };
 function snapEncode(top){ const ids=new Map(), out=[];
   const skip=v=>v.isObject3D||v.isMaterial||v.isTexture||v.isBufferGeometry||(typeof HTMLElement!=='undefined'&&v instanceof HTMLElement)||(typeof ImageBitmap!=='undefined'&&v instanceof ImageBitmap);
   const enc=v=>{ if(typeof v==='function') return undefined; if(v===null||typeof v!=='object') return typeof v==='number'&&!isFinite(v)?{$n:String(v)}:v;
     if(skip(v)) return undefined; if(ids.has(v)) return {$r:ids.get(v)};
     const id=out.length; ids.set(v,id); out.push(null); let rec;
-    if(ArrayBuffer.isView(v)) rec={$t:v.constructor.name, d:Array.from(v)};
+    if(ArrayBuffer.isView(v)) rec=typeof btoa==='function'?{$t:v.constructor.name, b:b64(v)}:{$t:v.constructor.name, d:Array.from(v)};   // the raw bytes as base64: a floor's maps stay small
     else if(v instanceof Map) rec={$m:[...v].map(([k,x])=>[enc(k),enc(x)])};
     else if(v instanceof Set) rec={$s:[...v].map(enc)};
     else if(Array.isArray(v)) rec={$a:v.map(x=>{ const e=enc(x); return e===undefined?null:e; })};
@@ -26,7 +28,7 @@ function snapEncode(top){ const ids=new Map(), out=[];
     out[id]=rec; return {$r:id}; };
   return {top:enc(top), out}; }
 function snapDecode(data){ const R=data.out;
-  const objs=R.map(r=>r.$t?new root[r.$t](r.d):r.$m?new Map():r.$s?new Set():r.$a?[]:{});
+  const objs=R.map(r=>r.$t?(r.b!=null?unb64(r.$t,r.b):new root[r.$t](r.d)):r.$m?new Map():r.$s?new Set():r.$a?[]:{});
   const dec=x=>x&&typeof x==='object'?(x.$r!=null?objs[x.$r]:x.$n!=null?Number(x.$n):x):x;
   R.forEach((r,i)=>{ const o=objs[i];
     if(r.$m) for(const [k,x] of r.$m) o.set(dec(k),dec(x));
@@ -42,10 +44,15 @@ function canSavePoint(){ if(!save) return 'No game to save.';
   if(EX.busy) return 'You can’t save right now.';
   if(EX.action||EX.aim) return 'Finish what you are doing first.';
   return ''; }
+// the floor and the run's kept floors, without what each floor's 3D scene works out again when it is built
+// (floorsave.js xFloorPlain): a save point stays a few hundred KB instead of megabytes
+function pointState(ex){ const run=typeof XRUN!=='undefined'?XRUN:null; if(typeof xFloorPlain!=='function') return {ex, run};
+  const memo=new Map(), plain=f=>{ if(!f) return f; if(!memo.has(f)) memo.set(f,xFloorPlain(f)); return memo.get(f); };
+  return {ex:plain(ex), run:run&&Object.assign({},run,run.floors?{floors:new Map([...run.floors].map(([d,f])=>[d,plain(f)]))}:{})}; }
 function savePoint(){ const why=canSavePoint(); if(why) return {ok:false,msg:why};
   const ex=EX, keep={action:ex.action, aim:ex.aim, path:ex.path}; ex.action=null; ex.aim=null; ex.path=[];
   let txt; try{ txt=JSON.stringify({v:2, time:Date.now(), depth:ex.depth, area:areaLabel(ex.depth), level:save.level||1,
-    save:JSON.parse(JSON.stringify(save)), run:snapEncode({ex, run:typeof XRUN!=='undefined'?XRUN:null})}); }
+    save:JSON.parse(JSON.stringify(save)), run:snapEncode(pointState(ex))}); }
   finally{ Object.assign(ex,keep); }
   try{ localStorage.setItem(pointKey(),txt); }catch(e){ return {ok:false,msg:'Not enough storage space to save.'}; }
   return {ok:true,msg:'Game saved at depth '+ex.depth+'.'}; }

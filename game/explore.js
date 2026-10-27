@@ -51,7 +51,7 @@ const xmaxHp=()=>Math.round((120+((typeof gearMods==='function'&&gearMods(save).
    up with no key at all, every main room that is not behind a planned lock is reachable, and a
    lock only ever shuts off at most two rooms. */
 function genFloor(depth,plan){
-  const seed=t=>caveRng((Date.now()&0xffffff)^(depth*7919)^(t*104729));
+  const base=typeof XSEED!=='undefined'&&XSEED!=null?XSEED:(Date.now()&0xffffff), seed=t=>caveRng(base^(depth*7919)^(t*104729));   // a save's own floors (floorsave.js)
   for(let tries=0;tries<120;tries++){ const f=tryFloor(depth,seed(tries),plan); if(f) return f; }
   // a plan too crowded for the dice: keep only the closet, then nothing extra
   for(let tries=0;tries<200;tries++){ const f=tryFloor(depth,seed(500+tries),{side:[{kind:'closet',lock:'secret'}]}); if(f) return f; }
@@ -157,7 +157,9 @@ function xbfs(t,doors,s,seenOnly,blockFn){
    dungeon.js plans what a floor holds before it is dug (side rooms, locks, the gate, the boss
    door), gives some rooms a role (merchant, sanctuary, puzzle, lair) and fills them afterwards
    with people, puzzles, keys and secrets. The rooms without a role get chests, traps and enemies. */
-function buildFloor(depth,hp,opt){
+// a floor is built with this save's dice for its depth (floorsave.js), so a save always gets the same depth 1, 2…
+function buildFloor(depth,hp,opt){ return typeof xSeeded==='function'?xSeeded(depth,opt,()=>buildFloorNow(depth,hp,opt)):buildFloorNow(depth,hp,opt); }
+function buildFloorNow(depth,hp,opt){
   opt=opt||{};
   const plan=opt.plan||(typeof xFloorPlan==='function'?xFloorPlan(depth,opt):null), route=opt.route||null, RT=typeof routeMods==='function'?routeMods(route):{foes:1,traps:1,chests:1,tier:0};
   const F=genFloor(depth,plan), A=areaOf(depth);
@@ -1389,13 +1391,14 @@ function xStairsDown(){
   const route=EX.routeOk; EX.routeOk=null;
   xKeep(); setTimeout(()=>{ xGoFloor(nd,hp,'up',route); EX.active=true; xHud(); xLoopStart(); xBanner(nd); if(typeof xRouteArrive==='function') xRouteArrive(); },500);
 }
-// floors you have been on this run are kept as you left them, so the stairs work both ways
+// floors you have been on are kept as you left them, so the stairs work both ways; floorsave.js keeps them in the save too
 function xFloors(){ return typeof XRUN!=='undefined'&&XRUN?(XRUN.floors||(XRUN.floors=new Map())):null; }
-function xKeep(){ const m=xFloors(); if(m&&EX&&!EX.branch) m.set(EX.depth,EX); }
+function xKeep(){ const m=xFloors(); if(m&&EX&&!EX.branch){ m.set(EX.depth,EX); if(typeof xFloorStore==='function') xFloorStore(EX); } }
 // go to a floor, arriving on its stairs up or down (or a cell): a kept floor comes back as it was;
 // a new one reached from below has its guardian already beaten, since you came past it
-function xGoFloor(depth,hp,at,route){ const m=xFloors(), F=m&&m.get(depth), ail=EX&&EX.ail;
-  if(F){ EX=F; EX.hp=hp; EX.busy=false; EX.path=[]; EX.action=null; EX.aim=null; EX.searchCell=null; EX.wave=null; EX.stuckT=0; EX.fighting=null; if(ail) EX.ail=ail; if(typeof xPlaceWayshard==='function') xPlaceWayshard(); xBuildScene(); for(const tr of EX.traps) if(tr.known&&tr.armed) xTrapMesh(tr); }
+function xGoFloor(depth,hp,at,route){ const m=xFloors(), F=m&&(m.get(depth)||(typeof xFloorLoad==='function'&&xFloorLoad(depth))), ail=EX&&EX.ail;
+  if(F){ EX=F; if(typeof xPlaceBody==='function'&&!EX.props.some(p=>p.kind==='corpse')) xPlaceBody();   // your body, if you fell on this depth since
+    EX.hp=hp; EX.busy=false; EX.path=[]; EX.action=null; EX.aim=null; EX.searchCell=null; EX.wave=null; EX.stuckT=0; EX.fighting=null; if(ail) EX.ail=ail; if(typeof xPlaceWayshard==='function') xPlaceWayshard(); xBuildScene(); for(const tr of EX.traps) if(tr.known&&tr.armed) xTrapMesh(tr); }
   else { buildFloor(depth,hp,route?{plan:route.plan,route:route.kind}:undefined);
     if(at==='down') for(const g of EX.groups.filter(g=>g.boss)){ EX.groups.splice(EX.groups.indexOf(g),1); xDropGroup(g); EX.bossDead=true; } }
   const c=typeof at==='number'?at:at==='down'?EX.down:EX.up; EX.pc=c; EX.px=xw(c); EX.pz=xz(c); EX.stairLock=c; EX.vx=EX.vz=0; EX.view=at==='down'?'back':'front'; xUpdateVis(); }
@@ -1411,7 +1414,7 @@ function xStairsUp(){
   setTimeout(()=>{ xGoFloor(nd,hp,at); EX.active=true; xHud(); xLoopStart(); xBanner(nd); },450);
 }
 let XPARK=null;
-function xToCamp(){ if(!EX||EX.busy||EX.pc!==EX.up) return; if(typeof xEscortCheck==='function') xEscortCheck(); logCamp('Climbed back to camp from depth '+EX.depth+'. The floor stays as you left it.','dim'); stopExplore(); pickDepth=EX.depth; XPARK=EX; EX=null; openCamp(); }
+function xToCamp(){ if(!EX||EX.busy||EX.pc!==EX.up) return; if(typeof xEscortCheck==='function') xEscortCheck(); logCamp('Climbed back to camp from depth '+EX.depth+'. The floor stays as you left it.','dim'); if(typeof xFloorStore==='function') xFloorStore(EX); stopExplore(); pickDepth=EX.depth; XPARK=EX; EX=null; openCamp(); }
 function xDie(why){
   // a sanctuary's blessing pulls you back once: to the stairs up of this floor, at half health
   if(typeof xTryRevive==='function'&&xTryRevive()){ const lost=Math.floor(save.gold*.1); save.gold-=lost; persist(); EX.hp=Math.round(xmaxHp()*.5); EX.ail={poison:0,curse:0};
@@ -1638,7 +1641,9 @@ function enterExplore(depth){
   if(typeof THREE==='undefined'){ tip('The 3D map could not load; fighting directly.'); return fight(depth); }
   show('scrExplore'); xInit3D();
   if(XPARK&&XPARK.depth===depth){ EX=XPARK; XPARK=null; EX.hp=xmaxHp(); EX.busy=false; EX.path=[]; EX.px=xw(EX.up); EX.pz=xz(EX.up); EX.pc=EX.up; EX.stairLock=EX.up; xUpdateVis(); xLog('You climb back down. You feel rested.','dim'); }
-  else { XPARK=null; if(typeof xNewRun==='function') xNewRun(depth); buildFloor(depth); }
+  else { XPARK=null; if(typeof xNewRun==='function') xNewRun(depth);
+    if(typeof xFloorLoad==='function'&&xFloorLoad(depth)){ EX=null; xGoFloor(depth,xmaxHp(),'up'); xLog('Depth '+depth+' · as you left it.','dim'); }   // been here before (floorsave.js)
+    else buildFloor(depth); }
   EX.active=true; xHud(); xLoopStart(); xTip('move');
   xBanner(depth);
 }

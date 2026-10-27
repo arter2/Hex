@@ -77,7 +77,8 @@ const unreadLore=()=>LORE.filter(l=>!dState().lore[l.id]);
 
 /* ---------------- the run ---------------- */
 let XRUN=null;
-function xNewRun(depth){
+function xNewRun(depth){ return typeof xSeeded==='function'?xSeeded(depth,{route:'run'},()=>xNewRunNow(depth)):xNewRunNow(depth); }   // the run's rolls from the save's seed (floorsave.js)
+function xNewRunNow(depth){
   XRUN={start:depth, keys:{}, quests:[], kills:{}, attuned:0, chute:0, solution:0, discount:0,
         next:{merchant:depth+xri(0,2), sanct:depth+xri(3,5)}};
   // what you owned walking in: anything beyond this is what the run found, and what your body keeps if you fall
@@ -86,7 +87,7 @@ function xNewRun(depth){
 
 /* ---------------- your body ----------------
    Fall in the dungeon and everything this run found (cards and gear) stays on your body, with the
-   gold you dropped. The same character can go back down: the floor is new, but your body lies
+   gold you dropped. The same character can go back down: the floor is as you left it (floorsave.js), and your body lies
    somewhere on the depth you fell on. Walk over it to take it all back. Fall again before you
    reach it, or start another character, and the old body is lost. */
 const whoAmI=()=>save.char?[save.char.race,save.char.body,save.char.look].join('|'):'';

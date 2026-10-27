@@ -379,6 +379,7 @@ function cancelAttack(e){
   if(had) floater('cancelled',e.tile,'#6fd6ff');
 }
 function killEnemy(e){
+  if(B.lab&&B.lab.foes&&typeof elabSaved==='function'&&elabSaved(e)) return;   // the Enemy lab's Can't die (enemylab.js)
   if(typeof bestiaryKill==='function'&&!e.def.minion&&!B.lab) bestiaryKill(e);
   if(typeof arRuleKill==='function') arRuleKill(e);
   // a kill lands hard: a short freeze and a white flash; the last kill of a boss fight goes slow

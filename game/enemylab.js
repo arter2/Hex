@@ -9,9 +9,10 @@
    Changes live in this browser and only in the lab, unless "Use in real fights" is on: then every enemy met in
    the dungeon from this browser uses them too, by the depth it is met at. */
 const ELAB_KEY='hexmancers-enemylab';
-const ELAB_OPT_DEF={depth:3, respawn:false, tough:false, attack:true, live:false, bot:'off', react:.35, miss:10};
+const ELAB_OPT_DEF={depth:3, respawn:true, tough:true, attack:true, live:false, bot:'off', react:.35, miss:10};
 const ELAB=(()=>{ let s={}; try{ s=JSON.parse(localStorage.getItem(ELAB_KEY))||{}; }catch(e){}
-  return {over:s.over||{}, opt:Object.assign({},ELAB_OPT_DEF,s.opt||{}), open:null, pick:'ram', find:'', stage:{}}; })();
+  const opt=Object.assign({},ELAB_OPT_DEF,s.opt||{}); if(!opt.v172){ opt.v172=1; opt.tough=opt.respawn=true; }   // v172: on for everyone once
+  return {over:s.over||{}, opt, open:null, pick:'ram', find:'', stage:{}}; })();
 const elabKeep=()=>{ try{ localStorage.setItem(ELAB_KEY,JSON.stringify({over:ELAB.over,opt:ELAB.opt})); }catch(e){} };
 const elabOn=()=>!!(B&&B.lab&&B.lab.foes);
 const ELAB_AI={align:'Lines up', wander:'Wanders', back:'Keeps back', still:'Still'};
@@ -77,12 +78,15 @@ function elabApply(e,fresh,real){ const d=ENEMY_DEFS[e.id], depth=e.labDepth||1,
   if(t.has('moves')||t.has('order')){ if(c.order){ e.seq=c.moves.slice(); e.si=1; e.moves=undefined; e.nextMove=e.seq[0]; } else { e.moves=c.moves.slice(); e.seq=null; e.nextMove=pick(e.moves); } }
   else { e.seq=O.seq&&O.seq.slice(); e.moves=O.moves&&O.moves.slice(); e.si=1; e.nextMove=e.seq?e.seq[0]:pick(e.moves||d.moves); }
   e.dmg=t.has('dmg')?Math.round(c.dmg*e.ds):O.dmg;
-  if(ELAB.opt.tough&&!real){ e.hp=e.maxHp=99999; return; }
-  const full=t.has('hp')?Math.max(1,Math.round(c.hp*O.maxHp/d.hp)):O.maxHp, frac=fresh||e.maxHp===99999?1:e.hp/e.maxHp;
+  const full=t.has('hp')?Math.max(1,Math.round(c.hp*O.maxHp/d.hp)):O.maxHp, frac=fresh?1:e.hp/e.maxHp;
   e.maxHp=full; e.hp=Math.max(1,Math.round(full*frac)); }
 // "Use in real fights": every enemy made in a dungeon fight takes this browser's changes, by its depth (enemies.js makeEnemy)
 function elabLive(e,depth){ if(!ELAB.opt.live||!ELAB.over[e.id]||(B&&B.lab&&B.lab.foes)) return; e.labDepth=depth; elabApply(e,true,true); }
 // a kill: bring one of the same kind back after a moment, if Respawn is on (battle.js kill)
+/* Can't die: a blow that would kill heals it to full instead, with its own HP (so the numbers stay true), whatever
+   killed it, a card, a bot or a burn (battle.js killEnemy asks this first) */
+function elabSaved(e){ if(!elabOn()||!ELAB.opt.tough) return false;
+  e.hp=e.maxHp; e.saved=(e.saved||0)+1; floater('Can\'t die · full HP',e.tile,'#ff6ad5'); ring(e.tile,'#ff6ad5',1.2,.4,6); renderElabBoard(); return true; }
 function elabKilled(e){ renderElabBoard(); if(!ELAB.opt.respawn) return; const id=e.id; later(1.5,()=>{ if(elabOn()) elabSummon(id); }); }
 
 /* ---------------- the panel ----------------
@@ -122,18 +126,18 @@ function elabSummonTab(f){
   const on=document.createElement('p'); on.className='ellab'; on.textContent='On the board'; f.appendChild(on);
   const bd=document.createElement('div'); bd.id='elBoard'; bd.className='elboard'; f.appendChild(bd); renderElabBoard();
   elabNum(f,'Depth',ELAB.opt.depth,1,30,1,v=>{ ELAB.opt.depth=v; elabKeep(); },'The dungeon depth new enemies are summoned at: deeper ones have more HP, hit harder, and use the depth stage for that depth.');
+  const sl=document.createElement('p'); sl.className='ellab elhead2'; sl.textContent='The lab'; f.appendChild(sl);
+  const tog=(k,label,tipText)=>elabChips(f,label,[['1','On'],['0','Off']],ELAB.opt[k]?'1':'0','#ff6ad5',v=>{ ELAB.opt[k]=v==='1'; elabKeep(); renderElab(); },tipText);
+  tog('tough',"Can't die",'On: a blow that would kill an enemy heals it to full instead, so neither you nor the bot can kill it while you edit its attacks.');
+  if(!ELAB.opt.tough) tog('respawn','Respawn when killed','On: a killed enemy comes back (the same kind) after 1.5 s.');
+  tog('attack','They attack','Off: enemies only walk about, so you can watch how they move.');
+  tog('live','Use in real fights','On: enemies you meet in the dungeon (in this browser) use your changes too, each by the depth it is met at. Off: only the lab uses them.');
   const pl=document.createElement('p'); pl.className='ellab elhead2'; pl.textContent='Who plays you'; f.appendChild(pl);
   elabChips(f,'',Object.entries(ELAB_BOT),ELAB.opt.bot,'#7dffb0',v=>{ ELAB.opt.bot=v; elabKeep(); elabBotT.seen=new Map(); if(B&&B.player) B.player.path=[]; renderElab(); mlabHud(); },
     'You: you play. Dodge: a bot only steps out of the way, to see whether the enemies\' attacks can be dodged. Fight: a bot dodges, shoots, casts and uses the Spell screen.');
   if(ELAB.opt.bot!=='off'){
     elabNum(f,'Reaction (s)',ELAB.opt.react,0,1.5,.05,v=>{ ELAB.opt.react=v; elabKeep(); },'How long after a warning appears the bot notices it. A quick person: 0.25 to 0.4 s.');
-    elabNum(f,'Misses (%)',ELAB.opt.miss,0,90,5,v=>{ ELAB.opt.miss=v; elabKeep(); },'How many warnings the bot never notices at all, like a person looking elsewhere.'); }
-  const sl=document.createElement('p'); sl.className='ellab elhead2'; sl.textContent='The lab'; f.appendChild(sl);
-  const tog=(k,label,tipText)=>elabChips(f,label,[['1','On'],['0','Off']],ELAB.opt[k]?'1':'0','#ff6ad5',v=>{ ELAB.opt[k]=v==='1'; elabKeep(); if(k==='tough') for(const e of B.enemies) if(e.hp>0) elabApply(e,true); renderElab(); },tipText);
-  tog('attack','They attack','Off: enemies only walk about, so you can watch how they move.');
-  tog('respawn','Respawn when killed','On: a killed enemy comes back (the same kind) after 1.5 s.');
-  tog('tough',"Can't die",'On: enemies on the board have 99,999 HP, to watch them for as long as you like.');
-  tog('live','Use in real fights','On: enemies you meet in the dungeon (in this browser) use your changes too, each by the depth it is met at. Off: only the lab uses them.'); }
+    elabNum(f,'Misses (%)',ELAB.opt.miss,0,90,5,v=>{ ELAB.opt.miss=v; elabKeep(); },'How many warnings the bot never notices at all, like a person looking elsewhere.'); } }
 
 function elabEditTab(f){ const id=ENEMY_DEFS[ELAB.pick]?ELAB.pick:'ram';
   const r=elabRow(f,'Enemy',`<select>${elabOptions(id)}</select>`,'● marks the enemies you have changed.'); r.querySelector('select').onchange=e=>{ ELAB.pick=e.target.value; renderElab(); };

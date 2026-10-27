@@ -1255,7 +1255,7 @@ function frame(now){
   if(B&&$('#scrBattle').classList.contains('on')){
     if(!(View.w>0&&View.h>0)) resizeView();
     if(!document.hidden) checkControls(dt);
-    if(!paused&&!DBG.pause){ heldWalk(); stickWalk(); update(dt); }   // the debug menu's pause holds the fight but keeps drawing it
+    if(!paused&&!DBG.pause){ heldWalk(); stickWalk(); if(typeof elabBotTick==='function') elabBotTick(dt); update(dt); }   // the debug menu's pause holds the fight but keeps drawing it
     // The Custom screen never opens by itself: when the gauge is full the Custom button glows and you open it.
     try{ render(); }catch(e){ if(!View.errShown){ View.errShown=1; console.error('battle draw:',e); } View.cave=null; resizeView(); }   // e.g. the board was resized to nothing in the background: rebuild it next frame
     hud();

@@ -2063,3 +2063,5 @@ html body #peek .card.kit.big::before{inset:0; left:0; width:auto; height:auto;}
 .elinfo b{display:block; font-size:18px; color:#ffe066; margin-bottom:6px;}
 .elinfo p{margin:0 0 6px;} .elinfo p.dim{font-size:13px; color:#a9c4d6;}
 .elmove{-webkit-touch-callout:none; user-select:none; -webkit-user-select:none;}
+.ellab.elhead2{margin:12px 0 2px; color:#8fe4ff; font-size:12px; text-transform:uppercase; letter-spacing:.06em;}
+#mlabTitle small{display:block; font:400 12px var(--font-t,system-ui); color:#a9c4d6; margin-top:2px;}

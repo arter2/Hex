@@ -9,7 +9,7 @@
    Changes live in this browser and only in the lab, unless "Use in real fights" is on: then every enemy met in
    the dungeon from this browser uses them too, by the depth it is met at. */
 const ELAB_KEY='hexmancers-enemylab';
-const ELAB_OPT_DEF={depth:3, respawn:false, tough:false, attack:true, live:false};
+const ELAB_OPT_DEF={depth:3, respawn:false, tough:false, attack:true, live:false, bot:'off', react:.35, miss:10};
 const ELAB=(()=>{ let s={}; try{ s=JSON.parse(localStorage.getItem(ELAB_KEY))||{}; }catch(e){}
   return {over:s.over||{}, opt:Object.assign({},ELAB_OPT_DEF,s.opt||{}), open:null, pick:'ram', find:'', stage:{}}; })();
 const elabKeep=()=>{ try{ localStorage.setItem(ELAB_KEY,JSON.stringify({over:ELAB.over,opt:ELAB.opt})); }catch(e){} };
@@ -56,7 +56,7 @@ function elabCat(d){ return d.boss?'Bosses':d.mini?'Minibosses':d.rare?'Rare foe
 /* ---------------- the battle ---------------- */
 function elabStart(){
   if(!save){ save=newSave(STARTERS[0]); save.char=lockChar(newChar('human',0)); save.temp=true; }   // never written (ui.js persist)
-  paused=false; BOARD_TEST=null; buildBoard(); ELAB_HITS=0;
+  paused=false; BOARD_TEST=null; buildBoard(); ELAB_HITS=0; ELAB_DODGED=0; elabBotT={move:0, spell:null, seen:new Map()};
   fight(1,[[]],{lab:{list:activeDeck().list, move:true, foes:true}});
   if(!B) return;
   const p=B.player; p.hp=p.maxHp=999;
@@ -95,7 +95,7 @@ function elabOptions(sel){ const groups={}; for(const id of elabIds()) (groups[e
 function elabRow(parent,label,html,tipText){ const r=document.createElement('div'); r.className='mlrow elrow'; if(tipText) r.dataset.tip=tipText;
   r.innerHTML=(label?`<span class="ellab">${label}</span>`:'')+`<div class="elctl">${html}</div>`; parent.appendChild(r); return r; }
 // a number: − [slider] + and its value; set(v) runs once a change is done (a tap, or letting go of the slider)
-function elabNum(parent,label,val,mn,mx,st,set,tipText){ const dec=st<1?1:0, fmt=v=>(+v).toFixed(dec);
+function elabNum(parent,label,val,mn,mx,st,set,tipText){ const dec=st<.1?2:st<1?1:0, fmt=v=>(+v).toFixed(dec);
   const r=elabRow(parent,label,`<button class="elstep" data-d="-1" aria-label="Less">−</button><input type="range" min="${mn}" max="${mx}" step="${st}" value="${val}"><button class="elstep" data-d="1" aria-label="More">+</button><b>${fmt(val)}</b>`,tipText);
   const i=r.querySelector('input'), o=r.querySelector('b');
   i.oninput=()=>{ o.textContent=fmt(i.value); }; i.onchange=()=>set(+i.value);
@@ -122,6 +122,13 @@ function elabSummonTab(f){
   const on=document.createElement('p'); on.className='ellab'; on.textContent='On the board'; f.appendChild(on);
   const bd=document.createElement('div'); bd.id='elBoard'; bd.className='elboard'; f.appendChild(bd); renderElabBoard();
   elabNum(f,'Depth',ELAB.opt.depth,1,30,1,v=>{ ELAB.opt.depth=v; elabKeep(); },'The dungeon depth new enemies are summoned at: deeper ones have more HP, hit harder, and use the depth stage for that depth.');
+  const pl=document.createElement('p'); pl.className='ellab elhead2'; pl.textContent='Who plays you'; f.appendChild(pl);
+  elabChips(f,'',Object.entries(ELAB_BOT),ELAB.opt.bot,'#7dffb0',v=>{ ELAB.opt.bot=v; elabKeep(); elabBotT.seen=new Map(); if(B&&B.player) B.player.path=[]; renderElab(); mlabHud(); },
+    'You: you play. Dodge: a bot only steps out of the way, to see whether the enemies\' attacks can be dodged. Fight: a bot dodges, shoots, casts and uses the Spell screen.');
+  if(ELAB.opt.bot!=='off'){
+    elabNum(f,'Reaction (s)',ELAB.opt.react,0,1.5,.05,v=>{ ELAB.opt.react=v; elabKeep(); },'How long after a warning appears the bot notices it. A quick person: 0.25 to 0.4 s.');
+    elabNum(f,'Misses (%)',ELAB.opt.miss,0,90,5,v=>{ ELAB.opt.miss=v; elabKeep(); },'How many warnings the bot never notices at all, like a person looking elsewhere.'); }
+  const sl=document.createElement('p'); sl.className='ellab elhead2'; sl.textContent='The lab'; f.appendChild(sl);
   const tog=(k,label,tipText)=>elabChips(f,label,[['1','On'],['0','Off']],ELAB.opt[k]?'1':'0','#ff6ad5',v=>{ ELAB.opt[k]=v==='1'; elabKeep(); if(k==='tough') for(const e of B.enemies) if(e.hp>0) elabApply(e,true); renderElab(); },tipText);
   tog('attack','They attack','Off: enemies only walk about, so you can watch how they move.');
   tog('respawn','Respawn when killed','On: a killed enemy comes back (the same kind) after 1.5 s.');
@@ -199,6 +206,56 @@ function renderElabBoard(){ const bd=document.getElementById('elBoard'); if(!bd|
     c.querySelector('button').onclick=()=>{ if(e.tile&&e.tile.occ===e) e.tile.occ=null; B.enemies=B.enemies.filter(x=>x!==e); B.teles=B.teles.filter(t=>t.owner!==e); renderElabBoard(); };
     bd.appendChild(c); } }
 
+
+
+/* ---------------- the autopilot: a bot plays your hexmancer ----------------
+   Off: you play. Dodge: it only steps out of harm's way, to see whether an enemy's attacks can be dodged. Fight:
+   it dodges, walks into an enemy's row, shoots, casts and opens the Spell screen when the gauge is full, queueing
+   the first cards it holds. Like a person it sees a warning only after its Reaction time, and misses some
+   altogether (Misses). It never reads what an enemy will do next: only what is marked on the board, a shot in
+   flight, or an enemy winding up a shot down its row. The score counts hits taken and dodged attacks. */
+const ELAB_BOT={off:'You', dodge:'Dodge', fight:'Fight'};
+let ELAB_DODGED=0, elabBotT={move:0, spell:null, seen:new Map()};
+// every tile the bot has noticed is about to be hit, with the seconds left until it lands
+function elabThreats(){ const now=B.time, R=ELAB.opt.react, miss=ELAB.opt.miss/100, out=new Map(), seen=elabBotT.seen;
+  const notice=(k)=>{ let v=seen.get(k); if(!v){ v={at:now, miss:Math.random()<miss}; seen.set(k,v); } return !v.miss&&now-v.at>=R; };
+  const add=(t,left)=>{ if(t&&t.side==='p') out.set(t,Math.min(out.get(t)??99,left)); };
+  for(const tl of B.teles) if(!tl.friendly&&notice(tl)) for(const t of tl.tiles) add(t,tl.dur-tl.t);
+  for(const e of B.enemies) if(e.hp>0&&e.windT>0&&notice(e.windKey||(e.windKey={}))) for(const t of lineTiles(e.tile,DIRS.W)) add(t,e.windT+.3);
+  for(const e of B.enemies) if(!(e.windT>0)) e.windKey=null;
+  for(const sh of B.shots) if(sh.from==='e'&&!sh.done&&notice(sh)) (sh.tiles||[]).slice(Math.max(0,sh.i)).forEach((t,i)=>add(t,i*.08));
+  return out; }
+const elabWalkable=t=>t&&t.side==='p'&&(!t.occ||t.occ===B.player)&&!(t.holeT>0)&&!burning(t);
+// the nearest tiles first, out to a few steps, over tiles you can stand on
+function elabNear(from,max){ const out=[{t:from,d:0}], seen=new Set([from]);
+  for(let i=0;i<out.length;i++){ const {t,d}=out[i]; if(d>=max) continue; for(const n of neighbors(t)) if(!seen.has(n)&&elabWalkable(n)){ seen.add(n); out.push({t:n,d:d+1}); } }
+  return out; }
+const elabRowFoe=t=>alive().some(e=>e.tile.r===t.r);
+function elabBotTick(dt){ if(!elabOn()||ELAB.opt.bot==='off'||!B) return; const b=B, p=b.player, fight=ELAB.opt.bot==='fight';
+  // dodged: an attack the bot saw aimed at it that ended with it somewhere else
+  for(const tl of b.teles) if(!tl.friendly&&tl.botAim==null) tl.botAim=tl.tiles.includes(p.tile);
+  if(elabBotT.last) for(const tl of elabBotT.last) if(!b.teles.includes(tl)&&tl.botAim&&!tl.tiles.includes(p.tile)){ ELAB_DODGED++; mlabHud(); }
+  elabBotT.last=b.teles.slice();
+  // the Spell screen: queue the first cards in hand, then fight on
+  if(b.phase==='custom'){ if(!fight) return; if(elabBotT.spell==null) elabBotT.spell=b.time;
+    if(performance.now()-(elabBotT.spellAt||0)>500){ const pl=b.piles, free=slotsOf(pl)-pl.queue.length;
+      pl.hand.filter(c=>!isInstant(c.card)&&!isDeckTool(c.card)&&!c.cursed).slice(0,Math.max(0,free)).forEach(c=>toggleQueue(pl,c.uid));
+      elabBotT.spell=null; closeCustomScreen(); }
+    return; }
+  if(b.phase!=='fight') return;
+  if(fight&&gaugeFull()&&!b.piles.queue.length&&!wandOnly(b.piles)){ elabBotT.spellAt=performance.now(); openCustomScreen(); return; }
+  // moving: out of anything it has noticed; Fight also walks into an enemy's row
+  elabBotT.move-=dt; const th=elabThreats(), here=p.path&&p.path.length?p.path[p.path.length-1]:p.tile;
+  const danger=t=>th.has(t), score=({t,d})=>(danger(t)?-100+th.get(t)*10:0)-d*2+(fight&&elabRowFoe(t)?12:0)+(t===p.tile?3:0);
+  if(danger(here)||elabBotT.move<=0){ elabBotT.move=fight?.8:.4;
+    const opts=elabNear(p.tile,4).filter(x=>!danger(x.t)||x.t===p.tile); let best=null, bs=-1e9;
+    for(const o of opts){ const v=score(o); if(v>bs){ bs=v; best=o.t; } }
+    if(best&&best!==here&&(danger(here)||fight)) moveTo(best); }
+  if(!fight) return;
+  // casting and shooting
+  const q=b.piles.queue[0];
+  if(q&&p.castCd<=0&&!(q.frozenT>0)&&alive().length){ if(nextIsLob()){ const t=alive().sort((a,c)=>hexDist(p.tile,a.tile)-hexDist(p.tile,c.tile))[0]; if(t) b.aim=t.tile; } castCard(); }
+  if(p.wandCd<=0&&!p.charging&&elabRowFoe(p.tile)) fireWand(false); }
 
 /* ---------------- what each attack does (hold an attack in the Edit tab) ---------------- */
 // "its hit" is the enemy's damage; marked tiles hit whoever is on them when the warning ends

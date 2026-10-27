@@ -32,7 +32,8 @@ function mlabExit(){ $('#mlabPanel').classList.remove('on'); if(typeof elabInfoH
 // the lab's button and score show only in a lab battle
 function mlabSync(){ const on=mlabOn(), foes=on&&typeof elabOn==='function'&&elabOn(); $('#mlabHud').hidden=!on; if(!on) $('#mlabPanel').classList.remove('on'); else { mlabHud(); requestAnimationFrame(mlabPlace); }
   $('#mlabTitle').textContent=foes?'Enemy lab':'Movement lab'; $('#mlabPanel').classList.toggle('bottom',!!foes); $('#mlabDefaults').hidden=$('#mlabCopy').hidden=!!foes; $('#mlabCopyNote').hidden=true; }
-function mlabHud(){ const s=$('#mlabScore'); if(s&&typeof elabOn==='function'&&elabOn()){ s.textContent='Hits taken '+ELAB_HITS; return; } if(s) s.textContent='Shots '+MLAB_SHOTS+' · Hits '+MLAB_HITS+(MLAB_SHOTS?' · '+Math.round(100*(1-MLAB_HITS/MLAB_SHOTS))+'% dodged':''); }
+function mlabHud(){ const s=$('#mlabScore'); if(s&&typeof elabOn==='function'&&elabOn()){ s.textContent=(ELAB.opt.bot!=='off'?'Bot ('+ELAB_BOT[ELAB.opt.bot]+') · ':'')+'Hits taken '+ELAB_HITS+(ELAB.opt.bot!=='off'?' · Dodged '+ELAB_DODGED:'');
+    $('#mlabTitle').innerHTML='Enemy lab<small>'+esc(s.textContent)+'</small>'; return; }   /* the score shows on the sheet too (it covers the one on the board) */ if(s) s.textContent='Shots '+MLAB_SHOTS+' · Hits '+MLAB_HITS+(MLAB_SHOTS?' · '+Math.round(100*(1-MLAB_HITS/MLAB_SHOTS))+'% dodged':''); }
 
 // the panel: [key, label, min, max, step, what a change needs] — 'board' rebuilds the battle, 'turret' and 'mv' apply at
 // once, 'tog' is an on/off switch for a walking setting
@@ -134,7 +135,7 @@ function mlabDefaults(){ Object.assign(MLAB,MLAB_DEF); mlabKeep(); for(const k i
 xFineSliders($('#mlabPanel')); mlabGrip(); xRowTools($('#mlabPanel'),'.mlrow',row=>row.dataset.tip||'');
 $('#mlabBtn').onclick=()=>{ const P=$('#mlabPanel'); P.classList.toggle('on'); if(P.classList.contains('on')) (elabOn()?renderElab:renderMlab)(); };
 $('#mlabHide').onclick=()=>{ $('#mlabPanel').classList.remove('on'); if(typeof elabInfoHide==='function') elabInfoHide(); };
-$('#mlabReset').onclick=()=>{ MLAB_HITS=0; MLAB_SHOTS=0; if(typeof ELAB_HITS!=='undefined') ELAB_HITS=0; mlabHud(); };
+$('#mlabReset').onclick=()=>{ MLAB_HITS=0; MLAB_SHOTS=0; if(typeof ELAB_HITS!=='undefined'){ ELAB_HITS=0; ELAB_DODGED=0; } mlabHud(); };
 $('#mlabDefaults').onclick=mlabDefaults;
 $('#mlabCopy').onclick=()=>xDbgCopy('mlabCopyNote','mlabCopy');
 $('#mlabExit').onclick=mlabExit;

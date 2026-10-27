@@ -2,8 +2,10 @@
    An enemy's aggression (e.aggr, 0 to 1) is how much it reads you instead of only aiming where you stand:
    - Lead: on the move, its attack lands where you are heading, not where you were.
    - Crossfire: with another enemy's attack already on you, it covers the tile you would step out to.
-   - Follow-up: dodge one of its attacks close by and it snaps a quick, weaker one onto you (0.55 s warning).
+   - Follow-up: dodge one of its attacks close by and it snaps a quick, weaker one onto you (0.55 s warning, 0.4 at 1).
    - Footwork: it steps into your row to get a shot, and out of the way of your shots and your charged wand.
+   - Quick hands: its warnings are shorter (a quarter shorter at 1), and a one-tile attack may take in the
+     tile next to you that you would dodge to.
    - Pressure: it attacks more often, more still while you stand about, and once badly hurt it gets angry.
    0 is the old, simple foe. In the dungeon it grows with depth (foeAggrAt); bosses and minibosses keep their own
    scripts (0). The Enemy lab sets it per enemy and depth stage (enemylab.js). */
@@ -33,7 +35,7 @@ function foeFollow(tl){ const e=tl.owner, a=aggrOf(e), p=B.player;
   if(!tl.tiles.some(t=>hexDist(t,p.tile)<=2)||Math.random()>a*.7) return;
   e.followT=B.time+2.5; const ts=[p.tile]; if(a>=.5){ const L=foeLead(.3); if(L!==p.tile) ts.push(L); }
   later(.12,()=>{ if(e.hp<=0||!B||B.phase!=='fight') return; floater('!',e.tile,'#ff4a5a');
-    B.teles.push({tiles:ts,t:0,dur:FOLLOW_WARN,dmg:Math.max(1,Math.round(e.dmg*FOLLOW_DMG)),owner:e,kind:'snap',follow:true}); }); }
+    B.teles.push({tiles:ts,t:0,dur:FOLLOW_WARN-.15*a,dmg:Math.max(1,Math.round(e.dmg*FOLLOW_DMG)),owner:e,kind:'snap',follow:true}); }); }
 /* Footwork, before its usual step (enemies.js moveEnemy): out of the line of your shots or a charged wand, else
    into your row. null: walk as it always has. */
 function foeStep(e,opts,a){ const p=B.player, inRow=t=>t.r===p.tile.r;
@@ -53,3 +55,9 @@ function foeTick(e,dt){ const a=aggrOf(e), p=B.player; if(!a||!p) return 1;
   if(!e.enraged&&e.hp<e.maxHp*.4&&a>=.3){ e.enraged=true; floater('Enraged!',e.tile,'#ff4a5a',true); burst(e.tile,'#ff4a5a',16,.8); }
   const idle=B.time-(B.pMovedT??B.time)>1.5;
   return 1+.35*a+(idle?.5*a:0)+(e.enraged?.3*a:0); }
+/* Its warning as it starts (enemies.js tele): shorter, and a one-tile attack that is on you takes in your likeliest
+   way out too (the way you are heading, or an open tile beside you) */
+function foeTele(e,tiles,dur){ const a=aggrOf(e), p=B.player; if(!a||!p) return {tiles,dur};
+  if(tiles.length===1&&tiles[0]===p.tile&&Math.random()<a*.5){ const L=foeLead(.3), outs=neighbors(p.tile).filter(t=>pTileOk(t)&&!foeCovered(t));
+    const x=outs.includes(L)?L:pick(outs); if(x) tiles=[tiles[0],x]; }
+  return {tiles,dur:dur*(1-.25*a)}; }

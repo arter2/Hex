@@ -152,6 +152,7 @@ function updateTerrain(dt){
 /* ---------------- enemy turns ---------------- */
 function tele(e,tiles,dur,dmg,after){ tiles=tiles.filter(Boolean);
   if(e&&e.confuseT>0) tiles=tiles.map(t=>pick(neighbors(t).filter(x=>x.side==='p'))||t);   // confusion throws attacks off by a tile
+  if(e&&typeof foeTele==='function') ({tiles,dur}=foeTele(e,tiles,dur));   // aggression: quicker warnings, a hit on your way out (tactics.js)
   B.teles.push({tiles,t:0,dur,dmg,owner:e,after,kind:e&&e.curMove}); }   // kind: which move, for its tell (reading.js)
 const pTilesInRow=r=>P_TILES.filter(t=>t.r===r);
 const DASH_STAY=.3;   // the share of a wall's or creature's full stay time a dash crashing into it takes off

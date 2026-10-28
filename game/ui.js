@@ -101,7 +101,7 @@ function cardEl(c,extra,locked,mode,opts={}){
     +(hero?kitIcon('k-hero','hero-star','Hero'):c.code&&!locked?`<b class="k-rune${c.code===WILD?' wild':''}" title="Rune ${c.code}"><span>${c.code}</span></b>`:'')
     +`<b class="k-rank" title="Rank ${c.rank}"><span>${c.rank}</span></b>`
     +`<b class="k-name"><span>${esc(name)}</span></b>`
-    +(locked?'<span class="k-art k-hidden"></span>':`<img class="k-art" src="${artURL(c)}" alt="" draggable="false">`)
+    +(locked?'<span class="k-art k-hidden"></span>':`<img class="k-art${typeof cardIllustration==='function'&&cardIllustration(c)?' illustrated':''}" src="${artURL(c)}" alt="" draggable="false">`)
     +`<span class="k-tline"><span><i class="k-type">${esc(T.name)}</i><i class="k-dot">·</i><i class="k-cat">${esc(R.name)}</i></span></span>`
     +(locked?'':kitIcon('k-sicon',kitStatIcon(c))+`<b class="k-stat"><span>${stat}</span></b>`)
     +kitIcon('k-rar r-'+c.rarity,KIT_RARITY[c.rarity]||'rarity',(RARITY[c.rarity]||{}).n)

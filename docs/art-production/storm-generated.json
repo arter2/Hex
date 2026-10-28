@@ -22,5 +22,110 @@
       0.5
     ],
     "status": "generated"
+  },
+  {
+    "cardId": "spark",
+    "name": "Spark",
+    "prompt": "Paint an illustration for the fantasy card Spark. Its actual action is a quick, sharp zigzagging bolt of storm magic that strikes between opposing combat rows, then the caster's next spell can follow sooner. Show a focused young storm mage in a windswept medieval battlefield making a swift sideways snap with one hand, a narrow branching blue-white lightning stroke visibly zigzagging across the space toward a distant opposing line of armored figures; the caster and bolt are the clear identity. Painterly medieval fantasy collectible-card artwork, nuanced cloth and worn leather, dramatic cool directional light, atmospheric depth, expressive brushwork, readable action. Square composition for a 512 x 512 master; keep the mage's face and hand and the full zigzag bolt inside x24..488,y105..407; quiet expendable sky and earth outside that band. No border, lettering, numbers, or UI. No anime, Disney-like cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4ef1f59e-502d-47f5-a630-adf9e5007d0f.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 2,
+    "reviewNote": "Reviewed square: unmistakable storm mage firing a zigzag lightning strike across opposing ranks; face and casting hand remain in the wide crop, bolt reads clearly. Top hair reaches above the stricter safe band but the face remains visible in the card crop."
+  },
+  {
+    "cardId": "ball_light",
+    "name": "Ball Lightning",
+    "prompt": "Recompose this existing Ball Lightning fantasy illustration as a square 512 x 512 master. Preserve its painterly medieval battlefield, stone blockers, stunned armored soldiers, dramatic blue-white storm light, and the recognizable heavy lightning orb with its delayed circular impact ring. Main correction: move the COMPLETE spherical lightning orb downward and slightly toward the center so its entire circumference has generous clear sky above it and lies fully inside the inner safe rectangle x24..488,y105..407 in 512 coordinates. Keep the orb clearly separate from the top edge; no part of it may be cropped. Keep the ground impact ring, blockers, and recoiling soldiers readable in the horizontal card crop. Strong readable subject, painterly materials and atmospheric depth. No border, lettering, numbers, or UI. No anime, Disney-like cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b9c721de-c489-43cc-a506-ebcb30f05c2a.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 2,
+    "reviewNote": "Repaired and reviewed square: the complete lightning sphere now sits centered below open sky, fully inside the action-safe band; blockers, circular ground impact and recoiling soldiers remain readable in the wide crop. Original retained at its prior generated path."
+  },
+  {
+    "cardId": "static_ward",
+    "name": "Static Ward",
+    "prompt": "Paint an illustration for the fantasy card Static Ward. Its actual effect is a lasting, heavy half-ring wall of storm energy around its caster; the barrier endures and briefly stuns anything that hits it. Show a battle mage protected by a substantial curved arc of upright, interlocking blue-white lightning panels forming a half-ring across the battlefield in front and around them. An enemy warrior's weapon meets the crackling wall and their arm jerks back in a brief stunned recoil. Make the arc-shaped defensive wall the dominant readable subject, with the caster clearly behind it. Painterly medieval fantasy collectible-card artwork, weathered stone and grounded armor, expressive brushwork, dramatic cool light, atmospheric depth. Square composition for a 512 x 512 master; keep the caster's face, wall arc and striking contact inside x24..488,y105..407; quiet sky and ground beyond. No border, lettering, numbers, or UI. No anime, Disney-like cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-fcee39e9-0d06-4864-98b2-773dbd9710f9.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 2,
+    "reviewNote": "Reviewed square: caster stands behind a curved wall of crackling panels as an enemy weapon strikes it; faces, contact and readable half-ring remain in the wide crop and action-safe band."
+  },
+  {
+    "cardId": "storm_utility_01",
+    "name": "Astrolabe",
+    "prompt": "Paint an illustration for the fantasy card Astrolabe. Its actual utility is drawing three cards into the mage's hand. Show an ornate medieval brass-and-blue-steel astrolabe, with engraved rotating celestial rings and a star map, resting on a wizard's wooden table; as the instrument aligns with a brilliant constellation, exactly three distinct blank parchment spell cards rise from its orbit into the waiting gloved hand of a robed mage. The astrolabe must remain the prominent named object and the three cards visibly travel toward the hand. Painterly medieval fantasy collectible-card art, believable brass, vellum, wood and cloth, warm candlelight mixed with cool starlight, expressive brushwork and atmospheric depth. Square composition for a 512 x 512 master; keep the entire astrolabe, three card shapes and mage's hand inside x24..488,y105..407; quiet room atmosphere beyond. No readable writing, symbols resembling letters, border, numbers, or UI. No anime, Disney-like cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-245b0ae6-04f9-4da6-ae7b-04cae0554c06.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 2,
+    "reviewNote": "Reviewed square: ornate celestial astrolabe dominates the scene, with exactly three blank cards visibly traveling toward the mage's waiting hand; all identity-critical objects fit in the wide crop/action-safe band."
+  },
+  {
+    "cardId": "tailwind",
+    "name": "Tailwind",
+    "prompt": "Paint an illustration for the fantasy card Tailwind. Its actual effect is a lasting gust that makes the mage move and cast faster for a while, while siphoning vitality from the nearest enemy. Show a storm mage leaning into a strong wind as he surges forward with a bright spell already forming in his hand; long ribbons of blue wind stream past him, while one thin strand of that same wind draws a small glowing wisp of life from the nearest enemy warrior toward the mage. The speed and siphon must both read clearly, with the mage as subject. Painterly medieval fantasy collectible-card illustration, grounded cloth, leather and armor, expressive brushwork, cool directional storm light, atmospheric depth. Explicit square 1:1 composition for a 512 x 512 master; keep mage's face and casting hand, wind motion and visible siphon all in x24..488,y105..407, with expendable sky and ground above and below. Horizontal staging for a 206:141 card crop. No border, lettering, numbers, or UI. No anime, Disney-like cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5fc1388c-7d67-423b-935d-eb746e5cd9b7.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 3,
+    "reviewNote": "Reviewed square and central horizontal crop: the mage's face and open casting hand remain readable; sweeping wind shows speed, with a luminous siphon strand connecting the mage to the nearest stunned foe."
+  },
+  {
+    "cardId": "coil_sentry",
+    "name": "Coil Sentry",
+    "prompt": "Recompose this existing Coil Sentry illustration for a square 512 x 512 master. Preserve the painterly medieval battlefield, distinctive sturdy bronze-and-iron coil sentry, its three-step chain lightning striking three enemies, and the ghostly image of the sentry rising again from broken stone. Main correction: make the whole defining sentry, including its top cap/spire and base, sit comfortably within x24..488,y105..407 on the square; scale it slightly smaller and position it lower. Keep all three enemies and the chain zaps inside that same central band. Leave clear storm-sky atmosphere above the sentry and quiet ground below. Keep the sentry dominant and unmistakable. No border, lettering, numbers, or UI. Painterly medieval fantasy materials and lighting; no anime, Disney-like cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-3f8c5722-0289-4258-a0ad-ce1b1341be21.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 3,
+    "reviewNote": "Repaired and reviewed square/crop: the sentry's defining coil and cap, its base, three chained zaps and rising afterimage remain visible in the central wide crop; original first attempt retained at its generated path."
+  },
+  {
+    "cardId": "storm_charge_01",
+    "name": "Leyden Jar Battery",
+    "prompt": "Paint an illustration for the fantasy card Leyden Jar Battery. Its exact effect is a two-use charge: each time it fires a bolt of storm power down the caster's row, dealing a heavy strike and stunning foes for a moment. Show two complete upright glass Leyden jars side by side on a compact carved wooden battery rack, each with rounded glass body, visible cork/metal terminal and full base, wrapped in fine brass foil and wire. One brilliant blue-white bolt arcs out horizontally from the jars down a row of medieval armored enemies, who recoil stunned. The jars are the unmistakable main subject; the bolt clearly travels along a row. Painterly medieval fantasy alchemical craft, believable glass and tarnished brass, expressive brushwork, rich warm/cool directional light, atmospheric workshop-to-battlefield depth. Explicit square 1:1 composition for a 512 x 512 master; keep both full jars cork/terminal-to-base and the active bolt/enemy row entirely within x24..488,y105..407. Leave quiet atmosphere in top/bottom margins for a 206:141 card crop. No border, lettering, numbers, or UI. No modern batteries or wires, no anime, Disney-like cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e4f4eb18-1576-4a88-8335-243db93c92fe.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 3,
+    "reviewNote": "Reviewed square and card crop: both jars fit terminal-to-base within the central band, and their bolt runs horizontally down a row into recoiling/stunned armored foes."
+  },
+  {
+    "cardId": "storm_piece_01",
+    "name": "Lamp of the Bound Djinn",
+    "prompt": "Recompose this square Lamp of the Bound Djinn illustration for the 206:141 card crop. Keep the same painterly medieval siege scene, complete ornate lamp, stone blockers, vertical storm strike and confused enemies. Critical crop repair: move the djinn's entire head and face well down into the central horizontal band, with forehead and chin both inside x24..488,y105..407 of the 512 square. Scale the djinn slightly smaller if needed, and shape its vapor body flowing from the lamp into the column without crossing the top edge. Keep the complete lamp handle, spout and foot inside the same band. Leave open sky above the djinn's head. Ensure that after the centered 206:141 crop, neither the face nor the lamp is clipped. Maintain square 1:1 canvas, strong clear storytelling, painterly brass, vapor and storm light. No border, lettering, numbers, or UI; no anime, Disney-like cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a1bc2646-caf0-4478-b043-6a14bb5fb453.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 3,
+    "reviewNote": "Repainted after parent wide-crop review to preserve complete named object and critical action in the safe crop; original retained.",
+    "previousGeneratedPath": "/workspace/generated_images/exec-0baf2ef9-2a7e-4ed5-83ca-e20f92d12480.png"
   }
 ]

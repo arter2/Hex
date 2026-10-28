@@ -12,12 +12,15 @@ catch (error) {
 }
 const {createCanvas,loadImage}=canvas;
 async function main(){
+ const batchArg=process.argv.slice(2).find(arg=>arg.startsWith('--through-batch='));
+ const throughBatch=batchArg?Number(batchArg.split('=')[1]):Infinity;
+ if(batchArg&&(!Number.isInteger(throughBatch)||throughBatch<1))throw Error('--through-batch must be a positive integer');
  const contract=JSON.parse(fs.readFileSync(path.join(ROOT,'game/cards/contract.json')));
  const [, ,aw,ah]=contract.bounds.art,ratio=aw/ah;
  const mapping=JSON.parse(fs.readFileSync(path.join(ROOT,'docs/named-card-art-mapping.json')));
  const existing=mapping.files.map(f=>({key:path.basename(f.file,'.png'),source:path.join(ROOT,'game/cards/art',f.file),cardId:f.status==='selected'?f.cardId:null,status:f.status,focalPoint:[.5,.5]}));
  const production=path.join(ROOT,'docs/art-production');
- const generated=fs.readdirSync(production).filter(f=>f.endsWith('-generated.json')).flatMap(f=>JSON.parse(fs.readFileSync(path.join(production,f)))).filter(g=>g.status==='generated');
+ const generated=fs.readdirSync(production).filter(f=>f.endsWith('-generated.json')).flatMap(f=>JSON.parse(fs.readFileSync(path.join(production,f)))).filter(g=>g.status==='generated'&&(g.batch||1)<=throughBatch);
  const jobs=[...existing,...generated.map(g=>{const original=g.generatedPath||g.generatedLocalPath;return {key:g.cardId,source:original&&fs.existsSync(original)?original:path.join(ROOT,'game/cards/art/masters',g.cardId+'.png'),cardId:g.cardId,status:'generated',focalPoint:Array.isArray(g.focalPoint)?g.focalPoint:[.5,.5]};})];
  const focusFile=path.join(ROOT,'game/cards/art-focus.json'),focus=fs.existsSync(focusFile)?JSON.parse(fs.readFileSync(focusFile)):{};
  const masterDir=path.join(ROOT,'game/cards/art/masters'),displayDir=path.join(ROOT,'game/cards/art/display');

@@ -1,8 +1,11 @@
 {
   "catalogueVersion": 179,
   "total": 1953,
-  "active": 66,
-  "pending": 1887,
+  "active": 130,
+  "remaining": 1823,
+  "pending": 1823,
+  "assigned": 0,
+  "awaitingReview": 0,
   "countsByColour": {
     "brown": 234,
     "fire": 246,
@@ -19,8 +22,9 @@
       "name": "Dwarven Cannon Nest",
       "type": "machine",
       "color": "brown",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 2
     },
     {
       "id": "brown_machine_02",
@@ -67,8 +71,9 @@
       "name": "Elven Starglass Spire",
       "type": "sentry",
       "color": "brown",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 2
     },
     {
       "id": "brown_machine_07",
@@ -419,8 +424,9 @@
       "name": "Dwarven Stout",
       "type": "instant",
       "color": "brown",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 2
     },
     {
       "id": "brown_instant_02",
@@ -1123,8 +1129,9 @@
       "name": "Sea-Folk Trident Head",
       "type": "equip",
       "color": "brown",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 3
     },
     {
       "id": "brown_equip_06",
@@ -1347,8 +1354,9 @@
       "name": "Whetstone",
       "type": "tinker",
       "color": "brown",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 2
     },
     {
       "id": "brown_tinker_02",
@@ -1603,8 +1611,9 @@
       "name": "Dwarven Pendulum Axe",
       "type": "trap",
       "color": "brown",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 3
     },
     {
       "id": "brown_trap_02",
@@ -1739,8 +1748,9 @@
       "name": "Black Powder Charge",
       "type": "aceup",
       "color": "brown",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 3
     },
     {
       "id": "brown_aceup_03",
@@ -1883,8 +1893,9 @@
       "name": "Iron Corridor",
       "type": "ward",
       "color": "brown",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 3
     },
     {
       "id": "ember_dart",
@@ -1899,8 +1910,9 @@
       "name": "Cinder Lance",
       "type": "strike",
       "color": "fire",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 2
     },
     {
       "id": "flame_fan",
@@ -1931,32 +1943,36 @@
       "name": "Ember Wall",
       "type": "ward",
       "color": "fire",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 2
     },
     {
       "id": "brazier",
       "name": "Brazier",
       "type": "sentry",
       "color": "fire",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 2
     },
     {
       "id": "kindle",
       "name": "Kindle",
       "type": "boon",
       "color": "fire",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 3
     },
     {
       "id": "meteor",
       "name": "Meteor",
       "type": "lob",
       "color": "fire",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 2
     },
     {
       "id": "fire_strike_01",
@@ -2771,8 +2787,9 @@
       "name": "Powder Horn",
       "type": "charge",
       "color": "fire",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 3
     },
     {
       "id": "fire_charge_02",
@@ -2915,8 +2932,9 @@
       "name": "Prospector's Map",
       "type": "utility",
       "color": "fire",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 3
     },
     {
       "id": "fire_utility_02",
@@ -3075,8 +3093,9 @@
       "name": "Lava Field",
       "type": "environment",
       "color": "fire",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 3
     },
     {
       "id": "fire_environment_02",
@@ -3859,8 +3878,9 @@
       "name": "Ice Shard",
       "type": "strike",
       "color": "frost",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 2
     },
     {
       "id": "frost_lance",
@@ -3875,16 +3895,18 @@
       "name": "Hail Lob",
       "type": "lob",
       "color": "frost",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 3
     },
     {
       "id": "rime_wall",
       "name": "Rime Wall",
       "type": "ward",
       "color": "frost",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 2
     },
     {
       "id": "frost_ward",
@@ -3899,16 +3921,18 @@
       "name": "Icicle Spire",
       "type": "sentry",
       "color": "frost",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 3
     },
     {
       "id": "glacial_veil",
       "name": "Glacial Veil",
       "type": "boon",
       "color": "frost",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 2
     },
     {
       "id": "absolute_zero",
@@ -4883,8 +4907,9 @@
       "name": "Mirror Lake",
       "type": "utility",
       "color": "frost",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 2
     },
     {
       "id": "frost_utility_02",
@@ -5043,8 +5068,9 @@
       "name": "Frozen Lake",
       "type": "environment",
       "color": "frost",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 3
     },
     {
       "id": "frost_environment_02",
@@ -5195,8 +5221,9 @@
       "name": "Merrow",
       "type": "summon",
       "color": "frost",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 3
     },
     {
       "id": "frost_summon_02",
@@ -5859,16 +5886,18 @@
       "name": "Empty Helm Sentinel",
       "type": "summon",
       "color": "gray",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 2
     },
     {
       "id": "gray_summon_03",
       "name": "Haunted Plate",
       "type": "summon",
       "color": "gray",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 3
     },
     {
       "id": "gray_summon_04",
@@ -7411,16 +7440,18 @@
       "name": "Shield Wall",
       "type": "ward",
       "color": "gray",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 2
     },
     {
       "id": "gray_ward_02",
       "name": "Phalanx",
       "type": "ward",
       "color": "gray",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 3
     },
     {
       "id": "gray_ward_03",
@@ -7491,16 +7522,18 @@
       "name": "Battle Cry",
       "type": "boon",
       "color": "gray",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 2
     },
     {
       "id": "gray_boon_02",
       "name": "Rallying Horn",
       "type": "boon",
       "color": "gray",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 3
     },
     {
       "id": "gray_boon_03",
@@ -7579,16 +7612,18 @@
       "name": "Hunter's Quiver",
       "type": "charge",
       "color": "gray",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 2
     },
     {
       "id": "gray_charge_03",
       "name": "Bag of Rocks",
       "type": "charge",
       "color": "gray",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 3
     },
     {
       "id": "gray_charge_04",
@@ -7659,8 +7694,9 @@
       "name": "Holy Bolt",
       "type": "strike",
       "color": "light",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 2
     },
     {
       "id": "radiant_motes",
@@ -7675,32 +7711,36 @@
       "name": "Judgment",
       "type": "lob",
       "color": "light",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 3
     },
     {
       "id": "sanctuary",
       "name": "Sanctuary",
       "type": "ward",
       "color": "light",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 2
     },
     {
       "id": "beacon_hope",
       "name": "Beacon of Hope",
       "type": "sentry",
       "color": "light",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 2
     },
     {
       "id": "blessing",
       "name": "Blessing",
       "type": "boon",
       "color": "light",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 2
     },
     {
       "id": "courage",
@@ -8459,8 +8499,9 @@
       "name": "Swan-Feather Quiver",
       "type": "charge",
       "color": "light",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 3
     },
     {
       "id": "light_charge_02",
@@ -8715,8 +8756,9 @@
       "name": "Roman Caltrops",
       "type": "trap",
       "color": "light",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 3
     },
     {
       "id": "light_trap_02",
@@ -8859,8 +8901,9 @@
       "name": "Crown of the Round Table",
       "type": "piece",
       "color": "light",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 3
     },
     {
       "id": "light_piece_02",
@@ -9659,8 +9702,9 @@
       "name": "Hex Bolt",
       "type": "strike",
       "color": "shadow",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 2
     },
     {
       "id": "soul_drain",
@@ -9683,32 +9727,36 @@
       "name": "Grave Pit",
       "type": "lob",
       "color": "shadow",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 2
     },
     {
       "id": "bone_wall",
       "name": "Bone Wall",
       "type": "ward",
       "color": "shadow",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 2
     },
     {
       "id": "wraith_totem",
       "name": "Wraith Totem",
       "type": "sentry",
       "color": "shadow",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 3
     },
     {
       "id": "dark_pact",
       "name": "Dark Pact",
       "type": "boon",
       "color": "shadow",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 3
     },
     {
       "id": "eclipse",
@@ -10443,8 +10491,9 @@
       "name": "Bag of Teeth",
       "type": "charge",
       "color": "shadow",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 3
     },
     {
       "id": "shadow_charge_02",
@@ -10475,8 +10524,9 @@
       "name": "Belfry Bats",
       "type": "summon",
       "color": "shadow",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 2
     },
     {
       "id": "shadow_charge_04",
@@ -10731,8 +10781,9 @@
       "name": "Haunted Bog",
       "type": "environment",
       "color": "shadow",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 3
     },
     {
       "id": "shadow_environment_02",
@@ -11651,8 +11702,9 @@
       "name": "Spark",
       "type": "strike",
       "color": "storm",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 2
     },
     {
       "id": "thunder_row",
@@ -11675,32 +11727,36 @@
       "name": "Ball Lightning",
       "type": "lob",
       "color": "storm",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 2
     },
     {
       "id": "static_ward",
       "name": "Static Ward",
       "type": "ward",
       "color": "storm",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 2
     },
     {
       "id": "coil_sentry",
       "name": "Coil Sentry",
       "type": "sentry",
       "color": "storm",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 3
     },
     {
       "id": "tailwind",
       "name": "Tailwind",
       "type": "boon",
       "color": "storm",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 3
     },
     {
       "id": "stormcall",
@@ -12427,8 +12483,9 @@
       "name": "Leyden Jar Battery",
       "type": "charge",
       "color": "storm",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 3
     },
     {
       "id": "storm_charge_02",
@@ -12571,8 +12628,9 @@
       "name": "Astrolabe",
       "type": "utility",
       "color": "storm",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 2
     },
     {
       "id": "storm_utility_02",
@@ -12835,8 +12893,9 @@
       "name": "Lamp of the Bound Djinn",
       "type": "piece",
       "color": "storm",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 3
     },
     {
       "id": "storm_piece_02",
@@ -13619,8 +13678,9 @@
       "name": "Thorn Dart",
       "type": "strike",
       "color": "verdant",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 2
     },
     {
       "id": "vine_lash",
@@ -13635,16 +13695,18 @@
       "name": "Briar Bomb",
       "type": "lob",
       "color": "verdant",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 3
     },
     {
       "id": "bramble_wall",
       "name": "Bramble Wall",
       "type": "ward",
       "color": "verdant",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 2
     },
     {
       "id": "bark_skin",
@@ -13659,16 +13721,18 @@
       "name": "Spore Pod",
       "type": "sentry",
       "color": "verdant",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 2
     },
     {
       "id": "regrowth",
       "name": "Regrowth",
       "type": "boon",
       "color": "verdant",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 2
     },
     {
       "id": "mend",
@@ -13995,8 +14059,9 @@
       "name": "Wasp Nest",
       "type": "summon",
       "color": "verdant",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 3
     },
     {
       "id": "verdant_lob_01",
@@ -14459,8 +14524,9 @@
       "name": "Quiver of Yew Arrows",
       "type": "charge",
       "color": "verdant",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 3
     },
     {
       "id": "verdant_charge_02",
@@ -14667,8 +14733,9 @@
       "name": "Hunter's Net",
       "type": "trap",
       "color": "verdant",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 3
     },
     {
       "id": "verdant_trap_02",

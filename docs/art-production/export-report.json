@@ -2741,6 +2741,326 @@
       ]
     },
     {
+      "key": "brown_machine_01",
+      "cardId": "brown_machine_01",
+      "status": "generated",
+      "master": "cards/art/masters/brown_machine_01.png",
+      "large": "cards/art/display/brown_machine_01-512.webp",
+      "thumbnail": "cards/art/display/brown_machine_01-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/brown_machine_01-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/brown_machine_01-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/brown_machine_01-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "brown_sentry_01",
+      "cardId": "brown_sentry_01",
+      "status": "generated",
+      "master": "cards/art/masters/brown_sentry_01.png",
+      "large": "cards/art/display/brown_sentry_01-512.webp",
+      "thumbnail": "cards/art/display/brown_sentry_01-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/brown_sentry_01-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/brown_sentry_01-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/brown_sentry_01-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "brown_instant_01",
+      "cardId": "brown_instant_01",
+      "status": "generated",
+      "master": "cards/art/masters/brown_instant_01.png",
+      "large": "cards/art/display/brown_instant_01-512.webp",
+      "thumbnail": "cards/art/display/brown_instant_01-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/brown_instant_01-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/brown_instant_01-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/brown_instant_01-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "brown_tinker_01",
+      "cardId": "brown_tinker_01",
+      "status": "generated",
+      "master": "cards/art/masters/brown_tinker_01.png",
+      "large": "cards/art/display/brown_tinker_01-512.webp",
+      "thumbnail": "cards/art/display/brown_tinker_01-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/brown_tinker_01-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/brown_tinker_01-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/brown_tinker_01-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "brown_equip_05",
+      "cardId": "brown_equip_05",
+      "status": "generated",
+      "master": "cards/art/masters/brown_equip_05.png",
+      "large": "cards/art/display/brown_equip_05-512.webp",
+      "thumbnail": "cards/art/display/brown_equip_05-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/brown_equip_05-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/brown_equip_05-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/brown_equip_05-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "brown_trap_01",
+      "cardId": "brown_trap_01",
+      "status": "generated",
+      "master": "cards/art/masters/brown_trap_01.png",
+      "large": "cards/art/display/brown_trap_01-512.webp",
+      "thumbnail": "cards/art/display/brown_trap_01-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/brown_trap_01-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/brown_trap_01-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/brown_trap_01-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "brown_aceup_02",
+      "cardId": "brown_aceup_02",
+      "status": "generated",
+      "master": "cards/art/masters/brown_aceup_02.png",
+      "large": "cards/art/display/brown_aceup_02-512.webp",
+      "thumbnail": "cards/art/display/brown_aceup_02-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/brown_aceup_02-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/brown_aceup_02-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/brown_aceup_02-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "iron_corridor",
+      "cardId": "iron_corridor",
+      "status": "generated",
+      "master": "cards/art/masters/iron_corridor.png",
+      "large": "cards/art/display/iron_corridor-512.webp",
+      "thumbnail": "cards/art/display/iron_corridor-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/iron_corridor-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/iron_corridor-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/iron_corridor-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
       "key": "ember_dart",
       "cardId": "ember_dart",
       "status": "generated",
@@ -2821,6 +3141,326 @@
       ]
     },
     {
+      "key": "cinder_lance",
+      "cardId": "cinder_lance",
+      "status": "generated",
+      "master": "cards/art/masters/cinder_lance.png",
+      "large": "cards/art/display/cinder_lance-512.webp",
+      "thumbnail": "cards/art/display/cinder_lance-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/cinder_lance-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/cinder_lance-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/cinder_lance-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "ember_wall",
+      "cardId": "ember_wall",
+      "status": "generated",
+      "master": "cards/art/masters/ember_wall.png",
+      "large": "cards/art/display/ember_wall-512.webp",
+      "thumbnail": "cards/art/display/ember_wall-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/ember_wall-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/ember_wall-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/ember_wall-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "brazier",
+      "cardId": "brazier",
+      "status": "generated",
+      "master": "cards/art/masters/brazier.png",
+      "large": "cards/art/display/brazier-512.webp",
+      "thumbnail": "cards/art/display/brazier-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/brazier-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/brazier-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/brazier-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "meteor",
+      "cardId": "meteor",
+      "status": "generated",
+      "master": "cards/art/masters/meteor.png",
+      "large": "cards/art/display/meteor-512.webp",
+      "thumbnail": "cards/art/display/meteor-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/meteor-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/meteor-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/meteor-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1474,
+        1067
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "kindle",
+      "cardId": "kindle",
+      "status": "generated",
+      "master": "cards/art/masters/kindle.png",
+      "large": "cards/art/display/kindle-512.webp",
+      "thumbnail": "cards/art/display/kindle-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/kindle-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/kindle-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/kindle-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "fire_charge_01",
+      "cardId": "fire_charge_01",
+      "status": "generated",
+      "master": "cards/art/masters/fire_charge_01.png",
+      "large": "cards/art/display/fire_charge_01-512.webp",
+      "thumbnail": "cards/art/display/fire_charge_01-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/fire_charge_01-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/fire_charge_01-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/fire_charge_01-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "fire_utility_01",
+      "cardId": "fire_utility_01",
+      "status": "generated",
+      "master": "cards/art/masters/fire_utility_01.png",
+      "large": "cards/art/display/fire_utility_01-512.webp",
+      "thumbnail": "cards/art/display/fire_utility_01-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/fire_utility_01-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/fire_utility_01-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/fire_utility_01-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "fire_environment_01",
+      "cardId": "fire_environment_01",
+      "status": "generated",
+      "master": "cards/art/masters/fire_environment_01.png",
+      "large": "cards/art/display/fire_environment_01-512.webp",
+      "thumbnail": "cards/art/display/fire_environment_01-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/fire_environment_01-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/fire_environment_01-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/fire_environment_01-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
       "key": "frost_aceup_02",
       "cardId": "frost_aceup_02",
       "status": "generated",
@@ -2882,6 +3522,326 @@
           "width": 512,
           "height": 350,
           "url": "cards/art/display/frost_strike_27-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "ice_shard",
+      "cardId": "ice_shard",
+      "status": "generated",
+      "master": "cards/art/masters/ice_shard.png",
+      "large": "cards/art/display/ice_shard-512.webp",
+      "thumbnail": "cards/art/display/ice_shard-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/ice_shard-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/ice_shard-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/ice_shard-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1504,
+        1046
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "rime_wall",
+      "cardId": "rime_wall",
+      "status": "generated",
+      "master": "cards/art/masters/rime_wall.png",
+      "large": "cards/art/display/rime_wall-512.webp",
+      "thumbnail": "cards/art/display/rime_wall-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/rime_wall-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/rime_wall-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/rime_wall-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "glacial_veil",
+      "cardId": "glacial_veil",
+      "status": "generated",
+      "master": "cards/art/masters/glacial_veil.png",
+      "large": "cards/art/display/glacial_veil-512.webp",
+      "thumbnail": "cards/art/display/glacial_veil-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/glacial_veil-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/glacial_veil-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/glacial_veil-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "frost_utility_01",
+      "cardId": "frost_utility_01",
+      "status": "generated",
+      "master": "cards/art/masters/frost_utility_01.png",
+      "large": "cards/art/display/frost_utility_01-512.webp",
+      "thumbnail": "cards/art/display/frost_utility_01-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/frost_utility_01-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/frost_utility_01-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/frost_utility_01-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1514,
+        1039
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "hail_lob",
+      "cardId": "hail_lob",
+      "status": "generated",
+      "master": "cards/art/masters/hail_lob.png",
+      "large": "cards/art/display/hail_lob-512.webp",
+      "thumbnail": "cards/art/display/hail_lob-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/hail_lob-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/hail_lob-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/hail_lob-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "icicle_spire",
+      "cardId": "icicle_spire",
+      "status": "generated",
+      "master": "cards/art/masters/icicle_spire.png",
+      "large": "cards/art/display/icicle_spire-512.webp",
+      "thumbnail": "cards/art/display/icicle_spire-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/icicle_spire-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/icicle_spire-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/icicle_spire-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "frost_summon_01",
+      "cardId": "frost_summon_01",
+      "status": "generated",
+      "master": "cards/art/masters/frost_summon_01.png",
+      "large": "cards/art/display/frost_summon_01-512.webp",
+      "thumbnail": "cards/art/display/frost_summon_01-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/frost_summon_01-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/frost_summon_01-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/frost_summon_01-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "frost_environment_01",
+      "cardId": "frost_environment_01",
+      "status": "generated",
+      "master": "cards/art/masters/frost_environment_01.png",
+      "large": "cards/art/display/frost_environment_01-512.webp",
+      "thumbnail": "cards/art/display/frost_environment_01-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/frost_environment_01-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/frost_environment_01-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/frost_environment_01-512.webp"
         }
       ],
       "focalPoint": [
@@ -2981,6 +3941,326 @@
       ]
     },
     {
+      "key": "gray_summon_02",
+      "cardId": "gray_summon_02",
+      "status": "generated",
+      "master": "cards/art/masters/gray_summon_02.png",
+      "large": "cards/art/display/gray_summon_02-512.webp",
+      "thumbnail": "cards/art/display/gray_summon_02-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/gray_summon_02-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/gray_summon_02-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/gray_summon_02-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "gray_ward_01",
+      "cardId": "gray_ward_01",
+      "status": "generated",
+      "master": "cards/art/masters/gray_ward_01.png",
+      "large": "cards/art/display/gray_ward_01-512.webp",
+      "thumbnail": "cards/art/display/gray_ward_01-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/gray_ward_01-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/gray_ward_01-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/gray_ward_01-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "gray_boon_01",
+      "cardId": "gray_boon_01",
+      "status": "generated",
+      "master": "cards/art/masters/gray_boon_01.png",
+      "large": "cards/art/display/gray_boon_01-512.webp",
+      "thumbnail": "cards/art/display/gray_boon_01-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/gray_boon_01-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/gray_boon_01-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/gray_boon_01-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1515,
+        1038
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "gray_charge_02",
+      "cardId": "gray_charge_02",
+      "status": "generated",
+      "master": "cards/art/masters/gray_charge_02.png",
+      "large": "cards/art/display/gray_charge_02-512.webp",
+      "thumbnail": "cards/art/display/gray_charge_02-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/gray_charge_02-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/gray_charge_02-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/gray_charge_02-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "gray_summon_03",
+      "cardId": "gray_summon_03",
+      "status": "generated",
+      "master": "cards/art/masters/gray_summon_03.png",
+      "large": "cards/art/display/gray_summon_03-512.webp",
+      "thumbnail": "cards/art/display/gray_summon_03-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/gray_summon_03-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/gray_summon_03-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/gray_summon_03-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "gray_ward_02",
+      "cardId": "gray_ward_02",
+      "status": "generated",
+      "master": "cards/art/masters/gray_ward_02.png",
+      "large": "cards/art/display/gray_ward_02-512.webp",
+      "thumbnail": "cards/art/display/gray_ward_02-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/gray_ward_02-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/gray_ward_02-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/gray_ward_02-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "gray_boon_02",
+      "cardId": "gray_boon_02",
+      "status": "generated",
+      "master": "cards/art/masters/gray_boon_02.png",
+      "large": "cards/art/display/gray_boon_02-512.webp",
+      "thumbnail": "cards/art/display/gray_boon_02-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/gray_boon_02-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/gray_boon_02-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/gray_boon_02-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "gray_charge_03",
+      "cardId": "gray_charge_03",
+      "status": "generated",
+      "master": "cards/art/masters/gray_charge_03.png",
+      "large": "cards/art/display/gray_charge_03-512.webp",
+      "thumbnail": "cards/art/display/gray_charge_03-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/gray_charge_03-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/gray_charge_03-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/gray_charge_03-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
       "key": "light_ward_17",
       "cardId": "light_ward_17",
       "status": "generated",
@@ -3061,6 +4341,326 @@
       ]
     },
     {
+      "key": "holy_bolt",
+      "cardId": "holy_bolt",
+      "status": "generated",
+      "master": "cards/art/masters/holy_bolt.png",
+      "large": "cards/art/display/holy_bolt-512.webp",
+      "thumbnail": "cards/art/display/holy_bolt-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/holy_bolt-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/holy_bolt-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/holy_bolt-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1515,
+        1038
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "sanctuary",
+      "cardId": "sanctuary",
+      "status": "generated",
+      "master": "cards/art/masters/sanctuary.png",
+      "large": "cards/art/display/sanctuary-512.webp",
+      "thumbnail": "cards/art/display/sanctuary-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/sanctuary-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/sanctuary-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/sanctuary-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1515,
+        1038
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "beacon_hope",
+      "cardId": "beacon_hope",
+      "status": "generated",
+      "master": "cards/art/masters/beacon_hope.png",
+      "large": "cards/art/display/beacon_hope-512.webp",
+      "thumbnail": "cards/art/display/beacon_hope-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/beacon_hope-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/beacon_hope-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/beacon_hope-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "blessing",
+      "cardId": "blessing",
+      "status": "generated",
+      "master": "cards/art/masters/blessing.png",
+      "large": "cards/art/display/blessing-512.webp",
+      "thumbnail": "cards/art/display/blessing-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/blessing-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/blessing-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/blessing-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1514,
+        1039
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "judgment",
+      "cardId": "judgment",
+      "status": "generated",
+      "master": "cards/art/masters/judgment.png",
+      "large": "cards/art/display/judgment-512.webp",
+      "thumbnail": "cards/art/display/judgment-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/judgment-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/judgment-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/judgment-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "light_charge_01",
+      "cardId": "light_charge_01",
+      "status": "generated",
+      "master": "cards/art/masters/light_charge_01.png",
+      "large": "cards/art/display/light_charge_01-512.webp",
+      "thumbnail": "cards/art/display/light_charge_01-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/light_charge_01-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/light_charge_01-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/light_charge_01-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "light_trap_01",
+      "cardId": "light_trap_01",
+      "status": "generated",
+      "master": "cards/art/masters/light_trap_01.png",
+      "large": "cards/art/display/light_trap_01-512.webp",
+      "thumbnail": "cards/art/display/light_trap_01-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/light_trap_01-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/light_trap_01-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/light_trap_01-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "light_piece_01",
+      "cardId": "light_piece_01",
+      "status": "generated",
+      "master": "cards/art/masters/light_piece_01.png",
+      "large": "cards/art/display/light_piece_01-512.webp",
+      "thumbnail": "cards/art/display/light_piece_01-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/light_piece_01-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/light_piece_01-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/light_piece_01-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
       "key": "shadow_strike_01",
       "cardId": "shadow_strike_01",
       "status": "generated",
@@ -3122,6 +4722,326 @@
           "width": 512,
           "height": 350,
           "url": "cards/art/display/shadow_strike_16-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "hex_bolt",
+      "cardId": "hex_bolt",
+      "status": "generated",
+      "master": "cards/art/masters/hex_bolt.png",
+      "large": "cards/art/display/hex_bolt-512.webp",
+      "thumbnail": "cards/art/display/hex_bolt-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/hex_bolt-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/hex_bolt-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/hex_bolt-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "grave_pit",
+      "cardId": "grave_pit",
+      "status": "generated",
+      "master": "cards/art/masters/grave_pit.png",
+      "large": "cards/art/display/grave_pit-512.webp",
+      "thumbnail": "cards/art/display/grave_pit-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/grave_pit-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/grave_pit-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/grave_pit-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "bone_wall",
+      "cardId": "bone_wall",
+      "status": "generated",
+      "master": "cards/art/masters/bone_wall.png",
+      "large": "cards/art/display/bone_wall-512.webp",
+      "thumbnail": "cards/art/display/bone_wall-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/bone_wall-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/bone_wall-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/bone_wall-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "shadow_summon_01",
+      "cardId": "shadow_summon_01",
+      "status": "generated",
+      "master": "cards/art/masters/shadow_summon_01.png",
+      "large": "cards/art/display/shadow_summon_01-512.webp",
+      "thumbnail": "cards/art/display/shadow_summon_01-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/shadow_summon_01-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/shadow_summon_01-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/shadow_summon_01-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "wraith_totem",
+      "cardId": "wraith_totem",
+      "status": "generated",
+      "master": "cards/art/masters/wraith_totem.png",
+      "large": "cards/art/display/wraith_totem-512.webp",
+      "thumbnail": "cards/art/display/wraith_totem-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/wraith_totem-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/wraith_totem-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/wraith_totem-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "dark_pact",
+      "cardId": "dark_pact",
+      "status": "generated",
+      "master": "cards/art/masters/dark_pact.png",
+      "large": "cards/art/display/dark_pact-512.webp",
+      "thumbnail": "cards/art/display/dark_pact-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/dark_pact-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/dark_pact-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/dark_pact-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "shadow_charge_01",
+      "cardId": "shadow_charge_01",
+      "status": "generated",
+      "master": "cards/art/masters/shadow_charge_01.png",
+      "large": "cards/art/display/shadow_charge_01-512.webp",
+      "thumbnail": "cards/art/display/shadow_charge_01-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/shadow_charge_01-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/shadow_charge_01-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/shadow_charge_01-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "shadow_environment_01",
+      "cardId": "shadow_environment_01",
+      "status": "generated",
+      "master": "cards/art/masters/shadow_environment_01.png",
+      "large": "cards/art/display/shadow_environment_01-512.webp",
+      "thumbnail": "cards/art/display/shadow_environment_01-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/shadow_environment_01-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/shadow_environment_01-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/shadow_environment_01-512.webp"
         }
       ],
       "focalPoint": [
@@ -3221,6 +5141,326 @@
       ]
     },
     {
+      "key": "spark",
+      "cardId": "spark",
+      "status": "generated",
+      "master": "cards/art/masters/spark.png",
+      "large": "cards/art/display/spark-512.webp",
+      "thumbnail": "cards/art/display/spark-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/spark-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/spark-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/spark-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "ball_light",
+      "cardId": "ball_light",
+      "status": "generated",
+      "master": "cards/art/masters/ball_light.png",
+      "large": "cards/art/display/ball_light-512.webp",
+      "thumbnail": "cards/art/display/ball_light-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/ball_light-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/ball_light-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/ball_light-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "static_ward",
+      "cardId": "static_ward",
+      "status": "generated",
+      "master": "cards/art/masters/static_ward.png",
+      "large": "cards/art/display/static_ward-512.webp",
+      "thumbnail": "cards/art/display/static_ward-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/static_ward-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/static_ward-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/static_ward-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "storm_utility_01",
+      "cardId": "storm_utility_01",
+      "status": "generated",
+      "master": "cards/art/masters/storm_utility_01.png",
+      "large": "cards/art/display/storm_utility_01-512.webp",
+      "thumbnail": "cards/art/display/storm_utility_01-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/storm_utility_01-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/storm_utility_01-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/storm_utility_01-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "tailwind",
+      "cardId": "tailwind",
+      "status": "generated",
+      "master": "cards/art/masters/tailwind.png",
+      "large": "cards/art/display/tailwind-512.webp",
+      "thumbnail": "cards/art/display/tailwind-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/tailwind-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/tailwind-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/tailwind-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "coil_sentry",
+      "cardId": "coil_sentry",
+      "status": "generated",
+      "master": "cards/art/masters/coil_sentry.png",
+      "large": "cards/art/display/coil_sentry-512.webp",
+      "thumbnail": "cards/art/display/coil_sentry-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/coil_sentry-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/coil_sentry-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/coil_sentry-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "storm_charge_01",
+      "cardId": "storm_charge_01",
+      "status": "generated",
+      "master": "cards/art/masters/storm_charge_01.png",
+      "large": "cards/art/display/storm_charge_01-512.webp",
+      "thumbnail": "cards/art/display/storm_charge_01-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/storm_charge_01-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/storm_charge_01-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/storm_charge_01-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "storm_piece_01",
+      "cardId": "storm_piece_01",
+      "status": "generated",
+      "master": "cards/art/masters/storm_piece_01.png",
+      "large": "cards/art/display/storm_piece_01-512.webp",
+      "thumbnail": "cards/art/display/storm_piece_01-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/storm_piece_01-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/storm_piece_01-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/storm_piece_01-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
       "key": "verdant_charge_08",
       "cardId": "verdant_charge_08",
       "status": "generated",
@@ -3282,6 +5522,326 @@
           "width": 512,
           "height": 350,
           "url": "cards/art/display/verdant_summon_44-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "thorn_dart",
+      "cardId": "thorn_dart",
+      "status": "generated",
+      "master": "cards/art/masters/thorn_dart.png",
+      "large": "cards/art/display/thorn_dart-512.webp",
+      "thumbnail": "cards/art/display/thorn_dart-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/thorn_dart-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/thorn_dart-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/thorn_dart-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "bramble_wall",
+      "cardId": "bramble_wall",
+      "status": "generated",
+      "master": "cards/art/masters/bramble_wall.png",
+      "large": "cards/art/display/bramble_wall-512.webp",
+      "thumbnail": "cards/art/display/bramble_wall-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/bramble_wall-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/bramble_wall-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/bramble_wall-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "spore_pod",
+      "cardId": "spore_pod",
+      "status": "generated",
+      "master": "cards/art/masters/spore_pod.png",
+      "large": "cards/art/display/spore_pod-512.webp",
+      "thumbnail": "cards/art/display/spore_pod-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/spore_pod-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/spore_pod-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/spore_pod-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "regrowth",
+      "cardId": "regrowth",
+      "status": "generated",
+      "master": "cards/art/masters/regrowth.png",
+      "large": "cards/art/display/regrowth-512.webp",
+      "thumbnail": "cards/art/display/regrowth-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/regrowth-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/regrowth-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/regrowth-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "briar_bomb",
+      "cardId": "briar_bomb",
+      "status": "generated",
+      "master": "cards/art/masters/briar_bomb.png",
+      "large": "cards/art/display/briar_bomb-512.webp",
+      "thumbnail": "cards/art/display/briar_bomb-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/briar_bomb-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/briar_bomb-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/briar_bomb-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "verdant_summon_01",
+      "cardId": "verdant_summon_01",
+      "status": "generated",
+      "master": "cards/art/masters/verdant_summon_01.png",
+      "large": "cards/art/display/verdant_summon_01-512.webp",
+      "thumbnail": "cards/art/display/verdant_summon_01-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/verdant_summon_01-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/verdant_summon_01-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/verdant_summon_01-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "verdant_charge_01",
+      "cardId": "verdant_charge_01",
+      "status": "generated",
+      "master": "cards/art/masters/verdant_charge_01.png",
+      "large": "cards/art/display/verdant_charge_01-512.webp",
+      "thumbnail": "cards/art/display/verdant_charge_01-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/verdant_charge_01-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/verdant_charge_01-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/verdant_charge_01-512.webp"
+        }
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "sourceNative": [
+        1254,
+        1254
+      ],
+      "legacyUpscaled": false,
+      "crop": [
+        0,
+        80.77669902912623,
+        512,
+        350.44660194174753
+      ]
+    },
+    {
+      "key": "verdant_trap_01",
+      "cardId": "verdant_trap_01",
+      "status": "generated",
+      "master": "cards/art/masters/verdant_trap_01.png",
+      "large": "cards/art/display/verdant_trap_01-512.webp",
+      "thumbnail": "cards/art/display/verdant_trap_01-128.webp",
+      "outputs": [
+        {
+          "width": 128,
+          "height": 88,
+          "url": "cards/art/display/verdant_trap_01-128.webp"
+        },
+        {
+          "width": 256,
+          "height": 175,
+          "url": "cards/art/display/verdant_trap_01-256.webp"
+        },
+        {
+          "width": 512,
+          "height": 350,
+          "url": "cards/art/display/verdant_trap_01-512.webp"
         }
       ],
       "focalPoint": [

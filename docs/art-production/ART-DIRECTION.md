@@ -24,6 +24,10 @@ Older supplied sources include 256-pixel images. The builder preserves the origi
 
 Install the local renderer with `npm install --prefix tools/card-art --no-package-lock`, then run `node tools/card-art-build.js`. This deterministic export needs no browser or network after dependency installation. Run `node tools/card-art-check.js` for integrity and markup checks; it also writes the standalone `game/art-review.html` size-comparison page. Browser layout and physical-device checks are separate.
 
+While a later agent wave is still generating, use `node tools/card-art-build.js --through-batch=2` to export only reviewed earlier batches. Refresh assignment/generated/exported counts with `node tools/card-art-queue.js`. Inspect each wave before registration with `node tools/card-art-contact-sheet.js 2 /tmp/batch-02.jpg` (substitute the batch number). Package the current game and size-review page with `python tools/package-art-test.py /tmp/hexmancers-art-test.zip`.
+
+Explicitly request a **1:1 square canvas** and inspect the actual returned dimensions. A source may still come back landscape; the exporter first normalizes its central square, then applies the wide crop. Review that final composition, rather than assuming a raw preview proves the card is safe. Repaint/outpaint with image generation when normalization cuts identity-critical parts. Keep each generation's exact output-hint path; concurrent workers must never guess the newest shared-directory image.
+
 `tools/card-art-build.js` reads the art slot from the shared card contract. It generates:
 
 - A 512 × 512 PNG master for editing and the card detail page's **View full artwork** link.

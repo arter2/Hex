@@ -19,3 +19,13 @@ Browser launching is blocked by the execution sandbox. A browser export attempt 
 ## Remaining production
 
 `production-queue.json` explicitly records 1,887 pending catalogue cards. Five anonymous images require names, seven green-backdrop sources require preparation, and four alternate versions remain inactive. This batch does not complete the full catalogue. Prompts, exact card IDs and original generation paths are retained in each colour manifest; the exported 512 masters are portable and tracked in the repository.
+
+## Continued production: batches 02 and 03
+
+Two additional waves add 64 illustrations, eight per colour, using lighter artist agents with exact ID assignments. Together with the initial 16 generated images and 50 supplied matches, the current registry contains 130 active illustrations. The remaining queue records 1,823 cards; it does not claim the whole catalogue is complete.
+
+Parent review used actual square-normalized 206:141 crops and small thumbnails. Ball Lightning, Brazier, Empty Helm Sentinel, Hunter's Quiver, Wasp Nest, Quiver of Yew Arrows and Lamp of the Bound Djinn needed composition repairs. Powder Horn was revised to make the named horn the main readable object. Previous generated sources remain preserved. Some generator outputs were landscape despite the square prompt; final masters are exact 512 squares, and cropped identity was checked after normalization.
+
+Validation for the combined production: 146 masters plus 438 display files decode at their declared dimensions (584 images); 130 exact card IDs; compact/expanded markup for every illustrated card (260 checks); locked-art and procedural fallback checks; the existing 23 playtest selftests. Browser/Safari/device verification remains pending for the reason documented above.
+
+The queue updater distinguishes unassigned, assigned, generated-awaiting-review and reviewed/exported records. Crop contact sheets, filtered batch exports and a reproducible local/itch.io ZIP packager support future work.

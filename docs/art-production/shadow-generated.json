@@ -4,7 +4,10 @@
     "name": "Bone Splinter",
     "prompt": "Square 512x512 illustration only for a medieval fantasy collectible card, painterly, richly detailed fantasy card painting with tactile materials and dramatic readable lighting. Bone Splinter: three sharpened ivory bone darts magically flying in a tight straight line through a moonlit crypt, one large foreground shard and two smaller trailing splinters. Faint teal curse gleam on their edges. Bone darts dominant, clearly lit pale ivory with crisp shape against soft blue gray stone and mist. Entire shards and action inside central horizontal safe band x24..488,y105..407; top and bottom only atmosphere. One dominant action, quiet background. No text, frame, UI, numbers, characters, photorealism, anime, Disney style, or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-cca2881c-45f7-414b-a3f9-514f24dfa774.png",
-    "focalPoint": [0.5, 0.5],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
     "status": "generated"
   },
   {
@@ -12,7 +15,114 @@
     "name": "Hellfire Lash",
     "prompt": "Square 512x512 illustration only for a medieval fantasy collectible card, painterly with finely rendered materials and rich atmosphere, dramatic readable light. Hellfire Lash: one vivid curving whip of infernal flame snapping in a pronounced zigzag, its flaming tip striking a weathered dark stone shield and scattering a few sparks. The flame and impact form the dominant clear focal action, glowing gold, orange, crimson, with textured edges; blurred crypt forge behind in smoky plum and blue gray. Keep the complete lash path and strike point inside the central horizontal safe band x24..488,y105..407; expendable atmosphere only above and below. Well lit and legible, never muddy near-black. No people, no text, no letters, no frame, no UI, no numbers. No Disney style, anime, photorealism, or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-c336ed35-a15f-492d-bf1f-2237c17bd2c8.png",
-    "focalPoint": [0.5, 0.5],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
     "status": "generated"
+  },
+  {
+    "cardId": "hex_bolt",
+    "name": "Hex Bolt",
+    "prompt": "Square painterly medieval fantasy card art: a hooded shadow mage fires a narrow violet curse bolt in a straight line at one armored enemy in a crypt, clear caster-to-target action, soul wisp, dramatic light, horizontal staging, keep critical face hands bolt target in center horizontal band, no text or frame.",
+    "generatedPath": "/workspace/generated_images/exec-382e08ba-bf8a-47b6-a850-42d056f690b4.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 2,
+    "reviewNote": "Recognizable hooded caster, straight bolt, struck armored target and departing soul wisp; faces and action sit in the central horizontal crop band."
+  },
+  {
+    "cardId": "grave_pit",
+    "name": "Grave Pit",
+    "prompt": "Paint an illustration for Shadow lob Grave Pit. Mechanics: a quick-fuse curse is lobbed over blockers and detonates 0.35 seconds after casting on the targeted tile in a column, damaging whatever occupies that tile and cursing it. Show an ominous compact orb of grave-dark violet magic arcing over a low row of broken stone barricades and descending into one clearly marked tile of a ruined battlefield, where earth collapses into a small circular grave pit and spectral hands rise around a lone enemy's feet. Show vertical column targeting with a faint line from the spellcaster's aim down to that tile; keep explosion compact so the hole and victim remain legible. Painterly medieval fantasy collectible-card art, believable stone and soil, dramatic moonlit lighting, atmospheric depth, grounded proportions consistent with supplied Hexmancers references. Square image for a 512x512 master; keep spell, pit, target and any visible caster hands within x24..488,y105..407 for the 206:141 wide crop; expendable sky and ground beyond. No border, text, numbers, UI. No anime, cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-234ee94b-a6aa-46e9-ac06-299ba9c190b8.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 2,
+    "reviewNote": "Lobbed curse arcs over a visible low barricade into a single glowing pit with the victim and spectral hands; critical action is centered in the horizontal crop band."
+  },
+  {
+    "cardId": "bone_wall",
+    "name": "Bone Wall",
+    "prompt": "Paint an illustration for Shadow ward Bone Wall. Mechanics: a lasting heavy cage of thorned bone bars traps one enemy for several seconds; it cannot move, its shots strike the bars, while friendly shots pass through, and the bar thorns hurt it. Show a grim heavy cage grown from huge ivory ribs and vertebrae enclosing a snarling armored raider; the trapped foe is pressing a weapon against bars that stop its attack. Outside the cage, a small streak of allied pale light passes cleanly through the gaps toward the foe, and hooked bone thorns visibly pierce or rake armor. Clearly read as a cage around an enemy, not a freestanding wall. Painterly medieval fantasy collectible-card art, tactile bone, dark iron and worn armor, dramatic cold light with a little violet curse glow, atmospheric depth, grounded proportions and serious tone consistent with supplied Hexmancers references. Horizontal staging. Square image for a 512x512 master; keep the full cage silhouette, enemy face/body and thorn action in x24..488,y105..407 for a 206:141 crop; expendable crypt atmosphere above/below. No border, labels, text, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-bc763ac3-7667-46c3-8f0c-388a7286969e.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 2,
+    "reviewNote": "Heavy rib-and-vertebrae cage encloses an armored enemy; his weapon presses against bars, allied bolt passes through and thorn tips rake him. Enemy/action are crop-safe; uppermost cage crown is expendable in the card crop."
+  },
+  {
+    "cardId": "shadow_summon_01",
+    "name": "Belfry Bats",
+    "prompt": "Paint an illustration for the Shadow summon Belfry Bats. Mechanics: two frail but quick shadow bats dash at two enemies in turn; each enemy flashes and may sidestep, and the bats gain power when an enemy dies nearby. Show exactly two prominent believable fantasy bats bursting from a ruined belfry at dusk, wing silhouettes sharp and readable; one bat darts toward each of two armored foes across the same horizontal battlefield lane. Each target has a brief pale-violet confusion flash and is twisting to dodge. A subtle soul wisp from a fallen foe streams toward the bats, hinting at harvest. Not cute: eerie, lean, natural bat anatomy with dark velvet fur and leathery wings, expressive but grounded. Painterly medieval fantasy collectible-card art, dramatic moonlit rim light, atmospheric stone belfry depth, serious Hexmancers reference direction. Square image for a 512x512 master with horizontal staging; keep both bats, two targets, their faces and the dash action in x24..488,y105..407 for a 206:141 crop, expendable dusk sky/stone outside. No border, lettering, labels, numbers or UI. No anime, Disney-like cartoon proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-51c72ab0-5cb0-4cd3-8639-4bd2eb79b548.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 2,
+    "reviewNote": "Exactly two bats dash at two armored foes; both confusion flashes, dodging poses and a soul wisp are visible. All identity-critical subjects are centered in the wide crop band."
+  },
+  {
+    "cardId": "wraith_totem",
+    "name": "Wraith Totem",
+    "prompt": "Create a 1:1 SQUARE illustration for the Shadow sentry Wraith Totem. Exact behavior: the sturdy slow totem does not attack; while it stands, the next card cast hits 48% harder. Its phantom force passes through enemy walls, rocks and shields, and it drains 40%. Show one substantial carved blackwood-and-bone totem in the center of a ruined medieval battlefield, a pale wraith face visible within its crown. The totem is empowering a caster's next card: a compact violet spell gathers brighter power beside it, with two ghostly rays passing straight through a stone barricade and shield in the background, while a thin stream of life-energy drains from an enemy toward the totem. Totem is the focal identity, not an attacking creature. Painterly high-fantasy card art, tactile wood, bone, worn stone, dramatic moonlit rim light and readable value structure, consistent with supplied Hexmancers references. Keep the totem face, rune core and caster hand inside x24..488,y105..407 on the 512 square; quiet bog/sky at top and ground below, composition must also work as a wide 206:141 crop. No border, lettering, labels, numbers or UI. No anime, cartoon, photorealism or pixel art. Recompose smaller and lower so crown face, core rune and caster hand all remain securely inside the safe band.",
+    "generatedPath": "/workspace/generated_images/exec-ffdba52e-b83a-4ea4-a9ba-ea62ed5202e5.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 3,
+    "reviewNote": "Revised square places the complete wraith face at approx y207\u2013282 and core at y300\u2013355 (512 coordinates), with caster hand in-band. Empowering rays pass through stone and shield; drain stream remains visible. Critical subjects survive the wide crop."
+  },
+  {
+    "cardId": "dark_pact",
+    "name": "Dark Pact",
+    "prompt": "Create an explicit 1:1 SQUARE illustration for Shadow boon Dark Pact. Exact mechanics: a brief pact boosts the caster's cards and wand by 30% for 4 seconds, costs the caster 16 HP, drains 12 from the nearest enemy, and echoes once at half strength 5 seconds later. Show a medieval shadow mage and the nearest armored enemy facing across a crypt lane. The mage's clearly visible hand presses a small black pact sigil to their chest, with a modest red wound-glow showing the personal cost; a dark-violet tether siphons life from the enemy into the pact. A brighter first ring of power surrounds the mage's other hand/wand and a fainter delayed echo ring repeats behind it, communicating the echo at half strength. Keep the scene grounded and legible, no writing or symbolic numerals. Painterly medieval fantasy collectible-card art, rich cloth and armor, directional violet-red light, atmospheric depth, consistent with supplied Hexmancers references. Compose for square master and wide 206:141 crop: keep both faces, the mage's hands/pact, the siphon link and echo-ring focal action within x24..488,y105..407 of the 512 square; leave quiet expendable crypt scenery above/below. No border, lettering, labels, numbers or UI. No anime, Disney-like cartoon proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5f2c3b59-0527-4123-8ae9-c28bbab72f41.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 3,
+    "reviewNote": "Mage presses pact to chest while siphoning an armored foe; both faces, casting/pact hands and life tether lie within central band. Red self-cost and paired power rings read clearly in wide crop."
+  },
+  {
+    "cardId": "shadow_charge_01",
+    "name": "Bag of Teeth",
+    "prompt": "Create an explicit 1:1 SQUARE illustration for the Shadow charge Bag of Teeth. Actual effect: a limited-use charm with two uses fires twin bolts of 20 down the caster's row and the next row; each impact splashes nearby enemies for half damage and freezes them for 2.1 seconds. Show one complete small leather drawstring bag of teeth suspended in a shadow mage's clearly visible hand, with the full pouch, mouth, tie and dangling teeth visible. From the open bag, exactly two parallel dark-violet bolts travel horizontally through two adjacent rows and strike armored foes; icy violet splash rings freeze nearby enemies, whose limbs are caught in translucent frost. Make the bag itself a clear named-object focal point, but also make the twin rows and splash-freeze action readable. Painterly medieval fantasy collectible-card art, believable leather, carved teeth and armor, crisp magical light against a moody crypt, serious grounded tone consistent with supplied Hexmancers references. Square master, staged as a horizontal lane illustration: keep the complete bag, hand, faces, bolts and hit effects in x24..488,y105..407 of 512 coordinates for the 206:141 crop; quiet background top and bottom. No border, lettering, text, numbers, UI. No anime, cartoon, photorealism or pixel art. Recompose bag and hand lower within the safe band while preserving the paired horizontal rows.",
+    "generatedPath": "/workspace/generated_images/exec-9f3dfe76-89a9-4903-809e-d3f7891591d0.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 3,
+    "reviewNote": "Complete tooth pouch with mouth, tie and dangling teeth sits around y155\u2013315 (512 coordinates); hand and mage face are safe. Two parallel rows show violet bolts, splash impacts and frozen enemies clearly."
+  },
+  {
+    "cardId": "shadow_environment_01",
+    "name": "Haunted Bog",
+    "prompt": "Create an explicit 1:1 SQUARE illustration for the Shadow environment Haunted Bog. Actual effect: cursed brambles grow on the aimed tile and surrounding tiles for 10 seconds, dealing damage each step; enemies present as the thorns appear are cursed for 3.6 seconds. Show a broad horizontal patch of haunted bog in a medieval battlefield: stagnant black water, drowned stones and one central targeted ground tile surrounded by adjacent stepping-stone tiles, all overtaken by living thorn brambles. Two armored enemies are caught among the newly sprouting thorns, one stepping into the central tile, both visibly bound and marked by a subtle violet curse haze. Emphasize the bramble growth across the central and neighboring tiles, not merely a generic swamp or isolated plant. Painterly medieval fantasy collectible-card landscape, wet reeds, twisted roots, dark reflective water, eerie violet moonlight with readable silhouettes and atmospheric depth, consistent with supplied Hexmancers references. Compose square for the master and a wide 206:141 crop: keep bramble field, enemy faces/hands and central tile action inside x24..488,y105..407 of the 512 square; expendable sky/foreground water above and below. No border, labels, text, numbers or UI. No anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-557b50dc-9441-4606-bfcc-4e4e0b5d0429.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 3,
+    "reviewNote": "Two cursed armored enemies are caught across a broad bramble patch over drowned stepping stones; faces, hands and thorn action are all in the central crop band with swamp atmosphere outside it."
   }
 ]

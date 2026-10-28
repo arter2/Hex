@@ -21,5 +21,109 @@
       0.5
     ],
     "status": "generated"
+  },
+  {
+    "cardId": "ice_shard",
+    "name": "Ice Shard",
+    "prompt": "Paint Ice Shard as a frost strike that sends a shockwave damaging every enemy within four tiles, with a one-in-four chance for a critical hit to deal double damage. Show a battle mage releasing a radial burst of ice shards and an expanding frost wave catching several hostile figures, with one especially bright critical impact. Painterly medieval fantasy collectible-card art, nuanced believable materials, directional cold light, atmospheric depth, grounded anatomy, and textured brushwork. Square composition intended for a 512 \u00d7 512 master; keep the mage\u2019s face and hands, shards, and enemy impacts within x24\u2026488 and y105\u2026407 for the 206:141 horizontal crop, with expendable snowy scenery beyond. No frame, text, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a4e50d04-aa18-46d6-841e-4808439c6892.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 2,
+    "reviewNote": "Reviewed original: central mage face and casting hands, radial shards and several struck enemies all remain in the wide central crop; reads clearly as an area shockwave strike."
+  },
+  {
+    "cardId": "rime_wall",
+    "name": "Rime Wall",
+    "prompt": "Paint Rime Wall: two short, 44-strength frost ramparts rise across the lanes before the caster; anything striking them is frozen momentarily. Show two distinct thick translucent blue ice walls spanning separate lanes in a snowy pass. A charging armored foe has just struck the nearer wall and is caught in a visible burst of frost, frozen in place; the second wall recedes in perspective. Painterly medieval fantasy, grounded anatomy, believable icy material, directional cold light, atmospheric depth and textured brushwork. Square 512 \u00d7 512 master, keep both walls and frozen attacker in x24\u2026488, y105\u2026407 for 206:141 horizontal crop; expendable sky and snow outside. No frame, lettering, numbers, UI, anime, Disney-like cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-88895c43-35fa-4599-af6e-ae6c252d12ec.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 2,
+    "reviewNote": "Reviewed square original: both lane-spanning walls remain in the central horizontal crop; frozen armored attacker and impact frost read clearly at the nearer wall."
+  },
+  {
+    "cardId": "glacial_veil",
+    "name": "Glacial Veil",
+    "prompt": "Paint Glacial Veil: two seconds after casting, a protective effect lands thirty percent stronger, lets the hero dodge the next hit, and surrounds them with radiant shielding worth twelve. Show an agile armored wanderer twisting aside from a blade strike that passes through a translucent glacial afterimage, while a delayed luminous blue-white veil settles around them as a shield. Painterly medieval fantasy, believable cloth, leather and steel, grounded anatomy, directional icy light and atmospheric depth. Square 512 \u00d7 512 master; keep face, pose, blade and shield within x24\u2026488, y105\u2026407 for 206:141 horizontal crop, with expendable snowy scenery beyond. No border, lettering, numbers, UI, anime, Disney-like cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4ff25f1d-945a-4502-a94e-38aec864b616.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 2,
+    "reviewNote": "Reviewed original: heroine\u2019s face and dodging pose, passing blade, glacial afterimage and bright protective veil remain within central crop; card reads as an evasion ward."
+  },
+  {
+    "cardId": "frost_utility_01",
+    "name": "Mirror Lake",
+    "prompt": "Paint Mirror Lake, a card whose effect copies the next queued card. Show a still mirror-smooth alpine lake at blue hour with a frost mage on shore preparing a luminous arcane spell; the lake reflection perfectly echoes the mage and duplicates the glowing frost sigils into a second identical arrangement, making the copied spell unmistakable. Painterly medieval fantasy collectible-card art, nuanced materials, cold directional twilight with a small warm lantern accent, atmospheric depth and textured brushwork. Square 512 \u00d7 512 master; keep mage, reflection, lake boundary and duplicated sigils within x24\u2026488, y105\u2026407 for 206:141 horizontal crop, expendable mountain sky and dark foreground beyond. No frame, lettering, numbers, UI, anime, Disney-like cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-13dd696c-9c17-423c-8729-c1d137d393bc.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 2,
+    "reviewNote": "Reviewed original: mage, bright spell sigils, lake horizon and exact inverted reflection remain readable in the horizontal scene; reflection clearly shows the copied spell effect."
+  },
+  {
+    "cardId": "hail_lob",
+    "name": "Hail Lob",
+    "prompt": "Hail Lob: a quick-fuse frost projectile is lobbed over blockers to a chosen tile in a straight column; it bursts 0.35 seconds after casting for 18 damage and leaves freezing ground for four seconds that slows enemies. Show a frost mage throwing a compact spinning hailstone in a high arc over a broken stone barricade toward enemies aligned beyond it; the stone bursts on the ground in a column of icy impact and spreading slow-frost. Painterly medieval fantasy, believable materials, cold directional light, atmospheric depth, grounded anatomy, textured brushwork. True 1:1 square 512 master; keep the mage face and throwing arm, full projectile arc and burst with affected enemies in x24\u2026488, y105\u2026407, with quiet expendable scenery outside. No frame, lettering, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-45493b13-88e6-4cec-95c3-7ee03309526b.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 3,
+    "reviewNote": "Reviewed native 1254 \u00d7 1254 square and predicted 206:141 crop. After crop repair, the full arc apex, mage\u2019s casting pose, impact burst and slowed enemies all remain in the central safe band."
+  },
+  {
+    "cardId": "icicle_spire",
+    "name": "Icicle Spire",
+    "prompt": "Icicle Spire: a sturdy frost sentry guards the hero by taking hits meant for them, attacks steadily every 1.2 seconds, and when it falls or expires explodes onto the nearest enemy and around it, slowing them. Show a tall living spire of thick blue-white ice planted between a cloaked hero and an armored foe; its faceted surface catches and blocks an incoming sword blow while a small precise ice lance answers. Suggest contained explosive force with glowing cracks. Painterly medieval fantasy, tactile ice and steel, dramatic cool light and atmospheric depth. True 1:1 square 512 master; keep complete spire, hero and key enemy/impact within x24\u2026488, y105\u2026407, quiet snow and mist outside. No frame, lettering, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-61ddcc75-1ea2-4085-92ff-9899e2366c3a.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 3,
+    "reviewNote": "Reviewed native 1254 \u00d7 1254 square and predicted 206:141 crop. Repaired scale/placement keeps the full spire crown and base, guarding mage, sword and impact all inside the crop."
+  },
+  {
+    "cardId": "frost_summon_01",
+    "name": "Merrow",
+    "prompt": "Merrow: a sturdy quick frost merfolk ally appears for twenty seconds, heals its summoner by two at each swift attack, and each hit leaves a small patch of ground burning for three seconds; summoning carries a 3.9-second curse. Show a fish-tailed merrow warrior rising from a frozen fjord, with expressive amphibious face, scaled skin, finned crest and medieval trident. It fights beside a human summoner: a soft frost-blue healing glow returns to the ally while the merrow\u2019s strike scorches a small patch of snow beneath an attacking foe. Painterly medieval fantasy, grounded anatomy, tactile scales/leather/ice, cinematic cold light and restrained ember contrast. True 1:1 square 512 master; keep merrow face, trident/hands, ally healing glow and burning impact in x24\u2026488, y105\u2026407, quiet snowy lake scenery beyond. No frame, lettering, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9a656576-1e80-4f41-85fa-54cc9fd353bb.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 3,
+    "reviewNote": "Reviewed native 1254 \u00d7 1254 square and predicted 206:141 crop. Merrow face, finned crest, tail and trident, summoner healing glow and scorched impact remain legible in the crop."
+  },
+  {
+    "cardId": "frost_environment_01",
+    "name": "Frozen Lake",
+    "prompt": "Frozen Lake: a burst ices the aimed tile and surrounding ground for ten seconds; enemies caught when it appears take 8 damage and gain slowing frost that halves their speed, while caster mends 3. Show a circular blue-white burst flash-freezing a patch of lake and shoreline, several armored enemies caught across fresh fractured ice and pinned at their feet by frost, with a small frost-caster at the edge receiving a subtle restorative glow. Make the broad frozen ground field the main subject. Painterly medieval fantasy, detailed ice, water and stone, cool dramatic light with restrained dawn warmth and atmospheric depth. True 1:1 square 512 master; keep caster, enemies and full central freeze burst within x24\u2026488, y105\u2026407, quiet sky and foreground outside. No frame, lettering, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e3a68cae-d3bd-4350-a0c7-5cb9f9b919fc.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 3,
+    "reviewNote": "Reviewed native 1254 \u00d7 1254 square and predicted 206:141 crop. Caster, caught enemies and broad burst of fractured ice remain centered; ground-freezing effect reads clearly."
   }
 ]

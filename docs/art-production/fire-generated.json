@@ -4,7 +4,10 @@
     "name": "Ember Dart",
     "prompt": "Create a square 512x512 master illustration for a medieval fantasy collectible card, art only, no frame, no border, no lettering, no symbols, no interface. Scene: a nimble fire mage archer releases one small ember dart from a short darkwood hand bow, the tiny arrow burning with a concentrated orange-white ember tip as it streaks toward a distant shadowy foe; this is a quick, precise snipe that leaves a lingering burn. The archer's focused face, drawing hand, bow, and fiery dart are all clearly visible, with believable leather, wood, cloth, and metal details. Painterly traditional fantasy card illustration with confident brushwork, rich believable materials, cinematic dusk light, nuanced smoke, warm ember glow against a cool volcanic pass, atmospheric depth. Mature high fantasy collectible card art, evocative of classic tabletop fantasy painting. Not anime, not Disney cartoon, not photorealistic, no pixel art. Composition designed for a 206:141 horizontal crop from the center of this square: keep all critical face, hands, bow, and dart within x=24..488 and y=105..407; upper and lower margins may contain expendable quiet background. Main subject occupies about 70% of the central crop, simple readable silhouette, restrained background.",
     "generatedLocalPath": "/workspace/generated_images/exec-4e0609db-413e-4e66-ae6b-128e596e9349.png",
-    "intendedFocalPoint": { "x": 0.5, "y": 0.5 },
+    "intendedFocalPoint": {
+      "x": 0.5,
+      "y": 0.5
+    },
     "status": "generated"
   },
   {
@@ -12,7 +15,116 @@
     "name": "Fire Pot",
     "prompt": "Create a square 512x512 master illustration for a medieval fantasy collectible card, art only, no frame, no border, no lettering, no symbols, no interface. Scene: a soot-smudged goblin sapper in rugged leather gloves has just hurled a hand-sized earthenware fire pot across a stone battlefield; the pot is a prominent glazed clay vessel with a rag fuse burning, caught midair above the ground as it bursts into a cross-shaped splash of Greek fire, orange flames pushing dust, sparks and loose debris outward. Show the goblin's determined face and throwing arm, pot and bright impact all unmistakable. Medieval materials, hand-made ceramic, leather, rough stone. Painterly traditional fantasy collectible-card illustration with expressive brushwork, warm dramatic firelight, cool smoky background and atmospheric depth, refined believable materials. Not anime, not Disney cartoon, not photorealistic, no pixel art, no modern tech. Composition designed for a 206:141 horizontal crop from the center of this square: keep all critical face, throwing hand, pot and impact within x=24..488 and y=105..407; upper and lower margins may contain expendable quiet background. Main subject occupies 70% of the central crop, simple clear action and quiet background.",
     "generatedLocalPath": "/workspace/generated_images/exec-ac346961-0d25-453e-bcd4-387e0c427265.png",
-    "intendedFocalPoint": { "x": 0.5, "y": 0.5 },
+    "intendedFocalPoint": {
+      "x": 0.5,
+      "y": 0.5
+    },
     "status": "generated"
+  },
+  {
+    "cardId": "cinder_lance",
+    "name": "Cinder Lance",
+    "prompt": "Square painterly medieval fantasy card illustration, no text. Cinder Lance: a fire mage thrusts a long narrow incandescent cinder spear straight through a foreground armored enemy and onward toward a second enemy behind, clearly showing the piercing line and continuation. Faces, hand, spear, targets central and readable, all critical action inside the center horizontal crop safe area, quiet smoky margins. Classic collectible card painting, dramatic ember light, cool ash atmosphere, grounded materials and anatomy. No frame, symbols, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8daa35e2-6c62-4bb0-bec4-00e8120c3166.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 2,
+    "reviewNote": "Mage, hand, spear and both pierced armored foes are central and identifiable; the full action remains within the safe horizontal crop."
+  },
+  {
+    "cardId": "ember_wall",
+    "name": "Ember Wall",
+    "prompt": "Paint a medieval fantasy Ember Wall: a lasting pair of substantial stone ramparts across lanes, fissured masonry and iron bindings veiled in orange flame; arrows and a charging weapon strike and ignite. A small fire mage behind gives scale. Painterly fantasy card art, believable materials, directional firelight and smoky depth. Square 512 master composed for a 206:141 crop; keep walls and impact action within x24..488,y105..407, quiet scenery at top and bottom. No frame, text, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d87fb217-7c8f-4e7b-92bc-14da63db5966.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 2,
+    "reviewNote": "Two distinct burning ramparts dominate the scene, with incoming arrows igniting on impact; walls remain fully readable in the central horizontal crop."
+  },
+  {
+    "cardId": "brazier",
+    "name": "Brazier",
+    "prompt": "Brazier: a squat, heavy bronze-and-black-iron fire sentry on articulated legs, bowl full of coals, moving diagonally over a stone lane. It fires a steady zigzag bolt between positions and a doubled charged flare that stuns an enemy. Make the brazier prominent, with hammered metal, rivets, soot and contained living flame. Painterly medieval fantasy card illustration, warm directional glow and cool smoky depth. Square 512 master, 206:141 crop safe; keep brazier and attack central. No text, UI or frame.",
+    "generatedPath": "/workspace/generated_images/exec-aeddf582-4729-4a4c-bf4a-6d29b1e41f89.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 2,
+    "reviewNote": "Parent wide-crop review found the bowl cut off by the left and top edges; a lighter agent repainted the complete brazier/rim inward with safe framing. Replacement inspected by parent.",
+    "previousGeneratedPath": "/workspace/generated_images/exec-2537587a-5ace-4430-916a-79bb2d0dcfa0.png"
+  },
+  {
+    "cardId": "meteor",
+    "name": "Meteor",
+    "prompt": "Legendary Meteor: a colossal dense molten rock descends in a heavy arc through storm clouds, passing over a nearer row of stone barricades and shields to strike a distant lane, leaving a broad bed of incandescent fire on the ground. Show the rocky mass, glowing fractures, arcing trail, shockwave dust and burning ground. Painterly medieval fantasy collectible-card art, nuanced stone, smoke and molten rock, warm impact light against cool storm atmosphere. Square 512 master for 206:141 crop; keep meteor, arc, blockers and impact within x24..488,y105..407. No frame, text, UI or symbols.",
+    "generatedPath": "/workspace/generated_images/exec-f88b49c6-6f88-4ac0-8410-efdcd4fee7a6.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 2,
+    "reviewNote": "The heavy cracked meteor and arcing descent lead to a clear impact behind foreground barricades; the strike and burning ground remain legible in the wide crop."
+  },
+  {
+    "cardId": "kindle",
+    "name": "Kindle",
+    "prompt": "Square painterly medieval fantasy illustration for Kindle: a fire mage channels a brief surge of doubled wand power, an ember bolt from a carved wand followed by a smaller fainter echo bolt moments later; nearby allied creatures receive warm restorative sparks. Grounded fantasy, expressive cloth and wood, controlled firelight, atmospheric depth. Explicit 1:1 square for 512x512 master. Keep mage face, wand hand, wand, bolts and allies wholly within x24..488,y105..407 for a 206:141 crop. Full square finished artwork. No frame, letters, UI, anime, Disney, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-33c7abbc-7527-4a93-9f18-891c2e81fb9c.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 3,
+    "reviewNote": "Square image inspected with centered 206:141 crop; mage face, wand hand, echoed bolts and allied creatures remain fully visible and identify the brief power-and-healing boon."
+  },
+  {
+    "cardId": "fire_charge_01",
+    "name": "Powder Horn",
+    "prompt": "Square painterly fantasy card illustration for Powder Horn: a rugged scout fires a compact horn-shaped black-powder firearm, a sharp bolt streaking across a battlefield and bursting among foes with a small forceful splash, pushing them back. Powder horn visibly slung at the belt. Rich painterly materials, dramatic amber flash, action readable. 1:1 square intended 512x512. Keep scout face, hands, weapon, powder horn and impact inside x24..488,y105..407 for 206:141 crop. No frame, text, UI, anime, Disney, photo realism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6fc4f3e6-adca-4642-b197-5fa51246b04b.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 3,
+    "reviewNote": "Repainted after review to make the named powder horn unmistakable: the complete curved horn flask, stopper, brass nozzle and strap dominate the square. The centered 206:141 crop keeps the full horn and strap within frame; the smaller background gun, row bolt and splash show the charge action.",
+    "previousGeneratedPath": "/workspace/generated_images/exec-47adfa2f-a23a-4daa-a72c-5a320ba5b7d2.png"
+  },
+  {
+    "cardId": "fire_utility_01",
+    "name": "Prospector's Map",
+    "prompt": "Square painterly fantasy card illustration for Prospector's Map: a weathered dwarf prospector studies an old hand-drawn parchment map spread over a stone ledge, one hand tracing a route toward a distant gold-veined mountain while three faint glowing card-like blank parchment slips emerge from magical map marks, suggesting discovery and drawing three cards. Pickaxe, lantern, leather field gear. Medieval high fantasy, richly textured, warm lantern light, atmospheric depth. Explicit 1:1 square 512x512 master. Keep face, map, pointing hand and key map features within x24..488,y105..407 for a 206:141 crop. No writing legible on map, no frame/text/UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e4b4174b-a9a2-42cf-b707-a549f361f1ac.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 3,
+    "reviewNote": "Square image and centered 206:141 crop inspected; prospector face, tracing hand, map and three magical blank slips remain clear in crop."
+  },
+  {
+    "cardId": "fire_environment_01",
+    "name": "Lava Field",
+    "prompt": "Square painterly medieval fantasy environment illustration for Lava Field: a barren volcanic battlefield viewed at a slight elevated angle, a cross-shaped patch of molten glowing ground spreading from a central tile, cracked basalt and glowing fissures, sparks and low flames; a booted enemy stepping onto the burning cross recoils as fire catches, distant dark volcanic ridges. Dramatic controlled orange light against charcoal stone, atmospheric painterly detail. Explicit 1:1 square composition intended for 512x512 master; keep the cross-shaped burning ground and stepping figure entirely within x24..488,y105..407 for a 206:141 horizontal crop. Full square finished painting. No lettering, card frame or UI. No anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4ab81246-3305-418e-8a51-d9a84c9b75de.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 3,
+    "reviewNote": "Square image and centered 206:141 crop inspected; the cross-shaped lava ground and recoiling stepping figure stay visible and convey brief burning ground."
   }
 ]

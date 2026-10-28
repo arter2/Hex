@@ -4,7 +4,10 @@
     "name": "Clockwork Owl",
     "prompt": "Square 512x512 illustration-only image for a medieval fantasy collectible card, painterly grounded fantasy card art with rich materials and cinematic light. A singular Clockwork Owl, a sturdy gnomish mechanical scout shaped like a small owl, built from aged brass plates, dark iron hinges, tiny gear joints and layered feather-like metal vanes. It glides diagonally through a dusky mountain workshop window into cold night air, wings fully extended and eyes glowing with subtle pale icy blue; faint frost-like chill curls in its wake to suggest its chilling trait. Strong readable silhouette, owl occupies most of the center, detailed but not cluttered. Keep the whole owl and its key action wholly inside central safe band x24..488 y105..407 on the 512 square, with quiet atmospheric stone and night sky above and below for a 206:141 crop. Warm brass and iron against restrained cool blue moonlight, painterly brushwork, believable mechanical construction. No modern technology, words, numbers, borders, frame, interface, logo, watermark, Disney, anime, photorealism, or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-ee5360e6-288f-426b-a9ca-809046db2ad0.png",
-    "focalPoint": [0.5, 0.5],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
     "status": "generated"
   },
   {
@@ -12,7 +15,114 @@
     "name": "Sea-Folk Kelp Tea",
     "prompt": "Square 512x512 illustration-only image for a medieval fantasy collectible card, painterly grounded fantasy card art with rich materials and cinematic light. A sea-folk healer in an ancient coral grotto prepares a healing cup of kelp tea. The focal subject is a small hammered copper kettle and shell cup in the healer's hands, filled with deep green kelp infusion; delicate ribbons of living kelp unfurl and tiny luminous sea-green sprouts bloom around the cup, suggesting gentle regeneration. The sea-folk figure is a supporting presence with natural aquatic features, weathered robes and subtle pearl ornaments. Warm tea steam mingles with cool underwater light rays; coral shelves and drifting bubbles provide a calm setting. Keep kettle, cup, healer's hands and sprouting kelp wholly within central safe band x24..488 y105..407 on the 512 square; quieter grotto atmosphere at top and bottom for a 206:141 crop. Restrained jade green, copper, sea-glass blue and soft gold, grounded fantasy materials and painterly brushwork. No words, numbers, border, frame, interface, logo, watermark, Disney, anime, photorealism, or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-29e42a5d-c896-4bc0-9b34-8a8a2339a1cc.png",
-    "focalPoint": [0.5, 0.5],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
     "status": "generated"
+  },
+  {
+    "cardId": "brown_machine_01",
+    "name": "Dwarven Cannon Nest",
+    "prompt": "Dwarven Cannon Nest: a fortified stone-and-timber dwarf emplacement with twin short bronze and iron cannons aimed along two adjacent lanes. One discharges a compact shell while an ochre sand squall bends incoming arrows aside. Sturdy medieval dwarf engineering, rivets, carved stone; painterly fantasy card art. Square 512 master, horizontal crop safe with cannons and action centered; no frame or text.",
+    "generatedPath": "/workspace/generated_images/exec-7e70c0b8-20f1-4226-8874-9f1bbbbde5fd.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 2,
+    "reviewNote": "Both cannons and the dwarf emplacement are centered and clear; a shell fires while windblown sand deflects incoming arrows within the crop."
+  },
+  {
+    "cardId": "brown_sentry_01",
+    "name": "Elven Starglass Spire",
+    "prompt": "Square painterly fantasy illustration of Elven Starglass Spire: a sturdy elven tower of pale stone, silver filigree and faceted blue starglass. Its crown refracts a healing beam toward a wounded sentinel below as an incoming arrow strikes and slows in delicate frost crystals. Keep the complete pointed crown and base, frost impact and sentinel within the central safe band; quiet sky and ground outside. Fine believable glass and stone, luminous dawn light, cool forest depth. No text, border or UI.",
+    "generatedPath": "/workspace/generated_images/exec-bcbfa4a1-c3d6-45af-9b6e-f114805d43f7.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 2,
+    "reviewNote": "Reframed square image keeps the complete spire crown and base within the central action-safe band; healing beam, elven sentinel and frost-slowed arrow are visible."
+  },
+  {
+    "cardId": "brown_instant_01",
+    "name": "Dwarven Stout",
+    "prompt": "Square painterly medieval fantasy illustration of Dwarven Stout: a merry dwarf brewmaster holds up a complete corked bottle of dark stout glowing warmly through carved amber glass. A golden healing aura closes a small cut on his hand, with a faint echoing ring to suggest the heal repeats. Stone brewery and casks in quiet background, believable glass, cork, beard and cloth, warm hearth light. Keep full face, both hands and bottle cork-to-base comfortably in the central safe band. No text, label, frame or UI.",
+    "generatedPath": "/workspace/generated_images/exec-f8421afa-6472-49ba-ad27-0b63e2ebb249.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 2,
+    "reviewNote": "Recomposed square image keeps the dwarf's face, both hands and complete cork-to-base bottle inside the safe band; healing glow and brewery setting are clear."
+  },
+  {
+    "cardId": "brown_tinker_01",
+    "name": "Whetstone",
+    "prompt": "Square painterly medieval fantasy illustration of Whetstone: a focused human craftsperson sharpens a woodworking chisel on a distinct dark oblong whetstone at a timber workbench. Both hands, calm face, full stone and honing contact are framed centrally; a subtle line of sparks suggests lasting improvement. Rich forge light, believable stone, steel, leather and wood, expressive brushwork. No text, labels, frame or UI.",
+    "generatedPath": "/workspace/generated_images/exec-5dbb1cc9-ea9b-4dcd-bff0-e9852ece684d.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 2,
+    "reviewNote": "Square reframe keeps the human face, both hands, full whetstone and honing contact within the crop-safe center; workshop context is clear."
+  },
+  {
+    "cardId": "brown_equip_05",
+    "name": "Sea-Folk Trident Head",
+    "prompt": "Square painterly fantasy illustration of Sea-Folk Trident Head: a sea-folk artisan presents a complete ornate three-pronged blue-green sea-bronze and mother-of-pearl trident head, socket visible, above an underwater workshop bench. A sea guardian waits in the background, suggesting this gear empowers its wielder. Keep the full object, tips, socket, artisan's face and hands in the central crop-safe band. Teal grotto, coral and bubbles; refined expressive brushwork. No text or UI.",
+    "generatedPath": "/workspace/generated_images/exec-23ee77d0-8b86-4334-89a9-60586e177673.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 3,
+    "reviewNote": "Square reframe keeps all three prongs, socket, artisan's face and hands within the central safe band; the sea guardian and grotto support the equipment scene."
+  },
+  {
+    "cardId": "brown_trap_01",
+    "name": "Dwarven Pendulum Axe",
+    "prompt": "Square painterly medieval fantasy illustration of Dwarven Pendulum Axe: three dwarf-crafted axe-blade pendulums suspended from iron pivots over adjacent stone tiles in an empty corridor, caught mid-swing across the row. Show complete pivots, chains, blades and swing arcs; pressure tile hints at trigger. Torchlit carved masonry, no person in danger. No text or UI.",
+    "generatedPath": "/workspace/generated_images/exec-c57d2369-92bb-4aa2-8a1b-ce6684c7ddc8.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 3,
+    "reviewNote": "Reframed square image keeps all three full pivot-chain-blade mechanisms within the central safe band, with swing arcs and floor trigger readable."
+  },
+  {
+    "cardId": "brown_aceup_02",
+    "name": "Black Powder Charge",
+    "prompt": "Square painterly fantasy card illustration: a compact Dwarven brass-bound black-powder charge canister with glowing fuse and visible powder sits beside a dwarf-crafted fantasy sidearm. An amber pressure ring blasts empty wooden practice targets backward, suggesting boosted power and knockback without injury. Keep canister, fuse and sidearm central and crop-safe; workshop, stone, brass and forge light, expressive brushwork. No text or UI.",
+    "generatedPath": "/workspace/generated_images/exec-e3cb511a-742a-4708-9477-0f7bb36a4573.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 3,
+    "reviewNote": "The complete powder charge, lit fuse and sidearm are clear in the safe center; a pressure ring sends empty practice targets backward to communicate the enchantment's knockback."
+  },
+  {
+    "cardId": "iron_corridor",
+    "name": "Iron Corridor",
+    "prompt": "Square painterly medieval fantasy illustration of Iron Corridor: a dwarf engineer raises two complete, waist-high bolted iron ward walls on either side of a short central passage. The full top, bottom and side edges of both heavy panels are visible; brown-gold ward light traces their seams. Stone corridor, torchlight and grounded dwarf craftsmanship. Keep both walls and dwarf's face and hands within central safe band. No text or UI.",
+    "generatedPath": "/workspace/generated_images/exec-263fdcd8-2629-4a0a-9649-167de0d17456.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 3,
+    "reviewNote": "Shortened paired walls are fully visible within the safe crop beside the dwarf, with thick iron plating and glowing ward seams clearly identifying the defensive corridor."
   }
 ]

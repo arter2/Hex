@@ -1,5 +1,20 @@
 # Card assets
 
+## v179: one card, built from cards/contract.json
+
+Every full card is now the 240x434 canvas. Its geometry (frame bands, corners, dividers, panels, every slot, the type
+sizes) lives in `contract.json`, measured off the approved three-card mockup; `tools/card-build.py` makes the frames
+(`frames/card/`), textures (`textures/card/`), state glows (`glows/card/`), holo trims (`foils/card/*/trim*`), state
+badges (`badges/card/`), `card-geo.css`, `card-geo.js` and `icons.js` from it and `palettes.json`. Don't edit those by
+hand: change the contract or palettes and run `python3 tools/card-build.py`. `game/card.css` is how the card looks;
+`cardEl` and `kitFit` in `ui.js` build and fit it. Still used from the kit: `icons/` (shapes; drawn inline in the card's
+colour), `symbols/`, `effects/expanded/` and `foils/expanded/*/art*` (the holo art foils, placed on the art window),
+`fonts/`. The kit's tiles and badges the generator starts from are in `tools/card-src/`. The compact/expanded frames,
+backgrounds, glows, badges, textures, `layouts.json` and the molten/plaque-mask tools are gone (the generator does
+their work). See docs/card-frame-report.md.
+
+## Before v179
+
 From *Hexmancers complete card kit v2* (`hexmancers-complete-card-svg-kit-v2.zip`): the subset the game draws, unchanged.
 Frames, colour backings and readability shades, the 24 material textures (both modes), foils and foil effects (holo legendaries), enchanted/buffed glows and state
 badges, the 44 colored icons, the hero and rarity stars, and the kit's fonts (rules font under the DejaVu licence in

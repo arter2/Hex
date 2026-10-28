@@ -1,0 +1,53 @@
+{
+  "about": "The card's one geometry source (v179). tools/card-build.py makes the frames, textures, glows, holo trims, state badges and cards/card-geo.css from it; nothing else places a card slot. Units are the 240-wide canvas; boxes are [x, y, width, height]. Measured from the approved three-card mockup (Ember Dart / Undertow Charm / Monkey's Fruit Stash) resampled to 240x434; it refines the handoff's proposed contract by 0-3 units where the mockup's lines fall (see docs/card-frame-report.md).",
+  "canvas": {"width": 240, "height": 434},
+  "bands": {
+    "steel": 3, "gap": 2, "stone": 7, "gap2": 2, "accent": 3,
+    "bottom": {"accent": [405, 3], "gap": [408, 2], "stone": [410, 7], "gap2": [417, 2], "strip": [419, 10], "gap3": [429, 1], "steel": [430, 4]}
+  },
+  "corner": {"size": 12, "at": [[5, 5], [223, 5], [5, 405], [223, 405]], "rivet": [4, 4, 4, 4]},
+  "face": [17, 17, 206, 388],
+  "dividers": [56, 90, 234, 258, 299, 367],
+  "divider_x": [17, 223],
+  "panels": {
+    "header": [17, 17, 206, 37],
+    "name": [17, 59, 206, 29],
+    "type": [17, 237, 206, 19],
+    "stat": [17, 261, 206, 36],
+    "rules": [17, 302, 206, 63],
+    "footer": [17, 370, 206, 35]
+  },
+  "separators": [[69, 20, 31], [173, 20, 31], [178, 264, 30], [119, 373, 29]],
+  "bounds": {
+    "element": [21, 20, 34, 33],
+    "rune_plate": [127, 21, 38, 32],
+    "rank_plate": [182, 21, 32, 32],
+    "hero": [129, 22, 34, 30],
+    "badge_a": [80, 26, 20, 20],
+    "badge_b": [104, 26, 20, 20],
+    "name": [22, 59, 196, 29],
+    "art": [17, 92, 206, 141],
+    "type_line": [22, 237, 196, 19],
+    "stat_icon": [29, 266, 26, 26],
+    "stat_value": [60, 262, 114, 34],
+    "rarity": [189, 270, 18, 18],
+    "rules": [25, 304, 190, 60],
+    "footer_left": [24, 373, 92, 29],
+    "footer_right": [126, 373, 92, 29],
+    "count_plaque": [84, 403, 72, 26],
+    "count_text": [88, 407, 64, 19]
+  },
+  "plaque": {"rim": [84, 403, 72, 26], "face": [86, 406, 68, 20], "wings": [[77, 409, 8, 11], [155, 409, 8, 11]]},
+  "type_px": {"name": [29, 29], "plate": [29, 30], "type": [16, 17], "stat": [39, 34], "rules": [18, 16.5], "footer": [14, 13], "count": [22, 19]},
+  "structural": {
+    "steel": ["#88a2b0", "#4b6170", "#2c3c48"],
+    "stone": ["#3e4146", "#7b8c98", "#2d3d47", "#26333c", "#0f1518"],
+    "copper": ["#140d06", "#f2a957", "#e8692c", "#ad421a", "#5f321d", "#fdfaf8"],
+    "plaque_top": ["#72645e", "#cbb4ae"],
+    "rune_plate": ["#1d4fae", "#3f8be6", "#0f2c66"],
+    "rank_plate": ["#a4231c", "#e2463a", "#5c120d"],
+    "wild_plate": ["#5a2c8c", "#9a62d6", "#2e1550"],
+    "count_text": "#f4f0dc"
+  },
+  "tolerances": {"aspect_ratio_relative_error_max": 0.005, "glyph_visible_center_error_canonical_units_max": 1, "divider_edge_error_canonical_units_max": 1, "minimum_text_edge_clearance_canonical_units": 2}
+}

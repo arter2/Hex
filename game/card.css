@@ -1,0 +1,95 @@
+/* ---------------- cards (v179): one card, the same frame everywhere ----------------
+   Every full card (hand, collection, deck, shop, rewards, detail) is the 240x434 canvas of cards/contract.json, drawn at
+   any width with the same picture. Where each slot sits, the type sizes (--fs-*) and each colour's ramp (.c-<colour>)
+   are generated into cards/card-geo.css by tools/card-build.py; this file only says how things look. Sizes are in
+   canvas units (--u, 1/240 of the card's width). Layers, bottom up: the colour's base, its material texture, the art
+   and any holo foil over it, then the frame (cards/frames/card) with any state glow, holo trim and badges, then the
+   glyphs and text. Text is fitted in canvas units by kitFit (ui.js) once the card fonts have loaded. */
+@font-face{font-family:'Hex Card'; font-style:normal; font-weight:400; font-display:block; src:url(fonts/jersey-15-latin-400-normal.woff2) format('woff2');}   /* the HUD's pixel face, without the HUD's size-adjust */
+@font-face{font-family:'Hex Card Caps'; font-style:normal; font-weight:400; font-display:block; src:url(cards/fonts/HexmancersCardPixel.ttf) format('truetype');}
+
+/* the canvas's shape and box win over every older per-screen card rule (several of them have ids or !important) */
+html body .card.kit{aspect-ratio:240/434!important; height:auto!important; min-height:0!important; max-height:none!important; padding:0!important; border:0!important;
+  border-image:none!important; background:var(--k-basec,#111)!important;}
+html body .card.kit{position:relative; display:block; align-self:start; width:100%; margin:0; border-radius:0; box-shadow:none; container-type:inline-size; overflow:visible; color:var(--k-text);
+  text-align:left; font:400 calc(12 * var(--u))/1 'Hex Card',monospace; font-synthesis:none; letter-spacing:0; text-transform:none; outline-offset:-2px; gap:0;}
+html body .card.kit.hero{animation:none;}
+html body .card.kit.hero.flip{animation:flip .45s both;}
+html body .card.kit.leg{box-shadow:none;}
+html body .card.kit::before{content:none; display:none;}
+/* the frame and what rides on it: state badges, state glow, holo trim, frame (first listed is on top) */
+html body .card.kit::after{content:''; display:block; position:absolute; inset:0; width:auto; height:auto; z-index:3; pointer-events:none; border:0; border-radius:0; box-shadow:none; transform:none;
+  font-size:0; background:none; background-image:var(--k-ba,none),var(--k-bb,none),var(--k-glow,none),var(--k-trim,none),var(--k-frame); background-size:100% 100%; background-repeat:no-repeat;}
+.card.kit.ench{--k-glow:url(cards/glows/card/enchanted.svg); --k-ba:url(cards/badges/card/enchanted.svg);}
+.card.kit.buff{--k-glow:url(cards/glows/card/buffed.svg); --k-bb:url(cards/badges/card/buffed.svg);}
+.card.kit.ench.buff{--k-glow:url(cards/glows/card/enchanted-and-buffed.svg);}
+html body .card.kit.ench,html body .card.kit.buff{outline:0; filter:none;}
+
+.card.kit>*{position:absolute; z-index:4; margin:0; padding:0; pointer-events:none; box-sizing:border-box;}
+.card.kit>.k-tex{inset:0; z-index:1; background:var(--k-tex) 0 0/100% 100% no-repeat;}
+.card.kit>.k-art{z-index:1; object-fit:cover; object-position:var(--k-focus,50% 50%); image-rendering:pixelated; background:rgba(0,0,0,.35); border-radius:0; border:0;}
+.card.kit>.k-hidden{background:repeating-linear-gradient(45deg,rgba(0,0,0,.55) 0 6px,rgba(0,0,0,.4) 6px 12px);}
+.card.kit>.k-foil{z-index:2; background-image:var(--k-foil); background-repeat:no-repeat;}
+.card.kit>img{image-rendering:pixelated; object-fit:contain;}
+
+/* icons: a meaning's shape (cards/icons) in the card's own colour; only a dark 1-unit edge is neutral */
+.card.kit .k-ic{display:block; overflow:visible; color:var(--k-ui); fill:currentColor; filter:drop-shadow(0 var(--u) 0 rgba(0,0,0,.55));}
+.card.kit .k-ic .hi{fill:var(--k-lt);}
+.card.kit.c-white .k-ic{filter:none;} .card.kit.c-white .k-ic .hi{fill:var(--k-acc);}
+.card.kit .k-rar.r-common{color:color-mix(in srgb,var(--k-ui) 45%,var(--k-muted));}
+.card.kit .k-rar.r-rare,.card.kit .k-rar.r-legendary,.card.kit .k-rar.r-hero{color:var(--k-lt);}
+.card.kit.c-white .k-rar.r-rare,.card.kit.c-white .k-rar.r-legendary,.card.kit.c-white .k-rar.r-hero{color:var(--k-ui);}
+.card.kit>.k-hero{color:var(--k-lt);} .card.kit>.k-hero .hi{fill:#fff;}
+
+/* single-line text is centred on its painted ink: --ink-dy (set by kitFit from the font's own metrics) moves the line
+   box so the glyphs' middle, not the font box's, sits on the slot's middle. One offset per face, never per letter. */
+.card.kit .k-rune,.card.kit .k-rank{display:flex; align-items:center; justify-content:center; color:#fff; font-size:var(--fs-plate); line-height:var(--lh-plate);
+  border:var(--u) solid; box-shadow:0 0 0 var(--u) #000,inset 0 var(--u) 0 rgba(255,255,255,.18),inset 0 calc(-1 * var(--u)) 0 rgba(0,0,0,.3); background-clip:padding-box;}
+.card.kit .k-rune{background-color:#1d4fae; border-color:#3f8be6;} .card.kit .k-rune.wild{background-color:#5a2c8c; border-color:#9a62d6;}
+.card.kit .k-rank{background-color:#a4231c; border-color:#e2463a;}
+.card.kit :is(.k-rune,.k-rank,.k-name,.k-tline,.k-stat,.k-count)>span{display:block; transform:translateY(calc(var(--ink-dy,0) * 1em)); white-space:nowrap;}
+.card.kit .k-tline>span{transform:translateY(calc(var(--ink-dy-caps,0) * 1em));}
+.card.kit .k-name{display:flex; align-items:center; justify-content:center; text-align:center; color:var(--k-text); font-size:var(--nfs,var(--fs-name)); line-height:var(--lh-name);
+  text-shadow:0 var(--u) 0 rgba(0,0,0,.7);}
+.card.kit .k-name.two>span{white-space:normal; line-height:var(--nlh);}
+.card.kit .k-tline{display:flex; align-items:center; justify-content:center; font-family:'Hex Card Caps',monospace; font-size:var(--tfs,var(--fs-type)); line-height:var(--lh-type); text-transform:uppercase;}
+.card.kit .k-tline i{font-style:normal;} .card.kit .k-type{color:var(--k-ui);} .card.kit .k-cat{color:var(--k-lt);}
+.card.kit .k-tline>span{display:flex; align-items:center;}
+/* the separator dot is drawn, not a glyph, so the gaps either side of it are equal: 6 units each */
+.card.kit .k-dot{display:block; width:calc(2 * var(--u)); height:calc(2 * var(--u)); margin:0 calc(6 * var(--u)); font-size:0; background:var(--k-muted);}
+.card.kit.c-white .k-cat{color:color-mix(in srgb,var(--k-ui) 70%,#000);} .card.kit.c-white .k-dot{background:var(--k-ui);}
+.card.kit .k-stat{display:flex; align-items:center; padding-left:calc(2 * var(--u)); font-size:var(--fs-stat); line-height:var(--lh-stat); text-shadow:0 var(--u) 0 rgba(0,0,0,.7);}
+.card.kit.c-white .k-name,.card.kit.c-white .k-stat{text-shadow:none;}
+.card.kit .k-rules{font-size:var(--rfs,var(--fs-rules)); line-height:var(--rlh,var(--lh-rules)); color:var(--k-text); overflow:hidden; white-space:normal; overflow-wrap:normal; hyphens:none;}
+.card.kit .k-rules.scroll{overflow-y:auto; pointer-events:auto; overscroll-behavior:contain; scrollbar-width:none; touch-action:pan-y; -webkit-overflow-scrolling:touch;}
+.card.kit .k-rules.more{-webkit-mask-image:linear-gradient(#000 70%,transparent); mask-image:linear-gradient(#000 70%,transparent);}
+.card.kit .k-foot{display:grid; grid-template-columns:calc(22 * var(--u)) 1fr; grid-template-rows:1fr 1fr; column-gap:calc(4 * var(--u)); align-items:center;
+  font-size:var(--fs-footer); line-height:var(--lh-footer);}
+.card.kit .k-foot .k-ic{grid-row:1/3; width:calc(22 * var(--u)); height:calc(22 * var(--u));}
+.card.kit .k-foot small{font-size:inherit; color:var(--k-ui); white-space:nowrap; align-self:end;}
+.card.kit .k-foot span{white-space:nowrap; align-self:start; font-size:var(--vfs,inherit);}
+.card.kit .k-count{display:flex; align-items:center; justify-content:center; color:#f4f0dc; font-family:'Hex Card',monospace; font-size:var(--cfs,var(--fs-count)); line-height:var(--lh-count); z-index:5;
+  background:none; border:0; border-radius:0; box-shadow:none; transform:none; right:auto; bottom:auto; max-width:none; text-shadow:none; opacity:1; gap:0;}
+.card.kit .k-count b,.card.kit .k-count i{font:inherit; color:inherit; font-style:normal; transform:none; opacity:1;}
+.card.kit .k-count.dim{color:#9a948a;}
+/* the deck builder's library: in deck / max in the count plaque (the owned count when none are in) */
+html body #dkColl .card.kit .dkown::before{content:'×';}
+html body #dkColl .card.kit .dkfrac~.dkown{display:none;}
+html body #dkColl .card.kit.full .dkfrac{color:#ffd866;}
+
+/* a small card (a hand, a grid of many) keeps the same frame and drops what can't be read at its size: the rules
+   and the footer's words (its icons stay) */
+@container (max-width:179px){
+  .card.kit>.k-rules,.card.kit .k-foot small,.card.kit .k-foot span{visibility:hidden;}
+  .card.kit .k-foot{grid-template-columns:1fr;} .card.kit .k-foot .k-ic{justify-self:center;}
+}
+
+/* the combo / recipe tag over the art's foot (v175) */
+.card.kit>.k-tag{left:50%; top:49%; transform:translateX(-50%); z-index:5; font:800 10px/1.5 var(--font-b); font-style:normal; padding:0 7px; border-radius:99px; white-space:nowrap;}
+
+/* the big card (detail, deck builder's peek, a held card) */
+html body :is(#dtCard,#dkpCard,#peek) .card.kit{width:min(100%,300px,calc(66vh * 240 / 434)); max-width:none; margin-inline:auto;}
+html body #peek .popcard>.card.kit{width:100%;}
+html body #peek .card.kit.big{border:0; padding:0; box-shadow:0 18px 40px rgba(0,0,0,.6);}
+/* a chosen card's ring sits just outside the frame (inside, the frame's layers would cover it) */
+html body .card.kit.chosen{outline:3px solid #ff5d6c; outline-offset:2px;}

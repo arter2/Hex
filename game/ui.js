@@ -26,84 +26,132 @@ const CARD_PAL={
   gray:   {face:'#6f7378', ink:'#f4f5f7', acc:'#d6dade', bd:'#9aa0a6', tb:'rgba(0,0,0,.30)'},
   brown:  {face:'#3a2c22', ink:'#fbf2e8', acc:'#e0b080', bd:'#8a6644', tb:'rgba(0,0,0,.34)'},
 };
-/* Cards (v158): built from the card kit in cards/ (hexmancers-complete-card-svg-kit-v2). A compact card (hand,
-   collection, deck, shop) is the kit's 240x392 canvas; an expanded one (the detail you hold a card to see) is its
-   240x456 canvas, with the rules and a Target / Range footer inside. Every slot is placed in units of that canvas
-   (style.css, .card.kit), so a card is the same picture at any size. Layers, bottom up: the colour's backing, its
-   material texture (one of three, fixed per card), the readability shade, the art, the frame, a state glow, then the
-   glyphs and live text. The game's eight colours are the kit's eight. */
+/* Cards (v179): one card for every screen, the 240x434 canvas of cards/contract.json (see card.css). Where each slot
+   sits and each colour's ramp come from cards/card-geo.css (tools/card-build.py); this builds the layers and the text.
+   Layers, bottom up: the colour's base, its material texture (one of three, fixed per card), the art (and a holo
+   foil), the frame with any state glow, then the glyphs and live text. Every functional icon is a shape from
+   cards/icons drawn in the card's own colour (a mask), so a Pull is blue on a frost card and orange on a fire one.
+   The 'compact' / 'expanded' mode no longer changes the card: a small card simply hides what it can't show (card.css). */
 const KIT_COLOR={fire:'red',frost:'blue',storm:'yellow',verdant:'green',light:'white',shadow:'black',gray:'gray',brown:'brown'};
-const KIT_PAL={
-  red:   {acc:'#ff9255',text:'#f4f0dc',muted:'#abc0cc',tex:['embers','lava-crust','volcanic-ridges']},
-  blue:  {acc:'#4cbcf2',text:'#f4f0dc',muted:'#abc0cc',tex:['water-ripples','cracked-ice','frost-facets']},
-  yellow:{acc:'#f3d441',text:'#f4f0dc',muted:'#abc0cc',tex:['dune-sand','static-arcs','sandstone']},
-  green: {acc:'#70b84e',text:'#f4f0dc',muted:'#abc0cc',tex:['leaves','moss','bark']},
-  brown: {acc:'#b58050',text:'#f4f0dc',muted:'#abc0cc',tex:['parchment','technical-plans','clay']},
-  gray:  {acc:'#9daebe',text:'#f4f0dc',muted:'#abc0cc',tex:['machine-plates','brushed-metal','weld-seams']},
-  white: {acc:'#8a6a1e',text:'#28271f',muted:'#625c47',tex:['ashlar-blocks','column-flutes','veined-marble']},
-  black: {acc:'#b183b3',text:'#f4f0dc',muted:'#abc0cc',tex:['grave-stone','bog','dead-roots']}};
+// each colour's three material textures (palettes.json variants)
+const KIT_TEX={red:['embers','lava-crust','volcanic-ridges'], blue:['water-ripples','cracked-ice','frost-facets'], yellow:['dune-sand','static-arcs','sandstone'],
+  green:['leaves','moss','bark'], brown:['parchment','technical-plans','clay'], gray:['machine-plates','brushed-metal','weld-seams'],
+  white:['ashlar-blocks','column-flutes','veined-marble'], black:['grave-stone','bog','dead-roots']};
 const KIT_RARITY={common:'rarity-common',uncommon:'rarity-uncommon',rare:'rarity-rare',legendary:'rarity',hero:'rarity-hero'};
-// the stat's icon: what the number is (damage, a wall's or a creature's HP, healing, or a status's strength)
-function kitStatIcon(c){ const r=cardRole(c), k=c.type==='piece'?c.base:c.type==='instant'?c.as:c.type;
+const kitKind=c=>c.type==='piece'?c.base:c.type==='instant'?c.as:c.type;
+// the stat's icon: what the number is (damage, a wall's or a creature's HP, healing, or a boost)
+function kitStatIcon(c){ const r=cardRole(c), k=kitKind(c);
+  if(c.upPow||c.tk||c.eqPow) return 'boost';
   if(['summon','machine','sentry','hero'].includes(k)) return 'summon'; if(k==='boon'&&['heal','regen'].includes(c.boon)) return 'heal';
   return r==='attack'?'attack':r==='defense'?'defense':r==='turret'?'turret':'power'; }
-// the expanded card's footer: who it hits and how far it reaches, in a few words
-const KIT_TARGET={strike:'First foe',lob:'Aimed tile',ward:'Your side',sentry:'Your side',boon:'You',charge:'First foe',
-  utility:'Your cards',trap:'Aimed tile',environment:'Enemy side',summon:'Your side',machine:'Your side',hero:'Your side',
-  instant:'At once',equip:'A creature',tinker:'A card',ace:'Sidearm',aceup:'Sidearm',claim:'Enemy front'};
-const KIT_RANGE={all:'Every foe',spear:'Pierces',line:'Your row',zigzag:'Zigzag',wedge:'Cone',snipe:'Any tile',shockwave:'Around you',
-  row:'Whole row',missiles:'Random',wave:'Wave',mine:'One tile',column:'Column',chain:'Chains',boomerang:'Out & back',nova:'Around you',twin:'Two rows'};
-function kitTexture(c,col){ let h=0; for(const ch of String(c.id)) h=(h*31+ch.charCodeAt(0))>>>0; return KIT_PAL[col].tex[h%3]; }
-// the name: two lines at most, the font stepping down so a long one still fits
-function kitNameSize(name,big){ for(const s of big?[26,23,20,18,16]:[26,22,19,16,14]){ const per=Math.floor(204/(s*.5)); let lines=1, len=0;
-    for(const w of String(name).split(/\s+/)){ if(len&&len+1+w.length>per){ lines++; len=w.length; } else len+=(len?1:0)+w.length; }
-    if(lines<=(big?1:2)||s<=16&&lines<=2) return s; } return 14; }
 // the stat: damage, HP or healing; an enchantment's or a tinker's boost as a percentage
 function kitStat(c){ if(c.upPow) return '+'+Math.round(c.upPow*100)+'%'; if(c.tk) return '+'+Math.round(c.tk*100)+'%'; if(c.eqPow) return '+'+Math.round(c.eqPow*100)+'%';
   return c.pow||(c.boon!=='gauge'&&c.amt)||c.hp||c.eqHp||''; }
-// the expanded card's footer: the two facts that matter most for this card, from its own data
-const KIT_KW=[['burn','status','Burn',v=>v+'s'],['freeze','status','Freeze',v=>v+'s'],['stun','status','Stun',v=>v+'s'],['slow','status','Slow',v=>v+'s'],
-  ['poison','status','Poison',v=>v],['curse','debuffed','Curse',v=>v+'s'],['drain','drain','Drain',v=>Math.round(v*100)+'%'],['mend','heal','Mend',v=>v],
-  ['confuse','status','Confuse',v=>v+'s'],['push','area','Knockback',()=>'Yes'],['pull','area','Pull',()=>'Yes'],['valor','buffed','Valor',()=>'Yes']];
-function kitFooter(c){ const kind=c.type==='piece'?c.base:c.type==='instant'?c.as:c.type, out=[];
-  if(kind==='aceup'){ out.push(['power','Effect',c.upShape?{row:'Whole row',all:'Every enemy',nova:'Around target',twin:'Twice'}[c.upShape]:(KIT_KW.find(k=>c[k[0]])||[,,'+'+Math.round(c.upPow*100)+'%'])[2]],['plus','Applies','Next Ace']); return out; }
-  if(c.uses) out.push(['uses','Uses',c.uses]);
-  for(const [k,ic,lab,f] of KIT_KW) if(c[k]) out.push([ic,lab,f(c[k])]);
+/* The footer: two facts, by kind of card.
+   - an Ace enchantment: the effect it adds (its own icon) and that it goes on the next Ace;
+   - a card with uses: its uses, then its keyword (else whom it hits);
+   - an attack: whom it hits and how far it reaches (the shape's own rule: a Snipe hits the lowest HP anywhere);
+   - anything else: its keyword, how long it lasts, whom it's for, in that order. */
+const KIT_KW=[['burn','burn','Burn',v=>v+'s'],['freeze','freeze','Freeze',v=>v+'s'],['stun','stun','Stun',v=>v+'s'],['slow','duration','Slow',v=>v+'s'],
+  ['poison','drain','Poison',v=>v],['curse','debuffed','Curse',v=>v+'s'],['drain','drain','Drain',v=>Math.round(v*100)+'%'],['mend','heal','Mend',v=>v],
+  ['confuse','status','Confuse',v=>v+'s'],['push','push','Knockback',()=>'Yes'],['pull','pull','Pull',()=>'Yes'],['valor','buffed','Valor',()=>'Yes']];
+// whom an attack hits and how far it reaches, by shape (strikes.js STRIKE_SHAPES; the older shapes after)
+const KIT_AIM={twin:['First foe','Row + next'], fan:['First foe','Row + diagonals'], spear:['First 2 foes','Your row'], boomerang:['Each foe once','Row + next'],
+  gun:['Your row','Follows you'], wave:['Every row','Sweeps ahead'], burst:['First foe','And around it'], chain:['First foe','Jumps twice'],
+  ricochet:['Bounces','Off the edges'], snipe:['Lowest HP','Any tile'], shockwave:['Every foe','4 tiles of you'], column:['Aimed line','Every row'],
+  mark:['Aimed foe','Blows in 1.5s'], cluster:['Aimed tile','Bomblets'], mine:['Aimed tile','When stepped'],
+  line:['First foe','Your row'], all:['Every foe','Anywhere'], row:['Whole row','Your row'], wedge:['Cone','Ahead of you'], zigzag:['First foe','Zigzag'],
+  missiles:['Random foes','Anywhere'], diag:['Diagonals','Both ways'], dig:['First foe','Your row']};
+// a lobbed attack's reach, by its pattern (cards.js lobPattern)
+const KIT_PATTERN={single:'One tile', burst:'And around it', ring:'Ring round it', cross:'+ shape', column:'Its column', row:'Its row'};
+const KIT_TARGET={strike:'First foe',lob:'Aimed tile',ward:'Your side',sentry:'Your side',boon:'You',charge:'Aimed tile',
+  utility:'Your cards',trap:'Aimed tile',environment:'Enemy side',summon:'Your side',machine:'Your side',hero:'Your side',
+  instant:'At once',equip:'A creature',tinker:'A card',ace:'Sidearm',aceup:'Sidearm',claim:'Enemy front'};
+function kitFooter(c){ const kind=kitKind(c), kw=KIT_KW.filter(k=>c[k[0]]).map(([k,ic,lab,f])=>[ic,lab,f(c[k])]);
+  const aim=KIT_AIM[c.shape]||(kind==='lob'||c.shot==='lob'?['Aimed tile',KIT_PATTERN[lobPattern(c)]]:null);
+  const tgt=['target','Target',aim?aim[0]:KIT_TARGET[kind]||(TYPES[c.type]||{}).name||'—'], rng=['range','Range',aim&&aim[1]||'—'];
+  if(kind==='aceup'){ const shape=c.upShape&&{row:'Whole row',all:'Every enemy',nova:'Around target',twin:'Twice'}[c.upShape];
+    return [kw[0]&&!shape?[kw[0][0],'Effect',kw[0][1]]:['boost','Effect',shape||'+'+Math.round(c.upPow*100)+'%'],['applies','Applies','Next Ace']]; }
+  if(c.uses) return [['uses','Uses',c.uses],kw[0]||tgt];
+  if(cardRole(c)==='attack') return [tgt,aim?rng:kw[0]||rng];
+  const out=[...kw];
   if(c.turns&&['summon','machine','sentry','hero','ward','trap','environment'].includes(kind)) out.push(['duration','Lasts',Math.round(c.turns*10)+'s']);
   if(c.dur) out.push(['duration','Lasts',c.dur+'s']);
-  out.push(['target','Target',KIT_TARGET[kind]||(TYPES[c.type]||{}).name||'—'],['range','Range',KIT_RANGE[c.shape]||'—']);
-  return out.slice(0,2); }
+  out.push(tgt,rng); return out.slice(0,2); }
+// where a square picture's subject sits, when the wide art window crops it (x% y%); the middle otherwise
+const ART_FOCUS={ember_dart:'50% 30%'};
+const kitIcon=(cls,n,label)=>`<svg class="k-ic ${cls}" viewBox="0 0 32 32" shape-rendering="crispEdges"${label?` role="img" aria-label="${esc(label)}"`:' aria-hidden="true"'}>${KIT_ICONS[n]||''}</svg>`;
 function cardEl(c,extra,locked,mode,opts={}){
-  const el=document.createElement('button'), col=COLORS[c.color], kc=KIT_COLOR[c.color]||'gray', P=KIT_PAL[kc], big=mode==='expanded', m=big?'expanded':'compact';
-  el.className='card kit '+m+(c.rarity==='legendary'?' leg':'')+(c.rarity==='hero'?' hero':'')+(locked?' locked':'')+(c.mastery?' mcard':'')+(kc==='white'?' lt':' dk');
-  el.style.setProperty('--c',col.c); const R=ROLES[cardRole(c)]; el.style.setProperty('--rc',R.c);
-  const tex=kitTexture(c,kc), u=p=>'url(cards/'+p+')';
-  // backing, texture and shade, in the kit's order (the texture's strength is its texture-ink group's opacity)
-  el.style.setProperty('--k-base',u('backgrounds/'+m+'/'+kc+'-base.svg')); el.style.setProperty('--k-tex',u('textures/'+m+'/'+kc+'-'+tex+'.svg'));
-  el.style.setProperty('--k-shade',u('backgrounds/'+m+'/'+kc+'-shade.svg')); el.style.setProperty('--k-frame',u('frames/'+m+'/'+kc+'.svg'));
+  const el=document.createElement('button'), col=COLORS[c.color], kc=KIT_COLOR[c.color]||'gray', big=mode==='expanded';
+  el.className='card kit c-'+kc+(big?' expanded':' compact')+(c.rarity==='legendary'?' leg':'')+(c.rarity==='hero'?' hero':'')+(locked?' locked':'')+(c.mastery?' mcard':'');
+  el.style.setProperty('--c',col.c);
+  const tex=KIT_TEX[kc][[...String(c.id)].reduce((h,ch)=>(h*31+ch.charCodeAt(0))>>>0,0)%3], u=p=>'url(cards/'+p+')';
+  el.style.setProperty('--k-tex',u('textures/card/'+kc+'-'+tex+'.svg')); el.style.setProperty('--k-frame',u('frames/card/'+kc+'.svg'));
+  if(ART_FOCUS[c.id]) el.style.setProperty('--k-focus',ART_FOCUS[c.id]);
   // holo: a legendary you own a holo copy of (or one passed in as holo); the moving foil only on the big card
   const holo=!locked&&c.rarity==='legendary'&&(opts.holo||typeof holoCount==='function'&&holoCount(save,c.id)>0);
   if(holo){ const mv=big&&!(typeof matchMedia==='function'&&matchMedia('(prefers-reduced-motion: reduce)').matches)?'-animated':'';
-    el.classList.add('holo'); el.style.setProperty('--k-foil',[u('effects/'+m+'/foil-glints'+mv+'.svg'),u('effects/'+m+'/foil-shimmer'+mv+'.svg'),u('effects/'+m+'/foil-etch.svg'),u('foils/'+m+'/'+kc+'/art'+mv+'.svg')].join(','));
-    el.style.setProperty('--k-trim',u('foils/'+m+'/'+kc+'/trim'+mv+'.svg')); }
-  el.style.setProperty('--k-acc',P.acc); el.style.setProperty('--k-text',P.text); el.style.setProperty('--k-muted',P.muted);
-  const T=TYPES[c.type]||{name:''}, stat=kitStat(c), name=locked?'???':c.name, hero=c.rarity==='hero';
-  const icon=(cls,n)=>`<img class="${cls}" src="cards/icons/${n}.svg" alt="" draggable="false">`;
-  let h='<i class="k-tex"></i><i class="k-shade"></i>'+(holo?'<i class="k-foil"></i>':'')+icon('k-el','element-'+kc)
-    +(hero?'<img class="k-hero" src="cards/symbols/hero-star.svg" alt="Hero" draggable="false">':c.code&&!locked?`<b class="k-rune${c.code==='✱'?' wild':''}" title="Rune ${c.code}">${c.code}</b>`:'')
-    +`<b class="k-rank">${c.rank}</b>`
-    +`<b class="k-name" style="--ns:${kitNameSize(name,big)}">${esc(name)}</b>`
+    el.classList.add('holo'); el.style.setProperty('--k-foil',[u('effects/expanded/foil-glints'+mv+'.svg'),u('effects/expanded/foil-shimmer'+mv+'.svg'),u('effects/expanded/foil-etch.svg'),u('foils/expanded/'+kc+'/art'+mv+'.svg')].join(','));
+    el.style.setProperty('--k-trim',u('foils/card/'+kc+'/trim'+mv+'.svg')); }
+  const T=TYPES[c.type]||{name:''}, R=ROLES[cardRole(c)], stat=locked?'':kitStat(c), name=locked?'???':c.name, hero=c.rarity==='hero';
+  const rules=locked?'Not found yet.':cardText(c), foot=locked?[['target','Target','—'],['range','Range','—']]:kitFooter(c);
+  el.dataset.kname=name; el.dataset.ktype=T.name+'|'+R.name; el.dataset.kstat=stat;
+  let h='<i class="k-tex"></i>'+(holo?'<i class="k-foil"></i>':'')
+    +`<img class="k-el" src="cards/icons/element-${kc}${kc==='white'?'-ink':''}.svg" alt="${esc(col.name||'')}" draggable="false">`
+    +(hero?kitIcon('k-hero','hero-star','Hero'):c.code&&!locked?`<b class="k-rune${c.code===WILD?' wild':''}" title="Rune ${c.code}"><span>${c.code}</span></b>`:'')
+    +`<b class="k-rank" title="Rank ${c.rank}"><span>${c.rank}</span></b>`
+    +`<b class="k-name"><span>${esc(name)}</span></b>`
     +(locked?'<span class="k-art k-hidden"></span>':`<img class="k-art" src="${artURL(c)}" alt="" draggable="false">`)
-    +`<span class="k-tline"><i class="k-type">${esc(T.name)}</i><i class="k-dot">·</i><i class="k-cat" style="color:${R.c}">${esc(R.name)}</i></span>`
-    +(locked?'':icon('k-sicon',kitStatIcon(c))+`<b class="k-stat">${stat}</b>`)
-    +'<i class="k-sdiv"></i>'+icon('k-rar',KIT_RARITY[c.rarity]||'rarity');
-  if(big){ h+=`<div class="k-rules">${esc(locked?'Not found yet.':cardText(c))}</div>`;
-    (locked?[['target','Target','—'],['range','Range','—']]:kitFooter(c)).forEach(([ic,lab,val],k)=>{
-      h+=`<span class="k-foot k-f${k}" title="${esc(lab+': '+val)}">${icon('k-ficon',ic)}<small>${esc(lab)}:</small><span>${esc(String(val))}</span></span>`; }); }
+    +`<span class="k-tline"><span><i class="k-type">${esc(T.name)}</i><i class="k-dot">·</i><i class="k-cat">${esc(R.name)}</i></span></span>`
+    +(locked?'':kitIcon('k-sicon',kitStatIcon(c))+`<b class="k-stat"><span>${stat}</span></b>`)
+    +kitIcon('k-rar r-'+c.rarity,KIT_RARITY[c.rarity]||'rarity',(RARITY[c.rarity]||{}).n)
+    +`<div class="k-rules" title="${esc(rules)}">${esc(rules)}</div>`;
+  foot.forEach(([ic,lab,val],k)=>{ h+=`<span class="k-foot k-f${k}" title="${esc(lab+': '+val)}">${kitIcon('',ic)}<small>${esc(lab)}:</small><span>${esc(String(val))}</span></span>`; });
   el.innerHTML=h;
   if(extra) el.insertAdjacentHTML('beforeend',extra);
+  // a plain count badge (×2, 1/3, Lv 6) goes in the count plaque
+  el.querySelectorAll(':scope>.badge:not(.new):not(.inst):not(.tink),:scope>.dkfrac,:scope>.dkown').forEach(b=>{ b.classList.add('k-count'); if(!b.firstElementChild) b.innerHTML='<span>'+b.innerHTML+'</span>'; });
+  kitFit(el);
   return el;
 }
+/* Fitting, in canvas units, so it holds at any card size: each text's width is measured with the card's own font
+   (a canvas, once the fonts are in) and its size steps down until it fits its slot less 2 units each side. Sizes start
+   at the contract's (KIT_GEO, cards/card-geo.js):
+   - name: one line, stepping 29 > 26 > 23 > 20 > 18; a name too long for that takes two centred lines at 15 on 14;
+   - type line: type · role, whole, 16 down to 10;
+   - rules: 18 on 16.5 (3 lines), 16 on 14.5 (4), 14 on 12 (5); longer still, the box scrolls on a big card (a fade
+     at its foot), and the full text is in its title either way;
+   - footer value: 14 down to 10; count: 22 down to 14.
+   The faces' vertical ink centring (--ink-dy) is measured here too, once per face. */
+const KIT_FIT={canvas:null, ready:false};
+function kitMeasure(text,px,face){ const cv=KIT_FIT.canvas||(KIT_FIT.canvas=document.createElement('canvas')), x=cv.getContext('2d');
+  x.font=px+'px "'+(face||'Hex Card')+'"'; return x.measureText(text).width; }
+function kitLines(text,px,width){ let n=1, line=0; const sp=kitMeasure(' ',px);
+  for(const w of String(text).split(/\s+/)){ const ww=kitMeasure(w,px); if(line&&line+sp+ww>width){ n++; line=ww; } else line+=(line?sp:0)+ww; } return n; }
+function kitInk(face){ const cv=KIT_FIT.canvas||(KIT_FIT.canvas=document.createElement('canvas')), x=cv.getContext('2d'); x.font='100px "'+face+'"';
+  const m=x.measureText('BFEIW127+%'), A=m.fontBoundingBoxAscent, D=m.fontBoundingBoxDescent;
+  return A==null?0:((D-A)+(m.actualBoundingBoxAscent-m.actualBoundingBoxDescent))/2/100; }
+function kitFit(el){ if(!el||!el.dataset||el.dataset.kname==null){ if(el&&el.querySelectorAll) el.querySelectorAll('.card.kit').forEach(kitFit); return; }
+  if(!KIT_FIT.ready&&!(document.fonts&&document.fonts.check('12px "Hex Card"')&&document.fonts.check('12px "Hex Card Caps"'))) return;
+  if(!KIT_FIT.ready){ KIT_FIT.ready=true; const r=document.documentElement.style; r.setProperty('--ink-dy',kitInk('Hex Card').toFixed(3)); r.setProperty('--ink-dy-caps',kitInk('Hex Card Caps').toFixed(3)); }
+  const G=KIT_GEO, pad=2*G.w.pad, set=(e,k,v)=>e.style.setProperty(k,'calc('+v+' * var(--u))'), steps=(a,b,d)=>{ const o=[]; for(let s=a;s>=b;s-=d) o.push(s); return o; };
+  const name=el.dataset.kname, nm=el.querySelector('.k-name'), ns=[29,26,23,20,18].find(s=>kitMeasure(name,s)<=G.w.name-pad);
+  nm.classList.toggle('two',!ns); set(el,'--nfs',ns||15); if(!ns) set(el,'--nlh',14);
+  const [ty,ro]=el.dataset.ktype.split('|'), tw=s=>kitMeasure((ty+ro).toUpperCase(),s,'Hex Card Caps')+14;   // + the drawn dot and its gaps
+  set(el,'--tfs',steps(G.type.type[0],10,1).find(s=>tw(s)<=G.w.type-pad)||10);
+  const rb=el.querySelector('.k-rules'), rt=rb.textContent, fit=[[18,16.5],[16,14.5],[14,12]].find(([s,l])=>kitLines(rt,s,G.w.rules)*l<=G.w.rulesH)||[14,12];
+  set(el,'--rfs',fit[0]); set(el,'--rlh',fit[1]); rb.classList.toggle('scroll',kitLines(rt,fit[0],G.w.rules)*fit[1]>G.w.rulesH);
+  el.querySelectorAll('.k-foot>span').forEach(v=>set(v,'--vfs',steps(G.type.footer[0],10,1).find(s=>kitMeasure(v.textContent,s)<=G.w.foot)||10));
+  el.querySelectorAll('.k-count').forEach(b=>set(b,'--cfs',steps(G.type.count[0],14,1).find(s=>kitMeasure(b.textContent,s)<=G.w.count-pad)||14));
+  // short glyph runs (rune, rank, count) centre on their own painted ink, measured for the string itself
+  el.querySelectorAll(':scope>:is(.k-rune,.k-rank,.k-count)>span').forEach(sp=>{ const o=kitInkOf(sp.textContent); sp.style.transform='translate('+o[0].toFixed(3)+'em,'+o[1].toFixed(3)+'em)'; }); }
+// how far (in em) to move a run so its ink's middle sits where its font box's middle is: [dx, dy]
+function kitInkOf(text){ const x=(KIT_FIT.canvas||(KIT_FIT.canvas=document.createElement('canvas'))).getContext('2d'); x.font='100px "Hex Card"';
+  const m=x.measureText(text); if(m.fontBoundingBoxAscent==null) return [0,0];
+  return [(m.width/2-(m.actualBoundingBoxRight-m.actualBoundingBoxLeft)/2)/100,
+    ((m.fontBoundingBoxDescent-m.fontBoundingBoxAscent)+(m.actualBoundingBoxAscent-m.actualBoundingBoxDescent))/2/100]; }
+// once the card fonts are in, fit every card already drawn
+if(document.fonts) document.fonts.load('12px "Hex Card"').then(()=>document.fonts.load('12px "Hex Card Caps"')).then(()=>kitFit(document)).catch(()=>{});
 
 function showDetail(c){
   const box=$('#dtCard'); box.innerHTML=''; box.appendChild(cardEl(c,'',!c.recipe&&!save.seen[c.id],'expanded'));

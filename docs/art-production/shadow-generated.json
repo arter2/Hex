@@ -1,0 +1,18 @@
+[
+  {
+    "cardId": "shadow_strike_01",
+    "name": "Bone Splinter",
+    "prompt": "Square 512x512 illustration only for a medieval fantasy collectible card, painterly, richly detailed fantasy card painting with tactile materials and dramatic readable lighting. Bone Splinter: three sharpened ivory bone darts magically flying in a tight straight line through a moonlit crypt, one large foreground shard and two smaller trailing splinters. Faint teal curse gleam on their edges. Bone darts dominant, clearly lit pale ivory with crisp shape against soft blue gray stone and mist. Entire shards and action inside central horizontal safe band x24..488,y105..407; top and bottom only atmosphere. One dominant action, quiet background. No text, frame, UI, numbers, characters, photorealism, anime, Disney style, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-cca2881c-45f7-414b-a3f9-514f24dfa774.png",
+    "focalPoint": [0.5, 0.5],
+    "status": "generated"
+  },
+  {
+    "cardId": "shadow_strike_16",
+    "name": "Hellfire Lash",
+    "prompt": "Square 512x512 illustration only for a medieval fantasy collectible card, painterly with finely rendered materials and rich atmosphere, dramatic readable light. Hellfire Lash: one vivid curving whip of infernal flame snapping in a pronounced zigzag, its flaming tip striking a weathered dark stone shield and scattering a few sparks. The flame and impact form the dominant clear focal action, glowing gold, orange, crimson, with textured edges; blurred crypt forge behind in smoky plum and blue gray. Keep the complete lash path and strike point inside the central horizontal safe band x24..488,y105..407; expendable atmosphere only above and below. Well lit and legible, never muddy near-black. No people, no text, no letters, no frame, no UI, no numbers. No Disney style, anime, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c336ed35-a15f-492d-bf1f-2237c17bd2c8.png",
+    "focalPoint": [0.5, 0.5],
+    "status": "generated"
+  }
+]

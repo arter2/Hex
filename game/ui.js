@@ -80,6 +80,13 @@ function kitFooter(c){ const kind=kitKind(c), kw=KIT_KW.filter(k=>c[k[0]]).map((
   out.push(tgt,rng); return out.slice(0,2); }
 // where a square picture's subject sits, when the wide art window crops it (x% y%); the middle otherwise
 const ART_FOCUS={ember_dart:'50% 30%'};
+// Each painterly card has a thumbnail, a medium crop and a full-detail crop. Batch measurements so
+// collection rendering does not repeatedly force layout, and do not retain removed image elements.
+const KIT_ART_PENDING=new Set(); let kitArtFrame=0;
+function kitArtSize(img){ if(!img) return; KIT_ART_PENDING.add(img); if(kitArtFrame) return;
+  kitArtFrame=requestAnimationFrame(()=>{kitArtFrame=0; const sizes=[...KIT_ART_PENDING].filter(i=>i.isConnected).map(i=>[i,Math.ceil(i.getBoundingClientRect().width)]);KIT_ART_PENDING.clear();for(const [i,w]of sizes)if(w>0)i.sizes=w+'px';}); }
+addEventListener('resize',()=>document.querySelectorAll('img[data-art-master]').forEach(kitArtSize));
+function kitArtSources(c,big){ const v=typeof cardArtVariants==='function'&&cardArtVariants(c); return v?` srcset="${v.outputs.map(o=>o.url+' '+o.width+'w').join(', ')}" sizes="${big?206:103}px" data-art-master="${v.master}" decoding="async"`:''; }
 const kitIcon=(cls,n,label)=>`<svg class="k-ic ${cls}" viewBox="0 0 32 32" shape-rendering="crispEdges"${label?` role="img" aria-label="${esc(label)}"`:' aria-hidden="true"'}>${KIT_ICONS[n]||''}</svg>`;
 function cardEl(c,extra,locked,mode,opts={}){
   const el=document.createElement('button'), col=COLORS[c.color], kc=KIT_COLOR[c.color]||'gray', big=mode==='expanded';
@@ -101,13 +108,14 @@ function cardEl(c,extra,locked,mode,opts={}){
     +(hero?kitIcon('k-hero','hero-star','Hero'):c.code&&!locked?`<b class="k-rune${c.code===WILD?' wild':''}" title="Rune ${c.code}"><span>${c.code}</span></b>`:'')
     +`<b class="k-rank" title="Rank ${c.rank}"><span>${c.rank}</span></b>`
     +`<b class="k-name"><span>${esc(name)}</span></b>`
-    +(locked?'<span class="k-art k-hidden"></span>':`<img class="k-art${typeof cardIllustration==='function'&&cardIllustration(c)?' illustrated':''}" src="${artURL(c)}" alt="" draggable="false">`)
+    +(locked?'<span class="k-art k-hidden"></span>':`<img class="k-art${typeof cardIllustration==='function'&&cardIllustration(c)?' illustrated':''}" src="${artURL(c)}"${kitArtSources(c,big)} alt="" draggable="false">`)
     +`<span class="k-tline"><span><i class="k-type">${esc(T.name)}</i><i class="k-dot">·</i><i class="k-cat">${esc(R.name)}</i></span></span>`
     +(locked?'':kitIcon('k-sicon',kitStatIcon(c))+`<b class="k-stat"><span>${stat}</span></b>`)
     +kitIcon('k-rar r-'+c.rarity,KIT_RARITY[c.rarity]||'rarity',(RARITY[c.rarity]||{}).n)
     +`<div class="k-rules" title="${esc(rules)}">${esc(rules)}</div>`;
   foot.forEach(([ic,lab,val],k)=>{ h+=`<span class="k-foot k-f${k}" title="${esc(lab+': '+val)}">${kitIcon('',ic)}<small>${esc(lab)}:</small><span>${esc(String(val))}</span></span>`; });
   el.innerHTML=h;
+  kitArtSize(el.querySelector('img[data-art-master]'));
   if(extra) el.insertAdjacentHTML('beforeend',extra);
   // a plain count badge (×2, 1/3, Lv 6) goes in the count plaque
   el.querySelectorAll(':scope>.badge:not(.new):not(.inst):not(.tink),:scope>.dkfrac,:scope>.dkown').forEach(b=>{ b.classList.add('k-count'); if(!b.firstElementChild) b.innerHTML='<span>'+b.innerHTML+'</span>'; });
@@ -161,6 +169,7 @@ function showDetail(c){
     :'Not found yet. '+RARITY[c.rarity].n+' '+COLORS[c.color].name+' '+TYPES[c.type].name+'.';
   { const found=RECIPES.filter(r=>recipeKnown(r)&&r.cards.includes(c.id)); if(found.length) $('#dtInfo').textContent+=' · ⚗ Part of: '+found.map(r=>r.name).join(', '); }
   if(c.uses&&save.owned[c.id]) $('#dtInfo').textContent+=' · uses left per copy: '+Array.from({length:save.owned[c.id]},(_,k)=>chargeLeft(save,c.id,k)+'/'+c.uses).join(', ');
+  { const v=typeof cardArtVariants==='function'&&cardArtVariants(c); if(v&&save.seen[c.id]){const a=document.createElement('a');a.href=v.master;a.target='_blank';a.rel='noopener';a.textContent='View full artwork';a.style.cssText='display:block;margin-top:8px;color:inherit';$('#dtInfo').append(a);} }
   dtShards(c);
   $('#detail').classList.add('on'); cardPopWire($('#detail'),$('#dtCard'),()=>$('#detail').classList.remove('on'));
 }

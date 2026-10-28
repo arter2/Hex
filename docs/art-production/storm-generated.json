@@ -1,0 +1,26 @@
+[
+  {
+    "cardId": "storm_lob_01",
+    "name": "Lightning in a Bottle",
+    "prompt": "Square 512x512 painterly medieval fantasy collectible-card illustration of a charged hand-blown green glass bottle with a dark cork and fine brass wire cage, suspended in a storm-lit alchemist's workshop. A compact branching blue-white lightning bolt coils in a tight spiral inside the glass, illuminating tiny bubbles and the curved vessel; a few subtle sparks escape around the cork. The large, unmistakable primary subject is shown in three-quarter view with grounded glass, tarnished brass, and leather materials, cinematic chiaroscuro and atmospheric depth. Keep the bottle and key lightning action entirely within central safe band x24..488, y105..407 on the square; quieter workshop atmosphere in top and bottom margins for a 206:141 crop. Controlled blue-white accents against warm bronze and charcoal. No modern technology, words, numbers, borders, interface, logo, watermark, Disney, anime, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5f902351-9d12-4503-bf9b-ef70829e9874.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "reviewNote": "Corrected the original output association, then repainted the composition so the complete cork-to-base bottle fits the 206:141 crop. Prior source preserved outside the exports.",
+    "revisionPrompt": "Preserve the painterly medieval workshop, glass/brass bottle and contained lightning. Reduce the bottle height so its entire cork and base fit inside x24..488,y105..407 on a 512 square. Fill top and bottom with coherent workshop atmosphere and tabletop; no text/frame."
+  },
+  {
+    "cardId": "storm_summon_49",
+    "name": "Thunder Hawk",
+    "prompt": "Square 512x512 painterly medieval fantasy collectible-card illustration of an enormous storm hawk with bronze-brown feathers and pale gold crest diving through layered thunderclouds, wings spread, blue-white lightning arcing between its talons and the clouds. The hawk is the large clear central subject, fierce but natural, with readable anatomy, rich individual feather texture, storm-lit atmosphere, grounded materials, and cinematic brushwork. Keep the whole head, body, wings, and lightning action inside x24..488, y105..407 central safe band on the square, with quieter cloud atmosphere in top and bottom margins for a 206:141 crop. Storm blue-gray clouds, restrained electric blue-white highlights, warm bronze feather accents. No words, numbers, borders, frames, interface, logos, watermark, Disney, anime, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f4225853-c321-46a5-8c77-0d50f023eda2.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated"
+  }
+]

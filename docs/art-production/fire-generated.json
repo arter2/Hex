@@ -1,0 +1,18 @@
+[
+  {
+    "cardId": "ember_dart",
+    "name": "Ember Dart",
+    "prompt": "Create a square 512x512 master illustration for a medieval fantasy collectible card, art only, no frame, no border, no lettering, no symbols, no interface. Scene: a nimble fire mage archer releases one small ember dart from a short darkwood hand bow, the tiny arrow burning with a concentrated orange-white ember tip as it streaks toward a distant shadowy foe; this is a quick, precise snipe that leaves a lingering burn. The archer's focused face, drawing hand, bow, and fiery dart are all clearly visible, with believable leather, wood, cloth, and metal details. Painterly traditional fantasy card illustration with confident brushwork, rich believable materials, cinematic dusk light, nuanced smoke, warm ember glow against a cool volcanic pass, atmospheric depth. Mature high fantasy collectible card art, evocative of classic tabletop fantasy painting. Not anime, not Disney cartoon, not photorealistic, no pixel art. Composition designed for a 206:141 horizontal crop from the center of this square: keep all critical face, hands, bow, and dart within x=24..488 and y=105..407; upper and lower margins may contain expendable quiet background. Main subject occupies about 70% of the central crop, simple readable silhouette, restrained background.",
+    "generatedLocalPath": "/workspace/generated_images/exec-4e0609db-413e-4e66-ae6b-128e596e9349.png",
+    "intendedFocalPoint": { "x": 0.5, "y": 0.5 },
+    "status": "generated"
+  },
+  {
+    "cardId": "fire_pot",
+    "name": "Fire Pot",
+    "prompt": "Create a square 512x512 master illustration for a medieval fantasy collectible card, art only, no frame, no border, no lettering, no symbols, no interface. Scene: a soot-smudged goblin sapper in rugged leather gloves has just hurled a hand-sized earthenware fire pot across a stone battlefield; the pot is a prominent glazed clay vessel with a rag fuse burning, caught midair above the ground as it bursts into a cross-shaped splash of Greek fire, orange flames pushing dust, sparks and loose debris outward. Show the goblin's determined face and throwing arm, pot and bright impact all unmistakable. Medieval materials, hand-made ceramic, leather, rough stone. Painterly traditional fantasy collectible-card illustration with expressive brushwork, warm dramatic firelight, cool smoky background and atmospheric depth, refined believable materials. Not anime, not Disney cartoon, not photorealistic, no pixel art, no modern tech. Composition designed for a 206:141 horizontal crop from the center of this square: keep all critical face, throwing hand, pot and impact within x=24..488 and y=105..407; upper and lower margins may contain expendable quiet background. Main subject occupies 70% of the central crop, simple clear action and quiet background.",
+    "generatedLocalPath": "/workspace/generated_images/exec-ac346961-0d25-453e-bcd4-387e0c427265.png",
+    "intendedFocalPoint": { "x": 0.5, "y": 0.5 },
+    "status": "generated"
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "cardId": "light_ward_17",
+    "name": "Aegis of Athena",
+    "prompt": "A square medieval fantasy collectible card painting of the Aegis of Athena: one enormous ancient Greek round shield dominates the composition, centered front-facing with a slight three-quarter tilt, occupying most of the central area. The shield has convincing hammered bronze edge, rich dark navy enamel, a striking embossed sculpted female face of Athena wearing a classical crested helmet, restrained serpent motif around the rim, and a few fine luminous golden lightning veins expressing a powerful protective ward. Shield only, no hand, no warrior. Behind it, soft out-of-focus broken marble temple columns and dawn light. Painterly oil and gouache texture, mature serious high-fantasy atmosphere, warm reflected gold light balanced by cool shadows, clear shape and details at 96px card size. Keep the whole shield and face within central safe region x24..488, y105..407 of the square; background can continue into top and bottom. No text, frame, border, UI, symbols. Not cartoon, anime, photorealistic, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c7bbd557-be02-4f8e-9d93-ba3571927f66.png",
+    "focalPoint": [0.5, 0.5],
+    "status": "generated"
+  },
+  {
+    "cardId": "light_sentry_12",
+    "name": "Pharos of Alexandria",
+    "prompt": "Square painterly medieval fantasy collectible card illustration of the Pharos of Alexandria as a legendary sentry tower: monumental ancient lighthouse rising from a rocky harbor promontory, large centered strong vertical silhouette, octagonal pale limestone tiers and bronze details, an intense golden beacon blazing from the summit and sending one clear narrow magical bolt of sunlight toward the distant storm-dark sea. A few tiny ships below only for scale; tower and beam dominate. Painterly oil and gouache, atmospheric MTG-like dramatic light, convincing carved stone, warm gold light against deep blue sea and sky, controlled contrast, readable at 96px. Keep tower and important beacon action within x24..488 and y105..407 in the square, centered; extra sky and sea can extend into margins. No frame, border, text, numbers, symbols, or UI. Not cartoon, anime, photorealistic, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-06e1c58e-3a08-4108-b934-88ca5e2ca1fa.png",
+    "focalPoint": [0.5, 0.5],
+    "status": "generated"
+  }
+]

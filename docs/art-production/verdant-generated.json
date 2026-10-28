@@ -1,0 +1,18 @@
+[
+  {
+    "cardId": "verdant_charge_08",
+    "name": "Monkey's Fruit Stash",
+    "prompt": "Square 512x512 illustration-only image for a Verdant medieval fantasy collectible card called “Monkey’s Fruit Stash.” A small capuchin monkey crouches beneath banyan roots, wearing a worn leather sling pouch visibly stuffed with bright mangoes, guavas, and berries; it grips a ripe golden fruit as if about to lob it. Make the monkey’s face and both hands, the full sling pouch, and fruits the obvious central subject. Ensure all critical details lie inside central safe area x=24..488 y=105..407, with focal point around (256,260) and ample expendable forest scenery above and below. Painterly detailed fantasy game illustration, rich fur and leather textures, believable natural dappled light, layered forest atmosphere, rich but controlled colors, strong readable silhouette at thumbnail scale. Medieval collectible-card art finish. No frame, border, words, symbols, numbers, UI, or watermark. No cartoon, anime, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f1ce297e-3f7e-4fb3-949c-704387735956.png",
+    "focalPoint": [0.5, 0.5],
+    "status": "generated"
+  },
+  {
+    "cardId": "verdant_summon_44",
+    "name": "Capuchin Thief",
+    "prompt": "Square 512x512 illustration-only image for the Verdant medieval fantasy collectible card “Capuchin Thief.” Show a small, clever capuchin monkey in a moss-green woodland clearing, caught mid-dash across a fallen log while clutching a stolen ruby-red fruit in one hand; the other hand reaches forward, face alert and mischievous, long curled tail balancing the sprint. Subtle thorny vines and a few leaves frame the action; this is a nimble forest creature, not a humanoid warrior. The monkey’s face, both hands, fruit, and compact full-body running silhouette must be easy to read at thumbnail size and entirely inside central safe area x=24..488, y=105..407, centered around x=256,y=260. Leave broad breathing room toward the top and bottom for later cropping. Painterly high-detail fantasy game illustration, believable anatomy and fur, richly textured but restrained, luminous natural forest light, atmospheric layered green background, strong silhouette, polished medieval collectible-card art with rich materials and believable lighting. No frame, border, text, symbols, letters, number, UI, or watermark. Not Disney cartoon, not anime, not photorealism, not pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2d5665af-aa00-4d17-8ae7-7599e2fd80cc.png",
+    "focalPoint": [0.5, 0.5],
+    "status": "generated"
+  }
+]

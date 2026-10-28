@@ -8,6 +8,10 @@ Names are matched against the longest normalized catalogue-name prefix, ignoring
 
 Four alternate files are kept but not selected. Five anonymously named `file_...png` images need card names before they can be assigned. Seven `keygreen` images have solid green backdrops; they are named correctly but are not activated as finished card illustrations. They need suitable backgrounds or background removal before use. No supplied image has been edited or regenerated.
 
-Illustrations use contain fitting so that a wide card window preserves the whole square composition; some letterboxing is expected. Other cards keep the existing procedural or painted-art fallback. Frames, icon hue rules, gameplay data and v179 typography remain intact.
+The responsive export pipeline now crops illustrations to the shared 206 × 141 art window and fills it without letterboxing. Each image has a 512-square editable master, plus 128, 256 and 512-pixel-wide WebP crops. All sizes share the same focal point; the card detail links to the full square artwork. Other cards keep the existing procedural or painted-art fallback. Frames, icon hue rules, gameplay data and v179 typography remain intact.
+
+Six lighter agents produced an initial 16 named illustrations across all eight colours, making 66 active card illustrations in total. Prompts and card IDs are recorded in `docs/art-production/*-generated.json`; production standards and crop-safe composition are in `docs/art-production/ART-DIRECTION.md`. These are an initial batch, not the entire catalogue.
+
+The export report covers 82 sources: the 66 unchanged supplied originals plus 16 new illustrations. Thirty-one supplied sources were smaller than 512 pixels and are marked `legacyUpscaled`; their missing detail cannot be recovered by resizing. The five unresolved filenames, seven green-backdrop assets and four unused alternates remain inactive.
 
 This import is separate from PR #3, which contains the three newly generated reference-card illustrations. It does not silently replace those generated assets or merge that PR.

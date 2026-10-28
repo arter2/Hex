@@ -1122,12 +1122,20 @@ function artCSV(c){ return cardArt(c).map(row=>row.join(',')).join('\n')+'\n'; }
 
 // in the browser: a data URL of the picture, drawn once per card
 const ART_URL={};
+// Illustration-only assets generated for these specific cards; all others retain their procedural art.
+const CARD_ILLUSTRATIONS=Object.freeze({
+  ember_dart:'art/cards/ember_dart.png',
+  frost_aceup_02:'art/cards/frost_aceup_02.png',
+  verdant_charge_08:'art/cards/verdant_charge_08.png'
+});
+const cardIllustration=c=>Object.prototype.hasOwnProperty.call(CARD_ILLUSTRATIONS,c.id)?CARD_ILLUSTRATIONS[c.id]:null;
 // a painted picture for this card, if one was added to UNIT_SPRITES (sprites.js): 'art_<card id>' for one
 // card, or 'body_<Creature>' (e.g. body_Dragon) for every card of that creature; it replaces the drawn art
 function paintedKey(c){ if(typeof UNIT_SPRITES==='undefined') return null; if(UNIT_SPRITES['art_'+c.id]) return 'art_'+c.id;
   const [kind,key]=subjectOf(c); return kind==='creature'&&UNIT_SPRITES['body_'+key]?'body_'+key:null; }
 function artURL(c){
   if(ART_URL[c.id]) return ART_URL[c.id];
+  const illustration=cardIllustration(c); if(illustration) return ART_URL[c.id]=illustration;
   { const pk=paintedKey(c); if(pk) return ART_URL[c.id]=UNIT_SPRITES[pk]; }
   const cv=document.createElement('canvas'); cv.width=cv.height=AN; const ctx=cv.getContext('2d');
   cardArt(c).forEach((row,y)=>row.forEach((col,x)=>{ ctx.fillStyle=col; ctx.fillRect(x,y,1,1); }));
@@ -1428,6 +1436,6 @@ function unitSprite(u){
     else (THING[key]||THING.sentry)(()=>.5); });
 }
 
-Object.assign(root,{ART_SIZE,cardArt,artCSV,artURL,motifKey,unitSprite,lookSprite,rigSprite,palFrame,palSprite,palPlay,palHas,LOOK_ALIAS});
+Object.assign(root,{ART_SIZE,cardArt,artCSV,artURL,cardIllustration,motifKey,unitSprite,lookSprite,rigSprite,palFrame,palSprite,palPlay,palHas,LOOK_ALIAS});
 if(typeof module!=='undefined') module.exports={ART_SIZE,cardArt,artCSV,motifKey};
 })(typeof window!=='undefined'?window:globalThis);

@@ -93,7 +93,7 @@ function cardEl(c,extra,locked,mode,opts={}){
     +(hero?'<img class="k-hero" src="cards/symbols/hero-star.svg" alt="Hero" draggable="false">':c.code&&!locked?`<b class="k-rune${c.code==='✱'?' wild':''}" title="Rune ${c.code}">${c.code}</b>`:'')
     +`<b class="k-rank">${c.rank}</b>`
     +`<b class="k-name" style="--ns:${kitNameSize(name,big)}">${esc(name)}</b>`
-    +(locked?'<span class="k-art k-hidden"></span>':`<img class="k-art" src="${artURL(c)}" alt="" draggable="false">`)
+    +(locked?'<span class="k-art k-hidden"></span>':`<img class="k-art${typeof cardIllustration==='function'&&cardIllustration(c)?' illustrated':''}" src="${artURL(c)}" alt="" draggable="false">`)
     +`<span class="k-tline"><i class="k-type">${esc(T.name)}</i><i class="k-dot">·</i><i class="k-cat" style="color:${R.c}">${esc(R.name)}</i></span>`
     +(locked?'':icon('k-sicon',kitStatIcon(c))+`<b class="k-stat">${stat}</b>`)
     +'<i class="k-sdiv"></i>'+icon('k-rar',KIT_RARITY[c.rarity]||'rarity');

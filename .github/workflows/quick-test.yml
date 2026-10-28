@@ -28,7 +28,9 @@ jobs:
           npm --prefix tools/playtest install
           cd tools/playtest && npx playwright install --with-deps chromium
       - name: Bot self-checks
-        run: node tools/playtest/selftest.js
+        run: |
+          node tools/playtest/selftest.js
+          node tools/playtest/battle-clock-test.js
       - name: Menu taps (phone and tablet)
         run: node tools/playtest/ui-runner.js test-results/ui
       - name: Battle and hand-screen taps (phone and tablet)

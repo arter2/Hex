@@ -594,6 +594,7 @@ function fight(depth,waves,xo){
     if(!v.ok&&!(xo&&xo.explore&&short)){ tip(v.errors[0]+'. Fix the deck at camp.',4000); return openCamp(); }
     if(!v.ok&&!fight.warned){ fight.warned=true; setTimeout(()=>tip('Your deck is down to '+d.list.length+' cards (some burned up). Top it up at camp.',4000),900); } }
   $('#reveal').classList.remove('on');
+  prev=performance.now();   // a fresh clock: time spent on the dungeon/reward screen is not battle time
   show('scrBattle');
   const soul=null, list=d.list;   // heroes are cards in the deck now: drawn and played to summon them
   startBattle(list,depth,{
@@ -1251,18 +1252,26 @@ window.addEventListener('keyup',e=>{ const k=e.key.toLowerCase(); held.delete(k)
 
 /* ---------------- loop ---------------- */
 let prev=performance.now();
-// frames and fight updates a second, for Show movement's readout (battle.js mvGraph): two loops at once would show 2 a frame
+document.addEventListener('visibilitychange',()=>{ prev=performance.now(); });
+// frames and simulation steps a second; slow frames can need more than one bounded step
 const PERF={f:0,u:0,t0:0,fps:0,upf:0};
-function perfTick(now,upd){ PERF.f++; if(upd) PERF.u++; if(now-PERF.t0>=1000){ if(PERF.t0){ PERF.fps=PERF.f*1000/(now-PERF.t0); PERF.upf=PERF.f?PERF.u/PERF.f:0; } PERF.t0=now; PERF.f=PERF.u=0; } }
+function perfTick(now,updates){ PERF.f++; PERF.u+=updates; if(now-PERF.t0>=1000){ if(PERF.t0){ PERF.fps=PERF.f*1000/(now-PERF.t0); PERF.upf=PERF.f?PERF.u/PERF.f:0; } PERF.t0=now; PERF.f=PERF.u=0; } }
 function frame(now){
-  const dt=Math.min(.05,(now-prev)/1000); prev=now;
+  // Keep elapsed time across slow frames, split into safe physics steps. Capping the entire frame at
+  // 50 ms made a 10 fps phone walk at half speed, then twice as fast once rendering reached 20 fps.
+  // A long stall catches up at most 250 ms; returning from a hidden tab resets prev above.
+  const dt=Math.max(0,Math.min(.25,(now-prev)/1000)); prev=now;
   // the next frame is asked for first, so one bad frame can never stop the fight for good
   requestAnimationFrame(frame);
   if(B&&$('#scrBattle').classList.contains('on')){
     if(!(View.w>0&&View.h>0)) resizeView();
     if(!document.hidden) checkControls(dt);
-    perfTick(now,!paused&&!DBG.pause);
-    if(!paused&&!DBG.pause){ heldWalk(); stickWalk(); if(typeof elabBotTick==='function') elabBotTick(dt); update(dt); }   // the debug menu's pause holds the fight but keeps drawing it
+    let updates=0;
+    if(!document.hidden&&!paused&&!DBG.pause){ const battle=B, steps=Math.max(1,Math.ceil(dt/.05)), step=dt/steps;
+      for(let i=0;i<steps&&B===battle&&!paused&&!DBG.pause&&$('#scrBattle').classList.contains('on');i++){
+        heldWalk(); stickWalk(); if(typeof elabBotTick==='function') elabBotTick(step); update(step); updates++;
+      } }   // the debug menu's pause holds the fight but keeps drawing it
+    perfTick(now,updates);
     // The Custom screen never opens by itself: when the gauge is full the Custom button glows and you open it.
     try{ render(); }catch(e){ if(!View.errShown){ View.errShown=1; console.error('battle draw:',e); } View.cave=null; resizeView(); }   // e.g. the board was resized to nothing in the background: rebuild it next frame
     hud();

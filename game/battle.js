@@ -1,4 +1,4 @@
-/* Hexmancers deck prototype — real-time battle on a 7 x 12 hex board, drawn with an
+/* Hexmancers deck prototype — real-time battle on a 9 x 14 hex board, drawn with an
    orthographic isometric projection on a 2D canvas. Your side is the six columns
    nearest you, the enemy side the six across from you. A turn ends each time the
    Custom screen opens; shields and everything cards put on the board last a set
@@ -9,10 +9,10 @@ const rnd=(a,b)=>a+Math.random()*(b-a), pick=a=>a[(Math.random()*a.length)|0];
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 
 /* ---------------- board ---------------- */
-let BOARD_ROWS=7, BOARD_COLS=12;   // every real fight is 7 x 12; only the Movement lab changes them (BOARD_TEST)
+let BOARD_ROWS=9, BOARD_COLS=14;   // every real fight is 9 x 14; only the Movement lab changes them (BOARD_TEST)
 const DIRS={E:[1,0],NE:[1,-1],NW:[0,-1],W:[-1,0],SW:[-1,1],SE:[0,1]}, DIRLIST=Object.values(DIRS);
 /* TEST ONLY: the Movement lab (movelab.js) can build a board of another size, or of squares, to try how
-   walking feels. BOARD_TEST is null for every real fight, which is always 12 x 7 hexes. Squares touch
+   walking feels. BOARD_TEST is null for every real fight, which is always 14 x 9 hexes. Squares touch
    their 8 neighbours, distance counts a diagonal step as 1, and the hex shapes are drawn as squares. */
 let BOARD_TEST=null, SQUARE=false; const SQS=1.5;   // a square's side, in board units
 const SQ_NB=[[1,0],[1,-1],[0,-1],[-1,-1],[-1,0],[-1,1],[0,1],[1,1]];
@@ -23,7 +23,7 @@ function tileCornerOffs(rad){ if(SQUARE){ const h=rad*SQS/2; return [[h,h],[-h,h
 const BOARD=new Map(), CR=new Map(), TILES=[], P_TILES=[], E_TILES=[]; let P_RECT=null;   // your half's standing box (pRect)
 function buildBoard(){
   BOARD.clear(); CR.clear(); TILES.length=0; P_TILES.length=0; E_TILES.length=0; P_RECT=null;
-  const L=BOARD_TEST; SQUARE=!!(L&&L.square); BOARD_ROWS=L?L.rows:7; BOARD_COLS=L?L.cols*2:12; Object.assign(DIRS,SQUARE?{NE:[1,-1],NW:[0,-1],SW:[0,1],SE:[1,1]}:{NE:[1,-1],NW:[0,-1],SW:[-1,1],SE:[0,1]}); DIRLIST.splice(0,6,...Object.values(DIRS));
+  const L=BOARD_TEST; SQUARE=!!(L&&L.square); BOARD_ROWS=L?L.rows:9; BOARD_COLS=L?L.cols*2:14; Object.assign(DIRS,SQUARE?{NE:[1,-1],NW:[0,-1],SW:[0,1],SE:[1,1]}:{NE:[1,-1],NW:[0,-1],SW:[-1,1],SE:[0,1]}); DIRLIST.splice(0,6,...Object.values(DIRS));
   if(SQUARE){ for(let r=0;r<BOARD_ROWS;r++) for(let c=0;c<BOARD_COLS;c++){ const x=c-(BOARD_COLS-1)/2, side=c<BOARD_COLS/2?'p':'e';
       const t={q:c,r,col:c,x,side,wx:SQS*x,wz:SQS*(r-(BOARD_ROWS-1)/2),key:c+','+r,occ:null,flash:0,flashC:'#fff'};
       BOARD.set(t.key,t); CR.set(c+','+r,t); TILES.push(t); (side==='p'?P_TILES:E_TILES).push(t); }
@@ -1138,7 +1138,7 @@ function nearestTile(x,z){ let best=null, bd=1e9; for(const t of TILES){ const d
 // the walking settings (debug menu › Battle › Battle movement, and the Movement lab), kept in look.js
 // the walking feel up to v117, kept so the debug menu (Battle movement) and the Movement lab can go back to it
 const MV_V117={mvSpeed:1.2, mvSnap:1, mvSnapR:.46, mvSnapSpd:2.3, mvRest:.6, mvDrag:2.5, mvAccel:0, mvStick:true, mvStickShow:true, mvStickR:56, mvDead:.18, mvStickMin:.25, mvStickFull:.8, mvCurve:1, mvTapMs:200, mvTapPx:12, mvStickSpeed:5, mvEven:1, mvSnapTime:.12, mvSnapAhead:true, mvStride:.5, mvFaceWalk:true, mvMomentum:true, mvMAccel:.1, mvMBrake:.22, mvMSkid:.08, mvGrip:.7, mvFlick:true, mvFlickV0:450, mvFlickV1:1400, mvFlickMin:2, mvFlickMax:3, mvFlickTime:.4, mvFlickWin:90};
-const MV_DEF={mvSpeed:1.3, mvSnap:1, mvSnapR:.7, mvSnapSpd:5, mvRest:.6, mvDrag:2.5, mvAccel:.09, mvStick:true, mvStickShow:true, mvStickR:39, mvDead:.15, mvStickMin:.15, mvStickFull:.65, mvCurve:.56, mvTapMs:278, mvTapPx:17, mvStickSpeed:9, mvEven:.2, mvSnapTime:.12, mvSnapAhead:true, mvStride:.5, mvFaceWalk:true, mvMomentum:true, mvMAccel:.15, mvMBrake:.88, mvMSkid:.22, mvGrip:.93, mvFlick:true, mvFlickV0:450, mvFlickV1:1400, mvFlickMin:1, mvFlickMax:3, mvFlickTime:.35, mvFlickWin:90};
+const MV_DEF={mvSpeed:1.2, mvSnap:1, mvSnapR:.7, mvSnapSpd:4.02, mvRest:.6, mvDrag:2.5, mvAccel:0, mvStick:true, mvStickShow:true, mvStickR:48, mvDead:.15, mvStickMin:.15, mvStickFull:.54, mvCurve:.56, mvTapMs:278, mvTapPx:17, mvStickSpeed:6, mvEven:1, mvSnapTime:.12, mvSnapAhead:true, mvStride:.5, mvFaceWalk:true, mvMomentum:true, mvMAccel:.15, mvMBrake:.42, mvMSkid:.25, mvGrip:.93, mvFlick:true, mvFlickV0:450, mvFlickV1:1400, mvFlickMin:1, mvFlickMax:3, mvFlickTime:.5, mvFlickWin:90, mvShowGame:true};
 const MV=k=>typeof XLIT!=='undefined'&&XLIT[k]!=null?XLIT[k]:MV_DEF[k];
 function freeTarget(x,z,key,k,raw){ const b=B; if(!b||b.phase!=='fight') return; const p=b.player;
   const xs=P_TILES.map(t=>t.wx), zs=P_TILES.map(t=>t.wz), o=p.free;

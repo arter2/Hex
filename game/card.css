@@ -28,6 +28,7 @@ html body .card.kit.ench,html body .card.kit.buff{outline:0; filter:none;}
 .card.kit>*{position:absolute; z-index:4; margin:0; padding:0; pointer-events:none; box-sizing:border-box;}
 .card.kit>.k-tex{inset:0; z-index:1; background:var(--k-tex) 0 0/100% 100% no-repeat;}
 .card.kit>.k-art{z-index:1; object-fit:cover; object-position:var(--k-focus,50% 50%); image-rendering:pixelated; background:rgba(0,0,0,.35); border-radius:0; border:0;}
+.card.kit>.k-art.illustrated{object-fit:cover; object-position:center; image-rendering:auto; background:#080b0e;}
 .card.kit>.k-hidden{background:repeating-linear-gradient(45deg,rgba(0,0,0,.55) 0 6px,rgba(0,0,0,.4) 6px 12px);}
 .card.kit>.k-foil{z-index:2; background-image:var(--k-foil); background-repeat:no-repeat;}
 .card.kit>img{image-rendering:pixelated; object-fit:contain;}

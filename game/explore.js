@@ -255,7 +255,7 @@ function xInit3D(){
     try{ cv.setPointerCapture(e.pointerId); }catch(_){}
     const [ax,ay]=appXY(e.clientX,e.clientY);
     if(EX.aim){ EX.aim.id=e.pointerId; EX.aim.cell=xAimCell(ax,ay); return; }
-    XHOLD.id=e.pointerId; XHOLD.x=XHOLD.x0=ax; XHOLD.y=XHOLD.y0=ay; XHOLD.t0=performance.now(); XHOLD.on=true; XHOLD.stick=false;
+    XHOLD.id=e.pointerId; XHOLD.x=XHOLD.x0=ax; XHOLD.y=XHOLD.y0=ay; XHOLD.t0=e.timeStamp; XHOLD.heldMs=0; XHOLD.lastT=null; XHOLD.on=true; XHOLD.stick=false;
     const m=xMoveMode();
     if(m==='tapstick'){}   // decided by what the finger does next (xMove and the release)
     else if(m==='goal') xGoalAt(ax,ay);
@@ -267,7 +267,7 @@ function xInit3D(){
     if(e.pointerId===XHOLD.id){ [XHOLD.x,XHOLD.y]=appXY(e.clientX,e.clientY); if(xMoveMode()==='goal'||xMoveMode()==='fixed'&&!XHOLD.stick) xGoalAt(XHOLD.x,XHOLD.y); xStickDraw(); } });
   const end=e=>{ if(EX&&EX.aim&&e.pointerId===EX.aim.id) return xSearchAt(EX.aim.cell,true);
     if(e.pointerId!==XHOLD.id) return;
-    if(xMoveMode()==='tapstick'&&!XHOLD.stick&&performance.now()-XHOLD.t0<XTAP_MS&&Math.hypot(XHOLD.x-XHOLD.x0,XHOLD.y-XHOLD.y0)<XTAP_PX) xGoalAt(XHOLD.x0,XHOLD.y0);   // a quick tap: walk there
+    if(xMoveMode()==='tapstick'&&!XHOLD.stick&&e.timeStamp-XHOLD.t0<xTapMs()&&Math.hypot(XHOLD.x-XHOLD.x0,XHOLD.y-XHOLD.y0)<xTapPx()) xGoalAt(XHOLD.x0,XHOLD.y0);   // a quick tap: walk there
     XHOLD.on=false; XHOLD.id=null; XHOLD.stick=false; xStickDraw(); };   // in Walk to touch, letting go keeps you walking to the goal
   cv.addEventListener('pointerup',end); cv.addEventListener('pointercancel',e=>{ if(e.pointerId!==XHOLD.id) return; XHOLD.on=false; XHOLD.id=null; XHOLD.stick=false; xStickDraw(); });
   cv.addEventListener('contextmenu',e=>e.preventDefault());
@@ -1071,7 +1071,10 @@ const XMOVES=['tapstick','goal','float','fixed','follow','pad'], XMOVE_NAME={tap
     fixed:'Steer with the thumbstick in the bottom-left corner, or tap a spot to walk there.',
     follow:'Hold your finger down and you follow it; let go to stop.',
     pad:'Slide your finger anywhere and you move the same way.'};
-const XTAP_MS=200, XTAP_PX=12;   // shorter and smaller than this is a tap; anything more becomes the stick
+/* Shorter and smaller than this is a tap; anything more becomes the stick. The same window as a tap in battle
+   (mvTapMs and mvTapPx, tuned in the Movement lab), timed from the touch's own down and up times (e.timeStamp): timed
+   when the handlers ran, a frame stall during a quick tap made it a hold, and the walk never started. */
+const xTapMs=()=>typeof MV==='function'?MV('mvTapMs'):278, xTapPx=()=>typeof MV==='function'?MV('mvTapPx'):17;
 const xMoveMode=()=>{ let m='tapstick'; try{ m=localStorage.getItem('hexmancers-xmove')||'tapstick'; }catch(e){} return XMOVES.includes(m)?m:'tapstick'; };
 function xSetMoveMode(m){ try{ localStorage.setItem('hexmancers-xmove',m); }catch(e){} xMoveUi(); }
 const XSTICK_R=56;   // how far the stick's knob travels, in screen pixels
@@ -1151,7 +1154,7 @@ function xMove(dt){ if(typeof xPuzzBusy==='function'&&xPuzzBusy()) return;   // 
   if(held('left')) ix-=1; if(held('right')) ix+=1; if(held('up')) iz-=1; if(held('down')) iz+=1;
   if(ix||iz){ EX.path=[]; EX.goal=null; }   // keys take over from a finger's goal
   else if(XHOLD.on){ const m=xMoveMode();
-    if(m==='tapstick'&&!XHOLD.stick&&(performance.now()-XHOLD.t0>=XTAP_MS||Math.hypot(XHOLD.x-XHOLD.x0,XHOLD.y-XHOLD.y0)>=XTAP_PX)){ XHOLD.stick=true; EX.path=[]; EX.goal=null; }
+    if(m==='tapstick'&&!XHOLD.stick&&(heldMs(XHOLD)>=xTapMs()||Math.hypot(XHOLD.x-XHOLD.x0,XHOLD.y-XHOLD.y0)>=xTapPx())){ XHOLD.stick=true; EX.path=[]; EX.goal=null; }
     if(XHOLD.stick){ let dx=(XHOLD.x-XHOLD.x0)/XSTICK_R, dy=(XHOLD.y-XHOLD.y0)/XSTICK_R; const l=Math.hypot(dx,dy);
       if(l>.18){ const k=Math.min(1,(l-.18)/.62+.25)/l; ix=dx*k; iz=dy*k; } }   // a stick: screen up is up the map; how far you push sets the speed
     else if(m==='follow'){ const g=xFloorAt(XHOLD.x,XHOLD.y); if(g){ const dx=g.x-EX.px, dz=g.z-EX.pz, l=Math.hypot(dx,dz); if(l>.4){ const k=Math.min(1,l/1.5)/l; ix=dx*k; iz=dz*k; } } }
@@ -1209,7 +1212,7 @@ function xEnter(c){
   if(typeof xEnterExtra==='function') xEnterExtra(c);
   if(EX.stairLock!=null) return xHud();   // just arrived on stairs: they wait until you have walked clear of them
   if(c===EX.down&&!EX.busy) xStairsDown();
-  else if(c===EX.up&&!EX.busy) xStairsUp();   // stepping back onto the stairs up climbs them (from depth 1, to camp)
+  else if(c===EX.up&&!EX.busy) xUpAsk();   // stepping back onto the stairs up asks first (from depth 1, they go to camp)
   xHud();
 }
 // experience on the map: a line in the log, and the level-up panel when a level comes
@@ -1412,6 +1415,15 @@ function xGoFloor(depth,hp,at,route){ const m=xFloors(), F=m&&(m.get(depth)||(ty
     if(at==='down') for(const g of EX.groups.filter(g=>g.boss)){ EX.groups.splice(EX.groups.indexOf(g),1); xDropGroup(g); EX.bossDead=true; } }
   const c=typeof at==='number'?at:at==='down'?EX.down:EX.up; EX.pc=c; EX.px=xw(c); EX.pz=xz(c); EX.stairLock=c; EX.vx=EX.vz=0; EX.view=at==='down'?'back':'front'; xUpdateVis(); }
 // the stairs up: to the floor above (or the main floor, from a hidden branch); from depth 1, to camp
+/* Stepping back onto the stairs up asks before you climb: a floor begins on those stairs, so a stick or a tap that
+   slips at the start used to send you up (from depth 1, out to camp) at once. Stay, and the stairs keep quiet until
+   you have walked clear of them. The Up and Climb to camp buttons still go straight away. */
+function xUpAsk(){ if(!EX||EX.busy) return;
+  const m=xFloors(), main=EX.branch&&m&&m.get(EX.depth), toCamp=!main&&EX.depth<=1, nd=main?EX.depth:EX.depth-1;
+  EX.path=[]; EX.goal=null; EX.stairLock=EX.up;
+  xDlg({title:toCamp?'Climb to camp?':'Climb the stairs?', sub:toCamp?'The stairs up':'Back to depth '+nd,
+    text:(toCamp?'These stairs lead out of the dungeon, back to camp.':'These stairs lead back up to depth '+nd+'.')+' This floor stays as you left it.',
+    buttons:[[toCamp?'Climb to camp':'Climb up',()=>{ if(EX&&EX.pc===EX.up){ EX.stairLock=null; xStairsUp(); } }],['Stay',null,true]]}); }
 function xStairsUp(){
   if(!EX||EX.busy||EX.pc!==EX.up) return;
   const m=xFloors(), main=EX.branch&&m&&m.get(EX.depth);

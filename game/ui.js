@@ -6,7 +6,7 @@ let save=loadSave();
 const persist=()=>{ if(save&&save.temp) return; writeSave(save); };   // the Movement lab's borrowed hexmancer is never saved
 const activeDeck=()=>save.decks[save.active];
 
-function show(id){ $('#tip').classList.remove('on'); document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('on',s.id===id)); if(id==='scrBattle') resizeView(); window.scrollTo(0,0);
+function show(id){ $('#tip').classList.remove('on'); if(typeof dragAbort==='function') dragAbort(); document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('on',s.id===id)); if(id==='scrBattle') resizeView(); window.scrollTo(0,0);
   if(id==='scrExplore'&&typeof EX!=='undefined'&&EX&&EX.active&&typeof xLoopStart==='function') xLoopStart(); }   // the dungeon's loop stops while another screen covers it
 let tipT=0; function tip(msg,ms){ const t=$('#tip'); t.textContent=msg; t.classList.add('on'); clearTimeout(tipT); tipT=setTimeout(()=>t.classList.remove('on'),ms||1400); }
 const esc=s=>String(s).replace(/[&<>"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]));
@@ -657,7 +657,7 @@ function fight(depth,waves,xo){
   startBattle(list,depth,{
     onSoul:ready=>{ if(ready){ buzz(30); banner('♔ Soul ready: Summon or Unison','#ffe066'); } soulMenu(false); },
     onCustom:renderCustom,
-    onFight:()=>{ $('#custom').classList.remove('on'); hud(true); },
+    onFight:()=>{ dragAbort(); $('#custom').classList.remove('on'); hud(true); },
     onCast:(c,inst)=>{ showCast(c,inst); buzz(12); },
     onHurt:d=>{ buzz(d>=15?60:30); const h=$('#hurtFx'); h.classList.remove('on'); void h.offsetWidth; h.classList.add('on'); },
     onTurn:n=>banner('Turn '+n,'#4fb3ff'),
@@ -843,7 +843,8 @@ document.addEventListener('fullscreenchange',onFullChange); document.addEventLis
    and a pinch zooms the page or closes full screen. Nothing in the game uses pinch, so swallow
    WebKit's gesture events and any multi-finger move before the browser acts on them. */
 ['gesturestart','gesturechange','gestureend'].forEach(ev=>document.addEventListener(ev,e=>e.preventDefault(),{passive:false}));
-document.addEventListener('touchmove',e=>{ if(e.touches.length>1||(e.scale!=null&&e.scale!==1)) e.preventDefault(); },{passive:false});
+// (a touchmove the browser has already begun scrolling can't be cancelled; asking only logs a warning)
+document.addEventListener('touchmove',e=>{ if(e.cancelable&&(e.touches.length>1||(e.scale!=null&&e.scale!==1))) e.preventDefault(); },{passive:false});
 document.addEventListener('visibilitychange',()=>{ if(document.hidden){ openPause(); return; } backFromBackground(); });
 /* Back from the background: a phone browser often sends a stale size (or none) while the page is
    hidden, which left the layout sized for the wrong screen and the Fire and Cast bar off screen.
@@ -898,8 +899,11 @@ function recipesInHand(p){ const pool=[...p.queue,...p.hand].filter(c=>!c.temp),
     else if(!D.mode&&e.type==='pointerup'&&tall()&&e.timeStamp-D.t0<320){ const big=pan.clientHeight*.8; dr.style.transition='height .2s'; put(HK,setH(D.h0>big*.9?pan.clientHeight*.52:big)); setTimeout(()=>dr.style.transition='',250); } };
   grip.addEventListener('pointerup',end); grip.addEventListener('pointercancel',end); grip.addEventListener('contextmenu',e=>e.preventDefault()); })();
 function renderCustom(){
+  // a card under a finger is not rebuilt: the new element would never hear that finger lift (the tap was lost, then
+  // the hold timer popped the card up). The press's own end draws the screen again.
+  if(drag&&drag.el.isConnected&&$('#custom').classList.contains('on')){ drag.redraw=true; return; }
   const p=B.piles, dealt=B.justDrawn||new Set();
-  if(!$('#custom').classList.contains('on')){ custShownT=performance.now(); custPressed=false; }
+  if(!$('#custom').classList.contains('on')){ custShownT=performance.now(); custPressed=false; dragAbort(); }
   $('#custom').classList.add('on');
   renderChoose();
   $('#custPiles').textContent='Deck '+p.draw.length+' · Discard '+p.discard.length;
@@ -1035,15 +1039,21 @@ function layDrop(uid,beforeUid){ const L=B.handLay||[]; const i=L.indexOf(uid); 
    its detail, and a drag puts it exactly where it is dropped: a slot (swapping if full), a
    place in the hand, or back out of the queue. */
 let drag=null;
+/* Let go of a card drag without dropping it: its ghost (on <body>, so it outlives the hand screen) goes too.
+   Also sweeps a ghost left by any drag that never heard its finger lift. */
+function dragAbort(){ const d=drag; drag=null;
+  if(d){ clearTimeout(d.timer); if(d.over) d.over.classList.remove('drop'); d.el.classList.remove('dragging'); }
+  document.querySelectorAll('.drag-ghost').forEach(g=>g.remove()); }
 function dragCard(el,inst){
   el.addEventListener('pointerdown',e=>{
     if(e.button>0) return;
-    drag={el,inst,x0:e.clientX,y0:e.clientY,moved:false,long:false,ghost:null,over:null};
+    if(drag) dragAbort();   // a second finger on a card: the first one's drag ends (each finger is its own pointer)
+    drag={el,inst,id:e.pointerId,t0:e.timeStamp,x0:e.clientX,y0:e.clientY,moved:false,long:false,ghost:null,over:null};
     drag.timer=setTimeout(()=>{ if(drag&&!drag.moved){ drag.long=true; peek(inst.card,true); } },450);
     try{ el.setPointerCapture(e.pointerId); }catch(_){}
   });
   el.addEventListener('pointermove',e=>{
-    if(!drag||drag.el!==el) return;
+    if(!drag||drag.el!==el||drag.id!==e.pointerId) return;
     if(!drag.moved&&Math.hypot(e.clientX-drag.x0,e.clientY-drag.y0)>8){
       drag.moved=true; clearTimeout(drag.timer);
       const r=el.getBoundingClientRect(), g=el.cloneNode(true); g.classList.add('drag-ghost'); g.classList.remove('deal','hint');
@@ -1053,9 +1063,12 @@ function dragCard(el,inst){
       const t=dropTarget(e.clientX,e.clientY); if(drag.over&&drag.over!==t) drag.over.classList.remove('drop'); if(t) t.classList.add('drop'); drag.over=t; }
   });
   const end=e=>{
-    if(!drag||drag.el!==el) return;
+    if(!drag||drag.el!==el||drag.id!==e.pointerId) return;
     clearTimeout(drag.timer); const d=drag; drag=null;
+    if(d.redraw) setTimeout(()=>{ if(!drag&&B&&B.phase==='custom'&&$('#custom').classList.contains('on')) renderCustom(); },0);   // a redraw held back during the press
     if(d.ghost) d.ghost.remove(); if(d.over) d.over.classList.remove('drop'); el.classList.remove('dragging');
+    // on a slow frame the hold timer can run after a quick tap has already lifted: the touch's own times decide
+    if(d.long&&!d.moved&&e.type==='pointerup'&&e.timeStamp-d.t0<450){ d.long=false; peek(null,false); }
     const p=B.piles;
     if(d.moved){ const t=e.type==='pointercancel'?null:dropTarget(e.clientX,e.clientY);
       if(t){ const zone=t.dataset.zone, i=t.dataset.i!=null?+t.dataset.i:null, spot=t.dataset.uid;
@@ -1226,7 +1239,7 @@ View.canvas=$('#board'); View.ctx=View.canvas.getContext('2d');
 View.canvas.addEventListener('pointerdown',e=>{ const t=pickTile(e.clientX,e.clientY); if(t&&t.side==='e'){ setAim(t); return; }
   if(!B||!B.player) return; try{ View.canvas.setPointerCapture(e.pointerId); }catch(_){}
   const [ax,ay]=appXY(e.clientX,e.clientY), [wx,wz]=posOf(B.player), [px,py]=proj(wx,0,wz);
-  dragging={id:e.pointerId,x0:ax,y0:ay,x:ax,y:ay,t0:performance.now(),px,py,wx,wz,tap:t,moved:false,stick:false,hist:[[performance.now(),ax,ay]]}; });
+  dragging={id:e.pointerId,x0:ax,y0:ay,x:ax,y:ay,t0:e.timeStamp,px,py,wx,wz,tap:t,moved:false,stick:false,hist:[[performance.now(),ax,ay]]}; });
 View.canvas.addEventListener('pointermove',e=>{ const d=dragging; if(!d||e.pointerId!==d.id) return; const [ax,ay]=appXY(e.clientX,e.clientY); d.x=ax; d.y=ay;
   const now=performance.now(); d.hist.push([now,ax,ay]); while(d.hist.length>2&&now-d.hist[0][0]>400) d.hist.shift();   // the thumb's last moments, for a flick
   if(!d.moved&&Math.hypot(ax-d.x0,ay-d.y0)>MV('mvTapPx')) d.moved=true;
@@ -1234,16 +1247,21 @@ View.canvas.addEventListener('pointermove',e=>{ const d=dragging; if(!d||e.point
   // follow finger: your mage glides after the finger as a float and is hit on the nearest tile (freeTarget, battle.js)
   const [wx,wz]=unprojGround(d.px+(ax-d.x0)*MV('mvDrag'),d.py+(ay-d.y0)*MV('mvDrag'),d.wx,d.wz); freeTarget(wx,wz); });
 const dragEnd=e=>{ const d=dragging; if(!d||e.pointerId!==d.id) return; dragging=null; stickDraw();
-  const tap=!d.moved&&!d.stick&&e.type==='pointerup'&&(!XLIT.mvStick||performance.now()-d.t0<MV('mvTapMs'));
+  // timed from the touch's own down and up (e.timeStamp): a frame stall during a quick tap must not make it a hold
+  const tap=!d.moved&&!d.stick&&e.type==='pointerup'&&(!XLIT.mvStick||e.timeStamp-d.t0<MV('mvTapMs'));
   if(d.moved||d.stick) freeEnd(); if(tap&&d.tap&&d.tap.side==='p') moveTo(d.tap);
   // a flick: let go with the thumb still moving fast and your mage is thrown that way (battle.js flickThrow)
   if((d.moved||d.stick)&&XLIT.mvStick&&MV('mvFlick')&&B&&B.player&&d.hist){ const now=performance.now(), H=d.hist.filter(h=>now-h[0]<=MV('mvFlickWin'));
     if(H.length>=2){ const [t0,x0,y0]=H[0], [,x1,y1]=H[H.length-1], vx=(x1-x0)/Math.max(16,now-t0)*1000, vy=(y1-y0)/Math.max(16,now-t0)*1000, v=Math.hypot(vx,vy);
       if(v>=MV('mvFlickV0')){ const p=B.player, fx=p.fx??p.tile.wx, fz=p.fz??p.tile.wz, [sx,sy]=proj(fx,0,fz), [wx,wz]=unprojGround(sx+vx/v*60,sy+vy/v*60,fx,fz);
         flickThrow(wx-fx,wz-fz,(v-MV('mvFlickV0'))/Math.max(1,MV('mvFlickV1')-MV('mvFlickV0'))); } } } };
+/* How long a finger has been held, counted in frames and at most 50 ms a frame: the first frame after a stall
+   comes before the stalled finger's release is handled, and must not turn a quick tap into a hold. (ui.js battle
+   board; explore.js has the same for the dungeon.) */
+function heldMs(h){ const now=performance.now(); h.heldMs=(h.heldMs||0)+Math.max(0,Math.min(50,now-(h.lastT??h.t0))); h.lastT=now; return h.heldMs; }
 // the joystick, each frame: from where your thumb is against where it landed
 function stickWalk(){ const d=dragging; if(!d||!XLIT.mvStick||!B||B.phase!=='fight') return;
-  if(!d.stick&&(d.moved||performance.now()-d.t0>=MV('mvTapMs'))) d.stick=true;
+  if(!d.stick&&(d.moved||heldMs(d)>=MV('mvTapMs'))) d.stick=true;
   if(!d.stick) return; stickDraw();
   const p=B.player, R=MV('mvStickR'), dx=d.x-d.x0, dy=d.y-d.y0, l=Math.hypot(dx,dy)/R, fx=p.fx??p.tile.wx, fz=p.fz??p.tile.wz;
   if(l<MV('mvDead')){ if(!d.still){ d.still=true; if(MV('mvMomentum')) freeEnd(); else freeTarget(fx,fz); } return; }   // in the dead zone: stand (the magnet pulls after the rest; with momentum, you coast to a stop as if you let go)

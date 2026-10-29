@@ -1114,6 +1114,16 @@ async function session(browser, host, o, depth, out) {
     const buttons = await ev(BUTTONS, ov);
     if (n === 1) for (const u of buttons.filter(b => !b.text && !b.label)) issue('unlabelled-button', { overlay: ov, title: info.title, sel: u.sel }, 1);
     for (const b of buttons) if (b.w < 40 || b.h < 40) issue('small-button', { overlay: ov, text: b.text, w: Math.round(b.w), h: Math.round(b.h) }, 1);
+    // the stairs up ask before you climb: this player never means to leave a floor that way
+    if (ov === 'xDialog' && /^climb/i.test(info.title)) {
+      stats.upStairsAsked = (stats.upStairsAsked || 0) + 1;
+      const stay = buttons.find(b => /^stay/i.test(b.text));
+      if (stay) {
+        await tapEl(stay.sel);
+        await sleep(500);
+        return;
+      }
+    }
     const prefer =
       ov === 'pause'
         ? [/resume|continue|back/i]

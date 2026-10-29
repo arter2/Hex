@@ -1061,7 +1061,14 @@ const XKEY={}, XHOLD={on:false,id:null,x:0,y:0,x0:0,y0:0,t0:0};
    pad     a trackpad: slide anywhere and you move the same way (like battle) */
 // tapstick (the default): a quick tap walks you there; hold or slide and it is an invisible floating stick
 const XMOVES=['tapstick','goal','float','fixed','follow','pad'], XMOVE_NAME={tapstick:'Tap + hold',goal:'Walk to touch',float:'Floating stick',fixed:'Fixed stick',follow:'Follow finger',pad:'Trackpad'},
-  XMOVE_ICON={tapstick:'✋',goal:'📍',float:'🕹',fixed:'🎮',follow:'👆',pad:'▭'};
+  XMOVE_ICON={tapstick:'✋',goal:'📍',float:'🕹',fixed:'🎮',follow:'👆',pad:'▭'},
+  // the first-time move tip, in the words of the movement style you chose (Settings › Touch movement)
+  XMOVE_TIP={tapstick:'Tap a spot to walk there, or hold and slide your finger to steer.',
+    goal:'Tap or drag to a spot and you walk there, and keep going after you let go.',
+    float:'Put a finger down anywhere and slide it like a thumbstick.',
+    fixed:'Steer with the thumbstick in the bottom-left corner, or tap a spot to walk there.',
+    follow:'Hold your finger down and you follow it; let go to stop.',
+    pad:'Slide your finger anywhere and you move the same way.'};
 const XTAP_MS=200, XTAP_PX=12;   // shorter and smaller than this is a tap; anything more becomes the stick
 const xMoveMode=()=>{ let m='tapstick'; try{ m=localStorage.getItem('hexmancers-xmove')||'tapstick'; }catch(e){} return XMOVES.includes(m)?m:'tapstick'; };
 function xSetMoveMode(m){ try{ localStorage.setItem('hexmancers-xmove',m); }catch(e){} xMoveUi(); }
@@ -1571,8 +1578,8 @@ function xSay(k,t){ const now=performance.now(); if((EX.msgT[k]||0)>now) return;
 /* One short card the first time you meet each thing, in place of the long how-to line.
    Settings › Dungeon tips turns them off; turning them back on shows them all again. */
 const XTIPS={
-  move:   ()=>matchMedia('(pointer:coarse)').matches?'Tap a spot to walk there, or hold to walk toward your finger.':'Click a spot to walk there, or move with WASD or the arrow keys.',
-  stairs: ()=>'You found the stairs down! Walk onto them to go deeper.'+(xStairsMarkOn()?' They stay marked on your minimap; hold the map to see it big.':' Hold the minimap to see it big.'),
+  move:   ()=>matchMedia('(pointer:coarse)').matches?XMOVE_TIP[xMoveMode()]:'Click a spot to walk there, or move with WASD or the arrow keys.',
+  stairs: ()=>'You found the stairs down! Walk onto them to go deeper.'+(xStairsMarkOn()?' They stay marked on your minimap; tap the map to see it big.':' Tap the minimap to see it big.'),
   door:   ()=>'Walk into a door to open it.',
   locked: ()=>'A locked door. Find its key on this floor, or buy one from a merchant.',
   chest:  ()=>'Walk into a chest to open it. Some locks hide a needle: Search near it first, then Disarm.',

@@ -262,6 +262,12 @@ const MONITOR = () => {
     const w = function () {
       mark(fn);
       if (fn === 'xStrike') window.__strikes = (window.__strikes || 0) + 1;
+      // how a fight opened, as the game decides it (the banner that says so is gone in 0.7 s)
+      if (fn === 'xEngage' && arguments[0]) {
+        const g = arguments[0], forced = arguments[1];
+        Q.openings = Q.openings || [];
+        Q.openings.push(forced !== undefined ? forced : g.state === 'sleep' ? 'ambush' : g.surprise || !g.seen ? 'surprised' : 'plain');
+      }
       return f.apply(this, arguments);
     };
     w.__qa = true;

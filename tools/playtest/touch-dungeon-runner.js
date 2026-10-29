@@ -1209,7 +1209,8 @@ async function session(browser, host, o, depth, out) {
       continue;
     }
     if (s.screen === 'scrBattle') {
-      const op = /ambush/i.test(lastOpening || '') ? 'ambush' : /first/i.test(lastOpening || '') ? 'first strike' : /surpris/i.test(lastOpening || '') ? 'surprised' : null;
+      const raw = await ev(() => (window.__qa && __qa.openings && __qa.openings.length ? __qa.openings.pop() : null)).catch(() => null);
+      const op = raw === 'strike' ? 'first strike' : raw === 'ambush' || raw === 'surprised' ? raw : /ambush/i.test(lastOpening || '') ? 'ambush' : /first/i.test(lastOpening || '') ? 'first strike' : /surpris/i.test(lastOpening || '') ? 'surprised' : null;
       if (op === 'ambush') (stats.ambushes++, cur.ambush++);
       if (op === 'first strike') (stats.firstStrikes++, cur.firstStrike++);
       if (op === 'surprised') (stats.surprised++, cur.surprised++);

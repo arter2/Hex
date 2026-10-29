@@ -213,7 +213,11 @@ const FRONTIER = (black, pickR) => {
       y = xcy(c);
     const ns = [xi(x + 1, y), xi(x - 1, y), xi(x, y + 1), xi(x, y - 1)].filter(n => n >= 0 && n < N && Math.abs(xcx(n) - x) + Math.abs(xcy(n) - y) === 1);
     if (c !== EX.pc && !bl.has(c) && ns.some(n => !EX.seen[n] && xPassable(n))) out.push({ c, d: seen[c] });
-    for (const n of ns) if (seen[n] < 0 && EX.seen[n] && xPassable(n)) (seen[n] = seen[c] + 1), q.push(n);
+    // a locked door you have seen is a wall until you hold its key
+    for (const n of ns) {
+      const dr = EX.doors.get(n);
+      if (seen[n] < 0 && EX.seen[n] && xPassable(n) && !(dr && dr.state === 'locked')) (seen[n] = seen[c] + 1), q.push(n);
+    }
   }
   return out;
 };
@@ -771,7 +775,7 @@ async function session(browser, host, o, depth, out) {
     if (pot && rand() < F.strikePots) {
       const before = await ev(() => EX.props.filter(p => p.kind === 'pot' && !p.gone).length);
       if (await strike(s, walking, 'pot in reach')) {
-        await sleep(200);
+        await sleep(800);
         const after = await ev(() => EX.props.filter(p => p.kind === 'pot' && !p.gone).length);
         if (after < before) (stats.potsBroken++, cur.potsBroken++);
         else issue('pot-not-broken', { d: pot.d });
@@ -1327,7 +1331,7 @@ async function session(browser, host, o, depth, out) {
       }
       if (res === 'no-route' || res === 'off-screen' || res === 'blocked') {
         black.push(c.target);
-        if (black.length > 40) {
+        if (black.length > 80) {
           endReason = 'no reachable goals';
           break;
         }

@@ -24,3 +24,5 @@ Then run `python tools/card-art-locate.py <bytes> <a> <b>` from the repo. It mat
 Complete only the five cards in your assigned packet (minus any already generated entries), then stop. Send progress after every two or three records. Return exact IDs/paths when the colour is complete.
 
 Critical crop review: do not accept a clipped face, spearhead, bottle stopper, tower tip or base. A focal-point adjustment may solve a crop; inspect the actual result. Otherwise repaint the composition with image generation, retaining the old source. Render crop reviews directly from the existing 512 source, without re-encoding or resizing it.
+
+Prioritize one strong named subject and one clear action; you do not need to illustrate every numerical mechanic. Crop checks protect the primary face, relevant hand and named portable object. Incidental spell trails, halos, scenery and background figures may naturally extend beyond the frame. Do not add props or require a complete secondary magic ring when that weakens the named subject or causes needless repaints.

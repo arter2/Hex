@@ -1,0 +1,1502 @@
+[
+  {
+    "id": "holy_bolt",
+    "name": "Holy Bolt",
+    "type": "strike",
+    "color": "light"
+  },
+  {
+    "id": "radiant_motes",
+    "name": "Radiant Motes",
+    "type": "strike",
+    "color": "light"
+  },
+  {
+    "id": "judgment",
+    "name": "Judgment",
+    "type": "lob",
+    "color": "light"
+  },
+  {
+    "id": "sanctuary",
+    "name": "Sanctuary",
+    "type": "ward",
+    "color": "light"
+  },
+  {
+    "id": "beacon_hope",
+    "name": "Beacon of Hope",
+    "type": "sentry",
+    "color": "light"
+  },
+  {
+    "id": "blessing",
+    "name": "Blessing",
+    "type": "boon",
+    "color": "light"
+  },
+  {
+    "id": "courage",
+    "name": "Courage",
+    "type": "boon",
+    "color": "light"
+  },
+  {
+    "id": "intervention",
+    "name": "Divine Intervention",
+    "type": "boon",
+    "color": "light"
+  },
+  {
+    "id": "dawnbreaker",
+    "name": "Dawnbreaker",
+    "type": "strike",
+    "color": "light"
+  },
+  {
+    "id": "light_strike_01",
+    "name": "Pilum Volley",
+    "type": "strike",
+    "color": "light"
+  },
+  {
+    "id": "light_strike_02",
+    "name": "Gladius Thrust",
+    "type": "strike",
+    "color": "light"
+  },
+  {
+    "id": "light_strike_03",
+    "name": "Lance Charge",
+    "type": "strike",
+    "color": "light"
+  },
+  {
+    "id": "light_strike_04",
+    "name": "Crusader's Charge",
+    "type": "strike",
+    "color": "light"
+  },
+  {
+    "id": "light_strike_05",
+    "name": "Longbow Volley",
+    "type": "strike",
+    "color": "light"
+  },
+  {
+    "id": "light_strike_06",
+    "name": "Agincourt Arrowstorm",
+    "type": "strike",
+    "color": "light"
+  },
+  {
+    "id": "light_strike_07",
+    "name": "West Wind Gust",
+    "type": "strike",
+    "color": "light"
+  },
+  {
+    "id": "light_strike_08",
+    "name": "Zephyr's Breath",
+    "type": "strike",
+    "color": "light"
+  },
+  {
+    "id": "light_strike_09",
+    "name": "Mistral Gale",
+    "type": "strike",
+    "color": "light"
+  },
+  {
+    "id": "light_strike_10",
+    "name": "Owl's Silent Dive",
+    "type": "strike",
+    "color": "light"
+  },
+  {
+    "id": "light_strike_11",
+    "name": "Pegasus Hoofbeat",
+    "type": "strike",
+    "color": "light"
+  },
+  {
+    "id": "light_strike_12",
+    "name": "Centaur's Arrow",
+    "type": "strike",
+    "color": "light"
+  },
+  {
+    "id": "light_strike_13",
+    "name": "Unicorn Horn Thrust",
+    "type": "strike",
+    "color": "light"
+  },
+  {
+    "id": "light_strike_14",
+    "name": "Aegis Bash",
+    "type": "strike",
+    "color": "light"
+  },
+  {
+    "id": "light_strike_15",
+    "name": "Starlight Lance",
+    "type": "strike",
+    "color": "light"
+  },
+  {
+    "id": "light_strike_16",
+    "name": "Astrolabe Sightline",
+    "type": "strike",
+    "color": "light"
+  },
+  {
+    "id": "light_lob_01",
+    "name": "Bright Comet",
+    "type": "lob",
+    "color": "light"
+  },
+  {
+    "id": "light_strike_17",
+    "name": "Gavel of Justice",
+    "type": "strike",
+    "color": "light"
+  },
+  {
+    "id": "light_strike_18",
+    "name": "Shield Bash",
+    "type": "strike",
+    "color": "light"
+  },
+  {
+    "id": "light_strike_19",
+    "name": "Phalanx Advance",
+    "type": "strike",
+    "color": "light"
+  },
+  {
+    "id": "light_strike_20",
+    "name": "Crane Wing Sweep",
+    "type": "strike",
+    "color": "light"
+  },
+  {
+    "id": "light_strike_21",
+    "name": "Qilin's Flame",
+    "type": "strike",
+    "color": "light"
+  },
+  {
+    "id": "light_strike_22",
+    "name": "White Stag's Antlers",
+    "type": "strike",
+    "color": "light"
+  },
+  {
+    "id": "light_strike_23",
+    "name": "Simurgh Feather Gust",
+    "type": "strike",
+    "color": "light"
+  },
+  {
+    "id": "light_strike_24",
+    "name": "Paladin's Oath Blade",
+    "type": "strike",
+    "color": "light"
+  },
+  {
+    "id": "light_strike_25",
+    "name": "Martyr's Last Stand",
+    "type": "strike",
+    "color": "light"
+  },
+  {
+    "id": "light_strike_26",
+    "name": "Riddle of the Sphinx",
+    "type": "strike",
+    "color": "light"
+  },
+  {
+    "id": "light_strike_27",
+    "name": "Scholar's Paradox",
+    "type": "strike",
+    "color": "light"
+  },
+  {
+    "id": "light_strike_28",
+    "name": "Marble Shard Spray",
+    "type": "strike",
+    "color": "light"
+  },
+  {
+    "id": "light_strike_29",
+    "name": "Valkyrie's Descent",
+    "type": "strike",
+    "color": "light"
+  },
+  {
+    "id": "light_strike_30",
+    "name": "Durandal's Stroke",
+    "type": "strike",
+    "color": "light"
+  },
+  {
+    "id": "light_strike_31",
+    "name": "Excalibur's Arc",
+    "type": "strike",
+    "color": "light"
+  },
+  {
+    "id": "light_lob_02",
+    "name": "Mortar of Bricks",
+    "type": "lob",
+    "color": "light"
+  },
+  {
+    "id": "light_lob_03",
+    "name": "Font of Blessed Water",
+    "type": "lob",
+    "color": "light"
+  },
+  {
+    "id": "light_lob_04",
+    "name": "Incense Censer",
+    "type": "lob",
+    "color": "light"
+  },
+  {
+    "id": "light_lob_05",
+    "name": "Falling Masonry",
+    "type": "lob",
+    "color": "light"
+  },
+  {
+    "id": "light_lob_06",
+    "name": "Onager Stone",
+    "type": "lob",
+    "color": "light"
+  },
+  {
+    "id": "light_lob_07",
+    "name": "Toppled Marble Column",
+    "type": "lob",
+    "color": "light"
+  },
+  {
+    "id": "light_lob_08",
+    "name": "Falling Star",
+    "type": "lob",
+    "color": "light"
+  },
+  {
+    "id": "light_lob_09",
+    "name": "Alchemist's Flask",
+    "type": "lob",
+    "color": "light"
+  },
+  {
+    "id": "light_lob_10",
+    "name": "Salve Jar",
+    "type": "lob",
+    "color": "light"
+  },
+  {
+    "id": "light_lob_11",
+    "name": "Quicksilver Retort",
+    "type": "lob",
+    "color": "light"
+  },
+  {
+    "id": "light_lob_12",
+    "name": "Abbey Bell Toll",
+    "type": "lob",
+    "color": "light"
+  },
+  {
+    "id": "light_lob_13",
+    "name": "Slinger's Hail",
+    "type": "lob",
+    "color": "light"
+  },
+  {
+    "id": "light_lob_14",
+    "name": "Southern Cross Starfall",
+    "type": "lob",
+    "color": "light"
+  },
+  {
+    "id": "light_lob_15",
+    "name": "Downdraft",
+    "type": "lob",
+    "color": "light"
+  },
+  {
+    "id": "light_lob_16",
+    "name": "Owl Pellet",
+    "type": "lob",
+    "color": "light"
+  },
+  {
+    "id": "light_lob_17",
+    "name": "Siege Stone of Acre",
+    "type": "lob",
+    "color": "light"
+  },
+  {
+    "id": "light_ward_01",
+    "name": "Kite Shield",
+    "type": "ward",
+    "color": "light"
+  },
+  {
+    "id": "light_ward_02",
+    "name": "Tower Shield",
+    "type": "ward",
+    "color": "light"
+  },
+  {
+    "id": "light_ward_03",
+    "name": "Marble Wall",
+    "type": "ward",
+    "color": "light"
+  },
+  {
+    "id": "light_ward_04",
+    "name": "Brick Rampart",
+    "type": "ward",
+    "color": "light"
+  },
+  {
+    "id": "light_ward_05",
+    "name": "Cloister Arches",
+    "type": "ward",
+    "color": "light"
+  },
+  {
+    "id": "light_ward_06",
+    "name": "Spiked Pavise",
+    "type": "ward",
+    "color": "light"
+  },
+  {
+    "id": "light_ward_07",
+    "name": "Chevaux-de-Frise",
+    "type": "ward",
+    "color": "light"
+  },
+  {
+    "id": "light_ward_08",
+    "name": "Testudo Formation",
+    "type": "ward",
+    "color": "light"
+  },
+  {
+    "id": "light_ward_09",
+    "name": "Castle Portcullis",
+    "type": "ward",
+    "color": "light"
+  },
+  {
+    "id": "light_ward_10",
+    "name": "Shieldwall of the Fyrd",
+    "type": "ward",
+    "color": "light"
+  },
+  {
+    "id": "light_ward_11",
+    "name": "Sheltering Wings",
+    "type": "ward",
+    "color": "light"
+  },
+  {
+    "id": "light_ward_12",
+    "name": "Hadrian's Wall",
+    "type": "ward",
+    "color": "light"
+  },
+  {
+    "id": "light_ward_13",
+    "name": "Sacsayhuaman Stones",
+    "type": "ward",
+    "color": "light"
+  },
+  {
+    "id": "light_ward_14",
+    "name": "Great Zimbabwe Walls",
+    "type": "ward",
+    "color": "light"
+  },
+  {
+    "id": "light_ward_15",
+    "name": "Ishtar Gate",
+    "type": "ward",
+    "color": "light"
+  },
+  {
+    "id": "light_ward_16",
+    "name": "White Heron Castle",
+    "type": "ward",
+    "color": "light"
+  },
+  {
+    "id": "light_ward_17",
+    "name": "Aegis of Athena",
+    "type": "ward",
+    "color": "light"
+  },
+  {
+    "id": "light_ward_18",
+    "name": "Theodosian Walls",
+    "type": "ward",
+    "color": "light"
+  },
+  {
+    "id": "light_sentry_01",
+    "name": "Harbor Lighthouse",
+    "type": "sentry",
+    "color": "light"
+  },
+  {
+    "id": "light_sentry_02",
+    "name": "Arrow-Slit Tower",
+    "type": "sentry",
+    "color": "light"
+  },
+  {
+    "id": "light_sentry_03",
+    "name": "Owl on the Parapet",
+    "type": "sentry",
+    "color": "light"
+  },
+  {
+    "id": "light_sentry_04",
+    "name": "Windmill of La Mancha",
+    "type": "sentry",
+    "color": "light"
+  },
+  {
+    "id": "light_sentry_05",
+    "name": "Weathervane Cockerel",
+    "type": "sentry",
+    "color": "light"
+  },
+  {
+    "id": "light_sentry_06",
+    "name": "Wayside Shrine",
+    "type": "sentry",
+    "color": "light"
+  },
+  {
+    "id": "light_sentry_07",
+    "name": "Bell Tower",
+    "type": "sentry",
+    "color": "light"
+  },
+  {
+    "id": "light_sentry_08",
+    "name": "Stone Lions of Delos",
+    "type": "sentry",
+    "color": "light"
+  },
+  {
+    "id": "light_sentry_09",
+    "name": "Obelisk of the Sun",
+    "type": "sentry",
+    "color": "light"
+  },
+  {
+    "id": "light_sentry_10",
+    "name": "Caracol Observatory",
+    "type": "sentry",
+    "color": "light"
+  },
+  {
+    "id": "light_sentry_11",
+    "name": "Lamassu Gate Statue",
+    "type": "sentry",
+    "color": "light"
+  },
+  {
+    "id": "light_sentry_12",
+    "name": "Pharos of Alexandria",
+    "type": "sentry",
+    "color": "light"
+  },
+  {
+    "id": "light_boon_01",
+    "name": "Knight's Vigil",
+    "type": "boon",
+    "color": "light"
+  },
+  {
+    "id": "light_boon_02",
+    "name": "Oath of Fealty",
+    "type": "boon",
+    "color": "light"
+  },
+  {
+    "id": "light_boon_03",
+    "name": "Westerly Breeze",
+    "type": "boon",
+    "color": "light"
+  },
+  {
+    "id": "light_boon_04",
+    "name": "Owl's Foresight",
+    "type": "boon",
+    "color": "light"
+  },
+  {
+    "id": "light_boon_05",
+    "name": "Physician's Balm",
+    "type": "boon",
+    "color": "light"
+  },
+  {
+    "id": "light_boon_06",
+    "name": "Herbal Poultice",
+    "type": "boon",
+    "color": "light"
+  },
+  {
+    "id": "light_boon_07",
+    "name": "Vigil Candle",
+    "type": "boon",
+    "color": "light"
+  },
+  {
+    "id": "light_boon_08",
+    "name": "Rally the Legion",
+    "type": "boon",
+    "color": "light"
+  },
+  {
+    "id": "light_boon_09",
+    "name": "Pegasus Flight",
+    "type": "boon",
+    "color": "light"
+  },
+  {
+    "id": "light_boon_10",
+    "name": "Crusader's Vow",
+    "type": "boon",
+    "color": "light"
+  },
+  {
+    "id": "light_boon_11",
+    "name": "Sushruta's Stitches",
+    "type": "boon",
+    "color": "light"
+  },
+  {
+    "id": "light_boon_12",
+    "name": "Angelic Veil",
+    "type": "boon",
+    "color": "light"
+  },
+  {
+    "id": "light_boon_13",
+    "name": "Valkyrie's Reprieve",
+    "type": "boon",
+    "color": "light"
+  },
+  {
+    "id": "light_charge_01",
+    "name": "Swan-Feather Quiver",
+    "type": "charge",
+    "color": "light"
+  },
+  {
+    "id": "light_charge_02",
+    "name": "Legionary's Javelins",
+    "type": "charge",
+    "color": "light"
+  },
+  {
+    "id": "light_charge_03",
+    "name": "Yew Longbow Quiver",
+    "type": "charge",
+    "color": "light"
+  },
+  {
+    "id": "light_lob_18",
+    "name": "Holy Water Vials",
+    "type": "lob",
+    "color": "light"
+  },
+  {
+    "id": "light_charge_04",
+    "name": "Huaraca Stones",
+    "type": "charge",
+    "color": "light"
+  },
+  {
+    "id": "light_charge_05",
+    "name": "Brick Hod",
+    "type": "charge",
+    "color": "light"
+  },
+  {
+    "id": "light_charge_06",
+    "name": "Salve Tin",
+    "type": "charge",
+    "color": "light"
+  },
+  {
+    "id": "light_charge_07",
+    "name": "Owl-Feather Darts",
+    "type": "charge",
+    "color": "light"
+  },
+  {
+    "id": "light_charge_08",
+    "name": "Tesserae Pouch",
+    "type": "charge",
+    "color": "light"
+  },
+  {
+    "id": "light_charge_09",
+    "name": "Genoese Crossbow Bolts",
+    "type": "charge",
+    "color": "light"
+  },
+  {
+    "id": "light_charge_10",
+    "name": "Censer Coals",
+    "type": "charge",
+    "color": "light"
+  },
+  {
+    "id": "light_charge_11",
+    "name": "Sealed Edict Scrolls",
+    "type": "charge",
+    "color": "light"
+  },
+  {
+    "id": "light_charge_12",
+    "name": "Silver Arrows of the Hunt",
+    "type": "charge",
+    "color": "light"
+  },
+  {
+    "id": "light_lob_19",
+    "name": "Apothecary's Vials",
+    "type": "lob",
+    "color": "light"
+  },
+  {
+    "id": "light_charge_13",
+    "name": "Bag of Winds",
+    "type": "charge",
+    "color": "light"
+  },
+  {
+    "id": "light_charge_14",
+    "name": "Thousand Paper Cranes",
+    "type": "charge",
+    "color": "light"
+  },
+  {
+    "id": "light_charge_15",
+    "name": "Burning Lens of Archimedes",
+    "type": "charge",
+    "color": "light"
+  },
+  {
+    "id": "light_charge_16",
+    "name": "Arrows of Heracles",
+    "type": "charge",
+    "color": "light"
+  },
+  {
+    "id": "light_utility_01",
+    "name": "Imperial Scribe's Brush",
+    "type": "utility",
+    "color": "light"
+  },
+  {
+    "id": "light_utility_02",
+    "name": "Cai Lun's Paper",
+    "type": "utility",
+    "color": "light"
+  },
+  {
+    "id": "light_utility_03",
+    "name": "Quipu Record",
+    "type": "utility",
+    "color": "light"
+  },
+  {
+    "id": "light_utility_04",
+    "name": "Roman Bathhouse",
+    "type": "utility",
+    "color": "light"
+  },
+  {
+    "id": "light_utility_05",
+    "name": "Illuminated Manuscript",
+    "type": "utility",
+    "color": "light"
+  },
+  {
+    "id": "light_utility_06",
+    "name": "Alchemist's Still",
+    "type": "utility",
+    "color": "light"
+  },
+  {
+    "id": "light_utility_07",
+    "name": "Movable Type Press",
+    "type": "utility",
+    "color": "light"
+  },
+  {
+    "id": "light_utility_08",
+    "name": "Cleric's Absolution",
+    "type": "utility",
+    "color": "light"
+  },
+  {
+    "id": "light_utility_09",
+    "name": "Aryabhata's Tables",
+    "type": "utility",
+    "color": "light"
+  },
+  {
+    "id": "light_utility_10",
+    "name": "House of Wisdom",
+    "type": "utility",
+    "color": "light"
+  },
+  {
+    "id": "light_utility_11",
+    "name": "Timbuktu Manuscripts",
+    "type": "utility",
+    "color": "light"
+  },
+  {
+    "id": "light_utility_12",
+    "name": "Emerald Tablet",
+    "type": "utility",
+    "color": "light"
+  },
+  {
+    "id": "light_utility_13",
+    "name": "Canon of Medicine",
+    "type": "utility",
+    "color": "light"
+  },
+  {
+    "id": "light_utility_14",
+    "name": "Library of Alexandria",
+    "type": "utility",
+    "color": "light"
+  },
+  {
+    "id": "light_trap_01",
+    "name": "Roman Caltrops",
+    "type": "trap",
+    "color": "light"
+  },
+  {
+    "id": "light_trap_02",
+    "name": "Drawbridge Slam",
+    "type": "trap",
+    "color": "light"
+  },
+  {
+    "id": "light_trap_03",
+    "name": "Gladiator's Net",
+    "type": "trap",
+    "color": "light"
+  },
+  {
+    "id": "light_trap_04",
+    "name": "Sunfire Glyph",
+    "type": "trap",
+    "color": "light"
+  },
+  {
+    "id": "light_trap_05",
+    "name": "Lilia Pits",
+    "type": "trap",
+    "color": "light"
+  },
+  {
+    "id": "light_trap_06",
+    "name": "Murder Hole",
+    "type": "trap",
+    "color": "light"
+  },
+  {
+    "id": "light_trap_07",
+    "name": "Riddle at the Gate",
+    "type": "trap",
+    "color": "light"
+  },
+  {
+    "id": "light_trap_08",
+    "name": "Tomb Builder's Pitfall",
+    "type": "trap",
+    "color": "light"
+  },
+  {
+    "id": "light_trap_09",
+    "name": "Daedalus's Snare",
+    "type": "trap",
+    "color": "light"
+  },
+  {
+    "id": "light_environment_01",
+    "name": "Noon Sun on Marble",
+    "type": "environment",
+    "color": "light"
+  },
+  {
+    "id": "light_environment_02",
+    "name": "Hedge Maze",
+    "type": "environment",
+    "color": "light"
+  },
+  {
+    "id": "light_environment_03",
+    "name": "Monastery Herb Garden",
+    "type": "environment",
+    "color": "light"
+  },
+  {
+    "id": "light_environment_04",
+    "name": "Marble Quarry",
+    "type": "environment",
+    "color": "light"
+  },
+  {
+    "id": "light_environment_05",
+    "name": "Pure Snowfield",
+    "type": "environment",
+    "color": "light"
+  },
+  {
+    "id": "light_environment_06",
+    "name": "Consecrated Ground",
+    "type": "environment",
+    "color": "light"
+  },
+  {
+    "id": "light_environment_07",
+    "name": "Rose Garden of Shiraz",
+    "type": "environment",
+    "color": "light"
+  },
+  {
+    "id": "light_environment_08",
+    "name": "Collapsing Colonnade",
+    "type": "environment",
+    "color": "light"
+  },
+  {
+    "id": "light_environment_09",
+    "name": "Hanging Gardens of Babylon",
+    "type": "environment",
+    "color": "light"
+  },
+  {
+    "id": "light_piece_01",
+    "name": "Crown of the Round Table",
+    "type": "piece",
+    "color": "light"
+  },
+  {
+    "id": "light_piece_02",
+    "name": "Grail of the Fisher King",
+    "type": "piece",
+    "color": "light"
+  },
+  {
+    "id": "light_piece_03",
+    "name": "Stone of the Philosophers",
+    "type": "piece",
+    "color": "light"
+  },
+  {
+    "id": "light_piece_04",
+    "name": "Bridle of the Pegasus",
+    "type": "piece",
+    "color": "light"
+  },
+  {
+    "id": "light_piece_05",
+    "name": "Scales of the Final Judge",
+    "type": "piece",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_01",
+    "name": "Pegasus Foal",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_02",
+    "name": "Pegasus",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_03",
+    "name": "Centaur Archer",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_04",
+    "name": "Chiron, Healer of Heroes",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_05",
+    "name": "White Unicorn",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_06",
+    "name": "White Stag",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_07",
+    "name": "Snow Crane",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_08",
+    "name": "Thousand-Year Crane",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_09",
+    "name": "Barn Owl",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_10",
+    "name": "Owl of Athena",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_11",
+    "name": "White Wolf",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_12",
+    "name": "White Wolf Matriarch",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_13",
+    "name": "Talbot Hound",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_14",
+    "name": "Royal Gyrfalcon",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_15",
+    "name": "Heraldic Griffin",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_16",
+    "name": "Lamassu",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_17",
+    "name": "Guardian Sphinx of Giza",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_18",
+    "name": "Great Sphinx of Giza",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_19",
+    "name": "White Elephant",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_20",
+    "name": "Hannibal's War Elephant",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_21",
+    "name": "Qilin",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_22",
+    "name": "Valkyrie Herald",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_23",
+    "name": "Valkyrie Shieldmaiden",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_24",
+    "name": "Cherub",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_25",
+    "name": "Guardian Angel",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_26",
+    "name": "Forbidden City Lion",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_27",
+    "name": "Rose-Garden Simurgh",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_28",
+    "name": "Sylph of the Gale",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_29",
+    "name": "Roman Legionary",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_30",
+    "name": "Centurion",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_31",
+    "name": "Crusader Knight",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_32",
+    "name": "Knight of the Round Table",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_33",
+    "name": "Sir Galahad, the Pure",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_34",
+    "name": "El Cid Campeador",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_35",
+    "name": "Longbowman",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_36",
+    "name": "Inca Stonemason",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_37",
+    "name": "Village Physician",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_38",
+    "name": "Battle Cleric",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_39",
+    "name": "Vaidya of Taxila",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_40",
+    "name": "Hanlin Academy Scribe",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_41",
+    "name": "Persian Astronomer",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_42",
+    "name": "Astronomer of Copan",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_43",
+    "name": "Imhotep the Builder",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_44",
+    "name": "Terracotta Warrior",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_summon_45",
+    "name": "Talos, the Bronze Guard",
+    "type": "summon",
+    "color": "light"
+  },
+  {
+    "id": "light_machine_01",
+    "name": "Roman Ballista",
+    "type": "machine",
+    "color": "light"
+  },
+  {
+    "id": "light_machine_02",
+    "name": "Legion Scorpio Engine",
+    "type": "machine",
+    "color": "light"
+  },
+  {
+    "id": "light_machine_03",
+    "name": "Mangonel",
+    "type": "machine",
+    "color": "light"
+  },
+  {
+    "id": "light_machine_04",
+    "name": "Battering Ram",
+    "type": "machine",
+    "color": "light"
+  },
+  {
+    "id": "light_machine_05",
+    "name": "Wicker Mantlet",
+    "type": "machine",
+    "color": "light"
+  },
+  {
+    "id": "light_machine_06",
+    "name": "Legion Camp Palisade",
+    "type": "machine",
+    "color": "light"
+  },
+  {
+    "id": "light_machine_07",
+    "name": "Curtain Wall Rampart",
+    "type": "machine",
+    "color": "light"
+  },
+  {
+    "id": "light_machine_08",
+    "name": "Norman Keep",
+    "type": "machine",
+    "color": "light"
+  },
+  {
+    "id": "light_machine_09",
+    "name": "Onager Catapult",
+    "type": "machine",
+    "color": "light"
+  },
+  {
+    "id": "light_machine_10",
+    "name": "Counterweight Trebuchet",
+    "type": "machine",
+    "color": "light"
+  },
+  {
+    "id": "light_machine_11",
+    "name": "Zhuge Nu Repeater",
+    "type": "machine",
+    "color": "light"
+  },
+  {
+    "id": "light_machine_12",
+    "name": "Siege Tower",
+    "type": "machine",
+    "color": "light"
+  },
+  {
+    "id": "light_machine_13",
+    "name": "Motte-and-Bailey Palisade",
+    "type": "machine",
+    "color": "light"
+  },
+  {
+    "id": "light_machine_14",
+    "name": "Marble Bastion",
+    "type": "machine",
+    "color": "light"
+  },
+  {
+    "id": "light_machine_15",
+    "name": "Turtle Ship Bulwark",
+    "type": "machine",
+    "color": "light"
+  },
+  {
+    "id": "light_machine_16",
+    "name": "Hero's Automaton",
+    "type": "machine",
+    "color": "light"
+  },
+  {
+    "id": "light_machine_17",
+    "name": "Kite of Han Xin",
+    "type": "machine",
+    "color": "light"
+  },
+  {
+    "id": "light_machine_18",
+    "name": "Polybolos",
+    "type": "machine",
+    "color": "light"
+  },
+  {
+    "id": "light_machine_19",
+    "name": "Helepolis",
+    "type": "machine",
+    "color": "light"
+  },
+  {
+    "id": "light_machine_20",
+    "name": "Star Fort Bastion",
+    "type": "machine",
+    "color": "light"
+  },
+  {
+    "id": "light_machine_21",
+    "name": "Claw of Archimedes",
+    "type": "machine",
+    "color": "light"
+  },
+  {
+    "id": "light_machine_22",
+    "name": "Al-Jazari's Automaton",
+    "type": "machine",
+    "color": "light"
+  },
+  {
+    "id": "light_machine_23",
+    "name": "Su Song's Clock Tower",
+    "type": "machine",
+    "color": "light"
+  },
+  {
+    "id": "light_machine_24",
+    "name": "Warwolf Trebuchet",
+    "type": "machine",
+    "color": "light"
+  },
+  {
+    "id": "light_machine_25",
+    "name": "Krak des Chevaliers",
+    "type": "machine",
+    "color": "light"
+  },
+  {
+    "id": "light_ace_01",
+    "name": "Sun Spear",
+    "type": "ace",
+    "color": "light"
+  },
+  {
+    "id": "light_ace_02",
+    "name": "Archangel's Verdict",
+    "type": "ace",
+    "color": "light"
+  },
+  {
+    "id": "light_ace_03",
+    "name": "Last Light of Dawn",
+    "type": "ace",
+    "color": "light"
+  },
+  {
+    "id": "light_aceup_01",
+    "name": "Blessed Oil",
+    "type": "aceup",
+    "color": "light"
+  },
+  {
+    "id": "light_aceup_02",
+    "name": "Oath of Valor",
+    "type": "aceup",
+    "color": "light"
+  },
+  {
+    "id": "light_aceup_03",
+    "name": "Halo of Judgment",
+    "type": "aceup",
+    "color": "light"
+  },
+  {
+    "id": "light_claim_01",
+    "name": "Marble Causeway",
+    "type": "claim",
+    "color": "light"
+  },
+  {
+    "id": "light_claim_02",
+    "name": "Colonnade of Dawn",
+    "type": "claim",
+    "color": "light"
+  },
+  {
+    "id": "light_claim_03",
+    "name": "Temple Foundation",
+    "type": "claim",
+    "color": "light"
+  },
+  {
+    "id": "hero_aurel",
+    "name": "Sir Aurelion",
+    "type": "hero",
+    "color": "light"
+  },
+  {
+    "id": "hero_lumina",
+    "name": "Saint Lumina",
+    "type": "hero",
+    "color": "light"
+  },
+  {
+    "id": "hero_solaris",
+    "name": "Solaris, Dawn Archer",
+    "type": "hero",
+    "color": "light"
+  },
+  {
+    "id": "hero_oracle",
+    "name": "The Oracle",
+    "type": "hero",
+    "color": "light"
+  },
+  {
+    "id": "hero_seraphiel",
+    "name": "Seraphiel",
+    "type": "hero",
+    "color": "light"
+  },
+  {
+    "id": "hero_cassia",
+    "name": "Dawn Knight Cassia",
+    "type": "hero",
+    "color": "light"
+  },
+  {
+    "id": "hero_lux",
+    "name": "Lux the Lantern Bearer",
+    "type": "hero",
+    "color": "light"
+  },
+  {
+    "id": "hero_halo",
+    "name": "Halo, the Choir Child",
+    "type": "hero",
+    "color": "light"
+  },
+  {
+    "id": "hero_pharaoh",
+    "name": "The Gilded Pharaoh",
+    "type": "hero",
+    "color": "light"
+  },
+  {
+    "id": "hero_aldric",
+    "name": "Brother Aldric",
+    "type": "hero",
+    "color": "light"
+  },
+  {
+    "id": "hero_ratha",
+    "name": "Ra'tha the Sunspear",
+    "type": "hero",
+    "color": "light"
+  },
+  {
+    "id": "hero_prisma",
+    "name": "Prisma the Lightweaver",
+    "type": "hero",
+    "color": "light"
+  },
+  {
+    "id": "hero_theron",
+    "name": "High Judge Theron",
+    "type": "hero",
+    "color": "light"
+  },
+  {
+    "id": "hero_celestine",
+    "name": "Mother Celestine",
+    "type": "hero",
+    "color": "light"
+  },
+  {
+    "id": "halo_arc",
+    "name": "Halo Arc",
+    "type": "ward",
+    "color": "light"
+  },
+  {
+    "id": "prism_cage",
+    "name": "Prism Cage",
+    "type": "ward",
+    "color": "light"
+  }
+]

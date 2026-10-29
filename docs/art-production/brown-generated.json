@@ -313,5 +313,455 @@
     "status": "generated",
     "batch": 6,
     "reviewNote": "Repainted after the first crop clipped the smith's hairline and ran the sword off the left edge; preserved the earlier source in /tmp. Inspected final square, 206:141 crop and thumbnail. The full face, pouring hand and flask, oil stream, and complete treated sword remain visible."
+  },
+  {
+    "cardId": "brown_machine_06",
+    "name": "Elven Moonbow Ballista",
+    "prompt": "Paint one painterly medieval fantasy collectible-card illustration for the exact card Elven Moonbow Ballista. Depict a compact but substantial elven ballista built from dark carved wood, fine brass fittings and a crescent-shaped moonbow, mounted on a low stone parapet at twilight. An elven mechanic is winding the mechanism as it releases one slender silver-blue arrow at a distant, clearly visible small hostile creature; show the bow's quick snipe in a clean horizontal line, with a subtle frost shimmer on the striking arrow to suggest the chilling trait. Make the full ballista, crescent limbs, arrow, and mechanic's hands prominent and unobscured; grounded elegant elf craftsmanship, not a handheld crossbow. Rich painterly surfaces, believable wood/metal/cloth, dramatic moonlit glow, atmospheric forested battlements behind. Explicit 1:1 SQUARE composition, intended editable 512x512 master, stage horizontally for a wide 206:141 crop. Keep full bow tips, arrowhead, hands, face and main mechanism within x24..488,y105..407 after normalization; only quiet sky/stone above and below. Strong legible silhouette at thumbnail. No text, border, UI, letters, modern machinery, anime, Disney cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e7857c7e-8999-4ecd-8219-fe683480fe55.png",
+    "editableSourcePath": "game/cards/art/masters/brown_machine_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.45
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Inspected the exact 512-square master, wide crop and thumbnail. The crescent bow tip was just above the default crop, so focalPoint [0.5,0.45] shifts the crop upward to include both full bow tips, the elf's face and hands, complete ballista, and arrowhead; the distant target remains secondary."
+  },
+  {
+    "cardId": "brown_instant_05",
+    "name": "Elixir of Life",
+    "prompt": "Paint an illustration for the exact Brown instant card Elixir of Life. A desert alchemist in layered medieval robes gently offers a single elegant, stoppered glass phial of luminous golden-green elixir to a wounded adventurer who is regaining strength; a warm wave of light moves through the adventurer's chest, and tiny fresh shoots emerge from cracked sun-baked stone nearby. The potion and clear glass vial are the unmistakable central named subject; show the alchemist's face and careful offering hand, the recipient's relieved face, and the entire vial with its stopper. Suggest a delayed but powerful restorative blessing through a soft second halo echoing behind the first, subtle desert alchemy through brass inlay and sun motifs. Tactile glass, liquid, cloth, skin and sandstone, rich painterly medieval fantasy collectible-card artwork, refined dramatic warm light, atmospheric depth, grounded anatomy matching supplied Hexmancers art. Explicit 1:1 SQUARE composition for editable 512x512 master, horizontal staging for wide 206:141 card crop. Keep complete vial, stopper, both faces and relevant hands inside x24..488,y105..407 after normalization; leave only quiet architecture above and floor below. Strong simple silhouette at thumbnail. No text, labels, letters, border, UI, modern items, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5136af25-2d27-4f10-83b6-0188590b11bd.png",
+    "editableSourcePath": "game/cards/art/masters/brown_instant_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.36
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Inspected the exact 512-square master, wide crop and thumbnail. Default crop cut the alchemist's turban; focalPoint [0.5,0.36] shifts upward to show both complete faces, hands, full stoppered vial and recipient's healing glow. Crop retains the identified potion and central action."
+  },
+  {
+    "cardId": "brown_equip_13",
+    "name": "Troll Hide Barding",
+    "prompt": "Create a painterly medieval fantasy collectible-card illustration for the exact equipment card Troll Hide Barding. Show a burly, broad-backed troll standing calmly while a craftswoman fastens thick, supple troll-hide armor across its chest and shoulders. Make the named barding unmistakable: layered russet hide plates, heavy stitched seams, horn toggles and reinforced leather straps covering the troll like protective creature armor; one fastening is being secured by the craftswoman's hands. The troll's face is visible and gentle but powerful, and the armor itself is the prominent subject, conveying increased resilience. Medieval forge stable with stone, oak and warm firelight, painterly tactile hide/leather, grounded anatomy, rich materials and atmospheric depth consistent with supplied Hexmancers reference art. Explicit 1:1 SQUARE composition for an editable 512x512 master, horizontal staging for a wide 206:141 crop. Keep the troll's full face, barding silhouette, important straps and fitting hands inside x24..488,y105..407 after normalization; quiet rafters above, stable floor below. Strong subject at thumbnail. No text, letters, labels, border, UI, modern tack, anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-39ef92ba-7f2c-4f5e-b7bc-262daa96dd88.png",
+    "editableSourcePath": "game/cards/art/masters/brown_equip_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Inspected the 512-square source, adjusted wide crop and thumbnail. Shifted crop upward to retain the troll's complete face, hide armor, stitching, straps and the craftswoman fitting it; lower legs are expendable for this armor portrait."
+  },
+  {
+    "cardId": "brown_tinker_05",
+    "name": "Lens Polish",
+    "prompt": "Paint a painterly medieval fantasy collectible-card illustration for the exact card Lens Polish, framed as a medium shot with the elven craftswoman's head and upper torso smaller in the composition so the entire object arrangement fits a wide card crop. On an oak workbench is a complete, fully visible round crystal lens in an elegant brass-and-silver stand, including its entire circular rim and base; an elven craftswoman buffs its dusty half with a polishing cloth while the other half catches a bright, razor-clear beam of sunlight. Beside it place a small complete stoppered bottle of pale blue lens oil. Make the full lens and the polishing action the main focal point; face, both hands, cloth, bottle, full lens circle and base all visible at once. Tactile glass, brass, silver, oak, velvet, subtle elven workshop instruments, warm directional light and atmospheric depth. Rich painterly medieval fantasy collectible-card art matching supplied Hexmancers references, grounded face and anatomy. Explicit 1:1 SQUARE editable 512x512 master, horizontal staging for wide 206:141 card crop. Compose the face and all relevant hands and objects within x24..488,y110..400 after normalization; keep all heads, lens rim and base inside the central horizontal crop rather than near the square edges. The elf should occupy no more than one third of the frame height; medium framing, not close-up. Strong readable thumbnail. No text, letters, labels, readable runes, border, UI, modern laboratory tools, anime, Disney cartoon, photorealism or pixel art. Repainted after first square master could not fit full elf face and complete lens/base in one crop; preserved first source in /tmp/hex-art-scratch-brown01/brown_tinker_05-first.png.",
+    "generatedPath": "/workspace/generated_images/exec-8c0aaf55-ff5d-48a8-b798-24b0571b62f3.png",
+    "editableSourcePath": "game/cards/art/masters/brown_tinker_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.41
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Repainted and preserved the first source in /tmp/hex-art-scratch-brown01. Inspected the final 512-square source, crop shifted upward to y35..385, and thumbnail. Complete elf face, polishing hands/cloth, full lens rim and base, and flask all remain visible."
+  },
+  {
+    "cardId": "brown_trap_03",
+    "name": "Goblin Swinging Saw",
+    "prompt": "Create a painterly medieval fantasy collectible-card illustration for the exact trap card Goblin Swinging Saw. Show a mischievous goblin saboteur crouched beside a low stone passage, pulling a concealed trip cord that releases a heavy, broad-toothed iron saw blade swinging on a chain from a wooden beam. The full saw blade is the unmistakable named object, frozen mid-swing across the passage; a small armored intruder is caught just inside the trap and recoils as the saw snags the cloak and pins the boot, conveying a long-lasting snare and brief stun without gore. Include three small trigger plates or tripline markers across the floor to suggest the three trap positions, clearly subordinated to the main swinging saw. Goblin's alert face and pulling hands, complete saw blade and chain, and trapped figure's face remain visible. Painterly medieval fantasy collectible-card art, tactile dark iron, rough oak, rope, stone, leather, dramatic torchlight and atmospheric depth consistent with supplied Hexmancers references; grounded anatomy, grimly playful goblin ingenuity. Explicit 1:1 SQUARE editable 512x512 master, horizontal staging for wide 206:141 card crop. Keep all faces, goblin hands, entire saw head and chain connection, and trapped figure inside x24..488,y105..407 after normalization; quiet ceiling and floor beyond. Strong readable thumbnail silhouette. No text, border, UI, modern machinery, anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ab0b7c92-4632-472f-983e-130c4cd6fe5d.png",
+    "editableSourcePath": "game/cards/art/masters/brown_trap_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Inspected the exact 512-square source, centered wide crop and thumbnail. The saw blade and lower teeth, goblin face and pulling hands, intruder face and three floor trigger plates are visible. The upper chain continues beyond the crop, while the saw's full blade and lower swing remain clear."
+  },
+  {
+    "cardId": "brown_ace_01",
+    "name": "Flintlock Pistol",
+    "prompt": "Paint Flintlock Pistol. A human adventurer in worn brown leather holds a single beautifully crafted medieval flintlock pistol horizontally across the foreground and fires it toward a distant foe. The weapon is the dominant named subject, completely visible from ornate pommel to muzzle; crisp steel barrel, carved walnut grip, brass fittings, small rune etched into the lock, clean bright muzzle flash at the tip. The adventurer's focused face and firing hand remain visible behind it. Mechanics: a powerful human sidearm fires a straight bolt at the first enemy in its row. Painterly medieval fantasy collectible-card illustration in the supplied Hexmancers style: rich believable wood, brass, iron, leather and cloth, nuanced brushwork, attractive directional light, atmospheric depth, grounded mature anatomy. Explicit 1:1 SQUARE canvas for an editable 512x512 master and horizontal 206:141 crop. Keep the complete named object and critical face/hands within x24..488,y105..407; quiet scenery at top and bottom. One strong named subject and one clear action. No card border, lettering, numbers, text or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-90cc1df2-9119-4e43-9d14-227ebc765e61.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Reviewed the 1254-square original, 512x512 editable source, centered 206:141 crop, and thumbnail. The pistol is fully visible from grip to muzzle; wielder’s face and firing hand remain in the crop, and pistol identity reads at thumbnail size.",
+    "editableSourcePath": "game/cards/art/masters/brown_ace_01.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "brown_aceup_03",
+    "name": "Gnomish Scope",
+    "prompt": "Paint Gnomish Scope. A diminutive gnome gunsmith carefully adjusts an ornate brass telescopic scope mounted atop a finely crafted medieval sidearm on a workshop bench. Make the compact precision scope the dominant, unmistakable named object, with polished lenses, brass adjustment rings and tiny engraved gears; gnome's face and manipulating fingers clearly visible. The aligned pistol barrel points across a distant courtyard at a small target, suggesting improved aim, without obscuring the scope. Mechanics: a gnomish enchantment adds power to the sidearm. Painterly medieval fantasy collectible-card illustration in the supplied Hexmancers style: rich believable wood, brass, iron, leather and cloth, nuanced brushwork, attractive directional light, atmospheric depth, grounded mature anatomy. Explicit 1:1 SQUARE canvas for an editable 512x512 master and horizontal 206:141 crop. Keep the complete named object and critical face/hands within x24..488,y105..407; quiet scenery at top and bottom. One strong named subject and one clear action. No card border, lettering, numbers, text or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6b74296e-3aad-4e9e-92e6-e20715a95aa5.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Reviewed the 1254-square original, 512x512 editable source, centered 206:141 crop, and thumbnail. Entire ornate scope with both lenses, gnome’s face and adjusting fingers remain in the crop; scope and sidearm relationship reads at thumbnail size.",
+    "editableSourcePath": "game/cards/art/masters/brown_aceup_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "brown_machine_07",
+    "name": "Goblin Junk Cannon",
+    "prompt": "Paint Goblin Junk Cannon. A sturdy homemade goblin junk cannon dominates a medieval battlefield emplacement: an oversized short iron barrel pieced together from mismatched pipes, battered cookware, wagon-wheel braces and scrap plates, but solid and clearly cannon-shaped. A wiry green goblin gunner steadies its crank and fires one bright straight bolt down the row toward an armored foe. Keep the full cannon from breech to muzzle, the goblin's focused face and firing hand visible; funny clutter is secondary. Mechanics: a sturdy steady cannon shoots the first enemy in its row; anything striking it is chilled. Painterly medieval fantasy collectible-card illustration in the supplied Hexmancers style: rich believable wood, brass, iron, leather and cloth, nuanced brushwork, attractive directional light, atmospheric depth, grounded mature anatomy. Explicit 1:1 SQUARE canvas for an editable 512x512 master and horizontal 206:141 crop. Keep the complete named object and critical face/hands within x24..488,y105..407; quiet scenery at top and bottom. One strong named subject and one clear action. No card border, lettering, numbers, text or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ae6ba4b3-3b9e-4d53-9a68-16c0b4050421.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Reviewed the 1254-square original, 512x512 editable source, centered 206:141 crop, and thumbnail. Goblin’s face and crank hand, complete scrap cannon barrel and bolt action remain visible; cannon identity reads at thumbnail size.",
+    "editableSourcePath": "game/cards/art/masters/brown_machine_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "brown_instant_06",
+    "name": "Peach of Immortality",
+    "prompt": "Paint Peach of Immortality. A single perfect, palm-sized peach of immortality rests in the center foreground on an ancient carved wooden altar. Its velvety gold-red skin, soft peach fuzz and curled green leaf make it unmistakably a real peach; a small warm halo glows from within, golden healing motes gathering around it. An elderly human pilgrim reaches toward the fruit with a grateful hand, face serene and visible, while fresh green leaves emerge from cracked stone nearby. The peach itself is the dominant named artifact, not a generic potion or spell. Mechanics: an instant healing boon restores health over several seconds and gives an additional immediate heal. Painterly medieval fantasy collectible-card illustration in the supplied Hexmancers style: rich believable wood, brass, iron, leather and cloth, nuanced brushwork, attractive directional light, atmospheric depth, grounded mature anatomy. Explicit 1:1 SQUARE canvas for an editable 512x512 master and horizontal 206:141 crop. Keep the complete named object and critical face/hands within x24..488,y105..407; quiet scenery at top and bottom. One strong named subject and one clear action. No card border, lettering, numbers, text or UI. No anime, Disney-like cartoon, photorealism or pixel art. Edited once to remove a duplicate fruit while preserving the composition.",
+    "generatedPath": "/workspace/generated_images/exec-e0b649b8-4e6d-4c0e-84ed-9b334fffa4e2.png",
+    "focalPoint": [
+      0.5,
+      0.44
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Reviewed the 1254-square repaired original, 512x512 editable source, upward-shifted 206:141 crop at focal y=0.44, and thumbnail. One complete glowing peach, pilgrim’s full face and reaching hand fit the crop; decorative lower altar is trimmed. Fruit remains clear at thumbnail size.",
+    "editableSourcePath": "game/cards/art/masters/brown_instant_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "brown_equip_14",
+    "name": "Sea-Folk Scale Mail",
+    "prompt": "Paint Sea-Folk Scale Mail. A strong sea-folk warrior stands on a windswept stone harbor wall, three-quarter view, showing an expertly fitted cuirass of overlapping iridescent blue-green fish-scale plates, each small metal scale catching cool ocean light and warm sunset glints. The sea-folk's face, both hands fastening the armor's leather side straps, and entire torso armor are clearly visible and dominant; gill markings and subtle fin-like ear details suggest an aquatic people without making them monstrous. A simple shell-inlaid shoulder guard and deep teal cloak support the silhouette. The complete named scale mail must remain visible. Mechanics: equip a creature with sturdy plate armor that increases its health. Painterly medieval fantasy collectible-card illustration in the supplied Hexmancers style: rich believable wood, brass, iron, leather and cloth, nuanced brushwork, attractive directional light, atmospheric depth, grounded mature anatomy. Explicit 1:1 SQUARE canvas for an editable 512x512 master and horizontal 206:141 crop. Keep the complete named object and critical face/hands within x24..488,y105..407; quiet scenery at top and bottom. One strong named subject and one clear action. No card border, lettering, numbers, text or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0f1e7d04-d47b-4499-96f1-d59023b45411.png",
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Reviewed the 1254-square original, 512x512 editable source, upward-shifted wide crop at focal y=0.40, and thumbnail. Full face, fastening hands and complete scale-plated torso remain visible; decorative lower garment is cropped. Scale-mail identity remains clear at thumbnail size.",
+    "editableSourcePath": "game/cards/art/masters/brown_equip_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "brown_tinker_06",
+    "name": "Gnomish Overclock",
+    "prompt": "Paint Gnomish Overclock. A clever gnome engineer presses down the brass lever of a compact clockwork overclocking device mounted beside a medieval spellcasting focus. The device is a clearly readable named object: an ornate copper-and-brass gear assembly with a spring-loaded ratchet, a spinning flywheel and a small gauge whose needle nears its red arc. On the activation, warm power surges from the device into one chosen wand or runic bolt, making its glow brighten. Keep the whole mechanism, gnome's intent face and pressing hand within the card crop; the gnome and overclock device are primary, no readable writing. Painterly medieval fantasy collectible-card illustration in the supplied Hexmancers style: rich believable wood, brass, iron, leather and cloth, nuanced brushwork, attractive directional light, atmospheric depth, grounded mature anatomy. Explicit 1:1 SQUARE canvas for an editable 512x512 master and horizontal 206:141 crop. Keep the complete named object and critical face/hands within x24..488,y105..407; quiet scenery at top and bottom. One strong named subject and one clear action. No card border, lettering, numbers, text or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d2ac8487-4ccf-494c-b6a5-b649f919e7e5.png",
+    "focalPoint": [
+      0.5,
+      0.44
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Reviewed the 1254-square original, 512x512 editable source, upward-shifted wide crop at focal y=0.44, and thumbnail. Gnome’s full face, lever hand, clockwork gears, gauge and glowing focus remain visible; tabletop clutter is secondary. Device reads at thumbnail size.",
+    "editableSourcePath": "game/cards/art/masters/brown_tinker_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "brown_trap_04",
+    "name": "Grand Pendulum Engine",
+    "prompt": "Paint Grand Pendulum Engine. A massive but compact medieval pendulum engine is mounted on a stout oak-and-iron crossbeam. Three distinct heavy pendulum blades hang across the width; the central broad axe blade is swinging straight down through a vertical column, kicking an armored foe backward as it passes. Show the complete crossbeam, pendulum pivots, blade heads and lowest blade points within the crop. The trap engine is the dominant named subject; no scattered magical effects. Tactile old bronze, oak, rivets, weathered stone, one clear downward swing. Mechanics: a lasting row of pendulum traps swings blades down their columns to strike and knock enemies back. Painterly medieval fantasy collectible-card illustration in the supplied Hexmancers style: rich believable wood, brass, iron, leather and cloth, nuanced brushwork, attractive directional light, atmospheric depth, grounded mature anatomy. Explicit 1:1 SQUARE canvas for an editable 512x512 master and horizontal 206:141 crop. Keep the complete named object and critical face/hands within x24..488,y105..407; quiet scenery at top and bottom. One strong named subject and one clear action. No card border, lettering, numbers, text or UI. No anime, Disney-like cartoon, photorealism or pixel art. Reframed the engine smaller and lower so the full crossbeam and each blade fit the square and card crop.",
+    "generatedPath": "/workspace/generated_images/exec-b1dc985a-a5e4-48f8-9a84-a7deaf4cbde6.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Reviewed the 1254-square reframed original, 512x512 editable source, centered 206:141 crop, and thumbnail. Complete beam, all three pivots, blade heads and blade tips remain within the crop; central swing and knockback read at thumbnail size.",
+    "editableSourcePath": "game/cards/art/masters/brown_trap_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "brown_ace_02",
+    "name": "Dwarven Hand Cannon",
+    "prompt": "Paint Dwarven Hand Cannon. A broad-shouldered dwarf gunsmith braces a hefty, compact medieval hand cannon with both gloved hands and fires it across the foreground. The short steel barrel, oversized flared muzzle, carved walnut grip, brass bands and the dwarf's determined face are fully visible. A single explosive impact blossoms around the nearest armored foe in the distance, pushing them backward, while the cannon itself remains dominant. Make it look like a hand-held dwarven firearm, not a shoulder cannon or modern weapon. Mechanics: a powerful sidearm shot hits the nearest enemy and bursts around it with knockback. Painterly medieval fantasy collectible-card illustration in the supplied Hexmancers style: rich believable wood, brass, iron, leather and cloth, nuanced brushwork, attractive directional light, atmospheric depth, grounded mature anatomy. Explicit 1:1 SQUARE canvas for an editable 512x512 master and horizontal 206:141 crop. Keep the complete named object and critical face/hands within x24..488,y105..407; quiet scenery at top and bottom. One strong named subject and one clear action. No card border, lettering, numbers, text or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c54a6551-94fc-4da3-9756-9cabe7be90f1.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Reviewed the 1254-square original, 512x512 editable source, centered 206:141 crop, and thumbnail. Dwarf’s face and both firing hands, complete hand cannon from grip to muzzle, and impact remain clear; cannon reads at thumbnail size.",
+    "editableSourcePath": "game/cards/art/masters/brown_ace_02.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "brown_aceup_13",
+    "name": "Bottled Djinn Wind",
+    "prompt": "Paint Bottled Djinn Wind. Compose for a horizontal card crop: place one small ornate clear-glass bottle at center-left, fully inside the safe area, with its complete rounded heel, body, neck, brass stopper and cork visible. The bottle has gold filigree, turquoise glass, and pale-blue wind swirling inside. At left behind it, an elven archer’s complete face and one hand pull the stopper; her other hand holds a medieval sidearm in the upper center. A translucent blue djinn wind streams from bottle to sidearm then across distant foes on the right. Keep the bottle primary and fully visible, face and relevant hands fully visible; make it about 30 percent smaller than a bulky potion jar. Mechanics: djinn enchantment strengthens the sidearm and lets its shot reach all enemies. Painterly medieval fantasy collectible-card illustration in the supplied Hexmancers style: rich believable wood, brass, iron, leather and cloth, nuanced brushwork, attractive directional light, atmospheric depth, grounded mature anatomy. Explicit 1:1 SQUARE canvas for an editable 512x512 master and horizontal 206:141 crop. Keep the complete named object and critical face/hands within x24..488,y105..407; quiet scenery at top and bottom. One strong named subject and one clear action. No card border, lettering, numbers, text or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-42926c8b-10ab-4f34-8108-4bd83455efff.png",
+    "focalPoint": [
+      0.5,
+      0.535
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Rechecked the 1254-square original, 512x512 editable source, 206:141 crop at focal y=0.535, and thumbnail. The complete bottle base, body and neck, plus cork in the elf’s hand, now fit with a small bottom margin; the elf’s facial features remain fully visible, with only the topmost hair close to the upper edge. Bottle identity reads at thumbnail size.",
+    "editableSourcePath": "game/cards/art/masters/brown_aceup_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "brown_machine_08",
+    "name": "Harbor Ballista",
+    "prompt": "Paint Harbor Ballista. A sturdy sea-folk harbor ballista dominates a weathered stone breakwater at dusk: a broad, fully visible medieval wooden siege crossbow on a swiveling oak-and-bronze stand, thick bow limbs, taut rope, crank winch, and one long iron-tipped bolt. A sea-folk harbor keeper with subtle fin-like ears and scaled forearms leans into the crank as the ballista releases its bolt across the bay toward a distant raider vessel. Keep the complete bow tips, stock, base, keeper’s face and working hands within the central horizontal crop. The heavy ballista is the named primary subject; sea, lanterns and ship are supporting context. Mechanics: a tough, steady ballista repeatedly snipes the weakest enemy from a harbor emplacement and siphons a little health. Painterly medieval fantasy collectible-card illustration in the supplied Hexmancers style: rich believable wood, brass, iron, leather and cloth, nuanced brushwork, attractive directional light, atmospheric depth, grounded mature anatomy. Explicit 1:1 SQUARE canvas for an editable 512x512 master and horizontal 206:141 crop. Keep the complete named object and critical face/hands within x24..488,y105..407; quiet scenery at top and bottom. One strong named subject and one clear action. No card border, lettering, numbers, text or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b2a9e9e8-a07e-4f88-bab9-bc24bdbc4ec3.png",
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Reviewed the 1254-square original, 512x512 editable source, upward-shifted wide crop at focal y=0.42, and thumbnail. Complete bow tips, stock, base and bolt fit the crop with operator face and hands visible; ballista silhouette reads at thumbnail size.",
+    "editableSourcePath": "game/cards/art/masters/brown_machine_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "brown_instant_07",
+    "name": "Soma Draught",
+    "prompt": "Paint Soma Draught. A human battle-mage raises a small, ornate amber-glass flask of Soma Draught and pours one glowing golden-red drop into a drinking cup, face and pouring hand visible. The complete flask, from rounded base to stopper, is the dominant named object; rich amber liquid glows within, delicate carved bronze collar, a single green herb leaf tied at the neck. A plain wand in the mage's other hand brightens with warm power while two wounded creature companions behind receive a subtle healing glow. Keep the flask central and clear, no generic spell blast. Mechanics: a human draught empowers the wand and helps heal the mage's creatures. Painterly medieval fantasy collectible-card illustration in the supplied Hexmancers style: rich believable glass, metal, wood, cloth and leather, nuanced brushwork, attractive directional light, atmospheric depth, grounded mature anatomy. Explicit 1:1 SQUARE canvas for an editable 512x512 master and horizontal 206:141 crop. Keep the complete named object and critical face/hands within x24..488,y105..407; quiet scenery at top and bottom. One strong named subject and one clear action. No card border, lettering, numbers, text or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-783f30ec-54e2-4155-9ef4-269b42ea0a9f.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Reviewed the 1254-square original, 512x512 editable source, centered wide crop, and thumbnail. Full flask from rounded base through stopper, pouring hand, mage’s face and cup all remain visible; fruit-like amber draught is identifiable at thumbnail size.",
+    "editableSourcePath": "game/cards/art/masters/brown_instant_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "brown_equip_20",
+    "name": "Sky-Folk Wing Harness",
+    "prompt": "Paint Sky-Folk Wing Harness. Center one sky-folk scout wearing an elegant flight harness: fitted dark-brown leather chest straps, brass buckles, shoulder pivots, and two compact articulated feathered wings mounted to the harness. Wings are folded to a graceful half-spread close behind the shoulders, not a huge span; keep each complete wing, feather tips, complete harness, scout’s full face, and both strap-adjusting hands clearly inside x24..488,y105..407 on this square canvas, with at least 24 pixels of breathing room around both wing tips. Compose as a waist-up portrait with gear as the focus. The sky-folk is poised on a castle parapet at sunset, warm air lifting the compact feather vanes. The wearable wing harness must read as equipment that increases attack speed; no clipped wings. Painterly medieval fantasy collectible-card illustration in the supplied Hexmancers style: rich believable glass, metal, wood, cloth and leather, nuanced brushwork, attractive directional light, atmospheric depth, grounded mature anatomy. Explicit 1:1 SQUARE canvas for an editable 512x512 master and horizontal 206:141 crop. Keep the complete named object and critical face/hands within x24..488,y105..407; quiet scenery at top and bottom. One strong named subject and one clear action. No card border, lettering, numbers, text or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-78d3d241-a8ac-4409-8b2c-d692a17db13a.png",
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Reviewed the final 1254-square generation, 512x512 editable source, upward-shifted wide crop at focal y=0.42, and thumbnail. Both full wing tips, harness hardware and straps, face, and adjusting hands remain inside the crop. First draft clipped wing tips and was replaced; older source is preserved in /tmp/brown_equip_20-attempt-landscape.png.",
+    "editableSourcePath": "game/cards/art/masters/brown_equip_20.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "brown_tinker_07",
+    "name": "Dwarven Forge Upgrade",
+    "prompt": "Paint Dwarven Forge Upgrade. A master dwarf smith leans over a compact stone-and-iron forge and performs a clear upgrade: he guides a fully visible steel weapon across a glowing rune-heated anvil with one hand while raising a hammer in the other. The forge itself is the named subject—blackened hearth, copper bellows, iron grate and bright golden coals—and a fresh line of molten runes brightens along the blade to show improved power. Keep smith’s face and working hands, complete weapon and forge opening in the central crop. No writing or oversized magic blast. Mechanics: a dwarven forge device permanently increases the power of a selected card for the battle. Painterly medieval fantasy collectible-card illustration in the supplied Hexmancers style: rich believable wood, brass, iron, leather, stone and flame, nuanced brushwork, attractive directional light, atmospheric depth, grounded mature anatomy. Explicit 1:1 SQUARE canvas for an editable 512x512 master and horizontal 206:141 crop. Keep the complete named object and critical face/hands within x24..488,y105..407; quiet scenery at top and bottom. One strong named subject and one clear action. No card border, lettering, numbers, text or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7c4c59f6-0a03-4aa8-9a72-e6584ac42a28.png",
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Reviewed the 1254-square original, 512x512 editable source, upward-shifted wide crop at focal y=0.38, and thumbnail. Hammer head and hand, smith’s face, full glowing blade, working hand and heated anvil remain visible; lower anvil base is expendable. Upgrade action reads at thumbnail size.",
+    "editableSourcePath": "game/cards/art/masters/brown_tinker_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "brown_ace_03",
+    "name": "Gnomish Ray Pistol",
+    "prompt": "Paint Gnomish Ray Pistol. A nimble gnome engineer in worn leather braces a beautiful compact ray pistol and fires a straight emerald-blue ray through several aligned armored foes. The pistol is the dominant named object, fully visible from carved grip and trigger to narrow crystal-lined muzzle, with brass gears, a small glowing glass chamber and precise Gnomish craftsmanship. Keep the gnome’s focused face and firing hand visible; the thin continuous ray crosses a quiet horizontal battlefield row. Mechanics: a gnomish sidearm fires a powerful ray through every enemy in its row. Painterly medieval fantasy collectible-card illustration in the supplied Hexmancers style: rich believable wood, brass, iron, leather, stone and flame, nuanced brushwork, attractive directional light, atmospheric depth, grounded mature anatomy. Explicit 1:1 SQUARE canvas for an editable 512x512 master and horizontal 206:141 crop. Keep the complete named object and critical face/hands within x24..488,y105..407; quiet scenery at top and bottom. One strong named subject and one clear action. No card border, lettering, numbers, text or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6616b040-34fb-4055-ae60-bf1777d32de7.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Reviewed the 1254-square original, 512x512 editable source, centered wide crop, and thumbnail. Entire pistol from grip through crystal muzzle, gnome’s face and firing hand, and the straight ray through aligned foes remain visible; pistol reads at thumbnail size.",
+    "editableSourcePath": "game/cards/art/masters/brown_ace_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "brown_machine_09",
+    "name": "Lighthouse Lens Beam",
+    "prompt": "Paint Lighthouse Lens Beam. A squat, broad medieval harbor beacon built on a rocky breakwater, only about half the square’s height, stands at the left of a horizontal composition. Its complete stone tower is fully visible with generous sky above and rocks below: short crenellated cap, compact lantern room, stout masonry shaft and wide rocky base. Through the lantern glass, a huge circular brass Fresnel lens is clearly visible as the dominant object. It emits one brilliant horizontal golden-white beam across the bay, pushing a distant raider backward. Preserve the full tower top and full base inside the central crop; lens and beam origin inside x24..488,y105..407. The beam may continue off the right edge. Mechanics: a sturdy steady lighthouse lens sends a beam that can push enemies back. Painterly medieval fantasy collectible-card illustration in the supplied Hexmancers style: rich believable limestone, bronze, glass, leather and sea, nuanced brushwork, attractive directional lantern light, atmospheric depth, grounded proportions. Explicit 1:1 SQUARE canvas for an editable 512x512 master and horizontal 206:141 crop. Keep complete named object within x24..488,y105..407; quiet sky and water at top and bottom. Strong readable subject and one action. No frame, text, lettering, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-20ebbfff-bdfe-47be-83c5-75aaa9dda3b1.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Reviewed the 1254-square final original, 512x512 editable source, centered wide crop, and thumbnail. Complete spire, lens room, tower, rocky base and beam origin remain visible; lighthouse stays identifiable at thumbnail size.",
+    "editableSourcePath": "game/cards/art/masters/brown_machine_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "brown_instant_08",
+    "name": "Berserker Brew",
+    "prompt": "Paint an illustration for the exact Hexmancers card Berserker Brew. Its mechanics are a delayed, long-lasting power boon for a troll in battle. Show one imposing, battle-worn troll berserker taking a swig from a small rough-hewn stoneware flask of glowing amber brew; the drink visibly fuels a fierce rallying surge of strength, with subtle warm veins of light and a forward battle-ready stance. Make troll face, drinking hand and whole flask unmistakable, dominant and readable. Painterly medieval fantasy collectible card art with believable skin, leather, iron, stoneware, dramatic directional firelight and atmospheric depth, grounded proportions, similar to supplied Hexmancers references. Explicit 1:1 SQUARE canvas for an editable 512x512 master and horizontal 206:141 card crop. Keep the troll face, flask, hand and identifying action inside x24..488,y105..407 on the square, quiet expendable cave or battlefield atmosphere above and below. No card frame, text, lettering, numbers, UI, logo, watermark, anime, Disney-like cartoon, photorealism or pixel art. Crop-safe edit moved the troll and flask lower and reduced scale while preserving identity.",
+    "generatedPath": "/workspace/generated_images/exec-a7f04b34-e824-4722-804d-a5ac8bdaef99.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Reviewed repaired 1254-square original, 512x512 editable source, centered 206:141 wide crop and 128x88 thumbnail. Troll face, drinking hand and whole flask remain visible and readable in both crops; the full square retains battlefield atmosphere.",
+    "editableSourcePath": "game/cards/art/masters/brown_instant_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "brown_equip_21",
+    "name": "Quicksilver Horseshoes",
+    "prompt": "Paint the exact Hexmancers card Quicksilver Horseshoes. Its mechanics are alchemical spring horseshoes fitted to a mount. Show a powerful dark horse in a lively forward canter, with one lifted forehoof prominently displaying a complete elegant horseshoe of living silvery quicksilver, shaped and riveted like a real medieval horseshoe, shimmering as it flexes like a spring. A mounted courier may be a subtle supporting figure, but the horse and named metal horseshoe are the clear focus. Painterly medieval fantasy collectible-card art, grounded anatomy, believable glossy liquid metal and leather tack, dramatic directional light, atmospheric depth, consistent with supplied Hexmancers art. Explicit 1:1 SQUARE canvas for editable 512x512 master and horizontal 206:141 crop. Keep horse's identifying head, lifted hoof and complete horseshoe inside x24..488,y105..407 on square, expendable stable-yard atmosphere above and below. Clear readable subject at thumbnail scale. No card frame, text, numbers, UI, logo, watermark, anime, cartoon, photorealism or pixel art. Crop-safe edit reduced scale and moved the horse down so head and shoe remain wholly visible.",
+    "generatedPath": "/workspace/generated_images/exec-3d29cf20-d758-45fc-81e6-a6098995236c.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Reviewed repaired 1254-square original, editable 512x512 source, centered 206:141 crop and 128x88 thumbnail. Horse head with both ears and complete lifted hoof and horseshoe remain visible; horseshoe is the clear thumbnail focal point.",
+    "editableSourcePath": "game/cards/art/masters/brown_equip_21.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "brown_tinker_08",
+    "name": "Elven Enchanter's Kit",
+    "prompt": "Paint an illustration for the exact Hexmancers card Elven Enchanter's Kit. Its mechanics are an elven tinker's repair kit that mends equipment. Show an elven enchanter at a wooden field bench carefully repairing a small brass-and-leather mechanical device with a compact, beautifully made portable kit: a fitted open wooden case of fine jeweler's tools, rune-tipped awl, tiny hammer, silver wire and glowing green crystal. The kit and the elf's working hands are the dominant clear subject; the device shows a visible repaired seam glowing softly. Painterly medieval fantasy collectible card art, grounded elf anatomy, believable wood, metal, leather and glass, attractive directional light and atmospheric depth, consistent with supplied Hexmancers references. Explicit 1:1 SQUARE canvas for editable 512x512 master and horizontal 206:141 crop. Keep elf's face, both working hands, whole open kit and repaired device inside x24..488,y105..407, quiet workshop background above and below. No frame, lettering, text, numbers, UI, logo, watermark, anime, cartoon, photorealism or pixel art. Crop-safe edit reduced the subject and moved it down to retain the full face and kit.",
+    "generatedPath": "/workspace/generated_images/exec-bad9858a-b9ac-4ce8-b329-11d85a7c30d0.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Reviewed repaired 1254-square original, editable 512x512 source, centered 206:141 crop and 128x88 thumbnail. Full elf face, working hands, open kit and repaired device remain visible; kit and action read at thumbnail size.",
+    "editableSourcePath": "game/cards/art/masters/brown_tinker_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "brown_ace_04",
+    "name": "Goblin Boomstick",
+    "prompt": "Paint the exact Hexmancers card Goblin Boomstick. Mechanics: a goblin ace fires an unstable, extraordinarily powerful nova shot from a hand cannon. Show a scrappy goblin gunsmith-warrior bracing an oversized but believable medieval hand cannon with both hands as it erupts in one compact brilliant orange-white nova blast. The goblin face, both hands, entire ornate iron-and-brass boomstick from stock to muzzle and the expanding shot origin are the main readable subject. The blast is dramatic but does not obscure the weapon or goblin. Painterly medieval fantasy collectible-card art in supplied Hexmancers style, grounded anatomy, believable iron, brass, wood and leather, cinematic directional firelight, atmospheric depth. Explicit 1:1 SQUARE canvas for editable 512x512 master and 206:141 horizontal card crop. Keep goblin face, both hands, whole named hand cannon and blast origin within x24..488,y105..407; quiet smoky workshop or battlefield atmosphere at top and bottom. No text, letters, numbers, border, frame, UI, logo, watermark, anime, Disney-like cartoon, photorealism or pixel art. Crop-safe edit reduced and shifted the subject left so the whole cannon muzzle remains visible.",
+    "generatedPath": "/workspace/generated_images/exec-5ac2a097-e17e-4cd7-9f9e-c43b5f3bbe1f.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Reviewed repaired 1254-square original, 512x512 source, centered wide crop and 128x88 thumbnail. Goblin face, both hands and the whole cannon through its muzzle rim remain visible; only the fire trail continues to the edge.",
+    "editableSourcePath": "game/cards/art/masters/brown_ace_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "brown_machine_10",
+    "name": "Sky-Ship Deck Gun",
+    "prompt": "Paint the exact Hexmancers card Sky-Ship Deck Gun. Its mechanics are a sturdy, steady-firing bolt cannon aboard a sky ship, rallying its crew and pushing a foe back. Show a compact but powerful bronze-and-iron deck cannon on a wooden flying ship deck firing one bright straight bolt at a distant rival sky skiff, which is visibly shoved backward. A focused sky sailor loads or steadies the gun. The entire named cannon including barrel, breech and mount is the dominant subject; keep its construction clearly medieval fantasy with riveted iron, brass bands, timber carriage and rope rigging, no modern gun styling. Painterly medieval fantasy collectible-card art consistent with supplied Hexmancers references, nuanced materials, dramatic directional light and atmospheric cloud depth. Explicit 1:1 SQUARE canvas for editable 512x512 master and horizontal 206:141 crop. Keep entire cannon, mount, sailor face and hands inside x24..488,y105..407; bolt may extend toward the edge. Quiet sky and deck atmosphere above and below. Strong clear cannon silhouette readable at thumbnail size. No frame, text, lettering, numbers, UI, logo, watermark, anime, Disney-like cartoon, photorealism or pixel art. Crop-safe edit scaled and shifted crew and cannon assembly right so the sailor's face and the complete gun remain visible.",
+    "generatedPath": "/workspace/generated_images/exec-5f8d3dff-389b-4174-9189-adb3eed300e7.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Reviewed repaired 1254-square original, editable 512x512 source, centered wide crop and 128x88 thumbnail. Sailor face and hands, full cannon barrel, breech and mount remain visible; the bolt reaches the rival sky skiff and the gun remains identifiable at thumbnail size.",
+    "editableSourcePath": "game/cards/art/masters/brown_machine_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
   }
 ]

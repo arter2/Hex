@@ -1,6 +1,6 @@
 # Hexmancers card artwork: upload and integration handoff
 
-This handoff is for `arter2/Hex`. It supplies at least 200 **unique card illustrations**, each tied to an exact catalogue ID and display name. Thumbnails, alternate generations and unresolved reference images do not count toward that threshold. Read the repository's own current instructions before editing.
+This batch-07 handoff is for `arter2/Hex`: **200 new card illustrations, 25 per colour**, additional to the previous 234-card delivery. Each card has one editable 512 × 512 PNG and three WebP crops: **200 PNGs + 600 WebPs = 800 image files**. Thumbnails, alternate generations and earlier reference images do not count as new illustrations. Read the repository's own current instructions before editing.
 
 ## Contents and naming
 
@@ -17,17 +17,25 @@ The source size is **512 × 512**. The rectangular WebPs are derived display cro
 
 The tested runtime is Hexmancers v179, including the shared 240 × 434 card frame and 206 × 141 art slot. The responsive artwork foundation is on branch **`art/named-painterly-import` (PR #4)**. Start there, or first bring its scoped art-runtime changes into the intended working branch. Keep newer user changes and resolve differences narrowly; do not replace a newer `ui.js`, `index.html` or card renderer wholesale.
 
+This is an incremental art package. First integrate the previous 234-card baseline from **`art/234-card-handoff`, commit `8004e34`** if it is not already present. Its art-only download is `https://github.com/arter2/Hex/archive/refs/heads/art/234-card-download.zip` (commit `76f4915`). This package contains only the 200 new images and their crops; its combined registry expects **434 active illustrations** after both sets are installed. Do not remove the earlier 234 cards or count them toward this package's 200.
+
+The production command for this incremental package is `node tools/card-art-handoff.js /workspace/card-art-next-200 200 --batch=7`. An explicit scope is required: `--all` instead would deliberately package the combined collection. `baseline-234-card-images.json` preserves the earlier delivery's actual manifest for comparison; it contains metadata, not another copy of its images.
+
+Repository delivery: `card-art-deliveries/batch-07-200/` on branch `art/434-card-handoff` contains this complete incremental image package and its integration inputs. The same branch contains the combined game source. Start with the README in that folder, then use its `card-images.json` to copy images to their canonical runtime destinations.
+
 The supplied original PNGs under `game/cards/art/` remain unchanged. Their source mapping is `docs/named-card-art-mapping.json`. Some legacy sources were only 256 pixels: the `legacyUpscaled` flag identifies them. A 512 export does not restore missing detail. Unnamed images, unprepared green-background assets and unused alternates remain inactive.
 
 ## Apply the artwork
 
-1. Parse `card-images.json`. Verify `uniqueCards >= 200`, unique IDs and unique delivery filenames. Match every ID and exact name against the current game's catalogue. Report any mismatch instead of guessing.
+1. Parse `card-images.json`. Verify `batch === 7`, `uniqueCards === 200`, `totalRegistered === 434`, unique IDs, unique master checksums and unique delivery filenames. Confirm these IDs are disjoint from the previous 234-card manifest. Match every ID and exact name against the current game's catalogue. Report any mismatch instead of guessing.
 2. Check every supplied file's SHA-256 and dimensions. Copy each master and rendered image to the exact repository-relative `repositoryPath` in its manifest record, preserving folders. Destinations must stay under `game/cards/art/`.
 3. Apply `integration/` by relative path after reviewing its diff. In particular, update `game/cards/art-variants.js`, the production manifests/report and the review page together. Historical `generatedPath` and `originalProductionPath` values can refer to the original production workspace; they are provenance, not deployment dependencies. The exporter falls back to the checked-in canonical master when that original is absent.
 4. Ensure `cards/art-variants.js` loads **before** `art.js`. The existing `cardArtVariants`/`cardIllustration` lookup must take precedence over procedural art for registered IDs. Other cards retain their fallback. Preserve locked/unseen-card rules: hidden art and full-art links must not expose unseen cards.
 5. Keep the responsive `srcset` entries and measured `sizes` values. Display crops fill the art slot using normal image filtering (`image-rendering:auto`); preserve the procedural-art styling for fallback images. Card details link to the square master for full-art viewing. Never enlarge a thumbnail to replace a detail image.
 
 The crop is derived from the shared contract, not a separately guessed aspect ratio. Keep the same focal point for all display sizes. Do not stretch the square, add letterboxing, change the frame geometry, tint frame icons differently, or move text/runes to accommodate art. Gameplay, controls, movement and battle dimensions are outside this handoff.
+
+To audit the actual transfer before copying, run `node integration/tools/card-art-audit.js .` from the unpacked handoff directory, after installing that tool's renderer dependency if needed. It decodes every image, verifies checksums and dimensions, rejects unlisted images and reused master content, and checks the new IDs against the included earlier delivery manifest. For batch 07 it requires exactly 200 masters, 600 crops, 25 cards per colour, and disjointness from the previous set. An optional second argument can select the earlier delivery's original `card-images.json`; delivery-summary/audit JSON files are not that manifest.
 
 ## Validate before committing
 
@@ -42,8 +50,8 @@ git diff --check
 
 The image check also regenerates `game/art-review.html`. Open it from a local server, select a colour and page through the comparisons at widths 96, 120, 240 and 396. It renders at most 20 cards per page to keep a large catalogue manageable. Confirm that the name, subject, critical hands/faces and named object read clearly; check full-art links, locked cards, unknown-art fallbacks and that every request succeeds. Test Safari/mobile/tablet layout separately: the production environment did not complete those browser/device checks.
 
-Only rebuild all exports after the canonical 512-square sources, preserved supplied originals and updated generated manifests are present. Use `node tools/card-art-build.js --through-batch=6` for this handoff, then rerun the checks. New production records explicitly identify their square source with `editableSourcePath`; this takes precedence over historical raw generation paths and preserves later source edits. Rebuilds leave source PNG bytes untouched, using source checksums and crop coordinates to reuse unchanged display files. After editing a square source or focal point, rerun the exporter before the integrity check. Never regenerate illustrations just because raw generation paths are unavailable.
+Only rebuild all exports after both sets' canonical 512-square sources, preserved supplied originals and updated generated manifests are present. Use `node tools/card-art-build.js --through-batch=7` for this handoff, then rerun the checks. New production records explicitly identify their square source with `editableSourcePath`; this takes precedence over historical raw generation paths and preserves later source edits. Rebuilds leave source PNG bytes untouched, using source checksums and crop coordinates to reuse unchanged display files. After editing a square source or focal point, rerun the exporter before the integrity check. Never regenerate illustrations just because raw generation paths are unavailable.
 
-Review `git diff --stat` and the actual changes, commit the art integration on the intended branch, and push it using the user's repository access. The user is handling transfer/push; this handoff does not claim its local commit has already reached GitHub. Do not merge unrelated PRs or publish a release as part of an art import.
+Review `git diff --stat` and the actual changes, commit the art integration on the intended branch, and push it using the user's repository access. Verify the remote commit before reporting a successful push. Do not merge unrelated PRs or publish a release as part of an art import.
 
 This is a repository-art handoff, not an itch.io production build. If packaging a playable build later, run the packager and inspect its file-count/size report against the hosting service's limits. Keep source/reference assets in the repository even if a deployment package omits unused files.

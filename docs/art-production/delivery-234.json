@@ -12,5 +12,15 @@
     "three display crop sizes",
     "exact-name and card-ID transfer manifest",
     "Claude integration README and files"
-  ]
+  ],
+  "github": {
+    "sourceBranch": "art/234-card-handoff",
+    "sourceCommit": "8004e34f6aff4dcc6e07303ae8a86a8ada430b53",
+    "downloadBranch": "art/234-card-download",
+    "downloadCommit": "76f4915ac3c39668b0ec9941cc55a65388b6f252",
+    "downloadUrl": "https://github.com/arter2/Hex/archive/refs/heads/art/234-card-download.zip",
+    "verifiedHttpStatus": 200,
+    "verifiedContentType": "application/zip"
+  },
+  "archiveNote": "GitHub repackages the same handoff files; the SHA-256 above describes the original local ZIP. Verify individual image checksums using card-images.json."
 }

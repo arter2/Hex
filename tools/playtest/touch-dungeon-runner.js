@@ -286,6 +286,7 @@ const BATTLE_SEE = bot => {
     screen: scr ? scr.id : null,
     overlays: [...document.querySelectorAll('.overlay.on')].map(e => e.id).filter(id => id && id !== 'debug'),
     qHead: q ? q.uid : null,
+    depth: b.depth,
     castCd: p.castCd,
     lastPress: window.__qa ? __qa.lastPress : null,
     recent: window.__qa ? __qa.ptr.slice(-4) : null,
@@ -904,7 +905,7 @@ async function session(browser, host, o, depth, out) {
           continue;
         }
         const now = Date.now();
-        if (f.hpIn == null) ((f.hpIn = v.hp), (f.enemies = v.enemies));
+        if (f.hpIn == null) ((f.hpIn = v.hp), (f.enemies = v.enemies), v.depth && (f.depth = v.depth));
         if (lastHp != null && v.hp < lastHp) {
           f.hits++;
           f.dmg += lastHp - v.hp;

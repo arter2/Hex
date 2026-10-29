@@ -782,6 +782,10 @@ async function session(browser, host, o, depth, out) {
 
   /* ---- the hand screen ---- */
   const handScreen = async () => {
+    // the thumbs that were on the board come off first; the hand screen gets its own finger
+    for (let k = 0; k < 30 && (fingers.isDown(1) || fingers.isDown(2)); k++) await sleep(50);
+    await fingers.up(1);
+    await fingers.up(3);
     await sleep(between([700, 1800]) * (o.skill === 'new' ? 1.5 : 1));
     let h = await ev(HAND);
     if (!h) return;
@@ -789,15 +793,15 @@ async function session(browser, host, o, depth, out) {
     // now and then hold a card to read it big, then put it away
     if (rand() < F.readCards && h.cards.length) {
       const c = h.cards[Math.floor(rand() * h.cards.length)];
-      await fingers.down(2, c.x, c.y);
+      await fingers.down(3, c.x, c.y);
       await sleep(between([650, 1100]));
-      await fingers.up(2);
+      await fingers.up(3);
       await sleep(between([700, 1800]));
       const up = await ev(() => document.getElementById('peek').classList.contains('on'));
       if (!up) issue('hand-hold-no-peek', { card: c.name }, 1);
       else {
         const x = await page.locator('#peek .popx').boundingBox().catch(() => null);
-        if (x) await tapAt(x.x + x.width / 2, x.y + x.height / 2, 2, 3);
+        if (x) await tapAt(x.x + x.width / 2, x.y + x.height / 2, 3, 3);
         else issue('peek-no-close', {}, 1);
         await sleep(400);
       }
@@ -808,7 +812,7 @@ async function session(browser, host, o, depth, out) {
       const c = h.cards.find(c => c.uid === uid);
       if (!c || c.queued) continue;
       const before = h.queued;
-      await tapAt(c.x, c.y, 2, Math.min(F.aim, c.w / 6));
+      await tapAt(c.x, c.y, 3, Math.min(F.aim, c.w / 6));
       await sleep(between([250, 600]));
       const after = await ev(() => B.piles.queue.length);
       if (after <= before) {
@@ -816,20 +820,26 @@ async function session(browser, host, o, depth, out) {
         issue('hand-tap-not-queued', { card: c.name, readAsHold: peek }, 2);
         if (peek) {
           const x = await page.locator('#peek .popx').boundingBox().catch(() => null);
-          if (x) await tapAt(x.x + x.width / 2, x.y + x.height / 2, 2, 3);
+          if (x) await tapAt(x.x + x.width / 2, x.y + x.height / 2, 3, 3);
         }
       }
     }
     await sleep(between([300, 900]));
-    const f = await tapEl('#btnFight');
+    const f = await tapEl('#btnFight', 3);
     await sleep(800);
     const still = await ev(() => document.getElementById('custom').classList.contains('on'));
     if (still) {
       issue('tap-ignored', { control: 'Fight! (hand screen stayed open)' });
       await shot('fight-btn-ignored');
-      const again = await tapEl('#btnFight');
+      const again = await tapEl('#btnFight', 3);
       await sleep(800);
       if (await ev(() => document.getElementById('custom').classList.contains('on'))) await ev(() => closeCustomScreen());
+    }
+    // a card's drag ghost left behind once the hand screen is gone
+    const ghosts = await ev(() => document.querySelectorAll('.drag-ghost').length).catch(() => 0);
+    if (ghosts) {
+      issue('drag-ghost-left', { ghosts, recent: await ev(() => window.__qa && __qa.ptr.slice(-8)).catch(() => null) }, 2);
+      await shot('drag-ghost-left');
     }
     return f;
   };

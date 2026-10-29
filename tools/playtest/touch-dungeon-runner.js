@@ -7,7 +7,7 @@
      --move float         touch movement style (Settings › Touch movement): tapstick, goal, float, fixed, follow,
                           or mix (a different one each floor)                             default mix
      --skill average      the player: new | average | good                                default average
-     --seed 1             the player's dice (the dungeon has its own)                     default 1
+     --seed 1             the player's dice and the save's world seed (same seed + depth = same floors)  default 1
    (the old form <dir> [depths] [minutesPerFloor] [device] still works)
 
    A QA player on dungeon floors who only touches the screen. The save is prepared (a starter deck and a character
@@ -438,8 +438,9 @@ async function session(browser, host, o, depth, out) {
 
   // fixture: a fresh save with a starter deck and a character levelled roughly for this depth
   const level = await ev(
-    ([depth, move]) => {
+    ([depth, move, world]) => {
       save = newSave(STARTERS[0]);
+      save.worldSeed = world;   // the same floors for the same --seed and depth, so a finding can be played again
       save.char = lockChar(newChar('human', 0));
       save.deepest = depth;
       const ch = ensureChar(save);
@@ -457,7 +458,7 @@ async function session(browser, host, o, depth, out) {
       openMenu();
       return save.level;
     },
-    [depth, o.move === 'mix' ? MOVES[depth % MOVES.length] : o.move]
+    [depth, o.move === 'mix' ? MOVES[depth % MOVES.length] : o.move, 1 + ((o.seed * 7919 + depth * 104729) % 0x7ffffffe)]
   );
   await page.addScriptTag({ path: path.join(__dirname, 'support.js') });
   await page.addScriptTag({ path: path.join(__dirname, 'bot.js') });

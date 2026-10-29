@@ -1126,8 +1126,11 @@ const ART_URL={};
 // card, or 'body_<Creature>' (e.g. body_Dragon) for every card of that creature; it replaces the drawn art
 function paintedKey(c){ if(typeof UNIT_SPRITES==='undefined') return null; if(UNIT_SPRITES['art_'+c.id]) return 'art_'+c.id;
   const [kind,key]=subjectOf(c); return kind==='creature'&&UNIT_SPRITES['body_'+key]?'body_'+key:null; }
+// cards with a painted picture in art/cards/ (256 x 256, shown at 64 x 64); the others keep the generated art
+const CARD_IMG=new Set(["brown_ace_01", "brown_ace_02", "brown_ace_03", "brown_ace_04", "brown_ace_05", "brown_ace_06", "brown_ace_08", "brown_ace_09", "brown_ace_10", "brown_ace_11", "brown_ace_12", "brown_aceup_01", "brown_aceup_04", "brown_aceup_05", "brown_aceup_06", "brown_aceup_07", "brown_aceup_08", "brown_aceup_09", "brown_aceup_10", "brown_aceup_11", "brown_aceup_12", "brown_aceup_14", "brown_aceup_15", "brown_charge_01", "brown_charge_02", "brown_charge_03", "brown_charge_04", "brown_charge_05", "brown_charge_06", "brown_charge_07", "brown_charge_08", "brown_charge_09", "brown_charge_10", "brown_charge_11", "brown_equip_01", "brown_equip_02", "brown_equip_03", "brown_equip_04", "brown_equip_07", "brown_equip_08", "brown_equip_09", "brown_equip_10", "brown_equip_15", "brown_equip_16", "brown_equip_17", "brown_equip_18", "brown_equip_19", "brown_equip_23", "brown_equip_24", "brown_equip_25", "brown_equip_27", "brown_equip_28", "brown_equip_29", "brown_equip_30", "brown_equip_31", "brown_equip_32", "brown_lob_01"]);
 function artURL(c){
   if(ART_URL[c.id]) return ART_URL[c.id];
+  if(CARD_IMG.has(c.id)) return ART_URL[c.id]='art/cards/'+c.id+'.png';
   { const pk=paintedKey(c); if(pk) return ART_URL[c.id]=UNIT_SPRITES[pk]; }
   const cv=document.createElement('canvas'); cv.width=cv.height=AN; const ctx=cv.getContext('2d');
   cardArt(c).forEach((row,y)=>row.forEach((col,x)=>{ ctx.fillStyle=col; ctx.fillRect(x,y,1,1); }));

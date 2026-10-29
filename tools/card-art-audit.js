@@ -5,7 +5,7 @@ let canvas;try{canvas=require('./card-art/node_modules/@napi-rs/canvas');}catch{
 const directory=path.resolve(process.argv[2]||'');
 if(!process.argv[2])throw Error('Usage: node tools/card-art-audit.js <handoff-directory> [previous-card-images.json]');
 const manifest=JSON.parse(fs.readFileSync(path.join(directory,'card-images.json')));
-const baseline=process.argv[3]||(manifest.batch===7?path.join(directory,'baseline-234-card-images.json'):null);
+const baseline=process.argv[3]||(manifest.baselineManifest?path.join(directory,manifest.baselineManifest):manifest.batch===7?path.join(directory,'baseline-234-card-images.json'):null);
 const previous=baseline?JSON.parse(fs.readFileSync(baseline)):null;
 if(previous&&!Array.isArray(previous.cards))throw Error('Previous manifest must be the earlier delivery card-images.json, with a cards array');
 async function main(){
@@ -41,7 +41,8 @@ async function main(){
  const actual=scan(directory).filter(f=>/\.(png|webp|jpg|jpeg)$/i.test(f));
  assert.equal(actual.length,files.size,'Unlisted or missing images in package');
  for(const f of actual)assert(files.has(f),'Unlisted image '+f);
- if(manifest.batch===7){assert.equal(masters,200);assert.equal(manifest.totalRegistered,434);assert.equal(Object.keys(colours).length,8);for(const n of Object.values(colours))assert.equal(n,25);}
+ if(manifest.expectations){assert.equal(masters,manifest.expectations.uniqueCards);assert.equal(manifest.totalRegistered,manifest.expectations.totalRegistered);assert.deepEqual(colours,manifest.expectations.byColour);assert(previous,'Batch package needs its previous-delivery manifest');}
+ else if(manifest.batch===7){assert.equal(masters,200);assert.equal(manifest.totalRegistered,434);assert.equal(Object.keys(colours).length,8);for(const n of Object.values(colours))assert.equal(n,25);}
  console.log(JSON.stringify({uniqueCards:ids.size,masters,crops,imagesDecoded:masters+crops,byColour:colours,checksums:'pass',dimensions:'pass',previousDeliveryDisjoint:previous?'pass':'not requested'}));
 }
 main().catch(e=>{console.error(e.message);process.exitCode=1;});

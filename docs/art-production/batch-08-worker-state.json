@@ -1,0 +1,31 @@
+{
+  "batch": 8,
+  "workers": {
+    "/root/b08_artist_1": {
+      "packet": "fire-01",
+      "state": "running"
+    },
+    "/root/b08_artist_2": {
+      "packet": "frost-01",
+      "state": "running"
+    },
+    "/root/b08_artist_3": {
+      "packet": "light-01",
+      "state": "running"
+    },
+    "/root/b08_artist_4": {
+      "packet": "shadow-01",
+      "state": "running"
+    },
+    "/root/b08_artist_5": {
+      "packet": "storm-01",
+      "state": "running"
+    },
+    "/root/b08_artist_6": {
+      "packet": "verdant-01",
+      "state": "running"
+    }
+  },
+  "completedPackets": [],
+  "reviewedSources": {}
+}

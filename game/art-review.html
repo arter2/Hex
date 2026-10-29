@@ -1,7 +1,7 @@
 <!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Hexmancers artwork review</title>
 <link rel="stylesheet" href="card.css"><link rel="stylesheet" href="cards/card-geo.css">
 <style>body{margin:24px;background:#10151c;color:#eee;font:16px system-ui}h1{font-size:24px}h2{font-size:18px}.row{display:flex;gap:22px;align-items:start;overflow:auto;padding:12px 0}section{border-bottom:1px solid #36404b;padding:12px 0}.specimen{flex-shrink:0}p{margin:8px 0}nav{display:flex;gap:12px;align-items:center;flex-wrap:wrap}nav button,select{font:inherit;padding:8px}</style>
-<h1>Artwork review</h1><p>234 cards at 96, 120, 240 and 396 pixels. Choose a colour; scroll each row to compare sizes.</p>
+<h1>Artwork review</h1><p>434 cards at 96, 120, 240 and 396 pixels. Choose a colour; scroll each row to compare sizes.</p>
 <nav><label>Colour <select id="review-colour"></select></label><button id="review-prev">Previous</button><button id="review-next">Next</button><span id="review-count"></span></nav><main id="review"></main>
 <script src="cardsets.js"></script><script src="creatures.js"></script><script src="strikes.js"></script><script src="kinds.js"></script><script src="cards.js"></script><script src="cards/card-geo.js"></script><script src="cards/icons.js"></script><script src="cards/illustrations.js"></script><script src="cards/art-variants.js"></script><script src="art.js"></script>
 <script>
@@ -73,11 +73,6 @@ function kitFooter(c){ const kind=kitKind(c), kw=KIT_KW.filter(k=>c[k[0]]).map((
 const ART_FOCUS={ember_dart:'50% 30%'};
 // Each painterly card has a thumbnail, a medium crop and a full-detail crop. Batch measurements so
 // collection rendering does not repeatedly force layout, and do not retain removed image elements.
-const KIT_ART_PENDING=new Set(); let kitArtFrame=0;
-function kitArtSize(img){ if(!img) return; KIT_ART_PENDING.add(img); if(kitArtFrame) return;
-  kitArtFrame=requestAnimationFrame(()=>{kitArtFrame=0; const sizes=[...KIT_ART_PENDING].filter(i=>i.isConnected).map(i=>[i,Math.ceil(i.getBoundingClientRect().width)]);KIT_ART_PENDING.clear();for(const [i,w]of sizes)if(w>0)i.sizes=w+'px';}); }
-addEventListener('resize',()=>document.querySelectorAll('img[data-art-master]').forEach(kitArtSize));
-function kitArtSources(c,big){ const v=typeof cardArtVariants==='function'&&cardArtVariants(c); return v?` srcset="${v.outputs.map(o=>o.url+' '+o.width+'w').join(', ')}" sizes="${big?206:103}px" data-art-master="${v.master}" decoding="async"`:''; }
 const kitIcon=(cls,n,label)=>`<svg class="k-ic ${cls}" viewBox="0 0 32 32" shape-rendering="crispEdges"${label?` role="img" aria-label="${esc(label)}"`:' aria-hidden="true"'}>${KIT_ICONS[n]||''}</svg>`;
 function cardEl(c,extra,locked,mode,opts={}){
   const el=document.createElement('button'), col=COLORS[c.color], kc=KIT_COLOR[c.color]||'gray', big=mode==='expanded';
@@ -99,14 +94,13 @@ function cardEl(c,extra,locked,mode,opts={}){
     +(hero?kitIcon('k-hero','hero-star','Hero'):c.code&&!locked?`<b class="k-rune${c.code===WILD?' wild':''}" title="Rune ${c.code}"><span>${c.code}</span></b>`:'')
     +`<b class="k-rank" title="Rank ${c.rank}"><span>${c.rank}</span></b>`
     +`<b class="k-name"><span>${esc(name)}</span></b>`
-    +(locked?'<span class="k-art k-hidden"></span>':`<img class="k-art${typeof cardIllustration==='function'&&cardIllustration(c)?' illustrated':''}" src="${artURL(c)}"${kitArtSources(c,big)} alt="" draggable="false">`)
+    +(locked?'<span class="k-art k-hidden"></span>':(spr=>spr?`<span class="k-art illustrated atlas" style="${spr}"></span>`:`<img class="k-art${typeof cardIllustration==='function'&&cardIllustration(c)?' illustrated':''}" src="${artURL(c)}" alt="" draggable="false">`)(typeof cardArtSprite==='function'&&cardArtSprite(c,big?'full':'thumb')))
     +`<span class="k-tline"><span><i class="k-type">${esc(T.name)}</i><i class="k-dot">·</i><i class="k-cat">${esc(R.name)}</i></span></span>`
     +(locked?'':kitIcon('k-sicon',kitStatIcon(c))+`<b class="k-stat"><span>${stat}</span></b>`)
     +kitIcon('k-rar r-'+c.rarity,KIT_RARITY[c.rarity]||'rarity',(RARITY[c.rarity]||{}).n)
     +`<div class="k-rules" title="${esc(rules)}">${esc(rules)}</div>`;
   foot.forEach(([ic,lab,val],k)=>{ h+=`<span class="k-foot k-f${k}" title="${esc(lab+': '+val)}">${kitIcon('',ic)}<small>${esc(lab)}:</small><span>${esc(String(val))}</span></span>`; });
   el.innerHTML=h;
-  kitArtSize(el.querySelector('img[data-art-master]'));
   if(extra) el.insertAdjacentHTML('beforeend',extra);
   // a plain count badge (×2, 1/3, Lv 6) goes in the count plaque
   el.querySelectorAll(':scope>.badge:not(.new):not(.inst):not(.tink),:scope>.dkfrac,:scope>.dkown').forEach(b=>{ b.classList.add('k-count'); if(!b.firstElementChild) b.innerHTML='<span>'+b.innerHTML+'</span>'; });

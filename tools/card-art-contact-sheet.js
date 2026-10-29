@@ -7,7 +7,11 @@ async function main(){
  const batch=Number(process.argv[2]||2),output=path.resolve(process.argv[3]||`/tmp/hexmancers-batch-${batch}.jpg`);
  const dir=path.join(root,'docs/art-production');
  const all=fs.readdirSync(dir).filter(f=>f.endsWith('-generated.json')).flatMap(f=>JSON.parse(fs.readFileSync(path.join(dir,f))).map(a=>({...a,colour:f.replace('-generated.json','')})));
- const rows=all.filter(a=>(a.batch||1)===batch&&a.status==='generated');
+ const packetArg=process.argv.slice(4).find(a=>a.startsWith('--packet='));
+ const packet=packetArg&&packetArg.slice('--packet='.length);
+ let allowed;
+ if(packet){const job=JSON.parse(fs.readFileSync(path.join(dir,'batch-'+String(batch).padStart(2,'0')+'-packets.json'))).packets.find(p=>p.packet===packet);if(!job)throw Error('Unknown packet '+packet);allowed=new Set(job.cards.map(c=>c.id));}
+ const rows=all.filter(a=>(a.batch||1)===batch&&a.status==='generated'&&(!allowed||allowed.has(a.cardId)));
  if(!rows.length)throw Error('No generated images for batch '+batch);
  const focus=JSON.parse(fs.readFileSync(path.join(root,'game/cards/art-focus.json')));
  const [, ,w,h]=JSON.parse(fs.readFileSync(path.join(root,'game/cards/contract.json'))).bounds.art;
@@ -28,6 +32,6 @@ async function main(){
   ctx.fillStyle='#b4bbc5';ctx.fillText(a.colour,left+100,top+232);
  }
  fs.mkdirSync(path.dirname(output),{recursive:true});fs.writeFileSync(output,sheet.toBuffer('image/jpeg',90));
- console.log(JSON.stringify({batch,images:rows.length,output}));
+ console.log(JSON.stringify({batch,packet:packet||null,images:rows.length,output}));
 }
 main().catch(error=>{console.error(error);process.exitCode=1;});

@@ -647,7 +647,9 @@ async function session(browser, host, o, depth, out) {
     const t1 = Date.now();
     let rt = await ev(ROUTE, target);
     if (!rt || !rt.len) return 'no-route';
-    if (mode === 'goal' || (mode === 'tapstick' && rand() < 0.5) || (mode === 'fixed' && rand() < 0.4)) {
+    // a person whose taps keep turning into holds (Tap + hold on a slow phone) stops tapping and steers instead
+    const tapsFail = mode === 'tapstick' && cur.tapsIgnored >= 3;
+    if (mode === 'goal' || (mode === 'tapstick' && !tapsFail && rand() < 0.5) || (mode === 'fixed' && rand() < 0.4)) {
       // a tap on the farthest clear point of the route, then watch (the other thumb is free)
       const pt = aimPoint(rt);
       if (!pt) return 'off-screen';
@@ -1143,6 +1145,10 @@ async function session(browser, host, o, depth, out) {
     }
     await lookAtScreen(s);
     await auditDom(s);
+    if (Date.now() - (mem.lastT || t0) > 60000) {
+      mem.lastT = Date.now();
+      mem.push({ at: Math.round((Date.now() - t0) / 1000) + 's', ...(await memAt()) });
+    }
     if (s.log && s.log.length && s.log[s.log.length - 1] !== lastLog) {
       lastLog = s.log[s.log.length - 1];
       if (stats.log.length < 120) stats.log.push({ t: Math.round((Date.now() - t0) / 1000), d: s.depth, text: lastLog });
@@ -1320,7 +1326,7 @@ async function session(browser, host, o, depth, out) {
       stillTicks++;
       if (stillTicks === 4) {
         cur.stuck++;
-        issue('stuck', { cell: now, goal: c.why, move: cur.move, res });
+        issue('stuck', { cell: now, goal: c.why, target: c.target ?? null, move: cur.move, res, explored: cur.explored });
         if (cur.stuck <= 2) await shot('stuck');
         if (c.target != null) black.push(c.target);
         stillTicks = 0;

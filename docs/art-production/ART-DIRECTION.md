@@ -12,7 +12,7 @@ The 66 supplied images in `game/cards/art/` are the style reference set. Preserv
 
 ## Editable master and action-safe composition
 
-Every **new exported master is exactly 512 × 512 PNG**, stored in `game/cards/art/masters/`. Preserve the generator's original output separately. Do not deliver only a flattened framed card: illustration, frame and text remain separate.
+The **editable artwork source is exactly 512 × 512 PNG**, stored in `game/cards/art/masters/`. Prepare this square source before producing display crops. Preserve any larger raw generator output separately as production provenance; it is not the source file in the delivery. Do not deliver only a flattened framed card: illustration, frame and text remain separate.
 
 The current card contract's illustration slot is **206 × 141**. A full-width crop from a 512 square is 512 × 350.45, centred at approximately y=80.78…431.22. Keep critical faces, hands, weapons and action inside the stricter inner action-safe rectangle **x=24…488, y=105…407**. The upper/lower margins may contain expendable atmosphere, sky or ground. The subject should occupy roughly 65–80% of the visible crop and remain identifiable on a 96-pixel-wide card.
 

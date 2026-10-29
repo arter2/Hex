@@ -28,12 +28,14 @@ const cards=active.map(a=>{
  const c=known.get(a.cardId);if(!c)throw Error('Unknown card '+a.cardId);
  const name=slug(c.name)+'--'+c.id;if(names.has(name))throw Error('Repeated delivery name '+name);names.add(name);
  const g=generated.get(c.id),source=g?{kind:'generated',batch:g.batch||1,originalProductionPath:g.generatedPath||g.generatedLocalPath}:{kind:'supplied',originalProductionPath:'game/cards/art/'+supplied.get(c.id)};
+ const master=transfer('game/'+a.master,'masters/'+c.color+'/'+name+'.png','game/'+a.master,512,512);
+ Object.assign(source,{file:master.file,repositoryPath:master.repositoryPath,width:512,height:512});
  return {cardId:c.id,cardName:c.name,colour:c.color,type:c.type,source,sourceStatus:a.status,sourceNative:a.sourceNative,legacyUpscaled:a.legacyUpscaled,focalPoint:a.focalPoint,
-  master:transfer('game/'+a.master,'masters/'+c.color+'/'+name+'.png','game/'+a.master,512,512),
+  master,
   rendered:a.outputs.map(o=>transfer('game/'+o.url,'rendered/'+c.color+'/'+name+'-'+o.width+'.webp','game/'+o.url,o.width,o.height))};
 });
 if(new Set(cards.map(c=>c.master.sha256)).size!==cards.length)throw Error('Two card records share identical master image content; resolve before handoff');
-const manifest={format:1,uniqueCards:cards.length,masterSize:[512,512],artWindow:report.artWindow,minimumRequested:min,cards};
+const manifest={format:1,uniqueCards:cards.length,sourceSize:[512,512],masterSize:[512,512],artWindow:report.artWindow,minimumRequested:min,cards};
 fs.writeFileSync(path.join(dest,'card-images.json'),JSON.stringify(manifest,null,2)+'\n');
 fs.copyFileSync(path.join(root,'docs/art-production/README_FOR_CLAUDE.md'),path.join(dest,'README_FOR_CLAUDE.md'));
 const files=['game/cards/art-variants.js','game/cards/illustrations.js','game/art-review.html','docs/named-card-art-mapping.json','docs/named-card-art.md','tools/card-art-build.js','tools/card-art-check.js','tools/card-art-queue.js','tools/card-art-contact-sheet.js','tools/card-art-handoff.js','tools/card-art-locate.py','tools/package-art-test.py','tools/card-art/package.json','tools/card-art/.gitignore'];

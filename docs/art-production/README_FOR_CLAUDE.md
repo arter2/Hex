@@ -5,11 +5,13 @@ This handoff is for `arter2/Hex`. It supplies at least 200 **unique card illustr
 ## Contents and naming
 
 - `card-images.json` is the authoritative transfer manifest, with one record per active card. Each record contains the exact card name, ID, colour, human-readable filename, source provenance, focal point, original resolution, repository destinations and SHA-256 checksums.
-- `masters/<colour>/<card-name>--<card-id>.png` contains editable, exactly **512 × 512** masters. The ID suffix makes otherwise similar names unambiguous. Preserve the display name exactly as recorded in the manifest.
+- `masters/<colour>/<card-name>--<card-id>.png` contains the **editable source artwork, exactly 512 × 512 PNG**. Use these square sources for editing and for creating every display size. The manifest's `source.file` points to this same image as `master.file`; there is no separate rectangular source. The ID suffix makes otherwise similar names unambiguous. Preserve the display name exactly as recorded in the manifest.
 - `rendered/<colour>/<card-name>--<card-id>-128.webp`, `-256.webp`, and `-512.webp` are ready-to-use versions of the same horizontal crop. Expected dimensions are 128 × 88, 256 × 175 and 512 × 350.
 - `integration/` contains updated registry, manifests, reports, review page and production utilities at their repository-relative paths. These are integration inputs, not instructions to overwrite unrelated work.
 
 Canonical runtime filenames use stable card IDs or preserved supplied filenames. Human-readable delivery filenames are mapped to those destinations explicitly by `repositoryPath`. Do not infer IDs from a title, rename a card, or silently substitute a similar image. Never use the generator's `exec-...png` names as a card mapping.
+
+The source size is **512 × 512**. The rectangular WebPs are derived display crops only. Historical generator outputs may have larger dimensions; `sourceNative` and `source.originalProductionPath` describe that production provenance, not an additional source that Claude needs to upload or edit. For future artwork, prepare the square 512 × 512 editable source before producing any crops.
 
 ## Starting point
 

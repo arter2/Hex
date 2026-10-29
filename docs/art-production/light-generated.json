@@ -763,5 +763,185 @@
     "status": "generated",
     "batch": 7,
     "reviewNote": "Inspected exact 512-square source, centered 206:141 crop and 128x88 thumbnail. Maze corridors and central cross-shaped bramble eruption read clearly; both armored figures are driven outward. Cross lanes extend into the square margins, while the crossing and action remain fully visible in the crop."
+  },
+  {
+    "cardId": "light_strike_04",
+    "name": "Crusader's Charge",
+    "prompt": "Create a high quality painterly medieval fantasy collectible card illustration for the exact card Crusader's Charge. Show a single brave crusader in bright but weathered ivory and gold armor charging forward on foot, sword thrusting in a straight line through a dark enemy's guard; the forward momentum and straight piercing attack are unmistakable, with a little recoil in the crusader's stance. Keep the crusader's full face, sword hand, sword point, and enemy's impacted upper body entirely visible. Horizontal staging within the frame, one clear focal action. Rich believable metal, leather, cloth, dust, warm directional dawn light, atmospheric depth, sophisticated painterly MTG-like fantasy illustration consistent with the supplied Hexmancers references. Explicit 1:1 SQUARE canvas intended for an editable 512x512 master. Ensure all identity-critical face, hand and full sword lie within normalized x24..488,y105..407; leave only expendable sky/ground near top and bottom. No text, lettering, border, card frame, UI, anime, cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a70a86fa-580f-4aca-81fb-df415c61d04e.png",
+    "editableSourcePath": "game/cards/art/masters/light_strike_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Inspected exact 512-square source, centered 206:141 crop and 128x88 thumbnail. Crusader’s face, sword hand, full sword and enemy’s struck upper body remain readable in the wide crop; lower legs are expendable scenery."
+  },
+  {
+    "cardId": "light_lob_05",
+    "name": "Falling Masonry",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for the exact card Falling Masonry. In a sunlit ruined fortress lane, a colossal old stone arch and tower section breaks loose above a charging armored raider; a vertical column of heavy masonry crashes down and knocks the raider off balance, with a small burst of impact dust. The falling blocks and toppled figure clearly communicate a delayed, stunning knockdown. Keep the largest distinctive stone blocks, raider’s face, and impact action centered and crop-safe. Strong readable architecture, believable chipped limestone, dust, warm directional light, painterly high-fantasy card art in the supplied Hexmancers style. Explicit 1:1 SQUARE canvas for a 512x512 editable source, composed also for a 206:141 horizontal crop; all identity-critical face/action inside x24..488,y105..407. No text, border, frame, UI, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-883d3dca-7b24-4d2b-aeaf-6b015465c6ff.png",
+    "editableSourcePath": "game/cards/art/masters/light_lob_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Inspected exact 512-square source, centered 206:141 crop and 128x88 thumbnail. Large falling blocks, the raider’s face and both arms, and the knockdown action read clearly and remain within the wide crop."
+  },
+  {
+    "cardId": "light_ward_06",
+    "name": "Spiked Pavise",
+    "prompt": "Create a painterly medieval fantasy collectible-card illustration for the exact card Spiked Pavise. A veteran crusader braces behind a curved, spike-covered pavise shield, forming a short arcing defensive line against arrows and a charging foe. The shield dominates; include its full outline, top cap, bottom edge and spikes, plus defender’s focused face and gripping hand. Three overlapping shield sections are suggested by the battlefield arc, while one shield and defender form the central focal point. Rich carved wood, worn steel, ivory-red-gold heraldic details, warm light, painterly Hexmancers fantasy. Explicit 1:1 SQUARE canvas for editable 512x512 master and 206:141 crop; after repair the entire shield fits in the crop-safe center, with face and hand around y240. No text, lettering, border, UI, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2de42672-1430-443d-ae36-e6dd057cf354.png",
+    "editableSourcePath": "game/cards/art/masters/light_ward_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Repainted twice after the first versions clipped shield spikes in the centered crop; preserved intermediate sources at /tmp/light_ward_06-first.png and /tmp/light_ward_06-second.png. Inspected final exact 512-square source, centered 206:141 crop and 128x88 thumbnail. Full pavise, its spike tips, the crusader’s face and gripping hand fit the wide crop."
+  },
+  {
+    "cardId": "light_sentry_05",
+    "name": "Weathervane Cockerel",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for the exact card Weathervane Cockerel. Show a gilded bronze rooster weather vane mounted on a monastery roof turret, its tail and beak shaped as a directional pointer, turning in a gust and sending a visible chain of golden guardian sparks toward a nearby monk. The metal cockerel is the dominant recognizable subject with complete silhouette and arrow; monk’s face and raised hand clear. Warm dawn light, weathered bronze, carved stone, wind-blown pennants and atmospheric painterly Hexmancers fantasy. Explicit 1:1 SQUARE canvas for 512x512 source and 206:141 crop. Repainted to scale the cockerel and mount down and fit full vane within crop-safe center. No text, border, UI, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6fef293f-eeda-4605-a251-de800eee9168.png",
+    "editableSourcePath": "game/cards/art/masters/light_sentry_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Repainted after the first version cropped the cockerel crest; preserved it at /tmp/light_sentry_05-first.png. Inspected final exact 512-square source, centered 206:141 crop and 128x88 thumbnail. Full cockerel, vane arrow, monk’s face and raised hand are visible."
+  },
+  {
+    "cardId": "light_boon_03",
+    "name": "Westerly Breeze",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for the exact card Westerly Breeze. A young crusader scout gains sudden haste as a clean westerly gust sweeps through a monastery pass; scout leans into a fast forward sprint, cloak and hair streaming, with golden leaves and bright ribbons tracing the wind. Face, leading hand and running action dominate. Airy medieval landscape, believable ivory-and-gold armor, luminous dawn, atmospheric painterly depth in supplied Hexmancers style. Explicit 1:1 SQUARE canvas for 512x512 editable source and 206:141 crop. Repainted with scout smaller and lower to keep full face, shoulders, leading hand and torso inside crop-safe center. No text, frame, UI, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-179fe21f-9d09-47c8-ba88-d62d73550e31.png",
+    "editableSourcePath": "game/cards/art/masters/light_boon_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Repainted after the first version clipped the scout’s face in the centered crop; preserved it at /tmp/light_boon_03-first.png. Inspected final exact 512-square source, centered 206:141 crop and 128x88 thumbnail. Scout’s full face, leading hand and running torso remain clear; lower boots are cropped as expendable detail."
+  },
+  {
+    "cardId": "light_charge_04",
+    "name": "Huaraca Stones",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Huaraca Stones. An Andean-style slinger in ivory-and-gold crusader gear whirls a woven huaraca sling and releases smooth pale stones in an arcing burst toward an armored target; sling, releasing hand and projectiles unmistakable. Warm high-altitude dawn, authentic woven fiber, leather and stone, painterly Hexmancers fantasy. Explicit 1:1 SQUARE, 512x512 source and 206:141 crop, critical face and full slinging action inside x24..488,y105..407. No text, frame, UI, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-3fd005d4-f488-4993-a79e-605857b13660.png",
+    "editableSourcePath": "game/cards/art/masters/light_charge_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Inspected exact 512-square source, centered 206:141 crop and 128x88 thumbnail. Slinger’s face and release hand, full sling and two stones remain clearly visible in the crop."
+  },
+  {
+    "cardId": "light_utility_04",
+    "name": "Roman Bathhouse",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Roman Bathhouse. A weary armored pilgrim sits in a healing mineral pool of an ancient Roman bathhouse as cleansing golden water washes grime and sickly green magical residue from his forearm; soothing steam, marble arches, mosaic edge and still water. Face and raised cleansing hand clear, elegant Roman stone, warm sunlight, painterly Hexmancers style. Explicit 1:1 SQUARE, 512x512 source and 206:141 crop; keep face and hand in x24..488,y105..407. No text, border, UI, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-59e410c5-4adf-409e-a7bd-b5debe2573c2.png",
+    "editableSourcePath": "game/cards/art/masters/light_utility_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Inspected exact 512-square source, centered 206:141 crop and 128x88 thumbnail. Pilgrim’s face and cleansing hand/forearm stay clear in the crop; bathhouse marble, pool and golden cleansing water remain legible."
+  },
+  {
+    "cardId": "light_trap_04",
+    "name": "Sunfire Glyph",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Sunfire Glyph. In a monastery stone passage, a circular engraved sunburst glyph embedded in paving ignites under an intruding armored raider’s boot, erupting into a golden-white blast that lifts him backward. The glyph is the named subject; show the complete circular inlay and the raider’s face and boot action. Ancient carved stone, brass, warm daylight, painterly dramatic Hexmancers fantasy. Explicit 1:1 SQUARE for 512x512 and 206:141 crop. Repainted glyph smaller to fit whole in crop; use focalPoint y=.45 to retain face and complete circle. No text, border, UI, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4790c984-cbac-4503-9f1e-2d0857a16314.png",
+    "editableSourcePath": "game/cards/art/masters/light_trap_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.45
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Repainted after first glyph circumference and raider face clipped; preserved it at /tmp/light_trap_04-first.png. Inspected exact 512-square master, crop shifted up using y=.45, and 128 thumbnail from that crop. Entire glyph remains visible; raider’s facial features and boot action read clearly."
+  },
+  {
+    "cardId": "light_environment_03",
+    "name": "Monastery Herb Garden",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Monastery Herb Garden. A walled cloister herb garden with neat beds of healing herbs and central path; cross-shaped bramble runners burst across the path from four directions and startle two armored monks. The garden, central crossing, brambles and faces/action read clearly. Fresh medicinal herbs, limestone cloister, warm morning light, painterly Hexmancers fantasy. Explicit 1:1 SQUARE for 512x512 master and 206:141 crop. Repainted figures smaller and lower so their whole heads/faces and raised hands fit crop. No text, frame, UI, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7007240a-fe50-411e-bd8c-ae2f2eda7dc1.png",
+    "editableSourcePath": "game/cards/art/masters/light_environment_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Repainted after the first version clipped the monks’ heads in the centered crop; preserved it at /tmp/light_environment_03-first.png. Inspected final exact 512-square source, centered 206:141 crop and 128x88 thumbnail. Cloister herb garden and cross-shaped bramble action are clear; both faces and raised hands fit crop."
+  },
+  {
+    "cardId": "light_piece_03",
+    "name": "Stone of the Philosophers",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for the legendary Stone of the Philosophers. In an alchemist’s cloister, a scholar-priest holds a palm-sized faceted ruby-gold philosopher’s stone above an injured crusader; restorative light flows from the complete stone into the knight’s wound. The complete distinct stone, holding hand and both faces are prominent. Brass instruments and parchment softly suggest alchemy, rich gold/ruby/ivory materials, dramatic healing glow and painterly Hexmancers fantasy. Explicit 1:1 SQUARE for 512x512 source and 206:141 crop; stone, hands and faces inside safe region. Use focalPoint y=.34 to include the scholar’s complete face and both figures.",
+    "generatedPath": "/workspace/generated_images/exec-1fc7b85c-f82a-4717-b6b1-dedce3e688e3.png",
+    "editableSourcePath": "game/cards/art/masters/light_piece_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Inspected exact 512-square source, shifted 206:141 crop at y=.34 and 128x88 thumbnail. This crop includes the scholar’s full face, holding hand and complete stone, as well as the healed knight’s face and wound."
   }
 ]

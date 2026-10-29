@@ -764,5 +764,185 @@
     "status": "generated",
     "batch": 7,
     "reviewNote": "Reviewed exact 512-square source, centered 512×350 crop and 128×88 thumbnail. The slipping traveler's full face and both hands are visible within the crop; the dark slick ice and crosswise rime spread read clearly at thumbnail scale."
-  }
+  },
+{
+  "cardId": "frost_strike_04",
+  "name": "Breaking Surf",
+  "prompt": "Paint an illustration for the Hexmancers fantasy card Breaking Surf. Mechanics: a charged row strike, a violent breaker of ocean water sweeping across a frozen battlefield and striking foes, with a hint of chilling curse. Create a 1:1 SQUARE canvas, intended for an editable 512x512 master. A massive turquoise and white breaking wave dominates the center, sweeping horizontally from left to right, dynamic crest and foam, with a few small armored figures caught in the rush for scale. Painterly medieval fantasy collectible-card illustration, rich believable water, ice and stone, dramatic warm low sun behind cold blue spray, atmospheric depth, strong readable primary wave. Keep all identity-critical content within x24..488 and y105..407 of the square; quiet expendable sky and foreground at top and bottom. Compose to remain clear in a 206:141 wide horizontal crop. No frame, lettering, numbers, UI, anime, Disney-like cartoon, photorealism, or pixel art.",
+  "generatedPath": "/workspace/generated_images/exec-61c5a995-6aa7-4f03-b543-cd195afc94f8.png",
+  "focalPoint": [
+    0.5,
+    0.5
+  ],
+  "status": "generated",
+  "batch": 8,
+  "reviewNote": "Reviewed exact 512-square source, 206:141 wide crop, and 128 thumbnail. The turquoise breaker dominates, with struck figures readable for scale; the main action remains safely within the crop. Painterly finish is somewhat crisp and high-detail, but coherent with the accepted Frost references.",
+  "editableSourcePath": "game/cards/art/masters/frost_strike_04.png",
+  "sourceNative": [
+    1254,
+    1254
+  ]
+},
+{
+  "cardId": "frost_lob_05",
+  "name": "Frozen Comet",
+  "prompt": "Paint an illustration for the Hexmancers card Frozen Comet. Mechanics: a heavy explosive lob of a frozen mass that bursts on impact, knocking foes down and freezing them. Create a 1:1 SQUARE canvas for an editable 512x512 master. Show one enormous luminous blue-white ice comet descending diagonally through storm clouds and striking an icy shoreline, its crystalline core clearly recognizable, burst of shards and snow at impact, a couple tiny armored figures thrown back for scale. Strong single focal subject, dramatic painterly medieval fantasy collectible-card art, nuanced ice textures and atmospheric depth, cold blue light against dusk sky. Keep critical comet silhouette and impact within x24..488,y105..407. quiet expendable sky and snow at top/bottom. Composed for 206:141 horizontal crop. No frame, text, lettering, UI, anime, Disney cartoon, photorealism, pixel art.",
+  "generatedPath": "/workspace/generated_images/exec-422c645d-9b76-48cf-8db9-cee9e4477389.png",
+  "focalPoint": [
+    0.5,
+    0.5
+  ],
+  "status": "generated",
+  "batch": 8,
+  "reviewNote": "Reviewed exact square source, 206:141 crop, and 128 thumbnail. The large crystalline comet and impact remain centered and unmistakable; small figures give scale. Bright central impact slightly dominates the surrounding details.",
+  "editableSourcePath": "game/cards/art/masters/frost_lob_05.png",
+  "sourceNative": [
+    1254,
+    1254
+  ]
+},
+{
+  "cardId": "frost_ward_04",
+  "name": "Ice Palace Gate",
+  "prompt": "Create a square 1:1 fantasy card painting of Ice Palace Gate. Composition must fit a horizontal crop: all parts of the named subject must lie within y105 to y407 on the square. Depict a broad, low, monumental double-door gate of translucent carved blue ice set in a thick stone wall, with a shallow rounded arch whose highest point is around y150, short square side posts ending around y350, and a clearly visible threshold at y395. Absolutely no towers, tall spires, or tall pinnacles. The entire gate outline and base must be visible within the central band. A small cloaked guard beside the threshold for scale. Painterly medieval fantasy collectible-card art, cold sapphire glow, nuanced stone and ice surfaces, clear central subject and dramatic dawn light. Leave the top 105 pixels and bottom 105 pixels to quiet mountain sky and snow. 512x512 master, composed for 206:141 crop. No text, no border, no UI, no anime, Disney cartoon, photorealism, or pixel art.",
+  "generatedPath": "/workspace/generated_images/exec-2e15a5c0-1c4f-44a2-87ff-512063fec4bc.png",
+  "focalPoint": [
+    0.5,
+    0.5
+  ],
+  "status": "generated",
+  "batch": 8,
+  "reviewNote": "Reviewed exact square source, 206:141 crop, and 128 thumbnail. The broad ice gate, complete arch, side posts, threshold and guard remain visible. Initial tall-gate attempt preserved at /tmp/hexmancers-frost-scratch/frost_ward_04-attempt1.png; final compact composition avoids tip clipping.",
+  "editableSourcePath": "game/cards/art/masters/frost_ward_04.png",
+  "sourceNative": [
+    1254,
+    1254
+  ]
+},
+{
+  "cardId": "frost_sentry_06",
+  "name": "Coral Spire",
+  "prompt": "Create a square 1:1 collectible fantasy card illustration for Coral Spire. The named coral spire is a squat, broad reef sentinel, not a tall tower: a central coral mass with branching arms, roughly 250 pixels tall in the 512-square, fully contained between y130 and y380. A bright blue eye at its center suggests a precise magical sentry. Show the entire spire including root and top, surrounded by icy sea and low reef. Strong readable silhouette, red-orange and ivory coral, painterly medieval fantasy atmosphere, teal water, attractive directional light and fine material detail. Composition designed for a 206:141 horizontal crop. No tall coral tip outside the center, no lettering, no card frame or UI, no anime, Disney-like cartoon, photorealism, pixel art.",
+  "generatedPath": "/workspace/generated_images/exec-027a7c27-a401-4bd8-9959-001a5ac4ec32.png",
+  "focalPoint": [
+    0.5,
+    0.38
+  ],
+  "status": "generated",
+  "batch": 8,
+  "reviewNote": "Reviewed 512-square source, vertically adjusted 206:141 crop (focalPoint y=0.38), and 128 thumbnail. The adjusted crop keeps the full coral crown, eye, and reef base visible. The eye reads as the sentry focus; bright detail remains legible at thumbnail scale.",
+  "editableSourcePath": "game/cards/art/masters/frost_sentry_06.png",
+  "sourceNative": [
+    1254,
+    1254
+  ]
+},
+{
+  "cardId": "frost_boon_05",
+  "name": "Sauna Steam",
+  "prompt": "Square 1:1 painterly fantasy illustration of Sauna Steam for a collectible card. Show a compact, squat traditional northern timber sauna hut, centered and fully visible from roofline through stone foundation within the middle y105..407 band of the square. Low broad roof with a short squat vent (no tall chimney), open warm amber doorway, a small evergreen sprout growing at the threshold. Show steam curling from the short vent. Keep the full hut, vent, doorway and sprout inside the horizontal card crop, no parts near top or bottom. Snowy lakeshore, cool blue dawn and warm indoor light, detailed wood, stone, snow and steam, grounded medieval fantasy painting. Strong readable silhouette at thumbnail, designed for 512x512 master and 206:141 crop. No lettering, UI, frame, modern objects, anime, Disney cartoon, photorealism or pixel art.",
+  "generatedPath": "/workspace/generated_images/exec-edf89885-ef2f-426d-9f07-9457cde2514b.png",
+  "focalPoint": [
+    0.5,
+    0.43
+  ],
+  "status": "generated",
+  "batch": 8,
+  "reviewNote": "Reviewed 512-square source, crop shifted up with focalPoint y=0.43, and 128 thumbnail. Full low roof, short vent, stone base, warm doorway and small sprout remain visible. Earlier tall-hut attempt preserved at /tmp/hexmancers-frost-scratch/frost_boon_05-attempt1.png.",
+  "editableSourcePath": "game/cards/art/masters/frost_boon_05.png",
+  "sourceNative": [
+    1469,
+    1071
+  ]
+},
+{
+  "cardId": "frost_charge_03",
+  "name": "Harpoon Quiver",
+  "prompt": "Paint Harpoon Quiver, a painterly medieval fantasy card illustration. One complete leather harpoon quiver is the central subject, lying crosswise on a ship's deck with only three short harpoons; keep quiver ends, all steel points, and an assisting gloved hand fully visible in the central band from y105 through y407 on a 512x512 square. The object should be compact and small enough to fit, surrounded by open deck and calm icy sea. Make no element touch the square edges. Center the quiver with generous clear margin on left, right, top, and bottom. Suggest the harpoons pull targets with a simple taut rope extending from one shaft to the rail. Refined leather, steel and rope, cool fjord light and warm lantern glow, grounded painterly fantasy. Compose explicitly for the wide 206:141 card crop, clear at thumbnail. No text, border, UI, guns, anime, Disney cartoon, photorealism, pixel art.",
+  "generatedPath": "/workspace/generated_images/exec-c3c96b11-ef86-4cc8-8902-d8c4244ee0b1.png",
+  "focalPoint": [
+    0.5,
+    0.5
+  ],
+  "status": "generated",
+  "batch": 8,
+  "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop and 128 thumbnail. The whole compact leather quiver, three harpoon points and assisting glove remain visible; readable as a harpoon quiver at thumbnail. Earlier taller attempts preserved in /tmp/hexmancers-frost-scratch.",
+  "editableSourcePath": "game/cards/art/masters/frost_charge_03.png",
+  "sourceNative": [
+    1254,
+    1254
+  ]
+},
+{
+  "cardId": "frost_utility_04",
+  "name": "Captain's Log",
+  "prompt": "Paint the Hexmancers card Captain's Log. Mechanics: draw two cards. Create a square 1:1 painterly medieval fantasy collectible-card illustration. A weathered ship captain's open leather-bound logbook fills the center, parchment pages marked with intricate nautical sketches, tides and coastlines (no readable writing), a brass compass and quill beside it. Through an open cabin window, cold sea and icebergs; warm lantern glow. The logbook is unmistakably the named object, pages and clasp entirely inside x24..488,y105..407. Compose for the 206:141 wide crop, readable at thumbnail. No legible text, no frame, UI, anime, Disney, photorealism or pixel art.",
+  "generatedPath": "/workspace/generated_images/exec-60ba2a88-a588-4a1e-9b0d-63832379ce48.png",
+  "focalPoint": [
+    0.5,
+    0.5
+  ],
+  "status": "generated",
+  "batch": 8,
+  "reviewNote": "Reviewed exact square source, 206:141 crop and 128 thumbnail. The open map-filled logbook and clasp remain fully visible, with the cold sea and lantern-lit cabin as supporting context; it reads clearly as a captain's log.",
+  "editableSourcePath": "game/cards/art/masters/frost_utility_04.png",
+  "sourceNative": [
+    1254,
+    1254
+  ]
+},
+{
+  "cardId": "frost_trap_04",
+  "name": "Fishing Net",
+  "prompt": "Paint the Hexmancers card Fishing Net. Mechanics: a snare trap that slows and stuns. Create a square 1:1 painterly medieval fantasy collectible-card illustration. Show a heavy knotted fishing net dropped as a trap across a snowy frozen harbor, its ropes tensioned and catching a booted raider's leg as they stumble; net mesh fully visible and centered, no injuries. Show the complete spread net and snagged boot within x24..488,y105..407, with a small bait fish or float. Cold teal ice, warm lantern light, rich rope and snow texture, dynamic readable action. Composed for 206:141 horizontal crop. No text, frame, UI, anime, Disney, photorealism or pixel art.",
+  "generatedPath": "/workspace/generated_images/exec-6015e398-1579-4170-a82b-9a874cf45764.png",
+  "focalPoint": [
+    0.5,
+    0.38
+  ],
+  "status": "generated",
+  "batch": 8,
+  "reviewNote": "Reviewed square source, crop shifted upward to y=19 (focalPoint 0.38), and thumbnail. The raider's full face, hand and boot remain visible while the snare mesh catches the leg; the net is legible in the crop.",
+  "editableSourcePath": "game/cards/art/masters/frost_trap_04.png",
+  "sourceNative": [
+    1254,
+    1254
+  ]
+},
+{
+  "cardId": "frost_environment_04",
+  "name": "Snowfield",
+  "prompt": "Paint the Hexmancers card Snowfield. Mechanics: a short-lived burst environment that freezes and curses foes. Create a square 1:1 painterly medieval fantasy collectible-card illustration. Show a sudden magical snowfield blooming across an icy battlefield: an elegant broad sweep of fresh snow and rime spreading over the ground, blue-white frost crystals forming in a circular burst around a few small armored figures slowed in the storm. The landscape, not a generic blizzard, is the named subject: recognizable snowy field, ridgeline and frost-covered grass. Clear grounded horizontal composition, distant northern peaks, cold directional light with faint blue curse glow. Keep central ground detail in x24..488,y105..407. 206:141 crop. No text, frame, UI, anime, Disney, photorealism, pixel art.",
+  "generatedPath": "/workspace/generated_images/exec-0b26f59c-a00c-4435-a21f-5c8798d95289.png",
+  "focalPoint": [
+    0.5,
+    0.5
+  ],
+  "status": "generated",
+  "batch": 8,
+  "reviewNote": "Reviewed exact 512-square source, 206:141 crop and 128 thumbnail. The broad rime field, crystalline burst and small frozen figures remain clearly visible; reads as a snowfield environment rather than a single spell projectile.",
+  "editableSourcePath": "game/cards/art/masters/frost_environment_04.png",
+  "sourceNative": [
+    1254,
+    1254
+  ]
+},
+{
+  "cardId": "frost_piece_02",
+  "name": "Pearl of the Tide Jewels",
+  "prompt": "Paint the Hexmancers legendary card Pearl of the Tide Jewels. Create a square 1:1 painterly high fantasy collectible-card illustration centered on one extraordinary luminous pearl, the size of a small fist, held in an ornate silver sea-jewel setting with delicate wave motifs. It rests in a shell cradle among tide pools; a translucent turquoise wave curls around it and catches radiant moonlit highlights. The pearl is the unmistakable named artifact, fully visible and dominant, exquisite but grounded materials, dramatic directional light and atmospheric depth. Keep pearl, entire silver setting and shell cradle inside x24..488,y105..407. Compose for 206:141 horizontal crop and clear thumbnail. No text, lettering, frame, UI, anime, Disney cartoon, photorealism, pixel art.",
+  "generatedPath": "/workspace/generated_images/exec-69b2ab57-6dc0-4565-89b9-30622ad2b936.png",
+  "focalPoint": [
+    0.5,
+    0.55
+  ],
+  "status": "generated",
+  "batch": 8,
+  "reviewNote": "Reviewed 512-square source, crop shifted downward to y=106 (focalPoint 0.55), and 128 thumbnail. The complete pearl, silver setting and shell cradle fit in the crop; the upper wave curl is intentionally clipped while the artifact stays clear.",
+  "editableSourcePath": "game/cards/art/masters/frost_piece_02.png",
+  "sourceNative": [
+    1515,
+    1038
+  ]
+}
 ]

@@ -772,5 +772,239 @@
     "status": "generated",
     "batch": 7,
     "reviewNote": "Inspected final raw square, exact 512x512 source, custom 206:141 crop at focalPoint [0.5,0.4], and 128x88 thumbnail. The complete iridescent fish scale and impact remain prominent; the upward crop shift retains the mage’s face and casting hand, and keeps the pushed target visible."
+  },
+  {
+    "cardId": "storm_strike_04",
+    "name": "Static Discharge",
+    "prompt": "Square 1:1 painterly medieval fantasy collectible-card artwork for “Static Discharge.” A blue-grey robed storm mage thrusts an open hand; a charged blue-white lightning bolt loops into a clear boomerang arc and pierces two aligned armored targets. Face, hand and complete bolt action central and unobscured. Worn steel, stone, dramatic storm light, atmospheric depth, expressive brushwork; blue-white against indigo with restrained brass. Explicit 512x512 master composition; keep critical face, hand and bolt within x24..488,y105..407 for a 206:141 crop, quiet expendable sky and wet stone at top/bottom. Horizontal staging, strong readable thumbnail. No lettering, runes, UI, frame, border, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b5c2ce63-8c1a-4a6b-a01c-346bef0ac3da.png",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Inspected final raw square, exact 512x512 editable source, centered 206:141 crop and 128x88 thumbnail. Mage face and casting hand remain in frame; the blue-white boomerang arc clearly pierces two armored targets, with all critical action visible at thumbnail scale."
+  },
+  {
+    "cardId": "storm_lob_05",
+    "name": "Sulfur Bomb",
+    "prompt": "Square 1:1 painterly medieval fantasy collectible-card artwork for “Sulfur Bomb.” A squat, complete clay-and-glass bomb with a brass cap and burning sulfur fuse flies across a stormy stone skirmish, bursting in a compact yellow-orange sulfur flash that knocks one armored foe backward; a second foe flinches in the background. Keep the named bomb large, unmistakable and intact at the center of action, with its cap and fuse visible; explosion supports its identity rather than hiding it. A medieval alchemist’s gloved hand has just thrown it. Worn leather, clay, brass and steel, dramatic blue storm light balanced with sulfur amber, atmospheric depth and expressive painterly brushwork. Explicit 512x512 master composition. Keep the full bomb, fuse, throwing hand and main impact inside x24..488,y105..407 for a 206:141 horizontal crop; quiet expendable cloud and wet ground at top and bottom. Strong readable thumbnail. No text, letters, runes, UI, frame, border, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d997ff4e-6da1-4d0b-9ba6-7948710275f2.png",
+    "editableSourcePath": "game/cards/art/masters/storm_lob_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Inspected final raw square, exact 512x512 editable source, centered 206:141 crop and 128x88 thumbnail. Full clay bomb, brass cap and burning fuse remain prominent; the yellow sulfur burst knocks the armored target backward, and throwing hand and impact read at thumbnail scale."
+  },
+  {
+    "cardId": "storm_ward_06",
+    "name": "Cactus Hedge",
+    "prompt": "Painterly medieval fantasy collectible-card artwork for “Cactus Hedge,” a long thorned cage ward. In a sunbaked storm desert courtyard, a dense living hedge of thick ribbed green cacti forms a clear rectangular cage barrier around a narrow passage; six tall cactus columns and branching arms interlock into a defensive enclosure. Long ivory spines catch cool blue-white static and amber sunlight. One armored raider recoils from the thorns outside, showing the barrier’s defensive purpose. Make the cactus hedge itself the bold, unmistakable named subject, not a generic wall. Believable cactus texture, stone, leather and steel, dramatic directional light, painterly brushwork, atmospheric depth, horizontal staging. Explicit 1:1 square canvas for 512x512 editable master. Keep the full visible hedge enclosure and the raider’s face/hand clear inside x24..488,y105..407 for a 206:141 crop, with quiet expendable sky and ground margins. Readable at thumbnail. No text, letters, runes, frame, border, UI, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-fa3b7842-2211-4a98-8e5d-1ae6598cba51.png",
+    "editableSourcePath": "game/cards/art/masters/storm_ward_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Inspected final raw square, exact 512x512 editable source, centered 206:141 crop and 128x88 thumbnail. The interlocking spined cactus barrier dominates and reads as a defensive cage; the raider’s face, reaching hand and barrier remain visible across all inspected views."
+  },
+  {
+    "cardId": "storm_sentry_06",
+    "name": "Foo Dog Statue",
+    "prompt": "Painterly medieval fantasy collectible-card artwork for “Foo Dog Statue,” a tough sentry guardian that guards and rallies allies. A large, unmistakable East Asian-inspired stone foo dog guardian statue sits on a carved plinth at a fortress gate, lion-dog face fierce and dignified, one paw resting on a stone sphere. Blue-white static glows along carved mane curls and bronze inlays. Nearby, two exhausted medieval defenders regain courage and rise behind the statue, secondary to the carved guardian. Give the statue a bold silhouette and clearly readable face, with weathered grey stone, bronze details, cloth banners, dramatic storm light and expressive painterly brushwork. Respectful historical fantasy design; no modern motifs. Explicit 1:1 square canvas for 512x512 editable master. Keep statue’s full head and recognizable upper body, paw and nearby defenders’ faces inside x24..488,y105..407 for a 206:141 crop; quiet gate sky and plinth margins beyond. Strong thumbnail clarity, horizontal staging. No text, letters, symbols, UI, frame, border, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e1c6579b-6699-4428-91ae-7323ac27b2fa.png",
+    "editableSourcePath": "game/cards/art/masters/storm_sentry_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Inspected final raw square, exact 512x512 editable source, 206:141 crop shifted upward to focalPoint [0.5,0.42], and 128x88 thumbnail. Initial centered crop clipped the crest, so the crop now preserves the full foo dog face and upper body; the paw, stone sphere and rallying defenders remain legible."
+  },
+  {
+    "cardId": "storm_boon_04",
+    "name": "Djinn's Bargain",
+    "prompt": "Painterly medieval fantasy collectible-card artwork for “Djinn’s Bargain,” a long pact boon paid in blood. In a desert palace vault under a storm-lit night sky, a desperate mage and an elegant blue-gold djinn face one another across a small ornate brass lamp. The djinn extends a glowing hand to seal a pact; the mage offers an open palm with one vivid bead of blood, while a subtle blue-white aura binds them. Make the lamp and the two expressive faces the clear focal group, with the bargain readable at a glance, not a generic spell blast. Rich woven robes, antique brass, carved stone, dramatic directional light, expressive painterly brushwork and atmospheric depth; indigo and turquoise balanced with warm gold and a restrained crimson accent. Explicit 1:1 square canvas for an editable 512x512 master. Keep lamp, faces and hands inside x24..488,y105..407 for a 206:141 horizontal crop; quiet expendable arches and cloud above/below. Readable thumbnail and safe fingers. No readable text, runes, lettering, frame, border, UI, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6a72c604-244c-43f3-85dc-0f8647a38369.png",
+    "editableSourcePath": "game/cards/art/masters/storm_boon_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.35
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Inspected final raw square, exact 512x512 editable source, upward-shifted 206:141 crop at focalPoint [0.5,0.35], and 128x88 thumbnail. The shift keeps both faces and the pact-sealing hands visible; the lamp is still recognizable though its lower edge falls outside the crop. Pact glow and blood bead remain legible at thumbnail scale."
+  },
+  {
+    "cardId": "storm_charge_04",
+    "name": "Bag of Dirhams",
+    "prompt": "Painterly medieval fantasy collectible-card artwork for “Bag of Dirhams,” a reusable storm charge that hurls a bolt and knocks foes back. A complete richly embroidered leather coin pouch tied with a brass clasp is held in a warrior’s hand in the foreground; several round gold dirhams spill upward as a compact blue-white bolt launches from the pouch, striking an armored foe and pushing him backward. Keep the full pouch and hand large and unmistakable as the named object, with a few coins readable as coins, not text. Stormy desert caravan skirmish, believable leather, gold and steel, dramatic directional light, painterly brushwork, atmospheric depth, warm brass against cool indigo. Explicit 1:1 square canvas for a 512x512 master. Keep complete pouch, gripping hand and main bolt/target action inside x24..488,y105..407 for a 206:141 horizontal crop; quiet expendable sky and ground beyond. Readable thumbnail. No inscriptions, text, runes, UI, frame, border, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f0e02456-6e89-4dd3-ae42-b12d130f1c3a.png",
+    "editableSourcePath": "game/cards/art/masters/storm_charge_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Inspected final raw square, exact 512x512 editable source, centered 206:141 crop and 128x88 thumbnail. The complete embroidered pouch, clasp and coin spill remain prominent; the gripping hand and blue-white bolt are clear, with the target visibly knocked back."
+  },
+  {
+    "cardId": "storm_utility_04",
+    "name": "Transmutation",
+    "prompt": "Painterly medieval fantasy collectible-card artwork for “Transmutation,” a storm utility that copies a card through magical transformation. A focused alchemist in layered storm-blue robes holds up a small intricate silver spell medallion; a luminous blue-white transmutation stream turns it into two perfectly matching medallions suspended side by side, the new copy emerging from swirling gold and silver sparks. Make the paired identical medallions the clear named subject, with the alchemist’s concentrated face and steady hand visible. Medieval alchemy chamber with brass vessels and stone shelves, believable metal and cloth, dramatic directional light, atmospheric depth, expressive painterly brushwork; cool storm magic with restrained warm gold. Explicit 1:1 square canvas for editable 512x512 master. Keep full medallions, face and hand inside x24..488,y105..407 for a 206:141 horizontal crop; quiet expendable shelves and rafters outside. Strong thumbnail readability. No readable text, letters, runes, UI, frame, border, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0e184609-d556-42ee-9d68-8bf07a02e579.png",
+    "editableSourcePath": "game/cards/art/masters/storm_utility_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Inspected final raw square, exact 512x512 editable source, upward-adjusted 206:141 crop at focalPoint [0.5,0.43], and 128x88 thumbnail. The shift preserves the alchemist’s full face; his hand and both matching medallions remain fully visible and readable, with the duplication stream connecting them."
+  },
+  {
+    "cardId": "storm_trap_04",
+    "name": "Scorpion Nest",
+    "prompt": "Painterly medieval fantasy collectible-card artwork for “Scorpion Nest,” a short spike trap set in a desert passage. A large sandy nest under a broken stone arch suddenly erupts with three clearly recognizable dark bronze scorpions; the largest rises centrally with claws open and segmented tail poised, while sharpened barbed spikes concealed in the nest snap upward beneath a surprised armored intruder’s boots. Make the scorpion nest and its live scorpion threat unmistakable, with the main scorpion as the bold named subject and the trap action secondary. Stormy desert light, believable chitin, sand, leather and stone, dramatic blue-white static accents, expressive painterly brushwork and atmospheric depth. Explicit 1:1 square canvas for editable 512x512 master. Keep the complete central scorpion, claws, raised tail, and intruder’s boots inside x24..488,y105..407 for a 206:141 crop; quiet expendable arch and sand margins beyond. Readable thumbnail. No text, symbols, UI, frame, border, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-de5f2328-6544-4558-85d8-50d04f354c17.png",
+    "editableSourcePath": "game/cards/art/masters/storm_trap_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Inspected final raw square, exact 512x512 editable source, upward-adjusted 206:141 crop at focalPoint [0.5,0.42], and 128x88 thumbnail. Shift preserves the full main scorpion’s raised tail and claws; the nest, snapping spike field and intruder’s boots remain clear."
+  },
+  {
+    "cardId": "storm_environment_03",
+    "name": "Sahara Noon",
+    "prompt": "Painterly medieval fantasy collectible-card landscape for “Sahara Noon,” a storm environment that sears a wide area in a sudden burst of magical heat. Vast Saharan dunes, sun-bleached sandstone ruins and a brilliant white-gold zenith sun dominate the scene; across a broad burst-shaped sweep of sand, blue-white storm energy ignites a wave of amber heat shimmer and small tongues of fire, forcing two distant armored travelers to shield themselves. Keep the desert noon landscape as the primary named subject, with the scorching event readable but not obscuring the terrain. Layered dune ridges, atmospheric mirage, rich sand and stone texture, expressive painterly brushwork, cinematic light, cool storm accent against searing gold. Explicit 1:1 square canvas for editable 512x512 master, composed for horizontal card crop. Keep the central heat burst and recognizable dune/ruin landscape inside x24..488,y105..407; quiet expendable sky and foreground sand at top/bottom. Clear miniature landscape. No lettering, text, symbols, UI, frame, border, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7b31172f-6f85-4a6d-8e6b-57b637009a75.png",
+    "editableSourcePath": "game/cards/art/masters/storm_environment_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Inspected final raw square, exact 512x512 editable source, centered 206:141 crop and 128x88 thumbnail. Dunes, ruins, high noon sun and broad heat burst remain identifiable; the small shielding travelers support the scorching action without displacing the landscape."
+  },
+  {
+    "cardId": "storm_piece_04",
+    "name": "Tail of the Manticore",
+    "prompt": "Painterly medieval fantasy collectible-card artwork for the legendary “Tail of the Manticore,” a quick-lob relic that slams a column of foes backward. A complete curved manticore tail, detached as an ancient bronze-scaled trophy with a prominent dark stinger, arcs through the air above a stone battlefield and strikes the ground in a vertical line of blue-white storm force, knocking three aligned armored foes back. The whole distinctive tail from base to stinger is the large unmistakable primary subject; no gore, show it as a preserved magical relic. Rich bronze scales, leather bindings, weathered stone, dramatic storm light, painterly brushwork and atmospheric depth. Explicit 1:1 square canvas for an editable 512x512 master. Keep complete tail, stinger and key impact/target action inside x24..488,y105..407 for a 206:141 horizontal crop, with quiet sky and ground margins beyond. Clear readable silhouette at thumbnail. No text, runes, UI, frame, border, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-99c2e0cc-4da6-4f97-ac3f-7eabe7fe5c34.png",
+    "editableSourcePath": "game/cards/art/masters/storm_piece_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Inspected final raw square, exact 512x512 editable source, centered 206:141 crop and 128x88 thumbnail. The entire bronze-scaled manticore tail and stinger remain prominent; the narrow impact column knocks three armored foes back and stays legible at thumbnail size."
+  },
+  {
+    "cardId": "storm_summon_02",
+    "name": "Lamp Djinn",
+    "prompt": "Painterly medieval fantasy collectible-card artwork for “Lamp Djinn,” a swift storm summon that chains attacks and drains life. A powerful turquoise-and-gold djinn rises from an ornate brass lamp, its clear expressive face and upper body forming a dramatic central figure; one graceful hand sends a branching blue-white lightning chain through three distant foes while a thin crimson-gold thread of stolen vitality flows back toward the djinn. The djinn is the dominant named subject, with the lamp visible below as its source. Desert palace terrace, carved stone and woven robes, dramatic storm light, painterly brushwork, atmospheric depth, cool turquoise against warm brass and indigo. Explicit 1:1 square canvas for editable 512x512 master. Keep djinn’s full face and hands and the lamp within x24..488,y105..407 for a 206:141 horizontal crop; quiet cloud and terrace margins beyond. Readable thumbnail. No text, runes, UI, frame, border, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-85f410f6-865f-4fd3-a2ed-ef6ecc390488.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_02.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Inspected final raw square, exact 512x512 editable source, upward-shifted 206:141 crop at focalPoint [0.5,0.4], and 128x88 thumbnail. Full djinn face, torso and casting hand with chained targets remain visible and readable; the brass lamp is clear in the square master but falls below the horizontal crop."
+  },
+  {
+    "cardId": "storm_machine_02",
+    "name": "Spiral Aerial Screw",
+    "prompt": "Painterly medieval fantasy collectible-card artwork for “Spiral Aerial Screw,” a frantic static-charged clockwork drone. A compact flying Renaissance-style brass aerial screw fills the foreground: a small wooden frame beneath a broad helical screw rotor, exposed gears, copper coils and a bright blue-white static spark at its heart. It banks sharply in a zigzag above a medieval fortress roof, leaving a short jagged lightning trail as two distant archers track it. Make the complete aerial screw machine the bold unmistakable named subject, with readable spiral rotor and full frame; no modern aircraft parts. Believable brass, wood, leather and storm cloud, dramatic directional light, painterly brushwork, atmospheric depth, blue-white static against warm bronze. Explicit 1:1 square canvas for editable 512x512 master. Keep full rotor, machine body and key static action within x24..488,y105..407 for a 206:141 crop; quiet sky and rooftops beyond. Clear thumbnail silhouette. No text, symbols, UI, frame, border, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a1c2b9c4-8583-4ede-9348-95960a55261c.png",
+    "editableSourcePath": "game/cards/art/masters/storm_machine_02.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Inspected final raw square, exact 512x512 editable source, upward-shifted 206:141 crop at focalPoint [0.5,0.4], and 128x88 thumbnail. The shift keeps the complete layered spiral rotor and full geared frame in the crop; blue-white static and medieval fortress setting remain clear at thumbnail scale."
+  },
+  {
+    "cardId": "storm_ace_02",
+    "name": "Djinn's Last Wish",
+    "prompt": "Painterly medieval fantasy collectible-card artwork for “Djinn’s Last Wish,” a storm ace that overwhelms every foe with a disorienting wish-vision. A blue-gold djinn looms beside an open brass lamp, one hand releasing a radiant wish-orb that fractures into many swirling mirrored visions across a battlefield; three armored foes everywhere in the scene turn in confusion as their reflections and directions seem to multiply. Make the djinn’s commanding face and the bright wish-orb the clear focal group, while the all-encompassing illusion reaches across the whole scene. Rich brass, turquoise smoke, storm-blue light and expressive painterly brushwork with atmospheric depth. Explicit 1:1 square canvas for editable 512x512 master. Keep djinn face, hand and wish-orb inside x24..488,y105..407 for a 206:141 horizontal crop; quiet expendable cloud and stone margins beyond. Clear at thumbnail, no visual clutter over the face. No text, readable writing, runes, UI, frame, border, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f4d953d3-1972-4dec-a98a-ec824ff9425e.png",
+    "editableSourcePath": "game/cards/art/masters/storm_ace_02.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Inspected final raw square, exact 512x512 editable source, upward-shifted 206:141 crop at focalPoint [0.5,0.42], and 128x88 thumbnail. Djinn’s face, casting hand and bright wish-orb stay visible; mirrored visions spread across the battlefield and confused foes remain legible at thumbnail scale."
   }
 ]

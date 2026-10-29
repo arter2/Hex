@@ -763,5 +763,185 @@
     "status": "generated",
     "batch": 7,
     "reviewNote": "Reviewed the exact 512-square source, centered 206:141 crop and 128px thumbnail. The webbed, bramble-lined crossing remains recognizable across the crop, with a small intruder caught at its center; the environment is dominant."
+  },
+  {
+    "cardId": "shadow_strike_04",
+    "name": "Mold Spore Volley",
+    "prompt": "Square 1:1 painterly medieval dark fantasy collectible-card illustration for Hexmancers, exact card “Mold Spore Volley”. Show a grimy leather-and-brass hand cannon firing a fan of several pale green mold spores across a ruined crypt, spores visibly distinct in flight with subtle toxic haze; the cannon and firing hand are prominent and intact, with an understated shadowy fungal background. Grounded painterly surfaces, attractive directional light, nuanced fungal textures, atmospheric depth, strong readable subject. The named hand cannon, hand, and volley stay wholly inside x24…488,y105…407 on a 512-square composition, designed to read in a 206:141 horizontal crop. Finished square painting, quiet expendable atmosphere at top and bottom. No lettering, numbers, frame, UI, unrelated spell sigils, modern weapon design, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-bc1eb974-f82e-4d65-80e2-275edcf81629.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_strike_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop, and 128px thumbnail. The cannon, gripping hand, and full visible volley remain identifiable and intact in both crop sizes; surrounding ruins are supporting detail."
+  },
+  {
+    "cardId": "shadow_lob_06",
+    "name": "Swamp Gas Bubble",
+    "prompt": "Paint a fresh 1:1 square illustration for Hexmancers card “Swamp Gas Bubble”. The entire enormous translucent green bubble must be fully visible with a clearly closed, uncut rounded crown and full lower curve, centered LOW in the square, its top no higher than y120 and bottom above y390. A frightened marsh traveler is secondary on the left with face and both raised hands fully in frame. The gas bubble dominates and is a single intact named object, oily iridescent surface around swirling green fumes and small bubbles, black bog water below. Compose the whole critical bubble and traveler’s face/hands inside x24…488,y105…407 so the final 206:141 horizontal crop cannot cut them. Quiet moonlit swamp scenery only in top/bottom margins. Painterly medieval dark fantasy collectible-card art, rich materials, dramatic moonlight, not photorealistic. No text, sigils, frame, UI, anime, Disney-like cartoon, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6e54c246-3879-4e23-bc89-03120e384624.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_lob_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed final 512-square source, centered 206:141 crop, and 128px thumbnail. The entire iridescent gas bubble, its rounded crown and lower curve, plus the traveler’s face and raised hands remain visible in the crop."
+  },
+  {
+    "cardId": "shadow_ward_05",
+    "name": "Beetle Carapace",
+    "prompt": "Fresh square 1:1 illustration for the exact Hexmancers card “Beetle Carapace”. A medieval traveler holds a large dark iridescent beetle carapace as a shield. Make the traveler smaller in frame and place the whole focused face in the middle band, between y150 and y245; show face with clear space above it. The full domed shell, entire silhouette, and gripping hand fit from y145 to y390, with x24…488 margins. Shell clearly resembles a single beetle’s ridged hard wing-case, with subtle amber healing motes on a few cracks. Moonlit forest background. Strong readable square painting, dramatic painterly materials. Critical shell, face, and hand all fit x24…488,y105…407 so none will be clipped in the centered 206:141 wide crop. No text, UI, frame, abstract magical shield, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-895e7329-9104-4d57-aacf-6c7a9e90dadb.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_ward_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed final 512-square source, centered 206:141 crop, and 128px thumbnail. Repainted to fit the traveler’s complete face above the full, intact beetle-shell shield; face, shell, and gripping hand all remain clear in crop."
+  },
+  {
+    "cardId": "shadow_sentry_06",
+    "name": "Bone Totem",
+    "prompt": "Repaint square 1:1 Hexmancers fantasy card illustration for exact name “Bone Totem”. Show a compact, fully visible bone-and-wood warding totem, roughly half the image height, centered in the middle band from y135 to y385 with generous clear sky above and ground below. Its complete silhouette must show base, lashed upright long bones, a clear skull crown, and bindings; do not let any tip or base touch the image edge. An exhausted warrior crouches to its left, with face and reaching hand fully visible around y190–310. Violet lifeforce threads connect hand and totem. Moonlit ruined woodland. Painterly realistic fantasy materials and lighting, strong readable subject. The complete totem plus warrior’s face/hand fit x24…488,y105…407 for centered 206:141 crop. No lettering, runes, frame, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-054c930b-2c87-451d-b4b8-b4eb3733aac3.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_sentry_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed final square, centered wide crop and 128px thumbnail. Repainted for a smaller, fully visible totem; skull crown, tips, base, warrior face and reaching hand all remain inside the crop."
+  },
+  {
+    "cardId": "shadow_boon_04",
+    "name": "Sip of Blood",
+    "prompt": "Repaint square 1:1 medieval dark fantasy card illustration for Hexmancers “Sip of Blood”. Show a young pale knight from mid torso upward at a candlelit stone table, smaller in frame with generous space above the head. Entire hair, forehead, face, hand and tiny silver goblet must be fully visible and well inside y125…390 of the 512 square. The knight gently takes a small sip of dark red liquid; goblet and hand near the center, closed eyes and subtle returned warmth suggest healing, elegant and non-graphic with no open wound. Keep face, hand, cup and sipping action inside x24…488,y105…407 for centered 206:141 crop. Painterly medieval fabrics, armor and candlelight, shadowed infirmary. No text, frame, UI, gore, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7936acf2-0c27-472c-b68b-29ae3fdb6290.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_boon_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed final source, centered wide crop and 128px thumbnail. Repainted to preserve the full hairline, face, holding hand, silver goblet and sipping action within the crop; the scene remains restrained and non-graphic."
+  },
+  {
+    "cardId": "shadow_charge_04",
+    "name": "Crow Feathers",
+    "prompt": "Square 1:1 painterly medieval dark fantasy collectible-card illustration for Hexmancers, exact name “Crow Feathers”. A small leather pouch lies open on a stone altar, releasing a dramatic spiraling stream of glossy black crow feathers into cold moonlight; emphasize several individual feather forms, elegant and tangible, with a gloved hand scattering them. The entire pouch, hand and distinct feather plume fit x24…488,y105…407 on a 512-square composition for 206:141 crop. Mournful cemetery background, painterly textures and directional light. No text, runes, UI, frame, modern items, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-cfe67792-3ffd-4d83-a2d5-e16858578b71.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_charge_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed square source, centered 206:141 crop, and 128px thumb. The open leather pouch, scattering hand, and recognizable individual crow feathers remain clear; a few feathers trail beyond the crop as incidental motion."
+  },
+  {
+    "cardId": "shadow_utility_03",
+    "name": "Grave Robbing",
+    "prompt": "Repaint square 1:1 painterly medieval dark fantasy for Hexmancers card exact name “Grave Robbing”. A grave robber is kneeling beside a freshly opened stone tomb and holds up a small ornate golden reliquary. Compose the robber farther from camera with the whole hood/hair, face, eyes, hand and reliquary well inside y135…395; leave quiet dark headroom. The tomb opening and carved stone frame the right side, shovel and earth are supporting details. Moonlight and one warm candle create rich painterly materials. Keep critical face, holding hand and reliquary within x24…488,y105…407 for centered 206:141 crop. The scene clearly depicts stealing a small treasure from an open grave. No gore, text, frame, UI, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f689e122-465b-4ceb-8d5b-bb896b8f4ae9.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_utility_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed final square, centered wide crop, and 128px thumbnail. Repainted for the robber’s face, holding hand and reliquary to stay clear and intact in the crop; grave opening remains legible."
+  },
+  {
+    "cardId": "shadow_trap_03",
+    "name": "Sucking Bog",
+    "prompt": "Square 1:1 painterly medieval dark fantasy collectible-card illustration for Hexmancers, exact name “Sucking Bog”. A lone armored traveler is trapped thigh-deep in a dark sucking bog, one hand gripping a low twisted root and the other reaching toward safety; the bog visibly pulls at armor and ripples around them, conveying a snare. Keep traveler’s whole visible face and both hands in x24…488,y105…407, with the mud and roots as supporting action. Moonlit fen, dramatic painterly light, grounded mud, leather and steel. Finished square designed for 206:141 crop. No text, runes, frame, UI, gore, modern objects, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-bdfd5a4a-17b7-4351-8d01-9c902d6ca9f7.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_trap_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed square source, centered 206:141 crop, and 128px thumb. The trapped traveler’s face, gripping hand, reaching hand, and engulfing bog action remain fully clear."
+  },
+  {
+    "cardId": "shadow_environment_04",
+    "name": "Graveyard Chill",
+    "prompt": "Square 1:1 painterly medieval dark fantasy collectible-card art for Hexmancers, exact name “Graveyard Chill”. A horizontal row of ancient gravestones in a moonlit cemetery is swept by a visible band of pale blue spectral frost and ground-hugging cold mist; frost crystals coat stones and dead grass, a small hooded mourner shivers in the midground. The row of graves and flowing chill dominate. Keep the mourner’s face/hands and the central graves clear in x24…488,y105…407, planned for 206:141 crop. Painterly stone, winter atmosphere, dramatic restrained blue light. No text, runes, frame, UI, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d3f15481-ad7f-41cb-8f00-106464ed44e6.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_environment_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed square source, centered wide crop and 128px thumbnail. The frost-bound row of graves and flowing cold mist remain clear; the small mourner’s face and clasped hands remain visible."
+  },
+  {
+    "cardId": "shadow_piece_02",
+    "name": "Fang of the First Vampire",
+    "prompt": "Square 1:1 painterly medieval dark fantasy collectible-card illustration for Hexmancers, exact name “Fang of the First Vampire”. A single ancient ivory vampire fang, long, curved and subtly stained crimson at the root, floats horizontally above a weathered velvet reliquary cushion; its complete pointed tip and root are clearly visible, pristine object detail dominating the image. A pale gloved hand reaches to claim it as a thin red lifedrain glimmer curls around the tooth. Moonlit crypt, restrained antique gold and deep burgundy accents, painterly tactile stone, ivory and velvet. Keep entire named fang and hand inside x24…488,y105…407 in a 512 square intended for 206:141 crop. No person face necessary, no lettering, runes, frame, UI, gore, modern objects, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4462f79b-0818-4466-a5ea-f910d8cdd1ec.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_piece_02.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed square source, centered wide crop, and 128px thumbnail. The complete curved fang, root, pointed tip, and reaching hand remain clear inside the crop."
   }
 ]

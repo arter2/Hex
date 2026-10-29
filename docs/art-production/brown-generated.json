@@ -763,5 +763,41 @@
       1254,
       1254
     ]
+  },
+  {
+    "cardId": "brown_machine_11",
+    "name": "Djinn Brass Idol",
+    "prompt": "Paint an illustration for the exact card Djinn Brass Idol. Mechanic: a sturdy, slow tower sentry shaped as a brass djinn, fixed in place and empowering nearby allies; a waterlike pulse supports it. Show a monumental antique brass idol on a stone plinth at a desert caravan gate, unmistakably a djinn with sculpted face, curled beard, turban crown and a lower body tapering into engraved whorls, rivets and chased metal. Its eyes glow; it emits a slow translucent turquoise tidal ring that strengthens two nearby defenders holding their ground. The idol itself must dominate; no living genie. Keep full idol silhouette, face and the empowering pulse inside x24..488,y105..407. Painterly medieval fantasy collectible-card illustration, intricate brass patina, warm torchlight against cool blue magic and evening air, grounded materials and atmospheric depth. Explicit 1:1 square for editable 512x512 master, also designed for 206:141 crop. No frame, text, lettering, UI, anime, Disney cartoon, photorealism, pixel art or modern forms.",
+    "generatedPath": "/workspace/generated_images/exec-35d81497-d2bc-48c1-a2de-3d09b2e58066.png",
+    "editableSourcePath": "game/cards/art/masters/brown_machine_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.39
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed the 512-square source, upward-shifted 206:141 crop, and 128px thumbnail. The djinn idol’s complete face, turban, torso and tidal empowerment ring remain clear with defenders for scale; its pedestal base is partly trimmed."
+  },
+  {
+    "cardId": "brown_instant_09",
+    "name": "Giant's Strength Potion",
+    "prompt": "Paint an illustration for the exact card Giant's Strength Potion. Mechanic: a quick alchemical boon greatly empowers a creature for a long duration with a glowing strength aura, while knocking a nearby foe down. Show a muscular medieval mercenary lifting a small emerald-gold potion flask to his lips; as he drinks, his shoulders and arms swell with magical vigor, a warm golden aura of strength wrapping his torso and a nearby foe knocked back into the dirt. Keep the flask, drinking hand, mercenary’s determined face and powerful upper body clear and central; recognizable tiny vial is the named object. Painterly high fantasy card illustration, nuanced glass, leather, steel and cloth, warm amber glow against cool battlefield dusk, grounded anatomy, dynamic but readable action. Explicit 1:1 square for editable 512x512 master, composed for 206:141 horizontal crop with face, hand and vial inside x24..488,y105..407. No frame, text, UI, anime, Disney cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-911d92f5-e62b-4867-9625-e6d34561bcaf.png",
+    "editableSourcePath": "game/cards/art/masters/brown_instant_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.39
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed the 512-square source, upward-shifted 206:141 crop, and 128px thumbnail. The mercenary’s full face and drinking hand, green-gold vial, strength aura and knocked-back foe remain legible; lower legs are cropped."
   }
 ]

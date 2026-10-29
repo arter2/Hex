@@ -769,5 +769,167 @@
     "status": "generated",
     "batch": 7,
     "reviewNote": "Reviewed exact 512 source, wide crop at focalPoint y=0.48, and 128px thumbnail. The pit opening, several pointed stakes, raider’s face and both bracing hands are clear; lower stake ends extend beyond the crop, while the trap action reads immediately."
+  },
+  {
+    "cardId": "verdant_strike_05",
+    "name": "Bear Swipe",
+    "prompt": "Paint “Bear Swipe,” a Verdant strike: one powerful horizontal paw swipe from a massive brown bear striking a single armored raider. Make the bear the prominent named subject; its full face, sweeping forepaw and claws dominate, while the raider’s face recoils at the edge of the impact. Restrained green-lit leaves show the burst. Painterly medieval fantasy card art, believable fur and leather, grounded anatomy, dramatic dappled forest light, in the painterly Hexmancers reference style. Explicit 1:1 SQUARE canvas for an editable 512x512 master; keep the bear’s complete face and striking forepaw plus the raider’s face inside x24..488,y105..407 on the normalized square for a 206:141 horizontal crop. Quiet forest canopy and ground beyond. No border, lettering, numbers, UI, watermark, modern items, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c0d1d736-41ca-4e81-8dd8-5909850f78b6.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop, and 128px thumbnail. The bear’s full face and striking paw, plus the raider’s face, remain inside the crop; the named swipe reads immediately at thumbnail size."
+  },
+  {
+    "cardId": "verdant_lob_05",
+    "name": "Falling Deadwood",
+    "prompt": "Paint an illustration for “Falling Deadwood,” a Verdant lob that drops a heavy branch to knock down one foe. A thick dead limb breaks from an old forest tree and falls diagonally through the center, its recognizable broken trunk and branch tips fully visible; below it an armored raider looks up and recoils at the imminent impact, with a burst of leaves and dust. Make the heavy deadwood and falling action unmistakable. Painterly medieval fantasy collectible-card art, believable weathered wood, bark, foliage and armor, grounded anatomy, dramatic forest light and atmospheric depth in the Hexmancers reference style. Explicit 1:1 SQUARE canvas for an editable 512x512 master; place the entire identity-critical branch, the raider’s face and raised hands inside x24..488,y105..407 on the normalized square for a 206:141 horizontal crop. Quiet expendable canopy and ground at top and bottom. No border, lettering, numbers, UI, watermark, modern items, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-62651d3b-6f1f-4bde-ba3d-5ffb13579ed3.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_lob_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop, and 128px thumbnail. The broken falling limb remains complete and dominant; the raider’s face and raised hands remain in frame, and the drop reads clearly at thumbnail size."
+  },
+  {
+    "cardId": "verdant_ward_05",
+    "name": "Living Hedge Maze",
+    "prompt": "Paint “Living Hedge Maze,” a Verdant ward that raises a heavy living barrier for protection. Show a dense waist-high wall of interwoven thorny green hedge growing across a forest path, its squared rampart silhouette enclosing one clearly visible winding maze opening that bends out of sight. A lone traveler behind the barrier is safely sheltered as green leaves shimmer along the wall. The complete hedge barrier and distinctive entrance are the named subject. Painterly medieval fantasy collectible-card art, finely textured leaves, thorn branches, soil and stone, believable natural growth, luminous directional woodland light and atmospheric depth. Explicit 1:1 SQUARE canvas for an editable 512x512 master; keep the entire barrier, maze opening, and any face or hand within x24..488,y105..407 on the normalized square for a 206:141 horizontal crop. Quiet treetops and forest floor beyond. No frame, lettering, numbers, UI, watermark, modern items, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6596afdc-3013-4309-82e8-8fe59b82ac84.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_ward_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop, and 128px thumbnail. The complete hedge rampart and winding entrance remain visible and read as a maze; the sheltered traveler’s face is fully visible near the upper crop edge."
+  },
+  {
+    "cardId": "verdant_sentry_04",
+    "name": "Beltane Maypole",
+    "prompt": "Fresh illustration for “Beltane Maypole,” a fantasy Verdant sentry that fires repeated bolts. Critical composition: a SHORT, stout maypole in the CENTER, only about 220 pixels tall on a 512x512 square, running from y=145 to y=365; show its complete flower crown, decorated wooden shaft, and clearly visible planted base, with generous open forest background above and below. Do not make it a towering tree-height pole. Colorful spring ribbons stream left and right from the short maypole and become a few slender green-gold bolts aimed toward a small distant raider. Nearby tiny woodland allies glow with renewed courage. Maypole remains the prominent named object. Painterly medieval fantasy card illustration, detailed carved wood, woven fabric, flowers, grounded anatomy, warm dappled light and atmospheric depth, matching painterly Hexmancers references. Explicit 1:1 SQUARE canvas for editable 512x512 master. Keep every identity-critical part of the maypole inside x24..488,y105..407, safe for a horizontal 206:141 crop. No frame, lettering, numbers, UI, watermark, modern items, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-cf214e1b-fc6e-4be2-8f2d-ddf98ce07269.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_sentry_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop, and 128px thumbnail. The complete flower crown, decorated shaft, ribbons and planted base remain visible; maypole identity and bolt action read clearly, with allies secondary."
+  },
+  {
+    "cardId": "verdant_summon_06",
+    "name": "Hornet Hive",
+    "prompt": "Fresh square fantasy card painting for “Hornet Hive,” a Verdant summon that releases a fast, poisonous barrage. Make the complete papery hornet hive alone the unmistakable primary subject: a compact, fully visible teardrop nest hanging from a short branch, centered at x=130..380 and y=125..370 on the square. Show its full rounded top with clear margins and its open entrance; a stream of distinct golden-and-black hornets bursts out and sweeps horizontally across the frame, with restrained green venom glints on several stingers. No people or faces. Compose the whole hive and the main hornet swarm comfortably inside x24..488,y105..407 so the 206:141 wide crop contains the entire named object with margins. Painterly medieval fantasy collectible-card art, intricate believable paper comb and bark, translucent wings, dramatic warm woodland light, soft forest depth, strong readable silhouette at thumbnail size, in the Hexmancers painterly reference style. Explicit 1:1 SQUARE editable 512x512 master. No frame, lettering, numbers, UI, watermark, modern objects, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a8ed4247-b7d5-431e-a5c3-4e4b189acd44.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop (focalPoint y=0.40), and 128px thumbnail. Full nest, entrance, and dense hornet swarm remain in view; the hive reads clearly at card size."
+  },
+  {
+    "cardId": "verdant_boon_03",
+    "name": "Stag’s Grace",
+    "prompt": "Fresh painting of “Stag’s Grace,” the Verdant boon of haste and restorative life siphon. Show a graceful but powerful red-gold stag leaping beside a running ranger through a forest; green-gold restorative light flows from stag to ranger. The stag is a medium-sized complete figure, not a close-up: leave generous clear space above its branching antlers so every antler tip has at least 25 pixels of sky/forest margin on the 512x512 canvas. Keep the stag’s entire head and antlers, ranger’s whole face and leading hand comfortably inside the central band x24..488,y105..407; no antler tip touches the top or side edge. Dynamic horizontal motion, both faces readable. Painterly medieval fantasy collectible-card illustration, believable fur, antlers, linen, leather, grounded anatomy, dappled dawn light and atmospheric depth, Hexmancers reference style. Explicit 1:1 SQUARE editable 512x512 master, also designed for 206:141 wide crop. No frame, text, numbers, UI, watermark, modern items, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-23d1fa2e-13a1-42c9-b858-178db7a664ea.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_boon_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed exact 512-square source, upward-adjusted 206:141 crop (focalPoint y=0.40), and 128px thumbnail. Full stag face and antlers plus ranger face and leading hand remain visible; both motion and grace read at card size."
+  },
+  {
+    "cardId": "verdant_charge_04",
+    "name": "Chestnut Basket",
+    "prompt": "Paint “Chestnut Basket,” a Verdant charge that lobs heavy chestnuts to punch through and shove an enemy back. A small woven woodland basket of glossy brown chestnuts tips forward in a hunter’s hands; three recognizable chestnuts arc forcefully toward a surprised armored raider, one striking his shield with a compact spray of leaves and dust. Keep the entire basket, its distinctive chestnuts, the hunter’s hand, and the raider’s face visible in the central band. The named basket is the clear primary object, with a simple readable action. Painterly medieval fantasy collectible-card art, believable wicker, chestnut husks, linen, leather and armor, grounded anatomy, warm dappled forest light, atmospheric depth, Hexmancers reference style. Explicit 1:1 SQUARE canvas for editable 512x512 master; keep critical subject/action in x24..488,y105..407 for 206:141 horizontal crop. Quiet canopy and earth beyond. No frame, lettering, numbers, UI, watermark, modern items, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-493963a5-cead-4153-afea-5d72309e4203.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_charge_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop, and 128px thumbnail. Entire wicker basket, chestnuts, throwing hands, ranger face, and raider face remain readable; the chestnut volley is clear at card size."
+  },
+  {
+    "cardId": "verdant_utility_03",
+    "name": "Squirrel’s Cache",
+    "prompt": "Paint “Squirrel’s Cache,” a Verdant utility that recalls a hidden woodland supply cache to its owner. In a mossy forest, a small gray squirrel has opened a concealed hollow-tree stash: a compact wooden cache chest slides from a root-hidden niche into the ranger’s reaching hands, filled with acorns, dried berries and a rolled map. A subtle green recall trail links the hollow to the complete cache. Make the cache container and its acorn store the clear named subject; keep squirrel’s face, ranger’s face and receiving hands visible. Painterly medieval fantasy collectible-card illustration, believable wood, bark, fur, leather and nuts, grounded anatomy, dappled forest light and atmospheric depth, Hexmancers reference style. Explicit 1:1 SQUARE canvas for editable 512x512 master, all identity-critical parts inside x24..488,y105..407 for a 206:141 horizontal crop. Quiet canopy and forest floor beyond. No frame, lettering, numbers, UI, watermark, modern items, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2b70cb7d-d2fc-4d19-ac44-e9cbc3e1a9aa.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_utility_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop, and 128px thumbnail. Cache chest, squirrel’s face, ranger’s face and receiving hands remain inside the crop; stored supplies and recall trail are clear."
+  },
+  {
+    "cardId": "verdant_trap_04",
+    "name": "Punji Stakes",
+    "prompt": "Paint “Punji Stakes,” a Verdant trap made of three long sharpened stakes hidden under forest leaves. At ground level in a shadowed woodland path, show exactly three stout sharpened wooden stakes protruding from a shallow leaf-covered pit in a clear row; their complete pointed tips and embedded bases are visible. A boot has just stopped short at the pit’s edge, and a few disturbed leaves reveal the concealed trap, but the stakes remain the obvious named subject. No gore. Painterly medieval fantasy collectible-card art, finely textured carved wood, soil, leaves, boot leather and moss, dramatic dappled light, atmospheric depth, strong readable silhouette at thumbnail scale in the Hexmancers reference style. Explicit 1:1 SQUARE canvas for editable 512x512 master; keep all three full stakes and tips within x24..488,y105..407 for a 206:141 horizontal crop. Quiet forest canopy and ground beyond. No frame, text, numbers, UI, watermark, modern items, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-dcfd8ffd-a5cf-4d4c-b4f3-53cd9860be7d.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_trap_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop, and 128px thumbnail. All three pointed stakes remain complete in the crop, and the concealed row of sharpened stakes reads clearly at thumbnail scale."
   }
 ]

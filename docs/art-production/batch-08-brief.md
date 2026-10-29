@@ -28,3 +28,5 @@ Critical crop review: do not accept a clipped face, spearhead, bottle stopper, t
 Prioritize one strong named subject and one clear action; you do not need to illustrate every numerical mechanic. Crop checks protect the primary face, relevant hand and named portable object. Incidental spell trails, halos, scenery and background figures may naturally extend beyond the frame. Do not add props or require a complete secondary magic ring when that weakens the named subject or causes needless repaints.
 
 If image generation returns a usage limit, stop immediately and report the exact error. Do not retry the quota or switch tools/models. Check that your manifest parses after every atomic append: use a real newline, never a literal backslash-n suffix. Preserve all existing source bytes and records from batches 1–7.
+
+To reduce waiting, an artist may generate up to two different assigned cards concurrently with awaited `Promise.allSettled`. Keep an explicit card-ID-to-result mapping, preserve exact returned paths/fingerprints, and review/save each separately. Never exceed two outstanding generations or guess a shared output path. Stop on a usage-limit error.

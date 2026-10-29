@@ -38,7 +38,7 @@ if(new Set(cards.map(c=>c.master.sha256)).size!==cards.length)throw Error('Two c
 const manifest={format:1,uniqueCards:cards.length,sourceSize:[512,512],masterSize:[512,512],artWindow:report.artWindow,minimumRequested:min,cards};
 fs.writeFileSync(path.join(dest,'card-images.json'),JSON.stringify(manifest,null,2)+'\n');
 fs.copyFileSync(path.join(root,'docs/art-production/README_FOR_CLAUDE.md'),path.join(dest,'README_FOR_CLAUDE.md'));
-const files=['game/cards/art-variants.js','game/cards/illustrations.js','game/art-review.html','docs/named-card-art-mapping.json','docs/named-card-art.md','tools/card-art-build.js','tools/card-art-check.js','tools/card-art-queue.js','tools/card-art-contact-sheet.js','tools/card-art-handoff.js','tools/card-art-locate.py','tools/package-art-test.py','tools/card-art/package.json','tools/card-art/.gitignore'];
+const files=['game/cards/art-variants.js','game/cards/illustrations.js','game/art-review.html','docs/named-card-art-mapping.json','docs/named-card-art.md','tools/card-art-build.js','tools/card-art-source.js','tools/card-art-check.js','tools/card-art-queue.js','tools/card-art-contact-sheet.js','tools/card-art-handoff.js','tools/card-art-locate.py','tools/package-art-test.py','tools/card-art/package.json','tools/card-art/.gitignore'];
 for(const file of files){const target=path.join(dest,'integration',file);fs.mkdirSync(path.dirname(target),{recursive:true});fs.copyFileSync(path.join(root,file),target);}
 fs.cpSync(path.join(root,'docs/art-production'),path.join(dest,'integration/docs/art-production'),{recursive:true});
 console.log(JSON.stringify({directory:dest,uniqueCards:cards.length,images:cards.length*4,zipCreated:false}));

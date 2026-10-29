@@ -14,10 +14,11 @@ async function main(){
  const sheet=createCanvas(1120,Math.ceil(rows.length/4)*272),ctx=sheet.getContext('2d');
  ctx.fillStyle='#10151c';ctx.fillRect(0,0,sheet.width,sheet.height);ctx.font='12px sans-serif';
  for(const [index,a]of rows.entries()){
-  const source=a.generatedPath||a.generatedLocalPath;
+  const canonical=path.join(root,'game/cards/art/masters',a.cardId+'.png');
+  const source=a.editableSourcePath?path.resolve(root,a.editableSourcePath):(fs.existsSync(canonical)?canonical:(a.generatedPath||a.generatedLocalPath));
   const im=await loadImage(source&&fs.existsSync(source)?source:path.join(root,'game/cards/art/masters',a.cardId+'.png'));
-  const master=createCanvas(512,512),m=master.getContext('2d'),side=Math.min(im.width,im.height);
-  m.imageSmoothingQuality='high';m.drawImage(im,(im.width-side)/2,(im.height-side)/2,side,side,0,0,512,512);
+  const master=im.width===512&&im.height===512?im:createCanvas(512,512),side=Math.min(im.width,im.height);
+  if(master!==im){const m=master.getContext('2d');m.imageSmoothingQuality='high';m.drawImage(im,(im.width-side)/2,(im.height-side)/2,side,side,0,0,512,512);}
   const focal=focus[a.cardId]||(Array.isArray(a.focalPoint)?a.focalPoint:[.5,.5]);
   const height=512*h/w,y=Math.max(0,Math.min(512-height,focal[1]*512-height/2));
   const left=index%4*280,top=Math.floor(index/4)*272;

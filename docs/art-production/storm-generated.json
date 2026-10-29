@@ -248,5 +248,77 @@
     "batch": 5,
     "reviewNote": "Repaired and reviewed 1254-square and normalized 206:141 crop: complete terminal-to-base Tesla coil, chained enemies and sprouting sapling remain visible in the central band. First attempt retained at its generated path.",
     "previousGeneratedPath": "/workspace/generated_images/exec-1457066b-34e9-4786-93b0-e067eb7f8163.png"
+  },
+  {
+    "cardId": "storm_strike_01",
+    "name": "Lightning Lash",
+    "prompt": "Paint an original painterly medieval fantasy collectible-card illustration for the exact card ‘Lightning Lash.’ Mechanics: a charged zigzagging storm strike deals 34 damage between the caster's row and the next, after a half-second charge, and stuns for one second. Show a focused robed storm mage at left drawing a narrow blue-white lightning cord back between both hands as it charges, then whipping it in a crisp horizontal zigzag into an armored foe in the adjacent row; the lash visibly bridges the staggered rows and the struck foe recoils, briefly stunned. The full bright bolt path must be clear, thin enough to preserve faces and anatomy; no generic blast replacing the lash. Grounded painterly fantasy brushwork, believable worn cloth, leather, steel and stone, dramatic storm light with warm dusk accents and deep atmospheric distance, consistent with the supplied fantasy card reference set. Explicit 1:1 SQUARE composition for an editable 512x512 master, horizontal staging for a 206:141 crop. Keep the mage's complete face and casting hands, whole lightning lash, and target's face and upper body inside x24..488,y105..407, with quiet cloud and ground margins. Prominent readable action, finished full-square painting. No border, frame, words, letters, numbers, UI, logo or watermark. No anime, Disney-like cartoon, photorealism, pixel art, modern technology.",
+    "generatedPath": "/workspace/generated_images/exec-79e444bd-b117-405c-aad6-ff61477232be.png",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_01.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 6,
+    "reviewNote": "Inspected 512-square source, normalized 206:141 crop and 128px thumbnail: the mage's face and casting hands, complete zigzag lash, and struck foe remain readable in the crop; action is clear at thumbnail size. Faces remain within the safe band."
+  },
+  {
+    "cardId": "storm_lob_02",
+    "name": "Alembic Flask",
+    "prompt": "Create an original painterly medieval fantasy collectible-card illustration for the exact card ‘Alembic Flask.’ Mechanics: a quick-fuse flask is lobbed over blockers to burst on the aimed ground tile after a short delay, dealing storm damage and leaving a storm-charged patch of ground. Make the named artifact unmistakable and dominant: a squat hand-blown blue-green glass alchemist flask with an unmistakable narrow neck, cork and aged brass fittings, tumbling in a clear arc above a row of waist-high stone blockers toward a marked ground tile, where it bursts in a compact blue-white storm splash and leaves a circular crackling storm patch. The whole flask must be clearly separated and visible, not buried by glare or replaced by a generic spell. Painterly medieval fantasy card art, believable glass, brass, stone, cloth and leather, directional stormlight against warm dusk, expressive brushwork and atmospheric depth consistent with supplied fantasy card references. Explicit 1:1 SQUARE composition for an editable 512x512 master, horizontally staged for a 206:141 crop. Keep flask from cork to base, its flight path, blockers and complete ground impact inside x24..488,y105..407. Quiet sky and earth in top and bottom margins. Strong thumbnail readability. No modern laboratory equipment, border, text, labels, numbers, UI, logo or watermark. No anime, Disney-like cartoon, photorealism, pixel art. Image-generation repair moved the complete cork-to-base flask down into the action-safe band while preserving its flight arc, blockers and impact.",
+    "generatedPath": "/workspace/generated_images/exec-9107e7d0-5e30-446c-a1f0-96238d9f232b.png",
+    "editableSourcePath": "game/cards/art/masters/storm_lob_02.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 6,
+    "reviewNote": "Reviewed repaired 512-square source, normalized 206:141 crop and 128px thumbnail: complete cork-to-base flask, arc over blockers, ground burst and storm patch remain visible and identifiable. The initial output clipped the cork in crop and was preserved in scratch before repainting."
+  },
+  {
+    "cardId": "storm_ward_03",
+    "name": "Sandbag Wall",
+    "prompt": "Paint an original painterly medieval fantasy collectible-card illustration for the exact card ‘Sandbag Wall.’ Mechanics: a heavy ward builds a six-part cage of sandbag walls around the aimed enemy; the captive cannot move, enemy shots strike the sandbags, and allied shots can pass through, for several seconds. The named subject must be unmistakable: a broad, chest-high enclosure of rough stitched tan sandbags, clearly forming a cage around a trapped armored raider, with a few blue-white storm sigils binding the bag sections. Show an incoming enemy arrow lodged in the outer sandbag wall, while one allied blue-white arrow passes through a small magical opening toward the captive, demonstrating the ward. Strong readable sandbag texture and wall construction; keep the captive visible over the wall. Grounded painterly medieval fantasy brushwork, weathered burlap, sand, leather, iron, dramatic storm dusk lighting and atmospheric depth consistent with the supplied card-art references. Explicit 1:1 SQUARE composition for an editable 512x512 master, horizontal staging for a 206:141 crop. Keep the entire visible wall enclosure, captive face/upper body, arrows and contact points inside x24..488,y105..407. Quiet sky and earth in margins. No text, labels, numbers, border, frame, UI, logos, or watermark. No modern hardware, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d29d6126-c799-4602-88d2-69c73c3243fc.png",
+    "editableSourcePath": "game/cards/art/masters/storm_ward_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 6,
+    "reviewNote": "Reviewed 512-square source, normalized 206:141 crop and 128px thumbnail: prominent stitched sandbag enclosure cages the raider; head remains visible above the wall; lodged arrow and allied bolt passing through are readable in the wide crop and thumbnail."
+  },
+  {
+    "cardId": "storm_sentry_03",
+    "name": "Sun Obelisk",
+    "prompt": "Paint original painterly medieval fantasy collectible-card art for the exact card ‘Sun Obelisk.’ Mechanics: a sturdy sentry fires quick zigzagging storm shots between adjacent battlefield rows, while its sandstorm aura causes enemies in its row to miss occasional attacks. The named subject is a complete ancient sandstone obelisk sentry: one tall, broad, freestanding carved golden sandstone pillar on a stepped base, with a glowing sun disk near its crown and restrained blue-white storm runes. Keep the entire obelisk from capstone to base prominent and fully visible. Show a clean blue-white zigzag bolt firing sideways from the obelisk across two staggered horizontal ranks of armored enemies; around its row, a localized golden sand gust deflects one enemy's incoming arrow off course, illustrating the sentry's sandstorm trait. The obelisk must remain readable as an ancient solar monument, not a person, tower building or generic lightning bolt. Painterly medieval fantasy materials, expressive brushwork, warm sunlight mixed with storm-blue energy, atmospheric depth and grounded proportions matching supplied card-art references. Explicit 1:1 SQUARE composition for an editable 512x512 master, staged horizontally for a 206:141 card crop. Keep complete obelisk including pointed top and base, bolt path, and nearby enemy faces/hands inside x24..488,y105..407; quiet desert sky and sand margins above and below. Strong central silhouette and thumbnail readability. No text, runic writing, border, frame, numbers, UI, logo or watermark. No modern technology, anime, Disney-like cartoon, photorealism or pixel art. Image-generation repair reduced the pillar and lowered it for crop safety; returned image was 1516x1038 and normalized to a centered 512 square.",
+    "generatedPath": "/workspace/generated_images/exec-3156a7d0-6e9b-4bab-888d-0fda7c5afca5.png",
+    "editableSourcePath": "game/cards/art/masters/storm_sentry_03.png",
+    "sourceNative": [
+      1516,
+      1038
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 6,
+    "reviewNote": "Reviewed normalized 512-square source, 206:141 crop and 128px thumbnail: pointed capstone and stepped base both remain visible; solar disk, zigzag chain shots and sand gust read clearly. First result's tower tip was clipped in the wide crop, so its prior source was saved to scratch before repainting."
   }
 ]

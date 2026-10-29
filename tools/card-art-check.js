@@ -1,6 +1,6 @@
 // Asset integrity and actual card markup checks. No browser layout claims.
 'use strict';
-const fs=require('fs'),path=require('path'),vm=require('vm'),assert=require('assert/strict');
+const fs=require('fs'),path=require('path'),vm=require('vm'),assert=require('assert/strict'),crypto=require('crypto');
 const ROOT=path.resolve(__dirname,'..');
 let canvas;try{canvas=require('./card-art/node_modules/@napi-rs/canvas');}catch{canvas=require('@napi-rs/canvas');}
 const read=f=>fs.readFileSync(path.join(ROOT,'game',f),'utf8');
@@ -18,6 +18,7 @@ async function main(){
  const report=JSON.parse(fs.readFileSync(path.join(ROOT,'docs/art-production/export-report.json')));
  let decoded=0,rendered=0;
  for(const a of report.assets){
+  if(a.sourceSha256)assert.equal(crypto.createHash('sha256').update(fs.readFileSync(path.join(ROOT,'game',a.master))).digest('hex'),a.sourceSha256,'Square source changed; rebuild display crops for '+a.key);
   const master=await canvas.loadImage(path.join(ROOT,'game',a.master));assert.equal(master.width,512);assert.equal(master.height,512);decoded++;
   for(const o of a.outputs){const im=await canvas.loadImage(path.join(ROOT,'game',o.url));assert.equal(im.width,o.width);assert.equal(im.height,o.height);decoded++;}
  }

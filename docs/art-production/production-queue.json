@@ -1,9 +1,9 @@
 {
   "catalogueVersion": 179,
   "total": 1953,
-  "active": 202,
-  "remaining": 1751,
-  "pending": 1751,
+  "active": 234,
+  "remaining": 1719,
+  "pending": 1719,
   "assigned": 0,
   "awaitingReview": 0,
   "countsByColour": {
@@ -49,8 +49,9 @@
       "name": "Gnomish Arc Turret",
       "type": "machine",
       "color": "brown",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 6
     },
     {
       "id": "brown_machine_05",
@@ -453,8 +454,9 @@
       "name": "Panacea",
       "type": "instant",
       "color": "brown",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 6
     },
     {
       "id": "brown_instant_05",
@@ -1192,8 +1194,9 @@
       "name": "Gnomish Gear Armor",
       "type": "equip",
       "color": "brown",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 6
     },
     {
       "id": "brown_equip_13",
@@ -1387,8 +1390,9 @@
       "name": "Tempering Oil",
       "type": "tinker",
       "color": "brown",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 6
     },
     {
       "id": "brown_tinker_05",
@@ -1990,8 +1994,9 @@
       "name": "Musket Shot",
       "type": "strike",
       "color": "fire",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 6
     },
     {
       "id": "fire_strike_02",
@@ -2296,8 +2301,9 @@
       "name": "Grenado",
       "type": "lob",
       "color": "fire",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 6
     },
     {
       "id": "fire_lob_04",
@@ -2473,8 +2479,9 @@
       "name": "Forge-Iron Plate",
       "type": "ward",
       "color": "fire",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 6
     },
     {
       "id": "fire_ward_03",
@@ -2595,8 +2602,9 @@
       "name": "Lava Totem",
       "type": "sentry",
       "color": "fire",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 6
     },
     {
       "id": "fire_sentry_04",
@@ -3968,8 +3976,9 @@
       "name": "Harpoon Throw",
       "type": "strike",
       "color": "frost",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 6
     },
     {
       "id": "frost_strike_02",
@@ -4281,8 +4290,9 @@
       "name": "Chain Shot",
       "type": "lob",
       "color": "frost",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 6
     },
     {
       "id": "frost_lob_03",
@@ -4433,8 +4443,9 @@
       "name": "Sea Wall",
       "type": "ward",
       "color": "frost",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 6
     },
     {
       "id": "frost_ward_02",
@@ -4563,8 +4574,9 @@
       "name": "Ice Spike Totem",
       "type": "sentry",
       "color": "frost",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 6
     },
     {
       "id": "frost_sentry_04",
@@ -5958,8 +5970,9 @@
       "name": "Tin Soldier",
       "type": "summon",
       "color": "gray",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 6
     },
     {
       "id": "gray_summon_08",
@@ -7506,8 +7519,9 @@
       "name": "Hedge of Spears",
       "type": "ward",
       "color": "gray",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 6
     },
     {
       "id": "gray_ward_06",
@@ -7590,8 +7604,9 @@
       "name": "Oath of Brotherhood",
       "type": "boon",
       "color": "gray",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 6
     },
     {
       "id": "gray_boon_06",
@@ -7682,8 +7697,9 @@
       "name": "Caltrop Pouch",
       "type": "charge",
       "color": "gray",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 6
     },
     {
       "id": "gray_charge_07",
@@ -7811,8 +7827,9 @@
       "name": "Pilum Volley",
       "type": "strike",
       "color": "light",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 6
     },
     {
       "id": "light_strike_02",
@@ -8068,8 +8085,9 @@
       "name": "Mortar of Bricks",
       "type": "lob",
       "color": "light",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 6
     },
     {
       "id": "light_lob_03",
@@ -8214,8 +8232,9 @@
       "name": "Marble Wall",
       "type": "ward",
       "color": "light",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 6
     },
     {
       "id": "light_ward_04",
@@ -8351,8 +8370,9 @@
       "name": "Arrow-Slit Tower",
       "type": "sentry",
       "color": "light",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 6
     },
     {
       "id": "light_sentry_03",
@@ -9810,8 +9830,9 @@
       "name": "Eclipse",
       "type": "strike",
       "color": "shadow",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 6
     },
     {
       "id": "shadow_strike_01",
@@ -10108,8 +10129,9 @@
       "name": "Grave Dirt Handful",
       "type": "lob",
       "color": "shadow",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 6
     },
     {
       "id": "shadow_lob_04",
@@ -10237,8 +10259,9 @@
       "name": "Coffin Lid",
       "type": "ward",
       "color": "shadow",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 6
     },
     {
       "id": "shadow_ward_03",
@@ -10351,8 +10374,9 @@
       "name": "Crow Perch",
       "type": "sentry",
       "color": "shadow",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 6
     },
     {
       "id": "shadow_sentry_04",
@@ -11828,8 +11852,9 @@
       "name": "Lightning Lash",
       "type": "strike",
       "color": "storm",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 6
     },
     {
       "id": "storm_strike_02",
@@ -12108,8 +12133,9 @@
       "name": "Alembic Flask",
       "type": "lob",
       "color": "storm",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 6
     },
     {
       "id": "storm_lob_03",
@@ -12246,8 +12272,9 @@
       "name": "Sandbag Wall",
       "type": "ward",
       "color": "storm",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 6
     },
     {
       "id": "storm_ward_04",
@@ -12353,8 +12380,9 @@
       "name": "Sun Obelisk",
       "type": "sentry",
       "color": "storm",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 6
     },
     {
       "id": "storm_sentry_04",
@@ -13813,8 +13841,9 @@
       "name": "World Tree",
       "type": "boon",
       "color": "verdant",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 6
     },
     {
       "id": "verdant_strike_01",
@@ -13830,8 +13859,9 @@
       "name": "Yew Arrow",
       "type": "strike",
       "color": "verdant",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 6
     },
     {
       "id": "verdant_strike_03",
@@ -14144,8 +14174,9 @@
       "name": "Bog Belch",
       "type": "lob",
       "color": "verdant",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 6
     },
     {
       "id": "verdant_strike_39",
@@ -14290,8 +14321,9 @@
       "name": "Holly Thicket",
       "type": "ward",
       "color": "verdant",
-      "status": "pending",
-      "source": null
+      "status": "reviewed-exported",
+      "source": "generated",
+      "batch": 6
     },
     {
       "id": "verdant_ward_03",

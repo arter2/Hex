@@ -183,7 +183,7 @@
   {
     "cardId": "blaze_bolt",
     "name": "Blaze Bolt",
-    "prompt": "Square painterly medieval fantasy card illustration for Blaze Bolt: a focused fire mage releases one extremely bright, narrow straight orange-white line of flame toward the first armored foe in the row. The bolt and impact are the dominant action; a small singed mark on the caster’s sleeve suggests its HP cost. Grounded anatomy and fantasy materials, traditional expressive brushwork, attractive directional light and smoky depth. Explicit 1:1 square 512 master; keep casting hand, full bolt and first foe within x24..488,y105..407 for centered 206:141 crop. No frame, text, symbols or UI; no anime, Disney cartoon, photorealism, pixel art, guns or modern gear.",
+    "prompt": "Square painterly medieval fantasy card illustration for Blaze Bolt: a focused fire mage releases one extremely bright, narrow straight orange-white line of flame toward the first armored foe in the row. The bolt and impact are the dominant action; a small singed mark on the caster\u2019s sleeve suggests its HP cost. Grounded anatomy and fantasy materials, traditional expressive brushwork, attractive directional light and smoky depth. Explicit 1:1 square 512 master; keep casting hand, full bolt and first foe within x24..488,y105..407 for centered 206:141 crop. No frame, text, symbols or UI; no anime, Disney cartoon, photorealism, pixel art, guns or modern gear.",
     "generatedPath": "/workspace/generated_images/exec-551c5646-9ea9-4351-9345-3d0977acb2d3.png",
     "focalPoint": [
       0.5,
@@ -235,7 +235,7 @@
   {
     "cardId": "fire_boon_01",
     "name": "Battle Fury",
-    "prompt": "Square painterly medieval fantasy card illustration for Battle Fury: a battle mage grips a carved wand and surges forward, wrapped in a controlled crimson-orange pact aura that empowers the wand and nearby blank spell scrolls. A small singed patch on the sleeve suggests the pact’s HP cost; the energized wand and fierce focused expression dominate. Grounded anatomy and fantasy materials, expressive brushwork, rich cloth and wood, dramatic firelight and battlefield depth. Explicit 1:1 square 512 master; keep face, casting hand, complete wand and aura within x24..488,y105..407 for centered 206:141 crop. No readable text, frame, numbers or UI. No anime, Disney, photorealism, pixel art or modern objects.",
+    "prompt": "Square painterly medieval fantasy card illustration for Battle Fury: a battle mage grips a carved wand and surges forward, wrapped in a controlled crimson-orange pact aura that empowers the wand and nearby blank spell scrolls. A small singed patch on the sleeve suggests the pact\u2019s HP cost; the energized wand and fierce focused expression dominate. Grounded anatomy and fantasy materials, expressive brushwork, rich cloth and wood, dramatic firelight and battlefield depth. Explicit 1:1 square 512 master; keep face, casting hand, complete wand and aura within x24..488,y105..407 for centered 206:141 crop. No readable text, frame, numbers or UI. No anime, Disney, photorealism, pixel art or modern objects.",
     "generatedPath": "/workspace/generated_images/exec-5221df28-6901-4d2b-9ee3-c4ad0a2dd5ce.png",
     "focalPoint": [
       0.5,
@@ -244,5 +244,77 @@
     "status": "generated",
     "batch": 5,
     "reviewNote": "Inspected native 1254-square output and centered wide crop; mage face, wand hand, complete fiery wand and empowering aura remain clear. Blank scroll motifs are secondary and partly cropped."
+  },
+  {
+    "cardId": "fire_strike_01",
+    "name": "Musket Shot",
+    "prompt": "Square painterly medieval fantasy card illustration for Musket Shot: a rugged human musketeer braces an ornate early fantasy flintlock and fires one precise straight shot across a volcanic battlefield at a distant weakened enemy. Keep complete face, both hands, weapon, tracer and target within x24..488,y105..407 for the centered 206:141 crop. Rich believable steel, wood, leather, dramatic muzzle flash against cool ash-blue distance. No modern firearms, text, frame, UI, anime, photorealism or pixel art. Repainted to move the full shooter inward after initial wide-crop review.",
+    "generatedPath": "/workspace/generated_images/exec-b14a67b8-9a60-4243-8ed9-081e7ee0c876.png",
+    "editableSourcePath": "game/cards/art/masters/fire_strike_01.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 6,
+    "reviewNote": "Initial crop clipped the shooter at left; repainted and inspected the 512-square source plus 206:141 crop and thumbnail. Shooter face, both hands, musket, straight shot and distant target remain identifiable; part of cloak/body is cropped."
+  },
+  {
+    "cardId": "fire_lob_03",
+    "name": "Grenado",
+    "prompt": "Square painterly medieval fantasy card illustration for Grenado: an intact heavy round iron-cased bomb with visible seams and short burning fuse arcs over a stone battlefield toward an aimed tile; its delayed blast throws armored foes backward over a low wall. The bomb is large and unmistakable, with readable weighty metal and sparks. Dramatic amber explosion against cool dusk, expressive fantasy brushwork and atmospheric depth. Keep whole bomb, fuse and knockback action within x24..488,y105..407 for the 206:141 crop. No modern grenade, guns, lettering, frame or UI.",
+    "generatedPath": "/workspace/generated_images/exec-361ca2b1-115e-42cf-9e10-51401162ab23.png",
+    "editableSourcePath": "game/cards/art/masters/fire_lob_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 6,
+    "reviewNote": "Inspected 512-square source and centered wide crop/thumbnail. Complete iron bomb and lit fuse are clear and inside the safe area; explosion and two airborne armored foes communicate delayed heavy impact and knockback."
+  },
+  {
+    "cardId": "fire_ward_02",
+    "name": "Forge-Iron Plate",
+    "prompt": "Square painterly medieval fantasy card illustration for Forge-Iron Plate: a battle dwarf blacksmith braces a broad rectangular heavy forged iron shield plate, with reinforced riveted edges and leather forearm straps, held toward an incoming sword. The lasting barrier is a translucent amber sheen hugging the iron; sword impact flashes with a stunning shock spark that rebounds at the attacker. Make the plate a dominant, distinct shield artifact, not torso armor. Rich hammered steel, leather and sparks; warm forge glow, cool battlefield background. Keep dwarf face, full plate, straps and impact safely within x24..488,y105..407 for a centered 206:141 crop. No text, frame or UI.",
+    "generatedPath": "/workspace/generated_images/exec-86c997fc-4fbf-4e6f-82fe-c5ec3fb87f52.png",
+    "editableSourcePath": "game/cards/art/masters/fire_ward_02.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 6,
+    "reviewNote": "Inspected square source, wide crop and thumbnail. Complete riveted iron shield plate and amber barrier dominate; dwarf face and attacking sword impact remain legible in crop. Attacker is partly cropped at right edge."
+  },
+  {
+    "cardId": "fire_sentry_03",
+    "name": "Lava Totem",
+    "prompt": "Square painterly medieval fantasy card illustration for Lava Totem: a sturdy waist-high carved basalt totem planted on volcanic stone, broad stable base, upright flame-carved pillar with glowing lava seams and contained fire crown. It empowers a nearby mage\u2019s next spell rather than attacking: the mage draws fire power into a bright spell in hand. A distant armored enemy staggers in the totem\u2019s subtle dread aura. Keep complete totem, mage face/hands/spell and enemy within x24..488,y105..407 for a 206:141 crop. Rich basalt, warm lava light, cool ash-blue dusk, clear brushwork.",
+    "generatedPath": "/workspace/generated_images/exec-71cb8413-844a-4c4c-b440-76a9d74ffad7.png",
+    "editableSourcePath": "game/cards/art/masters/fire_sentry_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 6,
+    "reviewNote": "First render normalized from landscape and cropped side figures; repainted and inspected the 512-square master, 206:141 crop and thumbnail. Complete basalt totem dominates; mage and dazed foe are fully inside the wide crop, though smaller at thumbnail."
   }
 ]

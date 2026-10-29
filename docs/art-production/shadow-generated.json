@@ -84,7 +84,7 @@
     ],
     "status": "generated",
     "batch": 3,
-    "reviewNote": "Revised square places the complete wraith face at approx y207\u2013282 and core at y300\u2013355 (512 coordinates), with caster hand in-band. Empowering rays pass through stone and shield; drain stream remains visible. Critical subjects survive the wide crop."
+    "reviewNote": "Revised square places the complete wraith face at approx y207–282 and core at y300–355 (512 coordinates), with caster hand in-band. Empowering rays pass through stone and shield; drain stream remains visible. Critical subjects survive the wide crop."
   },
   {
     "cardId": "dark_pact",
@@ -110,7 +110,7 @@
     ],
     "status": "generated",
     "batch": 3,
-    "reviewNote": "Complete tooth pouch with mouth, tie and dangling teeth sits around y155\u2013315 (512 coordinates); hand and mage face are safe. Two parallel rows show violet bolts, splash impacts and frozen enemies clearly."
+    "reviewNote": "Complete tooth pouch with mouth, tie and dangling teeth sits around y155–315 (512 coordinates); hand and mage face are safe. Two parallel rows show violet bolts, splash impacts and frozen enemies clearly."
   },
   {
     "cardId": "shadow_environment_01",
@@ -241,5 +241,77 @@
     "status": "generated",
     "batch": 5,
     "reviewNote": "Landscape source; the mage's dodge, face, hand, passing arrow and afterimage remain within the normalized center crop. Outer foes are near the edges, but frost chill reads through ground mist and silhouette."
+  },
+  {
+    "cardId": "eclipse",
+    "name": "Eclipse",
+    "prompt": "Paint an illustration for the exact Shadow legendary strike card Eclipse. Actual mechanics: this curse spell lays a magical mine on the enemy side at the aimed place; the mine waits for an enemy to step on it or be shot, then erupts in a wide damaging burst and curses victims for 6.3 seconds; one hit in four can critically flare. Show an unmistakable compact occult mine embedded in a cracked battlefield tile at center foreground, just triggered by an approaching armored wraith's boot; a ring of dark violet-black blast light expands outward, catching two nearby foes, with restrained arcane curse wisps and a few sharp bright critical sparks. The mine itself and cause-and-effect must remain visible, not just a generic explosion. Painterly medieval fantasy collectible-card illustration, textured soil, worn armor and smoke, dramatic moonlight with magenta-violet highlights, strong legible focal point and atmospheric depth, consistent with supplied Hexmancers references. Explicit 1:1 SQUARE canvas for an editable 512x512 master; compose horizontally for a 206:141 crop. Keep the complete mine, enemy boot, blast ring and key action inside x24..488,y105..407 on the normalized square; top and bottom are only expendable mist and ground. Subject fills about 70% of wide crop. No border, text, lettering, numbers, UI, anime, Disney-like proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ac070e3d-8cc4-404e-acf7-fb33d40b66e7.png",
+    "editableSourcePath": "game/cards/art/masters/eclipse.png",
+    "sourceNative": [
+      1507,
+      1044
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 6,
+    "reviewNote": "Square source and 206:141 crop inspected. The central occult mine, stomping armored foot, expanding violet blast, and surrounding cursed foes remain legible in the crop and thumbnail; the source's uppermost wraith is expendable scenery."
+  },
+  {
+    "cardId": "shadow_lob_03",
+    "name": "Grave Dirt Handful",
+    "prompt": "Paint an illustration for the exact Shadow card Grave Dirt Handful. Actual mechanics: a quick-fuse handful is lobbed over blockers and bursts on the aimed tile and surrounding tiles after 0.35 seconds, leaving shadow ground for four seconds and cursing enemies for 3.3 seconds. Show a hooded spellcaster's gloved hand in a clear throwing pose releasing a compact handful of black grave soil; the clods arc over a low broken-stone blocker toward a distinct target tile, where a small radial burst of soil and violet curse wisps blooms around an enemy's boots, staining the ground dark. The handful, flight arc, target and burst must be easy to read, the soil remains the named subject rather than becoming generic purple magic. Painterly medieval fantasy collectible-card art, tactile dirt, glove, stone and worn armor, moonlit crypt battlefield with attractive directional light, atmospheric depth, serious grounded style consistent with Hexmancers references. Explicit 1:1 SQUARE canvas intended for editable 512x512 master, horizontal staging for 206:141 crop. Keep the hand, flying grave dirt, blocker, target tile and enemy feet within x24..488,y105..407; top and bottom only expendable atmosphere/ground. Strong simple silhouette readable at thumbnail. No border, lettering, text, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c6f4f0f6-2fa1-4852-9457-7abe6fa5d556.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_lob_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 6,
+    "reviewNote": "Square source, wide crop and thumbnail inspected. The caster's throwing hand, arcing grave soil over the visible stone blocker, and purple burst at the armored foe's feet remain identifiable in the crop; the distant moon and ruins are expendable."
+  },
+  {
+    "cardId": "shadow_ward_02",
+    "name": "Coffin Lid",
+    "prompt": "Paint an illustration for the exact Shadow ward card Coffin Lid. Actual mechanics: a brief ward cages the aimed enemy in six walls of 32 HP for two seconds; the enemy cannot move and its shots strike the bars while friendly shots pass through; each hit on the bars drains vitality and heals the caster. Make the named object unmistakable: six massive weathered coffin lids have risen upright from the ground and locked together as a short-lived hexagonal cage around a trapped armored foe. The foe presses its weapon against one lid-bar seam; one pale allied bolt passes through a narrow spectral gap, while a dark red-violet stream of stolen vitality flows from a struck coffin panel toward a small caster hand outside the cage. Show the enclosure clearly as a cage, with multiple coffin-lid faces and iron handles, not one flat wall or a closed coffin. Painterly medieval fantasy collectible-card art, tactile aged wood, iron fittings, stone crypt floor, directional moonlit light and restrained blood-violet magic, serious grounded proportions, atmospheric depth matching supplied Hexmancers references. Explicit 1:1 SQUARE canvas for editable 512x512 master; horizontal staging for 206:141 crop. Keep full cage silhouette, trapped enemy face, impact and draining stream within x24..488,y105..407 after normalization; expendable crypt haze above and ground below. Prominent readable subject filling about 70% of wide crop. No text, symbols, numbers, frame, UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-aa2e8c7a-124a-434f-9939-a371790ba485.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_ward_02.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 6,
+    "reviewNote": "Square source, wide crop and thumbnail inspected. Six coffin-panel walls read as a cage around the trapped armored foe; the struck panel, caster's vitality stream and bolt passing through the barrier remain visible in the crop. Outer crypt architecture is expendable."
+  },
+  {
+    "cardId": "shadow_sentry_03",
+    "name": "Crow Perch",
+    "prompt": "Paint an illustration for the exact Shadow sentry card Crow Perch. Actual mechanics: a sturdy stationary crow sentry fires a piercing hit down its entire row every 1.2 seconds; its hits confuse enemies for ten seconds. Show a large intelligent black crow perched on a rough, waist-high carved graveyard perch of dark wood and bone, the bird as the unmistakable main subject. It releases one narrow pale-violet shriek-lance down a straight battlefield lane, visibly passing through two armored enemies in line; both foes reel in distinct confused poses with restrained spiraling violet glints around their helmets. Make the perch substantial and readable, the piercing line clear, and the crow natural and serious, not a cute cartoon. Painterly medieval fantasy collectible-card illustration, detailed black feathers, worn timber, bone ties and dark steel, moonlit cemetery with attractive rim light, atmospheric depth, grounded proportions consistent with supplied Hexmancers references. Explicit 1:1 SQUARE image intended for editable 512x512 master, horizontal staging for 206:141 crop. Keep entire crow, perch, beam and both target faces inside x24..488,y105..407 after normalization; top and bottom hold expendable mist/ground. Strong simple silhouette readable at thumbnail. No text, letters, numbers, border, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-75a42b9c-f137-4f86-aef5-075d8420c6ff.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_sentry_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 6,
+    "reviewNote": "Square source, 206:141 crop and thumbnail inspected. Crow, complete perch silhouette, straight piercing shriek-lance and both confused armored targets remain identifiable in the crop; moon and distant cemetery are expendable."
   }
 ]

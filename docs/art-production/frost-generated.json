@@ -242,5 +242,77 @@
     "status": "generated",
     "batch": 5,
     "reviewNote": "Native 1254 square and 206:141 crop inspected. Face, both hands/fingertips, full wind action and dynamic running pose remain inside the safe crop."
+  },
+  {
+    "cardId": "frost_strike_01",
+    "name": "Harpoon Throw",
+    "prompt": "Original 1:1 square painterly fantasy card illustration, exact subject Harpoon Throw: a frost hunter throws a long barbed harpoon across a frozen sea lane, piercing two aligned armored raiders and a translucent shield, pulling the first target backward on a taut spectral frost tether. Mechanics visual: quick projectile, 37 damage, pierces enemy and obstacles, pull. Keep complete harpoon, hunter face/throwing hand, targets and action inside x24..488 y105..407, with quiet sky and snow beyond; readable in 206:141 horizontal crop. Grounded medieval materials, atmospheric cold directional light, detailed painterly collectible-card art, supplied Hexmancers reference quality. Square 512 master composition. No frame, lettering, numbers, UI, anime, Disney, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-90186a76-9d5b-4678-8388-c72045f5150c.png",
+    "editableSourcePath": "game/cards/art/masters/frost_strike_01.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 6,
+    "reviewNote": "Reviewed raw 1254 square and normalized 512 source plus 206:141 crop and thumbnail. Harpoon, thrower, pierced armored targets, tether and impact remain visible in crop; named action reads clearly."
+  },
+  {
+    "cardId": "frost_lob_02",
+    "name": "Chain Shot",
+    "prompt": "Original square painterly medieval fantasy card illustration for Chain Shot. Mechanics: a quick-fuse lobbed projectile travels over blockers to a single aimed tile, bursts 0.35 seconds after cast for 25 damage, slowing its target for 2.6 seconds. Depict an ice mage throwing a compact heavy chain-linked frost charge in a high arc over a broken stone barricade toward a single armored raider; show the spiked icy weight striking the far tile in a bright compact burst, spectral chain and frost visibly dragging/slowing the enemy. Keep caster face, throwing arm, full projectile arc, impact and target within x24..488 y105..407; readable in 206:141 horizontal crop. Quiet snowy sky and snow beyond. Grounded materials, atmospheric cold light, detailed brushwork, Hexmancers reference quality. True square 512 master, no frame, text, UI, anime, cartoon, photorealism, pixel art. Repaired via image generation to move caster fully into the central crop-safe band.",
+    "generatedPath": "/workspace/generated_images/exec-273b9fbe-2b1f-4557-aa56-887838dcaa42.png",
+    "editableSourcePath": "game/cards/art/masters/frost_lob_02.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 6,
+    "reviewNote": "Reviewed repaired 1254 square, normalized 512 source, 206:141 crop and thumbnail. Caster face/hand, complete chain arc, icy weight, single struck target and frost impact remain visible; face is no longer clipped."
+  },
+  {
+    "cardId": "frost_ward_01",
+    "name": "Sea Wall",
+    "prompt": "Original 1:1 square painterly medieval fantasy card illustration for Sea Wall. Mechanics: a light cage of six walls traps an aimed enemy for four seconds; enemy cannot move and shots strike bars while the caster’s shots pass through; barriers gently heal the caster. Show a frost mage outside a luminous pale blue curved cage of six slender sea-ice walls enclosing one armored raider on a snowy coastal battlefield. Trapped raider braces against icy bars as a hostile bolt shatters harmlessly against them, while a healing glow travels from the wall to the mage. Distinct readable cage geometry, not a solid wall. Keep mage face/hands, complete cage, enemy and impact inside x24..488 y105..407, horizontal 206:141 crop safe. Quiet sea mist beyond. Tactile materials, grounded anatomy, cold directional light, textured brushwork, matching supplied Hexmancers references. Square 512 master, no border, text, numbers, UI, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-80fa47ab-332c-45c9-a4e4-fa058d863ef6.png",
+    "editableSourcePath": "game/cards/art/masters/frost_ward_01.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 6,
+    "reviewNote": "Reviewed 1254 square, normalized 512 source, 206:141 crop and 128:88 thumbnail. Full six-ice-wall cage, trapped raider, bolt striking bars, mage and healing link all remain legible in crop."
+  },
+  {
+    "cardId": "frost_sentry_03",
+    "name": "Ice Spike Totem",
+    "prompt": "Original 1:1 square painterly medieval fantasy card art for Ice Spike Totem. Mechanics: sturdy 62-HP ice sentry shields its hero for 19, fires a slow precise bolt every two seconds that freezes for 2.5 seconds, and rallies allied creatures to fight 20% harder while it stands. Depict a carved blue-white ice spike totem, tall faceted standing monolith with distinct guardian face and rune core, planted between frost mage and advancing armored foe. Totem projects a curved shield around mage and launches a sharp frost lance that freezes foe mid-step. Two small allied creatures rally behind mage in its aura. Totem dominant, unmistakably stationary. Keep complete totem, mage face/shield, lance and target within x24..488 y105..407 for 206:141 crop. Quiet snowy pass beyond. Believable ice, steel and wool, cold directional light, textured painterly fantasy art matching Hexmancers references. Square 512 master; no border, text, numbers, UI, anime, Disney, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2dbcfe3a-54c6-4464-bc5c-9d2d73d256e7.png",
+    "editableSourcePath": "game/cards/art/masters/frost_sentry_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.39
+    ],
+    "status": "generated",
+    "batch": 6,
+    "reviewNote": "Reviewed the focalPoint [0.5,0.39] crop at 512, 206:141 and 128:88. The totem tip remains visible with slight clearance from the top; its carved face, rune core and snow-covered base read as one planted monolith. Mage face and casting hand, shield, rallied allies, lance and frozen foe remain visible. Crop intentionally shifts upward to preserve the full totem."
   }
 ]

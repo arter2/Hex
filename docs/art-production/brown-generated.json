@@ -241,5 +241,77 @@
     "status": "generated",
     "batch": 5,
     "reviewNote": "Inspected native 1254-square output and centered wide crop. All three full pivot gears, rods, swinging blades and the complete floor pressure tile fit inside the crop; motion arcs and corridor are readable."
+  },
+  {
+    "cardId": "brown_machine_04",
+    "name": "Gnomish Arc Turret",
+    "prompt": "Paint an illustration for the exact Brown machine card Gnomish Arc Turret. Actual mechanics: a sturdy gnomish tower turret with steady fire every 1.2 seconds shoots a piercing bolt through every enemy in its row for 10 damage; hits knock targets back, and the turret's chilling aura slows whatever strikes it. Show a compact but substantial brass-and-iron arc turret mounted on a squat stone-and-oak gnomish tower, with visible geared swivel, rivets and a glowing arc-coil. It fires a straight bright blue-white bolt down a horizontal lane through two armored foes, visibly continuing beyond the first; both targets stagger backward, while one incoming arrow freezes against a thin icy field around the turret, showing its chilling defense. Keep the full tower top and base, turret, lane bolt and targets in frame. Painterly medieval fantasy collectible-card art, refined believable clockwork craftsmanship, steel, brass and stone, dramatic forge-cool lighting and atmospheric depth, serious grounded proportions consistent with supplied Hexmancers reference artwork. Explicit 1:1 SQUARE composition for editable 512x512 master, staged horizontally for 206:141 card crop. Keep turret, full tower silhouette, bolt, target faces and impact inside x24..488,y105..407 after normalization; top and bottom only quiet workshop/courtyard atmosphere. Strong readable primary subject at thumbnail. No text, border, numbers, UI, modern industrial machinery, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2b5b4551-f5f2-4518-84f2-24c51c8f571a.png",
+    "editableSourcePath": "game/cards/art/masters/brown_machine_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 6,
+    "reviewNote": "Square source, wide crop and thumbnail inspected. The complete turret and tower, straight piercing blue bolt, and both staggered armored targets remain readable in the crop; the bolt reaches the right crop edge to convey penetration, while distant castle and mountains are expendable."
+  },
+  {
+    "cardId": "brown_instant_04",
+    "name": "Panacea",
+    "prompt": "Paint an illustration for the exact Brown instant card Panacea. Actual mechanics: instantly heals the caster for 42, then sprouts healing of 1 vitality each second for six seconds; it is a desert-alchemy potion strengthened by other alchemy cards. Show a desert alchemist in practical medieval robes offering a single elegant glass phial of luminous golden-green panacea to a wounded adventurer; a warm pulse of light spreads through the adventurer's chest and small fresh green shoots unfurl along a nearby cracked stone, clearly suggesting immediate healing followed by a gentle continuing sprout of life. Keep the vial, stopper, alchemist's hand and recipient's face visible; the potion is the central named subject, not a generic healing spell. Add subtle desert alchemy details such as sun-baked sandstone, brass instruments and dried herbs. Painterly medieval fantasy collectible-card art, rich glass and liquid, tactile cloth and brass, attractive directional desert light and atmospheric depth, grounded serious proportions consistent with supplied Hexmancers references. Explicit 1:1 SQUARE composition for editable 512x512 master, horizontal staging for 206:141 crop. Keep phial, hand, both complete faces and healing glow inside x24..488,y105..407 after normalization; figures scaled slightly smaller and placed lower, top tent canopy and sky remain expendable. Strong central silhouette readable at thumbnail. No text, runes, labels, border, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art. Recomposition: preserve the alchemist, wounded adventurer, phial and desert setting while shifting the action down to ensure the alchemist's forehead clears the crop top.",
+    "generatedPath": "/workspace/generated_images/exec-d5183265-229b-433e-962a-ddd1050dfe5a.png",
+    "editableSourcePath": "game/cards/art/masters/brown_instant_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 6,
+    "reviewNote": "Repainted after the first crop clipped the alchemist's forehead; preserved the earlier source in /tmp. Inspected final square, 206:141 crop and thumbnail. Both faces, offering hand, full phial and healing glow fit safely inside the crop, with sprouting greenery at lower right."
+  },
+  {
+    "cardId": "brown_equip_12",
+    "name": "Gnomish Gear Armor",
+    "prompt": "Paint an illustration for the exact Brown equipment card Gnomish Gear Armor. Actual mechanics: it equips the player's strongest creature with plate armor, granting 42 additional health; gnomish technology improves it alongside other gnomish cards. Show a complete suit of compact, practical gnomish plate armor with exposed brass clockwork gears and articulated steel plates being fitted onto a powerful broad-shouldered stone golem creature by a small gnome armorer. The armor itself must dominate: visible breastplate, shoulders, arm plates and greaves with rivets and mechanical joints; the golem's face and the gnome's hands remain clear. A soft amber protective glow around the creature suggests the added durability. Painterly medieval fantasy collectible-card art, tactile steel, brass, leather and stone, believable wearable construction, warm forge light and atmospheric depth, serious grounded proportions consistent with supplied Hexmancers references. Explicit 1:1 SQUARE composition for editable 512x512 master, arranged horizontally for 206:141 crop. Keep full armor silhouette, creature face, armorer face/hands and essential gear details inside x24..488,y105..407 after normalization; upper and lower margins only quiet forge atmosphere and floor. Strong readable subject at thumbnail. No text, letters, numbers, border, UI, modern machinery, anime, Disney-like cartoon, photorealism or pixel art. Recomposition: preserved the same subjects and forge, scaled the golem/armorer scene smaller and placed it lower so the full head and feet clear the crop band.",
+    "generatedPath": "/workspace/generated_images/exec-3601139b-24df-43cc-ae97-ab9f8aff340c.png",
+    "editableSourcePath": "game/cards/art/masters/brown_equip_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 6,
+    "reviewNote": "Repainted after the first crop cut the golem's face and feet; preserved the earlier source in /tmp. Inspected the final source square, wide crop and thumbnail. Complete armored figure and stone face, prominent breastplate/gears, plus armorer face and fitting hands are inside the crop."
+  },
+  {
+    "cardId": "brown_tinker_04",
+    "name": "Tempering Oil",
+    "prompt": "Paint an illustration for the exact Brown tinker card Tempering Oil. Actual mechanics: a dwarf taps the vial, then chooses a card in hand or queue; that card gains 30 percent power for the rest of the battle. Dwarven technology improves the oil beside other dwarf cards. Show a thick glass flask of golden tempering oil as the prominent named object, held by a dwarf smith who carefully pours a bright amber bead across a heated steel sword or weapon laid on an anvil. The oil forms a luminous protective sheen along the blade, making it glow with lasting strength; a second small card-like rune token or etched metal plate beside it subtly suggests the permanent battle-long enhancement, with no readable writing or symbols. Keep flask, pour, blade and smith's face/hand visible. Painterly medieval fantasy collectible-card illustration, tactile glass, viscous oil, hot steel, iron and oak, warm forge light with clear contrast, atmospheric depth and grounded proportions consistent with supplied Hexmancers references. Explicit 1:1 SQUARE composition for editable 512x512 master, horizontal staging for 206:141 card crop. Keep full flask, smith face and hand, blade and oil application within x24..488,y105..407 after normalization; quiet rafters above and floor below. Strong simple subject silhouette readable at thumbnail. No text, labels, letters, numbers, border, UI, modern industrial tools, anime, Disney-like cartoon, photorealism or pixel art. Recomposition: preserved the same dwarf and forge, scaled the scene smaller and centered it lower so the full face, flask, oil stream and sword fit the crop.",
+    "generatedPath": "/workspace/generated_images/exec-ae3d56b9-66de-4403-a4ce-38f848ff18a7.png",
+    "editableSourcePath": "game/cards/art/masters/brown_tinker_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 6,
+    "reviewNote": "Repainted after the first crop clipped the smith's hairline and ran the sword off the left edge; preserved the earlier source in /tmp. Inspected final square, 206:141 crop and thumbnail. The full face, pouring hand and flask, oil stream, and complete treated sword remain visible."
   }
 ]

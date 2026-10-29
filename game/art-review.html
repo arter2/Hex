@@ -1,4 +1,13 @@
-<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Hexmancers artwork review</title><link rel="stylesheet" href="card.css"><link rel="stylesheet" href="cards/card-geo.css"><style>body{margin:24px;background:#10151c;color:#eee;font:16px system-ui}h1{font-size:24px}h2{font-size:18px}.row{display:flex;gap:22px;align-items:start;overflow:auto;padding:12px 0}section{border-bottom:1px solid #36404b;padding:12px 0}.specimen{flex-shrink:0}p{margin:8px 0}</style><h1>Artwork review</h1><p>66 cards at 96, 120, 240 and 396 pixels. Scroll each row to compare sizes.</p><main id="review"></main><script src="cardsets.js"></script><script src="creatures.js"></script><script src="strikes.js"></script><script src="kinds.js"></script><script src="cards.js"></script><script src="cards/card-geo.js"></script><script src="cards/icons.js"></script><script src="cards/illustrations.js"></script><script src="cards/art-variants.js"></script><script src="art.js"></script><script>const save={seen:{},owned:{}};const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));const CARD_PAL={
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Hexmancers artwork review</title>
+<link rel="stylesheet" href="card.css"><link rel="stylesheet" href="cards/card-geo.css">
+<style>body{margin:24px;background:#10151c;color:#eee;font:16px system-ui}h1{font-size:24px}h2{font-size:18px}.row{display:flex;gap:22px;align-items:start;overflow:auto;padding:12px 0}section{border-bottom:1px solid #36404b;padding:12px 0}.specimen{flex-shrink:0}p{margin:8px 0}nav{display:flex;gap:12px;align-items:center;flex-wrap:wrap}nav button,select{font:inherit;padding:8px}</style>
+<h1>Artwork review</h1><p>234 cards at 96, 120, 240 and 396 pixels. Choose a colour; scroll each row to compare sizes.</p>
+<nav><label>Colour <select id="review-colour"></select></label><button id="review-prev">Previous</button><button id="review-next">Next</button><span id="review-count"></span></nav><main id="review"></main>
+<script src="cardsets.js"></script><script src="creatures.js"></script><script src="strikes.js"></script><script src="kinds.js"></script><script src="cards.js"></script><script src="cards/card-geo.js"></script><script src="cards/icons.js"></script><script src="cards/illustrations.js"></script><script src="cards/art-variants.js"></script><script src="art.js"></script>
+<script>
+const save={seen:{},owned:{}};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>c==='&'?'&amp;':c==='<'?'&lt;':c==='>'?'&gt;':'&quot;');
+const CARD_PAL={
   fire:   {face:'#4a1f16', ink:'#fff4ec', acc:'#ffb08a', bd:'#b5452e', tb:'rgba(0,0,0,.34)'},
   frost:  {face:'#173452', ink:'#f0f7ff', acc:'#9fd0ff', bd:'#2f6ea6', tb:'rgba(0,0,0,.32)'},
   storm:  {face:'#4a3c12', ink:'#fff8e2', acc:'#ffd866', bd:'#b48a2a', tb:'rgba(0,0,0,.48)'},
@@ -144,4 +153,28 @@ function kitInkOf(text){ const x=(KIT_FIT.canvas||(KIT_FIT.canvas=document.creat
 if(document.fonts) document.fonts.load('12px "Hex Card"').then(()=>document.fonts.load('12px "Hex Card Caps"')).then(()=>kitFit(document)).catch(()=>{});
 
 
-for(const id of Object.keys(HEX_CARD_ART_VARIANTS)){const s=document.createElement("section"),h=document.createElement("h2"),r=document.createElement("div");h.textContent=CARDS[id].name;r.className="row";s.append(h,r);for(const w of [96,120,240,396]){const wrap=document.createElement("div");wrap.className="specimen";wrap.style.width=w+"px";const c=cardEl(CARDS[id],"<span class=badge>3/3</span>",false,w<=120?"compact":"expanded");c.style.width=w+"px";wrap.append(c);r.append(wrap);}document.querySelector("#review").append(s);}</script>
+let reviewPage=0;
+const reviewSelect=document.querySelector('#review-colour');
+for(const colour of Object.keys(COLORS)){const option=document.createElement('option');option.value=colour;option.textContent=COLORS[colour].name;reviewSelect.append(option);}
+reviewSelect.value='fire';
+function renderReview(){
+ const host=document.querySelector('#review');host.replaceChildren();
+ const ids=Object.keys(HEX_CARD_ART_VARIANTS).filter(id=>CARDS[id].color===reviewSelect.value);
+ const begin=reviewPage*20;
+ for(const id of ids.slice(begin,begin+20)){
+  const section=document.createElement('section'),heading=document.createElement('h2'),row=document.createElement('div');heading.textContent=CARDS[id].name;row.className='row';section.append(heading,row);
+  for(const width of [96,120,240,396]){
+   const wrap=document.createElement('div');wrap.className='specimen';wrap.style.width=width+'px';
+   const card=cardEl(CARDS[id],'<span class="badge">3/3</span>',false,width<=120?'compact':'expanded');card.style.width=width+'px';card.querySelectorAll('img').forEach(image=>image.loading='lazy');wrap.append(card);row.append(wrap);
+  }
+  host.append(section);
+ }
+ document.querySelector('#review-prev').disabled=reviewPage===0;
+ document.querySelector('#review-next').disabled=begin+20>=ids.length;
+ document.querySelector('#review-count').textContent=ids.length?(begin+1)+'–'+Math.min(begin+20,ids.length)+' of '+ids.length:'No artwork in this colour';
+}
+reviewSelect.onchange=()=>{reviewPage=0;renderReview();};
+document.querySelector('#review-prev').onclick=()=>{if(reviewPage>0){reviewPage--;renderReview();}};
+document.querySelector('#review-next').onclick=()=>{reviewPage++;renderReview();};
+renderReview();
+</script>

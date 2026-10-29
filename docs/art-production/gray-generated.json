@@ -4,7 +4,10 @@
     "name": "Living Armor",
     "prompt": "Create a square 512x512 master illustration for a medieval fantasy collectible card, illustration only: no frame, border, lettering, symbols, or UI. Depict Living Armor: a complete suit of heavy, weathered steel plate has awakened and stands between a vulnerable traveler and unseen danger in a ruined fortress corridor. The empty helmet glows faintly within, one gauntleted arm raised to guard while the other reaches forward as if drawing a foe toward it with an unseen force. The armor is sturdy and imposing, with believable dented steel, leather straps, tarnished brass rivets and a worn dark cloak; subtle dust and loose stones drift toward its hand to suggest the pull. Painterly medieval fantasy collectible-card illustration, rich tactile materials, painterly brushwork, dramatic warm torchlight against cool stone shadow, atmospheric but legible. Classic tabletop fantasy art direction. Not anime, not Disney cartoon, not photorealistic, no pixel art, no modern objects. Square composition designed for a 206:141 horizontal crop centered in the image: keep the entire helmet, raised guard arm, reaching hand and torso within x=24..488, y=105..407; top and bottom margins may be quiet expendable background. Subject fills roughly 70% of the central crop with a clear silhouette and uncluttered background.",
     "generatedPath": "/workspace/generated_images/exec-fa852005-c717-4783-a9d8-a868864ce336.png",
-    "focalPoint": { "x": 0.5, "y": 0.5 },
+    "focalPoint": {
+      "x": 0.5,
+      "y": 0.5
+    },
     "status": "generated"
   },
   {
@@ -12,7 +15,315 @@
     "name": "Sling Stones",
     "prompt": "Create a square 512x512 master illustration for a medieval fantasy collectible card, illustration only: no frame, border, lettering, symbols, or UI. Depict Sling Stones: a weathered village slinger in rough wool and leather plants their feet on a rocky hillside and whirls a braided leather sling, releasing three small stones in a tight burst toward a distant enemy. Freeze the decisive instant: the sling's loop, the slinger's focused face and releasing hand, and three clear stone projectiles streaking outward are all visible. Grounded medieval clothing, worn leather, linen, stone and wind-tossed grass. Painterly fantasy collectible-card illustration with confident brushwork, believable natural materials, cinematic late-afternoon light, cool muted hills with warm highlights and atmospheric depth. Classic tabletop fantasy painting, not anime, not Disney cartoon, not photorealistic, no pixel art, no modern tech. Square composition designed for a 206:141 horizontal crop centered in the image: keep face, hand, sling and all three stones within x=24..488, y=105..407; top and bottom margins may be quiet expendable background. Main action fills about 70% of central crop; clear readable silhouette and quiet background.",
     "generatedPath": "/workspace/generated_images/exec-6b40c9ff-f2c6-48a8-9fdc-b6ed297666ba.png",
-    "focalPoint": { "x": 0.5, "y": 0.5 },
+    "focalPoint": {
+      "x": 0.5,
+      "y": 0.5
+    },
     "status": "generated"
+  },
+  {
+    "cardId": "gray_summon_02",
+    "name": "Empty Helm Sentinel",
+    "prompt": "Original painterly medieval fantasy illustration for the exact card \u201cEmpty Helm Sentinel.\u201d Mechanics: a tough suit of animated armor stands as a rear guard, draws enemy attacks to itself, and strikes quickly. Depict a complete, empty suit of battered steel plate with a faintly glowing vacant helm, planted behind allied fighters in a ruined keep; its raised shield arm draws the charge of several foes toward it while its sword arm makes a quick counterstrike. Keep the empty helmet unmistakable and armor the central subject. Tactile dented steel, leather straps, tarnished brass rivets, dust, dramatic torchlight and cool stone shadows, painterly brushwork like supplied fantasy references, grounded medieval atmosphere. Square 512 master, horizontal action; keep helmet, sword, shield and central torso within x24\u2026488, y105\u2026407 for wide crop, with expendable ceiling and floor margins. No frame, lettering, numbers, UI, anime, Disney cartoon, photorealism or pixel art. Repaired by image generation as an exact 1:1 square edit: moved the full empty helmet, sword hand/blade and shield face into the central action-safe band.",
+    "generatedPath": "/workspace/generated_images/exec-0bd57af4-039f-49d8-9414-7860a4f1a8e0.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 2,
+    "reviewNote": "Reviewed repaired square original and square-normalized crop: complete empty helmet sits within the safe horizontal band, with sword hand/blade, full shield face and torso visible. Helmet remains unmistakable; attackers are directed toward the sentinel."
+  },
+  {
+    "cardId": "gray_ward_01",
+    "name": "Shield Wall",
+    "prompt": "Original painterly fantasy card art for \u201cShield Wall.\u201d Mechanics: a brief protective barrier grants a shield of 70 for 12 seconds, replacing the current shield. Depict a line of medieval defenders bracing shoulder-to-shoulder behind overlapping broad iron-rimmed shields as one continuous translucent gray-blue magical barrier rises across the front rank. A fresh bright shield-shaped ward seals over an older fading ward to imply replacement. Show incoming arrows and a heavy strike deflecting away. Make the wall and shields read as the subject, a horizontal defensive line, not a single hero portrait. Rich wood grain, scarred iron, wool and stone, painterly medieval collectible-card illustration with dramatic light, atmospheric depth and grounded proportions. Square 512 master; keep shield line, impacts and defenders\u2019 faces/hands within x24\u2026488, y105\u2026407 for wide crop; quiet smoky sky and ground above/below. No frame, text, lettering, numbers or UI. No anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d8cb6b76-cb91-4584-b091-d047f01f44d1.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 2,
+    "reviewNote": "Reviewed square original: line of defenders and overlapping shields forms a continuous barrier under arrow and weapon strikes; a brighter shield ward overlays a fading one. Faces and barrier impacts stay in the wide crop band."
+  },
+  {
+    "cardId": "gray_boon_01",
+    "name": "Battle Cry",
+    "prompt": "Original painterly medieval fantasy collectible-card illustration for \u201cBattle Cry.\u201d Mechanics: a courage boon strengthens cards and wand by 30% for seven seconds without health cost, jolts and briefly stuns the nearest enemy, then repeats five seconds later at half strength. Depict a weathered captain roaring a rallying cry beside a spellcaster, wind and a golden sound-like shockwave rolling from the captain; nearby ally\u2019s sword and wand flare with stronger light as the closest charging enemy freezes in a brief jolt. A fainter second wave behind the first hints at the echo. Keep the scene grounded and readable, with the captain, wand and stunned enemy clearly identifiable; no written sound effects. Textured wool, leather, steel and magical light, dramatic battle dusk, painterly brushwork and atmospheric depth in supplied fantasy reference style. Square 512 master; arrange action horizontally and keep faces, captain\u2019s mouth/hands, wand, enemy and wave impacts within x24\u2026488, y105\u2026407 for 206:141 crop. Quiet expendable sky and ground margins. No border, lettering, numbers or UI. No anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ab7250eb-b707-4545-a32f-bcb93274052a.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 2,
+    "reviewNote": "Reviewed original and central-square normalization: rallying captain, glowing ally\u2019s wand/sword, stun impact and faint echo wave all remain inside normalized y105\u2013407 crop band. Battle cry action and enemy are clear."
+  },
+  {
+    "cardId": "gray_charge_02",
+    "name": "Hunter's Quiver",
+    "prompt": "Original painterly medieval fantasy card illustration for \u201cHunter\u2019s Quiver.\u201d Mechanics: a reusable seven-shot supply of bolts that fire down the hunter\u2019s row and the next row, each bolt splashing half its force around impact. Depict a leather-and-oak hunter\u2019s quiver full of broad steel crossbow bolts attached to a crouched ranger, with two parallel magical bolt trails flying horizontally across the battlefield toward adjacent enemy ranks; one impact bursts with a small ring of shrapnel/light that catches nearby foes. The entire quiver from opening to base and several bolts must be visible, clearly the named object; keep it prominent in foreground while showing the twin-row firing and splash. Painterly grounded medieval fantasy, rich leather, fletching, steel, weathered cloak, directional light and atmospheric depth, supplied reference style. Compose as an exact 1:1 square image for 512 master; reserve generous sky and ground margins, and keep ranger\u2019s face/hands, complete quiver and impact action within x24\u2026488, y105\u2026407 so nothing critical is lost in the wide crop after square normalization. No frame, labels, lettering, numbers or UI. No anime, Disney cartoon, photorealism or pixel art. Recomposition edit moved the complete quiver upward while preserving the twin volleys and splash scene.",
+    "generatedPath": "/workspace/generated_images/exec-4b93928d-b33e-4366-a761-536a7d8b7eea.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 2,
+    "reviewNote": "Reviewed repaired square original: complete quiver from fletching/opening through leather base fits within central y105\u2013407 band; ranger and twin-row bolts with splash impact remain clear in the horizontal crop."
+  },
+  {
+    "cardId": "gray_summon_03",
+    "name": "Haunted Plate",
+    "prompt": "Paint original painterly medieval fantasy collectible-card art for \u201cHaunted Plate.\u201d Mechanics: a sturdy but slow haunted suit of armor escorts an ally, zapping the nearest foe with chain lightning that jumps to two more, each weaker; attackers who strike the armor are shocked and stunned. Depict a battered empty suit of plate moving beside a cloaked traveler through a ruined stone passage. From its vacant helm, a vivid blue-white arc strikes the nearest attacker and visibly forks to two farther foes with diminishing sparks; one enemy's blade has just hit the armor and rebounds in a small stunning shock. Keep the haunted empty helmet and the chain arc readable as central story. Painterly brushwork, expressive steel, leather and stone, dramatic cool lightning against warm torchlight, grounded anatomy and atmospheric depth in supplied fantasy reference spirit. Exact 1:1 square composition for a 512 master; keep entire helmet, torso, chain-lightning path and key enemy faces/hands within x24\u2026488, y105\u2026407, with expendable ceiling/floor beyond. No frame, lettering, numbers, UI; no anime, Disney cartoon, photorealism or pixel art. Image generation edit recomposed action lower so the complete helmet and all three chain targets lie within the safe band.",
+    "generatedPath": "/workspace/generated_images/exec-a19d2cda-5e3b-4cd4-8f5a-57ae0b95982f.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 3,
+    "reviewNote": "Reviewed repaired 1:1 square: full haunted empty helmet, escorting companion, chain lightning and three enemy targets fit in the central horizontal band; first foe struck by returned static is visible."
+  },
+  {
+    "cardId": "gray_ward_02",
+    "name": "Phalanx",
+    "prompt": "Create original painterly medieval fantasy card art for \u201cPhalanx.\u201d Mechanics: a heavy rampart forms one durable wall across the lanes before the party for 20 seconds; it strikes attackers back with thorns. Depict a broad waist-high, interlocked wall of dark stone-faced shields and iron braces spanning a battlefield pass, its front studded with short thorn-like steel barbs. Enemy blades and a charging mace strike the wall and are painfully deflected by the barbs. A few defenders are visible behind it to communicate protection across the whole line. Make the broad rampart and thorn counterstrike the clear subject. Painterly fantasy collectible-card art, expressive stone, weathered iron, wood, cloth, warm firelight and cool shadows, dramatic but readable and grounded. Exact 1:1 square for a 512 master; horizontal wall across central composition; keep complete wall silhouette, thorns, impacts and visible defenders\u2019 faces/hands within x24\u2026488, y105\u2026407, with expendable sky and ground at top/bottom. No border, text, numbers, lettering, UI. No anime, Disney cartoon, photorealism or pixel art. Image generation edit moved defenders and rampart slightly lower to keep full faces and impacts inside safe band.",
+    "generatedPath": "/workspace/generated_images/exec-c7b28cd3-fc9d-4c14-a595-ffdcd56ac3fb.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 3,
+    "reviewNote": "Reviewed repaired exact-square original: complete broad spiked rampart, defenders\u2019 faces and thorn counterstrike impacts fit the central horizontal crop band; wall reads clearly as a lane-spanning barrier."
+  },
+  {
+    "cardId": "gray_boon_02",
+    "name": "Rallying Horn",
+    "prompt": "Original painterly medieval fantasy card illustration for \u201cRallying Horn.\u201d Mechanics: a lasting courage boon strengthens cards and wand by 30% for 16 seconds without health cost and musters, healing allied creatures by 15%. Depict a scarred commander blowing a complete ornate brass-and-horn war horn, the entire mouthpiece-to-bell visible, while a golden rallying wave sweeps through nearby allies: their swords and a mage\u2019s wand kindle with power, and a wounded beast companion visibly mends beneath warm light. The horn must be large, clearly recognizable and central to the action, not an unrelated trumpet or tiny prop. Painterly medieval fantasy, expressive brass, leather, fur and cloth, dramatic sunlight through battlefield smoke, grounded faces and atmospheric depth inspired by supplied references. Exact 1:1 square composition for 512 master; horizontal arrangement; keep complete horn, commander\u2019s face/hands, glowing wand and healed allies within x24\u2026488, y105\u2026407 so named object stays whole at small card size. Spare sky and ground beyond. No border, text, labels, numbers or UI. No anime, Disney cartoon, photorealism or pixel art. Image generation edits reoriented the horn horizontally and lowered it into the action-safe band.",
+    "generatedPath": "/workspace/generated_images/exec-2f0de48d-a9d7-41dc-aa37-ad086988904c.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 3,
+    "reviewNote": "Reviewed final square original: complete ornate horn including mouthpiece and bell is fully visible in the central band with the commander\u2019s face and hands; glowing wand, rallying allies and healing beast remain readable in the crop."
+  },
+  {
+    "cardId": "gray_charge_03",
+    "name": "Bag of Rocks",
+    "prompt": "Paint original painterly medieval fantasy card art for \u201cBag of Rocks.\u201d Mechanics: this charge has two uses; it lobs a heavy stone onto the aimed tile for 36 damage and splashes half damage around the impact. Depict a complete rugged leather sling-bag of round river stones in the foreground, shown open from mouth to base and clearly full, beside a medieval slinger who has just thrown one large rock in a high arc toward an enemy tile. At landing, the rock bursts into a ring of fragments that strikes nearby foes, making the splash area clear. Make the named bag a prominent readable object, not a generic boulder pile; show the lobbing action and impact as supporting story. Painterly medieval fantasy collectible-card illustration, believable worn leather, rounded stones, rough cloth and armor, directional sunset light, grounded figures and atmospheric depth like supplied references. Exact 1:1 square image for a 512 master; horizontal staging; keep entire bag, slinger\u2019s face/throwing hand, airborne rock and impact within x24\u2026488, y105\u2026407. Quiet sky and ground margins beyond. No frame, lettering, labels, numbers or UI. No anime, Disney cartoon, photorealism or pixel art. Recomposition edits reduced and repositioned the bag and moved slinger/action into the central safe band.",
+    "generatedPath": "/workspace/generated_images/exec-7d474c0c-4e58-4851-8cd3-9f26e3e2ca1b.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 3,
+    "reviewNote": "Reviewed final square original: whole open leather bag and stones fit in the lower-left safe band; slinger\u2019s face/throwing hand, airborne rock and splash impact are inside the central crop. Bag remains legible at card scale."
+  },
+  {
+    "cardId": "gray_summon_04",
+    "name": "Rusted Suit of Armor",
+    "prompt": "Output an exact 1:1 SQUARE canvas. Rebuild this scene as a compact horizontal medieval fantasy card illustration. Preserve the rusty suit-of-armor guardian, the mage and incoming weapons, but shrink the entire guardian to roughly half the current height and position it in the center band. On the square, keep complete armor helmet-to-feet plus the mage's whole face and casting hands entirely within x24..488,y105..407. The same finished composition must work as a 206:141 wide card crop. Leave expendable sky above and ground below. Painterly grounded materials, dramatic storm light. No border, letters, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-bce1e1d7-b096-4c62-9d1b-829a9aadf786.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 4,
+    "reviewNote": "Repaired twice after initial square and intermediate landscape framed the armor too tall. Reviewed final 1254-square and normalized 206:141 crop: full rusty guardian and mage's face/hands fit the central band; attackers visibly strike the guardian.",
+    "previousGeneratedPaths": [
+      "/workspace/generated_images/exec-04564312-ef6a-4fc7-9ef1-abda240e7170.png",
+      "/workspace/generated_images/exec-fdcdac4c-7a99-4419-8d12-6664ef50a46b.png"
+    ]
+  },
+  {
+    "cardId": "gray_ward_03",
+    "name": "Testudo",
+    "prompt": "SQUARE 1:1 canvas, not landscape. Medieval fantasy painterly card illustration. Center a compact, complete testudo: a small group of Roman-style soldiers under a full roof of overlapping bronze shields, with a short row of front shields and visible helmeted faces beneath. Leave wide clear margins on left and right. Keep the entire formation entirely inside the middle 58% of image width and central horizontal band. An enemy blade strikes one front shield, blue lightning stuns the attacker. Dramatic cool storm light, rich shield detail, atmospheric battlefield background. No words, border, UI, anime, cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-682cc168-6776-4463-bd39-21a09e20e8d5.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 4,
+    "reviewNote": "After two landscape/edge-cropped attempts, generated a fresh 1254-square. Reviewed normalized 206:141 crop: complete testudo roof and shield wall, soldiers' visible faces and shield impact fit the central band.",
+    "previousGeneratedPaths": [
+      "/workspace/generated_images/exec-49769fe6-62bb-4ce0-8338-1c8bd1e0340a.png",
+      "/workspace/generated_images/exec-59b7eff9-5657-4263-b499-c97d14ab6b8d.png",
+      "/workspace/generated_images/exec-efa68bcd-e852-4580-8f26-1c1062eabbe0.png"
+    ]
+  },
+  {
+    "cardId": "gray_boon_03",
+    "name": "Haka War Dance",
+    "prompt": "Recompose this as a 1:1 SQUARE 512 x 512 master while preserving the expressive haka warrior-mage, woven garments, storm-lit battlefield and enemies slowed by rings of frost around their legs. Lower the dancer's raised wand arm and shorten the wand so the gripping hand is clearly inside x24..488,y105..407; keep the face, open hand, and full grounded dance stance in that same central band. Keep the nearby slowed enemies visible in the horizontal card crop. Leave quiet sky above and ground below. Painterly medieval fantasy art, respectful culturally inspired design, expressive brushwork, no caricature. No border, words, numbers, UI, photorealism, anime or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-37b661df-608f-478e-b184-d934cfae651d.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 4,
+    "reviewNote": "Repaired the first landscape composition to a 1254-square; reviewed normalized 206:141 crop preserves the dancer's face, both hands and full stance, with slowed enemies and frost circles legible.",
+    "previousGeneratedPath": "/workspace/generated_images/exec-43ace560-1d59-4c5e-894b-0ac27a70d318.png"
+  },
+  {
+    "cardId": "gray_charge_04",
+    "name": "Throwing Axes",
+    "prompt": "Repair this exact 1:1 SQUARE illustration for a 512 x 512 master. Preserve the storm ranger, the complete bundle of throwing axes at the belt, one axe flying horizontally down a row, and the impact splash on nearby foes. Critical crop correction: move the ranger and axe bundle down slightly and scale the ranger smaller so the entire face from hairline through chin and the throwing hand fit inside x24..488,y105..407. Keep the full flying axe, impact and splash targets inside the same band. Retain a readable horizontal trajectory, quiet sky above and ground below, painterly medieval fantasy materials and storm light. No border, lettering, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2f0d3b26-1a7b-4ce6-b029-53eaf658434b.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 4,
+    "reviewNote": "Repaired and reviewed 1254-square and normalized 206:141 crop: ranger's face/throwing hand, belt bundle, complete flying axe and multi-target splash remain clear in the safe band. Original retained.",
+    "previousGeneratedPath": "/workspace/generated_images/exec-dd420be7-326d-4a09-aa14-adf8af0936d3.png"
+  },
+  {
+    "cardId": "gray_summon_05",
+    "name": "Gilded Parade Armor",
+    "prompt": "Repair as a 1:1 SQUARE 512 x 512 master, preserving the same elegant gilded parade armor guardian, crimson enamel and engravings, mage and poleaxe. Make the armor smaller and lower so its entire suit helmet-to-feet fits inside x24..488,y105..407 with clear margin. Keep the mage's complete face and casting hand inside the safe band too. The long poleaxe can angle across the upper scenery; the armor itself must be fully visible in the wide card crop. Quiet sky and ground beyond. Painterly medieval fantasy materials and dramatic light, no border, words, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-944658a8-171d-4a89-9f91-6708d52142e5.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "Repaired and reviewed 1254-square and normalized 206:141 crop: complete gilded armor suit and mage's face/hand fit inside safe band; rear-guard strike and ornate finish read clearly. Original first attempt retained.",
+    "previousGeneratedPath": "/workspace/generated_images/exec-796a0c2c-b582-463c-b563-1cc406bd00e4.png"
+  },
+  {
+    "cardId": "gray_ward_04",
+    "name": "Schiltron",
+    "prompt": "Square 1:1 painterly medieval fantasy collectible-card illustration for exact card Schiltron. Two separate parallel heavy iron and timber barricades run along both sides of a narrow lane, forming a protected corridor around a small armored defender; each wall bristles with outward-facing iron thorns, and distant attackers recoil from them. Must clearly read as two flanking walls, not one crosswise wall. Moody fortress passage, warm torchlight and cool stone shadow, rich tactile brushwork, no text or border, no cartoon or photorealism. Keep all identity critical action inside x24..488 y105..407 for centered 206:141 card crop.",
+    "generatedPath": "/workspace/generated_images/exec-3abd9cf9-d9fb-4df8-b642-37f702d2407b.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "1254x1254 source; inspected the normalized centered 206:141 crop. Both parallel thorn walls, the protected defender, and attackers remain readable and safely placed."
+  },
+  {
+    "cardId": "gray_boon_04",
+    "name": "Kiai Shout",
+    "prompt": "1:1 square 512 master, painterly medieval fantasy collectible-card illustration, no text or border. Exact card Kiai Shout: a focused battle monk in layered charcoal robes and leather bracers plants a firm stance and releases a powerful kiai cry; depict a visible expanding ring of compressed air and dust from the shout, subtly empowering a nearby wand-like focus while a few nearby foes are checked by a chill ripple. Main identity is the human shout and delayed force, not a generic magical blast. Grounded anatomy, rich cloth and stone detail, restrained pale blue chill ripples against warm torchlight. Keep face, open mouth, hands and effect within x24..488 y105..407 for centered 206:141 crop. Painterly fantasy, no anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d26d5e35-96b0-4696-a32c-1c6ac3d22501.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "1254x1254 source; inspected normalized wide crop. Monk's face, shouting pose, hands, expanding force ring, and nearby slowed foes are clear within the crop."
+  },
+  {
+    "cardId": "gray_charge_05",
+    "name": "Javelin Bundle",
+    "prompt": "Square 1:1 card painting. Make a small, complete bundle of exactly three short throwing javelins the central subject, held across the chest by an armored medieval warrior. Arrange the three entire weapons horizontally on a diagonal from lower-left to upper-right, including every steel tip and butt end, with substantial empty margin on all sides; do not let any part touch or cross the frame. A fourth javelin flies horizontally in the middle distance toward a row of enemies. All critical parts must fit comfortably inside a central wide crop-safe box x24..488 y105..407. Painterly medieval fantasy collectible card art, believable ash wood, leather binding, steel and armor, warm sunset battlefield, readable silhouette, no text or border, no modern objects, not cartoon/anime/photo/pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-782ece40-92f8-49ab-ab5b-2c07d3ada793.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "1254x1254 source; inspected normalized wide crop. Three complete bundled javelins, the warrior, and a fourth javelin in flight toward the enemy row all fit clearly inside the crop."
+  },
+  {
+    "cardId": "gray_summon_06",
+    "name": "Black Knight's Armor",
+    "prompt": "Square 1:1 painterly medieval fantasy collectible-card illustration of the exact named artifact Black Knight's Armor: a complete empty suit of blackened plate armor stands as an unyielding guardian in front of a small cloaked ally while weapons strike its shield and breastplate. The full helmet, including its top, must be comfortably below the top edge: leave at least 20 percent of the image as empty ruined-stone atmosphere above the helmet and place the armor in the lower-middle. Keep the entire helmet, torso, arms, shield, ally and impact action inside x24..488 y105..407 so they all survive a centered wide 206:141 crop. Dark steel, worn leather, restrained crimson cloth, warm sparks and cool shadows, painterly brushwork and believable materials. No text, frame or UI; no cartoon, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9ecd4100-35f9-4d0c-acc4-4e7f974a46e2.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "1254x1254 source; inspected normalized wide crop. Full helmet, protective stance, shield taking a strike, and cloaked ally remain visible and readable inside the crop."
+  },
+  {
+    "cardId": "gray_summon_07",
+    "name": "Tin Soldier",
+    "prompt": "Square painterly medieval fantasy illustration for Tin Soldier: a small but improbably tough tin-armored squire stands as a rear guard, taunting shadowy attackers toward itself while frost rims its hammered armor. Complete rounded helmet, raised gauntlet, small shield and short spear; warm torchlit fortress against cool snowy battlefield. Keep all identity-critical parts within x24..488,y105..407 for a centered 206:141 crop. Repainted twice to enlarge the squire and move the full raised hand and spear tip down into the crop-safe band.",
+    "generatedPath": "/workspace/generated_images/exec-fae25686-8f78-4ccd-b620-8d221abfad64.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 6,
+    "reviewNote": "Inspected 512-square source, centered 206:141 crop and thumbnail after two crop repairs. Full helmet, raised hand, shield and spear tip are visible; tin squire remains the clear subject though supporting attackers are small."
+  },
+  {
+    "cardId": "gray_ward_05",
+    "name": "Hedge of Spears",
+    "prompt": "Square painterly medieval fantasy illustration for Hedge of Spears: three short separate timber-and-stone rampart walls aligned across lanes, densely bristling with outward-pointing iron spears. A charging armored raider recoils from the thorny defense as a spear strikes their shield, showing retaliation. Rough timber, stone footing, dark iron, cool battlefield and warm rim light. Keep every wall and key spear line within x24..488,y105..407 for centered 206:141 crop. No frame, lettering or UI.",
+    "generatedPath": "/workspace/generated_images/exec-afebd514-ca3d-4023-b9e1-efe154d90650.png",
+    "editableSourcePath": "game/cards/art/masters/gray_ward_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 6,
+    "reviewNote": "Inspected editable square source, wide crop and thumbnail. Multiple spear-bristling ramparts read clearly across the lanes; the near attacker is partly clipped at left, while the complete walls and prominent spear rows remain visible."
+  },
+  {
+    "cardId": "gray_boon_05",
+    "name": "Oath of Brotherhood",
+    "prompt": "Square painterly medieval fantasy illustration for Oath of Brotherhood: two battle brothers clasp forearms in a solemn vow on a fortress wall, both faces clear. Their delayed vow releases golden courage that empowers a nearby mage\u2019s wand and blank spell cards; a nearby charging foe recoils in a brief stunning pulse. Believable mail, leather, cloth and wood, warm sunset, dramatic light, atmospheric battlefield. Keep faces and clasped hands safely in x24..488,y105..407 for centered 206:141 crop. No text, runes, frame or UI.",
+    "generatedPath": "/workspace/generated_images/exec-bbf0c4fa-cf12-4e89-8134-7271b2a8c81d.png",
+    "editableSourcePath": "game/cards/art/masters/gray_boon_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 6,
+    "reviewNote": "Inspected square source, centered wide crop and thumbnail. Both brothers\u2019 faces and clasped hands are clear; the golden oath flows to a mage\u2019s wand and blank cards. A nearby armored foe is visible in the background, though the stun is subtle."
+  },
+  {
+    "cardId": "gray_charge_06",
+    "name": "Caltrop Pouch",
+    "prompt": "Square painterly medieval fantasy illustration for Caltrop Pouch: a rugged scout kneels on a muddy stone lane, tipping an open worn leather drawstring pouch so several four-pointed iron caltrops scatter on an aimed tile. The pouch and gloved hand are prominent, with multiple complete metal caltrops on the ground as an armored boot recoils among them, slowed by the trap. Tactile leather, iron and mud, lantern glow against cool shadows. Keep the entire pouch, hand, caltrops and boot inside x24..488,y105..407 for centered 206:141 crop. No modern gear, text, frame or UI.",
+    "generatedPath": "/workspace/generated_images/exec-51d01fad-b9fb-495e-8565-d7b198451d45.png",
+    "editableSourcePath": "game/cards/art/masters/gray_charge_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 6,
+    "reviewNote": "Repainted twice after crop review; prior raw outputs and editable sources preserved in /tmp/gray-batch6-scratch. Inspected final 512-square source, centered 206:141 crop and thumbnail: scout\u2019s full face and eyes, open pouch, tipping hand, complete visible caltrops and recoiling boot now all read within the crop."
   }
 ]

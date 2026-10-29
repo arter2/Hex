@@ -21,5 +21,298 @@
       0.5
     ],
     "status": "generated"
+  },
+  {
+    "cardId": "ice_shard",
+    "name": "Ice Shard",
+    "prompt": "Paint Ice Shard as a frost strike that sends a shockwave damaging every enemy within four tiles, with a one-in-four chance for a critical hit to deal double damage. Show a battle mage releasing a radial burst of ice shards and an expanding frost wave catching several hostile figures, with one especially bright critical impact. Painterly medieval fantasy collectible-card art, nuanced believable materials, directional cold light, atmospheric depth, grounded anatomy, and textured brushwork. Square composition intended for a 512 × 512 master; keep the mage’s face and hands, shards, and enemy impacts within x24…488 and y105…407 for the 206:141 horizontal crop, with expendable snowy scenery beyond. No frame, text, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a4e50d04-aa18-46d6-841e-4808439c6892.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 2,
+    "reviewNote": "Reviewed original: central mage face and casting hands, radial shards and several struck enemies all remain in the wide central crop; reads clearly as an area shockwave strike."
+  },
+  {
+    "cardId": "rime_wall",
+    "name": "Rime Wall",
+    "prompt": "Paint Rime Wall: two short, 44-strength frost ramparts rise across the lanes before the caster; anything striking them is frozen momentarily. Show two distinct thick translucent blue ice walls spanning separate lanes in a snowy pass. A charging armored foe has just struck the nearer wall and is caught in a visible burst of frost, frozen in place; the second wall recedes in perspective. Painterly medieval fantasy, grounded anatomy, believable icy material, directional cold light, atmospheric depth and textured brushwork. Square 512 × 512 master, keep both walls and frozen attacker in x24…488, y105…407 for 206:141 horizontal crop; expendable sky and snow outside. No frame, lettering, numbers, UI, anime, Disney-like cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-88895c43-35fa-4599-af6e-ae6c252d12ec.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 2,
+    "reviewNote": "Reviewed square original: both lane-spanning walls remain in the central horizontal crop; frozen armored attacker and impact frost read clearly at the nearer wall."
+  },
+  {
+    "cardId": "glacial_veil",
+    "name": "Glacial Veil",
+    "prompt": "Paint Glacial Veil: two seconds after casting, a protective effect lands thirty percent stronger, lets the hero dodge the next hit, and surrounds them with radiant shielding worth twelve. Show an agile armored wanderer twisting aside from a blade strike that passes through a translucent glacial afterimage, while a delayed luminous blue-white veil settles around them as a shield. Painterly medieval fantasy, believable cloth, leather and steel, grounded anatomy, directional icy light and atmospheric depth. Square 512 × 512 master; keep face, pose, blade and shield within x24…488, y105…407 for 206:141 horizontal crop, with expendable snowy scenery beyond. No border, lettering, numbers, UI, anime, Disney-like cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4ff25f1d-945a-4502-a94e-38aec864b616.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 2,
+    "reviewNote": "Reviewed original: heroine’s face and dodging pose, passing blade, glacial afterimage and bright protective veil remain within central crop; card reads as an evasion ward."
+  },
+  {
+    "cardId": "frost_utility_01",
+    "name": "Mirror Lake",
+    "prompt": "Paint Mirror Lake, a card whose effect copies the next queued card. Show a still mirror-smooth alpine lake at blue hour with a frost mage on shore preparing a luminous arcane spell; the lake reflection perfectly echoes the mage and duplicates the glowing frost sigils into a second identical arrangement, making the copied spell unmistakable. Painterly medieval fantasy collectible-card art, nuanced materials, cold directional twilight with a small warm lantern accent, atmospheric depth and textured brushwork. Square 512 × 512 master; keep mage, reflection, lake boundary and duplicated sigils within x24…488, y105…407 for 206:141 horizontal crop, expendable mountain sky and dark foreground beyond. No frame, lettering, numbers, UI, anime, Disney-like cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-13dd696c-9c17-423c-8729-c1d137d393bc.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 2,
+    "reviewNote": "Reviewed original: mage, bright spell sigils, lake horizon and exact inverted reflection remain readable in the horizontal scene; reflection clearly shows the copied spell effect."
+  },
+  {
+    "cardId": "hail_lob",
+    "name": "Hail Lob",
+    "prompt": "Hail Lob: a quick-fuse frost projectile is lobbed over blockers to a chosen tile in a straight column; it bursts 0.35 seconds after casting for 18 damage and leaves freezing ground for four seconds that slows enemies. Show a frost mage throwing a compact spinning hailstone in a high arc over a broken stone barricade toward enemies aligned beyond it; the stone bursts on the ground in a column of icy impact and spreading slow-frost. Painterly medieval fantasy, believable materials, cold directional light, atmospheric depth, grounded anatomy, textured brushwork. True 1:1 square 512 master; keep the mage face and throwing arm, full projectile arc and burst with affected enemies in x24…488, y105…407, with quiet expendable scenery outside. No frame, lettering, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-45493b13-88e6-4cec-95c3-7ee03309526b.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 3,
+    "reviewNote": "Reviewed native 1254 × 1254 square and predicted 206:141 crop. After crop repair, the full arc apex, mage’s casting pose, impact burst and slowed enemies all remain in the central safe band."
+  },
+  {
+    "cardId": "icicle_spire",
+    "name": "Icicle Spire",
+    "prompt": "Icicle Spire: a sturdy frost sentry guards the hero by taking hits meant for them, attacks steadily every 1.2 seconds, and when it falls or expires explodes onto the nearest enemy and around it, slowing them. Show a tall living spire of thick blue-white ice planted between a cloaked hero and an armored foe; its faceted surface catches and blocks an incoming sword blow while a small precise ice lance answers. Suggest contained explosive force with glowing cracks. Painterly medieval fantasy, tactile ice and steel, dramatic cool light and atmospheric depth. True 1:1 square 512 master; keep complete spire, hero and key enemy/impact within x24…488, y105…407, quiet snow and mist outside. No frame, lettering, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-61ddcc75-1ea2-4085-92ff-9899e2366c3a.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 3,
+    "reviewNote": "Reviewed native 1254 × 1254 square and predicted 206:141 crop. Repaired scale/placement keeps the full spire crown and base, guarding mage, sword and impact all inside the crop."
+  },
+  {
+    "cardId": "frost_summon_01",
+    "name": "Merrow",
+    "prompt": "Merrow: a sturdy quick frost merfolk ally appears for twenty seconds, heals its summoner by two at each swift attack, and each hit leaves a small patch of ground burning for three seconds; summoning carries a 3.9-second curse. Show a fish-tailed merrow warrior rising from a frozen fjord, with expressive amphibious face, scaled skin, finned crest and medieval trident. It fights beside a human summoner: a soft frost-blue healing glow returns to the ally while the merrow’s strike scorches a small patch of snow beneath an attacking foe. Painterly medieval fantasy, grounded anatomy, tactile scales/leather/ice, cinematic cold light and restrained ember contrast. True 1:1 square 512 master; keep merrow face, trident/hands, ally healing glow and burning impact in x24…488, y105…407, quiet snowy lake scenery beyond. No frame, lettering, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9a656576-1e80-4f41-85fa-54cc9fd353bb.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 3,
+    "reviewNote": "Reviewed native 1254 × 1254 square and predicted 206:141 crop. Merrow face, finned crest, tail and trident, summoner healing glow and scorched impact remain legible in the crop."
+  },
+  {
+    "cardId": "frost_environment_01",
+    "name": "Frozen Lake",
+    "prompt": "Frozen Lake: a burst ices the aimed tile and surrounding ground for ten seconds; enemies caught when it appears take 8 damage and gain slowing frost that halves their speed, while caster mends 3. Show a circular blue-white burst flash-freezing a patch of lake and shoreline, several armored enemies caught across fresh fractured ice and pinned at their feet by frost, with a small frost-caster at the edge receiving a subtle restorative glow. Make the broad frozen ground field the main subject. Painterly medieval fantasy, detailed ice, water and stone, cool dramatic light with restrained dawn warmth and atmospheric depth. True 1:1 square 512 master; keep caster, enemies and full central freeze burst within x24…488, y105…407, quiet sky and foreground outside. No frame, lettering, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e3a68cae-d3bd-4350-a0c7-5cb9f9b919fc.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 3,
+    "reviewNote": "Reviewed native 1254 × 1254 square and predicted 206:141 crop. Caster, caught enemies and broad burst of fractured ice remain centered; ground-freezing effect reads clearly."
+  },
+  {
+    "cardId": "frost_lance",
+    "name": "Frost Lance",
+    "prompt": "Paint an obviously hand-painted, textured brushwork medieval fantasy card illustration for Frost Lance: a long, crystalline blue-white ice spear flies horizontally through two armored enemies in a snowy mountain pass, piercing the first and striking the second, a brief cold freeze at both impacts. The lance spans the center and is the unmistakable subject; show both struck figures clearly. Painterly fantasy concept art with visible layered oil-brush texture, stylized yet grounded anatomy, richly painted fur, steel and ice, dramatic cool light, no camera-like photographic realism. True 1:1 square; keep full lance, impacts and faces within x24..488 y105..407, expendable soft snow/sky beyond for 206:141 crop. No border, lettering, UI, anime, Disney-like cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2d0e3687-b3d5-4103-9bdd-57c93df18793.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 4,
+    "reviewNote": "Native 1254 square and centered 206:141 crop inspected. Complete ice lance crosses both visible struck foes; both faces and key impacts remain within the crop."
+  },
+  {
+    "cardId": "frost_sentry_01",
+    "name": "Inuksuk Watcher",
+    "prompt": "Hand-painted painterly medieval fantasy card art for Inuksuk Watcher: a compact complete inuksuk cairn guardian, made from round dark boulders arranged with a clear head, two short horizontal arms, body and short feet, fires one narrow icy blue bolt at a tiny distant foe. Place the entire stone figure comfortably in the MIDDLE of the square, occupying only about half the image height, from y=280 to y=850 on a 1254 square; leave ample space above and below so the whole head and feet survive the centered wide crop. Keep the bolt within the middle horizontal band too. It must be one small readable cairn, not a giant monument. Painterly visible brush strokes, attractive arctic dawn, nuanced snow-covered stone, no photorealism. True square. No text, frame, UI, anime, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-610d69e1-e47e-4f0d-be1a-b04f79508c44.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 4,
+    "reviewNote": "Native 1254 square and centered 206:141 crop inspected. Whole cairn silhouette, bolt and distant foe remain visible; identity reads clearly as stacked-stone watcher."
+  },
+  {
+    "cardId": "frost_boon_01",
+    "name": "Sea Legs",
+    "prompt": "Sea Legs: a maritime frost boon that lets a hero dodge the next hit and heals their creatures, with a weaker echo later. Show a weathered sailor-warrior on a pitching wooden ship deck keeping perfect balance as a hostile cutlass misses through a translucent blue afterimage; a soft sea-green restorative glow reaches nearby allies, with a second faint echo of the ward. Main figure, face, hands, blade and evasive action visible. Painterly medieval fantasy collectible-card art, stormy cold sea, believable wool, leather and timber, dramatic lantern light. True square 512 master; action entirely x24..488 y105..407, expendable quiet sky and deck beyond. No text, frame, UI, anime, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b1a72078-b8a7-4fb2-b8da-8670ea3945cf.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 4,
+    "reviewNote": "Native 1254 square and centered 206:141 crop inspected. Hero face, evasive stance, hands, blade, restorative allies and blue echo stay visible."
+  },
+  {
+    "cardId": "frost_trap_01",
+    "name": "Ice Hole",
+    "prompt": "Paint Ice Hole as a frost trap: three subtle frozen holes across a snowy battle path; when enemies step into the aimed tile or either adjacent tile, icy snares root them, damage them, freeze and stun them. Show one armored boot breaking through thin snow crust into a dark blue ice hole while two nearby matching traps glimmer faintly in the same row; frost tendrils seize the leg and hold the enemy upright, with no gore. Keep the three-trap layout and the triggering hole clearly readable. Painterly medieval fantasy card art, tactile snow, ice and worn armor, directional cold light. True 1:1 square 512 master; all traps and trapped leg within x24..488 y105..407 for wide crop, quiet snowfield margins. No frame, text, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-994a592d-988d-451f-a490-815ade3e6c66.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 4,
+    "reviewNote": "Native 1254 square inspected; centered wide crop retains all three ice holes, the triggering boot and clear frost snare around the leg."
+  },
+  {
+    "cardId": "frost_ward",
+    "name": "Frost Ward",
+    "prompt": "Paint Frost Ward: a caster is protected by one brief heavy wall of ice forming a half-ring around them, healing them gently while they stand within it. Show a sturdy curved blue-white ice rampart arcing from foreground around a cloaked frost mage, with one incoming sword blow striking its outer face and refracting into shards; a small healing glow is visible on the sheltered mage. The complete arc and mage make the identity clear. Painterly medieval fantasy, believable ice, steel, wool and stone, dramatic cold light. True 1:1 square 512 master; full wall arc, mage face and hands and impact inside x24..488 y105..407, quiet snow/sky beyond. No border, text, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8a29b7f1-1e6a-448c-b421-7c0ebb435ab4.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "Native 1254 square and 206:141 crop inspected. Full curved ice wall, sheltered caster, face, hands and incoming sword remain visible in the crop."
+  },
+  {
+    "cardId": "absolute_zero",
+    "name": "Absolute Zero",
+    "prompt": "Paint Absolute Zero: a legendary frost mage releases a devastating radial shockwave that strikes every nearby enemy and freezes them. Show the mage at the center of a circular expanding blue-white ring racing across a ruined snowy courtyard, several nearby armored foes caught and frozen at once; keep the mage and ring as the strong readable primary subject, not a vague glare. Painterly medieval fantasy collectible-card art, textured ice shards, dramatic directional cyan light, grounded figures and atmospheric snow. True 1:1 square 512 master; mage face, casting hands, complete central wave and affected foes stay inside x24..488 y105..407, expendable sky/foreground outside. No frame, text, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-20da9308-a171-452e-89d3-a7d3000e63a7.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "Native 1254 square and 206:141 crop inspected. Mage, face, casting hands, radial wave and multiple frozen foes all remain legible in the crop."
+  },
+  {
+    "cardId": "frost_lob_01",
+    "name": "Twelve-Pound Shot",
+    "prompt": "Painterly medieval fantasy card illustration for Twelve-Pound Shot. A heavy dense DARK IRON CANNONBALL, unmistakably black forged iron with a subtle icy blue rim and a few frost crystals, is launched in a clean visible arc over a waist-high stone blocker and slams into an armored foe beyond, knocking the foe backward. The cannonball must remain a dark metal sphere, never a large ball of ice; a small dwarven hand cannon or thrower may appear as secondary context. Restrained frost trail emphasizes frost affinity without obscuring the iron projectile. Grounded anatomy, painterly brushwork, dramatic arctic light, readable action. True 1:1 square 512 master; full projectile arc, blocker, impact and target inside x24..488 y105..407 for the horizontal crop. Quiet snowy margins. No lettering, border, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-288df490-bda6-46e5-a7da-07e7aa0593c8.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "Revised after crop review: native 1254 square and 206:141 crop show a distinct dark iron cannonball, blocker, thrower and knocked-back target; frost remains a restrained rim and trail."
+  },
+  {
+    "cardId": "frost_sentry_02",
+    "name": "Lighthouse",
+    "prompt": "Hand-painted painterly medieval fantasy collectible card art for Lighthouse. A sturdy frost sentry snipes the weakest foe anywhere with its blue beacon; a small frost wolf companion stands by the base. Show a SMALL complete lighthouse, only 40 percent of the square's height, centered low in the middle band. Its entire pointed roof, lantern room, tower, doorway and foundation must fit between y=300 and y=900 on a 1254 square, with generous clear sky above and snow below; do not crop any tower part. A fine beam reaches a tiny foe across a frozen bay. Strong clear tower silhouette, painterly stone, warm windows, arctic dusk. True 1:1 square; keep tower and beam within safe crop. No text, frame, UI, anime, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7e8cd125-5071-4a87-91a2-d9ccfb352a79.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "Native 1254 square and 206:141 crop inspected. Complete lighthouse roof through foundation, beam, frost wolf and distant target all remain visible."
+  },
+  {
+    "cardId": "frost_boon_02",
+    "name": "Fair Winds",
+    "prompt": "Painterly medieval fantasy collectible-card art for Fair Winds, a brief frost boon that makes a hero move and cast faster, then a delayed stronger gust heals them. Show a small centered three-quarter upper-body sailor-mage sprinting across a ship deck, arms spread in the wind, vivid blue-white ribbons of tailwind spiraling around them and a second glowing healing gust. Compose the entire mage INCLUDING head, face, both hands and all fingertips fully within the central safe band from y=320 to y=850 on a 1254 x 1254 square. Keep the figure modest in scale with ample plain sky above and empty deck below; do not crop any part of head or hands. Painterly brushwork, believable wool and sailcloth, cold sea light. No frame, words, UI, anime, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-05077b2b-f014-43fe-9727-90375afde174.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "Native 1254 square and 206:141 crop inspected. Face, both hands/fingertips, full wind action and dynamic running pose remain inside the safe crop."
+  },
+  {
+    "cardId": "frost_strike_01",
+    "name": "Harpoon Throw",
+    "prompt": "Original 1:1 square painterly fantasy card illustration, exact subject Harpoon Throw: a frost hunter throws a long barbed harpoon across a frozen sea lane, piercing two aligned armored raiders and a translucent shield, pulling the first target backward on a taut spectral frost tether. Mechanics visual: quick projectile, 37 damage, pierces enemy and obstacles, pull. Keep complete harpoon, hunter face/throwing hand, targets and action inside x24..488 y105..407, with quiet sky and snow beyond; readable in 206:141 horizontal crop. Grounded medieval materials, atmospheric cold directional light, detailed painterly collectible-card art, supplied Hexmancers reference quality. Square 512 master composition. No frame, lettering, numbers, UI, anime, Disney, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-90186a76-9d5b-4678-8388-c72045f5150c.png",
+    "editableSourcePath": "game/cards/art/masters/frost_strike_01.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 6,
+    "reviewNote": "Reviewed raw 1254 square and normalized 512 source plus 206:141 crop and thumbnail. Harpoon, thrower, pierced armored targets, tether and impact remain visible in crop; named action reads clearly."
+  },
+  {
+    "cardId": "frost_lob_02",
+    "name": "Chain Shot",
+    "prompt": "Original square painterly medieval fantasy card illustration for Chain Shot. Mechanics: a quick-fuse lobbed projectile travels over blockers to a single aimed tile, bursts 0.35 seconds after cast for 25 damage, slowing its target for 2.6 seconds. Depict an ice mage throwing a compact heavy chain-linked frost charge in a high arc over a broken stone barricade toward a single armored raider; show the spiked icy weight striking the far tile in a bright compact burst, spectral chain and frost visibly dragging/slowing the enemy. Keep caster face, throwing arm, full projectile arc, impact and target within x24..488 y105..407; readable in 206:141 horizontal crop. Quiet snowy sky and snow beyond. Grounded materials, atmospheric cold light, detailed brushwork, Hexmancers reference quality. True square 512 master, no frame, text, UI, anime, cartoon, photorealism, pixel art. Repaired via image generation to move caster fully into the central crop-safe band.",
+    "generatedPath": "/workspace/generated_images/exec-273b9fbe-2b1f-4557-aa56-887838dcaa42.png",
+    "editableSourcePath": "game/cards/art/masters/frost_lob_02.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 6,
+    "reviewNote": "Reviewed repaired 1254 square, normalized 512 source, 206:141 crop and thumbnail. Caster face/hand, complete chain arc, icy weight, single struck target and frost impact remain visible; face is no longer clipped."
+  },
+  {
+    "cardId": "frost_ward_01",
+    "name": "Sea Wall",
+    "prompt": "Original 1:1 square painterly medieval fantasy card illustration for Sea Wall. Mechanics: a light cage of six walls traps an aimed enemy for four seconds; enemy cannot move and shots strike bars while the caster’s shots pass through; barriers gently heal the caster. Show a frost mage outside a luminous pale blue curved cage of six slender sea-ice walls enclosing one armored raider on a snowy coastal battlefield. Trapped raider braces against icy bars as a hostile bolt shatters harmlessly against them, while a healing glow travels from the wall to the mage. Distinct readable cage geometry, not a solid wall. Keep mage face/hands, complete cage, enemy and impact inside x24..488 y105..407, horizontal 206:141 crop safe. Quiet sea mist beyond. Tactile materials, grounded anatomy, cold directional light, textured brushwork, matching supplied Hexmancers references. Square 512 master, no border, text, numbers, UI, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-80fa47ab-332c-45c9-a4e4-fa058d863ef6.png",
+    "editableSourcePath": "game/cards/art/masters/frost_ward_01.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 6,
+    "reviewNote": "Reviewed 1254 square, normalized 512 source, 206:141 crop and 128:88 thumbnail. Full six-ice-wall cage, trapped raider, bolt striking bars, mage and healing link all remain legible in crop."
+  },
+  {
+    "cardId": "frost_sentry_03",
+    "name": "Ice Spike Totem",
+    "prompt": "Original 1:1 square painterly medieval fantasy card art for Ice Spike Totem. Mechanics: sturdy 62-HP ice sentry shields its hero for 19, fires a slow precise bolt every two seconds that freezes for 2.5 seconds, and rallies allied creatures to fight 20% harder while it stands. Depict a carved blue-white ice spike totem, tall faceted standing monolith with distinct guardian face and rune core, planted between frost mage and advancing armored foe. Totem projects a curved shield around mage and launches a sharp frost lance that freezes foe mid-step. Two small allied creatures rally behind mage in its aura. Totem dominant, unmistakably stationary. Keep complete totem, mage face/shield, lance and target within x24..488 y105..407 for 206:141 crop. Quiet snowy pass beyond. Believable ice, steel and wool, cold directional light, textured painterly fantasy art matching Hexmancers references. Square 512 master; no border, text, numbers, UI, anime, Disney, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2dbcfe3a-54c6-4464-bc5c-9d2d73d256e7.png",
+    "editableSourcePath": "game/cards/art/masters/frost_sentry_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.39
+    ],
+    "status": "generated",
+    "batch": 6,
+    "reviewNote": "Reviewed the focalPoint [0.5,0.39] crop at 512, 206:141 and 128:88. The totem tip remains visible with slight clearance from the top; its carved face, rune core and snow-covered base read as one planted monolith. Mage face and casting hand, shield, rallied allies, lance and frozen foe remain visible. Crop intentionally shifts upward to preserve the full totem."
   }
 ]

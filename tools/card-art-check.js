@@ -1,6 +1,6 @@
 // Asset integrity and actual card markup checks. No browser layout claims.
 'use strict';
-const fs=require('fs'),path=require('path'),vm=require('vm'),assert=require('assert/strict');
+const fs=require('fs'),path=require('path'),vm=require('vm'),assert=require('assert/strict'),crypto=require('crypto');
 const ROOT=path.resolve(__dirname,'..');
 let canvas;try{canvas=require('./card-art/node_modules/@napi-rs/canvas');}catch{canvas=require('@napi-rs/canvas');}
 const read=f=>fs.readFileSync(path.join(ROOT,'game',f),'utf8');
@@ -18,6 +18,7 @@ async function main(){
  const report=JSON.parse(fs.readFileSync(path.join(ROOT,'docs/art-production/export-report.json')));
  let decoded=0,rendered=0;
  for(const a of report.assets){
+  if(a.sourceSha256)assert.equal(crypto.createHash('sha256').update(fs.readFileSync(path.join(ROOT,'game',a.master))).digest('hex'),a.sourceSha256,'Square source changed; rebuild display crops for '+a.key);
   const master=await canvas.loadImage(path.join(ROOT,'game',a.master));assert.equal(master.width,512);assert.equal(master.height,512);decoded++;
   for(const o of a.outputs){const im=await canvas.loadImage(path.join(ROOT,'game',o.url));assert.equal(im.width,o.width);assert.equal(im.height,o.height);decoded++;}
  }
@@ -33,7 +34,41 @@ async function main(){
  const all=vm.runInContext('CARD_LIST',ctx);ctx.testCards=Object.keys(variants);ctx.testSizes=[96,120,240,396];
  // Review page loads the real catalogue and card renderer; it can also be opened from the test ZIP.
  const helper=ui.slice(ui.indexOf('const CARD_PAL='),ui.indexOf('function showDetail('));
- const html='<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Hexmancers artwork review</title><link rel="stylesheet" href="card.css"><link rel="stylesheet" href="cards/card-geo.css"><style>body{margin:24px;background:#10151c;color:#eee;font:16px system-ui}h1{font-size:24px}h2{font-size:18px}.row{display:flex;gap:22px;align-items:start;overflow:auto;padding:12px 0}section{border-bottom:1px solid #36404b;padding:12px 0}.specimen{flex-shrink:0}p{margin:8px 0}</style><h1>Artwork review</h1><p>66 cards at 96, 120, 240 and 396 pixels. Scroll each row to compare sizes.</p><main id="review"></main>'+['cardsets.js','creatures.js','strikes.js','kinds.js','cards.js','cards/card-geo.js','cards/icons.js','cards/illustrations.js','cards/art-variants.js','art.js'].map(f=>'<script src="'+f+'"></script>').join('')+'<script>const save={seen:{},owned:{}};const esc=s=>String(s).replace(/[&<>\"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\\\"":"&quot;"}[c]));'+helper+'\nfor(const id of Object.keys(HEX_CARD_ART_VARIANTS)){const s=document.createElement("section"),h=document.createElement("h2"),r=document.createElement("div");h.textContent=CARDS[id].name;r.className="row";s.append(h,r);for(const w of [96,120,240,396]){const wrap=document.createElement("div");wrap.className="specimen";wrap.style.width=w+"px";const c=cardEl(CARDS[id],"<span class=badge>3/3</span>",false,w<=120?"compact":"expanded");c.style.width=w+"px";wrap.append(c);r.append(wrap);}document.querySelector("#review").append(s);}</script>';
+ const html=`<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Hexmancers artwork review</title>
+<link rel="stylesheet" href="card.css"><link rel="stylesheet" href="cards/card-geo.css">
+<style>body{margin:24px;background:#10151c;color:#eee;font:16px system-ui}h1{font-size:24px}h2{font-size:18px}.row{display:flex;gap:22px;align-items:start;overflow:auto;padding:12px 0}section{border-bottom:1px solid #36404b;padding:12px 0}.specimen{flex-shrink:0}p{margin:8px 0}nav{display:flex;gap:12px;align-items:center;flex-wrap:wrap}nav button,select{font:inherit;padding:8px}</style>
+<h1>Artwork review</h1><p>${Object.keys(variants).length} cards at 96, 120, 240 and 396 pixels. Choose a colour; scroll each row to compare sizes.</p>
+<nav><label>Colour <select id="review-colour"></select></label><button id="review-prev">Previous</button><button id="review-next">Next</button><span id="review-count"></span></nav><main id="review"></main>
+${['cardsets.js','creatures.js','strikes.js','kinds.js','cards.js','cards/card-geo.js','cards/icons.js','cards/illustrations.js','cards/art-variants.js','art.js'].map(f=>'<script src="'+f+'"></script>').join('')}
+<script>
+const save={seen:{},owned:{}};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>c==='&'?'&amp;':c==='<'?'&lt;':c==='>'?'&gt;':'&quot;');
+${helper}
+let reviewPage=0;
+const reviewSelect=document.querySelector('#review-colour');
+for(const colour of Object.keys(COLORS)){const option=document.createElement('option');option.value=colour;option.textContent=COLORS[colour].name;reviewSelect.append(option);}
+reviewSelect.value='fire';
+function renderReview(){
+ const host=document.querySelector('#review');host.replaceChildren();
+ const ids=Object.keys(HEX_CARD_ART_VARIANTS).filter(id=>CARDS[id].color===reviewSelect.value);
+ const begin=reviewPage*20;
+ for(const id of ids.slice(begin,begin+20)){
+  const section=document.createElement('section'),heading=document.createElement('h2'),row=document.createElement('div');heading.textContent=CARDS[id].name;row.className='row';section.append(heading,row);
+  for(const width of [96,120,240,396]){
+   const wrap=document.createElement('div');wrap.className='specimen';wrap.style.width=width+'px';
+   const card=cardEl(CARDS[id],'<span class="badge">3/3</span>',false,width<=120?'compact':'expanded');card.style.width=width+'px';card.querySelectorAll('img').forEach(image=>image.loading='lazy');wrap.append(card);row.append(wrap);
+  }
+  host.append(section);
+ }
+ document.querySelector('#review-prev').disabled=reviewPage===0;
+ document.querySelector('#review-next').disabled=begin+20>=ids.length;
+ document.querySelector('#review-count').textContent=ids.length?(begin+1)+'–'+Math.min(begin+20,ids.length)+' of '+ids.length:'No artwork in this colour';
+}
+reviewSelect.onchange=()=>{reviewPage=0;renderReview();};
+document.querySelector('#review-prev').onclick=()=>{if(reviewPage>0){reviewPage--;renderReview();}};
+document.querySelector('#review-next').onclick=()=>{reviewPage++;renderReview();};
+renderReview();
+</script>`;
  fs.writeFileSync(path.join(ROOT,'game/art-review.html'),html);
  console.log(JSON.stringify({catalogue:all.length,registered:Object.keys(variants).length,imagesDecoded:decoded,cardMarkupChecked:rendered,locked:'pass',fallback:'pass',browserLayout:'not tested: sandbox prevents browser launch'}));
 }

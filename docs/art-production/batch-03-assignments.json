@@ -1,0 +1,150 @@
+{
+  "batch": 3,
+  "targetNewImages": 32,
+  "assignments": {
+    "fire": [
+      {
+        "id": "kindle",
+        "name": "Kindle"
+      },
+      {
+        "id": "fire_charge_01",
+        "name": "Powder Horn"
+      },
+      {
+        "id": "fire_utility_01",
+        "name": "Prospector's Map"
+      },
+      {
+        "id": "fire_environment_01",
+        "name": "Lava Field"
+      }
+    ],
+    "frost": [
+      {
+        "id": "hail_lob",
+        "name": "Hail Lob"
+      },
+      {
+        "id": "icicle_spire",
+        "name": "Icicle Spire"
+      },
+      {
+        "id": "frost_summon_01",
+        "name": "Merrow"
+      },
+      {
+        "id": "frost_environment_01",
+        "name": "Frozen Lake"
+      }
+    ],
+    "verdant": [
+      {
+        "id": "briar_bomb",
+        "name": "Briar Bomb"
+      },
+      {
+        "id": "verdant_summon_01",
+        "name": "Wasp Nest"
+      },
+      {
+        "id": "verdant_charge_01",
+        "name": "Quiver of Yew Arrows"
+      },
+      {
+        "id": "verdant_trap_01",
+        "name": "Hunter's Net"
+      }
+    ],
+    "storm": [
+      {
+        "id": "tailwind",
+        "name": "Tailwind"
+      },
+      {
+        "id": "coil_sentry",
+        "name": "Coil Sentry"
+      },
+      {
+        "id": "storm_charge_01",
+        "name": "Leyden Jar Battery"
+      },
+      {
+        "id": "storm_piece_01",
+        "name": "Lamp of the Bound Djinn"
+      }
+    ],
+    "light": [
+      {
+        "id": "judgment",
+        "name": "Judgment"
+      },
+      {
+        "id": "light_charge_01",
+        "name": "Swan-Feather Quiver"
+      },
+      {
+        "id": "light_trap_01",
+        "name": "Roman Caltrops"
+      },
+      {
+        "id": "light_piece_01",
+        "name": "Crown of the Round Table"
+      }
+    ],
+    "shadow": [
+      {
+        "id": "wraith_totem",
+        "name": "Wraith Totem"
+      },
+      {
+        "id": "dark_pact",
+        "name": "Dark Pact"
+      },
+      {
+        "id": "shadow_charge_01",
+        "name": "Bag of Teeth"
+      },
+      {
+        "id": "shadow_environment_01",
+        "name": "Haunted Bog"
+      }
+    ],
+    "brown": [
+      {
+        "id": "brown_equip_05",
+        "name": "Sea-Folk Trident Head"
+      },
+      {
+        "id": "brown_trap_01",
+        "name": "Dwarven Pendulum Axe"
+      },
+      {
+        "id": "brown_aceup_02",
+        "name": "Black Powder Charge"
+      },
+      {
+        "id": "iron_corridor",
+        "name": "Iron Corridor"
+      }
+    ],
+    "gray": [
+      {
+        "id": "gray_summon_03",
+        "name": "Haunted Plate"
+      },
+      {
+        "id": "gray_ward_02",
+        "name": "Phalanx"
+      },
+      {
+        "id": "gray_boon_02",
+        "name": "Rallying Horn"
+      },
+      {
+        "id": "gray_charge_03",
+        "name": "Bag of Rocks"
+      }
+    ]
+  }
+}

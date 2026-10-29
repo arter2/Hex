@@ -114,7 +114,8 @@ const PLAN = blacklist => {
   if (!route || !route.length) return { target, why, route: 0, tap: null };
   // tap the farthest step of the route that is on screen and clear of the HUD
   let tap = null,
-    via = -1;
+    via = -1,
+    toward = false;
   for (let k = Math.min(route.length - 1, 14); k >= Math.min(2, route.length - 1); k--) {
     const s = screenOf(route[k]);
     if (s) {
@@ -123,7 +124,20 @@ const PLAN = blacklist => {
       break;
     }
   }
-  return { target, why, route: route.length, tap, via };
+  if (!tap) {
+    // nothing on the route is clear on screen: tap 90 px from you in the direction of the next step
+    const me = new THREE.Vector3(EX.px, 0, EX.pz).project(X3.cam),
+      nx = new THREE.Vector3(xw(route[0]), 0, xz(route[0])).project(X3.cam);
+    const mx = r.left + ((me.x + 1) / 2) * r.width,
+      my = r.top + ((1 - me.y) / 2) * r.height;
+    const dx = (nx.x - me.x) * r.width,
+      dy = -(nx.y - me.y) * r.height,
+      L = Math.hypot(dx, dy) || 1;
+    const x = mx + (dx / L) * 90,
+      y = my + (dy / L) * 90;
+    if (x > 24 && y > 24 && x < innerWidth - 24 && y < innerHeight - 24) (tap = { x, y }), (toward = true);
+  }
+  return { target, why, route: route.length, tap, via, toward };
 };
 
 const HUD_AUDIT = () => {
@@ -185,14 +199,20 @@ async function playFloor(browser, host, depth, minutes, device, out) {
     return f;
   };
   const t0 = Date.now();
-  const stats = { taps: 0, tapsIgnored: 0, walks: 0, stuck: 0, fights: 0, fightsWon: 0, fightSeconds: [], dialogs: [], explored: 0 };
+  const stats = { taps: 0, tapsIgnored: 0, walks: 0, stuck: 0, fights: 0, deaths: 0, fightSeconds: [], dialogs: [], tips: [] };
   // fixture: a fresh save with a starter deck and a character levelled roughly for this depth
   const level = await page.evaluate(depth => {
     save = newSave(STARTERS[0]);
     save.char = lockChar(newChar('human', 0));
     save.deepest = depth;
+    const ch = ensureChar(save);
     let guard = 0;
-    while (save.level < Math.max(1, Math.ceil(depth * 0.8)) && guard++ < 200) gainXp(save, 200);
+    while (save.level < Math.round(xpLevelFor(depth)) && guard++ < 500) gainXp(save, 50);
+    for (let i = 0; pointsLeft(ch) > 0 && i < 500; i++) {
+      const k = STAT_KEYS[i % STAT_KEYS.length];
+      ch.spent[k] = (ch.spent[k] || 0) + 1;
+    }
+    save.lvlNew = false;
     const level = save.level;
     // "Walk to touch" (a Settings choice): the default "tap to walk" times the tap between handler calls, and on this
     // software-rendered page a touch's down and up arrive ~0.9 s apart, so every tap would read as a hold
@@ -225,7 +245,9 @@ async function playFloor(browser, host, depth, minutes, device, out) {
   for (const c of hud.covered) issue('hud-covered', c);
   for (const s of hud.small) issue('hud-small-target', s);
 
-  const blacklist = [];
+  const blacklist = [],
+    noTap = new Map();
+  let attempts = 1;
   let lastPc = -1,
     sameCount = 0,
     seenDialogs = new Map(),
@@ -251,9 +273,30 @@ async function playFloor(browser, host, depth, minutes, device, out) {
       break;
     }
     if (s.screen === 'scrCamp' || s.screen === 'scrMenu') {
-      endReason = s.screen === 'scrCamp' ? 'back at camp (died or left)' : 'main menu';
+      stats.deaths++;
       await shot('ended');
-      break;
+      if (attempts >= 3 || Date.now() > deadline - 60000) {
+        endReason = 'died ' + stats.deaths + ' time(s)';
+        break;
+      }
+      attempts++;
+      // back in: heal up and start this depth again from the main menu
+      await page.evaluate(() => {
+        if (typeof stopExplore === 'function') stopExplore();
+        openMenu();
+      });
+      await sleep(800);
+      const again = await tapEl(page, cdp, '#mmExplore');
+      stats.taps++;
+      if (!again || !again.ok) issue('tap-covered', { control: 'mmExplore (retry)', under: again && again.under });
+      await page.waitForFunction(() => document.getElementById('scrExplore').classList.contains('on'), null, { timeout: 30000 }).catch(() =>
+        issue('softlock', { what: 'Explore did not reopen after a death' })
+      );
+      blacklist.length = 0;
+      noTap.clear();
+      lastPc = -1;
+      await sleep(1200);
+      continue;
     }
     // overlays first: dialogs, rewards, the hand screen
     const ov = s.overlays.find(o => o !== 'peek') || (s.overlays.includes('peek') ? 'peek' : null);
@@ -384,6 +427,19 @@ async function playFloor(browser, host, depth, minutes, device, out) {
       await sleep(500);
       continue;
     }
+    const tipOpen = await page.evaluate(() => {
+      const t = document.getElementById('xTipCard');
+      return !!t && getComputedStyle(t).display !== 'none' && t.getBoundingClientRect().height > 0 && getComputedStyle(t).visibility !== 'hidden' && getComputedStyle(t).opacity !== '0';
+    });
+    if (tipOpen) {
+      const tipText = await page.evaluate(() => document.getElementById('xTipText').textContent.trim());
+      if (!stats.tips.includes(tipText)) stats.tips.push(tipText);
+      const h = await tapEl(page, cdp, '#xTipOk');
+      stats.taps++;
+      if (h && !h.ok) issue('tap-covered', { control: 'tip: Got it', under: h.under });
+      await sleep(500);
+      continue;
+    }
     if (s.busy) {
       await sleep(400);
       continue;
@@ -401,6 +457,10 @@ async function playFloor(browser, host, depth, minutes, device, out) {
       break;
     }
     if (!plan.tap) {
+      const tries = (noTap.get(plan.target) || 0) + 1;
+      noTap.set(plan.target, tries);
+      await sleep(500);
+      if (tries < 3) continue;
       issue('no-tap-point', { target: plan.target, why: plan.why, route: plan.route });
       blacklist.push(plan.target);
       if (blacklist.length > 30) {

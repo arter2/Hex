@@ -1,0 +1,18 @@
+[
+  {
+    "cardId": "gray_summon_01",
+    "name": "Living Armor",
+    "prompt": "Create a square 512x512 master illustration for a medieval fantasy collectible card, illustration only: no frame, border, lettering, symbols, or UI. Depict Living Armor: a complete suit of heavy, weathered steel plate has awakened and stands between a vulnerable traveler and unseen danger in a ruined fortress corridor. The empty helmet glows faintly within, one gauntleted arm raised to guard while the other reaches forward as if drawing a foe toward it with an unseen force. The armor is sturdy and imposing, with believable dented steel, leather straps, tarnished brass rivets and a worn dark cloak; subtle dust and loose stones drift toward its hand to suggest the pull. Painterly medieval fantasy collectible-card illustration, rich tactile materials, painterly brushwork, dramatic warm torchlight against cool stone shadow, atmospheric but legible. Classic tabletop fantasy art direction. Not anime, not Disney cartoon, not photorealistic, no pixel art, no modern objects. Square composition designed for a 206:141 horizontal crop centered in the image: keep the entire helmet, raised guard arm, reaching hand and torso within x=24..488, y=105..407; top and bottom margins may be quiet expendable background. Subject fills roughly 70% of the central crop with a clear silhouette and uncluttered background.",
+    "generatedPath": "/workspace/generated_images/exec-fa852005-c717-4783-a9d8-a868864ce336.png",
+    "focalPoint": { "x": 0.5, "y": 0.5 },
+    "status": "generated"
+  },
+  {
+    "cardId": "gray_charge_01",
+    "name": "Sling Stones",
+    "prompt": "Create a square 512x512 master illustration for a medieval fantasy collectible card, illustration only: no frame, border, lettering, symbols, or UI. Depict Sling Stones: a weathered village slinger in rough wool and leather plants their feet on a rocky hillside and whirls a braided leather sling, releasing three small stones in a tight burst toward a distant enemy. Freeze the decisive instant: the sling's loop, the slinger's focused face and releasing hand, and three clear stone projectiles streaking outward are all visible. Grounded medieval clothing, worn leather, linen, stone and wind-tossed grass. Painterly fantasy collectible-card illustration with confident brushwork, believable natural materials, cinematic late-afternoon light, cool muted hills with warm highlights and atmospheric depth. Classic tabletop fantasy painting, not anime, not Disney cartoon, not photorealistic, no pixel art, no modern tech. Square composition designed for a 206:141 horizontal crop centered in the image: keep face, hand, sling and all three stones within x=24..488, y=105..407; top and bottom margins may be quiet expendable background. Main action fills about 70% of central crop; clear readable silhouette and quiet background.",
+    "generatedPath": "/workspace/generated_images/exec-6b40c9ff-f2c6-48a8-9fdc-b6ed297666ba.png",
+    "focalPoint": { "x": 0.5, "y": 0.5 },
+    "status": "generated"
+  }
+]

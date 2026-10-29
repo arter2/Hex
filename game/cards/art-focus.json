@@ -1,0 +1,50 @@
+{
+  "brown_equip_10": [
+    0.5,
+    0.38
+  ],
+  "brown_equip_15": [
+    0.5,
+    0.38
+  ],
+  "brown_equip_18": [
+    0.5,
+    0.68
+  ],
+  "brown_equip_19": [
+    0.5,
+    0.42
+  ],
+  "brown_equip_23": [
+    0.5,
+    0.42
+  ],
+  "brown_equip_31": [
+    0.5,
+    0.42
+  ],
+  "brown_equip_32": [
+    0.5,
+    0.42
+  ],
+  "gray_charge_01": [
+    0.5,
+    0.38
+  ],
+  "gray_summon_01": [
+    0.5,
+    0.4
+  ],
+  "light_sentry_12": [
+    0.5,
+    0.38
+  ],
+  "brown_machine_05": [
+    0.5,
+    0.42
+  ],
+  "fire_pot": [
+    0.5,
+    0.42
+  ]
+}

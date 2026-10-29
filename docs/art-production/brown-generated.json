@@ -1,0 +1,18 @@
+[
+  {
+    "cardId": "brown_machine_05",
+    "name": "Clockwork Owl",
+    "prompt": "Square 512x512 illustration-only image for a medieval fantasy collectible card, painterly grounded fantasy card art with rich materials and cinematic light. A singular Clockwork Owl, a sturdy gnomish mechanical scout shaped like a small owl, built from aged brass plates, dark iron hinges, tiny gear joints and layered feather-like metal vanes. It glides diagonally through a dusky mountain workshop window into cold night air, wings fully extended and eyes glowing with subtle pale icy blue; faint frost-like chill curls in its wake to suggest its chilling trait. Strong readable silhouette, owl occupies most of the center, detailed but not cluttered. Keep the whole owl and its key action wholly inside central safe band x24..488 y105..407 on the 512 square, with quiet atmospheric stone and night sky above and below for a 206:141 crop. Warm brass and iron against restrained cool blue moonlight, painterly brushwork, believable mechanical construction. No modern technology, words, numbers, borders, frame, interface, logo, watermark, Disney, anime, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ee5360e6-288f-426b-a9ca-809046db2ad0.png",
+    "focalPoint": [0.5, 0.5],
+    "status": "generated"
+  },
+  {
+    "cardId": "brown_instant_16",
+    "name": "Sea-Folk Kelp Tea",
+    "prompt": "Square 512x512 illustration-only image for a medieval fantasy collectible card, painterly grounded fantasy card art with rich materials and cinematic light. A sea-folk healer in an ancient coral grotto prepares a healing cup of kelp tea. The focal subject is a small hammered copper kettle and shell cup in the healer's hands, filled with deep green kelp infusion; delicate ribbons of living kelp unfurl and tiny luminous sea-green sprouts bloom around the cup, suggesting gentle regeneration. The sea-folk figure is a supporting presence with natural aquatic features, weathered robes and subtle pearl ornaments. Warm tea steam mingles with cool underwater light rays; coral shelves and drifting bubbles provide a calm setting. Keep kettle, cup, healer's hands and sprouting kelp wholly within central safe band x24..488 y105..407 on the 512 square; quieter grotto atmosphere at top and bottom for a 206:141 crop. Restrained jade green, copper, sea-glass blue and soft gold, grounded fantasy materials and painterly brushwork. No words, numbers, border, frame, interface, logo, watermark, Disney, anime, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-29e42a5d-c896-4bc0-9b34-8a8a2339a1cc.png",
+    "focalPoint": [0.5, 0.5],
+    "status": "generated"
+  }
+]

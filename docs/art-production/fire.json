@@ -1,0 +1,1478 @@
+[
+  {
+    "id": "ember_dart",
+    "name": "Ember Dart",
+    "type": "strike",
+    "color": "fire"
+  },
+  {
+    "id": "cinder_lance",
+    "name": "Cinder Lance",
+    "type": "strike",
+    "color": "fire"
+  },
+  {
+    "id": "flame_fan",
+    "name": "Flame Fan",
+    "type": "strike",
+    "color": "fire"
+  },
+  {
+    "id": "blaze_bolt",
+    "name": "Blaze Bolt",
+    "type": "strike",
+    "color": "fire"
+  },
+  {
+    "id": "fire_pot",
+    "name": "Fire Pot",
+    "type": "lob",
+    "color": "fire"
+  },
+  {
+    "id": "ember_wall",
+    "name": "Ember Wall",
+    "type": "ward",
+    "color": "fire"
+  },
+  {
+    "id": "brazier",
+    "name": "Brazier",
+    "type": "sentry",
+    "color": "fire"
+  },
+  {
+    "id": "kindle",
+    "name": "Kindle",
+    "type": "boon",
+    "color": "fire"
+  },
+  {
+    "id": "meteor",
+    "name": "Meteor",
+    "type": "lob",
+    "color": "fire"
+  },
+  {
+    "id": "fire_strike_01",
+    "name": "Musket Shot",
+    "type": "strike",
+    "color": "fire"
+  },
+  {
+    "id": "fire_strike_02",
+    "name": "Flintlock Ball",
+    "type": "strike",
+    "color": "fire"
+  },
+  {
+    "id": "fire_strike_03",
+    "name": "Bottle Rocket",
+    "type": "strike",
+    "color": "fire"
+  },
+  {
+    "id": "fire_strike_04",
+    "name": "Skyrocket",
+    "type": "strike",
+    "color": "fire"
+  },
+  {
+    "id": "fire_strike_05",
+    "name": "Rocket Barrage",
+    "type": "strike",
+    "color": "fire"
+  },
+  {
+    "id": "fire_strike_06",
+    "name": "Dragon's Breath",
+    "type": "strike",
+    "color": "fire"
+  },
+  {
+    "id": "fire_strike_07",
+    "name": "Wyvern Spit",
+    "type": "strike",
+    "color": "fire"
+  },
+  {
+    "id": "fire_strike_08",
+    "name": "Kitsune Foxfire",
+    "type": "strike",
+    "color": "fire"
+  },
+  {
+    "id": "fire_strike_09",
+    "name": "Oni Club Swing",
+    "type": "strike",
+    "color": "fire"
+  },
+  {
+    "id": "fire_strike_10",
+    "name": "Minotaur Charge",
+    "type": "strike",
+    "color": "fire"
+  },
+  {
+    "id": "fire_strike_11",
+    "name": "Bull Rush",
+    "type": "strike",
+    "color": "fire"
+  },
+  {
+    "id": "fire_strike_12",
+    "name": "Pickaxe Strike",
+    "type": "strike",
+    "color": "fire"
+  },
+  {
+    "id": "fire_strike_13",
+    "name": "Miner's Drill",
+    "type": "strike",
+    "color": "fire"
+  },
+  {
+    "id": "fire_strike_14",
+    "name": "Forge Hammer Throw",
+    "type": "strike",
+    "color": "fire"
+  },
+  {
+    "id": "fire_strike_15",
+    "name": "Red-Hot Rivet",
+    "type": "strike",
+    "color": "fire"
+  },
+  {
+    "id": "fire_strike_16",
+    "name": "Molten Slag Spray",
+    "type": "strike",
+    "color": "fire"
+  },
+  {
+    "id": "fire_strike_17",
+    "name": "Lava Jet",
+    "type": "strike",
+    "color": "fire"
+  },
+  {
+    "id": "fire_strike_18",
+    "name": "Volcanic Vent",
+    "type": "strike",
+    "color": "fire"
+  },
+  {
+    "id": "fire_strike_19",
+    "name": "Cyclone of Cinders",
+    "type": "strike",
+    "color": "fire"
+  },
+  {
+    "id": "fire_strike_20",
+    "name": "Fire Whirl",
+    "type": "strike",
+    "color": "fire"
+  },
+  {
+    "id": "fire_strike_21",
+    "name": "Phoenix Feather",
+    "type": "strike",
+    "color": "fire"
+  },
+  {
+    "id": "fire_strike_22",
+    "name": "Griffin Talon",
+    "type": "strike",
+    "color": "fire"
+  },
+  {
+    "id": "fire_strike_23",
+    "name": "Coyote's Trick Shot",
+    "type": "strike",
+    "color": "fire"
+  },
+  {
+    "id": "fire_strike_24",
+    "name": "Goblin Slingshot",
+    "type": "strike",
+    "color": "fire"
+  },
+  {
+    "id": "fire_strike_25",
+    "name": "Gremlin Sparkler",
+    "type": "strike",
+    "color": "fire"
+  },
+  {
+    "id": "fire_strike_26",
+    "name": "Duende's Ember",
+    "type": "strike",
+    "color": "fire"
+  },
+  {
+    "id": "fire_strike_27",
+    "name": "Shishi Roar",
+    "type": "strike",
+    "color": "fire"
+  },
+  {
+    "id": "fire_strike_28",
+    "name": "Iaido Slash",
+    "type": "strike",
+    "color": "fire"
+  },
+  {
+    "id": "fire_strike_29",
+    "name": "Flaming Shuriken",
+    "type": "strike",
+    "color": "fire"
+  },
+  {
+    "id": "fire_strike_30",
+    "name": "Dragon Fist",
+    "type": "strike",
+    "color": "fire"
+  },
+  {
+    "id": "fire_strike_31",
+    "name": "Rockslide",
+    "type": "strike",
+    "color": "fire"
+  },
+  {
+    "id": "fire_strike_32",
+    "name": "Obsidian Spear",
+    "type": "strike",
+    "color": "fire"
+  },
+  {
+    "id": "fire_strike_33",
+    "name": "Vampire's Kiss",
+    "type": "strike",
+    "color": "fire"
+  },
+  {
+    "id": "fire_strike_34",
+    "name": "Purifying Flame",
+    "type": "strike",
+    "color": "fire"
+  },
+  {
+    "id": "fire_strike_35",
+    "name": "Great Dragon's Roar",
+    "type": "strike",
+    "color": "fire"
+  },
+  {
+    "id": "fire_strike_36",
+    "name": "Oni King's Kanabo",
+    "type": "strike",
+    "color": "fire"
+  },
+  {
+    "id": "fire_lob_01",
+    "name": "Dynamite Bundle",
+    "type": "lob",
+    "color": "fire"
+  },
+  {
+    "id": "fire_lob_02",
+    "name": "Black Powder Keg",
+    "type": "lob",
+    "color": "fire"
+  },
+  {
+    "id": "fire_lob_03",
+    "name": "Grenado",
+    "type": "lob",
+    "color": "fire"
+  },
+  {
+    "id": "fire_lob_04",
+    "name": "Greek Fire Jar",
+    "type": "lob",
+    "color": "fire"
+  },
+  {
+    "id": "fire_lob_05",
+    "name": "Volcano Bomb",
+    "type": "lob",
+    "color": "fire"
+  },
+  {
+    "id": "fire_lob_06",
+    "name": "Lava Glob",
+    "type": "lob",
+    "color": "fire"
+  },
+  {
+    "id": "fire_lob_07",
+    "name": "Magma Geyser",
+    "type": "lob",
+    "color": "fire"
+  },
+  {
+    "id": "fire_lob_08",
+    "name": "Meteor Shard",
+    "type": "lob",
+    "color": "fire"
+  },
+  {
+    "id": "fire_lob_09",
+    "name": "Firework Shell",
+    "type": "lob",
+    "color": "fire"
+  },
+  {
+    "id": "fire_lob_10",
+    "name": "Paper Lantern Bomb",
+    "type": "lob",
+    "color": "fire"
+  },
+  {
+    "id": "fire_lob_11",
+    "name": "Dragon Egg",
+    "type": "lob",
+    "color": "fire"
+  },
+  {
+    "id": "fire_lob_12",
+    "name": "Goblin Bomb",
+    "type": "lob",
+    "color": "fire"
+  },
+  {
+    "id": "fire_lob_13",
+    "name": "Gremlin Grenade",
+    "type": "lob",
+    "color": "fire"
+  },
+  {
+    "id": "fire_lob_14",
+    "name": "Mortar Round",
+    "type": "lob",
+    "color": "fire"
+  },
+  {
+    "id": "fire_lob_15",
+    "name": "Cannonball",
+    "type": "lob",
+    "color": "fire"
+  },
+  {
+    "id": "fire_lob_16",
+    "name": "Basalt Boulder",
+    "type": "lob",
+    "color": "fire"
+  },
+  {
+    "id": "fire_lob_17",
+    "name": "Rockfall",
+    "type": "lob",
+    "color": "fire"
+  },
+  {
+    "id": "fire_lob_18",
+    "name": "Phoenix Ash Bomb",
+    "type": "lob",
+    "color": "fire"
+  },
+  {
+    "id": "fire_lob_19",
+    "name": "Sake Firebomb",
+    "type": "lob",
+    "color": "fire"
+  },
+  {
+    "id": "fire_lob_20",
+    "name": "Thunder-Egg Geode",
+    "type": "lob",
+    "color": "fire"
+  },
+  {
+    "id": "fire_lob_21",
+    "name": "Cinder Cone",
+    "type": "lob",
+    "color": "fire"
+  },
+  {
+    "id": "fire_lob_22",
+    "name": "Pyroclastic Cloud",
+    "type": "lob",
+    "color": "fire"
+  },
+  {
+    "id": "fire_lob_23",
+    "name": "Eruption",
+    "type": "lob",
+    "color": "fire"
+  },
+  {
+    "id": "fire_ward_01",
+    "name": "Dwarven Shieldwall",
+    "type": "ward",
+    "color": "fire"
+  },
+  {
+    "id": "fire_ward_02",
+    "name": "Forge-Iron Plate",
+    "type": "ward",
+    "color": "fire"
+  },
+  {
+    "id": "fire_ward_03",
+    "name": "Basalt Wall",
+    "type": "ward",
+    "color": "fire"
+  },
+  {
+    "id": "fire_ward_04",
+    "name": "Obsidian Bulwark",
+    "type": "ward",
+    "color": "fire"
+  },
+  {
+    "id": "fire_ward_05",
+    "name": "Wall of Fire",
+    "type": "ward",
+    "color": "fire"
+  },
+  {
+    "id": "fire_ward_06",
+    "name": "Lava Moat",
+    "type": "ward",
+    "color": "fire"
+  },
+  {
+    "id": "fire_ward_07",
+    "name": "Mountain Pass Gate",
+    "type": "ward",
+    "color": "fire"
+  },
+  {
+    "id": "fire_ward_08",
+    "name": "Samurai Armor",
+    "type": "ward",
+    "color": "fire"
+  },
+  {
+    "id": "fire_ward_09",
+    "name": "Dragon Scale Shield",
+    "type": "ward",
+    "color": "fire"
+  },
+  {
+    "id": "fire_ward_10",
+    "name": "Oni Mask",
+    "type": "ward",
+    "color": "fire"
+  },
+  {
+    "id": "fire_ward_11",
+    "name": "Brimstone Rampart",
+    "type": "ward",
+    "color": "fire"
+  },
+  {
+    "id": "fire_ward_12",
+    "name": "Anvil Guard",
+    "type": "ward",
+    "color": "fire"
+  },
+  {
+    "id": "fire_ward_13",
+    "name": "Great Wall Bricks",
+    "type": "ward",
+    "color": "fire"
+  },
+  {
+    "id": "fire_ward_14",
+    "name": "Molten Shell",
+    "type": "ward",
+    "color": "fire"
+  },
+  {
+    "id": "fire_sentry_01",
+    "name": "Bonfire",
+    "type": "sentry",
+    "color": "fire"
+  },
+  {
+    "id": "fire_sentry_02",
+    "name": "Forge Bellows",
+    "type": "sentry",
+    "color": "fire"
+  },
+  {
+    "id": "fire_sentry_03",
+    "name": "Lava Totem",
+    "type": "sentry",
+    "color": "fire"
+  },
+  {
+    "id": "fire_sentry_04",
+    "name": "Shishi Guardian Statue",
+    "type": "sentry",
+    "color": "fire"
+  },
+  {
+    "id": "fire_sentry_05",
+    "name": "Fox Lantern",
+    "type": "sentry",
+    "color": "fire"
+  },
+  {
+    "id": "fire_sentry_06",
+    "name": "Dragon Kiln",
+    "type": "sentry",
+    "color": "fire"
+  },
+  {
+    "id": "fire_sentry_07",
+    "name": "Smoking Chimney",
+    "type": "sentry",
+    "color": "fire"
+  },
+  {
+    "id": "fire_sentry_08",
+    "name": "Torch Post",
+    "type": "sentry",
+    "color": "fire"
+  },
+  {
+    "id": "fire_sentry_09",
+    "name": "Fire Lookout Tower",
+    "type": "sentry",
+    "color": "fire"
+  },
+  {
+    "id": "fire_sentry_10",
+    "name": "Goblin Flamethrower Post",
+    "type": "sentry",
+    "color": "fire"
+  },
+  {
+    "id": "fire_sentry_11",
+    "name": "Phoenix Nest",
+    "type": "sentry",
+    "color": "fire"
+  },
+  {
+    "id": "fire_boon_01",
+    "name": "Battle Fury",
+    "type": "boon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_boon_02",
+    "name": "Blood Oath of the Oni",
+    "type": "boon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_boon_03",
+    "name": "Berserker's Rage",
+    "type": "boon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_boon_04",
+    "name": "Forge Heat",
+    "type": "boon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_boon_05",
+    "name": "Hot Coals Dash",
+    "type": "boon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_boon_06",
+    "name": "Fox's Quickness",
+    "type": "boon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_boon_07",
+    "name": "Dragon Heart",
+    "type": "boon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_boon_08",
+    "name": "Hearty Feast",
+    "type": "boon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_boon_09",
+    "name": "Mulled Wine",
+    "type": "boon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_boon_10",
+    "name": "Smith's Focus",
+    "type": "boon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_boon_11",
+    "name": "Molten Courage",
+    "type": "boon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_boon_12",
+    "name": "Mountain Strength",
+    "type": "boon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_boon_13",
+    "name": "Kitsune Blessing",
+    "type": "boon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_boon_14",
+    "name": "Phoenix Rebirth",
+    "type": "boon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_boon_15",
+    "name": "War Drums",
+    "type": "boon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_boon_16",
+    "name": "Bull's Endurance",
+    "type": "boon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_boon_17",
+    "name": "Dwarven Ale",
+    "type": "boon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_charge_01",
+    "name": "Powder Horn",
+    "type": "charge",
+    "color": "fire"
+  },
+  {
+    "id": "fire_charge_02",
+    "name": "Musket Cartridges",
+    "type": "charge",
+    "color": "fire"
+  },
+  {
+    "id": "fire_charge_03",
+    "name": "Rocket Crate",
+    "type": "charge",
+    "color": "fire"
+  },
+  {
+    "id": "fire_charge_04",
+    "name": "Bandolier of Flares",
+    "type": "charge",
+    "color": "fire"
+  },
+  {
+    "id": "fire_charge_05",
+    "name": "Ore Cart",
+    "type": "charge",
+    "color": "fire"
+  },
+  {
+    "id": "fire_charge_06",
+    "name": "Coal Sack",
+    "type": "charge",
+    "color": "fire"
+  },
+  {
+    "id": "fire_charge_07",
+    "name": "Goblin Junk Sack",
+    "type": "charge",
+    "color": "fire"
+  },
+  {
+    "id": "fire_charge_08",
+    "name": "Rivet Pouch",
+    "type": "charge",
+    "color": "fire"
+  },
+  {
+    "id": "fire_charge_09",
+    "name": "Dragon Tooth Quiver",
+    "type": "charge",
+    "color": "fire"
+  },
+  {
+    "id": "fire_charge_10",
+    "name": "Firecracker String",
+    "type": "charge",
+    "color": "fire"
+  },
+  {
+    "id": "fire_charge_11",
+    "name": "Lantern Oil Flask",
+    "type": "charge",
+    "color": "fire"
+  },
+  {
+    "id": "fire_charge_12",
+    "name": "Pistol Case",
+    "type": "charge",
+    "color": "fire"
+  },
+  {
+    "id": "fire_charge_13",
+    "name": "Blasting Caps",
+    "type": "charge",
+    "color": "fire"
+  },
+  {
+    "id": "fire_charge_14",
+    "name": "Shishi Pearl",
+    "type": "charge",
+    "color": "fire"
+  },
+  {
+    "id": "fire_charge_15",
+    "name": "Fox-Fire Jar",
+    "type": "charge",
+    "color": "fire"
+  },
+  {
+    "id": "fire_charge_16",
+    "name": "Wineskin of Flame",
+    "type": "charge",
+    "color": "fire"
+  },
+  {
+    "id": "fire_charge_17",
+    "name": "Meteorite Fragments",
+    "type": "charge",
+    "color": "fire"
+  },
+  {
+    "id": "fire_charge_18",
+    "name": "Bottomless Powder Keg",
+    "type": "charge",
+    "color": "fire"
+  },
+  {
+    "id": "fire_utility_01",
+    "name": "Prospector's Map",
+    "type": "utility",
+    "color": "fire"
+  },
+  {
+    "id": "fire_utility_02",
+    "name": "Miner's Lamp",
+    "type": "utility",
+    "color": "fire"
+  },
+  {
+    "id": "fire_utility_03",
+    "name": "Smith's Ledger",
+    "type": "utility",
+    "color": "fire"
+  },
+  {
+    "id": "fire_utility_04",
+    "name": "Cleansing Pyre",
+    "type": "utility",
+    "color": "fire"
+  },
+  {
+    "id": "fire_utility_05",
+    "name": "Smelting Crucible",
+    "type": "utility",
+    "color": "fire"
+  },
+  {
+    "id": "fire_utility_06",
+    "name": "Dragon's Riddle",
+    "type": "utility",
+    "color": "fire"
+  },
+  {
+    "id": "fire_utility_07",
+    "name": "Coyote's Trickery",
+    "type": "utility",
+    "color": "fire"
+  },
+  {
+    "id": "fire_utility_08",
+    "name": "Goblin Scavenge",
+    "type": "utility",
+    "color": "fire"
+  },
+  {
+    "id": "fire_utility_09",
+    "name": "Ancestor's Tale",
+    "type": "utility",
+    "color": "fire"
+  },
+  {
+    "id": "fire_utility_10",
+    "name": "Red Envelope",
+    "type": "utility",
+    "color": "fire"
+  },
+  {
+    "id": "fire_trap_01",
+    "name": "Landmine",
+    "type": "trap",
+    "color": "fire"
+  },
+  {
+    "id": "fire_trap_02",
+    "name": "Powder Tripwire",
+    "type": "trap",
+    "color": "fire"
+  },
+  {
+    "id": "fire_trap_03",
+    "name": "Iron Caltrops",
+    "type": "trap",
+    "color": "fire"
+  },
+  {
+    "id": "fire_trap_04",
+    "name": "Magma Pit",
+    "type": "trap",
+    "color": "fire"
+  },
+  {
+    "id": "fire_trap_05",
+    "name": "Cave-In",
+    "type": "trap",
+    "color": "fire"
+  },
+  {
+    "id": "fire_trap_06",
+    "name": "Goblin Snare",
+    "type": "trap",
+    "color": "fire"
+  },
+  {
+    "id": "fire_trap_07",
+    "name": "Fox Den Snare",
+    "type": "trap",
+    "color": "fire"
+  },
+  {
+    "id": "fire_trap_08",
+    "name": "Minotaur's Labyrinth",
+    "type": "trap",
+    "color": "fire"
+  },
+  {
+    "id": "fire_trap_09",
+    "name": "Ember Spike Pit",
+    "type": "trap",
+    "color": "fire"
+  },
+  {
+    "id": "fire_trap_10",
+    "name": "Firework Mine",
+    "type": "trap",
+    "color": "fire"
+  },
+  {
+    "id": "fire_environment_01",
+    "name": "Lava Field",
+    "type": "environment",
+    "color": "fire"
+  },
+  {
+    "id": "fire_environment_02",
+    "name": "Scorched Earth",
+    "type": "environment",
+    "color": "fire"
+  },
+  {
+    "id": "fire_environment_03",
+    "name": "Volcanic Ash Fall",
+    "type": "environment",
+    "color": "fire"
+  },
+  {
+    "id": "fire_environment_04",
+    "name": "Earthquake",
+    "type": "environment",
+    "color": "fire"
+  },
+  {
+    "id": "fire_environment_05",
+    "name": "Rumbling Mine",
+    "type": "environment",
+    "color": "fire"
+  },
+  {
+    "id": "fire_environment_06",
+    "name": "Fire Cyclone",
+    "type": "environment",
+    "color": "fire"
+  },
+  {
+    "id": "fire_environment_07",
+    "name": "Ember Rain",
+    "type": "environment",
+    "color": "fire"
+  },
+  {
+    "id": "fire_environment_08",
+    "name": "Sulfur Springs",
+    "type": "environment",
+    "color": "fire"
+  },
+  {
+    "id": "fire_environment_09",
+    "name": "Forge Floor",
+    "type": "environment",
+    "color": "fire"
+  },
+  {
+    "id": "fire_environment_10",
+    "name": "Rockslide Valley",
+    "type": "environment",
+    "color": "fire"
+  },
+  {
+    "id": "fire_environment_11",
+    "name": "Mountain's Wrath",
+    "type": "environment",
+    "color": "fire"
+  },
+  {
+    "id": "fire_environment_12",
+    "name": "Sea of Flames",
+    "type": "environment",
+    "color": "fire"
+  },
+  {
+    "id": "fire_piece_01",
+    "name": "Crown of the Volcano King",
+    "type": "piece",
+    "color": "fire"
+  },
+  {
+    "id": "fire_piece_02",
+    "name": "Heart of the Phoenix",
+    "type": "piece",
+    "color": "fire"
+  },
+  {
+    "id": "fire_piece_03",
+    "name": "Eye of the Dragon",
+    "type": "piece",
+    "color": "fire"
+  },
+  {
+    "id": "fire_piece_04",
+    "name": "Anvil of the First Forge",
+    "type": "piece",
+    "color": "fire"
+  },
+  {
+    "id": "fire_piece_05",
+    "name": "Tail of the Nine-Tailed Fox",
+    "type": "piece",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_01",
+    "name": "Red Dragon Whelp",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_02",
+    "name": "Great Red Dragon",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_03",
+    "name": "Wyvern",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_04",
+    "name": "Fire Drake",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_05",
+    "name": "Griffin",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_06",
+    "name": "Phoenix",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_07",
+    "name": "Phoenix Chick",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_08",
+    "name": "Kitsune",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_09",
+    "name": "Nine-Tailed Kitsune",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_10",
+    "name": "Fire Fox",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_11",
+    "name": "Coyote Trickster",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_12",
+    "name": "Ember Coyote",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_13",
+    "name": "Shishi Lion-Dog",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_14",
+    "name": "Oni Brute",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_15",
+    "name": "Red Oni",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_16",
+    "name": "Oni Warlord",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_17",
+    "name": "Minotaur",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_18",
+    "name": "Fire Bull",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_19",
+    "name": "Goblin Sapper",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_20",
+    "name": "Goblin Gunner",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_21",
+    "name": "Goblin Chieftain",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_22",
+    "name": "Gremlin",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_23",
+    "name": "Gremlin Tinkerer",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_24",
+    "name": "Duende",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_25",
+    "name": "Salamander",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_26",
+    "name": "Lava Golem",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_27",
+    "name": "Magma Elemental",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_28",
+    "name": "Dwarven Smith",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_29",
+    "name": "Dwarven Miner",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_30",
+    "name": "Dwarven Musketeer",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_31",
+    "name": "Dwarven Rocketeer",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_32",
+    "name": "Mountain Hermit",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_33",
+    "name": "Samurai",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_34",
+    "name": "Ronin Archer",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_35",
+    "name": "Mountain Monk",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_36",
+    "name": "Tengu",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_37",
+    "name": "Lantern Ghost",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_38",
+    "name": "Fire Vampire",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_39",
+    "name": "Cinder Bat Swarm",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_40",
+    "name": "Cinder Hound",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_41",
+    "name": "Mole Miner",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_42",
+    "name": "Lava Beetle",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_43",
+    "name": "Imperial Lung Dragon",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_44",
+    "name": "Firebird",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_summon_45",
+    "name": "Ember Imp",
+    "type": "summon",
+    "color": "fire"
+  },
+  {
+    "id": "fire_machine_01",
+    "name": "Hand Cannon",
+    "type": "machine",
+    "color": "fire"
+  },
+  {
+    "id": "fire_machine_02",
+    "name": "Fire Lance Turret",
+    "type": "machine",
+    "color": "fire"
+  },
+  {
+    "id": "fire_machine_03",
+    "name": "Goblin Gatling",
+    "type": "machine",
+    "color": "fire"
+  },
+  {
+    "id": "fire_machine_04",
+    "name": "Rocket Battery",
+    "type": "machine",
+    "color": "fire"
+  },
+  {
+    "id": "fire_machine_05",
+    "name": "Hwacha Rocket Cart",
+    "type": "machine",
+    "color": "fire"
+  },
+  {
+    "id": "fire_machine_06",
+    "name": "Dwarven Siege Cannon",
+    "type": "machine",
+    "color": "fire"
+  },
+  {
+    "id": "fire_machine_07",
+    "name": "Iron Barricade",
+    "type": "machine",
+    "color": "fire"
+  },
+  {
+    "id": "fire_machine_08",
+    "name": "Mine Cart Barricade",
+    "type": "machine",
+    "color": "fire"
+  },
+  {
+    "id": "fire_machine_09",
+    "name": "Gremlin Clockwork Drone",
+    "type": "machine",
+    "color": "fire"
+  },
+  {
+    "id": "fire_machine_10",
+    "name": "Dragon-Mouth Cannon",
+    "type": "machine",
+    "color": "fire"
+  },
+  {
+    "id": "fire_machine_11",
+    "name": "Volley Gun",
+    "type": "machine",
+    "color": "fire"
+  },
+  {
+    "id": "fire_machine_12",
+    "name": "Ember Trebuchet",
+    "type": "machine",
+    "color": "fire"
+  },
+  {
+    "id": "fire_machine_13",
+    "name": "Stone Bastion",
+    "type": "machine",
+    "color": "fire"
+  },
+  {
+    "id": "fire_machine_14",
+    "name": "Firework Launcher",
+    "type": "machine",
+    "color": "fire"
+  },
+  {
+    "id": "fire_machine_15",
+    "name": "The Great Bombard",
+    "type": "machine",
+    "color": "fire"
+  },
+  {
+    "id": "fire_ace_01",
+    "name": "Phoenix Arrow",
+    "type": "ace",
+    "color": "fire"
+  },
+  {
+    "id": "fire_ace_02",
+    "name": "Sunfall Lance",
+    "type": "ace",
+    "color": "fire"
+  },
+  {
+    "id": "fire_ace_03",
+    "name": "Heart of the Volcano",
+    "type": "ace",
+    "color": "fire"
+  },
+  {
+    "id": "fire_aceup_01",
+    "name": "Dragonfire Coating",
+    "type": "aceup",
+    "color": "fire"
+  },
+  {
+    "id": "fire_aceup_02",
+    "name": "Blacksmith's Temper",
+    "type": "aceup",
+    "color": "fire"
+  },
+  {
+    "id": "fire_aceup_03",
+    "name": "Cyclone Wrap",
+    "type": "aceup",
+    "color": "fire"
+  },
+  {
+    "id": "hero_pyra",
+    "name": "Pyra, the Ember Queen",
+    "type": "hero",
+    "color": "fire"
+  },
+  {
+    "id": "hero_brann",
+    "name": "Brann the Forgemaster",
+    "type": "hero",
+    "color": "fire"
+  },
+  {
+    "id": "hero_cinder",
+    "name": "Cinder, the Ash Dancer",
+    "type": "hero",
+    "color": "fire"
+  },
+  {
+    "id": "hero_ignis",
+    "name": "Ignis, the Forge Wyrm",
+    "type": "hero",
+    "color": "fire"
+  },
+  {
+    "id": "hero_sola",
+    "name": "Sola Flamewright",
+    "type": "hero",
+    "color": "fire"
+  },
+  {
+    "id": "hero_kael",
+    "name": "Kael the Cinderblade",
+    "type": "hero",
+    "color": "fire"
+  },
+  {
+    "id": "hero_magmar",
+    "name": "Magmar the Molten",
+    "type": "hero",
+    "color": "fire"
+  },
+  {
+    "id": "hero_phoenixia",
+    "name": "Phoenixia",
+    "type": "hero",
+    "color": "fire"
+  },
+  {
+    "id": "hero_varn",
+    "name": "Varn, the Ash King",
+    "type": "hero",
+    "color": "fire"
+  },
+  {
+    "id": "hero_emberly",
+    "name": "Emberly the Lamplighter",
+    "type": "hero",
+    "color": "fire"
+  },
+  {
+    "id": "hero_pyrrhus",
+    "name": "Pyrrhus the Bombardier",
+    "type": "hero",
+    "color": "fire"
+  },
+  {
+    "id": "hero_scorch",
+    "name": "Scorch, the Red Fox",
+    "type": "hero",
+    "color": "fire"
+  },
+  {
+    "id": "hero_salamandra",
+    "name": "Salamandra",
+    "type": "hero",
+    "color": "fire"
+  },
+  {
+    "id": "hero_vulcan",
+    "name": "Vulcan the Smith",
+    "type": "hero",
+    "color": "fire"
+  },
+  {
+    "id": "cinder_rampart",
+    "name": "Cinder Rampart",
+    "type": "ward",
+    "color": "fire"
+  }
+]

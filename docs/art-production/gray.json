@@ -1,0 +1,1358 @@
+[
+  {
+    "id": "gray_summon_01",
+    "name": "Living Armor",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_02",
+    "name": "Empty Helm Sentinel",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_03",
+    "name": "Haunted Plate",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_04",
+    "name": "Rusted Suit of Armor",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_05",
+    "name": "Gilded Parade Armor",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_06",
+    "name": "Black Knight's Armor",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_07",
+    "name": "Tin Soldier",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_08",
+    "name": "Toy Knight",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_09",
+    "name": "Clay Golem of Prague",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_10",
+    "name": "Mud Golem",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_11",
+    "name": "Stone Golem",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_12",
+    "name": "Iron Golem",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_13",
+    "name": "Talos, the Bronze Giant",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_14",
+    "name": "Cathedral Gargoyle",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_15",
+    "name": "Grotesque",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_16",
+    "name": "Waterspout Gargoyle",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_17",
+    "name": "Shisa",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_18",
+    "name": "Komainu",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_19",
+    "name": "Guardian Lion of the Gate",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_20",
+    "name": "Nio Temple Guardian",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_21",
+    "name": "Dvarapala",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_22",
+    "name": "Moai Watcher",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_23",
+    "name": "Terracotta Spearman",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_24",
+    "name": "Terracotta General",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_25",
+    "name": "Ushabti Servant",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_26",
+    "name": "Scarecrow Sentinel",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_27",
+    "name": "Shield Maiden",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_28",
+    "name": "Hoplite",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_29",
+    "name": "Roman Centurion",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_30",
+    "name": "Gatehouse Sergeant",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_31",
+    "name": "Castle Warden",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_32",
+    "name": "Watchtower Guard",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_33",
+    "name": "Loyal Mastiff",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_34",
+    "name": "Kangal Shepherd Dog",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_35",
+    "name": "Old Gray Bear",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_36",
+    "name": "Cave Bear",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_37",
+    "name": "Wild Boar",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_38",
+    "name": "Great Tortoise",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_39",
+    "name": "Snapping Turtle",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_40",
+    "name": "Armadillo Knight",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_41",
+    "name": "Ironback Beetle",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_42",
+    "name": "Mimic Chest",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_43",
+    "name": "War Elephant",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_44",
+    "name": "Ox of the Plough",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_45",
+    "name": "Aurochs",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_46",
+    "name": "Wandering Ronin",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_47",
+    "name": "Bridge Troll",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_48",
+    "name": "Ettin",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_49",
+    "name": "Longbow Yeoman",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_50",
+    "name": "Village Archer",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_51",
+    "name": "Shepherd Slinger",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_52",
+    "name": "Scythian Horse Archer",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_53",
+    "name": "Steppe Rider",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_54",
+    "name": "Amazon Archer",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_55",
+    "name": "Mounted Bowman",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_56",
+    "name": "Javelin Thrower",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_57",
+    "name": "Spear Hunter",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_58",
+    "name": "Woodcutter",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_59",
+    "name": "Bounty Hunter",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_60",
+    "name": "Wandering Ranger",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_61",
+    "name": "Tracker",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_62",
+    "name": "Falconer",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_63",
+    "name": "Hunting Falcon",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_64",
+    "name": "Peregrine",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_65",
+    "name": "Kestrel",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_66",
+    "name": "Osprey",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_67",
+    "name": "Golden Eagle",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_68",
+    "name": "Messenger Pigeon",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_69",
+    "name": "Night Owl Scout",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_70",
+    "name": "Horned Owl",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_71",
+    "name": "Quill Porcupine",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_72",
+    "name": "Spiny Hedgehog",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_73",
+    "name": "Spitting Llama",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_74",
+    "name": "Bactrian Camel",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_75",
+    "name": "Gray Fox",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_76",
+    "name": "Plains Wolf",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_77",
+    "name": "Lone Wolf",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_78",
+    "name": "Alpha Wolf",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_79",
+    "name": "Hunting Hound",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_80",
+    "name": "Alley Cat",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_81",
+    "name": "Lynx",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_82",
+    "name": "Wildcat",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_83",
+    "name": "Sea Eagle",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_84",
+    "name": "Mountain Goat",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_85",
+    "name": "Ibex",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_86",
+    "name": "Hippogriff",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_87",
+    "name": "Hippogriff Rider",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_88",
+    "name": "War Griffin",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_89",
+    "name": "Royal Griffin",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_90",
+    "name": "Sleipnir, the Eight-Legged Steed",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_91",
+    "name": "Arion, the Swift Horse",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_92",
+    "name": "Bayard, the Magic Bay",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_93",
+    "name": "Uchchaihshravas",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_94",
+    "name": "Wandering Bard",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_95",
+    "name": "Crossbow Militia",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_96",
+    "name": "Pikeman",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_97",
+    "name": "Sellsword",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_98",
+    "name": "Veteran Captain",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_99",
+    "name": "Errant Knight",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_100",
+    "name": "Cossack Rider",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_101",
+    "name": "Gaucho with Bolas",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_102",
+    "name": "Mongol Outrider",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_103",
+    "name": "Maasai Spearman",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_104",
+    "name": "Zulu Impi",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_105",
+    "name": "Viking Raider",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_106",
+    "name": "Hill Giant",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_107",
+    "name": "Rock-Throwing Cyclops",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_108",
+    "name": "Stone Troll",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_109",
+    "name": "Ogre Brute",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_110",
+    "name": "Mountain Gorilla",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_111",
+    "name": "Sling Monkey",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_112",
+    "name": "Howler Monkey",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_113",
+    "name": "Coconut Crab",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_114",
+    "name": "Boulder Golem",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_115",
+    "name": "Pebble Golem",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_116",
+    "name": "Rock Elemental",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_117",
+    "name": "Siege Ogre",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_118",
+    "name": "Two-Headed Giant",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_119",
+    "name": "Jotun Hurler",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_120",
+    "name": "Fomorian Brute",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_121",
+    "name": "Oni Pebble-Tosser",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_122",
+    "name": "Gremlin Pot-Thrower",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_123",
+    "name": "Kobold Sapper",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_124",
+    "name": "Hobgoblin Grenadier",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_125",
+    "name": "Barrel-Rolling Dwarf",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_126",
+    "name": "Village Brawler",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_127",
+    "name": "Tavern Bouncer",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_128",
+    "name": "Mole Sapper",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_129",
+    "name": "Badger",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_130",
+    "name": "Rampaging Rhino",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_131",
+    "name": "Charging Bison",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_132",
+    "name": "Woolly Mammoth",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_133",
+    "name": "Elephant Bird",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_134",
+    "name": "Stone-Dropping Vulture",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_135",
+    "name": "Thunder Ram",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_136",
+    "name": "Familiar Cat",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_137",
+    "name": "Tabby Familiar",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_138",
+    "name": "Owl Familiar",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_139",
+    "name": "Toad Familiar",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_140",
+    "name": "Raven Familiar",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_141",
+    "name": "Brownie",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_142",
+    "name": "Domovoi",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_143",
+    "name": "Tomte",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_144",
+    "name": "Hob of the Hearth",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_145",
+    "name": "Zashiki-warashi",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_146",
+    "name": "Lares of the Home",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_147",
+    "name": "Household Kobold",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_148",
+    "name": "Village Healer",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_149",
+    "name": "Wise Woman",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_150",
+    "name": "Field Surgeon",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_151",
+    "name": "Herbwife",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_152",
+    "name": "Midwife",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_153",
+    "name": "Saint Bernard",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_154",
+    "name": "Therapy Pony",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_155",
+    "name": "Faithful Donkey",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_156",
+    "name": "Milk Cow",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_157",
+    "name": "Mother Hen",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_158",
+    "name": "Honeybadger",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_159",
+    "name": "Sacred Ibis",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_160",
+    "name": "Beaver Builder",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_161",
+    "name": "Capybara",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_162",
+    "name": "Wandering Monk",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_163",
+    "name": "Pilgrim",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_164",
+    "name": "Tea Master",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_165",
+    "name": "Camp Cook",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_166",
+    "name": "Beowulf",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_167",
+    "name": "Gilgamesh",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_168",
+    "name": "Enkidu",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_169",
+    "name": "Hua Mulan",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_170",
+    "name": "Cu Chulainn",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_171",
+    "name": "Sundiata Keita",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_172",
+    "name": "Momotaro",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_173",
+    "name": "Atalanta",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_174",
+    "name": "Heracles",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_175",
+    "name": "Perseus",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_176",
+    "name": "Theseus",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_177",
+    "name": "Achilles",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_178",
+    "name": "Hector of Troy",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_179",
+    "name": "Rostam",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_180",
+    "name": "Arjuna",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_181",
+    "name": "Sigurd",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_182",
+    "name": "Ilya Muromets",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_183",
+    "name": "Lancelot",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_184",
+    "name": "Gawain",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_185",
+    "name": "El Cid",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_186",
+    "name": "Roland",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_187",
+    "name": "Robin Hood",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_188",
+    "name": "Mwindo",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_189",
+    "name": "Kintaro",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_190",
+    "name": "Fionn mac Cumhaill",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_191",
+    "name": "Scathach",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_192",
+    "name": "Tomoe Gozen",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_193",
+    "name": "Antarah the Poet-Knight",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_194",
+    "name": "Hunahpu and Xbalanque",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_summon_195",
+    "name": "Glooscap",
+    "type": "summon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_ward_01",
+    "name": "Shield Wall",
+    "type": "ward",
+    "color": "gray"
+  },
+  {
+    "id": "gray_ward_02",
+    "name": "Phalanx",
+    "type": "ward",
+    "color": "gray"
+  },
+  {
+    "id": "gray_ward_03",
+    "name": "Testudo",
+    "type": "ward",
+    "color": "gray"
+  },
+  {
+    "id": "gray_ward_04",
+    "name": "Schiltron",
+    "type": "ward",
+    "color": "gray"
+  },
+  {
+    "id": "gray_ward_05",
+    "name": "Hedge of Spears",
+    "type": "ward",
+    "color": "gray"
+  },
+  {
+    "id": "gray_ward_06",
+    "name": "Wagon Circle",
+    "type": "ward",
+    "color": "gray"
+  },
+  {
+    "id": "gray_ward_07",
+    "name": "Shield Brace",
+    "type": "ward",
+    "color": "gray"
+  },
+  {
+    "id": "gray_ward_08",
+    "name": "Hold the Gate",
+    "type": "ward",
+    "color": "gray"
+  },
+  {
+    "id": "gray_ward_09",
+    "name": "Last Stand",
+    "type": "ward",
+    "color": "gray"
+  },
+  {
+    "id": "gray_ward_10",
+    "name": "Iron Ring Fort",
+    "type": "ward",
+    "color": "gray"
+  },
+  {
+    "id": "gray_boon_01",
+    "name": "Battle Cry",
+    "type": "boon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_boon_02",
+    "name": "Rallying Horn",
+    "type": "boon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_boon_03",
+    "name": "Haka War Dance",
+    "type": "boon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_boon_04",
+    "name": "Kiai Shout",
+    "type": "boon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_boon_05",
+    "name": "Oath of Brotherhood",
+    "type": "boon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_boon_06",
+    "name": "Hunter's Focus",
+    "type": "boon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_boon_07",
+    "name": "Stubborn Will",
+    "type": "boon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_boon_08",
+    "name": "Campfire Rest",
+    "type": "boon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_boon_09",
+    "name": "Trusty Steed",
+    "type": "boon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_boon_10",
+    "name": "Song of the Old Heroes",
+    "type": "boon",
+    "color": "gray"
+  },
+  {
+    "id": "gray_charge_01",
+    "name": "Sling Stones",
+    "type": "charge",
+    "color": "gray"
+  },
+  {
+    "id": "gray_charge_02",
+    "name": "Hunter's Quiver",
+    "type": "charge",
+    "color": "gray"
+  },
+  {
+    "id": "gray_charge_03",
+    "name": "Bag of Rocks",
+    "type": "charge",
+    "color": "gray"
+  },
+  {
+    "id": "gray_charge_04",
+    "name": "Throwing Axes",
+    "type": "charge",
+    "color": "gray"
+  },
+  {
+    "id": "gray_charge_05",
+    "name": "Javelin Bundle",
+    "type": "charge",
+    "color": "gray"
+  },
+  {
+    "id": "gray_charge_06",
+    "name": "Caltrop Pouch",
+    "type": "charge",
+    "color": "gray"
+  },
+  {
+    "id": "gray_charge_07",
+    "name": "Boomerang Belt",
+    "type": "charge",
+    "color": "gray"
+  },
+  {
+    "id": "gray_charge_08",
+    "name": "Bundle of Darts",
+    "type": "charge",
+    "color": "gray"
+  },
+  {
+    "id": "gray_charge_09",
+    "name": "Hurling Stones",
+    "type": "charge",
+    "color": "gray"
+  },
+  {
+    "id": "gray_charge_10",
+    "name": "Legendary Quiver",
+    "type": "charge",
+    "color": "gray"
+  },
+  {
+    "id": "shieldwall_lane",
+    "name": "Shieldwall Lane",
+    "type": "ward",
+    "color": "gray"
+  }
+]

@@ -1,0 +1,25 @@
+[
+  {
+    "cardId": "frost_aceup_02",
+    "name": "Undertow Charm",
+    "prompt": "Original square 512x512 illustration-only fantasy collectible card art of an enchanted sea-glass charm shaped like a spiral shell, wrapped in silver wire on a sailor's cord, the central focal object caught in a powerful undertow. Dark teal ribbons of water spiral inward around it, pulling bubbles, kelp strands and a loose compass toward the charm; a small cold blue rune glows inside the shell. Moody medieval maritime fantasy, painterly realistic brushwork, dramatic cyan highlights against deep navy water, rich material detail, cinematic light, evocative and elegant, collectible-card illustration quality. Charm and action centered within horizontal safe band x=24..488 y=105..407, low-noise dark water and faint sea haze above and below. Illustration only: no text or writing, no card frame, no border, no UI, no icon, no logo. Not anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8f00d883-4b55-42db-a8b1-2567d8f9137c.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "reviewNote": "Selected by parent after reviewing the three automatically saved Undertow alternatives from this agent; earlier output hints were lost during an unnecessary manual-save attempt."
+  },
+  {
+    "cardId": "frost_strike_27",
+    "name": "Icebreaker Ram",
+    "prompt": "Original square 512x512 illustration-only fantasy collectible card art of a massive pale ice ram charging straight through a frozen sea, its curved horn splitting a dark blue floe and blasting sharp ice fragments outward. Show the ram in a strong side-front angle with its head and horn dominant, hooves braced on fractured ice, a small distant ship caught in the wake for scale. The scene evokes a forceful line strike with a bitter curse: frost-blackened cracks and cold violet-blue haze trail behind the impact. Medieval maritime winter fantasy, painterly realistic brushwork, cinematic arctic light, crisp icy material detail, dramatic but readable silhouette, collectible-card illustration quality. Ram and impact centered within horizontal safe band x=24..488 y=105..407; leave simple low-detail storm sky above and dark water below. Illustration only: no text or writing, no card frame, no border, no UI, no icon, no logo. Not anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-bf2e3de7-40e4-4791-85d0-328792dccb77.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated"
+  }
+]

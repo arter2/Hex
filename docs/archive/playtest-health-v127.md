@@ -1,7 +1,7 @@
 # Playtest: bugs, saves, fairness, skill, sessions and memory (v127)
 
 Date: 2026-10-24 · Build v127 · New measurements, built from the testing plan. How each one works and how to run it:
-[playtest-tools.md](playtest-tools.md).
+[../playtest-tools.md](../playtest-tools.md).
 - Dungeon: 60 careers of 3 hours (180 hours, 10,096 hits taken in fights).
 - Battle mode: 60 runs (1,500 fights), with a random player added as a baseline.
 - Save scenarios: 6.

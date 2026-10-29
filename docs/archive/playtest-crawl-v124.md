@@ -40,7 +40,7 @@ Tells came into view within 3 tiles 2,594 times; the bots noticed 1,183 of them,
    still finish with 29,000–41,000. The dungeon simply pays too much. **Less gold from chests and piles** is now the
    clear fix; prices are not the issue.
 5. **Fights were not changed in v124** and are still mostly no danger (the bots won 99–100%). That is v125, from your
-   answers: [fight-patterns.md](fight-patterns.md).
+   answers: [../fight-patterns.md](../fight-patterns.md).
 
 ---
 

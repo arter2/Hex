@@ -7,6 +7,10 @@ Ships game/ with index.html at the zip's root, minus what a player never loads:
   - cards/art/display/           the separate crops: the game draws painted art from the atlas sheets in
                                 cards/art/atlas (tools/card-art-build.js), so only the sheets ship
   - art-review.html             the art team's size-review page (package-art-test.py ships it for them)
+  - the card build's inputs     cards/contract.json, palettes.json and art-focus.json, the icon and symbol SVGs that
+                                tools/card-build.py compiles into cards/icons.js (the element icons do ship: they
+                                load as pictures), cards/README.md, and allocate.js (a part-choosing tool the game
+                                never loads)
 Then checks the zip: index.html at the root, no more than itch's 1,000 files, every sheet the game names present, and
 every entry readable (CRC). Prints the file count and size as JSON."""
 import argparse
@@ -17,6 +21,7 @@ from pathlib import Path
 
 ITCH_MAX_FILES = 1000
 SKIP_NAMES = {".DS_Store", "Thumbs.db", ".gitkeep"}
+BUILD_ONLY = {"allocate.js", "cards/README.md", "cards/contract.json", "cards/palettes.json", "cards/art-focus.json"}
 
 
 def main():
@@ -38,6 +43,10 @@ def main():
         if parts[:2] == ("cards", "art") and len(parts) == 3 and rel.suffix.lower() == ".png":
             return False
         if parts[:3] == ("cards", "art", "display"):
+            return False
+        if rel.as_posix() in BUILD_ONLY:
+            return False
+        if parts[:2] == ("cards", "symbols") or (parts[:2] == ("cards", "icons") and not rel.name.startswith("element-")):
             return False
         return True
 

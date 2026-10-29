@@ -2,7 +2,7 @@
 
 Date: 2026-10-23 · Build v125 · 60 careers of 3 hours (180 hours), 9,660 dungeon fights, 525 puzzles, no errors.
 The same bots, players and seeds as [playtest-crawl-v124.md](playtest-crawl-v124.md). The design is in
-[fight-patterns.md](fight-patterns.md).
+[../fight-patterns.md](../fight-patterns.md).
 
 ## v124 → v125
 

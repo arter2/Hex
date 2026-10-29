@@ -108,7 +108,7 @@ Code: `game/fights.js`, with hooks in `enemies.js` and `battle.js`.
   because vermin nests (early) and bigger squads and elites (deep) already change the danger.
 - **Map group size:** 2 at depths 1–3, 3 from 4 to 11, 3–4 from 12 to 20, and 4 past 20.
 - **Battle mode** uses a gentler ramp (1% more damage a depth), because its fights are whole encounters of several waves.
-- The bot tuning runs and the final numbers are in [playtest-crawl-v125.md](playtest-crawl-v125.md).
+- The bot tuning runs and the final numbers are in [archive/playtest-crawl-v125.md](archive/playtest-crawl-v125.md).
 
 ## Aggression (v174)
 

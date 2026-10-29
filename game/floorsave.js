@@ -31,14 +31,17 @@ function storeWrite(st){ const keys=Object.keys(st.floors).sort((a,b)=>st.floors
   for(;;){ try{ localStorage.setItem(floorKey(),JSON.stringify(st)); return true; }
     catch(e){ if(keys.length<=1) return false; delete st.floors[keys.shift()]; } } }   // out of room: let the oldest floors go
 // the parts of a floor that only matter while you stand on it
-const TRANSIENT=['action','aim','path','fighting','searchCell','wave','dlg','carrying','needInput','give'];
+// in-flight effects (sparks and puffs, shards, floating numbers) are scene objects: kept, they come back as nulls and
+// every frame on the floor would throw
+const TRANSIENT=['action','aim','path','fighting','searchCell','wave','dlg','carrying','needInput','give','fx','shards','pops'],
+  TRANSIENT_LISTS=['path','fx','shards','pops'];
 // what the 3D scene works out again each time it is built (explore.js xBuildScene, look.js xBakeAO): left out
 const SCENE=['aoData','aoTex','fog','fogCur','fogTgt','fogTex','wIdx','wms','shown','wCut','wList','gSlot','wGhost','dress','decor','onWall','glows',
   'motes','bats','drips','puddles','lanterns','trimMesh','skirtMesh','corMesh','upMesh','downMesh','runeRing','beam','me','myGlow','pillShaft','pillCap','pillBase','pillCave','veil'];
 // a floor without what its scene works out again (a copy; the floor itself is untouched)
 function xFloorPlain(ex){ const o=Object.assign({},ex); for(const k of SCENE) delete o[k]; return o; }
 function xFloorStore(ex){ if(!save||save.temp||!ex||ex.branch||!worldSeed()) return;
-  const o=xFloorPlain(ex); for(const k of TRANSIENT) o[k]=k==='path'?[]:null;
+  const o=xFloorPlain(ex); for(const k of TRANSIENT) o[k]=TRANSIENT_LISTS.includes(k)?[]:null;
   let snap; try{ snap=snapEncode(o); }catch(e){ snap=null; }
   if(!snap) return;
   const st=storeRead(); st.floors[ex.depth]={t:Date.now(),snap};
@@ -48,7 +51,8 @@ function xFloorStore(ex){ if(!save||save.temp||!ex||ex.branch||!worldSeed()) ret
 function xFloorLoad(depth){ if(!save||save.temp) return null; const st=storeRead(), f=st.floors[depth]; if(!f) return null;
   let ex; try{ ex=snapDecode(f.snap); }catch(e){ return null; }
   if(!ex||!ex.t||ex.depth!==depth) return null;
-  Object.assign(ex,{busy:false, active:false, action:null, aim:null, searchCell:null, path:[], fighting:null, stuckT:0, msgT:{}, wave:null});
+  Object.assign(ex,{busy:false, active:false, action:null, aim:null, searchCell:null, path:[], fighting:null, stuckT:0, msgT:{}, wave:null,
+    fx:[], shards:[], pops:[]});   // floors kept before these were transient hold nulls here
   const m=typeof xFloors==='function'&&xFloors(); if(m) m.set(depth,ex);
   return ex; }
 const xFloorKnown=depth=>!!storeRead().floors[depth];

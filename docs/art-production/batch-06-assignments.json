@@ -1,0 +1,152 @@
+{
+  "batch": 6,
+  "targetNewImages": 32,
+  "startingActive": 202,
+  "targetActive": 234,
+  "assignments": {
+    "brown": [
+      {
+        "id": "brown_machine_04",
+        "name": "Gnomish Arc Turret"
+      },
+      {
+        "id": "brown_instant_04",
+        "name": "Panacea"
+      },
+      {
+        "id": "brown_equip_12",
+        "name": "Gnomish Gear Armor"
+      },
+      {
+        "id": "brown_tinker_04",
+        "name": "Tempering Oil"
+      }
+    ],
+    "fire": [
+      {
+        "id": "fire_strike_01",
+        "name": "Musket Shot"
+      },
+      {
+        "id": "fire_lob_03",
+        "name": "Grenado"
+      },
+      {
+        "id": "fire_ward_02",
+        "name": "Forge-Iron Plate"
+      },
+      {
+        "id": "fire_sentry_03",
+        "name": "Lava Totem"
+      }
+    ],
+    "frost": [
+      {
+        "id": "frost_strike_01",
+        "name": "Harpoon Throw"
+      },
+      {
+        "id": "frost_lob_02",
+        "name": "Chain Shot"
+      },
+      {
+        "id": "frost_ward_01",
+        "name": "Sea Wall"
+      },
+      {
+        "id": "frost_sentry_03",
+        "name": "Ice Spike Totem"
+      }
+    ],
+    "gray": [
+      {
+        "id": "gray_summon_07",
+        "name": "Tin Soldier"
+      },
+      {
+        "id": "gray_ward_05",
+        "name": "Hedge of Spears"
+      },
+      {
+        "id": "gray_boon_05",
+        "name": "Oath of Brotherhood"
+      },
+      {
+        "id": "gray_charge_06",
+        "name": "Caltrop Pouch"
+      }
+    ],
+    "light": [
+      {
+        "id": "light_strike_01",
+        "name": "Pilum Volley"
+      },
+      {
+        "id": "light_lob_02",
+        "name": "Mortar of Bricks"
+      },
+      {
+        "id": "light_ward_03",
+        "name": "Marble Wall"
+      },
+      {
+        "id": "light_sentry_02",
+        "name": "Arrow-Slit Tower"
+      }
+    ],
+    "shadow": [
+      {
+        "id": "eclipse",
+        "name": "Eclipse"
+      },
+      {
+        "id": "shadow_lob_03",
+        "name": "Grave Dirt Handful"
+      },
+      {
+        "id": "shadow_ward_02",
+        "name": "Coffin Lid"
+      },
+      {
+        "id": "shadow_sentry_03",
+        "name": "Crow Perch"
+      }
+    ],
+    "storm": [
+      {
+        "id": "storm_strike_01",
+        "name": "Lightning Lash"
+      },
+      {
+        "id": "storm_lob_02",
+        "name": "Alembic Flask"
+      },
+      {
+        "id": "storm_ward_03",
+        "name": "Sandbag Wall"
+      },
+      {
+        "id": "storm_sentry_03",
+        "name": "Sun Obelisk"
+      }
+    ],
+    "verdant": [
+      {
+        "id": "world_tree",
+        "name": "World Tree"
+      },
+      {
+        "id": "verdant_strike_02",
+        "name": "Yew Arrow"
+      },
+      {
+        "id": "verdant_lob_02",
+        "name": "Bog Belch"
+      },
+      {
+        "id": "verdant_ward_02",
+        "name": "Holly Thicket"
+      }
+    ]
+  }
+}

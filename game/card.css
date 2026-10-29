@@ -28,6 +28,7 @@ html body .card.kit.ench,html body .card.kit.buff{outline:0; filter:none;}
 .card.kit>*{position:absolute; z-index:4; margin:0; padding:0; pointer-events:none; box-sizing:border-box;}
 .card.kit>.k-tex{inset:0; z-index:1; background:var(--k-tex) 0 0/100% 100% no-repeat;}
 .card.kit>.k-art{z-index:1; object-fit:cover; object-position:var(--k-focus,50% 50%); image-rendering:pixelated; background:rgba(0,0,0,.35); border-radius:0; border:0;}
+.card.kit>.k-art.illustrated{object-fit:cover; object-position:center; image-rendering:auto; background:#080b0e;}
 .card.kit>.k-hidden{background:repeating-linear-gradient(45deg,rgba(0,0,0,.55) 0 6px,rgba(0,0,0,.4) 6px 12px);}
 .card.kit>.k-foil{z-index:2; background-image:var(--k-foil); background-repeat:no-repeat;}
 .card.kit>img{image-rendering:pixelated; object-fit:contain;}
@@ -77,10 +78,10 @@ html body #dkColl .card.kit .dkown::before{content:'×';}
 html body #dkColl .card.kit .dkfrac~.dkown{display:none;}
 html body #dkColl .card.kit.full .dkfrac{color:#ffd866;}
 
-/* a small card (a hand, a grid of many) keeps the same frame and drops what can't be read at its size: the rules
-   and the footer's words (its icons stay) */
+/* a small card (a hand, a grid of many) keeps the same frame and its rules, shrunk with the card (kitFit picks the
+   size); it drops the footer's words (its icons stay) */
 @container (max-width:179px){
-  .card.kit>.k-rules,.card.kit .k-foot small,.card.kit .k-foot span{visibility:hidden;}
+  .card.kit .k-foot small,.card.kit .k-foot span{visibility:hidden;}
   .card.kit .k-foot{grid-template-columns:1fr;} .card.kit .k-foot .k-ic{justify-self:center;}
 }
 

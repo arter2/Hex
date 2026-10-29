@@ -250,10 +250,12 @@ function xInit3D(){
   const wt=xWaveTex(), wave=new THREE.Group(); for(let k=0;k<9;k++){ const q=new THREE.Mesh(new THREE.PlaneGeometry(XCS,XCS),new THREE.MeshBasicMaterial({map:wt,transparent:true,opacity:0,depthWrite:false,fog:false,blending:THREE.AdditiveBlending}));
     q.rotation.x=-Math.PI/2; q.position.set((k%3-1)*XCS,0,(Math.floor(k/3)-1)*XCS); q.userData.ring=k!==4; q.renderOrder=7; wave.add(q); }
   wave.visible=false; scene.add(wave); X3.wave=wave;
-  cv.addEventListener('pointerdown',e=>{ if(!EX||!EX.active||xPaused) return; e.preventDefault(); EX.needInput=false; try{ cv.setPointerCapture(e.pointerId); }catch(_){}
+  cv.addEventListener('pointerdown',e=>{ if(!EX||!EX.active||xPaused) return; e.preventDefault(); EX.needInput=false;
+    if(XHOLD.on&&XHOLD.id!=null&&e.pointerId!==XHOLD.id&&!EX.aim) return xSecondFinger(e);   // another finger while one walks: it never takes the walk over
+    try{ cv.setPointerCapture(e.pointerId); }catch(_){}
     const [ax,ay]=appXY(e.clientX,e.clientY);
     if(EX.aim){ EX.aim.id=e.pointerId; EX.aim.cell=xAimCell(ax,ay); return; }
-    XHOLD.id=e.pointerId; XHOLD.x=XHOLD.x0=ax; XHOLD.y=XHOLD.y0=ay; XHOLD.t0=performance.now(); XHOLD.on=true; XHOLD.stick=false;
+    XHOLD.id=e.pointerId; XHOLD.x=XHOLD.x0=ax; XHOLD.y=XHOLD.y0=ay; XHOLD.t0=e.timeStamp; XHOLD.heldMs=0; XHOLD.lastT=null; XHOLD.on=true; XHOLD.stick=false;
     const m=xMoveMode();
     if(m==='tapstick'){}   // decided by what the finger does next (xMove and the release)
     else if(m==='goal') xGoalAt(ax,ay);
@@ -265,9 +267,9 @@ function xInit3D(){
     if(e.pointerId===XHOLD.id){ [XHOLD.x,XHOLD.y]=appXY(e.clientX,e.clientY); if(xMoveMode()==='goal'||xMoveMode()==='fixed'&&!XHOLD.stick) xGoalAt(XHOLD.x,XHOLD.y); xStickDraw(); } });
   const end=e=>{ if(EX&&EX.aim&&e.pointerId===EX.aim.id) return xSearchAt(EX.aim.cell,true);
     if(e.pointerId!==XHOLD.id) return;
-    if(xMoveMode()==='tapstick'&&!XHOLD.stick&&performance.now()-XHOLD.t0<XTAP_MS&&Math.hypot(XHOLD.x-XHOLD.x0,XHOLD.y-XHOLD.y0)<XTAP_PX) xGoalAt(XHOLD.x0,XHOLD.y0);   // a quick tap: walk there
+    if(xMoveMode()==='tapstick'&&!XHOLD.stick&&e.timeStamp-XHOLD.t0<xTapMs()&&Math.hypot(XHOLD.x-XHOLD.x0,XHOLD.y-XHOLD.y0)<xTapPx()) xGoalAt(XHOLD.x0,XHOLD.y0);   // a quick tap: walk there
     XHOLD.on=false; XHOLD.id=null; XHOLD.stick=false; xStickDraw(); };   // in Walk to touch, letting go keeps you walking to the goal
-  cv.addEventListener('pointerup',end); cv.addEventListener('pointercancel',e=>{ XHOLD.on=false; XHOLD.id=null; XHOLD.stick=false; xStickDraw(); });
+  cv.addEventListener('pointerup',end); cv.addEventListener('pointercancel',e=>{ if(e.pointerId!==XHOLD.id) return; XHOLD.on=false; XHOLD.id=null; XHOLD.stick=false; xStickDraw(); });
   cv.addEventListener('contextmenu',e=>e.preventDefault());
   // the minimap: a tap opens it big, and it stays open. Tap a place you have discovered and the map
   // closes while you walk there on your own; tap the dark (or ✕) to close it.
@@ -1061,8 +1063,18 @@ const XKEY={}, XHOLD={on:false,id:null,x:0,y:0,x0:0,y0:0,t0:0};
    pad     a trackpad: slide anywhere and you move the same way (like battle) */
 // tapstick (the default): a quick tap walks you there; hold or slide and it is an invisible floating stick
 const XMOVES=['tapstick','goal','float','fixed','follow','pad'], XMOVE_NAME={tapstick:'Tap + hold',goal:'Walk to touch',float:'Floating stick',fixed:'Fixed stick',follow:'Follow finger',pad:'Trackpad'},
-  XMOVE_ICON={tapstick:'✋',goal:'📍',float:'🕹',fixed:'🎮',follow:'👆',pad:'▭'};
-const XTAP_MS=200, XTAP_PX=12;   // shorter and smaller than this is a tap; anything more becomes the stick
+  XMOVE_ICON={tapstick:'✋',goal:'📍',float:'🕹',fixed:'🎮',follow:'👆',pad:'▭'},
+  // the first-time move tip, in the words of the movement style you chose (Settings › Touch movement)
+  XMOVE_TIP={tapstick:'Tap a spot to walk there, or hold and slide your finger to steer.',
+    goal:'Tap or drag to a spot and you walk there, and keep going after you let go.',
+    float:'Put a finger down anywhere and slide it like a thumbstick.',
+    fixed:'Steer with the thumbstick in the bottom-left corner, or tap a spot to walk there.',
+    follow:'Hold your finger down and you follow it; let go to stop.',
+    pad:'Slide your finger anywhere and you move the same way.'};
+/* Shorter and smaller than this is a tap; anything more becomes the stick. The same window as a tap in battle
+   (mvTapMs and mvTapPx, tuned in the Movement lab), timed from the touch's own down and up times (e.timeStamp): timed
+   when the handlers ran, a frame stall during a quick tap made it a hold, and the walk never started. */
+const xTapMs=()=>typeof MV==='function'?MV('mvTapMs'):278, xTapPx=()=>typeof MV==='function'?MV('mvTapPx'):17;
 const xMoveMode=()=>{ let m='tapstick'; try{ m=localStorage.getItem('hexmancers-xmove')||'tapstick'; }catch(e){} return XMOVES.includes(m)?m:'tapstick'; };
 function xSetMoveMode(m){ try{ localStorage.setItem('hexmancers-xmove',m); }catch(e){} xMoveUi(); }
 const XSTICK_R=56;   // how far the stick's knob travels, in screen pixels
@@ -1142,7 +1154,7 @@ function xMove(dt){ if(typeof xPuzzBusy==='function'&&xPuzzBusy()) return;   // 
   if(held('left')) ix-=1; if(held('right')) ix+=1; if(held('up')) iz-=1; if(held('down')) iz+=1;
   if(ix||iz){ EX.path=[]; EX.goal=null; }   // keys take over from a finger's goal
   else if(XHOLD.on){ const m=xMoveMode();
-    if(m==='tapstick'&&!XHOLD.stick&&(performance.now()-XHOLD.t0>=XTAP_MS||Math.hypot(XHOLD.x-XHOLD.x0,XHOLD.y-XHOLD.y0)>=XTAP_PX)){ XHOLD.stick=true; EX.path=[]; EX.goal=null; }
+    if(m==='tapstick'&&!XHOLD.stick&&(heldMs(XHOLD)>=xTapMs()||Math.hypot(XHOLD.x-XHOLD.x0,XHOLD.y-XHOLD.y0)>=xTapPx())){ XHOLD.stick=true; EX.path=[]; EX.goal=null; }
     if(XHOLD.stick){ let dx=(XHOLD.x-XHOLD.x0)/XSTICK_R, dy=(XHOLD.y-XHOLD.y0)/XSTICK_R; const l=Math.hypot(dx,dy);
       if(l>.18){ const k=Math.min(1,(l-.18)/.62+.25)/l; ix=dx*k; iz=dy*k; } }   // a stick: screen up is up the map; how far you push sets the speed
     else if(m==='follow'){ const g=xFloorAt(XHOLD.x,XHOLD.y); if(g){ const dx=g.x-EX.px, dz=g.z-EX.pz, l=Math.hypot(dx,dz); if(l>.4){ const k=Math.min(1,l/1.5)/l; ix=dx*k; iz=dz*k; } } }
@@ -1200,7 +1212,7 @@ function xEnter(c){
   if(typeof xEnterExtra==='function') xEnterExtra(c);
   if(EX.stairLock!=null) return xHud();   // just arrived on stairs: they wait until you have walked clear of them
   if(c===EX.down&&!EX.busy) xStairsDown();
-  else if(c===EX.up&&!EX.busy) xStairsUp();   // stepping back onto the stairs up climbs them (from depth 1, to camp)
+  else if(c===EX.up&&!EX.busy) xUpAsk();   // stepping back onto the stairs up asks first (from depth 1, they go to camp)
   xHud();
 }
 // experience on the map: a line in the log, and the level-up panel when a level comes
@@ -1403,6 +1415,15 @@ function xGoFloor(depth,hp,at,route){ const m=xFloors(), F=m&&(m.get(depth)||(ty
     if(at==='down') for(const g of EX.groups.filter(g=>g.boss)){ EX.groups.splice(EX.groups.indexOf(g),1); xDropGroup(g); EX.bossDead=true; } }
   const c=typeof at==='number'?at:at==='down'?EX.down:EX.up; EX.pc=c; EX.px=xw(c); EX.pz=xz(c); EX.stairLock=c; EX.vx=EX.vz=0; EX.view=at==='down'?'back':'front'; xUpdateVis(); }
 // the stairs up: to the floor above (or the main floor, from a hidden branch); from depth 1, to camp
+/* Stepping back onto the stairs up asks before you climb: a floor begins on those stairs, so a stick or a tap that
+   slips at the start used to send you up (from depth 1, out to camp) at once. Stay, and the stairs keep quiet until
+   you have walked clear of them. The Up and Climb to camp buttons still go straight away. */
+function xUpAsk(){ if(!EX||EX.busy) return;
+  const m=xFloors(), main=EX.branch&&m&&m.get(EX.depth), toCamp=!main&&EX.depth<=1, nd=main?EX.depth:EX.depth-1;
+  EX.path=[]; EX.goal=null; EX.stairLock=EX.up;
+  xDlg({title:toCamp?'Climb to camp?':'Climb the stairs?', sub:toCamp?'The stairs up':'Back to depth '+nd,
+    text:(toCamp?'These stairs lead out of the dungeon, back to camp.':'These stairs lead back up to depth '+nd+'.')+' This floor stays as you left it.',
+    buttons:[[toCamp?'Climb to camp':'Climb up',()=>{ if(EX&&EX.pc===EX.up){ EX.stairLock=null; xStairsUp(); } }],['Stay',null,true]]}); }
 function xStairsUp(){
   if(!EX||EX.busy||EX.pc!==EX.up) return;
   const m=xFloors(), main=EX.branch&&m&&m.get(EX.depth);
@@ -1571,8 +1592,8 @@ function xSay(k,t){ const now=performance.now(); if((EX.msgT[k]||0)>now) return;
 /* One short card the first time you meet each thing, in place of the long how-to line.
    Settings › Dungeon tips turns them off; turning them back on shows them all again. */
 const XTIPS={
-  move:   ()=>matchMedia('(pointer:coarse)').matches?'Tap a spot to walk there, or hold to walk toward your finger.':'Click a spot to walk there, or move with WASD or the arrow keys.',
-  stairs: ()=>'You found the stairs down! Walk onto them to go deeper.'+(xStairsMarkOn()?' They stay marked on your minimap; hold the map to see it big.':' Hold the minimap to see it big.'),
+  move:   ()=>matchMedia('(pointer:coarse)').matches?XMOVE_TIP[xMoveMode()]:'Click a spot to walk there, or move with WASD or the arrow keys.',
+  stairs: ()=>'You found the stairs down! Walk onto them to go deeper.'+(xStairsMarkOn()?' They stay marked on your minimap; tap the map to see it big.':' Tap the minimap to see it big.'),
   door:   ()=>'Walk into a door to open it.',
   locked: ()=>'A locked door. Find its key on this floor, or buy one from a merchant.',
   chest:  ()=>'Walk into a chest to open it. Some locks hide a needle: Search near it first, then Disarm.',
@@ -1662,8 +1683,16 @@ function resumeExplore(hp,won,info){
   setTimeout(()=>{ if(typeof maybeLevelUp==='function'&&EX&&EX.active&&!EX.busy) maybeLevelUp(); },300);
   xHud(); xLoopStart();
 }
-$('#xStrike').onclick=()=>xStrike();
-$('#xDisarm').onclick=()=>xDisarm();
+/* Walk and strike at once on touch: one finger walks, the other taps Strike. A phone makes no click from a touch while
+   another finger is down, so Strike and Disarm act on their own pointerdown (pressBtn, ui.js). And once the walking
+   finger has slid, Chrome hands every new touch to the map, even one that lands on a button: xSecondFinger presses
+   the button under it. */
+pressBtn($('#xStrike'),()=>xStrike());
+pressBtn($('#xDisarm'),()=>xDisarm());
+const X_FINGER_BTNS=[['xStrike',()=>xStrike()],['xDisarm',()=>xDisarm()]];
+function xSecondFinger(e){ const [x,y]=appXY(e.clientX,e.clientY);
+  for(const [id,fn] of X_FINGER_BTNS){ const b=document.getElementById(id); if(!b||b.disabled||!b.offsetParent) continue;
+    const r=appBox(b); if(x>=r.left-4&&x<=r.right+4&&y>=r.top-4&&y<=r.bottom+4){ fn(); return; } } }
 $('#xCamp').onclick=()=>xToCamp();
 $('#xUp').onclick=()=>xStairsUp();
 // touch movement: the Settings row cycles the styles

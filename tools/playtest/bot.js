@@ -971,6 +971,73 @@
     }
   };
 
+  /* ---------- the brain, for real-time bots (touch-dungeon-runner.js) ----------
+   The same reading of the board and the same human limits as a fight above, on the page's real clock, but it only
+   decides: it never moves, fires or casts. The runner turns each answer into touches at screen coordinates, so what
+   the brain may know is what the board shows (telegraphs, shots in flight, wind-ups, the queue and the gauge). */
+  let brainT0 = 0;
+  PT.brain = {
+    start(human, seed) {
+      HU = human ? { cfg: human, rng: U.rng(seed ?? 1) } : null;
+      SEEN = new Map();
+      ATTACKS = U.perception();
+      WARN_AT = new WeakMap();
+      ST = { tgt: null, ang: 0, rel: 0.35, flicks: 0, held: 0, bot: {} };
+      brainT0 = performance.now();
+      elapsed = 0;
+    },
+    // what the player sees this moment: new threats start their reaction clocks
+    look() {
+      elapsed = (performance.now() - brainT0) / 1000;
+      if (!B || !ATTACKS) return;
+      observeThreats();
+    },
+    // the tile to be on, with its score and the score of the tile you stand on
+    where(bot) {
+      const r = chooseTile(Object.assign({ move: true, dodge: true }, bot || {}));
+      return { tile: r.best, score: r.bestS, here: r.curS };
+    },
+    danger(t, within = 0.7) {
+      return threatsAt(t || B.player.tile).some(th => th.T < within);
+    },
+    // an enemy (or a wall with one behind it) in the row a shot from tile t would fly along
+    rowTarget: t => !!(rowTarget(t) || rowBlockedEnemy(t)),
+    lobTarget,
+    // the hand cards to queue, best first, as a player who sometimes misses a combo would pick them
+    queuePick() {
+      const p = B.piles,
+        cand = p.hand.filter(c => !isInstant(c.card) && !isDeckTool(c.card) && !c.cursed),
+        k = Math.min(slotsOf(p) - p.queue.length, cand.length);
+      if (k <= 0) return [];
+      if (HU && urand() > HU.cfg.comboSkill)
+        return cand
+          .slice()
+          .sort((a, b) => cardVal(b.card) - cardVal(a.card))
+          .slice(0, k)
+          .map(c => c.uid);
+      let best = null,
+        bestS = -1;
+      const pre = p.queue.slice(),
+        pool = cand.slice(0, 8);
+      const rec = (sel, from) => {
+        if (sel.length === Math.min(k, pool.length)) {
+          const { s } = comboScore(pre.concat(sel));
+          if (s > bestS) (bestS = s), (best = sel.slice());
+          return;
+        }
+        for (let i = from; i < pool.length; i++) {
+          sel.push(pool[i]);
+          rec(sel, i + 1);
+          sel.pop();
+        }
+      };
+      rec([], 0);
+      return (best || []).map(c => c.uid);
+    },
+    urand: () => urand(),
+    gauss: () => gauss()
+  };
+
   /* ---------- decks ---------- */
   PT.setupDeck = function (i, labIds) {
     save = newSave(STARTERS[i]);

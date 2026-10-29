@@ -1,0 +1,317 @@
+[
+  {
+    "cardId": "light_ward_17",
+    "name": "Aegis of Athena",
+    "prompt": "A square medieval fantasy collectible card painting of the Aegis of Athena: one enormous ancient Greek round shield dominates the composition, centered front-facing with a slight three-quarter tilt, occupying most of the central area. The shield has convincing hammered bronze edge, rich dark navy enamel, a striking embossed sculpted female face of Athena wearing a classical crested helmet, restrained serpent motif around the rim, and a few fine luminous golden lightning veins expressing a powerful protective ward. Shield only, no hand, no warrior. Behind it, soft out-of-focus broken marble temple columns and dawn light. Painterly oil and gouache texture, mature serious high-fantasy atmosphere, warm reflected gold light balanced by cool shadows, clear shape and details at 96px card size. Keep the whole shield and face within central safe region x24..488, y105..407 of the square; background can continue into top and bottom. No text, frame, border, UI, symbols. Not cartoon, anime, photorealistic, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c7bbd557-be02-4f8e-9d93-ba3571927f66.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated"
+  },
+  {
+    "cardId": "light_sentry_12",
+    "name": "Pharos of Alexandria",
+    "prompt": "Square painterly medieval fantasy collectible card illustration of the Pharos of Alexandria as a legendary sentry tower: monumental ancient lighthouse rising from a rocky harbor promontory, large centered strong vertical silhouette, octagonal pale limestone tiers and bronze details, an intense golden beacon blazing from the summit and sending one clear narrow magical bolt of sunlight toward the distant storm-dark sea. A few tiny ships below only for scale; tower and beam dominate. Painterly oil and gouache, atmospheric MTG-like dramatic light, convincing carved stone, warm gold light against deep blue sea and sky, controlled contrast, readable at 96px. Keep tower and important beacon action within x24..488 and y105..407 in the square, centered; extra sky and sea can extend into margins. No frame, border, text, numbers, symbols, or UI. Not cartoon, anime, photorealistic, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-06e1c58e-3a08-4108-b934-88ca5e2ca1fa.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated"
+  },
+  {
+    "cardId": "holy_bolt",
+    "name": "Holy Bolt",
+    "prompt": "Original painterly medieval fantasy card illustration, \u201cHoly Bolt.\u201d A healer-mage gathers a charged light spell, then fires a narrow golden-white horizontal bolt that pierces a shadow-armored foe and continues through a stone shield, while a gentle glow mends the mage\u2019s injured hand. Show the charge and impact in a clear action scene; bolt and subjects prominent. Grounded anatomy, rich cloth, metal and stone, dramatic directional light and atmospheric depth, like the supplied painterly fantasy references. Square 512 master, horizontal arrangement; keep face, hands, bolt impact and named objects within x24\u2026488, y105\u2026407 for a wide 206:141 crop, with quiet sky/ground margins. No border, lettering, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4a7fb519-efc2-4a18-88d2-fe198e1ecc0e.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 2,
+    "reviewNote": "Reviewed original: healer-mage fires a bright horizontal piercing bolt into an armored foe; face, casting hand, impact and bolt remain within the central wide-crop band. Mending glow visible at the mage\u2019s other hand."
+  },
+  {
+    "cardId": "sanctuary",
+    "name": "Sanctuary",
+    "prompt": "Paint an original illustration for the fantasy card \u201cSanctuary.\u201d Its mechanics are a heavy protective barrier lasting 20 seconds; hits against the barrier heal its bearer over time. Depict a weary armored pilgrim inside a broad, translucent golden shield dome in a ruined chapel, holding a braced stance as dark arrows and a blow strike and flare against the barrier; luminous healing threads flow from the impacts into the pilgrim\u2019s wounds. Let the barrier feel weighty, layered and protective, with an unmistakable shield-like curve around the person; no generic church exterior alone. Painterly medieval fantasy collectible-card art, nuanced stone, worn armor and light, dramatic directional glow, atmospheric depth and grounded anatomy in the supplied painterly reference spirit. Square 512 master with horizontal staging; keep the pilgrim\u2019s face, hands, shield arc and impacts within x24\u2026488, y105\u2026407 for a wide 206:141 crop; leave quiet chapel atmosphere at top and bottom. No border, lettering, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-524c7cc4-ac66-468c-9bd2-e1034b03e5f5.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 2,
+    "reviewNote": "Reviewed original: heavy golden barrier dome surrounds an armored pilgrim, with arrows and a weapon impact on the shield and healing light reaching the bearer. Face, barrier impacts and hands sit inside the central wide-crop band."
+  },
+  {
+    "cardId": "beacon_hope",
+    "name": "Beacon of Hope",
+    "prompt": "Create original painterly medieval fantasy card art for \u201cBeacon of Hope.\u201d Mechanics: a sturdy magical sentry fires a steady bolt down its row at an enemy; every third attack overcharges, doubles and stuns; it also mends its allies. Show a compact but substantial carved ivory-stone and gold ward-tower sentry planted on a battlefield parapet, its bright lens launching a straight golden bolt horizontally into a dark armored raider, who is caught rigid in a radiant stun flash. Behind the sentry, healing rays fall on a wounded ally. Make the sentry itself the clear subject, strong and durable, with readable lens and firing action. Painterly medieval fantasy collectible-card illustration, nuanced carved stone, brass and worn armor, dramatic directional light, atmospheric depth, grounded scale and detail inspired by supplied painterly references. Square 512 master; compose the sentry and target horizontally, keep sentry, bolt, target head/hands and healing effect within x24\u2026488, y105\u2026407 for a 206:141 crop, leaving spare sky and ground above and below. No border, text, numbers, lettering, UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-db959756-3ba2-4e69-ac2a-96f8afde1282.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 2,
+    "reviewNote": "Reviewed square original: sturdy carved-stone and gold sentry dominates, its lens fires a clear golden bolt into a stunned armored foe, with healing light over an ally. Sentry, beam and combat figures remain in central wide-crop band."
+  },
+  {
+    "cardId": "blessing",
+    "name": "Blessing",
+    "prompt": "Paint original card illustration for \u201cBlessing,\u201d a brief boon that heals the recipient for 2 each second over 3 seconds, jolts and briefly stuns the nearest enemy, then echoes again at half strength five seconds later. Show a wounded medieval ranger receiving a warm blessing from a small golden sigil of living light hovering over their chest; a short radiant pulse jolts a nearby charging undead raider into a frozen, stunned pose, while a fainter second halo behind the first suggests the delayed weaker echo. Clear narrative action in one cohesive moment; faces, healing recipient, stunned foe and pulses all readable. Painterly medieval fantasy collectible-card art, textured travel-worn cloth, leather and armor, nuanced luminous gold against cool twilight, atmospheric depth, grounded anatomy, in supplied painterly reference spirit. Square composition for 512 master, horizontal scene; keep faces, hands and key magical action within x24\u2026488, y105\u2026407 for 206:141 crop, quiet background above and below. No border, lettering, text, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-3490bfe3-6e70-45a7-a773-46f83927bbc8.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 2,
+    "reviewNote": "Reviewed original: wounded ranger receives a distinct golden healing blessing, its pulse jolts a nearby armored undead foe into a stunned pose; the weaker echo reads as a second fainter halo. Faces, healing hand and magical action remain inside the central wide-crop band."
+  },
+  {
+    "cardId": "judgment",
+    "name": "Judgment",
+    "prompt": "A delayed heavy golden burst detonates across a medieval courtyard, hurling several armored raiders backward over a low barricade; painterly fantasy, explicit square composition, all action inside safe crop band.",
+    "generatedPath": "/workspace/generated_images/exec-597ceb6a-b687-4e4f-ae27-37781ef0d6de.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 3,
+    "reviewNote": "Reviewed square and 206:141 crop: broad radiant area burst and multiple raiders thrown backward are clear; central impact, faces and figures remain in crop."
+  },
+  {
+    "cardId": "light_charge_01",
+    "name": "Swan-Feather Quiver",
+    "prompt": "An archer fires a swan-feather arrow in a golden arc from a castle wall; a complete ivory quiver with seven white-feather arrows is prominent, with a small splash burst on impact. Painterly medieval fantasy, square composition.",
+    "generatedPath": "/workspace/generated_images/exec-f1d70eab-1830-4b5e-97e2-46997d491fd3.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 3,
+    "reviewNote": "Reviewed square and wide crop; after composition repair the full quiver, feathers, archer's face and hand, arrow arc and impact all remain inside the crop band."
+  },
+  {
+    "cardId": "light_trap_01",
+    "name": "Roman Caltrops",
+    "prompt": "Low view of three separate iron Roman caltrops across a stone road, with an armored boot stepping on the middle spike and a restrained golden trigger flash; painterly medieval fantasy, square composition.",
+    "generatedPath": "/workspace/generated_images/exec-09a4504c-9182-4a3e-a22d-58b090d066c3.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 3,
+    "reviewNote": "Reviewed square and wide crop: all three complete caltrops and the boot trigger action are clear and safely within the crop band."
+  },
+  {
+    "cardId": "light_piece_01",
+    "name": "Crown of the Round Table",
+    "prompt": "A battered crowned knight is saved upright within a radiant gold delayed ward as a nearby dark enemy is jolted and stunned, with the Round Table visible behind; painterly medieval fantasy, square composition.",
+    "generatedPath": "/workspace/generated_images/exec-f9f4263e-3ef1-42ea-88bc-97b52c642caa.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 3,
+    "reviewNote": "Reviewed square and wide crop: crowned knight remains standing inside a golden healing ward while a nearby foe is jolted; crown, face, hand and stun action remain readable."
+  },
+  {
+    "cardId": "radiant_motes",
+    "name": "Radiant Motes",
+    "prompt": "Paint an original illustration for the fantasy card \u2018Radiant Motes.\u2019 Its mechanics: four quick golden missiles strike separate enemies, a kill replenishes the spell reserve, and the cast mends the caster. Depict a luminous robed battle-healer in a ruined medieval courtyard, three or four distinct small radiant motes streaking horizontally toward multiple shadow-armored foes; one foe dissolves in a brief clear impact while a soft gold healing glow closes a wound on the healer\u2019s forearm. The motes and healer dominate the narrative, avoid an abstract magic-only image. Painterly medieval fantasy collectible-card art, believable cloth, stone, metal and anatomy, dramatic attractive warm light balanced by cool dusk, nuanced brushwork, atmospheric depth, grounded mature fantasy style consistent with supplied painterly reference art. Explicit 1:1 SQUARE canvas intended for editable 512x512 master. Compose horizontally for the 206:141 card crop. Keep all critical faces, hands, missiles and impact within normalized x24..488,y105..407; quiet expendable sky and ground above and below. Strong readable focal subject. No frame, border, lettering, text, numbers, UI. No anime, Disney-like cartoon proportions, photorealism, pixel art, or blinding glare.",
+    "generatedPath": "/workspace/generated_images/exec-1a76fe2c-368c-4df5-9224-cfe7d35ab91f.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 4,
+    "reviewNote": "Reviewed actual 1254\u00d71254 square and normalized 206:141 crop: healer\u2019s face and both hands, distinct horizontal motes, armored targets and impact all remain legible in the crop. Lower crop trims expendable robe and ground."
+  },
+  {
+    "cardId": "courage",
+    "name": "Courage",
+    "prompt": "Original fantasy card art for Courage. Mechanics: cards and wand strengthened for 14 seconds without health cost; casting stuns the nearest enemy. A brave medieval spellcaster rallies allies on a stone battlement, amber courage aura strengthening their raised wand and companions\u2019 ready cards, while a nearby charging shadow-armored enemy freezes in a golden jolt. Painterly medieval fantasy collectible card illustration with believable faces, hands, parchment, leather and steel, nuanced brush texture, warm directional light against cool twilight, atmospheric depth. Explicit 1:1 SQUARE canvas for editable 512x512 master. Keep critical faces, complete wand including tip, hands, cards and stunned foe within normalized x24..488,y105..407 for the 206:141 wide crop; quiet sky and stone above and below. Strong readable subject. No frame, lettering, UI, anime, cartoon, photorealism or pixel art. Composition repaired twice to move group down and preserve wand in crop.",
+    "generatedPath": "/workspace/generated_images/exec-5c08b19f-8216-4e9d-a872-16f033688ec1.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 4,
+    "reviewNote": "Reviewed 1254-square original and 206:141 crop after two composition repairs. Spellcaster\u2019s complete wand tip, faces, hands, glowing cards and stunned foe remain visible in central card crop; quiet sky fills above."
+  },
+  {
+    "cardId": "light_utility_01",
+    "name": "Imperial Scribe's Brush",
+    "prompt": "Original art for Imperial Scribe\u2019s Brush, a named enchanted calligraphy brush that draws two cards into hand. An ornate ivory-and-gold scribe\u2019s brush with sable tip dominates diagonally across a richly lit medieval writing desk; its stroke unfurls into exactly two distinct floating blank parchment cards drifting into the open hand of an imperial scribe whose full face and fingers are visible. Painterly medieval fantasy collectible-card art, refined wood, ivory, gold and paper, warm directional candlelight, nuanced brushwork and depth. Explicit 1:1 SQUARE composition for 512 master. Keep entire brush, tip, face, hands and two cards within x24..488,y105..407 normalized for wide 206:141 crop. No writing or glyphs on cards, no frame/UI, anime, cartoon, photorealism or pixel art. Composition repaired to central square and wide crop.",
+    "generatedPath": "/workspace/generated_images/exec-00db9bad-e208-446a-bb35-93ff300efd23.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 4,
+    "reviewNote": "Reviewed original (including its first landscape output) and repaired square-normalized 206:141 crop. Complete brush, scribe face, drawing and receiving hands, and both blank cards are fully visible."
+  },
+  {
+    "cardId": "light_ward_01",
+    "name": "Kite Shield",
+    "prompt": "Original illustration for Kite Shield. Mechanics: lasting light shield grants barrier 25 for 32 seconds. The unmistakable named artifact is one large elegant medieval kite-shaped shield, complete silhouette, dominant center, warm ivory enamel, engraved sunburst and delicate gold edging over believable steel, catching a focused golden protective barrier sheen as an arrow strikes and glances off. Painterly medieval fantasy card art, textured enamel and metal, attractive directional dawn light and atmospheric depth. Explicit 1:1 SQUARE canvas, 512x512 master. Keep whole shield, impact and markings inside normalized x24..488,y105..407 for wide 206:141 crop. No text, border, UI, anime, cartoon, photorealism or pixel art. Repaired by scaling and centering shield.",
+    "generatedPath": "/workspace/generated_images/exec-704f9319-700f-4a3f-add5-3b7d6bda190f.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 4,
+    "reviewNote": "Reviewed square and 206:141 crop after repair. Full kite shield silhouette, sunburst and arrow impact fit in crop with clear surrounding space."
+  },
+  {
+    "cardId": "intervention",
+    "name": "Divine Intervention",
+    "prompt": "Illustrate Divine Intervention. Two seconds after casting, the next otherwise fatal hit is prevented and restores 85 health; nearest enemy is briefly stunned. A wounded medieval knight as a huge translucent golden guardian hand turns aside a killing axe blow, warm healing light restores the knight, and the dark foe freezes stunned. Painterly medieval fantasy collectible card art, believable faces and hands, steel and cloth, dramatic gold against cool battle dusk. Explicit 1:1 SQUARE for 512 master. Keep knight face/hands, complete guardian hand and impact, foe face and stun within x24..488,y105..407 normalized for wide 206:141 crop. No frame/text/UI or anime/cartoon/photorealism/pixel art. Repaired; second output returned landscape, normalized central square and inspected its wide crop.",
+    "generatedPath": "/workspace/generated_images/exec-a833392a-0d55-44e2-a050-a221ac498278.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "Reviewed 1514\u00d71039 source, central square normalization and 206:141 crop. Guardian hand and all fingertips, knight face/hands, axe impact and stunned foe remain fully visible."
+  },
+  {
+    "cardId": "dawnbreaker",
+    "name": "Dawnbreaker",
+    "prompt": "Illustrate legendary light strike Dawnbreaker. After a brief charge, a powerful sweeping wave crosses every enemy row, hits each once and mends the caster. A medieval dawn-priest bracing on a ruined ridge releases one broad controlled horizontal crescent of golden sunrise across shadow-armored foes; each is caught once while subtle healing light closes the priest\u2019s wound. Painterly medieval fantasy art, believable faces/hands, textured cloth, steel and stone, attractive directional light, depth. Explicit 1:1 SQUARE 512 master. Keep caster face/hands, complete horizontal wave and foes within normalized x24..488,y105..407 for 206:141 crop. No frame/text/UI, anime/cartoon/photorealism/pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2e8f1e50-9998-4841-99eb-4a4dd673da7e.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "Reviewed square and 206:141 crop. Caster face and hands, distinct sweeping horizontal wave and multiple foes remain readable in crop."
+  },
+  {
+    "cardId": "light_lob_01",
+    "name": "Bright Comet",
+    "prompt": "Paint Bright Comet, a heavy delayed light bomb detonating one second after cast for 42 damage in a cross, knocking victims back and stunning them. Show a distinct golden-white comet descending into the center of a medieval stone courtyard; clear cross-shaped impact light across ground and armored foes thrown backward. The comet and impact dominate. Painterly medieval fantasy card art, believable armor and stone, dramatic attractive lighting and depth. Explicit 1:1 SQUARE 512 master; keep complete comet, impact and important figures within normalized x24..488,y105..407 for wide 206:141 crop. No frame, lettering, UI, anime/cartoon/photorealism/pixel art. Repaired to reduce and center comet; tail still enters from above crop while head and impact are visible.",
+    "generatedPath": "/workspace/generated_images/exec-b32f978e-bb04-441c-b620-512629e475e6.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "Reviewed square and 206:141 crop. Comet head, bright descending trail, cross-shaped impact and stunned armored victims are clear; trail begins above the card crop as a descending comet."
+  },
+  {
+    "cardId": "light_ward_02",
+    "name": "Tower Shield",
+    "prompt": "Illustrate Tower Shield. Mechanics: brief strong barrier of 56 replaces the current shield; steady ward spreads impacts so no single hit removes more than a fifth. A massive full-height rectangular medieval tower shield, riveted oak faced in steel and gold, upright as a steadfast knight braces behind it; arrows and an axe strike at separate points, each impact spreads into small even golden ward ripples. Shield is dominant and complete. Painterly medieval fantasy card art, believable hands, armor, wood and metal, attractive directional light and depth. Explicit 1:1 SQUARE 512 master. Keep entire shield, bracing hand and impacts within normalized x24..488,y105..407 for wide crop. No text/frame/UI, anime/cartoon/photo/pixel art. Repaired by shrinking and centering.",
+    "generatedPath": "/workspace/generated_images/exec-4123dd6d-294c-4b6c-b4e1-731d171f0038.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "Reviewed square and 206:141 crop after repair. Complete shield silhouette, all four distinct impacts, bracing hand and armored bearer remain visible."
+  },
+  {
+    "cardId": "light_sentry_01",
+    "name": "Harbor Lighthouse",
+    "prompt": "Illustrate Harbor Lighthouse, a sturdy quick medieval sentry that fires at the first enemy in its row every 0.7 seconds; every third attack doubles and stuns. Monumental octagonal limestone harbor lighthouse dominates, full tower rising from rocky breakwater. Bronze lantern lens fires a narrow level golden beam across harbor into a dark armored raider on a distant quay, third strike doubled as brief stun flash. Painterly medieval fantasy collectible art, carved stone, bronze and sea spray, golden beacon against cool blue dusk, atmospheric depth. Explicit 1:1 SQUARE 512 master. Keep entire lighthouse including lantern and base, beam endpoint and foe inside normalized x24..488,y105..407 for 206:141 crop. No text/frame/UI, anime/cartoon/photo/pixel art. Repaired by scaling and centering tower.",
+    "generatedPath": "/workspace/generated_images/exec-c01aaf86-a75a-4991-b465-2348e02f0907.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "Reviewed square and 206:141 crop after repair. Full lighthouse from lantern cap to rocky base, horizontal beam and struck foe all fit within crop."
+  },
+  {
+    "cardId": "light_strike_01",
+    "name": "Pilum Volley",
+    "prompt": "Paint the LIGHT card Pilum Volley. Mechanics: a stream of bolts follows the caster as they move for 2.7 seconds. Show a focused medieval light archer moving laterally along a stone parapet while launching a rapid, closely spaced volley of long Roman-style pilum javelins; the caster and multiple distinct heavy-shafted bolts flying together across the scene are unmistakable, with subtle golden guidance trails curving after the movement. Keep the volley itself prominent, not a generic glowing spell. Mature painterly medieval fantasy collectible-card art, textured linen, leather, iron and carved stone, dramatic warm sunlight and cool shadows, atmospheric depth, grounded anatomy. Explicit 1:1 SQUARE composition intended as an editable 512x512 master; horizontal staging for 206:141 crop. Keep caster face, hands, complete visible javelins and action safely within normalized x24..488,y105..407, with quiet expendable sky and stone at top/bottom. No border, frame, text, lettering, symbols, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f93353d5-1618-4891-86a5-8bc6706b1307.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 6,
+    "reviewNote": "Reviewed the 1254\u00d71254 original, 512\u00d7512 editable source, and centered 206:141 crop plus thumbnail. Archer face, casting hand, and distinct pilum heads remain in the crop; the flying javelins read at thumbnail size.",
+    "editableSourcePath": "game/cards/art/masters/light_strike_01.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "light_lob_02",
+    "name": "Mortar of Bricks",
+    "prompt": "Paint the LIGHT card Mortar of Bricks. Mechanics: a heavy shell lands on the aimed tile after one second, passing over blockers, dealing a powerful impact and leaving luminous light-ground for four seconds. Show a medieval siege mortar launching a squat shell visibly made of tightly bound pale masonry bricks; it arcs over broken obstacles and strikes a marked patch of courtyard, where bricks burst outward into a bold cross-shaped pattern of golden-white ground fissures and dust. The mortar projectile and its landing impact are the clear subject. Painterly medieval fantasy collectible-card art, tactile brick, iron bands, weathered stone, attractive directional golden light and atmospheric depth, mature grounded style. Explicit 1:1 SQUARE composition for editable 512x512 master, horizontally staged for 206:141 crop. Keep full mortar, brick shell and cross-shaped impact within normalized x24..488,y105..407, quiet sky and cobbles at top/bottom. No border, frame, writing, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art. Repainted twice to move the brick shell fully into the wide crop.",
+    "generatedPath": "/workspace/generated_images/exec-1ca95996-3830-47ba-b642-a8133b20fd26.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 6,
+    "reviewNote": "Reviewed the square original, 512x512 editable source, 206:141 crop, and thumbnail. After two composition repairs, the complete brick shell, mortar and cross-shaped impact fit in the wide crop; shell detail is small at thumbnail scale but the projectile and impact remain legible.",
+    "editableSourcePath": "game/cards/art/masters/light_lob_02.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "light_ward_03",
+    "name": "Marble Wall",
+    "prompt": "Paint the LIGHT card Marble Wall. Mechanics: two lasting walls of 33 strength rise across lanes in front of the caster and persist for 32 seconds. Show two broad parallel ranks of elegant pale marble rampart sections materializing across a medieval battlefield lane, forming a durable barrier; foreground wall nearest, second wall receding behind, each clearly spanning the path. A light-cloaked warder braces beside the near wall with one hand against its carved stone as arrows and a sword strike it and glance away, showing sturdiness. The walls are the main subject, not a generic glowing dome. Painterly medieval fantasy collectible-card art, finely veined marble, chipped stone, believable cloth and armor, warm directional sunlight and atmospheric depth. Explicit 1:1 SQUARE composition for editable 512x512; compose horizontally for 206:141 card crop. Keep complete near wall, second wall, warder face and hand, and impact marks within x24..488,y105..407. Quiet sky/ground margins top/bottom. No border, frame, text, symbols, numbers or UI. No anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f4a610e4-bf56-4290-afc0-41fc7e39ceba.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 6,
+    "reviewNote": "Reviewed original, editable square, 206:141 crop, and thumbnail. Both parallel marble walls span the lane; the warder face and bracing hand plus arrows and sword impact remain inside the crop. Wall identity stays clear at thumbnail size.",
+    "editableSourcePath": "game/cards/art/masters/light_ward_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "light_sentry_02",
+    "name": "Arrow-Slit Tower",
+    "prompt": "Paint the LIGHT sentry card Arrow-Slit Tower. Mechanics: a sturdy medieval tower steadily lobs a bomb that bursts in a plus-shaped cross, damaging and briefly stunning foes. Make a compact, squat, unmistakable pale-stone arrow-slit tower the dominant subject, with crenellated cap, narrow vertical arrow slits, gold trim, anchored on a battlefield wall. From a small side aperture it lobs a dark iron spherical bomb along a clear arc; the bomb bursts near an armored foe in a crisp luminous golden plus-shaped cross of force, freezing the foe momentarily. Show tower, airborne bomb, impact and foe in one readable horizontal scene. Painterly medieval fantasy collectible-card art, detailed masonry and iron, warm attractive directional light, atmospheric depth, grounded mature style. Explicit 1:1 SQUARE editable 512x512 composition, planned for 206:141 wide crop. Keep complete tower including cap/base, entire projectile arc and plus-shaped impact, foe head and body within x24..488,y105..407. Quiet sky/ground in top/bottom margins. No border, frame, words, letters, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art. Repaired composition to fit complete tower into card crop.",
+    "generatedPath": "/workspace/generated_images/exec-207acdeb-c1cc-42ab-a7a2-23993d8310c7.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 6,
+    "reviewNote": "Reviewed square original, 512x512 editable source, wide crop and thumbnail. Repaired scale keeps crenellated tip and complete tower base inside crop; bomb arc, cross-shaped burst and struck foe are visible, though foe face is small at thumbnail size.",
+    "editableSourcePath": "game/cards/art/masters/light_sentry_02.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  }
+]

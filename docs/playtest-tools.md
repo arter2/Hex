@@ -46,6 +46,7 @@ build. The bots are not people: their fun and frustration weights are guesses un
 | `puzzle-lab.js` | Each puzzle kind on its own, many times | see the file |
 | `ui-runner.js` | Real coordinate taps and hit-region checks for phone/tablet menus: camp, deck, collection, shop, bag, settings, dungeon HUD, pause | `node ui-runner.js out-ui` (`BROWSER=webkit` for WebKit; not physical Safari) |
 | `battle-ui-runner.js` | Real taps through a battle and the hand screen on 5 screen sizes (one left-handed): queueing, NEXT, Cast, holding Fire, Whetstone enchanting, Spell → hand screen, Keep, Search; checks no battle control is covered | `node battle-ui-runner.js out-battle-ui` |
+| `touch-dungeon-runner.js` (+ `touch-human.js`) | A QA player on dungeon floors who only touches the screen: two thumbs through real multi-touch (walk with one, Strike/Fire/Cast with the other), every touch movement style, a new, average or good player's timing and aim, and only what a player can see (no floor plan, hidden traps or out-of-sight enemies). Fights use `bot.js`'s human model (`PT.brain`) turned into touches. Notes stutters and long tasks with what the game was doing, lost WebGL contexts, black/blank frames, NaN/undefined text, clipped text, covered or off-screen controls, ignored taps (with how long the page saw the press), strikes while walking that did not swing, deaths and what killed it | `node touch-dungeon-runner.js out-dir --depths 1,4 --floors 2 --minutes 8 --device phone --move mix --skill average` |
 | `difficulty.js` | The difficulty curve: each bot profile plays runs from depth 1 to 30; win %, HP lost (% of max) and fight length by depth band, and where runs stop | `node difficulty.js out-dir [perColour] [maxDepth] [styles]` |
 | `test-summary.js`, `record-results.js` | One Markdown summary of a session; save it to `docs/test-results/` with a history row | `node test-summary.js out-dir`, `node record-results.js out-dir docs/test-results` |
 
@@ -107,6 +108,13 @@ Six scenarios on a real page with real reloads:
   - **Natural break:** the stop came within 30 s after a big reward.
   - **Ended on a high:** the last 5 minutes beat that player's usual 5 minutes.
 - Also reports the time between big rewards (median, 1 in 10, longest).
+
+### A touch-only player on dungeon floors (`touch-dungeon-runner.js`)
+- **Controls:** taps the game ignored, Strike pressed while another finger walks (per movement style), cards that did not queue, Cast taps that did not cast, buttons under something else or off screen, targets under 44 px.
+- **Graphics:** black, blank or suddenly brighter frames in the 3D view (screenshots checked pixel by pixel), lost WebGL contexts, text reading NaN or undefined, clipped text, broken images.
+- **Stutters:** frames well over the page's own median frame and long tasks, each put down to what the game was doing (a floor being built, a fight starting, the hand screen); renderer geometries and textures per floor (growth = leak).
+- **Difficulty and pacing:** per floor (time to see the stairs, % explored, fights, ambushes, first strikes, surprises, deaths and what killed it) and per fight (HP lost, hits, threats seen and escaped, casts, Spell screens).
+- Frame times on this software-rendered browser are far slower than a phone, and a slow page can stretch a quick tap into a hold: each ignored tap records how long the page saw the press, so the machine and the game can be told apart.
 
 ### Performance over a long session (`soak.js`)
 - Every phase samples:

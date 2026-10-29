@@ -1,0 +1,1520 @@
+[
+  {
+    "id": "thorn_dart",
+    "name": "Thorn Dart",
+    "type": "strike",
+    "color": "verdant"
+  },
+  {
+    "id": "vine_lash",
+    "name": "Vine Lash",
+    "type": "strike",
+    "color": "verdant"
+  },
+  {
+    "id": "briar_bomb",
+    "name": "Briar Bomb",
+    "type": "lob",
+    "color": "verdant"
+  },
+  {
+    "id": "bramble_wall",
+    "name": "Bramble Wall",
+    "type": "ward",
+    "color": "verdant"
+  },
+  {
+    "id": "bark_skin",
+    "name": "Bark Skin",
+    "type": "ward",
+    "color": "verdant"
+  },
+  {
+    "id": "spore_pod",
+    "name": "Spore Pod",
+    "type": "sentry",
+    "color": "verdant"
+  },
+  {
+    "id": "regrowth",
+    "name": "Regrowth",
+    "type": "boon",
+    "color": "verdant"
+  },
+  {
+    "id": "mend",
+    "name": "Mend",
+    "type": "boon",
+    "color": "verdant"
+  },
+  {
+    "id": "world_tree",
+    "name": "World Tree",
+    "type": "boon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_strike_01",
+    "name": "Hunter's Longbow Shot",
+    "type": "strike",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_strike_02",
+    "name": "Yew Arrow",
+    "type": "strike",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_strike_03",
+    "name": "Woodsman's Throwing Axe",
+    "type": "strike",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_strike_04",
+    "name": "Atlatl Dart",
+    "type": "strike",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_strike_05",
+    "name": "Bear Swipe",
+    "type": "strike",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_strike_06",
+    "name": "Volley of the Greenwood",
+    "type": "strike",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_strike_07",
+    "name": "Outlaw's Split Arrow",
+    "type": "strike",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_strike_08",
+    "name": "Jaguar Pounce",
+    "type": "strike",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_strike_09",
+    "name": "Tiger's Rake",
+    "type": "strike",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_strike_10",
+    "name": "Army Ant March",
+    "type": "strike",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_strike_11",
+    "name": "Blowgun Dart",
+    "type": "strike",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_strike_12",
+    "name": "Viper Strike",
+    "type": "strike",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_strike_13",
+    "name": "Cobra Venom Spray",
+    "type": "strike",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_strike_14",
+    "name": "Hornet Swarm",
+    "type": "strike",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_strike_15",
+    "name": "Komodo Bite",
+    "type": "strike",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_strike_16",
+    "name": "Curare Needle",
+    "type": "strike",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_strike_17",
+    "name": "Creeping Ivy",
+    "type": "strike",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_strike_18",
+    "name": "Root Grasp",
+    "type": "strike",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_strike_19",
+    "name": "Anaconda Squeeze",
+    "type": "strike",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_strike_20",
+    "name": "Liana Whip",
+    "type": "strike",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_strike_21",
+    "name": "Strangler Fig",
+    "type": "strike",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_strike_22",
+    "name": "Will-o'-Wisp Lure",
+    "type": "strike",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_strike_23",
+    "name": "Stag Leap",
+    "type": "strike",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_strike_24",
+    "name": "Grizzly Charge",
+    "type": "strike",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_strike_25",
+    "name": "Moose Antler Rush",
+    "type": "strike",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_strike_26",
+    "name": "Highland Caber Toss",
+    "type": "strike",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_strike_27",
+    "name": "Tanuki Leaf Trick",
+    "type": "strike",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_strike_28",
+    "name": "Ratatoskr's Insult",
+    "type": "strike",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_strike_29",
+    "name": "Leshy's Wrong Turn",
+    "type": "strike",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_strike_30",
+    "name": "Curupira's Backward Trail",
+    "type": "strike",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_strike_31",
+    "name": "Pan's Panic Pipes",
+    "type": "strike",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_strike_32",
+    "name": "Monkey Coconut Toss",
+    "type": "strike",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_strike_33",
+    "name": "Elf-Shot",
+    "type": "strike",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_strike_34",
+    "name": "Mapinguari Roar",
+    "type": "strike",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_strike_35",
+    "name": "Druid's Golden Sickle",
+    "type": "strike",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_strike_36",
+    "name": "Ride of the Wild Hunt",
+    "type": "strike",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_strike_37",
+    "name": "Green Knight's Axe",
+    "type": "strike",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_strike_38",
+    "name": "Caledfwlch",
+    "type": "strike",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_01",
+    "name": "Wasp Nest",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_lob_01",
+    "name": "Squirting Cucumber",
+    "type": "lob",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_lob_02",
+    "name": "Bog Belch",
+    "type": "lob",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_strike_39",
+    "name": "Dart Frog Leap",
+    "type": "strike",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_lob_03",
+    "name": "Rafflesia Bloom",
+    "type": "lob",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_lob_04",
+    "name": "Coconut Drop",
+    "type": "lob",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_lob_05",
+    "name": "Falling Deadwood",
+    "type": "lob",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_02",
+    "name": "Felled Oak",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_lob_06",
+    "name": "Pinecone Shower",
+    "type": "lob",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_lob_07",
+    "name": "Acorn Rain",
+    "type": "lob",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_lob_08",
+    "name": "Seed Pod Barrage",
+    "type": "lob",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_lob_09",
+    "name": "Sticky Sap Glob",
+    "type": "lob",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_lob_10",
+    "name": "Wild Honeycomb Hurl",
+    "type": "lob",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_lob_11",
+    "name": "Kapok Fluff Burst",
+    "type": "lob",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_boon_01",
+    "name": "Toadstool Ring",
+    "type": "boon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_lob_12",
+    "name": "Sasquatch Boulder",
+    "type": "lob",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_lob_13",
+    "name": "Treefolk Stomp",
+    "type": "lob",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_lob_14",
+    "name": "Mokele-mbembe's Wake",
+    "type": "lob",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_lob_15",
+    "name": "Fall of the Great Ceiba",
+    "type": "lob",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_ward_01",
+    "name": "Hawthorn Hedge",
+    "type": "ward",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_ward_02",
+    "name": "Holly Thicket",
+    "type": "ward",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_ward_03",
+    "name": "Briar Rose Hedge",
+    "type": "ward",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_ward_04",
+    "name": "Stacked Log Wall",
+    "type": "ward",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_03",
+    "name": "Strangler Fig Roots",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_ward_05",
+    "name": "Living Hedge Maze",
+    "type": "ward",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_ward_06",
+    "name": "Baobab Bulwark",
+    "type": "ward",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_04",
+    "name": "Turtle Shell Guard",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_ward_07",
+    "name": "Bear Hide Cloak",
+    "type": "ward",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_ward_08",
+    "name": "Moss Mantle",
+    "type": "ward",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_ward_09",
+    "name": "Oak Heartwood Shield",
+    "type": "ward",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_ward_10",
+    "name": "Ghillie Suit",
+    "type": "ward",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_ward_11",
+    "name": "Pangolin Scales",
+    "type": "ward",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_ward_12",
+    "name": "Green Chapel Gate",
+    "type": "ward",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_sentry_01",
+    "name": "Pitcher Plant",
+    "type": "sentry",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_sentry_02",
+    "name": "Sundew Patch",
+    "type": "sentry",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_sentry_03",
+    "name": "Venus Flytrap",
+    "type": "sentry",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_sentry_04",
+    "name": "Beltane Maypole",
+    "type": "sentry",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_05",
+    "name": "Puffball Sentinel",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_sentry_05",
+    "name": "Carved Stag Post",
+    "type": "sentry",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_sentry_06",
+    "name": "Treehouse Archer Post",
+    "type": "sentry",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_06",
+    "name": "Hornet Hive",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_07",
+    "name": "Whispering Oak",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_sentry_07",
+    "name": "Druid's Standing Stone",
+    "type": "sentry",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_08",
+    "name": "Weeping Willow",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_sentry_08",
+    "name": "Mandrake Patch",
+    "type": "sentry",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_boon_02",
+    "name": "Bear's Might",
+    "type": "boon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_boon_03",
+    "name": "Stag's Grace",
+    "type": "boon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_boon_04",
+    "name": "Chameleon Skin",
+    "type": "boon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_boon_05",
+    "name": "Wild Herb Poultice",
+    "type": "boon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_boon_06",
+    "name": "Willow Bark Tea",
+    "type": "boon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_boon_07",
+    "name": "Mistletoe Sprig",
+    "type": "boon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_boon_08",
+    "name": "Shaman's Vision Quest",
+    "type": "boon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_boon_09",
+    "name": "Wolfskin Frenzy",
+    "type": "boon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_boon_10",
+    "name": "Fern Seed Vanishing",
+    "type": "boon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_boon_11",
+    "name": "Green Man's Blessing",
+    "type": "boon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_boon_12",
+    "name": "Tapio's Favour",
+    "type": "boon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_boon_13",
+    "name": "Demeter's Bounty",
+    "type": "boon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_boon_14",
+    "name": "Green Knight's Girdle",
+    "type": "boon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_charge_01",
+    "name": "Quiver of Yew Arrows",
+    "type": "charge",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_charge_02",
+    "name": "Fletcher's Bundle",
+    "type": "charge",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_charge_03",
+    "name": "Acorn Sack",
+    "type": "charge",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_charge_04",
+    "name": "Chestnut Basket",
+    "type": "charge",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_charge_05",
+    "name": "Hunter's Sling Pouch",
+    "type": "charge",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_charge_06",
+    "name": "Poison Dart Pouch",
+    "type": "charge",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_charge_07",
+    "name": "Herb Bundle",
+    "type": "charge",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_charge_08",
+    "name": "Monkey's Fruit Stash",
+    "type": "charge",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_charge_09",
+    "name": "Seed Satchel",
+    "type": "charge",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_charge_10",
+    "name": "Hornet Jar",
+    "type": "charge",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_charge_11",
+    "name": "Mushroom Basket",
+    "type": "charge",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_charge_12",
+    "name": "Bola Set",
+    "type": "charge",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_charge_13",
+    "name": "Gourd of Pine Sap",
+    "type": "charge",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_charge_14",
+    "name": "Marsh Leech Pouch",
+    "type": "charge",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_charge_15",
+    "name": "Elven Moonshaft Quiver",
+    "type": "charge",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_charge_16",
+    "name": "Silver Arrow Prize",
+    "type": "charge",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_charge_17",
+    "name": "Annwn Hunting Quiver",
+    "type": "charge",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_charge_18",
+    "name": "Horn of Plenty",
+    "type": "charge",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_utility_01",
+    "name": "Tracker's Instinct",
+    "type": "utility",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_utility_02",
+    "name": "Forest Spring",
+    "type": "utility",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_utility_03",
+    "name": "Squirrel's Cache",
+    "type": "utility",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_utility_04",
+    "name": "Snakeroot Remedy",
+    "type": "utility",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_utility_05",
+    "name": "Ogham Staves",
+    "type": "utility",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_utility_06",
+    "name": "Mycelium Network",
+    "type": "utility",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_utility_07",
+    "name": "Lyrebird Mimicry",
+    "type": "utility",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_utility_08",
+    "name": "Anansi's Bag of Tales",
+    "type": "utility",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_trap_01",
+    "name": "Hunter's Net",
+    "type": "trap",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_trap_02",
+    "name": "Root Tripwire",
+    "type": "trap",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_trap_03",
+    "name": "Bear Pit",
+    "type": "trap",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_trap_04",
+    "name": "Punji Stakes",
+    "type": "trap",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_trap_05",
+    "name": "Stinkhorn Patch",
+    "type": "trap",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_trap_06",
+    "name": "Pitfall of Thorns",
+    "type": "trap",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_trap_07",
+    "name": "Deadfall",
+    "type": "trap",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_trap_08",
+    "name": "Fairy Ring",
+    "type": "trap",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_trap_09",
+    "name": "Peat Bog Mire",
+    "type": "trap",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_trap_10",
+    "name": "Giant Puffball",
+    "type": "trap",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_trap_11",
+    "name": "Strangler Vine Snare",
+    "type": "trap",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_trap_12",
+    "name": "Pixie-Led Path",
+    "type": "trap",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_environment_01",
+    "name": "Bramble Thicket",
+    "type": "environment",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_environment_02",
+    "name": "Tangled Undergrowth",
+    "type": "environment",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_environment_03",
+    "name": "Kudzu Spread",
+    "type": "environment",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_environment_04",
+    "name": "Heather Moor",
+    "type": "environment",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_environment_05",
+    "name": "Rainforest Canopy",
+    "type": "environment",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_environment_06",
+    "name": "Mire of the Fens",
+    "type": "environment",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_environment_07",
+    "name": "Stampede",
+    "type": "environment",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_environment_08",
+    "name": "Birnam Wood Marches",
+    "type": "environment",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_environment_09",
+    "name": "Ent Moot",
+    "type": "environment",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_environment_10",
+    "name": "Primeval Wildwood",
+    "type": "environment",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_piece_01",
+    "name": "Antlers of the Forest King",
+    "type": "piece",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_piece_02",
+    "name": "Seed of the World Ash",
+    "type": "piece",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_piece_03",
+    "name": "Horn of the Wild Hunt",
+    "type": "piece",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_piece_04",
+    "name": "Pipes of the Goat-Footed",
+    "type": "piece",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_piece_05",
+    "name": "Pelt of the Jaguar King",
+    "type": "piece",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_piece_06",
+    "name": "Mask of the Green Man",
+    "type": "piece",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_09",
+    "name": "Elder Ent",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_10",
+    "name": "Jack-in-the-Green",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_11",
+    "name": "Leshy of the Birchwood",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_12",
+    "name": "Kodama",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_13",
+    "name": "Oak Dryad",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_14",
+    "name": "Pixie Swarm",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_15",
+    "name": "Robin Goodfellow",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_16",
+    "name": "Queen Mab",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_17",
+    "name": "Will-o'-Wisp",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_18",
+    "name": "Faun Reveler",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_19",
+    "name": "Elven Pathfinder",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_20",
+    "name": "Patupaiarehe Mist Folk",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_21",
+    "name": "Curupira",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_22",
+    "name": "Chullachaqui",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_23",
+    "name": "Alux Field Keeper",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_24",
+    "name": "Grove Druid",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_25",
+    "name": "Rainforest Curandero",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_26",
+    "name": "Archdruid of the Oaks",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_27",
+    "name": "Greenwood Outlaw",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_28",
+    "name": "Hooded Outlaw Captain",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_29",
+    "name": "Mountain Man Trapper",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_30",
+    "name": "Sir Gawain",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_31",
+    "name": "The Green Knight",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_32",
+    "name": "Arthur, the Once King",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_33",
+    "name": "Gwyn ap Nudd",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_34",
+    "name": "Cwn Annwn Hound",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_35",
+    "name": "Herne the Hunter",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_36",
+    "name": "Tapio, King of the Forest",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_37",
+    "name": "Sasquatch",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_38",
+    "name": "Yowie",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_39",
+    "name": "Basajaun",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_40",
+    "name": "Kapre Tree Giant",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_41",
+    "name": "Orang Pendek",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_42",
+    "name": "Mapinguari",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_43",
+    "name": "Old Man of the Forest",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_44",
+    "name": "Capuchin Thief",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_45",
+    "name": "Monkey King's Vanguard",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_46",
+    "name": "Tanuki Drummer",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_47",
+    "name": "Grizzly Matriarch",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_48",
+    "name": "Otso the Honey-Paw",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_49",
+    "name": "Bull Moose",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_50",
+    "name": "Dappled Fawn",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_51",
+    "name": "Balam Jaguar Knight",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_52",
+    "name": "Clouded Leopard",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_53",
+    "name": "Sundarbans Tiger",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_54",
+    "name": "Horangi Mountain Tiger",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_55",
+    "name": "Greenwood Wolf Pack",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_56",
+    "name": "Wild Tusker Boar",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_57",
+    "name": "Twrch Trwyth",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_58",
+    "name": "Komodo Monitor",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_59",
+    "name": "Fer-de-Lance",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_60",
+    "name": "Green Anaconda",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_61",
+    "name": "Poison Dart Frog",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_62",
+    "name": "Army Ant Soldier",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_63",
+    "name": "Giant Forest Hornet",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_64",
+    "name": "Sporeling Thallid",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_65",
+    "name": "Thallid Germinator",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_66",
+    "name": "Fungal Thallid Brute",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_67",
+    "name": "Moss-Shelled Tortoise",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_68",
+    "name": "Galapagos Giant Tortoise",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_69",
+    "name": "Resplendent Quetzal",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_summon_70",
+    "name": "Mokele-mbembe",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_machine_01",
+    "name": "Hunter's Crossbow Rig",
+    "type": "machine",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_machine_02",
+    "name": "Sharpened Log Palisade",
+    "type": "machine",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_machine_03",
+    "name": "Sapling Catapult",
+    "type": "machine",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_machine_04",
+    "name": "Treehouse Lookout",
+    "type": "machine",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_ace_01",
+    "name": "Thornheart Seed",
+    "type": "ace",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_ace_02",
+    "name": "Hunter's Last Arrow",
+    "type": "ace",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_ace_03",
+    "name": "Wrath of the Wild",
+    "type": "ace",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_aceup_01",
+    "name": "Venom Tip",
+    "type": "aceup",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_aceup_02",
+    "name": "Sap of Renewal",
+    "type": "aceup",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_aceup_03",
+    "name": "Root Snare Wrap",
+    "type": "aceup",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_claim_01",
+    "name": "Creeping Overgrowth",
+    "type": "claim",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_claim_02",
+    "name": "Rootbound Glade",
+    "type": "claim",
+    "color": "verdant"
+  },
+  {
+    "id": "verdant_claim_03",
+    "name": "Wildwood Reclamation",
+    "type": "claim",
+    "color": "verdant"
+  },
+  {
+    "id": "hero_thorn",
+    "name": "The Thornfather",
+    "type": "hero",
+    "color": "verdant"
+  },
+  {
+    "id": "hero_briar",
+    "name": "Mother Briar",
+    "type": "hero",
+    "color": "verdant"
+  },
+  {
+    "id": "hero_fang",
+    "name": "Fang the Beastcaller",
+    "type": "hero",
+    "color": "verdant"
+  },
+  {
+    "id": "hero_oakheart",
+    "name": "Oakheart the Ancient",
+    "type": "hero",
+    "color": "verdant"
+  },
+  {
+    "id": "hero_sylva",
+    "name": "Sylva the Wild Archer",
+    "type": "hero",
+    "color": "verdant"
+  },
+  {
+    "id": "hero_mossback",
+    "name": "Mossback the Tortoise Sage",
+    "type": "hero",
+    "color": "verdant"
+  },
+  {
+    "id": "hero_venna",
+    "name": "Venna, the Viper Queen",
+    "type": "hero",
+    "color": "verdant"
+  },
+  {
+    "id": "hero_lia",
+    "name": "Bloomwarden Lia",
+    "type": "hero",
+    "color": "verdant"
+  },
+  {
+    "id": "hero_grovewalker",
+    "name": "The Grovewalker",
+    "type": "hero",
+    "color": "verdant"
+  },
+  {
+    "id": "hero_hivequeen",
+    "name": "Queen of the Hive",
+    "type": "hero",
+    "color": "verdant"
+  },
+  {
+    "id": "hero_ulfa",
+    "name": "Ulfa the Wolf Mother",
+    "type": "hero",
+    "color": "verdant"
+  },
+  {
+    "id": "hero_sporelord",
+    "name": "The Sporelord",
+    "type": "hero",
+    "color": "verdant"
+  },
+  {
+    "id": "hero_dara",
+    "name": "Vinewhip Dara",
+    "type": "hero",
+    "color": "verdant"
+  },
+  {
+    "id": "hero_thistle",
+    "name": "Thistle the Hedge Knight",
+    "type": "hero",
+    "color": "verdant"
+  },
+  {
+    "id": "brood_imp",
+    "name": "Sprout Imp",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "brood_snake",
+    "name": "Thorn Serpent",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "brood_hawk",
+    "name": "Moss Hawk",
+    "type": "summon",
+    "color": "verdant"
+  },
+  {
+    "id": "briar_arc",
+    "name": "Briar Arc",
+    "type": "ward",
+    "color": "verdant"
+  },
+  {
+    "id": "thornwood_cage",
+    "name": "Thornwood Cage",
+    "type": "ward",
+    "color": "verdant"
+  }
+]

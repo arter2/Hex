@@ -1,0 +1,180 @@
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Hexmancers artwork review</title>
+<link rel="stylesheet" href="card.css"><link rel="stylesheet" href="cards/card-geo.css">
+<style>body{margin:24px;background:#10151c;color:#eee;font:16px system-ui}h1{font-size:24px}h2{font-size:18px}.row{display:flex;gap:22px;align-items:start;overflow:auto;padding:12px 0}section{border-bottom:1px solid #36404b;padding:12px 0}.specimen{flex-shrink:0}p{margin:8px 0}nav{display:flex;gap:12px;align-items:center;flex-wrap:wrap}nav button,select{font:inherit;padding:8px}</style>
+<h1>Artwork review</h1><p>234 cards at 96, 120, 240 and 396 pixels. Choose a colour; scroll each row to compare sizes.</p>
+<nav><label>Colour <select id="review-colour"></select></label><button id="review-prev">Previous</button><button id="review-next">Next</button><span id="review-count"></span></nav><main id="review"></main>
+<script src="cardsets.js"></script><script src="creatures.js"></script><script src="strikes.js"></script><script src="kinds.js"></script><script src="cards.js"></script><script src="cards/card-geo.js"></script><script src="cards/icons.js"></script><script src="cards/illustrations.js"></script><script src="cards/art-variants.js"></script><script src="art.js"></script>
+<script>
+const save={seen:{},owned:{}};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>c==='&'?'&amp;':c==='<'?'&lt;':c==='>'?'&gt;':'&quot;');
+const CARD_PAL={
+  fire:   {face:'#4a1f16', ink:'#fff4ec', acc:'#ffb08a', bd:'#b5452e', tb:'rgba(0,0,0,.34)'},
+  frost:  {face:'#173452', ink:'#f0f7ff', acc:'#9fd0ff', bd:'#2f6ea6', tb:'rgba(0,0,0,.32)'},
+  storm:  {face:'#4a3c12', ink:'#fff8e2', acc:'#ffd866', bd:'#b48a2a', tb:'rgba(0,0,0,.48)'},
+  verdant:{face:'#1c3a24', ink:'#f0fbf2', acc:'#9fdca8', bd:'#2f7448', tb:'rgba(0,0,0,.32)'},
+  light:  {face:'#d9d2bc', ink:'#2a2416', acc:'#7a5c1e', bd:'#b8a46a', tb:'rgba(255,255,255,.42)'},
+  shadow: {face:'#1e1a1d', ink:'#f2eef0', acc:'#d6b6c6', bd:'#5a4a52', tb:'rgba(0,0,0,.30)'},
+  gray:   {face:'#6f7378', ink:'#f4f5f7', acc:'#d6dade', bd:'#9aa0a6', tb:'rgba(0,0,0,.30)'},
+  brown:  {face:'#3a2c22', ink:'#fbf2e8', acc:'#e0b080', bd:'#8a6644', tb:'rgba(0,0,0,.34)'},
+};
+/* Cards (v179): one card for every screen, the 240x434 canvas of cards/contract.json (see card.css). Where each slot
+   sits and each colour's ramp come from cards/card-geo.css (tools/card-build.py); this builds the layers and the text.
+   Layers, bottom up: the colour's base, its material texture (one of three, fixed per card), the art (and a holo
+   foil), the frame with any state glow, then the glyphs and live text. Every functional icon is a shape from
+   cards/icons drawn in the card's own colour (a mask), so a Pull is blue on a frost card and orange on a fire one.
+   The 'compact' / 'expanded' mode no longer changes the card: a small card simply hides what it can't show (card.css). */
+const KIT_COLOR={fire:'red',frost:'blue',storm:'yellow',verdant:'green',light:'white',shadow:'black',gray:'gray',brown:'brown'};
+// each colour's three material textures (palettes.json variants)
+const KIT_TEX={red:['embers','lava-crust','volcanic-ridges'], blue:['water-ripples','cracked-ice','frost-facets'], yellow:['dune-sand','static-arcs','sandstone'],
+  green:['leaves','moss','bark'], brown:['parchment','technical-plans','clay'], gray:['machine-plates','brushed-metal','weld-seams'],
+  white:['ashlar-blocks','column-flutes','veined-marble'], black:['grave-stone','bog','dead-roots']};
+const KIT_RARITY={common:'rarity-common',uncommon:'rarity-uncommon',rare:'rarity-rare',legendary:'rarity',hero:'rarity-hero'};
+const kitKind=c=>c.type==='piece'?c.base:c.type==='instant'?c.as:c.type;
+// the stat's icon: what the number is (damage, a wall's or a creature's HP, healing, or a boost)
+function kitStatIcon(c){ const r=cardRole(c), k=kitKind(c);
+  if(c.upPow||c.tk||c.eqPow) return 'boost';
+  if(['summon','machine','sentry','hero'].includes(k)) return 'summon'; if(k==='boon'&&['heal','regen'].includes(c.boon)) return 'heal';
+  return r==='attack'?'attack':r==='defense'?'defense':r==='turret'?'turret':'power'; }
+// the stat: damage, HP or healing; an enchantment's or a tinker's boost as a percentage
+function kitStat(c){ if(c.upPow) return '+'+Math.round(c.upPow*100)+'%'; if(c.tk) return '+'+Math.round(c.tk*100)+'%'; if(c.eqPow) return '+'+Math.round(c.eqPow*100)+'%';
+  return c.pow||(c.boon!=='gauge'&&c.amt)||c.hp||c.eqHp||''; }
+/* The footer: two facts, by kind of card.
+   - an Ace enchantment: the effect it adds (its own icon) and that it goes on the next Ace;
+   - a card with uses: its uses, then its keyword (else whom it hits);
+   - an attack: whom it hits and how far it reaches (the shape's own rule: a Snipe hits the lowest HP anywhere);
+   - anything else: its keyword, how long it lasts, whom it's for, in that order. */
+const KIT_KW=[['burn','burn','Burn',v=>v+'s'],['freeze','freeze','Freeze',v=>v+'s'],['stun','stun','Stun',v=>v+'s'],['slow','duration','Slow',v=>v+'s'],
+  ['poison','drain','Poison',v=>v],['curse','debuffed','Curse',v=>v+'s'],['drain','drain','Drain',v=>Math.round(v*100)+'%'],['mend','heal','Mend',v=>v],
+  ['confuse','status','Confuse',v=>v+'s'],['push','push','Knockback',()=>'Yes'],['pull','pull','Pull',()=>'Yes'],['valor','buffed','Valor',()=>'Yes']];
+// whom an attack hits and how far it reaches, by shape (strikes.js STRIKE_SHAPES; the older shapes after)
+const KIT_AIM={twin:['First foe','Row + next'], fan:['First foe','Row + diagonals'], spear:['First 2 foes','Your row'], boomerang:['Each foe once','Row + next'],
+  gun:['Your row','Follows you'], wave:['Every row','Sweeps ahead'], burst:['First foe','And around it'], chain:['First foe','Jumps twice'],
+  ricochet:['Bounces','Off the edges'], snipe:['Lowest HP','Any tile'], shockwave:['Every foe','4 tiles of you'], column:['Aimed line','Every row'],
+  mark:['Aimed foe','Blows in 1.5s'], cluster:['Aimed tile','Bomblets'], mine:['Aimed tile','When stepped'],
+  line:['First foe','Your row'], all:['Every foe','Anywhere'], row:['Whole row','Your row'], wedge:['Cone','Ahead of you'], zigzag:['First foe','Zigzag'],
+  missiles:['Random foes','Anywhere'], diag:['Diagonals','Both ways'], dig:['First foe','Your row']};
+// a lobbed attack's reach, by its pattern (cards.js lobPattern)
+const KIT_PATTERN={single:'One tile', burst:'And around it', ring:'Ring round it', cross:'+ shape', column:'Its column', row:'Its row'};
+const KIT_TARGET={strike:'First foe',lob:'Aimed tile',ward:'Your side',sentry:'Your side',boon:'You',charge:'Aimed tile',
+  utility:'Your cards',trap:'Aimed tile',environment:'Enemy side',summon:'Your side',machine:'Your side',hero:'Your side',
+  instant:'At once',equip:'A creature',tinker:'A card',ace:'Sidearm',aceup:'Sidearm',claim:'Enemy front'};
+function kitFooter(c){ const kind=kitKind(c), kw=KIT_KW.filter(k=>c[k[0]]).map(([k,ic,lab,f])=>[ic,lab,f(c[k])]);
+  const aim=KIT_AIM[c.shape]||(kind==='lob'||c.shot==='lob'?['Aimed tile',KIT_PATTERN[lobPattern(c)]]:null);
+  const tgt=['target','Target',aim?aim[0]:KIT_TARGET[kind]||(TYPES[c.type]||{}).name||'—'], rng=['range','Range',aim&&aim[1]||'—'];
+  if(kind==='aceup'){ const shape=c.upShape&&{row:'Whole row',all:'Every enemy',nova:'Around target',twin:'Twice'}[c.upShape];
+    return [kw[0]&&!shape?[kw[0][0],'Effect',kw[0][1]]:['boost','Effect',shape||'+'+Math.round(c.upPow*100)+'%'],['applies','Applies','Next Ace']]; }
+  if(c.uses) return [['uses','Uses',c.uses],kw[0]||tgt];
+  if(cardRole(c)==='attack') return [tgt,aim?rng:kw[0]||rng];
+  const out=[...kw];
+  if(c.turns&&['summon','machine','sentry','hero','ward','trap','environment'].includes(kind)) out.push(['duration','Lasts',Math.round(c.turns*10)+'s']);
+  if(c.dur) out.push(['duration','Lasts',c.dur+'s']);
+  out.push(tgt,rng); return out.slice(0,2); }
+// where a square picture's subject sits, when the wide art window crops it (x% y%); the middle otherwise
+const ART_FOCUS={ember_dart:'50% 30%'};
+// Each painterly card has a thumbnail, a medium crop and a full-detail crop. Batch measurements so
+// collection rendering does not repeatedly force layout, and do not retain removed image elements.
+const KIT_ART_PENDING=new Set(); let kitArtFrame=0;
+function kitArtSize(img){ if(!img) return; KIT_ART_PENDING.add(img); if(kitArtFrame) return;
+  kitArtFrame=requestAnimationFrame(()=>{kitArtFrame=0; const sizes=[...KIT_ART_PENDING].filter(i=>i.isConnected).map(i=>[i,Math.ceil(i.getBoundingClientRect().width)]);KIT_ART_PENDING.clear();for(const [i,w]of sizes)if(w>0)i.sizes=w+'px';}); }
+addEventListener('resize',()=>document.querySelectorAll('img[data-art-master]').forEach(kitArtSize));
+function kitArtSources(c,big){ const v=typeof cardArtVariants==='function'&&cardArtVariants(c); return v?` srcset="${v.outputs.map(o=>o.url+' '+o.width+'w').join(', ')}" sizes="${big?206:103}px" data-art-master="${v.master}" decoding="async"`:''; }
+const kitIcon=(cls,n,label)=>`<svg class="k-ic ${cls}" viewBox="0 0 32 32" shape-rendering="crispEdges"${label?` role="img" aria-label="${esc(label)}"`:' aria-hidden="true"'}>${KIT_ICONS[n]||''}</svg>`;
+function cardEl(c,extra,locked,mode,opts={}){
+  const el=document.createElement('button'), col=COLORS[c.color], kc=KIT_COLOR[c.color]||'gray', big=mode==='expanded';
+  el.className='card kit c-'+kc+(big?' expanded':' compact')+(c.rarity==='legendary'?' leg':'')+(c.rarity==='hero'?' hero':'')+(locked?' locked':'')+(c.mastery?' mcard':'');
+  el.style.setProperty('--c',col.c);
+  const tex=KIT_TEX[kc][[...String(c.id)].reduce((h,ch)=>(h*31+ch.charCodeAt(0))>>>0,0)%3], u=p=>'url(cards/'+p+')';
+  el.style.setProperty('--k-tex',u('textures/card/'+kc+'-'+tex+'.svg')); el.style.setProperty('--k-frame',u('frames/card/'+kc+'.svg'));
+  if(ART_FOCUS[c.id]) el.style.setProperty('--k-focus',ART_FOCUS[c.id]);
+  // holo: a legendary you own a holo copy of (or one passed in as holo); the moving foil only on the big card
+  const holo=!locked&&c.rarity==='legendary'&&(opts.holo||typeof holoCount==='function'&&holoCount(save,c.id)>0);
+  if(holo){ const mv=big&&!(typeof matchMedia==='function'&&matchMedia('(prefers-reduced-motion: reduce)').matches)?'-animated':'';
+    el.classList.add('holo'); el.style.setProperty('--k-foil',[u('effects/expanded/foil-glints'+mv+'.svg'),u('effects/expanded/foil-shimmer'+mv+'.svg'),u('effects/expanded/foil-etch.svg'),u('foils/expanded/'+kc+'/art'+mv+'.svg')].join(','));
+    el.style.setProperty('--k-trim',u('foils/card/'+kc+'/trim'+mv+'.svg')); }
+  const T=TYPES[c.type]||{name:''}, R=ROLES[cardRole(c)], stat=locked?'':kitStat(c), name=locked?'???':c.name, hero=c.rarity==='hero';
+  const rules=locked?'Not found yet.':cardText(c), foot=locked?[['target','Target','—'],['range','Range','—']]:kitFooter(c);
+  el.dataset.kname=name; el.dataset.ktype=T.name+'|'+R.name; el.dataset.kstat=stat;
+  let h='<i class="k-tex"></i>'+(holo?'<i class="k-foil"></i>':'')
+    +`<img class="k-el" src="cards/icons/element-${kc}${kc==='white'?'-ink':''}.svg" alt="${esc(col.name||'')}" draggable="false">`
+    +(hero?kitIcon('k-hero','hero-star','Hero'):c.code&&!locked?`<b class="k-rune${c.code===WILD?' wild':''}" title="Rune ${c.code}"><span>${c.code}</span></b>`:'')
+    +`<b class="k-rank" title="Rank ${c.rank}"><span>${c.rank}</span></b>`
+    +`<b class="k-name"><span>${esc(name)}</span></b>`
+    +(locked?'<span class="k-art k-hidden"></span>':`<img class="k-art${typeof cardIllustration==='function'&&cardIllustration(c)?' illustrated':''}" src="${artURL(c)}"${kitArtSources(c,big)} alt="" draggable="false">`)
+    +`<span class="k-tline"><span><i class="k-type">${esc(T.name)}</i><i class="k-dot">·</i><i class="k-cat">${esc(R.name)}</i></span></span>`
+    +(locked?'':kitIcon('k-sicon',kitStatIcon(c))+`<b class="k-stat"><span>${stat}</span></b>`)
+    +kitIcon('k-rar r-'+c.rarity,KIT_RARITY[c.rarity]||'rarity',(RARITY[c.rarity]||{}).n)
+    +`<div class="k-rules" title="${esc(rules)}">${esc(rules)}</div>`;
+  foot.forEach(([ic,lab,val],k)=>{ h+=`<span class="k-foot k-f${k}" title="${esc(lab+': '+val)}">${kitIcon('',ic)}<small>${esc(lab)}:</small><span>${esc(String(val))}</span></span>`; });
+  el.innerHTML=h;
+  kitArtSize(el.querySelector('img[data-art-master]'));
+  if(extra) el.insertAdjacentHTML('beforeend',extra);
+  // a plain count badge (×2, 1/3, Lv 6) goes in the count plaque
+  el.querySelectorAll(':scope>.badge:not(.new):not(.inst):not(.tink),:scope>.dkfrac,:scope>.dkown').forEach(b=>{ b.classList.add('k-count'); if(!b.firstElementChild) b.innerHTML='<span>'+b.innerHTML+'</span>'; });
+  kitFit(el);
+  return el;
+}
+/* Fitting, in canvas units, so it holds at any card size: each text's width is measured with the card's own font
+   (a canvas, once the fonts are in) and its size steps down until it fits its slot less 2 units each side. Sizes start
+   at the contract's (KIT_GEO, cards/card-geo.js):
+   - name: one line, stepping 29 > 26 > 23 > 20 > 18; a name too long for that takes two centred lines at 15 on 14;
+   - type line: type · role, whole, 16 down to 10;
+   - rules: 18 on 16.5 (3 lines), 16 on 14.5 (4), 14 on 12 (5); longer still, the box scrolls on a big card (a fade
+     at its foot), and the full text is in its title either way;
+   - footer value: 14 down to 10; count: 22 down to 14.
+   The faces' vertical ink centring (--ink-dy) is measured here too, once per face. */
+const KIT_FIT={canvas:null, ready:false};
+function kitMeasure(text,px,face){ const cv=KIT_FIT.canvas||(KIT_FIT.canvas=document.createElement('canvas')), x=cv.getContext('2d');
+  x.font=px+'px "'+(face||'Hex Card')+'"'; return x.measureText(text).width; }
+function kitLines(text,px,width){ let n=1, line=0; const sp=kitMeasure(' ',px);
+  for(const w of String(text).split(/\s+/)){ const ww=kitMeasure(w,px); if(line&&line+sp+ww>width){ n++; line=ww; } else line+=(line?sp:0)+ww; } return n; }
+function kitInk(face){ const cv=KIT_FIT.canvas||(KIT_FIT.canvas=document.createElement('canvas')), x=cv.getContext('2d'); x.font='100px "'+face+'"';
+  const m=x.measureText('BFEIW127+%'), A=m.fontBoundingBoxAscent, D=m.fontBoundingBoxDescent;
+  return A==null?0:((D-A)+(m.actualBoundingBoxAscent-m.actualBoundingBoxDescent))/2/100; }
+function kitFit(el){ if(!el||!el.dataset||el.dataset.kname==null){ if(el&&el.querySelectorAll) el.querySelectorAll('.card.kit').forEach(kitFit); return; }
+  if(!KIT_FIT.ready&&!(document.fonts&&document.fonts.check('12px "Hex Card"')&&document.fonts.check('12px "Hex Card Caps"'))) return;
+  if(!KIT_FIT.ready){ KIT_FIT.ready=true; const r=document.documentElement.style; r.setProperty('--ink-dy',kitInk('Hex Card').toFixed(3)); r.setProperty('--ink-dy-caps',kitInk('Hex Card Caps').toFixed(3)); }
+  const G=KIT_GEO, pad=2*G.w.pad, set=(e,k,v)=>e.style.setProperty(k,'calc('+v+' * var(--u))'), steps=(a,b,d)=>{ const o=[]; for(let s=a;s>=b;s-=d) o.push(s); return o; };
+  const name=el.dataset.kname, nm=el.querySelector('.k-name'), ns=[29,26,23,20,18].find(s=>kitMeasure(name,s)<=G.w.name-pad);
+  nm.classList.toggle('two',!ns); set(el,'--nfs',ns||15); if(!ns) set(el,'--nlh',14);
+  const [ty,ro]=el.dataset.ktype.split('|'), tw=s=>kitMeasure((ty+ro).toUpperCase(),s,'Hex Card Caps')+14;   // + the drawn dot and its gaps
+  set(el,'--tfs',steps(G.type.type[0],10,1).find(s=>tw(s)<=G.w.type-pad)||10);
+  const rb=el.querySelector('.k-rules'), rt=rb.textContent, fit=[[18,16.5],[16,14.5],[14,12]].find(([s,l])=>kitLines(rt,s,G.w.rules)*l<=G.w.rulesH)||[14,12];
+  set(el,'--rfs',fit[0]); set(el,'--rlh',fit[1]); rb.classList.toggle('scroll',kitLines(rt,fit[0],G.w.rules)*fit[1]>G.w.rulesH);
+  el.querySelectorAll('.k-foot>span').forEach(v=>set(v,'--vfs',steps(G.type.footer[0],10,1).find(s=>kitMeasure(v.textContent,s)<=G.w.foot)||10));
+  el.querySelectorAll('.k-count').forEach(b=>set(b,'--cfs',steps(G.type.count[0],14,1).find(s=>kitMeasure(b.textContent,s)<=G.w.count-pad)||14));
+  // short glyph runs (rune, rank, count) centre on their own painted ink, measured for the string itself
+  el.querySelectorAll(':scope>:is(.k-rune,.k-rank,.k-count)>span').forEach(sp=>{ const o=kitInkOf(sp.textContent); sp.style.transform='translate('+o[0].toFixed(3)+'em,'+o[1].toFixed(3)+'em)'; }); }
+// how far (in em) to move a run so its ink's middle sits where its font box's middle is: [dx, dy]
+function kitInkOf(text){ const x=(KIT_FIT.canvas||(KIT_FIT.canvas=document.createElement('canvas'))).getContext('2d'); x.font='100px "Hex Card"';
+  const m=x.measureText(text); if(m.fontBoundingBoxAscent==null) return [0,0];
+  return [(m.width/2-(m.actualBoundingBoxRight-m.actualBoundingBoxLeft)/2)/100,
+    ((m.fontBoundingBoxDescent-m.fontBoundingBoxAscent)+(m.actualBoundingBoxAscent-m.actualBoundingBoxDescent))/2/100]; }
+// once the card fonts are in, fit every card already drawn
+if(document.fonts) document.fonts.load('12px "Hex Card"').then(()=>document.fonts.load('12px "Hex Card Caps"')).then(()=>kitFit(document)).catch(()=>{});
+
+
+let reviewPage=0;
+const reviewSelect=document.querySelector('#review-colour');
+for(const colour of Object.keys(COLORS)){const option=document.createElement('option');option.value=colour;option.textContent=COLORS[colour].name;reviewSelect.append(option);}
+reviewSelect.value='fire';
+function renderReview(){
+ const host=document.querySelector('#review');host.replaceChildren();
+ const ids=Object.keys(HEX_CARD_ART_VARIANTS).filter(id=>CARDS[id].color===reviewSelect.value);
+ const begin=reviewPage*20;
+ for(const id of ids.slice(begin,begin+20)){
+  const section=document.createElement('section'),heading=document.createElement('h2'),row=document.createElement('div');heading.textContent=CARDS[id].name;row.className='row';section.append(heading,row);
+  for(const width of [96,120,240,396]){
+   const wrap=document.createElement('div');wrap.className='specimen';wrap.style.width=width+'px';
+   const card=cardEl(CARDS[id],'<span class="badge">3/3</span>',false,width<=120?'compact':'expanded');card.style.width=width+'px';card.querySelectorAll('img').forEach(image=>image.loading='lazy');wrap.append(card);row.append(wrap);
+  }
+  host.append(section);
+ }
+ document.querySelector('#review-prev').disabled=reviewPage===0;
+ document.querySelector('#review-next').disabled=begin+20>=ids.length;
+ document.querySelector('#review-count').textContent=ids.length?(begin+1)+'–'+Math.min(begin+20,ids.length)+' of '+ids.length:'No artwork in this colour';
+}
+reviewSelect.onchange=()=>{reviewPage=0;renderReview();};
+document.querySelector('#review-prev').onclick=()=>{if(reviewPage>0){reviewPage--;renderReview();}};
+document.querySelector('#review-next').onclick=()=>{reviewPage++;renderReview();};
+renderReview();
+</script>

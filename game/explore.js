@@ -250,7 +250,9 @@ function xInit3D(){
   const wt=xWaveTex(), wave=new THREE.Group(); for(let k=0;k<9;k++){ const q=new THREE.Mesh(new THREE.PlaneGeometry(XCS,XCS),new THREE.MeshBasicMaterial({map:wt,transparent:true,opacity:0,depthWrite:false,fog:false,blending:THREE.AdditiveBlending}));
     q.rotation.x=-Math.PI/2; q.position.set((k%3-1)*XCS,0,(Math.floor(k/3)-1)*XCS); q.userData.ring=k!==4; q.renderOrder=7; wave.add(q); }
   wave.visible=false; scene.add(wave); X3.wave=wave;
-  cv.addEventListener('pointerdown',e=>{ if(!EX||!EX.active||xPaused) return; e.preventDefault(); EX.needInput=false; try{ cv.setPointerCapture(e.pointerId); }catch(_){}
+  cv.addEventListener('pointerdown',e=>{ if(!EX||!EX.active||xPaused) return; e.preventDefault(); EX.needInput=false;
+    if(XHOLD.on&&XHOLD.id!=null&&e.pointerId!==XHOLD.id&&!EX.aim) return xSecondFinger(e);   // another finger while one walks: it never takes the walk over
+    try{ cv.setPointerCapture(e.pointerId); }catch(_){}
     const [ax,ay]=appXY(e.clientX,e.clientY);
     if(EX.aim){ EX.aim.id=e.pointerId; EX.aim.cell=xAimCell(ax,ay); return; }
     XHOLD.id=e.pointerId; XHOLD.x=XHOLD.x0=ax; XHOLD.y=XHOLD.y0=ay; XHOLD.t0=performance.now(); XHOLD.on=true; XHOLD.stick=false;
@@ -267,7 +269,7 @@ function xInit3D(){
     if(e.pointerId!==XHOLD.id) return;
     if(xMoveMode()==='tapstick'&&!XHOLD.stick&&performance.now()-XHOLD.t0<XTAP_MS&&Math.hypot(XHOLD.x-XHOLD.x0,XHOLD.y-XHOLD.y0)<XTAP_PX) xGoalAt(XHOLD.x0,XHOLD.y0);   // a quick tap: walk there
     XHOLD.on=false; XHOLD.id=null; XHOLD.stick=false; xStickDraw(); };   // in Walk to touch, letting go keeps you walking to the goal
-  cv.addEventListener('pointerup',end); cv.addEventListener('pointercancel',e=>{ XHOLD.on=false; XHOLD.id=null; XHOLD.stick=false; xStickDraw(); });
+  cv.addEventListener('pointerup',end); cv.addEventListener('pointercancel',e=>{ if(e.pointerId!==XHOLD.id) return; XHOLD.on=false; XHOLD.id=null; XHOLD.stick=false; xStickDraw(); });
   cv.addEventListener('contextmenu',e=>e.preventDefault());
   // the minimap: a tap opens it big, and it stays open. Tap a place you have discovered and the map
   // closes while you walk there on your own; tap the dark (or ✕) to close it.
@@ -1669,8 +1671,16 @@ function resumeExplore(hp,won,info){
   setTimeout(()=>{ if(typeof maybeLevelUp==='function'&&EX&&EX.active&&!EX.busy) maybeLevelUp(); },300);
   xHud(); xLoopStart();
 }
-$('#xStrike').onclick=()=>xStrike();
-$('#xDisarm').onclick=()=>xDisarm();
+/* Walk and strike at once on touch: one finger walks, the other taps Strike. A phone makes no click from a touch while
+   another finger is down, so Strike and Disarm act on their own pointerdown (pressBtn, ui.js). And once the walking
+   finger has slid, Chrome hands every new touch to the map, even one that lands on a button: xSecondFinger presses
+   the button under it. */
+pressBtn($('#xStrike'),()=>xStrike());
+pressBtn($('#xDisarm'),()=>xDisarm());
+const X_FINGER_BTNS=[['xStrike',()=>xStrike()],['xDisarm',()=>xDisarm()]];
+function xSecondFinger(e){ const [x,y]=appXY(e.clientX,e.clientY);
+  for(const [id,fn] of X_FINGER_BTNS){ const b=document.getElementById(id); if(!b||b.disabled||!b.offsetParent) continue;
+    const r=appBox(b); if(x>=r.left-4&&x<=r.right+4&&y>=r.top-4&&y<=r.bottom+4){ fn(); return; } } }
 $('#xCamp').onclick=()=>xToCamp();
 $('#xUp').onclick=()=>xStairsUp();
 // touch movement: the Settings row cycles the styles

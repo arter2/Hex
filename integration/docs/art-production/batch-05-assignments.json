@@ -1,0 +1,182 @@
+{
+  "batch": 5,
+  "targetNewImages": 40,
+  "assignments": {
+    "brown": [
+      {
+        "id": "brown_machine_03",
+        "name": "Dwarven Runic Battery"
+      },
+      {
+        "id": "brown_instant_03",
+        "name": "Troll Blood Tonic"
+      },
+      {
+        "id": "brown_equip_11",
+        "name": "Elven Leaf Mail"
+      },
+      {
+        "id": "brown_tinker_03",
+        "name": "Sharpening Wheel"
+      },
+      {
+        "id": "brown_trap_02",
+        "name": "Gnomish Clockwork Pendulum"
+      }
+    ],
+    "fire": [
+      {
+        "id": "blaze_bolt",
+        "name": "Blaze Bolt"
+      },
+      {
+        "id": "fire_lob_02",
+        "name": "Black Powder Keg"
+      },
+      {
+        "id": "fire_ward_01",
+        "name": "Dwarven Shieldwall"
+      },
+      {
+        "id": "fire_sentry_02",
+        "name": "Forge Bellows"
+      },
+      {
+        "id": "fire_boon_01",
+        "name": "Battle Fury"
+      }
+    ],
+    "frost": [
+      {
+        "id": "frost_ward",
+        "name": "Frost Ward"
+      },
+      {
+        "id": "absolute_zero",
+        "name": "Absolute Zero"
+      },
+      {
+        "id": "frost_lob_01",
+        "name": "Twelve-Pound Shot"
+      },
+      {
+        "id": "frost_sentry_02",
+        "name": "Lighthouse"
+      },
+      {
+        "id": "frost_boon_02",
+        "name": "Fair Winds"
+      }
+    ],
+    "gray": [
+      {
+        "id": "gray_summon_05",
+        "name": "Gilded Parade Armor"
+      },
+      {
+        "id": "gray_ward_04",
+        "name": "Schiltron"
+      },
+      {
+        "id": "gray_boon_04",
+        "name": "Kiai Shout"
+      },
+      {
+        "id": "gray_charge_05",
+        "name": "Javelin Bundle"
+      },
+      {
+        "id": "gray_summon_06",
+        "name": "Black Knight's Armor"
+      }
+    ],
+    "light": [
+      {
+        "id": "intervention",
+        "name": "Divine Intervention"
+      },
+      {
+        "id": "dawnbreaker",
+        "name": "Dawnbreaker"
+      },
+      {
+        "id": "light_lob_01",
+        "name": "Bright Comet"
+      },
+      {
+        "id": "light_ward_02",
+        "name": "Tower Shield"
+      },
+      {
+        "id": "light_sentry_01",
+        "name": "Harbor Lighthouse"
+      }
+    ],
+    "shadow": [
+      {
+        "id": "blood_lance",
+        "name": "Blood Lance"
+      },
+      {
+        "id": "shadow_lob_02",
+        "name": "Skull Bomb"
+      },
+      {
+        "id": "shadow_ward_01",
+        "name": "Skull-Topped Fence"
+      },
+      {
+        "id": "shadow_sentry_02",
+        "name": "Stingy Jack's Lantern"
+      },
+      {
+        "id": "shadow_boon_01",
+        "name": "Shadow Step"
+      }
+    ],
+    "storm": [
+      {
+        "id": "chain_light",
+        "name": "Chain Lightning"
+      },
+      {
+        "id": "stormcall",
+        "name": "Stormcall"
+      },
+      {
+        "id": "storm_ward_02",
+        "name": "Bronze Aegis"
+      },
+      {
+        "id": "storm_boon_01",
+        "name": "Scorpion Pit Ring"
+      },
+      {
+        "id": "storm_sentry_02",
+        "name": "Tesla Coil"
+      }
+    ],
+    "verdant": [
+      {
+        "id": "mend",
+        "name": "Mend"
+      },
+      {
+        "id": "verdant_strike_01",
+        "name": "Hunter's Longbow Shot"
+      },
+      {
+        "id": "verdant_lob_01",
+        "name": "Squirting Cucumber"
+      },
+      {
+        "id": "verdant_ward_01",
+        "name": "Hawthorn Hedge"
+      },
+      {
+        "id": "verdant_summon_03",
+        "name": "Strangler Fig Roots"
+      }
+    ]
+  }
+}

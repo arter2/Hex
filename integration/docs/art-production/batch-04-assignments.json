@@ -1,0 +1,150 @@
+{
+  "batch": 4,
+  "targetNewImages": 32,
+  "assignments": {
+    "fire": [
+      {
+        "id": "flame_fan",
+        "name": "Flame Fan"
+      },
+      {
+        "id": "fire_lob_01",
+        "name": "Dynamite Bundle"
+      },
+      {
+        "id": "fire_sentry_01",
+        "name": "Bonfire"
+      },
+      {
+        "id": "fire_utility_02",
+        "name": "Miner's Lamp"
+      }
+    ],
+    "frost": [
+      {
+        "id": "frost_lance",
+        "name": "Frost Lance"
+      },
+      {
+        "id": "frost_sentry_01",
+        "name": "Inuksuk Watcher"
+      },
+      {
+        "id": "frost_boon_01",
+        "name": "Sea Legs"
+      },
+      {
+        "id": "frost_trap_01",
+        "name": "Ice Hole"
+      }
+    ],
+    "verdant": [
+      {
+        "id": "vine_lash",
+        "name": "Vine Lash"
+      },
+      {
+        "id": "bark_skin",
+        "name": "Bark Skin"
+      },
+      {
+        "id": "verdant_summon_02",
+        "name": "Felled Oak"
+      },
+      {
+        "id": "verdant_sentry_01",
+        "name": "Pitcher Plant"
+      }
+    ],
+    "storm": [
+      {
+        "id": "thunder_row",
+        "name": "Thunder Row"
+      },
+      {
+        "id": "storm_ward_01",
+        "name": "Copper Lattice"
+      },
+      {
+        "id": "storm_sentry_01",
+        "name": "Lightning Rod"
+      },
+      {
+        "id": "storm_trap_01",
+        "name": "Pit of Gold Coins"
+      }
+    ],
+    "light": [
+      {
+        "id": "radiant_motes",
+        "name": "Radiant Motes"
+      },
+      {
+        "id": "courage",
+        "name": "Courage"
+      },
+      {
+        "id": "light_ward_01",
+        "name": "Kite Shield"
+      },
+      {
+        "id": "light_utility_01",
+        "name": "Imperial Scribe's Brush"
+      }
+    ],
+    "shadow": [
+      {
+        "id": "soul_drain",
+        "name": "Soul Drain"
+      },
+      {
+        "id": "shadow_lob_01",
+        "name": "Plague Flask"
+      },
+      {
+        "id": "shadow_sentry_01",
+        "name": "Skull Lantern"
+      },
+      {
+        "id": "shadow_summon_02",
+        "name": "Mandrake Roots"
+      }
+    ],
+    "brown": [
+      {
+        "id": "brown_machine_02",
+        "name": "Steam Cannon"
+      },
+      {
+        "id": "brown_instant_02",
+        "name": "Elven Dew"
+      },
+      {
+        "id": "brown_equip_06",
+        "name": "Sky-Folk Steel Talons"
+      },
+      {
+        "id": "brown_tinker_02",
+        "name": "Gun Oil"
+      }
+    ],
+    "gray": [
+      {
+        "id": "gray_summon_04",
+        "name": "Rusted Suit of Armor"
+      },
+      {
+        "id": "gray_ward_03",
+        "name": "Testudo"
+      },
+      {
+        "id": "gray_boon_03",
+        "name": "Haka War Dance"
+      },
+      {
+        "id": "gray_charge_04",
+        "name": "Throwing Axes"
+      }
+    ]
+  }
+}

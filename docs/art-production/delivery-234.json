@@ -1,0 +1,16 @@
+{
+  "uniqueCards": 234,
+  "imageFiles": 936,
+  "zip": "hexmancers-234-card-art-claude-handoff.zip",
+  "bytes": 173080255,
+  "sha256": "bc697ee8740c2b72e85faecfbcb4b3e58a03d0f708ea338d777f27c56fc6805a",
+  "repositoryCommit": "8004e34",
+  "crc": "pass",
+  "allImageChecksums": "pass",
+  "includes": [
+    "512x512 editable sources",
+    "three display crop sizes",
+    "exact-name and card-ID transfer manifest",
+    "Claude integration README and files"
+  ]
+}

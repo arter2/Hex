@@ -1,0 +1,30 @@
+{
+  "batch": 7,
+  "workers": {
+    "/root/batch06_fire": {
+      "packet": "fire-01",
+      "state": "running"
+    },
+    "/root/batch06_frost": {
+      "packet": "frost-01",
+      "state": "running"
+    },
+    "/root/batch06_light": {
+      "packet": "light-01",
+      "state": "running"
+    },
+    "/root/batch06_shadow": {
+      "packet": "shadow-01",
+      "state": "running"
+    },
+    "/root/batch06_storm": {
+      "packet": "storm-01",
+      "state": "running"
+    },
+    "/root/batch06_verdant": {
+      "packet": "verdant-01",
+      "state": "running"
+    }
+  },
+  "completedPackets": []
+}

@@ -943,5 +943,149 @@
     "status": "generated",
     "batch": 8,
     "reviewNote": "Reviewed square source, centered wide crop, and 128px thumbnail. The complete curved fang, root, pointed tip, and reaching hand remain clear inside the crop."
+  },
+  {
+    "cardId": "shadow_summon_04",
+    "name": "Skeleton Archer",
+    "prompt": "Square 1:1 painterly medieval dark fantasy collectible-card illustration for exact Hexmancers card “Skeleton Archer”. Show a hooded skeleton archer standing behind a low ruined parapet, holding a COMPLETE short recurved bow horizontally across the chest, with both bow tips clearly at shoulder level (never vertical or tall). The entire skull head, both bony hands, bow tips, string and horizontal arrow fit in the central band y150–350 and x30–482. The skeleton aims to the right in a steady stance, readable ribcage and weathered cloak. Moonlit fortress, dramatic painterly bone and cloth. Keep every critical part within x24…488,y105…407 for centered wide crop. No text, frame, UI, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d2730129-158d-470c-b079-1fddbdaa9ab5.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed final square, centered wide crop, and 128px thumbnail. Repainted twice to keep the whole recurved bow, string, arrow, skull face and both hands visible within the crop; complete named skeleton archer remains legible."
+  },
+  {
+    "cardId": "shadow_machine_02",
+    "name": "Skull Catapult",
+    "prompt": "Repaint square 1:1 painterly dark fantasy illustration for exact Hexmancers card “Skull Catapult”. Show a compact complete medieval wooden catapult, all wheels and base intact, lowered to fit entirely between y135 and y390 with generous space above and below. A carved skull forms the counterweight on the throwing arm, and a small arc of skull projectiles flies over it. Skeletal crewman secondary. Make the whole wheel, frame, arm, cup and skull counterweight clear inside x28…484,y105…407 for centered 206:141 crop. Moonlit ruined fortress, painterly wood, iron and bone, no modern machinery, text, frame, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e28bf706-4fbc-430c-87b3-cc9a54bbdd05.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_machine_02.png",
+    "sourceNative": [
+      1517,
+      1037
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed normalized square source, centered wide crop, and 128px thumb. The complete catapult frame, throwing arm, counterweight skull, cup, and wheel bases fit; projectile arc and secondary edge figures extend into scenery."
+  },
+  {
+    "cardId": "shadow_ace_02",
+    "name": "Reaper's Due",
+    "prompt": "Illustration for Reaper's Due. Mechanics: a powerful straight-line reaper strike that deals 88 damage and drains life from its victim. Hooded skeletal reaper sweeps a long scythe through an armored foe; crimson life essence streams from the victim toward the reaper. Painterly medieval fantasy with cold moonlight, worn dark robes and iron, horizontal action-safe composition, square 512 master, no text or frame.",
+    "generatedPath": "game/cards/art/masters/shadow_ace_02.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_ace_02.png",
+    "sourceNative": [
+      512,
+      512
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Recovered unrecorded canonical 512 source after visual identity review. Reaper, face, scythe, struck foe and drain line are present; the 206:141 crop retains the full action and the 128px thumbnail remains readable. Raw provenance unavailable."
+  },
+  {
+    "cardId": "shadow_aceup_02",
+    "name": "Blood Price",
+    "prompt": "Illustration for Blood Price. Mechanics: the caster willingly pays blood to strengthen a life-draining attack. A grim shadow mage pricks their palm and channels a crimson drop into a glowing ritual sigil, strengthening a spectral strike; dramatic medieval fantasy lighting and detailed dark robes, square 512 master, horizontal action-safe composition, no text or frame.",
+    "generatedPath": "game/cards/art/masters/shadow_aceup_02.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_aceup_02.png",
+    "sourceNative": [
+      512,
+      512
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Recovered unrecorded canonical 512 source after visual identity review. Mage, face, bleeding hand and ritual focus remain clear in the 206:141 crop; the upper crystal is clipped by the card crop but is not identity-critical. The 128px thumbnail reads clearly. Raw provenance unavailable."
+  },
+  {
+    "cardId": "shadow_claim_02",
+    "name": "Sunken Bog",
+    "prompt": "Paint an illustration for Sunken Bog. Mechanics: claimable swamp ground occupies a compact patch; land itself is the objective. Show a broad patch of sunken bog terrain in a ruined medieval battlefield: dark peat, shallow black water, reed clumps, twisted roots, bubbles and a small ruin sinking at the center, lit by cold violet fog. Make the terrain itself the unmistakable subject, with a broad horizontal composition and readable ground texture, no characters necessary. Painterly medieval fantasy collectible-card art, atmospheric moonlight and tactile mud, stone and water. Square 1:1 512x512 master; keep key landform inside x24..488,y105..407 with expendable mist above and below. No text, labels, border or UI; no anime, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2b94bb65-9625-4e8e-8bc7-3a1a256463ed.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_claim_02.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "The square is a readable moonlit wetland with a sinking ruin, peat, water, reeds and bubbles. The 206:141 crop retains the central bog/ruin; the 128px thumbnail reads as swamp terrain though fine reeds soften at that size."
+  },
+  {
+    "cardId": "hero_morrow",
+    "name": "Morrow the Lich",
+    "prompt": "Paint an illustration for Morrow the Lich. Mechanics: a hero lich with 160 health, casting repeated bursts of grave frost that curse, while healing from damage dealt. Show Morrow, a commanding ancient lich in tattered royal burial robes and a tarnished crown, releasing a compact burst of blue-violet grave frost toward an armored enemy; faint life essence streams back to him. His gaunt face and raised casting hand are prominent, serious grounded proportions, rich cloth and bone detail, moonlit necropolis depth, painterly medieval fantasy. Square 1:1 512x512 master; keep face, hand, burst and target inside x24..488,y105..407; horizontal staging and clear thumbnail silhouette. No text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-91f626bb-5a02-42d2-b7b2-34354eec0bf6.png",
+    "editableSourcePath": "game/cards/art/masters/hero_morrow.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "The lich, skull face, casting hand and grave-frost burst are prominent. The 206:141 crop cuts the crown at the top, but leaves the face, hand, target and action intact; the 128px crop remains recognizable as the lich attack."
+  },
+  {
+    "cardId": "shadow_strike_05",
+    "name": "Acid Vial Splash",
+    "prompt": "Paint an illustration for Acid Vial Splash. Mechanics: an acid splash burst that poisons the target and recoils on the caster. Show one glass vial shattering against the armor of a single enemy, a vivid yellow-green acid splash eating into the metal and releasing toxic droplets; in the foreground, the thrower's gloved hand recoils from a small splashback. Keep the vial, impact, enemy torso and recoiling hand readable without making the acid obscure the subject. Painterly medieval fantasy, tactile glass, steel and leather, cold crypt light with acidic green highlights. Square 1:1 512x512 master, horizontal staging; all identity-critical hand/object/impact inside x24..488,y105..407. No labels, text, frame, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-3efbb8f8-dbab-4fcf-b0ad-3549e33c13b2.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_strike_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "The shattered vial, acidic impact, armored target and recoiling glove are clear in the square. The 206:141 crop keeps the vial, relevant hand and target; the 128px thumbnail reads as a bright acid strike."
+  },
+  {
+    "cardId": "shadow_lob_07",
+    "name": "Ossuary Urn",
+    "prompt": "Paint an illustration for Ossuary Urn. Mechanics: a heavy, quick-fuse grave urn lands in a column, then bursts at ground level with grave frost and a brief knockdown. Show a single heavy carved ossuary urn tumbling downward in a clear vertical column toward a ruined crypt floor, its lid rattling and blue-violet cold escaping; below, the impact cracks stone in a compact frost burst, knocking one armored foe off balance. Keep the whole urn visible and dominant, with impact point and foe clear; horizontal supporting composition with the urn's vertical descent legible. Painterly medieval fantasy, carved bone, aged stone and moonlit cold. Square 1:1 512x512 master; urn, lid, impact and foe inside x24..488,y105..407. No text, frame, numbers or UI, no anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8f905365-e2af-4c24-b5b5-1c3249d23bc5.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_lob_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "The carved urn, lid, grave-frost burst and knocked-back foe are clear. The standard crop slightly clips the urn crown; shifting focalPoint upward to y=0.46 keeps the full urn in the 206:141 crop while retaining the victim and impact. The 128px thumbnail remains recognizable."
   }
 ]

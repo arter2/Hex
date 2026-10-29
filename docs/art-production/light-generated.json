@@ -943,5 +943,131 @@
     "status": "generated",
     "batch": 8,
     "reviewNote": "Inspected exact 512-square source, shifted 206:141 crop at y=.34 and 128x88 thumbnail. This crop includes the scholar’s full face, holding hand and complete stone, as well as the healed knight’s face and wound."
+  },
+  {
+    "cardId": "light_summon_02",
+    "name": "Pegasus",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Pegasus. A noble white winged horse charges through the air above a sunlit mountain monastery, noble face and complete feathered wings spread clearly visible; a few radiant motes stun a distant shadow creature. Strong readable full Pegasus silhouette, rich feather and muscle detail, golden dawn, clouds and painterly Hexmancers fantasy. Explicit 1:1 SQUARE, 512x512 and 206:141 crop. Repainted Pegasus smaller and centered so full wing tips, tail, face and all hooves fit crop.",
+    "generatedPath": "/workspace/generated_images/exec-36471ab9-b093-4310-b05b-f5a30175a3ca.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_02.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Repainted after the first version clipped wing tips in the centered crop; preserved it at /tmp/light_summon_02-first.png. Inspected final exact square source, centered 206:141 crop and 128x88 thumbnail. Full winged horse silhouette, all feathers, face, tail and hooves are visible."
+  },
+  {
+    "cardId": "light_machine_02",
+    "name": "Legion Scorpio Engine",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Legion Scorpio Engine. A Roman torsion ballista on a timber-and-bronze wheeled carriage, massive bow, taut sinew, winch and one enormous bolt aimed along a fortress road; legion engineers reload it, one empowering it with healing light. Complete scorpio engine and bolt dominate. Weathered wood, bronze, rope, stone, dawn and painterly Hexmancers fantasy. Explicit 1:1 SQUARE for 512x512 and 206:141 crop. Repainted to scale the complete machine into crop; focalPoint y=.53 retains full bow, bolt and wheels.",
+    "generatedPath": "/workspace/generated_images/exec-24572f12-e4e1-4676-9414-6f415f0f1fca.png",
+    "editableSourcePath": "game/cards/art/masters/light_machine_02.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.53
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Repainted after the first version clipped the bow and carriage in crop; preserved it at /tmp/light_machine_02-first.png. Inspected exact 512-square source, shifted 206:141 crop at y=.53 and 128x88 thumbnail. Complete bow, bolt, carriage and wheels read clearly."
+  },
+  {
+    "cardId": "light_ace_02",
+    "name": "Archangel's Verdict",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Archangel’s Verdict. A radiant archangel in ivory-gold armor descends above a dark battlefield, wings spread and sword raised, delivering a decisive lance of sunlight across shadowy foes; a wounded ally below glows in healing light. Archangel’s face and sword hand are the focal point, with rich feather and metal detail, sunrise and painterly high fantasy. Explicit 1:1 SQUARE for 512x512 and 206:141 crop; use focalPoint y=.34 to retain upper sword and angel face in crop. No text, border, UI, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7a9836c1-9483-4ca2-aeed-bf0336b6f3a5.png",
+    "editableSourcePath": "game/cards/art/masters/light_ace_02.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Inspected exact 512-square source, shifted 206:141 crop at y=.34 and 128x88 thumbnail. Archangel’s face, sword hand and sword tip are retained, with healing light and enemies readable below."
+  },
+  {
+    "cardId": "light_aceup_02",
+    "name": "Oath of Valor",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Oath of Valor. A weary crusader kneels in a ruined chapel and raises a hand to swear an oath; golden sacred light wraps his forearm and breastplate as he rises renewed. Determined face, raised hand and armor dominate; sword rests beside him. Believable ivory-gold armor, warm sunbeam, stained stone, painterly Hexmancers fantasy. Explicit 1:1 SQUARE for 512x512 and 206:141 crop; use focalPoint y=.34 so entire oath hand and face remain in crop. No readable text, frame, UI, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e324993c-8368-45e4-bcb5-35791b46dd88.png",
+    "editableSourcePath": "game/cards/art/masters/light_aceup_02.png",
+    "sourceNative": [
+      1269,
+      1239
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Inspected exact 512-square source, shifted 206:141 crop at y=.34 and 128x88 thumbnail. Full oath hand, face, armor and raised posture are clear in the crop."
+  },
+  {
+    "cardId": "light_claim_02",
+    "name": "Colonnade of Dawn",
+    "prompt": "Original painterly medieval fantasy illustration for Colonnade of Dawn, a marble claim that lasts 30 seconds. Show a monumental pale-marble colonnade and sunlit city terraces at sunrise, with elegant gold capitals, a few robed claimants and a distant cascade; the architecture and dawn-lit city are the named subject. Square composition with the whole colonnade and horizon legible in the central 206:141 crop; painterly collectible-card art, nuanced stone, atmospheric depth and warm directional light. No border, text, lettering, numbers or UI; no anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/HexNamedArt/game/cards/art/masters/light_claim_02.png",
+    "editableSourcePath": "game/cards/art/masters/light_claim_02.png",
+    "sourceNative": [
+      512,
+      512
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Recovered an unrecorded canonical 512x512 PNG after visual identity review. Inspected the source, centered 206:141 wide crop and 128x88 thumbnail: dawn-lit marble colonnade and city remain clear; kept original source bytes. Original raw generator path was unavailable, so generatedPath points to the recovered canonical PNG."
+  },
+  {
+    "cardId": "hero_lumina",
+    "name": "Saint Lumina",
+    "prompt": "Repaint as a new composition for Saint Lumina, a radiant holy hero who calls focused light onto an enemy, heals on each attack and steadily regenerates. Show a resolute woman saint-warrior in ivory and gold robes over light armor; one raised hand projects a narrow golden ray into a shadow-armored foe, while her other complete hand rests near her chest in a gentle self-healing glow. Keep both hands, face, halo, beam and target safely inside a centered square and horizontal card crop, with generous space at the left. Painterly medieval fantasy, believable face, hands, cloth, metal and stone, warm dawn light, atmospheric depth. No frame, lettering, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c8b8eeb0-8377-4d17-b5c0-dbcea4130bca.png",
+    "editableSourcePath": "game/cards/art/masters/hero_lumina.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Repainted after the first normalized source cropped the healing hand at left; preserved the first 512 source at /tmp/hero_lumina-first.png. Reviewed final 1254-square original, exact 512-square source, 206:141 crop and 128x88 thumbnail: face, halo, both hands, beam and target remain readable."
+  },
+  {
+    "cardId": "light_strike_05",
+    "name": "Longbow Volley",
+    "prompt": "Repaint the Longbow Volley illustration in grounded painterly medieval fantasy. One skilled archer releases a single piercing arrow at an armored target; show the entire longbow tip to tip with generous sky margin, plus the archer’s face, hands, arrow line and impact. Keep every critical part inside a centered 1:1 square master and its 206:141 crop. Wide staging at sunset, nuanced yew, feather, leather and steel, atmospheric depth. No foreground figures obscuring the action; no frame, lettering, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8d404026-596f-47f1-9a40-e9ebe59d654f.png",
+    "editableSourcePath": "game/cards/art/masters/light_strike_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Repainted after first result clipped the bow tip; preserved the first raw original at /tmp/light_strike_05-first.png. Reviewed exact 512-square source, top-shifted 206:141 crop (focal y=.34) and 128x88 thumbnail: complete bow and string, archer face/hands, arrow and impact all read clearly."
   }
 ]

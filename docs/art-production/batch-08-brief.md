@@ -30,3 +30,5 @@ Prioritize one strong named subject and one clear action; you do not need to ill
 If image generation returns a usage limit, stop immediately and report the exact error. Do not retry the quota or switch tools/models. Check that your manifest parses after every atomic append: use a real newline, never a literal backslash-n suffix. Preserve all existing source bytes and records from batches 1–7.
 
 To reduce waiting, an artist may generate up to two different assigned cards concurrently with awaited `Promise.allSettled`. Keep an explicit card-ID-to-result mapping, preserve exact returned paths/fingerprints, and review/save each separately. Never exceed two outstanding generations or guess a shared output path. Stop on a usage-limit error.
+
+Copy the exact `name` string from the assignment JSON into the record rather than retyping it. ASCII and curly apostrophes differ; parent validation requires an exact catalogue-name match.

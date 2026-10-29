@@ -126,5 +126,123 @@
     "status": "generated",
     "batch": 3,
     "reviewNote": "Square image and centered 206:141 crop inspected; the cross-shaped lava ground and recoiling stepping figure stay visible and convey brief burning ground."
+  },
+  {
+    "cardId": "flame_fan",
+    "name": "Flame Fan",
+    "prompt": "Square 1:1 painterly medieval fantasy card illustration for Flame Fan: a battle mage in grounded robes, centered hand thrust forward after charging, releases a broad wedge-shaped fan of orange-gold fire across the scene, engulfing a shadowy enemy at the edge; a few embers curl back to suggest a rewarded finishing blow. The named action dominates; believable cloth/leather, dramatic firelight, atmospheric depth, detailed painterly brushwork, no cartoony or photorealistic look. Keep caster's hand and full fiery wedge within x24..488 y105..407 in the square, central 206:141 crop clearly reads at thumbnail. Quiet smoke beyond. No text, frame, UI.",
+    "generatedPath": "/workspace/generated_images/exec-5c6ba039-73b3-401a-bb25-5444a26bd56e.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 4,
+    "reviewNote": "Native square image inspected; mage, extended casting hand, complete broad fire wedge and foe are clearly identifiable and within the central horizontal crop-safe area."
+  },
+  {
+    "cardId": "fire_lob_01",
+    "name": "Dynamite Bundle",
+    "prompt": "Explicit 1:1 square painterly medieval fantasy collectible-card illustration for Dynamite Bundle. Compose the entire key subject lower and centered: a bundle of three short dark wooden dynamite sticks bound with coarse cord, brass caps, a short fuse visibly lit and spitting sparks; all parts must fit together completely inside the middle horizontal band, with a generous empty margin above. Bundle is large, unmistakable, hovering above a rocky battlefield; below it, a small orange burst on aimed ground hints at its quick delayed blast. A gloved hand releases it from the left. Rich believable wood, cord, brass, dramatic light, painterly brushwork, atmospheric depth. Place all of the bundle including the very top of its fuse within x24..488,y105..407 on the 512 square; centered 206:141 crop must preserve full object at thumbnail. Quiet scenery outside this band. No lettering, frame, numbers, UI; no anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6018c97a-db0f-4c60-8abb-f72b9ef4eea6.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 4,
+    "reviewNote": "Native square inspected; all three bound sticks, brass caps, cord and lit fuse fit within the crop-safe band, with small landing blast below. Bundle identity reads clearly at thumbnail."
+  },
+  {
+    "cardId": "fire_sentry_01",
+    "name": "Bonfire",
+    "prompt": "Square painterly medieval fantasy card illustration for Bonfire: a conical stack of burning logs and glowing embers inside a low rough stone fire ring on a battlefield lane. From this living campfire a magical zigzag ribbon of flame shoots across the ground to scorch and strike a distant armored foe, showing the sentry attack. Clearly logs, charred branches, flame, coals and stones only; no bowl, tripod, legs, brazier or machinery. Rich expressive brushwork, believable wood and stone, warm ember glow against cool smoky dusk. Explicit 1:1 square 512 master; keep complete log stack, stone ring, zigzag bolt and target within x24..488,y105..407 for centered 206:141 crop. No frame, lettering, symbols or UI.",
+    "generatedPath": "/workspace/generated_images/exec-411fd96a-d973-430e-ac29-9124a2cce58b.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 4,
+    "reviewNote": "Replaced the mechanically similar brazier after parent review. Inspected the 1254-square repaint and centered wide crop: stacked burning logs in a stone ring, full ring, zigzag fire shot, and target are clearly visible; distinct from mechanical sentry art.",
+    "previousGeneratedPath": "/workspace/generated_images/exec-0651594f-b988-4f6f-aba3-6c8056c49fc8.png"
+  },
+  {
+    "cardId": "fire_utility_02",
+    "name": "Miner's Lamp",
+    "prompt": "Square painterly medieval fantasy card illustration for Miner's Lamp: a compact bronze-and-steel miner's lantern with protected glass and steady golden flame dominates the scene, held by a gloved dwarf miner at a dark cavern mouth. Its light reveals the miner's attentive face, pick and faintly glowing blank parchment cards newly uncovered in rock. Believable glass, metal, leather and stone, directional warm light, atmospheric depth, expressive painterly brushwork consistent with supplied Hexmancers references. Explicit 1:1 square 512 master; keep complete lamp, face and hand within x24..488,y105..407 for centered 206:141 crop. No text, frame, symbols or UI; no anime, Disney cartoon, photorealism, pixel art or modern equipment.",
+    "generatedPath": "/workspace/generated_images/exec-aee02013-7fe9-44fc-a7b6-1b5c840a7318.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 4,
+    "reviewNote": "Inspected native 1254-square output and centered 206:141 crop; lamp, glass, flame and miner face/hand remain legible and complete. The parchment cards are secondary and partially cropped."
+  },
+  {
+    "cardId": "blaze_bolt",
+    "name": "Blaze Bolt",
+    "prompt": "Square painterly medieval fantasy card illustration for Blaze Bolt: a focused fire mage releases one extremely bright, narrow straight orange-white line of flame toward the first armored foe in the row. The bolt and impact are the dominant action; a small singed mark on the caster’s sleeve suggests its HP cost. Grounded anatomy and fantasy materials, traditional expressive brushwork, attractive directional light and smoky depth. Explicit 1:1 square 512 master; keep casting hand, full bolt and first foe within x24..488,y105..407 for centered 206:141 crop. No frame, text, symbols or UI; no anime, Disney cartoon, photorealism, pixel art, guns or modern gear.",
+    "generatedPath": "/workspace/generated_images/exec-551c5646-9ea9-4351-9345-3d0977acb2d3.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "Inspected native 1254-square output and centered wide crop; mage face and casting hand, straight bolt, and first foe/impact are all readable and safely within crop."
+  },
+  {
+    "cardId": "fire_lob_02",
+    "name": "Black Powder Keg",
+    "prompt": "Square painterly medieval fantasy card illustration for Black Powder Keg: a squat blackened oak keg bound with iron hoops floats intact at the center just before detonation, short fuse spitting sparks. A circular burst of soot, flame and flying splinters expands around it and knocks two armored raiders backward. Keep the intact keg central and unmistakable, knockback action around it. Rich expressive brushwork, believable oak, iron, smoke and sparks, amber light against cool dusk. Explicit 1:1 square 512 master; keep full keg, blast and recoiling figures within x24..488,y105..407 for centered 206:141 crop. No lettering, numbers, frame or UI; no anime, Disney, photorealism, pixel art, modern explosives or guns.",
+    "generatedPath": "/workspace/generated_images/exec-e49cc5d6-0184-49ef-bd8d-b6a66b3e6a68.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "Inspected native 1254-square output and centered wide crop; complete keg with iron hoops and fuse remains prominent, blast and both knocked-back foes are readable."
+  },
+  {
+    "cardId": "fire_ward_01",
+    "name": "Dwarven Shieldwall",
+    "prompt": "Square painterly medieval fantasy card illustration for Dwarven Shieldwall: a stout armored dwarf braces an enormous round-fronted shield directly toward the viewer. The shield dominates, broad steel and bronze with rivets and engraved knotwork, surrounded by a translucent golden protective barrier; incoming arrows and a sword strike glance off it. Grounded anatomy, believable metal, leather and cloth, dramatic light, atmospheric battlefield depth, expressive fantasy brushwork. Explicit 1:1 square 512 master; keep dwarf face, hands and entire shield within x24..488,y105..407 for centered 206:141 crop, with quiet upper margin. No text-like runes, frame or UI; no anime, Disney, photorealism, pixel art or modern gear.",
+    "generatedPath": "/workspace/generated_images/exec-e55e50ae-3f2c-452b-a59b-a1ff3d22a6c7.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "Repainted after crop review; inspected native 1254-square output and centered crop. Dwarf face, complete shield and incoming impacts are now fully visible within the card crop."
+  },
+  {
+    "cardId": "fire_sentry_02",
+    "name": "Forge Bellows",
+    "prompt": "Square painterly medieval fantasy card illustration for Forge Bellows: a complete compact freestanding dwarven forge bellows with both wooden handles, accordion-fold leather body, iron straps, full wooden frame and nozzle, operated by a dwarf smith. The nozzle blows a vivid four-direction cross-shaped fire burst into an armored foe who is knocked backward. Keep the bellows itself unmistakable and prominent. Rich expressive fantasy brushwork, believable leather, wood, iron, forge glow and smoky depth. Explicit 1:1 square 512 master; keep entire bellows, smith, cross burst and foe within x24..488,y105..407 for centered 206:141 crop. No text, frame, symbols or UI; no anime, photorealism, pixel art or modern machinery.",
+    "generatedPath": "/workspace/generated_images/exec-d0bdf7bd-7176-444a-b1d0-208ce59fc4d0.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "Repainted twice after crop review. Inspected native 1254-square final and centered wide crop; complete wooden frame, handles, leather body and nozzle fit inside safe margins, with cross burst and knocked-back foe visible."
+  },
+  {
+    "cardId": "fire_boon_01",
+    "name": "Battle Fury",
+    "prompt": "Square painterly medieval fantasy card illustration for Battle Fury: a battle mage grips a carved wand and surges forward, wrapped in a controlled crimson-orange pact aura that empowers the wand and nearby blank spell scrolls. A small singed patch on the sleeve suggests the pact’s HP cost; the energized wand and fierce focused expression dominate. Grounded anatomy and fantasy materials, expressive brushwork, rich cloth and wood, dramatic firelight and battlefield depth. Explicit 1:1 square 512 master; keep face, casting hand, complete wand and aura within x24..488,y105..407 for centered 206:141 crop. No readable text, frame, numbers or UI. No anime, Disney, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-5221df28-6901-4d2b-9ee3-c4ad0a2dd5ce.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "Inspected native 1254-square output and centered wide crop; mage face, wand hand, complete fiery wand and empowering aura remain clear. Blank scroll motifs are secondary and partly cropped."
   }
 ]

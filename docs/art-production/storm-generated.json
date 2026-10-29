@@ -127,5 +127,126 @@
     "batch": 3,
     "reviewNote": "Repainted after parent wide-crop review to preserve complete named object and critical action in the safe crop; original retained.",
     "previousGeneratedPath": "/workspace/generated_images/exec-0baf2ef9-2a7e-4ed5-83ca-e20f92d12480.png"
+  },
+  {
+    "cardId": "thunder_row",
+    "name": "Thunder Row",
+    "prompt": "Paint an illustration for the fantasy card Thunder Row. Its exact action is a powerful bolt hitting the first enemy in a row, then jumping to two more enemies with each strike weaker. Show a storm mage firing a clear zigzagging blue-white lightning chain along a horizontal row of three medieval armored opponents; the first impact is brightest, with two visibly weaker jumps to the next two. The bolt and three impacts must read instantly, with the mage at one end. Painterly medieval fantasy collectible-card art, grounded armor and cloth, expressive brushwork, dramatic cool storm light with warm reflected highlights, atmospheric depth. Explicit 1:1 SQUARE composition for a 512 x 512 master. Keep the mage's face and casting hand and the full bolt path and all three struck foes entirely inside x24..488,y105..407 of the square; quiet sky and ground outside. Horizontal staging for a 206:141 card crop. No border, lettering, numbers, or UI. No anime, Disney-like cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b0b6d01a-65df-469e-881b-15403b616f01.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 4,
+    "reviewNote": "Reviewed 1254-square and normalized 206:141 crop: mage's face and hand, complete horizontal three-target lightning chain and all struck foes remain readable in the central safe band."
+  },
+  {
+    "cardId": "storm_ward_01",
+    "name": "Copper Lattice",
+    "prompt": "Repair this illustration as an explicit 1:1 SQUARE 512 x 512 master. Preserve its painterly storm mage, distinctive elegant interwoven copper lattice shield, blue-white enemy blade strike and healing sparks. Critical composition repair: scale down the mage and barrier together and move them lower. The COMPLETE copper lattice arc from its topmost strand to its bottom edge, with generous margin, must fit entirely within x24..488,y105..407 on the square; also keep the mage's whole face and both hands inside that same band. The attack contact remains clear at the right side of the arc. Leave extra quiet storm sky above and quiet ground below. Compose for 206:141 horizontal card crop. No clipped named shield, no border, letters, numbers, UI, anime, Disney-like cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-19dffbea-fce4-405b-a974-032bf80a2ba0.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 4,
+    "reviewNote": "Repaired and reviewed 1254-square and normalized 206:141 crop: complete copper lattice arc, mage's face and hands, and blade contact remain inside the central action band. First attempt retained at its generated path.",
+    "previousGeneratedPath": "/workspace/generated_images/exec-f81489a6-4959-4057-9d60-d5350de366a5.png"
+  },
+  {
+    "cardId": "storm_sentry_01",
+    "name": "Lightning Rod",
+    "prompt": "Recompose this scene as an explicitly 1:1 SQUARE illustration for a 512 x 512 master. Preserve the painterly medieval storm battlefield, bronze-and-iron lightning-rod sentry, mage and branching three-target lightning chain. The current result is too tall and its named rod is clipped by the centered wide crop. Make the whole rod smaller and place it horizontally near the center; its pointed collector, entire shaft and stone base must fit inside x24..488,y105..407 on the 512 square with clear margin. Keep the mage's face and casting hand and all three struck enemies inside the same safe band, lightning connecting them clearly. Quiet clouds and ground outside the band. Landscape-like horizontal staging inside the finished square. No border, words, numbers, UI, modern hardware, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2602516f-0394-42e2-9699-0c92de00815e.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 4,
+    "reviewNote": "Repaired and reviewed after the first result returned 1536x1024 landscape: final is 1254 square and normalized 206:141 crop preserves the pointed collector, full rod/base, mage and three chain targets in the central band. Original retained at its generated path.",
+    "previousGeneratedPath": "/workspace/generated_images/exec-bcf6c7a3-abeb-4d33-baa2-0ef6cbecd764.png"
+  },
+  {
+    "cardId": "storm_trap_01",
+    "name": "Pit of Gold Coins",
+    "prompt": "Paint an illustration for the fantasy card Pit of Gold Coins. Its exact effect is three hidden snare traps placed across neighboring battlefield tiles; when an enemy steps onto one, it deals harm, roots them in place and briefly stuns them. Show three distinct round pits concealed beneath glittering loose gold coins in a rough medieval stone battlefield lane; one armored raider has stepped into the center pit, whose coins collapse inward as rootlike bronze chains and blue-white storm threads coil around their boots, freezing them mid-stumble. Let the other two coin-covered pits remain clearly visible beside it. The three gold pits are the named subject and must read as traps, not treasure piles. Painterly medieval fantasy collectible-card art, nuanced gold, stone, leather and armor, directional storm light, atmospheric depth. Explicit 1:1 SQUARE composition for a 512 x 512 master. Keep all three complete coin pits and the trapped foe's face, body and feet within x24..488,y105..407 of the square; quiet stone and shadow margins outside. Horizontal staging for a 206:141 card crop. No lettering, numbers, border, UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8efc313b-907f-4fca-96c8-b0423c36bf68.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 4,
+    "reviewNote": "Reviewed 1254-square and normalized 206:141 crop: three coin-covered snare pits are clear, one triggered around a raider's trapped legs with roots and storm threads; face, action and all pits remain in the wide crop. Face sits close to the upper edge of the specified safe band."
+  },
+  {
+    "cardId": "chain_light",
+    "name": "Chain Lightning",
+    "prompt": "Paint an illustration for the fantasy card Chain Lightning. Its actual action is a powerful zigzagging bolt that jumps between the caster's row and the neighboring row; one in four strikes can flare into a double-strength critical hit. Show a storm mage at left releasing a clean blue-white zigzag bolt that leaps across two staggered horizontal lines of medieval armored foes, striking several in succession; one impact blooms brighter and larger to signal the critical strike. The zigzag path across the two rows is the clear visual idea, with no generic fireball. Painterly medieval fantasy collectible-card art, grounded cloth and armor, expressive brushwork, dramatic directional storm light, rich atmospheric depth. Explicit 1:1 SQUARE composition for a 512 x 512 master. Keep mage's face and casting hand, the full zigzag path and all important struck figures inside x24..488,y105..407 of the square; quiet cloud and ground margins outside. Horizontal staging for a 206:141 card crop. No words, numbers, border, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-75e7e0ef-23f8-486f-915d-998c83caa6b8.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "Reviewed 1254-square and normalized 206:141 crop: mage and full zigzag between upper and lower enemy rows remain identifiable; one brighter critical impact reads clearly."
+  },
+  {
+    "cardId": "stormcall",
+    "name": "Stormcall",
+    "prompt": "Paint an illustration for the fantasy card Stormcall. Its exact effect is a quick-fuse storm strike that lands on the aimed tile along the caster's row, passes over blockers, then bursts after a brief pause to damage and stun enemies. Show a storm mage at left aiming toward a precise tile beyond a row of stone blockers; a compact blue-white lightning charge hangs just above the stones on a clear horizontal trajectory, then crashes down as a brilliant circular storm burst around a group of armored foes, who are visibly frozen in a brief stunned recoil. Keep the path over the blockers and the ground-targeted blast distinct and readable. Painterly medieval fantasy collectible-card artwork, weathered stone and armor, expressive brushwork, cinematic storm lighting and atmospheric depth. Explicit 1:1 SQUARE composition for a 512 x 512 master. Keep mage's face and aiming hand, blocker row, full charge path and complete impact inside x24..488,y105..407 of the square; quiet sky and ground beyond. Horizontal staging for 206:141 crop. No border, lettering, numbers, UI, anime, Disney-like cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f6e5e66f-a531-4c30-a447-fc1521627473.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "Reviewed 1254-square and normalized 206:141 crop: horizontal charge passes over the blockers into a ground burst with stunned foes; mage's face/hand and action fit, impact sits near the right crop edge."
+  },
+  {
+    "cardId": "storm_ward_02",
+    "name": "Bronze Aegis",
+    "prompt": "Repair as a 1:1 SQUARE 512 x 512 master, preserving the same painterly storm mage, complete iconic bronze round aegis, engraved rings and bird crest, blue-white shield halo and arrows deflecting from the rim. Critical crop correction: scale the mage and shield down together and move both lower. Keep the mage's entire face from hairline through chin, the mage's spell hand, and the shield's complete circular edge all within x24..488,y105..407 of the square with clear margin. Keep deflected arrow impacts visible at the shield rim. Quiet storm sky above and ground below. Compose for a 206:141 horizontal card crop. No border, words, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-68f75ca0-7684-4433-8b10-5c3eb391e366.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "Repaired and reviewed 1254-square and normalized 206:141 crop: full bronze shield and deflecting arrow strikes fit; mage's complete face and casting hand remain in crop and safe band. Original first result retained at its generated path.",
+    "previousGeneratedPath": "/workspace/generated_images/exec-3b206b8e-6a81-40ab-8e97-1d652be41589.png"
+  },
+  {
+    "cardId": "storm_boon_01",
+    "name": "Scorpion Pit Ring",
+    "prompt": "Paint an illustration for the fantasy card Scorpion Pit Ring. Its exact effect temporarily empowers the caster's wand, heals allied creatures when they muster, and repeats once at half strength a few seconds later. Show a small medieval storm mage raising a wand over a circular sunken sand-and-stone pit; a complete ring of living bronze-gold scorpions circles the pit, while several allied fantasy creatures inside the ring are bathed in a strong blue-white healing pulse. A second, softer echo-ring of light trails just behind the first, visibly weaker. Make the circular scorpion pit and scorpion ring unmistakable, with the wand and healing allies clearly present. Painterly medieval fantasy collectible-card art, detailed natural carapaces, stone, sand and cloth, expressive brushwork, warm gold against cool stormlight, atmospheric depth. Explicit 1:1 SQUARE composition for a 512 x 512 master. Keep the entire scorpion ring and pit, mage's face and wand hand, and allies inside x24..488,y105..407 on the square; quiet desert air and ground margins outside. Horizontal staging for a 206:141 card crop. No lettering, numbers, border, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f6026bcd-22a0-4083-84d6-ab972755b429.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "Reviewed 1254-square and normalized 206:141 crop: full scorpion ring around sunken pit frames healing allies and wand mage; stronger pulse with a softer echo reads clearly."
+  },
+  {
+    "cardId": "storm_sentry_02",
+    "name": "Tesla Coil",
+    "prompt": "Repair into an explicitly 1:1 SQUARE 512 x 512 master. Preserve this painterly medieval battlefield scene with the bronze-and-iron Tesla coil, three chained lightning strikes and small living sapling. Critical crop correction: make the entire sentry smaller and move it lower. Keep the complete orb terminal at its top, every coil loop, full shaft and entire carved base all inside x24..488,y105..407 of the square, with clear margin. Keep the three chain targets and sapling visible in that same central horizontal band; the terminal may not be cut by the crop. Quiet storm sky above and ground below. No border, lettering, numbers, UI, modern wires, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8e570277-0b46-4af0-82b0-db150d6fc972.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "Repaired and reviewed 1254-square and normalized 206:141 crop: complete terminal-to-base Tesla coil, chained enemies and sprouting sapling remain visible in the central band. First attempt retained at its generated path.",
+    "previousGeneratedPath": "/workspace/generated_images/exec-1457066b-34e9-4786-93b0-e067eb7f8163.png"
   }
 ]

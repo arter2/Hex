@@ -1860,6 +1860,285 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     ],
     "legacyUpscaled": false
   },
+  "brown_machine_02": {
+    "master": "cards/art/masters/brown_machine_02.png",
+    "large": "cards/art/display/brown_machine_02-512.webp",
+    "thumbnail": "cards/art/display/brown_machine_02-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/brown_machine_02-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/brown_machine_02-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/brown_machine_02-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "brown_instant_02": {
+    "master": "cards/art/masters/brown_instant_02.png",
+    "large": "cards/art/display/brown_instant_02-512.webp",
+    "thumbnail": "cards/art/display/brown_instant_02-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/brown_instant_02-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/brown_instant_02-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/brown_instant_02-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "brown_equip_06": {
+    "master": "cards/art/masters/brown_equip_06.png",
+    "large": "cards/art/display/brown_equip_06-512.webp",
+    "thumbnail": "cards/art/display/brown_equip_06-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/brown_equip_06-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/brown_equip_06-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/brown_equip_06-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "brown_tinker_02": {
+    "master": "cards/art/masters/brown_tinker_02.png",
+    "large": "cards/art/display/brown_tinker_02-512.webp",
+    "thumbnail": "cards/art/display/brown_tinker_02-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/brown_tinker_02-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/brown_tinker_02-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/brown_tinker_02-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "brown_machine_03": {
+    "master": "cards/art/masters/brown_machine_03.png",
+    "large": "cards/art/display/brown_machine_03-512.webp",
+    "thumbnail": "cards/art/display/brown_machine_03-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/brown_machine_03-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/brown_machine_03-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/brown_machine_03-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "brown_instant_03": {
+    "master": "cards/art/masters/brown_instant_03.png",
+    "large": "cards/art/display/brown_instant_03-512.webp",
+    "thumbnail": "cards/art/display/brown_instant_03-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/brown_instant_03-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/brown_instant_03-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/brown_instant_03-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "brown_equip_11": {
+    "master": "cards/art/masters/brown_equip_11.png",
+    "large": "cards/art/display/brown_equip_11-512.webp",
+    "thumbnail": "cards/art/display/brown_equip_11-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/brown_equip_11-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/brown_equip_11-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/brown_equip_11-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "brown_tinker_03": {
+    "master": "cards/art/masters/brown_tinker_03.png",
+    "large": "cards/art/display/brown_tinker_03-512.webp",
+    "thumbnail": "cards/art/display/brown_tinker_03-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/brown_tinker_03-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/brown_tinker_03-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/brown_tinker_03-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "brown_trap_02": {
+    "master": "cards/art/masters/brown_trap_02.png",
+    "large": "cards/art/display/brown_trap_02-512.webp",
+    "thumbnail": "cards/art/display/brown_trap_02-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/brown_trap_02-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/brown_trap_02-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/brown_trap_02-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
   "ember_dart": {
     "master": "cards/art/masters/ember_dart.png",
     "large": "cards/art/display/ember_dart-512.webp",
@@ -2158,6 +2437,285 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "width": 512,
         "height": 350,
         "url": "cards/art/display/fire_environment_01-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "flame_fan": {
+    "master": "cards/art/masters/flame_fan.png",
+    "large": "cards/art/display/flame_fan-512.webp",
+    "thumbnail": "cards/art/display/flame_fan-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/flame_fan-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/flame_fan-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/flame_fan-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "fire_lob_01": {
+    "master": "cards/art/masters/fire_lob_01.png",
+    "large": "cards/art/display/fire_lob_01-512.webp",
+    "thumbnail": "cards/art/display/fire_lob_01-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/fire_lob_01-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/fire_lob_01-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/fire_lob_01-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "fire_sentry_01": {
+    "master": "cards/art/masters/fire_sentry_01.png",
+    "large": "cards/art/display/fire_sentry_01-512.webp",
+    "thumbnail": "cards/art/display/fire_sentry_01-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/fire_sentry_01-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/fire_sentry_01-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/fire_sentry_01-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "fire_utility_02": {
+    "master": "cards/art/masters/fire_utility_02.png",
+    "large": "cards/art/display/fire_utility_02-512.webp",
+    "thumbnail": "cards/art/display/fire_utility_02-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/fire_utility_02-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/fire_utility_02-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/fire_utility_02-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "blaze_bolt": {
+    "master": "cards/art/masters/blaze_bolt.png",
+    "large": "cards/art/display/blaze_bolt-512.webp",
+    "thumbnail": "cards/art/display/blaze_bolt-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/blaze_bolt-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/blaze_bolt-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/blaze_bolt-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "fire_lob_02": {
+    "master": "cards/art/masters/fire_lob_02.png",
+    "large": "cards/art/display/fire_lob_02-512.webp",
+    "thumbnail": "cards/art/display/fire_lob_02-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/fire_lob_02-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/fire_lob_02-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/fire_lob_02-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "fire_ward_01": {
+    "master": "cards/art/masters/fire_ward_01.png",
+    "large": "cards/art/display/fire_ward_01-512.webp",
+    "thumbnail": "cards/art/display/fire_ward_01-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/fire_ward_01-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/fire_ward_01-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/fire_ward_01-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "fire_sentry_02": {
+    "master": "cards/art/masters/fire_sentry_02.png",
+    "large": "cards/art/display/fire_sentry_02-512.webp",
+    "thumbnail": "cards/art/display/fire_sentry_02-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/fire_sentry_02-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/fire_sentry_02-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/fire_sentry_02-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "fire_boon_01": {
+    "master": "cards/art/masters/fire_boon_01.png",
+    "large": "cards/art/display/fire_boon_01-512.webp",
+    "thumbnail": "cards/art/display/fire_boon_01-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/fire_boon_01-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/fire_boon_01-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/fire_boon_01-512.webp"
       }
     ],
     "focalPoint": [
@@ -2480,6 +3038,285 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     ],
     "legacyUpscaled": false
   },
+  "frost_lance": {
+    "master": "cards/art/masters/frost_lance.png",
+    "large": "cards/art/display/frost_lance-512.webp",
+    "thumbnail": "cards/art/display/frost_lance-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/frost_lance-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/frost_lance-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/frost_lance-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "frost_sentry_01": {
+    "master": "cards/art/masters/frost_sentry_01.png",
+    "large": "cards/art/display/frost_sentry_01-512.webp",
+    "thumbnail": "cards/art/display/frost_sentry_01-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/frost_sentry_01-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/frost_sentry_01-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/frost_sentry_01-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "frost_boon_01": {
+    "master": "cards/art/masters/frost_boon_01.png",
+    "large": "cards/art/display/frost_boon_01-512.webp",
+    "thumbnail": "cards/art/display/frost_boon_01-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/frost_boon_01-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/frost_boon_01-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/frost_boon_01-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "frost_trap_01": {
+    "master": "cards/art/masters/frost_trap_01.png",
+    "large": "cards/art/display/frost_trap_01-512.webp",
+    "thumbnail": "cards/art/display/frost_trap_01-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/frost_trap_01-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/frost_trap_01-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/frost_trap_01-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "frost_ward": {
+    "master": "cards/art/masters/frost_ward.png",
+    "large": "cards/art/display/frost_ward-512.webp",
+    "thumbnail": "cards/art/display/frost_ward-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/frost_ward-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/frost_ward-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/frost_ward-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "absolute_zero": {
+    "master": "cards/art/masters/absolute_zero.png",
+    "large": "cards/art/display/absolute_zero-512.webp",
+    "thumbnail": "cards/art/display/absolute_zero-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/absolute_zero-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/absolute_zero-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/absolute_zero-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "frost_lob_01": {
+    "master": "cards/art/masters/frost_lob_01.png",
+    "large": "cards/art/display/frost_lob_01-512.webp",
+    "thumbnail": "cards/art/display/frost_lob_01-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/frost_lob_01-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/frost_lob_01-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/frost_lob_01-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "frost_sentry_02": {
+    "master": "cards/art/masters/frost_sentry_02.png",
+    "large": "cards/art/display/frost_sentry_02-512.webp",
+    "thumbnail": "cards/art/display/frost_sentry_02-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/frost_sentry_02-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/frost_sentry_02-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/frost_sentry_02-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "frost_boon_02": {
+    "master": "cards/art/masters/frost_boon_02.png",
+    "large": "cards/art/display/frost_boon_02-512.webp",
+    "thumbnail": "cards/art/display/frost_boon_02-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/frost_boon_02-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/frost_boon_02-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/frost_boon_02-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
   "gray_summon_01": {
     "master": "cards/art/masters/gray_summon_01.png",
     "large": "cards/art/display/gray_summon_01-512.webp",
@@ -2778,6 +3615,285 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "width": 512,
         "height": 350,
         "url": "cards/art/display/gray_charge_03-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "gray_summon_04": {
+    "master": "cards/art/masters/gray_summon_04.png",
+    "large": "cards/art/display/gray_summon_04-512.webp",
+    "thumbnail": "cards/art/display/gray_summon_04-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/gray_summon_04-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/gray_summon_04-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/gray_summon_04-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "gray_ward_03": {
+    "master": "cards/art/masters/gray_ward_03.png",
+    "large": "cards/art/display/gray_ward_03-512.webp",
+    "thumbnail": "cards/art/display/gray_ward_03-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/gray_ward_03-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/gray_ward_03-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/gray_ward_03-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "gray_boon_03": {
+    "master": "cards/art/masters/gray_boon_03.png",
+    "large": "cards/art/display/gray_boon_03-512.webp",
+    "thumbnail": "cards/art/display/gray_boon_03-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/gray_boon_03-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/gray_boon_03-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/gray_boon_03-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "gray_charge_04": {
+    "master": "cards/art/masters/gray_charge_04.png",
+    "large": "cards/art/display/gray_charge_04-512.webp",
+    "thumbnail": "cards/art/display/gray_charge_04-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/gray_charge_04-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/gray_charge_04-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/gray_charge_04-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "gray_summon_05": {
+    "master": "cards/art/masters/gray_summon_05.png",
+    "large": "cards/art/display/gray_summon_05-512.webp",
+    "thumbnail": "cards/art/display/gray_summon_05-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/gray_summon_05-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/gray_summon_05-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/gray_summon_05-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "gray_ward_04": {
+    "master": "cards/art/masters/gray_ward_04.png",
+    "large": "cards/art/display/gray_ward_04-512.webp",
+    "thumbnail": "cards/art/display/gray_ward_04-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/gray_ward_04-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/gray_ward_04-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/gray_ward_04-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "gray_boon_04": {
+    "master": "cards/art/masters/gray_boon_04.png",
+    "large": "cards/art/display/gray_boon_04-512.webp",
+    "thumbnail": "cards/art/display/gray_boon_04-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/gray_boon_04-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/gray_boon_04-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/gray_boon_04-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "gray_charge_05": {
+    "master": "cards/art/masters/gray_charge_05.png",
+    "large": "cards/art/display/gray_charge_05-512.webp",
+    "thumbnail": "cards/art/display/gray_charge_05-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/gray_charge_05-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/gray_charge_05-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/gray_charge_05-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "gray_summon_06": {
+    "master": "cards/art/masters/gray_summon_06.png",
+    "large": "cards/art/display/gray_summon_06-512.webp",
+    "thumbnail": "cards/art/display/gray_summon_06-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/gray_summon_06-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/gray_summon_06-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/gray_summon_06-512.webp"
       }
     ],
     "focalPoint": [
@@ -3100,6 +4216,285 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     ],
     "legacyUpscaled": false
   },
+  "radiant_motes": {
+    "master": "cards/art/masters/radiant_motes.png",
+    "large": "cards/art/display/radiant_motes-512.webp",
+    "thumbnail": "cards/art/display/radiant_motes-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/radiant_motes-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/radiant_motes-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/radiant_motes-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "courage": {
+    "master": "cards/art/masters/courage.png",
+    "large": "cards/art/display/courage-512.webp",
+    "thumbnail": "cards/art/display/courage-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/courage-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/courage-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/courage-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "light_utility_01": {
+    "master": "cards/art/masters/light_utility_01.png",
+    "large": "cards/art/display/light_utility_01-512.webp",
+    "thumbnail": "cards/art/display/light_utility_01-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/light_utility_01-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/light_utility_01-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/light_utility_01-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "light_ward_01": {
+    "master": "cards/art/masters/light_ward_01.png",
+    "large": "cards/art/display/light_ward_01-512.webp",
+    "thumbnail": "cards/art/display/light_ward_01-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/light_ward_01-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/light_ward_01-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/light_ward_01-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "intervention": {
+    "master": "cards/art/masters/intervention.png",
+    "large": "cards/art/display/intervention-512.webp",
+    "thumbnail": "cards/art/display/intervention-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/intervention-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/intervention-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/intervention-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1514,
+      1039
+    ],
+    "legacyUpscaled": false
+  },
+  "dawnbreaker": {
+    "master": "cards/art/masters/dawnbreaker.png",
+    "large": "cards/art/display/dawnbreaker-512.webp",
+    "thumbnail": "cards/art/display/dawnbreaker-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/dawnbreaker-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/dawnbreaker-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/dawnbreaker-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "light_lob_01": {
+    "master": "cards/art/masters/light_lob_01.png",
+    "large": "cards/art/display/light_lob_01-512.webp",
+    "thumbnail": "cards/art/display/light_lob_01-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/light_lob_01-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/light_lob_01-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/light_lob_01-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "light_ward_02": {
+    "master": "cards/art/masters/light_ward_02.png",
+    "large": "cards/art/display/light_ward_02-512.webp",
+    "thumbnail": "cards/art/display/light_ward_02-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/light_ward_02-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/light_ward_02-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/light_ward_02-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "light_sentry_01": {
+    "master": "cards/art/masters/light_sentry_01.png",
+    "large": "cards/art/display/light_sentry_01-512.webp",
+    "thumbnail": "cards/art/display/light_sentry_01-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/light_sentry_01-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/light_sentry_01-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/light_sentry_01-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
   "shadow_strike_01": {
     "master": "cards/art/masters/shadow_strike_01.png",
     "large": "cards/art/display/shadow_strike_01-512.webp",
@@ -3407,6 +4802,285 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     "sourceNative": [
       1254,
       1254
+    ],
+    "legacyUpscaled": false
+  },
+  "shadow_lob_01": {
+    "master": "cards/art/masters/shadow_lob_01.png",
+    "large": "cards/art/display/shadow_lob_01-512.webp",
+    "thumbnail": "cards/art/display/shadow_lob_01-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/shadow_lob_01-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/shadow_lob_01-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/shadow_lob_01-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1515,
+      1038
+    ],
+    "legacyUpscaled": false
+  },
+  "soul_drain": {
+    "master": "cards/art/masters/soul_drain.png",
+    "large": "cards/art/display/soul_drain-512.webp",
+    "thumbnail": "cards/art/display/soul_drain-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/soul_drain-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/soul_drain-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/soul_drain-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "shadow_sentry_01": {
+    "master": "cards/art/masters/shadow_sentry_01.png",
+    "large": "cards/art/display/shadow_sentry_01-512.webp",
+    "thumbnail": "cards/art/display/shadow_sentry_01-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/shadow_sentry_01-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/shadow_sentry_01-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/shadow_sentry_01-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "sourceNative": [
+      1515,
+      1038
+    ],
+    "legacyUpscaled": false
+  },
+  "shadow_summon_02": {
+    "master": "cards/art/masters/shadow_summon_02.png",
+    "large": "cards/art/display/shadow_summon_02-512.webp",
+    "thumbnail": "cards/art/display/shadow_summon_02-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/shadow_summon_02-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/shadow_summon_02-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/shadow_summon_02-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "blood_lance": {
+    "master": "cards/art/masters/blood_lance.png",
+    "large": "cards/art/display/blood_lance-512.webp",
+    "thumbnail": "cards/art/display/blood_lance-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/blood_lance-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/blood_lance-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/blood_lance-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1515,
+      1038
+    ],
+    "legacyUpscaled": false
+  },
+  "shadow_lob_02": {
+    "master": "cards/art/masters/shadow_lob_02.png",
+    "large": "cards/art/display/shadow_lob_02-512.webp",
+    "thumbnail": "cards/art/display/shadow_lob_02-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/shadow_lob_02-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/shadow_lob_02-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/shadow_lob_02-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1495,
+      1052
+    ],
+    "legacyUpscaled": false
+  },
+  "shadow_ward_01": {
+    "master": "cards/art/masters/shadow_ward_01.png",
+    "large": "cards/art/display/shadow_ward_01-512.webp",
+    "thumbnail": "cards/art/display/shadow_ward_01-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/shadow_ward_01-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/shadow_ward_01-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/shadow_ward_01-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "shadow_sentry_02": {
+    "master": "cards/art/masters/shadow_sentry_02.png",
+    "large": "cards/art/display/shadow_sentry_02-512.webp",
+    "thumbnail": "cards/art/display/shadow_sentry_02-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/shadow_sentry_02-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/shadow_sentry_02-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/shadow_sentry_02-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "shadow_boon_01": {
+    "master": "cards/art/masters/shadow_boon_01.png",
+    "large": "cards/art/display/shadow_boon_01-512.webp",
+    "thumbnail": "cards/art/display/shadow_boon_01-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/shadow_boon_01-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/shadow_boon_01-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/shadow_boon_01-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1516,
+      1038
     ],
     "legacyUpscaled": false
   },
@@ -3720,6 +5394,285 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
     ],
     "legacyUpscaled": false
   },
+  "thunder_row": {
+    "master": "cards/art/masters/thunder_row.png",
+    "large": "cards/art/display/thunder_row-512.webp",
+    "thumbnail": "cards/art/display/thunder_row-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/thunder_row-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/thunder_row-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/thunder_row-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "storm_ward_01": {
+    "master": "cards/art/masters/storm_ward_01.png",
+    "large": "cards/art/display/storm_ward_01-512.webp",
+    "thumbnail": "cards/art/display/storm_ward_01-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/storm_ward_01-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/storm_ward_01-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/storm_ward_01-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "storm_sentry_01": {
+    "master": "cards/art/masters/storm_sentry_01.png",
+    "large": "cards/art/display/storm_sentry_01-512.webp",
+    "thumbnail": "cards/art/display/storm_sentry_01-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/storm_sentry_01-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/storm_sentry_01-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/storm_sentry_01-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "storm_trap_01": {
+    "master": "cards/art/masters/storm_trap_01.png",
+    "large": "cards/art/display/storm_trap_01-512.webp",
+    "thumbnail": "cards/art/display/storm_trap_01-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/storm_trap_01-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/storm_trap_01-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/storm_trap_01-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "chain_light": {
+    "master": "cards/art/masters/chain_light.png",
+    "large": "cards/art/display/chain_light-512.webp",
+    "thumbnail": "cards/art/display/chain_light-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/chain_light-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/chain_light-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/chain_light-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "stormcall": {
+    "master": "cards/art/masters/stormcall.png",
+    "large": "cards/art/display/stormcall-512.webp",
+    "thumbnail": "cards/art/display/stormcall-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/stormcall-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/stormcall-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/stormcall-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "storm_ward_02": {
+    "master": "cards/art/masters/storm_ward_02.png",
+    "large": "cards/art/display/storm_ward_02-512.webp",
+    "thumbnail": "cards/art/display/storm_ward_02-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/storm_ward_02-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/storm_ward_02-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/storm_ward_02-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "storm_boon_01": {
+    "master": "cards/art/masters/storm_boon_01.png",
+    "large": "cards/art/display/storm_boon_01-512.webp",
+    "thumbnail": "cards/art/display/storm_boon_01-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/storm_boon_01-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/storm_boon_01-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/storm_boon_01-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "storm_sentry_02": {
+    "master": "cards/art/masters/storm_sentry_02.png",
+    "large": "cards/art/display/storm_sentry_02-512.webp",
+    "thumbnail": "cards/art/display/storm_sentry_02-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/storm_sentry_02-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/storm_sentry_02-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/storm_sentry_02-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
   "verdant_charge_08": {
     "master": "cards/art/masters/verdant_charge_08.png",
     "large": "cards/art/display/verdant_charge_08-512.webp",
@@ -4018,6 +5971,285 @@ const HEX_CARD_ART_VARIANTS=Object.freeze({
         "width": 512,
         "height": 350,
         "url": "cards/art/display/verdant_trap_01-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "vine_lash": {
+    "master": "cards/art/masters/vine_lash.png",
+    "large": "cards/art/display/vine_lash-512.webp",
+    "thumbnail": "cards/art/display/vine_lash-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/vine_lash-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/vine_lash-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/vine_lash-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "bark_skin": {
+    "master": "cards/art/masters/bark_skin.png",
+    "large": "cards/art/display/bark_skin-512.webp",
+    "thumbnail": "cards/art/display/bark_skin-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/bark_skin-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/bark_skin-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/bark_skin-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "verdant_summon_02": {
+    "master": "cards/art/masters/verdant_summon_02.png",
+    "large": "cards/art/display/verdant_summon_02-512.webp",
+    "thumbnail": "cards/art/display/verdant_summon_02-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/verdant_summon_02-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/verdant_summon_02-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/verdant_summon_02-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "verdant_sentry_01": {
+    "master": "cards/art/masters/verdant_sentry_01.png",
+    "large": "cards/art/display/verdant_sentry_01-512.webp",
+    "thumbnail": "cards/art/display/verdant_sentry_01-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/verdant_sentry_01-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/verdant_sentry_01-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/verdant_sentry_01-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "mend": {
+    "master": "cards/art/masters/mend.png",
+    "large": "cards/art/display/mend-512.webp",
+    "thumbnail": "cards/art/display/mend-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/mend-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/mend-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/mend-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "verdant_strike_01": {
+    "master": "cards/art/masters/verdant_strike_01.png",
+    "large": "cards/art/display/verdant_strike_01-512.webp",
+    "thumbnail": "cards/art/display/verdant_strike_01-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/verdant_strike_01-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/verdant_strike_01-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/verdant_strike_01-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "verdant_lob_01": {
+    "master": "cards/art/masters/verdant_lob_01.png",
+    "large": "cards/art/display/verdant_lob_01-512.webp",
+    "thumbnail": "cards/art/display/verdant_lob_01-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/verdant_lob_01-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/verdant_lob_01-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/verdant_lob_01-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "verdant_ward_01": {
+    "master": "cards/art/masters/verdant_ward_01.png",
+    "large": "cards/art/display/verdant_ward_01-512.webp",
+    "thumbnail": "cards/art/display/verdant_ward_01-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/verdant_ward_01-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/verdant_ward_01-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/verdant_ward_01-512.webp"
+      }
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "legacyUpscaled": false
+  },
+  "verdant_summon_03": {
+    "master": "cards/art/masters/verdant_summon_03.png",
+    "large": "cards/art/display/verdant_summon_03-512.webp",
+    "thumbnail": "cards/art/display/verdant_summon_03-128.webp",
+    "outputs": [
+      {
+        "width": 128,
+        "height": 88,
+        "url": "cards/art/display/verdant_summon_03-128.webp"
+      },
+      {
+        "width": 256,
+        "height": 175,
+        "url": "cards/art/display/verdant_summon_03-256.webp"
+      },
+      {
+        "width": 512,
+        "height": 350,
+        "url": "cards/art/display/verdant_summon_03-512.webp"
       }
     ],
     "focalPoint": [

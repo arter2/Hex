@@ -124,5 +124,122 @@
     "status": "generated",
     "batch": 3,
     "reviewNote": "Shortened paired walls are fully visible within the safe crop beside the dwarf, with thick iron plating and glowing ward seams clearly identifying the defensive corridor."
+  },
+  {
+    "cardId": "brown_machine_02",
+    "name": "Steam Cannon",
+    "prompt": "Square painterly medieval fantasy card illustration for Steam Cannon: a compact sturdy dwarven steam-powered cannon dominates a rocky battlefield lane, with squat iron barrel, brass fittings, rivets, wooden carriage and pressure boiler venting white steam. It fires a single bright straight bolt at the first armored foe in its row; allied warriors rally behind in the steam-lit glow. Believable cast iron, brass, wood and leather, directional warm furnace light against cool smoke, atmospheric depth, expressive fantasy brushwork. Explicit 1:1 square 512 master; keep full cannon, wheels, bolt, target and essential allies within x24..488,y105..407 for centered 206:141 crop. No frame, text, numbers or UI. No anime, photorealism, pixel art, modern artillery or firearms.",
+    "generatedPath": "/workspace/generated_images/exec-b4247811-882e-4917-b298-b003f046096d.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 4,
+    "reviewNote": "Inspected native 1254-square output and centered crop; complete steam cannon, boiler, wheels, straight bolt and target remain clearly visible. One ally at the left edge is secondary."
+  },
+  {
+    "cardId": "brown_instant_02",
+    "name": "Elven Dew",
+    "prompt": "Square painterly medieval fantasy illustration for Elven Dew: a luminous dew drop collected in an elegant small elven glass vial beside a moonlit leaf is the clear named object. An elven mage drinks/touches the dew and her carved wand brightens with a brief green-gold empowered aura; a subtle frost shimmer hints at the rime aspect, with a faint painless red nick suggesting the pact cost. Fine elven silverwork, glass, leaf and flowing cloth, expressive fantasy brushwork and moonlit forest depth. Explicit 1:1 square 512 master; keep full vial/drop, elf face and raised hand within x24..488,y105..407 for centered 206:141 crop. No text, frame, symbols or UI; no anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5b168f7f-5796-480c-b9cb-6dabb5b8a6f6.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 4,
+    "reviewNote": "Inspected native 1254-square output and centered wide crop; complete glowing vial/dew, elf face and raised hand remain clear. Wand is partly cropped below the grip but secondary to the named dew artifact."
+  },
+  {
+    "cardId": "brown_equip_06",
+    "name": "Sky-Folk Steel Talons",
+    "prompt": "Square painterly medieval fantasy card illustration for Sky-Folk Steel Talons: a winged sky-folk warrior dives through mountain air wearing paired ornate steel talon gauntlets, each with three long curved claws. The complete paired talons are the dominant equipment, hammered steel etched with feather patterns catching sunlight; an allied griffon nearby glows with their empowering magic. Grounded anatomy, believable feathers, steel and leather, dramatic high-altitude light and expressive fantasy brushwork. Explicit 1:1 square 512 master; keep full face and both complete gauntlets/claw tips within x24..488,y105..407 for centered 206:141 crop. No frame, text, symbols or UI; no anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9af413f9-3a79-44ac-b00b-3f0dd7d6590c.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 4,
+    "reviewNote": "Repainted after crop review. Inspected native 1254-square output and centered crop; warrior face and both complete steel talon gauntlets with tips are inside safe area; wings are atmospheric secondary elements."
+  },
+  {
+    "cardId": "brown_tinker_02",
+    "name": "Gun Oil",
+    "prompt": "Square painterly medieval-fantasy workshop still life for Gun Oil. A complete small clear flask of golden lubricant and a cloth stand in the foreground beside a handcrafted old-world wooden-and-bronze firearm mechanism resting safely on a workbench. An artisan oils its exposed gears and barrel fittings for smoother function. Quiet maintenance only: no ammunition, combat, firing or injury. Warm forge light, detailed wood and metal, expressive fantasy brushwork. Explicit 1:1 square 512 master; keep the full flask and central mechanism within x24..488,y105..407 for centered 206:141 crop. No text, frame or UI. No modern weapon designs, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c6d0927e-0198-460c-a539-2d08029289ae.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 4,
+    "reviewNote": "Inspected native 1254-square output and centered crop; complete oil flask, cloth and well-detailed central gear/barrel action are visible. The long firearm extends beyond both crop sides, but the named oil flask remains fully within frame."
+  },
+  {
+    "cardId": "brown_machine_03",
+    "name": "Dwarven Runic Battery",
+    "prompt": "Square painterly medieval fantasy collectible-card art for Dwarven Runic Battery: a freestanding dwarven rune tower, stout carved stone and bronze with stacked glowing runic capacitors and a crown of carved prongs. It launches a bright zigzag arc between battlefield lanes, with a protective armor-rune circling the base. Clearly dwarven chiselwork, rivets and stone, fantasy engineering, dramatic light and smoky depth. Explicit 1:1 square 512 master; keep full crown, entire tower, base rune and zigzag attack within x24..488,y105..407 for centered 206:141 crop. No frame, lettering, numbers, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8cb466a1-1c40-4aff-86fd-aaf6f8c95d11.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "Repainted after crop review; inspected native 1254-square output and centered wide crop. Crown/prongs, full tower and base rune ring all fit within crop, with zigzag arc and target lanes legible."
+  },
+  {
+    "cardId": "brown_instant_03",
+    "name": "Troll Blood Tonic",
+    "prompt": "Square painterly medieval fantasy card art for Troll Blood Tonic: a weathered troll shaman holds a small stoppered vial of deep crimson herbal tonic prominently beside its face. A soft green regenerative glow spreads from the drinker to several troll allies, suggesting lasting healing and muster. Grounded anatomy, mossy skin, braided hair and hide/metal ornaments; no gore or bloodshed. Detailed glass and herbs, expressive brushwork, warm campfire light and forest depth. Explicit 1:1 square 512 master; keep complete vial with stopper, troll face and gripping hand inside x24..488,y105..407 for centered 206:141 crop. No frame, text, symbols or UI; no anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6dc11d66-7763-456b-bbd1-1d97a6a29f6c.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "Repainted after crop review; inspected native 1254-square output and centered wide crop. The full stoppered tonic vial, troll face and hand are safely visible, with regenerative glow and other allies readable."
+  },
+  {
+    "cardId": "brown_equip_11",
+    "name": "Elven Leaf Mail",
+    "prompt": "Paint an illustration for exact fantasy card name Elven Leaf Mail. A complete elegant elven suit of leaf-inspired plate armor displayed on a carved wooden stand dominates the scene: overlapping silver-green metal leaves form breastplate, shoulder plates, arm guards and greaves, with fine elven runes and practical joints. A graceful elf warrior stands beside it, face visible, one hand resting on the breastplate. Armor fully visible and unmistakable as wearable protective plate, not ordinary foliage or fabric. Painterly medieval fantasy collectible-card illustration, nuanced metal, leather and wood, directional forest light, atmospheric depth, consistent with supplied painterly fantasy card references. Explicit 1:1 SQUARE canvas, intended editable 512x512 master. Keep full armor, elf face and hand in x24..488,y105..407 on square, quiet forest atmosphere above and below for 206:141 card crop. No frame, text, numbers, UI, logo or watermark. No anime, Disney cartoon, photorealism or pixel art. Recomposition instruction: preserve painterly forest light and complete silver-green leaf plate armor on wooden stand with elf armorer; move and scale both complete armor and elf downward so face and essential armor details stay in the centered wide crop, leaving quiet forest above and ground below.",
+    "generatedPath": "/workspace/generated_images/exec-36bc0795-fa60-4525-863b-ddbd0fb18c61.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "Inspected native 1254-square output and centered 206:141 crop. Complete leaf plate suit, elf face and hand are visible; armor materials and forest setting read clearly."
+  },
+  {
+    "cardId": "brown_tinker_03",
+    "name": "Sharpening Wheel",
+    "prompt": "Paint an illustration for exact fantasy card name Sharpening Wheel. A compact, heavy dwarven pedal-powered sharpening wheel is the clear subject: large upright whetstone mounted in an iron-and-oak frame, visible hand crank and foot treadle, a dwarf smith carefully draws a broad sword along the turning stone, a few controlled sparks. The wheel and sword sharpening contact are central and distinct; dwarf's face and both hands visible. Detailed riveted iron, worn stone, oak, leather apron and forge craft. Painterly medieval fantasy collectible-card art, warm directional forge light, smoky atmospheric depth, grounded anatomy, refined expressive brushwork. Explicit 1:1 SQUARE canvas for editable 512x512 master; keep wheel, full sword, contact, dwarf face/hands within x24..488,y105..407 on square for centered 206:141 crop; quiet rafters and floor beyond. No frame, lettering, numbers, logo, UI or watermark. No modern industrial machinery, anime, cartoon, photorealism or pixel art. Recomposition instruction: retain the dwarf smith and forge but scale the working scene smaller and lower, with full face, sword pommel-to-point, hands, wheel and frame inside the safe center.",
+    "generatedPath": "/workspace/generated_images/exec-19673ead-496e-4b54-893b-1393abf4dafa.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "Inspected native 1254-square output and centered wide crop. Smith's face and hands, complete sword, sharpening contact, full wheel, frame and treadle remain visible; warm forge scene supports the named tool."
+  },
+  {
+    "cardId": "brown_trap_02",
+    "name": "Gnomish Clockwork Pendulum",
+    "prompt": "Paint an illustration for exact fantasy card name Gnomish Clockwork Pendulum. Show three distinct gnomish blade pendulum traps arranged in a row across a narrow stone corridor, each with a visible iron ceiling pivot, linked clockwork escapement and chain or rigid rod, and a heavy curved blade swinging down through one vertical column. A small floor pressure tile triggers them; show readable motion arcs and one blade crossing the lane, with no person harmed. Make all three complete mechanisms, pivots, blades and the tile visibly identifiable. Gnomish craftsmanship: intricate brass gears, iron, rivets and carved stone, candlelit medieval fantasy corridor, painterly collectible-card art with directional light and atmospheric depth. Explicit 1:1 SQUARE 512 master; keep every pivot, mechanism, blade, action arc and trigger tile inside x24..488,y105..407 for centered 206:141 crop, quiet stone above and floor below. No modern machinery, text, frame, numbers, UI, logo or watermark. No anime, cartoon, photorealism or pixel art. Recomposition instruction: preserve three complete mechanisms and stone corridor, scale full traps smaller and center them within middle half of square, with complete ceiling mounts beginning around y130 and all blades and pressure tile ending by y380 so the centered wide crop shows all critical parts.",
+    "generatedPath": "/workspace/generated_images/exec-292b5d36-40a8-40bc-a26c-a6d3bd5db72b.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "Inspected native 1254-square output and centered wide crop. All three full pivot gears, rods, swinging blades and the complete floor pressure tile fit inside the crop; motion arcs and corridor are readable."
   }
 ]

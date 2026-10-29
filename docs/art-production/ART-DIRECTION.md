@@ -52,3 +52,7 @@ Acceptance: exact 512 square master; no invented frame/text; correct card identi
 > Paint an illustration for **[exact card name]**, whose action/effect is **[actual mechanics]**. Painterly medieval fantasy collectible-card art, nuanced materials, directional light and atmospheric depth, consistent with the supplied Hexmancers reference set. A bold readable **[subject/action]** dominates a quiet supporting environment. Create a square composition for a 512 × 512 master. Keep the critical subject/action within x24…488 and y105…407 on that square, with expendable scenery beyond; it will also be viewed as a 206:141 horizontal crop. No card border, lettering, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel-art rendering.
 
 Do not mark the remaining catalogue complete: record generated, reviewed/exported and pending cards separately in the production queue.
+
+## Named transfer for Claude
+
+After at least 200 unique cards are reviewed and exported, prepare the transfer directory with `node tools/card-art-handoff.js /workspace/card-art-handoff 200`. This creates no ZIP. It includes named masters, three crop sizes per card, exact catalogue mappings, checksums and `README_FOR_CLAUDE.md`. Keep the repository's stable runtime destinations; the manifest maps human-readable delivery names to those paths. Count unique card illustrations, not thumbnails or unused alternatives. Wait for the user to request a ZIP before archiving the transfer.

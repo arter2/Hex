@@ -126,5 +126,122 @@
     "status": "generated",
     "batch": 3,
     "reviewNote": "Inspected square original: complete flat diamond net, all four weights, central practice marker and nearby trigger peg are inside the action-safe band and remain readable in the wide crop."
+  },
+  {
+    "cardId": "vine_lash",
+    "name": "Vine Lash",
+    "prompt": "Paint an illustration for the Verdant spell \u201cVine Lash\u201d: a living emerald vine lashes outward in a graceful boomerang arc through a forest lane, then curls back along a neighboring path; show the single continuous thorny tendril and its return sweep clearly, with a subtle slowing leaf-glimmer. The vine itself is the readable named subject, large and centered. Painterly medieval fantasy collectible-card art, believable bark, leaves and thorns, attractive directional woodland light, layered depth. Explicit 1:1 SQUARE canvas for 512-square master. Keep entire named vine and thorns inside x24..488,y105..407 on normalized square; quiet scenery above/below, composed for 206:141 crop. No border, text, UI, watermark, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8f363509-05b8-48d0-8c31-44d12438bfbf.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 4,
+    "reviewNote": "Inspected 1254-square original and normalized 512 crop: the complete thorned vine arc sits within the safe horizontal band and reads clearly against the woodland. The broad return curve conveys the boomerang path."
+  },
+  {
+    "cardId": "bark_skin",
+    "name": "Bark Skin",
+    "prompt": "Paint Bark Skin: a woodland guardian arm fitted with a living oak-bark shield gauntlet, moss and outward thorns; an arrow splinters on impact. Painterly medieval fantasy, detailed bark and forest light. Square 512 master, keep full hand, arm, shield and impact inside x24..488,y105..407 for the 206:141 crop. No text/frame/UI. Repaired after initial hand clipped the top of safe band: lowered complete hand and reduced scale.",
+    "generatedPath": "/workspace/generated_images/exec-78de37ff-1038-453e-8f08-1be634555ddd.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 4,
+    "reviewNote": "Inspected square original; the full bark-armored hand, thorn shield and arrow impact read clearly, and the hand is within the central crop-safe band after compositional repair. Original generation retained separately."
+  },
+  {
+    "cardId": "verdant_summon_02",
+    "name": "Felled Oak",
+    "prompt": "Recompose Felled Oak original; shrink and lower full oak silhouette into horizontal safe band.",
+    "generatedPath": "/workspace/generated_images/exec-3ad9efac-daeb-43ec-821b-49e50b151dc7.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 4,
+    "reviewNote": "Inspected 1254-square original and normalized wide crop. The mossy fallen oak guardian, lifted roots and protective scene all remain visible; its full top branches were lowered into the crop-safe band by repair."
+  },
+  {
+    "cardId": "verdant_sentry_01",
+    "name": "Pitcher Plant",
+    "prompt": "Recompose Pitcher Plant: scale down and lower complete lid and plant into wide crop safe band.",
+    "generatedPath": "/workspace/generated_images/exec-51f84d54-ef22-437a-89e1-0df5fb6240aa.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 4,
+    "reviewNote": "Inspected square original and crop: the full pitcher, overhanging lid, thorn rim, insect, bolt and target remain visible. Lowered and scaled the plant after the first version cropped the lid."
+  },
+  {
+    "cardId": "mend",
+    "name": "Mend",
+    "prompt": "Illustrate Verdant boon \u201cMend\u201d: in a forest glade, a wounded woodland ranger kneels while warm green healing light knits a small cut on their forearm; one hand cradles the injured arm and the other steadies them. Nearby two loyal creatures, a wolf and a small hawk, brighten with a subtle rallying leaf aura as the healing arrives in a delayed ring of falling leaves. Faces and hands gentle and clear, no dramatic injury. Painterly medieval fantasy card art, luminous natural light, nuanced cloth, fur and foliage. Explicit 1:1 square 512 master; all face, hands and healing action inside x24..488,y105..407 for 206:141 wide crop, quiet canopy and forest floor outside. No text/frame/UI/watermark or anime/cartoon/photorealism/pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c932de1d-68cf-4848-8a57-49777259a9b3.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "Inspected square original: ranger face, healing hands/forearm, wolf and hawk all read clearly inside the central horizontal crop band; leaf light communicates the delayed restorative rally."
+  },
+  {
+    "cardId": "verdant_strike_01",
+    "name": "Hunter's Longbow Shot",
+    "prompt": "Slightly shrunk and centered archer/bow scene to keep both bow tips in safe crop.",
+    "generatedPath": "/workspace/generated_images/exec-de81da04-5249-494d-b883-7c71e4832870.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "Inspected the square original and normalized wide crop. Archer face, drawing hand, both bow tips, charged arrow and marked target are all legible in the safe band; composition was reduced and recentered after the first crop clipped the bow."
+  },
+  {
+    "cardId": "verdant_lob_01",
+    "name": "Squirting Cucumber",
+    "prompt": "Recompose cucumber image with fuse and named object lower/smaller in crop-safe band.",
+    "generatedPath": "/workspace/generated_images/exec-876aefd1-bddd-4836-9fa1-6cbce849ef29.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "Inspected square original and normalized crop: complete thorny cucumber with lit fuse, its arc, and the cross-shaped toxic splash remain clearly visible within the safe band after a slight downward, smaller recomposition."
+  },
+  {
+    "cardId": "verdant_ward_01",
+    "name": "Hawthorn Hedge",
+    "prompt": "Illustrate Verdant ward \u201cHawthorn Hedge\u201d: a formidable living corridor of four thorned hedgerow walls, two lines running away into depth on either side of a narrow forest path. In foreground one close section shows woven hawthorn branches, dense leaves and long sharp thorns; matching parallel walls make the corridor unmistakable. A small cloaked traveler stands safely in the passage to show scale. Painterly medieval fantasy collectible-card art, detailed bark and leaves, dappled directional light, atmospheric woodland. Explicit 1:1 square 512 master; keep the complete visible hedge corridor, foreground thorns and traveler inside x24..488,y105..407 for the 206:141 crop; quiet canopy and ground outside. No frame, text, symbols, numbers, UI or watermark; no anime/cartoon/photorealism/pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-cc7f1886-fd12-47a7-853c-5c0265dd74ea.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "Inspected normalized wide crop: parallel thorned living walls and the protected path read immediately as a defensive corridor; the traveler provides scale and is fully visible."
+  },
+  {
+    "cardId": "verdant_summon_03",
+    "name": "Strangler Fig Roots",
+    "prompt": "Paint Verdant summon \u201cStrangler Fig Roots\u201d: a sturdy ancient fig tree anchors a dense living root mass that bursts through a stone wall and coils around a distant armored practice dummy, its thornless roots clearly strangling and pinning the target while a few green life-force motes stream back into the fig trunk. Emphasize roots lobbing over the wall, the fig\u2019s broad leaves and strong root tendrils as the named subject; no gore, no human-like face. Painterly medieval fantasy collectible-card illustration, rich bark, soil and leaf textures, directional forest light, atmospheric depth. Explicit 1:1 square 512 master; keep full visible fig, root coils, target and motes within x24..488,y105..407 for 206:141 crop, quiet scenery top/bottom. No frame, text, symbols, UI, watermark, anime/cartoon/photorealism/pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4f64cffc-209e-402a-98a5-6d8236a1607e.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "Inspected square original and normalized wide crop. Fig roots clearly emerge from the tree, cross over the stone wall and pin the target; green life-drain motes and complete target remain visible in the crop."
   }
 ]

@@ -124,5 +124,122 @@
     "status": "generated",
     "batch": 3,
     "reviewNote": "Two cursed armored enemies are caught across a broad bramble patch over drowned stepping stones; faces, hands and thorn action are all in the central crop band with swamp atmosphere outside it."
+  },
+  {
+    "cardId": "shadow_lob_01",
+    "name": "Plague Flask",
+    "prompt": "Square 1:1 painterly medieval fantasy collectible card art for Plague Flask. One complete stoppered green-black glass flask is the clear hero in the central foreground, tilted as if just thrown; toxic emerald vapor coils around it. In the same horizontal scene, the flask has just burst over a single stone tile beyond a low broken barricade; a compact poison splash sends a small armored enemy stumbling back one step, green plague haze marking the impact. Keep the entire flask, thrower's hand, target face and impact comfortably inside x24..488,y105..407 of a normalized 512 square, concentrated in the middle band. Clear attractive light on the named flask, tactile glass, leather and stone, painterly serious high fantasy, atmospheric crypt battlefield. The wide 206:141 crop must preserve the flask and impact. No text, symbols, frame, numbers or UI. No Disney style, anime, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ef596063-d245-4e21-ab14-35611b5f0d4a.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 4,
+    "reviewNote": "Landscape original normalized to a centered square; complete flask, thrower's hand, poison impact and target remain within the crop-safe band. The blocker and setback read clearly."
+  },
+  {
+    "cardId": "soul_drain",
+    "name": "Soul Drain",
+    "prompt": "Create a 1:1 SQUARE painterly medieval high-fantasy collectible-card illustration for Soul Drain. Horizontal battlefield composition with the actual effect shown as THREE aligned armored enemies on the RIGHT in distinct top, middle and bottom rows, all struck by a narrow vertical violet-black column; their pale soul wisps stream LEFT to a hooded shadow mage. Include the mage's complete face and outstretched hand on the left, with a restrained recoil pose suggesting the strike knocked them back. Keep all faces, hand, column, and soul streams within x24..488,y105..407 of the normalized square. Compose the entire action as a compressed band centered around y256, with top and bottom thirds only quiet crypt atmosphere. Make the vertical enemy-side column visible in the wide card crop. Dramatic violet rim light, tactile armor and cloth, painterly medieval fantasy art, rich but readable. No graphic gore, no text, frame, UI, numerals. No Disney style, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-96c53f5e-5819-4648-8300-44ffa34a02f7.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 4,
+    "reviewNote": "Square composition; column and drain streams read clearly, with all three enemies and mage visible. Uppermost enemy face sits slightly above the strict y105 safe bound but remains within the actual wide crop; flag for parent review."
+  },
+  {
+    "cardId": "shadow_sentry_01",
+    "name": "Skull Lantern",
+    "prompt": "1:1 SQUARE painterly medieval fantasy collectible-card art for Skull Lantern, a sturdy Shadow sentry that shields its ally with 10 points, confuses foes, and leaves a shooting sapling when it expires. Center one complete hanging iron-and-bone lantern topped by a clearly recognizable ivory skull, glowing restrained violet-green from within. In the horizontal battlefield, it hangs beside a shadow mage and its translucent curved ward visibly shields them from a hostile bolt; a nearby armored foe sees double in a subtle confusion shimmer. At the lantern's base, show a tiny fresh sapling beginning to sprout, hinting at its seed on expiry. Keep skull, lantern, mage face/hand, shield arc and sprout within x24..488,y105..407 of normalized square. Rich painterly surfaces, attractive directional light, serious high fantasy crypt setting; named skull lantern is dominant, wide 206:141 crop legible. No text/frame/UI, no Disney/anime/photorealism/pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5195b23f-6345-4f14-9870-5fa6b5aa68fd.png",
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 4,
+    "reviewNote": "Inspected the exact centered-square 206:141 crop: default y=0.5 clipped the skull cap. Focal y=0.4 restores the complete skull top and full lantern body while keeping the caster face/ward hand visible; the distant target stays secondary at the right edge. Sprout falls below the shifted crop."
+  },
+  {
+    "cardId": "shadow_summon_02",
+    "name": "Mandrake Roots",
+    "prompt": "1:1 SQUARE painterly medieval fantasy collectible-card illustration for Mandrake Roots. The named subject is a sturdy animated mandrake root creature rising from a cracked earth patch: one expressive but eerie humanlike root face, tangled thick woody roots forming a grounded body, several small root fingers. It blasts a broad wedge of dusty violet spores and thorny root force toward a cluster of foes across the lane; one foe recoils. A tiny green sapling begins sprouting behind it as the creature leaves a seed when it falls or expires. Keep the complete mandrake face, root body, action wedge and target within x24..488,y105..407 of normalized 512 square; central horizontal staging and clear subject silhouette for 206:141 crop. Painterly high fantasy, tactile bark, soil and cloth, dramatic moonlight, grounded proportions and serious tone. No text, frame, letters, UI, Disney/anime/photorealism/pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-35d8413b-693c-4424-a3b2-06c44beb08d3.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 4,
+    "reviewNote": "Square output; mandrake face, root body, spore wedge, target and sapling are clearly visible. Main identity and action lie within the safe band; outer leaf tips are expendable scenery."
+  },
+  {
+    "cardId": "blood_lance",
+    "name": "Blood Lance",
+    "prompt": "Square 1:1 painterly medieval high fantasy collectible-card art for Blood Lance. Depict a shadow mage at left paying a visible cost as a small red glow at the wrist, driving one long crimson-violet lance of blood magic straight horizontally through the first armored enemy and continuing through a stone shield into a second enemy behind. The lance, both faces, mage hand and piercing exit point stay fully inside x24..488,y105..407 of the normalized 512 square. Named lance is a sharp prominent spear shape, not a generic blast. Dramatic readable light, tactile armor, cloth and stone, serious medieval battlefield mood, quiet upper and lower atmosphere, fits 206:141 wide crop. No text/frame/UI; no Disney, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7dd54669-e91a-44bd-a53f-0ad2dec1d4b0.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "Landscape original normalizes to a square; all faces, mage hand, lance and piercing impact align around the safe central band. The named lance and passage through shield are clear."
+  },
+  {
+    "cardId": "shadow_lob_02",
+    "name": "Skull Bomb",
+    "prompt": "1:1 SQUARE painterly medieval fantasy collectible-card art for Skull Bomb. The named object is one complete heavy black iron bomb shaped like a grinning skull, prominent in the foreground as it lands on one targeted stone tile beyond a low blocker. It bursts in a compact dark-violet frost blast; one armored enemy is knocked back and frozen in translucent rime. Clear fuse/heavy weight through iron casing and cratered impact. Keep complete skull bomb silhouette, target face, knockback pose and ice burst within x24..488,y105..407 on normalized 512 square, horizontal composition designed for a 206:141 crop. Quiet crypt battlefield atmosphere above/below, painterly tactile metal, stone and ice, dramatic readable light, serious high fantasy. No text, letters, border, UI, Disney/anime/photorealism/pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-bb77eddc-0943-47af-a39b-9e57a1b85991.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "Landscape output; skull bomb and compact freeze blast are clear after square normalization. The knocked-back enemy is near the right crop edge, so its outer arm may be trimmed; the face and frozen silhouette remain readable."
+  },
+  {
+    "cardId": "shadow_ward_01",
+    "name": "Skull-Topped Fence",
+    "prompt": "1:1 SQUARE painterly medieval high-fantasy collectible-card illustration for Skull-Topped Fence. Show a single heavy, waist-high-to-tall medieval defensive fence built from dark sharpened timber stakes and iron bindings, with several clearly visible carved skulls crowning the posts. It stretches horizontally up the caster's lane, blocking passage; a shadow mage stands just behind it for scale, while one hostile arrow lodges in the wood. Fence silhouette and all skulls must stay inside x24..488,y105..407 on normalized 512 square, wide 206:141 crop friendly; fence is the unmistakable named subject. Tactile weathered wood, bone and iron, moody but well-lit crypt battlefield, painterly surfaces, quiet scenery beyond. No text, letters, border, UI, Disney/anime/photorealism/pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e1b6e808-6ad0-4a0c-81e1-691bffedd6a0.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "Square output; full fence body and skull-topped silhouette are inside the safe band and dominate the wide crop. Mage gives scale; embedded arrow shows its defensive role."
+  },
+  {
+    "cardId": "shadow_sentry_02",
+    "name": "Stingy Jack's Lantern",
+    "prompt": "1:1 SQUARE painterly medieval fantasy collectible-card illustration for Stingy Jack's Lantern, a sturdy shadow sentry with a carved jack-o-lantern that shields its summoner with a 9-point ward and hits frozen enemies for double damage. Center a complete sinister carved pumpkin lantern, orange ember light through crisp carved eyes and mouth, mounted on crooked dark branches; a faint curved violet shield surrounds a shadow mage beside it. On the right, a frozen armored foe is struck by a bright follow-up lantern bolt and fractures with a restrained crystalline flash. Keep lantern, mage face/hand, shield arc and frozen target all within x24..488,y105..407 on a normalized 512 square, central horizontal staging for 206:141 crop. Attractive contrasting orange and violet light, detailed gourd, wood and frost, serious painterly medieval fantasy, quiet cemetery scenery. No text/frame/UI; no Disney, anime, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ca5df7aa-c3f1-4da3-b429-a7ae7d73f6fc.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "Square output; the entire lantern and mage's shielding hand are in band; frozen enemy and bolt impact remain near the crop edge but readable. Warm lantern focal contrast survives the wide crop."
+  },
+  {
+    "cardId": "shadow_boon_01",
+    "name": "Shadow Step",
+    "prompt": "1:1 SQUARE painterly medieval fantasy collectible-card illustration for Shadow Step. Show a shadow mage dodging a clear incoming arrow or blade with a sudden sidestep: the mage's entire face and body appear once, with a faint violet afterimage trailing to the vacated spot, while the weapon passes harmlessly through it. A quiet ring of chill magic slows two nearby armored foes, whose legs and weapons are caught in faint blue-violet frost mist. Make the dodge action unmistakable, not teleporting away; keep mage face, hands, passing attack, afterimage and nearby foes inside x24..488,y105..407 of normalized 512 square. Horizontal lane composition for 206:141 crop, strong readable silhouette, painterly medieval high fantasy cloth and steel, atmospheric moonlit crypt with appealing directional light. No text, frame, UI, glyphs, Disney/anime/photorealism/pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-167342a6-445b-4472-8c1b-96516ba10a28.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "Landscape source; the mage's dodge, face, hand, passing arrow and afterimage remain within the normalized center crop. Outer foes are near the edges, but frost chill reads through ground mist and silhouette."
   }
 ]

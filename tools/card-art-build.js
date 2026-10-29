@@ -20,8 +20,10 @@ async function main(){
  const mapping=JSON.parse(fs.readFileSync(path.join(ROOT,'docs/named-card-art-mapping.json')));
  const existing=mapping.files.map(f=>({key:path.basename(f.file,'.png'),source:path.join(ROOT,'game/cards/art',f.file),cardId:f.status==='selected'?f.cardId:null,status:f.status,focalPoint:[.5,.5]}));
  const production=path.join(ROOT,'docs/art-production');
+ const reportFile=path.join(production,'export-report.json');
+ const previous=new Map((fs.existsSync(reportFile)?JSON.parse(fs.readFileSync(reportFile)).assets:[]).map(a=>[a.key,a]));
  const generated=fs.readdirSync(production).filter(f=>f.endsWith('-generated.json')).flatMap(f=>JSON.parse(fs.readFileSync(path.join(production,f)))).filter(g=>g.status==='generated'&&(g.batch||1)<=throughBatch);
- const jobs=[...existing,...generated.map(g=>{const original=g.generatedPath||g.generatedLocalPath;return {key:g.cardId,source:original&&fs.existsSync(original)?original:path.join(ROOT,'game/cards/art/masters',g.cardId+'.png'),cardId:g.cardId,status:'generated',focalPoint:Array.isArray(g.focalPoint)?g.focalPoint:[.5,.5]};})];
+ const jobs=[...existing,...generated.map(g=>{const original=g.generatedPath||g.generatedLocalPath,fromOriginal=original&&fs.existsSync(original);return {key:g.cardId,source:fromOriginal?original:path.join(ROOT,'game/cards/art/masters',g.cardId+'.png'),fromMaster:!fromOriginal,cardId:g.cardId,status:'generated',focalPoint:Array.isArray(g.focalPoint)?g.focalPoint:[.5,.5]};})];
  const focusFile=path.join(ROOT,'game/cards/art-focus.json'),focus=fs.existsSync(focusFile)?JSON.parse(fs.readFileSync(focusFile)):{};
  const masterDir=path.join(ROOT,'game/cards/art/masters'),displayDir=path.join(ROOT,'game/cards/art/display');
  fs.mkdirSync(masterDir,{recursive:true});fs.mkdirSync(displayDir,{recursive:true});
@@ -45,7 +47,8 @@ async function main(){
    fs.writeFileSync(path.join(displayDir,name),c.toBuffer('image/webp',width===512?96:93));
    return {width,height,url:'cards/art/display/'+name};
   });
-  const entry={master:'cards/art/masters/'+j.key+'.png',large:outputs[2].url,thumbnail:outputs[0].url,outputs,focalPoint:focal,sourceNative:[result.sourceWidth,result.sourceHeight],legacyUpscaled:result.upscaled};
+  const origin=j.fromMaster&&previous.get(j.key);
+  const entry={master:'cards/art/masters/'+j.key+'.png',large:outputs[2].url,thumbnail:outputs[0].url,outputs,focalPoint:focal,sourceNative:origin?origin.sourceNative:[result.sourceWidth,result.sourceHeight],legacyUpscaled:origin?origin.legacyUpscaled:result.upscaled};
   if(j.cardId){if(variants[j.cardId])throw Error('Duplicate generated/registered card '+j.cardId);variants[j.cardId]=entry;}
   report.push({key:j.key,cardId:j.cardId,status:j.status,...entry,crop:result.crop});
  }

@@ -837,10 +837,10 @@ async function session(browser, host, o, depth, out) {
   /* ---- a fight, with two thumbs ----
      Three loops run at once, as a person's eyes and two thumbs do: the eyes read the board as fast as the page
      answers, one thumb steers the stick on the board, the other works Fire, Cast, Spell and the instants. */
-  const battle = async opening => {
+  const battle = async (opening, hpMap) => {
     stats.fights++;
     cur.fights++;
-    const f = { depth: cur.depth, opening: opening || null, t0: Date.now(), hpIn: null, hpOut: null, hits: 0, dmg: 0, hitsSeenComing: 0, hitsUnseen: 0, taps: 0, charges: 0, casts: 0, castsIgnored: 0, spells: 0, lobAims: 0, instants: 0, stickMoves: 0, flicks: 0, dangerSeen: 0, dangerEscaped: 0, looks: 0, result: 'unfinished', enemies: null };
+    const f = { depth: cur.depth, opening: opening || null, t0: Date.now(), hpIn: null, hpOut: null, hits: 0, dmg: 0, hitsSeenComing: 0, hitsUnseen: 0, taps: 0, charges: 0, casts: 0, castsIgnored: 0, spells: 0, lobAims: 0, instants: 0, stickMoves: 0, flicks: 0, dangerSeen: 0, dangerEscaped: 0, looks: 0, result: 'unfinished', enemies: null, hpMap: hpMap ?? null };
     fights.push(f);
     await ev(([h, seed]) => PT.brain.start(h, seed), [P.battle.human, o.seed * 31 + fights.length]);
     const hb = P.battle.human;
@@ -1129,7 +1129,8 @@ async function session(browser, host, o, depth, out) {
   const deadline = () => floorT0 + o.minutes * 60000;
   let floorsLeft = o.floors,
     lastOpening = null,
-    lastGoal = null;
+    lastGoal = null,
+    lastMapHp = null;
   while (true) {
     if (Date.now() > deadline()) {
       endReason = 'time';
@@ -1222,7 +1223,8 @@ async function session(browser, host, o, depth, out) {
       if (op === 'surprised') (stats.surprised++, cur.surprised++);
       lastOpening = null;
       mem.push({ at: 'fight ' + fights.length, ...(await memAt()) });
-      await battle(op);
+      const fb = await battle(op, lastMapHp);
+      if (fb.hpMap != null && fb.hpIn != null && fb.hpIn < fb.hpMap) fb.lostBeforeFirstLook = fb.hpMap - fb.hpIn;
       continue;
     }
     if (s.screen !== 'scrExplore') {
@@ -1247,6 +1249,7 @@ async function session(browser, host, o, depth, out) {
       continue;
     }
     cur.explored = Math.round(see.explored * 100);
+    lastMapHp = see.hp;
     if (see.stairs >= 0 && cur.stairsSeenAt == null) cur.stairsSeenAt = Math.round((Date.now() - cur.t0) / 1000);
     if (cur.hpIn == null) cur.hpIn = see.hp;
     // a person looks around before the next move
@@ -1335,6 +1338,14 @@ async function session(browser, host, o, depth, out) {
     lastPc = now;
   }
   if (cur) cur.seconds = cur.seconds || Math.round((Date.now() - cur.t0) / 1000);
+  {
+    const lf = fights[fights.length - 1];
+    if (lf && lf.result === 'lose' && !issues.some(i => i.kind === 'death' && i.t >= Math.round((lf.t0 - t0) / 1000))) {
+      stats.deaths++;
+      if (cur) cur.deaths++;
+      issue('death', { depth: cur && cur.depth, killedBy: lf.enemies, hpIn: lf.hpIn, opening: lf.opening, seconds: lf.seconds, atEnd: true });
+    }
+  }
   mem.push({ at: 'end', ...(await memAt()) });
   const qa = await ev(() => {
     const Q = window.__qa;

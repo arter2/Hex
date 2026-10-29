@@ -1,4 +1,7 @@
-"""Package the game for an itch.io upload: python tools/package-itch.py out/hexmancers-itch.zip
+"""Package the game for an itch.io upload: python tools/package-itch.py [out-folder or .zip]
+
+The zip is named hexmancers-itch-v<N>.zip, N being the game's version (index.html's application-version), and
+written to the folder given (the current folder by default) unless a .zip path is given.
 
 Ships game/ with index.html at the zip's root, minus what a player never loads:
   - cards/art/masters/          the 512x512 square sources the crops are cut from
@@ -26,9 +29,15 @@ BUILD_ONLY = {"allocate.js", "cards/README.md", "cards/contract.json", "cards/pa
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("output", type=Path)
+    parser.add_argument("output", type=Path, nargs="?", default=Path("."))
     args = parser.parse_args()
     game = Path(__file__).resolve().parent.parent / "game"
+    found = re.search(r'<meta name="application-version" content="(\d+)"', (game / "index.html").read_text())
+    if not found:
+        raise SystemExit("index.html has no application-version")
+    version = found.group(1)
+    if args.output.suffix.lower() != ".zip":
+        args.output = args.output / f"hexmancers-itch-v{version}.zip"
     variants = (game / "cards/art-variants.js").read_text()
     named = set(re.findall(r"cards/art/atlas/[^\"'\s]+", variants))
 
@@ -71,7 +80,7 @@ def main():
         problems.append(f"{len(missing)} atlas sheets named in art-variants.js are missing, e.g. {missing[0]}")
     if len(names) > ITCH_MAX_FILES:
         problems.append(f"{len(names)} files: itch.io takes at most {ITCH_MAX_FILES} in an HTML game's zip")
-    print(json.dumps({"output": str(args.output), "files": len(names), "mb": round(args.output.stat().st_size / 1048576, 1),
+    print(json.dumps({"output": str(args.output), "version": version, "files": len(names), "mb": round(args.output.stat().st_size / 1048576, 1),
                       "unzippedMb": round(sum(f.stat().st_size for f in files) / 1048576, 1), "crc": "pass", "problems": problems}))
     if problems:
         raise SystemExit(1)

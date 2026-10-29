@@ -1123,6 +1123,14 @@ function artCSV(c){ return cardArt(c).map(row=>row.join(',')).join('\n')+'\n'; }
 // in the browser: a data URL of the picture, drawn once per card
 const ART_URL={};
 const cardArtVariants=c=>typeof HEX_CARD_ART_VARIANTS!=='undefined'&&Object.prototype.hasOwnProperty.call(HEX_CARD_ART_VARIANTS,c.id)?HEX_CARD_ART_VARIANTS[c.id]:null;
+/* A painted card's picture from its atlas sheet (cards/art/atlas, packed by tools/card-art-build.js): the full-card
+   sheet for a card shown big, the thumbnail sheet for anything smaller. The CSS for an element's background, or null
+   for a card without painted art. A few sheets load instead of a file per card and size. */
+function cardArtSprite(c,kind){ const v=cardArtVariants(c), a=v&&v.atlas&&v.atlas[kind==='full'?'full':'thumb']; if(!a) return null;
+  return `background-image:url(${a.url});background-size:${a.size[0]}% ${a.size[1]}%;background-position:${a.pos[0]}% ${a.pos[1]}%;background-repeat:no-repeat`; }
+// a card's art for small places (deck tiles, icons): a thumbnail-sheet sprite when it has painted art, else its image
+function cardArtThumb(c,cls,style){ const s=cardArtSprite(c,'thumb');
+  return s?`<span class="${cls||''} art-sprite" style="${s};${style||''}" aria-hidden="true"></span>`:`<img${cls?` class="${cls}"`:''} src="${artURL(c)}" alt=""${style?` style="${style}"`:''}>`; }
 const cardIllustration=c=>{ const v=cardArtVariants(c); return v?v.large:typeof HEX_CARD_ILLUSTRATIONS!=='undefined'&&Object.prototype.hasOwnProperty.call(HEX_CARD_ILLUSTRATIONS,c.id)?HEX_CARD_ILLUSTRATIONS[c.id]:null; };
 // a painted picture for this card, if one was added to UNIT_SPRITES (sprites.js): 'art_<card id>' for one
 // card, or 'body_<Creature>' (e.g. body_Dragon) for every card of that creature; it replaces the drawn art
@@ -1431,6 +1439,6 @@ function unitSprite(u){
     else (THING[key]||THING.sentry)(()=>.5); });
 }
 
-Object.assign(root,{ART_SIZE,cardArt,artCSV,artURL,cardIllustration,cardArtVariants,motifKey,unitSprite,lookSprite,rigSprite,palFrame,palSprite,palPlay,palHas,LOOK_ALIAS});
+Object.assign(root,{ART_SIZE,cardArt,artCSV,artURL,cardIllustration,cardArtVariants,cardArtSprite,cardArtThumb,motifKey,unitSprite,lookSprite,rigSprite,palFrame,palSprite,palPlay,palHas,LOOK_ALIAS});
 if(typeof module!=='undefined') module.exports={ART_SIZE,cardArt,artCSV,motifKey};
 })(typeof window!=='undefined'?window:globalThis);

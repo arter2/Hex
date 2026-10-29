@@ -161,7 +161,7 @@ function xTradeShrine(p){ const d=EX.depth;
     body(box){ if(p.used) return; const ids=Object.keys(save.owned).filter(id=>CARDS[id]&&RARITY_UP[CARDS[id].rarity]&&!CARDS[id].mastery&&typeof spareCopies==='function'&&spareCopies(save,id)>0)
         .sort((a,b)=>['common','uncommon','rare'].indexOf(CARDS[b].rarity)-['common','uncommon','rare'].indexOf(CARDS[a].rarity)).slice(0,14);
       if(!ids.length) box.innerHTML='<p class="hint">You have no spare cards: every copy you own is in a deck.</p>';
-      for(const id of ids){ const c=CARDS[id], pic=typeof artURL==='function'?`<img class="pxi" src="${artURL(c)}" width="32" height="32" alt="">`:'';
+      for(const id of ids){ const c=CARDS[id], pic=typeof cardArtThumb==='function'?cardArtThumb(c,'pxi','width:32px;height:32px'):'';
         xRow(box,pic,c.name+' ×'+spareCopies(save,id)+' spare',RARITY[c.rarity].n+' → '+RARITY[RARITY_UP[c.rarity]].n,'Offer',()=>{
           save.owned[id]--; const got=rollCard({depth:d+2,min:RARITY_UP[c.rarity]}), res=addCards(save,[got]); p.used=true; persist(); xSfx('chime'); xDlgClose(); xCardPop(got,res[0]&&res[0].isNew);
           xLog('The scale tips. '+c.name+' is gone; '+got.name+' ('+RARITY[got.rarity].n+') lies in the other bowl.','loot'); }); } },

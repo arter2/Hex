@@ -1043,7 +1043,7 @@ function xTrade(p){ const M=MERCHANTS[p.mkind]||MERCHANTS.goblin;
         for(const s of p.stock){ if(s.sold) continue; const can=save.gold>=s.price;
           let pic='', name='', text='';
           if(s.kind==='gear'){ pic=gearIcon(s.id,32); name=GEAR[s.id].name+(GEAR[s.id].legendary?' ✹':''); text=(s.shady?'No questions asked. It may be cursed. ':'')+lootLabel(save,s.id).text; }
-          if(s.kind==='card'){ pic=typeof artURL==='function'?`<img class="pxi" src="${artURL(s.card)}" width="32" height="32" alt="">`:pxIcon('cards',COLORS[s.card.color].c); name=s.card.name; text=RARITY[s.card.rarity].n+' '+COLORS[s.card.color].name+' '+TYPES[s.card.type].name+': '+cardText(s.card); }
+          if(s.kind==='card'){ pic=typeof cardArtThumb==='function'?cardArtThumb(s.card,'pxi','width:32px;height:32px'):pxIcon('cards',COLORS[s.card.color].c); name=s.card.name; text=RARITY[s.card.rarity].n+' '+COLORS[s.card.color].name+' '+TYPES[s.card.type].name+': '+cardText(s.card); }
           if(s.kind==='key'){ pic=pxIcon('key',KEYS[s.k].col); name=KEYS[s.k].name; text=KEYS[s.k].text||'for this dive'; }
           if(s.kind==='bag'){ pic=pxIcon(BAG[s.k].icon,BAG[s.k].col); name=BAG[s.k].name; text=BAG[s.k].text; }
           if(s.kind==='mat'){ pic=pxIcon('gem',MATS[s.k].col); name=MATS[s.k].name; text='for upgrades at a smith'; }

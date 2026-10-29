@@ -39,7 +39,7 @@ Explicitly request a **1:1 square canvas** and inspect the actual returned dimen
 - A medium crop, 256 × 175 WebP.
 - A thumbnail crop, 128 × 88 WebP.
 
-All render sizes derive from the same full-resolution master and identical crop coordinates. Do not enlarge a thumbnail to make a detail image. The browser chooses an appropriate source using `srcset`, actual measured image width and device pixel ratio; painting uses normal image filtering rather than nearest-neighbour pixel-art rendering. Display crops fill the frame without letterboxing.
+All render sizes derive from the same full-resolution master and identical crop coordinates. Do not enlarge a thumbnail to make a detail image. The game draws each card from the atlas sheets `tools/card-art-build.js` packs from the masters (`game/cards/art/atlas`): the full-card sheet (512-wide cells) for a card shown big, the thumbnail sheet (256-wide cells) for smaller cards and icons. Painting uses normal image filtering rather than nearest-neighbour pixel-art rendering. Display crops fill the frame without letterboxing.
 
 A 512 master is the maximum original detail in this standard. Displays demanding more than 512 physical pixels cannot acquire more real detail through upscaling.
 

@@ -4,9 +4,10 @@ Ships game/ with index.html at the zip's root, minus what a player never loads:
   - cards/art/masters/          the 512x512 square sources the crops are cut from
   - cards/art/*.png             the older loose illustrations; every card that used one now has new art
                                 (art-variants.js, which the game prefers), so nothing loads them
-  - cards/art/display/ files    that art-variants.js does not name (crops for cards not in the game)
+  - cards/art/display/           the separate crops: the game draws painted art from the atlas sheets in
+                                cards/art/atlas (tools/card-art-build.js), so only the sheets ship
   - art-review.html             the art team's size-review page (package-art-test.py ships it for them)
-Then checks the zip: index.html at the root, no more than itch's 1,000 files, every crop the game names present, and
+Then checks the zip: index.html at the root, no more than itch's 1,000 files, every sheet the game names present, and
 every entry readable (CRC). Prints the file count and size as JSON."""
 import argparse
 import json
@@ -24,7 +25,7 @@ def main():
     args = parser.parse_args()
     game = Path(__file__).resolve().parent.parent / "game"
     variants = (game / "cards/art-variants.js").read_text()
-    named = set(re.findall(r"cards/art/display/[^\"'\s]+", variants))
+    named = set(re.findall(r"cards/art/atlas/[^\"'\s]+", variants))
 
     def ships(rel):
         parts = rel.parts
@@ -36,7 +37,7 @@ def main():
             return False
         if parts[:2] == ("cards", "art") and len(parts) == 3 and rel.suffix.lower() == ".png":
             return False
-        if parts[:3] == ("cards", "art", "display") and rel.as_posix() not in named:
+        if parts[:3] == ("cards", "art", "display"):
             return False
         return True
 
@@ -55,8 +56,10 @@ def main():
     if "index.html" not in names:
         problems.append("index.html is not at the zip's root")
     missing = sorted(n for n in named if n not in names)
+    if not named:
+        problems.append("art-variants.js names no atlas sheets: run node tools/card-art-build.js")
     if missing:
-        problems.append(f"{len(missing)} crops named in art-variants.js are missing, e.g. {missing[0]}")
+        problems.append(f"{len(missing)} atlas sheets named in art-variants.js are missing, e.g. {missing[0]}")
     if len(names) > ITCH_MAX_FILES:
         problems.append(f"{len(names)} files: itch.io takes at most {ITCH_MAX_FILES} in an HTML game's zip")
     print(json.dumps({"output": str(args.output), "files": len(names), "mb": round(args.output.stat().st_size / 1048576, 1),

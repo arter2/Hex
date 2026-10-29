@@ -1035,6 +1035,8 @@ body.lsS #custHand .slot.hole{min-height:104px;}
 .dktile{position:relative; display:flex; flex-direction:column; padding:0; overflow:hidden; cursor:pointer; border-radius:8px;
   background:color-mix(in srgb,var(--c) 18%,#0d0f12); border:2px solid color-mix(in srgb,var(--c) 70%,#000); box-shadow:0 2px 0 #000;}
 .dktile img{flex:1; min-height:0; width:100%; object-fit:contain; image-rendering:pixelated; background:#07080a;}
+.dktile .art-sprite{flex:none; width:100%; aspect-ratio:512/350; background-color:#07080a;}   /* painted art from its thumbnail sheet (art.js cardArtThumb) */
+.art-sprite.pxi{display:inline-block; vertical-align:middle;}
 .dktile .dkn{display:block; padding:3px 4px; font:700 12px/1.1 var(--font-b); color:#fff; background:#000a; text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
 .dkdeck.z2 .dktile .dkn{font-size:14px; white-space:normal;}
 .dktile .dkx{position:absolute; right:3px; top:3px; padding:1px 6px; border-radius:8px; font:800 13px var(--font-b); color:#fff; background:#2a4a6a; box-shadow:0 1px 0 #000;}

@@ -45,7 +45,7 @@ A 512 master is the maximum original detail in this standard. Displays demanding
 
 ## Production by colour
 
-The colour JSON files list the v179 catalogue by exact card ID. Lighter agents own individual colour batches, generating a small, reviewable initial batch before further production. Each `*-generated.json` records IDs, prompts, original paths, focal points and generation status. A card is not complete merely because a generator returned an image.
+The colour JSON files list the v179 catalogue by exact card ID. Use the shared five-card queue in [PACKET-WORKFLOW.md](PACKET-WORKFLOW.md), with lighter agents rotating across available colours after each accepted job. `card-art-packets.js <batch> assign-next <worker>` selects the available colour with the least saved work and reserves one writer per colour. Do not reserve an artist for all 25 cards of one colour. Each `*-generated.json` records IDs, prompts, original paths, focal points and generation status. A card is not complete merely because a generator returned an image.
 
 Before export, check identity, anatomy, action-safe placement, lighting and readability against the supplied reference set. Then inspect the wide crop at 128 and 512 pixels and in actual 96/120/240-pixel card renders. Use image generation for repainting/compositional changes; preserve original artwork. The deterministic build step handles technical normalization and size exports.
 

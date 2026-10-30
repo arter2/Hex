@@ -1,0 +1,2417 @@
+{
+  "batch": 10,
+  "status": "complete",
+  "targetNewImages": 200,
+  "generatedSources": 200,
+  "reviewedSources": 200,
+  "missingSources": 0,
+  "reviewedPackets": 40,
+  "requiresRepaint": [],
+  "baselineActive": 834,
+  "targetActive": 1034,
+  "runtimeActive": 1034,
+  "previousRuntimeImagesUnchanged": 3400,
+  "previousGeneratedRecordsUnchanged": 784,
+  "savedCards": [
+    {
+      "cardId": "brown_instant_25",
+      "name": "Flash Bang Powder",
+      "colour": "brown",
+      "source": "game/cards/art/masters/brown_instant_25.png",
+      "sha256": "468dc690200aab266ed03615e32c08e21881f2f1c247fd93a6bdb14654996efb",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "brown_instant_26",
+      "name": "Shock Glove",
+      "colour": "brown",
+      "source": "game/cards/art/masters/brown_instant_26.png",
+      "sha256": "84820d697989ff317c85bac57a7ccfc6283620c470d1e5f05f7606852260c73b",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.44
+      ]
+    },
+    {
+      "cardId": "brown_instant_27",
+      "name": "Elven Flechette",
+      "colour": "brown",
+      "source": "game/cards/art/masters/brown_instant_27.png",
+      "sha256": "630a3b66a8b5f551ea7aefae4259889641eb18a727cc8958ed9e1c7cd7d3193d",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "brown_instant_28",
+      "name": "Bolas",
+      "colour": "brown",
+      "source": "game/cards/art/masters/brown_instant_28.png",
+      "sha256": "69c94da06f7a5d2b1aedd2e52359591200e54d393bb4e1acc54217ffcfcbdc71",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.42
+      ]
+    },
+    {
+      "cardId": "brown_instant_29",
+      "name": "Boomerang",
+      "colour": "brown",
+      "source": "game/cards/art/masters/brown_instant_29.png",
+      "sha256": "1b24c5baf46963d05db0eabc868ce44014233034d557e466b862c3007d501016",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "brown_instant_30",
+      "name": "Chakram",
+      "colour": "brown",
+      "source": "game/cards/art/masters/brown_instant_30.png",
+      "sha256": "a68d662d2ba1392aadeb0e51076076718510b1caed67a777386f144da9e75a53",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "brown_instant_31",
+      "name": "Net Gun",
+      "colour": "brown",
+      "source": "game/cards/art/masters/brown_instant_31.png",
+      "sha256": "e5770034dd304e0f41c516fb57bee102fbcf4d44628a699c5414091967b83435",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "brown_instant_32",
+      "name": "Coral Shrapnel",
+      "colour": "brown",
+      "source": "game/cards/art/masters/brown_instant_32.png",
+      "sha256": "961220bbc5e22f0e0e83babd6a2ca2eac1a8916899991ef4ee0ddaf6496f48b3",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "brown_instant_33",
+      "name": "Djinn Smoke Puff",
+      "colour": "brown",
+      "source": "game/cards/art/masters/brown_instant_33.png",
+      "sha256": "2bfc681ebe3396b4a2333a7a33dadc115c0702b656623274439ded70f3505319",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "brown_instant_34",
+      "name": "Dwarven Blasting Charge",
+      "colour": "brown",
+      "source": "game/cards/art/masters/brown_instant_34.png",
+      "sha256": "991877ccfadadddbd4ad4756c63145cd13ac4b9eab1313f4b7a6aa0a02166d1d",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.54
+      ]
+    },
+    {
+      "cardId": "brown_instant_35",
+      "name": "Gnomish Grenade",
+      "colour": "brown",
+      "source": "game/cards/art/masters/brown_instant_35.png",
+      "sha256": "387cdcc3f150977e32ee37ad86f50ab1706013f8bcf766c34cf736928ad43060",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "brown_instant_36",
+      "name": "Sticky Tar Bomb",
+      "colour": "brown",
+      "source": "game/cards/art/masters/brown_instant_36.png",
+      "sha256": "57707a63d5c1d306929152c1c2e6932130086f2515348d34c89fffef5f75fed3",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "brown_machine_28",
+      "name": "Goblin Rocket Rack",
+      "colour": "brown",
+      "source": "game/cards/art/masters/brown_machine_28.png",
+      "sha256": "b10b17442119e4c1fc0aa514719cf3c50740e00999387ff1fcb9e69a213bc763",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "brown_machine_29",
+      "name": "Gnomish Bomb Lobber",
+      "colour": "brown",
+      "source": "game/cards/art/masters/brown_machine_29.png",
+      "sha256": "1b9a40d3c4934cb1aaef9d14405c70bce69f1b4d39993e996c2db09c3b605ea5",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "brown_machine_30",
+      "name": "Alchemist's Acid Mortar",
+      "colour": "brown",
+      "source": "game/cards/art/masters/brown_machine_30.png",
+      "sha256": "e32955323fdb92cc946f8f6f0edf0b54f9552179bbfbf4e23e901edd09c24f39",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.57
+      ]
+    },
+    {
+      "cardId": "brown_machine_31",
+      "name": "Troll Boulder Sling",
+      "colour": "brown",
+      "source": "game/cards/art/masters/brown_machine_31.png",
+      "sha256": "f40ad8436816639ef85234985c6a2e463ec98d5e42f0827f2869920402c8127f",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "brown_machine_32",
+      "name": "Depth Charge Launcher",
+      "colour": "brown",
+      "source": "game/cards/art/masters/brown_machine_32.png",
+      "sha256": "8ccfc911e289cc3f1213b5d2804663816a80132d4faacb93579c7e4d8b81167b",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "brown_machine_33",
+      "name": "Sky-Folk Bomb Balloon",
+      "colour": "brown",
+      "source": "game/cards/art/masters/brown_machine_33.png",
+      "sha256": "27bd7955478be1295baae3dabc4a61b82c354a19f252856271a80083b23e121c",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "brown_machine_34",
+      "name": "Dwarven Thunder Mortar",
+      "colour": "brown",
+      "source": "game/cards/art/masters/brown_machine_34.png",
+      "sha256": "8c13ba88426ab7c6152fa80fcaa26fe96837586c4e4219123cba937f48a41439",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.56
+      ]
+    },
+    {
+      "cardId": "brown_machine_35",
+      "name": "Byzantine Fire Engine",
+      "colour": "brown",
+      "source": "game/cards/art/masters/brown_machine_35.png",
+      "sha256": "d31501c4441f6e274f99f0598e36ffeace7f0c1c244dd9967792a7b4ce991ac7",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "brown_machine_36",
+      "name": "Djinn Sand Cannon",
+      "colour": "brown",
+      "source": "game/cards/art/masters/brown_machine_36.png",
+      "sha256": "47ee0ae80b9f6293f18893f7490bf484866a59bfd514c795bb1b43bc98ca127f",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "brown_machine_37",
+      "name": "Elven Seed Catapult",
+      "colour": "brown",
+      "source": "game/cards/art/masters/brown_machine_37.png",
+      "sha256": "26d1dca8620fb05c22a3eaa021cbc01553f28182c30f5881f6f3ae55109d2889",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "brown_machine_38",
+      "name": "Iron Bastion",
+      "colour": "brown",
+      "source": "game/cards/art/masters/brown_machine_38.png",
+      "sha256": "27603be61ce17e9c4932acd098ffe3b20c3f13879d7295f39a72f69ea2986196",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.53
+      ]
+    },
+    {
+      "cardId": "brown_machine_39",
+      "name": "Dwarven Gate of Iron",
+      "colour": "brown",
+      "source": "game/cards/art/masters/brown_machine_39.png",
+      "sha256": "5194887b23c65ed4e67c4742ffb7cdaaadd8de29d879b57c1eac8bd62c240046",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "brown_machine_40",
+      "name": "Gnomish Pop-Up Wall",
+      "colour": "brown",
+      "source": "game/cards/art/masters/brown_machine_40.png",
+      "sha256": "1f170af191f2c768a587e12c771338de484c560fa260e4bf3aa357e2d1de420f",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "fire_boon_08",
+      "name": "Hearty Feast",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_boon_08.png",
+      "sha256": "4fb4389cb0f9375ffa4ca5cb89550ce49d6bf58b3d8975efe3dfd37e3b11b175",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_boon_09",
+      "name": "Mulled Wine",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_boon_09.png",
+      "sha256": "4cc61744ce80cd06c1185445d63fe6ff1e1ba682ec5e1b1959de5c086abb32e0",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "fire_charge_08",
+      "name": "Rivet Pouch",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_charge_08.png",
+      "sha256": "ab28c4f31d7f2e0e0ade4906755d4eb4f9b2d00c56209fd09182d3534fbd1e8a",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_charge_09",
+      "name": "Dragon Tooth Quiver",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_charge_09.png",
+      "sha256": "e780984f0b381beee330fbf9faf795233030c336ca5352cf7e83848f403a8f1b",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_environment_08",
+      "name": "Sulfur Springs",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_environment_08.png",
+      "sha256": "3ecda2e36a27f78529a31097e8d05d24a349e818b752789223bf3ec4e4e34d67",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_environment_09",
+      "name": "Forge Floor",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_environment_09.png",
+      "sha256": "d8168d3ffe3aad3228fbc3f48fc149c3c7be1271a9acf812148b21f7ce31115f",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_lob_10",
+      "name": "Paper Lantern Bomb",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_lob_10.png",
+      "sha256": "9866e1d517145e307b53bdd23043fb1c980fd3acc4e80d8ec1025b8ba6a8b2d4",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.44
+      ]
+    },
+    {
+      "cardId": "fire_lob_11",
+      "name": "Dragon Egg",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_lob_11.png",
+      "sha256": "60517654657db981f26f35156ffdbd6d8ae514a9679ce722bde9fbcc4be7259c",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.44
+      ]
+    },
+    {
+      "cardId": "fire_machine_04",
+      "name": "Rocket Battery",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_machine_04.png",
+      "sha256": "1e47fdf95f2a0a8a3e23ef7f3ed67ac0b47d4acb8a470e269692b9f27a9d9478",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_machine_05",
+      "name": "Hwacha Rocket Cart",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_machine_05.png",
+      "sha256": "8dba2a53ea1158f547161d6ed6f0b224e9d92967f24af2649d92f6333074bb25",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_sentry_10",
+      "name": "Goblin Flamethrower Post",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_sentry_10.png",
+      "sha256": "2d620ee6dd4235ad3e43099cfd36614b4d1c471c05bb6dd29f81f66d6fc37ff6",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_sentry_11",
+      "name": "Phoenix Nest",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_sentry_11.png",
+      "sha256": "9c8aa93f671243c90cfab9d21f7029bb1f4e5837a20cfb7475a939c4edd3b6cf",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_strike_08",
+      "name": "Kitsune Foxfire",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_strike_08.png",
+      "sha256": "b774e0d7fea781f9774b0f6581f05b1927da6d8c10e44d29a544b7eb7be0d5fa",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_strike_09",
+      "name": "Oni Club Swing",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_strike_09.png",
+      "sha256": "8e50764ce8b08410a8ab315c396b42ede29c3749de4a369879109d174e13504f",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.34
+      ]
+    },
+    {
+      "cardId": "fire_strike_10",
+      "name": "Minotaur Charge",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_strike_10.png",
+      "sha256": "405b75f2b097f58dc1dc44d84b3688d39d88d8a58b91bb469ae755ed42d17497",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.38
+      ]
+    },
+    {
+      "cardId": "fire_summon_05",
+      "name": "Griffin",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_summon_05.png",
+      "sha256": "f4b1dab4b9184389f56b3778c4b2a723da889f4a1c5fc2e323d443f3230c5348",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_summon_06",
+      "name": "Phoenix",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_summon_06.png",
+      "sha256": "dfe0719e0dc44637c8b7cc5810c60f17d19fd6718b8264be33fa84622016cb65",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_trap_07",
+      "name": "Fox Den Snare",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_trap_07.png",
+      "sha256": "c131eff474ebe631e3d81c19bd80c4c2af3975173b5d9abb0436cd8764a50c56",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_trap_08",
+      "name": "Minotaur's Labyrinth",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_trap_08.png",
+      "sha256": "8c7642703d80b14eae9780d066f35f1db601893b9e042fe8f07948c47e511f01",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_utility_09",
+      "name": "Ancestor's Tale",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_utility_09.png",
+      "sha256": "b11b4a980a08238534bc108c22016bd702f1058b10b4627c80c0f85b30b8bf46",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_utility_10",
+      "name": "Red Envelope",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_utility_10.png",
+      "sha256": "147861deab94246f85b7eaa6e719b9ad050bcb5e9692757a8194ef854e232c25",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "fire_ward_09",
+      "name": "Dragon Scale Shield",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_ward_09.png",
+      "sha256": "e49cb8875b811a9cf0e8fb5f41ce307426fe52fb7c9a2a2ab720080cbd1545e5",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_ward_10",
+      "name": "Oni Mask",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_ward_10.png",
+      "sha256": "730d541691456c4f38117c18c49f587e851bab74fb06ba28d754dd21c6c4c1c1",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.44
+      ]
+    },
+    {
+      "cardId": "frost_boon_09",
+      "name": "Selkie Skin",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_boon_09.png",
+      "sha256": "c1ade514f641ded2d5c5a3129e9fb9a1ce5222e985f1dd492f737b6a9a8c88da",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "frost_boon_10",
+      "name": "Become the Tide",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_boon_10.png",
+      "sha256": "a14b90f3c7bd3030acd5d249d5a18a3a500517fa64edb153c921a9ddb1947402",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "frost_charge_07",
+      "name": "Grapeshot Bag",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_charge_07.png",
+      "sha256": "ed6f8fa2af5ff7e4e0af7e5d7ac911ccbefc1d69c3415e3a5c3d1be342a19e8a",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "frost_charge_08",
+      "name": "Blowfish Spines",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_charge_08.png",
+      "sha256": "e2d8577d4a3985b3bd0df4782f2540e7cc0bdc3ceade0a2f5c25cca13d1c3b0e",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.38
+      ]
+    },
+    {
+      "cardId": "frost_environment_08",
+      "name": "Iceberg Field",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_environment_08.png",
+      "sha256": "481db08a4751e6cf3265829bf3c26ffbb73dda7df5d3cd029ba1067c7cf8f5c3",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "frost_environment_09",
+      "name": "Polar Night",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_environment_09.png",
+      "sha256": "b8528c99128ba430094df1bcc878eefbd312b1a5c69ef46e79f66e37b089553f",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "frost_lob_09",
+      "name": "Coconut Lob",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_lob_09.png",
+      "sha256": "97249b4932cb3c4f80b655898a359930b3708fc5dea1a4c19171312e2a09f272",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.42
+      ]
+    },
+    {
+      "cardId": "frost_lob_10",
+      "name": "Ink Cloud",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_lob_10.png",
+      "sha256": "55b5dcbf8b9a35e7c1ebac28c65dca8b82d5a4f357ced36a7739d01e96256926",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.44
+      ]
+    },
+    {
+      "cardId": "frost_machine_04",
+      "name": "Harpoon Launcher",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_machine_04.png",
+      "sha256": "4ba6c45c971fd604e87c2ae78a00b2e50dff67f8029cdf40534264094fe6ab55",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "frost_machine_05",
+      "name": "Ice Catapult",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_machine_05.png",
+      "sha256": "97d5e85c1ebffd8560276d39b0e4198efec2bf0ddf798a8141411257f117117b",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.52
+      ]
+    },
+    {
+      "cardId": "frost_piece_05",
+      "name": "Eye of the Frost Giant",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_piece_05.png",
+      "sha256": "7fd5e7c046e768657a202a86ac6b8a5cd59606f8d292329ee4168a905a0f0019",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "frost_piece_06",
+      "name": "Bell of the Sunken City",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_piece_06.png",
+      "sha256": "579bff04d71b651fb2b4157e5ac4ef6a9d6720eac767a65886ffe6179d6d2943",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "frost_sentry_10",
+      "name": "Whale Bone Arch",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_sentry_10.png",
+      "sha256": "fb0926187e197cd2fd6a2b31e478791a94e648f4c6b05502b4f28c28280e9372",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "frost_sentry_11",
+      "name": "Lantern of the Drowned",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_sentry_11.png",
+      "sha256": "12d213e9d0037af8f14d57e85a925dbd8a7535910c16bbe4da2f71ef5db45bed",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "frost_strike_08",
+      "name": "Hurricane's Eye",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_strike_08.png",
+      "sha256": "7be1d61293742dfc24f1eeb157725a24717b3a5d0ee336118ecf5a2a9a7a127c",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "frost_strike_09",
+      "name": "Typhoon Lash",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_strike_09.png",
+      "sha256": "ebff670a2444082cf15ff29ee2eb5f79639dd778359146a725dcc95f6592fbaf",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "frost_summon_05",
+      "name": "Ningyo",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_summon_05.png",
+      "sha256": "648e4d3ac440b5129bb26bf4e9e1224961e376b5e9281a17bf6966d1d4b43228",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.37
+      ]
+    },
+    {
+      "cardId": "frost_summon_06",
+      "name": "Siren",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_summon_06.png",
+      "sha256": "c7d40382ce89f0ebe0af78e3ca1f37a6494d0b79676146a784cb94685437e465",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "frost_trap_08",
+      "name": "Ice Spike Pit",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_trap_08.png",
+      "sha256": "2be4c92fcc3400767ad7439c93067d9560b6dcf9f0d4ea9205e1a30eed80b78c",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "frost_trap_09",
+      "name": "Siren's Shoal",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_trap_09.png",
+      "sha256": "5dec8be496c31d1f8fd8af2dc65433bc281dd0e404ec35ac43824f196577f16b",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "frost_utility_08",
+      "name": "Return to the Sea",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_utility_08.png",
+      "sha256": "4d3b03cff594e6f62303f722d7e321dab705662527162723efbca6c1a5aaedba",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "frost_utility_09",
+      "name": "Water Mirror Twin",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_utility_09.png",
+      "sha256": "b0e7caf76bcd9735d5f9b1ea2df2760367863b6aeb4a7d29a0cfcf86603884d8",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "frost_ward_08",
+      "name": "Sea Urchin Bed",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_ward_08.png",
+      "sha256": "ee5e6f6797e1609d98bbd055273108c7605ccce8c3e93bfd412937407c568e36",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "frost_ward_09",
+      "name": "Bubble Shield",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_ward_09.png",
+      "sha256": "c7f3a156361134f70cd3057e779e03e84eef0b80580dbcb2b6942c080e091bc1",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "gray_summon_68",
+      "name": "Messenger Pigeon",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_68.png",
+      "sha256": "5ca6a46a473a46315f29b08fb06a25002b8ea80a013ff01b62f58b2c08c0583b",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "gray_summon_69",
+      "name": "Night Owl Scout",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_69.png",
+      "sha256": "a84932558d3efe4ab37321039fe0c128ded6c77527e16d54d67a5f5a3d99f217",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "gray_summon_70",
+      "name": "Horned Owl",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_70.png",
+      "sha256": "2bdc3e358b0ff879bec0ef93ec85fa1bb72dac100119ecd2da74ab7e69dc4203",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "gray_summon_71",
+      "name": "Quill Porcupine",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_71.png",
+      "sha256": "87d9bcc814448ae67d556f08ee91dda63ceeb19831eca273f2a89caef3801bd0",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "gray_summon_72",
+      "name": "Spiny Hedgehog",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_72.png",
+      "sha256": "04ce87d055d66e7f8d5daef12d2f510e2ff37a29cc2cc08d2a948dc5c013d71c",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "gray_summon_73",
+      "name": "Spitting Llama",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_73.png",
+      "sha256": "65191039cdb5b397df1ff14b6713a97f8b7e122e8010a33f8a454d4b2dcd3e50",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.38
+      ]
+    },
+    {
+      "cardId": "gray_summon_74",
+      "name": "Bactrian Camel",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_74.png",
+      "sha256": "502d674a0580620d4c8eeec97d0d32da8e74a0a1f66468c747c416e3c662ad75",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "gray_summon_75",
+      "name": "Gray Fox",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_75.png",
+      "sha256": "7e3ad8124d457ac14aa08c62b9e396ec3c46f7030fc2a3185ab77a8caf1986eb",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "gray_summon_76",
+      "name": "Plains Wolf",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_76.png",
+      "sha256": "b533037551fd5fa33750eaf8d96b24174fa47017facb9f36036b69a460e62ef0",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.38
+      ]
+    },
+    {
+      "cardId": "gray_summon_77",
+      "name": "Lone Wolf",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_77.png",
+      "sha256": "91dbc7eac38705da3b286b9ed711938d12bf4998b516e865899f27ab2cad6e4b",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.38
+      ]
+    },
+    {
+      "cardId": "gray_summon_78",
+      "name": "Alpha Wolf",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_78.png",
+      "sha256": "7c3c20a7c22c5afc2e80619fbc48770e04e97a7ddb67616c575f5b90dc8d3c7e",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.38
+      ]
+    },
+    {
+      "cardId": "gray_summon_79",
+      "name": "Hunting Hound",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_79.png",
+      "sha256": "32b60feb81eb8dd0cef7f5efd194f313453fa90f9c7c5b9f62c822b5a5bd1bd9",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "gray_summon_80",
+      "name": "Alley Cat",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_80.png",
+      "sha256": "dc0d8473fdb5c55a2be4ba078f95f27fabf5954060e0c1c655dd78a5c4875cbb",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "gray_summon_81",
+      "name": "Lynx",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_81.png",
+      "sha256": "008c74013242419b80b647d5765ce68741c072f02bca4d1d2bd0c2c3a991a300",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.38
+      ]
+    },
+    {
+      "cardId": "gray_summon_82",
+      "name": "Wildcat",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_82.png",
+      "sha256": "82136e44023d14253621b67e1060ed50c512c8760f23f5aff7ddf3077a335016",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "gray_summon_83",
+      "name": "Sea Eagle",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_83.png",
+      "sha256": "c67b56e17ad49be95e9b618d93d67ca7e40a7f83cb3a020513d9a575857a29c3",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.34
+      ]
+    },
+    {
+      "cardId": "gray_summon_84",
+      "name": "Mountain Goat",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_84.png",
+      "sha256": "2746a0e2f0ec695cfab169435da57c0276037a93dffb67ed051c2cfcc6dd21a3",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.34
+      ]
+    },
+    {
+      "cardId": "gray_summon_85",
+      "name": "Ibex",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_85.png",
+      "sha256": "6f767ff093e6ca41214f3ef2fc01ff2acee7819ccb3dbe560bdb2bf639c16ea0",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.34
+      ]
+    },
+    {
+      "cardId": "gray_summon_86",
+      "name": "Hippogriff",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_86.png",
+      "sha256": "0af1244b40bda097afe5ccf8887edfafba588ea7499334f7c4411e08828d041c",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.34
+      ]
+    },
+    {
+      "cardId": "gray_summon_87",
+      "name": "Hippogriff Rider",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_87.png",
+      "sha256": "481c6db604280beac99742e4ff35e75f0a3f92ece580ec7a20099136717c3cff",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.34
+      ]
+    },
+    {
+      "cardId": "gray_summon_88",
+      "name": "War Griffin",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_88.png",
+      "sha256": "b220860525cf5105a63b7e834408d8447ee63e8922e24e63899f1555e1534ca2",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "gray_summon_89",
+      "name": "Royal Griffin",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_89.png",
+      "sha256": "a8799d5784aaa1a46c3bd4fe9f62945b7da6d6bb7f0c243c07cfe41cbd8bc9c2",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.38
+      ]
+    },
+    {
+      "cardId": "gray_summon_90",
+      "name": "Sleipnir, the Eight-Legged Steed",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_90.png",
+      "sha256": "e54a3ffc412de8671f4d9597ad03aa1828477886451d49a70d88f790a139a0af",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "gray_summon_91",
+      "name": "Arion, the Swift Horse",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_91.png",
+      "sha256": "78cd7ec3fb39d3155bbe322f1b9f1dc0af6c99aa5978500d3e4909268861e5b7",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.38
+      ]
+    },
+    {
+      "cardId": "gray_summon_92",
+      "name": "Bayard, the Magic Bay",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_92.png",
+      "sha256": "d7e03a98439014f3818e678dda43f2383de183f67a5d8a4c0a73765aa4fd67a1",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.38
+      ]
+    },
+    {
+      "cardId": "hero_boreas",
+      "name": "Boreas, the North Wind",
+      "colour": "frost",
+      "source": "game/cards/art/masters/hero_boreas.png",
+      "sha256": "46fc6b624cbae70dcd471e03ec345fd133be800939c770bc2cb32bc97334a801",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "hero_gale",
+      "name": "Gale, the Sky Pirate",
+      "colour": "storm",
+      "source": "game/cards/art/masters/hero_gale.png",
+      "sha256": "badba3cdc07159f0f435690e2a78e7463462826ddf17d739eb5cce90ca15a288",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "hero_ignis",
+      "name": "Ignis, the Forge Wyrm",
+      "colour": "fire",
+      "source": "game/cards/art/masters/hero_ignis.png",
+      "sha256": "db578c00dbdb0a1611ca1368dd97d96fe5e6a40b5f6ae9c93208f89e2ebe2e10",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.34
+      ]
+    },
+    {
+      "cardId": "hero_jester",
+      "name": "The Hollow Jester",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/hero_jester.png",
+      "sha256": "ed3f8293448d80e30e1011d2fa9343043e19f22bf114854547d3e9de07959a45",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "hero_oakheart",
+      "name": "Oakheart the Ancient",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/hero_oakheart.png",
+      "sha256": "538a7eece7c0533b77c92f288bfcd8b991b5602835f05095e1234698a1cc71d2",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "hero_oracle",
+      "name": "The Oracle",
+      "colour": "light",
+      "source": "game/cards/art/masters/hero_oracle.png",
+      "sha256": "e2dc19b05163cd19147647f9682962cf51e8c80291cfea25b011dab41910284e",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "hero_seraphiel",
+      "name": "Seraphiel",
+      "colour": "light",
+      "source": "game/cards/art/masters/hero_seraphiel.png",
+      "sha256": "ab2590821ce9ffee4c1e61049bec689bcb6cd2696e56c9eb10de9829405219a3",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "hero_sola",
+      "name": "Sola Flamewright",
+      "colour": "fire",
+      "source": "game/cards/art/masters/hero_sola.png",
+      "sha256": "fc80ba910c774ef42a6562d21305592c9be31b0c09b2729e56635c2c3f775f0d",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "hero_sylva",
+      "name": "Sylva the Wild Archer",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/hero_sylva.png",
+      "sha256": "5884022bcb3d37841d89d66acbc381141a77cb7e6a115c62380d620338278d55",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "hero_tempest",
+      "name": "Tempest the Stormcaller",
+      "colour": "storm",
+      "source": "game/cards/art/masters/hero_tempest.png",
+      "sha256": "832a236c039a107f87189db68f2c96c3ee33014fa524779968bc7feac0e774c8",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.34
+      ]
+    },
+    {
+      "cardId": "light_boon_07",
+      "name": "Vigil Candle",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_boon_07.png",
+      "sha256": "135deb91e1e2d63826ad9231a3405204d2302e69518e5003ab3fbbffab313d89",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.45
+      ]
+    },
+    {
+      "cardId": "light_boon_08",
+      "name": "Rally the Legion",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_boon_08.png",
+      "sha256": "35957bfd8dc9d50307a7c81809811cbad69d012e424ba16593adf83d8cc4618f",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.38
+      ]
+    },
+    {
+      "cardId": "light_charge_08",
+      "name": "Tesserae Pouch",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_charge_08.png",
+      "sha256": "33fe2590422b32ea3e7d2438e76b794bbc5f7c3e0b66db57821b97ca3ebbd60f",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.45
+      ]
+    },
+    {
+      "cardId": "light_charge_09",
+      "name": "Genoese Crossbow Bolts",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_charge_09.png",
+      "sha256": "8644b3e8881db07e54bdf4ae06eda44fa54f94ffb75e7a951c86aaf094177b1b",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.3
+      ]
+    },
+    {
+      "cardId": "light_environment_07",
+      "name": "Rose Garden of Shiraz",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_environment_07.png",
+      "sha256": "d00c0ac3b7dc92a175deaef4cdbacc8ea9aab37968eb9aa1e327ff24c5d15fc3",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "light_environment_08",
+      "name": "Collapsing Colonnade",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_environment_08.png",
+      "sha256": "20467c92b324fe09df538ff385d5d8400982a491d462fa4edb07bed854ad5709",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "light_lob_09",
+      "name": "Alchemist's Flask",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_lob_09.png",
+      "sha256": "a3eb8a556a2e7f0a42546688d09d93b9507a2bd0696ddd1a90c378905edf5dcc",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.45
+      ]
+    },
+    {
+      "cardId": "light_lob_10",
+      "name": "Salve Jar",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_lob_10.png",
+      "sha256": "bacc4a415bae56cd70a14aa982402c8e66d5e32b7b29936657a925685c261b71",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.3
+      ]
+    },
+    {
+      "cardId": "light_machine_04",
+      "name": "Battering Ram",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_machine_04.png",
+      "sha256": "262d147cc8b4171cf1e0ba27890c47127078ca859764b202a7f5eebe4384b669",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.44
+      ]
+    },
+    {
+      "cardId": "light_machine_05",
+      "name": "Wicker Mantlet",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_machine_05.png",
+      "sha256": "eb5a47a8ea9ac07650a9c329056d0f47565863acd10570925bdab915a7cf76fc",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "light_piece_05",
+      "name": "Scales of the Final Judge",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_piece_05.png",
+      "sha256": "2ee3d68c58381f9bbf786da8d907c2fe3144c6a41c1c8809a28acf296c417b73",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.42
+      ]
+    },
+    {
+      "cardId": "light_sentry_09",
+      "name": "Obelisk of the Sun",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_sentry_09.png",
+      "sha256": "c943f6ffe36b510b41a6cddf1c0809b8daa9876e07ca1603dee60594722eb33f",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "light_sentry_10",
+      "name": "Caracol Observatory",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_sentry_10.png",
+      "sha256": "6b139c8ce3423995b140789645adac5bfe2a3e5d16755c8bdb3fccfa9bdf004b",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "light_strike_08",
+      "name": "Zephyr's Breath",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_strike_08.png",
+      "sha256": "8c729c432cb710bef44c31c0c49830b08b545214209b485bb4108ed1e9a6c87f",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "light_strike_09",
+      "name": "Mistral Gale",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_strike_09.png",
+      "sha256": "89d36a8bc7c60a000fe21be9244dd7a1097d7fb3f4e6cad41cdbb380091c0a00",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "light_summon_04",
+      "name": "Chiron, Healer of Heroes",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_summon_04.png",
+      "sha256": "9bf4a82dc0ddd9207530728b255d3982cf8873cba9d26300b5b60ae7cf3432f7",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "light_summon_05",
+      "name": "White Unicorn",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_summon_05.png",
+      "sha256": "cc099b5fd91dc7909ffae62d8cbac94cd8165dd07805709fc071acad32ddb449",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "light_trap_08",
+      "name": "Tomb Builder's Pitfall",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_trap_08.png",
+      "sha256": "a78b8e16e323a9b4a0e3cf77244148b236452bbdf7b8fdb97d3a4c25b0d5a3af",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.45
+      ]
+    },
+    {
+      "cardId": "light_trap_09",
+      "name": "Daedalus's Snare",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_trap_09.png",
+      "sha256": "3443f91e8415cbb50509ea4fac9e412f6c6e6649fa68bccdab390abecfe53ce3",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "light_utility_08",
+      "name": "Cleric's Absolution",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_utility_08.png",
+      "sha256": "08eaccd1a87a020d81e770ed9651ae8866bc036da96be39511f9d09f524e11eb",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.44
+      ]
+    },
+    {
+      "cardId": "light_utility_09",
+      "name": "Aryabhata's Tables",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_utility_09.png",
+      "sha256": "6ae4f1f11d726540cb588434447e0ac32451f39ab00b3073748d2a14a2302f7e",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "light_ward_10",
+      "name": "Shieldwall of the Fyrd",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_ward_10.png",
+      "sha256": "c1900e88391029d0f7b532115204b166ab2b6a0e99c5501ba5cdabdb66d11343",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.45
+      ]
+    },
+    {
+      "cardId": "light_ward_11",
+      "name": "Sheltering Wings",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_ward_11.png",
+      "sha256": "4119be5ad2731ac77058d0db89fbff86dd187c9168188bfe69de271bfd9f6500",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.44
+      ]
+    },
+    {
+      "cardId": "shadow_boon_08",
+      "name": "Witching Hour",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_boon_08.png",
+      "sha256": "7b2f0f331d904c5f1c016462e2c6c603f77e0ec26f37e64b3de4f45de987ab87",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.42
+      ]
+    },
+    {
+      "cardId": "shadow_boon_09",
+      "name": "Mist Form",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_boon_09.png",
+      "sha256": "00738f7e9c8fa6211dbff1885780beedc2dd470a7f1c60352c8a0510bcd3e659",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "shadow_charge_08",
+      "name": "Mold Jars",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_charge_08.png",
+      "sha256": "e899acaa1079e83c2d0ba2c5bf73d8023fc2222f10cc110282c62a9691d8c0cb",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "shadow_charge_09",
+      "name": "Dungeon Chains",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_charge_09.png",
+      "sha256": "03e4a55b34223861efa33911ada75081b967e22c8ef4fbc00679aeec7c9db24f",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "shadow_environment_08",
+      "name": "Draugr's Barrow Frost",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_environment_08.png",
+      "sha256": "0f13c1e3edca6768f3bbdf7c70451e267bf0e8fd75112633a27a01447179e081",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "shadow_environment_09",
+      "name": "Witch's Thicket",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_environment_09.png",
+      "sha256": "f09fbf3b2727da7e0931522c32991909c115a196f874778277aa06014ef28c71",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "shadow_lob_10",
+      "name": "Coffin Drop",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_lob_10.png",
+      "sha256": "a0114c56eaf06af22dd5b4898b2bb7a64cad2df8b4bcd45ff2eca22cfb95ea70",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "shadow_lob_11",
+      "name": "Spider Egg Sac",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_lob_11.png",
+      "sha256": "2f376a596a0f026dcfbb22efd8748bfa58620ea65f424c6a4192f8cbdf9905f6",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "shadow_machine_04",
+      "name": "Coffin Cannon",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_machine_04.png",
+      "sha256": "23a8e08749443f917b87d83c6ebe38c4d576228515893cae0a6cc41a55643041",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "shadow_machine_05",
+      "name": "Plague Trebuchet",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_machine_05.png",
+      "sha256": "b2e8d7c587301e7fbe69b7b27f2b8acba568293bdcc3fbdae2f9432c4acc1c49",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "shadow_piece_04",
+      "name": "Cauldron of the Bone Mother",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_piece_04.png",
+      "sha256": "916c20471ff89bf1973d6edc0ad3463601133994fb5c607bf7701f9d4bfeaf22",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "shadow_piece_05",
+      "name": "Mask of the Plague Doctor",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_piece_05.png",
+      "sha256": "199af35f8159548b1a995a054f644898be8c4b3a965be6ae9006a3ea6209f633",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "shadow_sentry_10",
+      "name": "Spider Nest",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_sentry_10.png",
+      "sha256": "ca7f486fe27d8404ad7c2a4d198fca5d86270a37befb3f563a4de562084a17bb",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.53
+      ]
+    },
+    {
+      "cardId": "shadow_sentry_11",
+      "name": "Blood Fountain",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_sentry_11.png",
+      "sha256": "f68d4fc53a4ecf051c6da7c812940a862bd79a7c738c6ed624a15bbc3c90ad5d",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "shadow_strike_08",
+      "name": "Crow Swarm",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_strike_08.png",
+      "sha256": "2dc14be33393e045f2fc487561373e4a56b58199ffbdefac2ac43559ceb587d5",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.43
+      ]
+    },
+    {
+      "cardId": "shadow_strike_09",
+      "name": "Creeping Fog",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_strike_09.png",
+      "sha256": "b79a3f5a9008db88fdf5f248553ea7ef4310990f39e01377b843cb34342e7221",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "shadow_summon_06",
+      "name": "Shambling Zombie",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_06.png",
+      "sha256": "3e9f7bc62edaf255ba96f11d13d45c8ea25069640149fd2788a794a87ece3a85",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "shadow_summon_07",
+      "name": "Plague Zombie",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_07.png",
+      "sha256": "3376dfa013a42bbb7fec156e49d609d85c88abb05933e4e636fca4b491337b11",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "shadow_trap_07",
+      "name": "Oubliette",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_trap_07.png",
+      "sha256": "40c2e1de1ee64a272b54390d4ade99db008aefa8879c8b1da55c9983ccf9b5a9",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "shadow_trap_08",
+      "name": "The Hanged Man",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_trap_08.png",
+      "sha256": "cc2347c2fcdde83cbc64ea687e52d627cb174403491977a96282bc6bf99b67a4",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "shadow_utility_07",
+      "name": "Raise the Dead",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_utility_07.png",
+      "sha256": "9623f2ad2cc69e5f63de994dfb2364312cd328869becf45416135537eb140e6d",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.43
+      ]
+    },
+    {
+      "cardId": "shadow_utility_08",
+      "name": "Doppelganger",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_utility_08.png",
+      "sha256": "cc7f454ccacd28a622c11516f3f37ac65e214d584c0f2157f6d584983f68b177",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "shadow_ward_09",
+      "name": "Demon Hide",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_ward_09.png",
+      "sha256": "c8b1487fd32405c71926f0260f56c23ebd25c81875f5bc6bb6e6d522a822a3ae",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "shadow_ward_10",
+      "name": "Shroud of Fog",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_ward_10.png",
+      "sha256": "2ac3254a2794a41ca982e6af3f66632bcc2d56ad9e874268f86a4dcc7db09170",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_boon_08",
+      "name": "Camel's Endurance",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_boon_08.png",
+      "sha256": "852340709523a52f872b528051e3cc2f813254f7056d89ac1d7f101bb110b7ea",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.43
+      ]
+    },
+    {
+      "cardId": "storm_boon_09",
+      "name": "Date Palm Oasis",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_boon_09.png",
+      "sha256": "dceb61ba424ff0c2116ab68dcbb2121f9b3e47b3ec3cdf030c734dd944a96cf0",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_charge_08",
+      "name": "Naphtha Grenades",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_charge_08.png",
+      "sha256": "9e9075d13a7a8f3dfb1428fc3d563ebf60964e5f74b8b6a768ae1f7fba288378",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.44
+      ]
+    },
+    {
+      "cardId": "storm_charge_09",
+      "name": "Sling of Thunderstones",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_charge_09.png",
+      "sha256": "a0323f12cc35ebcd60aff949f1fcd5fdbb5aa00e850aef3a001ad652eec3e669",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.38
+      ]
+    },
+    {
+      "cardId": "storm_environment_07",
+      "name": "Lightning Field",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_environment_07.png",
+      "sha256": "47c3480ca27052dd4700593474fcf770cd31170823ca5bb716226c80cf17484b",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_environment_08",
+      "name": "Sun-Baked Wadi",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_environment_08.png",
+      "sha256": "85898cf2c6280a5b048531b5cc27012315a958151f49838e891ea6c447537eb9",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_lob_09",
+      "name": "Golden Hail",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_lob_09.png",
+      "sha256": "93c5f1e4818b6c547f9dcc6983ef02b62ce15b9bafd2b516469b21d01f73568e",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_lob_10",
+      "name": "Mercury Flask",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_lob_10.png",
+      "sha256": "f1dcbca2f13be0e2facbdf76c45ee66d6327a1b757f5b24d9c5344dbcc6efae4",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.34
+      ]
+    },
+    {
+      "cardId": "storm_machine_05",
+      "name": "Arc Gatling",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_machine_05.png",
+      "sha256": "b86d2b6c3e1c5c0599b870bbec6084bafcb153304fe594a8cb25e42a31b697ca",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_machine_06",
+      "name": "Brass Automaton Archer",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_machine_06.png",
+      "sha256": "2b7f2cfcf7f0d5d114abfd1a50734680415410f0b90f8580bc7a954f69f58fa8",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_sentry_10",
+      "name": "Sandstone Idol",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_sentry_10.png",
+      "sha256": "04a182a71b7787e2ee5106a7af2cccad08b9135a1bcea849920c566b3e2a905e",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_sentry_11",
+      "name": "Thunder Drum",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_sentry_11.png",
+      "sha256": "f9bfb9b50505aae28778a3b1aa290b697e839fd6647681d2a19982f3db67b88b",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_strike_08",
+      "name": "Tesla Arc",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_strike_08.png",
+      "sha256": "c854d723d65961d0dd4d831e924588b97e357391c8fb23f6bf37282ae8a9344e",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_strike_09",
+      "name": "Scorpion Sting",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_strike_09.png",
+      "sha256": "a91709bd39f7fc2bc9d0a439ac2d584e1456a6913638a0a3542595b5991fb2ba",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.34
+      ]
+    },
+    {
+      "cardId": "storm_strike_10",
+      "name": "Manticore Tail Spikes",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_strike_10.png",
+      "sha256": "f3d01f6d05bba8fff6d8679f9c7f6e69eb369d914335e430be20c05f33fb3fe6",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_summon_05",
+      "name": "Si'lat Shapeshifter",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_summon_05.png",
+      "sha256": "09c4332dba7bf250a32345b317f7f3c8788dd1b878f121c736644a5522a13032",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_summon_06",
+      "name": "Dybbuk",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_summon_06.png",
+      "sha256": "d5b0a969d40b7c3748ae2a003cc725f7ea388c2553b36cf158527ca018e42c97",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_trap_08",
+      "name": "Shocking Floor Tiles",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_trap_08.png",
+      "sha256": "688203285e0b12f2787e1298cc45c7a67238f75ca54c3548402a645077e0aa72",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.53
+      ]
+    },
+    {
+      "cardId": "storm_trap_09",
+      "name": "Djinn Bottle",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_trap_09.png",
+      "sha256": "b9a0a17d9b50790db9a9f2f68f2d629b25a3665ff981ef108d8fa89b38f1f80a",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_utility_08",
+      "name": "Moneylender's Loan",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_utility_08.png",
+      "sha256": "250940bbc7909edae110bef81c0fe944353f2308d5afdc45a21abfe9ec26e425",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_utility_09",
+      "name": "Inventor's Codex",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_utility_09.png",
+      "sha256": "cffbe46b2eccf0a15de283da59d1b542a804597eee60ceda8db611b27f472896",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_ward_10",
+      "name": "Djinn's Veil",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_ward_10.png",
+      "sha256": "9e661d476823f94f84ad354c8495f7f3503e5905e372b57bcb4ae3295df0ff0d",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.55
+      ]
+    },
+    {
+      "cardId": "storm_ward_11",
+      "name": "Lightning Rod Array",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_ward_11.png",
+      "sha256": "9fe350ff1473d40c89ad120a8f1d2dfe10a88936ce2da3236e09834b69749b47",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_boon_07",
+      "name": "Mistletoe Sprig",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_boon_07.png",
+      "sha256": "f40e436d4a5a08853721264c12f9e8118321fe0a87a86963c78071540b269eae",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_boon_08",
+      "name": "Shaman's Vision Quest",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_boon_08.png",
+      "sha256": "d1f367f4f60955d2394ff62864a66600616e9dcc2f0c38a41eaa43b951f7992e",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_charge_09",
+      "name": "Seed Satchel",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_charge_09.png",
+      "sha256": "857e57dee6d9b24d17cb805c6f3d620ceb2e52a28f67068f50ffae9b43744ac5",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "verdant_charge_10",
+      "name": "Hornet Jar",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_charge_10.png",
+      "sha256": "c574d023ae531bb36e46df6609f10b38c98d2398ad5147e2e4205ebc5cadb109",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.34
+      ]
+    },
+    {
+      "cardId": "verdant_environment_04",
+      "name": "Heather Moor",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_environment_04.png",
+      "sha256": "84d50c9040dbda78ea70eae3c8d7bed67dc07bd64bbc677e6cc8d476316f2dd3",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_environment_05",
+      "name": "Rainforest Canopy",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_environment_05.png",
+      "sha256": "44a8d89df125a0192cbf1efc614efd1930f75306fd0363631168f6e828ab80db",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_lob_09",
+      "name": "Sticky Sap Glob",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_lob_09.png",
+      "sha256": "9e43c6243bb59559e956bc6c01589a30a4f9d4f02a1e1796ebb650e5a8eae7c3",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_lob_10",
+      "name": "Wild Honeycomb Hurl",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_lob_10.png",
+      "sha256": "4ab742eeb15e22fd51fa6efbdecf0c0d003b1c97362132ee2a149aaa8448bf95",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "verdant_machine_04",
+      "name": "Treehouse Lookout",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_machine_04.png",
+      "sha256": "3745e9efc188c875dbd749f14d7724b74ac815097c57317283d5a2ccdfaf147f",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_piece_04",
+      "name": "Pipes of the Goat-Footed",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_piece_04.png",
+      "sha256": "e03ae2b715e1c74c666f89940dee23f6e771c7020a3eea6d83e5ddae235e368d",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.42
+      ]
+    },
+    {
+      "cardId": "verdant_piece_05",
+      "name": "Pelt of the Jaguar King",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_piece_05.png",
+      "sha256": "ef0b90ae91598c0f91ced0e8c18aaf2df797d835887b1eed7d24a51bed077ff0",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.38
+      ]
+    },
+    {
+      "cardId": "verdant_sentry_08",
+      "name": "Mandrake Patch",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_sentry_08.png",
+      "sha256": "154221db31e923c9a2e0f38ddadc5bbfe0876ab9d660b344c49ffba0ae8b3e11",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_strike_09",
+      "name": "Tiger's Rake",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_strike_09.png",
+      "sha256": "0e5248d68226b7edc8a57c6168ebda88576c3225b437cc07ace70659d78f9c42",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "verdant_strike_10",
+      "name": "Army Ant March",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_strike_10.png",
+      "sha256": "26c8c7920250b24b3148c7d3a22e9d7d8777b5a57a05105690627ebc4aac29a1",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_strike_11",
+      "name": "Blowgun Dart",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_strike_11.png",
+      "sha256": "682da604edffa976d02d37e4a309a13d96ad459f6f848f6b3ea9618a84e09575",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_summon_10",
+      "name": "Jack-in-the-Green",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_10.png",
+      "sha256": "bd71acb48ab9793a808d09fb1111bd1084078c9201612f3d2eecc4c2af87f9fe",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_summon_11",
+      "name": "Leshy of the Birchwood",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_11.png",
+      "sha256": "479bc0691d28ac167d3ee706bf7347e4c567963e5cbba18f20d9cd54615cbe03",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_trap_08",
+      "name": "Fairy Ring",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_trap_08.png",
+      "sha256": "10ceeae5e6656a441571a4e901246c7a234b41c7ad5f11c461b87600bb6de552",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_trap_09",
+      "name": "Peat Bog Mire",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_trap_09.png",
+      "sha256": "66789e9952ecfd9dfcc1bb5bb25b8dfd353eb43bad92ce10cfa573dfdd19086a",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.42
+      ]
+    },
+    {
+      "cardId": "verdant_utility_07",
+      "name": "Lyrebird Mimicry",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_utility_07.png",
+      "sha256": "73fba03b22cc8d439496b0ec071c9c5bcabf7bffd641132913a9906515f1f682",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "verdant_utility_08",
+      "name": "Anansi's Bag of Tales",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_utility_08.png",
+      "sha256": "f16c97ee444a09a1541c785d03a9dfede3f49d37d47357511e6e778795bd79df",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.34
+      ]
+    },
+    {
+      "cardId": "verdant_ward_09",
+      "name": "Oak Heartwood Shield",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_ward_09.png",
+      "sha256": "e94430dc057bcddcfc6c3fd47bc606141a5302e8e527d582fe77092f9b5d766d",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.49
+      ]
+    },
+    {
+      "cardId": "verdant_ward_10",
+      "name": "Ghillie Suit",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_ward_10.png",
+      "sha256": "e58e6955bec34df15044bf3ecca5970f7177259dad565241565c3f2871d1854c",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    }
+  ]
+}

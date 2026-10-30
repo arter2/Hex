@@ -1,0 +1,2123 @@
+[
+  {
+    "cardId": "verdant_charge_08",
+    "name": "Monkey's Fruit Stash",
+    "prompt": "Square 512x512 illustration-only image for a Verdant medieval fantasy collectible card called “Monkey’s Fruit Stash.” A small capuchin monkey crouches beneath banyan roots, wearing a worn leather sling pouch visibly stuffed with bright mangoes, guavas, and berries; it grips a ripe golden fruit as if about to lob it. Make the monkey’s face and both hands, the full sling pouch, and fruits the obvious central subject. Ensure all critical details lie inside central safe area x=24..488 y=105..407, with focal point around (256,260) and ample expendable forest scenery above and below. Painterly detailed fantasy game illustration, rich fur and leather textures, believable natural dappled light, layered forest atmosphere, rich but controlled colors, strong readable silhouette at thumbnail scale. Medieval collectible-card art finish. No frame, border, words, symbols, numbers, UI, or watermark. No cartoon, anime, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f1ce297e-3f7e-4fb3-949c-704387735956.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated"
+  },
+  {
+    "cardId": "verdant_summon_44",
+    "name": "Capuchin Thief",
+    "prompt": "Square 512x512 illustration-only image for the Verdant medieval fantasy collectible card “Capuchin Thief.” Show a small, clever capuchin monkey in a moss-green woodland clearing, caught mid-dash across a fallen log while clutching a stolen ruby-red fruit in one hand; the other hand reaches forward, face alert and mischievous, long curled tail balancing the sprint. Subtle thorny vines and a few leaves frame the action; this is a nimble forest creature, not a humanoid warrior. The monkey’s face, both hands, fruit, and compact full-body running silhouette must be easy to read at thumbnail size and entirely inside central safe area x=24..488, y=105..407, centered around x=256,y=260. Leave broad breathing room toward the top and bottom for later cropping. Painterly high-detail fantasy game illustration, believable anatomy and fur, richly textured but restrained, luminous natural forest light, atmospheric layered green background, strong silhouette, polished medieval collectible-card art with rich materials and believable lighting. No frame, border, text, symbols, letters, number, UI, or watermark. Not Disney cartoon, not anime, not photorealism, not pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2d5665af-aa00-4d17-8ae7-7599e2fd80cc.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated"
+  },
+  {
+    "cardId": "thorn_dart",
+    "name": "Thorn Dart",
+    "prompt": "For Verdant card Thorn Dart, square painterly medieval fantasy art: a living thorn dart glowing emerald flies horizontally through forest leaves, its sharp thorn and poison trail dominating. Focused, readable, collectible card illustration with quiet upper and lower scenery. Keep critical subject within x24..488 and y105..407 for wide crop. No text, border, UI, anime, cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0dea10c6-7ba3-4245-b8de-8cad4d208659.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 2,
+    "reviewNote": "Inspected original: long living thorn dart and emerald poison trail read clearly against forest; projectile spans the central horizontal band and remains inside the action-safe crop."
+  },
+  {
+    "cardId": "bramble_wall",
+    "name": "Bramble Wall",
+    "prompt": "Paint “Bramble Wall,” a heavy Verdant ward that cages a foe inside thorned walls, blocks their shots, and punishes contact with thorns. Depict a formidable rectangular living briar enclosure in a woodland clearing, dense interwoven branches forming clear cage-like bars; a single harmless practice arrow is lodged among the thorns to suggest blocked shots. Make the cage shape and thick defensive construction unmistakable. Painterly medieval fantasy collectible-card art, detailed wood, leaves and thorns, directional light, layered forest atmosphere, strong readable silhouette. Square 512 × 512 master, keep the complete cage and its identity-critical thorns within x24..488, y105..407 for a 206:141 horizontal crop; quiet expendable scenery above and below. No frame, text, numbers, UI or watermark. No anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7587fb90-6360-44a9-a911-b731a7d34b9f.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 2,
+    "reviewNote": "Inspected original: a full thorned briar cage encloses a figure, with the head and hands visible through the bars; cage silhouette, face and thorns sit within the wide-crop safe band."
+  },
+  {
+    "cardId": "spore_pod",
+    "name": "Spore Pod",
+    "prompt": "A SQUARE 1:1 full-frame painterly fantasy illustration for Verdant card Spore Pod. Centered scene: a stout wooden seed-pod sentry slightly left of center, a glowing seed bomb arcing through the middle, a small new sapling growing from its fallen shell slightly right of center. All three fully visible, grouped within the central 85% of the square, well inside safe margins. Forest canopy and distant woodland above; ground below. The living pod is a sturdy botanical turret with a glowing green spore core, readable as a sentry. Painterly medieval fantasy collectible card art, nuanced bark and moss, directional light, atmospheric depth. Square image, not panoramic. No words, border, UI, watermark, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6241e24e-21b2-422f-bdb9-4e363d179973.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 2,
+    "reviewNote": "Inspected square original: sturdy seed-pod sentry, toxic green seed bomb in flight, and new sapling emerging from a shell are all visible; sentry and projectile sit within the crop-safe band, with the sapling leaves clear in the wide crop."
+  },
+  {
+    "cardId": "regrowth",
+    "name": "Regrowth",
+    "prompt": "Square painterly medieval fantasy illustration for Verdant boon “Regrowth.” In a forest sanctuary, a weary but uninjured woodland traveler kneels beneath a living tree as luminous green leaves and healing light restore their strength. Two gentle rings of leaf-shaped light echo around them, one brighter and one fainter farther behind, suggesting healing that returns a second time. On a nearby broad leaf rests a tiny crimson dew bead as a restrained symbol of the small life-force price. Make the traveler, tree, and flowing restorative leaves the clear subject, not abstract symbols. Rich painterly fantasy collectible-card art, expressive natural materials, warm directional light and atmospheric depth. Square 512 × 512 master; keep face, hands and healing action within x24..488, y105..407 for a 206:141 horizontal crop, with quiet canopy above and forest floor below. No text, frame, UI or watermark. No anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-efd0fdaf-a40c-47cf-ae96-7e800a386811.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 2,
+    "reviewNote": "Inspected original: calm traveler receives glowing leaf-magic beneath a living tree, with repeating leaf-light suggesting the echo and a small red dew bead as the blood price; face and hands remain in the action-safe band."
+  },
+  {
+    "cardId": "briar_bomb",
+    "name": "Briar Bomb",
+    "prompt": "SQUARE 1:1 painterly medieval fantasy collectible-card illustration for Verdant spell “Briar Bomb.” Show a dense, round briar seed-bomb with interwoven green vines traveling in a low, straight horizontal line over a fallen log toward a marked forest clearing tile; a small hourglass-like glowing ember in its thorny shell suggests a heavy one-second fuse. At its landing point, the ground blooms into a compact row-shaped burst of thorny roots and leaves, nudging a small empty wooden practice marker backward. Make the bomb, straight row trajectory, delayed-fuse character and compact impact bloom clear. Painterly natural materials, dramatic directional forest light, atmospheric depth. Exact square master, fully composed within square; keep all critical objects inside central safe band x24..488 y105..407 at 512 scale for wide card crop, quiet scenery above/below. No text, frame, UI, watermark, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-fdb57ceb-0899-4b97-bcb9-ef47d420d60c.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 3,
+    "reviewNote": "Inspected square original: thorn-wrapped bomb with glowing fuse, straight travel line, ground-level row of briars and displaced practice marker; all card-defining action lies within the horizontal safe band."
+  },
+  {
+    "cardId": "verdant_summon_01",
+    "name": "Wasp Nest",
+    "prompt": "Create a 1:1 SQUARE canvas, equal width and height, no panoramic crop. Square fantasy collectible-card painting for Verdant summon “Wasp Nest.” In the central part of this square scene, a large papery nest hangs from a low branch at left, a many-wasp stream flies right in quick successive bursts, and a small empty wooden practice marker leans backward at right from the swarm's gust. Keep the full nest well away from the left edge, with generous margin on every side; all nest, wasps and marker fully visible inside a central 85% square safe zone. Wasps are small, golden-green and detailed, clearly emerging from the nest. Painterly medieval fantasy, bark and nest fibers, dramatic natural woodland lighting, layered depth. Square image composition, not horizontal rectangle. No letters, borders, UI, watermark, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4da7b0bc-9621-46fe-aa2e-df02652e5b2c.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 3,
+    "reviewNote": "Repainted after parent wide-crop review to preserve complete named object and critical action in the safe crop; original retained.",
+    "previousGeneratedPath": "/workspace/generated_images/exec-531aa910-5fd2-4fd2-bb86-b1465572ad5d.png"
+  },
+  {
+    "cardId": "verdant_charge_01",
+    "name": "Quiver of Yew Arrows",
+    "prompt": "1:1 SQUARE painterly card illustration for Verdant “Quiver of Yew Arrows.” Keep all essential objects inside the middle 60% of the square vertically: the entire compact horizontal yew quiver, every arrow feather, arrow flight, pierced shield and stone, and green target splash all fit between y=20% and y=80% of the canvas, with clear sky/forest above and ground below. Quiver sits at left-center, complete and inset from the left; one glowing green poisoned arrow flies straight across the center through a wooden shield and stone marker into a target. Composition is small enough to leave safe margins. Medieval fantasy painterly woodland, richly detailed yew and fletching, directional light, atmospheric depth. Square, not panoramic. No text, frame, UI, watermark, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d214e287-f752-4e82-948e-7755c480bb64.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 3,
+    "reviewNote": "Repainted after parent wide-crop review to preserve complete named object and critical action in the safe crop; original retained.",
+    "previousGeneratedPath": "/workspace/generated_images/exec-73a24fc6-e2c3-47eb-89ca-e185c5195047.png"
+  },
+  {
+    "cardId": "verdant_trap_01",
+    "name": "Hunter's Net",
+    "prompt": "Square 1:1 illustration for the fantasy trap card Hunter's Net. A SMALL complete diamond-shaped rope net trap, no wider than 60% of the image and no taller than 35%, lies flat at the center of a forest clearing, all four weighted corners and entire net visible. It traps a tiny wooden marker at the center; one short trigger peg nearby. Keep the full trap strictly within the central rectangle x20%..80%, y30%..70% of the square. Plenty of woodland scenery surrounds it. Painterly medieval fantasy materials, natural light, readable net mesh, green vines threaded through rope. Square composition. No text, frame, UI, watermark, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e1bc8371-29f9-4632-b044-b8ddce7cf592.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 3,
+    "reviewNote": "Inspected square original: complete flat diamond net, all four weights, central practice marker and nearby trigger peg are inside the action-safe band and remain readable in the wide crop."
+  },
+  {
+    "cardId": "vine_lash",
+    "name": "Vine Lash",
+    "prompt": "Paint an illustration for the Verdant spell “Vine Lash”: a living emerald vine lashes outward in a graceful boomerang arc through a forest lane, then curls back along a neighboring path; show the single continuous thorny tendril and its return sweep clearly, with a subtle slowing leaf-glimmer. The vine itself is the readable named subject, large and centered. Painterly medieval fantasy collectible-card art, believable bark, leaves and thorns, attractive directional woodland light, layered depth. Explicit 1:1 SQUARE canvas for 512-square master. Keep entire named vine and thorns inside x24..488,y105..407 on normalized square; quiet scenery above/below, composed for 206:141 crop. No border, text, UI, watermark, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8f363509-05b8-48d0-8c31-44d12438bfbf.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 4,
+    "reviewNote": "Inspected 1254-square original and normalized 512 crop: the complete thorned vine arc sits within the safe horizontal band and reads clearly against the woodland. The broad return curve conveys the boomerang path."
+  },
+  {
+    "cardId": "bark_skin",
+    "name": "Bark Skin",
+    "prompt": "Paint Bark Skin: a woodland guardian arm fitted with a living oak-bark shield gauntlet, moss and outward thorns; an arrow splinters on impact. Painterly medieval fantasy, detailed bark and forest light. Square 512 master, keep full hand, arm, shield and impact inside x24..488,y105..407 for the 206:141 crop. No text/frame/UI. Repaired after initial hand clipped the top of safe band: lowered complete hand and reduced scale.",
+    "generatedPath": "/workspace/generated_images/exec-78de37ff-1038-453e-8f08-1be634555ddd.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 4,
+    "reviewNote": "Inspected square original; the full bark-armored hand, thorn shield and arrow impact read clearly, and the hand is within the central crop-safe band after compositional repair. Original generation retained separately."
+  },
+  {
+    "cardId": "verdant_summon_02",
+    "name": "Felled Oak",
+    "prompt": "Recompose Felled Oak original; shrink and lower full oak silhouette into horizontal safe band.",
+    "generatedPath": "/workspace/generated_images/exec-3ad9efac-daeb-43ec-821b-49e50b151dc7.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 4,
+    "reviewNote": "Inspected 1254-square original and normalized wide crop. The mossy fallen oak guardian, lifted roots and protective scene all remain visible; its full top branches were lowered into the crop-safe band by repair."
+  },
+  {
+    "cardId": "verdant_sentry_01",
+    "name": "Pitcher Plant",
+    "prompt": "Recompose Pitcher Plant: scale down and lower complete lid and plant into wide crop safe band.",
+    "generatedPath": "/workspace/generated_images/exec-51f84d54-ef22-437a-89e1-0df5fb6240aa.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 4,
+    "reviewNote": "Inspected square original and crop: the full pitcher, overhanging lid, thorn rim, insect, bolt and target remain visible. Lowered and scaled the plant after the first version cropped the lid."
+  },
+  {
+    "cardId": "mend",
+    "name": "Mend",
+    "prompt": "Illustrate Verdant boon “Mend”: in a forest glade, a wounded woodland ranger kneels while warm green healing light knits a small cut on their forearm; one hand cradles the injured arm and the other steadies them. Nearby two loyal creatures, a wolf and a small hawk, brighten with a subtle rallying leaf aura as the healing arrives in a delayed ring of falling leaves. Faces and hands gentle and clear, no dramatic injury. Painterly medieval fantasy card art, luminous natural light, nuanced cloth, fur and foliage. Explicit 1:1 square 512 master; all face, hands and healing action inside x24..488,y105..407 for 206:141 wide crop, quiet canopy and forest floor outside. No text/frame/UI/watermark or anime/cartoon/photorealism/pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c932de1d-68cf-4848-8a57-49777259a9b3.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "Inspected square original: ranger face, healing hands/forearm, wolf and hawk all read clearly inside the central horizontal crop band; leaf light communicates the delayed restorative rally."
+  },
+  {
+    "cardId": "verdant_strike_01",
+    "name": "Hunter's Longbow Shot",
+    "prompt": "Slightly shrunk and centered archer/bow scene to keep both bow tips in safe crop.",
+    "generatedPath": "/workspace/generated_images/exec-de81da04-5249-494d-b883-7c71e4832870.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "Inspected the square original and normalized wide crop. Archer face, drawing hand, both bow tips, charged arrow and marked target are all legible in the safe band; composition was reduced and recentered after the first crop clipped the bow."
+  },
+  {
+    "cardId": "verdant_lob_01",
+    "name": "Squirting Cucumber",
+    "prompt": "Recompose cucumber image with fuse and named object lower/smaller in crop-safe band.",
+    "generatedPath": "/workspace/generated_images/exec-876aefd1-bddd-4836-9fa1-6cbce849ef29.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "Inspected square original and normalized crop: complete thorny cucumber with lit fuse, its arc, and the cross-shaped toxic splash remain clearly visible within the safe band after a slight downward, smaller recomposition."
+  },
+  {
+    "cardId": "verdant_ward_01",
+    "name": "Hawthorn Hedge",
+    "prompt": "Illustrate Verdant ward “Hawthorn Hedge”: a formidable living corridor of four thorned hedgerow walls, two lines running away into depth on either side of a narrow forest path. In foreground one close section shows woven hawthorn branches, dense leaves and long sharp thorns; matching parallel walls make the corridor unmistakable. A small cloaked traveler stands safely in the passage to show scale. Painterly medieval fantasy collectible-card art, detailed bark and leaves, dappled directional light, atmospheric woodland. Explicit 1:1 square 512 master; keep the complete visible hedge corridor, foreground thorns and traveler inside x24..488,y105..407 for the 206:141 crop; quiet canopy and ground outside. No frame, text, symbols, numbers, UI or watermark; no anime/cartoon/photorealism/pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-cc7f1886-fd12-47a7-853c-5c0265dd74ea.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "Inspected normalized wide crop: parallel thorned living walls and the protected path read immediately as a defensive corridor; the traveler provides scale and is fully visible."
+  },
+  {
+    "cardId": "verdant_summon_03",
+    "name": "Strangler Fig Roots",
+    "prompt": "Paint Verdant summon “Strangler Fig Roots”: a sturdy ancient fig tree anchors a dense living root mass that bursts through a stone wall and coils around a distant armored practice dummy, its thornless roots clearly strangling and pinning the target while a few green life-force motes stream back into the fig trunk. Emphasize roots lobbing over the wall, the fig’s broad leaves and strong root tendrils as the named subject; no gore, no human-like face. Painterly medieval fantasy collectible-card illustration, rich bark, soil and leaf textures, directional forest light, atmospheric depth. Explicit 1:1 square 512 master; keep full visible fig, root coils, target and motes within x24..488,y105..407 for 206:141 crop, quiet scenery top/bottom. No frame, text, symbols, UI, watermark, anime/cartoon/photorealism/pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4f64cffc-209e-402a-98a5-6d8236a1607e.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 5,
+    "reviewNote": "Inspected square original and normalized wide crop. Fig roots clearly emerge from the tree, cross over the stone wall and pin the target; green life-drain motes and complete target remain visible in the crop."
+  },
+  {
+    "cardId": "world_tree",
+    "name": "World Tree",
+    "prompt": "Paint an illustration for the Verdant legendary boon ‘World Tree.’ A colossal ancient world tree with an unmistakable broad canopy and immense trunk dominates a woodland glade, its roots spreading through the earth. A small wounded traveler stands beside the trunk being healed by warm green light flowing from the tree, while a shadowed enemy at the edge of the clearing loses a thin stream of life-light drawn toward the roots, clearly showing healing and siphoning. Make the tree the bold, iconic primary subject, with the human figures small but legible. Painterly medieval fantasy collectible card art, richly textured bark, leaves, moss and roots, luminous directional light, atmospheric forest depth, grounded proportions and materials. Explicit 1:1 SQUARE composition intended for an editable 512x512 master; keep entire recognizable tree trunk/canopy center, figures, faces and healing/siphon action inside x24..488,y105..407; quiet expendable canopy/forest floor at top and bottom, composed for a 206:141 wide crop. No card frame, text, lettering, symbols, numbers, UI or watermark. No anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4eb9c06b-cd91-4e89-b414-1f38981b29f5.png",
+    "editableSourcePath": "game/cards/art/masters/world_tree.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 6,
+    "reviewNote": "Inspected raw 1254-square output and normalized 512 source, wide crop and 128x88 thumbnail. The full tree trunk/canopy, healing traveler, siphon stream and drained enemy remain identifiable in the card crop; central subject is bold and readable."
+  },
+  {
+    "cardId": "verdant_strike_02",
+    "name": "Yew Arrow",
+    "prompt": "Illustrate the Verdant spell “Yew Arrow.” The complete named object is one elegant hand-crafted yew arrow, shown large in horizontal flight across the center, its dark yew shaft, leaf-green fletching and sharp steel point clearly visible. It pierces a heavy wooden shield and continues through to a second target behind it, with a single clean trajectory conveying a charged, wall-piercing shot that can strike two aligned targets. A small distant elven archer may anchor the origin but the arrow and its piercing action dominate. Painterly medieval fantasy collectible-card illustration, richly detailed yew grain, feathers, shield splinters, dappled forest light, layered atmospheric background, strong readable silhouette. Explicit 1:1 SQUARE composition for editable 512x512 master; fit complete arrow, point, fletching, shield impact and second target within x24..488,y105..407; horizontal center staging for 206:141 crop, quiet forest scenery at top and bottom. No card frame, text, lettering, symbols, numbers, UI or watermark. No anime, Disney cartoon, photorealism or pixel art. Repaired by scaling down the action and shifting it left to keep arrow tip visible in safe crop.",
+    "generatedPath": "/workspace/generated_images/exec-23525d4e-c1a3-4b63-b81c-458799c79806.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_02.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 6,
+    "reviewNote": "Inspected repaired raw output, normalized 512 source, wide crop and 128x88 thumbnail. Complete arrow tip and fletching, piercing shield and second target remain visible; the action reads clearly across the crop. The first source had the arrow tip too close to the edge and was preserved separately in /tmp/verdant_strike_02-before-repair.png.",
+    "previousGeneratedPath": "/workspace/generated_images/exec-75a5e330-510f-43b8-8c12-31451be51a53.png"
+  },
+  {
+    "cardId": "verdant_lob_02",
+    "name": "Bog Belch",
+    "prompt": "Paint an illustration for the Verdant spell “Bog Belch.” In a misty medieval swamp, a squat moss-covered bog ogre cups one hand to its belly and unleashes a vivid but non-gory belch of emerald poison gas, while a compact bubbling bog glob arcs from its mouth toward a clearing and bursts in a circular splash across the ground, leaving a luminous toxic patch of poisoned bog. The ogre's face and gesture plus the round poison burst make the card's odd named spell unmistakable; keep the cloud shaped and translucent, not obscuring the subject. Painterly medieval fantasy collectible card art, textured skin, moss, mud and reeds, dramatic green light with warm woodland bounce, atmospheric depth, grounded proportions. Explicit 1:1 SQUARE canvas for editable 512x512 master; fit ogre face/hand, belch, complete arc and burst splash inside x24..488,y105..407, composed for 206:141 wide crop with quiet scenery top and bottom. No frame, lettering, text, symbols, numbers, UI or watermark. No anime, Disney cartoon, photorealism, gore or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-04723ee2-bcc2-4b45-b4b6-0dbe1b027bb1.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_lob_02.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 6,
+    "reviewNote": "Inspected raw 1254-square image, 512 source, wide crop and thumbnail. Ogre face/hand, belch, compact lobbed bog glob, circular poison splash and lingering toxic ground all read clearly and fit the card crop."
+  },
+  {
+    "cardId": "verdant_ward_02",
+    "name": "Holly Thicket",
+    "prompt": "Illustrate the Verdant ward “Holly Thicket,” a lasting light defensive ward: a clear, narrow woodland corridor protected by three low living holly walls, with one dense hedge on each side in the foreground and a third crosswise section farther ahead. Show recognizable glossy holly leaves, red berries, and outward thorns woven through sturdy branches; small healing green motes flow from the hedges toward a traveler standing safely in the passage, conveying that the walls heal their ally over time. The corridor and repeating three wall sections should be immediately legible, not a generic forest hedge. Painterly medieval fantasy collectible-card art, rich leaf, bark and thorn texture, attractive dappled directional light, atmospheric forest depth, grounded natural materials and proportions. Explicit 1:1 SQUARE composition for editable 512x512 master; keep whole visible corridor, three wall sections, traveler and healing motes inside x24..488,y105..407 for 206:141 wide crop, with quiet canopy and path margins above and below. No frame, text, lettering, symbols, numbers, UI or watermark. No anime, Disney cartoon, photorealism or pixel art. Repaired by scaling the corridor down and pulling the foreground walls inward to preserve them in the crop.",
+    "generatedPath": "/workspace/generated_images/exec-ed1b739e-19fa-4db1-a180-25ff65cde2df.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_ward_02.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 6,
+    "reviewNote": "Inspected repaired raw output, normalized 512 source, wide crop and 128x88 thumbnail. Both thorny, red-berried foreground holly walls, the third crosswise section, traveler, healing motes and corridor remain legible within the safe crop. Original source preserved separately in /tmp/verdant_ward_02-before-repair.png.",
+    "previousGeneratedPath": "/workspace/generated_images/exec-6b2ee2a9-d8d7-43e6-b0a0-9e514f9039a6.png"
+  },
+  {
+    "cardId": "verdant_strike_03",
+    "name": "Woodsman's Throwing Axe",
+    "prompt": "Paint an illustration for the Verdant strike “Woodsman's Throwing Axe.” A rugged medieval woodsman in green leather bracers has just released a beautifully crafted single-bladed throwing axe; show the complete axe flying across the center foreground, its full wooden haft and steel crescent blade clear and sharp. The woodsman's face and throwing hand are visible behind it, with a restrained charged green glint along the edge. Three faint but readable curving afterimages suggest the axe's fan-shaped path ricocheting across a woodland lane; keep the actual axe primary and avoid multiple solid axes. Painterly medieval fantasy collectible-card art, believable face and hands, detailed leather, steel and wood, forest clearing, directional warm light and layered green atmosphere. Explicit 1:1 SQUARE canvas for editable 512x512 master; keep complete axe, face, throwing hand and central motion safely within x24..488,y105..407 for 206:141 wide crop, quiet forest scenery above and below. No frame, text, symbols, numbers, UI or watermark. No anime, Disney cartoon, photorealism, pixel art. Repaired by shrinking and lowering the figure/action slightly to keep face and axe within the crop-safe area.",
+    "generatedPath": "/workspace/generated_images/exec-2abb34c3-e119-42ed-bab5-638237b0792f.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Inspected repaired raw 1254-square output, exact 512 master, wide crop and 128x88 thumbnail. Woodsman's full face and throwing hand plus full axe haft/blade are visible; the three faint ricochet arcs read as the fan-shaped path. Repaired before source preparation to provide safe top margin.",
+    "previousGeneratedPath": "/workspace/generated_images/exec-3a853dce-a0ac-462f-824c-dbf9fe325b17.png"
+  },
+  {
+    "cardId": "verdant_lob_03",
+    "name": "Rafflesia Bloom",
+    "prompt": "Paint the Verdant spell “Rafflesia Bloom” as a dramatic medieval fantasy card illustration. A giant unmistakable rafflesia flower dominates a swamp clearing, its enormous flat red and cream mottled petals open around a dark central cup; glossy green leaves and vines anchor it to the earth. The bloom releases a delayed circular ring of poisonous spores and force across the ground, shown as a bright emerald ring expanding around its center and knocking small hostile creatures or broken branches outward in several directions. Keep the complete flower and ring legible, with poison mist visible but not obscuring the petals. Painterly fantasy materials, organic botanical detail, dramatic directional light, deep forest atmosphere, mature collectible-card art, not cute. Explicit 1:1 SQUARE canvas for editable 512x512 source; keep full flower petals, central cup, entire circular burst and any faces safely inside x24..488,y105..407 for 206:141 wide crop, quiet swamp scenery above and below. No frame, text, symbols, numbers, UI, watermark; no anime, Disney cartoon, photorealism, pixel art, gore.",
+    "generatedPath": "/workspace/generated_images/exec-ef4a846c-1bfb-47a6-88d0-b43449888aef.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_lob_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Inspected raw 1254-square image, exact 512 source, crop and thumbnail. Complete rafflesia petals and central cup dominate; the surrounding poisonous ring and creatures knocked outward remain readable and within crop."
+  },
+  {
+    "cardId": "verdant_boon_01",
+    "name": "Toadstool Ring",
+    "prompt": "Illustrate the Verdant boon “Toadstool Ring” as a painterly medieval fantasy collectible-card scene. A wounded forest traveler kneels in a woodland clearing, their face and hands clear, as a complete ring of vivid red-capped toadstools rises around them. A bright protective pulse and warm green healing light restore the traveler's strength after a near-fatal blow; scattered shield splinters just outside the ring hint at the intercepted strike, while a tiny red blood-price mark on a sleeve conveys the boon’s cost without gore. The circular mushroom ring is the unmistakable named subject, all mushrooms visible and arranged around the survivor. Rich natural fungi, moss, earth and cloth textures, dramatic dappled light, atmospheric depth, grounded proportions. Explicit 1:1 SQUARE canvas for editable 512x512 source; keep ring, survivor's face/hands and healing effect wholly inside x24..488,y105..407 for a 206:141 wide crop; leave quiet canopy and ground beyond. No frame, text, symbols, numbers, UI or watermark. No anime, Disney cartoon, photorealism, gore or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d27bdb1d-d5fe-4166-881c-18b2025eee01.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_boon_01.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Inspected repaired raw output, exact 512 source, wide crop and 128x88 thumbnail. The complete ring of toadstools surrounds the survivor; face, hands and healing pulse remain clear. Removed the sword after earlier versions clipped its hilt in the crop; scattered shield splinters now imply the intercepted blow."
+  },
+  {
+    "cardId": "verdant_ward_03",
+    "name": "Briar Rose Hedge",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Verdant ward “Briar Rose Hedge.” A thorn hedge corridor is the unmistakable main subject: three distinct living wall sections form a defensive arrangement across a woodland lane, two parallel walls run away into depth and a third crosswise hedge closes the far end. Show an empty gap where a traveler can stand behind the protection, and one practice arrow snapped and caught harmlessly in thick rose thorns to convey thorns striking attackers back. Keep the complete hedge arrangement and all thorn tips clearly inside the central horizontal band, no branches cut by the image edge. Rich dark green leaves, red wild roses, interwoven branches and sharp thorns, natural golden light, atmospheric forest, mature painterly high fantasy art. Explicit 1:1 SQUARE canvas for editable 512x512 source; full geometry inside x24..488,y105..407 for a 206:141 crop, quiet canopy and earth above/below. No turtle, no people, no frame, text, symbols, numbers, UI, watermark, anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b9a5a6d8-b3f5-4e5a-b52f-0bd04f616a6c.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_ward_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Inspected raw square, exact 512 master, wide crop and 128x88 thumbnail. Three rose-thorn hedge walls define a protected corridor; snapped arrow is caught in a hedge, with no clipped thorns or critical objects."
+  },
+  {
+    "cardId": "verdant_summon_04",
+    "name": "Turtle Shell Guard",
+    "prompt": "Paint the Verdant summon “Turtle Shell Guard” as a painterly medieval fantasy collectible-card illustration. A large battle-worn forest turtle stands firmly between a vulnerable woodland scout and danger, its broad domed shell shielding the scout. A short snapped arrow shaft with a feathered end is lodged in the shell to show that it absorbs hits. The turtle is sturdy and patient, with believable tortoise anatomy, moss, leaf patterns and old shell scratches; its calm head and all four feet are visible. Make the protective guard action and complete turtle the unmistakable central subject. Painterly high fantasy, rich shell and moss textures, warm directional woodland light, layered atmosphere, grounded collectible-card art. Explicit 1:1 SQUARE canvas for a 512x512 source; keep turtle head, shell edges, legs, scout and arrow fragment within x24..488,y105..407 for 206:141 wide crop, quiet canopy and ground beyond. No frame, lettering, symbols, numbers, UI or watermark. No anime, Disney cartoon, photorealism or pixel art. Repainted to remove the off-frame incoming arrow.",
+    "generatedPath": "/workspace/generated_images/exec-73f43916-375e-4632-808f-9b89e35cc3e2.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Inspected final raw square, exact 512 master, wide crop and 128x88 thumbnail. Turtle head, complete shell, four feet and scout face fit in crop; a short broken arrow fragment lodged in shell conveys protection without clipped objects. Earlier source preserved in /tmp/verdant_summon_04-before-final-repair.png.",
+    "previousGeneratedPath": "/workspace/generated_images/exec-ce6b11ba-a420-42c8-b10e-96b456205c45.png"
+  },
+  {
+    "cardId": "verdant_sentry_02",
+    "name": "Sundew Patch",
+    "prompt": "Paint an illustration for the exact card Sundew Patch. It is a sturdy, thorny plant sentry that repeatedly shoots the first enemy in its row. Show a dense low patch of carnivorous sundew plants in a lush forest lane, with one larger central sundew flexing its curved leaves and firing a taut, glistening bead of sticky sap straight down the path at one approaching armored foe. A few fine thorned leaves bristle around the patch so its dangerous defense is clear. Keep the named sundew plant cluster dominant and its sap shot readable, with the foe secondary. Painterly medieval fantasy collectible-card art, botanical accuracy, detailed translucent dew and leaf surfaces, warm dappled forest light, atmospheric depth and textured brushwork. Explicit 1:1 square canvas for a 512×512 master; keep the plant heads, fired sap bead, and foe’s face within x24…488,y105…407 for the 206:141 crop. No text, letters, numbers, border, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9c850565-d705-428c-9b24-eb725c7bf211.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_sentry_02.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.44
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Reviewed the 512-square source, crop shifted upward to y=0.44, and 128px thumbnail. The shift brings the full central sundew crown and its sticky shot into view; the plant patch and foe remain clear."
+  },
+  {
+    "cardId": "verdant_charge_02",
+    "name": "Fletcher's Bundle",
+    "prompt": "Paint an illustration for the exact card Fletcher’s Bundle. Its effect gives two uses of a paired volley that shoots down the caster’s row and the next. Show a skilled medieval fletcher’s hand taking two long, straight, dark yew bolts from a compact leather-bound bundle at the archer’s hip; in the same moment, the archer releases a matched pair of bolts in parallel down a forest road toward distant targets. Make the tied bundle of fletched shafts clearly identifiable at the belt, with the two bolts and the horizontal shooting lane as the action. Keep one focused archer and no crowd. Painterly medieval fantasy collectible-card art, believable yew, goose feathers, leather and linen, grounded anatomy, directional woodland light, atmospheric depth and textured brushwork. Explicit 1:1 square canvas intended as a 512×512 editable master; keep archer’s face, belt bundle, hands and both bolts within x24…488,y105…407 for the 206:141 crop. No lettering, numbers, border, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0b89a853-a064-4a10-bfc4-56b197b063fc.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_charge_02.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.44
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Reviewed the 512-square source, crop shifted upward to y=0.44, and 128px thumbnail. This keeps the archer’s face visible with the paired bolts and complete hip bundle; the parallel volley reads clearly."
+  },
+  {
+    "cardId": "verdant_utility_01",
+    "name": "Tracker's Instinct",
+    "prompt": "Paint an illustration for the exact card Tracker’s Instinct, which lets a ranger discover and draw one useful card into their hand. Depict a solitary medieval forest tracker crouched on a mossy trail, noticing a fresh, nearly hidden line of deer tracks and a snapped fern; a sudden shaft of golden light reveals the trail continuing toward a useful object just ahead, and the tracker reaches for it with an expression of quick understanding. Keep the tracker’s face, observing hand and newly revealed trail clue as one clear moment of intuition. Painterly medieval fantasy collectible-card illustration, believable leather, wool, leaves and damp earth, quiet woodland atmosphere, directional light, grounded anatomy and textured brushwork. Explicit 1:1 square canvas intended for a 512×512 editable master. Keep face, hand, tracks and revealed clue within x24…488,y105…407 for the 206:141 crop; quiet forest beyond. No text, letters, symbols resembling writing, border, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4cbd7238-30b0-40c5-b61c-fcdbde0867f3.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_utility_01.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.44
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Reviewed 512-square source, crop shifted upward to y=0.44, and 128px thumbnail. The shift keeps the tracker’s full face and reaching hand visible with the illuminated trail clue; the intuition scene reads at small size."
+  },
+  {
+    "cardId": "verdant_trap_02",
+    "name": "Root Tripwire",
+    "prompt": "Paint an illustration for the exact card Root Tripwire. Its brief snare damages an enemy, roots them in place, then knocks them back stunned. Show a taut fine vine tripwire nearly hidden across a woodland path at ankle height, snapping as one armored raider steps across it; thick thorny roots burst from the soil and coil around both boots, yanking the startled foe backward into a stunned fall. Make the tripline, caught feet and living roots clearly readable, with the enemy’s surprised face visible. Painterly medieval fantasy collectible-card art, textured forest floor and bark, grounded anatomy, dramatic directional light and atmospheric depth. Explicit 1:1 square 512×512 master; keep the tripwire, bound feet, face and root burst within x24…488,y105…407 for the 206:141 crop. No blood, text, lettering, numbers, border, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-71a02ccd-00f2-47b6-9a3d-1cee0668ae11.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_trap_02.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.44
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Reviewed 512-square source, crop shifted upward to y=0.44, and 128px thumbnail. The shift restores the raider’s startled face while preserving the tripline, bound boots, and root burst."
+  },
+  {
+    "cardId": "verdant_environment_01",
+    "name": "Bramble Thicket",
+    "prompt": "Paint an illustration for the exact card Bramble Thicket. Its growth fills a targeted patch and nearby tiles with living thorns that injure enemies as they step; foes present when it appears are emboldened. Show a thick, tangled thicket erupting low across a woodland trail in a dense, roughly circular patch: thorny canes curl from the soil, glossy dark leaves and a few red berries catch the light, and an armored raider recoils mid-step as thorns snag his boot and cloak. A nearby ally stands just beyond the bramble edge, steadied by the sudden protective growth. Make the dense bramble patch the dominant subject and the caught step the readable action; keep all critical thorns and the raider’s face within the central band. Painterly medieval fantasy collectible-card landscape art, vivid natural greens, believable thorned stems, dramatic dappled light, atmospheric depth and textured brushwork. Explicitly create a 1:1 square 512×512 editable master. Keep the core thicket, raider’s face and caught foot within x24…488,y105…407 for the 206:141 crop; quiet treetops and forest floor can extend above and below. No lettering, numbers, border, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5c72422f-5030-49c3-9c32-fa8223363cec.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_environment_01.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.44
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Reviewed the 512-square source, crop shifted upward to focalPoint y=0.44, and 128px thumbnail. The shift restores the raider’s full face while keeping the dense bramble thicket, caught foot and forest setting clear. His raised hand is cropped; the thicket remains the dominant subject."
+  },
+  {
+    "cardId": "verdant_piece_01",
+    "name": "Antlers of the Forest King",
+    "prompt": "Legendary Verdant fantasy illustration for “Antlers of the Forest King.” A majestic ancient white stag stands in a secluded woodland glade, its calm intelligent face beneath a magnificent crown of broad branching antlers touched with moss and leaves. The antlers are the named focal subject, every fork and tip visible; emerald light flows from a shadowy bramble toward the stag’s heart, which glows with renewed life, hinting at healing and a quiet siphon of vitality. Painterly high-fantasy forest, richly textured fur, bark and velvet moss, warm shafts of sunlight through deep green canopy, atmospheric depth, regal rather than cute. Explicit 1:1 SQUARE canvas for editable 512x512 source; keep the stag’s face and all antler tips inside x24..488,y105..407 for 206:141 horizontal crop, quiet canopy and floor beyond. No frame, text, numbers, UI, watermark, anime, cartoon, photorealism or pixel art. Repaired by scaling down the stag and antlers together so all tips fit the crop.",
+    "generatedPath": "/workspace/generated_images/exec-72fdbfb2-831f-44ee-b3c8-a0d500d3a780.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_piece_01.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Inspected repaired raw square, exact 512 master, wide crop and thumbnail. Stag’s face and full branching antlers with every tip are visible; subtle green healing/siphon light stays secondary."
+  },
+  {
+    "cardId": "verdant_machine_01",
+    "name": "Hunter's Crossbow Rig",
+    "prompt": "Painterly Verdant medieval fantasy collectible-card illustration for “Hunter’s Crossbow Rig.” A sturdy repeating hunter’s crossbow mounted on a compact wooden field rest sits in a forest clearing, with carved yew stock, steel bow limbs, winding mechanism and taut string clearly visible. One complete dark bolt with a green venom tip is loaded and aimed down a woodland lane. A rugged hunter’s gloved hand works the crank beside the weapon; his focused face is visible behind it. The full rig and loaded bolt are the unmistakable central subject, handmade medieval construction, no modern gun parts. Painterly wood, iron, leather and moss, dappled forest light, atmospheric depth. Explicit 1:1 SQUARE canvas for editable 512x512 source; fit stock, bow limbs, string, crank, hand and bolt point inside x24..488,y105..407 for 206:141 crop. No text, frame, UI, watermark, anime, cartoon, photorealism or pixel art. Repaired by scaling down and centering the rig to show the full bolt and weapon while retaining the hunter’s face.",
+    "generatedPath": "/workspace/generated_images/exec-155879f8-609f-4554-90bd-8dc607d9a619.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_machine_01.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Inspected repaired raw square, exact 512 source, wide crop and thumbnail. Crossbow stock, full bow limbs, crank, hand, loaded poison bolt point and hunter’s visible face remain legible in crop; the support foot reaches near the lower edge but remains visible."
+  },
+  {
+    "cardId": "verdant_ace_01",
+    "name": "Thornheart Seed",
+    "prompt": "Painterly high-fantasy collectible-card art for Verdant weapon “Thornheart Seed.” A single heart-shaped seed with dark green shell split to reveal a vivid emerald heart, covered in sharp woody thorns, strikes a stump and releases a compact circular burst of poisonous green light and tiny thorns. The complete seed silhouette is crisp and dominant; thorn tips remain distinct, with glow secondary. Lush woodland clearing, moss, bark, drifting leaves, directional forest light and layered atmospheric depth. Medieval fantasy painting with organic materials, readable silhouette. Explicit 1:1 SQUARE canvas for 512x512 source; keep full seed and thorn tips within x24..488,y105..407 for 206:141 crop. No text, frame, UI, watermark, anime, cartoon, photorealism or pixel art. Repaired and shifted crop focus slightly upward to preserve the topmost thorn tip.",
+    "generatedPath": "/workspace/generated_images/exec-06135c99-451b-4acf-a401-741e2aa5c18e.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_ace_01.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.45
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Inspected repaired raw square, exact 512 master, crop at focal y=.45 and thumbnail. Full heart-shaped seed and every thorn tip are visible; upward crop offset protects the topmost tip while keeping the seed and impact burst central."
+  },
+  {
+    "cardId": "verdant_aceup_01",
+    "name": "Venom Tip",
+    "prompt": "Painterly Verdant medieval fantasy collectible-card illustration for “Venom Tip.” In a woodland hunter’s gloved hands, a finely forged leaf-shaped arrow tip is being fitted onto a yew shaft; one luminous emerald bead of venom runs along its central groove. The complete sharp point, socket, adjoining shaft and careful hands are clear in a close horizontal arrangement, generous space around the tip. Make the venom-coated arrowhead the named subject, not a generic poison cloud. Detailed dark steel, green venom, leather glove, yew wood, softly lit forest background, painterly fantasy textures and atmospheric depth. Explicit 1:1 SQUARE canvas for editable 512x512 source; keep arrowhead point, full tip, fingers and shaft inside x24..488,y105..407 for 206:141 crop. No text, frame, UI, watermark, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-00e20758-69a1-46ce-a49a-3e37a06e73b9.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_aceup_01.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Inspected raw square, exact 512 source, wide crop and thumbnail. Full arrow tip and point, venom bead, attaching fingers and adjoining shaft are visible within the crop."
+  },
+  {
+    "cardId": "verdant_claim_01",
+    "name": "Creeping Overgrowth",
+    "prompt": "Painterly Verdant fantasy card art for “Creeping Overgrowth.” Thick living roots, vines and leafy overgrowth creep rapidly across an ancient stone battlefield path in a broad horizontal front. One dark-armored raider is caught at the boot and driven backward as the roots tighten; a forest warden stands firmly on the mossy ground behind. Make the creeping roots and conquered green ground the unmistakable subject, not a generic green spell cloud. Rich bark, moss, fern and stone textures, dramatic dappled sunlight, subtle restorative glow beneath the warden’s feet, painterly medieval fantasy and atmospheric depth. Explicit 1:1 SQUARE canvas for editable 512x512 source; keep decisive root action and visible figures in the center for 206:141 crop. No text, frame, UI, watermark, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-dc4b43f8-9c55-4f64-9405-2330402abd48.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_claim_01.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.45
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Inspected raw square, exact 512 source, crop at focal y=.45 and thumbnail. The horizontal root front captures the raider’s trapped boot and forest warden’s face while keeping overgrowth dominant."
+  },
+  {
+    "cardId": "hero_thorn",
+    "name": "The Thornfather",
+    "prompt": "Paint The Thornfather, a powerful verdant hero: an ancient broad-shouldered forest guardian with a weathered face, braided beard, living thorn crown and layered bark-and-leaf armor stands among old oaks. One outstretched hand bursts sharp green thorns around a single armored foe; a softer restorative aura gathers around a nearby ally. The Thornfather’s full face, crown and casting hand stay in the central safe area. Painterly medieval fantasy collectible-card art, believable bark, leaf, leather and moss, grounded anatomy, expressive brushwork, sunbeams through canopy and atmospheric depth. Explicit 1:1 square 512 master, horizontal 206:141 crop, quiet forest canopy and earth beyond. No text, frame, UI, modern items, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-dbd47655-c674-48fd-9feb-199027ff2127.png",
+    "editableSourcePath": "game/cards/art/masters/hero_thorn.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Reviewed 1254-square original, exact 512 source, upward-focused crop (focalPoint y=0.4) and 96px thumbnail. The shift preserves the full Thornfather face and thorn crown plus casting hand; thorn burst and restorative ally remain visible. Lower figure detail is expendable."
+  },
+  {
+    "cardId": "verdant_strike_04",
+    "name": "Atlatl Dart",
+    "prompt": "Recovered saved orphan by visual identity: a forest hunter releases a feathered atlatl dart across a woodland clearing toward an armored foe.",
+    "generatedPath": "game/cards/art/masters/verdant_strike_04.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_04.png",
+    "sourceNative": [
+      512,
+      512
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Recovered orphan by explicit visual identity. The complete dart, hunter’s face and strike read in the square, 206:141 crop and 128px thumbnail; the atlatl grip meets the left edge, leaving little edge clearance for that hand."
+  },
+  {
+    "cardId": "verdant_lob_04",
+    "name": "Coconut Drop",
+    "prompt": "Paint “Coconut Drop,” a quick Verdant fantasy lob that drops a coconut bomb to knock an enemy aside. A complete medium-sized ripe coconut falls beside a recoiling armored raider; shell fibers, dust and restrained green magic show impact. Keep full coconut, face and raised hands inside the action-safe band. Painterly medieval fantasy collectible-card art, textured husk, leaves and leather armor, dappled light, atmospheric jungle. Explicit 1:1 square 512×512 master for 206:141 crop; no frame, text, UI, watermark, photorealism, anime, cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0edcbbda-b4b5-4561-9330-a4dbbd38f45c.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_lob_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Reviewed square source, 206:141 crop at the recorded upward focal point, and 128px thumbnail. The entire coconut, startled face and raised hands remain visible; coconut impact reads clearly at card size."
+  },
+  {
+    "cardId": "verdant_boon_02",
+    "name": "Bear's Might",
+    "prompt": "Paint “Bear’s Might,” a Verdant rallying boon: a muscular woodland fighter braces with sword drawn, a majestic roaring brown bear rising directly behind him with lifted forepaws; a restrained warm-green aura echoes their strength. Keep both faces, bear paws, and the fighter’s hand and sword readable in a painterly medieval fantasy forest, square 512 master, composed for a 206:141 crop; no frame or text.",
+    "generatedPath": "/workspace/generated_images/exec-a9aaa0f8-17d0-4871-83fd-07601c5575a0.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_boon_02.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Reviewed square source, 206:141 crop at focalPoint y=0.34, and 128px thumbnail. Bear face and raised paws, ally face and sword hand all remain fully visible and read clearly; the lower body is expendable in the card crop."
+  },
+  {
+    "cardId": "verdant_ward_04",
+    "name": "Stacked Log Wall",
+    "prompt": "Paint “Stacked Log Wall,” a Verdant ward of heavy stacked logs blocking a shot and punishing contact with thorns. A compact complete rampart of four thick horizontal logs between short posts is tied with vine and overgrown with thorny sprigs; a single broken arrow caught in the center suggests it stopped an attack. Keep both ends, base and thorns in the safe middle band. Painterly medieval fantasy collectible-card illustration, detailed bark and vine, dappled woodland light, strong thumbnail clarity; explicit square 512×512 master, no frame or text.",
+    "generatedPath": "/workspace/generated_images/exec-78a038b3-530c-4e9e-a80d-37e4b5cad176.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_ward_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Reviewed square source, centered 206:141 crop and 128px thumbnail. The complete wall, four stacked logs, both posts, thorn cover and lodged broken arrow stay visible with clear end and base margins; wall reads immediately at card size."
+  },
+  {
+    "cardId": "verdant_summon_05",
+    "name": "Puffball Sentinel",
+    "prompt": "Recovered the existing canonical square master by visual identity: a stout, moss-covered puffball mushroom sentinel with a broad spotted cap and braced rootlike limbs in a sun-dappled forest.",
+    "generatedPath": "game/cards/art/masters/verdant_summon_05.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_05.png",
+    "sourceNative": [
+      512,
+      512
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Recovered the pre-existing orphan master after visually confirming the named puffball sentinel. Reviewed its 512-square source, 206:141 crop at focalPoint y=0.40, and 128px thumbnail. The cap and face remain clear with margin in the wide crop; lower feet are partly cropped, while the named mushroom subject reads immediately."
+  },
+  {
+    "cardId": "verdant_sentry_03",
+    "name": "Venus Flytrap",
+    "prompt": "A giant Venus flytrap sentry snaps around an armored raider’s forearm in a mossy forest, with its complete serrated lobes, visible startled face, and long stem in a horizontal composition. Painterly medieval fantasy, dappled woodland light, textured foliage and armor, no gore. Square 512 master for a 206:141 crop; no lettering or frame.",
+    "generatedPath": "/workspace/generated_images/exec-1eac52db-906d-4bab-b19b-b0a1927dd7e3.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_sentry_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.45
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Reviewed exact 512 source, wide crop at focalPoint y=0.45, and 128px thumbnail. The full serrated flytrap head, prey arm, stem and startled face remain visible; uppermost tooth tips have slim but clear crop margin and the sentry is immediately readable."
+  },
+  {
+    "cardId": "verdant_charge_03",
+    "name": "Acorn Sack",
+    "prompt": "A forest hunter’s rough leather sack spills several recognizable acorns through the air toward an armored raider; one acorn impacts the woodland ground in a compact burst of dust, leaves and restrained green-gold light. Painterly medieval fantasy with textured leather, oak shells, forest earth and grounded anatomy. Explicit square 512 master composed for a 206:141 crop; no lettering or frame.",
+    "generatedPath": "/workspace/generated_images/exec-cf253ade-6a7b-4c59-b4f9-c62485525654.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_charge_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Reviewed exact 512 source, wide crop at focalPoint y=0.34, and 128px thumbnail. The complete sack, its spill of flying acorns, and raider’s face are readable; the shift protects the sack while the ground impact and lower acorn are cropped out of the card view."
+  },
+  {
+    "cardId": "verdant_utility_02",
+    "name": "Forest Spring",
+    "prompt": "A clear spring bubbles from a mossy stone basin beneath old roots as a weary ranger kneels, rinsing a dark poison stain from one hand while clean luminous water restores color to their face. Painterly medieval fantasy with believable water, moss, stone, linen and leather, serene forest light. Square 512 master framed for a 206:141 crop; no lettering or frame.",
+    "generatedPath": "/workspace/generated_images/exec-2f1ed3a1-2f1e-48b3-a6b5-16321cb7da68.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_utility_02.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Reviewed exact 512 source, wide crop at focalPoint y=0.42, and 128px thumbnail. Ranger’s full face and cleansing hand remain clear above the luminous water; the spring reads as the named subject at small size."
+  },
+  {
+    "cardId": "verdant_trap_03",
+    "name": "Bear Pit",
+    "prompt": "A woodland pit trap gives way beneath an armored raider. The startled man falls into a broad earthen opening lined with sharpened wooden stakes, one bearing a subtle green poison sheen, while he catches the rim with his hands. Painterly medieval fantasy, detailed earth, wood, leaves and armor, dangerous but non-graphic. Square 512 master composed for a 206:141 crop; no lettering or frame.",
+    "generatedPath": "/workspace/generated_images/exec-b0c8c108-7dd1-4bf3-bc74-909e5567e10f.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_trap_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.48
+    ],
+    "status": "generated",
+    "batch": 7,
+    "reviewNote": "Reviewed exact 512 source, wide crop at focalPoint y=0.48, and 128px thumbnail. The pit opening, several pointed stakes, raider’s face and both bracing hands are clear; lower stake ends extend beyond the crop, while the trap action reads immediately."
+  },
+  {
+    "cardId": "verdant_strike_05",
+    "name": "Bear Swipe",
+    "prompt": "Paint “Bear Swipe,” a Verdant strike: one powerful horizontal paw swipe from a massive brown bear striking a single armored raider. Make the bear the prominent named subject; its full face, sweeping forepaw and claws dominate, while the raider’s face recoils at the edge of the impact. Restrained green-lit leaves show the burst. Painterly medieval fantasy card art, believable fur and leather, grounded anatomy, dramatic dappled forest light, in the painterly Hexmancers reference style. Explicit 1:1 SQUARE canvas for an editable 512x512 master; keep the bear’s complete face and striking forepaw plus the raider’s face inside x24..488,y105..407 on the normalized square for a 206:141 horizontal crop. Quiet forest canopy and ground beyond. No border, lettering, numbers, UI, watermark, modern items, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c0d1d736-41ca-4e81-8dd8-5909850f78b6.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop, and 128px thumbnail. The bear’s full face and striking paw, plus the raider’s face, remain inside the crop; the named swipe reads immediately at thumbnail size."
+  },
+  {
+    "cardId": "verdant_lob_05",
+    "name": "Falling Deadwood",
+    "prompt": "Paint an illustration for “Falling Deadwood,” a Verdant lob that drops a heavy branch to knock down one foe. A thick dead limb breaks from an old forest tree and falls diagonally through the center, its recognizable broken trunk and branch tips fully visible; below it an armored raider looks up and recoils at the imminent impact, with a burst of leaves and dust. Make the heavy deadwood and falling action unmistakable. Painterly medieval fantasy collectible-card art, believable weathered wood, bark, foliage and armor, grounded anatomy, dramatic forest light and atmospheric depth in the Hexmancers reference style. Explicit 1:1 SQUARE canvas for an editable 512x512 master; place the entire identity-critical branch, the raider’s face and raised hands inside x24..488,y105..407 on the normalized square for a 206:141 horizontal crop. Quiet expendable canopy and ground at top and bottom. No border, lettering, numbers, UI, watermark, modern items, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-62651d3b-6f1f-4bde-ba3d-5ffb13579ed3.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_lob_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop, and 128px thumbnail. The broken falling limb remains complete and dominant; the raider’s face and raised hands remain in frame, and the drop reads clearly at thumbnail size."
+  },
+  {
+    "cardId": "verdant_ward_05",
+    "name": "Living Hedge Maze",
+    "prompt": "Paint “Living Hedge Maze,” a Verdant ward that raises a heavy living barrier for protection. Show a dense waist-high wall of interwoven thorny green hedge growing across a forest path, its squared rampart silhouette enclosing one clearly visible winding maze opening that bends out of sight. A lone traveler behind the barrier is safely sheltered as green leaves shimmer along the wall. The complete hedge barrier and distinctive entrance are the named subject. Painterly medieval fantasy collectible-card art, finely textured leaves, thorn branches, soil and stone, believable natural growth, luminous directional woodland light and atmospheric depth. Explicit 1:1 SQUARE canvas for an editable 512x512 master; keep the entire barrier, maze opening, and any face or hand within x24..488,y105..407 on the normalized square for a 206:141 horizontal crop. Quiet treetops and forest floor beyond. No frame, lettering, numbers, UI, watermark, modern items, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6596afdc-3013-4309-82e8-8fe59b82ac84.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_ward_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop, and 128px thumbnail. The complete hedge rampart and winding entrance remain visible and read as a maze; the sheltered traveler’s face is fully visible near the upper crop edge."
+  },
+  {
+    "cardId": "verdant_sentry_04",
+    "name": "Beltane Maypole",
+    "prompt": "Fresh illustration for “Beltane Maypole,” a fantasy Verdant sentry that fires repeated bolts. Critical composition: a SHORT, stout maypole in the CENTER, only about 220 pixels tall on a 512x512 square, running from y=145 to y=365; show its complete flower crown, decorated wooden shaft, and clearly visible planted base, with generous open forest background above and below. Do not make it a towering tree-height pole. Colorful spring ribbons stream left and right from the short maypole and become a few slender green-gold bolts aimed toward a small distant raider. Nearby tiny woodland allies glow with renewed courage. Maypole remains the prominent named object. Painterly medieval fantasy card illustration, detailed carved wood, woven fabric, flowers, grounded anatomy, warm dappled light and atmospheric depth, matching painterly Hexmancers references. Explicit 1:1 SQUARE canvas for editable 512x512 master. Keep every identity-critical part of the maypole inside x24..488,y105..407, safe for a horizontal 206:141 crop. No frame, lettering, numbers, UI, watermark, modern items, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-cf214e1b-fc6e-4be2-8f2d-ddf98ce07269.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_sentry_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop, and 128px thumbnail. The complete flower crown, decorated shaft, ribbons and planted base remain visible; maypole identity and bolt action read clearly, with allies secondary."
+  },
+  {
+    "cardId": "verdant_summon_06",
+    "name": "Hornet Hive",
+    "prompt": "Fresh square fantasy card painting for “Hornet Hive,” a Verdant summon that releases a fast, poisonous barrage. Make the complete papery hornet hive alone the unmistakable primary subject: a compact, fully visible teardrop nest hanging from a short branch, centered at x=130..380 and y=125..370 on the square. Show its full rounded top with clear margins and its open entrance; a stream of distinct golden-and-black hornets bursts out and sweeps horizontally across the frame, with restrained green venom glints on several stingers. No people or faces. Compose the whole hive and the main hornet swarm comfortably inside x24..488,y105..407 so the 206:141 wide crop contains the entire named object with margins. Painterly medieval fantasy collectible-card art, intricate believable paper comb and bark, translucent wings, dramatic warm woodland light, soft forest depth, strong readable silhouette at thumbnail size, in the Hexmancers painterly reference style. Explicit 1:1 SQUARE editable 512x512 master. No frame, lettering, numbers, UI, watermark, modern objects, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a8ed4247-b7d5-431e-a5c3-4e4b189acd44.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop (focalPoint y=0.40), and 128px thumbnail. Full nest, entrance, and dense hornet swarm remain in view; the hive reads clearly at card size."
+  },
+  {
+    "cardId": "verdant_boon_03",
+    "name": "Stag's Grace",
+    "prompt": "Fresh painting of “Stag’s Grace,” the Verdant boon of haste and restorative life siphon. Show a graceful but powerful red-gold stag leaping beside a running ranger through a forest; green-gold restorative light flows from stag to ranger. The stag is a medium-sized complete figure, not a close-up: leave generous clear space above its branching antlers so every antler tip has at least 25 pixels of sky/forest margin on the 512x512 canvas. Keep the stag’s entire head and antlers, ranger’s whole face and leading hand comfortably inside the central band x24..488,y105..407; no antler tip touches the top or side edge. Dynamic horizontal motion, both faces readable. Painterly medieval fantasy collectible-card illustration, believable fur, antlers, linen, leather, grounded anatomy, dappled dawn light and atmospheric depth, Hexmancers reference style. Explicit 1:1 SQUARE editable 512x512 master, also designed for 206:141 wide crop. No frame, text, numbers, UI, watermark, modern items, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-23d1fa2e-13a1-42c9-b858-178db7a664ea.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_boon_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed exact 512-square source, upward-adjusted 206:141 crop (focalPoint y=0.40), and 128px thumbnail. Full stag face and antlers plus ranger face and leading hand remain visible; both motion and grace read at card size."
+  },
+  {
+    "cardId": "verdant_charge_04",
+    "name": "Chestnut Basket",
+    "prompt": "Paint “Chestnut Basket,” a Verdant charge that lobs heavy chestnuts to punch through and shove an enemy back. A small woven woodland basket of glossy brown chestnuts tips forward in a hunter’s hands; three recognizable chestnuts arc forcefully toward a surprised armored raider, one striking his shield with a compact spray of leaves and dust. Keep the entire basket, its distinctive chestnuts, the hunter’s hand, and the raider’s face visible in the central band. The named basket is the clear primary object, with a simple readable action. Painterly medieval fantasy collectible-card art, believable wicker, chestnut husks, linen, leather and armor, grounded anatomy, warm dappled forest light, atmospheric depth, Hexmancers reference style. Explicit 1:1 SQUARE canvas for editable 512x512 master; keep critical subject/action in x24..488,y105..407 for 206:141 horizontal crop. Quiet canopy and earth beyond. No frame, lettering, numbers, UI, watermark, modern items, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-493963a5-cead-4153-afea-5d72309e4203.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_charge_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop, and 128px thumbnail. Entire wicker basket, chestnuts, throwing hands, ranger face, and raider face remain readable; the chestnut volley is clear at card size."
+  },
+  {
+    "cardId": "verdant_utility_03",
+    "name": "Squirrel's Cache",
+    "prompt": "Paint “Squirrel’s Cache,” a Verdant utility that recalls a hidden woodland supply cache to its owner. In a mossy forest, a small gray squirrel has opened a concealed hollow-tree stash: a compact wooden cache chest slides from a root-hidden niche into the ranger’s reaching hands, filled with acorns, dried berries and a rolled map. A subtle green recall trail links the hollow to the complete cache. Make the cache container and its acorn store the clear named subject; keep squirrel’s face, ranger’s face and receiving hands visible. Painterly medieval fantasy collectible-card illustration, believable wood, bark, fur, leather and nuts, grounded anatomy, dappled forest light and atmospheric depth, Hexmancers reference style. Explicit 1:1 SQUARE canvas for editable 512x512 master, all identity-critical parts inside x24..488,y105..407 for a 206:141 horizontal crop. Quiet canopy and forest floor beyond. No frame, lettering, numbers, UI, watermark, modern items, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2b70cb7d-d2fc-4d19-ac44-e9cbc3e1a9aa.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_utility_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop, and 128px thumbnail. Cache chest, squirrel’s face, ranger’s face and receiving hands remain inside the crop; stored supplies and recall trail are clear."
+  },
+  {
+    "cardId": "verdant_trap_04",
+    "name": "Punji Stakes",
+    "prompt": "Paint “Punji Stakes,” a Verdant trap made of three long sharpened stakes hidden under forest leaves. At ground level in a shadowed woodland path, show exactly three stout sharpened wooden stakes protruding from a shallow leaf-covered pit in a clear row; their complete pointed tips and embedded bases are visible. A boot has just stopped short at the pit’s edge, and a few disturbed leaves reveal the concealed trap, but the stakes remain the obvious named subject. No gore. Painterly medieval fantasy collectible-card art, finely textured carved wood, soil, leaves, boot leather and moss, dramatic dappled light, atmospheric depth, strong readable silhouette at thumbnail scale in the Hexmancers reference style. Explicit 1:1 SQUARE canvas for editable 512x512 master; keep all three full stakes and tips within x24..488,y105..407 for a 206:141 horizontal crop. Quiet forest canopy and ground beyond. No frame, text, numbers, UI, watermark, modern items, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-dcfd8ffd-a5cf-4d4c-b4f3-53cd9860be7d.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_trap_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop, and 128px thumbnail. All three pointed stakes remain complete in the crop, and the concealed row of sharpened stakes reads clearly at thumbnail scale."
+  },
+  {
+    "cardId": "verdant_environment_02",
+    "name": "Tangled Undergrowth",
+    "prompt": "Paint “Tangled Undergrowth,” a Verdant environment that lays a row of damaging brambles across the battlefield. A dense horizontal band of thorny vines and bramble runners snakes across a forest path from left to right, catching and slowing the boots of two armored raiders as they struggle through; a few leaves and restrained green thorns show the sting. The continuous row of tangled undergrowth is the unmistakable named subject, not generic forest foliage. Painterly medieval fantasy collectible-card illustration, detailed thorned stems, leaves, earth and leather armor, grounded anatomy, dappled dramatic forest light and atmospheric depth, Hexmancers reference style. Explicit 1:1 SQUARE canvas for editable 512x512 master; keep bramble row and any critical faces or hands inside x24..488,y105..407 for 206:141 horizontal crop. Quiet canopy and ground beyond. No frame, lettering, numbers, UI, watermark, modern items, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6061d457-5fa7-4e89-b2ce-6870ef8b63b5.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_environment_02.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop, and 128px thumbnail. Continuous bramble row and both raiders’ faces and hands remain visible; the damaging undergrowth reads immediately."
+  },
+  {
+    "cardId": "verdant_piece_02",
+    "name": "Seed of the World Ash",
+    "prompt": "Paint “Seed of the World Ash,” a legendary Verdant relic that promises delayed regeneration and restoration. In a druid’s open palm rests one large, clearly recognizable dark-gold seed with a tiny green shoot; inside its translucent shell, a luminous vision of the immense World Ash tree rises above a small red-gold pulse of life. Keep the complete seed, palm and the druid’s calm face central and readable; the tree vision is secondary and contained within the seed. Painterly medieval fantasy collectible-card art, tactile seed shell, skin, moss and linen, grounded anatomy, reverent forest light, atmospheric depth and rich but controlled colors in the Hexmancers reference style. Explicit 1:1 SQUARE canvas for editable 512x512 master; entire seed and critical hand/face inside x24..488,y105..407 for a 206:141 horizontal crop. Quiet canopy and ground outside. No frame, lettering, numbers, UI, watermark, modern items, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d7fd04fa-f6f8-4b65-8577-53adf83d94d5.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_piece_02.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.37
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed exact 512-square source, upward-adjusted 206:141 crop (focalPoint y=0.37), and 128px thumbnail. The entire seed and shoot, supporting palm, and druid’s face remain visible; the seed and World Ash vision read clearly."
+  },
+  {
+    "cardId": "verdant_machine_02",
+    "name": "Sharpened Log Palisade",
+    "prompt": "Paint “Sharpened Log Palisade,” a Verdant war machine that raises a poison-tipped wooden wall. A compact defensive palisade fills the center: several thick sharpened logs lashed into a sturdy portable frame, rising as a ward across a woodland path. Show its complete sharpened top row, side supports and planted feet, with subtle green poison sheen on a few points. A ranger behind the wall is sheltered while one incoming arrow sticks harmlessly in the timber. Make the complete log barrier the named subject. Painterly medieval fantasy collectible-card illustration, believable rough timber, rope lashings, moss, leaves and leather, grounded anatomy, dramatic dappled forest light, atmospheric depth in Hexmancers reference style. Explicit 1:1 SQUARE canvas for editable 512x512 master; keep full palisade, arrow and any face/hand inside x24..488,y105..407 for a 206:141 horizontal crop. Quiet canopy and ground beyond. No frame, lettering, numbers, UI, watermark, modern items, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6184ffce-b951-46d7-9636-c5bfca8134ba.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_machine_02.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed exact 512-square source, crop shifted to focalPoint y=0.46, and 128px thumbnail. The full sharpened top row, side supports and planted feet remain visible; the palisade reads as a complete barrier."
+  },
+  {
+    "cardId": "verdant_ace_02",
+    "name": "Hunter's Last Arrow",
+    "prompt": "Paint “Hunter’s Last Arrow,” the final devastating Verdant ace shot, a single piercing line attack that slows its target. Show a determined woodland hunter in profile at left, the hunter’s full face and drawing hand visible as a single long feathered arrow is released horizontally across the frame toward a distant armored foe at right. Keep the complete arrow from nock to pointed head clearly visible within the frame; a subtle green rune glow along its shaft emphasizes the last shot. Strong readable silhouette and clear line of action. Painterly medieval fantasy collectible-card art, believable bowwood, feather, leather and armor, grounded anatomy, dramatic forest light, atmospheric depth, Hexmancers reference style. Explicit 1:1 SQUARE canvas for editable 512x512 master; keep hunter’s face, drawing hand, full arrow and target face inside x24..488,y105..407 for 206:141 horizontal crop. Quiet canopy and forest floor beyond. No frame, lettering, numbers, UI, watermark, modern items, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6b8c8984-043b-4896-9fc4-40c2ea4175fa.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_ace_02.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop, and 128px thumbnail. The full arrow from nock to head, hunter’s face and drawing hand, and target face remain visible; the piercing line reads clearly."
+  },
+  {
+    "cardId": "verdant_aceup_02",
+    "name": "Sap of Renewal",
+    "prompt": "Paint a painterly medieval fantasy collectible-card illustration for the exact card Sap of Renewal. Show an elegant small vial carved from pale wood and glass, filled with luminous amber-green tree sap, held carefully in a weathered ranger's hand while healing light runs through cracked bark into new buds nearby. The single named object, the sap vial, must dominate and read clearly. This card's mechanics empower the next attack and drain life, so suggest renewed vigor in the sap's glow without turning it into an unrelated battle scene. Create a strict 1:1 SQUARE illustration for a 512x512 editable master. Keep the complete vial, stopper, and important hand within x24..488,y105..407; compose a horizontal focal cluster suitable for a 206:141 wide crop, with expendable canopy and ground at top and bottom. Quiet deep forest background, attractive directional morning light, painterly believable glass, bark, leather and hand anatomy, rich nuanced fantasy illustration, no lettering, border, card frame, symbols, UI, watermark, anime, Disney style, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8b364698-615c-4dd4-8b1d-513b10962add.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_aceup_02.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Recovered by direct visual identity match after the generation response mapping was truncated. Shifted focal point upward so the complete stopper, vial and holding hand remain inside the 206:141 crop; the square master is unchanged, and all details read at 128px."
+  },
+  {
+    "cardId": "verdant_claim_02",
+    "name": "Rootbound Glade",
+    "prompt": "Paint a painterly medieval fantasy collectible-card illustration for the exact card Rootbound Glade. Show a hidden glade where enormous living roots have spread outward from an ancient tree to reclaim a small woodland clearing, with a few soft glowing sprouts and a mossy stone boundary; the roots and glade itself are the named subject. This land claim is overgrowth, so communicate an expanding patch of roots and fresh greenery, not a generic spell blast. Create a strict 1:1 SQUARE illustration for a 512x512 editable master. Keep the identifying root mass and clearing centered within x24..488,y105..407; make a strong horizontal arrangement that reads in a 206:141 wide crop, with expendable tree canopy and foreground beyond. Painterly medieval fantasy landscape, richly textured bark and moss, luminous shafts of natural light, layered forest depth, attractive controlled palette, no figures needed, no lettering, border, card frame, symbols, UI, watermark, anime, Disney style, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-85e07e76-ad65-4ba6-8726-5d1712b51f19.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_claim_02.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "The glade and spreading root mass remain centered and legible in the square, 206:141 crop and 128px thumbnail; no face or named object is clipped."
+  },
+  {
+    "cardId": "hero_briar",
+    "name": "Mother Briar",
+    "prompt": "Paint an illustration for the exact Verdant hero card Mother Briar. A formidable elder druid woman with a calm, weathered face and a crown of thorn branches stands in a greenwood clearing, raising both hands as a ring of poison-tipped briars bursts outward around a shadowy foe. Her face, hands and thorn burst define one strong horizontal composition; she is the clear subject, not an abstract magic effect. The mechanics are a burst of poison thorns and steady healing. Strict 1:1 SQUARE composition for editable 512x512 art; keep face, hands and identifying thorn arc within x24..488,y105..407 for a 206:141 card crop, with only canopy and ground outside. Painterly medieval fantasy collectible-card illustration, believable age, skin, leaves and woven cloth, attractive directional forest light, layered atmosphere, readable at thumbnail. No text, frame, UI, lettering, watermark, anime, Disney style, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b507a799-5c8e-4ca1-a3f6-64e79faa3c9d.png",
+    "editableSourcePath": "game/cards/art/masters/hero_briar.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Mother Briar’s face and both raised hands are intact within the square and wide crop. Her poison-thorn arc stays readable in the 128px thumbnail."
+  },
+  {
+    "cardId": "verdant_strike_06",
+    "name": "Volley of the Greenwood",
+    "prompt": "Paint an illustration for the exact Verdant strike card Volley of the Greenwood. A woodland ranger releases a quick volley of slim greenwood arrows from a yew bow; show the archer's focused face, drawing hand, bow, and a clearly readable horizontal cluster of flying wooden arrows. The attack is a fast repeating volley, so emphasize motion across the middle while keeping the ranger and arrows distinct. Strict 1:1 SQUARE composition for editable 512x512 art; keep the face, both relevant hands, bow and arrow volley within x24..488,y105..407 for a 206:141 card crop, with expendable foliage beyond. Painterly medieval fantasy collectible-card illustration, textured wood, leather and cloth, directional natural light, forest depth and clear silhouette at 128px. No text, frame, UI, lettering, watermark, anime, Disney style, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-dabf5779-8a71-4f7f-b2aa-97a8937ce0f1.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "The archer’s face, drawing and bow hands, and complete arrow volley are clear in the square, 206:141 crop and 128px thumbnail."
+  },
+  {
+    "cardId": "verdant_lob_06",
+    "name": "Pinecone Shower",
+    "prompt": "Paint an illustration for the exact Verdant lob card Pinecone Shower. Show several oversized, heavy pinecones dropping from a high pine bough into a forest clearing, with one large foreground pinecone striking the ground and a cross-shaped burst of needles, cones and soil spreading outward. The named pinecones must be unmistakable and the impact readable; the attack has a heavy fuse and cross-pattern splash. Create a strict 1:1 SQUARE canvas for editable 512x512 art. Keep the full foreground pinecone and central cross-impact within x24..488,y105..407 for a 206:141 crop, with expendable canopy and ground beyond. Painterly medieval fantasy collectible-card illustration, detailed scales, sap and forest floor, warm directional light, atmospheric forest depth, high contrast at 128px. No text, frame, UI, lettering, watermark, anime, Disney style, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-823eee06-5cdb-479a-be51-2f478eb3a859.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_lob_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "The central impact pinecone, surrounding shower and crosswise debris all stay visible in the square, wide crop and 128px thumbnail."
+  },
+  {
+    "cardId": "verdant_ward_06",
+    "name": "Baobab Bulwark",
+    "prompt": "Paint an illustration for the exact Verdant ward card Baobab Bulwark. A massive ancient baobab with a broad, solid trunk and roots forms a living long rampart across a forest lane, its bark weathered and mossy, its canopy lush; show the great trunk as an imposing protective wall that blocks passage. The baobab tree and its full protective trunk are the named subject. Create a strict 1:1 SQUARE canvas for editable 512x512 art. Keep the whole defining trunk and roots inside x24..488,y105..407 for the 206:141 crop, arranging the trunk horizontally across the middle; expendable canopy and foreground may extend beyond. Painterly medieval fantasy collectible-card illustration, rich bark and moss texture, attractive directional light, layered woodland atmosphere, readable at 128px. No figures necessary. No text, frame, UI, lettering, watermark, anime, Disney style, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-199c4525-8be9-4073-b0aa-f62e6a3f60fa.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_ward_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "The broad baobab trunk reads as the defensive wall; trunk and defining roots remain within the square and wide crop and read at 128px."
+  },
+  {
+    "cardId": "verdant_sentry_05",
+    "name": "Carved Stag Post",
+    "prompt": "Painterly medieval fantasy collectible-card art for Carved Stag Post. Show a SHORT, stout trail marker post, only knee-high, with a small carved stag head and compact antlers mounted on it; include its whole square-cut base on the ground. The carved marker is no taller than about half the square image. A hidden ranger aims along the path behind it. Compose the complete post and all antler tips in a compact central horizontal grouping, from y175 to y345 on a 512 square, leaving generous clear forest scenery above and below. The card depicts a slow, precise ambush sentry, so a small glint on the ranger's arrow and a narrow path suggest its watchfulness. Strict 1:1 SQUARE, intended 512x512 master and 206:141 wide card crop. Preserve the complete named object entirely within x24..488,y105..407. The post must not be tall or extend toward either edge. Richly detailed carved wood, moss, leaf litter, warm shafts of woodland light, realistic painterly medieval fantasy illustration, readable silhouette at 128px. No lettering, UI, frame, border, symbols, watermark, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a0777aa3-045b-4072-a0c5-a9d0dfb84cdf.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_sentry_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Final shorter-post version keeps the entire antlered carving and base within the square and 206:141 crop; both remain identifiable at 128px. An earlier raw attempt had clipped antler tips and was not used."
+  },
+  {
+    "cardId": "verdant_summon_07",
+    "name": "Whispering Oak",
+    "prompt": "Paint a painterly medieval fantasy collectible-card illustration for Whispering Oak. A towering ancient oak spirit stands guard in a moonlit forest, its expressive face subtly formed in the bark, broad roots braced like legs, and thorny vines curling protectively around its trunk as it blocks a narrow path. Keep the oak itself clearly identifiable as the sturdy guardian; a little drifting leaf whisper may suggest its name, but it is a protective slow sentinel with thorny roots. Strict 1:1 SQUARE composition for a 512x512 editable master. Keep the oak face, protective trunk and roots within x24..488,y105..407 for the 206:141 crop; use a horizontal root spread and keep expendable canopy and forest floor beyond. Painterly medieval fantasy collectible-card illustration, detailed bark, moss, moonlit green-gold highlights, atmospheric depth and a strong readable silhouette at 128px. No words, border, frame, UI, symbols, watermark, anime, Disney style, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a3d56f8f-45d7-4d7d-9af6-eaa805c1a4b8.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Oak face, thorned trunk and protective roots are visible within the square and 206:141 crop; the living-tree guardian remains identifiable at 128px."
+  },
+  {
+    "cardId": "verdant_boon_04",
+    "name": "Chameleon Skin",
+    "prompt": "Paint a painterly medieval fantasy collectible-card illustration for the exact Verdant boon Chameleon Skin. A vividly colored small chameleon clings to a mossy branch, its scales shifting into a perfect green leaf pattern as it vanishes into the foliage; one alert eye and curled tail remain crisply visible. The creature's living camouflaged skin is the named subject, suggesting a brief dodge and renewed radiance without depicting a generic spell. Strict 1:1 SQUARE canvas for an editable 512x512 master. Keep the entire chameleon, face, legs and curled tail within x24..488,y105..407 for the 206:141 card crop; compose it horizontally with quiet foliage above and below. Painterly medieval fantasy collectible-card illustration, detailed scales and dew, attractive shafts of light, lush but controlled palette, readable lizard silhouette at 128px. No lettering, border, card frame, UI, symbols, watermark, anime, Disney style, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4aef118c-4e80-42aa-b43b-8d9437c05ffa.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_boon_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Chameleon face, feet and curled tail fit inside the square and wide crop; its eye and leaf-like scales remain legible at 128px."
+  },
+  {
+    "cardId": "verdant_charge_05",
+    "name": "Hunter's Sling Pouch",
+    "prompt": "Paint a painterly medieval fantasy collectible-card illustration for the exact Verdant charge card Hunter's Sling Pouch. A leather sling pouch filled with smooth acorns and river stones hangs at the hunter's belt, while the hunter's hand grips a short hand-sling and releases one stone in a precise shot; make the named pouch, ammunition and action all easy to read. The mechanics are two charged bolts, one with a critical impact and a small push. Strict 1:1 SQUARE canvas for an editable 512x512 master. Keep the full pouch, hand, sling and launched stone within x24..488,y105..407 for the 206:141 crop, arranged as a horizontal focal group; expendable forest scenery above and below. Painterly medieval fantasy illustration with textured leather, wood, skin and cloth, attractive directional light, clear silhouette at 128px. No text, lettering, frame, border, UI, watermark, anime, Disney style, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-3573a02e-e6c5-46fb-b255-24017b06e2f2.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_charge_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "The entire stone pouch and sling hand stay inside the square and 206:141 crop; the pouch and released projectile remain readable at 128px."
+  },
+  {
+    "cardId": "verdant_utility_04",
+    "name": "Snakeroot Remedy",
+    "prompt": "Paint a painterly medieval fantasy collectible-card illustration for the exact Verdant utility card Snakeroot Remedy. A healer's hand lifts a small glass vial of clear green herbal remedy beside a freshly dug snakeroot plant, its long twisting root and medicinal leaves clearly visible; the antidote and root herb are the named subject, suggesting cleansing poison. Compose one clear object cluster rather than a generic spell scene. Strict 1:1 SQUARE canvas for an editable 512x512 master. Keep the complete vial and stopper, hand, plant leaves and defining snakeroot within x24..488,y105..407 for the 206:141 crop, in a horizontal arrangement; quiet woodland scenery may fill the top and bottom. Painterly medieval fantasy collectible-card illustration, believable glass, root fibers, skin and leather, warm natural light, detailed forest atmosphere, readable at 128px. No text, lettering, frame, border, UI, watermark, anime, Disney style, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6c09f92a-e864-4697-a937-5c0e89ddad1e.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_utility_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Shifted focal point upward so the full stopper, vial, hand and snakeroot remain in the 206:141 crop. The square master is unchanged; all identifying details read at 128px."
+  },
+  {
+    "cardId": "verdant_trap_05",
+    "name": "Stinkhorn Patch",
+    "prompt": "Paint a painterly medieval fantasy collectible-card illustration for the exact Verdant trap Stinkhorn Patch. A tight patch of three broad stinkhorn mushrooms erupts in a forest floor clearing, their pale orange-red caps bursting outward as a dense but attractive green-gold poisonous spore cloud spreads low across the ground. The distinct mushroom patch is the named trap and must dominate; suggest a blast and lingering poison without obscuring the fungi in haze. Strict 1:1 SQUARE canvas for an editable 512x512 master. Keep all three identifying mushrooms and the core blast within x24..488,y105..407 for the 206:141 crop; arrange them horizontally with quiet canopy and ground margins. Painterly medieval fantasy collectible-card illustration, richly detailed caps, stems, spores and moss, directional woodland light, sharp readable silhouette at 128px. No text, frame, border, UI, lettering, symbols, watermark, anime, Disney style, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0d496b44-7844-4ef4-a171-85965092a9b7.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_trap_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "The three named stinkhorns and the center of the poison blast stay intact in the square, 206:141 crop and 128px thumbnail."
+  },
+  {
+    "cardId": "verdant_strike_07",
+    "name": "Outlaw's Split Arrow",
+    "prompt": "Paint an original painterly medieval fantasy collectible-card painting for Outlaw’s Split Arrow: a rugged forest outlaw archer looses an arrow that splits cleanly into two arrowheads mid-flight; clear face, drawing hands, bow and forked projectile, charged line strike, golden woodland light, fine leather/wood/feather detail. Strict square 1:1 composition for 512x512; keep all identity-critical subject within x24..488,y105..407 for a wide card crop, horizontal grouping, expendable forest above/below. No text, frame, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-3eed274f-ffa6-4f8d-b030-bcb58b9d2b4a.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Archer face, both hands, full bow and both split arrowheads remain inside the square master and 206:141 card crop; all read clearly at 128px."
+  },
+  {
+    "cardId": "verdant_lob_07",
+    "name": "Acorn Rain",
+    "prompt": "Painterly medieval fantasy collectible-card painting for Acorn Rain: a shower of large golden-brown acorns falls from oak branches into a forest clearing, several acorns striking and cracking open with leaves and earth flecks; clear named subject and ring-shaped impact. Autumn woodland light, rich bark and leaves. Strict square 1:1 for a 512 master; keep defining acorns and impact within x24..488,y105..407 for a wide card crop. No text, symbols, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6eed305d-4834-4ead-91d1-89085b0f1ee1.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_lob_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Multiple large acorns and the ground impact stay inside the 206:141 crop; the repeated falling acorns read at 128px."
+  },
+  {
+    "cardId": "verdant_ward_07",
+    "name": "Bear Hide Cloak",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Bear Hide Cloak: weathered ranger wears a heavy tawny bear-hide mantle fastened over green leather armor, full furred cloak wrapping shoulders and chest; a subtle curved translucent green ward arc suggests protection. Cloak dominant and unmistakable, firelit forest camp, fine fur and leather. Strict square 1:1 512 master, preserve face, cloak and clasp within x24..488,y105..407 for a wide crop. No text, frame, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-1a0d507f-f199-486b-99de-e7806f846215.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_ward_07.png",
+    "sourceNative": [
+      1672,
+      941
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Crop is shifted fully upward to y=0 so the ranger’s full face, bear-hide mantle and clasp remain visible in the card view; the bear head and cloak read clearly at 128px."
+  },
+  {
+    "cardId": "verdant_sentry_06",
+    "name": "Treehouse Archer Post",
+    "prompt": "Painterly medieval fantasy card art for Treehouse Archer Post: a compact timber archer platform built into the fork of a massive living oak, sturdy guardrails and covered perch; a vigilant elven archer draws a longbow from the elevated post, clearly showing the structure and archer. Living roots subtly regrow around timber, dappled woodland light. Strict 1:1 square 512 master; keep archer, bow and defining post silhouette inside x24..488,y105..407 for wide crop. No text, signage, frame, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d3bf12b8-8c07-495e-b720-6a3bdaed43c6.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_sentry_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "The treehouse platform and archer with drawn bow are intact in the square and wide crop; the post reads at thumbnail size."
+  },
+  {
+    "cardId": "verdant_summon_08",
+    "name": "Weeping Willow",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Weeping Willow: majestic ancient willow tree with broad flowing crown of long green tendrils draping around the trunk, luminous green droplets falling like tears into a forest pool; wistful guardian spirit. Tree is primary, textured bark and misty gold-green woodland. Strict square 1:1 512 master; preserve recognizable canopy, trunk and roots inside x24..488,y105..407 for horizontal card crop. No text, frame, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-96dcecfe-833f-436a-b8b5-9cf1ae2ea74a.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "The willow canopy, draping branches, trunk and roots remain identifiable in the square and wide crop; glowing tears read at 128px."
+  },
+  {
+    "cardId": "verdant_boon_05",
+    "name": "Wild Herb Poultice",
+    "prompt": "Painterly medieval fantasy collectible-card painting for Wild Herb Poultice: healer presses a thick vivid green poultice of crushed leaves onto a wounded ranger’s forearm, cloth strips and fresh herbs nearby; restorative healing, no gore. Clear faces, hands and remedy in a sunlit forest glade. Strict 1:1 square 512 master, keep critical faces, hands and poultice within x24..488,y105..407 for wide crop. No text, labels, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c41499e0-0839-42b8-9bcc-b936f2f4ff7c.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_boon_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Shifted crop fully upward to y=0 to include both healer and patient faces along with hands and poultice; the healing action reads at 128px."
+  },
+  {
+    "cardId": "verdant_charge_06",
+    "name": "Poison Dart Pouch",
+    "prompt": "Painterly medieval fantasy illustration for Poison Dart Pouch: close view of forest hunter’s belt with distinctive leather pouch full of slender wooden darts tipped dark green with venom, gloved hand drawing one dart while another is poised in a short blowpipe. Rich leather, wood and green woodland light. Strict square 1:1 for 512 master; keep pouch and hands within x24..488,y105..407 for wide crop. No text, labels, glyphs, frame, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b114ace3-39f9-457c-a2d5-017340a53c93.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_charge_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4004
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Repositioned wide crop to y≈30: complete pouch body/base and dart load are visible with the dart-drawing fingers; minor hanging belt strap beyond the pouch body is incidental."
+  },
+  {
+    "cardId": "verdant_utility_05",
+    "name": "Ogham Staves",
+    "prompt": "Painterly medieval fantasy card art for Ogham Staves: druid’s hand presents three carved hazel staves bearing abstract ancient ogham-like grooves, wrapped with vine cord; faint leafy glimmer suggests wisdom and spell copying. Complete bundle horizontal across green cloth, forest shrine and warm shafts of light. Strict square 1:1 512 master; full staves, hand and tips inside x24..488,y105..407 for wide crop. No letters, readable text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-15f08c26-a24c-40c0-a6cb-436ffa16f533.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_utility_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "The three complete staves, carved markings and supporting hand remain in the square and wide crop and read as the named artifact at thumbnail size."
+  },
+  {
+    "cardId": "verdant_trap_06",
+    "name": "Pitfall of Thorns",
+    "prompt": "Painterly medieval fantasy collectible-card art for Pitfall of Thorns: concealed forest-floor pit opens beneath a bootstep; three thick thorny bramble stakes spring upward from the rim, leaves and roots partly conceal the trap, a startled boot avoids the center. Clear dangerous spiked pit, no injury, golden-green woodland. Strict square 1:1 512 master; full pit rim and three thorns inside x24..488,y105..407 for wide crop. No text, frame, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-74dc5fc8-17ff-45d6-a4f8-a01cfb6bf2f3.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_trap_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "All three thorn spikes, pit rim and nearby boot stay inside the wide crop; trap identity remains clear at 128px."
+  },
+  {
+    "cardId": "verdant_environment_03",
+    "name": "Kudzu Spread",
+    "prompt": "Painterly medieval fantasy card painting for Kudzu Spread: stone forest ruin and ancient oak rapidly engulfed by thick kudzu vines, broad leaves and tendrils spread crosswise from central patch over path and walls; green growth primary, masonry suggests landscape being reclaimed. Emerald leaves, golden light, textured stone. Strict square 1:1 512 master; central spread and defining vines fit x24..488,y105..407 for wide crop. No text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8f5dc343-b22d-4d07-b037-3f24be896f69.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_environment_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Crosswise kudzu growth and engulfed stone ruin remain clear in the wide crop and at thumbnail size."
+  },
+  {
+    "cardId": "verdant_piece_03",
+    "name": "Horn of the Wild Hunt",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Horn of the Wild Hunt: ancient curved antler hunting horn, pale carved body, aged bronze mouth and vine wrap, held aloft by a forest warden as ghostly stag spirits answer in the wood. Complete ornate horn dominates a radiant leaf-lit woodland. Strict 1:1 square 512 master; full horn and hand inside x24..488,y105..407 for wide crop. No text, runes, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-13b64f91-a993-4f33-927c-0b831a0f1c61.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_piece_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "The complete horn, bell, mouthpiece and holding hand remain in the 206:141 crop; spectral stags support the hunt theme."
+  },
+  {
+    "cardId": "verdant_machine_03",
+    "name": "Sapling Catapult",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Sapling Catapult: small ingenious siege catapult built from living sapling trunks, vine lashings and forked branches, druid crew loads a round seed pod into wooden sling; green leaves regrow from its limbs. Clear catapult and seed ammunition, forest clearing, dynamic warm green light. Strict 1:1 square 512 master; catapult, sling, seed and hands within x24..488,y105..407 for wide crop. No text, frame, modern hardware, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-49150221-5f3b-4b20-9745-f55c7c995aa7.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_machine_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Shifted crop up to keep catapult arm, complete sling, seed pod and loading hands visible; lower wheel base is incidental and partly below wide crop."
+  },
+  {
+    "cardId": "verdant_ace_03",
+    "name": "Wrath of the Wild",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Wrath of the Wild: furious forest guardian unleashes a devastating wave of living thorn vines and poisonous leaves in every direction, roots burst through earth and emerald shockwave expands broadly; readable central druid and circular spread, not shapeless glare. Dramatic woodland light, bark, leaves and stone. Strict square 1:1 512 master; guardian and wave within x24..488,y105..407 for wide crop. No text, rune, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2f610b96-fe77-404c-b881-69b7530ab92f.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_ace_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "The guardian’s face, hands and central figure remain readable inside the radial thorn-and-leaf wave in the wide crop."
+  },
+  {
+    "cardId": "verdant_aceup_03",
+    "name": "Root Snare Wrap",
+    "prompt": "Painterly medieval fantasy collectible-card art for Root Snare Wrap: ranger winds living green roots and vines around forearms and torso as protective battle wraps; a root lash catches an approaching foe, slowing him. Clearly show the wrapped arm as named magical gear, leafy glow, forest fight, natural materials. Strict 1:1 square 512 master; face, wrapped arms and root snare within x24..488,y105..407 for wide crop. No text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-35527082-4956-46eb-86a7-a22c95900605.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_aceup_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Shifted crop to y=0 to preserve ranger face, wrapped arms and root lash snaring the opponent; the root wraps dominate the action."
+  },
+  {
+    "cardId": "verdant_claim_03",
+    "name": "Wildwood Reclamation",
+    "prompt": "Painterly medieval fantasy collectible-card painting for Wildwood Reclamation: abandoned stone fortress ruins transformed as the wildwood reclaims them, mighty roots split old walls, young trees and lush moss fill the courtyard, small druid welcomes the forest’s return. Majestic sunbeams, ancient stone and vegetation, broad landscape. Strict square 1:1 512 master; central ruin and reclaiming roots fit x24..488,y105..407 for wide crop. No text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-3c97271b-7ae2-41fe-952c-184c947afcbe.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_claim_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Root-wrapped ruins, overgrowth and restored forest fill the wide crop and remain recognizable at thumbnail size."
+  },
+  {
+    "cardId": "hero_fang",
+    "name": "Fang the Beastcaller",
+    "prompt": "Painterly medieval fantasy hero card art for Fang the Beastcaller: fierce forest hunter in green-brown leather and leaf cloak raises a hand in a beastcall as a powerful jaguar pounces toward an unseen foe; both Fang’s commanding face and jaguar are clear, subtle green aura links them. Grounded anatomy, wild forest dusk, textured fur and leather. Strict 1:1 square 512 master; face, calling hand and jaguar head/front paws inside x24..488,y105..407 for wide crop. No text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0cbad15c-f21b-4cd8-b8c2-dd48fb11d376.png",
+    "editableSourcePath": "game/cards/art/masters/hero_fang.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Shift crop to y=0 to retain Fang’s full face and calling hand with the jaguar’s face and paws in the action."
+  },
+  {
+    "cardId": "verdant_strike_08",
+    "name": "Jaguar Pounce",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Jaguar Pounce: sleek spotted jaguar launches in sudden diagonal pounce through jungle foliage, muscles extended, face and forepaws sharply readable, leaves and dust burst behind to suggest recoil. Jaguar’s pouncing action is primary, emerald light, detailed fur and anatomy. Strict square 1:1 512 master; complete jaguar face and paws inside x24..488,y105..407 for wide crop. No text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-419630f4-63d0-48ce-acdb-b06327286d12.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Crop shifted upward to y≈40 to preserve the full jaguar face while keeping both pouncing forepaws and claws within the wide view."
+  },
+  {
+    "cardId": "verdant_lob_08",
+    "name": "Seed Pod Barrage",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Seed Pod Barrage: large green seed pods burst in a fast horizontal volley from enchanted vine launcher; several heavy pods fly in a row, some split and scatter seeds and leaves. Clear pods and barrage, forest clearing, golden-green light, organic textures. Strict square 1:1 512 master; all pods and trajectory fit x24..488,y105..407 for wide crop. No text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d426f3c3-2cfd-40c9-8862-8595c56fcfbe.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_lob_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "The horizontal row of whole and bursting seed pods remains intact in the wide crop and reads clearly at thumbnail size."
+  },
+  {
+    "cardId": "verdant_ward_08",
+    "name": "Moss Mantle",
+    "prompt": "Painterly medieval fantasy collectible-card art for Moss Mantle: woodland guardian wears a broad mantle of emerald moss, fern fronds and small healing flowers; translucent green protective wall of mossy roots arches around them as a minor wound closes. Mantle and face fully readable, detailed moss and cloth, filtered forest light. Strict square 1:1 512 master; full face and mantle inside x24..488,y105..407 for wide crop. No text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a2dacdce-dfef-43d9-bd09-79c86ad2403d.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_ward_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Shifted crop to y=0 so the guardian’s full face joins the moss mantle, healing hand and leafy ward in view."
+  },
+  {
+    "cardId": "verdant_sentry_07",
+    "name": "Druid's Standing Stone",
+    "prompt": "Painterly medieval fantasy collectible-card art for Druid’s Standing Stone: solitary weathered standing stone carved with abstract branching druidic grooves, moss and roots at its base; hidden guardian spirit darts from behind as a hostile silhouette is caught in chain of green light. Upright stone is main sentry, bold slab and texture, natural light. Strict 1:1 square 512 master; full stone and action inside x24..488,y105..407 for wide crop. No readable text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d52f2d03-5d12-4b7a-a41b-91af52731be7.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_sentry_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Shifted crop upward to y≈30 to retain the standing stone’s complete crown and carvings while preserving the ambush spirit and chain."
+  },
+  {
+    "cardId": "verdant_summon_09",
+    "name": "Elder Ent",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Elder Ent: colossal ancient walking tree guardian with wise weathered face in trunk, mossy shoulders, mature branch crown and root legs; stands protectively as forest folk gather behind, rallying them. Strong Ent silhouette, warm green-gold woodland light and bark textures. Strict 1:1 square 512 master; Ent face and branch-arms inside x24..488,y105..407 for wide crop. No text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c94d655d-d2da-4288-b0d4-e410f263b390.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Shifted crop to y=0 so the Ent’s face is fully visible with trunk and branch arms; roots and woodland allies continue below the card view."
+  },
+  {
+    "cardId": "verdant_boon_06",
+    "name": "Willow Bark Tea",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Willow Bark Tea: small earthenware cup of amber herbal tea brewed from pale willow bark, steam curls beside a fresh willow twig and bark shavings; healer offers cup to weary ranger, warm recovery. Cup, steam, bark and hands visible, forest shelter and firelight. Strict square 1:1 512 master; complete cup and hands within x24..488,y105..407 for wide crop. No text, labels, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7a171762-8e73-4dbc-869d-57f9a9cc4abc.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_boon_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Shifted crop to y=0 to retain the ranger’s full face along with steaming tea cup, bark shavings and both offering hands."
+  },
+  {
+    "cardId": "verdant_charge_07",
+    "name": "Herb Bundle",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Herb Bundle: compact tied bundle of fresh medicinal herbs, leaves, roots and pale blossoms wrapped in linen and twine lies in apothecary’s hand; small burst of healing green light and leaves radiates from it to mend a nicked glove. Bundle is clear named charge, horizontal composition, forest clearing and soft natural light. Strict square 1:1 512 master; full bundle and hands fit x24..488,y105..407. No text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4255d41c-ae68-4f7a-ad07-28c4eabcaf8d.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_charge_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Complete herb bundle, supporting hand and gentle healing burst fit within the wide crop and remain clear at thumbnail size."
+  },
+  {
+    "cardId": "verdant_utility_06",
+    "name": "Mycelium Network",
+    "prompt": "Painterly medieval fantasy card art for Mycelium Network: beneath forest floor, luminous web of fine white fungal threads links clusters of amber-violet mushrooms; above ground, two identical rare mushrooms emerge in mirrored pair to suggest copying. Cutaway earth with roots and glowing mycelium pathways, twilight organic detail. Strict square 1:1 512 master; both mushroom clusters and connecting network inside x24..488,y105..407 for wide crop. No text, labels, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-99b7f5e0-1997-4188-840f-10cbf3022e7a.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_utility_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Upward crop preserves both mirrored mushroom clusters in full while retaining their luminous connecting mycelium web."
+  },
+  {
+    "cardId": "verdant_trap_07",
+    "name": "Deadfall",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Deadfall: heavy log trap drops from hidden forest rig, smashing into path with leaves, dust and green healing sparks; vines and springy sapling mechanism hold it. Clear falling-log trap, bold horizontal log and impact, believable bark and ropes, directional light. Strict square 1:1 512 master; entire log, trap rig and burst inside x24..488,y105..407 for wide crop. No text, frame, UI, gore, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-3375663a-c314-4298-a7f8-dcaae43a9266.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_trap_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "The full suspended log, rope rig and impact burst remain readable within the wide crop."
+  },
+  {
+    "cardId": "verdant_strike_09",
+    "name": "Tiger's Rake",
+    "prompt": "Paint Tiger's Rake as a verdant strike: a battle-worn ranger recoils after a single enormous spectral tiger claw rakes across a wooden shield, three bright curved gouges and splintering planks marking a clean diagonal wedge. A recognizable tiger face and striped shoulder emerge briefly in green-gold leaf light behind the claw. Keep the ranger's face/guarding hand and complete claw impact readable. Painterly medieval fantasy card illustration, grounded anatomy, tactile leather, wood and fur, rich forest greens, directional sunlight and atmospheric depth. Explicit 1:1 square 512 master; keep face, hand and full claw impact within x24..488 y105..407 for 206:141 crop; quiet foliage above/below. No frame, text, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8bdae002-9fee-49a7-be52-58f786b158f5.png",
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "reviewNote": "Reviewed square, upward-shifted crop (focal y .40), and thumbnail: ranger's face/hand, spectral tiger face and full claw rake remain visible; shift restores tiger's upper face.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "verdant_lob_09",
+    "name": "Sticky Sap Glob",
+    "prompt": "Paint Sticky Sap Glob as a heavy verdant lob: a goblin alchemist in forest leathers throws one large amber-green glob of thick sticky tree sap onto a stone path, where it bursts into cohesive glossy ropes that pin an armored pursuer's boots to the ground. Show the whole glob and sticky splatter, with the pursuer stumbling; no flame or explosion. Painterly medieval fantasy collectible-card art, tactile bark, sap, leather and stone, lush green woodland, attractive warm light and readable action. Explicit 1:1 square 512 master; keep thrower's face/hand and the whole sap impact inside x24..488 y105..407, horizontal 206:141 crop. No lettering, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-43ede2eb-91c4-4480-9c00-605154dba202.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Reviewed square master, default crop and thumbnail: intact amber sap glob and sticky ground burst are prominent, with the trapped pursuer's boots visible; square normalization trims the thrower to a partial figure at left.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/verdant_lob_09.png",
+    "sourceNative": [
+      1515,
+      1038
+    ]
+  },
+  {
+    "cardId": "verdant_ward_09",
+    "name": "Oak Heartwood Shield",
+    "prompt": "Paint Oak Heartwood Shield as a verdant ward: a sturdy round shield carved from a single cross-section of ancient oak, its growth rings visible and heartwood glowing softly, held by a defender as a translucent amber-green barrier blooms around it to stop incoming arrows. The complete shield is dominant; show the defender's face and gripping hand and a few arrows halted at the barrier. Painterly medieval fantasy card art, believable oak grain, leather grip and iron fittings, dappled forest light, atmospheric depth. Explicit 1:1 square for editable 512 master; keep face, hand, full shield and impact within x24..488 y105..407 for horizontal 206:141 crop. No frame, text, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7892a705-60a9-4c5c-b475-3ba3be8aaff1.png",
+    "focalPoint": [
+      0.5,
+      0.49
+    ],
+    "reviewNote": "Reviewed square, upward-shifted crop (focal y .40), and thumbnail: complete heartwood shield, defender's face/hand and halted arrows remain visible; shift brings the forehead into frame. Parent review lowered the crop to retain the complete shield rim, gripping hand and face; only upper hair/background crop, and source bytes are unchanged.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/verdant_ward_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "verdant_sentry_08",
+    "name": "Mandrake Patch",
+    "prompt": "Paint Mandrake Patch as a rare verdant sentry: a small cultivated patch of several uncanny mandrake plants with humanlike root faces, broad leaves and tangled root bodies emerging from rich dark soil in a forest clearing. The foremost mandrake, face and leafy crown dominate; other root-faced plants form a low row behind it, mouths open as they project a focused cone of pollen and leaves toward an approaching armored intruder. Painterly medieval fantasy collectible-card art, grounded eerie botanical detail, warm green-gold light and deep woodland atmosphere. Explicit 1:1 square 512 master; keep primary mandrake face/crown and cone action within x24..488 y105..407 for horizontal crop. No text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6026bbff-ac6b-4c5d-9a75-0e4f8c8e8668.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Reviewed square master, default crop and thumbnail: leading mandrake's face and crown, several root-faced plants, pollen cone and intruder remain readable.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/verdant_sentry_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "verdant_boon_07",
+    "name": "Mistletoe Sprig",
+    "prompt": "Paint Mistletoe Sprig as a verdant boon: a small fresh sprig of mistletoe with waxy green leaves and pearl-white berries held carefully between a druid's fingers, gathered beneath an ancient oak. A subtle circular current of green-gold vitality flows from the berries into the druid's open palm and softly back toward the living boughs, suggesting a measured restorative exchange; the sprig remains the clear focal object. Painterly medieval fantasy collectible-card illustration, nuanced leaf and bark textures, warm dappled light, atmospheric woodland depth and grounded hands. Explicit 1:1 square 512x512 master; keep complete sprig, berries, hand and energy exchange within x24..488 y105..407 for 206:141 crop, quiet foliage beyond. No text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0dc36872-497a-4b0a-a276-e69b95bfb74c.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Reviewed square master, default crop and thumbnail: full white-berried mistletoe sprig and both hands remain visible, with a restrained energy current connecting the leaves to the open palm.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/verdant_boon_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "verdant_charge_09",
+    "name": "Seed Satchel",
+    "prompt": "A woodland ranger kneels beside an open complete leather seed satchel at waist height, opening it and sowing colorful seeds into soil where tiny sprouts grow. Entire ranger face and both hands clearly visible with margin, complete satchel, flap, strap and buckle shown. Painterly forest light, square composition.",
+    "generatedPath": "/workspace/generated_images/exec-0e35780a-8f2e-423a-a69e-0ff2c6fea3fd.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_charge_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "reviewNote": "Repainted after initial square clipped the ranger head. Focal point y=0.40 keeps the complete face, hands and full satchel in the wide crop; seeds and seedlings read at thumbnail size.",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "verdant_utility_07",
+    "name": "Lyrebird Mimicry",
+    "prompt": "A complete lyrebird stands centered on a mossy branch with sharp eye and beak and ornate full fan-tail. All curved tail tips stay below the top edge and away from sides; lifted head mimics a song with subtle light ripples. Dappled woodland, painterly layered feathers, strict square for card crop.",
+    "generatedPath": "/workspace/generated_images/exec-7b983f8e-b4fc-4e53-8ef3-dc1ebc183b43.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_utility_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "reviewNote": "Repainted after initial tail tips touched the square edge. Focal point y=0.40 keeps the full fan-tail and bird face within the wide crop; lower legs extend beyond the crop as incidental detail.",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "verdant_trap_08",
+    "name": "Fairy Ring",
+    "prompt": "A complete unbroken ring of three clusters of luminous mushrooms forms a clearly visible snare circle in a moonlit woodland clearing, viewed slightly from above. A tiny fairy pauses outside; delicate light traces the ring without obscuring mushrooms. Square composition keeps the full ring and fairy in the horizontal card crop.",
+    "generatedPath": "/workspace/generated_images/exec-4d8f149e-f041-4466-965d-5a6cb1cae33c.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_trap_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "The whole mushroom circle is closed and visible in square, wide crop, and thumbnail; fairy is secondary and unobstructed.",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "verdant_environment_04",
+    "name": "Heather Moor",
+    "prompt": "A broad windswept moor covered in flowering purple heather and low green bramble, with one clear bramble row tracing a natural path. Warm blossoms, rolling hills, standing stones, and morning mist, painterly fantasy landscape. Square composition with defining heather and row in the card crop.",
+    "generatedPath": "/workspace/generated_images/exec-cb77d109-25a3-4a51-8b05-923132d5ce28.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_environment_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Heather moor and bramble row read clearly in the square, wide crop, and thumbnail; no identity-critical element is clipped.",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "verdant_piece_04",
+    "name": "Pipes of the Goat-Footed",
+    "prompt": "A friendly faun musician with curved horns and goat legs plays a complete set of short wooden pan pipes held in both hands near the face. Every pipe end, both hands, and the faun face are clear; gentle green restorative light and new leaves, deep forest glade, painterly fantasy.",
+    "generatedPath": "/workspace/generated_images/exec-55efaba5-d404-44f0-9a86-00ce29da0582.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_piece_04.png",
+    "sourceNative": [
+      1513,
+      1040
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "reviewNote": "Focal point y=0.42 retains the faun face, both playing hands and full row of pipe ends in the wide crop; legs are incidental. Thumbnail preserves the named instrument.",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "verdant_summon_10",
+    "name": "Jack-in-the-Green",
+    "prompt": "Paint Jack-in-the-Green as a mossy Ent guardian emerging in a woodland glade: a towering but compact ancient tree spirit with a expressive bark face framed by leaves and roots like a living folk mask, broad mossy shoulders and branch arms curved protectively around a small seedling. Tiny glowing seeds drift from its crown while a gentle green ward gathers around the seedling. Painterly medieval fantasy collectible-card illustration, nuanced bark, moss, leaf and root textures, natural expressive face, warm green-gold light and atmospheric depth. Explicit 1:1 square 512 master; keep Ent face, branch hands and protected seedling within x24..488 y105..407 for horizontal 206:141 crop; foliage and root ends can extend beyond. No costume or person disguised as a tree, no text, frame, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4162c591-366d-4eeb-a06d-147487f82512.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Reviewed square, default crop and thumbnail: Ent's full expressive face, protective branch hands and warded seedling remain clear; outer canopy and low roots act as atmosphere.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "verdant_machine_04",
+    "name": "Treehouse Lookout",
+    "prompt": "Paint Treehouse Lookout as a compact broad horizontal subject inside a true square: one small but complete wooden lookout hut built into a squat fork of an ancient oak, with the full leafy crown forming a low arch above the roof and a short sturdy trunk base plus two visible support roots beneath. The tree and hut must be deliberately short and broad, not a tall vertical tree; compose so crown tip, full hut, lookout's face at the open front window, short ladder and both tree base supports all fit together inside x35..477 y125..390 of the 512 square. The hut is the central named structure, with a small watchful sentry's face and hand visible. Painterly medieval fantasy collectible-card art, believable timber joinery, bark, rope, leaves, dappled forest light, textured brushwork. Explicit 1:1 square for 512 master and 206:141 crop. No tall tree, no cropped roof or base, no text, frame, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-cf773a63-c9e1-4942-b152-769ad6c832c7.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "First tall treehouse attempt clipped its crown/base and was discarded. Reviewed final square, default crop and thumbnail: complete roof, hut, short ladder, supports and root base fit; outer canopy extends beyond crop.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/verdant_machine_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "hero_oakheart",
+    "name": "Oakheart the Ancient",
+    "prompt": "Paint Oakheart the Ancient as a heroic ancient Ent: a massive wise oak guardian with a deeply carved expressive face in the trunk, amber eyes, long moss beard and branch arms; he bursts thick roots up around an armored foe, whose boots are caught in the roots, while a faint bark-green aura protects Oakheart. Keep Oakheart's face and reaching hands central and clearly visible; root ends may trail beyond. Painterly medieval fantasy hero illustration, realistic ancient bark, moss, leaves and roots, dramatic forest light, textured brushwork and atmospheric depth. Explicit 1:1 square 512 master; keep face, hands and root impact within x24..488 y105..407 for 206:141 crop; incidental lower roots may crop. No text, frame, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e3041519-13c8-4907-ab61-38e0627ff538.png",
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "reviewNote": "Reviewed square, crop shifted up (focal y .40), and thumbnail: Oakheart's full face and branch hands remain readable with the caught foe and root burst still visible; lower roots are incidental.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/hero_oakheart.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "verdant_strike_10",
+    "name": "Army Ant March",
+    "prompt": "Paint Army Ant March as a verdant chain strike: a disciplined line of large crimson-black soldier ants advances diagonally across a stone path, striking three linked armored targets in sequence; the lead ant bites one guard's gauntlet, a second ant leaps onto the next shield, and a bright pinpoint impact on the third suggests a critical hit. The ants form a clearly readable marching chain, with distinct heads, mandibles and segmented bodies. Painterly medieval fantasy collectible-card art, believable insect anatomy and polished armor, forest floor, directional green-gold light, textured brushwork. Explicit 1:1 square 512 master; keep lead ants and all three linked impacts within x24..488 y105..407 for 206:141 crop; loose leaves may extend beyond. No text, frame, UI, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-088729e0-9bdf-43a1-a976-90c479e0ed28.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Reviewed square, default crop and thumbnail: distinct ants form a diagonal march across several linked armor impacts; the lead ant and bright final strike remain readable.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "verdant_lob_10",
+    "name": "Wild Honeycomb Hurl",
+    "prompt": "Paint Wild Honeycomb Hurl as a verdant lob: a woodland beekeeper in leather gloves, face visible on the left, hurls one whole round-oval golden honeycomb across a forest clearing toward an armored opponent on the right. Keep the entire comb visible as a thick hexagonal wax lattice with recognizable cells, not merely a glob of honey. It is the central named object in mid-flight; honey strings trail behind, and the opponent is knocked backward as the comb bursts sticky amber honey over their shield and boots. Stage beekeeper face/throwing hand, complete comb, and recipient in one horizontal band, all distinct and readable. Painterly medieval fantasy collectible-card art, detailed wax and honey, bark cloth and leaf light, cinematic green-gold lighting, textured brushwork. Explicit 1:1 square 512 master; keep operator face/hand and complete honeycomb within x24..488 y105..407 for 206:141 crop; secondary legs may crop. No text, frame, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-050df42a-38e0-4815-b899-feaed92aa996.png",
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "reviewNote": "Reviewed square, crop shifted up (focal y .40), and thumbnail: beekeeper face/hand, full hexagonal honeycomb and honey impact on the opponent remain visible; opponent leg tips are secondary.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/verdant_lob_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "verdant_ward_10",
+    "name": "Ghillie Suit",
+    "prompt": "Square 1:1 512x512 painterly medieval fantasy collectible-card master for exact name \"Ghillie Suit\". A woodland scout wearing a carefully woven ghillie suit of moss, fern fronds, bark strips and soft green camouflage, crouches among sunlit forest roots. Keep the scout's complete alert face and one gloved hand visible beside the leafy shoulder mantle, with the suit's natural camouflage clearly the protective ward; subdued green light glows through leaves like a quiet barrier. Compact portrait, no full body needed. Traditional painterly high-fantasy illustration in the established Hexmancers style: expressive brushwork, convincing organic materials, natural expressive anatomy, attractive directional light, atmospheric forest depth, compact clear silhouette. Keep every named object, main face and relevant hands inside x24..488,y105..407 after square normalization for centered 206:141 card crop; quiet expendable scenery above and below. Readable at 96px thumbnail. No frame, text, symbols, numbers, UI, anime, cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-358b0640-1bc0-429a-a048-b44d3f73cde7.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_ward_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Square master, centered wide crop and thumbnail inspected. Scout face, glove and layered leafy camouflage remain clearly readable against forest cover."
+  },
+  {
+    "cardId": "verdant_boon_08",
+    "name": "Shaman's Vision Quest",
+    "prompt": "Square 1:1 512x512 painterly medieval fantasy collectible-card master for exact name \"Shaman's Vision Quest\". A seasoned forest shaman sits by a small sacred fire in a moonlit grove, eyes open in visionary focus, one hand raised toward luminous drifting pollen and spirit-like patterns in the canopy. A faint radiant green-gold aura forms a calm circle around their head and chest, suggesting clarity and a quick rush of insight. Keep the shaman's face and raised hand clear; visions remain atmospheric, not a separate cluttered scene. Traditional painterly high-fantasy illustration in the established Hexmancers style: expressive brushwork, convincing organic materials, natural expressive anatomy, attractive directional light, atmospheric forest depth, compact clear silhouette. Keep every named object, main face and relevant hands inside x24..488,y105..407 after square normalization for centered 206:141 card crop; quiet expendable scenery above and below. Readable at 96px thumbnail. No frame, text, symbols, numbers, UI, anime, cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-68802837-1cd2-46d5-bb52-a73a368d3d2e.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_boon_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Square master, centered wide crop and thumbnail inspected. Shaman face, raised hand, luminous aura and leafy spirit-vision motif remain clear; ambient canopy detail may crop."
+  },
+  {
+    "cardId": "verdant_charge_10",
+    "name": "Hornet Jar",
+    "prompt": "Square 1:1 512x512 painterly medieval fantasy collectible-card master for exact name \"Hornet Jar\". A young forest alchemist holds one compact clear glass hornet jar at chest height, beside their face. The complete sealed glass jar, fitted cork stopper and a few visible golden-black hornets inside are all centered on the same vertical level as the alchemist's attentive face and both hands. One hornet sparks with green poison magic behind the glass. Keep jar and face equal-sized and close together; no hanging pouch, no object low beneath the face. Traditional painterly high-fantasy illustration in the established Hexmancers style: expressive brushwork, convincing organic materials, natural expressive anatomy, attractive directional light, atmospheric forest depth, compact clear silhouette. Keep every named object, main face and relevant hands inside x24..488,y105..407 after square normalization for centered 206:141 card crop; quiet expendable scenery above and below. Readable at 96px thumbnail. No frame, text, symbols, numbers, UI, anime, cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-70546453-3128-4487-b51c-678e9550ab59.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_charge_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Focal point raised to retain the full cork stopper and base with face and both hands at the same height. Adjusted crop and thumbnail inspected; jar and hornets remain dominant."
+  },
+  {
+    "cardId": "verdant_utility_08",
+    "name": "Anansi's Bag of Tales",
+    "prompt": "Square 1:1 512x512 painterly medieval fantasy collectible-card master for exact name \"Anansi's Bag of Tales\". Anansi, a wise dignified spider-trickster storyteller with a humanlike expressive face and subtle spider traits, holds one complete small woven story bag at chest height right beside his face. Both hands cradle the entire bag, whose mouth releases a few tiny glowing story-images like a bird, moon and river, representing drawing one tale. Bag, face and hands sit side by side at the same height; no dangling prop below the face, no text. Traditional painterly high-fantasy illustration in the established Hexmancers style: expressive brushwork, convincing organic materials, natural expressive anatomy, attractive directional light, atmospheric forest depth, compact clear silhouette. Keep every named object, main face and relevant hands inside x24..488,y105..407 after square normalization for centered 206:141 card crop; quiet expendable scenery above and below. Readable at 96px thumbnail. No frame, text, symbols, numbers, UI, anime, cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-e2df528a-7493-42b0-9323-0c4d2899207a.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_utility_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Focal point raised so Anansi’s full face, hands and complete chest-height woven story bag remain in the actual crop. Adjusted crop and thumbnail inspected; symbolic tale glimmers are secondary."
+  },
+  {
+    "cardId": "verdant_trap_09",
+    "name": "Peat Bog Mire",
+    "prompt": "Square 1:1 painterly medieval fantasy collectible-card illustration for \"Peat Bog Mire\". A lone wary traveler has stepped into a deep peat bog and is caught in a natural root snare: dark peat grips one boot and tangled brown roots loop around the ankle, while the traveler kneels forward with both hands braced on a mossy hummock. Show the traveler's complete alarmed face, both hands, trapped boot and root loop together in a compact horizontal composition; face/action near center, bog surface and reeds around them. The peat itself is dark, thick and sucking, with ripples and a few amber marsh lights. Keep face, hands, snared ankle and central bog feature within x35..477,y125..390 for the centered wide crop; legs/background may extend. Traditional painterly forest-fantasy art, believable wet moss, roots, leather and mud, moody green light, expressive brushwork consistent with accepted Hexmancers art. No frame, text, symbols, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a7cf8291-5bf7-4362-a9c0-6443e0051a6d.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_trap_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Focal point raised so traveler face, braced hands and root-snared ankle remain together in the crop. Adjusted wide crop and thumbnail inspected; peat, looped roots and sinking boot read clearly."
+  },
+  {
+    "cardId": "verdant_environment_05",
+    "name": "Rainforest Canopy",
+    "prompt": "Paint an illustration for the fantasy card Rainforest Canopy. Actual mechanics cue: a short cross-pattern bramble rainforest-canopy environment. A view through the upper canopy of an ancient tropical rainforest, dense broad leaves, lianas and crossing thorny vines forming a clear bramble cross pattern above a dim green forest floor; shafts of sunlight reveal layered crowns and humid mist. A small parrot is distant and incidental; the canopy itself dominates. Painterly medieval fantasy collectible-card art, expressive faces, believable foliage, fur, bark and leather, warm directional light, visible textured brushwork and atmospheric depth. Compact horizontal composition, one clear named subject. Keep all important face, both hands, whole named pelt if present and any primary action inside x24…488,y105…407 on the normalized 512 square; make it clear in a 206:141 crop and 128px thumbnail. Explicit 1:1 square 512×512 master, quiet expendable scenery above and below. No text, labels, border, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-1a5f59f7-5456-487e-b8a2-a8387cba4060.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_environment_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. Dense rainforest crowns, sunlit canopy layers, and crossing thorny vines make the named canopy clear; outer leaves and distant parrot are incidental."
+  },
+  {
+    "cardId": "verdant_piece_05",
+    "name": "Pelt of the Jaguar King",
+    "prompt": "Paint an illustration for the fantasy card Pelt of the Jaguar King. Actual mechanics cue: a rallying healing legendary jaguar pelt artifact. A complete ceremonial jaguar pelt mantle displayed across the shoulders of a compact jungle guardian, the full tawny spotted pelt including its feline head and four dangling paws visible from head to paw, centered in the scene. Beside it the guardian's clear face and one hand gently touch the pelt at shoulder height. The pelt is the named artifact and main focal object; do not replace it with a live jaguar. Painterly medieval fantasy collectible-card art, expressive faces, believable foliage, fur, bark and leather, warm directional light, visible textured brushwork and atmospheric depth. Compact horizontal composition, one clear named subject. Keep all important face, both hands, whole named pelt if present and any primary action inside x24…488,y105…407 on the normalized 512 square; make it clear in a 206:141 crop and 128px thumbnail. Explicit 1:1 square 512×512 master, quiet expendable scenery above and below. No text, labels, border, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-bdf92d8b-4f8c-4b13-9eff-80cb471fb0dc.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_piece_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed square, crop at focal [0.5,0.38], and 128x88 thumbnail. The wearer’s full face and the pelt’s feline head, forepaws, and spotted hide remain readable together; incidental lower fringe is cropped."
+  },
+  {
+    "cardId": "verdant_summon_11",
+    "name": "Leshy of the Birchwood",
+    "prompt": "Paint an illustration for the fantasy card Leshy of the Birchwood. Actual mechanics cue: a sturdy thorny Leshy summon that mends. Leshy of the Birchwood, a compact ancient woodland spirit with a complete kindly bark-carved face, visible eyes, crown of silver birch twigs and small white leaves, sturdy branch shoulders and two thorny hands. It mends a broken birch sapling with a gentle touch; warm green forest glade behind. Keep the spirit's face and both hands central. Painterly medieval fantasy collectible-card art, expressive faces, believable foliage, fur, bark and leather, warm directional light, visible textured brushwork and atmospheric depth. Compact horizontal composition, one clear named subject. Keep all important face, both hands, whole named pelt if present and any primary action inside x24…488,y105…407 on the normalized 512 square; make it clear in a 206:141 crop and 128px thumbnail. Explicit 1:1 square 512×512 master, quiet expendable scenery above and below. No text, labels, border, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2745b67b-6aeb-4788-8fed-4bb31d57cdb7.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_11.png",
+    "sourceNative": [
+      1516,
+      1038
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. Leshy’s bark face, eyes and birch crown remain distinct; thorny hands and the mending sapling are visible in the crop."
+  },
+  {
+    "cardId": "hero_sylva",
+    "name": "Sylva the Wild Archer",
+    "prompt": "Paint an illustration for the fantasy card Sylva the Wild Archer. Actual mechanics cue: Sylva launches four thorn arrows and gains agility. Sylva the Wild Archer, a skilled elf woman with warm olive skin, pointed ears, dark braided hair and green leather archer's clothes. A compact close three-quarter portrait: complete face and eyes clearly visible beside her curved yew bow; both hands hold the bow and nock a thorn-fletched arrow, with a few tiny thorn arrows streaking into distant targets. Confident calm expression, no large foliage hiding her. Painterly medieval fantasy collectible-card art, expressive faces, believable foliage, fur, bark and leather, warm directional light, visible textured brushwork and atmospheric depth. Compact horizontal composition, one clear named subject. Keep all important face, both hands, whole named pelt if present and any primary action inside x24…488,y105…407 on the normalized 512 square; make it clear in a 206:141 crop and 128px thumbnail. Explicit 1:1 square 512×512 master, quiet expendable scenery above and below. No text, labels, border, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6012c20a-8d81-4583-9e48-d4aa0f983a7d.png",
+    "editableSourcePath": "game/cards/art/masters/hero_sylva.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. Sylva’s eyes, full face, both hands, curved bow and thorn-fletched arrow read clearly; distant targets and arrow trails are secondary."
+  },
+  {
+    "cardId": "verdant_strike_11",
+    "name": "Blowgun Dart",
+    "prompt": "Paint an illustration for the fantasy strike card Blowgun Dart. A compact forest scout with uncovered complete face and both eyes visible in calm profile, holding a short dark-wood blowgun horizontally to her lips; both hands hold the tube, and one small leaf-fletched poisoned dart with its sharp stone point is shown leaving the muzzle. Keep the complete blowgun tube from mouthpiece to muzzle and the whole dart, point and fletching inside the horizontal center of the image; the scout's face and hands remain clear. Lush verdant jungle is soft background only. This is a focused spear-like dart strike, not an arrow or modern weapon. Painterly medieval fantasy collectible-card art, visible brushwork, nuanced wood and leaf materials, grounded face, dappled green light. Explicit square 1:1 canvas for editable 512×512. Keep face, eyes, both hands, entire tube and complete dart within x24…488,y105…407 and readable in a 128px thumbnail. No text, border, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-814cf33d-14e8-401c-a4eb-25e7fe19b7ca.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. Scout’s full face and both hands are visible; complete blowgun and dart, including the sharp point and leaf fletching, fit within the crop."
+  }
+]

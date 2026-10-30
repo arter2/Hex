@@ -1,0 +1,1496 @@
+[
+  {
+    "id": "hex_bolt",
+    "name": "Hex Bolt",
+    "type": "strike",
+    "color": "shadow"
+  },
+  {
+    "id": "soul_drain",
+    "name": "Soul Drain",
+    "type": "strike",
+    "color": "shadow"
+  },
+  {
+    "id": "blood_lance",
+    "name": "Blood Lance",
+    "type": "strike",
+    "color": "shadow"
+  },
+  {
+    "id": "grave_pit",
+    "name": "Grave Pit",
+    "type": "lob",
+    "color": "shadow"
+  },
+  {
+    "id": "bone_wall",
+    "name": "Bone Wall",
+    "type": "ward",
+    "color": "shadow"
+  },
+  {
+    "id": "wraith_totem",
+    "name": "Wraith Totem",
+    "type": "sentry",
+    "color": "shadow"
+  },
+  {
+    "id": "dark_pact",
+    "name": "Dark Pact",
+    "type": "boon",
+    "color": "shadow"
+  },
+  {
+    "id": "eclipse",
+    "name": "Eclipse",
+    "type": "strike",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_strike_01",
+    "name": "Bone Splinter",
+    "type": "strike",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_strike_02",
+    "name": "Gravedigger's Spade",
+    "type": "strike",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_strike_03",
+    "name": "Miasma Wave",
+    "type": "strike",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_strike_04",
+    "name": "Mold Spore Volley",
+    "type": "strike",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_strike_05",
+    "name": "Acid Vial Splash",
+    "type": "strike",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_strike_06",
+    "name": "Evil Eye",
+    "type": "strike",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_strike_07",
+    "name": "Hook and Chain",
+    "type": "strike",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_strike_08",
+    "name": "Crow Swarm",
+    "type": "strike",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_strike_09",
+    "name": "Creeping Fog",
+    "type": "strike",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_strike_10",
+    "name": "Spider Silk Shot",
+    "type": "strike",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_strike_11",
+    "name": "Bog Muck Splash",
+    "type": "strike",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_strike_12",
+    "name": "Yurei's Lament",
+    "type": "strike",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_strike_13",
+    "name": "Banshee Wail",
+    "type": "strike",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_strike_14",
+    "name": "Strigoi Bite",
+    "type": "strike",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_strike_15",
+    "name": "Plague Breath",
+    "type": "strike",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_strike_16",
+    "name": "Hellfire Lash",
+    "type": "strike",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_strike_17",
+    "name": "Gallows Rope",
+    "type": "strike",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_strike_18",
+    "name": "Raven of Ill Omen",
+    "type": "strike",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_strike_19",
+    "name": "Moonlit Rake",
+    "type": "strike",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_strike_20",
+    "name": "Bloodletting Blade",
+    "type": "strike",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_strike_21",
+    "name": "Web Spray",
+    "type": "strike",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_strike_22",
+    "name": "Jiangshi Hop",
+    "type": "strike",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_strike_23",
+    "name": "Asanbosam Hook",
+    "type": "strike",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_strike_24",
+    "name": "Hellhound Howl",
+    "type": "strike",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_strike_25",
+    "name": "Infernal Brand",
+    "type": "strike",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_strike_26",
+    "name": "Reaper's Scythe",
+    "type": "strike",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_strike_27",
+    "name": "Danse Macabre",
+    "type": "strike",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_strike_28",
+    "name": "Onryo's Grudge",
+    "type": "strike",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_strike_29",
+    "name": "Manananggal Swoop",
+    "type": "strike",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_strike_30",
+    "name": "Mara's Ride",
+    "type": "strike",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_strike_31",
+    "name": "Death Card",
+    "type": "strike",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_strike_32",
+    "name": "Wild Hunt of the Dead",
+    "type": "strike",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_strike_33",
+    "name": "Gashadokuro's Fist",
+    "type": "strike",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_strike_34",
+    "name": "Maw of the Abyss",
+    "type": "strike",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_lob_01",
+    "name": "Plague Flask",
+    "type": "lob",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_lob_02",
+    "name": "Skull Bomb",
+    "type": "lob",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_lob_03",
+    "name": "Grave Dirt Handful",
+    "type": "lob",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_lob_04",
+    "name": "Hex Bag",
+    "type": "lob",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_lob_05",
+    "name": "Bat Cloud",
+    "type": "lob",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_lob_06",
+    "name": "Swamp Gas Bubble",
+    "type": "lob",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_lob_07",
+    "name": "Ossuary Urn",
+    "type": "lob",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_lob_08",
+    "name": "Cauldron Spill",
+    "type": "lob",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_lob_09",
+    "name": "Witch's Brew Toss",
+    "type": "lob",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_lob_10",
+    "name": "Coffin Drop",
+    "type": "lob",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_lob_11",
+    "name": "Spider Egg Sac",
+    "type": "lob",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_lob_12",
+    "name": "Funeral Wreath",
+    "type": "lob",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_lob_13",
+    "name": "Brimstone Hail",
+    "type": "lob",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_lob_14",
+    "name": "The Tower Card",
+    "type": "lob",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_lob_15",
+    "name": "Pox Cloud",
+    "type": "lob",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_lob_16",
+    "name": "Bottled Nightmare",
+    "type": "lob",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_lob_17",
+    "name": "Black Death",
+    "type": "lob",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_ward_01",
+    "name": "Skull-Topped Fence",
+    "type": "ward",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_ward_02",
+    "name": "Coffin Lid",
+    "type": "ward",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_ward_03",
+    "name": "Cobweb Veil",
+    "type": "ward",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_ward_04",
+    "name": "Hook Fence",
+    "type": "ward",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_ward_05",
+    "name": "Beetle Carapace",
+    "type": "ward",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_ward_06",
+    "name": "Lead-Lined Coffin",
+    "type": "ward",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_ward_07",
+    "name": "Ossuary Wall",
+    "type": "ward",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_ward_08",
+    "name": "Crypt Door",
+    "type": "ward",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_ward_09",
+    "name": "Demon Hide",
+    "type": "ward",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_ward_10",
+    "name": "Shroud of Fog",
+    "type": "ward",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_ward_11",
+    "name": "Iron Maiden Shell",
+    "type": "ward",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_ward_12",
+    "name": "Barrow Mound",
+    "type": "ward",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_ward_13",
+    "name": "Hell's Gate",
+    "type": "ward",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_sentry_01",
+    "name": "Skull Lantern",
+    "type": "sentry",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_sentry_02",
+    "name": "Stingy Jack's Lantern",
+    "type": "sentry",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_sentry_03",
+    "name": "Crow Perch",
+    "type": "sentry",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_sentry_04",
+    "name": "Will-o'-the-Wisp",
+    "type": "sentry",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_sentry_05",
+    "name": "Rot Censer",
+    "type": "sentry",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_sentry_06",
+    "name": "Bone Totem",
+    "type": "sentry",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_sentry_07",
+    "name": "Pin Doll",
+    "type": "sentry",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_sentry_08",
+    "name": "Gallows Tree",
+    "type": "sentry",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_sentry_09",
+    "name": "Bubbling Cauldron",
+    "type": "sentry",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_sentry_10",
+    "name": "Spider Nest",
+    "type": "sentry",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_sentry_11",
+    "name": "Blood Fountain",
+    "type": "sentry",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_sentry_12",
+    "name": "Cursed Mirror",
+    "type": "sentry",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_boon_01",
+    "name": "Shadow Step",
+    "type": "boon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_boon_02",
+    "name": "Bat Form",
+    "type": "boon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_boon_03",
+    "name": "Black Cat's Luck",
+    "type": "boon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_boon_04",
+    "name": "Sip of Blood",
+    "type": "boon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_boon_05",
+    "name": "Embalming Salts",
+    "type": "boon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_boon_06",
+    "name": "Ritual Candles",
+    "type": "boon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_boon_07",
+    "name": "Demon's Bargain",
+    "type": "boon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_boon_08",
+    "name": "Witching Hour",
+    "type": "boon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_boon_09",
+    "name": "Mist Form",
+    "type": "boon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_boon_10",
+    "name": "Full Moon Frenzy",
+    "type": "boon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_boon_11",
+    "name": "Blood Moon",
+    "type": "boon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_boon_12",
+    "name": "Crossroads Bargain",
+    "type": "boon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_boon_13",
+    "name": "Undying Will",
+    "type": "boon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_boon_14",
+    "name": "Infernal Contract",
+    "type": "boon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_charge_01",
+    "name": "Bag of Teeth",
+    "type": "charge",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_charge_02",
+    "name": "Coffin Nails",
+    "type": "charge",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_charge_03",
+    "name": "Spider Fangs",
+    "type": "charge",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_strike_35",
+    "name": "Bone Darts",
+    "type": "strike",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_01",
+    "name": "Belfry Bats",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_charge_04",
+    "name": "Crow Feathers",
+    "type": "charge",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_charge_05",
+    "name": "Nightshade Berries",
+    "type": "charge",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_lob_18",
+    "name": "Jar of Carrion Beetles",
+    "type": "lob",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_charge_06",
+    "name": "Plague Vials",
+    "type": "charge",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_charge_07",
+    "name": "Leech Jar",
+    "type": "charge",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_charge_08",
+    "name": "Mold Jars",
+    "type": "charge",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_charge_09",
+    "name": "Dungeon Chains",
+    "type": "charge",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_02",
+    "name": "Mandrake Roots",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_charge_10",
+    "name": "Ferryman's Coins",
+    "type": "charge",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_charge_11",
+    "name": "Hellfire Embers",
+    "type": "charge",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_charge_12",
+    "name": "Banshee's Comb",
+    "type": "charge",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_charge_13",
+    "name": "Vampire Fang Necklace",
+    "type": "charge",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_charge_14",
+    "name": "Pandora's Jar",
+    "type": "charge",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_utility_01",
+    "name": "Three-Card Reading",
+    "type": "utility",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_utility_02",
+    "name": "Casting the Bones",
+    "type": "utility",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_utility_03",
+    "name": "Grave Robbing",
+    "type": "utility",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_utility_04",
+    "name": "Tarot Spread",
+    "type": "utility",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_utility_05",
+    "name": "Seance",
+    "type": "utility",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_utility_06",
+    "name": "Plague Doctor's Tonic",
+    "type": "utility",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_utility_07",
+    "name": "Raise the Dead",
+    "type": "utility",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_utility_08",
+    "name": "Doppelganger",
+    "type": "utility",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_utility_09",
+    "name": "Necromancer's Grimoire",
+    "type": "utility",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_trap_01",
+    "name": "Rusted Mantrap",
+    "type": "trap",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_trap_02",
+    "name": "Open Grave",
+    "type": "trap",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_trap_03",
+    "name": "Sucking Bog",
+    "type": "trap",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_trap_04",
+    "name": "Trapdoor Spider Lair",
+    "type": "trap",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_trap_05",
+    "name": "Plague Mine",
+    "type": "trap",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_trap_06",
+    "name": "Rigged Coffin",
+    "type": "trap",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_trap_07",
+    "name": "Oubliette",
+    "type": "trap",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_trap_08",
+    "name": "The Hanged Man",
+    "type": "trap",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_trap_09",
+    "name": "Cursed Tomb",
+    "type": "trap",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_environment_01",
+    "name": "Haunted Bog",
+    "type": "environment",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_environment_02",
+    "name": "Graveyard Fog",
+    "type": "environment",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_environment_03",
+    "name": "Webbed Hollow",
+    "type": "environment",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_environment_04",
+    "name": "Graveyard Chill",
+    "type": "environment",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_environment_05",
+    "name": "Restless Graves",
+    "type": "environment",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_environment_06",
+    "name": "Hellfire Rift",
+    "type": "environment",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_environment_07",
+    "name": "Acid Rain",
+    "type": "environment",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_environment_08",
+    "name": "Draugr's Barrow Frost",
+    "type": "environment",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_environment_09",
+    "name": "Witch's Thicket",
+    "type": "environment",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_environment_10",
+    "name": "Catacomb Collapse",
+    "type": "environment",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_environment_11",
+    "name": "Mouth of Hell",
+    "type": "environment",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_piece_01",
+    "name": "Crown of the Lich King",
+    "type": "piece",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_piece_02",
+    "name": "Fang of the First Vampire",
+    "type": "piece",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_piece_03",
+    "name": "Candle of the Hanged Man",
+    "type": "piece",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_piece_04",
+    "name": "Cauldron of the Bone Mother",
+    "type": "piece",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_piece_05",
+    "name": "Mask of the Plague Doctor",
+    "type": "piece",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_03",
+    "name": "Skeleton Warrior",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_04",
+    "name": "Skeleton Archer",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_05",
+    "name": "Bone Rattler",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_06",
+    "name": "Shambling Zombie",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_07",
+    "name": "Plague Zombie",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_08",
+    "name": "Ghoul",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_09",
+    "name": "Poltergeist",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_10",
+    "name": "Vampire Thrall",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_11",
+    "name": "Vampire Bat",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_12",
+    "name": "Tokoloshe",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_13",
+    "name": "Adze",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_14",
+    "name": "Night-Pack Wolf",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_15",
+    "name": "Cave Spider",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_16",
+    "name": "Death's-Head Moth",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_17",
+    "name": "Carrion Beetle",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_18",
+    "name": "Cave Centipede",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_19",
+    "name": "Plague Rat",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_20",
+    "name": "Bog Leech",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_21",
+    "name": "Gravedigger",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_22",
+    "name": "Dungeon Jailer",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_23",
+    "name": "Brimstone Imp",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_24",
+    "name": "Murder of Crows",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_25",
+    "name": "Witch's Toad",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_26",
+    "name": "Black Cat Familiar",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_27",
+    "name": "Haugbui",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_28",
+    "name": "Jiangshi",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_29",
+    "name": "Nachzehrer",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_30",
+    "name": "Yurei",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_31",
+    "name": "Vetala",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_32",
+    "name": "Mara",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_33",
+    "name": "Pontianak",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_34",
+    "name": "Bog Revenant",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_35",
+    "name": "Loup-Garou",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_36",
+    "name": "Bayou Rougarou",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_37",
+    "name": "Barghest",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_38",
+    "name": "Black Cadejo",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_39",
+    "name": "Night Mare",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_40",
+    "name": "Black Widow",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_41",
+    "name": "Bog Witch",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_42",
+    "name": "Plague Doctor",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_43",
+    "name": "Necromancer",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_44",
+    "name": "Horned Night Visitor",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_45",
+    "name": "Omen Raven",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_46",
+    "name": "Draugr",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_47",
+    "name": "Onryo",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_48",
+    "name": "Bean Sidhe",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_49",
+    "name": "Lich",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_50",
+    "name": "Ankou",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_51",
+    "name": "Strigoi",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_52",
+    "name": "Aswang",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_53",
+    "name": "Manananggal",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_54",
+    "name": "Asanbosam",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_55",
+    "name": "Werewolf",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_56",
+    "name": "Black Shuck",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_57",
+    "name": "Antlered Hunger",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_58",
+    "name": "Jorogumo",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_59",
+    "name": "Rat King",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_60",
+    "name": "Black Annis",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_61",
+    "name": "Pit Fiend",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_62",
+    "name": "Rakshasa",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_63",
+    "name": "Morrigan's Raven",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_64",
+    "name": "Gashadokuro",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_65",
+    "name": "La Llorona",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_66",
+    "name": "Dullahan",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_67",
+    "name": "Grim Reaper",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_68",
+    "name": "Baba Yaga",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_69",
+    "name": "The Erlking",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_machine_01",
+    "name": "Bone Ballista",
+    "type": "machine",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_machine_02",
+    "name": "Skull Catapult",
+    "type": "machine",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_machine_03",
+    "name": "Torture Rack",
+    "type": "machine",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_machine_04",
+    "name": "Coffin Cannon",
+    "type": "machine",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_machine_05",
+    "name": "Plague Trebuchet",
+    "type": "machine",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_summon_70",
+    "name": "Iron Maiden",
+    "type": "summon",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_sentry_13",
+    "name": "Gibbet Tower",
+    "type": "sentry",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_machine_06",
+    "name": "Hut on Chicken Legs",
+    "type": "machine",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_ace_01",
+    "name": "Banshee's Final Wail",
+    "type": "ace",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_ace_02",
+    "name": "Reaper's Due",
+    "type": "ace",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_ace_03",
+    "name": "Death's Door",
+    "type": "ace",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_aceup_01",
+    "name": "Cursed Bullet",
+    "type": "aceup",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_aceup_02",
+    "name": "Blood Price",
+    "type": "aceup",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_aceup_03",
+    "name": "Fog of Dread",
+    "type": "aceup",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_claim_01",
+    "name": "Spreading Mire",
+    "type": "claim",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_claim_02",
+    "name": "Sunken Bog",
+    "type": "claim",
+    "color": "shadow"
+  },
+  {
+    "id": "shadow_claim_03",
+    "name": "The Drowned Fen",
+    "type": "claim",
+    "color": "shadow"
+  },
+  {
+    "id": "hero_widow",
+    "name": "The Nightwidow",
+    "type": "hero",
+    "color": "shadow"
+  },
+  {
+    "id": "hero_morrow",
+    "name": "Morrow the Lich",
+    "type": "hero",
+    "color": "shadow"
+  },
+  {
+    "id": "hero_vex",
+    "name": "Vex, the Night Blade",
+    "type": "hero",
+    "color": "shadow"
+  },
+  {
+    "id": "hero_jester",
+    "name": "The Hollow Jester",
+    "type": "hero",
+    "color": "shadow"
+  },
+  {
+    "id": "hero_nox",
+    "name": "Nox the Shadow King",
+    "type": "hero",
+    "color": "shadow"
+  },
+  {
+    "id": "hero_mordo",
+    "name": "Graveborn Mordo",
+    "type": "hero",
+    "color": "shadow"
+  },
+  {
+    "id": "hero_shade",
+    "name": "Shade the Silent",
+    "type": "hero",
+    "color": "shadow"
+  },
+  {
+    "id": "hero_banshee",
+    "name": "The Banshee",
+    "type": "hero",
+    "color": "shadow"
+  },
+  {
+    "id": "hero_sanguis",
+    "name": "Count Sanguis",
+    "type": "hero",
+    "color": "shadow"
+  },
+  {
+    "id": "hero_hexa",
+    "name": "Hexa the Curse-Weaver",
+    "type": "hero",
+    "color": "shadow"
+  },
+  {
+    "id": "hero_reaper",
+    "name": "The Pale Reaper",
+    "type": "hero",
+    "color": "shadow"
+  },
+  {
+    "id": "hero_arachna",
+    "name": "Arachna",
+    "type": "hero",
+    "color": "shadow"
+  },
+  {
+    "id": "hero_necros",
+    "name": "Necros the Bone Lord",
+    "type": "hero",
+    "color": "shadow"
+  },
+  {
+    "id": "hero_corvina",
+    "name": "Corvina, Raven Witch",
+    "type": "hero",
+    "color": "shadow"
+  },
+  {
+    "id": "grave_rampart",
+    "name": "Grave Rampart",
+    "type": "ward",
+    "color": "shadow"
+  }
+]

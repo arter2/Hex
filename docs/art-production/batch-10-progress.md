@@ -1,16 +1,8 @@
-# Batch 10 production progress
+# Batch 10 completed artwork
 
-**200 of 200 new 512×512 sources saved; 195 approved.**
+**200 new editable 512×512 sources approved and exported, 25 per colour.** All 40 five-card packets passed parent crop/thumbnail review. The full registry contains 1034 illustrations, with 919 catalogue cards pending.
 
-0 sources remain ungenerated. 0 saved source(s) require repainting. 39 five-card packets have passed parent crop/thumbnail review. This is not a completed 200-card delivery.
-
-Production resumed after the 30 October 2026 21:33:05 UTC reset; a successful generation confirmed service availability before the other artists restarted. Jobs use the shared five-card queue described in `PACKET-WORKFLOW.md`.
-
-Current runtime illustrations: 834. New sources are registered only after the complete batch passes review and export checks. Earlier artwork is preserved. No complete batch-10 ZIP or 200-card handoff folder exists yet.
-
-## Resume and integration
-
-Read `batch-10-brief.md`, `batch-10-worker-state.json` and `PACKET-WORKFLOW.md`. Resume only missing IDs in reserved jobs and any explicitly rejected repaint. Ledger reservations do not establish that artist processes are running. The parent reviews real crops and thumbnails, pins source hashes, and dispatches another job. If a usage cap appears, stop all new generation until the reported reset. Do not activate partial batch-10 sources or package them as a completed delivery.
+The incremental delivery is `card-art-deliveries/batch-10-200/`: 200 new sources plus 600 display crops, exact-name/ID mapping, checksums and Claude’s integration README. Runtime image/markup validation and preservation checks are recorded in `batch-10-validation.json`; the package audit is `AUDIT.json` inside the delivery. Earlier supplied and generated artwork remains unchanged. No ZIP is required for this Git handoff.
 
 ## Saved sources
 
@@ -119,7 +111,7 @@ Read `batch-10-brief.md`, `batch-10-worker-state.json` and `PACKET-WORKFLOW.md`.
 | The Hollow Jester | `hero_jester` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_jester.png) |
 | Oakheart the Ancient | `hero_oakheart` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_oakheart.png) |
 | The Oracle | `hero_oracle` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_oracle.png) |
-| Seraphiel | `hero_seraphiel` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/hero_seraphiel.png) |
+| Seraphiel | `hero_seraphiel` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_seraphiel.png) |
 | Sola Flamewright | `hero_sola` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_sola.png) |
 | Sylva the Wild Archer | `hero_sylva` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_sylva.png) |
 | Tempest the Stormcaller | `hero_tempest` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_tempest.png) |
@@ -128,20 +120,20 @@ Read `batch-10-brief.md`, `batch-10-worker-state.json` and `PACKET-WORKFLOW.md`.
 | Tesserae Pouch | `light_charge_08` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_charge_08.png) |
 | Genoese Crossbow Bolts | `light_charge_09` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_charge_09.png) |
 | Rose Garden of Shiraz | `light_environment_07` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_environment_07.png) |
-| Collapsing Colonnade | `light_environment_08` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/light_environment_08.png) |
+| Collapsing Colonnade | `light_environment_08` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_environment_08.png) |
 | Alchemist's Flask | `light_lob_09` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_lob_09.png) |
 | Salve Jar | `light_lob_10` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_lob_10.png) |
 | Battering Ram | `light_machine_04` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_machine_04.png) |
-| Wicker Mantlet | `light_machine_05` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/light_machine_05.png) |
+| Wicker Mantlet | `light_machine_05` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_machine_05.png) |
 | Scales of the Final Judge | `light_piece_05` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_piece_05.png) |
 | Obelisk of the Sun | `light_sentry_09` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_sentry_09.png) |
 | Caracol Observatory | `light_sentry_10` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_sentry_10.png) |
 | Zephyr's Breath | `light_strike_08` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_strike_08.png) |
 | Mistral Gale | `light_strike_09` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_strike_09.png) |
 | Chiron, Healer of Heroes | `light_summon_04` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_summon_04.png) |
-| White Unicorn | `light_summon_05` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/light_summon_05.png) |
+| White Unicorn | `light_summon_05` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_summon_05.png) |
 | Tomb Builder's Pitfall | `light_trap_08` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_trap_08.png) |
-| Daedalus's Snare | `light_trap_09` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/light_trap_09.png) |
+| Daedalus's Snare | `light_trap_09` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_trap_09.png) |
 | Cleric's Absolution | `light_utility_08` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_utility_08.png) |
 | Aryabhata's Tables | `light_utility_09` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_utility_09.png) |
 | Shieldwall of the Fyrd | `light_ward_10` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_ward_10.png) |

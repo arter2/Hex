@@ -3,7 +3,7 @@
   "workers": {
     "/root/b10_worker_1": {
       "packet": "light-05",
-      "state": "running"
+      "state": "idle"
     },
     "/root/b10_worker_2": {
       "packet": "shadow-05",
@@ -65,7 +65,8 @@
     "brown-05",
     "verdant-05",
     "shadow-05",
-    "storm-05"
+    "storm-05",
+    "light-05"
   ],
   "reviewedSources": {
     "shadow_strike_08": {
@@ -847,6 +848,26 @@
     "storm_strike_10": {
       "file": "game/cards/art/masters/storm_strike_10.png",
       "sha256": "f3d01f6d05bba8fff6d8679f9c7f6e69eb369d914335e430be20c05f33fb3fe6"
+    },
+    "light_trap_09": {
+      "file": "game/cards/art/masters/light_trap_09.png",
+      "sha256": "3443f91e8415cbb50509ea4fac9e412f6c6e6649fa68bccdab390abecfe53ce3"
+    },
+    "light_environment_08": {
+      "file": "game/cards/art/masters/light_environment_08.png",
+      "sha256": "20467c92b324fe09df538ff385d5d8400982a491d462fa4edb07bed854ad5709"
+    },
+    "light_summon_05": {
+      "file": "game/cards/art/masters/light_summon_05.png",
+      "sha256": "cc099b5fd91dc7909ffae62d8cbac94cd8165dd07805709fc071acad32ddb449"
+    },
+    "light_machine_05": {
+      "file": "game/cards/art/masters/light_machine_05.png",
+      "sha256": "eb5a47a8ea9ac07650a9c329056d0f47565863acd10570925bdab915a7cf76fc"
+    },
+    "hero_seraphiel": {
+      "file": "game/cards/art/masters/hero_seraphiel.png",
+      "sha256": "ab2590821ce9ffee4c1e61049bec689bcb6cd2696e56c9eb10de9829405219a3"
     }
   },
   "previousGenerationPause": {

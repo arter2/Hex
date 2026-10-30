@@ -1829,8 +1829,8 @@
   {
     "cardId": "shadow_piece_04",
     "name": "Cauldron of the Bone Mother",
-    "prompt": "Paint an illustration for the legendary medieval fantasy artifact Cauldron of the Bone Mother. Center one complete, entire ornate iron cauldron, from its rim to its feet, on a stone hearth; it is visibly fashioned with a bone-carved rim, three sturdy feet and bone handles, filled with dark broth and a few pale bones. Behind it, the Bone Mother is an elderly hooded witch whose complete face and two working hands hover over the vessel, stirring with a wooden spoon; make cauldron the dominant named object. Painterly medieval fantasy collectible-card art, handmade brush texture on iron, bone, wool and stone, atmospheric emberlight with cold shadow, refined narrative staging; no photorealism. Square 1:1 editable 512×512 master. Keep the complete cauldron and the witch's face and hands inside x24…488,y105…407 for 206:141 card crop, quiet hearth atmosphere above and below. No labels, text, UI, border, anime, Disney-like cartoon or pixel art.",
-    "generatedPath": "/workspace/generated_images/exec-7daea471-53bb-405d-a6aa-b4a3afd72901.png",
+    "prompt": "Square 1:1 fantasy card painting, HORIZONTAL SIDE-BY-SIDE COMPOSITION for Cauldron of the Bone Mother. Do not place a full-height witch behind or above a pot. Put the complete squat bone-decorated cauldron on the LEFT, and the Bone Mother’s SMALL SEATED BUST immediately to the RIGHT of it at roughly the same height. The witch’s head is beside the cauldron, not stacked over it: position her clear whole face and open eyes around x330,y230; her small shoulders stay around y270. One arm reaches LEFT to stir, the other hand rests on the cauldron rim. The cauldron is only 200 pixels tall, at x50…280 and y190…390, with its entire rim, body and all three feet visible. The witch’s whole face and both eyes, both hands, and all three cauldron feet must be inside the final horizontal crop and strictly inside normalized-square safe band x24…488,y105…407. Keep visual subjects compact and low, with empty crypt atmosphere above. The face must not be above y180, feet must not go below y395. Arrangement should read left-to-right: pot, then witch’s face, both in a single horizontal band. Painterly medieval fantasy card art, attractive candlelight, textured iron and bone, grounded elderly face. Explicit 1:1 square, 512 master. No stacked portrait, no tall witch, no tall pot, no cropped face/eyes/feet, no text/frame/UI, no anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-eee2c54c-a89b-47cb-a73e-176ac0791cc4.png",
     "editableSourcePath": "game/cards/art/masters/shadow_piece_04.png",
     "sourceNative": [
       1254,
@@ -1842,6 +1842,6 @@
     ],
     "status": "generated",
     "batch": 10,
-    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. The complete cauldron and its feet fit the crop; the Bone Mother's face and stirring hands remain visible above it."
+    "reviewNote": "Repainted again to use a compact side-by-side layout; preserved all prior attempts in /tmp/shadow02-attempts. Reviewed replacement square, actual 206:141 crop and 128x88 thumbnail. The Bone Mother’s complete eyes, face, and both hands are visible beside the cauldron; its rim, body, and all three feet fit in the crop."
   }
 ]

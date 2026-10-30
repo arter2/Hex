@@ -1753,5 +1753,95 @@
     "reviewNote": "The first output depicted a mortar and pestle and was replaced. Adjusted focal point to preserve the alchemist face and full mortar in the wide crop; lower wheel rims are slightly trimmed, while the cannon and loading action remain clear. Parent crop review lowered framing to retain both full wheel rims, the mortar, hands and face; source unchanged.",
     "status": "generated",
     "batch": 10
+  },
+  {
+    "cardId": "brown_instant_27",
+    "name": "Elven Flechette",
+    "prompt": "Elven scout holds a complete slender leaf-steel flechette dart in foreground, with visible barbed head and feather fletching; focused face, hand and matching bracer darts. Painterly high fantasy forest, strict square; face, hand and entire dart inside x40..472,y125..390 for 206:141 crop.",
+    "generatedPath": "/workspace/generated_images/exec-21316ec2-0580-477c-a133-517f9ec41c92.png",
+    "editableSourcePath": "game/cards/art/masters/brown_instant_27.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Elf face, holding hand, and complete flechette with head and fletching remain clear in square, wide crop, and thumbnail.",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "brown_machine_31",
+    "name": "Troll Boulder Sling",
+    "prompt": "A powerful troll crouches beside a compact complete wooden torsion catapult on four wheels, holding a boulder in its sling cradle. Troll face and hands sit at machine height; all wheels, feet, full throwing arm, rope cradle, crossbar and supports are visible. Painterly mountain fortress, square; whole named object and face inside x48..464,y125..390 for wide crop.",
+    "generatedPath": "/workspace/generated_images/exec-015073f8-8665-4e8d-a40b-e3fea6a8c4e7.png",
+    "editableSourcePath": "game/cards/art/masters/brown_machine_31.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Compact sling catapult, all four wheels, troll face and boulder-loading hands are complete and readable in square, wide crop, and thumbnail.",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "brown_instant_28",
+    "name": "Bolas",
+    "prompt": "Human ranger calmly holds one complete three-weight bolas stretched between both hands at chest height; all iron weights and connecting knotted cord visible. Painterly dusk woodland, square; face, hands and whole bolas in crop. Upward focal adjustment keeps face and complete portable object inside 206:141 view.",
+    "generatedPath": "/workspace/generated_images/exec-ef5d110a-9359-470d-8926-1393eb2b8b60.png",
+    "editableSourcePath": "game/cards/art/masters/brown_instant_28.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "reviewNote": "All three weights and the full cord remain visible; focalPoint y=0.42 brings the ranger face into the wide crop. The crop lightly trims upper hair, with facial features unobstructed.",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "brown_machine_32",
+    "name": "Depth Charge Launcher",
+    "prompt": "Compact complete bronze underwater mechanical launcher centered on a sturdy seabed platform, with full barrel, winch, braces and base. Sea engineer face visible in clear helmet and both hands at lever; complete round depth charge on chain. Painterly luminous kelp and blue depths, square composition for wide card crop.",
+    "generatedPath": "/workspace/generated_images/exec-177bef1a-3b6e-4761-afdb-50df81808c78.png",
+    "editableSourcePath": "game/cards/art/masters/brown_machine_32.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Complete launcher, barrel, winch, helmeted face, hands and hanging depth charge read in square, wide crop, and thumbnail; surrounding platform edge is incidental.",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "brown_instant_29",
+    "name": "Boomerang",
+    "prompt": "Human scout displays one small carved hardwood boomerang at chest height; complete compact curved silhouette and both rounded tips visible with margins. Face and holding hand fully visible. Painterly desert canyon at sunset, strict square, critical face, hand and boomerang within x80..432,y125..390.",
+    "generatedPath": "/workspace/generated_images/exec-f6fb7d89-baf3-4a25-9faa-1a28938eda43.png",
+    "editableSourcePath": "game/cards/art/masters/brown_instant_29.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Repainted after the original boomerang tips fell outside the square. The compact complete boomerang, hand and scout face are clear in square, wide crop and thumbnail.",
+    "status": "generated",
+    "batch": 10
   }
 ]

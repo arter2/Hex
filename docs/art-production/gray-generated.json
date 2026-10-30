@@ -1767,5 +1767,95 @@
     "status": "generated",
     "batch": 10,
     "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. Hedgehog face, feet, and short spiny silhouette remain clear in the horizontal crop and thumbnail."
+  },
+  {
+    "cardId": "gray_summon_73",
+    "name": "Spitting Llama",
+    "prompt": "Paint Spitting Llama as a sturdy, sly gray summon: a shaggy cream-and-cinnamon llama on a dry highland caravan path, front feet planted as it spits a narrow spray of water at an unseen raider just off-frame. The llama's alert face, ears, woolly neck and visible spitting action dominate; subtle paw-scraped earth suggests it guards a burrowed trail. Painterly medieval fantasy collectible-card animal art, believable llama anatomy and fleece, expressive but natural eyes, warm dusty light, textured brushwork and atmospheric depth. Explicit 1:1 square 512 master; keep full head, neck, spit and most body within x24..488 y105..407 for 206:141 crop, quiet hills/ground outside. No text, frame, UI, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f2fff64e-3bc5-42b4-bd9a-da6cbbf407c4.png",
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "reviewNote": "Reviewed square, upward-shifted crop (focal y .38), and thumbnail: llama's full head and ears, neck, spit stream and recognizable fleece remain visible; lower leg tips are cropped.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/gray_summon_73.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "gray_summon_74",
+    "name": "Bactrian Camel",
+    "prompt": "Paint Bactrian Camel as a sturdy loyal medieval caravan guardian: an old two-humped camel in dusty ochre and gray-brown coat stands broadside in the foreground, both humps unmistakable, calmly shielding a small traveler beside a low woven barrier at a desert camp. Show the camel's weathered face and front legs, a protective stance and softly lit dunes. Painterly medieval fantasy collectible-card animal art, accurate two-hump silhouette, nuanced shaggy fur and woven tack, warm late-afternoon light, atmospheric depth, grounded natural proportions. Explicit 1:1 square 512 master; keep camel's face, both humps and front legs inside x24..488 y105..407 for horizontal 206:141 crop; expendable sky and distant dunes beyond. No frame, words, UI, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ea36b1ec-6480-496c-a24f-0511a6f59ca0.png",
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "reviewNote": "Reviewed square, crop shifted up (focal y .40), and thumbnail: camel's face and both humps stay visible and its broadside silhouette reads clearly; incidental lower camp details are cropped.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/gray_summon_74.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "gray_summon_75",
+    "name": "Gray Fox",
+    "prompt": "Paint Gray Fox as a swift, sly wild summon: a silver-gray fox with black stockings and a russet flash at the ears darts low across a forest path, two foxes suggested in staggered motion as the nimble pair turns sharply around a mossy fallen log. The lead fox's complete face, ears and sweeping tail are the focal subject; show a second fox smaller behind to imply a swift pair. Painterly medieval fantasy collectible-card wildlife illustration, realistic fox anatomy and fur, dappled green woodland light, atmospheric depth and expressive brushwork. Explicit 1:1 square 512 master; keep lead fox face and complete silhouette within x24..488 y105..407 for 206:141 crop; quiet foliage above/below. No text, frame, UI, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-86646ae3-7eb5-4300-83d3-abddb91d591f.png",
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "reviewNote": "Reviewed square, crop shifted up (focal y .40), and thumbnail: lead fox's face, ears and forward-moving body plus the second fox remain visible; tail tip is incidental and cropped.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/gray_summon_75.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "gray_summon_76",
+    "name": "Plains Wolf",
+    "prompt": "Paint Plains Wolf as a steadfast summon: a tawny-gray wolf with thick winter coat and amber eyes stands alert on a broad grassland ridge, ears forward and shoulders braced, while a second wolf runs beside it through wind-bent golden grasses. Open steppe, distant low hills and cool dawn sky. The lead wolf's full face and sturdy body dominate, second wolf smaller but clear. Painterly medieval fantasy collectible-card wildlife art, accurate lupine anatomy, nuanced fur, natural expression, directional dawn light, atmospheric depth and textured brushwork. Explicit 1:1 square 512 master; keep lead wolf face and both wolves' central forms inside x24..488 y105..407 for horizontal 206:141 crop; expendable grass and sky beyond. No frame, words, UI, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-fd3d0346-6cf9-4df5-b2ab-07e51c17d80e.png",
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "reviewNote": "Reviewed square, upward-shifted crop (focal y .38), and thumbnail: both wolves remain recognizable and the lead wolf's full face and ears fit; lower grass and paw tips are expendable.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/gray_summon_76.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "gray_summon_77",
+    "name": "Lone Wolf",
+    "prompt": "Paint Lone Wolf as a scrappy veteran gray summon: one solitary lean silver-gray wolf, alone on a rocky heath at dawn, standing alert with a small healed scar across its muzzle and one ear slightly nicked. Its body is taut and ready to dash, amber eyes fixed forward; no packmates or people. Wind stirs its rough fur while pale grasses and distant old stone ruins fade behind it. Painterly medieval fantasy collectible-card wildlife illustration, accurate lupine anatomy, nuanced gray fur, quiet determined expression, cool directional light with a warm horizon, atmospheric depth and textured brushwork. Explicit 1:1 square 512x512 master; keep the wolf's complete face, ears and central body within x24..488 y105..407 for 206:141 crop; leg tips and background may crop. No text, frame, UI, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0a8c3039-36fa-4363-947b-f4993342a8f9.png",
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "reviewNote": "Reviewed square, upward-shifted crop (focal y .38), and thumbnail: solitary wolf's face, both ears, scar and upper body remain fully visible; lower paws are cropped.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/gray_summon_77.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
   }
 ]

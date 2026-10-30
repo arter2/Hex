@@ -1663,5 +1663,95 @@
     "status": "generated",
     "batch": 9,
     "reviewNote": "Reviewed exact 512-square source, downward-shifted 206:141 crop (focal y=.58) and 128x88 thumbnail. Complete consecrated circular ground and low ring of golden fire remain visible with the intruder and corruption at the edges."
+  },
+  {
+    "cardId": "light_strike_08",
+    "name": "Zephyr's Breath",
+    "prompt": "Paint original painterly medieval fantasy collectible-card art for Zephyr's Breath. A wind adept in a mountain pass sweeps one open hand sideways, unleashing a quick broad horizontal fan of pale gold and blue wind that slams a nearby raider back. Clear gust shape and impact, adept’s visible face and casting hand; a critical sweeping strike, not a generic wind landscape. One main figure, one secondary foe. Rich painted cloth and stone, dramatic dawn light, atmospheric depth, grounded anatomy, hand-painted oil/gouache like supplied Hexmancers fantasy art. STRICT 1:1 square composition for 512 master; horizontal arrangement, place face, hand, and impact within x24..488,y105..407 for 206:141 crop, quiet top/bottom margins. No text, letters, border, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2cbd513c-13f1-4506-a8e5-dcbd62a26baf.png",
+    "editableSourcePath": "game/cards/art/masters/light_strike_08.png",
+    "sourceNative": [
+      1374,
+      1145
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop and 128x88 thumbnail. Adept’s face and casting hand and the broad wind impact remain visible; trailing robes and displaced foe’s legs are incidental."
+  },
+  {
+    "cardId": "light_lob_09",
+    "name": "Alchemist's Flask",
+    "prompt": "Paint original painterly medieval fantasy collectible-card art for Alchemist's Flask. A gloved alchemist throws one complete small stoppered glass flask; it bursts in a tight radiant golden flash against a shielded intruder, who recoils dazed. Keep the entire flask with stopper visible and recognizable at the heart of the burst, along with thrower's visible face and releasing hand and clear impact. The named portable flask is the focus, not a generic explosion. Medieval stone workshop, oil/gouache brushwork, glass and leather detail, warm directional light, cool shadows, supplied Hexmancers fantasy mood. STRICT 1:1 square 512 master, horizontal staging; flask, stopper, face, hand and impact within x24..488,y105..407 for 206:141 crop. No border, lettering, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-73ba950e-7af7-45a2-99f0-a1497e7bddfb.png",
+    "editableSourcePath": "game/cards/art/masters/light_lob_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.45
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Recovered the raw result by explicit visual flask identity after its path line was truncated; reviewed the square source, upward focal crop and thumbnail. Stoppered flask, alchemist’s face/hand and impact remain visible; background workshop is incidental."
+  },
+  {
+    "cardId": "light_ward_10",
+    "name": "Shieldwall of the Fyrd",
+    "prompt": "Paint original painterly medieval fantasy collectible-card art for Shieldwall of the Fyrd. Three fyrd warriors brace shoulder-to-shoulder behind one broad, continuous heavy golden shield barrier; enemy arrows and one mace strike the barrier and flare outward. Show sturdy construction and defense, with front warrior’s visible face and gripping hands. Strong horizontal line, barrier dominates. Grounded mail, wood and stone, hand-painted oil/gouache, dramatic directional light, atmospheric depth and supplied Hexmancers fantasy character art style. STRICT 1:1 square 512 master; keep barrier, faces, hands, and impacts in x24..488,y105..407 for 206:141 crop, quiet top/bottom margins. No text, border, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-53592b12-8850-42ef-95e6-cd2e58775724.png",
+    "editableSourcePath": "game/cards/art/masters/light_ward_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.45
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop and thumbnail. Front warrior’s face and bracing hands, continuous golden barrier and its impacts fit; flying arrows and background are incidental."
+  },
+  {
+    "cardId": "light_sentry_09",
+    "name": "Obelisk of the Sun",
+    "prompt": "Repaint this as original painterly medieval fantasy collectible card art for Obelisk of the Sun. Preserve the sunlit rampart, radiant gold beam, and strong oil/gouache fantasy illustration style, but make the obelisk a compact, stout square solar sentinel instead of a tall narrow tower: whole pyramid crown, shaft, broad stepped base all clearly visible, monument no more than 250 pixels tall within a 512-square image, positioned horizontally at left-center. The complete monument must fit in x24..488,y105..407 of the square, leaving generous safety margin above and below. Its bronze sunstone eye fires one steady narrow ray across toward a small recoiling raider on the right; keep raider’s face and the ray inside that same safe band. Make stone sentinel dominant and readable, grounded carved limestone and bronze, warm directional light, atmospheric depth, supplied Hexmancers painterly fantasy style. Strict 1:1 square, horizontal action-safe composition for 206:141 crop. No text, border, UI, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-85ec7886-0c04-47f1-9cfb-256addd7994c.png",
+    "editableSourcePath": "game/cards/art/masters/light_sentry_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Repainted after the first tall obelisk could not fit crown and base in the same crop; preserved its source at /tmp/light_sentry_09-first-source.png. Reviewed repainted 512 source, centered 206:141 crop and thumbnail: complete crown, shaft and stepped base fit with raider face and ray visible."
+  },
+  {
+    "cardId": "light_boon_07",
+    "name": "Vigil Candle",
+    "prompt": "Paint original painterly medieval fantasy collectible-card art for Vigil Candle. A solitary young castle watchkeeper in a plain cloak cradles one complete ivory beeswax vigil candle in a bronze holder; its small flame shines steadily, illuminating his alert face, open ready hand and a faint golden aura of renewed strength as dawn nears. Candle and wick must be clear, unlit surroundings remain quiet; intimate heroic boon, no extra candles. Hand-painted oil and gouache, nuanced wax, bronze and cloth, warm directional light against cool night stone, atmospheric depth, supplied Hexmancers painterly fantasy art style. STRICT 1:1 square 512 master and horizontal staging. Keep candle, flame, face, hands inside x24..488,y105..407 for 206:141 crop; quiet margins. No text, border, lettering, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-85af20da-5eeb-4abf-bedc-785de7c7ab37.png",
+    "editableSourcePath": "game/cards/art/masters/light_boon_07.png",
+    "sourceNative": [
+      1403,
+      1121
+    ],
+    "focalPoint": [
+      0.5,
+      0.45
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop and thumbnail. Watchkeeper’s face and open hand, full candle, wick and flame fit; quiet dawn landscape remains secondary."
   }
 ]

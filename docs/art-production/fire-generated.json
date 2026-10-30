@@ -1760,8 +1760,8 @@
   {
     "cardId": "fire_charge_08",
     "name": "Rivet Pouch",
-    "prompt": "Square 1:1 512x512 painterly medieval fantasy collectible-card master for \"Rivet Pouch\". A rugged leather rivet pouch hangs prominently from a blacksmith-adventurer's belt, its flap open to show several short, bright iron rivets with tapered piercing points. One gloved hand reaches for a rivet while another flicks a single rivet outward like a magically charged bolt toward an off-frame target, leaving a slim ember spark. Keep pouch, rivets and relevant hands large and clear; medieval hand tool, no firearm. Painterly high-fantasy illustration with confident brushwork, believable historical materials and natural anatomy, attractive directional light, atmospheric depth, crisp readable silhouette, restrained composition in the accepted Hexmancers fantasy card-art style. Preserve all identity-critical named objects and important faces/hands within x24..488,y105..407 on the normalized square, for a centered 206:141 horizontal crop; quiet expendable scenery above and below. No frame, lettering, numbers, symbols, UI, anime, Disney cartoon, photorealism, pixel art, modern clothing or technology.",
-    "generatedPath": "/workspace/generated_images/exec-85068dd7-db31-402f-8e38-0c3d74b59581.png",
+    "prompt": "Create a true 1:1 SQUARE fantasy illustration for card \"Rivet Pouch\". A smiling compact blacksmith crouches at a forge bench. On the bench directly beside him sits one open leather rivet pouch filled with bright pointed iron rivets. He holds one rivet in one gloved hand and gestures toward the pouch with the other; a single glowing rivet shoots horizontally away. The whole composition is small and centered: place face, both hands, flying rivet, and the complete pouch with its flap and base inside x=80..432 and y=150..370 on the 512 square. Leave wide clear empty background margins on every side. The pouch is small (about 120 pixels tall), fully inside x=260..420; face beside it at x=150..265. Do not let any named object approach any image edge. This will be centrally cropped to a 512 square if the returned canvas is landscape, so keep every important element well within the central half. Painterly medieval fantasy card painting, expressive brushwork, warm forge light, plausible leather and iron, readable at thumbnail. No text, frame, interface, firearm, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b757993f-800f-421f-ba35-4b9f9fbc50a0.png",
     "editableSourcePath": "game/cards/art/masters/fire_charge_08.png",
     "sourceNative": [
       1254,
@@ -1773,17 +1773,17 @@
     ],
     "status": "generated",
     "batch": 10,
-    "reviewNote": "Square source, centered crop and thumbnail inspected. Open rivet pouch, selected rivets, both hands and piercing rivet remain clear; face is secondary and near the upper crop edge."
+    "reviewNote": "Compact repaint: square master, centered crop and thumbnail inspected. Entire pouch with flap/base, smith face, two hands and charged rivet fit the wide crop clearly; earlier source preserved at /tmp/fire_charge_08-before-repaint.png."
   },
   {
     "cardId": "fire_utility_09",
     "name": "Ancestor's Tale",
-    "prompt": "Square 1:1 512x512 painterly medieval fantasy collectible-card master for \"Ancestor's Tale\". In a warm medieval hall, an elderly matriarch tells an ancestral tale to two young descendants gathered close. Her expressive face and storytelling hands sit beside an open family chronicle; two dignified translucent ancestor figures appear softly in candlelit smoke as remembered storytellers, suggesting inherited knowledge and drawing inspiration. Make the living storyteller and listeners the focus, not ghostly spectacle; pages have no legible writing. Painterly high-fantasy illustration with confident brushwork, believable historical materials and natural anatomy, attractive directional light, atmospheric depth, crisp readable silhouette, restrained composition in the accepted Hexmancers fantasy card-art style. Preserve all identity-critical named objects and important faces/hands within x24..488,y105..407 on the normalized square, for a centered 206:141 horizontal crop; quiet expendable scenery above and below. No frame, lettering, numbers, symbols, UI, anime, Disney cartoon, photorealism, pixel art, modern clothing or technology.",
-    "generatedPath": "/workspace/generated_images/exec-02274972-948d-4e25-a899-67e0366a73ee.png",
+    "prompt": "Square 1:1 painterly medieval fantasy card illustration for \"Ancestor's Tale\", a rare utility that draws two insights. In a humble stone cottage by a warm hearth, an elderly grandmother sits with a young descendant and tells an ancestral tale from memory. Her expressive, kind face and animated storytelling hands are clearly visible; the attentive listener looks toward her. Between them, firelight softly reveals one or two translucent ancestral portraits in the smoke, like remembered family faces and story fragments, not combat ghosts. An open family chronicle rests nearby with no legible writing. Keep the elder's complete face, both hands, listener's face and ancestral smoke-story motif clustered centrally within x55..455,y125..390 of the square. Horizontal composition; no full body needed. Traditional painterly tabletop fantasy art with nuanced brushwork, believable age, wool, wood and stone, intimate golden hearth light with cool shadows, consistent with the accepted Hexmancers fire illustrations. No frame, typography, symbols, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-929581fa-fe10-4246-ad11-30835650f693.png",
     "editableSourcePath": "game/cards/art/masters/fire_utility_09.png",
     "sourceNative": [
-      1254,
-      1254
+      1536,
+      1024
     ],
     "focalPoint": [
       0.5,
@@ -1791,7 +1791,7 @@
     ],
     "status": "generated",
     "batch": 10,
-    "reviewNote": "Raw output path recovered by visual match to the explicit storyteller-and-descendant subject after the concurrent result listing truncated. Square source, centered crop and thumbnail inspected; elder and listener faces, shared chronicle and floating memory cards remain visible."
+    "reviewNote": "Replacement generated from explicit fire_utility_09 result path verified by image-content fingerprint; prior master preserved at /tmp/fire_utility_09-before-repaint.png. Square source, centered crop and thumbnail inspected; elder/listener faces, storytelling hands, open chronicle and ancestral portraits remain clear."
   },
   {
     "cardId": "fire_trap_07",
@@ -1828,5 +1828,23 @@
     "status": "generated",
     "batch": 10,
     "reviewNote": "Square source, centered crop and thumbnail inspected. Connected sulfur pools, boiling surface and broad curse-like vapor remain clear across the row; distant travelers are incidental."
+  },
+  {
+    "cardId": "fire_summon_05",
+    "name": "Griffin",
+    "prompt": "Square 1:1 512x512 painterly medieval fantasy collectible-card master for \"Griffin\". A noble, sturdy griffin with the tawny head and forelegs of a great eagle-lion and a powerful feathered body stands prominently on a broken castle wall. Its proud eagle face, hooked beak, bright eyes, and folded bronze-gold wings are clear; it releases a controlled barrage of glowing ember-feathers toward distant shadowy plague creatures, with a faint smoky violet haze around them. Keep the whole griffin's head, chest, foreclaws and wing-root within x24..488,y105..407; trailing wings and targets may extend into quiet background. Horizontal staging, readable at thumbnail, painterly classic tabletop high fantasy, fine feather and fur texture, directional warm light with cool dusk atmosphere. No frame, text, symbols, UI, anime, cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-8e6bb0c4-15c8-458c-91f6-c192d282aeed.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Square source, centered crop and thumbnail inspected. Griffin face, hooked beak, chest and front talons remain clear; feather barrage and plague foes read as background action."
   }
 ]

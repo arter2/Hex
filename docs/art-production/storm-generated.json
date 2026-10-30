@@ -1762,5 +1762,95 @@
     "editableSourcePath": "game/cards/art/masters/storm_boon_08.png",
     "status": "generated",
     "batch": 10
+  },
+  {
+    "cardId": "storm_charge_08",
+    "prompt": "A storm alchemist in weathered medieval travel gear grips a complete matched set of three small round naphtha grenades with dark ceramic bodies, brass necks and short lit fuses; one grenade is flying in a clear lob toward a compact row of armored foes as a bright orange-blue blast erupts on impact. Keep all three grenade bodies, necks, fuses and the alchemist's throwing hand in the central band; no modern military hardware. Painterly medieval fantasy collectible-card art, tactile ceramic, brass and leather, energetic directional firelight mixed with cool storm light, atmospheric depth. Explicit 1:1 SQUARE 512x512 master; keep the alchemist face, relevant hand and complete named grenade silhouettes within x24..488,y105..407 for a 206:141 crop, quiet expendable sky/ground beyond. No frame, text, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7bc211f0-917b-43e7-acbd-8ac0719c6c4a.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.44
+    ],
+    "reviewNote": "The upward crop adjustment preserves the alchemist’s full face and throwing hand with the complete flying grenade, one complete hand-held grenade and belt vials; explosion and target row remain clear. The grenade action reads at thumbnail size.",
+    "name": "Naphtha Grenades",
+    "editableSourcePath": "game/cards/art/masters/storm_charge_08.png",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "storm_utility_08",
+    "prompt": "In a medieval counting house, a shrewd moneylender in fine but restrained robes lends a small tied purse of coins and a blank parchment contract to a storm mage; the mage's other hand draws one glowing blank spell card from an open folio into a neat short queue of two waiting blank cards, showing a loan that helps recall a card. No legible writing or numbers. Keep the coin purse, moneylender face/hands, mage hand and blank card prominent. Painterly medieval fantasy collectible-card art, tactile parchment, brass scales, wood and velvet, warm window light with subtle electric blue glints, rich atmospheric depth. Explicit 1:1 square 512x512 composition, horizontal staging; keep named people, hands, purse and recalled blank card inside x24..488,y105..407 for wide crop, quiet shelves above and table below. No frame, lettering, numbers, UI, anime/cartoon/photorealism/pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-02274972-948d-4e25-a899-67e0366a73ee.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "The moneylender and mage faces and hands, tied purse, blank parchment and recalled blank card are visible in the wide crop; the exchange reads at thumbnail size.",
+    "name": "Moneylender's Loan",
+    "editableSourcePath": "game/cards/art/masters/storm_utility_08.png",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "storm_trap_08",
+    "prompt": "A ruined medieval stone corridor contains a clearly visible row of exactly three flat square trap tiles in the floor, each with a small brass storm rune and raised stone rim; an armored intruder steps on the middle tile, which crackles with blue-white electricity and holds him rigid, while a second foe entering the neighboring tile is caught by a short branching shock arc. Show the three tiles as a single readable named trap and the primary stepping boot/face clearly. Painterly medieval fantasy card illustration, wet flagstones, iron armor, dramatic electric light and atmospheric depth. Explicit 1:1 square master, horizontal low-angle composition; keep all three trap tiles and trapped intruder's face/foot inside x24..488,y105..407 for 206:141 crop, expendable corridor scenery beyond. No frame, text, numbers, UI, anime, cartoon, photorealism or pixel art. Recomposition requested: make both armored intruders shorter in frame by crouching or buckling close to the floor; retain a complete face, both hands, planted boot and exactly three complete rune tiles in one row, all safely inside the central horizontal band.",
+    "generatedPath": "/workspace/generated_images/exec-bfd7d6d5-0b78-490f-bae5-bb79fe1060a9.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.53
+    ],
+    "reviewNote": "The downward-shifted wide crop retains the trapped intruder’s full face and both hands, planted boot, and all three complete rune tiles; the second intruder is secondary. The row of shocking floor tiles reads at thumbnail size.",
+    "name": "Shocking Floor Tiles",
+    "editableSourcePath": "game/cards/art/masters/storm_trap_08.png",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "storm_environment_07",
+    "prompt": "An ancient battlefield is transformed by a long-lived cross-shaped lightning field: four vivid blue-white bolts strike the ground along two intersecting lanes, forming an unmistakable broad cross pattern of scorched glowing stone; a small armored foe caught at the intersection is blasted and staggered. View from a slightly elevated angle so the cross-shaped area reads clearly across the horizontal scene, with a storm mage at one edge. Painterly medieval fantasy card art, believable stone and armor, high contrast electric light beneath dark storm clouds, deep atmosphere. Explicit 1:1 SQUARE 512x512; keep the cross intersection and its defining horizontal/vertical lanes, mage face/hand if visible, and target within x24..488,y105..407 for 206:141 crop; quiet clouds and paving beyond. No frame, writing, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-516fbf7d-4e61-4028-ab78-988bf27e4327.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "The intersecting lightning lanes and staggered target remain prominent in the wide crop; the mage is incidental and partly cropped at left. The cross-shaped field reads immediately at thumbnail size.",
+    "name": "Lightning Field",
+    "editableSourcePath": "game/cards/art/masters/storm_environment_07.png",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "storm_summon_05",
+    "prompt": "Create a high-fantasy medieval collectible-card illustration for Si'lat Shapeshifter. The actual creature is a sly, steady pouncing djinn shapeshifter with a second rise if first defeated. Depict one dominant lean humanoid desert djinn with a sharp sly face, wind-carved blue-bronze skin, flowing teal and amber robes, and cloudlike lower body; it is mid-pounce across a horizontal battlefield toward a wary armored foe. A faint translucent echo of the same djinn rising from a fading silhouette behind it suggests it can rise again, but keep the real djinn dominant. Grounded anatomical proportions, expressive eyes, tactile cloth and metal, dramatic desert moonlight and restrained electric-blue magic, painterly materials and atmosphere consistent with supplied fantasy art. Explicit 1:1 SQUARE 512x512 master. Preserve the djinn's face, leading hands/claws, and pouncing upper body inside x24..488,y105..407 for the 206:141 crop; quiet dunes and sky beyond. No text, border, numbers, UI, cartoon, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-fc3b9c90-2e1f-40a6-b1b5-f7426b13f1a2.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "The dominant djinn’s full sly face and leading hand/claws remain visible in the wide crop with its airborne lunge toward the foe; the spectral rising echo is incidental. The shapeshifter reads clearly at thumbnail size.",
+    "name": "Si'lat Shapeshifter",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_05.png",
+    "status": "generated",
+    "batch": 10
   }
 ]

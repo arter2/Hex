@@ -7,6 +7,29 @@
 const DK={slot:0, zoom:1, tab:'all', sort:'family', filt:{colors:new Set(), type:'', rarity:'', q:''}, multi:false, sel:new Set(), from:'camp', snap:null, peek:null};
 const DK_ZOOM=[50,75,100], DK_SORTS=[['family','Color'],['rank','Rank'],['rarity','Rarity'],['name','Name'],['copies','Copies']];
 const dkDeck=()=>save.decks[DK.slot];
+// each card type's 9x9 pixel glyph for the deck tiles ('#' filled), white with a black outline (style.css .dkglyph)
+const DK_GLYPHS={
+strike:['.....####','.......##','......#.#','.....#..#','....#....','...#.....','..#......','##.......','##.......'],
+lob:['.........','....###..','...#####.','...#####.','...#####.','..#.###..','.#.......','#........','.........'],
+ward:['#########','#########','#########','#########','.#######.','.#######.','..#####..','...###...','....#....'],
+sentry:['#.#.#.#.#','#########','.#######.','..#####..','..#####..','..#####..','..#####..','.#######.','#########'],
+boon:['...###...','...###...','...###...','#########','#########','#########','...###...','...###...','...###...'],
+charge:['...###...','...#.#...','...#.#...','..#...#..','.#.....#.','#.#####.#','#########','#########','.#######.'],
+utility:['.......##','......#.#','.....####','....###..','...###...','..###....','.###.....','###......','##.......'],
+trap:['....#....','..#####..','.#..#..#.','.#..#..#.','#########','.#..#..#.','.#..#..#.','..#####..','....#....'],
+environment:['.........','....#....','...###...','..#####..','..######.','.########','#########','#########','.........'],
+piece:['#...#...#','##.###.##','#########','#########','#########','.#######.','.........','#########','#########'],
+summon:['.#.....#.','###...###','.#..#..#.','...###...','.#######.','#########','#########','.#######.','..##.##..'],
+machine:['...#.#...','.#######.','.##...##.','###...###','.#.....#.','###...###','.##...##.','.#######.','...#.#...'],
+hero:['....#....','....#....','...###...','#########','.#######.','..#####..','..##.##..','.##...##.','.#.....#.'],
+instant:['.....###.','....###..','...###...','..######.','.....###.','....###..','...###...','..##.....','.#.......'],
+equip:['.......##','......###','.....###.','....###..','#..###...','.####....','..##.....','.#.##....','#...#....'],
+tinker:['.####....','######...','.####....','..#.#....','....##...','.....##..','......##.','.......##','........#'],
+ace:['....#....','...###...','..#####..','.#######.','#########','#########','.##.#.##.','....#....','...###...'],
+aceup:['....#....','...#.#...','..#...#..','.#.....#.','#.......#','#...#...#','.###.###.','....#....','...###...'],
+claim:['#........','#######..','########.','#######..','#........','#........','#........','#........','##.......']};
+const dkGlyph=t=>{ const g=DK_GLYPHS[t]; return g?`<svg class="dkglyph" viewBox="-1 -1 11 11" shape-rendering="crispEdges" aria-hidden="true"><path d="${g.map((r,y)=>[...r].map((ch,x)=>ch==='#'?`M${x} ${y}h1v1h-1z`:'').join('')).join('')}"/></svg>`:''; };
+
 const dkCount=(d,id)=>d.list.reduce((a,x)=>a+(x===id),0);
 const dkMax=c=>Math.min(copyLimit(c),save.owned[c.id]||0);
 function openDeckUI(from){ DK.from=from||'camp'; DK.slot=save.active; DK.multi=false; DK.sel.clear(); DK.snap=JSON.stringify(save.decks);
@@ -35,7 +58,7 @@ function dkRender(){ const d=dkDeck(), v=validateDeck(d.list,CARDS,save.owned);
   const counts={}; d.list.forEach(id=>counts[id]=(counts[id]||0)+1);
   const ids=Object.keys(counts).filter(id=>CARDS[id]).sort((a,b)=>byFamily(CARDS[a],CARDS[b]));
   for(const id of ids){ const c=CARDS[id], k=cardKit(c), el=document.createElement('button'); el.className='dktile kpal c-'+k.kc; el.style.setProperty('--c',COLORS[c.color].c); el.style.setProperty('--k-tex',k.tex);
-    el.innerHTML=`<span class="dkart">${cardArtThumb(c)}<span class="dkc">${COLORS[c.color].icon}</span></span><span class="dkn"><i class="dksp"></i><i class="dksp r"></i><span class="dkt">${kitIcon('',kitStatIcon(c))}</span><span class="dkx">×${counts[id]}</span>${esc(c.name)}</span>`;
+    el.innerHTML=`<span class="dkart">${cardArtThumb(c)}<span class="dkc">${COLORS[c.color].icon}</span></span><span class="dkn"><i class="dksp"></i><i class="dksp r"></i><span class="dkt" title="${esc(TYPES[c.type]?TYPES[c.type].name:'')}">${dkGlyph(c.type)}</span><span class="dkx">×${counts[id]}</span>${esc(c.name)}</span>`;
     el.title=c.name+' ×'+counts[id]+' (tap to take one out)'; dkHold(el,c,()=>{ dkRemove(c); dkChange(); }); box.appendChild(el); }
   const cols=dkCols(), empty=ids.length%cols?cols-ids.length%cols:(ids.length?0:cols);
   for(let i=0;i<empty;i++){ const e=document.createElement('div'); e.className='dkempty'; box.appendChild(e); }

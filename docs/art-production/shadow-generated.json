@@ -763,5 +763,455 @@
     "status": "generated",
     "batch": 7,
     "reviewNote": "Reviewed the exact 512-square source, centered 206:141 crop and 128px thumbnail. The webbed, bramble-lined crossing remains recognizable across the crop, with a small intruder caught at its center; the environment is dominant."
+  },
+  {
+    "cardId": "shadow_strike_04",
+    "name": "Mold Spore Volley",
+    "prompt": "Square 1:1 painterly medieval dark fantasy collectible-card illustration for Hexmancers, exact card “Mold Spore Volley”. Show a grimy leather-and-brass hand cannon firing a fan of several pale green mold spores across a ruined crypt, spores visibly distinct in flight with subtle toxic haze; the cannon and firing hand are prominent and intact, with an understated shadowy fungal background. Grounded painterly surfaces, attractive directional light, nuanced fungal textures, atmospheric depth, strong readable subject. The named hand cannon, hand, and volley stay wholly inside x24…488,y105…407 on a 512-square composition, designed to read in a 206:141 horizontal crop. Finished square painting, quiet expendable atmosphere at top and bottom. No lettering, numbers, frame, UI, unrelated spell sigils, modern weapon design, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-bc1eb974-f82e-4d65-80e2-275edcf81629.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_strike_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop, and 128px thumbnail. The cannon, gripping hand, and full visible volley remain identifiable and intact in both crop sizes; surrounding ruins are supporting detail."
+  },
+  {
+    "cardId": "shadow_lob_06",
+    "name": "Swamp Gas Bubble",
+    "prompt": "Paint a fresh 1:1 square illustration for Hexmancers card “Swamp Gas Bubble”. The entire enormous translucent green bubble must be fully visible with a clearly closed, uncut rounded crown and full lower curve, centered LOW in the square, its top no higher than y120 and bottom above y390. A frightened marsh traveler is secondary on the left with face and both raised hands fully in frame. The gas bubble dominates and is a single intact named object, oily iridescent surface around swirling green fumes and small bubbles, black bog water below. Compose the whole critical bubble and traveler’s face/hands inside x24…488,y105…407 so the final 206:141 horizontal crop cannot cut them. Quiet moonlit swamp scenery only in top/bottom margins. Painterly medieval dark fantasy collectible-card art, rich materials, dramatic moonlight, not photorealistic. No text, sigils, frame, UI, anime, Disney-like cartoon, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6e54c246-3879-4e23-bc89-03120e384624.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_lob_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed final 512-square source, centered 206:141 crop, and 128px thumbnail. The entire iridescent gas bubble, its rounded crown and lower curve, plus the traveler’s face and raised hands remain visible in the crop."
+  },
+  {
+    "cardId": "shadow_ward_05",
+    "name": "Beetle Carapace",
+    "prompt": "Fresh square 1:1 illustration for the exact Hexmancers card “Beetle Carapace”. A medieval traveler holds a large dark iridescent beetle carapace as a shield. Make the traveler smaller in frame and place the whole focused face in the middle band, between y150 and y245; show face with clear space above it. The full domed shell, entire silhouette, and gripping hand fit from y145 to y390, with x24…488 margins. Shell clearly resembles a single beetle’s ridged hard wing-case, with subtle amber healing motes on a few cracks. Moonlit forest background. Strong readable square painting, dramatic painterly materials. Critical shell, face, and hand all fit x24…488,y105…407 so none will be clipped in the centered 206:141 wide crop. No text, UI, frame, abstract magical shield, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-895e7329-9104-4d57-aacf-6c7a9e90dadb.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_ward_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed final 512-square source, centered 206:141 crop, and 128px thumbnail. Repainted to fit the traveler’s complete face above the full, intact beetle-shell shield; face, shell, and gripping hand all remain clear in crop."
+  },
+  {
+    "cardId": "shadow_sentry_06",
+    "name": "Bone Totem",
+    "prompt": "Repaint square 1:1 Hexmancers fantasy card illustration for exact name “Bone Totem”. Show a compact, fully visible bone-and-wood warding totem, roughly half the image height, centered in the middle band from y135 to y385 with generous clear sky above and ground below. Its complete silhouette must show base, lashed upright long bones, a clear skull crown, and bindings; do not let any tip or base touch the image edge. An exhausted warrior crouches to its left, with face and reaching hand fully visible around y190–310. Violet lifeforce threads connect hand and totem. Moonlit ruined woodland. Painterly realistic fantasy materials and lighting, strong readable subject. The complete totem plus warrior’s face/hand fit x24…488,y105…407 for centered 206:141 crop. No lettering, runes, frame, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-054c930b-2c87-451d-b4b8-b4eb3733aac3.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_sentry_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed final square, centered wide crop and 128px thumbnail. Repainted for a smaller, fully visible totem; skull crown, tips, base, warrior face and reaching hand all remain inside the crop."
+  },
+  {
+    "cardId": "shadow_boon_04",
+    "name": "Sip of Blood",
+    "prompt": "Repaint square 1:1 medieval dark fantasy card illustration for Hexmancers “Sip of Blood”. Show a young pale knight from mid torso upward at a candlelit stone table, smaller in frame with generous space above the head. Entire hair, forehead, face, hand and tiny silver goblet must be fully visible and well inside y125…390 of the 512 square. The knight gently takes a small sip of dark red liquid; goblet and hand near the center, closed eyes and subtle returned warmth suggest healing, elegant and non-graphic with no open wound. Keep face, hand, cup and sipping action inside x24…488,y105…407 for centered 206:141 crop. Painterly medieval fabrics, armor and candlelight, shadowed infirmary. No text, frame, UI, gore, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7936acf2-0c27-472c-b68b-29ae3fdb6290.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_boon_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed final source, centered wide crop and 128px thumbnail. Repainted to preserve the full hairline, face, holding hand, silver goblet and sipping action within the crop; the scene remains restrained and non-graphic."
+  },
+  {
+    "cardId": "shadow_charge_04",
+    "name": "Crow Feathers",
+    "prompt": "Square 1:1 painterly medieval dark fantasy collectible-card illustration for Hexmancers, exact name “Crow Feathers”. A small leather pouch lies open on a stone altar, releasing a dramatic spiraling stream of glossy black crow feathers into cold moonlight; emphasize several individual feather forms, elegant and tangible, with a gloved hand scattering them. The entire pouch, hand and distinct feather plume fit x24…488,y105…407 on a 512-square composition for 206:141 crop. Mournful cemetery background, painterly textures and directional light. No text, runes, UI, frame, modern items, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-cfe67792-3ffd-4d83-a2d5-e16858578b71.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_charge_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed square source, centered 206:141 crop, and 128px thumb. The open leather pouch, scattering hand, and recognizable individual crow feathers remain clear; a few feathers trail beyond the crop as incidental motion."
+  },
+  {
+    "cardId": "shadow_utility_03",
+    "name": "Grave Robbing",
+    "prompt": "Repaint square 1:1 painterly medieval dark fantasy for Hexmancers card exact name “Grave Robbing”. A grave robber is kneeling beside a freshly opened stone tomb and holds up a small ornate golden reliquary. Compose the robber farther from camera with the whole hood/hair, face, eyes, hand and reliquary well inside y135…395; leave quiet dark headroom. The tomb opening and carved stone frame the right side, shovel and earth are supporting details. Moonlight and one warm candle create rich painterly materials. Keep critical face, holding hand and reliquary within x24…488,y105…407 for centered 206:141 crop. The scene clearly depicts stealing a small treasure from an open grave. No gore, text, frame, UI, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f689e122-465b-4ceb-8d5b-bb896b8f4ae9.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_utility_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed final square, centered wide crop, and 128px thumbnail. Repainted for the robber’s face, holding hand and reliquary to stay clear and intact in the crop; grave opening remains legible."
+  },
+  {
+    "cardId": "shadow_trap_03",
+    "name": "Sucking Bog",
+    "prompt": "Square 1:1 painterly medieval dark fantasy collectible-card illustration for Hexmancers, exact name “Sucking Bog”. A lone armored traveler is trapped thigh-deep in a dark sucking bog, one hand gripping a low twisted root and the other reaching toward safety; the bog visibly pulls at armor and ripples around them, conveying a snare. Keep traveler’s whole visible face and both hands in x24…488,y105…407, with the mud and roots as supporting action. Moonlit fen, dramatic painterly light, grounded mud, leather and steel. Finished square designed for 206:141 crop. No text, runes, frame, UI, gore, modern objects, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-bdfd5a4a-17b7-4351-8d01-9c902d6ca9f7.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_trap_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed square source, centered 206:141 crop, and 128px thumb. The trapped traveler’s face, gripping hand, reaching hand, and engulfing bog action remain fully clear."
+  },
+  {
+    "cardId": "shadow_environment_04",
+    "name": "Graveyard Chill",
+    "prompt": "Square 1:1 painterly medieval dark fantasy collectible-card art for Hexmancers, exact name “Graveyard Chill”. A horizontal row of ancient gravestones in a moonlit cemetery is swept by a visible band of pale blue spectral frost and ground-hugging cold mist; frost crystals coat stones and dead grass, a small hooded mourner shivers in the midground. The row of graves and flowing chill dominate. Keep the mourner’s face/hands and the central graves clear in x24…488,y105…407, planned for 206:141 crop. Painterly stone, winter atmosphere, dramatic restrained blue light. No text, runes, frame, UI, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d3f15481-ad7f-41cb-8f00-106464ed44e6.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_environment_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed square source, centered wide crop and 128px thumbnail. The frost-bound row of graves and flowing cold mist remain clear; the small mourner’s face and clasped hands remain visible."
+  },
+  {
+    "cardId": "shadow_piece_02",
+    "name": "Fang of the First Vampire",
+    "prompt": "Square 1:1 painterly medieval dark fantasy collectible-card illustration for Hexmancers, exact name “Fang of the First Vampire”. A single ancient ivory vampire fang, long, curved and subtly stained crimson at the root, floats horizontally above a weathered velvet reliquary cushion; its complete pointed tip and root are clearly visible, pristine object detail dominating the image. A pale gloved hand reaches to claim it as a thin red lifedrain glimmer curls around the tooth. Moonlit crypt, restrained antique gold and deep burgundy accents, painterly tactile stone, ivory and velvet. Keep entire named fang and hand inside x24…488,y105…407 in a 512 square intended for 206:141 crop. No person face necessary, no lettering, runes, frame, UI, gore, modern objects, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4462f79b-0818-4466-a5ea-f910d8cdd1ec.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_piece_02.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed square source, centered wide crop, and 128px thumbnail. The complete curved fang, root, pointed tip, and reaching hand remain clear inside the crop."
+  },
+  {
+    "cardId": "shadow_summon_04",
+    "name": "Skeleton Archer",
+    "prompt": "Square 1:1 painterly medieval dark fantasy collectible-card illustration for exact Hexmancers card “Skeleton Archer”. Show a hooded skeleton archer standing behind a low ruined parapet, holding a COMPLETE short recurved bow horizontally across the chest, with both bow tips clearly at shoulder level (never vertical or tall). The entire skull head, both bony hands, bow tips, string and horizontal arrow fit in the central band y150–350 and x30–482. The skeleton aims to the right in a steady stance, readable ribcage and weathered cloak. Moonlit fortress, dramatic painterly bone and cloth. Keep every critical part within x24…488,y105…407 for centered wide crop. No text, frame, UI, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d2730129-158d-470c-b079-1fddbdaa9ab5.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed final square, centered wide crop, and 128px thumbnail. Repainted twice to keep the whole recurved bow, string, arrow, skull face and both hands visible within the crop; complete named skeleton archer remains legible."
+  },
+  {
+    "cardId": "shadow_machine_02",
+    "name": "Skull Catapult",
+    "prompt": "Repaint square 1:1 painterly dark fantasy illustration for exact Hexmancers card “Skull Catapult”. Show a compact complete medieval wooden catapult, all wheels and base intact, lowered to fit entirely between y135 and y390 with generous space above and below. A carved skull forms the counterweight on the throwing arm, and a small arc of skull projectiles flies over it. Skeletal crewman secondary. Make the whole wheel, frame, arm, cup and skull counterweight clear inside x28…484,y105…407 for centered 206:141 crop. Moonlit ruined fortress, painterly wood, iron and bone, no modern machinery, text, frame, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e28bf706-4fbc-430c-87b3-cc9a54bbdd05.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_machine_02.png",
+    "sourceNative": [
+      1517,
+      1037
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed normalized square source, centered wide crop, and 128px thumb. The complete catapult frame, throwing arm, counterweight skull, cup, and wheel bases fit; projectile arc and secondary edge figures extend into scenery."
+  },
+  {
+    "cardId": "shadow_ace_02",
+    "name": "Reaper's Due",
+    "prompt": "Illustration for Reaper's Due. Mechanics: a powerful straight-line reaper strike that deals 88 damage and drains life from its victim. Hooded skeletal reaper sweeps a long scythe through an armored foe; crimson life essence streams from the victim toward the reaper. Painterly medieval fantasy with cold moonlight, worn dark robes and iron, horizontal action-safe composition, square 512 master, no text or frame.",
+    "generatedPath": "game/cards/art/masters/shadow_ace_02.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_ace_02.png",
+    "sourceNative": [
+      512,
+      512
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Recovered unrecorded canonical 512 source after visual identity review. Reaper, face, scythe, struck foe and drain line are present; the 206:141 crop retains the full action and the 128px thumbnail remains readable. Raw provenance unavailable."
+  },
+  {
+    "cardId": "shadow_aceup_02",
+    "name": "Blood Price",
+    "prompt": "Illustration for Blood Price. Mechanics: the caster willingly pays blood to strengthen a life-draining attack. A grim shadow mage pricks their palm and channels a crimson drop into a glowing ritual sigil, strengthening a spectral strike; dramatic medieval fantasy lighting and detailed dark robes, square 512 master, horizontal action-safe composition, no text or frame.",
+    "generatedPath": "game/cards/art/masters/shadow_aceup_02.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_aceup_02.png",
+    "sourceNative": [
+      512,
+      512
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Recovered unrecorded canonical 512 source after visual identity review. Mage, face, bleeding hand and ritual focus remain clear in the 206:141 crop; the upper crystal is clipped by the card crop but is not identity-critical. The 128px thumbnail reads clearly. Raw provenance unavailable."
+  },
+  {
+    "cardId": "shadow_claim_02",
+    "name": "Sunken Bog",
+    "prompt": "Paint an illustration for Sunken Bog. Mechanics: claimable swamp ground occupies a compact patch; land itself is the objective. Show a broad patch of sunken bog terrain in a ruined medieval battlefield: dark peat, shallow black water, reed clumps, twisted roots, bubbles and a small ruin sinking at the center, lit by cold violet fog. Make the terrain itself the unmistakable subject, with a broad horizontal composition and readable ground texture, no characters necessary. Painterly medieval fantasy collectible-card art, atmospheric moonlight and tactile mud, stone and water. Square 1:1 512x512 master; keep key landform inside x24..488,y105..407 with expendable mist above and below. No text, labels, border or UI; no anime, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2b94bb65-9625-4e8e-8bc7-3a1a256463ed.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_claim_02.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "The square is a readable moonlit wetland with a sinking ruin, peat, water, reeds and bubbles. The 206:141 crop retains the central bog/ruin; the 128px thumbnail reads as swamp terrain though fine reeds soften at that size."
+  },
+  {
+    "cardId": "hero_morrow",
+    "name": "Morrow the Lich",
+    "prompt": "Paint an illustration for Morrow the Lich. Mechanics: a hero lich with 160 health, casting repeated bursts of grave frost that curse, while healing from damage dealt. Show Morrow, a commanding ancient lich in tattered royal burial robes and a tarnished crown, releasing a compact burst of blue-violet grave frost toward an armored enemy; faint life essence streams back to him. His gaunt face and raised casting hand are prominent, serious grounded proportions, rich cloth and bone detail, moonlit necropolis depth, painterly medieval fantasy. Square 1:1 512x512 master; keep face, hand, burst and target inside x24..488,y105..407; horizontal staging and clear thumbnail silhouette. No text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-91f626bb-5a02-42d2-b7b2-34354eec0bf6.png",
+    "editableSourcePath": "game/cards/art/masters/hero_morrow.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "The lich, skull face, casting hand and grave-frost burst are prominent. The 206:141 crop cuts the crown at the top, but leaves the face, hand, target and action intact; the 128px crop remains recognizable as the lich attack."
+  },
+  {
+    "cardId": "shadow_strike_05",
+    "name": "Acid Vial Splash",
+    "prompt": "Paint an illustration for Acid Vial Splash. Mechanics: an acid splash burst that poisons the target and recoils on the caster. Show one glass vial shattering against the armor of a single enemy, a vivid yellow-green acid splash eating into the metal and releasing toxic droplets; in the foreground, the thrower's gloved hand recoils from a small splashback. Keep the vial, impact, enemy torso and recoiling hand readable without making the acid obscure the subject. Painterly medieval fantasy, tactile glass, steel and leather, cold crypt light with acidic green highlights. Square 1:1 512x512 master, horizontal staging; all identity-critical hand/object/impact inside x24..488,y105..407. No labels, text, frame, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-3efbb8f8-dbab-4fcf-b0ad-3549e33c13b2.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_strike_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "The shattered vial, acidic impact, armored target and recoiling glove are clear in the square. The 206:141 crop keeps the vial, relevant hand and target; the 128px thumbnail reads as a bright acid strike."
+  },
+  {
+    "cardId": "shadow_lob_07",
+    "name": "Ossuary Urn",
+    "prompt": "Paint an illustration for Ossuary Urn. Mechanics: a heavy, quick-fuse grave urn lands in a column, then bursts at ground level with grave frost and a brief knockdown. Show a single heavy carved ossuary urn tumbling downward in a clear vertical column toward a ruined crypt floor, its lid rattling and blue-violet cold escaping; below, the impact cracks stone in a compact frost burst, knocking one armored foe off balance. Keep the whole urn visible and dominant, with impact point and foe clear; horizontal supporting composition with the urn's vertical descent legible. Painterly medieval fantasy, carved bone, aged stone and moonlit cold. Square 1:1 512x512 master; urn, lid, impact and foe inside x24..488,y105..407. No text, frame, numbers or UI, no anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8f905365-e2af-4c24-b5b5-1c3249d23bc5.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_lob_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "The carved urn, lid, grave-frost burst and knocked-back foe are clear. The standard crop slightly clips the urn crown; shifting focalPoint upward to y=0.46 keeps the full urn in the 206:141 crop while retaining the victim and impact. The 128px thumbnail remains recognizable."
+  },
+  {
+    "cardId": "shadow_ward_06",
+    "name": "Lead-Lined Coffin",
+    "prompt": "Edit this painting into a square 1:1 512x512 medieval fantasy card illustration. Keep the same lead-lined coffin cage, trapped armored man, violet ward and crypt setting, but make the entire coffin cage compact and fully visible: the complete closed top lid, all four upper corners, barred sides and full base must fit comfortably inside the central horizontal card band x24..488,y105..407. Scale the cage down and stage it at a three-quarter angle, occupying about 60 percent of the canvas height, with enough breathing room above and below; keep the imprisoned man's face and both hands at the bars clearly visible. Make it read instantly as a lead-lined coffin turned into a cage, not a tower or ordinary cell. Painterly, tactile riveted lead and iron, cold dramatic light. No text, frame, labels or UI.",
+    "generatedPath": "/workspace/generated_images/exec-19f2c678-2e43-4442-8e6b-8f7335aef2c2.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_ward_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.485
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Repaired an initially too-tall cage and preserved earlier source bytes in /tmp. With focalPoint y=0.485, the 206:141 crop includes the complete lid, coffin cage and base plus the captive's face and hands. The 128px thumbnail remains identifiable."
+  },
+  {
+    "cardId": "shadow_sentry_07",
+    "name": "Pin Doll",
+    "prompt": "Edit this artwork into a true square 1:1 512x512 composition for Pin Doll. Preserve the creepy stitched cloth doll, pins, violet curse magic and medieval crypt mood, but reframe so the entire doll including its full round head and all pins sits comfortably inside the square, with clear margin at the left. Keep a small armored target on the right and a clean magic needle/bolt between them. Use horizontal staging; keep doll face, pins and relevant hand/object/action in x24..488,y105..407 for a 206:141 wide crop. Painterly medieval fantasy, believable burlap, wood and steel. No text, frame, UI.",
+    "generatedPath": "/workspace/generated_images/exec-cc355c31-3db1-401d-a1a2-03700627088b.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_sentry_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reframed a landscape draft as a square so the stitched doll's full face and pins stay visible. The 206:141 crop preserves the doll, targeted enemy and curse/lifedrain threads; the 128px thumbnail reads as a pinned effigy attacking."
+  },
+  {
+    "cardId": "shadow_boon_05",
+    "name": "Embalming Salts",
+    "prompt": "Paint an illustration for Embalming Salts. Mechanics: an immediate short regeneration boon restores a small amount of health over several seconds to friendly troops. Show a battlefield apothecary's gloved hand sprinkling pale, iridescent embalming crystals from an open bone-white jar onto the wounds of a wounded allied soldier; the soldier's skin and armor glimmer as the injury closes and vigor returns. Make the named salts and jar clearly visible, alongside the healing action. Painterly medieval fantasy, tactile glass, mineral crystals, leather gloves and worn armor, cold crypt light softened by a warm healing glow. Square 1:1 512x512 master; keep jar, salts, face, hand and wound within x24..488,y105..407 for 206:141 card crop. No text, frame, labels or UI; no anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0a427a47-8a9b-4b63-b1fe-c25b45019541.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_boon_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "The open crystal jar, sprinkling hand, healing soldier's face and glowing wound remain readable in the square and 206:141 crop. The 128px thumbnail retains the jar and healing glow; the healer's hood top is expendable atmosphere."
+  },
+  {
+    "cardId": "shadow_charge_05",
+    "name": "Nightshade Berries",
+    "prompt": "Paint an illustration for Nightshade Berries. Mechanics: a pouch of four charges, each shot releases twin poisonous darts. Show a small dark leather pouch of glossy deep-purple nightshade berries tipped open on a stone ledge; beside it, two slender dark darts are coated with berry poison and aimed toward a distant armored target, with a subtle toxic violet-green sheen. The berries are the primary named object, large, sharply readable and clearly distinct from ordinary fruit; the paired darts and target are supporting action. Painterly medieval fantasy, tactile fruit skins, leather, steel and crypt stone, dramatic cool light. Square 1:1 512x512; keep the whole pouch, berries, both dart tips and target inside x24..488,y105..407. No text, border or UI, no anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0fc8564f-102c-438a-be00-f691c77d9090.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_charge_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "The large open pouch and glossy nightshade berries dominate; paired poison darts and distant foe support the mechanics. The 206:141 crop keeps the berries and pouch intact; it clips a little of the secondary lower dart tip. The 128px thumbnail clearly reads as a berry pouch."
+  },
+  {
+    "cardId": "shadow_utility_04",
+    "name": "Tarot Spread",
+    "prompt": "Paint an illustration for Tarot Spread. Mechanics: a shadow utility that draws two cards from the caster's deck. Show a mysterious fortune-teller's hands laying out a precise fan of two richly illustrated tarot cards on a dark velvet cloth, while two additional cards rise from the deck in a swirl of violet spectral smoke toward the reader. The decorated cards must be blank of legible lettering or numbers; make the spread and two drawn cards the clear subject. Painterly medieval fantasy, tactile aged paper, dark wood, silver dust and warm candlelight with violet shadows. Square 1:1 512x512 master; keep hands and the entire four-card spread inside x24..488,y105..407 for the 206:141 crop. No text, labels, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-efdf0bcd-4aae-4072-a038-aaf172cc056e.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_utility_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.54
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Shifted focalPoint to y=0.54 so both foreground spread cards, the reader's hands and deck remain visible in the 206:141 crop. The two spectral cards at the upper edge are partly cropped but secondary; the 128px thumbnail reads as a tarot spread."
+  },
+  {
+    "cardId": "shadow_trap_04",
+    "name": "Trapdoor Spider Lair",
+    "prompt": "Paint an illustration for Trapdoor Spider Lair. Mechanics: a normal-sized hidden snare trap springs in a small patch, poisoning and briefly stunning its victim. Show one large trapdoor spider bursting from its camouflaged earthen lair beneath a hinged leaf-and-soil trapdoor, its webbed pit catching the boot of an armored intruder; poison fangs and a brief violet stun flash are visible. The spider, trapdoor and caught boot are all readable, with the lair itself clearly the named subject. Painterly medieval fantasy forest crypt edge, tactile soil, bark, web and chitin, dramatic moonlight. Square 1:1 512x512 master, horizontal staging; keep spider, trapdoor and victim's caught boot inside x24..488,y105..407. No text, frame, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b5ba13e4-0c8b-4e84-9c9b-a98b7e3856b3.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_trap_04.png",
+    "sourceNative": [
+      1536,
+      1024
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "The spider, camouflaged trapdoor and webbed earthen lair remain clear in square and wide crop. The victim's armored leg enters at the crop's left edge and is incidental; the 128px thumbnail still reads as a trapdoor spider lair."
+  },
+  {
+    "cardId": "shadow_environment_05",
+    "name": "Restless Graves",
+    "prompt": "Paint an illustration for Restless Graves. Mechanics: a long-lived burst of tremors through a haunted patch of graves, damaging and briefly stunning those standing there. Show a moonlit cemetery in an unmistakable violent tremor: several old headstones buckling and tilting around a central cracked grave, soil lifting in a circular shockwave, a few ghostly hands breaking through and one armored intruder knocked off balance by the quake. The restless graveyard itself is the dominant subject, with the tremor visible in the stones and ground rather than a generic spell explosion. Painterly medieval fantasy, wet earth, worn carved stone, cold moonlight and subtle violet spectral haze. Square 1:1 512x512 master, horizontal staging; keep the key headstones, crack, and victim within x24..488,y105..407 for the 206:141 card crop; atmosphere above and below. No text, frame, UI, numbers, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7243348c-6e9d-4eda-a2e3-72f0d1afb2b8.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_environment_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "The square and 206:141 crop show tremoring headstones, a cracked grave, rising hands and a staggered intruder. At 128px, the graveyard and tremor remain identifiable, though fine cracks and small stones soften."
   }
 ]

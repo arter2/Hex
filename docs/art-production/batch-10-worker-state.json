@@ -7,15 +7,15 @@
     },
     "/root/b10_worker_2": {
       "packet": "shadow-05",
-      "state": "running"
+      "state": "idle"
     },
     "/root/b10_worker_3": {
       "packet": "storm-05",
-      "state": "running"
+      "state": "idle"
     },
     "/root/b10_worker_4": {
       "packet": "verdant-05",
-      "state": "running"
+      "state": "idle"
     },
     "/root/b10_worker_5": {
       "packet": "light-04",
@@ -62,7 +62,10 @@
     "gray-05",
     "fire-05",
     "light-04",
-    "brown-05"
+    "brown-05",
+    "verdant-05",
+    "shadow-05",
+    "storm-05"
   ],
   "reviewedSources": {
     "shadow_strike_08": {
@@ -784,6 +787,66 @@
     "brown_machine_40": {
       "file": "game/cards/art/masters/brown_machine_40.png",
       "sha256": "1f170af191f2c768a587e12c771338de484c560fa260e4bf3aa357e2d1de420f"
+    },
+    "verdant_environment_05": {
+      "file": "game/cards/art/masters/verdant_environment_05.png",
+      "sha256": "44a8d89df125a0192cbf1efc614efd1930f75306fd0363631168f6e828ab80db"
+    },
+    "verdant_piece_05": {
+      "file": "game/cards/art/masters/verdant_piece_05.png",
+      "sha256": "ef0b90ae91598c0f91ced0e8c18aaf2df797d835887b1eed7d24a51bed077ff0"
+    },
+    "verdant_summon_11": {
+      "file": "game/cards/art/masters/verdant_summon_11.png",
+      "sha256": "479bc0691d28ac167d3ee706bf7347e4c567963e5cbba18f20d9cd54615cbe03"
+    },
+    "hero_sylva": {
+      "file": "game/cards/art/masters/hero_sylva.png",
+      "sha256": "5884022bcb3d37841d89d66acbc381141a77cb7e6a115c62380d620338278d55"
+    },
+    "verdant_strike_11": {
+      "file": "game/cards/art/masters/verdant_strike_11.png",
+      "sha256": "682da604edffa976d02d37e4a309a13d96ad459f6f848f6b3ea9618a84e09575"
+    },
+    "shadow_trap_08": {
+      "file": "game/cards/art/masters/shadow_trap_08.png",
+      "sha256": "cc2347c2fcdde83cbc64ea687e52d627cb174403491977a96282bc6bf99b67a4"
+    },
+    "shadow_environment_09": {
+      "file": "game/cards/art/masters/shadow_environment_09.png",
+      "sha256": "f09fbf3b2727da7e0931522c32991909c115a196f874778277aa06014ef28c71"
+    },
+    "shadow_piece_05": {
+      "file": "game/cards/art/masters/shadow_piece_05.png",
+      "sha256": "199af35f8159548b1a995a054f644898be8c4b3a965be6ae9006a3ea6209f633"
+    },
+    "shadow_summon_07": {
+      "file": "game/cards/art/masters/shadow_summon_07.png",
+      "sha256": "3376dfa013a42bbb7fec156e49d609d85c88abb05933e4e636fca4b491337b11"
+    },
+    "shadow_machine_05": {
+      "file": "game/cards/art/masters/shadow_machine_05.png",
+      "sha256": "b2e8d7c587301e7fbe69b7b27f2b8acba568293bdcc3fbdae2f9432c4acc1c49"
+    },
+    "storm_environment_08": {
+      "file": "game/cards/art/masters/storm_environment_08.png",
+      "sha256": "85898cf2c6280a5b048531b5cc27012315a958151f49838e891ea6c447537eb9"
+    },
+    "storm_summon_06": {
+      "file": "game/cards/art/masters/storm_summon_06.png",
+      "sha256": "d5b0a969d40b7c3748ae2a003cc725f7ea388c2553b36cf158527ca018e42c97"
+    },
+    "storm_machine_06": {
+      "file": "game/cards/art/masters/storm_machine_06.png",
+      "sha256": "2b7f2cfcf7f0d5d114abfd1a50734680415410f0b90f8580bc7a954f69f58fa8"
+    },
+    "hero_gale": {
+      "file": "game/cards/art/masters/hero_gale.png",
+      "sha256": "badba3cdc07159f0f435690e2a78e7463462826ddf17d739eb5cce90ca15a288"
+    },
+    "storm_strike_10": {
+      "file": "game/cards/art/masters/storm_strike_10.png",
+      "sha256": "f3d01f6d05bba8fff6d8679f9c7f6e69eb369d914335e430be20c05f33fb3fe6"
     }
   },
   "previousGenerationPause": {

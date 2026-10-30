@@ -2023,5 +2023,95 @@
     "batch": 10,
     "reviewNote": "Repainted after focal adjustment could not retain both the scholar’s full head and all tablet edges; preserved first source at /tmp/light_utility_09-first-source.png. Reviewed final square, centered 206:141 crop and thumbnail: scholar’s full face/hand and all three palm-leaf tables plus ivory board fit.",
     "name": "Aryabhata's Tables"
+  },
+  {
+    "cardId": "light_environment_08",
+    "name": "Collapsing Colonnade",
+    "prompt": "Long row of grand white marble columns in an ancient temple shakes and leans as dust and stones fall, with a middle section collapsing in a horizontal wave. Dusty sunbeams, painterly medieval fantasy.",
+    "generatedPath": "/workspace/generated_images/exec-3bf63ba1-7fa8-44c3-a466-c4d0b48a819c.png",
+    "editableSourcePath": "game/cards/art/masters/light_environment_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Defining colonnade and collapsing row remain readable in square, wide crop and thumbnail; no face or named structure is clipped.",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "light_machine_05",
+    "name": "Wicker Mantlet",
+    "prompt": "Compact portable wicker mantlet screen with complete rounded woven panel, wooden side frame, two feet and small wheels. Armored operator beside it, face visible and both hands gripping frame. Painterly medieval courtyard, square composition.",
+    "generatedPath": "/workspace/generated_images/exec-32011189-cf20-4665-84ba-84ffa5547464.png",
+    "editableSourcePath": "game/cards/art/masters/light_machine_05.png",
+    "sourceNative": [
+      1514,
+      1039
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Repainted twice after the first crops cut the panel structure and operator face. Final wide crop shows the whole panel, side frame, feet and wheels with the operator's face and hands; helmet top is lightly trimmed.",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "hero_seraphiel",
+    "name": "Seraphiel",
+    "prompt": "Radiant angelic guardian amid high clouds, calm full face and both hands extended to release soft healing light and a translucent protective shield. White-gold armor, graceful wings, halo, cinematic sky light, painterly fantasy.",
+    "generatedPath": "/workspace/generated_images/exec-873289bb-48fb-4983-98e2-c63d0e2fe3f3.png",
+    "editableSourcePath": "game/cards/art/masters/hero_seraphiel.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Face and both open hands remain fully visible in square, wide crop and thumbnail; wing tips and halo rays are incidental.",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "light_summon_05",
+    "name": "White Unicorn",
+    "prompt": "Luminous pale-white unicorn in alpine meadow, elegant full face, eye and single long spiral horn sharp and unobscured, horn points forward with space around its tip. Pearl mane, subtle golden healing light, blue-green mountains. Painterly fantasy square composition.",
+    "generatedPath": "/workspace/generated_images/exec-c200d35a-82ae-49aa-b56c-81930b172e8e.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "reviewNote": "Focal point y=0.40 keeps the full face and complete horn, including its tip, readable in the wide crop and thumbnail; legs and meadow crop naturally.",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "light_trap_09",
+    "name": "Daedalus's Snare",
+    "prompt": "Compact brass-and-rope mechanical snare on a palace floor, complete trigger plate, spring, short braided cord and full circular snare loop all visible. Crouched inventor beside it with full face and both working hands at trap height. Painterly golden marble, square composition.",
+    "generatedPath": "/workspace/generated_images/exec-40cc994a-6393-421c-a84f-f016723654b3.png",
+    "editableSourcePath": "game/cards/art/masters/light_trap_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Repainted twice to fit the full loop and inventor together. Face, hands, complete trigger mechanism and entire snare loop are now visible in square, wide crop and thumbnail.",
+    "status": "generated",
+    "batch": 10
   }
 ]

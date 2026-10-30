@@ -2032,5 +2032,95 @@
     "status": "generated",
     "batch": 10,
     "reviewNote": "Repainted after parent review found the previous flask too tall for a crop containing stopper and base together; preserved the prior source in /tmp/storm04-attempts. Reviewed replacement square, 206:141 crop, and thumbnail. Full cork, short neck, complete bottle body and rounded base fit beside the djinn’s full face and both hands."
+  },
+  {
+    "cardId": "storm_environment_08",
+    "name": "Sun-Baked Wadi",
+    "prompt": "Paint Sun-Baked Wadi as a storm environment: a long narrow desert canyon of ochre sandstone, its dry riverbed winding between tall sun-cracked walls while a vertical column of shimmering heat and pale gold light pours down the central ravine. A weary caravan traveler with visible face and raised hand staggers in the drained heat haze, tiny against the landscape; the wadi itself remains the unmistakable subject. Painterly medieval fantasy collectible-card environment art, believable eroded rock and dust, hot amber sunlight, cool deep canyon shadows, atmospheric depth and textured brushwork. Explicit 1:1 square 512 master; keep canyon opening, central wadi and traveler face/hand within x24..488 y105..407 for horizontal 206:141 crop; expendable sky and foreground rock may crop. No text, frame, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9175baf4-ef7e-43f0-b258-1aa1e78d2439.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/storm_environment_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed square, actual 206:141 crop and thumbnail: canyon and central heat column remain dominant; caravan traveler is small but visible in the wide crop."
+  },
+  {
+    "cardId": "storm_summon_06",
+    "name": "Dybbuk",
+    "prompt": "Paint Dybbuk as a grim storm summon: a tormented spectral spirit in a tattered burial shroud darts in a zigzag through a moonlit ruined courtyard, its pale human face and reaching hands visible while a second translucent shadow trails behind like a stolen echo. Blue-white lightning crawls around the spirit as it drains a fading strand of life-light from a fallen foe's gauntlet. Keep one face and both hands clear; the apparition is the dominant subject. Painterly medieval fantasy collectible-card art, believable cloth, spectral mist, cool storm light, deep shadow and textured brushwork. Explicit 1:1 square 512 master; keep spirit face/hands and central body in x24..488 y105..407 for 206:141 crop; wisps and fallen lower body may crop. No text, frame, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-233e10f6-a2d2-4259-aa2f-ce9c760f8195.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/storm_summon_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed square, actual 206:141 crop and thumbnail: Dybbuk face, reaching hand and trailing spirit remain clear; foreground foe is incidental."
+  },
+  {
+    "cardId": "storm_machine_06",
+    "name": "Brass Automaton Archer",
+    "prompt": "Paint Brass Automaton Archer as a compact mechanical sentry: a sturdy brass automaton with a readable mask-like face, articulated shoulders and a polished longbow aimed toward an unseen target. Place the full figure and bow in a horizontal side profile, bow and arrow extending across the same band as the automaton's face and hands gripping the string; keep the bow's full arc and arrow visible, no modern rifle. Painterly medieval fantasy collectible-card art, engraved brass plates, leather joints, believable mechanical anatomy, cool workshop light with gold highlights, atmospheric depth and textured brushwork. Explicit 1:1 square 512 master; keep face, both hands, bow and arrow inside x24..488 y105..407 for 206:141 crop; incidental legs may crop. No text, frame, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7d60e27a-e18e-4d7d-93a6-2e3b30a5e8d9.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/storm_machine_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed square, actual 206:141 crop and thumbnail: automaton face, hands, arrow and most of the bow remain readable in the horizontal crop; the upper bow tip reaches beyond the crop edge."
+  },
+  {
+    "cardId": "hero_gale",
+    "name": "Gale, the Sky Pirate",
+    "prompt": "Paint Gale, the Sky Pirate as a bold storm hero: a daring woman sky pirate in weathered blue-black leather and a gold-trimmed scarf braces on a wooden airship deck, her face visible as she turns and slashes with a curved cutlass while gusting wind bends the rigging and a bolt of lightning lights the clouds behind. Keep Gale's full face and sword hand central; show a second defensive hand raised against incoming wind to suggest her nimble dodge. Painterly medieval fantasy collectible-card hero art, believable face, cloth, steel and rope, dramatic storm light, textured brushwork and atmospheric depth. Explicit 1:1 square 512 master; keep face, both hands and cutlass within x24..488 y105..407 for 206:141 crop; sail tips and distant sky may crop. No text, frame, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-549b2e3c-cc09-4a9d-a252-036afd752ac0.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/hero_gale.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed square, actual 206:141 crop and thumbnail: Gale face, raised hand, sword hand and cutlass remain clear; peripheral rigging and lower clothing crop naturally."
+  },
+  {
+    "cardId": "storm_strike_10",
+    "name": "Manticore Tail Spikes",
+    "prompt": "Paint Manticore Tail Spikes as a quick storm strike: a recognizable tawny manticore with lion body and expressive humanlike lion face crouches in a compact three-quarter pose, its long segmented scorpion tail curling horizontally around its flank to the right. The whole arcing tail and a cluster of three long ivory spear spikes at its tip are prominent and fully visible; one matching spike is launching toward an unseen target with a thin streak of storm light. Keep manticore face and full spiked tail together at the same middle height, avoiding a tall vertical curl. Painterly medieval fantasy collectible-card art, believable fur, iron-dark tail plates and bone spikes, cool lightning light, textured brushwork and dramatic depth. Explicit 1:1 square 512 master; keep face, complete tail tip and all named spikes inside x24..488 y105..407 for 206:141 crop; incidental paws may crop. No text, frame, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d30cb872-4ac8-405d-ad92-688aec74a73e.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/storm_strike_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed square, actual 206:141 crop and thumbnail: manticore face and full curled spiked tail remain prominent; launched spike and storm trail read clearly."
   }
 ]

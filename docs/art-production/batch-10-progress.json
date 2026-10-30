@@ -2,10 +2,10 @@
   "batch": 10,
   "status": "in-progress",
   "targetNewImages": 200,
-  "generatedSources": 180,
-  "reviewedSources": 180,
-  "missingSources": 20,
-  "reviewedPackets": 36,
+  "generatedSources": 200,
+  "reviewedSources": 195,
+  "missingSources": 0,
+  "reviewedPackets": 39,
   "requiresRepaint": [],
   "baselineActive": 834,
   "targetActive": 1034,
@@ -1190,6 +1190,18 @@
       ]
     },
     {
+      "cardId": "hero_gale",
+      "name": "Gale, the Sky Pirate",
+      "colour": "storm",
+      "source": "game/cards/art/masters/hero_gale.png",
+      "sha256": "badba3cdc07159f0f435690e2a78e7463462826ddf17d739eb5cce90ca15a288",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "cardId": "hero_ignis",
       "name": "Ignis, the Forge Wyrm",
       "colour": "fire",
@@ -1238,11 +1250,35 @@
       ]
     },
     {
+      "cardId": "hero_seraphiel",
+      "name": "Seraphiel",
+      "colour": "light",
+      "source": "game/cards/art/masters/hero_seraphiel.png",
+      "sha256": "ab2590821ce9ffee4c1e61049bec689bcb6cd2696e56c9eb10de9829405219a3",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "cardId": "hero_sola",
       "name": "Sola Flamewright",
       "colour": "fire",
       "source": "game/cards/art/masters/hero_sola.png",
       "sha256": "fc80ba910c774ef42a6562d21305592c9be31b0c09b2729e56635c2c3f775f0d",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "hero_sylva",
+      "name": "Sylva the Wild Archer",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/hero_sylva.png",
+      "sha256": "5884022bcb3d37841d89d66acbc381141a77cb7e6a115c62380d620338278d55",
       "reviewed": true,
       "focalPoint": [
         0.5,
@@ -1322,6 +1358,18 @@
       ]
     },
     {
+      "cardId": "light_environment_08",
+      "name": "Collapsing Colonnade",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_environment_08.png",
+      "sha256": "20467c92b324fe09df538ff385d5d8400982a491d462fa4edb07bed854ad5709",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "cardId": "light_lob_09",
       "name": "Alchemist's Flask",
       "colour": "light",
@@ -1355,6 +1403,18 @@
       "focalPoint": [
         0.5,
         0.44
+      ]
+    },
+    {
+      "cardId": "light_machine_05",
+      "name": "Wicker Mantlet",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_machine_05.png",
+      "sha256": "eb5a47a8ea9ac07650a9c329056d0f47565863acd10570925bdab915a7cf76fc",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
       ]
     },
     {
@@ -1430,6 +1490,18 @@
       ]
     },
     {
+      "cardId": "light_summon_05",
+      "name": "White Unicorn",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_summon_05.png",
+      "sha256": "cc099b5fd91dc7909ffae62d8cbac94cd8165dd07805709fc071acad32ddb449",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
       "cardId": "light_trap_08",
       "name": "Tomb Builder's Pitfall",
       "colour": "light",
@@ -1439,6 +1511,18 @@
       "focalPoint": [
         0.5,
         0.45
+      ]
+    },
+    {
+      "cardId": "light_trap_09",
+      "name": "Daedalus's Snare",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_trap_09.png",
+      "sha256": "3443f91e8415cbb50509ea4fac9e412f6c6e6649fa68bccdab390abecfe53ce3",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
       ]
     },
     {
@@ -1550,6 +1634,18 @@
       ]
     },
     {
+      "cardId": "shadow_environment_09",
+      "name": "Witch's Thicket",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_environment_09.png",
+      "sha256": "f09fbf3b2727da7e0931522c32991909c115a196f874778277aa06014ef28c71",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "cardId": "shadow_lob_10",
       "name": "Coffin Drop",
       "colour": "shadow",
@@ -1586,11 +1682,35 @@
       ]
     },
     {
+      "cardId": "shadow_machine_05",
+      "name": "Plague Trebuchet",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_machine_05.png",
+      "sha256": "b2e8d7c587301e7fbe69b7b27f2b8acba568293bdcc3fbdae2f9432c4acc1c49",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "cardId": "shadow_piece_04",
       "name": "Cauldron of the Bone Mother",
       "colour": "shadow",
       "source": "game/cards/art/masters/shadow_piece_04.png",
       "sha256": "916c20471ff89bf1973d6edc0ad3463601133994fb5c607bf7701f9d4bfeaf22",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "shadow_piece_05",
+      "name": "Mask of the Plague Doctor",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_piece_05.png",
+      "sha256": "199af35f8159548b1a995a054f644898be8c4b3a965be6ae9006a3ea6209f633",
       "reviewed": true,
       "focalPoint": [
         0.5,
@@ -1658,11 +1778,35 @@
       ]
     },
     {
+      "cardId": "shadow_summon_07",
+      "name": "Plague Zombie",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_07.png",
+      "sha256": "3376dfa013a42bbb7fec156e49d609d85c88abb05933e4e636fca4b491337b11",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "cardId": "shadow_trap_07",
       "name": "Oubliette",
       "colour": "shadow",
       "source": "game/cards/art/masters/shadow_trap_07.png",
       "sha256": "40c2e1de1ee64a272b54390d4ade99db008aefa8879c8b1da55c9983ccf9b5a9",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "shadow_trap_08",
+      "name": "The Hanged Man",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_trap_08.png",
+      "sha256": "cc2347c2fcdde83cbc64ea687e52d627cb174403491977a96282bc6bf99b67a4",
       "reviewed": true,
       "focalPoint": [
         0.5,
@@ -1778,6 +1922,18 @@
       ]
     },
     {
+      "cardId": "storm_environment_08",
+      "name": "Sun-Baked Wadi",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_environment_08.png",
+      "sha256": "85898cf2c6280a5b048531b5cc27012315a958151f49838e891ea6c447537eb9",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "cardId": "storm_lob_09",
       "name": "Golden Hail",
       "colour": "storm",
@@ -1807,6 +1963,18 @@
       "colour": "storm",
       "source": "game/cards/art/masters/storm_machine_05.png",
       "sha256": "b86d2b6c3e1c5c0599b870bbec6084bafcb153304fe594a8cb25e42a31b697ca",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_machine_06",
+      "name": "Brass Automaton Archer",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_machine_06.png",
+      "sha256": "2b7f2cfcf7f0d5d114abfd1a50734680415410f0b90f8580bc7a954f69f58fa8",
       "reviewed": true,
       "focalPoint": [
         0.5,
@@ -1862,11 +2030,35 @@
       ]
     },
     {
+      "cardId": "storm_strike_10",
+      "name": "Manticore Tail Spikes",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_strike_10.png",
+      "sha256": "f3d01f6d05bba8fff6d8679f9c7f6e69eb369d914335e430be20c05f33fb3fe6",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "cardId": "storm_summon_05",
       "name": "Si'lat Shapeshifter",
       "colour": "storm",
       "source": "game/cards/art/masters/storm_summon_05.png",
       "sha256": "09c4332dba7bf250a32345b317f7f3c8788dd1b878f121c736644a5522a13032",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_summon_06",
+      "name": "Dybbuk",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_summon_06.png",
+      "sha256": "d5b0a969d40b7c3748ae2a003cc725f7ea388c2553b36cf158527ca018e42c97",
       "reviewed": true,
       "focalPoint": [
         0.5,
@@ -2006,6 +2198,18 @@
       ]
     },
     {
+      "cardId": "verdant_environment_05",
+      "name": "Rainforest Canopy",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_environment_05.png",
+      "sha256": "44a8d89df125a0192cbf1efc614efd1930f75306fd0363631168f6e828ab80db",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "cardId": "verdant_lob_09",
       "name": "Sticky Sap Glob",
       "colour": "verdant",
@@ -2054,6 +2258,18 @@
       ]
     },
     {
+      "cardId": "verdant_piece_05",
+      "name": "Pelt of the Jaguar King",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_piece_05.png",
+      "sha256": "ef0b90ae91598c0f91ced0e8c18aaf2df797d835887b1eed7d24a51bed077ff0",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.38
+      ]
+    },
+    {
       "cardId": "verdant_sentry_08",
       "name": "Mandrake Patch",
       "colour": "verdant",
@@ -2090,11 +2306,35 @@
       ]
     },
     {
+      "cardId": "verdant_strike_11",
+      "name": "Blowgun Dart",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_strike_11.png",
+      "sha256": "682da604edffa976d02d37e4a309a13d96ad459f6f848f6b3ea9618a84e09575",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "cardId": "verdant_summon_10",
       "name": "Jack-in-the-Green",
       "colour": "verdant",
       "source": "game/cards/art/masters/verdant_summon_10.png",
       "sha256": "bd71acb48ab9793a808d09fb1111bd1084078c9201612f3d2eecc4c2af87f9fe",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_summon_11",
+      "name": "Leshy of the Birchwood",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_11.png",
+      "sha256": "479bc0691d28ac167d3ee706bf7347e4c567963e5cbba18f20d9cd54615cbe03",
       "reviewed": true,
       "focalPoint": [
         0.5,

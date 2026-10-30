@@ -2023,5 +2023,95 @@
       1254,
       1254
     ]
+  },
+  {
+    "cardId": "shadow_trap_08",
+    "name": "The Hanged Man",
+    "prompt": "A fully clothed medieval traveler hangs upside down by one boot from a rope at a tree branch, reaching with both hands; face and hands clearly readable. Golden mountain-valley sunset and forest, painterly fantasy card art, square 1:1.",
+    "generatedPath": "/workspace/generated_images/exec-67ed850f-8796-4496-9131-b27829f7d260.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_trap_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed square source, actual 206:141 crop and thumbnail: fully clothed suspended figure, face, and both reaching hands remain visible; no gore."
+  },
+  {
+    "cardId": "shadow_environment_09",
+    "name": "Witch's Thicket",
+    "prompt": "A dense vertical column of interwoven black thorn branches and dark violet leaves blocks a moonlit path in an eerie witchwood, pale purple light shining through the bramble. Painterly medieval fantasy, square 1:1.",
+    "generatedPath": "/workspace/generated_images/exec-703d5f78-855b-499d-8b87-518cf283c5a7.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_environment_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed square source, actual crop and thumbnail: dense central column of brambles reads clearly; incidental upper branches and lower path crop naturally."
+  },
+  {
+    "cardId": "shadow_piece_05",
+    "name": "Mask of the Plague Doctor",
+    "prompt": "A hooded medieval plague doctor holds a complete aged leather-and-brass beaked mask at eye level, with the doctor’s face visible above a dark cloth covering and both gloved hands gripping the mask; restrained green vapor, painterly dark fantasy, square 1:1.",
+    "generatedPath": "/workspace/generated_images/exec-532c7330-b9ab-43b1-878e-daf1255ecbf0.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_piece_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed square source, actual crop and thumbnail: full beaked mask, visible eyes/face, and gripping hands remain legible."
+  },
+  {
+    "cardId": "shadow_summon_07",
+    "name": "Plague Zombie",
+    "prompt": "A non-gory medieval zombie rises from a grave in a moonlit cemetery, gaunt face visible and both hands reaching from the soil, tattered clothes and pale green grave mist, painterly dark fantasy, square 1:1.",
+    "generatedPath": "/workspace/generated_images/exec-c6970169-b939-4e1a-85b0-45ca95dba521.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed square source, actual crop and thumbnail: rising zombie face and both reaching hands remain clear; no gore."
+  },
+  {
+    "cardId": "shadow_machine_05",
+    "name": "Plague Trebuchet",
+    "prompt": "Compact complete medieval wooden trebuchet in a horizontal side-on view, showing full throwing arm, sling with a sealed plague payload, counterweight, braced frame and both wheels; a small hooded operator with face and hands visible works beside it. Moonlit siege field, restrained green plague miasma, painterly dark fantasy, square 1:1.",
+    "generatedPath": "/workspace/generated_images/exec-dc966965-0a66-483a-81b4-bac8dba08339.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_machine_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed 512-square source, actual 206:141 crop and thumbnail: complete trebuchet arm, sling payload, frame, counterweight and both wheels fit; operator face and working hands are visible, though small at thumbnail size."
   }
 ]

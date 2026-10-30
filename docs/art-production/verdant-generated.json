@@ -2029,5 +2029,95 @@
     "status": "generated",
     "batch": 10,
     "reviewNote": "Focal point raised so traveler face, braced hands and root-snared ankle remain together in the crop. Adjusted wide crop and thumbnail inspected; peat, looped roots and sinking boot read clearly."
+  },
+  {
+    "cardId": "verdant_environment_05",
+    "name": "Rainforest Canopy",
+    "prompt": "Paint an illustration for the fantasy card Rainforest Canopy. Actual mechanics cue: a short cross-pattern bramble rainforest-canopy environment. A view through the upper canopy of an ancient tropical rainforest, dense broad leaves, lianas and crossing thorny vines forming a clear bramble cross pattern above a dim green forest floor; shafts of sunlight reveal layered crowns and humid mist. A small parrot is distant and incidental; the canopy itself dominates. Painterly medieval fantasy collectible-card art, expressive faces, believable foliage, fur, bark and leather, warm directional light, visible textured brushwork and atmospheric depth. Compact horizontal composition, one clear named subject. Keep all important face, both hands, whole named pelt if present and any primary action inside x24…488,y105…407 on the normalized 512 square; make it clear in a 206:141 crop and 128px thumbnail. Explicit 1:1 square 512×512 master, quiet expendable scenery above and below. No text, labels, border, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-1a5f59f7-5456-487e-b8a2-a8387cba4060.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_environment_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. Dense rainforest crowns, sunlit canopy layers, and crossing thorny vines make the named canopy clear; outer leaves and distant parrot are incidental."
+  },
+  {
+    "cardId": "verdant_piece_05",
+    "name": "Pelt of the Jaguar King",
+    "prompt": "Paint an illustration for the fantasy card Pelt of the Jaguar King. Actual mechanics cue: a rallying healing legendary jaguar pelt artifact. A complete ceremonial jaguar pelt mantle displayed across the shoulders of a compact jungle guardian, the full tawny spotted pelt including its feline head and four dangling paws visible from head to paw, centered in the scene. Beside it the guardian's clear face and one hand gently touch the pelt at shoulder height. The pelt is the named artifact and main focal object; do not replace it with a live jaguar. Painterly medieval fantasy collectible-card art, expressive faces, believable foliage, fur, bark and leather, warm directional light, visible textured brushwork and atmospheric depth. Compact horizontal composition, one clear named subject. Keep all important face, both hands, whole named pelt if present and any primary action inside x24…488,y105…407 on the normalized 512 square; make it clear in a 206:141 crop and 128px thumbnail. Explicit 1:1 square 512×512 master, quiet expendable scenery above and below. No text, labels, border, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-bdf92d8b-4f8c-4b13-9eff-80cb471fb0dc.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_piece_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed square, crop at focal [0.5,0.38], and 128x88 thumbnail. The wearer’s full face and the pelt’s feline head, forepaws, and spotted hide remain readable together; incidental lower fringe is cropped."
+  },
+  {
+    "cardId": "verdant_summon_11",
+    "name": "Leshy of the Birchwood",
+    "prompt": "Paint an illustration for the fantasy card Leshy of the Birchwood. Actual mechanics cue: a sturdy thorny Leshy summon that mends. Leshy of the Birchwood, a compact ancient woodland spirit with a complete kindly bark-carved face, visible eyes, crown of silver birch twigs and small white leaves, sturdy branch shoulders and two thorny hands. It mends a broken birch sapling with a gentle touch; warm green forest glade behind. Keep the spirit's face and both hands central. Painterly medieval fantasy collectible-card art, expressive faces, believable foliage, fur, bark and leather, warm directional light, visible textured brushwork and atmospheric depth. Compact horizontal composition, one clear named subject. Keep all important face, both hands, whole named pelt if present and any primary action inside x24…488,y105…407 on the normalized 512 square; make it clear in a 206:141 crop and 128px thumbnail. Explicit 1:1 square 512×512 master, quiet expendable scenery above and below. No text, labels, border, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2745b67b-6aeb-4788-8fed-4bb31d57cdb7.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_11.png",
+    "sourceNative": [
+      1516,
+      1038
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. Leshy’s bark face, eyes and birch crown remain distinct; thorny hands and the mending sapling are visible in the crop."
+  },
+  {
+    "cardId": "hero_sylva",
+    "name": "Sylva the Wild Archer",
+    "prompt": "Paint an illustration for the fantasy card Sylva the Wild Archer. Actual mechanics cue: Sylva launches four thorn arrows and gains agility. Sylva the Wild Archer, a skilled elf woman with warm olive skin, pointed ears, dark braided hair and green leather archer's clothes. A compact close three-quarter portrait: complete face and eyes clearly visible beside her curved yew bow; both hands hold the bow and nock a thorn-fletched arrow, with a few tiny thorn arrows streaking into distant targets. Confident calm expression, no large foliage hiding her. Painterly medieval fantasy collectible-card art, expressive faces, believable foliage, fur, bark and leather, warm directional light, visible textured brushwork and atmospheric depth. Compact horizontal composition, one clear named subject. Keep all important face, both hands, whole named pelt if present and any primary action inside x24…488,y105…407 on the normalized 512 square; make it clear in a 206:141 crop and 128px thumbnail. Explicit 1:1 square 512×512 master, quiet expendable scenery above and below. No text, labels, border, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6012c20a-8d81-4583-9e48-d4aa0f983a7d.png",
+    "editableSourcePath": "game/cards/art/masters/hero_sylva.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. Sylva’s eyes, full face, both hands, curved bow and thorn-fletched arrow read clearly; distant targets and arrow trails are secondary."
+  },
+  {
+    "cardId": "verdant_strike_11",
+    "name": "Blowgun Dart",
+    "prompt": "Paint an illustration for the fantasy strike card Blowgun Dart. A compact forest scout with uncovered complete face and both eyes visible in calm profile, holding a short dark-wood blowgun horizontally to her lips; both hands hold the tube, and one small leaf-fletched poisoned dart with its sharp stone point is shown leaving the muzzle. Keep the complete blowgun tube from mouthpiece to muzzle and the whole dart, point and fletching inside the horizontal center of the image; the scout's face and hands remain clear. Lush verdant jungle is soft background only. This is a focused spear-like dart strike, not an arrow or modern weapon. Painterly medieval fantasy collectible-card art, visible brushwork, nuanced wood and leaf materials, grounded face, dappled green light. Explicit square 1:1 canvas for editable 512×512. Keep face, eyes, both hands, entire tube and complete dart within x24…488,y105…407 and readable in a 128px thumbnail. No text, border, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-814cf33d-14e8-401c-a4eb-25e7fe19b7ca.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. Scout’s full face and both hands are visible; complete blowgun and dart, including the sharp point and leaf fletching, fit within the crop."
   }
 ]

@@ -4,8 +4,8 @@
   "active": 834,
   "remaining": 1119,
   "pending": 919,
-  "assigned": 20,
-  "awaitingReview": 180,
+  "assigned": 0,
+  "awaitingReview": 200,
   "countsByColour": {
     "brown": 234,
     "fire": 246,
@@ -9349,7 +9349,7 @@
       "name": "Daedalus's Snare",
       "type": "trap",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -9421,7 +9421,7 @@
       "name": "Collapsing Colonnade",
       "type": "environment",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -9519,7 +9519,7 @@
       "name": "White Unicorn",
       "type": "summon",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -9884,7 +9884,7 @@
       "name": "Wicker Mantlet",
       "type": "machine",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -10170,7 +10170,7 @@
       "name": "Seraphiel",
       "type": "hero",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -11406,7 +11406,7 @@
       "name": "The Hanged Man",
       "type": "trap",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -11495,7 +11495,7 @@
       "name": "Witch's Thicket",
       "type": "environment",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -11556,7 +11556,7 @@
       "name": "Mask of the Plague Doctor",
       "type": "piece",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -11601,7 +11601,7 @@
       "name": "Plague Zombie",
       "type": "summon",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -12142,7 +12142,7 @@
       "name": "Plague Trebuchet",
       "type": "machine",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -12533,7 +12533,7 @@
       "name": "Manticore Tail Spikes",
       "type": "strike",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -13632,7 +13632,7 @@
       "name": "Sun-Baked Wadi",
       "type": "environment",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -13747,7 +13747,7 @@
       "name": "Dybbuk",
       "type": "summon",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -14153,7 +14153,7 @@
       "name": "Brass Automaton Archer",
       "type": "machine",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -14380,7 +14380,7 @@
       "name": "Gale, the Sky Pirate",
       "type": "hero",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -14640,7 +14640,7 @@
       "name": "Blowgun Dart",
       "type": "strike",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -15739,7 +15739,7 @@
       "name": "Rainforest Canopy",
       "type": "environment",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -15824,7 +15824,7 @@
       "name": "Pelt of the Jaguar King",
       "type": "piece",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -15859,7 +15859,7 @@
       "name": "Leshy of the Birchwood",
       "type": "summon",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -16493,7 +16493,7 @@
       "name": "Sylva the Wild Archer",
       "type": "hero",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },

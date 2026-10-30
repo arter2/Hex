@@ -1975,17 +1975,17 @@
   },
   {
     "cardId": "fire_charge_09",
-    "prompt": "A rugged medieval archer in a scorched leather mantle draws one arrow from a complete, prominent dragon-tooth quiver strapped at his hip; the quiver is fully visible from open rim to closed base and contains several unmistakable ivory dragon-tooth-tipped arrows, with the archer's face and drawing hand clear. A single arrow is nocked and ready, implying many powerful shots; no giant dragon in foreground. Painterly high-fantasy collectible-card illustration, tactile leather, bone, iron and cloth, warm ember light against dark forest, dramatic atmosphere. Explicit 1:1 SQUARE 512x512 master and horizontal composition; keep full quiver, arrowheads, archer face and relevant hand inside x24..488,y105..407 for 206:141 crop, quiet background beyond. No frame, writing, numbers, UI, anime, cartoon, photorealism or pixel art.",
-    "generatedPath": "/workspace/generated_images/exec-03ee154f-6f6a-4568-839d-14c9d2c1ab22.png",
+    "prompt": "Final image edit of the original Dragon Tooth Quiver concept: retain the archer and warm painterly style, but rotate the complete leather quiver horizontally across his chest beside his face. Show the closed pointed base, open rim, all ivory dragon-tooth arrow tips and both supporting hands; scale and position the face, hands and entire quiver within x24..488,y105..407 on a square master. Close framing, ember-lit dark background; quiver primary, no bow, frame, text, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-21b65f7f-5c58-4cdf-94f5-5d602d097ba6.png",
     "sourceNative": [
-      1514,
-      1039
+      1254,
+      1254
     ],
     "focalPoint": [
       0.5,
-      0.4
+      0.5
     ],
-    "reviewNote": "The upward crop preserves the archer’s full face and drawing hand together with the complete leather quiver, closed base, open rim and dragon-tooth arrowheads. The ready arrow and quiver read clearly at thumbnail size.",
+    "reviewNote": "Repainted as a compact horizontal quiver held beside the archer’s face. The complete quiver from closed base through open rim, all dragon-tooth arrow tips, the full face and both supporting hands remain visible in the square and 206:141 crop; the quiver reads immediately at thumbnail size. Previous master preserved at /tmp/fire_charge_09-before-repaint.png.",
     "name": "Dragon Tooth Quiver",
     "editableSourcePath": "game/cards/art/masters/fire_charge_09.png",
     "status": "generated",

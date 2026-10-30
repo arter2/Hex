@@ -1942,5 +1942,95 @@
     "status": "generated",
     "batch": 10,
     "reviewNote": "Square master, centered wide crop and thumbnail inspected. All three rod tips and bases, copper links, smith face and hand remain clear; protective lightning barrier reads around the array."
+  },
+  {
+    "cardId": "storm_sentry_11",
+    "name": "Thunder Drum",
+    "prompt": "Edit this artwork to fix its wide-card crop. Keep the storm musician and mountain night style, but make the primary scene compact and horizontal. The THUNDER DRUM is a compact cylindrical waist-high object placed in the middle: keep the entire circular rim and the whole cylindrical drum body from top to bottom visible, approximately x145…365,y190…360 on a normalized 512 square. Stand feet may be secondary, but do not crop any part of the drum cylinder. Place the smaller keeper beside it on the LEFT at the same visual height, not towering above it: his complete uncut face and both eyes at x55…155,y185…250, both arms/hands and short mallets reach the drum around y255…300. Keep face, eyes, hands, mallets and full cylindrical drum inside the safe rectangle x24…488,y105…407. Clear empty margins above y105 and below y395. Do not make the drum tall; do not put the keeper’s head at the top edge. Painterly medieval fantasy, dramatic storm light, square 1:1 512 master, no text/UI.",
+    "generatedPath": "/workspace/generated_images/exec-e5cbb258-da23-42c0-809c-1261b6d9dba4.png",
+    "editableSourcePath": "game/cards/art/masters/storm_sentry_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Repainted after parent review found the earlier full drum and keeper face too tall to share the crop; preserved the prior source in /tmp/storm04-attempts. Reviewed replacement square, 206:141 crop, and thumbnail. Keeper’s full face and eyes, both mallets/hands, and entire cylindrical drum body fit with clear top and bottom margin; stand feet also remain visible."
+  },
+  {
+    "cardId": "storm_boon_09",
+    "name": "Date Palm Oasis",
+    "prompt": "Paint an illustration for the fantasy card Date Palm Oasis. Actual mechanics cue: an immediate healing boon. A tranquil medieval desert date-palm oasis at sunset, a clear spring pool ringed with date palms heavy with golden fruit and cool shade, a weary traveler kneels at the water's edge and regains strength, face visible but small. The healing oasis itself is the main subject, a broad horizontal landscape; palms, pool and fruit are recognizable, no giant spell glow. Painterly medieval fantasy collectible-card art, grounded anatomy, expressive faces, rich metal/leather/paper/wood materials, directional dramatic light, visible brushwork and atmospheric depth. Use a compact horizontal composition. Keep the complete named object and any primary face and both hands within x24…488,y105…407 on the normalized 512 square, with clear margins at top and bottom. It must remain identifiable in a 206:141 crop and 128px thumbnail. Explicit 1:1 square canvas for a 512×512 editable master. No lettering, labels, border, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-71d95b70-494e-4e53-ba50-032c8f54f8a3.png",
+    "editableSourcePath": "game/cards/art/masters/storm_boon_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. Date palms, visible fruit, clear pool, and small resting traveler establish the oasis and healing mood; outer fronds are incidental scenery."
+  },
+  {
+    "cardId": "storm_charge_09",
+    "name": "Sling of Thunderstones",
+    "prompt": "Paint an illustration for the fantasy card Sling of Thunderstones. Actual mechanics cue: a small lobbed thunderstone with splash and stun. A compact leather shepherd's sling, complete with both cords, pouch and one glowing rounded thunderstone, held clearly by a desert scout. The scout stands at the same level beside the sling in profile, full intent face and both hands visible drawing the sling back; a faint blue crackle on the stone, distant sandstone target. Show full sling shape and entire stone. Painterly medieval fantasy collectible-card art, grounded anatomy, expressive faces, rich metal/leather/paper/wood materials, directional dramatic light, visible brushwork and atmospheric depth. Use a compact horizontal composition. Keep the complete named object and any primary face and both hands within x24…488,y105…407 on the normalized 512 square, with clear margins at top and bottom. It must remain identifiable in a 206:141 crop and 128px thumbnail. Explicit 1:1 square canvas for a 512×512 editable master. No lettering, labels, border, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0cfc20e4-dfd3-4c28-a4c3-6336efbaaf0c.png",
+    "editableSourcePath": "game/cards/art/masters/storm_charge_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed square, crop at focal [0.5,0.38], and 128x88 thumbnail. The scout’s full face and both hands, sling cords/pouch, and complete thunderstone remain visible; lower body is incidental."
+  },
+  {
+    "cardId": "storm_utility_09",
+    "name": "Inventor's Codex",
+    "prompt": "Paint an illustration for the fantasy card Inventor's Codex. Actual mechanics cue: a utility codex that reveals an invention. One complete ancient inventor's codex, open but intact with full covers, spine and pages visible, held horizontally in a compact scholar's hands at chest height. Beside the codex a focused medieval inventor with clear whole face and both working hands examines its brass-inlaid diagrams; book and face are side by side, no flying books or clipped corners. Painterly medieval fantasy collectible-card art, grounded anatomy, expressive faces, rich metal/leather/paper/wood materials, directional dramatic light, visible brushwork and atmospheric depth. Use a compact horizontal composition. Keep the complete named object and any primary face and both hands within x24…488,y105…407 on the normalized 512 square, with clear margins at top and bottom. It must remain identifiable in a 206:141 crop and 128px thumbnail. Explicit 1:1 square canvas for a 512×512 editable master. No lettering, labels, border, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-08add538-caa9-4dc5-a44c-43be2d0ef7c2.png",
+    "editableSourcePath": "game/cards/art/masters/storm_utility_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. Inventor's face, working hands, and full open codex with covers, spine and diagrams remain clear."
+  },
+  {
+    "cardId": "storm_trap_09",
+    "name": "Djinn Bottle",
+    "prompt": "Edit this artwork to fix its wide-card crop. Keep the elegant wizard-table mood, but redesign the Djinn Bottle as a SHORT squat rounded glass bottle, not a tall flask. The complete portable object—intact cork stopper, short neck, entire glass body, rounded base—must occupy about 200 pixels in height, x95…300,y180…380 on a normalized 512 square, with clear margins above and below. A small blue djinn’s complete face and both eyes appear beside the bottle’s neck at x305…420,y190…260, with both hands gripping the neck around y245…290; keep genie face/hands beside and level with the bottle, not floating above it. Bottle may show the djinn’s faint reflection and a curling smoky snare inside. Require stopper, whole bottle base, djinn face/eyes and both hands within x24…488,y105…407. No tall neck, no cropped stopper, no cut base. Painterly medieval fantasy art with luminous teal glass, warm candlelight, grounded expressive face. Square 1:1 512 master, no lettering, labels, border or UI.",
+    "generatedPath": "/workspace/generated_images/exec-c7d495c9-23ea-4706-8124-30f79b4714d7.png",
+    "editableSourcePath": "game/cards/art/masters/storm_trap_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Repainted after parent review found the previous flask too tall for a crop containing stopper and base together; preserved the prior source in /tmp/storm04-attempts. Reviewed replacement square, 206:141 crop, and thumbnail. Full cork, short neck, complete bottle body and rounded base fit beside the djinn’s full face and both hands."
   }
 ]

@@ -4,8 +4,8 @@
   "active": 834,
   "remaining": 1119,
   "pending": 919,
-  "assigned": 70,
-  "awaitingReview": 130,
+  "assigned": 50,
+  "awaitingReview": 150,
   "countsByColour": {
     "brown": 234,
     "fire": 246,
@@ -4731,7 +4731,7 @@
       "name": "Bubble Shield",
       "type": "ward",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -4870,7 +4870,7 @@
       "name": "Lantern of the Drowned",
       "type": "sentry",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -4968,7 +4968,7 @@
       "name": "Become the Tide",
       "type": "boon",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -5088,7 +5088,7 @@
       "name": "Blowfish Spines",
       "type": "charge",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -5265,7 +5265,7 @@
       "name": "Water Mirror Twin",
       "type": "utility",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -6954,7 +6954,7 @@
       "name": "Sea Eagle",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -6963,7 +6963,7 @@
       "name": "Mountain Goat",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -6972,7 +6972,7 @@
       "name": "Ibex",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -6981,7 +6981,7 @@
       "name": "Hippogriff",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -6990,7 +6990,7 @@
       "name": "Hippogriff Rider",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -10847,7 +10847,7 @@
       "name": "Shroud of Fog",
       "type": "ward",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -10970,7 +10970,7 @@
       "name": "Blood Fountain",
       "type": "sentry",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -11059,7 +11059,7 @@
       "name": "Mist Form",
       "type": "boon",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -11205,7 +11205,7 @@
       "name": "Dungeon Chains",
       "type": "charge",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -11326,7 +11326,7 @@
       "name": "Doppelganger",
       "type": "utility",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -13077,7 +13077,7 @@
       "name": "Thunder Drum",
       "type": "sentry",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -13157,7 +13157,7 @@
       "name": "Date Palm Oasis",
       "type": "boon",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -13286,7 +13286,7 @@
       "name": "Sling of Thunderstones",
       "type": "charge",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -13439,7 +13439,7 @@
       "name": "Inventor's Codex",
       "type": "utility",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -13520,7 +13520,7 @@
       "name": "Djinn Bottle",
       "type": "trap",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },

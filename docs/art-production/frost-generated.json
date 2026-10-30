@@ -1934,5 +1934,95 @@
     "editableSourcePath": "game/cards/art/masters/frost_lob_10.png",
     "status": "generated",
     "batch": 10
+  },
+  {
+    "cardId": "frost_ward_09",
+    "name": "Bubble Shield",
+    "prompt": "Frost mage with clear face and both hands behind a compact transparent spherical barrier, a complete round bubble only 45% canvas height with ample margins. Blue-white frost rim, snowy courtyard, painterly fantasy, square composition.",
+    "generatedPath": "/workspace/generated_images/exec-ea012fd2-270e-4fda-a817-b4896a813518.png",
+    "editableSourcePath": "game/cards/art/masters/frost_ward_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Repainted after the initial orb was too tall. The complete bubble outline, mage face and both hands remain inside the wide crop and readable at thumbnail size.",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "frost_sentry_11",
+    "name": "Lantern of the Drowned",
+    "prompt": "A squat ornate bronze and green-glass underwater lantern, small and centered, with complete crown finial, arched handle, chamber and broad stepped base. A drowned face glows behind the glass; kelp, bubbles and blue depths. Square painterly fantasy composition.",
+    "generatedPath": "/workspace/generated_images/exec-752b2f6b-0be2-4f63-9604-33061a0dcc58.png",
+    "editableSourcePath": "game/cards/art/masters/frost_sentry_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Repainted after the first lantern crop clipped crown and base. The final crown, handle, glass chamber and full stepped base fit the wide crop with margin; drowned face reads in the square and thumbnail.",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "frost_boon_10",
+    "name": "Become the Tide",
+    "prompt": "A frost sorceress transforms gracefully into a broad curling tide of luminous blue water, with complete face and both outstretched hands clearly visible. Painterly northern shore, ice-blue light, square horizontal composition.",
+    "generatedPath": "/workspace/generated_images/exec-b00bc5e7-fa14-475d-8b9d-d985459c8681.png",
+    "editableSourcePath": "game/cards/art/masters/frost_boon_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "reviewNote": "Focal point y=0.40 preserves the sorceress face and both hands in the wide crop; the transforming tide remains clear and broad.",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "frost_charge_08",
+    "name": "Blowfish Spines",
+    "prompt": "A complete blue-white blowfish floats beside a fisher hand holding three long ivory blowfish spines; every sharp tip and broad base is individually visible. Underwater reef, cool jewel tones, painterly light, square composition.",
+    "generatedPath": "/workspace/generated_images/exec-04168d02-38b3-4d4f-ba37-4d3c14cf2bea.png",
+    "editableSourcePath": "game/cards/art/masters/frost_charge_08.png",
+    "sourceNative": [
+      1515,
+      1038
+    ],
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "reviewNote": "Focal point y=0.38 retains all three complete spine tips and bases, the relevant hand, and the full blowfish in the wide crop and thumbnail.",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "frost_utility_09",
+    "name": "Water Mirror Twin",
+    "prompt": "Woman holds a compact horizontal oval water mirror in a complete ornate silver frame; her clear face and identical water-reflected twin face appear side by side. One hand touches the rim, rippled water and cool blue chamber, painterly medieval fantasy, square composition.",
+    "generatedPath": "/workspace/generated_images/exec-3c864f40-e2d4-40f0-88f9-e8eb370ea995.png",
+    "editableSourcePath": "game/cards/art/masters/frost_utility_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Repainted after the original tall mirror frame was clipped. Complete oval frame, both faces and touching hand remain visible in square, wide crop and thumbnail.",
+    "status": "generated",
+    "batch": 10
   }
 ]

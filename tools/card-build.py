@@ -307,10 +307,11 @@ def geo_css():
     ax, ay, aw, ah = C['bounds']['art']
     # the holo art foils are the kit's 240x456 effects, scaled by width (uniformly), their art rect (18,110) on this window
     L.append('.card.kit>.k-foil{%s background-size:%.4fcqw %.4fcqw; background-position:%.4fcqw %.4fcqw;}' % (pct(C['bounds']['art']), 100, 456 / 240 * 100, (ax - 18) / 240 * 100, (ay - 110) / 240 * 100))
-    # each colour's ramp (palettes.json), for type, icons and labels: the card's class is c-<colour>
+    # each colour's ramp (palettes.json), for type, icons and labels: the card's class is c-<colour> (.kpal: other
+    # things drawn in a card's colours, like the deck builder's tiles)
     for colour, p in PAL.items():
-        L.append('.card.kit.c-%s{--k-acc:%s; --k-lt:%s; --k-dk:%s; --k-basec:%s; --k-text:%s; --k-ui:%s; --k-muted:%s;}' % (
-            colour, p['accent'], p['light'], p['dark'], p['base'], p['text'], p['ui_accent'], p['muted']))
+        L.append('.card.kit.c-%s,.kpal.c-%s{--k-acc:%s; --k-lt:%s; --k-dk:%s; --k-basec:%s; --k-text:%s; --k-ui:%s; --k-muted:%s;}' % (
+            colour, colour, p['accent'], p['light'], p['dark'], p['base'], p['text'], p['ui_accent'], p['muted']))
     for k, v in C['type_px'].items(): L.append('.card.kit{--fs-%s:calc(%d * var(--u)); --lh-%s:calc(%d * var(--u));}' % (k, v[0], k, v[1]))
     write('card-geo.css', '\n'.join(L) + '\n')
 

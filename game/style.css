@@ -966,38 +966,40 @@ body.lsS #custHand .slot.hole{min-height:104px;}
 #bgTitle{cursor:pointer;} #bgTitle small{display:block; font-size:11px; letter-spacing:.06em; color:#c8a878; text-shadow:1px 1px 0 #000;} #bgTitle:hover small{color:#f2d9a0;} .bgbag{cursor:pointer;}
 
 /* ---------- deck builder: deck on top, the library in a drawer below ---------- */
-.dkscr{padding:0; gap:0; background:linear-gradient(#141a24,#0b0f16);}
+.dkscr{padding:0; gap:0; background:none;}   /* the game's stone wall (body) shows through, like the camp */
 .dkhead{display:flex; align-items:center; gap:6px; padding:8px 10px 4px;}
-#dkName{flex:1; min-width:0; font:700 18px var(--font-b); color:#fff; background:#0a0e16; border:2px solid #2c3442; border-radius:10px; padding:6px 10px;}
-.dkslots{display:flex; gap:4px;}
-.dkslot{min-width:34px; height:34px; border-radius:17px; border:2px solid #2c3442; background:#121824; color:#9fb0c8; font:700 14px var(--font-b); cursor:pointer;}
-.dkslot.on{background:#2a4a6a; color:#fff; border-color:#7fd4ff;} .dkslot.act{color:#f2c94c;}
-.dkpill{display:inline-flex; align-items:center; justify-content:center; gap:6px; min-height:38px; padding:0 14px; border-radius:19px; border:0; cursor:pointer;
-  font:700 15px var(--font-b); color:#cfe0f0; background:linear-gradient(#26303e,#1a222e); box-shadow:0 2px 0 #05080c, inset 0 1px 0 #3a4658;}
-.dkpill.sq{width:38px; padding:0; font-size:20px;} .dkpill.red{color:#ff7a7a;} .dkpill.on{background:linear-gradient(#2a5a7a,#1a3a54); color:#fff;}
-.dkpill.zoom{padding:0 4px;} .dkpill.zoom button{background:none; border:0; color:#cfe0f0; font-size:20px; width:32px; cursor:pointer;} .dkpill.zoom span{min-width:46px; text-align:center; border-left:1px solid #3a4658; border-right:1px solid #3a4658;}
-.dktools{display:flex; gap:8px; padding:4px 10px 8px; flex-wrap:wrap;}
-.dkdeck{display:grid; gap:4px; padding:6px 10px; overflow-y:auto; max-height:34vh; min-height:90px; background:rgba(255,255,255,.03); border-top:1px solid #222a36; border-bottom:1px solid #222a36; align-content:start;}
+#dkName{flex:1; min-width:0; font:400 20px var(--font-b); color:#fff; background:none; border:6px solid transparent; border-image:var(--px-slot) 3 fill stretch; border-radius:0; padding:2px 8px;}
+.dkslots{display:flex; gap:2px;}
+.dkslot{min-width:30px; height:40px; padding:0; border:6px solid transparent; border-image:var(--px-slot) 3 fill stretch; border-radius:0; background:none; color:#9fb0c8; font:400 19px var(--font-b); text-shadow:2px 2px 0 #000; cursor:pointer;}
+.dkslot.on{border:8px solid transparent; border-image:var(--px-btn-blue) 4 fill stretch; color:#fff;} .dkslot.act{color:var(--gold);}
+.dkpill{display:inline-flex; align-items:center; justify-content:center; gap:6px; min-height:44px; padding:0 6px; border:8px solid transparent; border-image:var(--px-btn) 4 fill stretch; border-radius:0; background:none; cursor:pointer;
+  font:400 19px var(--font-b); color:#e8ecef; text-shadow:2px 2px 0 #000;}   /* the game's slate button (style.css .btn.ghost) */
+.dkpill.sq{width:44px; padding:0; font-size:20px;} .dkpill.red{color:#ff7a7a;} .dkpill.on{border-image-source:var(--px-btn-blue); color:#fff;}
+.dkpill.zoom{padding:0;} .dkpill.zoom button{background:none; border:0; color:#e8ecef; font:400 22px var(--font-b); text-shadow:2px 2px 0 #000; width:28px; padding:0; cursor:pointer;} .dkpill.zoom span{min-width:44px; text-align:center; border-left:2px solid #000; border-right:2px solid #000; box-shadow:inset 2px 0 0 #383e45;}
+.dktools{display:flex; gap:6px; padding:4px 10px 8px;}   /* one row: the pills share it */
+.dktools>.dkpill{flex:1 1 auto; min-width:0; font-size:17px; white-space:nowrap;} .dktools>.dkpill.zoom{flex:none;}
+.dkdeck{display:grid; gap:4px; padding:6px 10px; overflow-y:auto; max-height:34vh; min-height:90px; background:#0b0c0ecc; border-top:2px solid #000; border-bottom:2px solid #000; box-shadow:inset 0 2px 0 #383e45; align-content:start;}
 .dkdeck.z0{grid-template-columns:repeat(10,1fr);} .dkdeck.z1{grid-template-columns:repeat(6,1fr);} .dkdeck.z2{grid-template-columns:repeat(4,1fr);}
 .dkdeck .card{min-height:0; aspect-ratio:5/7; padding:2px; font-size:9px; overflow:hidden;}
 .dkdeck.z0 .card .tx,.dkdeck.z0 .card .ty,.dkdeck.z0 .card .cp,.dkdeck.z0 .card .ct,.dkdeck.z1 .card .tx{display:none;}
 .dkdeck.z0 .card .art{height:62%;} .dkdeck.z0 .card .cn{font-size:7px;} .dkdeck.z1 .card .art{height:42%;}
-.dkempty{aspect-ratio:5/7; border:2px dashed #2c3646; border-radius:6px;}
-.dkdrawer{flex:1; min-height:0; display:flex; flex-direction:column; gap:6px; padding:8px 10px 10px; background:linear-gradient(#1a2230,#121822); border-radius:16px 16px 0 0; box-shadow:0 -4px 14px #0008; position:relative;}
-.dkgrip{position:relative; height:26px; margin:-8px -10px -8px; cursor:ns-resize; touch-action:none; flex:none;}   /* drag the drawer up or down (deckui.js) */
-.dkgrip::before{content:''; position:absolute; top:6px; left:50%; width:56px; height:5px; margin-left:-28px; border-radius:3px; background:#4a586c; transition:background .15s;}
+.dkempty{aspect-ratio:5/7; border:2px dashed #2a3038; border-radius:0;}
+.dkdrawer{flex:1; min-height:0; display:flex; flex-direction:column; gap:6px; padding:4px 4px 6px; background:#121417 var(--px-slate); background-size:64px 64px; background-clip:padding-box;
+  border:12px solid transparent; border-bottom:0; border-image:var(--px-frame) 10 round; box-shadow:0 -4px 14px #0008; position:relative;}   /* the game's stone panel (style.css .panel) */
+.dkgrip{position:relative; height:26px; margin:-12px -4px -10px; cursor:ns-resize; touch-action:none; flex:none;}   /* drag the drawer up or down (deckui.js) */
+.dkgrip::before{content:''; position:absolute; top:8px; left:50%; width:56px; height:6px; margin-left:-28px; border-radius:0; background:#4a586c; box-shadow:0 0 0 2px #000; transition:background .15s;}
 .dkgrip:hover::before,.dkgrip.on::before{background:#7fd4ff;}
 .dkgrip.sizing::before{background:#ffe066; width:84px; margin-left:-42px;}   /* held: the slide sizes the library cards */
 .dkscr.gripping{user-select:none; -webkit-user-select:none;}
 .dkbar{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-top:4px;}
-.dkcount{font:700 18px var(--font-b); color:#fff; background:#0a0e16; border:2px solid #2c3442; border-radius:14px; padding:2px 10px;} .dkcount.bad{color:#ffb070; border-color:#7a4a20;}
+.dkcount{font:400 22px var(--font-b); color:#fff; background:none; border:6px solid transparent; border-image:var(--px-slot) 3 fill stretch; border-radius:0; padding:0 8px; text-shadow:2px 2px 0 #000;} .dkcount.bad{color:#ffb070;}
 .dkerr{flex:1; min-width:0; font-size:12px; color:#ffb070; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
-.dksoul{font:700 14px var(--font-b); color:#f2c94c;} .dksoul select{max-width:130px; background:#0a0e16; color:#fff; border:2px solid #2c3442; border-radius:8px; font:600 13px var(--font-b);}
-.dktabs{display:flex; gap:0; overflow-x:auto; background:#0a0e16; border-radius:10px;}
+.dksoul{font:700 14px var(--font-b); color:#f2c94c;} .dksoul select{max-width:130px; color:#fff; font:400 15px var(--font-b);}
+.dktabs{display:flex; gap:0; overflow-x:auto; background:none; border:6px solid transparent; border-image:var(--px-slot) 3 fill stretch; border-radius:0;}
 .dktab{flex:1 0 auto; display:flex; flex-direction:column; align-items:center; padding:4px 10px; background:none; border:0; border-bottom:3px solid transparent; color:#8a98ac; cursor:pointer; font-family:var(--font-b);}
-.dktab span{font-size:11px; letter-spacing:.05em;} .dktab b{font-size:16px; color:#cfe0f0;}
+.dktab span{font-size:13px; letter-spacing:.05em;} .dktab b{font-size:19px; font-weight:400; color:#e8ecef; text-shadow:2px 2px 0 #000;}
 .dktab.on{border-bottom-color:var(--c,#f2c94c); color:var(--c,#f2c94c);} .dktab.on b{color:#fff;}
-.dksearch{display:flex; gap:6px;} #dkQ{flex:1; min-width:0; font:600 15px var(--font-b); color:#fff; background:#0a0e16; border:2px solid #2c3442; border-radius:19px; padding:6px 14px;}
+.dksearch{display:flex; gap:6px;} #dkQ{flex:1; min-width:0; font:400 18px var(--font-b); color:#fff; background:none; border:6px solid transparent; border-image:var(--px-slot) 3 fill stretch; border-radius:0; padding:2px 8px;}
 .dkcoll{flex:1; min-height:120px; overflow-y:auto; display:grid; grid-template-columns:repeat(auto-fill,minmax(104px,1fr)); gap:6px; align-content:start; padding-bottom:60px;}
 .dkcoll .card{position:relative; min-height:136px;}
 .dkcoll .card.indeck>*:not(.dkfrac):not(.dkminus):not(.dkown):not(.dkcheck){opacity:.55;}
@@ -1008,14 +1010,14 @@ body.lsS #custHand .slot.hole{min-height:104px;}
 .dkcoll .card.full .dkfrac b:first-child{color:#7dff9a;}
 .dkcheck{position:absolute; right:3px; top:3px; width:24px; height:24px; border-radius:6px; border:2px solid #fff; background:#0008; color:#7dff9a; font:900 18px/20px var(--font-b); text-align:center; z-index:2;}
 .dkcoll .card.dksel{outline:3px solid #7dff9a; outline-offset:-1px; box-shadow:0 0 12px #7dff9a88;}
-.dkmultibar{position:sticky; bottom:0; display:flex; align-items:center; gap:8px; padding:6px; background:#0a0e16ee; border-radius:12px; border:2px solid #2a5a7a;}
+.dkmultibar{position:sticky; bottom:0; display:flex; align-items:center; gap:8px; padding:2px 4px; background:none; border:6px solid transparent; border-image:var(--px-slot) 3 fill stretch; border-radius:0; z-index:20;}
 .dkmultibar span{flex:1; font:700 15px var(--font-b); color:#7dff9a;}
-.dkok{position:absolute; left:50%; bottom:12px; transform:translateX(-50%); width:min(60%,300px); height:48px; border-radius:24px; border:0; cursor:pointer;
-  font:800 20px var(--font-b); color:#fff; letter-spacing:.06em; background:linear-gradient(#5aa8ff,#2a6ad0); box-shadow:0 4px 12px #0009, inset 0 1px 0 #9fd0ff; z-index:20;}   /* above the library cards' own layers (their text and plaques) */
+.dkok{position:absolute; left:50%; bottom:12px; transform:translateX(-50%); width:min(60%,300px); height:54px; border:8px solid transparent; border-image:var(--px-btn-blue) 4 fill stretch; border-radius:0; background:none; cursor:pointer;
+  font:400 26px var(--font-b); color:#fff; letter-spacing:.06em; text-shadow:2px 2px 0 #000; filter:drop-shadow(0 4px 6px #000a); z-index:20;}   /* above the library cards' own layers (their text and plaques) */
 .dkpeek{display:flex; flex-direction:column; gap:8px; align-items:stretch;}
 #dkpCard .card{width:min(78vw,300px); min-height:0; aspect-ratio:auto; margin:0 auto; font-size:16px;} #dkpCard .card .art{height:160px;}
 .dkprow{display:flex; align-items:center; gap:8px; justify-content:center;} .dkprow span{font:700 15px var(--font-b); min-width:110px; text-align:center;}
-.dkprow select{flex:1; min-width:0; background:#0a0e16; color:#fff; border:2px solid #2c3442; border-radius:8px; padding:6px; font:600 14px var(--font-b);}
+.dkprow select{flex:1; min-width:0; color:#fff; padding:2px 6px; font:400 16px var(--font-b);}
 @media (orientation:landscape) and (max-height:520px){ .dkdeck{max-height:26vh;} .dkcoll{grid-template-columns:repeat(auto-fill,minmax(92px,1fr));} }
 .dkscr [hidden]{display:none!important;}
 .dkdeck .card{height:100%; aspect-ratio:auto;} .dkempty{aspect-ratio:auto; height:100%;}
@@ -1025,24 +1027,32 @@ body.lsS #custHand .slot.hole{min-height:104px;}
   .dkscr{display:none; grid-template-columns:1fr 1.1fr; grid-template-rows:auto auto 1fr; overflow:hidden;}
   .dkscr.on{display:grid;}
   .dkhead,.dktools{grid-column:1;} .dkdeck{grid-column:1; grid-row:3; max-height:none; min-height:0;}
-  .dkdrawer{grid-column:2; grid-row:1/4; border-radius:16px 0 0 16px; min-height:0;}
+  .dkdrawer{grid-column:2; grid-row:1/4; border-bottom:12px solid transparent; border-right:0; min-height:0;}
   .dkdeck{height:auto!important; min-height:0!important;}
   /* the divider between deck and library: a vertical grip on the drawer's left edge */
   .dkgrip{position:absolute; left:-8px; top:0; bottom:0; width:24px; height:auto; margin:0; cursor:ew-resize; z-index:4;}
   .dkgrip::before{top:50%; left:8px; width:5px; height:56px; margin:-28px 0 0 0;}
   .dkdeck.z0{grid-template-columns:repeat(8,1fr);}
 }
-/* deck tiles: art, a name bar, copies and color/type, readable at every zoom */
+/* deck tiles: a thin frame in the card's own colour and texture (cards/textures/card, the palette from
+   card-geo.css .kpal) with copper corner rivets like the card's; then the art, and a name bar of up to two lines.
+   Every tile has the same parts in the same places: colour and type top left, copies top right. */
 .dkdeck{gap:6px;}
-.dktile{position:relative; display:flex; flex-direction:column; padding:0; overflow:hidden; cursor:pointer; border-radius:8px;
-  background:color-mix(in srgb,var(--c) 18%,#0d0f12); border:2px solid color-mix(in srgb,var(--c) 70%,#000); box-shadow:0 2px 0 #000;}
-.dktile img{flex:1; min-height:0; width:100%; object-fit:contain; image-rendering:pixelated; background:#07080a;}
-.dktile .art-sprite{flex:none; width:100%; aspect-ratio:512/350; background-color:#07080a;}   /* painted art from its thumbnail sheet (art.js cardArtThumb) */
+.dktile{position:relative; display:flex; flex-direction:column; gap:3px; padding:3px; overflow:hidden; cursor:pointer; border:0; border-radius:0;
+  background:var(--k-basec,#111) var(--k-tex) center/cover; box-shadow:0 0 0 1px #000, inset 0 0 0 1px var(--k-dk,#333), 0 3px 0 1px #000;}
+.dktile::after{content:''; position:absolute; inset:0; pointer-events:none; --rv:linear-gradient(#e8692c,#e8692c);
+  background:var(--rv) 0 0/3px 3px no-repeat, var(--rv) 100% 0/3px 3px no-repeat, var(--rv) 0 100%/3px 3px no-repeat, var(--rv) 100% 100%/3px 3px no-repeat;}
+.dktile .dkart{position:relative; flex:none; width:100%; aspect-ratio:512/410; background:#07080a; box-shadow:0 0 0 1px var(--k-acc,#888); overflow:hidden;}
+.dktile .dkart>*{position:absolute; inset:0; width:100%; height:100%;}
+.dktile .dkart img{object-fit:cover; image-rendering:pixelated;}
+.dktile .dkn{flex:1; min-height:0; display:flex; align-items:center; justify-content:center; padding:0 2px; background:var(--k-basec,#111); box-shadow:0 0 0 1px var(--k-dk,#333);
+  font:400 13px/1 var(--font-b); color:var(--k-text,#fff); text-align:center; text-shadow:1px 1px 0 #000;}
+.dktile .dkn>span{display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; overflow-wrap:anywhere;}
+.dkdeck.z0 .dktile .dkn{font-size:11px;} .dkdeck.z2 .dktile .dkn{font-size:15px;}
+.dktile .dkx,.dktile .dkt{position:absolute; top:5px; padding:0 3px; font:400 14px/1.15 var(--font-b); color:#fff; background:#000c; box-shadow:0 0 0 1px var(--k-acc,#888); text-shadow:1px 1px 0 #000;}
+.dktile .dkx{right:5px;} .dktile .dkt{left:5px; font-size:10px; line-height:1.6;}
+.dkdeck.z0 .dktile .dkx{font-size:12px;} .dkdeck.z0 .dktile .dkt{display:none;}
 .art-sprite.pxi{display:inline-block; vertical-align:middle;}
-.dktile .dkn{display:block; padding:3px 4px; font:700 12px/1.1 var(--font-b); color:#fff; background:#000a; text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
-.dkdeck.z2 .dktile .dkn{font-size:14px; white-space:normal;}
-.dktile .dkx{position:absolute; right:3px; top:3px; padding:1px 6px; border-radius:8px; font:800 13px var(--font-b); color:#fff; background:#2a4a6a; box-shadow:0 1px 0 #000;}
-.dktile .dkt{position:absolute; left:3px; top:3px; font-size:11px; text-shadow:1px 1px 0 #000;}
 /* the in-deck count sits over the art, so the name and type stay readable */
 .dkfrac{inset:auto 0 auto 0; top:18%; height:44%; font-size:26px;} .dkfrac i{font-size:32px;} .dkfrac b:last-child{font-size:20px; transform:translateY(10px);}
 .dkcoll .card.indeck>.cn,.dkcoll .card.indeck>.ty{opacity:1!important; text-shadow:1px 1px 0 #000;}

@@ -83,12 +83,14 @@ const ART_FOCUS={ember_dart:'50% 30%'};
 // Each painterly card has a thumbnail, a medium crop and a full-detail crop. Batch measurements so
 // collection rendering does not repeatedly force layout, and do not retain removed image elements.
 const kitIcon=(cls,n,label)=>`<svg class="k-ic ${cls}" viewBox="0 0 32 32" shape-rendering="crispEdges"${label?` role="img" aria-label="${esc(label)}"`:' aria-hidden="true"'}>${KIT_ICONS[n]||''}</svg>`;
+// a card's frame colour (cards/palettes.json) and its one of three material textures, picked by its id
+function cardKit(c){ const kc=KIT_COLOR[c.color]||'gray', t=KIT_TEX[kc][[...String(c.id)].reduce((h,ch)=>(h*31+ch.charCodeAt(0))>>>0,0)%3];
+  return {kc, tex:'url(cards/textures/card/'+kc+'-'+t+'.svg)'}; }
 function cardEl(c,extra,locked,mode,opts={}){
-  const el=document.createElement('button'), col=COLORS[c.color], kc=KIT_COLOR[c.color]||'gray', big=mode==='expanded';
+  const el=document.createElement('button'), col=COLORS[c.color], {kc,tex:texURL}=cardKit(c), big=mode==='expanded';
   el.className='card kit c-'+kc+(big?' expanded':' compact')+(c.rarity==='legendary'?' leg':'')+(c.rarity==='hero'?' hero':'')+(locked?' locked':'')+(c.mastery?' mcard':'');
   el.style.setProperty('--c',col.c);
-  const tex=KIT_TEX[kc][[...String(c.id)].reduce((h,ch)=>(h*31+ch.charCodeAt(0))>>>0,0)%3], u=p=>'url(cards/'+p+')';
-  el.style.setProperty('--k-tex',u('textures/card/'+kc+'-'+tex+'.svg')); el.style.setProperty('--k-frame',u('frames/card/'+kc+'.svg'));
+  el.style.setProperty('--k-tex',texURL); el.style.setProperty('--k-frame','url(cards/frames/card/'+kc+'.svg)');
   if(ART_FOCUS[c.id]) el.style.setProperty('--k-focus',ART_FOCUS[c.id]);
   // holo: a legendary you own a holo copy of (or one passed in as holo); the moving foil only on the big card
   const holo=!locked&&c.rarity==='legendary'&&(opts.holo||typeof holoCount==='function'&&holoCount(save,c.id)>0);

@@ -1227,5 +1227,131 @@
     "status": "generated",
     "batch": 8,
     "reviewNote": "Preserved the clipped first source at /tmp/gray_summon_42-attempt1.png before repair. Reviewed final 512-square source, centered crop and 128×88 thumbnail; the complete chest, lid, teeth, eye, feet and barrage origin all fit and read as a mimic."
+  },
+  {
+    "cardId": "gray_summon_43",
+    "name": "War Elephant",
+    "prompt": "Paint an illustration for the Hexmancers card War Elephant. Actual mechanics: a tough, steady front-line elephant that tramples enemies and holds the line. A colossal war elephant dominates the scene, charging deliberately through a muddy battlefield, its broad head, tusks, trunk, and four sturdy legs fully visible; worn bronze-and-leather armor protects its forehead and shoulders, with a small calm mahout holding reins on its back. Grounded medieval fantasy, expressive but natural animal anatomy, dramatic warm sunset rim light and dusty atmosphere, tactile hide and hammered metal, cinematic painterly collectible-card illustration, style aligned with supplied Hexmancers art references. EXACT 1:1 SQUARE canvas for editable 512x512 master; horizontal staging, elephant head and tusks centered, all identifying body and legs inside x24..488,y105..407 for 206:141 card crop, quiet sky above and mud below. Strong readable thumbnail silhouette. No frame, lettering, numbers, UI, anime, Disney-like cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-46959a66-d7b3-45ad-aea5-f3010e9dff6e.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_43.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.25
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed full 512-square source and a vertically shifted 206:141 crop. The elephant face, trunk and both tusks remain readable; lower legs and secondary battlefield figures are incidental crop-outs."
+  },
+  {
+    "cardId": "gray_summon_44",
+    "name": "Ox of the Plough",
+    "prompt": "Paint an illustration for the Hexmancers card Ox of the Plough. Actual mechanics: a gentle, tough, steady bull that tramples forward. Show one enormous ox in a strong readable side profile, pulling a simple wooden plough across a medieval field; its full head, curved horns, shoulders, barrel, legs and wooden yoke all clearly visible. A farmer walks beside it as a small supporting figure. Calm noble animal, dusty cream-and-brown hide, simple rope and carved wood. Painterly medieval fantasy collectible-card art, believable anatomy and materials, attractive late-afternoon light, atmospheric depth, consistent with supplied Hexmancers references. EXACT 1:1 SQUARE canvas for editable 512x512 master, horizontal staging. Keep whole ox as primary subject centered within x24..488,y105..407 for 206:141 card crop, with quiet sky and ground beyond. Strong thumbnail silhouette. No frame, lettering, numbers, UI, anime, Disney-like cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-829982a1-99b9-4fb5-b885-38df4d2f6122.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_44.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed 512-square source and centered 206:141 crop. Ox head, both horns, body, yoke and plough remain clear; lower legs and sky/field margins crop naturally."
+  },
+  {
+    "cardId": "gray_summon_45",
+    "name": "Aurochs",
+    "prompt": "Paint an illustration for the Hexmancers card Aurochs. Actual mechanics: an ancient, loyal, tough bull that tramples enemies. Depict a massive primeval wild aurochs with a shaggy dark russet coat and enormous pale crescent horns, stamping through a misty woodland clearing; full head, both horns and shoulder line clearly visible, with a smaller herd animal in the background suggesting loyalty. It is powerful but natural, not monstrous. Painterly medieval fantasy collectible-card illustration, rich tactile fur and horn, dramatic cool forest light with warm sun breaks, grounded animal anatomy, aligned with supplied Hexmancers art references. EXACT 1:1 SQUARE canvas for editable 512x512 master, wide horizontal staging. Keep full recognizable aurochs head and horns and main action centered within x24..488,y105..407 for 206:141 crop, quiet canopy and ground margins. Bold readable thumbnail. No frame, lettering, numbers, UI, anime, Disney-like cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a0330759-06b6-41b8-9b81-1b0a71f43c3e.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_45.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed full source and upward-shifted 206:141 crop to retain both horn tips and the aurochs face. Lower legs and the secondary herd animal are partly cropped; the dominant head, horns and charging action remain identifiable."
+  },
+  {
+    "cardId": "gray_summon_46",
+    "name": "Wandering Ronin",
+    "prompt": "Paint an illustration for the Hexmancers card Wandering Ronin. Actual mechanics: a scrappy veteran samurai-like hero who pounces swiftly while escorting allies. Show one weather-worn wandering ronin in layered indigo and rust travel robes, straw kasa hat lifted enough to reveal a focused face, drawing a curved katana mid-leap across an old stone road; a companion traveler is a small figure behind. Clearly readable sword, hand and face, restrained Japanese medieval-fantasy influence, no modern details. Painterly fantasy collectible-card illustration with believable cloth, steel and anatomy, rain-misted dusk and warm lantern rim light, atmospheric depth, style aligned with supplied Hexmancers references. EXACT 1:1 SQUARE canvas for editable 512x512 master, wide action staging. Keep ronin's face, sword hand, blade and decisive pouncing action inside x24..488,y105..407 for 206:141 crop; quiet mist above and road below. Strong thumbnail silhouette. No frame, lettering, numbers, UI, anime, Disney-like cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-93d89e0a-f6ff-4925-bef9-e5a652b8e80a.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_46.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.25
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed 512-square source and top-shifted wide crop. Ronin face, hat, sword hand and entire blade stay visible; the lower leg and companion are supporting details."
+  },
+  {
+    "cardId": "gray_summon_47",
+    "name": "Bridge Troll",
+    "prompt": "Paint an illustration for the Hexmancers card Bridge Troll. Actual mechanics: a quick, massively tough moss-covered ogre that taunts enemies from the front line. Depict a huge ugly but grounded troll planted on a medieval stone bridge, blocking the passage with broad shoulders and one raised hand beckoning challengers; his mossy green hide, blunt face, thick arm and ragged hide armor dominate, with the arched bridge visible behind. Keep the troll's complete head and main gesture clear; do not make a cute character. Painterly medieval fantasy collectible-card art, tactile wet stone, moss and skin, dramatic storm light, believable anatomy, atmospheric depth, supplied Hexmancers style. EXACT 1:1 SQUARE canvas for editable 512x512 master, horizontal composition. Keep the troll's face and taunting arm clearly inside x24..488,y105..407 for 206:141 crop; quiet sky and bridge stones as margins. Strong readable thumbnail silhouette. No frame, lettering, numbers, UI, anime, Disney-like cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-10ba715c-1567-453f-8338-843eed770b4a.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_47.png",
+    "sourceNative": [
+      1448,
+      1086
+    ],
+    "focalPoint": [
+      0.5,
+      0.25
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed 512-square source and top-shifted wide crop. Troll’s whole face, mossy head and beckoning hand remain visible; lower body crops below the waist, while bridge setting stays readable."
+  },
+  {
+    "cardId": "gray_summon_48",
+    "name": "Ettin",
+    "prompt": "Paint an illustration for the Hexmancers card Ettin. Actual mechanics: a dire, huge two-headed ogre, slow, extremely tough and powerful, pushing through the front line. Show one giant two-headed ogre as the unmistakable subject, both distinct heads entirely visible above his broad shoulders: one snarling, one glaring, with ragged leather and fur armor and a huge crude stone-headed club. He lumbers through a shattered mountain gate, dust and broken stones around his feet. Painterly medieval fantasy collectible-card art, believable ogre anatomy and tactile skin, cloth and stone, dramatic torchlight in cold mountain mist, style matching supplied Hexmancers references. EXACT 1:1 SQUARE canvas for editable 512x512 master, wide staging. Keep both faces, shoulders and club head within x24..488,y105..407 for 206:141 crop; quiet mountain sky above and rubble below. Strong readable thumbnail. No frame, text, UI, anime, Disney-like cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f3c54a8f-2bbe-4b1e-97aa-fb8482e1c339.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_48.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.25
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed 512-square source and top-shifted wide crop to include both complete heads and the stone club. Lower legs crop out; the two-headed identity, weapon and shattered-gate setting remain clear."
+  },
+  {
+    "cardId": "gray_summon_49",
+    "name": "Longbow Yeoman",
+    "prompt": "Paint a 1:1 square painterly medieval fantasy collectible-card illustration for Hexmancers, Longbow Yeoman. Show the seasoned yeoman archer in side view drawing a yew longbow, faint blue static on arrowhead. COMPOSITION REQUIREMENT: the complete longbow is foreshortened in perspective and angled nearly horizontal across the middle of the picture, not standing vertically. Its curved upper and lower limbs and both tips fit fully inside the central band from y=140 to y=360, within generous margins. The archer's face and both hands are also in the middle band. The bow must look like a real longbow, but camera perspective makes it appear shorter and wide; display the whole object clearly. Arrow points right at a distant target. Painterly brushwork, grounded proportions, warm dawn light, wool and wood textures, atmospheric medieval hills, supplied Hexmancers art style. Exact 512x512 square master, designed for 206:141 wide crop, keep all critical action inside x24..488,y105..407. Quiet sky/field top and bottom. No frame/text/UI/anime/Disney/photorealism/pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4408e16f-54e3-469b-95c3-c01877cb6057.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_49.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed 512-square master and centered 206:141 crop. Full longbow with both tips, archer’s face and hands, nocked arrow and static arrowhead all remain visible."
   }
 ]

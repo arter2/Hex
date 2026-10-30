@@ -1219,5 +1219,149 @@
     "status": "generated",
     "batch": 8,
     "reviewNote": "The three named stinkhorns and the center of the poison blast stay intact in the square, 206:141 crop and 128px thumbnail."
+  },
+  {
+    "cardId": "verdant_strike_07",
+    "name": "Outlaw's Split Arrow",
+    "prompt": "Paint an original painterly medieval fantasy collectible-card painting for Outlaw’s Split Arrow: a rugged forest outlaw archer looses an arrow that splits cleanly into two arrowheads mid-flight; clear face, drawing hands, bow and forked projectile, charged line strike, golden woodland light, fine leather/wood/feather detail. Strict square 1:1 composition for 512x512; keep all identity-critical subject within x24..488,y105..407 for a wide card crop, horizontal grouping, expendable forest above/below. No text, frame, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-3eed274f-ffa6-4f8d-b030-bcb58b9d2b4a.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Archer face, both hands, full bow and both split arrowheads remain inside the square master and 206:141 card crop; all read clearly at 128px."
+  },
+  {
+    "cardId": "verdant_lob_07",
+    "name": "Acorn Rain",
+    "prompt": "Painterly medieval fantasy collectible-card painting for Acorn Rain: a shower of large golden-brown acorns falls from oak branches into a forest clearing, several acorns striking and cracking open with leaves and earth flecks; clear named subject and ring-shaped impact. Autumn woodland light, rich bark and leaves. Strict square 1:1 for a 512 master; keep defining acorns and impact within x24..488,y105..407 for a wide card crop. No text, symbols, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6eed305d-4834-4ead-91d1-89085b0f1ee1.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_lob_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Multiple large acorns and the ground impact stay inside the 206:141 crop; the repeated falling acorns read at 128px."
+  },
+  {
+    "cardId": "verdant_ward_07",
+    "name": "Bear Hide Cloak",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Bear Hide Cloak: weathered ranger wears a heavy tawny bear-hide mantle fastened over green leather armor, full furred cloak wrapping shoulders and chest; a subtle curved translucent green ward arc suggests protection. Cloak dominant and unmistakable, firelit forest camp, fine fur and leather. Strict square 1:1 512 master, preserve face, cloak and clasp within x24..488,y105..407 for a wide crop. No text, frame, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-1a0d507f-f199-486b-99de-e7806f846215.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_ward_07.png",
+    "sourceNative": [
+      1672,
+      941
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Crop is shifted fully upward to y=0 so the ranger’s full face, bear-hide mantle and clasp remain visible in the card view; the bear head and cloak read clearly at 128px."
+  },
+  {
+    "cardId": "verdant_sentry_06",
+    "name": "Treehouse Archer Post",
+    "prompt": "Painterly medieval fantasy card art for Treehouse Archer Post: a compact timber archer platform built into the fork of a massive living oak, sturdy guardrails and covered perch; a vigilant elven archer draws a longbow from the elevated post, clearly showing the structure and archer. Living roots subtly regrow around timber, dappled woodland light. Strict 1:1 square 512 master; keep archer, bow and defining post silhouette inside x24..488,y105..407 for wide crop. No text, signage, frame, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d3bf12b8-8c07-495e-b720-6a3bdaed43c6.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_sentry_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "The treehouse platform and archer with drawn bow are intact in the square and wide crop; the post reads at thumbnail size."
+  },
+  {
+    "cardId": "verdant_summon_08",
+    "name": "Weeping Willow",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Weeping Willow: majestic ancient willow tree with broad flowing crown of long green tendrils draping around the trunk, luminous green droplets falling like tears into a forest pool; wistful guardian spirit. Tree is primary, textured bark and misty gold-green woodland. Strict square 1:1 512 master; preserve recognizable canopy, trunk and roots inside x24..488,y105..407 for horizontal card crop. No text, frame, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-96dcecfe-833f-436a-b8b5-9cf1ae2ea74a.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "The willow canopy, draping branches, trunk and roots remain identifiable in the square and wide crop; glowing tears read at 128px."
+  },
+  {
+    "cardId": "verdant_boon_05",
+    "name": "Wild Herb Poultice",
+    "prompt": "Painterly medieval fantasy collectible-card painting for Wild Herb Poultice: healer presses a thick vivid green poultice of crushed leaves onto a wounded ranger’s forearm, cloth strips and fresh herbs nearby; restorative healing, no gore. Clear faces, hands and remedy in a sunlit forest glade. Strict 1:1 square 512 master, keep critical faces, hands and poultice within x24..488,y105..407 for wide crop. No text, labels, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c41499e0-0839-42b8-9bcc-b936f2f4ff7c.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_boon_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Shifted crop fully upward to y=0 to include both healer and patient faces along with hands and poultice; the healing action reads at 128px."
+  },
+  {
+    "cardId": "verdant_charge_06",
+    "name": "Poison Dart Pouch",
+    "prompt": "Painterly medieval fantasy illustration for Poison Dart Pouch: close view of forest hunter’s belt with distinctive leather pouch full of slender wooden darts tipped dark green with venom, gloved hand drawing one dart while another is poised in a short blowpipe. Rich leather, wood and green woodland light. Strict square 1:1 for 512 master; keep pouch and hands within x24..488,y105..407 for wide crop. No text, labels, glyphs, frame, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b114ace3-39f9-457c-a2d5-017340a53c93.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_charge_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Shift crop fully upward to preserve the dart-drawing hand and dart tips; the pouch remains prominent though its very bottom edge falls beyond the wide crop."
+  },
+  {
+    "cardId": "verdant_utility_05",
+    "name": "Ogham Staves",
+    "prompt": "Painterly medieval fantasy card art for Ogham Staves: druid’s hand presents three carved hazel staves bearing abstract ancient ogham-like grooves, wrapped with vine cord; faint leafy glimmer suggests wisdom and spell copying. Complete bundle horizontal across green cloth, forest shrine and warm shafts of light. Strict square 1:1 512 master; full staves, hand and tips inside x24..488,y105..407 for wide crop. No letters, readable text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-15f08c26-a24c-40c0-a6cb-436ffa16f533.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_utility_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "The three complete staves, carved markings and supporting hand remain in the square and wide crop and read as the named artifact at thumbnail size."
   }
 ]

@@ -1222,5 +1222,131 @@
       1254,
       1254
     ]
+  },
+  {
+    "cardId": "storm_strike_06",
+    "name": "Leyden Jar Shock",
+    "prompt": "Paint exact card Leyden Jar Shock: a single complete Leyden jar, the historical glass-and-brass electrical vessel with leather-bound base, dominates the center of a painterly medieval fantasy alchemist's courtyard. It bursts with a bright branching blue-white electric shockwave that radiates outward across the scene and strikes a small distant iron target; no people, no faces. Keep the entire vessel and its electric shockwave centered within x24..488, y105..407 on a square 512 master, with a polished coherent horizontal card-art crop 206:141. Compose extra atmospheric storm sky above and wet flagstones below. Beautiful grounded glass, tarnished brass, leather, dramatic directional light, painterly high fantasy collectible-card illustration, nuanced surface detail, readable thumbnail. No frame, text, lettering, numbers, marks, UI, photorealism, anime, Disney cartoon, pixel art, modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-0bb025ba-9e8f-4b4a-abd3-589a3aa6352b.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "editableSourcePath": "game/cards/art/masters/storm_strike_06.png",
+    "sourceNative": [
+      1515,
+      1038
+    ],
+    "reviewNote": "The normalized 512 square keeps the complete Leyden jar centered; its branching discharge and target remain readable in the 206:141 crop. Tiny crop retains the vessel silhouette and impact light."
+  },
+  {
+    "cardId": "storm_lob_07",
+    "name": "Sand Urn",
+    "prompt": "Painterly medieval fantasy collectible-card illustration of Sand Urn, a large ancient sandstone urn with simple dark blue bands and an obvious heavy fuse, flying in a shallow arc just before impact and rupturing at the ground in a forceful burst of golden desert sand and a circular shockwave. The complete urn and its impact burst dominate the center; no people or faces. Ancient desert courtyard, atmospheric stormy ochre light, grounded carved stone and pottery textures. Square 1:1 512-master composition with urn, fuse and entire readable burst inside x24..488 y105..407; quiet sky above and ground below; horizontal 206:141 crop. No frame, text, number, symbols, UI, modern materials, photorealism, anime, Disney cartoon, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-3494bc6a-db92-459a-9da3-361b35502c6a.png",
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 9,
+    "editableSourcePath": "game/cards/art/masters/storm_lob_07.png",
+    "sourceNative": [
+      1515,
+      1038
+    ],
+    "reviewNote": "Upward focal adjustment shifts the 206:141 crop to source y=45; the full fuse, neck and urn body now remain visible with the impact burst still readable. Reviewed at /tmp/sand-urn-y45.png."
+  },
+  {
+    "cardId": "storm_ward_08",
+    "name": "Charged Fence",
+    "prompt": "Painterly medieval fantasy collectible-card art of Charged Fence: a short defensive barrier of sturdy dark timber posts and iron chain links, each post crowned by visible brass conductors; blue-white electricity crawls between the posts as a protective shield. Center the complete three-post fence section, unmistakable charged barrier and glowing arcs, with no people or faces. Storm-lit desert pass, believable wood, iron and brass, dramatic light and atmospheric depth. Square 1:1 512 master; all fence posts, tops, bases and electric action fit x24..488 y105..407. Quiet sky and ground margins, finished wide 206:141 crop. No frame, text, symbols, UI, photorealism, anime, Disney cartoon, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-fe69631f-1dc8-4fab-bd49-a4bd15aa0551.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "editableSourcePath": "game/cards/art/masters/storm_ward_08.png",
+    "sourceNative": [
+      1514,
+      1039
+    ],
+    "reviewNote": "Normalized square crop keeps the center post intact with the complete charged chains; the outer posts extend beyond the square edges. Wide crop retains the barrier's central structure and electric shield."
+  },
+  {
+    "cardId": "storm_sentry_08",
+    "name": "Oil Lamp Brazier",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Oil Lamp Brazier, a magical sentry. An ornate bronze-and-iron oil brazier with a visible glass oil reservoir burns atop sturdy stone feet; its golden flame forms a watchful eye, with two small darting flame wisps suggesting a frantic guarding spirit. The complete brazier is the dominant subject, no people or faces. Night watch platform in a desert fortress, believable worked bronze, soot, glass, warm firelight against storm blue shadows, atmospheric depth. Square 1:1 512 master, whole brazier including feet, oil vessel and flame within x24..488 y105..407; quiet sky and floor margins; designed for a horizontal 206:141 crop. No frame, lettering, UI, modern objects, photorealism, anime, Disney cartoon, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-de1a9b0e-1d49-4283-b007-9e75d592c9a6.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "editableSourcePath": "game/cards/art/masters/storm_sentry_08.png",
+    "sourceNative": [
+      1268,
+      1240
+    ],
+    "reviewNote": "The normalized square source was inspected; the named subject and relevant action remain visible in the safe area. Wide crop review pending."
+  },
+  {
+    "cardId": "storm_boon_06",
+    "name": "Desert Mirage",
+    "prompt": "Square 1:1 painterly medieval fantasy collectible-card illustration for Desert Mirage. In a shimmering desert, an armored traveler dodges a spear by leaning sharply to his right; a translucent heat-haze afterimage of the traveler lingers just behind him, and scorching sand glows where the illusion fades. The complete traveler's head, face and upper body are the dominant focal point placed exactly at the center of the canvas, with all identity-critical parts contained in the central square; keep the man away from the left and right edges. The spear can extend toward the side as secondary action. Warm oasis and dunes, richly painted cloth, leather and steel, bright sunlight and blue shadows, natural anatomy, atmospheric high fantasy art. Compose for 512-square editable master and 206:141 horizontal card crop; safe area x24..488 y105..407. No frame, text, logos, numbers, modern equipment, photorealism, anime, Disney cartoon, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-be6897fe-21fe-48b6-baef-efa77e978026.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "editableSourcePath": "game/cards/art/masters/storm_boon_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Repaint centers the traveler; the 512 master and wide crop keep his full face, upper-body dodge and heat-haze afterimage readable. The spear tip is incidental and extends beyond the crop."
+  },
+  {
+    "cardId": "storm_charge_06",
+    "name": "Venom Vials",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Venom Vials: exactly two compact, short squat alchemical vials of emerald venom with distinct brass caps, necks and rounded glass bases, plus a thin blue spark from one cap. The pair of complete vials are centered and occupy only about 52 percent of the square's height, with visible breathing room above caps and below bases; do not make tall bottles. Keep both vials, all caps and bases fully inside the safe rectangle x24..488 y105..407 on a square 512 master. Desert alchemist's bench, subtle scorpion etchings in brass, moody warm lamplight, rich painterly medieval fantasy materials and atmospheric depth. The clear named objects must remain legible in the horizontal 206:141 crop. No people, no faces, no frame, no words, text, numbers, UI, modern items, photorealism, anime, Disney cartoon, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-020ff8fe-5a57-4160-8862-9d6084315aff.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "editableSourcePath": "game/cards/art/masters/storm_charge_06.png",
+    "sourceNative": [
+      1515,
+      1038
+    ],
+    "reviewNote": "Repainted as shorter, centered vials. The normalized 512 square and 206:141 crop keep both caps, necks, glass vessels and bases intact and readable."
+  },
+  {
+    "cardId": "storm_utility_06",
+    "name": "Natron Salts",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Natron Salts, a cleansing alchemical remedy: a wide clay bowl of brilliant white natron crystals is poured into a shallow vessel of dark poisoned water; the salts dissolve in luminous ripples and clear the water to blue. Center the complete bowl, falling crystals and cleansing boundary as the unmistakable primary action, no people or faces. Desert healer's stone table, restrained medicinal herbs, believable clay, crystal and water textures, warm sunbeam and cool reflected light, atmospheric high-fantasy painting. Square 1:1 composition, named bowl and pour-action all inside x24..488 y105..407, suitable as 512 editable master and 206:141 card crop. No frame, lettering, runes, numbers, modern items, photorealism, anime, Disney cartoon, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-031c07be-3366-4829-b8f7-47c3c20c8e67.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "editableSourcePath": "game/cards/art/masters/storm_utility_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Normalized square source saved; named subject and action were checked in the source and wide card crop."
   }
 ]

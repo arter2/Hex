@@ -1036,7 +1036,7 @@ body.lsS #custHand .slot.hole{min-height:104px;}
 }
 /* deck tiles: a thin frame in the card's own colour and texture (cards/textures/card, the palette from
    card-geo.css .kpal) with copper corner rivets like the card's; then the art, and a name bar of up to two lines.
-   Every tile has the same parts in the same places: in the name box, colour top left, type bottom left, copies bottom right. */
+   Every tile has the same parts in the same places: colour on the art's top left; type and copies in the name box's bottom corners. */
 .dkdeck{gap:6px;}
 .dktile{position:relative; display:flex; flex-direction:column; gap:3px; padding:3px; overflow:hidden; cursor:pointer; border:0; border-radius:0;
   background:var(--k-basec,#111) var(--k-tex) center/cover; box-shadow:0 0 0 1px #000, inset 0 0 0 1px var(--k-dk,#333), 0 3px 0 1px #000;}
@@ -1048,13 +1048,13 @@ body.lsS #custHand .slot.hole{min-height:104px;}
 .dkdeck{--nfs:13px;} .dkdeck.z0{--nfs:11px;} .dkdeck.z2{--nfs:15px;}
 .dktile .dkn{flex:none; height:calc(2 * var(--nfs) + 6px); padding:3px 3px; overflow:hidden; background:var(--k-basec,#111); box-shadow:0 0 0 1px var(--k-dk,#333);
   font:400 var(--nfs)/1 var(--font-b); color:var(--k-text,#fff); text-align:center; text-shadow:1px 1px 0 #000;}   /* a long name shrinks to fit (deckui.js dkFitNames) */
-/* the name box keeps four corner pieces of one width, so the name stays centred: the colour top left (an empty
-   twin top right), the type bottom left and the copies bottom right. The name flows between them; an empty float
-   on each side, the box's height less two corner lines, pushes the bottom pieces to the bottom. */
-.dktile .dkc,.dktile .dkt,.dktile .dkx{width:calc(1.2 * var(--nfs)); font-size:calc(.8 * var(--nfs)); line-height:var(--nfs); white-space:nowrap; overflow:hidden;}   /* sized from the box, not the name, so a shrunk name keeps full-size corners */
-.dktile .dkc,.dktile .dkt{float:left; clear:left; text-align:left;} .dktile .dkc.r,.dktile .dkx{float:right; clear:right; text-align:right;}
-.dktile .dkx{color:#fff;}
-.dktile .dksp{float:left; clear:left; width:0; height:calc(100% - 2 * var(--nfs));} .dktile .dksp.r{float:right; clear:right;}
+/* the colour sits in the art's top left corner. In the name box, the type bottom left and the copies bottom right
+   are one width, so the name stays centred as it flows between them; an empty float on each side, the box's height
+   less one corner line, pushes them to the bottom. */
+.dktile .dkart>.dkc{inset:3px auto auto 3px; width:auto; height:auto; padding:0 2px; font-size:calc(.8 * var(--nfs)); line-height:var(--nfs); background:#000c; box-shadow:0 0 0 1px var(--k-acc,#888);}
+.dktile .dkt,.dktile .dkx{width:calc(1.2 * var(--nfs)); font-size:calc(.8 * var(--nfs)); line-height:var(--nfs); white-space:nowrap; overflow:hidden;}   /* sized from the box, not the name, so a shrunk name keeps full-size corners */
+.dktile .dkt{float:left; clear:left; text-align:left;} .dktile .dkx{float:right; clear:right; text-align:right; color:#fff;}
+.dktile .dksp{float:left; clear:left; width:0; height:calc(100% - var(--nfs));} .dktile .dksp.r{float:right; clear:right;}
 .dkdeck.z0 .dktile .dkt{visibility:hidden;}
 .art-sprite.pxi{display:inline-block; vertical-align:middle;}
 /* the in-deck count sits over the art, so the name and type stay readable */

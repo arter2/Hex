@@ -2023,5 +2023,95 @@
     "status": "generated",
     "batch": 10,
     "reviewNote": "Repainted after parent review found the first charge too tall; preserved prior sources in /tmp/brown04-attempts. Reviewed replacement square, crop at focal [0.5,0.54], and 128x88 thumbnail. The dwarf’s whole face and both eyes, both hands, lit fuse, complete short charge and its base are visible with room in the crop."
+  },
+  {
+    "cardId": "brown_machine_38",
+    "name": "Iron Bastion",
+    "prompt": "A squat enormous iron-plated defensive bastion with crenellated crown, riveted panels, narrow slit and broad grounded base dominates a horizontal mine-yard composition. A dwarf guard stands beside it at half its height, face and hand touching the armor visible. Painterly medieval fantasy card illustration, rich dark iron and warm forge light, square 1:1.",
+    "generatedPath": "/workspace/generated_images/exec-de009111-f28d-4bcb-9a3f-c4c529246855.png",
+    "focalPoint": [
+      0.5,
+      0.53
+    ],
+    "reviewNote": "Reviewed 512-square master, 206:141 crop at focal [0.5,0.53], and thumbnail. Bastion crown and broad base remain in frame; dwarf’s face and hand read beside the structure.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/brown_machine_38.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "brown_instant_35",
+    "name": "Gnomish Grenade",
+    "prompt": "Close horizontal portrait of a gnome demolitionist presenting a complete round iron-and-brass grenade in both hands beside his face, threaded cap and short lit fuse clearly visible. Painterly medieval fantasy card illustration, forge glow, rich metal texture, square 1:1.",
+    "generatedPath": "/workspace/generated_images/exec-2c7058ba-3e22-432e-9113-663019da480d.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Reviewed 512-square master, 206:141 crop, and thumbnail. Gnome’s full face, working hands, grenade body, cap and fuse all remain clear; only the hat tip is incidental.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/brown_instant_35.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "brown_machine_39",
+    "name": "Dwarven Gate of Iron",
+    "prompt": "Compact broad dwarven iron gate with complete decorated arch crown, vertical bars, hinges and visible threshold/base filling a horizontal mountain pass composition; a dwarf wardmaker stands beside the gate at half its height, face and signaling hand visible. Painterly medieval fantasy card illustration, warm torchlight and cold stone, square 1:1.",
+    "generatedPath": "/workspace/generated_images/exec-7a1434ac-2be0-4845-887d-c708229ea104.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Recomposed to fit a compact arch. Reviewed square master, 206:141 crop and thumbnail: decorated crown, bars and threshold/base remain visible with the dwarf’s face and hand beside the gate.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/brown_machine_39.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "brown_instant_36",
+    "name": "Sticky Tar Bomb",
+    "prompt": "A burly troll with a clear expressive face and throwing hand hurls one complete round iron-banded tar bomb with visible fuse, sticky black tar bursting onto the ground among slowed armored pursuers. Keep troll and named bomb prominent in a compact horizontal composition. Painterly medieval fantasy card art, square 1:1.",
+    "generatedPath": "/workspace/generated_images/exec-a5824bdb-072d-4a0e-817a-5ed9a17624b3.png",
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "reviewNote": "Reviewed 512-square master, upward-shifted 206:141 crop at focal [0.5,0.4], and thumbnail. Troll’s face and throwing hand plus complete bomb and fuse remain visible; lower tar burst and secondary figures are incidental.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/brown_instant_36.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "brown_machine_40",
+    "name": "Gnomish Pop-Up Wall",
+    "prompt": "A broad complete pop-up oak-and-iron barricade wall with crenellated crown, iron-footed base and compact deployment gears fills the horizontal frame. Beside it, a small gnome engineer with clear face and working hand operates a lever as an arrow strikes the wall. Painterly medieval fantasy card illustration, warm battlefield light, square 1:1.",
+    "generatedPath": "/workspace/generated_images/exec-11a864f3-7b2c-420f-9aca-628f3894ada0.png",
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "reviewNote": "Reviewed 512-square master, upward-shifted 206:141 crop at focal [0.5,0.4], and thumbnail. Full wall crown and iron-footed base, gnome’s face and lever hand remain visible; arrow impact is secondary.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/brown_machine_40.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
   }
 ]

@@ -1939,5 +1939,95 @@
       1254,
       1254
     ]
+  },
+  {
+    "cardId": "verdant_ward_10",
+    "name": "Ghillie Suit",
+    "prompt": "Square 1:1 512x512 painterly medieval fantasy collectible-card master for exact name \"Ghillie Suit\". A woodland scout wearing a carefully woven ghillie suit of moss, fern fronds, bark strips and soft green camouflage, crouches among sunlit forest roots. Keep the scout's complete alert face and one gloved hand visible beside the leafy shoulder mantle, with the suit's natural camouflage clearly the protective ward; subdued green light glows through leaves like a quiet barrier. Compact portrait, no full body needed. Traditional painterly high-fantasy illustration in the established Hexmancers style: expressive brushwork, convincing organic materials, natural expressive anatomy, attractive directional light, atmospheric forest depth, compact clear silhouette. Keep every named object, main face and relevant hands inside x24..488,y105..407 after square normalization for centered 206:141 card crop; quiet expendable scenery above and below. Readable at 96px thumbnail. No frame, text, symbols, numbers, UI, anime, cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-358b0640-1bc0-429a-a048-b44d3f73cde7.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_ward_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Square master, centered wide crop and thumbnail inspected. Scout face, glove and layered leafy camouflage remain clearly readable against forest cover."
+  },
+  {
+    "cardId": "verdant_boon_08",
+    "name": "Shaman's Vision Quest",
+    "prompt": "Square 1:1 512x512 painterly medieval fantasy collectible-card master for exact name \"Shaman's Vision Quest\". A seasoned forest shaman sits by a small sacred fire in a moonlit grove, eyes open in visionary focus, one hand raised toward luminous drifting pollen and spirit-like patterns in the canopy. A faint radiant green-gold aura forms a calm circle around their head and chest, suggesting clarity and a quick rush of insight. Keep the shaman's face and raised hand clear; visions remain atmospheric, not a separate cluttered scene. Traditional painterly high-fantasy illustration in the established Hexmancers style: expressive brushwork, convincing organic materials, natural expressive anatomy, attractive directional light, atmospheric forest depth, compact clear silhouette. Keep every named object, main face and relevant hands inside x24..488,y105..407 after square normalization for centered 206:141 card crop; quiet expendable scenery above and below. Readable at 96px thumbnail. No frame, text, symbols, numbers, UI, anime, cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-68802837-1cd2-46d5-bb52-a73a368d3d2e.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_boon_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Square master, centered wide crop and thumbnail inspected. Shaman face, raised hand, luminous aura and leafy spirit-vision motif remain clear; ambient canopy detail may crop."
+  },
+  {
+    "cardId": "verdant_charge_10",
+    "name": "Hornet Jar",
+    "prompt": "Square 1:1 512x512 painterly medieval fantasy collectible-card master for exact name \"Hornet Jar\". A young forest alchemist holds one compact clear glass hornet jar at chest height, beside their face. The complete sealed glass jar, fitted cork stopper and a few visible golden-black hornets inside are all centered on the same vertical level as the alchemist's attentive face and both hands. One hornet sparks with green poison magic behind the glass. Keep jar and face equal-sized and close together; no hanging pouch, no object low beneath the face. Traditional painterly high-fantasy illustration in the established Hexmancers style: expressive brushwork, convincing organic materials, natural expressive anatomy, attractive directional light, atmospheric forest depth, compact clear silhouette. Keep every named object, main face and relevant hands inside x24..488,y105..407 after square normalization for centered 206:141 card crop; quiet expendable scenery above and below. Readable at 96px thumbnail. No frame, text, symbols, numbers, UI, anime, cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-70546453-3128-4487-b51c-678e9550ab59.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_charge_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Focal point raised to retain the full cork stopper and base with face and both hands at the same height. Adjusted crop and thumbnail inspected; jar and hornets remain dominant."
+  },
+  {
+    "cardId": "verdant_utility_08",
+    "name": "Anansi's Bag of Tales",
+    "prompt": "Square 1:1 512x512 painterly medieval fantasy collectible-card master for exact name \"Anansi's Bag of Tales\". Anansi, a wise dignified spider-trickster storyteller with a humanlike expressive face and subtle spider traits, holds one complete small woven story bag at chest height right beside his face. Both hands cradle the entire bag, whose mouth releases a few tiny glowing story-images like a bird, moon and river, representing drawing one tale. Bag, face and hands sit side by side at the same height; no dangling prop below the face, no text. Traditional painterly high-fantasy illustration in the established Hexmancers style: expressive brushwork, convincing organic materials, natural expressive anatomy, attractive directional light, atmospheric forest depth, compact clear silhouette. Keep every named object, main face and relevant hands inside x24..488,y105..407 after square normalization for centered 206:141 card crop; quiet expendable scenery above and below. Readable at 96px thumbnail. No frame, text, symbols, numbers, UI, anime, cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-e2df528a-7493-42b0-9323-0c4d2899207a.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_utility_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Focal point raised so Anansi’s full face, hands and complete chest-height woven story bag remain in the actual crop. Adjusted crop and thumbnail inspected; symbolic tale glimmers are secondary."
+  },
+  {
+    "cardId": "verdant_trap_09",
+    "name": "Peat Bog Mire",
+    "prompt": "Square 1:1 painterly medieval fantasy collectible-card illustration for \"Peat Bog Mire\". A lone wary traveler has stepped into a deep peat bog and is caught in a natural root snare: dark peat grips one boot and tangled brown roots loop around the ankle, while the traveler kneels forward with both hands braced on a mossy hummock. Show the traveler's complete alarmed face, both hands, trapped boot and root loop together in a compact horizontal composition; face/action near center, bog surface and reeds around them. The peat itself is dark, thick and sucking, with ripples and a few amber marsh lights. Keep face, hands, snared ankle and central bog feature within x35..477,y125..390 for the centered wide crop; legs/background may extend. Traditional painterly forest-fantasy art, believable wet moss, roots, leather and mud, moody green light, expressive brushwork consistent with accepted Hexmancers art. No frame, text, symbols, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a7cf8291-5bf7-4362-a9c0-6443e0051a6d.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_trap_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Focal point raised so traveler face, braced hands and root-snared ankle remain together in the crop. Adjusted wide crop and thumbnail inspected; peat, looped roots and sinking boot read clearly."
   }
 ]

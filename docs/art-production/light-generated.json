@@ -1933,5 +1933,95 @@
     "batch": 10,
     "reviewNote": "Reviewed exact 512-square source, upward focal crop and thumbnail. Salve Jar’s complete stopper-to-base silhouette, medic’s full face and throwing hand fit the wide crop; the patient’s lower body and supply tent are incidental.",
     "name": "Salve Jar"
+  },
+  {
+    "cardId": "light_ward_11",
+    "prompt": "Original painterly medieval fantasy collectible-card art for Sheltering Wings, a heavy steady defensive arc. A frightened young shield-bearer crouches behind a single broad curved barrier formed by immense pale gold-feathered wings sweeping forward around her; visible angelic guardian face and one protective hand, protected warrior’s face and gripping hands clearly readable. Wings are a luminous wall, not a flying creature portrait; their outer feathers may extend past frame, but central faces/hands and the solid barrier arc stay inside x24..488,y105..407. Hand-painted oil/gouache feathers, mail and stone, directional warm light, atmospheric depth, supplied Hexmancers style. Strict 1:1 square 512 master composed for horizontal 206:141 card crop. No border, text, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-34bf6f34-b4dc-4184-86d8-0d6736248984.png",
+    "editableSourcePath": "game/cards/art/masters/light_ward_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.44
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop and thumbnail. Protected warrior’s face and gripping hand, guardian’s face and protecting hand remain clear; outer wing feathers are incidental and crop at the edges.",
+    "name": "Sheltering Wings"
+  },
+  {
+    "cardId": "light_sentry_10",
+    "prompt": "Repaint this as original painterly medieval fantasy card art for Caracol Observatory. Preserve the spiral pale-stone watchtower, bronze solar lens and golden sentry ray, but zoom the camera farther out and make the observatory a compact squat spiral pavilion only about 230 pixels tall on the 512-square canvas. Show its entire decorative crown and finial, short spiral shaft, and wide stepped foundation with clear space above and below; whole structure within x24..488,y105..407. Place one small astronomer-guardian beside the observatory, at ground level, with complete visible face and one pointing hand, not standing atop or behind the tower. Bronze lens sends one narrow ray horizontally to a small distant foe while a mild golden mend glow reaches an ally; keep key faces and action in the band. Warm sunrise above an ancient Mediterranean terrace, hand-painted oil/gouache, nuanced carved stone and bronze, dramatic depth in supplied Hexmancers style. Strict square 1:1 512 master, horizontal 206:141 crop composition. No huge tower, no cropped crown or base, no text, border/UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ea01d4f7-687c-49df-a4f8-d26500d43e3a.png",
+    "editableSourcePath": "game/cards/art/masters/light_sentry_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Repainted after the first spiral tower could not fit its crown and base together; preserved first source at /tmp/light_sentry_10-first-source.png. Reviewed final square, centered wide crop and thumbnail: complete observatory finial, dome, spiral shaft and stepped base fit; sentry ray and nearby guardian remain visible.",
+    "name": "Caracol Observatory"
+  },
+  {
+    "cardId": "light_boon_08",
+    "prompt": "Original painterly medieval fantasy collectible-card art for Rally the Legion. A battle-worn woman captain stands on a low wall and raises one open hand while calling soldiers forward; a bright blue-gold pulse of courage travels down the line, lifting the legion’s shields and making their faces resolute. Captain’s whole face and raised hand are clear primary focus; a few close soldiers respond, distant ranks remain atmospheric. Strong horizontal staging, believable armor, cloth and banners, warm dawn rim light against cool battlefield shadows, hand-painted oil/gouache supplied Hexmancers fantasy style. Strict 1:1 square 512 master; captain face/hand and nearest reacting faces inside x24..488,y105..407 for 206:141 crop. No text or lettering on banners, no frame/UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6969ab4a-9795-4b72-8686-24ace2a5019e.png",
+    "editableSourcePath": "game/cards/art/masters/light_boon_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed exact 512-square source, upward-shifted crop and thumbnail. Captain’s face and full raised hand and responding legion faces are clear; lower body and distant ranks are incidental.",
+    "name": "Rally the Legion"
+  },
+  {
+    "cardId": "light_charge_09",
+    "prompt": "Original painterly medieval fantasy card art for Genoese Crossbow Bolts. A Genoese crossbow archer with a visible focused face holds one long complete steel-tipped wooden bolt in a gloved hand beside a compact leather bolt quiver holding two more; show each bolt’s full point, shaft and fletching, entirely within the horizontal safe band. The hand-held bolt is aligned toward a distant armored target, with a small clear pierce impact; the complete named bolts are the focus. Rich blue-red medieval cloth, leather, steel and wood, hand-painted oil/gouache, dramatic light, supplied Hexmancers fantasy style. Strict 1:1 square 512 master horizontal arrangement; archer face, relevant hand, and all named bolts fit within x24..488,y105..407 for 206:141 crop. No lettering, frame, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-881b581a-d645-43de-8895-50fff6e8140f.png",
+    "editableSourcePath": "game/cards/art/masters/light_charge_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.3
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed exact 512-square source, upward-shifted wide crop and thumbnail. Archer’s face and hand plus one complete pointed, shafted and fletched bolt are visible; further bolts remain secondary in the quiver.",
+    "name": "Genoese Crossbow Bolts"
+  },
+  {
+    "cardId": "light_utility_09",
+    "prompt": "Repaint this as original painterly medieval fantasy art for Aryabhata's Tables. Keep the ancient Indian astronomer, stone terrace, and beautiful geometric palm-leaf star tables, but make the scene a wider view with a SMALLER seated scholar positioned farther back and lower behind a waist-high work surface. His complete head and face, with clear margin above the scalp, must sit in square pixels x60..250,y115..245. Put three complete compact palm-leaf tables and one ivory board in a tidy horizontal row across x35..477,y245..400; show every board's four edges, held by one hand, with simple geometric star charts, circles, dots and orderly nonverbal rows only. No overlap between his face and frame edge; no text, letters, or modern numerals. Keep all tables complete and the face/hands safe for the actual 206:141 crop. Hand-painted oil/gouache, warm dawn light, ancient Indian observatory with a secondary bronze astrolabe, atmospheric depth, supplied Hexmancers fantasy style. Strict 1:1 square 512 master composed for horizontal crop. No border, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b5614bde-3db1-412b-bf1d-1b359cdf35db.png",
+    "editableSourcePath": "game/cards/art/masters/light_utility_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Repainted after focal adjustment could not retain both the scholar’s full head and all tablet edges; preserved first source at /tmp/light_utility_09-first-source.png. Reviewed final square, centered 206:141 crop and thumbnail: scholar’s full face/hand and all three palm-leaf tables plus ivory board fit.",
+    "name": "Aryabhata's Tables"
   }
 ]

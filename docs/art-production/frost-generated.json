@@ -2024,5 +2024,95 @@
     "reviewNote": "Repainted after the original tall mirror frame was clipped. Complete oval frame, both faces and touching hand remain visible in square, wide crop and thumbnail.",
     "status": "generated",
     "batch": 10
+  },
+  {
+    "cardId": "frost_trap_09",
+    "name": "Siren's Shoal",
+    "prompt": "Mysterious siren with clear face and both hands sings from a rocky submerged shoal while kelp and three reef outcrops form a snaring arc around a small rowboat. Underwater frost-blue light, painterly fantasy; face, hands and reef arc inside the horizontal crop.",
+    "generatedPath": "/workspace/generated_images/exec-1214608b-cdfc-4c53-9074-8f297a4c4bd7.png",
+    "editableSourcePath": "game/cards/art/masters/frost_trap_09.png",
+    "sourceNative": [
+      1515,
+      1038
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "reviewNote": "Focal point y=0.40 keeps the siren face and hands visible with the reef snare arc in the crop; the boat's lower hull is incidental and partly cropped.",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "frost_environment_09",
+    "name": "Polar Night",
+    "prompt": "Vast frozen arctic plain beneath deep blue polar darkness, stars and pale aurora over ice cliffs; frost crystals sweep across the foreground in a broad horizontal burst pattern. Painterly landscape, strict square composition.",
+    "generatedPath": "/workspace/generated_images/exec-823113e1-4ab5-4a75-b18d-e23cf0774565.png",
+    "editableSourcePath": "game/cards/art/masters/frost_environment_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Frozen plain, aurora and ice cliffs read clearly in square, wide crop and thumbnail; landscape has no clipped identity-critical details.",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "frost_piece_06",
+    "name": "Bell of the Sunken City",
+    "prompt": "Compact ornate bronze city bell beneath a submerged stone arch, whole crown loop, shoulders, flared rim and clapper visible with margin. Sea-green patina, engraved wave patterns, underwater city lights, painterly fantasy. Square composition keeps entire bell in horizontal crop.",
+    "generatedPath": "/workspace/generated_images/exec-e19391e9-76f3-4d8e-ae19-e9573e4e1bb0.png",
+    "editableSourcePath": "game/cards/art/masters/frost_piece_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "The full bell, suspension loop, flared rim and clapper remain inside the wide crop; only the decorative arch extends beyond the top. Bell remains clear in thumbnail.",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "frost_summon_06",
+    "name": "Siren",
+    "prompt": "Merfolk siren with clear expressive face and graceful hands sings above a moonlit arctic sea; flowing dark hair and shimmering teal fish tail, subtle musical ripples and distant fish. Painterly fantasy with silver-blue light; face and hands in horizontal card band.",
+    "generatedPath": "/workspace/generated_images/exec-10e5ac94-3650-42ca-aba2-d031b7292ede.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "reviewNote": "Focal point y=0.40 keeps the full siren face and both hands clear in the crop; upper tail and lower tail remain recognizable, with lower tail naturally cropped.",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "frost_machine_05",
+    "name": "Ice Catapult",
+    "prompt": "Compact complete wooden-and-iron catapult on icy wheels in snowy pass, with full frame, wheels, axle, feet, throwing arm, ropes, pivot and cradle. Frost engineer with clear face and both gloved hands loads a round ice boulder. Painterly cold blue light, strict square horizontal composition.",
+    "generatedPath": "/workspace/generated_images/exec-fa1a2842-8ee4-4347-9856-357b16cf1800.png",
+    "editableSourcePath": "game/cards/art/masters/frost_machine_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.52
+    ],
+    "reviewNote": "Focal point y=0.52 includes all wheel bottoms and preserves the operator face, hands and ice boulder; full catapult fits the wide crop and reads at thumbnail size.",
+    "status": "generated",
+    "batch": 10
   }
 ]

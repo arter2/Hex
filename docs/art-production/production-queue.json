@@ -4,8 +4,8 @@
   "active": 834,
   "remaining": 1119,
   "pending": 919,
-  "assigned": 50,
-  "awaitingReview": 150,
+  "assigned": 20,
+  "awaitingReview": 180,
   "countsByColour": {
     "brown": 234,
     "fire": 246,
@@ -363,7 +363,7 @@
       "name": "Iron Bastion",
       "type": "machine",
       "color": "brown",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -372,7 +372,7 @@
       "name": "Dwarven Gate of Iron",
       "type": "machine",
       "color": "brown",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -381,7 +381,7 @@
       "name": "Gnomish Pop-Up Wall",
       "type": "machine",
       "color": "brown",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -767,7 +767,7 @@
       "name": "Gnomish Grenade",
       "type": "instant",
       "color": "brown",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -776,7 +776,7 @@
       "name": "Sticky Tar Bomb",
       "type": "instant",
       "color": "brown",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -2175,7 +2175,7 @@
       "name": "Minotaur Charge",
       "type": "strike",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -3356,7 +3356,7 @@
       "name": "Forge Floor",
       "type": "environment",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -3479,7 +3479,7 @@
       "name": "Phoenix",
       "type": "summon",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -3836,7 +3836,7 @@
       "name": "Hwacha Rocket Cart",
       "type": "machine",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -4015,7 +4015,7 @@
       "name": "Sola Flamewright",
       "type": "hero",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -5354,7 +5354,7 @@
       "name": "Siren's Shoal",
       "type": "trap",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -5443,7 +5443,7 @@
       "name": "Polar Night",
       "type": "environment",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -5529,7 +5529,7 @@
       "name": "Bell of the Sunken City",
       "type": "piece",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -5583,7 +5583,7 @@
       "name": "Siren",
       "type": "summon",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -5964,7 +5964,7 @@
       "name": "Ice Catapult",
       "type": "machine",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -6999,7 +6999,7 @@
       "name": "War Griffin",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -7008,7 +7008,7 @@
       "name": "Royal Griffin",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -7017,7 +7017,7 @@
       "name": "Sleipnir, the Eight-Legged Steed",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -7026,7 +7026,7 @@
       "name": "Arion, the Swift Horse",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -7035,7 +7035,7 @@
       "name": "Bayard, the Magic Bay",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -8720,7 +8720,7 @@
       "name": "Sheltering Wings",
       "type": "ward",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -8866,7 +8866,7 @@
       "name": "Caracol Observatory",
       "type": "sentry",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -8954,7 +8954,7 @@
       "name": "Rally the Legion",
       "type": "boon",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -9083,7 +9083,7 @@
       "name": "Genoese Crossbow Bolts",
       "type": "charge",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -9228,7 +9228,7 @@
       "name": "Aryabhata's Tables",
       "type": "utility",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -15129,7 +15129,7 @@
       "name": "Ghillie Suit",
       "type": "ward",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -15316,7 +15316,7 @@
       "name": "Shaman's Vision Quest",
       "type": "boon",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -15453,7 +15453,7 @@
       "name": "Hornet Jar",
       "type": "charge",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -15589,7 +15589,7 @@
       "name": "Anansi's Bag of Tales",
       "type": "utility",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -15670,7 +15670,7 @@
       "name": "Peat Bog Mire",
       "type": "trap",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },

@@ -2037,5 +2037,95 @@
     "status": "generated",
     "batch": 10,
     "reviewNote": "Focal point raised so rider face, reins hand, lance hand and complete hippogriff eye/beak remain in the actual crop. Adjusted crop and thumbnail inspected; wings and legs are incidental."
+  },
+  {
+    "cardId": "gray_summon_88",
+    "name": "War Griffin",
+    "prompt": "Paint War Griffin as a brave gray summon guarding a mountain pass: a powerful griffin with tawny lion body, broad brown eagle wings, hooked beak and alert golden eyes stands in a low defensive stance, wings half-spread over a small armored traveler behind it as rain and ocean mist sweep across the pass. Show the griffin's full face, beak, wings and sturdy forequarters; no rider. Painterly medieval fantasy collectible-card wildlife art, believable feather and fur texture, dramatic storm light, atmospheric depth and textured brushwork. Explicit 1:1 square 512 master; keep griffin face, beak and central wings/body within x24..488 y105..407 for 206:141 crop; wing tips and background may extend beyond. No text, frame, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-81d10d1a-7b0c-423c-8b41-73630cf402cb.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Reviewed square, default crop and thumbnail: griffin's eye, beak, front body and protective wing span remain clear; outer wing tips and traveler are secondary.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/gray_summon_88.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "gray_summon_89",
+    "name": "Royal Griffin",
+    "prompt": "Paint Royal Griffin as a noble legendary guardian: a majestic pale-gold griffin with ivory eagle head, bright eyes, and a full lion body stands proudly on a castle parapet, its regal crest and elegant folded wings clearly visible; a small royal banner flutters nearby and distant towers sit below the clouds. The griffin itself dominates, no rider; composed with complete head, wing shoulders and lion body in a proud three-quarter pose. Painterly medieval fantasy collectible-card wildlife illustration, luminous feathers, detailed golden fur, refined stonework, sunrise light and atmospheric depth. Explicit 1:1 square 512 master; keep face, beak and central body inside x24..488 y105..407 for 206:141 crop; wing tips may extend beyond. No text, frame, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-46085bed-85a2-47d3-8c69-3216d6c34600.png",
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "reviewNote": "Reviewed square, crop shifted up (focal y .38), and thumbnail: full regal crest, eyes and beak remain visible; lower feet and outer wing edges are secondary.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/gray_summon_89.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "gray_summon_90",
+    "name": "Sleipnir, the Eight-Legged Steed",
+    "prompt": "Paint Sleipnir, the Eight-Legged Steed as a swift legendary gray horse: one powerful dark-gray horse shown in clean side profile galloping horizontally across a misty stone bridge, with exactly eight separate legs, four forelegs and four hind legs, clearly spaced and individually readable beneath its body in two staggered rows. No wings, no second horse, no overlapping leg tangle. Keep the horse's whole face, ears, torso and eight legs together in a compact broad silhouette; mane streams back in the wind. Painterly medieval fantasy collectible-card art, accurate horse anatomy plus eight clear limbs, cool dawn light, textured mane and atmospheric depth. Explicit 1:1 square 512 master; keep all eight legs and full horse face/body inside x24..488 y105..407 for 206:141 crop; mane tips may extend beyond. No text, frame, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4ab5b44e-df0a-44d5-bafb-65b0174a502b.png",
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "reviewNote": "Reviewed square, crop shifted up (focal y .40), and thumbnail: all eight legs remain visible and countable in a compact side-on gallop, with full face and body.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/gray_summon_90.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "gray_summon_91",
+    "name": "Arion, the Swift Horse",
+    "prompt": "Paint Arion, the Swift Horse as a steadfast escorting steed: a beautiful dark bay horse with a bright white star on its forehead gallops swiftly along a cliffside road beside a small cloaked traveler, keeping pace protectively as wind and dust stream behind. Focus on the horse's noble alert face, long flowing mane and strong central body; the traveler is secondary and safe alongside, not mounted. Painterly medieval fantasy collectible-card wildlife art, accurate equine anatomy, rich chestnut coat, directional dawn light and atmospheric depth with textured brushwork. Explicit 1:1 square 512 master; keep horse face, ears and central galloping body inside x24..488 y105..407 for horizontal 206:141 crop; lower hoof tips may crop. No text, frame, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d83b91b1-ec34-493f-ba20-b92d6f3758ac.png",
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "reviewNote": "Reviewed square, crop shifted up (focal y .38), and thumbnail: horse's full face, white star and escorting traveler remain visible; lower hoof tips are incidental.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/gray_summon_91.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "gray_summon_92",
+    "name": "Bayard, the Magic Bay",
+    "prompt": "Paint Bayard, the Magic Bay as a rare enchanted horse: one graceful dark bay horse with rich brown coat, black mane and intelligent amber eyes crosses a forked stone road between two ancient forest paths, leaving faint luminous hoofprints that appear in both directions as if the horse can cross boundaries. The horse is the clear subject, shown in a compact three-quarter stride with full face and ears, strong torso and visible front legs; magical effects are subtle and elegant, no rider. Painterly medieval fantasy collectible-card wildlife illustration, accurate equine anatomy, glossy bay coat, soft silver-green magic and dappled woodland light, atmospheric depth and textured brushwork. Explicit 1:1 square 512 master; keep full face and central horse body inside x24..488 y105..407 for 206:141 crop; incidental lower hoof tips and scenery may crop. No text, frame, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2fb09546-dcf7-4213-a85f-0c396250b151.png",
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "reviewNote": "Reviewed square, crop shifted up (focal y .38), and thumbnail: Bayard's complete face, ears and central horse body remain clear beside the crossing magic hoof-trails.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/gray_summon_92.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
   }
 ]

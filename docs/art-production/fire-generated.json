@@ -2026,5 +2026,95 @@
     "editableSourcePath": "game/cards/art/masters/fire_trap_08.png",
     "status": "generated",
     "batch": 10
+  },
+  {
+    "cardId": "fire_environment_09",
+    "name": "Forge Floor",
+    "prompt": "Paint an illustration for the fantasy card Forge Floor. Actual mechanics cue: a short column-shaped burning forge-floor curse. A broad horizontal forge floor of dark basalt slabs split by thin glowing orange molten seams, a compact round fire-pit furnace and scattered hammer marks, heat shimmer and sparks rising; dwarf smiths are tiny distant figures. The floor surface and its radiant fissures dominate, no towering flames or generic fireball. Painterly medieval fantasy collectible-card illustration, believable materials and anatomy, rich ember light, textured brushwork, dramatic atmosphere, crisp readable value structure. Use a compact horizontal composition. Keep the key named scene/object, any primary face and working hands inside x24…488,y105…407 on the normalized 512 square. Make face/action readable in a 206:141 card crop and 128px thumbnail. Explicit 1:1 square canvas for editable 512×512 master; expendable scenery may fill upper/lower margins. No text, labels, border, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-247da041-5e7b-4a96-8838-62b3bc71ba76.png",
+    "editableSourcePath": "game/cards/art/masters/fire_environment_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. Molten fissures across the basalt forge floor and compact furnace are clear; background smiths are incidental."
+  },
+  {
+    "cardId": "fire_summon_06",
+    "name": "Phoenix",
+    "prompt": "Paint an illustration for the fantasy card Phoenix. Actual mechanics cue: a sturdy phoenix summon. A legendary phoenix sweeps low across a volcanic sky, magnificent crimson and molten-gold feathers, beak and bright intelligent eye clear, a long tail of ember feathers trailing behind. Keep the bird's head, eye, beak and shoulders near the center of the horizontal scene; wing tips and flame ribbons may extend to the edges. Painterly medieval fantasy collectible-card illustration, believable materials and anatomy, rich ember light, textured brushwork, dramatic atmosphere, crisp readable value structure. Use a compact horizontal composition. Keep the key named scene/object, any primary face and working hands inside x24…488,y105…407 on the normalized 512 square. Make face/action readable in a 206:141 card crop and 128px thumbnail. Explicit 1:1 square canvas for editable 512×512 master; expendable scenery may fill upper/lower margins. No text, labels, border, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f5f76647-9521-45c4-bb70-5749e9edb90a.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. Phoenix eye, beak, and head remain clear and identifiable; wing tips and ember trails are incidental."
+  },
+  {
+    "cardId": "fire_machine_05",
+    "name": "Hwacha Rocket Cart",
+    "prompt": "Paint an illustration for the fantasy card Hwacha Rocket Cart. Actual mechanics cue: a sturdy hwacha rocket engine cart firing diagonally. A compact complete medieval Korean-style hwacha rocket cart on four sturdy wheels, with a wooden frame and rack of many slim red firework rockets clearly visible, firing a fan of small rockets. Beside the cart at the same height, a compact armored engineer with a clear whole face and both hands lighting/steadying the rack; do not place a giant operator behind or above it. Keep every wheel and rocket rack intact. Painterly medieval fantasy collectible-card illustration, believable materials and anatomy, rich ember light, textured brushwork, dramatic atmosphere, crisp readable value structure. Use a compact horizontal composition. Keep the key named scene/object, any primary face and working hands inside x24…488,y105…407 on the normalized 512 square. Make face/action readable in a 206:141 card crop and 128px thumbnail. Explicit 1:1 square canvas for editable 512×512 master; expendable scenery may fill upper/lower margins. No text, labels, border, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e7a070d8-2f45-46d0-9d30-6b6f797f1549.png",
+    "editableSourcePath": "game/cards/art/masters/fire_machine_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. Full hwacha rack, cart frame and four wheels remain visible beside the engineer’s face and working hands; projectile trails are incidental."
+  },
+  {
+    "cardId": "hero_sola",
+    "name": "Sola Flamewright",
+    "prompt": "Paint an illustration for the fantasy card Sola Flamewright. Actual mechanics cue: Sola Flamewright flings four burning sparks and casts faster. Sola Flamewright, a confident young woman forge-mage with warm brown skin, dark braided hair tied with copper beads, and an artisan's soot-marked leather apron over a deep red tunic. Her complete expressive face and both hands are prominent as she flings four distinct golden sparks from her fingertips, firelight catches her eyes, anvil and furnace recede behind. Hero portrait/action, no obscuring flame. Painterly medieval fantasy collectible-card illustration, believable materials and anatomy, rich ember light, textured brushwork, dramatic atmosphere, crisp readable value structure. Use a compact horizontal composition. Keep the key named scene/object, any primary face and working hands inside x24…488,y105…407 on the normalized 512 square. Make face/action readable in a 206:141 card crop and 128px thumbnail. Explicit 1:1 square canvas for editable 512×512 master; expendable scenery may fill upper/lower margins. No text, labels, border, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-eec2ba16-083a-47e1-94dd-ad54bb511e79.png",
+    "editableSourcePath": "game/cards/art/masters/hero_sola.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. Sola’s eyes, face, both spark-flinging hands, and distinct golden sparks are visible; the upper hair edge touches the crop but her face is intact."
+  },
+  {
+    "cardId": "fire_strike_10",
+    "name": "Minotaur Charge",
+    "prompt": "Paint an illustration for the fantasy strike card Minotaur Charge. A massive horned minotaur warrior charges straight forward down a dusty arena lane, head and shoulders looming; his complete fierce bull face, both full curling horns and both eyes must be unmistakably visible and kept well inside the frame, no horn tip clipped. His broad shoulder is about to slam a shield-bearing opponent aside, implying a forceful linear charge and recoil; the opponent is background scale only. Use a low, close horizontal composition with the minotaur's face central and readable, legs and dust may crop. Painterly medieval fantasy collectible-card art, textured fur, horn and bronze, dramatic firelit dust, grounded animal anatomy, visible brushwork. Explicit 1:1 square 512 master. Keep face, eyes, whole horns and impact shoulder within x24…488,y105…407 for the 206:141 card crop and thumbnail. No text, lettering, border, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9226d566-0985-4511-811e-62d053ffed75.png",
+    "editableSourcePath": "game/cards/art/masters/fire_strike_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed source and crop at focal [0.5,0.38] plus 128x88 thumbnail. Full minotaur face, eyes, and both horn tips fit clearly; lower torso and dust trail crop as incidental action."
   }
 ]

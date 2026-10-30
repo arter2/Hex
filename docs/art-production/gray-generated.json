@@ -1101,5 +1101,131 @@
     "status": "generated",
     "batch": 8,
     "reviewNote": "Reviewed square source, centered crop and thumbnail. The elder bear’s whole recognizable head, paws and shield impact stay visible; silvered muzzle, scars and heavy gray coat read at card size."
+  },
+  {
+    "cardId": "gray_summon_36",
+    "name": "Cave Bear",
+    "prompt": "Paint the Hexmancers card Cave Bear. Actual mechanics: a tough front-line bear that pounces and briefly freezes an enemy. Show a powerful dark-furred cave bear bursting from the mouth of a cavern onto an armored intruder, forepaws striking the shield as a cold blue frost spreads over the metal and boots. Make the bear’s full head, open muzzle and forward paws unmistakable; massive shoulders and shaggy charcoal-brown fur contrast with the older silver-gray bear card. Ancient cave entrance, limestone teeth and a trace of icy mist, dramatic lantern light from the intruder against cold blue cave shadow, painterly medieval fantasy collectible-card illustration with believable animal anatomy and rich fur. Exact 1:1 SQUARE 512x512 master, horizontal action; keep bear’s face, paws and frost impact within x24..488,y105..407 for the 206:141 crop. Quiet cave ceiling and ground margins. Bold readable thumbnail silhouette. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6955ba03-ffa4-4a66-a00b-93a4701db83d.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_36.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed square source, centered crop and thumbnail. Cave Bear’s full snarling face, both forepaws, shield impact and frost remain visible; the dark bear and cave mouth read clearly."
+  },
+  {
+    "cardId": "gray_summon_37",
+    "name": "Wild Boar",
+    "prompt": "Paint the Hexmancers card Wild Boar. Actual mechanics: a tough front-line boar tramples forward and shoves an enemy aside. Show a massive dark wild boar charging through a medieval forest track, low head, bristling mane and curved tusks, its shoulder and tusks knocking an armored raider backward into leaves and dust. The boar is the unmistakable primary subject; show a powerful full head, tusks and forelegs with rugged coarse black-brown bristles, not a domestic pig. Autumn forest edge with broken brush, warm shafts of sun through cool green shade, painterly medieval fantasy collectible-card art with believable animal anatomy, tactile fur and atmospheric depth. Exact 1:1 SQUARE 512x512 master, horizontal motion; keep boar’s face, tusks, forelegs and impact point inside x24..488,y105..407 for 206:141 crop. Quiet canopy and earth margins. Strong thumbnail silhouette. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-60164c37-3482-4ccf-b868-4ed3e6c5c4bd.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_37.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed square source, centered crop and thumbnail. Wild boar’s full face, tusks, foreleg and trample impact remain visible; the bristled silhouette and knocked-back raider read at thumbnail scale."
+  },
+  {
+    "cardId": "gray_summon_38",
+    "name": "Great Tortoise",
+    "prompt": "Paint the Hexmancers card Great Tortoise. Actual mechanics: an ancient, tough front-line tortoise slowly forms a short protective ward. Show one enormous old tortoise emerging on a rocky battlefield, its broad domed shell etched by age and moss, slowly raising a low curved stone ward from the ground in front of a small ally. The tortoise’s wise head and complete shell dominate; the protective wall is visibly growing from the earth, with a soft gray-blue glow along its edge. Distinguish it from a turtle with a massive high domed shell and thick columnar legs. Ancient woodland ruins and weathered stone, warm shafts of light, painterly medieval fantasy collectible-card art with lifelike reptile anatomy, textured shell and atmospheric depth. Exact 1:1 SQUARE 512x512 master, horizontal composition; keep head, full shell silhouette and ward edge inside x24..488,y105..407 for the 206:141 crop. Quiet canopy and ground margins. Readable thumbnail silhouette. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-10f5b47c-a999-4948-8548-b8204b3d9c0f.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_38.png",
+    "sourceNative": [
+      1403,
+      1121
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed 512-square source, centered crop and thumbnail. Tortoise’s full domed shell and head, columnar forelegs and growing ward remain visible; shell texture and scale carry its ancient identity."
+  },
+  {
+    "cardId": "gray_summon_39",
+    "name": "Snapping Turtle",
+    "prompt": "Paint the Hexmancers card Snapping Turtle. Actual mechanics: a hungry, tough front-line turtle that draws an enemy close and slowly raises a strong protective wall. Show a large freshwater snapping turtle at the edge of a medieval moat, its low ridged shell and webbed feet clear, lunging out of the water to snap at an armored raider’s boot and pull the foe toward the bank. A curved low stone embankment rises behind its shell as a protective barrier for a nearby ally. Emphasize the turtle’s hooked beak, strong jaw, and full low shell; keep it distinct from a high-domed tortoise. Rippling dark water, reeds, castle stones, lantern reflections and cool mist, painterly medieval fantasy collectible-card illustration with believable reptile anatomy and rich material detail. Exact 1:1 SQUARE 512x512 master, horizontal action; keep turtle’s full head, jaw, shell, bite and wall section within x24..488,y105..407 for the 206:141 crop. Quiet water and stone margins. Readable thumbnail silhouette. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-294b3965-24c4-4628-9420-224f5275aae9.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_39.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed square source, centered crop and thumbnail. The turtle’s complete low ridged shell, hooked jaw, bite and webbed foreleg remain visible; the moat wall and guard provide context."
+  },
+  {
+    "cardId": "gray_summon_40",
+    "name": "Armadillo Knight",
+    "prompt": "Paint the Hexmancers card Armadillo Knight. Actual mechanics: a tough, loyal front-line guardian who draws enemy attention and holds ground. Depict a stout armadillo-like knight in a medieval forest clearing, its natural overlapping banded shell protected by battered steel shoulder plates and a small helm; it braces behind a broad shield while a sword-bearing armored enemy charges directly toward it, leaving a small companion safe behind its armored back. Keep the knight’s full armored head, segmented shell, forepaws and shield clear; unmistakably an armadillo creature, not a human in armor or a generic beetle. Rich brown scales, aged iron, woodland stone, dramatic warm light and cool shadow, painterly medieval fantasy collectible-card art with grounded creature anatomy and atmospheric depth. Exact 1:1 SQUARE 512x512 master, horizontal staging; keep face, shield hand, full shell silhouette and enemy impact inside x24..488,y105..407 for the 206:141 crop. Quiet canopy and earth margins. Strong thumbnail silhouette. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f1372460-c42d-4f41-96ea-eef7dd8eb7a5.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_40.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed square source, centered crop and thumbnail. The armadillo’s helmeted head, banded shell, forepaws, full shield and opposing strike remain visible; armored creature identity reads clearly."
+  },
+  {
+    "cardId": "gray_summon_41",
+    "name": "Ironback Beetle",
+    "prompt": "Paint the Hexmancers card Ironback Beetle. Actual mechanics: a tough iron-shelled beetle escorts an ally, slowly raising a protective wall while static sparks around it. Show one giant dark beetle with a broad ridged iron-like back and six strong legs striding beside a small armored ally; it shelters the companion with its body while lifting a low ridge of stone and earth into a barrier. Pale blue static crackles over the shell and barrier edge. Keep the beetle’s full head, curved feelers, shell and legs the main subject; this is a real beetle creature with an iron carapace, not a mechanical machine. Medieval forest path, wet leaves, warm lanterns and cool electric light, painterly fantasy collectible-card illustration, believable insect anatomy and rich metal/earth texture. Exact 1:1 SQUARE 512x512 master, horizontal staging; keep head, feelers, full shell silhouette, legs and ward within x24..488,y105..407 for the 206:141 crop. Quiet canopy and ground margins. Strong thumbnail silhouette. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8e8bd4ab-7ed2-49d4-aeb3-34b28bdbaf94.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_41.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed square source, centered crop and thumbnail. Beetle’s full head, feelers, six legs and ironback shell remain visible; the static ward and sheltered ally are readable behind it."
+  },
+  {
+    "cardId": "gray_summon_42",
+    "name": "Mimic Chest",
+    "prompt": "Paint the Hexmancers card Mimic Chest. Actual mechanics: a sturdy veteran mimic lurking in the rear unleashes a rapid barrage. Depict an ancient iron-bound treasure chest on a ruined castle floor suddenly revealing itself as a mimic: the lid hinges open into a huge tooth-lined jaw, a single glowing eye peering from within, and many little hooked tongue-like tendrils flick coins and shards rapidly toward unseen foes. Keep the chest itself unmistakable and dominant, with full lid, jaw, carved front, iron bands and feet visible; the barrage is a supporting action, not a generic treasure pile. A small adventurer recoils in the background. Warm torchlight catches aged oak, tarnished iron and a little gold, with dark stone shadows, painterly medieval fantasy collectible-card art, rich tactile materials and atmospheric depth. Exact 1:1 SQUARE 512x512 master, horizontal composition; keep the full mimic chest, teeth, eye and barrage origin inside x24..488,y105..407 for the 206:141 crop. Quiet ceiling and floor margins. Strong thumbnail silhouette. No text, letters, frame, UI, anime, Disney-like cartoon, photorealism or pixel art. Repaired first square crop, which clipped the chest's left side, by reducing and shifting the entire chest inward.",
+    "generatedPath": "/workspace/generated_images/exec-73af83e3-2545-4364-b8e4-a3aaab338099.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_42.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Preserved the clipped first source at /tmp/gray_summon_42-attempt1.png before repair. Reviewed final 512-square source, centered crop and 128×88 thumbnail; the complete chest, lid, teeth, eye, feet and barrage origin all fit and read as a mimic."
   }
 ]

@@ -982,5 +982,239 @@
     "status": "generated",
     "batch": 8,
     "reviewNote": "The complete crossbow turret and both lances remain in the square and 206:141 crop; the twin launch reads clearly at 128px."
+  },
+  {
+    "cardId": "fire_ace_02",
+    "name": "Sunfall Lance",
+    "prompt": "Paint a painterly medieval fantasy collectible-card illustration for the exact Fire ace Sunfall Lance. A gigantic lance of molten sunlight plunges through storm clouds and sweeps horizontally across a battlefield in a single incandescent line, scorching everything in its row; the lance-like beam is the singular named subject, with the sun's glow behind it and tiny silhouettes only for scale. Mechanics: a powerful row attack that burns. Strict 1:1 SQUARE composition for editable 512x512 artwork. Keep the complete readable lance tip and its horizontal path across the central band x24..488,y105..407 for the 206:141 crop; leave only expendable sky and ground beyond. Painterly medieval fantasy collectible-card illustration, luminous molten gold and ember reds, smoky atmospheric depth, strong clear silhouette at 128px. No words, frame, UI, symbols, watermark, anime, Disney style, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-733f5b77-1b8f-4b90-807d-d9757f6920fe.png",
+    "editableSourcePath": "game/cards/art/masters/fire_ace_02.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "The sunlit lance tip and continuous horizontal burning path remain centered and sharply legible in the wide crop and at 128px."
+  },
+  {
+    "cardId": "fire_aceup_02",
+    "name": "Blacksmith's Temper",
+    "prompt": "Paint a painterly medieval fantasy collectible-card illustration for the exact Fire ace-up Blacksmith's Temper. A master blacksmith grips a glowing red-hot sword blank with long tongs and strikes it on a bright anvil, sparks flaring as the blade is tempered; his focused face, hammer hand, tongs and glowing blade form the clear subject. Mechanics: the next attack is empowered, so show crafted strength flowing into the weapon, not a generic fire spell. Strict 1:1 SQUARE composition for editable 512x512 art. Keep the full glowing blade, important hands, hammer and anvil face within x24..488,y105..407 for the 206:141 crop; arrange them horizontally with only expendable rafters and floor beyond. Painterly medieval fantasy collectible-card illustration, believable metal, soot, leather apron and firelight, crisp readable silhouette at 128px. No text, border, frame, UI, watermark, anime, Disney style, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7fbd5c52-ad42-4d88-9e73-2242e47340df.png",
+    "editableSourcePath": "game/cards/art/masters/fire_aceup_02.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Shifted crop upward to include the blacksmith’s full face while preserving both working hands and the tempered blade; all remain clear at 128px."
+  },
+  {
+    "cardId": "hero_brann",
+    "name": "Brann the Forgemaster",
+    "prompt": "Paint a painterly medieval fantasy collectible-card illustration for the exact Fire hero Brann the Forgemaster. Brann is a broad-shouldered veteran dwarven master smith with a weathered, focused face, soot-dark beard braided with copper rings, and a heavy leather apron. He hurls a glowing mass of molten slag from a blacksmith's shovel toward an unseen foe; his face, throwing hands and the bright splashing slag form one strong horizontal composition. Mechanics: the slag splashes and burns; Brann is heavily armored. Strict 1:1 SQUARE composition for editable 512x512 art. Keep Brann's complete face, both working hands, shovel and slag mass within x24..488,y105..407 for the 206:141 crop, with only expendable forge roof and floor beyond. Painterly medieval fantasy collectible-card illustration, believable dwarf anatomy, forged metal, leather, sparks, dramatic forge light and atmospheric depth, readable at 128px. No lettering, frame, card border, UI, watermark, anime, Disney style, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9480c429-abf9-41c3-8b87-47b2c8c22e61.png",
+    "editableSourcePath": "game/cards/art/masters/hero_brann.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Shifted crop upward to include Brann’s full face while keeping both hands, shovel and splashing slag in view; the action remains clear at 128px."
+  },
+  {
+    "cardId": "fire_strike_05",
+    "name": "Rocket Barrage",
+    "prompt": "Paint a painterly medieval fantasy collectible-card illustration for the exact Fire strike Rocket Barrage. Five small red-gold rockets streak in a tight horizontal salvo across the sky above a dark fortress, each with a vivid ember tail; one has just detonated in a clear bright burst, while the other four remain distinct. The five rockets and their fast barrage are the named subject, not the fortress. Strict 1:1 SQUARE composition for an editable 512x512 master. Keep all five rocket bodies and the central detonation within x24..488,y105..407 for the 206:141 crop; arrange the salvo horizontally across the center with only expendable sky and rooftops beyond. Painterly medieval fantasy collectible-card art, believable wood-and-brass rockets, sparks, smoke and warm directional light, sharp readable silhouettes at 128px. No modern missiles, lettering, frame, UI, symbols, watermark, anime, Disney style, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b3860977-9ce6-4364-809c-55b8ea020db3.png",
+    "editableSourcePath": "game/cards/art/masters/fire_strike_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "All five rockets and the center detonation remain visible and distinct in the square, 206:141 crop, and 128px thumbnail."
+  },
+  {
+    "cardId": "fire_lob_07",
+    "name": "Magma Geyser",
+    "prompt": "Paint a painterly medieval fantasy collectible-card illustration for the exact Fire lob Magma Geyser. A towering vertical column of molten lava erupts from a cracked volcanic fissure in a forested mountain pass, blasting glowing rock upward and leaving cursed black smoke in its wake. The central geyser and its molten splash are the unmistakable subject. Mechanics: heavy fuse, column pattern, lingering ground effect. Strict 1:1 SQUARE canvas for editable 512x512 art. Keep the main geyser column and central splash within x24..488,y105..407 for the 206:141 crop; expendable smoke and distant mountain may extend above, and empty charred ground below. Painterly medieval fantasy collectible-card illustration, detailed rock and molten textures, dramatic light, atmospheric depth and strong readable column at 128px. No text, border, frame, UI, watermark, anime, Disney style, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8e0807ff-bb97-4f9b-ace1-55470dc50b48.png",
+    "editableSourcePath": "game/cards/art/masters/fire_lob_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "The eruption source, central column and molten splash are all present in the wide crop; vertical plume remains instantly readable at thumbnail."
+  },
+  {
+    "cardId": "fire_ward_06",
+    "name": "Lava Moat",
+    "prompt": "Paint a painterly medieval fantasy collectible-card illustration for the exact Fire ward Lava Moat. A short burning moat of molten lava cuts horizontally across a narrow volcanic fortress passage, with rough basalt banks and a low stone crossing blocked by a bright channel of fire; the moat itself is the clear protective barrier. Mechanics: light, short corridor wall that burns. Strict 1:1 SQUARE composition for an editable 512x512 master. Keep the full visible length of the central lava channel and its defining stone banks within x24..488,y105..407 for the 206:141 crop; only expendable mountain and sky beyond. Painterly medieval fantasy collectible-card landscape, textured black basalt, glowing magma, dramatic directional light, atmospheric depth, strong readable horizontal silhouette at 128px. No lettering, frame, UI, symbols, watermark, anime, Disney style, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-fb09900b-f12e-4db8-8e6d-4e5962c6f788.png",
+    "editableSourcePath": "game/cards/art/masters/fire_ward_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "The full central lava channel and both defining basalt banks remain visible in square, wide crop, and thumbnail."
+  },
+  {
+    "cardId": "fire_sentry_07",
+    "name": "Smoking Chimney",
+    "prompt": "Paint a painterly medieval fantasy collectible-card illustration for the exact Fire sentry Smoking Chimney. A stout old stone smelter chimney rises from a small forge-house on a black volcanic ledge, pouring a dense charcoal plume into the sky; a narrow iron firing slot in its lower kiln launches a single hot bolt toward the trail as a small shower of sparks falls. The smoking chimney remains the named, unmistakable focal structure. Mechanics: sturdy steady sentry that fires bolts and harvests value. Strict 1:1 SQUARE composition for editable 512x512 art. Keep the complete chimney stack, its mouth and defining base inside x24..488,y105..407 for the 206:141 crop; let only expendable smoke trail and distant mountains extend beyond. Painterly medieval fantasy collectible-card illustration, detailed stone and soot, warm forge light against dusk, clear silhouette at 128px. No modern industrial hardware, words, frame, UI, watermark, anime, Disney style, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-654d26bc-5853-419a-b5a0-1bd0d82fedcc.png",
+    "editableSourcePath": "game/cards/art/masters/fire_sentry_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "The chimney stack, smoking mouth, forge base and small bolt remain visible in the square and 206:141 crop; the structure reads at 128px."
+  },
+  {
+    "cardId": "fire_boon_05",
+    "name": "Hot Coals Dash",
+    "prompt": "Paint a painterly medieval fantasy collectible-card illustration for the exact Fire boon Hot Coals Dash. A nimble armored courier sprints across a bed of glowing coals, boots kicking up sparks as a brief ember-bright burst of speed carries them forward; show their focused face, pumping hands and swift stride clearly. The boon grants a short immediate haste, so make the movement and hot coals obvious without hiding the runner in fire. Strict 1:1 SQUARE composition for an editable 512x512 master. Keep the runner's face, both hands and full action-defining silhouette inside x24..488,y105..407 for the 206:141 horizontal crop; place the stride across the central band with expendable smoke and ground beyond. Painterly medieval fantasy collectible-card illustration, believable armor, leather and anatomy, warm directional firelight, sharp readable pose at 128px. No text, frame, border, UI, watermark, anime, Disney style, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f1d2d704-1dea-4271-8560-825093ff5ec8.png",
+    "editableSourcePath": "game/cards/art/masters/fire_boon_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Shifted crop upward to keep the runner’s face and hands intact; the sprint and coals are clear at 128px, with the rear boot close to the lower crop edge."
+  },
+  {
+    "cardId": "fire_charge_05",
+    "name": "Ore Cart",
+    "prompt": "Paint an illustration for Ore Cart: a rugged dwarf miner shoves a small iron ore cart down a mine track; the cart tips and flings several glowing chunks of molten ore in a short explosive arc, stunning a goblin miner who reels backward. The squat wooden-and-iron cart, full wheels and handle, must be the unmistakable named object, face and hands readable. Painterly medieval fantasy collectible-card art, dramatic furnace glow, textured timber, iron and rock, atmospheric smoke. Exact 1:1 square composition for a 512x512 editable master; keep the full cart, wheels, miner's face and hands inside x24..488,y105..407 for a 206:141 horizontal crop, quiet expendable scenery at top and bottom. No lettering, frame, UI, anime, Disney, photo realism, pixel art. Follow painterly material detail and light of attached style references.",
+    "generatedPath": "/workspace/generated_images/exec-9627f717-4d31-4b15-ab51-a285510d95ed.png",
+    "editableSourcePath": "game/cards/art/masters/fire_charge_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Square master and centered wide crop inspected. Complete ore cart with both wheels, dwarf face and hands, molten ore burst and recoiling goblin are readable and remain in the crop."
+  },
+  {
+    "cardId": "fire_utility_06",
+    "name": "Dragon's Riddle",
+    "prompt": "Paint an illustration for Dragon's Riddle: an elderly dragon sage with bronze scales and horned brow presents a glowing intricately folded riddle-scroll, its blank parchment diagram visually duplicated as a translucent echo beside it, suggesting a copied magical riddle. Intimate firelit library carved into volcanic stone; expressive dragon eyes, clawed hand and scroll are prominent and clear. Painterly medieval fantasy collectible-card art, rich grounded materials, warm directional light, atmospheric depth. Exact square 512x512 master; keep dragon face, hand and complete scroll within x24..488,y105..407 for 206:141 crop. No words, frame, symbols, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-83daaad1-5a7b-41f4-9a00-d6c3630a7a23.png",
+    "editableSourcePath": "game/cards/art/masters/fire_utility_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Square master and centered wide crop inspected. Dragon face and clawed hand remain clear with a full luminous blank scroll and its duplicated echo; no critical subject is clipped."
+  },
+  {
+    "cardId": "fire_trap_04",
+    "name": "Magma Pit",
+    "prompt": "Paint an illustration for Magma Pit: a cunning fire mage's short-lived trap opens beneath a charging armored raider, a circular stone pit split by glowing magma with a small cluster of iron spikes jutting up from the edge; the raider stumbles back, scorched and stunned, before falling in. The full pit rim, spikes and raider's face/torso are clear. Painterly medieval fantasy card art, believable rock and iron, dramatic molten light, smoky depth. Explicit 1:1 square for 512x512 editable master, keep the entire trap opening and action inside x24..488,y105..407 for a 206:141 crop; quiet scenery in top/bottom margins. No text, frame, UI, anime, Disney, photo realism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-eb624d31-c970-4989-bffd-c1fd93349429.png",
+    "editableSourcePath": "game/cards/art/masters/fire_trap_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Square master and centered wide crop inspected. The molten pit, full visible spike cluster, raider face and recoiling action read clearly in the crop."
+  },
+  {
+    "cardId": "fire_environment_05",
+    "name": "Rumbling Mine",
+    "prompt": "Paint an illustration for Rumbling Mine: a violent underground tremor bursts from a rich old mine, splitting the tunnel floor in a broad branching crack; a wooden ore cart and miners are tossed aside as amber magma and dust surge up in a concentrated column, showing a burst earthquake with burning aftershock. Keep the mine entrance, fissure, workers and cart readable. Painterly medieval fantasy collectible-card illustration, detailed stone, timber and ore, dramatic firelight and smoky atmospheric depth. Exact 1:1 square 512x512 master. Keep central crack and impact activity plus essential faces/hands inside x24..488,y105..407 for 206:141 crop, quiet scenery at top/bottom. No frame, lettering, UI, anime, Disney, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7d8c4b01-552a-416f-8ff2-60bd314124de.png",
+    "editableSourcePath": "game/cards/art/masters/fire_environment_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Square master and centered wide crop inspected. The eruption, branching cracked mine floor, fleeing miners and full ore cart remain readable in the crop."
+  },
+  {
+    "cardId": "fire_piece_04",
+    "name": "Anvil of the First Forge",
+    "prompt": "Paint an illustration for Anvil of the First Forge: a legendary ancient blacksmith's anvil, broad square-faced iron block with a distinctive horn and heavy rune-cut stone-and-bronze pedestal, stands in the exact center of a primordial volcanic forge. A single huge molten iron ingot drops from above onto the anvil, sending a dramatic vertical column of sparks, molten droplets and a shockwave that knocks nearby smiths backward. The complete anvil, its pedestal and impact are the unmistakable subject; no other weapon replaces the anvil. Painterly medieval fantasy collectible-card illustration, nuanced forged iron and basalt, warm intense directional firelight, deep smoky atmosphere, grounded detail. Explicit 1:1 square 512x512 editable master; keep the complete anvil and pedestal, impact, and any essential faces/hands inside x24..488,y105..407 for a 206:141 horizontal crop. Quiet expendable margins above/below. No lettering, border, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-bdf29ad5-665f-4610-bb80-fab92decfa3f.png",
+    "editableSourcePath": "game/cards/art/masters/fire_piece_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Square master and centered wide crop inspected. Full anvil, horn, pedestal and molten impact column remain prominent; smiths are secondary and safely within the crop."
   }
 ]

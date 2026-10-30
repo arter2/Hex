@@ -1,0 +1,1496 @@
+[
+  {
+    "id": "ice_shard",
+    "name": "Ice Shard",
+    "type": "strike",
+    "color": "frost"
+  },
+  {
+    "id": "frost_lance",
+    "name": "Frost Lance",
+    "type": "strike",
+    "color": "frost"
+  },
+  {
+    "id": "hail_lob",
+    "name": "Hail Lob",
+    "type": "lob",
+    "color": "frost"
+  },
+  {
+    "id": "rime_wall",
+    "name": "Rime Wall",
+    "type": "ward",
+    "color": "frost"
+  },
+  {
+    "id": "frost_ward",
+    "name": "Frost Ward",
+    "type": "ward",
+    "color": "frost"
+  },
+  {
+    "id": "icicle_spire",
+    "name": "Icicle Spire",
+    "type": "sentry",
+    "color": "frost"
+  },
+  {
+    "id": "glacial_veil",
+    "name": "Glacial Veil",
+    "type": "boon",
+    "color": "frost"
+  },
+  {
+    "id": "absolute_zero",
+    "name": "Absolute Zero",
+    "type": "strike",
+    "color": "frost"
+  },
+  {
+    "id": "frost_strike_01",
+    "name": "Harpoon Throw",
+    "type": "strike",
+    "color": "frost"
+  },
+  {
+    "id": "frost_strike_02",
+    "name": "Whaler's Harpoon",
+    "type": "strike",
+    "color": "frost"
+  },
+  {
+    "id": "frost_strike_03",
+    "name": "Tidal Wave",
+    "type": "strike",
+    "color": "frost"
+  },
+  {
+    "id": "frost_strike_04",
+    "name": "Breaking Surf",
+    "type": "strike",
+    "color": "frost"
+  },
+  {
+    "id": "frost_strike_05",
+    "name": "Riptide",
+    "type": "strike",
+    "color": "frost"
+  },
+  {
+    "id": "frost_strike_06",
+    "name": "Undertow",
+    "type": "strike",
+    "color": "frost"
+  },
+  {
+    "id": "frost_strike_07",
+    "name": "Maelstrom",
+    "type": "strike",
+    "color": "frost"
+  },
+  {
+    "id": "frost_strike_08",
+    "name": "Hurricane's Eye",
+    "type": "strike",
+    "color": "frost"
+  },
+  {
+    "id": "frost_strike_09",
+    "name": "Typhoon Lash",
+    "type": "strike",
+    "color": "frost"
+  },
+  {
+    "id": "frost_strike_10",
+    "name": "Narwhal Tusk",
+    "type": "strike",
+    "color": "frost"
+  },
+  {
+    "id": "frost_strike_11",
+    "name": "Shark Bite",
+    "type": "strike",
+    "color": "frost"
+  },
+  {
+    "id": "frost_strike_12",
+    "name": "Frenzy of Sharks",
+    "type": "strike",
+    "color": "frost"
+  },
+  {
+    "id": "frost_strike_13",
+    "name": "Cutlass Slash",
+    "type": "strike",
+    "color": "frost"
+  },
+  {
+    "id": "frost_strike_14",
+    "name": "Boarding Axe",
+    "type": "strike",
+    "color": "frost"
+  },
+  {
+    "id": "frost_strike_15",
+    "name": "Grapeshot Volley",
+    "type": "strike",
+    "color": "frost"
+  },
+  {
+    "id": "frost_strike_16",
+    "name": "Siren's Song",
+    "type": "strike",
+    "color": "frost"
+  },
+  {
+    "id": "frost_strike_17",
+    "name": "Lorelei's Lure",
+    "type": "strike",
+    "color": "frost"
+  },
+  {
+    "id": "frost_strike_18",
+    "name": "Kelpie's Plunge",
+    "type": "strike",
+    "color": "frost"
+  },
+  {
+    "id": "frost_strike_19",
+    "name": "Nixie's Whirlpool",
+    "type": "strike",
+    "color": "frost"
+  },
+  {
+    "id": "frost_strike_20",
+    "name": "Frostbite",
+    "type": "strike",
+    "color": "frost"
+  },
+  {
+    "id": "frost_strike_21",
+    "name": "Blizzard Gale",
+    "type": "strike",
+    "color": "frost"
+  },
+  {
+    "id": "frost_strike_22",
+    "name": "Avalanche Rush",
+    "type": "strike",
+    "color": "frost"
+  },
+  {
+    "id": "frost_strike_23",
+    "name": "Hailstone Barrage",
+    "type": "strike",
+    "color": "frost"
+  },
+  {
+    "id": "frost_strike_24",
+    "name": "Sleet Volley",
+    "type": "strike",
+    "color": "frost"
+  },
+  {
+    "id": "frost_strike_25",
+    "name": "Winter Wolf Fangs",
+    "type": "strike",
+    "color": "frost"
+  },
+  {
+    "id": "frost_strike_26",
+    "name": "Yeti's Swipe",
+    "type": "strike",
+    "color": "frost"
+  },
+  {
+    "id": "frost_strike_27",
+    "name": "Icebreaker Ram",
+    "type": "strike",
+    "color": "frost"
+  },
+  {
+    "id": "frost_strike_28",
+    "name": "Kappa's Sumo Shove",
+    "type": "strike",
+    "color": "frost"
+  },
+  {
+    "id": "frost_strike_29",
+    "name": "Rusalka's Embrace",
+    "type": "strike",
+    "color": "frost"
+  },
+  {
+    "id": "frost_strike_30",
+    "name": "Umibozu's Grasp",
+    "type": "strike",
+    "color": "frost"
+  },
+  {
+    "id": "frost_strike_31",
+    "name": "Ningyo Scale Dart",
+    "type": "strike",
+    "color": "frost"
+  },
+  {
+    "id": "frost_strike_32",
+    "name": "Ice Skate Slash",
+    "type": "strike",
+    "color": "frost"
+  },
+  {
+    "id": "frost_strike_33",
+    "name": "Glacier Calving",
+    "type": "strike",
+    "color": "frost"
+  },
+  {
+    "id": "frost_strike_34",
+    "name": "Waterspout",
+    "type": "strike",
+    "color": "frost"
+  },
+  {
+    "id": "frost_strike_35",
+    "name": "Leviathan's Wake",
+    "type": "strike",
+    "color": "frost"
+  },
+  {
+    "id": "frost_strike_36",
+    "name": "World Serpent's Coil",
+    "type": "strike",
+    "color": "frost"
+  },
+  {
+    "id": "frost_strike_37",
+    "name": "Bunyip's Bellow",
+    "type": "strike",
+    "color": "frost"
+  },
+  {
+    "id": "frost_strike_38",
+    "name": "Leister Spear",
+    "type": "strike",
+    "color": "frost"
+  },
+  {
+    "id": "frost_lob_01",
+    "name": "Twelve-Pound Shot",
+    "type": "lob",
+    "color": "frost"
+  },
+  {
+    "id": "frost_lob_02",
+    "name": "Chain Shot",
+    "type": "lob",
+    "color": "frost"
+  },
+  {
+    "id": "frost_lob_03",
+    "name": "Powder Monkey's Keg",
+    "type": "lob",
+    "color": "frost"
+  },
+  {
+    "id": "frost_lob_04",
+    "name": "Depth Charge",
+    "type": "lob",
+    "color": "frost"
+  },
+  {
+    "id": "frost_lob_05",
+    "name": "Frozen Comet",
+    "type": "lob",
+    "color": "frost"
+  },
+  {
+    "id": "frost_lob_06",
+    "name": "Ice Floe Drop",
+    "type": "lob",
+    "color": "frost"
+  },
+  {
+    "id": "frost_lob_07",
+    "name": "Geyser Burst",
+    "type": "lob",
+    "color": "frost"
+  },
+  {
+    "id": "frost_lob_08",
+    "name": "Rain of Fish",
+    "type": "lob",
+    "color": "frost"
+  },
+  {
+    "id": "frost_lob_09",
+    "name": "Coconut Lob",
+    "type": "lob",
+    "color": "frost"
+  },
+  {
+    "id": "frost_lob_10",
+    "name": "Ink Cloud",
+    "type": "lob",
+    "color": "frost"
+  },
+  {
+    "id": "frost_lob_11",
+    "name": "Holy Water Flask",
+    "type": "lob",
+    "color": "frost"
+  },
+  {
+    "id": "frost_lob_12",
+    "name": "Spring Water Gourd",
+    "type": "lob",
+    "color": "frost"
+  },
+  {
+    "id": "frost_lob_13",
+    "name": "Hailstone Cross",
+    "type": "lob",
+    "color": "frost"
+  },
+  {
+    "id": "frost_lob_14",
+    "name": "Whirlpool Ring",
+    "type": "lob",
+    "color": "frost"
+  },
+  {
+    "id": "frost_lob_15",
+    "name": "Falling Iceberg",
+    "type": "lob",
+    "color": "frost"
+  },
+  {
+    "id": "frost_lob_16",
+    "name": "Message in a Bottle",
+    "type": "lob",
+    "color": "frost"
+  },
+  {
+    "id": "frost_lob_17",
+    "name": "Jellyfish Bloom",
+    "type": "lob",
+    "color": "frost"
+  },
+  {
+    "id": "frost_lob_18",
+    "name": "Pufferfish Toss",
+    "type": "lob",
+    "color": "frost"
+  },
+  {
+    "id": "frost_lob_19",
+    "name": "Monsoon Downpour",
+    "type": "lob",
+    "color": "frost"
+  },
+  {
+    "id": "frost_lob_20",
+    "name": "Rogue Wave",
+    "type": "lob",
+    "color": "frost"
+  },
+  {
+    "id": "frost_ward_01",
+    "name": "Sea Wall",
+    "type": "ward",
+    "color": "frost"
+  },
+  {
+    "id": "frost_ward_02",
+    "name": "Beaver Dam",
+    "type": "ward",
+    "color": "frost"
+  },
+  {
+    "id": "frost_ward_03",
+    "name": "Great Dam",
+    "type": "ward",
+    "color": "frost"
+  },
+  {
+    "id": "frost_ward_04",
+    "name": "Ice Palace Gate",
+    "type": "ward",
+    "color": "frost"
+  },
+  {
+    "id": "frost_ward_05",
+    "name": "Snow Fort",
+    "type": "ward",
+    "color": "frost"
+  },
+  {
+    "id": "frost_ward_06",
+    "name": "Igloo",
+    "type": "ward",
+    "color": "frost"
+  },
+  {
+    "id": "frost_ward_07",
+    "name": "Coral Reef",
+    "type": "ward",
+    "color": "frost"
+  },
+  {
+    "id": "frost_ward_08",
+    "name": "Sea Urchin Bed",
+    "type": "ward",
+    "color": "frost"
+  },
+  {
+    "id": "frost_ward_09",
+    "name": "Bubble Shield",
+    "type": "ward",
+    "color": "frost"
+  },
+  {
+    "id": "frost_ward_10",
+    "name": "Mirror of Still Water",
+    "type": "ward",
+    "color": "frost"
+  },
+  {
+    "id": "frost_ward_11",
+    "name": "Kelp Curtain",
+    "type": "ward",
+    "color": "frost"
+  },
+  {
+    "id": "frost_ward_12",
+    "name": "Pack Ice Bulwark",
+    "type": "ward",
+    "color": "frost"
+  },
+  {
+    "id": "frost_ward_13",
+    "name": "Walls of Ys",
+    "type": "ward",
+    "color": "frost"
+  },
+  {
+    "id": "frost_ward_14",
+    "name": "Dome of Atlantis",
+    "type": "ward",
+    "color": "frost"
+  },
+  {
+    "id": "frost_sentry_01",
+    "name": "Inuksuk Watcher",
+    "type": "sentry",
+    "color": "frost"
+  },
+  {
+    "id": "frost_sentry_02",
+    "name": "Lighthouse",
+    "type": "sentry",
+    "color": "frost"
+  },
+  {
+    "id": "frost_sentry_03",
+    "name": "Ice Spike Totem",
+    "type": "sentry",
+    "color": "frost"
+  },
+  {
+    "id": "frost_sentry_04",
+    "name": "Narwhal Horn Totem",
+    "type": "sentry",
+    "color": "frost"
+  },
+  {
+    "id": "frost_sentry_05",
+    "name": "Figurehead Sentinel",
+    "type": "sentry",
+    "color": "frost"
+  },
+  {
+    "id": "frost_sentry_06",
+    "name": "Coral Spire",
+    "type": "sentry",
+    "color": "frost"
+  },
+  {
+    "id": "frost_sentry_07",
+    "name": "Siren Rock",
+    "type": "sentry",
+    "color": "frost"
+  },
+  {
+    "id": "frost_sentry_08",
+    "name": "Fountain of Youth",
+    "type": "sentry",
+    "color": "frost"
+  },
+  {
+    "id": "frost_sentry_09",
+    "name": "Rime Giant Cairn",
+    "type": "sentry",
+    "color": "frost"
+  },
+  {
+    "id": "frost_sentry_10",
+    "name": "Whale Bone Arch",
+    "type": "sentry",
+    "color": "frost"
+  },
+  {
+    "id": "frost_sentry_11",
+    "name": "Lantern of the Drowned",
+    "type": "sentry",
+    "color": "frost"
+  },
+  {
+    "id": "frost_sentry_12",
+    "name": "Tide Pole",
+    "type": "sentry",
+    "color": "frost"
+  },
+  {
+    "id": "frost_boon_01",
+    "name": "Sea Legs",
+    "type": "boon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_boon_02",
+    "name": "Fair Winds",
+    "type": "boon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_boon_03",
+    "name": "Grog Ration",
+    "type": "boon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_boon_04",
+    "name": "Hot Spring Soak",
+    "type": "boon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_boon_05",
+    "name": "Sauna Steam",
+    "type": "boon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_boon_06",
+    "name": "Cleansing Rain",
+    "type": "boon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_boon_07",
+    "name": "Polar Bear Plunge",
+    "type": "boon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_boon_08",
+    "name": "Mead of the Longhall",
+    "type": "boon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_boon_09",
+    "name": "Selkie Skin",
+    "type": "boon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_boon_10",
+    "name": "Become the Tide",
+    "type": "boon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_boon_11",
+    "name": "Sorcerer's Trance",
+    "type": "boon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_boon_12",
+    "name": "Sea Witch's Bargain",
+    "type": "boon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_boon_13",
+    "name": "Blood Price of the Deep",
+    "type": "boon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_boon_14",
+    "name": "Northern Lights",
+    "type": "boon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_boon_15",
+    "name": "Lucky Doubloon",
+    "type": "boon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_boon_16",
+    "name": "Gift of the River Mother",
+    "type": "boon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_charge_01",
+    "name": "Pirate's Pistol",
+    "type": "charge",
+    "color": "frost"
+  },
+  {
+    "id": "frost_charge_02",
+    "name": "Brace of Pistols",
+    "type": "charge",
+    "color": "frost"
+  },
+  {
+    "id": "frost_charge_03",
+    "name": "Harpoon Quiver",
+    "type": "charge",
+    "color": "frost"
+  },
+  {
+    "id": "frost_charge_04",
+    "name": "Icicle Darts",
+    "type": "charge",
+    "color": "frost"
+  },
+  {
+    "id": "frost_charge_05",
+    "name": "Snowball Stockpile",
+    "type": "charge",
+    "color": "frost"
+  },
+  {
+    "id": "frost_charge_06",
+    "name": "Cannon Shot Crate",
+    "type": "charge",
+    "color": "frost"
+  },
+  {
+    "id": "frost_charge_07",
+    "name": "Grapeshot Bag",
+    "type": "charge",
+    "color": "frost"
+  },
+  {
+    "id": "frost_charge_08",
+    "name": "Blowfish Spines",
+    "type": "charge",
+    "color": "frost"
+  },
+  {
+    "id": "frost_charge_09",
+    "name": "Sea Urchin Quills",
+    "type": "charge",
+    "color": "frost"
+  },
+  {
+    "id": "frost_charge_10",
+    "name": "Conch Shell Blasts",
+    "type": "charge",
+    "color": "frost"
+  },
+  {
+    "id": "frost_charge_11",
+    "name": "Frozen Arrows",
+    "type": "charge",
+    "color": "frost"
+  },
+  {
+    "id": "frost_charge_12",
+    "name": "Hail Pouch",
+    "type": "charge",
+    "color": "frost"
+  },
+  {
+    "id": "frost_charge_13",
+    "name": "Bottled Waves",
+    "type": "charge",
+    "color": "frost"
+  },
+  {
+    "id": "frost_charge_14",
+    "name": "Ice Javelins",
+    "type": "charge",
+    "color": "frost"
+  },
+  {
+    "id": "frost_charge_15",
+    "name": "Rusalka's Tears",
+    "type": "charge",
+    "color": "frost"
+  },
+  {
+    "id": "frost_charge_16",
+    "name": "Ghost Ship Volley",
+    "type": "charge",
+    "color": "frost"
+  },
+  {
+    "id": "frost_charge_17",
+    "name": "Sorcerer's Orbs",
+    "type": "charge",
+    "color": "frost"
+  },
+  {
+    "id": "frost_charge_18",
+    "name": "Glass Fishing Floats",
+    "type": "charge",
+    "color": "frost"
+  },
+  {
+    "id": "frost_charge_19",
+    "name": "Holy Spring Droplets",
+    "type": "charge",
+    "color": "frost"
+  },
+  {
+    "id": "frost_charge_20",
+    "name": "Narwhal Ivory Darts",
+    "type": "charge",
+    "color": "frost"
+  },
+  {
+    "id": "frost_utility_01",
+    "name": "Mirror Lake",
+    "type": "utility",
+    "color": "frost"
+  },
+  {
+    "id": "frost_utility_02",
+    "name": "Treasure Map",
+    "type": "utility",
+    "color": "frost"
+  },
+  {
+    "id": "frost_utility_03",
+    "name": "Spyglass",
+    "type": "utility",
+    "color": "frost"
+  },
+  {
+    "id": "frost_utility_04",
+    "name": "Captain's Log",
+    "type": "utility",
+    "color": "frost"
+  },
+  {
+    "id": "frost_utility_05",
+    "name": "Ritual Bath",
+    "type": "utility",
+    "color": "frost"
+  },
+  {
+    "id": "frost_utility_06",
+    "name": "Holy Spring",
+    "type": "utility",
+    "color": "frost"
+  },
+  {
+    "id": "frost_utility_07",
+    "name": "Ebb Tide",
+    "type": "utility",
+    "color": "frost"
+  },
+  {
+    "id": "frost_utility_08",
+    "name": "Return to the Sea",
+    "type": "utility",
+    "color": "frost"
+  },
+  {
+    "id": "frost_utility_09",
+    "name": "Water Mirror Twin",
+    "type": "utility",
+    "color": "frost"
+  },
+  {
+    "id": "frost_utility_10",
+    "name": "Sorcerer's Grimoire",
+    "type": "utility",
+    "color": "frost"
+  },
+  {
+    "id": "frost_trap_01",
+    "name": "Ice Hole",
+    "type": "trap",
+    "color": "frost"
+  },
+  {
+    "id": "frost_trap_02",
+    "name": "Thin Ice",
+    "type": "trap",
+    "color": "frost"
+  },
+  {
+    "id": "frost_trap_03",
+    "name": "Hidden Reef",
+    "type": "trap",
+    "color": "frost"
+  },
+  {
+    "id": "frost_trap_04",
+    "name": "Fishing Net",
+    "type": "trap",
+    "color": "frost"
+  },
+  {
+    "id": "frost_trap_05",
+    "name": "Sunken Mine",
+    "type": "trap",
+    "color": "frost"
+  },
+  {
+    "id": "frost_trap_06",
+    "name": "Sea Mine",
+    "type": "trap",
+    "color": "frost"
+  },
+  {
+    "id": "frost_trap_07",
+    "name": "Kelp Tangle",
+    "type": "trap",
+    "color": "frost"
+  },
+  {
+    "id": "frost_trap_08",
+    "name": "Ice Spike Pit",
+    "type": "trap",
+    "color": "frost"
+  },
+  {
+    "id": "frost_trap_09",
+    "name": "Siren's Shoal",
+    "type": "trap",
+    "color": "frost"
+  },
+  {
+    "id": "frost_trap_10",
+    "name": "Davy Jones' Locker",
+    "type": "trap",
+    "color": "frost"
+  },
+  {
+    "id": "frost_environment_01",
+    "name": "Frozen Lake",
+    "type": "environment",
+    "color": "frost"
+  },
+  {
+    "id": "frost_environment_02",
+    "name": "Permafrost",
+    "type": "environment",
+    "color": "frost"
+  },
+  {
+    "id": "frost_environment_03",
+    "name": "Black Ice",
+    "type": "environment",
+    "color": "frost"
+  },
+  {
+    "id": "frost_environment_04",
+    "name": "Snowfield",
+    "type": "environment",
+    "color": "frost"
+  },
+  {
+    "id": "frost_environment_05",
+    "name": "Tsunami Surge",
+    "type": "environment",
+    "color": "frost"
+  },
+  {
+    "id": "frost_environment_06",
+    "name": "Rolling Breakers",
+    "type": "environment",
+    "color": "frost"
+  },
+  {
+    "id": "frost_environment_07",
+    "name": "Flood Plain",
+    "type": "environment",
+    "color": "frost"
+  },
+  {
+    "id": "frost_environment_08",
+    "name": "Iceberg Field",
+    "type": "environment",
+    "color": "frost"
+  },
+  {
+    "id": "frost_environment_09",
+    "name": "Polar Night",
+    "type": "environment",
+    "color": "frost"
+  },
+  {
+    "id": "frost_environment_10",
+    "name": "Kelp Forest",
+    "type": "environment",
+    "color": "frost"
+  },
+  {
+    "id": "frost_environment_11",
+    "name": "Mangrove Roots",
+    "type": "environment",
+    "color": "frost"
+  },
+  {
+    "id": "frost_environment_12",
+    "name": "Sargasso Sea",
+    "type": "environment",
+    "color": "frost"
+  },
+  {
+    "id": "frost_environment_13",
+    "name": "Fimbulwinter",
+    "type": "environment",
+    "color": "frost"
+  },
+  {
+    "id": "frost_piece_01",
+    "name": "Crown of the Sea Dragon King",
+    "type": "piece",
+    "color": "frost"
+  },
+  {
+    "id": "frost_piece_02",
+    "name": "Pearl of the Tide Jewels",
+    "type": "piece",
+    "color": "frost"
+  },
+  {
+    "id": "frost_piece_03",
+    "name": "Trident of the Sunken King",
+    "type": "piece",
+    "color": "frost"
+  },
+  {
+    "id": "frost_piece_04",
+    "name": "Heart of the Leviathan",
+    "type": "piece",
+    "color": "frost"
+  },
+  {
+    "id": "frost_piece_05",
+    "name": "Eye of the Frost Giant",
+    "type": "piece",
+    "color": "frost"
+  },
+  {
+    "id": "frost_piece_06",
+    "name": "Bell of the Sunken City",
+    "type": "piece",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_01",
+    "name": "Merrow",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_02",
+    "name": "Mermaid Singer",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_03",
+    "name": "Merman Spearman",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_04",
+    "name": "Merfolk Tidecaller",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_05",
+    "name": "Ningyo",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_06",
+    "name": "Siren",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_07",
+    "name": "Selkie",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_08",
+    "name": "Nixie",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_09",
+    "name": "Rusalka",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_10",
+    "name": "Kappa",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_11",
+    "name": "Umibozu",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_12",
+    "name": "Yeti",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_13",
+    "name": "Yeti Cub",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_14",
+    "name": "Yeti Matriarch",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_15",
+    "name": "Snowman",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_16",
+    "name": "Winter Wolf",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_17",
+    "name": "Frost Wolf Alpha",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_18",
+    "name": "Rockhopper Penguin",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_19",
+    "name": "Walrus",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_20",
+    "name": "Narwhal",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_21",
+    "name": "Orca",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_22",
+    "name": "Hammerhead Shark",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_23",
+    "name": "Great White Shark",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_24",
+    "name": "Sea Turtle",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_25",
+    "name": "Zaratan the Island Turtle",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_26",
+    "name": "King Crab",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_27",
+    "name": "Giant Squid",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_28",
+    "name": "The Kraken",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_29",
+    "name": "Kraken Spawn",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_30",
+    "name": "Leviathan",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_31",
+    "name": "Bunyip of the Billabong",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_32",
+    "name": "Sea Serpent",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_33",
+    "name": "Dragon King of the Deep",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_34",
+    "name": "River Lung",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_35",
+    "name": "Frost Giant",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_36",
+    "name": "Pirate Deckhand",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_37",
+    "name": "Buccaneer Captain",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_38",
+    "name": "Powder Monkey",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_39",
+    "name": "Flying Dutchman's Captain",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_40",
+    "name": "Drowned Sailor",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_41",
+    "name": "Snow Maiden",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_42",
+    "name": "Yuki-onna",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_43",
+    "name": "Kayak Hunter",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_44",
+    "name": "Polar Bear",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_45",
+    "name": "River Mother's Herald",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_46",
+    "name": "Vodyanoy",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_47",
+    "name": "Ahuizotl",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_summon_48",
+    "name": "Taniwha",
+    "type": "summon",
+    "color": "frost"
+  },
+  {
+    "id": "frost_machine_01",
+    "name": "Ship's Cannon",
+    "type": "machine",
+    "color": "frost"
+  },
+  {
+    "id": "frost_machine_02",
+    "name": "Broadside Battery",
+    "type": "machine",
+    "color": "frost"
+  },
+  {
+    "id": "frost_machine_03",
+    "name": "Harpoon Ballista",
+    "type": "machine",
+    "color": "frost"
+  },
+  {
+    "id": "frost_machine_04",
+    "name": "Harpoon Launcher",
+    "type": "machine",
+    "color": "frost"
+  },
+  {
+    "id": "frost_machine_05",
+    "name": "Ice Catapult",
+    "type": "machine",
+    "color": "frost"
+  },
+  {
+    "id": "frost_machine_06",
+    "name": "Mortar Ketch",
+    "type": "machine",
+    "color": "frost"
+  },
+  {
+    "id": "frost_machine_07",
+    "name": "Sluice Gate Bulwark",
+    "type": "machine",
+    "color": "frost"
+  },
+  {
+    "id": "frost_machine_08",
+    "name": "Icebreaker Engine",
+    "type": "machine",
+    "color": "frost"
+  },
+  {
+    "id": "frost_machine_09",
+    "name": "Waterwheel Repeater",
+    "type": "machine",
+    "color": "frost"
+  },
+  {
+    "id": "frost_machine_10",
+    "name": "Diving Bell Automaton",
+    "type": "machine",
+    "color": "frost"
+  },
+  {
+    "id": "frost_ace_01",
+    "name": "Narwhal Harpoon",
+    "type": "ace",
+    "color": "frost"
+  },
+  {
+    "id": "frost_ace_02",
+    "name": "Tidal Ram",
+    "type": "ace",
+    "color": "frost"
+  },
+  {
+    "id": "frost_ace_03",
+    "name": "Heart of Winter",
+    "type": "ace",
+    "color": "frost"
+  },
+  {
+    "id": "frost_aceup_01",
+    "name": "Rime Edge",
+    "type": "aceup",
+    "color": "frost"
+  },
+  {
+    "id": "frost_aceup_02",
+    "name": "Undertow Charm",
+    "type": "aceup",
+    "color": "frost"
+  },
+  {
+    "id": "frost_aceup_03",
+    "name": "Hurricane Eye",
+    "type": "aceup",
+    "color": "frost"
+  },
+  {
+    "id": "frost_claim_01",
+    "name": "Rising Tide",
+    "type": "claim",
+    "color": "frost"
+  },
+  {
+    "id": "frost_claim_02",
+    "name": "Flash Flood",
+    "type": "claim",
+    "color": "frost"
+  },
+  {
+    "id": "frost_claim_03",
+    "name": "The Great Deluge",
+    "type": "claim",
+    "color": "frost"
+  },
+  {
+    "id": "hero_ysolde",
+    "name": "Ysolde of the Rime",
+    "type": "hero",
+    "color": "frost"
+  },
+  {
+    "id": "hero_winter",
+    "name": "Old Man Winter",
+    "type": "hero",
+    "color": "frost"
+  },
+  {
+    "id": "hero_glacia",
+    "name": "Glacia the Mirror",
+    "type": "hero",
+    "color": "frost"
+  },
+  {
+    "id": "hero_boreas",
+    "name": "Boreas, the North Wind",
+    "type": "hero",
+    "color": "frost"
+  },
+  {
+    "id": "hero_frida",
+    "name": "Frida Snowveil",
+    "type": "hero",
+    "color": "frost"
+  },
+  {
+    "id": "hero_tundra",
+    "name": "Tundra the Mammoth Lord",
+    "type": "hero",
+    "color": "frost"
+  },
+  {
+    "id": "hero_sora",
+    "name": "Rimeblade Sora",
+    "type": "hero",
+    "color": "frost"
+  },
+  {
+    "id": "hero_aurora",
+    "name": "Aurora of the Pole",
+    "type": "hero",
+    "color": "frost"
+  },
+  {
+    "id": "hero_ymir",
+    "name": "Ymir the Frost Giant",
+    "type": "hero",
+    "color": "frost"
+  },
+  {
+    "id": "hero_sleet",
+    "name": "Sleet, the Hail Archer",
+    "type": "hero",
+    "color": "frost"
+  },
+  {
+    "id": "hero_crysta",
+    "name": "Crysta the Shardmaid",
+    "type": "hero",
+    "color": "frost"
+  },
+  {
+    "id": "hero_permafrost",
+    "name": "Old Permafrost",
+    "type": "hero",
+    "color": "frost"
+  },
+  {
+    "id": "hero_nix",
+    "name": "Nix the Snow Owl",
+    "type": "hero",
+    "color": "frost"
+  },
+  {
+    "id": "hero_glace",
+    "name": "Lady Glace",
+    "type": "hero",
+    "color": "frost"
+  },
+  {
+    "id": "glacier_rampart",
+    "name": "Glacier Rampart",
+    "type": "ward",
+    "color": "frost"
+  }
+]

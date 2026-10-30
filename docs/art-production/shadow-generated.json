@@ -1195,5 +1195,23 @@
     "status": "generated",
     "batch": 8,
     "reviewNote": "The spider, camouflaged trapdoor and webbed earthen lair remain clear in square and wide crop. The victim's armored leg enters at the crop's left edge and is incidental; the 128px thumbnail still reads as a trapdoor spider lair."
+  },
+  {
+    "cardId": "shadow_environment_05",
+    "name": "Restless Graves",
+    "prompt": "Paint an illustration for Restless Graves. Mechanics: a long-lived burst of tremors through a haunted patch of graves, damaging and briefly stunning those standing there. Show a moonlit cemetery in an unmistakable violent tremor: several old headstones buckling and tilting around a central cracked grave, soil lifting in a circular shockwave, a few ghostly hands breaking through and one armored intruder knocked off balance by the quake. The restless graveyard itself is the dominant subject, with the tremor visible in the stones and ground rather than a generic spell explosion. Painterly medieval fantasy, wet earth, worn carved stone, cold moonlight and subtle violet spectral haze. Square 1:1 512x512 master, horizontal staging; keep the key headstones, crack, and victim within x24..488,y105..407 for the 206:141 card crop; atmosphere above and below. No text, frame, UI, numbers, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7243348c-6e9d-4eda-a2e3-72f0d1afb2b8.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_environment_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "The square and 206:141 crop show tremoring headstones, a cracked grave, rising hands and a staggered intruder. At 128px, the graveyard and tremor remain identifiable, though fine cracks and small stones soften."
   }
 ]

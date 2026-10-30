@@ -1159,5 +1159,59 @@
     "status": "generated",
     "batch": 8,
     "reviewNote": "Repainted after first normalized source cut the hod’s left end; preserved first raw and source at /tmp/light_charge_05-first.png and /tmp/light_charge_05-first-source.png. Reviewed final exact 512 source, centered 206:141 crop and 128x88 thumbnail: whole hod and bricks, worker face/hands, projectile and shield impact are legible."
+  },
+  {
+    "cardId": "light_utility_05",
+    "name": "Illuminated Manuscript",
+    "prompt": "Repaint for Illuminated Manuscript: a complete ornate open codex with richly illuminated blank pages sits on a lectern; exactly three separate blank parchment cards rise above it toward a scholar’s receiving hand. The full book, pages, spine, scholar’s full face and hand, and all three cards fit inside a centered square and horizontal card crop. Warm candlelight, believable vellum, gold leaf and carved wood, painterly medieval fantasy. No readable writing, glyphs, frame, lettering or UI; no anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c4685c4d-9a2b-408c-bddb-741c199c67b3.png",
+    "editableSourcePath": "game/cards/art/masters/light_utility_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.44
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Repainted after the first crop clipped the scholar’s face, top card and lower book; preserved first raw and source at /tmp/light_utility_05-first.png and /tmp/light_utility_05-first-source.png. Reviewed exact 512 source, shifted 206:141 crop (focal y=.44) and 128x88 thumbnail: scholar’s face/hand, three complete blank cards and full open pages are retained; lower lectern is expendable."
+  },
+  {
+    "cardId": "light_trap_05",
+    "name": "Lilia Pits",
+    "prompt": "Repaint for Lilia Pits: a compact complete roadside spike pit trap has a full narrow rectangular rim and four visible corners, with several sharp wooden spikes inside; an armored raider has fallen across the far rim after triggering it. Keep the whole opening, spikes and raider’s face and hands in a centered square and horizontal card crop. Painterly medieval woodland, believable timber and earth, attractive directional light. No cropped pit edge or face; no frame, text, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e5f39d2e-99bd-4e03-9339-45cae29b4e90.png",
+    "editableSourcePath": "game/cards/art/masters/light_trap_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Repainted after the first normalized crop cut the raider’s face and pit corners; preserved first raw and source at /tmp/light_trap_05-first.png and /tmp/light_trap_05-first-source.png. Reviewed final exact 512 source, centered 206:141 crop and 128x88 thumbnail: complete rectangular rim, spikes and fallen raider’s face/hands remain clear."
+  },
+  {
+    "cardId": "light_environment_04",
+    "name": "Marble Quarry",
+    "prompt": "Original painterly medieval fantasy collectible-card illustration for Marble Quarry. A short tremor strikes a straight column of ground, damaging and briefly stunning foes. Show an open-air marble quarry with pale cream-white stone blocks and carved columns; one complete central marble column rocks as a narrow golden tremor fissure crosses the ground and an armored quarry raider reels. The column is modest in scale with generous sky and ground margins, and the pale quarry landscape clearly identifies the environment. Balanced horizontal 1:1 square composition for 206:141 crop, keeping full column, face and ground action in the safe area. No clipped tips or bases, frame, text, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a36dad31-587d-4760-8d3d-8b803e79eb85.png",
+    "editableSourcePath": "game/cards/art/masters/light_environment_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop (focal y=.40) and 128x88 thumbnail. The complete column capital and base, stunned raider and tremor line remain visible; centered crop clipped the capital, so the crop was shifted upward."
   }
 ]

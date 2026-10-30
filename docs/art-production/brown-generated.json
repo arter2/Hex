@@ -1100,11 +1100,11 @@
     ],
     "focalPoint": [
       0.5,
-      0.5
+      0.34
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Inspected the 512-square master, centered 206:141 crop and 128x88 thumbnail. Sentinel face, clockwork chest, arms and hands remain intact; crop prioritizes the identity-defining upper automaton."
+    "reviewNote": "Updated after parent crop review. Inspected the 512-square master, top-aligned 206:141 crop and 128x88 thumbnail; full sentinel head and face, hands, and astronomical chest mechanism are visible. Lower legs are outside the card crop."
   },
   {
     "cardId": "brown_instant_13",
@@ -1159,5 +1159,59 @@
     "status": "generated",
     "batch": 8,
     "reviewNote": "Inspected the 512-square master, centered 206:141 crop and 128x88 thumbnail. Complete gatling barrel cluster and tripod remain visible; gnome face and bracing hand stay legible."
+  },
+  {
+    "cardId": "brown_instant_14",
+    "name": "Gnomish Coffee",
+    "prompt": "Paint an illustration for Gnomish Coffee: a lively gnome alchemist takes a quick sip from a steaming little ceramic coffee cup, blue-white haste motes and a faint warm golden glow swirling around the eager face and nimble hands. The whole cup, handle and rim are prominent, with the gnome's face clearly readable. Painterly medieval fantasy collectible-card art, richly detailed workshop, ceramic, brass and magical steam. Square 1:1 editable 512x512 master; keep face, hand and entire portable cup within x24–488,y105–407 for 206:141 crop. No writing, labels, border, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-eebd8772-f20d-4abc-82a5-f9ee7cb66ed5.png",
+    "editableSourcePath": "game/cards/art/masters/brown_instant_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Inspected the 512-square master, upward-shifted 206:141 crop and 128x88 thumbnail. Gnome face, whole cup, rim, handle and hand are visible."
+  },
+  {
+    "cardId": "brown_tinker_14",
+    "name": "Silver Plating",
+    "prompt": "Paint an illustration for Silver Plating: a human armorer carefully presses a gleaming silver plate onto a dark steel shield, showing the bright plate's clean outline, fastening rivets and metalworking hand. Keep the entire named silver plate visible and distinct against the darker backing, with the craftworker's focused face and supporting hand nearby. Painterly medieval fantasy collectible-card art, polished silver reflections, steel, leather gloves, warm forge light. Square 1:1 editable 512x512 master; keep face, hands and whole silver plate inside x24–488,y105–407 for 206:141 crop. No lettering, border, text, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9af87394-f5d4-4d12-92bd-374973ae2ef1.png",
+    "editableSourcePath": "game/cards/art/masters/brown_tinker_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Inspected the 512-square master, upward-shifted 206:141 crop and 128x88 thumbnail. Armorer face and working hands remain clear; full bright silver plate is visible on the shield."
+  },
+  {
+    "cardId": "brown_machine_17",
+    "name": "Brass Hornet Swarm",
+    "prompt": "Paint an illustration for Brass Hornet Swarm: a coordinated flock of small gnomish clockwork hornet drones made from brass, thin translucent wings and tiny stingers, spiraling in a focused barrage around their gnome engineer. Keep the complete central swarm together as the strong identifiable subject, with several full drones visible in the central composition and the gnome's face and raised control hand safely visible. Painterly medieval fantasy collectible-card art, intricate gearwork, directional workshop light, atmospheric depth. Square 1:1 editable 512x512 master; keep face, hand and central hornet swarm within x24–488,y105–407 for the 206:141 crop; peripheral sparks and motion trails may extend beyond. No border, words, labels, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b5782c2e-3709-47de-a005-8561a3cac8ae.png",
+    "editableSourcePath": "game/cards/art/masters/brown_machine_17.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Inspected the 512-square master, centered 206:141 crop and 128x88 thumbnail. Gnome face and control hand remain visible; the central clockwork hornet drones are distinct and readable."
   }
 ]

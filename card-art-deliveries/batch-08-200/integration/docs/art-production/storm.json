@@ -1,0 +1,1478 @@
+[
+  {
+    "id": "spark",
+    "name": "Spark",
+    "type": "strike",
+    "color": "storm"
+  },
+  {
+    "id": "thunder_row",
+    "name": "Thunder Row",
+    "type": "strike",
+    "color": "storm"
+  },
+  {
+    "id": "chain_light",
+    "name": "Chain Lightning",
+    "type": "strike",
+    "color": "storm"
+  },
+  {
+    "id": "ball_light",
+    "name": "Ball Lightning",
+    "type": "lob",
+    "color": "storm"
+  },
+  {
+    "id": "static_ward",
+    "name": "Static Ward",
+    "type": "ward",
+    "color": "storm"
+  },
+  {
+    "id": "coil_sentry",
+    "name": "Coil Sentry",
+    "type": "sentry",
+    "color": "storm"
+  },
+  {
+    "id": "tailwind",
+    "name": "Tailwind",
+    "type": "boon",
+    "color": "storm"
+  },
+  {
+    "id": "stormcall",
+    "name": "Stormcall",
+    "type": "lob",
+    "color": "storm"
+  },
+  {
+    "id": "storm_strike_01",
+    "name": "Lightning Lash",
+    "type": "strike",
+    "color": "storm"
+  },
+  {
+    "id": "storm_strike_02",
+    "name": "Forked Bolt",
+    "type": "strike",
+    "color": "storm"
+  },
+  {
+    "id": "storm_strike_03",
+    "name": "Thunderclap",
+    "type": "strike",
+    "color": "storm"
+  },
+  {
+    "id": "storm_strike_04",
+    "name": "Static Discharge",
+    "type": "strike",
+    "color": "storm"
+  },
+  {
+    "id": "storm_strike_05",
+    "name": "Sky-Splitter",
+    "type": "strike",
+    "color": "storm"
+  },
+  {
+    "id": "storm_strike_06",
+    "name": "Leyden Jar Shock",
+    "type": "strike",
+    "color": "storm"
+  },
+  {
+    "id": "storm_strike_07",
+    "name": "Voltaic Arc",
+    "type": "strike",
+    "color": "storm"
+  },
+  {
+    "id": "storm_strike_08",
+    "name": "Tesla Arc",
+    "type": "strike",
+    "color": "storm"
+  },
+  {
+    "id": "storm_strike_09",
+    "name": "Scorpion Sting",
+    "type": "strike",
+    "color": "storm"
+  },
+  {
+    "id": "storm_strike_10",
+    "name": "Manticore Tail Spikes",
+    "type": "strike",
+    "color": "storm"
+  },
+  {
+    "id": "storm_strike_11",
+    "name": "Cobra Spit",
+    "type": "strike",
+    "color": "storm"
+  },
+  {
+    "id": "storm_strike_12",
+    "name": "Sandblast",
+    "type": "strike",
+    "color": "storm"
+  },
+  {
+    "id": "storm_strike_13",
+    "name": "Dune Lash",
+    "type": "strike",
+    "color": "storm"
+  },
+  {
+    "id": "storm_strike_14",
+    "name": "Sirocco Gust",
+    "type": "strike",
+    "color": "storm"
+  },
+  {
+    "id": "storm_strike_15",
+    "name": "Haboob Wall",
+    "type": "strike",
+    "color": "storm"
+  },
+  {
+    "id": "storm_strike_16",
+    "name": "Scimitar Sweep",
+    "type": "strike",
+    "color": "storm"
+  },
+  {
+    "id": "storm_strike_17",
+    "name": "Bedouin Lance",
+    "type": "strike",
+    "color": "storm"
+  },
+  {
+    "id": "storm_strike_18",
+    "name": "Camel Kick",
+    "type": "strike",
+    "color": "storm"
+  },
+  {
+    "id": "storm_strike_19",
+    "name": "Ifrit's Flame",
+    "type": "strike",
+    "color": "storm"
+  },
+  {
+    "id": "storm_strike_20",
+    "name": "Sun Disk Ray",
+    "type": "strike",
+    "color": "storm"
+  },
+  {
+    "id": "storm_strike_21",
+    "name": "Noon Sun Glare",
+    "type": "strike",
+    "color": "storm"
+  },
+  {
+    "id": "storm_strike_22",
+    "name": "Mirage Dagger",
+    "type": "strike",
+    "color": "storm"
+  },
+  {
+    "id": "storm_strike_23",
+    "name": "Djinn's Whirlwind",
+    "type": "strike",
+    "color": "storm"
+  },
+  {
+    "id": "storm_strike_24",
+    "name": "Coin Toss",
+    "type": "strike",
+    "color": "storm"
+  },
+  {
+    "id": "storm_strike_25",
+    "name": "Golden Touch",
+    "type": "strike",
+    "color": "storm"
+  },
+  {
+    "id": "storm_strike_26",
+    "name": "Bronze Fist",
+    "type": "strike",
+    "color": "storm"
+  },
+  {
+    "id": "storm_strike_27",
+    "name": "Talos's Boulder",
+    "type": "strike",
+    "color": "storm"
+  },
+  {
+    "id": "storm_strike_28",
+    "name": "Serpent Whip",
+    "type": "strike",
+    "color": "storm"
+  },
+  {
+    "id": "storm_strike_29",
+    "name": "Lodestone Pull",
+    "type": "strike",
+    "color": "storm"
+  },
+  {
+    "id": "storm_strike_30",
+    "name": "Raiju's Pounce",
+    "type": "strike",
+    "color": "storm"
+  },
+  {
+    "id": "storm_strike_31",
+    "name": "Plumed Serpent Gale",
+    "type": "strike",
+    "color": "storm"
+  },
+  {
+    "id": "storm_strike_32",
+    "name": "Perun's Oak-Splitter",
+    "type": "strike",
+    "color": "storm"
+  },
+  {
+    "id": "storm_strike_33",
+    "name": "Midas's Last Embrace",
+    "type": "strike",
+    "color": "storm"
+  },
+  {
+    "id": "storm_strike_34",
+    "name": "Heaven-Rending Bolt",
+    "type": "strike",
+    "color": "storm"
+  },
+  {
+    "id": "storm_lob_01",
+    "name": "Lightning in a Bottle",
+    "type": "lob",
+    "color": "storm"
+  },
+  {
+    "id": "storm_lob_02",
+    "name": "Alembic Flask",
+    "type": "lob",
+    "color": "storm"
+  },
+  {
+    "id": "storm_lob_03",
+    "name": "Quicklime Pot",
+    "type": "lob",
+    "color": "storm"
+  },
+  {
+    "id": "storm_lob_04",
+    "name": "Naphtha Jar",
+    "type": "lob",
+    "color": "storm"
+  },
+  {
+    "id": "storm_lob_05",
+    "name": "Sulfur Bomb",
+    "type": "lob",
+    "color": "storm"
+  },
+  {
+    "id": "storm_lob_06",
+    "name": "Thunder Gourd",
+    "type": "lob",
+    "color": "storm"
+  },
+  {
+    "id": "storm_lob_07",
+    "name": "Sand Urn",
+    "type": "lob",
+    "color": "storm"
+  },
+  {
+    "id": "storm_lob_08",
+    "name": "Sack of Coins",
+    "type": "lob",
+    "color": "storm"
+  },
+  {
+    "id": "storm_lob_09",
+    "name": "Golden Hail",
+    "type": "lob",
+    "color": "storm"
+  },
+  {
+    "id": "storm_lob_10",
+    "name": "Mercury Flask",
+    "type": "lob",
+    "color": "storm"
+  },
+  {
+    "id": "storm_lob_11",
+    "name": "Scarab Swarm Jar",
+    "type": "lob",
+    "color": "storm"
+  },
+  {
+    "id": "storm_lob_12",
+    "name": "Roc's Egg",
+    "type": "lob",
+    "color": "storm"
+  },
+  {
+    "id": "storm_lob_13",
+    "name": "Saltpeter Charge",
+    "type": "lob",
+    "color": "storm"
+  },
+  {
+    "id": "storm_lob_14",
+    "name": "Storm Cloud Seed",
+    "type": "lob",
+    "color": "storm"
+  },
+  {
+    "id": "storm_lob_15",
+    "name": "Hail of Dinars",
+    "type": "lob",
+    "color": "storm"
+  },
+  {
+    "id": "storm_lob_16",
+    "name": "Great Work Detonation",
+    "type": "lob",
+    "color": "storm"
+  },
+  {
+    "id": "storm_ward_01",
+    "name": "Copper Lattice",
+    "type": "ward",
+    "color": "storm"
+  },
+  {
+    "id": "storm_ward_02",
+    "name": "Bronze Aegis",
+    "type": "ward",
+    "color": "storm"
+  },
+  {
+    "id": "storm_ward_03",
+    "name": "Sandbag Wall",
+    "type": "ward",
+    "color": "storm"
+  },
+  {
+    "id": "storm_ward_04",
+    "name": "Mudbrick Wall",
+    "type": "ward",
+    "color": "storm"
+  },
+  {
+    "id": "storm_ward_05",
+    "name": "Kasbah Gate",
+    "type": "ward",
+    "color": "storm"
+  },
+  {
+    "id": "storm_ward_06",
+    "name": "Cactus Hedge",
+    "type": "ward",
+    "color": "storm"
+  },
+  {
+    "id": "storm_boon_01",
+    "name": "Scorpion Pit Ring",
+    "type": "boon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_ward_07",
+    "name": "Faraday Cage",
+    "type": "ward",
+    "color": "storm"
+  },
+  {
+    "id": "storm_ward_08",
+    "name": "Charged Fence",
+    "type": "ward",
+    "color": "storm"
+  },
+  {
+    "id": "storm_ward_09",
+    "name": "Caravan Circle",
+    "type": "ward",
+    "color": "storm"
+  },
+  {
+    "id": "storm_ward_10",
+    "name": "Djinn's Veil",
+    "type": "ward",
+    "color": "storm"
+  },
+  {
+    "id": "storm_ward_11",
+    "name": "Lightning Rod Array",
+    "type": "ward",
+    "color": "storm"
+  },
+  {
+    "id": "storm_ward_12",
+    "name": "Walls of the City of Brass",
+    "type": "ward",
+    "color": "storm"
+  },
+  {
+    "id": "storm_sentry_01",
+    "name": "Lightning Rod",
+    "type": "sentry",
+    "color": "storm"
+  },
+  {
+    "id": "storm_sentry_02",
+    "name": "Tesla Coil",
+    "type": "sentry",
+    "color": "storm"
+  },
+  {
+    "id": "storm_sentry_03",
+    "name": "Sun Obelisk",
+    "type": "sentry",
+    "color": "storm"
+  },
+  {
+    "id": "storm_sentry_04",
+    "name": "Scarab Totem",
+    "type": "sentry",
+    "color": "storm"
+  },
+  {
+    "id": "storm_sentry_05",
+    "name": "Brazen Head",
+    "type": "sentry",
+    "color": "storm"
+  },
+  {
+    "id": "storm_sentry_06",
+    "name": "Foo Dog Statue",
+    "type": "sentry",
+    "color": "storm"
+  },
+  {
+    "id": "storm_sentry_07",
+    "name": "Snake Charmer's Basket",
+    "type": "sentry",
+    "color": "storm"
+  },
+  {
+    "id": "storm_sentry_08",
+    "name": "Oil Lamp Brazier",
+    "type": "sentry",
+    "color": "storm"
+  },
+  {
+    "id": "storm_sentry_09",
+    "name": "Storm Kite",
+    "type": "sentry",
+    "color": "storm"
+  },
+  {
+    "id": "storm_sentry_10",
+    "name": "Sandstone Idol",
+    "type": "sentry",
+    "color": "storm"
+  },
+  {
+    "id": "storm_sentry_11",
+    "name": "Thunder Drum",
+    "type": "sentry",
+    "color": "storm"
+  },
+  {
+    "id": "storm_sentry_12",
+    "name": "Burning Mirror",
+    "type": "sentry",
+    "color": "storm"
+  },
+  {
+    "id": "storm_boon_02",
+    "name": "Overcharge",
+    "type": "boon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_boon_03",
+    "name": "Galvanic Surge",
+    "type": "boon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_boon_04",
+    "name": "Djinn's Bargain",
+    "type": "boon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_boon_05",
+    "name": "Wish of the Lamp",
+    "type": "boon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_boon_06",
+    "name": "Desert Mirage",
+    "type": "boon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_boon_07",
+    "name": "Sand Step",
+    "type": "boon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_boon_08",
+    "name": "Camel's Endurance",
+    "type": "boon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_boon_09",
+    "name": "Date Palm Oasis",
+    "type": "boon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_boon_10",
+    "name": "Mint Tea",
+    "type": "boon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_boon_11",
+    "name": "Hoard Fever",
+    "type": "boon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_boon_12",
+    "name": "Merchant's Luck",
+    "type": "boon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_boon_13",
+    "name": "Aurum Potabile",
+    "type": "boon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_boon_14",
+    "name": "Lightning Step",
+    "type": "boon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_boon_15",
+    "name": "Horus's Watch",
+    "type": "boon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_charge_01",
+    "name": "Leyden Jar Battery",
+    "type": "charge",
+    "color": "storm"
+  },
+  {
+    "id": "storm_charge_02",
+    "name": "Baghdad Battery",
+    "type": "charge",
+    "color": "storm"
+  },
+  {
+    "id": "storm_charge_03",
+    "name": "Copper Coil Spool",
+    "type": "charge",
+    "color": "storm"
+  },
+  {
+    "id": "storm_charge_04",
+    "name": "Bag of Dirhams",
+    "type": "charge",
+    "color": "storm"
+  },
+  {
+    "id": "storm_charge_05",
+    "name": "Quiver of Sand Darts",
+    "type": "charge",
+    "color": "storm"
+  },
+  {
+    "id": "storm_charge_06",
+    "name": "Venom Vials",
+    "type": "charge",
+    "color": "storm"
+  },
+  {
+    "id": "storm_charge_07",
+    "name": "Scorpion Jar",
+    "type": "charge",
+    "color": "storm"
+  },
+  {
+    "id": "storm_charge_08",
+    "name": "Naphtha Grenades",
+    "type": "charge",
+    "color": "storm"
+  },
+  {
+    "id": "storm_charge_09",
+    "name": "Sling of Thunderstones",
+    "type": "charge",
+    "color": "storm"
+  },
+  {
+    "id": "storm_charge_10",
+    "name": "Alchemist's Bandolier",
+    "type": "charge",
+    "color": "storm"
+  },
+  {
+    "id": "storm_charge_11",
+    "name": "Sun-Glass Lenses",
+    "type": "charge",
+    "color": "storm"
+  },
+  {
+    "id": "storm_charge_12",
+    "name": "Magnet Shot",
+    "type": "charge",
+    "color": "storm"
+  },
+  {
+    "id": "storm_charge_13",
+    "name": "Thunderbolt Sheaf",
+    "type": "charge",
+    "color": "storm"
+  },
+  {
+    "id": "storm_charge_14",
+    "name": "Golden Arrow Quiver",
+    "type": "charge",
+    "color": "storm"
+  },
+  {
+    "id": "storm_charge_15",
+    "name": "Bottled Sirocco",
+    "type": "charge",
+    "color": "storm"
+  },
+  {
+    "id": "storm_charge_16",
+    "name": "Ifrit Embers",
+    "type": "charge",
+    "color": "storm"
+  },
+  {
+    "id": "storm_charge_17",
+    "name": "Canopic Jars",
+    "type": "charge",
+    "color": "storm"
+  },
+  {
+    "id": "storm_charge_18",
+    "name": "Forty Thieves' Hoard",
+    "type": "charge",
+    "color": "storm"
+  },
+  {
+    "id": "storm_utility_01",
+    "name": "Astrolabe",
+    "type": "utility",
+    "color": "storm"
+  },
+  {
+    "id": "storm_utility_02",
+    "name": "Bazaar Haggle",
+    "type": "utility",
+    "color": "storm"
+  },
+  {
+    "id": "storm_utility_03",
+    "name": "Caravan Map",
+    "type": "utility",
+    "color": "storm"
+  },
+  {
+    "id": "storm_utility_04",
+    "name": "Transmutation",
+    "type": "utility",
+    "color": "storm"
+  },
+  {
+    "id": "storm_utility_05",
+    "name": "Djinn's Duplicate",
+    "type": "utility",
+    "color": "storm"
+  },
+  {
+    "id": "storm_utility_06",
+    "name": "Natron Salts",
+    "type": "utility",
+    "color": "storm"
+  },
+  {
+    "id": "storm_utility_07",
+    "name": "Open Sesame",
+    "type": "utility",
+    "color": "storm"
+  },
+  {
+    "id": "storm_utility_08",
+    "name": "Moneylender's Loan",
+    "type": "utility",
+    "color": "storm"
+  },
+  {
+    "id": "storm_utility_09",
+    "name": "Inventor's Codex",
+    "type": "utility",
+    "color": "storm"
+  },
+  {
+    "id": "storm_trap_01",
+    "name": "Pit of Gold Coins",
+    "type": "trap",
+    "color": "storm"
+  },
+  {
+    "id": "storm_trap_02",
+    "name": "Quicksand",
+    "type": "trap",
+    "color": "storm"
+  },
+  {
+    "id": "storm_trap_03",
+    "name": "Tripwire Spark",
+    "type": "trap",
+    "color": "storm"
+  },
+  {
+    "id": "storm_trap_04",
+    "name": "Scorpion Nest",
+    "type": "trap",
+    "color": "storm"
+  },
+  {
+    "id": "storm_trap_05",
+    "name": "Pressure Plate Darts",
+    "type": "trap",
+    "color": "storm"
+  },
+  {
+    "id": "storm_trap_06",
+    "name": "Tomb Boulder",
+    "type": "trap",
+    "color": "storm"
+  },
+  {
+    "id": "storm_trap_07",
+    "name": "Antlion Pit",
+    "type": "trap",
+    "color": "storm"
+  },
+  {
+    "id": "storm_trap_08",
+    "name": "Shocking Floor Tiles",
+    "type": "trap",
+    "color": "storm"
+  },
+  {
+    "id": "storm_trap_09",
+    "name": "Djinn Bottle",
+    "type": "trap",
+    "color": "storm"
+  },
+  {
+    "id": "storm_trap_10",
+    "name": "Collapsing Tomb Floor",
+    "type": "trap",
+    "color": "storm"
+  },
+  {
+    "id": "storm_trap_11",
+    "name": "Electrified Gold Idol",
+    "type": "trap",
+    "color": "storm"
+  },
+  {
+    "id": "storm_trap_12",
+    "name": "Cobra Basket Trap",
+    "type": "trap",
+    "color": "storm"
+  },
+  {
+    "id": "storm_trap_13",
+    "name": "Mirage Oasis",
+    "type": "trap",
+    "color": "storm"
+  },
+  {
+    "id": "storm_trap_14",
+    "name": "Pharaoh's Curse Seal",
+    "type": "trap",
+    "color": "storm"
+  },
+  {
+    "id": "storm_environment_01",
+    "name": "Scorching Sun",
+    "type": "environment",
+    "color": "storm"
+  },
+  {
+    "id": "storm_environment_02",
+    "name": "Salt Flats",
+    "type": "environment",
+    "color": "storm"
+  },
+  {
+    "id": "storm_environment_03",
+    "name": "Sahara Noon",
+    "type": "environment",
+    "color": "storm"
+  },
+  {
+    "id": "storm_environment_04",
+    "name": "Sandworm Burrows",
+    "type": "environment",
+    "color": "storm"
+  },
+  {
+    "id": "storm_environment_05",
+    "name": "Thunder Rumble",
+    "type": "environment",
+    "color": "storm"
+  },
+  {
+    "id": "storm_environment_06",
+    "name": "Dune Shift",
+    "type": "environment",
+    "color": "storm"
+  },
+  {
+    "id": "storm_environment_07",
+    "name": "Lightning Field",
+    "type": "environment",
+    "color": "storm"
+  },
+  {
+    "id": "storm_environment_08",
+    "name": "Sun-Baked Wadi",
+    "type": "environment",
+    "color": "storm"
+  },
+  {
+    "id": "storm_environment_09",
+    "name": "Storm Front",
+    "type": "environment",
+    "color": "storm"
+  },
+  {
+    "id": "storm_environment_10",
+    "name": "Great Sand Sea",
+    "type": "environment",
+    "color": "storm"
+  },
+  {
+    "id": "storm_piece_01",
+    "name": "Lamp of the Bound Djinn",
+    "type": "piece",
+    "color": "storm"
+  },
+  {
+    "id": "storm_piece_02",
+    "name": "Crown of the Brass City",
+    "type": "piece",
+    "color": "storm"
+  },
+  {
+    "id": "storm_piece_03",
+    "name": "Scale of the World Fish",
+    "type": "piece",
+    "color": "storm"
+  },
+  {
+    "id": "storm_piece_04",
+    "name": "Tail of the Manticore",
+    "type": "piece",
+    "color": "storm"
+  },
+  {
+    "id": "storm_piece_05",
+    "name": "Heart of the Bronze Giant",
+    "type": "piece",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_01",
+    "name": "Thunder Raiju",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_02",
+    "name": "Lamp Djinn",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_03",
+    "name": "Ifrit",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_04",
+    "name": "Ifrit Sultan",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_05",
+    "name": "Si'lat Shapeshifter",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_06",
+    "name": "Dybbuk",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_07",
+    "name": "Sand Scarab",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_08",
+    "name": "Golden Scarab",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_09",
+    "name": "Khepri's Dawn Beetle",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_10",
+    "name": "Desert Camel",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_11",
+    "name": "War Camel",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_12",
+    "name": "Manticore",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_13",
+    "name": "Chimera",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_14",
+    "name": "Emperor Scorpion",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_15",
+    "name": "Sand Scorpion",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_16",
+    "name": "Girtablilu Gatewarden",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_17",
+    "name": "Jackal Tomb Guard",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_18",
+    "name": "Nile Crocodile",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_19",
+    "name": "Great River Crocodile",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_20",
+    "name": "Roc",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_21",
+    "name": "Simurgh",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_22",
+    "name": "Great Sphinx",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_23",
+    "name": "Riddling Sphinx",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_24",
+    "name": "Bronze Automaton",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_25",
+    "name": "Talos the Bronze Giant",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_26",
+    "name": "Clockwork Falcon",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_27",
+    "name": "Horus the Far-Seeing",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_28",
+    "name": "Ibis Scribe",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_29",
+    "name": "Frilled Lizard",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_30",
+    "name": "Horned Viper",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_31",
+    "name": "Uraeus Cobra",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_32",
+    "name": "Plumed Serpent",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_33",
+    "name": "Chupacabra",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_34",
+    "name": "Foo Dog Sentinel",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_35",
+    "name": "Brass Foo Pup",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_36",
+    "name": "Bahamut",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_37",
+    "name": "Falak the Abyss Serpent",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_38",
+    "name": "Sandworm",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_39",
+    "name": "Linen-Wrapped Sentinel",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_40",
+    "name": "Sand Golem",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_41",
+    "name": "Wandering Alchemist",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_42",
+    "name": "Bedouin Raider",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_43",
+    "name": "Parthian Horse Archer",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_44",
+    "name": "Bazaar Pickpocket",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_45",
+    "name": "Mamluk Lancer",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_46",
+    "name": "Persian Immortal",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_47",
+    "name": "Storm Imp",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_48",
+    "name": "Spark Sprite",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_49",
+    "name": "Thunder Hawk",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_summon_50",
+    "name": "Coin-Hoard Dragon",
+    "type": "summon",
+    "color": "storm"
+  },
+  {
+    "id": "storm_machine_01",
+    "name": "Ornithopter",
+    "type": "machine",
+    "color": "storm"
+  },
+  {
+    "id": "storm_machine_02",
+    "name": "Spiral Aerial Screw",
+    "type": "machine",
+    "color": "storm"
+  },
+  {
+    "id": "storm_machine_03",
+    "name": "Tesla Tower",
+    "type": "machine",
+    "color": "storm"
+  },
+  {
+    "id": "storm_machine_04",
+    "name": "Voltaic Pile Turret",
+    "type": "machine",
+    "color": "storm"
+  },
+  {
+    "id": "storm_machine_05",
+    "name": "Arc Gatling",
+    "type": "machine",
+    "color": "storm"
+  },
+  {
+    "id": "storm_machine_06",
+    "name": "Brass Automaton Archer",
+    "type": "machine",
+    "color": "storm"
+  },
+  {
+    "id": "storm_machine_07",
+    "name": "Scorpio Bolt Thrower",
+    "type": "machine",
+    "color": "storm"
+  },
+  {
+    "id": "storm_machine_08",
+    "name": "Naphtha Siphon",
+    "type": "machine",
+    "color": "storm"
+  },
+  {
+    "id": "storm_machine_09",
+    "name": "Desert Onager",
+    "type": "machine",
+    "color": "storm"
+  },
+  {
+    "id": "storm_machine_10",
+    "name": "Caravan Mangonel",
+    "type": "machine",
+    "color": "storm"
+  },
+  {
+    "id": "storm_machine_11",
+    "name": "Architronito",
+    "type": "machine",
+    "color": "storm"
+  },
+  {
+    "id": "storm_machine_12",
+    "name": "Zhuge Repeater",
+    "type": "machine",
+    "color": "storm"
+  },
+  {
+    "id": "storm_machine_13",
+    "name": "Tortoise War Wagon",
+    "type": "machine",
+    "color": "storm"
+  },
+  {
+    "id": "storm_machine_14",
+    "name": "Sandstone Rampart",
+    "type": "machine",
+    "color": "storm"
+  },
+  {
+    "id": "storm_machine_15",
+    "name": "Palm-Log Palisade",
+    "type": "machine",
+    "color": "storm"
+  },
+  {
+    "id": "storm_machine_16",
+    "name": "Bronze Barricade",
+    "type": "machine",
+    "color": "storm"
+  },
+  {
+    "id": "storm_machine_17",
+    "name": "Elephant Clock Automaton",
+    "type": "machine",
+    "color": "storm"
+  },
+  {
+    "id": "storm_machine_18",
+    "name": "Coin-Spitting Mortar",
+    "type": "machine",
+    "color": "storm"
+  },
+  {
+    "id": "storm_machine_19",
+    "name": "Clockwork Flying Carpet",
+    "type": "machine",
+    "color": "storm"
+  },
+  {
+    "id": "storm_machine_20",
+    "name": "Hang-Glider Scout",
+    "type": "machine",
+    "color": "storm"
+  },
+  {
+    "id": "storm_machine_21",
+    "name": "The Thunder Engine",
+    "type": "machine",
+    "color": "storm"
+  },
+  {
+    "id": "storm_machine_22",
+    "name": "The Bronze Colossus",
+    "type": "machine",
+    "color": "storm"
+  },
+  {
+    "id": "storm_ace_01",
+    "name": "Thunderbird Feather",
+    "type": "ace",
+    "color": "storm"
+  },
+  {
+    "id": "storm_ace_02",
+    "name": "Djinn's Last Wish",
+    "type": "ace",
+    "color": "storm"
+  },
+  {
+    "id": "storm_ace_03",
+    "name": "Vajra of Indra",
+    "type": "ace",
+    "color": "storm"
+  },
+  {
+    "id": "storm_aceup_01",
+    "name": "Static Charge",
+    "type": "aceup",
+    "color": "storm"
+  },
+  {
+    "id": "storm_aceup_02",
+    "name": "Gilded Shot",
+    "type": "aceup",
+    "color": "storm"
+  },
+  {
+    "id": "storm_aceup_03",
+    "name": "Sandstorm Scatter",
+    "type": "aceup",
+    "color": "storm"
+  },
+  {
+    "id": "hero_volta",
+    "name": "Captain Volta",
+    "type": "hero",
+    "color": "storm"
+  },
+  {
+    "id": "hero_zephyra",
+    "name": "Zephyra, Wind Rider",
+    "type": "hero",
+    "color": "storm"
+  },
+  {
+    "id": "hero_raijin",
+    "name": "Raijin, the Thunder King",
+    "type": "hero",
+    "color": "storm"
+  },
+  {
+    "id": "hero_tempest",
+    "name": "Tempest the Stormcaller",
+    "type": "hero",
+    "color": "storm"
+  },
+  {
+    "id": "hero_gale",
+    "name": "Gale, the Sky Pirate",
+    "type": "hero",
+    "color": "storm"
+  },
+  {
+    "id": "hero_thundra",
+    "name": "Thundra the Hammer",
+    "type": "hero",
+    "color": "storm"
+  },
+  {
+    "id": "hero_voltaire",
+    "name": "Voltaire the Spark",
+    "type": "hero",
+    "color": "storm"
+  },
+  {
+    "id": "hero_cyclona",
+    "name": "Cyclona",
+    "type": "hero",
+    "color": "storm"
+  },
+  {
+    "id": "hero_quarrel",
+    "name": "Quarrel the Thunder Bolt",
+    "type": "hero",
+    "color": "storm"
+  },
+  {
+    "id": "hero_nimbus",
+    "name": "Nimbus the Cloud Sage",
+    "type": "hero",
+    "color": "storm"
+  },
+  {
+    "id": "hero_stati",
+    "name": "Stati, the Static Witch",
+    "type": "hero",
+    "color": "storm"
+  },
+  {
+    "id": "hero_kiri",
+    "name": "Squall Rider Kiri",
+    "type": "hero",
+    "color": "storm"
+  },
+  {
+    "id": "hero_thunderbird",
+    "name": "The Thunderbird",
+    "type": "hero",
+    "color": "storm"
+  },
+  {
+    "id": "hero_ozone",
+    "name": "Ozone the Tinker",
+    "type": "hero",
+    "color": "storm"
+  },
+  {
+    "id": "static_corridor",
+    "name": "Static Corridor",
+    "type": "ward",
+    "color": "storm"
+  }
+]

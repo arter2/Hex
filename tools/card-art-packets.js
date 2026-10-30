@@ -28,7 +28,8 @@ if(command==='complete'){
  current.state='idle';
 }else if(command==='assign'){
  const p=known.get(packetId);
- if(!p||!worker||state.completedPackets.includes(packetId)||count(p)===p.cards.length)throw Error('Unknown or already completed packet');
+ // A fully saved packet can still await parent review; only reviewed packets are complete.
+ if(!p||!worker||state.completedPackets.includes(packetId))throw Error('Unknown or already reviewed packet');
  if(state.workers[worker]?.state==='running')throw Error('Worker already has a running packet');
  for(const [name,w]of Object.entries(state.workers))if(w.state==='running'&&known.get(w.packet).colour===p.colour)throw Error('Colour is owned by '+name);
  state.workers[worker]={packet:packetId,state:'running'};

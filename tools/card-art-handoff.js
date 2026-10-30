@@ -16,7 +16,8 @@ const catalogue=colours.flatMap(c=>JSON.parse(fs.readFileSync(path.join(root,'do
 const known=new Map(catalogue.map(c=>[c.id,c]));
 const production=path.join(root,'docs/art-production');
 const planPath=batch?path.join(production,'batch-'+String(batch).padStart(2,'0')+'-assignments.json'):null;
-const plan=planPath&&fs.existsSync(planPath)?JSON.parse(fs.readFileSync(planPath)):null;
+const assignment=planPath&&fs.existsSync(planPath)?JSON.parse(fs.readFileSync(planPath)):null;
+const plan=assignment&&Number.isInteger(assignment.startingActive)&&Number.isInteger(assignment.targetActive)?assignment:null;
 const generated=new Map(fs.readdirSync(production).filter(f=>f.endsWith('-generated.json')).flatMap(f=>JSON.parse(fs.readFileSync(path.join(production,f)))).filter(a=>a.status==='generated').map(a=>[a.cardId,a]));
 const supplied=new Map(JSON.parse(fs.readFileSync(path.join(root,'docs/named-card-art-mapping.json'))).files.filter(a=>a.status==='selected').map(a=>[a.cardId,a.file]));
 const registered=report.assets.filter(a=>a.cardId);
@@ -24,6 +25,10 @@ const active=registered.filter(a=>!batch||(generated.has(a.cardId)&&(generated.g
 if(!Number.isInteger(min)||min<1||active.length<min)throw Error('Handoff needs at least '+min+' unique cards; exported '+active.length);
 if(plan&&active.length!==plan.targetNewImages)throw Error('Batch needs exactly '+plan.targetNewImages+' new cards');
 if(plan&&registered.length!==plan.targetActive)throw Error('Combined registry does not match batch target');
+if(plan){
+ const expected=new Set(Object.values(plan.assignments).flat().map(c=>c.id));
+ if(expected.size!==active.length||active.some(a=>!expected.has(a.cardId)))throw Error('Exported batch IDs do not match the exact assignments');
+}
 if(new Set(active.map(a=>a.cardId)).size!==active.length)throw Error('Duplicate active card ID');
 const slug=s=>s.normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/['’]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 const names=new Set();
@@ -48,6 +53,7 @@ if(new Set(cards.map(c=>c.master.sha256)).size!==cards.length)throw Error('Two c
 const manifest={format:1,uniqueCards:cards.length,totalRegistered:registered.length,batch,sourceSize:[512,512],masterSize:[512,512],artWindow:report.artWindow,minimumRequested:min,cards};
 if(plan){
  manifest.expectations={uniqueCards:plan.targetNewImages,totalRegistered:plan.targetActive,byColour:Object.fromEntries(Object.entries(plan.assignments).map(([colour,assigned])=>[colour,assigned.length]))};
+ manifest.assignmentFile='integration/docs/art-production/batch-'+String(batch).padStart(2,'0')+'-assignments.json';
  manifest.baselineManifest='baseline-'+plan.startingActive+'-card-images.json';
  fs.copyFileSync(path.join(production,'delivery-'+plan.startingActive+'-card-images.json'),path.join(dest,manifest.baselineManifest));
 }

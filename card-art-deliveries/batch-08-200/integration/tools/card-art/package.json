@@ -1,0 +1,7 @@
+{
+  "name": "hexmancers-card-art-export",
+  "private": true,
+  "description": "Deterministic, local card-art size exports without a browser",
+  "scripts": { "build": "node ../card-art-build.js" },
+  "devDependencies": { "@napi-rs/canvas": "0.1.100" }
+}

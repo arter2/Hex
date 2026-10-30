@@ -1756,5 +1756,77 @@
     "status": "generated",
     "batch": 10,
     "reviewNote": "Square master, centered wide crop and thumbnail inspected. Feast table, roast bird, bread, adventurer face and hands remain readable; background inn activity supports the healing mood."
+  },
+  {
+    "cardId": "fire_charge_08",
+    "name": "Rivet Pouch",
+    "prompt": "Square 1:1 512x512 painterly medieval fantasy collectible-card master for \"Rivet Pouch\". A rugged leather rivet pouch hangs prominently from a blacksmith-adventurer's belt, its flap open to show several short, bright iron rivets with tapered piercing points. One gloved hand reaches for a rivet while another flicks a single rivet outward like a magically charged bolt toward an off-frame target, leaving a slim ember spark. Keep pouch, rivets and relevant hands large and clear; medieval hand tool, no firearm. Painterly high-fantasy illustration with confident brushwork, believable historical materials and natural anatomy, attractive directional light, atmospheric depth, crisp readable silhouette, restrained composition in the accepted Hexmancers fantasy card-art style. Preserve all identity-critical named objects and important faces/hands within x24..488,y105..407 on the normalized square, for a centered 206:141 horizontal crop; quiet expendable scenery above and below. No frame, lettering, numbers, symbols, UI, anime, Disney cartoon, photorealism, pixel art, modern clothing or technology.",
+    "generatedPath": "/workspace/generated_images/exec-85068dd7-db31-402f-8e38-0c3d74b59581.png",
+    "editableSourcePath": "game/cards/art/masters/fire_charge_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Square source, centered crop and thumbnail inspected. Open rivet pouch, selected rivets, both hands and piercing rivet remain clear; face is secondary and near the upper crop edge."
+  },
+  {
+    "cardId": "fire_utility_09",
+    "name": "Ancestor's Tale",
+    "prompt": "Square 1:1 512x512 painterly medieval fantasy collectible-card master for \"Ancestor's Tale\". In a warm medieval hall, an elderly matriarch tells an ancestral tale to two young descendants gathered close. Her expressive face and storytelling hands sit beside an open family chronicle; two dignified translucent ancestor figures appear softly in candlelit smoke as remembered storytellers, suggesting inherited knowledge and drawing inspiration. Make the living storyteller and listeners the focus, not ghostly spectacle; pages have no legible writing. Painterly high-fantasy illustration with confident brushwork, believable historical materials and natural anatomy, attractive directional light, atmospheric depth, crisp readable silhouette, restrained composition in the accepted Hexmancers fantasy card-art style. Preserve all identity-critical named objects and important faces/hands within x24..488,y105..407 on the normalized square, for a centered 206:141 horizontal crop; quiet expendable scenery above and below. No frame, lettering, numbers, symbols, UI, anime, Disney cartoon, photorealism, pixel art, modern clothing or technology.",
+    "generatedPath": "/workspace/generated_images/exec-02274972-948d-4e25-a899-67e0366a73ee.png",
+    "editableSourcePath": "game/cards/art/masters/fire_utility_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Raw output path recovered by visual match to the explicit storyteller-and-descendant subject after the concurrent result listing truncated. Square source, centered crop and thumbnail inspected; elder and listener faces, shared chronicle and floating memory cards remain visible."
+  },
+  {
+    "cardId": "fire_trap_07",
+    "name": "Fox Den Snare",
+    "prompt": "Square 1:1 512x512 painterly medieval fantasy collectible-card master for \"Fox Den Snare\". At the mouth of a small fox den beneath tangled roots, a red fox crouches alert beside a crude short rope snare stretched between roots. A trespassing goblin boot has just caught in the three-loop snare, with a little ember glow along the tightening cord hinting at a brief burning sting. Keep fox, den entrance and trap loop clearly readable; the caught figure is secondary. Painterly high-fantasy illustration with confident brushwork, believable historical materials and natural anatomy, attractive directional light, atmospheric depth, crisp readable silhouette, restrained composition in the accepted Hexmancers fantasy card-art style. Preserve all identity-critical named objects and important faces/hands within x24..488,y105..407 on the normalized square, for a centered 206:141 horizontal crop; quiet expendable scenery above and below. No frame, lettering, numbers, symbols, UI, anime, Disney cartoon, photorealism, pixel art, modern clothing or technology.",
+    "generatedPath": "/workspace/generated_images/exec-c7a4afb6-22db-44e4-b2f3-40bf8f7f54b5.png",
+    "editableSourcePath": "game/cards/art/masters/fire_trap_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Raw output path recovered by visual match to the explicit fox-den snare subject after the concurrent result listing truncated. Square source, centered crop and thumbnail inspected; fox face, den entrance and rope loop around the trespasser remain distinct."
+  },
+  {
+    "cardId": "fire_environment_08",
+    "name": "Sulfur Springs",
+    "prompt": "Square 1:1 512x512 painterly medieval fantasy collectible-card master for \"Sulfur Springs\". A horizontal row of connected bubbling sulfur springs stretches across an ancient volcanic field. Three vivid yellow-green mineral pools lie in a line amid ochre crust and scorched stone; poisonous golden vapor drifts along the row, warping the air above it. Tiny travelers skirt the far edge. The environment itself dominates; painterly atmosphere, no hero. Painterly high-fantasy illustration with confident brushwork, believable historical materials and natural anatomy, attractive directional light, atmospheric depth, crisp readable silhouette, restrained composition in the accepted Hexmancers fantasy card-art style. Preserve all identity-critical named objects and important faces/hands within x24..488,y105..407 on the normalized square, for a centered 206:141 horizontal crop; quiet expendable scenery above and below. No frame, lettering, numbers, symbols, UI, anime, Disney cartoon, photorealism, pixel art, modern clothing or technology.",
+    "generatedPath": "/workspace/generated_images/exec-32de456a-23d4-45d4-aaa9-d44da4f325e4.png",
+    "editableSourcePath": "game/cards/art/masters/fire_environment_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Square source, centered crop and thumbnail inspected. Connected sulfur pools, boiling surface and broad curse-like vapor remain clear across the row; distant travelers are incidental."
   }
 ]

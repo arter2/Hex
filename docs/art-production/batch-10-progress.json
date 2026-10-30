@@ -1,30 +1,17 @@
 {
   "batch": 10,
-  "status": "paused-usage-limit",
+  "status": "in-progress",
   "targetNewImages": 200,
-  "generatedSources": 40,
-  "reviewedSources": 39,
-  "missingSources": 160,
-  "reviewedPackets": 7,
-  "requiresRepaint": [
-    {
-      "cardId": "brown_machine_29",
-      "name": "Gnomish Bomb Lobber",
-      "reason": "Device extends outside square source; compact repaint required before acceptance."
-    }
-  ],
+  "generatedSources": 49,
+  "reviewedSources": 40,
+  "missingSources": 151,
+  "reviewedPackets": 8,
+  "requiresRepaint": [],
   "baselineActive": 834,
   "targetActive": 1034,
   "runtimeActive": 834,
   "previousRuntimeImagesUnchanged": 3400,
   "previousGeneratedRecordsUnchanged": 784,
-  "pause": {
-    "errorCode": "usage_limit_reached",
-    "httpStatus": 429,
-    "resetAtEpoch": 1793395985,
-    "resetAtUTC": "2026-10-30T21:33:05Z",
-    "artistsStopped": true
-  },
   "savedCards": [
     {
       "cardId": "brown_instant_25",
@@ -67,8 +54,8 @@
       "name": "Gnomish Bomb Lobber",
       "colour": "brown",
       "source": "game/cards/art/masters/brown_machine_29.png",
-      "sha256": "f0d71d59966a63098abf8efec020ced2b0fb9e6ede2aaad18f2bb8a5d08ddcbf",
-      "reviewed": false,
+      "sha256": "1b9a40d3c4934cb1aaef9d14405c70bce69f1b4d39993e996c2db09c3b605ea5",
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.5
@@ -93,6 +80,30 @@
       "source": "game/cards/art/masters/fire_boon_08.png",
       "sha256": "4fb4389cb0f9375ffa4ca5cb89550ce49d6bf58b3d8975efe3dfd37e3b11b175",
       "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_charge_08",
+      "name": "Rivet Pouch",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_charge_08.png",
+      "sha256": "29a8f899a52cf5ae78e488fa504bd8d0298416ea014fd3d6304f5374c79aadc1",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_environment_08",
+      "name": "Sulfur Springs",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_environment_08.png",
+      "sha256": "3ecda2e36a27f78529a31097e8d05d24a349e818b752789223bf3ec4e4e34d67",
+      "reviewed": false,
       "focalPoint": [
         0.5,
         0.5
@@ -129,6 +140,30 @@
       "source": "game/cards/art/masters/fire_strike_08.png",
       "sha256": "b774e0d7fea781f9774b0f6581f05b1927da6d8c10e44d29a544b7eb7be0d5fa",
       "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_trap_07",
+      "name": "Fox Den Snare",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_trap_07.png",
+      "sha256": "c131eff474ebe631e3d81c19bd80c4c2af3975173b5d9abb0436cd8764a50c56",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_utility_09",
+      "name": "Ancestor's Tale",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_utility_09.png",
+      "sha256": "250940bbc7909edae110bef81c0fe944353f2308d5afdc45a21abfe9ec26e425",
+      "reviewed": false,
       "focalPoint": [
         0.5,
         0.5
@@ -339,6 +374,30 @@
       ]
     },
     {
+      "cardId": "shadow_charge_08",
+      "name": "Mold Jars",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_charge_08.png",
+      "sha256": "e899acaa1079e83c2d0ba2c5bf73d8023fc2222f10cc110282c62a9691d8c0cb",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "shadow_environment_08",
+      "name": "Draugr's Barrow Frost",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_environment_08.png",
+      "sha256": "0f13c1e3edca6768f3bbdf7c70451e267bf0e8fd75112633a27a01447179e081",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "cardId": "shadow_lob_10",
       "name": "Coffin Drop",
       "colour": "shadow",
@@ -348,6 +407,18 @@
       "focalPoint": [
         0.5,
         0.4
+      ]
+    },
+    {
+      "cardId": "shadow_piece_04",
+      "name": "Cauldron of the Bone Mother",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_piece_04.png",
+      "sha256": "a667d8d29b6ac1ab42618eef912722da6ada1a484418daaa06ca3a45f8bbfdf6",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
       ]
     },
     {
@@ -369,6 +440,30 @@
       "source": "game/cards/art/masters/shadow_strike_08.png",
       "sha256": "2dc14be33393e045f2fc487561373e4a56b58199ffbdefac2ac43559ceb587d5",
       "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.43
+      ]
+    },
+    {
+      "cardId": "shadow_trap_07",
+      "name": "Oubliette",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_trap_07.png",
+      "sha256": "40c2e1de1ee64a272b54390d4ade99db008aefa8879c8b1da55c9983ccf9b5a9",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "shadow_utility_07",
+      "name": "Raise the Dead",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_utility_07.png",
+      "sha256": "9623f2ad2cc69e5f63de994dfb2364312cd328869becf45416135537eb140e6d",
+      "reviewed": false,
       "focalPoint": [
         0.5,
         0.43

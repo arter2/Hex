@@ -1753,5 +1753,95 @@
     "status": "generated",
     "batch": 10,
     "reviewNote": "Witch face, raised casting hand, violet life tether and armored target remain in the crop; the midnight clock tower and surrounding crows establish the hour and courage boon. Lower robe and some upper sky are expendable; the siphoning witch reads at thumbnail size. Parent review raised the crop slightly to retain every fingertip of the casting hand; the source bytes are unchanged."
+  },
+  {
+    "cardId": "shadow_charge_08",
+    "name": "Mold Jars",
+    "prompt": "Paint an illustration for the medieval fantasy card Mold Jars. Actual mechanic cues: lobbed jars that spread poisonous mold. A full, intact dark-glass alchemist jar with cork stopper and wax seal, visibly containing a green-black mold culture, foreground on a medieval apothecary table; several smaller sealed jars behind it and faint spores curling from the open jar mouth. Whole named jars centered, poisonous mold clearly depicted, dramatic sickly green light against deep shadows. No modern chemistry equipment. Painterly medieval fantasy collectible-card artwork, premium hand-painted surfaces, grounded anatomy, nuanced materials, dramatic directional light, atmospheric depth; reuse the accepted Hexmancers fantasy-card art style. Square 1:1 canvas for editable 512×512 master. Keep identity-critical faces, relevant hands and the entire named portable object within x24…488,y105…407 for a horizontal 206:141 crop; quiet expendable background above and below. Strong readable primary subject. No text, lettering, UI, frame, anime, Disney-like cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-da695648-d835-468d-a82c-f18f636aeb88.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_charge_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. The main mold jar is intact, centered, and clearly shows its cork, seal, vessel and mold; supporting jars remain secondary."
+  },
+  {
+    "cardId": "shadow_utility_07",
+    "name": "Raise the Dead",
+    "prompt": "Paint an illustration for the medieval fantasy card Raise the Dead. Actual mechanic cues: raise the dead. A hooded medieval grave-keeper in a weathered black cloak raises one gloved hand as a single armored skeleton climbs from an open stone grave, its whole skull, shoulders and reaching hands visible, moonlit ruined chapel behind. Clear act of raising the dead, one readable undead subject, no gore, keep important face and hand in frame. Painterly medieval fantasy collectible-card artwork, premium hand-painted surfaces, grounded anatomy, nuanced materials, dramatic directional light, atmospheric depth; reuse the accepted Hexmancers fantasy-card art style. Square 1:1 canvas for editable 512×512 master. Keep identity-critical faces, relevant hands and the entire named portable object within x24…488,y105…407 for a horizontal 206:141 crop; quiet expendable background above and below. Strong readable primary subject. No text, lettering, UI, frame, anime, Disney-like cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-923f1c32-14d4-40a0-8b77-5157c667286a.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_utility_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Parent-requested focal adjustment reviewed directly from the 512 source: crop y45…395 retains the caster face and raised hand plus the skeleton face and raised hand; incidental lower arm and coffin are cropped."
+  },
+  {
+    "cardId": "shadow_trap_07",
+    "name": "Oubliette",
+    "prompt": "Paint an illustration for the medieval fantasy card Oubliette. Actual mechanic cues: a hidden snare trap with a three-cell footprint. A medieval stone oubliette trap: a central square section of flagstone has dropped open into a deep narrow dungeon shaft, with an iron portcullis snare closing above it and a small trapped armored figure visible safely inside the shaft. Strong readable architecture, show pit opening and trap mechanism, no gore. Painterly medieval fantasy collectible-card artwork, premium hand-painted surfaces, grounded anatomy, nuanced materials, dramatic directional light, atmospheric depth; reuse the accepted Hexmancers fantasy-card art style. Square 1:1 canvas for editable 512×512 master. Keep identity-critical faces, relevant hands and the entire named portable object within x24…488,y105…407 for a horizontal 206:141 crop; quiet expendable background above and below. Strong readable primary subject. No text, lettering, UI, frame, anime, Disney-like cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-59a2e168-e9e9-486c-91a1-c624cc72645b.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_trap_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. The open stone shaft and portcullis snare are clear; the trapped figure is secondary and not clipped at the face."
+  },
+  {
+    "cardId": "shadow_environment_08",
+    "name": "Draugr's Barrow Frost",
+    "prompt": "Paint an illustration for the medieval fantasy card Draugr's Barrow Frost. Actual mechanic cues: a burst of freezing force around a draugr burial barrow. A bleak Norse burial mound of ancient stone and turf on a frozen moor, its long barrow entrance spilling ghostly blue-white frost fog and frozen draugr silhouettes across the surrounding ground. The barrow and spread of supernatural frost dominate; no close-up character. Painterly medieval fantasy collectible-card artwork, premium hand-painted surfaces, grounded anatomy, nuanced materials, dramatic directional light, atmospheric depth; reuse the accepted Hexmancers fantasy-card art style. Square 1:1 canvas for editable 512×512 master. Keep identity-critical faces, relevant hands and the entire named portable object within x24…488,y105…407 for a horizontal 206:141 crop; quiet expendable background above and below. Strong readable primary subject. No text, lettering, UI, frame, anime, Disney-like cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6ebb19a2-ac49-4e5e-a555-f002571cc192.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_environment_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. The stone barrow entrance remains dominant, with the supernatural frost and draugr silhouettes legible across the scene."
+  },
+  {
+    "cardId": "shadow_piece_04",
+    "name": "Cauldron of the Bone Mother",
+    "prompt": "Paint an illustration for the legendary medieval fantasy artifact Cauldron of the Bone Mother. Center one complete, entire ornate iron cauldron, from its rim to its feet, on a stone hearth; it is visibly fashioned with a bone-carved rim, three sturdy feet and bone handles, filled with dark broth and a few pale bones. Behind it, the Bone Mother is an elderly hooded witch whose complete face and two working hands hover over the vessel, stirring with a wooden spoon; make cauldron the dominant named object. Painterly medieval fantasy collectible-card art, handmade brush texture on iron, bone, wool and stone, atmospheric emberlight with cold shadow, refined narrative staging; no photorealism. Square 1:1 editable 512×512 master. Keep the complete cauldron and the witch's face and hands inside x24…488,y105…407 for 206:141 card crop, quiet hearth atmosphere above and below. No labels, text, UI, border, anime, Disney-like cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7daea471-53bb-405d-a6aa-b4a3afd72901.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_piece_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. The complete cauldron and its feet fit the crop; the Bone Mother's face and stirring hands remain visible above it."
   }
 ]

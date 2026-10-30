@@ -1703,8 +1703,8 @@
   {
     "cardId": "brown_machine_29",
     "name": "Gnomish Bomb Lobber",
-    "prompt": "Stout gnomish engineer loads an iron-banded bomb into a complete wooden-and-brass torsion catapult aimed toward distant ramparts. Painterly medieval fantasy, square 1:1; machine, face, hands and bomb fit x24..488,y105..407.",
-    "generatedPath": "/workspace/generated_images/exec-5faf7ee1-c72e-49a4-9356-5ff64f0d9bbf.png",
+    "prompt": "Create a strict 1:1 square painterly fantasy illustration for Gnomish Bomb Lobber. Show a small compact tabletop-size medieval torsion catapult, about half the width of the canvas, centered with scenery on both sides. Its complete silhouette is visible: oak frame, both wheels, feet, pivot, ropes, throwing arm and bomb cradle. A crouching gnome engineer with entirely visible face and both hands at machine height loads a round iron-banded bomb. Painterly medieval materials, warm directional light, quiet stone courtyard. Square canvas; keep gnome, bomb and whole machine within the center 70% width and central horizontal band for a 206:141 crop. No frame, text, UI, modern tech, anime, Disney, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-fb071e26-d17a-4675-9f6c-24d1b06e42ba.png",
     "editableSourcePath": "game/cards/art/masters/brown_machine_29.png",
     "sourceNative": [
       1254,
@@ -1714,7 +1714,7 @@
       0.5,
       0.5
     ],
-    "reviewNote": "Catapult, gnome face and hands remain recognizable in the wide crop; portions of foreground wheels are close to the lower crop edge. Parent review rejected this attempt: the full lobber extends beyond the square and wide crop. A compact repaint is required after the image-service usage limit resets.",
+    "reviewNote": "Compact repaint keeps the complete catapult, wheel rims, gnome face, and loading hands fully visible in the square and 206:141 crop; all primary details remain legible in the thumbnail.",
     "status": "generated",
     "batch": 10
   },

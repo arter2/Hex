@@ -2,7 +2,7 @@
   "batch": 10,
   "workers": {
     "/root/b10_worker_1": {
-      "packet": "brown-01",
+      "packet": "brown-02",
       "state": "running"
     },
     "/root/b10_worker_2": {
@@ -10,20 +10,20 @@
       "state": "running"
     },
     "/root/b10_worker_3": {
-      "packet": "verdant-01",
-      "state": "idle"
+      "packet": "gray-02",
+      "state": "running"
     },
     "/root/b10_worker_4": {
-      "packet": "frost-02",
-      "state": "idle"
+      "packet": "shadow-02",
+      "state": "running"
     },
     "/root/b10_worker_5": {
       "packet": "light-01",
       "state": "running"
     },
     "/root/b10_worker_6": {
-      "packet": "storm-01",
-      "state": "idle"
+      "packet": "storm-02",
+      "state": "running"
     }
   },
   "completedPackets": [
@@ -33,7 +33,8 @@
     "fire-01",
     "storm-01",
     "frost-02",
-    "verdant-01"
+    "verdant-01",
+    "brown-01"
   ],
   "reviewedSources": {
     "shadow_strike_08": {
@@ -191,9 +192,13 @@
     "brown_machine_30": {
       "file": "game/cards/art/masters/brown_machine_30.png",
       "sha256": "e32955323fdb92cc946f8f6f0edf0b54f9552179bbfbf4e23e901edd09c24f39"
+    },
+    "brown_machine_29": {
+      "file": "game/cards/art/masters/brown_machine_29.png",
+      "sha256": "1b9a40d3c4934cb1aaef9d14405c70bce69f1b4d39993e996c2db09c3b605ea5"
     }
   },
-  "generationPause": {
+  "previousGenerationPause": {
     "errorCode": "usage_limit_reached",
     "httpStatus": 429,
     "resetAtEpoch": 1793395985,

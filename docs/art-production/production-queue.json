@@ -4,8 +4,8 @@
   "active": 834,
   "remaining": 1119,
   "pending": 919,
-  "assigned": 160,
-  "awaitingReview": 40,
+  "assigned": 151,
+  "awaitingReview": 49,
   "countsByColour": {
     "brown": 234,
     "fire": 246,
@@ -3016,7 +3016,7 @@
       "name": "Rivet Pouch",
       "type": "charge",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -3178,7 +3178,7 @@
       "name": "Ancestor's Tale",
       "type": "utility",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -3250,7 +3250,7 @@
       "name": "Fox Den Snare",
       "type": "trap",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -3347,7 +3347,7 @@
       "name": "Sulfur Springs",
       "type": "environment",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -11196,7 +11196,7 @@
       "name": "Mold Jars",
       "type": "charge",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -11317,7 +11317,7 @@
       "name": "Raise the Dead",
       "type": "utility",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -11397,7 +11397,7 @@
       "name": "Oubliette",
       "type": "trap",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -11486,7 +11486,7 @@
       "name": "Draugr's Barrow Frost",
       "type": "environment",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -11547,7 +11547,7 @@
       "name": "Cauldron of the Bone Mother",
       "type": "piece",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },

@@ -35,7 +35,7 @@ function dkRender(){ const d=dkDeck(), v=validateDeck(d.list,CARDS,save.owned);
   const counts={}; d.list.forEach(id=>counts[id]=(counts[id]||0)+1);
   const ids=Object.keys(counts).filter(id=>CARDS[id]).sort((a,b)=>byFamily(CARDS[a],CARDS[b]));
   for(const id of ids){ const c=CARDS[id], k=cardKit(c), el=document.createElement('button'); el.className='dktile kpal c-'+k.kc; el.style.setProperty('--c',COLORS[c.color].c); el.style.setProperty('--k-tex',k.tex);
-    el.innerHTML=`<span class="dkart">${cardArtThumb(c)}</span><span class="dkn"><i class="dksp"></i><i class="dksp r"></i><span class="dkt">${COLORS[c.color].icon}${TYPES[c.type]?TYPES[c.type].icon:''}</span><span class="dkx">×${counts[id]}</span>${esc(c.name)}</span>`;
+    el.innerHTML=`<span class="dkart">${cardArtThumb(c)}</span><span class="dkn"><span class="dkc">${COLORS[c.color].icon}</span><i class="dkc r"></i><i class="dksp"></i><i class="dksp r"></i><span class="dkt">${TYPES[c.type]?TYPES[c.type].icon:''}</span><span class="dkx">×${counts[id]}</span>${esc(c.name)}</span>`;
     el.title=c.name+' ×'+counts[id]+' (tap to take one out)'; dkHold(el,c,()=>{ dkRemove(c); dkChange(); }); box.appendChild(el); }
   const cols=dkCols(), empty=ids.length%cols?cols-ids.length%cols:(ids.length?0:cols);
   for(let i=0;i<empty;i++){ const e=document.createElement('div'); e.className='dkempty'; box.appendChild(e); }

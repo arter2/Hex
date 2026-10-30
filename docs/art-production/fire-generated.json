@@ -946,5 +946,41 @@
     "status": "generated",
     "batch": 8,
     "reviewNote": "Reviewed the 512-square source, centered 206:141 crop, and 128px thumbnail. The dragon-eye orb, burning fuse, clear cross-shaped ground blast and recoiling armored foe remain identifiable; the foe is partly cropped at the right edge."
+  },
+  {
+    "cardId": "fire_summon_02",
+    "name": "Great Red Dragon",
+    "prompt": "Paint a painterly medieval fantasy collectible-card illustration for the exact Fire summon Great Red Dragon. A great red dragon, ancient and formidable, descends through a volcanic mountain pass, its scarlet scales and forged iron-like ridges catching hot light as it exhales a broad cone of flame toward the ground. Its head, wings and front claws form a strong central horizontal composition; the dragon itself must dominate. Mechanics: sturdy, slow, forged dire dragon with a burning cone attack. Strict 1:1 SQUARE composition for an editable 512x512 master. Keep the dragon's face, wings' defining silhouette and front claws within x24..488,y105..407 for the 206:141 card crop; allow only expendable sky and terrain beyond. Painterly medieval fantasy collectible-card illustration, believable scales, smoke, ember light and anatomy, dramatic depth, clear subject at 128px. No frame, lettering, text, UI, symbols, watermark, anime, Disney style, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-90a36643-143c-4487-a671-5f5b601f8fdd.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_02.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.35
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Shifted crop upward so the dragon’s full head and eyes remain visible; the breath still reads as a cone of flame in the wide crop and at 128px."
+  },
+  {
+    "cardId": "fire_machine_02",
+    "name": "Fire Lance Turret",
+    "prompt": "Paint a painterly medieval fantasy collectible-card illustration for the exact Fire machine Fire Lance Turret. Show a compact, heavy crossbow turret mounted on a scorched stone parapet, its twin iron launch rails firing two bright fire lances in parallel toward an unseen target. The whole turret, twin launch mechanism and fiery projectiles should read clearly, with a visible explosive ember at the launch housing. Mechanics: sturdy steady twin-shot crossbow machine that explodes. Strict 1:1 SQUARE composition for an editable 512x512 master. Keep the complete turret and key twin-lance action within x24..488,y105..407 for the 206:141 crop, arranged horizontally. Painterly medieval fantasy collectible-card art, convincing carved wood, forged iron, flame and masonry, dramatic directional light, crisp silhouette at 128px. No modern weapons, lettering, frame, UI, watermark, anime, Disney style, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2253b5ae-ac0d-4e13-bb79-8e4c6e4ef145.png",
+    "editableSourcePath": "game/cards/art/masters/fire_machine_02.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "The complete crossbow turret and both lances remain in the square and 206:141 crop; the twin launch reads clearly at 128px."
   }
 ]

@@ -1111,5 +1111,113 @@
     "status": "generated",
     "batch": 8,
     "reviewNote": "The broad baobab trunk reads as the defensive wall; trunk and defining roots remain within the square and wide crop and read at 128px."
+  },
+  {
+    "cardId": "verdant_sentry_05",
+    "name": "Carved Stag Post",
+    "prompt": "Painterly medieval fantasy collectible-card art for Carved Stag Post. Show a SHORT, stout trail marker post, only knee-high, with a small carved stag head and compact antlers mounted on it; include its whole square-cut base on the ground. The carved marker is no taller than about half the square image. A hidden ranger aims along the path behind it. Compose the complete post and all antler tips in a compact central horizontal grouping, from y175 to y345 on a 512 square, leaving generous clear forest scenery above and below. The card depicts a slow, precise ambush sentry, so a small glint on the ranger's arrow and a narrow path suggest its watchfulness. Strict 1:1 SQUARE, intended 512x512 master and 206:141 wide card crop. Preserve the complete named object entirely within x24..488,y105..407. The post must not be tall or extend toward either edge. Richly detailed carved wood, moss, leaf litter, warm shafts of woodland light, realistic painterly medieval fantasy illustration, readable silhouette at 128px. No lettering, UI, frame, border, symbols, watermark, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a0777aa3-045b-4072-a0c5-a9d0dfb84cdf.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_sentry_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Final shorter-post version keeps the entire antlered carving and base within the square and 206:141 crop; both remain identifiable at 128px. An earlier raw attempt had clipped antler tips and was not used."
+  },
+  {
+    "cardId": "verdant_summon_07",
+    "name": "Whispering Oak",
+    "prompt": "Paint a painterly medieval fantasy collectible-card illustration for Whispering Oak. A towering ancient oak spirit stands guard in a moonlit forest, its expressive face subtly formed in the bark, broad roots braced like legs, and thorny vines curling protectively around its trunk as it blocks a narrow path. Keep the oak itself clearly identifiable as the sturdy guardian; a little drifting leaf whisper may suggest its name, but it is a protective slow sentinel with thorny roots. Strict 1:1 SQUARE composition for a 512x512 editable master. Keep the oak face, protective trunk and roots within x24..488,y105..407 for the 206:141 crop; use a horizontal root spread and keep expendable canopy and forest floor beyond. Painterly medieval fantasy collectible-card illustration, detailed bark, moss, moonlit green-gold highlights, atmospheric depth and a strong readable silhouette at 128px. No words, border, frame, UI, symbols, watermark, anime, Disney style, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a3d56f8f-45d7-4d7d-9af6-eaa805c1a4b8.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Oak face, thorned trunk and protective roots are visible within the square and 206:141 crop; the living-tree guardian remains identifiable at 128px."
+  },
+  {
+    "cardId": "verdant_boon_04",
+    "name": "Chameleon Skin",
+    "prompt": "Paint a painterly medieval fantasy collectible-card illustration for the exact Verdant boon Chameleon Skin. A vividly colored small chameleon clings to a mossy branch, its scales shifting into a perfect green leaf pattern as it vanishes into the foliage; one alert eye and curled tail remain crisply visible. The creature's living camouflaged skin is the named subject, suggesting a brief dodge and renewed radiance without depicting a generic spell. Strict 1:1 SQUARE canvas for an editable 512x512 master. Keep the entire chameleon, face, legs and curled tail within x24..488,y105..407 for the 206:141 card crop; compose it horizontally with quiet foliage above and below. Painterly medieval fantasy collectible-card illustration, detailed scales and dew, attractive shafts of light, lush but controlled palette, readable lizard silhouette at 128px. No lettering, border, card frame, UI, symbols, watermark, anime, Disney style, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4aef118c-4e80-42aa-b43b-8d9437c05ffa.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_boon_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Chameleon face, feet and curled tail fit inside the square and wide crop; its eye and leaf-like scales remain legible at 128px."
+  },
+  {
+    "cardId": "verdant_charge_05",
+    "name": "Hunter's Sling Pouch",
+    "prompt": "Paint a painterly medieval fantasy collectible-card illustration for the exact Verdant charge card Hunter's Sling Pouch. A leather sling pouch filled with smooth acorns and river stones hangs at the hunter's belt, while the hunter's hand grips a short hand-sling and releases one stone in a precise shot; make the named pouch, ammunition and action all easy to read. The mechanics are two charged bolts, one with a critical impact and a small push. Strict 1:1 SQUARE canvas for an editable 512x512 master. Keep the full pouch, hand, sling and launched stone within x24..488,y105..407 for the 206:141 crop, arranged as a horizontal focal group; expendable forest scenery above and below. Painterly medieval fantasy illustration with textured leather, wood, skin and cloth, attractive directional light, clear silhouette at 128px. No text, lettering, frame, border, UI, watermark, anime, Disney style, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-3573a02e-e6c5-46fb-b255-24017b06e2f2.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_charge_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "The entire stone pouch and sling hand stay inside the square and 206:141 crop; the pouch and released projectile remain readable at 128px."
+  },
+  {
+    "cardId": "verdant_utility_04",
+    "name": "Snakeroot Remedy",
+    "prompt": "Paint a painterly medieval fantasy collectible-card illustration for the exact Verdant utility card Snakeroot Remedy. A healer's hand lifts a small glass vial of clear green herbal remedy beside a freshly dug snakeroot plant, its long twisting root and medicinal leaves clearly visible; the antidote and root herb are the named subject, suggesting cleansing poison. Compose one clear object cluster rather than a generic spell scene. Strict 1:1 SQUARE canvas for an editable 512x512 master. Keep the complete vial and stopper, hand, plant leaves and defining snakeroot within x24..488,y105..407 for the 206:141 crop, in a horizontal arrangement; quiet woodland scenery may fill the top and bottom. Painterly medieval fantasy collectible-card illustration, believable glass, root fibers, skin and leather, warm natural light, detailed forest atmosphere, readable at 128px. No text, lettering, frame, border, UI, watermark, anime, Disney style, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6c09f92a-e864-4697-a937-5c0e89ddad1e.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_utility_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Shifted focal point upward so the full stopper, vial, hand and snakeroot remain in the 206:141 crop. The square master is unchanged; all identifying details read at 128px."
+  },
+  {
+    "cardId": "verdant_trap_05",
+    "name": "Stinkhorn Patch",
+    "prompt": "Paint a painterly medieval fantasy collectible-card illustration for the exact Verdant trap Stinkhorn Patch. A tight patch of three broad stinkhorn mushrooms erupts in a forest floor clearing, their pale orange-red caps bursting outward as a dense but attractive green-gold poisonous spore cloud spreads low across the ground. The distinct mushroom patch is the named trap and must dominate; suggest a blast and lingering poison without obscuring the fungi in haze. Strict 1:1 SQUARE canvas for an editable 512x512 master. Keep all three identifying mushrooms and the core blast within x24..488,y105..407 for the 206:141 crop; arrange them horizontally with quiet canopy and ground margins. Painterly medieval fantasy collectible-card illustration, richly detailed caps, stems, spores and moss, directional woodland light, sharp readable silhouette at 128px. No text, frame, border, UI, lettering, symbols, watermark, anime, Disney style, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0d496b44-7844-4ef4-a171-85965092a9b7.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_trap_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "The three named stinkhorns and the center of the poison blast stay intact in the square, 206:141 crop and 128px thumbnail."
   }
 ]

@@ -957,5 +957,149 @@
     "status": "generated",
     "batch": 8,
     "reviewNote": "Reviewed the 512-square source, centered 512×350 crop and 128×88 thumbnail. Shield Maiden’s face and shield hand, full shield, sheltered ally and ward impact all remain visible and legible at thumbnail size."
+  },
+  {
+    "cardId": "gray_summon_28",
+    "name": "Hoplite",
+    "prompt": "Paint the Hexmancers card Hoplite. Actual mechanics: a tough, quick escort fighter who taunts threats and surges into an overcharged defense. Show one classical Greek hoplite in bronze helmet, linen cuirass and greaves moving beside an ally, stepping between the companion and incoming blows; he raises a large round aspis shield with a fresh blue-gray protective flare and angles his spear forward. Make the hoplite’s face/helmet, shield, bracing hand and spearhead easy to read, with a disciplined protective stance rather than a generic warrior pose. Ancient stone road and a small ally behind his shoulder, warm sun on bronze with cool ward light, painterly medieval fantasy collectible-card art, rich materials and atmospheric depth. Exact 1:1 SQUARE 512x512 editable master, horizontal arrangement; keep face, shield, spearhead and protected ally within x24..488,y105..407 for the 206:141 crop. Quiet sky and ground margins. Strong silhouette at thumbnail size. No text, letters, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-79007ee4-6c35-4f20-a871-94b17367b268.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_28.png",
+    "sourceNative": [
+      1283,
+      1226
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Centered crop clipped the top of the helmet crest, so I reviewed an upward shift to y=45 (focal y=0.43). The crop and thumbnail keep the hoplite’s helmet and face, full shield, spearhead and protected companion visible; lower leg is expendable."
+  },
+  {
+    "cardId": "gray_summon_29",
+    "name": "Roman Centurion",
+    "prompt": "Paint the Hexmancers card Roman Centurion. Actual mechanics: a tough veteran front-line Roman knight who draws enemy attention and holds ground with steady attacks. Show one seasoned Roman centurion in crested helmet and battered segmented armor commanding the front rank, stepping forward with a raised oval shield to challenge a charging enemy while the rank behind braces. Give him a clear weathered face under the helmet, visible shield grip and short gladius, a transverse crest and scarred metal; make the veteran commander the subject, not a generic legion group. Dusty stone road at late afternoon, red cloak catching warm light and cool shadows on steel, painterly medieval fantasy collectible-card art with tactile materials, grounded proportions and atmospheric depth. Exact 1:1 SQUARE 512x512 master; stage horizontally and keep face, shield, weapon hand and charging impact within x24..488,y105..407 for the 206:141 crop. Quiet sky and ground margins. Strong readable thumbnail silhouette. No text, letters, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7d187537-3dbe-445f-8c25-4954c66d2f12.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_29.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed 512-square source, centered 512×350 crop and 128×88 thumbnail. Centurion’s full face, raised shield, sword hand and charging opponent remain visible; red crest and armor make the veteran Roman identity clear."
+  },
+  {
+    "cardId": "gray_summon_30",
+    "name": "Gatehouse Sergeant",
+    "prompt": "Paint the Hexmancers card Gatehouse Sergeant. Actual mechanics: a huge veteran front-line defender who slowly plants a short protective stone-and-iron wall. Show a broad, battle-worn medieval gatehouse sergeant at an open fortress gate, bracing his back and shoulder as he sets a waist-high portable barricade of timber and iron into the cobbled lane to protect the defenders behind him. He is sturdy and imposing but clearly a human veteran: weathered face under a simple helmet, one hand gripping the barricade, the other holding a short spear. Emphasize the stout little wall being raised as part of his guard duty; no writing or sign. Stone arch, torchlit gate and a few defenders in depth, painterly medieval fantasy collectible-card art, tactile wood, iron and stone, warm light and atmospheric depth. Exact 1:1 SQUARE 512x512 master, horizontal action; keep sergeant’s face, gripping hand and the full wall top and base inside x24..488,y105..407 for the 206:141 crop. Quiet arch and cobble margins. Strong readable thumbnail silhouette. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b3725240-4012-41e9-85ae-ac319810ec3d.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_30.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed the 512-square source, centered 512×350 crop and 128×88 thumbnail. Sergeant’s face, spear hand, gripping hand, and barricade from top to base remain visible; gatehouse and defenders support his role."
+  },
+  {
+    "cardId": "gray_summon_31",
+    "name": "Castle Warden",
+    "prompt": "Paint the Hexmancers card Castle Warden. Actual mechanics: a tough, old veteran stationed in the rear who guards and protects allies. Depict a gray-haired castle warden in worn but well-kept armor, standing on a stair landing behind younger defenders and raising a broad shield to cover them from a descending strike. His deeply lined face is calm and experienced, one gloved hand grips the shield strap and the other reaches to guide an ally behind him. Make the warden’s protective posture and age clear, with a keep interior of old stone, iron sconces and a faded banner; no written heraldry. Painterly medieval fantasy collectible-card art with nuanced steel, cloth and stone, warm torchlight against cool daylight from a narrow window, atmospheric depth. Exact 1:1 SQUARE 512x512 master; compose horizontally and keep the warden’s face, shield, guiding hand and sheltered allies within x24..488,y105..407 for the 206:141 crop. Quiet wall and stair margins. Strong readable thumbnail silhouette. No text, letters, frame, UI, anime, Disney-like cartoon, photorealism or pixel art. Repaired first render’s right-edge shield clipping by moving the warden and complete shield inward and reducing the group slightly.",
+    "generatedPath": "/workspace/generated_images/exec-745c7d6f-7fd5-42b1-957d-03d9cfb9e75a.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_31.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Preserved the clipped first 512 source at /tmp/gray_summon_31-attempt1.png before repainting. Reviewed repaired 512-square source, centered crop and 128×88 thumbnail: warden’s face, shield hand, complete shield, and protected allies all remain visible."
+  },
+  {
+    "cardId": "gray_summon_32",
+    "name": "Watchtower Guard",
+    "prompt": "Paint the Hexmancers card Watchtower Guard. Actual mechanics: a tough loyal guard who acts very quickly at the front to protect an ally. Depict a vigilant medieval sentry racing down the wooden stair of a stone watchtower, planting a shield between an endangered companion and an incoming arrow; his spear is ready in the other hand and a small protective ward flashes across the shield. Keep the guard’s watchful face, gloved hands, shield and tower stair unmistakable; a lit beacon and distant battlements establish the watchtower setting. The figure is loyal and decisive, not a mounted soldier or archer. Weathered wood, iron and gray stone, crisp dusk light with warm beacon glow and cool sky, painterly medieval fantasy collectible-card illustration and atmospheric depth. Exact 1:1 SQUARE 512x512 master, horizontal staging; keep face, both hands, shield and protected companion within x24..488,y105..407 for the 206:141 crop. Quiet sky and floor margins. Strong readable thumbnail silhouette. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-69fc0e7f-a919-4834-93f1-3858b23e2dc6.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_32.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed the 512-square source, centered 512×350 crop and 128×88 thumbnail. Guard’s face, spear and shield hands, complete shield, protected companion and tower stair remain clear; the beacon establishes the watchtower."
+  },
+  {
+    "cardId": "gray_summon_33",
+    "name": "Loyal Mastiff",
+    "prompt": "Paint the Hexmancers card Loyal Mastiff. Actual mechanics: a sturdy faithful hound escorts its companion, pierces through an attacker and briefly freezes it. Show a powerful brindled mastiff standing close beside a weary medieval traveler, springing forward with jaws open to seize an armored raider’s forearm; a thin frost sheen spreads from the bite and freezes the raider’s gauntlet. Keep the mastiff’s full head, strong shoulders and loyal focused eyes central, with the traveler’s hand near its collar to show trust. Believable short coat, leather collar and damp stone road, cool winter dusk with warm lantern edge light, painterly medieval fantasy collectible-card illustration, grounded canine anatomy and atmospheric depth. Exact 1:1 SQUARE 512x512 master, horizontal staging; keep dog’s face, bite, traveler hand and frost impact within x24..488,y105..407 for the 206:141 crop. Quiet sky and road margins. Clear silhouette at thumbnail size. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7b3485dd-33d8-4d3a-829b-a26d79f84474.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_33.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed 512-square source, centered crop and thumbnail. Mastiff’s full face, bite, handler’s hand and chilling impact remain clear; the dog dominates and its loyal companion is visible behind."
+  },
+  {
+    "cardId": "gray_summon_34",
+    "name": "Kangal Shepherd Dog",
+    "prompt": "Paint the Hexmancers card Kangal Shepherd Dog. Actual mechanics: a brave, sturdy rear-line shepherd dog makes two rapid dashes and chills enemies on impact. Show one large sandy-fawn Anatolian Kangal with a distinct dark face mask and curled tail sprinting through a medieval camp to intercept two approaching raiders in quick succession; the first armored leg and shield rim turn white with frost where the dog has brushed past. The dog, not the soldiers, is the clear subject: full expressive head, strong body, powerful stride and plain leather shepherd’s collar. A shepherd and sheep pens may sit in the distance to establish its guardian role, but stay subtle. Cold morning haze with warm lantern glints, painterly medieval fantasy collectible-card art with believable canine anatomy and material detail. Exact 1:1 SQUARE 512x512 master, horizontal motion; keep dog’s face, body, paws and both dash impacts within x24..488,y105..407 for the 206:141 crop. Quiet sky and ground margins. Strong thumbnail silhouette. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-1a0e2610-e8db-4a24-9252-c319cd4289a5.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_34.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed square source, centered crop and thumbnail. Kangal’s full dark-masked face, collar, body and stride remain clear; two raiders frame the chilling dash and the shepherd context reads behind."
+  },
+  {
+    "cardId": "gray_summon_35",
+    "name": "Old Gray Bear",
+    "prompt": "Paint the Hexmancers card Old Gray Bear. Actual mechanics: a tough old bear fights from the front with powerful pounces. Show a massive elder gray bear with silvered muzzle and a few old scars rising from a cold river ford and lunging onto a raider’s shield; water and stones burst outward beneath its paws. The bear is the clear subject: full recognizable head, heavy shoulders, forepaws and bristled gray coat, conveying age and weight rather than a generic brown bear. Include an icy stream, weathered boulders and pine-shadowed mountain dusk, with cool water light and a warm rim on the fur; painterly medieval fantasy collectible-card art, believable animal anatomy, detailed fur and atmospheric depth. Exact 1:1 SQUARE 512x512 master, horizontal action; keep bear’s face, paws and point of impact within x24..488,y105..407 for the 206:141 crop. Quiet cliff and water margins. Strong thumbnail silhouette. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8b5ce417-1970-4d2a-83b5-c29cdb30bf2e.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_35.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed square source, centered crop and thumbnail. The elder bear’s whole recognizable head, paws and shield impact stay visible; silvered muzzle, scars and heavy gray coat read at card size."
   }
 ]

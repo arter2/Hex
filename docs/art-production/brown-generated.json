@@ -943,5 +943,221 @@
     "status": "generated",
     "batch": 8,
     "reviewNote": "Inspected the 512-square master, centered 206:141 crop and 128x88 thumbnail. The sea-folk face and gripping hands remain visible; complete harpoon gun, spearhead and rope are readable within the crop."
+  },
+  {
+    "cardId": "brown_machine_13",
+    "name": "Alchemist's Fire Siphon",
+    "prompt": "Illustrate Alchemist's Fire Siphon as an exact 1:1 square medieval fantasy card painting. Make a compact LOW profile device only 210 pixels tall: a horizontal brass cannon mounted on a low stone bench, with a round glass fire reservoir attached beside the barrel at the SAME height, joined by one short looping copper tube. Show the complete orb, its metal cap and base, every connecting tube, cannon breech, full muzzle and the bench supports together; nothing is stacked high, nothing touches an edge. Keep the complete named artifact strictly inside the central horizontal safe band y125–385 and x35–477 so the entire device survives a 206:141 crop. The orb draws a controlled orange flame through the tube and the muzzle vents a small flame. Painterly high-fantasy materials, detailed brass and glass, warm directional sunset light. Quiet scenery above and below. No text, letters, numbers, border, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-216249bc-b578-4608-af6e-88159ac40447.png",
+    "editableSourcePath": "game/cards/art/masters/brown_machine_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Repainted twice after reviewing normalized crops; inspected the final 512-square master, centered 206:141 crop and 128x88 thumbnail. Complete fire orb, tube, cannon, muzzle and supports remain within the crop."
+  },
+  {
+    "cardId": "brown_instant_11",
+    "name": "Liquid Courage",
+    "prompt": "Paint an illustration for Liquid Courage: a sturdy dwarf lifts a small clear glass flask of amber courage tonic, a faint cool blue aura gathering around the hand and shoulders as resolve replaces fear. Keep the dwarf's face, flask, stopper and hand prominent and fully visible. Painterly medieval fantasy collectible-card art, warm amber drink against subtle chill-blue magic, atmospheric tavern light. Square 1:1 editable 512x512 master; keep face and whole portable flask within x24–488,y105–407 for 206:141 crop. No border, labels, text, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-81cc2500-ee05-4821-8931-a8dcaad8a0e0.png",
+    "editableSourcePath": "game/cards/art/masters/brown_instant_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Inspected the 512-square master, upward-shifted 206:141 crop and 128x88 thumbnail. Dwarf face, flask, stopper and hand are visible within the crop."
+  },
+  {
+    "cardId": "brown_tinker_11",
+    "name": "Fire Rune Etching",
+    "prompt": "Paint an illustration for Fire Rune Etching: a dwarven craftworker's hands carefully engraving a glowing orange fire rune into a steel blade with a fine rune stylus, sparks tracing the newly etched groove. Make the engraving hand, tool, rune and blade the clear focal subject; show part of the dwarf's focused face above. Painterly medieval fantasy collectible-card art, iron, chisel marks, leather apron, warm forge glow. Square 1:1 editable 512x512 master; keep face, both relevant hands and rune-bearing blade inside x24–488,y105–407 for 206:141 crop. No readable letters, no border, text, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-06d71154-911a-44ee-b90c-5179e1e91018.png",
+    "editableSourcePath": "game/cards/art/masters/brown_tinker_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Inspected the 512-square master, upward-shifted 206:141 crop and 128x88 thumbnail. The dwarf's face, engraving hands, tool and complete rune-bearing blade remain visible."
+  },
+  {
+    "cardId": "brown_ace_07",
+    "name": "Double-Barrel Blunderbuss",
+    "prompt": "Paint an illustration for Double-Barrel Blunderbuss in an exact 1:1 square. A human adventurer holds a rare ornate medieval double-barrel blunderbuss at chest height. ZOOM OUT enough to show the complete weapon with generous empty margin on both ends: full wooden stock and butt, trigger, receiver, two parallel steel barrels, and both muzzles. The complete weapon should occupy only about 70 percent of the square width, centered from x75 to x440; leave clear space from each edge. Keep the adventurer's face and both hands visible behind the weapon. Twin small muzzle flashes suggest its paired shot. Painterly high-fantasy collectible-card art, steel, brass, walnut and directional light. Ensure the entire stock, both complete barrels and muzzles remain within x24–488,y105–407 in the square and its 206:141 horizontal crop. No frame, text, numbers or UI, no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7416fee5-f146-4402-99f1-5b101d706057.png",
+    "editableSourcePath": "game/cards/art/masters/brown_ace_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Repainted after the first attempt clipped the stock at the edge. Inspected the final 512-square master, centered 206:141 crop and 128x88 thumbnail; entire stock, both barrels, muzzles, hands and face are visible."
+  },
+  {
+    "cardId": "brown_machine_14",
+    "name": "Brass Crossbow Turret",
+    "prompt": "Create a painterly medieval fantasy illustration for Brass Crossbow Turret in an exact square 1:1 canvas. Show one SQUAT low-profile brass crossbow turret, a compact mechanical crossbow with short bow arms on a short round swivel pedestal, fully visible from bow tips to pedestal base. Its bolt shoots straight across the scene. A human defender stands behind it, with entire face and raised signaling hand safely visible. Keep turret height under 240 pixels and place turret, face, hand and bolt entirely inside a central horizontal band y125–385, x24–488; leave quiet sky above and stonework below. The whole named turret, including base and both bow tips, must fit in the 206:141 crop without touching the crop edges. Painterly forged brass, wood and stone, clear readable silhouette, directional daylight. No border, writing, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-119601d6-58cd-4633-b323-2ddfeac8fa17.png",
+    "editableSourcePath": "game/cards/art/masters/brown_machine_14.png",
+    "sourceNative": [
+      1516,
+      1038
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Repainted after the first crop clipped the operator hand and turret base. Inspected final 512-square master, upward-shifted 206:141 crop and 128x88 thumbnail; full turret/base, defender face and signaling hand remain visible."
+  },
+  {
+    "cardId": "brown_instant_12",
+    "name": "Mead of Poetry",
+    "prompt": "Paint an illustration for Mead of Poetry: a human bard drinks from a full wooden mead cup beside a parchment and quill, then suddenly composes shining lines of verse as small motes gather into a spell gauge. The bard's expressive face, cup, hand and the whole portable cup remain the focus, with cool enchantment balanced by warm hearth light. Painterly medieval fantasy collectible-card art, leather, carved wood and atmospheric tavern detail. Square 1:1 editable 512x512 master; keep face, cup, hand and quill inside x24–488,y105–407 for 206:141 crop. No readable writing, border, text, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6414bb73-7244-4e43-b2d6-786bb1078c7c.png",
+    "editableSourcePath": "game/cards/art/masters/brown_instant_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Inspected the 512-square master, upward-shifted 206:141 crop and 128x88 thumbnail. Bard face, full mead cup and hand remain visible; quill and spell motes read at thumbnail size."
+  },
+  {
+    "cardId": "brown_tinker_12",
+    "name": "Frost Coating",
+    "prompt": "Paint an illustration for Frost Coating: a sea-folk craftswoman uses a small brush to spread a crystalline blue frost coating along an entire steel cutlass, the blade freezing from hilt to point. Show her face, working hand, brush, whole hilt and entire blade clearly. Painterly medieval fantasy collectible-card art, salt-spray workshop, steel, glass jar and cool reflected ice light. Square 1:1 editable 512x512 master; arrange whole cutlass horizontally and keep face, brush-hand and complete named blade within x24–488,y105–407 for 206:141 crop. No text, lettering, border, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-92b579b0-0464-4056-8ff6-7867fa0015d2.png",
+    "editableSourcePath": "game/cards/art/masters/brown_tinker_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Inspected the 512-square master, centered 206:141 crop and 128x88 thumbnail. Craftswoman, brush, hands and complete frost-coated cutlass are recognizable and remain visible."
+  },
+  {
+    "cardId": "brown_ace_12",
+    "name": "Troll Bone Crossbow",
+    "prompt": "Paint an illustration for Troll Bone Crossbow: a powerful troll warrior braces a handcrafted heavy crossbow made from huge ivory troll bones, sinew and dark iron, loosing a thick bolt that leaves a trail of cold mist. Show the troll's face and hands, complete crossbow from stock to bow tips, and complete bolt. Painterly medieval fantasy collectible-card art, rugged stone pass and cool directional light. Square 1:1 editable 512x512 master, keep face, hands and entire named crossbow within x24–488,y105–407; arrange horizontally for 206:141 crop. No border, text, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-902b7607-6af1-4690-8e74-455b565e7b54.png",
+    "editableSourcePath": "game/cards/art/masters/brown_ace_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Inspected the 512-square master, centered 206:141 crop and 128x88 thumbnail. Troll face and hands, complete bone crossbow and bolt remain visible and readable."
+  },
+  {
+    "cardId": "brown_machine_15",
+    "name": "Antikythera Sentinel",
+    "prompt": "Paint an illustration for Antikythera Sentinel: a complete ancient bronze automaton guardian with a readable clockwork torso, articulated limbs and a distinctive exposed astronomical gear mechanism at its chest, standing watch in a ruined classical temple. Convey protection and mechanical intelligence. Painterly medieval fantasy collectible-card art, aged brass, stone and warm shaft of light. Square 1:1 editable 512x512 master; keep the sentinel's entire head and essential automaton body within x24–488,y105–407 for 206:141 crop, with quiet atmosphere beyond. No border, writing, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-12785012-efa2-4902-9740-201ac0b529f6.png",
+    "editableSourcePath": "game/cards/art/masters/brown_machine_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Inspected the 512-square master, centered 206:141 crop and 128x88 thumbnail. Sentinel face, clockwork chest, arms and hands remain intact; crop prioritizes the identity-defining upper automaton."
+  },
+  {
+    "cardId": "brown_instant_13",
+    "name": "Mana Potion",
+    "prompt": "Paint an illustration for Mana Potion: a precise alchemist's glass vial filled with radiant golden mana, fully visible from glass foot to cork stopper, held up against a dim workshop so its light blooms into a rising arcane gauge of energy. Show the alchemist's focused face and hand behind the vial; potion remains the dominant named object. Painterly medieval fantasy collectible-card art, delicate glass reflections, brass alchemy tools, luminous controlled gold-white light. Square 1:1 editable 512x512 master; keep face, hand and whole vial with stopper inside x24–488,y105–407 for 206:141 crop. No labels, lettering, border, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c290eef1-2f4a-45cf-b664-4812c5f56812.png",
+    "editableSourcePath": "game/cards/art/masters/brown_instant_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Inspected the 512-square master, upward-shifted 206:141 crop and 128x88 thumbnail. Entire vial, cork stopper, hand and alchemist face are retained."
+  },
+  {
+    "cardId": "brown_tinker_13",
+    "name": "Spark Plug",
+    "prompt": "Paint an illustration for Spark Plug: a tiny but intricate gnomish brass spark plug held between a craftsperson's fingers, snapping with a sharp blue-white arc that stuns a nearby clockwork beast. Keep the complete named plug, both fingers and gnome's focused face clearly readable; the plug is the subject. Painterly medieval fantasy collectible-card art, copper threads, porcelain insulator, workshop lamps and electric blue light. Square 1:1 editable 512x512 master; keep face, hand and whole plug within x24–488,y105–407 for 206:141 crop. No text, labels, numbers, border, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9c30fc65-ae33-4eab-a5e9-b6d382852ed2.png",
+    "editableSourcePath": "game/cards/art/masters/brown_tinker_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Inspected the 512-square master, centered 206:141 crop and 128x88 thumbnail. Complete spark plug, holding fingers, gnome face and blue stun arc remain visible."
+  },
+  {
+    "cardId": "brown_machine_16",
+    "name": "Gnomish Gatling",
+    "prompt": "Paint an illustration for Gnomish Gatling: a fully visible compact brass gnomish gatling gun with a clear cluster of rotating barrels, gear crank, stock and low tripod, firing a controlled fan of bolts that slows a charging armored foe in a fantasy courtyard. A gnome engineer braces it behind the mechanism. Painterly medieval fantasy collectible-card art, detailed clockwork, wood, brass and crisp action light. Square 1:1 editable 512x512 master; keep the entire gatling, barrel cluster, base, gnome face and hands inside x24–488,y105–407 for 206:141 crop. No border, lettering, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6d0064ca-8aa4-4627-819e-a51da6bc0468.png",
+    "editableSourcePath": "game/cards/art/masters/brown_machine_16.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Inspected the 512-square master, centered 206:141 crop and 128x88 thumbnail. Complete gatling barrel cluster and tripod remain visible; gnome face and bracing hand stay legible."
   }
 ]

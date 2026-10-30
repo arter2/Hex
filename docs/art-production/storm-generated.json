@@ -1132,5 +1132,95 @@
       1254,
       1254
     ]
+  },
+  {
+    "cardId": "storm_charge_05",
+    "name": "Quiver of Sand Darts",
+    "prompt": "Repaint the illustration for “Quiver of Sand Darts” as a square medieval fantasy collectible-card painting, keeping the complete named object and archer face together inside a horizontal card crop. Show a compact leather-and-brass quiver with several slim sand darts strapped to an agile desert ranger’s back; she draws and releases one precise dart at a distant foe, its tip crackling with a small blue-white critical spark. Important correction: scale the ranger and full quiver smaller so her whole head/face and the complete quiver including its lower end both fit comfortably between y115 and y395 in square coordinates; position the face near y160 and quiver base near y365. Keep the throwing hand and full dart visible within x24..488,y105..407. Clear blue-gold desert atmosphere around them. Painterly, grounded cloth/leather/brass, expressive brushwork, warm Saharan light and storm-blue accents. Explicit 1:1 square for editable 512x512. No border, text, UI, anime, Disney cartoon, photorealism, modern gear or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-cff61fde-43dd-41d0-9be1-532221bebe06.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed the final 512-square source, default 206:141 crop and 128px thumb. Ranger face and throwing hand, full dart and complete brass-trimmed quiver fit the crop. Earlier cropped source is preserved at /tmp/storm_charge_05-first-source.png.",
+    "editableSourcePath": "game/cards/art/masters/storm_charge_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "storm_utility_05",
+    "name": "Djinn's Duplicate",
+    "prompt": "Paint an illustration for the exact card “Djinn’s Duplicate”. Its utility copies another spell or object. Show one recognizable brass-lamplit djinn stepping out of a tall polished silver-bronze mirror while its identical duplicate emerges from the reflection beside it; the two faces, costumes, lamps and gestures clearly match, linked by a thin ribbon of blue copying magic. The elegant genie duplicates are the unmistakable subject. Painterly medieval fantasy collectible-card art, detailed brass, silk, old mirror and stone, warm amber light with cool blue highlights, expressive brushwork and atmospheric depth. Horizontal composition. Explicit 1:1 square for editable 512x512; keep both faces, hands, full lamps and the mirror’s duplication seam within x24..488,y105..407; quiet chamber atmosphere beyond. No border, text, numbers, UI. No anime, Disney cartoon, photorealism, modern elements or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-bdee980b-6100-41ac-8fe0-50d90068954d.png",
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed the 512-square source, crop shifted up to y=40 and 128px thumb. Both djinn faces, hands and lamps remain visible, and the mirror reflection plus matching figures clearly show duplication.",
+    "editableSourcePath": "game/cards/art/masters/storm_utility_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "storm_trap_05",
+    "name": "Pressure Plate Darts",
+    "prompt": "Paint an illustration for the exact card “Pressure Plate Darts”. The trap is a short floor-triggered spike trap with three darts. Show a sand-colored stone pressure plate being depressed by an armored boot, while three slender brass-tipped darts burst from concealed sockets and streak horizontally toward a startled enemy; the plate mechanism must remain visible and immediately readable. A small, clear blue electric glint can run along the darts, but the trap is physical medieval engineering. Painterly medieval fantasy collectible-card art, believable stone, leather, brass and dust, dramatic directional light and atmospheric depth. Horizontal staging. Explicit 1:1 square intended for editable 512x512; keep the entire pressure plate, all three darts, boot and target face safely within x24..488,y105..407, with expendable ground/ruin atmosphere beyond. No border, text, numbers, UI. No anime, Disney cartoon, photorealism, modern mechanisms or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f135438a-3aa1-48e9-9b62-f8ddc6953801.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed the 512-square source, default 206:141 crop and 128px thumbnail. The pressed stone plate and brass dart sockets are clear; three darts fly across the frame toward the recoiling target, with the boot, target face and action kept in crop.",
+    "editableSourcePath": "game/cards/art/masters/storm_trap_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "storm_environment_04",
+    "name": "Sandworm Burrows",
+    "prompt": "Paint an illustration for the exact card “Sandworm Burrows”. Its battlefield effect is a tremor down one column that briefly stuns. Show a long vertical line of enormous circular sandworm burrow openings tearing through a sunlit desert caravan road; beneath the central opening, a colossal bronze-scaled sandworm’s ridged back heaves the ground upward, sending a narrow column of dust, stones and toppled riders skyward. The connected burrows and trembling column must read as the named landscape feature, with one clear focal opening and seismic action. Painterly medieval fantasy collectible-card art, warm Saharan light, rich sand and bronze textures, atmospheric depth. Compose a horizontal card view with the burrow trail running diagonally from foreground to distance. Explicit 1:1 square for editable 512x512; keep the principal opening, visible worm ridge, and important faces/actions within x24..488,y105..407; quiet dunes beyond. No border, text, UI. No anime, Disney cartoon, photorealism, modern elements or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-674d67c7-6ed0-43d3-8d6e-afdc887a7b23.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed the square source, default 206:141 crop and 128px thumb: the huge burrow, bronze worm ridge and long line of holes remain unmistakable; the column of upheaval reads clearly. A secondary airborne figure touches the crop edge.",
+    "editableSourcePath": "game/cards/art/masters/storm_environment_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "storm_piece_05",
+    "name": "Heart of the Bronze Giant",
+    "prompt": "Paint an illustration for the exact card “Heart of the Bronze Giant”. This legendary artifact launches a heavy, row-wide concussive blast that knocks foes back and stuns them. Show an enormous articulated bronze heart-core, clearly heart-shaped and about the size of a helmet, lodged in the open chest of a toppled bronze colossus; it pulses and fires a single broad horizontal shockwave across a line of armored enemies, hurling them backward. The complete heart artifact is the primary named object, with its curved bronze chambers and glowing center clearly visible. Painterly medieval fantasy collectible-card art, tactile hammered bronze, stone and cloth, dramatic warm-gold and storm-blue light, atmospheric depth. Horizontal action. Explicit 1:1 square for editable 512x512; keep complete heart core, major faces/hands and the horizontal blast inside x24..488,y105..407, with expendable ruins above and ground below. No border, text, numbers, UI. No anime, Disney cartoon, photorealism, modern machinery, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5fbb52d8-ee92-40f4-8b39-7d5e4dbd9d56.png",
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reviewed the 512-square source, crop shifted to y=45, and 128px thumbnail. The full bronze heart-core and horizontal blast are visible; the shifted crop restores the rounded top of the named artifact while the action stays legible.",
+    "editableSourcePath": "game/cards/art/masters/storm_piece_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
   }
 ]

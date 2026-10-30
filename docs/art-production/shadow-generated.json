@@ -1082,10 +1082,118 @@
     ],
     "focalPoint": [
       0.5,
-      0.46
+      0.42
     ],
     "status": "generated",
     "batch": 8,
     "reviewNote": "The carved urn, lid, grave-frost burst and knocked-back foe are clear. The standard crop slightly clips the urn crown; shifting focalPoint upward to y=0.46 keeps the full urn in the 206:141 crop while retaining the victim and impact. The 128px thumbnail remains recognizable."
+  },
+  {
+    "cardId": "shadow_ward_06",
+    "name": "Lead-Lined Coffin",
+    "prompt": "Edit this painting into a square 1:1 512x512 medieval fantasy card illustration. Keep the same lead-lined coffin cage, trapped armored man, violet ward and crypt setting, but make the entire coffin cage compact and fully visible: the complete closed top lid, all four upper corners, barred sides and full base must fit comfortably inside the central horizontal card band x24..488,y105..407. Scale the cage down and stage it at a three-quarter angle, occupying about 60 percent of the canvas height, with enough breathing room above and below; keep the imprisoned man's face and both hands at the bars clearly visible. Make it read instantly as a lead-lined coffin turned into a cage, not a tower or ordinary cell. Painterly, tactile riveted lead and iron, cold dramatic light. No text, frame, labels or UI.",
+    "generatedPath": "/workspace/generated_images/exec-19f2c678-2e43-4442-8e6b-8f7335aef2c2.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_ward_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.485
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Repaired an initially too-tall cage and preserved earlier source bytes in /tmp. With focalPoint y=0.485, the 206:141 crop includes the complete lid, coffin cage and base plus the captive's face and hands. The 128px thumbnail remains identifiable."
+  },
+  {
+    "cardId": "shadow_sentry_07",
+    "name": "Pin Doll",
+    "prompt": "Edit this artwork into a true square 1:1 512x512 composition for Pin Doll. Preserve the creepy stitched cloth doll, pins, violet curse magic and medieval crypt mood, but reframe so the entire doll including its full round head and all pins sits comfortably inside the square, with clear margin at the left. Keep a small armored target on the right and a clean magic needle/bolt between them. Use horizontal staging; keep doll face, pins and relevant hand/object/action in x24..488,y105..407 for a 206:141 wide crop. Painterly medieval fantasy, believable burlap, wood and steel. No text, frame, UI.",
+    "generatedPath": "/workspace/generated_images/exec-cc355c31-3db1-401d-a1a2-03700627088b.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_sentry_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Reframed a landscape draft as a square so the stitched doll's full face and pins stay visible. The 206:141 crop preserves the doll, targeted enemy and curse/lifedrain threads; the 128px thumbnail reads as a pinned effigy attacking."
+  },
+  {
+    "cardId": "shadow_boon_05",
+    "name": "Embalming Salts",
+    "prompt": "Paint an illustration for Embalming Salts. Mechanics: an immediate short regeneration boon restores a small amount of health over several seconds to friendly troops. Show a battlefield apothecary's gloved hand sprinkling pale, iridescent embalming crystals from an open bone-white jar onto the wounds of a wounded allied soldier; the soldier's skin and armor glimmer as the injury closes and vigor returns. Make the named salts and jar clearly visible, alongside the healing action. Painterly medieval fantasy, tactile glass, mineral crystals, leather gloves and worn armor, cold crypt light softened by a warm healing glow. Square 1:1 512x512 master; keep jar, salts, face, hand and wound within x24..488,y105..407 for 206:141 card crop. No text, frame, labels or UI; no anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0a427a47-8a9b-4b63-b1fe-c25b45019541.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_boon_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "The open crystal jar, sprinkling hand, healing soldier's face and glowing wound remain readable in the square and 206:141 crop. The 128px thumbnail retains the jar and healing glow; the healer's hood top is expendable atmosphere."
+  },
+  {
+    "cardId": "shadow_charge_05",
+    "name": "Nightshade Berries",
+    "prompt": "Paint an illustration for Nightshade Berries. Mechanics: a pouch of four charges, each shot releases twin poisonous darts. Show a small dark leather pouch of glossy deep-purple nightshade berries tipped open on a stone ledge; beside it, two slender dark darts are coated with berry poison and aimed toward a distant armored target, with a subtle toxic violet-green sheen. The berries are the primary named object, large, sharply readable and clearly distinct from ordinary fruit; the paired darts and target are supporting action. Painterly medieval fantasy, tactile fruit skins, leather, steel and crypt stone, dramatic cool light. Square 1:1 512x512; keep the whole pouch, berries, both dart tips and target inside x24..488,y105..407. No text, border or UI, no anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0fc8564f-102c-438a-be00-f691c77d9090.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_charge_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "The large open pouch and glossy nightshade berries dominate; paired poison darts and distant foe support the mechanics. The 206:141 crop keeps the berries and pouch intact; it clips a little of the secondary lower dart tip. The 128px thumbnail clearly reads as a berry pouch."
+  },
+  {
+    "cardId": "shadow_utility_04",
+    "name": "Tarot Spread",
+    "prompt": "Paint an illustration for Tarot Spread. Mechanics: a shadow utility that draws two cards from the caster's deck. Show a mysterious fortune-teller's hands laying out a precise fan of two richly illustrated tarot cards on a dark velvet cloth, while two additional cards rise from the deck in a swirl of violet spectral smoke toward the reader. The decorated cards must be blank of legible lettering or numbers; make the spread and two drawn cards the clear subject. Painterly medieval fantasy, tactile aged paper, dark wood, silver dust and warm candlelight with violet shadows. Square 1:1 512x512 master; keep hands and the entire four-card spread inside x24..488,y105..407 for the 206:141 crop. No text, labels, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-efdf0bcd-4aae-4072-a038-aaf172cc056e.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_utility_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.54
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Shifted focalPoint to y=0.54 so both foreground spread cards, the reader's hands and deck remain visible in the 206:141 crop. The two spectral cards at the upper edge are partly cropped but secondary; the 128px thumbnail reads as a tarot spread."
+  },
+  {
+    "cardId": "shadow_trap_04",
+    "name": "Trapdoor Spider Lair",
+    "prompt": "Paint an illustration for Trapdoor Spider Lair. Mechanics: a normal-sized hidden snare trap springs in a small patch, poisoning and briefly stunning its victim. Show one large trapdoor spider bursting from its camouflaged earthen lair beneath a hinged leaf-and-soil trapdoor, its webbed pit catching the boot of an armored intruder; poison fangs and a brief violet stun flash are visible. The spider, trapdoor and caught boot are all readable, with the lair itself clearly the named subject. Painterly medieval fantasy forest crypt edge, tactile soil, bark, web and chitin, dramatic moonlight. Square 1:1 512x512 master, horizontal staging; keep spider, trapdoor and victim's caught boot inside x24..488,y105..407. No text, frame, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b5ba13e4-0c8b-4e84-9c9b-a98b7e3856b3.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_trap_04.png",
+    "sourceNative": [
+      1536,
+      1024
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "The spider, camouflaged trapdoor and webbed earthen lair remain clear in square and wide crop. The victim's armored leg enters at the crop's left edge and is incidental; the 128px thumbnail still reads as a trapdoor spider lair."
   }
 ]

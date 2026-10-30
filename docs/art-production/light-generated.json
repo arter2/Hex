@@ -1069,5 +1069,95 @@
     "status": "generated",
     "batch": 8,
     "reviewNote": "Repainted after first result clipped the bow tip; preserved the first raw original at /tmp/light_strike_05-first.png. Reviewed exact 512-square source, top-shifted 206:141 crop (focal y=.34) and 128x88 thumbnail: complete bow and string, archer face/hands, arrow and impact all read clearly."
+  },
+  {
+    "cardId": "light_lob_06",
+    "name": "Onager Stone",
+    "prompt": "Repaint for Onager Stone: a compact medieval onager launches a single large stone toward an armored raider, the clear ground impact knocking the target backward. Show the complete wooden frame, both wheels, throwing arm, sling and airborne stone, with margin on all sides. Painterly medieval fantasy, sunset and believable oak, rope, stone and armor, horizontal action in a 1:1 square for a 206:141 card crop. No frame, lettering, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a9dfdcef-47a6-40b4-8eb0-1d88b26c33eb.png",
+    "editableSourcePath": "game/cards/art/masters/light_lob_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Repainted after the first square source cut the onager frame at left; preserved the first source at /tmp/light_lob_06-first-source.png and first raw at /tmp/light_lob_06-first.png. Reviewed final exact 512 source, centered 206:141 crop and 128x88 thumbnail: complete frame and wheels, sling, stone, impact and target are readable."
+  },
+  {
+    "cardId": "light_ward_07",
+    "name": "Chevaux-de-Frise",
+    "prompt": "Repaint for Chevaux-de-Frise: a complete compact two-panel medieval wooden barricade bristling with iron spikes stands across a road, all panel ends and spike tips visible with margin. An armored raider recoils from the central section. Painterly medieval fantasy, warm light, nuanced oak and forged iron, horizontal composition in a 1:1 square for a 206:141 crop. Keep the whole barricade inside the safe crop. No frame, lettering, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c99ca288-ce58-48d3-90d9-633b2bbdb5d0.png",
+    "editableSourcePath": "game/cards/art/masters/light_ward_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Repainted after first normalized result extended the barrier beyond the sides; preserved first raw at /tmp/light_ward_07-first.png. Reviewed final exact 512 source, centered 206:141 crop and 128x88 thumbnail: both barrier panels, end supports, spikes and impact are inside the crop."
+  },
+  {
+    "cardId": "light_sentry_06",
+    "name": "Wayside Shrine",
+    "prompt": "Original painterly medieval fantasy collectible-card art for Wayside Shrine. A sturdy stationary sentry steadily mends nearby allies. Show one modest complete freestanding roadside shrine of carved pale stone, with a small arched niche and luminous sacred lamp; it is the main subject but occupies about 55 percent of square height, with generous sky and ground margins. A weary armored traveler sits to its right receiving a gentle golden healing glow on a bandaged arm. Keep the entire roof, both sides and base, plus the traveler’s face and hands inside the safe crop of a 1:1 square; horizontal 206:141 card view. Painterly materials, warm dawn light, atmospheric depth and quiet countryside. No frame, text, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e74cda38-b566-4bac-af84-d43023251dfb.png",
+    "editableSourcePath": "game/cards/art/masters/light_sentry_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.45
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Repainted twice after square normalization clipped the shrine at the left and then put its roof outside the wide crop; preserved prior sources at /tmp/light_sentry_06-second-source.png and /tmp/light_sentry_06-first.png. Reviewed final exact 512 source, shifted 206:141 crop (focal y=.45) and 128x88 thumbnail: full shrine roof and base, traveler’s face and healing hands remain visible."
+  },
+  {
+    "cardId": "light_boon_04",
+    "name": "Owl's Foresight",
+    "prompt": "Repaint for Owl’s Foresight as a centered square: a complete alert owl, face and both eyes fully visible, soars over a ranger who sidesteps an incoming strike while a chilled armored attacker is knocked down. Moonlit medieval road, painterly fantasy, clear owl focal point and atmospheric depth. Keep owl face, ranger face and moving hand, and the knockdown within the 206:141 safe crop. No frame, text, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9b884146-3b5a-4b41-8394-f4626947efcc.png",
+    "editableSourcePath": "game/cards/art/masters/light_boon_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Repainted after initial square normalization clipped the owl face; preserved first raw and source at /tmp/light_boon_04-first.png and /tmp/light_boon_04-first-source.png. Reviewed final exact 512 source, centered 206:141 crop and 128x88 thumbnail: owl face and both eyes, ranger face/hand and chilled fallen foe remain identifiable; outer wing tips are expendable."
+  },
+  {
+    "cardId": "light_charge_05",
+    "name": "Brick Hod",
+    "prompt": "Repaint for Brick Hod in a centered square: a medieval bricklayer’s complete shoulder-carried wooden trough with both ends and four clay bricks visible, held across the worker’s torso. The worker throws one brick in an arc that punches through a wooden shield and staggers an armored foe. Keep the full hod, face, hands, brick and impact inside the 206:141 safe crop. Painterly medieval fantasy with warm light and believable wood, clay and armor. No frame, text, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-34ef7588-8383-4103-8c41-26821531c65e.png",
+    "editableSourcePath": "game/cards/art/masters/light_charge_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 8,
+    "reviewNote": "Repainted after first normalized source cut the hod’s left end; preserved first raw and source at /tmp/light_charge_05-first.png and /tmp/light_charge_05-first-source.png. Reviewed final exact 512 source, centered 206:141 crop and 128x88 thumbnail: whole hod and bricks, worker face/hands, projectile and shield impact are legible."
   }
 ]

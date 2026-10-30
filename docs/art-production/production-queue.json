@@ -4,8 +4,8 @@
   "active": 834,
   "remaining": 1119,
   "pending": 919,
-  "assigned": 200,
-  "awaitingReview": 0,
+  "assigned": 160,
+  "awaitingReview": 40,
   "countsByColour": {
     "brown": 234,
     "fire": 246,
@@ -273,7 +273,7 @@
       "name": "Goblin Rocket Rack",
       "type": "machine",
       "color": "brown",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -282,7 +282,7 @@
       "name": "Gnomish Bomb Lobber",
       "type": "machine",
       "color": "brown",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -291,7 +291,7 @@
       "name": "Alchemist's Acid Mortar",
       "type": "machine",
       "color": "brown",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -677,7 +677,7 @@
       "name": "Flash Bang Powder",
       "type": "instant",
       "color": "brown",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -686,7 +686,7 @@
       "name": "Shock Glove",
       "type": "instant",
       "color": "brown",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -2157,7 +2157,7 @@
       "name": "Kitsune Foxfire",
       "type": "strike",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -2473,7 +2473,7 @@
       "name": "Paper Lantern Bomb",
       "type": "lob",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -2659,7 +2659,7 @@
       "name": "Dragon Scale Shield",
       "type": "ward",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -2790,7 +2790,7 @@
       "name": "Goblin Flamethrower Post",
       "type": "sentry",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -2871,7 +2871,7 @@
       "name": "Hearty Feast",
       "type": "boon",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -4239,7 +4239,7 @@
       "name": "Hurricane's Eye",
       "type": "strike",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -4561,7 +4561,7 @@
       "name": "Coconut Lob",
       "type": "lob",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -4722,7 +4722,7 @@
       "name": "Sea Urchin Bed",
       "type": "ward",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -4861,7 +4861,7 @@
       "name": "Whale Bone Arch",
       "type": "sentry",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -4959,7 +4959,7 @@
       "name": "Selkie Skin",
       "type": "boon",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -5079,7 +5079,7 @@
       "name": "Grapeshot Bag",
       "type": "charge",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -5256,7 +5256,7 @@
       "name": "Return to the Sea",
       "type": "utility",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -5345,7 +5345,7 @@
       "name": "Ice Spike Pit",
       "type": "trap",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -5434,7 +5434,7 @@
       "name": "Iceberg Field",
       "type": "environment",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -5520,7 +5520,7 @@
       "name": "Eye of the Frost Giant",
       "type": "piece",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -6819,7 +6819,7 @@
       "name": "Messenger Pigeon",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -6828,7 +6828,7 @@
       "name": "Night Owl Scout",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -6837,7 +6837,7 @@
       "name": "Horned Owl",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -6846,7 +6846,7 @@
       "name": "Quill Porcupine",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -6855,7 +6855,7 @@
       "name": "Spiny Hedgehog",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -10401,7 +10401,7 @@
       "name": "Crow Swarm",
       "type": "strike",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -10700,7 +10700,7 @@
       "name": "Coffin Drop",
       "type": "lob",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -10838,7 +10838,7 @@
       "name": "Demon Hide",
       "type": "ward",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -10961,7 +10961,7 @@
       "name": "Spider Nest",
       "type": "sentry",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -11050,7 +11050,7 @@
       "name": "Witching Hour",
       "type": "boon",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -12515,7 +12515,7 @@
       "name": "Tesla Arc",
       "type": "strike",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -12805,7 +12805,7 @@
       "name": "Golden Hail",
       "type": "lob",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -12961,7 +12961,7 @@
       "name": "Djinn's Veil",
       "type": "ward",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -13068,7 +13068,7 @@
       "name": "Sandstone Idol",
       "type": "sentry",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -13148,7 +13148,7 @@
       "name": "Camel's Endurance",
       "type": "boon",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -14622,7 +14622,7 @@
       "name": "Tiger's Rake",
       "type": "strike",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -14963,7 +14963,7 @@
       "name": "Sticky Sap Glob",
       "type": "lob",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -15120,7 +15120,7 @@
       "name": "Oak Heartwood Shield",
       "type": "ward",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -15253,7 +15253,7 @@
       "name": "Mandrake Patch",
       "type": "sentry",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -15307,7 +15307,7 @@
       "name": "Mistletoe Sprig",
       "type": "boon",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },

@@ -1669,5 +1669,95 @@
     "status": "generated",
     "batch": 9,
     "reviewNote": "The full suspended log, rope rig and impact burst remain readable within the wide crop."
+  },
+  {
+    "cardId": "verdant_strike_09",
+    "name": "Tiger's Rake",
+    "prompt": "Paint Tiger's Rake as a verdant strike: a battle-worn ranger recoils after a single enormous spectral tiger claw rakes across a wooden shield, three bright curved gouges and splintering planks marking a clean diagonal wedge. A recognizable tiger face and striped shoulder emerge briefly in green-gold leaf light behind the claw. Keep the ranger's face/guarding hand and complete claw impact readable. Painterly medieval fantasy card illustration, grounded anatomy, tactile leather, wood and fur, rich forest greens, directional sunlight and atmospheric depth. Explicit 1:1 square 512 master; keep face, hand and full claw impact within x24..488 y105..407 for 206:141 crop; quiet foliage above/below. No frame, text, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8bdae002-9fee-49a7-be52-58f786b158f5.png",
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "reviewNote": "Reviewed square, upward-shifted crop (focal y .40), and thumbnail: ranger's face/hand, spectral tiger face and full claw rake remain visible; shift restores tiger's upper face.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "verdant_lob_09",
+    "name": "Sticky Sap Glob",
+    "prompt": "Paint Sticky Sap Glob as a heavy verdant lob: a goblin alchemist in forest leathers throws one large amber-green glob of thick sticky tree sap onto a stone path, where it bursts into cohesive glossy ropes that pin an armored pursuer's boots to the ground. Show the whole glob and sticky splatter, with the pursuer stumbling; no flame or explosion. Painterly medieval fantasy collectible-card art, tactile bark, sap, leather and stone, lush green woodland, attractive warm light and readable action. Explicit 1:1 square 512 master; keep thrower's face/hand and the whole sap impact inside x24..488 y105..407, horizontal 206:141 crop. No lettering, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-43ede2eb-91c4-4480-9c00-605154dba202.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Reviewed square master, default crop and thumbnail: intact amber sap glob and sticky ground burst are prominent, with the trapped pursuer's boots visible; square normalization trims the thrower to a partial figure at left.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/verdant_lob_09.png",
+    "sourceNative": [
+      1515,
+      1038
+    ]
+  },
+  {
+    "cardId": "verdant_ward_09",
+    "name": "Oak Heartwood Shield",
+    "prompt": "Paint Oak Heartwood Shield as a verdant ward: a sturdy round shield carved from a single cross-section of ancient oak, its growth rings visible and heartwood glowing softly, held by a defender as a translucent amber-green barrier blooms around it to stop incoming arrows. The complete shield is dominant; show the defender's face and gripping hand and a few arrows halted at the barrier. Painterly medieval fantasy card art, believable oak grain, leather grip and iron fittings, dappled forest light, atmospheric depth. Explicit 1:1 square for editable 512 master; keep face, hand, full shield and impact within x24..488 y105..407 for horizontal 206:141 crop. No frame, text, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7892a705-60a9-4c5c-b475-3ba3be8aaff1.png",
+    "focalPoint": [
+      0.5,
+      0.49
+    ],
+    "reviewNote": "Reviewed square, upward-shifted crop (focal y .40), and thumbnail: complete heartwood shield, defender's face/hand and halted arrows remain visible; shift brings the forehead into frame. Parent review lowered the crop to retain the complete shield rim, gripping hand and face; only upper hair/background crop, and source bytes are unchanged.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/verdant_ward_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "verdant_sentry_08",
+    "name": "Mandrake Patch",
+    "prompt": "Paint Mandrake Patch as a rare verdant sentry: a small cultivated patch of several uncanny mandrake plants with humanlike root faces, broad leaves and tangled root bodies emerging from rich dark soil in a forest clearing. The foremost mandrake, face and leafy crown dominate; other root-faced plants form a low row behind it, mouths open as they project a focused cone of pollen and leaves toward an approaching armored intruder. Painterly medieval fantasy collectible-card art, grounded eerie botanical detail, warm green-gold light and deep woodland atmosphere. Explicit 1:1 square 512 master; keep primary mandrake face/crown and cone action within x24..488 y105..407 for horizontal crop. No text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6026bbff-ac6b-4c5d-9a75-0e4f8c8e8668.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Reviewed square master, default crop and thumbnail: leading mandrake's face and crown, several root-faced plants, pollen cone and intruder remain readable.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/verdant_sentry_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "verdant_boon_07",
+    "name": "Mistletoe Sprig",
+    "prompt": "Paint Mistletoe Sprig as a verdant boon: a small fresh sprig of mistletoe with waxy green leaves and pearl-white berries held carefully between a druid's fingers, gathered beneath an ancient oak. A subtle circular current of green-gold vitality flows from the berries into the druid's open palm and softly back toward the living boughs, suggesting a measured restorative exchange; the sprig remains the clear focal object. Painterly medieval fantasy collectible-card illustration, nuanced leaf and bark textures, warm dappled light, atmospheric woodland depth and grounded hands. Explicit 1:1 square 512x512 master; keep complete sprig, berries, hand and energy exchange within x24..488 y105..407 for 206:141 crop, quiet foliage beyond. No text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0dc36872-497a-4b0a-a276-e69b95bfb74c.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Reviewed square master, default crop and thumbnail: full white-berried mistletoe sprig and both hands remain visible, with a restrained energy current connecting the leaves to the open palm.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/verdant_boon_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
   }
 ]

@@ -1663,5 +1663,95 @@
     "status": "generated",
     "batch": 9,
     "reviewNote": "Inspected square source, upward-shifted 206:141 crop and 128x88 thumbnail. Whole trebuchet frame, base, counterweight, throwing arm and sling remain visible; engineer face and signaling hand are identifiable."
+  },
+  {
+    "cardId": "brown_machine_28",
+    "name": "Goblin Rocket Rack",
+    "prompt": "Wiry goblin mechanic operates a complete wooden-and-brass rack of small rockets; one launches with short smoke trail, frost-touched metal hints chilling engine. Painterly medieval fantasy courtyard. Square 1:1; face, hands and rack inside x24..488,y105..407; quiet margins for 206:141 crop. No frame, text, modern tech, anime, Disney, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5f7a2015-c0ea-4783-8213-0a0d46e13908.png",
+    "editableSourcePath": "game/cards/art/masters/brown_machine_28.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Goblin, rack and hands remain clear in the square and wide crop; launched rocket is incidental and may reach the upper edge.",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "brown_instant_25",
+    "name": "Flash Bang Powder",
+    "prompt": "Gnomish alchemist scatters flash-bang charges; contained burst dazzles armored raiders. Face, hand, powder vessel and cluster are primary. Painterly medieval fantasy, square 1:1; critical elements inside x24..488,y105..407 for wide crop.",
+    "generatedPath": "/workspace/generated_images/exec-d8e91386-fcab-4f89-9e9d-2707f63e152d.png",
+    "editableSourcePath": "game/cards/art/masters/brown_instant_25.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Face, scattering hand, vessel and charges read clearly in the square and wide crop; bright burst leaves the gnome visible.",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "brown_machine_29",
+    "name": "Gnomish Bomb Lobber",
+    "prompt": "Stout gnomish engineer loads an iron-banded bomb into a complete wooden-and-brass torsion catapult aimed toward distant ramparts. Painterly medieval fantasy, square 1:1; machine, face, hands and bomb fit x24..488,y105..407.",
+    "generatedPath": "/workspace/generated_images/exec-5faf7ee1-c72e-49a4-9356-5ff64f0d9bbf.png",
+    "editableSourcePath": "game/cards/art/masters/brown_machine_29.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Catapult, gnome face and hands remain recognizable in the wide crop; portions of foreground wheels are close to the lower crop edge. Parent review rejected this attempt: the full lobber extends beyond the square and wide crop. A compact repaint is required after the image-service usage limit resets.",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "brown_instant_26",
+    "name": "Shock Glove",
+    "prompt": "A cheerful gnomish artificer with fully visible face wears an oversized leather-and-brass articulated shock glove with luminous blue coil rings on her raised open hand. Harmless decorative blue sparks surround it. Painterly grounded fantasy, square 1:1; keep full face and glove inside x64..448,y115..400 for wide crop.",
+    "generatedPath": "/workspace/generated_images/exec-8d7a7263-1f1e-43fd-891f-027e3cf3bb5f.png",
+    "editableSourcePath": "game/cards/art/masters/brown_instant_26.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.44
+    ],
+    "reviewNote": "Repainted after first composition clipped the face and a violence filter rejected a combat depiction. Full face and complete glove read clearly in square and wide crop; harmless sparks preserve the electric identity. Parent crop review raised framing to retain every glove fingertip; source unchanged.",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "brown_machine_30",
+    "name": "Alchemist's Acid Mortar",
+    "prompt": "A compact bronze siege mortar cannon on a sturdy oak carriage with two wheels, centered with margin. An alchemist's full face and hands show as he pours green acid from a vial into the loading cup; a small green shell arcs distantly. Painterly medieval fantasy machinery. Square 1:1; keep cannon, carriage, face and hands in x40..472,y125..390 for 206:141 crop. Not a mortar-and-pestle.",
+    "generatedPath": "/workspace/generated_images/exec-78abdfd3-63d2-46f7-a245-d79075b85c35.png",
+    "editableSourcePath": "game/cards/art/masters/brown_machine_30.png",
+    "sourceNative": [
+      1516,
+      1037
+    ],
+    "focalPoint": [
+      0.5,
+      0.57
+    ],
+    "reviewNote": "The first output depicted a mortar and pestle and was replaced. Adjusted focal point to preserve the alchemist face and full mortar in the wide crop; lower wheel rims are slightly trimmed, while the cannon and loading action remain clear. Parent crop review lowered framing to retain both full wheel rims, the mortar, hands and face; source unchanged.",
+    "status": "generated",
+    "batch": 10
   }
 ]

@@ -35,6 +35,7 @@ if(command==='complete'){
  if(!state.completedPackets.includes(p.packet))state.completedPackets.push(p.packet);
  current.state='idle';
 }else if(command==='assign'||command==='assign-next'){
+ if(state.generationPause)throw Error('Image generation paused: '+state.generationPause.errorCode+'; reported reset '+state.generationPause.resetAtUTC);
  if(!worker)throw Error('Worker is required');
  if(state.workers[worker]?.state==='running')throw Error('Worker already has a running packet');
  const busy=new Set(Object.values(state.workers).filter(w=>w.state==='running').map(w=>known.get(w.packet).colour));
@@ -50,8 +51,8 @@ if(command==='complete'){
 if(command!=='status'&&(command!=='assign-next'||assigned)){const temp=statePath+'.tmp';fs.writeFileSync(temp,JSON.stringify(state,null,2)+'\n');fs.renameSync(temp,statePath);}
 const busyColours=new Set(Object.values(state.workers).filter(w=>w.state==='running').map(w=>known.get(w.packet).colour));
 const suggestions={};
-for(const [name,w]of Object.entries(state.workers))if(w.state==='idle'){
+for(const [name,w]of Object.entries(state.workers))if(w.state==='idle'&&!state.generationPause){
  const next=nextPacket(busyColours);
  if(next){suggestions[name]=next.packet;busyColours.add(next.colour);}
 }
-console.log(JSON.stringify({batch,generated:Object.values(byColour).reduce((a,b)=>a+b,0),target:packets.reduce((n,p)=>n+p.cards.length,0),reviewedPackets:state.completedPackets.length,byColour,workers:Object.fromEntries(Object.entries(state.workers).map(([name,w])=>[name,{...w,saved:count(known.get(w.packet))}])),suggestions,...(command==='assign-next'?{assigned}:{})}));
+console.log(JSON.stringify({batch,generated:Object.values(byColour).reduce((a,b)=>a+b,0),target:packets.reduce((n,p)=>n+p.cards.length,0),reviewedPackets:state.completedPackets.length,byColour,workers:Object.fromEntries(Object.entries(state.workers).map(([name,w])=>[name,{...w,saved:count(known.get(w.packet))}])),suggestions,...(state.generationPause?{generationPause:state.generationPause}:{}),...(command==='assign-next'?{assigned}:{})}));

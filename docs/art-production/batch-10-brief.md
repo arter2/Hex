@@ -33,3 +33,5 @@ If image generation returns a usage limit, stop immediately and report the exact
 Generate up to FOUR different assigned cards concurrently using awaited `Promise.allSettled`, with explicit ID-to-result mapping. Preserve exact returned paths/fingerprints, inspect and save each separately. Never guess a shared output path. Stop on a usage-limit error; no quota retries or tool/model switching.
 
 Copy the exact `name` string from the assignment JSON into the record rather than retyping it. ASCII and curly apostrophes differ; parent validation requires an exact catalogue-name match.
+
+Production is paused by `usage_limit_reached` (HTTP429). The service reports reset 2026-10-30 21:33:05 UTC. Read batch-10-progress.md/json before resuming. All artists stopped; 40 sources are saved, 39 accepted and one awaiting a compact repaint. Do not issue new image generations before the reported reset or retry the quota through another tool/model/account. After the reset, remove generationPause from the parent worker state only when resuming the queued jobs.

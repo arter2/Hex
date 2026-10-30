@@ -1663,5 +1663,95 @@
     "status": "generated",
     "batch": 9,
     "reviewNote": "The acid downpour, corroding shield and row of exposed figures remain legible in the square and wide crop; the 128px view clearly reads as acid rain over a battlefield."
+  },
+  {
+    "cardId": "shadow_strike_08",
+    "name": "Crow Swarm",
+    "prompt": "Charged missile strike: four quick shadow missiles. A dense, clearly countable flock of exactly four large black crows launches together across a moonlit crypt lane, wings beating in a coordinated swarm toward a distant armored foe; faint violet curse glints on their feathers, four distinct crow silhouettes and faces visible, dominant bird group fills center. Rich painterly medieval fantasy collectible-card art with grounded natural corvid anatomy, tactile feathers, dramatic cool moonlight and warm crypt lantern bounce, atmospheric depth in the supplied Hexmancers style. Explicit 1:1 square 512x512 composition. Keep all four crows and their flight action within x24..488,y105..407 for the 206:141 wide crop, quiet expendable sky top and dark stone below. No frame, lettering, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4b1eaf31-9455-44a3-b369-9da02620cd0f.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_strike_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Four distinct black crows with readable faces and flight silhouettes fill the wide crop; upper wing tips extend beyond the source edge, while all bird faces and bodies remain identifiable. The moonlit crypt and opposing armored figure support the action; 128px view reads as a crow swarm."
+  },
+  {
+    "cardId": "shadow_lob_10",
+    "name": "Coffin Drop",
+    "prompt": "A heavy complete iron-banded oak coffin drops from above and crashes onto a crypt flagstone tile; impact splinters stone in a compact burst and a nearby armored intruder is stunned, knees buckling. The coffin is the unmistakable dominant subject, lid, full body and iron bands visible, tilted in dynamic descent just before impact; no body emerging and no gore. Painterly medieval fantasy collectible-card art, tactile old oak, iron and stone, directional moonlit light with restrained violet shadow glow and deep atmospheric crypt. Explicit 1:1 square canvas for 512x512 editable master. Horizontal staging, keep the whole coffin, impact tile and intruder's upper body within x24..488,y105..407 in the wide crop; quiet crypt arches above/below. No frame, text, lettering, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a812f76e-4283-412b-8e53-00a909829e85.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_lob_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Adjusted crop retains the complete iron-banded coffin silhouette and impact, with the stunned armored intruder visible at right; its lower legs are expendable. The coffin reads clearly at thumbnail size."
+  },
+  {
+    "cardId": "shadow_ward_09",
+    "name": "Demon Hide",
+    "prompt": "A medieval shadow mage raises one clearly visible hand as a short-lived protective barrier of demon hide forms around them: a broad dark crimson-black leathery membrane shield with subtle horn ridges and scaled texture, wrapping the mage's torso; a nearby thin violet life-drain tether reaches toward a blurred enemy silhouette. Show the full readable shield surface and mage's face and hand, defensive pose, no demon creature. Painterly high fantasy collectible-card art, believable leather, cloth and skin, dramatic warm-red edge light against cool crypt shadows, atmospheric depth. Explicit 1:1 square 512x512. Keep mage face, raised hand, complete hide shield and tether origin inside x24..488,y105..407 for a 206:141 crop; spare scenery at top and bottom. No frame/text/UI, no anime/cartoon/photorealism/pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-152adcbb-aade-4461-b040-5f9159be01c4.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_ward_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "The mage face and raised hand remain clear with the large demon-hide barrier wrapping the torso; the violet siphon link reaches toward an enemy silhouette. A small lower edge of the hide trails outside the wide crop; the protective barrier reads clearly at thumbnail size."
+  },
+  {
+    "cardId": "shadow_sentry_10",
+    "name": "Spider Nest",
+    "prompt": "A sturdy stationary magical spider nest summons a large spectral spider helper in a ruined crypt. Center a complete dark silk nest in a cracked stone arch, woven web egg sac and one clearly visible central spider face with eight legs; a translucent summoned spider helper emerges from the nest and lunges toward a small armored foe, while a shatter flash begins around the helper. Nest is the primary identity, spider silhouette must be anatomically readable, not a generic web. Painterly medieval fantasy collectible-card painting, tactile silk, stone and chitin, moonlit rim light with dim violet curse glow, atmospheric depth. Explicit 1:1 square 512x512; keep nest, central spider and summoned helper within x24..488,y105..407 for wide crop, quiet crypt background outside. No frame, writing, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-52b5989b-b715-49a8-8ca5-78fdeb340abc.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_sentry_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.53
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "The shifted wide crop shows the nest, central spider face and summoned spectral spider in the same action; only outer webbing and background stone are expendable at the crop edges. Nest and helper remain distinct at thumbnail size."
+  },
+  {
+    "cardId": "shadow_boon_08",
+    "name": "Witching Hour",
+    "prompt": "Create a painterly medieval fantasy collectible-card illustration for Witching Hour. Actual effect: a long courage boon lasting ten seconds, with an immediate 15-point life siphon. Show a formidable witch at the stroke of midnight in a ruined crypt courtyard, her face and raised casting hand clearly visible as a ring of shadow-crows and small spectral flames gather around her; a thin violet tether draws life from one nearby armored foe toward her, while her posture becomes fearless and resolute. Emphasize the witch as the named subject, with an old moonlit clock tower softly suggesting the hour; no readable clock numerals or text. Grounded anatomy, richly painted cloth, weathered stone, dramatic moonlight and warm candle glow, deep atmospheric detail consistent with supplied Hexmancers art. Explicit 1:1 SQUARE canvas for a 512x512 editable master. Compose horizontally, preserve the witch's full face and relevant hand, foe and life tether within x24..488,y105..407 for the 206:141 crop; quiet expendable sky and ground beyond. No frame, border, lettering, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-151f607e-3480-4e39-886d-464edb0c46c3.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_boon_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Witch face, raised casting hand, violet life tether and armored target remain in the crop; the midnight clock tower and surrounding crows establish the hour and courage boon. Lower robe and some upper sky are expendable; the siphoning witch reads at thumbnail size. Parent review raised the crop slightly to retain every fingertip of the casting hand; the source bytes are unchanged."
   }
 ]

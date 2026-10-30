@@ -1672,5 +1672,95 @@
       1254
     ],
     "reviewNote": "FocalPoint [0.5,0.586] shifts the 206:141 crop to y≈125, preserving the turret emitter, stacked plates and complete plinth alongside the piercing beam. Reviewed at /tmp/voltaic-pile-turret-y125.png."
+  },
+  {
+    "cardId": "storm_strike_08",
+    "prompt": "A powerful branching-but-readable chain of lightning jumps from a robed storm mage's raised metal staff through exactly three staggered armored foes along a ruined medieval courtyard; one bright primary Tesla-like arc connects them in sequence, with the first target visibly recoiling in a stun flash and restrained kickback sparks around the mage. Keep faces, staff hand, arc path and all three targets readable, no modern technology. Painterly medieval fantasy collectible-card art, tactile bronze and wet stone, vivid electric blue-white light against storm clouds, atmospheric depth in a serious high-fantasy style. Explicit 1:1 SQUARE 512x512 composition; keep identity-critical caster face/hand, entire chain arc and target faces inside x24..488,y105..407 for the 206:141 crop, quiet expendable sky and paving outside. No frame, text, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-74511f45-10e2-4bc2-ba74-753c112e2076.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "The caster, connected lightning arc and three recoiling foes remain readable in the card crop; the staff tip and foreground legs are expendable at the edges. The chain strike reads at thumbnail size.",
+    "name": "Tesla Arc",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_08.png",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "storm_lob_09",
+    "prompt": "A row-wide volley of golden hailstones falls in a tight horizontal band across a medieval desert battlefield, each bright gold-white ice pellet striking the ground and shields of several aligned armored foes; show one foreground hailstone in sharp focus and the line of impacts receding sideways, with a small caster's hand at far left implying the lob. Gold metal-like sheen mixed with crystalline ice, no fireballs. Painterly medieval fantasy collectible-card art, tactile armor and sandstone, warm gold light under dark storm clouds, atmospheric depth. Explicit 1:1 square canvas. Keep the complete hail impact row and foreground target within x24..488,y105..407 for the wide crop, quiet storm sky and ground beyond. No border, words, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-3a74f009-27c0-4812-a17e-c56b77a47fdf.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "The horizontal hail volley and multiple shield impacts cross the wide crop; foreground target faces and one large golden hailstone remain clear. The caster hand is incidental and partly outside the left edge. The row-wide golden hail reads at thumbnail size.",
+    "name": "Golden Hail",
+    "editableSourcePath": "game/cards/art/masters/storm_lob_09.png",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "storm_ward_10",
+    "prompt": "A lone desert djinn mage in flowing blue robes conjures a heavy long-lasting protective veil: a broad translucent turquoise-blue wind-and-glass barrier wraps around the mage and an ally, catching incoming arrows while drawing a thin stream of life-force from a distant enemy through the veil into a small glowing core. Show the djinn's face and open hand, full broad shield curve and visible arrow impacts; grounded serious expression and believable cloth, no genie lamp. Painterly medieval fantasy collectible-card art, polished glasslike magic, warm sandstone and cool electric-blue light, atmospheric depth. Explicit 1:1 square 512 master. Preserve face, hand, full barrier and siphon link within x24..488,y105..407 for wide crop; quiet desert ruins above/below. No frame, text, letters, numbers, UI, anime/cartoon/photorealism/pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-43ab1906-66ad-46f6-8aac-b03f7e27a0de.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.55
+    ],
+    "reviewNote": "The crop shifted down to retain the wide glassy barrier, djinn face and open hand, ally, arrow impacts and siphon thread. The veil and protected pair remain identifiable at thumbnail size.",
+    "name": "Djinn's Veil",
+    "editableSourcePath": "game/cards/art/masters/storm_ward_10.png",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "storm_sentry_10",
+    "prompt": "A sturdy stationary sandstone idol sentry stands on a low plinth in an ancient desert fortress, carved as a solemn humanlike guardian with a clear face and broad shoulders; it does not attack but empowers a nearby storm mage's next spell, sending a focused amber-blue rune beam into the mage's raised staff while a small greedy gold glow gathers in the idol's palm and a tiny stun-like spark flickers near an approaching foe. Idol is dominant, complete head-to-base silhouette visible, tactile layered sandstone carvings, warm sunlight and restrained electric magic. Painterly medieval fantasy collectible-card art, atmospheric depth, serious grounded proportions. Explicit 1:1 square 512x512; keep whole idol, face and empowerment link in x24..488,y105..407 for 206:141 crop; expendable dunes and fortress above/below. No frame, lettering, numbers, UI, anime/cartoon/photorealism/pixel art. Revised composition from image edit: scale the complete idol down and place centrally so crown, face, feet and plinth fit comfortably inside the wide crop; retain the same palette and setting.",
+    "generatedPath": "/workspace/generated_images/exec-c469acdc-aa7c-49d8-a7c0-c5106c090b93.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "After a composition adjustment, the complete sandstone idol from crown through plinth, its glowing palm, and the empowerment beam all fit in the card crop. The idol remains dominant and readable at thumbnail size.",
+    "name": "Sandstone Idol",
+    "editableSourcePath": "game/cards/art/masters/storm_sentry_10.png",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "storm_boon_08",
+    "prompt": "Paint a dramatic medieval fantasy collectible-card illustration for Camel's Endurance. Actual effect: a seven-second regeneration boon and a rally that musters allies. Show a sturdy Bactrian camel and its battle-worn rider at a desert oasis after a hard march; the rider drinks from a waterskin while a warm restorative green-gold glow closes small wounds, and two nearby weary soldiers rise and rally behind them. The camel's full recognizable double hump, head and neck are the named focal subject, with rider face/hand and companions readable. Painterly high fantasy, tactile leather tack, cloth and sandstone, golden late-day light, rich atmospheric depth consistent with supplied art. Explicit 1:1 SQUARE 512 master, horizontal arrangement; keep camel head, both humps, rider face and drinking hand within x24..488,y105..407 for 206:141 crop; quiet sky and sand beyond. No text, lettering, frame, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-89ca7c18-1402-461b-a189-65bd30f3f0b5.png",
+    "sourceNative": [
+      1287,
+      1222
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "reviewNote": "The upward-shifted crop keeps the camel head and both humps, rider face and waterskin hand, plus rallying companions visible. Lower camel legs and some upper sky are expendable; the endurance scene reads at thumbnail size.",
+    "name": "Camel's Endurance",
+    "editableSourcePath": "game/cards/art/masters/storm_boon_08.png",
+    "status": "generated",
+    "batch": 10
   }
 ]

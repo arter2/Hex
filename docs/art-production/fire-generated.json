@@ -1666,5 +1666,95 @@
     "status": "generated",
     "batch": 9,
     "reviewNote": "Square master, centered crop and thumbnail inspected. Drake face, torso, foreclaws and flame origin remain prominent; wing and tail margins extend beyond the crop."
+  },
+  {
+    "cardId": "fire_strike_08",
+    "name": "Kitsune Foxfire",
+    "prompt": "Square 1:1 512x512 master illustration for medieval fantasy collectible card \"Kitsune Foxfire\". A swift russet kitsune fox spirit darts across a moonlit shrine path, its elegant face and raised forepaw clear, casting a concentrated blue-white and amber foxfire orb that ricochets in a sharp curved streak toward an unseen foe. Precise magical strike, lingering curse; fox face, paw and orb dominant. Painterly traditional high-fantasy card art, expressive brushwork, grounded anatomy, believable materials, cinematic directional light and atmospheric depth, quiet restrained background, classic tabletop fantasy painting. Keep entire named primary object and critical face and hand within x24..488,y105..407 on square, for centered 206:141 crop; expendable quiet scenery top/bottom. No card frame, lettering, symbols, numbers, UI, anime, Disney cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-4c893c6b-aecd-4938-8a1d-b9fb44ca1bc6.png",
+    "editableSourcePath": "game/cards/art/masters/fire_strike_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Square master, centered wide crop and thumbnail inspected. Kitsune face, casting paw and foxfire orb remain prominent; tail and shrine scenery extend beyond the crop."
+  },
+  {
+    "cardId": "fire_lob_10",
+    "name": "Paper Lantern Bomb",
+    "prompt": "Square 1:1 512x512 master illustration for medieval fantasy collectible card \"Paper Lantern Bomb\". A single large handmade paper lantern bomb tumbles through a stone courtyard, its ribbed red-gold paper shell, short fuse and flame-lit seams unmistakable. A goblin bomber's gloved throwing hand appears to one side as the lantern bursts into a broad ring of fiery light and disorienting sparks. Entire lantern central and large. Painterly traditional high-fantasy card art, expressive brushwork, grounded anatomy, believable materials, cinematic directional light and atmospheric depth, quiet restrained background, classic tabletop fantasy painting. Keep entire named primary object and critical face and hand within x24..488,y105..407 on square, for centered 206:141 crop; expendable quiet scenery top/bottom. No card frame, lettering, symbols, numbers, UI, anime, Disney cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-0472ef39-7086-4245-b926-d53726b4363e.png",
+    "editableSourcePath": "game/cards/art/masters/fire_lob_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.44
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Square master, centered wide crop and thumbnail inspected. Complete lantern, fuse and thrown burst remain clear; goblin face and throwing hand are visible at the left edge. Parent review raised the crop to retain the complete fuse and lantern base without changing source bytes."
+  },
+  {
+    "cardId": "fire_ward_09",
+    "name": "Dragon Scale Shield",
+    "prompt": "Square 1:1 512x512 medieval fantasy card illustration for \"Dragon Scale Shield\". Show a compact, unusually small kite shield, about 185 pixels tall in the square (roughly 36% of canvas height), held close by a crouched warrior. It is a single shield covered in clearly visible crimson dragon scales, with its complete top point and bottom point visible. Place the whole shield centered around y255, spanning approximately y165..350, x185..370. The warrior's face is clearly visible immediately above and left of the shield, around y165..235; one gauntleted hand grips the shield's left rim around y280. Keep the entire shield, full face and gripping hand inside x100..430,y145..385, with clear empty margin around them. Do not make the shield oversized or let it extend toward the top or bottom of the image. A restrained thin burning barrier hugs the rim and catches a few sparks. Painterly traditional fantasy card art, expressive brushwork, realistic layered scale materials and steel, warm firelight, cool smoky medieval battlefield behind. No full person needed. No frame, text, symbols, UI, anime, cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a6692e6f-e493-4f47-be42-b9e172d2318d.png",
+    "editableSourcePath": "game/cards/art/masters/fire_ward_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Compact repaint: square master, centered wide crop and thumbnail inspected. Entire dragon-scale shield with both tips, warrior face and gripping hand fit clearly in the crop; the burning rim remains visible."
+  },
+  {
+    "cardId": "fire_sentry_10",
+    "name": "Goblin Flamethrower Post",
+    "prompt": "Square 1:1 512x512 master illustration for medieval fantasy collectible card \"Goblin Flamethrower Post\". A squat sturdy goblin-built sentry post of timber, iron braces and a short swiveling bronze fire nozzle; a soot-faced goblin operator turns a crank. The fixed post launches a slow arcing lob of flame toward a scorched battlefield. Complete post and nozzle clearly readable and dominant. Painterly traditional high-fantasy card art, expressive brushwork, grounded anatomy, believable materials, cinematic directional light and atmospheric depth, quiet restrained background, classic tabletop fantasy painting. Keep entire named primary object and critical face and hand within x24..488,y105..407 on square, for centered 206:141 crop; expendable quiet scenery top/bottom. No card frame, lettering, symbols, numbers, UI, anime, Disney cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-cf98f331-dbc0-4a99-83c6-00f0fc2e534a.png",
+    "editableSourcePath": "game/cards/art/masters/fire_sentry_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Square master, centered wide crop and thumbnail inspected. Complete timber-and-iron post, bronze nozzle, operator face and crank hand remain legible; flame projects outward into background."
+  },
+  {
+    "cardId": "fire_boon_08",
+    "name": "Hearty Feast",
+    "prompt": "Square 1:1 512x512 painterly medieval fantasy collectible-card master for \"Hearty Feast\". A warm healing feast in a rustic inn: a generous roasted bird, bread, fruit and steaming stew fill a wooden table, while a weary adventurer's hands reach for the meal and their relieved face catches golden hearth light. The abundant food is the clear named subject and the scene conveys restored vitality and a small echo of magical vigor through subtle amber motes, never obscuring the meal. Grounded fantasy materials, expressive brushwork, attractive directional light, atmospheric background, classic tabletop fantasy painting. Keep food, face and hands entirely within x24..488,y105..407 of square for centered 206:141 crop; leave quiet expendable scenery top and bottom. No frame, letters, UI, anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e615a442-fa6c-4f76-80f9-a9259954742a.png",
+    "editableSourcePath": "game/cards/art/masters/fire_boon_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Square master, centered wide crop and thumbnail inspected. Feast table, roast bird, bread, adventurer face and hands remain readable; background inn activity supports the healing mood."
   }
 ]

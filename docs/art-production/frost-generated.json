@@ -1664,5 +1664,185 @@
       1515,
       1038
     ]
+  },
+  {
+    "cardId": "frost_strike_08",
+    "name": "Hurricane's Eye",
+    "prompt": "Paint Hurricane's Eye as a precise frost strike: a solitary sea-raider braces on a dark stone jetty, aiming a short icy harpoon at the small calm eye of a huge spiraling arctic hurricane behind them. The eye is a clear circular opening ringed by sweeping clouds and sea spray; the raider's face, aiming hand and harpoon all visible. Focus on the pinpoint target amid the storm, with controlled blue-white magic and wind-blown snow. Painterly medieval fantasy collectible-card illustration, textured brushwork, believable face, wool, leather, iron, dramatic cold light. Explicit 1:1 square canvas for editable 512x512 master; keep face, aiming hand, harpoon and hurricane eye in x24..488 y105..407 for 206:141 crop; quiet storm sky/top and water/bottom. No text, frame, UI, anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9756ea25-be2f-49f5-b3fd-51515fddd45f.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Reviewed 512 square, default 206:141 crop and 128px thumb: raider's face and gripping hands, icy harpoon point and circular hurricane eye remain visible and identifiable.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/frost_strike_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "frost_lob_09",
+    "name": "Coconut Lob",
+    "prompt": "Paint Coconut Lob as a comic but grounded medieval fantasy action: a bundled island sailor in a fur-lined blue coat hurls one large whole brown coconut across a windswept icy beach toward an unseen foe; the coconut is foreground and unmistakable, with its hairy shell and three dark eyes visible, hand releasing it clearly. Show a slight motion arc and spray of snow, no explosion. Painterly fantasy collectible-card art, attractive cold daylight, tactile shell, cloth and sand, grounded proportions and lively readable staging. Explicit 1:1 square for editable 512x512 master; keep thrower's face and throwing hand plus the complete coconut inside x24..488 y105..407, horizontal 206:141 crop; spare sky and foreground snow outside. No letters, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c57a604a-4b4b-48a9-825e-0ad446ff4807.png",
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "reviewNote": "Reviewed square, crop shifted up (focal y .42), and thumbnail: thrower's face and hand plus the complete coconut are visible; the shift corrects the default crop's slight coconut clipping.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/frost_lob_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "frost_ward_08",
+    "name": "Sea Urchin Bed",
+    "prompt": "Paint Sea Urchin Bed as a short defensive corridor barrier: three large purple-blue sea urchins embedded in a low line across a narrow wet stone causeway at the tide edge, their long pale spines bristling outward like thorns. A booted raider recoils after brushing the spikes; show the spiny plants and the startled face/hand clearly. Painterly medieval maritime fantasy card art, realistic shell and wet stone, cool teal water and silver dawn light, textured brushwork. Explicit 1:1 square 512 master; keep all three urchins, key spines and raider's face/hand inside x24..488 y105..407 for 206:141 crop; quiet sea and mist outside. No frame, text, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-36f59305-34dd-4292-b764-e1a097074b9a.png",
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "reviewNote": "Reviewed square, crop shifted up (focal y .40), and thumbnail: all three thorny urchins stay prominent and the recoiling raider's face and hand remain visible.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/frost_ward_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "frost_sentry_10",
+    "name": "Whale Bone Arch",
+    "prompt": "A wide composition painted specifically on a true 1:1 square canvas: Whale Bone Arch, one complete monumental arch made of exactly two giant ivory whale ribs joined at the top, with both feet and crown fully visible inside the central square. Keep the entire bone arch within x40..472 of the square; make it narrower and shorter than usual, leaving generous empty stormy sky at the top and rocky shore at the bottom. A small sentry with visible face and spear stands inside the opening. Cold northern shore, sea and distant ships framed through the ribs. Painterly medieval fantasy collectible-card illustration, textured weathered bone, salt, rock, blue-gray arctic light. The whole arch is the strong main subject, and must fit the horizontal 206:141 crop x24..488 y105..407. Request literal square, equal width and height, no panorama. No lettering, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e61e3c85-be6b-4551-a217-b8e0bdcdab8c.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "First wide render clipped the ribs on square normalization and was discarded. Reviewed regenerated square master, default crop and thumb: full arch crown and both feet fit; sentry is secondary and small but readable.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/frost_sentry_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "frost_boon_09",
+    "name": "Selkie Skin",
+    "prompt": "Paint Selkie Skin as a rare frost boon that lets a seal-selkie slip between forms: a beautiful adult selkie woman in a simple medieval coastal setting, mid-transformation as she draws a luminous silver seal skin over her shoulders, human face and hand visible while her lower body becomes a sleek seal tail in swirling sea mist. The intact seal skin, face, hand and clear human-to-seal transformation are the central subject; graceful and mystical, not erotic. Painterly medieval fantasy collectible-card illustration, nuanced wet fur and wool, cold moonlit teal and pearl light, atmospheric depth and grounded anatomy. Explicit 1:1 SQUARE canvas for editable 512x512 master; keep face, hand, full seal skin and the transformation within x24..488 y105..407 for horizontal 206:141 crop; quiet mist above and water below. No text, frame, UI, anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a81cc787-2599-4fa6-9b52-0b058caa262e.png",
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "reviewNote": "Reviewed square, crop shifted up (focal y .40), and thumb: selkie's face, visible hand and silver seal skin stay in frame; lower tail tip extends beyond the card crop.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/frost_boon_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "frost_charge_07",
+    "name": "Grapeshot Bag",
+    "prompt": "Create a new square 1:1 painterly medieval fantasy collectible-card illustration for Grapeshot Bag. The entire named object is critical: show one complete, fully visible weathered blue-gray leather pouch of spherical iron grapeshot, with its top, bottom, both sides, flap, strap and several distinct iron balls clearly inside the frame. Place this pouch prominently at the center of the horizontal composition, around x150…365 and y170…350 on the 512-square. A gloved hand tosses a few round shot toward a distant target in the snowy background. Do not crop, hide, enlarge past the frame, or place the pouch against an edge. Premium hand-painted oil-brush fantasy art with visible painterly strokes, textured leather and metal, crisp value separation, cold directional light, medieval materials; avoid photographic rendering. Keep every part of the pouch in x24…488,y105…407 for the 206:141 crop. Quiet expendable snow and sky above and below. No text, labels, logo, border, UI, anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9fa42c73-7cf8-498b-a191-357842930271.png",
+    "editableSourcePath": "game/cards/art/masters/frost_charge_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Repainted after the first source clipped the bag at the left edge; preserved the first master in /tmp/frost02-attempts. Reviewed replacement square, 206:141 crop, and 128x88 thumbnail. Entire leather pouch and grapeshot remain clearly visible."
+  },
+  {
+    "cardId": "frost_utility_08",
+    "name": "Return to the Sea",
+    "prompt": "Paint an illustration for the fantasy card Return to the Sea. Actual effect cues: recall, a return to safety . A lone seal-skin-cloaked sailor stepping from a snowy black-rock shore into a luminous cold sea as a curling turquoise tide reaches back to embrace and carry them home; calm, restorative mood, clearly show the returning human silhouette and sea, with distant ice cliffs. Avoid a generic glowing spell. Painterly medieval fantasy collectible-card artwork, believable materials, textured brushwork, attractive directional light, dramatic atmospheric depth; premium hand-painted fantasy illustration, grounded proportions, not photorealistic. Compose a single clear named subject horizontally. Square 1:1 canvas for editable 512×512 master. Keep named object/action and any important face within x24…488,y105…407 for a 206:141 crop, leaving quiet expendable sky and snow above and below. No lettering, border, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e4fa6b7f-6e08-41b4-b5a5-fe2db8dbe676.png",
+    "editableSourcePath": "game/cards/art/masters/frost_utility_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. The returning cloaked figure and curling sea are intact and legible; the figure faces away, with no face obscured by the crop."
+  },
+  {
+    "cardId": "frost_trap_08",
+    "name": "Ice Spike Pit",
+    "prompt": "Paint an illustration for the fantasy card Ice Spike Pit. Actual effect cues: a spike trap that freezes . A concealed medieval snow pit trap sprung beneath a bootless armored raider, three sharply defined blue-white ice spikes thrusting upward from the pit; show the trap opening and three separate spike points in the center foreground, snowy pass behind. No gore. Painterly medieval fantasy collectible-card artwork, believable materials, textured brushwork, attractive directional light, dramatic atmospheric depth; premium hand-painted fantasy illustration, grounded proportions, not photorealistic. Compose a single clear named subject horizontally. Square 1:1 canvas for editable 512×512 master. Keep named object/action and any important face within x24…488,y105…407 for a 206:141 crop, leaving quiet expendable sky and snow above and below. No lettering, border, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-381bca80-6d84-4624-80f3-4cc6ee38d46b.png",
+    "editableSourcePath": "game/cards/art/masters/frost_trap_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. The sprung pit and three distinct ice spike points stay prominent; the raider's face and limbs remain inside the crop."
+  },
+  {
+    "cardId": "frost_environment_08",
+    "name": "Iceberg Field",
+    "prompt": "Paint an illustration for the fantasy card Iceberg Field. Actual effect cues: a freezing cross-shaped field with restorative cold . A wide cold polar sea filled with a broad cross-like arrangement of towering blue icebergs and clear navigable channels, a tiny wooden longboat threading between them for scale, soft aurora and freezing mist. Icebergs dominate, not the boat. Painterly medieval fantasy collectible-card artwork, believable materials, textured brushwork, attractive directional light, dramatic atmospheric depth; premium hand-painted fantasy illustration, grounded proportions, not photorealistic. Compose a single clear named subject horizontally. Square 1:1 canvas for editable 512×512 master. Keep named object/action and any important face within x24…488,y105…407 for a 206:141 crop, leaving quiet expendable sky and snow above and below. No lettering, border, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-bd234e02-0844-4689-8a5b-1203ee71ed59.png",
+    "editableSourcePath": "game/cards/art/masters/frost_environment_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. The cross-like field of towering icebergs and channels remains clear and atmospheric at thumbnail scale."
+  },
+  {
+    "cardId": "frost_piece_05",
+    "name": "Eye of the Frost Giant",
+    "prompt": "Paint an illustration for the legendary fantasy card Eye of the Frost Giant. Depict the huge crystalline blue eye of an ancient frost giant embedded in a broken frost giant brow and ice-carved helm, its luminous iris precisely tracking a distant foe across a frozen battlefield; a single narrow lance of icy light freezes the target at a distance. Make the eye itself the clear named subject, formidable and beautiful, no disembodied human eye. Painterly medieval fantasy collectible-card art, textured brushwork, dramatic cold light, atmospheric depth, grounded materials, not photorealistic. Square 1:1 canvas for 512×512 editable master. Keep entire visible eye, lids, and surrounding named relic within x24…488,y105…407 for 206:141 card crop; quiet snowy atmosphere above and below. No lettering, frame, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-887fb1c6-703b-4d7c-80dc-242b339839fd.png",
+    "editableSourcePath": "game/cards/art/masters/frost_piece_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. The entire large crystalline eye and ice-carved brow fit the crop; the narrow icy strike and frozen distant foe remain secondary."
   }
 ]

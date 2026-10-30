@@ -62,5 +62,15 @@ try{
  assert.equal(dispatch('worker0').assigned,null);
  assert.equal(fs.readFileSync(stateFile,'utf8'),complete);
  checks++;
- console.log(JSON.stringify({checks,balancedColours:'pass',exclusiveWriters:'pass',resumeWithoutDuplicates:'pass',reviewRequired:'pass',completedQueue:'pass'}));
+ fixture();
+ const pausedState=JSON.parse(fs.readFileSync(stateFile,'utf8'));
+ pausedState.generationPause={errorCode:'usage_limit_reached',resetAtUTC:'2026-10-30T21:33:05Z'};
+ fs.writeFileSync(stateFile,JSON.stringify(pausedState));
+ const paused=fs.readFileSync(stateFile,'utf8'),blocked=run('assign-next','worker0');
+ assert.notEqual(blocked.status,0);assert.match(blocked.stderr,/Image generation paused/);
+ assert.equal(fs.readFileSync(stateFile,'utf8'),paused);
+ const status=JSON.parse(run('status').stdout);
+ assert.deepEqual(status.suggestions,{});assert.equal(status.generationPause.errorCode,'usage_limit_reached');
+ checks++;
+ console.log(JSON.stringify({checks,balancedColours:'pass',exclusiveWriters:'pass',resumeWithoutDuplicates:'pass',reviewRequired:'pass',completedQueue:'pass',usagePause:'pass'}));
 }finally{fs.rmSync(temp,{recursive:true,force:true});}

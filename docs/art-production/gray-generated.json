@@ -1677,5 +1677,95 @@
     "status": "generated",
     "batch": 9,
     "reviewNote": "Reviewed full source and top-aligned 206:141 crop. Golden Eagle’s face, body, full spread wings, talons and diagonal glow remain visible; mountain scenery is expendable."
+  },
+  {
+    "cardId": "gray_summon_68",
+    "name": "Messenger Pigeon",
+    "prompt": "Paint an illustration for the fantasy card Messenger Pigeon. A sturdy messenger pigeon, clearly a pigeon with iridescent slate feathers and a tiny rolled parchment message capsule secured to one leg, wings partly open as it banks in flight toward a distant medieval watchtower at dawn. Make bird and capsule prominent. Painterly medieval fantasy collectible-card artwork, grounded anatomy, rich nuanced feather/fur and stone materials, dramatic directional light, atmospheric depth, close narrative staging like premium fantasy card art. Square 1:1 canvas for editable 512×512 master. Keep the creature's identity-critical face, relevant limbs and whole silhouette within x24…488,y105…407, composed horizontally for an eventual 206:141 card crop; quiet expendable sky and ground may fill square top and bottom. Strong readable primary subject. No border, lettering, numbers, interface, anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c01706b1-87ba-4055-bce6-0e0d8d68044a.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_68.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. Pigeon face and complete message capsule are clear; outer left wing reaches the square edge and is slightly cropped, while card identity remains legible."
+  },
+  {
+    "cardId": "gray_summon_69",
+    "name": "Night Owl Scout",
+    "prompt": "Paint an illustration for the fantasy card Night Owl Scout. A sturdy night owl scout, a large dusky owl with alert golden eyes perched on a weathered branch, moonlit forest and distant medieval stone keep in deep blue night. Show recognizable head, eyes, wings and talons clearly, alert gaze toward the keep. Painterly medieval fantasy collectible-card artwork, grounded anatomy, rich nuanced feather/fur and stone materials, dramatic directional light, atmospheric depth, close narrative staging like premium fantasy card art. Square 1:1 canvas for editable 512×512 master. Keep the creature's identity-critical face, relevant limbs and whole silhouette within x24…488,y105…407, composed horizontally for an eventual 206:141 card crop; quiet expendable sky and ground may fill square top and bottom. Strong readable primary subject. No border, lettering, numbers, interface, anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-88aabe9e-a6f5-4171-9a2b-9544f6daad5d.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_69.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. Owl eyes, head, body, and gripping talons remain intact and read clearly at thumbnail size."
+  },
+  {
+    "cardId": "gray_summon_70",
+    "name": "Horned Owl",
+    "prompt": "Paint an illustration for the fantasy card Horned Owl. A grim horned owl with unmistakable feather ear tufts, broad wings poised on a high stone parapet, scanning a moonlit medieval battlefield below with piercing amber eyes. The owl dominates the scene and its whole head and wings are visible. Painterly medieval fantasy collectible-card artwork, grounded anatomy, rich nuanced feather/fur and stone materials, dramatic directional light, atmospheric depth, close narrative staging like premium fantasy card art. Square 1:1 canvas for editable 512×512 master. Keep the creature's identity-critical face, relevant limbs and whole silhouette within x24…488,y105…407, composed horizontally for an eventual 206:141 card crop; quiet expendable sky and ground may fill square top and bottom. Strong readable primary subject. No border, lettering, numbers, interface, anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e2627c8f-7ecf-4ab8-a0e2-12d3af8be803.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_70.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. Horn tufts, eyes, and body stay clear in the crop; the outer left wing extends to the square edge and is partly clipped, with no face clipping."
+  },
+  {
+    "cardId": "gray_summon_71",
+    "name": "Quill Porcupine",
+    "prompt": "Paint an illustration for the fantasy card Quill Porcupine. A scrappy porcupine, unmistakably a porcupine with compact sturdy body and dramatic fan of long black-and-ivory quills, bristling on a rocky woodland path amid leaves and roots. Full head, paws and quill silhouette clearly visible. Painterly medieval fantasy collectible-card artwork, grounded anatomy, rich nuanced feather/fur and stone materials, dramatic directional light, atmospheric depth, close narrative staging like premium fantasy card art. Square 1:1 canvas for editable 512×512 master. Keep the creature's identity-critical face, relevant limbs and whole silhouette within x24…488,y105…407, composed horizontally for an eventual 206:141 card crop; quiet expendable sky and ground may fill square top and bottom. Strong readable primary subject. No border, lettering, numbers, interface, anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-865d3d63-6434-4d56-9be2-c2ac66084cc6.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_71.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. Recognizable porcupine face, paws, and high-contrast quill fan remain readable; the large quills dominate the composition."
+  },
+  {
+    "cardId": "gray_summon_72",
+    "name": "Spiny Hedgehog",
+    "prompt": "Painterly premium medieval fantasy collectible card illustration for Spiny Hedgehog: a compact recognizable hedgehog with a clear little face, feet and tousled brown fur, its short sharp dark spines visibly bristling, emerging from leaves on a dusk forest path. Square 1:1 canvas for 512 master. Keep full face, feet and spiny silhouette in x24…488,y105…407 for horizontal 206:141 crop. Grounded painterly fantasy materials, rich warm rim light, atmospheric forest depth. No lettering, frame, UI, anime, photorealism, Disney cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-51cd5b9e-1f91-46fe-8aae-11101922e14b.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_72.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. Hedgehog face, feet, and short spiny silhouette remain clear in the horizontal crop and thumbnail."
   }
 ]

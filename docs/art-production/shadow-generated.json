@@ -1213,5 +1213,95 @@
     "status": "generated",
     "batch": 8,
     "reviewNote": "The square and 206:141 crop show tremoring headstones, a cracked grave, rising hands and a staggered intruder. At 128px, the graveyard and tremor remain identifiable, though fine cracks and small stones soften."
+  },
+  {
+    "cardId": "shadow_strike_06",
+    "name": "Evil Eye",
+    "prompt": "Paint an illustration for Evil Eye. Mechanics: quick, precise shadow snipe that curses one enemy and may critically strike. A single ancient floating evil eye dominates the composition, a wet obsidian iris and veined lid, projecting a narrow violet curse ray toward a tiny distant armored figure; the eye itself is the clear named subject. Painterly medieval fantasy collectible-card art, tactile stone, flesh and smoke, dramatic moonlit chiaroscuro, rich atmospheric depth; sophisticated grounded anatomy and materials, matching painterly high-fantasy references. Explicit 1:1 SQUARE canvas, intended editable 512x512 master. Compose horizontally; keep the complete eye, pupil and relevant ray source within x24..488,y105..407, quiet expendable mist above and below; intended 206:141 wide illustration crop. No card frame, border, text, letters, numbers, symbols or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e663b197-3e2f-4be8-b2f2-0b931407d4ec.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_strike_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.37
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "The complete eye, pupil and ray source remain clear in the square master and centered crop. Shifted focalPoint upward to y=0.37 to include the upper eyelid in the 206:141 crop; the tiny target remains visible at the right edge. At 128px the evil eye is recognizable."
+  },
+  {
+    "cardId": "shadow_lob_08",
+    "name": "Cauldron Spill",
+    "prompt": "Paint an illustration for Cauldron Spill. Mechanics: A short-fuse burst of poisonous brew splashes a small area and knocks enemies down. Show a dark iron witch's cauldron tips over in a sudden burst, spilling bubbling poisonous green-black brew across a medieval stone floor; the cauldron and vivid splash dominate, droplets and curling fumes stay secondary; one small armored foe is knocked off balance at the edge. Painterly medieval fantasy collectible-card art, grounded anatomy and tactile aged bone, dark iron, wet stone and subtle spectral light, atmospheric depth and strong readable values, consistent with supplied painterly high-fantasy references. Explicit 1:1 SQUARE composition for an editable 512x512 master, horizontal staging; keep the complete named subject and identity-critical details inside x24..488,y105..407 for a 206:141 wide crop, with quiet expendable crypt scenery above and below. No card frame, border, text, lettering, numbers, symbols or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-46a3cb7b-ad01-4012-aa75-e118adbfcd81.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_lob_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "The complete tipped cauldron, poisonous burst and knocked-back armored foe remain visible in square, wide crop and thumbnail; cauldron and vivid spill read immediately."
+  },
+  {
+    "cardId": "shadow_ward_07",
+    "name": "Ossuary Wall",
+    "prompt": "Paint an illustration for Ossuary Wall. Mechanics: A light ward makes a corridor wall from three fragile connected sections of bone. Show a low corridor barrier built from three connected, carefully stacked sections of ancient skulls, ribs and femurs, with a faint purple ward binding the bone masonry; show its full length and sturdy readable construction against a crypt passage. Painterly medieval fantasy collectible-card art, grounded anatomy and tactile aged bone, dark iron, wet stone and subtle spectral light, atmospheric depth and strong readable values, consistent with supplied painterly high-fantasy references. Explicit 1:1 SQUARE composition for an editable 512x512 master, horizontal staging; keep the complete named subject and identity-critical details inside x24..488,y105..407 for a 206:141 wide crop, with quiet expendable crypt scenery above and below. No card frame, border, text, lettering, numbers, symbols or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7dca4f42-bb35-4e22-991f-eef1c11cf76b.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_ward_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "The three-part bone corridor barrier remains fully visible and readable in square, wide crop and thumbnail, with its purple ward binding the skull-and-bone masonry."
+  },
+  {
+    "cardId": "shadow_sentry_08",
+    "name": "Gallows Tree",
+    "prompt": "Paint an illustration for Gallows Tree. Mechanics: A sturdy, slow sentry guards the lane, pulls a foe toward it and seeds the ground with dark vitality. Show a massive dead gallows tree guarding a graveyard lane, its twisted trunk forming a natural arch and several old nooses swaying; pale seedlike ghost lights gather beneath its branches, with a wary traveler being drawn toward the roots. Painterly medieval fantasy collectible-card art, tactile gnarled bark, aged wax, carved stone and smoke, dramatic candlelit chiaroscuro and atmospheric depth; readable named subject as the focus. Explicit 1:1 SQUARE canvas for an editable 512x512 master. Compose horizontally, keep all identity-critical parts of the named subject inside x24..488,y105..407 for the 206:141 crop, leave expendable atmosphere above and below. No card frame, border, text, lettering, numbers, symbols or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2333597b-f8c2-4e3f-861e-7cc2145942ef.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_sentry_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "The twisted gallows tree, nooses, ghostly seed lights and traveler remain legible in the square and wide crop. Upper branch tips are expendable scenery; the 128px view reads as a haunted gallows tree."
+  },
+  {
+    "cardId": "shadow_boon_06",
+    "name": "Ritual Candles",
+    "prompt": "Paint an illustration for Ritual Candles. Mechanics: A delayed candle ritual charges the caster's spell gauge and siphons life. Show a close horizontal arrangement of five tall ritual candles around a dark stone altar; their purple-black flames draw a thin stream of life essence from a shadowy kneeling acolyte while illuminating a floating spell sigil above the wax. Painterly medieval fantasy collectible-card art, tactile gnarled bark, aged wax, carved stone and smoke, dramatic candlelit chiaroscuro and atmospheric depth; readable named subject as the focus. Explicit 1:1 SQUARE canvas for an editable 512x512 master. Compose horizontally, keep all identity-critical parts of the named subject inside x24..488,y105..407 for the 206:141 crop, leave expendable atmosphere above and below. No card frame, border, text, lettering, numbers, symbols or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-82396d2d-ae18-44e0-93d4-91ca095f234c.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_boon_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.45
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Shifted focalPoint upward to y=0.45 so all five candle flames remain complete in the 206:141 crop; the candles, acolyte and altar read clearly at thumbnail size."
   }
 ]

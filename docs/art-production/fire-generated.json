@@ -1468,5 +1468,149 @@
     "status": "generated",
     "batch": 9,
     "reviewNote": "Square master and adjusted wide crop inspected, plus thumbnail. Crop shifted upward to keep mage face and both hands clear; patterned wrap remains prominent around torso and trails through lower frame."
+  },
+  {
+    "cardId": "hero_cinder",
+    "name": "Cinder, the Ash Dancer",
+    "prompt": "Illustration for Cinder, the Ash Dancer: a fierce female fire heroine with soot-darkened skin and flowing copper hair dances through a battlefield, pivoting with a pair of slender ember-lit blades as four distinct sparks shoot toward scattered enemies. A warm haste aura quickens nearby allies into motion. Her expressive face, hands, full dancing pose and two blades are prominent. Painterly medieval fantasy collectible-card art, believable leather and cloth, ash motes, elegant movement, warm directional firelight and atmospheric depth. Exact 1:1 square 512x512; keep face, hands and blade action inside x24..488,y105..407 for 206:141 crop. No text, frame, UI, anime, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f06984ee-d0e2-4115-b8e3-81a875bd5961.png",
+    "editableSourcePath": "game/cards/art/masters/hero_cinder.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Square master, centered wide crop and thumbnail inspected. Cinder's face and both blade-holding hands are clear as she dances amid four ember strikes and the rushing ally aura."
+  },
+  {
+    "cardId": "fire_strike_07",
+    "name": "Wyvern Spit",
+    "prompt": "Illustration for Wyvern Spit: a fierce wyvern snaps its jaws and spits a single compact glob of molten fire that ricochets from a knight's shield toward another enemy. The full wyvern head, glowing mouth and bright rebounding spit path are clear, with two distinct impact points. Painterly medieval fantasy collectible-card art, textured scales and armor, dramatic ember light, atmospheric depth. Exact 1:1 square 512x512; keep wyvern face and spit action within x24..488,y105..407 for 206:141 crop. No text, frame, UI, anime, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7d92d4b8-23b3-4512-96b1-65b7beb83ae8.png",
+    "editableSourcePath": "game/cards/art/masters/fire_strike_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Square master, centered crop and thumbnail inspected. Wyvern face, mouth, molten spit, shield ricochet and second impact remain legible."
+  },
+  {
+    "cardId": "fire_lob_09",
+    "name": "Firework Shell",
+    "prompt": "Illustration for Firework Shell: a single ornate iron-and-brass firework shell arcs over a medieval village battlefield and bursts into a bold cross-shaped spray of red-orange sparks above confused soldiers. The shell itself is visible as a small round iron casing with short fuse before bursting; cross-shaped flare and startled faces are clear. Painterly medieval fantasy card art, believable craft materials, colorful firelight and smoky dusk. Exact 1:1 square 512x512 master; keep shell, burst center and faces within x24..488,y105..407 for 206:141 crop. No text, frame, UI, anime, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-48f0dfb7-182e-408c-bd68-093c298d5328.png",
+    "editableSourcePath": "game/cards/art/masters/fire_lob_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Square source, upward-adjusted crop and thumbnail inspected. The full shell and centered cross-shaped firework fit the crop; soldier faces remain clear below."
+  },
+  {
+    "cardId": "fire_ward_08",
+    "name": "Samurai Armor",
+    "prompt": "Illustration for Samurai Armor: a steadfast samurai warrior in complete layered red-and-black lacquered armor raises a burnished iron shield to form a protective barrier amid falling sparks. Show the entire kabuto helmet, shoulder plates, cuirass and shield clearly; dignified face visible beneath the brow. Painterly medieval Japanese fantasy card art, detailed lacquer, silk and iron, warm firelight against smoky dusk. Exact 1:1 square 512x512; keep helmet, face, shield and main armor inside x24..488,y105..407 for 206:141 crop. No text, frame, UI, anime, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-80941437-30fd-44a2-8897-c5ea547484b0.png",
+    "editableSourcePath": "game/cards/art/masters/fire_ward_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed square source, upward-adjusted crop and thumbnail. Full kabuto, face, shield and lacquered torso armor remain visible; lower body is secondary."
+  },
+  {
+    "cardId": "fire_sentry_09",
+    "name": "Fire Lookout Tower",
+    "prompt": "Illustration for Fire Lookout Tower: a compact, squat two-level timber watchtower, full pointed roof, gallery, stout supports and anchored stone base visible. A clear archer with face and bow stands in the upper gallery aiming a glowing arrow. Scorched ember-lit wood and iron braces, mountain dusk, painterly medieval fantasy card art. Exact 1:1 square 512x512; compose complete tower inside x24..488,y105..407 for centered 206:141 crop, with sky/ground margins. No text, frame, UI.",
+    "generatedPath": "/workspace/generated_images/exec-f23fabf0-15a4-4745-b176-c20cd37f70de.png",
+    "editableSourcePath": "game/cards/art/masters/fire_sentry_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.49
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Recomposed as a compact tower after initial versions clipped its roof/base. Reviewed square, slight crop adjustment and thumbnail: roof tip, full tower base and upper-gallery archer remain in frame."
+  },
+  {
+    "cardId": "fire_boon_07",
+    "name": "Dragon Heart",
+    "prompt": "Illustration for Dragon Heart: a scarred fire knight cradles a large glowing ruby dragon heart, its molten scales and branching veins pulsing with power; a second translucent echo of the heart blooms behind it, shedding embers that strengthen nearby allies. The complete anatomical fantasy dragon heart relic is the unmistakable focal object, held carefully in two hands, not replaced by a generic flame. Painterly medieval fantasy collectible-card art, rich scale and metal detail, warm directional light and smoky depth. Exact 1:1 square 512x512; keep knight's face, both hands and full heart inside x24..488,y105..407 for 206:141 crop. No text, frame, UI, anime, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8b9b9f13-cb0a-4b5d-9825-c8c3f08cc46e.png",
+    "editableSourcePath": "game/cards/art/masters/fire_boon_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Square master, centered crop and thumbnail inspected. Knight face, both hands, complete scaled dragon heart and its ember echo remain legible."
+  },
+  {
+    "cardId": "fire_charge_07",
+    "name": "Goblin Junk Sack",
+    "prompt": "Illustration for Goblin Junk Sack: a small goblin scavenger hurls a bulky tied burlap sack stuffed with scrap metal, broken clockwork and glowing embers; the sack splashes open on impact, flinging several rusty fragments that stun a bandit. Make the sack the large, recognizable named object, showing rough weave, knots and bulging silhouette. Painterly medieval fantasy card art, hand-made iron junk, dramatic orange light and smoky depth. Exact 1:1 square 512x512 master; keep full sack, goblin face and throwing hand inside x24..488,y105..407 for 206:141 crop. No text, frame, UI, anime, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-94c7dbd0-fe46-4def-8e4f-15df22bf7437.png",
+    "editableSourcePath": "game/cards/art/masters/fire_charge_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Square master, centered crop and thumbnail inspected. Full tied sack, goblin face/throwing hand, impact and recoiling bandit are visible."
+  },
+  {
+    "cardId": "fire_utility_08",
+    "name": "Goblin Scavenge",
+    "prompt": "Illustration for Goblin Scavenge: a wiry goblin scavenger in a patched hood discovers a fallen enchanted brass buckle among battlefield debris and tugs it through a swirling ember recall ring into his open sack; a faint afterimage marks the item's return. The goblin's face, hand, recovered treasure and clear pulling action are prominent. Painterly medieval fantasy collectible-card art, detailed patched cloth, brass and stone, warm light and smoky depth. Exact 1:1 square 512x512; keep face, hand and retrieved object inside x24..488,y105..407 for horizontal 206:141 crop. No lettering, frame, UI, anime, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f103d1f0-80b5-4382-9400-24f95187a111.png",
+    "editableSourcePath": "game/cards/art/masters/fire_utility_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Square master, centered crop and thumbnail inspected. Goblin face and hands, glowing recovered brass treasure and its ghostly return echo read clearly."
   }
 ]

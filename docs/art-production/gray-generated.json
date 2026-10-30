@@ -1456,11 +1456,11 @@
     ],
     "focalPoint": [
       0.5,
-      0.4
+      0.34
     ],
     "status": "generated",
     "batch": 9,
-    "reviewNote": "Reviewed source and slightly upward 206:141 crop. Horse head and galloping form dominate; rider face, hands, drawn bow and arrow remain readable, with lower legs and background forest incidental."
+    "reviewNote": "Reviewed full source and top-aligned 206:141 crop at y=0. Horse face and galloping form dominate; rider face, hands, full bow including upper tip, and arrow remain readable. Lower legs and background forest are incidental."
   },
   {
     "cardId": "gray_summon_56",
@@ -1497,5 +1497,167 @@
     "status": "generated",
     "batch": 9,
     "reviewNote": "Reviewed full square source and centered 206:141 crop. Hunter face, gripping hands, complete static-charged spear and aiming action remain visible; lower leg and foreground are incidental."
+  },
+  {
+    "cardId": "gray_summon_58",
+    "name": "Woodcutter",
+    "prompt": "Paint an illustration for the Hexmancers card Woodcutter. Actual mechanics: an old but quick and drilled squire moves in a zigzag through the line. Show a weathered woodsman in a faded wool tunic stepping sideways through a sunlit forest clearing, raising a broad iron axe to split a log; old but wiry, alert face and both hands clearly visible. Keep the whole axe head and a useful length of haft within the central band. Fresh wood chips fly, a stump and stacked logs support the story. Painterly medieval fantasy collectible-card illustration, believable wood, iron and cloth, lively diagonal action, warm sunlight through woodland, Hexmancers reference style. EXACT 1:1 SQUARE master; keep face, hands, entire axe head and split-log action inside x24..488,y105..407 for 206:141 crop. Strong readable thumbnail, quiet canopy and ground margins. No frame, lettering, UI, anime, Disney, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-bd5569f6-3792-41bc-a96a-552a951ee095.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_58.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.25
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed full source and top-aligned wide crop. Woodcutter’s complete face, two-handed axe grip, axe head and split-log action remain clear; legs and lower logs are incidental."
+  },
+  {
+    "cardId": "gray_summon_59",
+    "name": "Bounty Hunter",
+    "prompt": "Paint an illustration for the Hexmancers card Bounty Hunter. Actual mechanics: a sly, patient hunter who snipes from the rear and can shove a target back. Depict a wary bounty hunter in a weathered leather hood and dark burgundy cloak on a ruined rooftop, sighting along a compact hand crossbow toward a fleeing outlaw below; a coiled capture cord at the belt hints at taking a live target. Focus on hunter's sharp face, crossbow, trigger hand and poised shot; no written bounty notices or text. Painterly medieval fantasy collectible-card art, grounded anatomy and materials, cold moonlit city stone with warm window glow, dramatic depth, supplied Hexmancers style. EXACT 1:1 SQUARE 512x512 master, horizontal composition; keep face, crossbow and aim within x24..488,y105..407 for 206:141 crop. Quiet sky/roof margins, bold thumbnail. No frame, letters, UI, anime, Disney-like cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-21a6b415-a57d-488a-95c2-c31e822f9500.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_59.png",
+    "sourceNative": [
+      1448,
+      1086
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed full square source and top-aligned crop. Hooded hunter face, hands, full crossbow, aiming action and fleeing target remain readable; some cloak, legs and foreground stones crop away."
+  },
+  {
+    "cardId": "gray_summon_60",
+    "name": "Wandering Ranger",
+    "prompt": "Paint an illustration for the Hexmancers card Wandering Ranger. Actual mechanics: a swift heroine ranger who snipes from the rear and draws a threat away. Show a solitary female ranger in weathered green cloak and leather gear standing at a forest crossing, turning to draw a compact bow toward a pursuer behind while gesturing a traveler toward the safe road; she is alert and capable, not a princess. Face, hands, bow and arrow clear; travel packs, mossy trail and dawn light give wandering context. Painterly medieval fantasy collectible-card art, grounded anatomy and tactile wool/leather/wood, atmospheric forest depth, supplied Hexmancers reference style. EXACT 1:1 SQUARE 512x512 master, horizontal composition. Keep face, hands, compact full bow and draw action within x24..488,y105..407 for 206:141 crop, quiet canopy/road margins, bold thumbnail. No frame, text/UI, anime, Disney, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-bfdd1ac5-bb57-42da-8fea-780d1551d199.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_60.png",
+    "sourceNative": [
+      1422,
+      1106
+    ],
+    "focalPoint": [
+      0.5,
+      0.25
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed full source and top-aligned 206:141 crop. Ranger’s face, drawn bow hand, arrow, open guiding hand and pursuer are readable; the cropped bow tip is close to the raw square’s upper edge."
+  },
+  {
+    "cardId": "gray_summon_61",
+    "name": "Tracker",
+    "prompt": "Paint an illustration for the Hexmancers card Tracker. Actual mechanics: a clever steady human tracker who stuns a target with a broad burst. Depict an experienced forest tracker kneeling on a muddy trail, studying a fresh hoofprint with one hand while the other releases a short-range hunting bolt toward a distant charging boar; the bolt's impact produces a restrained ring of dust and leaves that interrupts its rush. Focus on the tracker’s intent face, trail-sign hand and compact bow, with prints leading through the composition. Painterly medieval fantasy collectible-card illustration, believable cloth, leather and woodland textures, moody directional light and atmospheric depth, consistent with supplied Hexmancers refs. EXACT 1:1 SQUARE master, wide staging; keep face, hand, weapon and readable tracking action within x24..488,y105..407 for 206:141 crop. Quiet tree canopy and path margins. Strong thumbnail. No frame, lettering, UI, anime, Disney-like cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-fd2c6e8f-4664-49d8-a40d-e233aa2e8b0c.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_61.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.25
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed 512-square source and top-aligned crop. Tracker’s face, hand reading the hoofprint, compact weapon and charging boar with a leaf/dust burst remain visible; lower legs and path are secondary."
+  },
+  {
+    "cardId": "gray_summon_62",
+    "name": "Falconer",
+    "prompt": "Paint an illustration for the Hexmancers card Falconer. Actual mechanics: a noble, loyal human falconer who sends a companion on a diagonal attack while escorting allies. Show an experienced falconer in a dark green cloak and leather glove atop a windy ridge, releasing a trained peregrine into a diagonal dive toward a rabbit in the grass; falconer’s focused face, outstretched gloved hand and the falcon’s full wingspan are all clear. Bird is the primary action, human is a strong supporting figure, with small companion travelers following behind. Painterly medieval fantasy collectible-card illustration, grounded anatomy, detailed feathers, leather and wool, late golden-hour light and atmospheric depth, consistent with supplied Hexmancers art direction. EXACT 1:1 SQUARE 512x512 master, horizontal staging; keep face, hand and entire falcon in its launch/dive action inside x24..488,y105..407 for 206:141 crop. Quiet sky and grass margins, readable thumbnail. No frame, text, UI, anime, Disney-like cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-856b7956-9a3d-4368-b90a-d503dc728394.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_62.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed 512-square source and slightly upward 206:141 crop. Falconer’s face, launch hand, full falcon wingspan and diagonal dive remain clear; rabbit is an incidental lower-edge detail."
+  },
+  {
+    "cardId": "gray_summon_63",
+    "name": "Hunting Falcon",
+    "prompt": "Paint an illustration for the Hexmancers card Hunting Falcon. Actual mechanics: a swift trained hawk that flies diagonally to escort an ally and pull an enemy off course. Show one adult peregrine falcon in a low diagonal hunting glide above a medieval woodland clearing, slate-blue wings fully spread, hooked beak and amber eye distinct, talons reaching toward a small hare; wind and drifting leaves angle along its path. Entire bird, both wing tips and tail visible, with room around the silhouette. Painterly medieval fantasy collectible-card art, accurate raptor anatomy and feather texture, dramatic sunrise through trees, atmospheric depth, supplied Hexmancers style. EXACT 1:1 SQUARE 512x512 master; medium-distance bird centered within x24..488,y105..407 for 206:141 crop, quiet canopy/ground margins. Bold readable thumbnail. No frame, lettering, UI, anime, Disney-like cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f20015d0-ba9f-4b3f-95be-a197b363c867.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_63.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.25
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed full source and top-aligned crop. Falcon’s beak, body, talons, tail and both full wings remain visible; the hare is partly cropped at the bottom and is secondary."
+  },
+  {
+    "cardId": "gray_summon_64",
+    "name": "Peregrine",
+    "prompt": "Paint an illustration for the Hexmancers card Peregrine. Actual mechanics: a steadfast hawk that chills a target while diving through the earth-side battlefield. Depict a powerful adult peregrine falcon with blue-grey barred wings in a steep but fully visible dive above a snow-dusted rocky slope, a faint frost trail and cold mist around its talons; the bird remains the unmistakable subject, not a spell effect. Keep the complete beak, face, wingspan, body, talons and tail inside the scene with visible margin. Painterly medieval fantasy collectible-card illustration, accurate falcon anatomy, crisp feather detail, cool moonlit winter light with a warm horizon, atmospheric depth, supplied Hexmancers art direction. EXACT 1:1 SQUARE master; horizontal crop-safe composition, complete bird within x24..488,y105..407 for 206:141 crop. Strong thumbnail silhouette. No frame, text, UI, anime, Disney, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-55f4d060-4474-4b07-b373-24ecc47924b9.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_64.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.25
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed full source and top-aligned wide crop. Peregrine’s complete head, body, talons and spread wings remain visible; only snowy landscape is removed by the crop."
+  },
+  {
+    "cardId": "gray_summon_65",
+    "name": "Kestrel",
+    "prompt": "Paint an illustration for the Hexmancers card Kestrel. Actual mechanics: a tiny but drilled hawk fires a precise beam-like attack from the rear line. Show a small kestrel hovering almost motionless above a medieval meadow, distinctive pointed wings and rust-spotted chest, keen dark eye and hooked bill clearly visible; a narrow shaft of warm sunlight aligns from its flight path toward an insect or distant prey below, suggesting a precise focused strike without obscuring the bird. Keep the whole small bird and its full wing silhouette easy to see against a simple pale sky. Painterly medieval fantasy collectible-card illustration, accurate kestrel anatomy and feather patterns, dawn light, gentle atmospheric depth, supplied Hexmancers style. EXACT 1:1 SQUARE 512x512 master; bird centered within x24..488,y105..407 for 206:141 crop with quiet sky and meadow margins. Readable thumbnail, no frame/text/UI, anime, Disney, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-82369b4e-d7fd-46ac-81de-a7ea25046b50.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_65.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.25
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed full source and top-aligned wide crop. Kestrel face, full spread wings and hanging talons stay clear against the sky; the beam endpoint and prey are incidental lower-crop details."
+  },
+  {
+    "cardId": "gray_summon_66",
+    "name": "Osprey",
+    "prompt": "Repaint the Hexmancers card Osprey, correcting the bird scale and crop. Actual mechanics: a hungry osprey dives to blast and briefly freeze a fish target. Show a medium-distance osprey in a shallow forward glide over a medieval lake, complete bird only about half the square's width and one-third its height; wings angled moderately downward and fully contained with generous margin at all tips, tail, head and both talons. Distinctive white head and dark eye stripe, brown wings, fish breaking the water below, a small restrained burst of cold spray around the catch. The bird must not touch any image edge. Painterly medieval fantasy collectible-card illustration, accurate osprey anatomy and feather detail, dramatic cool morning light over blue water, atmospheric depth, supplied Hexmancers reference style. EXACT 1:1 SQUARE 512x512 master, designed for 206:141 crop; keep full Osprey silhouette and fish-strike action inside x24..488,y105..407. Quiet sky/water top and bottom margins. No frame, text/UI, anime, Disney, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-41538195-9feb-487b-96da-94c50929a526.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_66.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed 512-square master and centered 206:141 crop. Full osprey silhouette, head, spread wings and extended talons stay visible above the fish/splash strike."
   }
 ]

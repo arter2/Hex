@@ -1213,5 +1213,131 @@
     "status": "generated",
     "batch": 8,
     "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop (focal y=.40) and 128x88 thumbnail. The complete column capital and base, stunned raider and tremor line remain visible; centered crop clipped the capital, so the crop was shifted upward."
+  },
+  {
+    "cardId": "light_strike_06",
+    "name": "Agincourt Arrowstorm",
+    "prompt": "Paint an original illustration for Agincourt Arrowstorm, a swift piercing volley that strikes foes along one line. Show three English medieval longbow archers loosing arrows in a coordinated storm toward a distant armored line; one arrow's brilliant sunlit trail is the clear action. Faces, drawing hands, bow tips and the arrow impacts must all fit safely near the center. Painterly medieval fantasy collectible-card art, evocative of supplied Hexmancers references; believable cloth, yew, feather and steel; cinematic golden dawn, atmospheric depth. Wide horizontal staging inside a strict 1:1 square 512x512 canvas; keep all identity-critical faces, hands, bows and action within x24..488,y105..407, with expendable sky and field top and bottom. No card frame, words, symbols, lettering, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2c435d08-5105-414a-9f7c-aa81682bac0e.png",
+    "editableSourcePath": "game/cards/art/masters/light_strike_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop and 128x88 thumbnail. Three archers’ faces and drawing hands, complete bows, and the arrowstorm remain visible; top bow limbs and lower foreground are expendable scenery."
+  },
+  {
+    "cardId": "light_lob_07",
+    "name": "Toppled Marble Column",
+    "prompt": "Paint an original illustration for Toppled Marble Column. A single massive cream-white marble column has crashed diagonally across a classical temple courtyard, its ornate capital and cylindrical shaft fully visible, shattering stone and knocking an armored raider backward. The fallen complete column is the dominant named subject; keep capital, shaft ends and raider's face within x24..488,y105..407. Painterly medieval high fantasy collectible-card painting, nuanced veined marble, dust lit by warm afternoon sun, distant Greek-inspired temple ruins. Strict 1:1 square 512x512 canvas arranged wide for a 206:141 card crop, expendable sky/ground at top and bottom. No frame, writing, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d0375a30-8863-406f-bc08-18960d9898f4.png",
+    "editableSourcePath": "game/cards/art/masters/light_lob_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop and 128x88 thumbnail. The complete fallen column including ornate capital and shaft ends, plus the raider’s face and raised hand, stay readable; background columns are secondary."
+  },
+  {
+    "cardId": "light_ward_08",
+    "name": "Testudo Formation",
+    "prompt": "Paint a painterly medieval fantasy illustration for Testudo Formation. A compact Roman-style testudo shield wall advances under arrows: at least four legionaries in overlapping curved shields, front soldiers bracing, rear soldiers holding shields overhead to form a protective tortoise shell. The complete formation and visible faces/hands fit centrally, with shield edges safely inside x24..488,y105..407. This depicts a defensive barrier ward protecting the formation. Attractive directional sun through dusty battlefield air; detailed bronze, wood, leather, linen, grounded anatomy. Strict 1:1 square 512x512, wide lateral group staging for the 206:141 crop, expendable sky/ground above/below. No lettering, frame, UI, modern gear, anime, cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-586e05ff-db8c-4b6a-8c54-ae8b792d88f9.png",
+    "editableSourcePath": "game/cards/art/masters/light_ward_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop and 128x88 thumbnail. The testudo roof of overlapping shields, front shield line, and several faces remain clear in crop; incidental arrows and lower legs extend outside the action."
+  },
+  {
+    "cardId": "light_sentry_07",
+    "name": "Bell Tower",
+    "prompt": "Hand-painted painterly fantasy illustration for Bell Tower. Create a compact squat bell tower, like a broad two-story stone watchhouse with a small bell arch and a low roof, not a tall spire. The whole building (roof, bell, walls, doorway, foundation) occupies only the central 50 percent of the square height, centered with very generous sky above and plaza below. Broad horizontal village setting. Keep the entire roof finial and foundation inside the central horizontal action-safe band. Traditional fantasy book painting with visible brushwork in sky, stone and foliage, warm dawn light. 1:1 square 512x512 master for a 206:141 card crop. No tall narrow tower, no cropped architecture, no text, frame, UI, anime, cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9e3d67a0-870f-45cd-8199-ef03baa03efc.png",
+    "editableSourcePath": "game/cards/art/masters/light_sentry_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Repainted after first tower exceeded the safe crop; kept first and intermediate raw generations at their exact paths. Reviewed final exact 512-square source, centered 206:141 crop and 128x88 thumbnail: complete squat tower roof/finial, bronze bell, doorway and foundation all remain in the crop."
+  },
+  {
+    "cardId": "light_boon_05",
+    "name": "Physician's Balm",
+    "prompt": "Painterly medieval fantasy collectible-card art for Physician's Balm, a healing boon that also chills the foe who attacked. Close narrative scene: a compassionate battlefield physician in simple linen applies a dab of luminous pale-gold salve from a small ceramic balm jar onto a wounded knight's forearm; the knight’s face relaxes as the wound closes. In the background a hostile armored raider is held at bay by a faint blue chill mist. The physician's face and healing hand, knight's face, and small open balm jar are the clear focal elements, all safely inside x24..488,y105..407. Warm candle and dawn light, expressive traditional oil-paint brushwork, believable skin, cloth, ceramic and steel. Strict 1:1 square 512x512, staged wide for a 206:141 card illustration, quiet expendable sky and ground. No frame, text, lettering, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-04b9de8c-95de-47e9-b973-f803ce745244.png",
+    "editableSourcePath": "game/cards/art/masters/light_boon_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop (focal y=.43) and 128x88 thumbnail. The physician’s face and healing fingers, patient’s face and salve jar remain visible along with the chilled attacker; lower armor is expendable."
+  },
+  {
+    "cardId": "light_charge_06",
+    "name": "Salve Tin",
+    "prompt": "SQUARE 1:1 composition (not landscape): painterly medieval fantasy card illustration for Salve Tin. In a centered scene, a physician kneels beside one wounded knight and carefully applies healing balm from a small open brass-and-tin salve canister to a forearm. The small round canister, its hinged lid, the physician's face and hand, and the patient's face must all be fully inside a generous central safe area, with visual margin on left and right. A second hostile raider in the distant background is lightly frosted by a chill aura. Keep the scene compact, foreground subjects centered in the middle 75 percent of the square. Warm dawn, expressive hand-painted fantasy materials: scratched tin, linen, leather, steel. Strict 512x512 square master, composed for a 206:141 wide crop. No horizontal/landscape canvas, no objects near edges, no frame, words, symbols, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4b1bd036-98ba-4423-8214-16cd9b14948f.png",
+    "editableSourcePath": "game/cards/art/masters/light_charge_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Repainted after the first raw arrived landscape; exact first raw remains at /workspace/generated_images/exec-b27b9abe-f181-4e62-9eeb-044e7552358b.png. Reviewed exact 512-square source, upward-shifted crop (focal y=.34) and 128x88 thumbnail: physician and patient faces, tin with open lid, application hand and wound are all readable."
+  },
+  {
+    "cardId": "light_utility_06",
+    "name": "Alchemist's Still",
+    "prompt": "Painterly medieval fantasy illustration for Alchemist's Still, an alchemical tool that copies a potion. Show one complete elegant small copper-and-glass distillation still on a stout workbench: round flask, neck, swan-neck tube, condenser and receiver all connected and uncut. The receiver produces a second identical glowing blue potion vial beside the original, clearly showing duplication. A focused alchemist’s face and careful hands may appear behind the apparatus, but complete still and two bottles dominate. Keep every named piece inside x24..488,y105..407. Hand-painted collectible-card art, warm candlelight, believable copper, glass and wood, atmospheric workshop depth. Strict 1:1 square 512x512 staged wide for a 206:141 card crop. No labels, readable writing, frame, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-16e1cf9c-3355-4954-98f0-5df0509b2124.png",
+    "editableSourcePath": "game/cards/art/masters/light_utility_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.375
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop (focal y=.375) and 128x88 thumbnail. Full still, curved tube, connected condenser and receiving flask, paired potion vials and alchemist’s face are visible."
   }
 ]

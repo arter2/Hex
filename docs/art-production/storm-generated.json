@@ -1492,5 +1492,185 @@
       1037
     ],
     "reviewNote": "The normalized square and 206:141 crop retain the bright chain arc, central conductor, and linked target impact; peripheral target disks may extend beyond the square."
+  },
+  {
+    "cardId": "storm_lob_08",
+    "name": "Sack of Coins",
+    "prompt": "Painterly medieval fantasy collectible-card art for Sack of Coins: show one complete tied burlap money sack, smaller than a helmet and centered on a stone bazaar floor, its whole body and leather drawstring knot clearly visible with broad empty margins on every side. The sack occupies about 42 percent of canvas width and 42 percent of height, fully inside x90..422 and y140..370 on a square 512 canvas. A handful of oversized readable gold coins and a compact dusty concussive ring burst outward from it, nudging one small shield to the side; scattering coins may extend outward, but the sack stays fully intact and central. Medieval desert market, warm painterly light, believable coarse weave, leather and gold, attractive fantasy atmosphere. Designed for editable square master and 206:141 crop. No people or faces, frame, writing, coin marks, numbers, UI, modern props, photorealism, anime, Disney cartoon, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-468e310f-7c1d-41e3-9716-a3ac5dd65385.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "editableSourcePath": "game/cards/art/masters/storm_lob_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "The complete tied burlap sack remains centered and intact; its coin burst and concussive dust are legible in the 206:141 crop."
+  },
+  {
+    "cardId": "storm_ward_09",
+    "name": "Caravan Circle",
+    "prompt": "Painterly medieval fantasy collectible-card illustration of Caravan Circle, a protective ward: from a slightly raised view, a handful of desert wagons and canvas tents form a clear defensive ring around a caravan camp; a luminous blue-gold arc wall closes the circle between the wagons as windblown sand curls outside it. The circular arrangement and glowing ward are the primary visual idea, no readable faces. Camels, wooden carts and fabric tents painted with grounded detail, twilight desert storm, cinematic light and atmospheric depth. Square 1:1 512-master composition, the complete ward arc and central ring visible within x24..488 y105..407; designed for 206:141 wide crop. No frame, text, symbols, numbers, modern objects, photorealism, anime, Disney cartoon, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-da9826bc-b789-4b7f-9e3a-11b8e0d99b19.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "editableSourcePath": "game/cards/art/masters/storm_ward_09.png",
+    "sourceNative": [
+      1515,
+      1038
+    ],
+    "reviewNote": "The elevated square and wide crop show the caravan’s full central camp arrangement enclosed by a luminous protective arc; a few outer carts sit near crop edges."
+  },
+  {
+    "cardId": "storm_sentry_09",
+    "name": "Storm Kite",
+    "prompt": "Painterly medieval fantasy collectible-card art for Storm Kite: one complete diamond-shaped desert kite with a taut crossed wooden frame, blue-and-gold silk, and a curling segmented tail flies as a magical sentry through a sandstorm. Its full diamond outline, four corners and central frame are clearly visible and centered; keep the kite itself within x70..442 y112..390 on a square 512 master. Windblown sand curls around it; tail may trail into the margins. No people or faces. Stormy ochre sky, believable silk, wood and brass fittings, beautiful directional light, atmospheric high-fantasy painting. Clear in wide 206:141 crop. No frame, lettering, symbols, numbers, modern objects, photorealism, anime, Disney cartoon, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7b8d07d8-d2f2-416a-8f93-c8e7e9fba8cc.png",
+    "focalPoint": [
+      0.5,
+      0.385
+    ],
+    "status": "generated",
+    "batch": 9,
+    "editableSourcePath": "game/cards/art/masters/storm_sentry_09.png",
+    "sourceNative": [
+      1516,
+      1037
+    ],
+    "reviewNote": "The kite crop is shifted up to source y≈22 (focalPoint y=0.385), preserving all four diamond corners; its long tail may extend beyond the frame."
+  },
+  {
+    "cardId": "storm_boon_07",
+    "name": "Sand Step",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Sand Step: dynamic close view of a desert scout's armored leather boots and lower legs taking a swift, decisive step across dune sand; the planted front foot is crisp and complete while two translucent sand-colored afterimages trail behind, with small red-gold motes and wind-swept sand marking haste. Keep both boot shapes and the decisive planted step centered inside x24..488 y105..407; no face needed, avoid cropping the actual boots. Flowing blue cloak edge above, rich believable leather, cloth and sand, painterly dramatic sunlight and shadow, high-fantasy collectible-card art. Square 1:1 master and horizontal 206:141 crop. No frame, text, marks, modern shoes, photorealism, anime, Disney cartoon, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-561943d7-bef3-4a46-a4d9-b16b91fc5072.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "editableSourcePath": "game/cards/art/masters/storm_boon_07.png",
+    "sourceNative": [
+      1515,
+      1038
+    ],
+    "reviewNote": "The planted boot and swift afterimage step remain complete in the normalized square and wide crop; the trailing cloak is incidental."
+  },
+  {
+    "cardId": "storm_charge_07",
+    "name": "Scorpion Jar",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Scorpion Jar: a small, complete round glass specimen jar, about the size of a drinking cup, sits centered on a desert alchemist's workbench beside tiny bowls for clear scale. The jar occupies only 46 percent of square canvas height and 42 percent of width, surrounded by visible empty table and workshop; keep the full cork stopper, neck, round vessel and base all inside x90..422 y125..390. Inside the amber-green glass, a vivid scorpion curls its tail with the stinger clearly visible. Brass strap and leather grip are secondary. Warm lamplight, storm-blue workshop window, refined painterly medieval fantasy, nuanced glass, chitin and metal, readable in 206:141 crop. No people or faces, no frame, text, labels, numbers, modern items, photorealism, anime, Disney cartoon, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-34e047a1-230d-4f52-b42e-65d5f3f33561.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "editableSourcePath": "game/cards/art/masters/storm_charge_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "The smaller normalized jar keeps its stopper, neck, round glass body and base intact; the enclosed scorpion and raised stinger remain readable in the wide crop."
+  },
+  {
+    "cardId": "storm_utility_07",
+    "name": "Open Sesame",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Open Sesame: a great ancient sandstone gate in the desert cracks open by itself, its complete heavy door slabs swinging inward to reveal a vivid golden magical light and a narrow passage beyond; a small ornate brass key floats near the lock. The doorway and both door edges are the unmistakable centered subject, no people or faces. Weathered stone, subtle carved geometric patterns without writing, desert ruins, atmospheric dust and dramatic directional light, richly painterly high fantasy. Square 1:1 512 master, complete upper lintel and door bases inside x24..488 y105..407; wide 206:141 crop. No frame, lettering, runes, numbers, UI, modern items, photorealism, anime, Disney cartoon, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b3608e95-6849-42c8-8f70-8f82bbc930cb.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "editableSourcePath": "game/cards/art/masters/storm_utility_07.png",
+    "sourceNative": [
+      1516,
+      1037
+    ],
+    "reviewNote": "The normalized square and wide crop show the complete open sandstone gate, both door leaves, the luminous passage, and the floating key."
+  },
+  {
+    "cardId": "storm_trap_07",
+    "name": "Antlion Pit",
+    "prompt": "Painterly medieval fantasy collectible-card art for Antlion Pit: a clear circular funnel-shaped sinkhole in golden desert sand, its steep rippling walls spiraling down toward a dark center where the mandibles of a hidden antlion predator just emerge; a small discarded boot near the rim suggests the snare. Show the whole pit rim and funnel centered as the primary subject, no face or gore. Dramatic desert light, fine sand grains, dust curl and shadows, atmospheric high fantasy painting. Square 1:1 512 master, complete pit edge and visible center inside x24..488 y105..407; compose for wide 206:141 crop. No frame, lettering, text, numbers, modern props, photorealism, anime, Disney cartoon, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f5c57055-8bd7-4c15-8e82-99a515a0f17f.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "editableSourcePath": "game/cards/art/masters/storm_trap_07.png",
+    "sourceNative": [
+      1514,
+      1039
+    ],
+    "reviewNote": "The square source and wide crop retain the full visible funnel rim, sloping sand trap, and antlion mandibles at the center; the discarded boot is incidental."
+  },
+  {
+    "cardId": "storm_environment_06",
+    "name": "Dune Shift",
+    "prompt": "Painterly medieval fantasy collectible-card landscape for Dune Shift: a long horizontal wall of desert sand rolls sideways like a ground tremor, shifting the face of a dune in a visible wave; sandstone shelves and scattered boulders slide and crack along one row while dust rises in a low curling veil. The shifting dune front and broken ground are the clear central action, no people or faces. Rich ochre sand, cool storm shadows, dramatic natural light, painterly high-fantasy atmosphere. Square 1:1 512 master, keep the main sliding ridge and cracks within x24..488 y105..407; quiet sky and foreground in top/bottom margins; designed for wide 206:141 crop. No frame, lettering, symbols, numbers, modern objects, photorealism, anime, Disney cartoon, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-1bb02cf5-e71b-4e9c-b35e-0338f2cd56b9.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "editableSourcePath": "game/cards/art/masters/storm_environment_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "The normalized square and wide crop show the horizontal dune front shifting across the row, with cracked stone and blown sand marking the tremor."
+  },
+  {
+    "cardId": "storm_summon_04",
+    "name": "Ifrit Sultan",
+    "prompt": "Painterly medieval fantasy collectible-card portrait of Ifrit Sultan, an ancient sovereign Djinn: an imposing regal male fire spirit with a complete expressive face, high jeweled bronze crown, flowing dark beard and layered gold-and-indigo robes, seated above a low desert throne as a controlled plume of blue-orange flame curls around him. Distinguish him from a generic Ifrit through age, majesty and ornate regalia. Place his entire head, crown, face, shoulders and casting hand prominently in the center, within x24..488 y105..407 on square 512 master; flame plume may extend into margins. Desert palace ruins in storm light, fine painted cloth, metal and supernatural fire, atmospheric depth, grounded facial anatomy. Compose for 206:141 horizontal crop. No text, frame, letters, numbers, modern items, photorealism, anime, Disney cartoon, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d0f77364-6b28-4e67-9cb0-04d3973b8b2f.png",
+    "focalPoint": [
+      0.5,
+      0.342
+    ],
+    "status": "generated",
+    "batch": 9,
+    "editableSourcePath": "game/cards/art/masters/storm_summon_04.png",
+    "sourceNative": [
+      1516,
+      1038
+    ],
+    "reviewNote": "Upward focal adjustment sets the crop at source y=0, showing Ifrit Sultan’s full existing crown and face with shoulders and flames. Reviewed at /tmp/ifrit-sultan-y0.png."
+  },
+  {
+    "cardId": "storm_machine_04",
+    "name": "Voltaic Pile Turret",
+    "prompt": "Painterly medieval fantasy collectible-card art of Voltaic Pile Turret, a compact piercing-defense machine. A squat waist-high turret on a broad complete stone plinth, built from a neat vertical stack of alternating copper and zinc plates like a voltaic pile, with a small brass lightning emitter on top that fires one narrow blue-white bolt through a distant iron target. Keep the full machine from emitter to base centered and only about half the square's height, with generous open sky and floor around it; target x24..488 y120..390. Do not make it a tall tower or castle spire. Storm-lit desert rampart, finely painted copper, zinc, stone and brass, dramatic painterly fantasy lighting, clear readable action, square 1:1 512 master and 206:141 crop. No people, no lettering, no UI, no modern machine guns, photorealism, anime, Disney cartoon, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-82bd61b5-1d15-46df-b934-8a47427885c5.png",
+    "focalPoint": [
+      0.5,
+      0.586
+    ],
+    "status": "generated",
+    "batch": 9,
+    "editableSourcePath": "game/cards/art/masters/storm_machine_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "FocalPoint [0.5,0.586] shifts the 206:141 crop to y≈125, preserving the turret emitter, stacked plates and complete plinth alongside the piercing beam. Reviewed at /tmp/voltaic-pile-turret-y125.png."
   }
 ]

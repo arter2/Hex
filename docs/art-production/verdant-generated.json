@@ -1561,5 +1561,113 @@
     "status": "generated",
     "batch": 9,
     "reviewNote": "Shifted crop to y=0 so the guardian’s full face joins the moss mantle, healing hand and leafy ward in view."
+  },
+  {
+    "cardId": "verdant_sentry_07",
+    "name": "Druid's Standing Stone",
+    "prompt": "Painterly medieval fantasy collectible-card art for Druid’s Standing Stone: solitary weathered standing stone carved with abstract branching druidic grooves, moss and roots at its base; hidden guardian spirit darts from behind as a hostile silhouette is caught in chain of green light. Upright stone is main sentry, bold slab and texture, natural light. Strict 1:1 square 512 master; full stone and action inside x24..488,y105..407 for wide crop. No readable text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d52f2d03-5d12-4b7a-a41b-91af52731be7.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_sentry_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Shifted crop upward to y≈30 to retain the standing stone’s complete crown and carvings while preserving the ambush spirit and chain."
+  },
+  {
+    "cardId": "verdant_summon_09",
+    "name": "Elder Ent",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Elder Ent: colossal ancient walking tree guardian with wise weathered face in trunk, mossy shoulders, mature branch crown and root legs; stands protectively as forest folk gather behind, rallying them. Strong Ent silhouette, warm green-gold woodland light and bark textures. Strict 1:1 square 512 master; Ent face and branch-arms inside x24..488,y105..407 for wide crop. No text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c94d655d-d2da-4288-b0d4-e410f263b390.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Shifted crop to y=0 so the Ent’s face is fully visible with trunk and branch arms; roots and woodland allies continue below the card view."
+  },
+  {
+    "cardId": "verdant_boon_06",
+    "name": "Willow Bark Tea",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Willow Bark Tea: small earthenware cup of amber herbal tea brewed from pale willow bark, steam curls beside a fresh willow twig and bark shavings; healer offers cup to weary ranger, warm recovery. Cup, steam, bark and hands visible, forest shelter and firelight. Strict square 1:1 512 master; complete cup and hands within x24..488,y105..407 for wide crop. No text, labels, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7a171762-8e73-4dbc-869d-57f9a9cc4abc.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_boon_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Shifted crop to y=0 to retain the ranger’s full face along with steaming tea cup, bark shavings and both offering hands."
+  },
+  {
+    "cardId": "verdant_charge_07",
+    "name": "Herb Bundle",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Herb Bundle: compact tied bundle of fresh medicinal herbs, leaves, roots and pale blossoms wrapped in linen and twine lies in apothecary’s hand; small burst of healing green light and leaves radiates from it to mend a nicked glove. Bundle is clear named charge, horizontal composition, forest clearing and soft natural light. Strict square 1:1 512 master; full bundle and hands fit x24..488,y105..407. No text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4255d41c-ae68-4f7a-ad07-28c4eabcaf8d.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_charge_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Complete herb bundle, supporting hand and gentle healing burst fit within the wide crop and remain clear at thumbnail size."
+  },
+  {
+    "cardId": "verdant_utility_06",
+    "name": "Mycelium Network",
+    "prompt": "Painterly medieval fantasy card art for Mycelium Network: beneath forest floor, luminous web of fine white fungal threads links clusters of amber-violet mushrooms; above ground, two identical rare mushrooms emerge in mirrored pair to suggest copying. Cutaway earth with roots and glowing mycelium pathways, twilight organic detail. Strict square 1:1 512 master; both mushroom clusters and connecting network inside x24..488,y105..407 for wide crop. No text, labels, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-99b7f5e0-1997-4188-840f-10cbf3022e7a.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_utility_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Upward crop preserves both mirrored mushroom clusters in full while retaining their luminous connecting mycelium web."
+  },
+  {
+    "cardId": "verdant_trap_07",
+    "name": "Deadfall",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Deadfall: heavy log trap drops from hidden forest rig, smashing into path with leaves, dust and green healing sparks; vines and springy sapling mechanism hold it. Clear falling-log trap, bold horizontal log and impact, believable bark and ropes, directional light. Strict square 1:1 512 master; entire log, trap rig and burst inside x24..488,y105..407 for wide crop. No text, frame, UI, gore, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-3375663a-c314-4298-a7f8-dcaae43a9266.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_trap_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "The full suspended log, rope rig and impact burst remain readable within the wide crop."
   }
 ]

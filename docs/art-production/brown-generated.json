@@ -1645,5 +1645,23 @@
     "status": "generated",
     "batch": 9,
     "reviewNote": "Inspected square source, upward-shifted 206:141 crop and 128x88 thumbnail. Goblin face and hand, complete firecracker casing and fuse, compact spark burst and reacting companions remain clear."
+  },
+  {
+    "cardId": "brown_machine_27",
+    "name": "Castle Trebuchet",
+    "prompt": "Paint an original illustration for Castle Trebuchet: on a medieval castle wall, a sturdy timber-and-iron trebuchet with a clear tall frame, long throwing arm, sling, ropes and heavy counterweight is poised to launch a large stone over the battlements toward a distant besieging camp. A human castle engineer signals the release beside it; show his face and hand, and keep the complete trebuchet including its frame foot and arm tip fully visible. Painterly medieval fantasy collectible-card painting, weathered oak and iron, dramatic dusk light over stone battlements, strong silhouette and atmospheric depth. Compose horizontally in a 1:1 square 512x512 master; make the whole named trebuchet compact, positioned within x24–488,y105–407 so no tip or base is cut in the 206:141 card crop. No border, flags with writing, labels, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-117611e6-523a-4617-8e3b-73f10b65076f.png",
+    "editableSourcePath": "game/cards/art/masters/brown_machine_27.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Inspected square source, upward-shifted 206:141 crop and 128x88 thumbnail. Whole trebuchet frame, base, counterweight, throwing arm and sling remain visible; engineer face and signaling hand are identifiable."
   }
 ]

@@ -1,0 +1,31 @@
+{
+  "batch": 9,
+  "workers": {
+    "/root/b09_brown": {
+      "packet": "brown-01",
+      "state": "running"
+    },
+    "/root/b09_gray": {
+      "packet": "gray-01",
+      "state": "running"
+    },
+    "/root/fire_final_oct30": {
+      "packet": "fire-01",
+      "state": "running"
+    },
+    "/root/frost_final_oct30": {
+      "packet": "frost-01",
+      "state": "running"
+    },
+    "/root/b09_storm": {
+      "packet": "storm-01",
+      "state": "running"
+    },
+    "/root/b09_verdant": {
+      "packet": "verdant-01",
+      "state": "running"
+    }
+  },
+  "completedPackets": [],
+  "reviewedSources": {}
+}

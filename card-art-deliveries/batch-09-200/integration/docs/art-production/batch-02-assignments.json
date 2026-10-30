@@ -1,0 +1,150 @@
+{
+  "batch": 2,
+  "targetNewImages": 32,
+  "assignments": {
+    "fire": [
+      {
+        "id": "cinder_lance",
+        "name": "Cinder Lance"
+      },
+      {
+        "id": "ember_wall",
+        "name": "Ember Wall"
+      },
+      {
+        "id": "brazier",
+        "name": "Brazier"
+      },
+      {
+        "id": "meteor",
+        "name": "Meteor"
+      }
+    ],
+    "frost": [
+      {
+        "id": "ice_shard",
+        "name": "Ice Shard"
+      },
+      {
+        "id": "rime_wall",
+        "name": "Rime Wall"
+      },
+      {
+        "id": "glacial_veil",
+        "name": "Glacial Veil"
+      },
+      {
+        "id": "frost_utility_01",
+        "name": "Mirror Lake"
+      }
+    ],
+    "verdant": [
+      {
+        "id": "thorn_dart",
+        "name": "Thorn Dart"
+      },
+      {
+        "id": "bramble_wall",
+        "name": "Bramble Wall"
+      },
+      {
+        "id": "spore_pod",
+        "name": "Spore Pod"
+      },
+      {
+        "id": "regrowth",
+        "name": "Regrowth"
+      }
+    ],
+    "storm": [
+      {
+        "id": "spark",
+        "name": "Spark"
+      },
+      {
+        "id": "ball_light",
+        "name": "Ball Lightning"
+      },
+      {
+        "id": "static_ward",
+        "name": "Static Ward"
+      },
+      {
+        "id": "storm_utility_01",
+        "name": "Astrolabe"
+      }
+    ],
+    "light": [
+      {
+        "id": "holy_bolt",
+        "name": "Holy Bolt"
+      },
+      {
+        "id": "sanctuary",
+        "name": "Sanctuary"
+      },
+      {
+        "id": "beacon_hope",
+        "name": "Beacon of Hope"
+      },
+      {
+        "id": "blessing",
+        "name": "Blessing"
+      }
+    ],
+    "shadow": [
+      {
+        "id": "hex_bolt",
+        "name": "Hex Bolt"
+      },
+      {
+        "id": "grave_pit",
+        "name": "Grave Pit"
+      },
+      {
+        "id": "bone_wall",
+        "name": "Bone Wall"
+      },
+      {
+        "id": "shadow_summon_01",
+        "name": "Belfry Bats"
+      }
+    ],
+    "brown": [
+      {
+        "id": "brown_machine_01",
+        "name": "Dwarven Cannon Nest"
+      },
+      {
+        "id": "brown_sentry_01",
+        "name": "Elven Starglass Spire"
+      },
+      {
+        "id": "brown_instant_01",
+        "name": "Dwarven Stout"
+      },
+      {
+        "id": "brown_tinker_01",
+        "name": "Whetstone"
+      }
+    ],
+    "gray": [
+      {
+        "id": "gray_summon_02",
+        "name": "Empty Helm Sentinel"
+      },
+      {
+        "id": "gray_ward_01",
+        "name": "Shield Wall"
+      },
+      {
+        "id": "gray_boon_01",
+        "name": "Battle Cry"
+      },
+      {
+        "id": "gray_charge_02",
+        "name": "Hunter's Quiver"
+      }
+    ]
+  }
+}

@@ -1,0 +1,403 @@
+{
+  "catalogueCommit": "88cae92de8c2f4e7346e16113c0ddef7bf9f0b52",
+  "artSourceCommit": "010e2102f4dd52451f56a7535333745dc96e6a63",
+  "selection": "Longest normalized card-name prefix; highest explicit vN, then resolution; identical/other variants retained. Green-backdrop and unnamed files not activated.",
+  "files": [
+    {
+      "file": "acid-vial-belt-ace-256.png",
+      "status": "selected",
+      "cardId": "brown_charge_06",
+      "cardName": "Acid Vial Belt"
+    },
+    {
+      "file": "alchemical-tracer-volley-ace-512.png",
+      "status": "selected",
+      "cardId": "brown_aceup_08",
+      "cardName": "Alchemical Tracer"
+    },
+    {
+      "file": "bottomless-quiver-ace-256-3.png",
+      "status": "selected",
+      "cardId": "brown_charge_11",
+      "cardName": "Bottomless Quiver"
+    },
+    {
+      "file": "brass-shot-bundle-charge-shot-256-1.png",
+      "status": "selected",
+      "cardId": "brown_charge_08",
+      "cardName": "Brass Shot Bundle"
+    },
+    {
+      "file": "brigandine-coat-256.png",
+      "status": "selected",
+      "cardId": "brown_equip_16",
+      "cardName": "Brigandine Coat"
+    },
+    {
+      "file": "clockwork-bolt-feeder-512.png",
+      "status": "selected",
+      "cardId": "brown_charge_10",
+      "cardName": "Clockwork Bolt Feeder"
+    },
+    {
+      "file": "clockwork-spurs-v2-256.png",
+      "status": "selected",
+      "cardId": "brown_equip_17",
+      "cardName": "Clockwork Spurs"
+    },
+    {
+      "file": "conch-war-horn-256.png",
+      "status": "selected",
+      "cardId": "brown_equip_29",
+      "cardName": "Conch War Horn"
+    },
+    {
+      "file": "damascus-edge-v2-256-2.png",
+      "status": "selected",
+      "cardId": "brown_equip_07",
+      "cardName": "Damascus Edge"
+    },
+    {
+      "file": "djinn-ember-censer-256.png",
+      "status": "selected",
+      "cardId": "brown_charge_09",
+      "cardName": "Djinn Ember Censer"
+    },
+    {
+      "file": "djinn-lamp-blast-512.png",
+      "status": "selected",
+      "cardId": "brown_ace_08",
+      "cardName": "Djinn Lamp Blast"
+    },
+    {
+      "file": "dwarven-aegis-plate-512-1.png",
+      "status": "selected",
+      "cardId": "brown_equip_23",
+      "cardName": "Dwarven Aegis Plate"
+    },
+    {
+      "file": "dwarven-blasting-keg-256-3.png",
+      "status": "selected",
+      "cardId": "brown_lob_01",
+      "cardName": "Dwarven Blasting Keg"
+    },
+    {
+      "file": "dwarven-clan-standard-v2-256.png",
+      "status": "selected",
+      "cardId": "brown_equip_28",
+      "cardName": "Dwarven Clan Standard"
+    },
+    {
+      "file": "dwarven-fire-rune-v3-256.png",
+      "status": "selected",
+      "cardId": "brown_equip_30",
+      "cardName": "Dwarven Fire Rune"
+    },
+    {
+      "file": "dwarven-hand-cannon-512-keygreen.png",
+      "status": "keygreen-pending",
+      "cardId": "brown_ace_02",
+      "cardName": "Dwarven Hand Cannon"
+    },
+    {
+      "file": "dwarven-plate-armor-v3-256.png",
+      "status": "selected",
+      "cardId": "brown_equip_10",
+      "cardName": "Dwarven Plate"
+    },
+    {
+      "file": "dwarven-war-axe-v5-256-1.png",
+      "status": "selected",
+      "cardId": "brown_equip_01",
+      "cardName": "Dwarven War Axe"
+    },
+    {
+      "file": "elven-arrow-pouch-512.png",
+      "status": "selected",
+      "cardId": "brown_charge_05",
+      "cardName": "Elven Arrow Pouch"
+    },
+    {
+      "file": "elven-crystal-sling-silhouette-ace-512-keygreen.png",
+      "status": "keygreen-pending",
+      "cardId": "brown_ace_05",
+      "cardName": "Elven Crystal Sling"
+    },
+    {
+      "file": "elven-frost-sigil-512-2.png",
+      "status": "selected",
+      "cardId": "brown_equip_31",
+      "cardName": "Elven Frost Sigil"
+    },
+    {
+      "file": "elven-mirror-barrel-ace-512-2.png",
+      "status": "alternative",
+      "cardId": "brown_aceup_09",
+      "cardName": "Elven Mirror Barrel"
+    },
+    {
+      "file": "elven-mirror-barrel-ace-512.png",
+      "status": "selected",
+      "cardId": "brown_aceup_09",
+      "cardName": "Elven Mirror Barrel"
+    },
+    {
+      "file": "elven-mirror-shield-512.png",
+      "status": "alternative",
+      "cardId": "brown_equip_24",
+      "cardName": "Elven Mirror Shield"
+    },
+    {
+      "file": "elven-mirror-shield-v6-256.png",
+      "status": "selected",
+      "cardId": "brown_equip_24",
+      "cardName": "Elven Mirror Shield"
+    },
+    {
+      "file": "elven-moon-blade-v3-512.png",
+      "status": "selected",
+      "cardId": "brown_equip_02",
+      "cardName": "Elven Moon Blade"
+    },
+    {
+      "file": "explosive-rounds-side-charge-ace-512.png",
+      "status": "selected",
+      "cardId": "brown_aceup_06",
+      "cardName": "Explosive Rounds"
+    },
+    {
+      "file": "file_000000000c248230b36a9f983c96b16c.png",
+      "status": "unmatched",
+      "cardId": null,
+      "cardName": null
+    },
+    {
+      "file": "file_000000001c648230ad691f04f2ef8ea1.png",
+      "status": "unmatched",
+      "cardId": null,
+      "cardName": null
+    },
+    {
+      "file": "file_00000000b8788230a10afa15815e8eba.png",
+      "status": "unmatched",
+      "cardId": null,
+      "cardName": null
+    },
+    {
+      "file": "file_00000000d2908230b09961fb0dfd8351.png",
+      "status": "unmatched",
+      "cardId": null,
+      "cardName": null
+    },
+    {
+      "file": "file_00000000e50081fda8000319e6005493.png",
+      "status": "unmatched",
+      "cardId": null,
+      "cardName": null
+    },
+    {
+      "file": "flintlock-pistol-human-ace-512-keygreen-1.png",
+      "status": "keygreen-pending",
+      "cardId": "brown_ace_01",
+      "cardName": "Flintlock Pistol"
+    },
+    {
+      "file": "frost-shell-corrected-impact-ace-512.png",
+      "status": "selected",
+      "cardId": "brown_aceup_07",
+      "cardName": "Frost Shell"
+    },
+    {
+      "file": "gnomish-deflector-dish-temple-bell-512.png",
+      "status": "selected",
+      "cardId": "brown_equip_25",
+      "cardName": "Gnomish Deflector Dish"
+    },
+    {
+      "file": "gnomish-ray-pistol-ace-512-keygreen.png",
+      "status": "keygreen-pending",
+      "cardId": "brown_ace_03",
+      "cardName": "Gnomish Ray Pistol"
+    },
+    {
+      "file": "gnomish-spark-canister-256.png",
+      "status": "selected",
+      "cardId": "brown_charge_02",
+      "cardName": "Gnomish Spark Canister"
+    },
+    {
+      "file": "gnomish-spring-boots-6-oclock-256.png",
+      "status": "selected",
+      "cardId": "brown_equip_18",
+      "cardName": "Gnomish Spring Boots"
+    },
+    {
+      "file": "goblin-bomb-bag-512.png",
+      "status": "alternative",
+      "cardId": "brown_charge_01",
+      "cardName": "Goblin Bomb Bag"
+    },
+    {
+      "file": "goblin-bomb-bag-v6-256.png",
+      "status": "selected",
+      "cardId": "brown_charge_01",
+      "cardName": "Goblin Bomb Bag"
+    },
+    {
+      "file": "goblin-boomstick-ace-viewer-pose-512-keygreen.png",
+      "status": "keygreen-pending",
+      "cardId": "brown_ace_04",
+      "cardName": "Goblin Boomstick"
+    },
+    {
+      "file": "goblin-rocket-pack-gaunt-256.png",
+      "status": "selected",
+      "cardId": "brown_equip_19",
+      "cardName": "Goblin Rocket Pack"
+    },
+    {
+      "file": "goblin-spiked-collar-giant-dry-ground-256.png",
+      "status": "selected",
+      "cardId": "brown_equip_03",
+      "cardName": "Goblin Spiked Collar"
+    },
+    {
+      "file": "harpoon-gun-merperson-bazooka-ace-512-keygreen.png",
+      "status": "keygreen-pending",
+      "cardId": "brown_ace_06",
+      "cardName": "Harpoon Gun"
+    },
+    {
+      "file": "harpoon-rack-v3-256.png",
+      "status": "selected",
+      "cardId": "brown_charge_03",
+      "cardName": "Harpoon Rack"
+    },
+    {
+      "file": "khopesh-daylight-fixed-256.png",
+      "status": "selected",
+      "cardId": "brown_equip_09",
+      "cardName": "Khopesh"
+    },
+    {
+      "file": "lightning-capacitor-triumph-ace-256.png",
+      "status": "selected",
+      "cardId": "brown_aceup_10",
+      "cardName": "Lightning Capacitor"
+    },
+    {
+      "file": "masamunes-edge-wall-512.png",
+      "status": "selected",
+      "cardId": "brown_equip_08",
+      "cardName": "Masamune's Edge"
+    },
+    {
+      "file": "masterwork-trigger-elven-ace-512.png",
+      "status": "selected",
+      "cardId": "brown_aceup_14",
+      "cardName": "Masterwork Trigger"
+    },
+    {
+      "file": "o-yoroi-lacquer-plate-red-ropes-256.png",
+      "status": "selected",
+      "cardId": "brown_equip_15",
+      "cardName": "O-yoroi Lacquer Plate"
+    },
+    {
+      "file": "pebble-pouch-undead-witch-v2-256.png",
+      "status": "selected",
+      "cardId": "brown_charge_04",
+      "cardName": "Pebble Pouch"
+    },
+    {
+      "file": "philosophers-bullet-green-runes-ace-512.png",
+      "status": "selected",
+      "cardId": "brown_ace_10",
+      "cardName": "Philosopher's Bullet"
+    },
+    {
+      "file": "regimental-drum-young-drummer-512-1.png",
+      "status": "selected",
+      "cardId": "brown_equip_27",
+      "cardName": "Regimental Drum"
+    },
+    {
+      "file": "rifled-barrel-human-ace-512-2.png",
+      "status": "alternative",
+      "cardId": "brown_aceup_12",
+      "cardName": "Rifled Barrel"
+    },
+    {
+      "file": "rifled-barrel-human-ace-512-3.png",
+      "status": "selected",
+      "cardId": "brown_aceup_12",
+      "cardName": "Rifled Barrel"
+    },
+    {
+      "file": "runic-siege-pistol-human-ace-512.png",
+      "status": "selected",
+      "cardId": "brown_ace_11",
+      "cardName": "Runic Siege Pistol"
+    },
+    {
+      "file": "scattergun-drum-goblin-ace-256.png",
+      "status": "selected",
+      "cardId": "brown_aceup_05",
+      "cardName": "Scattergun Drum"
+    },
+    {
+      "file": "silver-bullets-forest-human-ace-v3-256.png",
+      "status": "selected",
+      "cardId": "brown_aceup_01",
+      "cardName": "Silver Bullets"
+    },
+    {
+      "file": "sky-folk-spark-coil-male-v2-256x256.png",
+      "status": "selected",
+      "cardId": "brown_equip_32",
+      "cardName": "Sky-Folk Spark Coil"
+    },
+    {
+      "file": "spread-shot-choke-mage-ace-v4-256.png",
+      "status": "selected",
+      "cardId": "brown_aceup_04",
+      "cardName": "Spread Shot Choke"
+    },
+    {
+      "file": "thunder-rod-wizard-larger-ace-512.png",
+      "status": "selected",
+      "cardId": "brown_ace_09",
+      "cardName": "Thunder Rod"
+    },
+    {
+      "file": "troll-bone-club-256x256.png",
+      "status": "selected",
+      "cardId": "brown_equip_04",
+      "cardName": "Troll Bone Club"
+    },
+    {
+      "file": "troll-bone-crossbow-orcish-ace-dark-512-keygreen.png",
+      "status": "keygreen-pending",
+      "cardId": "brown_ace_12",
+      "cardName": "Troll Bone Crossbow"
+    },
+    {
+      "file": "troll-hide-grip-fireplace-ace-v3-256.png",
+      "status": "selected",
+      "cardId": "brown_aceup_15",
+      "cardName": "Troll Hide Grip"
+    },
+    {
+      "file": "troll-rock-satchel-v13-512.png",
+      "status": "selected",
+      "cardId": "brown_charge_07",
+      "cardName": "Troll Rock Satchel"
+    },
+    {
+      "file": "venom-cartridge-ace-256-3.png",
+      "status": "selected",
+      "cardId": "brown_aceup_11",
+      "cardName": "Venom Cartridge"
+    }
+  ]
+}

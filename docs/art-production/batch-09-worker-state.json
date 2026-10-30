@@ -26,12 +26,12 @@
       "state": "idle"
     },
     "/root/b09_light": {
-      "packet": "light-03",
-      "state": "running"
+      "packet": "light-05",
+      "state": "idle"
     },
     "/root/b09_shadow": {
-      "packet": "shadow-04",
-      "state": "running"
+      "packet": "shadow-05",
+      "state": "idle"
     }
   },
   "completedPackets": [
@@ -69,7 +69,12 @@
     "light-02",
     "fire-05",
     "shadow-02",
-    "shadow-03"
+    "shadow-03",
+    "light-03",
+    "shadow-04",
+    "shadow-05",
+    "light-04",
+    "light-05"
   ],
   "reviewedSources": {
     "brown_machine_18": {
@@ -771,6 +776,106 @@
     "shadow_claim_03": {
       "file": "game/cards/art/masters/shadow_claim_03.png",
       "sha256": "29694c84e1f981597f796e948da0ecc59a97741ef7586b91b3d89c197b69b546"
+    },
+    "light_summon_03": {
+      "file": "game/cards/art/masters/light_summon_03.png",
+      "sha256": "995e5ac974dd94266c986cbf0d209f4050a407fb09d4085ccda0d94a0867b7dc"
+    },
+    "light_machine_03": {
+      "file": "game/cards/art/masters/light_machine_03.png",
+      "sha256": "5d5e1c4dc835376769508f820712d53e9b6b0ecca115aa188f9389dd2c33f758"
+    },
+    "light_ace_03": {
+      "file": "game/cards/art/masters/light_ace_03.png",
+      "sha256": "1302ed48428728c7cb8c29440cfb45274279e7f3a1fc604609208b15d791fefb"
+    },
+    "light_aceup_03": {
+      "file": "game/cards/art/masters/light_aceup_03.png",
+      "sha256": "fc53c96272c652d7dec10bb654b3a19dea829a67274e314da76927a4d8490ee6"
+    },
+    "light_claim_03": {
+      "file": "game/cards/art/masters/light_claim_03.png",
+      "sha256": "68d8f30c7ecd82eac84cc46036c7b45f5316cc3ec2c702068ec183d9a2c11581"
+    },
+    "hero_vex": {
+      "file": "game/cards/art/masters/hero_vex.png",
+      "sha256": "44bf878d06aa329c78dff409f94941cddc233c1b6f99219a31069796afe41e50"
+    },
+    "shadow_strike_07": {
+      "file": "game/cards/art/masters/shadow_strike_07.png",
+      "sha256": "18f398b2846c6e8f4535acd9b4a4d8116d1a589b99d8bd2b88df2f506819f01c"
+    },
+    "shadow_lob_09": {
+      "file": "game/cards/art/masters/shadow_lob_09.png",
+      "sha256": "f7aacfcf29b9ce11f3780ac2c6180a3b4a7fbe2b6c25eb7ad1f8ca5c12290db9"
+    },
+    "shadow_ward_08": {
+      "file": "game/cards/art/masters/shadow_ward_08.png",
+      "sha256": "3549493e771711c65aef918f1284a8a7e82061583baf90b8fef8c53f2aaaa4aa"
+    },
+    "shadow_sentry_09": {
+      "file": "game/cards/art/masters/shadow_sentry_09.png",
+      "sha256": "14f0efef0f236ef526de95bdb3acde66d3e3b18836535fb43080eba3e5d243a0"
+    },
+    "shadow_boon_07": {
+      "file": "game/cards/art/masters/shadow_boon_07.png",
+      "sha256": "f56d27df0eacca92c40dd1e20989a6f3c6dff398a9331deedd0960775a7ca7d4"
+    },
+    "shadow_charge_07": {
+      "file": "game/cards/art/masters/shadow_charge_07.png",
+      "sha256": "6fde105c4370263a4241a5b22f588e02618f4fc6fe644014efeadbc1b9fe0d45"
+    },
+    "shadow_utility_06": {
+      "file": "game/cards/art/masters/shadow_utility_06.png",
+      "sha256": "a8567ca0932e98b9c1c501948cdec043c5226461fede191ab0d3858bffabcd02"
+    },
+    "shadow_trap_06": {
+      "file": "game/cards/art/masters/shadow_trap_06.png",
+      "sha256": "4c9dfe25aac796e96628ce568899c6a7d9accc429947727c6103c6ba41951155"
+    },
+    "shadow_environment_07": {
+      "file": "game/cards/art/masters/shadow_environment_07.png",
+      "sha256": "1a1195772c01b09a635d5fb10f29f964829395a1e6d9c7897da22dc551567592"
+    },
+    "hero_solaris": {
+      "file": "game/cards/art/masters/hero_solaris.png",
+      "sha256": "a7f2862f895f044ffd72f5185df987c014dc372f2ee223abca43d3ea57609685"
+    },
+    "light_strike_07": {
+      "file": "game/cards/art/masters/light_strike_07.png",
+      "sha256": "fd8287373ea4047937b41475ddaa2db079b6a1456e7ca471c14334550ce2b0c4"
+    },
+    "light_lob_08": {
+      "file": "game/cards/art/masters/light_lob_08.png",
+      "sha256": "7dface12732059c312853d44ac8c7caa42f9e290f93c554ec766d6a4900904af"
+    },
+    "light_ward_09": {
+      "file": "game/cards/art/masters/light_ward_09.png",
+      "sha256": "3406593f893d0b610df854e6b446127d4b11acc7e3639888db616f7139d1748f"
+    },
+    "light_sentry_08": {
+      "file": "game/cards/art/masters/light_sentry_08.png",
+      "sha256": "a9ddbb9dd24081359266e45b849b6190690fad9d41e2ca01e9e14279e37298f6"
+    },
+    "light_boon_06": {
+      "file": "game/cards/art/masters/light_boon_06.png",
+      "sha256": "82750d4a4cfc677cf81154b2c3fc89b589202e5fe5cd93d82a790a6c68996119"
+    },
+    "light_charge_07": {
+      "file": "game/cards/art/masters/light_charge_07.png",
+      "sha256": "4e3b9975d618d08f3d146e2fb068c3e712f5a44abe4151393ebf3cad802a921e"
+    },
+    "light_utility_07": {
+      "file": "game/cards/art/masters/light_utility_07.png",
+      "sha256": "672824d868fe0198cd7c4ebae0875728eb93856ceea714d99699aee3f589fda4"
+    },
+    "light_trap_07": {
+      "file": "game/cards/art/masters/light_trap_07.png",
+      "sha256": "1aa75922523aee215bf6b37e3af82401d15d2df7caed32cb9b68be394d9143df"
+    },
+    "light_environment_06": {
+      "file": "game/cards/art/masters/light_environment_06.png",
+      "sha256": "820871ed7d1919e6308383c8e4c96c7f1b61e00c637af606dced5eab9462e303"
     }
   }
 }

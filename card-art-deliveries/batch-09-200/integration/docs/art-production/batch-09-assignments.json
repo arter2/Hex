@@ -1,0 +1,825 @@
+{
+  "batch": 9,
+  "targetNewImages": 200,
+  "startingActive": 634,
+  "targetActive": 834,
+  "baselineCommit": "003f2f90e6a181121beca96c2e90819f261d824e",
+  "assignments": {
+    "brown": [
+      {
+        "id": "brown_machine_18",
+        "name": "Goblin Rattle-Gun"
+      },
+      {
+        "id": "brown_instant_15",
+        "name": "Kahve of the Bazaar"
+      },
+      {
+        "id": "brown_tinker_15",
+        "name": "Counterweight"
+      },
+      {
+        "id": "brown_machine_19",
+        "name": "Chu-ko-nu Repeater"
+      },
+      {
+        "id": "brown_instant_17",
+        "name": "Smoke Bomb"
+      },
+      {
+        "id": "brown_tinker_16",
+        "name": "Djinn's Polish"
+      },
+      {
+        "id": "brown_machine_20",
+        "name": "Elven Spinning Glaive"
+      },
+      {
+        "id": "brown_instant_18",
+        "name": "Cat's Eye Tonic"
+      },
+      {
+        "id": "brown_tinker_17",
+        "name": "Wayland's Bench"
+      },
+      {
+        "id": "brown_machine_21",
+        "name": "Coral Spitter"
+      },
+      {
+        "id": "brown_instant_19",
+        "name": "Invisibility Draught"
+      },
+      {
+        "id": "brown_tinker_18",
+        "name": "Goibniu's Hammer"
+      },
+      {
+        "id": "brown_machine_22",
+        "name": "Sky-Folk Kite Drone"
+      },
+      {
+        "id": "brown_instant_20",
+        "name": "Bottled Lightning"
+      },
+      {
+        "id": "brown_tinker_19",
+        "name": "Ilmarinen's Forge"
+      },
+      {
+        "id": "brown_machine_23",
+        "name": "Dwarven Rivet Gun"
+      },
+      {
+        "id": "brown_instant_21",
+        "name": "Guardian Angel Vial"
+      },
+      {
+        "id": "brown_tinker_20",
+        "name": "Hephaestus's Anvil"
+      },
+      {
+        "id": "brown_machine_24",
+        "name": "Troll Pebble Hurler"
+      },
+      {
+        "id": "brown_instant_22",
+        "name": "Goblin Rage Juice"
+      },
+      {
+        "id": "brown_machine_25",
+        "name": "Al-Jazari's Elephant Clock"
+      },
+      {
+        "id": "brown_instant_23",
+        "name": "Throwing Knives"
+      },
+      {
+        "id": "brown_machine_26",
+        "name": "Siege Mangonel"
+      },
+      {
+        "id": "brown_instant_24",
+        "name": "Goblin Firecracker"
+      },
+      {
+        "id": "brown_machine_27",
+        "name": "Castle Trebuchet"
+      }
+    ],
+    "fire": [
+      {
+        "id": "fire_strike_06",
+        "name": "Dragon's Breath"
+      },
+      {
+        "id": "fire_lob_08",
+        "name": "Meteor Shard"
+      },
+      {
+        "id": "fire_ward_07",
+        "name": "Mountain Pass Gate"
+      },
+      {
+        "id": "fire_sentry_08",
+        "name": "Torch Post"
+      },
+      {
+        "id": "fire_boon_06",
+        "name": "Fox's Quickness"
+      },
+      {
+        "id": "fire_charge_06",
+        "name": "Coal Sack"
+      },
+      {
+        "id": "fire_utility_07",
+        "name": "Coyote's Trickery"
+      },
+      {
+        "id": "fire_trap_05",
+        "name": "Cave-In"
+      },
+      {
+        "id": "fire_environment_06",
+        "name": "Fire Cyclone"
+      },
+      {
+        "id": "fire_piece_05",
+        "name": "Tail of the Nine-Tailed Fox"
+      },
+      {
+        "id": "fire_summon_03",
+        "name": "Wyvern"
+      },
+      {
+        "id": "fire_machine_03",
+        "name": "Goblin Gatling"
+      },
+      {
+        "id": "fire_ace_03",
+        "name": "Heart of the Volcano"
+      },
+      {
+        "id": "fire_aceup_03",
+        "name": "Cyclone Wrap"
+      },
+      {
+        "id": "hero_cinder",
+        "name": "Cinder, the Ash Dancer"
+      },
+      {
+        "id": "fire_strike_07",
+        "name": "Wyvern Spit"
+      },
+      {
+        "id": "fire_lob_09",
+        "name": "Firework Shell"
+      },
+      {
+        "id": "fire_ward_08",
+        "name": "Samurai Armor"
+      },
+      {
+        "id": "fire_sentry_09",
+        "name": "Fire Lookout Tower"
+      },
+      {
+        "id": "fire_boon_07",
+        "name": "Dragon Heart"
+      },
+      {
+        "id": "fire_charge_07",
+        "name": "Goblin Junk Sack"
+      },
+      {
+        "id": "fire_utility_08",
+        "name": "Goblin Scavenge"
+      },
+      {
+        "id": "fire_trap_06",
+        "name": "Goblin Snare"
+      },
+      {
+        "id": "fire_environment_07",
+        "name": "Ember Rain"
+      },
+      {
+        "id": "fire_summon_04",
+        "name": "Fire Drake"
+      }
+    ],
+    "frost": [
+      {
+        "id": "frost_strike_06",
+        "name": "Undertow"
+      },
+      {
+        "id": "frost_lob_07",
+        "name": "Geyser Burst"
+      },
+      {
+        "id": "frost_ward_06",
+        "name": "Igloo"
+      },
+      {
+        "id": "frost_sentry_08",
+        "name": "Fountain of Youth"
+      },
+      {
+        "id": "frost_boon_07",
+        "name": "Polar Bear Plunge"
+      },
+      {
+        "id": "frost_charge_05",
+        "name": "Snowball Stockpile"
+      },
+      {
+        "id": "frost_utility_06",
+        "name": "Holy Spring"
+      },
+      {
+        "id": "frost_trap_06",
+        "name": "Sea Mine"
+      },
+      {
+        "id": "frost_environment_06",
+        "name": "Rolling Breakers"
+      },
+      {
+        "id": "frost_piece_03",
+        "name": "Trident of the Sunken King"
+      },
+      {
+        "id": "frost_summon_04",
+        "name": "Merfolk Tidecaller"
+      },
+      {
+        "id": "frost_machine_03",
+        "name": "Harpoon Ballista"
+      },
+      {
+        "id": "frost_ace_03",
+        "name": "Heart of Winter"
+      },
+      {
+        "id": "frost_claim_03",
+        "name": "The Great Deluge"
+      },
+      {
+        "id": "hero_glacia",
+        "name": "Glacia the Mirror"
+      },
+      {
+        "id": "frost_strike_07",
+        "name": "Maelstrom"
+      },
+      {
+        "id": "frost_lob_08",
+        "name": "Rain of Fish"
+      },
+      {
+        "id": "frost_ward_07",
+        "name": "Coral Reef"
+      },
+      {
+        "id": "frost_sentry_09",
+        "name": "Rime Giant Cairn"
+      },
+      {
+        "id": "frost_boon_08",
+        "name": "Mead of the Longhall"
+      },
+      {
+        "id": "frost_charge_06",
+        "name": "Cannon Shot Crate"
+      },
+      {
+        "id": "frost_utility_07",
+        "name": "Ebb Tide"
+      },
+      {
+        "id": "frost_trap_07",
+        "name": "Kelp Tangle"
+      },
+      {
+        "id": "frost_environment_07",
+        "name": "Flood Plain"
+      },
+      {
+        "id": "frost_piece_04",
+        "name": "Heart of the Leviathan"
+      }
+    ],
+    "gray": [
+      {
+        "id": "gray_summon_43",
+        "name": "War Elephant"
+      },
+      {
+        "id": "gray_summon_44",
+        "name": "Ox of the Plough"
+      },
+      {
+        "id": "gray_summon_45",
+        "name": "Aurochs"
+      },
+      {
+        "id": "gray_summon_46",
+        "name": "Wandering Ronin"
+      },
+      {
+        "id": "gray_summon_47",
+        "name": "Bridge Troll"
+      },
+      {
+        "id": "gray_summon_48",
+        "name": "Ettin"
+      },
+      {
+        "id": "gray_summon_49",
+        "name": "Longbow Yeoman"
+      },
+      {
+        "id": "gray_summon_50",
+        "name": "Village Archer"
+      },
+      {
+        "id": "gray_summon_51",
+        "name": "Shepherd Slinger"
+      },
+      {
+        "id": "gray_summon_52",
+        "name": "Scythian Horse Archer"
+      },
+      {
+        "id": "gray_summon_53",
+        "name": "Steppe Rider"
+      },
+      {
+        "id": "gray_summon_54",
+        "name": "Amazon Archer"
+      },
+      {
+        "id": "gray_summon_55",
+        "name": "Mounted Bowman"
+      },
+      {
+        "id": "gray_summon_56",
+        "name": "Javelin Thrower"
+      },
+      {
+        "id": "gray_summon_57",
+        "name": "Spear Hunter"
+      },
+      {
+        "id": "gray_summon_58",
+        "name": "Woodcutter"
+      },
+      {
+        "id": "gray_summon_59",
+        "name": "Bounty Hunter"
+      },
+      {
+        "id": "gray_summon_60",
+        "name": "Wandering Ranger"
+      },
+      {
+        "id": "gray_summon_61",
+        "name": "Tracker"
+      },
+      {
+        "id": "gray_summon_62",
+        "name": "Falconer"
+      },
+      {
+        "id": "gray_summon_63",
+        "name": "Hunting Falcon"
+      },
+      {
+        "id": "gray_summon_64",
+        "name": "Peregrine"
+      },
+      {
+        "id": "gray_summon_65",
+        "name": "Kestrel"
+      },
+      {
+        "id": "gray_summon_66",
+        "name": "Osprey"
+      },
+      {
+        "id": "gray_summon_67",
+        "name": "Golden Eagle"
+      }
+    ],
+    "light": [
+      {
+        "id": "light_strike_06",
+        "name": "Agincourt Arrowstorm"
+      },
+      {
+        "id": "light_lob_07",
+        "name": "Toppled Marble Column"
+      },
+      {
+        "id": "light_ward_08",
+        "name": "Testudo Formation"
+      },
+      {
+        "id": "light_sentry_07",
+        "name": "Bell Tower"
+      },
+      {
+        "id": "light_boon_05",
+        "name": "Physician's Balm"
+      },
+      {
+        "id": "light_charge_06",
+        "name": "Salve Tin"
+      },
+      {
+        "id": "light_utility_06",
+        "name": "Alchemist's Still"
+      },
+      {
+        "id": "light_trap_06",
+        "name": "Murder Hole"
+      },
+      {
+        "id": "light_environment_05",
+        "name": "Pure Snowfield"
+      },
+      {
+        "id": "light_piece_04",
+        "name": "Bridle of the Pegasus"
+      },
+      {
+        "id": "light_summon_03",
+        "name": "Centaur Archer"
+      },
+      {
+        "id": "light_machine_03",
+        "name": "Mangonel"
+      },
+      {
+        "id": "light_ace_03",
+        "name": "Last Light of Dawn"
+      },
+      {
+        "id": "light_aceup_03",
+        "name": "Halo of Judgment"
+      },
+      {
+        "id": "light_claim_03",
+        "name": "Temple Foundation"
+      },
+      {
+        "id": "hero_solaris",
+        "name": "Solaris, Dawn Archer"
+      },
+      {
+        "id": "light_strike_07",
+        "name": "West Wind Gust"
+      },
+      {
+        "id": "light_lob_08",
+        "name": "Falling Star"
+      },
+      {
+        "id": "light_ward_09",
+        "name": "Castle Portcullis"
+      },
+      {
+        "id": "light_sentry_08",
+        "name": "Stone Lions of Delos"
+      },
+      {
+        "id": "light_boon_06",
+        "name": "Herbal Poultice"
+      },
+      {
+        "id": "light_charge_07",
+        "name": "Owl-Feather Darts"
+      },
+      {
+        "id": "light_utility_07",
+        "name": "Movable Type Press"
+      },
+      {
+        "id": "light_trap_07",
+        "name": "Riddle at the Gate"
+      },
+      {
+        "id": "light_environment_06",
+        "name": "Consecrated Ground"
+      }
+    ],
+    "shadow": [
+      {
+        "id": "shadow_strike_06",
+        "name": "Evil Eye"
+      },
+      {
+        "id": "shadow_lob_08",
+        "name": "Cauldron Spill"
+      },
+      {
+        "id": "shadow_ward_07",
+        "name": "Ossuary Wall"
+      },
+      {
+        "id": "shadow_sentry_08",
+        "name": "Gallows Tree"
+      },
+      {
+        "id": "shadow_boon_06",
+        "name": "Ritual Candles"
+      },
+      {
+        "id": "shadow_charge_06",
+        "name": "Plague Vials"
+      },
+      {
+        "id": "shadow_utility_05",
+        "name": "Seance"
+      },
+      {
+        "id": "shadow_trap_05",
+        "name": "Plague Mine"
+      },
+      {
+        "id": "shadow_environment_06",
+        "name": "Hellfire Rift"
+      },
+      {
+        "id": "shadow_piece_03",
+        "name": "Candle of the Hanged Man"
+      },
+      {
+        "id": "shadow_summon_05",
+        "name": "Bone Rattler"
+      },
+      {
+        "id": "shadow_machine_03",
+        "name": "Torture Rack"
+      },
+      {
+        "id": "shadow_ace_03",
+        "name": "Death's Door"
+      },
+      {
+        "id": "shadow_aceup_03",
+        "name": "Fog of Dread"
+      },
+      {
+        "id": "shadow_claim_03",
+        "name": "The Drowned Fen"
+      },
+      {
+        "id": "hero_vex",
+        "name": "Vex, the Night Blade"
+      },
+      {
+        "id": "shadow_strike_07",
+        "name": "Hook and Chain"
+      },
+      {
+        "id": "shadow_lob_09",
+        "name": "Witch's Brew Toss"
+      },
+      {
+        "id": "shadow_ward_08",
+        "name": "Crypt Door"
+      },
+      {
+        "id": "shadow_sentry_09",
+        "name": "Bubbling Cauldron"
+      },
+      {
+        "id": "shadow_boon_07",
+        "name": "Demon's Bargain"
+      },
+      {
+        "id": "shadow_charge_07",
+        "name": "Leech Jar"
+      },
+      {
+        "id": "shadow_utility_06",
+        "name": "Plague Doctor's Tonic"
+      },
+      {
+        "id": "shadow_trap_06",
+        "name": "Rigged Coffin"
+      },
+      {
+        "id": "shadow_environment_07",
+        "name": "Acid Rain"
+      }
+    ],
+    "storm": [
+      {
+        "id": "storm_strike_06",
+        "name": "Leyden Jar Shock"
+      },
+      {
+        "id": "storm_lob_07",
+        "name": "Sand Urn"
+      },
+      {
+        "id": "storm_ward_08",
+        "name": "Charged Fence"
+      },
+      {
+        "id": "storm_sentry_08",
+        "name": "Oil Lamp Brazier"
+      },
+      {
+        "id": "storm_boon_06",
+        "name": "Desert Mirage"
+      },
+      {
+        "id": "storm_charge_06",
+        "name": "Venom Vials"
+      },
+      {
+        "id": "storm_utility_06",
+        "name": "Natron Salts"
+      },
+      {
+        "id": "storm_trap_06",
+        "name": "Tomb Boulder"
+      },
+      {
+        "id": "storm_environment_05",
+        "name": "Thunder Rumble"
+      },
+      {
+        "id": "storm_summon_03",
+        "name": "Ifrit"
+      },
+      {
+        "id": "storm_machine_03",
+        "name": "Tesla Tower"
+      },
+      {
+        "id": "storm_ace_03",
+        "name": "Vajra of Indra"
+      },
+      {
+        "id": "storm_aceup_03",
+        "name": "Sandstorm Scatter"
+      },
+      {
+        "id": "hero_raijin",
+        "name": "Raijin, the Thunder King"
+      },
+      {
+        "id": "storm_strike_07",
+        "name": "Voltaic Arc"
+      },
+      {
+        "id": "storm_lob_08",
+        "name": "Sack of Coins"
+      },
+      {
+        "id": "storm_ward_09",
+        "name": "Caravan Circle"
+      },
+      {
+        "id": "storm_sentry_09",
+        "name": "Storm Kite"
+      },
+      {
+        "id": "storm_boon_07",
+        "name": "Sand Step"
+      },
+      {
+        "id": "storm_charge_07",
+        "name": "Scorpion Jar"
+      },
+      {
+        "id": "storm_utility_07",
+        "name": "Open Sesame"
+      },
+      {
+        "id": "storm_trap_07",
+        "name": "Antlion Pit"
+      },
+      {
+        "id": "storm_environment_06",
+        "name": "Dune Shift"
+      },
+      {
+        "id": "storm_summon_04",
+        "name": "Ifrit Sultan"
+      },
+      {
+        "id": "storm_machine_04",
+        "name": "Voltaic Pile Turret"
+      }
+    ],
+    "verdant": [
+      {
+        "id": "verdant_strike_07",
+        "name": "Outlaw's Split Arrow"
+      },
+      {
+        "id": "verdant_lob_07",
+        "name": "Acorn Rain"
+      },
+      {
+        "id": "verdant_ward_07",
+        "name": "Bear Hide Cloak"
+      },
+      {
+        "id": "verdant_sentry_06",
+        "name": "Treehouse Archer Post"
+      },
+      {
+        "id": "verdant_summon_08",
+        "name": "Weeping Willow"
+      },
+      {
+        "id": "verdant_boon_05",
+        "name": "Wild Herb Poultice"
+      },
+      {
+        "id": "verdant_charge_06",
+        "name": "Poison Dart Pouch"
+      },
+      {
+        "id": "verdant_utility_05",
+        "name": "Ogham Staves"
+      },
+      {
+        "id": "verdant_trap_06",
+        "name": "Pitfall of Thorns"
+      },
+      {
+        "id": "verdant_environment_03",
+        "name": "Kudzu Spread"
+      },
+      {
+        "id": "verdant_piece_03",
+        "name": "Horn of the Wild Hunt"
+      },
+      {
+        "id": "verdant_machine_03",
+        "name": "Sapling Catapult"
+      },
+      {
+        "id": "verdant_ace_03",
+        "name": "Wrath of the Wild"
+      },
+      {
+        "id": "verdant_aceup_03",
+        "name": "Root Snare Wrap"
+      },
+      {
+        "id": "verdant_claim_03",
+        "name": "Wildwood Reclamation"
+      },
+      {
+        "id": "hero_fang",
+        "name": "Fang the Beastcaller"
+      },
+      {
+        "id": "verdant_strike_08",
+        "name": "Jaguar Pounce"
+      },
+      {
+        "id": "verdant_lob_08",
+        "name": "Seed Pod Barrage"
+      },
+      {
+        "id": "verdant_ward_08",
+        "name": "Moss Mantle"
+      },
+      {
+        "id": "verdant_sentry_07",
+        "name": "Druid's Standing Stone"
+      },
+      {
+        "id": "verdant_summon_09",
+        "name": "Elder Ent"
+      },
+      {
+        "id": "verdant_boon_06",
+        "name": "Willow Bark Tea"
+      },
+      {
+        "id": "verdant_charge_07",
+        "name": "Herb Bundle"
+      },
+      {
+        "id": "verdant_utility_06",
+        "name": "Mycelium Network"
+      },
+      {
+        "id": "verdant_trap_07",
+        "name": "Deadfall"
+      }
+    ]
+  }
+}

@@ -1465,5 +1465,203 @@
     "status": "generated",
     "batch": 9,
     "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop (focal y=.34) and 128x88 thumbnail. The complete engraved halo ring remains intact with the knight’s face and open hands; outer rays and distant foes can extend beyond the crop."
+  },
+  {
+    "cardId": "light_claim_03",
+    "name": "Temple Foundation",
+    "prompt": "Painterly medieval fantasy landscape illustration for Temple Foundation, a marble temple site being claimed and consecrated. Show a complete low marble temple foundation platform on a rocky terrace: rectangular pale stone base with all four edges and broad steps visible, a few newly raised columns and scattered foundation blocks. A priest and masons lay one final stone as warm sacred light spreads across the plaza. The full base/platform is the named focal object, low and compact, occupying the central horizontal band with margin on every side; keep all platform corners, steps and workers’ faces inside x24..488,y105..407. Classical marble architecture, distant hills, warm morning light, expressive traditional fantasy painting. Strict 1:1 square 512x512 composed wide for a 206:141 card crop. No towering building that exceeds the crop, no frame, lettering, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9988a3f2-4b13-4d76-8e5a-2d224d298013.png",
+    "editableSourcePath": "game/cards/art/masters/light_claim_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop (focal y=.42) and 128x88 thumbnail. The entire marble foundation platform, front steps, side blocks and all column capitals remain in frame; workers and priest are secondary."
+  },
+  {
+    "cardId": "hero_solaris",
+    "name": "Solaris, Dawn Archer",
+    "prompt": "Painterly medieval fantasy hero illustration for Solaris, Dawn Archer, an elite light archer who rains five sun arrows. A distinctive confident female dawn archer in ivory-gold armor draws a complete golden longbow while five luminous sunlit arrows arc outward in a fan toward distant foes. Her face, drawing hand, bow grip, full bow tips and the five arrow shafts/heads are legible within x24..488,y105..407. Warm sunrise over a high fortress, windblown cloak, grounded expression, expressive hand-painted fantasy, nuanced leather and metal. Strict 1:1 square 512x512 with wide staging for 206:141 card crop and quiet sky/ground margins. No frame, writing, symbols, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4d6e344e-2eae-4374-b7ea-9e063870829e.png",
+    "editableSourcePath": "game/cards/art/masters/hero_solaris.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop (focal y=.34) and 128x88 thumbnail. Solaris’s face, both hands, full bow and five sun arrows remain visible; lower armor is expendable."
+  },
+  {
+    "cardId": "light_strike_07",
+    "name": "West Wind Gust",
+    "prompt": "Painterly medieval fantasy illustration for West Wind Gust, a swift wedge-shaped gust that knocks a foe back. A west wind sweeps diagonally from a vigilant light-aligned ranger’s outstretched hand as a broad translucent fan of pale gold and blue air; three armored foes are struck in a forward wedge and pushed backward, one clearly staggering. Ranger’s face, casting hand and the complete wedge-shaped front of wind stay inside x24..488,y105..407. Leaves and dust show direction, dawn at the western horizon, expressive hand-painted fantasy materials. Strict 1:1 square 512x512 composed wide for 206:141 crop. No frame, lettering, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b881b09b-6316-47d6-bf4d-6b2ec65fb336.png",
+    "editableSourcePath": "game/cards/art/masters/light_strike_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop and 128x88 thumbnail. Ranger’s face and casting hand, broad wind wedge and recoiling foes are clear; the wedge is emphasized by blowing leaves and dust."
+  },
+  {
+    "cardId": "light_lob_08",
+    "name": "Falling Star",
+    "prompt": "Painterly medieval fantasy collectible-card art for Falling Star, a heavy single-target lob that knocks foes back and confuses them. A brilliant compact meteor shard drops diagonally from the twilight sky toward one armored enemy on a battlement; its complete glowing stone core and fiery trail are visible, with an impact burst that throws the foe backward in dazed confusion. Keep the bright star, enemy face and impact centered inside x24..488,y105..407. Distinct rocky meteor, not merely a sunbeam; expressive hand-painted fantasy, warm gold fire against deep indigo dusk, nuanced stone and armor. Strict 1:1 square 512x512 staged wide for 206:141 crop, with expendable sky/ground margins. No frame, text, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-22c9c598-f171-4d8e-9919-4d3f08b2fdfd.png",
+    "editableSourcePath": "game/cards/art/masters/light_lob_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop and 128x88 thumbnail. The meteor’s rocky core, staggered foe’s face, raised hands and impact remain readable; the upper trail is expendable."
+  },
+  {
+    "cardId": "light_ward_09",
+    "name": "Castle Portcullis",
+    "prompt": "REPAINT Castle Portcullis as a visibly hand-painted medieval fantasy scene. Pull the viewpoint farther back so a COMPLETE low, broad medieval gatehouse and its entire portcullis fit like a small architectural subject in the center. The gatehouse is wide and squat, not tall: a rectangular arch about 1.5 times wider than tall. Its full roof/parapet, arch, winch, chains, iron grid and pointed bottom edge occupy only the middle 55 percent of the square height, from approximately y130 to y390; leave a broad band of empty stone passage above and below. The full structure should be about 70 percent of square width. Behind the lowered grid, a healer tends an injured defender, pale gold-green healing barrier on the bars. Keep full roof, gate top and bottom in the central safe rectangle x24..488,y105..407. Warm torchlight, detailed limestone and iron, traditional fantasy paintbrush texture. Strict 1:1 square 512x512 composed for 206:141 crop. No oversized close-up gate, no edge clipping, no frame, words, UI, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-453b1e9e-a1d4-4834-931d-2c3dc4eab2cc.png",
+    "editableSourcePath": "game/cards/art/masters/light_ward_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Repainted after first gate filled the frame and could not fit its full height in the card crop; preserved first source at /tmp/light_ward_09-first-source.png and exact raw at /workspace/generated_images/exec-c0309a79-8a7a-430b-a1b9-b7db1356af65.png. Reviewed corrected exact 512 source, centered wide crop and 128x88 thumbnail: full portcullis, upper winch, chains, bottom spikes and surrounding arch fit."
+  },
+  {
+    "cardId": "light_sentry_08",
+    "name": "Stone Lions of Delos",
+    "prompt": "Repaint Stone Lions of Delos. STRICT SQUARE 1:1 canvas. Two complete compact marble lion guardian statues sit as a close symmetrical pair near the center, not at the far left and right edges. Both full heads, bodies, all four paws and complete separate pedestal bases fit together within the central 70 percent of the square width (from x75 to x437 on 512) and between y135 and y385. Leave broad empty margin at every edge. The left lion breathes one slender pale-blue chilling bolt toward a tiny distant raider; the right lion guards alertly. Include no massive temple columns or cropped neighboring architecture. Painterly medieval fantasy, sunlit Delos seaside temple, expressive brush-painted veined marble, blue frost light. Compose for a centered 512-square master and 206:141 wide crop; keep both entire statues and bases in x24..488,y105..407. No frame, text, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-caec942e-41e7-4ba9-a98a-3ebd11b0ed66.png",
+    "editableSourcePath": "game/cards/art/masters/light_sentry_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Repainted after first landscape result would have clipped the right statue during square normalization; preserved exact raw at /workspace/generated_images/exec-2babed1a-e4b1-4dcb-b83a-5bec417e693a.png. Reviewed final 512-square source, centered wide crop and 128x88 thumbnail: both lions, full paws and separate plinth bases fit; chill bolt remains visible."
+  },
+  {
+    "cardId": "light_boon_06",
+    "name": "Herbal Poultice",
+    "prompt": "Painterly medieval fantasy card illustration for Herbal Poultice, a long-lasting regenerative healing boon. A village healer carefully lays a fresh green herb poultice, wrapped in linen, onto the shoulder of an exhausted but recovering knight; the wound visibly closes with gentle golden-green light. A faint spark of light jolts a lurking attacker away in the far background. Keep healer’s face and applying fingers, patient’s face, and the complete poultice wrap inside x24..488,y105..407. Warm woodland infirmary at dawn, expressive hand-painted fantasy, believable medicinal leaves, linen and armor. Strict 1:1 square 512x512 staged wide for a 206:141 card crop. No frame, writing, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d5b01604-6a3f-4335-b943-34c1d5145dea.png",
+    "editableSourcePath": "game/cards/art/masters/light_boon_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop (focal y=.34) and 128x88 thumbnail. Healer’s full face and applying fingers, patient’s face and leaf poultice wrap remain in view; background attacker is secondary."
+  },
+  {
+    "cardId": "light_charge_07",
+    "name": "Owl-Feather Darts",
+    "prompt": "Painterly medieval fantasy collectible-card art for Owl-Feather Darts. A skilled light-aligned scout casts a pair of short silver throwing darts with distinct soft gray owl-feather fletching; both entire dart bodies and sharp tips are visible in mid-flight toward an armored target, with a subtle bright critical glint. The scout’s focused face, throwing hand, both full darts and feather vanes all fit inside x24..488,y105..407. Moonlit stone courtyard, hand-painted fantasy, detailed steel, feather and leather, crisp directional light. Strict 1:1 square 512x512 composed wide for 206:141 crop. No cropped dart tips, no text, frame, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a3ce30e8-6bf0-4a75-a4d0-0b1472c4616d.png",
+    "editableSourcePath": "game/cards/art/masters/light_charge_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop and 128x88 thumbnail. Scout’s face and throwing hand plus both complete owl-feathered darts and bright tips fit in the crop; target remains partial and secondary."
+  },
+  {
+    "cardId": "light_utility_07",
+    "name": "Movable Type Press",
+    "prompt": "REPAINT Movable Type Press as traditional hand-painted medieval fantasy art. Create a SMALL compact wooden movable-type hand press on a worktable, seen from a slightly farther viewpoint. The entire press must fit inside the central horizontal band of a square: screw cap and top crossbar, vertical screw, flat platen and type bed, both side posts and complete lower base are visible with generous margin. Keep the complete press only 55 percent of square height, approximately y125..390, and 65 percent width, approximately x80..435. A printer is beside it, his entire face visible with ample margin, holding a fresh completely blank parchment sheet; an identical blank sheet lies on the table to show copying. All named machine parts and the printer’s head and hands inside x24..488,y105..407. Cozy candlelit medieval print shop, expressive brush-painted wood, iron and vellum. Strict 1:1 square 512x512 composed for 206:141 card crop. No huge press, no cropped screw, frame, written letters, words, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-80f60a3d-e04f-46d2-92dd-f88af857b6da.png",
+    "editableSourcePath": "game/cards/art/masters/light_utility_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Repainted after first crop clipped the screw and printer’s head; preserved that source at /tmp/light_utility_07-first-source.png and exact raw at /workspace/generated_images/exec-74000dcb-cc98-43d6-93b0-9524317ec176.png. Reviewed exact 512 source, upward-shifted crop (focal y=.34) and thumbnail: full screw, press frame, platen, type bed and base, printer’s face/hands and blank copy sheets remain visible."
+  },
+  {
+    "cardId": "light_trap_07",
+    "name": "Riddle at the Gate",
+    "prompt": "Painterly medieval fantasy collectible-card art for Riddle at the Gate, a long snaring and confusing trap. An old compact stone gate blocks a woodland road; an ornate circular geometric puzzle lock with abstract non-letter symbols is set at chest height. A curious traveler reaches toward the mechanism and becomes caught in luminous golden cords springing from the gate, with a small dizzy swirl of abstract shapes around their head. Keep complete puzzle lock, traveler’s face and hand, and the snare cords inside x24..488,y105..407. Gate is broad and modest, fully visible within the central band; moody dawn, expressive hand-painted stone, wood, cloth and magic. Strict 1:1 square 512x512 composed wide for 206:141 crop. No written words or letters, no frame, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f4f2dc28-41aa-4324-88a2-b9b3c01c6b7a.png",
+    "editableSourcePath": "game/cards/art/masters/light_trap_07.png",
+    "sourceNative": [
+      1505,
+      1045
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed normalized exact 512-square source, upward-shifted 206:141 crop (focal y=.42) and 128x88 thumbnail. Full puzzle gate/arch and circular mechanism, traveler’s face/hand and snare cords are retained; lower legs are incidental."
+  },
+  {
+    "cardId": "light_environment_06",
+    "name": "Consecrated Ground",
+    "prompt": "Painterly medieval fantasy landscape for Consecrated Ground, a sacred place whose power sets enemies alight. Show a compact ancient marble sanctuary courtyard and circular consecrated stone plaza at dawn; a warm radiant golden fire burns low along a curved line in the paving, surrounding a patch of shadow corruption while the surrounding ground remains peaceful. A lone armored intruder recoils from the holy flame at the edge. The complete central consecrated ground motif and intruder’s face stay inside x24..488,y105..407. Hand-painted fantasy landscape, clear sacred marble geometry, warm gold and cool shadow contrast, atmospheric depth. Strict 1:1 square 512x512 composed wide for 206:141 card crop. Keep environment dominant, flames clearly on ground, not a large fireball. No frame, text, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-cf03fc48-0264-4801-af9e-944ec1ca74aa.png",
+    "editableSourcePath": "game/cards/art/masters/light_environment_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.58
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed exact 512-square source, downward-shifted 206:141 crop (focal y=.58) and 128x88 thumbnail. Complete consecrated circular ground and low ring of golden fire remain visible with the intruder and corruption at the edges."
   }
 ]

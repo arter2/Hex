@@ -32,3 +32,5 @@ If image generation returns a usage limit, stop immediately and report the exact
 To reduce waiting, an artist may generate up to two different assigned cards concurrently with awaited `Promise.allSettled`. Keep an explicit card-ID-to-result mapping, preserve exact returned paths/fingerprints, and review/save each separately. Never exceed two outstanding generations or guess a shared output path. Stop on a usage-limit error.
 
 Copy the exact `name` string from the assignment JSON into the record rather than retyping it. ASCII and curly apostrophes differ; parent validation requires an exact catalogue-name match.
+
+Final-stage scheduling: once the other six colours finished, the parent allowed the remaining Light and Shadow artists up to four different awaited image generations each, with explicit ID-to-result mappings and separate review/save steps. This overrides the earlier two-call cap only for these final two artists. Fewer concurrent calls remain acceptable; usage-limit handling is unchanged.

@@ -1843,5 +1843,95 @@
     "status": "generated",
     "batch": 10,
     "reviewNote": "Repainted again to use a compact side-by-side layout; preserved all prior attempts in /tmp/shadow02-attempts. Reviewed replacement square, actual 206:141 crop and 128x88 thumbnail. The Bone Mother’s complete eyes, face, and both hands are visible beside the cauldron; its rim, body, and all three feet fit in the crop."
+  },
+  {
+    "cardId": "shadow_summon_06",
+    "name": "Shambling Zombie",
+    "prompt": "A gaunt non-gory zombie rises from an old stone grave, shambling forward with one hand reaching and pale face visible. Tattered robe, moonlit cemetery, ghostly blue grave light, painterly medieval fantasy. Square 1:1 with face and hand inside horizontal safe band.",
+    "generatedPath": "/workspace/generated_images/exec-0aced3b8-188e-4cbc-b85d-cf951fb53ae4.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "reviewNote": "Focal point y=0.40 restores the full zombie face in the wide crop; reaching hand and upper body remain clear. Lower robe and legs are incidental and crop naturally.",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "shadow_machine_04",
+    "name": "Coffin Cannon",
+    "prompt": "A small compact coffin-shaped iron cannon on a low two-wheel timber carriage, with full barrel, muzzle, breech, both wheel rims, axle, feet and elevation gear. Crouching gravedigger engineer has a full visible face and both loading hands at cannon height. Gothic cemetery wall, moonlit fog, painterly dark iron and oak. Strict square, complete machine and face in 206:141 crop.",
+    "generatedPath": "/workspace/generated_images/exec-4c6e4a0c-45e3-482d-849e-f52a9209d099.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_machine_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Repainted after first attempt clipped operator head and carriage wheels. Complete coffin barrel, both wheels, engineer face and loading hands read in square, wide crop, and thumbnail.",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "hero_jester",
+    "name": "The Hollow Jester",
+    "prompt": "A hollow-eyed court jester in weathered red and charcoal motley stands in a moonlit ruined court, face readable, tossing three distinct trick knives in a controlled arc over one hand while the other remains open. No injury or gore. Painterly dark fantasy, square 1:1 with face, hands and knives in horizontal safe band.",
+    "generatedPath": "/workspace/generated_images/exec-01c5b899-f41e-4bf4-a31d-9845af42ad4a.png",
+    "editableSourcePath": "game/cards/art/masters/hero_jester.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "reviewNote": "Focal point y=0.40 keeps full jester face, both hands and three distinct knives visible in wide crop and thumbnail; top hat tip is incidental and cropped.",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "shadow_strike_09",
+    "name": "Creeping Fog",
+    "prompt": "A thick low band of pale silver-gray fog creeps horizontally between black pines and standing stones, swallowing the middle distance in a sinuous row. Distant silhouettes fade into the mist. Layered billows and cold moonlight, painterly dark fantasy. Square 1:1 with strongest fog pattern in horizontal card crop.",
+    "generatedPath": "/workspace/generated_images/exec-0e3171f6-f4a3-4bb6-8424-a48d3eda4257.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_strike_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Layered fog row and standing-stone silhouettes remain clear in square, wide crop, and thumbnail; no critical subject is clipped.",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "shadow_lob_11",
+    "name": "Spider Egg Sac",
+    "prompt": "A cloaked naturalist holds one complete oval silk-wrapped spider egg sac with its full woven silhouette visible. Pearly eggs and a delicate spider shape show through translucent webbing. The naturalist face and both hands are clear; moonlit forest floor, silver web threads and moss, eerie but non-graphic painterly fantasy. Square 1:1, full sac, face and hands in horizontal safe band.",
+    "generatedPath": "/workspace/generated_images/exec-6e13bf92-72b3-498f-aed3-7b29f25adc4a.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_lob_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Entire webbed egg sac and naturalist face and hands are visible in square, wide crop, and thumbnail; pearls and spider silhouette stay readable.",
+    "status": "generated",
+    "batch": 10
   }
 ]

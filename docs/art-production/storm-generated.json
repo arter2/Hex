@@ -1852,5 +1852,95 @@
     "editableSourcePath": "game/cards/art/masters/storm_summon_05.png",
     "status": "generated",
     "batch": 10
+  },
+  {
+    "cardId": "storm_machine_05",
+    "name": "Arc Gatling",
+    "prompt": "Square 1:1 512x512 master illustration for the medieval fantasy collectible card \"Arc Gatling\". A compact sturdy dwarven arc gatling apparatus on a low wheeled wooden carriage: a rotating cluster of short copper-and-brass barrels linked to a blue-white lightning coil, with a stout artisan gripping its two handles. Its overcharged barrels discharge a straight piercing stream of tiny electric bolts. Keep the entire device, muzzle cluster and operator's focused face and hands close together and centered; no modern firearm styling. Painterly traditional high-fantasy card artwork in the established Hexmancers style: expressive brushwork, detailed believable leather, wood, brass, glass, stone, feathers and skin, dramatic directional light, atmospheric depth, compact readable action. Keep complete named device/flask/creature, primary face and relevant hand within x24..488,y105..407 after square normalization for centered 206:141 crop; leave quiet scenery above and below. No frame, words, runes, numbers, UI, modern technology, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a4c7269f-f1aa-4074-970d-c6203604c4ed.png",
+    "editableSourcePath": "game/cards/art/masters/storm_machine_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Square source, centered wide crop and thumbnail inspected. Complete gatling, muzzle cluster, carriage, operator face and both hands remain clear; electric discharge trails outward."
+  },
+  {
+    "cardId": "hero_tempest",
+    "name": "Tempest the Stormcaller",
+    "prompt": "Square 1:1 512x512 master illustration for the medieval fantasy collectible card \"Tempest the Stormcaller\". Tempest, a heroic sky-mage in wind-tossed blue robes and weathered leather, stands on a high cliff. Show her full expressive face and raised casting hand as she calls a bolt of lightning down onto an enemy far below; forked light stuns a distant armored silhouette while her coat and hair stream in the wind. A restrained circular gauge-like glow around her chest suggests rising spell power without symbols or text. Painterly traditional high-fantasy card artwork in the established Hexmancers style: expressive brushwork, detailed believable leather, wood, brass, glass, stone, feathers and skin, dramatic directional light, atmospheric depth, compact readable action. Keep complete named device/flask/creature, primary face and relevant hand within x24..488,y105..407 after square normalization for centered 206:141 crop; leave quiet scenery above and below. No frame, words, runes, numbers, UI, modern technology, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e0d97f31-8b80-4dad-9a37-f97e8ee2b3f2.png",
+    "editableSourcePath": "game/cards/art/masters/hero_tempest.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Focal point raised to include Tempest’s complete face and staff orb with the casting hand and lightning origin. Adjusted crop and thumbnail inspected; legs and distant target are incidental."
+  },
+  {
+    "cardId": "storm_strike_09",
+    "name": "Scorpion Sting",
+    "prompt": "Square 1:1 512x512 master illustration for the medieval fantasy collectible card \"Scorpion Sting\". A large desert scorpion rears in a clear side profile, its curved tail delivering a quick precise sting while one small electric-blue magical arc curves out and returns like a boomerang toward an unseen foe. Keep the scorpion's whole head, claws and tail stinger in view; the swift arc and tiny impact spark read as the attack. Ancient sandstone ground, dusk. Painterly traditional high-fantasy card artwork in the established Hexmancers style: expressive brushwork, detailed believable leather, wood, brass, glass, stone, feathers and skin, dramatic directional light, atmospheric depth, compact readable action. Keep complete named device/flask/creature, primary face and relevant hand within x24..488,y105..407 after square normalization for centered 206:141 crop; leave quiet scenery above and below. No frame, words, runes, numbers, UI, modern technology, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2ae9ea1d-76f5-4040-b547-4c77a086622d.png",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Focal point raised to retain the complete arched tail and stinger while preserving claws and body. Adjusted crop and thumbnail inspected; the full scorpion remains identifiable."
+  },
+  {
+    "cardId": "storm_lob_10",
+    "name": "Mercury Flask",
+    "prompt": "Square 1:1 512x512 master illustration for the medieval fantasy collectible card \"Mercury Flask\". One complete stoppered glass mercury flask flies just above a stone floor, clearly showing its rounded bottom, narrow neck, and sealed stopper. Heavy silver mercury sloshes visibly inside, then bursts into a quick cross-shaped splash of liquid metal and pale blue sparks that knocks loose pebbles outward. Keep entire flask and stopper central and clear; burst trails are secondary. Painterly traditional high-fantasy card artwork in the established Hexmancers style: expressive brushwork, detailed believable leather, wood, brass, glass, stone, feathers and skin, dramatic directional light, atmospheric depth, compact readable action. Keep complete named device/flask/creature, primary face and relevant hand within x24..488,y105..407 after square normalization for centered 206:141 crop; leave quiet scenery above and below. No frame, words, runes, numbers, UI, modern technology, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5d266e2b-e951-4a02-8f8c-e78001097baa.png",
+    "editableSourcePath": "game/cards/art/masters/storm_lob_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Focal point raised so the flask’s complete stopper, neck and rounded base remain visible in the actual crop. Adjusted crop and thumbnail inspected; mercury contents and knockback burst are clear."
+  },
+  {
+    "cardId": "storm_ward_11",
+    "name": "Lightning Rod Array",
+    "prompt": "Square 1:1 512x512 painterly medieval fantasy card illustration for \"Lightning Rod Array\". Depict a compact, heavy protective array of three bronze lightning rods mounted on sturdy stone-and-iron bases and joined by a curved copper arc. All three complete rods, pointed tips and bases fit together in a central horizontal arrangement, modest in height with clear margins above and below. A smith's face and one gloved hand remain visible beside the array as it gathers a blue-white electrical barrier that deflects a bolt outward. The rods and shield effect are the named focus; no tall tower, no cropped tip or base. Painterly tabletop high-fantasy illustration with expressive brushwork, believable brass, iron, stone, dramatic storm lighting and atmospheric depth, consistent with established Hexmancers art. Keep every rod/tip/base, face and hand within x35..477,y130..390 on square, designed for centered 206:141 crop. No frame, text, runes, numbers, UI, anime, cartoon, photorealism, pixel art or modern electrical equipment.",
+    "generatedPath": "/workspace/generated_images/exec-c0666f53-dccc-460f-a1ff-80ddcbf4ae75.png",
+    "editableSourcePath": "game/cards/art/masters/storm_ward_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Square master, centered wide crop and thumbnail inspected. All three rod tips and bases, copper links, smith face and hand remain clear; protective lightning barrier reads around the array."
   }
 ]

@@ -1936,5 +1936,95 @@
     "status": "generated",
     "batch": 10,
     "reviewNote": "Focal point raised so complete mask, horn tips, chin and gripping hands remain in the actual wide crop. Square master, adjusted crop and thumbnail inspected; visible oni eyes sit above the mask."
+  },
+  {
+    "cardId": "fire_sentry_11",
+    "prompt": "A sturdy stationary phoenix nest sentry rests in a shallow complete woven nest of dark twigs, coppery feathers and glowing embers on a blackened stone ledge; one small vivid phoenix helper rises from the nest with wings spread, its beak and fiery eye clear, while a distant foe braces as a faint heat shimmer reaches them. The nest is the dominant named object and remains fully recognizable; the bird is a summoned helper, not a giant fireball. Painterly medieval fantasy collectible-card art, tactile feathers, twig and stone, dramatic orange firelight against dusk, atmospheric depth in the supplied style. Explicit 1:1 SQUARE 512x512 master, horizontal staging; keep the complete nest silhouette and clear phoenix face/body within x24..488,y105..407 for 206:141 crop; expendable sparks and background beyond. No frame, text, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c9d99797-abd0-4982-93a0-3f8159ffc959.png",
+    "sourceNative": [
+      1514,
+      1039
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "The phoenix face and body rise from a fully readable nest in the wide crop; only upper wing tips and surrounding sparks extend beyond the frame. Nest and bird remain distinct at thumbnail size.",
+    "name": "Phoenix Nest",
+    "editableSourcePath": "game/cards/art/masters/fire_sentry_11.png",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "fire_boon_09",
+    "prompt": "In a medieval winter inn, a kindly but battle-worn innkeeper with a clearly visible face and hands offers one complete ornate pewter goblet of steaming mulled wine to a tired armored traveler; the goblet is centered and fully visible from rim to foot, with cloves, orange peel and warm red wine, gentle green-gold restorative steam around the traveler's hands and two companions rallying in the hearth glow behind. Painterly medieval fantasy card art, tactile pewter, wool and wood, warm candle and firelight, grounded anatomy, atmospheric depth. Explicit 1:1 SQUARE 512x512 composition; keep innkeeper face, both relevant hands, whole goblet and traveler's face within x24..488,y105..407 for 206:141 crop; quiet rafters and floor may crop. No text, letters, labels, frame, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9813b377-2696-471f-b677-ea9faea4240d.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "reviewNote": "The shifted crop keeps both primary faces and hands with the complete pewter goblet from rim to foot; the steam and warming inn scene remain clear at thumbnail size.",
+    "name": "Mulled Wine",
+    "editableSourcePath": "game/cards/art/masters/fire_boon_09.png",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "fire_charge_09",
+    "prompt": "A rugged medieval archer in a scorched leather mantle draws one arrow from a complete, prominent dragon-tooth quiver strapped at his hip; the quiver is fully visible from open rim to closed base and contains several unmistakable ivory dragon-tooth-tipped arrows, with the archer's face and drawing hand clear. A single arrow is nocked and ready, implying many powerful shots; no giant dragon in foreground. Painterly high-fantasy collectible-card illustration, tactile leather, bone, iron and cloth, warm ember light against dark forest, dramatic atmosphere. Explicit 1:1 SQUARE 512x512 master and horizontal composition; keep full quiver, arrowheads, archer face and relevant hand inside x24..488,y105..407 for 206:141 crop, quiet background beyond. No frame, writing, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-03ee154f-6f6a-4568-839d-14c9d2c1ab22.png",
+    "sourceNative": [
+      1514,
+      1039
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "reviewNote": "The upward crop preserves the archer’s full face and drawing hand together with the complete leather quiver, closed base, open rim and dragon-tooth arrowheads. The ready arrow and quiver read clearly at thumbnail size.",
+    "name": "Dragon Tooth Quiver",
+    "editableSourcePath": "game/cards/art/masters/fire_charge_09.png",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "fire_utility_10",
+    "prompt": "A medieval courier with a readable face and both hands presents a complete vivid red paper envelope sealed with a simple gold wax sun to a young mage; the mage's fingers draw one blank glowing card from the envelope, showing the utility's single-card draw. Envelope, folded flap, seal and both hands are prominent and completely visible; no writing or numerals anywhere. Painterly medieval fantasy collectible-card art, tactile handmade paper, wax and embroidered cloth, warm lantern light with restrained golden magic, atmospheric depth. Explicit 1:1 SQUARE 512x512 composition, horizontal staging; preserve complete courier and mage faces, relevant hands and whole red envelope in x24..488,y105..407 for 206:141 card crop, quiet market awning and tabletop beyond. No frame, text, labels, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c0691e27-8ec9-42fe-a093-682ffcacaeab.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "reviewNote": "The upward-shifted crop preserves both faces, the hands exchanging one blank card and the complete sealed red envelope, including folded flap and bottom edge. The exchange reads at thumbnail size.",
+    "name": "Red Envelope",
+    "editableSourcePath": "game/cards/art/masters/fire_utility_10.png",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "fire_trap_08",
+    "prompt": "Create an illustration for Minotaur's Labyrinth, a long-lived fire-aligned snare trap that roots a foe when it steps onto a row of three adjacent tiles. Show one complete bull-headed armored minotaur with full face, both horns and visible hands caught in a tight glowing labyrinth pattern on exactly three connected sandstone floor slabs; ember-gold maze lines rise into short angular walls around the minotaur's legs, rooting it while a small stun flash glows at the central tile. Low horizontal viewpoint: keep the minotaur's full head/horns and upper body above the trap, and all three complete connected floor tiles below, fitting everything together in the central band. The trap layout and trapped minotaur are the clear subject, not a huge background maze. Painterly medieval fantasy collectible-card art, tactile sandstone, iron and fur, dramatic firelight with dark red shadows, atmospheric depth. Explicit 1:1 SQUARE 512x512 composition; keep complete face, horns, relevant hands and all three tile trap slabs inside x24..488,y105..407 for a 206:141 wide crop; quiet corridor scenery beyond. No frame, text, lettering, numbers, UI, anime, cartoon, photorealism or pixel art. Recomposition by image edit: scale the minotaur and three connected slabs down together so full face and both horn tips plus full trap tile borders fit safely inside the card band, with quiet corridor above/below.",
+    "generatedPath": "/workspace/generated_images/exec-b38d0e32-78e7-4292-bf67-40bd3e0683c8.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "The revised smaller composition retains both complete horn tips and the full bull face with its hands, while all three maze-marked trap slabs and their borders remain visible in the card crop. The minotaur and labyrinth trap read clearly at thumbnail size.",
+    "name": "Minotaur's Labyrinth",
+    "editableSourcePath": "game/cards/art/masters/fire_trap_08.png",
+    "status": "generated",
+    "batch": 10
   }
 ]

@@ -4,8 +4,8 @@
   "active": 834,
   "remaining": 1119,
   "pending": 919,
-  "assigned": 100,
-  "awaitingReview": 100,
+  "assigned": 70,
+  "awaitingReview": 130,
   "countsByColour": {
     "brown": 234,
     "fire": 246,
@@ -345,7 +345,7 @@
       "name": "Djinn Sand Cannon",
       "type": "machine",
       "color": "brown",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -354,7 +354,7 @@
       "name": "Elven Seed Catapult",
       "type": "machine",
       "color": "brown",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -740,7 +740,7 @@
       "name": "Coral Shrapnel",
       "type": "instant",
       "color": "brown",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -749,7 +749,7 @@
       "name": "Djinn Smoke Puff",
       "type": "instant",
       "color": "brown",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -758,7 +758,7 @@
       "name": "Dwarven Blasting Charge",
       "type": "instant",
       "color": "brown",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -2799,7 +2799,7 @@
       "name": "Phoenix Nest",
       "type": "sentry",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -2880,7 +2880,7 @@
       "name": "Mulled Wine",
       "type": "boon",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -3025,7 +3025,7 @@
       "name": "Dragon Tooth Quiver",
       "type": "charge",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -3187,7 +3187,7 @@
       "name": "Red Envelope",
       "type": "utility",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -3259,7 +3259,7 @@
       "name": "Minotaur's Labyrinth",
       "type": "trap",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -8299,7 +8299,7 @@
       "name": "Mistral Gale",
       "type": "strike",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -8565,7 +8565,7 @@
       "name": "Salve Jar",
       "type": "lob",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -9510,7 +9510,7 @@
       "name": "Chiron, Healer of Heroes",
       "type": "summon",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -9875,7 +9875,7 @@
       "name": "Battering Ram",
       "type": "machine",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -10161,7 +10161,7 @@
       "name": "The Oracle",
       "type": "hero",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -10410,7 +10410,7 @@
       "name": "Creeping Fog",
       "type": "strike",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -10709,7 +10709,7 @@
       "name": "Spider Egg Sac",
       "type": "lob",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -11592,7 +11592,7 @@
       "name": "Shambling Zombie",
       "type": "summon",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -12133,7 +12133,7 @@
       "name": "Coffin Cannon",
       "type": "machine",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -12283,7 +12283,7 @@
       "name": "The Hollow Jester",
       "type": "hero",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -12524,7 +12524,7 @@
       "name": "Scorpion Sting",
       "type": "strike",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -12814,7 +12814,7 @@
       "name": "Mercury Flask",
       "type": "lob",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -12970,7 +12970,7 @@
       "name": "Lightning Rod Array",
       "type": "ward",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -14144,7 +14144,7 @@
       "name": "Arc Gatling",
       "type": "machine",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -14371,7 +14371,7 @@
       "name": "Tempest the Stormcaller",
       "type": "hero",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -14631,7 +14631,7 @@
       "name": "Army Ant March",
       "type": "strike",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -14972,7 +14972,7 @@
       "name": "Wild Honeycomb Hurl",
       "type": "lob",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -15850,7 +15850,7 @@
       "name": "Jack-in-the-Green",
       "type": "summon",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -16367,7 +16367,7 @@
       "name": "Treehouse Lookout",
       "type": "machine",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -16484,7 +16484,7 @@
       "name": "Oakheart the Ancient",
       "type": "hero",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },

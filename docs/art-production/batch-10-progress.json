@@ -2,10 +2,10 @@
   "batch": 10,
   "status": "in-progress",
   "targetNewImages": 200,
-  "generatedSources": 100,
-  "reviewedSources": 100,
-  "missingSources": 100,
-  "reviewedPackets": 20,
+  "generatedSources": 130,
+  "reviewedSources": 125,
+  "missingSources": 70,
+  "reviewedPackets": 25,
   "requiresRepaint": [],
   "baselineActive": 834,
   "targetActive": 1034,
@@ -95,6 +95,42 @@
       "focalPoint": [
         0.5,
         0.5
+      ]
+    },
+    {
+      "cardId": "brown_instant_32",
+      "name": "Coral Shrapnel",
+      "colour": "brown",
+      "source": "game/cards/art/masters/brown_instant_32.png",
+      "sha256": "961220bbc5e22f0e0e83babd6a2ca2eac1a8916899991ef4ee0ddaf6496f48b3",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "brown_instant_33",
+      "name": "Djinn Smoke Puff",
+      "colour": "brown",
+      "source": "game/cards/art/masters/brown_instant_33.png",
+      "sha256": "2bfc681ebe3396b4a2333a7a33dadc115c0702b656623274439ded70f3505319",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "brown_instant_34",
+      "name": "Dwarven Blasting Charge",
+      "colour": "brown",
+      "source": "game/cards/art/masters/brown_instant_34.png",
+      "sha256": "991877ccfadadddbd4ad4756c63145cd13ac4b9eab1313f4b7a6aa0a02166d1d",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.54
       ]
     },
     {
@@ -194,6 +230,30 @@
       ]
     },
     {
+      "cardId": "brown_machine_36",
+      "name": "Djinn Sand Cannon",
+      "colour": "brown",
+      "source": "game/cards/art/masters/brown_machine_36.png",
+      "sha256": "47ee0ae80b9f6293f18893f7490bf484866a59bfd514c795bb1b43bc98ca127f",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "brown_machine_37",
+      "name": "Elven Seed Catapult",
+      "colour": "brown",
+      "source": "game/cards/art/masters/brown_machine_37.png",
+      "sha256": "26d1dca8620fb05c22a3eaa021cbc01553f28182c30f5881f6f3ae55109d2889",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "cardId": "fire_boon_08",
       "name": "Hearty Feast",
       "colour": "fire",
@@ -206,6 +266,18 @@
       ]
     },
     {
+      "cardId": "fire_boon_09",
+      "name": "Mulled Wine",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_boon_09.png",
+      "sha256": "4cc61744ce80cd06c1185445d63fe6ff1e1ba682ec5e1b1959de5c086abb32e0",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
       "cardId": "fire_charge_08",
       "name": "Rivet Pouch",
       "colour": "fire",
@@ -215,6 +287,18 @@
       "focalPoint": [
         0.5,
         0.5
+      ]
+    },
+    {
+      "cardId": "fire_charge_09",
+      "name": "Dragon Tooth Quiver",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_charge_09.png",
+      "sha256": "6b471398b5ecca3160e1a7e9a2dd3befdc77f0650343cf9a262336756e711204",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.4
       ]
     },
     {
@@ -278,6 +362,18 @@
       ]
     },
     {
+      "cardId": "fire_sentry_11",
+      "name": "Phoenix Nest",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_sentry_11.png",
+      "sha256": "9c8aa93f671243c90cfab9d21f7029bb1f4e5837a20cfb7475a939c4edd3b6cf",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "cardId": "fire_strike_08",
       "name": "Kitsune Foxfire",
       "colour": "fire",
@@ -326,6 +422,18 @@
       ]
     },
     {
+      "cardId": "fire_trap_08",
+      "name": "Minotaur's Labyrinth",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_trap_08.png",
+      "sha256": "8c7642703d80b14eae9780d066f35f1db601893b9e042fe8f07948c47e511f01",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "cardId": "fire_utility_09",
       "name": "Ancestor's Tale",
       "colour": "fire",
@@ -335,6 +443,18 @@
       "focalPoint": [
         0.5,
         0.5
+      ]
+    },
+    {
+      "cardId": "fire_utility_10",
+      "name": "Red Envelope",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_utility_10.png",
+      "sha256": "147861deab94246f85b7eaa6e719b9ad050bcb5e9692757a8194ef854e232c25",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.4
       ]
     },
     {
@@ -734,6 +854,54 @@
       ]
     },
     {
+      "cardId": "hero_jester",
+      "name": "The Hollow Jester",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/hero_jester.png",
+      "sha256": "ed3f8293448d80e30e1011d2fa9343043e19f22bf114854547d3e9de07959a45",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "hero_oakheart",
+      "name": "Oakheart the Ancient",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/hero_oakheart.png",
+      "sha256": "538a7eece7c0533b77c92f288bfcd8b991b5602835f05095e1234698a1cc71d2",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "hero_oracle",
+      "name": "The Oracle",
+      "colour": "light",
+      "source": "game/cards/art/masters/hero_oracle.png",
+      "sha256": "e2dc19b05163cd19147647f9682962cf51e8c80291cfea25b011dab41910284e",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "hero_tempest",
+      "name": "Tempest the Stormcaller",
+      "colour": "storm",
+      "source": "game/cards/art/masters/hero_tempest.png",
+      "sha256": "832a236c039a107f87189db68f2c96c3ee33014fa524779968bc7feac0e774c8",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.34
+      ]
+    },
+    {
       "cardId": "light_boon_07",
       "name": "Vigil Candle",
       "colour": "light",
@@ -782,6 +950,30 @@
       ]
     },
     {
+      "cardId": "light_lob_10",
+      "name": "Salve Jar",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_lob_10.png",
+      "sha256": "bacc4a415bae56cd70a14aa982402c8e66d5e32b7b29936657a925685c261b71",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.3
+      ]
+    },
+    {
+      "cardId": "light_machine_04",
+      "name": "Battering Ram",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_machine_04.png",
+      "sha256": "262d147cc8b4171cf1e0ba27890c47127078ca859764b202a7f5eebe4384b669",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.44
+      ]
+    },
+    {
       "cardId": "light_piece_05",
       "name": "Scales of the Final Judge",
       "colour": "light",
@@ -815,6 +1007,30 @@
       "focalPoint": [
         0.5,
         0.5
+      ]
+    },
+    {
+      "cardId": "light_strike_09",
+      "name": "Mistral Gale",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_strike_09.png",
+      "sha256": "89d36a8bc7c60a000fe21be9244dd7a1097d7fb3f4e6cad41cdbb380091c0a00",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "light_summon_04",
+      "name": "Chiron, Healer of Heroes",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_summon_04.png",
+      "sha256": "9bf4a82dc0ddd9207530728b255d3982cf8873cba9d26300b5b60ae7cf3432f7",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
       ]
     },
     {
@@ -902,6 +1118,30 @@
       ]
     },
     {
+      "cardId": "shadow_lob_11",
+      "name": "Spider Egg Sac",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_lob_11.png",
+      "sha256": "2f376a596a0f026dcfbb22efd8748bfa58620ea65f424c6a4192f8cbdf9905f6",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "shadow_machine_04",
+      "name": "Coffin Cannon",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_machine_04.png",
+      "sha256": "23a8e08749443f917b87d83c6ebe38c4d576228515893cae0a6cc41a55643041",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "cardId": "shadow_piece_04",
       "name": "Cauldron of the Bone Mother",
       "colour": "shadow",
@@ -935,6 +1175,30 @@
       "focalPoint": [
         0.5,
         0.43
+      ]
+    },
+    {
+      "cardId": "shadow_strike_09",
+      "name": "Creeping Fog",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_strike_09.png",
+      "sha256": "b79a3f5a9008db88fdf5f248553ea7ef4310990f39e01377b843cb34342e7221",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "shadow_summon_06",
+      "name": "Shambling Zombie",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_06.png",
+      "sha256": "3e9f7bc62edaf255ba96f11d13d45c8ea25069640149fd2788a794a87ece3a85",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
       ]
     },
     {
@@ -1022,6 +1286,30 @@
       ]
     },
     {
+      "cardId": "storm_lob_10",
+      "name": "Mercury Flask",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_lob_10.png",
+      "sha256": "f1dcbca2f13be0e2facbdf76c45ee66d6327a1b757f5b24d9c5344dbcc6efae4",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.34
+      ]
+    },
+    {
+      "cardId": "storm_machine_05",
+      "name": "Arc Gatling",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_machine_05.png",
+      "sha256": "b86d2b6c3e1c5c0599b870bbec6084bafcb153304fe594a8cb25e42a31b697ca",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "cardId": "storm_sentry_10",
       "name": "Sandstone Idol",
       "colour": "storm",
@@ -1043,6 +1331,18 @@
       "focalPoint": [
         0.5,
         0.5
+      ]
+    },
+    {
+      "cardId": "storm_strike_09",
+      "name": "Scorpion Sting",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_strike_09.png",
+      "sha256": "a91709bd39f7fc2bc9d0a439ac2d584e1456a6913638a0a3542595b5991fb2ba",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.34
       ]
     },
     {
@@ -1094,6 +1394,18 @@
       ]
     },
     {
+      "cardId": "storm_ward_11",
+      "name": "Lightning Rod Array",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_ward_11.png",
+      "sha256": "9fe350ff1473d40c89ad120a8f1d2dfe10a88936ce2da3236e09834b69749b47",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "cardId": "verdant_boon_07",
       "name": "Mistletoe Sprig",
       "colour": "verdant",
@@ -1142,6 +1454,30 @@
       ]
     },
     {
+      "cardId": "verdant_lob_10",
+      "name": "Wild Honeycomb Hurl",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_lob_10.png",
+      "sha256": "4ab742eeb15e22fd51fa6efbdecf0c0d003b1c97362132ee2a149aaa8448bf95",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "verdant_machine_04",
+      "name": "Treehouse Lookout",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_machine_04.png",
+      "sha256": "3745e9efc188c875dbd749f14d7724b74ac815097c57317283d5a2ccdfaf147f",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "cardId": "verdant_piece_04",
       "name": "Pipes of the Goat-Footed",
       "colour": "verdant",
@@ -1175,6 +1511,30 @@
       "focalPoint": [
         0.5,
         0.4
+      ]
+    },
+    {
+      "cardId": "verdant_strike_10",
+      "name": "Army Ant March",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_strike_10.png",
+      "sha256": "26c8c7920250b24b3148c7d3a22e9d7d8777b5a57a05105690627ebc4aac29a1",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_summon_10",
+      "name": "Jack-in-the-Green",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_10.png",
+      "sha256": "bd71acb48ab9793a808d09fb1111bd1084078c9201612f3d2eecc4c2af87f9fe",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
       ]
     },
     {

@@ -1843,5 +1843,95 @@
     "batch": 10,
     "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop and thumbnail. Entire balance scale, finial, beam, both chains and pans, stepped base, and nearby magistrate’s face/hand remain visible.",
     "name": "Scales of the Final Judge"
+  },
+  {
+    "cardId": "light_summon_04",
+    "prompt": "Original painterly medieval fantasy collectible-card art for Chiron, Healer of Heroes. Depict the legendary ancient centaur healer, a dignified mature Greek mentor with one fully visible calm face, powerful chestnut centaur body, and human hands gently tending a wounded young hero with luminous herbs and a small golden healing glow. Make Chiron the clear subject; show his human torso joined naturally to the horse body, with one healing hand and the patient’s face. Ancient grove beside a marble shrine, grounded anatomy, refined leather, hair and cloth, hand-painted oil/gouache, dramatic warm light and atmospheric depth in supplied Hexmancers fantasy style. Strict 1:1 square 512 master; keep Chiron’s face, hands and healing action inside x24..488,y105..407 for 206:141 crop; scenery and horse legs may extend. No text, frame, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-23d04385-f3db-4171-9d98-9ba8b4096c90.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop and thumbnail. Chiron’s complete head/face, human torso, healing hands and patient’s face fit; lower centaur legs are incidental.",
+    "name": "Chiron, Healer of Heroes"
+  },
+  {
+    "cardId": "light_machine_04",
+    "prompt": "Repaint this scene as original painterly medieval fantasy card art for Battering Ram. Keep the gate assault and supplied Hexmancers oil/gouache style, but show the camera farther away and the entire compact wooden siege ram occupying only the middle 72 percent of the square width, with at least 45 pixels of clear margin to both left and right. Complete ram silhouette is mandatory: fully visible ram-head cap with nose/horns, full horizontal timber beam, complete supporting frame, and both complete wheels. Place two small crew on the left beside the machine, with the chief’s entire face and one guiding hand visible. Make the machine a short, sturdy wheeled battering ram rather than a huge horizontal tower; no part touches the canvas edge. Keep all named machine parts and operator face/hand within x24..488,y105..407 of a strict 1:1 512-square master for a 206:141 crop. Dramatic firelit stone gate, refined rope, iron and oak, grounded fantasy anatomy. No text, border, UI, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-350a0d11-3189-4c0b-978d-581ae4a6f5c7.png",
+    "editableSourcePath": "game/cards/art/masters/light_machine_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.44
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Repainted after first ram’s head reached the canvas edge; preserved first source at /tmp/light_machine_04-first-source.png. Reviewed final square, centered crop and thumbnail: full ram-head cap, beam, frame, both wheels, operator face and guiding hand fit.",
+    "name": "Battering Ram"
+  },
+  {
+    "cardId": "hero_oracle",
+    "prompt": "Original painterly medieval fantasy collectible-card art for The Oracle. A revered female oracle in a pale linen veil stands in a marble observatory, her expressive face clearly visible as she lifts both hands and sends a narrow golden ray straight across the row of distant shadow figures; fine luminous rings around her wrists suggest quickening foresight and a filling spell gauge without symbols or text. She is the single primary subject, poised and powerful, not a generic beam landscape. Hand-painted oil/gouache, nuanced skin, linen and marble, controlled directional light, atmospheric depth, supplied Hexmancers fantasy style. Strict 1:1 square 512 master, horizontal action composition; oracle’s full face, hands and ray origin within x24..488,y105..407 for 206:141 crop. No lettering, runes, UI, border, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-92678213-899c-4281-b26e-0057767fddb9.png",
+    "editableSourcePath": "game/cards/art/masters/hero_oracle.png",
+    "sourceNative": [
+      1432,
+      1098
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed exact 512-square source, upward-shifted crop and thumbnail. Oracle’s full face and both hands remain in the crop, with the horizontal ray clear; distant row of figures is secondary.",
+    "name": "The Oracle"
+  },
+  {
+    "cardId": "light_strike_09",
+    "prompt": "Original painterly medieval fantasy collectible-card art for Mistral Gale. A young armored wind-saint braces and releases a charged broad fan of pale blue-white mistral wind from both open hands; the powerful gust sweeps horizontally down a mountain path and lifts a dark raider backward. Clear broad fan shape, visible caster’s face and both hands, readable impact; one main figure. Flowing cloth and loose leaves show motion but may trail outside crop. Hand-painted oil/gouache, dramatic cool-to-warm light, grounded anatomy and atmospheric mountain depth, supplied Hexmancers fantasy art style. Strict 1:1 square 512 master, horizontal composition; face, hands and the main fan-shaped gust inside x24..488,y105..407 for 206:141 crop. No text, frame, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d8bb4655-6774-422a-b256-d7e27305d574.png",
+    "editableSourcePath": "game/cards/art/masters/light_strike_09.png",
+    "sourceNative": [
+      1448,
+      1086
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop and thumbnail. Mistral caster’s face and both casting hands plus the charged fan-shaped gust and impact remain visible; trailing robe and foe’s legs are incidental.",
+    "name": "Mistral Gale"
+  },
+  {
+    "cardId": "light_lob_10",
+    "prompt": "Original painterly medieval fantasy collectible-card art for Salve Jar. A field medic in linen robes throws a compact squat earthenware salve jar with a clearly visible complete stopper; the whole jar from cork to rounded base is fully intact and unobscured as it travels horizontally, releasing a bright golden restorative splash that draws a wounded soldier’s attention. The jar is the named focus, sized compactly within the middle horizontal band, with generous space around its stopper and base; show the medic’s face and throwing hand clearly beside it. Make this a vessel of healing ointment, not a bomb or potion vial. Hand-painted oil/gouache, nuanced glazed ceramic, linen and armor, warm healing light, atmospheric battlefield-medical tent, supplied Hexmancers fantasy illustration style. Strict 1:1 square 512 master; jar, stopper, complete base, face and hand remain inside x24..488,y105..407 for 206:141 card crop. No text, labels, border, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-86de04d2-24b6-4e20-bef6-18215ef1484d.png",
+    "editableSourcePath": "game/cards/art/masters/light_lob_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.3
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed exact 512-square source, upward focal crop and thumbnail. Salve Jar’s complete stopper-to-base silhouette, medic’s full face and throwing hand fit the wide crop; the patient’s lower body and supply tent are incidental.",
+    "name": "Salve Jar"
   }
 ]

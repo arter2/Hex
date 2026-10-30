@@ -1933,5 +1933,95 @@
       1254,
       1254
     ]
+  },
+  {
+    "cardId": "brown_instant_32",
+    "name": "Coral Shrapnel",
+    "prompt": "Paint an illustration for the fantasy card Coral Shrapnel. Actual effect cues: coral shrapnel, sea-race mine-shaped strike. A tight readable fantasy action: a central complete spiny red-orange coral mine bursting outward into a small star of distinct sharp coral shards over a shallow sea, the whole central coral object clearly visible; blue surf and a distant rocky reef are secondary. No unrelated fire magic. Painterly medieval fantasy collectible-card illustration with grounded anatomy, rich wood, brass, coral and cloth materials, directional light and visible brush texture, atmospheric depth. Compact horizontal arrangement. Keep the whole named object, operator's entire face and both working hands together inside x24…488,y105…407 on a normalized 512 square; use only quiet sky/ground outside that band. The object and face must both read at 128px thumbnail. Explicit 1:1 square canvas, editable 512×512. No text, border, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-1bcfcf67-4420-4e6e-a089-b0d4a60508cf.png",
+    "editableSourcePath": "game/cards/art/masters/brown_instant_32.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. The central coral mine and radiating shards read clearly; the thrower's face and open hand are fully visible, with only peripheral spray/trails extending toward the crop edge."
+  },
+  {
+    "cardId": "brown_machine_36",
+    "name": "Djinn Sand Cannon",
+    "prompt": "Paint an illustration for the fantasy card Djinn Sand Cannon. Actual effect cues: a sturdy djinn-engine sand cannon firing bolts. A compact medieval brass-and-dark-wood sand cannon on a small wheeled carriage dominates a horizontal desert scene; its full barrel, muzzle, carriage and wheels fit clearly. Immediately beside it, a compact male djinn gunner with a clear face and both hands on the breech, wearing layered desert robes and a subtle vapor halo. Sand plume from a just-fired shot is secondary. Painterly medieval fantasy collectible-card illustration with grounded anatomy, rich wood, brass, coral and cloth materials, directional light and visible brush texture, atmospheric depth. Compact horizontal arrangement. Keep the whole named object, operator's entire face and both working hands together inside x24…488,y105…407 on a normalized 512 square; use only quiet sky/ground outside that band. The object and face must both read at 128px thumbnail. Explicit 1:1 square canvas, editable 512×512. No text, border, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ed73b693-7552-43a8-a198-5cb02228edfe.png",
+    "editableSourcePath": "game/cards/art/masters/brown_machine_36.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. Djinn’s face and hands remain visible behind the complete cannon barrel, muzzle, carriage, and wheels."
+  },
+  {
+    "cardId": "brown_instant_33",
+    "name": "Djinn Smoke Puff",
+    "prompt": "Paint an illustration for the fantasy card Djinn Smoke Puff. Actual effect cues: a djinn strike using a confusing smoke puff. A compact blue-skinned djinn shown from chest up at the right of the composition, complete expressive face and both hands visible; with one hand he releases a single rounded charcoal-gray smoke puff that expands beside him, curling to confuse a distant pursuer. The smoke puff is the named action, not a giant cloud hiding the djinn. Painterly medieval fantasy collectible-card illustration with grounded anatomy, rich wood, brass, coral and cloth materials, directional light and visible brush texture, atmospheric depth. Compact horizontal arrangement. Keep the whole named object, operator's entire face and both working hands together inside x24…488,y105…407 on a normalized 512 square; use only quiet sky/ground outside that band. The object and face must both read at 128px thumbnail. Explicit 1:1 square canvas, editable 512×512. No text, border, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-74e3d0a5-5e58-4e92-8293-0c4621355357.png",
+    "editableSourcePath": "game/cards/art/masters/brown_instant_33.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. Djinn’s face and both hands stay clear beside the dense smoke puff; the distant pursuer is secondary."
+  },
+  {
+    "cardId": "brown_machine_37",
+    "name": "Elven Seed Catapult",
+    "prompt": "Paint an illustration for the fantasy card Elven Seed Catapult. Actual effect cues: an elven catapult that launches seeds in a cross pattern. A compact medieval elven seed catapult made of carved greenwood and rope on a small timber base, complete throwing arm, sling and base visible, launching a cluster of giant acorns. Immediately beside it an elf operator’s clear face, pointed ears and two working hands adjusting its cord; lush forest orchard behind. Painterly medieval fantasy collectible-card illustration with grounded anatomy, rich wood, brass, coral and cloth materials, directional light and visible brush texture, atmospheric depth. Compact horizontal arrangement. Keep the whole named object, operator's entire face and both working hands together inside x24…488,y105…407 on a normalized 512 square; use only quiet sky/ground outside that band. The object and face must both read at 128px thumbnail. Explicit 1:1 square canvas, editable 512×512. No text, border, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-3ff624b4-ba14-4cd3-a91a-c9206a086080.png",
+    "editableSourcePath": "game/cards/art/masters/brown_machine_37.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. Elf’s face, pointed ear, and working hands are clear beside the complete catapult, arm, sling, and base; stray acorns are incidental."
+  },
+  {
+    "cardId": "brown_instant_34",
+    "name": "Dwarven Blasting Charge",
+    "prompt": "Edit this artwork specifically to fix the wide card crop: preserve the cozy mine, dwarf, style and lighting, but recompose both subjects into one compact horizontal band. The named blasting charge must be a SHORT stout canister, not a tall barrel: put it beside the dwarf at the same ground level, only about 145 pixels tall, with its top, entire casing and flat base all between y210 and y365 on a 512×512 square. Keep the dwarf small and seated beside it, not looming above it: the dwarf’s full face and both open eyes around y190…265, and both hands around y270…325, with the lighting hand holding the short taper at the visible fuse. Left-to-right: dwarf face and shoulders, then complete short charge, with hand bridging the gap. Require face/eyes, hands, visible fuse and complete named canister all inside x24…488,y105…407. Leave clear empty margin above y105 and below y395. Do not cut the base, do not make a tall charge, do not put the face above/behind the top of the charge. Painterly medieval fantasy illustration; square 1:1. No text or UI.",
+    "generatedPath": "/workspace/generated_images/exec-1cfc97b5-c219-4a14-97e0-aa0c2729e7f1.png",
+    "editableSourcePath": "game/cards/art/masters/brown_instant_34.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.54
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Repainted after parent review found the first charge too tall; preserved prior sources in /tmp/brown04-attempts. Reviewed replacement square, crop at focal [0.5,0.54], and 128x88 thumbnail. The dwarf’s whole face and both eyes, both hands, lit fuse, complete short charge and its base are visible with room in the crop."
   }
 ]

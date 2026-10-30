@@ -1849,5 +1849,95 @@
     "reviewNote": "Focal point y=0.42 retains the faun face, both playing hands and full row of pipe ends in the wide crop; legs are incidental. Thumbnail preserves the named instrument.",
     "status": "generated",
     "batch": 10
+  },
+  {
+    "cardId": "verdant_summon_10",
+    "name": "Jack-in-the-Green",
+    "prompt": "Paint Jack-in-the-Green as a mossy Ent guardian emerging in a woodland glade: a towering but compact ancient tree spirit with a expressive bark face framed by leaves and roots like a living folk mask, broad mossy shoulders and branch arms curved protectively around a small seedling. Tiny glowing seeds drift from its crown while a gentle green ward gathers around the seedling. Painterly medieval fantasy collectible-card illustration, nuanced bark, moss, leaf and root textures, natural expressive face, warm green-gold light and atmospheric depth. Explicit 1:1 square 512 master; keep Ent face, branch hands and protected seedling within x24..488 y105..407 for horizontal 206:141 crop; foliage and root ends can extend beyond. No costume or person disguised as a tree, no text, frame, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4162c591-366d-4eeb-a06d-147487f82512.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Reviewed square, default crop and thumbnail: Ent's full expressive face, protective branch hands and warded seedling remain clear; outer canopy and low roots act as atmosphere.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "verdant_machine_04",
+    "name": "Treehouse Lookout",
+    "prompt": "Paint Treehouse Lookout as a compact broad horizontal subject inside a true square: one small but complete wooden lookout hut built into a squat fork of an ancient oak, with the full leafy crown forming a low arch above the roof and a short sturdy trunk base plus two visible support roots beneath. The tree and hut must be deliberately short and broad, not a tall vertical tree; compose so crown tip, full hut, lookout's face at the open front window, short ladder and both tree base supports all fit together inside x35..477 y125..390 of the 512 square. The hut is the central named structure, with a small watchful sentry's face and hand visible. Painterly medieval fantasy collectible-card art, believable timber joinery, bark, rope, leaves, dappled forest light, textured brushwork. Explicit 1:1 square for 512 master and 206:141 crop. No tall tree, no cropped roof or base, no text, frame, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-cf773a63-c9e1-4942-b152-769ad6c832c7.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "First tall treehouse attempt clipped its crown/base and was discarded. Reviewed final square, default crop and thumbnail: complete roof, hut, short ladder, supports and root base fit; outer canopy extends beyond crop.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/verdant_machine_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "hero_oakheart",
+    "name": "Oakheart the Ancient",
+    "prompt": "Paint Oakheart the Ancient as a heroic ancient Ent: a massive wise oak guardian with a deeply carved expressive face in the trunk, amber eyes, long moss beard and branch arms; he bursts thick roots up around an armored foe, whose boots are caught in the roots, while a faint bark-green aura protects Oakheart. Keep Oakheart's face and reaching hands central and clearly visible; root ends may trail beyond. Painterly medieval fantasy hero illustration, realistic ancient bark, moss, leaves and roots, dramatic forest light, textured brushwork and atmospheric depth. Explicit 1:1 square 512 master; keep face, hands and root impact within x24..488 y105..407 for 206:141 crop; incidental lower roots may crop. No text, frame, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e3041519-13c8-4907-ab61-38e0627ff538.png",
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "reviewNote": "Reviewed square, crop shifted up (focal y .40), and thumbnail: Oakheart's full face and branch hands remain readable with the caught foe and root burst still visible; lower roots are incidental.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/hero_oakheart.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "verdant_strike_10",
+    "name": "Army Ant March",
+    "prompt": "Paint Army Ant March as a verdant chain strike: a disciplined line of large crimson-black soldier ants advances diagonally across a stone path, striking three linked armored targets in sequence; the lead ant bites one guard's gauntlet, a second ant leaps onto the next shield, and a bright pinpoint impact on the third suggests a critical hit. The ants form a clearly readable marching chain, with distinct heads, mandibles and segmented bodies. Painterly medieval fantasy collectible-card art, believable insect anatomy and polished armor, forest floor, directional green-gold light, textured brushwork. Explicit 1:1 square 512 master; keep lead ants and all three linked impacts within x24..488 y105..407 for 206:141 crop; loose leaves may extend beyond. No text, frame, UI, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-088729e0-9bdf-43a1-a976-90c479e0ed28.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Reviewed square, default crop and thumbnail: distinct ants form a diagonal march across several linked armor impacts; the lead ant and bright final strike remain readable.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "verdant_lob_10",
+    "name": "Wild Honeycomb Hurl",
+    "prompt": "Paint Wild Honeycomb Hurl as a verdant lob: a woodland beekeeper in leather gloves, face visible on the left, hurls one whole round-oval golden honeycomb across a forest clearing toward an armored opponent on the right. Keep the entire comb visible as a thick hexagonal wax lattice with recognizable cells, not merely a glob of honey. It is the central named object in mid-flight; honey strings trail behind, and the opponent is knocked backward as the comb bursts sticky amber honey over their shield and boots. Stage beekeeper face/throwing hand, complete comb, and recipient in one horizontal band, all distinct and readable. Painterly medieval fantasy collectible-card art, detailed wax and honey, bark cloth and leaf light, cinematic green-gold lighting, textured brushwork. Explicit 1:1 square 512 master; keep operator face/hand and complete honeycomb within x24..488 y105..407 for 206:141 crop; secondary legs may crop. No text, frame, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-050df42a-38e0-4815-b899-feaed92aa996.png",
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "reviewNote": "Reviewed square, crop shifted up (focal y .40), and thumbnail: beekeeper face/hand, full hexagonal honeycomb and honey impact on the opponent remain visible; opponent leg tips are secondary.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/verdant_lob_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
   }
 ]

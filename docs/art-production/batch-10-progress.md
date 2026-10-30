@@ -1,8 +1,8 @@
 # Batch 10 production progress
 
-**100 of 200 new 512×512 sources saved; 100 approved.**
+**130 of 200 new 512×512 sources saved; 125 approved.**
 
-100 sources remain ungenerated. 0 saved source(s) require repainting. 20 five-card packets have passed parent crop/thumbnail review. This is not a completed 200-card delivery.
+70 sources remain ungenerated. 0 saved source(s) require repainting. 25 five-card packets have passed parent crop/thumbnail review. This is not a completed 200-card delivery.
 
 Production resumed after the 30 October 2026 21:33:05 UTC reset; a successful generation confirmed service availability before the other artists restarted. Jobs use the shared five-card queue described in `PACKET-WORKFLOW.md`.
 
@@ -23,6 +23,9 @@ Read `batch-10-brief.md`, `batch-10-worker-state.json` and `PACKET-WORKFLOW.md`.
 | Boomerang | `brown_instant_29` | Accepted | [512×512 PNG](../../game/cards/art/masters/brown_instant_29.png) |
 | Chakram | `brown_instant_30` | Accepted | [512×512 PNG](../../game/cards/art/masters/brown_instant_30.png) |
 | Net Gun | `brown_instant_31` | Accepted | [512×512 PNG](../../game/cards/art/masters/brown_instant_31.png) |
+| Coral Shrapnel | `brown_instant_32` | Accepted | [512×512 PNG](../../game/cards/art/masters/brown_instant_32.png) |
+| Djinn Smoke Puff | `brown_instant_33` | Accepted | [512×512 PNG](../../game/cards/art/masters/brown_instant_33.png) |
+| Dwarven Blasting Charge | `brown_instant_34` | Accepted | [512×512 PNG](../../game/cards/art/masters/brown_instant_34.png) |
 | Goblin Rocket Rack | `brown_machine_28` | Accepted | [512×512 PNG](../../game/cards/art/masters/brown_machine_28.png) |
 | Gnomish Bomb Lobber | `brown_machine_29` | Accepted | [512×512 PNG](../../game/cards/art/masters/brown_machine_29.png) |
 | Alchemist's Acid Mortar | `brown_machine_30` | Accepted | [512×512 PNG](../../game/cards/art/masters/brown_machine_30.png) |
@@ -31,18 +34,25 @@ Read `batch-10-brief.md`, `batch-10-worker-state.json` and `PACKET-WORKFLOW.md`.
 | Sky-Folk Bomb Balloon | `brown_machine_33` | Accepted | [512×512 PNG](../../game/cards/art/masters/brown_machine_33.png) |
 | Dwarven Thunder Mortar | `brown_machine_34` | Accepted | [512×512 PNG](../../game/cards/art/masters/brown_machine_34.png) |
 | Byzantine Fire Engine | `brown_machine_35` | Accepted | [512×512 PNG](../../game/cards/art/masters/brown_machine_35.png) |
+| Djinn Sand Cannon | `brown_machine_36` | Accepted | [512×512 PNG](../../game/cards/art/masters/brown_machine_36.png) |
+| Elven Seed Catapult | `brown_machine_37` | Accepted | [512×512 PNG](../../game/cards/art/masters/brown_machine_37.png) |
 | Hearty Feast | `fire_boon_08` | Accepted | [512×512 PNG](../../game/cards/art/masters/fire_boon_08.png) |
+| Mulled Wine | `fire_boon_09` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/fire_boon_09.png) |
 | Rivet Pouch | `fire_charge_08` | Accepted | [512×512 PNG](../../game/cards/art/masters/fire_charge_08.png) |
+| Dragon Tooth Quiver | `fire_charge_09` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/fire_charge_09.png) |
 | Sulfur Springs | `fire_environment_08` | Accepted | [512×512 PNG](../../game/cards/art/masters/fire_environment_08.png) |
 | Paper Lantern Bomb | `fire_lob_10` | Accepted | [512×512 PNG](../../game/cards/art/masters/fire_lob_10.png) |
 | Dragon Egg | `fire_lob_11` | Accepted | [512×512 PNG](../../game/cards/art/masters/fire_lob_11.png) |
 | Rocket Battery | `fire_machine_04` | Accepted | [512×512 PNG](../../game/cards/art/masters/fire_machine_04.png) |
 | Goblin Flamethrower Post | `fire_sentry_10` | Accepted | [512×512 PNG](../../game/cards/art/masters/fire_sentry_10.png) |
+| Phoenix Nest | `fire_sentry_11` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/fire_sentry_11.png) |
 | Kitsune Foxfire | `fire_strike_08` | Accepted | [512×512 PNG](../../game/cards/art/masters/fire_strike_08.png) |
 | Oni Club Swing | `fire_strike_09` | Accepted | [512×512 PNG](../../game/cards/art/masters/fire_strike_09.png) |
 | Griffin | `fire_summon_05` | Accepted | [512×512 PNG](../../game/cards/art/masters/fire_summon_05.png) |
 | Fox Den Snare | `fire_trap_07` | Accepted | [512×512 PNG](../../game/cards/art/masters/fire_trap_07.png) |
+| Minotaur's Labyrinth | `fire_trap_08` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/fire_trap_08.png) |
 | Ancestor's Tale | `fire_utility_09` | Accepted | [512×512 PNG](../../game/cards/art/masters/fire_utility_09.png) |
+| Red Envelope | `fire_utility_10` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/fire_utility_10.png) |
 | Dragon Scale Shield | `fire_ward_09` | Accepted | [512×512 PNG](../../game/cards/art/masters/fire_ward_09.png) |
 | Oni Mask | `fire_ward_10` | Accepted | [512×512 PNG](../../game/cards/art/masters/fire_ward_10.png) |
 | Selkie Skin | `frost_boon_09` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_boon_09.png) |
@@ -76,13 +86,21 @@ Read `batch-10-brief.md`, `batch-10-worker-state.json` and `PACKET-WORKFLOW.md`.
 | Wildcat | `gray_summon_82` | Accepted | [512×512 PNG](../../game/cards/art/masters/gray_summon_82.png) |
 | Boreas, the North Wind | `hero_boreas` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_boreas.png) |
 | Ignis, the Forge Wyrm | `hero_ignis` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_ignis.png) |
+| The Hollow Jester | `hero_jester` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_jester.png) |
+| Oakheart the Ancient | `hero_oakheart` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_oakheart.png) |
+| The Oracle | `hero_oracle` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_oracle.png) |
+| Tempest the Stormcaller | `hero_tempest` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_tempest.png) |
 | Vigil Candle | `light_boon_07` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_boon_07.png) |
 | Tesserae Pouch | `light_charge_08` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_charge_08.png) |
 | Rose Garden of Shiraz | `light_environment_07` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_environment_07.png) |
 | Alchemist's Flask | `light_lob_09` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_lob_09.png) |
+| Salve Jar | `light_lob_10` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_lob_10.png) |
+| Battering Ram | `light_machine_04` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_machine_04.png) |
 | Scales of the Final Judge | `light_piece_05` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_piece_05.png) |
 | Obelisk of the Sun | `light_sentry_09` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_sentry_09.png) |
 | Zephyr's Breath | `light_strike_08` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_strike_08.png) |
+| Mistral Gale | `light_strike_09` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_strike_09.png) |
+| Chiron, Healer of Heroes | `light_summon_04` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_summon_04.png) |
 | Tomb Builder's Pitfall | `light_trap_08` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_trap_08.png) |
 | Cleric's Absolution | `light_utility_08` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_utility_08.png) |
 | Shieldwall of the Fyrd | `light_ward_10` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_ward_10.png) |
@@ -90,9 +108,13 @@ Read `batch-10-brief.md`, `batch-10-worker-state.json` and `PACKET-WORKFLOW.md`.
 | Mold Jars | `shadow_charge_08` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_charge_08.png) |
 | Draugr's Barrow Frost | `shadow_environment_08` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_environment_08.png) |
 | Coffin Drop | `shadow_lob_10` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_lob_10.png) |
+| Spider Egg Sac | `shadow_lob_11` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_lob_11.png) |
+| Coffin Cannon | `shadow_machine_04` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_machine_04.png) |
 | Cauldron of the Bone Mother | `shadow_piece_04` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_piece_04.png) |
 | Spider Nest | `shadow_sentry_10` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_sentry_10.png) |
 | Crow Swarm | `shadow_strike_08` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_strike_08.png) |
+| Creeping Fog | `shadow_strike_09` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_strike_09.png) |
+| Shambling Zombie | `shadow_summon_06` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_summon_06.png) |
 | Oubliette | `shadow_trap_07` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_trap_07.png) |
 | Raise the Dead | `shadow_utility_07` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_utility_07.png) |
 | Demon Hide | `shadow_ward_09` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_ward_09.png) |
@@ -100,19 +122,27 @@ Read `batch-10-brief.md`, `batch-10-worker-state.json` and `PACKET-WORKFLOW.md`.
 | Naphtha Grenades | `storm_charge_08` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_charge_08.png) |
 | Lightning Field | `storm_environment_07` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_environment_07.png) |
 | Golden Hail | `storm_lob_09` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_lob_09.png) |
+| Mercury Flask | `storm_lob_10` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_lob_10.png) |
+| Arc Gatling | `storm_machine_05` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_machine_05.png) |
 | Sandstone Idol | `storm_sentry_10` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_sentry_10.png) |
 | Tesla Arc | `storm_strike_08` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_strike_08.png) |
+| Scorpion Sting | `storm_strike_09` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_strike_09.png) |
 | Si'lat Shapeshifter | `storm_summon_05` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_summon_05.png) |
 | Shocking Floor Tiles | `storm_trap_08` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_trap_08.png) |
 | Moneylender's Loan | `storm_utility_08` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_utility_08.png) |
 | Djinn's Veil | `storm_ward_10` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_ward_10.png) |
+| Lightning Rod Array | `storm_ward_11` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_ward_11.png) |
 | Mistletoe Sprig | `verdant_boon_07` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_boon_07.png) |
 | Seed Satchel | `verdant_charge_09` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_charge_09.png) |
 | Heather Moor | `verdant_environment_04` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_environment_04.png) |
 | Sticky Sap Glob | `verdant_lob_09` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_lob_09.png) |
+| Wild Honeycomb Hurl | `verdant_lob_10` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_lob_10.png) |
+| Treehouse Lookout | `verdant_machine_04` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_machine_04.png) |
 | Pipes of the Goat-Footed | `verdant_piece_04` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_piece_04.png) |
 | Mandrake Patch | `verdant_sentry_08` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_sentry_08.png) |
 | Tiger's Rake | `verdant_strike_09` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_strike_09.png) |
+| Army Ant March | `verdant_strike_10` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_strike_10.png) |
+| Jack-in-the-Green | `verdant_summon_10` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_summon_10.png) |
 | Fairy Ring | `verdant_trap_08` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_trap_08.png) |
 | Lyrebird Mimicry | `verdant_utility_07` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_utility_07.png) |
 | Oak Heartwood Shield | `verdant_ward_09` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_ward_09.png) |

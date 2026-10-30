@@ -1054,6 +1054,7 @@ body.lsS #custHand .slot.hole{min-height:104px;}
 .dktile .dkart>.dkc{inset:4px auto auto 4px; width:auto; height:auto; padding:2px 3px; font-size:calc(.65 * var(--nfs)); line-height:1;
   background:radial-gradient(closest-side,#0009 70%,#0000); filter:drop-shadow(0 0 1px #000);}   /* a small dark patch with a short soft edge, inside the art, so the icon reads on any art */
 .dktile .dkt,.dktile .dkx{width:calc(1.2 * var(--nfs)); font-size:calc(.8 * var(--nfs)); line-height:var(--nfs); white-space:nowrap; overflow:hidden;}   /* sized from the box, not the name, so a shrunk name keeps full-size corners */
+.dktile .dkt,.dktile .dkx{position:relative; top:3px;} .dktile .dkx{top:4px;}   /* down into the box's bottom padding, ink 2-3px above its edge (the number's font keeps a pixel under its digits) */
 .dktile .dkt{float:left; clear:left; text-align:left;}
 .dktile .dkt .dkglyph{display:block; width:calc(.92 * var(--nfs)); height:calc(.92 * var(--nfs)); fill:#fff;
   filter:drop-shadow(1px 0 0 #000) drop-shadow(-1px 0 0 #000) drop-shadow(0 1px 0 #000) drop-shadow(0 -1px 0 #000);}   /* the type's pixel glyph (deckui.js DK_GLYPHS) */ .dktile .dkx{float:right; clear:right; text-align:right; color:#fff; font-size:calc(.85 * var(--nfs));}

@@ -1844,5 +1844,95 @@
     "status": "generated",
     "batch": 10,
     "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. The entire large crystalline eye and ice-carved brow fit the crop; the narrow icy strike and frozen distant foe remain secondary."
+  },
+  {
+    "cardId": "frost_summon_05",
+    "prompt": "Paint a painterly medieval fantasy collectible-card illustration for Ningyo. Actual mechanics: a sturdy slow fishlike spirit empowers an ally and shatters when struck. Show one distinctive pale Japanese-mythic ningyo, a graceful humanlike fish spirit with a serene clearly readable face, long pale blue-black hair, subtle gill marks and a scaled finned tail, emerging beside a frozen stream; its visible hand lays a gentle blue-white empowering touch on a nearby ally's spear or shoulder, while small ice facets glint around the spirit. The ningyo is the dominant subject, not a generic mermaid; serious grounded anatomy and expression, not cute. Rich painterly fantasy materials, frosted water, atmospheric winter forest, cool moonlight and restrained warm lantern accents. Explicit 1:1 SQUARE 512x512 composition; keep complete face, relevant hand and upper tail/body identity in x24..488,y105..407 for a 206:141 wide crop; quiet expendable branches and snow beyond. No frame, lettering, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-20bdd4fd-1f48-42b9-98cb-8ec5205bf2e2.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.37
+    ],
+    "reviewNote": "The upward-shifted card crop keeps the Ningyo’s complete face, blessing hand and distinct scaled upper tail in view beside the ally. Its lower tail tip and forest scenery are expendable; the pale fish spirit reads at thumbnail size.",
+    "name": "Ningyo",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_05.png",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "frost_machine_04",
+    "prompt": "Create painterly high-fantasy card art for Harpoon Launcher. A sturdy medieval shipboard crossbow machine fires two harpoons in a twin volley across a stormy frozen sea. The named heavy harpoon launcher itself must be fully visible from stock and trigger through bow limbs and both loaded twin rails, as a coherent horizontal bronze-and-oak ballista crossbow; an alert weathered frost-sailor stands beside it with face and hands clearly operating the winch and trigger. Two tethered harpoons streak outward toward a distant sea monster, but keep the launcher and operator primary. Richly detailed wood, rope, iron and ice, dramatic cold daylight and spray, atmospheric depth, serious grounded fantasy. Explicit 1:1 SQUARE canvas for 512x512 master; fit complete launcher silhouette, operator face and relevant hands together inside x24..488,y105..407 for the 206:141 wide crop, quiet sea and sky outside. No frame, text, numbers, UI, anime, cartoon, photorealism or pixel art. Recomposition by image edit: retain style and subject but scale the whole launcher and sailor so complete launcher support frame, complete sailor face and both hands fit inside that central band together; maintain two horizontal harpoons and quiet top/bottom scenery.",
+    "generatedPath": "/workspace/generated_images/exec-fa49cb98-2b5b-4536-9ff7-4ada22603de1.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Recomposed at smaller scale: complete heavy launcher from rear to both harpoon heads and full support base fit in the wide crop with the sailor’s full face and both operating hands. The launcher and twin harpoons remain clear at thumbnail size.",
+    "name": "Harpoon Launcher",
+    "editableSourcePath": "game/cards/art/masters/frost_machine_04.png",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "hero_boreas",
+    "prompt": "Create a dramatic painterly medieval fantasy hero-card illustration for Boreas, the North Wind. Show a commanding mature northern wind god with a fully visible stern face, frost-white beard and windswept fur mantle, one clear hand raised as four distinct icy gusts spiral from him across a horizontal battlefield toward four smaller armored enemies; ice crystals and blue-white air slow their movement. The god is dominant and recognizable, with grounded anatomy, rich fur/leather, dramatic cold light and atmospheric storm depth. Explicit 1:1 SQUARE 512x512 composition; keep Boreas's face, raised hand and defining gust action within x24..488,y105..407 for a 206:141 card crop, expendable cloud and snow at top/bottom. No frame, labels, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0260ff59-9f35-4517-a760-ef3afe21cc94.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "reviewNote": "The upward-shifted crop preserves Boreas’s complete face and raised hand with the swirling icy gusts and small slowed foes. Lower battlefield and sky are expendable; the north wind hero reads immediately at thumbnail size.",
+    "name": "Boreas, the North Wind",
+    "editableSourcePath": "game/cards/art/masters/hero_boreas.png",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "frost_strike_09",
+    "prompt": "A frost mage lashes one powerful curving typhoon of icy seawater across a ruined coastal battlefield; the turquoise-white water whip forms a clear zigzag, recoils from a struck armored foe and splashes healing blue light back toward the caster's raised hand. Show the caster's full face and relevant hand, one clean connected water-lash path, and the struck foe recoiling. Painterly medieval fantasy collectible-card art, believable wet wool, iron and stone, energetic wave textures, dramatic cold moonlight, rich atmospheric depth, serious grounded style. Explicit 1:1 SQUARE 512x512 master, horizontal action staging; keep face, hand, complete identity-defining zigzag lash and impact within x24..488,y105..407 for 206:141 crop, quiet sky and surf beyond. No frame, lettering, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ee80644f-253b-4c49-8dd8-0ab80212a217.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "The mage’s full face and casting hand, zigzagging turquoise lash and struck foe remain visible in the card crop. The whole water action reads clearly at thumbnail size.",
+    "name": "Typhoon Lash",
+    "editableSourcePath": "game/cards/art/masters/frost_strike_09.png",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "frost_lob_10",
+    "prompt": "Paint an illustration for Ink Cloud, a frost-aligned quick-fuse ground burst that damages and pulls nearby enemies inward. A frost mage at the left clearly holds and has just thrown a complete small blue-glass ink vial with an intact cork stopper; the vial lands on the stone and blooms into a dense, dramatic cloud of black-indigo ink threaded with icy blue, spiraling inward as two armored foes are dragged toward its center. Make the named ink cloud the dominant readable subject, with mage face and throwing hand plus the entire vial and stopper also clearly visible. Painterly medieval fantasy collectible-card art, tactile glass, cloth and wet stone, cold directional light and atmospheric depth. Explicit 1:1 SQUARE 512x512 canvas, horizontal staging; preserve the full face, relevant hand, complete vial/stopper and central cloud within x24..488,y105..407 for a 206:141 crop, quiet expendable night sky and floor beyond. No frame, lettering, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-05362ae2-b369-4fa9-bb9d-eca478da1a16.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.44
+    ],
+    "reviewNote": "The full caster face and throwing hand, complete corked blue vial and dense inward-pulling ink cloud are visible in the shifted wide crop with both foes. The swirling cloud remains distinct at thumbnail size.",
+    "name": "Ink Cloud",
+    "editableSourcePath": "game/cards/art/masters/frost_lob_10.png",
+    "status": "generated",
+    "batch": 10
   }
 ]

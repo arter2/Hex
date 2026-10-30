@@ -1753,5 +1753,95 @@
     "status": "generated",
     "batch": 10,
     "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop and thumbnail. Watchkeeper’s face and open hand, full candle, wick and flame fit; quiet dawn landscape remains secondary."
+  },
+  {
+    "cardId": "light_charge_08",
+    "prompt": "Original painterly medieval fantasy card illustration for Tesserae Pouch. A compact, handsome leather pouch spills small colorful glass tesserae onto a stone table; a nearby artisan guardian gathers one in a gloved hand as the tiny fragments flare in a short radiant burst. The entire closed pouch including drawstring and every spill of chips stays visible; pouch is the primary named object. Show the guardian’s face and working hands beside it, considerably smaller than the pouch, never looming over a tall object. Mediterranean basilica workshop atmosphere, refined bronze clasp, leather and handmade tesserae, directional gold light, atmospheric painterly oil/gouache, supplied Hexmancers fantasy art style. Strict 1:1 square 512 master, horizontal staging; complete pouch, chips, face/hands fit within x24..488,y105..407 for 206:141 crop. No frame, words, lettering, UI, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5af9ef09-db2c-49f4-aec2-a56c407ecd5f.png",
+    "editableSourcePath": "game/cards/art/masters/light_charge_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.45
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop and 128x88 thumbnail. Entire pouch, drawstring tassels and spill of tesserae fit; artisan’s face and working hands remain visible beside it.",
+    "name": "Tesserae Pouch"
+  },
+  {
+    "cardId": "light_utility_08",
+    "prompt": "Original painterly medieval fantasy card illustration for Cleric's Absolution. A calm robed cleric kneels beside a wounded armored traveler, touching a luminous shallow silver basin to the traveler's brow; warm cleansing light washes away smoky black grime and a few dark motes, leaving the visible face peaceful and clean. One clear cleansing action, faces and relevant hands shown. Quiet ruined chapel, nuanced wool, silver and stone, gentle golden directional light, atmospheric depth, painterly oil/gouache like supplied Hexmancers fantasy art. Strict 1:1 square 512 master, horizontal arrangement; cleric and traveler's faces, hands, basin and cleansing glow inside x24..488,y105..407 for 206:141 crop. No border, text, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9b71e12c-3aa9-4693-bf3c-9ff0ad164618.png",
+    "editableSourcePath": "game/cards/art/masters/light_utility_08.png",
+    "sourceNative": [
+      1515,
+      1038
+    ],
+    "focalPoint": [
+      0.5,
+      0.44
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop and thumbnail. Cleric’s face and hands, silver basin, patient’s full face and cleansing light are visible; robes and background extend beyond the crop.",
+    "name": "Cleric's Absolution"
+  },
+  {
+    "cardId": "light_trap_08",
+    "prompt": "Original painterly medieval fantasy card art for Tomb Builder's Pitfall, a short spiked trap. A compact rectangular stone tomb passage is seen at a clear three-quarter angle; a square floor section has dropped into a shallow pit lined with unmistakable iron spikes, catching an intruder by the boot while a tomb builder at the edge reaches down to help him. Keep the entire pit opening and visible spike points, intruder's face and builder's hands within the central horizontal band; no deep void or giant gate. Hand-painted oil/gouache, carved ancient stone, warm torchlight, grounded anatomy and atmospheric depth in supplied fantasy illustration style. Strict 1:1 square 512 master, horizontal composition, all key elements inside x24..488,y105..407 for 206:141 crop. No text, frame, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0b851dcf-f17c-47ee-94fc-be50b2499cd6.png",
+    "editableSourcePath": "game/cards/art/masters/light_trap_08.png",
+    "sourceNative": [
+      1515,
+      1038
+    ],
+    "focalPoint": [
+      0.5,
+      0.45
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop and thumbnail. Victim’s face, both reaching hands, pit opening and clear iron spike field fit; incidental upper tomb wall and lower pit spikes crop naturally.",
+    "name": "Tomb Builder's Pitfall"
+  },
+  {
+    "cardId": "light_environment_07",
+    "prompt": "Original painterly medieval fantasy landscape card art for Rose Garden of Shiraz. A walled Persian rose garden at late afternoon, with a long horizontal row of thorny rose brambles crossing the foreground path; an armored trespasser pushes through and is gently snagged by thorny tendrils, while luminous pink roses and lush green leaves mark the enchanted row. Garden is dominant, elegant courtyard, clear horizontal bramble line and one small readable figure. Painterly oil/gouache, nuanced leaves, petals, carved stone and water, warm directional light and atmospheric depth, supplied Hexmancers fantasy style. Strict 1:1 square 512 master; key row and figure's face/hands stay within x24..488,y105..407 for wide 206:141 crop, quiet scenery may extend to edges. No text, border, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-aca21ffb-89ee-4875-94da-cd707041876c.png",
+    "editableSourcePath": "game/cards/art/masters/light_environment_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop and thumbnail. Garden remains dominant, with the full horizontal bramble row, trespasser’s face and hands, and rose foliage readable.",
+    "name": "Rose Garden of Shiraz"
+  },
+  {
+    "cardId": "light_piece_05",
+    "prompt": "Original painterly medieval fantasy collectible-card art for Scales of the Final Judge, a legendary healing relic. Show one complete compact ancient bronze balance scale as the unmistakable central subject, oriented front three-quarter and no taller than about 285 pixels on a 512 square: the entire top finial, horizontal beam, both chains, both pans and broad stepped base fit comfortably inside x24..488,y105..407. One pan holds a radiant white-gold healing drop and the other a faint cool blue echo; delicate luminous ripples suggest measured restorative judgment. A small robed magistrate-priest stands beside the scale, clearly secondary and smaller than the artifact, studying it with one visible face and hand; do not place a giant operator behind or above it. Carved stone tribunal, refined metalwork, hand-painted oil/gouache, dramatic warm/cool directional light, atmospheric depth, supplied Hexmancers fantasy style. Strict 1:1 square 512 master, horizontal staging for 206:141 crop. Entire named scale and operator's face/hand within the safe band. No text, inscription, border, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-3058c881-b703-45f3-96d2-e794ba6e8050.png",
+    "editableSourcePath": "game/cards/art/masters/light_piece_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop and thumbnail. Entire balance scale, finial, beam, both chains and pans, stepped base, and nearby magistrate’s face/hand remain visible.",
+    "name": "Scales of the Final Judge"
   }
 ]

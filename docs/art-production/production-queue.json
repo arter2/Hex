@@ -4,8 +4,8 @@
   "active": 834,
   "remaining": 1119,
   "pending": 919,
-  "assigned": 130,
-  "awaitingReview": 70,
+  "assigned": 100,
+  "awaitingReview": 100,
   "countsByColour": {
     "brown": 234,
     "fire": 246,
@@ -318,7 +318,7 @@
       "name": "Sky-Folk Bomb Balloon",
       "type": "machine",
       "color": "brown",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -327,7 +327,7 @@
       "name": "Dwarven Thunder Mortar",
       "type": "machine",
       "color": "brown",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -336,7 +336,7 @@
       "name": "Byzantine Fire Engine",
       "type": "machine",
       "color": "brown",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -722,7 +722,7 @@
       "name": "Chakram",
       "type": "instant",
       "color": "brown",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -731,7 +731,7 @@
       "name": "Net Gun",
       "type": "instant",
       "color": "brown",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -2166,7 +2166,7 @@
       "name": "Oni Club Swing",
       "type": "strike",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -2482,7 +2482,7 @@
       "name": "Dragon Egg",
       "type": "lob",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -2668,7 +2668,7 @@
       "name": "Oni Mask",
       "type": "ward",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -3827,7 +3827,7 @@
       "name": "Rocket Battery",
       "type": "machine",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -4006,7 +4006,7 @@
       "name": "Ignis, the Forge Wyrm",
       "type": "hero",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -4248,7 +4248,7 @@
       "name": "Typhoon Lash",
       "type": "strike",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -4570,7 +4570,7 @@
       "name": "Ink Cloud",
       "type": "lob",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -5574,7 +5574,7 @@
       "name": "Ningyo",
       "type": "summon",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -5955,7 +5955,7 @@
       "name": "Harpoon Launcher",
       "type": "machine",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -6120,7 +6120,7 @@
       "name": "Boreas, the North Wind",
       "type": "hero",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -6909,7 +6909,7 @@
       "name": "Alpha Wolf",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -6918,7 +6918,7 @@
       "name": "Hunting Hound",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -6927,7 +6927,7 @@
       "name": "Alley Cat",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -6936,7 +6936,7 @@
       "name": "Lynx",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -6945,7 +6945,7 @@
       "name": "Wildcat",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -9074,7 +9074,7 @@
       "name": "Tesserae Pouch",
       "type": "charge",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -9219,7 +9219,7 @@
       "name": "Cleric's Absolution",
       "type": "utility",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -9340,7 +9340,7 @@
       "name": "Tomb Builder's Pitfall",
       "type": "trap",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -9412,7 +9412,7 @@
       "name": "Rose Garden of Shiraz",
       "type": "environment",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -9474,7 +9474,7 @@
       "name": "Scales of the Final Judge",
       "type": "piece",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -15444,7 +15444,7 @@
       "name": "Seed Satchel",
       "type": "charge",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -15580,7 +15580,7 @@
       "name": "Lyrebird Mimicry",
       "type": "utility",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -15661,7 +15661,7 @@
       "name": "Fairy Ring",
       "type": "trap",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -15730,7 +15730,7 @@
       "name": "Heather Moor",
       "type": "environment",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },
@@ -15815,7 +15815,7 @@
       "name": "Pipes of the Goat-Footed",
       "type": "piece",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 10
     },

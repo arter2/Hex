@@ -1759,5 +1759,95 @@
       1254,
       1254
     ]
+  },
+  {
+    "cardId": "verdant_charge_09",
+    "name": "Seed Satchel",
+    "prompt": "A woodland ranger kneels beside an open complete leather seed satchel at waist height, opening it and sowing colorful seeds into soil where tiny sprouts grow. Entire ranger face and both hands clearly visible with margin, complete satchel, flap, strap and buckle shown. Painterly forest light, square composition.",
+    "generatedPath": "/workspace/generated_images/exec-0e35780a-8f2e-423a-a69e-0ff2c6fea3fd.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_charge_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "reviewNote": "Repainted after initial square clipped the ranger head. Focal point y=0.40 keeps the complete face, hands and full satchel in the wide crop; seeds and seedlings read at thumbnail size.",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "verdant_utility_07",
+    "name": "Lyrebird Mimicry",
+    "prompt": "A complete lyrebird stands centered on a mossy branch with sharp eye and beak and ornate full fan-tail. All curved tail tips stay below the top edge and away from sides; lifted head mimics a song with subtle light ripples. Dappled woodland, painterly layered feathers, strict square for card crop.",
+    "generatedPath": "/workspace/generated_images/exec-7b983f8e-b4fc-4e53-8ef3-dc1ebc183b43.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_utility_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "reviewNote": "Repainted after initial tail tips touched the square edge. Focal point y=0.40 keeps the full fan-tail and bird face within the wide crop; lower legs extend beyond the crop as incidental detail.",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "verdant_trap_08",
+    "name": "Fairy Ring",
+    "prompt": "A complete unbroken ring of three clusters of luminous mushrooms forms a clearly visible snare circle in a moonlit woodland clearing, viewed slightly from above. A tiny fairy pauses outside; delicate light traces the ring without obscuring mushrooms. Square composition keeps the full ring and fairy in the horizontal card crop.",
+    "generatedPath": "/workspace/generated_images/exec-4d8f149e-f041-4466-965d-5a6cb1cae33c.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_trap_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "The whole mushroom circle is closed and visible in square, wide crop, and thumbnail; fairy is secondary and unobstructed.",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "verdant_environment_04",
+    "name": "Heather Moor",
+    "prompt": "A broad windswept moor covered in flowering purple heather and low green bramble, with one clear bramble row tracing a natural path. Warm blossoms, rolling hills, standing stones, and morning mist, painterly fantasy landscape. Square composition with defining heather and row in the card crop.",
+    "generatedPath": "/workspace/generated_images/exec-cb77d109-25a3-4a51-8b05-923132d5ce28.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_environment_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Heather moor and bramble row read clearly in the square, wide crop, and thumbnail; no identity-critical element is clipped.",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "verdant_piece_04",
+    "name": "Pipes of the Goat-Footed",
+    "prompt": "A friendly faun musician with curved horns and goat legs plays a complete set of short wooden pan pipes held in both hands near the face. Every pipe end, both hands, and the faun face are clear; gentle green restorative light and new leaves, deep forest glade, painterly fantasy.",
+    "generatedPath": "/workspace/generated_images/exec-55efaba5-d404-44f0-9a86-00ce29da0582.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_piece_04.png",
+    "sourceNative": [
+      1513,
+      1040
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "reviewNote": "Focal point y=0.42 retains the faun face, both playing hands and full row of pipe ends in the wide crop; legs are incidental. Thumbnail preserves the named instrument.",
+    "status": "generated",
+    "batch": 10
   }
 ]

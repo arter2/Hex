@@ -24,7 +24,7 @@
   {
     "cardId": "gray_summon_02",
     "name": "Empty Helm Sentinel",
-    "prompt": "Original painterly medieval fantasy illustration for the exact card “Empty Helm Sentinel.” Mechanics: a tough suit of animated armor stands as a rear guard, draws enemy attacks to itself, and strikes quickly. Depict a complete, empty suit of battered steel plate with a faintly glowing vacant helm, planted behind allied fighters in a ruined keep; its raised shield arm draws the charge of several foes toward it while its sword arm makes a quick counterstrike. Keep the empty helmet unmistakable and armor the central subject. Tactile dented steel, leather straps, tarnished brass rivets, dust, dramatic torchlight and cool stone shadows, painterly brushwork like supplied fantasy references, grounded medieval atmosphere. Square 512 master, horizontal action; keep helmet, sword, shield and central torso within x24…488, y105…407 for wide crop, with expendable ceiling and floor margins. No frame, lettering, numbers, UI, anime, Disney cartoon, photorealism or pixel art. Repaired by image generation as an exact 1:1 square edit: moved the full empty helmet, sword hand/blade and shield face into the central action-safe band.",
+    "prompt": "Original painterly medieval fantasy illustration for the exact card \u201cEmpty Helm Sentinel.\u201d Mechanics: a tough suit of animated armor stands as a rear guard, draws enemy attacks to itself, and strikes quickly. Depict a complete, empty suit of battered steel plate with a faintly glowing vacant helm, planted behind allied fighters in a ruined keep; its raised shield arm draws the charge of several foes toward it while its sword arm makes a quick counterstrike. Keep the empty helmet unmistakable and armor the central subject. Tactile dented steel, leather straps, tarnished brass rivets, dust, dramatic torchlight and cool stone shadows, painterly brushwork like supplied fantasy references, grounded medieval atmosphere. Square 512 master, horizontal action; keep helmet, sword, shield and central torso within x24\u2026488, y105\u2026407 for wide crop, with expendable ceiling and floor margins. No frame, lettering, numbers, UI, anime, Disney cartoon, photorealism or pixel art. Repaired by image generation as an exact 1:1 square edit: moved the full empty helmet, sword hand/blade and shield face into the central action-safe band.",
     "generatedPath": "/workspace/generated_images/exec-0bd57af4-039f-49d8-9414-7860a4f1a8e0.png",
     "focalPoint": [
       0.5,
@@ -37,7 +37,7 @@
   {
     "cardId": "gray_ward_01",
     "name": "Shield Wall",
-    "prompt": "Original painterly fantasy card art for “Shield Wall.” Mechanics: a brief protective barrier grants a shield of 70 for 12 seconds, replacing the current shield. Depict a line of medieval defenders bracing shoulder-to-shoulder behind overlapping broad iron-rimmed shields as one continuous translucent gray-blue magical barrier rises across the front rank. A fresh bright shield-shaped ward seals over an older fading ward to imply replacement. Show incoming arrows and a heavy strike deflecting away. Make the wall and shields read as the subject, a horizontal defensive line, not a single hero portrait. Rich wood grain, scarred iron, wool and stone, painterly medieval collectible-card illustration with dramatic light, atmospheric depth and grounded proportions. Square 512 master; keep shield line, impacts and defenders’ faces/hands within x24…488, y105…407 for wide crop; quiet smoky sky and ground above/below. No frame, text, lettering, numbers or UI. No anime, cartoon, photorealism or pixel art.",
+    "prompt": "Original painterly fantasy card art for \u201cShield Wall.\u201d Mechanics: a brief protective barrier grants a shield of 70 for 12 seconds, replacing the current shield. Depict a line of medieval defenders bracing shoulder-to-shoulder behind overlapping broad iron-rimmed shields as one continuous translucent gray-blue magical barrier rises across the front rank. A fresh bright shield-shaped ward seals over an older fading ward to imply replacement. Show incoming arrows and a heavy strike deflecting away. Make the wall and shields read as the subject, a horizontal defensive line, not a single hero portrait. Rich wood grain, scarred iron, wool and stone, painterly medieval collectible-card illustration with dramatic light, atmospheric depth and grounded proportions. Square 512 master; keep shield line, impacts and defenders\u2019 faces/hands within x24\u2026488, y105\u2026407 for wide crop; quiet smoky sky and ground above/below. No frame, text, lettering, numbers or UI. No anime, cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-d8cb6b76-cb91-4584-b091-d047f01f44d1.png",
     "focalPoint": [
       0.5,
@@ -50,7 +50,7 @@
   {
     "cardId": "gray_boon_01",
     "name": "Battle Cry",
-    "prompt": "Original painterly medieval fantasy collectible-card illustration for “Battle Cry.” Mechanics: a courage boon strengthens cards and wand by 30% for seven seconds without health cost, jolts and briefly stuns the nearest enemy, then repeats five seconds later at half strength. Depict a weathered captain roaring a rallying cry beside a spellcaster, wind and a golden sound-like shockwave rolling from the captain; nearby ally’s sword and wand flare with stronger light as the closest charging enemy freezes in a brief jolt. A fainter second wave behind the first hints at the echo. Keep the scene grounded and readable, with the captain, wand and stunned enemy clearly identifiable; no written sound effects. Textured wool, leather, steel and magical light, dramatic battle dusk, painterly brushwork and atmospheric depth in supplied fantasy reference style. Square 512 master; arrange action horizontally and keep faces, captain’s mouth/hands, wand, enemy and wave impacts within x24…488, y105…407 for 206:141 crop. Quiet expendable sky and ground margins. No border, lettering, numbers or UI. No anime, cartoon, photorealism or pixel art.",
+    "prompt": "Original painterly medieval fantasy collectible-card illustration for \u201cBattle Cry.\u201d Mechanics: a courage boon strengthens cards and wand by 30% for seven seconds without health cost, jolts and briefly stuns the nearest enemy, then repeats five seconds later at half strength. Depict a weathered captain roaring a rallying cry beside a spellcaster, wind and a golden sound-like shockwave rolling from the captain; nearby ally\u2019s sword and wand flare with stronger light as the closest charging enemy freezes in a brief jolt. A fainter second wave behind the first hints at the echo. Keep the scene grounded and readable, with the captain, wand and stunned enemy clearly identifiable; no written sound effects. Textured wool, leather, steel and magical light, dramatic battle dusk, painterly brushwork and atmospheric depth in supplied fantasy reference style. Square 512 master; arrange action horizontally and keep faces, captain\u2019s mouth/hands, wand, enemy and wave impacts within x24\u2026488, y105\u2026407 for 206:141 crop. Quiet expendable sky and ground margins. No border, lettering, numbers or UI. No anime, cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-ab7250eb-b707-4545-a32f-bcb93274052a.png",
     "focalPoint": [
       0.5,
@@ -58,12 +58,12 @@
     ],
     "status": "generated",
     "batch": 2,
-    "reviewNote": "Reviewed original and central-square normalization: rallying captain, glowing ally’s wand/sword, stun impact and faint echo wave all remain inside normalized y105–407 crop band. Battle cry action and enemy are clear."
+    "reviewNote": "Reviewed original and central-square normalization: rallying captain, glowing ally\u2019s wand/sword, stun impact and faint echo wave all remain inside normalized y105\u2013407 crop band. Battle cry action and enemy are clear."
   },
   {
     "cardId": "gray_charge_02",
     "name": "Hunter's Quiver",
-    "prompt": "Original painterly medieval fantasy card illustration for “Hunter’s Quiver.” Mechanics: a reusable seven-shot supply of bolts that fire down the hunter’s row and the next row, each bolt splashing half its force around impact. Depict a leather-and-oak hunter’s quiver full of broad steel crossbow bolts attached to a crouched ranger, with two parallel magical bolt trails flying horizontally across the battlefield toward adjacent enemy ranks; one impact bursts with a small ring of shrapnel/light that catches nearby foes. The entire quiver from opening to base and several bolts must be visible, clearly the named object; keep it prominent in foreground while showing the twin-row firing and splash. Painterly grounded medieval fantasy, rich leather, fletching, steel, weathered cloak, directional light and atmospheric depth, supplied reference style. Compose as an exact 1:1 square image for 512 master; reserve generous sky and ground margins, and keep ranger’s face/hands, complete quiver and impact action within x24…488, y105…407 so nothing critical is lost in the wide crop after square normalization. No frame, labels, lettering, numbers or UI. No anime, Disney cartoon, photorealism or pixel art. Recomposition edit moved the complete quiver upward while preserving the twin volleys and splash scene.",
+    "prompt": "Original painterly medieval fantasy card illustration for \u201cHunter\u2019s Quiver.\u201d Mechanics: a reusable seven-shot supply of bolts that fire down the hunter\u2019s row and the next row, each bolt splashing half its force around impact. Depict a leather-and-oak hunter\u2019s quiver full of broad steel crossbow bolts attached to a crouched ranger, with two parallel magical bolt trails flying horizontally across the battlefield toward adjacent enemy ranks; one impact bursts with a small ring of shrapnel/light that catches nearby foes. The entire quiver from opening to base and several bolts must be visible, clearly the named object; keep it prominent in foreground while showing the twin-row firing and splash. Painterly grounded medieval fantasy, rich leather, fletching, steel, weathered cloak, directional light and atmospheric depth, supplied reference style. Compose as an exact 1:1 square image for 512 master; reserve generous sky and ground margins, and keep ranger\u2019s face/hands, complete quiver and impact action within x24\u2026488, y105\u2026407 so nothing critical is lost in the wide crop after square normalization. No frame, labels, lettering, numbers or UI. No anime, Disney cartoon, photorealism or pixel art. Recomposition edit moved the complete quiver upward while preserving the twin volleys and splash scene.",
     "generatedPath": "/workspace/generated_images/exec-4b93928d-b33e-4366-a761-536a7d8b7eea.png",
     "focalPoint": [
       0.5,
@@ -71,12 +71,12 @@
     ],
     "status": "generated",
     "batch": 2,
-    "reviewNote": "Reviewed repaired square original: complete quiver from fletching/opening through leather base fits within central y105–407 band; ranger and twin-row bolts with splash impact remain clear in the horizontal crop."
+    "reviewNote": "Reviewed repaired square original: complete quiver from fletching/opening through leather base fits within central y105\u2013407 band; ranger and twin-row bolts with splash impact remain clear in the horizontal crop."
   },
   {
     "cardId": "gray_summon_03",
     "name": "Haunted Plate",
-    "prompt": "Paint original painterly medieval fantasy collectible-card art for “Haunted Plate.” Mechanics: a sturdy but slow haunted suit of armor escorts an ally, zapping the nearest foe with chain lightning that jumps to two more, each weaker; attackers who strike the armor are shocked and stunned. Depict a battered empty suit of plate moving beside a cloaked traveler through a ruined stone passage. From its vacant helm, a vivid blue-white arc strikes the nearest attacker and visibly forks to two farther foes with diminishing sparks; one enemy's blade has just hit the armor and rebounds in a small stunning shock. Keep the haunted empty helmet and the chain arc readable as central story. Painterly brushwork, expressive steel, leather and stone, dramatic cool lightning against warm torchlight, grounded anatomy and atmospheric depth in supplied fantasy reference spirit. Exact 1:1 square composition for a 512 master; keep entire helmet, torso, chain-lightning path and key enemy faces/hands within x24…488, y105…407, with expendable ceiling/floor beyond. No frame, lettering, numbers, UI; no anime, Disney cartoon, photorealism or pixel art. Image generation edit recomposed action lower so the complete helmet and all three chain targets lie within the safe band.",
+    "prompt": "Paint original painterly medieval fantasy collectible-card art for \u201cHaunted Plate.\u201d Mechanics: a sturdy but slow haunted suit of armor escorts an ally, zapping the nearest foe with chain lightning that jumps to two more, each weaker; attackers who strike the armor are shocked and stunned. Depict a battered empty suit of plate moving beside a cloaked traveler through a ruined stone passage. From its vacant helm, a vivid blue-white arc strikes the nearest attacker and visibly forks to two farther foes with diminishing sparks; one enemy's blade has just hit the armor and rebounds in a small stunning shock. Keep the haunted empty helmet and the chain arc readable as central story. Painterly brushwork, expressive steel, leather and stone, dramatic cool lightning against warm torchlight, grounded anatomy and atmospheric depth in supplied fantasy reference spirit. Exact 1:1 square composition for a 512 master; keep entire helmet, torso, chain-lightning path and key enemy faces/hands within x24\u2026488, y105\u2026407, with expendable ceiling/floor beyond. No frame, lettering, numbers, UI; no anime, Disney cartoon, photorealism or pixel art. Image generation edit recomposed action lower so the complete helmet and all three chain targets lie within the safe band.",
     "generatedPath": "/workspace/generated_images/exec-a19d2cda-5e3b-4cd4-8f5a-57ae0b95982f.png",
     "focalPoint": [
       0.5,
@@ -89,7 +89,7 @@
   {
     "cardId": "gray_ward_02",
     "name": "Phalanx",
-    "prompt": "Create original painterly medieval fantasy card art for “Phalanx.” Mechanics: a heavy rampart forms one durable wall across the lanes before the party for 20 seconds; it strikes attackers back with thorns. Depict a broad waist-high, interlocked wall of dark stone-faced shields and iron braces spanning a battlefield pass, its front studded with short thorn-like steel barbs. Enemy blades and a charging mace strike the wall and are painfully deflected by the barbs. A few defenders are visible behind it to communicate protection across the whole line. Make the broad rampart and thorn counterstrike the clear subject. Painterly fantasy collectible-card art, expressive stone, weathered iron, wood, cloth, warm firelight and cool shadows, dramatic but readable and grounded. Exact 1:1 square for a 512 master; horizontal wall across central composition; keep complete wall silhouette, thorns, impacts and visible defenders’ faces/hands within x24…488, y105…407, with expendable sky and ground at top/bottom. No border, text, numbers, lettering, UI. No anime, Disney cartoon, photorealism or pixel art. Image generation edit moved defenders and rampart slightly lower to keep full faces and impacts inside safe band.",
+    "prompt": "Create original painterly medieval fantasy card art for \u201cPhalanx.\u201d Mechanics: a heavy rampart forms one durable wall across the lanes before the party for 20 seconds; it strikes attackers back with thorns. Depict a broad waist-high, interlocked wall of dark stone-faced shields and iron braces spanning a battlefield pass, its front studded with short thorn-like steel barbs. Enemy blades and a charging mace strike the wall and are painfully deflected by the barbs. A few defenders are visible behind it to communicate protection across the whole line. Make the broad rampart and thorn counterstrike the clear subject. Painterly fantasy collectible-card art, expressive stone, weathered iron, wood, cloth, warm firelight and cool shadows, dramatic but readable and grounded. Exact 1:1 square for a 512 master; horizontal wall across central composition; keep complete wall silhouette, thorns, impacts and visible defenders\u2019 faces/hands within x24\u2026488, y105\u2026407, with expendable sky and ground at top/bottom. No border, text, numbers, lettering, UI. No anime, Disney cartoon, photorealism or pixel art. Image generation edit moved defenders and rampart slightly lower to keep full faces and impacts inside safe band.",
     "generatedPath": "/workspace/generated_images/exec-c7b28cd3-fc9d-4c14-a595-ffdcd56ac3fb.png",
     "focalPoint": [
       0.5,
@@ -97,12 +97,12 @@
     ],
     "status": "generated",
     "batch": 3,
-    "reviewNote": "Reviewed repaired exact-square original: complete broad spiked rampart, defenders’ faces and thorn counterstrike impacts fit the central horizontal crop band; wall reads clearly as a lane-spanning barrier."
+    "reviewNote": "Reviewed repaired exact-square original: complete broad spiked rampart, defenders\u2019 faces and thorn counterstrike impacts fit the central horizontal crop band; wall reads clearly as a lane-spanning barrier."
   },
   {
     "cardId": "gray_boon_02",
     "name": "Rallying Horn",
-    "prompt": "Original painterly medieval fantasy card illustration for “Rallying Horn.” Mechanics: a lasting courage boon strengthens cards and wand by 30% for 16 seconds without health cost and musters, healing allied creatures by 15%. Depict a scarred commander blowing a complete ornate brass-and-horn war horn, the entire mouthpiece-to-bell visible, while a golden rallying wave sweeps through nearby allies: their swords and a mage’s wand kindle with power, and a wounded beast companion visibly mends beneath warm light. The horn must be large, clearly recognizable and central to the action, not an unrelated trumpet or tiny prop. Painterly medieval fantasy, expressive brass, leather, fur and cloth, dramatic sunlight through battlefield smoke, grounded faces and atmospheric depth inspired by supplied references. Exact 1:1 square composition for 512 master; horizontal arrangement; keep complete horn, commander’s face/hands, glowing wand and healed allies within x24…488, y105…407 so named object stays whole at small card size. Spare sky and ground beyond. No border, text, labels, numbers or UI. No anime, Disney cartoon, photorealism or pixel art. Image generation edits reoriented the horn horizontally and lowered it into the action-safe band.",
+    "prompt": "Original painterly medieval fantasy card illustration for \u201cRallying Horn.\u201d Mechanics: a lasting courage boon strengthens cards and wand by 30% for 16 seconds without health cost and musters, healing allied creatures by 15%. Depict a scarred commander blowing a complete ornate brass-and-horn war horn, the entire mouthpiece-to-bell visible, while a golden rallying wave sweeps through nearby allies: their swords and a mage\u2019s wand kindle with power, and a wounded beast companion visibly mends beneath warm light. The horn must be large, clearly recognizable and central to the action, not an unrelated trumpet or tiny prop. Painterly medieval fantasy, expressive brass, leather, fur and cloth, dramatic sunlight through battlefield smoke, grounded faces and atmospheric depth inspired by supplied references. Exact 1:1 square composition for 512 master; horizontal arrangement; keep complete horn, commander\u2019s face/hands, glowing wand and healed allies within x24\u2026488, y105\u2026407 so named object stays whole at small card size. Spare sky and ground beyond. No border, text, labels, numbers or UI. No anime, Disney cartoon, photorealism or pixel art. Image generation edits reoriented the horn horizontally and lowered it into the action-safe band.",
     "generatedPath": "/workspace/generated_images/exec-2f0de48d-a9d7-41dc-aa37-ad086988904c.png",
     "focalPoint": [
       0.5,
@@ -110,12 +110,12 @@
     ],
     "status": "generated",
     "batch": 3,
-    "reviewNote": "Reviewed final square original: complete ornate horn including mouthpiece and bell is fully visible in the central band with the commander’s face and hands; glowing wand, rallying allies and healing beast remain readable in the crop."
+    "reviewNote": "Reviewed final square original: complete ornate horn including mouthpiece and bell is fully visible in the central band with the commander\u2019s face and hands; glowing wand, rallying allies and healing beast remain readable in the crop."
   },
   {
     "cardId": "gray_charge_03",
     "name": "Bag of Rocks",
-    "prompt": "Paint original painterly medieval fantasy card art for “Bag of Rocks.” Mechanics: this charge has two uses; it lobs a heavy stone onto the aimed tile for 36 damage and splashes half damage around the impact. Depict a complete rugged leather sling-bag of round river stones in the foreground, shown open from mouth to base and clearly full, beside a medieval slinger who has just thrown one large rock in a high arc toward an enemy tile. At landing, the rock bursts into a ring of fragments that strikes nearby foes, making the splash area clear. Make the named bag a prominent readable object, not a generic boulder pile; show the lobbing action and impact as supporting story. Painterly medieval fantasy collectible-card illustration, believable worn leather, rounded stones, rough cloth and armor, directional sunset light, grounded figures and atmospheric depth like supplied references. Exact 1:1 square image for a 512 master; horizontal staging; keep entire bag, slinger’s face/throwing hand, airborne rock and impact within x24…488, y105…407. Quiet sky and ground margins beyond. No frame, lettering, labels, numbers or UI. No anime, Disney cartoon, photorealism or pixel art. Recomposition edits reduced and repositioned the bag and moved slinger/action into the central safe band.",
+    "prompt": "Paint original painterly medieval fantasy card art for \u201cBag of Rocks.\u201d Mechanics: this charge has two uses; it lobs a heavy stone onto the aimed tile for 36 damage and splashes half damage around the impact. Depict a complete rugged leather sling-bag of round river stones in the foreground, shown open from mouth to base and clearly full, beside a medieval slinger who has just thrown one large rock in a high arc toward an enemy tile. At landing, the rock bursts into a ring of fragments that strikes nearby foes, making the splash area clear. Make the named bag a prominent readable object, not a generic boulder pile; show the lobbing action and impact as supporting story. Painterly medieval fantasy collectible-card illustration, believable worn leather, rounded stones, rough cloth and armor, directional sunset light, grounded figures and atmospheric depth like supplied references. Exact 1:1 square image for a 512 master; horizontal staging; keep entire bag, slinger\u2019s face/throwing hand, airborne rock and impact within x24\u2026488, y105\u2026407. Quiet sky and ground margins beyond. No frame, lettering, labels, numbers or UI. No anime, Disney cartoon, photorealism or pixel art. Recomposition edits reduced and repositioned the bag and moved slinger/action into the central safe band.",
     "generatedPath": "/workspace/generated_images/exec-7d474c0c-4e58-4851-8cd3-9f26e3e2ca1b.png",
     "focalPoint": [
       0.5,
@@ -123,7 +123,7 @@
     ],
     "status": "generated",
     "batch": 3,
-    "reviewNote": "Reviewed final square original: whole open leather bag and stones fit in the lower-left safe band; slinger’s face/throwing hand, airborne rock and splash impact are inside the central crop. Bag remains legible at card scale."
+    "reviewNote": "Reviewed final square original: whole open leather bag and stones fit in the lower-left safe band; slinger\u2019s face/throwing hand, airborne rock and splash impact are inside the central crop. Bag remains legible at card scale."
   },
   {
     "cardId": "gray_summon_04",
@@ -293,7 +293,7 @@
   {
     "cardId": "gray_boon_05",
     "name": "Oath of Brotherhood",
-    "prompt": "Square painterly medieval fantasy illustration for Oath of Brotherhood: two battle brothers clasp forearms in a solemn vow on a fortress wall, both faces clear. Their delayed vow releases golden courage that empowers a nearby mage’s wand and blank spell cards; a nearby charging foe recoils in a brief stunning pulse. Believable mail, leather, cloth and wood, warm sunset, dramatic light, atmospheric battlefield. Keep faces and clasped hands safely in x24..488,y105..407 for centered 206:141 crop. No text, runes, frame or UI.",
+    "prompt": "Square painterly medieval fantasy illustration for Oath of Brotherhood: two battle brothers clasp forearms in a solemn vow on a fortress wall, both faces clear. Their delayed vow releases golden courage that empowers a nearby mage\u2019s wand and blank spell cards; a nearby charging foe recoils in a brief stunning pulse. Believable mail, leather, cloth and wood, warm sunset, dramatic light, atmospheric battlefield. Keep faces and clasped hands safely in x24..488,y105..407 for centered 206:141 crop. No text, runes, frame or UI.",
     "generatedPath": "/workspace/generated_images/exec-bbf0c4fa-cf12-4e89-8134-7271b2a8c81d.png",
     "editableSourcePath": "game/cards/art/masters/gray_boon_05.png",
     "sourceNative": [
@@ -306,7 +306,7 @@
     ],
     "status": "generated",
     "batch": 6,
-    "reviewNote": "Inspected square source, centered wide crop and thumbnail. Both brothers’ faces and clasped hands are clear; the golden oath flows to a mage’s wand and blank cards. A nearby armored foe is visible in the background, though the stun is subtle."
+    "reviewNote": "Inspected square source, centered wide crop and thumbnail. Both brothers\u2019 faces and clasped hands are clear; the golden oath flows to a mage\u2019s wand and blank cards. A nearby armored foe is visible in the background, though the stun is subtle."
   },
   {
     "cardId": "gray_charge_06",
@@ -324,12 +324,12 @@
     ],
     "status": "generated",
     "batch": 6,
-    "reviewNote": "Repainted twice after crop review; prior raw outputs and editable sources preserved in /tmp/gray-batch6-scratch. Inspected final 512-square source, centered 206:141 crop and thumbnail: scout’s full face and eyes, open pouch, tipping hand, complete visible caltrops and recoiling boot now all read within the crop."
+    "reviewNote": "Repainted twice after crop review; prior raw outputs and editable sources preserved in /tmp/gray-batch6-scratch. Inspected final 512-square source, centered 206:141 crop and thumbnail: scout\u2019s full face and eyes, open pouch, tipping hand, complete visible caltrops and recoiling boot now all read within the crop."
   },
   {
     "cardId": "gray_summon_08",
     "name": "Toy Knight",
-    "prompt": "Paint an illustration for the exact card Toy Knight. The mechanics: a tiny but tough enchanted toy knight guards its owner at the front line; every third attack is overcharged to strike twice and stun. Show one small, beautifully crafted tin-and-wood knight figurine springing forward between a child-sized armored traveler and an incoming enemy blade, raising its tiny shield to protect the traveler; its miniature sword releases a brief bright double flash that visibly staggers the blade-wielding foe. The toy knight is the dominant, unmistakable subject; do not make it a full-size human knight. Painterly medieval fantasy collectible-card art, believable tin, wood, worn paint and leather, dramatic directional light, atmospheric depth and textured brushwork. Explicit 1:1 square canvas for a 512×512 editable master. Keep the toy knight, shield, sword tip, and protected person’s face within x24…488,y105…407 for the 206:141 crop; leave quiet background above and below. No text, letters, numbers, border, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for the exact card Toy Knight. The mechanics: a tiny but tough enchanted toy knight guards its owner at the front line; every third attack is overcharged to strike twice and stun. Show one small, beautifully crafted tin-and-wood knight figurine springing forward between a child-sized armored traveler and an incoming enemy blade, raising its tiny shield to protect the traveler; its miniature sword releases a brief bright double flash that visibly staggers the blade-wielding foe. The toy knight is the dominant, unmistakable subject; do not make it a full-size human knight. Painterly medieval fantasy collectible-card art, believable tin, wood, worn paint and leather, dramatic directional light, atmospheric depth and textured brushwork. Explicit 1:1 square canvas for a 512\u00d7512 editable master. Keep the toy knight, shield, sword tip, and protected person\u2019s face within x24\u2026488,y105\u2026407 for the 206:141 crop; leave quiet background above and below. No text, letters, numbers, border, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-5e173d11-4045-46d7-81b2-e5b65292c94b.png",
     "editableSourcePath": "game/cards/art/masters/gray_summon_08.png",
     "sourceNative": [
@@ -342,12 +342,12 @@
     ],
     "status": "generated",
     "batch": 7,
-    "reviewNote": "Reviewed 512-square source, centered 206:141 crop and 128px thumbnail. Toy knight, shield, sword tip and traveler’s face stay intact; silhouette and protective action remain readable at thumbnail size."
+    "reviewNote": "Reviewed 512-square source, centered 206:141 crop and 128px thumbnail. Toy knight, shield, sword tip and traveler\u2019s face stay intact; silhouette and protective action remain readable at thumbnail size."
   },
   {
     "cardId": "gray_ward_06",
     "name": "Wagon Circle",
-    "prompt": "Paint an illustration for the exact card Wagon Circle. The effect briefly forms one heavy, short half-ring wall around the hero. Show a single armored caravan guard inside a defensive semicircle of tightly joined wooden wagons with iron rims, positioned in the foreground so the arc of wagon sides clearly curves around the guard; several incoming arrows and a spear strike the nearest wagon, splintering wood but stopping at its thick side. Emphasize the readable half-ring shape and its weight, with the guard’s face visible through the open side. Painterly medieval fantasy collectible-card art, believable wagon timber, iron hardware, horse tack and dust, dramatic directional light, atmospheric depth and textured brushwork. Explicit 1:1 square canvas for a 512×512 editable master. Keep the entire defensive arc, guard’s face and impact area within x24…488,y105…407 for the 206:141 crop; quiet camp and road beyond. No text, letters, numbers, border, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for the exact card Wagon Circle. The effect briefly forms one heavy, short half-ring wall around the hero. Show a single armored caravan guard inside a defensive semicircle of tightly joined wooden wagons with iron rims, positioned in the foreground so the arc of wagon sides clearly curves around the guard; several incoming arrows and a spear strike the nearest wagon, splintering wood but stopping at its thick side. Emphasize the readable half-ring shape and its weight, with the guard\u2019s face visible through the open side. Painterly medieval fantasy collectible-card art, believable wagon timber, iron hardware, horse tack and dust, dramatic directional light, atmospheric depth and textured brushwork. Explicit 1:1 square canvas for a 512\u00d7512 editable master. Keep the entire defensive arc, guard\u2019s face and impact area within x24\u2026488,y105\u2026407 for the 206:141 crop; quiet camp and road beyond. No text, letters, numbers, border, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-0077ae6e-b828-47ad-bf4e-cf914de6901d.png",
     "editableSourcePath": "game/cards/art/masters/gray_ward_06.png",
     "sourceNative": [
@@ -360,12 +360,12 @@
     ],
     "status": "generated",
     "batch": 7,
-    "reviewNote": "Reviewed 512-square source, centered 206:141 crop and 128px thumbnail. The heavy wagon defensive arc, guard’s face and arrow impacts stay within the crop; the arc reads as a protective enclosure."
+    "reviewNote": "Reviewed 512-square source, centered 206:141 crop and 128px thumbnail. The heavy wagon defensive arc, guard\u2019s face and arrow impacts stay within the crop; the arc reads as a protective enclosure."
   },
   {
     "cardId": "gray_boon_06",
     "name": "Hunter's Focus",
-    "prompt": "Paint an illustration for the exact card Hunter’s Focus. Its effect makes a hunter move and cast faster, with a brief chilling aura around nearby foes; the heightened focus lands two seconds after casting. Show a leather-clad medieval hunter in a taut, poised stance drawing a longbow, eyes locked clearly on a distant target as a luminous amber focus sigil settles over the brow and hands; pale, quiet ribbons of chill mist curl low around a single nearby foe who has slowed mid-step. Keep the hunter and bow as the primary readable subject, showing composure and sharpened speed rather than a large spell blast. Painterly medieval fantasy collectible-card illustration, grounded face and anatomy, believable leather, wool and yew, directional woodland light, atmospheric depth and textured brushwork. 1:1 square 512×512 master; keep hunter’s face, bow, arrowhead and focus sigil within x24…488,y105…407 for 206:141 crop. No lettering, numbers, frame, border, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for the exact card Hunter\u2019s Focus. Its effect makes a hunter move and cast faster, with a brief chilling aura around nearby foes; the heightened focus lands two seconds after casting. Show a leather-clad medieval hunter in a taut, poised stance drawing a longbow, eyes locked clearly on a distant target as a luminous amber focus sigil settles over the brow and hands; pale, quiet ribbons of chill mist curl low around a single nearby foe who has slowed mid-step. Keep the hunter and bow as the primary readable subject, showing composure and sharpened speed rather than a large spell blast. Painterly medieval fantasy collectible-card illustration, grounded face and anatomy, believable leather, wool and yew, directional woodland light, atmospheric depth and textured brushwork. 1:1 square 512\u00d7512 master; keep hunter\u2019s face, bow, arrowhead and focus sigil within x24\u2026488,y105\u2026407 for 206:141 crop. No lettering, numbers, frame, border, UI, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-77e093e3-416b-485a-93ca-5d0433021382.png",
     "editableSourcePath": "game/cards/art/masters/gray_boon_06.png",
     "sourceNative": [
@@ -378,12 +378,12 @@
     ],
     "status": "generated",
     "batch": 7,
-    "reviewNote": "Reviewed 512-square source, 206:141 crop shifted upward to focalPoint y=0.44, and 128px thumbnail. This adjustment restores the full hunter’s face while keeping the bow, arrowhead, focus sigil and slowed foe readable."
+    "reviewNote": "Reviewed 512-square source, 206:141 crop shifted upward to focalPoint y=0.44, and 128px thumbnail. This adjustment restores the full hunter\u2019s face while keeping the bow, arrowhead, focus sigil and slowed foe readable."
   },
   {
     "cardId": "gray_charge_07",
     "name": "Boomerang Belt",
-    "prompt": "Paint an illustration for the exact card Boomerang Belt. The belt carries reusable throwing boomerangs; the one shown makes a single arcing throw and is about to return, with one especially forceful critical strike. Show a rugged medieval ranger twisting at the waist as a crescent-shaped hardwood-and-steel boomerang leaves his hand, sweeping across the foreground in a clean curved arc toward one armored foe; a bright decisive impact flare marks the strike, and a second boomerang is visibly secured in loops on the ranger’s broad leather belt. Keep the belt and its boomerang loops identifiable while the airborne boomerang is the primary action. Painterly medieval fantasy collectible-card illustration, believable leather, wood and steel, dynamic but anatomically grounded pose, directional light, atmospheric depth and textured brushwork. Explicit square 512×512 master; keep face, throwing hand, complete boomerang arc and belt inside x24…488,y105…407 for the 206:141 crop. No lettering, numbers, frame, border, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for the exact card Boomerang Belt. The belt carries reusable throwing boomerangs; the one shown makes a single arcing throw and is about to return, with one especially forceful critical strike. Show a rugged medieval ranger twisting at the waist as a crescent-shaped hardwood-and-steel boomerang leaves his hand, sweeping across the foreground in a clean curved arc toward one armored foe; a bright decisive impact flare marks the strike, and a second boomerang is visibly secured in loops on the ranger\u2019s broad leather belt. Keep the belt and its boomerang loops identifiable while the airborne boomerang is the primary action. Painterly medieval fantasy collectible-card illustration, believable leather, wood and steel, dynamic but anatomically grounded pose, directional light, atmospheric depth and textured brushwork. Explicit square 512\u00d7512 master; keep face, throwing hand, complete boomerang arc and belt inside x24\u2026488,y105\u2026407 for the 206:141 crop. No lettering, numbers, frame, border, UI, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-75123130-7db9-4bda-89f6-12e69c690718.png",
     "editableSourcePath": "game/cards/art/masters/gray_charge_07.png",
     "sourceNative": [
@@ -396,12 +396,12 @@
     ],
     "status": "generated",
     "batch": 7,
-    "reviewNote": "Reviewed 512-square source, 206:141 crop shifted upward to focalPoint y=0.44, and 128px thumbnail. This adjustment keeps the ranger’s full face visible along with the complete return arc and visible boomerang belt; the action reads at thumbnail size."
+    "reviewNote": "Reviewed 512-square source, 206:141 crop shifted upward to focalPoint y=0.44, and 128px thumbnail. This adjustment keeps the ranger\u2019s full face visible along with the complete return arc and visible boomerang belt; the action reads at thumbnail size."
   },
   {
     "cardId": "gray_summon_09",
     "name": "Clay Golem of Prague",
-    "prompt": "Paint an illustration for the exact card Clay Golem of Prague. It is a tough, slow guardian that stands on the front line and protects its master; every third attack becomes an overcharged blow that stuns. Show one massive Prague clay golem stepping between a fallen city watchman and a charging armored assailant on a medieval cobbled street. The golem’s body is sculpted from reddish river clay with broad hand-pressed plates, old Prague tile fragments and worn stone reliefs; its heavy clay fist has just struck the attacker’s shield with a forceful impact, visibly stunning the foe. The golem is the dominant subject, with a recognizable distant Prague castle and tiled rooftops softly behind it. Painterly medieval fantasy collectible-card art, richly textured earth and stone, grounded proportions, dramatic directional light, atmospheric depth and textured brushwork. Explicitly make a 1:1 square image for a 512×512 editable master. Keep golem’s complete head, clenched fist, impact, and fallen guard’s face within x24…488,y105…407 for the 206:141 crop; quiet sky and cobbles can extend beyond. No writing, letters, numbers, border, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for the exact card Clay Golem of Prague. It is a tough, slow guardian that stands on the front line and protects its master; every third attack becomes an overcharged blow that stuns. Show one massive Prague clay golem stepping between a fallen city watchman and a charging armored assailant on a medieval cobbled street. The golem\u2019s body is sculpted from reddish river clay with broad hand-pressed plates, old Prague tile fragments and worn stone reliefs; its heavy clay fist has just struck the attacker\u2019s shield with a forceful impact, visibly stunning the foe. The golem is the dominant subject, with a recognizable distant Prague castle and tiled rooftops softly behind it. Painterly medieval fantasy collectible-card art, richly textured earth and stone, grounded proportions, dramatic directional light, atmospheric depth and textured brushwork. Explicitly make a 1:1 square image for a 512\u00d7512 editable master. Keep golem\u2019s complete head, clenched fist, impact, and fallen guard\u2019s face within x24\u2026488,y105\u2026407 for the 206:141 crop; quiet sky and cobbles can extend beyond. No writing, letters, numbers, border, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-843ac9ac-24a9-48b7-9141-e0f0710ada25.png",
     "editableSourcePath": "game/cards/art/masters/gray_summon_09.png",
     "sourceNative": [
@@ -419,7 +419,7 @@
   {
     "cardId": "gray_ward_07",
     "name": "Shield Brace",
-    "prompt": "Paint a painterly medieval fantasy collectible-card illustration for the exact Gray ward card Shield Brace. A determined medieval defender braces behind a single prominent, complete lightweight steel-and-wood shield held firmly before the chest as an enemy sword strikes its face and bursts into a crisp shower of blue-white sparks, stunning the attacker. Keep the whole shield—including its rim, boss, grip hand and lower tip—clearly visible, with the defender's resolute face visible just above it and the attacker secondary. The shield is the unmistakable named subject, sturdy but mobile, with engraved restrained heraldry, not a magical force-field wall. Stone gate courtyard at dusk, tactile steel, oak, leather and wool, dramatic directional light and atmospheric depth matching supplied Hexmancers references, grounded anatomy. Explicit 1:1 SQUARE composition for editable 512x512 master, horizontal staging for wide 206:141 card crop. Keep the defender's face, gripping hand, complete shield and point of sword impact within x24..488,y105..407 after normalization; quiet stone and banners above and below. Readable at thumbnail. No text, symbols with letters, border, UI, modern equipment, anime, Disney cartoon, photorealism or pixel art.",
+    "prompt": "Paint a painterly medieval fantasy collectible-card illustration for the exact Gray ward card Shield Brace. A determined medieval defender braces behind a single prominent, complete lightweight steel-and-wood shield held firmly before the chest as an enemy sword strikes its face and bursts into a crisp shower of blue-white sparks, stunning the attacker. Keep the whole shield\u2014including its rim, boss, grip hand and lower tip\u2014clearly visible, with the defender's resolute face visible just above it and the attacker secondary. The shield is the unmistakable named subject, sturdy but mobile, with engraved restrained heraldry, not a magical force-field wall. Stone gate courtyard at dusk, tactile steel, oak, leather and wool, dramatic directional light and atmospheric depth matching supplied Hexmancers references, grounded anatomy. Explicit 1:1 SQUARE composition for editable 512x512 master, horizontal staging for wide 206:141 card crop. Keep the defender's face, gripping hand, complete shield and point of sword impact within x24..488,y105..407 after normalization; quiet stone and banners above and below. Readable at thumbnail. No text, symbols with letters, border, UI, modern equipment, anime, Disney cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-4b286d0c-f128-4cb9-8fe6-79ffbc867378.png",
     "editableSourcePath": "game/cards/art/masters/gray_ward_07.png",
     "sourceNative": [
@@ -689,7 +689,7 @@
   {
     "cardId": "shieldwall_lane",
     "name": "Shieldwall Lane",
-    "prompt": "Paint a painterly medieval fantasy collectible-card illustration for the exact Gray ward card Shieldwall Lane. Actual effect: a short-lived magical barrier lane that blocks and knocks back approaching foes. Depict a disciplined line of three battered iron-rimmed tower shields locked edge-to-edge across a narrow cobbled castle passage, forming one clear lane-wide defensive wall; at the center, a single armored guard braces behind the shield while the leading shield catches a charging raider and pushes him backward in a restrained blue-white ward shimmer. Make the connected shield faces, the central guard's face and the impact unmistakable; this is a physical shield barrier, not a stone wall or generic spell blast. Horizontal staging with the shield line running left to right across the middle. Nuanced forged iron, wood, worn leather and stone, dramatic directional torchlight, atmospheric depth, believable anatomy and textured brushwork like polished fantasy card art. Explicit 1:1 SQUARE composition for editable 512×512 master; keep guard's full face, all joined shields, and impact within x24…488,y105…407 for the 206:141 card crop, with quiet stone passage above and below. Strong readable thumbnail silhouette. No text, letters, numbers, frame, border, UI, modern military gear, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint a painterly medieval fantasy collectible-card illustration for the exact Gray ward card Shieldwall Lane. Actual effect: a short-lived magical barrier lane that blocks and knocks back approaching foes. Depict a disciplined line of three battered iron-rimmed tower shields locked edge-to-edge across a narrow cobbled castle passage, forming one clear lane-wide defensive wall; at the center, a single armored guard braces behind the shield while the leading shield catches a charging raider and pushes him backward in a restrained blue-white ward shimmer. Make the connected shield faces, the central guard's face and the impact unmistakable; this is a physical shield barrier, not a stone wall or generic spell blast. Horizontal staging with the shield line running left to right across the middle. Nuanced forged iron, wood, worn leather and stone, dramatic directional torchlight, atmospheric depth, believable anatomy and textured brushwork like polished fantasy card art. Explicit 1:1 SQUARE composition for editable 512\u00d7512 master; keep guard's full face, all joined shields, and impact within x24\u2026488,y105\u2026407 for the 206:141 card crop, with quiet stone passage above and below. Strong readable thumbnail silhouette. No text, letters, numbers, frame, border, UI, modern military gear, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-ed8eb739-0e4c-41d8-98b1-85d176c29505.png",
     "editableSourcePath": "game/cards/art/masters/shieldwall_lane.png",
     "sourceNative": [
@@ -702,12 +702,12 @@
     ],
     "status": "generated",
     "batch": 7,
-    "reviewNote": "Reviewed the exact 512-square source, centered 512×350 crop, and 128×88 thumbnail. The connected shield lane, central guard's face, and ward impact stay intact; the returning raider is secondary and partly cropped at the far right."
+    "reviewNote": "Reviewed the exact 512-square source, centered 512\u00d7350 crop, and 128\u00d788 thumbnail. The connected shield lane, central guard's face, and ward impact stay intact; the returning raider is secondary and partly cropped at the far right."
   },
   {
     "cardId": "gray_summon_14",
     "name": "Cathedral Gargoyle",
-    "prompt": "Paint a painterly medieval fantasy collectible-card illustration for the exact Gray summon Cathedral Gargoyle. Actual identity and mechanics: a sturdy stone gargoyle guardian with quick dash movement, stationed on the front line. Show one imposing cathedral gargoyle diving from a carved stone cornice into the foreground to land protectively in the path of a charging armored foe; its broad stone wings spread to frame its recognizable horned face, one clawed hand braced forward, chips and dust flying at the landing. The gargoyle is a believable medieval church sculpture animated into a guardian, with weathered pale limestone, carved feather-like wing plates, expressive stern face and faint restrained magical warmth in its eyes. It must read as a cathedral gargoyle rather than a dragon or demon. Keep the full face, both wing roots and forward claw in the center; wings may extend diagonally but remain complete enough to read. Quiet gothic cathedral doorway and stained-glass glow in the distance. Nuanced stone, dust and old bronze, dramatic directional light, atmospheric depth, grounded anatomy and textured painterly brushwork consistent with high fantasy collectible-card illustration. Explicit 1:1 SQUARE image for editable 512×512 master; keep face, wings, claw and landing action within x24…488,y105…407 for the 206:141 crop. Readable at thumbnail. No text, letters, numbers, frame, border, UI, modern elements, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint a painterly medieval fantasy collectible-card illustration for the exact Gray summon Cathedral Gargoyle. Actual identity and mechanics: a sturdy stone gargoyle guardian with quick dash movement, stationed on the front line. Show one imposing cathedral gargoyle diving from a carved stone cornice into the foreground to land protectively in the path of a charging armored foe; its broad stone wings spread to frame its recognizable horned face, one clawed hand braced forward, chips and dust flying at the landing. The gargoyle is a believable medieval church sculpture animated into a guardian, with weathered pale limestone, carved feather-like wing plates, expressive stern face and faint restrained magical warmth in its eyes. It must read as a cathedral gargoyle rather than a dragon or demon. Keep the full face, both wing roots and forward claw in the center; wings may extend diagonally but remain complete enough to read. Quiet gothic cathedral doorway and stained-glass glow in the distance. Nuanced stone, dust and old bronze, dramatic directional light, atmospheric depth, grounded anatomy and textured painterly brushwork consistent with high fantasy collectible-card illustration. Explicit 1:1 SQUARE image for editable 512\u00d7512 master; keep face, wings, claw and landing action within x24\u2026488,y105\u2026407 for the 206:141 crop. Readable at thumbnail. No text, letters, numbers, frame, border, UI, modern elements, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-de84c39a-e312-44a7-9c72-dd1799d4e100.png",
     "editableSourcePath": "game/cards/art/masters/gray_summon_14.png",
     "sourceNative": [
@@ -720,12 +720,12 @@
     ],
     "status": "generated",
     "batch": 7,
-    "reviewNote": "Reviewed the 512-square source, centered 512×350 crop and 128×88 thumbnail. The gargoyle's face, wing roots, and forward landing claw remain intact and its stone guardian identity reads clearly; wing tips extend beyond the outer square corners."
+    "reviewNote": "Reviewed the 512-square source, centered 512\u00d7350 crop and 128\u00d788 thumbnail. The gargoyle's face, wing roots, and forward landing claw remain intact and its stone guardian identity reads clearly; wing tips extend beyond the outer square corners."
   },
   {
     "cardId": "gray_summon_15",
     "name": "Grotesque",
-    "prompt": "Create a painterly medieval fantasy collectible-card illustration for the exact Gray summon Grotesque. Its actual mechanics are a grim stone gargoyle that fights from behind the front line, releases a powerful blast, and briefly stuns foes. Depict one unmistakably grotesque gargoyle statue suddenly animating atop a ruined battlement: hunched asymmetrical body, carved folds, hooked beak-like muzzle, one broken horn, deep-set eyes and broad stone hands. It unleashes one concentrated concussive burst of dusty pale blue stone magic down the wall; two small armored attackers below are caught mid-stagger with weapons knocked askew, establishing the blast and brief stun. Keep the grotesque's whole face, expressive hands and blast origin dominant and central; make the creature the named subject, not the enemies or explosion. Keep materials clearly carved weathered limestone with soot and moss, no flesh monster. Night siege behind a medieval wall, rich directional moonlight and warm torch edge, atmospheric depth, grounded proportions, textured brushwork in polished fantasy card-art style. Explicit 1:1 SQUARE 512×512 master, horizontally staged; keep face, hands, and source of blast within x24…488,y105…407 for the 206:141 card crop. Readable thumbnail silhouette. No text, letters, numbers, frame, border, UI, modern gear, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Create a painterly medieval fantasy collectible-card illustration for the exact Gray summon Grotesque. Its actual mechanics are a grim stone gargoyle that fights from behind the front line, releases a powerful blast, and briefly stuns foes. Depict one unmistakably grotesque gargoyle statue suddenly animating atop a ruined battlement: hunched asymmetrical body, carved folds, hooked beak-like muzzle, one broken horn, deep-set eyes and broad stone hands. It unleashes one concentrated concussive burst of dusty pale blue stone magic down the wall; two small armored attackers below are caught mid-stagger with weapons knocked askew, establishing the blast and brief stun. Keep the grotesque's whole face, expressive hands and blast origin dominant and central; make the creature the named subject, not the enemies or explosion. Keep materials clearly carved weathered limestone with soot and moss, no flesh monster. Night siege behind a medieval wall, rich directional moonlight and warm torch edge, atmospheric depth, grounded proportions, textured brushwork in polished fantasy card-art style. Explicit 1:1 SQUARE 512\u00d7512 master, horizontally staged; keep face, hands, and source of blast within x24\u2026488,y105\u2026407 for the 206:141 card crop. Readable thumbnail silhouette. No text, letters, numbers, frame, border, UI, modern gear, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-2f80959c-b1fe-44fe-8369-c067895628a5.png",
     "editableSourcePath": "game/cards/art/masters/gray_summon_15.png",
     "sourceNative": [
@@ -738,12 +738,12 @@
     ],
     "status": "generated",
     "batch": 7,
-    "reviewNote": "Reviewed the 512-square source, centered wide crop and 128×88 thumbnail. The grotesque's full carved face and hands remain clear, with the concussive blast and staggered foes legible; the gargoyle remains the dominant subject."
+    "reviewNote": "Reviewed the 512-square source, centered wide crop and 128\u00d788 thumbnail. The grotesque's full carved face and hands remain clear, with the concussive blast and staggered foes legible; the gargoyle remains the dominant subject."
   },
   {
     "cardId": "gray_summon_16",
     "name": "Waterspout Gargoyle",
-    "prompt": "Paint a painterly medieval fantasy collectible-card illustration for the exact Gray summon Waterspout Gargoyle. Actual mechanics: an old, sturdy stone gargoyle stationed in the rear that sends repeated barrages and slows/freezes enemies. Show one ancient waterspout gargoyle carved into a weather-beaten castle buttress, now alive: its unmistakable stern gargoyle face and broad stone wings dominate while a powerful narrow stream of water erupts from its carved open mouth and arcs down into the lane, breaking into a few bright icy volleys that freeze an approaching armored raider's boots to the cobbles. Emphasize the distinctive gargoyle waterspout mouth and the clean arcing water jet, not a generic fountain or water elemental. The stone creature's face must remain visible and sharply readable; water is the supporting action. Old lichen-marked limestone, droplets catching cold moonlight against a warm torch-lit medieval parapet, atmospheric depth and textured brushwork, grounded anatomy and polished fantasy collectible-card art. Explicit 1:1 SQUARE canvas for a 512×512 editable master; horizontal action, keep gargoyle's whole face, spout mouth, jet origin and frozen boot impact inside x24…488,y105…407 for the 206:141 crop. Quiet stone sky and parapet can extend beyond. Readable at thumbnail. No text, letters, numbers, frame, border, UI, modern details, anime, Disney-like cartoon, photorealism or pixel art. Repainted the initial crop-clipped placement with the gargoyle shifted inward and smaller so its full face, snout and mouth fit inside the composition.",
+    "prompt": "Paint a painterly medieval fantasy collectible-card illustration for the exact Gray summon Waterspout Gargoyle. Actual mechanics: an old, sturdy stone gargoyle stationed in the rear that sends repeated barrages and slows/freezes enemies. Show one ancient waterspout gargoyle carved into a weather-beaten castle buttress, now alive: its unmistakable stern gargoyle face and broad stone wings dominate while a powerful narrow stream of water erupts from its carved open mouth and arcs down into the lane, breaking into a few bright icy volleys that freeze an approaching armored raider's boots to the cobbles. Emphasize the distinctive gargoyle waterspout mouth and the clean arcing water jet, not a generic fountain or water elemental. The stone creature's face must remain visible and sharply readable; water is the supporting action. Old lichen-marked limestone, droplets catching cold moonlight against a warm torch-lit medieval parapet, atmospheric depth and textured brushwork, grounded anatomy and polished fantasy collectible-card art. Explicit 1:1 SQUARE canvas for a 512\u00d7512 editable master; horizontal action, keep gargoyle's whole face, spout mouth, jet origin and frozen boot impact inside x24\u2026488,y105\u2026407 for the 206:141 crop. Quiet stone sky and parapet can extend beyond. Readable at thumbnail. No text, letters, numbers, frame, border, UI, modern details, anime, Disney-like cartoon, photorealism or pixel art. Repainted the initial crop-clipped placement with the gargoyle shifted inward and smaller so its full face, snout and mouth fit inside the composition.",
     "generatedPath": "/workspace/generated_images/exec-d4cb63fe-aa63-44e3-a2a6-edbcbf239f4a.png",
     "editableSourcePath": "game/cards/art/masters/gray_summon_16.png",
     "sourceNative": [
@@ -756,12 +756,12 @@
     ],
     "status": "generated",
     "batch": 7,
-    "reviewNote": "The first render clipped the gargoyle's face in the wide crop, so it was preserved at /tmp/gray_summon_16-attempt1.png and repainted. Reviewed the final 512-square source, centered wide crop and 128×88 thumbnail: full face, mouth and water origin remain visible; the jet and frozen target read at thumbnail size."
+    "reviewNote": "The first render clipped the gargoyle's face in the wide crop, so it was preserved at /tmp/gray_summon_16-attempt1.png and repainted. Reviewed the final 512-square source, centered wide crop and 128\u00d788 thumbnail: full face, mouth and water origin remain visible; the jet and frozen target read at thumbnail size."
   },
   {
     "cardId": "gray_summon_17",
     "name": "Shisa",
-    "prompt": "Paint a painterly medieval fantasy collectible-card illustration for the exact Gray summon Shisa. Its actual identity is a sturdy veteran Shisa guardian beast, a traditional lion-dog stone sentinel, fighting on the front line with a steady barrage of attacks. Show one powerful sculpted stone Shisa springing forward from the threshold of an old island shrine to protect the gate: unmistakable lion-dog body with curled mane, broad square muzzle, fangs, pointed ears and a curled tail; one massive forepaw sweeps across an incoming armored raider's shield in a solid impact while the beast's other paws remain braced. The named Shisa dominates, with a readable face and full head, and the action feels like an experienced enduring guardian rather than a fragile ornament. Weathered pale stone with traces of faded red mineral pigment and moss, carved ornamental curls, medieval fantasy shrine gate and distant cliffs, warm lantern light with cool dusk fill, nuanced material, grounded anatomy and polished painterly collectible-card art. Explicit 1:1 SQUARE 512×512 image; horizontal staging and keep Shisa's full face, head, striking paw and shield impact within x24…488,y105…407 for the 206:141 crop. Quiet sky and ground can extend above and below. Strong silhouette at thumbnail. No other gargoyles, no wings, no text, letters, numbers, frame, border, UI, modern details, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint a painterly medieval fantasy collectible-card illustration for the exact Gray summon Shisa. Its actual identity is a sturdy veteran Shisa guardian beast, a traditional lion-dog stone sentinel, fighting on the front line with a steady barrage of attacks. Show one powerful sculpted stone Shisa springing forward from the threshold of an old island shrine to protect the gate: unmistakable lion-dog body with curled mane, broad square muzzle, fangs, pointed ears and a curled tail; one massive forepaw sweeps across an incoming armored raider's shield in a solid impact while the beast's other paws remain braced. The named Shisa dominates, with a readable face and full head, and the action feels like an experienced enduring guardian rather than a fragile ornament. Weathered pale stone with traces of faded red mineral pigment and moss, carved ornamental curls, medieval fantasy shrine gate and distant cliffs, warm lantern light with cool dusk fill, nuanced material, grounded anatomy and polished painterly collectible-card art. Explicit 1:1 SQUARE 512\u00d7512 image; horizontal staging and keep Shisa's full face, head, striking paw and shield impact within x24\u2026488,y105\u2026407 for the 206:141 crop. Quiet sky and ground can extend above and below. Strong silhouette at thumbnail. No other gargoyles, no wings, no text, letters, numbers, frame, border, UI, modern details, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-2d0904eb-16b3-44a1-bf90-614382d94567.png",
     "editableSourcePath": "game/cards/art/masters/gray_summon_17.png",
     "sourceNative": [
@@ -774,7 +774,7 @@
     ],
     "status": "generated",
     "batch": 7,
-    "reviewNote": "Reviewed the 512-square source, centered wide crop and 128×88 thumbnail. Shisa's full lion-dog face, head, braced body, striking paw and impact remain visible; the guardian identity and attack read at thumbnail size."
+    "reviewNote": "Reviewed the 512-square source, centered wide crop and 128\u00d788 thumbnail. Shisa's full lion-dog face, head, braced body, striking paw and impact remain visible; the guardian identity and attack read at thumbnail size."
   },
   {
     "cardId": "gray_summon_18",
@@ -846,14 +846,14 @@
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Recovered the pre-existing canonical 512×512 editable source by explicit Dvarapala identity; original prompt/raw-generation provenance is unavailable. Reviewed the square source, upward-shifted 512×350 crop (focal y=0.4), and 128×88 thumbnail. Face, crown, raised hand, and club head remain visible; lower legs are cropped. The separately generated alternative is recorded in alternativeGeneratedPath and was not used as the editable source.",
+    "reviewNote": "Recovered the pre-existing canonical 512\u00d7512 editable source by explicit Dvarapala identity; original prompt/raw-generation provenance is unavailable. Reviewed the square source, upward-shifted 512\u00d7350 crop (focal y=0.4), and 128\u00d788 thumbnail. Face, crown, raised hand, and club head remain visible; lower legs are cropped. The separately generated alternative is recorded in alternativeGeneratedPath and was not used as the editable source.",
     "alternativeGeneratedPath": "/workspace/generated_images/exec-0f16d16a-b9ee-4e56-8610-38d2dd48c61f.png",
     "alternativePrompt": "Paint the Hexmancers card Dvarapala. Actual mechanics: a sturdy stone defender guard in the front line, steady attacks and a lasting final stand. Depict one imposing South or Southeast Asian temple gate guardian statue, a dvarapala, stepping forward from an ancient stone gateway. It is a humanlike armored guardian with a fierce carved face, tall crown, ornate breastplate, one hand gripping a short ceremonial club and the other raised to bar entry. A small ally shelters behind its stone leg. Clearly show weathered gray stone, carved jewelry and broad stance; keep it unmistakably a gate guardian figure, distinct from a lion, gargoyle or Japanese oni. Warm firelight against cool dusk, textured painterly medieval fantasy collectible-card art with atmospheric depth and believable stone. Exact 1:1 SQUARE canvas for editable 512x512 master, horizontally staged; keep full face, club head, raised hand and torso inside x24..488,y105..407 for 206:141 wide crop. Quiet roof and ground margins. Strong simple silhouette at thumbnail. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism or pixel art."
   },
   {
     "cardId": "gray_summon_22",
     "name": "Moai Watcher",
-    "prompt": "Paint the Hexmancers card Moai Watcher. Actual mechanics: a tough ancient stone golem slowly escorts an ally and fires steady magical bolts. Show an enormous weathered Moai stone guardian on a volcanic island coast at sunset, its long solemn carved face and blue-lit eyes unmistakable. A focused blue bolt streams from a small glowing rune on its brow toward a distant threat while a tiny cloaked ally walks safely beside its base. Keep the single Moai head and rune as the strong primary subject, with rough pitted volcanic stone, moss, warm sunset cloud and sea; painterly medieval fantasy collectible-card art with grounded scale and atmospheric depth. Exact 1:1 SQUARE 512x512 master; horizontal crop composition, keep the watcher’s face, rune and bolt origin within x24..488,y105..407 for the 206:141 card crop; quiet sky and ground outside. Readable thumbnail. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint the Hexmancers card Moai Watcher. Actual mechanics: a tough ancient stone golem slowly escorts an ally and fires steady magical bolts. Show an enormous weathered Moai stone guardian on a volcanic island coast at sunset, its long solemn carved face and blue-lit eyes unmistakable. A focused blue bolt streams from a small glowing rune on its brow toward a distant threat while a tiny cloaked ally walks safely beside its base. Keep the single Moai head and rune as the strong primary subject, with rough pitted volcanic stone, moss, warm sunset cloud and sea; painterly medieval fantasy collectible-card art with grounded scale and atmospheric depth. Exact 1:1 SQUARE 512x512 master; horizontal crop composition, keep the watcher\u2019s face, rune and bolt origin within x24..488,y105..407 for the 206:141 card crop; quiet sky and ground outside. Readable thumbnail. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "game/cards/art/masters/gray_summon_22.png",
     "editableSourcePath": "game/cards/art/masters/gray_summon_22.png",
     "sourceNative": [
@@ -866,7 +866,7 @@
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Recovered the pre-existing 512×512 editable source by explicit visual identity: a carved Moai with glowing eyes/rune firing a blue bolt beside a cloaked escort. Original raw-generation provenance is unavailable. Reviewed square source, crop shifted upward to y=23, and 128×88 thumbnail; face and rune remain clear, bolt reaches the distant impact, and the ally reads at thumbnail scale."
+    "reviewNote": "Recovered the pre-existing 512\u00d7512 editable source by explicit visual identity: a carved Moai with glowing eyes/rune firing a blue bolt beside a cloaked escort. Original raw-generation provenance is unavailable. Reviewed square source, crop shifted upward to y=23, and 128\u00d788 thumbnail; face and rune remain clear, bolt reaches the distant impact, and the ally reads at thumbnail scale."
   },
   {
     "cardId": "gray_summon_23",
@@ -884,7 +884,7 @@
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Reviewed 512-square source, centered 512×350 crop and 128×88 thumbnail. Terracotta face, both hands, full spearhead and frost impact remain visible; the spear spans the action and the clay armor reads distinctly."
+    "reviewNote": "Reviewed 512-square source, centered 512\u00d7350 crop and 128\u00d788 thumbnail. Terracotta face, both hands, full spearhead and frost impact remain visible; the spear spans the action and the clay armor reads distinctly."
   },
   {
     "cardId": "gray_summon_24",
@@ -902,7 +902,7 @@
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Reviewed the 512-square source, centered 512×350 crop and 128×88 thumbnail. General’s face, launching and directing hands, bolt origin and bright projectile remain visible; front-rank soldiers support the rear-line commander identity."
+    "reviewNote": "Reviewed the 512-square source, centered 512\u00d7350 crop and 128\u00d788 thumbnail. General\u2019s face, launching and directing hands, bolt origin and bright projectile remain visible; front-rank soldiers support the rear-line commander identity."
   },
   {
     "cardId": "gray_summon_25",
@@ -920,7 +920,7 @@
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Reviewed 512-square source, centered 512×350 crop and 128×88 thumbnail. The ushabti face, hands, barrier and static impact stay inside the crop; servant identity remains clear at thumbnail scale, though the protective barrier occupies more of the foreground than the figure."
+    "reviewNote": "Reviewed 512-square source, centered 512\u00d7350 crop and 128\u00d788 thumbnail. The ushabti face, hands, barrier and static impact stay inside the crop; servant identity remains clear at thumbnail scale, though the protective barrier occupies more of the foreground than the figure."
   },
   {
     "cardId": "gray_summon_26",
@@ -938,7 +938,7 @@
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Centered crop clipped the scarecrow’s hat and sack face, so I reviewed an upward shift to y=28 (focal y=0.4). The repaired 206:141 crop and 128×88 thumbnail show the full hat, face, outstretched arms and stun impact; lower legs extend beyond the crop."
+    "reviewNote": "Centered crop clipped the scarecrow\u2019s hat and sack face, so I reviewed an upward shift to y=28 (focal y=0.4). The repaired 206:141 crop and 128\u00d788 thumbnail show the full hat, face, outstretched arms and stun impact; lower legs extend beyond the crop."
   },
   {
     "cardId": "gray_summon_27",
@@ -956,12 +956,12 @@
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Reviewed the 512-square source, centered 512×350 crop and 128×88 thumbnail. Shield Maiden’s face and shield hand, full shield, sheltered ally and ward impact all remain visible and legible at thumbnail size."
+    "reviewNote": "Reviewed the 512-square source, centered 512\u00d7350 crop and 128\u00d788 thumbnail. Shield Maiden\u2019s face and shield hand, full shield, sheltered ally and ward impact all remain visible and legible at thumbnail size."
   },
   {
     "cardId": "gray_summon_28",
     "name": "Hoplite",
-    "prompt": "Paint the Hexmancers card Hoplite. Actual mechanics: a tough, quick escort fighter who taunts threats and surges into an overcharged defense. Show one classical Greek hoplite in bronze helmet, linen cuirass and greaves moving beside an ally, stepping between the companion and incoming blows; he raises a large round aspis shield with a fresh blue-gray protective flare and angles his spear forward. Make the hoplite’s face/helmet, shield, bracing hand and spearhead easy to read, with a disciplined protective stance rather than a generic warrior pose. Ancient stone road and a small ally behind his shoulder, warm sun on bronze with cool ward light, painterly medieval fantasy collectible-card art, rich materials and atmospheric depth. Exact 1:1 SQUARE 512x512 editable master, horizontal arrangement; keep face, shield, spearhead and protected ally within x24..488,y105..407 for the 206:141 crop. Quiet sky and ground margins. Strong silhouette at thumbnail size. No text, letters, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint the Hexmancers card Hoplite. Actual mechanics: a tough, quick escort fighter who taunts threats and surges into an overcharged defense. Show one classical Greek hoplite in bronze helmet, linen cuirass and greaves moving beside an ally, stepping between the companion and incoming blows; he raises a large round aspis shield with a fresh blue-gray protective flare and angles his spear forward. Make the hoplite\u2019s face/helmet, shield, bracing hand and spearhead easy to read, with a disciplined protective stance rather than a generic warrior pose. Ancient stone road and a small ally behind his shoulder, warm sun on bronze with cool ward light, painterly medieval fantasy collectible-card art, rich materials and atmospheric depth. Exact 1:1 SQUARE 512x512 editable master, horizontal arrangement; keep face, shield, spearhead and protected ally within x24..488,y105..407 for the 206:141 crop. Quiet sky and ground margins. Strong silhouette at thumbnail size. No text, letters, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-79007ee4-6c35-4f20-a871-94b17367b268.png",
     "editableSourcePath": "game/cards/art/masters/gray_summon_28.png",
     "sourceNative": [
@@ -974,7 +974,7 @@
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Centered crop clipped the top of the helmet crest, so I reviewed an upward shift to y=45 (focal y=0.43). The crop and thumbnail keep the hoplite’s helmet and face, full shield, spearhead and protected companion visible; lower leg is expendable."
+    "reviewNote": "Centered crop clipped the top of the helmet crest, so I reviewed an upward shift to y=45 (focal y=0.43). The crop and thumbnail keep the hoplite\u2019s helmet and face, full shield, spearhead and protected companion visible; lower leg is expendable."
   },
   {
     "cardId": "gray_summon_29",
@@ -992,12 +992,12 @@
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Reviewed 512-square source, centered 512×350 crop and 128×88 thumbnail. Centurion’s full face, raised shield, sword hand and charging opponent remain visible; red crest and armor make the veteran Roman identity clear."
+    "reviewNote": "Reviewed 512-square source, centered 512\u00d7350 crop and 128\u00d788 thumbnail. Centurion\u2019s full face, raised shield, sword hand and charging opponent remain visible; red crest and armor make the veteran Roman identity clear."
   },
   {
     "cardId": "gray_summon_30",
     "name": "Gatehouse Sergeant",
-    "prompt": "Paint the Hexmancers card Gatehouse Sergeant. Actual mechanics: a huge veteran front-line defender who slowly plants a short protective stone-and-iron wall. Show a broad, battle-worn medieval gatehouse sergeant at an open fortress gate, bracing his back and shoulder as he sets a waist-high portable barricade of timber and iron into the cobbled lane to protect the defenders behind him. He is sturdy and imposing but clearly a human veteran: weathered face under a simple helmet, one hand gripping the barricade, the other holding a short spear. Emphasize the stout little wall being raised as part of his guard duty; no writing or sign. Stone arch, torchlit gate and a few defenders in depth, painterly medieval fantasy collectible-card art, tactile wood, iron and stone, warm light and atmospheric depth. Exact 1:1 SQUARE 512x512 master, horizontal action; keep sergeant’s face, gripping hand and the full wall top and base inside x24..488,y105..407 for the 206:141 crop. Quiet arch and cobble margins. Strong readable thumbnail silhouette. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint the Hexmancers card Gatehouse Sergeant. Actual mechanics: a huge veteran front-line defender who slowly plants a short protective stone-and-iron wall. Show a broad, battle-worn medieval gatehouse sergeant at an open fortress gate, bracing his back and shoulder as he sets a waist-high portable barricade of timber and iron into the cobbled lane to protect the defenders behind him. He is sturdy and imposing but clearly a human veteran: weathered face under a simple helmet, one hand gripping the barricade, the other holding a short spear. Emphasize the stout little wall being raised as part of his guard duty; no writing or sign. Stone arch, torchlit gate and a few defenders in depth, painterly medieval fantasy collectible-card art, tactile wood, iron and stone, warm light and atmospheric depth. Exact 1:1 SQUARE 512x512 master, horizontal action; keep sergeant\u2019s face, gripping hand and the full wall top and base inside x24..488,y105..407 for the 206:141 crop. Quiet arch and cobble margins. Strong readable thumbnail silhouette. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-b3725240-4012-41e9-85ae-ac319810ec3d.png",
     "editableSourcePath": "game/cards/art/masters/gray_summon_30.png",
     "sourceNative": [
@@ -1010,12 +1010,12 @@
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Reviewed the 512-square source, centered 512×350 crop and 128×88 thumbnail. Sergeant’s face, spear hand, gripping hand, and barricade from top to base remain visible; gatehouse and defenders support his role."
+    "reviewNote": "Reviewed the 512-square source, centered 512\u00d7350 crop and 128\u00d788 thumbnail. Sergeant\u2019s face, spear hand, gripping hand, and barricade from top to base remain visible; gatehouse and defenders support his role."
   },
   {
     "cardId": "gray_summon_31",
     "name": "Castle Warden",
-    "prompt": "Paint the Hexmancers card Castle Warden. Actual mechanics: a tough, old veteran stationed in the rear who guards and protects allies. Depict a gray-haired castle warden in worn but well-kept armor, standing on a stair landing behind younger defenders and raising a broad shield to cover them from a descending strike. His deeply lined face is calm and experienced, one gloved hand grips the shield strap and the other reaches to guide an ally behind him. Make the warden’s protective posture and age clear, with a keep interior of old stone, iron sconces and a faded banner; no written heraldry. Painterly medieval fantasy collectible-card art with nuanced steel, cloth and stone, warm torchlight against cool daylight from a narrow window, atmospheric depth. Exact 1:1 SQUARE 512x512 master; compose horizontally and keep the warden’s face, shield, guiding hand and sheltered allies within x24..488,y105..407 for the 206:141 crop. Quiet wall and stair margins. Strong readable thumbnail silhouette. No text, letters, frame, UI, anime, Disney-like cartoon, photorealism or pixel art. Repaired first render’s right-edge shield clipping by moving the warden and complete shield inward and reducing the group slightly.",
+    "prompt": "Paint the Hexmancers card Castle Warden. Actual mechanics: a tough, old veteran stationed in the rear who guards and protects allies. Depict a gray-haired castle warden in worn but well-kept armor, standing on a stair landing behind younger defenders and raising a broad shield to cover them from a descending strike. His deeply lined face is calm and experienced, one gloved hand grips the shield strap and the other reaches to guide an ally behind him. Make the warden\u2019s protective posture and age clear, with a keep interior of old stone, iron sconces and a faded banner; no written heraldry. Painterly medieval fantasy collectible-card art with nuanced steel, cloth and stone, warm torchlight against cool daylight from a narrow window, atmospheric depth. Exact 1:1 SQUARE 512x512 master; compose horizontally and keep the warden\u2019s face, shield, guiding hand and sheltered allies within x24..488,y105..407 for the 206:141 crop. Quiet wall and stair margins. Strong readable thumbnail silhouette. No text, letters, frame, UI, anime, Disney-like cartoon, photorealism or pixel art. Repaired first render\u2019s right-edge shield clipping by moving the warden and complete shield inward and reducing the group slightly.",
     "generatedPath": "/workspace/generated_images/exec-745c7d6f-7fd5-42b1-957d-03d9cfb9e75a.png",
     "editableSourcePath": "game/cards/art/masters/gray_summon_31.png",
     "sourceNative": [
@@ -1028,12 +1028,12 @@
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Preserved the clipped first 512 source at /tmp/gray_summon_31-attempt1.png before repainting. Reviewed repaired 512-square source, centered crop and 128×88 thumbnail: warden’s face, shield hand, complete shield, and protected allies all remain visible."
+    "reviewNote": "Preserved the clipped first 512 source at /tmp/gray_summon_31-attempt1.png before repainting. Reviewed repaired 512-square source, centered crop and 128\u00d788 thumbnail: warden\u2019s face, shield hand, complete shield, and protected allies all remain visible."
   },
   {
     "cardId": "gray_summon_32",
     "name": "Watchtower Guard",
-    "prompt": "Paint the Hexmancers card Watchtower Guard. Actual mechanics: a tough loyal guard who acts very quickly at the front to protect an ally. Depict a vigilant medieval sentry racing down the wooden stair of a stone watchtower, planting a shield between an endangered companion and an incoming arrow; his spear is ready in the other hand and a small protective ward flashes across the shield. Keep the guard’s watchful face, gloved hands, shield and tower stair unmistakable; a lit beacon and distant battlements establish the watchtower setting. The figure is loyal and decisive, not a mounted soldier or archer. Weathered wood, iron and gray stone, crisp dusk light with warm beacon glow and cool sky, painterly medieval fantasy collectible-card illustration and atmospheric depth. Exact 1:1 SQUARE 512x512 master, horizontal staging; keep face, both hands, shield and protected companion within x24..488,y105..407 for the 206:141 crop. Quiet sky and floor margins. Strong readable thumbnail silhouette. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint the Hexmancers card Watchtower Guard. Actual mechanics: a tough loyal guard who acts very quickly at the front to protect an ally. Depict a vigilant medieval sentry racing down the wooden stair of a stone watchtower, planting a shield between an endangered companion and an incoming arrow; his spear is ready in the other hand and a small protective ward flashes across the shield. Keep the guard\u2019s watchful face, gloved hands, shield and tower stair unmistakable; a lit beacon and distant battlements establish the watchtower setting. The figure is loyal and decisive, not a mounted soldier or archer. Weathered wood, iron and gray stone, crisp dusk light with warm beacon glow and cool sky, painterly medieval fantasy collectible-card illustration and atmospheric depth. Exact 1:1 SQUARE 512x512 master, horizontal staging; keep face, both hands, shield and protected companion within x24..488,y105..407 for the 206:141 crop. Quiet sky and floor margins. Strong readable thumbnail silhouette. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-69fc0e7f-a919-4834-93f1-3858b23e2dc6.png",
     "editableSourcePath": "game/cards/art/masters/gray_summon_32.png",
     "sourceNative": [
@@ -1046,12 +1046,12 @@
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Reviewed the 512-square source, centered 512×350 crop and 128×88 thumbnail. Guard’s face, spear and shield hands, complete shield, protected companion and tower stair remain clear; the beacon establishes the watchtower."
+    "reviewNote": "Reviewed the 512-square source, centered 512\u00d7350 crop and 128\u00d788 thumbnail. Guard\u2019s face, spear and shield hands, complete shield, protected companion and tower stair remain clear; the beacon establishes the watchtower."
   },
   {
     "cardId": "gray_summon_33",
     "name": "Loyal Mastiff",
-    "prompt": "Paint the Hexmancers card Loyal Mastiff. Actual mechanics: a sturdy faithful hound escorts its companion, pierces through an attacker and briefly freezes it. Show a powerful brindled mastiff standing close beside a weary medieval traveler, springing forward with jaws open to seize an armored raider’s forearm; a thin frost sheen spreads from the bite and freezes the raider’s gauntlet. Keep the mastiff’s full head, strong shoulders and loyal focused eyes central, with the traveler’s hand near its collar to show trust. Believable short coat, leather collar and damp stone road, cool winter dusk with warm lantern edge light, painterly medieval fantasy collectible-card illustration, grounded canine anatomy and atmospheric depth. Exact 1:1 SQUARE 512x512 master, horizontal staging; keep dog’s face, bite, traveler hand and frost impact within x24..488,y105..407 for the 206:141 crop. Quiet sky and road margins. Clear silhouette at thumbnail size. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint the Hexmancers card Loyal Mastiff. Actual mechanics: a sturdy faithful hound escorts its companion, pierces through an attacker and briefly freezes it. Show a powerful brindled mastiff standing close beside a weary medieval traveler, springing forward with jaws open to seize an armored raider\u2019s forearm; a thin frost sheen spreads from the bite and freezes the raider\u2019s gauntlet. Keep the mastiff\u2019s full head, strong shoulders and loyal focused eyes central, with the traveler\u2019s hand near its collar to show trust. Believable short coat, leather collar and damp stone road, cool winter dusk with warm lantern edge light, painterly medieval fantasy collectible-card illustration, grounded canine anatomy and atmospheric depth. Exact 1:1 SQUARE 512x512 master, horizontal staging; keep dog\u2019s face, bite, traveler hand and frost impact within x24..488,y105..407 for the 206:141 crop. Quiet sky and road margins. Clear silhouette at thumbnail size. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-7b3485dd-33d8-4d3a-829b-a26d79f84474.png",
     "editableSourcePath": "game/cards/art/masters/gray_summon_33.png",
     "sourceNative": [
@@ -1064,12 +1064,12 @@
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Reviewed 512-square source, centered crop and thumbnail. Mastiff’s full face, bite, handler’s hand and chilling impact remain clear; the dog dominates and its loyal companion is visible behind."
+    "reviewNote": "Reviewed 512-square source, centered crop and thumbnail. Mastiff\u2019s full face, bite, handler\u2019s hand and chilling impact remain clear; the dog dominates and its loyal companion is visible behind."
   },
   {
     "cardId": "gray_summon_34",
     "name": "Kangal Shepherd Dog",
-    "prompt": "Paint the Hexmancers card Kangal Shepherd Dog. Actual mechanics: a brave, sturdy rear-line shepherd dog makes two rapid dashes and chills enemies on impact. Show one large sandy-fawn Anatolian Kangal with a distinct dark face mask and curled tail sprinting through a medieval camp to intercept two approaching raiders in quick succession; the first armored leg and shield rim turn white with frost where the dog has brushed past. The dog, not the soldiers, is the clear subject: full expressive head, strong body, powerful stride and plain leather shepherd’s collar. A shepherd and sheep pens may sit in the distance to establish its guardian role, but stay subtle. Cold morning haze with warm lantern glints, painterly medieval fantasy collectible-card art with believable canine anatomy and material detail. Exact 1:1 SQUARE 512x512 master, horizontal motion; keep dog’s face, body, paws and both dash impacts within x24..488,y105..407 for the 206:141 crop. Quiet sky and ground margins. Strong thumbnail silhouette. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint the Hexmancers card Kangal Shepherd Dog. Actual mechanics: a brave, sturdy rear-line shepherd dog makes two rapid dashes and chills enemies on impact. Show one large sandy-fawn Anatolian Kangal with a distinct dark face mask and curled tail sprinting through a medieval camp to intercept two approaching raiders in quick succession; the first armored leg and shield rim turn white with frost where the dog has brushed past. The dog, not the soldiers, is the clear subject: full expressive head, strong body, powerful stride and plain leather shepherd\u2019s collar. A shepherd and sheep pens may sit in the distance to establish its guardian role, but stay subtle. Cold morning haze with warm lantern glints, painterly medieval fantasy collectible-card art with believable canine anatomy and material detail. Exact 1:1 SQUARE 512x512 master, horizontal motion; keep dog\u2019s face, body, paws and both dash impacts within x24..488,y105..407 for the 206:141 crop. Quiet sky and ground margins. Strong thumbnail silhouette. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-1a0e2610-e8db-4a24-9252-c319cd4289a5.png",
     "editableSourcePath": "game/cards/art/masters/gray_summon_34.png",
     "sourceNative": [
@@ -1082,12 +1082,12 @@
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Reviewed square source, centered crop and thumbnail. Kangal’s full dark-masked face, collar, body and stride remain clear; two raiders frame the chilling dash and the shepherd context reads behind."
+    "reviewNote": "Reviewed square source, centered crop and thumbnail. Kangal\u2019s full dark-masked face, collar, body and stride remain clear; two raiders frame the chilling dash and the shepherd context reads behind."
   },
   {
     "cardId": "gray_summon_35",
     "name": "Old Gray Bear",
-    "prompt": "Paint the Hexmancers card Old Gray Bear. Actual mechanics: a tough old bear fights from the front with powerful pounces. Show a massive elder gray bear with silvered muzzle and a few old scars rising from a cold river ford and lunging onto a raider’s shield; water and stones burst outward beneath its paws. The bear is the clear subject: full recognizable head, heavy shoulders, forepaws and bristled gray coat, conveying age and weight rather than a generic brown bear. Include an icy stream, weathered boulders and pine-shadowed mountain dusk, with cool water light and a warm rim on the fur; painterly medieval fantasy collectible-card art, believable animal anatomy, detailed fur and atmospheric depth. Exact 1:1 SQUARE 512x512 master, horizontal action; keep bear’s face, paws and point of impact within x24..488,y105..407 for the 206:141 crop. Quiet cliff and water margins. Strong thumbnail silhouette. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint the Hexmancers card Old Gray Bear. Actual mechanics: a tough old bear fights from the front with powerful pounces. Show a massive elder gray bear with silvered muzzle and a few old scars rising from a cold river ford and lunging onto a raider\u2019s shield; water and stones burst outward beneath its paws. The bear is the clear subject: full recognizable head, heavy shoulders, forepaws and bristled gray coat, conveying age and weight rather than a generic brown bear. Include an icy stream, weathered boulders and pine-shadowed mountain dusk, with cool water light and a warm rim on the fur; painterly medieval fantasy collectible-card art, believable animal anatomy, detailed fur and atmospheric depth. Exact 1:1 SQUARE 512x512 master, horizontal action; keep bear\u2019s face, paws and point of impact within x24..488,y105..407 for the 206:141 crop. Quiet cliff and water margins. Strong thumbnail silhouette. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-8b5ce417-1970-4d2a-83b5-c29cdb30bf2e.png",
     "editableSourcePath": "game/cards/art/masters/gray_summon_35.png",
     "sourceNative": [
@@ -1100,12 +1100,12 @@
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Reviewed square source, centered crop and thumbnail. The elder bear’s whole recognizable head, paws and shield impact stay visible; silvered muzzle, scars and heavy gray coat read at card size."
+    "reviewNote": "Reviewed square source, centered crop and thumbnail. The elder bear\u2019s whole recognizable head, paws and shield impact stay visible; silvered muzzle, scars and heavy gray coat read at card size."
   },
   {
     "cardId": "gray_summon_36",
     "name": "Cave Bear",
-    "prompt": "Paint the Hexmancers card Cave Bear. Actual mechanics: a tough front-line bear that pounces and briefly freezes an enemy. Show a powerful dark-furred cave bear bursting from the mouth of a cavern onto an armored intruder, forepaws striking the shield as a cold blue frost spreads over the metal and boots. Make the bear’s full head, open muzzle and forward paws unmistakable; massive shoulders and shaggy charcoal-brown fur contrast with the older silver-gray bear card. Ancient cave entrance, limestone teeth and a trace of icy mist, dramatic lantern light from the intruder against cold blue cave shadow, painterly medieval fantasy collectible-card illustration with believable animal anatomy and rich fur. Exact 1:1 SQUARE 512x512 master, horizontal action; keep bear’s face, paws and frost impact within x24..488,y105..407 for the 206:141 crop. Quiet cave ceiling and ground margins. Bold readable thumbnail silhouette. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint the Hexmancers card Cave Bear. Actual mechanics: a tough front-line bear that pounces and briefly freezes an enemy. Show a powerful dark-furred cave bear bursting from the mouth of a cavern onto an armored intruder, forepaws striking the shield as a cold blue frost spreads over the metal and boots. Make the bear\u2019s full head, open muzzle and forward paws unmistakable; massive shoulders and shaggy charcoal-brown fur contrast with the older silver-gray bear card. Ancient cave entrance, limestone teeth and a trace of icy mist, dramatic lantern light from the intruder against cold blue cave shadow, painterly medieval fantasy collectible-card illustration with believable animal anatomy and rich fur. Exact 1:1 SQUARE 512x512 master, horizontal action; keep bear\u2019s face, paws and frost impact within x24..488,y105..407 for the 206:141 crop. Quiet cave ceiling and ground margins. Bold readable thumbnail silhouette. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-6955ba03-ffa4-4a66-a00b-93a4701db83d.png",
     "editableSourcePath": "game/cards/art/masters/gray_summon_36.png",
     "sourceNative": [
@@ -1118,12 +1118,12 @@
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Reviewed square source, centered crop and thumbnail. Cave Bear’s full snarling face, both forepaws, shield impact and frost remain visible; the dark bear and cave mouth read clearly."
+    "reviewNote": "Reviewed square source, centered crop and thumbnail. Cave Bear\u2019s full snarling face, both forepaws, shield impact and frost remain visible; the dark bear and cave mouth read clearly."
   },
   {
     "cardId": "gray_summon_37",
     "name": "Wild Boar",
-    "prompt": "Paint the Hexmancers card Wild Boar. Actual mechanics: a tough front-line boar tramples forward and shoves an enemy aside. Show a massive dark wild boar charging through a medieval forest track, low head, bristling mane and curved tusks, its shoulder and tusks knocking an armored raider backward into leaves and dust. The boar is the unmistakable primary subject; show a powerful full head, tusks and forelegs with rugged coarse black-brown bristles, not a domestic pig. Autumn forest edge with broken brush, warm shafts of sun through cool green shade, painterly medieval fantasy collectible-card art with believable animal anatomy, tactile fur and atmospheric depth. Exact 1:1 SQUARE 512x512 master, horizontal motion; keep boar’s face, tusks, forelegs and impact point inside x24..488,y105..407 for 206:141 crop. Quiet canopy and earth margins. Strong thumbnail silhouette. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint the Hexmancers card Wild Boar. Actual mechanics: a tough front-line boar tramples forward and shoves an enemy aside. Show a massive dark wild boar charging through a medieval forest track, low head, bristling mane and curved tusks, its shoulder and tusks knocking an armored raider backward into leaves and dust. The boar is the unmistakable primary subject; show a powerful full head, tusks and forelegs with rugged coarse black-brown bristles, not a domestic pig. Autumn forest edge with broken brush, warm shafts of sun through cool green shade, painterly medieval fantasy collectible-card art with believable animal anatomy, tactile fur and atmospheric depth. Exact 1:1 SQUARE 512x512 master, horizontal motion; keep boar\u2019s face, tusks, forelegs and impact point inside x24..488,y105..407 for 206:141 crop. Quiet canopy and earth margins. Strong thumbnail silhouette. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-60164c37-3482-4ccf-b868-4ed3e6c5c4bd.png",
     "editableSourcePath": "game/cards/art/masters/gray_summon_37.png",
     "sourceNative": [
@@ -1136,12 +1136,12 @@
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Reviewed square source, centered crop and thumbnail. Wild boar’s full face, tusks, foreleg and trample impact remain visible; the bristled silhouette and knocked-back raider read at thumbnail scale."
+    "reviewNote": "Reviewed square source, centered crop and thumbnail. Wild boar\u2019s full face, tusks, foreleg and trample impact remain visible; the bristled silhouette and knocked-back raider read at thumbnail scale."
   },
   {
     "cardId": "gray_summon_38",
     "name": "Great Tortoise",
-    "prompt": "Paint the Hexmancers card Great Tortoise. Actual mechanics: an ancient, tough front-line tortoise slowly forms a short protective ward. Show one enormous old tortoise emerging on a rocky battlefield, its broad domed shell etched by age and moss, slowly raising a low curved stone ward from the ground in front of a small ally. The tortoise’s wise head and complete shell dominate; the protective wall is visibly growing from the earth, with a soft gray-blue glow along its edge. Distinguish it from a turtle with a massive high domed shell and thick columnar legs. Ancient woodland ruins and weathered stone, warm shafts of light, painterly medieval fantasy collectible-card art with lifelike reptile anatomy, textured shell and atmospheric depth. Exact 1:1 SQUARE 512x512 master, horizontal composition; keep head, full shell silhouette and ward edge inside x24..488,y105..407 for the 206:141 crop. Quiet canopy and ground margins. Readable thumbnail silhouette. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint the Hexmancers card Great Tortoise. Actual mechanics: an ancient, tough front-line tortoise slowly forms a short protective ward. Show one enormous old tortoise emerging on a rocky battlefield, its broad domed shell etched by age and moss, slowly raising a low curved stone ward from the ground in front of a small ally. The tortoise\u2019s wise head and complete shell dominate; the protective wall is visibly growing from the earth, with a soft gray-blue glow along its edge. Distinguish it from a turtle with a massive high domed shell and thick columnar legs. Ancient woodland ruins and weathered stone, warm shafts of light, painterly medieval fantasy collectible-card art with lifelike reptile anatomy, textured shell and atmospheric depth. Exact 1:1 SQUARE 512x512 master, horizontal composition; keep head, full shell silhouette and ward edge inside x24..488,y105..407 for the 206:141 crop. Quiet canopy and ground margins. Readable thumbnail silhouette. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-10f5b47c-a999-4948-8548-b8204b3d9c0f.png",
     "editableSourcePath": "game/cards/art/masters/gray_summon_38.png",
     "sourceNative": [
@@ -1154,12 +1154,12 @@
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Reviewed 512-square source, centered crop and thumbnail. Tortoise’s full domed shell and head, columnar forelegs and growing ward remain visible; shell texture and scale carry its ancient identity."
+    "reviewNote": "Reviewed 512-square source, centered crop and thumbnail. Tortoise\u2019s full domed shell and head, columnar forelegs and growing ward remain visible; shell texture and scale carry its ancient identity."
   },
   {
     "cardId": "gray_summon_39",
     "name": "Snapping Turtle",
-    "prompt": "Paint the Hexmancers card Snapping Turtle. Actual mechanics: a hungry, tough front-line turtle that draws an enemy close and slowly raises a strong protective wall. Show a large freshwater snapping turtle at the edge of a medieval moat, its low ridged shell and webbed feet clear, lunging out of the water to snap at an armored raider’s boot and pull the foe toward the bank. A curved low stone embankment rises behind its shell as a protective barrier for a nearby ally. Emphasize the turtle’s hooked beak, strong jaw, and full low shell; keep it distinct from a high-domed tortoise. Rippling dark water, reeds, castle stones, lantern reflections and cool mist, painterly medieval fantasy collectible-card illustration with believable reptile anatomy and rich material detail. Exact 1:1 SQUARE 512x512 master, horizontal action; keep turtle’s full head, jaw, shell, bite and wall section within x24..488,y105..407 for the 206:141 crop. Quiet water and stone margins. Readable thumbnail silhouette. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint the Hexmancers card Snapping Turtle. Actual mechanics: a hungry, tough front-line turtle that draws an enemy close and slowly raises a strong protective wall. Show a large freshwater snapping turtle at the edge of a medieval moat, its low ridged shell and webbed feet clear, lunging out of the water to snap at an armored raider\u2019s boot and pull the foe toward the bank. A curved low stone embankment rises behind its shell as a protective barrier for a nearby ally. Emphasize the turtle\u2019s hooked beak, strong jaw, and full low shell; keep it distinct from a high-domed tortoise. Rippling dark water, reeds, castle stones, lantern reflections and cool mist, painterly medieval fantasy collectible-card illustration with believable reptile anatomy and rich material detail. Exact 1:1 SQUARE 512x512 master, horizontal action; keep turtle\u2019s full head, jaw, shell, bite and wall section within x24..488,y105..407 for the 206:141 crop. Quiet water and stone margins. Readable thumbnail silhouette. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-294b3965-24c4-4628-9420-224f5275aae9.png",
     "editableSourcePath": "game/cards/art/masters/gray_summon_39.png",
     "sourceNative": [
@@ -1172,12 +1172,12 @@
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Reviewed square source, centered crop and thumbnail. The turtle’s complete low ridged shell, hooked jaw, bite and webbed foreleg remain visible; the moat wall and guard provide context."
+    "reviewNote": "Reviewed square source, centered crop and thumbnail. The turtle\u2019s complete low ridged shell, hooked jaw, bite and webbed foreleg remain visible; the moat wall and guard provide context."
   },
   {
     "cardId": "gray_summon_40",
     "name": "Armadillo Knight",
-    "prompt": "Paint the Hexmancers card Armadillo Knight. Actual mechanics: a tough, loyal front-line guardian who draws enemy attention and holds ground. Depict a stout armadillo-like knight in a medieval forest clearing, its natural overlapping banded shell protected by battered steel shoulder plates and a small helm; it braces behind a broad shield while a sword-bearing armored enemy charges directly toward it, leaving a small companion safe behind its armored back. Keep the knight’s full armored head, segmented shell, forepaws and shield clear; unmistakably an armadillo creature, not a human in armor or a generic beetle. Rich brown scales, aged iron, woodland stone, dramatic warm light and cool shadow, painterly medieval fantasy collectible-card art with grounded creature anatomy and atmospheric depth. Exact 1:1 SQUARE 512x512 master, horizontal staging; keep face, shield hand, full shell silhouette and enemy impact inside x24..488,y105..407 for the 206:141 crop. Quiet canopy and earth margins. Strong thumbnail silhouette. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint the Hexmancers card Armadillo Knight. Actual mechanics: a tough, loyal front-line guardian who draws enemy attention and holds ground. Depict a stout armadillo-like knight in a medieval forest clearing, its natural overlapping banded shell protected by battered steel shoulder plates and a small helm; it braces behind a broad shield while a sword-bearing armored enemy charges directly toward it, leaving a small companion safe behind its armored back. Keep the knight\u2019s full armored head, segmented shell, forepaws and shield clear; unmistakably an armadillo creature, not a human in armor or a generic beetle. Rich brown scales, aged iron, woodland stone, dramatic warm light and cool shadow, painterly medieval fantasy collectible-card art with grounded creature anatomy and atmospheric depth. Exact 1:1 SQUARE 512x512 master, horizontal staging; keep face, shield hand, full shell silhouette and enemy impact inside x24..488,y105..407 for the 206:141 crop. Quiet canopy and earth margins. Strong thumbnail silhouette. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-f1372460-c42d-4f41-96ea-eef7dd8eb7a5.png",
     "editableSourcePath": "game/cards/art/masters/gray_summon_40.png",
     "sourceNative": [
@@ -1190,12 +1190,12 @@
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Reviewed square source, centered crop and thumbnail. The armadillo’s helmeted head, banded shell, forepaws, full shield and opposing strike remain visible; armored creature identity reads clearly."
+    "reviewNote": "Reviewed square source, centered crop and thumbnail. The armadillo\u2019s helmeted head, banded shell, forepaws, full shield and opposing strike remain visible; armored creature identity reads clearly."
   },
   {
     "cardId": "gray_summon_41",
     "name": "Ironback Beetle",
-    "prompt": "Paint the Hexmancers card Ironback Beetle. Actual mechanics: a tough iron-shelled beetle escorts an ally, slowly raising a protective wall while static sparks around it. Show one giant dark beetle with a broad ridged iron-like back and six strong legs striding beside a small armored ally; it shelters the companion with its body while lifting a low ridge of stone and earth into a barrier. Pale blue static crackles over the shell and barrier edge. Keep the beetle’s full head, curved feelers, shell and legs the main subject; this is a real beetle creature with an iron carapace, not a mechanical machine. Medieval forest path, wet leaves, warm lanterns and cool electric light, painterly fantasy collectible-card illustration, believable insect anatomy and rich metal/earth texture. Exact 1:1 SQUARE 512x512 master, horizontal staging; keep head, feelers, full shell silhouette, legs and ward within x24..488,y105..407 for the 206:141 crop. Quiet canopy and ground margins. Strong thumbnail silhouette. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint the Hexmancers card Ironback Beetle. Actual mechanics: a tough iron-shelled beetle escorts an ally, slowly raising a protective wall while static sparks around it. Show one giant dark beetle with a broad ridged iron-like back and six strong legs striding beside a small armored ally; it shelters the companion with its body while lifting a low ridge of stone and earth into a barrier. Pale blue static crackles over the shell and barrier edge. Keep the beetle\u2019s full head, curved feelers, shell and legs the main subject; this is a real beetle creature with an iron carapace, not a mechanical machine. Medieval forest path, wet leaves, warm lanterns and cool electric light, painterly fantasy collectible-card illustration, believable insect anatomy and rich metal/earth texture. Exact 1:1 SQUARE 512x512 master, horizontal staging; keep head, feelers, full shell silhouette, legs and ward within x24..488,y105..407 for the 206:141 crop. Quiet canopy and ground margins. Strong thumbnail silhouette. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-8e8bd4ab-7ed2-49d4-aeb3-34b28bdbaf94.png",
     "editableSourcePath": "game/cards/art/masters/gray_summon_41.png",
     "sourceNative": [
@@ -1208,7 +1208,7 @@
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Reviewed square source, centered crop and thumbnail. Beetle’s full head, feelers, six legs and ironback shell remain visible; the static ward and sheltered ally are readable behind it."
+    "reviewNote": "Reviewed square source, centered crop and thumbnail. Beetle\u2019s full head, feelers, six legs and ironback shell remain visible; the static ward and sheltered ally are readable behind it."
   },
   {
     "cardId": "gray_summon_42",
@@ -1226,7 +1226,7 @@
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Preserved the clipped first source at /tmp/gray_summon_42-attempt1.png before repair. Reviewed final 512-square source, centered crop and 128×88 thumbnail; the complete chest, lid, teeth, eye, feet and barrage origin all fit and read as a mimic."
+    "reviewNote": "Preserved the clipped first source at /tmp/gray_summon_42-attempt1.png before repair. Reviewed final 512-square source, centered crop and 128\u00d788 thumbnail; the complete chest, lid, teeth, eye, feet and barrage origin all fit and read as a mimic."
   },
   {
     "cardId": "gray_summon_43",
@@ -1316,7 +1316,7 @@
     ],
     "status": "generated",
     "batch": 9,
-    "reviewNote": "Reviewed 512-square source and top-shifted wide crop. Troll’s whole face, mossy head and beckoning hand remain visible; lower body crops below the waist, while bridge setting stays readable."
+    "reviewNote": "Reviewed 512-square source and top-shifted wide crop. Troll\u2019s whole face, mossy head and beckoning hand remain visible; lower body crops below the waist, while bridge setting stays readable."
   },
   {
     "cardId": "gray_summon_48",
@@ -1352,7 +1352,7 @@
     ],
     "status": "generated",
     "batch": 9,
-    "reviewNote": "Reviewed 512-square master and centered 206:141 crop. Full longbow with both tips, archer’s face and hands, nocked arrow and static arrowhead all remain visible."
+    "reviewNote": "Reviewed 512-square master and centered 206:141 crop. Full longbow with both tips, archer\u2019s face and hands, nocked arrow and static arrowhead all remain visible."
   },
   {
     "cardId": "gray_summon_50",
@@ -1406,7 +1406,7 @@
     ],
     "status": "generated",
     "batch": 9,
-    "reviewNote": "Reviewed 512-square source and top-shifted wide crop. The centaur’s human torso joins the equine body, with face, hands, compact bow and arrow all visible; lower horse legs crop naturally."
+    "reviewNote": "Reviewed 512-square source and top-shifted wide crop. The centaur\u2019s human torso joins the equine body, with face, hands, compact bow and arrow all visible; lower horse legs crop naturally."
   },
   {
     "cardId": "gray_summon_53",
@@ -1514,7 +1514,7 @@
     ],
     "status": "generated",
     "batch": 9,
-    "reviewNote": "Reviewed full source and top-aligned wide crop. Woodcutter’s complete face, two-handed axe grip, axe head and split-log action remain clear; legs and lower logs are incidental."
+    "reviewNote": "Reviewed full source and top-aligned wide crop. Woodcutter\u2019s complete face, two-handed axe grip, axe head and split-log action remain clear; legs and lower logs are incidental."
   },
   {
     "cardId": "gray_summon_59",
@@ -1550,12 +1550,12 @@
     ],
     "status": "generated",
     "batch": 9,
-    "reviewNote": "Reviewed full source and top-aligned 206:141 crop. Ranger’s face, drawn bow hand, arrow, open guiding hand and pursuer are readable; the cropped bow tip is close to the raw square’s upper edge."
+    "reviewNote": "Reviewed full source and top-aligned 206:141 crop. Ranger\u2019s face, drawn bow hand, arrow, open guiding hand and pursuer are readable; the cropped bow tip is close to the raw square\u2019s upper edge."
   },
   {
     "cardId": "gray_summon_61",
     "name": "Tracker",
-    "prompt": "Paint an illustration for the Hexmancers card Tracker. Actual mechanics: a clever steady human tracker who stuns a target with a broad burst. Depict an experienced forest tracker kneeling on a muddy trail, studying a fresh hoofprint with one hand while the other releases a short-range hunting bolt toward a distant charging boar; the bolt's impact produces a restrained ring of dust and leaves that interrupts its rush. Focus on the tracker’s intent face, trail-sign hand and compact bow, with prints leading through the composition. Painterly medieval fantasy collectible-card illustration, believable cloth, leather and woodland textures, moody directional light and atmospheric depth, consistent with supplied Hexmancers refs. EXACT 1:1 SQUARE master, wide staging; keep face, hand, weapon and readable tracking action within x24..488,y105..407 for 206:141 crop. Quiet tree canopy and path margins. Strong thumbnail. No frame, lettering, UI, anime, Disney-like cartoon, photorealism, pixel art.",
+    "prompt": "Paint an illustration for the Hexmancers card Tracker. Actual mechanics: a clever steady human tracker who stuns a target with a broad burst. Depict an experienced forest tracker kneeling on a muddy trail, studying a fresh hoofprint with one hand while the other releases a short-range hunting bolt toward a distant charging boar; the bolt's impact produces a restrained ring of dust and leaves that interrupts its rush. Focus on the tracker\u2019s intent face, trail-sign hand and compact bow, with prints leading through the composition. Painterly medieval fantasy collectible-card illustration, believable cloth, leather and woodland textures, moody directional light and atmospheric depth, consistent with supplied Hexmancers refs. EXACT 1:1 SQUARE master, wide staging; keep face, hand, weapon and readable tracking action within x24..488,y105..407 for 206:141 crop. Quiet tree canopy and path margins. Strong thumbnail. No frame, lettering, UI, anime, Disney-like cartoon, photorealism, pixel art.",
     "generatedPath": "/workspace/generated_images/exec-fd2c6e8f-4664-49d8-a40d-e233aa2e8b0c.png",
     "editableSourcePath": "game/cards/art/masters/gray_summon_61.png",
     "sourceNative": [
@@ -1568,12 +1568,12 @@
     ],
     "status": "generated",
     "batch": 9,
-    "reviewNote": "Reviewed 512-square source and top-aligned crop. Tracker’s face, hand reading the hoofprint, compact weapon and charging boar with a leaf/dust burst remain visible; lower legs and path are secondary."
+    "reviewNote": "Reviewed 512-square source and top-aligned crop. Tracker\u2019s face, hand reading the hoofprint, compact weapon and charging boar with a leaf/dust burst remain visible; lower legs and path are secondary."
   },
   {
     "cardId": "gray_summon_62",
     "name": "Falconer",
-    "prompt": "Paint an illustration for the Hexmancers card Falconer. Actual mechanics: a noble, loyal human falconer who sends a companion on a diagonal attack while escorting allies. Show an experienced falconer in a dark green cloak and leather glove atop a windy ridge, releasing a trained peregrine into a diagonal dive toward a rabbit in the grass; falconer’s focused face, outstretched gloved hand and the falcon’s full wingspan are all clear. Bird is the primary action, human is a strong supporting figure, with small companion travelers following behind. Painterly medieval fantasy collectible-card illustration, grounded anatomy, detailed feathers, leather and wool, late golden-hour light and atmospheric depth, consistent with supplied Hexmancers art direction. EXACT 1:1 SQUARE 512x512 master, horizontal staging; keep face, hand and entire falcon in its launch/dive action inside x24..488,y105..407 for 206:141 crop. Quiet sky and grass margins, readable thumbnail. No frame, text, UI, anime, Disney-like cartoon, photorealism, pixel art.",
+    "prompt": "Paint an illustration for the Hexmancers card Falconer. Actual mechanics: a noble, loyal human falconer who sends a companion on a diagonal attack while escorting allies. Show an experienced falconer in a dark green cloak and leather glove atop a windy ridge, releasing a trained peregrine into a diagonal dive toward a rabbit in the grass; falconer\u2019s focused face, outstretched gloved hand and the falcon\u2019s full wingspan are all clear. Bird is the primary action, human is a strong supporting figure, with small companion travelers following behind. Painterly medieval fantasy collectible-card illustration, grounded anatomy, detailed feathers, leather and wool, late golden-hour light and atmospheric depth, consistent with supplied Hexmancers art direction. EXACT 1:1 SQUARE 512x512 master, horizontal staging; keep face, hand and entire falcon in its launch/dive action inside x24..488,y105..407 for 206:141 crop. Quiet sky and grass margins, readable thumbnail. No frame, text, UI, anime, Disney-like cartoon, photorealism, pixel art.",
     "generatedPath": "/workspace/generated_images/exec-856b7956-9a3d-4368-b90a-d503dc728394.png",
     "editableSourcePath": "game/cards/art/masters/gray_summon_62.png",
     "sourceNative": [
@@ -1586,7 +1586,7 @@
     ],
     "status": "generated",
     "batch": 9,
-    "reviewNote": "Reviewed 512-square source and slightly upward 206:141 crop. Falconer’s face, launch hand, full falcon wingspan and diagonal dive remain clear; rabbit is an incidental lower-edge detail."
+    "reviewNote": "Reviewed 512-square source and slightly upward 206:141 crop. Falconer\u2019s face, launch hand, full falcon wingspan and diagonal dive remain clear; rabbit is an incidental lower-edge detail."
   },
   {
     "cardId": "gray_summon_63",
@@ -1604,7 +1604,7 @@
     ],
     "status": "generated",
     "batch": 9,
-    "reviewNote": "Reviewed full source and top-aligned crop. Falcon’s beak, body, talons, tail and both full wings remain visible; the hare is partly cropped at the bottom and is secondary."
+    "reviewNote": "Reviewed full source and top-aligned crop. Falcon\u2019s beak, body, talons, tail and both full wings remain visible; the hare is partly cropped at the bottom and is secondary."
   },
   {
     "cardId": "gray_summon_64",
@@ -1622,7 +1622,7 @@
     ],
     "status": "generated",
     "batch": 9,
-    "reviewNote": "Reviewed full source and top-aligned wide crop. Peregrine’s complete head, body, talons and spread wings remain visible; only snowy landscape is removed by the crop."
+    "reviewNote": "Reviewed full source and top-aligned wide crop. Peregrine\u2019s complete head, body, talons and spread wings remain visible; only snowy landscape is removed by the crop."
   },
   {
     "cardId": "gray_summon_65",
@@ -1676,12 +1676,12 @@
     ],
     "status": "generated",
     "batch": 9,
-    "reviewNote": "Reviewed full source and top-aligned 206:141 crop. Golden Eagle’s face, body, full spread wings, talons and diagonal glow remain visible; mountain scenery is expendable."
+    "reviewNote": "Reviewed full source and top-aligned 206:141 crop. Golden Eagle\u2019s face, body, full spread wings, talons and diagonal glow remain visible; mountain scenery is expendable."
   },
   {
     "cardId": "gray_summon_68",
     "name": "Messenger Pigeon",
-    "prompt": "Paint an illustration for the fantasy card Messenger Pigeon. A sturdy messenger pigeon, clearly a pigeon with iridescent slate feathers and a tiny rolled parchment message capsule secured to one leg, wings partly open as it banks in flight toward a distant medieval watchtower at dawn. Make bird and capsule prominent. Painterly medieval fantasy collectible-card artwork, grounded anatomy, rich nuanced feather/fur and stone materials, dramatic directional light, atmospheric depth, close narrative staging like premium fantasy card art. Square 1:1 canvas for editable 512×512 master. Keep the creature's identity-critical face, relevant limbs and whole silhouette within x24…488,y105…407, composed horizontally for an eventual 206:141 card crop; quiet expendable sky and ground may fill square top and bottom. Strong readable primary subject. No border, lettering, numbers, interface, anime, Disney cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for the fantasy card Messenger Pigeon. A sturdy messenger pigeon, clearly a pigeon with iridescent slate feathers and a tiny rolled parchment message capsule secured to one leg, wings partly open as it banks in flight toward a distant medieval watchtower at dawn. Make bird and capsule prominent. Painterly medieval fantasy collectible-card artwork, grounded anatomy, rich nuanced feather/fur and stone materials, dramatic directional light, atmospheric depth, close narrative staging like premium fantasy card art. Square 1:1 canvas for editable 512\u00d7512 master. Keep the creature's identity-critical face, relevant limbs and whole silhouette within x24\u2026488,y105\u2026407, composed horizontally for an eventual 206:141 card crop; quiet expendable sky and ground may fill square top and bottom. Strong readable primary subject. No border, lettering, numbers, interface, anime, Disney cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-c01706b1-87ba-4055-bce6-0e0d8d68044a.png",
     "editableSourcePath": "game/cards/art/masters/gray_summon_68.png",
     "sourceNative": [
@@ -1699,7 +1699,7 @@
   {
     "cardId": "gray_summon_69",
     "name": "Night Owl Scout",
-    "prompt": "Paint an illustration for the fantasy card Night Owl Scout. A sturdy night owl scout, a large dusky owl with alert golden eyes perched on a weathered branch, moonlit forest and distant medieval stone keep in deep blue night. Show recognizable head, eyes, wings and talons clearly, alert gaze toward the keep. Painterly medieval fantasy collectible-card artwork, grounded anatomy, rich nuanced feather/fur and stone materials, dramatic directional light, atmospheric depth, close narrative staging like premium fantasy card art. Square 1:1 canvas for editable 512×512 master. Keep the creature's identity-critical face, relevant limbs and whole silhouette within x24…488,y105…407, composed horizontally for an eventual 206:141 card crop; quiet expendable sky and ground may fill square top and bottom. Strong readable primary subject. No border, lettering, numbers, interface, anime, Disney cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for the fantasy card Night Owl Scout. A sturdy night owl scout, a large dusky owl with alert golden eyes perched on a weathered branch, moonlit forest and distant medieval stone keep in deep blue night. Show recognizable head, eyes, wings and talons clearly, alert gaze toward the keep. Painterly medieval fantasy collectible-card artwork, grounded anatomy, rich nuanced feather/fur and stone materials, dramatic directional light, atmospheric depth, close narrative staging like premium fantasy card art. Square 1:1 canvas for editable 512\u00d7512 master. Keep the creature's identity-critical face, relevant limbs and whole silhouette within x24\u2026488,y105\u2026407, composed horizontally for an eventual 206:141 card crop; quiet expendable sky and ground may fill square top and bottom. Strong readable primary subject. No border, lettering, numbers, interface, anime, Disney cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-88aabe9e-a6f5-4171-9a2b-9544f6daad5d.png",
     "editableSourcePath": "game/cards/art/masters/gray_summon_69.png",
     "sourceNative": [
@@ -1717,7 +1717,7 @@
   {
     "cardId": "gray_summon_70",
     "name": "Horned Owl",
-    "prompt": "Paint an illustration for the fantasy card Horned Owl. A grim horned owl with unmistakable feather ear tufts, broad wings poised on a high stone parapet, scanning a moonlit medieval battlefield below with piercing amber eyes. The owl dominates the scene and its whole head and wings are visible. Painterly medieval fantasy collectible-card artwork, grounded anatomy, rich nuanced feather/fur and stone materials, dramatic directional light, atmospheric depth, close narrative staging like premium fantasy card art. Square 1:1 canvas for editable 512×512 master. Keep the creature's identity-critical face, relevant limbs and whole silhouette within x24…488,y105…407, composed horizontally for an eventual 206:141 card crop; quiet expendable sky and ground may fill square top and bottom. Strong readable primary subject. No border, lettering, numbers, interface, anime, Disney cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for the fantasy card Horned Owl. A grim horned owl with unmistakable feather ear tufts, broad wings poised on a high stone parapet, scanning a moonlit medieval battlefield below with piercing amber eyes. The owl dominates the scene and its whole head and wings are visible. Painterly medieval fantasy collectible-card artwork, grounded anatomy, rich nuanced feather/fur and stone materials, dramatic directional light, atmospheric depth, close narrative staging like premium fantasy card art. Square 1:1 canvas for editable 512\u00d7512 master. Keep the creature's identity-critical face, relevant limbs and whole silhouette within x24\u2026488,y105\u2026407, composed horizontally for an eventual 206:141 card crop; quiet expendable sky and ground may fill square top and bottom. Strong readable primary subject. No border, lettering, numbers, interface, anime, Disney cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-e2627c8f-7ecf-4ab8-a0e2-12d3af8be803.png",
     "editableSourcePath": "game/cards/art/masters/gray_summon_70.png",
     "sourceNative": [
@@ -1735,7 +1735,7 @@
   {
     "cardId": "gray_summon_71",
     "name": "Quill Porcupine",
-    "prompt": "Paint an illustration for the fantasy card Quill Porcupine. A scrappy porcupine, unmistakably a porcupine with compact sturdy body and dramatic fan of long black-and-ivory quills, bristling on a rocky woodland path amid leaves and roots. Full head, paws and quill silhouette clearly visible. Painterly medieval fantasy collectible-card artwork, grounded anatomy, rich nuanced feather/fur and stone materials, dramatic directional light, atmospheric depth, close narrative staging like premium fantasy card art. Square 1:1 canvas for editable 512×512 master. Keep the creature's identity-critical face, relevant limbs and whole silhouette within x24…488,y105…407, composed horizontally for an eventual 206:141 card crop; quiet expendable sky and ground may fill square top and bottom. Strong readable primary subject. No border, lettering, numbers, interface, anime, Disney cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for the fantasy card Quill Porcupine. A scrappy porcupine, unmistakably a porcupine with compact sturdy body and dramatic fan of long black-and-ivory quills, bristling on a rocky woodland path amid leaves and roots. Full head, paws and quill silhouette clearly visible. Painterly medieval fantasy collectible-card artwork, grounded anatomy, rich nuanced feather/fur and stone materials, dramatic directional light, atmospheric depth, close narrative staging like premium fantasy card art. Square 1:1 canvas for editable 512\u00d7512 master. Keep the creature's identity-critical face, relevant limbs and whole silhouette within x24\u2026488,y105\u2026407, composed horizontally for an eventual 206:141 card crop; quiet expendable sky and ground may fill square top and bottom. Strong readable primary subject. No border, lettering, numbers, interface, anime, Disney cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-865d3d63-6434-4d56-9be2-c2ac66084cc6.png",
     "editableSourcePath": "game/cards/art/masters/gray_summon_71.png",
     "sourceNative": [
@@ -1753,7 +1753,7 @@
   {
     "cardId": "gray_summon_72",
     "name": "Spiny Hedgehog",
-    "prompt": "Painterly premium medieval fantasy collectible card illustration for Spiny Hedgehog: a compact recognizable hedgehog with a clear little face, feet and tousled brown fur, its short sharp dark spines visibly bristling, emerging from leaves on a dusk forest path. Square 1:1 canvas for 512 master. Keep full face, feet and spiny silhouette in x24…488,y105…407 for horizontal 206:141 crop. Grounded painterly fantasy materials, rich warm rim light, atmospheric forest depth. No lettering, frame, UI, anime, photorealism, Disney cartoon or pixel art.",
+    "prompt": "Painterly premium medieval fantasy collectible card illustration for Spiny Hedgehog: a compact recognizable hedgehog with a clear little face, feet and tousled brown fur, its short sharp dark spines visibly bristling, emerging from leaves on a dusk forest path. Square 1:1 canvas for 512 master. Keep full face, feet and spiny silhouette in x24\u2026488,y105\u2026407 for horizontal 206:141 crop. Grounded painterly fantasy materials, rich warm rim light, atmospheric forest depth. No lettering, frame, UI, anime, photorealism, Disney cartoon or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-51cd5b9e-1f91-46fe-8aae-11101922e14b.png",
     "editableSourcePath": "game/cards/art/masters/gray_summon_72.png",
     "sourceNative": [
@@ -1857,5 +1857,95 @@
       1254,
       1254
     ]
+  },
+  {
+    "cardId": "gray_summon_78",
+    "name": "Alpha Wolf",
+    "prompt": "Paint an illustration for the fantasy summon card Alpha Wolf. Mechanics cues: a sturdy dire wolf dashing from the front. A powerful dire gray wolf stands on a rocky rise at twilight, broad head and intelligent golden eyes prominent, thick charcoal-silver winter fur and a faint scar over the muzzle mark it as the pack alpha. Snowy fir forest and two tiny wolf silhouettes trail in the distance. Heroic steady front-facing stance, unmistakably wolf, close enough to read the face. Painterly medieval fantasy collectible-card illustration with nuanced fur, grounded animal anatomy, expressive readable eyes and muzzle, attractive directional light, textured brushwork and atmospheric depth. Make the named species unmistakable from its face and key traits; one dominant animal, with any secondary figure incidental. Explicit 1:1 square canvas for editable 512\u00d7512 master, wide horizontal staging. Keep complete face, eyes and defining ears/muzzle within x24\u2026488,y105\u2026407 for 206:141 crop; quiet expendable background above and below. No text, numbers, border, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ab2ab0ea-445b-4860-a2f9-7b6d4b3278b1.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_78.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. Alpha wolf\u2019s eyes, muzzle, and both ears are clear; its bold forward stance reads at card scale. Parent moved crop upward to retain full ear tips and lynx tufts; incidental lower legs may crop."
+  },
+  {
+    "cardId": "gray_summon_79",
+    "name": "Hunting Hound",
+    "prompt": "Paint an illustration for the fantasy summon card Hunting Hound. Mechanics cues: a sturdy hunting hound pouncing forward. A sturdy medieval hunting hound, unmistakably a long-muzzled scent hound with floppy ears, warm brown-and-black coat and alert amber eyes, lunges forward from a forest path with nose tracking a trail; its full face and shoulders dominate. A hunter is only a small distant silhouette, no modern tack. Painterly medieval fantasy collectible-card illustration with nuanced fur, grounded animal anatomy, expressive readable eyes and muzzle, attractive directional light, textured brushwork and atmospheric depth. Make the named species unmistakable from its face and key traits; one dominant animal, with any secondary figure incidental. Explicit 1:1 square canvas for editable 512\u00d7512 master, wide horizontal staging. Keep complete face, eyes and defining ears/muzzle within x24\u2026488,y105\u2026407 for 206:141 crop; quiet expendable background above and below. No text, numbers, border, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-3ed86f55-3955-4233-ab47-2931a32764fc.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_79.png",
+    "sourceNative": [
+      1470,
+      1070
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. Hound\u2019s full muzzle, floppy ears, and amber eyes dominate the crop; distant hunter remains incidental."
+  },
+  {
+    "cardId": "gray_summon_80",
+    "name": "Alley Cat",
+    "prompt": "Paint an illustration for the fantasy summon card Alley Cat. Mechanics cues: a scrappy alley cat dashing forward. A scrappy short-haired alley cat with a narrow angular face, upright pointed ears, torn ear tip and dusty charcoal tabby coat darts across wet cobblestones between medieval market buildings; intense green eyes and whiskers are prominent, its paws and face visible. A second cat is only a blurred distant background silhouette. Painterly medieval fantasy collectible-card illustration with nuanced fur, grounded animal anatomy, expressive readable eyes and muzzle, attractive directional light, textured brushwork and atmospheric depth. Make the named species unmistakable from its face and key traits; one dominant animal, with any secondary figure incidental. Explicit 1:1 square canvas for editable 512\u00d7512 master, wide horizontal staging. Keep complete face, eyes and defining ears/muzzle within x24\u2026488,y105\u2026407 for 206:141 crop; quiet expendable background above and below. No text, numbers, border, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-15d3a398-b011-41ab-9d22-965e3ca9a641.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_80.png",
+    "sourceNative": [
+      1374,
+      1145
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. Alley cat\u2019s angular tabby face and pointed ears stay in frame; face and green eyes read clearly at thumbnail size."
+  },
+  {
+    "cardId": "gray_summon_81",
+    "name": "Lynx",
+    "prompt": "Paint an illustration for the fantasy summon card Lynx. Mechanics cues: a sturdy wild lynx dashing with a chilling frost trait. A wild Eurasian lynx with unmistakable long black ear tufts, pale amber eyes, broad ruff and richly spotted tawny coat crouches among snow-dusted fir roots; its full face and distinctive tufted ears are centered and prominent, faint frost in its breath, cold woodland behind. Painterly medieval fantasy collectible-card illustration with nuanced fur, grounded animal anatomy, expressive readable eyes and muzzle, attractive directional light, textured brushwork and atmospheric depth. Make the named species unmistakable from its face and key traits; one dominant animal, with any secondary figure incidental. Explicit 1:1 square canvas for editable 512\u00d7512 master, wide horizontal staging. Keep complete face, eyes and defining ears/muzzle within x24\u2026488,y105\u2026407 for 206:141 crop; quiet expendable background above and below. No text, numbers, border, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9873ab4d-dac7-441e-a05f-66171831d719.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_81.png",
+    "sourceNative": [
+      1275,
+      1234
+    ],
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. Lynx face, spotted ruff, and both ear tufts\u2014including their tips\u2014remain visible; paws are incidental. Parent moved crop upward to retain full ear tips and lynx tufts; incidental lower legs may crop."
+  },
+  {
+    "cardId": "gray_summon_82",
+    "name": "Wildcat",
+    "prompt": "Paint an illustration for the medieval fantasy summon card Wildcat: a single lean feral wildcat, distinct from a lynx, with smooth rounded ears without tufts, russet-brown striped coat, long ringed tail and a fierce amber-eyed face. It stalks low across a frosted stone courtyard at blue dusk; a subtle cold breath and crystalline frost trail from its paws suggest chilling magic without obscuring the animal. Compose close and low, face and rounded ears prominent, full muzzle clear, no human.",
+    "generatedPath": "/workspace/generated_images/exec-53d2bd54-1fc5-4f6e-a69f-17f11d57c701.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_82.png",
+    "sourceNative": [
+      1374,
+      1145
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. Wildcat\u2019s rounded untufted ears, amber-eyed face, and striped russet coat distinguish it from the lynx; incidental tail and lower legs crop."
   }
 ]

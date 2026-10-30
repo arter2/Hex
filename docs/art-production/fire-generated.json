@@ -1846,5 +1846,95 @@
     "status": "generated",
     "batch": 10,
     "reviewNote": "Square source, centered crop and thumbnail inspected. Griffin face, hooked beak, chest and front talons remain clear; feather barrage and plague foes read as background action."
+  },
+  {
+    "cardId": "fire_machine_04",
+    "name": "Rocket Battery",
+    "prompt": "Square 1:1 512x512 painterly medieval fantasy collectible-card master for exact name \"Rocket Battery\". A compact medieval wooden rocket battery stands on a sturdy four-wheeled cart, with three clearly visible iron-tipped fire rockets seated side by side in a timber launch rack. A short goblin artillery engineer crouches beside it, checking a fuse; the complete rack, rocket tips and cart structure are centered and readable, with a quick zigzag trail from one departing rocket. Rich traditional tabletop fantasy illustration in the established Hexmancers style: expressive painterly brushwork, detailed believable wood, iron, scales, skin and leather, cinematic directional light and atmosphere. Keep the whole named object, important face and relevant hands within x24..488,y105..407 on the normalized square for the centered 206:141 crop; quiet scenery above and below. Main subject bold, readable at 96px thumbnail. No frame, text, symbols, numbers, UI, modern technology, anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-666438ec-4dac-419c-a481-e746913928a8.png",
+    "editableSourcePath": "game/cards/art/masters/fire_machine_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Square master, centered crop and thumbnail inspected. Complete rocket rack, all three seated rocket tips, goblin face/lighting hand, and cart remain clear; departing rocket trail is incidental."
+  },
+  {
+    "cardId": "hero_ignis",
+    "name": "Ignis, the Forge Wyrm",
+    "prompt": "Square 1:1 512x512 painterly medieval fantasy collectible-card master for exact name \"Ignis, the Forge Wyrm\". Ignis, a powerful heroic forge wyrm: a broad-shouldered bronze-scaled dragon humanoid smith with a distinctive horned dragon face, glowing amber eyes, soot-marked muzzle, heavy leather apron and iron bracers. He hurls a massive splash of dragonfire from one outstretched claw, while a subtle molten-forge aura shields his torso. Keep his complete face, casting hand, upper body and flame origin clear. Rich traditional tabletop fantasy illustration in the established Hexmancers style: expressive painterly brushwork, detailed believable wood, iron, scales, skin and leather, cinematic directional light and atmosphere. Keep the whole named object, important face and relevant hands within x24..488,y105..407 on the normalized square for the centered 206:141 crop; quiet scenery above and below. Main subject bold, readable at 96px thumbnail. No frame, text, symbols, numbers, UI, modern technology, anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-05673972-069a-41a2-a71a-4af8760de0ec.png",
+    "editableSourcePath": "game/cards/art/masters/hero_ignis.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Focal point shifted upward to include Ignis’s full horned face, casting claw and flame origin. Square master, reviewed adjusted wide crop and thumbnail; lower apron is expendable."
+  },
+  {
+    "cardId": "fire_strike_09",
+    "name": "Oni Club Swing",
+    "prompt": "Square 1:1 512x512 painterly medieval fantasy collectible-card master for exact name \"Oni Club Swing\". A fierce red-skinned oni warrior with a clear expressive face swings one enormous but compact iron-studded wooden kanabō club in a charged horizontal burst. Show the full club from pommel to head and both gripping hands, with the oni's face and shoulders; the strike releases a bright circular burst of force and sparks at impact. Keep the complete weapon inside the central action area. Rich traditional tabletop fantasy illustration in the established Hexmancers style: expressive painterly brushwork, detailed believable wood, iron, scales, skin and leather, cinematic directional light and atmosphere. Keep the whole named object, important face and relevant hands within x24..488,y105..407 on the normalized square for the centered 206:141 crop; quiet scenery above and below. Main subject bold, readable at 96px thumbnail. No frame, text, symbols, numbers, UI, modern technology, anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e699b91a-db22-4fc0-af4b-10e7cad90342.png",
+    "editableSourcePath": "game/cards/art/masters/fire_strike_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Focal point shifted upward to retain the oni’s full face and horns while keeping the complete club and both hands in the crop. Adjusted crop and thumbnail inspected; burst trails are incidental."
+  },
+  {
+    "cardId": "fire_lob_11",
+    "name": "Dragon Egg",
+    "prompt": "Square 1:1 512x512 painterly medieval fantasy collectible-card master for exact name \"Dragon Egg\". One complete dragon egg rests on a charred stone nest, a large oval shell with intricate ember-red scales and a glowing golden crack where a tiny claw presses from within. The entire egg is visible from rounded top to base, dominating the scene; small wisps of flame and sparks suggest the imminent burst, with no creature obscuring the shell. Rich traditional tabletop fantasy illustration in the established Hexmancers style: expressive painterly brushwork, detailed believable wood, iron, scales, skin and leather, cinematic directional light and atmosphere. Keep the whole named object, important face and relevant hands within x24..488,y105..407 on the normalized square for the centered 206:141 crop; quiet scenery above and below. Main subject bold, readable at 96px thumbnail. No frame, text, symbols, numbers, UI, modern technology, anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2f5717ef-018c-4cce-aa47-0ead33461748.png",
+    "editableSourcePath": "game/cards/art/masters/fire_lob_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.44
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Focal point raised slightly so the full egg top and base remain visible in the card crop. Square master, adjusted crop and thumbnail inspected; egg shell and hatchling claw are clear."
+  },
+  {
+    "cardId": "fire_ward_10",
+    "name": "Oni Mask",
+    "prompt": "Square 1:1 512x512 painterly medieval fantasy illustration for card \"Oni Mask\". One complete portable oni war mask dominates, held at chest height by a weathered samurai-like oni craftsperson whose eyes and upper face peer just above it. The whole hand-painted vermilion lacquer mask is visible from both horn tips to chin, centered and modest in size, with three short curved iron thorns projecting from its outer arc like a protective ward. Show both hands holding its side edges; clear carved fangs, ridges and aged gold fittings. Keep the full mask, thorns, hands and visible eyes safely inside x55..457,y130..385 of the normalized square, with open space around the mask; no clipping. Horizontal composition, mask is the primary face. Painterly tabletop high-fantasy card art, expressive brushwork, believable lacquer, leather and iron, warm firelight and cool shadow, style consistent with accepted Hexmancers fire art. No frame, text, symbols, numbers, UI, anime, cartoon, photorealism, pixel art or modern materials.",
+    "generatedPath": "/workspace/generated_images/exec-da6c9b82-b28d-4f9a-b771-9ebcfe2a5934.png",
+    "editableSourcePath": "game/cards/art/masters/fire_ward_10.png",
+    "sourceNative": [
+      1536,
+      1024
+    ],
+    "focalPoint": [
+      0.5,
+      0.44
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Focal point raised so complete mask, horn tips, chin and gripping hands remain in the actual wide crop. Square master, adjusted crop and thumbnail inspected; visible oni eyes sit above the mask."
   }
 ]

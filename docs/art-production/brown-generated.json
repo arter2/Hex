@@ -1843,5 +1843,95 @@
     "reviewNote": "Repainted after the original boomerang tips fell outside the square. The compact complete boomerang, hand and scout face are clear in square, wide crop and thumbnail.",
     "status": "generated",
     "batch": 10
+  },
+  {
+    "cardId": "brown_machine_33",
+    "name": "Sky-Folk Bomb Balloon",
+    "prompt": "A compact horizontal crop-safe illustration of a Sky-Folk Bomb Balloon. True 1:1 square canvas, but stage everything in a wide waist-high band across the middle. On the left, a small sky-folk pilot from waist up, with visible face and hand holding a guide rope. Immediately to the right, a compact patchwork silk gas balloon rig: a small round envelope no larger than the pilot's torso, placed at the same vertical level as the pilot's face rather than overhead; a tiny wicker basket beneath it and one whole iron bomb hanging just below the basket. Keep the complete silhouette from balloon crown through bomb within y125..395 of the 512 square, leaving generous quiet sky above and platform below. Pilot and balloon must be side by side, connected by a short visible tether. Painterly medieval fantasy collectible card illustration, warm sunset cloud light, believable stitched silk, wicker and rope. No giant balloon, no figure below it, no vertical stacking, no cropped envelope, no text, frame, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d9e33ab8-7fe4-4318-bd4b-087153520071.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Two earlier layouts put the balloon too high for the card crop and were discarded. Reviewed final square, default crop and thumbnail: entire compact balloon, basket, bomb, and pilot face/hand fit side by side.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/brown_machine_33.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "brown_instant_30",
+    "name": "Chakram",
+    "prompt": "Paint Chakram as a quick human strike: a nimble woman warrior in medieval leather turns at the waist and throws one complete polished steel chakram, its circular ring blade caught spinning across the scene toward an unseen foe. Keep her face and throwing hand clearly visible beside the ring, which is large enough to read as a bladed disc with an open center; show a short sweep of light and a slight recoil in her stance. Painterly medieval fantasy collectible-card art, believable anatomy and forged steel, warm directional light, nuanced brushwork and atmospheric depth. Explicit 1:1 square 512 master; keep full face, hand and entire circular chakram within x24..488 y105..407 for horizontal 206:141 crop. No text, frame, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-24fe26a9-1039-45b0-a4bb-17835d8c8f62.png",
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "reviewNote": "Reviewed square, upward-shifted crop (focal y .40), and thumbnail: thrower's face and hand and the complete ring blade remain visible; slight crop shift restores top of her hair.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/brown_instant_30.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "brown_machine_34",
+    "name": "Dwarven Thunder Mortar",
+    "prompt": "Paint Dwarven Thunder Mortar as a compact medieval siege engine: a short bronze-and-iron mortar on a sturdy low carriage, barrel angled upward as a heavy shell launches with a brief rolling thunder shockwave. A bearded dwarf artillery operator stands immediately beside it at the same height, face and both hands visible on the firing lever and stabilizing brace; keep operator and mortar side by side, not stacked vertically. Painterly medieval fantasy collectible-card art, tactile forged metal, wood, soot, warm forge and storm light. Explicit 1:1 square 512 master; keep entire compact mortar, dwarf's face and hands inside x24..488 y105..407 for 206:141 crop. No modern guns, text, frame, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2ab36a49-2d48-48de-b9c1-349cc272ee02.png",
+    "focalPoint": [
+      0.5,
+      0.56
+    ],
+    "reviewNote": "Reviewed square, crop shifted down to focal y .56, and thumbnail: dwarf's face/hands and nearly the full mortar carriage remain visible; high shell trajectory is expendable action.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/brown_machine_34.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "brown_instant_31",
+    "name": "Net Gun",
+    "prompt": "Paint Net Gun as a quick sea-folk strike: a weathered sailor in a medieval coastal coat fires a compact hand-held bronze net launcher across a wet harbor lane. A weighted rope net opens fully in flight and catches an unseen opponent's weapon arm, pushing it aside; the sailor's face and both hands remain clearly visible beside the compact launcher. Keep action horizontal and readable, with no huge machinery. Painterly medieval fantasy collectible-card art, believable rope mesh, bronze, salt-wet cloth and stone, cool sea light with warm lantern accents, textured brushwork. Explicit 1:1 square 512 master; keep sailor's face/hands, complete launcher and readable net within x24..488 y105..407 for 206:141 crop. No text, frame, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2d54c950-cd40-4dcb-8b65-d2567b81282f.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Reviewed square master, default crop and thumbnail: sailor's face/hands, compact launcher and extended weighted net remain legible in the wide arrangement.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/brown_instant_31.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "brown_machine_35",
+    "name": "Byzantine Fire Engine",
+    "prompt": "Paint Byzantine Fire Engine as a compact medieval alchemical siege cart: a small two-wheeled bronze-and-wood engine with a distinctive curved dragon-head siphon nozzle, copper reservoir and Greek-fire burner, clearly an ancient Byzantine-inspired apparatus rather than a modern vehicle. Beside it, at the same height, an alchemist-engineer with visible face and both hands braces the controls. A translucent pale-blue ward shimmers around cart and operator while a short stream of vaporous silver-blue frost curls from the nozzle between bursts, conveying shielding and chilling alongside the fire-engine identity. Keep the complete compact cart, wheels, nozzle, operator face and hands all visible in one horizontal composition. Painterly medieval fantasy collectible-card art, engraved bronze, oak, glass and leather, dramatic warm forge light with cool ward highlights, atmospheric depth. Explicit 1:1 square 512 master; fit all key parts inside x24..488 y105..407 for 206:141 crop. No modern machinery, text, frame, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7da24799-9682-41f7-8338-4ae59b5552fa.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Reviewed square master, default crop and thumbnail: operator face/hands, full Byzantine-style wheeled siphon engine, dragon-head nozzle, and protective ward remain visible; wheel tips are slightly cropped.",
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/brown_machine_35.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
   }
 ]

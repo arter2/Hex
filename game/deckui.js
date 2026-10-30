@@ -35,7 +35,7 @@ function dkRender(){ const d=dkDeck(), v=validateDeck(d.list,CARDS,save.owned);
   const counts={}; d.list.forEach(id=>counts[id]=(counts[id]||0)+1);
   const ids=Object.keys(counts).filter(id=>CARDS[id]).sort((a,b)=>byFamily(CARDS[a],CARDS[b]));
   for(const id of ids){ const c=CARDS[id], k=cardKit(c), el=document.createElement('button'); el.className='dktile kpal c-'+k.kc; el.style.setProperty('--c',COLORS[c.color].c); el.style.setProperty('--k-tex',k.tex);
-    el.innerHTML=`<span class="dkart">${cardArtThumb(c)}</span><span class="dkn"><span>${esc(c.name)}</span></span><span class="dkx">×${counts[id]}</span><span class="dkt">${COLORS[c.color].icon}${TYPES[c.type]?TYPES[c.type].icon:''}</span>`;
+    el.innerHTML=`<span class="dkart">${cardArtThumb(c)}</span><span class="dkn"><span>${esc(c.name)}</span></span><span class="dkfoot"><span class="dkt">${COLORS[c.color].icon}${TYPES[c.type]?TYPES[c.type].icon:''}</span><span class="dkx">×${counts[id]}</span></span>`;
     el.title=c.name+' ×'+counts[id]+' (tap to take one out)'; dkHold(el,c,()=>{ dkRemove(c); dkChange(); }); box.appendChild(el); }
   const cols=dkCols(), empty=ids.length%cols?cols-ids.length%cols:(ids.length?0:cols);
   for(let i=0;i<empty;i++){ const e=document.createElement('div'); e.className='dkempty'; box.appendChild(e); }
@@ -51,8 +51,9 @@ function dkRender(){ const d=dkDeck(), v=validateDeck(d.list,CARDS,save.owned);
   dkLibrary(); dkMultiBar(); }
 // card height follows the zoom's column width (aspect-ratio alone collapses inside a scrolling grid)
 const dkCols=()=>[5,4,3][DK.zoom];
-// a tile: 3px frame, the art at the art window's shape (512 x 410), a 3px gap, two lines of name, the frame again
-function dkRows(){ const box=$('#dkDeck'), cols=dkCols(), w=(box.clientWidth-20-(cols-1)*6)/cols, fs=[11,13,15][DK.zoom]; box.style.gridTemplateColumns='repeat('+cols+',1fr)'; if(w>0) box.style.gridAutoRows=Math.round(3+(w-6)*410/512+3+2*fs+4+3)+'px'; }
+// a tile: 3px frame, the art at the art window's shape (512 x 410), two lines of name, the icons and copies row,
+// 3px gaps between, the frame again
+function dkRows(){ const box=$('#dkDeck'), cols=dkCols(), w=(box.clientWidth-20-(cols-1)*6)/cols, fs=[11,13,15][DK.zoom]; box.style.gridTemplateColumns='repeat('+cols+',1fr)'; if(w>0) box.style.gridAutoRows=Math.round(3+(w-6)*410/512+3+2*fs+4+3+fs+4+3)+'px'; }
 addEventListener('resize',()=>{ if($('#scrDeck').classList.contains('on')) dkRows(); });
 function dkLibrary(){ const d=dkDeck(), f=DK.filt;
   const items=Object.keys(save.owned).map(id=>CARDS[id]).filter(c=>c&&save.owned[c.id]>0&&(DK.tab==='all'||c.color===DK.tab)&&passes(c,f)).sort(SORTS[DK.sort]);

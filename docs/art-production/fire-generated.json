@@ -1612,5 +1612,59 @@
     "status": "generated",
     "batch": 9,
     "reviewNote": "Square master, centered crop and thumbnail inspected. Goblin face and hands, glowing recovered brass treasure and its ghostly return echo read clearly."
+  },
+  {
+    "cardId": "fire_trap_06",
+    "name": "Goblin Snare",
+    "prompt": "Illustration for Goblin Snare: a crafty goblin traps a charging raider with a crude but strong rope snare set between scorched forest roots; the rope loops tight around the raider's torso and one arm, lifting him off balance as the goblin pulls the line. Show the knot, taut rope and goblin's focused face and hand. Painterly medieval fantasy card art, rough hemp, leather and ember-lit woodland, dramatic dusk. Exact 1:1 square 512x512; keep face, hands, full snare loop and captive inside x24..488,y105..407 for 206:141 crop. No text, frame, UI, anime, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e619a4a2-cc94-415c-90a7-17ed7889456c.png",
+    "editableSourcePath": "game/cards/art/masters/fire_trap_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Square master, centered crop and thumbnail inspected. Goblin face and pulling hands, taut rope snare and captured raider remain clear; captor face is visible."
+  },
+  {
+    "cardId": "fire_environment_07",
+    "name": "Ember Rain",
+    "prompt": "Illustration for Ember Rain: a magical cross-shaped shower of small glowing embers falls over a medieval battlefield, with one vertical and one horizontal stream visibly crossing above a cursed, darkened knot of enemies. Soldiers raise shields as sparks land and burn; smoky ash and a subtle violet curse haze surround them. Painterly medieval fantasy collectible-card art, clear ember trails and grounded armor, atmospheric smoky dusk. Exact 1:1 square 512x512; keep crossing point, major ember streams and central faces inside x24..488,y105..407 for 206:141 crop. No text/frame/UI/anime/photorealism/pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7739fdff-e777-4082-938e-c291cbee197a.png",
+    "editableSourcePath": "game/cards/art/masters/fire_environment_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Square master, centered crop and thumbnail inspected. Distinct crossing ember streams rain over clustered shielded soldiers; violet curse haze marks the center."
+  },
+  {
+    "cardId": "fire_summon_04",
+    "name": "Fire Drake",
+    "prompt": "Illustration for Fire Drake: a sturdy young fire drake, a compact two-legged winged dragon with a long tail and horned head, lands on scorched stone and blasts a nearby enemy with a sudden short cone of flame. Make the drake's face, wings, foreclaws and full torso clear, with ember-scarred scales and a fast, powerful stance. Painterly medieval fantasy collectible-card art, detailed scales and leathery wings, warm firelight and smoky dusk. Exact 1:1 square 512x512; keep drake face/body and flame origin inside x24..488,y105..407 for 206:141 crop. No text, frame, UI, anime, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-1ff769f7-447d-4866-b95f-ce6d976547a7.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Square master, centered crop and thumbnail inspected. Drake face, torso, foreclaws and flame origin remain prominent; wing and tail margins extend beyond the crop."
   }
 ]

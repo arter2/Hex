@@ -1303,5 +1303,185 @@
     "status": "generated",
     "batch": 9,
     "reviewNote": "Shifted focalPoint upward to y=0.45 so all five candle flames remain complete in the 206:141 crop; the candles, acolyte and altar read clearly at thumbnail size."
+  },
+  {
+    "cardId": "shadow_charge_06",
+    "name": "Plague Vials",
+    "prompt": "Paint an illustration for Plague Vials. Mechanics: A limited-use lobbed charge of plague vials bursts with poison splash. Show a leather-gloved alchemist hurls a cluster of three unmistakable glass plague vials; one strikes wet flagstones and bursts in a poisonous green-black splash, while the others remain visibly intact in the throwing hand, their stoppered glass bodies clear. Painterly medieval fantasy collectible-card art, expressive but grounded faces and hands, tactile glass, leather, old wood and candle wax, moody directional light, nuanced shadow and atmosphere. Explicit 1:1 SQUARE canvas, editable 512x512 master, horizontally staged. Keep each face, relevant hand and the full named object within x24..488,y105..407 for the 206:141 wide crop; quiet expendable room atmosphere above and below. No card frame, lettering, text, numbers, symbols, labels or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b4b6e89a-0d04-4ae3-adf1-1fdf87b6047b.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_charge_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.37
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Shifted focalPoint upward to y=0.37 to keep the alchemist's face complete in the 206:141 crop; both intact plague vials, throwing hand and shattered poisonous vial remain visible, and the 128px crop reads as a plague-vial lob."
+  },
+  {
+    "cardId": "shadow_utility_05",
+    "name": "Seance",
+    "prompt": "Paint an illustration for Seance. Mechanics: A seance recalls a lost ally or spell from beyond. Show a hooded medium and two companions seated at a round candlelit table, hands joined as a translucent armored ancestor rises from an antique portrait and reaches toward them; the summoning medium's face and complete joined hands stay the focus. Painterly medieval fantasy collectible-card art, expressive but grounded faces and hands, tactile glass, leather, old wood and candle wax, moody directional light, nuanced shadow and atmosphere. Explicit 1:1 SQUARE canvas, editable 512x512 master, horizontally staged. Keep each face, relevant hand and the full named object within x24..488,y105..407 for the 206:141 wide crop; quiet expendable room atmosphere above and below. No card frame, lettering, text, numbers, symbols, labels or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-eb256d61-b82b-442c-991d-124d30b32d09.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_utility_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Shifted focalPoint upward to y=0.38 so the summoned ancestor's face and the medium's face and joined hands all remain complete in the 206:141 crop; the 128px image clearly reads as a seance."
+  },
+  {
+    "cardId": "shadow_trap_05",
+    "name": "Plague Mine",
+    "prompt": "Paint an illustration for Plague Mine. Mechanics: A small blast trap of three charges poisons and knocks down nearby foes. Show a palm-sized iron plague mine half buried in a muddy medieval path, three tiny glass poison ampoules ring a central skull-shaped cap beneath a visible tripwire; a boot triggers it and a compact green toxic burst erupts across a very small patch. Painterly medieval fantasy collectible-card art with tactile iron, earth, cracked stone and flame, dramatic directional light, atmospheric depth and a clear strong focal subject. Explicit 1:1 SQUARE canvas for an editable 512x512 master, horizontally staged; preserve the complete named mine or rift and its identity-critical details inside x24..488,y105..407 for the 206:141 wide crop. Quiet expendable environment above and below. No frame, text, letters, numbers, symbols, labels or UI. No anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-03eff888-0bde-4206-965f-68fb58e0ee20.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_trap_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "The complete skull-capped plague mine and all three green-glass vials remain within the card crop; the boot and poisoned defenders are supporting action. The mine remains identifiable at 128px."
+  },
+  {
+    "cardId": "shadow_environment_06",
+    "name": "Hellfire Rift",
+    "prompt": "Paint an illustration for Hellfire Rift. Mechanics: A short-lived column-shaped field of burning hellfire. Show a tall narrow vertical fissure of hellfire tears open through a stone battlefield lane, a column of orange-red flame and black ash surging straight upward from a jagged glowing crack; small scorched stones and a distant silhouette establish scale. Painterly medieval fantasy collectible-card art with tactile iron, earth, cracked stone and flame, dramatic directional light, atmospheric depth and a clear strong focal subject. Explicit 1:1 SQUARE canvas for an editable 512x512 master, horizontally staged; preserve the complete named mine or rift and its identity-critical details inside x24..488,y105..407 for the 206:141 wide crop. Quiet expendable environment above and below. No frame, text, letters, numbers, symbols, labels or UI. No anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-1ab35222-a73f-4c65-8bdd-32f2f9c8a1b1.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_environment_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "The blazing rift remains complete through the wide crop, with the vertical column and jagged scorched lane immediately readable at 128px."
+  },
+  {
+    "cardId": "shadow_piece_03",
+    "name": "Candle of the Hanged Man",
+    "prompt": "Repaint Candle of the Hanged Man as a crop-safe collectible-card illustration. Mechanics: legendary shadow strike, a devastating localized cursed burst that briefly stuns. Center one complete antique black-bronze candlestick with thick ivory candle, visible flame, engraved upside-down hanged-man relief, full stem, and broad base. Crucial composition: the entire candle from flame tip through the bottom of its base must be SMALL and fit fully within the middle horizontal band y130..382 on a 512x512 square; limit the candle's height to about 245 pixels. Leave ample quiet dark crypt atmosphere above and below. A faint tiny violet hanging apparition in the smoke is secondary. Painterly medieval fantasy, rich tactile bronze, wax and soot, moody violet candlelight, atmospheric depth, attractive high-fantasy card art. Explicit 1:1 SQUARE canvas; compose for 206:141 wide crop and keep the whole named object, especially flame and base, within x24..488,y105..407. This is primarily an image of the named artifact, not a blast scene. No frame, text, lettering, numbers, symbols or UI. No anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-041bf67d-622e-4715-82dc-b3279d8998b2.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_piece_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.48
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Repainted with a shorter candlestick and shifted focalPoint to y=0.48; the complete flame, engraved candle, stem and base all fit in the 206:141 crop. The named artifact remains clear at 128px."
+  },
+  {
+    "cardId": "shadow_summon_05",
+    "name": "Bone Rattler",
+    "prompt": "Paint an illustration for Bone Rattler. Mechanics: Summons two frail quick skeletons that rise and drain life. Show two scrappy quick skeleton minions sprint out of a crypt doorway, one in sharp foreground with complete skull, rib cage and grasping hands, the second just behind; loose bones clatter at their feet as faint violet life-force animates them. Painterly medieval fantasy collectible-card painting, expressive dark atmosphere, rich tactile stone, bone, iron and weathered cloth, clear readable focal subject, dramatic directional lighting. Explicit 1:1 SQUARE canvas for editable 512x512 master, horizontal staging; keep complete faces, hands, door/rack/object identity and key action in x24..488,y105..407 for 206:141 crop, expendable atmosphere at top and bottom. No card frame, text, lettering, numbers, symbols, labels or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5357a899-299a-47df-a986-738830a50a42.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Both skeleton summons remain visible with complete skulls and useful hands in the square and wide crop; the foreground skeleton is strongly readable at 128px."
+  },
+  {
+    "cardId": "shadow_machine_03",
+    "name": "Torture Rack",
+    "prompt": "Paint an illustration for Torture Rack. Mechanics: A sturdy cursed rack barricades the lane and summons a helper while cursing nearby foes. Show a complete medieval iron restraint rack stands as a cursed barricade in a crypt passage, heavy timber frame, four iron rings and taut chains; violet curse wisps gather around the empty restraints and a small shadow-servant begins to emerge below, no person is bound. Painterly medieval fantasy collectible-card painting, expressive dark atmosphere, rich tactile stone, bone, iron and weathered cloth, clear readable focal subject, dramatic directional lighting. Explicit 1:1 SQUARE canvas for editable 512x512 master, horizontal staging; keep complete faces, hands, door/rack/object identity and key action in x24..488,y105..407 for 206:141 crop, expendable atmosphere at top and bottom. No card frame, text, lettering, numbers, symbols, labels or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b97042d7-3176-4e2c-8c8d-e6443b13b29a.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_machine_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "The complete iron-and-timber rack, restraints, and emerging shadow helper remain clear in the wide crop; the machine is readily identifiable at thumbnail size."
+  },
+  {
+    "cardId": "shadow_ace_03",
+    "name": "Death's Door",
+    "prompt": "Paint an illustration for Death's Door. Mechanics: A legendary nova strike curses all surrounding enemies. Show a monumental black stone crypt door stands ajar as an overwhelming circular nova of violet force bursts outward from its threshold; carved skull reliefs, door hinges and the complete threshold are prominent while a few small shadow figures recoil around it. Painterly medieval fantasy collectible-card painting, expressive dark atmosphere, rich tactile stone, bone, iron and weathered cloth, clear readable focal subject, dramatic directional lighting. Explicit 1:1 SQUARE canvas for editable 512x512 master, horizontal staging; keep complete faces, hands, door/rack/object identity and key action in x24..488,y105..407 for 206:141 crop, expendable atmosphere at top and bottom. No card frame, text, lettering, numbers, symbols, labels or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-37ab438d-0d11-4004-a963-c8ef91c82b8a.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_ace_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "The skull-carved twin doors, threshold and circular violet nova dominate the wide crop; the top of the distant gothic arch is atmospheric and cropped, while the named door remains unmistakable at thumbnail size."
+  },
+  {
+    "cardId": "shadow_aceup_03",
+    "name": "Fog of Dread",
+    "prompt": "Paint an illustration for Fog of Dread. Mechanics: A long-lived shadow effect clouds a whole row and confuses those within. Show a dense rolling bank of supernatural violet-black fog swallows a medieval road across the frame; two small armored travelers inside have become visibly disoriented, facing opposite directions, while the fog itself remains the overwhelming subject. Painterly medieval fantasy collectible-card painting, expressive dark atmosphere, rich tactile stone, bone, iron and weathered cloth, clear readable focal subject, dramatic directional lighting. Explicit 1:1 SQUARE canvas for editable 512x512 master, horizontal staging; keep complete faces, hands, door/rack/object identity and key action in x24..488,y105..407 for 206:141 crop, expendable atmosphere at top and bottom. No card frame, text, lettering, numbers, symbols, labels or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-58655f95-2475-4aed-8989-180932ce96d9.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_aceup_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "The supernatural fog fills the row-wide crop around two visibly disoriented travelers; both faces remain complete, and the fog's broad sweep reads at thumbnail size."
+  },
+  {
+    "cardId": "shadow_claim_03",
+    "name": "The Drowned Fen",
+    "prompt": "Paint an illustration for The Drowned Fen. Mechanics: a claimed deep-reach swamp, a permanent shadow land. Show an evocative drowned fen as the named landscape: a half-sunken medieval chapel and leaning grave markers trapped among black cypress roots, dead reeds and reflective dark water; a pale drowned moon and low violet mist mirror in the pool. No foreground adventurer; the eerie waterlogged land itself is the subject. Painterly medieval fantasy collectible-card painting, beautiful atmospheric depth, tactile wet stone, roots and reeds, restrained spectral light and rich dark values. Explicit 1:1 SQUARE canvas for editable 512x512 master, horizontally composed for a 206:141 card crop; keep the recognizable chapel and central waterline inside x24..488,y105..407; upper sky and lower water may be expendable atmosphere. No card frame, text, lettering, numbers, symbols, labels or UI. No anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4248b468-c772-4619-b815-78d93261e344.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_claim_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Shifted focalPoint upward to y=0.38 so the drowned chapel tower and moon remain complete in the wide crop, with the fen water and grave markers still clearly visible; the 128px thumbnail reads as a moonlit swamp."
   }
 ]

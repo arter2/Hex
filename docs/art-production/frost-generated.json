@@ -1610,5 +1610,59 @@
       1514,
       1039
     ]
+  },
+  {
+    "cardId": "frost_trap_07",
+    "name": "Kelp Tangle",
+    "prompt": "Paint Kelp Tangle: an underwater snare of thick dark green kelp whips around an armored diver's legs and torso among submerged rocks, drawing them toward a tangled seabed. The entangling kelp coils and trapped figure form one clear readable action; show the diver's face/arms and the long plant strands. Painterly medieval fantasy collectible-card illustration, believable armor, seaweed, bubbles, cold shafts of sea light and atmospheric depth. Explicit 1:1 SQUARE canvas for editable 512x512 master; keep diver's face, arms and core kelp snare within x24..488 y105..407, with loose tendrils as expendable background; horizontal 206:141 crop. No frame, words, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0e679568-739d-44c0-91ce-cb4441630e23.png",
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed square source and crop shifted upward to y=40 plus 128px thumb: trapped diver's face and reaching hand plus kelp snare remain visible; default crop clipped fingertips.",
+    "editableSourcePath": "game/cards/art/masters/frost_trap_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "frost_environment_07",
+    "name": "Flood Plain",
+    "prompt": "Paint Flood Plain: a broad lowland river plain under cold rain has become a long sheet of floodwater, channeling down a valley between raised ridges and carrying branches past scattered farm roofs. Show the long inundated plain from a slightly elevated viewpoint, a continuous column of water stretching toward distant mountains. Painterly medieval fantasy collectible-card art, believable water, muddy fields, stone cottages and misty weather, dramatic cool light and atmospheric depth. Explicit 1:1 SQUARE canvas for editable 512x512 master; keep the broad flood channel and distinctive plain inside x24..488 y105..407; quiet sky and near ground beyond; horizontal 206:141 staging. No frame, lettering, UI, anime, Disney-like cartoon, photorealism or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-448aa763-880b-4746-bbf4-429783066411.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed square master, default wide crop and 128px thumb: continuous water-covered lowland, ridgelines and scattered farm roofs remain legible.",
+    "editableSourcePath": "game/cards/art/masters/frost_environment_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "frost_piece_04",
+    "name": "Heart of the Leviathan",
+    "prompt": "Paint Heart of the Leviathan: the complete ancient heart of a colossal sea serpent, a recognizable dark teal anatomical heart with two rounded lobes and tapered lower point, preserved inside a cage of curved leviathan ribs and barnacled bronze in an underwater ruin. Luminous cyan veins pulse through the heart and send a circular shockwave through nearby sand and water; the heart itself is the dominant legendary artifact. Painterly medieval fantasy collectible-card illustration, believable organic texture, shell, bone, coral, misty shafts of blue light and atmospheric depth. Explicit 1:1 SQUARE canvas for editable 512x512 master; keep whole heart, rib cage silhouette and full central artifact inside x24..488 y105..407; quiet underwater scenery beyond, horizontal 206:141 crop. No generic crystal, no extra weapon, frame, letters, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-04827825-76c6-4021-bfa8-b1f7482d501c.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed square master, default wide crop and 128px thumb: complete luminous leviathan heart and rib-like artifact cage remain centered and readable in both views.",
+    "editableSourcePath": "game/cards/art/masters/frost_piece_04.png",
+    "sourceNative": [
+      1515,
+      1038
+    ]
   }
 ]

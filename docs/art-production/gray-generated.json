@@ -1659,5 +1659,23 @@
     "status": "generated",
     "batch": 9,
     "reviewNote": "Reviewed 512-square master and centered 206:141 crop. Full osprey silhouette, head, spread wings and extended talons stay visible above the fish/splash strike."
+  },
+  {
+    "cardId": "gray_summon_67",
+    "name": "Golden Eagle",
+    "prompt": "Paint an illustration for the Hexmancers card Golden Eagle. Actual mechanics: a noble front-line hawk with a diagonal overcharged attack. Show one majestic golden eagle flying in a shallow diagonal charge over a rocky mountain pass, rich burnished-gold nape feathers catching light, fierce dark eye and curved beak distinct, talons extended; a restrained amber-white corona along its flight path suggests overcharge without hiding the bird. Medium-distance composition, entire eagle about half the square width, wings fully spread but angled slightly forward and entirely inside the image with generous margin at each tip, tail and talons. Painterly medieval fantasy collectible-card illustration, accurate eagle anatomy and layered feathers, dramatic sunset light and atmospheric mountain depth, supplied Hexmancers reference style. EXACT 1:1 SQUARE 512x512 master, planned 206:141 crop; keep the complete bird and attack action inside x24..488,y105..407, quiet sky and rock margins. Bold thumbnail. No frame, letters, UI, anime, Disney-like cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0395db7d-160f-4986-b6da-c8cfd34da18b.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_67.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.25
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed full source and top-aligned 206:141 crop. Golden Eagle’s face, body, full spread wings, talons and diagonal glow remain visible; mountain scenery is expendable."
   }
 ]

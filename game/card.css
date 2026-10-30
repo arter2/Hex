@@ -66,11 +66,12 @@ html body .card.kit.ench,html body .card.kit.buff{outline:0; filter:none;}
 .card.kit .k-rules{font-size:var(--rfs,var(--fs-rules)); line-height:var(--rlh,var(--lh-rules)); color:var(--k-text); overflow:hidden; white-space:normal; overflow-wrap:normal; hyphens:none;}
 .card.kit .k-rules.scroll{overflow-y:auto; pointer-events:auto; overscroll-behavior:contain; scrollbar-width:none; touch-action:pan-y; -webkit-overflow-scrolling:touch;}
 .card.kit .k-rules.more{-webkit-mask-image:linear-gradient(#000 70%,transparent); mask-image:linear-gradient(#000 70%,transparent);}
-.card.kit .k-foot{display:grid; grid-template-columns:calc(22 * var(--u)) 1fr; grid-template-rows:1fr 1fr; column-gap:calc(4 * var(--u)); align-items:center;
+.card.kit .k-foot{display:flex; align-items:center; gap:calc(4 * var(--u));
   font-size:var(--fs-footer); line-height:var(--lh-footer);}
-.card.kit .k-foot .k-ic{grid-row:1/3; width:calc(22 * var(--u)); height:calc(22 * var(--u));}
-.card.kit .k-foot small{font-size:inherit; color:var(--k-ui); white-space:nowrap; align-self:end;}
-.card.kit .k-foot span{white-space:nowrap; align-self:start; font-size:var(--vfs,inherit);}
+.card.kit .k-f1{justify-content:flex-end;}   /* the right slot sits on the right edge; longer values grow inward */
+.card.kit .k-foot .k-ic{width:calc(16 * var(--u)); height:calc(16 * var(--u));}
+.card.kit .k-foot small{font-size:inherit; color:var(--k-ui); white-space:nowrap;}
+.card.kit .k-foot span{white-space:nowrap; font-size:var(--vfs,inherit);}
 .card.kit .k-count{display:flex; align-items:center; justify-content:center; color:#f4f0dc; font-family:'Hex Card',monospace; font-size:var(--cfs,var(--fs-count)); line-height:var(--lh-count); z-index:5;
   background:none; border:0; border-radius:0; box-shadow:none; transform:none; right:auto; bottom:auto; max-width:none; text-shadow:none; opacity:1; gap:0;}
 .card.kit .k-count b,.card.kit .k-count i{font:inherit; color:inherit; font-style:normal; transform:none; opacity:1;}
@@ -81,17 +82,16 @@ html body #dkColl .card.kit .dkfrac~.dkown{display:none;}
 html body #dkColl .card.kit.full .dkfrac{color:#ffd866;}
 
 /* a small card (a hand, a grid of many) keeps the same frame and its rules, shrunk with the card (kitFit picks the
-   size); it drops the footer's words (its icons stay) */
+   size); it drops the footer's labels (its icons and numbers stay) */
 @container (max-width:179px){
-  .card.kit .k-foot small,.card.kit .k-foot span{visibility:hidden;}
-  .card.kit .k-foot{grid-template-columns:1fr;} .card.kit .k-foot .k-ic{justify-self:center;}
+  .card.kit .k-foot small{display:none;} .card.kit .k-foot span{font-size:calc(20 * var(--u)); line-height:1;}
 }
 
 /* the combo / recipe tag over the art's foot (v175) */
 .card.kit>.k-tag{left:50%; top:49%; transform:translateX(-50%); z-index:5; font:800 10px/1.5 var(--font-b); font-style:normal; padding:0 7px; border-radius:99px; white-space:nowrap;}
 
 /* the big card (detail, deck builder's peek, a held card) */
-html body :is(#dtCard,#dkpCard,#peek) .card.kit{width:min(100%,300px,calc(66vh * 240 / 434)); max-width:none; margin-inline:auto;}
+html body :is(#dtCard,#dkpCard,#peek) .card.kit{width:min(100%,340px,calc(74vh * 240 / 434)); max-width:none; margin-inline:auto;}
 html body #peek .popcard>.card.kit{width:100%;}
 html body #peek .card.kit.big{border:0; padding:0; box-shadow:0 18px 40px rgba(0,0,0,.6);}
 /* a chosen card's ring sits just outside the frame (inside, the frame's layers would cover it) */

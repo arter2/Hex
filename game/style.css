@@ -594,7 +594,7 @@ body.tall.ui-tablet .camp{max-width:640px;}
 .peek .card.big .ty{font-size:17px;} .peek .card.big .ty .rl{font-size:15px;}
 .peek .card.big .tx{font-size:23px; line-height:1.05; color:#dfe6ec;}
 .peek .card.big .cp{font-size:28px;} .peek .card.big .cp small{font-size:18px;}
-.peekinfo{margin:0; padding:4px 10px; font:400 19px var(--font-t); color:#c9d1d8; background:#0b0c0e; border:2px solid #000; box-shadow:0 0 0 2px #383e45; max-width:min(84vw,340px); text-align:center;}
+.peekinfo{margin:0; padding:4px 10px; font:400 19px var(--font-t); color:#c9d1d8; background:#0b0c0e; border:2px solid #000; box-shadow:0 0 0 2px #383e45; width:var(--peek-w,auto); max-width:min(84vw,340px); box-sizing:border-box; text-align:center;}
 
 /* ---------- card faces: a texture for each family ----------
    Water and clouds for frost, dunes and embers for fire, cave rock for shadow, Greek marble for
@@ -1867,7 +1867,8 @@ body.h460.wide #scrBattle #hudBottom{overflow:visible;}
 /* a held card pops up and stays (v164): it takes taps (double-tap to close, scroll its rules), a ✕ floats on its corner,
    and a tap on the dim backdrop closes it */
 .peek.on{pointer-events:auto;}
-.peek .popcard{position:relative; width:min(300px,82vw,calc(66vh * 240 / 434));}
+.peek{--peek-w:min(340px,84vw,calc(74vh * 240 / 434));}   /* the card and the info line under it share one width */
+.peek .popcard{position:relative; width:var(--peek-w);}
 html body #peek .popcard>.card.kit{width:100%;}
 .peek .card.big,#dtCard .card,#dkpCard .card{touch-action:manipulation; user-select:none; -webkit-user-select:none;}
 html body .card.kit .k-rules{touch-action:pan-y; -webkit-overflow-scrolling:touch;}

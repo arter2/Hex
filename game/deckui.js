@@ -110,7 +110,8 @@ $('#dkBack').onclick=e=>{ const v=validateDeck(activeDeck().list,CARDS,save.owne
 /* The library drawer slides: drag its grip up for more library, down for more deck (portrait),
    or sideways on a wide screen, where the grip is a divider between the two columns.
    A tap on the grip switches between the whole screen for the library and the usual split.
-   The size is remembered in this browser. */
+   Hold the grip still for a moment, then slide sideways to make the library's cards bigger (right)
+   or smaller (left), as on the Spell screen's hand. Both are remembered in this browser. */
 (function(){ const grip=$('#dkGrip'), deck=$('#dkDeck'), scr=$('#scrDeck'), KEY='hexmancers-dkh';
   const def=()=>Math.round(innerHeight*.34);
   // the deck can shrink to nothing or grow until the drawer keeps just its bar and color tabs
@@ -125,6 +126,9 @@ $('#dkBack').onclick=e=>{ const v=validateDeck(activeDeck().list,CARDS,save.owne
   const setW=w=>{ w=Math.round(Math.max(wMin(),Math.min(wMax(),w))); scr.style.gridTemplateColumns=w+'px 1fr'; return w; };
   let savedW=null; try{ const v=localStorage.getItem(WKEY); if(v!==null&&+v>0) savedW=+v; }catch(e){}
   const keepW=w=>{ savedW=w; try{ localStorage.setItem(WKEY,String(w)); }catch(e){} };
+  // the library's card size: the grid's own --cardw (style.css), like the Spell screen's hand
+  const lib=$('#dkColl'), CKEY='hexmancers-dkcw', setC=w=>{ w=Math.round(Math.max(56,Math.min(240,w))); lib.style.setProperty('--cardw',w+'px'); return w; };
+  try{ const v=localStorage.getItem(CKEY); if(v!==null&&+v>0) setC(+v); }catch(e){}
   const fit=()=>{ if(!scr.classList.contains('on')) return; if(wide()){ if(savedW!=null) setW(savedW); } else { scr.style.gridTemplateColumns=''; if(saved!=null) set(saved); } };
   new MutationObserver(()=>requestAnimationFrame(fit)).observe(scr,{attributes:true,attributeFilter:['class']});
   addEventListener('resize',fit);
@@ -132,9 +136,16 @@ $('#dkBack').onclick=e=>{ const v=validateDeck(activeDeck().list,CARDS,save.owne
   const deckW=()=>$('#dkDeck').getBoundingClientRect().width+20;   // the deck column (its grid has 10px padding each side)
   let drag=null;
   grip.addEventListener('pointerdown',e=>{ e.preventDefault(); try{ grip.setPointerCapture(e.pointerId); }catch(_){} const [x,y]=P(e), w=wide();
-    drag={id:e.pointerId,w,p0:w?x:y,s0:w?parseFloat(getComputedStyle(scr).gridTemplateColumns)||deckW():deck.getBoundingClientRect().height,moved:false}; grip.classList.add('on'); scr.classList.add('gripping'); });
-  grip.addEventListener('pointermove',e=>{ if(!drag||e.pointerId!==drag.id) return; const [x,y]=P(e), d=(drag.w?x:y)-drag.p0; if(Math.abs(d)>4) drag.moved=true; if(drag.moved) drag.w?setW(drag.s0+d):set(drag.s0+d); });
-  const end=e=>{ if(!drag||e.pointerId!==drag.id) return; const d=drag; drag=null; grip.classList.remove('on'); scr.classList.remove('gripping');
+    const c=lib.querySelector('.card');
+    drag={id:e.pointerId,w,x0:x,y0:y,p0:w?x:y,s0:w?parseFloat(getComputedStyle(scr).gridTemplateColumns)||deckW():deck.getBoundingClientRect().height,c0:c?c.offsetWidth:104,t0:e.timeStamp,moved:false,size:false};
+    // held still first: the slide that follows sizes the cards instead of moving the grip
+    drag.timer=setTimeout(()=>{ if(drag&&!drag.moved){ drag.size=true; grip.classList.add('sizing'); if(navigator.vibrate) try{ navigator.vibrate(12); }catch(_){} } },320);
+    grip.classList.add('on'); scr.classList.add('gripping'); });
+  grip.addEventListener('pointermove',e=>{ if(!drag||e.pointerId!==drag.id) return; const [x,y]=P(e);
+    if(drag.size){ if(Math.abs(x-drag.x0)>4) drag.moved=true; setC(drag.c0+(x-drag.x0)*.6); return; }
+    const d=(drag.w?x:y)-drag.p0; if(Math.abs(d)>4){ drag.moved=true; clearTimeout(drag.timer); } if(drag.moved) drag.w?setW(drag.s0+d):set(drag.s0+d); });
+  const end=e=>{ if(!drag||e.pointerId!==drag.id) return; const d=drag; drag=null; clearTimeout(d.timer); grip.classList.remove('on','sizing'); scr.classList.remove('gripping');
+    if(d.size){ const v=parseFloat(lib.style.getPropertyValue('--cardw')); if(v) try{ localStorage.setItem(CKEY,String(v)); }catch(_){} return; }
     if(d.w){ if(d.moved) keepW(setW(parseFloat(getComputedStyle(scr).gridTemplateColumns)));
       else if(e.type==='pointerup') keepW(setW(d.s0>wDef()*.8?wMin():wDef()));   // a tap: a wide library, or the usual split
       return; }

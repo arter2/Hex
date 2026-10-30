@@ -4,10 +4,11 @@
 // Also packs the crops into per-colour atlas sheets (game/cards/art/atlas): a full-card sheet from the 512 crop and
 // a thumbnail sheet from the 256 crop, at most ATLAS_MAX cards each, so the game loads a few sheets instead of
 // hundreds of files. Each cell is drawn straight from the master like its crop, so the art is encoded only once.
+// Sheets are WebP 85 (chosen against 96 by eye on the compression proof; about 40% smaller). The loose crops stay 96/93.
 'use strict';
 const fs=require('fs'),path=require('path'),crypto=require('crypto');
 const ROOT=path.resolve(__dirname,'..');
-const ATLAS_MAX=30, ATLAS_COLS=6, ATLAS_PAD=4, ATLAS_SIZES={full:[512,96],thumb:[256,93]};
+const ATLAS_MAX=30, ATLAS_COLS=6, ATLAS_PAD=4, ATLAS_SIZES={full:[512,85],thumb:[256,85]};
 let canvas;
 try { canvas=require(process.env.CARD_ART_CANVAS_MODULE||'./card-art/node_modules/@napi-rs/canvas'); }
 catch (error) {

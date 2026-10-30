@@ -1216,5 +1216,455 @@
     "status": "generated",
     "batch": 8,
     "reviewNote": "Square master and centered wide crop inspected. Full anvil, horn, pedestal and molten impact column remain prominent; smiths are secondary and safely within the crop."
+  },
+  {
+    "cardId": "fire_strike_06",
+    "name": "Dragon's Breath",
+    "prompt": "Illustration for Dragon's Breath: a great red dragon exhales a wide fan-shaped blast of fiery breath over a line of medieval attackers, the hot blast recoiling against its chest scales, sparks and burning banners. Dragon's head, open mouth, eyes and flame-fan origin clearly visible; readable action. Painterly medieval fantasy collectible-card art, nuanced scales, smoke, directional firelight. 1:1 square 512x512 master, keep dragon face and breath origin within x24..488,y105..407 for the 206:141 crop; atmospheric margins. No text, frame, UI, anime, Disney, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-81192998-f075-4afe-a04c-db03fdab353c.png",
+    "editableSourcePath": "game/cards/art/masters/fire_strike_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Square master, centered wide crop and 128x88 thumbnail inspected. Dragon face and flame origin are clear, with the fan of breath directed across the battlefield; readable at thumbnail scale."
+  },
+  {
+    "cardId": "fire_lob_08",
+    "name": "Meteor Shard",
+    "prompt": "Illustration for Meteor Shard: one heavy jagged molten meteor shard, not a huge full meteor, falls in a steep arc into a stone courtyard, its glowing fissures trailing smoke; impact knocks a shielded soldier off balance. Keep the single shard dominant and distinct, with visible rocky mass and impact. Painterly medieval fantasy card art, stone debris, glowing magma, cool smoky depth. Exact 1:1 square 512x512 master; shard, trail, impact and soldier face inside x24..488,y105..407 for 206:141 crop. No frame/text/UI/anime/Disney/photorealism/pixel art. Repaint for a fully visible compact shard and keep complete object within safe crop; short trail and impact below.",
+    "generatedPath": "/workspace/generated_images/exec-2dc5fe2e-53f3-41ec-b537-4f0b6595ac87.png",
+    "editableSourcePath": "game/cards/art/masters/fire_lob_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Repainted after the initial meteor fragment clipped at the top. Square source and adjusted upward wide crop inspected: shard is intact with the soldier face and impact readable; 128x88 thumbnail remains identifiable."
+  },
+  {
+    "cardId": "fire_ward_07",
+    "name": "Mountain Pass Gate",
+    "prompt": "Illustration for Mountain Pass Gate: two massive timber-and-iron gates set across a narrow mountain pass, reinforced with thick stone side walls and burning braziers. A charging raiding party strikes the barrier; flames crawl along the gate and hold them back. The paired gates are the clear named subject, full door silhouette and top beam visible, with a small guard for scale. Painterly medieval fantasy, rugged timber, iron bands, cold mountain dusk against warm firelight. Exact square 512x512; keep complete gate, guard face/hands and impact within x24..488,y105..407 for 206:141 crop. No text, frame, UI, anime, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-3e9aa379-6e15-4f8f-961b-9e82c43b1a99.png",
+    "editableSourcePath": "game/cards/art/masters/fire_ward_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Square master, centered wide crop and thumbnail inspected. Full paired gate and burning impact remain readable; guards and guard face are secondary, with no critical gate part clipped."
+  },
+  {
+    "cardId": "fire_sentry_08",
+    "name": "Torch Post",
+    "prompt": "Illustration for Torch Post: a stout forged-iron torch post sentry stands beside a medieval stone lane, its iron basket flame alive, joints and riveted plate armor giving it a small guardian-like form. It lobs a compact burning fireball toward a distant goblin and leaves a short ember trail. The complete torch post and brazier head are the unmistakable subject. Painterly medieval fantasy card art, textured soot-black iron and stone, dramatic flame against cool dusk. Explicit 1:1 square 512x512; keep full post, flame basket and attack within x24..488,y105..407 for 206:141 crop. No text, frame, UI, anime, photorealism, pixel art. Recompose as a shorter post with complete basket and base visible in the horizontal crop.",
+    "generatedPath": "/workspace/generated_images/exec-4c70dbf6-658d-42c7-a66a-23a7899fbeaa.png",
+    "editableSourcePath": "game/cards/art/masters/fire_sentry_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Repainted after the first version clipped the brazier basket in the wide crop. Reviewed square source, centered wide crop and thumbnail; full iron post, burning basket and base are visible."
+  },
+  {
+    "cardId": "fire_boon_06",
+    "name": "Fox's Quickness",
+    "prompt": "Illustration for Fox's Quickness: a swift red fox spirit bounds through a stone forest trail, its sleek body and alert face clear, three emberlike afterimages tracing its sudden accelerated leap. A human scout nearby gains speed, running with the fox in a gust of sparks. Painterly medieval fantasy collectible-card art, believable fur, leather and cloth, directional golden firelight against cool dusk. Exact 1:1 square 512x512 master; keep fox face and entire body plus runner's face inside x24..488,y105..407 for a 206:141 crop. Quiet atmospheric margins above/below. No text, frame, UI, anime, Disney, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d4afcbaa-b18a-4f2b-b610-a72945dfc22a.png",
+    "editableSourcePath": "game/cards/art/masters/fire_boon_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Square master, centered wide crop and thumbnail inspected. Fox face and full body, runner face and warm speed afterimages remain legible in the crop."
+  },
+  {
+    "cardId": "fire_charge_06",
+    "name": "Coal Sack",
+    "prompt": "Illustration for Coal Sack: a soot-smudged dwarf miner hurls a small bulging burlap sack of glowing coals across a mine lane; the sack tears midair and a few sharp incandescent coal chunks scatter and burst on impact, knocking a goblin sideways. Keep the complete clearly tied sack prominent, with the miner's face and throwing hand visible. Painterly medieval fantasy card art, textured burlap, coal and iron, warm forge light, cool smoky depth. Exact 1:1 square 512x512 master; keep sack, face, hand and impact inside x24..488,y105..407 for 206:141 crop. No text/frame/UI/anime/Disney/photorealism/pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7d62a154-1a11-449d-a0fa-56c69c6ebf68.png",
+    "editableSourcePath": "game/cards/art/masters/fire_charge_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Square master, centered wide crop and thumbnail inspected. Complete tied sack, throwing miner and recoiling goblin are recognizable; scattered coals stay secondary."
+  },
+  {
+    "cardId": "fire_utility_07",
+    "name": "Coyote's Trickery",
+    "prompt": "Illustration for Coyote's Trickery: a clever lean coyote spirit in a leather scout's mantle casts a feint, leaving a glowing ember decoy while a nearby ally is magically recalled through a curling ring of warm sparks to safety behind the coyote. Show the coyote's alert face and lifted paw, the returning ally, and the clear backward motion. Painterly medieval fantasy collectible-card art, believable tawny fur, leather, dramatic firelit dusk. Exact 1:1 square 512x512; keep coyote face/paw and ally within x24..488,y105..407 for horizontal 206:141 crop. No lettering, frame, UI, anime, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-fb554d2a-54fd-43d0-a079-1be199550418.png",
+    "editableSourcePath": "game/cards/art/masters/fire_utility_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Square master, centered wide crop and thumbnail inspected. Coyote face and raised paw, recalled ally within the spark ring and false fiery image are clear."
+  },
+  {
+    "cardId": "fire_trap_05",
+    "name": "Cave-In",
+    "prompt": "Illustration for Cave-In: an old mine tunnel suddenly collapses over one unlucky goblin raider; a heavy slab of ceiling and several boulders crash down in a forceful burst, dust and a flash of trapped magma. The falling rock mass, broken timber braces and goblin's startled face are clear; the trap is a single decisive cave-in, not a volcano. Painterly medieval fantasy card art, detailed stone and timber, warm ember light in deep dust. Exact 1:1 square 512x512 master; keep collapsing roof, main boulder and face inside x24..488,y105..407 for 206:141 crop. No text, frame, UI, anime, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d3a80928-dfec-44e1-a2b6-c735b1c0d1c0.png",
+    "editableSourcePath": "game/cards/art/masters/fire_trap_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Square master, centered wide crop and thumbnail inspected. Collapsing rock and broken braces fill the tunnel while the trapped goblin face and reaching hand remain visible."
+  },
+  {
+    "cardId": "fire_environment_06",
+    "name": "Fire Cyclone",
+    "prompt": "Illustration for Fire Cyclone: a long horizontal row of medieval soldiers and shields is swept by a rotating cyclone of flame that travels across the battlefield. The twisting fire vortex has a distinct swirling funnel and windswept sparks, soldiers duck and recoil. Painterly medieval fantasy collectible-card art, detailed armor and smoke, strong orange flame against cool stormy dusk. 1:1 square 512x512 master with horizontal staging; keep the cyclone's central body, faces and action inside x24..488,y105..407 for 206:141 crop. No text, frame, UI, anime, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4baf53df-453b-4245-baae-f759275936ee.png",
+    "editableSourcePath": "game/cards/art/masters/fire_environment_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Square master, centered wide crop and thumbnail inspected. A clear sweeping fire vortex crosses the row of soldiers; faces and shielded figures remain discernible beneath the bright flame."
+  },
+  {
+    "cardId": "fire_piece_05",
+    "name": "Tail of the Nine-Tailed Fox",
+    "prompt": "Illustration for Tail of the Nine-Tailed Fox: a legendary single plume tail of a nine-tailed fox, a luminous russet-and-gold fox tail relic with a tufted tip and fine individual fur, flies alone like a quick arcing projectile through a medieval battlefield. It strikes a shield and bursts into an ember shockwave that knocks a soldier backward. Make the complete unmistakable fox tail the dominant named object, fully outlined and not attached to a fox body; no gore. Painterly medieval fantasy collectible-card art, rich fur detail and dramatic ember light. Exact square 512x512 master; keep entire tail, impact and soldier face inside x24..488,y105..407 for 206:141 crop. No text, frame, UI, anime, photorealism, pixel art. Repaint to center the entire tail with clear space around the tuft.",
+    "generatedPath": "/workspace/generated_images/exec-416922f6-d57c-4018-bd78-94d949a098d2.png",
+    "editableSourcePath": "game/cards/art/masters/fire_piece_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Repainted after the first tail tuft clipped at the left edge. Reviewed square source, upward-adjusted wide crop and thumbnail; full tufted fox tail, impact and soldier face remain legible."
+  },
+  {
+    "cardId": "fire_summon_03",
+    "name": "Wyvern",
+    "prompt": "Illustration for Wyvern: a powerful red-brown wyvern with two broad leathery wings and two hind legs, long spined tail and hooked beak-like muzzle, banks low over a mountain battlefield and unleashes a cone of ember breath that rallies scattered allies below. Keep the wyvern's complete head, wings, foreclaws and tail readable; grounded creature anatomy. Painterly medieval fantasy card art, textured scales and membranes, dramatic golden firelight, atmospheric depth. Exact 1:1 square 512x512; keep wyvern face and central body within x24..488,y105..407 for the horizontal crop. No text/frame/UI/anime/photorealism/pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-92ad854b-45c7-4576-980f-1f7d69fc70f3.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Square master, centered wide crop and thumbnail inspected. Wyvern face and body remain clear as it breathes fire over rallied soldiers; wing margins extend beyond the card crop."
+  },
+  {
+    "cardId": "fire_machine_03",
+    "name": "Goblin Gatling",
+    "prompt": "Illustration for Goblin Gatling: a grinning goblin mechanic braces a handmade medieval clockwork gatling engine on a stout tripod, a rotating cluster of short iron barrels firing a steady stream of bright bolts toward an enemy. The goblin face, hands, and unmistakable multi-barrel machine dominate. Brass gears, rivets, wood and iron, no modern firearm styling. Painterly fantasy collectible-card art, dramatic forge light and smoky depth. Exact 1:1 square 512x512; keep full barrel cluster, goblin face and hands inside x24..488,y105..407 for 206:141 crop. No text, frame, UI, anime, photorealism, pixel art. Repainted square composition sized to retain full figure, machine and tripod feet in the crop.",
+    "generatedPath": "/workspace/generated_images/exec-d81a5ba6-979c-45a8-95f7-29d50f47c1b3.png",
+    "editableSourcePath": "game/cards/art/masters/fire_machine_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Repainted after first output returned landscape and clipped the goblin and machine under square normalization. Reviewed square source, centered crop and thumbnail; full goblin head/hand, barrel cluster and tripod feet are visible."
+  },
+  {
+    "cardId": "fire_ace_03",
+    "name": "Heart of the Volcano",
+    "prompt": "Illustration for Heart of the Volcano: a massive glowing molten heart-shaped core suspended at the center of a volcanic crater, its lava veins pulsing before a catastrophic nova eruption; concentric rings of fire bloom outward while dark rock fragments are hurled away. The heart-shaped molten core must be unmistakable and central, with volcano rim and eruption around it. Painterly medieval fantasy collectible-card art, detailed basalt and molten rock, radiant directional glow and smoky depth. Exact 1:1 square 512x512 master; keep the full core and primary explosion within x24..488,y105..407 for 206:141 crop. No text, frame, UI, anime, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-1b3560c2-03e4-40ec-8b71-3c1f61d03591.png",
+    "editableSourcePath": "game/cards/art/masters/fire_ace_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Square master, centered wide crop and thumbnail inspected. Central molten heart shape and expanding nova read clearly, with a bright but distinct silhouette."
+  },
+  {
+    "cardId": "fire_aceup_03",
+    "name": "Cyclone Wrap",
+    "prompt": "Illustration for Cyclone Wrap: a battle mage wears a long crimson-gold cloth wrap winding securely around the torso and forearms; the fabric spirals outward into a tight ring of wind and embers as the mage prepares a much larger nova of flame. Make the named wrap a complete clearly visible garment with woven pattern and trailing ends, and keep the mage's face and hands visible. Painterly medieval fantasy card art, beautiful cloth movement, controlled flame, dramatic light, atmospheric depth. Exact 1:1 square 512x512; wrap, face and hands remain within x24..488,y105..407 for 206:141 crop. No text/frame/UI/anime/photorealism/pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-594c164b-192b-4c92-a253-dc3598c83e0f.png",
+    "editableSourcePath": "game/cards/art/masters/fire_aceup_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Square master and adjusted wide crop inspected, plus thumbnail. Crop shifted upward to keep mage face and both hands clear; patterned wrap remains prominent around torso and trails through lower frame."
+  },
+  {
+    "cardId": "hero_cinder",
+    "name": "Cinder, the Ash Dancer",
+    "prompt": "Illustration for Cinder, the Ash Dancer: a fierce female fire heroine with soot-darkened skin and flowing copper hair dances through a battlefield, pivoting with a pair of slender ember-lit blades as four distinct sparks shoot toward scattered enemies. A warm haste aura quickens nearby allies into motion. Her expressive face, hands, full dancing pose and two blades are prominent. Painterly medieval fantasy collectible-card art, believable leather and cloth, ash motes, elegant movement, warm directional firelight and atmospheric depth. Exact 1:1 square 512x512; keep face, hands and blade action inside x24..488,y105..407 for 206:141 crop. No text, frame, UI, anime, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f06984ee-d0e2-4115-b8e3-81a875bd5961.png",
+    "editableSourcePath": "game/cards/art/masters/hero_cinder.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Square master, centered wide crop and thumbnail inspected. Cinder's face and both blade-holding hands are clear as she dances amid four ember strikes and the rushing ally aura."
+  },
+  {
+    "cardId": "fire_strike_07",
+    "name": "Wyvern Spit",
+    "prompt": "Illustration for Wyvern Spit: a fierce wyvern snaps its jaws and spits a single compact glob of molten fire that ricochets from a knight's shield toward another enemy. The full wyvern head, glowing mouth and bright rebounding spit path are clear, with two distinct impact points. Painterly medieval fantasy collectible-card art, textured scales and armor, dramatic ember light, atmospheric depth. Exact 1:1 square 512x512; keep wyvern face and spit action within x24..488,y105..407 for 206:141 crop. No text, frame, UI, anime, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7d92d4b8-23b3-4512-96b1-65b7beb83ae8.png",
+    "editableSourcePath": "game/cards/art/masters/fire_strike_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Square master, centered crop and thumbnail inspected. Wyvern face, mouth, molten spit, shield ricochet and second impact remain legible."
+  },
+  {
+    "cardId": "fire_lob_09",
+    "name": "Firework Shell",
+    "prompt": "Illustration for Firework Shell: a single ornate iron-and-brass firework shell arcs over a medieval village battlefield and bursts into a bold cross-shaped spray of red-orange sparks above confused soldiers. The shell itself is visible as a small round iron casing with short fuse before bursting; cross-shaped flare and startled faces are clear. Painterly medieval fantasy card art, believable craft materials, colorful firelight and smoky dusk. Exact 1:1 square 512x512 master; keep shell, burst center and faces within x24..488,y105..407 for 206:141 crop. No text, frame, UI, anime, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-48f0dfb7-182e-408c-bd68-093c298d5328.png",
+    "editableSourcePath": "game/cards/art/masters/fire_lob_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Square source, upward-adjusted crop and thumbnail inspected. The full shell and centered cross-shaped firework fit the crop; soldier faces remain clear below."
+  },
+  {
+    "cardId": "fire_ward_08",
+    "name": "Samurai Armor",
+    "prompt": "Illustration for Samurai Armor: a steadfast samurai warrior in complete layered red-and-black lacquered armor raises a burnished iron shield to form a protective barrier amid falling sparks. Show the entire kabuto helmet, shoulder plates, cuirass and shield clearly; dignified face visible beneath the brow. Painterly medieval Japanese fantasy card art, detailed lacquer, silk and iron, warm firelight against smoky dusk. Exact 1:1 square 512x512; keep helmet, face, shield and main armor inside x24..488,y105..407 for 206:141 crop. No text, frame, UI, anime, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-80941437-30fd-44a2-8897-c5ea547484b0.png",
+    "editableSourcePath": "game/cards/art/masters/fire_ward_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed square source, upward-adjusted crop and thumbnail. Full kabuto, face, shield and lacquered torso armor remain visible; lower body is secondary."
+  },
+  {
+    "cardId": "fire_sentry_09",
+    "name": "Fire Lookout Tower",
+    "prompt": "Illustration for Fire Lookout Tower: a compact, squat two-level timber watchtower, full pointed roof, gallery, stout supports and anchored stone base visible. A clear archer with face and bow stands in the upper gallery aiming a glowing arrow. Scorched ember-lit wood and iron braces, mountain dusk, painterly medieval fantasy card art. Exact 1:1 square 512x512; compose complete tower inside x24..488,y105..407 for centered 206:141 crop, with sky/ground margins. No text, frame, UI.",
+    "generatedPath": "/workspace/generated_images/exec-f23fabf0-15a4-4745-b176-c20cd37f70de.png",
+    "editableSourcePath": "game/cards/art/masters/fire_sentry_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.49
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Recomposed as a compact tower after initial versions clipped its roof/base. Reviewed square, slight crop adjustment and thumbnail: roof tip, full tower base and upper-gallery archer remain in frame."
+  },
+  {
+    "cardId": "fire_boon_07",
+    "name": "Dragon Heart",
+    "prompt": "Illustration for Dragon Heart: a scarred fire knight cradles a large glowing ruby dragon heart, its molten scales and branching veins pulsing with power; a second translucent echo of the heart blooms behind it, shedding embers that strengthen nearby allies. The complete anatomical fantasy dragon heart relic is the unmistakable focal object, held carefully in two hands, not replaced by a generic flame. Painterly medieval fantasy collectible-card art, rich scale and metal detail, warm directional light and smoky depth. Exact 1:1 square 512x512; keep knight's face, both hands and full heart inside x24..488,y105..407 for 206:141 crop. No text, frame, UI, anime, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8b9b9f13-cb0a-4b5d-9825-c8c3f08cc46e.png",
+    "editableSourcePath": "game/cards/art/masters/fire_boon_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Square master, centered crop and thumbnail inspected. Knight face, both hands, complete scaled dragon heart and its ember echo remain legible."
+  },
+  {
+    "cardId": "fire_charge_07",
+    "name": "Goblin Junk Sack",
+    "prompt": "Illustration for Goblin Junk Sack: a small goblin scavenger hurls a bulky tied burlap sack stuffed with scrap metal, broken clockwork and glowing embers; the sack splashes open on impact, flinging several rusty fragments that stun a bandit. Make the sack the large, recognizable named object, showing rough weave, knots and bulging silhouette. Painterly medieval fantasy card art, hand-made iron junk, dramatic orange light and smoky depth. Exact 1:1 square 512x512 master; keep full sack, goblin face and throwing hand inside x24..488,y105..407 for 206:141 crop. No text, frame, UI, anime, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-94c7dbd0-fe46-4def-8e4f-15df22bf7437.png",
+    "editableSourcePath": "game/cards/art/masters/fire_charge_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Square master, centered crop and thumbnail inspected. Full tied sack, goblin face/throwing hand, impact and recoiling bandit are visible."
+  },
+  {
+    "cardId": "fire_utility_08",
+    "name": "Goblin Scavenge",
+    "prompt": "Illustration for Goblin Scavenge: a wiry goblin scavenger in a patched hood discovers a fallen enchanted brass buckle among battlefield debris and tugs it through a swirling ember recall ring into his open sack; a faint afterimage marks the item's return. The goblin's face, hand, recovered treasure and clear pulling action are prominent. Painterly medieval fantasy collectible-card art, detailed patched cloth, brass and stone, warm light and smoky depth. Exact 1:1 square 512x512; keep face, hand and retrieved object inside x24..488,y105..407 for horizontal 206:141 crop. No lettering, frame, UI, anime, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f103d1f0-80b5-4382-9400-24f95187a111.png",
+    "editableSourcePath": "game/cards/art/masters/fire_utility_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Square master, centered crop and thumbnail inspected. Goblin face and hands, glowing recovered brass treasure and its ghostly return echo read clearly."
+  },
+  {
+    "cardId": "fire_trap_06",
+    "name": "Goblin Snare",
+    "prompt": "Illustration for Goblin Snare: a crafty goblin traps a charging raider with a crude but strong rope snare set between scorched forest roots; the rope loops tight around the raider's torso and one arm, lifting him off balance as the goblin pulls the line. Show the knot, taut rope and goblin's focused face and hand. Painterly medieval fantasy card art, rough hemp, leather and ember-lit woodland, dramatic dusk. Exact 1:1 square 512x512; keep face, hands, full snare loop and captive inside x24..488,y105..407 for 206:141 crop. No text, frame, UI, anime, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e619a4a2-cc94-415c-90a7-17ed7889456c.png",
+    "editableSourcePath": "game/cards/art/masters/fire_trap_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Square master, centered crop and thumbnail inspected. Goblin face and pulling hands, taut rope snare and captured raider remain clear; captor face is visible."
+  },
+  {
+    "cardId": "fire_environment_07",
+    "name": "Ember Rain",
+    "prompt": "Illustration for Ember Rain: a magical cross-shaped shower of small glowing embers falls over a medieval battlefield, with one vertical and one horizontal stream visibly crossing above a cursed, darkened knot of enemies. Soldiers raise shields as sparks land and burn; smoky ash and a subtle violet curse haze surround them. Painterly medieval fantasy collectible-card art, clear ember trails and grounded armor, atmospheric smoky dusk. Exact 1:1 square 512x512; keep crossing point, major ember streams and central faces inside x24..488,y105..407 for 206:141 crop. No text/frame/UI/anime/photorealism/pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7739fdff-e777-4082-938e-c291cbee197a.png",
+    "editableSourcePath": "game/cards/art/masters/fire_environment_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Square master, centered crop and thumbnail inspected. Distinct crossing ember streams rain over clustered shielded soldiers; violet curse haze marks the center."
+  },
+  {
+    "cardId": "fire_summon_04",
+    "name": "Fire Drake",
+    "prompt": "Illustration for Fire Drake: a sturdy young fire drake, a compact two-legged winged dragon with a long tail and horned head, lands on scorched stone and blasts a nearby enemy with a sudden short cone of flame. Make the drake's face, wings, foreclaws and full torso clear, with ember-scarred scales and a fast, powerful stance. Painterly medieval fantasy collectible-card art, detailed scales and leathery wings, warm firelight and smoky dusk. Exact 1:1 square 512x512; keep drake face/body and flame origin inside x24..488,y105..407 for 206:141 crop. No text, frame, UI, anime, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-1ff769f7-447d-4866-b95f-ce6d976547a7.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Square master, centered crop and thumbnail inspected. Drake face, torso, foreclaws and flame origin remain prominent; wing and tail margins extend beyond the crop."
   }
 ]

@@ -1214,5 +1214,455 @@
       1254,
       1254
     ]
+  },
+  {
+    "cardId": "frost_strike_06",
+    "name": "Undertow",
+    "prompt": "Paint Undertow: a focused frost caster on an icy shore pulls a charging armored warrior sideways and down into a powerful twin current of dark blue-green water. Make the twisting twin streams and the unmistakable dragging motion the focal action, with the caster's face and outstretched hand readable and the foe caught at the center. Painterly medieval fantasy collectible-card art, believable wet armor, cloth, ice and spray, cold dramatic directional light, atmospheric depth, consistent with supplied Frost references. Explicit 1:1 SQUARE canvas for editable 512x512 master; keep face, casting hand and main pulled-together action in x24..488 y105..407; quiet sky/ground at top and bottom; horizontal staging for 206:141 crop. No frame, lettering, numbers, UI, anime, Disney-like cartoon, photorealism, modern objects or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c418b664-8ff0-4323-bb6c-24ea4e3d5ff1.png",
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed square master, wide crop shifted upward to y=40, and 128px thumb: caster's face/hand, pulling twin current and caught foe remain readable; default crop clipped caster's head, so focus was raised.",
+    "editableSourcePath": "game/cards/art/masters/frost_strike_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "frost_lob_07",
+    "name": "Geyser Burst",
+    "prompt": "Paint Geyser Burst: a single powerful column of icy seawater erupts upward through a crack in a frozen harbor, blasting a small armored figure off balance at its base with a burst of spray and chunks of ice. The geyser is the clear named subject, with its full plume and impact readable. Painterly medieval fantasy collectible-card illustration, believable water, ice, stone and armor, crisp cold light and atmospheric depth, consistent with supplied Frost references. Explicit 1:1 SQUARE canvas for editable 512x512 master; keep the recognizable plume and impact/action inside x24..488 y105..407, with quiet expendable sky and foreground below/above; horizontal 206:141 crop staging. No border, lettering, numbers, UI, anime, Disney-like cartoon, photorealism, modern objects or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-599ceac5-f5be-4b09-a081-6205ec7075e1.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed square master, default wide crop, and 128px thumb: geyser plume and impact dominate with the struck figure readable at its base; crop remains clear at thumbnail size.",
+    "editableSourcePath": "game/cards/art/masters/frost_lob_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "frost_ward_06",
+    "name": "Igloo",
+    "prompt": "Paint Igloo: a sturdy snow-and-ice igloo functioning as a protective shield fort on a windswept tundra, seen in three-quarter view with thick smooth dome, clearly cut entrance tunnel, packed snow blocks and a few carved ice thorns protecting its outer rim. A couple of tiny bundled travelers take shelter inside the lit doorway. The complete igloo is the obvious named subject. Painterly medieval fantasy collectible-card illustration, believable snow, ice and wool, warm lamplight against blue twilight, atmospheric depth. Explicit 1:1 SQUARE canvas for editable 512x512 master; keep complete dome and entrance within x24..488 y105..407, expendable sky/snow at top/bottom; horizontal composition for 206:141 crop. No lettering, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d82cd8da-2878-4d92-ac3f-dead87600a93.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed 512-square source, default wide crop and 128px thumb: complete dome and entrance are readable and dominant, with the travelers clearly secondary.",
+    "editableSourcePath": "game/cards/art/masters/frost_ward_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "frost_sentry_08",
+    "name": "Fountain of Youth",
+    "prompt": "Paint Fountain of Youth: an ancient clear spring wells up from a carved stone fountain in a frozen northern grove, its waters glowing softly as a weary frost sentinel kneels to drink and regains strength; tiny evergreen leaves and blue ice crystals ring the basin. Make the fountain and clear magical spring the primary named subject; the sentinel is small secondary scale. Painterly medieval fantasy collectible-card art, believable stone, ice, water and winter cloth, hopeful light filtering through snow-laden branches, atmospheric depth. Explicit 1:1 SQUARE canvas for editable 512x512 master; keep full basin, water source and visible sentinel within x24..488 y105..407; quiet forest scenery beyond; horizontal 206:141 crop staging. No frame, letters, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4352a501-7d54-42d4-95c7-ee4899930575.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed 512-square source, default wide crop and 128px thumb: the basin and flowing spring remain dominant with sentinel drinking visible; decorative statue top is incidental and cropped naturally.",
+    "editableSourcePath": "game/cards/art/masters/frost_sentry_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "frost_boon_07",
+    "name": "Polar Bear Plunge",
+    "prompt": "Paint Polar Bear Plunge: a brave northern warrior plunges into a clear icy pool beside a massive white polar bear, then rises invigorated with a fierce grin and renewed strength; the bear watches calmly from the snowy bank. Capture the splash and empowering moment, with the warrior's face and body clearly readable in modest fur-and-wool clothing and the bear unmistakable. Painterly medieval fantasy collectible-card art, believable fur, wet cloth, ice and water, crisp blue winter light with warm sunrise glints, atmospheric depth. Explicit 1:1 SQUARE canvas for editable 512x512 master; keep warrior face and upper body, polar bear head and the plunge splash within x24..488 y105..407; quiet snow/sky at top and bottom, horizontal 206:141 crop staging. No modern objects, frame, text, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-76ff5eec-9ef6-40d8-9f19-bbcb205db22c.png",
+    "focalPoint": [
+      0.5,
+      0.36
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed 512-square source, wide crop shifted upward to y=10, and 128px thumb: swimmer's face and polar bear head remain visible together; default crop cut the bear's head, so focus was raised.",
+    "editableSourcePath": "game/cards/art/masters/frost_boon_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "frost_charge_05",
+    "name": "Snowball Stockpile",
+    "prompt": "Paint Snowball Stockpile: a frost garrison's supply of massive packed snowballs stacked in a wooden medieval siege rack on a snowy rampart, a gloved defender lifting one to hurl while another snowball splashes against an unseen shield just beyond the parapet. The stockpile and throwable snowballs are the clear named subject. Painterly medieval fantasy collectible-card illustration, believable rough timber, wool gloves, packed snow and ice, energetic winter light, atmospheric depth. Explicit 1:1 SQUARE canvas for editable 512x512 master; keep the rack and complete snowballs and lifting hands within x24..488 y105..407; quiet snowy sky and parapet beyond; horizontal 206:141 crop. No modern gear, no frame, text, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-abbca71b-ed01-47d0-a83c-385a80a756fe.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed square master, default wide crop and 128px thumb: rack and stacked snowballs stay clear; lifted snowball/arms are incidental action at left edge.",
+    "editableSourcePath": "game/cards/art/masters/frost_charge_05.png",
+    "sourceNative": [
+      1514,
+      1039
+    ]
+  },
+  {
+    "cardId": "frost_utility_06",
+    "name": "Holy Spring",
+    "prompt": "Paint Holy Spring: a sacred clear spring inside a ruined northern shrine, where a humble frost cleric cups the luminous water and washes a wounded traveler's frostbitten hand clean. Make the blessed spring and healing water the clear named subject, with both faces/hands readable but secondary to the stone spring. Painterly medieval fantasy collectible-card illustration, carved stone basin, pale blue water and subtle gold sacred glow, believable wool, stone and ice, tranquil directional light and atmospheric depth. Explicit 1:1 SQUARE canvas for editable 512x512 master; keep spring, cleric's face/hand and wounded hand inside x24..488 y105..407; quiet shrine scenery beyond; horizontal 206:141 crop. No letters or symbols, no frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-fd4f91ad-07bd-4c0b-9d2b-69e72aa57f63.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed square master, default wide crop and 128px thumb: cleric face and cleansing hands remain readable beside the flowing spring; right-side traveler face is incidental and partially cropped.",
+    "editableSourcePath": "game/cards/art/masters/frost_utility_06.png",
+    "sourceNative": [
+      1515,
+      1038
+    ]
+  },
+  {
+    "cardId": "frost_trap_06",
+    "name": "Sea Mine",
+    "prompt": "Paint Sea Mine: a single medieval fantasy sea mine, a dark bronze buoy sphere with short hooked iron prongs and a blue rune-glass core, tethered by a heavy chain beneath a harbor surface; a passing wooden ship's keel almost touches it as faint magical light begins to bloom. Make the complete mine and its lurking underwater placement the unmistakable subject. Painterly fantasy illustration, believable barnacled bronze, rope, chain, timber hull and cold green water, suspenseful shafts of light. Explicit 1:1 SQUARE canvas for editable 512x512 master; keep entire mine, all prongs, core and chain connection within x24..488 y105..407; quiet water and seabed at top/bottom, horizontal 206:141 crop. No modern naval hardware, no frame, letters, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b81b4a68-f33b-4e34-b8c5-0e30c3c2f7e7.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed square master, default wide crop and 128px thumb: full bronze mine, all prongs, core and chain connection are visible; trailing chain ending is incidental.",
+    "editableSourcePath": "game/cards/art/masters/frost_trap_06.png",
+    "sourceNative": [
+      1514,
+      1039
+    ]
+  },
+  {
+    "cardId": "frost_environment_06",
+    "name": "Rolling Breakers",
+    "prompt": "Paint Rolling Breakers: a sequence of three powerful icy breakers rolls in a long row across a northern shore, the nearest blue-green wave folding over in a rhythmic wall of white foam and sending water over a rocky beach. Show the repeated wave line stretching across the scene, with no single isolated spout. Painterly medieval fantasy collectible-card art, dramatic cold sea light, believable water, foam, wet rock and distant cliff village, atmospheric depth. Explicit 1:1 SQUARE canvas for editable 512x512 master; keep the leading wave crest and readable row of breakers within x24..488 y105..407; expendable storm sky/foreground beyond; horizontal staging for 206:141 crop. No frame, text, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-60099954-f24c-4d51-b6d0-7f540caccc11.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed square master, default wide crop and 128px thumb: repeating row of rolling breakers and leading crest read clearly across the shoreline.",
+    "editableSourcePath": "game/cards/art/masters/frost_environment_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "frost_piece_03",
+    "name": "Trident of the Sunken King",
+    "prompt": "Repaint Trident of the Sunken King as a horizontal, crop-safe fantasy card illustration. The legendary artifact is the single dominant subject: a full golden-bronze trident with exactly three prongs, a blue central gem, long shaft and visible butt cap, held across the scene at a shallow diagonal (no steeper than 25 degrees) by one armored merfolk king's gloved hand. The entire weapon must fit with margin inside the central horizontal band x24..488, y120..390 of a 512 square: no tip, prong, shaft or butt may reach an edge. A flooded throne hall and king's face are quiet secondary context. Painterly medieval fantasy collectible-card illustration, believable aged metal and carved coral, cold blue directional light, atmospheric depth. Explicit 1:1 SQUARE canvas. No extra weapons, no frame, text, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d0d9839c-0ab9-4d13-b057-284e51d9eeb7.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed square master, default wide crop and 128px thumb: complete trident with three prongs, central gem, shaft and butt cap fits; king face and grip hand remain visible. First steep-diagonal attempt was not used.",
+    "editableSourcePath": "game/cards/art/masters/frost_piece_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "frost_summon_04",
+    "name": "Merfolk Tidecaller",
+    "prompt": "Paint Merfolk Tidecaller: a sturdy merfolk spellcaster with pale blue scales and a fur-lined mantle calls a restorative tide from a rocky sea ledge; a narrow stream of luminous water circles around him and washes over a tired merfolk ally as he gestures toward them. The tidecaller is the clear main character, with face and casting hand visible. Painterly medieval fantasy collectible-card art, believable scales, wool, shell jewelry and water, cold turquoise light and atmospheric depth. Explicit 1:1 SQUARE canvas for editable 512x512 master; keep tidecaller's face/hand and ally inside x24..488 y105..407; quiet sea/sky beyond; horizontal staging for 206:141 crop. No frame, text, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-68289bc1-7c34-4e2d-b240-dab3700e2295.png",
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed square master and crop shifted upward to y=20 plus 128px thumb: tidecaller's face, staff grip, casting hand, and ally's face remain visible; default crop clipped main face, so focus was raised.",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "frost_machine_03",
+    "name": "Harpoon Ballista",
+    "prompt": "Repaint Harpoon Ballista on a true 1:1 square canvas. Show one complete medieval fantasy timber-and-bronze ballista, seen in three-quarter view, mounted on an icy coastal battlement. The entire contraption must fit comfortably inside x30..482,y110..402 of the square, with both bow arms, its full harpoon bolt and sharp tip, loading winch and base all visible with margins. Arrange the machine compactly on a diagonal that fits within a 460x290 central rectangle; no part touches the image edge. A small bundled crewman loads it; distant sea beast is tiny background context. Painterly fantasy illustration with believable rope, timber, iron, frost, directional dawn light and atmospheric depth. Explicit square 512x512 master, horizontal card crop composition. No modern hardware, no frame, lettering, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-100c52e7-d97b-4e38-93a4-8fbb75bca5ff.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed square master, default wide crop and 128px thumb: ballista base, loading mechanism, both limbs and full harpoon tip remain visible; extra foreground timber is incidental.",
+    "editableSourcePath": "game/cards/art/masters/frost_machine_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "frost_ace_03",
+    "name": "Heart of Winter",
+    "prompt": "Create a square 1:1 painterly fantasy collectible-card illustration centered on a single unmistakable, anatomically recognizable human-heart silhouette made entirely of translucent blue ice. This is the named artifact Heart of Winter: two rounded upper lobes, distinct central cleft, tapered lower point, clearly heart-shaped at first glance. Show the whole crystal heart floating above a frozen altar, no other large subject; thin frost veins glow inside it and a subtle ring of snow whirls around. Keep the entire heart within x90..422,y110..390 on a 512 square with clear margin. Medieval glacial sanctum, dramatic blue-white light, detailed ice facets, atmospheric depth. No generic shard cluster, no heart-shaped valentine icon, no frame, letters, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c5a5a7d3-0ef2-4eef-8b38-3001836b652d.png",
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed 512-square source, crop shifted upward to y=20 and 128px thumb: full anatomical ice-heart silhouette stays visible; default crop clipped its top vessels, so focus was raised. First generic crystal attempt discarded.",
+    "editableSourcePath": "game/cards/art/masters/frost_ace_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "frost_claim_03",
+    "name": "The Great Deluge",
+    "prompt": "Paint The Great Deluge: a vast cold flood claims a medieval river valley as water pours through a breached stone levee, sweeping across fields and a village road; a few small rooftops and trees show the scale of the rising water. The broad advancing flood front is the clear subject. Painterly medieval fantasy collectible-card art, believable water, stone, timber, mist and rain, dramatic cool light and atmospheric depth. Explicit 1:1 SQUARE canvas for editable 512x512 master; keep the leading flood and its broad horizontal spread within x24..488 y105..407, quiet storm sky and foreground margins; horizontal 206:141 crop staging. No frame, lettering, UI, anime, Disney-like cartoon, photorealism or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-94512c91-08d6-4de1-b602-62351efa6671.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed 512-square source, default wide crop and 128px thumb: breached levee and broad advancing flood occupy the scene; village details support scale and remain visible.",
+    "editableSourcePath": "game/cards/art/masters/frost_claim_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "hero_glacia",
+    "name": "Glacia the Mirror",
+    "prompt": "Paint Glacia the Mirror, a legendary frost heroine: an imposing northern sorceress with pale braided hair and a faceted oval ice mirror in one hand, standing in a snowy stone hall. She turns the mirror to split a narrow piercing beam of blue-white light down a line of advancing foes while a faint protective shimmer surrounds nearby allies. Her face, mirror and guiding hand dominate. Painterly medieval fantasy collectible-card illustration, believable etched silver, ice, fur and cloth, crisp directional light, atmospheric depth. Explicit 1:1 SQUARE canvas for editable 512x512 master; keep face, hand, full mirror and main ray action inside x24..488 y105..407; quiet icy hall beyond; horizontal staging for 206:141 crop. No frame, lettering, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-316db86d-c924-4b10-be39-cf5bbb8710e9.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed square master, default wide crop and 128px thumb: Glacia's face, complete mirror, holding and casting hands, and piercing ray remain identifiable; background battle gives scale.",
+    "editableSourcePath": "game/cards/art/masters/hero_glacia.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "frost_strike_07",
+    "name": "Maelstrom",
+    "prompt": "Paint Maelstrom: a vast rotating whirlpool opens in the center of a storm-dark northern sea, its circular current hurling ice and spray outward while a small ship is pulled toward its rim. Make the spinning water and clear recoil-like outward force the dominant action; no separate caster required. Painterly medieval fantasy collectible-card art, deep teal water, white foam, believable wooden ship and cold dramatic light, atmospheric depth. Explicit 1:1 SQUARE canvas for editable 512x512 master; keep the readable whirlpool center and main circular wave inside x24..488 y105..407; quiet sky/sea margins; horizontal 206:141 crop staging. No frame, text, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7e7a65c5-1814-4b1f-ad3c-7901af87fe6f.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed square master, default wide crop and 128px thumb: central whirlpool and surrounding recoil current remain prominent, with ship secondary for scale.",
+    "editableSourcePath": "game/cards/art/masters/frost_strike_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "frost_lob_08",
+    "name": "Rain of Fish",
+    "prompt": "Paint Rain of Fish: a sudden magical burst sends dozens of silvery northern fish raining down from a dark cloud onto a frozen harbor, fish tumbling through the air as a surprised bundled fisher shields their head and one fish splashes into a barrel. The falling fish are the unmistakable subject, lively but painterly. Medieval fantasy collectible-card illustration, believable fish scales, wool clothing, wooden quay, cold bright light and atmospheric depth. Explicit 1:1 SQUARE canvas for editable 512x512 master; keep the main falling school and fisher's face/raised hand inside x24..488 y105..407; quiet sky and quay beyond; horizontal 206:141 crop. No frame, letters, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-71fd8576-8478-4dc9-ba17-c67eaa589361.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed square master, default wide crop and 128px thumb: falling school, fisher's face/raised hand, and catch barrel are readable; some incidental fish extend beyond crop.",
+    "editableSourcePath": "game/cards/art/masters/frost_lob_08.png",
+    "sourceNative": [
+      1514,
+      1039
+    ]
+  },
+  {
+    "cardId": "frost_ward_07",
+    "name": "Coral Reef",
+    "prompt": "Paint Coral Reef: a long defensive rampart of living ice-blue coral rises along an underwater harbor, its branching reef wall dense with sharp protective spines and sturdy enough to block passage. A small merfolk guard swims alongside for scale. Make the complete reef wall the dominant named subject, a clear horizontal barrier with coral texture. Painterly medieval fantasy collectible-card illustration, believable coral, shells, clear water and shafts of cold light, atmospheric depth. Explicit 1:1 SQUARE canvas for editable 512x512 master; keep the recognizable central rampart and spines within x24..488 y105..407; quiet underwater scenery beyond; horizontal 206:141 staging. No frame, text, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-bdf6aafc-c9d1-4482-ac64-3ee261550ca2.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed square master, default wide crop and 128px thumb: the spined coral rampart reads as a protective wall across the frame; the small merfolk guard gives scale.",
+    "editableSourcePath": "game/cards/art/masters/frost_ward_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "frost_sentry_09",
+    "name": "Rime Giant Cairn",
+    "prompt": "Paint Rime Giant Cairn: a huge ancient cairn of stacked frost-crusted boulders stands as a slow, steadfast sentinel on a snowy mountain pass, its largest stones shaped into a subtle stern face and blue runes glowing between them; it lobs one rounded ice boulder toward distant invaders. Make the enormous cairn guardian itself unmistakable, with scale shown by tiny travelers below. Painterly medieval fantasy collectible-card art, believable weathered stone, snow and ice, moody winter light and atmospheric depth. Explicit 1:1 SQUARE canvas for editable 512x512 master; keep the cairn's full distinct silhouette, face and thrown boulder/action within x24..488 y105..407; horizontal 206:141 crop. No frame, text, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6175489d-8912-49d5-a731-e11c64b9c5b1.png",
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed square master and crop shifted upward to y=0 plus 128px thumb: complete cairn head and stern face fit; default crop cut the head, so focus was raised. Flying boulder is secondary.",
+    "editableSourcePath": "game/cards/art/masters/frost_sentry_09.png",
+    "sourceNative": [
+      1515,
+      1038
+    ]
+  },
+  {
+    "cardId": "frost_boon_08",
+    "name": "Mead of the Longhall",
+    "prompt": "Paint Mead of the Longhall: a carved horn-rimmed wooden tankard of rich golden mead is raised in a candlelit northern longhall as a weary warrior drinks and straightens with renewed courage; companions and a firelit timber hall support the scene. Keep the full tankard and drinker's face/hand prominent and readable, amber drink catching warm light. Painterly medieval fantasy collectible-card illustration, believable wood, horn, wool, braided hair and hearth glow, atmospheric depth with cool winter light visible beyond the doorway. Explicit 1:1 SQUARE canvas for editable 512x512 master; keep tankard, hand and face inside x24..488 y105..407, horizontal 206:141 crop staging. No modern glassware, no frame, lettering, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-27c37fac-6cb3-4f9d-a72d-b1e6166b8377.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed square master, default wide crop and 128px thumb: full tankard, grip hand and drinker's face stay prominent, with warm hall supporting courage theme.",
+    "editableSourcePath": "game/cards/art/masters/frost_boon_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "frost_charge_06",
+    "name": "Cannon Shot Crate",
+    "prompt": "Repaint Cannon Shot Crate as a true 1:1 square fantasy card illustration. One fully visible, medium-sized open timber crate packed with round dark iron cannonballs sits centered on a frost-dusted wooden ship deck. Show all four crate sides and every corner with generous space to the image edge; the complete box occupies about half the square width. One gloved hand lifts a single cannonball just above the crate. A bronze deck cannon and rope rigging stay small in the distance. Painterly medieval fantasy materials, believable iron, wood, rope, salt spray, cold directional light and atmospheric depth. Keep the full crate and all shot inside x45..467,y135..400 of the 512 square, so it survives a 206:141 crop. No modern hardware, frame, letters, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-37a53878-9aa5-4fd6-8277-e0a7c1a33280.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed square master, default wide crop and 128px thumb: complete four-sided crate and all cannonballs fit; hand lifts one shot above it. First landscape attempt cropped crate and was discarded.",
+    "editableSourcePath": "game/cards/art/masters/frost_charge_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "frost_utility_07",
+    "name": "Ebb Tide",
+    "prompt": "Paint Ebb Tide: at a northern harbor, the sea withdraws in a broad sparkling sweep, flowing backward from the shore and leaving wet sand, stranded shells and a revealed shipwreck; a small tide mage gestures as the water recalls itself beyond the breakwater. The receding waterline and exposed seabed are the clear subject. Painterly medieval fantasy collectible-card art, believable water, stone harbor, timber wreck and cold dawn light, atmospheric depth. Explicit 1:1 SQUARE canvas for editable 512x512 master; keep the receding shoreline and mage's face/hand inside x24..488 y105..407; horizontal 206:141 crop. No frame, words, UI, anime, Disney-like cartoon, photorealism or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-27c0ea33-7d99-4c4e-bb3b-042061f81ff3.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed square master, default wide crop and 128px thumb: receding waterline and exposed wreck clearly read; mage is secondary at the left edge, with face partly cropped by square normalization.",
+    "editableSourcePath": "game/cards/art/masters/frost_utility_07.png",
+    "sourceNative": [
+      1514,
+      1039
+    ]
+  },
+  {
+    "cardId": "frost_trap_07",
+    "name": "Kelp Tangle",
+    "prompt": "Paint Kelp Tangle: an underwater snare of thick dark green kelp whips around an armored diver's legs and torso among submerged rocks, drawing them toward a tangled seabed. The entangling kelp coils and trapped figure form one clear readable action; show the diver's face/arms and the long plant strands. Painterly medieval fantasy collectible-card illustration, believable armor, seaweed, bubbles, cold shafts of sea light and atmospheric depth. Explicit 1:1 SQUARE canvas for editable 512x512 master; keep diver's face, arms and core kelp snare within x24..488 y105..407, with loose tendrils as expendable background; horizontal 206:141 crop. No frame, words, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0e679568-739d-44c0-91ce-cb4441630e23.png",
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed square source and crop shifted upward to y=40 plus 128px thumb: trapped diver's face and reaching hand plus kelp snare remain visible; default crop clipped fingertips.",
+    "editableSourcePath": "game/cards/art/masters/frost_trap_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "frost_environment_07",
+    "name": "Flood Plain",
+    "prompt": "Paint Flood Plain: a broad lowland river plain under cold rain has become a long sheet of floodwater, channeling down a valley between raised ridges and carrying branches past scattered farm roofs. Show the long inundated plain from a slightly elevated viewpoint, a continuous column of water stretching toward distant mountains. Painterly medieval fantasy collectible-card art, believable water, muddy fields, stone cottages and misty weather, dramatic cool light and atmospheric depth. Explicit 1:1 SQUARE canvas for editable 512x512 master; keep the broad flood channel and distinctive plain inside x24..488 y105..407; quiet sky and near ground beyond; horizontal 206:141 staging. No frame, lettering, UI, anime, Disney-like cartoon, photorealism or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-448aa763-880b-4746-bbf4-429783066411.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed square master, default wide crop and 128px thumb: continuous water-covered lowland, ridgelines and scattered farm roofs remain legible.",
+    "editableSourcePath": "game/cards/art/masters/frost_environment_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "frost_piece_04",
+    "name": "Heart of the Leviathan",
+    "prompt": "Paint Heart of the Leviathan: the complete ancient heart of a colossal sea serpent, a recognizable dark teal anatomical heart with two rounded lobes and tapered lower point, preserved inside a cage of curved leviathan ribs and barnacled bronze in an underwater ruin. Luminous cyan veins pulse through the heart and send a circular shockwave through nearby sand and water; the heart itself is the dominant legendary artifact. Painterly medieval fantasy collectible-card illustration, believable organic texture, shell, bone, coral, misty shafts of blue light and atmospheric depth. Explicit 1:1 SQUARE canvas for editable 512x512 master; keep whole heart, rib cage silhouette and full central artifact inside x24..488 y105..407; quiet underwater scenery beyond, horizontal 206:141 crop. No generic crystal, no extra weapon, frame, letters, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-04827825-76c6-4021-bfa8-b1f7482d501c.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed square master, default wide crop and 128px thumb: complete luminous leviathan heart and rib-like artifact cage remain centered and readable in both views.",
+    "editableSourcePath": "game/cards/art/masters/frost_piece_04.png",
+    "sourceNative": [
+      1515,
+      1038
+    ]
   }
 ]

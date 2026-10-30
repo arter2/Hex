@@ -1376,5 +1376,113 @@
       1254,
       1254
     ]
+  },
+  {
+    "cardId": "frost_piece_03",
+    "name": "Trident of the Sunken King",
+    "prompt": "Repaint Trident of the Sunken King as a horizontal, crop-safe fantasy card illustration. The legendary artifact is the single dominant subject: a full golden-bronze trident with exactly three prongs, a blue central gem, long shaft and visible butt cap, held across the scene at a shallow diagonal (no steeper than 25 degrees) by one armored merfolk king's gloved hand. The entire weapon must fit with margin inside the central horizontal band x24..488, y120..390 of a 512 square: no tip, prong, shaft or butt may reach an edge. A flooded throne hall and king's face are quiet secondary context. Painterly medieval fantasy collectible-card illustration, believable aged metal and carved coral, cold blue directional light, atmospheric depth. Explicit 1:1 SQUARE canvas. No extra weapons, no frame, text, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d0d9839c-0ab9-4d13-b057-284e51d9eeb7.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed square master, default wide crop and 128px thumb: complete trident with three prongs, central gem, shaft and butt cap fits; king face and grip hand remain visible. First steep-diagonal attempt was not used.",
+    "editableSourcePath": "game/cards/art/masters/frost_piece_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "frost_summon_04",
+    "name": "Merfolk Tidecaller",
+    "prompt": "Paint Merfolk Tidecaller: a sturdy merfolk spellcaster with pale blue scales and a fur-lined mantle calls a restorative tide from a rocky sea ledge; a narrow stream of luminous water circles around him and washes over a tired merfolk ally as he gestures toward them. The tidecaller is the clear main character, with face and casting hand visible. Painterly medieval fantasy collectible-card art, believable scales, wool, shell jewelry and water, cold turquoise light and atmospheric depth. Explicit 1:1 SQUARE canvas for editable 512x512 master; keep tidecaller's face/hand and ally inside x24..488 y105..407; quiet sea/sky beyond; horizontal staging for 206:141 crop. No frame, text, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-68289bc1-7c34-4e2d-b240-dab3700e2295.png",
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed square master and crop shifted upward to y=20 plus 128px thumb: tidecaller's face, staff grip, casting hand, and ally's face remain visible; default crop clipped main face, so focus was raised.",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_04.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "frost_machine_03",
+    "name": "Harpoon Ballista",
+    "prompt": "Repaint Harpoon Ballista on a true 1:1 square canvas. Show one complete medieval fantasy timber-and-bronze ballista, seen in three-quarter view, mounted on an icy coastal battlement. The entire contraption must fit comfortably inside x30..482,y110..402 of the square, with both bow arms, its full harpoon bolt and sharp tip, loading winch and base all visible with margins. Arrange the machine compactly on a diagonal that fits within a 460x290 central rectangle; no part touches the image edge. A small bundled crewman loads it; distant sea beast is tiny background context. Painterly fantasy illustration with believable rope, timber, iron, frost, directional dawn light and atmospheric depth. Explicit square 512x512 master, horizontal card crop composition. No modern hardware, no frame, lettering, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-100c52e7-d97b-4e38-93a4-8fbb75bca5ff.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed square master, default wide crop and 128px thumb: ballista base, loading mechanism, both limbs and full harpoon tip remain visible; extra foreground timber is incidental.",
+    "editableSourcePath": "game/cards/art/masters/frost_machine_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "frost_ace_03",
+    "name": "Heart of Winter",
+    "prompt": "Create a square 1:1 painterly fantasy collectible-card illustration centered on a single unmistakable, anatomically recognizable human-heart silhouette made entirely of translucent blue ice. This is the named artifact Heart of Winter: two rounded upper lobes, distinct central cleft, tapered lower point, clearly heart-shaped at first glance. Show the whole crystal heart floating above a frozen altar, no other large subject; thin frost veins glow inside it and a subtle ring of snow whirls around. Keep the entire heart within x90..422,y110..390 on a 512 square with clear margin. Medieval glacial sanctum, dramatic blue-white light, detailed ice facets, atmospheric depth. No generic shard cluster, no heart-shaped valentine icon, no frame, letters, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c5a5a7d3-0ef2-4eef-8b38-3001836b652d.png",
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed 512-square source, crop shifted upward to y=20 and 128px thumb: full anatomical ice-heart silhouette stays visible; default crop clipped its top vessels, so focus was raised. First generic crystal attempt discarded.",
+    "editableSourcePath": "game/cards/art/masters/frost_ace_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "frost_claim_03",
+    "name": "The Great Deluge",
+    "prompt": "Paint The Great Deluge: a vast cold flood claims a medieval river valley as water pours through a breached stone levee, sweeping across fields and a village road; a few small rooftops and trees show the scale of the rising water. The broad advancing flood front is the clear subject. Painterly medieval fantasy collectible-card art, believable water, stone, timber, mist and rain, dramatic cool light and atmospheric depth. Explicit 1:1 SQUARE canvas for editable 512x512 master; keep the leading flood and its broad horizontal spread within x24..488 y105..407, quiet storm sky and foreground margins; horizontal 206:141 crop staging. No frame, lettering, UI, anime, Disney-like cartoon, photorealism or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-94512c91-08d6-4de1-b602-62351efa6671.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed 512-square source, default wide crop and 128px thumb: breached levee and broad advancing flood occupy the scene; village details support scale and remain visible.",
+    "editableSourcePath": "game/cards/art/masters/frost_claim_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "hero_glacia",
+    "name": "Glacia the Mirror",
+    "prompt": "Paint Glacia the Mirror, a legendary frost heroine: an imposing northern sorceress with pale braided hair and a faceted oval ice mirror in one hand, standing in a snowy stone hall. She turns the mirror to split a narrow piercing beam of blue-white light down a line of advancing foes while a faint protective shimmer surrounds nearby allies. Her face, mirror and guiding hand dominate. Painterly medieval fantasy collectible-card illustration, believable etched silver, ice, fur and cloth, crisp directional light, atmospheric depth. Explicit 1:1 SQUARE canvas for editable 512x512 master; keep face, hand, full mirror and main ray action inside x24..488 y105..407; quiet icy hall beyond; horizontal staging for 206:141 crop. No frame, lettering, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-316db86d-c924-4b10-be39-cf5bbb8710e9.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Reviewed square master, default wide crop and 128px thumb: Glacia's face, complete mirror, holding and casting hands, and piercing ray remain identifiable; background battle gives scale.",
+    "editableSourcePath": "game/cards/art/masters/hero_glacia.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
   }
 ]

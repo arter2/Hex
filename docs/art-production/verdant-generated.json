@@ -1340,11 +1340,11 @@
     ],
     "focalPoint": [
       0.5,
-      0.34
+      0.4004
     ],
     "status": "generated",
     "batch": 9,
-    "reviewNote": "Shift crop fully upward to preserve the dart-drawing hand and dart tips; the pouch remains prominent though its very bottom edge falls beyond the wide crop."
+    "reviewNote": "Repositioned wide crop to y≈30: complete pouch body/base and dart load are visible with the dart-drawing fingers; minor hanging belt strap beyond the pouch body is incidental."
   },
   {
     "cardId": "verdant_utility_05",
@@ -1363,5 +1363,203 @@
     "status": "generated",
     "batch": 9,
     "reviewNote": "The three complete staves, carved markings and supporting hand remain in the square and wide crop and read as the named artifact at thumbnail size."
+  },
+  {
+    "cardId": "verdant_trap_06",
+    "name": "Pitfall of Thorns",
+    "prompt": "Painterly medieval fantasy collectible-card art for Pitfall of Thorns: concealed forest-floor pit opens beneath a bootstep; three thick thorny bramble stakes spring upward from the rim, leaves and roots partly conceal the trap, a startled boot avoids the center. Clear dangerous spiked pit, no injury, golden-green woodland. Strict square 1:1 512 master; full pit rim and three thorns inside x24..488,y105..407 for wide crop. No text, frame, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-74dc5fc8-17ff-45d6-a4f8-a01cfb6bf2f3.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_trap_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "All three thorn spikes, pit rim and nearby boot stay inside the wide crop; trap identity remains clear at 128px."
+  },
+  {
+    "cardId": "verdant_environment_03",
+    "name": "Kudzu Spread",
+    "prompt": "Painterly medieval fantasy card painting for Kudzu Spread: stone forest ruin and ancient oak rapidly engulfed by thick kudzu vines, broad leaves and tendrils spread crosswise from central patch over path and walls; green growth primary, masonry suggests landscape being reclaimed. Emerald leaves, golden light, textured stone. Strict square 1:1 512 master; central spread and defining vines fit x24..488,y105..407 for wide crop. No text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8f5dc343-b22d-4d07-b037-3f24be896f69.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_environment_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Crosswise kudzu growth and engulfed stone ruin remain clear in the wide crop and at thumbnail size."
+  },
+  {
+    "cardId": "verdant_piece_03",
+    "name": "Horn of the Wild Hunt",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Horn of the Wild Hunt: ancient curved antler hunting horn, pale carved body, aged bronze mouth and vine wrap, held aloft by a forest warden as ghostly stag spirits answer in the wood. Complete ornate horn dominates a radiant leaf-lit woodland. Strict 1:1 square 512 master; full horn and hand inside x24..488,y105..407 for wide crop. No text, runes, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-13b64f91-a993-4f33-927c-0b831a0f1c61.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_piece_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "The complete horn, bell, mouthpiece and holding hand remain in the 206:141 crop; spectral stags support the hunt theme."
+  },
+  {
+    "cardId": "verdant_machine_03",
+    "name": "Sapling Catapult",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Sapling Catapult: small ingenious siege catapult built from living sapling trunks, vine lashings and forked branches, druid crew loads a round seed pod into wooden sling; green leaves regrow from its limbs. Clear catapult and seed ammunition, forest clearing, dynamic warm green light. Strict 1:1 square 512 master; catapult, sling, seed and hands within x24..488,y105..407 for wide crop. No text, frame, modern hardware, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-49150221-5f3b-4b20-9745-f55c7c995aa7.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_machine_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Shifted crop up to keep catapult arm, complete sling, seed pod and loading hands visible; lower wheel base is incidental and partly below wide crop."
+  },
+  {
+    "cardId": "verdant_ace_03",
+    "name": "Wrath of the Wild",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Wrath of the Wild: furious forest guardian unleashes a devastating wave of living thorn vines and poisonous leaves in every direction, roots burst through earth and emerald shockwave expands broadly; readable central druid and circular spread, not shapeless glare. Dramatic woodland light, bark, leaves and stone. Strict square 1:1 512 master; guardian and wave within x24..488,y105..407 for wide crop. No text, rune, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2f610b96-fe77-404c-b881-69b7530ab92f.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_ace_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "The guardian’s face, hands and central figure remain readable inside the radial thorn-and-leaf wave in the wide crop."
+  },
+  {
+    "cardId": "verdant_aceup_03",
+    "name": "Root Snare Wrap",
+    "prompt": "Painterly medieval fantasy collectible-card art for Root Snare Wrap: ranger winds living green roots and vines around forearms and torso as protective battle wraps; a root lash catches an approaching foe, slowing him. Clearly show the wrapped arm as named magical gear, leafy glow, forest fight, natural materials. Strict 1:1 square 512 master; face, wrapped arms and root snare within x24..488,y105..407 for wide crop. No text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-35527082-4956-46eb-86a7-a22c95900605.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_aceup_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Shifted crop to y=0 to preserve ranger face, wrapped arms and root lash snaring the opponent; the root wraps dominate the action."
+  },
+  {
+    "cardId": "verdant_claim_03",
+    "name": "Wildwood Reclamation",
+    "prompt": "Painterly medieval fantasy collectible-card painting for Wildwood Reclamation: abandoned stone fortress ruins transformed as the wildwood reclaims them, mighty roots split old walls, young trees and lush moss fill the courtyard, small druid welcomes the forest’s return. Majestic sunbeams, ancient stone and vegetation, broad landscape. Strict square 1:1 512 master; central ruin and reclaiming roots fit x24..488,y105..407 for wide crop. No text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-3c97271b-7ae2-41fe-952c-184c947afcbe.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_claim_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Root-wrapped ruins, overgrowth and restored forest fill the wide crop and remain recognizable at thumbnail size."
+  },
+  {
+    "cardId": "hero_fang",
+    "name": "Fang the Beastcaller",
+    "prompt": "Painterly medieval fantasy hero card art for Fang the Beastcaller: fierce forest hunter in green-brown leather and leaf cloak raises a hand in a beastcall as a powerful jaguar pounces toward an unseen foe; both Fang’s commanding face and jaguar are clear, subtle green aura links them. Grounded anatomy, wild forest dusk, textured fur and leather. Strict 1:1 square 512 master; face, calling hand and jaguar head/front paws inside x24..488,y105..407 for wide crop. No text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0cbad15c-f21b-4cd8-b8c2-dd48fb11d376.png",
+    "editableSourcePath": "game/cards/art/masters/hero_fang.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Shift crop to y=0 to retain Fang’s full face and calling hand with the jaguar’s face and paws in the action."
+  },
+  {
+    "cardId": "verdant_strike_08",
+    "name": "Jaguar Pounce",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Jaguar Pounce: sleek spotted jaguar launches in sudden diagonal pounce through jungle foliage, muscles extended, face and forepaws sharply readable, leaves and dust burst behind to suggest recoil. Jaguar’s pouncing action is primary, emerald light, detailed fur and anatomy. Strict square 1:1 512 master; complete jaguar face and paws inside x24..488,y105..407 for wide crop. No text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-419630f4-63d0-48ce-acdb-b06327286d12.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Crop shifted upward to y≈40 to preserve the full jaguar face while keeping both pouncing forepaws and claws within the wide view."
+  },
+  {
+    "cardId": "verdant_lob_08",
+    "name": "Seed Pod Barrage",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Seed Pod Barrage: large green seed pods burst in a fast horizontal volley from enchanted vine launcher; several heavy pods fly in a row, some split and scatter seeds and leaves. Clear pods and barrage, forest clearing, golden-green light, organic textures. Strict square 1:1 512 master; all pods and trajectory fit x24..488,y105..407 for wide crop. No text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d426f3c3-2cfd-40c9-8862-8595c56fcfbe.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_lob_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "The horizontal row of whole and bursting seed pods remains intact in the wide crop and reads clearly at thumbnail size."
+  },
+  {
+    "cardId": "verdant_ward_08",
+    "name": "Moss Mantle",
+    "prompt": "Painterly medieval fantasy collectible-card art for Moss Mantle: woodland guardian wears a broad mantle of emerald moss, fern fronds and small healing flowers; translucent green protective wall of mossy roots arches around them as a minor wound closes. Mantle and face fully readable, detailed moss and cloth, filtered forest light. Strict square 1:1 512 master; full face and mantle inside x24..488,y105..407 for wide crop. No text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a2dacdce-dfef-43d9-bd09-79c86ad2403d.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_ward_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 9,
+    "reviewNote": "Shifted crop to y=0 so the guardian’s full face joins the moss mantle, healing hand and leafy ward in view."
   }
 ]

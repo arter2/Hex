@@ -1347,6 +1347,150 @@
       1254,
       1254
     ],
-    "reviewNote": "Normalized square source saved; named subject and action were checked in the source and wide card crop."
+    "reviewNote": "The bowl, falling natron crystals and cleansing boundary remain clear in the square and wide crop; the small outer dishes are incidental."
+  },
+  {
+    "cardId": "storm_trap_06",
+    "name": "Tomb Boulder",
+    "prompt": "Painterly medieval fantasy collectible-card illustration of Tomb Boulder, a deadly trap: a massive round, rough sandstone tombstone boulder with carved funerary patterns and no lettering rolls down an ancient tomb passage toward the viewer, scattering small stones as a pressure plate sparks behind it. The complete main boulder is centered and unmistakable, no people or faces. Dramatic warm torchlight and cool storm-shadow, detailed sandstone and dust, grounded medieval fantasy atmosphere. Square 1:1 editable 512 master, keep the whole boulder and its leading edge within x24..488 y105..407; extra corridor and dust may extend around it. Readable in a 206:141 card crop. No frame, text, runes, words, numbers, UI, photorealism, anime, Disney cartoon, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-52bc5c32-03de-4f9b-aa0d-2b1e084a223a.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "editableSourcePath": "game/cards/art/masters/storm_trap_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "The normalized square and 206:141 crop retain the complete carved boulder, including its circular edge, with the rolling debris and tomb passage behind it."
+  },
+  {
+    "cardId": "storm_environment_05",
+    "name": "Thunder Rumble",
+    "prompt": "Painterly medieval fantasy collectible-card landscape for Thunder Rumble: a sweeping burst of thunder shakes a desert plain; a vivid blue-white lightning fork meets the earth at center and sends broad concentric tremor cracks through sandstone, dust and scattered rocks, while low clouds roll overhead. The central impact and ground shockwave read clearly as a rumbling storm spell; no people or faces. Dramatic natural lighting, painterly stone and atmospheric depth, high fantasy collectible-card art. Square 1:1, core lightning and central ground impact inside x24..488 y105..407 with quiet sky and foreground margins, composed for the wide 206:141 crop. No frame, lettering, numbers, interface, modern objects, photorealism, anime, Disney cartoon, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f502c660-59ba-42f5-a4a2-223b3f794130.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "editableSourcePath": "game/cards/art/masters/storm_environment_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "The square and wide crop retain the central lightning impact and radiating ground rupture; the distant side bolts and clouds are supporting atmosphere."
+  },
+  {
+    "cardId": "storm_summon_03",
+    "name": "Ifrit",
+    "prompt": "Painterly medieval fantasy collectible-card illustration of Ifrit, a dire Djinn summoned to battle: a powerful ancient male fire spirit with a clear intense face, jeweled bronze crown and layered gold armor forms from swirling blue-and-orange flame, extending one hand to project a concentrated bright beam of fire across the scene. Keep his complete face, crown, upper torso and beam-origin hand centered and fully inside x24..488 y105..407 on a square 512 master; flame tail may flow into margins. Distinctive Djinn identity, not a generic dragon. Stormy desert ruin, dramatic light, finely painted cloth, metal and supernatural flame, believable anatomy, atmospheric high-fantasy collectible-card painting. Composed for 206:141 horizontal crop, no frame, writing, symbols, numbers, UI, photorealism, anime, Disney cartoon, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a3b74156-0adf-4d2e-af19-a14fd1ff31ce.png",
+    "focalPoint": [
+      0.5,
+      0.412
+    ],
+    "status": "generated",
+    "batch": 9,
+    "editableSourcePath": "game/cards/art/masters/storm_summon_03.png",
+    "sourceNative": [
+      1514,
+      1039
+    ],
+    "reviewNote": "Upward focal adjustment shifts the 206:141 crop to source y≈36; the complete face, crown, upper torso, casting hand and beam are visible. Reviewed at /tmp/ifrit-y36.png."
+  },
+  {
+    "cardId": "storm_machine_03",
+    "name": "Tesla Tower",
+    "prompt": "Square painterly medieval fantasy card art of a compact Tesla Tower, a waist-high defensive coil apparatus mounted on a low complete stone plinth. The actual machine's top finial, small brass dome, glass coil chamber and broad base together occupy only the central half of canvas height, with empty sky above and empty paving below. No detached orb above the tower. Keep the entire primary structure within x24..488 and y105..407 (roughly square y140 to 390), clearly separated from the frame edges; make it a compact short tower, not a fortress spire. Three small conductor posts at its sides receive chain lightning but are secondary. Storm-lit desert courtyard, rich aged brass and stone, cinematic painterly fantasy illustration. Strong readable thumbnail and clean 206:141 crop. No text, frame, UI, modern technology, photorealism, anime, Disney cartoon, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0d60131e-af9e-4f7f-a5e5-b397b5e011b0.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "editableSourcePath": "game/cards/art/masters/storm_machine_03.png",
+    "sourceNative": [
+      1515,
+      1038
+    ],
+    "reviewNote": "The latest compact tower has a complete top, coil, and broad footing in the square source and the 206:141 crop; its blue chain-lightning remains clear."
+  },
+  {
+    "cardId": "storm_ace_03",
+    "name": "Vajra of Indra",
+    "prompt": "Square painterly medieval fantasy collectible-card illustration featuring a complete golden Vajra of Indra, an ornate short ritual thunder scepter with a large luminous blue central jewel and symmetrical curved multi-pronged ends. Lay it diagonally across a shrine dais so it occupies only the central 60 percent of the square's width and 40 percent of its height, surrounded by generous visible background on all sides. Keep every prong tip far from the edges, inside x50..462 y130..382, with no clipping. A restrained straight line of blue-white lightning glows behind the entire weapon. Dark mountain shrine, exquisite hand-carved gold, dramatic light, painterly high fantasy. No person, no frame, no words, symbols, numbers, interface, photorealism, anime, Disney cartoon, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-84243a81-7abe-4955-91ed-463f1952e976.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "editableSourcePath": "game/cards/art/masters/storm_ace_03.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "The complete symmetric vajra and all prong tips sit inside the square source with visible margins and remain intact in the wide crop."
+  },
+  {
+    "cardId": "storm_aceup_03",
+    "name": "Sandstorm Scatter",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Sandstorm Scatter: a broad curling wall of golden desert wind sweeps across a battlefield, scattering grit, dust veils and loose cloak tails around a compact line of armored warriors who struggle to move through the blinding storm. The turbulent sand sheet is central and dominant, with three staggered figures as small supporting silhouettes; no readable faces needed. Powerful flowing diagonals, warm sand against cool storm shadows, rich painterly medieval materials and atmospheric depth. Square 1:1 512 master, core storm and visible figures inside x24..488 y105..407, quiet sky and ground margins, clear 206:141 wide crop. No frame, lettering, numbers, modern objects, photorealism, anime, Disney cartoon, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f634b65b-4d8d-4be2-a657-d4319b55e9c3.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "editableSourcePath": "game/cards/art/masters/storm_aceup_03.png",
+    "sourceNative": [
+      1514,
+      1039
+    ],
+    "reviewNote": "The square source and wide crop retain a broad sandstorm front with staggered armored figures moving through the gust; the figures are supporting silhouettes."
+  },
+  {
+    "cardId": "hero_raijin",
+    "name": "Raijin, the Thunder King",
+    "prompt": "Painterly medieval fantasy collectible-card portrait of Raijin, the Thunder King: a commanding Japanese storm deity and armored warrior with a strong complete face, windblown dark hair, bronze crown and layered indigo-and-gold armor, one arm raised as branching lightning chains leap outward to four small distant enemy silhouettes. Raijin's full head, face, torso and casting hand dominate the centered composition, all within x24..488 y105..407; four targets are secondary. Storm-shrouded mountain citadel, dramatic blue-white electric light, fine painted metal and cloth, powerful mythic presence, grounded anatomy and atmospheric depth. Square 1:1 editable 512 master, intentional horizontal 206:141 crop. No text, frame, modern clothing, photorealism, anime, Disney cartoon, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-893818f2-4e7b-40f4-a306-e2362c707856.png",
+    "focalPoint": [
+      0.5,
+      0.412
+    ],
+    "status": "generated",
+    "batch": 9,
+    "editableSourcePath": "game/cards/art/masters/hero_raijin.png",
+    "sourceNative": [
+      1515,
+      1038
+    ],
+    "reviewNote": "Upward focal adjustment sets the crop near source y=36, preserving Raijin’s full face and crown with his casting hand, torso and chain lightning. Reviewed at /tmp/raijin-y36.png."
+  },
+  {
+    "cardId": "storm_strike_07",
+    "name": "Voltaic Arc",
+    "prompt": "Painterly medieval fantasy collectible-card art for Voltaic Arc, a quick chain-lightning strike: a bright blue-white bolt springs from a centered brass conductor orb and jumps in one sharp zigzag through three separate small iron targets, each impact briefly flaring electric light. Keep the entire central bolt path, source orb and at least two linked targets prominent inside x24..488 y105..407 on a square 512 master, with a clear readable diagonal arc. Stormy desert fortress courtyard, nuanced brass, stone and iron, dramatic contrast and atmospheric depth. Electric action is the primary subject, no people or faces. Compose as a finished 206:141 horizontal card crop. No frame, lettering, numbers, symbols, UI, modern machinery, photorealism, anime, Disney cartoon, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8fb74c52-324d-4321-8c94-af01902e0bed.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 9,
+    "editableSourcePath": "game/cards/art/masters/storm_strike_07.png",
+    "sourceNative": [
+      1516,
+      1037
+    ],
+    "reviewNote": "The normalized square and 206:141 crop retain the bright chain arc, central conductor, and linked target impact; peripheral target disks may extend beyond the square."
   }
 ]

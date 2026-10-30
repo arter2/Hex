@@ -95,6 +95,7 @@ select,.filters input{font:600 14px var(--font-b); color:var(--text); background
 #dtCard .card .art{height:160px;}
 #dtCard .card .cn{font-size:20px;} #dtCard .card .tx{font-size:15px;} #dtCard .card .ty{font-size:13px;}
 #detail{z-index:7;}
+#detail .panel.narrow{max-width:392px;}   /* room for the read-it-big card at the peek's width (340 + frame and padding) */
 .controls.two{grid-template-columns:1fr 1fr;}
 .controls.three{grid-template-columns:1fr 1fr 1fr;}
 .dbgcopy{width:100%;min-height:96px;margin-top:8px;font:11px/1.35 ui-monospace,monospace;background:rgba(0,0,0,.35);color:#e8eef8;border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:6px;box-sizing:border-box;}

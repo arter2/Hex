@@ -2852,5 +2852,77 @@
     "status": "generated",
     "batch": 12,
     "reviewNote": "Square source and centered 206:141 crop inspected: the Kappa’s face, water dish, shell, and both webbed hands remain clear; its stream-pulling water cone reads at thumbnail size."
+  },
+  {
+    "cardId": "frost_machine_09",
+    "name": "Waterwheel Repeater",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Waterwheel Repeater”. Paint a compact medieval repeater crossbow machine mounted beside a frozen stream, its small oak waterwheel visibly turning from a rushing channel and driving a row of steel bolt-feeders. Several bolts launch in a controlled horizontal barrage; show heavy frost on the mechanism and a clear, complete silhouette of the machine. No person required. Painterly medieval/high-fantasy collectible-card art, richly painted believable fur, hide, wood, old iron, ice and stone, strong readable values, attractive directional light and atmospheric depth. Match the supplied frost references' blue-white winter light and detailed grounded fantasy materials. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep identity-critical face/eyes/hands and the entire named subject within x24–488,y105–407 on the square; compose horizontally for a 206:141 card crop with quiet expendable scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-3f8fb4c2-f46b-4ab4-8e2e-ced40707c70f.png",
+    "editableSourcePath": "game/cards/art/masters/frost_machine_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square source and centered 206:141 crop inspected: the complete waterwheel, icy channel, repeater mechanism, and outgoing bolts remain visible; machine silhouette reads at thumbnail size."
+  },
+  {
+    "cardId": "hero_aurora",
+    "name": "Aurora of the Pole",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Aurora of the Pole”. Paint Aurora, a resolute polar sorceress with a clear expressive face and pale fur-lined cloak, standing on an arctic ridge under brilliant green, violet and blue aurora bands. She raises one gloved hand and sends a sharp ribbon of aurora light horizontally across the frozen valley, slowing distant figures. Her face and casting hand remain visible; light fills the sky without obscuring the hero. Painterly medieval/high-fantasy collectible-card art, richly painted believable fur, hide, wood, old iron, ice and stone, strong readable values, attractive directional light and atmospheric depth. Match the supplied frost references' blue-white winter light and detailed grounded fantasy materials. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep identity-critical face/eyes/hands and the entire named subject within x24–488,y105–407 on the square; compose horizontally for a 206:141 card crop with quiet expendable scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-f8e42c78-2a3e-4706-8419-a2e02ec9dc4f.png",
+    "editableSourcePath": "game/cards/art/masters/hero_aurora.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square source and centered 206:141 crop inspected: Aurora’s face, eyes, and casting hand stay clear; the horizontal aurora ribbon and distant slowed figures read at thumbnail size. The staff tip is incidental near the top edge."
+  },
+  {
+    "cardId": "frost_strike_15",
+    "name": "Grapeshot Volley",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Grapeshot Volley”. Paint a frost-armored medieval artillery archer firing a compact rune-work hand cannon in a horizontal volley. The weapon releases a crisp line of many small icy grapeshot pellets toward distant foes; recoil shown in the bent stance and shoulder. Keep the warrior's focused face, firing hand and entire compact cannon clear; tactile old iron, leather and frost, no modern firearm design. Painterly medieval/high-fantasy collectible-card art, richly painted believable fur, hide, wood, old iron, ice and stone, strong readable values, attractive directional light and atmospheric depth. Match the supplied frost references' blue-white winter light and detailed grounded fantasy materials. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep identity-critical face/eyes/hands and the entire named subject within x24–488,y105–407 on the square; compose horizontally for a 206:141 card crop with quiet expendable scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-e0c62e17-7689-44d2-9891-6fbd5efdf624.png",
+    "editableSourcePath": "game/cards/art/masters/frost_strike_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square source and centered 206:141 crop inspected: the warrior’s face, firing hands, and complete muzzle remain visible; the straight icy grapeshot line and target direction read clearly at thumbnail size."
+  },
+  {
+    "cardId": "frost_lob_16",
+    "name": "Message in a Bottle",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Message in a Bottle”. Paint one complete old clear-glass bottle with a rounded body, narrow neck and intact visible cork stopper, resting at a slight angle on a small shelf of sea ice. Inside is a tightly rolled parchment message tied with a blue thread, with no readable writing. Frost feathers the glass edges; pale moonlight and a soft glacial glow make the bottle immediately visible against a calm frozen shore. Keep the entire bottle, neck, and cork together inside the crop and make the message legible as a scroll shape; no person required. Painterly medieval/high-fantasy collectible-card art, richly painted believable glass, parchment, cork and ice, attractive directional winter light, clear value structure and atmospheric depth. Match the supplied Hexmancers frost references' blue-white winter light and detailed grounded fantasy materials. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the entire named bottle within x24–488,y105–407 on the square; compose horizontally for a 206:141 card crop with quiet expendable scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-8fafe522-5a4c-40e8-a06f-ce8a1f8236ab.png",
+    "editableSourcePath": "game/cards/art/masters/frost_lob_16.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square source and centered 206:141 crop inspected: bottle body, neck, and cork stopper all remain complete and clear with the scroll visible inside; the artifact reads strongly at thumbnail size."
   }
 ]

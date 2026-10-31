@@ -2923,5 +2923,77 @@
     "status": "generated",
     "batch": 12,
     "reviewNote": "Repainted after preserving the first attempt at /tmp/b12-brown-instant-72-first.png. 512-square master, wide crop and 128px thumbnail inspected: the troll’s entire face and eyes, both hands, full hopper, grinding rollers and crank all fit. The compact machine and gravel output remain clear at thumbnail size."
+  },
+  {
+    "name": "Smelling Salts",
+    "prompt": "Paint an illustration for the Hexmancers card “Smelling Salts.” A single complete portable smelling-salts phial is the central artifact: a thumb-length cut-glass vial with a fitted brass stopper, pale aromatic crystals visible inside and a small ribbon of sharp clean vapor curling from its open mouth. Set it on a worn alchemist's workbench with a few salt grains and folded linen as quiet support. Painterly medieval high-fantasy collectible-card art, finely rendered glass, brass and crystal salts, warm directional candlelight, deep but readable shadows, atmospheric depth and a crisp artifact silhouette at thumbnail size. Square 1:1 composition for a 512x512 master; keep the whole vial, stopper and vapor source inside x24..488,y105..407, centered in middle 60%, quiet workbench surroundings above/below for 206:141 crop. No frame, text, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ca4d711f-b00e-4cf1-a804-f24406b262e0.png",
+    "editableSourcePath": "game/cards/art/masters/brown_instant_73.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square editable source prepared; centered crop review pending for the full smelling-salts vial, stopper and vapor source.",
+    "cardId": "brown_instant_73"
+  },
+  {
+    "name": "Antidote Kit",
+    "prompt": "Paint an illustration for the Hexmancers card “Antidote Kit.” Show a compact, complete open field kit on an alchemist's table: a hinged wooden case with fitted compartments, two differently colored corked antidote bottles, a small pestle, dried herbs and a folded linen wrap. Arrange every component clearly inside the open case so the full kit reads as one practical cleansing remedy, without loose clutter. Painterly medieval high-fantasy collectible-card art, believable oak, leather hinges, glass, herbs and brass, warm directional workshop light, atmospheric depth and rich texture; strong readable silhouette at thumbnail size. Square 1:1 composition for a 512x512 master; keep the whole open case, lid and its contents inside x24..488,y105..407, centered in middle 60%, quiet tabletop and dark alcove top/bottom for 206:141 crop. No frame, writing, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a393bba1-e63c-4a87-873a-be2e57edca96.png",
+    "editableSourcePath": "game/cards/art/masters/brown_instant_74.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square editable source prepared; centered crop review pending for the complete open kit, lid and fitted contents.",
+    "cardId": "brown_instant_74"
+  },
+  {
+    "name": "Elven Purifying Lamp",
+    "prompt": "Paint an illustration for the Hexmancers card “Elven Purifying Lamp.” A beautifully crafted elven lantern stands alone on a mossy forest altar, its entire slender silverwood-and-bronze frame, handle, glass chamber and base visible. A clear column of warm white-gold light pours from the lamp and gently disperses a faint smoky stain from the surrounding leaves, showing purification without hiding the artifact. Painterly medieval high-fantasy collectible-card art, delicate elven metalwork, leaf motifs, translucent glass, refined materials, attractive directional light against cool forest shade, atmospheric depth and a readable silhouette at small size. Square 1:1 composition for a 512x512 master; keep the complete handle, lamp and base within x24..488,y105..407, centered in middle 60%, quiet forest margins above and below for a 206:141 crop. No frame, lettering, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-71ff6bdd-c155-41e9-adfa-366a5987b7d0.png",
+    "editableSourcePath": "game/cards/art/masters/brown_instant_75.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square editable source prepared; crop shifted upward (focalPoint y=0.42) to retain the full lamp handle and base.",
+    "cardId": "brown_instant_75"
+  },
+  {
+    "name": "Copying Press",
+    "prompt": "Paint an illustration for the Hexmancers card “Copying Press.” A compact medieval hand-operated copying press sits squarely on an artisan's desk: complete wooden frame, iron screw and broad platen pressing a blank parchment against a second sheet. One original page and one crisp duplicate emerge side by side, visibly identical but with no legible text. The sturdy press is the dominant named subject. Painterly medieval high-fantasy collectible-card art, finely textured dark oak, iron, parchment and brass, warm workshop light, atmospheric depth, clean readable mechanical silhouette at thumbnail scale. Square 1:1 composition for a 512x512 master; keep full frame, screw, platen and both sheets inside x24..488,y105..407, horizontally centered in middle 60%, quiet desk and wall above/below for 206:141 crop. No frame, readable writing, runes, numbers or UI; no modern office equipment, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2cf95c46-f9bd-441c-a8f3-5d8229f84734.png",
+    "editableSourcePath": "game/cards/art/masters/brown_instant_76.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square editable source prepared; centered crop review pending for the full press frame, handle, platen and duplicate sheets.",
+    "cardId": "brown_instant_76"
   }
 ]

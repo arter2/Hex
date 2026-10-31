@@ -2842,5 +2842,77 @@
     "status": "generated",
     "batch": 12,
     "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Full cart frame, both wheels, beam, sling and stone projectile fit; the distant caravan remains secondary."
+  },
+  {
+    "cardId": "hero_quarrel",
+    "name": "Quarrel the Thunder Bolt",
+    "prompt": "Paint an illustration for the exact hero card Quarrel the Thunder Bolt. A determined storm hero stands on an ancient desert battlement, face, braced hand and short bronze thunder-rod clearly visible as a concentrated blue-white bolt fires horizontally through a row of armored enemies. The lightning remains narrow enough to preserve the hero's silhouette; subtle storm sparks around nearby allies hint at a rallying critical-strike aura. Painterly medieval high-fantasy collectible-card art, believable layered leather and bronze, dramatic lightning light against deep indigo clouds, grounded heroic anatomy and rich brushwork. Square 1:1 canvas for a 512×512 master; keep face, hand, thunder-rod and row attack within x24..488,y105..407 for the 206:141 card crop, quiet cloud margins above and below. No frame, text, runes, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d67376b8-ac1f-4dae-a098-4ba186baf59c.png",
+    "editableSourcePath": "game/cards/art/masters/hero_quarrel.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Inspected 512 source, wide crop and 128 thumbnail: Quarrel’s face and braced hand remain visible; narrow thunder bolt clearly pierces a horizontal enemy row."
+  },
+  {
+    "cardId": "storm_strike_16",
+    "name": "Scimitar Sweep",
+    "prompt": "Paint an illustration for the exact card Scimitar Sweep. A skilled desert warrior in weathered lamellar armor turns through one fast horizontal sweep with a complete curved steel scimitar, the full blade and tip visible as its broad wedge of pale storm light knocks two armored foes backward. Keep the warrior's focused face and gripping hand beside the entire scimitar at the same height; the nearer foe recoils, the second is secondary, and no extra weapons obscure the action. Painterly medieval fantasy collectible-card art, rich leather and bronze, moonlit dust, directional silver-blue glow against warm desert-stone dusk, grounded anatomy and atmospheric depth. Square 1:1 canvas for a 512×512 master; protect face, hand, full scimitar and wedge impact inside x24..488,y105..407 for the 206:141 crop, quiet margins above/below. No frame, lettering, runes, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-df418642-0487-430f-ad48-20a733f9f1da.png",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_16.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Inspected 512 source, wide crop and 128 thumbnail: warrior face and hand, complete curved scimitar and broad recoil wedge are clear; secondary figures are partly cropped."
+  },
+  {
+    "cardId": "storm_lob_16",
+    "name": "Great Work Detonation",
+    "prompt": "Paint an illustration for the exact card Great Work Detonation. A monumental ancient stone aqueduct and fortified worksite erupts in one deliberate engineered detonation: a bright central thunder-burst throws a row of heavy masonry blocks outward and knocks small armored builders away, dust and fragments radiating in a wide circular shock. Hint at careful planning with a tiny brass fuse box in the foreground, but make the collapsing great work and explosive impact dominant. Painterly medieval high-fantasy collectible-card art, believable carved stone, dust, bronze tools and armor, dramatic pale lightning at the core against cool storm clouds, rich brushwork and atmospheric depth. Square 1:1 canvas for a 512×512 master; keep the central blast and readable masonry impact within x24..488,y105..407 for the 206:141 crop, quiet sky/ground margins. No frame, text, runes, UI, cartoon, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a94eef39-058e-430d-8ade-6fca2914310c.png",
+    "editableSourcePath": "game/cards/art/masters/storm_lob_16.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Inspected 512 source, wide crop and 128 thumbnail: monumental stone structure and lightning-centered burst read as planned demolition; blocks and displaced builders show the blast’s force."
+  },
+  {
+    "cardId": "storm_boon_15",
+    "name": "Horus's Watch",
+    "prompt": "Paint an illustration for the exact card Horus's Watch. A majestic golden-brown falcon spirit sweeps low above an ancient Egyptian-inspired desert patrol, its sharp protective gaze and broad wings catching a spear or arrow in a radiant blue-gold ward while one soldier neatly dodges aside. The winged falcon is a regal watchful guardian, not a human with a falcon mask; keep its face and whole key wing beside the dodging warrior's face and visible hand at the same height. Painterly medieval fantasy collectible-card art, nuanced feathers, linen, bronze and sandstone, dramatic dawn light with cool storm shadows, grounded anatomy and atmospheric depth. Square 1:1 canvas for a 512×512 master; keep falcon face, main wing, warrior face/hand and dodge action inside x24..488,y105..407 for the 206:141 card crop, quiet sky above and dunes below. No frame, text, runes, UI, cartoon, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4e050a2e-1ebb-46fb-84d0-17501bc05b9a.png",
+    "editableSourcePath": "game/cards/art/masters/storm_boon_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Inspected 512 source, wide crop and 128 thumbnail: falcon’s face and broad protective wing dominate, arrow is caught by the ward, and warrior face/hand clearly show the dodge."
   }
 ]

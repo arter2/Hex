@@ -2833,5 +2833,95 @@
     "batch": 12,
     "reviewNote": "512-square source, centered wide crop and thumbnail reviewed. The circular miasma ring and dark impact center fit inside the crop and remain distinguishable at small size, with dark battlefield scenery as support. Parent review pending.",
     "cardId": "shadow_lob_17"
+  },
+  {
+    "cardId": "shadow_charge_14",
+    "name": "Pandora's Jar",
+    "prompt": "Paint an illustration for the exact card name “Pandora's Jar.” Make a single ancient sealed ceramic jar the unmistakable focal artifact: a squat, richly textured black-violet urn with a complete fitted bronze stopper, intact foot and archaic but nonverbal geometric reliefs. Hairline cracks leak a restrained violet shadow glow; faint eerie silhouettes are barely suggested inside the glassy glaze, never replacing the jar as the subject. The cursed vessel feels legendary and dangerous, not a generic spell scene. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: believable glazed pottery, aged bronze and stone, layered brushwork, dramatic moonlit directional light, atmospheric depth, grounded material detail. Square 1:1 composition for a 512x512 master. Keep the entire jar, stopper and base within x40–472,y125–390, centered horizontally in middle 60 percent for a 206:141 crop, with quiet dark stone above and below. Standalone artifact, no operator needed. No text, lettering, readable runes, card frame, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a2d45b1a-e50c-4fef-9baa-876d8f465ceb.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_charge_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square master inspected. Shifted the crop upward to retain the complete bronze stopper while keeping the full jar body and foot visible; the 206:141 crop and 128px thumbnail were inspected. The purple curse glow and reliefs remain clear."
+  },
+  {
+    "cardId": "shadow_summon_12",
+    "name": "Tokoloshe",
+    "prompt": "Paint an illustration for the exact card name “Tokoloshe.” Depict a small, sly imp-like trickster spirit from African folklore in a grounded medieval-fantasy style: compact sinewy figure with alert expressive eyes, a mischievous knowing grin, subtle pointed ears and a ragged dark wrap, springing forward with one hand outstretched and a low shadow trailing beneath. His feet trample a cracked stone threshold, suggesting stubborn trample and a disorienting feint. Keep the creature’s face, eyes and outstretched hand large and clearly readable; avoid caricature or stereotype. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: nuanced dark skin, cloth and stone, layered brushwork, strong moonlit rim light, atmospheric depth and expressive but natural anatomy. Square 1:1 composition for a 512x512 master. Keep face, eyes, relevant hand and upper body inside x24–488,y105–407; incidental legs and shadow may extend. Horizontal close action, quiet ruin background for a 206:141 crop. No other figures, no text, symbols, card frame, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6413fbdd-5ad6-47fb-a8bb-ab97f2087250.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square master, wide crop and 128px thumbnail inspected. Tokoloshe’s face, alert eyes, mischievous expression and outstretched hand remain clear; incidental hair, legs and trailing shadow extend beyond the crop. Strong moonlit silhouette reads at thumbnail size."
+  },
+  {
+    "cardId": "hero_sanguis",
+    "name": "Count Sanguis",
+    "prompt": "Paint an illustration for the exact card name “Count Sanguis.” Show a compelling aristocratic vampire count in close three-quarter portrait, pale focused face and eyes clear, in a dark burgundy high-collared cloak as he bites the forearm of a gloved armored foe just out of frame. His fangs and focused gaze communicate the strike; a thin elegant crimson life-force wisp flows back toward his mouth to suggest draining and healing, without gore. Keep the count’s whole face and the decisive bite action in the same compact crop-safe area; no need to show full body or victim’s face. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers Shadow references: grounded expression and anatomy, nuanced velvet, leather and metal, subtle moonlight and warm crimson accent, layered brushwork and atmospheric depth, not photorealistic. Square 1:1 canvas for a 512x512 master. Keep face, eyes, fangs and bite hand/forearm within x24–488,y105–407; quiet gothic stone above and below for a 206:141 crop. No blood spray, no extra characters, no text, card frame, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-dad6b774-9052-4f55-8849-0b2058869012.png",
+    "editableSourcePath": "game/cards/art/masters/hero_sanguis.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square master, wide crop and 128px thumbnail inspected. Count Sanguis’s face, eyes, fangs and biting hand remain fully visible; the victim’s armored forearm is supporting action. The crimson life-force curl reinforces the draining strike without gore."
+  },
+  {
+    "cardId": "shadow_strike_17",
+    "name": "Gallows Rope",
+    "prompt": "Paint an illustration for the exact card name “Gallows Rope.” Show one heavy weathered gallows rope, with a clearly defined loop and large knot, snapping taut as a hidden charged snare pulls an armored outlaw sideways toward a dark wooden gallows post. The rope loop catches the figure around the waist and upper arm, never the neck; one hand reaches for the rope as boots skid across dirt. The rope is the named primary subject, pull direction and trap action immediately readable, no hanging victim or gore. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: believable twisted hemp, rough timber, worn armor and cloth, layered brushwork, stark moonlit directional light, atmospheric depth. Square 1:1 composition for a 512x512 master. Keep loop, knot, taut rope line and relevant hand inside x24–488,y105–407, horizontal action across middle 60 percent for a 206:141 crop; incidental boots and background gallows may extend. No text, labels, runes, card frame, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-297d2f96-0b58-4f7c-b793-7294d59a040d.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_strike_17.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square master, wide crop and 128px thumbnail inspected. The rope loop, large knot, taut line and relevant hands remain in frame; the victim’s face, upper body and recoil read clearly without any neck contact. Rope texture is legible at thumbnail size."
+  },
+  {
+    "cardId": "shadow_lob_18",
+    "name": "Jar of Carrion Beetles",
+    "prompt": "Paint an illustration for the exact card name “Jar of Carrion Beetles.” Make a squat, sturdy, complete glass jar with a dark cork stopper the main readable artifact, lying on its side as it spills a stream of glossy black carrion beetles across a narrow strip of ancient stone ground. The jar’s full rim, cork, rounded body and base remain visible; beetles crawl outward in a clear row, their iridescent shells catching sickly green-violet highlights. A restrained shadow haze hints at the curse, but the jar and beetles dominate. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: believable old glass, cork, stone and insect carapaces, layered brushwork, dramatic moonlit directional light, atmospheric depth, grounded and not photorealistic. Explicit 1:1 square canvas for a 512x512 master. Keep the entire jar including stopper and base inside x40–472,y140–370, with the beetle trail and jar arranged horizontally in middle 60 percent for a 206:141 crop; quiet dark stone above and below. No hands or operator needed, no gore, no extra jars. No text, labels, readable runes, card frame, numbers or UI. No anime, Disney-like cartoon, toy-like proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b91ca6d3-ed7c-4aee-8625-3d2e3751c34c.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_lob_18.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square master, wide crop and 128px thumbnail inspected. The complete jar, stopper and base remain visible, with a distinct line of dark carrion beetles spilling out. Glass, cork and iridescent shells are readable at thumbnail size."
   }
 ]

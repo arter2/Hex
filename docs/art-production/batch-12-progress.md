@@ -1,8 +1,8 @@
 # Batch 12 production progress
 
-**126 of 200 new 512×512 sources saved; 120 approved.**
+**161 of 200 new 512×512 sources saved; 150 approved.**
 
-74 sources remain ungenerated. 0 saved source(s) require repainting. 24 five-card packets have passed parent crop/thumbnail review. This is not a completed 200-card delivery.
+39 sources remain ungenerated. 0 saved source(s) require repainting. 30 five-card packets have passed parent crop/thumbnail review. This is not a completed 200-card delivery.
 
 Production uses the lighter artist agents and shared five-card queue in `PACKET-WORKFLOW.md`. Ledger reservations alone do not establish live artist processes.
 
@@ -36,20 +36,29 @@ Read `batch-12-brief.md` and `batch-12-worker-state.json`. Resume only missing I
 | Alchemist's Reagent Kit | `brown_instant_70` | Accepted | [512×512 PNG](../../game/cards/art/masters/brown_instant_70.png) |
 | Storm Jar Generator | `brown_instant_71` | Accepted | [512×512 PNG](../../game/cards/art/masters/brown_instant_71.png) |
 | Troll Rock Grinder | `brown_instant_72` | Accepted | [512×512 PNG](../../game/cards/art/masters/brown_instant_72.png) |
+| Smelling Salts | `brown_instant_73` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/brown_instant_73.png) |
+| Antidote Kit | `brown_instant_74` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/brown_instant_74.png) |
+| Elven Purifying Lamp | `brown_instant_75` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/brown_instant_75.png) |
+| Copying Press | `brown_instant_76` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/brown_instant_76.png) |
 | Cinder Rampart | `cinder_rampart` | Accepted | [512×512 PNG](../../game/cards/art/masters/cinder_rampart.png) |
 | Kitsune Blessing | `fire_boon_13` | Accepted | [512×512 PNG](../../game/cards/art/masters/fire_boon_13.png) |
 | Phoenix Rebirth | `fire_boon_14` | Accepted | [512×512 PNG](../../game/cards/art/masters/fire_boon_14.png) |
+| War Drums | `fire_boon_15` | Accepted | [512×512 PNG](../../game/cards/art/masters/fire_boon_15.png) |
 | Blasting Caps | `fire_charge_13` | Accepted | [512×512 PNG](../../game/cards/art/masters/fire_charge_13.png) |
 | Shishi Pearl | `fire_charge_14` | Accepted | [512×512 PNG](../../game/cards/art/masters/fire_charge_14.png) |
 | Sea of Flames | `fire_environment_12` | Accepted | [512×512 PNG](../../game/cards/art/masters/fire_environment_12.png) |
 | Cannonball | `fire_lob_15` | Accepted | [512×512 PNG](../../game/cards/art/masters/fire_lob_15.png) |
 | Basalt Boulder | `fire_lob_16` | Accepted | [512×512 PNG](../../game/cards/art/masters/fire_lob_16.png) |
+| Rockfall | `fire_lob_17` | Accepted | [512×512 PNG](../../game/cards/art/masters/fire_lob_17.png) |
 | Mine Cart Barricade | `fire_machine_08` | Accepted | [512×512 PNG](../../game/cards/art/masters/fire_machine_08.png) |
-| Gremlin Clockwork Drone | `fire_machine_09` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/fire_machine_09.png) |
+| Gremlin Clockwork Drone | `fire_machine_09` | Accepted | [512×512 PNG](../../game/cards/art/masters/fire_machine_09.png) |
+| Dragon-Mouth Cannon | `fire_machine_10` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/fire_machine_10.png) |
 | Forge Hammer Throw | `fire_strike_14` | Accepted | [512×512 PNG](../../game/cards/art/masters/fire_strike_14.png) |
 | Red-Hot Rivet | `fire_strike_15` | Accepted | [512×512 PNG](../../game/cards/art/masters/fire_strike_15.png) |
+| Molten Slag Spray | `fire_strike_16` | Accepted | [512×512 PNG](../../game/cards/art/masters/fire_strike_16.png) |
 | Nine-Tailed Kitsune | `fire_summon_09` | Accepted | [512×512 PNG](../../game/cards/art/masters/fire_summon_09.png) |
 | Fire Fox | `fire_summon_10` | Accepted | [512×512 PNG](../../game/cards/art/masters/fire_summon_10.png) |
+| Coyote Trickster | `fire_summon_11` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/fire_summon_11.png) |
 | Molten Shell | `fire_ward_14` | Accepted | [512×512 PNG](../../game/cards/art/masters/fire_ward_14.png) |
 | Northern Lights | `frost_boon_14` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_boon_14.png) |
 | Lucky Doubloon | `frost_boon_15` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_boon_15.png) |
@@ -59,11 +68,14 @@ Read `batch-12-brief.md` and `batch-12-worker-state.json`. Resume only missing I
 | Fimbulwinter | `frost_environment_13` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_environment_13.png) |
 | Whirlpool Ring | `frost_lob_14` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_lob_14.png) |
 | Falling Iceberg | `frost_lob_15` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_lob_15.png) |
+| Message in a Bottle | `frost_lob_16` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_lob_16.png) |
 | Icebreaker Engine | `frost_machine_08` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_machine_08.png) |
+| Waterwheel Repeater | `frost_machine_09` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_machine_09.png) |
 | Cutlass Slash | `frost_strike_13` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_strike_13.png) |
 | Boarding Axe | `frost_strike_14` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_strike_14.png) |
+| Grapeshot Volley | `frost_strike_15` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_strike_15.png) |
 | Rusalka | `frost_summon_09` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_summon_09.png) |
-| Kappa | `frost_summon_10` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/frost_summon_10.png) |
+| Kappa | `frost_summon_10` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_summon_10.png) |
 | Walls of Ys | `frost_ward_13` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_ward_13.png) |
 | Dome of Atlantis | `frost_ward_14` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_ward_14.png) |
 | Grave Rampart | `grave_rampart` | Accepted | [512×512 PNG](../../game/cards/art/masters/grave_rampart.png) |
@@ -82,25 +94,38 @@ Read `batch-12-brief.md` and `batch-12-worker-state.json`. Resume only missing I
 | Rampaging Rhino | `gray_summon_130` | Accepted | [512×512 PNG](../../game/cards/art/masters/gray_summon_130.png) |
 | Charging Bison | `gray_summon_131` | Accepted | [512×512 PNG](../../game/cards/art/masters/gray_summon_131.png) |
 | Woolly Mammoth | `gray_summon_132` | Accepted | [512×512 PNG](../../game/cards/art/masters/gray_summon_132.png) |
-| Elephant Bird | `gray_summon_133` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/gray_summon_133.png) |
+| Elephant Bird | `gray_summon_133` | Accepted | [512×512 PNG](../../game/cards/art/masters/gray_summon_133.png) |
+| Stone-Dropping Vulture | `gray_summon_134` | Accepted | [512×512 PNG](../../game/cards/art/masters/gray_summon_134.png) |
+| Thunder Ram | `gray_summon_135` | Accepted | [512×512 PNG](../../game/cards/art/masters/gray_summon_135.png) |
+| Familiar Cat | `gray_summon_136` | Accepted | [512×512 PNG](../../game/cards/art/masters/gray_summon_136.png) |
+| Tabby Familiar | `gray_summon_137` | Accepted | [512×512 PNG](../../game/cards/art/masters/gray_summon_137.png) |
+| Aurora of the Pole | `hero_aurora` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_aurora.png) |
 | The Banshee | `hero_banshee` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_banshee.png) |
 | Cyclona | `hero_cyclona` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_cyclona.png) |
+| The Grovewalker | `hero_grovewalker` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_grovewalker.png) |
 | Halo, the Choir Child | `hero_halo` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_halo.png) |
 | Bloomwarden Lia | `hero_lia` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_lia.png) |
+| The Gilded Pharaoh | `hero_pharaoh` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_pharaoh.png) |
 | Phoenixia | `hero_phoenixia` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_phoenixia.png) |
+| Quarrel the Thunder Bolt | `hero_quarrel` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/hero_quarrel.png) |
+| Count Sanguis | `hero_sanguis` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_sanguis.png) |
 | Shade the Silent | `hero_shade` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_shade.png) |
 | Rimeblade Sora | `hero_sora` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_sora.png) |
-| Varn, the Ash King | `hero_varn` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/hero_varn.png) |
+| Varn, the Ash King | `hero_varn` | Accepted | [512×512 PNG](../../game/cards/art/masters/hero_varn.png) |
 | Angelic Veil | `light_boon_12` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_boon_12.png) |
 | Valkyrie's Reprieve | `light_boon_13` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_boon_13.png) |
 | Bag of Winds | `light_charge_13` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_charge_13.png) |
 | Thousand Paper Cranes | `light_charge_14` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_charge_14.png) |
 | Southern Cross Starfall | `light_lob_14` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_lob_14.png) |
 | Downdraft | `light_lob_15` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_lob_15.png) |
+| Owl Pellet | `light_lob_16` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_lob_16.png) |
 | Norman Keep | `light_machine_08` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_machine_08.png) |
+| Onager Catapult | `light_machine_09` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_machine_09.png) |
 | Unicorn Horn Thrust | `light_strike_13` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_strike_13.png) |
 | Aegis Bash | `light_strike_14` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_strike_14.png) |
+| Starlight Lance | `light_strike_15` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_strike_15.png) |
 | Thousand-Year Crane | `light_summon_08` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_summon_08.png) |
+| Barn Owl | `light_summon_09` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_summon_09.png) |
 | Emerald Tablet | `light_utility_12` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_utility_12.png) |
 | Canon of Medicine | `light_utility_13` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_utility_13.png) |
 | Ishtar Gate | `light_ward_15` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_ward_15.png) |
@@ -109,36 +134,46 @@ Read `batch-12-brief.md` and `batch-12-worker-state.json`. Resume only missing I
 | Infernal Contract | `shadow_boon_14` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_boon_14.png) |
 | Banshee's Comb | `shadow_charge_12` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_charge_12.png) |
 | Vampire Fang Necklace | `shadow_charge_13` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_charge_13.png) |
+| Pandora's Jar | `shadow_charge_14` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_charge_14.png) |
 | Pox Cloud | `shadow_lob_15` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_lob_15.png) |
 | Bottled Nightmare | `shadow_lob_16` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_lob_16.png) |
 | Black Death | `shadow_lob_17` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_lob_17.png) |
+| Jar of Carrion Beetles | `shadow_lob_18` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_lob_18.png) |
 | Banshee Wail | `shadow_strike_13` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_strike_13.png) |
 | Strigoi Bite | `shadow_strike_14` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_strike_14.png) |
 | Plague Breath | `shadow_strike_15` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_strike_15.png) |
+| Gallows Rope | `shadow_strike_17` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_strike_17.png) |
 | Vampire Thrall | `shadow_summon_10` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_summon_10.png) |
 | Vampire Bat | `shadow_summon_11` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_summon_11.png) |
+| Tokoloshe | `shadow_summon_12` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_summon_12.png) |
 | Aurum Potabile | `storm_boon_13` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_boon_13.png) |
 | Lightning Step | `storm_boon_14` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_boon_14.png) |
+| Horus's Watch | `storm_boon_15` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/storm_boon_15.png) |
 | Thunderbolt Sheaf | `storm_charge_13` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_charge_13.png) |
 | Golden Arrow Quiver | `storm_charge_14` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_charge_14.png) |
 | Storm Cloud Seed | `storm_lob_14` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_lob_14.png) |
 | Hail of Dinars | `storm_lob_15` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_lob_15.png) |
+| Great Work Detonation | `storm_lob_16` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/storm_lob_16.png) |
 | Desert Onager | `storm_machine_09` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_machine_09.png) |
 | Caravan Mangonel | `storm_machine_10` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_machine_10.png) |
 | Sirocco Gust | `storm_strike_14` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_strike_14.png) |
 | Haboob Wall | `storm_strike_15` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_strike_15.png) |
+| Scimitar Sweep | `storm_strike_16` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/storm_strike_16.png) |
 | Khepri's Dawn Beetle | `storm_summon_09` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_summon_09.png) |
 | Desert Camel | `storm_summon_10` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_summon_10.png) |
 | Cobra Basket Trap | `storm_trap_12` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_trap_12.png) |
 | Mirage Oasis | `storm_trap_13` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_trap_13.png) |
 | Thornwood Cage | `thornwood_cage` | Accepted | [512×512 PNG](../../game/cards/art/masters/thornwood_cage.png) |
 | Tapio's Favour | `verdant_boon_12` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_boon_12.png) |
-| Demeter's Bounty | `verdant_boon_13` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/verdant_boon_13.png) |
+| Demeter's Bounty | `verdant_boon_13` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_boon_13.png) |
 | Marsh Leech Pouch | `verdant_charge_14` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_charge_14.png) |
-| Elven Moonshaft Quiver | `verdant_charge_15` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/verdant_charge_15.png) |
+| Elven Moonshaft Quiver | `verdant_charge_15` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_charge_15.png) |
 | Birnam Wood Marches | `verdant_environment_08` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_environment_08.png) |
+| Ent Moot | `verdant_environment_09` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_environment_09.png) |
 | Mokele-mbembe's Wake | `verdant_lob_14` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_lob_14.png) |
 | Fall of the Great Ceiba | `verdant_lob_15` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_lob_15.png) |
 | Komodo Bite | `verdant_strike_15` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_strike_15.png) |
 | Curare Needle | `verdant_strike_16` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_strike_16.png) |
+| Creeping Ivy | `verdant_strike_17` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/verdant_strike_17.png) |
 | Pixie Swarm | `verdant_summon_14` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_summon_14.png) |
+| Robin Goodfellow | `verdant_summon_15` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_summon_15.png) |

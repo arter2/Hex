@@ -2872,5 +2872,113 @@
     "status": "generated",
     "batch": 12,
     "reviewNote": "Inspected 512 source, wide crop and 128 thumbnail: Varn’s face, crown and casting hand are clear; piercing fire ray crosses the enemy row, with nearby fighters secondary."
+  },
+  {
+    "cardId": "fire_strike_16",
+    "name": "Molten Slag Spray",
+    "prompt": "Paint an illustration for the exact card Molten Slag Spray. A fire-forged battle mage sweeps a short iron ladle and palm forward, casting a broad fan of viscous orange-white molten slag across a row of three armored enemies. The hot metal visibly splashes and pierces through the line, cooling into dark crust on their shields and slowing their recoil; the mage's focused face, hand, spray fan and first impact are crisp and central. Keep the action horizontal and compact, with no oversized glare obscuring the substance. Painterly medieval fantasy collectible-card art, richly textured molten metal, iron, leather and cracked stone, dramatic glow against blue-black smoke, expressive traditional brushwork and atmospheric depth. Square 1:1 canvas for a 512×512 master; keep face, relevant hand, full spray fan and impact within x24..488,y105..407 for the 206:141 crop, quiet background above/below. No frame, lettering, runes, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5d5e1bc2-9f3c-4d72-9ba0-c72375c2bbd6.png",
+    "editableSourcePath": "game/cards/art/masters/fire_strike_16.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Inspected 512 source, wide crop and 128 thumbnail: mage face and open casting hand, full fan of slag and piercing row impact remain clear; incidental hair is slightly cropped."
+  },
+  {
+    "cardId": "fire_lob_17",
+    "name": "Rockfall",
+    "prompt": "Paint an illustration for the exact card Rockfall. A row of heavy volcanic boulders breaks free from a cliff and crashes across a narrow medieval road, one massive central rock striking the ground among several armored soldiers and knocking them down in a dusty stunning burst. Show the clear rockfall source and the row-spanning cascade of rounded stones; the main boulder and impact dominate the central horizontal frame, small soldiers supply scale. Painterly medieval high-fantasy collectible-card art, believable basalt, fractured earth and armor, warm ember glow inside stone cracks against cool ash haze, dramatic light, rich brushwork and atmospheric depth. Square 1:1 canvas for a 512×512 master; keep the main rocks and impact action inside x24..488,y105..407 for the 206:141 card crop; quiet cliff sky above and dusted ground below. No frame, text, runes, UI, cartoon, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-46350049-55f8-4eec-b052-3e88d72a0dd0.png",
+    "editableSourcePath": "game/cards/art/masters/fire_lob_17.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Inspected 512 source, wide crop and 128 thumbnail: central basalt boulder, cascading rocks and knocked-down soldiers make the rockfall clear; crop retains the large impact."
+  },
+  {
+    "cardId": "fire_boon_15",
+    "name": "War Drums",
+    "prompt": "Paint an illustration for the exact card War Drums. A rugged medieval drummer in soot-dark leather runs into battle with a compact pair of shallow bronze-and-hide war drums strapped across the chest; the full two drumheads sit beside the drummer's focused face at the same height while raised hands strike them with short mallets. Each beat releases a low rolling ring of ember-lit air, and a few nearby armored allies surge forward faster in response. Keep the pair of drums, both mallets, face and hands compact and unmistakable in the middle horizontal band; no tall drums that hang below the face. Painterly medieval fantasy collectible-card art, textured hide, hammered bronze, leather straps and wool, warm firelight against cool smoke, energetic but grounded anatomy, rich brushwork and atmospheric depth. Square 1:1 canvas for a 512×512 master; protect the complete drums and drummer's face/hands inside x24..488,y105..407 for the 206:141 crop, quiet margins above and below. No frame, lettering, runes, UI, modern drum kit, cartoon, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-346d8412-99e9-4dd1-a0ea-d07b9d2888e4.png",
+    "editableSourcePath": "game/cards/art/masters/fire_boon_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Shifted focal crop upward to include drummer hairline, eyes and full face while retaining both complete drumheads, mallets and hands. Inspected shifted wide crop and 128 thumbnail; only lower knees are incidental."
+  },
+  {
+    "cardId": "fire_summon_11",
+    "name": "Coyote Trickster",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Coyote Trickster”. Paint a pair of sturdy sly coyotes charging low across a sun-baked canyon floor, one dominant in the foreground with alert amber eyes, pointed ears and powerful paws, the second following close behind. Their bodies show dry tawny fur and lean wolfish shape, with a subtle ember glimmer in their eyes; one darts around a distant foe with cunning intent. Grounded wild canids, not cartoon. Painterly medieval/high-fantasy collectible-card art, richly painted believable glass, bronze, iron, wood, leather and fur, warm directional firelight, readable values and atmospheric depth. Match the supplied fire references' warm forge glow, ember detail and grounded fantasy materials. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep identity-critical face/eyes/hands and the entire named subject within x24–488,y105–407 on the square; compose horizontally for a 206:141 card crop with quiet expendable scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-9c3b4c12-0ed0-4414-8edc-25695540b514.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square source and centered 206:141 crop inspected: lead coyote’s eyes and forward paws remain visible, the second coyote is distinct, and the pair reads as a charging summon at thumbnail size."
+  },
+  {
+    "cardId": "fire_machine_10",
+    "name": "Dragon-Mouth Cannon",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Dragon-Mouth Cannon”. Paint a complete medieval bronze-and-iron cannon whose muzzle is shaped like a fierce dragon's open mouth, with sculpted scales, jaws and visible teeth framing the bore. The cannon sits on a sturdy wooden carriage, firing one bright piercing fire bolt across a dark stone battlefield; make the entire dragon-head muzzle and cannon body visible and unmistakable, no crew needed. Painterly medieval/high-fantasy collectible-card art, richly painted believable glass, bronze, iron, wood, leather and fur, warm directional firelight, readable values and atmospheric depth. Match the supplied fire references' warm forge glow, ember detail and grounded fantasy materials. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep identity-critical face/eyes/hands and the entire named subject within x24–488,y105–407 on the square; compose horizontally for a 206:141 card crop with quiet expendable scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-a156d77c-fa34-4d20-bd5e-c381cf27e672.png",
+    "editableSourcePath": "game/cards/art/masters/fire_machine_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square source and centered 206:141 crop inspected: complete dragon-head muzzle, barrel, and fire bolt remain clear; the left edge clips part of the wooden carriage wheel, while the named cannon is intact and reads at thumbnail size."
+  },
+  {
+    "cardId": "hero_emberly",
+    "name": "Emberly the Lamplighter",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Emberly the Lamplighter”. Paint Emberly, a capable young lamplighter heroine with a clear face, wearing practical medieval wool and leather, holding a compact warm-glowing lantern beside her face. With her free hand she guides three small linked flames in a graceful chain across a dusky city lane, igniting distant braziers; face, lantern and casting hand all clear. Warm sparks suggest a quick chain attack and a deepening spell reserve. Painterly medieval/high-fantasy collectible-card art, richly painted believable glass, bronze, iron, wood, leather and fur, warm directional firelight, readable values and atmospheric depth. Match the supplied fire references' warm forge glow, ember detail and grounded fantasy materials. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep identity-critical face/eyes/hands and the entire named subject within x24–488,y105–407 on the square; compose horizontally for a 206:141 card crop with quiet expendable scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-90b8de1f-3ba8-4db2-ab24-6fb27b051a0f.png",
+    "editableSourcePath": "game/cards/art/masters/hero_emberly.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square source and centered 206:141 crop inspected: Emberly’s face, lantern and raised casting hand stay clear, and the linked flame chain reads across the thumbnail."
   }
 ]

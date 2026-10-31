@@ -2785,5 +2785,77 @@
     "status": "generated",
     "batch": 12,
     "reviewNote": "Square, centered 206:141 crop, and 128x88 thumbnail inspected. Full horizontal quiver, closure, silver fittings and arrow fletching/heads remain visible within the crop and recognizable at thumbnail size."
+  },
+  {
+    "cardId": "verdant_environment_09",
+    "name": "Ent Moot",
+    "prompt": "Paint an original environment illustration for “Ent Moot.” Show a gathering of ancient ent treefolk in a broad ring within a forest clearing, their weathered bark faces and branchlike arms alive with solemn attention as an elder Ent addresses the circle. At the elder's gesture, the ground gives a sudden short tremor: roots heave, stones jump and a burst of leaves swirls through the center. Keep the speaking Ent and several other distinct treefolk recognizable, while the group and clearing read as one council of living trees. Painterly medieval high-fantasy woodland, monumental trunks, moss, expressive natural faces, dramatic shafts of light, atmospheric depth, grounded non-cartoon forms. Horizontal, clear composition. True 1:1 SQUARE canvas for a 512x512 master; keep the elder's face, nearest Ent faces, central root movement and burst of stones inside x24..488 and y105..407. Quiet canopy and foreground above/below; center will be cropped to a wide 206:141 card illustration. No text, lettering, frame, UI, anime, Disney-like cartoon, toy proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f2ae1df5-3c83-480e-8849-60f7b8e480b2.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_environment_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square, centered 206:141 crop, and 128x88 thumbnail inspected. The speaking elder, several distinct Ent faces, and the burst of lifted stones/leaves remain readable as a forest council disturbed by tremor."
+  },
+  {
+    "cardId": "verdant_summon_15",
+    "name": "Robin Goodfellow",
+    "prompt": "Paint an original creature portrait for the fantasy card “Robin Goodfellow.” Depict a sly but noble forest fairy trickster, Robin Goodfellow himself, with a clear mischievous adult face, leaf-woven mantle, sturdy leather details and delicate translucent wings. He crouches beside a small woodland companion and raises a luminous acorn-shaped buckler that projects a subtle protective green shield around them. The fairy's eyes, shield-bearing hand and acorn buckler should be close together and primary; his expression is clever rather than silly. Painterly medieval high-fantasy art, nuanced bark, leaf, leather and wing textures, dramatic warm light through deep green woodland, atmospheric depth and grounded anatomy. Broad horizontal grouping, no toy-like proportions. True 1:1 SQUARE canvas for a 512x512 master; keep Robin's face, eyes, hand, whole buckler and companion within x24..488 and y105..407. Quiet canopy and moss above/below; center will be cropped to a wide 206:141 card illustration. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5342e453-ee59-4887-bb38-641e301d5927.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square, centered 206:141 crop, and 128x88 thumbnail inspected. Robin's sly face and eyes, shield-bearing hand, complete acorn buckler and woodland companion remain legible; protective glow is restrained."
+  },
+  {
+    "cardId": "hero_grovewalker",
+    "name": "The Grovewalker",
+    "prompt": "Repaint “The Grovewalker” as an original painterly medieval high-fantasy hero scene. Show one mighty woodland guardian made of ancient living bark and moss hurling a single mossy boulder. Carefully arrange the subjects with clear side margins: Grovewalker's complete readable face around x150..245, the throwing hand around x270..330, and the entire round boulder around x340..460, leaving visible background beyond its right edge. Keep face, hand and whole boulder on the same middle height, approximately y135..300; do not place the face above or behind the boulder, and do not crop any part of the stone. The guardian's leafy shoulders and trunklike body can fill the lower center; the boulder is large and clear but small enough to fit entirely in the horizontal card crop. A restrained spray of leaves trails the throw. Painterly medieval high-fantasy art, believable bark, moss, stone and natural armor, warm directional woodland light, atmospheric depth, grounded anatomy and strong readable silhouette. True 1:1 SQUARE canvas for a 512x512 master; keep face, hand, and complete boulder within x24..488 and y105..407. Quiet canopy and ground above/below; center will be cropped to a wide 206:141 card illustration. No text, lettering, frame, UI, anime, Disney-like cartoon, toy proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9c539b8a-2b47-44dc-a0a9-27b2157703b1.png",
+    "editableSourcePath": "game/cards/art/masters/hero_grovewalker.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Repainted after the first image cropped the boulder at the square edge. Square, centered 206:141 crop, and 128x88 thumbnail inspected: The Grovewalker's full face, throwing hand, and entire mossy boulder fit together with side margin. Earlier source preserved at /tmp/b12_worker_4_scratch/hero_grovewalker_attempt1.png."
+  },
+  {
+    "cardId": "verdant_strike_17",
+    "name": "Creeping Ivy",
+    "prompt": "Paint an original illustration for the fantasy strike “Creeping Ivy.” Show a quick row-wise surge of living ivy racing horizontally across an old forest floor, its thick green tendrils wrapping around the greaves and sword hand of one armored raider. The plant is the clear subject: sharply detailed leaves and muscular twisting stems, with a few thorn points and small dirt clods showing its force. Keep the ivy's contact with the target visible without hiding the leaves or becoming a generic green magic beam. Painterly medieval high-fantasy art, believable leaf, bark, leather and steel, dramatic low forest light, atmospheric depth and grounded mature style. Strong left-to-right horizontal action, readable at small size. True 1:1 SQUARE canvas for a 512x512 master; keep the ivy's central tendrils, target contact point, and relevant hand/weapon within x24..488 and y105..407. Quiet canopy and earth above/below; center will be cropped to a wide 206:141 card illustration. No text, lettering, frame, UI, anime, Disney-like cartoon, toy proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b704efc2-0893-417d-98a2-367086cb4b44.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_17.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square, centered 206:141 crop, and 128x88 thumbnail inspected. The horizontal ivy surge and its wrap around the raider's greaves/hand are clear; the raider's face and contact point remain visible."
   }
 ]

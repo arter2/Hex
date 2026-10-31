@@ -2833,5 +2833,95 @@
     "status": "generated",
     "batch": 12,
     "reviewNote": "Square source and centered 206:141 crop inspected: the complete open codex, tooled cover, and illustrated pages remain visible and dominate the thumbnail; cleansing light is clear while the stand is incidental."
+  },
+  {
+    "cardId": "light_summon_09",
+    "name": "Barn Owl",
+    "prompt": "Square 1:1 painterly medieval high-fantasy collectible-card illustration, bright moonlit barn loft with warm straw highlights. Barn Owl: one sturdy tawny barn owl launching into a short swift dash from an old beam, wings half-spread, full pale heart-shaped face, dark eyes and both wing silhouettes clear. Fine feathers lift with a subtle static sparkle and two delicate blue-gold arcs, suggesting its electrical trait without hiding the bird. The owl is the sole main subject, horizontally centered in middle 60%, face, eyes, wing edges and body within x24..488 y105..407; quiet loft beams and twilight above and below. Painterly natural anatomy, strong feather detail, attractive light, clean readable silhouette small. No text, frame/UI/logo/watermark, Disney, anime, toy cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c46b0b82-a18d-44e9-a1e5-47b0351e3769.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.16
+    ],
+    "reviewNote": "Reviewed the 512-square source, upward-shifted 206:141 crop and 128x88 thumbnail. Owl’s full face and both wing tips fit with the static sparks; lower beam and feet are incidental.",
+    "batch": 12,
+    "status": "generated"
+  },
+  {
+    "cardId": "light_machine_09",
+    "name": "Onager Catapult",
+    "prompt": "Square 1:1 painterly medieval high-fantasy collectible-card illustration with warm stone and golden sunlight. Onager Catapult: a compact fully visible ancient torsion catapult on a sturdy timber frame, clear single throwing arm, twisted rope bundle, sling with one round stone, and two complete wooden wheels. Show it in side view with the arm cocked at a low angle, whole machine horizontally centered across the middle 60%, all frame, wheels, arm and sling within x24..488 y105..407. No operator needed; quiet stone courtyard and distant walls above and below. Believable iron fittings and rope, rich oak grain, dramatic but clear light, painterly construction, readable small. No text, frame/UI/logo/watermark, modern machinery, Disney, anime, toy cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-244c4b56-1645-414e-97bf-0148565a0d16.png",
+    "editableSourcePath": "game/cards/art/masters/light_machine_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Complete catapult frame, both wheels, arm, sling and stone remain visible.",
+    "batch": 12,
+    "status": "generated"
+  },
+  {
+    "cardId": "hero_pharaoh",
+    "name": "The Gilded Pharaoh",
+    "prompt": "Square 1:1 painterly medieval high-fantasy hero portrait, luminous gold and deep lapis in warm sunfire. The Gilded Pharaoh: a dignified Egyptian-inspired ruler in layered linen and ornate gilded collar, with a striking but human face, clear eyes, and a gold-and-lapis nemes crown with a small cobra emblem. One raised hand gathers a controlled ring of sunfire around a bright central orb; the other holds a ceremonial scepter low. Face and both hands visible, no mask. Compose head, shoulders and sunfire hand horizontally across middle 60%, keep face, eyes, hands and orb within x24..488 y105..407, quiet temple architecture above and below. Painterly grounded materials, majestic not cartoonish, strong readable silhouette. No text, frame/UI/logo/watermark, Disney, anime, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-55e9c292-29a5-434f-9db5-30cae5e027b9.png",
+    "editableSourcePath": "game/cards/art/masters/hero_pharaoh.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.16
+    ],
+    "reviewNote": "Reviewed the 512-square source, upward-shifted 206:141 crop and 128x88 thumbnail. Pharaoh’s complete face, eyes, both hands and sunfire orb fit; lower scepter and robe are secondary.",
+    "batch": 12,
+    "status": "generated"
+  },
+  {
+    "cardId": "light_strike_15",
+    "name": "Starlight Lance",
+    "prompt": "Square 1:1 painterly medieval high-fantasy collectible-card art, cool midnight blue with brilliant star-silver highlights. Starlight Lance: a complete elegant long lance of dark polished wood and silver fittings, laid diagonally only slightly so its entire grip, shaft and luminous spearhead fit in the horizontal center; the spearhead is shaped like a crisp four-point star with a fine piercing ray and faint constellation sparks. A gauntleted hand may hold it at the grip, but keep the lance as the clear primary subject and no face is needed. Whole weapon entirely inside x30..480 y145..365, centered in the middle 60% with open sky and distant stone parapet above and below. Painterly believable weapon craft, sharp clean silhouette, luminous but controlled light, readable small. No text, runes, card frame/UI/logo/watermark, modern objects, Disney, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-44009b18-d77a-4227-8892-85f2abd6ba58.png",
+    "editableSourcePath": "game/cards/art/masters/light_strike_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. The full lance, grip and star-shaped point are clear and entirely within frame.",
+    "batch": 12,
+    "status": "generated"
+  },
+  {
+    "cardId": "light_lob_16",
+    "name": "Owl Pellet",
+    "prompt": "Square 1:1 painterly medieval high-fantasy collectible-card illustration, soft ivory light and warm gold accents. Owl Pellet: a small barn owl swoops at the left edge of the main action, its pale heart-shaped face and alert eyes clearly recognizable, releasing one smooth luminous ivory-gold oval pellet that arcs toward the right and strikes a stone target with a neat bright knockback spark. Treat the pellet as a magical projectile, clean and feather-light, not biological or gross; the owl remains a clear source cue. Keep owl face, pellet and small impact entirely within x24..488 y105..407, horizontally arranged across the middle 60%, quiet dusk sky and stone courtyard above and below. Painterly natural feathers, controlled sparkle, readable silhouette at thumbnail size. No writing, text, frame/UI/logo/watermark, modern objects, Disney, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-30643763-5280-4ab8-952f-53d87f9cc183.png",
+    "editableSourcePath": "game/cards/art/masters/light_lob_16.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Owl’s face, luminous pellet, trajectory and knockback impact are visible; upper wing tips are incidental and partly cropped."
   }
 ]

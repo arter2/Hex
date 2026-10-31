@@ -2859,11 +2859,83 @@
     ],
     "focalPoint": [
       0.5,
-      0.42
+      0.4
     ],
     "status": "generated",
     "batch": 12,
-    "reviewNote": "512-square editable source prepared; crop shifted upward (focalPoint y=0.42) to protect the bird's full head and beak. Lower feet are secondary.",
+    "reviewNote": "512-square source, upward-shifted wide crop (focalPoint y=0.40) and thumbnail reviewed. The bird’s full crown, face, hooked beak and strong torso fit; lower feet are incidental. Parent review pending.",
     "cardId": "gray_summon_133"
+  },
+  {
+    "name": "Stone-Dropping Vulture",
+    "prompt": "Paint an illustration for the Hexmancers card “Stone-Dropping Vulture.” A hungry vulture circles low over a medieval battlefield and drops a single clearly visible gray stone from its talons toward the ground below; show the bird's hooked beak, focused eye and broad wings clearly, with a second tiny escorting bird far behind. The stone is a compact helper projectile, fully visible and distinct from the clouds. Painterly medieval high-fantasy collectible-card art, believable mottled feathers and weathered stone, directional golden light cutting through cool storm clouds, atmospheric depth, strong silhouette readable at thumbnail scale. Square 1:1 composition for a 512x512 master; keep the main bird's head and talons and the whole falling stone within x24..488,y105..407, center the action in the middle 60%, quiet sky and distant terrain top/bottom for 206:141 crop. No frame, lettering, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6e2d79b1-c2b4-42d0-9519-8ea681b70ad9.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_134.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square source, centered wide crop and thumbnail reviewed. Vulture's face and talons plus the complete falling stone remain clear; cropped wing tips are incidental. Parent review pending.",
+    "cardId": "gray_summon_134"
+  },
+  {
+    "name": "Thunder Ram",
+    "prompt": "Paint an illustration for the Hexmancers card “Thunder Ram.” A brave, massive mountain ram charges head-on along a rocky pass, curled horns lowered, shaggy gray fleece blown by the wind, hooves striking stone as a restrained chain of blue-white thunder flashes from one rock outcrop to the next behind it. The ram's steady face, both horns and powerful front hooves are the dominant subject; no rider. Painterly medieval high-fantasy collectible-card art, believable wool, horn and stone, dramatic storm light, rich material detail and atmospheric depth, clear silhouette at thumbnail size. Square 1:1 composition for a 512x512 master; keep full head, both horn tips, front shoulders and hooves inside x24..488,y105..407, horizontal forward action in middle 60%, quiet storm mist above and below for 206:141 crop. No frame, text, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5ec56f00-d465-493f-9991-f968136209f9.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_135.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square source, centered wide crop and thumbnail reviewed. The ram's face, both horn tips and striking forehoof fit, with the thunder chain and charging pose readable. Parent review pending.",
+    "cardId": "gray_summon_135"
+  },
+  {
+    "name": "Familiar Cat",
+    "prompt": "Paint an illustration for the Hexmancers summon “Familiar Cat.” Two familiar cats are present as a paired summon: a poised gray cat in the foreground pads toward the viewer with gentle bright eyes, while a second companion follows close behind beside a shallow moonlit stream. Their sleek coats and quiet alert posture feel uncanny but tender; a few pale water ripples trail their paws to hint at the tidal bond. Painterly medieval high-fantasy collectible-card art, natural cat anatomy, beautifully textured fur and whiskers, soft directional moonlight, atmospheric depth and a clear readable paired silhouette at small size. Square 1:1 composition for a 512x512 master; keep the front cat's entire face, ears and body visible and the second cat recognizable within x24..488,y105..407, center both in the middle 60%, quiet stream and shadow above/below for 206:141 crop. No frame, letters, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-84f17b92-0058-445d-9760-6b13313ecd1e.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_136.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square source, centered wide crop and thumbnail reviewed. Both familiar cats' faces and bodies remain visible with the moonlit water-walking action; the paired summon reads clearly. Parent review pending.",
+    "cardId": "gray_summon_136"
+  },
+  {
+    "name": "Tabby Familiar",
+    "prompt": "Paint an illustration for the Hexmancers summon “Tabby Familiar.” A single orange-brown tabby cat with clear dark stripes sits beside a medieval adventurer's resting hand, touching the wrist gently with one raised paw as a soft golden healing light mends a small cut. The cat's expressive eyes, striped face and complete compact body are the clear subject; a tiny startled beetle or distant foe reacting to a lucky glint can hint at its uncanny luck, but remain secondary. Painterly medieval high-fantasy collectible-card art, natural cat anatomy, richly painted fur and whiskers, warm candlelight against cool evening shadows, atmospheric depth and a gentle but magical mood, readable at small card size. Square 1:1 composition for a 512x512 master; keep the cat's full face, ears, body and touching paw within x24..488,y105..407, subject in middle 60%, quiet stone and shadow above/below for a 206:141 crop. No frame, lettering, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-df961f46-02c1-4d31-a21b-795ff9b6ace1.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_137.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.47
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square source, upward-shifted wide crop (focalPoint y=0.47) and thumbnail reviewed. Tabby’s full striped face, both ear tips, body and healing paw remain visible; the adventurer's wounded wrist supports the mend and the beetle is secondary. Parent review pending.",
+    "cardId": "gray_summon_137"
   }
 ]

@@ -2206,5 +2206,95 @@
     "status": "generated",
     "batch": 11,
     "reviewNote": "The full firecracker string, fuse and blast are clear in the square and wide crop; the displaced foe is incidental context behind the artifact."
+  },
+  {
+    "cardId": "fire_trap_09",
+    "name": "Ember Spike Pit",
+    "prompt": "Paint an illustration for Ember Spike Pit, a short-lived trap of three large spikes that erupts from the ground and thrusts a foe back. Show a shallow circular black-stone pit in the middle of a rocky medieval pass, its complete raised rim and three broad pointed iron spikes thrusting upward through glowing ember cracks. One armored raider is caught at the edge and recoils from the burst; the whole named pit and all three spike tips are clear. The trap is the primary subject, with hot orange magma light against cool dusk stone. Painterly medieval high fantasy, textured basalt, iron and ash, dramatic directional light, atmospheric depth and grounded proportions. Explicit 1:1 SQUARE 512x512 canvas; keep the complete pit rim, all three spike tips and the clear impact inside x24..488,y105..407 for a 206:141 wide card crop, quiet rock and smoke above and below. No frame, lettering, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4031c47c-0e1b-47fb-b473-037c56265a9e.png",
+    "editableSourcePath": "game/cards/art/masters/fire_trap_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed the 512-square source, 206:141 crop and 128x88 thumbnail. The full stone pit rim, three ember-lit spike tips and recoiling foe stay in the crop; the three-spike trap reads clearly at thumbnail size."
+  },
+  {
+    "cardId": "fire_environment_10",
+    "name": "Rockslide Valley",
+    "prompt": "Paint an illustration for Rockslide Valley, a long tremor that sends a column of stone crashing down a mountain pass and stuns travelers. Show a dramatic narrow medieval highland valley in a quake: one powerful vertical column of broken boulders and dust collapses down the central cliff face, while a tiny distant caravan braces at the pass for scale. Strong readable valley walls frame the descending rock column; no generic fire spell. Painterly fantasy landscape with believable slate, granite, dust and sparse alpine pines, warm sunset light catching the falling rocks, atmospheric depth, energetic but clear brushwork. Explicit 1:1 SQUARE composition for 512x512 master; keep the defining valley and falling rock column inside x24..488,y105..407 for 206:141 wide crop, expendable sky and foreground gravel beyond. No text, card frame, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e4d821dc-4bd6-4f2d-9164-5a176afc0d4e.png",
+    "editableSourcePath": "game/cards/art/masters/fire_environment_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed the 512-square source, 206:141 crop and 128x88 thumbnail. The collapsing column of rocks and enclosing valley remain legible; tiny travelers establish scale and can be lost in the thumbnail."
+  },
+  {
+    "cardId": "fire_summon_07",
+    "name": "Phoenix Chick",
+    "prompt": "Paint an illustration for Phoenix Chick, a tiny but sturdy young phoenix that moves slowly, lashes enemies with a cone of flame and draws them toward it in fury. A vivid small young phoenix stands centered on a black volcanic ledge, complete bird visible from crest to tail; ember-gold feathers, ruby eyes and ash-grey down give it a recognizable juvenile bird silhouette without cute cartoon proportions. It beats its wings once, sending a broad short cone of flame toward an armored foe while a curling fire current pulls the foe toward it. Keep the bird larger and clearer than its target. Painterly medieval fantasy, finely brushed feathers, warm firelight against smoky dusk, grounded natural anatomy and atmospheric depth. Explicit 1:1 SQUARE 512x512 composition; complete phoenix body, face, wings and defining cone-and-pull action inside x24..488,y105..407 for 206:141 crop, quiet smoke above and basalt below. No frame, lettering, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-1abe9b16-ce2d-4668-9eb8-2b389a681251.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed the 512-square source, 206:141 crop and 128x88 thumbnail. The phoenix's head and body plus its cone of flame pulling a foe remain clear; upper wing tips and lower volcanic scenery are incidental crop details."
+  },
+  {
+    "cardId": "fire_machine_06",
+    "name": "Dwarven Siege Cannon",
+    "prompt": "Paint an illustration for Dwarven Siege Cannon, a sturdy medieval cannon sentry that fires steady heavy bolts and fills nearby enemies with dread and burning heat. A compact low dwarven bronze-and-oak siege cannon sits on a complete squat two-wheel carriage, barrel aimed horizontally; show its full muzzle, breech, axle and both wheels clearly. A stocky dwarven engineer with a readable face stands beside the cannon at the same height, one hand on the firing lever. The cannon fires one bright controlled shot across a stone battlement toward a distant recoiling armored foe. The complete compact machine is the named subject; no giant tall face-above-cannon layout. Painterly high fantasy, hammered bronze, oak, iron rivets, warm directional firelight and atmospheric depth, serious grounded style. Explicit 1:1 SQUARE 512x512 master; entire cannon, both carriage wheels, operator face and relevant hand fit inside x24..488,y105..407 for 206:141 card crop; quiet expendable smoke and fortress stone above and below. No frame, lettering, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0bb1e703-6cd5-4518-b189-211ebf7bb695.png",
+    "editableSourcePath": "game/cards/art/masters/fire_machine_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed the 512-square source, 206:141 crop and 128x88 thumbnail. The full cannon carriage and barrel, dwarf's face and operating hand fit the crop; the cannon remains dominant and recognizable at thumbnail size."
+  },
+  {
+    "cardId": "hero_kael",
+    "name": "Kael the Cinderblade",
+    "prompt": "Paint a dramatic hero-card illustration for Kael the Cinderblade. Show a formidable young adult human swordsman with a clear, intense face, ember-red hair, dark medieval armor and a distinctive single-edged cinderblade held in his visible hand. Kael completes one powerful horizontal sword slash; a controlled arc of orange fire traces the blade toward a recoiling armored enemy, suggesting a precise devastating strike and a chance of a critical blow. Keep Kael's face, sword hand and the full identity-defining blade visible together; firelight accents his cheek and armor without obscuring him. Painterly medieval high-fantasy collectible-card art, believable steel, leather and cloth, rich brushwork, dramatic directional light, atmospheric battlefield depth and grounded anatomy. Explicit 1:1 SQUARE 512x512 composition; keep Kael's complete face, relevant hand, full cinderblade and slash action inside x24..488,y105..407 for 206:141 wide crop, quiet expendable smoke and battlefield above and below. No frame, lettering, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8ebc65ca-14f5-4019-addd-83e1f15ad8b0.png",
+    "editableSourcePath": "game/cards/art/masters/hero_kael.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed the 512-square source, 206:141 crop and 128x88 thumbnail. Kael's full face, sword hand, cinderblade slash and the struck enemy remain clear in the wide crop and readable at thumbnail size."
   }
 ]

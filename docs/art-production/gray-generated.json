@@ -2217,5 +2217,95 @@
       1254
     ],
     "reviewNote": "Reviewed 512 square, top-shifted wide crop and thumbnail. Full face and both action hands remain visible with the magical blast and sword hilt/blade root; the sword extremity and lower legs are incidental."
+  },
+  {
+    "cardId": "gray_summon_98",
+    "name": "Veteran Captain",
+    "prompt": "Paint Veteran Captain as a painterly medieval/high-fantasy collectible-card illustration. A veteran medieval captain, older weathered face and gray beard, in worn but noble plate and cloak, leads from the front with a steady raised sword and a directing open hand. A few younger soldiers follow softly behind, suggesting an experienced escort and a controlled command gesture. Keep captain's face, sword hand and upper body prominent across the middle. Rich but restrained material color, attractive directional light, atmospheric depth, grounded anatomy, serious historical-fantasy tone, textured painterly brushwork matched to Hexmancers references. Explicit 1:1 square 512x512 master, arranged horizontally; keep primary face, relevant hands, weapon and action within x24..488,y105..407 for a 206:141 crop. Keep main subject in the middle 60%, quiet scenery above/below; incidental legs, horse tails and weapon extremities may naturally crop. No frame, text, letters, UI, anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-8a1f3933-c43e-4374-b738-bb1fa67206fa.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_98.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed 512-square source, default 206:141 crop and thumbnail: veteran captain's face, directing hand, sword grip and escort gesture remain clear; sword tip and lower body crop incidentally."
+  },
+  {
+    "cardId": "gray_summon_99",
+    "name": "Errant Knight",
+    "prompt": "Paint Errant Knight as a painterly medieval/high-fantasy collectible-card illustration. A brave errant knight in scarred but bright steel armor stands firmly at the front of a narrow bridge, shielding a companion behind him with a broad shield and lowered sword ready to guard. His face is visible through the raised visor, determined and steadfast; rain-dark stone and distant banners support the scene. Make the knight the dominant figure, with face, shield and hands central. Rich but restrained material color, attractive directional light, atmospheric depth, grounded anatomy, serious historical-fantasy tone, textured painterly brushwork matched to Hexmancers references. Explicit 1:1 square 512x512 master, arranged horizontally; keep primary face, relevant hands, weapon and action within x24..488,y105..407 for a 206:141 crop. Keep main subject in the middle 60%, quiet scenery above/below; incidental legs, horse tails and weapon extremities may naturally crop. No frame, text, letters, UI, anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-232858bf-04e1-4c8e-8e6b-fe8f30fd8aa2.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_99.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed 512-square source, default 206:141 crop and thumbnail: errant knight's face, shield and guarding sword hand remain clear; lower legs and foreground weapons crop incidentally."
+  },
+  {
+    "cardId": "gray_summon_101",
+    "name": "Gaucho with Bolas",
+    "prompt": "Paint Gaucho with Bolas as a painterly medieval/high-fantasy collectible-card illustration. A gaucho in traditional pampas riding clothes, dark bombacha trousers, woven poncho, boots and broad-brimmed hat, performs a clear bolas throw from horseback. His visible focused face and one raised hand whirl three weighted cords in a compact diagonal arc toward a distant target; the other hand holds reins. Argentine grassland at dusk, horse's head beside him, grounded historical fantasy. Keep face, throwing hand and complete readable bolas within the central horizontal band. Rich but restrained material color, attractive directional light, atmospheric depth, grounded anatomy, serious historical-fantasy tone, textured painterly brushwork matched to Hexmancers references. Explicit 1:1 square 512x512 master, arranged horizontally; keep primary face, relevant hands, weapon and action within x24..488,y105..407 for a 206:141 crop. Keep main subject in the middle 60%, quiet scenery above/below; incidental legs, horse tails and weapon extremities may naturally crop. No frame, text, letters, UI, anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-04b06a6b-7556-44a2-ab69-4dbd9266a2f2.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_101.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed 512-square source, default 206:141 crop and thumbnail: gaucho's face, raised bolas hand, reins hand and three weighted cords remain readable; horse's lower body crops naturally."
+  },
+  {
+    "cardId": "gray_summon_100",
+    "name": "Cossack Rider",
+    "prompt": "Paint Cossack Rider as a painterly medieval/high-fantasy collectible-card illustration. A mounted Cossack rider in historically inspired eastern European steppe clothing: embroidered dark red tunic, leather belt, fur-trimmed cap and curved sabre, on a sturdy chestnut horse. The rider turns confidently toward the viewer and calls a challenge, one hand gripping reins, the other holding the sabre low; an opposing mounted silhouette stays distant. Keep rider's face/hands and horse's head/neck clear in a compact horizontal crop; horse body and tail may extend beyond. Rich but restrained material color, attractive directional light, atmospheric depth, grounded anatomy, serious historical-fantasy tone, textured painterly brushwork matched to Hexmancers references. Explicit 1:1 square 512x512 master, arranged horizontally; keep primary face, relevant hands, weapon and action within x24..488,y105..407 for a 206:141 crop. Keep main subject in the middle 60%, quiet scenery above/below; incidental legs, horse tails and weapon extremities may naturally crop. No frame, text, letters, UI, anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-67d739ba-f5dc-4080-8ec1-125afd1e6d8d.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_100.png",
+    "sourceNative": [
+      1448,
+      1086
+    ],
+    "focalPoint": [
+      0.5,
+      0.37
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Initial crop cut the cap and upper face. Reviewed 512-square source, shifted crop (focalPoint y=0.37), and thumbnail: Cossack's face/cap, both hands, sabre and horse's head remain clear; body and tail crop naturally."
+  },
+  {
+    "cardId": "gray_summon_102",
+    "name": "Mongol Outrider",
+    "prompt": "Paint Mongol Outrider as a historically grounded medieval steppe cavalry illustration. A confident Mongol outrider rides a compact dark bay horse at a steady canter, wearing a traditional belted deel, practical leather lamellar and a fur-edged helmet, with a curved composite bow and feathered arrows. He turns toward the viewer while drawing the bow for a rapid follow-up volley, focused face fully visible, both hands clearly gripping bow and string, horse's head beside him. A few distant mounted companions escort behind as subtle silhouettes. Respectful, specific steppe culture and tack, no fantasy caricature. Painterly medieval/high-fantasy card art, textured brushwork, believable horse anatomy and materials, warm sunrise rim light over open steppe. Explicit 1:1 square 512x512; horizontal compact upper-body rider and horse-head composition; keep face, both hands, bow, arrow and horse's head inside x24..488,y105..407 for 206:141 crop. Horse body, legs and tail may naturally crop. Quiet sky and ground above/below. No frame, text, runes, UI, anime, Disney-like cartoon, photorealism, pixel art or modern gear.",
+    "generatedPath": "/workspace/generated_images/exec-fa6a11ea-827b-4626-8950-c55782eef9af.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_102.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed 512-square source, default 206:141 crop and thumbnail: Mongol rider's face, drawing hand, bow grip, arrow and horse's head are clear; upper bow limb is an incidental crop."
   }
 ]

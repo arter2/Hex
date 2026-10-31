@@ -2195,19 +2195,19 @@
   {
     "cardId": "verdant_charge_11",
     "name": "Mushroom Basket",
-    "prompt": "Paint Mushroom Basket as a named fantasy charge: a compact hand-woven basket filled with clearly visible red-capped and pale woodland mushrooms is the primary subject, held close beside a woodsman's focused face and hands. He selects one slender poisonous mushroom and prepares to hurl it toward an unseen foe; a tiny green glint suggests its piercing venom. Show the complete basket rim, handle, base and all mushrooms together, unobstructed, as a beautifully crafted standalone artifact with the person as supporting context. Painterly medieval high fantasy collectible-card illustration, tactile wicker, rich mushroom textures, warm filtered forest light, atmospheric depth. Explicit 1:1 square 512 master; keep the entire basket and the woodsman's face and relevant hand together inside x24..488,y105..407 for horizontal 206:141 crop; quiet foliage and ground beyond. No text, frame or UI; no anime, Disney, photorealism or pixel art.",
-    "generatedPath": "/workspace/generated_images/exec-09394265-209e-4522-8068-63639f769dd6.png",
+    "prompt": "Create a beautiful standalone painterly medieval-fantasy collectible-card illustration of Mushroom Basket. The named object is a single richly woven wicker basket, centered and prominent on a mossy forest stump, viewed at a clear three-quarter angle. Show the complete basket wholly inside the composition with generous space on every side: entire handle arch, unbroken rim, both side walls, full base, and a varied abundance of clearly visible red-capped and pale woodland mushrooms, with no part touching or leaving the frame. Basket occupies about 60 percent of the image width and sits across the middle horizontal band. A tiny green poisonous glint among one mushroom's delicate piercing spines may suggest its charge, but keep the basket as the unmistakable subject. No person, no cropped props, no extra baskets. Dappled golden forest light, fine tactile wicker and mushroom detail, rich foliage, atmospheric depth, confident painterly brushwork, grounded medieval high-fantasy art. Explicit 1:1 square canvas for a 512x512 master. Keep entire basket inside x24..488 and y105..407 so it remains completely visible in a centered 206:141 horizontal card crop; quiet soft forest canopy and stump beyond. No text, frame, lettering, UI. No anime, Disney-like cartoon proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-083dd30d-2a17-46bb-9f1d-8659c900c16e.png",
     "focalPoint": [
       0.5,
-      0.5
+      0.46
     ],
     "status": "generated",
     "batch": 11,
     "editableSourcePath": "game/cards/art/masters/verdant_charge_11.png",
     "sourceNative": [
-      1515,
-      1038
+      1254,
+      1254
     ],
-    "reviewNote": "Reviewed normalized 512 square, wide crop and thumbnail. The complete basket (rim, handle, base and mushrooms), holding hand and woodsman's face remain readable; left throwing arm is incidental."
+    "reviewNote": "Repainted as a standalone basket and preserved prior source at /tmp/verdant-charge-11-repair/verdant_charge_11-before-repair.png. Reviewed new 512 square, crop shifted to focal y .46 and thumbnail: complete arched handle, rim, base and mushroom contents fit the wide crop with margin."
   }
 ]

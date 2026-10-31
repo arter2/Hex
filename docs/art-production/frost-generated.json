@@ -2204,5 +2204,95 @@
     "status": "generated",
     "batch": 11,
     "reviewNote": "Reviewed 512-square source, adjusted 206:141 crop at focalPoint [0.5,0.44] and 128x88 thumbnail. The adjusted crop restores the complete face and both hands while retaining the bright gathering glow; lower seated body and scenery are expendable."
+  },
+  {
+    "cardId": "frost_charge_09",
+    "name": "Sea Urchin Quills",
+    "prompt": "Paint Sea Urchin Quills as an enormous vivid blue sea urchin on a dark cold reef, its dense fan of long ivory and translucent ice-blue spines radiating clearly from the small round body, with several quills glinting like charged bolts. The whole urchin and its distinctive quills are the main subject, surrounded by a few bubbles and soft arctic light. Painterly medieval fantasy collectible-card illustration, detailed natural textures, jewel-like cold light and atmospheric underwater depth. Create a 1:1 SQUARE canvas for a 512x512 master; keep the entire named urchin and its quill silhouette inside x24..488 y105..407, quiet water above and below. No frame, text, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0c21c35d-5f04-4f44-8f94-95d950a21c60.png",
+    "editableSourcePath": "game/cards/art/masters/frost_charge_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "The central urchin body and radiating quills are fully visible in the square, wide crop and thumbnail; bright spines retain the named subject's silhouette."
+  },
+  {
+    "cardId": "frost_utility_10",
+    "name": "Sorcerer's Grimoire",
+    "prompt": "Paint Sorcerer's Grimoire as a large, complete, ancient frost-mage spellbook resting open on a stone lectern: both richly tooled leather covers, full spine, page block and lower edges visible, crisp blue-white frostwork illuminating the pages without legible writing. A robed sorcerer stands beside it at the same height, face and both hands clearly visible as they summon the book; the complete grimoire is the focal named object. Painterly medieval high-fantasy collectible-card art, fine leather and silverwork, cool luminous light, atmospheric library depth. 1:1 SQUARE composition for a 512x512 editable master, horizontal placement; keep the sorcerer\u2019s face and hands and the entire book within x24..488 y105..407, quiet library above and below. No readable text, frame, lettering, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-488f8d70-9c4d-463d-93b6-eacb9f32065e.png",
+    "editableSourcePath": "game/cards/art/masters/frost_utility_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "The open grimoire, both covers, page block and lower edges stay complete in the wide crop; sorcerer\u2019s face and both hands remain visible. The crop trims a little hair above the face. Parent shifted crop upward to y=.43 to retain full face, hands and entire open grimoire; lectern base is incidental."
+  },
+  {
+    "cardId": "frost_trap_10",
+    "name": "Davy Jones' Locker",
+    "prompt": "Paint Davy Jones' Locker as a complete heavy shipwreck treasure chest on the seabed, iron-banded dark wood, shut lid, intact bottom and feet, ornate central lock and pale barnacles, with a faint blue ghostly glow escaping the seam. A few tiny bubbles and broken ship timbers establish the deep sea; the whole chest is unmistakably the focal subject. Painterly medieval high-fantasy collectible-card illustration, textured wet wood and corroded iron, dramatic cold underwater light. Create a 1:1 SQUARE canvas for a 512x512 master; keep entire lid, lock, base and feet inside x24..488 y105..407, quiet water above and seabed below. No diver or extra character. No frame, lettering, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ae8e4648-7539-4e9c-ab18-ffd753e3f890.png",
+    "editableSourcePath": "game/cards/art/masters/frost_trap_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "The closed chest\u2019s curved lid, central lock, lower body and feet all fit the wide crop; the glowing seam and barnacles remain legible in the thumbnail."
+  },
+  {
+    "cardId": "frost_environment_10",
+    "name": "Kelp Forest",
+    "prompt": "Paint Kelp Forest as a breathtaking underwater forest of tall ribbon kelp and branching seaweed forming a dense bramble-like burst across the central view. A shaft of icy sunbeams lights layered leaves, tiny fish and drifting bubbles; the recognizable subject is the lush kelp forest itself, no single creature dominating. Painterly medieval fantasy collectible-card art, organic plant detail, blue-green water, luminous cold light and atmospheric depth. Create a 1:1 SQUARE canvas for a 512x512 master; focus the thickest kelp shapes in x24..488 y105..407, with quiet open water above and darker seabed below. No frame, text, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ca823121-ec65-4965-88ab-9851301ee378.png",
+    "editableSourcePath": "game/cards/art/masters/frost_environment_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Layered kelp trunks and leaves fill the wide crop with open water and seabed as secondary margins; plant forms and blue-green depth remain clear in the thumbnail."
+  },
+  {
+    "cardId": "frost_summon_07",
+    "name": "Selkie",
+    "prompt": "Paint Selkie as a compelling young seal-woman emerging from cold northern water, her calm human face and both hands visible as she gathers a pale seal-skin cloak around her shoulders; a sleek seal swims beside her at the same height, clearly linking her to the sea. Keep her face and gesture primary, with the seal close enough to read clearly. Painterly medieval high-fantasy collectible-card illustration, believable anatomy, rich wet fur and wool, moonlit blue water with a warm pearl glow, atmospheric coastal depth. Create a 1:1 SQUARE canvas for a 512x512 editable master; arrange woman and seal horizontally in the middle 60%, keeping face, hands and the seal\u2019s head/body within x24..488 y105..407; quiet sky and water above and below. No frame, text, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c40137b2-4703-47e8-9dc9-a3d3fdb418be.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Selkie\u2019s face and both hands remain clear in the wide crop, with her pale seal-skin cloak and the seal\u2019s head together in frame. A little hair above the face crops at the upper edge."
   }
 ]

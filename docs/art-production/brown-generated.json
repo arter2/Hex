@@ -2113,5 +2113,95 @@
       1254,
       1254
     ]
+  },
+  {
+    "cardId": "brown_instant_37",
+    "name": "Acid Flask",
+    "prompt": "Paint an illustration for Acid Flask: a compact stoppered alchemical flask of luminous emerald acid, caught midair after being hurled, splashing onto the ground and forcing a foe backward. The entire flask including stopper is prominent, horizontal action, with a gloved hand and small portion of an alchemist at the side. Do not let the magic splash obscure the named flask. Painterly medieval high fantasy collectible card art, nuanced glass, leather and metal, strong warm directional light with green acid glow, atmospheric depth. Square 1:1 canvas for 512x512 master. Keep flask, stopper and relevant hand within x24..488 y105..407; quiet scenery above/below; designed for 206:141 horizontal crop. No border, lettering, numbers or UI. No anime, Disney cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-1b423459-4cf6-4702-8974-a0e541048479.png",
+    "editableSourcePath": "game/cards/art/masters/brown_instant_37.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Original tool result mapping was lost to an optional-field guard; raw recovered by explicit parent-reviewed visual identity (green acid flask thrown midair), not fingerprint-proven. Artist inspected 512 square, 206:141 crop and 128x88 thumbnail: flask, stopper and splash read clearly; parent acceptance pending."
+  },
+  {
+    "cardId": "brown_machine_42",
+    "name": "Goblin Scrap Barricade",
+    "prompt": "Paint an illustration for Goblin Scrap Barricade: a huge improvised goblin defensive barricade made from mismatched hammered shields, wagon boards, bent metal sheets and salvaged gears, sturdy and imposing. One goblin engineer beside it hammers a loose panel into place; keep face and working hands visible and the whole central barricade readable. Painterly medieval high fantasy collectible card art, detailed weathered wood and metal, warm directional forge light, atmospheric depth, grounded proportions and lively narrative. Square 1:1 canvas for 512x512 master. Main barrier, face and hands within x24..488 y105..407; quiet sky and ground margins; horizontal 206:141 card crop. No modern hardware, border, text or UI; no anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4b82142a-8024-453e-9690-41bda2a0411a.png",
+    "editableSourcePath": "game/cards/art/masters/brown_machine_42.png",
+    "sourceNative": [
+      1515,
+      1038
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Original tool result mapping was lost to an optional-field guard; raw recovered by explicit parent-reviewed visual identity (goblin beside scrap-shield wall), not fingerprint-proven. Artist inspected 512 square, 206:141 crop and 128x88 thumbnail: goblin face/working hand and broad barricade remain clear; parent acceptance pending."
+  },
+  {
+    "cardId": "brown_machine_41",
+    "name": "Elven Thornglass Barrier",
+    "prompt": "Paint an illustration for Elven Thornglass Barrier: a sturdy elven palisade barrier that mends itself, built from interwoven thornwood and translucent green glass, clearly a defensive wall. Show an elegant elf artisan beside it, face and working hands visible as living thorn branches knit into cracked glass. Keep wall compact and beside artisan at equal height; focus on the barrier. Painterly medieval high fantasy collectible card art, rich wood, thorn and glass materials, warm directional light and atmospheric depth, attractive dramatic lighting, grounded anatomy. Square 1:1 canvas for 512x512 master. Critical subject, face and hands fit within central x24..488 y105..407; quiet scenery top/bottom; composition also works as 206:141 horizontal crop. No border, text, runes, UI. No anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2e668eed-ea48-4200-8bf8-e6ce551f0f7c.png",
+    "editableSourcePath": "game/cards/art/masters/brown_machine_41.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Original tool result mapping was lost to an optional-field guard; raw recovered by explicit parent-reviewed visual identity (elf artisan beside thornwood and green glass wall), not fingerprint-proven. Artist inspected 512 square, 206:141 crop and 128x88 thumbnail: face, hands and distinctive thorn-glass wall read clearly; parent acceptance pending."
+  },
+  {
+    "cardId": "brown_instant_38",
+    "name": "Sky-Folk Lightning Jar",
+    "prompt": "Paint an illustration for Sky-Folk Lightning Jar: an ornate compact glass jar made by sky-folk, corked and banded in fine brass, containing a vivid fork of blue-white lightning. A sky-folk hand has just hurled it; show the jar entirely intact and prominent with lightning bursting around it, not hiding it. A suggestion of feathered sleeve and distant high-altitude sky temple supports the scene. Painterly medieval high fantasy collectible card art, beautiful glass and brass detail, dramatic blue-white light, warm reflected light and atmospheric depth. Square 1:1 canvas for 512x512 master. Keep jar, cork, and hand within x24..488 y105..407, quiet scenery at top/bottom; horizontal 206:141 card crop. No border, text, symbols, UI; no anime, Disney-like cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9462625a-93f3-4482-b89c-0c9c9691645c.png",
+    "editableSourcePath": "game/cards/art/masters/brown_instant_38.png",
+    "sourceNative": [
+      1515,
+      1038
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Original tool result mapping was lost to an optional-field guard; raw recovered by explicit parent-reviewed visual identity (ornate jar holding blue-white lightning beside feathered sleeve), not fingerprint-proven. Artist inspected 512 square, 206:141 crop and 128x88 thumbnail: jar, cork, lightning and hand read clearly; parent acceptance pending."
+  },
+  {
+    "cardId": "brown_machine_43",
+    "name": "Coral Rampart",
+    "prompt": "Paint an illustration for Coral Rampart: a massive defensive rampart formed from living coral, pink branches, fan corals and shell-encrusted stone rising in a clear wall across a shallow reef passage. Show a sea-folk guardian beside the wall restoring a broken coral section, face and both working hands visible; the continuous wall is the named subject, broad and sturdy, not a tiny decoration. Painterly medieval high fantasy collectible-card art, refined coral, shell, stone and water materials, attractive warm shafts of sunlight through turquoise water, atmospheric depth, dramatic readable lighting. Compose for a 1:1 square 512x512 master. Keep guardian's face and hands and the main wall within x24..488 y105..407; quiet scenery top and bottom; effective 206:141 horizontal card crop. No modern items, frame, text, runes, numbers or UI. No anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c8b25e56-45f6-482a-93fe-b19c8f22b6df.png",
+    "editableSourcePath": "game/cards/art/masters/brown_machine_43.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Image tool output_hint contained the exact saved PNG path; sourceNative 1254x1254. Artist inspected 512 square, 206:141 crop and 128x88 thumbnail: guardian face and hands plus continuous coral wall remain clear; parent acceptance pending."
   }
 ]

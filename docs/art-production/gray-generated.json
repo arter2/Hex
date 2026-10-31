@@ -2127,5 +2127,95 @@
       1254,
       1254
     ]
+  },
+  {
+    "cardId": "gray_summon_93",
+    "name": "Uchchaihshravas",
+    "prompt": "Paint Uchchaihshravas, a noble legendary Pegasus guarding its charge. One magnificent white-gray winged horse dominates the image in a strong horizontal three-quarter stance on a high mountain pass; intelligent bright eyes and full face centered, broad folded feathered wings clearly attached, one foreleg raised protectively. Hints of an ancient Indian royal standard and distant dawn mountains, no rider. Painterly medieval high fantasy collectible-card illustration, layered brushwork, nuanced feather and coat detail, warm sunrise rim light, atmospheric depth. Compose explicitly on a 1:1 square canvas for a 512 master; keep Pegasus face, eyes, wing roots and body within x24..488,y105..407 on the square so they survive 206:141 horizontal crop; quiet sky and ground above/below. No text, card frame, UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5b794f5b-e076-4a00-bed1-ab688c81b995.png",
+    "focalPoint": [
+      0.5,
+      0.22
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/gray_summon_93.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed 512 square, top-shifted wide crop and thumbnail. Full Pegasus face, eyes and wing roots remain visible; lower legs are incidental and crop naturally."
+  },
+  {
+    "cardId": "gray_summon_94",
+    "name": "Wandering Bard",
+    "prompt": "Paint Wandering Bard, a gentle traveling fantasy musician whose magical song empowers nearby companions. A kind, weathered bard with expressive face and eyes plays a small wooden lute while walking, one hand plucking strings, the other on the neck; a single companion beside him visibly steadies and brightens in the song. Keep the bard's face, both hands and lute together as the clear central subject, horizontal arrangement, simple road and soft dusk light. Painterly medieval high fantasy collectible-card illustration, textured wool and leather, warm golden light, atmospheric depth, grounded proportions. Explicit 1:1 square 512 master; face, hands and whole lute within x24..488,y105..407 for 206:141 crop; quiet sky and path beyond. No lettering, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-100f37ba-a478-4e9d-8031-15ebc551e8e7.png",
+    "focalPoint": [
+      0.5,
+      0.26
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/gray_summon_94.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed 512 square, top-shifted wide crop and thumbnail. Bard's full face, both playing hands and complete lute remain visible; companion supports the empowering song action."
+  },
+  {
+    "cardId": "gray_summon_95",
+    "name": "Crossbow Militia",
+    "prompt": "Paint Crossbow Militia: a brave young squire in practical medieval mail and leather braces a compact crossbow and looses a bolt toward an unseen threat, a second militia comrade close behind. The primary squire's focused face, eyes, trigger hand, supporting hand and entire crossbow must be clearly visible and central; make the bolt path subtle. Horizontal, readable staging against a quiet stone battlement at dawn. Painterly medieval high fantasy collectible-card art, believable materials, expressive grounded anatomy, directional warm light and atmospheric depth. Explicit 1:1 square 512 master; all identity-critical face, hands and crossbow fit x24..488,y105..407 for wide 206:141 crop. No text/frame/UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e462f3bc-ec73-42e6-ac29-160b0eec6be1.png",
+    "focalPoint": [
+      0.5,
+      0.25
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/gray_summon_95.png",
+    "sourceNative": [
+      1513,
+      1040
+    ],
+    "reviewNote": "Reviewed normalized 512 square, top-shifted wide crop and thumbnail. Primary face, trigger/support hands and complete crossbow remain legible; rear militia is secondary."
+  },
+  {
+    "cardId": "gray_summon_96",
+    "name": "Pikeman",
+    "prompt": "Paint Pikeman: a disciplined medieval knight in practical steel-and-blue cloth armor, fighting from the rear rank with a long pike held level across the composition, the pike's point clearly visible beside him as he advances to support the front line. Focus on the knight's determined face and gauntleted hands gripping the shaft; compact horizontal silhouette, no crowd obscuring the pike. Painterly medieval high fantasy collectible-card illustration, nuanced metal and cloth, directional daylight, atmospheric depth, readable action. Explicit 1:1 square 512 master; face, both hands and pike point/shaft must remain within x24..488,y105..407 for 206:141 crop; quiet sky and ground at top and bottom. No text/frame/UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-35af7977-4b9d-4c00-a765-c41b35e31681.png",
+    "focalPoint": [
+      0.5,
+      0.23
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/gray_summon_96.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed 512 square, top-shifted wide crop and thumbnail. Knight's full face, both gripping hands and whole pike including its point remain visible; rear-rank figures stay secondary."
+  },
+  {
+    "cardId": "gray_summon_97",
+    "name": "Sellsword",
+    "prompt": "Paint Sellsword, a scrappy steadfast medieval fantasy mercenary fighting in the rear rank with a forceful blast. A weathered but alert sellsword in practical worn mail, leather and muted red cloak stands in a compact horizontal three-quarter pose; his determined face and eyes are clear, one hand grips a short sword while the other thrusts forward with a compact burst of pale golden force toward an unseen foe. The magical blast supports his sword action and does not obscure his face or hand. Painterly medieval high fantasy collectible-card illustration, believable metal, leather and cloth, expressive grounded anatomy, warm directional light, atmospheric depth. Explicit 1:1 square composition for 512 master; keep full face, both hands and sword hilt/blade root inside x24..488,y105..407 for the 206:141 horizontal crop, quiet scenery above and below. No modern gear, text, card frame or UI. No anime, Disney-like cartoon proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7e90616a-0a77-4204-ab0e-46bcf64dca1b.png",
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/gray_summon_97.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed 512 square, top-shifted wide crop and thumbnail. Full face and both action hands remain visible with the magical blast and sword hilt/blade root; the sword extremity and lower legs are incidental."
   }
 ]

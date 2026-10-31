@@ -2113,5 +2113,95 @@
     "status": "generated",
     "batch": 10,
     "reviewNote": "Reviewed 512-square source, actual 206:141 crop and thumbnail: complete trebuchet arm, sling payload, frame, counterweight and both wheels fit; operator face and working hands are visible, though small at thumbnail size."
+  },
+  {
+    "cardId": "shadow_strike_10",
+    "name": "Spider Silk Shot",
+    "prompt": "Create a painterly medieval/high-fantasy collectible-card illustration for Spider Silk Shot. Paint Spider Silk Shot: a hooded medieval shadow archer in a horizontal side-on pose releases one taut bowstring; a single long, pale spider-silk strand carries a blackened needle-like bolt straight across toward a distant armored foe. The silk line, arrow and archer's focused face and gripping hands form one readable charged shot. Cool moonlit ruined battlements, restrained violet curse glimmer; realistic medieval bow, leather and cloth. Place archer and bolt action side by side across the middle, all face/hands/needle inside x24..488,y105..407, quiet dusk above and below. Main subject in middle 60% of an explicitly 1:1 SQUARE 512x512 composition, all identity-critical details in x24..488,y105..407 because final card uses 206:141 horizontal crop. Atmospheric but quiet top/bottom, strong readable subject, nuanced materials, dramatic attractive light, grounded fantasy anatomy, textured painterly brushwork. Match the Hexmancers supplied reference set. No frame, text, runes, UI, anime, Disney-like cartoon, photorealism, pixel art, modern gear.",
+    "generatedPath": "/workspace/generated_images/exec-7a04d7ce-55fa-41b2-aaad-53fe914e322c.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_strike_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed 512-square source, default 206:141 crop and thumbnail: archer face and hands, spider-silk line and needle remain readable; incidental bow tips/stonework crop naturally."
+  },
+  {
+    "cardId": "shadow_lob_12",
+    "name": "Funeral Wreath",
+    "prompt": "Create a painterly medieval/high-fantasy collectible-card illustration for Funeral Wreath. Paint Funeral Wreath: a compact wreath of twisted black briars, dark roses and bone-white funeral flowers hurtles horizontally toward a stone crypt threshold; it bursts in a tight ring of violet force, knocking a single armored grave robber backward. Wreath itself stays whole and prominent beside the figure, clearly a thrown funerary wreath rather than a generic spell. Painterly medieval dark fantasy, tactile petals/thorns/stone, moonlit silver edge light and deep plum shadows. Keep full named wreath and the figure's face/hands in x24..488,y105..407, quiet mist above and below. Main subject in middle 60% of an explicitly 1:1 SQUARE 512x512 composition, all identity-critical details in x24..488,y105..407 because final card uses 206:141 horizontal crop. Atmospheric but quiet top/bottom, strong readable subject, nuanced materials, dramatic attractive light, grounded fantasy anatomy, textured painterly brushwork. Match the Hexmancers supplied reference set. No frame, text, runes, UI, anime, Disney-like cartoon, photorealism, pixel art, modern gear.",
+    "generatedPath": "/workspace/generated_images/exec-d987a3a7-2728-44af-8093-aab7cb47e232.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_lob_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed 512-square source, default 206:141 crop and thumbnail: complete funerary wreath and the recoiling foe's face remain legible; incidental legs and mist crop naturally."
+  },
+  {
+    "cardId": "shadow_ward_11",
+    "name": "Iron Maiden Shell",
+    "prompt": "Create a painterly medieval/high-fantasy collectible-card illustration for Iron Maiden Shell. Paint Iron Maiden Shell: a heavy portable iron maiden shaped as a protective hinged shell closes around a frightened but unharmed medieval defender, its studded dark iron plates and open hinge forming a clear shield-like barrier. Show the defender's face and one visible hand behind the iron shell while violet sparks shockingly crawl over its exterior, repelling an incoming blade. The complete compact iron shell sits beside the face at the same height, not a tall torture device; no gore. Painterly medieval fantasy, rich forged iron texture, dramatic torchlight against cool shadow. Keep entire named shell, face and hand within x24..488,y105..407; quiet crypt atmosphere above/below. Main subject in middle 60% of an explicitly 1:1 SQUARE 512x512 composition, all identity-critical details in x24..488,y105..407 because final card uses 206:141 horizontal crop. Atmospheric but quiet top/bottom, strong readable subject, nuanced materials, dramatic attractive light, grounded fantasy anatomy, textured painterly brushwork. Match the Hexmancers supplied reference set. No frame, text, runes, UI, anime, Disney-like cartoon, photorealism, pixel art, modern gear.",
+    "generatedPath": "/workspace/generated_images/exec-7fe332e2-e095-41b7-8fcd-f62c1175c771.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_ward_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.47
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed 512-square source, shifted crop (focalPoint y=0.47), and thumbnail: shell crown and base now fit the card band with defender face/hand and shock impact clear; incoming sword tip is incidental."
+  },
+  {
+    "cardId": "shadow_sentry_12",
+    "name": "Cursed Mirror",
+    "prompt": "Create a new compact tabletop composition for the medieval fantasy card Cursed Mirror. A small ornate oval hand mirror stands on a broad oak table, surrounded by ample visible tabletop and quiet crypt wall. Make the complete mirror including top finial, oval rim, stem, and both feet occupy only about 40 percent of the square's total height, centered vertically around y=256; leave generous quiet space above and below. The entire artifact must fit inside the 512-square safe area x24..488,y105..407, with at least 15 pixels of extra breathing room inside every boundary. Its dark violet glass clearly reflects one armored intruder's face and raised hand; one fine violet sentry beam aims from the reflected figure. The mirror remains the obvious focal point, but is visibly small against the wide table and surroundings. Use horizontal staging. Painterly medieval/high-fantasy collectible card illustration, aged iron scrollwork, polished dark wood, smoky violet glass, warm candle light balanced by cool moonlight, atmospheric depth, grounded forms and textured brushwork. Explicit square 1:1 512x512 master intended for a 206:141 crop. Do not make a giant standing or full-height mirror; do not crop any part of its finial, rim, stem or feet. No text, frame, letters, UI, extra mirrors, anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-0bb68ac6-e557-4047-a643-e05ec6e61dab.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_sentry_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed 512-square source, default 206:141 crop and thumbnail: complete compact mirror including finial, rim and feet fits; reflected armored face and raised hand with violet beam are visible in the glass, though small at thumbnail scale."
+  },
+  {
+    "cardId": "shadow_boon_10",
+    "name": "Full Moon Frenzy",
+    "prompt": "Paint Full Moon Frenzy, a shadow boon that immediately grants a short burst of power with a chill lasting seven seconds. Show one fierce medieval warrior in a compact waist-up pose, face and both gripping hands clear, muscle and resolve surging as cold silver moonlight pours over him; frost rims his dark armor and cloak while a subtle violet shadow aura coils close around his shoulders. A large full moon glows behind him, but the warrior remains the dominant subject. Painterly medieval/high-fantasy collectible-card art, tactile forged metal and cloth, attractive directional light, atmospheric depth, grounded anatomy and textured brushwork matching Hexmancers references. Explicit 1:1 square 512x512 master; keep full face, both hands and clear upper torso inside x24..488,y105..407 for 206:141 horizontal card crop, quiet sky above and shadowy ground below. No frame, text, runes, UI, anime, Disney-like cartoon proportions, photorealism, pixel art, modern clothing or hardware.",
+    "generatedPath": "/workspace/generated_images/exec-dec8d6e3-70ce-421a-80a7-1a5e8802fae3.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_boon_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed 512-square source, default 206:141 crop and thumbnail: warrior face and sword hand are clear against moon and frost; the compact action remains readable."
   }
 ]

@@ -2122,5 +2122,95 @@
       1254
     ],
     "reviewNote": "Reviewed square, actual 206:141 crop and thumbnail: manticore face and full curled spiked tail remain prominent; launched spike and storm trail read clearly."
+  },
+  {
+    "cardId": "storm_strike_11",
+    "name": "Cobra Spit",
+    "prompt": "Illustrate Cobra Spit: A striking cobra coils tightly at center and spits a narrow stream of venom that forks in a chained arc between two distant targets, brief recoil suggested by the backward slant of the body; keep snake head and fangs sharp and clear. Mechanics: quick chained strike with a recoil effect. Painterly medieval high fantasy collectible-card art, nuanced materials, attractive directional light and atmospheric depth, matching supplied Hexmancers reference set. Make the named subject bold and legible in a horizontal arrangement, middle 60% of a square 512x512 composition. Keep the full named jar/mirror/wall or primary face/hands within x24..488,y105..407, leave quiet scenery at top and bottom for 206:141 crop. No operator unless necessary. Explicit 1:1 square; no frame, lettering, numbers, runes, UI, anime, Disney-like cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e9ccdaf8-854f-4654-b70e-efbdf6ba9159.png",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.44
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Focal y=0.44 keeps cobra’s head and fangs fully visible in the wide crop; lower coil is incidental."
+  },
+  {
+    "cardId": "storm_lob_11",
+    "name": "Scarab Swarm Jar",
+    "prompt": "Illustrate Scarab Swarm Jar: A squat clear glass jar is the dominant subject, corked and wrapped in aged brass, packed with a swirling living swarm of luminous golden scarabs; a few scarabs and sparks burst in a tight ring from the mouth as the jar tips, clear full jar silhouette and cork. Mechanics: quick-fuse ring burst that knocks foes down and drains them. Painterly medieval high fantasy collectible-card art, nuanced materials, attractive directional light and atmospheric depth, matching supplied Hexmancers reference set. Make the named subject bold and legible in a horizontal arrangement, middle 60% of a square 512x512 composition. Keep the full named jar/mirror/wall or primary face/hands within x24..488,y105..407, leave quiet scenery at top and bottom for 206:141 crop. No operator unless necessary. Explicit 1:1 square; no frame, lettering, numbers, runes, UI, anime, Disney-like cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-35829ec8-4ca4-4565-9e73-b3d53182ca54.png",
+    "editableSourcePath": "game/cards/art/masters/storm_lob_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.54
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Focal y=0.54 prioritizes the complete scarab-filled vessel; detached cork is secondary."
+  },
+  {
+    "cardId": "storm_ward_12",
+    "name": "Walls of the City of Brass",
+    "prompt": "Illustrate Walls of the City of Brass: Two long, parallel walls of burnished brass form a protective corridor through an ancient desert city; show a long readable central passage, ornate but grounded panels and subtle draining blue-green magical light along the walls. Mechanics: two long protective walls in corridor form that drain intruders. Painterly medieval high fantasy collectible-card art, nuanced materials, attractive directional light and atmospheric depth, matching supplied Hexmancers reference set. Make the named subject bold and legible in a horizontal arrangement, middle 60% of a square 512x512 composition. Keep the full named jar/mirror/wall or primary face/hands within x24..488,y105..407, leave quiet scenery at top and bottom for 206:141 crop. No operator unless necessary. Explicit 1:1 square; no frame, lettering, numbers, runes, UI, anime, Disney-like cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-1be01c31-4d70-493b-b085-625965e8d670.png",
+    "editableSourcePath": "game/cards/art/masters/storm_ward_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "The twin brass walls and long central corridor remain clear in the square and wide crop."
+  },
+  {
+    "cardId": "storm_sentry_12",
+    "name": "Burning Mirror",
+    "prompt": "Repaint this as a polished painterly medieval high-fantasy card illustration for Burning Mirror. Preserve the dramatic bronze mirror, fiery zigzag reflection, cracked glass, warm light and atmospheric ruined landscape, but redesign the composition so the entire mirror face, ornate top rim, stem and handle are compact and fully visible inside the central wide card crop band y=105..407 of a 512x512 square. Make the mirror substantially smaller and shorter, occupying about 60% of the crop height, centered with clear space above and below; keep the full silhouette uncut, especially both top ornament and handle tip. The mirror is the only primary subject, no operator. Maintain rich painterly materials and attractive amber light, clear readable object at thumbnail size. Explicit 1:1 square 512x512 canvas, no lettering, border, UI, logos, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b3fbc072-03af-4cb1-b637-994ce241dcf4.png",
+    "editableSourcePath": "game/cards/art/masters/storm_sentry_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Repainted at a smaller scale; the full cracked mirror, ornate top, stem and handle tip fit in the square source and wide crop. The earlier source is preserved at /tmp/worker-storm-01/storm_sentry_12-initial.png."
+  },
+  {
+    "cardId": "storm_boon_10",
+    "name": "Mint Tea",
+    "prompt": "Paint an illustration for Mint Tea, a restorative medieval-fantasy healing boon. The main subject is a single full small celadon tea cup with a curved handle and matching saucer, filled with clear pale green mint tea; fresh mint leaves and a curl of luminous steam rise gently above the cup. A few dew drops glint on the leaves. Make the entire cup, handle, tea surface and saucer visible together in the central middle 60% of a 1:1 square, with ample quiet space above and below for a 206:141 wide crop. The cup is the hero object, no operator. Painterly high fantasy card illustration, delicate believable glazed ceramic, herbs and warm directional morning light, atmospheric depth, attractive readability at thumbnail size. Mechanics: a quick healing draught that siphons vitality and echoes. Explicit 512-square canvas; keep full named cup and key steam inside x24..488,y105..407. No letters, labels, border, runes, UI, anime, Disney-like cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-dafa5aef-63bc-4f80-9449-e85851e8997c.png",
+    "editableSourcePath": "game/cards/art/masters/storm_boon_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "The full celadon cup, handle, tea surface, mint leaves and saucer fit cleanly in the square source and wide crop; the herbal steam reads at thumbnail size."
   }
 ]

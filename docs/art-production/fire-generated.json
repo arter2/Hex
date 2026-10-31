@@ -2116,5 +2116,95 @@
     "status": "generated",
     "batch": 10,
     "reviewNote": "Reviewed source and crop at focal [0.5,0.38] plus 128x88 thumbnail. Full minotaur face, eyes, and both horn tips fit clearly; lower torso and dust trail crop as incidental action."
+  },
+  {
+    "cardId": "fire_strike_11",
+    "name": "Bull Rush",
+    "prompt": "Paint an illustration for Bull Rush. The effect is a charged line attack that pierces and pushes an enemy back. A battle-worn human warrior surges forward in a forceful shoulder charge, driving a rival back; dynamic horizontal motion, face and bracing hand clear. Visual style references: painterly medieval high fantasy, nuanced materials, dramatic directional firelight, atmospheric depth, grounded anatomy and expressive faces like the supplied Hexmancers references. Make one strong readable subject in a horizontal arrangement, occupying the middle 60% of the square. Keep the full face, relevant hands, and entire named object within x24..488,y105..407 on a 512x512 square. Leave quiet scenery at top and bottom for a 206:141 card crop. Explicit 1:1 square canvas, intended as editable 512-square painting. No card border, lettering, numbers, runes, UI. No anime, Disney-like cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0e638d2f-b66d-484d-b7f2-7e5811d94635.png",
+    "editableSourcePath": "game/cards/art/masters/fire_strike_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Bull Rush’s charging attacker and struck opponent remain identifiable in the wide crop; strong forward action and warm light."
+  },
+  {
+    "cardId": "fire_lob_12",
+    "name": "Goblin Bomb",
+    "prompt": "Paint an illustration for Goblin Bomb. The effect is a heavy-fuse explosive thrown in a ring that knocks foes down. A sly goblin sapper braces low and hurls a squat iron bomb with a burning fuse; compact bomb visible beside the goblin's face at the same height, glowing sparks. Visual style references: painterly medieval high fantasy, nuanced materials, dramatic directional firelight, atmospheric depth, grounded anatomy and expressive faces like the supplied Hexmancers references. Make one strong readable subject in a horizontal arrangement, occupying the middle 60% of the square. Keep the full face, relevant hands, and entire named object within x24..488,y105..407 on a 512x512 square. Leave quiet scenery at top and bottom for a 206:141 card crop. Explicit 1:1 square canvas, intended as editable 512-square painting. No card border, lettering, numbers, runes, UI. No anime, Disney-like cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-78a49bef-18bd-4deb-93b0-51f1b0d2d41f.png",
+    "editableSourcePath": "game/cards/art/masters/fire_lob_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "The named subject and key details remain visible in the square source and center wide crop; painterly firelit setting."
+  },
+  {
+    "cardId": "fire_ward_11",
+    "name": "Brimstone Rampart",
+    "prompt": "Paint an illustration for Brimstone Rampart. The effect is a short, heavy rampart that forms a defensive wall and knocks attackers back. A short, heavy defensive wall of black basalt and iron rises in a single line, seams glowing with shocking brimstone; a dwarf mason braces beside it for scale. Visual style references: painterly medieval high fantasy, nuanced materials, dramatic directional firelight, atmospheric depth, grounded anatomy and expressive faces like the supplied Hexmancers references. Make one strong readable subject in a horizontal arrangement, occupying the middle 60% of the square. Keep the full face, relevant hands, and entire named object within x24..488,y105..407 on a 512x512 square. Leave quiet scenery at top and bottom for a 206:141 card crop. Explicit 1:1 square canvas, intended as editable 512-square painting. No card border, lettering, numbers, runes, UI. No anime, Disney-like cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d13ae6cd-420d-49da-8861-e7e19d554ade.png",
+    "editableSourcePath": "game/cards/art/masters/fire_ward_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "The named subject and key details remain visible in the square source and center wide crop; painterly firelit setting."
+  },
+  {
+    "cardId": "fire_boon_10",
+    "name": "Smith's Focus",
+    "prompt": "Paint an illustration for Smith's Focus. The effect is a rallying boon that restores focus and empowers the next action. A master blacksmith concentrates at an anvil, hammer poised above a brilliant weapon, eyes and working hands prominent; warm firelight and sparks. Visual style references: painterly medieval high fantasy, nuanced materials, dramatic directional firelight, atmospheric depth, grounded anatomy and expressive faces like the supplied Hexmancers references. Make one strong readable subject in a horizontal arrangement, occupying the middle 60% of the square. Keep the full face, relevant hands, and entire named object within x24..488,y105..407 on a 512x512 square. Leave quiet scenery at top and bottom for a 206:141 card crop. Explicit 1:1 square canvas, intended as editable 512-square painting. No card border, lettering, numbers, runes, UI. No anime, Disney-like cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2ce5e2ab-88da-466c-8838-955126191aec.png",
+    "editableSourcePath": "game/cards/art/masters/fire_boon_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "The named subject and key details remain visible in the square source and center wide crop; painterly firelit setting."
+  },
+  {
+    "cardId": "fire_charge_10",
+    "name": "Firecracker String",
+    "prompt": "Paint an illustration for Firecracker String, a medieval fantasy charge made of a short string of several hand-wrapped paper firecrackers that can be lit twice, bursting with a sharp critical blast that shoves an enemy back. Show the compact named artifact clearly in the foreground at center, its red-brown wrapped charges and knotted fuse fully visible beside a small lit spark, with a subtle blurred armored foe being knocked back in the background for context. The artifact is the subject; no operator is needed. Painterly medieval/high fantasy collectible-card art, believable paper, cord and metal details, dramatic warm directional firelight and atmospheric depth, matching supplied Hexmancers references. One strong readable subject, horizontal arrangement, middle 60% of a 1:1 square. Keep the full named object inside x24..488,y105..407 on a 512x512 square, quiet scenery at top and bottom for a 206:141 crop. Explicit square canvas, editable 512-square master. No frame, letters, numbers, runes, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9fecdada-7124-431e-bbc3-d8a6379c0907.png",
+    "editableSourcePath": "game/cards/art/masters/fire_charge_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "The full firecracker string, fuse and blast are clear in the square and wide crop; the displaced foe is incidental context behind the artifact."
   }
 ]

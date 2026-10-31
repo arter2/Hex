@@ -4,8 +4,8 @@
   "active": 1034,
   "remaining": 919,
   "pending": 719,
-  "assigned": 200,
-  "awaitingReview": 0,
+  "assigned": 160,
+  "awaitingReview": 40,
   "countsByColour": {
     "brown": 234,
     "fire": 246,
@@ -390,7 +390,7 @@
       "name": "Elven Thornglass Barrier",
       "type": "machine",
       "color": "brown",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -399,7 +399,7 @@
       "name": "Goblin Scrap Barricade",
       "type": "machine",
       "color": "brown",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -408,7 +408,7 @@
       "name": "Coral Rampart",
       "type": "machine",
       "color": "brown",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -794,7 +794,7 @@
       "name": "Acid Flask",
       "type": "instant",
       "color": "brown",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -803,7 +803,7 @@
       "name": "Sky-Folk Lightning Jar",
       "type": "instant",
       "color": "brown",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -2209,7 +2209,7 @@
       "name": "Bull Rush",
       "type": "strike",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -2519,7 +2519,7 @@
       "name": "Goblin Bomb",
       "type": "lob",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -2708,7 +2708,7 @@
       "name": "Brimstone Rampart",
       "type": "ward",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -2923,7 +2923,7 @@
       "name": "Smith's Focus",
       "type": "boon",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -3071,7 +3071,7 @@
       "name": "Firecracker String",
       "type": "charge",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -4307,7 +4307,7 @@
       "name": "Narwhal Tusk",
       "type": "strike",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -4632,7 +4632,7 @@
       "name": "Holy Water Flask",
       "type": "lob",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -4796,7 +4796,7 @@
       "name": "Mirror of Still Water",
       "type": "ward",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -4938,7 +4938,7 @@
       "name": "Tide Pole",
       "type": "sentry",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -5037,7 +5037,7 @@
       "name": "Sorcerer's Trance",
       "type": "boon",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -7119,7 +7119,7 @@
       "name": "Uchchaihshravas",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -7128,7 +7128,7 @@
       "name": "Wandering Bard",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -7137,7 +7137,7 @@
       "name": "Crossbow Militia",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -7146,7 +7146,7 @@
       "name": "Pikeman",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -7155,7 +7155,7 @@
       "name": "Sellsword",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -8408,7 +8408,7 @@
       "name": "Owl's Silent Dive",
       "type": "strike",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -8677,7 +8677,7 @@
       "name": "Quicksilver Retort",
       "type": "lob",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -8835,7 +8835,7 @@
       "name": "Hadrian's Wall",
       "type": "ward",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -8984,7 +8984,7 @@
       "name": "Lamassu Gate Statue",
       "type": "sentry",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -9073,7 +9073,7 @@
       "name": "Pegasus Flight",
       "type": "boon",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -10544,7 +10544,7 @@
       "name": "Spider Silk Shot",
       "type": "strike",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -10846,7 +10846,7 @@
       "name": "Funeral Wreath",
       "type": "lob",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -10987,7 +10987,7 @@
       "name": "Iron Maiden Shell",
       "type": "ward",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -11113,7 +11113,7 @@
       "name": "Cursed Mirror",
       "type": "sentry",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -11203,7 +11203,7 @@
       "name": "Full Moon Frenzy",
       "type": "boon",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -12692,7 +12692,7 @@
       "name": "Cobra Spit",
       "type": "strike",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -12976,7 +12976,7 @@
       "name": "Scarab Swarm Jar",
       "type": "lob",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -13135,7 +13135,7 @@
       "name": "Walls of the City of Brass",
       "type": "ward",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -13243,7 +13243,7 @@
       "name": "Burning Mirror",
       "type": "sentry",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -13324,7 +13324,7 @@
       "name": "Mint Tea",
       "type": "boon",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -14824,7 +14824,7 @@
       "name": "Viper Strike",
       "type": "strike",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -15159,7 +15159,7 @@
       "name": "Kapok Fluff Burst",
       "type": "lob",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -15319,7 +15319,7 @@
       "name": "Pangolin Scales",
       "type": "ward",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -15508,7 +15508,7 @@
       "name": "Wolfskin Frenzy",
       "type": "boon",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -15648,7 +15648,7 @@
       "name": "Mushroom Basket",
       "type": "charge",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },

@@ -2119,5 +2119,95 @@
     "status": "generated",
     "batch": 10,
     "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. Scout’s full face and both hands are visible; complete blowgun and dart, including the sharp point and leaf fletching, fit within the crop."
+  },
+  {
+    "cardId": "verdant_strike_12",
+    "name": "Viper Strike",
+    "prompt": "Paint Viper Strike as a sudden venomous attack in an ancient forest. A vivid emerald viper coils and lunges forward across the composition, jaws open and fangs clear, amber eyes focused; a small armored adventurer recoils just enough to show the strike's force while the snake remains primary. A few restrained green venom droplets glint in the light. Painterly medieval high fantasy collectible-card illustration, believable snake scales, rich woodland textures, dramatic directional light, atmospheric depth. Explicit 1:1 square 512 master; keep the viper's full head, eyes, fangs and central coiled body, plus the adventurer's face/hand if visible, within x24..488,y105..407 for 206:141 crop; quiet canopy and ground beyond. No text/frame/UI, anime, Disney, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-dcd7edbc-8e3e-4172-a7c4-56dc042b8fd5.png",
+    "focalPoint": [
+      0.5,
+      0.32
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed square, top-shifted wide crop and thumbnail. Viper's complete head, eyes and fangs remain clear; adventurer's recoil and hand read at card size."
+  },
+  {
+    "cardId": "verdant_lob_11",
+    "name": "Kapok Fluff Burst",
+    "prompt": "Paint Kapok Fluff Burst: a plump ripe kapok pod bursts open in a sudden magical burst, releasing a dramatic cloud of soft ivory cottony fibers that knocks a small forest goblin off balance. The open pod and expanding fluffy burst dominate the horizontal scene; show the goblin's surprised face and one hand shielding itself, with motion readable and fibers distinct, not smoke or fire. Painterly medieval high fantasy collectible-card art, rich kapok tree leaves, soft sunlight through the canopy, tactile fluffy fibers, atmospheric depth. Explicit 1:1 square 512 master; entire named kapok pod and primary burst, plus goblin face/hand, inside x24..488,y105..407 for wide 206:141 crop. Quiet scenery above/below. No text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-20a2f020-0f5b-489a-8bd4-99774c937d43.png",
+    "focalPoint": [
+      0.5,
+      0.32
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/verdant_lob_11.png",
+    "sourceNative": [
+      1515,
+      1038
+    ],
+    "reviewNote": "Reviewed normalized square, top-shifted crop and thumbnail. The central fluff burst and goblin's face/hand are readable; part of the pod extends beyond the left frame edge."
+  },
+  {
+    "cardId": "verdant_ward_11",
+    "name": "Pangolin Scales",
+    "prompt": "Paint Pangolin Scales as a protective barrier: a sturdy pangolin curls tightly into a compact ball, its overlapping bronze-green scales catching a soft luminous verdant sheen as a protective shield while a companion sheltering just behind reaches toward it. Make the pangolin's head and eyes visible between the scales; the curved shield silhouette reads clearly around it. Painterly medieval high fantasy wildlife card art, detailed but grounded pangolin anatomy, forest glade, warm directional light and atmospheric depth. Explicit 1:1 square 512 master; full pangolin head/eyes, scaled body and complete protective silhouette fit x24..488,y105..407 for 206:141 crop; quiet foliage above and ground below. No text/frame/UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0af8df7a-d5ce-42c5-8b9e-1b854353d017.png",
+    "focalPoint": [
+      0.5,
+      0.32
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/verdant_ward_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed square, top-shifted wide crop and thumbnail. Foreground pangolin's face/eyes and full protective scale silhouette remain visible, with a second pangolin as support."
+  },
+  {
+    "cardId": "verdant_boon_09",
+    "name": "Wolfskin Frenzy",
+    "prompt": "Paint Wolfskin Frenzy: a fierce woodland warrior enters a courageous pact with the wolf spirit, wearing a wolf pelt mantle and rallying nearby companions with a raised hand as subtle green spirit-light gathers around them. The warrior's intense face and raised action hand are primary; the wolf spirit appears as a dignified translucent presence close behind, not replacing the human. Horizontal compact staging, forest clearing. Painterly medieval high fantasy illustration, believable fur, leather and cloth, strong warm light through trees, grounded anatomy, atmospheric brushwork. Explicit 1:1 square 512 master; keep warrior's full face, raised hand and wolf pelt clearly within x24..488,y105..407 for 206:141 crop; quiet canopy and earth outside. No text/frame/UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e304818a-d5eb-492f-bdae-24abd203db1f.png",
+    "focalPoint": [
+      0.5,
+      0.32
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/verdant_boon_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed square, top-shifted crop and thumbnail. Warrior's entire raised hand, face and pelt remain visible; wolf spirit and companions reinforce the pact and rally."
+  },
+  {
+    "cardId": "verdant_charge_11",
+    "name": "Mushroom Basket",
+    "prompt": "Paint Mushroom Basket as a named fantasy charge: a compact hand-woven basket filled with clearly visible red-capped and pale woodland mushrooms is the primary subject, held close beside a woodsman's focused face and hands. He selects one slender poisonous mushroom and prepares to hurl it toward an unseen foe; a tiny green glint suggests its piercing venom. Show the complete basket rim, handle, base and all mushrooms together, unobstructed, as a beautifully crafted standalone artifact with the person as supporting context. Painterly medieval high fantasy collectible-card illustration, tactile wicker, rich mushroom textures, warm filtered forest light, atmospheric depth. Explicit 1:1 square 512 master; keep the entire basket and the woodsman's face and relevant hand together inside x24..488,y105..407 for horizontal 206:141 crop; quiet foliage and ground beyond. No text, frame or UI; no anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-09394265-209e-4522-8068-63639f769dd6.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/verdant_charge_11.png",
+    "sourceNative": [
+      1515,
+      1038
+    ],
+    "reviewNote": "Reviewed normalized 512 square, wide crop and thumbnail. The complete basket (rim, handle, base and mushrooms), holding hand and woodsman's face remain readable; left throwing arm is incidental."
   }
 ]

@@ -2,30 +2,158 @@
   "batch": 11,
   "workers": {
     "/root/b11_worker_1": {
-      "packet": "brown-01",
+      "packet": "brown-02",
       "state": "running"
     },
     "/root/b11_worker_2": {
-      "packet": "fire-01",
+      "packet": "storm-01",
       "state": "running"
     },
     "/root/b11_worker_3": {
-      "packet": "frost-01",
+      "packet": "fire-02",
       "state": "running"
     },
     "/root/b11_worker_4": {
-      "packet": "gray-01",
+      "packet": "verdant-01",
       "state": "running"
     },
     "/root/b11_worker_5": {
-      "packet": "light-01",
+      "packet": "frost-02",
       "state": "running"
     },
     "/root/b11_worker_6": {
-      "packet": "shadow-01",
+      "packet": "gray-02",
       "state": "running"
     }
   },
-  "completedPackets": [],
-  "reviewedSources": {}
+  "completedPackets": [
+    "fire-01",
+    "gray-01",
+    "brown-01",
+    "frost-01",
+    "light-01",
+    "shadow-01"
+  ],
+  "reviewedSources": {
+    "fire_strike_11": {
+      "file": "game/cards/art/masters/fire_strike_11.png",
+      "sha256": "59d115e81a3e4c8736ea46e8e897cdfd9eaabba885ca7a805da5357232278c99"
+    },
+    "fire_lob_12": {
+      "file": "game/cards/art/masters/fire_lob_12.png",
+      "sha256": "028839972cdb2ad1d5dd9353ec38d8d93fde16b6b5d4ff597379591805540249"
+    },
+    "fire_ward_11": {
+      "file": "game/cards/art/masters/fire_ward_11.png",
+      "sha256": "b96e7a4a576dcb2d7b1b8a309fe2a03769dfe706cd6a248c424392879981cd31"
+    },
+    "fire_boon_10": {
+      "file": "game/cards/art/masters/fire_boon_10.png",
+      "sha256": "84ef3a6ef55c69d72f0b310d4437f739fe5acca7db790927ec1d34279b1c8c96"
+    },
+    "fire_charge_10": {
+      "file": "game/cards/art/masters/fire_charge_10.png",
+      "sha256": "9df146c0f40f65ed54dffe20d8630844c4253eb1ee296c559cae22d69300a364"
+    },
+    "gray_summon_93": {
+      "file": "game/cards/art/masters/gray_summon_93.png",
+      "sha256": "97fd8d485bbdaf1b9cf965fc0f75e6de1bc30b237b2fc70eaf06e2f4dba68813"
+    },
+    "gray_summon_94": {
+      "file": "game/cards/art/masters/gray_summon_94.png",
+      "sha256": "f843ae37bf8b04d5043ae5e4e874e108122e3b87aec8c7cd6e25e700f075b752"
+    },
+    "gray_summon_95": {
+      "file": "game/cards/art/masters/gray_summon_95.png",
+      "sha256": "d3447605790c6a5774a3587e9e5dc6c1adb51ce183eb492e41c1720d1a9dcd9b"
+    },
+    "gray_summon_96": {
+      "file": "game/cards/art/masters/gray_summon_96.png",
+      "sha256": "ac12b997123dff2021ff2581a0b551ecc8b72533c32fcbb9e4505dd6fd7be2ff"
+    },
+    "gray_summon_97": {
+      "file": "game/cards/art/masters/gray_summon_97.png",
+      "sha256": "0a9969acb7c021a4a9b986764fb29e34e90e4972dd6098e5eef34c7e747e21a8"
+    },
+    "brown_machine_41": {
+      "file": "game/cards/art/masters/brown_machine_41.png",
+      "sha256": "b3ce3627e1a9f9886720d9c05fee0080210ddcb1d9a699bdacc68b1a8aace69d"
+    },
+    "brown_instant_37": {
+      "file": "game/cards/art/masters/brown_instant_37.png",
+      "sha256": "d0e61b8d18e3db4417d2646bf32700657999a8df513196b577551281c8ffdd4c"
+    },
+    "brown_machine_42": {
+      "file": "game/cards/art/masters/brown_machine_42.png",
+      "sha256": "868fad04a50674639f6f88b4e01344cc77cca24d4880e27a8e00d20246c4388e"
+    },
+    "brown_instant_38": {
+      "file": "game/cards/art/masters/brown_instant_38.png",
+      "sha256": "7e3482bc74f1b82f6f227a8dddd8ecc3f33922a0b4adc80e95d3525e3953b99d"
+    },
+    "brown_machine_43": {
+      "file": "game/cards/art/masters/brown_machine_43.png",
+      "sha256": "66b49510da7ea32e2ef8dd379fb40a213757e63adc9ba4cb4a643d2ac9745bed"
+    },
+    "frost_strike_10": {
+      "file": "game/cards/art/masters/frost_strike_10.png",
+      "sha256": "3aedf49a6ea72334d1e18edacf195ce8d8ec279feecf34e80276618570f7c9d7"
+    },
+    "frost_lob_11": {
+      "file": "game/cards/art/masters/frost_lob_11.png",
+      "sha256": "113cf434d9be01b32c3e52ea85e061afca9a00cd2ae4d27e958d386ed28ff12d"
+    },
+    "frost_ward_10": {
+      "file": "game/cards/art/masters/frost_ward_10.png",
+      "sha256": "ff58f75dfc3597d4c7ef6a29618f3a729e848090f2f52ef2bcd9aa65ce2504bd"
+    },
+    "frost_sentry_12": {
+      "file": "game/cards/art/masters/frost_sentry_12.png",
+      "sha256": "2f65a966722c10b570bdad622af300a0f3eecdbbde884dd9db570794fc82d4ef"
+    },
+    "frost_boon_11": {
+      "file": "game/cards/art/masters/frost_boon_11.png",
+      "sha256": "fb4948a48bc9f3668ea58da396bc8b1c597bc5af11628716421eb6acf3008d5f"
+    },
+    "light_strike_10": {
+      "file": "game/cards/art/masters/light_strike_10.png",
+      "sha256": "a00b1595e8dc11445f23c412e974ccdb5158a2d4a09aa660472b3dbf272daadc"
+    },
+    "light_lob_11": {
+      "file": "game/cards/art/masters/light_lob_11.png",
+      "sha256": "e46b95ade6b5b5a920e3c0b0757f259b35f88083fe9b4d0eb02541d5533f3f09"
+    },
+    "light_ward_12": {
+      "file": "game/cards/art/masters/light_ward_12.png",
+      "sha256": "4a19463e0d584dde8eac3affeb0039ca9650aa37baefd1e2efdd811298d5f391"
+    },
+    "light_sentry_11": {
+      "file": "game/cards/art/masters/light_sentry_11.png",
+      "sha256": "8851de0555957e0282730f86c020193b22a9237d09da72a4a4f01665be0b5b6b"
+    },
+    "light_boon_09": {
+      "file": "game/cards/art/masters/light_boon_09.png",
+      "sha256": "4f7296ccc49eb8d8f74ae1fd1d0bd2a0afac0c24d41dcbeef9ebfdc684de6764"
+    },
+    "shadow_strike_10": {
+      "file": "game/cards/art/masters/shadow_strike_10.png",
+      "sha256": "eee2070bf6cda5890222b37c4026726a30bac7c456fb3aed0bddcdda3942bdbc"
+    },
+    "shadow_lob_12": {
+      "file": "game/cards/art/masters/shadow_lob_12.png",
+      "sha256": "d9e6c8e82e85a430798e70d6c29846192e8adfbc3c6fdc283d3b137720760505"
+    },
+    "shadow_ward_11": {
+      "file": "game/cards/art/masters/shadow_ward_11.png",
+      "sha256": "97b603415a0d71aa4e442fcfa39bc200f539a3e62962141d867d8dd12f03770f"
+    },
+    "shadow_sentry_12": {
+      "file": "game/cards/art/masters/shadow_sentry_12.png",
+      "sha256": "980d25f330e28932ab8bae5b95d28371e2303e0856bb3f6e0da4a3d43f0e3413"
+    },
+    "shadow_boon_10": {
+      "file": "game/cards/art/masters/shadow_boon_10.png",
+      "sha256": "f42479bf5e5fe0e00162ff64c5ceec4b6d0ca138812e18a8993011dc56ae583f"
+    }
+  }
 }

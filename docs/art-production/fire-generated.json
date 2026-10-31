@@ -2548,5 +2548,23 @@
     "status": "generated",
     "batch": 11,
     "reviewNote": "Reviewed shifted crop (focalPoint y=0.43) and thumbnail: warrior's full face and both ember-lit fists remain visible; legs and mountain scenery crop naturally."
+  },
+  {
+    "cardId": "fire_charge_12",
+    "name": "Pistol Case",
+    "prompt": "Paint Pistol Case as a compact square card illustration, not a panoramic workshop scene. Put all important content in the central square. At center-right rests one small, shallow, fully open portable gnomish pistol case, about 55 percent of square width and 36 percent of square height. Its complete base, raised lid, hinges, handle, clasp, all corners and six fitted single-shot flintlock pistols must fit comfortably around square x185..475,y185..365, with visible margin on every side. Arrange the six compact pistols in two rows of three; each has a short iron barrel, carved wooden stock, visible hammer/flint and brass fittings, unmistakably medieval flintlocks. A small gnome gunsmith appears beside it on the LEFT, face and both hands visible at the same vertical level as the case, gently adjusting one pistol in its slot. Keep the entire gnome head and hands around x35..190,y175..335; face must be wholly visible, not above or behind the case. Outside this compact square grouping, use quiet blurred workshop background. Painterly medieval/high-fantasy illustration, tactile oak, leather, steel and brass, warm lamp light, grounded proportions. Explicit 1:1 square 512x512; if the renderer produces a wide raw image, keep both gnome and full case within its central square because the side edges will be removed during normalization. Ensure full case and face/hands stay inside x24..488,y105..407 for a 206:141 crop. No extra weapons on the bench, no modern firearms, no text/labels, no frame/UI, no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f34a986d-7ee4-4cff-83ea-19f55cecde59.png",
+    "editableSourcePath": "game/cards/art/masters/fire_charge_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Three taller or wide drafts were preserved and discarded. Reviewed final square source, default 206:141 crop and thumbnail: full case, lid, corners, all six flintlocks, gnome's face and both hands fit together."
   }
 ]

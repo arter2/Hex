@@ -2545,5 +2545,23 @@
       1254
     ],
     "reviewNote": "Reviewed square, top-shifted crop and thumbnail. Full focused face, both sling hands and sling remain visible; three clearly spaced stones and their ground strikes show the row; lower legs crop."
+  },
+  {
+    "cardId": "light_charge_12",
+    "name": "Silver Arrows of the Hunt",
+    "prompt": "Repaint Silver Arrows of the Hunt in a compact horizontal composition. A focused huntress is shown from the chest up at center-left, her complete face and both hands within the middle band; with one hand she lifts a short silver arrow at eye level to inspect its piercing point. Beside her at the same height, six additional short silver arrows with fine white fletching lie in a tight horizontal fan across a low leather-covered workbench, each complete arrow from silver tip to feather visible inside the image. Keep the face and entire named arrow set close together, not separated vertically. Painterly medieval high-fantasy collectible-card art, warm woodland dawn, polished silver, textured leather and green cloak, grounded anatomy and atmospheric depth. Explicit 1:1 square 512 master; fit the huntress's complete face, both hands and all seven complete arrows inside x24..488,y105..407 for the 206:141 card crop, with quiet scenery above/below. No arrows or face clipped at edges, no text/frame/UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f752b9a2-96de-490c-92d3-3a929a2acad5.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/light_charge_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Repainted after the first crop separated the face from the arrow set; prior source preserved at /tmp/light-charge-12-repair/light_charge_12-before-repair.png. Reviewed replacement square, crop and thumbnail: huntress face, both hands, held arrow and complete six-arrow set fit together."
   }
 ]

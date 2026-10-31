@@ -2473,5 +2473,77 @@
     "status": "generated",
     "batch": 11,
     "reviewNote": "Source native size [1254,1254]. Focal point [0.5,0.41] shifts crop up. Artist inspected square, adjusted 206:141 crop and 128x88 thumbnail: full spectral face and both hands remain visible; floating objects are secondary; parent review pending."
+  },
+  {
+    "cardId": "hero_mordo",
+    "name": "Graveborn Mordo",
+    "prompt": "Paint Graveborn Mordo as a powerful grave-born sorcerer hero: weathered undead face with pale luminous eyes, dark medieval robes, skeletal details kept subtle, both hands raised as a controlled ring of green grave-rot energy bursts outward around him. His face and hands are sharp and readable, the rot aura secondary; a faint protective shadow mantle suggests his resilience. Painterly medieval high-fantasy collectible-card illustration, believable face, cloth and bone, dramatic moonlit crypt atmosphere. Create a 1:1 SQUARE canvas for a 512x512 master; keep full face, both hands and upper torso inside x24..488 y105..407, quiet crypt atmosphere above and below. No frame, text, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b93f08c5-4f1a-4c87-8a94-7b4906cf6a95.png",
+    "editableSourcePath": "game/cards/art/masters/hero_mordo.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Mordo’s undead face and both raised hands remain clear inside the wide crop and thumbnail; grave-rot forms a readable surrounding burst while lower robe crops naturally."
+  },
+  {
+    "cardId": "shadow_strike_12",
+    "name": "Yurei's Lament",
+    "prompt": "Paint Yurei's Lament as a sorrowful medieval warrior ghost hovering in a moonlit shrine, pale face and both translucent hands visible as the spirit gives a silent anguished cry. A charged burst of blue-white spectral force expands outward in a circular mine-like wave, scattering leaves and confusing nearby shadow shapes; keep the ghost’s face and reaching hands central and clear. Painterly medieval high-fantasy collectible-card art, layered spirit robes, atmospheric mist, elegant cold light, grounded expressive anatomy. Create a 1:1 SQUARE canvas for a 512x512 master; keep face, hands and central spectral burst inside x24..488 y105..407, quiet shrine margins above and below. No frame, text, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-222d9b63-13ab-43cb-b237-5c36289ac8ac.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_strike_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Yurei’s full anguished face, both translucent hands and the charged spectral burst remain visible in the wide crop and thumbnail; mist and shrine scenery frame the spirit."
+  },
+  {
+    "cardId": "shadow_lob_14",
+    "name": "The Tower Card",
+    "prompt": "Paint The Tower Card as a complete, single vertical tarot card held upright between a fortune-teller’s fingers at face height. The card has four intact corners and a clear painted image of a tall stone tower struck by lightning and crumbling into a dark abyss, with tiny falling figures; no writing or extra symbols. Beside it, a hooded reader’s face and holding hand are clearly visible at the same height, but the complete card remains the dominant named artifact. Painterly medieval high-fantasy collectible-card art, detailed parchment, dark gold edge and dramatic storm light. 1:1 SQUARE composition for a 512x512 master; fit the entire tarot card, fingers, and reader’s face within x24..488 y105..407. Quiet stormy background above and below. No separate card frame, legible text, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-91b25479-2680-45f3-8fc4-60ee84e3b8a3.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_lob_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Focal y=0.43 keeps the Tower tarot card’s complete rectangle and corners, reader’s face, and fingers visible in the actual wide crop and thumbnail; hood and lower robe crop incidentally."
+  },
+  {
+    "cardId": "shadow_ward_13",
+    "name": "Hell's Gate",
+    "prompt": "Paint Hell's Gate as a forbidding but recognizable medieval passageway: two heavy dark-stone gate pillars and a crosspiece form a complete corridor entrance, wrapped in thorny black vines that create a defensive cage. A narrow path of ember-red light passes through the gate into deep shadow; keep the architectural gate and thorn ward dominant, no foreground character needed. Painterly medieval high-fantasy collectible-card illustration, textured stone, roots and thorns, dramatic low light and atmospheric depth. Create a 1:1 SQUARE canvas for a 512x512 master; keep the full gate opening, pillars and key thorn lattice within x24..488 y105..407, quiet darkness above and below. No frame, text, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-218fbd70-42c8-4947-9297-e93312470819.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_ward_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Focal y=0.40 retains the thorn-arched gate opening and both stone pillars in the wide crop and thumbnail; outer tower tips and lower path crop incidentally."
   }
 ]

@@ -7,7 +7,7 @@
     },
     "/root/b11_worker_2": {
       "packet": "storm-05",
-      "state": "running"
+      "state": "idle"
     },
     "/root/b11_worker_3": {
       "packet": "verdant-05",
@@ -15,7 +15,7 @@
     },
     "/root/b11_worker_4": {
       "packet": "light-05",
-      "state": "running"
+      "state": "idle"
     },
     "/root/b11_worker_5": {
       "packet": "shadow-05",
@@ -23,7 +23,7 @@
     },
     "/root/b11_worker_6": {
       "packet": "fire-05",
-      "state": "running"
+      "state": "idle"
     }
   },
   "completedPackets": [
@@ -61,7 +61,10 @@
     "verdant-04",
     "frost-05",
     "brown-05",
-    "gray-05"
+    "gray-05",
+    "light-05",
+    "fire-05",
+    "storm-05"
   ],
   "reviewedSources": {
     "fire_strike_11": {
@@ -763,6 +766,66 @@
     "gray_summon_117": {
       "file": "game/cards/art/masters/gray_summon_117.png",
       "sha256": "31e0514fb5031c8d48359c89549dfb76c796e26b07c9f429fd8289ced1ec8c7d"
+    },
+    "light_strike_12": {
+      "file": "game/cards/art/masters/light_strike_12.png",
+      "sha256": "308630f9f67cdb8cd73e350d10ed28442dffd5959bf969a105b7c0c5fce6a7d3"
+    },
+    "light_lob_13": {
+      "file": "game/cards/art/masters/light_lob_13.png",
+      "sha256": "e5223ae0f23f1280c03fa5951d4abcfde6e5974ba849b937f6f7d49a420dcd44"
+    },
+    "light_ward_14": {
+      "file": "game/cards/art/masters/light_ward_14.png",
+      "sha256": "8df26cbe015273f935149624ae515e39b06301f56721ad12662ce15515e9d20c"
+    },
+    "light_boon_11": {
+      "file": "game/cards/art/masters/light_boon_11.png",
+      "sha256": "e6c180a5f53b233d609e5475f8c00036cbdd0ed6b462c528562fcecfce304a5a"
+    },
+    "light_charge_12": {
+      "file": "game/cards/art/masters/light_charge_12.png",
+      "sha256": "0fa0c686997985527d0d03420b70be06139e63935858fb2b0beadd8d2c72d446"
+    },
+    "fire_strike_13": {
+      "file": "game/cards/art/masters/fire_strike_13.png",
+      "sha256": "20d3c760a94aea4cc586ccf940307f35402c0934b6743594d01cd935c0700986"
+    },
+    "fire_lob_14": {
+      "file": "game/cards/art/masters/fire_lob_14.png",
+      "sha256": "9f2ad6f64e5149dee5aa1d897c81be4c5535d66bd2eda67de29ca32097d50723"
+    },
+    "fire_ward_13": {
+      "file": "game/cards/art/masters/fire_ward_13.png",
+      "sha256": "ef5d8c062caf18fcdf516a5a5a55dadaec7f61d3ac1041df7550d19baddfdb7f"
+    },
+    "fire_boon_12": {
+      "file": "game/cards/art/masters/fire_boon_12.png",
+      "sha256": "2b7a6e6ffbf274ba204af492f23368fb0cdf2e8f210dee3bc54eb252990daadc"
+    },
+    "fire_charge_12": {
+      "file": "game/cards/art/masters/fire_charge_12.png",
+      "sha256": "edcacdde406c70ae42d9c5a9f6cfc13d79d7d242ab603fe69f03241298ffe713"
+    },
+    "hero_voltaire": {
+      "file": "game/cards/art/masters/hero_voltaire.png",
+      "sha256": "4f5bea00bc17487897efe1259757db4549926a50b9d87a29091d2f6a2649cdc1"
+    },
+    "storm_strike_13": {
+      "file": "game/cards/art/masters/storm_strike_13.png",
+      "sha256": "e9be4819b27116fa648f4019afd7011e1bc338bdd57b71f18e9b58c8035dbbb5"
+    },
+    "storm_lob_13": {
+      "file": "game/cards/art/masters/storm_lob_13.png",
+      "sha256": "6cec6e99d985c53e6f5833a3b754ce050cf6363a11b96a500c3ed9391e770a93"
+    },
+    "storm_boon_12": {
+      "file": "game/cards/art/masters/storm_boon_12.png",
+      "sha256": "815296acb16e3e6a25d7f4c0e9f2b30591a57e92a09141689955aec1c5d864c9"
+    },
+    "storm_charge_12": {
+      "file": "game/cards/art/masters/storm_charge_12.png",
+      "sha256": "d6d98de59de7dcacb038bea10623a77ab3f0ff581d71c2f048bf02d8e5949b27"
     }
   }
 }

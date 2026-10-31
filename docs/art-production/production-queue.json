@@ -4,8 +4,8 @@
   "active": 1034,
   "remaining": 919,
   "pending": 719,
-  "assigned": 17,
-  "awaitingReview": 183,
+  "assigned": 6,
+  "awaitingReview": 194,
   "countsByColour": {
     "brown": 234,
     "fire": 246,
@@ -3089,7 +3089,7 @@
       "name": "Pistol Case",
       "type": "charge",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -9223,7 +9223,7 @@
       "name": "Silver Arrows of the Hunt",
       "type": "charge",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -10562,7 +10562,7 @@
       "name": "Yurei's Lament",
       "type": "strike",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -10864,7 +10864,7 @@
       "name": "The Tower Card",
       "type": "lob",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -11005,7 +11005,7 @@
       "name": "Hell's Gate",
       "type": "ward",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -12449,7 +12449,7 @@
       "name": "Graveborn Mordo",
       "type": "hero",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -12710,7 +12710,7 @@
       "name": "Dune Lash",
       "type": "strike",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -12994,7 +12994,7 @@
       "name": "Saltpeter Charge",
       "type": "lob",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -13342,7 +13342,7 @@
       "name": "Merchant's Luck",
       "type": "boon",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -13474,7 +13474,7 @@
       "name": "Magnet Shot",
       "type": "charge",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -14570,7 +14570,7 @@
       "name": "Voltaire the Spark",
       "type": "hero",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },

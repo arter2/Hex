@@ -2,10 +2,10 @@
   "batch": 11,
   "status": "in-progress",
   "targetNewImages": 200,
-  "generatedSources": 183,
-  "reviewedSources": 175,
-  "missingSources": 17,
-  "reviewedPackets": 35,
+  "generatedSources": 194,
+  "reviewedSources": 190,
+  "missingSources": 6,
+  "reviewedPackets": 38,
   "requiresRepaint": [],
   "baselineActive": 1034,
   "targetActive": 1234,
@@ -343,7 +343,7 @@
       "colour": "fire",
       "source": "game/cards/art/masters/fire_boon_12.png",
       "sha256": "2b7a6e6ffbf274ba204af492f23368fb0cdf2e8f210dee3bc54eb252990daadc",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.43
@@ -367,6 +367,18 @@
       "colour": "fire",
       "source": "game/cards/art/masters/fire_charge_11.png",
       "sha256": "80ecb18b7c1b445de48f6f77526ac7bc1e891253ca4355daca4a7c964a923afa",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_charge_12",
+      "name": "Pistol Case",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_charge_12.png",
+      "sha256": "edcacdde406c70ae42d9c5a9f6cfc13d79d7d242ab603fe69f03241298ffe713",
       "reviewed": true,
       "focalPoint": [
         0.5,
@@ -427,7 +439,7 @@
       "colour": "fire",
       "source": "game/cards/art/masters/fire_lob_14.png",
       "sha256": "9f2ad6f64e5149dee5aa1d897c81be4c5535d66bd2eda67de29ca32097d50723",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.43
@@ -487,7 +499,7 @@
       "colour": "fire",
       "source": "game/cards/art/masters/fire_strike_13.png",
       "sha256": "20d3c760a94aea4cc586ccf940307f35402c0934b6743594d01cd935c0700986",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.43
@@ -571,7 +583,7 @@
       "colour": "fire",
       "source": "game/cards/art/masters/fire_ward_13.png",
       "sha256": "ef5d8c062caf18fcdf516a5a5a55dadaec7f61d3ac1041df7550d19baddfdb7f",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.43
@@ -1214,6 +1226,18 @@
       ]
     },
     {
+      "cardId": "hero_mordo",
+      "name": "Graveborn Mordo",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/hero_mordo.png",
+      "sha256": "ec3eea688ab66575c097c6c10880681911bda572e097c78e496ca18085a1bad6",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "cardId": "hero_mossback",
       "name": "Mossback the Tortoise Sage",
       "colour": "verdant",
@@ -1274,6 +1298,18 @@
       ]
     },
     {
+      "cardId": "hero_voltaire",
+      "name": "Voltaire the Spark",
+      "colour": "storm",
+      "source": "game/cards/art/masters/hero_voltaire.png",
+      "sha256": "4f5bea00bc17487897efe1259757db4549926a50b9d87a29091d2f6a2649cdc1",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.44
+      ]
+    },
+    {
       "cardId": "light_boon_09",
       "name": "Pegasus Flight",
       "colour": "light",
@@ -1303,7 +1339,7 @@
       "colour": "light",
       "source": "game/cards/art/masters/light_boon_11.png",
       "sha256": "e6c180a5f53b233d609e5475f8c00036cbdd0ed6b462c528562fcecfce304a5a",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.5
@@ -1327,6 +1363,18 @@
       "colour": "light",
       "source": "game/cards/art/masters/light_charge_11.png",
       "sha256": "7c17fcda377a1e76092fa56c9c5dae2e6fa4073a339b397723a2b95ec08d2e38",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "light_charge_12",
+      "name": "Silver Arrows of the Hunt",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_charge_12.png",
+      "sha256": "0fa0c686997985527d0d03420b70be06139e63935858fb2b0beadd8d2c72d446",
       "reviewed": true,
       "focalPoint": [
         0.5,
@@ -1375,7 +1423,7 @@
       "colour": "light",
       "source": "game/cards/art/masters/light_lob_13.png",
       "sha256": "e5223ae0f23f1280c03fa5951d4abcfde6e5974ba849b937f6f7d49a420dcd44",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.34
@@ -1447,7 +1495,7 @@
       "colour": "light",
       "source": "game/cards/art/masters/light_strike_12.png",
       "sha256": "308630f9f67cdb8cd73e350d10ed28442dffd5959bf969a105b7c0c5fce6a7d3",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.5
@@ -1531,7 +1579,7 @@
       "colour": "light",
       "source": "game/cards/art/masters/light_ward_14.png",
       "sha256": "8df26cbe015273f935149624ae515e39b06301f56721ad12662ce15515e9d20c",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.5
@@ -1634,6 +1682,18 @@
       ]
     },
     {
+      "cardId": "shadow_lob_14",
+      "name": "The Tower Card",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_lob_14.png",
+      "sha256": "8332fd2f06a2fb7868d8c096822ff4cf362427b25eabd7105782b6f6de912158",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.43
+      ]
+    },
+    {
       "cardId": "shadow_machine_06",
       "name": "Hut on Chicken Legs",
       "colour": "shadow",
@@ -1688,6 +1748,18 @@
       "source": "game/cards/art/masters/shadow_strike_11.png",
       "sha256": "3480fea8801a5995f38021b7ea5c11fcb7c2a2524dab8e0e1019426e1c77b4d8",
       "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "shadow_strike_12",
+      "name": "Yurei's Lament",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_strike_12.png",
+      "sha256": "1addd1542932625b09942771c86286ad9b7094d32faa69b0b4d4dfeec83c626e",
+      "reviewed": false,
       "focalPoint": [
         0.5,
         0.5
@@ -1766,6 +1838,18 @@
       ]
     },
     {
+      "cardId": "shadow_ward_13",
+      "name": "Hell's Gate",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_ward_13.png",
+      "sha256": "42e597a9a8fe14670bd132551df3801cdf6734330831757d97e9dd35202afa2b",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
       "cardId": "static_corridor",
       "name": "Static Corridor",
       "colour": "storm",
@@ -1802,6 +1886,18 @@
       ]
     },
     {
+      "cardId": "storm_boon_12",
+      "name": "Merchant's Luck",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_boon_12.png",
+      "sha256": "815296acb16e3e6a25d7f4c0e9f2b30591a57e92a09141689955aec1c5d864c9",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "cardId": "storm_charge_10",
       "name": "Alchemist's Bandolier",
       "colour": "storm",
@@ -1819,6 +1915,18 @@
       "colour": "storm",
       "source": "game/cards/art/masters/storm_charge_11.png",
       "sha256": "9ed7dcfc33195c67ffcdd45ebc22e8dfc5ebf10aec413c87be8e5cf528e6e7f9",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_charge_12",
+      "name": "Magnet Shot",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_charge_12.png",
+      "sha256": "d6d98de59de7dcacb038bea10623a77ab3f0ff581d71c2f048bf02d8e5949b27",
       "reviewed": true,
       "focalPoint": [
         0.5,
@@ -1867,6 +1975,18 @@
       "colour": "storm",
       "source": "game/cards/art/masters/storm_lob_12.png",
       "sha256": "67401f28a4a2f280e4729a447545fb518ae4ab21fa16372fe89b62d36c51fc67",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_lob_13",
+      "name": "Saltpeter Charge",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_lob_13.png",
+      "sha256": "6cec6e99d985c53e6f5833a3b754ce050cf6363a11b96a500c3ed9391e770a93",
       "reviewed": true,
       "focalPoint": [
         0.5,
@@ -1927,6 +2047,18 @@
       "colour": "storm",
       "source": "game/cards/art/masters/storm_strike_12.png",
       "sha256": "ebce7af2fe7afa4faab408d2188fb961accb71c85cf24d6758e1faea314871e9",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_strike_13",
+      "name": "Dune Lash",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_strike_13.png",
+      "sha256": "e9be4819b27116fa648f4019afd7011e1bc338bdd57b71f18e9b58c8035dbbb5",
       "reviewed": true,
       "focalPoint": [
         0.5,

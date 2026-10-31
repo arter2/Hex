@@ -2119,5 +2119,905 @@
     "status": "generated",
     "batch": 10,
     "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. Scout’s full face and both hands are visible; complete blowgun and dart, including the sharp point and leaf fletching, fit within the crop."
+  },
+  {
+    "cardId": "verdant_strike_12",
+    "name": "Viper Strike",
+    "prompt": "Paint Viper Strike as a sudden venomous attack in an ancient forest. A vivid emerald viper coils and lunges forward across the composition, jaws open and fangs clear, amber eyes focused; a small armored adventurer recoils just enough to show the strike's force while the snake remains primary. A few restrained green venom droplets glint in the light. Painterly medieval high fantasy collectible-card illustration, believable snake scales, rich woodland textures, dramatic directional light, atmospheric depth. Explicit 1:1 square 512 master; keep the viper's full head, eyes, fangs and central coiled body, plus the adventurer's face/hand if visible, within x24..488,y105..407 for 206:141 crop; quiet canopy and ground beyond. No text/frame/UI, anime, Disney, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-dcd7edbc-8e3e-4172-a7c4-56dc042b8fd5.png",
+    "focalPoint": [
+      0.5,
+      0.32
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed square, top-shifted wide crop and thumbnail. Viper's complete head, eyes and fangs remain clear; adventurer's recoil and hand read at card size."
+  },
+  {
+    "cardId": "verdant_lob_11",
+    "name": "Kapok Fluff Burst",
+    "prompt": "Paint Kapok Fluff Burst: a plump ripe kapok pod bursts open in a sudden magical burst, releasing a dramatic cloud of soft ivory cottony fibers that knocks a small forest goblin off balance. The open pod and expanding fluffy burst dominate the horizontal scene; show the goblin's surprised face and one hand shielding itself, with motion readable and fibers distinct, not smoke or fire. Painterly medieval high fantasy collectible-card art, rich kapok tree leaves, soft sunlight through the canopy, tactile fluffy fibers, atmospheric depth. Explicit 1:1 square 512 master; entire named kapok pod and primary burst, plus goblin face/hand, inside x24..488,y105..407 for wide 206:141 crop. Quiet scenery above/below. No text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-20a2f020-0f5b-489a-8bd4-99774c937d43.png",
+    "focalPoint": [
+      0.5,
+      0.32
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/verdant_lob_11.png",
+    "sourceNative": [
+      1515,
+      1038
+    ],
+    "reviewNote": "Reviewed normalized square, top-shifted crop and thumbnail. The central fluff burst and goblin's face/hand are readable; part of the pod extends beyond the left frame edge."
+  },
+  {
+    "cardId": "verdant_ward_11",
+    "name": "Pangolin Scales",
+    "prompt": "Paint Pangolin Scales as a protective barrier: a sturdy pangolin curls tightly into a compact ball, its overlapping bronze-green scales catching a soft luminous verdant sheen as a protective shield while a companion sheltering just behind reaches toward it. Make the pangolin's head and eyes visible between the scales; the curved shield silhouette reads clearly around it. Painterly medieval high fantasy wildlife card art, detailed but grounded pangolin anatomy, forest glade, warm directional light and atmospheric depth. Explicit 1:1 square 512 master; full pangolin head/eyes, scaled body and complete protective silhouette fit x24..488,y105..407 for 206:141 crop; quiet foliage above and ground below. No text/frame/UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0af8df7a-d5ce-42c5-8b9e-1b854353d017.png",
+    "focalPoint": [
+      0.5,
+      0.32
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/verdant_ward_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed square, top-shifted wide crop and thumbnail. Foreground pangolin's face/eyes and full protective scale silhouette remain visible, with a second pangolin as support."
+  },
+  {
+    "cardId": "verdant_boon_09",
+    "name": "Wolfskin Frenzy",
+    "prompt": "Paint Wolfskin Frenzy: a fierce woodland warrior enters a courageous pact with the wolf spirit, wearing a wolf pelt mantle and rallying nearby companions with a raised hand as subtle green spirit-light gathers around them. The warrior's intense face and raised action hand are primary; the wolf spirit appears as a dignified translucent presence close behind, not replacing the human. Horizontal compact staging, forest clearing. Painterly medieval high fantasy illustration, believable fur, leather and cloth, strong warm light through trees, grounded anatomy, atmospheric brushwork. Explicit 1:1 square 512 master; keep warrior's full face, raised hand and wolf pelt clearly within x24..488,y105..407 for 206:141 crop; quiet canopy and earth outside. No text/frame/UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e304818a-d5eb-492f-bdae-24abd203db1f.png",
+    "focalPoint": [
+      0.5,
+      0.32
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/verdant_boon_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed square, top-shifted crop and thumbnail. Warrior's entire raised hand, face and pelt remain visible; wolf spirit and companions reinforce the pact and rally."
+  },
+  {
+    "cardId": "verdant_charge_11",
+    "name": "Mushroom Basket",
+    "prompt": "Create a beautiful standalone painterly medieval-fantasy collectible-card illustration of Mushroom Basket. The named object is a single richly woven wicker basket, centered and prominent on a mossy forest stump, viewed at a clear three-quarter angle. Show the complete basket wholly inside the composition with generous space on every side: entire handle arch, unbroken rim, both side walls, full base, and a varied abundance of clearly visible red-capped and pale woodland mushrooms, with no part touching or leaving the frame. Basket occupies about 60 percent of the image width and sits across the middle horizontal band. A tiny green poisonous glint among one mushroom's delicate piercing spines may suggest its charge, but keep the basket as the unmistakable subject. No person, no cropped props, no extra baskets. Dappled golden forest light, fine tactile wicker and mushroom detail, rich foliage, atmospheric depth, confident painterly brushwork, grounded medieval high-fantasy art. Explicit 1:1 square canvas for a 512x512 master. Keep entire basket inside x24..488 and y105..407 so it remains completely visible in a centered 206:141 horizontal card crop; quiet soft forest canopy and stump beyond. No text, frame, lettering, UI. No anime, Disney-like cartoon proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-083dd30d-2a17-46bb-9f1d-8659c900c16e.png",
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/verdant_charge_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Repainted as a standalone basket and preserved prior source at /tmp/verdant-charge-11-repair/verdant_charge_11-before-repair.png. Reviewed new 512 square, crop shifted to focal y .46 and thumbnail: complete arched handle, rim, base and mushroom contents fit the wide crop with margin."
+  },
+  {
+    "cardId": "verdant_trap_10",
+    "name": "Giant Puffball",
+    "prompt": "Paint Giant Puffball as a huge round cream-and-gold puffball mushroom growing at the edge of a woodland path, its thick stem and entire domed cap unmistakable. A small forest scout crouches beside it at the same height, face and both hands clear as they trigger a sudden but controlled cloud of spores that blasts outward behind the mushroom; keep the puffball dominant and the person secondary. Painterly medieval high-fantasy collectible-card art, nuanced mushroom skin and forest materials, warm shaft of light and atmospheric depth. 1:1 SQUARE canvas for a 512x512 master. Keep the complete named mushroom, scout's face and hands inside x24..488 y105..407, quiet woods above and below. No frame, text, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ffe61428-3ac4-467a-878b-c114d6441efc.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_trap_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "The complete puffball cap and stem fit the square and wide crop, while the scout’s face and touching hand remain readable. Spore cloud extends incidentally into the background."
+  },
+  {
+    "cardId": "verdant_environment_06",
+    "name": "Mire of the Fens",
+    "prompt": "Paint Mire of the Fens as a mysterious fenland bramble marsh, a dense vertical column of reeds, thorny wet vines and waterlogged roots rising from dark green water, with a narrow channel pushing through the bramble. A small heron and distant cypress silhouettes add scale; the mire and tangled thorn growth remain the clear subject. Painterly medieval high-fantasy collectible-card illustration, rich swamp greens, mist, textured water and warm filtered light. Create a 1:1 SQUARE canvas for an editable 512x512 master; keep the most distinct bramble column and water channel centered inside x24..488 y105..407, with quieter mist and water margins above/below. No frame, text, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7b4a333e-79ec-40a4-a568-b85afbc3004d.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_environment_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Dense thorny reeds, root mass and the channel occupy the wide crop, with misty fen scenery around them; the heron remains a small scale cue."
+  },
+  {
+    "cardId": "verdant_piece_06",
+    "name": "Mask of the Green Man",
+    "prompt": "Paint Mask of the Green Man as a complete ancient carved wood mask shaped into a serene human face entwined with oak leaves, acorns and curling vines, its whole rim and every recognizable feature visible. A druid holds the mask beside their own uncovered face at the same height, both eyes and hands clear as they lift it toward their brow; keep the mask dominant, with warm green healing light glowing through carved leafwork. Painterly medieval high-fantasy collectible-card art, detailed carved wood and living leaves, warm forest light. Create a 1:1 SQUARE composition for a 512x512 master; keep entire mask, druid's face and both hands within x24..488 y105..407, quiet woodland above and below. No frame, lettering, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-fe096d63-ece0-4229-aa5d-abd3b32b3cd2.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_piece_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "The mask’s full leaf-carved face and rim, druid’s uncovered face, and both hands stay visible in the wide crop and thumbnail; the mask remains the focal object. Parent shifted crop upward to y=.38, retaining complete leaf crown and mask outline alongside wearer face and both hands."
+  },
+  {
+    "cardId": "verdant_summon_12",
+    "name": "Kodama",
+    "prompt": "Paint Kodama as a small ancient tree spirit emerging from a mossy hollow in an old woodland trunk, with a softly luminous bark-textured humanoid face, clear calm eyes, delicate twig-like hands and a crown of fresh leaves. Let the spirit rise from roots toward the viewer while fireflies and a few leaves drift around it; make the spirit itself the unmistakable focus, quiet and otherworldly rather than cute or cartoonish. Painterly medieval high-fantasy collectible-card art, intricate moss and bark, gentle green light, atmospheric forest depth. Create a 1:1 SQUARE canvas for a 512x512 master, keeping the spirit’s face and hands in x24..488 y105..407 and the whole upper spirit visible; quiet forest margins above and below. No frame, text, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7933b276-9f35-4f08-bfdb-921be2887347.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "The bark-textured spirit’s full face and both twig hands remain clear in the wide crop and thumbnail; the leafy crown and trunk frame the named summon."
+  },
+  {
+    "cardId": "hero_mossback",
+    "name": "Mossback the Tortoise Sage",
+    "prompt": "Paint Mossback the Tortoise Sage as a wise elderly tortoise humanoid hero, noble expressive reptilian face with kind observant eyes, moss-dappled shell and weathered green-and-gold robes. He stands in a low ancient forest in a readable three-quarter portrait, both hands raised as he sends a narrow piercing emerald moss beam straight across the scene; a subtle protective green sheen surrounds him. Keep Mossback’s face and hands dominant and clearly visible, the beam secondary. Painterly medieval high-fantasy collectible-card illustration, believable tortoise features and aged shell, rich moss and fabric, dramatic sunlit forest atmosphere. Create a 1:1 SQUARE canvas for an editable 512x512 master; keep face, hands and upper shell within x24..488 y105..407, with the horizontal beam crossing the middle and quiet woodland above/below. No frame, text, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/recovered-hero_mossback-3621ea4322a2.png",
+    "editableSourcePath": "game/cards/art/masters/hero_mossback.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Image was recovered from the retained successful generation payload after the autosave transport failure; base64 length and fingerprints matched exactly, and native PNG is 1254×1254. Focal y=0.43 keeps Mossback’s full head, face, both hands and moss beam visible in the actual wide crop and thumbnail."
+  },
+  {
+    "cardId": "verdant_strike_13",
+    "name": "Cobra Venom Spray",
+    "prompt": "Paint Cobra Venom Spray as a striking emerald cobra rising from lush undergrowth, flared hood, sharp focused eyes and open mouth clearly visible as it sprays a broad fan of fine venom droplets toward an unseen target. The cobra’s head, hood, and fan-shaped venom attack are the dominant readable subject, with no human needed. Painterly medieval high-fantasy collectible-card illustration, beautifully patterned scales, rich forest greens, dramatic dappled light and atmospheric depth. Create a 1:1 SQUARE canvas for a 512x512 master; keep cobra eyes, head, hood and main venom fan inside x24..488 y105..407, quiet foliage above and below. No frame, text, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9b663158-20b7-4fc5-8bea-3b79f0ee58f4.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Cobra’s head, eyes, hood and spraying venom fan are all clear in the wide crop and thumbnail; lower coils crop as incidental anatomy. Parent shifted crop upward to y=.40 to keep full cobra head and eye/venom spray; lower coils are incidental."
+  },
+  {
+    "cardId": "verdant_lob_12",
+    "name": "Sasquatch Boulder",
+    "prompt": "Paint Sasquatch Boulder as a massive shaggy sasquatch hurling one large intact boulder across a forest clearing. Show the sasquatch’s recognizable broad face, both hands and the entire airborne boulder clearly at nearly the same height in a horizontal composition; the boulder is the named projectile and must be fully visible. Painterly medieval high-fantasy collectible-card art, believable fur, rough stone and strong action, warm shafts of forest light. Create a 1:1 SQUARE canvas for a 512x512 master; keep face, both hands and complete boulder within x24..488 y105..407, with only background trees and incidental lower legs cropping. No frame, text, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f8e860af-a942-4055-80d9-61755176605d.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_lob_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Focal y=0.40 keeps Sasquatch’s face, both hands and the complete airborne boulder within the actual wide crop and thumbnail; incidental lower legs crop."
+  },
+  {
+    "cardId": "verdant_ward_12",
+    "name": "Green Chapel Gate",
+    "prompt": "Paint Green Chapel Gate as a monumental medieval chapel entrance, a complete sturdy oak gate set into a moss-covered stone arch, secured by a heavy cage-like lattice of living green branches and roots. Warm light glows from the chapel behind it; make the named gate and its solid defensive structure the dominant subject, with a tiny distant monk for scale. Painterly medieval high-fantasy collectible-card illustration, richly textured stone, carved wood and leaves, atmospheric forest light. Create a 1:1 SQUARE canvas for an editable 512x512 master; keep the recognizable gate, arch and main cage lattice centered inside x24..488 y105..407, quiet canopy and path above/below. No frame, text, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-372b25cc-f33a-40c0-8d65-9a077bd370ba.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_ward_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Focal y=0.43 keeps the complete chapel arch, gate and protective branch lattice in the wide crop and thumbnail; steps and small monk crop incidentally."
+  },
+  {
+    "cardId": "verdant_boon_10",
+    "name": "Fern Seed Vanishing",
+    "prompt": "Paint Fern Seed Vanishing as a single luminous fern seed resting in an open druid’s palm, the seed and hand at the same height as the druid’s calm, clearly visible face. The seed begins to phase into delicate green motes and translucent leaf-shaped light, suggesting a brief vanishing spell; keep the seed itself intact and unmistakable. Painterly medieval high-fantasy collectible-card art, finely painted skin, fern fronds and soft green radiance, quiet woodland atmosphere. Create a 1:1 SQUARE composition for a 512x512 master; keep the druid’s face, relevant hand and complete seed inside x24..488 y105..407, quiet foliage above and below. No frame, lettering, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-446107a9-71d7-46fb-aa7c-8f080fd1b821.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_boon_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Druid’s face, open palm, complete fern seed and radiating phase-light remain clear in the wide crop and thumbnail."
+  },
+  {
+    "cardId": "verdant_charge_12",
+    "name": "Bola Set",
+    "prompt": "Create a painterly medieval fantasy card illustration of a woodland hunter showing a Bola Set. Use a deliberate compact HORIZONTAL composition with all essentials in the middle band of the square: complete hunter head and clear face around y125-225; both hands holding a short leather strap around y220-290; three short complete braided bolas hanging from the strap, all six rounded weights ending by y375. Keep everything within x24..488 and y105..407. Leave quiet forest scenery above and below. Do not make this a full-length figure and do not put the bolas on a low table. The hunter is chest-up, wearing weathered green-brown leather; face calm and readable, hands distinct, three bola cords and all paired stone weights clearly separated. Attractive golden woodland light, believable materials and anatomy. 1:1 SQUARE 512x512 master. No frame, lettering, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-299be4cc-467c-4a24-b3e5-f2d35be67d37.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_charge_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Repainted twice after crop inspection and preserved prior sources in /tmp. Final crop keeps the hunter’s full face, both hands and all six weights of the complete three-bola set together; the thumbnail remains legible."
+  },
+  {
+    "cardId": "verdant_trap_11",
+    "name": "Strangler Vine Snare",
+    "prompt": "Paint Strangler Vine Snare as a thick living thorn-vine loop tightening around a forest bandit’s torso, pulled taut between two ancient tree roots. The caught bandit’s frightened face and both hands are visible at the same height as the complete snare loop, hands gripping the vine while the surrounding roots draw it closed; keep the snare, not the person, dominant. Painterly medieval high-fantasy collectible-card illustration, believable bark, leather and leaves, dramatic filtered forest light. Create a 1:1 SQUARE canvas for a 512x512 master; keep the bandit’s face/hands and the entire readable loop inside x24..488 y105..407, quiet woodland above and below. No frame, text, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-339dac76-8f35-4ece-b15f-6a3eb7634ac7.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_trap_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "The bandit’s face and both gripping hands are clear inside the thick thorn-vine snare; the loop’s tightening action reads in the wide crop and thumbnail."
+  },
+  {
+    "cardId": "verdant_environment_07",
+    "name": "Stampede",
+    "prompt": "Paint Stampede as a powerful herd of wild forest bison thundering in a broad horizontal line through a woodland clearing, hooves shaking the earth and leaves lifting in their wake. A lead bison’s face, horns and shoulder are clear and strong, with several other animals charging behind it to make the stampede unmistakable. Painterly medieval high-fantasy collectible-card illustration, rich shaggy coats, dust, leaves, and dramatic golden woodland light. Create a 1:1 SQUARE canvas for a 512x512 master; keep the lead animal’s face and main charging bodies in x24..488 y105..407, quiet trees and earth at top and bottom. No frame, text, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f3b87f2b-efb8-4048-a7fd-07c5b9895447.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_environment_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Lead bison’s face and horns and the following herd all read in the wide crop; lower legs and foreground leaves crop naturally."
+  },
+  {
+    "cardId": "verdant_summon_13",
+    "name": "Oak Dryad",
+    "prompt": "Paint Oak Dryad as a gentle but powerful forest fairy born from an ancient oak, with a clearly readable graceful woman’s face, bright green eyes, and both delicate bark-textured hands extended to heal a small wound in a woodland creature. Her hair and robes merge with oak leaves and pale blossoms, while a partial oak trunk and living branch form her sturdy silhouette. Painterly medieval high-fantasy collectible-card art, intricate bark and leaf detail, soft healing light and atmospheric forest depth. Create a 1:1 SQUARE canvas for a 512x512 master; keep her full face, both hands and defining upper body within x24..488 y105..407; incidental lower body and branches may crop. No frame, lettering, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-cc0fa929-aa80-4ca9-948d-763ef3636ff4.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Focal y=0.43 keeps the dryad’s full face, both healing hands and the deer’s face together in the wide crop and thumbnail; lower bodies and canopy crop naturally."
+  },
+  {
+    "cardId": "verdant_strike_14",
+    "name": "Hornet Swarm",
+    "prompt": "Paint Hornet Swarm as a dense, sharply readable cluster of large golden-brown hornets bursting from a dark forest hollow toward a target. One foremost hornet is in clear focus with unmistakable striped abdomen, translucent veined wings, sharp eyes and stinger, while many smaller hornets scatter around it in a tight fan-shaped attack. Painterly medieval high-fantasy collectible-card illustration, detailed insect anatomy, dappled green light and atmospheric woodland depth. Create a 1:1 SQUARE canvas for a 512x512 master; keep the lead hornet’s whole body and the central swarm inside x24..488 y105..407, with quiet forest margins above and below. No frame, text, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-1908ef64-54fc-47e5-90d1-658db8adf3a3.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Lead hornet’s face, striped body and wings stand out clearly amid the surrounding swarm in the crop and thumbnail; only incidental background and a few outer wings crop."
+  },
+  {
+    "cardId": "hero_venna",
+    "name": "Venna, the Viper Queen",
+    "prompt": "Paint Venna, the Viper Queen, as a commanding adult serpent queen in a horizontal three-quarter portrait. Her beautiful but fierce face has unmistakable slit-pupil viper eyes, a subtle pair of venom fangs and a living crown of emerald serpents; her hands are clear as she raises one long ivory viper fang to strike and gathers a thin emerald poison aura with the other. Make Venna’s face and fang-strike the dominant action, with an elegant coil of scaled green armor below; no extra characters. Painterly medieval high-fantasy collectible-card illustration, believable facial anatomy, finely detailed scales and gold, luminous directional jungle light and atmospheric depth. Create a 1:1 SQUARE canvas for a 512x512 master; keep face, both hands, complete fang and poison action within x24..488 y105..407, quiet forest above and below. No frame, text, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5cf8745a-f6c1-4a94-b5f8-4a7f001b257b.png",
+    "editableSourcePath": "game/cards/art/masters/hero_venna.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Focal y=0.43 keeps Venna’s full face and serpent crown, both hands, complete fang and poison aura together in the wide crop and thumbnail; lower coils crop incidentally."
+  },
+  {
+    "cardId": "verdant_lob_13",
+    "name": "Treefolk Stomp",
+    "prompt": "Paint an illustration for Treefolk Stomp, a quick column-shaped blow that drops a mighty treefolk's foot, knocks foes backward and leaves them grounded. Show the immense but kindly ancient treefolk with a clearly readable face formed in the bark of its trunk at mid-frame; one massive root-foot slams into a forest clearing beneath it, sending a vertical burst of roots and earth upward and tossing a single armored foe backward. The treefolk's face and the stomp impact must both remain inside the central action band; incidental branches and lower roots may crop. Painterly medieval high fantasy, detailed bark, moss and leaves, filtered golden forest light, atmospheric depth and serious natural proportions. Explicit 1:1 SQUARE 512x512 composition; keep bark face, striking root-foot and readable knockback action inside x24..488,y105..407 for the 206:141 crop, quiet canopy and ground beyond. No frame, lettering, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c33d0b37-eb8c-4f9d-804c-3a6626b05e4d.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_lob_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed 512-square source and upward-shifted wide crop/thumb at focal y=0.40. The treefolk's face and trunk remain recognizable above the clear root-foot stomp and backward-flung foe; canopy and some ground debris are expendable."
+  },
+  {
+    "cardId": "briar_arc",
+    "name": "Briar Arc",
+    "prompt": "Paint an illustration for Briar Arc, a thorn ward that grows into a protective curved barrier. A short arc of dense living briar bushes rises from the forest floor between three large weathered stones, forming a clear defensive curve around two woodland travelers. Interwoven green stems and dark sharp thorns are highly visible, and subtle green magic travels along the hedge; one outside foe recoils after touching the thorns. Keep the whole central bramble arc and its sharp thorn silhouette as the named subject, not a generic green spell. Painterly medieval fantasy, rich leaf and bark textures, golden woodland light, grounded plants and atmospheric depth. Explicit 1:1 SQUARE 512x512 composition; preserve the full visible thorny arc and the protected travelers within x24..488,y105..407 for 206:141 wide crop; quiet trees and forest floor can extend beyond. No frame, lettering, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c96eba16-c72a-468e-8eec-a8adcfba1d62.png",
+    "editableSourcePath": "game/cards/art/masters/briar_arc.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop and 128x88 thumbnail. The curved bramble barrier with clear sharp thorns encloses the travelers and repels the outside foe; the arc reads at small size."
+  },
+  {
+    "cardId": "verdant_boon_11",
+    "name": "Green Man's Blessing",
+    "prompt": "Paint an illustration for Green Man's Blessing, a long-lasting courage boon radiating restorative light and jolting nearby foes. Show an ancient Green Man spirit with a clear wise face emerging from a living oak, his hair and beard woven of leaves and small flowers, one bark-covered hand resting gently on a brave human ranger's shoulder. A warm emerald-gold radiance renews the ranger and illuminates nearby allies, while one distant foe recoils from a brief flash. Keep the Green Man's face and the ranger's uplifted expression together as the clear blessing action, mature and dignified rather than cartoonish. Painterly medieval high fantasy, tactile bark, leaves, cloth and leather, beautiful shafted forest light, atmospheric depth and grounded anatomy. Explicit 1:1 SQUARE 512x512; keep both faces, blessing hand and luminous action within x24..488,y105..407 for 206:141 crop, quiet canopy above and forest below. No frame, text, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2d3d787b-a281-4daf-b3de-80be8e8396b9.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_boon_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed 512-square source and upward-shifted crop/thumb at focal y=0.40. Both Green Man's full leafy face and the ranger's face/heart-hand remain visible with the blessing hand and radiance; lower bow and forest are incidental."
+  },
+  {
+    "cardId": "verdant_charge_13",
+    "name": "Gourd of Pine Sap",
+    "prompt": "Recompose this same painterly woodland fantasy scene slightly inward from the left edge. Preserve the forest alchemist, pine sap, armored target and throwing action. Shift the alchemist and her handheld pine gourd about 12% of the canvas width toward the center so the supporting hand that grips the gourd is fully visible with clear margin from the left edge. Place the complete small pine gourd beside her face at the same height; preserve its whole bulbous body, cork stopper, neck, cord and rounded base. Keep the alchemist's full face, complete supporting hand, complete throwing hand, held gourd, airborne gourd and amber sap splash all visible together in the middle horizontal band. Do not crop any fingers or bottle parts. Retain natural grounded anatomy, textured leaf-green clothing, pine-rind gourd and painterly warm light. Explicit 1:1 SQUARE 512x512 composition; keep all named/action-critical parts within x24..488,y105..407 for the 206:141 crop, quiet foliage above and below. No text, frame, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d207ed9d-11e6-4b76-aead-46808bd6dceb.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_charge_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Repainted to bring the supporting hand and held gourd away from the left edge. Reviewed final 512-square source, centered 206:141 crop and 128x88 thumbnail: alchemist face, both complete hands, gourd including cork and rounded base, airborne gourd and sap splash all fit. Previous source preserved at /tmp/verdant05-repaint-scratch/verdant_charge_13-before-repaint.png."
+  },
+  {
+    "cardId": "verdant_trap_12",
+    "name": "Pixie-Led Path",
+    "prompt": "Paint an illustration for Pixie-Led Path, a short snare trap guided by woodland pixies that briefly stuns an intruder and gently mends the traveler. In an ancient green forest, a weary human wayfarer with a clear adult face pauses at a fork in the path, one hand following the gentle glow of three tiny naturalistic pixies as they guide the traveler along a safe winding trail. Behind them, the wrong path is caught by three low braided root-and-vine snares that lift an armored pursuer's boot and briefly pin him; a soft green shimmer heals a small wound on the traveler. The pixies are small subtle lights with delicate translucent wings and natural proportions, not toys, not cute cartoon mascots, not oversized. Keep traveler face and guiding hand, the three woven snares and path clear; rich plants and firefly glimmers remain secondary. Painterly medieval high fantasy, nuanced bark, leaves, moss, cloth and leather, dappled golden light, grounded anatomy and atmospheric depth. Explicit 1:1 SQUARE 512x512; keep traveler face/hand, central path, three snare loops and subtle pixies inside x24..488,y105..407 for the 206:141 crop, quiet canopy and moss above/below. No frame, lettering, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-3fe6d322-55e8-49d6-8c4a-9eb67dd37c73.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_trap_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.47
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed 512-square source and slightly upward-shifted crop/thumb at focal y=0.47. The wayfarer's face and guiding hand remain visible with the three subdued pixies and thorny root snares catching an armored pursuer; the pixies remain small and painterly rather than toy-like."
+  },
+  {
+    "cardId": "verdant_strike_15",
+    "name": "Komodo Bite",
+    "prompt": "Create an original painterly medieval high-fantasy collectible-card illustration for “Komodo Bite,” a charged wedge-like critical strike that bites and drains. Show a formidable giant komodo dragon in a low, lunging side view, its broad head and open jaws clamped around the armored forearm or shield edge of one adult adventurer. The komodo is the unmistakable primary subject: sharp amber eye, pebbled scales, muscular jaw and curved teeth clearly visible; keep the human secondary and do not obscure the reptile's face. Suggest a decisive charged impact with a restrained green-gold glint along the bite and a few flying leaves, without covering the animal. Lush old-growth jungle, painterly believable anatomy and scales, dramatic directional forest light, atmospheric depth, grounded serious tone. One bold horizontal subject/action, readable at small size. True 1:1 SQUARE canvas for a 512x512 master; keep the full komodo head, eye, jaws and relevant bite/contact area inside x24..488 and y105..407. Quiet expendable canopy and ground above and below; the center will be cropped to a wide 206:141 card image. No text, lettering, frame, UI, anime, Disney-like cartoon, toy proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-728cd23f-35fd-4815-8b9e-74c5633de2e8.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square, 206:141 crop, and 128x88 thumbnail inspected. The komodo's eye, jaws, and bite on the armored forearm remain prominent and readable in the crop and thumbnail."
+  },
+  {
+    "cardId": "verdant_lob_14",
+    "name": "Mokele-mbembe's Wake",
+    "prompt": "Create an original painterly medieval high-fantasy collectible-card illustration for “Mokele-mbembe's Wake.” Depict a legendary Mokele-mbembe, a vast long-necked river cryptid with a crocodilian head and heavy aquatic body, surging from a tropical African marsh river. Its head and long neck rise prominently beside its powerful shoulder while a broad rolling wake sweeps sideways through reeds and knocks a line of floating logs and lily leaves outward, suggesting a quick forceful lob impact. The creature's eye, head shape and the curving water wake must read clearly together; no generic sea serpent, no other monsters. Painterly water, scales and wet hide, strong warm sun shafts through mist, lush but restrained riverbank setting, believable anatomy and dramatic atmospheric depth. Strong horizontal silhouette with one dominant creature/action. True 1:1 SQUARE canvas for a 512x512 master; keep the cryptid's head/eye and essential arc of wake within x24..488 and y105..407. Quiet expendable mist and water above and below; the center will be cropped to a wide 206:141 card image. No text, lettering, frame, UI, anime, Disney-like cartoon, toy proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4947db16-9d48-4b0b-88b7-824266aa69b8.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_lob_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square, 206:141 crop, and 128x88 thumbnail inspected. The cryptid's head, long neck, heavy aquatic body, and broad sideways wake remain readable in the wide crop and thumbnail. Parent shifted focal y to 0.43 to keep the complete creature head in the wide crop while retaining the wake."
+  },
+  {
+    "cardId": "verdant_boon_12",
+    "name": "Tapio's Favour",
+    "prompt": "Create an original painterly medieval high-fantasy collectible-card illustration for “Tapio's Favour,” a long-lasting forest boon that increases power and carries a gentle glow. Show Tapio, an ancient Finnish forest guardian spirit as a dignified, weathered humanlike figure with a crown of living pine boughs and subtle bark textures, extending one open hand in blessing toward a sturdy human huntsman. Place their faces and the blessing hand close together at the same height, with the huntsman turning toward a quiet amber-green glow that strengthens his posture. Keep Tapio and the clear gesture as the subject; light should reveal faces and materials rather than become an empty flare. Painterly medieval woodland, tactile wool, leather, bark and moss, elegant directional light and atmospheric depth, grounded mature fantasy. Horizontal, readable composition. True 1:1 SQUARE canvas for a 512x512 master; keep both faces and the full blessing hand within x24..488 and y105..407. Quiet forest canopy and ground above and below; the center will be cropped to a wide 206:141 card image. No text, lettering, frame, UI, anime, Disney-like cartoon, toy proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-42b556d7-f20e-495f-a44e-e9d4e72a6139.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_boon_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square, 206:141 crop, and 128x88 thumbnail inspected. Tapio and the huntsman's faces remain clear beside the blessing hand; the gentle green-gold glow reads without obscuring either face."
+  },
+  {
+    "cardId": "verdant_charge_14",
+    "name": "Marsh Leech Pouch",
+    "prompt": "Repaint the fantasy card “Marsh Leech Pouch” as an original painterly medieval high-fantasy illustration. Compose the ranger's hooded face and the named pouch side by side at the same height in the center of the square: the ranger's readable eyes and face occupy the left third around x120,y245; a complete compact leather-and-reed pouch occupies the right third around x355,y270. The ranger holds the pouch open with both hands clustered around it, revealing several dark red-brown living marsh leeches and a slim green charged thorn dart. Make the pouch the primary subject and keep its entire outline, clasp, opening and contents clearly visible. The face, pouch and relevant hands must all fit the wide crop together; do not place the face above the pouch. Painterly medieval fantasy, subtle swamp light, tactile damp leather, wicker and skin, believable adult features, atmospheric alder-marsh background, cinematic directional light, grounded mature style. True 1:1 SQUARE canvas for a 512x512 master. Keep face, whole pouch, contents and relevant hands inside x24..488 and y105..407, with quiet expendable scenery above and below. Intended for 206:141 horizontal crop. No text, lettering, frame or UI; no modern gear, anime, Disney-like cartoon, toy proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-1d4922e6-dc4c-4577-97c6-6ed1b4ab4d92.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_charge_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Repainted after the first composition placed the ranger's eyes outside the wide crop. Square, 206:141 crop, and 128x88 thumbnail inspected: face, both pouch-holding hands, whole pouch, leeches, and thorn dart are visible together. Earlier source preserved at /tmp/b12_worker_4_scratch/verdant_charge_14_attempt1.png."
+  },
+  {
+    "cardId": "verdant_environment_08",
+    "name": "Birnam Wood Marches",
+    "prompt": "Paint an original painterly medieval high-fantasy environment illustration for “Birnam Wood Marches,” an ancient forest advancing in a trembling column. Show a broad horizontal front of venerable oak and pine trees moving across a stony valley: thick exposed roots flex like walking feet, leaf-laden boughs sway, and a narrow column of trunks continues behind them into atmospheric distance. Make the movement unmistakable through cracked soil, lifted stones and windblown leaves, while the forest remains a real ancient woodland rather than anthropomorphic cartoon trees. The central trees and root-steps dominate; distant ridges and a few tiny birds provide scale. Rich painterly bark, moss, foliage and earth, dramatic slanting green-gold light, atmospheric depth, grounded medieval fantasy. True 1:1 SQUARE canvas for a 512x512 master. Compose the strongest advancing trunks, root movement, and ground tremor within x24..488 and y105..407, with quiet expendable canopy and foreground beyond; also make the central 206:141 wide crop a complete readable landscape. No text, lettering, frame or UI; no anime, Disney-like cartoon, toy proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-04f9230e-5cfb-47b0-a145-7958cc32c63a.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_environment_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square, 206:141 crop, and 128x88 thumbnail inspected. Advancing ancient trunks, lifted root-steps, flying leaves and fractured earth clearly convey a forest marching; central movement remains legible at thumbnail size."
+  },
+  {
+    "cardId": "verdant_summon_14",
+    "name": "Pixie Swarm",
+    "prompt": "Paint an original illustration for the fantasy creature card “Pixie Swarm.” Show a lively cloud of many tiny forest pixies, at least eight distinct little winged beings, darting together through fern fronds and around a mossy tree root. The nearest pair should be detailed enough to read as tiny fairies with delicate translucent wings, bright curious faces and miniature leaf-and-bark garments; the other pixies form a clear larger swarm that vanishes in and out of camouflaging foliage. Their rapid movement is suggested by staggered flight paths and scattered pollen, not cartoon streaks. Painterly medieval high-fantasy collectible-card art, nuanced natural materials, dappled directional sunlight, atmospheric depth, grounded expressive anatomy and elegant small-scale detail; not cute toy-like figures. Broad horizontal grouping with the brightest pair central. True 1:1 SQUARE canvas for a 512x512 master; keep the leading pixies’ faces and wings and the core of the swarm within x24..488 and y105..407. Quiet canopy and dark moss above and below; center will be cropped to a wide 206:141 card illustration. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4461ff3a-b536-432d-8349-03b496aba54c.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square, 206:141 crop, and 128x88 thumbnail inspected. Multiple distinct winged pixies form a clear swarm; the nearest faces and wings remain visible and the group reads at thumbnail size."
+  },
+  {
+    "cardId": "hero_lia",
+    "name": "Bloomwarden Lia",
+    "prompt": "Paint an original heroic portrait for “Bloomwarden Lia,” a verdant sky-style guardian whose seedpod strike poisons an enemy and whose presence renews allies. Depict Lia as a poised adult elven woodland warden with a clear, warm and determined face, practical layered green cloak and living-flower circlet, standing beneath a high canopy with open sky behind. In one raised hand she releases a single large sculptural seedpod, visibly descending toward a small distant armored foe below; subtle amber-green leaves and a gentle regenerative aura gather around Lia herself. Keep Lia’s face and gesture primary, the seedpod readable and distinct, the foe secondary, and the glow restrained. Painterly medieval high-fantasy collectible-card art, believable face, hands, cloth, flowers and bark, dramatic natural sky light and atmospheric depth, mature grounded style. Horizontal composition, no generic glowing orb in place of Lia. True 1:1 SQUARE canvas for a 512x512 master; keep Lia’s face, raised hand and seedpod within x24..488 and y105..407. Quiet canopy and clouds above/below; center will be cropped to a wide 206:141 card illustration. No text, lettering, frame, UI, anime, Disney-like cartoon, toy proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b155f7e0-6507-40fd-947d-efa2c7c21304.png",
+    "editableSourcePath": "game/cards/art/masters/hero_lia.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.342
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square, upward-shifted 206:141 crop, and 128x88 thumbnail inspected. Moving the crop to y≈0 keeps Lia's entire face, raised hand and complete seedpod visible; her incidental lower body is cropped."
+  },
+  {
+    "cardId": "verdant_strike_16",
+    "name": "Curare Needle",
+    "generatedPath": "/workspace/generated_images/exec-7ab5dbec-b4b0-4d29-afbe-61aa42bcddc7.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_16.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square, 206:141 crop, and 128x88 thumbnail inspected. The hunter's intent eyes, blowpipe, gripping hand, and full slender curare needle with its green tip remain visible; the target is incidental.",
+    "prompt": "Paint an original illustration for the fantasy strike “Curare Needle.” Show a quick, precise poison-dart attack in a close horizontal composition: in the foreground, an adult woodland hunter’s steady hand holds a long slender dark-wood needle-dart between thumb and forefinger, its needle-sharp point and tiny green curare bead unmistakable; behind the hand, keep the hunter’s intent eyes and part of a simple bamboo blowpipe visible at the same height. The fine needle streaks toward an out-of-focus armored target at the edge, with a restrained green glint suggesting poison and a piercing critical hit. The needle must remain large enough to read at thumbnail size and must not become a spear or sword. Painterly medieval high-fantasy collectible-card art, believable face and hand, tactile wood, leather and subtle botanical poison, directional forest light, atmospheric depth and grounded serious style. True 1:1 SQUARE canvas for a 512x512 master; keep the hunter’s eyes, whole needle and its point, fingers and relevant blowpipe inside x24..488 and y105..407. Quiet foliage above/below; center will be cropped to a wide 206:141 card illustration. No text, lettering, frame, UI, anime, Disney-like cartoon, toy proportions, photorealism, or pixel art."
+  },
+  {
+    "cardId": "thornwood_cage",
+    "name": "Thornwood Cage",
+    "prompt": "Repaint the fantasy ward “Thornwood Cage” as an original painterly medieval high-fantasy scene. Show one squat, domed, waist-high thornwood cage, fully visible with clear breathing room on every side, occupying only the central 65 percent of the square (about x90..422 and y135..385). The entire arched cage outline and every important outer thorn tip must fit inside the final 206:141 horizontal crop; do not let branches touch the image edges. Build it from interwoven living dark wood ribs, thin green vines, visible lashings and a few strong thorns turned outward to protect a lone adult traveler sheltering inside. Through the lattice, clearly show the traveler's face and one protective hand, with warm lantern light inside the cage. Keep the cage itself the prominent named subject, with a readable open lattice rather than a solid hedge. Painterly forest materials, restrained emerald highlights, strong warm/cool directional light, atmospheric old-growth woodland, mature grounded anatomy and serious fantasy tone. True 1:1 SQUARE canvas for a 512x512 master; keep the whole cage silhouette, key thorn tips, face and hand within x24..488 and y105..407, with quiet scenery above and below. No text, lettering, frame, UI, anime, Disney-like cartoon, toy proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9db1e89f-a895-46bf-91e8-2af784450b6a.png",
+    "editableSourcePath": "game/cards/art/masters/thornwood_cage.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.449
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Repainted after the first cage silhouette touched the square edges. Square, upward-shifted 206:141 crop, and 128x88 thumbnail inspected: the whole domed cage and key thorn tips, plus the traveler's face and hand, fit together. Earlier source preserved at /tmp/b12_worker_4_scratch/thornwood_cage_attempt1.png."
+  },
+  {
+    "cardId": "verdant_lob_15",
+    "name": "Fall of the Great Ceiba",
+    "prompt": "Repaint “Fall of the Great Ceiba” as an original painterly medieval high-fantasy landscape. Show a single giant ceiba toppled sideways across a jungle clearing, but keep the whole readable tree significantly smaller than the square canvas with generous side margins: the entire uprooted flared rootball begins near x45, the thick fallen trunk spans the middle, and its main branching crown ends near x465. Nothing important touches or crosses any image edge. Make the whole tree silhouette fit inside a central horizontal band about y145..365, fully inside the final 206:141 crop. At impact, roots crack the earth and a wave of stones, leaves and dust leaps up beneath the trunk, showing the heavy ground-shaking attack. The rootball, trunk, crown and their main limbs must all remain recognizable as one complete fallen ceiba; keep distant standing trees small and secondary. Painterly tropical bark, moss and broad leaves, golden-green forest light, atmospheric depth and grounded natural detail. True 1:1 SQUARE canvas for a 512x512 master; protect all parts of the fallen tree within x24..488 and y105..407, with quiet canopy and foreground beyond. The center is a wide 206:141 card illustration. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5969e8a2-c85a-4876-83f3-3783a67816e4.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_lob_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Repainted after the first image clipped the rootball at the square edge. Square, 206:141 crop, and 128x88 thumbnail inspected: flared rootball, trunk, and main crown fit as one falling tree, with impact earth and debris readable. Earlier source preserved at /tmp/b12_worker_4_scratch/verdant_lob_15_attempt1.png."
+  },
+  {
+    "cardId": "verdant_boon_13",
+    "name": "Demeter's Bounty",
+    "prompt": "Paint an original illustration for the fantasy boon “Demeter's Bounty.” Depict Demeter as a dignified ancient Greek-inspired harvest goddess in a painterly medieval fantasy orchard, her mature kind face and open hands clearly visible as she blesses a weary farmer. A lush sheaf of grain, ripe pomegranate and fresh green sprouts rise between their hands, while a soft golden-green healing shimmer restores color to the farmer's cheeks and a few new shoots echo outward behind them. Demeter and the healing gesture are the main subject; do not replace her with a generic floating orb. Painterly high-fantasy materials, believable linen, bronze, leaves and skin, warm late-summer light, atmospheric depth, grounded serious faces. Horizontal composition. True 1:1 SQUARE canvas for a 512x512 master; keep Demeter's face, hands, farmer's face and central sprout/sheaf cluster inside x24..488 and y105..407. Quiet orchard canopy and earth above/below; center will be cropped to a wide 206:141 card illustration. No text, lettering, frame, UI, anime, Disney-like cartoon, toy proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c6b436a3-d7c4-47ae-9424-1533514be6e1.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_boon_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square, centered 206:141 crop, and 128x88 thumbnail inspected. Demeter's face and blessing hands, farmer's face, grain, pomegranate and new sprouts stay legible; healing light remains restrained."
+  },
+  {
+    "cardId": "verdant_charge_15",
+    "name": "Elven Moonshaft Quiver",
+    "prompt": "Paint an original illustration for the fantasy artifact “Elven Moonshaft Quiver.” Feature one complete refined elven quiver laid horizontally on a mossy stone ledge, its dark carved wood and silver-leaf fittings unmistakable, with a fanned cluster of long slender moonshaft arrows nested inside. Show their pale moonlit shafts, small crescent-shaped silver heads and subtle cool glow; keep the full quiver body, closure and arrow tips visible together. A moonlit forest, a few fallen leaves and distant elven masonry support the artifact without competing. No operator is needed. Painterly medieval high-fantasy craftsmanship, nuanced wood, silver, leather and feather detail, clear silhouette and dramatic cool moonlight with a warm reflected edge. True 1:1 SQUARE canvas for a 512x512 master; arrange the complete horizontal quiver and complete arrow fletching/heads within x24..488 and y105..407. Quiet scenery above and below; center will be cropped to a wide 206:141 card illustration. No text, lettering, frame, UI, modern equipment, anime, Disney-like cartoon, toy proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-341c0b49-3dab-46c3-8324-160a5b219366.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_charge_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square, centered 206:141 crop, and 128x88 thumbnail inspected. Full horizontal quiver, closure, silver fittings and arrow fletching/heads remain visible within the crop and recognizable at thumbnail size."
+  },
+  {
+    "cardId": "verdant_environment_09",
+    "name": "Ent Moot",
+    "prompt": "Paint an original environment illustration for “Ent Moot.” Show a gathering of ancient ent treefolk in a broad ring within a forest clearing, their weathered bark faces and branchlike arms alive with solemn attention as an elder Ent addresses the circle. At the elder's gesture, the ground gives a sudden short tremor: roots heave, stones jump and a burst of leaves swirls through the center. Keep the speaking Ent and several other distinct treefolk recognizable, while the group and clearing read as one council of living trees. Painterly medieval high-fantasy woodland, monumental trunks, moss, expressive natural faces, dramatic shafts of light, atmospheric depth, grounded non-cartoon forms. Horizontal, clear composition. True 1:1 SQUARE canvas for a 512x512 master; keep the elder's face, nearest Ent faces, central root movement and burst of stones inside x24..488 and y105..407. Quiet canopy and foreground above/below; center will be cropped to a wide 206:141 card illustration. No text, lettering, frame, UI, anime, Disney-like cartoon, toy proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f2ae1df5-3c83-480e-8849-60f7b8e480b2.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_environment_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square, centered 206:141 crop, and 128x88 thumbnail inspected. The speaking elder, several distinct Ent faces, and the burst of lifted stones/leaves remain readable as a forest council disturbed by tremor."
+  },
+  {
+    "cardId": "verdant_summon_15",
+    "name": "Robin Goodfellow",
+    "prompt": "Paint an original creature portrait for the fantasy card “Robin Goodfellow.” Depict a sly but noble forest fairy trickster, Robin Goodfellow himself, with a clear mischievous adult face, leaf-woven mantle, sturdy leather details and delicate translucent wings. He crouches beside a small woodland companion and raises a luminous acorn-shaped buckler that projects a subtle protective green shield around them. The fairy's eyes, shield-bearing hand and acorn buckler should be close together and primary; his expression is clever rather than silly. Painterly medieval high-fantasy art, nuanced bark, leaf, leather and wing textures, dramatic warm light through deep green woodland, atmospheric depth and grounded anatomy. Broad horizontal grouping, no toy-like proportions. True 1:1 SQUARE canvas for a 512x512 master; keep Robin's face, eyes, hand, whole buckler and companion within x24..488 and y105..407. Quiet canopy and moss above/below; center will be cropped to a wide 206:141 card illustration. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5342e453-ee59-4887-bb38-641e301d5927.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square, centered 206:141 crop, and 128x88 thumbnail inspected. Robin's sly face and eyes, shield-bearing hand, complete acorn buckler and woodland companion remain legible; protective glow is restrained."
+  },
+  {
+    "cardId": "hero_grovewalker",
+    "name": "The Grovewalker",
+    "prompt": "Repaint “The Grovewalker” as an original painterly medieval high-fantasy hero scene. Show one mighty woodland guardian made of ancient living bark and moss hurling a single mossy boulder. Carefully arrange the subjects with clear side margins: Grovewalker's complete readable face around x150..245, the throwing hand around x270..330, and the entire round boulder around x340..460, leaving visible background beyond its right edge. Keep face, hand and whole boulder on the same middle height, approximately y135..300; do not place the face above or behind the boulder, and do not crop any part of the stone. The guardian's leafy shoulders and trunklike body can fill the lower center; the boulder is large and clear but small enough to fit entirely in the horizontal card crop. A restrained spray of leaves trails the throw. Painterly medieval high-fantasy art, believable bark, moss, stone and natural armor, warm directional woodland light, atmospheric depth, grounded anatomy and strong readable silhouette. True 1:1 SQUARE canvas for a 512x512 master; keep face, hand, and complete boulder within x24..488 and y105..407. Quiet canopy and ground above/below; center will be cropped to a wide 206:141 card illustration. No text, lettering, frame, UI, anime, Disney-like cartoon, toy proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9c539b8a-2b47-44dc-a0a9-27b2157703b1.png",
+    "editableSourcePath": "game/cards/art/masters/hero_grovewalker.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Repainted after the first image cropped the boulder at the square edge. Square, centered 206:141 crop, and 128x88 thumbnail inspected: The Grovewalker's full face, throwing hand, and entire mossy boulder fit together with side margin. Earlier source preserved at /tmp/b12_worker_4_scratch/hero_grovewalker_attempt1.png."
+  },
+  {
+    "cardId": "verdant_strike_17",
+    "name": "Creeping Ivy",
+    "prompt": "Paint an original illustration for the fantasy strike “Creeping Ivy.” Show a quick row-wise surge of living ivy racing horizontally across an old forest floor, its thick green tendrils wrapping around the greaves and sword hand of one armored raider. The plant is the clear subject: sharply detailed leaves and muscular twisting stems, with a few thorn points and small dirt clods showing its force. Keep the ivy's contact with the target visible without hiding the leaves or becoming a generic green magic beam. Painterly medieval high-fantasy art, believable leaf, bark, leather and steel, dramatic low forest light, atmospheric depth and grounded mature style. Strong left-to-right horizontal action, readable at small size. True 1:1 SQUARE canvas for a 512x512 master; keep the ivy's central tendrils, target contact point, and relevant hand/weapon within x24..488 and y105..407. Quiet canopy and earth above/below; center will be cropped to a wide 206:141 card illustration. No text, lettering, frame, UI, anime, Disney-like cartoon, toy proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b704efc2-0893-417d-98a2-367086cb4b44.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_17.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square, upward-shifted 206:141 crop, and 128x88 thumbnail inspected. Shifting the crop up restores the raider’s full face and eyes while keeping the horizontal ivy surge and greave wrap clear; incidental lower legs crop."
+  },
+  {
+    "cardId": "verdant_boon_14",
+    "name": "Green Knight's Girdle",
+    "prompt": "Paint an original artifact illustration for “Green Knight's Girdle,” a legendary protective boon that intervenes and sprouts new life. Feature a complete broad green knight's girdle laid horizontally across a weathered stone altar: rich emerald leather, linked antique-gold fittings, and a large oak-leaf clasp shaped like a small shield. Fresh shoots curl around the belt and the clasp catches a restrained protective green-gold glow. Make the entire flexible belt, both ends, buckle and decorative shield clasp plainly visible; do not add a wearer whose face would compete with the artifact. Painterly medieval high-fantasy craftsmanship, nuanced leather, aged gold and leaves, dramatic directional woodland light, atmospheric depth and grounded elegance. Clear horizontal silhouette. True 1:1 SQUARE canvas for a 512x512 master; keep the whole girdle within x24..488 and y105..407. Quiet forest and stone above/below; center will be cropped to a wide 206:141 card illustration. No text, lettering, frame, UI, anime, Disney-like cartoon, toy proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f12aba5e-b62c-4886-ae4c-5811ddb7ebab.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_boon_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square, centered 206:141 crop, and 128x88 thumbnail inspected. The whole green leather girdle, both ends, antique-gold fittings and oak-leaf shield clasp are visible and recognizable at thumbnail size."
+  },
+  {
+    "cardId": "verdant_charge_16",
+    "name": "Silver Arrow Prize",
+    "prompt": "Paint an original artifact illustration for the fantasy card “Silver Arrow Prize.” Show one complete exceptional silver arrow arranged horizontally on a dark mossy archer's table, its long straight shaft, clearly shaped bright silver arrowhead and full feather fletching all visible from tip to tail. Let a few restrained silver sparks and moonlit reflections make it feel like a rare prize, while the arrow remains a real crafted weapon rather than an energy bolt. Subtle carved elven markings may decorate the shaft but include no readable text. Painterly medieval high-fantasy craft, believable silver, dark wood and feathers, dramatic cool light with a warm reflected edge, atmospheric forest background and strong readable silhouette. No operator needed. True 1:1 SQUARE canvas for a 512x512 master; keep the entire arrow and its point and fletching inside x24..488 and y105..407. Quiet foliage and shadow above/below; center will be cropped to a wide 206:141 card illustration. No lettering, runes that form words, frame, UI, modern equipment, anime, Disney-like cartoon, toy proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e664ba08-c3bc-4c93-99fc-e689aab1918b.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_charge_16.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square, centered 206:141 crop, and 128x88 thumbnail inspected. The complete silver arrow, full broadhead point, shaft and feather fletching fit in the crop and remain legible at thumbnail size."
+  },
+  {
+    "cardId": "verdant_environment_10",
+    "name": "Primeval Wildwood",
+    "prompt": "Paint an original environment illustration for “Primeval Wildwood,” a legendary ancient forest where living brambles surge in a wide burst. Show a vast untouched woodland of enormous old trees, tangled roots and deep green shadow; in the central clearing, a broad ring of thorny brambles rapidly unfurls across the earth, lifting stones and leaves as it spreads outward. Make the ancient forest dominant and the bramble burst clear, with a shaft of sunlight revealing depth through layers of trunk and fern. Painterly medieval high-fantasy landscape, richly detailed bark, moss and foliage, dramatic natural light, atmospheric distance, grounded mature tone and no buildings or modern traces. Horizontal landscape composition, readable at small size. True 1:1 SQUARE canvas for a 512x512 master; keep the central forest and bramble action within x24..488 and y105..407. Quiet canopy and foreground above/below; center will be cropped to a wide 206:141 card illustration. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e6d377c3-0502-42cc-853f-bc4f30ff0ae8.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_environment_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square, centered 206:141 crop, and 128x88 thumbnail inspected. Deep old-growth forest and broad thorny bramble burst across the clearing read clearly at both crop sizes."
+  },
+  {
+    "cardId": "verdant_summon_16",
+    "name": "Queen Mab",
+    "prompt": "Paint an original high-fantasy portrait for the fairy queen “Queen Mab.” Depict a noble adult fairy ruler with a composed, intelligent face, a slender crown of living thorn and silver leaves, and delicate translucent wings. She stands in a moonlit forest court, raising one elegant hand as several small winged helper fairies gather behind her and form a faint protective ring. Queen Mab is the dominant named subject: her face, eyes, crown, raised hand and dignified leaf-woven mantle must read clearly; the helpers remain secondary. Painterly medieval fantasy, nuanced bark, leaf, silk, silver and wing textures, dramatic moonlight with a warm lantern edge, atmospheric depth, grounded mature anatomy and stately expression, not toy-like or cute. Broad horizontal portrait composition. True 1:1 SQUARE canvas for a 512x512 master; keep Queen Mab's complete face, crown and hand within x24..488 and y105..407, with helpers nearby at the same height. Quiet canopy and ground above/below; center will be cropped to a wide 206:141 card illustration. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-17ec6749-f520-4643-b0eb-1ebc163b1b78.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_16.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square, centered 206:141 crop, and 128x88 thumbnail inspected. Queen Mab's face, crown and raised hand are clear; helper fairies and protective ring remain secondary and readable."
+  },
+  {
+    "name": "Queen of the Hive",
+    "prompt": "Paint an illustration for the Hexmancers hero “Queen of the Hive.” An original adult elven queen stands in an ancient greenwood glade, composed and regal, with a natural crown of small amber combs and leaf-shaped gold. She raises one hand and directs a focused swarm of five luminous honeybees toward the unseen foe; her full face, hand and the distinct bees remain visible. Layered moss-green cloth, fine leather and subtle bee motifs, no cartoon insect proportions. Painterly medieval high-fantasy collectible-card art, grounded anatomy, tactile materials, warm sunbeams through leaves, rich forest depth and attractive light, readable at thumbnail size. Square 1:1 composition for a 512x512 master; keep her face, raised hand and five main bees within x24..488,y105..407, centered in middle 60%, quiet woodland above/below for 206:141 crop. No frame, text, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-eba7d2d6-f0bf-44f3-9397-d6964b5277b2.png",
+    "editableSourcePath": "game/cards/art/masters/hero_hivequeen.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square editable source prepared; crop shifted upward (focalPoint y=0.42) to retain the Queen's full crown, face, guiding hand and five bees.",
+    "cardId": "hero_hivequeen"
+  },
+  {
+    "name": "Root Grasp",
+    "prompt": "Paint an illustration for the Hexmancers card “Root Grasp.” Thick living roots burst from the forest floor and whip upward in a sweeping boomerang arc, catching an armored foe around both greaves and pinning them off balance. Show the whole root origin, grasping wrap and clear return curve; keep the warrior's face and trapped legs identifiable beside the action. Painterly medieval high-fantasy collectible-card art, richly textured bark, moss, mail and leather, directional green-gold forest light, grounded anatomy, energetic but crisp silhouette and atmospheric depth. Square 1:1 composition for a 512x512 master; keep the critical grasp, root arc, warrior's face and wrapped legs within x24..488,y105..407, horizontal action in the middle 60%, quiet forest margins top/bottom for a 206:141 crop. No frame, lettering, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-753e949d-fc2e-4bae-83c0-fd68ed499a3d.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_18.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square source and upward-shifted crop (focalPoint y=0.40) reviewed. The warrior’s full face, wrapped legs and main grasping roots remain visible; the lower loop is incidental.",
+    "cardId": "verdant_strike_18"
+  },
+  {
+    "name": "Annwn Hunting Quiver",
+    "prompt": "Paint an illustration for the Hexmancers card “Annwn Hunting Quiver.” Make one complete compact hunting quiver the central named artifact: dark green weathered leather, a carved silver clasp, leaf-pattern stitching and several dark-fletched arrows whose full heads and feather tips remain visible. The quiver rests horizontally on a mossy branch, with a faint moonlit green glow in one arrowhead hinting at its many-use enchanted ammunition and costly drain. Painterly medieval high-fantasy collectible-card art, tactile leather, silver, wood and feathers, beautiful directional forest light, deep but clear woodland shadows, strong silhouette readable at thumbnail size. Square 1:1 composition for a 512x512 master; keep the entire quiver, clasp, arrowheads and fletching inside x24..488,y105..407, horizontally centered in middle 60%, quiet forest above/below for 206:141 crop. No frame, text, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c3ff165c-da3a-40dd-97a1-1dff55194aa5.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_charge_17.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square source and centered crop/thumbnail reviewed; the quiver, clasp, arrowheads and fletching read clearly at card scale.",
+    "cardId": "verdant_charge_17"
+  },
+  {
+    "name": "Will-o'-Wisp",
+    "prompt": "Paint an illustration for the Hexmancers summon “Will-o'-Wisp.” A single pale marsh spirit floats just above black water at night, a small luminous face suspended inside a soft ivory-green flame, with a thin wandering zigzag trail of light across the reeds showing its quick erratic movement. Make the wisp the clear subject; any distant lights stay faint and secondary. Painterly medieval high-fantasy collectible-card art, mysterious rather than cute, restrained spectral glow, delicately painted mist and reeds, deep teal shadows, attractive contrast and atmospheric depth, clearly readable at thumbnail size. Square 1:1 composition for a 512x512 master; keep the entire bright wisp and main zigzag within x24..488,y105..407, centered in middle 60%, quiet dark marsh margins above/below for a 206:141 crop. No frame, lettering, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-48a72901-840b-442f-89cf-8c5200eefd75.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_17.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square source and centered crop/thumbnail reviewed; the spirit face and zigzag trail remain clear at card scale.",
+    "cardId": "verdant_summon_17"
+  },
+  {
+    "name": "Ulfa the Wolf Mother",
+    "prompt": "Paint an illustration for the Hexmancers hero “Ulfa the Wolf Mother.” An original adult northern huntress with a focused, protective face leaps into a decisive pouncing strike through an old greenwood; her open hand reaches toward an unseen foe while a powerful gray wolf lunges beside her, its head and amber eyes level with her shoulder. A second wolf silhouette follows among the trees, suggesting a mother leading her pack. Layered moss-green leather, fur mantle and carved antler clasp, grounded anatomy and believable wolves; the woman and lead wolf are co-equal clear subjects. Painterly medieval high-fantasy collectible-card art, rich fur, leather and foliage textures, directional shafts of forest light, atmospheric depth, dynamic but readable at thumbnail size. Square 1:1 composition for a 512x512 master; keep Ulfa's full face, reaching hand and the lead wolf's complete face and ears inside x24..488,y105..407, center them together in middle 60%, quiet forest above/below for a 206:141 crop. No frame, text, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b8a4600b-053a-4dc3-b9bc-0e25ec42f083.png",
+    "editableSourcePath": "game/cards/art/masters/hero_ulfa.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square source and upward-shifted crop/thumbnail reviewed (focalPoint y=0.42); Ulfa's face, reaching hand, and lead wolf's full face and ears have breathing room.",
+    "cardId": "hero_ulfa"
   }
 ]

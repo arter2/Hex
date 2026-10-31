@@ -2127,5 +2127,905 @@
       1254,
       1254
     ]
+  },
+  {
+    "cardId": "gray_summon_93",
+    "name": "Uchchaihshravas",
+    "prompt": "Paint Uchchaihshravas, a noble legendary Pegasus guarding its charge. One magnificent white-gray winged horse dominates the image in a strong horizontal three-quarter stance on a high mountain pass; intelligent bright eyes and full face centered, broad folded feathered wings clearly attached, one foreleg raised protectively. Hints of an ancient Indian royal standard and distant dawn mountains, no rider. Painterly medieval high fantasy collectible-card illustration, layered brushwork, nuanced feather and coat detail, warm sunrise rim light, atmospheric depth. Compose explicitly on a 1:1 square canvas for a 512 master; keep Pegasus face, eyes, wing roots and body within x24..488,y105..407 on the square so they survive 206:141 horizontal crop; quiet sky and ground above/below. No text, card frame, UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5b794f5b-e076-4a00-bed1-ab688c81b995.png",
+    "focalPoint": [
+      0.5,
+      0.22
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/gray_summon_93.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed 512 square, top-shifted wide crop and thumbnail. Full Pegasus face, eyes and wing roots remain visible; lower legs are incidental and crop naturally."
+  },
+  {
+    "cardId": "gray_summon_94",
+    "name": "Wandering Bard",
+    "prompt": "Paint Wandering Bard, a gentle traveling fantasy musician whose magical song empowers nearby companions. A kind, weathered bard with expressive face and eyes plays a small wooden lute while walking, one hand plucking strings, the other on the neck; a single companion beside him visibly steadies and brightens in the song. Keep the bard's face, both hands and lute together as the clear central subject, horizontal arrangement, simple road and soft dusk light. Painterly medieval high fantasy collectible-card illustration, textured wool and leather, warm golden light, atmospheric depth, grounded proportions. Explicit 1:1 square 512 master; face, hands and whole lute within x24..488,y105..407 for 206:141 crop; quiet sky and path beyond. No lettering, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-100f37ba-a478-4e9d-8031-15ebc551e8e7.png",
+    "focalPoint": [
+      0.5,
+      0.26
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/gray_summon_94.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed 512 square, top-shifted wide crop and thumbnail. Bard's full face, both playing hands and complete lute remain visible; companion supports the empowering song action."
+  },
+  {
+    "cardId": "gray_summon_95",
+    "name": "Crossbow Militia",
+    "prompt": "Paint Crossbow Militia: a brave young squire in practical medieval mail and leather braces a compact crossbow and looses a bolt toward an unseen threat, a second militia comrade close behind. The primary squire's focused face, eyes, trigger hand, supporting hand and entire crossbow must be clearly visible and central; make the bolt path subtle. Horizontal, readable staging against a quiet stone battlement at dawn. Painterly medieval high fantasy collectible-card art, believable materials, expressive grounded anatomy, directional warm light and atmospheric depth. Explicit 1:1 square 512 master; all identity-critical face, hands and crossbow fit x24..488,y105..407 for wide 206:141 crop. No text/frame/UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e462f3bc-ec73-42e6-ac29-160b0eec6be1.png",
+    "focalPoint": [
+      0.5,
+      0.25
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/gray_summon_95.png",
+    "sourceNative": [
+      1513,
+      1040
+    ],
+    "reviewNote": "Reviewed normalized 512 square, top-shifted wide crop and thumbnail. Primary face, trigger/support hands and complete crossbow remain legible; rear militia is secondary."
+  },
+  {
+    "cardId": "gray_summon_96",
+    "name": "Pikeman",
+    "prompt": "Paint Pikeman: a disciplined medieval knight in practical steel-and-blue cloth armor, fighting from the rear rank with a long pike held level across the composition, the pike's point clearly visible beside him as he advances to support the front line. Focus on the knight's determined face and gauntleted hands gripping the shaft; compact horizontal silhouette, no crowd obscuring the pike. Painterly medieval high fantasy collectible-card illustration, nuanced metal and cloth, directional daylight, atmospheric depth, readable action. Explicit 1:1 square 512 master; face, both hands and pike point/shaft must remain within x24..488,y105..407 for 206:141 crop; quiet sky and ground at top and bottom. No text/frame/UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-35af7977-4b9d-4c00-a765-c41b35e31681.png",
+    "focalPoint": [
+      0.5,
+      0.23
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/gray_summon_96.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed 512 square, top-shifted wide crop and thumbnail. Knight's full face, both gripping hands and whole pike including its point remain visible; rear-rank figures stay secondary."
+  },
+  {
+    "cardId": "gray_summon_97",
+    "name": "Sellsword",
+    "prompt": "Paint Sellsword, a scrappy steadfast medieval fantasy mercenary fighting in the rear rank with a forceful blast. A weathered but alert sellsword in practical worn mail, leather and muted red cloak stands in a compact horizontal three-quarter pose; his determined face and eyes are clear, one hand grips a short sword while the other thrusts forward with a compact burst of pale golden force toward an unseen foe. The magical blast supports his sword action and does not obscure his face or hand. Painterly medieval high fantasy collectible-card illustration, believable metal, leather and cloth, expressive grounded anatomy, warm directional light, atmospheric depth. Explicit 1:1 square composition for 512 master; keep full face, both hands and sword hilt/blade root inside x24..488,y105..407 for the 206:141 horizontal crop, quiet scenery above and below. No modern gear, text, card frame or UI. No anime, Disney-like cartoon proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7e90616a-0a77-4204-ab0e-46bcf64dca1b.png",
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/gray_summon_97.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed 512 square, top-shifted wide crop and thumbnail. Full face and both action hands remain visible with the magical blast and sword hilt/blade root; the sword extremity and lower legs are incidental."
+  },
+  {
+    "cardId": "gray_summon_98",
+    "name": "Veteran Captain",
+    "prompt": "Paint Veteran Captain as a painterly medieval/high-fantasy collectible-card illustration. A veteran medieval captain, older weathered face and gray beard, in worn but noble plate and cloak, leads from the front with a steady raised sword and a directing open hand. A few younger soldiers follow softly behind, suggesting an experienced escort and a controlled command gesture. Keep captain's face, sword hand and upper body prominent across the middle. Rich but restrained material color, attractive directional light, atmospheric depth, grounded anatomy, serious historical-fantasy tone, textured painterly brushwork matched to Hexmancers references. Explicit 1:1 square 512x512 master, arranged horizontally; keep primary face, relevant hands, weapon and action within x24..488,y105..407 for a 206:141 crop. Keep main subject in the middle 60%, quiet scenery above/below; incidental legs, horse tails and weapon extremities may naturally crop. No frame, text, letters, UI, anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-8a1f3933-c43e-4374-b738-bb1fa67206fa.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_98.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed 512-square source, default 206:141 crop and thumbnail: veteran captain's face, directing hand, sword grip and escort gesture remain clear; sword tip and lower body crop incidentally."
+  },
+  {
+    "cardId": "gray_summon_99",
+    "name": "Errant Knight",
+    "prompt": "Paint Errant Knight as a painterly medieval/high-fantasy collectible-card illustration. A brave errant knight in scarred but bright steel armor stands firmly at the front of a narrow bridge, shielding a companion behind him with a broad shield and lowered sword ready to guard. His face is visible through the raised visor, determined and steadfast; rain-dark stone and distant banners support the scene. Make the knight the dominant figure, with face, shield and hands central. Rich but restrained material color, attractive directional light, atmospheric depth, grounded anatomy, serious historical-fantasy tone, textured painterly brushwork matched to Hexmancers references. Explicit 1:1 square 512x512 master, arranged horizontally; keep primary face, relevant hands, weapon and action within x24..488,y105..407 for a 206:141 crop. Keep main subject in the middle 60%, quiet scenery above/below; incidental legs, horse tails and weapon extremities may naturally crop. No frame, text, letters, UI, anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-232858bf-04e1-4c8e-8e6b-fe8f30fd8aa2.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_99.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed 512-square source, default 206:141 crop and thumbnail: errant knight's face, shield and guarding sword hand remain clear; lower legs and foreground weapons crop incidentally."
+  },
+  {
+    "cardId": "gray_summon_101",
+    "name": "Gaucho with Bolas",
+    "prompt": "Paint Gaucho with Bolas as a painterly medieval/high-fantasy collectible-card illustration. A gaucho in traditional pampas riding clothes, dark bombacha trousers, woven poncho, boots and broad-brimmed hat, performs a clear bolas throw from horseback. His visible focused face and one raised hand whirl three weighted cords in a compact diagonal arc toward a distant target; the other hand holds reins. Argentine grassland at dusk, horse's head beside him, grounded historical fantasy. Keep face, throwing hand and complete readable bolas within the central horizontal band. Rich but restrained material color, attractive directional light, atmospheric depth, grounded anatomy, serious historical-fantasy tone, textured painterly brushwork matched to Hexmancers references. Explicit 1:1 square 512x512 master, arranged horizontally; keep primary face, relevant hands, weapon and action within x24..488,y105..407 for a 206:141 crop. Keep main subject in the middle 60%, quiet scenery above/below; incidental legs, horse tails and weapon extremities may naturally crop. No frame, text, letters, UI, anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-04b06a6b-7556-44a2-ab69-4dbd9266a2f2.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_101.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed 512-square source, default 206:141 crop and thumbnail: gaucho's face, raised bolas hand, reins hand and three weighted cords remain readable; horse's lower body crops naturally."
+  },
+  {
+    "cardId": "gray_summon_100",
+    "name": "Cossack Rider",
+    "prompt": "Paint Cossack Rider as a painterly medieval/high-fantasy collectible-card illustration. A mounted Cossack rider in historically inspired eastern European steppe clothing: embroidered dark red tunic, leather belt, fur-trimmed cap and curved sabre, on a sturdy chestnut horse. The rider turns confidently toward the viewer and calls a challenge, one hand gripping reins, the other holding the sabre low; an opposing mounted silhouette stays distant. Keep rider's face/hands and horse's head/neck clear in a compact horizontal crop; horse body and tail may extend beyond. Rich but restrained material color, attractive directional light, atmospheric depth, grounded anatomy, serious historical-fantasy tone, textured painterly brushwork matched to Hexmancers references. Explicit 1:1 square 512x512 master, arranged horizontally; keep primary face, relevant hands, weapon and action within x24..488,y105..407 for a 206:141 crop. Keep main subject in the middle 60%, quiet scenery above/below; incidental legs, horse tails and weapon extremities may naturally crop. No frame, text, letters, UI, anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-67d739ba-f5dc-4080-8ec1-125afd1e6d8d.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_100.png",
+    "sourceNative": [
+      1448,
+      1086
+    ],
+    "focalPoint": [
+      0.5,
+      0.37
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Initial crop cut the cap and upper face. Reviewed 512-square source, shifted crop (focalPoint y=0.37), and thumbnail: Cossack's face/cap, both hands, sabre and horse's head remain clear; body and tail crop naturally."
+  },
+  {
+    "cardId": "gray_summon_102",
+    "name": "Mongol Outrider",
+    "prompt": "Paint Mongol Outrider as a historically grounded medieval steppe cavalry illustration. A confident Mongol outrider rides a compact dark bay horse at a steady canter, wearing a traditional belted deel, practical leather lamellar and a fur-edged helmet, with a curved composite bow and feathered arrows. He turns toward the viewer while drawing the bow for a rapid follow-up volley, focused face fully visible, both hands clearly gripping bow and string, horse's head beside him. A few distant mounted companions escort behind as subtle silhouettes. Respectful, specific steppe culture and tack, no fantasy caricature. Painterly medieval/high-fantasy card art, textured brushwork, believable horse anatomy and materials, warm sunrise rim light over open steppe. Explicit 1:1 square 512x512; horizontal compact upper-body rider and horse-head composition; keep face, both hands, bow, arrow and horse's head inside x24..488,y105..407 for 206:141 crop. Horse body, legs and tail may naturally crop. Quiet sky and ground above/below. No frame, text, runes, UI, anime, Disney-like cartoon, photorealism, pixel art or modern gear.",
+    "generatedPath": "/workspace/generated_images/exec-fa6a11ea-827b-4626-8950-c55782eef9af.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_102.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed 512-square source, default 206:141 crop and thumbnail: Mongol rider's face, drawing hand, bow grip, arrow and horse's head are clear; upper bow limb is an incidental crop."
+  },
+  {
+    "cardId": "gray_summon_105",
+    "name": "Viking Raider",
+    "prompt": "Paint an illustration for Viking Raider, a creature summon whose medieval fantasy action is shown here. One sturdy Norse Viking raider charges across a rocky shore with a round shield forward and a broad hand axe ready, face and both hands visible beneath a plain iron cap (no horns). Wool tunic, chainmail, weathered leather and windblown beard; a few longship companions remain small in the mist. Horizontal crossing action, disciplined and formidable rather than comic. Painterly high fantasy collectible-card art with nuanced believable materials, textured brushwork, dramatic attractive light and atmospheric depth, consistent with Hexmancers references. Explicitly 1:1 square 512x512 master with horizontal staging. Keep primary face, relevant hands, key weapon or action inside x24..488,y105..407 for a 206:141 crop; compose main subject in middle 60%, with quiet scenery above and below. No frame, text, letters, UI, anime, Disney-like cartoon proportions, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-a543cb6f-047d-4b03-af18-f54c87524c2e.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_105.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed 512-square source, default 206:141 crop and thumbnail: Viking's face, shield, axe hand and forward charge remain clear; lower legs and scenic longship details crop incidentally."
+  },
+  {
+    "cardId": "gray_summon_106",
+    "name": "Hill Giant",
+    "prompt": "Paint an illustration for Hill Giant, a creature summon whose medieval fantasy action is shown here. A huge gentle-faced but powerful hill giant, a rugged ogre-like mountain dweller with wind-tangled hair and rough fur-and-hide clothing, stands on a steep green hillside and hurls a single large boulder across a valley. Keep the giant's face, throwing hand and boulder all in the central band, waist-up, with a tiny stone watchtower far below showing scale. Broad features and thick hands, no single eye and no cyclops traits, no caricature. Mountain stream and mist suggest a tidal current around the hill. Painterly high fantasy collectible-card art with nuanced believable materials, textured brushwork, dramatic attractive light and atmospheric depth, consistent with Hexmancers references. Explicitly 1:1 square 512x512 master with horizontal staging. Keep primary face, relevant hands, key weapon or action inside x24..488,y105..407 for a 206:141 crop; compose main subject in middle 60%, with quiet scenery above and below. No frame, text, letters, UI, anime, Disney-like cartoon proportions, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-c5281974-8168-437a-ac20-e1a4309038ba.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_106.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed shifted crop (focalPoint y=0.43) and thumbnail: giant face, throwing hand and full boulder are centered and readable; lower body and mountain scenery crop naturally."
+  },
+  {
+    "cardId": "gray_summon_103",
+    "name": "Maasai Spearman",
+    "prompt": "Paint an illustration for Maasai Spearman, a creature summon whose medieval fantasy action is shown here. A brave Maasai spearman in a dignified, historically inspired red shuka, leather sandals, restrained beadwork and practical shield stands beside two companions in an escort formation on an East African grassland. He holds one long throwing spear upright at a slight angle and a hide shield; his focused face and both hands are visible. Golden acacia plain and distant hills, calm readiness rather than battle frenzy; respectful cultural detail, grounded materials. Painterly high fantasy collectible-card art with nuanced believable materials, textured brushwork, dramatic attractive light and atmospheric depth, consistent with Hexmancers references. Explicitly 1:1 square 512x512 master with horizontal staging. Keep primary face, relevant hands, key weapon or action inside x24..488,y105..407 for a 206:141 crop; compose main subject in middle 60%, with quiet scenery above and below. No frame, text, letters, UI, anime, Disney-like cartoon proportions, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-83e2df39-34f8-426b-857e-e6ca1bd692af.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_103.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.35
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Default wide crop cut the spearman's face and spear tip. Reviewed source, shifted crop (focalPoint y=0.35; top y=4), and thumbnail: full face, spearhead, both hands and shield are visible; legs and grass crop naturally."
+  },
+  {
+    "cardId": "gray_summon_104",
+    "name": "Zulu Impi",
+    "prompt": "Paint an illustration for Zulu Impi, a creature summon whose medieval fantasy action is shown here. A swift Zulu impi warrior in historically inspired oxhide shield and short assegai iklwa, wearing dignified traditional attire and beadwork, strides diagonally across a battlefield in a disciplined escort formation. His face, shield arm and spear hand are clear; two companions trail in soft focus to suggest quick zigzag movement and last stand. South African grassland, dynamic but controlled pose, respectful specific cultural portrayal. Painterly high fantasy collectible-card art with nuanced believable materials, textured brushwork, dramatic attractive light and atmospheric depth, consistent with Hexmancers references. Explicitly 1:1 square 512x512 master with horizontal staging. Keep primary face, relevant hands, key weapon or action inside x24..488,y105..407 for a 206:141 crop; compose main subject in middle 60%, with quiet scenery above and below. No frame, text, letters, UI, anime, Disney-like cartoon proportions, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-1e3547ca-2e5c-42b8-a43c-bc4b3012df07.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_104.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.35
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Default wide crop cut the impi warrior's upper face and plume. Reviewed source, shifted crop (focalPoint y=0.35; top y=4), and thumbnail: face, plume, short spear and hide shield remain clear; lower legs and background companions crop naturally."
+  },
+  {
+    "cardId": "gray_summon_107",
+    "name": "Rock-Throwing Cyclops",
+    "prompt": "Paint Rock-Throwing Cyclops as a dramatic medieval fantasy creature summon. A huge dire cyclops stands waist-up on a crumbling hillside, unmistakably having exactly one large central eye in its broad weathered face. It draws back a thick muscular arm to hurl one heavy rough boulder across the valley, while its other huge hand braces against a broken stone wall; a planted foot crushes fallen masonry to show trample. Keep the single eye and expression prominent, both hands readable, and the boulder fully visible nearby in the central band. Small distant defenders and a watchtower provide scale. Painterly high-fantasy collectible-card art, textured skin, rough hide, stone and dust, attractive golden storm light, serious grounded anatomy, atmospheric depth. Explicit 1:1 square 512x512 with horizontal staging; keep cyclops face, both hands and rock-throwing action in x24..488,y105..407 for 206:141 crop, quiet sky and ground above/below. No extra eyes, no second cyclops, no frame, text, UI, anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-ad35c20b-5d13-433d-b664-3eaae72af938.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_107.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed shifted crop (focalPoint y=0.43) and thumbnail: single eye and face, throwing and bracing hands, full boulder and trample rubble remain clear; lower legs and scenery crop naturally."
+  },
+  {
+    "cardId": "gray_summon_108",
+    "name": "Stone Troll",
+    "prompt": "Paint Stone Troll as a painterly medieval/high-fantasy collectible-card illustration. A powerful stone troll with a clearly troll-like broad face, heavy brow, weathered gray stone skin and moss-filled cracks bounds into a low pouncing stance beside two small armored companions. Its thick forearms and clenched hands show charging strength; flecks of warm amber energy glow only within stone fissures. Make the troll's face and rock body unmistakable, with the companions secondary. Grounded creature anatomy and fur, stone, leather and cloth materials; attractive directional light, atmospheric depth, textured brushwork consistent with Hexmancers references. Explicit 1:1 square 512x512 master with horizontal staging. Keep the primary face, species traits, relevant hands and action within x24..488,y105..407 for a 206:141 crop; compose the subject in the middle 60%, quiet scenery above and below, incidental legs/background may crop. No frame, text, letters, UI, anime, Disney-like proportions, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-4fa437be-055a-4f29-9e43-eb91b7107c5c.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_108.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed 512-square source, default crop and thumbnail: troll's broad face, stone skin with moss/cracks, pounce and both fists remain clear; companions stay secondary."
+  },
+  {
+    "cardId": "gray_summon_110",
+    "name": "Mountain Gorilla",
+    "prompt": "Paint Mountain Gorilla as a painterly medieval/high-fantasy collectible-card illustration. A powerful real mountain gorilla with dense dark fur, a distinct silver saddle across its back, deep-set intelligent eyes and broad nose surges forward in a short protective pounce through a misty mountain forest. One massive hand reaches forward while the other steadies against a rock; the gorilla's full face and unmistakable species traits dominate. Natural animal anatomy, no armor or human clothing. Grounded creature anatomy and fur, stone, leather and cloth materials; attractive directional light, atmospheric depth, textured brushwork consistent with Hexmancers references. Explicit 1:1 square 512x512 master with horizontal staging. Keep the primary face, species traits, relevant hands and action within x24..488,y105..407 for a 206:141 crop; compose the subject in the middle 60%, quiet scenery above and below, incidental legs/background may crop. No frame, text, letters, UI, anime, Disney-like proportions, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-071bf1a6-dfc0-49f7-8eb2-282a8f94d42d.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_110.png",
+    "sourceNative": [
+      1402,
+      1122
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed center-normalized 512 source, default crop and thumbnail: gorilla face, dark fur, silver saddle and both reaching hands remain unmistakable; incidental lower limbs and forest floor crop."
+  },
+  {
+    "cardId": "gray_summon_109",
+    "name": "Ogre Brute",
+    "prompt": "Paint Ogre Brute as a painterly medieval/high-fantasy collectible-card illustration. A huge broad-shouldered ogre brute with a blunt strong face, tusks, rough fur-and-hide clothing and enormous hands hurls one heavy boulder across a ruined hill pass. Its other hand braces on a low stone wall; two small allies sheltered behind show its escort role. Keep face, throwing arm, bracing hand and boulder visible together, waist-up. Grounded creature anatomy and fur, stone, leather and cloth materials; attractive directional light, atmospheric depth, textured brushwork consistent with Hexmancers references. Explicit 1:1 square 512x512 master with horizontal staging. Keep the primary face, species traits, relevant hands and action within x24..488,y105..407 for a 206:141 crop; compose the subject in the middle 60%, quiet scenery above and below, incidental legs/background may crop. No frame, text, letters, UI, anime, Disney-like proportions, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-4a4a4ac0-e006-4adb-bd86-c43903029a87.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_109.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Default crop clipped the boulder. Reviewed shifted crop (focalPoint y=0.43; top=46) and thumbnail: complete boulder, throwing hand, ogre's face and bracing hand all fit; lower body and scenery crop."
+  },
+  {
+    "cardId": "gray_summon_111",
+    "name": "Sling Monkey",
+    "prompt": "Paint Sling Monkey as a painterly medieval/high-fantasy collectible-card illustration. A nimble brown capuchin monkey perches on a low stone ledge, alert face visible, using both hands to swing a simple leather sling with one smooth stone toward a distant target. Keep the complete loop and weighted stone within the crop; show a faint pale-blue protective ward around the monkey's shoulders, restrained so it does not obscure the sling. Forest ruins, clever agile pose, believable small monkey anatomy. Grounded creature anatomy and fur, stone, leather and cloth materials; attractive directional light, atmospheric depth, textured brushwork consistent with Hexmancers references. Explicit 1:1 square 512x512 master with horizontal staging. Keep the primary face, species traits, relevant hands and action within x24..488,y105..407 for a 206:141 crop; compose the subject in the middle 60%, quiet scenery above and below, incidental legs/background may crop. No frame, text, letters, UI, anime, Disney-like proportions, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-f22670fd-35a4-4833-a502-186f05a3c366.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_111.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.32
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Default crop clipped the sling stone and top arc. Reviewed shifted crop (focalPoint y=0.32; top clamped at 0) and thumbnail: full sling loop, stone, monkey face and both working hands remain visible; lower ledge is incidental."
+  },
+  {
+    "cardId": "gray_summon_112",
+    "name": "Howler Monkey",
+    "prompt": "Paint Howler Monkey as a creature summon in painterly medieval/high-fantasy card art. One adult mantled howler monkey perches on a sturdy horizontal jungle branch, unmistakable broad muzzle, dark face, deep reddish-brown mantle and visible throat sac. It opens its mouth in a powerful focused call, gripping the branch with both hands; a few subtle rings in the humid air carry the howl toward a distant lookout, suggesting a sharp ranged call. Keep the monkey's full face, throat, both hands and expressive action clearly visible in the central horizontal band. Natural monkey anatomy and dignified wildlife detail, no clothing or tools. Painterly textured fur and leaves, soft directional canopy light, atmospheric depth. Explicit square 1:1 512x512 master; keep face/hands inside x24..488,y105..407 for 206:141 crop, quiet canopy and lower foliage above/below. No frame, text, UI, anime, Disney-like cartoon proportions, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-65526462-fb54-492e-bb6e-703011147b36.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_112.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Default crop clipped the top of the howler's head. Reviewed shifted crop (focalPoint y=0.43; top=46) and thumbnail: full dark face, red-brown mantle, open mouth/throat sac and both gripping hands remain readable."
+  },
+  {
+    "cardId": "gray_summon_116",
+    "name": "Rock Elemental",
+    "prompt": "Paint an illustration for Rock Elemental: an ancient elemental spirit rising as a humanoid form of dark standing stones, jagged rock plates and glowing mineral seams, with a distinct ancient face formed in the central stone head and two heavy hands. Keep face and hands clear and the body unmistakably made of living rock, with a subtle cross-shaped pulse of energy through the chest. Painterly medieval high fantasy collectible-card art, rich stone strata and crystalline seams, dramatic directional light and atmospheric depth. Square 1:1 512x512 master; face and both hands inside x24..488 y105..407, quiet scenery above/below and clear 206:141 crop. No text, border or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ab9f8ce7-7c2e-4bd9-9fb7-c756dac97694.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_116.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Source native size [1254,1254]. Focal point [0.5,0.46] brings full rock-elemental face into crop with both hands visible. Artist inspected adjusted crop and thumbnail; parent review pending."
+  },
+  {
+    "cardId": "gray_summon_115",
+    "name": "Pebble Golem",
+    "prompt": "Repaint Pebble Golem as a small but tough medieval fantasy construct formed from rough, irregular river stones and weathered mineral fragments. Show a grounded humanoid with modest head-to-body proportions, a thoughtful stone face with narrow subtle rune-lit eye slits, and two clearly visible pebble-built hands as it thrusts one hand forward to launch a single pebble. Keep the complete face, both hands and action clear at card size. Surface detail should be rough, cracked, moss-flecked and naturally varied; expression is ancient and intent, never toy-like or cute. Painterly medieval high fantasy collectible-card art with attractive warm light over ancient ruin stones, restrained magic, atmospheric depth and believable materials. Square 1:1 512x512 master; keep face, hands and pebble action within x24..488 y105..407 for the 206:141 crop. No glossy button eyes, smooth round baby head, cartoon smile, text, border or UI. No anime, Disney/Pixar-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-86d946a3-407e-4ef3-b409-95df5f14cf3f.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_115.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "First source preserved at /workspace/scratch/b11_worker_1/gray_summon_115-prior.png after parent found its face toy-like. Repaint native size [1254,1254] uses irregular weathered stones and a grounded thoughtful face; focal point [0.5,0.4] keeps full face, both hands and pebble action in the crop. Artist inspected adjusted crop and thumbnail; parent review pending."
+  },
+  {
+    "cardId": "gray_summon_114",
+    "name": "Boulder Golem",
+    "prompt": "Paint an illustration for Boulder Golem: a broad powerful stone golem built from massive rounded boulders, with a clearly defined stern face and two huge rocky hands, raising one fist as if to hurl a stone projectile. Keep the face and both hands at readable scale; its boulder shoulders and chest establish the large form. Painterly medieval high fantasy collectible-card art, detailed weathered stone, warm directional light, dust and atmospheric depth, imposing but grounded. Square 1:1 512x512 master; face and hands inside x24..488 y105..407, quiet sky and ground beyond, horizontal 206:141 crop. No text, border or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-854fcb0a-251c-4ada-ae0b-e7345f6f18c4.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_114.png",
+    "sourceNative": [
+      1514,
+      1039
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Source native size [1514,1039]. Focal point [0.5,0.46] brings full face into crop while retaining the visible rocky hand and action. Artist inspected adjusted crop and thumbnail; parent review pending."
+  },
+  {
+    "cardId": "gray_summon_113",
+    "name": "Coconut Crab",
+    "prompt": "Paint an illustration for Coconut Crab: a powerful giant land crab with a rounded coconut-brown shell, unmistakable beady eyes and two enormous asymmetrical claws raised in defense on a moonlit tropical shore. The face and full claws dominate the middle of the image, while incidental legs and scenery may extend beyond view. Painterly medieval high fantasy collectible-card art, tactile shell and wet stone, attractive cool moonlight with warm reflected torchlight, atmospheric depth, lively but grounded animal anatomy. Square 1:1 512x512 master; keep eyes and both complete claws inside x24..488 y105..407; quiet scenery above/below and clear 206:141 horizontal crop. No text, border or UI. No anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-fc2f93f3-6942-4f11-92f8-2ffb0fc4b70c.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_113.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Source native size [1254,1254]. Artist inspected square, 206:141 crop and 128x88 thumbnail: crab face/eyes and both claws are clear; parent review pending."
+  },
+  {
+    "cardId": "gray_summon_117",
+    "name": "Siege Ogre",
+    "prompt": "Paint an illustration for Siege Ogre: an enormous grim ogre in battered dark iron armor, its broad expressive face, shoulders and both powerful hands filling the composition as one iron-gauntleted fist smashes through a fortified wooden gate. Broken planks fly from the impact, clearly showing the ogre's siege action; keep face and striking hand unobscured. Painterly medieval high fantasy collectible-card art, grounded ogre anatomy, weathered iron and splintered oak, warm directional torchlight against cool stone shadows, dramatic atmospheric depth. Square 1:1 512x512 master; keep ogre face, both hands and central gate impact within x24..488 y105..407; quiet scenery beyond, effective 206:141 horizontal crop. No gore, text, border or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ca87b5a3-7e0c-41a3-91c4-c6ace406c0ce.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_117.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.45
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Source native size [1254,1254]. Focal point [0.5,0.45] shifts the crop up. Artist inspected square, adjusted 206:141 crop and 128x88 thumbnail: full ogre face, striking gauntlet, other hand and gate-breaking action remain clear; parent review pending."
+  },
+  {
+    "cardId": "gray_summon_118",
+    "name": "Two-Headed Giant",
+    "prompt": "Paint an original illustration for the fantasy creature card “Two-Headed Giant.” Show one enormous veteran ogre with unmistakably TWO distinct heads side by side, both faces and both sets of eyes clearly visible, powering forward through a battered medieval mountain pass. One large hand reaches forward and the other braces a battered stone shield; imply massive trampling strength in the rubble and low foreground. The paired heads and face expressions are the defining identity. Painterly medieval high-fantasy collectible-card art, dramatic warm firelight against cool stone shadow, believable scarred skin, leather and battered iron, richly detailed atmospheric depth, grounded anatomy and expressive faces. One clear subject/action, horizontal arrangement. Create a true 1:1 SQUARE canvas for a 512x512 master. Keep both heads, faces, relevant hands, and the central body within x24..488 and y105..407 on the square; leave quiet expendable atmosphere above and below. The center will also be cropped to a wide 206:141 card illustration. No text, lettering, frame, UI, anime, Disney-like cartoon, toy proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-800ee38a-74e7-4376-86a8-fbaec09c2443.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_118.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square and centered wide crop inspected: both giant heads and faces are fully visible, with the reaching hand and shield present; rubble and battlefield scenery frame the dominant creature."
+  },
+  {
+    "cardId": "gray_summon_119",
+    "name": "Jotun Hurler",
+    "prompt": "Paint an original illustration for the fantasy creature card “Jotun Hurler.” Depict an ancient Jotun ogre, huge and weathered, in rough layered furs and old bronze, captured at the instant he hurls one prominent boulder across a bleak northern battlefield. His stern face, gripping throwing hand and the single clearly readable rock are the focus; show controlled immense strength and age, with distant standing stones and snow haze kept quiet. Painterly medieval high-fantasy collectible-card art, dramatic cold daylight and a warm edge of firelight, tactile stone, fur and metal, atmospheric depth, grounded anatomy. Strong readable silhouette, horizontal staging. Create a true 1:1 SQUARE canvas for a 512x512 master. Keep face, throwing hand, and whole boulder within x24..488 and y105..407 on the square; leave quiet scenery above and below. The center will also be cropped to a wide 206:141 card illustration. No text, lettering, frame, UI, anime, Disney-like cartoon, toy proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6898f113-881f-4654-aa98-26203c62d10c.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_119.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square and adjusted wide crop inspected. The Jotun's face and throwing hand remain clear, and the whole hurled boulder fits after shifting the crop upward; incidental lower legs are cropped."
+  },
+  {
+    "cardId": "gray_summon_120",
+    "name": "Fomorian Brute",
+    "prompt": "Paint an original illustration for the fantasy creature card “Fomorian Brute.” Show a feral Fomorian ogre brute, broad-shouldered and scarred, surging into a pouncing charge with one heavy hand reaching toward the viewer and the other clenched. Give the creature a single fierce, unmistakable face and rough primitive hide; a faint storm-wet shoreline and spray may suggest its tidal nature without obscuring the subject. Painterly medieval high-fantasy collectible-card art, dramatic directional storm light, believable skin, fur and rough iron fittings, atmospheric depth and grounded anatomy. One strong creature portrait/action, broad horizontal composition, readable at small size. Create a true 1:1 SQUARE canvas for a 512x512 master. Keep face, eyes, and forward reaching hand within x24..488 and y105..407 on the square; leave quiet expendable atmosphere above and below. The center will also be cropped to a wide 206:141 card illustration. No text, lettering, frame, UI, anime, Disney-like cartoon, toy proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-fa2a3e6d-67a4-402a-b1a2-7c2e1eaf1389.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_120.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square and centered wide crop inspected: the brute's face and eyes, charging pose, and forward reaching hand read clearly; storm coast spray stays behind the figure."
+  },
+  {
+    "cardId": "gray_summon_121",
+    "name": "Oni Pebble-Tosser",
+    "prompt": "Paint an original illustration for the fantasy creature card “Oni Pebble-Tosser.” Depict a compact but powerful tiny Oni warrior, a single face with small horns, crouched on a rocky rise and flinging a single clearly visible hand-sized pebble with surprising force. Keep the Oni’s face, eyes, throwing hand and pebble close together at the same height, all prominent; the pebble is small beside the ogre, never a boulder. Let a few loose stones and a restrained motion arc suggest a quick pounce. Painterly medieval high-fantasy collectible-card art, warm directional light, nuanced skin, cloth and old leather, atmospheric rocky setting, grounded anatomy and serious expressive face. Horizontal arrangement with a strong simple silhouette. Create a true 1:1 SQUARE canvas for a 512x512 master. Keep face, hand and complete pebble within x24..488 and y105..407 on the square; leave quiet expendable scenery above and below. The center will also be cropped to a wide 206:141 card illustration. No text, lettering, frame, UI, anime, Disney-like cartoon, toy proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b9eed82d-dedb-44af-b4b6-113339fb7f5e.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_121.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square and centered wide crop inspected: the Oni's single face, eyes, throwing hand, and entire small pebble are visible; the compact silhouette and rocky setting read clearly."
+  },
+  {
+    "cardId": "gray_summon_122",
+    "name": "Gremlin Pot-Thrower",
+    "prompt": "Paint an original illustration for the fantasy creature card “Gremlin Pot-Thrower.” Show a wiry, scrappy medieval gremlin with a lively but grounded single face, caught mid-throw as it hurls a small round earthen pot from one hand. Keep the gremlin’s face, eyes, throwing hand and complete pot clustered together and prominent; the pot should be a compact clay vessel, not a giant cauldron. A few restrained sparks or a subtle burst hint at a blast effect without obscuring the creature. Painterly medieval high-fantasy collectible-card art, directional amber workshop light, nuanced greenish skin, rough cloth, leather and fired clay, smoky old-stone background, atmospheric depth, believable anatomy and serious lively expression. One clear readable subject, horizontal arrangement. Create a true 1:1 SQUARE canvas for a 512x512 master. Keep face, hand, and whole pot within x24..488 and y105..407 on the square; leave quiet expendable atmosphere above and below. The center will also be cropped to a wide 206:141 card illustration. No text, lettering, frame, UI, anime, Disney-like cartoon, toy proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-3f19e376-6d0a-4b15-8590-cd99c49158ff.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_122.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square and centered wide crop inspected: the gremlin's face and eyes, throwing hand, and whole small earthen pot remain prominent; workshop background and restrained burst support the throw."
+  },
+  {
+    "cardId": "gray_summon_123",
+    "name": "Kobold Sapper",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Kobold Sapper”. Paint a clever, sturdy kobold sapper scout in a rough leather harness crouched beside a narrow tunnel opening, projecting a precise luminous arcane beam from a small rune tool toward a distant stone obstacle. Show the kobold's alert face, tool hand, and the purposeful line of the beam; medieval mine and stonework in quiet background. Painterly medieval/high-fantasy collectible-card art, richly painted believable cloth, leather, wood and stone, attractive directional light, readable values and atmospheric depth. Strong subject silhouette, grounded anatomy, narrative clarity at small card size, in the visual quality of the supplied Hexmancers references. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Keep the face, eyes, relevant hands, and named action within x24–488,y105–407 on the square; horizontal composition for a 206:141 wide crop, quiet expendable scenery at top and bottom. No card frame, text, lettering, numbers, runes as text, or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art, exaggerated caricature, or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-98a6acf7-1b24-4f40-a0c2-faa6b6c77095.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_123.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square source and 206:141 crop inspected: kobold face, tool hand, and the beam origin remain clear; the wide thumbnail reads as a miner projecting a beam toward stone."
+  },
+  {
+    "cardId": "gray_summon_124",
+    "name": "Hobgoblin Grenadier",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Hobgoblin Grenadier”. Paint a brave, sturdy hobgoblin grenadier in battered medieval armor, caught in the clear action of hurling one compact iron grenade forward. His determined face and throwing hand are visible; a small contained blast blooms in the distance. Grounded, disciplined veteran rather than comic caricature. Painterly medieval/high-fantasy collectible-card art, richly painted believable cloth, leather, wood and stone, attractive directional light, readable values and atmospheric depth. Strong subject silhouette, grounded anatomy, narrative clarity at small card size, in the visual quality of the supplied Hexmancers references. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Keep the face, eyes, relevant hands, and named action within x24–488,y105–407 on the square; horizontal composition for a 206:141 wide crop, quiet expendable scenery at top and bottom. No card frame, text, lettering, numbers, runes as text, or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art, exaggerated caricature, or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-0895beaa-107a-4de2-ac5c-988ff675cdff.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_124.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square source inspected. The centered crop clipped the grenade top, so the card crop is shifted upward to y=60 (focalPoint 0.46); the adjusted 206:141 crop and thumb show the entire grenade, hobgoblin face, and throwing hand."
+  },
+  {
+    "cardId": "gray_summon_125",
+    "name": "Barrel-Rolling Dwarf",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Barrel-Rolling Dwarf”. Paint a sturdy dwarf rolling forward inside a reinforced oak barrel, the barrel tipping across a rocky battlefield as a crisp frost burst spreads from its path. Let the dwarf's delighted, lucky face peek through the open rim; emphasize the complete readable barrel form and cold blast. Painterly medieval/high-fantasy collectible-card art, richly painted believable cloth, leather, wood and stone, attractive directional light, readable values and atmospheric depth. Strong subject silhouette, grounded anatomy, narrative clarity at small card size, in the visual quality of the supplied Hexmancers references. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Keep the face, eyes, relevant hands, and named action within x24–488,y105–407 on the square; horizontal composition for a 206:141 wide crop, quiet expendable scenery at top and bottom. No card frame, text, lettering, numbers, runes as text, or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art, exaggerated caricature, or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-6379ad5d-ca2a-44ee-bb06-3a8d09d32f36.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_125.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square source and 206:141 crop inspected: the dwarf’s expressive face and gripping hands sit inside the complete barrel opening; the barrel and icy rolling burst read clearly in the thumbnail."
+  },
+  {
+    "cardId": "gray_summon_126",
+    "name": "Village Brawler",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Village Brawler”. Paint a scrappy village brawler, a weathered human local in plain wool and a patched leather vest, planted in a braced stance at a rustic village lane, fists up and ready to drive back several shadowy attackers. Keep the brawler's face and both hands crisp; a restrained cross-shaped sweep of motion suggests the broad counterstrike. Painterly medieval/high-fantasy collectible-card art, richly painted believable cloth, leather, wood and stone, attractive directional light, readable values and atmospheric depth. Strong subject silhouette, grounded anatomy, narrative clarity at small card size, in the visual quality of the supplied Hexmancers references. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Keep the face, eyes, relevant hands, and named action within x24–488,y105–407 on the square; horizontal composition for a 206:141 wide crop, quiet expendable scenery at top and bottom. No card frame, text, lettering, numbers, runes as text, or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art, exaggerated caricature, or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-c4f994f5-b6e6-4768-8dad-30821b189942.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_126.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square source and 206:141 crop inspected: the brawler’s face, clenched fist, and striking arm remain in frame; the broad counterstrike and village lane read at thumbnail size."
+  },
+  {
+    "cardId": "gray_summon_127",
+    "name": "Tavern Bouncer",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Tavern Bouncer”. Paint a large, sturdy ogre bouncer guarding the entrance of a medieval tavern: broad shoulders in worn but well-kept leather and wool, a surprisingly gentle steady expression, one massive open hand raised to stop rowdy troublemakers at the threshold while his other hand braces the heavy oak doorway. A few quiet patrons watch from warm lamplight behind him; a subtle shadowy ripple at his palm hints at the brief curse that turns foes away. Make the ogre the clear subject, with face and open hand large, visible and readable; grounded fantasy anatomy, kindly power rather than comic caricature. Painterly medieval/high-fantasy collectible-card art, richly painted believable materials, attractive warm directional light, readable values and atmospheric depth. Strong silhouette and narrative clarity at small card size, in the visual quality of the supplied Hexmancers references. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Keep the face, eyes, relevant hands, and named action within x24–488,y105–407 on the square; horizontal composition for a 206:141 wide crop, quiet expendable scenery at top and bottom. No card frame, text, lettering, numbers, runes as text, or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art, exaggerated caricature, or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-27dd361e-ac9b-403c-b946-237c83cb8fe2.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_127.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square source inspected. The centered crop clipped the top of the ogre’s head, so the crop is shifted upward to y=45 (focalPoint 0.43); the adjusted 206:141 crop and thumbnail show his complete face, both hands, and stopping gesture."
+  },
+  {
+    "cardId": "gray_summon_128",
+    "name": "Mole Sapper",
+    "prompt": "Paint an illustration for the exact card Mole Sapper. A large, clever real-world mole warrior-beast tunnels beside a muddy medieval riverbank; its velvety charcoal face, tiny alert eyes and broad shovel-claws are prominent as it has just burst through the bank, steering a rush of water through its new trench to help an escorting foot soldier. Show the mole's solid body emerging from the earth and a readable stream of water surging past it, suggesting burrow and tide. Keep the complete face, both digging claws and main action compact in the center; the soldier remains small and secondary. Painterly medieval fantasy collectible-card art, believable wet fur, mud, river stones and leather, warm low sun against cool river mist, rich brushwork and atmospheric depth. Square 1:1 canvas for a 512×512 master; protect mole face, claws and meaningful action inside x24..488,y105..407 for the 206:141 card crop, quiet ground and sky above/below. No frame, lettering, runes, UI, cartoon, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b33b0ce1-7959-4075-ad75-d4027d8d42d0.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_128.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Inspected 512 source, wide crop and 128 thumbnail: mole face, both shovel claws, earth and surging river action stay clear; escorting soldier remains secondary."
+  },
+  {
+    "cardId": "gray_summon_129",
+    "name": "Badger",
+    "prompt": "Paint an illustration for the exact card Badger. A feral, sturdy European badger with striking black-and-white face markings braces in a woodland burrow clearing, its powerful forepaws digging into earth as two small spectral mole helpers emerge at its side. Blue-white static crackles over the badger's coarse fur as it overcharges and summons them; the badger's face and stout body are unmistakable and dominant, helpers remain secondary. Grounded wild-animal anatomy, dense silver-gray coat, damp roots and leaf litter, painterly medieval fantasy collectible-card art with dramatic moonlit rim light and warm lantern accents. Square 1:1 canvas for a 512×512 master; keep the entire badger face, relevant claws and readable small helpers in the middle 60%, x24..488,y105..407 for the 206:141 crop, quiet woodland margins. No frame, text, runes, UI, cartoon, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ec9a9edd-5bb0-486a-abe8-03167d673da0.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_129.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Inspected 512 source, wide crop and 128 thumbnail: badger face, forepaws and stout body are central; summoned mole helpers and static are readable secondary details."
+  },
+  {
+    "cardId": "gray_summon_130",
+    "name": "Rampaging Rhino",
+    "prompt": "Paint an illustration for the exact card Rampaging Rhino. A huge dire rhinoceros charges through a line of battered wooden shields, head and single forward horn thrust low as it tramples the barrier and scatters two small armored foes; short blue-white static arcs dance across its rough hide. Show the rhino's face, horn, shoulders and front hooves in a compact three-quarter view, powerful and tough, with the escorting soldiers tiny for scale. Painterly medieval fantasy collectible-card art, realistic rhinoceros anatomy and weathered hide, dust, splintered oak, sunlit dust against cool woodland shadows, rich brushwork. Square 1:1 canvas for a 512×512 master; protect whole face, horn, front hooves and key trample action inside x24..488,y105..407 for the 206:141 card crop, quiet margins above/below. No frame, lettering, runes, UI, cartoon, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-57001d2f-1d59-4616-bf02-29f8ccd1e0d8.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_130.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Inspected 512 source, wide crop and 128 thumbnail: rhino face and full horn are intact; blue static and shield-trampling impact read clearly, with foes secondary."
+  },
+  {
+    "cardId": "gray_summon_131",
+    "name": "Charging Bison",
+    "prompt": "Paint an illustration for the exact card Charging Bison. A powerful American bison charges low across a windswept grassland, massive shoulder hump and shaggy dark mane leading the motion, both short curved horns fully visible as it barrels past two tiny armored foes in its front line. The bison's face, horns, hump and forward hooves dominate in a horizontal three-quarter composition, with dust and grass streaming behind; no other buffalo. Painterly medieval fantasy collectible-card art, grounded animal anatomy, detailed coarse fur, warm late sun and cool storm shadows, atmospheric distance. Square 1:1 canvas for a 512×512 editable master; keep the whole head and horns plus main charge action safely inside x24..488,y105..407 for the 206:141 card crop, quiet sky and grass margins above/below. No frame, text, runes, UI, cartoon, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c9258a5b-e88b-4b7c-9bcd-e944e3bba8bf.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_131.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Inspected 512 source, wide crop and 128 thumbnail: bison face, paired horns, mass and charging action read immediately; incidental hump fur and fleeing foes crop naturally."
+  },
+  {
+    "cardId": "gray_summon_132",
+    "name": "Woolly Mammoth",
+    "prompt": "Paint an illustration for the exact card Woolly Mammoth. A massive ancient woolly mammoth strides quickly through a frosted boreal pass, its wise dark eye, long trunk, thick shaggy russet coat and both long curved ivory tusks fully visible as it turns in a purposeful zigzag around ice-covered rocks. Frost crystals and a chill cloud of breath trail its path; a tiny bundled scout keeps pace beside its shoulder to suggest an escort, but the mammoth dominates. Use a compact side-three-quarter view focused on the complete head, trunk and tusks, keeping both tusk tips well away from the card crop edges. Painterly medieval fantasy collectible-card art, realistic mammoth anatomy and layered wool, cold blue light against a warm break in winter clouds, atmospheric depth and refined brushwork. Square 1:1 canvas for a 512×512 editable master; keep the eye, whole trunk and both tusks with tips inside x24..488,y105..407 for the 206:141 crop, quiet snowy margins above and below. No frame, text, runes, UI, cartoon, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c10f022c-41c8-4b86-ad74-89306dd84d4f.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_132.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.44
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Shifted crop upward to retain mammoth forehead, eye and both full tusks. Inspected square, shifted wide crop and thumbnail; trunk and tusk tips remain clear, scout is secondary."
+  },
+  {
+    "name": "Elephant Bird",
+    "prompt": "Paint an illustration for the Hexmancers card “Elephant Bird.” A compact but powerful great bird stands squarely at the front of a rocky northern shore: shaggy dark-brown plumage, a heavy curved beak, sturdy feathered neck and broad taloned feet planted in the earth. Its wings are folded close as it tramples through low brush, showing tough bold presence rather than a flying pose; tiny distant figures provide scale. Painterly medieval high-fantasy collectible-card art with believable feather, beak and skin textures, warm late-day light against a cool stormy sea, layered atmospheric depth and strong readable silhouette. Square 1:1 composition for a 512x512 master; keep the bird's full head, beak, body and feet inside x24..488,y105..407, centered in the middle 60%, quiet sky and shore above/below for a 206:141 crop. No frame, text, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d81abbaf-2e9e-440b-919e-6d228bbce82c.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_133.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square source, upward-shifted wide crop (focalPoint y=0.40) and thumbnail reviewed. The bird’s full crown, face, hooked beak and strong torso fit; lower feet are incidental. Parent review pending.",
+    "cardId": "gray_summon_133"
+  },
+  {
+    "name": "Stone-Dropping Vulture",
+    "prompt": "Paint an illustration for the Hexmancers card “Stone-Dropping Vulture.” A hungry vulture circles low over a medieval battlefield and drops a single clearly visible gray stone from its talons toward the ground below; show the bird's hooked beak, focused eye and broad wings clearly, with a second tiny escorting bird far behind. The stone is a compact helper projectile, fully visible and distinct from the clouds. Painterly medieval high-fantasy collectible-card art, believable mottled feathers and weathered stone, directional golden light cutting through cool storm clouds, atmospheric depth, strong silhouette readable at thumbnail scale. Square 1:1 composition for a 512x512 master; keep the main bird's head and talons and the whole falling stone within x24..488,y105..407, center the action in the middle 60%, quiet sky and distant terrain top/bottom for 206:141 crop. No frame, lettering, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6e2d79b1-c2b4-42d0-9519-8ea681b70ad9.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_134.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square source, centered wide crop and thumbnail reviewed. Vulture's face and talons plus the complete falling stone remain clear; cropped wing tips are incidental. Parent review pending.",
+    "cardId": "gray_summon_134"
+  },
+  {
+    "name": "Thunder Ram",
+    "prompt": "Paint an illustration for the Hexmancers card “Thunder Ram.” A brave, massive mountain ram charges head-on along a rocky pass, curled horns lowered, shaggy gray fleece blown by the wind, hooves striking stone as a restrained chain of blue-white thunder flashes from one rock outcrop to the next behind it. The ram's steady face, both horns and powerful front hooves are the dominant subject; no rider. Painterly medieval high-fantasy collectible-card art, believable wool, horn and stone, dramatic storm light, rich material detail and atmospheric depth, clear silhouette at thumbnail size. Square 1:1 composition for a 512x512 master; keep full head, both horn tips, front shoulders and hooves inside x24..488,y105..407, horizontal forward action in middle 60%, quiet storm mist above and below for 206:141 crop. No frame, text, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5ec56f00-d465-493f-9991-f968136209f9.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_135.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square source, centered wide crop and thumbnail reviewed. The ram's face, both horn tips and striking forehoof fit, with the thunder chain and charging pose readable. Parent review pending.",
+    "cardId": "gray_summon_135"
+  },
+  {
+    "name": "Familiar Cat",
+    "prompt": "Paint an illustration for the Hexmancers summon “Familiar Cat.” Two familiar cats are present as a paired summon: a poised gray cat in the foreground pads toward the viewer with gentle bright eyes, while a second companion follows close behind beside a shallow moonlit stream. Their sleek coats and quiet alert posture feel uncanny but tender; a few pale water ripples trail their paws to hint at the tidal bond. Painterly medieval high-fantasy collectible-card art, natural cat anatomy, beautifully textured fur and whiskers, soft directional moonlight, atmospheric depth and a clear readable paired silhouette at small size. Square 1:1 composition for a 512x512 master; keep the front cat's entire face, ears and body visible and the second cat recognizable within x24..488,y105..407, center both in the middle 60%, quiet stream and shadow above/below for 206:141 crop. No frame, letters, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-84f17b92-0058-445d-9760-6b13313ecd1e.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_136.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square source, centered wide crop and thumbnail reviewed. Both familiar cats' faces and bodies remain visible with the moonlit water-walking action; the paired summon reads clearly. Parent review pending.",
+    "cardId": "gray_summon_136"
+  },
+  {
+    "name": "Tabby Familiar",
+    "prompt": "Paint an illustration for the Hexmancers summon “Tabby Familiar.” A single orange-brown tabby cat with clear dark stripes sits beside a medieval adventurer's resting hand, touching the wrist gently with one raised paw as a soft golden healing light mends a small cut. The cat's expressive eyes, striped face and complete compact body are the clear subject; a tiny startled beetle or distant foe reacting to a lucky glint can hint at its uncanny luck, but remain secondary. Painterly medieval high-fantasy collectible-card art, natural cat anatomy, richly painted fur and whiskers, warm candlelight against cool evening shadows, atmospheric depth and a gentle but magical mood, readable at small card size. Square 1:1 composition for a 512x512 master; keep the cat's full face, ears, body and touching paw within x24..488,y105..407, subject in middle 60%, quiet stone and shadow above/below for a 206:141 crop. No frame, lettering, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-df961f46-02c1-4d31-a21b-795ff9b6ace1.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_137.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.47
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square source, upward-shifted wide crop (focalPoint y=0.47) and thumbnail reviewed. Tabby’s full striped face, both ear tips, body and healing paw remain visible; the adventurer's wounded wrist supports the mend and the beetle is secondary. Parent review pending.",
+    "cardId": "gray_summon_137"
+  },
+  {
+    "cardId": "gray_summon_138",
+    "name": "Owl Familiar",
+    "prompt": "Paint an illustration for the exact card name “Owl Familiar.” Show a single clever tawny owl familiar perched beside a lone traveler’s pack on a moonlit stone wall, its large bright amber eyes and distinct feathered facial disk sharply readable. One wing is partly lifted as a protective escort while a thin pale-gold diagonal glimmer sweeps from the owl’s talons toward a distant threat; the owl itself remains the dominant subject. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: believable layered feathers, talons and weathered leather, expressive natural bird anatomy, dramatic directional moonlight with a warm lantern accent, layered brushwork and atmospheric depth. Square 1:1 canvas for a 512x512 master. Keep owl face, eyes, beak, head and main body inside x24–488,y105–407 in the middle 60 percent; incidental wingtip, tail and background may extend. Quiet night sky above and dark stone below for a 206:141 crop. No human face, no extra birds, no cartoon eyes. No text, symbols, card frame, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f34aae1c-d0ce-4026-9e9f-8140b5a2fabb.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_138.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square master, wide crop and 128px thumbnail inspected. The owl’s face, amber eyes, beak and body remain clear; only an incidental wingtip extends beyond the crop. The moonlit escort glimmer is readable at thumbnail size."
+  },
+  {
+    "cardId": "gray_summon_139",
+    "name": "Toad Familiar",
+    "prompt": "Paint an illustration for the exact card name “Toad Familiar.” Show a single stout, gentle olive-green toad familiar seated calmly on a rain-darkened forest stone, its alert golden eyes, broad mouth and warty skin clearly readable. A subtle translucent pale-blue protective shield curves around the toad and a nearby boot, suggesting a sturdy front-line guardian; keep the toad the unmistakable main subject and the magic restrained. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: believable amphibian anatomy and damp textured skin, nuanced moss, stone and water, layered brushwork, soft directional lantern light and atmospheric depth. Square 1:1 composition for a 512x512 master. Keep the full toad head and main body centered inside x24–488,y140–390; its lower feet and the shield rim may extend, but do not clip its eyes or mouth. Horizontal centered subject with quiet forest background for a 206:141 crop. No cartoon grin, no extra animals, no human figure needed. No text, runes, card frame, numbers or UI. No anime, Disney-like proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-336ade6b-4e4f-44a3-b868-09f22f6c9ec2.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_139.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square master, wide crop and 128px thumbnail inspected. The toad’s eyes, broad mouth and body remain visible within the quiet shield arc; the nearby armored boot supports the defensive role without competing. The toad is clear at thumbnail size."
+  },
+  {
+    "cardId": "gray_summon_140",
+    "name": "Raven Familiar",
+    "prompt": "Paint an illustration for the exact card name “Raven Familiar.” Depict a single intelligent glossy black raven familiar perched on a worn medieval bracer or low stone balustrade, its bright dark-blue eye, hooked beak and layered blue-black feathers crisp and unmistakable. One wing is half-spread as the raven offers a small glowing healing herb or leaf in its beak to a barely visible wounded traveler’s hand; the raven remains the dominant subject and no person’s face is needed. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: natural corvid anatomy, fine feather texture, believable leather, stone and herb, layered brushwork, cool dusk light with a warm healing glint, atmospheric depth. Square 1:1 canvas for a 512x512 master. Keep raven’s eye, beak, head and torso within x24–488,y105–407; incidental wingtip may extend. Horizontal centered composition with quiet ruined woodland background for a 206:141 crop. No extra ravens, no cartoon proportions. No text, symbols, card frame, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-bbbd2c5b-1fc0-4c93-81f9-aa753194bcaa.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_140.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square master, wide crop and 128px thumbnail inspected. The raven’s blue eye, hooked beak and body remain clear while the wingtip extends incidentally. It offers a glowing herb to the traveler’s hand; raven and healing action are readable at thumbnail size."
+  },
+  {
+    "cardId": "gray_summon_141",
+    "name": "Brownie",
+    "prompt": "Paint an illustration for the exact card name “Brownie.” Depict a small helpful duende household spirit in a humble medieval cottage at dusk, with warm brown skin, a tousled dark head of hair, bright clever eyes and a gentle, focused expression. The tiny brownie is sturdy and natural in proportion, kneeling beside a stone hearth while tossing a short handful of three glowing pebbles toward a threatening boot just entering frame, suggesting a gentle barrage that nudges the foe back. Keep brownie’s whole face, eyes and working hands together at chest height; the thrown pebbles are secondary. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: grounded folk-spirit design, textured wool, wood and stone, nuanced brushwork, warm hearth light against cool dusk, atmospheric depth; not a toy or cartoon. Square 1:1 composition for a 512x512 master. Keep the brownie’s face, hands and upper body inside x24–488,y105–407 in the middle 60 percent; legs and background may extend. Quiet cottage setting for the 206:141 crop. No chocolate, no extra faeries, no text, runes, card frame, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f9651e88-fbcf-4eb2-850e-89e2157c41bd.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_141.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square master, wide crop and 128px thumbnail inspected. The brownie’s full face, eyes and hands remain visible, with three small glowing pebbles flying toward the boot at right. Hearth light and cottage details remain readable without obscuring the duende."
+  },
+  {
+    "cardId": "gray_summon_142",
+    "name": "Domovoi",
+    "prompt": "Paint an illustration for the exact card name “Domovoi.” Depict an old, sturdy Slavic household spirit: a compact but broad-shouldered elder duende with kind yet commanding amber eyes, a weathered face, thick smoke-gray beard and a simple felt cap, standing protectively beside a medieval cottage hearth. He plants one boot on the stone hearth ledge, opens one hand in a fearless taunt, and with the other draws a short glowing chain of hearth sparks that pulls a shadowy intruder closer. His age, strength and household guardian role are clear; this is an older, larger guardian than a small Brownie. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: natural expressive face and hands, believable wool, beard, wood and stone, warm ember light against cool shadow, layered brushwork and atmospheric depth, grounded folk-spirit design, not cartoon. Square 1:1 canvas for a 512x512 master. Keep Domovoi’s full face, eyes, both hands and upper body within x24–488,y105–407, centered in the middle 60 percent for a 206:141 crop; incidental lower legs and hearth may extend. Quiet cottage background, no other foreground figures. No modern elements, no text, letters, runes, card frame, numbers or UI. No anime, Disney-like cartoon, toy proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-028422b2-3ecc-4a70-a4a2-216988021965.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_142.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.44
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square master inspected. Shifted the crop upward so Domovoi’s full face and eyes, both hands and glowing spark chain are visible together; the 206:141 crop and 128px thumbnail were inspected. Lower legs extend incidentally."
   }
 ]

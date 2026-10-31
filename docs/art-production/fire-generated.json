@@ -2116,5 +2116,905 @@
     "status": "generated",
     "batch": 10,
     "reviewNote": "Reviewed source and crop at focal [0.5,0.38] plus 128x88 thumbnail. Full minotaur face, eyes, and both horn tips fit clearly; lower torso and dust trail crop as incidental action."
+  },
+  {
+    "cardId": "fire_strike_11",
+    "name": "Bull Rush",
+    "prompt": "Paint an illustration for Bull Rush. The effect is a charged line attack that pierces and pushes an enemy back. A battle-worn human warrior surges forward in a forceful shoulder charge, driving a rival back; dynamic horizontal motion, face and bracing hand clear. Visual style references: painterly medieval high fantasy, nuanced materials, dramatic directional firelight, atmospheric depth, grounded anatomy and expressive faces like the supplied Hexmancers references. Make one strong readable subject in a horizontal arrangement, occupying the middle 60% of the square. Keep the full face, relevant hands, and entire named object within x24..488,y105..407 on a 512x512 square. Leave quiet scenery at top and bottom for a 206:141 card crop. Explicit 1:1 square canvas, intended as editable 512-square painting. No card border, lettering, numbers, runes, UI. No anime, Disney-like cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0e638d2f-b66d-484d-b7f2-7e5811d94635.png",
+    "editableSourcePath": "game/cards/art/masters/fire_strike_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Bull Rush’s charging attacker and struck opponent remain identifiable in the wide crop; strong forward action and warm light."
+  },
+  {
+    "cardId": "fire_lob_12",
+    "name": "Goblin Bomb",
+    "prompt": "Paint an illustration for Goblin Bomb. The effect is a heavy-fuse explosive thrown in a ring that knocks foes down. A sly goblin sapper braces low and hurls a squat iron bomb with a burning fuse; compact bomb visible beside the goblin's face at the same height, glowing sparks. Visual style references: painterly medieval high fantasy, nuanced materials, dramatic directional firelight, atmospheric depth, grounded anatomy and expressive faces like the supplied Hexmancers references. Make one strong readable subject in a horizontal arrangement, occupying the middle 60% of the square. Keep the full face, relevant hands, and entire named object within x24..488,y105..407 on a 512x512 square. Leave quiet scenery at top and bottom for a 206:141 card crop. Explicit 1:1 square canvas, intended as editable 512-square painting. No card border, lettering, numbers, runes, UI. No anime, Disney-like cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-78a49bef-18bd-4deb-93b0-51f1b0d2d41f.png",
+    "editableSourcePath": "game/cards/art/masters/fire_lob_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "The named subject and key details remain visible in the square source and center wide crop; painterly firelit setting."
+  },
+  {
+    "cardId": "fire_ward_11",
+    "name": "Brimstone Rampart",
+    "prompt": "Paint an illustration for Brimstone Rampart. The effect is a short, heavy rampart that forms a defensive wall and knocks attackers back. A short, heavy defensive wall of black basalt and iron rises in a single line, seams glowing with shocking brimstone; a dwarf mason braces beside it for scale. Visual style references: painterly medieval high fantasy, nuanced materials, dramatic directional firelight, atmospheric depth, grounded anatomy and expressive faces like the supplied Hexmancers references. Make one strong readable subject in a horizontal arrangement, occupying the middle 60% of the square. Keep the full face, relevant hands, and entire named object within x24..488,y105..407 on a 512x512 square. Leave quiet scenery at top and bottom for a 206:141 card crop. Explicit 1:1 square canvas, intended as editable 512-square painting. No card border, lettering, numbers, runes, UI. No anime, Disney-like cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d13ae6cd-420d-49da-8861-e7e19d554ade.png",
+    "editableSourcePath": "game/cards/art/masters/fire_ward_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "The named subject and key details remain visible in the square source and center wide crop; painterly firelit setting."
+  },
+  {
+    "cardId": "fire_boon_10",
+    "name": "Smith's Focus",
+    "prompt": "Paint an illustration for Smith's Focus. The effect is a rallying boon that restores focus and empowers the next action. A master blacksmith concentrates at an anvil, hammer poised above a brilliant weapon, eyes and working hands prominent; warm firelight and sparks. Visual style references: painterly medieval high fantasy, nuanced materials, dramatic directional firelight, atmospheric depth, grounded anatomy and expressive faces like the supplied Hexmancers references. Make one strong readable subject in a horizontal arrangement, occupying the middle 60% of the square. Keep the full face, relevant hands, and entire named object within x24..488,y105..407 on a 512x512 square. Leave quiet scenery at top and bottom for a 206:141 card crop. Explicit 1:1 square canvas, intended as editable 512-square painting. No card border, lettering, numbers, runes, UI. No anime, Disney-like cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2ce5e2ab-88da-466c-8838-955126191aec.png",
+    "editableSourcePath": "game/cards/art/masters/fire_boon_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "The named subject and key details remain visible in the square source and center wide crop; painterly firelit setting."
+  },
+  {
+    "cardId": "fire_charge_10",
+    "name": "Firecracker String",
+    "prompt": "Paint an illustration for Firecracker String, a medieval fantasy charge made of a short string of several hand-wrapped paper firecrackers that can be lit twice, bursting with a sharp critical blast that shoves an enemy back. Show the compact named artifact clearly in the foreground at center, its red-brown wrapped charges and knotted fuse fully visible beside a small lit spark, with a subtle blurred armored foe being knocked back in the background for context. The artifact is the subject; no operator is needed. Painterly medieval/high fantasy collectible-card art, believable paper, cord and metal details, dramatic warm directional firelight and atmospheric depth, matching supplied Hexmancers references. One strong readable subject, horizontal arrangement, middle 60% of a 1:1 square. Keep the full named object inside x24..488,y105..407 on a 512x512 square, quiet scenery at top and bottom for a 206:141 crop. Explicit square canvas, editable 512-square master. No frame, letters, numbers, runes, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9fecdada-7124-431e-bbc3-d8a6379c0907.png",
+    "editableSourcePath": "game/cards/art/masters/fire_charge_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "The full firecracker string, fuse and blast are clear in the square and wide crop; the displaced foe is incidental context behind the artifact."
+  },
+  {
+    "cardId": "fire_trap_09",
+    "name": "Ember Spike Pit",
+    "prompt": "Paint an illustration for Ember Spike Pit, a short-lived trap of three large spikes that erupts from the ground and thrusts a foe back. Show a shallow circular black-stone pit in the middle of a rocky medieval pass, its complete raised rim and three broad pointed iron spikes thrusting upward through glowing ember cracks. One armored raider is caught at the edge and recoils from the burst; the whole named pit and all three spike tips are clear. The trap is the primary subject, with hot orange magma light against cool dusk stone. Painterly medieval high fantasy, textured basalt, iron and ash, dramatic directional light, atmospheric depth and grounded proportions. Explicit 1:1 SQUARE 512x512 canvas; keep the complete pit rim, all three spike tips and the clear impact inside x24..488,y105..407 for a 206:141 wide card crop, quiet rock and smoke above and below. No frame, lettering, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4031c47c-0e1b-47fb-b473-037c56265a9e.png",
+    "editableSourcePath": "game/cards/art/masters/fire_trap_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed the 512-square source, 206:141 crop and 128x88 thumbnail. The full stone pit rim, three ember-lit spike tips and recoiling foe stay in the crop; the three-spike trap reads clearly at thumbnail size."
+  },
+  {
+    "cardId": "fire_environment_10",
+    "name": "Rockslide Valley",
+    "prompt": "Paint an illustration for Rockslide Valley, a long tremor that sends a column of stone crashing down a mountain pass and stuns travelers. Show a dramatic narrow medieval highland valley in a quake: one powerful vertical column of broken boulders and dust collapses down the central cliff face, while a tiny distant caravan braces at the pass for scale. Strong readable valley walls frame the descending rock column; no generic fire spell. Painterly fantasy landscape with believable slate, granite, dust and sparse alpine pines, warm sunset light catching the falling rocks, atmospheric depth, energetic but clear brushwork. Explicit 1:1 SQUARE composition for 512x512 master; keep the defining valley and falling rock column inside x24..488,y105..407 for 206:141 wide crop, expendable sky and foreground gravel beyond. No text, card frame, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e4d821dc-4bd6-4f2d-9164-5a176afc0d4e.png",
+    "editableSourcePath": "game/cards/art/masters/fire_environment_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed the 512-square source, 206:141 crop and 128x88 thumbnail. The collapsing column of rocks and enclosing valley remain legible; tiny travelers establish scale and can be lost in the thumbnail."
+  },
+  {
+    "cardId": "fire_summon_07",
+    "name": "Phoenix Chick",
+    "prompt": "Refine this illustration further so it reads unmistakably as a very young Phoenix Chick. Keep the same painterly fantasy style, volcanic ledge, warm ember lighting and broad action layout, but redesign the bird with clear baby-bird proportions: a compact round fluffy body, head relatively large but still natural, very short blunt beak, tiny dark natural eyes, short little legs, and small stubby developing wings only partly opened with sparse soft ember-colored down rather than long flight feathers. Add a soft uneven coat of gold, orange and soot-gray baby down; keep just a few emerging flame-feathers along the tiny wings and crown. It should look newly hatched, not a scaled-down adult phoenix, not like an eagle, and not cartoonish. Perch the tiny chick on a scorched stone beside a little nest of ember twigs; show its whole body and little feet. A modest cone of flame can flare from its beak toward a much larger distant enemy to convey the phoenix's magic. Make the large bird-size difference unmistakable. Keep the complete chick head, body, stubby wings and feet inside x24..488,y105..407 for the 206:141 crop, with quiet smoke above and basalt below. Square 1:1 image; no text, border, UI, anime, Disney, huge eyes, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-41a7134d-830a-4dbd-9404-09dbe2a65818.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Repainted to show a clearly juvenile phoenix with a compact fluffy body, very short beak, tiny natural eye, stubby developing wings and little feet beside a small ember nest. Reviewed the new 512-square source, 206:141 crop and 128x88 thumbnail; the chick remains whole and distinct, and the modest fire cone still communicates its attack. Previous master preserved at /tmp/fire02-repaint-scratch/fire_summon_07-before-repaint.png."
+  },
+  {
+    "cardId": "fire_machine_06",
+    "name": "Dwarven Siege Cannon",
+    "prompt": "Paint an illustration for Dwarven Siege Cannon, a sturdy medieval cannon sentry that fires steady heavy bolts and fills nearby enemies with dread and burning heat. A compact low dwarven bronze-and-oak siege cannon sits on a complete squat two-wheel carriage, barrel aimed horizontally; show its full muzzle, breech, axle and both wheels clearly. A stocky dwarven engineer with a readable face stands beside the cannon at the same height, one hand on the firing lever. The cannon fires one bright controlled shot across a stone battlement toward a distant recoiling armored foe. The complete compact machine is the named subject; no giant tall face-above-cannon layout. Painterly high fantasy, hammered bronze, oak, iron rivets, warm directional firelight and atmospheric depth, serious grounded style. Explicit 1:1 SQUARE 512x512 master; entire cannon, both carriage wheels, operator face and relevant hand fit inside x24..488,y105..407 for 206:141 card crop; quiet expendable smoke and fortress stone above and below. No frame, lettering, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0bb1e703-6cd5-4518-b189-211ebf7bb695.png",
+    "editableSourcePath": "game/cards/art/masters/fire_machine_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed the 512-square source, 206:141 crop and 128x88 thumbnail. The full cannon carriage and barrel, dwarf's face and operating hand fit the crop; the cannon remains dominant and recognizable at thumbnail size."
+  },
+  {
+    "cardId": "hero_kael",
+    "name": "Kael the Cinderblade",
+    "prompt": "Paint a dramatic hero-card illustration for Kael the Cinderblade. Show a formidable young adult human swordsman with a clear, intense face, ember-red hair, dark medieval armor and a distinctive single-edged cinderblade held in his visible hand. Kael completes one powerful horizontal sword slash; a controlled arc of orange fire traces the blade toward a recoiling armored enemy, suggesting a precise devastating strike and a chance of a critical blow. Keep Kael's face, sword hand and the full identity-defining blade visible together; firelight accents his cheek and armor without obscuring him. Painterly medieval high-fantasy collectible-card art, believable steel, leather and cloth, rich brushwork, dramatic directional light, atmospheric battlefield depth and grounded anatomy. Explicit 1:1 SQUARE 512x512 composition; keep Kael's complete face, relevant hand, full cinderblade and slash action inside x24..488,y105..407 for 206:141 wide crop, quiet expendable smoke and battlefield above and below. No frame, lettering, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8ebc65ca-14f5-4019-addd-83e1f15ad8b0.png",
+    "editableSourcePath": "game/cards/art/masters/hero_kael.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed the 512-square source, 206:141 crop and 128x88 thumbnail. Kael's full face, sword hand, cinderblade slash and the struck enemy remain clear in the wide crop and readable at thumbnail size."
+  },
+  {
+    "cardId": "fire_strike_12",
+    "name": "Pickaxe Strike",
+    "prompt": "Paint an illustration for Pickaxe Strike, a charged wedge-shaped blow that hits hard and knocks the target back, stunning them. A rugged dwarven miner with a clearly visible determined face plants both hands on a long-handled iron pickaxe and completes one powerful diagonal wedge strike against an armored foe; the foe recoils backward from the impact. Show the entire pickaxe, from butt of handle through both sharp head points, with strong readable silhouette beside the miner's face and hands; it is the named weapon and focal action. Painterly medieval high fantasy, believable forged iron, wood, leather and sparks, dramatic firelight against a dark stone mine, atmospheric depth and grounded anatomy. Explicit 1:1 SQUARE 512x512 composition; full face, both gripping hands, whole pickaxe head and handle, and recoiling impact fit x24..488,y105..407 for 206:141 crop, quiet mine shadows above and below. No frame, lettering, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-80a34f4c-edd0-42d8-88eb-7d0e486ef496.png",
+    "editableSourcePath": "game/cards/art/masters/fire_strike_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop and 128x88 thumbnail. Dwarf's face and hands, full pickaxe head and handle and recoiling impact remain visible; charged strike reads at thumbnail size."
+  },
+  {
+    "cardId": "fire_lob_13",
+    "name": "Gremlin Grenade",
+    "prompt": "Paint an illustration for Gremlin Grenade, a small quick-fuse thrown explosive that bursts in a cross pattern and knocks foes down. A mischievous but grounded medieval gremlin saboteur with a clearly visible face and throwing hand hurls one compact iron-and-brass grenade with a short burning fuse; show the complete round grenade body, four cross-like fins and entire fuse cap clearly beside the gremlin's face at the same height. It detonates in a compact four-direction cross-shaped burst, knocking two armored foes off balance, while the grenade stays recognizable as the named artifact. Painterly medieval high fantasy, tactile metal, soot and leather, vivid controlled orange firelight, atmospheric depth, no cartoon proportions. Explicit 1:1 SQUARE 512x512; keep full gremlin face, throwing hand, complete grenade with fuse and clear cross-burst inside x24..488,y105..407 for 206:141 crop, quiet expendable battlement above and below. No text, frame, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-1781abc9-4f1c-4b66-a073-f72ea6d2be7e.png",
+    "editableSourcePath": "game/cards/art/masters/fire_lob_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed 512-square source and shifted 206:141 crop/thumb at focal y=0.40. This upward crop restores the gremlin's full face and throwing hand while retaining the full cross-finned grenade, fuse and central blast; lower masonry and one foe are expendable."
+  },
+  {
+    "cardId": "fire_boon_11",
+    "name": "Molten Courage",
+    "prompt": "Paint an illustration for Molten Courage, an immediate short-lived fire boon that fills a warrior with bravery and scorches nearby enemies. A battle-worn human champion with a strong fully visible face raises one clenched hand and roars defiantly as molten orange light kindles inside his armor and along his sword arm; nearby foes flinch from the heat. Show confidence and courage in his expression and stance, with a restrained hot aura close to the champion rather than a giant spell explosion. Painterly medieval high-fantasy collectible-card art, textured steel, leather, soot and cloth, warm directional firelight, atmospheric depth and grounded anatomy. Explicit 1:1 SQUARE 512x512 composition; keep full face, raised hand, upper torso and nearby scorched enemies inside x24..488,y105..407 for 206:141 crop, quiet smoke above and battlefield below. No frame, lettering, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-05b766ec-31fc-41ec-b8aa-2f5ab892cb5a.png",
+    "editableSourcePath": "game/cards/art/masters/fire_boon_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop and 128x88 thumbnail. Champion's face, raised fist and upper body remain clear with firelight and nearby foes; molten courage reads at thumbnail scale."
+  },
+  {
+    "cardId": "fire_ward_12",
+    "name": "Anvil Guard",
+    "prompt": "Paint an illustration for Anvil Guard, a fire ward that forms a sturdy burning barrier. Show a stocky dwarven guard with a clearly visible resolute face standing behind a compact complete round iron shield engraved with a bold anvil emblem; hold the shield upright beside the dwarf's face at the same height, one gauntleted hand visible on its grip. The shield's iron rim is fully visible while a translucent wall of molten orange light forms a protective barrier around the guard and an ally, fire licking along the outer edge without obscuring the shield. Make the shield and guarded faces the clear subject. Painterly medieval high fantasy, forged iron, leather, embers, dramatic directional glow, grounded anatomy and atmospheric depth. Explicit 1:1 SQUARE 512x512 composition; full shield rim, anvil emblem, grip hand, dwarf face and relevant barrier fit x24..488,y105..407 for 206:141 wide crop, quiet forge smoke above and stone floor below. No card frame, lettering, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/recovered-fire_ward_12-f310bca4c292.png",
+    "editableSourcePath": "game/cards/art/masters/fire_ward_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Recovered the exact retained image bytes after the locator returned no match: length 2691121, fingerprints 2334268634/3566609846, SHA-256 f310bca4c292d3e839b962da0eb90de808105b712c5042eaf03fccdf4e84be61. Reviewed 512-square source, 206:141 crop and 128x88 thumbnail; complete anvil-embossed shield, guard's face and burning barrier remain clear. Original image output path was omitted during transport recovery."
+  },
+  {
+    "cardId": "fire_charge_11",
+    "name": "Lantern Oil Flask",
+    "prompt": "Recompose this same painterly fantasy illustration slightly inward to make the Lantern Oil Flask and its holder safe in the 206:141 horizontal card crop. Keep the same female lantern keeper, outfit, medieval fortress, lighting and throwing action. Shift her and the entire held oil flask away from the left edge toward the center: put the complete flask BESIDE her face at the same height, and show the entire flask-holding hand with margin from the canvas edge. The flask must be a compact amber-glass lantern-oil bottle with the complete glowing rounded body, narrow neck, cork stopper, metal collar and broad base; do not cut off any part. Keep her full face, both relevant hands (holding and throwing), complete flask, flying flask and compact burning splash visible together. The incoming thrown flask must also read as a flask. Preserve appealing painterly medieval fantasy brushwork and controlled orange fire. Explicit 1:1 SQUARE canvas; keep identity-critical face/hands and both bottle forms within x24..488,y105..407 for the wide crop, with quiet workshop shadows above and below. No text, frame, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ce8d6567-72f9-469b-891f-852dcca9e177.png",
+    "editableSourcePath": "game/cards/art/masters/fire_charge_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Repainted after the first crop clipped the flask-holding hand at the left edge. Reviewed the new 512-square source, 206:141 crop and 128x88 thumbnail: keeper's complete face and both hands, full held lantern-oil flask with stopper and base, airborne flask and oil splash all remain visible. Previous master preserved at /tmp/fire03-repaint-scratch/fire_charge_11-before-repaint.png."
+  },
+  {
+    "cardId": "fire_trap_10",
+    "name": "Firework Mine",
+    "prompt": "Paint Firework Mine as a single named fantasy trap: a compact iron-studded spherical mine with a short bright fuse rests half-concealed on a cobbled mountain pass, with its short-radius blast represented by a tight expanding ring of sparks and several vivid red, amber and gold firework stars. A tiny startled boot just outside the ring hints at danger. Keep the complete mine and its spark burst unmistakable, not a generic bonfire. Painterly medieval high-fantasy collectible-card illustration, tactile forged metal, colorful sparks, warm night lighting and atmospheric depth. Explicit 1:1 square 512 master; keep the entire mine and core blast inside x24..488,y105..407 for 206:141 crop. No text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-080b843f-1805-4b4e-bf2b-6d1c60d4a287.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/fire_trap_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed square, wide crop and thumbnail. Complete mine remains central and legible amid distinct short-radius firework sparks; boot is supporting context."
+  },
+  {
+    "cardId": "fire_environment_11",
+    "name": "Mountain's Wrath",
+    "prompt": "Paint Mountain's Wrath as a burst of cursed seismic fury: a great volcanic mountainside shudders, a fresh jagged crack races through the foreground stone, ash and fiery fragments burst outward while the mountain's summit vents a glowing plume. A small ancient shrine trembles at the edge to show scale. The mountain and its ground-burst are the clear subject; dramatic red-orange magma veins illuminate dark basalt and ash. Painterly medieval high-fantasy landscape art, textured rock, atmospheric depth, powerful readable tremor action. Explicit 1:1 square 512 master for a 206:141 horizontal crop; keep the central burst, cracked ground and visible mountain within x24..488,y105..407. Quiet smoky sky/foreground beyond. No text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2ec00624-3482-4523-8842-e6c91905e3b5.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/fire_environment_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed square, wide crop and thumbnail. Erupting mountain, seismic burst and cracked foreground remain clear with shrine as scale."
+  },
+  {
+    "cardId": "fire_summon_08",
+    "name": "Kitsune",
+    "prompt": "Paint Kitsune as a graceful but formidable Japanese fox spirit in a medieval fantasy forest: a beautiful red-gold fox with a clear intelligent face and bright amber eyes bounds in a sharp zigzag turn, its several flowing tails tracing elegant ribbons of warm foxfire and a few cool frost sparks that hint at its chilling aura. One fox only; the animal, face and lively movement are primary, with no human. Painterly high-fantasy folklore illustration, anatomically believable fox proportions, rich fur detail, expressive eyes, warm lantern light and atmospheric forest depth. Explicit 1:1 square 512 master; keep full fox face and central body within x24..488,y105..407 for 206:141 crop; tail tips and lower legs may crop. No anime, Disney-like proportions, text/frame/UI, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-02a70061-f17d-4cb9-b950-ba9f2a6be2a1.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/fire_summon_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed square, wide crop and thumbnail. Fox's complete face and body remain clear; tail tips and lower legs crop naturally."
+  },
+  {
+    "cardId": "fire_machine_07",
+    "name": "Iron Barricade",
+    "prompt": "Paint Iron Barricade as a complete standalone medieval-fantasy warding machine: a substantial portable iron-and-oak defensive barrier on sturdy feet, made of broad interlocked metal plates, riveted crossbars and a few upward-pointing spikes, with small orange ward-embers glowing along its front. Show the complete barricade from foot to top edge in a clear straight-on three-quarter view; the wall itself is the sole primary subject, with no operator. The broad structure feels huge and steady, not a handheld shield. Painterly medieval high-fantasy collectible-card art, believable forged iron and weathered oak, warm directional firelight and atmospheric depth. Explicit 1:1 square 512 master; keep the entire structure inside x24..488,y105..407 for the wide 206:141 crop, with margin on all sides. No text/frame/UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-718904d1-5e36-470d-96b8-b34948017a4d.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/fire_machine_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed square, wide crop and thumbnail. Main iron plate wall, spikes and ward-embers read clearly; outer spike tips and support-foot extremities crop naturally."
+  },
+  {
+    "cardId": "hero_magmar",
+    "name": "Magmar the Molten",
+    "prompt": "Paint Magmar the Molten, a powerful male fantasy hero made from living magma and dark volcanic stone, his stern molten face and glowing eyes clearly visible through a basalt helm-like brow. He wears natural crusted stone armor and drives one massive fist downward, erupting a compact ring of bright molten lava around a nearby enemy; the eruption burns while a hard outer crust shields Magmar. Keep his full face, both hands, central torso and main eruption distinct and readable, with the enemy secondary. Painterly medieval high-fantasy collectible-card art, sculptural volcanic materials, dramatic orange light against cool ash, atmospheric depth, grounded heroic anatomy. Explicit 1:1 square 512 master; keep face, action hands and core magma burst inside x24..488,y105..407 for the 206:141 horizontal crop; incidental lower legs and flying debris may crop. No text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2dbbc103-8aaf-4100-b709-8c2a1485351c.png",
+    "focalPoint": [
+      0.5,
+      0.35
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/hero_magmar.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed square, top-shifted wide crop and thumbnail. Focal y .35 retains Magmar's full face and both action hands together with the central eruption; lower legs are incidental."
+  },
+  {
+    "cardId": "fire_strike_13",
+    "name": "Miner's Drill",
+    "prompt": "Paint an illustration for Miner's Drill as painterly medieval/high-fantasy collectible-card art. A battle-hardened dwarf miner braces a complete heavy hand-cranked dwarven boring drill against a dark ore-veined rock face. Its long spiral steel bit, brass-and-iron gear housing, wooden grip and crank are all clearly visible as the charged bit bites into stone, throwing a tight fan of sparks; the recoil rocks the miner's shoulders back. Show his determined face and both hands on the grips beside the drill, with the full named machine compact across the middle. Believable materials, dramatic attractive lighting, atmospheric depth and textured brushwork matching Hexmancers references. Explicit 1:1 square 512x512 master, horizontal staging. Keep whole named drill/round/brick and any important face/hands inside x24..488,y105..407 for 206:141 crop; main subject in middle 60%, quiet scenery above and below. No card frame, text, numbers, UI, anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-8968b7d7-708e-45f9-b77a-b541350ceebf.png",
+    "editableSourcePath": "game/cards/art/masters/fire_strike_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed shifted crop (focalPoint y=0.43) and thumbnail: miner's face and both hands, complete geared hand-crank drill and spiral bit, and charged impact all remain visible."
+  },
+  {
+    "cardId": "fire_lob_14",
+    "name": "Mortar Round",
+    "prompt": "Paint an illustration for Mortar Round as painterly medieval/high-fantasy collectible-card art. One complete medieval fantasy mortar round, a dark iron spherical shell with a short burning cloth fuse, arcs low above a battlefield toward one ground tile; the impact below raises a compact column of dust that pushes a small shield and stones outward. Put the whole shell clearly in the foreground at center, fuse and round intact, not a modern finned projectile. A low bronze mortar and one distant bombardier support the action without obscuring the round. Believable materials, dramatic attractive lighting, atmospheric depth and textured brushwork matching Hexmancers references. Explicit 1:1 square 512x512 master, horizontal staging. Keep whole named drill/round/brick and any important face/hands inside x24..488,y105..407 for 206:141 crop; main subject in middle 60%, quiet scenery above and below. No card frame, text, numbers, UI, anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-de228320-2f21-4cbf-88e3-1d4da12532b2.png",
+    "editableSourcePath": "game/cards/art/masters/fire_lob_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed shifted crop (focalPoint y=0.43) and thumbnail: complete iron mortar round with intact burning fuse is centered above the ground impact column; incidental smoke and battlefield scenery crop naturally."
+  },
+  {
+    "cardId": "fire_ward_13",
+    "name": "Great Wall Bricks",
+    "prompt": "Paint an illustration for Great Wall Bricks as painterly medieval/high-fantasy collectible-card art. At a mountain pass, two ancient Chinese-inspired masons in practical work robes set a large fired-clay brick into a sturdy defensive wall under construction. Show the whole main brick in one worker's hands, the second mason's face and hands, and a broad, low segment of heavy brick rampart with a level top and visible base. Warm kiln light and cool mountain air, authentic masonry craft, no tall tower. Believable materials, dramatic attractive lighting, atmospheric depth and textured brushwork matching Hexmancers references. Explicit 1:1 square 512x512 master, horizontal staging. Keep whole named drill/round/brick and any important face/hands inside x24..488,y105..407 for 206:141 crop; main subject in middle 60%, quiet scenery above and below. No card frame, text, numbers, UI, anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-8247a495-8914-4d81-b4b4-713dfba77665.png",
+    "editableSourcePath": "game/cards/art/masters/fire_ward_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed shifted crop (focalPoint y=0.43) and thumbnail: full brick being set, both workers' faces/hands and the sturdy wall course remain legible; masonry continues beyond frame."
+  },
+  {
+    "cardId": "fire_boon_12",
+    "name": "Mountain Strength",
+    "prompt": "Paint an illustration for Mountain Strength as painterly medieval/high-fantasy collectible-card art. A powerful medieval warrior stands on a rugged mountain ledge, drawing a deep breath as a sudden boon of strength flares through clenched gauntleted fists and shoulders. The warrior's face and both hands are visible; he steadies himself beside a stone boulder cracked by his grip, with subtle ember-orange light along the cracks suggesting a brief scorching surge of power. Grounded anatomy, inspiring rather than monstrous. Believable materials, dramatic attractive lighting, atmospheric depth and textured brushwork matching Hexmancers references. Explicit 1:1 square 512x512 master, horizontal staging. Keep whole named drill/round/brick and any important face/hands inside x24..488,y105..407 for 206:141 crop; main subject in middle 60%, quiet scenery above and below. No card frame, text, numbers, UI, anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-05f5bc25-2c6f-44a2-8608-a45822edb254.png",
+    "editableSourcePath": "game/cards/art/masters/fire_boon_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed shifted crop (focalPoint y=0.43) and thumbnail: warrior's full face and both ember-lit fists remain visible; legs and mountain scenery crop naturally."
+  },
+  {
+    "cardId": "fire_charge_12",
+    "name": "Pistol Case",
+    "prompt": "Paint Pistol Case as a compact square card illustration, not a panoramic workshop scene. Put all important content in the central square. At center-right rests one small, shallow, fully open portable gnomish pistol case, about 55 percent of square width and 36 percent of square height. Its complete base, raised lid, hinges, handle, clasp, all corners and six fitted single-shot flintlock pistols must fit comfortably around square x185..475,y185..365, with visible margin on every side. Arrange the six compact pistols in two rows of three; each has a short iron barrel, carved wooden stock, visible hammer/flint and brass fittings, unmistakably medieval flintlocks. A small gnome gunsmith appears beside it on the LEFT, face and both hands visible at the same vertical level as the case, gently adjusting one pistol in its slot. Keep the entire gnome head and hands around x35..190,y175..335; face must be wholly visible, not above or behind the case. Outside this compact square grouping, use quiet blurred workshop background. Painterly medieval/high-fantasy illustration, tactile oak, leather, steel and brass, warm lamp light, grounded proportions. Explicit 1:1 square 512x512; if the renderer produces a wide raw image, keep both gnome and full case within its central square because the side edges will be removed during normalization. Ensure full case and face/hands stay inside x24..488,y105..407 for a 206:141 crop. No extra weapons on the bench, no modern firearms, no text/labels, no frame/UI, no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f34a986d-7ee4-4cff-83ea-19f55cecde59.png",
+    "editableSourcePath": "game/cards/art/masters/fire_charge_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Three taller or wide drafts were preserved and discarded. Reviewed final square source, default 206:141 crop and thumbnail: full case, lid, corners, all six flintlocks, gnome's face and both hands fit together."
+  },
+  {
+    "cardId": "fire_strike_14",
+    "name": "Forge Hammer Throw",
+    "prompt": "Paint an illustration for the exact card Forge Hammer Throw. A compact, powerful dwarf smith in a soot-dark apron and mail twists through a forceful throw, sending a heavy square-headed forging hammer across the central frame. Show the hammer clearly mid-flight, hot orange metal face blazing with sparks, striking a row of two armored foes with a stunning burst that continues along the line. Keep the dwarf's face, throwing hand, whole hammer head and handle, impact and both readable enemy silhouettes tightly in the middle 60% of the square; quiet smoky forge landscape above and below. Medieval high fantasy materials: worn leather, iron, stone, ember-lit forge. Painterly dramatic collectible card illustration with rich brushwork, grounded anatomy, directional light and cool soot shadows. Square 1:1 canvas for a 512×512 master, designed for a 206:141 horizontal crop; critical details inside x24..488,y105..407. No frame, text, rune, border or UI; no anime, Disney cartoon, toy look, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0c0767c5-c7a0-487f-b85d-4433bfb9bbc0.png",
+    "editableSourcePath": "game/cards/art/masters/fire_strike_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square source and 206:141 crop inspected: thrower, hammer, hot impact and both targets are clear and central; incidental lower legs crop naturally."
+  },
+  {
+    "cardId": "fire_lob_15",
+    "name": "Cannonball",
+    "prompt": "Paint an illustration for the exact card Cannonball. Make the single named projectile the unmistakable hero: a large iron cannonball hurtles just above a ruined medieval battlefield and slams into a stone barricade beside one armored soldier, hurling the soldier backward with one clear concussive knockback burst. Show a weathered bronze-and-wood medieval cannon far behind as context, but keep the whole round cannonball and impact dominant, crisp and central. Horizontal staging, face and recoiling hands readable, no clutter. Painterly medieval fantasy collectible-card art, dramatic orange forge-like flare on iron against cool smoke and dusk, textured believable iron, stone and armor, atmospheric depth. Square 1:1 canvas for editable 512×512 master; compose the complete important action inside x24..488,y105..407 for the 206:141 card crop, with quiet scenery above/below. No frame, text, runes, border or UI; no modern artillery, anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8a704112-b0d2-489a-9fd8-e4f48f8da846.png",
+    "editableSourcePath": "game/cards/art/masters/fire_lob_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square source and wide crop inspected: cannonball is prominent and fully visible; soldier face, recoiling hand and impact are clear; lower legs crop incidentally."
+  },
+  {
+    "cardId": "fire_ward_14",
+    "name": "Molten Shell",
+    "prompt": "Edit the referenced Molten Shell painting into a compact card-crop-safe composition while keeping the same knight, painterly style, basalt, iron and firelight. The current shell remains too tall. Scale the armored figure and entire thorn shell down to about 70 percent of the current height and arrange the shell as a broad horizontal oval around the knight. Keep exactly six short curved thorn tips, all fully visible inside the center horizontal band from y=105 to y=407, with generous blank smoky space above and below. Do not let any tip touch or cross the 206:141 crop edges. Preserve the knight's visible face and guarded hand; compact shell and face side by side at the same height. Square 1:1 canvas. No text, frame, UI, symbols, cartoon, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-647dea01-c60a-433b-ab26-e9a56b8a4d03.png",
+    "editableSourcePath": "game/cards/art/masters/fire_ward_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Second composition pass shortened the shell. Inspected source and 206:141 crop: knight face and hand remain visible; six thorn tips are all contained and distinct, with open smoky margins."
+  },
+  {
+    "cardId": "fire_boon_13",
+    "name": "Kitsune Blessing",
+    "prompt": "Paint an illustration for the exact card Kitsune Blessing. A graceful white-and-russet nine-tailed kitsune fox spirit circles protectively beside a nimble human duelist, blessing them to dodge: the warrior leans aside from an incoming sword with a calm focused face and visible open hand, while the fox's luminous tails sweep around the pair as a protective arc. Keep fox face, duelist face and hand in crisp focus together at the same height, compact and central; avoid tiny detail and avoid a towering tail halo. Painterly medieval fantasy collectible card illustration with grounded anatomy, nuanced fur, leather and steel, warm foxfire light, cool moonlit temple garden and atmospheric depth. Square 1:1 canvas for a 512×512 master; protect the whole fox face, duelist face, hand and readable dodge action within x24..488,y105..407 for the 206:141 card crop, quiet space above and below. No frame, text, runes, UI, anime, Disney-like cartoon proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-cc8fad82-c155-4bbd-ad72-c0686164c65f.png",
+    "editableSourcePath": "game/cards/art/masters/fire_boon_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512 source and wide crop inspected: fox and duelist faces, open hand and incoming sword read clearly as a dodge; secondary body and tail details extend beyond crop naturally."
+  },
+  {
+    "cardId": "fire_charge_13",
+    "name": "Blasting Caps",
+    "prompt": "Edit the referenced Blasting Caps painting into a square 1:1 card-safe illustration while preserving its same adult fantasy smith, leather pouch, brass caps, forge and painterly realism. Recompose the entire subject group smaller, about 78 percent of its current height, and place it in the middle of the square. Keep the full smith's head from hairline through chin, his gloved hand, the complete airborne blasting cap including its lit fuse spark, and all three caps in the pouch together fully inside x24..488,y105..407. The horizontal card crop must show every cap and every fuse clearly; leave quiet smoky space above and below. Keep the readable dramatic throwing action and warm forge light. No text, frame, symbols, UI, modern devices, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-370b1600-e8ee-4cd1-a93d-cef7f543b75c.png",
+    "editableSourcePath": "game/cards/art/masters/fire_charge_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Recomposed to protect the whole airborne cap, spark, face, hand and pouch contents. Inspected 512 source, wide crop and 128 thumbnail; all three caps and fuse glow remain readable."
+  },
+  {
+    "cardId": "fire_environment_12",
+    "name": "Sea of Flames",
+    "prompt": "Paint an illustration for the exact card Sea of Flames. A sweeping legendary landscape of fire erupts across a medieval stone battlefield: a broad circular sea of orange-white flame bursts outward in a low rolling wave, molten fissures and licking fire bands racing along the ground around a few tiny fleeing armored figures for scale. The flames form a clear, wide horizontal arc across the central frame, with a distinctive hotter center and rolling sparks; distant dark battlements and smoke remain subdued. Emphasize a long-lasting magical burn covering the whole arena, not a single projectile. Painterly medieval high-fantasy collectible-card art, rich brushwork, believable broken stone and smoke, dramatic firelight against cool dusk, atmospheric depth. Square 1:1 canvas for a 512×512 master; keep the main flame wave and any critical silhouettes within x24..488,y105..407 for the 206:141 card crop, quiet atmosphere above and below. No frame, text, runes, UI, anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6d046be7-0df4-475c-847d-d71b3f82fd00.png",
+    "editableSourcePath": "game/cards/art/masters/fire_environment_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Inspected 512 source, 206:141 crop and 128 thumbnail: broad circular sea of flames and ground-level wave are unmistakable; small fleeing figures give scale without competing."
+  },
+  {
+    "cardId": "fire_summon_09",
+    "name": "Nine-Tailed Kitsune",
+    "prompt": "Paint an illustration for the exact card Nine-Tailed Kitsune. A legendary ancient kitsune fox stands poised at the center of an ash-covered shrine clearing, full fox face and all nine long tails clearly distinguishable as a deliberate fan behind it. The fox is sturdy, powerful and mature, with russet-and-cream fur and subtle ember patterns; it lunges into a controlled burst of foxfire toward a shadowed foe, scattering sparks and leaving a few glowing leaves or petals in its wake to suggest harvest. Keep the entire animal's face, paws and recognizable many-tailed silhouette compact in the middle horizontal band; quiet forest and stone shrine beyond. Painterly medieval fantasy card illustration, nuanced fur, directional ember light, cool dusk atmosphere, grounded anatomy and strong silhouette. Square 1:1 canvas for a 512×512 master; keep face, body and all important tails inside x24..488,y105..407 for the 206:141 card crop. No frame, text, runes, UI, anime, Disney-like cartoon proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8f364baa-63f3-4c98-a5d0-7e710fbc0cbb.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Inspected 512 source, wide crop and 128 thumbnail: fox face and paws read clearly; the luminous tail fan is distinct and unmistakably nine-tailed at full crop scale."
+  },
+  {
+    "cardId": "fire_machine_08",
+    "name": "Mine Cart Barricade",
+    "prompt": "Paint an illustration for the exact card Mine Cart Barricade. A huge battered iron-and-oak mine cart has been tipped sideways across a narrow underground passage to form a sturdy palisade barricade. Its heavy wheels, braced timber sides and visible ore load make the ward-making machine unmistakable; a few small adventurers brace behind it as a slow armored ward while a sickly green-black mineral vapor seeps from the ore seams, hinting at its plague trait without obscuring the object. Show the complete cart, wheel and blocking silhouette across the central frame, horizontal and readable. Painterly medieval high fantasy collectible-card art, believable iron, oak, stone, soot and ore, warm torchlight against cool mine shadows, atmospheric depth. Square 1:1 canvas for a 512×512 editable master; keep the whole machine and defining wheels inside x24..488,y105..407 for the 206:141 crop, quiet cavern above and below. No frame, lettering, runes, UI, modern machinery, cartoon, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f9c8f869-5eea-47ae-83b4-f7d6af9cf5ba.png",
+    "editableSourcePath": "game/cards/art/masters/fire_machine_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Inspected 512 source, 206:141 crop and 128 thumbnail: full cart, wheel, braced wooden palisade silhouette and ore vapor stay readable; background adventurers are secondary."
+  },
+  {
+    "cardId": "hero_phoenixia",
+    "name": "Phoenixia",
+    "prompt": "Paint an illustration for the exact hero card Phoenixia. A formidable but graceful sky-borne heroine dives from the clouds toward a distant foe, her human face and outstretched guiding hand visible inside a vast silhouette of incandescent phoenix wings and streaming copper-gold feathers. The wing shapes clearly read as a phoenix in flight around her; a small ring of gentle healing embers circles a wounded ally far below, subtle enough not to distract. Keep Phoenixia compact and central, face and hand crisp and the winged dive understandable in one glance, with quiet smoky sky above and below. Painterly medieval fantasy collectible-card art, textured feather, burnished armor and cloth, radiant warm light against deep blue storm clouds, atmospheric depth. Square 1:1 canvas for a 512×512 master; protect face, hand and defining phoenix-wing silhouette within x24..488,y105..407 for the 206:141 card crop. No frame, text, runes, UI, anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4b6ba179-d6b4-4baf-9d07-77cdf9b6e519.png",
+    "editableSourcePath": "game/cards/art/masters/hero_phoenixia.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Inspected 512 source, wide crop and 128 thumbnail: Phoenixia’s face, guiding hand and unmistakable fiery phoenix wings remain clear; peripheral feathers and secondary ally are expendable crop details."
+  },
+  {
+    "cardId": "fire_strike_15",
+    "name": "Red-Hot Rivet",
+    "prompt": "Paint an illustration for the exact card Red-Hot Rivet. In a medieval forge duel, a blacksmith-warrior flicks a single incandescent iron rivet from a steel hammer; the small red-hot rivet is the crisp foreground focal point as it ricochets off a shield rim and streaks toward a second armored foe, leaving two sharp ember trails and a bright critical spark at the first impact. Keep the full rivet, hammering hand, smith's focused face and both readable targets in a compact horizontal group at the same height, with the projectile unmistakably bouncing rather than a straight beam. Painterly medieval fantasy collectible-card art, believable steel, leather and soot, dramatic orange-white hot metal light against cool smoky shadows, refined brushwork and atmospheric depth. Square 1:1 canvas for a 512×512 master; keep face, hand, rivet, both impact points and their action inside x24..488,y105..407 for the 206:141 card crop, quiet margins above and below. No frame, text, runes, UI, modern hardware, anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-cb165cfa-f4db-4755-9eee-e241e79168ec.png",
+    "editableSourcePath": "game/cards/art/masters/fire_strike_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Inspected 512 source, wide crop and 128 thumbnail: bright rivet and ricochet path clearly connect first shield impact to second foe; smith face and hammer hand remain readable."
+  },
+  {
+    "cardId": "fire_lob_16",
+    "name": "Basalt Boulder",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Basalt Boulder”. Paint one massive, roughly spherical black basalt boulder hurling low across a volcanic battlefield toward a distant shield line, fragments lifting at impact as a restrained orange glow shows through a few deep fissures. Make the heavy dark rock itself the unmistakable subject, with clear silhouette and a small defender knocked off balance behind it. Painterly medieval/high-fantasy collectible-card art, richly painted believable stone, iron, feathers, glass, leather, wood and metal, attractive directional lighting, strong readable values and atmospheric depth. Match the supplied fire references' warm forge glow and ember detail while keeping a clear primary subject and grounded fantasy materials. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep identity-critical face/eyes/hands and all of the named subject within x24–488,y105–407 on the square; compose horizontally for a 206:141 card crop with quiet expendable scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-a1369755-2cce-4585-9e5d-7b6e700d13f3.png",
+    "editableSourcePath": "game/cards/art/masters/fire_lob_16.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square source inspected. The centered 206:141 crop clipped the top of the boulder, so the crop is shifted upward to y=60 (focalPoint 0.46); the adjusted wide crop and thumbnail include the entire rock and preserve its impact silhouette."
+  },
+  {
+    "cardId": "cinder_rampart",
+    "name": "Cinder Rampart",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Cinder Rampart”. Paint a heavy low rampart of fused dark basalt blocks and ember-red cinders, a stout medieval defensive wall bristling with short jagged iron-black thorns along its front. The compact wall stretches horizontally across a battlefield; hot cracks glow beneath the thorns, smoke and firelight behind it. Make the rampart silhouette and thorn defense clear. Painterly medieval/high-fantasy collectible-card art, richly painted believable stone, iron, feathers, glass, leather, wood and metal, attractive directional lighting, strong readable values and atmospheric depth. Match the supplied fire references' warm forge glow and ember detail while keeping a clear primary subject and grounded fantasy materials. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep identity-critical face/eyes/hands and all of the named subject within x24–488,y105–407 on the square; compose horizontally for a 206:141 card crop with quiet expendable scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-58057e50-07c6-47fa-9920-bb24240dce2c.png",
+    "editableSourcePath": "game/cards/art/masters/cinder_rampart.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square source and centered 206:141 crop inspected: the heavy basalt barrier and its forward-pointing thorn line remain clear edge-to-edge; warm embers and smoky battlefield support the rampart, and the thumbnail retains the defensive silhouette."
+  },
+  {
+    "cardId": "fire_boon_14",
+    "name": "Phoenix Rebirth",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Phoenix Rebirth”. Paint a magnificent phoenix reborn from its own bed of glowing embers, rising with luminous orange-gold wings open in a protective shelter over a small fallen ally. The bird is the dominant subject, with sharp intelligent eye and beak, full recognizable feathered body and wings fitting in the square; a bright but controlled aura suggests an intervening rally and protection. Painterly medieval/high-fantasy collectible-card art, richly painted believable stone, iron, feathers, glass, leather, wood and metal, attractive directional lighting, strong readable values and atmospheric depth. Match the supplied fire references' warm forge glow and ember detail while keeping a clear primary subject and grounded fantasy materials. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep identity-critical face/eyes/hands and all of the named subject within x24–488,y105–407 on the square; compose horizontally for a 206:141 card crop with quiet expendable scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-61ccf23c-b286-427c-8c94-86259fc0adaa.png",
+    "editableSourcePath": "game/cards/art/masters/fire_boon_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square source and 206:141 crop inspected: phoenix head, eye, and protective wings remain dominant around the fallen ally; the ember nest and rising posture are legible at thumbnail size."
+  },
+  {
+    "cardId": "fire_charge_14",
+    "name": "Shishi Pearl",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Shishi Pearl”. Paint one complete large polished red-gold Shishi Pearl, a luminous round gemstone with an exquisitely carved guardian-lion motif visible within the glassy surface. It floats at the same height as a compact lacquered bronze stand, sending one narrow golden fire bolt toward a distant target. Keep the entire spherical pearl uncut and dominant; no figure. Painterly medieval/high-fantasy collectible-card art, richly painted believable stone, iron, feathers, glass, leather, wood and metal, attractive directional lighting, strong readable values and atmospheric depth. Match the supplied fire references' warm forge glow and ember detail while keeping a clear primary subject and grounded fantasy materials. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep identity-critical face/eyes/hands and all of the named subject within x24–488,y105–407 on the square; compose horizontally for a 206:141 card crop with quiet expendable scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-40eea78d-1dd9-4778-aa94-7c2714ca9673.png",
+    "editableSourcePath": "game/cards/art/masters/fire_charge_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square source inspected. The centered 206:141 crop clipped the pearl’s top edge, so the crop is shifted upward to y=60 (focalPoint 0.46); the adjusted crop and thumbnail show the full round pearl, carved shishi motif, and firing bolt."
+  },
+  {
+    "cardId": "fire_summon_10",
+    "name": "Fire Fox",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Fire Fox”. Paint a fierce but graceful russet fox dashing low across ancient volcanic stones, its face and bright amber eyes focused ahead, both leading paws visible and wrapped in small golden flames, one full sweeping tail trailing a warm ember arc. A second smaller fox darts just behind as an echo of the two-fox summon. Medieval fantasy at dusk, rocky path, smoke and a few embers; keep the lead fox large and unmistakable with grounded animal anatomy and rich realistic fur, agile rather than cute or cartoonish. Painterly medieval/high-fantasy collectible-card art, richly painted believable fur, stone and scorched earth, attractive directional lighting, strong readable values and atmospheric depth. Match the supplied fire references' warm forge glow and ember detail while keeping the fox as the clear subject. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep lead fox face/eyes and paws within x24–488,y105–407 on the square; compose horizontally for a 206:141 card crop with quiet expendable scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-c54110b5-b2d9-4ec6-bd6c-53126121c626.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square source and 206:141 crop inspected: lead fox’s eyes, full head, and flaming leading paws are clear, with a second fox reinforcing the summon; the running silhouette remains readable in the thumbnail."
+  },
+  {
+    "cardId": "fire_machine_09",
+    "name": "Gremlin Clockwork Drone",
+    "prompt": "Paint an illustration for the exact card Gremlin Clockwork Drone. A squat but powerful clockwork guardian drone hovers above a dwarven foundry workbench, its fully visible brass-and-black-iron body ringed by four hinged rotor vanes, open gears, a bright ember-glass eye and small armored guard clamps. A mischievous soot-stained gremlin technician crouches just behind it, one hand on a simple gear lever, but the drone dominates and remains unmistakably a medieval-fantasy machine rather than modern hardware. Keep the full drone silhouette, gear-heart and eye within the middle horizontal band, beside the gremlin's face at the same height. Painterly high-fantasy collectible-card art, tactile forged metal, leather and soot, warm furnace light with cool workshop shadows, rich brushwork and atmospheric depth. Square 1:1 canvas for a 512×512 master; all defining drone parts and face inside x24..488,y105..407 for the 206:141 card crop, quiet forge atmosphere above/below. No frame, text, runes, UI, modern aircraft, cartoon, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-29da4e84-f70d-479f-8f08-7d3216b7f977.png",
+    "editableSourcePath": "game/cards/art/masters/fire_machine_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Shifted crop upward to include all four rotor vanes and drone body while retaining gremlin face; inspected square, adjusted wide crop and 128 thumbnail."
+  },
+  {
+    "cardId": "hero_varn",
+    "name": "Varn, the Ash King",
+    "prompt": "Paint an illustration for the exact hero card Varn, the Ash King. A stern ash-crowned monarch in layered blackened steel and ember-red cloth stands in a ruined volcanic hall, face and casting hand clearly visible as a wand releases a narrow piercing beam of fire horizontally through a row of armored enemies. The ray crosses each foe in sequence, expressing his row attack; subtle embers cling to nearby allies' weapons to suggest his empowering aura without adding symbols or text. Keep Varn's face, crown, wand hand and the horizontal ray grouped in the central 60%, enemies secondary and partly cropped. Painterly medieval high-fantasy card art, believable ash-stained armor, crown, cloth and stone, dramatic furnace light against cool smoke, authoritative grounded pose and rich brushwork. Square 1:1 canvas for a 512×512 master; protect face, hands and ray action inside x24..488,y105..407 for the 206:141 crop, quiet smoky margins. No frame, text, runes, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4eb2808e-6388-420a-8013-a72a46300f5d.png",
+    "editableSourcePath": "game/cards/art/masters/hero_varn.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Inspected 512 source, wide crop and 128 thumbnail: Varn’s face, crown and casting hand are clear; piercing fire ray crosses the enemy row, with nearby fighters secondary."
+  },
+  {
+    "cardId": "fire_strike_16",
+    "name": "Molten Slag Spray",
+    "prompt": "Paint an illustration for the exact card Molten Slag Spray. A fire-forged battle mage sweeps a short iron ladle and palm forward, casting a broad fan of viscous orange-white molten slag across a row of three armored enemies. The hot metal visibly splashes and pierces through the line, cooling into dark crust on their shields and slowing their recoil; the mage's focused face, hand, spray fan and first impact are crisp and central. Keep the action horizontal and compact, with no oversized glare obscuring the substance. Painterly medieval fantasy collectible-card art, richly textured molten metal, iron, leather and cracked stone, dramatic glow against blue-black smoke, expressive traditional brushwork and atmospheric depth. Square 1:1 canvas for a 512×512 master; keep face, relevant hand, full spray fan and impact within x24..488,y105..407 for the 206:141 crop, quiet background above/below. No frame, lettering, runes, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5d5e1bc2-9f3c-4d72-9ba0-c72375c2bbd6.png",
+    "editableSourcePath": "game/cards/art/masters/fire_strike_16.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Inspected 512 source, wide crop and 128 thumbnail: mage face and open casting hand, full fan of slag and piercing row impact remain clear; incidental hair is slightly cropped."
+  },
+  {
+    "cardId": "fire_lob_17",
+    "name": "Rockfall",
+    "prompt": "Paint an illustration for the exact card Rockfall. A row of heavy volcanic boulders breaks free from a cliff and crashes across a narrow medieval road, one massive central rock striking the ground among several armored soldiers and knocking them down in a dusty stunning burst. Show the clear rockfall source and the row-spanning cascade of rounded stones; the main boulder and impact dominate the central horizontal frame, small soldiers supply scale. Painterly medieval high-fantasy collectible-card art, believable basalt, fractured earth and armor, warm ember glow inside stone cracks against cool ash haze, dramatic light, rich brushwork and atmospheric depth. Square 1:1 canvas for a 512×512 master; keep the main rocks and impact action inside x24..488,y105..407 for the 206:141 card crop; quiet cliff sky above and dusted ground below. No frame, text, runes, UI, cartoon, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-46350049-55f8-4eec-b052-3e88d72a0dd0.png",
+    "editableSourcePath": "game/cards/art/masters/fire_lob_17.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Inspected 512 source, wide crop and 128 thumbnail: central basalt boulder, cascading rocks and knocked-down soldiers make the rockfall clear; crop retains the large impact."
+  },
+  {
+    "cardId": "fire_boon_15",
+    "name": "War Drums",
+    "prompt": "Paint an illustration for the exact card War Drums. A rugged medieval drummer in soot-dark leather runs into battle with a compact pair of shallow bronze-and-hide war drums strapped across the chest; the full two drumheads sit beside the drummer's focused face at the same height while raised hands strike them with short mallets. Each beat releases a low rolling ring of ember-lit air, and a few nearby armored allies surge forward faster in response. Keep the pair of drums, both mallets, face and hands compact and unmistakable in the middle horizontal band; no tall drums that hang below the face. Painterly medieval fantasy collectible-card art, textured hide, hammered bronze, leather straps and wool, warm firelight against cool smoke, energetic but grounded anatomy, rich brushwork and atmospheric depth. Square 1:1 canvas for a 512×512 master; protect the complete drums and drummer's face/hands inside x24..488,y105..407 for the 206:141 crop, quiet margins above and below. No frame, lettering, runes, UI, modern drum kit, cartoon, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-346d8412-99e9-4dd1-a0ea-d07b9d2888e4.png",
+    "editableSourcePath": "game/cards/art/masters/fire_boon_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Shifted focal crop upward to include drummer hairline, eyes and full face while retaining both complete drumheads, mallets and hands. Inspected shifted wide crop and 128 thumbnail; only lower knees are incidental."
+  },
+  {
+    "cardId": "fire_summon_11",
+    "name": "Coyote Trickster",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Coyote Trickster”. Paint a pair of sturdy sly coyotes charging low across a sun-baked canyon floor, one dominant in the foreground with alert amber eyes, pointed ears and powerful paws, the second following close behind. Their bodies show dry tawny fur and lean wolfish shape, with a subtle ember glimmer in their eyes; one darts around a distant foe with cunning intent. Grounded wild canids, not cartoon. Painterly medieval/high-fantasy collectible-card art, richly painted believable glass, bronze, iron, wood, leather and fur, warm directional firelight, readable values and atmospheric depth. Match the supplied fire references' warm forge glow, ember detail and grounded fantasy materials. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep identity-critical face/eyes/hands and the entire named subject within x24–488,y105–407 on the square; compose horizontally for a 206:141 card crop with quiet expendable scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-9c3b4c12-0ed0-4414-8edc-25695540b514.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square source and centered 206:141 crop inspected: lead coyote’s eyes and forward paws remain visible, the second coyote is distinct, and the pair reads as a charging summon at thumbnail size."
+  },
+  {
+    "cardId": "fire_machine_10",
+    "name": "Dragon-Mouth Cannon",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Dragon-Mouth Cannon”. Paint a complete medieval bronze-and-iron cannon whose muzzle is shaped like a fierce dragon's open mouth, with sculpted scales, jaws and visible teeth framing the bore. The cannon sits on a sturdy wooden carriage, firing one bright piercing fire bolt across a dark stone battlefield; make the entire dragon-head muzzle and cannon body visible and unmistakable, no crew needed. Painterly medieval/high-fantasy collectible-card art, richly painted believable glass, bronze, iron, wood, leather and fur, warm directional firelight, readable values and atmospheric depth. Match the supplied fire references' warm forge glow, ember detail and grounded fantasy materials. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep identity-critical face/eyes/hands and the entire named subject within x24–488,y105–407 on the square; compose horizontally for a 206:141 card crop with quiet expendable scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-a156d77c-fa34-4d20-bd5e-c381cf27e672.png",
+    "editableSourcePath": "game/cards/art/masters/fire_machine_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square source and centered 206:141 crop inspected: complete dragon-head muzzle, barrel, and fire bolt remain clear; the left edge clips part of the wooden carriage wheel, while the named cannon is intact and reads at thumbnail size."
+  },
+  {
+    "cardId": "hero_emberly",
+    "name": "Emberly the Lamplighter",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Emberly the Lamplighter”. Paint Emberly, a capable young lamplighter heroine with a clear face, wearing practical medieval wool and leather, holding a compact warm-glowing lantern beside her face. With her free hand she guides three small linked flames in a graceful chain across a dusky city lane, igniting distant braziers; face, lantern and casting hand all clear. Warm sparks suggest a quick chain attack and a deepening spell reserve. Painterly medieval/high-fantasy collectible-card art, richly painted believable glass, bronze, iron, wood, leather and fur, warm directional firelight, readable values and atmospheric depth. Match the supplied fire references' warm forge glow, ember detail and grounded fantasy materials. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep identity-critical face/eyes/hands and the entire named subject within x24–488,y105–407 on the square; compose horizontally for a 206:141 card crop with quiet expendable scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-90b8de1f-3ba8-4db2-ab24-6fb27b051a0f.png",
+    "editableSourcePath": "game/cards/art/masters/hero_emberly.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square source and centered 206:141 crop inspected: Emberly’s face, lantern and raised casting hand stay clear, and the linked flame chain reads across the thumbnail."
+  },
+  {
+    "cardId": "fire_charge_15",
+    "name": "Fox-Fire Jar",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Fox-Fire Jar”. Paint one compact, complete antique glass-and-bronze jar with a cork stopper, centered in the square and occupying only about half the canvas width; leave generous empty margin on every side. Its entire outline, including stopper, neck, rounded body, and little feet, must fit safely between x80 and x430 and y130 and y385. Inside the clear glass, a bright foxfire wisp curls into the unmistakable silhouette of a tiny fox made of flame, and a narrow controlled bolt of fire shoots horizontally from the jar's bronze spout toward a distant target. Keep the jar itself as the main named artifact and fully visible; the target and bolt are background action only. Painterly medieval/high-fantasy collectible-card art, tactile glass, bronze filigree and warm firelight, grounded materials, readable silhouette and atmospheric depth. Match the supplied Hexmancers fire references' warm forge glow and ember detail. Explicitly create a 1:1 SQUARE canvas for an editable 512×512 master, composed for a 206:141 horizontal card crop. No people. No frame, text, lettering, numbers, UI, anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-dc5e20af-5036-4d62-9047-7a1e33ded37e.png",
+    "editableSourcePath": "game/cards/art/masters/fire_charge_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Preserved the clipped first attempt at /tmp/fire_charge_15-attempt-01.png. The replacement square and centered 206:141 crop show the jar’s complete stopper, neck, body and feet; the foxfire silhouette and bolt read at thumbnail size."
+  },
+  {
+    "cardId": "fire_strike_17",
+    "name": "Lava Jet",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Lava Jet”. Paint a forceful horizontal jet of bright molten lava blasting from a fissure in a volcanic cliff across a battlefield, a continuous arcing stream of glowing orange magma and dark crust spraying sparks as it sweeps past a row of distant armored foes whose boots are caught in cooling lava. The lava jet is the clear dominant subject, its start and direction readable; keep the main stream within the central horizontal band with quiet smoke and sky above and dark cooled rock below. Painterly medieval/high-fantasy collectible-card art, richly painted liquid fire, volcanic stone and sparks, attractive warm directional light, readable values and atmospheric depth. Match the supplied Hexmancers fire references' warm forge glow and ember detail. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master, composed for a 206:141 horizontal card crop. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-62d200cd-257c-489d-a563-1bcf59e90626.png",
+    "editableSourcePath": "game/cards/art/masters/fire_strike_17.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square source and centered 206:141 crop inspected: the jet’s fissure origin and continuous horizontal stream remain visible with the distant slowed row of foes; the direction and hot-cold contrast read at thumbnail size."
   }
 ]

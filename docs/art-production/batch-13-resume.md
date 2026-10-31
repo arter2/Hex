@@ -1,4 +1,6 @@
-# Batch 13 partial checkpoint and resume instructions
+# Batch 13 resume history and integration instructions
+
+Production resumed after the reported reset, confirmed by a successful `brown_instant_80` render. Current counts are in `batch-13-progress.json`; the 14-source checkpoint described below is historical. Follow the live parent-owned ledger and skip already saved IDs.
 
 **14 of 200 sources saved and parent crop/thumbnail-reviewed. 186 remain ungenerated.** This is a partial checkpoint, not a finished 200-image delivery. No batch-13 delivery folder or ZIP has been prepared. The runtime remains the completed 1434-card batch-12 baseline.
 

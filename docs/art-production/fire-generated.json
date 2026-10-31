@@ -3286,5 +3286,95 @@
     "status": "generated",
     "batch": 13,
     "reviewNote": "Square source, centered 206:141 crop and thumbnail inspected: the complete obsidian spearhead, socket, long shaft and butt cap remain visible across the wide crop, with heat shimmer reading as swift motion. The spearhead’s jagged glass edge is distinct against the bright background."
+  },
+  {
+    "cardId": "fire_strike_33",
+    "name": "Vampire's Kiss",
+    "prompt": "Illustrate the Hexmancers fire strike Vampire's Kiss, a burst of vampiric power that strengthens the attacker. A regal vampire in dark medieval plate and a wine-red cloak leans toward a fully armored opponent, her pale focused face and bright eyes clear beside one gloved hand resting at the opponent's shoulder. At the close contact, a compact crimson-gold burst of magical embers blooms between them, suggesting a draining kiss without gore or exposed skin; a warm valor glow gathers over the vampire's chest. Keep both faces, the vampire's hand and the burst together in the central action, serious and non-erotic. Painterly medieval high-fantasy collectible-card art, nuanced skin, steel, velvet and candlelit stone, dramatic warm firelight against cool shadow, atmospheric depth and refined brushwork. Explicit 1:1 square composition for an editable 512x512 master. Keep faces, hand and burst within x24..488,y105..407, stage horizontally through the middle 60%, quiet crypt atmosphere above/below for a 206:141 crop. No blood, gore, text, frame, numbers, interface, logo, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5399885c-d7fd-4b08-bfc2-6dd527cd9855.png",
+    "editableSourcePath": "game/cards/art/masters/fire_strike_33.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Vampire face, gloved hand, armored contact point and crimson-gold burst remain visible; the close vampiric strike reads clearly. Parent review pending."
+  },
+  {
+    "cardId": "fire_strike_34",
+    "name": "Purifying Flame",
+    "prompt": "Illustrate the Hexmancers fire strike Purifying Flame, a ricocheting burning attack that renews its power after a foe falls. One distinct white-gold flame comet with a clear compact phoenix-like crown and ember core ricochets in a sharp zigzag between two corrupted armored foes in a medieval stone hall. At the first impact, a dark curse haze burns away into clean sparks; the flame then rebounds toward the second foe, leaving a thin golden trail. A small warm glimmer curls back into the flame after the first target falls. Keep the single named flame large, crisp and central, with its whole shape visible and enough dark contrast around it; the magic should feel purifying, not like an unstructured explosion. Painterly medieval high-fantasy collectible-card art, realistic fire and stone, dramatic golden light with charcoal shadows, atmospheric depth and refined brushwork. Explicit 1:1 square composition for an editable 512x512 master. Keep the complete flame projectile, ricochet path and impact within x24..488,y105..407, arranged horizontally across the middle 60%, quiet vaulted stone above/below for a 206:141 crop. No text, frame, numbers, interface, logo, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a2e2d477-436d-4717-9845-fa4855ec559b.png",
+    "editableSourcePath": "game/cards/art/masters/fire_strike_34.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. The complete phoenix-shaped flame comet and ricochet trail remain distinct as it purges two foes; the impact reads clearly at small size. Parent review pending."
+  },
+  {
+    "cardId": "fire_strike_35",
+    "name": "Great Dragon's Roar",
+    "prompt": "Illustrate the Hexmancers fire strike Great Dragon's Roar, a charged fire blast delivered as a forceful shockwave. A mighty ancient red-gold dragon fills the central composition in three-quarter view: its complete head, one fierce amber eye, ridged brow, curved horns and open jaw are clearly visible, with detailed scales and smoke around the neck. The dragon roars a compact core of orange fire that expands into a broad circular heat shockwave across a medieval battlefield, bending dust and staggering two distant armored foes; keep the dragon's face readable beside the flame rather than hidden by it. Painterly medieval high-fantasy collectible-card art, believable dragon anatomy and scales, dramatic ember light against storm-dark stone, atmospheric depth, fine brushwork. Explicit 1:1 square composition for an editable 512x512 master. Keep entire head, eye, jaws and shockwave action inside x24..488,y105..407; arrange dragon head and wave horizontally across the middle 60%, quiet smoky sky/ground above and below for a 206:141 crop. Incidental wing and body may crop. No text, frame, numbers, interface, logo, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-657db57c-0290-4fb4-9fe4-b2b7dbb4d714.png",
+    "editableSourcePath": "game/cards/art/masters/fire_strike_35.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Dragon eye, brow, jaw and fire-breath shockwave remain visible; the rear edge of the head is naturally cropped while the roar reads clearly. Parent review pending."
+  },
+  {
+    "cardId": "fire_strike_36",
+    "name": "Oni King's Kanabo",
+    "prompt": "Illustrate the Hexmancers fire strike Oni King's Kanabo, a devastating blow with a chance for a critical hit and a small recoil. A fearsome oni king in dark red scale armor and a crown of two horns swings a complete iron kanabo horizontally across the scene. Show the entire heavy spiked club from pommel to head, the oni's focused face, and both hands gripping its wrapped haft. The kanabo strikes a stone shield in a compact golden-orange impact burst; small sparks recoil along the oni's forearms, hinting at self-strain. Keep the weapon the strongest named subject, with distinct forged spikes and a readable silhouette. Painterly medieval high-fantasy collectible-card art, believable iron, lacquered armor and stone, dramatic ember light, atmospheric depth and refined brushwork. Explicit 1:1 square composition for an editable 512x512 master. Keep oni face, both hands, complete kanabo and impact inside x24..488,y105..407, horizontal middle-60% staging, quiet smoky forge courtyard above/below for a 206:141 crop. No text, frame, numbers, interface, logo, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d3e584a0-ba0d-4bf4-8189-576c8bded0be.png",
+    "editableSourcePath": "game/cards/art/masters/fire_strike_36.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Oni face and both grips, full spiked kanabo from pommel to head, and impact burst all remain visible; weapon reads clearly at thumbnail size. Parent review pending."
+  },
+  {
+    "cardId": "fire_lob_18",
+    "name": "Phoenix Ash Bomb",
+    "prompt": "Illustrate the Hexmancers fire lob Phoenix Ash Bomb, a heavy-fused explosive that knocks down nearby foes and leaves a small healing warmth. The named object is a compact oval bomb made from dark red ceramic and bronze ribs, with a small glowing phoenix-feather crest and a slow-burning cord fuse; keep the entire vessel, fuse and base visible, large and unmistakable in the foreground. It has just struck a medieval courtyard stone and bursts into a broad circular ring of golden-orange fire and ash that sweeps across two armored enemies, knocking them back; a few gentle warm motes curl toward a nearby wounded ally. The bomb remains the clear primary subject beside its ring effect; no huge fireball obscures it. Painterly medieval high-fantasy collectible-card art, believable fired clay, bronze, ash and stone, dramatic warm firelight against cool dusk, atmospheric depth and refined brushwork. Explicit 1:1 square composition for an editable 512x512 master. Keep the complete bomb, fuse and full readable ring action inside x24..488,y105..407, compose horizontally across the middle 60%, quiet courtyard air above/below for a 206:141 crop. No text, frame, numbers, interface, logo, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f14b447e-d73e-4d72-b795-28dcc18f6beb.png",
+    "editableSourcePath": "game/cards/art/masters/fire_lob_18.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Complete bomb, crest, glowing fuse and base remain visible beside the broad ring of fire; it reads as a distinct ash bomb at small size. Parent review pending."
   }
 ]

@@ -3207,5 +3207,95 @@
     "status": "generated",
     "batch": 13,
     "reviewNote": "Square source, adjusted 206:141 crop and thumbnail inspected. FocalPoint y=0.46 keeps the midwife’s full face and head covering, both supporting hands and the swaddled newborn inside the crop; the gentle protective glow and mother remain clear at thumbnail size."
+  },
+  {
+    "cardId": "gray_summon_153",
+    "name": "Saint Bernard",
+    "prompt": "Paint an illustration for the exact card name “Saint Bernard.” A powerful, gentle Saint Bernard rescue dog with a broad white-and-russet face, kind eyes and a small brass rescue cask at its collar leans toward an exhausted medieval traveler, offering a healing herb pouch as soft golden light mends the traveler. The dog’s recognizable face, muzzle and collar cask dominate; show its paw and the traveler only as supporting details. Painterly medieval high-fantasy collectible-card art matching the supplied Hexmancers references: believable canine anatomy and long fur, nuanced leather, brass, wool and stone, layered brushwork, warm hearth-and-lantern light, atmospheric depth, grounded and natural rather than cute or cartoonish. Explicit 1:1 square canvas intended for a 512×512 editable master. Compose dog’s head, eyes and rescue cask in the middle band; keep full face/eyes and collar object inside x24–488,y105–407 for a 206:141 landscape crop. Quiet mountain hospice scenery above and below. Strong readable silhouette and compassionate action. No text, card frame, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-10d8953e-cd20-44a7-8d04-4d1cf683d87b.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_153.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, true 206:141 wide crop and 128px thumbnail. Saint Bernard’s full face and kind eyes, collar cask and offered herb pouch stay clear together; the traveler and hospice setting remain supporting context."
+  },
+  {
+    "cardId": "gray_summon_154",
+    "name": "Therapy Pony",
+    "prompt": "Paint an illustration for the exact card name “Therapy Pony.” A small sturdy medieval pony with a calm face, soft eyes and a braided mane stands beside a weary young squire in a cloister garden; the squire rests a hand on the pony’s neck while a gentle pale-gold aura steadies and empowers them both. The pony is the primary subject—show its complete head, eye, muzzle and neck clearly at the same height as the squire’s hand, with the human kept secondary. Painterly medieval high-fantasy collectible-card art matching the supplied Hexmancers references: realistic equine anatomy, nuanced coat, mane, leather tack, wool and stone, layered brushwork, gentle directional morning light and atmospheric depth, grounded rather than toy-like or cartoonish. Explicit 1:1 square canvas for a 512×512 editable master. Compose pony’s head/neck and the touching hand horizontally in the middle band; keep pony eyes, muzzle and hand contact inside x24–488,y105–407 for a 206:141 landscape crop, with quiet garden above and below. Strong readable silhouette. No costume caricature, card frame, lettering, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-93b120e1-a62f-4c83-9d09-ed87d1904b70.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_154.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, true 206:141 wide crop and 128px thumbnail. Pony’s complete ears, face, soft eye and muzzle remain clear beside the squire’s touching hand; the gentle aura supports the empowering escort role."
+  },
+  {
+    "cardId": "gray_summon_155",
+    "name": "Faithful Donkey",
+    "prompt": "Paint an illustration for the exact card name “Faithful Donkey.” A loyal gray-brown medieval pack donkey with long expressive ears and a gentle, steadfast face stands protectively beside its nearly identical young twin on a mountain road; both animals wear simple weathered leather packs and remain calm under a stormy sky. Make the adult donkey’s face and eyes dominant, with the smaller companion clearly visible to communicate the twin summon and faithful escort role. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: believable donkey anatomy, coarse coat and mane, leather straps, stone and wool, rich layered brushwork, soft directional light through clouds and atmospheric depth, grounded and natural rather than cute or cartoonish. Explicit 1:1 square canvas intended for a 512×512 editable master. Compose the two heads side by side in a compact horizontal middle band; keep adult face/eyes and the companion’s head fully inside x24–488,y105–407 for a 206:141 landscape crop. Quiet road, mountain and sky above and below. Clear silhouettes and warm emotional bond. No text, card frame, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c5ae35e9-b3c9-410b-a578-c76755560ebe.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_155.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Shifted focal point upward to y=0.34 and inspected the 512-square source, top-aligned wide crop and 128px thumbnail. Both donkeys’ complete ears, faces and eyes are preserved; the larger animal reads as a steadfast escort with a smaller twin. Incidental lower legs and road crop away."
+  },
+  {
+    "cardId": "gray_summon_156",
+    "name": "Milk Cow",
+    "prompt": "Paint an illustration for the exact card name “Milk Cow.” A sturdy black-and-white dairy cow stands calmly in a medieval farmyard, her broad gentle face, clear eyes and small curved horns prominent beside a wooden pail brimming with fresh milk. She lowers her head protectively as a faint silvery-gray magical haze curls from her breath and makes a distant intruding goblin falter; the animal remains the focus, with the soft curse effect understated. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: believable bovine anatomy and coat markings, nuanced wood, iron, straw and stone, layered brushwork, warm barn light against cool morning mist, atmospheric depth, grounded and natural rather than cute or cartoonish. Explicit 1:1 square canvas intended for a 512×512 editable master. Compose cow’s head, eyes and milk pail horizontally in the middle band; keep full face, eyes, horns and pail inside x24–488,y105–407 for a 206:141 landscape crop. Quiet farmstead scenery above and below. Strong readable silhouette. No text, card frame, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f6edfcc3-3f45-4ad5-acaa-5b9c1ca771d2.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_156.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, true 206:141 wide crop and 128px thumbnail. Cow’s face/eyes and curved horns remain prominent with the pail; the faint gray breath haze and recoiling distant intruder suggest the curse mechanic without distracting from the animal."
+  },
+  {
+    "cardId": "gray_summon_157",
+    "name": "Mother Hen",
+    "prompt": "Repaint the illustration for the exact card name “Mother Hen” as an unmistakable domestic chicken, with no crane, stork, goose, or long-necked bird anatomy. Show one broad-bodied brown-and-cream farm hen with a short tucked neck, rounded body, small red comb and wattle, short sturdy yellow beak, bright alert chicken eye, and layered natural feathers. She spreads one protective wing over several tiny fluffy chicks nestled safely beneath her. The adult hen’s head, comb, beak, eye and protective wing are the clear focal point; chicks are visible as small summoned helpers. Set the scene in a humble medieval farmyard with straw, wood coop and dawn light. Painterly medieval high-fantasy collectible-card illustration in the supplied Hexmancers reference style: realistic chicken proportions and feather texture, believable straw, wood and stone, rich layered brushwork, warm directional light and atmospheric depth; grounded and natural, never toy-like or cartoonish. Explicit 1:1 square canvas intended for an editable 512×512 master. Compose the hen’s head, short neck and chicks in a compact horizontal middle band; keep her entire head with red comb, eye and beak plus the chicks beneath her wing inside x24–488,y105–407 for a 206:141 landscape crop. Quiet farmyard scenery above and below. No other large birds, no crane/stork anatomy, no card frame, lettering, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-1ea47e4d-1101-4052-a548-1423308282e2.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_157.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Repainted after identity review with an unmistakable broad-bodied domestic hen: short tucked neck, red comb and wattle, short yellow beak, brown-and-cream feathers and chicks beneath a protective wing. Inspected the replacement 512-square source, true 206:141 wide crop and 128px thumbnail; hen’s full face/comb/beak and all chick faces remain clear."
   }
 ]

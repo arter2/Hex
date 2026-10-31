@@ -3193,5 +3193,96 @@
     "status": "generated",
     "batch": 13,
     "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Martyr face, gripping hand, complete shield and broad wave remain clear; the return glow is visible without obscuring the scene. Parent review pending."
+  },
+  {
+    "cardId": "light_strike_26",
+    "name": "Riddle of the Sphinx",
+    "prompt": "Create standalone painterly medieval-high-fantasy collectible-card art for the exact card Riddle of the Sphinx. A noble ancient sphinx with a clear humanlike face, lion body and folded feathered wings dominates a horizontal scene, raising one paw as five distinct small golden-white magical missiles fan toward one distant armored foe; their crossing glimmers create a visible swirl around the foe’s helmet to suggest confusion. Keep sphinx face/eyes, paw, all five light missiles and the target readable, with the sphinx the main named subject. Believable sandstone, bronze, feather and cloth, warm directional light, atmospheric depth and grounded brushwork matching supplied Hexmancers light references. Explicit 1:1 SQUARE canvas for an editable 512x512 master. Keep sphinx face, paw, missiles and target within x24..488,y105..407 for the 206:141 crop, with quiet sky/temple at top and bottom. No frame, lettering, runes, symbols or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0f5e44fc-4a77-43c1-b200-b595496e25b4.png",
+    "editableSourcePath": "game/cards/art/masters/light_strike_26.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel crop: sphinx face, raised paw, distinct golden missiles and the disoriented target stay readable; the sphinx remains the unmistakable main subject."
+  },
+  {
+    "cardId": "light_strike_27",
+    "name": "Scholar's Paradox",
+    "prompt": "Create standalone painterly medieval-high-fantasy collectible-card art for the exact card Scholar's Paradox. In a medieval library, a thoughtful robed scholar with a clear face raises both hands as a quick thin golden zigzag bolt jumps from one polished mirror to another in a sharp S-shaped path, leaving brief ghostly afterimages that confuse a single armored intruder. Keep scholar face, hands and the complete zigzag spell central; the alternating mirror reflections suggest paradox without multiplying the characters. Tactile vellum, carved wood, glass and cloth, attractive warm candlelight against cool blue shadows, grounded expressive brushwork and atmospheric depth matching supplied Hexmancers light references. Explicit 1:1 SQUARE canvas for an editable 512x512 master. Keep face, hands, mirrors, bolt and target within x24..488,y105..407 for the 206:141 crop, quiet shelves above and below. No readable writing, frame, lettering, runes, symbols or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9f76f2ad-1306-40f9-9f24-cb5604748863.png",
+    "editableSourcePath": "game/cards/art/masters/light_strike_27.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source and upward-shifted 206:141 crop at focalPoint [0.5,0.46] plus 128-pixel crop: the scholar’s full face and both hands remain visible; the zigzag bolt, mirror rebounds and target stay clear."
+  },
+  {
+    "cardId": "light_strike_28",
+    "name": "Marble Shard Spray",
+    "prompt": "Create standalone painterly medieval-high-fantasy collectible-card art for the exact card Marble Shard Spray. A charged horizontal wave of bright white marble fragments bursts from a cracked sculpted marble guardian and sweeps in a clear row across three armored foes; chips and dust strike their legs and shields, pinning their advance, while one foe falls and a few clean shards flare with stored light after the takedown. Show the recognizable broken marble statue and the spray as the main named action, not an unrelated stone projectile. Keep the statue fragment, bright shard line and row of targets central and readable. Believable veined marble, weathered armor, warm sacred highlights, cool stone-dust shadows, painterly grounded materials and atmospheric depth matching supplied Hexmancers light references. Explicit 1:1 SQUARE canvas for a 512x512 editable master. Keep main action within x24..488,y105..407 for the 206:141 crop; quiet temple margins above and below. No gore, frame, text, lettering, runes, symbols or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2d3352a5-03f1-4c5e-93bd-9415b971e1b4.png",
+    "editableSourcePath": "game/cards/art/masters/light_strike_28.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel crop: broken marble statue, bright charged shard spray and three foes across the row remain clear; the leading statue face and shard line are fully readable."
+  },
+  {
+    "cardId": "light_strike_29",
+    "name": "Valkyrie's Descent",
+    "prompt": "Create standalone painterly medieval-high-fantasy collectible-card art for the exact card Valkyrie's Descent. A single brave valkyrie dives diagonally from the upper left toward the lower right in a forceful but graceful descending strike, her complete silver spear and one visible hand driving into an armored foe’s raised shield; the impact throws the foe backward with shield and dust, while a restrained gold halo of valor lights her focused face. Keep the valkyrie’s face/eyes, gripping hand, full spear and recoiling target inside the central action area; her wings may extend naturally beyond the crop. Believable feather, mail and metal, dramatic golden sky light against cool battle haze, painterly grounded materials and atmospheric depth matching supplied Hexmancers light references. Explicit 1:1 SQUARE canvas for an editable 512x512 master. Keep face, hand, full weapon and clear impact within x24..488,y105..407 for the 206:141 crop, quiet sky/ground above and below. No gore, frame, text, lettering, runes, symbols or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-18209550-a979-4bd3-95b5-b39c2a457962.png",
+    "editableSourcePath": "game/cards/art/masters/light_strike_29.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel crop: the valkyrie’s face, gripping hand, spearhead, impact and recoiling foe remain readable. Outer wing feathers and the trailing spear shaft extend beyond the frame, while the named figure and descending strike stay clear."
+  },
+  {
+    "cardId": "light_strike_30",
+    "name": "Durandal's Stroke",
+    "prompt": "Repaint standalone painterly medieval-high-fantasy collectible-card art for the exact card Durandal's Stroke. The first version stretched the sword beyond the square, so use one compact, believable one-handed arming sword whose ENTIRE silhouette is safely framed well away from every edge. Put its pommel, blue enamel grip, ornate crossguard and complete bright steel blade inside x135..402,y215..305 on the 512-square canvas; the sword should occupy about half the canvas width, with the sharp point clearly visible and empty margin beyond it. A focused medieval knight stands behind the hilt at left, with a clear complete face and both gauntleted hands visible as he makes one swift straight horizontal cut toward a nearby enemy's raised shield at right. The luminous stroke follows the blade and ends at its visible tip; no beam or weapon continues off-frame. A restrained golden aura suggests valor. Compact composition keeps knight face, both hands, full sword and shield-impact within the central horizontal card crop. Painterly medieval high fantasy collectible-card art, believable steel, enamel, leather, mail and stone, attractive directional light, atmospheric depth and grounded brushwork matching supplied Hexmancers light references. Explicit 1:1 SQUARE canvas for an editable 512x512 master composed for a 206:141 card crop. No frame, text, lettering, runes, symbols or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-bd3a5182-f020-4fb7-b48b-a6d9fb9fa05b.png",
+    "editableSourcePath": "game/cards/art/masters/light_strike_30.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "First source preserved at /tmp/light-03-repairs/light_strike_30-attempt-01.png. Inspected replacement 512-square source, centered 206:141 crop and 128-pixel crop: the knight face and hands, Durandal pommel, grip, guard, complete blade and struck shield all fit with clear margin; the bright tip and straight stroke remain readable.",
+    "previousGeneratedPath": "/workspace/generated_images/exec-ee140d07-1287-49fa-9a47-b2ce6a5a5864.png"
   }
 ]

@@ -3195,5 +3195,97 @@
     "status": "generated",
     "batch": 13,
     "reviewNote": "Generated square normalized to an exact 512x512 source. Inspected source, true 206:141 crop and 128x88 thumbnail: ghost face/hand, ricochet from shield, impact and target face remain visible with readable recoil."
+  },
+  {
+    "cardId": "shadow_strike_29",
+    "name": "Manananggal Swoop",
+    "prompt": "Create original square 1:1 painterly medieval-dark-fantasy collectible-card art for Manananggal Swoop. Actual quick strike: a winged night predator dives from above, drains life, and grows stronger on a kill. Show a terrifying but elegant manananggal, a pale adult woman with large batlike wings and long dark hair, swooping out of a moonlit burial hollow toward one armored sentry; her face and reaching clawed hand clear, a thin ribbon of violet life-essence drawn from his chest toward her. Keep this folkloric vampire grounded and non-gory, no exposed organs or detached bloody body. Old island graveyard beneath tropical palms, painterly feather, skin, cloth and stone textures, dramatic moonlight and restrained purple magic, strong readable horizontal silhouette. Square 512x512; keep predator face/hand and target face inside x24..488 y105..407, quiet night sky and earth at top/bottom; designed for true 206:141 crop. Illustration only, no text/frame/UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-231534dc-0706-4b7a-80d5-2c0bc35590a8.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_strike_29.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected square source, true 206:141 crop and 128x88 thumbnail. Manananggal face/claw, wings and life-drain action are clear; the target face remains visible near the right but within the safe area."
+  },
+  {
+    "cardId": "shadow_strike_31",
+    "name": "Death Card",
+    "prompt": "Create original square 1:1 painterly medieval-dark-fantasy collectible-card art for Death Card. Actual strike: a mark targets one foe for a devastating hit with a chance to crit. Make a single antique black funeral card the clear named object, held between the bony fingers of a spectral herald at left; its face bears one simple raised silver skull-and-withered-rose relief, no writing or playing-card numbers. The card's dark mark flies toward a lone armored guard at right and burns as a small skull-shaped shadow on his breastplate; his face and the hand holding the card remain visible. The card itself must be clearly recognizable, not replaced by a generic spell. Painterly gothic medieval hall, tactile black paper, tarnished silver, velvet, iron and candle smoke, dramatic cold moonlight with a small silver flash, strong horizontal composition. Square 512x512; keep full card, herald hand and guard face inside x24..488 y105..407, quiet shadowed margins; designed for a true 206:141 crop. No text/letters/numbers, frame, UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-00247396-9cda-4a4d-84a7-40fc1e6364ba.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_strike_31.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Adjusted focalPoint upward to [0.5,0.4] after crop inspection so the herald skull/eyes appear together with the complete Death Card, held hand and target face. Source pixels unchanged; reviewed shifted 206:141 crop and thumbnail."
+  },
+  {
+    "cardId": "shadow_strike_32",
+    "name": "Wild Hunt of the Dead",
+    "prompt": "Create original square 1:1 painterly medieval-dark-fantasy collectible-card art for Wild Hunt of the Dead. Actual legendary strike: a long-range spectral hunt singles out and confuses one target, with a chance of a critical hit. Show a leading ghostly hunter on a gaunt black horse, face and bow hand readable, drawing a pale longbow from a distant ridge; one luminous arrow streaks in a clean snipe line toward a lone armored traveler in the foreground, who turns in bewilderment as the shot nears. A few distant riders of the dead follow as soft silhouettes, supporting the legendary hunt without crowding the target. Wild midnight moor, painterly weathered tack, spectral cloth, moonlit fog and silver arrow light, grounded anatomy and crisp horizontal action. Square 512x512 master; keep lead hunter face/hand, the target face and arrow impact zone inside x24..488 y105..407; expendable mist above and moor below; designed for a true 206:141 crop. No text/frame/UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-3cdf73f0-7df3-4cb9-a546-d7eb483a3978.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_strike_32.png",
+    "sourceNative": [
+      1269,
+      1240
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Adjusted focalPoint upward to [0.5,0.4] after crop inspection to retain the lead Wild Hunt rider head; the target face and snipe line remain visible while lower scenery/legs crop naturally. Source pixels unchanged; reviewed shifted 206:141 crop and thumbnail."
+  },
+  {
+    "cardId": "shadow_strike_30",
+    "name": "Mara's Ride",
+    "prompt": "Create original square 1:1 painterly medieval-dark-fantasy collectible-card art for Mara's Ride. Actual strike: a straight-line nightmare charge leaves its victim confused and knocks them back. Show Mara, a pale nightmare rider in dark tattered robes, astride a black spectral horse charging from left to right through a sleeping keep's courtyard; horse head and rider face are clear, one armored guard is struck and hurled backward with a bewildered expression as shadowy afterimages blur his balance. Keep the line of motion clear and horizontal, with controlled dark mane and mist trails, not a tangle. Painterly old-world stone, iron and cloth, eerie moonlight and subtle violet haze, grounded anatomy, dramatic readable silhouette. Square 512x512 master; keep horse/rider faces and target face inside x24..488 y105..407, quiet night mist above and ground below; designed for a true 206:141 crop. No card frame, lettering, UI, modern objects, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-42c406e3-d35b-4466-a754-b14259c22cb5.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_strike_30.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "repairPrompt": "Repaint Mara's Ride as original square 1:1 painterly medieval-dark-fantasy collectible-card art. The previous landscape image normalized to a square and cut off the target, so move the entire horse-and-rider and struck guard inward. Actual strike: Mara's nightmare horse charges in a straight line, leaving the guard confused and recoiling. Compose the black spectral horse and pale-faced Mara at left-center, with the horse's head near x210 on a 512 square; put the complete armored guard, including full face and both hands, at right-center near x395 with generous space to the right border. The charge throws him backward and a faint violet haze blurs his balance. Keep one clear horizontal line of action and simple castle courtyard scenery. Painterly medieval darkness, detailed black horse, leather tack, mail and weathered stone, moonlit cool gray with restrained purple shadows, grounded anatomy and readable faces. Square 512x512; horse/rider faces, guard's face/hands and impact inside x24..488 y105..407; quiet night mist above and paving below; designed for true 206:141 wide crop. No frame, words, banners or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "previousGeneratedPath": "/workspace/generated_images/exec-3f6f6254-1cec-43d8-be48-0bb875468c76.png",
+    "reviewNote": "Repainted after landscape normalization clipped the original target. Preserved previous canonical at /tmp/shadow_strike_30-before-repaint.png, prepared the replacement separately and atomically replaced the source. Inspected final square, true 206:141 crop and 128x88 thumbnail: Mara/horse, target face and both hands remain inside the action crop."
+  },
+  {
+    "cardId": "shadow_strike_33",
+    "name": "Gashadokuro's Fist",
+    "prompt": "Paint original square 1:1 painterly medieval-dark-fantasy collectible-card art for Gashadokuro's Fist. Actual quick strike: a giant skeleton delivers a wedge-shaped critical blow that stuns its target for 1.4 seconds. Show the enormous complete bony fist as the dominant named subject, punching diagonally from left-center toward one armored warrior at right; the giant's skull and glowing eye sockets appear behind the forearm in mist. The impact drives the warrior backward and a broad triangular wedge of dust, bone fragments and cold spectral force fans out from the fist, briefly dazing him. Keep the whole clenched fist and knuckles intact, plus giant skull and warrior face/hands clearly visible. Japanese folklore-inspired medieval ruin, painterly bone, iron, cloth and stone, dramatic moonlit blue-gray with restrained ghostly light, grounded anatomy and powerful silhouette. Square 512x512 master; keep entire fist, giant face and target face/hand within x24..488 y105..407; quiet fog above and broken stone below; designed for true 206:141 card crop. Illustration only, no text/frame/UI, no gore; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f1b2add0-9a36-4b14-9f9a-1124404254e0.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_strike_33.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Generated square normalized to exact 512x512 and inspected with true 206:141 crop and 128x88 thumbnail. Full fist and giant skull remain legible; target is knocked backward by the wedge-shaped impact."
   }
 ]

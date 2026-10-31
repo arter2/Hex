@@ -3230,5 +3230,59 @@
     "status": "generated",
     "batch": 13,
     "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Kappa face, water dish and both palms remain visible as they shove two opponents; the twin impacts read clearly. Parent review pending."
+  },
+  {
+    "cardId": "frost_strike_29",
+    "name": "Rusalka's Embrace",
+    "prompt": "Illustrate the Hexmancers frost strike Rusalka's Embrace, a quick line attack that restores a little vitality when it fells a foe. A solemn rusalka, a pale river spirit with flowing dark hair, luminous blue-green eyes and a modest layered water-silk gown, rises beside a winter river. Her face and both hands are visible as she wraps a long ribbon of clear icy water around an armored opponent in a firm, spectral embrace; the current extends in a clean line through a second distant foe, who collapses harmlessly in cold mist. A small thread of warm life-light returns along the water to the rusalka. Keep the spirit's face, hands and embrace action central, mysterious and dignified, not seductive or gory. Painterly medieval high-fantasy collectible-card art, believable wet cloth, frost, river stones and mist, cool moonlight with a gentle warm healing accent, atmospheric depth and fine brushwork. Explicit 1:1 square composition for an editable 512x512 master. Keep rusalka face, hands and the full encircling current within x24..488,y105..407; stage horizontally across the middle 60%, quiet riverbank and mist above/below for a 206:141 crop. No text, frame, numbers, interface, logo, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-28b7d53a-4d63-4211-8ba2-fd68949cde71.png",
+    "editableSourcePath": "game/cards/art/masters/frost_strike_29.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Rusalka face and hands, the complete encircling water current and both targets remain clear; the returned healing light is visible. Parent review pending."
+  },
+  {
+    "cardId": "frost_strike_30",
+    "name": "Umibozu's Grasp",
+    "prompt": "Illustrate the Hexmancers frost strike Umibozu's Grasp, a quick zigzagging pull. An enormous umibozu, a Japanese sea spirit with a smooth dark bald head, deep-set luminous blue eyes and shoulders formed from black water and foam, rises behind a storm-battered harbor wall. Its huge open hand reaches toward a small armored sailor; a crisp zigzag tether of icy seawater coils from the sailor to the spirit's palm and pulls the figure across the waves. Keep the umibozu's eyes, full grasping hand and the complete zigzag pull path visible together; the spirit is the dominant subject, mysterious and grounded rather than a generic sea monster. Painterly medieval high-fantasy collectible-card art, nuanced wet skin, sea foam, old stone and dark water, dramatic cold moonlight and atmospheric depth. Explicit 1:1 square composition for an editable 512x512 master. Keep face, hand and tether action within x24..488,y105..407, arranged horizontally across the middle 60%, quiet storm sky and sea above/below for a 206:141 crop. Incidental lower body and wave tips may crop. No text, frame, numbers, interface, logo, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9db4e521-e662-41a7-ae4c-1758899d475f.png",
+    "editableSourcePath": "game/cards/art/masters/frost_strike_30.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Umibozu eyes, full reaching hand, zigzag water tether and pulled sailor remain visible and distinct. Parent review pending."
+  },
+  {
+    "cardId": "frost_strike_31",
+    "name": "Ningyo Scale Dart",
+    "prompt": "Illustrate the Hexmancers frost strike Ningyo Scale Dart, a quick linear curse attack. A ningyo, a Japanese merfolk with a poised humanlike face, sea-glass eyes and iridescent blue-silver scales, rises beside a winter river. At chest height it pinches and flicks one large detachable scale shaped like a narrow leaf-dart; show the complete pointed scale, its fine barbed edge and the ningyo's hand clearly. The dart travels in a straight line toward a small distant armored foe, leaving a thin cold-blue trail that darkens into a subtle curse haze at impact. Keep the ningyo's face, eyes, hand and complete scale-dart prominent, with clear separation between projectile and background. Painterly medieval high-fantasy collectible-card art, refined overlapping scales, believable water and cloth, cold luminous light, atmospheric depth and detailed brushwork. Explicit 1:1 square composition for an editable 512x512 master. Keep face, hand, full dart and line action within x24..488,y105..407, arrange horizontally across the middle 60%, quiet river mist above/below for a 206:141 crop. No text, frame, numbers, interface, logo, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-29538105-ec4f-4740-8da0-93ae2c54028d.png",
+    "editableSourcePath": "game/cards/art/masters/frost_strike_31.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Ningyo face and eyes, hand, complete scale-dart and straight curse trail remain visible; projectile is distinct at small size. Parent review pending."
   }
 ]

@@ -3201,5 +3201,95 @@
     "status": "generated",
     "batch": 13,
     "reviewNote": "Reviewed the 512-square source, direct 512×350 wide crop and 128×88 thumbnail: squirrel’s full face, eyes and forepaws remain visible; the cross-shaped burst of acorns and seed-pods and recoiling foes read at thumbnail size. Tail tip extends beyond crop as an incidental extremity."
+  },
+  {
+    "cardId": "verdant_strike_29",
+    "name": "Leshy's Wrong Turn",
+    "prompt": "Paint an original illustration for the Hexmancers verdant strike “Leshy's Wrong Turn.” Depict a powerful, age-old Slavic forest spirit with a bark-textured face, mossy beard, leafy mantle and clear humanlike eyes standing at a woodland crossroads. With one visible hand the leshy subtly bends a green-lit path into a sharp zigzag, sending a helmeted pursuer toward a harmless loop while a small restorative glow closes a scrape on the spirit’s other arm. Keep the leshy’s face and hands clear, and make the wrong-way path legible without letting it dominate the figure. Respectful folklore-inspired fantasy, grounded and dignified, not a cartoon. Painterly medieval/high-fantasy collectible-card art, nuanced believable bark, moss, leaves and stone, dappled directional light, atmospheric depth and strong readable values. Match the supplied references' painterly materials and forested fantasy lighting, with the natural high-fantasy tone of the accepted verdant art. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the leshy’s face, eyes, both hands and path-changing action within x24–488,y105–407 on the square; arrange the spirit and zigzag trail horizontally for the 206:141 crop, with quiet canopy and ground beyond. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-4fe63126-d522-4180-9ddc-3772be3f3599.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_29.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.45
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source, upward-adjusted 206:141 crop and thumbnail inspected (focalPoint y=0.45): the bark face and visible eye, both hands and zigzag-lit path remain within the crop. Leafy crown and ground stay atmospheric; the leshy is identifiable at thumbnail size."
+  },
+  {
+    "cardId": "verdant_strike_30",
+    "name": "Curupira's Backward Trail",
+    "prompt": "Paint an original illustration for the Hexmancers verdant strike “Curupira's Backward Trail.” Depict the Curupira, a powerful Brazilian forest spirit with a vivid mane of copper-red hair, lively human face and strong bare feet turned backward, standing at the edge of a dense moonlit forest. It points one visible hand along a charged zigzag trail of backward footprints; pale green life-light follows the prints and drains toward a confused hunter being led away through the trees. Keep the Curupira’s face, pointing hand and distinctive backward-foot trail clear and respectful to the folklore. The spirit is alert and formidable, not cartoonish. Painterly medieval/high-fantasy collectible-card art, nuanced believable skin, leaves, bark and woven cloth, dramatic green-gold forest light, atmospheric depth and strong readable values. Match the supplied references' painterly materials and forested fantasy lighting, with the natural high-fantasy tone of the accepted verdant art. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the Curupira’s face, eyes, pointing hand and backward footprint trail within x24–488,y105–407 on the square; arrange spirit and zigzag trail horizontally for the 206:141 crop, with quiet canopy and forest beyond. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-986d20eb-a6bc-4f78-9827-2ee83ca5a227.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_30.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source and upward-adjusted 206:141 crop/thumb inspected (focalPoint y=0.40) to retain the Curupira’s face and pointing hand. The luminous zigzag of backward footprints is clear; lower legs continue beyond the crop, while the distinctive trail remains the named action."
+  },
+  {
+    "cardId": "verdant_strike_31",
+    "name": "Pan's Panic Pipes",
+    "prompt": "Paint an original illustration for the Hexmancers verdant strike “Pan's Panic Pipes.” Depict Pan as a mature woodland satyr with a grounded human face, small swept horns, subtle goat ears and a moss-green mantle, playing a complete compact panpipe with both hands at chest height. Keep Pan’s focused face, both hands and every pipe clearly visible; a sweeping wave of pale gold-green sound rolls horizontally through a forest clearing, startling a distant armored pursuer backward without obscuring the instrument. The scene feels mischievous and mythic, not comic. Painterly medieval/high-fantasy collectible-card art, nuanced believable skin, hair, wood, wool and leaves, warm dappled light, atmospheric depth and strong readable values. Match the supplied references' painterly materials and forested fantasy lighting, with the natural high-fantasy tone of the accepted verdant art. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep Pan’s face, eyes, both hands and the entire named panpipe instrument within x24–488,y105–407 on the square; arrange Pan and the sound wave horizontally for the 206:141 crop, with quiet canopy and ground beyond. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-a83ee973-5922-486c-88d6-99c03ddc626b.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_31.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source, centered 206:141 crop and thumbnail inspected: Pan’s face, both hands and complete panpipe are visible; the golden-green sound wave carries the panic effect to the distant pursuer. A horn tip approaches the top crop edge, but the face and named instrument remain clear."
+  },
+  {
+    "cardId": "verdant_strike_32",
+    "name": "Monkey Coconut Toss",
+    "prompt": "Paint an original illustration for the Hexmancers verdant strike “Monkey Coconut Toss.” Show a clever tropical forest monkey with natural, believable anatomy on a broad branch, throwing one complete large brown coconut toward a patch of earth below. Keep the monkey’s alert face, gripping throwing hand and the entire coconut with its fibrous husk visible in the air; the coconut lands as a sudden contained burst of roots, soil and leaves, like a hidden ground trap, not a fireball. A few fresh green leaves curl back around the monkey to suggest renewed vitality. Painterly medieval/high-fantasy collectible-card art, nuanced believable fur, husk, bark and foliage, bright filtered jungle light, atmospheric depth and strong readable values. Match the supplied references' painterly materials and forested fantasy lighting, with the natural high-fantasy tone of the accepted verdant art. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the monkey’s face, eyes, throwing hand and the complete named coconut within x24–488,y105–407 on the square; arrange throw and ground burst horizontally for the 206:141 crop, with quiet canopy and ground beyond. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-66b55fa2-f5a4-47b3-b11b-5739c5cb5519.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_32.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source and upward-adjusted 206:141 crop/thumb inspected (focalPoint y=0.42): the monkey’s face and throwing hand plus the complete coconut remain visible; the lower soil burst reads as a contained trap. The curling tail is incidental and partly cropped."
+  },
+  {
+    "cardId": "verdant_strike_33",
+    "name": "Elf-Shot",
+    "prompt": "Paint an original illustration for the Hexmancers verdant strike “Elf-Shot.” Show a mature woodland elf archer in a weathered green cloak loosing one swift, precise arrow from a compact yew bow. Keep the elf’s focused face, both hands and the complete arrow—with its sharp leaf-shaped stone point, shaft and feather fletching—clearly visible across the horizontal composition as it pierces a distant shield edge and pushes the armored target backward. The arrowhead remains distinct and unbroken; no blood or gore. Grounded elven anatomy, dignified forest folk rather than an ornate high-elf stereotype. Painterly medieval/high-fantasy collectible-card art, nuanced believable wood, feather, leather and foliage, attractive directional forest light, atmospheric depth and strong readable values. Match the supplied references' painterly materials and forested fantasy lighting, with the natural high-fantasy tone of the accepted verdant art. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the elf’s face, eyes, both hands and the whole arrow including its point and fletching within x24–488,y105–407 on the square; arrange the full shot horizontally for the 206:141 crop, with quiet canopy and forest beyond. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-608bd4e3-4990-438e-b19f-a3c9fe00bdc4.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_33.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source, centered 206:141 crop and thumbnail inspected: the elf’s focused face, both drawing hands and full arrow path remain visible, with the distinct tip meeting the shield and fletching visible by the drawing hand. The target is secondary and partly cropped."
   }
 ]

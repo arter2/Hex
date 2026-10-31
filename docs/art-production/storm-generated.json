@@ -3202,5 +3202,95 @@
     "status": "generated",
     "batch": 13,
     "reviewNote": "Shifted focal point upward to y=0.34 (crop begins at top edge) and inspected the 512-square source, revised wide crop and 128px thumbnail. This preserves Talos’s entire sculpted face/head and extended hand together with the complete boulder and lightning impact; incidental lower ruins and figures crop away."
+  },
+  {
+    "cardId": "storm_strike_28",
+    "name": "Serpent Whip",
+    "prompt": "Paint an original illustration for the exact card “Serpent Whip.” Mechanics: a serpent-shaped lash sweeps out and boomerangs back, mending its wielder. Depict a focused desert storm-mage wielding a compact, complete whip whose flexible leather body and bronze snake-head tip form a living serpent shape. The whip makes one clear looping boomerang arc around a nearby armored foe and returns beside the mage; a small cool-blue healing glow gathers at the mage’s forearm as the lash comes back. Keep mage’s face, whip hand and the entire named serpent-whip head and handle visible at the same height; the looping energy trail may be decorative. Painterly medieval fantasy collectible-card art, tactile leather, bronze, cloth and weathered steel, storm-lit blue and amber palette, dramatic directional light and atmospheric depth like the supplied Hexmancers storm references. Exact 1:1 square composition for 512×512 editable master, horizontal; keep face, hand, complete compact whip and central action within x24…488,y105…407 for 206:141 crop. Quiet sky and ground margins. No frame, text, lettering, runes, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-02e83e9d-83ee-4144-9019-2ce79244a8b1.png",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_28.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Repaired the first render because the mage’s whip hand and far end of the serpent whip fell outside the crop. Reviewed the repaired 512-square source, direct 512×350 crop and 128×88 thumbnail: full face, both hands, handle, serpent head and complete compact whip loop remain inside the crop."
+  },
+  {
+    "cardId": "storm_strike_29",
+    "name": "Lodestone Pull",
+    "prompt": "Paint an original illustration for the exact card “Lodestone Pull.” Mechanics: a quick chain of magnetic strikes draws enemies together and a defeated foe feeds a spark back to the caster. Depict a medieval storm scholar in a weathered blue cloak holding a complete fist-sized black lodestone beside their focused face. A twisting chain of bright iron filings and steel shards leaps from the stone to pull three armored foes toward one another across the row; one collapsing foe sends a tiny blue spark of energy back to the scholar’s other hand. Make the natural dark lodestone clear and visible in the hand, with the magnetic chain and pulling action strongest. Painterly medieval fantasy collectible-card art, believable basalt, iron, wool and steel, electric blue-white sparks against subdued storm clouds, atmospheric depth in supplied Hexmancers storm-reference style. Exact 1:1 square master; horizontal action, keep scholar’s face, both hands, full lodestone and central chain impacts within x24…488,y105…407 for the 206:141 crop. Quiet expendable cloud and ground above/below. No frame, words, runes, numbers, UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-bdcd258c-92b1-4095-abcc-2b3e34fa09d1.png",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_29.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Repaired the first render because the named lodestone was absent. Reviewed the repaired 512-square source, direct 512×350 crop and 128×88 thumbnail: scholar’s full face and both hands remain visible, with a distinct complete dark lodestone in the open palm and the magnetic chain pulling foes."
+  },
+  {
+    "cardId": "storm_strike_30",
+    "name": "Raiju's Pounce",
+    "prompt": "Paint an original illustration for the exact card “Raiju’s Pounce.” Mechanics: the lightning beast leaps and ricochets through foes, stunning them; a kill restores a spark of spell energy. Depict a Japanese raiju, a lean spectral storm hound with bristling silver-gray fur, bright indigo eyes and a curling lightning tail, caught mid-pounce from the shoulder-height of one armored foe toward a second. A sharp electric impact ricochets between them, briefly stunning both; a small returning spark trails back toward the beast. Keep the raiju’s full face, both eyes, paws and leap direction clear and prominent. Grounded animal anatomy and Japanese shrine-forest details, painterly medieval fantasy collectible-card illustration, storm-blue lightning, wet bark, worn armor and atmospheric depth like supplied Hexmancers storm references. Exact 1:1 square for a 512×512 master, horizontal action; protect face, eyes and paws within x24…488,y105…407 for 206:141 crop. Tail and lightning trails may extend into quiet margins. No frame, lettering, text, runes, numbers or UI. No anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-bbae245c-5298-4e43-b5c1-51acb9e9ab3c.png",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_30.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, direct 512×350 crop and 128×88 thumbnail: Raiju’s full face, both eyes and forepaws remain in frame; leap direction, lightning ricochet and stunned armored foes read clearly."
+  },
+  {
+    "cardId": "storm_strike_31",
+    "name": "Plumed Serpent Gale",
+    "prompt": "Paint an original illustration for the exact card “Plumed Serpent Gale.” Mechanics: a broad fan-shaped wind strike pierces and shoves foes away. Depict a magnificent feathered serpent spirit with a sharp, unmistakable snake head and swept-back jade, turquoise and gold plumes, flying horizontally across a stormy mountain pass. It drives a broad fan of wind and feather-bright air through a line of armored foes, piercing the formation and hurling them outward. Keep the serpent’s complete head, eye and feathered neck crest dominant; the fanned gale should spread clearly from its head and pass through the foes without obscuring the face. Painterly medieval fantasy collectible-card art, believable scaled body, feather detail, weathered armor and dramatic lightning-lit clouds, atmospheric depth in the supplied Hexmancers storm reference spirit. Exact 1:1 square for 512×512 editable master; horizontal staging, keep head, eye, crest and central fan impact within x24…488,y105…407 for the 206:141 crop; its trailing body may crop incidentally. No frame, words, symbols, runes, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-384c9077-e8c6-4b97-9fe7-c20d50bb9a63.png",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_31.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, direct 512×350 crop and 128×88 thumbnail: serpent’s full snake head and eye, colorful plumed neck crest and broad fan-shaped gale remain legible; distant foes are pushed away. Trailing body/plume extremities extend beyond the crop."
+  },
+  {
+    "cardId": "storm_strike_32",
+    "name": "Perun's Oak-Splitter",
+    "prompt": "Paint an original illustration for the exact card “Perun’s Oak-Splitter.” Mechanics: a charged thunder strike flings a stunning axe in a boomerang arc and recoils its wielder. Depict a powerful, weathered Slavic thunder-warrior with a braided beard and storm-blue cloak, drawing back a compact broad-bladed oak-splitting axe before hurling it. The complete axe is large and clearly visible in the central band, its short hardwood haft and entire rune-free iron head with a carved oak-leaf relief all visible. Its bright curved lightning trail loops around a nearby armored foe and the stunned foe recoils; the warrior leans into the throw’s recoil. Keep warrior’s face, throwing hand, axe handle and full axe head unmistakable; the curved lightning path can trail into scenery. Painterly medieval fantasy collectible-card art, tactile forged iron, oak, wool and worn armor, dramatic lightning over a dark forest, strong directional light and atmospheric depth like supplied Hexmancers storm references. Exact 1:1 square composition for a 512×512 editable master, horizontal staging; keep face, hand, entire axe and central impact within x24…488,y105…407 for the 206:141 crop; expendable sky and ground beyond. No frame, lettering, glyphs, numbers, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-03fd1ad2-0670-4ea6-9218-67e2de233a96.png",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_32.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, direct 512×350 crop and 128×88 thumbnail: warrior’s face and throwing hand, full oak-splitting axe from haft end to blade and the boomerang lightning impact all remain inside the wide crop."
   }
 ]

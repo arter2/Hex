@@ -2836,5 +2836,41 @@
     "status": "generated",
     "batch": 12,
     "reviewNote": "Square source and 206:141 crop inspected: lead fox’s eyes, full head, and flaming leading paws are clear, with a second fox reinforcing the summon; the running silhouette remains readable in the thumbnail."
+  },
+  {
+    "cardId": "fire_machine_09",
+    "name": "Gremlin Clockwork Drone",
+    "prompt": "Paint an illustration for the exact card Gremlin Clockwork Drone. A squat but powerful clockwork guardian drone hovers above a dwarven foundry workbench, its fully visible brass-and-black-iron body ringed by four hinged rotor vanes, open gears, a bright ember-glass eye and small armored guard clamps. A mischievous soot-stained gremlin technician crouches just behind it, one hand on a simple gear lever, but the drone dominates and remains unmistakably a medieval-fantasy machine rather than modern hardware. Keep the full drone silhouette, gear-heart and eye within the middle horizontal band, beside the gremlin's face at the same height. Painterly high-fantasy collectible-card art, tactile forged metal, leather and soot, warm furnace light with cool workshop shadows, rich brushwork and atmospheric depth. Square 1:1 canvas for a 512×512 master; all defining drone parts and face inside x24..488,y105..407 for the 206:141 card crop, quiet forge atmosphere above/below. No frame, text, runes, UI, modern aircraft, cartoon, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-29da4e84-f70d-479f-8f08-7d3216b7f977.png",
+    "editableSourcePath": "game/cards/art/masters/fire_machine_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Shifted crop upward to include all four rotor vanes and drone body while retaining gremlin face; inspected square, adjusted wide crop and 128 thumbnail."
+  },
+  {
+    "cardId": "hero_varn",
+    "name": "Varn, the Ash King",
+    "prompt": "Paint an illustration for the exact hero card Varn, the Ash King. A stern ash-crowned monarch in layered blackened steel and ember-red cloth stands in a ruined volcanic hall, face and casting hand clearly visible as a wand releases a narrow piercing beam of fire horizontally through a row of armored enemies. The ray crosses each foe in sequence, expressing his row attack; subtle embers cling to nearby allies' weapons to suggest his empowering aura without adding symbols or text. Keep Varn's face, crown, wand hand and the horizontal ray grouped in the central 60%, enemies secondary and partly cropped. Painterly medieval high-fantasy card art, believable ash-stained armor, crown, cloth and stone, dramatic furnace light against cool smoke, authoritative grounded pose and rich brushwork. Square 1:1 canvas for a 512×512 master; protect face, hands and ray action inside x24..488,y105..407 for the 206:141 crop, quiet smoky margins. No frame, text, runes, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4eb2808e-6388-420a-8013-a72a46300f5d.png",
+    "editableSourcePath": "game/cards/art/masters/hero_varn.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Inspected 512 source, wide crop and 128 thumbnail: Varn’s face, crown and casting hand are clear; piercing fire ray crosses the enemy row, with nearby fighters secondary."
   }
 ]

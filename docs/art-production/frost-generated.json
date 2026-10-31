@@ -2816,5 +2816,41 @@
     "status": "generated",
     "batch": 12,
     "reviewNote": "512-square master, wide crop and 128px thumbnail inspected. The pouch opening, drawcord and stones are all fully visible; one hailstone is caught just as it leaves the pouch. Leather and ice detail read at thumbnail size."
+  },
+  {
+    "cardId": "frost_environment_13",
+    "name": "Fimbulwinter",
+    "prompt": "Paint an illustration for the exact card name “Fimbulwinter.” Show a legendary Norse great winter sweeping across a medieval northern landscape in one clear horizontal freeze front: a line of dark pine forest and timber halls is divided by a shining blue-white frost wall, with the near side suddenly glazed in ice and rime while the far side remains autumn-brown. A row of frost racing across ground and tree trunks clearly conveys a short, powerful field-wide freeze. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: believable pine, timber, ice and snow, layered brushwork, atmospheric depth, dramatic cold dawn light with readable warm/cold contrast, grounded not photorealistic. Square 1:1 composition for a 512x512 master. Keep the main horizontal frost front and frozen row of landscape within x24–488,y150–360, centered in the middle 60 percent; quiet cold sky above and simple snow foreground below for a 206:141 crop. No giant or close character needed, no unrelated spell burst. No text, runes, letters, card frame, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c6d0cd6d-aba6-4fe1-90b0-a43ddba68aab.png",
+    "editableSourcePath": "game/cards/art/masters/frost_environment_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square master, wide crop and 128px thumbnail inspected. The bright horizontal frost front clearly separates frozen forest and halls from the autumn-brown landscape, conveying a sweeping environmental freeze. The landscape remains readable at thumbnail size."
+  },
+  {
+    "cardId": "frost_summon_10",
+    "name": "Kappa",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Kappa”. Paint a sturdy Japanese kappa river spirit crouched at the edge of a cold mountain stream: mottled green scales, a rounded turtle shell, webbed hands, and the distinctive shallow water dish on its head. It thrusts both hands forward, drawing a cone of icy river water toward an unseen foe. Keep its expressive face, eyes, hands, shell and water dish clear; serious folklore creature, not a cute cartoon. Painterly medieval/high-fantasy collectible-card art, richly painted believable fur, hide, wood, old iron, ice and stone, strong readable values, attractive directional light and atmospheric depth. Match the supplied frost references' blue-white winter light and detailed grounded fantasy materials. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep identity-critical face/eyes/hands and the entire named subject within x24–488,y105–407 on the square; compose horizontally for a 206:141 card crop with quiet expendable scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-718ccf74-313e-4de4-a508-1b25767d2838.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square source and centered 206:141 crop inspected: the Kappa’s face, water dish, shell, and both webbed hands remain clear; its stream-pulling water cone reads at thumbnail size."
   }
 ]

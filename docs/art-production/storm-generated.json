@@ -2752,5 +2752,95 @@
     "status": "generated",
     "batch": 12,
     "reviewNote": "512-square master, wide crop and 128px thumbnail inspected. The wide ring of coin impacts and readable hammered gold dinars remain visible, with the larger coins clear enough to identify at thumbnail size. Tiny distant figures support the impact without distracting."
+  },
+  {
+    "cardId": "storm_boon_14",
+    "name": "Lightning Step",
+    "prompt": "Square 1:1 painterly medieval high-fantasy collectible-card painting with rich storm light. Lightning Step: a nimble desert scout in layered leather makes one impossible sidestep through a narrow flash of blue-white lightning, face and focused eyes clearly visible; a translucent afterimage trails just behind and scorched sand glows at the step, showing brief phase-like evasion. Keep one main figure and the lightning step centered horizontally in the middle 60%, face, leading hand and full action readable within x24..488 y105..407, quiet stormy desert above and below. Grounded cloth, leather and lightning, cinematic contrast, clear silhouette small; no extra figures or chaotic bolt web. No writing, text, card frame, UI, logo, watermark, modern tech, Disney, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7bf9d403-37a0-4820-82ff-2b87e200e861.png",
+    "editableSourcePath": "game/cards/art/masters/storm_boon_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Scout’s face, leading hand and phased lightning step are clear; background afterimage and legs are secondary.",
+    "batch": 12,
+    "status": "generated"
+  },
+  {
+    "cardId": "storm_trap_13",
+    "name": "Mirage Oasis",
+    "prompt": "Square 1:1 painterly medieval high-fantasy collectible-card illustration, dramatic desert dusk and shimmering light. Mirage Oasis: a small vivid oasis of palms and blue-green water reflected in the center of vast golden dunes, appearing like an inviting mirage; subtle glassy bands of refracted air curl around the pool and clasp one half-buried camel track at the edge to suggest an unseen snare. The complete oasis and its distinctive palms are the main subject, no large characters. Horizontal composition across middle 60%, keep pool, palms and snare cue within x24..488 y105..407, quiet open sky and dunes above and below. Painterly atmospheric perspective, luminous mirage edges, grounded sand and water, clear iconic read at thumbnail size. No text, card frame/UI/logo/watermark, modern objects, Disney, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-adcff80e-66da-4d8b-8f23-22f01101b16b.png",
+    "editableSourcePath": "game/cards/art/masters/storm_trap_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. The water, palms, sand-ringed mirage and snare-like air shimmer remain legible; upper palm fronds are partly cropped as incidental scenery.",
+    "batch": 12,
+    "status": "generated"
+  },
+  {
+    "cardId": "storm_summon_10",
+    "name": "Desert Camel",
+    "prompt": "Square 1:1 painterly medieval high-fantasy collectible-card painting in warm desert light beneath distant storm clouds. Desert Camel: a sturdy quick camel in a dynamic zigzag trot across firm golden sand, complete expressive head, clear eyes, long neck and strong body visible; its lifted hooves and a pair of gentle angled dust trails show speed and unpredictable movement. One camel only, no rider, no gear obscuring the face. Keep the animal horizontally centered across the middle 60%, face and body within x24..488 y105..407; legs may approach the lower edge, quiet dunes and sky above and below. Rich tawny coat, believable anatomy, painterly brushwork, clear silhouette small, charming but grounded. No text, card frame/UI/logo/watermark, modern objects, Disney, anime, toy cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-832851e5-e991-48b1-ab31-ac4ca7027164.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Camel’s full head, body and running pose remain visible; lower dust and ground are trimmed.",
+    "batch": 12,
+    "status": "generated"
+  },
+  {
+    "cardId": "storm_charge_14",
+    "name": "Golden Arrow Quiver",
+    "prompt": "Square 1:1 painterly medieval high-fantasy collectible-card illustration, warm golden desert light with a restrained storm-blue sky. Golden Arrow Quiver: a compact leather-and-gilt quiver is laid horizontally on a camel saddle across the center, not upright or diagonal. The full mouth, base, both side seams and straps are visible. A small neat bundle of golden arrows rests in the quiver: show complete arrowheads grouped together along one end and complete feather fletching grouped at the other, all lying along the same horizontal line so the entire quiver-and-arrow bundle fits within the landscape crop. One extra golden arrow lies beside it, tip and feather both fully visible, with a small controlled lightning glint along its shaft. Object only, no person. Keep the complete quiver and every arrow feature inside x60..452 and y175..340 of the square, clear margins around all sides, quiet dunes and sky above and below. Rich stitched leather, engraved gold fittings, painterly grounded materials, clear readable silhouette small. No text, letters, UI, card frame, logo, watermark, modern objects, Disney, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-736daf7b-f6de-4527-a136-9592dbe2fb03.png",
+    "editableSourcePath": "game/cards/art/masters/storm_charge_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Repainted after the first composition clipped arrow tips in the centered wide crop; the first source is preserved at /tmp/storm_charge_14-before-repair.png. Reviewed the final 512-square source, centered 206:141 crop and 128x88 thumbnail: complete quiver, full arrowhead and feather bundles, and the extra arrow all fit."
+  },
+  {
+    "cardId": "storm_machine_10",
+    "name": "Caravan Mangonel",
+    "prompt": "Square 1:1 painterly medieval high-fantasy collectible-card illustration, dramatic desert dusk with warm brass and storm-blue light. Caravan Mangonel: a compact complete wheeled wooden-and-brass mangonel mounted on a sturdy desert caravan cart, shown in a clear side view. Its full cart frame, both visible wheels, throwing beam, sling, counterweight and loaded round stone all fit comfortably inside the square; the throwing arm is cocked at a low diagonal so it stays inside the landscape crop. No operator needed. Make the named siege engine the dominant subject, horizontally centered across the middle 60%, with all mechanical parts within x32..480 y110..407 and open margins; quiet dunes and caravan silhouettes far behind. Rich oak, rope, rivets and aged brass, believable sturdy construction, painterly high-fantasy card art, crisp readable small. No text, card frame, UI, logo, watermark, modern technology, Disney, anime, toy cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-cbc3df76-7827-4c48-956c-995fa48883c0.png",
+    "editableSourcePath": "game/cards/art/masters/storm_machine_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Full cart frame, both wheels, beam, sling and stone projectile fit; the distant caravan remains secondary."
   }
 ]

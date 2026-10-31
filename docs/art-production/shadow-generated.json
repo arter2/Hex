@@ -2743,5 +2743,95 @@
     "batch": 12,
     "reviewNote": "512-square source, downward-shifted wide crop (focalPoint y=0.52) and thumbnail reviewed. The clasped pact hands, entire parchment and wax seal fit clearly; the ember siphon conveys the bargain. Parent review pending.",
     "cardId": "shadow_boon_14"
+  },
+  {
+    "name": "Vampire Fang Necklace",
+    "prompt": "Paint an illustration for the Hexmancers card “Vampire Fang Necklace.” Make the complete necklace the unmistakable central subject: a graceful antique silver chain laid in a broad open oval beside its clasp, with one long ivory vampire fang set as the pendant and a small dark red gemstone at its root. The whole chain, clasp, fang tip and setting are visible. Arrange it on deep black velvet in an old candlelit crypt, with restrained crimson reflections and a faint pulse of siphoned life-light suggesting the many-use draining charm. Painterly medieval high-fantasy collectible-card art, finely textured silver, ivory, velvet and stone, beautiful directional highlights, rich shadows but clear object silhouette at thumbnail size. Square 1:1 composition for a 512x512 master; keep the complete necklace inside x24..488,y105..407, centered in the middle 60%, quiet dark margins above and below for a 206:141 crop. No frame, writing, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2024a942-5777-4770-a61e-b5df29e653c3.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_charge_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.51
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square source, slightly downward-shifted wide crop (focalPoint y=0.51) and thumbnail reviewed. The complete oval chain, clasp, gem setting and fang tip remain visible; the pendant reads at small size. Parent review pending.",
+    "cardId": "shadow_charge_13"
+  },
+  {
+    "name": "Vampire Bat",
+    "prompt": "Paint an illustration for the Hexmancers card “Vampire Bat.” A hungry, uncanny vampire bat dives toward the viewer from an ancient castle belfry, both leathery wings spread wide, small face and bright predatory eyes clearly visible, tiny fangs showing. A second, smaller bat banks behind it to suggest the paired summons. Moonlight rims the wings; a subtle crimson glimmer at its mouth hints at lifesteal, with stone arches and deep blue night as quiet support. Painterly medieval high-fantasy collectible-card art, believable fur and membrane, grounded animal anatomy, dramatic but readable lighting, strong bat silhouette at small card size. Square 1:1 composition for a 512x512 master; keep the main bat's face, full head and most of both wings inside x24..488,y105..407, centered in middle 60%, quiet dark sky top/bottom for a 206:141 crop. No frame, text, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9c955633-222a-4fdf-8357-34d69a233cf5.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square source, centered wide crop and thumbnail reviewed. Main bat's face and wings remain prominent and readable; wing tips and smaller second bat are incidental. Parent review pending.",
+    "cardId": "shadow_summon_11"
+  },
+  {
+    "name": "The Banshee",
+    "prompt": "Paint an illustration for the Hexmancers hero card “The Banshee.” A spectral woman with a clearly readable mournful face unleashes a piercing wail in a moonlit ruined abbey; her mouth open in a cry, one bony hand raised, long pale hair and torn burial shroud swept by the sound. Four delicate translucent sound arcs spread from her as a restrained sign of the multi-wail attack and slowing aura; keep her face and hand the focus. Painterly medieval high-fantasy collectible-card art, expressive grounded face, ghostly cloth and hair, luminous silver moonlight against deep blue-gray stone, atmospheric depth, powerful clear silhouette at thumbnail scale. Square 1:1 composition for a 512x512 master; keep her full face, raised hand and upper figure inside x24..488,y105..407, central 60% action, quiet mist top and bottom for the 206:141 crop. No frame, text, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-1f4cff8c-1ef3-4e83-a3fb-c6d42885bc37.png",
+    "editableSourcePath": "game/cards/art/masters/hero_banshee.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.47
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square source, upward-shifted wide crop (focalPoint y=0.47) and thumbnail reviewed. The Banshee's full face, open wailing mouth and raised hand remain visible; sound arcs frame rather than obscure her. Parent review pending.",
+    "cardId": "hero_banshee"
+  },
+  {
+    "name": "Plague Breath",
+    "prompt": "Paint an illustration for the Hexmancers card “Plague Breath.” A gaunt medieval plague sorcerer in weathered robes exhales a forceful fan-shaped cloud of poisonous green vapor from a visible open mouth toward the right. The caster's face and one braced hand remain visible beside the broad spreading breath; tiny wilted leaves and a dim sickly glint within the cloud suggest poison. The breath is the dominant named action, with clear edges and visible air between cloud layers. Painterly medieval high-fantasy collectible-card art, believable skin, wool, leather and mist, dramatic directional light, jewel-like toxic green against charcoal and muted blue, atmospheric depth and a readable horizontal silhouette. Square 1:1 composition for a 512x512 master; keep the caster's face, relevant hand and main breath cloud within x24..488,y105..407, center action in middle 60%, quiet shadow margins top/bottom for a 206:141 crop. No frame, letters, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a16096ce-7aac-43e0-8498-e358495a4b49.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_strike_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square source, centered wide crop and thumbnail reviewed. Caster's face and outstretched hand are clear beside the broad poisonous breath; the vivid plume reads at small size. Parent review pending.",
+    "cardId": "shadow_strike_15"
+  },
+  {
+    "name": "Black Death",
+    "prompt": "Paint an illustration for the Hexmancers card “Black Death.” Show a fast magical impact on a medieval battlefield at night: a dense black-violet miasma slams into the earth and expands into a complete circular ring shockwave around a dark open center, kicking soil and dead leaves outward. A few tiny stones and wilted leaves inside the circle suggest the plague's poison; the ring itself is the unmistakable subject, distinct from a caster exhaling breath. Painterly medieval high-fantasy collectible-card art, beautifully layered smoke and ground debris, sickly restrained green-violet light against charcoal darkness, dramatic directional highlights, atmospheric depth, strong ring silhouette and clear center at thumbnail size. Square 1:1 composition for a 512x512 master; keep the full ring and main impact within x24..488,y105..407, centered in the middle 60%, with quiet dark mist above and below for a 206:141 crop. No frame, text, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c0e57c09-e3e9-48e7-bea2-68bb59ce4391.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_lob_17.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square source, centered wide crop and thumbnail reviewed. The circular miasma ring and dark impact center fit inside the crop and remain distinguishable at small size, with dark battlefield scenery as support. Parent review pending.",
+    "cardId": "shadow_lob_17"
   }
 ]

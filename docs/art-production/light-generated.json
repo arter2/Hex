@@ -2743,5 +2743,95 @@
     "status": "generated",
     "batch": 12,
     "reviewNote": "Recomposed shield smaller for crop safety. Inspected 512 source, wide crop and 128 thumbnail: full shield rim and tip, knight face and braced hand, and the stunning wedge impact all remain clear."
+  },
+  {
+    "cardId": "light_lob_15",
+    "name": "Downdraft",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Downdraft”. Paint a powerful column of wind slamming down onto a stone causeway and pushing a few armored raiders backward along the ground. Torn leaves, dust, and loose cloak edges stream horizontally away from the impact; the dense visible downdraft is the main subject, with one startled defender clear enough to read. Warm light breaks through storm clouds. Painterly medieval/high-fantasy collectible-card art, richly painted believable stone, pale cloth, leather, metal, paper and wood, attractive directional light, clear value structure, atmospheric depth and a readable small-card silhouette. Match the supplied Hexmancers light references' elegant light, finely painted materials and grounded heroic fantasy. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep identity-critical face/eyes/hands and the entire named subject within x24–488,y105–407 on the square; arrange horizontally for a 206:141 card crop with quiet expendable scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-05db33cc-2e32-4343-8566-329d66f4ddcb.png",
+    "editableSourcePath": "game/cards/art/masters/light_lob_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square source and centered 206:141 crop inspected: the descending wind column is clear, and the foreground defender’s face and raised hand remain visible; the pushed-back figures reinforce the ground-level force in the thumbnail."
+  },
+  {
+    "cardId": "light_ward_16",
+    "name": "White Heron Castle",
+    "prompt": "Create a standalone illustration for the Hexmancers card “White Heron Castle”. Paint a compact, complete white limestone castle inspired by a white heron: graceful paired square towers and a low central keep with elegant heron-shaped stone finials, all fully visible on a rocky rise. A luminous geometric ward forms a short enclosing cage around its heavy walls, with small contained arcs of protective lightning at the corners. The whole castle must fit within the frame; avoid tall spires. Painterly medieval/high-fantasy collectible-card art, richly painted believable stone, pale cloth, leather, metal, paper and wood, attractive directional light, clear value structure, atmospheric depth and a readable small-card silhouette. Match the supplied Hexmancers light references' elegant light, finely painted materials and grounded heroic fantasy. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep identity-critical face/eyes/hands and the entire named subject within x24–488,y105–407 on the square; arrange horizontally for a 206:141 card crop with quiet expendable scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-3c8f9ae9-7517-40e4-934e-db889ac9c3c1.png",
+    "editableSourcePath": "game/cards/art/masters/light_ward_16.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square source and centered 206:141 crop inspected: the complete paired-tower castle and all heron finials remain visible; its white stone form, encircling cage ward, and thumbnail silhouette are clear."
+  },
+  {
+    "cardId": "light_boon_13",
+    "name": "Valkyrie's Reprieve",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Valkyrie's Reprieve”. Paint a valkyrie in grounded medieval Norse armor swooping low to shelter a fallen ally with a broad bright shield and one protective wing. Her face, eyes and shield hand are clearly visible, while the ally is secondary. A warm golden rallying light gathers around them, protective and resolute rather than explosive. Painterly medieval/high-fantasy collectible-card art, richly painted believable stone, pale cloth, leather, metal, paper and wood, attractive directional light, clear value structure, atmospheric depth and a readable small-card silhouette. Match the supplied Hexmancers light references' elegant light, finely painted materials and grounded heroic fantasy. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep identity-critical face/eyes/hands and the entire named subject within x24–488,y105–407 on the square; arrange horizontally for a 206:141 card crop with quiet expendable scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-4c6a722b-7f46-4c2e-b740-8a4ce843c329.png",
+    "editableSourcePath": "game/cards/art/masters/light_boon_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square source and centered 206:141 crop inspected: the valkyrie’s face, eyes, shield hand, and protective wing remain clear beside the fallen ally; the main rescue action is legible in the thumbnail."
+  },
+  {
+    "cardId": "light_charge_14",
+    "name": "Thousand Paper Cranes",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Thousand Paper Cranes”. Paint a luminous swarm of intricately folded paper cranes, dozens spiraling in a graceful horizontal current around one larger golden origami crane in the foreground. Their wings are clearly folded paper, with delicate ivory surfaces, faint painted red and blue patterns, and one narrow shaft of clean radiant light flying forward from the leading crane. Keep the central crane and individual paper form unmistakable, with an elegant Japanese temple courtyard in soft background. Painterly medieval/high-fantasy collectible-card art, richly painted believable stone, pale cloth, leather, metal, paper and wood, attractive directional light, clear value structure, atmospheric depth and a readable small-card silhouette. Match the supplied Hexmancers light references' elegant light, finely painted materials and grounded heroic fantasy. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep identity-critical face/eyes/hands and the entire named subject within x24–488,y105–407 on the square; arrange horizontally for a 206:141 card crop with quiet expendable scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-d4d31eb8-51d7-4359-a8d7-bacc3e2b6b58.png",
+    "editableSourcePath": "game/cards/art/masters/light_charge_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square source and centered 206:141 crop inspected: individual folded cranes and the larger leading crane with its light bolt are clear in the thumbnail; the leading crane’s outer right wingtip comes close to the crop edge, while its folded silhouette remains identifiable."
+  },
+  {
+    "cardId": "light_utility_13",
+    "name": "Canon of Medicine",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Canon of Medicine”. Paint a complete, beautifully illuminated medieval Persian medical codex opened on a low carved wooden reading stand: richly tooled dark red leather cover, thick parchment pages, elegant painted botanical studies of healing herbs and anatomy, no readable writing. A cool clear wash of light rises from the open pages and dissolves a small smoky stain from the air, suggesting a cleansing remedy. Keep the entire book visible and dominant, with legible page shapes and ornate cover; no person required. Painterly medieval/high-fantasy collectible-card art, richly painted believable parchment, leather, carved wood and glass, warm lamplight balanced by a clear blue-white cleansing glow, strong readable values and atmospheric depth. Match the supplied Hexmancers light references' elegant light, finely painted materials and grounded fantasy. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the entire named codex within x24–488,y105–407 on the square; arrange horizontally for a 206:141 card crop with quiet expendable scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-7f737bea-9b77-4502-8ce7-ab813a147f48.png",
+    "editableSourcePath": "game/cards/art/masters/light_utility_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square source and centered 206:141 crop inspected: the complete open codex, tooled cover, and illustrated pages remain visible and dominate the thumbnail; cleansing light is clear while the stand is incidental."
   }
 ]

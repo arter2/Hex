@@ -2,27 +2,27 @@
   "batch": 12,
   "workers": {
     "/root/b12_worker_1": {
-      "packet": "storm-03",
+      "packet": "light-04",
       "state": "running"
     },
     "/root/b12_worker_2": {
-      "packet": "gray-03",
+      "packet": "fire-04",
       "state": "running"
     },
     "/root/b12_worker_3": {
-      "packet": "shadow-03",
+      "packet": "gray-04",
       "state": "running"
     },
     "/root/b12_worker_4": {
-      "packet": "verdant-02",
+      "packet": "verdant-03",
       "state": "running"
     },
     "/root/b12_worker_5": {
-      "packet": "frost-03",
+      "packet": "shadow-04",
       "state": "running"
     },
     "/root/b12_worker_6": {
-      "packet": "light-03",
+      "packet": "frost-04",
       "state": "running"
     }
   },
@@ -43,7 +43,14 @@
     "light-02",
     "fire-03",
     "shadow-02",
-    "brown-03"
+    "brown-03",
+    "frost-03",
+    "verdant-02",
+    "gray-03",
+    "light-03",
+    "shadow-03",
+    "storm-03",
+    "brown-04"
   ],
   "reviewedSources": {
     "light_strike_13": {
@@ -385,6 +392,146 @@
     "brown_instant_67": {
       "file": "game/cards/art/masters/brown_instant_67.png",
       "sha256": "45367d3292ed22fd80d81fd6adc66ae0eb3ffa10e081d89176931957a41bc839"
+    },
+    "frost_lob_15": {
+      "file": "game/cards/art/masters/frost_lob_15.png",
+      "sha256": "0a69c3b4c6f168432a556303e891a649b13c36dcb1b84e4cbf29f1c7409f03aa"
+    },
+    "frost_ward_14": {
+      "file": "game/cards/art/masters/frost_ward_14.png",
+      "sha256": "ab5ac3c50459e32b8a27210455d2fdb1163317164bd4cdc03b35f170a758ad6a"
+    },
+    "frost_boon_15": {
+      "file": "game/cards/art/masters/frost_boon_15.png",
+      "sha256": "0a480eb6869cd680cfdb5e16e1a43dbe3a540907a9a7f6d54cab2c45d1669569"
+    },
+    "frost_charge_12": {
+      "file": "game/cards/art/masters/frost_charge_12.png",
+      "sha256": "6bf12830146a592614d46a056a05326897dd5a0b341a138cf7e40a6d4409b2b5"
+    },
+    "frost_environment_13": {
+      "file": "game/cards/art/masters/frost_environment_13.png",
+      "sha256": "7fa555f1ab6c0255667096c28d27e93cb12ff9607aa32f8c41f521c952e27310"
+    },
+    "verdant_summon_14": {
+      "file": "game/cards/art/masters/verdant_summon_14.png",
+      "sha256": "e32ae1b0d3c8619f32617ea1ebdf6256e48805fc79a079547571f6ae5fc111f7"
+    },
+    "hero_lia": {
+      "file": "game/cards/art/masters/hero_lia.png",
+      "sha256": "260c1515f5e9e8313414ce8039fa8c96a7ae137654fbdc993192f05f206d404d"
+    },
+    "thornwood_cage": {
+      "file": "game/cards/art/masters/thornwood_cage.png",
+      "sha256": "045f7163d9b97d545f5d31238fb45f056584371fa2847304a37ebd797e4ea2da"
+    },
+    "verdant_strike_16": {
+      "file": "game/cards/art/masters/verdant_strike_16.png",
+      "sha256": "3eb0bea37b2808c93fb3ea1f45fe2e7e1615668b272c2af91d6d331638685c11"
+    },
+    "verdant_lob_15": {
+      "file": "game/cards/art/masters/verdant_lob_15.png",
+      "sha256": "545995b82f6342260b4e464dc6347610538290328e40c90f5bf456f7b9be96ef"
+    },
+    "gray_summon_128": {
+      "file": "game/cards/art/masters/gray_summon_128.png",
+      "sha256": "6e95b3d41e18ab2d6ba5b5c21538b879dcd6251f79d3442cbc05248f9a0b8918"
+    },
+    "gray_summon_129": {
+      "file": "game/cards/art/masters/gray_summon_129.png",
+      "sha256": "146ef306c16fac76271a1b74a59936b46f6a8cf2eb9687799357064c7acaca77"
+    },
+    "gray_summon_130": {
+      "file": "game/cards/art/masters/gray_summon_130.png",
+      "sha256": "9b88d0ec92777b4c72d7ab6a8fca7603519c8783bd541cb34e8b63ed802b6ccf"
+    },
+    "gray_summon_131": {
+      "file": "game/cards/art/masters/gray_summon_131.png",
+      "sha256": "2a2394a4ff74bcfc049e2cd80a659353f241b8c0e88f0d7cef00e0ea88008380"
+    },
+    "gray_summon_132": {
+      "file": "game/cards/art/masters/gray_summon_132.png",
+      "sha256": "3f769b070756867a3815e1d9bc8b9627b39c4a4d036a81372b57067e5358b820"
+    },
+    "light_lob_15": {
+      "file": "game/cards/art/masters/light_lob_15.png",
+      "sha256": "4781e8d610cbaaf36146dd9ae537b14c8eb531ef6e6bedc5187a29ec2452f202"
+    },
+    "light_ward_16": {
+      "file": "game/cards/art/masters/light_ward_16.png",
+      "sha256": "384469e890e2f0bbd05e08378f8f7d0f2833a5333908d64eedf8f471a5db9ea9"
+    },
+    "light_boon_13": {
+      "file": "game/cards/art/masters/light_boon_13.png",
+      "sha256": "e00d05e54a2e80eea3c2352a895bf98026fe975ab8e2db9b72a95df67fc30ab0"
+    },
+    "light_charge_14": {
+      "file": "game/cards/art/masters/light_charge_14.png",
+      "sha256": "0d01d1218f733f6df38fb07237da9e7edcd89c16469befb55324d3d9d252755f"
+    },
+    "light_utility_13": {
+      "file": "game/cards/art/masters/light_utility_13.png",
+      "sha256": "b88bdc719789a3c560c2bc9f46c2841ad678bfb515ab7dc219673668df2a1500"
+    },
+    "shadow_charge_13": {
+      "file": "game/cards/art/masters/shadow_charge_13.png",
+      "sha256": "76f932255bd45dab6ffce50356d821a8f84e17919aa60c0a930549e540c03fb5"
+    },
+    "shadow_summon_11": {
+      "file": "game/cards/art/masters/shadow_summon_11.png",
+      "sha256": "f854468d6af379a7379a15c762fba9f8ba0d2d9946480334604f0b8ed7395b23"
+    },
+    "hero_banshee": {
+      "file": "game/cards/art/masters/hero_banshee.png",
+      "sha256": "a77935cd104ae55386a5ce48912c779fa1add8be2030557801c38b008a6772c9"
+    },
+    "shadow_strike_15": {
+      "file": "game/cards/art/masters/shadow_strike_15.png",
+      "sha256": "903c1f1e4cae42f2187f52ecc15e8ff44f34c0f40e1ff0305f40b3971fbbdcd2"
+    },
+    "shadow_lob_17": {
+      "file": "game/cards/art/masters/shadow_lob_17.png",
+      "sha256": "c50a71b161fd625b9484702274de873e92e32ee70e342a23e811770b05221a94"
+    },
+    "storm_boon_14": {
+      "file": "game/cards/art/masters/storm_boon_14.png",
+      "sha256": "73258ee0987719ef3420425f52eddf94adfafe4e3acf920d836ef98334fa0d80"
+    },
+    "storm_charge_14": {
+      "file": "game/cards/art/masters/storm_charge_14.png",
+      "sha256": "d19f8e5ba4e170930de825ad647d30e8bd0a5b724eaf154a8c1cc44f9a2e36e8"
+    },
+    "storm_trap_13": {
+      "file": "game/cards/art/masters/storm_trap_13.png",
+      "sha256": "0084b2a32284f7660cb15fbd50759f4912eb0ce65ee5b76c8014f31d547b2944"
+    },
+    "storm_summon_10": {
+      "file": "game/cards/art/masters/storm_summon_10.png",
+      "sha256": "37d3b3234eba68c88de763ae2d80fa1a63ead68ee88f0cd34f74840c4346b5f2"
+    },
+    "storm_machine_10": {
+      "file": "game/cards/art/masters/storm_machine_10.png",
+      "sha256": "5daa54ac51fea50c8815dddc29a44dee402b5b879ed99104f2030ea997b9b327"
+    },
+    "brown_instant_68": {
+      "file": "game/cards/art/masters/brown_instant_68.png",
+      "sha256": "3c59f2ac959c51dc91fa65be64ad2f9688be9b7c6fe469da751b8231c2a7a533"
+    },
+    "brown_instant_69": {
+      "file": "game/cards/art/masters/brown_instant_69.png",
+      "sha256": "38952eb6ffb95021da0cdb389297a4f22f15c9e8ba03e360dac2b72085914039"
+    },
+    "brown_instant_70": {
+      "file": "game/cards/art/masters/brown_instant_70.png",
+      "sha256": "e2fb22e108c6e5f6adaccb42a7f773000e23553fb5c596dfbbdb804a704717a8"
+    },
+    "brown_instant_71": {
+      "file": "game/cards/art/masters/brown_instant_71.png",
+      "sha256": "9eda6e65e4cda5e34ebfa7f54141eee4066ee5a3cc73b1cbca84215a42de9da2"
+    },
+    "brown_instant_72": {
+      "file": "game/cards/art/masters/brown_instant_72.png",
+      "sha256": "2bdb7c070dbce99120b0a84fb31e8a5cfaf1f49a9be5210cb8f4363294715509"
     }
   }
 }

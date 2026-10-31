@@ -2757,5 +2757,113 @@
     "status": "generated",
     "batch": 12,
     "reviewNote": "Square source inspected. The centered crop clipped the top of the ogre’s head, so the crop is shifted upward to y=45 (focalPoint 0.43); the adjusted 206:141 crop and thumbnail show his complete face, both hands, and stopping gesture."
+  },
+  {
+    "cardId": "gray_summon_128",
+    "name": "Mole Sapper",
+    "prompt": "Paint an illustration for the exact card Mole Sapper. A large, clever real-world mole warrior-beast tunnels beside a muddy medieval riverbank; its velvety charcoal face, tiny alert eyes and broad shovel-claws are prominent as it has just burst through the bank, steering a rush of water through its new trench to help an escorting foot soldier. Show the mole's solid body emerging from the earth and a readable stream of water surging past it, suggesting burrow and tide. Keep the complete face, both digging claws and main action compact in the center; the soldier remains small and secondary. Painterly medieval fantasy collectible-card art, believable wet fur, mud, river stones and leather, warm low sun against cool river mist, rich brushwork and atmospheric depth. Square 1:1 canvas for a 512×512 master; protect mole face, claws and meaningful action inside x24..488,y105..407 for the 206:141 card crop, quiet ground and sky above/below. No frame, lettering, runes, UI, cartoon, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b33b0ce1-7959-4075-ad75-d4027d8d42d0.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_128.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Inspected 512 source, wide crop and 128 thumbnail: mole face, both shovel claws, earth and surging river action stay clear; escorting soldier remains secondary."
+  },
+  {
+    "cardId": "gray_summon_129",
+    "name": "Badger",
+    "prompt": "Paint an illustration for the exact card Badger. A feral, sturdy European badger with striking black-and-white face markings braces in a woodland burrow clearing, its powerful forepaws digging into earth as two small spectral mole helpers emerge at its side. Blue-white static crackles over the badger's coarse fur as it overcharges and summons them; the badger's face and stout body are unmistakable and dominant, helpers remain secondary. Grounded wild-animal anatomy, dense silver-gray coat, damp roots and leaf litter, painterly medieval fantasy collectible-card art with dramatic moonlit rim light and warm lantern accents. Square 1:1 canvas for a 512×512 master; keep the entire badger face, relevant claws and readable small helpers in the middle 60%, x24..488,y105..407 for the 206:141 crop, quiet woodland margins. No frame, text, runes, UI, cartoon, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ec9a9edd-5bb0-486a-abe8-03167d673da0.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_129.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Inspected 512 source, wide crop and 128 thumbnail: badger face, forepaws and stout body are central; summoned mole helpers and static are readable secondary details."
+  },
+  {
+    "cardId": "gray_summon_130",
+    "name": "Rampaging Rhino",
+    "prompt": "Paint an illustration for the exact card Rampaging Rhino. A huge dire rhinoceros charges through a line of battered wooden shields, head and single forward horn thrust low as it tramples the barrier and scatters two small armored foes; short blue-white static arcs dance across its rough hide. Show the rhino's face, horn, shoulders and front hooves in a compact three-quarter view, powerful and tough, with the escorting soldiers tiny for scale. Painterly medieval fantasy collectible-card art, realistic rhinoceros anatomy and weathered hide, dust, splintered oak, sunlit dust against cool woodland shadows, rich brushwork. Square 1:1 canvas for a 512×512 master; protect whole face, horn, front hooves and key trample action inside x24..488,y105..407 for the 206:141 card crop, quiet margins above/below. No frame, lettering, runes, UI, cartoon, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-57001d2f-1d59-4616-bf02-29f8ccd1e0d8.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_130.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Inspected 512 source, wide crop and 128 thumbnail: rhino face and full horn are intact; blue static and shield-trampling impact read clearly, with foes secondary."
+  },
+  {
+    "cardId": "gray_summon_131",
+    "name": "Charging Bison",
+    "prompt": "Paint an illustration for the exact card Charging Bison. A powerful American bison charges low across a windswept grassland, massive shoulder hump and shaggy dark mane leading the motion, both short curved horns fully visible as it barrels past two tiny armored foes in its front line. The bison's face, horns, hump and forward hooves dominate in a horizontal three-quarter composition, with dust and grass streaming behind; no other buffalo. Painterly medieval fantasy collectible-card art, grounded animal anatomy, detailed coarse fur, warm late sun and cool storm shadows, atmospheric distance. Square 1:1 canvas for a 512×512 editable master; keep the whole head and horns plus main charge action safely inside x24..488,y105..407 for the 206:141 card crop, quiet sky and grass margins above/below. No frame, text, runes, UI, cartoon, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c9258a5b-e88b-4b7c-9bcd-e944e3bba8bf.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_131.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Inspected 512 source, wide crop and 128 thumbnail: bison face, paired horns, mass and charging action read immediately; incidental hump fur and fleeing foes crop naturally."
+  },
+  {
+    "cardId": "gray_summon_132",
+    "name": "Woolly Mammoth",
+    "prompt": "Paint an illustration for the exact card Woolly Mammoth. A massive ancient woolly mammoth strides quickly through a frosted boreal pass, its wise dark eye, long trunk, thick shaggy russet coat and both long curved ivory tusks fully visible as it turns in a purposeful zigzag around ice-covered rocks. Frost crystals and a chill cloud of breath trail its path; a tiny bundled scout keeps pace beside its shoulder to suggest an escort, but the mammoth dominates. Use a compact side-three-quarter view focused on the complete head, trunk and tusks, keeping both tusk tips well away from the card crop edges. Painterly medieval fantasy collectible-card art, realistic mammoth anatomy and layered wool, cold blue light against a warm break in winter clouds, atmospheric depth and refined brushwork. Square 1:1 canvas for a 512×512 editable master; keep the eye, whole trunk and both tusks with tips inside x24..488,y105..407 for the 206:141 crop, quiet snowy margins above and below. No frame, text, runes, UI, cartoon, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c10f022c-41c8-4b86-ad74-89306dd84d4f.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_132.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.44
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Shifted crop upward to retain mammoth forehead, eye and both full tusks. Inspected square, shifted wide crop and thumbnail; trunk and tusk tips remain clear, scout is secondary."
+  },
+  {
+    "name": "Elephant Bird",
+    "prompt": "Paint an illustration for the Hexmancers card “Elephant Bird.” A compact but powerful great bird stands squarely at the front of a rocky northern shore: shaggy dark-brown plumage, a heavy curved beak, sturdy feathered neck and broad taloned feet planted in the earth. Its wings are folded close as it tramples through low brush, showing tough bold presence rather than a flying pose; tiny distant figures provide scale. Painterly medieval high-fantasy collectible-card art with believable feather, beak and skin textures, warm late-day light against a cool stormy sea, layered atmospheric depth and strong readable silhouette. Square 1:1 composition for a 512x512 master; keep the bird's full head, beak, body and feet inside x24..488,y105..407, centered in the middle 60%, quiet sky and shore above/below for a 206:141 crop. No frame, text, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d81abbaf-2e9e-440b-919e-6d228bbce82c.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_133.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square editable source prepared; crop shifted upward (focalPoint y=0.42) to protect the bird's full head and beak. Lower feet are secondary.",
+    "cardId": "gray_summon_133"
   }
 ]

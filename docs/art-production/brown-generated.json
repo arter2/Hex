@@ -2833,5 +2833,95 @@
     "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Complete battery casing, both terminals, contained lightning core and connected crystal are visible with space around the artifact.",
     "batch": 12,
     "status": "generated"
+  },
+  {
+    "cardId": "brown_instant_68",
+    "name": "Dwarven Forge Bellows",
+    "prompt": "Paint an illustration for the exact card name “Dwarven Forge Bellows.” Show a sturdy dwarven smith in a compact three-quarter view using one magnificent pair of leather forge bellows to breathe life into a glowing medieval forge. Keep the dwarf’s focused face and working hand beside the complete bellows at the same height; the wood handles, riveted leather body, nozzle and glowing fire mouth are all clearly visible. The bellows are the main named object, and their gust sends embers into the forge, suggesting a tool that recharges magic. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers Brown references: grounded dwarf anatomy, textured beard and leather, hammered iron, warm directional firelight, layered brushwork, atmospheric depth, believable materials. Square 1:1 composition for a 512x512 master. Keep face, hand and entire bellows within x24–488,y105–407, arranged horizontally in middle 60 percent for a 206:141 crop. Quiet workshop gloom above and below. No modern hardware, no extra tools clutter, no text, runes, lettering, card frame, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8033f359-78d4-444b-ad67-186bdef255cf.png",
+    "editableSourcePath": "game/cards/art/masters/brown_instant_68.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square master, wide crop and 128px thumbnail inspected. The dwarf’s eyes and working hand stay clear beside the complete leather bellows and glowing nozzle; the nozzle sits near the right edge but remains legible. Firelight and metalwork read at thumbnail size."
+  },
+  {
+    "cardId": "brown_instant_69",
+    "name": "Gnomish Wind-Up Key",
+    "prompt": "Paint an illustration for the exact card name “Gnomish Wind-Up Key.” A clever gnome tinkerer in a compact three-quarter portrait turns a large ornate brass wind-up key in a small clockwork device, recharging its glowing mechanism. Keep the gnome’s focused face, turning hand and complete key at the same height and close together; the key has a distinct decorative bow and visible squared winding shaft, clearly the named object. Let the clockwork device be small supporting context, with one bright spark and a slowly restarting gear. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers Brown references: grounded expressive face and hand anatomy, fine beard and goggles, tactile brass, steel, wood and worn cloth, warm directional lamplight, layered brushwork and atmospheric depth. Square 1:1 composition for a 512x512 master. Keep entire key, relevant hand and face inside x24–488,y105–407, horizontal middle 60 percent, quiet workshop background above and below for a 206:141 crop. No modern tools, text, letters, readable runes, card border, numbers or UI. No anime, Disney-like proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-bc2f1478-ac79-4ea9-a33c-32841da0767c.png",
+    "editableSourcePath": "game/cards/art/masters/brown_instant_69.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square master, wide crop and 128px thumbnail inspected. The gnome’s eyes, turning hand and distinctive brass key remain clear beside the clockwork mechanism; only incidental hat tip extends above the crop. The key and warm machinery read at thumbnail size."
+  },
+  {
+    "cardId": "brown_instant_70",
+    "name": "Alchemist's Reagent Kit",
+    "prompt": "Paint an illustration for the exact card name “Alchemist's Reagent Kit.” Make a single compact open leather reagent case the unmistakable subject, displayed horizontally on a wooden apothecary bench. Its open lid and fitted compartments hold a small curated set of distinct medieval ingredients: two corked glass vials, a pinch of blue crystal, dried herb bundle and a tiny brass measuring spoon. A gloved alchemist’s hand may reach toward one vial, but the case and contents dominate. The kit should clearly look portable and ready to recharge a spell mixture, not a cluttered laboratory. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers Brown references: tactile leather, glass, plant matter and brass, nuanced brushwork, warm directional light and atmospheric depth, grounded and not photorealistic. Square 1:1 canvas for a 512x512 master. Keep the complete case, lid and all key reagents within x24–488,y130–390 in the middle 60 percent for a 206:141 crop; quiet apothecary background above and below. No readable writing on vials, no extra jars, no card frame, text, letters, runes, numbers or UI. No anime, Disney-like cartoon, toy-like proportions or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-528c99e6-5e34-42f5-866e-1cf5c577e3d3.png",
+    "editableSourcePath": "game/cards/art/masters/brown_instant_70.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square master, wide crop and 128px thumbnail inspected. The complete open case, fitted lid, two corked vials, crystal, herbs and measuring spoon remain visible; the hand is secondary. The kit reads clearly at thumbnail size."
+  },
+  {
+    "cardId": "brown_instant_71",
+    "name": "Storm Jar Generator",
+    "prompt": "Paint an illustration for the exact card name “Storm Jar Generator.” Show a compact medieval sky-tinker’s generator: a handsome brass-and-copper hand-cranked coil machine charging exactly three clear storm jars mounted securely along its base. The three glass jars are distinct and fully visible, each holding a small swirling blue-white lightning cloud; visible coils, crank and glass insulators make the generator identity clear. A focused sky tinkerer stands close beside the device with face and hand at the same height, secondary to the generator. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers Brown references: believable brass, copper, glass, cloth and gentle lightning, layered brushwork, attractive directional workshop light, atmospheric depth. Square 1:1 composition for a 512x512 master. Keep the complete compact generator, all three jars, and any operator’s face/hand inside x24–488,y105–407, horizontal middle 60 percent for a 206:141 crop. Quiet stormy sky and restrained workshop surroundings. No modern electrical wiring, no extra jars, no text, letters, runes, card frame, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-1559b5aa-f684-469e-b8ce-9d706229203d.png",
+    "editableSourcePath": "game/cards/art/masters/brown_instant_71.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square master, wide crop and 128px thumbnail inspected. The complete brass generator and all three storm jars stay visible and distinct. The operator’s eyes and hand remain clear while incidental hair extends beyond the crop; the jars and machine are readable at thumbnail size."
+  },
+  {
+    "cardId": "brown_instant_72",
+    "name": "Troll Rock Grinder",
+    "prompt": "Repaint the exact card “Troll Rock Grinder” as a wide, low horizontal portrait. Place a seated mountain troll’s complete focused face and bright eyes at x95–230,y175–320 on the 512x512 square, beside a compact tabletop rock grinder. The complete machine stays within x205–468,y175–370: a low iron-banded stone trough with two horizontal granite grinding rollers, a small shallow hopper, a wooden side crank and sparkling gravel visibly emerging below. The troll turns the crank with one hand and loads one small rock with the other; face, both hands and whole grinder are side by side at the same height, all fully inside x24–488,y105–407. No tall hopper or tall person. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers Brown references: grounded troll anatomy and expression, believable stone, iron, wood and rough leather, nuanced brushwork, dramatic warm directional forge light and atmospheric depth, not photorealistic. Explicit 1:1 square master for a 206:141 landscape crop. Keep the compact named machine and whole face safe in the horizontal middle 60 percent with quiet cavern above and below. No modern industrial machinery, no text, labels, runes, card frame, numbers or UI. No anime, Disney-like cartoon, toy proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a9ed0455-200e-41bb-a98c-8dbf7d8da795.png",
+    "editableSourcePath": "game/cards/art/masters/brown_instant_72.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Repainted after preserving the first attempt at /tmp/b12-brown-instant-72-first.png. 512-square master, wide crop and 128px thumbnail inspected: the troll’s entire face and eyes, both hands, full hopper, grinding rollers and crank all fit. The compact machine and gravel output remain clear at thumbnail size."
   }
 ]

@@ -2731,5 +2731,59 @@
     "status": "generated",
     "batch": 12,
     "reviewNote": "Repainted after the first cage silhouette touched the square edges. Square, upward-shifted 206:141 crop, and 128x88 thumbnail inspected: the whole domed cage and key thorn tips, plus the traveler's face and hand, fit together. Earlier source preserved at /tmp/b12_worker_4_scratch/thornwood_cage_attempt1.png."
+  },
+  {
+    "cardId": "verdant_lob_15",
+    "name": "Fall of the Great Ceiba",
+    "prompt": "Repaint “Fall of the Great Ceiba” as an original painterly medieval high-fantasy landscape. Show a single giant ceiba toppled sideways across a jungle clearing, but keep the whole readable tree significantly smaller than the square canvas with generous side margins: the entire uprooted flared rootball begins near x45, the thick fallen trunk spans the middle, and its main branching crown ends near x465. Nothing important touches or crosses any image edge. Make the whole tree silhouette fit inside a central horizontal band about y145..365, fully inside the final 206:141 crop. At impact, roots crack the earth and a wave of stones, leaves and dust leaps up beneath the trunk, showing the heavy ground-shaking attack. The rootball, trunk, crown and their main limbs must all remain recognizable as one complete fallen ceiba; keep distant standing trees small and secondary. Painterly tropical bark, moss and broad leaves, golden-green forest light, atmospheric depth and grounded natural detail. True 1:1 SQUARE canvas for a 512x512 master; protect all parts of the fallen tree within x24..488 and y105..407, with quiet canopy and foreground beyond. The center is a wide 206:141 card illustration. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5969e8a2-c85a-4876-83f3-3783a67816e4.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_lob_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Repainted after the first image clipped the rootball at the square edge. Square, 206:141 crop, and 128x88 thumbnail inspected: flared rootball, trunk, and main crown fit as one falling tree, with impact earth and debris readable. Earlier source preserved at /tmp/b12_worker_4_scratch/verdant_lob_15_attempt1.png."
+  },
+  {
+    "cardId": "verdant_boon_13",
+    "name": "Demeter's Bounty",
+    "prompt": "Paint an original illustration for the fantasy boon “Demeter's Bounty.” Depict Demeter as a dignified ancient Greek-inspired harvest goddess in a painterly medieval fantasy orchard, her mature kind face and open hands clearly visible as she blesses a weary farmer. A lush sheaf of grain, ripe pomegranate and fresh green sprouts rise between their hands, while a soft golden-green healing shimmer restores color to the farmer's cheeks and a few new shoots echo outward behind them. Demeter and the healing gesture are the main subject; do not replace her with a generic floating orb. Painterly high-fantasy materials, believable linen, bronze, leaves and skin, warm late-summer light, atmospheric depth, grounded serious faces. Horizontal composition. True 1:1 SQUARE canvas for a 512x512 master; keep Demeter's face, hands, farmer's face and central sprout/sheaf cluster inside x24..488 and y105..407. Quiet orchard canopy and earth above/below; center will be cropped to a wide 206:141 card illustration. No text, lettering, frame, UI, anime, Disney-like cartoon, toy proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c6b436a3-d7c4-47ae-9424-1533514be6e1.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_boon_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square, centered 206:141 crop, and 128x88 thumbnail inspected. Demeter's face and blessing hands, farmer's face, grain, pomegranate and new sprouts stay legible; healing light remains restrained."
+  },
+  {
+    "cardId": "verdant_charge_15",
+    "name": "Elven Moonshaft Quiver",
+    "prompt": "Paint an original illustration for the fantasy artifact “Elven Moonshaft Quiver.” Feature one complete refined elven quiver laid horizontally on a mossy stone ledge, its dark carved wood and silver-leaf fittings unmistakable, with a fanned cluster of long slender moonshaft arrows nested inside. Show their pale moonlit shafts, small crescent-shaped silver heads and subtle cool glow; keep the full quiver body, closure and arrow tips visible together. A moonlit forest, a few fallen leaves and distant elven masonry support the artifact without competing. No operator is needed. Painterly medieval high-fantasy craftsmanship, nuanced wood, silver, leather and feather detail, clear silhouette and dramatic cool moonlight with a warm reflected edge. True 1:1 SQUARE canvas for a 512x512 master; arrange the complete horizontal quiver and complete arrow fletching/heads within x24..488 and y105..407. Quiet scenery above and below; center will be cropped to a wide 206:141 card illustration. No text, lettering, frame, UI, modern equipment, anime, Disney-like cartoon, toy proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-341c0b49-3dab-46c3-8324-160a5b219366.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_charge_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square, centered 206:141 crop, and 128x88 thumbnail inspected. Full horizontal quiver, closure, silver fittings and arrow fletching/heads remain visible within the crop and recognizable at thumbnail size."
   }
 ]

@@ -96,8 +96,11 @@ reason shown on the Duel screen, when:
   counter hit, crit and so on), shows the number, and sends `hit {dmg, color, tile}` to the other device. The other
   device applies it with its own defences (dodge, barrier, guard). The "no one-shot" cap that limits a monster's hit
   to 45% of your HP does not apply to a duel hit.
-- **Damage over time is mirrored** (each tick is sent as a hit with no tile). **Statuses, ground effects and summoned
-  creatures are not mirrored** to the other device in this version.
+- **Burn and poison are mirrored.** A card that burns or poisons leaves that on the avatar in the attacker's game,
+  which ticks it at the usual rates (burn 5 a second, poison its amount for each tile the avatar steps onto) and
+  sends each tick as a hit with no tile, so it always lands. **Other statuses (curse, slow, stun, freeze), ground
+  effects and summoned creatures are not mirrored** to the other device in this version, and a land Claim leaves
+  the avatar where it is (its tile is not taken).
 - **Their shots are drawn on your side** as they come down your row, but only as a picture. Damage arrives only
   as a `hit` message.
 - **The opponent's HP bar** comes from their `sync` messages (HP, max HP, barrier, Spell gauge; at most five a
@@ -110,7 +113,10 @@ reason shown on the Duel screen, when:
 ### How a duel ends
 
 - A player whose HP reaches 0 sends `end`. The other player wins.
-- If both reach 0 within 300 ms of each other, both devices show **Draw**.
+- If both reach 0 within 300 ms of each other, both devices show **Draw**. Each device compares the same two
+  moments: its own death and the other's, taken from the timestamp on the other's `end` message (turned into local
+  time by the clock sync), so both come to the same result. The first to die waits 300 ms plus one round trip
+  (and 50 ms to spare) before showing a loss, so a death inside the window still has time to arrive.
 - **Opponent left:** the other player left (Back, or Leave the duel from the pause menu). You win by forfeit.
 - **Connection lost:** nothing has come from the other device for 5 seconds, or the connection closed without a
   goodbye. You win by forfeit.
@@ -189,8 +195,8 @@ exactly by the avatar.
   reach each other directly. The relay is also local.
 - **WebRTC can fail on some phones.** Browsers that hide local addresses behind mDNS names can stop the two devices
   from finding each other. Use a Room through the relay instead.
-- **Statuses, ground effects and summoned creatures are not mirrored.** Cards whose whole point is a status (freeze,
-  stun) feel weaker in a duel.
+- **Statuses other than burn and poison, ground effects and summoned creatures are not mirrored.** Cards whose
+  whole point is a status (freeze, stun) feel weaker in a duel.
 - **Two players only.** No internet play, matchmaking, spectators or rematches.
 
 Full rollback netcode is deliberately left for later: see

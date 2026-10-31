@@ -211,7 +211,7 @@ function hitEnemy(e,base,card,opts){
   let dmg=Math.max(1,Math.round(base*mult));
   if(counter) counterHit(e);
   if(e.barrier>0&&!opts.raw&&!opts.dig){ const a=Math.min(e.barrier,dmg); e.barrier-=a; dmg-=a; if(!dmg){ floater('🛡',e.tile,'#fff0b3'); return 0; } }
-  if(e.remote) return duelHit(e,dmg,card,opts,weak||counter||crit);   // a duel's avatar: the hit goes to the opponent, who applies it
+  if(e.remote){ if(card&&!opts.raw) duelDotStatus(e,card); return duelHit(e,dmg,card,opts,weak||counter||crit); }   // a duel's avatar: the hit goes to the opponent, who applies it
   e.hp-=dmg; e.hitT=.18; if(typeof palPlay==='function') palPlay(e,'hurt'); if(dmg>=40||weak) shake(dmg>=60?5:3);
   floater(dmg+(crit?' CRIT!':weak?' WEAK!':resisted?' resist':''),e.tile,counter?'#ff8fa3':crit?'#ffb347':weak?'#ffe24d':opts.raw?'#b8ffb0':'#fff',weak||counter||crit);
   flash(e.tile,colorOf(card),.8);
@@ -757,6 +757,7 @@ function claimLand(c){
 }
 // clear a tile for the claim: an enemy is driven further back (and the land's effect hits it), its walls crumble
 function clearForClaim(t,land,taking){ const o=t.occ; if(!o) return true;
+  if(o.remote) return false;   // a duel's avatar stands where the opponent's mage is: it is not moved, cursed or trapped, and its tile is not taken
   if(o.kind==='enemy'){ const far=land==='flood'?2:1;
     const to=E_TILES.filter(x=>!x.occ&&!taking.includes(x)&&x.col>t.col).sort((a,b)=>Math.abs(a.r-t.r)*3+Math.abs(a.col-t.col-far)-(Math.abs(b.r-t.r)*3+Math.abs(b.col-t.col-far)))[0];
     if(!to) return false; t.occ=null; o.tile=to; to.occ=o; burst(to,'#e6f4ff',6,.3);
@@ -1121,6 +1122,22 @@ function startDuel(list,session,hooks){
   session.ready();
   return b;
 }
+// burn and poison are the attacker's damage over time, ticked here (duelTick) and sent as raw hits; curse, slow, stun
+// and freeze would act on the opponent's own sim, so the avatar never takes them
+function duelDotStatus(e,c){
+  if(c.burn) e.burnT=Math.max(e.burnT||0,c.burn);
+  if(c.poison){ e.poisonT=8; e.poisonAmt=Math.max(e.poisonAmt||0,c.poison); }
+}
+// the avatar's burn and poison, on the same rates as updateEnemy and stepEnemy (enemies.js): burn 5 a second,
+// poison its amount for each tile the avatar steps onto while it lasts
+function duelDot(b,e,dt){
+  const v=b.pvp;
+  e.curseT=0; e.slowT=0; e.stunT=0; e.freezeT=0;   // a backstop: none of these belong on the avatar
+  if(b.phase!=='fight'||e.hp<=0){ v.dotTile=e.tile; return; }
+  e.poisonT=Math.max(0,(e.poisonT||0)-dt);
+  if(e.burnT>0){ e.burnT-=dt; e.burnAcc=(e.burnAcc||0)+5*dt; if(e.burnAcc>=5){ e.burnAcc-=5; hitEnemy(e,5,null,{raw:true}); } }
+  if(e.tile!==v.dotTile){ if(v.dotTile&&e.poisonT>0&&e.hp>0) hitEnemy(e,e.poisonAmt,null,{raw:true}); v.dotTile=e.tile; }
+}
 // a hit on the avatar, after its damage is worked out: sent to the opponent (in my own columns; the session turns
 // them), shown here, and the avatar's HP is left for the opponent's next sync. Raw hits (damage over time) carry no tile.
 function duelHit(e,dmg,card,opts,big){
@@ -1140,6 +1157,7 @@ function duelTick(b){
   if(B!==b) return;
   v.spellLeft=s.spell.open&&b.phase==='custom'?Math.max(0,s.spell.sec-(now-s.spell.openedAt)/1000):null;
   const e=duelAvatar(); if(!e) return;
+  duelDot(b,e,wdt);
   const st=e.step;
   if(st){ st.t+=wdt; if(!st.half&&st.t>=st.dur/2){ st.half=true; duelPlace(e,st.to); }   // on the tile it enters from halfway, as yours does
     const f=Math.min(1,st.t/st.dur); e.fx=st.from.wx+(st.to.wx-st.from.wx)*f; e.fz=st.from.wz+(st.to.wz-st.from.wz)*f;

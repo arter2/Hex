@@ -33,6 +33,7 @@ jobs:
           node tools/playtest/battle-clock-test.js
           node tools/playtest/netplay-test.js
       - name: LAN relay checks
+        if: always()
         env:
           PLAYWRIGHT_MODULE: ${{ github.workspace }}/tools/playtest/node_modules/playwright
         run: (cd tools/netplay && npm ci && node relay-test.js)

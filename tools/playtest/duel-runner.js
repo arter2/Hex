@@ -564,6 +564,47 @@ check('avatar keeps no local ground statuses', async () => {
   return { ok: r.st.every(([, v]) => v === 0) && !r.mark && r.dmg === 10, detail: r };
 });
 
+// a land claim drives enemies back and leaves a status on them; the avatar is where the opponent's mage stands, so it
+// stays put, takes no status and springs no trap
+check('a swamp claim leaves the avatar alone', async () => {
+  await walkTo('B', 6, 4);
+  await sleep(300);
+  const r = await ev('A', () => {
+    const e = duelAvatar(),
+      t0 = e.tile,
+      at0 = [t0.col, t0.r];
+    claimLand({ land: 'swamp', reach: 'deep', secs: 20 });
+    const out = { at0, at: [e.tile.col, e.tile.r], same: e.tile === t0, side: t0.side, occ: t0.occ === e, curseT: e.curseT || 0 };
+    landTick(1000); // the claimed ground goes back, so later checks start on a clean board
+    return out;
+  });
+  await walkTo('B', 1, 4);
+  return { ok: r.at0[0] === 7 && r.same && r.side === 'e' && r.occ && r.curseT === 0, detail: r };
+});
+
+// burn and poison are the attacker's damage over time: they tick on the avatar and are sent as raw hits
+check('burn on the avatar keeps hurting the opponent', async () => {
+  await walkTo('A', 1, 4);
+  await walkTo('B', 1, 4);
+  await sleep(300);
+  const h0 = await hp('B');
+  const burn = await ev('A', () => {
+    const e = duelAvatar();
+    e.burnT = 0;
+    e.burnAcc = 0;
+    hitEnemy(e, 10, CARDS.ember_dart);
+    return { card: CARDS.ember_dart.burn, burnT: e.burnT };
+  });
+  const direct = await within('B', h => B.player.hp < h, h0, 800);
+  const h1 = await hp('B');
+  const again = await within('B', h => B.player.hp < h, h1, 1600);
+  const h2 = await hp('B');
+  await ev('A', () => (duelAvatar().burnT = 0));
+  await sleep(300);
+  await ev('B', () => (B.player.hp = B.player.maxHp));
+  return { ok: burn.card > 0 && burn.burnT > 0 && direct && again && h1 - h2 === 5, detail: { burn, h0, h1, h2 } };
+});
+
 let saveBefore = null;
 const snapshot = () => ev('A', () => JSON.stringify(Object.keys(localStorage).sort().map(k => [k, localStorage.getItem(k)])));
 check('death ends both', async () => {

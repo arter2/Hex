@@ -7,7 +7,7 @@ const NET_COLS=14;   // duel board width; hit tiles are mirrored c' = NET_COLS-1
 const NET_DEFAULTS={mpSpell:10,mpDefend:50,mpBackdate:250,mpSend:16,mpSmooth:33};
 const NET_DECK_MIN=45, NET_DECK_MAX=60;
 const NET_SILENCE_MS=5000, NET_PING_MS=1000, NET_BURST_N=8, NET_BURST_GAP=20, NET_SYNC_MS=200;
-const NET_DEATH_GRACE_MS=300, NET_SPELL_GRACE_MS=2000, NET_HISTORY_MS=1000;
+const NET_DEATH_GRACE_MS=300, NET_DEATH_MARGIN_MS=50, NET_SPELL_GRACE_MS=2000, NET_HISTORY_MS=1000;
 
 // Where the local mage stood over time; entries are sorted by ts.
 class PosHistory{
@@ -55,7 +55,7 @@ class DuelSession{
     this._samples=[];
     this.clock={offset:0,rtt:0,toLocal:ts=>ts-this.clock.offset};
     this.spell={open:false,mineDone:false,theirsDone:false,sec:0,openedAt:0};
-    this.died=false; this.theyDied=false; this._deathAt=0;
+    this.died=false; this.theyDied=false; this._myDeathAt=0; this._theirDeathAt=0;
     this._lastRx=this.now();
     transport.onmessage=text=>{ const m=_np.decode(text); if(m) this._handle(m); };
     transport.onclose=()=>this._onClose();
@@ -113,7 +113,7 @@ class DuelSession{
         if(this.spell.open){ this.spell.theirsDone=true; this._checkSpell(); }
         return;
       case 'end':
-        if(m.loser==='me'&&!this.theyDied){ this.theyDied=true; this._noteDeath(); }
+        if(m.loser==='me'&&!this.theyDied){ this.theyDied=true; this._theirDeathAt=this.clampTs(m.ts); this._noteDeath(); }
         return;
     }
   }
@@ -231,17 +231,29 @@ class DuelSession{
   iDied(){
     if(!this._live()||this.died) return;
     this.died=true;
+    this._myDeathAt=this.now();
     this._send({t:'end',loser:'me'});
     this._noteDeath();
   }
+  // Both death times are on this side's clock (the peer's via clampTs of its end.ts), so both
+  // sides compare the same two instants and agree: within the grace is a draw, else first to die loses.
   _noteDeath(){
-    if(!this._deathAt) this._deathAt=this.now();
     if(this.died&&this.theyDied) this._resolveDeath();
   }
   _resolveDeath(){
-    if(this.died&&this.theyDied) this._finish('draw','hp');
+    if(this.died&&this.theyDied){
+      const d=this._myDeathAt-this._theirDeathAt;
+      if(Math.abs(d)<NET_DEATH_GRACE_MS) this._finish('draw','hp');
+      else this._finish(d<0?'lose':'win','hp');
+    }
     else if(this.died) this._finish('lose','hp');
     else this._finish('win','hp');
+  }
+  // How long a lone death waits before resolving. The first to die waits out the grace plus a round
+  // trip, so a peer death inside the grace has time to arrive; the survivor needs only the grace.
+  _deathWaitDone(n){
+    if(this.died) return n-this._myDeathAt>=NET_DEATH_GRACE_MS+this.clock.rtt+NET_DEATH_MARGIN_MS;
+    return n-this._theirDeathAt>=NET_DEATH_GRACE_MS;
   }
   _finish(result,reason){
     if(this.state==='over') return;
@@ -271,7 +283,7 @@ class DuelSession{
       else{ this.state='over'; this._emit('refused',{reason:'timeout'}); }
       return;
     }
-    if(this._live()&&(this.died||this.theyDied)&&n-this._deathAt>=NET_DEATH_GRACE_MS){ this._resolveDeath(); return; }
+    if(this._live()&&(this.died||this.theyDied)&&!(this.died&&this.theyDied)&&this._deathWaitDone(n)){ this._resolveDeath(); return; }
     if(this.spell.open){
       this._checkSpell();
       if(this.spell.open&&!this.spell.mineDone&&n-this.spell.openedAt>=this.spell.sec*1000) this.spellDone();

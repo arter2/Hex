@@ -393,10 +393,46 @@ test('single death', () => {
   advance(p.w, 299, [p.A, p.B]);
   assert.equal(p.A.log('end').length + p.B.log('end').length, 0, 'grace window');
   advance(p.w, 10, [p.A, p.B]);
-  assert.deepEqual(p.A.log('end'), [{ result: 'lose', reason: 'hp' }]);
   assert.deepEqual(p.B.log('end'), [{ result: 'win', reason: 'hp' }]);
+  assert.equal(p.A.log('end').length, 0, 'first to die waits grace + rtt + margin');
+  advance(p.w, 50, [p.A, p.B]);
+  assert.deepEqual(p.A.log('end'), [{ result: 'lose', reason: 'hp' }]);
   advance(p.w, 1000, [p.A, p.B]);
   assert.equal(p.A.log('end').length, 1); assert.equal(p.B.log('end').length, 1);
+});
+test('draw is decided the same on both sides', () => {
+  for (const L of [5, 20, 60]) for (const x of [0, 150, 295, 305, 600]) for (const firstA of [true, false]) {
+    const p = pair({ delayMs: L });
+    for (let i = 0; i < 2000 && !(p.A.state === 'fighting' && p.B.state === 'fighting'); i++) {
+      advance(p.w, 1, [p.A, p.B]); p.A.ready(); p.B.ready();
+    }
+    advance(p.w, 300, [p.A, p.B]);                       // let the ping burst settle the clock
+    const [F, S, tS] = firstA ? [p.A, p.B, p.tb] : [p.B, p.A, p.ta];
+    let got = null; const om = tS.onmessage;
+    tS.onmessage = t => { const m = decode(t); if (m && m.t === 'end' && got === null) got = p.w.T; om(t); };
+    F.iDied();
+    for (let i = 0; i < 3000; i++) {
+      p.w.T++; p.w.flush();
+      if (got !== null && p.w.T === got + x && !S.died) { S.iDied(); p.w.flush(); }
+      p.A.tick(); p.B.tick(); p.w.flush();
+    }
+    const tag = `L=${L} x=${x} ${firstA ? 'A' : 'B'} first`;
+    const rf = F.log('end').map(e => e.result), rs = S.log('end').map(e => e.result);
+    assert.equal(rf.length, 1, tag); assert.equal(rs.length, 1, tag);
+    const want = L + x < 300 ? ['draw', 'draw'] : ['lose', 'win'];
+    assert.deepEqual([rf[0], rs[0]], want, tag + ' got ' + rf[0] + '/' + rs[0]);
+  }
+});
+test('first to die waits grace plus a round trip', () => {
+  const p = pair({ delayMs: 20 });
+  advance(p.w, 200, [p.A, p.B]); p.A.ready(); p.B.ready(); advance(p.w, 100, [p.A, p.B]);
+  assert.equal(p.A.clock.rtt, 40);
+  p.A.iDied();
+  advance(p.w, 300 + 40 + 49, [p.A, p.B]);
+  assert.equal(p.A.log('end').length, 0);
+  assert.deepEqual(p.B.log('end'), [{ result: 'win', reason: 'hp' }]);
+  advance(p.w, 1, [p.A, p.B]);
+  assert.deepEqual(p.A.log('end'), [{ result: 'lose', reason: 'hp' }]);
 });
 test('hostile peer messages are ignored', () => {
   const p = pair(); fight(p);

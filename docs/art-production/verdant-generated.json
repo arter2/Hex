@@ -2537,8 +2537,8 @@
   {
     "cardId": "verdant_charge_13",
     "name": "Gourd of Pine Sap",
-    "prompt": "Paint an illustration for Gourd of Pine Sap, a reusable thrown charge that splashes sticky pine sap to slow a target. A forest alchemist with a clear face and throwing hand holds one compact dried pine gourd flask beside the face at the same height; show the complete bulbous gourd body, narrow neck, cork stopper, cord wrapping and broad rounded base. The alchemist has just thrown a second small gourd toward an armored foe, where amber sap splashes and clings in sticky strands, visibly slowing the target. Keep the handheld named gourd whole and distinct, not hidden by the flying impact. Painterly medieval fantasy, believable pine rind, cork, cord, amber sap and woodland cloth, warm light, atmospheric depth, grounded face and hands. Explicit 1:1 SQUARE 512x512; full held gourd including stopper/base, operator face, relevant hand, flying gourd and clear sap splash inside x24..488,y105..407 for 206:141 crop; quiet foliage above and below. No frame, labels, text, numbers, UI, anime, cartoon, photorealism or pixel art.",
-    "generatedPath": "/workspace/generated_images/exec-99e2fa08-cd6a-4456-a851-1f26b97caa30.png",
+    "prompt": "Recompose this same painterly woodland fantasy scene slightly inward from the left edge. Preserve the forest alchemist, pine sap, armored target and throwing action. Shift the alchemist and her handheld pine gourd about 12% of the canvas width toward the center so the supporting hand that grips the gourd is fully visible with clear margin from the left edge. Place the complete small pine gourd beside her face at the same height; preserve its whole bulbous body, cork stopper, neck, cord and rounded base. Keep the alchemist's full face, complete supporting hand, complete throwing hand, held gourd, airborne gourd and amber sap splash all visible together in the middle horizontal band. Do not crop any fingers or bottle parts. Retain natural grounded anatomy, textured leaf-green clothing, pine-rind gourd and painterly warm light. Explicit 1:1 SQUARE 512x512 composition; keep all named/action-critical parts within x24..488,y105..407 for the 206:141 crop, quiet foliage above and below. No text, frame, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d207ed9d-11e6-4b76-aead-46808bd6dceb.png",
     "editableSourcePath": "game/cards/art/masters/verdant_charge_13.png",
     "sourceNative": [
       1254,
@@ -2546,10 +2546,28 @@
     ],
     "focalPoint": [
       0.5,
-      0.42
+      0.5
     ],
     "status": "generated",
     "batch": 11,
-    "reviewNote": "Reviewed 512-square source and upward-shifted 206:141 crop/thumb at focal y=0.42. Full alchemist face, throwing hand, airborne gourd, sap splash and handheld gourd including stopper and base fit; the supporting grip sits close to the left crop edge."
+    "reviewNote": "Repainted to bring the supporting hand and held gourd away from the left edge. Reviewed final 512-square source, centered 206:141 crop and 128x88 thumbnail: alchemist face, both complete hands, gourd including cork and rounded base, airborne gourd and sap splash all fit. Previous source preserved at /tmp/verdant05-repaint-scratch/verdant_charge_13-before-repaint.png."
+  },
+  {
+    "cardId": "verdant_trap_12",
+    "name": "Pixie-Led Path",
+    "prompt": "Paint an illustration for Pixie-Led Path, a short snare trap guided by woodland pixies that briefly stuns an intruder and gently mends the traveler. In an ancient green forest, a weary human wayfarer with a clear adult face pauses at a fork in the path, one hand following the gentle glow of three tiny naturalistic pixies as they guide the traveler along a safe winding trail. Behind them, the wrong path is caught by three low braided root-and-vine snares that lift an armored pursuer's boot and briefly pin him; a soft green shimmer heals a small wound on the traveler. The pixies are small subtle lights with delicate translucent wings and natural proportions, not toys, not cute cartoon mascots, not oversized. Keep traveler face and guiding hand, the three woven snares and path clear; rich plants and firefly glimmers remain secondary. Painterly medieval high fantasy, nuanced bark, leaves, moss, cloth and leather, dappled golden light, grounded anatomy and atmospheric depth. Explicit 1:1 SQUARE 512x512; keep traveler face/hand, central path, three snare loops and subtle pixies inside x24..488,y105..407 for the 206:141 crop, quiet canopy and moss above/below. No frame, lettering, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-3fe6d322-55e8-49d6-8c4a-9eb67dd37c73.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_trap_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.47
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed 512-square source and slightly upward-shifted crop/thumb at focal y=0.47. The wayfarer's face and guiding hand remain visible with the three subdued pixies and thorny root snares catching an armored pursuer; the pixies remain small and painterly rather than toy-like."
   }
 ]

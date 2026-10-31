@@ -1,22 +1,14 @@
-# Batch 11 production progress
+# Batch 11 completed artwork
 
-**199 of 200 new 512×512 sources saved; 195 approved.**
+**200 new editable 512×512 sources approved and exported,25 per colour.** All 40 packets passed parent crop/thumbnail review. The registry now contains 1234 illustrations, with 719 catalogue cards pending.
 
-1 sources remain ungenerated. 0 saved source(s) require repainting. 39 five-card packets have passed parent crop/thumbnail review. This is not a completed 200-card delivery.
-
-Production uses the lighter artist agents and shared five-card queue in `PACKET-WORKFLOW.md`. Ledger reservations alone do not establish live artist processes.
-
-Current runtime: 1034 illustrations. New sources are activated after the complete batch passes review/export. Starting baseline: 1034 cards; target: 1234. No complete batch-11 ZIP or 200-card handoff folder has been created yet.
-
-## Resume and integration
-
-Read `batch-11-brief.md` and `batch-11-worker-state.json`. Resume only missing IDs in reserved jobs and explicitly rejected repaints. Parent crop/thumbnail review pins source hashes before another packet is dispatched. If a usage cap appears, stop until its actual reported reset. The last completed handoff remains `card-art-deliveries/batch-10-200/`. Do not activate partial sources or describe them as a completed delivery.
+Delivery: `card-art-deliveries/batch-11-200/` contains 200 new sources and 600 display crops, exact-name/ID mapping, checksums and Claude's integration README. Runtime verification is in `batch-11-validation.json`; physical package verification is in `AUDIT.json` inside the delivery. Earlier supplied/generated artwork remains unchanged. No ZIP is required for this Git handoff.
 
 ## Saved sources
 
 | Card | ID | Review | Source |
 | --- | --- | --- | --- |
-| Briar Arc | `briar_arc` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/briar_arc.png) |
+| Briar Arc | `briar_arc` | Accepted | [512×512 PNG](../../game/cards/art/masters/briar_arc.png) |
 | Acid Flask | `brown_instant_37` | Accepted | [512×512 PNG](../../game/cards/art/masters/brown_instant_37.png) |
 | Sky-Folk Lightning Jar | `brown_instant_38` | Accepted | [512×512 PNG](../../game/cards/art/masters/brown_instant_38.png) |
 | Troll Snot Bomb | `brown_instant_39` | Accepted | [512×512 PNG](../../game/cards/art/masters/brown_instant_39.png) |
@@ -196,15 +188,15 @@ Read `batch-11-brief.md` and `batch-11-worker-state.json`. Resume only missing I
 | Walls of the City of Brass | `storm_ward_12` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_ward_12.png) |
 | Wolfskin Frenzy | `verdant_boon_09` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_boon_09.png) |
 | Fern Seed Vanishing | `verdant_boon_10` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_boon_10.png) |
-| Green Man's Blessing | `verdant_boon_11` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/verdant_boon_11.png) |
+| Green Man's Blessing | `verdant_boon_11` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_boon_11.png) |
 | Mushroom Basket | `verdant_charge_11` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_charge_11.png) |
 | Bola Set | `verdant_charge_12` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_charge_12.png) |
-| Gourd of Pine Sap | `verdant_charge_13` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/verdant_charge_13.png) |
+| Gourd of Pine Sap | `verdant_charge_13` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_charge_13.png) |
 | Mire of the Fens | `verdant_environment_06` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_environment_06.png) |
 | Stampede | `verdant_environment_07` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_environment_07.png) |
 | Kapok Fluff Burst | `verdant_lob_11` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_lob_11.png) |
 | Sasquatch Boulder | `verdant_lob_12` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_lob_12.png) |
-| Treefolk Stomp | `verdant_lob_13` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/verdant_lob_13.png) |
+| Treefolk Stomp | `verdant_lob_13` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_lob_13.png) |
 | Mask of the Green Man | `verdant_piece_06` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_piece_06.png) |
 | Viper Strike | `verdant_strike_12` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_strike_12.png) |
 | Cobra Venom Spray | `verdant_strike_13` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_strike_13.png) |
@@ -213,5 +205,6 @@ Read `batch-11-brief.md` and `batch-11-worker-state.json`. Resume only missing I
 | Oak Dryad | `verdant_summon_13` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_summon_13.png) |
 | Giant Puffball | `verdant_trap_10` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_trap_10.png) |
 | Strangler Vine Snare | `verdant_trap_11` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_trap_11.png) |
+| Pixie-Led Path | `verdant_trap_12` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_trap_12.png) |
 | Pangolin Scales | `verdant_ward_11` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_ward_11.png) |
 | Green Chapel Gate | `verdant_ward_12` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_ward_12.png) |

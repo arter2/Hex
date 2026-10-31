@@ -1,15 +1,15 @@
 {
   "batch": 11,
-  "status": "in-progress",
+  "status": "complete",
   "targetNewImages": 200,
-  "generatedSources": 199,
-  "reviewedSources": 195,
-  "missingSources": 1,
-  "reviewedPackets": 39,
+  "generatedSources": 200,
+  "reviewedSources": 200,
+  "missingSources": 0,
+  "reviewedPackets": 40,
   "requiresRepaint": [],
   "baselineActive": 1034,
   "targetActive": 1234,
-  "runtimeActive": 1034,
+  "runtimeActive": 1234,
   "baselineRuntimeImageCount": 4200,
   "baselineGeneratedRecordCount": 984,
   "savedCards": [
@@ -19,7 +19,7 @@
       "colour": "verdant",
       "source": "game/cards/art/masters/briar_arc.png",
       "sha256": "fb406c35090933aadd77f0e3977ad1bf6b27beac7093a40e61887b16ec8bc968",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.5
@@ -2179,7 +2179,7 @@
       "colour": "verdant",
       "source": "game/cards/art/masters/verdant_boon_11.png",
       "sha256": "6a314fcfebf3eb01fdf7b4c9016340ff61f124959718e62550adbda5f64ee9d7",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.4
@@ -2214,11 +2214,11 @@
       "name": "Gourd of Pine Sap",
       "colour": "verdant",
       "source": "game/cards/art/masters/verdant_charge_13.png",
-      "sha256": "42c5ec296d446499e071dd1f6299adfe9c50ae547d1c293713144e0c1496051e",
-      "reviewed": false,
+      "sha256": "ad941610598faa337048fe0e3aa0971dcf6b22dad31269b53f3e01551f34bd55",
+      "reviewed": true,
       "focalPoint": [
         0.5,
-        0.42
+        0.5
       ]
     },
     {
@@ -2275,7 +2275,7 @@
       "colour": "verdant",
       "source": "game/cards/art/masters/verdant_lob_13.png",
       "sha256": "b0856de2f8801792bc7c8b6ae2b01d8c202873e4b9418eca50aefe2618e0456f",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.4
@@ -2375,6 +2375,18 @@
       "focalPoint": [
         0.5,
         0.5
+      ]
+    },
+    {
+      "cardId": "verdant_trap_12",
+      "name": "Pixie-Led Path",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_trap_12.png",
+      "sha256": "53449bfbaa61ee76d4f626aba1d5d21809f9e214cf4704b50c848c8ad0c40959",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.47
       ]
     },
     {

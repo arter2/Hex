@@ -1,11 +1,11 @@
 {
   "catalogueVersion": 179,
   "total": 1953,
-  "active": 1034,
-  "remaining": 919,
+  "active": 1234,
+  "remaining": 719,
   "pending": 719,
-  "assigned": 1,
-  "awaitingReview": 199,
+  "assigned": 0,
+  "awaitingReview": 0,
   "countsByColour": {
     "brown": 234,
     "fire": 246,
@@ -390,8 +390,8 @@
       "name": "Elven Thornglass Barrier",
       "type": "machine",
       "color": "brown",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -399,8 +399,8 @@
       "name": "Goblin Scrap Barricade",
       "type": "machine",
       "color": "brown",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -408,8 +408,8 @@
       "name": "Coral Rampart",
       "type": "machine",
       "color": "brown",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -417,8 +417,8 @@
       "name": "Sky-Folk Wind Sail Wall",
       "type": "machine",
       "color": "brown",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -426,8 +426,8 @@
       "name": "Troll Stone Rampart",
       "type": "machine",
       "color": "brown",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -435,8 +435,8 @@
       "name": "Pike Palisade",
       "type": "machine",
       "color": "brown",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -444,8 +444,8 @@
       "name": "Alchemist's Glass Bulwark",
       "type": "machine",
       "color": "brown",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -453,8 +453,8 @@
       "name": "Djinn Mirage Wall",
       "type": "machine",
       "color": "brown",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -462,8 +462,8 @@
       "name": "Brass Tortoise Wall",
       "type": "machine",
       "color": "brown",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -794,8 +794,8 @@
       "name": "Acid Flask",
       "type": "instant",
       "color": "brown",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -803,8 +803,8 @@
       "name": "Sky-Folk Lightning Jar",
       "type": "instant",
       "color": "brown",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -812,8 +812,8 @@
       "name": "Troll Snot Bomb",
       "type": "instant",
       "color": "brown",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -821,8 +821,8 @@
       "name": "Dwarven Rune Grenade",
       "type": "instant",
       "color": "brown",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -830,8 +830,8 @@
       "name": "Spyglass Peek",
       "type": "instant",
       "color": "brown",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -839,8 +839,8 @@
       "name": "Pocket Almanac",
       "type": "instant",
       "color": "brown",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -848,8 +848,8 @@
       "name": "Dwarven Ledger",
       "type": "instant",
       "color": "brown",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -857,8 +857,8 @@
       "name": "Elven Star Map",
       "type": "instant",
       "color": "brown",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -866,8 +866,8 @@
       "name": "Gnomish Punch-Card Reader",
       "type": "instant",
       "color": "brown",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -875,8 +875,8 @@
       "name": "Dowsing Rod",
       "type": "instant",
       "color": "brown",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -884,8 +884,8 @@
       "name": "Gnomish Card-Finder",
       "type": "instant",
       "color": "brown",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -893,8 +893,8 @@
       "name": "Smuggler's Map",
       "type": "instant",
       "color": "brown",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -902,8 +902,8 @@
       "name": "Goblin Rummage Sack",
       "type": "instant",
       "color": "brown",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -911,8 +911,8 @@
       "name": "Quartermaster's Ledger",
       "type": "instant",
       "color": "brown",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -920,8 +920,8 @@
       "name": "Weapon Rack Index",
       "type": "instant",
       "color": "brown",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -929,8 +929,8 @@
       "name": "Armorer's Catalog",
       "type": "instant",
       "color": "brown",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -2209,8 +2209,8 @@
       "name": "Bull Rush",
       "type": "strike",
       "color": "fire",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -2218,8 +2218,8 @@
       "name": "Pickaxe Strike",
       "type": "strike",
       "color": "fire",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -2227,8 +2227,8 @@
       "name": "Miner's Drill",
       "type": "strike",
       "color": "fire",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -2519,8 +2519,8 @@
       "name": "Goblin Bomb",
       "type": "lob",
       "color": "fire",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -2528,8 +2528,8 @@
       "name": "Gremlin Grenade",
       "type": "lob",
       "color": "fire",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -2537,8 +2537,8 @@
       "name": "Mortar Round",
       "type": "lob",
       "color": "fire",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -2708,8 +2708,8 @@
       "name": "Brimstone Rampart",
       "type": "ward",
       "color": "fire",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -2717,8 +2717,8 @@
       "name": "Anvil Guard",
       "type": "ward",
       "color": "fire",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -2726,8 +2726,8 @@
       "name": "Great Wall Bricks",
       "type": "ward",
       "color": "fire",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -2923,8 +2923,8 @@
       "name": "Smith's Focus",
       "type": "boon",
       "color": "fire",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -2932,8 +2932,8 @@
       "name": "Molten Courage",
       "type": "boon",
       "color": "fire",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -2941,8 +2941,8 @@
       "name": "Mountain Strength",
       "type": "boon",
       "color": "fire",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -3071,8 +3071,8 @@
       "name": "Firecracker String",
       "type": "charge",
       "color": "fire",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -3080,8 +3080,8 @@
       "name": "Lantern Oil Flask",
       "type": "charge",
       "color": "fire",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -3089,8 +3089,8 @@
       "name": "Pistol Case",
       "type": "charge",
       "color": "fire",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -3308,8 +3308,8 @@
       "name": "Ember Spike Pit",
       "type": "trap",
       "color": "fire",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -3317,8 +3317,8 @@
       "name": "Firework Mine",
       "type": "trap",
       "color": "fire",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -3407,8 +3407,8 @@
       "name": "Rockslide Valley",
       "type": "environment",
       "color": "fire",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -3416,8 +3416,8 @@
       "name": "Mountain's Wrath",
       "type": "environment",
       "color": "fire",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -3532,8 +3532,8 @@
       "name": "Phoenix Chick",
       "type": "summon",
       "color": "fire",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -3541,8 +3541,8 @@
       "name": "Kitsune",
       "type": "summon",
       "color": "fire",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -3891,8 +3891,8 @@
       "name": "Dwarven Siege Cannon",
       "type": "machine",
       "color": "fire",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -3900,8 +3900,8 @@
       "name": "Iron Barricade",
       "type": "machine",
       "color": "fire",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -4072,8 +4072,8 @@
       "name": "Kael the Cinderblade",
       "type": "hero",
       "color": "fire",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -4081,8 +4081,8 @@
       "name": "Magmar the Molten",
       "type": "hero",
       "color": "fire",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -4307,8 +4307,8 @@
       "name": "Narwhal Tusk",
       "type": "strike",
       "color": "frost",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -4316,8 +4316,8 @@
       "name": "Shark Bite",
       "type": "strike",
       "color": "frost",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -4325,8 +4325,8 @@
       "name": "Frenzy of Sharks",
       "type": "strike",
       "color": "frost",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -4632,8 +4632,8 @@
       "name": "Holy Water Flask",
       "type": "lob",
       "color": "frost",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -4641,8 +4641,8 @@
       "name": "Spring Water Gourd",
       "type": "lob",
       "color": "frost",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -4650,8 +4650,8 @@
       "name": "Hailstone Cross",
       "type": "lob",
       "color": "frost",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -4796,8 +4796,8 @@
       "name": "Mirror of Still Water",
       "type": "ward",
       "color": "frost",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -4805,8 +4805,8 @@
       "name": "Kelp Curtain",
       "type": "ward",
       "color": "frost",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -4814,8 +4814,8 @@
       "name": "Pack Ice Bulwark",
       "type": "ward",
       "color": "frost",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -4938,8 +4938,8 @@
       "name": "Tide Pole",
       "type": "sentry",
       "color": "frost",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -5037,8 +5037,8 @@
       "name": "Sorcerer's Trance",
       "type": "boon",
       "color": "frost",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -5046,8 +5046,8 @@
       "name": "Sea Witch's Bargain",
       "type": "boon",
       "color": "frost",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -5055,8 +5055,8 @@
       "name": "Blood Price of the Deep",
       "type": "boon",
       "color": "frost",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -5160,8 +5160,8 @@
       "name": "Sea Urchin Quills",
       "type": "charge",
       "color": "frost",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -5169,8 +5169,8 @@
       "name": "Conch Shell Blasts",
       "type": "charge",
       "color": "frost",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -5339,8 +5339,8 @@
       "name": "Sorcerer's Grimoire",
       "type": "utility",
       "color": "frost",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -5429,8 +5429,8 @@
       "name": "Davy Jones' Locker",
       "type": "trap",
       "color": "frost",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -5519,8 +5519,8 @@
       "name": "Kelp Forest",
       "type": "environment",
       "color": "frost",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -5528,8 +5528,8 @@
       "name": "Mangrove Roots",
       "type": "environment",
       "color": "frost",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -5661,8 +5661,8 @@
       "name": "Selkie",
       "type": "summon",
       "color": "frost",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -5670,8 +5670,8 @@
       "name": "Nixie",
       "type": "summon",
       "color": "frost",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -6044,8 +6044,8 @@
       "name": "Mortar Ketch",
       "type": "machine",
       "color": "frost",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -6053,8 +6053,8 @@
       "name": "Sluice Gate Bulwark",
       "type": "machine",
       "color": "frost",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -6202,8 +6202,8 @@
       "name": "Frida Snowveil",
       "type": "hero",
       "color": "frost",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -6211,8 +6211,8 @@
       "name": "Tundra the Mammoth Lord",
       "type": "hero",
       "color": "frost",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -7119,8 +7119,8 @@
       "name": "Uchchaihshravas",
       "type": "summon",
       "color": "gray",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -7128,8 +7128,8 @@
       "name": "Wandering Bard",
       "type": "summon",
       "color": "gray",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -7137,8 +7137,8 @@
       "name": "Crossbow Militia",
       "type": "summon",
       "color": "gray",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -7146,8 +7146,8 @@
       "name": "Pikeman",
       "type": "summon",
       "color": "gray",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -7155,8 +7155,8 @@
       "name": "Sellsword",
       "type": "summon",
       "color": "gray",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -7164,8 +7164,8 @@
       "name": "Veteran Captain",
       "type": "summon",
       "color": "gray",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -7173,8 +7173,8 @@
       "name": "Errant Knight",
       "type": "summon",
       "color": "gray",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -7182,8 +7182,8 @@
       "name": "Cossack Rider",
       "type": "summon",
       "color": "gray",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -7191,8 +7191,8 @@
       "name": "Gaucho with Bolas",
       "type": "summon",
       "color": "gray",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -7200,8 +7200,8 @@
       "name": "Mongol Outrider",
       "type": "summon",
       "color": "gray",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -7209,8 +7209,8 @@
       "name": "Maasai Spearman",
       "type": "summon",
       "color": "gray",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -7218,8 +7218,8 @@
       "name": "Zulu Impi",
       "type": "summon",
       "color": "gray",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -7227,8 +7227,8 @@
       "name": "Viking Raider",
       "type": "summon",
       "color": "gray",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -7236,8 +7236,8 @@
       "name": "Hill Giant",
       "type": "summon",
       "color": "gray",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -7245,8 +7245,8 @@
       "name": "Rock-Throwing Cyclops",
       "type": "summon",
       "color": "gray",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -7254,8 +7254,8 @@
       "name": "Stone Troll",
       "type": "summon",
       "color": "gray",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -7263,8 +7263,8 @@
       "name": "Ogre Brute",
       "type": "summon",
       "color": "gray",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -7272,8 +7272,8 @@
       "name": "Mountain Gorilla",
       "type": "summon",
       "color": "gray",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -7281,8 +7281,8 @@
       "name": "Sling Monkey",
       "type": "summon",
       "color": "gray",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -7290,8 +7290,8 @@
       "name": "Howler Monkey",
       "type": "summon",
       "color": "gray",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -7299,8 +7299,8 @@
       "name": "Coconut Crab",
       "type": "summon",
       "color": "gray",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -7308,8 +7308,8 @@
       "name": "Boulder Golem",
       "type": "summon",
       "color": "gray",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -7317,8 +7317,8 @@
       "name": "Pebble Golem",
       "type": "summon",
       "color": "gray",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -7326,8 +7326,8 @@
       "name": "Rock Elemental",
       "type": "summon",
       "color": "gray",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -7335,8 +7335,8 @@
       "name": "Siege Ogre",
       "type": "summon",
       "color": "gray",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -8408,8 +8408,8 @@
       "name": "Owl's Silent Dive",
       "type": "strike",
       "color": "light",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -8417,8 +8417,8 @@
       "name": "Pegasus Hoofbeat",
       "type": "strike",
       "color": "light",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -8426,8 +8426,8 @@
       "name": "Centaur's Arrow",
       "type": "strike",
       "color": "light",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -8677,8 +8677,8 @@
       "name": "Quicksilver Retort",
       "type": "lob",
       "color": "light",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -8686,8 +8686,8 @@
       "name": "Abbey Bell Toll",
       "type": "lob",
       "color": "light",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -8695,8 +8695,8 @@
       "name": "Slinger's Hail",
       "type": "lob",
       "color": "light",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -8835,8 +8835,8 @@
       "name": "Hadrian's Wall",
       "type": "ward",
       "color": "light",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -8844,8 +8844,8 @@
       "name": "Sacsayhuaman Stones",
       "type": "ward",
       "color": "light",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -8853,8 +8853,8 @@
       "name": "Great Zimbabwe Walls",
       "type": "ward",
       "color": "light",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -8984,8 +8984,8 @@
       "name": "Lamassu Gate Statue",
       "type": "sentry",
       "color": "light",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -9073,8 +9073,8 @@
       "name": "Pegasus Flight",
       "type": "boon",
       "color": "light",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -9082,8 +9082,8 @@
       "name": "Crusader's Vow",
       "type": "boon",
       "color": "light",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -9091,8 +9091,8 @@
       "name": "Sushruta's Stitches",
       "type": "boon",
       "color": "light",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -9205,8 +9205,8 @@
       "name": "Censer Coals",
       "type": "charge",
       "color": "light",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -9214,8 +9214,8 @@
       "name": "Sealed Edict Scrolls",
       "type": "charge",
       "color": "light",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -9223,8 +9223,8 @@
       "name": "Silver Arrows of the Hunt",
       "type": "charge",
       "color": "light",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -9353,8 +9353,8 @@
       "name": "House of Wisdom",
       "type": "utility",
       "color": "light",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -9362,8 +9362,8 @@
       "name": "Timbuktu Manuscripts",
       "type": "utility",
       "color": "light",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -9548,8 +9548,8 @@
       "name": "Hanging Gardens of Babylon",
       "type": "environment",
       "color": "light",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -9647,8 +9647,8 @@
       "name": "White Stag",
       "type": "summon",
       "color": "light",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -9656,8 +9656,8 @@
       "name": "Snow Crane",
       "type": "summon",
       "color": "light",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -10014,8 +10014,8 @@
       "name": "Legion Camp Palisade",
       "type": "machine",
       "color": "light",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -10023,8 +10023,8 @@
       "name": "Curtain Wall Rampart",
       "type": "machine",
       "color": "light",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -10302,8 +10302,8 @@
       "name": "Dawn Knight Cassia",
       "type": "hero",
       "color": "light",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -10311,8 +10311,8 @@
       "name": "Lux the Lantern Bearer",
       "type": "hero",
       "color": "light",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -10544,8 +10544,8 @@
       "name": "Spider Silk Shot",
       "type": "strike",
       "color": "shadow",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -10553,8 +10553,8 @@
       "name": "Bog Muck Splash",
       "type": "strike",
       "color": "shadow",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -10562,8 +10562,8 @@
       "name": "Yurei's Lament",
       "type": "strike",
       "color": "shadow",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -10846,8 +10846,8 @@
       "name": "Funeral Wreath",
       "type": "lob",
       "color": "shadow",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -10855,8 +10855,8 @@
       "name": "Brimstone Hail",
       "type": "lob",
       "color": "shadow",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -10864,8 +10864,8 @@
       "name": "The Tower Card",
       "type": "lob",
       "color": "shadow",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -10987,8 +10987,8 @@
       "name": "Iron Maiden Shell",
       "type": "ward",
       "color": "shadow",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -10996,8 +10996,8 @@
       "name": "Barrow Mound",
       "type": "ward",
       "color": "shadow",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -11005,8 +11005,8 @@
       "name": "Hell's Gate",
       "type": "ward",
       "color": "shadow",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -11113,8 +11113,8 @@
       "name": "Cursed Mirror",
       "type": "sentry",
       "color": "shadow",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -11203,8 +11203,8 @@
       "name": "Full Moon Frenzy",
       "type": "boon",
       "color": "shadow",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -11212,8 +11212,8 @@
       "name": "Blood Moon",
       "type": "boon",
       "color": "shadow",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -11221,8 +11221,8 @@
       "name": "Crossroads Bargain",
       "type": "boon",
       "color": "shadow",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -11361,8 +11361,8 @@
       "name": "Ferryman's Coins",
       "type": "charge",
       "color": "shadow",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -11370,8 +11370,8 @@
       "name": "Hellfire Embers",
       "type": "charge",
       "color": "shadow",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -11475,8 +11475,8 @@
       "name": "Necromancer's Grimoire",
       "type": "utility",
       "color": "shadow",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -11556,8 +11556,8 @@
       "name": "Cursed Tomb",
       "type": "trap",
       "color": "shadow",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -11646,8 +11646,8 @@
       "name": "Catacomb Collapse",
       "type": "environment",
       "color": "shadow",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -11655,8 +11655,8 @@
       "name": "Mouth of Hell",
       "type": "environment",
       "color": "shadow",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -11754,8 +11754,8 @@
       "name": "Ghoul",
       "type": "summon",
       "color": "shadow",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -11763,8 +11763,8 @@
       "name": "Poltergeist",
       "type": "summon",
       "color": "shadow",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -12305,8 +12305,8 @@
       "name": "Gibbet Tower",
       "type": "sentry",
       "color": "shadow",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -12314,8 +12314,8 @@
       "name": "Hut on Chicken Legs",
       "type": "machine",
       "color": "shadow",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -12440,8 +12440,8 @@
       "name": "Nox the Shadow King",
       "type": "hero",
       "color": "shadow",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -12449,8 +12449,8 @@
       "name": "Graveborn Mordo",
       "type": "hero",
       "color": "shadow",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -12692,8 +12692,8 @@
       "name": "Cobra Spit",
       "type": "strike",
       "color": "storm",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -12701,8 +12701,8 @@
       "name": "Sandblast",
       "type": "strike",
       "color": "storm",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -12710,8 +12710,8 @@
       "name": "Dune Lash",
       "type": "strike",
       "color": "storm",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -12976,8 +12976,8 @@
       "name": "Scarab Swarm Jar",
       "type": "lob",
       "color": "storm",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -12985,8 +12985,8 @@
       "name": "Roc's Egg",
       "type": "lob",
       "color": "storm",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -12994,8 +12994,8 @@
       "name": "Saltpeter Charge",
       "type": "lob",
       "color": "storm",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -13135,8 +13135,8 @@
       "name": "Walls of the City of Brass",
       "type": "ward",
       "color": "storm",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -13243,8 +13243,8 @@
       "name": "Burning Mirror",
       "type": "sentry",
       "color": "storm",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -13324,8 +13324,8 @@
       "name": "Mint Tea",
       "type": "boon",
       "color": "storm",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -13333,8 +13333,8 @@
       "name": "Hoard Fever",
       "type": "boon",
       "color": "storm",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -13342,8 +13342,8 @@
       "name": "Merchant's Luck",
       "type": "boon",
       "color": "storm",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -13456,8 +13456,8 @@
       "name": "Alchemist's Bandolier",
       "type": "charge",
       "color": "storm",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -13465,8 +13465,8 @@
       "name": "Sun-Glass Lenses",
       "type": "charge",
       "color": "storm",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -13474,8 +13474,8 @@
       "name": "Magnet Shot",
       "type": "charge",
       "color": "storm",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -13693,8 +13693,8 @@
       "name": "Collapsing Tomb Floor",
       "type": "trap",
       "color": "storm",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -13702,8 +13702,8 @@
       "name": "Electrified Gold Idol",
       "type": "trap",
       "color": "storm",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -13807,8 +13807,8 @@
       "name": "Storm Front",
       "type": "environment",
       "color": "storm",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -13816,8 +13816,8 @@
       "name": "Great Sand Sea",
       "type": "environment",
       "color": "storm",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -13924,8 +13924,8 @@
       "name": "Sand Scarab",
       "type": "summon",
       "color": "storm",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -13933,8 +13933,8 @@
       "name": "Golden Scarab",
       "type": "summon",
       "color": "storm",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -14332,8 +14332,8 @@
       "name": "Scorpio Bolt Thrower",
       "type": "machine",
       "color": "storm",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -14341,8 +14341,8 @@
       "name": "Naphtha Siphon",
       "type": "machine",
       "color": "storm",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -14561,8 +14561,8 @@
       "name": "Thundra the Hammer",
       "type": "hero",
       "color": "storm",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -14570,8 +14570,8 @@
       "name": "Voltaire the Spark",
       "type": "hero",
       "color": "storm",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -14635,8 +14635,8 @@
       "name": "Static Corridor",
       "type": "ward",
       "color": "storm",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -14824,8 +14824,8 @@
       "name": "Viper Strike",
       "type": "strike",
       "color": "verdant",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -14833,8 +14833,8 @@
       "name": "Cobra Venom Spray",
       "type": "strike",
       "color": "verdant",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -14842,8 +14842,8 @@
       "name": "Hornet Swarm",
       "type": "strike",
       "color": "verdant",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -15159,8 +15159,8 @@
       "name": "Kapok Fluff Burst",
       "type": "lob",
       "color": "verdant",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -15177,8 +15177,8 @@
       "name": "Sasquatch Boulder",
       "type": "lob",
       "color": "verdant",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -15186,8 +15186,8 @@
       "name": "Treefolk Stomp",
       "type": "lob",
       "color": "verdant",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -15319,8 +15319,8 @@
       "name": "Pangolin Scales",
       "type": "ward",
       "color": "verdant",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -15328,8 +15328,8 @@
       "name": "Green Chapel Gate",
       "type": "ward",
       "color": "verdant",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -15508,8 +15508,8 @@
       "name": "Wolfskin Frenzy",
       "type": "boon",
       "color": "verdant",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -15517,8 +15517,8 @@
       "name": "Fern Seed Vanishing",
       "type": "boon",
       "color": "verdant",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -15526,8 +15526,8 @@
       "name": "Green Man's Blessing",
       "type": "boon",
       "color": "verdant",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -15648,8 +15648,8 @@
       "name": "Mushroom Basket",
       "type": "charge",
       "color": "verdant",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -15657,8 +15657,8 @@
       "name": "Bola Set",
       "type": "charge",
       "color": "verdant",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -15666,8 +15666,8 @@
       "name": "Gourd of Pine Sap",
       "type": "charge",
       "color": "verdant",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -15868,8 +15868,8 @@
       "name": "Giant Puffball",
       "type": "trap",
       "color": "verdant",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -15877,8 +15877,8 @@
       "name": "Strangler Vine Snare",
       "type": "trap",
       "color": "verdant",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -15886,8 +15886,8 @@
       "name": "Pixie-Led Path",
       "type": "trap",
       "color": "verdant",
-      "status": "assigned",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -15940,8 +15940,8 @@
       "name": "Mire of the Fens",
       "type": "environment",
       "color": "verdant",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -15949,8 +15949,8 @@
       "name": "Stampede",
       "type": "environment",
       "color": "verdant",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -16027,8 +16027,8 @@
       "name": "Mask of the Green Man",
       "type": "piece",
       "color": "verdant",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -16063,8 +16063,8 @@
       "name": "Kodama",
       "type": "summon",
       "color": "verdant",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -16072,8 +16072,8 @@
       "name": "Oak Dryad",
       "type": "summon",
       "color": "verdant",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -16699,8 +16699,8 @@
       "name": "Mossback the Tortoise Sage",
       "type": "hero",
       "color": "verdant",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -16708,8 +16708,8 @@
       "name": "Venna, the Viper Queen",
       "type": "hero",
       "color": "verdant",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {
@@ -16797,8 +16797,8 @@
       "name": "Briar Arc",
       "type": "ward",
       "color": "verdant",
-      "status": "generated-awaiting-review",
-      "source": null,
+      "status": "reviewed-exported",
+      "source": "generated",
       "batch": 11
     },
     {

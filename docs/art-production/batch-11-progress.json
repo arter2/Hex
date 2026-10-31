@@ -2,10 +2,10 @@
   "batch": 11,
   "status": "in-progress",
   "targetNewImages": 200,
-  "generatedSources": 139,
-  "reviewedSources": 135,
-  "missingSources": 61,
-  "reviewedPackets": 27,
+  "generatedSources": 154,
+  "reviewedSources": 150,
+  "missingSources": 46,
+  "reviewedPackets": 30,
   "requiresRepaint": [],
   "baselineActive": 1034,
   "targetActive": 1234,
@@ -482,6 +482,18 @@
       ]
     },
     {
+      "cardId": "frost_boon_12",
+      "name": "Sea Witch's Bargain",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_boon_12.png",
+      "sha256": "54b41b392b5531c1d1a523d0a1da6796370d5b58c9b950e0cbce538d7710fc68",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.39
+      ]
+    },
+    {
       "cardId": "frost_charge_09",
       "name": "Sea Urchin Quills",
       "colour": "frost",
@@ -494,11 +506,35 @@
       ]
     },
     {
+      "cardId": "frost_charge_10",
+      "name": "Conch Shell Blasts",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_charge_10.png",
+      "sha256": "054bd7fbe23c28edb31c7321b5b082ec9c855aaf7589d8c052d2f90555d559f8",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "cardId": "frost_environment_10",
       "name": "Kelp Forest",
       "colour": "frost",
       "source": "game/cards/art/masters/frost_environment_10.png",
       "sha256": "290435ba96b11f9a75d822f0ebea22ed73cf14ffe3ac70db7ffe322297a640d7",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "frost_environment_11",
+      "name": "Mangrove Roots",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_environment_11.png",
+      "sha256": "306a8c86fd70dc6cdb30bb00ab50be9088875754c634b8241736884dab29f6db",
       "reviewed": true,
       "focalPoint": [
         0.5,
@@ -535,6 +571,18 @@
       "colour": "frost",
       "source": "game/cards/art/masters/frost_machine_06.png",
       "sha256": "bdff83403b457cf1bf1ced1c8bd52e0d07effa28ac8376e84330ef29940ea1f6",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "frost_machine_07",
+      "name": "Sluice Gate Bulwark",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_machine_07.png",
+      "sha256": "518e6ac0f15a9ccbb3f287050baa3945ae5ece802ffaf8446dce0019b909521a",
       "reviewed": true,
       "focalPoint": [
         0.5,
@@ -583,6 +631,18 @@
       "colour": "frost",
       "source": "game/cards/art/masters/frost_summon_07.png",
       "sha256": "d3d504a62110332363e7501b1dec93061666c21dd9709f26c89791a1eb731284",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "frost_summon_08",
+      "name": "Nixie",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_summon_08.png",
+      "sha256": "2e4f3af965395855363d0a861abdf5ecc51fd72ed799f1e57d01c3e58299665a",
       "reviewed": true,
       "focalPoint": [
         0.5,
@@ -739,7 +799,7 @@
       "colour": "gray",
       "source": "game/cards/art/masters/gray_summon_108.png",
       "sha256": "0957ef66cd153493417b3b4b07470c017bded44ee241b93ce2a1f288b51ba51c",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.5
@@ -751,7 +811,7 @@
       "colour": "gray",
       "source": "game/cards/art/masters/gray_summon_109.png",
       "sha256": "c02d4dec867715a1a47a1b555ccd57875083aef2710f9c492737f1971a4edd05",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.43
@@ -763,7 +823,7 @@
       "colour": "gray",
       "source": "game/cards/art/masters/gray_summon_110.png",
       "sha256": "7012156e49e32ccca968efc4c6e61a4702a8caeab93e056ac1eaa994586bdc4f",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.5
@@ -775,10 +835,22 @@
       "colour": "gray",
       "source": "game/cards/art/masters/gray_summon_111.png",
       "sha256": "0e4646cf6d771170616f8b396fecc8cc31597012c38ec44287ad0ed50602f2ad",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.32
+      ]
+    },
+    {
+      "cardId": "gray_summon_112",
+      "name": "Howler Monkey",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_112.png",
+      "sha256": "7ddbe251c68f136b4d7c01fc034cdf348bb4b59201b6e52b53449273806439c5",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.43
       ]
     },
     {
@@ -1190,6 +1262,18 @@
       ]
     },
     {
+      "cardId": "shadow_boon_11",
+      "name": "Blood Moon",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_boon_11.png",
+      "sha256": "4e7991ec4f004d43ad3d3e4ad1375637cc3642fa1fb82f8a3822ca27c2e6f524",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.43
+      ]
+    },
+    {
       "cardId": "shadow_charge_10",
       "name": "Ferryman's Coins",
       "colour": "shadow",
@@ -1202,11 +1286,35 @@
       ]
     },
     {
+      "cardId": "shadow_charge_11",
+      "name": "Hellfire Embers",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_charge_11.png",
+      "sha256": "1777e13e88ab21fcd1fcf6b8919d18efc8afac4a33a9a49db05dcc0a8754b404",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "cardId": "shadow_environment_10",
       "name": "Catacomb Collapse",
       "colour": "shadow",
       "source": "game/cards/art/masters/shadow_environment_10.png",
       "sha256": "086618a2d3c0cc63afadf358ddb0246d16caf9c35e8a5f3f0dc4357e59a37912",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "shadow_environment_11",
+      "name": "Mouth of Hell",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_environment_11.png",
+      "sha256": "d394117ffffafe578eb7e99713399c8e4842e1fcb32dd2d1d2b4ea922b227515",
       "reviewed": true,
       "focalPoint": [
         0.5,
@@ -1262,6 +1370,18 @@
       ]
     },
     {
+      "cardId": "shadow_sentry_13",
+      "name": "Gibbet Tower",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_sentry_13.png",
+      "sha256": "7094b9b5b47156885b33018f3d647d5d055b3b97bc5bd46eb57ca1b1e79ea7a1",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.46
+      ]
+    },
+    {
       "cardId": "shadow_strike_10",
       "name": "Spider Silk Shot",
       "colour": "shadow",
@@ -1295,6 +1415,18 @@
       "focalPoint": [
         0.5,
         0.45
+      ]
+    },
+    {
+      "cardId": "shadow_summon_09",
+      "name": "Poltergeist",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_09.png",
+      "sha256": "1b5bfaff592c828fa8e47cc56ae9cb8d447770650c661669a2eb62d091a0f3e6",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.41
       ]
     },
     {
@@ -1394,12 +1526,36 @@
       ]
     },
     {
+      "cardId": "storm_charge_11",
+      "name": "Sun-Glass Lenses",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_charge_11.png",
+      "sha256": "9ed7dcfc33195c67ffcdd45ebc22e8dfc5ebf10aec413c87be8e5cf528e6e7f9",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "cardId": "storm_environment_09",
       "name": "Storm Front",
       "colour": "storm",
       "source": "game/cards/art/masters/storm_environment_09.png",
       "sha256": "3131996f056f2979d2d402d8ebecc7eacc80d78731f544c8e5e25eb5e28d26cc",
       "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_environment_10",
+      "name": "Great Sand Sea",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_environment_10.png",
+      "sha256": "18ba32bb86eb3af8cf47a4fdcfe89c2589b7fa5219dcdfcda18102a3350ad2f2",
+      "reviewed": false,
       "focalPoint": [
         0.5,
         0.5
@@ -1490,6 +1646,18 @@
       ]
     },
     {
+      "cardId": "storm_summon_08",
+      "name": "Golden Scarab",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_summon_08.png",
+      "sha256": "3f3e5aabecae4c4c0b53270a6017c688fcb2910d800edda984039a9ebc3e33a8",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "cardId": "storm_trap_10",
       "name": "Collapsing Tomb Floor",
       "colour": "storm",
@@ -1499,6 +1667,18 @@
       "focalPoint": [
         0.5,
         0.34
+      ]
+    },
+    {
+      "cardId": "storm_trap_11",
+      "name": "Electrified Gold Idol",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_trap_11.png",
+      "sha256": "c2908425b64493d32fe6d53392aa44a1892c2f5e5d75c939ec22eb315e715326",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
       ]
     },
     {

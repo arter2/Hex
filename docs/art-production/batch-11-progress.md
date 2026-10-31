@@ -1,8 +1,8 @@
 # Batch 11 production progress
 
-**139 of 200 new 512×512 sources saved; 135 approved.**
+**154 of 200 new 512×512 sources saved; 150 approved.**
 
-61 sources remain ungenerated. 0 saved source(s) require repainting. 27 five-card packets have passed parent crop/thumbnail review. This is not a completed 200-card delivery.
+46 sources remain ungenerated. 0 saved source(s) require repainting. 30 five-card packets have passed parent crop/thumbnail review. This is not a completed 200-card delivery.
 
 Production uses the lighter artist agents and shared five-card queue in `PACKET-WORKFLOW.md`. Ledger reservations alone do not establish live artist processes.
 
@@ -55,15 +55,20 @@ Read `batch-11-brief.md` and `batch-11-worker-state.json`. Resume only missing I
 | Brimstone Rampart | `fire_ward_11` | Accepted | [512×512 PNG](../../game/cards/art/masters/fire_ward_11.png) |
 | Anvil Guard | `fire_ward_12` | Accepted | [512×512 PNG](../../game/cards/art/masters/fire_ward_12.png) |
 | Sorcerer's Trance | `frost_boon_11` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_boon_11.png) |
+| Sea Witch's Bargain | `frost_boon_12` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_boon_12.png) |
 | Sea Urchin Quills | `frost_charge_09` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_charge_09.png) |
+| Conch Shell Blasts | `frost_charge_10` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_charge_10.png) |
 | Kelp Forest | `frost_environment_10` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_environment_10.png) |
+| Mangrove Roots | `frost_environment_11` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_environment_11.png) |
 | Holy Water Flask | `frost_lob_11` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_lob_11.png) |
 | Spring Water Gourd | `frost_lob_12` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_lob_12.png) |
 | Mortar Ketch | `frost_machine_06` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_machine_06.png) |
+| Sluice Gate Bulwark | `frost_machine_07` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_machine_07.png) |
 | Tide Pole | `frost_sentry_12` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_sentry_12.png) |
 | Narwhal Tusk | `frost_strike_10` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_strike_10.png) |
 | Shark Bite | `frost_strike_11` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_strike_11.png) |
 | Selkie | `frost_summon_07` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_summon_07.png) |
+| Nixie | `frost_summon_08` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_summon_08.png) |
 | Davy Jones' Locker | `frost_trap_10` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_trap_10.png) |
 | Sorcerer's Grimoire | `frost_utility_10` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_utility_10.png) |
 | Mirror of Still Water | `frost_ward_10` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_ward_10.png) |
@@ -76,10 +81,11 @@ Read `batch-11-brief.md` and `batch-11-worker-state.json`. Resume only missing I
 | Viking Raider | `gray_summon_105` | Accepted | [512×512 PNG](../../game/cards/art/masters/gray_summon_105.png) |
 | Hill Giant | `gray_summon_106` | Accepted | [512×512 PNG](../../game/cards/art/masters/gray_summon_106.png) |
 | Rock-Throwing Cyclops | `gray_summon_107` | Accepted | [512×512 PNG](../../game/cards/art/masters/gray_summon_107.png) |
-| Stone Troll | `gray_summon_108` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/gray_summon_108.png) |
-| Ogre Brute | `gray_summon_109` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/gray_summon_109.png) |
-| Mountain Gorilla | `gray_summon_110` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/gray_summon_110.png) |
-| Sling Monkey | `gray_summon_111` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/gray_summon_111.png) |
+| Stone Troll | `gray_summon_108` | Accepted | [512×512 PNG](../../game/cards/art/masters/gray_summon_108.png) |
+| Ogre Brute | `gray_summon_109` | Accepted | [512×512 PNG](../../game/cards/art/masters/gray_summon_109.png) |
+| Mountain Gorilla | `gray_summon_110` | Accepted | [512×512 PNG](../../game/cards/art/masters/gray_summon_110.png) |
+| Sling Monkey | `gray_summon_111` | Accepted | [512×512 PNG](../../game/cards/art/masters/gray_summon_111.png) |
+| Howler Monkey | `gray_summon_112` | Accepted | [512×512 PNG](../../game/cards/art/masters/gray_summon_112.png) |
 | Uchchaihshravas | `gray_summon_93` | Accepted | [512×512 PNG](../../game/cards/art/masters/gray_summon_93.png) |
 | Wandering Bard | `gray_summon_94` | Accepted | [512×512 PNG](../../game/cards/art/masters/gray_summon_94.png) |
 | Crossbow Militia | `gray_summon_95` | Accepted | [512×512 PNG](../../game/cards/art/masters/gray_summon_95.png) |
@@ -114,15 +120,20 @@ Read `batch-11-brief.md` and `batch-11-worker-state.json`. Resume only missing I
 | Hadrian's Wall | `light_ward_12` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_ward_12.png) |
 | Sacsayhuaman Stones | `light_ward_13` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_ward_13.png) |
 | Full Moon Frenzy | `shadow_boon_10` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_boon_10.png) |
+| Blood Moon | `shadow_boon_11` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_boon_11.png) |
 | Ferryman's Coins | `shadow_charge_10` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_charge_10.png) |
+| Hellfire Embers | `shadow_charge_11` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_charge_11.png) |
 | Catacomb Collapse | `shadow_environment_10` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_environment_10.png) |
+| Mouth of Hell | `shadow_environment_11` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_environment_11.png) |
 | Funeral Wreath | `shadow_lob_12` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_lob_12.png) |
 | Brimstone Hail | `shadow_lob_13` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_lob_13.png) |
 | Hut on Chicken Legs | `shadow_machine_06` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_machine_06.png) |
 | Cursed Mirror | `shadow_sentry_12` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_sentry_12.png) |
+| Gibbet Tower | `shadow_sentry_13` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_sentry_13.png) |
 | Spider Silk Shot | `shadow_strike_10` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_strike_10.png) |
 | Bog Muck Splash | `shadow_strike_11` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_strike_11.png) |
 | Ghoul | `shadow_summon_08` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_summon_08.png) |
+| Poltergeist | `shadow_summon_09` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_summon_09.png) |
 | Cursed Tomb | `shadow_trap_09` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_trap_09.png) |
 | Necromancer's Grimoire | `shadow_utility_09` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_utility_09.png) |
 | Iron Maiden Shell | `shadow_ward_11` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_ward_11.png) |
@@ -131,7 +142,9 @@ Read `batch-11-brief.md` and `batch-11-worker-state.json`. Resume only missing I
 | Mint Tea | `storm_boon_10` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_boon_10.png) |
 | Hoard Fever | `storm_boon_11` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_boon_11.png) |
 | Alchemist's Bandolier | `storm_charge_10` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_charge_10.png) |
+| Sun-Glass Lenses | `storm_charge_11` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/storm_charge_11.png) |
 | Storm Front | `storm_environment_09` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_environment_09.png) |
+| Great Sand Sea | `storm_environment_10` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/storm_environment_10.png) |
 | Scarab Swarm Jar | `storm_lob_11` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_lob_11.png) |
 | Roc's Egg | `storm_lob_12` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_lob_12.png) |
 | Scorpio Bolt Thrower | `storm_machine_07` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_machine_07.png) |
@@ -139,7 +152,9 @@ Read `batch-11-brief.md` and `batch-11-worker-state.json`. Resume only missing I
 | Cobra Spit | `storm_strike_11` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_strike_11.png) |
 | Sandblast | `storm_strike_12` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_strike_12.png) |
 | Sand Scarab | `storm_summon_07` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_summon_07.png) |
+| Golden Scarab | `storm_summon_08` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/storm_summon_08.png) |
 | Collapsing Tomb Floor | `storm_trap_10` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_trap_10.png) |
+| Electrified Gold Idol | `storm_trap_11` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/storm_trap_11.png) |
 | Walls of the City of Brass | `storm_ward_12` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_ward_12.png) |
 | Wolfskin Frenzy | `verdant_boon_09` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_boon_09.png) |
 | Fern Seed Vanishing | `verdant_boon_10` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_boon_10.png) |

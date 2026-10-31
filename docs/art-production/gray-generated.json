@@ -2469,5 +2469,23 @@
     "status": "generated",
     "batch": 11,
     "reviewNote": "Default crop clipped the sling stone and top arc. Reviewed shifted crop (focalPoint y=0.32; top clamped at 0) and thumbnail: full sling loop, stone, monkey face and both working hands remain visible; lower ledge is incidental."
+  },
+  {
+    "cardId": "gray_summon_112",
+    "name": "Howler Monkey",
+    "prompt": "Paint Howler Monkey as a creature summon in painterly medieval/high-fantasy card art. One adult mantled howler monkey perches on a sturdy horizontal jungle branch, unmistakable broad muzzle, dark face, deep reddish-brown mantle and visible throat sac. It opens its mouth in a powerful focused call, gripping the branch with both hands; a few subtle rings in the humid air carry the howl toward a distant lookout, suggesting a sharp ranged call. Keep the monkey's full face, throat, both hands and expressive action clearly visible in the central horizontal band. Natural monkey anatomy and dignified wildlife detail, no clothing or tools. Painterly textured fur and leaves, soft directional canopy light, atmospheric depth. Explicit square 1:1 512x512 master; keep face/hands inside x24..488,y105..407 for 206:141 crop, quiet canopy and lower foliage above/below. No frame, text, UI, anime, Disney-like cartoon proportions, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-65526462-fb54-492e-bb6e-703011147b36.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_112.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Default crop clipped the top of the howler's head. Reviewed shifted crop (focalPoint y=0.43; top=46) and thumbnail: full dark face, red-brown mantle, open mouth/throat sac and both gripping hands remain readable."
   }
 ]

@@ -2384,5 +2384,95 @@
     "status": "generated",
     "batch": 11,
     "reviewNote": "The long kelp barrier fills the wide crop with clear stopping spears and thornlike fronds; silhouettes and bubbles remain secondary."
+  },
+  {
+    "cardId": "frost_boon_12",
+    "name": "Sea Witch's Bargain",
+    "prompt": "Illustrate Sea Witch's Bargain. A sea witch's close waist-up portrait fills the center; her weathered but beautiful face and eyes are clear as she offers an iridescent pearl in one outstretched hand, with a ghostly second hand-shape suggested in sea mist as the pact's price. Dark teal robes, salt-white hair, subtle shell jewelry. Mechanics: a short delayed pact that musters aid and costs the caster some vitality. Painterly medieval high-fantasy card art, believable organic materials, dramatic cool directional light with subtle warm highlights, atmospheric depth, consistent with supplied Hexmancers reference paintings. Strong readable main subject in the middle 60% of an explicit 1:1 square 512x512 composition. Keep full conch shell, faces and relevant hands inside x24..488,y105..407 for the 206:141 wide crop; quiet scenery in upper/lower margins. No border, lettering, numbers, runes, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-62be4452-98b7-4fc3-833f-4c8be7b84b4a.png",
+    "editableSourcePath": "game/cards/art/masters/frost_boon_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.39
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Focal y=0.39 protects the sea witch’s full face and pearl-offering hand in the wide crop; upper hair is incidental."
+  },
+  {
+    "cardId": "frost_charge_10",
+    "name": "Conch Shell Blasts",
+    "prompt": "Illustrate Conch Shell Blasts. One complete large pink-and-ivory conch shell horn rests as the central foreground artifact, spiral tip, flared mouth and naturally ridged shell all fully visible; a ribbon of icy blue sound and water bursts outward from the wide opening. Mechanics: a six-use shell charge that sends a straight bolt. Painterly medieval high-fantasy card art, believable organic materials, dramatic cool directional light with subtle warm highlights, atmospheric depth, consistent with supplied Hexmancers reference paintings. Strong readable main subject in the middle 60% of an explicit 1:1 square 512x512 composition. Keep full conch shell, faces and relevant hands inside x24..488,y105..407 for the 206:141 wide crop; quiet scenery in upper/lower margins. No border, lettering, numbers, runes, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-dd96c3ab-3ed0-4978-adfd-5b6d3c227f11.png",
+    "editableSourcePath": "game/cards/art/masters/frost_charge_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "The complete conch shell from spiral tip to flared mouth fits clearly; sound and spray extend beyond as incidental effects."
+  },
+  {
+    "cardId": "frost_environment_11",
+    "name": "Mangrove Roots",
+    "prompt": "Illustrate Mangrove Roots. A dense column of great mangrove roots thrusts down through shallow tropical water, tangled roots arching protectively with a small bramble of thorny tendrils, green leaves and trapped spray; vivid ancient wetland atmosphere. Mechanics: a brief column of brambly mangrove roots. Painterly medieval high-fantasy card art, believable organic materials, dramatic cool directional light with subtle warm highlights, atmospheric depth, consistent with supplied Hexmancers reference paintings. Strong readable main subject in the middle 60% of an explicit 1:1 square 512x512 composition. Keep full conch shell, faces and relevant hands inside x24..488,y105..407 for the 206:141 wide crop; quiet scenery in upper/lower margins. No border, lettering, numbers, runes, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ca40a2ee-1494-4fb8-9887-7887c5571d6d.png",
+    "editableSourcePath": "game/cards/art/masters/frost_environment_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Mangrove root column and bramble tendrils fill the wide crop; shoreline foliage is supporting scenery."
+  },
+  {
+    "cardId": "frost_summon_08",
+    "name": "Nixie",
+    "prompt": "Illustrate Nixie. A pale water sprite emerges waist-up from a cold woodland pool, expressive bright face and delicate outstretched hands clear, translucent finlike ears and simple waterwoven clothing, ribbons of water crossing in a subtle X around her as she dives. Mechanics: a sturdy pale nixie sprite that crosses the field and submerges. Painterly medieval high-fantasy card art, believable organic materials, dramatic cool directional light with subtle warm highlights, atmospheric depth, consistent with supplied Hexmancers reference paintings. Strong readable main subject in the middle 60% of an explicit 1:1 square 512x512 composition. Keep full conch shell, faces and relevant hands inside x24..488,y105..407 for the 206:141 wide crop; quiet scenery in upper/lower margins. No border, lettering, numbers, runes, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-1eebf7b0-cdac-43b5-9f01-271eb93fcc38.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Nixie’s face and both outstretched hands fit clearly; lower water ribbons are incidental."
+  },
+  {
+    "cardId": "frost_machine_07",
+    "name": "Sluice Gate Bulwark",
+    "prompt": "Paint an illustration for Sluice Gate Bulwark, a huge medieval fantasy water-control defense machine. Show a massive timber-and-stone sluice gate spanning an icy canal, its heavy paired gate leaves, iron gears and water channel clear; one side holds back a luminous reservoir while controlled water pours through the central opening. Frosty ward-light and sturdy buttresses suggest a huge wall-building bulwark that harvests water. Keep the key gate structure and opening fully readable in the middle 60% of an explicit 1:1 square 512x512 canvas, composed for a 206:141 card crop with quiet snowy sky and foreground banks at top/bottom. Painterly high fantasy, believable wood, iron, stone and water, dramatic cool light with warm glints. No modern machinery, no lettering, frame, symbols, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-abb705a8-c660-4678-9198-64cf830fdb86.png",
+    "editableSourcePath": "game/cards/art/masters/frost_machine_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "The paired sluice leaves, gearworks, canal opening and controlled water remain clear in the wide crop and thumbnail."
   }
 ]

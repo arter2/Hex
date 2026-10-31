@@ -4,8 +4,8 @@
   "active": 1034,
   "remaining": 919,
   "pending": 719,
-  "assigned": 61,
-  "awaitingReview": 139,
+  "assigned": 46,
+  "awaitingReview": 154,
   "countsByColour": {
     "brown": 234,
     "fire": 246,
@@ -5046,7 +5046,7 @@
       "name": "Sea Witch's Bargain",
       "type": "boon",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -5169,7 +5169,7 @@
       "name": "Conch Shell Blasts",
       "type": "charge",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -5528,7 +5528,7 @@
       "name": "Mangrove Roots",
       "type": "environment",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -5670,7 +5670,7 @@
       "name": "Nixie",
       "type": "summon",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -6053,7 +6053,7 @@
       "name": "Sluice Gate Bulwark",
       "type": "machine",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -7290,7 +7290,7 @@
       "name": "Howler Monkey",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -11212,7 +11212,7 @@
       "name": "Blood Moon",
       "type": "boon",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -11370,7 +11370,7 @@
       "name": "Hellfire Embers",
       "type": "charge",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -11655,7 +11655,7 @@
       "name": "Mouth of Hell",
       "type": "environment",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -11763,7 +11763,7 @@
       "name": "Poltergeist",
       "type": "summon",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -12305,7 +12305,7 @@
       "name": "Gibbet Tower",
       "type": "sentry",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -13465,7 +13465,7 @@
       "name": "Sun-Glass Lenses",
       "type": "charge",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -13702,7 +13702,7 @@
       "name": "Electrified Gold Idol",
       "type": "trap",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -13816,7 +13816,7 @@
       "name": "Great Sand Sea",
       "type": "environment",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -13933,7 +13933,7 @@
       "name": "Golden Scarab",
       "type": "summon",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },

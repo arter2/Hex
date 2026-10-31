@@ -2392,5 +2392,77 @@
       1254
     ],
     "reviewNote": "Reviewed square, top-shifted wide crop and thumbnail. Captain's full face, raised sword hand, companions' faces and rally fist remain visible beside the illuminated hoard; sword blade and incidental lower hand crop."
+  },
+  {
+    "cardId": "storm_charge_11",
+    "name": "Sun-Glass Lenses",
+    "prompt": "Paint Sun-Glass Lenses as a compact pair of precious sun-glass optical lenses, the named portable artifact as the clear primary subject. Two thick oval golden crystal lenses set in a fine bronze spectacle frame rest side by side on a dark leather-and-wood scholar's tray; one focused hand angles a small mirror so concentrated sunlight through both lenses forms two bright narrow lightning-like bolts on a stone target. Show both whole lenses and their frame clearly, no face required, no glasses worn on a person. Painterly medieval high-fantasy collectible-card art, luminous amber glass, crafted bronze, directional sunlight and atmospheric depth. Explicit 1:1 square 512 master; keep both complete lenses, frame and focused light effect inside x24..488,y105..407 for 206:141 crop. Quiet sky/workbench outside. No text/frame/UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4d9f56da-a6f3-4bf7-8e0f-1b5bf58a6378.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/storm_charge_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed square, crop and thumbnail. Both complete lenses and their frame fit; converging light bolts are clear. The secondary mirror and hand crop at the upper edge."
+  },
+  {
+    "cardId": "storm_trap_11",
+    "name": "Electrified Gold Idol",
+    "prompt": "Paint Electrified Gold Idol as a single compact ancient gold idol trapped with a short-radius shock ring. A small ornate golden statuette with an unmistakable serene face stands on a low stone pedestal, surrounded by a clearly readable circular ring of blue-white electricity that zaps nearby dust and one cautiously reaching hand; keep the entire idol and its face unobstructed. The idol is primary, the electric ring communicates the one-target shock trap. Painterly medieval high-fantasy collectible-card illustration, finely worked gold, crackling light, warm temple shadows and atmospheric depth. Explicit 1:1 square 512 master; full idol, face, pedestal top and complete main electric ring fit x24..488,y105..407 for 206:141 crop. No text/frame/UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4a61d426-26c7-4297-8cdc-06a5fadb2922.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/storm_trap_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed square, crop and thumbnail. Whole idol, face, pedestal and main blue-white shock ring are legible with a reaching hand as supporting context."
+  },
+  {
+    "cardId": "storm_environment_10",
+    "name": "Great Sand Sea",
+    "prompt": "Paint Great Sand Sea as a legendary burst of desert tremor: an immense golden dune sea under a vast sky, with a sudden circular seismic shockwave rippling through the central dunes, sand erupting in a dramatic low burst and a caravan briefly thrown off balance in the distance. Keep the central dune burst as the subject; broad layers of dunes sweep across the horizontal scene and convey a great ocean of sand. Painterly medieval high-fantasy landscape art, luminous ochre and storm-blue tones, textured sand, directional sun and atmospheric depth. Explicit 1:1 square 512 master; keep main tremor burst and defining dune horizon inside x24..488,y105..407 for wide 206:141 crop; quiet sky and foreground margins. No text/frame/UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-21f2ee14-aae9-436b-a12c-b3523beceb23.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/storm_environment_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed square, crop and thumbnail. Central sand tremor, broad dune horizon and distant caravan convey the burst in a vast sand sea."
+  },
+  {
+    "cardId": "storm_summon_08",
+    "name": "Golden Scarab",
+    "prompt": "Paint Golden Scarab: one magnificent golden scarab beetle with a clearly visible intelligent face, dark jewel-like eyes and bright polished gold shell, crawling diagonally over an ancient desert stone. Make the full head and central shell/body dominant; faint distant smaller scarabs may suggest a lucky pack but stay secondary. Believable scarab anatomy, six strong legs and delicate antennae, engraved shell detail catching amber sunlight, painterly medieval high-fantasy creature illustration, atmospheric desert depth. Explicit 1:1 square 512 master; keep the golden scarab's full face, eyes and shell within x24..488,y105..407 for 206:141 crop; incidental legs may crop. No text/frame/UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f473695e-11ee-4c9a-af82-b9c77bd93c5f.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/storm_summon_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed square, crop and thumbnail. Golden Scarab's eyes, full face and shell stay prominent; legs crop naturally at the sides and bottom."
   }
 ]

@@ -2383,5 +2383,95 @@
     "status": "generated",
     "batch": 11,
     "reviewNote": "Source native size [1254,1254]. Artist inspected the square, 206:141 crop and 128x88 thumbnail: entire low barrow rampart, both ends and carved entrance remain visible with quiet scenery above and below; parent review pending."
+  },
+  {
+    "cardId": "shadow_charge_11",
+    "name": "Hellfire Embers",
+    "prompt": "Paint an illustration for Hellfire Embers: three distinct red-hot coal-like embers arc through the air from a charred gauntleted hand, scattering a small vivid splash of infernal sparks across dark stone. Keep each complete ember large enough to read and the hand as an origin cue; the ember shapes must remain distinct from a generic fireball. Painterly medieval high fantasy collectible-card art, glowing molten cracks, deep reds and warm directional light against cool shadow, atmospheric depth. Square 1:1 512x512 master; keep full embers, hand and central splash within x24..488 y105..407, quiet margins above/below, horizontal 206:141 crop. No text, border or UI. No anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-1c9eda7a-6a10-49ba-a660-cf544e28f91e.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_charge_11.png",
+    "sourceNative": [
+      1514,
+      1039
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Source native size [1514,1039]. Artist inspected square, 206:141 crop and 128x88 thumbnail: distinct embers, gauntleted hand and fiery splash remain clear; parent review pending."
+  },
+  {
+    "cardId": "shadow_sentry_13",
+    "name": "Gibbet Tower",
+    "prompt": "Paint an illustration for Gibbet Tower: a stout, compact medieval stone watchtower with a small crenellated roof and a short iron gibbet cage mounted high on its face, unmistakably a defensive tower. A narrow violet bolt of shadow magic shoots from its upper window. Keep tower squat and broad enough that its complete roof tip, tower body, cage and base all fit in the central card band, with no cropped architecture. Painterly medieval high fantasy collectible-card art, weathered stone and iron, attractive moonlight and a single violet magical flare, atmospheric depth. Square 1:1 512x512 master; keep the entire tower and cage within x24..488 y105..407 for the 206:141 horizontal crop, quiet scenery above and below. No gore, words, border or UI. No anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-932d5e70-97e3-45ec-af13-ee854db24ac9.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_sentry_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Source native size [1254,1254]. Focal point [0.5,0.46] shifts crop up to include tower roof while retaining its base. Artist inspected adjusted 206:141 crop and 128x88 thumbnail: full tower, gibbet cage and defensive bolt remain clear; parent review pending."
+  },
+  {
+    "cardId": "shadow_boon_11",
+    "name": "Blood Moon",
+    "prompt": "Paint an illustration for Blood Moon: a vast fully visible deep crimson moon dominates a dark medieval night sky above a distant forest and a small gathering of shield-bearing silhouettes. The complete circular moon is the named subject; its red light gives the landscape a charged, ominous glow. Painterly high fantasy collectible-card art, layered crimson and charcoal clouds, dramatic atmospheric depth and beautiful directional moonlight. Square 1:1 512x512 master; keep the complete moon inside x24..488 y105..407, with quiet night sky and forest beyond and below; designed for the 206:141 wide crop. No text, border or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c7fd8b67-90f6-46e6-9e9a-35706d3e30c2.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_boon_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Source native size [1254,1254]. Focal point [0.5,0.43] keeps the full blood-red moon disc in the crop. Artist inspected adjusted crop and thumbnail: complete moon and atmospheric landscape read clearly; parent review pending."
+  },
+  {
+    "cardId": "shadow_environment_11",
+    "name": "Mouth of Hell",
+    "prompt": "Paint an illustration for Mouth of Hell: a broad natural fissure in an ancient volcanic landscape opens like a jagged stone mouth, glowing deep orange within as flame and smoke burst upward. The entire opening and its tooth-like rock rim are visible, centered and wide; surrounding terrain establishes a dangerous infernal region. Painterly medieval high fantasy collectible-card art, fractured basalt, molten light, dramatic smoky atmosphere and readable contrast. Square 1:1 512x512 master; keep whole fissure/mouth inside x24..488 y105..407 with quiet smoke and dark land above/below; designed for 206:141 horizontal crop. No gore, text, border or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ee2112ee-8358-4d6e-9c62-a5bfffe09262.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_environment_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Source native size [1254,1254]. Artist inspected square, 206:141 crop and 128x88 thumbnail: the full jagged infernal opening and flame-filled interior read clearly; parent review pending."
+  },
+  {
+    "cardId": "shadow_summon_09",
+    "name": "Poltergeist",
+    "prompt": "Paint an illustration for Poltergeist: a single translucent medieval ghost, a clearly readable pale spectral face and two long floating hands, twisting through a dim stone room as if driven by invisible force. A few small books and a wooden stool hover around it as secondary clues to poltergeist activity, but the ghost's face and hands remain dominant. Painterly medieval high fantasy collectible-card art, flowing translucent shroud, soft blue-white ghostlight against warm candlelight, atmospheric depth and grounded elegant anatomy, eerie rather than gruesome. Square 1:1 512x512 master; keep face, both hands and the main spectral form within x24..488 y105..407, quiet scenery above/below; clear 206:141 horizontal crop. No words, border or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-823c7251-a962-4519-8048-7e4a23bc7ccc.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.41
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Source native size [1254,1254]. Focal point [0.5,0.41] shifts crop up. Artist inspected square, adjusted 206:141 crop and 128x88 thumbnail: full spectral face and both hands remain visible; floating objects are secondary; parent review pending."
   }
 ]

@@ -5,9 +5,9 @@ package-itch.py would ship into memory, rewrites the copy, and zips it. Nothing 
 
   1. Card art: one size per card instead of three (128/256/512). The largest crop, re-encoded as WebP at
      --art-quality and shrunk to --art-width if that is under 512; the browser scales it for the small card.
-  6. ...and all of it packed into art-variants.js as base64. Each card's picture becomes a blob: URL the first
-     time the game asks for it, so ui.js, art.js and the rest read HEX_CARD_ART_VARIANTS exactly as before.
-     702 files become 0 (the data lives in the one script that was already there).
+     Each stays its own file (keeping its 512 crop's name), so the game still fetches only the pictures on screen:
+     702 files become 234. (Packing them into a script was tried and dropped: it doubled the start-up download
+     and the JS memory, since every picture then loaded at start and sat in memory as base64.)
   3. sprites.js: its PNG data URIs become lossless WebP (exact: every pixel, alpha included, is kept).
   4. ui/*.svg: the pixel-run SVGs (tools/ui-svg.py) become palette PNGs of the same pixels, checked pixel by
      pixel against the SVG's runs, then inlined.
@@ -20,7 +20,7 @@ package-itch.py would ship into memory, rewrites the copy, and zips it. Nothing 
 Also left out: cards/*.json, cards/README.md and ui/sizes.json, which the game never loads.
 
 Then it checks the zip: CRC, index.html at the root, no more than itch's 1,000 files, every card in
-art-variants.js packed, and no shipped file still naming a file this build removed. Prints counts and sizes as JSON.
+art-variants.js present, and no shipped file still naming a file this build removed. Prints counts and sizes as JSON.
 docs/packing.md has the when and why."""
 import argparse
 import base64
@@ -86,8 +86,8 @@ def b64(data):
     return base64.b64encode(data).decode("ascii")
 
 
-def pack_art(files, width, quality, stats):
-    """Steps 1 and 6: one WebP per card, packed into art-variants.js."""
+def one_size_art(files, width, quality, stats):
+    """Step 1: one WebP file per card instead of three sizes. Each card keeps the name of its largest crop."""
     src = files["cards/art-variants.js"].decode()
     m = re.search(r"const HEX_CARD_ART_VARIANTS=Object\.freeze\((\{.*\})\);\s*$", src, re.S)
     if not m:
@@ -95,7 +95,7 @@ def pack_art(files, width, quality, stats):
     variants = json.loads(m.group(1))
     before = sum(len(files[p]) for p in files if p.startswith("cards/art/display/"))
     count = sum(1 for p in files if p.startswith("cards/art/display/"))
-    packed = {}
+    art, out_variants = {}, {}
     for cid, v in variants.items():
         best = max(v["outputs"], key=lambda o: o["width"])
         im = Image.open(io.BytesIO(files[best["url"]]))
@@ -108,29 +108,20 @@ def pack_art(files, width, quality, stats):
         data = out.getvalue()
         if im.width == best["width"] and len(files[best["url"]]) <= len(data):
             data = files[best["url"]]  # the crop as built is already smaller
-        meta = {k: val for k, val in v.items() if k not in ("large", "thumbnail", "outputs")}
-        packed[cid] = [meta, im.width, im.height, b64(data)]
+        url = best["url"]
+        art[url] = data
+        out_variants[cid] = {**v, "large": url, "thumbnail": url,
+                             "outputs": [{"width": im.width, "height": im.height, "url": url}]}
     for p in [p for p in files if p.startswith("cards/art/display/")]:
         del files[p]
-    body = ",\n".join(f"{json.dumps(cid)}:{json.dumps(row, separators=(',', ':'))}" for cid, row in packed.items())
+    files.update(art)
     files["cards/art-variants.js"] = (
-        "// Packed by tools/package-itch-packed.py from the generated art-variants.js: one WebP per card, as base64.\n"
-        "// Each picture becomes a blob: URL the first time it is asked for; the fields read as before.\n"
-        "const HEX_CARD_ART_VARIANTS=(()=>{\n"
-        "  const D={\n" + body + "\n  };\n"
-        "  const blob=s=>{ const b=atob(s), u=new Uint8Array(b.length); for(let i=0;i<b.length;i++) u[i]=b.charCodeAt(i);"
-        " return URL.createObjectURL(new Blob([u],{type:'image/webp'})); };\n"
-        "  const out={};\n"
-        "  for(const id in D){ const [meta,w,h,s]=D[id]; let url=null, outs=null; const get=()=>url||(url=blob(s));\n"
-        "    out[id]=Object.freeze(Object.defineProperties(Object.assign({},meta),{\n"
-        "      large:{get,enumerable:true}, thumbnail:{get,enumerable:true},\n"
-        "      outputs:{enumerable:true,get:()=>outs||(outs=Object.freeze([Object.freeze({width:w,height:h,url:get()})]))}})); }\n"
-        "  return Object.freeze(out);\n"
-        "})();\n").encode()
-    stats["art"] = {"cards": len(packed), "filesBefore": count, "mbBefore": round(before / 1048576, 1),
-                    "mbAfter": round(sum(len(base64.b64decode(r[3])) for r in packed.values()) / 1048576, 1),
+        "// Rewritten by tools/package-itch-packed.py from the generated art-variants.js: one WebP per card.\n"
+        "const HEX_CARD_ART_VARIANTS=Object.freeze(" + json.dumps(out_variants, separators=(",", ":")) + ");\n").encode()
+    stats["art"] = {"cards": len(out_variants), "files": len(art), "filesBefore": count,
+                    "mbBefore": round(before / 1048576, 1), "mbAfter": round(sum(map(len, art.values())) / 1048576, 1),
                     "width": width, "quality": quality}
-    return set(variants)
+    return out_variants
 
 
 def webp_sprites(files, stats):
@@ -305,7 +296,7 @@ def main():
 
     for p in NEVER_LOADED:
         files.pop(p, None)
-    cards = pack_art(files, args.art_width, args.art_quality, stats)
+    cards = one_size_art(files, args.art_width, args.art_quality, stats)
     webp_sprites(files, stats)
     used = inline_css(files, ui_cache, stats) | write_pack(files, ui_cache, stats)
     removed = {p for p in files if p.startswith(INLINED_DIRS) and not KEEP.search(p)}
@@ -335,8 +326,10 @@ def main():
             for s in FORBIDDEN_IN_JS:
                 if s in text:
                     problems.append(f"{p} builds a path with {s!r}: add it to UI_PATCHES")
-    if any(p.startswith("cards/art/display/") for p in files):
-        problems.append("card art crops left in the zip")
+    art_urls = {v["large"] for v in cards.values()}
+    extra = sorted(p for p in files if p.startswith("cards/art/display/") and p not in art_urls)
+    if extra:
+        problems.append(f"{len(extra)} card art files no card names, e.g. {extra[0]}")
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with zipfile.ZipFile(args.output, "w", zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
@@ -348,11 +341,11 @@ def main():
         if failure:
             raise SystemExit(f"ZIP CRC failed: {failure}")
         names = set(archive.namelist())
-        packed_ids = set(re.findall(r'^"([^"]+)":\[', archive.read("cards/art-variants.js").decode(), re.M))
     if "index.html" not in names:
         problems.append("index.html is not at the zip's root")
-    if packed_ids != cards:
-        problems.append(f"{len(cards - packed_ids)} cards in art-variants.js are not packed")
+    missing = sorted(u for u in art_urls if u not in names)
+    if missing:
+        problems.append(f"{len(missing)} card art files named in art-variants.js are missing, e.g. {missing[0]}")
     if len(names) > ITCH_MAX_FILES:
         problems.append(f"{len(names)} files: itch.io takes at most {ITCH_MAX_FILES} in an HTML game's zip")
     print(json.dumps({"output": str(args.output), "before": before, "files": len(names),

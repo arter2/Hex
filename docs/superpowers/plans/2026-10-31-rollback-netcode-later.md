@@ -24,8 +24,9 @@ Do not start this plan until all of these are true:
 
 - **One shared sim, two mages.** `B.players=[p0,p1]` in absolute board coordinates: `p0` owns columns 0 to 6, `p1` owns columns 7 to 13. Each client renders from its own mage's point of view (camera, mirrored x), as the duel plan does.
 - **Acting-player frame.** Existing card, strike and creature code reads `B.player`, `P_TILES`, `E_TILES`, `tile.side` and `alive()` from one mage's point of view. Rather than edit hundreds of sites, `withActor(a, fn)` temporarily points those at actor `a`: `B.player` is `a`, `P_TILES`/`E_TILES` are swapped, tile `side` labels are flipped for `p1`, and `alive()` returns the other mage as an enemy proxy (`kind:'enemy'`, `remote:true`, hp read from the real mage). A hit on a proxy goes through `hitPlayer` for the real mage inside `withActor(thatMage, ...)`.
-- **Spell screen no longer pauses the shared sim.** A sim that both clients share cannot pause for one player. In a rollback duel the Spell screen is a timed overlay (8 s) over a running fight, and its draws, queueing and casts are inputs. Confirm this rule with the user before Task 8.
+- **Synced card screen, as in the duel plan.** Opening the Spell screen is an input that pauses the shared sim for both mages. It lasts `mpSpell` seconds (default 10, debug-menu setting) counted in ticks, and ends when both mages have sent `{k:'fight'}` or the countdown ends. Draws, queueing and casts during it are inputs.
 - **Fixed timestep:** `SIM_DT = 1/60` s. Real frame time only decides how many ticks run.
+- **Timings stay in the debug menu:** the rollback window, input delay and the card screen length are `XLIT` keys next to the duel plan's `mp*` keys (`mpWindow`, `mpDelay`), so they can be tuned live.
 - **Rollback window:** at most 8 ticks (133 ms). Input delay: 2 ticks (33 ms), raised automatically from the measured round trip. If a remote input is later than the window, both sims stall ("Waiting for opponent") instead of drifting.
 - **Desync detection:** a checksum of simulation state every 30 ticks, exchanged between clients. A mismatch ends the duel with a clear message and writes a state dump for a bug report. It never continues silently.
 - **Cross-engine floating point:** `+ - * / Math.sqrt` are exact everywhere, but `Math.sin`, `cos`, `exp`, `pow`, `atan2` and `hypot` may differ in the last bit between V8 (Chrome) and JavaScriptCore (Safari). A phone and a laptop on different engines would drift. The simulation must not use them (a table-driven or fixed-point replacement is allowed), and a lint test enforces it.
@@ -300,27 +301,25 @@ git commit -m "feat: deterministic two-mage duel sim with acting-player frame"
 
 ---
 
-### Task 8: The Spell screen inside a shared sim
+### Task 8: The synced card screen inside the shared sim
 
 **Files:**
 - Modify: `game/battle.js` (`openCustomScreen`/`closeCustomScreen` at lines 174-190, `update`'s `custom` phase handling), `game/ui.js` (Spell screen)
 - Modify: `tools/playtest/duelsim-test.js`
 
 **Interfaces:**
-- Produces: `p.spell={open:boolean, left:number}` per mage in a duel sim (ticks). Opening is the input `{k:'open'}`, which draws up to a hand and starts an 8 s countdown; `{k:'fight'}` or the countdown ending closes it and the sim keeps running throughout. Queueing, instants and tools are inputs from Task 4. `B.phase` for a duel stays `'fight'`.
+- Produces: `B.spell={open:boolean, left:number, done:[boolean,boolean]}` for the duel sim (`left` in ticks, from `mpSpell` seconds). Opening is the input `{k:'open'}` from either mage: it pauses the sim (`B.phase='custom'`), draws both mages up to a hand, and consumes both gauges. `{k:'fight'}` sets that mage's `done` flag. The screen closes and the sim resumes when both flags are set or `left` reaches 0 (counted in ticks that the sim does still advance for the countdown only). Queueing, instants and tools are inputs from Task 4. Two `open` inputs on the same tick merge.
 
-- [ ] **Step 1: Confirm the rule with the user** (Design decisions: no pause in the shared sim). Write the answer at the top of this task.
+- [ ] **Step 1: Write the failing test**: p0 opens the card screen at tick 10 and queues two cards; both mages' positions and HP are unchanged while it is open; p1 sends `{k:'fight'}` at tick 100 and p0 at tick 200, and the sim resumes at tick 200; with nobody pressing Fight!, it resumes at tick `10 + mpSpell*60`; two `open` inputs on tick 10 give one screen; the checksum is identical across two runs, and across a rollback that changes an input during the screen.
 
-- [ ] **Step 2: Write the failing test**: p0 opens the Spell screen at tick 10 and queues two cards; p1 attacks p0 during the 8 s; p0's HP drops (the sim did not pause); the countdown ends at tick 10+480 and the screen closes with the queue intact; the checksum is identical across two runs.
-
-- [ ] **Step 3: Run to verify failure**
+- [ ] **Step 2: Run to verify failure**
 
 Run: `node tools/playtest/duelsim-test.js out/duelsim`
 Expected: FAIL.
 
-- [ ] **Step 4: Implement** the per-mage `spell` state and make single-player keep its pausing behaviour unchanged (`B.phase==='custom'`).
+- [ ] **Step 3: Implement** `B.spell` and the two inputs, and keep single-player behaviour unchanged (`B.phase==='custom'`).
 
-- [ ] **Step 5: Run to verify pass, then commit**
+- [ ] **Step 4: Run to verify pass, then commit**
 
 Run: `node tools/playtest/duelsim-test.js out/duelsim && node tools/playtest/battle-ui-runner.js out/battle-ui`
 Expected: PASS.
@@ -444,4 +443,4 @@ git commit -m "docs+ci: rollback netcode guide, CI wiring, version bump"
 - **Spec coverage:** shared deterministic sim (Tasks 2 to 5, 7), prediction and rollback (Task 9), cosmetics (Task 6), Spell-screen rule (Task 8), desync detection (Tasks 9, 10), fallback to the avatar model (Task 10). Every Review Focus line maps to a task with a named test.
 - **Type consistency:** `Input` and `applyInput` come from Task 4 and are used unchanged in Tasks 7 to 9. `snapshot`, `restore`, `checksum` come from Task 5 and are used by name in Tasks 6, 9 and 10. `B.resim` is defined in Task 6 and set in Task 9. `startDuelSim` and `simTickDuel` are defined in Task 7 and used in Tasks 9 and 10.
 - **Known weak spot:** Tasks 5 to 7 are sized from grep counts, not from reading each call site. The Task 1 spike exists to correct that, and those three tasks must be re-planned in detail from its report before anyone starts them.
-- **Open decision:** the Spell-screen rule in Task 8 changes a rule players know from solo play. It needs the user's confirmation before that task starts.
+- **Resolved decision:** the card screen stays a pause, shared by both players for `mpSpell` seconds, as chosen for the duel plan.

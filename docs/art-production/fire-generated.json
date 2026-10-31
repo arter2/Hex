@@ -3466,5 +3466,42 @@
     "status": "generated",
     "batch": 13,
     "reviewNote": "Square source, centered 206:141 crop and thumbnail inspected: the cone, crater and bright lava/rock burst are prominent and clear. The highest smoke billow reaches the upper crop edge, while the named eruption’s incandescent jet and ejected stones remain visible."
+  },
+  {
+    "cardId": "fire_boon_16",
+    "name": "Bull's Endurance",
+    "prompt": "Illustrate the Hexmancers fire boon Bull's Endurance, a delayed burst of regeneration with a small scorching cost. A mighty dark-brown war bull stands steady in a medieval forge courtyard, its broad head, clear amber eye, both curved horns and powerful shoulders fully visible. A warm green-gold healing glow slowly closes a shallow scrape along its shoulder while a few restrained orange sparks scorch the edge of its hide, suggesting the price of renewed endurance. The bull is the strong central subject, calm and resolute rather than charging; show rich believable fur, horn texture and a sturdy silhouette. Painterly medieval high-fantasy collectible-card art, cinematic forge light, atmospheric depth and refined brushwork. Explicit 1:1 square composition for an editable 512x512 master. Keep head, horns and healing/scorch detail inside x24..488,y105..407, centered through the middle 60%, quiet forge atmosphere above and below for a 206:141 crop. No text, frame, numbers, interface, logo, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "revisionPrompt": "Recompose this painterly forge-courtyard bull illustration as a square 512x512 master. Preserve the same noble dark-brown war bull, warm directional forge light, green-gold regeneration magic and a few restrained scorch sparks, but make it a compact chest-up portrait rather than a full-body view. Scale and place the bull's head and shoulders so the complete head, both eyes, muzzle, and BOTH full curved horns including their tips fit together with generous margin inside x40..472,y110..400 on the square. Do not let either horn touch the edge or crop. Keep the shoulder wound and healing glow visible in the lower center. The bull's steady amber-eyed expression is the main subject; painterly medieval high-fantasy art, believable fur, horn and forge materials. No text, frame, numbers, modern objects, anime or photorealism.",
+    "generatedPath": "/workspace/generated_images/exec-83771fc2-e72c-4d83-b161-b762e34cbf0c.png",
+    "editableSourcePath": "game/cards/art/masters/fire_boon_16.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed repaired 512-square source, upward-shifted 206:141 crop (focalPoint y=0.40) and 128x88 thumbnail. Bull face, eyes, both full horn tips and healing/scorch detail fit. Initial source preserved at /tmp/fire_boon_16-initial.png. Parent review pending."
+  },
+  {
+    "cardId": "fire_boon_17",
+    "name": "Dwarven Ale",
+    "prompt": "Illustrate the Hexmancers fire boon Dwarven Ale, a hearty restorative drink that heals immediately. A stout dwarf veteran in a stone tavern raises one complete forged tankard of golden amber ale at chest height, his weathered face and bright eyes clearly visible beside the mug. The vessel is a compact hammered bronze-and-oak tankard with a distinct rim, foamy top, curved handle, full body and solid base; keep every part intact with generous space around it. Warm honey light glows through the ale and a subtle green-gold healing aura closes a small scrape on the dwarf's knuckles; two armored companions gather softly in the background. The dwarf and full tankard are the strong central subject, with the drink clearly readable at thumbnail size. Painterly medieval high-fantasy collectible-card art, believable beard, leather, bronze, foam and oak, warm hearth light, atmospheric depth and refined brushwork. Explicit 1:1 square composition for an editable 512x512 master. Keep face, hands and full tankard rim-to-base inside x24..488,y105..407, horizontal middle-60% staging, quiet tavern above/below for a 206:141 crop. No labels, text, frame, numbers, interface, logo, watermark, modern objects, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b358ba49-cea2-4d98-b1ff-1d09e6c0d59c.png",
+    "editableSourcePath": "game/cards/art/masters/fire_boon_17.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Dwarf face and hand, complete foamy tankard including handle and base, and healing glow remain clear. Parent review pending."
   }
 ]

@@ -3470,5 +3470,41 @@
     "status": "generated",
     "batch": 13,
     "reviewNote": "Shifted focalPoint upward to [0.5,0.4] after crop inspection to retain the jailer’s face together with key ring, pulling hand, target face and iron ward. Inspected translated 206:141 crop and thumbnail; ogre identity and protective bars remain clear."
+  },
+  {
+    "cardId": "shadow_summon_23",
+    "name": "Brimstone Imp",
+    "prompt": "Paint original square 1:1 painterly medieval-dark-fantasy collectible-card art for Brimstone Imp. Actual summon: a frail, quick imp delivers a barrage of brimstone sparks, curses its foes, and lingers for three turns with a harvest trait. Show one compact but distinct imp in mid-leap, with a sharply readable horned face, ember eyes, clawed hands and small batlike wings; its wings and limbs may trail beyond the composition, but keep head and hands clear. It spits several tiny sulfur-orange firebolts toward a single armored traveler, while a wisp of dark essence curls back toward the imp to hint at harvest. The imp is the clear named subject, nimble rather than bulky; grounded fantasy anatomy, no toy/cartoon proportions. Painterly ruined watchtower at night, richly textured leathery wings, soot, iron and stone, dramatic ember light against cold slate moonlight, atmospheric depth. Square 512x512; keep imp face/eyes/hands and target face inside x24..488 y105..407, quiet smoky margins; designed for true 206:141 crop. No text/frame/UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8371eeec-7871-43bc-8af1-eaa557899f13.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_23.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected exact 512 source, true 206:141 crop and 128x88 thumbnail. Horned imp face, ember eyes, hands and brimstone barrage remain distinct; its wings naturally extend beyond the crop."
+  },
+  {
+    "cardId": "shadow_summon_24",
+    "name": "Murder of Crows",
+    "prompt": "Paint original square 1:1 painterly medieval-dark-fantasy collectible-card art for Murder of Crows. Actual summon: a frantic phantom flock attacks in repeated barrages, curses its target and lingers for three turns. Show a coherent murder of five or six unmistakable crows sweeping across a moonlit graveyard; one dominant foreground crow has a clearly readable sharp beak and bright eye, while the flock's other heads and beaks remain distinct rather than merging into a black blur. Several birds dive past a lone armored sentinel, whose startled face is visible through the flock; translucent spectral edges and cold violet curse mist mark the birds as phantom. Painterly feather detail, twisted bare trees, old stone and restrained moonlight, dramatic black-blue values and high-contrast silhouettes. Square 512x512; keep the main crow head/eye, several flock heads/beaks and the target face inside x24..488 y105..407; incidental wing tips and trails may crop; quiet mist above and earth below; designed for a true 206:141 card crop. No frame, lettering or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-249b65de-d7ec-49cd-8983-7bacd5c43581.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_24.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected exact 512 source, true 206:141 crop and 128x88 thumbnail. Several distinct crow heads, sharp beaks and eyes read as a phantom flock, with the sentinel face visible through the barrage; wing tips are incidental crop."
   }
 ]

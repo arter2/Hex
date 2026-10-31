@@ -1,15 +1,15 @@
 {
   "batch": 13,
-  "status": "in-progress",
+  "status": "complete",
   "targetNewImages": 200,
-  "generatedSources": 183,
-  "reviewedSources": 176,
-  "missingSources": 17,
-  "reviewedPackets": 36,
+  "generatedSources": 200,
+  "reviewedSources": 200,
+  "missingSources": 0,
+  "reviewedPackets": 45,
   "requiresRepaint": [],
   "baselineActive": 1434,
   "targetActive": 1634,
-  "runtimeActive": 1434,
+  "runtimeActive": 1634,
   "baselineRuntimeImageCount": 5800,
   "baselineGeneratedRecordCount": 1384,
   "savedCards": [
@@ -95,6 +95,30 @@
       "focalPoint": [
         0.5,
         0.46
+      ]
+    },
+    {
+      "cardId": "fire_boon_16",
+      "name": "Bull's Endurance",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_boon_16.png",
+      "sha256": "da142a4ee01a338284b878f7dc1dfbb9289529b55b76d668b2315dc8510c685e",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "fire_boon_17",
+      "name": "Dwarven Ale",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_boon_17.png",
+      "sha256": "7cbefb88e5920f7f067cd20b282532038f1a57966dac46cacc115ae1c7d9f5fe",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
       ]
     },
     {
@@ -398,6 +422,18 @@
       ]
     },
     {
+      "cardId": "frost_charge_14",
+      "name": "Ice Javelins",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_charge_14.png",
+      "sha256": "89ef7b3944bc894c56ff9a9caa5bbc6a4ac66b716de3f5dbe2bef183a729dd45",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "cardId": "frost_lob_17",
       "name": "Jellyfish Bloom",
       "colour": "frost",
@@ -427,6 +463,18 @@
       "colour": "frost",
       "source": "game/cards/art/masters/frost_lob_19.png",
       "sha256": "2391cf1ca2b39e4daa0b46157b2a02820e0e70c7b2bb8ad6127368a55617cb4d",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "frost_lob_20",
+      "name": "Rogue Wave",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_lob_20.png",
+      "sha256": "0418a1b85c2564aff3117ed4887a7991a1f8fb621ebd84c59e477d94d56181a3",
       "reviewed": true,
       "focalPoint": [
         0.5,
@@ -998,6 +1046,30 @@
       ]
     },
     {
+      "cardId": "gray_summon_168",
+      "name": "Enkidu",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_168.png",
+      "sha256": "4b91e191b8376190924463bd55b271a046b151f14623fbc040c553bce0547b1a",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "gray_summon_169",
+      "name": "Hua Mulan",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_169.png",
+      "sha256": "ddbb56a64c913c47553d672a38cacfb4f11ef68d24334cba9d1739c17cef663b",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.44
+      ]
+    },
+    {
       "cardId": "light_charge_16",
       "name": "Arrows of Heracles",
       "colour": "light",
@@ -1295,6 +1367,30 @@
       "focalPoint": [
         0.5,
         0.5
+      ]
+    },
+    {
+      "cardId": "light_summon_16",
+      "name": "Lamassu",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_summon_16.png",
+      "sha256": "003e2f5b367ad3a5c4fe77b18bee1c218429ac5578af1fc77fb2382316d6def9",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.33
+      ]
+    },
+    {
+      "cardId": "light_summon_17",
+      "name": "Guardian Sphinx of Giza",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_summon_17.png",
+      "sha256": "7a77d9eb66a513c8c177b30f596c375493a7bad43e5888b6a086546f25866b4f",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.38
       ]
     },
     {
@@ -1646,6 +1742,30 @@
       ]
     },
     {
+      "cardId": "shadow_summon_23",
+      "name": "Brimstone Imp",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_23.png",
+      "sha256": "bfac7934429e0a9cfcb7f038a61d210dfce7ef2e9cd2ced02868d71b40000d93",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "shadow_summon_24",
+      "name": "Murder of Crows",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_24.png",
+      "sha256": "e64f06d2a41e341edc99d08ba70f447656f6c6402711064597407da302c33b83",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "cardId": "storm_charge_16",
       "name": "Ifrit Embers",
       "colour": "storm",
@@ -1891,7 +2011,7 @@
       "colour": "storm",
       "source": "game/cards/art/masters/storm_summon_12.png",
       "sha256": "fd78edcb91e8696ff12e20b9e2e5d8d3407cfc44bfc12125233b0d80c804be61",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.42
@@ -1903,7 +2023,7 @@
       "colour": "storm",
       "source": "game/cards/art/masters/storm_summon_13.png",
       "sha256": "ecb5180d22bd3aba369b5bc583a1606cf90fbcb3ab4a90faa4340fa686db1c3d",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.42
@@ -1915,7 +2035,7 @@
       "colour": "storm",
       "source": "game/cards/art/masters/storm_summon_14.png",
       "sha256": "f5d2e497475a28dcd4a6ca3cae11cf679fb158c7db4b83d29c2aada4335cdd6d",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.42
@@ -1927,10 +2047,46 @@
       "colour": "storm",
       "source": "game/cards/art/masters/storm_summon_15.png",
       "sha256": "762d797eaee8c6abef3bc6c271f2f89884c7155aa8d04a6afcb294d2c3faf5f3",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.38
+      ]
+    },
+    {
+      "cardId": "storm_summon_16",
+      "name": "Girtablilu Gatewarden",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_summon_16.png",
+      "sha256": "2b534edbe4c0e0bbfa83d724eef72d9f18cf91a436bb733a932296b8a6d1c053",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.42
+      ]
+    },
+    {
+      "cardId": "storm_summon_17",
+      "name": "Jackal Tomb Guard",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_summon_17.png",
+      "sha256": "b68688c43cb18cacb8a95a6b55b4eacc203832ff237475e0db8bd7d8aebe7f1d",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.42
+      ]
+    },
+    {
+      "cardId": "storm_summon_18",
+      "name": "Nile Crocodile",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_summon_18.png",
+      "sha256": "abf6c5d89e15adf94e6a5382121f3e8ac7a2a14dfc42bb11868ffa02fdfcab32",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
       ]
     },
     {
@@ -1939,7 +2095,7 @@
       "colour": "verdant",
       "source": "game/cards/art/masters/verdant_charge_18.png",
       "sha256": "245c668a4ac5f01fe712445dc5bfaaea0930b2629a5a74aa4306c7a31d0695d8",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.5
@@ -2191,7 +2347,7 @@
       "colour": "verdant",
       "source": "game/cards/art/masters/verdant_strike_39.png",
       "sha256": "1a73af810f159cb07d216915db18af0c496fd34bdc927a6e0d9c71d4308e710c",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.5
@@ -2203,10 +2359,58 @@
       "colour": "verdant",
       "source": "game/cards/art/masters/verdant_summon_18.png",
       "sha256": "659670956f5187a82603cafa631f0d48b733f5a72150c415f88908e448ad1c7c",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.43
+      ]
+    },
+    {
+      "cardId": "verdant_summon_19",
+      "name": "Elven Pathfinder",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_19.png",
+      "sha256": "e26701590f8098eb6fb7679cdb862c0d0e3ed1c28243002524ed9671a922b29d",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.45
+      ]
+    },
+    {
+      "cardId": "verdant_summon_20",
+      "name": "Patupaiarehe Mist Folk",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_20.png",
+      "sha256": "d067b93181a54553579ac90d4b8b21803ab274d56d051007567c2affc917748a",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.47
+      ]
+    },
+    {
+      "cardId": "verdant_summon_21",
+      "name": "Curupira",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_21.png",
+      "sha256": "cedd4c50f6bfb7b34743b2b9762201daf1248876a7f945fcea0cfbd6b3689deb",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.43
+      ]
+    },
+    {
+      "cardId": "verdant_summon_22",
+      "name": "Chullachaqui",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_22.png",
+      "sha256": "e767d38a541dbc9bf399347e2a1a3c728cce9ab65c073a869e89f73967c670f9",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
       ]
     }
   ]

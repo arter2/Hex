@@ -3477,5 +3477,41 @@
     "status": "generated",
     "batch": 13,
     "reviewNote": "Shifted focal point upward to y=0.46 and inspected the 512-square source, revised wide crop and 128px thumbnail. Gilgamesh’s full face/eyes, spear hand and raised shield remain visible together as he guards his companions; incidental lower cloak crops away."
+  },
+  {
+    "cardId": "gray_summon_168",
+    "name": "Enkidu",
+    "prompt": "Paint an illustration for the exact card name “Enkidu.” Depict Enkidu as a legendary wild ape guardian of ancient Mesopotamia: a towering, intelligent, broad-shouldered ape with a rugged humanlike face, deep-set eyes, long dark mane and simple bronze-and-leather bracers. He stands upright in a cedar forest at the edge of an ancient city, turning to protect his companions as a forceful burst of wind, dust and leaves blasts outward from his raised hand. Keep Enkidu’s face, eyes, both hands and powerful upper body clearly visible; the mythic hero is the dominant subject, not a generic animal. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: believable ape anatomy, nuanced fur, bronze, leather and ancient stone, layered brushwork, warm firelight against cool forest shadows, atmospheric depth, grounded and solemn rather than cartoonish. Explicit 1:1 square canvas intended for a 512×512 editable master. Compose Enkidu’s face and raised hands in the middle horizontal band; keep eyes, hands and blast source within x24–488,y105–407 for a 206:141 landscape crop. Quiet cedar forest and city walls above and below. Strong readable silhouette. No card frame, text, runes, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c494d73b-f7ef-404a-aeb0-b6928985bbaf.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_168.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Shifted focal point upward to y=0.40 and inspected the 512-square source, revised wide crop and 128px thumbnail. Enkidu’s full wild-ape face/eyes, both hands and blast source stay visible together; companions and ancient city are supporting context."
+  },
+  {
+    "cardId": "gray_summon_169",
+    "name": "Hua Mulan",
+    "prompt": "Paint an illustration for the exact card name “Hua Mulan.” Depict the legendary Chinese woman warrior Hua Mulan in historically grounded Northern Wei lamellar armor and a muted red cloak, standing at a mountain pass with her hair tied beneath a simple helmet. Her brave face and alert eyes are unmistakably female and fully visible as she draws a complete recurved bow toward a distant threat; keep both hands, bow grip and drawn arrow clear. A few companions behind her suggest her loyal escort, but Mulan remains the dominant hero. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: grounded human anatomy and expression, nuanced lacquered leather, bronze, silk and wood, rich layered brushwork, cool dawn light with warm red accents, atmospheric depth, not photorealistic. Explicit 1:1 square canvas intended for a 512×512 editable master. Compose Mulan’s face, hands and full bow horizontally in the middle band; keep eyes, both hands, complete bow and arrow inside x24–488,y105–407 for a 206:141 landscape crop. Quiet mountain sky and ground above and below. Strong readable silhouette. No Disney likeness, no card frame, legible writing, text, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-87ecf534-99e5-413d-bcdf-beeafc900ca1.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_169.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.44
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Shifted focal point upward to y=0.44 and inspected the 512-square source, revised wide crop and 128px thumbnail. Hua Mulan’s full face/eyes, bow hand, drawing hand and arrow remain clear; the upper bow limb extends into expendable sky, while her identity and action stay unmistakable."
   }
 ]

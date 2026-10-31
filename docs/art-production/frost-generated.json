@@ -3465,5 +3465,41 @@
     "status": "generated",
     "batch": 13,
     "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Storm cloud, full silver-blue rain band and staggered row of armored targets remain visible; the downpour reads clearly at small size. Parent review pending."
+  },
+  {
+    "cardId": "frost_lob_20",
+    "name": "Rogue Wave",
+    "prompt": "Paint original square 1:1 painterly medieval maritime-fantasy collectible-card art for Rogue Wave. Actual legendary lob: after a short delay, one broad wave sweeps across an entire enemy row, knocks the fighters down, and leaves a small healing surge afterward. Show a single enormous curling rogue wave on a frozen harbor, its white-blue crest rolling laterally across a line of three armored raiders and sweeping them off their feet together; the wave is the unmistakable named subject, not a generic spell explosion. A soft pale-cyan afterwash begins to close a small scrape on a nearby sailor to imply the healing after-impact. Keep all main faces and visible hands inside the safe horizontal band. Painterly northern sea, textured ice, mail, wet wool and foam, dramatic cold moonlight with turquoise highlights, atmospheric depth, strong readable horizontal silhouette. Square 512x512 master; wave crest and faces stay within x24..488 y105..407, quiet storm sky above and dark water below; designed for true 206:141 wide crop. No frame, text, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-63ac7013-8372-45ba-ba76-bcfedcd3e1aa.png",
+    "editableSourcePath": "game/cards/art/masters/frost_lob_20.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected exact 512 source, true 206:141 crop and 128x88 thumbnail. The rogue wave remains the clear horizontal subject, row of knocked-down raiders reads, and the pale-cyan healing afterwash is visible."
+  },
+  {
+    "cardId": "frost_charge_14",
+    "name": "Ice Javelins",
+    "prompt": "Paint original square 1:1 painterly medieval maritime-fantasy collectible-card art for Ice Javelins. Actual charge: six uses of a piercing ice bolt that knocks a struck foe down. Show a frost ranger at left with a clear face and gloved hand releasing a compact parallel volley of THREE short, clearly distinct ice javelins toward one armored raider at right; each javelin is a complete compact horizontal spear, with the sharp crystalline tip and blunt wrapped butt both fully visible, no projectile touching any image edge. The lead javelin pierces the raider's shield rim and knocks him backward as frost blooms over his armor. Keep the full three javelins together near the middle of the square; their tips, shafts, wraps and butts must all fit inside x50..462 y180..330 on the 512x512 master so they remain wholly visible in the 206:141 crop. Painterly grounded anatomy, detailed carved ice, leather, iron and fur, cold blue-white directional light and atmospheric snowy harbor. No frame, lettering, UI or modern objects; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f66d4a82-d2ec-4450-aac5-ee3f0bcf3531.png",
+    "editableSourcePath": "game/cards/art/masters/frost_charge_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected exact 512 source, true 206:141 crop and 128x88 thumbnail. All three compact javelins retain their complete crystalline tips, wrapped shafts and butts in frame; the ranger’s casting hand and piercing impact read clearly."
   }
 ]

@@ -3465,5 +3465,41 @@
     "status": "generated",
     "batch": 13,
     "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel crop: the griffin’s eagle head/eye, hooked beak, chest and leading talons remain distinct; its protective wing arc and two secondary allied guards are readable, with outer wing tips cropped naturally."
+  },
+  {
+    "cardId": "light_summon_16",
+    "name": "Lamassu",
+    "prompt": "Create standalone painterly medieval-high-fantasy collectible-card art for the exact summon Lamassu. Depict one unmistakable ancient Assyrian lamassu guardian: a colossal tawny bull’s powerful body, cloven hooves, enormous feathered eagle wings, and a calm human king’s head with a curled beard and horned crown. Make the complete human face and eyes clear and central, so it cannot read as a sphinx or griffin. The lamassu stands beside a palace gate, raising one foreleg as a warm blessed aura strengthens a small pair of allied guards; a subtle ribbon of light around the stone arch hints at confusion without overpowering the creature. Keep human face, bull chest and wing root within x24..488,y105..407; legs and wing tips may crop naturally. Painterly grounded anatomy and carved stone, richly layered feathers, gold and wool, warm directional sunrise against cool blue shadow, atmospheric depth matching supplied Hexmancers light-creature references. Explicit 1:1 SQUARE canvas for a 512x512 editable master composed for a 206:141 crop. No text, lettering, frame, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0becb360-057b-417e-a818-f5328969fbf9.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_16.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.33
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, top-shifted 206:141 crop at focalPoint [0.5,0.33], and 128-pixel crop: the human head/eyes and full crown, bull chest and raised foreleg remain legible; bull legs and outer wing feathers crop naturally."
+  },
+  {
+    "cardId": "light_summon_17",
+    "name": "Guardian Sphinx of Giza",
+    "prompt": "Create standalone painterly medieval-high-fantasy collectible-card art for the exact summon Guardian Sphinx of Giza. Show one monumental ancient Egyptian sphinx in unmistakable profile: an attentive human pharaoh’s face with clear eyes and striped nemes headdress atop a powerful tawny lion’s body, broad front paws on Giza limestone, a calm but clever guardian’s gaze fixed on an approaching intruder. No wings, no eagle head, no bull horns. A subtle static halo of fine golden motes and a ripple of sunlit sand around the paws suggests its steady taunting presence, while the sphinx’s face remains the strongest focal point. Keep the entire human head, eyes, headdress and forepaws inside x24..488,y105..407; lion’s hind legs may crop naturally. Painterly grounded ancient stone, believable human face, leonine anatomy and linen, warm desert sun with cool temple shadows, atmospheric depth matching supplied Hexmancers light-creature references. Explicit 1:1 SQUARE canvas for a 512x512 editable master composed for a 206:141 crop. No hieroglyphs or readable text, frame, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4d1dbf8a-4d21-4fec-9208-1307f0006667.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_17.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop at focalPoint [0.5,0.38], and 128-pixel crop: the full human face, eyes and nemes headdress are visible above the lion’s body; Giza setting and guardian pose remain clear while lower body crops naturally."
   }
 ]

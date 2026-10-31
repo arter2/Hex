@@ -3435,5 +3435,77 @@
     "status": "generated",
     "batch": 13,
     "reviewNote": "Square source and upward-adjusted 206:141 crop/thumb inspected (focalPoint y=0.43): the faun’s full face, horns and both expressive hands remain clear, and the crossing seed pattern is legible. Lower goat legs continue to the crop edge as incidental anatomy."
+  },
+  {
+    "cardId": "verdant_summon_19",
+    "name": "Elven Pathfinder",
+    "prompt": "Paint an original illustration for the Hexmancers summon “Elven Pathfinder.” Show a calm, experienced woodland elf scout in a weathered green-gray cloak crouching at the edge of a hidden animal tunnel beneath fern roots. Keep the elf’s alert face, pointed ears and both hands visible: one hand parts the roots to reveal a narrow glowing trail leading through the earth, while the other steadies a simple unstrung bow at the side. Fine green motes trail from the ground as the elf finds the safe route; no need for a full-body pose. Grounded elf anatomy and practical travel gear, mature and observant rather than ornate or ethereal. Painterly medieval/high-fantasy collectible-card art, nuanced believable wool, leather, roots and leaves, dappled forest light, atmospheric depth and strong readable values. Match the supplied references' painterly materials and forested fantasy lighting, with the natural high-fantasy tone of the accepted verdant art. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the elf’s face, eyes, pointed ears, both hands and tunnel entrance within x24–488,y105–407 on the square; compose the crouching figure and revealed path horizontally for the 206:141 crop, with quiet canopy and earth beyond. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-463bf937-8e4a-4c6e-ad8d-365a4bc03624.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_19.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.45
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source and upward-adjusted 206:141 crop/thumb inspected (focalPoint y=0.45): the elf’s full face, pointed ear and both hands remain clear beside the revealed burrow entrance and glowing trail. The lower bow extends to the crop edge as incidental gear."
+  },
+  {
+    "cardId": "verdant_summon_20",
+    "name": "Patupaiarehe Mist Folk",
+    "prompt": "Paint an original, respectful folklore-inspired illustration for the Hexmancers summon “Patupaiarehe Mist Folk.” Show a small band of patupaiarehe, the mist-dwelling people of Māori tradition, gathered beneath ancient forest trees. Make one lead figure the clear subject: a pale, graceful humanlike forest spirit with a fully readable, kind face and both hands extended as it scatters small silver-green seeds through curling morning mist. The seeds sprout delicate ferns and gently mend a companion’s scraped arm; the other mist folk remain softly distinct behind the leader, not a crowd. Give them simple, natural woven and leaf-textured garments, with no invented tribal markings, no caricature and no generic pointed-eared elf look. Painterly medieval/high-fantasy collectible-card art, nuanced believable skin, mist, woven cloth and fern, soft directional dawn light, atmospheric depth and strong readable values. Match the supplied references' painterly materials and forested fantasy lighting, with the natural high-fantasy tone of the accepted verdant art. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the lead figure’s full face, eyes, both hands and healing seeds within x24–488,y105–407 on the square; arrange the lead and a companion horizontally for the 206:141 crop, with quiet misty forest above and below. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-9163200c-167e-4311-b6f9-836b8b7f53bb.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_20.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.47
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source and slightly upward-adjusted 206:141 crop/thumb inspected (focalPoint y=0.47): the lead mist folk’s face, both hands and healing seeds are clear beside the companion’s wounded arm. Several folk remain distinct in the mist; no pointed ears or invented markings are added."
+  },
+  {
+    "cardId": "verdant_summon_21",
+    "name": "Curupira",
+    "prompt": "Paint an original illustration for the Hexmancers summon “Curupira.” Portray Curupira as the Brazilian forest guardian of folklore, not a generic elf: a lean humanlike spirit with vivid flame-red hair, a weathered expressive face, natural forest coverings and distinctly backward-turning bare feet, heels forward and toes pointing behind. Use a compact, low ambush pose among roots: Curupira glances back toward the viewer with alert eyes, one hand holds a glowing medicinal seed at a small scrape on the other arm, while the bent legs bring one backward foot clearly beside the face and hands. A few green-lit footprints and a hidden root snare suggest a forest ambush. Respectful folklore-inspired fantasy, grounded anatomy, no cartoon styling. Painterly medieval/high-fantasy collectible-card art, nuanced believable skin, hair, leaves, roots and moss, dramatic dappled forest light, atmospheric depth and strong readable values. Match the supplied references' painterly materials and forested fantasy lighting, while keeping this as a distinct close, crouched composition from the other Curupira artwork. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep Curupira’s full face, eyes, both hands and one unmistakable backward-facing foot within x24–488,y105–407 on the square; arrange face, hands and foot in a compact horizontal grouping for the 206:141 crop, with quiet foliage above and below. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-b07ba3ef-35ba-4796-b30f-968f9d36b522.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_21.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source and upward-adjusted 206:141 crop/thumb inspected (focalPoint y=0.43): the Curupira’s full face, both hands, vivid red hair and one backward-facing bare foot remain visible. Green-lit footprints and roots support the Brazilian forest-guardian identity; composition differs from the prior path scene."
+  },
+  {
+    "cardId": "verdant_summon_22",
+    "name": "Chullachaqui",
+    "prompt": "Paint an original, respectful folklore-inspired illustration for the Hexmancers summon “Chullachaqui.” Portray the Chullachaqui as a small, wiry forest spirit from Peruvian Amazonian folklore, not a European elf: a weathered humanlike face, dark alert eyes, simple woven-and-leaf clothing, no pointed ears. Use a compact crouched pose under giant rainforest roots so its two mismatched feet are clearly visible—one ordinary bare human foot and one backward-turned, hooflike foot. Keep the Chullachaqui’s face and both beckoning hands prominent as it summons two small green forest wisps from a seed pod; a faint poisonous mist clings low to the roots. The expression is clever but protective, with grounded anatomy and no caricature. Painterly medieval/high-fantasy collectible-card art, nuanced believable skin, woven fiber, bark, roots and mist, rich rainforest light with a cool green glow, atmospheric depth and strong readable values. Match the supplied references' painterly materials and forested fantasy lighting. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the full face, eyes, both hands, and the pair of visibly different feet within x24–488,y105–407 on the square; arrange the crouched spirit compactly so these identity details fit a 206:141 card crop, with quiet rainforest beyond. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-822ba2c8-8786-416b-987c-62ec76254494.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_22.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source, centered 206:141 crop and thumbnail inspected: this reads as a compact rainforest spirit, with a weathered human face, both beckoning hands and two visibly different feet—one bare human foot and one backward-turned hooflike foot. Green summoned wisps and seed pod support its forest-spirit identity."
   }
 ]

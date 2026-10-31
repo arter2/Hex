@@ -3454,5 +3454,59 @@
     "status": "generated",
     "batch": 13,
     "reviewNote": "Reviewed the 512-square source and upward-shifted direct 512×350 crop and 128×88 thumbnail: scorpion head/eyes, both pincers and complete curled tail/stinger fit; pounce and knockback are clear. FocalPoint [0.5,0.38] retains the full stinger; lower incidental legs and target extremities may crop."
+  },
+  {
+    "cardId": "storm_summon_16",
+    "name": "Girtablilu Gatewarden",
+    "prompt": "Paint an original illustration for the exact card “Girtablilu Gatewarden.” Mechanics: a noble, exceptionally tough scorpion-man guards allies and stuns intruders. Depict a mythic Mesopotamian scorpion-man gatekeeper before an ancient sandstone city gate: a stern human male head and armored human torso fused seamlessly to a dark bronze scorpion abdomen, with two enormous articulated scorpion pincers raised protectively and a segmented tail curling close behind one shoulder to a clear hooked stinger. He shields a smaller traveler from an armored intruder and a restrained blue-white stun spark leaps from one pincer. Make the human face, both eyes, both complete claws and the full curved tail/stinger individually clear; do not hide one claw behind the other. His scorpion legs may extend beyond the frame. Painterly medieval fantasy collectible-card art, tactile bronze, chitin, sandstone and wool, dramatic storm light and atmospheric depth like supplied Hexmancers storm references. Exact 1:1 square for 512×512 editable master, horizontal composition; keep face, eyes, both full pincers, shoulder and tail/stinger within x24…488,y105…407 for the 206:141 crop. Quiet gate and sand above/below. No frame, text, lettering, runes, numbers or UI. No anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-af29b9ee-e65b-4fbc-bcb4-473ac8e978dc.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_16.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Repaired the first render because its left pincer fell outside the crop; a second composition adjustment moved and scaled the guardian for safe margins. Reviewed the final 512-square source, direct upward-shifted 512×350 crop and 128×88 thumbnail: human face/eyes, both complete pincers and full tail/stinger remain visible; legs and foreground intruders are incidental crops."
+  },
+  {
+    "cardId": "storm_summon_17",
+    "name": "Jackal Tomb Guard",
+    "prompt": "Paint an original illustration for the exact card “Jackal Tomb Guard.” Mechanics: a tough jackal guardian dashes between two foes and knocks them back. Depict a formidable jackal-headed fantasy guard at the entrance of an ancient Egyptian tomb, upright in bronze-and-linen armor, with unmistakable long canine muzzle, pointed ears and alert golden eyes. He dashes across the threshold to intercept two armored intruders; one gloved hand grips a round shield and the other reaches out as a compact burst of sand and storm light knocks the nearest intruder backward. Make the guard’s complete jackal face/eyes/ears and both hands prominent; keep the silhouette grounded and protective, not monstrous. Painterly medieval fantasy collectible-card art, textured dark fur, aged bronze, linen, sandstone and storm-blue light, atmospheric depth matching supplied Hexmancers storm references. Exact 1:1 square composition for a 512×512 master; horizontal action, face and both hands/shield safely inside x24…488,y105…407 for the 206:141 crop. Quiet tomb wall and sand beyond. No frame, lettering, labels, runes, numbers or UI. No anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-66b97c10-ad3e-47a6-bf86-9981e2e07d79.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_17.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source plus upward-shifted direct 512×350 crop and 128×88 thumbnail: complete jackal ears, muzzle, eyes and both hands/shield remain in frame; dash and knockback read clearly. FocalPoint [0.5,0.42] preserves the ear tips; lower incidental legs/intruders crop."
+  },
+  {
+    "cardId": "storm_summon_18",
+    "name": "Nile Crocodile",
+    "prompt": "Paint an original illustration for the exact card “Nile Crocodile.” Mechanics: a huge, steady crocodile zigzags across a riverbank and stuns foes with a crushing attack. Depict an enormous Nile crocodile lunging from the shallow river, its complete long broad snout, closed powerful jaws, one bright amber eye and heavily plated head and back dominating the foreground. Its massive armored body curves in a clear zigzag toward the water behind it; ripples and a compact blue-white static shock around the shoulder stun one armored foe on the bank. Keep the crocodile’s snout tip, eye, plated shoulder and striking jaw entirely inside the crop-safe band; tail can extend incidentally into the water. Painterly medieval fantasy collectible-card art, naturalistic crocodile anatomy, richly textured olive-green scales and plated hide, wet stone, reeds and storm-lit Nile water, dramatic directional light and atmospheric depth like supplied Hexmancers storm references. Exact 1:1 square for a 512×512 master, horizontal staging; protect full snout/jaws, eye and plated head/body within x24…488,y105…407 for the 206:141 crop. Quiet sky and water margins. No frame, lettering, runes, numbers or UI. No anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5548e747-4aa1-4f4c-8593-e5a004431e76.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_18.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Repaired the first render because its snout tip sat too close to the right edge. Reviewed the repaired 512-square source, direct 512×350 crop and 128×88 thumbnail: complete broad snout/jaws, amber eye and plated head/shoulder remain within the crop; stunned foe and electric impact support the crocodile."
   }
 ]

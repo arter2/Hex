@@ -2670,7 +2670,7 @@
     ],
     "status": "generated",
     "batch": 12,
-    "reviewNote": "512-square editable source prepared; centered wide-crop and thumbnail review pending.",
+    "reviewNote": "512-square source, centered wide crop and thumbnail reviewed. Crossing mats of kelp and wreckage make the frozen Sargasso Sea clear at small size; the subdued open-water margins support the subject. Parent review pending.",
     "cardId": "frost_environment_12"
   },
   {
@@ -2688,7 +2688,7 @@
     ],
     "status": "generated",
     "batch": 12,
-    "reviewNote": "512-square editable source prepared; upward-shifted crop (focalPoint y=0.41) review pending to retain the spirit's full face and healing hands.",
+    "reviewNote": "512-square source, upward-shifted wide crop (focalPoint y=0.41) and thumbnail reviewed. Rusalka's full face, healing hands and wounded bird remain visible; her pale tidal-spirit form reads clearly at small size. Parent review pending.",
     "cardId": "frost_summon_09"
   },
   {
@@ -2706,7 +2706,7 @@
     ],
     "status": "generated",
     "batch": 12,
-    "reviewNote": "512-square editable source prepared; crop shifted slightly upward (focalPoint y=0.41) to check the complete engine tower and icebreaking prow.",
+    "reviewNote": "512-square source, upward-shifted wide crop (focalPoint y=0.41) and thumbnail reviewed. The full engine tower, gears, paddle wheels and icebreaking prow fit; the vessel remains recognizable at small size. Parent review pending.",
     "cardId": "frost_machine_08"
   },
   {
@@ -2724,7 +2724,25 @@
     ],
     "status": "generated",
     "batch": 12,
-    "reviewNote": "512-square editable source prepared; crop shifted upward (focalPoint y=0.40) to retain Sora's full face, while checking the complete frost blade arc.",
+    "reviewNote": "512-square source, upward-shifted wide crop (focalPoint y=0.40) and thumbnail reviewed. Sora's full face and weapon hand remain visible with the prominent rime blade; outer frost sweep and lower clothing are incidental. Parent review pending.",
     "cardId": "hero_sora"
+  },
+  {
+    "name": "Boarding Axe",
+    "prompt": "Paint an illustration for the Hexmancers card “Boarding Axe.” A hardened northern raider boards a frozen longship, swinging a compact broad-bladed hand axe across the frame in a decisive horizontal cut. Keep the complete axe head, short haft, gripping hand and raider's focused face clearly visible together; a fan of sharp icy spray marks the critical strike and a cold mist clings to the target ship's rail. The weapon and act of boarding are the primary readable subject. Painterly medieval high-fantasy collectible-card art, believable steel, leather, wool, frost and weathered wood, dramatic directional winter light, atmospheric depth and grounded anatomy. Square 1:1 composition for a 512x512 master; keep face, hand and entire axe within x24..488,y105..407, compact subject in middle 60%, quiet snowfall and distant sea above/below for a 206:141 crop. No frame, text, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7f3b7cc4-83ff-4a3b-b4d2-c5f442076bd1.png",
+    "editableSourcePath": "game/cards/art/masters/frost_strike_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.41
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square source, upward-shifted wide crop (focalPoint y=0.41) and thumbnail reviewed. The raider's face, gripping hand and complete axe head and haft fit inside the crop; the weapon reads clearly at small size. Parent review pending.",
+    "cardId": "frost_strike_14"
   }
 ]

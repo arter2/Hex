@@ -2703,5 +2703,59 @@
     "status": "generated",
     "batch": 12,
     "reviewNote": "Square source inspected. The centered crop clipped the grenade top, so the card crop is shifted upward to y=60 (focalPoint 0.46); the adjusted 206:141 crop and thumb show the entire grenade, hobgoblin face, and throwing hand."
+  },
+  {
+    "cardId": "gray_summon_125",
+    "name": "Barrel-Rolling Dwarf",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Barrel-Rolling Dwarf”. Paint a sturdy dwarf rolling forward inside a reinforced oak barrel, the barrel tipping across a rocky battlefield as a crisp frost burst spreads from its path. Let the dwarf's delighted, lucky face peek through the open rim; emphasize the complete readable barrel form and cold blast. Painterly medieval/high-fantasy collectible-card art, richly painted believable cloth, leather, wood and stone, attractive directional light, readable values and atmospheric depth. Strong subject silhouette, grounded anatomy, narrative clarity at small card size, in the visual quality of the supplied Hexmancers references. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Keep the face, eyes, relevant hands, and named action within x24–488,y105–407 on the square; horizontal composition for a 206:141 wide crop, quiet expendable scenery at top and bottom. No card frame, text, lettering, numbers, runes as text, or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art, exaggerated caricature, or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-6379ad5d-ca2a-44ee-bb06-3a8d09d32f36.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_125.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square source and 206:141 crop inspected: the dwarf’s expressive face and gripping hands sit inside the complete barrel opening; the barrel and icy rolling burst read clearly in the thumbnail."
+  },
+  {
+    "cardId": "gray_summon_126",
+    "name": "Village Brawler",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Village Brawler”. Paint a scrappy village brawler, a weathered human local in plain wool and a patched leather vest, planted in a braced stance at a rustic village lane, fists up and ready to drive back several shadowy attackers. Keep the brawler's face and both hands crisp; a restrained cross-shaped sweep of motion suggests the broad counterstrike. Painterly medieval/high-fantasy collectible-card art, richly painted believable cloth, leather, wood and stone, attractive directional light, readable values and atmospheric depth. Strong subject silhouette, grounded anatomy, narrative clarity at small card size, in the visual quality of the supplied Hexmancers references. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Keep the face, eyes, relevant hands, and named action within x24–488,y105–407 on the square; horizontal composition for a 206:141 wide crop, quiet expendable scenery at top and bottom. No card frame, text, lettering, numbers, runes as text, or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art, exaggerated caricature, or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-c4f994f5-b6e6-4768-8dad-30821b189942.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_126.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square source and 206:141 crop inspected: the brawler’s face, clenched fist, and striking arm remain in frame; the broad counterstrike and village lane read at thumbnail size."
+  },
+  {
+    "cardId": "gray_summon_127",
+    "name": "Tavern Bouncer",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Tavern Bouncer”. Paint a large, sturdy ogre bouncer guarding the entrance of a medieval tavern: broad shoulders in worn but well-kept leather and wool, a surprisingly gentle steady expression, one massive open hand raised to stop rowdy troublemakers at the threshold while his other hand braces the heavy oak doorway. A few quiet patrons watch from warm lamplight behind him; a subtle shadowy ripple at his palm hints at the brief curse that turns foes away. Make the ogre the clear subject, with face and open hand large, visible and readable; grounded fantasy anatomy, kindly power rather than comic caricature. Painterly medieval/high-fantasy collectible-card art, richly painted believable materials, attractive warm directional light, readable values and atmospheric depth. Strong silhouette and narrative clarity at small card size, in the visual quality of the supplied Hexmancers references. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Keep the face, eyes, relevant hands, and named action within x24–488,y105–407 on the square; horizontal composition for a 206:141 wide crop, quiet expendable scenery at top and bottom. No card frame, text, lettering, numbers, runes as text, or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art, exaggerated caricature, or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-27dd361e-ac9b-403c-b946-237c83cb8fe2.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_127.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square source inspected. The centered crop clipped the top of the ogre’s head, so the crop is shifted upward to y=45 (focalPoint 0.43); the adjusted 206:141 crop and thumbnail show his complete face, both hands, and stopping gesture."
   }
 ]

@@ -2653,5 +2653,77 @@
     "status": "generated",
     "batch": 12,
     "reviewNote": "512-square master, wide crop and 128px thumbnail inspected. The complete bag and clasp remain centered and clear in the crop, and the wind spiral and displaced debris communicate a strong gust at thumbnail size. Painterly leather, silk, bronze and directional light are readable."
+  },
+  {
+    "cardId": "light_utility_12",
+    "name": "Emerald Tablet",
+    "prompt": "Paint an illustration for the exact card Emerald Tablet. A single hand-sized emerald-green stone tablet is the unmistakable central subject, upright and fully visible beside a learned archivist's face and gloved hand. Its polished surface bears a few abstract incised geometric grooves, not letters; a crisp magical reflection beside it repeats the tablet as a second translucent green image, clearly showing its copying utility. Keep the original artifact, reflected duplicate, face and hand compact at the same height with the full tablet edges visible. Painterly medieval fantasy collectible-card art, believable veined emerald, bronze setting, worn glove and stone library, warm candlelight against cool green radiance, nuanced brushwork and atmospheric depth. Square 1:1 canvas for a 512×512 master; keep all key parts inside x24..488,y105..407 for the 206:141 card crop, quiet shelves above and below. No frame, readable writing, runes, border, UI, anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-3e9aa5e5-383e-4211-a497-c5268763fb47.png",
+    "editableSourcePath": "game/cards/art/masters/light_utility_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Inspected 512 source, wide crop and 128 thumbnail: whole emerald tablet and reflected copy are clear beside archivist; eyes and hand remain readable, with incidental hair cropped."
+  },
+  {
+    "cardId": "light_summon_08",
+    "name": "Thousand-Year Crane",
+    "prompt": "Paint an illustration for the exact card Thousand-Year Crane. An ancient, majestic white-and-gold crane stands beside an exhausted knight at a quiet temple pond, the bird's long beak, wise bright eye, whole folded body and long legs clearly visible. It raises one broad wing as a fan of fine blue-white static feathers crackles softly around it; gentle motes mend the knight's small wound. Make the crane sturdy, serene and old beyond measure, with weathered shrine stones and timeworn bronze bell details in the distance, not a tiny bird or ornamental statue. Painterly medieval fantasy collectible-card art, delicate feather texture, warm sunlight and cool electric glints, grounded anatomy and atmospheric depth. Square 1:1 canvas for a 512×512 master; keep crane's face, body, wing and meaningful healing action inside x24..488,y105..407 for the 206:141 card crop, quiet background above and below. No frame, text, runes, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f0842263-93e7-4e86-be86-e20608768d6a.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Adjusted focal point upward to retain the crane crest, full head and beak in the 206:141 crop while keeping the seated recipient face in view. Inspected shifted wide crop and 128 thumbnail; wings and legs crop incidentally."
+  },
+  {
+    "cardId": "light_machine_08",
+    "name": "Norman Keep",
+    "prompt": "Paint an illustration for the exact card Norman Keep. A huge Norman stone keep is shown as a defensive ward-making machine: a compact square fortress of pale limestone with two crenellated towers, thick timber bracing and a heavy portcullis, its front gate throwing up a bright translucent wall of light across the road. Tiny medieval defenders give scale, but the complete strong silhouette of the keep and wall dominates the middle. Grounded 11th-century Norman architecture, not a fairy palace; rough stone blocks, timber, iron and banners, brilliant morning light with cool shadows, painterly high-fantasy collectible-card art and atmospheric depth. Square 1:1 canvas for a 512×512 master; keep both towers, gate and full ward line safely inside x24..488,y105..407 for the 206:141 card crop, quiet sky and ground above/below. No frame, lettering, runes, UI, modern machinery, cartoon, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-10b9cf9c-b87c-4789-b900-a4abdc2e0b1b.png",
+    "editableSourcePath": "game/cards/art/masters/light_machine_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.44
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Shifted crop upward to retain both full tower tops, gate and luminous ward; inspected square, adjusted wide crop and 128 thumbnail. Tiny flag tips crop incidentally."
+  },
+  {
+    "cardId": "hero_halo",
+    "name": "Halo, the Choir Child",
+    "prompt": "Paint an illustration for the exact hero card Halo, the Choir Child. A brave child singer stands at the center of a medieval battlefield, face and open singing mouth clear, hands raised gently; a simple luminous golden halo crowns the child's head. Four distinct shafts or ribbons of warm light sing outward toward separate shadowed enemy silhouettes at different angles, while a soft healing glow gathers around nearby allies. Keep the child, halo, face and hands prominent at one readable scale; effects support the child without replacing them. Painterly medieval fantasy collectible-card art, believable linen, small brass ornaments and soft light, tender but courageous expression, dramatic dawn haze, nuanced brushwork. Square 1:1 canvas for a 512×512 master; protect child's face, hands, halo and four directional rays inside x24..488,y105..407 for the 206:141 card crop, quiet margins above/below. No frame, words, musical notation, runes, UI, anime, Disney-like proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-be93cfd0-061f-406a-a727-06f25b1fe4c5.png",
+    "editableSourcePath": "game/cards/art/masters/hero_halo.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Inspected 512 source, wide crop and 128 thumbnail: child face, open mouth, raised hands and halo are strong; four separate light rays reach battlefield enemies while allies remain softly healed."
   }
 ]

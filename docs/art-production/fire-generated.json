@@ -2728,5 +2728,95 @@
     "status": "generated",
     "batch": 12,
     "reviewNote": "Inspected 512 source, wide crop and 128 thumbnail: Phoenixia’s face, guiding hand and unmistakable fiery phoenix wings remain clear; peripheral feathers and secondary ally are expendable crop details."
+  },
+  {
+    "cardId": "fire_strike_15",
+    "name": "Red-Hot Rivet",
+    "prompt": "Paint an illustration for the exact card Red-Hot Rivet. In a medieval forge duel, a blacksmith-warrior flicks a single incandescent iron rivet from a steel hammer; the small red-hot rivet is the crisp foreground focal point as it ricochets off a shield rim and streaks toward a second armored foe, leaving two sharp ember trails and a bright critical spark at the first impact. Keep the full rivet, hammering hand, smith's focused face and both readable targets in a compact horizontal group at the same height, with the projectile unmistakably bouncing rather than a straight beam. Painterly medieval fantasy collectible-card art, believable steel, leather and soot, dramatic orange-white hot metal light against cool smoky shadows, refined brushwork and atmospheric depth. Square 1:1 canvas for a 512×512 master; keep face, hand, rivet, both impact points and their action inside x24..488,y105..407 for the 206:141 card crop, quiet margins above and below. No frame, text, runes, UI, modern hardware, anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-cb165cfa-f4db-4755-9eee-e241e79168ec.png",
+    "editableSourcePath": "game/cards/art/masters/fire_strike_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Inspected 512 source, wide crop and 128 thumbnail: bright rivet and ricochet path clearly connect first shield impact to second foe; smith face and hammer hand remain readable."
+  },
+  {
+    "cardId": "fire_lob_16",
+    "name": "Basalt Boulder",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Basalt Boulder”. Paint one massive, roughly spherical black basalt boulder hurling low across a volcanic battlefield toward a distant shield line, fragments lifting at impact as a restrained orange glow shows through a few deep fissures. Make the heavy dark rock itself the unmistakable subject, with clear silhouette and a small defender knocked off balance behind it. Painterly medieval/high-fantasy collectible-card art, richly painted believable stone, iron, feathers, glass, leather, wood and metal, attractive directional lighting, strong readable values and atmospheric depth. Match the supplied fire references' warm forge glow and ember detail while keeping a clear primary subject and grounded fantasy materials. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep identity-critical face/eyes/hands and all of the named subject within x24–488,y105–407 on the square; compose horizontally for a 206:141 card crop with quiet expendable scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-a1369755-2cce-4585-9e5d-7b6e700d13f3.png",
+    "editableSourcePath": "game/cards/art/masters/fire_lob_16.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square source inspected. The centered 206:141 crop clipped the top of the boulder, so the crop is shifted upward to y=60 (focalPoint 0.46); the adjusted wide crop and thumbnail include the entire rock and preserve its impact silhouette."
+  },
+  {
+    "cardId": "cinder_rampart",
+    "name": "Cinder Rampart",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Cinder Rampart”. Paint a heavy low rampart of fused dark basalt blocks and ember-red cinders, a stout medieval defensive wall bristling with short jagged iron-black thorns along its front. The compact wall stretches horizontally across a battlefield; hot cracks glow beneath the thorns, smoke and firelight behind it. Make the rampart silhouette and thorn defense clear. Painterly medieval/high-fantasy collectible-card art, richly painted believable stone, iron, feathers, glass, leather, wood and metal, attractive directional lighting, strong readable values and atmospheric depth. Match the supplied fire references' warm forge glow and ember detail while keeping a clear primary subject and grounded fantasy materials. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep identity-critical face/eyes/hands and all of the named subject within x24–488,y105–407 on the square; compose horizontally for a 206:141 card crop with quiet expendable scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-58057e50-07c6-47fa-9920-bb24240dce2c.png",
+    "editableSourcePath": "game/cards/art/masters/cinder_rampart.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square source and centered 206:141 crop inspected: the heavy basalt barrier and its forward-pointing thorn line remain clear edge-to-edge; warm embers and smoky battlefield support the rampart, and the thumbnail retains the defensive silhouette."
+  },
+  {
+    "cardId": "fire_boon_14",
+    "name": "Phoenix Rebirth",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Phoenix Rebirth”. Paint a magnificent phoenix reborn from its own bed of glowing embers, rising with luminous orange-gold wings open in a protective shelter over a small fallen ally. The bird is the dominant subject, with sharp intelligent eye and beak, full recognizable feathered body and wings fitting in the square; a bright but controlled aura suggests an intervening rally and protection. Painterly medieval/high-fantasy collectible-card art, richly painted believable stone, iron, feathers, glass, leather, wood and metal, attractive directional lighting, strong readable values and atmospheric depth. Match the supplied fire references' warm forge glow and ember detail while keeping a clear primary subject and grounded fantasy materials. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep identity-critical face/eyes/hands and all of the named subject within x24–488,y105–407 on the square; compose horizontally for a 206:141 card crop with quiet expendable scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-61ccf23c-b286-427c-8c94-86259fc0adaa.png",
+    "editableSourcePath": "game/cards/art/masters/fire_boon_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square source and 206:141 crop inspected: phoenix head, eye, and protective wings remain dominant around the fallen ally; the ember nest and rising posture are legible at thumbnail size."
+  },
+  {
+    "cardId": "fire_charge_14",
+    "name": "Shishi Pearl",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Shishi Pearl”. Paint one complete large polished red-gold Shishi Pearl, a luminous round gemstone with an exquisitely carved guardian-lion motif visible within the glassy surface. It floats at the same height as a compact lacquered bronze stand, sending one narrow golden fire bolt toward a distant target. Keep the entire spherical pearl uncut and dominant; no figure. Painterly medieval/high-fantasy collectible-card art, richly painted believable stone, iron, feathers, glass, leather, wood and metal, attractive directional lighting, strong readable values and atmospheric depth. Match the supplied fire references' warm forge glow and ember detail while keeping a clear primary subject and grounded fantasy materials. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep identity-critical face/eyes/hands and all of the named subject within x24–488,y105–407 on the square; compose horizontally for a 206:141 card crop with quiet expendable scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-40eea78d-1dd9-4778-aa94-7c2714ca9673.png",
+    "editableSourcePath": "game/cards/art/masters/fire_charge_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square source inspected. The centered 206:141 crop clipped the pearl’s top edge, so the crop is shifted upward to y=60 (focalPoint 0.46); the adjusted crop and thumbnail show the full round pearl, carved shishi motif, and firing bolt."
   }
 ]

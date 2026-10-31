@@ -2653,5 +2653,77 @@
     "status": "generated",
     "batch": 12,
     "reviewNote": "Square source and 206:141 crop inspected: vampire face, eyes, and raised shielding hand are clear in the wide crop and thumbnail; the cropped lower arm is incidental."
+  },
+  {
+    "name": "Shade the Silent",
+    "prompt": "Paint an illustration for the Hexmancers hero “Shade the Silent.” An original adult shadow-stalker moves quietly through a ruined cloister at night, one gloved hand holding a narrow dagger low as the other steadies against a broken stone arch. Show a clearly readable, intent face beneath a dark hood; a dim silver edge light separates the figure from deep blue-black shadows, and a faint afterimage hints at an unseen strike. Painterly medieval high-fantasy collectible-card art, grounded anatomy, nuanced leather, steel, stone and cloth, beautiful but restrained directional moonlight, atmospheric depth, heroic rather than horror, readable at thumbnail scale. Square 1:1 composition for a 512x512 master; keep face, dagger and both hands within x24..488,y105..407, central figure in middle 60%, quiet dark stone/mist above and below for 206:141 crop. No frame, text, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6d5f9f9e-3fd7-483a-8c62-9f4824328483.png",
+    "editableSourcePath": "game/cards/art/masters/hero_shade.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square source and upward-shifted wide crop (focalPoint y=0.42) reviewed. Shade’s full hooded face, dagger hand and blade remain inside the crop; reaching arm is incidental. Parent review pending.",
+    "cardId": "hero_shade"
+  },
+  {
+    "name": "Grave Rampart",
+    "prompt": "Paint an illustration for the Hexmancers ward “Grave Rampart.” A single heavy defensive wall made of ancient black-gray graveyard stone spans the image, with tightly fitted tomb slabs, iron braces and weather-worn carved faces; it clearly blocks the narrow path through a ruined cemetery. A few dim violet will-o'-wisps glow between the stones, but the wall itself is the unmistakable subject. Painterly medieval high-fantasy collectible-card art, believable heavy masonry and iron, strong directional moonlight separating the silhouette from mist, limited charcoal, slate and muted violet palette with readable highlights, atmospheric depth. Square 1:1 composition for a 512x512 master; keep the continuous rampart within x24..488,y105..407, centered across the middle 60%, quiet dark mist top and bottom for the 206:141 crop. No frame, lettering, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8a4c94c0-753f-4369-bf98-61af5b40efda.png",
+    "editableSourcePath": "game/cards/art/masters/grave_rampart.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square editable source prepared; centered crop review pending to check the complete heavy stone wall.",
+    "cardId": "grave_rampart"
+  },
+  {
+    "name": "Strigoi Bite",
+    "prompt": "Paint an illustration for the Hexmancers card “Strigoi Bite.” A terrifying but elegant ancient strigoi vampire lunges in close profile, fangs at the exposed neck of a mail-clad opponent, one pale hand gripping their shoulder. A narrow ribbon of crimson life-light is drawn from the victim toward the vampire, showing the draining bite and charged critical force without gore. Keep the vampire's full face, visible fangs, relevant hand and bitten opponent's head readable. Painterly medieval high-fantasy collectible-card art, grounded anatomy, rich black velvet, old steel and pale skin, crisp warm rim light against dark blue stone, restrained blood-red accent and atmospheric depth. Square 1:1 composition for a 512x512 master; keep both faces, fangs and gripping hand within x24..488,y105..407; close horizontal action in middle 60%, quiet shadow margins top/bottom for a 206:141 crop. No frame, text, numbers, runes or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-67b09a4a-517d-4595-9a94-1fb29f6f6a19.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_strike_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square editable source prepared; crop shifted upward (focalPoint y=0.40) review pending for the vampire's face, victim's face and bite.",
+    "cardId": "shadow_strike_14"
+  },
+  {
+    "name": "Bottled Nightmare",
+    "prompt": "Paint an illustration for the Hexmancers card “Bottled Nightmare.” Make a single ornate glass bottle the clear central subject, with complete stopper, neck and body visible, held low against a dark medieval apothecary wall. Inside the dark glass a many-eyed nightmare face coils in smoke; faint smoky tendrils form a crosswise burst beyond the bottle, hinting at confusion and a quick knockdown without obscuring the vessel. Painterly medieval high-fantasy collectible-card art, beautifully rendered translucent glass, aged brass and black smoke, dramatic warm candlelight plus restrained violet glow, strong silhouette and readable eyes at thumbnail size. Square 1:1 composition for a 512x512 master; keep the full named bottle and its stopper inside x24..488,y105..407, centered in middle 60%, quiet background above and below for a 206:141 crop. No frame, lettering, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.\n\nRepaint instruction: Recompose this illustration for the Hexmancers card “Bottled Nightmare.” Keep the same richly painterly medieval fantasy apothecary mood, warm candlelight, ornate glass and frightening many-eyed smoke creature. The complete bottle including its decorative stopper, entire neck, body and base must be the clear central subject. Make the whole bottle substantially smaller than in this image, about 55 percent of the square canvas height, centered with generous clear margins above, below and on both sides; the stopper and base must both fit comfortably inside the middle 60 percent of a square 1:1 composition for a 206:141 horizontal card crop. Keep the smoky nightmare secondary and never let smoke obscure the vessel. No lettering, card frame, numbers or UI.",
+    "generatedPath": "/workspace/generated_images/exec-1f3f33c3-47a7-441a-bde2-0ba799f3da52.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_lob_16.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.48
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Repainted after the original crop clipped both stopper and base; original 512 source preserved at /tmp/worker-shadow-02/shadow_lob_16-initial.png. Upward focal shift y=0.48 leaves clear space above the complete stopper while keeping the entire base inside the crop. Parent review pending.",
+    "cardId": "shadow_lob_16"
   }
 ]

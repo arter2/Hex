@@ -2630,8 +2630,8 @@
   {
     "cardId": "storm_charge_13",
     "name": "Thunderbolt Sheaf",
-    "prompt": "Paint an illustration for the exact card name “Thunderbolt Sheaf.” Make the named artifact unmistakable: a compact sheaf of seven slender golden-white thunderbolts, shaped like short polished lightning javelins, securely bound together with a dark leather wrap and blue cord. One bolt is being drawn from the sheaf and piercing through a small distant practice shield with a brief stunning spark. If a carrier appears, keep one focused face, the drawing hand and the full sheaf close together at the same height. Painterly medieval high-fantasy collectible-card art matching the supplied Hexmancers references: grounded anatomy, tactile leather, cord and metal, fine brushwork, dramatic clear lightning glow, attractive directional light and atmospheric depth. Square 1:1 canvas for a 512x512 master. The full bundle, its visible lightning-shaped heads and the relevant hand/face must fit x24–488,y105–407 within the central middle 60 percent; horizontal arrangement with quiet stormy sky above and plain ground below for the 206:141 crop. Artifact dominates. No modern arrows or firearms. No card frame, text, lettering, runes, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
-    "generatedPath": "/workspace/generated_images/exec-1bb19190-5954-42c9-9eee-358d4dea1f80.png",
+    "prompt": "Repaint the exact card “Thunderbolt Sheaf” as a compact horizontal portrait. At center-right, show the COMPLETE named artifact: six short golden-white lightning javelins in a tightly bound sheaf, each clearly shaped like a short jagged thunderbolt with visible angular head and end, wrapped together by a dark leather band and blue cord. The compact bundle is presented horizontally at chest height, with every bolt fitting inside x250–468,y175–330 of a square 512x512 canvas. Beside it at the same height, show one grounded medieval storm hunter’s focused face and one hand holding the sheaf; keep the full face, eyes, hand and complete artifact inside x24–488,y120–390. A restrained spark leaps from one bolt and pierces a small distant practice shield. The artifact is the primary subject; no tall quiver, no upright bundle, no cropping. Painterly medieval high-fantasy collectible-card art matching the supplied Hexmancers references: believable face and hand, layered brushwork, tactile leather, cord and metal, attractive directional storm light and atmospheric depth. Explicit 1:1 square composition for a 512x512 master and 206:141 landscape crop; centered horizontal subject cluster, quiet sky above and simple ground below. No modern arrows or firearms. No text, lettering, runes, card frame, numbers or UI. No anime, Disney-like cartoon, toy-like proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-483a15c1-3fc7-48fa-8250-9bf2429c0f62.png",
     "editableSourcePath": "game/cards/art/masters/storm_charge_13.png",
     "sourceNative": [
       1254,
@@ -2643,13 +2643,13 @@
     ],
     "status": "generated",
     "batch": 12,
-    "reviewNote": "512-square master and 206:141 crop inspected. The carrier’s face is cut at the top of the crop, and the vertical sheaf’s tips and base fall outside the crop. This first attempt is preserved and flagged for repaint before acceptance."
+    "reviewNote": "Repainted after preserving the first attempt at /tmp/b12-storm-charge-13-first.png. 512-square master, wide crop and 128px thumbnail inspected: the carrier’s face and holding hand and the full horizontal bundle of lightning bolts fit clearly. Distinct bolt heads and binder read at thumbnail size."
   },
   {
     "cardId": "storm_trap_12",
     "name": "Cobra Basket Trap",
-    "prompt": "Paint an illustration for the exact card name “Cobra Basket Trap.” Make a single dark woven cobra basket the unmistakable central object: its hinged lid has snapped open and a vivid hooded cobra lunges upward from it, alert eyes and spread hood clear; three short concealed barbed wooden spikes spring from the basket rim as the trap is sprung. Sand and a few dry leaves scatter sideways to suggest a sudden confusing ambush, but the basket and cobra remain dominant. Painterly medieval high-fantasy collectible-card art matching the supplied Hexmancers references: believable handwoven wicker, scaled serpent, worn leather bindings and wood, nuanced brushwork, dramatic warm directional light and atmospheric depth, grounded anatomy, not photorealistic. Square 1:1 canvas for a 512x512 master. Keep entire basket, open lid, cobra head and hood and all three spikes inside x24–488,y105–407, arranged horizontally across the middle 60 percent with quiet desert-stone background above and below for the 206:141 crop. No person needed. No text, labels, readable runes, card frame, numbers or UI. No anime, Disney-like cartoon, toy-like proportions, photorealism or pixel art.",
-    "generatedPath": "/workspace/generated_images/exec-08fbfbc3-f3fe-4b7a-8ceb-fb502baff599.png",
+    "prompt": "Repaint the exact card “Cobra Basket Trap” as a compact, wide composition. Show a LOW, broad, dark woven wicker basket with a hinged lid snapped open beside it. A smaller but unmistakably hooded cobra springs from the basket: the ENTIRE alert head, spread hood and upper coil stay comfortably below the top of the action area. Three short concealed barbed wooden spikes spring from the basket rim. Keep the complete cobra head and hood, entire open lid, all three spikes and the full basket body and base inside x40–472,y135–375 of a square 512x512 canvas. Make the object cluster about twice as wide as tall; the cobra rises only a little above the basket, never forming a tall vertical composition. Sand and dry leaves scatter sideways, suggesting a confusing ambush. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: believable woven wicker, scales, worn leather and wood, richly layered brushwork, attractive warm directional desert light, atmospheric depth, grounded anatomy and materials, not photorealistic. Explicit 1:1 square master for a 206:141 wide crop; crop-safe horizontal composition with quiet stone background above and below. No people. No text, labels, readable runes, card frame, numbers or UI. No anime, Disney-like cartoon, toy-like proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-73256af9-e77a-498d-8fb3-321e4be039b3.png",
     "editableSourcePath": "game/cards/art/masters/storm_trap_12.png",
     "sourceNative": [
       1254,
@@ -2661,6 +2661,96 @@
     ],
     "status": "generated",
     "batch": 12,
-    "reviewNote": "512-square master and wide crop inspected. The complete wicker basket, lid and spikes fit, but the crop cuts off the cobra head and top of its hood. This first attempt is preserved and flagged for repaint before acceptance."
+    "reviewNote": "Repainted after preserving the first attempt at /tmp/b12-storm-trap-12-first.png. 512-square master, wide crop and 128px thumbnail inspected: the complete basket base, open lid, three spikes, cobra head and hood all fit clearly. Wicker and cobra silhouette remain readable at thumbnail size."
+  },
+  {
+    "cardId": "storm_summon_09",
+    "name": "Khepri's Dawn Beetle",
+    "prompt": "Paint an illustration for the exact card name “Khepri's Dawn Beetle.” Center a magnificent noble scarab beetle as the unmistakable summoned creature: broad glossy bronze-gold shell with delicate lapis markings, powerful six legs and clear horned beetle head, advancing from its sandy burrow at sunrise. A warm dawn ray catches its shell like a small sun; a few tiny distant defenders rally behind it, subdued and secondary. The beetle is tough and steadfast, not cute. Painterly medieval high-fantasy collectible-card art with ancient desert temple motifs, matching supplied Hexmancers references: rich brushwork, believable iridescent chitin and sand, attractive golden directional light, atmospheric depth, grounded natural proportions. Square 1:1 composition for a 512x512 master. Keep the entire identity-critical beetle head, thorax and shell visible inside x24–488,y105–407, with its body arranged horizontally in the middle 60 percent; legs and scenery may extend. Quiet sunrise sky above and restrained sand below for a 206:141 crop. No human-sized operator. No text, lettering, symbols, card frame, numbers or UI. No anime, Disney-like cartoon, toy proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a8a60cfb-e57b-4283-bab1-092f0a6ed233.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square master, wide crop and 128px thumbnail inspected. The noble scarab’s full head, thorax and shell are visible and dominant in the crop; only incidental legs and background extend. The warm sunrise, bronze chitin and lapis markings remain readable at thumbnail size."
+  },
+  {
+    "cardId": "storm_machine_09",
+    "name": "Desert Onager",
+    "prompt": "Paint an illustration for the exact card name “Desert Onager.” Show one sturdy ancient desert onager siege engine, unmistakably a torsion-powered wooden catapult with a deep bowl sling, thick lashed timbers, bronze fittings and a taut rope bundle. It is firing a single bright focused storm-beam from its arm toward a distant stone target; the beam pushes debris back and a restrained golden glint on the machine suggests its slow draining magic. The onager itself dominates and remains clearly recognizable as a medieval catapult. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: nuanced oak, rope, bronze and weathered stone, layered brushwork, dramatic desert light, atmospheric depth, grounded engineering not modern. Square 1:1 canvas for a 512x512 master. Keep the complete catapult frame, arm pivot and sling in x24–488,y130–390, horizontal across the middle 60 percent; quiet sky and low sand beyond for a 206:141 landscape crop. No people required, no second machine, no modern artillery. No text, lettering, runes, card frame, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-fce7cc7a-6c36-419b-bc5b-ae13deb247dd.png",
+    "editableSourcePath": "game/cards/art/masters/storm_machine_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square master, wide crop and 128px thumbnail inspected. Shifted focal point upward to retain the complete sling rim; the catapult frame, pivot and base remain in the crop. The storm-beam impact and wood-and-bronze construction read at thumbnail size."
+  },
+  {
+    "cardId": "hero_cyclona",
+    "name": "Cyclona",
+    "prompt": "Paint an illustration for the exact card name “Cyclona.” Depict a formidable storm heroine in close three-quarter portrait, her focused face, eyes and both hands clear at the same height as she spins four distinct curved cyclone blades of wind around herself toward unseen foes. The four crescent gust blades should be visibly separate, elegant and forceful, made of pale wind ribbons and fine rain rather than metal weapons; their slow swirling paths subtly suspend raindrops. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: grounded face and hand anatomy, windblown travel cloak and braided hair, rich brushwork, attractive directional storm light, nuanced cloth and atmospheric depth; dignified hero, not anime or cartoon. Square 1:1 composition for a 512x512 master. Keep face, eyes, hands and the four readable blade forms within x24–488,y105–407, clustered horizontally in the middle 60 percent; stray wind ribbons may extend. Quiet clouded sky above and below for a 206:141 crop. No card frame, text, labels, runes, numbers or UI. No Disney-like proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-1269df82-2586-4cc9-b20b-8309b658f98e.png",
+    "editableSourcePath": "game/cards/art/masters/hero_cyclona.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square master, wide crop and 128px thumbnail inspected. Cyclona’s face, eyes and both hands remain clear; broad curling cyclone ribbons surround her without obscuring the focal portrait. The central heroine and storm action remain identifiable at thumbnail size."
+  },
+  {
+    "cardId": "storm_strike_15",
+    "name": "Haboob Wall",
+    "prompt": "Paint an illustration for the exact card name “Haboob Wall.” Show a towering but broad horizontal wall of ochre haboob sand sweeping through a medieval desert battlefield, dense and clearly shaped like a moving wall, with a robed storm caller in close side view at left, face and forward hand fully visible as they drive it onward. Two tiny armored figures at the far edge are caught in the chaining sand impact, but the wall is the primary subject. A restrained dark red-gold undertone hints at its draining, critical strike without gore. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: grounded face and hand, nuanced cloth, sand and metal, dynamic yet readable brushwork, warm directional light and atmospheric depth, not photorealistic. Square 1:1 canvas for a 512x512 master. Keep the caller’s face and hand and the wall’s main front within x24–488,y105–407, with horizontal motion across the middle 60 percent; fine sand may extend beyond. Quiet sky and ground at top and bottom for a 206:141 landscape crop. No modern elements, card frame, words, labels, runes, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a2183909-d5a7-4e3c-9c90-5f030e50ee06.png",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square master, wide crop and 128px thumbnail inspected. The storm caller’s face and forward hand remain visible at the left, while the haboob forms a clear sweeping wall across the crop. The wall dominates and the sand impact reads at thumbnail size."
+  },
+  {
+    "cardId": "storm_lob_15",
+    "name": "Hail of Dinars",
+    "prompt": "Paint an illustration for the exact card name “Hail of Dinars.” Show a heavy magical hail of ancient gold dinar coins raining down and slamming into dry battlefield ground in a clear circular ring of impacts. Coins are broad, unmistakable old hammered gold pieces with simple nonverbal sunburst reliefs and no legible writing; a few large foreground coins show their faces and edges. The central ring of bright impacts kicks up dust and knocks back tiny distant foes, while gold glints subtly drain into the ground. One bold named action, not a pile of treasure. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: tactile aged gold, dust and stone, layered brushwork, attractive directional light, atmospheric depth, grounded epic staging, not photorealistic. Explicit 1:1 square canvas for a 512x512 master. Keep the large readable coins and complete central ring impact within x24–488,y105–407, horizontally arranged across the middle 60 percent; quiet sky above and low plain ground below for a 206:141 crop. No people needed. No words, letters, numbers, text, card frame or UI. No anime, Disney-like cartoon, toy-like shapes, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-28d12a43-c732-4c1a-8acb-3f3d59d5244d.png",
+    "editableSourcePath": "game/cards/art/masters/storm_lob_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square master, wide crop and 128px thumbnail inspected. The wide ring of coin impacts and readable hammered gold dinars remain visible, with the larger coins clear enough to identify at thumbnail size. Tiny distant figures support the impact without distracting."
   }
 ]

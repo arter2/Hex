@@ -25,7 +25,7 @@
   {
     "cardId": "ice_shard",
     "name": "Ice Shard",
-    "prompt": "Paint Ice Shard as a frost strike that sends a shockwave damaging every enemy within four tiles, with a one-in-four chance for a critical hit to deal double damage. Show a battle mage releasing a radial burst of ice shards and an expanding frost wave catching several hostile figures, with one especially bright critical impact. Painterly medieval fantasy collectible-card art, nuanced believable materials, directional cold light, atmospheric depth, grounded anatomy, and textured brushwork. Square composition intended for a 512 \u00d7 512 master; keep the mage\u2019s face and hands, shards, and enemy impacts within x24\u2026488 and y105\u2026407 for the 206:141 horizontal crop, with expendable snowy scenery beyond. No frame, text, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint Ice Shard as a frost strike that sends a shockwave damaging every enemy within four tiles, with a one-in-four chance for a critical hit to deal double damage. Show a battle mage releasing a radial burst of ice shards and an expanding frost wave catching several hostile figures, with one especially bright critical impact. Painterly medieval fantasy collectible-card art, nuanced believable materials, directional cold light, atmospheric depth, grounded anatomy, and textured brushwork. Square composition intended for a 512 × 512 master; keep the mage’s face and hands, shards, and enemy impacts within x24…488 and y105…407 for the 206:141 horizontal crop, with expendable snowy scenery beyond. No frame, text, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-a4e50d04-aa18-46d6-841e-4808439c6892.png",
     "focalPoint": [
       0.5,
@@ -38,7 +38,7 @@
   {
     "cardId": "rime_wall",
     "name": "Rime Wall",
-    "prompt": "Paint Rime Wall: two short, 44-strength frost ramparts rise across the lanes before the caster; anything striking them is frozen momentarily. Show two distinct thick translucent blue ice walls spanning separate lanes in a snowy pass. A charging armored foe has just struck the nearer wall and is caught in a visible burst of frost, frozen in place; the second wall recedes in perspective. Painterly medieval fantasy, grounded anatomy, believable icy material, directional cold light, atmospheric depth and textured brushwork. Square 512 \u00d7 512 master, keep both walls and frozen attacker in x24\u2026488, y105\u2026407 for 206:141 horizontal crop; expendable sky and snow outside. No frame, lettering, numbers, UI, anime, Disney-like cartoon, photorealism, pixel art.",
+    "prompt": "Paint Rime Wall: two short, 44-strength frost ramparts rise across the lanes before the caster; anything striking them is frozen momentarily. Show two distinct thick translucent blue ice walls spanning separate lanes in a snowy pass. A charging armored foe has just struck the nearer wall and is caught in a visible burst of frost, frozen in place; the second wall recedes in perspective. Painterly medieval fantasy, grounded anatomy, believable icy material, directional cold light, atmospheric depth and textured brushwork. Square 512 × 512 master, keep both walls and frozen attacker in x24…488, y105…407 for 206:141 horizontal crop; expendable sky and snow outside. No frame, lettering, numbers, UI, anime, Disney-like cartoon, photorealism, pixel art.",
     "generatedPath": "/workspace/generated_images/exec-88895c43-35fa-4599-af6e-ae6c252d12ec.png",
     "focalPoint": [
       0.5,
@@ -51,7 +51,7 @@
   {
     "cardId": "glacial_veil",
     "name": "Glacial Veil",
-    "prompt": "Paint Glacial Veil: two seconds after casting, a protective effect lands thirty percent stronger, lets the hero dodge the next hit, and surrounds them with radiant shielding worth twelve. Show an agile armored wanderer twisting aside from a blade strike that passes through a translucent glacial afterimage, while a delayed luminous blue-white veil settles around them as a shield. Painterly medieval fantasy, believable cloth, leather and steel, grounded anatomy, directional icy light and atmospheric depth. Square 512 \u00d7 512 master; keep face, pose, blade and shield within x24\u2026488, y105\u2026407 for 206:141 horizontal crop, with expendable snowy scenery beyond. No border, lettering, numbers, UI, anime, Disney-like cartoon, photorealism, pixel art.",
+    "prompt": "Paint Glacial Veil: two seconds after casting, a protective effect lands thirty percent stronger, lets the hero dodge the next hit, and surrounds them with radiant shielding worth twelve. Show an agile armored wanderer twisting aside from a blade strike that passes through a translucent glacial afterimage, while a delayed luminous blue-white veil settles around them as a shield. Painterly medieval fantasy, believable cloth, leather and steel, grounded anatomy, directional icy light and atmospheric depth. Square 512 × 512 master; keep face, pose, blade and shield within x24…488, y105…407 for 206:141 horizontal crop, with expendable snowy scenery beyond. No border, lettering, numbers, UI, anime, Disney-like cartoon, photorealism, pixel art.",
     "generatedPath": "/workspace/generated_images/exec-4ff25f1d-945a-4502-a94e-38aec864b616.png",
     "focalPoint": [
       0.5,
@@ -59,12 +59,12 @@
     ],
     "status": "generated",
     "batch": 2,
-    "reviewNote": "Reviewed original: heroine\u2019s face and dodging pose, passing blade, glacial afterimage and bright protective veil remain within central crop; card reads as an evasion ward."
+    "reviewNote": "Reviewed original: heroine’s face and dodging pose, passing blade, glacial afterimage and bright protective veil remain within central crop; card reads as an evasion ward."
   },
   {
     "cardId": "frost_utility_01",
     "name": "Mirror Lake",
-    "prompt": "Paint Mirror Lake, a card whose effect copies the next queued card. Show a still mirror-smooth alpine lake at blue hour with a frost mage on shore preparing a luminous arcane spell; the lake reflection perfectly echoes the mage and duplicates the glowing frost sigils into a second identical arrangement, making the copied spell unmistakable. Painterly medieval fantasy collectible-card art, nuanced materials, cold directional twilight with a small warm lantern accent, atmospheric depth and textured brushwork. Square 512 \u00d7 512 master; keep mage, reflection, lake boundary and duplicated sigils within x24\u2026488, y105\u2026407 for 206:141 horizontal crop, expendable mountain sky and dark foreground beyond. No frame, lettering, numbers, UI, anime, Disney-like cartoon, photorealism, pixel art.",
+    "prompt": "Paint Mirror Lake, a card whose effect copies the next queued card. Show a still mirror-smooth alpine lake at blue hour with a frost mage on shore preparing a luminous arcane spell; the lake reflection perfectly echoes the mage and duplicates the glowing frost sigils into a second identical arrangement, making the copied spell unmistakable. Painterly medieval fantasy collectible-card art, nuanced materials, cold directional twilight with a small warm lantern accent, atmospheric depth and textured brushwork. Square 512 × 512 master; keep mage, reflection, lake boundary and duplicated sigils within x24…488, y105…407 for 206:141 horizontal crop, expendable mountain sky and dark foreground beyond. No frame, lettering, numbers, UI, anime, Disney-like cartoon, photorealism, pixel art.",
     "generatedPath": "/workspace/generated_images/exec-13dd696c-9c17-423c-8729-c1d137d393bc.png",
     "focalPoint": [
       0.5,
@@ -77,7 +77,7 @@
   {
     "cardId": "hail_lob",
     "name": "Hail Lob",
-    "prompt": "Hail Lob: a quick-fuse frost projectile is lobbed over blockers to a chosen tile in a straight column; it bursts 0.35 seconds after casting for 18 damage and leaves freezing ground for four seconds that slows enemies. Show a frost mage throwing a compact spinning hailstone in a high arc over a broken stone barricade toward enemies aligned beyond it; the stone bursts on the ground in a column of icy impact and spreading slow-frost. Painterly medieval fantasy, believable materials, cold directional light, atmospheric depth, grounded anatomy, textured brushwork. True 1:1 square 512 master; keep the mage face and throwing arm, full projectile arc and burst with affected enemies in x24\u2026488, y105\u2026407, with quiet expendable scenery outside. No frame, lettering, UI, anime, photorealism or pixel art.",
+    "prompt": "Hail Lob: a quick-fuse frost projectile is lobbed over blockers to a chosen tile in a straight column; it bursts 0.35 seconds after casting for 18 damage and leaves freezing ground for four seconds that slows enemies. Show a frost mage throwing a compact spinning hailstone in a high arc over a broken stone barricade toward enemies aligned beyond it; the stone bursts on the ground in a column of icy impact and spreading slow-frost. Painterly medieval fantasy, believable materials, cold directional light, atmospheric depth, grounded anatomy, textured brushwork. True 1:1 square 512 master; keep the mage face and throwing arm, full projectile arc and burst with affected enemies in x24…488, y105…407, with quiet expendable scenery outside. No frame, lettering, UI, anime, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-45493b13-88e6-4cec-95c3-7ee03309526b.png",
     "focalPoint": [
       0.5,
@@ -85,12 +85,12 @@
     ],
     "status": "generated",
     "batch": 3,
-    "reviewNote": "Reviewed native 1254 \u00d7 1254 square and predicted 206:141 crop. After crop repair, the full arc apex, mage\u2019s casting pose, impact burst and slowed enemies all remain in the central safe band."
+    "reviewNote": "Reviewed native 1254 × 1254 square and predicted 206:141 crop. After crop repair, the full arc apex, mage’s casting pose, impact burst and slowed enemies all remain in the central safe band."
   },
   {
     "cardId": "icicle_spire",
     "name": "Icicle Spire",
-    "prompt": "Icicle Spire: a sturdy frost sentry guards the hero by taking hits meant for them, attacks steadily every 1.2 seconds, and when it falls or expires explodes onto the nearest enemy and around it, slowing them. Show a tall living spire of thick blue-white ice planted between a cloaked hero and an armored foe; its faceted surface catches and blocks an incoming sword blow while a small precise ice lance answers. Suggest contained explosive force with glowing cracks. Painterly medieval fantasy, tactile ice and steel, dramatic cool light and atmospheric depth. True 1:1 square 512 master; keep complete spire, hero and key enemy/impact within x24\u2026488, y105\u2026407, quiet snow and mist outside. No frame, lettering, UI, anime, photorealism or pixel art.",
+    "prompt": "Icicle Spire: a sturdy frost sentry guards the hero by taking hits meant for them, attacks steadily every 1.2 seconds, and when it falls or expires explodes onto the nearest enemy and around it, slowing them. Show a tall living spire of thick blue-white ice planted between a cloaked hero and an armored foe; its faceted surface catches and blocks an incoming sword blow while a small precise ice lance answers. Suggest contained explosive force with glowing cracks. Painterly medieval fantasy, tactile ice and steel, dramatic cool light and atmospheric depth. True 1:1 square 512 master; keep complete spire, hero and key enemy/impact within x24…488, y105…407, quiet snow and mist outside. No frame, lettering, UI, anime, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-61ddcc75-1ea2-4085-92ff-9899e2366c3a.png",
     "focalPoint": [
       0.5,
@@ -98,12 +98,12 @@
     ],
     "status": "generated",
     "batch": 3,
-    "reviewNote": "Reviewed native 1254 \u00d7 1254 square and predicted 206:141 crop. Repaired scale/placement keeps the full spire crown and base, guarding mage, sword and impact all inside the crop."
+    "reviewNote": "Reviewed native 1254 × 1254 square and predicted 206:141 crop. Repaired scale/placement keeps the full spire crown and base, guarding mage, sword and impact all inside the crop."
   },
   {
     "cardId": "frost_summon_01",
     "name": "Merrow",
-    "prompt": "Merrow: a sturdy quick frost merfolk ally appears for twenty seconds, heals its summoner by two at each swift attack, and each hit leaves a small patch of ground burning for three seconds; summoning carries a 3.9-second curse. Show a fish-tailed merrow warrior rising from a frozen fjord, with expressive amphibious face, scaled skin, finned crest and medieval trident. It fights beside a human summoner: a soft frost-blue healing glow returns to the ally while the merrow\u2019s strike scorches a small patch of snow beneath an attacking foe. Painterly medieval fantasy, grounded anatomy, tactile scales/leather/ice, cinematic cold light and restrained ember contrast. True 1:1 square 512 master; keep merrow face, trident/hands, ally healing glow and burning impact in x24\u2026488, y105\u2026407, quiet snowy lake scenery beyond. No frame, lettering, UI, anime, photorealism or pixel art.",
+    "prompt": "Merrow: a sturdy quick frost merfolk ally appears for twenty seconds, heals its summoner by two at each swift attack, and each hit leaves a small patch of ground burning for three seconds; summoning carries a 3.9-second curse. Show a fish-tailed merrow warrior rising from a frozen fjord, with expressive amphibious face, scaled skin, finned crest and medieval trident. It fights beside a human summoner: a soft frost-blue healing glow returns to the ally while the merrow’s strike scorches a small patch of snow beneath an attacking foe. Painterly medieval fantasy, grounded anatomy, tactile scales/leather/ice, cinematic cold light and restrained ember contrast. True 1:1 square 512 master; keep merrow face, trident/hands, ally healing glow and burning impact in x24…488, y105…407, quiet snowy lake scenery beyond. No frame, lettering, UI, anime, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-9a656576-1e80-4f41-85fa-54cc9fd353bb.png",
     "focalPoint": [
       0.5,
@@ -111,12 +111,12 @@
     ],
     "status": "generated",
     "batch": 3,
-    "reviewNote": "Reviewed native 1254 \u00d7 1254 square and predicted 206:141 crop. Merrow face, finned crest, tail and trident, summoner healing glow and scorched impact remain legible in the crop."
+    "reviewNote": "Reviewed native 1254 × 1254 square and predicted 206:141 crop. Merrow face, finned crest, tail and trident, summoner healing glow and scorched impact remain legible in the crop."
   },
   {
     "cardId": "frost_environment_01",
     "name": "Frozen Lake",
-    "prompt": "Frozen Lake: a burst ices the aimed tile and surrounding ground for ten seconds; enemies caught when it appears take 8 damage and gain slowing frost that halves their speed, while caster mends 3. Show a circular blue-white burst flash-freezing a patch of lake and shoreline, several armored enemies caught across fresh fractured ice and pinned at their feet by frost, with a small frost-caster at the edge receiving a subtle restorative glow. Make the broad frozen ground field the main subject. Painterly medieval fantasy, detailed ice, water and stone, cool dramatic light with restrained dawn warmth and atmospheric depth. True 1:1 square 512 master; keep caster, enemies and full central freeze burst within x24\u2026488, y105\u2026407, quiet sky and foreground outside. No frame, lettering, UI, anime, photorealism or pixel art.",
+    "prompt": "Frozen Lake: a burst ices the aimed tile and surrounding ground for ten seconds; enemies caught when it appears take 8 damage and gain slowing frost that halves their speed, while caster mends 3. Show a circular blue-white burst flash-freezing a patch of lake and shoreline, several armored enemies caught across fresh fractured ice and pinned at their feet by frost, with a small frost-caster at the edge receiving a subtle restorative glow. Make the broad frozen ground field the main subject. Painterly medieval fantasy, detailed ice, water and stone, cool dramatic light with restrained dawn warmth and atmospheric depth. True 1:1 square 512 master; keep caster, enemies and full central freeze burst within x24…488, y105…407, quiet sky and foreground outside. No frame, lettering, UI, anime, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-e3a68cae-d3bd-4350-a0c7-5cb9f9b919fc.png",
     "focalPoint": [
       0.5,
@@ -124,7 +124,7 @@
     ],
     "status": "generated",
     "batch": 3,
-    "reviewNote": "Reviewed native 1254 \u00d7 1254 square and predicted 206:141 crop. Caster, caught enemies and broad burst of fractured ice remain centered; ground-freezing effect reads clearly."
+    "reviewNote": "Reviewed native 1254 × 1254 square and predicted 206:141 crop. Caster, caught enemies and broad burst of fractured ice remain centered; ground-freezing effect reads clearly."
   },
   {
     "cardId": "frost_lance",
@@ -282,7 +282,7 @@
   {
     "cardId": "frost_ward_01",
     "name": "Sea Wall",
-    "prompt": "Original 1:1 square painterly medieval fantasy card illustration for Sea Wall. Mechanics: a light cage of six walls traps an aimed enemy for four seconds; enemy cannot move and shots strike bars while the caster\u2019s shots pass through; barriers gently heal the caster. Show a frost mage outside a luminous pale blue curved cage of six slender sea-ice walls enclosing one armored raider on a snowy coastal battlefield. Trapped raider braces against icy bars as a hostile bolt shatters harmlessly against them, while a healing glow travels from the wall to the mage. Distinct readable cage geometry, not a solid wall. Keep mage face/hands, complete cage, enemy and impact inside x24..488 y105..407, horizontal 206:141 crop safe. Quiet sea mist beyond. Tactile materials, grounded anatomy, cold directional light, textured brushwork, matching supplied Hexmancers references. Square 512 master, no border, text, numbers, UI, anime, cartoon, photorealism, pixel art.",
+    "prompt": "Original 1:1 square painterly medieval fantasy card illustration for Sea Wall. Mechanics: a light cage of six walls traps an aimed enemy for four seconds; enemy cannot move and shots strike bars while the caster’s shots pass through; barriers gently heal the caster. Show a frost mage outside a luminous pale blue curved cage of six slender sea-ice walls enclosing one armored raider on a snowy coastal battlefield. Trapped raider braces against icy bars as a hostile bolt shatters harmlessly against them, while a healing glow travels from the wall to the mage. Distinct readable cage geometry, not a solid wall. Keep mage face/hands, complete cage, enemy and impact inside x24..488 y105..407, horizontal 206:141 crop safe. Quiet sea mist beyond. Tactile materials, grounded anatomy, cold directional light, textured brushwork, matching supplied Hexmancers references. Square 512 master, no border, text, numbers, UI, anime, cartoon, photorealism, pixel art.",
     "generatedPath": "/workspace/generated_images/exec-80fa47ab-332c-45c9-a4e4-fa058d863ef6.png",
     "editableSourcePath": "game/cards/art/masters/frost_ward_01.png",
     "sourceNative": [
@@ -372,7 +372,7 @@
   {
     "cardId": "frost_sentry_04",
     "name": "Narwhal Horn Totem",
-    "prompt": "Paint the exact card Narwhal Horn Totem. Mechanics: sturdy 40-HP frost sentry, lasts 10 seconds, does not attack; empowers the hero\u2019s next cast to hit 33% harder, rallies other creatures +20%, and pulls an enemy closer. Show a tall pale ivory narwhal tusk planted upright in a carved snow-covered stone base as a stationary totem, recognizably twisted horn with carved frost runes and blue core. A frost mage beside it casts a brighter empowered spell in its aura; two small allied ice creatures surge forward while a thin curling frost current draws a distant foe toward the line. Totem is inert and does not fire. Keep full horn tip/base, mage face/hand, allies and pull line inside x24..488,y105..407. Painterly medieval fantasy, tactile materials, cold directional light and textured brushwork. Square 512 master; no lettering, frame, UI, anime, cartoon, photorealism or pixel art. Repainted before source preparation to bring the complete horn into the central safe band.",
+    "prompt": "Paint the exact card Narwhal Horn Totem. Mechanics: sturdy 40-HP frost sentry, lasts 10 seconds, does not attack; empowers the hero’s next cast to hit 33% harder, rallies other creatures +20%, and pulls an enemy closer. Show a tall pale ivory narwhal tusk planted upright in a carved snow-covered stone base as a stationary totem, recognizably twisted horn with carved frost runes and blue core. A frost mage beside it casts a brighter empowered spell in its aura; two small allied ice creatures surge forward while a thin curling frost current draws a distant foe toward the line. Totem is inert and does not fire. Keep full horn tip/base, mage face/hand, allies and pull line inside x24..488,y105..407. Painterly medieval fantasy, tactile materials, cold directional light and textured brushwork. Square 512 master; no lettering, frame, UI, anime, cartoon, photorealism or pixel art. Repainted before source preparation to bring the complete horn into the central safe band.",
     "generatedPath": "/workspace/generated_images/exec-fa05e446-56e7-4667-81f0-18b600ff1f4c.png",
     "editableSourcePath": "game/cards/art/masters/frost_sentry_04.png",
     "sourceNative": [
@@ -390,7 +390,7 @@
   {
     "cardId": "frost_boon_03",
     "name": "Grog Ration",
-    "prompt": "Paint an illustration for the exact card name Grog Ration. Its effect heals a hero, gives a lingering small heal over six seconds, and repeats a weaker healing pulse five seconds later. Make the named ration the clear subject and action: a frost-worn medieval sailor in heavy wool and leather lifts a small wooden ration flask to drink, visibly recovering as gentle warm amber-gold healing light spreads through his chest and frostbitten hands; a faint delayed second halo echoes behind the first glow. A brass cup and a few ration provisions rest nearby on a ship's cold timber deck, with quiet icy sea and rigging behind. Keep one face, flask and drinking gesture dominant and readable; do not add other figures. Painterly medieval fantasy collectible-card illustration, nuanced believable materials, directional warm/cold contrast, atmospheric depth and confident brushwork. Explicitly create a 1:1 square canvas intended as a 512\u00d7512 editable master; keep face, flask, hands and healing glow inside x24\u2026488 and y105\u2026407; expendable quiet sky and deck at top/bottom for a 206:141 horizontal crop. No lettering, writing, numbers, border, card frame or UI. Not anime, Disney-like cartoon, photorealistic or pixel art.",
+    "prompt": "Paint an illustration for the exact card name Grog Ration. Its effect heals a hero, gives a lingering small heal over six seconds, and repeats a weaker healing pulse five seconds later. Make the named ration the clear subject and action: a frost-worn medieval sailor in heavy wool and leather lifts a small wooden ration flask to drink, visibly recovering as gentle warm amber-gold healing light spreads through his chest and frostbitten hands; a faint delayed second halo echoes behind the first glow. A brass cup and a few ration provisions rest nearby on a ship's cold timber deck, with quiet icy sea and rigging behind. Keep one face, flask and drinking gesture dominant and readable; do not add other figures. Painterly medieval fantasy collectible-card illustration, nuanced believable materials, directional warm/cold contrast, atmospheric depth and confident brushwork. Explicitly create a 1:1 square canvas intended as a 512×512 editable master; keep face, flask, hands and healing glow inside x24…488 and y105…407; expendable quiet sky and deck at top/bottom for a 206:141 horizontal crop. No lettering, writing, numbers, border, card frame or UI. Not anime, Disney-like cartoon, photorealistic or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-a746dfa4-171f-48d2-9c44-055d16230d50.png",
     "editableSourcePath": "game/cards/art/masters/frost_boon_03.png",
     "sourceNative": [
@@ -403,7 +403,7 @@
     ],
     "status": "generated",
     "batch": 7,
-    "reviewNote": "Recovered the automatically saved raw by visually matching its explicit Grog Ration content after the generator omitted an output path. Reviewed the 512\u00d7512 master, 206:141 crop and 128px thumbnail. Center crop clipped the sailor\u2019s forehead; focalPoint y=0.44 shifts the crop upward, keeping his full face, flask and healing glow visible. The ration is clear; the small background echo is subtle."
+    "reviewNote": "Recovered the automatically saved raw by visually matching its explicit Grog Ration content after the generator omitted an output path. Reviewed the 512×512 master, 206:141 crop and 128px thumbnail. Center crop clipped the sailor’s forehead; focalPoint y=0.44 shifts the crop upward, keeping his full face, flask and healing glow visible. The ration is clear; the small background echo is subtle."
   },
   {
     "cardId": "frost_charge_01",
@@ -511,7 +511,7 @@
     ],
     "status": "generated",
     "batch": 7,
-    "reviewNote": "Reviewed the 1254-square original, exact 512 source, centered 206:141 crop and 96px thumbnail. Mermaid\u2019s complete face, singing mouth and leading hand remain in crop; the icy wall, underwater tunnel, traveling song ripples and enemy establish the burrowing attack. The tail trails out of frame as secondary anatomy."
+    "reviewNote": "Reviewed the 1254-square original, exact 512 source, centered 206:141 crop and 96px thumbnail. Mermaid’s complete face, singing mouth and leading hand remain in crop; the icy wall, underwater tunnel, traveling song ripples and enemy establish the burrowing attack. The tail trails out of frame as secondary anatomy."
   },
   {
     "cardId": "frost_machine_01",
@@ -583,12 +583,12 @@
     ],
     "status": "generated",
     "batch": 7,
-    "reviewNote": "Reviewed 1514\u00d71039 original, exact 512 source, centered 206:141 crop and 96px thumbnail. Sea-mage face and extended hand remain visible; the surging flood and backward-swept enemy are clear and readable at thumbnail size. Her far-left body is cropped as secondary detail."
+    "reviewNote": "Reviewed 1514×1039 original, exact 512 source, centered 206:141 crop and 96px thumbnail. Sea-mage face and extended hand remain visible; the surging flood and backward-swept enemy are clear and readable at thumbnail size. Her far-left body is cropped as secondary detail."
   },
   {
     "cardId": "hero_ysolde",
     "name": "Ysolde of the Rime",
-    "prompt": "Paint Ysolde of the Rime, a legendary frost heroine: a commanding northern woman with pale winter skin, dark braids and silver-white fur over blue-gray mail stands on a windblown battlement. Her raised hand fires a narrow freezing bolt while a subtle translucent ice ward curls around her other arm, suggesting the shield she grants an ally. Ysolde\u2019s full face, casting hand and focused expression stay within the central safe area. Painterly medieval fantasy collectible-card art, believable wool, fur, mail and ice, grounded mature anatomy, expressive brushwork, cold moonlight with warm horizon glint, atmospheric depth. Explicit 1:1 square 512 master, horizontal 206:141 crop, quiet snow and sky margins. No text, frame, UI, modern objects, anime, cartoon, photorealism or pixel art.",
+    "prompt": "Paint Ysolde of the Rime, a legendary frost heroine: a commanding northern woman with pale winter skin, dark braids and silver-white fur over blue-gray mail stands on a windblown battlement. Her raised hand fires a narrow freezing bolt while a subtle translucent ice ward curls around her other arm, suggesting the shield she grants an ally. Ysolde’s full face, casting hand and focused expression stay within the central safe area. Painterly medieval fantasy collectible-card art, believable wool, fur, mail and ice, grounded mature anatomy, expressive brushwork, cold moonlight with warm horizon glint, atmospheric depth. Explicit 1:1 square 512 master, horizontal 206:141 crop, quiet snow and sky margins. No text, frame, UI, modern objects, anime, cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-1cb8de28-5229-4542-9a84-eded9f5c59c2.png",
     "editableSourcePath": "game/cards/art/masters/hero_ysolde.png",
     "sourceNative": [
@@ -601,7 +601,7 @@
     ],
     "status": "generated",
     "batch": 7,
-    "reviewNote": "Reviewed 1513\u00d71039 original, exact 512 source, upward-focused 206:141 crop (focalPoint y=0.4) and 96px thumbnail. The shift brings Ysolde\u2019s full head and face into the crop while preserving her casting hand and freezing bolt; the shield shimmer is secondary."
+    "reviewNote": "Reviewed 1513×1039 original, exact 512 source, upward-focused 206:141 crop (focalPoint y=0.4) and 96px thumbnail. The shift brings Ysolde’s full head and face into the crop while preserving her casting hand and freezing bolt; the shield shimmer is secondary."
   },
   {
     "cardId": "frost_strike_03",
@@ -655,12 +655,12 @@
     ],
     "status": "generated",
     "batch": 7,
-    "reviewNote": "Reviewed 1279\u00d71230 original, exact 512 source, upward-focused 206:141 crop (focalPoint y=0.35) and 96px thumbnail. The shift keeps both dam parapets and tower tips in frame while retaining the mage and channel; wall bases and controlled water remain visible. The mage is intentionally small beside the massive named structure."
+    "reviewNote": "Reviewed 1279×1230 original, exact 512 source, upward-focused 206:141 crop (focalPoint y=0.35) and 96px thumbnail. The shift keeps both dam parapets and tower tips in frame while retaining the mage and channel; wall bases and controlled water remain visible. The mage is intentionally small beside the massive named structure."
   },
   {
     "cardId": "frost_sentry_05",
     "name": "Figurehead Sentinel",
-    "prompt": "Paint Figurehead Sentinel, a frost sentry: a fierce medieval ship\u2019s figurehead carved from weathered oak dominates, a sea-maiden guardian with carved face, flowing wooden hair, brass fittings and frost-blue eyes. Fixed to the prow, it taunts an approaching raider and fires a precise icy bolt; after firing, its lower carved form sinks into a curling wave. Make it unmistakably carved wood attached to the ship, not a living mermaid or generic statue. Painterly medieval fantasy collectible-card art, tactile oak grain, iron fittings, ice and seawater, dramatic cold light, expressive brushwork and atmospheric depth. Explicit 1:1 square 512 master, horizontal 206:141 crop; keep the complete head/face in the safe band while wave and ship may frame it. No text, frame, UI, modern objects, anime, cartoon, photorealism or pixel art.",
+    "prompt": "Paint Figurehead Sentinel, a frost sentry: a fierce medieval ship’s figurehead carved from weathered oak dominates, a sea-maiden guardian with carved face, flowing wooden hair, brass fittings and frost-blue eyes. Fixed to the prow, it taunts an approaching raider and fires a precise icy bolt; after firing, its lower carved form sinks into a curling wave. Make it unmistakably carved wood attached to the ship, not a living mermaid or generic statue. Painterly medieval fantasy collectible-card art, tactile oak grain, iron fittings, ice and seawater, dramatic cold light, expressive brushwork and atmospheric depth. Explicit 1:1 square 512 master, horizontal 206:141 crop; keep the complete head/face in the safe band while wave and ship may frame it. No text, frame, UI, modern objects, anime, cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-468ae0d0-d53b-4563-92da-47348ca50f46.png",
     "editableSourcePath": "game/cards/art/masters/frost_sentry_05.png",
     "sourceNative": [
@@ -673,12 +673,12 @@
     ],
     "status": "generated",
     "batch": 7,
-    "reviewNote": "Reviewed 1512\u00d71040 original, exact 512 source, upward-focused 206:141 crop (focalPoint y=0.35) and 96px thumbnail. The figurehead\u2019s complete carved face and crown remain in frame; the icy bolt, prow and approaching ship establish its sentinel role. Lower carving recedes beneath the wave to suggest its brief submerge."
+    "reviewNote": "Reviewed 1512×1040 original, exact 512 source, upward-focused 206:141 crop (focalPoint y=0.35) and 96px thumbnail. The figurehead’s complete carved face and crown remain in frame; the icy bolt, prow and approaching ship establish its sentinel role. Lower carving recedes beneath the wave to suggest its brief submerge."
   },
   {
     "cardId": "frost_boon_04",
     "name": "Hot Spring Soak",
-    "prompt": "Paint a painterly medieval fantasy collectible-card illustration for the exact Frost boon Hot Spring Soak. Its actual effect begins healing immediately and continues steady regeneration for 11 seconds. Show one weary, fully clothed northern adventurer sitting waist-deep in a small natural geothermal pool among snowy rocks, shoulders wrapped in a simple wool tunic, eyes closed in relief as they soak; one hand rests on the warm stone rim and the other holds a steaming wooden cup. The spring itself is the named focal subject: clear turquoise water, mineral-stained pale stone and visible warm steam contrast with surrounding blue snow and frost. A subtle golden warmth spreads across the adventurer's shoulders to imply gradual healing, not a huge magic spell. Keep the person's full face and both hands, complete pool rim and steaming water within x24\u2026488,y105\u2026407 on the square. Quiet snow-covered pines and distant cold mountains above and below. Painterly medieval fantasy collectible-card art, believable wool, stone, steam, water and ice, attractive warm-cold directional light, grounded mature anatomy and textured brushwork. Explicit 1:1 SQUARE canvas for an editable 512\u00d7512 master, composed for a horizontal 206:141 crop and readable thumbnail. Modest clothing only; no nudity. No text, letters, numbers, frame, border, UI, modern objects, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint a painterly medieval fantasy collectible-card illustration for the exact Frost boon Hot Spring Soak. Its actual effect begins healing immediately and continues steady regeneration for 11 seconds. Show one weary, fully clothed northern adventurer sitting waist-deep in a small natural geothermal pool among snowy rocks, shoulders wrapped in a simple wool tunic, eyes closed in relief as they soak; one hand rests on the warm stone rim and the other holds a steaming wooden cup. The spring itself is the named focal subject: clear turquoise water, mineral-stained pale stone and visible warm steam contrast with surrounding blue snow and frost. A subtle golden warmth spreads across the adventurer's shoulders to imply gradual healing, not a huge magic spell. Keep the person's full face and both hands, complete pool rim and steaming water within x24…488,y105…407 on the square. Quiet snow-covered pines and distant cold mountains above and below. Painterly medieval fantasy collectible-card art, believable wool, stone, steam, water and ice, attractive warm-cold directional light, grounded mature anatomy and textured brushwork. Explicit 1:1 SQUARE canvas for an editable 512×512 master, composed for a horizontal 206:141 crop and readable thumbnail. Modest clothing only; no nudity. No text, letters, numbers, frame, border, UI, modern objects, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-545c50ee-8673-4f2f-8c72-accdf2a52dac.png",
     "editableSourcePath": "game/cards/art/masters/frost_boon_04.png",
     "sourceNative": [
@@ -691,12 +691,12 @@
     ],
     "status": "generated",
     "batch": 7,
-    "reviewNote": "Reviewed exact 512-square source, centered 512\u00d7350 crop and 128\u00d788 thumbnail. The soaker's full face, both hands, steaming cup, pool edge and warm water remain visible; the healing soak reads clearly against the surrounding snow."
+    "reviewNote": "Reviewed exact 512-square source, centered 512×350 crop and 128×88 thumbnail. The soaker's full face, both hands, steaming cup, pool edge and warm water remain visible; the healing soak reads clearly against the surrounding snow."
   },
   {
     "cardId": "frost_charge_02",
     "name": "Brace of Pistols",
-    "prompt": "Paint Brace of Pistols, an exact named frost charge for a medieval fantasy card: a weathered northern corsair in a fur-lined blue coat fires a matched brace of two ornate flintlock pistols, one in each hand, toward an off-frame foe. Both complete pistols, hands, muzzle flashes, and the corsair's focused face are the clear subject, safely inside x24\u2026488,y105\u2026407. The two guns are clearly a matched pair of historical black-powder pistols with wooden grips, iron barrels and restrained frost-blue runes; this is a single firing volley, not modern firearms. Painterly medieval fantasy collectible-card art, grounded anatomy, expressive brushwork, believable leather, wool, wood and iron, dramatic cold harbor light with warm powder flare and atmospheric depth, in the supplied Hexmancers frost reference style. Explicit 1:1 SQUARE canvas for an editable 512\u00d7512 master, horizontal 206:141 card crop, quiet snow and timber margins. No text, numbers, frame, UI, modern weapons, anime, Disney-like cartoon, photorealism or pixel art. Repainted after the first version clipped the face and muzzle in the wide crop.",
+    "prompt": "Paint Brace of Pistols, an exact named frost charge for a medieval fantasy card: a weathered northern corsair in a fur-lined blue coat fires a matched brace of two ornate flintlock pistols, one in each hand, toward an off-frame foe. Both complete pistols, hands, muzzle flashes, and the corsair's focused face are the clear subject, safely inside x24…488,y105…407. The two guns are clearly a matched pair of historical black-powder pistols with wooden grips, iron barrels and restrained frost-blue runes; this is a single firing volley, not modern firearms. Painterly medieval fantasy collectible-card art, grounded anatomy, expressive brushwork, believable leather, wool, wood and iron, dramatic cold harbor light with warm powder flare and atmospheric depth, in the supplied Hexmancers frost reference style. Explicit 1:1 SQUARE canvas for an editable 512×512 master, horizontal 206:141 card crop, quiet snow and timber margins. No text, numbers, frame, UI, modern weapons, anime, Disney-like cartoon, photorealism or pixel art. Repainted after the first version clipped the face and muzzle in the wide crop.",
     "generatedPath": "/workspace/generated_images/exec-06a2c9e2-7512-402d-8ee8-208d2a352d19.png",
     "editableSourcePath": "game/cards/art/masters/frost_charge_02.png",
     "sourceNative": [
@@ -709,12 +709,12 @@
     ],
     "status": "generated",
     "batch": 7,
-    "reviewNote": "Reviewed exact 512-square source, centered 512\u00d7350 crop and 128\u00d788 thumbnail. The full face, both hands and both complete pistols now fit inside the wide crop, with visible edge margins; the matched volley remains clear at thumbnail size. First draft/source preserved in /tmp/hexmancers-art-scratch-frost05."
+    "reviewNote": "Reviewed exact 512-square source, centered 512×350 crop and 128×88 thumbnail. The full face, both hands and both complete pistols now fit inside the wide crop, with visible edge margins; the matched volley remains clear at thumbnail size. First draft/source preserved in /tmp/hexmancers-art-scratch-frost05."
   },
   {
     "cardId": "frost_utility_03",
     "name": "Spyglass",
-    "prompt": "Paint the exact frost utility card Spyglass, whose effect reveals one new card: a lone northern scout on an icy coastal watchtower studies the distant horizon through a complete brass-and-dark-wood spyglass. The spyglass is prominent, clearly recognizable with both open lenses, and held in the scout's gloved hands; show the scout's focused face beside it, looking toward a newly spotted sail emerging between snowy cliffs. The telescope is the named focal object and the discovery is clear at thumbnail scale. Keep the full face, both hands, and entire spyglass within x24\u2026488,y105\u2026407 of the square. Painterly medieval fantasy collectible-card art in the supplied Hexmancers frost reference style, nuanced brass, wood, leather and wool, dramatic cool morning light with a warm ray at the horizon, expressive brushwork and atmospheric depth. Explicit 1:1 SQUARE canvas for an editable 512\u00d7512 master, composed for horizontal 206:141 crop; quiet sky and snow margins. No text, letters, frame, UI, modern objects, anime, cartoon, photorealism or pixel art.",
+    "prompt": "Paint the exact frost utility card Spyglass, whose effect reveals one new card: a lone northern scout on an icy coastal watchtower studies the distant horizon through a complete brass-and-dark-wood spyglass. The spyglass is prominent, clearly recognizable with both open lenses, and held in the scout's gloved hands; show the scout's focused face beside it, looking toward a newly spotted sail emerging between snowy cliffs. The telescope is the named focal object and the discovery is clear at thumbnail scale. Keep the full face, both hands, and entire spyglass within x24…488,y105…407 of the square. Painterly medieval fantasy collectible-card art in the supplied Hexmancers frost reference style, nuanced brass, wood, leather and wool, dramatic cool morning light with a warm ray at the horizon, expressive brushwork and atmospheric depth. Explicit 1:1 SQUARE canvas for an editable 512×512 master, composed for horizontal 206:141 crop; quiet sky and snow margins. No text, letters, frame, UI, modern objects, anime, cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-25a6b03d-df68-4858-ad8b-e07e2bf7b443.png",
     "editableSourcePath": "game/cards/art/masters/frost_utility_03.png",
     "sourceNative": [
@@ -727,12 +727,12 @@
     ],
     "status": "generated",
     "batch": 7,
-    "reviewNote": "Reviewed exact 512-square source, centered 512\u00d7350 crop and 128\u00d788 thumbnail. The scout\u2019s full face and both gloved hands remain visible, and the complete spyglass with both ends is well inside the crop. Its brass-and-wood construction and distant ship read at thumbnail size."
+    "reviewNote": "Reviewed exact 512-square source, centered 512×350 crop and 128×88 thumbnail. The scout’s full face and both gloved hands remain visible, and the complete spyglass with both ends is well inside the crop. Its brass-and-wood construction and distant ship read at thumbnail size."
   },
   {
     "cardId": "frost_trap_03",
     "name": "Hidden Reef",
-    "prompt": "Paint Hidden Reef, a frost trap whose effect strikes one enemy lane: a dangerous submerged reef of tall jagged black rock spines lies nearly invisible just below a calm steel-blue winter sea; an approaching wooden longship\u2019s keel catches on the largest concealed spike, and the hull cracks as water splashes up. The complete primary reef spike and visible broken keel form the unmistakable named subject, with the concealed rock hazard readable through clear water and a thin veil of ice. Keep the full central spike, ship impact point, and any visible crew faces/hands inside x24\u2026488,y105\u2026407. One clear trap action, not a generic ice spell. Painterly medieval fantasy collectible-card art in the supplied Hexmancers frost reference style, believable dark stone, timber, water and ice, dramatic cold dawn light with a small warm lantern glow, expressive brushwork and atmospheric depth. Explicit 1:1 SQUARE canvas for editable 512\u00d7512 master, horizontal 206:141 card crop, keep critical objects away from all edges with quiet sky/sea margins. No text, runes, frame, UI, modern objects, anime, cartoon, photorealism or pixel art.",
+    "prompt": "Paint Hidden Reef, a frost trap whose effect strikes one enemy lane: a dangerous submerged reef of tall jagged black rock spines lies nearly invisible just below a calm steel-blue winter sea; an approaching wooden longship’s keel catches on the largest concealed spike, and the hull cracks as water splashes up. The complete primary reef spike and visible broken keel form the unmistakable named subject, with the concealed rock hazard readable through clear water and a thin veil of ice. Keep the full central spike, ship impact point, and any visible crew faces/hands inside x24…488,y105…407. One clear trap action, not a generic ice spell. Painterly medieval fantasy collectible-card art in the supplied Hexmancers frost reference style, believable dark stone, timber, water and ice, dramatic cold dawn light with a small warm lantern glow, expressive brushwork and atmospheric depth. Explicit 1:1 SQUARE canvas for editable 512×512 master, horizontal 206:141 card crop, keep critical objects away from all edges with quiet sky/sea margins. No text, runes, frame, UI, modern objects, anime, cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-92342064-dce7-40c3-bd60-f2084b8bfe65.png",
     "editableSourcePath": "game/cards/art/masters/frost_trap_03.png",
     "sourceNative": [
@@ -745,12 +745,12 @@
     ],
     "status": "generated",
     "batch": 7,
-    "reviewNote": "Reviewed exact 512-square source, centered 512\u00d7350 crop and 128\u00d788 thumbnail. The central submerged reef spines and the ship's broken keel/impact remain fully in frame; the trap action reads at thumbnail size. Crew faces are secondary and visible above the hull."
+    "reviewNote": "Reviewed exact 512-square source, centered 512×350 crop and 128×88 thumbnail. The central submerged reef spines and the ship's broken keel/impact remain fully in frame; the trap action reads at thumbnail size. Crew faces are secondary and visible above the hull."
   },
   {
     "cardId": "frost_environment_03",
     "name": "Black Ice",
-    "prompt": "Paint Black Ice, a frost environment whose freezing spreads across crossing lanes: a broad glossy black sheet of newly frozen lake ice sweeps through a medieval winter battlefield in a clear cross-shaped pattern. On the central band, an armored traveler loses footing and reaches out with both hands, full face visible, while frost races in two crossing directions over the dark mirror-smooth surface; a second distant foe is caught off balance. The named black ice is the main subject, visibly dangerous and distinct from snow, with cool blue-white rime tracing its crosswise spread. Keep the slipping traveler's full face and hands and the central crossing of ice safely inside x24\u2026488,y105\u2026407. Painterly medieval fantasy collectible-card art in the supplied Hexmancers frost reference style, grounded anatomy, believable mail, leather, ice and snow, dramatic low winter light with warm torch reflections, expressive brushwork and atmospheric depth. Explicit 1:1 SQUARE canvas for editable 512\u00d7512 master and horizontal 206:141 crop, quiet snowy margins. No text, runes, frame, UI, modern objects, anime, cartoon, photorealism or pixel art.",
+    "prompt": "Paint Black Ice, a frost environment whose freezing spreads across crossing lanes: a broad glossy black sheet of newly frozen lake ice sweeps through a medieval winter battlefield in a clear cross-shaped pattern. On the central band, an armored traveler loses footing and reaches out with both hands, full face visible, while frost races in two crossing directions over the dark mirror-smooth surface; a second distant foe is caught off balance. The named black ice is the main subject, visibly dangerous and distinct from snow, with cool blue-white rime tracing its crosswise spread. Keep the slipping traveler's full face and hands and the central crossing of ice safely inside x24…488,y105…407. Painterly medieval fantasy collectible-card art in the supplied Hexmancers frost reference style, grounded anatomy, believable mail, leather, ice and snow, dramatic low winter light with warm torch reflections, expressive brushwork and atmospheric depth. Explicit 1:1 SQUARE canvas for editable 512×512 master and horizontal 206:141 crop, quiet snowy margins. No text, runes, frame, UI, modern objects, anime, cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-c0c1a98f-3eca-4a93-b22e-058228363cda.png",
     "editableSourcePath": "game/cards/art/masters/frost_environment_03.png",
     "sourceNative": [
@@ -763,7 +763,7 @@
     ],
     "status": "generated",
     "batch": 7,
-    "reviewNote": "Reviewed exact 512-square source, centered 512\u00d7350 crop and 128\u00d788 thumbnail. The slipping traveler's full face and both hands are visible within the crop; the dark slick ice and crosswise rime spread read clearly at thumbnail scale."
+    "reviewNote": "Reviewed exact 512-square source, centered 512×350 crop and 128×88 thumbnail. The slipping traveler's full face and both hands are visible within the crop; the dark slick ice and crosswise rime spread read clearly at thumbnail scale."
   },
   {
     "cardId": "frost_strike_04",
@@ -948,7 +948,7 @@
   {
     "cardId": "frost_summon_03",
     "name": "Merman Spearman",
-    "prompt": "Repaint \u201cMerman Spearman\u201d as a square painterly medieval fantasy card illustration. Show a brave adult merfolk guardian with a strong readable face, coral armor and a powerful fish tail, planting a long spear across his body to defend two allies on a rocky northern shore. Important correction: make the complete merman smaller in the frame so his full face, both hands, spear tip and whole fish tail all fit between y110 and y400 on the square; place his head around y145 and tail tip around y375. Keep spear horizontal and entirely within x30..480,y120..390. Allies and attacking humans remain smaller background figures. Grounded scales, shell, bronze, cold sea light, atmospheric depth and painterly brushwork. Explicit 1:1 square for editable 512x512, horizontal card staging, quiet sea and sky margins. No border, lettering, UI, anime, Disney cartoon, photorealism, modern gear or pixel art.",
+    "prompt": "Repaint “Merman Spearman” as a square painterly medieval fantasy card illustration. Show a brave adult merfolk guardian with a strong readable face, coral armor and a powerful fish tail, planting a long spear across his body to defend two allies on a rocky northern shore. Important correction: make the complete merman smaller in the frame so his full face, both hands, spear tip and whole fish tail all fit between y110 and y400 on the square; place his head around y145 and tail tip around y375. Keep spear horizontal and entirely within x30..480,y120..390. Allies and attacking humans remain smaller background figures. Grounded scales, shell, bronze, cold sea light, atmospheric depth and painterly brushwork. Explicit 1:1 square for editable 512x512, horizontal card staging, quiet sea and sky margins. No border, lettering, UI, anime, Disney cartoon, photorealism, modern gear or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-1b3ff640-3bb3-480c-afe5-c76fa522d07b.png",
     "focalPoint": [
       0.5,
@@ -966,7 +966,7 @@
   {
     "cardId": "frost_machine_02",
     "name": "Broadside Battery",
-    "prompt": "Paint an illustration for the exact card \u201cBroadside Battery\u201d. Show a low medieval icebreaker vessel with a row of three compact bronze-and-oak deck cannons, one cannon firing a rapid, zigzagging blue-white frost bolt that ricochets across and shatters a sheet of sea ice. The battery of side-mounted guns is the unmistakable named machine; keep the main cannon, muzzle flash and ricochet path clear. Painterly medieval fantasy collectible-card art, weathered timber, bronze, frost and rope, crisp cold light with atmospheric depth and painterly motion. Horizontal side-on staging on a frozen sea. Explicit 1:1 square for editable 512x512; keep the full visible gun battery and important blast action inside x24..488,y105..407; quiet sky and ice beyond. No border, text, numbers, UI. No anime, Disney cartoon, photorealism, modern military hardware or pixel art.",
+    "prompt": "Paint an illustration for the exact card “Broadside Battery”. Show a low medieval icebreaker vessel with a row of three compact bronze-and-oak deck cannons, one cannon firing a rapid, zigzagging blue-white frost bolt that ricochets across and shatters a sheet of sea ice. The battery of side-mounted guns is the unmistakable named machine; keep the main cannon, muzzle flash and ricochet path clear. Painterly medieval fantasy collectible-card art, weathered timber, bronze, frost and rope, crisp cold light with atmospheric depth and painterly motion. Horizontal side-on staging on a frozen sea. Explicit 1:1 square for editable 512x512; keep the full visible gun battery and important blast action inside x24..488,y105..407; quiet sky and ice beyond. No border, text, numbers, UI. No anime, Disney cartoon, photorealism, modern military hardware or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-688849f2-82ba-4979-8046-b40ea62a602e.png",
     "focalPoint": [
       0.5,
@@ -984,7 +984,7 @@
   {
     "cardId": "frost_ace_02",
     "name": "Tidal Ram",
-    "prompt": "Paint an illustration for the exact card \u201cTidal Ram\u201d. Its frost ace is a powerful row-wide strike that pushes enemies backward. Show a towering turquoise wave sculpted into the unmistakable charging head of a sea ram, with curling water horns and a crest of white foam, sweeping horizontally through a line of armored foes and hurling them back across a flooded causeway. Make the ram-shaped wave the strong named subject; the broad lateral force must read at once. Painterly medieval fantasy collectible-card art, dramatic cold moonlit water, rich sea spray, stone and armor, expressive brushwork and atmospheric depth. Horizontal action composition. Explicit 1:1 square intended for editable 512x512; keep the complete ram head, wave impact, critical faces and hands safely inside x24..488,y105..407, quiet sky/ground beyond. No border, text, numbers, UI. No anime, Disney cartoon, photorealism, modern gear or pixel art.",
+    "prompt": "Paint an illustration for the exact card “Tidal Ram”. Its frost ace is a powerful row-wide strike that pushes enemies backward. Show a towering turquoise wave sculpted into the unmistakable charging head of a sea ram, with curling water horns and a crest of white foam, sweeping horizontally through a line of armored foes and hurling them back across a flooded causeway. Make the ram-shaped wave the strong named subject; the broad lateral force must read at once. Painterly medieval fantasy collectible-card art, dramatic cold moonlit water, rich sea spray, stone and armor, expressive brushwork and atmospheric depth. Horizontal action composition. Explicit 1:1 square intended for editable 512x512; keep the complete ram head, wave impact, critical faces and hands safely inside x24..488,y105..407, quiet sky/ground beyond. No border, text, numbers, UI. No anime, Disney cartoon, photorealism, modern gear or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-e9de8e2d-bbd7-429a-b800-7b3780545f2e.png",
     "focalPoint": [
       0.5,
@@ -1002,7 +1002,7 @@
   {
     "cardId": "frost_aceup_03",
     "name": "Hurricane Eye",
-    "prompt": "Paint an illustration for the exact card \u201cHurricane Eye\u201d. This frost upgrade strengthens a row-wide spell and slows enemies. Show a robed ice mage raising both hands as a colossal circular hurricane of snow, sea spray and blue-white wind sweeps along a line of enemies; at its center is a distinct calm, luminous eye like a clear blue iris, the ring visibly tightening and empowering the mage\u2019s spell. The hurricane eye is the dominant recognizable subject, not a generic blizzard. Painterly medieval fantasy collectible-card art, wind-whipped cloth, icy particles, dramatic cold light and atmospheric depth. Horizontal card staging. Explicit 1:1 square intended for editable 512x512; keep the mage face/hands, complete storm eye and row of slowed figures inside x24..488,y105..407, expendable clouds beyond. No border, text, numbers, UI. No anime, Disney cartoon, photorealism, modern objects or pixel art.",
+    "prompt": "Paint an illustration for the exact card “Hurricane Eye”. This frost upgrade strengthens a row-wide spell and slows enemies. Show a robed ice mage raising both hands as a colossal circular hurricane of snow, sea spray and blue-white wind sweeps along a line of enemies; at its center is a distinct calm, luminous eye like a clear blue iris, the ring visibly tightening and empowering the mage’s spell. The hurricane eye is the dominant recognizable subject, not a generic blizzard. Painterly medieval fantasy collectible-card art, wind-whipped cloth, icy particles, dramatic cold light and atmospheric depth. Horizontal card staging. Explicit 1:1 square intended for editable 512x512; keep the mage face/hands, complete storm eye and row of slowed figures inside x24..488,y105..407, expendable clouds beyond. No border, text, numbers, UI. No anime, Disney cartoon, photorealism, modern objects or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-7c8de722-af9f-4181-8cc5-c4331ba8e632.png",
     "focalPoint": [
       0.5,
@@ -1020,7 +1020,7 @@
   {
     "cardId": "frost_claim_02",
     "name": "Flash Flood",
-    "prompt": "Paint an illustration for the exact card \u201cFlash Flood\u201d. Show a sudden wall of cold glacial water bursting through a narrow medieval harbor street, sweeping barrels and debris before it as a frost mage on a raised stone stair opens a glowing rune gate. Water fills the street like a newly claimed channel and continues rushing through the whole district; the flood surge is the unmistakable subject, with the mage small and secondary. Painterly medieval fantasy collectible-card art, blue-green water, wet stone, timber, cloth, directional light and atmospheric depth. Horizontal staging that shows the flood spreading across the district. Explicit 1:1 square intended for editable 512x512; keep the leading water edge and the mage\u2019s face/hand inside x24..488,y105..407; quiet skyline and foreground beyond. No border, lettering, numbers, UI. No anime, Disney cartoon, photorealism, modern objects or pixel art.",
+    "prompt": "Paint an illustration for the exact card “Flash Flood”. Show a sudden wall of cold glacial water bursting through a narrow medieval harbor street, sweeping barrels and debris before it as a frost mage on a raised stone stair opens a glowing rune gate. Water fills the street like a newly claimed channel and continues rushing through the whole district; the flood surge is the unmistakable subject, with the mage small and secondary. Painterly medieval fantasy collectible-card art, blue-green water, wet stone, timber, cloth, directional light and atmospheric depth. Horizontal staging that shows the flood spreading across the district. Explicit 1:1 square intended for editable 512x512; keep the leading water edge and the mage’s face/hand inside x24..488,y105..407; quiet skyline and foreground beyond. No border, lettering, numbers, UI. No anime, Disney cartoon, photorealism, modern objects or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-d6264b0d-21da-4401-9fcc-0bc6a8135dde.png",
     "focalPoint": [
       0.5,
@@ -1038,7 +1038,7 @@
   {
     "cardId": "hero_winter",
     "name": "Old Man Winter",
-    "prompt": "Paint an illustration for the exact hero \u201cOld Man Winter\u201d. His attack calls hail down on an enemy and freezes it; his presence makes enemies act more slowly. Show a stern ancient winter mage with a long white beard and weathered face, bundled in layered blue-gray fur and ice-embroidered robes, raising one gloved hand as a concentrated hailstorm descends and freezes a charging armored foe. He should look like a legendary northern sage, not a holiday character. Painterly medieval fantasy collectible-card art, believable fur, frost and wool, cold directional light, atmospheric depth. Horizontal composition. Explicit 1:1 square for editable 512x512; keep his full face, raised hand, falling hail and frozen foe within x24..488,y105..407, with quiet snow sky around. No red holiday clothing, sleigh, gifts, border, lettering or UI. No anime, Disney cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for the exact hero “Old Man Winter”. His attack calls hail down on an enemy and freezes it; his presence makes enemies act more slowly. Show a stern ancient winter mage with a long white beard and weathered face, bundled in layered blue-gray fur and ice-embroidered robes, raising one gloved hand as a concentrated hailstorm descends and freezes a charging armored foe. He should look like a legendary northern sage, not a holiday character. Painterly medieval fantasy collectible-card art, believable fur, frost and wool, cold directional light, atmospheric depth. Horizontal composition. Explicit 1:1 square for editable 512x512; keep his full face, raised hand, falling hail and frozen foe within x24..488,y105..407, with quiet snow sky around. No red holiday clothing, sleigh, gifts, border, lettering or UI. No anime, Disney cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-dfea67b9-51c1-4d20-b109-5b6a58f84a14.png",
     "focalPoint": [
       0.5,
@@ -1046,7 +1046,7 @@
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Reviewed the 512-square source, crop shifted to y=40 and 128px thumb. Old Man Winter\u2019s face, full raised hand, hail and the frozen foe fit the crop; the hand was clipped before shifting. The prior default crop preview remains incidental.",
+    "reviewNote": "Reviewed the 512-square source, crop shifted to y=40 and 128px thumb. Old Man Winter’s face, full raised hand, hail and the frozen foe fit the crop; the hand was clipped before shifting. The prior default crop preview remains incidental.",
     "editableSourcePath": "game/cards/art/masters/hero_winter.png",
     "sourceNative": [
       1254,
@@ -1056,7 +1056,7 @@
   {
     "cardId": "frost_strike_05",
     "name": "Riptide",
-    "prompt": "Paint an illustration for the exact card \u201cRiptide\u201d. Its charged frost strike pulls an enemy into a powerful critical wave. Show a focused spellcaster on a cold rocky shore as a twisting blue-green riptide curls out from the sea, catches a single armored foe, pulls him toward the crashing wave, then slams him with a bright ice-white impact. The forceful water spiral and clear pulled-back action define the card. Painterly medieval fantasy collectible-card art, realistic cloth, armor and spray, dramatic cold directional light, atmospheric depth. Horizontal composition. Explicit 1:1 square for editable 512x512; keep caster face/hands, the entire riptide curl and struck enemy face/body inside x24..488,y105..407; quiet sea and sky beyond. No border, text, numbers, UI. No anime, Disney cartoon, photorealism, modern objects or pixel art.",
+    "prompt": "Paint an illustration for the exact card “Riptide”. Its charged frost strike pulls an enemy into a powerful critical wave. Show a focused spellcaster on a cold rocky shore as a twisting blue-green riptide curls out from the sea, catches a single armored foe, pulls him toward the crashing wave, then slams him with a bright ice-white impact. The forceful water spiral and clear pulled-back action define the card. Painterly medieval fantasy collectible-card art, realistic cloth, armor and spray, dramatic cold directional light, atmospheric depth. Horizontal composition. Explicit 1:1 square for editable 512x512; keep caster face/hands, the entire riptide curl and struck enemy face/body inside x24..488,y105..407; quiet sea and sky beyond. No border, text, numbers, UI. No anime, Disney cartoon, photorealism, modern objects or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-8c2d310a-b7e7-46be-ada3-51ba1821100b.png",
     "focalPoint": [
       0.5,
@@ -1758,7 +1758,7 @@
   {
     "cardId": "frost_charge_07",
     "name": "Grapeshot Bag",
-    "prompt": "Create a new square 1:1 painterly medieval fantasy collectible-card illustration for Grapeshot Bag. The entire named object is critical: show one complete, fully visible weathered blue-gray leather pouch of spherical iron grapeshot, with its top, bottom, both sides, flap, strap and several distinct iron balls clearly inside the frame. Place this pouch prominently at the center of the horizontal composition, around x150\u2026365 and y170\u2026350 on the 512-square. A gloved hand tosses a few round shot toward a distant target in the snowy background. Do not crop, hide, enlarge past the frame, or place the pouch against an edge. Premium hand-painted oil-brush fantasy art with visible painterly strokes, textured leather and metal, crisp value separation, cold directional light, medieval materials; avoid photographic rendering. Keep every part of the pouch in x24\u2026488,y105\u2026407 for the 206:141 crop. Quiet expendable snow and sky above and below. No text, labels, logo, border, UI, anime, Disney cartoon, photorealism or pixel art.",
+    "prompt": "Create a new square 1:1 painterly medieval fantasy collectible-card illustration for Grapeshot Bag. The entire named object is critical: show one complete, fully visible weathered blue-gray leather pouch of spherical iron grapeshot, with its top, bottom, both sides, flap, strap and several distinct iron balls clearly inside the frame. Place this pouch prominently at the center of the horizontal composition, around x150…365 and y170…350 on the 512-square. A gloved hand tosses a few round shot toward a distant target in the snowy background. Do not crop, hide, enlarge past the frame, or place the pouch against an edge. Premium hand-painted oil-brush fantasy art with visible painterly strokes, textured leather and metal, crisp value separation, cold directional light, medieval materials; avoid photographic rendering. Keep every part of the pouch in x24…488,y105…407 for the 206:141 crop. Quiet expendable snow and sky above and below. No text, labels, logo, border, UI, anime, Disney cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-9fa42c73-7cf8-498b-a191-357842930271.png",
     "editableSourcePath": "game/cards/art/masters/frost_charge_07.png",
     "sourceNative": [
@@ -1776,7 +1776,7 @@
   {
     "cardId": "frost_utility_08",
     "name": "Return to the Sea",
-    "prompt": "Paint an illustration for the fantasy card Return to the Sea. Actual effect cues: recall, a return to safety . A lone seal-skin-cloaked sailor stepping from a snowy black-rock shore into a luminous cold sea as a curling turquoise tide reaches back to embrace and carry them home; calm, restorative mood, clearly show the returning human silhouette and sea, with distant ice cliffs. Avoid a generic glowing spell. Painterly medieval fantasy collectible-card artwork, believable materials, textured brushwork, attractive directional light, dramatic atmospheric depth; premium hand-painted fantasy illustration, grounded proportions, not photorealistic. Compose a single clear named subject horizontally. Square 1:1 canvas for editable 512\u00d7512 master. Keep named object/action and any important face within x24\u2026488,y105\u2026407 for a 206:141 crop, leaving quiet expendable sky and snow above and below. No lettering, border, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for the fantasy card Return to the Sea. Actual effect cues: recall, a return to safety . A lone seal-skin-cloaked sailor stepping from a snowy black-rock shore into a luminous cold sea as a curling turquoise tide reaches back to embrace and carry them home; calm, restorative mood, clearly show the returning human silhouette and sea, with distant ice cliffs. Avoid a generic glowing spell. Painterly medieval fantasy collectible-card artwork, believable materials, textured brushwork, attractive directional light, dramatic atmospheric depth; premium hand-painted fantasy illustration, grounded proportions, not photorealistic. Compose a single clear named subject horizontally. Square 1:1 canvas for editable 512×512 master. Keep named object/action and any important face within x24…488,y105…407 for a 206:141 crop, leaving quiet expendable sky and snow above and below. No lettering, border, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-e4fa6b7f-6e08-41b4-b5a5-fe2db8dbe676.png",
     "editableSourcePath": "game/cards/art/masters/frost_utility_08.png",
     "sourceNative": [
@@ -1794,7 +1794,7 @@
   {
     "cardId": "frost_trap_08",
     "name": "Ice Spike Pit",
-    "prompt": "Paint an illustration for the fantasy card Ice Spike Pit. Actual effect cues: a spike trap that freezes . A concealed medieval snow pit trap sprung beneath a bootless armored raider, three sharply defined blue-white ice spikes thrusting upward from the pit; show the trap opening and three separate spike points in the center foreground, snowy pass behind. No gore. Painterly medieval fantasy collectible-card artwork, believable materials, textured brushwork, attractive directional light, dramatic atmospheric depth; premium hand-painted fantasy illustration, grounded proportions, not photorealistic. Compose a single clear named subject horizontally. Square 1:1 canvas for editable 512\u00d7512 master. Keep named object/action and any important face within x24\u2026488,y105\u2026407 for a 206:141 crop, leaving quiet expendable sky and snow above and below. No lettering, border, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for the fantasy card Ice Spike Pit. Actual effect cues: a spike trap that freezes . A concealed medieval snow pit trap sprung beneath a bootless armored raider, three sharply defined blue-white ice spikes thrusting upward from the pit; show the trap opening and three separate spike points in the center foreground, snowy pass behind. No gore. Painterly medieval fantasy collectible-card artwork, believable materials, textured brushwork, attractive directional light, dramatic atmospheric depth; premium hand-painted fantasy illustration, grounded proportions, not photorealistic. Compose a single clear named subject horizontally. Square 1:1 canvas for editable 512×512 master. Keep named object/action and any important face within x24…488,y105…407 for a 206:141 crop, leaving quiet expendable sky and snow above and below. No lettering, border, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-381bca80-6d84-4624-80f3-4cc6ee38d46b.png",
     "editableSourcePath": "game/cards/art/masters/frost_trap_08.png",
     "sourceNative": [
@@ -1812,7 +1812,7 @@
   {
     "cardId": "frost_environment_08",
     "name": "Iceberg Field",
-    "prompt": "Paint an illustration for the fantasy card Iceberg Field. Actual effect cues: a freezing cross-shaped field with restorative cold . A wide cold polar sea filled with a broad cross-like arrangement of towering blue icebergs and clear navigable channels, a tiny wooden longboat threading between them for scale, soft aurora and freezing mist. Icebergs dominate, not the boat. Painterly medieval fantasy collectible-card artwork, believable materials, textured brushwork, attractive directional light, dramatic atmospheric depth; premium hand-painted fantasy illustration, grounded proportions, not photorealistic. Compose a single clear named subject horizontally. Square 1:1 canvas for editable 512\u00d7512 master. Keep named object/action and any important face within x24\u2026488,y105\u2026407 for a 206:141 crop, leaving quiet expendable sky and snow above and below. No lettering, border, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for the fantasy card Iceberg Field. Actual effect cues: a freezing cross-shaped field with restorative cold . A wide cold polar sea filled with a broad cross-like arrangement of towering blue icebergs and clear navigable channels, a tiny wooden longboat threading between them for scale, soft aurora and freezing mist. Icebergs dominate, not the boat. Painterly medieval fantasy collectible-card artwork, believable materials, textured brushwork, attractive directional light, dramatic atmospheric depth; premium hand-painted fantasy illustration, grounded proportions, not photorealistic. Compose a single clear named subject horizontally. Square 1:1 canvas for editable 512×512 master. Keep named object/action and any important face within x24…488,y105…407 for a 206:141 crop, leaving quiet expendable sky and snow above and below. No lettering, border, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-bd234e02-0844-4689-8a5b-1203ee71ed59.png",
     "editableSourcePath": "game/cards/art/masters/frost_environment_08.png",
     "sourceNative": [
@@ -1830,7 +1830,7 @@
   {
     "cardId": "frost_piece_05",
     "name": "Eye of the Frost Giant",
-    "prompt": "Paint an illustration for the legendary fantasy card Eye of the Frost Giant. Depict the huge crystalline blue eye of an ancient frost giant embedded in a broken frost giant brow and ice-carved helm, its luminous iris precisely tracking a distant foe across a frozen battlefield; a single narrow lance of icy light freezes the target at a distance. Make the eye itself the clear named subject, formidable and beautiful, no disembodied human eye. Painterly medieval fantasy collectible-card art, textured brushwork, dramatic cold light, atmospheric depth, grounded materials, not photorealistic. Square 1:1 canvas for 512\u00d7512 editable master. Keep entire visible eye, lids, and surrounding named relic within x24\u2026488,y105\u2026407 for 206:141 card crop; quiet snowy atmosphere above and below. No lettering, frame, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for the legendary fantasy card Eye of the Frost Giant. Depict the huge crystalline blue eye of an ancient frost giant embedded in a broken frost giant brow and ice-carved helm, its luminous iris precisely tracking a distant foe across a frozen battlefield; a single narrow lance of icy light freezes the target at a distance. Make the eye itself the clear named subject, formidable and beautiful, no disembodied human eye. Painterly medieval fantasy collectible-card art, textured brushwork, dramatic cold light, atmospheric depth, grounded materials, not photorealistic. Square 1:1 canvas for 512×512 editable master. Keep entire visible eye, lids, and surrounding named relic within x24…488,y105…407 for 206:141 card crop; quiet snowy atmosphere above and below. No lettering, frame, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-887fb1c6-703b-4d7c-80dc-242b339839fd.png",
     "editableSourcePath": "game/cards/art/masters/frost_piece_05.png",
     "sourceNative": [
@@ -1857,7 +1857,7 @@
       0.5,
       0.37
     ],
-    "reviewNote": "The upward-shifted card crop keeps the Ningyo\u2019s complete face, blessing hand and distinct scaled upper tail in view beside the ally. Its lower tail tip and forest scenery are expendable; the pale fish spirit reads at thumbnail size.",
+    "reviewNote": "The upward-shifted card crop keeps the Ningyo’s complete face, blessing hand and distinct scaled upper tail in view beside the ally. Its lower tail tip and forest scenery are expendable; the pale fish spirit reads at thumbnail size.",
     "name": "Ningyo",
     "editableSourcePath": "game/cards/art/masters/frost_summon_05.png",
     "status": "generated",
@@ -1875,7 +1875,7 @@
       0.5,
       0.5
     ],
-    "reviewNote": "Recomposed at smaller scale: complete heavy launcher from rear to both harpoon heads and full support base fit in the wide crop with the sailor\u2019s full face and both operating hands. The launcher and twin harpoons remain clear at thumbnail size.",
+    "reviewNote": "Recomposed at smaller scale: complete heavy launcher from rear to both harpoon heads and full support base fit in the wide crop with the sailor’s full face and both operating hands. The launcher and twin harpoons remain clear at thumbnail size.",
     "name": "Harpoon Launcher",
     "editableSourcePath": "game/cards/art/masters/frost_machine_04.png",
     "status": "generated",
@@ -1893,7 +1893,7 @@
       0.5,
       0.4
     ],
-    "reviewNote": "The upward-shifted crop preserves Boreas\u2019s complete face and raised hand with the swirling icy gusts and small slowed foes. Lower battlefield and sky are expendable; the north wind hero reads immediately at thumbnail size.",
+    "reviewNote": "The upward-shifted crop preserves Boreas’s complete face and raised hand with the swirling icy gusts and small slowed foes. Lower battlefield and sky are expendable; the north wind hero reads immediately at thumbnail size.",
     "name": "Boreas, the North Wind",
     "editableSourcePath": "game/cards/art/masters/hero_boreas.png",
     "status": "generated",
@@ -1911,7 +1911,7 @@
       0.5,
       0.5
     ],
-    "reviewNote": "The mage\u2019s full face and casting hand, zigzagging turquoise lash and struck foe remain visible in the card crop. The whole water action reads clearly at thumbnail size.",
+    "reviewNote": "The mage’s full face and casting hand, zigzagging turquoise lash and struck foe remain visible in the card crop. The whole water action reads clearly at thumbnail size.",
     "name": "Typhoon Lash",
     "editableSourcePath": "game/cards/art/masters/frost_strike_09.png",
     "status": "generated",
@@ -2131,7 +2131,7 @@
     ],
     "status": "generated",
     "batch": 11,
-    "reviewNote": "Reviewed the 512-square source, 206:141 crop and 128x88 thumbnail. Both complete tusk blades, the warrior\u2019s face and both hands stay inside the crop; the matched weapons and twin strike remain clear at thumbnail size."
+    "reviewNote": "Reviewed the 512-square source, 206:141 crop and 128x88 thumbnail. Both complete tusk blades, the warrior’s face and both hands stay inside the crop; the matched weapons and twin strike remain clear at thumbnail size."
   },
   {
     "cardId": "frost_lob_11",
@@ -2149,7 +2149,7 @@
     ],
     "status": "generated",
     "batch": 11,
-    "reviewNote": "Reviewed the 512-square source, 206:141 crop and 128x88 thumbnail. The cleric\u2019s face and throwing hand, complete corked flask and icy burst fit the crop; the flask reads clearly at thumbnail size."
+    "reviewNote": "Reviewed the 512-square source, 206:141 crop and 128x88 thumbnail. The cleric’s face and throwing hand, complete corked flask and icy burst fit the crop; the flask reads clearly at thumbnail size."
   },
   {
     "cardId": "frost_ward_10",
@@ -2167,7 +2167,7 @@
     ],
     "status": "generated",
     "batch": 11,
-    "reviewNote": "Reviewed the 512-square source, 206:141 crop and 128x88 thumbnail. The full mirror, frame, reflection, mage\u2019s face and hand fit the crop; its barrier stays readable without obscuring the mirror at thumbnail size."
+    "reviewNote": "Reviewed the 512-square source, 206:141 crop and 128x88 thumbnail. The full mirror, frame, reflection, mage’s face and hand fit the crop; its barrier stays readable without obscuring the mirror at thumbnail size."
   },
   {
     "cardId": "frost_sentry_12",
@@ -2185,7 +2185,7 @@
     ],
     "status": "generated",
     "batch": 11,
-    "reviewNote": "Reviewed the 512-square source, 206:141 crop and 128x88 thumbnail. The Tide Pole\u2019s finial, central mechanism and base fit the crop with its operator\u2019s face and control hand; the bolt and pulling action remain legible at thumbnail size. Parent moved crop upward to y=.43 to retain complete wave crown and base of the pole."
+    "reviewNote": "Reviewed the 512-square source, 206:141 crop and 128x88 thumbnail. The Tide Pole’s finial, central mechanism and base fit the crop with its operator’s face and control hand; the bolt and pulling action remain legible at thumbnail size. Parent moved crop upward to y=.43 to retain complete wave crown and base of the pole."
   },
   {
     "cardId": "frost_boon_11",
@@ -2226,7 +2226,7 @@
   {
     "cardId": "frost_utility_10",
     "name": "Sorcerer's Grimoire",
-    "prompt": "Paint Sorcerer's Grimoire as a large, complete, ancient frost-mage spellbook resting open on a stone lectern: both richly tooled leather covers, full spine, page block and lower edges visible, crisp blue-white frostwork illuminating the pages without legible writing. A robed sorcerer stands beside it at the same height, face and both hands clearly visible as they summon the book; the complete grimoire is the focal named object. Painterly medieval high-fantasy collectible-card art, fine leather and silverwork, cool luminous light, atmospheric library depth. 1:1 SQUARE composition for a 512x512 editable master, horizontal placement; keep the sorcerer\u2019s face and hands and the entire book within x24..488 y105..407, quiet library above and below. No readable text, frame, lettering, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint Sorcerer's Grimoire as a large, complete, ancient frost-mage spellbook resting open on a stone lectern: both richly tooled leather covers, full spine, page block and lower edges visible, crisp blue-white frostwork illuminating the pages without legible writing. A robed sorcerer stands beside it at the same height, face and both hands clearly visible as they summon the book; the complete grimoire is the focal named object. Painterly medieval high-fantasy collectible-card art, fine leather and silverwork, cool luminous light, atmospheric library depth. 1:1 SQUARE composition for a 512x512 editable master, horizontal placement; keep the sorcerer’s face and hands and the entire book within x24..488 y105..407, quiet library above and below. No readable text, frame, lettering, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-488f8d70-9c4d-463d-93b6-eacb9f32065e.png",
     "editableSourcePath": "game/cards/art/masters/frost_utility_10.png",
     "sourceNative": [
@@ -2239,7 +2239,7 @@
     ],
     "status": "generated",
     "batch": 11,
-    "reviewNote": "The open grimoire, both covers, page block and lower edges stay complete in the wide crop; sorcerer\u2019s face and both hands remain visible. The crop trims a little hair above the face. Parent shifted crop upward to y=.43 to retain full face, hands and entire open grimoire; lectern base is incidental."
+    "reviewNote": "The open grimoire, both covers, page block and lower edges stay complete in the wide crop; sorcerer’s face and both hands remain visible. The crop trims a little hair above the face. Parent shifted crop upward to y=.43 to retain full face, hands and entire open grimoire; lectern base is incidental."
   },
   {
     "cardId": "frost_trap_10",
@@ -2257,7 +2257,7 @@
     ],
     "status": "generated",
     "batch": 11,
-    "reviewNote": "The closed chest\u2019s curved lid, central lock, lower body and feet all fit the wide crop; the glowing seam and barnacles remain legible in the thumbnail."
+    "reviewNote": "The closed chest’s curved lid, central lock, lower body and feet all fit the wide crop; the glowing seam and barnacles remain legible in the thumbnail."
   },
   {
     "cardId": "frost_environment_10",
@@ -2280,7 +2280,7 @@
   {
     "cardId": "frost_summon_07",
     "name": "Selkie",
-    "prompt": "Paint Selkie as a compelling young seal-woman emerging from cold northern water, her calm human face and both hands visible as she gathers a pale seal-skin cloak around her shoulders; a sleek seal swims beside her at the same height, clearly linking her to the sea. Keep her face and gesture primary, with the seal close enough to read clearly. Painterly medieval high-fantasy collectible-card illustration, believable anatomy, rich wet fur and wool, moonlit blue water with a warm pearl glow, atmospheric coastal depth. Create a 1:1 SQUARE canvas for a 512x512 editable master; arrange woman and seal horizontally in the middle 60%, keeping face, hands and the seal\u2019s head/body within x24..488 y105..407; quiet sky and water above and below. No frame, text, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint Selkie as a compelling young seal-woman emerging from cold northern water, her calm human face and both hands visible as she gathers a pale seal-skin cloak around her shoulders; a sleek seal swims beside her at the same height, clearly linking her to the sea. Keep her face and gesture primary, with the seal close enough to read clearly. Painterly medieval high-fantasy collectible-card illustration, believable anatomy, rich wet fur and wool, moonlit blue water with a warm pearl glow, atmospheric coastal depth. Create a 1:1 SQUARE canvas for a 512x512 editable master; arrange woman and seal horizontally in the middle 60%, keeping face, hands and the seal’s head/body within x24..488 y105..407; quiet sky and water above and below. No frame, text, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-c40137b2-4703-47e8-9dc9-a3d3fdb418be.png",
     "editableSourcePath": "game/cards/art/masters/frost_summon_07.png",
     "sourceNative": [
@@ -2293,7 +2293,7 @@
     ],
     "status": "generated",
     "batch": 11,
-    "reviewNote": "Selkie\u2019s face and both hands remain clear in the wide crop, with her pale seal-skin cloak and the seal\u2019s head together in frame. A little hair above the face crops at the upper edge."
+    "reviewNote": "Selkie’s face and both hands remain clear in the wide crop, with her pale seal-skin cloak and the seal’s head together in frame. A little hair above the face crops at the upper edge."
   },
   {
     "cardId": "frost_machine_06",
@@ -2329,7 +2329,7 @@
     ],
     "status": "generated",
     "batch": 11,
-    "reviewNote": "Focal y=0.44 keeps Frida\u2019s face, raised hand and ice-spike action fully visible in the wide crop. Parent shifted crop to y=.40 for extra clearance above all raised fingertips; lower clothing and ice trails are incidental."
+    "reviewNote": "Focal y=0.44 keeps Frida’s face, raised hand and ice-spike action fully visible in the wide crop. Parent shifted crop to y=.40 for extra clearance above all raised fingertips; lower clothing and ice trails are incidental."
   },
   {
     "cardId": "frost_strike_11",
@@ -2347,7 +2347,7 @@
     ],
     "status": "generated",
     "batch": 11,
-    "reviewNote": "Focal y=0.53 keeps the shark\u2019s eyes and full biting jaws prominent; surrounding fin and spray are incidental."
+    "reviewNote": "Focal y=0.53 keeps the shark’s eyes and full biting jaws prominent; surrounding fin and spray are incidental."
   },
   {
     "cardId": "frost_lob_12",
@@ -2401,7 +2401,7 @@
     ],
     "status": "generated",
     "batch": 11,
-    "reviewNote": "Focal y=0.39 protects the sea witch\u2019s full face and pearl-offering hand in the wide crop; upper hair is incidental."
+    "reviewNote": "Focal y=0.39 protects the sea witch’s full face and pearl-offering hand in the wide crop; upper hair is incidental."
   },
   {
     "cardId": "frost_charge_10",
@@ -2455,7 +2455,7 @@
     ],
     "status": "generated",
     "batch": 11,
-    "reviewNote": "Nixie\u2019s face and both outstretched hands fit clearly; lower water ribbons are incidental."
+    "reviewNote": "Nixie’s face and both outstretched hands fit clearly; lower water ribbons are incidental."
   },
   {
     "cardId": "frost_machine_07",
@@ -2563,11 +2563,11 @@
     ],
     "status": "generated",
     "batch": 11,
-    "reviewNote": "Focal y=0.34 preserves the pact-holder\u2019s full face, both gesturing hands and offered crimson drop in wide crop and thumbnail; spectral allies remain below the waterline."
+    "reviewNote": "Focal y=0.34 preserves the pact-holder’s full face, both gesturing hands and offered crimson drop in wide crop and thumbnail; spectral allies remain below the waterline."
   },
   {
     "name": "Cutlass Slash",
-    "prompt": "Paint an illustration for the Hexmancers card \u201cCutlass Slash.\u201d A frost-worn sea-raider in layered dark leather and wool drives a curved medieval cutlass through a decisive horizontal slash; the blade and the fighter's visible face and gripping hand form one clear subject. Frost crystals and a brief pale blue wedge of magic trail the blade, with a subtle backward lean showing recoil after the strike. Painterly medieval high-fantasy collectible card art, textured steel, leather and cloth, strong cool directional light with a little warm skin and reflected steel, atmospheric snowy seacoast behind. Grounded anatomy, elegant dramatic brushwork, attractive light, strong readable silhouette at card-thumbnail scale. Square 1:1 composition for an editable 512x512 master; keep the full face, gripping hand and readable curved blade inside x24..488,y105..407, center the action in the middle 60%, quiet expendable scenery at top and bottom, horizontal action for a 206:141 crop. No frame, text, runes, numbers or UI; no anime, Disney-like proportions, toy cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for the Hexmancers card “Cutlass Slash.” A frost-worn sea-raider in layered dark leather and wool drives a curved medieval cutlass through a decisive horizontal slash; the blade and the fighter's visible face and gripping hand form one clear subject. Frost crystals and a brief pale blue wedge of magic trail the blade, with a subtle backward lean showing recoil after the strike. Painterly medieval high-fantasy collectible card art, textured steel, leather and cloth, strong cool directional light with a little warm skin and reflected steel, atmospheric snowy seacoast behind. Grounded anatomy, elegant dramatic brushwork, attractive light, strong readable silhouette at card-thumbnail scale. Square 1:1 composition for an editable 512x512 master; keep the full face, gripping hand and readable curved blade inside x24..488,y105..407, center the action in the middle 60%, quiet expendable scenery at top and bottom, horizontal action for a 206:141 crop. No frame, text, runes, numbers or UI; no anime, Disney-like proportions, toy cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-0b45518b-3627-4ca6-a991-4ec1cff203cb.png",
     "editableSourcePath": "game/cards/art/masters/frost_strike_13.png",
     "sourceNative": [
@@ -2585,7 +2585,7 @@
   },
   {
     "name": "Whirlpool Ring",
-    "prompt": "Paint an illustration for the Hexmancers card \u201cWhirlpool Ring.\u201d A compact circular whirlpool of icy seawater, seen clearly as a ring with an open center, surges horizontally across a frozen harbor and sweeps a small armored raider off balance toward its opening. The ring itself is the dominant named subject, broad, complete and unmistakable, with curling water, foam and ice shards; a tiny toppled figure only explains its heavy knockback and pulling force. Painterly medieval high-fantasy collectible-card art, rich believable water and ice, cool blue directional light with luminous highlights, atmospheric depth, dramatic but readable restrained magic. Square 1:1 composition for a 512x512 master; keep the entire water ring and enough of the toppled figure within x24..488,y105..407; middle 60% holds the subject, quiet sky and water margins top/bottom for a 206:141 crop. No card border, lettering, rune, number or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for the Hexmancers card “Whirlpool Ring.” A compact circular whirlpool of icy seawater, seen clearly as a ring with an open center, surges horizontally across a frozen harbor and sweeps a small armored raider off balance toward its opening. The ring itself is the dominant named subject, broad, complete and unmistakable, with curling water, foam and ice shards; a tiny toppled figure only explains its heavy knockback and pulling force. Painterly medieval high-fantasy collectible-card art, rich believable water and ice, cool blue directional light with luminous highlights, atmospheric depth, dramatic but readable restrained magic. Square 1:1 composition for a 512x512 master; keep the entire water ring and enough of the toppled figure within x24..488,y105..407; middle 60% holds the subject, quiet sky and water margins top/bottom for a 206:141 crop. No card border, lettering, rune, number or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-fe9ed1e0-529d-4582-bf42-d9c4da14d797.png",
     "editableSourcePath": "game/cards/art/masters/frost_lob_14.png",
     "sourceNative": [
@@ -2603,7 +2603,7 @@
   },
   {
     "name": "Walls of Ys",
-    "prompt": "Paint an illustration for the Hexmancers card \u201cWalls of Ys.\u201d The main subject is the legendary defensive wall of the lost northern city Ys: a massive horizontal rampart of pale blue ice, faced with ancient weathered stone and carved sea-worn reliefs, rising as a complete protective barrier across a snowy coast. A small shield-bearer beside it touches the wall; a soft healing glow and fresh green shoots appear where the hand meets the ice, while the architecture remains the focal subject. Painterly medieval high-fantasy collectible-card art, believable stone and crystalline ice, beautiful cold directional light, luminous depth, clear strong wall silhouette and restrained healing magic. Square 1:1 composition for a 512x512 master; keep the complete readable span of wall and the small figure's face and hand in x24..488,y105..407; middle 60% subject, quiet pale sky and snow top/bottom for the 206:141 crop. No frame, text, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for the Hexmancers card “Walls of Ys.” The main subject is the legendary defensive wall of the lost northern city Ys: a massive horizontal rampart of pale blue ice, faced with ancient weathered stone and carved sea-worn reliefs, rising as a complete protective barrier across a snowy coast. A small shield-bearer beside it touches the wall; a soft healing glow and fresh green shoots appear where the hand meets the ice, while the architecture remains the focal subject. Painterly medieval high-fantasy collectible-card art, believable stone and crystalline ice, beautiful cold directional light, luminous depth, clear strong wall silhouette and restrained healing magic. Square 1:1 composition for a 512x512 master; keep the complete readable span of wall and the small figure's face and hand in x24..488,y105..407; middle 60% subject, quiet pale sky and snow top/bottom for the 206:141 crop. No frame, text, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-f15b68da-0eb5-4e23-9e2e-90e9e04b345c.png",
     "editableSourcePath": "game/cards/art/masters/frost_ward_13.png",
     "sourceNative": [
@@ -2621,7 +2621,7 @@
   },
   {
     "name": "Northern Lights",
-    "prompt": "Paint an illustration for the Hexmancers card \u201cNorthern Lights.\u201d A solitary northern ranger stands in a snowy clearing beneath sweeping aurora borealis, face and uplifted hand warmly lit by vivid green, violet and turquoise curtains of light. Near the ranger, tiny hardy alpine shoots push through the snow, echoing the blessing's renewal; the aurora is the broad, graceful dominant motif, the person a clear human anchor. Painterly medieval high-fantasy collectible-card art, rich winter cloak and natural skin, luminous atmospheric depth, exquisite directional sky light, nuanced but bold color and a peaceful sacred mood. Square 1:1 composition for a 512x512 master; keep face and uplifted hand clearly inside x24..488,y105..407, compose ranger and broad aurora in the middle 60%, quiet snowy margins at top/bottom; wide 206:141 card crop. No frame, text, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for the Hexmancers card “Northern Lights.” A solitary northern ranger stands in a snowy clearing beneath sweeping aurora borealis, face and uplifted hand warmly lit by vivid green, violet and turquoise curtains of light. Near the ranger, tiny hardy alpine shoots push through the snow, echoing the blessing's renewal; the aurora is the broad, graceful dominant motif, the person a clear human anchor. Painterly medieval high-fantasy collectible-card art, rich winter cloak and natural skin, luminous atmospheric depth, exquisite directional sky light, nuanced but bold color and a peaceful sacred mood. Square 1:1 composition for a 512x512 master; keep face and uplifted hand clearly inside x24..488,y105..407, compose ranger and broad aurora in the middle 60%, quiet snowy margins at top/bottom; wide 206:141 card crop. No frame, text, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-2432c5ef-31c6-48a0-a48c-cf58a979f9b5.png",
     "editableSourcePath": "game/cards/art/masters/frost_boon_14.png",
     "sourceNative": [
@@ -2639,7 +2639,7 @@
   },
   {
     "name": "Frozen Arrows",
-    "prompt": "Paint an illustration for the Hexmancers card \u201cFrozen Arrows.\u201d A frostland huntress in practical medieval wool and leather draws one pale blue ice-headed arrow on a strong wooden bow, her focused face and drawing hand beside the horizontal arrow. Two or three matching spare arrows with bright winter fletching are visible in a compact quiver. The named arrows are unmistakable; a crisp glint at the arrowhead suggests a critical shot and a thin drifting frost trail hints at the slowing chill. Painterly medieval high-fantasy collectible-card art, believable wood, feathers, steel and cloth, beautiful directional cold light with a warm skin highlight, atmospheric snowy pine forest behind, grounded anatomy and elegant brushwork. Bold readable silhouette at small card size. Square 1:1 composition for a 512x512 master; keep the archer's whole face, drawing fingers, bow grip, full nocked arrow including point and fletching inside x24..488,y105..407, concentrate action in the middle 60% and quiet the top and bottom for a 206:141 crop. No frame, lettering, numbers, runes or UI; no anime, Disney-like cartoon, photorealism or pixel art.\n\nRepaint instruction: Revise this image for the Hexmancers card \u201cFrozen Arrows\u201d while preserving its painterly medieval winter fantasy art, attractive cold light, archer, and clear icy-arrow action. Recompose the huntress and bow in a narrower centered group with generous empty side margins. Shorten/reposition the single nocked arrow so its entire feather fletching, shaft and crystal point are fully visible with clear space from BOTH left and right canvas edges; keep the face and the drawing and bow-gripping hands clear. The arrow and face are the focal information; quiver arrows are secondary. Keep all important subject details within the central 80% of a square 1:1 canvas, centered vertically for a wide horizontal card crop. Square artwork, no frame or text.",
+    "prompt": "Paint an illustration for the Hexmancers card “Frozen Arrows.” A frostland huntress in practical medieval wool and leather draws one pale blue ice-headed arrow on a strong wooden bow, her focused face and drawing hand beside the horizontal arrow. Two or three matching spare arrows with bright winter fletching are visible in a compact quiver. The named arrows are unmistakable; a crisp glint at the arrowhead suggests a critical shot and a thin drifting frost trail hints at the slowing chill. Painterly medieval high-fantasy collectible-card art, believable wood, feathers, steel and cloth, beautiful directional cold light with a warm skin highlight, atmospheric snowy pine forest behind, grounded anatomy and elegant brushwork. Bold readable silhouette at small card size. Square 1:1 composition for a 512x512 master; keep the archer's whole face, drawing fingers, bow grip, full nocked arrow including point and fletching inside x24..488,y105..407, concentrate action in the middle 60% and quiet the top and bottom for a 206:141 crop. No frame, lettering, numbers, runes or UI; no anime, Disney-like cartoon, photorealism or pixel art.\n\nRepaint instruction: Revise this image for the Hexmancers card “Frozen Arrows” while preserving its painterly medieval winter fantasy art, attractive cold light, archer, and clear icy-arrow action. Recompose the huntress and bow in a narrower centered group with generous empty side margins. Shorten/reposition the single nocked arrow so its entire feather fletching, shaft and crystal point are fully visible with clear space from BOTH left and right canvas edges; keep the face and the drawing and bow-gripping hands clear. The arrow and face are the focal information; quiver arrows are secondary. Keep all important subject details within the central 80% of a square 1:1 canvas, centered vertically for a wide horizontal card crop. Square artwork, no frame or text.",
     "generatedPath": "/workspace/generated_images/exec-2d2e862d-2381-418b-b21f-f046bdb89127.png",
     "editableSourcePath": "game/cards/art/masters/frost_charge_11.png",
     "sourceNative": [
@@ -2657,7 +2657,7 @@
   },
   {
     "name": "Sargasso Sea",
-    "prompt": "Paint an illustration for the Hexmancers card \u201cSargasso Sea.\u201d A vast frozen northern ocean is clogged with crossing mats of dark kelp, tangled roots, seaweed brambles and broken ship spars beneath translucent turquoise ice. Let two long crosswise bands of submerged kelp and floating wreckage dominate the water, suggesting a dangerous sea that snags ships for a long season. No foreground operator is needed. Painterly medieval high-fantasy collectible-card art, believable cold water, kelp, timber and ice, luminous directional winter light, atmospheric depth and a clear wide composition readable at thumbnail size. Square 1:1 composition for a 512x512 master; keep the crossing bramble pattern legible through x24..488,y105..407, center its strongest forms in the middle 60%, with quiet pale sky and open water above and below for a 206:141 card crop. No frame, text, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for the Hexmancers card “Sargasso Sea.” A vast frozen northern ocean is clogged with crossing mats of dark kelp, tangled roots, seaweed brambles and broken ship spars beneath translucent turquoise ice. Let two long crosswise bands of submerged kelp and floating wreckage dominate the water, suggesting a dangerous sea that snags ships for a long season. No foreground operator is needed. Painterly medieval high-fantasy collectible-card art, believable cold water, kelp, timber and ice, luminous directional winter light, atmospheric depth and a clear wide composition readable at thumbnail size. Square 1:1 composition for a 512x512 master; keep the crossing bramble pattern legible through x24..488,y105..407, center its strongest forms in the middle 60%, with quiet pale sky and open water above and below for a 206:141 card crop. No frame, text, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-e0f26169-e990-44ce-bd0e-5013e1bebc7b.png",
     "editableSourcePath": "game/cards/art/masters/frost_environment_12.png",
     "sourceNative": [
@@ -2675,7 +2675,7 @@
   },
   {
     "name": "Rusalka",
-    "prompt": "Paint an illustration for the Hexmancers card \u201cRusalka,\u201d a sturdy pale tidal spirit who mends. Show a haunting yet gentle water spirit emerging beside an icy riverbank: a clear human face, pale hair and flowing waterwoven cloak, one hand lifting a broken reed or wounded shorebird as cool blue waterlight mends it. Calm, powerful presence; folkloric medieval fantasy rather than horror or modern fashion. Painterly collectible-card art with expressive grounded face and hands, believable ice, translucent water and cloth, luminous directional moonlight, atmospheric depth, strong silhouette at thumbnail size. Square 1:1 composition for a 512x512 master; keep full face and healing hand within x24..488,y105..407, central subject in middle 60%, quiet snow and mist top/bottom for a 206:141 crop. No frame, lettering, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for the Hexmancers card “Rusalka,” a sturdy pale tidal spirit who mends. Show a haunting yet gentle water spirit emerging beside an icy riverbank: a clear human face, pale hair and flowing waterwoven cloak, one hand lifting a broken reed or wounded shorebird as cool blue waterlight mends it. Calm, powerful presence; folkloric medieval fantasy rather than horror or modern fashion. Painterly collectible-card art with expressive grounded face and hands, believable ice, translucent water and cloth, luminous directional moonlight, atmospheric depth, strong silhouette at thumbnail size. Square 1:1 composition for a 512x512 master; keep full face and healing hand within x24..488,y105..407, central subject in middle 60%, quiet snow and mist top/bottom for a 206:141 crop. No frame, lettering, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-eb1b8466-33ac-43f5-9312-b0b0ba069531.png",
     "editableSourcePath": "game/cards/art/masters/frost_summon_09.png",
     "sourceNative": [
@@ -2693,7 +2693,7 @@
   },
   {
     "name": "Icebreaker Engine",
-    "prompt": "Paint an illustration for the Hexmancers card \u201cIcebreaker Engine.\u201d A massive medieval-fantasy icebreaker machine creeps through frozen harbor floes: a broad iron-and-oak vessel with a heavy wedge-shaped ram at the bow, riveted paddle wheels and visible gearwork turning slowly as it cracks blue ice. Show frost runes as small restrained accents; a warm maintenance glow beneath the engine hints that it mends itself. The machine is the single dominant subject, imposing and legible. Painterly high-fantasy collectible-card art, rich wood, iron, gears and crystalline ice, dramatic cold directional light with warm internal highlights, atmospheric depth. Square 1:1 composition for a 512x512 master; keep the complete prow, recognizable engine body and waterline within x24..488,y105..407; horizontally compose in the middle 60%, quiet icy sky and water above/below for a 206:141 crop. No frame, lettering, numbers or UI; no modern industrial or military hardware, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for the Hexmancers card “Icebreaker Engine.” A massive medieval-fantasy icebreaker machine creeps through frozen harbor floes: a broad iron-and-oak vessel with a heavy wedge-shaped ram at the bow, riveted paddle wheels and visible gearwork turning slowly as it cracks blue ice. Show frost runes as small restrained accents; a warm maintenance glow beneath the engine hints that it mends itself. The machine is the single dominant subject, imposing and legible. Painterly high-fantasy collectible-card art, rich wood, iron, gears and crystalline ice, dramatic cold directional light with warm internal highlights, atmospheric depth. Square 1:1 composition for a 512x512 master; keep the complete prow, recognizable engine body and waterline within x24..488,y105..407; horizontally compose in the middle 60%, quiet icy sky and water above/below for a 206:141 crop. No frame, lettering, numbers or UI; no modern industrial or military hardware, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-26461a71-8f87-4f65-8942-6b504db4f87a.png",
     "editableSourcePath": "game/cards/art/masters/frost_machine_08.png",
     "sourceNative": [
@@ -2711,7 +2711,7 @@
   },
   {
     "name": "Rimeblade Sora",
-    "prompt": "Paint an illustration for the Hexmancers hero \u201cRimeblade Sora.\u201d Portray an original adult northern swordmaster named Sora, distinct from any existing media character: a composed, battle-worn woman in layered indigo wool and etched mail, turning into a controlled arcing cut with a single elegant frost blade. The blade traces a clear crescent of rime; her focused face, sword hand and full arc of the blade lead the eye. Grounded medieval fantasy anatomy and clothing, not anime styling. Painterly high-fantasy collectible-card art, nuanced steel, cloth and skin, luminous cold directional light, deep snowy atmosphere, dynamic but readable silhouette. Square 1:1 composition for a 512x512 master; keep the entire face, gripping hand and named frozen blade within x24..488,y105..407, middle 60% action, quiet snow mist top and bottom for a 206:141 crop. No frame, text, numbers, runes or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for the Hexmancers hero “Rimeblade Sora.” Portray an original adult northern swordmaster named Sora, distinct from any existing media character: a composed, battle-worn woman in layered indigo wool and etched mail, turning into a controlled arcing cut with a single elegant frost blade. The blade traces a clear crescent of rime; her focused face, sword hand and full arc of the blade lead the eye. Grounded medieval fantasy anatomy and clothing, not anime styling. Painterly high-fantasy collectible-card art, nuanced steel, cloth and skin, luminous cold directional light, deep snowy atmosphere, dynamic but readable silhouette. Square 1:1 composition for a 512x512 master; keep the entire face, gripping hand and named frozen blade within x24..488,y105..407, middle 60% action, quiet snow mist top and bottom for a 206:141 crop. No frame, text, numbers, runes or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-d9066147-40f2-40d3-86f2-7c4e074626ce.png",
     "editableSourcePath": "game/cards/art/masters/hero_sora.png",
     "sourceNative": [
@@ -2729,7 +2729,7 @@
   },
   {
     "name": "Boarding Axe",
-    "prompt": "Paint an illustration for the Hexmancers card \u201cBoarding Axe.\u201d A hardened northern raider boards a frozen longship, swinging a compact broad-bladed hand axe across the frame in a decisive horizontal cut. Keep the complete axe head, short haft, gripping hand and raider's focused face clearly visible together; a fan of sharp icy spray marks the critical strike and a cold mist clings to the target ship's rail. The weapon and act of boarding are the primary readable subject. Painterly medieval high-fantasy collectible-card art, believable steel, leather, wool, frost and weathered wood, dramatic directional winter light, atmospheric depth and grounded anatomy. Square 1:1 composition for a 512x512 master; keep face, hand and entire axe within x24..488,y105..407, compact subject in middle 60%, quiet snowfall and distant sea above/below for a 206:141 crop. No frame, text, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for the Hexmancers card “Boarding Axe.” A hardened northern raider boards a frozen longship, swinging a compact broad-bladed hand axe across the frame in a decisive horizontal cut. Keep the complete axe head, short haft, gripping hand and raider's focused face clearly visible together; a fan of sharp icy spray marks the critical strike and a cold mist clings to the target ship's rail. The weapon and act of boarding are the primary readable subject. Painterly medieval high-fantasy collectible-card art, believable steel, leather, wool, frost and weathered wood, dramatic directional winter light, atmospheric depth and grounded anatomy. Square 1:1 composition for a 512x512 master; keep face, hand and entire axe within x24..488,y105..407, compact subject in middle 60%, quiet snowfall and distant sea above/below for a 206:141 crop. No frame, text, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-7f3b7cc4-83ff-4a3b-b4d2-c5f442076bd1.png",
     "editableSourcePath": "game/cards/art/masters/frost_strike_14.png",
     "sourceNative": [
@@ -2748,7 +2748,7 @@
   {
     "cardId": "frost_lob_15",
     "name": "Falling Iceberg",
-    "prompt": "Paint an illustration for the exact card name \u201cFalling Iceberg.\u201d Show one enormous but fully readable blue-white iceberg section breaking loose and plunging vertically into a frozen northern sea in a heavy column-like impact. Its sharply faceted top, thick floating body and grounded lower point remain fully visible; the collision raises a massive wall of ice shards and snow in one clear vertical strike. A thin ribbon of clear water and gentle frost suggests a small healing aftermath. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: nuanced translucent ice and deep blue shadow, layered brushwork, dramatic arctic dawn light, atmospheric depth, grounded scale, not photorealistic. Square 1:1 canvas for a 512x512 master. Keep the entire identity-defining iceberg and impact column inside x24\u2013488,y105\u2013407, arranged in a compact central composition that survives a 206:141 horizontal crop; quiet polar sky above and quiet frozen water below. Do not clip the iceberg tip or base. No large figures needed. No text, labels, runes, card frame, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for the exact card name “Falling Iceberg.” Show one enormous but fully readable blue-white iceberg section breaking loose and plunging vertically into a frozen northern sea in a heavy column-like impact. Its sharply faceted top, thick floating body and grounded lower point remain fully visible; the collision raises a massive wall of ice shards and snow in one clear vertical strike. A thin ribbon of clear water and gentle frost suggests a small healing aftermath. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: nuanced translucent ice and deep blue shadow, layered brushwork, dramatic arctic dawn light, atmospheric depth, grounded scale, not photorealistic. Square 1:1 canvas for a 512x512 master. Keep the entire identity-defining iceberg and impact column inside x24–488,y105–407, arranged in a compact central composition that survives a 206:141 horizontal crop; quiet polar sky above and quiet frozen water below. Do not clip the iceberg tip or base. No large figures needed. No text, labels, runes, card frame, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-94513dea-f309-4c34-9624-032d98dd7ca1.png",
     "editableSourcePath": "game/cards/art/masters/frost_lob_15.png",
     "sourceNative": [
@@ -2766,7 +2766,7 @@
   {
     "cardId": "frost_ward_14",
     "name": "Dome of Atlantis",
-    "prompt": "Paint an illustration for the exact card name \u201cDome of Atlantis.\u201d Depict an elegant complete pale turquoise protective dome shield over an ancient Atlantean undersea sanctuary. Its curved translucent barrier must be clearly dome-shaped and fully visible, with luminous blue water pressing outside and a warm restorative golden current flowing through it; the ancient submerged columns and carved sea-stone architecture are secondary, softened behind the shield. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: believable water, ice-blue glasslike ward light, carved stone and coral, nuanced brushwork, dramatic shafts of light through the sea, atmospheric depth. Square 1:1 composition for a 512x512 master. Keep the complete dome arch and its footings inside x24\u2013488,y105\u2013407, centered in the middle 60 percent; quiet blue water fills above and low seabed below for a 206:141 wide crop. No foreground people. No text, inscriptions, letters, runes, card frame, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for the exact card name “Dome of Atlantis.” Depict an elegant complete pale turquoise protective dome shield over an ancient Atlantean undersea sanctuary. Its curved translucent barrier must be clearly dome-shaped and fully visible, with luminous blue water pressing outside and a warm restorative golden current flowing through it; the ancient submerged columns and carved sea-stone architecture are secondary, softened behind the shield. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: believable water, ice-blue glasslike ward light, carved stone and coral, nuanced brushwork, dramatic shafts of light through the sea, atmospheric depth. Square 1:1 composition for a 512x512 master. Keep the complete dome arch and its footings inside x24–488,y105–407, centered in the middle 60 percent; quiet blue water fills above and low seabed below for a 206:141 wide crop. No foreground people. No text, inscriptions, letters, runes, card frame, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-853d1741-fa1a-4ca7-9139-1da62fa0495b.png",
     "editableSourcePath": "game/cards/art/masters/frost_ward_14.png",
     "sourceNative": [
@@ -2784,7 +2784,7 @@
   {
     "cardId": "frost_boon_15",
     "name": "Lucky Doubloon",
-    "prompt": "Paint an illustration for the exact card name \u201cLucky Doubloon.\u201d Make a single ancient golden doubloon the clear central subject, caught mid-spin above a weathered gloved palm or floating just over a small block of carved ice. Show both the recognizable round coin face and its thick milled edge, with a simple raised four-point lucky star surrounded by a subtle ring of frost-blue light; no words, no letters and no tiny illegible details. The glinting coin conveys a sudden lucky rally and nimble dodge. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: tactile hammered gold and worn metal, crisp frost crystals, layered brushwork, attractive cold directional light, atmospheric depth, grounded not photorealistic. Square 1:1 composition for a 512x512 master. Keep the entire coin, its edge and any supporting hand clearly within x24\u2013488,y130\u2013385, centered in the middle 60 percent for a 206:141 crop; quiet snowy background. Standalone coin is welcome; no person required. No text, letters, symbols beyond the simple star, card frame, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for the exact card name “Lucky Doubloon.” Make a single ancient golden doubloon the clear central subject, caught mid-spin above a weathered gloved palm or floating just over a small block of carved ice. Show both the recognizable round coin face and its thick milled edge, with a simple raised four-point lucky star surrounded by a subtle ring of frost-blue light; no words, no letters and no tiny illegible details. The glinting coin conveys a sudden lucky rally and nimble dodge. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: tactile hammered gold and worn metal, crisp frost crystals, layered brushwork, attractive cold directional light, atmospheric depth, grounded not photorealistic. Square 1:1 composition for a 512x512 master. Keep the entire coin, its edge and any supporting hand clearly within x24–488,y130–385, centered in the middle 60 percent for a 206:141 crop; quiet snowy background. Standalone coin is welcome; no person required. No text, letters, symbols beyond the simple star, card frame, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-d198d792-f70c-4d7d-a704-f90bbe25c2bb.png",
     "editableSourcePath": "game/cards/art/masters/frost_boon_15.png",
     "sourceNative": [
@@ -2802,7 +2802,7 @@
   {
     "cardId": "frost_charge_12",
     "name": "Hail Pouch",
-    "prompt": "Paint an illustration for the exact card name \u201cHail Pouch.\u201d Make the named object unmistakable: a compact medieval leather sling pouch, open at the gathered mouth, with two large jagged hailstones nestled inside and another cold stone just leaving the opening as if lobbed. The heavy blue ice stones carry sharp glittering facets and one restrained dark curse glimmer; keep the pouch, drawcord, mouth and full hailstones together so all critical features fit. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: tactile aged leather, frozen water, snow crust and cord, layered brushwork, attractive directional arctic light, atmospheric depth, grounded materials and shape. Square 1:1 canvas for a 512x512 master. Keep complete pouch and every identifying hailstone inside x40\u2013472,y135\u2013380, horizontally centered in the middle 60 percent for a 206:141 wide crop; quiet snow and stone background above/below. Standalone artifact, no hand or operator needed. No text, readable runes, card frame, lettering, numbers or UI. No anime, Disney-like cartoon, toy cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for the exact card name “Hail Pouch.” Make the named object unmistakable: a compact medieval leather sling pouch, open at the gathered mouth, with two large jagged hailstones nestled inside and another cold stone just leaving the opening as if lobbed. The heavy blue ice stones carry sharp glittering facets and one restrained dark curse glimmer; keep the pouch, drawcord, mouth and full hailstones together so all critical features fit. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: tactile aged leather, frozen water, snow crust and cord, layered brushwork, attractive directional arctic light, atmospheric depth, grounded materials and shape. Square 1:1 canvas for a 512x512 master. Keep complete pouch and every identifying hailstone inside x40–472,y135–380, horizontally centered in the middle 60 percent for a 206:141 wide crop; quiet snow and stone background above/below. Standalone artifact, no hand or operator needed. No text, readable runes, card frame, lettering, numbers or UI. No anime, Disney-like cartoon, toy cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-2ae58845-f598-420c-8507-37b7f5bb4beb.png",
     "editableSourcePath": "game/cards/art/masters/frost_charge_12.png",
     "sourceNative": [
@@ -2820,7 +2820,7 @@
   {
     "cardId": "frost_environment_13",
     "name": "Fimbulwinter",
-    "prompt": "Paint an illustration for the exact card name \u201cFimbulwinter.\u201d Show a legendary Norse great winter sweeping across a medieval northern landscape in one clear horizontal freeze front: a line of dark pine forest and timber halls is divided by a shining blue-white frost wall, with the near side suddenly glazed in ice and rime while the far side remains autumn-brown. A row of frost racing across ground and tree trunks clearly conveys a short, powerful field-wide freeze. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: believable pine, timber, ice and snow, layered brushwork, atmospheric depth, dramatic cold dawn light with readable warm/cold contrast, grounded not photorealistic. Square 1:1 composition for a 512x512 master. Keep the main horizontal frost front and frozen row of landscape within x24\u2013488,y150\u2013360, centered in the middle 60 percent; quiet cold sky above and simple snow foreground below for a 206:141 crop. No giant or close character needed, no unrelated spell burst. No text, runes, letters, card frame, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for the exact card name “Fimbulwinter.” Show a legendary Norse great winter sweeping across a medieval northern landscape in one clear horizontal freeze front: a line of dark pine forest and timber halls is divided by a shining blue-white frost wall, with the near side suddenly glazed in ice and rime while the far side remains autumn-brown. A row of frost racing across ground and tree trunks clearly conveys a short, powerful field-wide freeze. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: believable pine, timber, ice and snow, layered brushwork, atmospheric depth, dramatic cold dawn light with readable warm/cold contrast, grounded not photorealistic. Square 1:1 composition for a 512x512 master. Keep the main horizontal frost front and frozen row of landscape within x24–488,y150–360, centered in the middle 60 percent; quiet cold sky above and simple snow foreground below for a 206:141 crop. No giant or close character needed, no unrelated spell burst. No text, runes, letters, card frame, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-c6d0cd6d-aba6-4fe1-90b0-a43ddba68aab.png",
     "editableSourcePath": "game/cards/art/masters/frost_environment_13.png",
     "sourceNative": [
@@ -2838,7 +2838,7 @@
   {
     "cardId": "frost_summon_10",
     "name": "Kappa",
-    "prompt": "Create a standalone illustration for the Hexmancers card \u201cKappa\u201d. Paint a sturdy Japanese kappa river spirit crouched at the edge of a cold mountain stream: mottled green scales, a rounded turtle shell, webbed hands, and the distinctive shallow water dish on its head. It thrusts both hands forward, drawing a cone of icy river water toward an unseen foe. Keep its expressive face, eyes, hands, shell and water dish clear; serious folklore creature, not a cute cartoon. Painterly medieval/high-fantasy collectible-card art, richly painted believable fur, hide, wood, old iron, ice and stone, strong readable values, attractive directional light and atmospheric depth. Match the supplied frost references' blue-white winter light and detailed grounded fantasy materials. Explicitly create a 1:1 SQUARE canvas for a 512\u00d7512 editable master. Keep identity-critical face/eyes/hands and the entire named subject within x24\u2013488,y105\u2013407 on the square; compose horizontally for a 206:141 card crop with quiet expendable scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Kappa”. Paint a sturdy Japanese kappa river spirit crouched at the edge of a cold mountain stream: mottled green scales, a rounded turtle shell, webbed hands, and the distinctive shallow water dish on its head. It thrusts both hands forward, drawing a cone of icy river water toward an unseen foe. Keep its expressive face, eyes, hands, shell and water dish clear; serious folklore creature, not a cute cartoon. Painterly medieval/high-fantasy collectible-card art, richly painted believable fur, hide, wood, old iron, ice and stone, strong readable values, attractive directional light and atmospheric depth. Match the supplied frost references' blue-white winter light and detailed grounded fantasy materials. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep identity-critical face/eyes/hands and the entire named subject within x24–488,y105–407 on the square; compose horizontally for a 206:141 card crop with quiet expendable scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
     "generatedPath": "/workspace/generated_images/exec-718ccf74-313e-4de4-a508-1b25767d2838.png",
     "editableSourcePath": "game/cards/art/masters/frost_summon_10.png",
     "sourceNative": [
@@ -2851,12 +2851,12 @@
     ],
     "status": "generated",
     "batch": 12,
-    "reviewNote": "Square source and centered 206:141 crop inspected: the Kappa\u2019s face, water dish, shell, and both webbed hands remain clear; its stream-pulling water cone reads at thumbnail size."
+    "reviewNote": "Square source and centered 206:141 crop inspected: the Kappa’s face, water dish, shell, and both webbed hands remain clear; its stream-pulling water cone reads at thumbnail size."
   },
   {
     "cardId": "frost_machine_09",
     "name": "Waterwheel Repeater",
-    "prompt": "Create a standalone illustration for the Hexmancers card \u201cWaterwheel Repeater\u201d. Paint a compact medieval repeater crossbow machine mounted beside a frozen stream, its small oak waterwheel visibly turning from a rushing channel and driving a row of steel bolt-feeders. Several bolts launch in a controlled horizontal barrage; show heavy frost on the mechanism and a clear, complete silhouette of the machine. No person required. Painterly medieval/high-fantasy collectible-card art, richly painted believable fur, hide, wood, old iron, ice and stone, strong readable values, attractive directional light and atmospheric depth. Match the supplied frost references' blue-white winter light and detailed grounded fantasy materials. Explicitly create a 1:1 SQUARE canvas for a 512\u00d7512 editable master. Keep identity-critical face/eyes/hands and the entire named subject within x24\u2013488,y105\u2013407 on the square; compose horizontally for a 206:141 card crop with quiet expendable scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Waterwheel Repeater”. Paint a compact medieval repeater crossbow machine mounted beside a frozen stream, its small oak waterwheel visibly turning from a rushing channel and driving a row of steel bolt-feeders. Several bolts launch in a controlled horizontal barrage; show heavy frost on the mechanism and a clear, complete silhouette of the machine. No person required. Painterly medieval/high-fantasy collectible-card art, richly painted believable fur, hide, wood, old iron, ice and stone, strong readable values, attractive directional light and atmospheric depth. Match the supplied frost references' blue-white winter light and detailed grounded fantasy materials. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep identity-critical face/eyes/hands and the entire named subject within x24–488,y105–407 on the square; compose horizontally for a 206:141 card crop with quiet expendable scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
     "generatedPath": "/workspace/generated_images/exec-3f8fb4c2-f46b-4ab4-8e2e-ced40707c70f.png",
     "editableSourcePath": "game/cards/art/masters/frost_machine_09.png",
     "sourceNative": [
@@ -2874,7 +2874,7 @@
   {
     "cardId": "hero_aurora",
     "name": "Aurora of the Pole",
-    "prompt": "Create a standalone illustration for the Hexmancers card \u201cAurora of the Pole\u201d. Paint Aurora, a resolute polar sorceress with a clear expressive face and pale fur-lined cloak, standing on an arctic ridge under brilliant green, violet and blue aurora bands. She raises one gloved hand and sends a sharp ribbon of aurora light horizontally across the frozen valley, slowing distant figures. Her face and casting hand remain visible; light fills the sky without obscuring the hero. Painterly medieval/high-fantasy collectible-card art, richly painted believable fur, hide, wood, old iron, ice and stone, strong readable values, attractive directional light and atmospheric depth. Match the supplied frost references' blue-white winter light and detailed grounded fantasy materials. Explicitly create a 1:1 SQUARE canvas for a 512\u00d7512 editable master. Keep identity-critical face/eyes/hands and the entire named subject within x24\u2013488,y105\u2013407 on the square; compose horizontally for a 206:141 card crop with quiet expendable scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Aurora of the Pole”. Paint Aurora, a resolute polar sorceress with a clear expressive face and pale fur-lined cloak, standing on an arctic ridge under brilliant green, violet and blue aurora bands. She raises one gloved hand and sends a sharp ribbon of aurora light horizontally across the frozen valley, slowing distant figures. Her face and casting hand remain visible; light fills the sky without obscuring the hero. Painterly medieval/high-fantasy collectible-card art, richly painted believable fur, hide, wood, old iron, ice and stone, strong readable values, attractive directional light and atmospheric depth. Match the supplied frost references' blue-white winter light and detailed grounded fantasy materials. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep identity-critical face/eyes/hands and the entire named subject within x24–488,y105–407 on the square; compose horizontally for a 206:141 card crop with quiet expendable scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
     "generatedPath": "/workspace/generated_images/exec-f8e42c78-2a3e-4706-8419-a2e02ec9dc4f.png",
     "editableSourcePath": "game/cards/art/masters/hero_aurora.png",
     "sourceNative": [
@@ -2887,12 +2887,12 @@
     ],
     "status": "generated",
     "batch": 12,
-    "reviewNote": "Square source and centered 206:141 crop inspected: Aurora\u2019s face, eyes, and casting hand stay clear; the horizontal aurora ribbon and distant slowed figures read at thumbnail size. The staff tip is incidental near the top edge."
+    "reviewNote": "Square source and centered 206:141 crop inspected: Aurora’s face, eyes, and casting hand stay clear; the horizontal aurora ribbon and distant slowed figures read at thumbnail size. The staff tip is incidental near the top edge."
   },
   {
     "cardId": "frost_strike_15",
     "name": "Grapeshot Volley",
-    "prompt": "Create a standalone illustration for the Hexmancers card \u201cGrapeshot Volley\u201d. Paint a frost-armored medieval artillery archer firing a compact rune-work hand cannon in a horizontal volley. The weapon releases a crisp line of many small icy grapeshot pellets toward distant foes; recoil shown in the bent stance and shoulder. Keep the warrior's focused face, firing hand and entire compact cannon clear; tactile old iron, leather and frost, no modern firearm design. Painterly medieval/high-fantasy collectible-card art, richly painted believable fur, hide, wood, old iron, ice and stone, strong readable values, attractive directional light and atmospheric depth. Match the supplied frost references' blue-white winter light and detailed grounded fantasy materials. Explicitly create a 1:1 SQUARE canvas for a 512\u00d7512 editable master. Keep identity-critical face/eyes/hands and the entire named subject within x24\u2013488,y105\u2013407 on the square; compose horizontally for a 206:141 card crop with quiet expendable scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Grapeshot Volley”. Paint a frost-armored medieval artillery archer firing a compact rune-work hand cannon in a horizontal volley. The weapon releases a crisp line of many small icy grapeshot pellets toward distant foes; recoil shown in the bent stance and shoulder. Keep the warrior's focused face, firing hand and entire compact cannon clear; tactile old iron, leather and frost, no modern firearm design. Painterly medieval/high-fantasy collectible-card art, richly painted believable fur, hide, wood, old iron, ice and stone, strong readable values, attractive directional light and atmospheric depth. Match the supplied frost references' blue-white winter light and detailed grounded fantasy materials. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep identity-critical face/eyes/hands and the entire named subject within x24–488,y105–407 on the square; compose horizontally for a 206:141 card crop with quiet expendable scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
     "generatedPath": "/workspace/generated_images/exec-e0c62e17-7689-44d2-9891-6fbd5efdf624.png",
     "editableSourcePath": "game/cards/art/masters/frost_strike_15.png",
     "sourceNative": [
@@ -2905,12 +2905,12 @@
     ],
     "status": "generated",
     "batch": 12,
-    "reviewNote": "Square source and centered 206:141 crop inspected: the warrior\u2019s face, firing hands, and complete muzzle remain visible; the straight icy grapeshot line and target direction read clearly at thumbnail size."
+    "reviewNote": "Square source and centered 206:141 crop inspected: the warrior’s face, firing hands, and complete muzzle remain visible; the straight icy grapeshot line and target direction read clearly at thumbnail size."
   },
   {
     "cardId": "frost_lob_16",
     "name": "Message in a Bottle",
-    "prompt": "Create a standalone illustration for the Hexmancers card \u201cMessage in a Bottle\u201d. Paint one complete old clear-glass bottle with a rounded body, narrow neck and intact visible cork stopper, resting at a slight angle on a small shelf of sea ice. Inside is a tightly rolled parchment message tied with a blue thread, with no readable writing. Frost feathers the glass edges; pale moonlight and a soft glacial glow make the bottle immediately visible against a calm frozen shore. Keep the entire bottle, neck, and cork together inside the crop and make the message legible as a scroll shape; no person required. Painterly medieval/high-fantasy collectible-card art, richly painted believable glass, parchment, cork and ice, attractive directional winter light, clear value structure and atmospheric depth. Match the supplied Hexmancers frost references' blue-white winter light and detailed grounded fantasy materials. Explicitly create a 1:1 SQUARE canvas for a 512\u00d7512 editable master. Keep the entire named bottle within x24\u2013488,y105\u2013407 on the square; compose horizontally for a 206:141 card crop with quiet expendable scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Message in a Bottle”. Paint one complete old clear-glass bottle with a rounded body, narrow neck and intact visible cork stopper, resting at a slight angle on a small shelf of sea ice. Inside is a tightly rolled parchment message tied with a blue thread, with no readable writing. Frost feathers the glass edges; pale moonlight and a soft glacial glow make the bottle immediately visible against a calm frozen shore. Keep the entire bottle, neck, and cork together inside the crop and make the message legible as a scroll shape; no person required. Painterly medieval/high-fantasy collectible-card art, richly painted believable glass, parchment, cork and ice, attractive directional winter light, clear value structure and atmospheric depth. Match the supplied Hexmancers frost references' blue-white winter light and detailed grounded fantasy materials. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the entire named bottle within x24–488,y105–407 on the square; compose horizontally for a 206:141 card crop with quiet expendable scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
     "generatedPath": "/workspace/generated_images/exec-8fafe522-5a4c-40e8-a06f-ce8a1f8236ab.png",
     "editableSourcePath": "game/cards/art/masters/frost_lob_16.png",
     "sourceNative": [
@@ -2964,7 +2964,7 @@
   {
     "cardId": "frost_boon_16",
     "name": "Gift of the River Mother",
-    "prompt": "Square 1:1 painterly medieval high-fantasy collectible-card illustration, luminous river-blue water and gentle silver light. Gift of the River Mother: a serene ancient river goddess with a clear compassionate face and one open hand raises a smooth curved shield of living water around a weary traveler; the water barrier glows with protective light and a healing silver current, while the goddess\u2019s face and hand remain beside it at the same height. Keep face, eyes, hand and full protective water arc within x24..488 y105..407, balanced horizontally across middle 60%, quiet riverbank above and below. Flowing robes, subtle river-shell jewelry, grounded painterly materials, calm majesty, readable small. No text, UI, card frame, logo, watermark, Disney, anime, cartoon, photorealism, pixel art.",
+    "prompt": "Square 1:1 painterly medieval high-fantasy collectible-card illustration, luminous river-blue water and gentle silver light. Gift of the River Mother: a serene ancient river goddess with a clear compassionate face and one open hand raises a smooth curved shield of living water around a weary traveler; the water barrier glows with protective light and a healing silver current, while the goddess’s face and hand remain beside it at the same height. Keep face, eyes, hand and full protective water arc within x24..488 y105..407, balanced horizontally across middle 60%, quiet riverbank above and below. Flowing robes, subtle river-shell jewelry, grounded painterly materials, calm majesty, readable small. No text, UI, card frame, logo, watermark, Disney, anime, cartoon, photorealism, pixel art.",
     "generatedPath": "/workspace/generated_images/exec-c65ca879-9cf0-4fe5-93f4-ea47b34e40f7.png",
     "editableSourcePath": "game/cards/art/masters/frost_boon_16.png",
     "sourceNative": [
@@ -2975,7 +2975,7 @@
       0.5,
       0.42
     ],
-    "reviewNote": "Reviewed the 512-square source, focal y=0.42 206:141 crop and 128x88 thumbnail. River Mother\u2019s face, eyes and guiding hand, the traveler and the complete protective water arc remain visible.",
+    "reviewNote": "Reviewed the 512-square source, focal y=0.42 206:141 crop and 128x88 thumbnail. River Mother’s face, eyes and guiding hand, the traveler and the complete protective water arc remain visible.",
     "batch": 12,
     "status": "generated"
   },
@@ -2993,7 +2993,7 @@
       0.5,
       0.4
     ],
-    "reviewNote": "Reviewed the 512-square source, focal y=0.40 206:141 crop and 128x88 thumbnail. Umibozu\u2019s full head and face, eyes, shoulders and both hands fit; only lower waves are trimmed.",
+    "reviewNote": "Reviewed the 512-square source, focal y=0.40 206:141 crop and 128x88 thumbnail. Umibozu’s full head and face, eyes, shoulders and both hands fit; only lower waves are trimmed.",
     "batch": 12,
     "status": "generated"
   },
@@ -3018,7 +3018,7 @@
   {
     "cardId": "frost_strike_16",
     "name": "Siren's Song",
-    "prompt": "Paint an original illustration for the Hexmancers frost strike \u201cSiren's Song\u201d. A powerful sea-siren sings from a low black rock at the center of a frozen inlet; her focused beautiful face and one hand cupped beside her mouth are prominent, while three distinct bright ice-blue musical sound waves fly horizontally toward a shielded raider and one icy missile bursts against his armor. Add a few tiny blue healing motes returning toward the siren to hint at restorative magic. Keep the siren\u2019s face, eyes, hand, and all three projectile paths readable together in the central horizontal band; compose wide, with quiet dark water and pale winter haze above/below. Painterly medieval high fantasy collectible-card art, grounded anatomy, detailed wet hair, fur, leather and ice, dramatic moonlit cyan against deep navy, clear silhouette at small size. Explicit 1:1 SQUARE 512\u00d7512 editable-master composition; keep identity-critical face, hand and spell action inside x24..488,y105..407 for the 206:141 crop. No frame, text, lettering, numbers, UI, logo or watermark. No anime, Disney-like/toy cartoon, photorealism or pixel art.",
+    "prompt": "Paint an original illustration for the Hexmancers frost strike “Siren's Song”. A powerful sea-siren sings from a low black rock at the center of a frozen inlet; her focused beautiful face and one hand cupped beside her mouth are prominent, while three distinct bright ice-blue musical sound waves fly horizontally toward a shielded raider and one icy missile bursts against his armor. Add a few tiny blue healing motes returning toward the siren to hint at restorative magic. Keep the siren’s face, eyes, hand, and all three projectile paths readable together in the central horizontal band; compose wide, with quiet dark water and pale winter haze above/below. Painterly medieval high fantasy collectible-card art, grounded anatomy, detailed wet hair, fur, leather and ice, dramatic moonlit cyan against deep navy, clear silhouette at small size. Explicit 1:1 SQUARE 512×512 editable-master composition; keep identity-critical face, hand and spell action inside x24..488,y105..407 for the 206:141 crop. No frame, text, lettering, numbers, UI, logo or watermark. No anime, Disney-like/toy cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-ece68f57-efc1-46c9-98eb-4e6d82c8597f.png",
     "editableSourcePath": "game/cards/art/masters/frost_strike_16.png",
     "sourceNative": [
@@ -3036,7 +3036,7 @@
   {
     "cardId": "frost_strike_18",
     "name": "Kelpie's Plunge",
-    "prompt": "Paint an original illustration for the Hexmancers frost strike \u201cKelpie's Plunge\u201d. A dark kelpie, a powerful horse-shaped water spirit with a recognizable horse face and wet black mane, plunges headfirst out of an icy river in a strong horizontal line; its front hooves and mane lead a straight blade-like wake of blue-white water that catches and pulls a small armored rider toward the creature. The kelpie\u2019s eyes and face are primary, with the linear plunging action unmistakable. Painterly medieval high fantasy collectible-card art, grounded horse anatomy, rich wet coat, ice spray and mail, cinematic glacial light, nuanced brushwork. Explicit 1:1 SQUARE 512\u00d7512 master; wide composition with kelpie face, front hooves and straight wake safely inside x24..488,y105..407 for 206:141 crop; quiet pale mist above and dark water below. No card frame, text, UI, logo or watermark; no anime, Disney/toy cartoon, photorealism, pixel art.",
+    "prompt": "Paint an original illustration for the Hexmancers frost strike “Kelpie's Plunge”. A dark kelpie, a powerful horse-shaped water spirit with a recognizable horse face and wet black mane, plunges headfirst out of an icy river in a strong horizontal line; its front hooves and mane lead a straight blade-like wake of blue-white water that catches and pulls a small armored rider toward the creature. The kelpie’s eyes and face are primary, with the linear plunging action unmistakable. Painterly medieval high fantasy collectible-card art, grounded horse anatomy, rich wet coat, ice spray and mail, cinematic glacial light, nuanced brushwork. Explicit 1:1 SQUARE 512×512 master; wide composition with kelpie face, front hooves and straight wake safely inside x24..488,y105..407 for 206:141 crop; quiet pale mist above and dark water below. No card frame, text, UI, logo or watermark; no anime, Disney/toy cartoon, photorealism, pixel art.",
     "generatedPath": "/workspace/generated_images/exec-f83f7bfd-975a-4be8-b7bd-ae154c818cc3.png",
     "editableSourcePath": "game/cards/art/masters/frost_strike_18.png",
     "sourceNative": [
@@ -3054,7 +3054,7 @@
   {
     "cardId": "frost_strike_19",
     "name": "Nixie's Whirlpool",
-    "prompt": "Paint an original illustration for the Hexmancers frost strike \u201cNixie's Whirlpool\u201d. A small but fierce nixie water-spirit rises waist-high in a frozen pool, with a clear expressive face, bright eyes and both hands guiding a vivid zigzag whirlpool of dark teal water and ice around a lone armored intruder; the hooked current visibly twists him off balance. Nixie\u2019s face and hands are the focal point, the whirlpool readable as a twisting path, not an abstract blast. Painterly medieval high fantasy card art, believable wet hair, silver scales, leather and ice, dramatic cool reflected light, grounded anatomy, elegant brushwork and atmospheric depth. Explicit 1:1 SQUARE composition for a 512\u00d7512 master; wide staging, keep face, eyes, hands and central whirlpool path in x24..488,y105..407 for 206:141 crop; simple low-detail snowy bank above and below. No frame, lettering, text, numbers, UI, logo or watermark; no anime, Disney/toy cartoon, photorealism or pixel art.",
+    "prompt": "Paint an original illustration for the Hexmancers frost strike “Nixie's Whirlpool”. A small but fierce nixie water-spirit rises waist-high in a frozen pool, with a clear expressive face, bright eyes and both hands guiding a vivid zigzag whirlpool of dark teal water and ice around a lone armored intruder; the hooked current visibly twists him off balance. Nixie’s face and hands are the focal point, the whirlpool readable as a twisting path, not an abstract blast. Painterly medieval high fantasy card art, believable wet hair, silver scales, leather and ice, dramatic cool reflected light, grounded anatomy, elegant brushwork and atmospheric depth. Explicit 1:1 SQUARE composition for a 512×512 master; wide staging, keep face, eyes, hands and central whirlpool path in x24..488,y105..407 for 206:141 crop; simple low-detail snowy bank above and below. No frame, lettering, text, numbers, UI, logo or watermark; no anime, Disney/toy cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-5faee3bd-53c4-4d2d-81fa-b7fa774801f1.png",
     "editableSourcePath": "game/cards/art/masters/frost_strike_19.png",
     "sourceNative": [
@@ -3068,5 +3068,41 @@
     "status": "generated",
     "batch": 13,
     "reviewNote": "Reviewed 512-square source, centered 206:141 crop and 128x88 thumbnail: nixie face, eyes, both hands and twisting whirlpool are clear; upper hair touches the crop edge, but the full face remains visible. Parent shifted upward to retain the nixie full face/eyes and gesture; incidental lower water may crop."
+  },
+  {
+    "cardId": "frost_strike_17",
+    "name": "Lorelei's Lure",
+    "prompt": "Paint an original square 1:1 illustration for Lorelei's Lure, a charged frost strike shaped like a boomerang that pulls its victim toward the caster. Show a striking Lorelei, a frost-burnished sea-sorceress with a clear human face and one outstretched hand, drawing a single armored raider sideways across a frozen harbor with a bright curved boomerang ribbon of ice and water. The hooked arc visibly curves back toward her, with the pulled figure in the same horizontal action composition; keep Lorelei's face, her casting hand, and the pulled raider's face readable. Painterly medieval maritime fantasy collectible-card art, richly textured fur, leather and mail, cold moonlit cyan highlights, atmospheric depth, dramatic but controlled light, elegant believable anatomy, strong silhouette. Compose on a clean 512x512 square master: keep both faces, the casting hand and the recognizable boomerang-shaped arc inside x24..488 y105..407, with quiet snowy night scenery above and below; designed to read in a 206:141 wide card crop. No frame, lettering, symbols, UI, or modern objects. No anime, Disney-like cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-33a290f4-d131-4c11-8f27-6945231e0dc9.png",
+    "editableSourcePath": "game/cards/art/masters/frost_strike_17.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Generated square normalized to an exact 512x512 editable source. Inspected source, true 206:141 crop and 128x88 thumbnail: Lorelei and the pulled raider remain identifiable, with both faces, casting hand and hooked ice arc inside the safe band."
+  },
+  {
+    "cardId": "frost_strike_20",
+    "name": "Frostbite",
+    "prompt": "Paint an original square 1:1 illustration for Frostbite, a charged frost strike whose forward wedge freezes its target for 1.9 seconds. Show a frost mage at left edge casting a broad, clearly wedge-shaped blast of icy wind across a frozen harbor; the wedge converges on one armored raider at right, whose exposed gripping hand and forearm are instantly sheathed in crystalline rime as he stiffens in place, eyes wide, one boot locking to the ice. The raider's face and frozen hand are the clear focal point; show the wedge converging into the hit with branching frost crystals, not an explosion obscuring the subject. Painterly medieval maritime fantasy collectible-card illustration, grounded expressive anatomy, detailed wool, leather and mail, cold blue-white directional light against deep slate water and snow, atmospheric depth, strong readable silhouette. Compose on an exact square 512x512 master; keep mage's casting hand, the raider's face and frozen hand inside x24..488 y105..407, horizontal action arrangement with quiet winter sky above and dark ice below, designed for a 206:141 wide card crop. No frame, lettering, symbols, UI, or modern objects. No anime, Disney-like cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2b1a88d1-b485-4b38-893f-c7b95f493e67.png",
+    "editableSourcePath": "game/cards/art/masters/frost_strike_20.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Generated square normalized to an exact 512x512 editable source. Inspected source, true 206:141 crop and 128x88 thumbnail: wedge impact is legible and the caster, raider face and frozen hand remain visible; the raider sits close to the right crop edge."
   }
 ]

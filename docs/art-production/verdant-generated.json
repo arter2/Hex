@@ -3019,5 +3019,79 @@
     "batch": 12,
     "reviewNote": "512-square source and upward-shifted crop/thumbnail reviewed (focalPoint y=0.42); Ulfa's face, reaching hand, and lead wolf's full face and ears have breathing room.",
     "cardId": "hero_ulfa"
+  },
+  {
+    "cardId": "verdant_strike_19",
+    "name": "Anaconda Squeeze",
+    "prompt": "Create original square 1:1 painterly medieval-fantasy collectible card art for Anaconda Squeeze. Actual strike: a powerful anaconda constricts one target in a straight-line attack, slowing it; its critical hit can strike harder. Show one enormous emerald-and-ochre anaconda dominating the horizontal composition, its coils tightly pinning an armored forest raider against a mossy fallen log while the serpent's alert head and the raider's tense face remain clearly visible. Emphasize the constricting pressure and slowed struggle with crushed leaves and taut coils; no gore. Dense old-growth forest, nuanced scales, leather, iron and bark, directional shafts of green-gold light, painterly brushwork, grounded anatomy, dramatic readable silhouette. Square 512x512 master; keep serpent head, coils and target face inside x24..488 y105..407, quiet foliage above and earth below, designed for true 206:141 crop. Illustration only, no text/frame/UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-3a7dd1e3-490f-49f0-a93d-b28d265d706c.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_19.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "The exact 512 source, 206:141 crop and 128x88 thumbnail were inspected. The anaconda head, constricting coils and raider face are readable inside the safe crop."
+  },
+  {
+    "cardId": "verdant_strike_21",
+    "name": "Strangler Fig",
+    "prompt": "Create original square 1:1 painterly medieval-fantasy collectible card art for Strangler Fig. Actual strike: a wave of fig roots lashes a target and pulls it, with a recoil after the strike. Show an ancient strangler fig tree at left, its thick pale roots bursting from the forest floor in a broad curling wave that wraps around an armored trespasser's torso and draws him toward the tree; the old fig trunk and one recognizable fig fruit cluster are visible, while its roots dominate the action. A few snapped roots recoil back toward the tree, implying the follow-through without clutter. Verdant ruins swallowed by jungle, painterly textured bark, moss, mail and soil, dramatic filtered light, grounded anatomy, strong horizontal silhouette. Square 512x512 master; keep tree-root action and target face inside x24..488 y105..407, calm foliage above and forest floor below, designed for true 206:141 crop. Illustration only, no frame/text/UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8d18d172-c8d3-48b8-b185-35c7de40bd51.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_21.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "The exact 512 source, 206:141 crop and 128x88 thumbnail were inspected. The strangler fig trunk, fruit cluster, root wave and target face remain visible; the pulling action reads clearly."
+  },
+  {
+    "cardId": "verdant_strike_22",
+    "name": "Will-o'-Wisp Lure",
+    "prompt": "Create original square 1:1 painterly medieval-fantasy collectible card art for Will-o'-Wisp Lure. Actual strike: a zigzagging ghost-light lures and pulls a target. Show a small brilliant blue-green will-o'-wisp with a flame-like translucent core leading a sharply zigzagging trail through a dark forest; a curious armored scout is visibly being pulled after it, boots sliding across wet leaves, his face and reaching hand clear. The wisp itself must remain the bright named focal object, with the trail guiding the eye, not replacing it. Painterly medieval folklore, deep mossy shadows, delicate luminous mist, believable cloth, mail, leaves and wet bark, atmospheric depth and clear contrast. Square 512x512 master; keep wisp, zigzag path and scout face/hand inside x24..488 y105..407, quiet canopy above and forest floor below; designed for true 206:141 crop. Illustration only, no text/frame/UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7671965c-33f4-4a5d-9d61-6901fadb9f5f.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_22.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "The exact 512 source, 206:141 crop and 128x88 thumbnail were inspected. The luminous wisp, zigzag trail, scout face and reaching hand remain visible with strong contrast at thumbnail size."
+  },
+  {
+    "cardId": "verdant_strike_20",
+    "name": "Liana Whip",
+    "prompt": "Create original square 1:1 painterly medieval-fantasy collectible card art for Liana Whip. Actual strike: a quick zigzagging piercing vine lash pulls a target toward the caster. Show a nimble dryad-like woodland huntress at left, face and gripping hand clear as she snaps one long thorned liana in a sharp zigzag across the scene; the vine pierces the edge of an armored raider's shield and draws him off balance toward her. Make the living vine the unmistakable named subject, with a few small leaves and thorns, no blood. Lush forest clearing, richly painted bark, woven cloth, iron and leaf surfaces, warm green light against cool shade, grounded anatomy and strong action silhouette. Square 512x512; keep the huntress face, hand, vine path and raider face inside x24..488 y105..407; quiet canopy/ground margins; designed for a true 206:141 crop. Illustration only, no lettering/frame/UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-45b3670a-e0a3-4ec5-81d8-f4473f1abf1c.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_20.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "repairPrompt": "Repaint Liana Whip as an original square 1:1 painterly medieval-fantasy card illustration. The earlier version placed the pulled raider too close to the right crop edge; move BOTH characters inward, with their faces comfortably inside the central 80% of the square. Actual action: a quick piercing liana whip lashes in a zigzag and pulls its target toward the caster. Show a woodland huntress on the left and an armored raider on the right, both fully readable from head to waist, positioned near x125 and x385 respectively on a 512 square, with the raider's complete face, helmet and reaching hand clearly away from the border. The huntress's gripping hand holds a thorned living vine that makes a clean two-bend zigzag across the middle, piercing the edge of his wooden shield and drawing him off balance toward her. One continuous clear action, no extra figures. Lush old-growth clearing, painterly bark, leaf, woven cloth and iron, warm green-gold sunlight, believable anatomy and expressive faces, high-end medieval fantasy collectible-card art. Keep both faces, caster hand, full visible zigzag vine and the target's relevant hand inside x24..488 y105..407 on the square; quiet forest canopy above, forest floor below; designed for a true 206:141 wide crop. No frame, text, UI, modern objects; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "previousGeneratedPath": "/workspace/generated_images/exec-edc85751-8433-4a72-a7db-87b43e523016.png",
+    "reviewNote": "Repainted after inspection showed the original target face too close to the right crop edge; original 512 source preserved at /tmp/verdant_strike_20-before-repaint.png. Prepared the replacement as an exact 512x512 source, then atomically replaced the canonical. Inspected replacement source, true 206:141 crop and 128x88 thumbnail: both faces, caster hand and zigzag liana are clear and in frame; target hand is near the right edge."
   }
 ]

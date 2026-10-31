@@ -3049,5 +3049,59 @@
     "status": "generated",
     "batch": 13,
     "reviewNote": "512-square master inspected. Shifted crop upward to include the shield’s top tip while keeping its visible face, the knight’s full face and collision point in frame; the revised crop and 128px thumbnail were inspected. Lower body and opposing figure are incidental."
+  },
+  {
+    "cardId": "light_strike_17",
+    "name": "Gavel of Justice",
+    "prompt": "Paint an illustration for the exact card name “Gavel of Justice.” A dignified medieval magistrate-knight brings a complete heavy brass-and-oak ceremonial war gavel down onto a stone judgment block; the gavel is the unmistakable named artifact and focal point, with its full head, handle, and the striking hand all visible beside the stern face at the same height. At impact a compact ring of bright white-gold light and a few outward stone chips suggest a charged cluster strike and brief stun; keep the courtroom soldiers and target figures distant and subdued. Painterly medieval high-fantasy collectible-card illustration in the supplied Hexmancers reference style: grounded anatomy, nuanced brass, oak, worn steel and stone, layered brushwork, dramatic warm directional light and atmospheric depth, not photorealistic. Explicit 1:1 square canvas intended for a 512×512 editable master. Compose the gavel, hand, face and impact horizontally in the middle band; keep identity-critical face/eyes, relevant hand and the entire gavel inside x24–488,y105–407 for a 206:141 landscape crop, with quiet architecture above and below. Strong readable silhouette, attractive lighting. No card frame, lettering, runes, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-24023f15-f129-4666-9998-5dfda5487344.png",
+    "editableSourcePath": "game/cards/art/masters/light_strike_17.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.44
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Adjusted focal point upward to y=0.44 after parent crop review. Inspected the full 512-square source, revised 206:141 wide crop and 128px thumbnail: the magistrate’s complete forehead, eyes and face, the striking hand, and the entire gavel remain visible; the lower stone block is expendable."
+  },
+  {
+    "cardId": "light_strike_19",
+    "name": "Phalanx Advance",
+    "prompt": "Paint an illustration for the exact card name “Phalanx Advance.” A disciplined medieval phalanx of three foremost hoplite warriors advances shoulder to shoulder across a sunlit stone causeway, shields locked in a clear horizontal row and long spears angled forward; show the central captain’s determined face and the front line’s hands gripping the shields and spear shafts. A bright narrow band of holy light travels along the shield line as the formation presses an opposing armored rank backward, communicating a powerful coordinated advance and push; keep the enemy secondary and the friendly front rank dominant. Painterly medieval high-fantasy collectible-card illustration in the supplied Hexmancers reference style: grounded faces and anatomy, nuanced bronze, linen, leather and wood, layered brushwork, attractive directional sunlight, atmospheric depth, not photorealistic. Explicit 1:1 square canvas intended for a 512×512 editable master. Compose a compact horizontal formation in the middle band; keep the central face/eyes, gripping hands, complete front shields and readable spear shafts within x24–488,y105–407 for a 206:141 landscape crop. Quiet sky and ground above and below; peripheral warriors and spear tips may recede naturally. Strong silhouette, readable at small size. No card frame, lettering, runes, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d58be7b4-3c7e-4fd8-8621-ebf812e4c40e.png",
+    "editableSourcePath": "game/cards/art/masters/light_strike_19.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, true 206:141 wide crop and 128px thumbnail. The front rank remains a coherent advancing line; the central captain’s face, shield row and gripping hands are clear, with the push conveyed by the light band and opposing recoil. Peripheral spear tips and background soldiers recede."
+  },
+  {
+    "cardId": "light_strike_20",
+    "name": "Crane Wing Sweep",
+    "prompt": "Paint an illustration for the exact card name “Crane Wing Sweep.” A focused medieval martial artist in layered ivory and gold robes pivots into a broad crane-wing sweep, one arm extended in a graceful level arc while the other balances close to the body; the artist’s calm intent face, eyes, both hands and sweeping sleeve are clear. The sweeping arm releases a luminous feather-shaped band of white-gold force that curls through several nearby armored foes, slowing and staggering them without gore. The martial artist and the single decisive horizontal sweep dominate; the foes remain secondary silhouettes. Painterly medieval high-fantasy collectible-card illustration in the supplied Hexmancers reference style: grounded anatomy and expression, nuanced silk, leather, stone and metal, layered brushwork, dramatic directional light and atmospheric depth, not photorealistic. Explicit 1:1 square canvas intended for a 512×512 editable master. Arrange face and upper body beside the sweeping arm at the same height; keep face/eyes, hands and the principal arc within x24–488,y105–407 for a 206:141 landscape crop. Quiet temple background above and below; incidental robe tails and outer wisps may extend. Strong readable action silhouette and attractive lighting. No card frame, lettering, runes, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5c72704c-430b-4fc8-aeb3-c633533625db.png",
+    "editableSourcePath": "game/cards/art/masters/light_strike_20.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, true 206:141 wide crop and 128px thumbnail. Martial artist’s face, eyes, both hands and long sweeping sleeve remain visible; the broad feather-like light arc clearly sweeps through secondary opponents. Robe tails and peripheral figures are incidental."
   }
 ]

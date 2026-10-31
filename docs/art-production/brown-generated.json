@@ -415,7 +415,7 @@
     ],
     "status": "generated",
     "batch": 7,
-    "reviewNote": "Reviewed the 1254-square original, 512x512 editable source, centered 206:141 crop, and thumbnail. The pistol is fully visible from grip to muzzle; wielder\u2019s face and firing hand remain in the crop, and pistol identity reads at thumbnail size.",
+    "reviewNote": "Reviewed the 1254-square original, 512x512 editable source, centered 206:141 crop, and thumbnail. The pistol is fully visible from grip to muzzle; wielder’s face and firing hand remain in the crop, and pistol identity reads at thumbnail size.",
     "editableSourcePath": "game/cards/art/masters/brown_ace_01.png",
     "sourceNative": [
       1254,
@@ -433,7 +433,7 @@
     ],
     "status": "generated",
     "batch": 7,
-    "reviewNote": "Reviewed the 1254-square original, 512x512 editable source, centered 206:141 crop, and thumbnail. Entire ornate scope with both lenses, gnome\u2019s face and adjusting fingers remain in the crop; scope and sidearm relationship reads at thumbnail size.",
+    "reviewNote": "Reviewed the 1254-square original, 512x512 editable source, centered 206:141 crop, and thumbnail. Entire ornate scope with both lenses, gnome’s face and adjusting fingers remain in the crop; scope and sidearm relationship reads at thumbnail size.",
     "editableSourcePath": "game/cards/art/masters/brown_aceup_03.png",
     "sourceNative": [
       1254,
@@ -451,7 +451,7 @@
     ],
     "status": "generated",
     "batch": 7,
-    "reviewNote": "Reviewed the 1254-square original, 512x512 editable source, centered 206:141 crop, and thumbnail. Goblin\u2019s face and crank hand, complete scrap cannon barrel and bolt action remain visible; cannon identity reads at thumbnail size.",
+    "reviewNote": "Reviewed the 1254-square original, 512x512 editable source, centered 206:141 crop, and thumbnail. Goblin’s face and crank hand, complete scrap cannon barrel and bolt action remain visible; cannon identity reads at thumbnail size.",
     "editableSourcePath": "game/cards/art/masters/brown_machine_07.png",
     "sourceNative": [
       1254,
@@ -469,7 +469,7 @@
     ],
     "status": "generated",
     "batch": 7,
-    "reviewNote": "Reviewed the 1254-square repaired original, 512x512 editable source, upward-shifted 206:141 crop at focal y=0.44, and thumbnail. One complete glowing peach, pilgrim\u2019s full face and reaching hand fit the crop; decorative lower altar is trimmed. Fruit remains clear at thumbnail size.",
+    "reviewNote": "Reviewed the 1254-square repaired original, 512x512 editable source, upward-shifted 206:141 crop at focal y=0.44, and thumbnail. One complete glowing peach, pilgrim’s full face and reaching hand fit the crop; decorative lower altar is trimmed. Fruit remains clear at thumbnail size.",
     "editableSourcePath": "game/cards/art/masters/brown_instant_06.png",
     "sourceNative": [
       1254,
@@ -505,7 +505,7 @@
     ],
     "status": "generated",
     "batch": 7,
-    "reviewNote": "Reviewed the 1254-square original, 512x512 editable source, upward-shifted wide crop at focal y=0.44, and thumbnail. Gnome\u2019s full face, lever hand, clockwork gears, gauge and glowing focus remain visible; tabletop clutter is secondary. Device reads at thumbnail size.",
+    "reviewNote": "Reviewed the 1254-square original, 512x512 editable source, upward-shifted wide crop at focal y=0.44, and thumbnail. Gnome’s full face, lever hand, clockwork gears, gauge and glowing focus remain visible; tabletop clutter is secondary. Device reads at thumbnail size.",
     "editableSourcePath": "game/cards/art/masters/brown_tinker_06.png",
     "sourceNative": [
       1254,
@@ -541,7 +541,7 @@
     ],
     "status": "generated",
     "batch": 7,
-    "reviewNote": "Reviewed the 1254-square original, 512x512 editable source, centered 206:141 crop, and thumbnail. Dwarf\u2019s face and both firing hands, complete hand cannon from grip to muzzle, and impact remain clear; cannon reads at thumbnail size.",
+    "reviewNote": "Reviewed the 1254-square original, 512x512 editable source, centered 206:141 crop, and thumbnail. Dwarf’s face and both firing hands, complete hand cannon from grip to muzzle, and impact remain clear; cannon reads at thumbnail size.",
     "editableSourcePath": "game/cards/art/masters/brown_ace_02.png",
     "sourceNative": [
       1254,
@@ -551,7 +551,7 @@
   {
     "cardId": "brown_aceup_13",
     "name": "Bottled Djinn Wind",
-    "prompt": "Paint Bottled Djinn Wind. Compose for a horizontal card crop: place one small ornate clear-glass bottle at center-left, fully inside the safe area, with its complete rounded heel, body, neck, brass stopper and cork visible. The bottle has gold filigree, turquoise glass, and pale-blue wind swirling inside. At left behind it, an elven archer\u2019s complete face and one hand pull the stopper; her other hand holds a medieval sidearm in the upper center. A translucent blue djinn wind streams from bottle to sidearm then across distant foes on the right. Keep the bottle primary and fully visible, face and relevant hands fully visible; make it about 30 percent smaller than a bulky potion jar. Mechanics: djinn enchantment strengthens the sidearm and lets its shot reach all enemies. Painterly medieval fantasy collectible-card illustration in the supplied Hexmancers style: rich believable wood, brass, iron, leather and cloth, nuanced brushwork, attractive directional light, atmospheric depth, grounded mature anatomy. Explicit 1:1 SQUARE canvas for an editable 512x512 master and horizontal 206:141 crop. Keep the complete named object and critical face/hands within x24..488,y105..407; quiet scenery at top and bottom. One strong named subject and one clear action. No card border, lettering, numbers, text or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint Bottled Djinn Wind. Compose for a horizontal card crop: place one small ornate clear-glass bottle at center-left, fully inside the safe area, with its complete rounded heel, body, neck, brass stopper and cork visible. The bottle has gold filigree, turquoise glass, and pale-blue wind swirling inside. At left behind it, an elven archer’s complete face and one hand pull the stopper; her other hand holds a medieval sidearm in the upper center. A translucent blue djinn wind streams from bottle to sidearm then across distant foes on the right. Keep the bottle primary and fully visible, face and relevant hands fully visible; make it about 30 percent smaller than a bulky potion jar. Mechanics: djinn enchantment strengthens the sidearm and lets its shot reach all enemies. Painterly medieval fantasy collectible-card illustration in the supplied Hexmancers style: rich believable wood, brass, iron, leather and cloth, nuanced brushwork, attractive directional light, atmospheric depth, grounded mature anatomy. Explicit 1:1 SQUARE canvas for an editable 512x512 master and horizontal 206:141 crop. Keep the complete named object and critical face/hands within x24..488,y105..407; quiet scenery at top and bottom. One strong named subject and one clear action. No card border, lettering, numbers, text or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-42926c8b-10ab-4f34-8108-4bd83455efff.png",
     "focalPoint": [
       0.5,
@@ -559,7 +559,7 @@
     ],
     "status": "generated",
     "batch": 7,
-    "reviewNote": "Rechecked the 1254-square original, 512x512 editable source, 206:141 crop at focal y=0.535, and thumbnail. The complete bottle base, body and neck, plus cork in the elf\u2019s hand, now fit with a small bottom margin; the elf\u2019s facial features remain fully visible, with only the topmost hair close to the upper edge. Bottle identity reads at thumbnail size.",
+    "reviewNote": "Rechecked the 1254-square original, 512x512 editable source, 206:141 crop at focal y=0.535, and thumbnail. The complete bottle base, body and neck, plus cork in the elf’s hand, now fit with a small bottom margin; the elf’s facial features remain fully visible, with only the topmost hair close to the upper edge. Bottle identity reads at thumbnail size.",
     "editableSourcePath": "game/cards/art/masters/brown_aceup_13.png",
     "sourceNative": [
       1254,
@@ -569,7 +569,7 @@
   {
     "cardId": "brown_machine_08",
     "name": "Harbor Ballista",
-    "prompt": "Paint Harbor Ballista. A sturdy sea-folk harbor ballista dominates a weathered stone breakwater at dusk: a broad, fully visible medieval wooden siege crossbow on a swiveling oak-and-bronze stand, thick bow limbs, taut rope, crank winch, and one long iron-tipped bolt. A sea-folk harbor keeper with subtle fin-like ears and scaled forearms leans into the crank as the ballista releases its bolt across the bay toward a distant raider vessel. Keep the complete bow tips, stock, base, keeper\u2019s face and working hands within the central horizontal crop. The heavy ballista is the named primary subject; sea, lanterns and ship are supporting context. Mechanics: a tough, steady ballista repeatedly snipes the weakest enemy from a harbor emplacement and siphons a little health. Painterly medieval fantasy collectible-card illustration in the supplied Hexmancers style: rich believable wood, brass, iron, leather and cloth, nuanced brushwork, attractive directional light, atmospheric depth, grounded mature anatomy. Explicit 1:1 SQUARE canvas for an editable 512x512 master and horizontal 206:141 crop. Keep the complete named object and critical face/hands within x24..488,y105..407; quiet scenery at top and bottom. One strong named subject and one clear action. No card border, lettering, numbers, text or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint Harbor Ballista. A sturdy sea-folk harbor ballista dominates a weathered stone breakwater at dusk: a broad, fully visible medieval wooden siege crossbow on a swiveling oak-and-bronze stand, thick bow limbs, taut rope, crank winch, and one long iron-tipped bolt. A sea-folk harbor keeper with subtle fin-like ears and scaled forearms leans into the crank as the ballista releases its bolt across the bay toward a distant raider vessel. Keep the complete bow tips, stock, base, keeper’s face and working hands within the central horizontal crop. The heavy ballista is the named primary subject; sea, lanterns and ship are supporting context. Mechanics: a tough, steady ballista repeatedly snipes the weakest enemy from a harbor emplacement and siphons a little health. Painterly medieval fantasy collectible-card illustration in the supplied Hexmancers style: rich believable wood, brass, iron, leather and cloth, nuanced brushwork, attractive directional light, atmospheric depth, grounded mature anatomy. Explicit 1:1 SQUARE canvas for an editable 512x512 master and horizontal 206:141 crop. Keep the complete named object and critical face/hands within x24..488,y105..407; quiet scenery at top and bottom. One strong named subject and one clear action. No card border, lettering, numbers, text or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-b2a9e9e8-a07e-4f88-bab9-bc24bdbc4ec3.png",
     "focalPoint": [
       0.5,
@@ -595,7 +595,7 @@
     ],
     "status": "generated",
     "batch": 7,
-    "reviewNote": "Reviewed the 1254-square original, 512x512 editable source, centered wide crop, and thumbnail. Full flask from rounded base through stopper, pouring hand, mage\u2019s face and cup all remain visible; fruit-like amber draught is identifiable at thumbnail size.",
+    "reviewNote": "Reviewed the 1254-square original, 512x512 editable source, centered wide crop, and thumbnail. Full flask from rounded base through stopper, pouring hand, mage’s face and cup all remain visible; fruit-like amber draught is identifiable at thumbnail size.",
     "editableSourcePath": "game/cards/art/masters/brown_instant_07.png",
     "sourceNative": [
       1254,
@@ -605,7 +605,7 @@
   {
     "cardId": "brown_equip_20",
     "name": "Sky-Folk Wing Harness",
-    "prompt": "Paint Sky-Folk Wing Harness. Center one sky-folk scout wearing an elegant flight harness: fitted dark-brown leather chest straps, brass buckles, shoulder pivots, and two compact articulated feathered wings mounted to the harness. Wings are folded to a graceful half-spread close behind the shoulders, not a huge span; keep each complete wing, feather tips, complete harness, scout\u2019s full face, and both strap-adjusting hands clearly inside x24..488,y105..407 on this square canvas, with at least 24 pixels of breathing room around both wing tips. Compose as a waist-up portrait with gear as the focus. The sky-folk is poised on a castle parapet at sunset, warm air lifting the compact feather vanes. The wearable wing harness must read as equipment that increases attack speed; no clipped wings. Painterly medieval fantasy collectible-card illustration in the supplied Hexmancers style: rich believable glass, metal, wood, cloth and leather, nuanced brushwork, attractive directional light, atmospheric depth, grounded mature anatomy. Explicit 1:1 SQUARE canvas for an editable 512x512 master and horizontal 206:141 crop. Keep the complete named object and critical face/hands within x24..488,y105..407; quiet scenery at top and bottom. One strong named subject and one clear action. No card border, lettering, numbers, text or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint Sky-Folk Wing Harness. Center one sky-folk scout wearing an elegant flight harness: fitted dark-brown leather chest straps, brass buckles, shoulder pivots, and two compact articulated feathered wings mounted to the harness. Wings are folded to a graceful half-spread close behind the shoulders, not a huge span; keep each complete wing, feather tips, complete harness, scout’s full face, and both strap-adjusting hands clearly inside x24..488,y105..407 on this square canvas, with at least 24 pixels of breathing room around both wing tips. Compose as a waist-up portrait with gear as the focus. The sky-folk is poised on a castle parapet at sunset, warm air lifting the compact feather vanes. The wearable wing harness must read as equipment that increases attack speed; no clipped wings. Painterly medieval fantasy collectible-card illustration in the supplied Hexmancers style: rich believable glass, metal, wood, cloth and leather, nuanced brushwork, attractive directional light, atmospheric depth, grounded mature anatomy. Explicit 1:1 SQUARE canvas for an editable 512x512 master and horizontal 206:141 crop. Keep the complete named object and critical face/hands within x24..488,y105..407; quiet scenery at top and bottom. One strong named subject and one clear action. No card border, lettering, numbers, text or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-78d3d241-a8ac-4409-8b2c-d692a17db13a.png",
     "focalPoint": [
       0.5,
@@ -623,7 +623,7 @@
   {
     "cardId": "brown_tinker_07",
     "name": "Dwarven Forge Upgrade",
-    "prompt": "Paint Dwarven Forge Upgrade. A master dwarf smith leans over a compact stone-and-iron forge and performs a clear upgrade: he guides a fully visible steel weapon across a glowing rune-heated anvil with one hand while raising a hammer in the other. The forge itself is the named subject\u2014blackened hearth, copper bellows, iron grate and bright golden coals\u2014and a fresh line of molten runes brightens along the blade to show improved power. Keep smith\u2019s face and working hands, complete weapon and forge opening in the central crop. No writing or oversized magic blast. Mechanics: a dwarven forge device permanently increases the power of a selected card for the battle. Painterly medieval fantasy collectible-card illustration in the supplied Hexmancers style: rich believable wood, brass, iron, leather, stone and flame, nuanced brushwork, attractive directional light, atmospheric depth, grounded mature anatomy. Explicit 1:1 SQUARE canvas for an editable 512x512 master and horizontal 206:141 crop. Keep the complete named object and critical face/hands within x24..488,y105..407; quiet scenery at top and bottom. One strong named subject and one clear action. No card border, lettering, numbers, text or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint Dwarven Forge Upgrade. A master dwarf smith leans over a compact stone-and-iron forge and performs a clear upgrade: he guides a fully visible steel weapon across a glowing rune-heated anvil with one hand while raising a hammer in the other. The forge itself is the named subject—blackened hearth, copper bellows, iron grate and bright golden coals—and a fresh line of molten runes brightens along the blade to show improved power. Keep smith’s face and working hands, complete weapon and forge opening in the central crop. No writing or oversized magic blast. Mechanics: a dwarven forge device permanently increases the power of a selected card for the battle. Painterly medieval fantasy collectible-card illustration in the supplied Hexmancers style: rich believable wood, brass, iron, leather, stone and flame, nuanced brushwork, attractive directional light, atmospheric depth, grounded mature anatomy. Explicit 1:1 SQUARE canvas for an editable 512x512 master and horizontal 206:141 crop. Keep the complete named object and critical face/hands within x24..488,y105..407; quiet scenery at top and bottom. One strong named subject and one clear action. No card border, lettering, numbers, text or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-7c4c59f6-0a03-4aa8-9a72-e6584ac42a28.png",
     "focalPoint": [
       0.5,
@@ -631,7 +631,7 @@
     ],
     "status": "generated",
     "batch": 7,
-    "reviewNote": "Reviewed the 1254-square original, 512x512 editable source, upward-shifted wide crop at focal y=0.38, and thumbnail. Hammer head and hand, smith\u2019s face, full glowing blade, working hand and heated anvil remain visible; lower anvil base is expendable. Upgrade action reads at thumbnail size.",
+    "reviewNote": "Reviewed the 1254-square original, 512x512 editable source, upward-shifted wide crop at focal y=0.38, and thumbnail. Hammer head and hand, smith’s face, full glowing blade, working hand and heated anvil remain visible; lower anvil base is expendable. Upgrade action reads at thumbnail size.",
     "editableSourcePath": "game/cards/art/masters/brown_tinker_07.png",
     "sourceNative": [
       1254,
@@ -641,7 +641,7 @@
   {
     "cardId": "brown_ace_03",
     "name": "Gnomish Ray Pistol",
-    "prompt": "Paint Gnomish Ray Pistol. A nimble gnome engineer in worn leather braces a beautiful compact ray pistol and fires a straight emerald-blue ray through several aligned armored foes. The pistol is the dominant named object, fully visible from carved grip and trigger to narrow crystal-lined muzzle, with brass gears, a small glowing glass chamber and precise Gnomish craftsmanship. Keep the gnome\u2019s focused face and firing hand visible; the thin continuous ray crosses a quiet horizontal battlefield row. Mechanics: a gnomish sidearm fires a powerful ray through every enemy in its row. Painterly medieval fantasy collectible-card illustration in the supplied Hexmancers style: rich believable wood, brass, iron, leather, stone and flame, nuanced brushwork, attractive directional light, atmospheric depth, grounded mature anatomy. Explicit 1:1 SQUARE canvas for an editable 512x512 master and horizontal 206:141 crop. Keep the complete named object and critical face/hands within x24..488,y105..407; quiet scenery at top and bottom. One strong named subject and one clear action. No card border, lettering, numbers, text or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint Gnomish Ray Pistol. A nimble gnome engineer in worn leather braces a beautiful compact ray pistol and fires a straight emerald-blue ray through several aligned armored foes. The pistol is the dominant named object, fully visible from carved grip and trigger to narrow crystal-lined muzzle, with brass gears, a small glowing glass chamber and precise Gnomish craftsmanship. Keep the gnome’s focused face and firing hand visible; the thin continuous ray crosses a quiet horizontal battlefield row. Mechanics: a gnomish sidearm fires a powerful ray through every enemy in its row. Painterly medieval fantasy collectible-card illustration in the supplied Hexmancers style: rich believable wood, brass, iron, leather, stone and flame, nuanced brushwork, attractive directional light, atmospheric depth, grounded mature anatomy. Explicit 1:1 SQUARE canvas for an editable 512x512 master and horizontal 206:141 crop. Keep the complete named object and critical face/hands within x24..488,y105..407; quiet scenery at top and bottom. One strong named subject and one clear action. No card border, lettering, numbers, text or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-6616b040-34fb-4055-ae60-bf1777d32de7.png",
     "focalPoint": [
       0.5,
@@ -649,7 +649,7 @@
     ],
     "status": "generated",
     "batch": 7,
-    "reviewNote": "Reviewed the 1254-square original, 512x512 editable source, centered wide crop, and thumbnail. Entire pistol from grip through crystal muzzle, gnome\u2019s face and firing hand, and the straight ray through aligned foes remain visible; pistol reads at thumbnail size.",
+    "reviewNote": "Reviewed the 1254-square original, 512x512 editable source, centered wide crop, and thumbnail. Entire pistol from grip through crystal muzzle, gnome’s face and firing hand, and the straight ray through aligned foes remain visible; pistol reads at thumbnail size.",
     "editableSourcePath": "game/cards/art/masters/brown_ace_03.png",
     "sourceNative": [
       1254,
@@ -659,7 +659,7 @@
   {
     "cardId": "brown_machine_09",
     "name": "Lighthouse Lens Beam",
-    "prompt": "Paint Lighthouse Lens Beam. A squat, broad medieval harbor beacon built on a rocky breakwater, only about half the square\u2019s height, stands at the left of a horizontal composition. Its complete stone tower is fully visible with generous sky above and rocks below: short crenellated cap, compact lantern room, stout masonry shaft and wide rocky base. Through the lantern glass, a huge circular brass Fresnel lens is clearly visible as the dominant object. It emits one brilliant horizontal golden-white beam across the bay, pushing a distant raider backward. Preserve the full tower top and full base inside the central crop; lens and beam origin inside x24..488,y105..407. The beam may continue off the right edge. Mechanics: a sturdy steady lighthouse lens sends a beam that can push enemies back. Painterly medieval fantasy collectible-card illustration in the supplied Hexmancers style: rich believable limestone, bronze, glass, leather and sea, nuanced brushwork, attractive directional lantern light, atmospheric depth, grounded proportions. Explicit 1:1 SQUARE canvas for an editable 512x512 master and horizontal 206:141 crop. Keep complete named object within x24..488,y105..407; quiet sky and water at top and bottom. Strong readable subject and one action. No frame, text, lettering, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "prompt": "Paint Lighthouse Lens Beam. A squat, broad medieval harbor beacon built on a rocky breakwater, only about half the square’s height, stands at the left of a horizontal composition. Its complete stone tower is fully visible with generous sky above and rocks below: short crenellated cap, compact lantern room, stout masonry shaft and wide rocky base. Through the lantern glass, a huge circular brass Fresnel lens is clearly visible as the dominant object. It emits one brilliant horizontal golden-white beam across the bay, pushing a distant raider backward. Preserve the full tower top and full base inside the central crop; lens and beam origin inside x24..488,y105..407. The beam may continue off the right edge. Mechanics: a sturdy steady lighthouse lens sends a beam that can push enemies back. Painterly medieval fantasy collectible-card illustration in the supplied Hexmancers style: rich believable limestone, bronze, glass, leather and sea, nuanced brushwork, attractive directional lantern light, atmospheric depth, grounded proportions. Explicit 1:1 SQUARE canvas for an editable 512x512 master and horizontal 206:141 crop. Keep complete named object within x24..488,y105..407; quiet sky and water at top and bottom. Strong readable subject and one action. No frame, text, lettering, numbers, UI, anime, cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-20ebbfff-bdfe-47be-83c5-75aaa9dda3b1.png",
     "focalPoint": [
       0.5,
@@ -780,12 +780,12 @@
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Reviewed the 512-square source, upward-shifted 206:141 crop, and 128px thumbnail. The djinn idol\u2019s complete face, turban, torso and tidal empowerment ring remain clear with defenders for scale; its pedestal base is partly trimmed."
+    "reviewNote": "Reviewed the 512-square source, upward-shifted 206:141 crop, and 128px thumbnail. The djinn idol’s complete face, turban, torso and tidal empowerment ring remain clear with defenders for scale; its pedestal base is partly trimmed."
   },
   {
     "cardId": "brown_instant_09",
     "name": "Giant's Strength Potion",
-    "prompt": "Paint an illustration for the exact card Giant's Strength Potion. Mechanic: a quick alchemical boon greatly empowers a creature for a long duration with a glowing strength aura, while knocking a nearby foe down. Show a muscular medieval mercenary lifting a small emerald-gold potion flask to his lips; as he drinks, his shoulders and arms swell with magical vigor, a warm golden aura of strength wrapping his torso and a nearby foe knocked back into the dirt. Keep the flask, drinking hand, mercenary\u2019s determined face and powerful upper body clear and central; recognizable tiny vial is the named object. Painterly high fantasy card illustration, nuanced glass, leather, steel and cloth, warm amber glow against cool battlefield dusk, grounded anatomy, dynamic but readable action. Explicit 1:1 square for editable 512x512 master, composed for 206:141 horizontal crop with face, hand and vial inside x24..488,y105..407. No frame, text, UI, anime, Disney cartoon, photorealism, pixel art or modern objects.",
+    "prompt": "Paint an illustration for the exact card Giant's Strength Potion. Mechanic: a quick alchemical boon greatly empowers a creature for a long duration with a glowing strength aura, while knocking a nearby foe down. Show a muscular medieval mercenary lifting a small emerald-gold potion flask to his lips; as he drinks, his shoulders and arms swell with magical vigor, a warm golden aura of strength wrapping his torso and a nearby foe knocked back into the dirt. Keep the flask, drinking hand, mercenary’s determined face and powerful upper body clear and central; recognizable tiny vial is the named object. Painterly high fantasy card illustration, nuanced glass, leather, steel and cloth, warm amber glow against cool battlefield dusk, grounded anatomy, dynamic but readable action. Explicit 1:1 square for editable 512x512 master, composed for 206:141 horizontal crop with face, hand and vial inside x24..488,y105..407. No frame, text, UI, anime, Disney cartoon, photorealism, pixel art or modern objects.",
     "generatedPath": "/workspace/generated_images/exec-911d92f5-e62b-4867-9625-e6d34561bcaf.png",
     "editableSourcePath": "game/cards/art/masters/brown_instant_09.png",
     "sourceNative": [
@@ -798,7 +798,7 @@
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Reviewed the 512-square source, upward-shifted 206:141 crop, and 128px thumbnail. The mercenary\u2019s full face and drinking hand, green-gold vial, strength aura and knocked-back foe remain legible; lower legs are cropped."
+    "reviewNote": "Reviewed the 512-square source, upward-shifted 206:141 crop, and 128px thumbnail. The mercenary’s full face and drinking hand, green-gold vial, strength aura and knocked-back foe remain legible; lower legs are cropped."
   },
   {
     "cardId": "brown_equip_22",
@@ -816,7 +816,7 @@
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Reviewed the replacement 512-square source, upward-shifted 206:141 crop, and 128px thumbnail. The guard\u2019s complete face and helmet, harness and both hands, and the entire compact shield with all corners remain visible; incidental arrows extend beyond the right edge. Two earlier larger-shield sources are preserved in /tmp."
+    "reviewNote": "Reviewed the replacement 512-square source, upward-shifted 206:141 crop, and 128px thumbnail. The guard’s complete face and helmet, harness and both hands, and the entire compact shield with all corners remain visible; incidental arrows extend beyond the right edge. Two earlier larger-shield sources are preserved in /tmp."
   },
   {
     "cardId": "brown_tinker_09",
@@ -834,12 +834,12 @@
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Reviewed the 512-square source, upward-shifted 206:141 crop, and 128px thumbnail. Goblin\u2019s full face, tape roll, pressing hand, clear crisscross patch and leaking sparks are readable; the repair and main action dominate."
+    "reviewNote": "Reviewed the 512-square source, upward-shifted 206:141 crop, and 128px thumbnail. Goblin’s full face, tape roll, pressing hand, clear crisscross patch and leaking sparks are readable; the repair and main action dominate."
   },
   {
     "cardId": "brown_ace_05",
     "name": "Elven Crystal Sling",
-    "prompt": "Paint an illustration for the exact card Elven Crystal Sling. Mechanic: a powerful elf attack sends a straight-line volley of immense force. Show an elven huntress in forest-green leather planting her feet on a ruined stone ridge and releasing a luminous faceted crystal from an elegant braided leather sling; the crystal flies in a hard, straight glowing line toward a distant armored target, leaving a narrow blue-white streak and a crisp burst on impact. Make the sling and crystal projectile unmistakable, with the elf\u2019s face, sling-holding hand and full arm visible. Keep face, hands, sling, crystal and straight flight path inside x24..488,y105..407. Painterly high fantasy card art, intricate silver clasps and natural materials, cool crystal light against warm forest dusk, atmospheric depth and grounded anatomy. Explicit 1:1 square for editable 512x512 master and 206:141 horizontal crop. No frame, text, UI, anime, Disney cartoon, photorealism, pixel art or modern weapons.",
+    "prompt": "Paint an illustration for the exact card Elven Crystal Sling. Mechanic: a powerful elf attack sends a straight-line volley of immense force. Show an elven huntress in forest-green leather planting her feet on a ruined stone ridge and releasing a luminous faceted crystal from an elegant braided leather sling; the crystal flies in a hard, straight glowing line toward a distant armored target, leaving a narrow blue-white streak and a crisp burst on impact. Make the sling and crystal projectile unmistakable, with the elf’s face, sling-holding hand and full arm visible. Keep face, hands, sling, crystal and straight flight path inside x24..488,y105..407. Painterly high fantasy card art, intricate silver clasps and natural materials, cool crystal light against warm forest dusk, atmospheric depth and grounded anatomy. Explicit 1:1 square for editable 512x512 master and 206:141 horizontal crop. No frame, text, UI, anime, Disney cartoon, photorealism, pixel art or modern weapons.",
     "generatedPath": "/workspace/generated_images/exec-d552083d-de57-443a-976a-05a019b58326.png",
     "editableSourcePath": "game/cards/art/masters/brown_ace_05.png",
     "sourceNative": [
@@ -852,12 +852,12 @@
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Reviewed the 512-square source, upward-shifted 206:141 crop, and 128px thumbnail. The huntress\u2019s full face, both sling hands, braided sling, crystal and straight flight line remain clear; lower legs and distant target are secondary and partly cropped."
+    "reviewNote": "Reviewed the 512-square source, upward-shifted 206:141 crop, and 128px thumbnail. The huntress’s full face, both sling hands, braided sling, crystal and straight flight line remain clear; lower legs and distant target are secondary and partly cropped."
   },
   {
     "cardId": "brown_machine_12",
     "name": "Troll Bone Ballista",
-    "prompt": "Paint an illustration for Troll Bone Ballista: a formidable ballista built from massive troll bones and sinew, firing a frost-bright bolt from a rugged medieval emplacement. Its huge bone limbs and bolt are the clear named subject. Painterly medieval fantasy collectible-card art, believable bone, leather and iron, directional cold light, atmospheric depth. Square 1:1 canvas for an editable 512x512 master; keep full ballista, bolt head and focal detail inside x24\u2013488,y105\u2013407, with expendable scenery top and bottom; also readable in 206:141 horizontal crop. No border, text, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for Troll Bone Ballista: a formidable ballista built from massive troll bones and sinew, firing a frost-bright bolt from a rugged medieval emplacement. Its huge bone limbs and bolt are the clear named subject. Painterly medieval fantasy collectible-card art, believable bone, leather and iron, directional cold light, atmospheric depth. Square 1:1 canvas for an editable 512x512 master; keep full ballista, bolt head and focal detail inside x24–488,y105–407, with expendable scenery top and bottom; also readable in 206:141 horizontal crop. No border, text, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-e1e0ace5-0bd0-4dd1-859a-d0bc9905209e.png",
     "editableSourcePath": "game/cards/art/masters/brown_machine_12.png",
     "sourceNative": [
@@ -875,7 +875,7 @@
   {
     "cardId": "brown_instant_10",
     "name": "Haoma Cup",
-    "prompt": "Paint an illustration for Haoma Cup: an ornate ancient djinn cup filled with glowing haoma, its vapor curling into a subtle protective spirit, conveying courage and chilling composure. The full jeweled cup and distinctive rim are prominent and unobscured. Painterly medieval fantasy, rich brass, carved stone and luminous liquid, atmospheric directional light. Square 1:1 canvas for editable 512x512 master; keep cup and key vapor detail inside x24\u2013488,y105\u2013407 for 206:141 crop. No border, lettering, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for Haoma Cup: an ornate ancient djinn cup filled with glowing haoma, its vapor curling into a subtle protective spirit, conveying courage and chilling composure. The full jeweled cup and distinctive rim are prominent and unobscured. Painterly medieval fantasy, rich brass, carved stone and luminous liquid, atmospheric directional light. Square 1:1 canvas for editable 512x512 master; keep cup and key vapor detail inside x24–488,y105–407 for 206:141 crop. No border, lettering, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-889d78e4-c96a-4782-945b-cd6d653e07af.png",
     "editableSourcePath": "game/cards/art/masters/brown_instant_10.png",
     "sourceNative": [
@@ -893,7 +893,7 @@
   {
     "cardId": "brown_equip_26",
     "name": "War Banner Pole",
-    "prompt": "Create a square 1:1 painterly medieval fantasy card illustration for War Banner Pole. Show a SHORT hand-held standard pole only about half the image height, angled diagonally from lower-left to upper-right, with the complete pointed butt, shaft, finial and attached red-and-gold rally banner visible together inside a central horizontal 206:141 safe band. Make the whole pole about 260 pixels long in a 512 square and leave clear margin above and below; do not depict a tall upright full-height flagstaff. A determined human standard-bearer grips the middle, his face and hand visible; a few allies rally in soft background. Believable carved wood, brass and woven cloth, warm directional light, detailed painterly collectible-card fantasy art. Keep all critical elements within x24\u2013488,y105\u2013407. No lettering, no border, numbers or UI, no anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Create a square 1:1 painterly medieval fantasy card illustration for War Banner Pole. Show a SHORT hand-held standard pole only about half the image height, angled diagonally from lower-left to upper-right, with the complete pointed butt, shaft, finial and attached red-and-gold rally banner visible together inside a central horizontal 206:141 safe band. Make the whole pole about 260 pixels long in a 512 square and leave clear margin above and below; do not depict a tall upright full-height flagstaff. A determined human standard-bearer grips the middle, his face and hand visible; a few allies rally in soft background. Believable carved wood, brass and woven cloth, warm directional light, detailed painterly collectible-card fantasy art. Keep all critical elements within x24–488,y105–407. No lettering, no border, numbers or UI, no anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-d8c28990-03b5-41a9-9ecc-072c4dc5e7a1.png",
     "editableSourcePath": "game/cards/art/masters/brown_equip_26.png",
     "sourceNative": [
@@ -911,7 +911,7 @@
   {
     "cardId": "brown_tinker_10",
     "name": "Alchemical Infusion",
-    "prompt": "Paint an illustration for Alchemical Infusion: a careful alchemist pours a vivid emerald alchemical infusion from a stoppered glass flask into a warrior's cup, poisonous vapor shimmering but contained. The full flask, stopper and pouring hand are clear. Painterly medieval fantasy collectible-card art, believable glass, bronze instruments, rich luminous liquid and moody laboratory light. Square 1:1 canvas for editable 512x512 master; keep face, pouring hand, whole flask and stopper inside x24\u2013488,y105\u2013407 for 206:141 crop. No border, writing, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for Alchemical Infusion: a careful alchemist pours a vivid emerald alchemical infusion from a stoppered glass flask into a warrior's cup, poisonous vapor shimmering but contained. The full flask, stopper and pouring hand are clear. Painterly medieval fantasy collectible-card art, believable glass, bronze instruments, rich luminous liquid and moody laboratory light. Square 1:1 canvas for editable 512x512 master; keep face, pouring hand, whole flask and stopper inside x24–488,y105–407 for 206:141 crop. No border, writing, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-61811615-8ae2-4978-ba1c-81dc9eea741e.png",
     "editableSourcePath": "game/cards/art/masters/brown_tinker_10.png",
     "sourceNative": [
@@ -929,7 +929,7 @@
   {
     "cardId": "brown_ace_06",
     "name": "Harpoon Gun",
-    "prompt": "Paint an illustration for Harpoon Gun, a sea-folk ace weapon that fires a powerful line shot and drags its target closer: a beautifully crafted medieval harpoon gun with complete barrel, stock, iron harpoon head and attached coiled rope, gripped by a determined merfolk sailor aiming across a stormy harbor. The entire named gun and spear head remain visible and dominant; show a taut rope line for the pulling action. Painterly medieval fantasy collectible-card art, wood, bronze, salt-spray, directional sea light and atmospheric depth. Square 1:1 canvas for an editable 512x512 master; arrange the weapon horizontally and keep face, gripping hand, full gun and harpoon head within x24\u2013488,y105\u2013407 for 206:141 crop. No border, writing, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for Harpoon Gun, a sea-folk ace weapon that fires a powerful line shot and drags its target closer: a beautifully crafted medieval harpoon gun with complete barrel, stock, iron harpoon head and attached coiled rope, gripped by a determined merfolk sailor aiming across a stormy harbor. The entire named gun and spear head remain visible and dominant; show a taut rope line for the pulling action. Painterly medieval fantasy collectible-card art, wood, bronze, salt-spray, directional sea light and atmospheric depth. Square 1:1 canvas for an editable 512x512 master; arrange the weapon horizontally and keep face, gripping hand, full gun and harpoon head within x24–488,y105–407 for 206:141 crop. No border, writing, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-f3c07369-1783-4779-9e83-05c2bcff4272.png",
     "editableSourcePath": "game/cards/art/masters/brown_ace_06.png",
     "sourceNative": [
@@ -947,7 +947,7 @@
   {
     "cardId": "brown_machine_13",
     "name": "Alchemist's Fire Siphon",
-    "prompt": "Illustrate Alchemist's Fire Siphon as an exact 1:1 square medieval fantasy card painting. Make a compact LOW profile device only 210 pixels tall: a horizontal brass cannon mounted on a low stone bench, with a round glass fire reservoir attached beside the barrel at the SAME height, joined by one short looping copper tube. Show the complete orb, its metal cap and base, every connecting tube, cannon breech, full muzzle and the bench supports together; nothing is stacked high, nothing touches an edge. Keep the complete named artifact strictly inside the central horizontal safe band y125\u2013385 and x35\u2013477 so the entire device survives a 206:141 crop. The orb draws a controlled orange flame through the tube and the muzzle vents a small flame. Painterly high-fantasy materials, detailed brass and glass, warm directional sunset light. Quiet scenery above and below. No text, letters, numbers, border, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Illustrate Alchemist's Fire Siphon as an exact 1:1 square medieval fantasy card painting. Make a compact LOW profile device only 210 pixels tall: a horizontal brass cannon mounted on a low stone bench, with a round glass fire reservoir attached beside the barrel at the SAME height, joined by one short looping copper tube. Show the complete orb, its metal cap and base, every connecting tube, cannon breech, full muzzle and the bench supports together; nothing is stacked high, nothing touches an edge. Keep the complete named artifact strictly inside the central horizontal safe band y125–385 and x35–477 so the entire device survives a 206:141 crop. The orb draws a controlled orange flame through the tube and the muzzle vents a small flame. Painterly high-fantasy materials, detailed brass and glass, warm directional sunset light. Quiet scenery above and below. No text, letters, numbers, border, UI, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-216249bc-b578-4608-af6e-88159ac40447.png",
     "editableSourcePath": "game/cards/art/masters/brown_machine_13.png",
     "sourceNative": [
@@ -965,7 +965,7 @@
   {
     "cardId": "brown_instant_11",
     "name": "Liquid Courage",
-    "prompt": "Paint an illustration for Liquid Courage: a sturdy dwarf lifts a small clear glass flask of amber courage tonic, a faint cool blue aura gathering around the hand and shoulders as resolve replaces fear. Keep the dwarf's face, flask, stopper and hand prominent and fully visible. Painterly medieval fantasy collectible-card art, warm amber drink against subtle chill-blue magic, atmospheric tavern light. Square 1:1 editable 512x512 master; keep face and whole portable flask within x24\u2013488,y105\u2013407 for 206:141 crop. No border, labels, text, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for Liquid Courage: a sturdy dwarf lifts a small clear glass flask of amber courage tonic, a faint cool blue aura gathering around the hand and shoulders as resolve replaces fear. Keep the dwarf's face, flask, stopper and hand prominent and fully visible. Painterly medieval fantasy collectible-card art, warm amber drink against subtle chill-blue magic, atmospheric tavern light. Square 1:1 editable 512x512 master; keep face and whole portable flask within x24–488,y105–407 for 206:141 crop. No border, labels, text, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-81cc2500-ee05-4821-8931-a8dcaad8a0e0.png",
     "editableSourcePath": "game/cards/art/masters/brown_instant_11.png",
     "sourceNative": [
@@ -983,7 +983,7 @@
   {
     "cardId": "brown_tinker_11",
     "name": "Fire Rune Etching",
-    "prompt": "Paint an illustration for Fire Rune Etching: a dwarven craftworker's hands carefully engraving a glowing orange fire rune into a steel blade with a fine rune stylus, sparks tracing the newly etched groove. Make the engraving hand, tool, rune and blade the clear focal subject; show part of the dwarf's focused face above. Painterly medieval fantasy collectible-card art, iron, chisel marks, leather apron, warm forge glow. Square 1:1 editable 512x512 master; keep face, both relevant hands and rune-bearing blade inside x24\u2013488,y105\u2013407 for 206:141 crop. No readable letters, no border, text, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for Fire Rune Etching: a dwarven craftworker's hands carefully engraving a glowing orange fire rune into a steel blade with a fine rune stylus, sparks tracing the newly etched groove. Make the engraving hand, tool, rune and blade the clear focal subject; show part of the dwarf's focused face above. Painterly medieval fantasy collectible-card art, iron, chisel marks, leather apron, warm forge glow. Square 1:1 editable 512x512 master; keep face, both relevant hands and rune-bearing blade inside x24–488,y105–407 for 206:141 crop. No readable letters, no border, text, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-06d71154-911a-44ee-b90c-5179e1e91018.png",
     "editableSourcePath": "game/cards/art/masters/brown_tinker_11.png",
     "sourceNative": [
@@ -1001,7 +1001,7 @@
   {
     "cardId": "brown_ace_07",
     "name": "Double-Barrel Blunderbuss",
-    "prompt": "Paint an illustration for Double-Barrel Blunderbuss in an exact 1:1 square. A human adventurer holds a rare ornate medieval double-barrel blunderbuss at chest height. ZOOM OUT enough to show the complete weapon with generous empty margin on both ends: full wooden stock and butt, trigger, receiver, two parallel steel barrels, and both muzzles. The complete weapon should occupy only about 70 percent of the square width, centered from x75 to x440; leave clear space from each edge. Keep the adventurer's face and both hands visible behind the weapon. Twin small muzzle flashes suggest its paired shot. Painterly high-fantasy collectible-card art, steel, brass, walnut and directional light. Ensure the entire stock, both complete barrels and muzzles remain within x24\u2013488,y105\u2013407 in the square and its 206:141 horizontal crop. No frame, text, numbers or UI, no anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for Double-Barrel Blunderbuss in an exact 1:1 square. A human adventurer holds a rare ornate medieval double-barrel blunderbuss at chest height. ZOOM OUT enough to show the complete weapon with generous empty margin on both ends: full wooden stock and butt, trigger, receiver, two parallel steel barrels, and both muzzles. The complete weapon should occupy only about 70 percent of the square width, centered from x75 to x440; leave clear space from each edge. Keep the adventurer's face and both hands visible behind the weapon. Twin small muzzle flashes suggest its paired shot. Painterly high-fantasy collectible-card art, steel, brass, walnut and directional light. Ensure the entire stock, both complete barrels and muzzles remain within x24–488,y105–407 in the square and its 206:141 horizontal crop. No frame, text, numbers or UI, no anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-7416fee5-f146-4402-99f1-5b101d706057.png",
     "editableSourcePath": "game/cards/art/masters/brown_ace_07.png",
     "sourceNative": [
@@ -1019,7 +1019,7 @@
   {
     "cardId": "brown_machine_14",
     "name": "Brass Crossbow Turret",
-    "prompt": "Create a painterly medieval fantasy illustration for Brass Crossbow Turret in an exact square 1:1 canvas. Show one SQUAT low-profile brass crossbow turret, a compact mechanical crossbow with short bow arms on a short round swivel pedestal, fully visible from bow tips to pedestal base. Its bolt shoots straight across the scene. A human defender stands behind it, with entire face and raised signaling hand safely visible. Keep turret height under 240 pixels and place turret, face, hand and bolt entirely inside a central horizontal band y125\u2013385, x24\u2013488; leave quiet sky above and stonework below. The whole named turret, including base and both bow tips, must fit in the 206:141 crop without touching the crop edges. Painterly forged brass, wood and stone, clear readable silhouette, directional daylight. No border, writing, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Create a painterly medieval fantasy illustration for Brass Crossbow Turret in an exact square 1:1 canvas. Show one SQUAT low-profile brass crossbow turret, a compact mechanical crossbow with short bow arms on a short round swivel pedestal, fully visible from bow tips to pedestal base. Its bolt shoots straight across the scene. A human defender stands behind it, with entire face and raised signaling hand safely visible. Keep turret height under 240 pixels and place turret, face, hand and bolt entirely inside a central horizontal band y125–385, x24–488; leave quiet sky above and stonework below. The whole named turret, including base and both bow tips, must fit in the 206:141 crop without touching the crop edges. Painterly forged brass, wood and stone, clear readable silhouette, directional daylight. No border, writing, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-119601d6-58cd-4633-b323-2ddfeac8fa17.png",
     "editableSourcePath": "game/cards/art/masters/brown_machine_14.png",
     "sourceNative": [
@@ -1037,7 +1037,7 @@
   {
     "cardId": "brown_instant_12",
     "name": "Mead of Poetry",
-    "prompt": "Paint an illustration for Mead of Poetry: a human bard drinks from a full wooden mead cup beside a parchment and quill, then suddenly composes shining lines of verse as small motes gather into a spell gauge. The bard's expressive face, cup, hand and the whole portable cup remain the focus, with cool enchantment balanced by warm hearth light. Painterly medieval fantasy collectible-card art, leather, carved wood and atmospheric tavern detail. Square 1:1 editable 512x512 master; keep face, cup, hand and quill inside x24\u2013488,y105\u2013407 for 206:141 crop. No readable writing, border, text, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for Mead of Poetry: a human bard drinks from a full wooden mead cup beside a parchment and quill, then suddenly composes shining lines of verse as small motes gather into a spell gauge. The bard's expressive face, cup, hand and the whole portable cup remain the focus, with cool enchantment balanced by warm hearth light. Painterly medieval fantasy collectible-card art, leather, carved wood and atmospheric tavern detail. Square 1:1 editable 512x512 master; keep face, cup, hand and quill inside x24–488,y105–407 for 206:141 crop. No readable writing, border, text, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-6414bb73-7244-4e43-b2d6-786bb1078c7c.png",
     "editableSourcePath": "game/cards/art/masters/brown_instant_12.png",
     "sourceNative": [
@@ -1055,7 +1055,7 @@
   {
     "cardId": "brown_tinker_12",
     "name": "Frost Coating",
-    "prompt": "Paint an illustration for Frost Coating: a sea-folk craftswoman uses a small brush to spread a crystalline blue frost coating along an entire steel cutlass, the blade freezing from hilt to point. Show her face, working hand, brush, whole hilt and entire blade clearly. Painterly medieval fantasy collectible-card art, salt-spray workshop, steel, glass jar and cool reflected ice light. Square 1:1 editable 512x512 master; arrange whole cutlass horizontally and keep face, brush-hand and complete named blade within x24\u2013488,y105\u2013407 for 206:141 crop. No text, lettering, border, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for Frost Coating: a sea-folk craftswoman uses a small brush to spread a crystalline blue frost coating along an entire steel cutlass, the blade freezing from hilt to point. Show her face, working hand, brush, whole hilt and entire blade clearly. Painterly medieval fantasy collectible-card art, salt-spray workshop, steel, glass jar and cool reflected ice light. Square 1:1 editable 512x512 master; arrange whole cutlass horizontally and keep face, brush-hand and complete named blade within x24–488,y105–407 for 206:141 crop. No text, lettering, border, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-92b579b0-0464-4056-8ff6-7867fa0015d2.png",
     "editableSourcePath": "game/cards/art/masters/brown_tinker_12.png",
     "sourceNative": [
@@ -1073,7 +1073,7 @@
   {
     "cardId": "brown_ace_12",
     "name": "Troll Bone Crossbow",
-    "prompt": "Paint an illustration for Troll Bone Crossbow: a powerful troll warrior braces a handcrafted heavy crossbow made from huge ivory troll bones, sinew and dark iron, loosing a thick bolt that leaves a trail of cold mist. Show the troll's face and hands, complete crossbow from stock to bow tips, and complete bolt. Painterly medieval fantasy collectible-card art, rugged stone pass and cool directional light. Square 1:1 editable 512x512 master, keep face, hands and entire named crossbow within x24\u2013488,y105\u2013407; arrange horizontally for 206:141 crop. No border, text, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for Troll Bone Crossbow: a powerful troll warrior braces a handcrafted heavy crossbow made from huge ivory troll bones, sinew and dark iron, loosing a thick bolt that leaves a trail of cold mist. Show the troll's face and hands, complete crossbow from stock to bow tips, and complete bolt. Painterly medieval fantasy collectible-card art, rugged stone pass and cool directional light. Square 1:1 editable 512x512 master, keep face, hands and entire named crossbow within x24–488,y105–407; arrange horizontally for 206:141 crop. No border, text, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-902b7607-6af1-4690-8e74-455b565e7b54.png",
     "editableSourcePath": "game/cards/art/masters/brown_ace_12.png",
     "sourceNative": [
@@ -1091,7 +1091,7 @@
   {
     "cardId": "brown_machine_15",
     "name": "Antikythera Sentinel",
-    "prompt": "Paint an illustration for Antikythera Sentinel: a complete ancient bronze automaton guardian with a readable clockwork torso, articulated limbs and a distinctive exposed astronomical gear mechanism at its chest, standing watch in a ruined classical temple. Convey protection and mechanical intelligence. Painterly medieval fantasy collectible-card art, aged brass, stone and warm shaft of light. Square 1:1 editable 512x512 master; keep the sentinel's entire head and essential automaton body within x24\u2013488,y105\u2013407 for 206:141 crop, with quiet atmosphere beyond. No border, writing, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for Antikythera Sentinel: a complete ancient bronze automaton guardian with a readable clockwork torso, articulated limbs and a distinctive exposed astronomical gear mechanism at its chest, standing watch in a ruined classical temple. Convey protection and mechanical intelligence. Painterly medieval fantasy collectible-card art, aged brass, stone and warm shaft of light. Square 1:1 editable 512x512 master; keep the sentinel's entire head and essential automaton body within x24–488,y105–407 for 206:141 crop, with quiet atmosphere beyond. No border, writing, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-12785012-efa2-4902-9740-201ac0b529f6.png",
     "editableSourcePath": "game/cards/art/masters/brown_machine_15.png",
     "sourceNative": [
@@ -1109,7 +1109,7 @@
   {
     "cardId": "brown_instant_13",
     "name": "Mana Potion",
-    "prompt": "Paint an illustration for Mana Potion: a precise alchemist's glass vial filled with radiant golden mana, fully visible from glass foot to cork stopper, held up against a dim workshop so its light blooms into a rising arcane gauge of energy. Show the alchemist's focused face and hand behind the vial; potion remains the dominant named object. Painterly medieval fantasy collectible-card art, delicate glass reflections, brass alchemy tools, luminous controlled gold-white light. Square 1:1 editable 512x512 master; keep face, hand and whole vial with stopper inside x24\u2013488,y105\u2013407 for 206:141 crop. No labels, lettering, border, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for Mana Potion: a precise alchemist's glass vial filled with radiant golden mana, fully visible from glass foot to cork stopper, held up against a dim workshop so its light blooms into a rising arcane gauge of energy. Show the alchemist's focused face and hand behind the vial; potion remains the dominant named object. Painterly medieval fantasy collectible-card art, delicate glass reflections, brass alchemy tools, luminous controlled gold-white light. Square 1:1 editable 512x512 master; keep face, hand and whole vial with stopper inside x24–488,y105–407 for 206:141 crop. No labels, lettering, border, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-c290eef1-2f4a-45cf-b664-4812c5f56812.png",
     "editableSourcePath": "game/cards/art/masters/brown_instant_13.png",
     "sourceNative": [
@@ -1127,7 +1127,7 @@
   {
     "cardId": "brown_tinker_13",
     "name": "Spark Plug",
-    "prompt": "Paint an illustration for Spark Plug: a tiny but intricate gnomish brass spark plug held between a craftsperson's fingers, snapping with a sharp blue-white arc that stuns a nearby clockwork beast. Keep the complete named plug, both fingers and gnome's focused face clearly readable; the plug is the subject. Painterly medieval fantasy collectible-card art, copper threads, porcelain insulator, workshop lamps and electric blue light. Square 1:1 editable 512x512 master; keep face, hand and whole plug within x24\u2013488,y105\u2013407 for 206:141 crop. No text, labels, numbers, border, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for Spark Plug: a tiny but intricate gnomish brass spark plug held between a craftsperson's fingers, snapping with a sharp blue-white arc that stuns a nearby clockwork beast. Keep the complete named plug, both fingers and gnome's focused face clearly readable; the plug is the subject. Painterly medieval fantasy collectible-card art, copper threads, porcelain insulator, workshop lamps and electric blue light. Square 1:1 editable 512x512 master; keep face, hand and whole plug within x24–488,y105–407 for 206:141 crop. No text, labels, numbers, border, UI, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-9c30fc65-ae33-4eab-a5e9-b6d382852ed2.png",
     "editableSourcePath": "game/cards/art/masters/brown_tinker_13.png",
     "sourceNative": [
@@ -1145,7 +1145,7 @@
   {
     "cardId": "brown_machine_16",
     "name": "Gnomish Gatling",
-    "prompt": "Paint an illustration for Gnomish Gatling: a fully visible compact brass gnomish gatling gun with a clear cluster of rotating barrels, gear crank, stock and low tripod, firing a controlled fan of bolts that slows a charging armored foe in a fantasy courtyard. A gnome engineer braces it behind the mechanism. Painterly medieval fantasy collectible-card art, detailed clockwork, wood, brass and crisp action light. Square 1:1 editable 512x512 master; keep the entire gatling, barrel cluster, base, gnome face and hands inside x24\u2013488,y105\u2013407 for 206:141 crop. No border, lettering, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for Gnomish Gatling: a fully visible compact brass gnomish gatling gun with a clear cluster of rotating barrels, gear crank, stock and low tripod, firing a controlled fan of bolts that slows a charging armored foe in a fantasy courtyard. A gnome engineer braces it behind the mechanism. Painterly medieval fantasy collectible-card art, detailed clockwork, wood, brass and crisp action light. Square 1:1 editable 512x512 master; keep the entire gatling, barrel cluster, base, gnome face and hands inside x24–488,y105–407 for 206:141 crop. No border, lettering, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-6d0064ca-8aa4-4627-819e-a51da6bc0468.png",
     "editableSourcePath": "game/cards/art/masters/brown_machine_16.png",
     "sourceNative": [
@@ -1163,7 +1163,7 @@
   {
     "cardId": "brown_instant_14",
     "name": "Gnomish Coffee",
-    "prompt": "Paint an illustration for Gnomish Coffee: a lively gnome alchemist takes a quick sip from a steaming little ceramic coffee cup, blue-white haste motes and a faint warm golden glow swirling around the eager face and nimble hands. The whole cup, handle and rim are prominent, with the gnome's face clearly readable. Painterly medieval fantasy collectible-card art, richly detailed workshop, ceramic, brass and magical steam. Square 1:1 editable 512x512 master; keep face, hand and entire portable cup within x24\u2013488,y105\u2013407 for 206:141 crop. No writing, labels, border, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for Gnomish Coffee: a lively gnome alchemist takes a quick sip from a steaming little ceramic coffee cup, blue-white haste motes and a faint warm golden glow swirling around the eager face and nimble hands. The whole cup, handle and rim are prominent, with the gnome's face clearly readable. Painterly medieval fantasy collectible-card art, richly detailed workshop, ceramic, brass and magical steam. Square 1:1 editable 512x512 master; keep face, hand and entire portable cup within x24–488,y105–407 for 206:141 crop. No writing, labels, border, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-eebd8772-f20d-4abc-82a5-f9ee7cb66ed5.png",
     "editableSourcePath": "game/cards/art/masters/brown_instant_14.png",
     "sourceNative": [
@@ -1181,7 +1181,7 @@
   {
     "cardId": "brown_tinker_14",
     "name": "Silver Plating",
-    "prompt": "Paint an illustration for Silver Plating: a human armorer carefully presses a gleaming silver plate onto a dark steel shield, showing the bright plate's clean outline, fastening rivets and metalworking hand. Keep the entire named silver plate visible and distinct against the darker backing, with the craftworker's focused face and supporting hand nearby. Painterly medieval fantasy collectible-card art, polished silver reflections, steel, leather gloves, warm forge light. Square 1:1 editable 512x512 master; keep face, hands and whole silver plate inside x24\u2013488,y105\u2013407 for 206:141 crop. No lettering, border, text, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for Silver Plating: a human armorer carefully presses a gleaming silver plate onto a dark steel shield, showing the bright plate's clean outline, fastening rivets and metalworking hand. Keep the entire named silver plate visible and distinct against the darker backing, with the craftworker's focused face and supporting hand nearby. Painterly medieval fantasy collectible-card art, polished silver reflections, steel, leather gloves, warm forge light. Square 1:1 editable 512x512 master; keep face, hands and whole silver plate inside x24–488,y105–407 for 206:141 crop. No lettering, border, text, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-9af87394-f5d4-4d12-92bd-374973ae2ef1.png",
     "editableSourcePath": "game/cards/art/masters/brown_tinker_14.png",
     "sourceNative": [
@@ -1199,7 +1199,7 @@
   {
     "cardId": "brown_machine_17",
     "name": "Brass Hornet Swarm",
-    "prompt": "Paint an illustration for Brass Hornet Swarm: a coordinated flock of small gnomish clockwork hornet drones made from brass, thin translucent wings and tiny stingers, spiraling in a focused barrage around their gnome engineer. Keep the complete central swarm together as the strong identifiable subject, with several full drones visible in the central composition and the gnome's face and raised control hand safely visible. Painterly medieval fantasy collectible-card art, intricate gearwork, directional workshop light, atmospheric depth. Square 1:1 editable 512x512 master; keep face, hand and central hornet swarm within x24\u2013488,y105\u2013407 for the 206:141 crop; peripheral sparks and motion trails may extend beyond. No border, words, labels, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for Brass Hornet Swarm: a coordinated flock of small gnomish clockwork hornet drones made from brass, thin translucent wings and tiny stingers, spiraling in a focused barrage around their gnome engineer. Keep the complete central swarm together as the strong identifiable subject, with several full drones visible in the central composition and the gnome's face and raised control hand safely visible. Painterly medieval fantasy collectible-card art, intricate gearwork, directional workshop light, atmospheric depth. Square 1:1 editable 512x512 master; keep face, hand and central hornet swarm within x24–488,y105–407 for the 206:141 crop; peripheral sparks and motion trails may extend beyond. No border, words, labels, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-b5782c2e-3709-47de-a005-8561a3cac8ae.png",
     "editableSourcePath": "game/cards/art/masters/brown_machine_17.png",
     "sourceNative": [
@@ -1217,7 +1217,7 @@
   {
     "cardId": "brown_machine_18",
     "name": "Goblin Rattle-Gun",
-    "prompt": "Paint an original illustration for Goblin Rattle-Gun: a wiry goblin engineer behind a compact, hand-built brass-and-wood gatling rattle gun, its cluster of stubby barrels firing a fast zigzag burst across a stone alley. The goblin rallies two startled goblin allies into action; make the gun and goblin face unmistakable. Painterly medieval fantasy collectible-card painting, grounded anatomy, lively expressive character, richly tactile brass, leather, wood, directional warm light and atmospheric depth. Compose horizontally within a 1:1 square 512x512 master; keep goblin face, hands and complete gun with all barrels and stock within x24\u2013488,y105\u2013407, quiet scenery can fill top and bottom. 206:141 eventual crop. No card frame, no letters, text, symbols, numbers or UI; no anime, Disney cartoon, photorealism or pixel art.",
+    "prompt": "Paint an original illustration for Goblin Rattle-Gun: a wiry goblin engineer behind a compact, hand-built brass-and-wood gatling rattle gun, its cluster of stubby barrels firing a fast zigzag burst across a stone alley. The goblin rallies two startled goblin allies into action; make the gun and goblin face unmistakable. Painterly medieval fantasy collectible-card painting, grounded anatomy, lively expressive character, richly tactile brass, leather, wood, directional warm light and atmospheric depth. Compose horizontally within a 1:1 square 512x512 master; keep goblin face, hands and complete gun with all barrels and stock within x24–488,y105–407, quiet scenery can fill top and bottom. 206:141 eventual crop. No card frame, no letters, text, symbols, numbers or UI; no anime, Disney cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-671d2828-9cce-4602-a531-93016e26322f.png",
     "editableSourcePath": "game/cards/art/masters/brown_machine_18.png",
     "sourceNative": [
@@ -1235,7 +1235,7 @@
   {
     "cardId": "brown_instant_15",
     "name": "Kahve of the Bazaar",
-    "prompt": "Paint an original illustration for Kahve of the Bazaar: a dignified desert djinn merchant in embroidered robes offers a small ornate brass coffee cup to a weary caravan guard, the dark coffee releasing a graceful ribbon of warm fragrant steam that makes the guard spring alert and ready. Show djinn face, cup, hand, and guard's newly energized expression; lively bazaar awnings softly behind them. Painterly medieval fantasy collectible-card painting, believable cloth and brass, attractive warm lantern light, atmospheric depth. Compose horizontally within a 1:1 square 512x512 master; djinn and guard faces, cup and hands all fit x24\u2013488,y105\u2013407, quiet scenery beyond. 206:141 crop. No card frame, lettering, labels, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
+    "prompt": "Paint an original illustration for Kahve of the Bazaar: a dignified desert djinn merchant in embroidered robes offers a small ornate brass coffee cup to a weary caravan guard, the dark coffee releasing a graceful ribbon of warm fragrant steam that makes the guard spring alert and ready. Show djinn face, cup, hand, and guard's newly energized expression; lively bazaar awnings softly behind them. Painterly medieval fantasy collectible-card painting, believable cloth and brass, attractive warm lantern light, atmospheric depth. Compose horizontally within a 1:1 square 512x512 master; djinn and guard faces, cup and hands all fit x24–488,y105–407, quiet scenery beyond. 206:141 crop. No card frame, lettering, labels, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-3fd88699-8e72-475f-a73b-c97d6173911d.png",
     "editableSourcePath": "game/cards/art/masters/brown_instant_15.png",
     "sourceNative": [
@@ -1253,7 +1253,7 @@
   {
     "cardId": "brown_tinker_15",
     "name": "Counterweight",
-    "prompt": "Paint an original illustration for Counterweight: a broad-shouldered troll craftworker in a stone mill workshop hauling on a rope and iron lever to lift a massive dark counterweight, exposing the crisp pulley, axle and suspended anvil as a clear counterbalance mechanism. Focus on the troll's exertion, strong hand and face, the full hanging counterweight and the lever point; the weight's movement pushes a jammed gate upward. Painterly medieval fantasy collectible-card painting, tactile stone, iron and rope, warm forge light, grounded anatomy, rich atmosphere. Compose horizontally on a 1:1 square 512x512 master; troll face, working hands, full counterweight and lever junction stay within x24\u2013488,y105\u2013407 for 206:141 crop. No frame, writing, symbols, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
+    "prompt": "Paint an original illustration for Counterweight: a broad-shouldered troll craftworker in a stone mill workshop hauling on a rope and iron lever to lift a massive dark counterweight, exposing the crisp pulley, axle and suspended anvil as a clear counterbalance mechanism. Focus on the troll's exertion, strong hand and face, the full hanging counterweight and the lever point; the weight's movement pushes a jammed gate upward. Painterly medieval fantasy collectible-card painting, tactile stone, iron and rope, warm forge light, grounded anatomy, rich atmosphere. Compose horizontally on a 1:1 square 512x512 master; troll face, working hands, full counterweight and lever junction stay within x24–488,y105–407 for 206:141 crop. No frame, writing, symbols, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-b7d3fc86-c9ba-4a27-9dfa-427b23278d54.png",
     "editableSourcePath": "game/cards/art/masters/brown_tinker_15.png",
     "sourceNative": [
@@ -1271,7 +1271,7 @@
   {
     "cardId": "brown_machine_19",
     "name": "Chu-ko-nu Repeater",
-    "prompt": "Paint an original illustration for Chu-ko-nu Repeater: an ancient Chinese crossbowman operating a compact wooden chu-ko-nu repeating crossbow, one hand feeding its top-mounted bolt magazine while the other aims; a rapid chilling volley of short bolts streaks toward distant raiders. Make the distinctive repeater, top magazine, archer's focused face and both hands clear. Painterly medieval fantasy collectible-card painting, historical timber-and-bronze craft, cool directional light, detailed but natural materials and atmospheric depth. Compose horizontally on a 1:1 square 512x512 master, fit face, hands, entire crossbow and magazine within x24\u2013488,y105\u2013407 for 206:141 crop. No border, text, letters, symbols, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
+    "prompt": "Paint an original illustration for Chu-ko-nu Repeater: an ancient Chinese crossbowman operating a compact wooden chu-ko-nu repeating crossbow, one hand feeding its top-mounted bolt magazine while the other aims; a rapid chilling volley of short bolts streaks toward distant raiders. Make the distinctive repeater, top magazine, archer's focused face and both hands clear. Painterly medieval fantasy collectible-card painting, historical timber-and-bronze craft, cool directional light, detailed but natural materials and atmospheric depth. Compose horizontally on a 1:1 square 512x512 master, fit face, hands, entire crossbow and magazine within x24–488,y105–407 for 206:141 crop. No border, text, letters, symbols, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-2bd10d5a-bac5-4f88-b83c-c99f6761c7e0.png",
     "editableSourcePath": "game/cards/art/masters/brown_machine_19.png",
     "sourceNative": [
@@ -1289,7 +1289,7 @@
   {
     "cardId": "brown_instant_17",
     "name": "Smoke Bomb",
-    "prompt": "Paint an original illustration for Smoke Bomb: a clever goblin scout has just crushed a small round smoke bomb against a cobblestone lane; a dense rolling gray-purple smoke cloud curls around the goblin's crouched body as the scout dodges away, leaving pursuers confused silhouettes in the background. The goblin's alert face, throwing hand and complete little bomb casing remain visible in a clear gap at the cloud's edge. Painterly medieval fantasy collectible-card painting, textured leather, brass and stone, theatrical side light through smoke, atmospheric depth. Compose horizontally on a 1:1 square 512x512 master; goblin face, hand and bomb fit within x24\u2013488,y105\u2013407 for a 206:141 crop, with expendable smoke beyond. No border, lettering, words, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
+    "prompt": "Paint an original illustration for Smoke Bomb: a clever goblin scout has just crushed a small round smoke bomb against a cobblestone lane; a dense rolling gray-purple smoke cloud curls around the goblin's crouched body as the scout dodges away, leaving pursuers confused silhouettes in the background. The goblin's alert face, throwing hand and complete little bomb casing remain visible in a clear gap at the cloud's edge. Painterly medieval fantasy collectible-card painting, textured leather, brass and stone, theatrical side light through smoke, atmospheric depth. Compose horizontally on a 1:1 square 512x512 master; goblin face, hand and bomb fit within x24–488,y105–407 for a 206:141 crop, with expendable smoke beyond. No border, lettering, words, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-7601d554-bbd4-4e04-833a-45e511ef207e.png",
     "editableSourcePath": "game/cards/art/masters/brown_instant_17.png",
     "sourceNative": [
@@ -1307,7 +1307,7 @@
   {
     "cardId": "brown_tinker_16",
     "name": "Djinn's Polish",
-    "prompt": "Paint an original illustration for Djinn's Polish: a blue-skinned djinn artisan polishes a curved copper-brass helm with a folded cloth; wherever the polish catches light, two delicate ghostly reflections briefly appear, making the apprentice beside him blink in confusion. Keep the djinn's focused face, working hand, cloth, and clearly visible polished artifact at the center. Painterly medieval fantasy collectible-card painting, fine metal patina, embroidered robes, warm workshop highlights and cool djinn light, atmospheric depth. Compose on a 1:1 square 512x512 master; faces, hands and full artifact remain within x24\u2013488,y105\u2013407 for a 206:141 crop. No border, lettering, text, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
+    "prompt": "Paint an original illustration for Djinn's Polish: a blue-skinned djinn artisan polishes a curved copper-brass helm with a folded cloth; wherever the polish catches light, two delicate ghostly reflections briefly appear, making the apprentice beside him blink in confusion. Keep the djinn's focused face, working hand, cloth, and clearly visible polished artifact at the center. Painterly medieval fantasy collectible-card painting, fine metal patina, embroidered robes, warm workshop highlights and cool djinn light, atmospheric depth. Compose on a 1:1 square 512x512 master; faces, hands and full artifact remain within x24–488,y105–407 for a 206:141 crop. No border, lettering, text, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-053af38e-49ba-48d6-b7d4-50017ff8bc6f.png",
     "editableSourcePath": "game/cards/art/masters/brown_tinker_16.png",
     "sourceNative": [
@@ -1325,7 +1325,7 @@
   {
     "cardId": "brown_machine_20",
     "name": "Elven Spinning Glaive",
-    "prompt": "Paint an original illustration for Elven Spinning Glaive: an elf guardian guides a complete elegant silver-and-leaf-green glaive spinning on a short mechanical shaft, its crescent blade and counterweight orbiting in a controlled horizontal arc to mend a nearby wounded elven ally with a soft green glow. The whole glaive with both ends, the elf's face and guiding hand must be clear. Painterly medieval fantasy collectible-card painting, fine elven craft, forest stonework, flowing motion and luminous green light. Compose horizontally on a 1:1 square 512x512 master; face, hand and entire named glaive fit x24\u2013488,y105\u2013407 for 206:141 crop. No border, text, lettering, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
+    "prompt": "Paint an original illustration for Elven Spinning Glaive: an elf guardian guides a complete elegant silver-and-leaf-green glaive spinning on a short mechanical shaft, its crescent blade and counterweight orbiting in a controlled horizontal arc to mend a nearby wounded elven ally with a soft green glow. The whole glaive with both ends, the elf's face and guiding hand must be clear. Painterly medieval fantasy collectible-card painting, fine elven craft, forest stonework, flowing motion and luminous green light. Compose horizontally on a 1:1 square 512x512 master; face, hand and entire named glaive fit x24–488,y105–407 for 206:141 crop. No border, text, lettering, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-8a6aa730-56ef-447a-8bfb-180a8e51d570.png",
     "editableSourcePath": "game/cards/art/masters/brown_machine_20.png",
     "sourceNative": [
@@ -1343,7 +1343,7 @@
   {
     "cardId": "brown_instant_18",
     "name": "Cat's Eye Tonic",
-    "prompt": "Paint an original illustration for Cat's Eye Tonic: an elven scout drinks a single drop of luminous emerald tonic from a small clear glass vial; her pupils sharpen to catlike slits and she steps sideways in a sudden dodge as an arrow passes through the empty space she occupied. Show the elf's alert face, hand, whole vial and stopper, and clear motion of her dodge. Painterly medieval fantasy collectible-card painting, fine glass, leaf-patterned clothes, moonlit forest glade, precise directional light and atmosphere. Compose in a 1:1 square 512x512 master; face, hand, whole vial with stopper and dodge action fit x24\u2013488,y105\u2013407 for 206:141 crop. No border, text, labels, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
+    "prompt": "Paint an original illustration for Cat's Eye Tonic: an elven scout drinks a single drop of luminous emerald tonic from a small clear glass vial; her pupils sharpen to catlike slits and she steps sideways in a sudden dodge as an arrow passes through the empty space she occupied. Show the elf's alert face, hand, whole vial and stopper, and clear motion of her dodge. Painterly medieval fantasy collectible-card painting, fine glass, leaf-patterned clothes, moonlit forest glade, precise directional light and atmosphere. Compose in a 1:1 square 512x512 master; face, hand, whole vial with stopper and dodge action fit x24–488,y105–407 for 206:141 crop. No border, text, labels, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-95942c0c-35d6-4cfc-b5bf-552cc581b482.png",
     "editableSourcePath": "game/cards/art/masters/brown_instant_18.png",
     "sourceNative": [
@@ -1361,7 +1361,7 @@
   {
     "cardId": "brown_tinker_17",
     "name": "Wayland's Bench",
-    "prompt": "Paint an original illustration for Wayland's Bench: a skilled human blacksmith stands at a sturdy waist-high medieval workbench, shaping a glowing sword on its broad anvil top with hammer and tongs; clear orderly tools, vise and wood joinery show the bench is a master craft station. Focus on smith's intent face and working hands and full recognizable bench with tabletop and legs. Painterly medieval fantasy collectible-card painting, warm forge glow, iron, oak, sparks and smoke, believable anatomy and materials. Compose horizontally on a 1:1 square 512x512 master; face, hands, hammer and entire bench fit x24\u2013488,y105\u2013407 for 206:141 crop. No frame, writing, letters, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
+    "prompt": "Paint an original illustration for Wayland's Bench: a skilled human blacksmith stands at a sturdy waist-high medieval workbench, shaping a glowing sword on its broad anvil top with hammer and tongs; clear orderly tools, vise and wood joinery show the bench is a master craft station. Focus on smith's intent face and working hands and full recognizable bench with tabletop and legs. Painterly medieval fantasy collectible-card painting, warm forge glow, iron, oak, sparks and smoke, believable anatomy and materials. Compose horizontally on a 1:1 square 512x512 master; face, hands, hammer and entire bench fit x24–488,y105–407 for 206:141 crop. No frame, writing, letters, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-5a945104-cf87-4381-afb2-f9615db10d93.png",
     "editableSourcePath": "game/cards/art/masters/brown_tinker_17.png",
     "sourceNative": [
@@ -1379,7 +1379,7 @@
   {
     "cardId": "brown_machine_21",
     "name": "Coral Spitter",
-    "prompt": "Paint an original illustration for Coral Spitter: a sea-folk engineer braces behind a compact coral-built repeating spitter mounted on a reef-stone parapet; the organism's vivid orange coral barrel flexes and spits a fan of small glowing shell darts, forming a brief protective shimmer around the crew behind it. Make the complete coral device, wide barrel mouth and sea-folk face and guiding hand recognizable. Painterly medieval fantasy collectible-card painting, iridescent sea glass, branching coral, bubbles and cool underwater light, clear readable silhouette and depth. Compose horizontally within a 1:1 square 512x512 master; face, hand and entire coral spitter remain within x24\u2013488,y105\u2013407 for 206:141 crop. No card frame, lettering, writing, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
+    "prompt": "Paint an original illustration for Coral Spitter: a sea-folk engineer braces behind a compact coral-built repeating spitter mounted on a reef-stone parapet; the organism's vivid orange coral barrel flexes and spits a fan of small glowing shell darts, forming a brief protective shimmer around the crew behind it. Make the complete coral device, wide barrel mouth and sea-folk face and guiding hand recognizable. Painterly medieval fantasy collectible-card painting, iridescent sea glass, branching coral, bubbles and cool underwater light, clear readable silhouette and depth. Compose horizontally within a 1:1 square 512x512 master; face, hand and entire coral spitter remain within x24–488,y105–407 for 206:141 crop. No card frame, lettering, writing, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-4f8cc79f-0a47-4ab4-b5cd-97c543adbab1.png",
     "editableSourcePath": "game/cards/art/masters/brown_machine_21.png",
     "sourceNative": [
@@ -1397,7 +1397,7 @@
   {
     "cardId": "brown_instant_19",
     "name": "Invisibility Draught",
-    "prompt": "Paint an original illustration for Invisibility Draught: in a medieval alchemist's chamber, a masked human infiltrator raises a small whole glass vial with stopper as the final drop of pale blue draught makes one arm and shoulder fade transparently into moonlit air. Keep the infiltrator's face readable, the held vial prominent and complete, and the magical vanishing gentle and clear. Painterly medieval fantasy collectible-card painting, fine glass, quiet herbs and brass, controlled cool light, richly detailed atmosphere. Compose on a 1:1 square 512x512 master; face, hand and full vial including stopper fit x24\u2013488,y105\u2013407 for 206:141 crop. No lettering, labels, border, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
+    "prompt": "Paint an original illustration for Invisibility Draught: in a medieval alchemist's chamber, a masked human infiltrator raises a small whole glass vial with stopper as the final drop of pale blue draught makes one arm and shoulder fade transparently into moonlit air. Keep the infiltrator's face readable, the held vial prominent and complete, and the magical vanishing gentle and clear. Painterly medieval fantasy collectible-card painting, fine glass, quiet herbs and brass, controlled cool light, richly detailed atmosphere. Compose on a 1:1 square 512x512 master; face, hand and full vial including stopper fit x24–488,y105–407 for 206:141 crop. No lettering, labels, border, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-137bdcb0-45ea-47f7-b44d-76aaf440350a.png",
     "editableSourcePath": "game/cards/art/masters/brown_instant_19.png",
     "sourceNative": [
@@ -1415,7 +1415,7 @@
   {
     "cardId": "brown_tinker_18",
     "name": "Goibniu's Hammer",
-    "prompt": "Paint an original illustration for Goibniu's Hammer: a master human smith swings a heavy iron-and-bronze forging hammer onto a glowing sword at a stone anvil, with a crisp fan of sparks and a bright blue rune flare that sends an apprentice stumbling backward in surprise. The whole recognizable hammer, smith's focused face and hands, and workpiece must dominate. Painterly medieval fantasy collectible-card painting, forge smoke, believable iron, oak and leather, dramatic warm firelight and sharp cool rune highlights. Compose horizontally on a 1:1 square 512x512 master; smith face, hammer head and handle, both hands and anvil area fit x24\u2013488,y105\u2013407 for 206:141 crop. No border, words, text, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
+    "prompt": "Paint an original illustration for Goibniu's Hammer: a master human smith swings a heavy iron-and-bronze forging hammer onto a glowing sword at a stone anvil, with a crisp fan of sparks and a bright blue rune flare that sends an apprentice stumbling backward in surprise. The whole recognizable hammer, smith's focused face and hands, and workpiece must dominate. Painterly medieval fantasy collectible-card painting, forge smoke, believable iron, oak and leather, dramatic warm firelight and sharp cool rune highlights. Compose horizontally on a 1:1 square 512x512 master; smith face, hammer head and handle, both hands and anvil area fit x24–488,y105–407 for 206:141 crop. No border, words, text, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-46a4a1ae-b9c8-4c0e-ac11-a2796a414c0e.png",
     "editableSourcePath": "game/cards/art/masters/brown_tinker_18.png",
     "sourceNative": [
@@ -1433,7 +1433,7 @@
   {
     "cardId": "brown_machine_22",
     "name": "Sky-Folk Kite Drone",
-    "prompt": "Paint an original illustration for Sky-Folk Kite Drone: a sky-folk craftswoman in feathered leather flight robes pilots a compact kite-shaped brass-and-silk drone against open mountain air, its taut translucent kite sail and light wooden frame keeping it aloft while a focused burst of wind-glyph light pushes back a small flock of harpies. Show her face and hand on the control spool, and the entire kite drone with full sail and frame. Painterly medieval fantasy collectible-card painting, believable silk, wood and bronze, clear daylight, windswept clouds and atmospheric depth. Compose horizontally in a 1:1 square 512x512 master; face, control hand and full kite drone remain inside x24\u2013488,y105\u2013407 for 206:141 crop. No border, letters, writing, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
+    "prompt": "Paint an original illustration for Sky-Folk Kite Drone: a sky-folk craftswoman in feathered leather flight robes pilots a compact kite-shaped brass-and-silk drone against open mountain air, its taut translucent kite sail and light wooden frame keeping it aloft while a focused burst of wind-glyph light pushes back a small flock of harpies. Show her face and hand on the control spool, and the entire kite drone with full sail and frame. Painterly medieval fantasy collectible-card painting, believable silk, wood and bronze, clear daylight, windswept clouds and atmospheric depth. Compose horizontally in a 1:1 square 512x512 master; face, control hand and full kite drone remain inside x24–488,y105–407 for 206:141 crop. No border, letters, writing, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-d52b197d-ebbd-4d39-832c-cd719f34e17f.png",
     "editableSourcePath": "game/cards/art/masters/brown_machine_22.png",
     "sourceNative": [
@@ -1451,7 +1451,7 @@
   {
     "cardId": "brown_instant_20",
     "name": "Bottled Lightning",
-    "prompt": "Paint an original illustration for Bottled Lightning: a small complete stoppered glass flask held up in a sky-sailor's gloved hand, containing a brilliant curled bolt of blue-white lightning. The sailor's surprised face is lit by its glow and wind-tossed sails frame a moment of imminent release. Make the glass flask, cork, hand and face clear, with restrained electrical light. Painterly medieval fantasy collectible-card painting, storm deck, detailed glass and brass, atmospheric blue storm light balanced by warm lanterns. Compose on a 1:1 square 512x512 master; face, hand and whole flask with stopper fit x24\u2013488,y105\u2013407 for 206:141 crop. No labels, lettering, border, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
+    "prompt": "Paint an original illustration for Bottled Lightning: a small complete stoppered glass flask held up in a sky-sailor's gloved hand, containing a brilliant curled bolt of blue-white lightning. The sailor's surprised face is lit by its glow and wind-tossed sails frame a moment of imminent release. Make the glass flask, cork, hand and face clear, with restrained electrical light. Painterly medieval fantasy collectible-card painting, storm deck, detailed glass and brass, atmospheric blue storm light balanced by warm lanterns. Compose on a 1:1 square 512x512 master; face, hand and whole flask with stopper fit x24–488,y105–407 for 206:141 crop. No labels, lettering, border, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-d8192406-71d9-451a-b346-5089ae67e8b7.png",
     "editableSourcePath": "game/cards/art/masters/brown_instant_20.png",
     "sourceNative": [
@@ -1469,7 +1469,7 @@
   {
     "cardId": "brown_tinker_19",
     "name": "Ilmarinen's Forge",
-    "prompt": "Paint an original illustration for Ilmarinen's Forge: a legendary human smith in a moonlit cavern-forge shapes a glowing star-iron ingot beneath an immense arched stone furnace, its central mouth bright with steady blue-white flame. Show the smith's face and hammering hand, the ingot on the anvil, and the forge as a distinctive architectural structure with chimney and hearth; the named forge dominates the scene. Painterly medieval fantasy collectible-card painting, ancient stone and bronze, star-metal light, dramatic warm and cool illumination, atmospheric depth. Compose in a 1:1 square 512x512 master, keeping smith face, hand, anvil work and recognizable central forge in x24\u2013488,y105\u2013407 for 206:141 crop; expendable upper chimney may approach edges. No frame, letters, labels, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
+    "prompt": "Paint an original illustration for Ilmarinen's Forge: a legendary human smith in a moonlit cavern-forge shapes a glowing star-iron ingot beneath an immense arched stone furnace, its central mouth bright with steady blue-white flame. Show the smith's face and hammering hand, the ingot on the anvil, and the forge as a distinctive architectural structure with chimney and hearth; the named forge dominates the scene. Painterly medieval fantasy collectible-card painting, ancient stone and bronze, star-metal light, dramatic warm and cool illumination, atmospheric depth. Compose in a 1:1 square 512x512 master, keeping smith face, hand, anvil work and recognizable central forge in x24–488,y105–407 for 206:141 crop; expendable upper chimney may approach edges. No frame, letters, labels, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-29b77207-d1fa-407c-b4fa-ade1aeb59c4a.png",
     "editableSourcePath": "game/cards/art/masters/brown_tinker_19.png",
     "sourceNative": [
@@ -1487,7 +1487,7 @@
   {
     "cardId": "brown_machine_23",
     "name": "Dwarven Rivet Gun",
-    "prompt": "Paint an original illustration for Dwarven Rivet Gun: a stocky dwarf engineer braces behind a sturdy brass-and-iron gatling rivet gun on a workshop rail, its clustered rivet barrels driving a straight piercing line of glowing rivets into the seam of a cracked shield wall. Show the whole compact gun and clustered barrels, dwarf's determined face, gripping hands, and rivets piercing through the target. Painterly medieval fantasy collectible-card painting, dwarven engraving, oak and iron, forge-lit action and smoky atmosphere. Compose horizontally in a 1:1 square 512x512 master; face, hands, entire gun and its base stay within x24\u2013488,y105\u2013407 for the 206:141 crop. No border, letters, text, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
+    "prompt": "Paint an original illustration for Dwarven Rivet Gun: a stocky dwarf engineer braces behind a sturdy brass-and-iron gatling rivet gun on a workshop rail, its clustered rivet barrels driving a straight piercing line of glowing rivets into the seam of a cracked shield wall. Show the whole compact gun and clustered barrels, dwarf's determined face, gripping hands, and rivets piercing through the target. Painterly medieval fantasy collectible-card painting, dwarven engraving, oak and iron, forge-lit action and smoky atmosphere. Compose horizontally in a 1:1 square 512x512 master; face, hands, entire gun and its base stay within x24–488,y105–407 for the 206:141 crop. No border, letters, text, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-dd979b55-1d45-4fa0-a2bc-0e3be5116abc.png",
     "editableSourcePath": "game/cards/art/masters/brown_machine_23.png",
     "sourceNative": [
@@ -1505,7 +1505,7 @@
   {
     "cardId": "brown_instant_21",
     "name": "Guardian Angel Vial",
-    "prompt": "Paint an original illustration for Guardian Angel Vial: a field medic in a medieval battlefield shelter uncorks a complete clear glass vial of luminous golden balm; a delicate winged guardian spirit rises from the glowing medicine and braces its bright wings over a wounded knight, shielding the patient from a falling shard. Keep vial, cork, medic's hand and focused face, and the angel's protective action readable. Painterly medieval fantasy collectible-card painting, subtle gold light, glass, linen and armor, compassionate atmosphere. Compose on a 1:1 square 512x512 master; face, hand, entire vial with stopper and angelic protection all fit x24\u2013488,y105\u2013407 for 206:141 crop. No labels, border, lettering, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
+    "prompt": "Paint an original illustration for Guardian Angel Vial: a field medic in a medieval battlefield shelter uncorks a complete clear glass vial of luminous golden balm; a delicate winged guardian spirit rises from the glowing medicine and braces its bright wings over a wounded knight, shielding the patient from a falling shard. Keep vial, cork, medic's hand and focused face, and the angel's protective action readable. Painterly medieval fantasy collectible-card painting, subtle gold light, glass, linen and armor, compassionate atmosphere. Compose on a 1:1 square 512x512 master; face, hand, entire vial with stopper and angelic protection all fit x24–488,y105–407 for 206:141 crop. No labels, border, lettering, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-5e8b6ac8-2141-4f83-a87f-9bb5eb2d5f36.png",
     "editableSourcePath": "game/cards/art/masters/brown_instant_21.png",
     "sourceNative": [
@@ -1523,7 +1523,7 @@
   {
     "cardId": "brown_tinker_20",
     "name": "Hephaestus's Anvil",
-    "prompt": "Paint an original illustration for Hephaestus's Anvil: a strong human smith brings a great bronze-bound hammer down on an enormous rune-carved stone anvil, sparks bursting as the anvil releases controlled streams of flame and rebirth-light. The full broad anvil with its recognizable horn and base dominates, while the smith's face, hands and hammer show the burning strike. Painterly medieval fantasy collectible-card painting, ancient volcanic stone, bronze, glowing runes without readable writing, dramatic forge light and atmospheric depth. Compose horizontally on a 1:1 square 512x512 master; face, hands, complete hammer and full anvil silhouette fit x24\u2013488,y105\u2013407 for 206:141 crop. No frame, text, letters, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
+    "prompt": "Paint an original illustration for Hephaestus's Anvil: a strong human smith brings a great bronze-bound hammer down on an enormous rune-carved stone anvil, sparks bursting as the anvil releases controlled streams of flame and rebirth-light. The full broad anvil with its recognizable horn and base dominates, while the smith's face, hands and hammer show the burning strike. Painterly medieval fantasy collectible-card painting, ancient volcanic stone, bronze, glowing runes without readable writing, dramatic forge light and atmospheric depth. Compose horizontally on a 1:1 square 512x512 master; face, hands, complete hammer and full anvil silhouette fit x24–488,y105–407 for 206:141 crop. No frame, text, letters, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-78502a14-944d-4ab8-a0b7-a74975d3f9ef.png",
     "editableSourcePath": "game/cards/art/masters/brown_tinker_20.png",
     "sourceNative": [
@@ -1541,7 +1541,7 @@
   {
     "cardId": "brown_machine_24",
     "name": "Troll Pebble Hurler",
-    "prompt": "Paint an original illustration for Troll Pebble Hurler: a huge troll crouches on a ruined hillside behind a sturdy wooden-and-iron counterweighted pebble hurler, pulling its rope to send a massive round stone high in a lob toward distant siege lines. Show the troll's determined face and hands and the complete compact launcher, sling and counterweight; the flying pebble is visible against the sky. Painterly medieval fantasy collectible-card painting, rough stone, iron straps and old wood, dynamic warm sunset light and deep battlefield atmosphere. Compose horizontally in a 1:1 square 512x512 master; troll face, hands, full hurler structure and projectile remain in x24\u2013488,y105\u2013407 for 206:141 crop. No border, lettering, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
+    "prompt": "Paint an original illustration for Troll Pebble Hurler: a huge troll crouches on a ruined hillside behind a sturdy wooden-and-iron counterweighted pebble hurler, pulling its rope to send a massive round stone high in a lob toward distant siege lines. Show the troll's determined face and hands and the complete compact launcher, sling and counterweight; the flying pebble is visible against the sky. Painterly medieval fantasy collectible-card painting, rough stone, iron straps and old wood, dynamic warm sunset light and deep battlefield atmosphere. Compose horizontally in a 1:1 square 512x512 master; troll face, hands, full hurler structure and projectile remain in x24–488,y105–407 for 206:141 crop. No border, lettering, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-390c23a3-342f-4b73-a082-e2518ea2af11.png",
     "editableSourcePath": "game/cards/art/masters/brown_machine_24.png",
     "sourceNative": [
@@ -1559,7 +1559,7 @@
   {
     "cardId": "brown_instant_22",
     "name": "Goblin Rage Juice",
-    "prompt": "Paint an original illustration for Goblin Rage Juice: a furious goblin warrior drains a small complete red glass flask of potent tonic, while a vivid crimson surge lights his face and drives him into a bold rallying charge; two goblin companions rise behind him, energized by the moment. Show the main goblin's fierce face, drinking hand, whole flask with stopper and the glowing drink; keep the effect controlled so the subject stays readable. Painterly medieval fantasy collectible-card painting, leather and rough metal, warm red-orange directional light, atmospheric battlefield depth. Compose horizontally on a 1:1 square 512x512 master; main face, hand and whole flask including stopper remain in x24\u2013488,y105\u2013407 for a 206:141 crop. No labels, words, border, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
+    "prompt": "Paint an original illustration for Goblin Rage Juice: a furious goblin warrior drains a small complete red glass flask of potent tonic, while a vivid crimson surge lights his face and drives him into a bold rallying charge; two goblin companions rise behind him, energized by the moment. Show the main goblin's fierce face, drinking hand, whole flask with stopper and the glowing drink; keep the effect controlled so the subject stays readable. Painterly medieval fantasy collectible-card painting, leather and rough metal, warm red-orange directional light, atmospheric battlefield depth. Compose horizontally on a 1:1 square 512x512 master; main face, hand and whole flask including stopper remain in x24–488,y105–407 for a 206:141 crop. No labels, words, border, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-3146571a-4e18-4ad2-82af-206309f3083e.png",
     "editableSourcePath": "game/cards/art/masters/brown_instant_22.png",
     "sourceNative": [
@@ -1577,7 +1577,7 @@
   {
     "cardId": "brown_machine_25",
     "name": "Al-Jazari's Elephant Clock",
-    "prompt": "Create a NEW composition for Al-Jazari's Elephant Clock. A complete, smaller mechanical elephant automaton stands centered on all four feet, viewed in profile, in a richly painted medieval palace courtyard. Its entire bronze elephant head, trunk, torso, all four articulated legs and feet are fully inside the central horizontal band, with generous empty sky above and reflective floor below. A compact ornate water-clock tower sits on its back, clearly recognizable by its water vessels and visible gears; include the entire tower from base to very short top finial without touching any image edge. Keep the full elephant plus complete clock tower compact enough to fit within the middle 65% of the square canvas vertically (roughly y90\u2013420 on a 512 square) so a centered 206:141 card crop shows the whole machine. A small blue-skinned djinn engineer beside the elephant can guide it with a staff; do not let the djinn obscure the device. Emphasize this specific ingenious clockwork elephant, tactile brass, carved wood, articulated joints, controlled historic mechanical design, warm sunlit courtyard, painterly medieval fantasy collectible-card illustration with strong readable shapes and atmospheric depth. Explicitly 1:1 square composition for editable 512x512 master. No border, lettering, readable writing, numbers, UI, anime, Disney cartoon, photorealism or pixel art.",
+    "prompt": "Create a NEW composition for Al-Jazari's Elephant Clock. A complete, smaller mechanical elephant automaton stands centered on all four feet, viewed in profile, in a richly painted medieval palace courtyard. Its entire bronze elephant head, trunk, torso, all four articulated legs and feet are fully inside the central horizontal band, with generous empty sky above and reflective floor below. A compact ornate water-clock tower sits on its back, clearly recognizable by its water vessels and visible gears; include the entire tower from base to very short top finial without touching any image edge. Keep the full elephant plus complete clock tower compact enough to fit within the middle 65% of the square canvas vertically (roughly y90–420 on a 512 square) so a centered 206:141 card crop shows the whole machine. A small blue-skinned djinn engineer beside the elephant can guide it with a staff; do not let the djinn obscure the device. Emphasize this specific ingenious clockwork elephant, tactile brass, carved wood, articulated joints, controlled historic mechanical design, warm sunlit courtyard, painterly medieval fantasy collectible-card illustration with strong readable shapes and atmospheric depth. Explicitly 1:1 square composition for editable 512x512 master. No border, lettering, readable writing, numbers, UI, anime, Disney cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-edcf777c-1a81-43fa-a79a-d39131d714b9.png",
     "editableSourcePath": "game/cards/art/masters/brown_machine_25.png",
     "sourceNative": [
@@ -1595,7 +1595,7 @@
   {
     "cardId": "brown_instant_23",
     "name": "Throwing Knives",
-    "prompt": "Paint an original illustration for Throwing Knives: a focused human knife-thrower in a medieval leather jerkin flicks three bright steel throwing knives in a precise crossing volley toward a wooden practice target, each complete knife distinct with recognizable handle and blade. Show the thrower's face and throwing hand, with the small matched knives as the focal objects and a sharp cross-shaped action pattern. Painterly medieval fantasy collectible-card painting, steel glints, leather, torchlit courtyard, clean directional light and atmospheric depth. Compose horizontally on a 1:1 square 512x512 master; thrower's face, hand and whole knives remain inside x24\u2013488,y105\u2013407 for a 206:141 crop. No frame, text, lettering, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
+    "prompt": "Paint an original illustration for Throwing Knives: a focused human knife-thrower in a medieval leather jerkin flicks three bright steel throwing knives in a precise crossing volley toward a wooden practice target, each complete knife distinct with recognizable handle and blade. Show the thrower's face and throwing hand, with the small matched knives as the focal objects and a sharp cross-shaped action pattern. Painterly medieval fantasy collectible-card painting, steel glints, leather, torchlit courtyard, clean directional light and atmospheric depth. Compose horizontally on a 1:1 square 512x512 master; thrower's face, hand and whole knives remain inside x24–488,y105–407 for a 206:141 crop. No frame, text, lettering, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-302292ee-451d-4db1-9035-519f41759dc1.png",
     "editableSourcePath": "game/cards/art/masters/brown_instant_23.png",
     "sourceNative": [
@@ -1613,7 +1613,7 @@
   {
     "cardId": "brown_machine_26",
     "name": "Siege Mangonel",
-    "prompt": "Paint an original illustration for Siege Mangonel: human siege engineers operate a sturdy medieval mangonel catapult on a stone fortress rampart, with a broad throwing arm, sling and counterweight visible as it hurls a heavy stone through the air into an enemy shield tower, shattering its wooden top. Show complete launcher structure, key rope and counterweight, engineer faces and working hands; the device itself is unmistakable. Painterly medieval fantasy collectible-card painting, old timber, iron fastenings, smoky sunset and dramatic siege action. Compose horizontally in a 1:1 square 512x512 master; full machine and essential crew action remain within x24\u2013488,y105\u2013407 for a 206:141 crop; flying stone and dust can trail into scenery. No border, writing, letters, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
+    "prompt": "Paint an original illustration for Siege Mangonel: human siege engineers operate a sturdy medieval mangonel catapult on a stone fortress rampart, with a broad throwing arm, sling and counterweight visible as it hurls a heavy stone through the air into an enemy shield tower, shattering its wooden top. Show complete launcher structure, key rope and counterweight, engineer faces and working hands; the device itself is unmistakable. Painterly medieval fantasy collectible-card painting, old timber, iron fastenings, smoky sunset and dramatic siege action. Compose horizontally in a 1:1 square 512x512 master; full machine and essential crew action remain within x24–488,y105–407 for a 206:141 crop; flying stone and dust can trail into scenery. No border, writing, letters, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-517d471f-9ff4-4840-86ef-57a795c2bca1.png",
     "editableSourcePath": "game/cards/art/masters/brown_machine_26.png",
     "sourceNative": [
@@ -1631,7 +1631,7 @@
   {
     "cardId": "brown_instant_24",
     "name": "Goblin Firecracker",
-    "prompt": "Paint an original illustration for Goblin Firecracker: a mischievous young goblin has just lit a small complete red-and-brass firecracker in his gloved hand; the fuse sparks brightly as he flinches back with a grin and its first crack bursts into a tight cluster of vivid red-orange star sparks, making nearby goblins recoil. The goblin face, hand and entire firecracker casing with fuse must remain crisp and prominent; keep the burst compact so it does not obscure them. Painterly medieval fantasy collectible-card painting, rough leather, brass, warm night market lantern light and lively atmospheric depth. Compose horizontally on a 1:1 square 512x512 master; face, hand and whole named firecracker fit x24\u2013488,y105\u2013407 for 206:141 crop. No writing, labels, frame, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
+    "prompt": "Paint an original illustration for Goblin Firecracker: a mischievous young goblin has just lit a small complete red-and-brass firecracker in his gloved hand; the fuse sparks brightly as he flinches back with a grin and its first crack bursts into a tight cluster of vivid red-orange star sparks, making nearby goblins recoil. The goblin face, hand and entire firecracker casing with fuse must remain crisp and prominent; keep the burst compact so it does not obscure them. Painterly medieval fantasy collectible-card painting, rough leather, brass, warm night market lantern light and lively atmospheric depth. Compose horizontally on a 1:1 square 512x512 master; face, hand and whole named firecracker fit x24–488,y105–407 for 206:141 crop. No writing, labels, frame, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-902d30bd-ffcf-4ffc-acf0-02887ccd5f71.png",
     "editableSourcePath": "game/cards/art/masters/brown_instant_24.png",
     "sourceNative": [
@@ -1649,7 +1649,7 @@
   {
     "cardId": "brown_machine_27",
     "name": "Castle Trebuchet",
-    "prompt": "Paint an original illustration for Castle Trebuchet: on a medieval castle wall, a sturdy timber-and-iron trebuchet with a clear tall frame, long throwing arm, sling, ropes and heavy counterweight is poised to launch a large stone over the battlements toward a distant besieging camp. A human castle engineer signals the release beside it; show his face and hand, and keep the complete trebuchet including its frame foot and arm tip fully visible. Painterly medieval fantasy collectible-card painting, weathered oak and iron, dramatic dusk light over stone battlements, strong silhouette and atmospheric depth. Compose horizontally in a 1:1 square 512x512 master; make the whole named trebuchet compact, positioned within x24\u2013488,y105\u2013407 so no tip or base is cut in the 206:141 card crop. No border, flags with writing, labels, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
+    "prompt": "Paint an original illustration for Castle Trebuchet: on a medieval castle wall, a sturdy timber-and-iron trebuchet with a clear tall frame, long throwing arm, sling, ropes and heavy counterweight is poised to launch a large stone over the battlements toward a distant besieging camp. A human castle engineer signals the release beside it; show his face and hand, and keep the complete trebuchet including its frame foot and arm tip fully visible. Painterly medieval fantasy collectible-card painting, weathered oak and iron, dramatic dusk light over stone battlements, strong silhouette and atmospheric depth. Compose horizontally in a 1:1 square 512x512 master; make the whole named trebuchet compact, positioned within x24–488,y105–407 so no tip or base is cut in the 206:141 card crop. No border, flags with writing, labels, numbers, UI; no anime, Disney cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-117611e6-523a-4617-8e3b-73f10b65076f.png",
     "editableSourcePath": "game/cards/art/masters/brown_machine_27.png",
     "sourceNative": [
@@ -1937,7 +1937,7 @@
   {
     "cardId": "brown_instant_32",
     "name": "Coral Shrapnel",
-    "prompt": "Paint an illustration for the fantasy card Coral Shrapnel. Actual effect cues: coral shrapnel, sea-race mine-shaped strike. A tight readable fantasy action: a central complete spiny red-orange coral mine bursting outward into a small star of distinct sharp coral shards over a shallow sea, the whole central coral object clearly visible; blue surf and a distant rocky reef are secondary. No unrelated fire magic. Painterly medieval fantasy collectible-card illustration with grounded anatomy, rich wood, brass, coral and cloth materials, directional light and visible brush texture, atmospheric depth. Compact horizontal arrangement. Keep the whole named object, operator's entire face and both working hands together inside x24\u2026488,y105\u2026407 on a normalized 512 square; use only quiet sky/ground outside that band. The object and face must both read at 128px thumbnail. Explicit 1:1 square canvas, editable 512\u00d7512. No text, border, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for the fantasy card Coral Shrapnel. Actual effect cues: coral shrapnel, sea-race mine-shaped strike. A tight readable fantasy action: a central complete spiny red-orange coral mine bursting outward into a small star of distinct sharp coral shards over a shallow sea, the whole central coral object clearly visible; blue surf and a distant rocky reef are secondary. No unrelated fire magic. Painterly medieval fantasy collectible-card illustration with grounded anatomy, rich wood, brass, coral and cloth materials, directional light and visible brush texture, atmospheric depth. Compact horizontal arrangement. Keep the whole named object, operator's entire face and both working hands together inside x24…488,y105…407 on a normalized 512 square; use only quiet sky/ground outside that band. The object and face must both read at 128px thumbnail. Explicit 1:1 square canvas, editable 512×512. No text, border, numbers, UI, anime, cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-1bcfcf67-4420-4e6e-a089-b0d4a60508cf.png",
     "editableSourcePath": "game/cards/art/masters/brown_instant_32.png",
     "sourceNative": [
@@ -1955,7 +1955,7 @@
   {
     "cardId": "brown_machine_36",
     "name": "Djinn Sand Cannon",
-    "prompt": "Paint an illustration for the fantasy card Djinn Sand Cannon. Actual effect cues: a sturdy djinn-engine sand cannon firing bolts. A compact medieval brass-and-dark-wood sand cannon on a small wheeled carriage dominates a horizontal desert scene; its full barrel, muzzle, carriage and wheels fit clearly. Immediately beside it, a compact male djinn gunner with a clear face and both hands on the breech, wearing layered desert robes and a subtle vapor halo. Sand plume from a just-fired shot is secondary. Painterly medieval fantasy collectible-card illustration with grounded anatomy, rich wood, brass, coral and cloth materials, directional light and visible brush texture, atmospheric depth. Compact horizontal arrangement. Keep the whole named object, operator's entire face and both working hands together inside x24\u2026488,y105\u2026407 on a normalized 512 square; use only quiet sky/ground outside that band. The object and face must both read at 128px thumbnail. Explicit 1:1 square canvas, editable 512\u00d7512. No text, border, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for the fantasy card Djinn Sand Cannon. Actual effect cues: a sturdy djinn-engine sand cannon firing bolts. A compact medieval brass-and-dark-wood sand cannon on a small wheeled carriage dominates a horizontal desert scene; its full barrel, muzzle, carriage and wheels fit clearly. Immediately beside it, a compact male djinn gunner with a clear face and both hands on the breech, wearing layered desert robes and a subtle vapor halo. Sand plume from a just-fired shot is secondary. Painterly medieval fantasy collectible-card illustration with grounded anatomy, rich wood, brass, coral and cloth materials, directional light and visible brush texture, atmospheric depth. Compact horizontal arrangement. Keep the whole named object, operator's entire face and both working hands together inside x24…488,y105…407 on a normalized 512 square; use only quiet sky/ground outside that band. The object and face must both read at 128px thumbnail. Explicit 1:1 square canvas, editable 512×512. No text, border, numbers, UI, anime, cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-ed73b693-7552-43a8-a198-5cb02228edfe.png",
     "editableSourcePath": "game/cards/art/masters/brown_machine_36.png",
     "sourceNative": [
@@ -1968,12 +1968,12 @@
     ],
     "status": "generated",
     "batch": 10,
-    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. Djinn\u2019s face and hands remain visible behind the complete cannon barrel, muzzle, carriage, and wheels."
+    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. Djinn’s face and hands remain visible behind the complete cannon barrel, muzzle, carriage, and wheels."
   },
   {
     "cardId": "brown_instant_33",
     "name": "Djinn Smoke Puff",
-    "prompt": "Paint an illustration for the fantasy card Djinn Smoke Puff. Actual effect cues: a djinn strike using a confusing smoke puff. A compact blue-skinned djinn shown from chest up at the right of the composition, complete expressive face and both hands visible; with one hand he releases a single rounded charcoal-gray smoke puff that expands beside him, curling to confuse a distant pursuer. The smoke puff is the named action, not a giant cloud hiding the djinn. Painterly medieval fantasy collectible-card illustration with grounded anatomy, rich wood, brass, coral and cloth materials, directional light and visible brush texture, atmospheric depth. Compact horizontal arrangement. Keep the whole named object, operator's entire face and both working hands together inside x24\u2026488,y105\u2026407 on a normalized 512 square; use only quiet sky/ground outside that band. The object and face must both read at 128px thumbnail. Explicit 1:1 square canvas, editable 512\u00d7512. No text, border, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for the fantasy card Djinn Smoke Puff. Actual effect cues: a djinn strike using a confusing smoke puff. A compact blue-skinned djinn shown from chest up at the right of the composition, complete expressive face and both hands visible; with one hand he releases a single rounded charcoal-gray smoke puff that expands beside him, curling to confuse a distant pursuer. The smoke puff is the named action, not a giant cloud hiding the djinn. Painterly medieval fantasy collectible-card illustration with grounded anatomy, rich wood, brass, coral and cloth materials, directional light and visible brush texture, atmospheric depth. Compact horizontal arrangement. Keep the whole named object, operator's entire face and both working hands together inside x24…488,y105…407 on a normalized 512 square; use only quiet sky/ground outside that band. The object and face must both read at 128px thumbnail. Explicit 1:1 square canvas, editable 512×512. No text, border, numbers, UI, anime, cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-74e3d0a5-5e58-4e92-8293-0c4621355357.png",
     "editableSourcePath": "game/cards/art/masters/brown_instant_33.png",
     "sourceNative": [
@@ -1986,12 +1986,12 @@
     ],
     "status": "generated",
     "batch": 10,
-    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. Djinn\u2019s face and both hands stay clear beside the dense smoke puff; the distant pursuer is secondary."
+    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. Djinn’s face and both hands stay clear beside the dense smoke puff; the distant pursuer is secondary."
   },
   {
     "cardId": "brown_machine_37",
     "name": "Elven Seed Catapult",
-    "prompt": "Paint an illustration for the fantasy card Elven Seed Catapult. Actual effect cues: an elven catapult that launches seeds in a cross pattern. A compact medieval elven seed catapult made of carved greenwood and rope on a small timber base, complete throwing arm, sling and base visible, launching a cluster of giant acorns. Immediately beside it an elf operator\u2019s clear face, pointed ears and two working hands adjusting its cord; lush forest orchard behind. Painterly medieval fantasy collectible-card illustration with grounded anatomy, rich wood, brass, coral and cloth materials, directional light and visible brush texture, atmospheric depth. Compact horizontal arrangement. Keep the whole named object, operator's entire face and both working hands together inside x24\u2026488,y105\u2026407 on a normalized 512 square; use only quiet sky/ground outside that band. The object and face must both read at 128px thumbnail. Explicit 1:1 square canvas, editable 512\u00d7512. No text, border, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for the fantasy card Elven Seed Catapult. Actual effect cues: an elven catapult that launches seeds in a cross pattern. A compact medieval elven seed catapult made of carved greenwood and rope on a small timber base, complete throwing arm, sling and base visible, launching a cluster of giant acorns. Immediately beside it an elf operator’s clear face, pointed ears and two working hands adjusting its cord; lush forest orchard behind. Painterly medieval fantasy collectible-card illustration with grounded anatomy, rich wood, brass, coral and cloth materials, directional light and visible brush texture, atmospheric depth. Compact horizontal arrangement. Keep the whole named object, operator's entire face and both working hands together inside x24…488,y105…407 on a normalized 512 square; use only quiet sky/ground outside that band. The object and face must both read at 128px thumbnail. Explicit 1:1 square canvas, editable 512×512. No text, border, numbers, UI, anime, cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-3ff624b4-ba14-4cd3-a91a-c9206a086080.png",
     "editableSourcePath": "game/cards/art/masters/brown_machine_37.png",
     "sourceNative": [
@@ -2004,12 +2004,12 @@
     ],
     "status": "generated",
     "batch": 10,
-    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. Elf\u2019s face, pointed ear, and working hands are clear beside the complete catapult, arm, sling, and base; stray acorns are incidental."
+    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. Elf’s face, pointed ear, and working hands are clear beside the complete catapult, arm, sling, and base; stray acorns are incidental."
   },
   {
     "cardId": "brown_instant_34",
     "name": "Dwarven Blasting Charge",
-    "prompt": "Edit this artwork specifically to fix the wide card crop: preserve the cozy mine, dwarf, style and lighting, but recompose both subjects into one compact horizontal band. The named blasting charge must be a SHORT stout canister, not a tall barrel: put it beside the dwarf at the same ground level, only about 145 pixels tall, with its top, entire casing and flat base all between y210 and y365 on a 512\u00d7512 square. Keep the dwarf small and seated beside it, not looming above it: the dwarf\u2019s full face and both open eyes around y190\u2026265, and both hands around y270\u2026325, with the lighting hand holding the short taper at the visible fuse. Left-to-right: dwarf face and shoulders, then complete short charge, with hand bridging the gap. Require face/eyes, hands, visible fuse and complete named canister all inside x24\u2026488,y105\u2026407. Leave clear empty margin above y105 and below y395. Do not cut the base, do not make a tall charge, do not put the face above/behind the top of the charge. Painterly medieval fantasy illustration; square 1:1. No text or UI.",
+    "prompt": "Edit this artwork specifically to fix the wide card crop: preserve the cozy mine, dwarf, style and lighting, but recompose both subjects into one compact horizontal band. The named blasting charge must be a SHORT stout canister, not a tall barrel: put it beside the dwarf at the same ground level, only about 145 pixels tall, with its top, entire casing and flat base all between y210 and y365 on a 512×512 square. Keep the dwarf small and seated beside it, not looming above it: the dwarf’s full face and both open eyes around y190…265, and both hands around y270…325, with the lighting hand holding the short taper at the visible fuse. Left-to-right: dwarf face and shoulders, then complete short charge, with hand bridging the gap. Require face/eyes, hands, visible fuse and complete named canister all inside x24…488,y105…407. Leave clear empty margin above y105 and below y395. Do not cut the base, do not make a tall charge, do not put the face above/behind the top of the charge. Painterly medieval fantasy illustration; square 1:1. No text or UI.",
     "generatedPath": "/workspace/generated_images/exec-1cfc97b5-c219-4a14-97e0-aa0c2729e7f1.png",
     "editableSourcePath": "game/cards/art/masters/brown_instant_34.png",
     "sourceNative": [
@@ -2022,7 +2022,7 @@
     ],
     "status": "generated",
     "batch": 10,
-    "reviewNote": "Repainted after parent review found the first charge too tall; preserved prior sources in /tmp/brown04-attempts. Reviewed replacement square, crop at focal [0.5,0.54], and 128x88 thumbnail. The dwarf\u2019s whole face and both eyes, both hands, lit fuse, complete short charge and its base are visible with room in the crop."
+    "reviewNote": "Repainted after parent review found the first charge too tall; preserved prior sources in /tmp/brown04-attempts. Reviewed replacement square, crop at focal [0.5,0.54], and 128x88 thumbnail. The dwarf’s whole face and both eyes, both hands, lit fuse, complete short charge and its base are visible with room in the crop."
   },
   {
     "cardId": "brown_machine_38",
@@ -2033,7 +2033,7 @@
       0.5,
       0.53
     ],
-    "reviewNote": "Reviewed 512-square master, 206:141 crop at focal [0.5,0.53], and thumbnail. Bastion crown and broad base remain in frame; dwarf\u2019s face and hand read beside the structure.",
+    "reviewNote": "Reviewed 512-square master, 206:141 crop at focal [0.5,0.53], and thumbnail. Bastion crown and broad base remain in frame; dwarf’s face and hand read beside the structure.",
     "status": "generated",
     "batch": 10,
     "editableSourcePath": "game/cards/art/masters/brown_machine_38.png",
@@ -2051,7 +2051,7 @@
       0.5,
       0.5
     ],
-    "reviewNote": "Reviewed 512-square master, 206:141 crop, and thumbnail. Gnome\u2019s full face, working hands, grenade body, cap and fuse all remain clear; only the hat tip is incidental.",
+    "reviewNote": "Reviewed 512-square master, 206:141 crop, and thumbnail. Gnome’s full face, working hands, grenade body, cap and fuse all remain clear; only the hat tip is incidental.",
     "status": "generated",
     "batch": 10,
     "editableSourcePath": "game/cards/art/masters/brown_instant_35.png",
@@ -2069,7 +2069,7 @@
       0.5,
       0.5
     ],
-    "reviewNote": "Recomposed to fit a compact arch. Reviewed square master, 206:141 crop and thumbnail: decorated crown, bars and threshold/base remain visible with the dwarf\u2019s face and hand beside the gate.",
+    "reviewNote": "Recomposed to fit a compact arch. Reviewed square master, 206:141 crop and thumbnail: decorated crown, bars and threshold/base remain visible with the dwarf’s face and hand beside the gate.",
     "status": "generated",
     "batch": 10,
     "editableSourcePath": "game/cards/art/masters/brown_machine_39.png",
@@ -2087,7 +2087,7 @@
       0.5,
       0.4
     ],
-    "reviewNote": "Reviewed 512-square master, upward-shifted 206:141 crop at focal [0.5,0.4], and thumbnail. Troll\u2019s face and throwing hand plus complete bomb and fuse remain visible; lower tar burst and secondary figures are incidental.",
+    "reviewNote": "Reviewed 512-square master, upward-shifted 206:141 crop at focal [0.5,0.4], and thumbnail. Troll’s face and throwing hand plus complete bomb and fuse remain visible; lower tar burst and secondary figures are incidental.",
     "status": "generated",
     "batch": 10,
     "editableSourcePath": "game/cards/art/masters/brown_instant_36.png",
@@ -2105,7 +2105,7 @@
       0.5,
       0.4
     ],
-    "reviewNote": "Reviewed 512-square master, upward-shifted 206:141 crop at focal [0.5,0.4], and thumbnail. Full wall crown and iron-footed base, gnome\u2019s face and lever hand remain visible; arrow impact is secondary.",
+    "reviewNote": "Reviewed 512-square master, upward-shifted 206:141 crop at focal [0.5,0.4], and thumbnail. Full wall crown and iron-footed base, gnome’s face and lever hand remain visible; arrow impact is secondary.",
     "status": "generated",
     "batch": 10,
     "editableSourcePath": "game/cards/art/masters/brown_machine_40.png",
@@ -2400,7 +2400,7 @@
     ],
     "status": "generated",
     "batch": 11,
-    "reviewNote": "Source native size [1514,1039]. Focal point [0.5,0.4] brings the dwarf\u2019s face fully into the horizontal crop while retaining the rod. Artist inspected adjusted crop and thumbnail: full forked rod, face and both hands read clearly; parent review pending."
+    "reviewNote": "Source native size [1514,1039]. Focal point [0.5,0.4] brings the dwarf’s face fully into the horizontal crop while retaining the rod. Artist inspected adjusted crop and thumbnail: full forked rod, face and both hands read clearly; parent review pending."
   },
   {
     "cardId": "brown_machine_49",
@@ -2436,7 +2436,7 @@
     ],
     "status": "generated",
     "batch": 11,
-    "reviewNote": "Source native size [1515,1038]. Focal point [0.5,0.47] keeps the elf\u2019s eyes and the full star map together. Artist inspected adjusted square crop and 128x88 thumbnail: complete map and readable face remain clear; parent review pending. Parent accepts the prominent central constellation design and reader eyes; outer paper margins naturally extend beyond the frame."
+    "reviewNote": "Source native size [1515,1038]. Focal point [0.5,0.47] keeps the elf’s eyes and the full star map together. Artist inspected adjusted square crop and 128x88 thumbnail: complete map and readable face remain clear; parent review pending. Parent accepts the prominent central constellation design and reader eyes; outer paper margins naturally extend beyond the frame."
   },
   {
     "cardId": "brown_instant_45",
@@ -2495,7 +2495,7 @@
   {
     "cardId": "brown_instant_49",
     "name": "Goblin Rummage Sack",
-    "prompt": "Paint an illustration for Goblin Rummage Sack, a quick search through a goblin's sack that can reveal any useful item. A wiry but grounded green goblin with a clear expressive face rummages with both hands in one complete rough brown burlap sack, its mouth, drawstring, body and broad bottom fully visible beside the goblin at the same height. A few distinct useful finds\u2014one small iron tool, a folded cloth and a bronze token\u2014peek naturally from the opening without obscuring the sack. The sack is the named subject, no modern backpack, and no text. Painterly medieval fantasy, worn burlap and patched leather, warm torchlight, tactile brushwork and grounded proportions, not cute-cartoon. Explicit 1:1 SQUARE 512x512 canvas; keep whole sack, face and both rummaging hands inside x24..488,y105..407 for the wide crop, quiet den shadows above and floor below. No frame, text, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for Goblin Rummage Sack, a quick search through a goblin's sack that can reveal any useful item. A wiry but grounded green goblin with a clear expressive face rummages with both hands in one complete rough brown burlap sack, its mouth, drawstring, body and broad bottom fully visible beside the goblin at the same height. A few distinct useful finds—one small iron tool, a folded cloth and a bronze token—peek naturally from the opening without obscuring the sack. The sack is the named subject, no modern backpack, and no text. Painterly medieval fantasy, worn burlap and patched leather, warm torchlight, tactile brushwork and grounded proportions, not cute-cartoon. Explicit 1:1 SQUARE 512x512 canvas; keep whole sack, face and both rummaging hands inside x24..488,y105..407 for the wide crop, quiet den shadows above and floor below. No frame, text, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-20432ada-49d4-4c1d-a482-242d2501a01c.png",
     "editableSourcePath": "game/cards/art/masters/brown_instant_49.png",
     "sourceNative": [
@@ -2686,7 +2686,7 @@
       0.5,
       0.5
     ],
-    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. The complete shuffler, gears, feed and crank read clearly; crop trims the gnome\u2019s cap and background, while the full machine remains primary.",
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. The complete shuffler, gears, feed and crank read clearly; crop trims the gnome’s cap and background, while the full machine remains primary.",
     "batch": 12,
     "status": "generated"
   },
@@ -2740,7 +2740,7 @@
       0.5,
       0.25
     ],
-    "reviewNote": "Reviewed the 512-square source, focal y=0.25 206:141 crop and 128x88 thumbnail. Tidecaller\u2019s face, webbed hand and all five cards in the complete water-ring shuffle remain visible; decorative hair and lower scenery are trimmed.",
+    "reviewNote": "Reviewed the 512-square source, focal y=0.25 206:141 crop and 128x88 thumbnail. Tidecaller’s face, webbed hand and all five cards in the complete water-ring shuffle remain visible; decorative hair and lower scenery are trimmed.",
     "batch": 12,
     "status": "generated"
   },
@@ -2812,7 +2812,7 @@
       0.5,
       0.46
     ],
-    "reviewNote": "Reviewed the 512-square source, focal y=0.46 206:141 crop and 128x88 thumbnail. Djinn\u2019s eyes and guiding hand remain visible with the complete scale, both pans, selected card, tokens and full base; only the top of the turban is trimmed.",
+    "reviewNote": "Reviewed the 512-square source, focal y=0.46 206:141 crop and 128x88 thumbnail. Djinn’s eyes and guiding hand remain visible with the complete scale, both pans, selected card, tokens and full base; only the top of the turban is trimmed.",
     "batch": 12,
     "status": "generated"
   },
@@ -2837,7 +2837,7 @@
   {
     "cardId": "brown_instant_68",
     "name": "Dwarven Forge Bellows",
-    "prompt": "Paint an illustration for the exact card name \u201cDwarven Forge Bellows.\u201d Show a sturdy dwarven smith in a compact three-quarter view using one magnificent pair of leather forge bellows to breathe life into a glowing medieval forge. Keep the dwarf\u2019s focused face and working hand beside the complete bellows at the same height; the wood handles, riveted leather body, nozzle and glowing fire mouth are all clearly visible. The bellows are the main named object, and their gust sends embers into the forge, suggesting a tool that recharges magic. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers Brown references: grounded dwarf anatomy, textured beard and leather, hammered iron, warm directional firelight, layered brushwork, atmospheric depth, believable materials. Square 1:1 composition for a 512x512 master. Keep face, hand and entire bellows within x24\u2013488,y105\u2013407, arranged horizontally in middle 60 percent for a 206:141 crop. Quiet workshop gloom above and below. No modern hardware, no extra tools clutter, no text, runes, lettering, card frame, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for the exact card name “Dwarven Forge Bellows.” Show a sturdy dwarven smith in a compact three-quarter view using one magnificent pair of leather forge bellows to breathe life into a glowing medieval forge. Keep the dwarf’s focused face and working hand beside the complete bellows at the same height; the wood handles, riveted leather body, nozzle and glowing fire mouth are all clearly visible. The bellows are the main named object, and their gust sends embers into the forge, suggesting a tool that recharges magic. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers Brown references: grounded dwarf anatomy, textured beard and leather, hammered iron, warm directional firelight, layered brushwork, atmospheric depth, believable materials. Square 1:1 composition for a 512x512 master. Keep face, hand and entire bellows within x24–488,y105–407, arranged horizontally in middle 60 percent for a 206:141 crop. Quiet workshop gloom above and below. No modern hardware, no extra tools clutter, no text, runes, lettering, card frame, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-8033f359-78d4-444b-ad67-186bdef255cf.png",
     "editableSourcePath": "game/cards/art/masters/brown_instant_68.png",
     "sourceNative": [
@@ -2850,12 +2850,12 @@
     ],
     "status": "generated",
     "batch": 12,
-    "reviewNote": "512-square master, wide crop and 128px thumbnail inspected. The dwarf\u2019s eyes and working hand stay clear beside the complete leather bellows and glowing nozzle; the nozzle sits near the right edge but remains legible. Firelight and metalwork read at thumbnail size."
+    "reviewNote": "512-square master, wide crop and 128px thumbnail inspected. The dwarf’s eyes and working hand stay clear beside the complete leather bellows and glowing nozzle; the nozzle sits near the right edge but remains legible. Firelight and metalwork read at thumbnail size."
   },
   {
     "cardId": "brown_instant_69",
     "name": "Gnomish Wind-Up Key",
-    "prompt": "Paint an illustration for the exact card name \u201cGnomish Wind-Up Key.\u201d A clever gnome tinkerer in a compact three-quarter portrait turns a large ornate brass wind-up key in a small clockwork device, recharging its glowing mechanism. Keep the gnome\u2019s focused face, turning hand and complete key at the same height and close together; the key has a distinct decorative bow and visible squared winding shaft, clearly the named object. Let the clockwork device be small supporting context, with one bright spark and a slowly restarting gear. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers Brown references: grounded expressive face and hand anatomy, fine beard and goggles, tactile brass, steel, wood and worn cloth, warm directional lamplight, layered brushwork and atmospheric depth. Square 1:1 composition for a 512x512 master. Keep entire key, relevant hand and face inside x24\u2013488,y105\u2013407, horizontal middle 60 percent, quiet workshop background above and below for a 206:141 crop. No modern tools, text, letters, readable runes, card border, numbers or UI. No anime, Disney-like proportions, photorealism or pixel art.",
+    "prompt": "Paint an illustration for the exact card name “Gnomish Wind-Up Key.” A clever gnome tinkerer in a compact three-quarter portrait turns a large ornate brass wind-up key in a small clockwork device, recharging its glowing mechanism. Keep the gnome’s focused face, turning hand and complete key at the same height and close together; the key has a distinct decorative bow and visible squared winding shaft, clearly the named object. Let the clockwork device be small supporting context, with one bright spark and a slowly restarting gear. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers Brown references: grounded expressive face and hand anatomy, fine beard and goggles, tactile brass, steel, wood and worn cloth, warm directional lamplight, layered brushwork and atmospheric depth. Square 1:1 composition for a 512x512 master. Keep entire key, relevant hand and face inside x24–488,y105–407, horizontal middle 60 percent, quiet workshop background above and below for a 206:141 crop. No modern tools, text, letters, readable runes, card border, numbers or UI. No anime, Disney-like proportions, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-bc2f1478-ac79-4ea9-a33c-32841da0767c.png",
     "editableSourcePath": "game/cards/art/masters/brown_instant_69.png",
     "sourceNative": [
@@ -2868,12 +2868,12 @@
     ],
     "status": "generated",
     "batch": 12,
-    "reviewNote": "512-square master, wide crop and 128px thumbnail inspected. The gnome\u2019s eyes, turning hand and distinctive brass key remain clear beside the clockwork mechanism; only incidental hat tip extends above the crop. The key and warm machinery read at thumbnail size."
+    "reviewNote": "512-square master, wide crop and 128px thumbnail inspected. The gnome’s eyes, turning hand and distinctive brass key remain clear beside the clockwork mechanism; only incidental hat tip extends above the crop. The key and warm machinery read at thumbnail size."
   },
   {
     "cardId": "brown_instant_70",
     "name": "Alchemist's Reagent Kit",
-    "prompt": "Paint an illustration for the exact card name \u201cAlchemist's Reagent Kit.\u201d Make a single compact open leather reagent case the unmistakable subject, displayed horizontally on a wooden apothecary bench. Its open lid and fitted compartments hold a small curated set of distinct medieval ingredients: two corked glass vials, a pinch of blue crystal, dried herb bundle and a tiny brass measuring spoon. A gloved alchemist\u2019s hand may reach toward one vial, but the case and contents dominate. The kit should clearly look portable and ready to recharge a spell mixture, not a cluttered laboratory. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers Brown references: tactile leather, glass, plant matter and brass, nuanced brushwork, warm directional light and atmospheric depth, grounded and not photorealistic. Square 1:1 canvas for a 512x512 master. Keep the complete case, lid and all key reagents within x24\u2013488,y130\u2013390 in the middle 60 percent for a 206:141 crop; quiet apothecary background above and below. No readable writing on vials, no extra jars, no card frame, text, letters, runes, numbers or UI. No anime, Disney-like cartoon, toy-like proportions or pixel art.",
+    "prompt": "Paint an illustration for the exact card name “Alchemist's Reagent Kit.” Make a single compact open leather reagent case the unmistakable subject, displayed horizontally on a wooden apothecary bench. Its open lid and fitted compartments hold a small curated set of distinct medieval ingredients: two corked glass vials, a pinch of blue crystal, dried herb bundle and a tiny brass measuring spoon. A gloved alchemist’s hand may reach toward one vial, but the case and contents dominate. The kit should clearly look portable and ready to recharge a spell mixture, not a cluttered laboratory. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers Brown references: tactile leather, glass, plant matter and brass, nuanced brushwork, warm directional light and atmospheric depth, grounded and not photorealistic. Square 1:1 canvas for a 512x512 master. Keep the complete case, lid and all key reagents within x24–488,y130–390 in the middle 60 percent for a 206:141 crop; quiet apothecary background above and below. No readable writing on vials, no extra jars, no card frame, text, letters, runes, numbers or UI. No anime, Disney-like cartoon, toy-like proportions or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-528c99e6-5e34-42f5-866e-1cf5c577e3d3.png",
     "editableSourcePath": "game/cards/art/masters/brown_instant_70.png",
     "sourceNative": [
@@ -2891,7 +2891,7 @@
   {
     "cardId": "brown_instant_71",
     "name": "Storm Jar Generator",
-    "prompt": "Paint an illustration for the exact card name \u201cStorm Jar Generator.\u201d Show a compact medieval sky-tinker\u2019s generator: a handsome brass-and-copper hand-cranked coil machine charging exactly three clear storm jars mounted securely along its base. The three glass jars are distinct and fully visible, each holding a small swirling blue-white lightning cloud; visible coils, crank and glass insulators make the generator identity clear. A focused sky tinkerer stands close beside the device with face and hand at the same height, secondary to the generator. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers Brown references: believable brass, copper, glass, cloth and gentle lightning, layered brushwork, attractive directional workshop light, atmospheric depth. Square 1:1 composition for a 512x512 master. Keep the complete compact generator, all three jars, and any operator\u2019s face/hand inside x24\u2013488,y105\u2013407, horizontal middle 60 percent for a 206:141 crop. Quiet stormy sky and restrained workshop surroundings. No modern electrical wiring, no extra jars, no text, letters, runes, card frame, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for the exact card name “Storm Jar Generator.” Show a compact medieval sky-tinker’s generator: a handsome brass-and-copper hand-cranked coil machine charging exactly three clear storm jars mounted securely along its base. The three glass jars are distinct and fully visible, each holding a small swirling blue-white lightning cloud; visible coils, crank and glass insulators make the generator identity clear. A focused sky tinkerer stands close beside the device with face and hand at the same height, secondary to the generator. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers Brown references: believable brass, copper, glass, cloth and gentle lightning, layered brushwork, attractive directional workshop light, atmospheric depth. Square 1:1 composition for a 512x512 master. Keep the complete compact generator, all three jars, and any operator’s face/hand inside x24–488,y105–407, horizontal middle 60 percent for a 206:141 crop. Quiet stormy sky and restrained workshop surroundings. No modern electrical wiring, no extra jars, no text, letters, runes, card frame, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-1559b5aa-f684-469e-b8ce-9d706229203d.png",
     "editableSourcePath": "game/cards/art/masters/brown_instant_71.png",
     "sourceNative": [
@@ -2904,12 +2904,12 @@
     ],
     "status": "generated",
     "batch": 12,
-    "reviewNote": "512-square master, wide crop and 128px thumbnail inspected. The complete brass generator and all three storm jars stay visible and distinct. The operator\u2019s eyes and hand remain clear while incidental hair extends beyond the crop; the jars and machine are readable at thumbnail size."
+    "reviewNote": "512-square master, wide crop and 128px thumbnail inspected. The complete brass generator and all three storm jars stay visible and distinct. The operator’s eyes and hand remain clear while incidental hair extends beyond the crop; the jars and machine are readable at thumbnail size."
   },
   {
     "cardId": "brown_instant_72",
     "name": "Troll Rock Grinder",
-    "prompt": "Repaint the exact card \u201cTroll Rock Grinder\u201d as a wide, low horizontal portrait. Place a seated mountain troll\u2019s complete focused face and bright eyes at x95\u2013230,y175\u2013320 on the 512x512 square, beside a compact tabletop rock grinder. The complete machine stays within x205\u2013468,y175\u2013370: a low iron-banded stone trough with two horizontal granite grinding rollers, a small shallow hopper, a wooden side crank and sparkling gravel visibly emerging below. The troll turns the crank with one hand and loads one small rock with the other; face, both hands and whole grinder are side by side at the same height, all fully inside x24\u2013488,y105\u2013407. No tall hopper or tall person. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers Brown references: grounded troll anatomy and expression, believable stone, iron, wood and rough leather, nuanced brushwork, dramatic warm directional forge light and atmospheric depth, not photorealistic. Explicit 1:1 square master for a 206:141 landscape crop. Keep the compact named machine and whole face safe in the horizontal middle 60 percent with quiet cavern above and below. No modern industrial machinery, no text, labels, runes, card frame, numbers or UI. No anime, Disney-like cartoon, toy proportions, photorealism or pixel art.",
+    "prompt": "Repaint the exact card “Troll Rock Grinder” as a wide, low horizontal portrait. Place a seated mountain troll’s complete focused face and bright eyes at x95–230,y175–320 on the 512x512 square, beside a compact tabletop rock grinder. The complete machine stays within x205–468,y175–370: a low iron-banded stone trough with two horizontal granite grinding rollers, a small shallow hopper, a wooden side crank and sparkling gravel visibly emerging below. The troll turns the crank with one hand and loads one small rock with the other; face, both hands and whole grinder are side by side at the same height, all fully inside x24–488,y105–407. No tall hopper or tall person. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers Brown references: grounded troll anatomy and expression, believable stone, iron, wood and rough leather, nuanced brushwork, dramatic warm directional forge light and atmospheric depth, not photorealistic. Explicit 1:1 square master for a 206:141 landscape crop. Keep the compact named machine and whole face safe in the horizontal middle 60 percent with quiet cavern above and below. No modern industrial machinery, no text, labels, runes, card frame, numbers or UI. No anime, Disney-like cartoon, toy proportions, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-a9ed0455-200e-41bb-a98c-8dbf7d8da795.png",
     "editableSourcePath": "game/cards/art/masters/brown_instant_72.png",
     "sourceNative": [
@@ -2922,11 +2922,11 @@
     ],
     "status": "generated",
     "batch": 12,
-    "reviewNote": "Repainted after preserving the first attempt at /tmp/b12-brown-instant-72-first.png. 512-square master, wide crop and 128px thumbnail inspected: the troll\u2019s entire face and eyes, both hands, full hopper, grinding rollers and crank all fit. The compact machine and gravel output remain clear at thumbnail size."
+    "reviewNote": "Repainted after preserving the first attempt at /tmp/b12-brown-instant-72-first.png. 512-square master, wide crop and 128px thumbnail inspected: the troll’s entire face and eyes, both hands, full hopper, grinding rollers and crank all fit. The compact machine and gravel output remain clear at thumbnail size."
   },
   {
     "name": "Smelling Salts",
-    "prompt": "Paint an illustration for the Hexmancers card \u201cSmelling Salts.\u201d A single complete portable smelling-salts phial is the central artifact: a thumb-length cut-glass vial with a fitted brass stopper, pale aromatic crystals visible inside and a small ribbon of sharp clean vapor curling from its open mouth. Set it on a worn alchemist's workbench with a few salt grains and folded linen as quiet support. Painterly medieval high-fantasy collectible-card art, finely rendered glass, brass and crystal salts, warm directional candlelight, deep but readable shadows, atmospheric depth and a crisp artifact silhouette at thumbnail size. Square 1:1 composition for a 512x512 master; keep the whole vial, stopper and vapor source inside x24..488,y105..407, centered in middle 60%, quiet workbench surroundings above/below for 206:141 crop. No frame, text, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for the Hexmancers card “Smelling Salts.” A single complete portable smelling-salts phial is the central artifact: a thumb-length cut-glass vial with a fitted brass stopper, pale aromatic crystals visible inside and a small ribbon of sharp clean vapor curling from its open mouth. Set it on a worn alchemist's workbench with a few salt grains and folded linen as quiet support. Painterly medieval high-fantasy collectible-card art, finely rendered glass, brass and crystal salts, warm directional candlelight, deep but readable shadows, atmospheric depth and a crisp artifact silhouette at thumbnail size. Square 1:1 composition for a 512x512 master; keep the whole vial, stopper and vapor source inside x24..488,y105..407, centered in middle 60%, quiet workbench surroundings above/below for 206:141 crop. No frame, text, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-ca4d711f-b00e-4cf1-a804-f24406b262e0.png",
     "editableSourcePath": "game/cards/art/masters/brown_instant_73.png",
     "sourceNative": [
@@ -2944,7 +2944,7 @@
   },
   {
     "name": "Antidote Kit",
-    "prompt": "Paint an illustration for the Hexmancers card \u201cAntidote Kit.\u201d Show a compact, complete open field kit on an alchemist's table: a hinged wooden case with fitted compartments, two differently colored corked antidote bottles, a small pestle, dried herbs and a folded linen wrap. Arrange every component clearly inside the open case so the full kit reads as one practical cleansing remedy, without loose clutter. Painterly medieval high-fantasy collectible-card art, believable oak, leather hinges, glass, herbs and brass, warm directional workshop light, atmospheric depth and rich texture; strong readable silhouette at thumbnail size. Square 1:1 composition for a 512x512 master; keep the whole open case, lid and its contents inside x24..488,y105..407, centered in middle 60%, quiet tabletop and dark alcove top/bottom for 206:141 crop. No frame, writing, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for the Hexmancers card “Antidote Kit.” Show a compact, complete open field kit on an alchemist's table: a hinged wooden case with fitted compartments, two differently colored corked antidote bottles, a small pestle, dried herbs and a folded linen wrap. Arrange every component clearly inside the open case so the full kit reads as one practical cleansing remedy, without loose clutter. Painterly medieval high-fantasy collectible-card art, believable oak, leather hinges, glass, herbs and brass, warm directional workshop light, atmospheric depth and rich texture; strong readable silhouette at thumbnail size. Square 1:1 composition for a 512x512 master; keep the whole open case, lid and its contents inside x24..488,y105..407, centered in middle 60%, quiet tabletop and dark alcove top/bottom for 206:141 crop. No frame, writing, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-a393bba1-e63c-4a87-873a-be2e57edca96.png",
     "editableSourcePath": "game/cards/art/masters/brown_instant_74.png",
     "sourceNative": [
@@ -2962,7 +2962,7 @@
   },
   {
     "name": "Elven Purifying Lamp",
-    "prompt": "Paint an illustration for the Hexmancers card \u201cElven Purifying Lamp.\u201d A beautifully crafted elven lantern stands alone on a mossy forest altar, its entire slender silverwood-and-bronze frame, handle, glass chamber and base visible. A clear column of warm white-gold light pours from the lamp and gently disperses a faint smoky stain from the surrounding leaves, showing purification without hiding the artifact. Painterly medieval high-fantasy collectible-card art, delicate elven metalwork, leaf motifs, translucent glass, refined materials, attractive directional light against cool forest shade, atmospheric depth and a readable silhouette at small size. Square 1:1 composition for a 512x512 master; keep the complete handle, lamp and base within x24..488,y105..407, centered in middle 60%, quiet forest margins above and below for a 206:141 crop. No frame, lettering, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for the Hexmancers card “Elven Purifying Lamp.” A beautifully crafted elven lantern stands alone on a mossy forest altar, its entire slender silverwood-and-bronze frame, handle, glass chamber and base visible. A clear column of warm white-gold light pours from the lamp and gently disperses a faint smoky stain from the surrounding leaves, showing purification without hiding the artifact. Painterly medieval high-fantasy collectible-card art, delicate elven metalwork, leaf motifs, translucent glass, refined materials, attractive directional light against cool forest shade, atmospheric depth and a readable silhouette at small size. Square 1:1 composition for a 512x512 master; keep the complete handle, lamp and base within x24..488,y105..407, centered in middle 60%, quiet forest margins above and below for a 206:141 crop. No frame, lettering, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-71ff6bdd-c155-41e9-adfa-366a5987b7d0.png",
     "editableSourcePath": "game/cards/art/masters/brown_instant_75.png",
     "sourceNative": [
@@ -2980,7 +2980,7 @@
   },
   {
     "name": "Copying Press",
-    "prompt": "Paint an illustration for the Hexmancers card \u201cCopying Press.\u201d A compact medieval hand-operated copying press sits squarely on an artisan's desk: complete wooden frame, iron screw and broad platen pressing a blank parchment against a second sheet. One original page and one crisp duplicate emerge side by side, visibly identical but with no legible text. The sturdy press is the dominant named subject. Painterly medieval high-fantasy collectible-card art, finely textured dark oak, iron, parchment and brass, warm workshop light, atmospheric depth, clean readable mechanical silhouette at thumbnail scale. Square 1:1 composition for a 512x512 master; keep full frame, screw, platen and both sheets inside x24..488,y105..407, horizontally centered in middle 60%, quiet desk and wall above/below for 206:141 crop. No frame, readable writing, runes, numbers or UI; no modern office equipment, anime, Disney-like cartoon, photorealism or pixel art.\n\nRepaint instruction: Recompose this illustration for the Hexmancers card \u201cCopying Press.\u201d Preserve the same richly painterly medieval workshop, warm light, dark oak and iron, and the clear paired printed sheets. Make the entire copying press smaller and more compact, occupying about 58 percent of the square canvas height, centered with ample space above and below. Keep the complete wooden frame, both feet/base rails, top crossbar, full screw and handle, pressing platen, and both printed sheets visible together with clear margins inside the middle 60 percent of the 1:1 square for a 206:141 horizontal card crop. The press remains the strong central subject; remove incidental foreground clutter. No card frame, lettering, modern equipment or UI.",
+    "prompt": "Paint an illustration for the Hexmancers card “Copying Press.” A compact medieval hand-operated copying press sits squarely on an artisan's desk: complete wooden frame, iron screw and broad platen pressing a blank parchment against a second sheet. One original page and one crisp duplicate emerge side by side, visibly identical but with no legible text. The sturdy press is the dominant named subject. Painterly medieval high-fantasy collectible-card art, finely textured dark oak, iron, parchment and brass, warm workshop light, atmospheric depth, clean readable mechanical silhouette at thumbnail scale. Square 1:1 composition for a 512x512 master; keep full frame, screw, platen and both sheets inside x24..488,y105..407, horizontally centered in middle 60%, quiet desk and wall above/below for 206:141 crop. No frame, readable writing, runes, numbers or UI; no modern office equipment, anime, Disney-like cartoon, photorealism or pixel art.\n\nRepaint instruction: Recompose this illustration for the Hexmancers card “Copying Press.” Preserve the same richly painterly medieval workshop, warm light, dark oak and iron, and the clear paired printed sheets. Make the entire copying press smaller and more compact, occupying about 58 percent of the square canvas height, centered with ample space above and below. Keep the complete wooden frame, both feet/base rails, top crossbar, full screw and handle, pressing platen, and both printed sheets visible together with clear margins inside the middle 60 percent of the 1:1 square for a 206:141 horizontal card crop. The press remains the strong central subject; remove incidental foreground clutter. No card frame, lettering, modern equipment or UI.",
     "generatedPath": "/workspace/generated_images/exec-05a8ef53-39ec-43f5-abc4-35c0fc2c7ada.png",
     "editableSourcePath": "game/cards/art/masters/brown_instant_76.png",
     "sourceNative": [
@@ -2998,7 +2998,7 @@
   },
   {
     "name": "Gnomish Duplicator",
-    "prompt": "Paint an illustration for the Hexmancers card \u201cGnomish Duplicator.\u201d A compact tabletop gnomish clockwork duplicator is the sole central artifact: a complete boxy brass-and-oak device with small visible gears, two matched roller plates and three identical blank parchment slips emerging side by side from one original. The full device, feet, crank and all copies fit together comfortably, with enough open space around them. Distinguish it from a simple screw press through its twin geared output rollers and delicate gnomish mechanisms. Painterly medieval high-fantasy collectible-card art, fine mechanical detail, warm workshop light, brushed brass, polished wood and parchment, atmospheric depth, clear silhouette at thumbnail size. Square 1:1 composition for a 512x512 master; keep the entire compact duplicator and copies inside x24..488,y105..407, compose horizontally in the middle 60%, quiet workshop background above/below for a 206:141 crop. No frame, legible text, runes, numbers or UI; no modern office equipment, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for the Hexmancers card “Gnomish Duplicator.” A compact tabletop gnomish clockwork duplicator is the sole central artifact: a complete boxy brass-and-oak device with small visible gears, two matched roller plates and three identical blank parchment slips emerging side by side from one original. The full device, feet, crank and all copies fit together comfortably, with enough open space around them. Distinguish it from a simple screw press through its twin geared output rollers and delicate gnomish mechanisms. Painterly medieval high-fantasy collectible-card art, fine mechanical detail, warm workshop light, brushed brass, polished wood and parchment, atmospheric depth, clear silhouette at thumbnail size. Square 1:1 composition for a 512x512 master; keep the entire compact duplicator and copies inside x24..488,y105..407, compose horizontally in the middle 60%, quiet workshop background above/below for a 206:141 crop. No frame, legible text, runes, numbers or UI; no modern office equipment, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-9eef31ef-00bf-454b-a5ba-17ec4dff7be2.png",
     "editableSourcePath": "game/cards/art/masters/brown_instant_77.png",
     "sourceNative": [
@@ -3017,7 +3017,7 @@
   {
     "cardId": "brown_instant_78",
     "name": "Grappling Hook",
-    "prompt": "Square 1:1 painterly medieval high-fantasy collectible-card illustration with warm lantern light and sea-spray blues. Grappling Hook: a complete compact three-pronged iron grappling hook with a stout rope coiled neatly beside it on a ship\u2019s weathered deck; its curved points are clearly separated and the rope is visibly knotted to the ring. One taut length reaches toward a small chest being hauled back aboard, suggesting recall, but the hook remains the dominant named subject. Keep the entire hook, knot and essential rope connection within x24..488 y105..407, arranged horizontally across the middle 60%, quiet rigging and ocean above and below. Believable forged iron, tarred rope, painterly material detail, strong silhouette readable small. No text, UI, card frame, logo, watermark, modern gear, Disney, anime, cartoon, photorealism, pixel art.",
+    "prompt": "Square 1:1 painterly medieval high-fantasy collectible-card illustration with warm lantern light and sea-spray blues. Grappling Hook: a complete compact three-pronged iron grappling hook with a stout rope coiled neatly beside it on a ship’s weathered deck; its curved points are clearly separated and the rope is visibly knotted to the ring. One taut length reaches toward a small chest being hauled back aboard, suggesting recall, but the hook remains the dominant named subject. Keep the entire hook, knot and essential rope connection within x24..488 y105..407, arranged horizontally across the middle 60%, quiet rigging and ocean above and below. Believable forged iron, tarred rope, painterly material detail, strong silhouette readable small. No text, UI, card frame, logo, watermark, modern gear, Disney, anime, cartoon, photorealism, pixel art.",
     "generatedPath": "/workspace/generated_images/exec-6be490e6-22be-4b7e-9977-48593e7ac78c.png",
     "editableSourcePath": "game/cards/art/masters/brown_instant_78.png",
     "sourceNative": [
@@ -3053,7 +3053,7 @@
   {
     "cardId": "brown_instant_81",
     "name": "Gnomish Force Bubble",
-    "prompt": "Square 1:1 painterly medieval high-fantasy collectible-card illustration, clear cool light with warm brass workshop accents. Gnomish Force Bubble: one small gnome tinkerer stands fully protected inside a complete translucent spherical force bubble, a few fine geometric glints ripple across its surface; gnome\u2019s face, eyes and open palm are clearly visible through the sphere. The bubble is the main subject and full circumference stays inside the crop with generous margin. Center horizontally in middle 60%, keep whole bubble and gnome within x40..472 y105..407; quiet workshop setting above and below. Subtle blue-silver transparency, soft healing warmth at the gnome\u2019s feet, painterly grounded materials, strong clean circle readable small. No text, UI, card frame, logo, watermark, sci-fi technology, Disney, anime, cartoon, photorealism, pixel art.",
+    "prompt": "Square 1:1 painterly medieval high-fantasy collectible-card illustration, clear cool light with warm brass workshop accents. Gnomish Force Bubble: one small gnome tinkerer stands fully protected inside a complete translucent spherical force bubble, a few fine geometric glints ripple across its surface; gnome’s face, eyes and open palm are clearly visible through the sphere. The bubble is the main subject and full circumference stays inside the crop with generous margin. Center horizontally in middle 60%, keep whole bubble and gnome within x40..472 y105..407; quiet workshop setting above and below. Subtle blue-silver transparency, soft healing warmth at the gnome’s feet, painterly grounded materials, strong clean circle readable small. No text, UI, card frame, logo, watermark, sci-fi technology, Disney, anime, cartoon, photorealism, pixel art.",
     "generatedPath": "/workspace/generated_images/exec-0edb4783-3d05-4c32-8d39-594f3e729196.png",
     "editableSourcePath": "game/cards/art/masters/brown_instant_81.png",
     "sourceNative": [
@@ -3064,8 +3064,44 @@
       0.5,
       0.43
     ],
-    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Gnome face, eyes, hands and feet are visible; the sphere\u2019s outer rim is slightly clipped at the top, so a future repaint may be needed. Parent shifted the crop upward to retain the force-bubble rim with the gnome face/hand.",
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Gnome face, eyes, hands and feet are visible; the sphere’s outer rim is slightly clipped at the top, so a future repaint may be needed. Parent shifted the crop upward to retain the force-bubble rim with the gnome face/hand.",
     "batch": 13,
     "status": "generated"
+  },
+  {
+    "cardId": "brown_instant_80",
+    "name": "Dwarven Shield Charm",
+    "prompt": "Create one illustration for the Hexmancers card Dwarven Shield Charm. The named subject is a single compact dwarven charm: a palm-sized round bronze-and-iron medallion shaped like a miniature sturdy shield, with a small inset pale blue crystal, hand-forged rivets and restrained angular dwarven engraving (abstract marks only, no readable writing). The complete charm is the strong central subject, shown upright at a slight three-quarter angle, with a translucent warm silver-blue barrier visibly blossoming around it as a clean protective arc, suggesting a shield ward. No operator or extra props. Painterly medieval high-fantasy collectible-card illustration, grounded detailed metalwork, dramatic directional forge light, atmospheric stone workshop background, clear silhouette and attractive contrast. Explicit 1:1 square canvas, intended as an editable 512x512 master. Keep the entire charm and its complete protective arc within x24..488,y105..407 on the square, arranged horizontally through the middle 60%; quiet scenery above and below for a 206:141 horizontal crop. The charm should remain legible at thumbnail size. No card border, text, numbers, interface, logo or watermark; no modern technology, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-71ad89f0-4dcd-4872-ab0a-5b54146b959c.png",
+    "editableSourcePath": "game/cards/art/masters/brown_instant_80.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. The full dwarven shield charm and crystal remain clear; the barrier arc frames it, with only a small part of its uppermost glow cropped in the wide view. Parent review pending."
+  },
+  {
+    "cardId": "brown_instant_82",
+    "name": "Elven Glass Ward",
+    "prompt": "Create an illustration for the Hexmancers card Elven Glass Ward. The named subject is a compact, light-built elven defensive ward: exactly three joined, slightly curved translucent glass panels forming a short wall across the scene, each panel distinct with delicate silver-green elven metal edging and a few tiny leaf-shaped crystal details. An incoming arrow and a small stone fragment glance away from the clear glass surface, showing it blocks attacks; no characters or extra props. Make the complete three-panel ward the prominent central subject, horizontal and broad, with all ends and lower supports visible. Painterly medieval high-fantasy collectible-card art, believable glass reflections and fine metalwork, elegant elven craftsmanship, luminous forest light, atmospheric woodland stone path behind it, crisp readable silhouette and attractive directional lighting. Explicit 1:1 square canvas, intended as an editable 512x512 master. Keep the complete ward and its defensive action inside x24..488,y105..407 on the square; quiet scenery above and below for a 206:141 horizontal crop. The three glass sections must remain distinct at thumbnail size. No card frame, text, numbers, readable runes, interface, logo or watermark; no modern technology, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8189a68f-a0e8-4a17-8c69-a138ef5386be.png",
+    "editableSourcePath": "game/cards/art/masters/brown_instant_82.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. All three glass panels, their complete supports and the arrow deflection remain visible and distinct; the ward reads clearly at small size. Parent review pending."
   }
 ]

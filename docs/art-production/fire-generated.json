@@ -3034,5 +3034,131 @@
     "status": "generated",
     "batch": 13,
     "reviewNote": "Inspected 512 source, true wide crop and 128 thumbnail: volcanic fissure is clearly the fire source; low flame jet traverses a horizontal row and remains central."
+  },
+  {
+    "cardId": "fire_strike_19",
+    "name": "Cyclone of Cinders",
+    "prompt": "Paint an illustration for the exact Hexmancers card Cyclone of Cinders. A compact, forceful horizontal cyclone of glowing cinders drills through a line of armored foes: a dense rotating funnel of black ash, sparks, and orange-white fire passes through the first enemy and emerges beyond it, while its pressure throws the struck warrior backward. The cinder cyclone is the clear named subject; show the full spinning core and piercing path across the battlefield. Painterly medieval high-fantasy collectible-card art matching the supplied grounded fire references: tactile basalt, armor, smoke and ember detail, warm directional glow against cool dusk, atmospheric depth. Explicit 1:1 SQUARE canvas for a 512x512 editable master. Keep the cyclone, its complete central core, and clear piercing line within x24..488,y105..407 for the 206:141 card crop; quiet smoke and sky above and below. No frame, text, runes, symbols or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-d4d5b97e-b505-4a69-9beb-f72a44966366.png",
+    "editableSourcePath": "game/cards/art/masters/fire_strike_19.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel crop: the complete cinder cyclone and its piercing path through two armored foes remain clear; the central spinning core reads as the named subject."
+  },
+  {
+    "cardId": "fire_strike_20",
+    "name": "Fire Whirl",
+    "prompt": "Paint an illustration for the exact Hexmancers card Fire Whirl. A charged fire spell has become a compact spinning wheel of flame: a clearly visible circular whirl of orange-white fire ricochets in a sharp zigzag from one armored foe to another across a medieval battlefield, leaving two discrete brief impact flares and pushing a target backward. The charged whirling fire is the dominant subject and its rebound path reads clearly. Painterly medieval high-fantasy collectible-card art matching the supplied grounded fire references: tactile basalt and armor, brushy flame, attractive directional glow against cool dusk, atmospheric depth. Explicit 1:1 SQUARE canvas for a 512x512 editable master. Keep full whirl and readable rebounds within x24..488,y105..407 for the 206:141 card crop; quiet smoke and sky above and below. No frame, text, runes, symbols or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-6933f586-0aee-4814-864c-2f08c90991ae.png",
+    "editableSourcePath": "game/cards/art/masters/fire_strike_20.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel crop: the full charged fire whirl and its zigzag rebounds across two foes stay visible; the circular flame and backward push read clearly at thumbnail size."
+  },
+  {
+    "cardId": "fire_strike_21",
+    "name": "Phoenix Feather",
+    "prompt": "Paint an illustration for the exact Hexmancers card Phoenix Feather. One radiant red-gold phoenix feather, large and unmistakable, flies in a horizontal curving ricochet path past two distant armored foes; the bright feather-shaped fire bolt rebounds from the nearer shield, then releases warm restorative sparks that visibly revive a weary fire mage or warrior holding the other end of its path. Show a tiny phoenix-like ember silhouette within the feather's glowing shaft, but keep the whole feather the main subject. Painterly medieval high-fantasy collectible-card art matching supplied grounded fire references: believable feather barbs, weathered armor, expressive brushwork, warm healing light against cool dusk, atmospheric depth. Explicit 1:1 SQUARE canvas for a 512x512 editable master. Keep the whole named feather, its pointed tip and restorative glow within x24..488,y105..407 for the 206:141 crop; quiet scenery above and below. No frame, text, runes, symbols or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-2eecae31-c645-487b-9e36-c00208b85eb9.png",
+    "editableSourcePath": "game/cards/art/masters/fire_strike_21.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel crop: the complete phoenix feather and tip remain visible, its ricochet from a shield reads, and the warm sparks clearly reach the mage’s raised hand and face."
+  },
+  {
+    "cardId": "fire_strike_22",
+    "name": "Griffin Talon",
+    "prompt": "Paint an illustration for the exact Hexmancers card Griffin Talon. A powerful griffin in profile dominates the central action, its distinctive hooked golden talon sweeping in one charged, bright fire-lit arc through a single armored foe; the foe's shield and weapon fly back as the strike lands, while a small ember flare near the griffin suggests the spell's renewed force after a decisive hit. Show the griffin's clear noble eagle face, eye, full front talon and action in a strong horizontal pose; no gore. Painterly medieval high-fantasy collectible-card art matching supplied grounded fire references: detailed golden feathers, tawny fur, worn metal and smoke, attractive warm directional light, atmospheric depth. Explicit 1:1 SQUARE canvas for a 512x512 editable master. Keep griffin face and eye, full named talon and strike action within x24..488,y105..407 for the 206:141 crop; quiet smoky margins above and below. No frame, text, runes, symbols or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-a4069ff4-ffd9-4620-89c9-112206b5cb64.png",
+    "editableSourcePath": "game/cards/art/masters/fire_strike_22.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel crop: the griffin’s full face and eye, hooked front talon, and impact arc remain clear. A wing tip and part of the recoiling foe extend beyond the crop; the named creature and action stay identifiable."
+  },
+  {
+    "cardId": "fire_strike_23",
+    "name": "Coyote's Trick Shot",
+    "prompt": "Paint an illustration for the exact card name “Coyote's Trick Shot.” A nimble anthropomorphic coyote trickster in weathered leather and a russet hood snaps a short recurved bow, sending one bright ember-tipped arrow on a dramatic curved, boomerang-like path that pierces through two aligned hostile targets. Keep the coyote’s expressive animal face and eyes, drawing hand, bow and arrow clearly visible together; the curling fire trail communicates the clever piercing shot without obscuring the subject. Painterly medieval high-fantasy collectible-card art matching the supplied Hexmancers references: grounded animal anatomy and believable leather, wood, feathers and iron, layered brushwork, warm directional firelight and atmospheric depth, not photorealistic. Explicit 1:1 square canvas for a 512×512 editable master. Compose the coyote’s head and bow action horizontally in the middle band; keep face/eyes, both hands, bow and arrow impact inside x24–488,y105–407 for a 206:141 landscape crop, with quiet dusk woodland above and below. Strong readable silhouette, attractive lighting. No card frame, lettering, runes, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2fa2ab6d-3dd0-48e6-a823-a59a7482f790.png",
+    "editableSourcePath": "game/cards/art/masters/fire_strike_23.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, true 206:141 wide crop and 128px thumbnail. Coyote’s face and eyes, bow, drawing hand, bow hand, arrow and the piercing curved fire shot remain clear; secondary targets and woodland recede."
+  },
+  {
+    "cardId": "fire_strike_24",
+    "name": "Goblin Slingshot",
+    "prompt": "Paint an illustration for the exact card name “Goblin Slingshot.” A wiry green goblin sapper braces on a rocky medieval rampart and releases an oversized leather-and-yew slingshot, hurling a single incandescent stone at a charging armored foe; the powerful shot’s recoil throws the goblin’s shoulders and cloak backward. Show the goblin’s sharp face and eyes, both hands on the sling, its complete forked frame and the blazing stone traveling forward; the recoil is visible in the pose, not as injury. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: grounded expressive anatomy, textured leather, wood, iron and stone, layered brushwork, vivid directional firelight, smoky depth, not photorealistic. Explicit 1:1 square canvas for a 512×512 editable master. Compose the goblin, full slingshot, projectile and target horizontally in the central band; keep face/eyes, hands, sling and flaming stone within x24–488,y105–407 for a 206:141 landscape crop. Quiet fortress sky and stone margins above and below. Clear readable silhouette and action. No gore, card frame, lettering, runes, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-cda0b84f-c8d3-428f-abfb-fef9b726ae91.png",
+    "editableSourcePath": "game/cards/art/masters/fire_strike_24.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, true 206:141 wide crop and 128px thumbnail. Goblin face, both hands, the complete sling frame and incandescent projectile all remain visible; the recoil posture and opponent’s reaction read clearly. Fortress wall and lower stonework are supporting scenery."
+  },
+  {
+    "cardId": "fire_strike_25",
+    "name": "Gremlin Sparkler",
+    "prompt": "Paint an illustration for the exact card name “Gremlin Sparkler.” A mischievous little green gremlin, its sharp delighted face and bright eyes close to the action, waves a handmade iron-and-brass sparkler that sprays a quick chain of sharp golden sparks into two nearby armored foes; their heads turn in dazed confusion as they stagger in different directions. Make the sparkler itself a clear recognizable handheld object, with the gremlin’s gripping hand and face visible together; the short chain of sparks is bright but does not obscure the character. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: grounded creature anatomy, finely textured skin, leather, metal and stone, rich layered brushwork, warm directional firelight, atmospheric depth, not photorealistic. Explicit 1:1 square canvas intended for a 512×512 editable master. Compose gremlin, face, sparkler and reaction horizontally in the middle band; keep eyes, gripping hand, full sparkler and primary sparks inside x24–488,y105–407 for a 206:141 landscape crop. Quiet alchemist-workshop background above and below. Strong readable silhouette and quick playful action. No card frame, lettering, runes, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-435dea34-84d4-40b3-a4cd-838d96b792b1.png",
+    "editableSourcePath": "game/cards/art/masters/fire_strike_25.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, true 206:141 wide crop and 128px thumbnail. Gremlin’s eyes, full face, gripping hand and complete sparkler are crisp; linked sparks hit two foes whose turned faces and stagger suggest confusion. Foreground bottles and workshop detail are secondary."
   }
 ]

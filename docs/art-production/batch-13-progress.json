@@ -1,11 +1,11 @@
 {
   "batch": 13,
-  "status": "paused-usage-limit",
+  "status": "in-progress",
   "targetNewImages": 200,
-  "generatedSources": 14,
-  "reviewedSources": 14,
-  "missingSources": 186,
-  "reviewedPackets": 0,
+  "generatedSources": 43,
+  "reviewedSources": 35,
+  "missingSources": 157,
+  "reviewedPackets": 7,
   "requiresRepaint": [],
   "baselineActive": 1434,
   "targetActive": 1634,
@@ -38,6 +38,18 @@
       ]
     },
     {
+      "cardId": "brown_instant_80",
+      "name": "Dwarven Shield Charm",
+      "colour": "brown",
+      "source": "game/cards/art/masters/brown_instant_80.png",
+      "sha256": "5fe15d3551b6fc5af475905163ba62fbce10674b530261a736913ab29473be18",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "cardId": "brown_instant_81",
       "name": "Gnomish Force Bubble",
       "colour": "brown",
@@ -47,6 +59,18 @@
       "focalPoint": [
         0.5,
         0.43
+      ]
+    },
+    {
+      "cardId": "brown_instant_82",
+      "name": "Elven Glass Ward",
+      "colour": "brown",
+      "source": "game/cards/art/masters/brown_instant_82.png",
+      "sha256": "43575173c2c9c37583557388b149a6615300267388d14f436b9c682450627518",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
       ]
     },
     {
@@ -62,11 +86,107 @@
       ]
     },
     {
+      "cardId": "fire_strike_19",
+      "name": "Cyclone of Cinders",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_strike_19.png",
+      "sha256": "9d8a6da842a1043381afea5d151b172f0dbe04f2fbcb578d45d5bff9179e9876",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_strike_20",
+      "name": "Fire Whirl",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_strike_20.png",
+      "sha256": "b6fafa386c2fa885d8b51b966230715b8aa3235f4204b9f82ce2c5d0ae9e3f35",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_strike_21",
+      "name": "Phoenix Feather",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_strike_21.png",
+      "sha256": "eafec4d799250c165377800f537d66c049f014f1cfe3480536da3cc982068861",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_strike_22",
+      "name": "Griffin Talon",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_strike_22.png",
+      "sha256": "b678f4f94b7f5ba7fa701989569800154d862fdfbaf549a5b95c27d11d36b139",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_strike_23",
+      "name": "Coyote's Trick Shot",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_strike_23.png",
+      "sha256": "2d53bb901043ef6738671ea5c16ad32fe96803d8668ca0a108f2781431bde244",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_strike_24",
+      "name": "Goblin Slingshot",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_strike_24.png",
+      "sha256": "38f8e258524a916aa62cd82272fc7a14b59f500d1011e1f677aead50b3856856",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_strike_25",
+      "name": "Gremlin Sparkler",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_strike_25.png",
+      "sha256": "178800edad23f1e3ce368f3043c0f550a41d7df4b2578c64a3f11effb8334b86",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "cardId": "frost_strike_16",
       "name": "Siren's Song",
       "colour": "frost",
       "source": "game/cards/art/masters/frost_strike_16.png",
       "sha256": "1a2eb0a5d69eaaddfd82034e9030f421aab0231d0ca06973d941cf4f9d945150",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "frost_strike_17",
+      "name": "Lorelei's Lure",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_strike_17.png",
+      "sha256": "5e69cbe4826a01e748c9e2f00e0514465e9cca2e75e213ff6a01b0fe8cfea355",
       "reviewed": true,
       "focalPoint": [
         0.5,
@@ -95,6 +215,18 @@
       "focalPoint": [
         0.5,
         0.4
+      ]
+    },
+    {
+      "cardId": "frost_strike_20",
+      "name": "Frostbite",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_strike_20.png",
+      "sha256": "5afb895bb74dbdf5df36e29bf83fef7d107d42d6da11f230115bc86c4b2ec21c",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
       ]
     },
     {
@@ -134,6 +266,42 @@
       ]
     },
     {
+      "cardId": "gray_summon_146",
+      "name": "Lares of the Home",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_146.png",
+      "sha256": "d929fc02926fff7dc20d3c66e0452812b8692c8896286e923de0e2564cb91bc1",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "gray_summon_147",
+      "name": "Household Kobold",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_147.png",
+      "sha256": "0af001e635c4de453106725fbe33a8f328523b9e2734c0042da114ddd510ad9e",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "gray_summon_148",
+      "name": "Village Healer",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_148.png",
+      "sha256": "8ec8bca044ee3f6dd1a662eeb82401e795b4a1e078a3a7c2b6d1e528016ad89c",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "cardId": "light_strike_16",
       "name": "Astrolabe Sightline",
       "colour": "light",
@@ -146,6 +314,18 @@
       ]
     },
     {
+      "cardId": "light_strike_17",
+      "name": "Gavel of Justice",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_strike_17.png",
+      "sha256": "8021d30bbb39a82a7fa096093620ef761b5c8ab9bb1f9bd5f94f8e05429a4bf0",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.44
+      ]
+    },
+    {
       "cardId": "light_strike_18",
       "name": "Shield Bash",
       "colour": "light",
@@ -155,6 +335,30 @@
       "focalPoint": [
         0.5,
         0.46
+      ]
+    },
+    {
+      "cardId": "light_strike_19",
+      "name": "Phalanx Advance",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_strike_19.png",
+      "sha256": "ce99b66a3015a59eae1ca9c3c84257cbe2e202ab1a3382925efba4eda9f47328",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "light_strike_20",
+      "name": "Crane Wing Sweep",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_strike_20.png",
+      "sha256": "b88befab27cff3bfaaed8cf3f48c94192433761fc6a8d8c759d5a0815f9c98bd",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
       ]
     },
     {
@@ -180,17 +384,150 @@
         0.5,
         0.5
       ]
+    },
+    {
+      "cardId": "shadow_strike_21",
+      "name": "Web Spray",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_strike_21.png",
+      "sha256": "7f4523e450a9f5f918088e4766ec49c5bd34fd4263278e5d6da86859f8a7e3ad",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "shadow_strike_22",
+      "name": "Jiangshi Hop",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_strike_22.png",
+      "sha256": "7bb0b9224b8db35272ede5155afd250faddd4f607e2bb11034cf4d8174d074f6",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.44
+      ]
+    },
+    {
+      "cardId": "shadow_strike_23",
+      "name": "Asanbosam Hook",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_strike_23.png",
+      "sha256": "67fcd8bbd265ec2ee0e6d460ba8353cf1fb175befb6ba40317326fd93eebed4d",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_strike_18",
+      "name": "Camel Kick",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_strike_18.png",
+      "sha256": "5e86df2fb70b11765b58a0dd087c989651652c3904b6dfec921a895da9165a59",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_strike_19",
+      "name": "Ifrit's Flame",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_strike_19.png",
+      "sha256": "2c638ef8ecf84b59426c3161e0bee2b69899bce9881e33865fce9571f112b2ac",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.45
+      ]
+    },
+    {
+      "cardId": "storm_strike_20",
+      "name": "Sun Disk Ray",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_strike_20.png",
+      "sha256": "560e037e1b34cb88a90496c9909138127a3b29530ff807410656fb057b856ab9",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_strike_21",
+      "name": "Noon Sun Glare",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_strike_21.png",
+      "sha256": "131250e54dd40d705fefacd61c8a8dedcbd76e8838cf1c632974f8b26be9207e",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_strike_22",
+      "name": "Mirage Dagger",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_strike_22.png",
+      "sha256": "52f1e0b3798c97729c7ffc648f7e3e591edbb4a9f8fac8cac553a128e9905e67",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_strike_19",
+      "name": "Anaconda Squeeze",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_strike_19.png",
+      "sha256": "343159d9976c79f3beaf16f7b7fae347ee65f1cd1f1aa69e29507644ef16f240",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_strike_20",
+      "name": "Liana Whip",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_strike_20.png",
+      "sha256": "7508fce2dec85257c59de89325763d7b6b8d7d4febe47f9d0701d200a1f7ab27",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_strike_21",
+      "name": "Strangler Fig",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_strike_21.png",
+      "sha256": "f849d3256dbd99089f6df7ff2bad7ad05f61ce4b58b5424842c491e0f817cb2b",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_strike_22",
+      "name": "Will-o'-Wisp Lure",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_strike_22.png",
+      "sha256": "8d4f2cced2a35eac30cee88aceb33b285bc638c053890d28c751e15aa9221683",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
     }
-  ],
-  "pause": {
-    "errorCode": "usage_limit_reached",
-    "httpStatus": 429,
-    "resetTimestamp": 1793483511,
-    "resetAtUTC": "2026-10-31 21:51:51 UTC",
-    "reportedResetTimestamps": [
-      1793483510,
-      1793483511
-    ],
-    "reason": "Image service returned a daily usage-limit response. Stop new generation and preserve completed sources; resume only after the reported reset."
-  }
+  ]
 }

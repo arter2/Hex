@@ -3022,5 +3022,95 @@
     "status": "generated",
     "batch": 12,
     "reviewNote": "Square, centered 206:141 crop, and 128x88 thumbnail inspected. The lancer's full face, both gripping hands, complete lance shaft and spearhead fit the wide crop; target figure remains secondary."
+  },
+  {
+    "cardId": "storm_strike_18",
+    "name": "Camel Kick",
+    "prompt": "Illustrate the Hexmancers storm strike Camel Kick, a charged chained attack with a small recoil. A powerful realistic desert camel in ornate but practical bronze-and-leather tack delivers a sudden backward kick, its hind hoof striking the nearest armored raider; a bright blue-white thunder impact leaps in a clear chain to two more silhouettes in a horizontal line. Show the camel's head and focused eye beside its kicking body, the whole relevant leg and hoof visible, and a tiny harmless spark curling back toward the camel's tack to suggest recoil. The camel and kick are the unmistakable primary subject; no comic expression or cartoon anatomy. Painterly medieval fantasy collectible-card art, grounded animal anatomy, worn tack, desert dust, cinematic storm light, deep atmospheric distance and crisp action. Explicit 1:1 square composition for an editable 512x512 master. Keep camel's face, full kicking hoof and chain impact inside x24..488,y105..407, compose horizontally in the middle 60%, quiet sky and sand in top/bottom margins for a 206:141 crop. No frame, lettering, numbers, interface, logo, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-cfe27932-50d3-4fff-83ad-67ec13704003.png",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_18.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Camel face, kicking leg and hoof remain clear; the charged impact chains across opponents in the wide view. Parent review pending."
+  },
+  {
+    "cardId": "storm_strike_19",
+    "name": "Ifrit's Flame",
+    "prompt": "Illustrate the Hexmancers storm strike Ifrit's Flame, a charged chained attack that scorches its caster slightly. A powerful ifrit fire spirit is the unmistakable central subject: an ancient ember-red djinn with a sharply defined face, swept-back crown-like horns, dark bronze armor plates and smoke-wreathed shoulders. It thrusts one open hand forward, releasing a bright ribbon of golden-orange flame that leaps in a clear chain through two distant armored foes; a small curl of flame bites its own forearm as recoil. Keep the ifrit face, casting hand and full flame chain readable, the spirit remains the dominant subject rather than a wall of fire. Painterly medieval high-fantasy collectible-card art, grounded sculptural anatomy, hammered bronze, ember glow, dramatic storm-lit shadows and atmospheric depth. Explicit 1:1 square composition for a 512x512 editable master. Keep face, hand and chain action inside x24..488,y105..407, arranged horizontally in the middle 60%, quiet smoky stone ruins above and below for a 206:141 crop. No text, card frame, numbers, interface, logo, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-13a3a3a8-a421-461f-a693-8dd6aabb0ec4.png",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_19.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.45
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, upward-shifted 206:141 crop (focalPoint y=0.45) and 128x88 thumbnail. The ifrit face and eyes, casting hand and chained flame strike remain visible; some upper flame is expendable. Parent review pending."
+  },
+  {
+    "cardId": "storm_strike_20",
+    "name": "Sun Disk Ray",
+    "prompt": "Illustrate the Hexmancers storm strike Sun Disk Ray, a quick row-wide radiant attack with a small recoil. An elven sun-priest braces a complete palm-sized round golden sun disk at chest height; its engraved rays and central amber crystal are clear. A single brilliant, straight golden-white beam shoots horizontally from the disk across an entire line of distant armored opponents, lighting them in sequence; a brief spark snaps back against the priest's glove to suggest recoil. Keep the priest's focused face and full supporting hand beside the entire disk, all at the same height, and make the straight beam unmistakable without washing out the subjects. Painterly medieval high-fantasy collectible-card illustration, believable gold and leather, warm noon light against storm-blue shadows, atmospheric depth, elegant brushwork. Explicit 1:1 square composition for an editable 512x512 master. Keep face, hand, full disk and beam action within x24..488,y105..407, horizontally arranged across the middle 60%, quiet sky and stone above and below for a 206:141 crop. No text, card border, numbers, interface, logo, watermark, modern technology, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-384d9837-9b89-41cb-ad78-1afefcabea69.png",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_20.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. The priest face and hand, complete sun disk and straight beam across the opponent row remain clear; a small spark indicates recoil. Parent review pending."
+  },
+  {
+    "cardId": "storm_strike_21",
+    "name": "Noon Sun Glare",
+    "prompt": "Illustrate the Hexmancers storm strike Noon Sun Glare, a quick ricocheting light attack that can land a critical hit and draw a little vitality back. On a bright medieval battlefield at high noon, a focused sun-priest holds a small polished bronze mirror-disc in one gloved hand; a razor-bright white-gold glare ricochets in a clear zigzag from one armored foe's shield to a second foe, with an intense starburst at the final critical impact. A thin warm thread of light flows back toward the priest's hand to suggest the drained vitality returning. Keep the priest's calm face, glove and complete mirror-disc clearly visible beside the effect; the controlled ricochet path is the main action, not a broad wash of glare. Painterly high-fantasy collectible-card art, believable bronze, cloth and armor, strong noon contrast, atmospheric depth, readable distinct silhouettes and elegant brushwork. Explicit 1:1 square composition for an editable 512x512 master. Keep face, hand, full disc and the complete ricochet action within x24..488,y105..407, arrange them horizontally through the middle 60%, quiet sky and ground above/below for a 206:141 crop. No text, card frame, numbers, interface, logo, watermark, modern objects, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ad75e536-03b4-4189-be86-bd0151be07c1.png",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_21.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. The priest face, hand and full mirror-disc remain clear; the glare ricochets between two foes with a bright final impact and a fine return thread. Parent review pending."
+  },
+  {
+    "cardId": "storm_strike_22",
+    "name": "Mirage Dagger",
+    "prompt": "Illustrate the Hexmancers storm strike Mirage Dagger, a quick diagonal attack that leaves its target confused. A desert illusionist stands in a warm, windblown sandstone courtyard, face and focused eyes clearly visible beside the raised hand at the same height. The hand grips one complete elegant short dagger diagonally, from lower left to upper right: a curved dark-steel blade, distinct point, bronze guard and wrapped hilt all visible. Along its diagonal path shimmer two faint offset afterimages of the same dagger, like a mirage; a distant armored target turns toward the false images in confusion. Keep the real dagger strongest and unmistakable, with the entire blade, tip, guard, hilt, hand and wielder's face inside the central crop. Painterly medieval high-fantasy collectible-card illustration, believable steel and leather, subtle heat haze, dramatic directional light, atmospheric depth and clear thumbnail silhouette. Explicit 1:1 square composition for an editable 512x512 master. Arrange face, hand and whole dagger across x24..488,y105..407 in the middle 60%, quiet sandstone and sky above and below for a 206:141 crop. No text, frame, numbers, interface, logo, watermark, modern objects, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6c26d402-9af3-4998-93d6-aa616b9d3eec.png",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_22.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. The wielder's face and gripping hand, full diagonal dagger and its two mirage afterimages remain visible; the confused opponent is secondary. Parent review pending."
   }
 ]

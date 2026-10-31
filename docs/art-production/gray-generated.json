@@ -3081,5 +3081,59 @@
     "status": "generated",
     "batch": 13,
     "reviewNote": "Square, centered 206:141 crop, and 128x88 thumbnail inspected. The spirit's complete face, eyes and raised hands remain clear; kimono and shoji room establish the Japanese home setting, with resident secondary."
+  },
+  {
+    "cardId": "gray_summon_146",
+    "name": "Lares of the Home",
+    "prompt": "Paint an original illustration for the exact card “Lares of the Home.” Mechanics: a sturdy, steady household spirit that draws danger toward itself while protecting its home. Depict a gentle, ancient household guardian spirit in the form of a dignified translucent elder emerging beside a stone hearth in a medieval home. The spirit turns toward a threat at the open doorway, calmly drawing the intruder’s attention away from a worried family in the background; one luminous hand rests near the hearth as warm ember-light and a faint protective aura soothe the room. Keep the spirit’s face, hands and central upper body unmistakable and prominent; family and threat remain secondary. Grounded Roman-inspired domestic details, believable wool, wood, iron and stone; restrained spectral glow, warm firelight against cool evening shadows. Painterly medieval fantasy collectible-card art, tactile brushwork and atmospheric depth, dramatic but legible lighting consistent with the supplied Hexmancers reference art. Exact 1:1 square composition for a 512×512 editable master. Arrange subject horizontally; keep face, hands and defining spirit features within x24…488, y105…407 for the 206:141 wide crop, with expendable ceiling and floor atmosphere beyond. No frame, lettering, numbers, runes, UI or typography. No anime, Disney-like cartoon proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ab521012-caea-4b41-a8c3-acbec60e8803.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_146.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Repaired the first render because the top of the spirit’s head fell outside the wide crop. Reviewed the repaired 512-square source, direct 512×350 crop and 128×88 thumbnail: complete face and both hands are inside the crop; hearthside family and doorway threat remain readable as supporting context."
+  },
+  {
+    "cardId": "gray_summon_147",
+    "name": "Household Kobold",
+    "prompt": "Paint an original illustration for the exact card “Household Kobold.” Mechanics: a sturdy, slow household goblin guardian that creates a protective ward and remains steadfast. Depict a compact, broad-shouldered goblin household guardian standing firmly at the threshold of a medieval cottage, sheltering the home with a visible pale-gold ward that curves across the doorway. He is gentle rather than monstrous: attentive face, sturdy stance, one hand braced on the ward and the other holding a small wooden broom or household tool; a warm hearth and modest family room glow behind him. The kobold’s face, both hands and clear protective action dominate; keep the ward compact and close to him. Believable weathered green skin, patched wool and leather, wood, iron and stone; painterly medieval fantasy collectible-card art with tactile brushwork, dramatic firelight and atmospheric depth matching the supplied Hexmancers reference art. Exact 1:1 square composition for a 512×512 editable master. Horizontal staging; keep face, hands, ward contact and upper body within x24…488, y105…407 for a 206:141 crop; quiet expendable room and floor above and below. No frame, lettering, numbers, runes, UI or typography. No anime, Disney-like cartoon proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-06cd24aa-9c43-4f9b-924c-eaa7d9e12148.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_147.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Repaired the first render because the kobold’s upper face fell outside the wide crop. Reviewed the repaired 512-square source, direct 512×350 crop and 128×88 thumbnail: full face, ears and both hands stay in the crop; the broom, protective ward and warm home remain readable."
+  },
+  {
+    "cardId": "gray_summon_148",
+    "name": "Village Healer",
+    "prompt": "Paint an original illustration for the Hexmancers summon “Village Healer.” Show a veteran village healer, a sturdy, kind middle-aged woman in weathered gray-green wool and a simple leather satchel, escorting an injured village guard along a stone lane. Her focused face and both hands stay clear as she presses a softly glowing herb poultice to the guard’s shoulder; warm restorative light gently strengthens the guard, while a few villagers shelter behind them. The healer is the unmistakable central subject, with a calm protective stance and grounded medieval village details. Painterly medieval/high-fantasy collectible-card art, nuanced believable cloth, herbs, leather and stone, attractive directional light, atmospheric depth, strong readable values. Match the supplied references' painterly materials and dramatic fantasy lighting, with a grounded gray-village tone. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the healer’s face, eyes, both working hands and the healing action within x24–488,y105–407 on the square; arrange the healer and patient horizontally for the 206:141 card crop, with quiet scenery above and below. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-8dfb811b-b99a-4d1d-abcf-39fb35ee9be3.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_148.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source, centered 206:141 crop and thumbnail inspected: the healer’s face, both hands and glowing treatment remain visible beside the patient. The escorting posture and restorative action are clear at thumbnail size."
   }
 ]

@@ -1,0 +1,1045 @@
+{
+  "batch": 10,
+  "packets": [
+    {
+      "packet": "brown-01",
+      "colour": "brown",
+      "cards": [
+        {
+          "id": "brown_machine_28",
+          "name": "Goblin Rocket Rack"
+        },
+        {
+          "id": "brown_instant_25",
+          "name": "Flash Bang Powder"
+        },
+        {
+          "id": "brown_machine_29",
+          "name": "Gnomish Bomb Lobber"
+        },
+        {
+          "id": "brown_instant_26",
+          "name": "Shock Glove"
+        },
+        {
+          "id": "brown_machine_30",
+          "name": "Alchemist's Acid Mortar"
+        }
+      ]
+    },
+    {
+      "packet": "fire-01",
+      "colour": "fire",
+      "cards": [
+        {
+          "id": "fire_strike_08",
+          "name": "Kitsune Foxfire"
+        },
+        {
+          "id": "fire_lob_10",
+          "name": "Paper Lantern Bomb"
+        },
+        {
+          "id": "fire_ward_09",
+          "name": "Dragon Scale Shield"
+        },
+        {
+          "id": "fire_sentry_10",
+          "name": "Goblin Flamethrower Post"
+        },
+        {
+          "id": "fire_boon_08",
+          "name": "Hearty Feast"
+        }
+      ]
+    },
+    {
+      "packet": "frost-01",
+      "colour": "frost",
+      "cards": [
+        {
+          "id": "frost_strike_08",
+          "name": "Hurricane's Eye"
+        },
+        {
+          "id": "frost_lob_09",
+          "name": "Coconut Lob"
+        },
+        {
+          "id": "frost_ward_08",
+          "name": "Sea Urchin Bed"
+        },
+        {
+          "id": "frost_sentry_10",
+          "name": "Whale Bone Arch"
+        },
+        {
+          "id": "frost_boon_09",
+          "name": "Selkie Skin"
+        }
+      ]
+    },
+    {
+      "packet": "gray-01",
+      "colour": "gray",
+      "cards": [
+        {
+          "id": "gray_summon_68",
+          "name": "Messenger Pigeon"
+        },
+        {
+          "id": "gray_summon_69",
+          "name": "Night Owl Scout"
+        },
+        {
+          "id": "gray_summon_70",
+          "name": "Horned Owl"
+        },
+        {
+          "id": "gray_summon_71",
+          "name": "Quill Porcupine"
+        },
+        {
+          "id": "gray_summon_72",
+          "name": "Spiny Hedgehog"
+        }
+      ]
+    },
+    {
+      "packet": "light-01",
+      "colour": "light",
+      "cards": [
+        {
+          "id": "light_strike_08",
+          "name": "Zephyr's Breath"
+        },
+        {
+          "id": "light_lob_09",
+          "name": "Alchemist's Flask"
+        },
+        {
+          "id": "light_ward_10",
+          "name": "Shieldwall of the Fyrd"
+        },
+        {
+          "id": "light_sentry_09",
+          "name": "Obelisk of the Sun"
+        },
+        {
+          "id": "light_boon_07",
+          "name": "Vigil Candle"
+        }
+      ]
+    },
+    {
+      "packet": "shadow-01",
+      "colour": "shadow",
+      "cards": [
+        {
+          "id": "shadow_strike_08",
+          "name": "Crow Swarm"
+        },
+        {
+          "id": "shadow_lob_10",
+          "name": "Coffin Drop"
+        },
+        {
+          "id": "shadow_ward_09",
+          "name": "Demon Hide"
+        },
+        {
+          "id": "shadow_sentry_10",
+          "name": "Spider Nest"
+        },
+        {
+          "id": "shadow_boon_08",
+          "name": "Witching Hour"
+        }
+      ]
+    },
+    {
+      "packet": "storm-01",
+      "colour": "storm",
+      "cards": [
+        {
+          "id": "storm_strike_08",
+          "name": "Tesla Arc"
+        },
+        {
+          "id": "storm_lob_09",
+          "name": "Golden Hail"
+        },
+        {
+          "id": "storm_ward_10",
+          "name": "Djinn's Veil"
+        },
+        {
+          "id": "storm_sentry_10",
+          "name": "Sandstone Idol"
+        },
+        {
+          "id": "storm_boon_08",
+          "name": "Camel's Endurance"
+        }
+      ]
+    },
+    {
+      "packet": "verdant-01",
+      "colour": "verdant",
+      "cards": [
+        {
+          "id": "verdant_strike_09",
+          "name": "Tiger's Rake"
+        },
+        {
+          "id": "verdant_lob_09",
+          "name": "Sticky Sap Glob"
+        },
+        {
+          "id": "verdant_ward_09",
+          "name": "Oak Heartwood Shield"
+        },
+        {
+          "id": "verdant_sentry_08",
+          "name": "Mandrake Patch"
+        },
+        {
+          "id": "verdant_boon_07",
+          "name": "Mistletoe Sprig"
+        }
+      ]
+    },
+    {
+      "packet": "brown-02",
+      "colour": "brown",
+      "cards": [
+        {
+          "id": "brown_instant_27",
+          "name": "Elven Flechette"
+        },
+        {
+          "id": "brown_machine_31",
+          "name": "Troll Boulder Sling"
+        },
+        {
+          "id": "brown_instant_28",
+          "name": "Bolas"
+        },
+        {
+          "id": "brown_machine_32",
+          "name": "Depth Charge Launcher"
+        },
+        {
+          "id": "brown_instant_29",
+          "name": "Boomerang"
+        }
+      ]
+    },
+    {
+      "packet": "fire-02",
+      "colour": "fire",
+      "cards": [
+        {
+          "id": "fire_charge_08",
+          "name": "Rivet Pouch"
+        },
+        {
+          "id": "fire_utility_09",
+          "name": "Ancestor's Tale"
+        },
+        {
+          "id": "fire_trap_07",
+          "name": "Fox Den Snare"
+        },
+        {
+          "id": "fire_environment_08",
+          "name": "Sulfur Springs"
+        },
+        {
+          "id": "fire_summon_05",
+          "name": "Griffin"
+        }
+      ]
+    },
+    {
+      "packet": "frost-02",
+      "colour": "frost",
+      "cards": [
+        {
+          "id": "frost_charge_07",
+          "name": "Grapeshot Bag"
+        },
+        {
+          "id": "frost_utility_08",
+          "name": "Return to the Sea"
+        },
+        {
+          "id": "frost_trap_08",
+          "name": "Ice Spike Pit"
+        },
+        {
+          "id": "frost_environment_08",
+          "name": "Iceberg Field"
+        },
+        {
+          "id": "frost_piece_05",
+          "name": "Eye of the Frost Giant"
+        }
+      ]
+    },
+    {
+      "packet": "gray-02",
+      "colour": "gray",
+      "cards": [
+        {
+          "id": "gray_summon_73",
+          "name": "Spitting Llama"
+        },
+        {
+          "id": "gray_summon_74",
+          "name": "Bactrian Camel"
+        },
+        {
+          "id": "gray_summon_75",
+          "name": "Gray Fox"
+        },
+        {
+          "id": "gray_summon_76",
+          "name": "Plains Wolf"
+        },
+        {
+          "id": "gray_summon_77",
+          "name": "Lone Wolf"
+        }
+      ]
+    },
+    {
+      "packet": "light-02",
+      "colour": "light",
+      "cards": [
+        {
+          "id": "light_charge_08",
+          "name": "Tesserae Pouch"
+        },
+        {
+          "id": "light_utility_08",
+          "name": "Cleric's Absolution"
+        },
+        {
+          "id": "light_trap_08",
+          "name": "Tomb Builder's Pitfall"
+        },
+        {
+          "id": "light_environment_07",
+          "name": "Rose Garden of Shiraz"
+        },
+        {
+          "id": "light_piece_05",
+          "name": "Scales of the Final Judge"
+        }
+      ]
+    },
+    {
+      "packet": "shadow-02",
+      "colour": "shadow",
+      "cards": [
+        {
+          "id": "shadow_charge_08",
+          "name": "Mold Jars"
+        },
+        {
+          "id": "shadow_utility_07",
+          "name": "Raise the Dead"
+        },
+        {
+          "id": "shadow_trap_07",
+          "name": "Oubliette"
+        },
+        {
+          "id": "shadow_environment_08",
+          "name": "Draugr's Barrow Frost"
+        },
+        {
+          "id": "shadow_piece_04",
+          "name": "Cauldron of the Bone Mother"
+        }
+      ]
+    },
+    {
+      "packet": "storm-02",
+      "colour": "storm",
+      "cards": [
+        {
+          "id": "storm_charge_08",
+          "name": "Naphtha Grenades"
+        },
+        {
+          "id": "storm_utility_08",
+          "name": "Moneylender's Loan"
+        },
+        {
+          "id": "storm_trap_08",
+          "name": "Shocking Floor Tiles"
+        },
+        {
+          "id": "storm_environment_07",
+          "name": "Lightning Field"
+        },
+        {
+          "id": "storm_summon_05",
+          "name": "Si'lat Shapeshifter"
+        }
+      ]
+    },
+    {
+      "packet": "verdant-02",
+      "colour": "verdant",
+      "cards": [
+        {
+          "id": "verdant_charge_09",
+          "name": "Seed Satchel"
+        },
+        {
+          "id": "verdant_utility_07",
+          "name": "Lyrebird Mimicry"
+        },
+        {
+          "id": "verdant_trap_08",
+          "name": "Fairy Ring"
+        },
+        {
+          "id": "verdant_environment_04",
+          "name": "Heather Moor"
+        },
+        {
+          "id": "verdant_piece_04",
+          "name": "Pipes of the Goat-Footed"
+        }
+      ]
+    },
+    {
+      "packet": "brown-03",
+      "colour": "brown",
+      "cards": [
+        {
+          "id": "brown_machine_33",
+          "name": "Sky-Folk Bomb Balloon"
+        },
+        {
+          "id": "brown_instant_30",
+          "name": "Chakram"
+        },
+        {
+          "id": "brown_machine_34",
+          "name": "Dwarven Thunder Mortar"
+        },
+        {
+          "id": "brown_instant_31",
+          "name": "Net Gun"
+        },
+        {
+          "id": "brown_machine_35",
+          "name": "Byzantine Fire Engine"
+        }
+      ]
+    },
+    {
+      "packet": "fire-03",
+      "colour": "fire",
+      "cards": [
+        {
+          "id": "fire_machine_04",
+          "name": "Rocket Battery"
+        },
+        {
+          "id": "hero_ignis",
+          "name": "Ignis, the Forge Wyrm"
+        },
+        {
+          "id": "fire_strike_09",
+          "name": "Oni Club Swing"
+        },
+        {
+          "id": "fire_lob_11",
+          "name": "Dragon Egg"
+        },
+        {
+          "id": "fire_ward_10",
+          "name": "Oni Mask"
+        }
+      ]
+    },
+    {
+      "packet": "frost-03",
+      "colour": "frost",
+      "cards": [
+        {
+          "id": "frost_summon_05",
+          "name": "Ningyo"
+        },
+        {
+          "id": "frost_machine_04",
+          "name": "Harpoon Launcher"
+        },
+        {
+          "id": "hero_boreas",
+          "name": "Boreas, the North Wind"
+        },
+        {
+          "id": "frost_strike_09",
+          "name": "Typhoon Lash"
+        },
+        {
+          "id": "frost_lob_10",
+          "name": "Ink Cloud"
+        }
+      ]
+    },
+    {
+      "packet": "gray-03",
+      "colour": "gray",
+      "cards": [
+        {
+          "id": "gray_summon_78",
+          "name": "Alpha Wolf"
+        },
+        {
+          "id": "gray_summon_79",
+          "name": "Hunting Hound"
+        },
+        {
+          "id": "gray_summon_80",
+          "name": "Alley Cat"
+        },
+        {
+          "id": "gray_summon_81",
+          "name": "Lynx"
+        },
+        {
+          "id": "gray_summon_82",
+          "name": "Wildcat"
+        }
+      ]
+    },
+    {
+      "packet": "light-03",
+      "colour": "light",
+      "cards": [
+        {
+          "id": "light_summon_04",
+          "name": "Chiron, Healer of Heroes"
+        },
+        {
+          "id": "light_machine_04",
+          "name": "Battering Ram"
+        },
+        {
+          "id": "hero_oracle",
+          "name": "The Oracle"
+        },
+        {
+          "id": "light_strike_09",
+          "name": "Mistral Gale"
+        },
+        {
+          "id": "light_lob_10",
+          "name": "Salve Jar"
+        }
+      ]
+    },
+    {
+      "packet": "shadow-03",
+      "colour": "shadow",
+      "cards": [
+        {
+          "id": "shadow_summon_06",
+          "name": "Shambling Zombie"
+        },
+        {
+          "id": "shadow_machine_04",
+          "name": "Coffin Cannon"
+        },
+        {
+          "id": "hero_jester",
+          "name": "The Hollow Jester"
+        },
+        {
+          "id": "shadow_strike_09",
+          "name": "Creeping Fog"
+        },
+        {
+          "id": "shadow_lob_11",
+          "name": "Spider Egg Sac"
+        }
+      ]
+    },
+    {
+      "packet": "storm-03",
+      "colour": "storm",
+      "cards": [
+        {
+          "id": "storm_machine_05",
+          "name": "Arc Gatling"
+        },
+        {
+          "id": "hero_tempest",
+          "name": "Tempest the Stormcaller"
+        },
+        {
+          "id": "storm_strike_09",
+          "name": "Scorpion Sting"
+        },
+        {
+          "id": "storm_lob_10",
+          "name": "Mercury Flask"
+        },
+        {
+          "id": "storm_ward_11",
+          "name": "Lightning Rod Array"
+        }
+      ]
+    },
+    {
+      "packet": "verdant-03",
+      "colour": "verdant",
+      "cards": [
+        {
+          "id": "verdant_summon_10",
+          "name": "Jack-in-the-Green"
+        },
+        {
+          "id": "verdant_machine_04",
+          "name": "Treehouse Lookout"
+        },
+        {
+          "id": "hero_oakheart",
+          "name": "Oakheart the Ancient"
+        },
+        {
+          "id": "verdant_strike_10",
+          "name": "Army Ant March"
+        },
+        {
+          "id": "verdant_lob_10",
+          "name": "Wild Honeycomb Hurl"
+        }
+      ]
+    },
+    {
+      "packet": "brown-04",
+      "colour": "brown",
+      "cards": [
+        {
+          "id": "brown_instant_32",
+          "name": "Coral Shrapnel"
+        },
+        {
+          "id": "brown_machine_36",
+          "name": "Djinn Sand Cannon"
+        },
+        {
+          "id": "brown_instant_33",
+          "name": "Djinn Smoke Puff"
+        },
+        {
+          "id": "brown_machine_37",
+          "name": "Elven Seed Catapult"
+        },
+        {
+          "id": "brown_instant_34",
+          "name": "Dwarven Blasting Charge"
+        }
+      ]
+    },
+    {
+      "packet": "fire-04",
+      "colour": "fire",
+      "cards": [
+        {
+          "id": "fire_sentry_11",
+          "name": "Phoenix Nest"
+        },
+        {
+          "id": "fire_boon_09",
+          "name": "Mulled Wine"
+        },
+        {
+          "id": "fire_charge_09",
+          "name": "Dragon Tooth Quiver"
+        },
+        {
+          "id": "fire_utility_10",
+          "name": "Red Envelope"
+        },
+        {
+          "id": "fire_trap_08",
+          "name": "Minotaur's Labyrinth"
+        }
+      ]
+    },
+    {
+      "packet": "frost-04",
+      "colour": "frost",
+      "cards": [
+        {
+          "id": "frost_ward_09",
+          "name": "Bubble Shield"
+        },
+        {
+          "id": "frost_sentry_11",
+          "name": "Lantern of the Drowned"
+        },
+        {
+          "id": "frost_boon_10",
+          "name": "Become the Tide"
+        },
+        {
+          "id": "frost_charge_08",
+          "name": "Blowfish Spines"
+        },
+        {
+          "id": "frost_utility_09",
+          "name": "Water Mirror Twin"
+        }
+      ]
+    },
+    {
+      "packet": "gray-04",
+      "colour": "gray",
+      "cards": [
+        {
+          "id": "gray_summon_83",
+          "name": "Sea Eagle"
+        },
+        {
+          "id": "gray_summon_84",
+          "name": "Mountain Goat"
+        },
+        {
+          "id": "gray_summon_85",
+          "name": "Ibex"
+        },
+        {
+          "id": "gray_summon_86",
+          "name": "Hippogriff"
+        },
+        {
+          "id": "gray_summon_87",
+          "name": "Hippogriff Rider"
+        }
+      ]
+    },
+    {
+      "packet": "light-04",
+      "colour": "light",
+      "cards": [
+        {
+          "id": "light_ward_11",
+          "name": "Sheltering Wings"
+        },
+        {
+          "id": "light_sentry_10",
+          "name": "Caracol Observatory"
+        },
+        {
+          "id": "light_boon_08",
+          "name": "Rally the Legion"
+        },
+        {
+          "id": "light_charge_09",
+          "name": "Genoese Crossbow Bolts"
+        },
+        {
+          "id": "light_utility_09",
+          "name": "Aryabhata's Tables"
+        }
+      ]
+    },
+    {
+      "packet": "shadow-04",
+      "colour": "shadow",
+      "cards": [
+        {
+          "id": "shadow_ward_10",
+          "name": "Shroud of Fog"
+        },
+        {
+          "id": "shadow_sentry_11",
+          "name": "Blood Fountain"
+        },
+        {
+          "id": "shadow_boon_09",
+          "name": "Mist Form"
+        },
+        {
+          "id": "shadow_charge_09",
+          "name": "Dungeon Chains"
+        },
+        {
+          "id": "shadow_utility_08",
+          "name": "Doppelganger"
+        }
+      ]
+    },
+    {
+      "packet": "storm-04",
+      "colour": "storm",
+      "cards": [
+        {
+          "id": "storm_sentry_11",
+          "name": "Thunder Drum"
+        },
+        {
+          "id": "storm_boon_09",
+          "name": "Date Palm Oasis"
+        },
+        {
+          "id": "storm_charge_09",
+          "name": "Sling of Thunderstones"
+        },
+        {
+          "id": "storm_utility_09",
+          "name": "Inventor's Codex"
+        },
+        {
+          "id": "storm_trap_09",
+          "name": "Djinn Bottle"
+        }
+      ]
+    },
+    {
+      "packet": "verdant-04",
+      "colour": "verdant",
+      "cards": [
+        {
+          "id": "verdant_ward_10",
+          "name": "Ghillie Suit"
+        },
+        {
+          "id": "verdant_boon_08",
+          "name": "Shaman's Vision Quest"
+        },
+        {
+          "id": "verdant_charge_10",
+          "name": "Hornet Jar"
+        },
+        {
+          "id": "verdant_utility_08",
+          "name": "Anansi's Bag of Tales"
+        },
+        {
+          "id": "verdant_trap_09",
+          "name": "Peat Bog Mire"
+        }
+      ]
+    },
+    {
+      "packet": "brown-05",
+      "colour": "brown",
+      "cards": [
+        {
+          "id": "brown_machine_38",
+          "name": "Iron Bastion"
+        },
+        {
+          "id": "brown_instant_35",
+          "name": "Gnomish Grenade"
+        },
+        {
+          "id": "brown_machine_39",
+          "name": "Dwarven Gate of Iron"
+        },
+        {
+          "id": "brown_instant_36",
+          "name": "Sticky Tar Bomb"
+        },
+        {
+          "id": "brown_machine_40",
+          "name": "Gnomish Pop-Up Wall"
+        }
+      ]
+    },
+    {
+      "packet": "fire-05",
+      "colour": "fire",
+      "cards": [
+        {
+          "id": "fire_environment_09",
+          "name": "Forge Floor"
+        },
+        {
+          "id": "fire_summon_06",
+          "name": "Phoenix"
+        },
+        {
+          "id": "fire_machine_05",
+          "name": "Hwacha Rocket Cart"
+        },
+        {
+          "id": "hero_sola",
+          "name": "Sola Flamewright"
+        },
+        {
+          "id": "fire_strike_10",
+          "name": "Minotaur Charge"
+        }
+      ]
+    },
+    {
+      "packet": "frost-05",
+      "colour": "frost",
+      "cards": [
+        {
+          "id": "frost_trap_09",
+          "name": "Siren's Shoal"
+        },
+        {
+          "id": "frost_environment_09",
+          "name": "Polar Night"
+        },
+        {
+          "id": "frost_piece_06",
+          "name": "Bell of the Sunken City"
+        },
+        {
+          "id": "frost_summon_06",
+          "name": "Siren"
+        },
+        {
+          "id": "frost_machine_05",
+          "name": "Ice Catapult"
+        }
+      ]
+    },
+    {
+      "packet": "gray-05",
+      "colour": "gray",
+      "cards": [
+        {
+          "id": "gray_summon_88",
+          "name": "War Griffin"
+        },
+        {
+          "id": "gray_summon_89",
+          "name": "Royal Griffin"
+        },
+        {
+          "id": "gray_summon_90",
+          "name": "Sleipnir, the Eight-Legged Steed"
+        },
+        {
+          "id": "gray_summon_91",
+          "name": "Arion, the Swift Horse"
+        },
+        {
+          "id": "gray_summon_92",
+          "name": "Bayard, the Magic Bay"
+        }
+      ]
+    },
+    {
+      "packet": "light-05",
+      "colour": "light",
+      "cards": [
+        {
+          "id": "light_trap_09",
+          "name": "Daedalus's Snare"
+        },
+        {
+          "id": "light_environment_08",
+          "name": "Collapsing Colonnade"
+        },
+        {
+          "id": "light_summon_05",
+          "name": "White Unicorn"
+        },
+        {
+          "id": "light_machine_05",
+          "name": "Wicker Mantlet"
+        },
+        {
+          "id": "hero_seraphiel",
+          "name": "Seraphiel"
+        }
+      ]
+    },
+    {
+      "packet": "shadow-05",
+      "colour": "shadow",
+      "cards": [
+        {
+          "id": "shadow_trap_08",
+          "name": "The Hanged Man"
+        },
+        {
+          "id": "shadow_environment_09",
+          "name": "Witch's Thicket"
+        },
+        {
+          "id": "shadow_piece_05",
+          "name": "Mask of the Plague Doctor"
+        },
+        {
+          "id": "shadow_summon_07",
+          "name": "Plague Zombie"
+        },
+        {
+          "id": "shadow_machine_05",
+          "name": "Plague Trebuchet"
+        }
+      ]
+    },
+    {
+      "packet": "storm-05",
+      "colour": "storm",
+      "cards": [
+        {
+          "id": "storm_environment_08",
+          "name": "Sun-Baked Wadi"
+        },
+        {
+          "id": "storm_summon_06",
+          "name": "Dybbuk"
+        },
+        {
+          "id": "storm_machine_06",
+          "name": "Brass Automaton Archer"
+        },
+        {
+          "id": "hero_gale",
+          "name": "Gale, the Sky Pirate"
+        },
+        {
+          "id": "storm_strike_10",
+          "name": "Manticore Tail Spikes"
+        }
+      ]
+    },
+    {
+      "packet": "verdant-05",
+      "colour": "verdant",
+      "cards": [
+        {
+          "id": "verdant_environment_05",
+          "name": "Rainforest Canopy"
+        },
+        {
+          "id": "verdant_piece_05",
+          "name": "Pelt of the Jaguar King"
+        },
+        {
+          "id": "verdant_summon_11",
+          "name": "Leshy of the Birchwood"
+        },
+        {
+          "id": "hero_sylva",
+          "name": "Sylva the Wild Archer"
+        },
+        {
+          "id": "verdant_strike_11",
+          "name": "Blowgun Dart"
+        }
+      ]
+    }
+  ]
+}

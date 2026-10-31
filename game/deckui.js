@@ -7,6 +7,29 @@
 const DK={slot:0, zoom:1, tab:'all', sort:'family', filt:{colors:new Set(), type:'', rarity:'', q:''}, multi:false, sel:new Set(), from:'camp', snap:null, peek:null};
 const DK_ZOOM=[50,75,100], DK_SORTS=[['family','Color'],['rank','Rank'],['rarity','Rarity'],['name','Name'],['copies','Copies']];
 const dkDeck=()=>save.decks[DK.slot];
+// each card type's 9x9 pixel glyph for the deck tiles ('#' filled), white with a black outline (style.css .dkglyph)
+const DK_GLYPHS={
+strike:['.....####','.......##','......#.#','.....#..#','....#....','...#.....','..#......','##.......','##.......'],
+lob:['.........','....###..','...#####.','...#####.','...#####.','..#.###..','.#.......','#........','.........'],
+ward:['#########','#########','#########','#########','.#######.','.#######.','..#####..','...###...','....#....'],
+sentry:['#.#.#.#.#','#########','.#######.','..#####..','..#####..','..#####..','..#####..','.#######.','#########'],
+boon:['...###...','...###...','...###...','#########','#########','#########','...###...','...###...','...###...'],
+charge:['...###...','...#.#...','...#.#...','..#...#..','.#.....#.','#.#####.#','#########','#########','.#######.'],
+utility:['.......##','......#.#','.....####','....###..','...###...','..###....','.###.....','###......','##.......'],
+trap:['....#....','..#####..','.#..#..#.','.#..#..#.','#########','.#..#..#.','.#..#..#.','..#####..','....#....'],
+environment:['.........','....#....','...###...','..#####..','..######.','.########','#########','#########','.........'],
+piece:['#...#...#','##.###.##','#########','#########','#########','.#######.','.........','#########','#########'],
+summon:['.#.....#.','###...###','.#..#..#.','...###...','.#######.','#########','#########','.#######.','..##.##..'],
+machine:['...#.#...','.#######.','.##...##.','###...###','.#.....#.','###...###','.##...##.','.#######.','...#.#...'],
+hero:['....#....','....#....','...###...','#########','.#######.','..#####..','..##.##..','.##...##.','.#.....#.'],
+instant:['.....###.','....###..','...###...','..######.','.....###.','....###..','...###...','..##.....','.#.......'],
+equip:['.......##','......###','.....###.','....###..','#..###...','.####....','..##.....','.#.##....','#...#....'],
+tinker:['.####....','######...','.####....','..#.#....','....##...','.....##..','......##.','.......##','........#'],
+ace:['....#....','...###...','..#####..','.#######.','#########','#########','.##.#.##.','....#....','...###...'],
+aceup:['....#....','...#.#...','..#...#..','.#.....#.','#.......#','#...#...#','.###.###.','....#....','...###...'],
+claim:['#........','#######..','########.','#######..','#........','#........','#........','#........','##.......']};
+const dkGlyph=t=>{ const g=DK_GLYPHS[t]; return g?`<svg class="dkglyph" viewBox="-1 -1 11 11" shape-rendering="crispEdges" aria-hidden="true"><path d="${g.map((r,y)=>[...r].map((ch,x)=>ch==='#'?`M${x} ${y}h1v1h-1z`:'').join('')).join('')}"/></svg>`:''; };
+
 const dkCount=(d,id)=>d.list.reduce((a,x)=>a+(x===id),0);
 const dkMax=c=>Math.min(copyLimit(c),save.owned[c.id]||0);
 function openDeckUI(from){ DK.from=from||'camp'; DK.slot=save.active; DK.multi=false; DK.sel.clear(); DK.snap=JSON.stringify(save.decks);
@@ -34,8 +57,8 @@ function dkRender(){ const d=dkDeck(), v=validateDeck(d.list,CARDS,save.owned);
   const box=$('#dkDeck'); box.innerHTML=''; box.className='dkdeck z'+DK.zoom;
   const counts={}; d.list.forEach(id=>counts[id]=(counts[id]||0)+1);
   const ids=Object.keys(counts).filter(id=>CARDS[id]).sort((a,b)=>byFamily(CARDS[a],CARDS[b]));
-  for(const id of ids){ const c=CARDS[id], el=document.createElement('button'); el.className='dktile'; el.style.setProperty('--c',COLORS[c.color].c);
-    el.innerHTML=`<img src="${artURL(c)}" alt=""><span class="dkn">${esc(c.name)}</span><span class="dkx">×${counts[id]}</span><span class="dkt">${COLORS[c.color].icon}${TYPES[c.type]?TYPES[c.type].icon:''}</span>`;
+  for(const id of ids){ const c=CARDS[id], k=cardKit(c), el=document.createElement('button'); el.className='dktile kpal c-'+k.kc; el.style.setProperty('--c',COLORS[c.color].c); el.style.setProperty('--k-tex',k.tex);
+    el.innerHTML=`<span class="dkart">${cardArtThumb(c)}<span class="dkc">${COLORS[c.color].icon}</span></span><span class="dkn"><i class="dksp"></i><i class="dksp r"></i><span class="dkt" title="${esc(TYPES[c.type]?TYPES[c.type].name:'')}">${dkGlyph(c.type)}</span><span class="dkx">×${counts[id]}</span>${esc(c.name)}</span>`;
     el.title=c.name+' ×'+counts[id]+' (tap to take one out)'; dkHold(el,c,()=>{ dkRemove(c); dkChange(); }); box.appendChild(el); }
   const cols=dkCols(), empty=ids.length%cols?cols-ids.length%cols:(ids.length?0:cols);
   for(let i=0;i<empty;i++){ const e=document.createElement('div'); e.className='dkempty'; box.appendChild(e); }
@@ -51,7 +74,11 @@ function dkRender(){ const d=dkDeck(), v=validateDeck(d.list,CARDS,save.owned);
   dkLibrary(); dkMultiBar(); }
 // card height follows the zoom's column width (aspect-ratio alone collapses inside a scrolling grid)
 const dkCols=()=>[5,4,3][DK.zoom];
-function dkRows(){ const box=$('#dkDeck'), cols=dkCols(), w=(box.clientWidth-20-(cols-1)*6)/cols; box.style.gridTemplateColumns='repeat('+cols+',1fr)'; if(w>0) box.style.gridAutoRows=Math.round(w*1.05)+'px'; }
+// a tile: 3px frame, the art at the art window's shape (512 x 410), a 3px gap, the name box (two lines), the frame again
+// a name too long for its two lines (around the corner icons) steps its type down until it fits
+function dkFitNames(){ $('#dkDeck').querySelectorAll('.dkn').forEach(n=>{ n.style.fontSize=''; let f=parseFloat(getComputedStyle(n).fontSize);
+  while(n.scrollHeight>n.clientHeight+1&&f>8){ f-=1; n.style.fontSize=f+'px'; } }); }
+function dkRows(){ const box=$('#dkDeck'), cols=dkCols(), w=(box.clientWidth-20-(cols-1)*6)/cols, fs=[11,13,15][DK.zoom]; box.style.gridTemplateColumns='repeat('+cols+',1fr)'; if(w>0) box.style.gridAutoRows=Math.round(3+(w-6)*410/512+3+2*fs+6+3)+'px'; dkFitNames(); }
 addEventListener('resize',()=>{ if($('#scrDeck').classList.contains('on')) dkRows(); });
 function dkLibrary(){ const d=dkDeck(), f=DK.filt;
   const items=Object.keys(save.owned).map(id=>CARDS[id]).filter(c=>c&&save.owned[c.id]>0&&(DK.tab==='all'||c.color===DK.tab)&&passes(c,f)).sort(SORTS[DK.sort]);
@@ -110,7 +137,8 @@ $('#dkBack').onclick=e=>{ const v=validateDeck(activeDeck().list,CARDS,save.owne
 /* The library drawer slides: drag its grip up for more library, down for more deck (portrait),
    or sideways on a wide screen, where the grip is a divider between the two columns.
    A tap on the grip switches between the whole screen for the library and the usual split.
-   The size is remembered in this browser. */
+   Hold the grip still for a moment, then slide sideways to make the library's cards bigger (right)
+   or smaller (left), as on the Spell screen's hand. Both are remembered in this browser. */
 (function(){ const grip=$('#dkGrip'), deck=$('#dkDeck'), scr=$('#scrDeck'), KEY='hexmancers-dkh';
   const def=()=>Math.round(innerHeight*.34);
   // the deck can shrink to nothing or grow until the drawer keeps just its bar and color tabs
@@ -125,6 +153,9 @@ $('#dkBack').onclick=e=>{ const v=validateDeck(activeDeck().list,CARDS,save.owne
   const setW=w=>{ w=Math.round(Math.max(wMin(),Math.min(wMax(),w))); scr.style.gridTemplateColumns=w+'px 1fr'; return w; };
   let savedW=null; try{ const v=localStorage.getItem(WKEY); if(v!==null&&+v>0) savedW=+v; }catch(e){}
   const keepW=w=>{ savedW=w; try{ localStorage.setItem(WKEY,String(w)); }catch(e){} };
+  // the library's card size: the grid's own --cardw (style.css), like the Spell screen's hand
+  const lib=$('#dkColl'), CKEY='hexmancers-dkcw', setC=w=>{ w=Math.round(Math.max(56,Math.min(240,w))); lib.style.setProperty('--cardw',w+'px'); return w; };
+  try{ const v=localStorage.getItem(CKEY); if(v!==null&&+v>0) setC(+v); }catch(e){}
   const fit=()=>{ if(!scr.classList.contains('on')) return; if(wide()){ if(savedW!=null) setW(savedW); } else { scr.style.gridTemplateColumns=''; if(saved!=null) set(saved); } };
   new MutationObserver(()=>requestAnimationFrame(fit)).observe(scr,{attributes:true,attributeFilter:['class']});
   addEventListener('resize',fit);
@@ -132,9 +163,16 @@ $('#dkBack').onclick=e=>{ const v=validateDeck(activeDeck().list,CARDS,save.owne
   const deckW=()=>$('#dkDeck').getBoundingClientRect().width+20;   // the deck column (its grid has 10px padding each side)
   let drag=null;
   grip.addEventListener('pointerdown',e=>{ e.preventDefault(); try{ grip.setPointerCapture(e.pointerId); }catch(_){} const [x,y]=P(e), w=wide();
-    drag={id:e.pointerId,w,p0:w?x:y,s0:w?parseFloat(getComputedStyle(scr).gridTemplateColumns)||deckW():deck.getBoundingClientRect().height,moved:false}; grip.classList.add('on'); scr.classList.add('gripping'); });
-  grip.addEventListener('pointermove',e=>{ if(!drag||e.pointerId!==drag.id) return; const [x,y]=P(e), d=(drag.w?x:y)-drag.p0; if(Math.abs(d)>4) drag.moved=true; if(drag.moved) drag.w?setW(drag.s0+d):set(drag.s0+d); });
-  const end=e=>{ if(!drag||e.pointerId!==drag.id) return; const d=drag; drag=null; grip.classList.remove('on'); scr.classList.remove('gripping');
+    const c=lib.querySelector('.card');
+    drag={id:e.pointerId,w,x0:x,y0:y,p0:w?x:y,s0:w?parseFloat(getComputedStyle(scr).gridTemplateColumns)||deckW():deck.getBoundingClientRect().height,c0:c?c.offsetWidth:104,t0:e.timeStamp,moved:false,size:false};
+    // held still first: the slide that follows sizes the cards instead of moving the grip
+    drag.timer=setTimeout(()=>{ if(drag&&!drag.moved){ drag.size=true; grip.classList.add('sizing'); if(navigator.vibrate) try{ navigator.vibrate(12); }catch(_){} } },320);
+    grip.classList.add('on'); scr.classList.add('gripping'); });
+  grip.addEventListener('pointermove',e=>{ if(!drag||e.pointerId!==drag.id) return; const [x,y]=P(e);
+    if(drag.size){ if(Math.abs(x-drag.x0)>4) drag.moved=true; setC(drag.c0+(x-drag.x0)*.6); return; }
+    const d=(drag.w?x:y)-drag.p0; if(Math.abs(d)>4){ drag.moved=true; clearTimeout(drag.timer); } if(drag.moved) drag.w?setW(drag.s0+d):set(drag.s0+d); });
+  const end=e=>{ if(!drag||e.pointerId!==drag.id) return; const d=drag; drag=null; clearTimeout(d.timer); grip.classList.remove('on','sizing'); scr.classList.remove('gripping');
+    if(d.size){ const v=parseFloat(lib.style.getPropertyValue('--cardw')); if(v) try{ localStorage.setItem(CKEY,String(v)); }catch(_){} return; }
     if(d.w){ if(d.moved) keepW(setW(parseFloat(getComputedStyle(scr).gridTemplateColumns)));
       else if(e.type==='pointerup') keepW(setW(d.s0>wDef()*.8?wMin():wDef()));   // a tap: a wide library, or the usual split
       return; }

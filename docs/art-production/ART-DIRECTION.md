@@ -18,7 +18,7 @@ For each new raw generation, run `node tools/card-art-source.js <raw-path> <card
 
 Rebuilding leaves existing source PNG bytes untouched. The export report records a source SHA-256; unchanged sources and crop coordinates reuse their existing display files. Editing a square source or focal point, or removing an output, rebuilds that card's crops. The integrity check detects sources edited since the last export. Never resize or re-encode a source just to refresh its thumbnails.
 
-The current card contract's illustration slot is **206 × 141**. A full-width crop from a 512 square is 512 × 350.45, centred at approximately y=80.78…431.22. Keep critical faces, hands, weapons and action inside the stricter inner action-safe rectangle **x=24…488, y=105…407**. The upper/lower margins may contain expendable atmosphere, sky or ground. The subject should occupy roughly 65–80% of the visible crop and remain identifiable on a 96-pixel-wide card.
+The current card contract's illustration slot is **206 × 165**. A full-width crop from a 512 square is 512 × 410.10, centred at approximately y=50.95…461.05. Keep critical faces, hands, weapons and action inside the stricter inner action-safe rectangle **x=24…488, y=105…407**. The upper/lower margins may contain expendable atmosphere, sky or ground. The subject should occupy roughly 65–80% of the visible crop and remain identifiable on a 96-pixel-wide card.
 
 Compose for both views: the full square must be a finished painting, and the wide crop must be a finished card illustration. Crop-safe composition does not mean putting every figure's full body in view; it means preserving the information that identifies this particular card. Do not cut a face, relevant hand or named weapon in half. Record intentional crop changes in the colour manifest's `focalPoint` array and review note. Existing overrides in `game/cards/art-focus.json` take precedence; check for an override when reviewing a card.
 
@@ -35,11 +35,11 @@ Explicitly request a **1:1 square canvas** and inspect the actual returned dimen
 `tools/card-art-build.js` reads the art slot from the shared card contract. It generates:
 
 - A 512 × 512 PNG master for editing and the card detail page's **View full artwork** link.
-- A high-quality large crop, 512 × 350 WebP.
+- A high-quality large crop, 512 × 410 WebP.
 - A medium crop, 256 × 175 WebP.
 - A thumbnail crop, 128 × 88 WebP.
 
-All render sizes derive from the same full-resolution master and identical crop coordinates. Do not enlarge a thumbnail to make a detail image. The browser chooses an appropriate source using `srcset`, actual measured image width and device pixel ratio; painting uses normal image filtering rather than nearest-neighbour pixel-art rendering. Display crops fill the frame without letterboxing.
+All render sizes derive from the same full-resolution master and identical crop coordinates. Do not enlarge a thumbnail to make a detail image. The game draws each card from the atlas sheets `tools/card-art-build.js` packs from the masters (`game/cards/art/atlas`): the full-card sheet (512-wide cells) for a card shown big, the thumbnail sheet (256-wide cells) for smaller cards and icons. Painting uses normal image filtering rather than nearest-neighbour pixel-art rendering. Display crops fill the frame without letterboxing.
 
 A 512 master is the maximum original detail in this standard. Displays demanding more than 512 physical pixels cannot acquire more real detail through upscaling.
 

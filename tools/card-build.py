@@ -299,15 +299,19 @@ def geo_css():
          '   %dx%d canvas; --u is one canvas unit, for sizes. */' % (W, H),
          '.card.kit{aspect-ratio:%d/%d; --u:calc(100cqw / %d);}' % (W, H, W)]
     for sel, k in SLOTS: L.append('.card.kit>%s{%s}' % (sel, pct(C['bounds'][k])))
+    # the two cost plates snap to the same whole-pixel size, so rounding never draws one wider than the other
+    for sel, k in (('.k-rune', 'rune_plate'), ('.k-rank', 'rank_plate')):
+        L.append('.card.kit>%s{width:round(calc(%d * var(--u)),1px); height:round(calc(%d * var(--u)),1px);}' % (sel, C['bounds'][k][2], C['bounds'][k][3]))
     # the count plaque's text also beats the older per-screen count-badge rules (some name screens by id)
     L.append('.card.kit>.k-count{%s right:auto!important; bottom:auto!important; max-width:none!important;}' % pct(C['bounds']['count_text']).replace(';', '!important;'))
     ax, ay, aw, ah = C['bounds']['art']
     # the holo art foils are the kit's 240x456 effects, scaled by width (uniformly), their art rect (18,110) on this window
     L.append('.card.kit>.k-foil{%s background-size:%.4fcqw %.4fcqw; background-position:%.4fcqw %.4fcqw;}' % (pct(C['bounds']['art']), 100, 456 / 240 * 100, (ax - 18) / 240 * 100, (ay - 110) / 240 * 100))
-    # each colour's ramp (palettes.json), for type, icons and labels: the card's class is c-<colour>
+    # each colour's ramp (palettes.json), for type, icons and labels: the card's class is c-<colour> (.kpal: other
+    # things drawn in a card's colours, like the deck builder's tiles)
     for colour, p in PAL.items():
-        L.append('.card.kit.c-%s{--k-acc:%s; --k-lt:%s; --k-dk:%s; --k-basec:%s; --k-text:%s; --k-ui:%s; --k-muted:%s;}' % (
-            colour, p['accent'], p['light'], p['dark'], p['base'], p['text'], p['ui_accent'], p['muted']))
+        L.append('.card.kit.c-%s,.kpal.c-%s{--k-acc:%s; --k-lt:%s; --k-dk:%s; --k-basec:%s; --k-text:%s; --k-ui:%s; --k-muted:%s;}' % (
+            colour, colour, p['accent'], p['light'], p['dark'], p['base'], p['text'], p['ui_accent'], p['muted']))
     for k, v in C['type_px'].items(): L.append('.card.kit{--fs-%s:calc(%d * var(--u)); --lh-%s:calc(%d * var(--u));}' % (k, v[0], k, v[1]))
     write('card-geo.css', '\n'.join(L) + '\n')
 

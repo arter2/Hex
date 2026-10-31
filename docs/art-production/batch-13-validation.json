@@ -1,0 +1,23 @@
+{
+  "batch": 13,
+  "newAssignedCards": 200,
+  "reviewedPackets": 45,
+  "reviewedSourceHashesUnchanged": 200,
+  "earlierRuntimeImagesUnchanged": 5800,
+  "earlierGeneratedRecordsUnchanged": 1384,
+  "suppliedOriginalsUnchanged": 66,
+  "activeCards": 1634,
+  "pendingCards": 319,
+  "status": "pass",
+  "runtimeImagesDecoded": 6600,
+  "cardMarkupChecked": 3268,
+  "locked": "pass",
+  "fallback": "pass",
+  "browserLayout": "not tested: sandbox prevents browser launch",
+  "gameplaySelftests": {
+    "passed": 23,
+    "failed": 0,
+    "command": "node tools/playtest/selftest.js",
+    "status": "pass"
+  }
+}

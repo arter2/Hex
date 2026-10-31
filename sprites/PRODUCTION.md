@@ -116,7 +116,7 @@ or rejection, and Approved only after the repository approval record exists.
 
 ## Preservation and current state
 
-At setup, the repository contains hexmancers.html and sprites/README.md,
+At setup, the repository contained hexmancers.html (the old single-file game, since removed: the game is game/index.html) and sprites/README.md,
 sprites/index.html and sprites/workshop.js. No image assets are committed.
 The existing game and workshop are preserved. Browser imports and backups may contain
 additional assets; this repository inspection cannot establish their content or approval status.

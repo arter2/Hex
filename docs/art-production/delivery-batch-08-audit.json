@@ -1,0 +1,21 @@
+{
+  "uniqueCards": 200,
+  "masters": 200,
+  "crops": 600,
+  "imagesDecoded": 800,
+  "byColour": {
+    "brown": 25,
+    "fire": 25,
+    "frost": 25,
+    "gray": 25,
+    "light": 25,
+    "shadow": 25,
+    "storm": 25,
+    "verdant": 25
+  },
+  "checksums": "pass",
+  "dimensions": "pass",
+  "assignments": "pass",
+  "baselineCardsChecked": 434,
+  "previousDeliveryDisjoint": "pass"
+}

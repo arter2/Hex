@@ -16,7 +16,7 @@ const ui=read('ui.js');vm.runInContext(ui.slice(ui.indexOf('const CARD_PAL='),ui
 async function main(){
  const variants=vm.runInContext('HEX_CARD_ART_VARIANTS',ctx),cards=vm.runInContext('CARDS',ctx);
  const report=JSON.parse(fs.readFileSync(path.join(ROOT,'docs/art-production/export-report.json')));
- let decoded=0,rendered=0;
+ let decoded=0,rendered=0;const sheets={};
  for(const a of report.assets){
   if(a.sourceSha256)assert.equal(crypto.createHash('sha256').update(fs.readFileSync(path.join(ROOT,'game',a.master))).digest('hex'),a.sourceSha256,'Square source changed; rebuild display crops for '+a.key);
   const master=await canvas.loadImage(path.join(ROOT,'game',a.master));assert.equal(master.width,512);assert.equal(master.height,512);decoded++;
@@ -25,10 +25,22 @@ async function main(){
  for(const [id,v]of Object.entries(variants)){
   assert(cards[id],'Unrecognized card '+id);assert.equal(ctx.cardIllustration(cards[id]),v.large);assert.equal(ctx.artURL(cards[id]),v.large);
   ctx.testCard=cards[id];
-  for(const mode of ['compact','expanded']){
-   const el=vm.runInContext(`cardEl(testCard,'',false,'${mode}')`,ctx);assert(el.innerHTML.includes('class="k-art illustrated"'));assert(el.innerHTML.includes('srcset="'+v.outputs.map(o=>o.url+' '+o.width+'w').join(', ')+'"'));assert(el.innerHTML.includes('data-art-master="'+v.master+'"'));rendered++;
+  // the card draws its cell of an atlas sheet: the full-card sheet when expanded, the thumbnail sheet when compact
+  for(const [mode,kind] of [['compact','thumb'],['expanded','full']]){
+   const a=v.atlas&&v.atlas[kind];assert(a,'No '+kind+' atlas cell for '+id);
+   const el=vm.runInContext(`cardEl(testCard,'',false,'${mode}')`,ctx);assert(el.innerHTML.includes('class="k-art illustrated atlas"'),id);assert(el.innerHTML.includes('url('+a.url+')'),id);rendered++;
+   (sheets[a.url]=sheets[a.url]||[]).push({id,kind,a});
   }
-  const locked=vm.runInContext("cardEl(testCard,'',true,'expanded')",ctx);assert(!locked.innerHTML.includes('srcset='));assert(!locked.innerHTML.includes(v.master));assert(locked.innerHTML.includes('k-hidden'));
+  const locked=vm.runInContext("cardEl(testCard,'',true,'expanded')",ctx);assert(!locked.innerHTML.includes('cards/art/atlas/'));assert(!locked.innerHTML.includes(v.master));assert(locked.innerHTML.includes('k-hidden'));
+ }
+ // every sheet decodes, and each card's cell (from its background size and position) lies inside it on whole pixels
+ for(const [url,list] of Object.entries(sheets)){
+  const im=await canvas.loadImage(path.join(ROOT,'game',url));decoded++;
+  for(const {id,kind,a} of list){
+   const w=im.width/(a.size[0]/100),h=im.height/(a.size[1]/100),x=a.pos[0]/100*(im.width-w),y=a.pos[1]/100*(im.height-h);
+   assert.equal(Math.round(w),kind==='full'?512:256,id);assert(x>=0&&y>=0&&x+w<=im.width+.5&&y+h<=im.height+.5,'Cell outside its sheet: '+id);
+   assert(Math.abs(x-Math.round(x))<.05&&Math.abs(y-Math.round(y))<.05,'Cell off the pixel grid: '+id);
+  }
  }
  const fallback=Object.values(cards).find(c=>!variants[c.id]);assert.equal(ctx.cardIllustration(fallback),null);assert.equal(ctx.cardArtVariants(fallback),null);assert.equal(ctx.cardArt(fallback).length,64);
  const all=vm.runInContext('CARD_LIST',ctx);ctx.testCards=Object.keys(variants);ctx.testSizes=[96,120,240,396];
@@ -70,6 +82,6 @@ document.querySelector('#review-next').onclick=()=>{reviewPage++;renderReview();
 renderReview();
 </script>`;
  fs.writeFileSync(path.join(ROOT,'game/art-review.html'),html);
- console.log(JSON.stringify({catalogue:all.length,registered:Object.keys(variants).length,imagesDecoded:decoded,cardMarkupChecked:rendered,locked:'pass',fallback:'pass',browserLayout:'not tested: sandbox prevents browser launch'}));
+ console.log(JSON.stringify({catalogue:all.length,registered:Object.keys(variants).length,imagesDecoded:decoded,atlasSheets:Object.keys(sheets).length,cardMarkupChecked:rendered,locked:'pass',fallback:'pass',browserLayout:'not tested: sandbox prevents browser launch'}));
 }
 main().catch(e=>{console.error(e);process.exitCode=1;});

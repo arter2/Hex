@@ -3112,5 +3112,95 @@
     "status": "generated",
     "batch": 13,
     "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. The wielder's face and gripping hand, full diagonal dagger and its two mirage afterimages remain visible; the confused opponent is secondary. Parent review pending."
+  },
+  {
+    "cardId": "storm_strike_23",
+    "name": "Djinn's Whirlwind",
+    "prompt": "Paint an illustration for the exact card name “Djinn's Whirlwind.” A commanding blue-skinned djinn with a clearly visible expressive face and bright eyes rises from a compact brass censer, one hand extended as it conjures a powerful spiraling whirlwind. The wind curls across a row of armored opponents in a charged ricochet, lifting dust and sending them staggering in confusion; the djinn remains the unmistakable subject, with the hand and wind path both readable. Painterly medieval high-fantasy collectible-card art in the supplied Hexmancers reference style: grounded face and anatomy, believable silk, brass, stone and cloudlike vapor, layered brushwork, luminous blue-white stormlight against warm metal accents, atmospheric depth, not photorealistic. Explicit 1:1 square canvas intended for a 512×512 editable master. Compose djinn face, conjuring hand and main whirlwind horizontally in the middle band; keep eyes, hand and principal wind arc inside x24–488,y105–407 for a 206:141 landscape crop, with quiet sky and architecture above and below. Strong readable silhouette and attractive directional light. No card frame, text, runes, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-072472c4-7546-41d1-9234-905163067cad.png",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_23.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop (focal y=0.42) and 128px thumbnail. Shift keeps the djinn’s full hairline, face/eyes and conjuring hand together with the main whirlwind; target figures are secondary and lower censer is incidental."
+  },
+  {
+    "cardId": "storm_strike_24",
+    "name": "Coin Toss",
+    "prompt": "Paint an illustration for the exact card name “Coin Toss.” A confident medieval adventurer with a focused face flicks one large, complete golden coin upward from a gloved hand; at the apex it bursts into a neat cluster of smaller radiant coins that streak toward several distant armored opponents. Make the original coin, its readable embossed sun-like face (no letters or numbers), the tossing hand and the adventurer’s eyes clear; the burst suggests a charged cluster strike without becoming a generic magic blast. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: believable face, glove, gold and leather, layered brushwork, warm gold light against cool storm shadows, atmospheric depth, not photorealistic. Explicit 1:1 square canvas for a 512×512 editable master. Arrange face, hand, whole coin and coin cluster horizontally across the middle band; keep face/eyes, tossing hand and original coin within x24–488,y105–407 for a 206:141 landscape crop, with quiet tavern-courtyard background above and below. Strong readable focal point. No readable markings, no card frame, text, runes, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-59564ce2-4667-459b-9443-f56a694dff9f.png",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_24.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, true 206:141 wide crop and 128px thumbnail. Adventurer’s face and eyes, tossing hand, complete original coin with embossed sun motif and the radiating coin cluster remain visible; opponents and courtyard are secondary."
+  },
+  {
+    "cardId": "storm_strike_25",
+    "name": "Golden Touch",
+    "prompt": "Paint an illustration for the exact card name “Golden Touch.” In a charged medieval battle, a poised storm-mage with a clear focused face and bright eyes reaches out and touches an armored foe with one bare fingertip; brilliant gold spreads from the precise contact across the foe’s breastplate while a thin stream of blue-white life-light curls back toward the mage’s hand. A short zigzag of gold energy ricochets to two more distant enemies, but the main face, hand, and transforming armor remain the dominant readable action. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: grounded anatomy, nuanced skin, cloth, steel and luminous gold, layered brushwork, dramatic directional lighting and atmospheric depth, not photorealistic. Explicit 1:1 square canvas intended for a 512×512 editable master. Place mage’s face and outstretched hand beside the contact point at equal height; keep eyes, fingertip, full contact point and gilded armor detail inside x24–488,y105–407 for a 206:141 landscape crop. Quiet battlefield atmosphere above and below. No gore, no card frame, text, runes, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7315c9b2-c1c3-42de-a425-254d77cd71c6.png",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_25.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, true 206:141 wide crop and 128px thumbnail. Mage’s face/eyes, fingertip and contact point are visible beside clearly gilding armor; blue-white energy streams back to the hand and gold ricochets to secondary enemies."
+  },
+  {
+    "cardId": "storm_strike_26",
+    "name": "Bronze Fist",
+    "prompt": "Paint an illustration for the exact card name “Bronze Fist.” A battle-worn storm-knight in blue cloth drives an enormous complete bronze gauntlet forward in a decisive punch, the polished fist and engraved knuckles striking an armored opponent’s shield with a sharp white-blue flash. Keep the knight’s determined face and eyes beside the entire bronze fist and braced arm; show the opponent recoiling backward as the critical blow pushes them away. The bronze gauntlet is the named focal object, unmistakable and fully visible. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: grounded anatomy and expression, nuanced bronze, steel, leather and cloth, layered brushwork, dramatic directional stormlight, atmospheric depth, not photorealistic. Explicit 1:1 square canvas intended for a 512×512 editable master. Compose knight, fist and impact horizontally in the middle band; keep face/eyes, relevant hand, whole gauntlet and collision point inside x24–488,y105–407 for a 206:141 landscape crop. Quiet battlement scenery above and below; incidental legs and debris may extend. No gore, no card frame, lettering, runes, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c7e74ad0-7af3-47c4-91b9-5b63866b27a9.png",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_26.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Shifted focal point upward to y=0.46 and inspected the 512-square source, revised true wide crop and 128px thumbnail. Knight’s full face/eyes, complete bronze gauntlet and impact on the shield stay in frame; recoil is clear. Lower stonework is incidental."
+  },
+  {
+    "cardId": "storm_strike_27",
+    "name": "Talos's Boulder",
+    "prompt": "Paint an illustration for the exact card name “Talos's Boulder.” A towering ancient bronze guardian named Talos, with a clearly visible stern sculpted face and glowing eyes, hurls one enormous round boulder toward a line of armored foes. Show the complete boulder beside Talos’s grasping hand at the same height, with a strong chain of blue-white lightning jumping from the boulder’s impact to nearby enemies and pushing them backward; the boulder and giant are unmistakably the named subject. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: believable monumental bronze, stone, weathered masonry and lightning, layered brushwork, dramatic storm-lit contrast and atmospheric depth, not photorealistic. Explicit 1:1 square canvas intended for a 512×512 editable master. Compose Talos’s face, holding hand and full boulder horizontally across the middle band; keep eyes/face, relevant hand, complete boulder and impact inside x24–488,y105–407 for a 206:141 landscape crop. Quiet ruined battlement sky and ground above and below; background foes may be small. Strong readable silhouette. No text, runes, card frame, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0308e3f2-b7c1-4976-ae15-b77398303206.png",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_27.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Shifted focal point upward to y=0.34 (crop begins at top edge) and inspected the 512-square source, revised wide crop and 128px thumbnail. This preserves Talos’s entire sculpted face/head and extended hand together with the complete boulder and lightning impact; incidental lower ruins and figures crop away."
   }
 ]

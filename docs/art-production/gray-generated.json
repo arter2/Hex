@@ -3135,5 +3135,77 @@
     "status": "generated",
     "batch": 13,
     "reviewNote": "Square source, centered 206:141 crop and thumbnail inspected: the healer’s face, both hands and glowing treatment remain visible beside the patient. The escorting posture and restorative action are clear at thumbnail size."
+  },
+  {
+    "cardId": "gray_summon_149",
+    "name": "Wise Woman",
+    "prompt": "Paint an original illustration for the Hexmancers summon “Wise Woman.” Show a sturdy, composed elderly village woman with silver braids and a weathered face, wearing layered charcoal wool and a muted blue-gray shawl. She stands escorting two villagers through a misty crossroads, holding a smooth ashwood staff and raising her other hand to form a subtle crossing lattice of pale protective light around them. Keep her calm eyes, face, both hands and the staff head visible; her presence is reassuring and resolute, not a caricatured witch. Painterly medieval/high-fantasy collectible-card art, nuanced believable wool, wood, skin and stone, attractive moonlit directional light, atmospheric depth and strong readable values. Match the supplied references' painterly materials and dramatic fantasy lighting, with the grounded elder-spirit tone of the accepted gray household-guardian art. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the woman's face, eyes, both hands and protective action within x24–488,y105–407 on the square; arrange the woman and villagers horizontally for the 206:141 card crop, with quiet scenery above and below. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-0ff16d6e-e44b-46a6-aa16-4d9d24f802d8.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_149.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source, centered 206:141 crop and thumbnail inspected: the wise woman’s face, both hands and staff head remain visible as she escorts two villagers. The crossing lattice reads as a protective ward, while the woman remains the clear focal subject."
+  },
+  {
+    "cardId": "gray_summon_150",
+    "name": "Field Surgeon",
+    "prompt": "Paint an original illustration for the Hexmancers summon “Field Surgeon.” Depict a clever, steadfast male battlefield surgeon in a weathered charcoal coat and sturdy leather apron, kneeling beside a wounded soldier at a medieval field camp. The surgeon’s focused face, both careful hands and compact leather instrument roll are clearly visible as he applies a clean linen dressing under a small pool of lantern light; show no gore. A few distant figures and angled tent lines suggest a disciplined rearward aid station, while the surgeon remains the strong central subject. Painterly medieval/high-fantasy collectible-card art, nuanced believable cloth, leather, linen, metal and wood, attractive directional light, atmospheric depth and strong readable values. Match the supplied references' painterly materials and dramatic fantasy lighting, with the grounded gray-village tone of the accepted gray guardian art. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the surgeon’s face, eyes, both working hands and instrument roll within x24–488,y105–407 on the square; arrange surgeon and patient horizontally for the 206:141 card crop, with quiet scenery above and below. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-bc676160-cae2-4695-b5aa-266a00a944c5.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_150.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.44
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source and thumbnail inspected. The centered crop clipped the surgeon’s hair and forehead, so focalPoint y=0.44 shifts the 206:141 crop upward to include his full face; both working hands and the bandage remain visible, with lower patient limbs expendable."
+  },
+  {
+    "cardId": "gray_summon_151",
+    "name": "Herbwife",
+    "prompt": "Paint an original illustration for the Hexmancers summon “Herbwife.” Show a sturdy, moss-cloaked village herbwife with a lined, capable face, standing at the front of a woodland lane beside a humble stone cottage. She holds a clear bundle of fresh medicinal herbs in one hand and reaches with the other to cast a short chain of living green vines that catches an approaching shadowy raider’s boot; keep the plant magic secondary to her resolute face, visible hands and recognizable herbs. Her weathered apron carries a few small herb pouches, with no potion bottles. Painterly medieval/high-fantasy collectible-card art, nuanced believable wool, moss, herbs, bark and stone, attractive directional light, atmospheric depth and strong readable values. Match the supplied references' painterly materials and dramatic fantasy lighting, with a grounded gray-village tone. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the herbwife’s face, eyes, both hands and herb bundle within x24–488,y105–407 on the square; arrange her and the vine action horizontally for the 206:141 card crop, with quiet scenery above and below. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-8e58f1da-2513-4974-9ed3-0aba9a4f0980.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_151.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source, centered 206:141 crop and thumbnail inspected: the herbwife’s face, herb bundle and extended vine-casting hand remain clear. The vine catches the raider’s lower leg at the crop edge; the incidental raider figure continues beyond the frame."
+  },
+  {
+    "cardId": "gray_summon_152",
+    "name": "Midwife",
+    "prompt": "Paint an original illustration for the Hexmancers summon “Midwife.” In a humble medieval cottage by lantern light, depict a gentle, steady village midwife in soft gray-blue wool cradling a safely swaddled newborn beside the relieved mother. The midwife’s kind face and both supporting hands are clear at the center; a restrained warm protective glow radiates from her arms to comfort the mother and child, like a brief pulse of healing magic. Show tender, calm expressions and believable cloth, no birth scene or injury. Painterly medieval/high-fantasy collectible-card art, nuanced materials, attractive directional light, atmospheric depth and strong readable values. Match the supplied references' painterly materials and dramatic fantasy lighting, with a grounded gray-village tone. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the midwife’s face, eyes, both hands and the swaddled newborn within x24–488,y105–407 on the square; arrange the three figures closely in a horizontal group for the 206:141 card crop, with quiet scenery above and below. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-047c49b1-896a-4bd6-aa18-7e9098ec16ae.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_152.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source, adjusted 206:141 crop and thumbnail inspected. FocalPoint y=0.46 keeps the midwife’s full face and head covering, both supporting hands and the swaddled newborn inside the crop; the gentle protective glow and mother remain clear at thumbnail size."
   }
 ]

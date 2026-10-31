@@ -3103,5 +3103,95 @@
     "status": "generated",
     "batch": 13,
     "reviewNote": "Inspected the 512-square source, true 206:141 wide crop and 128px thumbnail. Martial artist’s face, eyes, both hands and long sweeping sleeve remain visible; the broad feather-like light arc clearly sweeps through secondary opponents. Robe tails and peripheral figures are incidental."
+  },
+  {
+    "cardId": "light_strike_21",
+    "name": "Qilin's Flame",
+    "prompt": "Illustrate the Hexmancers light strike Qilin's Flame. A majestic qilin, a sacred Chinese mythic beast with a deer-like body, scaled dragon muzzle, one slender antler-like horn, cloven hooves and a flowing mane, surges across a stone garden. Its head and clear eye lead a broad wedge-shaped stream of pearl-gold sacred fire that sweeps across two shadowy opponents; one foe dissolves into harmless sparks and a small warm glow returns to the qilin, hinting at its on-kill vitality. The qilin's face, horn and flame origin are the strong readable focus; keep the animal natural and dignified, not cartoon-like. Painterly medieval high-fantasy collectible-card art, finely rendered scales, silk mane and stone, luminous daylight, atmospheric depth, cinematic brushwork. Explicit 1:1 square composition for an editable 512x512 master. Keep qilin face, horn and main wedge of fire within x24..488,y105..407; horizontal middle-60% staging, quiet garden sky and stones in margins for a 206:141 crop. Incidental legs and trailing mane may reach beyond the crop. No text, frame, numbers, interface, logo, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-dfd30187-8f13-4da0-87fb-442bb2a7774a.png",
+    "editableSourcePath": "game/cards/art/masters/light_strike_21.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Qilin face, horn and wedge of sacred fire remain visible; the attack reads clearly at small size. Parent review pending."
+  },
+  {
+    "cardId": "light_strike_22",
+    "name": "White Stag's Antlers",
+    "prompt": "Illustrate the Hexmancers light strike White Stag's Antlers, a charged mine-like ward that blasts an attacker backward and recoils. A strong white stag stands broadside in a moonlit forest clearing, its calm face and complete branching ivory antlers clearly visible, comfortably smaller than the square so every antler tip fits. Golden-white light gathers at the antler crown and drops into a subtle glowing sigil in the ground beneath the stag; when a single armored hunter approaches, the stored burst erupts outward in a low radiant ring and pushes the hunter back. The stag remains the primary subject, with the antlers unmistakable and intact; show only one brief recoil spark along its shoulder. Painterly medieval high-fantasy collectible-card illustration, detailed pale fur, natural anatomy, warm sacred light against deep forest greens, atmospheric depth and elegant brushwork. Explicit 1:1 square composition for an editable 512x512 master. Keep stag face, all antler tips and central blast within x24..488,y105..407, arrange antlers and action horizontally in the middle 60%, quiet woodland above/below for a 206:141 crop. No text, frame, numbers, interface, logo, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-bce2fc51-929c-4ef3-8cdd-8666387baa2e.png",
+    "editableSourcePath": "game/cards/art/masters/light_strike_22.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, upward-shifted 206:141 crop (focalPoint y=0.42) and 128x88 thumbnail. The stag face and all antler tips remain visible; a low light burst pushes the hunter back. Hunter lower legs are incidental and cropped. Parent review pending."
+  },
+  {
+    "cardId": "light_strike_23",
+    "name": "Simurgh Feather Gust",
+    "prompt": "Illustrate the Hexmancers light strike Simurgh Feather Gust, a fan-shaped burst that pushes opponents back and recoils. A magnificent simurgh, an ancient Persian mythic bird with a noble eagle-like head, curved beak, feathered crest and richly layered peacock-blue, ivory and gold plumage, stands on a high stone terrace. Its near wing sweeps forward, releasing a broad fan of luminous feathers and wind that radiates across three small armored opponents and drives them backward; a gentle counter-curl of air touches the bird's shoulder as recoil. The simurgh's face, eye, beak and striking fan of feathers are the unmistakable focus, with a clean silhouette. Painterly medieval high-fantasy collectible-card illustration, refined individual feathers, credible bird anatomy, strong sunlit directional light, atmospheric depth and elegant brushwork. Explicit 1:1 square composition for an editable 512x512 master. Keep head, beak, near wing fan and push action within x24..488,y105..407; compose horizontally across middle 60%, quiet highland sky and stone above/below for a 206:141 crop. Incidental far wing tips may crop. No text, frame, numbers, interface, logo, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-96bd51c9-4e5f-44a6-a01c-33b5caad3d02.png",
+    "editableSourcePath": "game/cards/art/masters/light_strike_23.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Simurgh face, eye and beak, feather fan and wind push remain clear; only an incidental upper crest tip is cropped. Parent review pending."
+  },
+  {
+    "cardId": "light_strike_24",
+    "name": "Paladin's Oath Blade",
+    "prompt": "Illustrate the Hexmancers light strike Paladin's Oath Blade, a weapon that arcs out and returns to its wielder, strengthening their valor. A resolute medieval paladin in polished but practical ivory-and-gold armor stands in a ruined chapel, face and focused eyes beside an outstretched gauntlet. The complete named oath blade is clearly visible in a diagonal flight just in front of the hand: a straight silver sword with readable point, full blade, crossguard, grip and pommel. A graceful golden boomerang-shaped light arc traces its return path from a distant armored foe back toward the paladin; warm light gathers around the paladin's gauntlet as it catches the blade. Keep the face, hand and entire sword comfortably inside the frame, with the sword the strongest object and the return arc clear but restrained. Painterly medieval high-fantasy collectible-card art, nuanced steel, enamel, leather and stone, dramatic sacred light, atmospheric depth and elegant brushwork. Explicit 1:1 square composition for an editable 512x512 master. Compose face, hand, full sword and return path horizontally inside x24..488,y105..407 in the middle 60%, quiet chapel atmosphere above/below for a 206:141 crop. No text, lettering, frame, numbers, interface, logo, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a7b8f4d8-f0d0-43f5-9c3b-5853a281f210.png",
+    "editableSourcePath": "game/cards/art/masters/light_strike_24.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Paladin face and hand, full point-to-pommel sword and boomerang-shaped return trail remain visible; the oath blade reads clearly at thumbnail size. Parent review pending."
+  },
+  {
+    "cardId": "light_strike_25",
+    "name": "Martyr's Last Stand",
+    "prompt": "Illustrate the Hexmancers light strike Martyr's Last Stand, a quick wave-shaped sacred attack that leaves a defeated foe's vitality flowing back. A wounded but resolute medieval martyr-knight kneels in a ruined chapel courtyard, face and eyes calm and clearly visible, one hand gripping a small complete shield at chest height. From the shield bursts a broad, low wave of pearl-gold light that sweeps horizontally across two armored enemies; one falls harmlessly back in a flash while a thin warm stream of light returns toward the martyr. The martyr's face, gripping hand and complete shield remain the focal subject; the wave is a distinct luminous crescent rather than a blinding wash. Painterly medieval high-fantasy collectible-card art, believable worn ivory armor, cloth, steel and stone, dramatic sacred light, atmospheric depth and expressive brushwork. Explicit 1:1 square composition for an editable 512x512 master. Keep face, hand, full shield and wave action within x24..488,y105..407, arrange them horizontally across the middle 60%, quiet chapel atmosphere above and below for a 206:141 crop. No graphic wounds, text, frame, numbers, interface, logo, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0cdd4496-221e-46f7-8acb-0c34d2e12888.png",
+    "editableSourcePath": "game/cards/art/masters/light_strike_25.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Martyr face, gripping hand, complete shield and broad wave remain clear; the return glow is visible without obscuring the scene. Parent review pending."
   }
 ]

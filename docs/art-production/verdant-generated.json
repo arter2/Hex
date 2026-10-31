@@ -3093,5 +3093,113 @@
     "repairPrompt": "Repaint Liana Whip as an original square 1:1 painterly medieval-fantasy card illustration. The earlier version placed the pulled raider too close to the right crop edge; move BOTH characters inward, with their faces comfortably inside the central 80% of the square. Actual action: a quick piercing liana whip lashes in a zigzag and pulls its target toward the caster. Show a woodland huntress on the left and an armored raider on the right, both fully readable from head to waist, positioned near x125 and x385 respectively on a 512 square, with the raider's complete face, helmet and reaching hand clearly away from the border. The huntress's gripping hand holds a thorned living vine that makes a clean two-bend zigzag across the middle, piercing the edge of his wooden shield and drawing him off balance toward her. One continuous clear action, no extra figures. Lush old-growth clearing, painterly bark, leaf, woven cloth and iron, warm green-gold sunlight, believable anatomy and expressive faces, high-end medieval fantasy collectible-card art. Keep both faces, caster hand, full visible zigzag vine and the target's relevant hand inside x24..488 y105..407 on the square; quiet forest canopy above, forest floor below; designed for a true 206:141 wide crop. No frame, text, UI, modern objects; no anime, Disney-like cartoon, photorealism or pixel art.",
     "previousGeneratedPath": "/workspace/generated_images/exec-edc85751-8433-4a72-a7db-87b43e523016.png",
     "reviewNote": "Repainted after inspection showed the original target face too close to the right crop edge; original 512 source preserved at /tmp/verdant_strike_20-before-repaint.png. Prepared the replacement as an exact 512x512 source, then atomically replaced the canonical. Inspected replacement source, true 206:141 crop and 128x88 thumbnail: both faces, caster hand and zigzag liana are clear and in frame; target hand is near the right edge."
+  },
+  {
+    "cardId": "verdant_strike_23",
+    "name": "Stag Leap",
+    "prompt": "Paint original square 1:1 painterly medieval-fantasy collectible-card art for Stag Leap. Actual strike: a stag leaps through a mine-shaped attack and shoves its target backward, leaving the area threatening for two turns. Show a powerful red-brown forest stag with bright branching antlers bounding from left to right through a low circular ring of glowing roots and leaves embedded in the ground; its shoulder and antlers drive an armored raider backward off his feet. The stag's face, antlers, full leaping silhouette and the raider's face remain clear; the persistent root-ring under the impact hints at the lingering hazard. One stag and one target only, no gore. Old forest at dusk, painterly fur, bark, mail, moss and leaf detail, dramatic shafts of green-gold light, grounded animal anatomy, readable horizontal action. Square 512x512 master, keep stag face/antlers, raider face and root-ring inside x24..488 y105..407; calm canopy above and forest floor below; designed for a true 206:141 crop. Illustration only, no text, frame, border or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b1cf7438-564f-40e1-8d89-934479f6a9b4.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_23.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Generated square normalized to an exact 512x512 source and inspected with its true 206:141 crop and 128x88 thumbnail. Stag and raider faces, leaping silhouette and persistent root-ring are readable; antler tips naturally extend into the expendable upper margin."
+  },
+  {
+    "cardId": "verdant_strike_24",
+    "name": "Grizzly Charge",
+    "prompt": "Paint an original illustration for the exact card “Grizzly Charge.” Mechanics: a charged, heavy spear-like charge through enemies in a line, knocking them back and throwing the attacker back with recoil. Depict a massive brown grizzly bear surging low from a forest clearing in a powerful straight-line charge, shoulder and forepaws driving into the first armored foe and sending a second foe backward behind him. The bear’s eyes, muzzle, shoulders and extended forepaw dominate; show the linear impact and a subtle recoil trail of kicked leaves behind the bear. Grounded, believable bear anatomy and textured fur, no clothing or weapons on the bear. Painterly medieval fantasy collectible-card illustration, rich moss, bark, fur and worn steel; directional shafts of autumn-green light, atmospheric forest depth, dramatic readable values, style in the supplied Hexmancers verdant reference spirit. Exact 1:1 square for 512×512 master, horizontal action; keep bear’s eyes/face, forepaw and collision within x24…488,y105…407 for the 206:141 crop, with expendable forest canopy and ground beyond. No frame, words, lettering, symbols, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-aab53873-0e3c-45d6-aee7-2f466e74f06a.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_24.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, direct 512×350 wide crop and 128×88 thumbnail: grizzly’s full face, charging forepaw and central impact remain in the crop; second foe is pushed backward and action reads at thumbnail scale."
+  },
+  {
+    "cardId": "verdant_strike_25",
+    "name": "Moose Antler Rush",
+    "prompt": "Paint an original illustration for the exact card “Moose Antler Rush.” Mechanics: a straight-line piercing rush through one enemy into another, knocking them back. Depict a powerful bull moose charging across a forest track, head lowered and broad antlers driving through the shields of two armored foes aligned behind one another; the first foe is being carried backward into the second. Make the moose’s full head, both eyes, muzzle and entire antler rack the unmistakable subject. The antlers must be clearly shaped and complete, with no branch or point cropped. Painterly medieval fantasy collectible-card illustration, grounded animal anatomy, richly textured dark brown fur, mossy woodland and battered steel, crisp green-gold rim light and atmospheric depth like the supplied Hexmancers verdant references. Exact 1:1 square for a 512×512 master; stage horizontally and keep full moose face, entire antlers and central impact within x24…488,y105…407 for 206:141 crop. Quiet expendable treetops and forest floor beyond. No frame, text, lettering, symbols, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0674db60-cbe7-4864-84b0-bf847ab0675b.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_25.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, vertically shifted direct 512×349 crop and 128×88 thumbnail: full moose face, both eyes and entire antler rack remain in the crop; the broad antlers pierce the first foe into the next. Focal point shifted up to include the complete rack."
+  },
+  {
+    "cardId": "verdant_strike_26",
+    "name": "Highland Caber Toss",
+    "prompt": "Paint an original illustration for the exact card “Highland Caber Toss.” Mechanics: a quick, heavy clustered strike scatters smaller fragments on impact, pushes foes and recoils the thrower. Depict a strong Highlander in a practical wool tunic and leather belt making a powerful sideways caber toss at a close group of armored foes. The complete compact tree-trunk caber is airborne horizontally beside the thrower, about to strike and burst into a scattered cross of heavy wooden splinters that knocks the group back; the thrower leans into the recoil. Keep the Highlander’s face and both hands visible, and show the entire named caber with both ends clearly inside the crop. Painterly medieval fantasy collectible-card art, tactile knotty wood, wool, leather and steel, dramatic clear light, windswept green highland and atmospheric depth in supplied Hexmancers reference style. Exact 1:1 square master, horizontal staging; keep face, hands, entire caber and impact within x24…488,y105…407 for the 206:141 crop, with quiet hill sky/ground beyond. No frame, lettering, glyphs, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4a536d7c-b10a-44a4-bb0a-a97796ee624d.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_26.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, direct 512×350 wide crop and 128×88 thumbnail: Highlander’s face and both hands remain visible, the complete horizontal caber leads into the splinter burst, and the clustered knockback reads clearly."
+  },
+  {
+    "cardId": "verdant_strike_27",
+    "name": "Tanuki Leaf Trick",
+    "prompt": "Paint an original illustration for the exact card “Tanuki Leaf Trick.” Mechanics: a charged, close targeted strike that knocks its marked target backward. Depict a sly tanuki spirit standing beside an old Japanese forest shrine, focused on a single armored intruder as it flicks one broad maple leaf toward the intruder’s brow; the leaf lands like a luminous green mark and a compact pulse of wind shoves the target backward. The tanuki’s face, eyes, paw and the small leaf at impact are prominent and legible; play the trick with calm folkloric mischief, not slapstick. Naturalistic raccoon-dog anatomy and a little weathered shrine detail, believable fur, bark, cloth and stone. Painterly medieval fantasy collectible-card illustration with nuanced green-gold light, soft forest atmosphere, clear contrast and grounded materials like supplied Hexmancers verdant references. Exact 1:1 square for a 512×512 master, horizontal composition; keep face, paw, leaf mark and impact inside x24…488,y105…407 for the 206:141 crop; quiet tree canopy and mossy ground beyond. No text, frame, lettering, symbols, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-75561d5d-b9c7-441f-ad06-c338013ad51e.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_27.png",
+    "sourceNative": [
+      1471,
+      1069
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square normalized source, direct 512×350 wide crop and 128×88 thumbnail: tanuki’s full face and leaf-throwing paw are visible; glowing leaf mark, target and knockback action remain readable. Raw output was 1471×1069 and the source tool prepared its central square."
+  },
+  {
+    "cardId": "verdant_strike_28",
+    "name": "Ratatoskr's Insult",
+    "prompt": "Paint an original illustration for the exact card “Ratatoskr’s Insult.” Mechanics: a quick cross-shaped burst of clustered strikes that knocks enemies back. Depict Ratatoskr as a prominent russet-red squirrel messenger braced on a mossy branch of an ancient Nordic forest tree, mouth open in a sharp defiant chitter toward a group of armored foes below. A compact cross-shaped burst of four heavy acorns and thorny seed-pods erupts from the branch around the enemies, scattering leaves and pushing them backward. Keep the squirrel’s expressive naturalistic face, both eyes, forepaws and bushy russet head clear and large enough to read at card size; the cross-burst and recoil of foes support the squirrel rather than overwhelm it. Believable squirrel anatomy, richly painted fur, bark, leaves and old steel; dramatic green-gold woodland light, layered atmospheric forest and painterly medieval fantasy collectible-card art consistent with supplied Hexmancers verdant references. Exact 1:1 square composition for a 512×512 editable master, arranged horizontally; keep face, eyes, paws and central burst within x24…488,y105…407 for the 206:141 crop, with quiet canopy and ground outside. No text or literal insult lettering, no frame, runes, numbers or UI. No anime, Disney-like cartoon proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-def37c96-0727-4099-8c03-a95f76ed3a18.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_28.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, direct 512×350 wide crop and 128×88 thumbnail: squirrel’s full face, eyes and forepaws remain visible; the cross-shaped burst of acorns and seed-pods and recoiling foes read at thumbnail size. Tail tip extends beyond crop as an incidental extremity."
   }
 ]

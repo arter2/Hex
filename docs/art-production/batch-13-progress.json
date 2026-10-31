@@ -2,10 +2,10 @@
   "batch": 13,
   "status": "in-progress",
   "targetNewImages": 200,
-  "generatedSources": 43,
-  "reviewedSources": 35,
-  "missingSources": 157,
-  "reviewedPackets": 7,
+  "generatedSources": 88,
+  "reviewedSources": 76,
+  "missingSources": 112,
+  "reviewedPackets": 16,
   "requiresRepaint": [],
   "baselineActive": 1434,
   "targetActive": 1634,
@@ -74,6 +74,30 @@
       ]
     },
     {
+      "cardId": "brown_instant_83",
+      "name": "Sea-Folk Shell Guard",
+      "colour": "brown",
+      "source": "game/cards/art/masters/brown_instant_83.png",
+      "sha256": "85e558a305e7925ee925f37cead0a001bc9fd83ecfee092b8e56cf144cb41d0a",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "brown_instant_84",
+      "name": "Djinn Mirage Cloak",
+      "colour": "brown",
+      "source": "game/cards/art/masters/brown_instant_84.png",
+      "sha256": "98555f52f38aa98367ac3b782ee466faba01309b1905de587bd3bc6d605ed42a",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.46
+      ]
+    },
+    {
       "cardId": "fire_strike_18",
       "name": "Volcanic Vent",
       "colour": "fire",
@@ -139,7 +163,7 @@
       "colour": "fire",
       "source": "game/cards/art/masters/fire_strike_23.png",
       "sha256": "2d53bb901043ef6738671ea5c16ad32fe96803d8668ca0a108f2781431bde244",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.5
@@ -151,7 +175,7 @@
       "colour": "fire",
       "source": "game/cards/art/masters/fire_strike_24.png",
       "sha256": "38f8e258524a916aa62cd82272fc7a14b59f500d1011e1f677aead50b3856856",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.5
@@ -163,6 +187,90 @@
       "colour": "fire",
       "source": "game/cards/art/masters/fire_strike_25.png",
       "sha256": "178800edad23f1e3ce368f3043c0f550a41d7df4b2578c64a3f11effb8334b86",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_strike_26",
+      "name": "Duende's Ember",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_strike_26.png",
+      "sha256": "3eaf77edb6ca13f58470cff5771280b433c81ff7ea4c83130f8be7b5b8078f52",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_strike_27",
+      "name": "Shishi Roar",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_strike_27.png",
+      "sha256": "99f6dbdd4d69ec686c07e68f7ce3cdbc4ae63986ef1567a93dbda077ca6714ca",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_strike_28",
+      "name": "Iaido Slash",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_strike_28.png",
+      "sha256": "1ad1ae6fb370eadb66a915902ef658568ac63bb1199fcbec7f27c498492e8247",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_strike_29",
+      "name": "Flaming Shuriken",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_strike_29.png",
+      "sha256": "d4ec73e78d43e331716a3efc1e8d403a96a774da08da88a0c47bee943889bb12",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_strike_30",
+      "name": "Dragon Fist",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_strike_30.png",
+      "sha256": "43c714c25eea730243b54e8559a18e0177e3d35cc1a6c4ebc59edd51d502a736",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_strike_31",
+      "name": "Rockslide",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_strike_31.png",
+      "sha256": "17da0bb34019a255e2eaa7205516be1a874f9c30b785ca7f0189182e62fed484",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_strike_32",
+      "name": "Obsidian Spear",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_strike_32.png",
+      "sha256": "d5df57f1066f36abef1843a3692ebd07972957bac9716af8b6fce7619aac4f4a",
       "reviewed": false,
       "focalPoint": [
         0.5,
@@ -224,6 +332,90 @@
       "source": "game/cards/art/masters/frost_strike_20.png",
       "sha256": "5afb895bb74dbdf5df36e29bf83fef7d107d42d6da11f230115bc86c4b2ec21c",
       "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "frost_strike_21",
+      "name": "Blizzard Gale",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_strike_21.png",
+      "sha256": "4e5de4dfa648c9e43991b915a85a200ad1cdf510f3e3dee7422115db8752c3f4",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "frost_strike_22",
+      "name": "Avalanche Rush",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_strike_22.png",
+      "sha256": "b20a09847c88197d0106af7e4f674e768cc33bbb00d91468741b2faed12efb92",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "frost_strike_23",
+      "name": "Hailstone Barrage",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_strike_23.png",
+      "sha256": "cae0f51c2d346aa7cb07d9cbfb3db13b8bbd743066a11b3147fec7adb5c5e790",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "frost_strike_24",
+      "name": "Sleet Volley",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_strike_24.png",
+      "sha256": "214353985891bd7a56f761e320967a334305c093faac7104f97d7d21599ceb2e",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "frost_strike_25",
+      "name": "Winter Wolf Fangs",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_strike_25.png",
+      "sha256": "41e24e21e2e3cc4a12b31c8cd08e751958a987b6442857e1f68111c06106e3c3",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "frost_strike_26",
+      "name": "Yeti's Swipe",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_strike_26.png",
+      "sha256": "068ea065a1830339adfedabfe6df1ff09eef793ac599c8c0add99b0f0f697552",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "frost_strike_28",
+      "name": "Kappa's Sumo Shove",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_strike_28.png",
+      "sha256": "948b525b2f659a8009478bc9a1f00a8050050558eb865d8586a1e5c73c8123fd",
+      "reviewed": false,
       "focalPoint": [
         0.5,
         0.5
@@ -295,10 +487,58 @@
       "colour": "gray",
       "source": "game/cards/art/masters/gray_summon_148.png",
       "sha256": "8ec8bca044ee3f6dd1a662eeb82401e795b4a1e078a3a7c2b6d1e528016ad89c",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.5
+      ]
+    },
+    {
+      "cardId": "gray_summon_149",
+      "name": "Wise Woman",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_149.png",
+      "sha256": "09312084f9b06aaf169e5748a59ddca040b830bd8dea4a38346ed3f94f3688b9",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "gray_summon_150",
+      "name": "Field Surgeon",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_150.png",
+      "sha256": "17f9e3b974712567ea3b574cb7f861532e1d193ff830657d9c07bfc9e3d9a3a1",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.44
+      ]
+    },
+    {
+      "cardId": "gray_summon_151",
+      "name": "Herbwife",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_151.png",
+      "sha256": "7f3fa8f6b981a9adf5e01556f62a7d244470f9f9c18338279a8b6654375e9b34",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "gray_summon_152",
+      "name": "Midwife",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_152.png",
+      "sha256": "5ac87e6df22abbd496155ec353dbcda62e751b57ef2dae528b0861c80694928b",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.46
       ]
     },
     {
@@ -355,6 +595,114 @@
       "colour": "light",
       "source": "game/cards/art/masters/light_strike_20.png",
       "sha256": "b88befab27cff3bfaaed8cf3f48c94192433761fc6a8d8c759d5a0815f9c98bd",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "light_strike_21",
+      "name": "Qilin's Flame",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_strike_21.png",
+      "sha256": "aa9bebe1f5253166be7a2bd1577496ad81e960fcd7d5c7842ed1b70a4551fce4",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "light_strike_22",
+      "name": "White Stag's Antlers",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_strike_22.png",
+      "sha256": "4d521d4be3aabbc985baed305a8c311f56ef1193a5dd8f569bac26482c635f6a",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.42
+      ]
+    },
+    {
+      "cardId": "light_strike_23",
+      "name": "Simurgh Feather Gust",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_strike_23.png",
+      "sha256": "88740c7534995c01b001d9113bdf8d46409320c26706b7f984dab2581eae9cb1",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "light_strike_24",
+      "name": "Paladin's Oath Blade",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_strike_24.png",
+      "sha256": "5c6061e621ef792222b6aa3d952e0f113246140bf004eb01279e348ba2a1e100",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "light_strike_25",
+      "name": "Martyr's Last Stand",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_strike_25.png",
+      "sha256": "511865202837a70ccb3041e0e67fdf1d08c165a97620bdcd1f399110acb896c9",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "potion_elixir",
+      "name": "Quicksilver Elixir",
+      "colour": "brown",
+      "source": "game/cards/art/masters/potion_elixir.png",
+      "sha256": "5d9c4272253a25820997c3977924365335e7d995fcae4d727d89e24cf6051cd3",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "potion_heal",
+      "name": "Healing Draught",
+      "colour": "brown",
+      "source": "game/cards/art/masters/potion_heal.png",
+      "sha256": "e07e7bd2b4cd4d3e42c706b0858ecc565c8c37609df04bf9f459e32a599f1de4",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "potion_tonic",
+      "name": "Iron Tonic",
+      "colour": "brown",
+      "source": "game/cards/art/masters/potion_tonic.png",
+      "sha256": "92ce75ca4740961dfe097b95a2dedfc9cce96b7f330bc03128b2cc61d38afca0",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "potion_wind",
+      "name": "Second Wind",
+      "colour": "brown",
+      "source": "game/cards/art/masters/potion_wind.png",
+      "sha256": "a9b2cfb59e1e6601a3e51a5024b2687302f84eade73efb390459b4ec485b089e",
       "reviewed": true,
       "focalPoint": [
         0.5,
@@ -422,6 +770,66 @@
       ]
     },
     {
+      "cardId": "shadow_strike_24",
+      "name": "Hellhound Howl",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_strike_24.png",
+      "sha256": "f831f7f5081a76c3df529b1bdce188b7ecc53a77d60d6628939b4a31df8824bf",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "shadow_strike_25",
+      "name": "Infernal Brand",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_strike_25.png",
+      "sha256": "0739ac7b6aef7fb64c4df154497e76ca7811da1bd2ed8dc16e1637c79dd29d21",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "shadow_strike_26",
+      "name": "Reaper's Scythe",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_strike_26.png",
+      "sha256": "3779fa42eb5b61a6d1d8300234a55b393499ba1625c624fd59d3040d8f6614a6",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "shadow_strike_27",
+      "name": "Danse Macabre",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_strike_27.png",
+      "sha256": "0ee55d15c23caecd0a77a5af322e423b711fa83a2562fd131a360b1aab8f1154",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "shadow_strike_28",
+      "name": "Onryo's Grudge",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_strike_28.png",
+      "sha256": "65b9786f1db333f99ea50b76d8257abeedc56965f19a28688ccd9151df90fc7c",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "cardId": "storm_strike_18",
       "name": "Camel Kick",
       "colour": "storm",
@@ -482,12 +890,72 @@
       ]
     },
     {
+      "cardId": "storm_strike_23",
+      "name": "Djinn's Whirlwind",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_strike_23.png",
+      "sha256": "5195bbf9e6809a03d76cd8cbb27a9027f1619ca7ccc53de310c74ceb1ffaea3e",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.42
+      ]
+    },
+    {
+      "cardId": "storm_strike_24",
+      "name": "Coin Toss",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_strike_24.png",
+      "sha256": "ca64e0986e75e46f625bd2c68025142f73e706dae585d58d29fe6b85b433b16f",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_strike_25",
+      "name": "Golden Touch",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_strike_25.png",
+      "sha256": "005815fd986489e3a458daa5dd9a3214eb7d05bc869293120ea98d9dc38b5147",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_strike_26",
+      "name": "Bronze Fist",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_strike_26.png",
+      "sha256": "ca20677fe34fc023cf349717db19259e4574f7fd23efcbf66b8a1ce6f7e14ab0",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.46
+      ]
+    },
+    {
+      "cardId": "storm_strike_27",
+      "name": "Talos's Boulder",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_strike_27.png",
+      "sha256": "8d1a223e6c7af0f69ef473a81a7a7676ecc1c43f87c804d01b4f7edd9c297e85",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.34
+      ]
+    },
+    {
       "cardId": "verdant_strike_19",
       "name": "Anaconda Squeeze",
       "colour": "verdant",
       "source": "game/cards/art/masters/verdant_strike_19.png",
       "sha256": "343159d9976c79f3beaf16f7b7fae347ee65f1cd1f1aa69e29507644ef16f240",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.5
@@ -499,7 +967,7 @@
       "colour": "verdant",
       "source": "game/cards/art/masters/verdant_strike_20.png",
       "sha256": "7508fce2dec85257c59de89325763d7b6b8d7d4febe47f9d0701d200a1f7ab27",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.5
@@ -511,7 +979,7 @@
       "colour": "verdant",
       "source": "game/cards/art/masters/verdant_strike_21.png",
       "sha256": "f849d3256dbd99089f6df7ff2bad7ad05f61ce4b58b5424842c491e0f817cb2b",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.5
@@ -523,6 +991,78 @@
       "colour": "verdant",
       "source": "game/cards/art/masters/verdant_strike_22.png",
       "sha256": "8d4f2cced2a35eac30cee88aceb33b285bc638c053890d28c751e15aa9221683",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_strike_23",
+      "name": "Stag Leap",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_strike_23.png",
+      "sha256": "fb9470bbada11cf1532a74e731f12f4356a8909141ad1f900452efa99e3fe6eb",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_strike_24",
+      "name": "Grizzly Charge",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_strike_24.png",
+      "sha256": "0b4bd976b4a0e1a3eb1eac1b947fca96d14466c806b0a895642c21ed4ace3576",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_strike_25",
+      "name": "Moose Antler Rush",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_strike_25.png",
+      "sha256": "4401311f4fb75d917a6770e52b51f275854704f59d2c2d91e7dd30b28f61de70",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.42
+      ]
+    },
+    {
+      "cardId": "verdant_strike_26",
+      "name": "Highland Caber Toss",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_strike_26.png",
+      "sha256": "7d076c99876902bfcc531cf09ff947c3163c3d136b3824544590ba320925c267",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_strike_27",
+      "name": "Tanuki Leaf Trick",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_strike_27.png",
+      "sha256": "6c5d2273012721f55c7f41a469057c9110ab153da6c2bb4a2bd38875a250676f",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_strike_28",
+      "name": "Ratatoskr's Insult",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_strike_28.png",
+      "sha256": "7848411373b7e23d08b331946fb60c5636991d35115e09271ff7d6ddf4e44611",
       "reviewed": false,
       "focalPoint": [
         0.5,

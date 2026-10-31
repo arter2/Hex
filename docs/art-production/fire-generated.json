@@ -3160,5 +3160,131 @@
     "status": "generated",
     "batch": 13,
     "reviewNote": "Inspected the 512-square source, true 206:141 wide crop and 128px thumbnail. Gremlin’s eyes, full face, gripping hand and complete sparkler are crisp; linked sparks hit two foes whose turned faces and stagger suggest confusion. Foreground bottles and workshop detail are secondary."
+  },
+  {
+    "cardId": "fire_strike_26",
+    "name": "Duende's Ember",
+    "prompt": "Paint an illustration for the exact card name “Duende's Ember.” A small, sly Iberian duende in a worn red cap and leather coat flicks a crescent-shaped ember charm through a tight boomerang arc; the returning ember passes through a pair of armored foes, leaving a curling trail that dazzles and confuses them. The duende’s expressive face and eyes, casting hand, and complete bright ember crescent are the clear focal point; keep the foes secondary and the fire trail readable. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: grounded folklore creature anatomy, believable cloth, leather, iron and stone, layered brushwork, rich orange-gold directional firelight against cool shadows, atmospheric depth, not photorealistic. Explicit 1:1 square canvas for a 512×512 editable master. Compose duende, hand, crescent and trajectory horizontally in the middle band; keep face/eyes, hand and whole named ember inside x24–488,y105–407 for a 206:141 landscape crop. Quiet old-town stone alley above and below. Strong readable silhouette. No gore, no card frame, lettering, runes, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9dba3022-8ffb-40b5-85b8-366fe85e7abe.png",
+    "editableSourcePath": "game/cards/art/masters/fire_strike_26.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, true 206:141 wide crop and 128px thumbnail. Duende face/eyes, casting hand and complete crescent-shaped ember are visible; its curling path strikes two recoiling, dazed armored foes. Incidental lower body and paving extend naturally."
+  },
+  {
+    "cardId": "fire_strike_27",
+    "name": "Shishi Roar",
+    "prompt": "Paint an illustration for the exact card name “Shishi Roar.” A powerful living shishi guardian lion-dog, with a broad mane and fierce expressive eyes, plants its paws on a temple stair and unleashes a tremendous roar; a visible circular wave of golden air and dust bursts outward, knocking several armored intruders backward. The shishi’s complete head, open muzzle and eyes dominate, with the front paws and the advancing shockwave clearly visible; keep the recoiling figures secondary. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: believable lion-dog anatomy and layered mane, nuanced stone, bronze and cloth, rich brushwork, dramatic warm directional light and atmospheric depth, not photorealistic or cartoonish. Explicit 1:1 square canvas intended for a 512×512 editable master. Compose the shishi’s face and shockwave horizontally in the middle band; keep eyes, muzzle and main wave inside x24–488,y105–407 for a 206:141 landscape crop. Quiet shrine architecture above and below. Strong silhouette, readable at small size. No gore, no card frame, lettering, runes, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-befbb58d-b4f0-49e4-b1f8-120ff06bcf16.png",
+    "editableSourcePath": "game/cards/art/masters/fire_strike_27.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, true 206:141 wide crop and 128px thumbnail. Shishi eyes, complete roaring muzzle and front paws remain clear; the circular golden shockwave and pushed-back figures communicate the strike. Shrine scenery and lower stone steps are incidental."
+  },
+  {
+    "cardId": "fire_strike_28",
+    "name": "Iaido Slash",
+    "prompt": "Paint an original illustration for the Hexmancers fire strike “Iaido Slash.” Show a disciplined medieval-fantasy swordswoman in dark lacquered armor completing one explosive iaido draw: her full curved steel blade, point, hilt and both hands are visible as the sword cuts a single broad wedge of fire across the scene. Keep her focused face and sword action clear in a horizontal composition; the bright orange flame follows the blade but does not hide it. Grounded anatomy, restrained Japanese-inspired armor details, no blood or gore. Painterly medieval/high-fantasy collectible-card art, nuanced believable lacquer, steel, cloth and stone, dramatic firelight against cool dusk, atmospheric depth and strong readable values. Match the supplied references' painterly materials and directional fantasy lighting, with the warm high-fantasy action feel of the accepted fire art. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the swordswoman’s face, eyes, both gripping hands and entire named blade including tip and hilt within x24–488,y105–407 on the square; arrange the full horizontal slash for the 206:141 crop with quiet scenery above and below. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-facc954b-b3c1-433d-bfa7-88aa0eb0c081.png",
+    "editableSourcePath": "game/cards/art/masters/fire_strike_28.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source, centered 206:141 crop and thumbnail inspected: the swordswoman’s face, gripping hand and complete curved blade, hilt and point remain visible. The fire wedge supports the iaido slash without obscuring the weapon, and the action reads at thumbnail size."
+  },
+  {
+    "cardId": "fire_strike_29",
+    "name": "Flaming Shuriken",
+    "prompt": "Paint an original standalone artifact illustration for the Hexmancers fire strike “Flaming Shuriken.” Make one complete four-point iron shuriken the unmistakable central subject, shown at a clear three-quarter angle as it ricochets between two cracked stone targets in a charged attack. Preserve all four sharp points, central hub and small grip openings fully in frame; a tight orange flame clings around the metal edges and brief ember trails show the ricochet path without hiding or replacing the star. Add a tiny gloved throwing hand far in the background only if it supports scale. Painterly medieval/high-fantasy collectible-card art, nuanced believable dark iron and stone, dramatic firelight, atmospheric depth and strong readable values. Match the supplied references' painterly materials and directional fantasy lighting, with the warm high-fantasy action feel of the accepted fire art. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the entire named shuriken, including every tip, within x24–488,y105–407 on the square; compose it large and central for the 206:141 card crop, with quiet scenery above and below. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-ddfeabb2-6849-43b5-bdbb-a52edde943d6.png",
+    "editableSourcePath": "game/cards/art/masters/fire_strike_29.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source, centered 206:141 crop and thumbnail inspected: all four points, central hub and grip openings of the named shuriken are fully visible. The fire-edged iron star dominates while sparks at the two stone impacts show the ricochet."
+  },
+  {
+    "cardId": "fire_strike_30",
+    "name": "Dragon Fist",
+    "prompt": "Paint an original illustration for the Hexmancers fire strike “Dragon Fist.” Show a powerful, disciplined martial artist in layered dark-red and charcoal robes landing one charged straight punch. The fighter’s focused face, shoulders, punching arm and fully clenched forward fist are clearly visible; a wedge-shaped burst of fire and pressure fans outward from the fist, briefly suggesting a dragon-scaled pattern in the flame without forming a separate creature. The strike drives an armored sparring opponent back in the distant background. Grounded anatomy, believable cloth and wrapped hands, no gore. Painterly medieval/high-fantasy collectible-card art, nuanced materials, dramatic firelight and cool dusk contrast, atmospheric depth and strong readable values. Match the supplied references' painterly materials and directional fantasy lighting, with the warm high-fantasy action feel of the accepted fire art. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the martial artist’s face, eyes, punching hand and full fist within x24–488,y105–407 on the square; arrange the punch and wedge horizontally for the 206:141 card crop, with quiet scenery above and below. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-0e4d80ff-e31b-45e7-a2b9-312bc8dde9c8.png",
+    "editableSourcePath": "game/cards/art/masters/fire_strike_30.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source, centered 206:141 crop and thumbnail inspected: the martial artist’s focused face, punching hand and complete forward fist remain visible. The wedge of fire reads as an empowered strike, with the opponent secondary at the right edge."
+  },
+  {
+    "cardId": "fire_strike_31",
+    "name": "Rockslide",
+    "prompt": "Paint an original illustration for the Hexmancers fire strike “Rockslide.” Show a sudden burst of heavy stone cascading down a rugged mountain pass, with one large angular boulder in the foreground striking the path and a clear fan of smaller rocks and dust behind it. Fine glowing ember seams suggest a hot volcanic slope but remain subtle; the stone impact and brief stunned pause among distant armored travelers are the focus. Keep the main boulder’s full silhouette visible, with no clipped rock faces, and make the downhill motion read horizontally. Painterly medieval/high-fantasy collectible-card art, nuanced believable stone, dust and iron, dramatic warm light against cool mountain shadow, atmospheric depth and strong readable values. Match the supplied references' painterly materials and directional fantasy lighting, with the warm high-fantasy action feel of the accepted fire art. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the central boulder and primary impact within x24–488,y105–407 on the square; arrange the rockslide horizontally for the 206:141 crop, with quiet sky and slope scenery above and below. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-eef91afe-d379-47bf-beab-3cb51a4d3cdb.png",
+    "editableSourcePath": "game/cards/art/masters/fire_strike_31.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source, centered 206:141 crop and thumbnail inspected: the large boulder’s complete silhouette and impact are in frame, with the descending smaller rocks and dust fan clearly identifying the rockslide. Distant travelers stay secondary."
+  },
+  {
+    "cardId": "fire_strike_32",
+    "name": "Obsidian Spear",
+    "prompt": "Paint an original standalone artifact illustration for the Hexmancers fire strike “Obsidian Spear.” Make one complete hand-forged spear the unmistakable central subject, flying horizontally through the frame in a swift thrust. Show its entire glossy black volcanic-glass spearhead, socket, long dark ashwood shaft and butt cap from end to end; keep the spearhead fully visible and sharply defined against a warm ember-lit mountain-pass background. A restrained orange heat shimmer trails behind the weapon, but no flame obscures the obsidian edge. No wielder is needed. Painterly medieval/high-fantasy collectible-card art, nuanced believable volcanic glass, wood and iron, dramatic warm light, atmospheric depth and strong readable values. Match the supplied references' painterly materials and directional fantasy lighting, with the warm high-fantasy action feel of the accepted fire art. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the complete named spear, especially the entire spearhead and butt cap, within x24–488,y105–407 on the square; center it large in a horizontal composition for the 206:141 card crop, with quiet scenery above and below. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-1ca42ec0-3661-49ec-84f4-6c49402ac435.png",
+    "editableSourcePath": "game/cards/art/masters/fire_strike_32.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source, centered 206:141 crop and thumbnail inspected: the complete obsidian spearhead, socket, long shaft and butt cap remain visible across the wide crop, with heat shimmer reading as swift motion. The spearhead’s jagged glass edge is distinct against the bright background."
   }
 ]

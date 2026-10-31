@@ -340,6 +340,56 @@ check('wand hit damages opponent', async () => {
   return { ok: landed && h0 - h1 === dmg && synced, detail: { dmg, h0, h1, avatarHp: await ev('A', () => duelAvatar().hp) } };
 });
 
+check('incoming shot is visible', async () => {
+  await walkTo('A', 1, 4);
+  await walkTo('B', 2, 4);
+  await sleep(300);
+  const h0 = await hp('B');
+  // A's hits are held back, so only the shot message reaches B until the hit is let go
+  await ev('A', () => {
+    const s = B.pvp.session, send = s.sendHit;
+    window.__heldHit = [];
+    s.sendHit = (...a) => void window.__heldHit.push(a);
+    window.__realSendHit = send.bind(s);
+  });
+  await ev('B', () => {
+    window.__seen = null;
+    const poll = () => {
+      if (!window.__seen) {
+        const f = B.fx.find(f => f.kind === 'shot');
+        if (f) window.__seen = { at: Date.now(), r: f.r, hp: B.player.hp };
+      }
+      if (!window.__stopSeen) requestAnimationFrame(poll);
+    };
+    window.__stopSeen = false;
+    poll();
+  });
+  const t0 = Date.now();
+  await ev('A', () => {
+    B.player.wandCd = 0;
+    fireWand(false);
+  });
+  const seen = await within('B', () => !!window.__seen, null, 200);
+  const info = await ev('B', () => window.__seen);
+  // the cosmetic shot runs out its path and goes; B takes no damage from it
+  const gone = await within('B', () => !B.fx.some(f => f.kind === 'shot'), null, 2000);
+  await sleep(150);
+  const hShotEnd = await hp('B');
+  await within('A', () => __heldHit.length > 0, null, 2000);
+  const held = await ev('A', () => __heldHit.length);
+  const noShotsOnB = await ev('B', () => B.shots.length === 0 && !B.shots.some(s => s.cosmetic));
+  await ev('A', () => {
+    B.pvp.session.sendHit = window.__realSendHit;
+    for (const a of window.__heldHit) window.__realSendHit(...a);
+  });
+  const dropped = await within('B', h => B.player.hp < h, h0, 500);
+  await ev('B', () => (window.__stopSeen = true));
+  return {
+    ok: seen && info.r === 4 && info.hp === h0 && gone && hShotEnd === h0 && held > 0 && noShotsOnB && dropped,
+    detail: { seen, ms: info && info.at - t0, info, gone, h0, hShotEnd, held, noShotsOnB, dropped }
+  };
+});
+
 check('wand misses other row', async () => {
   await walkTo('B', 1, 2);
   await sleep(300);

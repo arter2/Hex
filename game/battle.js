@@ -955,6 +955,7 @@ function fireWand(charged){ if(B&&B.player){ B.player.poseT=B.time; B.player.pos
     freeze:charged?w.chill:0, stun:w.zap&&Math.random()<w.zap?.5:0, mend:charged?w.glow:0}:null;
   const un=soulUnison();
   if(un){ card=un(charged); dmg=Math.round(dmg*1.5); }
+  if(b.pvp) b.pvp.session.sendShot(p.tile.r,card&&COLORS[card.color]?card.color:'gray',!!charged);   // so the other side sees it coming (cosmetic there)
   const row=lineTiles(p.tile,DIRS.E), buff=wandBuff(p), o=()=>({dmg,from:'p',wand:true,big:charged,card,buff});
   // each kind of weapon fires its own way (see WEAPON_KINDS in gear.js)
   switch(w.kind){
@@ -1104,6 +1105,11 @@ function startDuel(list,session,hooks){
   // judged as it arrives (the history only goes back a second), applied once the fight runs
   on('hit',(m,b,v)=>{ if(!hitLands(v.history,m.tile,m.localTs,session.setting('mpDefend'))){ floater('dodge',b.player.tile,'#9fdcff'); return; }
     v.inbox.push({dmg:m.dmg,color:m.color}); });
+  // a shot of theirs on its way along my row: cosmetic only (no damage, no tiles, not in B.shots); damage comes by 'hit'
+  on('shot',(m,b)=>{ const e=duelAvatar(), me=b.player.tile, r=m.r;
+    const a=e&&e.tile&&e.tile.r===r?e.tile:tileCR(BOARD_COLS-1,r), z=me.r===r?me:tileCR(0,r); if(!a||!z) return;
+    const life=Math.max(.05,Math.abs(a.col-z.col)*.045), lag=Math.max(0,session.now()-m.localTs)/1000; if(lag>=life) return;
+    b.fx.push({kind:'shot',r,ax:a.wx,bx:z.wx,wz:a.wz,color:COLORS[m.color]?COLORS[m.color].c:'#e6f4ff',big:!!m.big,t:lag,life}); });
   on('fight',()=>{ if(!session.spell.open) session.openSpell(); });   // the opening card screen is shared too
   on('spellopen',(m,b,v)=>{ if(b.phase==='fight') openCustomScreen(); if(b.phase!=='custom') return;
     b.gauge=0; v.oppGauge=0; v.gaugeAfter=session.now();   // opening uses both gauges up
@@ -1899,6 +1905,8 @@ function render(){
     const col=colorOf(l.card); ctx.fillStyle=col; ctx.shadowColor=col; ctx.shadowBlur=14; ctx.beginPath(); ctx.arc(x,y,S*.24,0,TAU); ctx.fill(); ctx.shadowBlur=0; }
   for(const f of b.fx){
     if(f.kind==='palfx'){ const fr=palFrame(f.id,f.anim,Math.floor(f.t*14)); if(fr){ const [x,y]=proj(f.a.wx,1,f.a.wz), H=palH(scaleAt(f.a.wx,f.a.wz),f.id); ctx.save(); ctx.imageSmoothingEnabled=false; ctx.drawImage(fr.img,x-H/2,y-H/2,H,H); ctx.restore(); } continue; }
+    if(f.kind==='shot'){ const k=Math.min(1,f.t/f.life), [x,y]=proj(f.ax+(f.bx-f.ax)*k,1,f.wz), S2=scaleAt(f.ax+(f.bx-f.ax)*k,f.wz);
+      ctx.fillStyle=f.color; ctx.shadowColor=f.color; ctx.shadowBlur=12; ctx.beginPath(); ctx.arc(x,y,S2*(f.big?.26:.13),0,TAU); ctx.fill(); ctx.shadowBlur=0; continue; }
     if(f.kind==='ring'){ const [x,y]=proj(...posOf(b.player).slice(0,1),0,posOf(b.player)[1]), r=scaleAt(...posOf(b.player))*(.4+1.4*f.t/f.life); ctx.strokeStyle=f.color; ctx.globalAlpha=1-f.t/f.life; ctx.lineWidth=3;
       ctx.beginPath(); ctx.ellipse(x,y,r,r*View.iy,0,0,TAU); ctx.stroke(); ctx.globalAlpha=1; continue; }
     const a=proj(f.a.wx,f.y0||1,f.a.wz), c=proj((f.b||f.a).wx,1,(f.b||f.a).wz), al=1-f.t/f.life;

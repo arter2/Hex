@@ -298,7 +298,7 @@ function groundHit(t,c){ if(!c||!SIX.includes(c.color)||t.side!=='e') return;
   if(!rx) return stain(t,c.color);
   t.gT=0; floater(rx.name+'!',t,rx.c,true); shake(3); reactFx(rx.name,t); groundFx(rx.name,t); B.reacts=(B.reacts||0)+1; }
 // Enemies standing on stains or reshaped ground (called every frame from updateTerrain).
-function groundTick(e,dt){ const t=e.tile;
+function groundTick(e,dt){ const t=e.tile; if(e.remote) return;   // a duel's avatar takes no mark or status from my ground (not mirrored in v1)
   if(t.gT>0&&t.gEl&&!(e.markT>0&&e.mark===t.gEl)){ const c=t.gEl; t.gT=0; react(e,{color:c},12,true); if(e.hp<=0) return; }
   if(icy(t)) e.slowT=Math.max(e.slowT,.5);
   if(t.voidT>0) e.curseT=Math.max(e.curseT,.6);

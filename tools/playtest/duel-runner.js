@@ -463,6 +463,8 @@ check('card screen length follows the setting', async () => {
 check('starter deck cards reach the avatar', async () => {
   await walkTo('A', 1, 4);
   await walkTo('B', 1, 4);
+  // the whole deck at once does close to 500: B gets the most HP a sync carries (1000), so B is not killed here
+  await ev('B', () => (B.player.hp = B.player.maxHp = 1000));
   await sleep(300);
   const h0 = await hp('B');
   await ev('A', () => (__hits.length = 0));
@@ -485,6 +487,31 @@ check('starter deck cards reach the avatar', async () => {
   await sleep(300);
   await ev('B', () => (B.player.hp = B.player.maxHp));
   return { ok: sent >= 5 && h1 < h0, detail: { kinds: kinds.length, sent, h0, h1 } };
+});
+
+// my own ground effects under the avatar (stains, a shadow pool, ice) must leave it no mark or status: statuses are
+// not mirrored in v1, and a curse that never ran down made every later hit 30% harder
+check('avatar keeps no local ground statuses', async () => {
+  await ev('A', () => {
+    const t = duelAvatar().tile;
+    t.gEl = 'light';
+    t.gT = 8;
+    t.voidT = 6;
+    t.iceT = 6;
+  });
+  await sleep(300);
+  await ev('A', () => {
+    const t = duelAvatar().tile;
+    t.gEl = 'shadow';
+    t.gT = 8;
+  });
+  await sleep(3000);
+  const r = await ev('A', () => {
+    const e = duelAvatar(),
+      st = ['curseT', 'markT', 'slowT', 'stunT', 'freezeT'].map(k => [k, +(e[k] || 0).toFixed(2)]);
+    return { st, mark: e.mark || null, hp: e.hp, barrier: e.barrier, dmg: hitEnemy(e, 10, null) };
+  });
+  return { ok: r.st.every(([, v]) => v === 0) && !r.mark && r.dmg === 10, detail: r };
 });
 
 let saveBefore = null;

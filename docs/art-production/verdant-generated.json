@@ -2479,5 +2479,77 @@
     "status": "generated",
     "batch": 11,
     "reviewNote": "Focal y=0.43 keeps Venna’s full face and serpent crown, both hands, complete fang and poison aura together in the wide crop and thumbnail; lower coils crop incidentally."
+  },
+  {
+    "cardId": "verdant_lob_13",
+    "name": "Treefolk Stomp",
+    "prompt": "Paint an illustration for Treefolk Stomp, a quick column-shaped blow that drops a mighty treefolk's foot, knocks foes backward and leaves them grounded. Show the immense but kindly ancient treefolk with a clearly readable face formed in the bark of its trunk at mid-frame; one massive root-foot slams into a forest clearing beneath it, sending a vertical burst of roots and earth upward and tossing a single armored foe backward. The treefolk's face and the stomp impact must both remain inside the central action band; incidental branches and lower roots may crop. Painterly medieval high fantasy, detailed bark, moss and leaves, filtered golden forest light, atmospheric depth and serious natural proportions. Explicit 1:1 SQUARE 512x512 composition; keep bark face, striking root-foot and readable knockback action inside x24..488,y105..407 for the 206:141 crop, quiet canopy and ground beyond. No frame, lettering, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c33d0b37-eb8c-4f9d-804c-3a6626b05e4d.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_lob_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed 512-square source and upward-shifted wide crop/thumb at focal y=0.40. The treefolk's face and trunk remain recognizable above the clear root-foot stomp and backward-flung foe; canopy and some ground debris are expendable."
+  },
+  {
+    "cardId": "briar_arc",
+    "name": "Briar Arc",
+    "prompt": "Paint an illustration for Briar Arc, a thorn ward that grows into a protective curved barrier. A short arc of dense living briar bushes rises from the forest floor between three large weathered stones, forming a clear defensive curve around two woodland travelers. Interwoven green stems and dark sharp thorns are highly visible, and subtle green magic travels along the hedge; one outside foe recoils after touching the thorns. Keep the whole central bramble arc and its sharp thorn silhouette as the named subject, not a generic green spell. Painterly medieval fantasy, rich leaf and bark textures, golden woodland light, grounded plants and atmospheric depth. Explicit 1:1 SQUARE 512x512 composition; preserve the full visible thorny arc and the protected travelers within x24..488,y105..407 for 206:141 wide crop; quiet trees and forest floor can extend beyond. No frame, lettering, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c96eba16-c72a-468e-8eec-a8adcfba1d62.png",
+    "editableSourcePath": "game/cards/art/masters/briar_arc.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop and 128x88 thumbnail. The curved bramble barrier with clear sharp thorns encloses the travelers and repels the outside foe; the arc reads at small size."
+  },
+  {
+    "cardId": "verdant_boon_11",
+    "name": "Green Man's Blessing",
+    "prompt": "Paint an illustration for Green Man's Blessing, a long-lasting courage boon radiating restorative light and jolting nearby foes. Show an ancient Green Man spirit with a clear wise face emerging from a living oak, his hair and beard woven of leaves and small flowers, one bark-covered hand resting gently on a brave human ranger's shoulder. A warm emerald-gold radiance renews the ranger and illuminates nearby allies, while one distant foe recoils from a brief flash. Keep the Green Man's face and the ranger's uplifted expression together as the clear blessing action, mature and dignified rather than cartoonish. Painterly medieval high fantasy, tactile bark, leaves, cloth and leather, beautiful shafted forest light, atmospheric depth and grounded anatomy. Explicit 1:1 SQUARE 512x512; keep both faces, blessing hand and luminous action within x24..488,y105..407 for 206:141 crop, quiet canopy above and forest below. No frame, text, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2d3d787b-a281-4daf-b3de-80be8e8396b9.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_boon_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed 512-square source and upward-shifted crop/thumb at focal y=0.40. Both Green Man's full leafy face and the ranger's face/heart-hand remain visible with the blessing hand and radiance; lower bow and forest are incidental."
+  },
+  {
+    "cardId": "verdant_charge_13",
+    "name": "Gourd of Pine Sap",
+    "prompt": "Paint an illustration for Gourd of Pine Sap, a reusable thrown charge that splashes sticky pine sap to slow a target. A forest alchemist with a clear face and throwing hand holds one compact dried pine gourd flask beside the face at the same height; show the complete bulbous gourd body, narrow neck, cork stopper, cord wrapping and broad rounded base. The alchemist has just thrown a second small gourd toward an armored foe, where amber sap splashes and clings in sticky strands, visibly slowing the target. Keep the handheld named gourd whole and distinct, not hidden by the flying impact. Painterly medieval fantasy, believable pine rind, cork, cord, amber sap and woodland cloth, warm light, atmospheric depth, grounded face and hands. Explicit 1:1 SQUARE 512x512; full held gourd including stopper/base, operator face, relevant hand, flying gourd and clear sap splash inside x24..488,y105..407 for 206:141 crop; quiet foliage above and below. No frame, labels, text, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-99e2fa08-cd6a-4456-a851-1f26b97caa30.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_charge_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed 512-square source and upward-shifted 206:141 crop/thumb at focal y=0.42. Full alchemist face, throwing hand, airborne gourd, sap splash and handheld gourd including stopper and base fit; the supporting grip sits close to the left crop edge."
   }
 ]

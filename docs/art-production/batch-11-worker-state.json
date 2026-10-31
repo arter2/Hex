@@ -19,7 +19,7 @@
     },
     "/root/b11_worker_5": {
       "packet": "shadow-05",
-      "state": "running"
+      "state": "idle"
     },
     "/root/b11_worker_6": {
       "packet": "fire-05",
@@ -64,7 +64,8 @@
     "gray-05",
     "light-05",
     "fire-05",
-    "storm-05"
+    "storm-05",
+    "shadow-05"
   ],
   "reviewedSources": {
     "fire_strike_11": {
@@ -826,6 +827,26 @@
     "storm_charge_12": {
       "file": "game/cards/art/masters/storm_charge_12.png",
       "sha256": "d6d98de59de7dcacb038bea10623a77ab3f0ff581d71c2f048bf02d8e5949b27"
+    },
+    "hero_mordo": {
+      "file": "game/cards/art/masters/hero_mordo.png",
+      "sha256": "ec3eea688ab66575c097c6c10880681911bda572e097c78e496ca18085a1bad6"
+    },
+    "shadow_strike_12": {
+      "file": "game/cards/art/masters/shadow_strike_12.png",
+      "sha256": "1addd1542932625b09942771c86286ad9b7094d32faa69b0b4d4dfeec83c626e"
+    },
+    "shadow_lob_14": {
+      "file": "game/cards/art/masters/shadow_lob_14.png",
+      "sha256": "8332fd2f06a2fb7868d8c096822ff4cf362427b25eabd7105782b6f6de912158"
+    },
+    "shadow_ward_13": {
+      "file": "game/cards/art/masters/shadow_ward_13.png",
+      "sha256": "42e597a9a8fe14670bd132551df3801cdf6734330831757d97e9dd35202afa2b"
+    },
+    "shadow_boon_12": {
+      "file": "game/cards/art/masters/shadow_boon_12.png",
+      "sha256": "9c02cd9a48d0bc4b68e742b0aec13aade567a713c1ba90cb9a859a2044f0e375"
     }
   }
 }

@@ -4,8 +4,8 @@
   "active": 1034,
   "remaining": 919,
   "pending": 719,
-  "assigned": 6,
-  "awaitingReview": 194,
+  "assigned": 1,
+  "awaitingReview": 199,
   "countsByColour": {
     "brown": 234,
     "fire": 246,
@@ -11221,7 +11221,7 @@
       "name": "Crossroads Bargain",
       "type": "boon",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -15186,7 +15186,7 @@
       "name": "Treefolk Stomp",
       "type": "lob",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -15526,7 +15526,7 @@
       "name": "Green Man's Blessing",
       "type": "boon",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -15666,7 +15666,7 @@
       "name": "Gourd of Pine Sap",
       "type": "charge",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -16797,7 +16797,7 @@
       "name": "Briar Arc",
       "type": "ward",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },

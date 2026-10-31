@@ -2,10 +2,10 @@
   "batch": 11,
   "status": "in-progress",
   "targetNewImages": 200,
-  "generatedSources": 194,
-  "reviewedSources": 190,
-  "missingSources": 6,
-  "reviewedPackets": 38,
+  "generatedSources": 199,
+  "reviewedSources": 195,
+  "missingSources": 1,
+  "reviewedPackets": 39,
   "requiresRepaint": [],
   "baselineActive": 1034,
   "targetActive": 1234,
@@ -13,6 +13,18 @@
   "baselineRuntimeImageCount": 4200,
   "baselineGeneratedRecordCount": 984,
   "savedCards": [
+    {
+      "cardId": "briar_arc",
+      "name": "Briar Arc",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/briar_arc.png",
+      "sha256": "fb406c35090933aadd77f0e3977ad1bf6b27beac7093a40e61887b16ec8bc968",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
     {
       "cardId": "brown_instant_37",
       "name": "Acid Flask",
@@ -1231,10 +1243,10 @@
       "colour": "shadow",
       "source": "game/cards/art/masters/hero_mordo.png",
       "sha256": "ec3eea688ab66575c097c6c10880681911bda572e097c78e496ca18085a1bad6",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
-        0.5
+        0.4
       ]
     },
     {
@@ -1610,6 +1622,18 @@
       ]
     },
     {
+      "cardId": "shadow_boon_12",
+      "name": "Crossroads Bargain",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_boon_12.png",
+      "sha256": "9c02cd9a48d0bc4b68e742b0aec13aade567a713c1ba90cb9a859a2044f0e375",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "cardId": "shadow_charge_10",
       "name": "Ferryman's Coins",
       "colour": "shadow",
@@ -1687,7 +1711,7 @@
       "colour": "shadow",
       "source": "game/cards/art/masters/shadow_lob_14.png",
       "sha256": "8332fd2f06a2fb7868d8c096822ff4cf362427b25eabd7105782b6f6de912158",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.43
@@ -1759,7 +1783,7 @@
       "colour": "shadow",
       "source": "game/cards/art/masters/shadow_strike_12.png",
       "sha256": "1addd1542932625b09942771c86286ad9b7094d32faa69b0b4d4dfeec83c626e",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.5
@@ -1843,7 +1867,7 @@
       "colour": "shadow",
       "source": "game/cards/art/masters/shadow_ward_13.png",
       "sha256": "42e597a9a8fe14670bd132551df3801cdf6734330831757d97e9dd35202afa2b",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.4
@@ -2150,6 +2174,18 @@
       ]
     },
     {
+      "cardId": "verdant_boon_11",
+      "name": "Green Man's Blessing",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_boon_11.png",
+      "sha256": "6a314fcfebf3eb01fdf7b4c9016340ff61f124959718e62550adbda5f64ee9d7",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
       "cardId": "verdant_charge_11",
       "name": "Mushroom Basket",
       "colour": "verdant",
@@ -2171,6 +2207,18 @@
       "focalPoint": [
         0.5,
         0.5
+      ]
+    },
+    {
+      "cardId": "verdant_charge_13",
+      "name": "Gourd of Pine Sap",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_charge_13.png",
+      "sha256": "42c5ec296d446499e071dd1f6299adfe9c50ae547d1c293713144e0c1496051e",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.42
       ]
     },
     {
@@ -2216,6 +2264,18 @@
       "source": "game/cards/art/masters/verdant_lob_12.png",
       "sha256": "ec4bf6a464d35ea16539d63047f7207fd25731f3df9cd67599ce2bf763400f0c",
       "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "verdant_lob_13",
+      "name": "Treefolk Stomp",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_lob_13.png",
+      "sha256": "b0856de2f8801792bc7c8b6ae2b01d8c202873e4b9418eca50aefe2618e0456f",
+      "reviewed": false,
       "focalPoint": [
         0.5,
         0.4

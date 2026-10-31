@@ -1,0 +1,11 @@
+{
+  "batch": 12,
+  "workers": {
+    "/root/b12_worker_1": {
+      "packet": "brown-01",
+      "state": "running"
+    }
+  },
+  "completedPackets": [],
+  "reviewedSources": {}
+}

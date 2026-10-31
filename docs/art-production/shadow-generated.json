@@ -3013,5 +3013,41 @@
     "status": "generated",
     "batch": 12,
     "reviewNote": "Square source inspected. Centered crop clipped the top of the crescent blade, so the crop is shifted upward to y=45 (focalPoint 0.43); the adjusted 206:141 crop and thumbnail show the reaper’s face, both hands, and complete scythe blade and tip."
+  },
+  {
+    "cardId": "shadow_strike_19",
+    "name": "Moonlit Rake",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Moonlit Rake”. Paint a shadow assassin in a dark hooded mantle, face and one clawed gauntlet visible as the hand slashes in a broad wedge through moonlit mist. Three silver talons rake a luminous crescent across the scene; the assassin recoils into a braced stance after the strike, and faint curse-darkness clings to the cut. Grounded medieval anatomy, one clear action, no gardening tools. Painterly medieval/high-fantasy collectible-card art, richly painted believable cloth, aged steel, stone, silk and feathers, dramatic moonlight, readable values and atmospheric depth, grounded anatomy and a clear small-card silhouette. Match the supplied shadow references' painterly materials and dark moonlit atmosphere. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep identity-critical face/eyes/hands and the named weapon or action within x24–488,y105–407 on the square; compose horizontally for a 206:141 crop with quiet scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-aa0000c1-a790-47e1-b7c0-7fe75f773af0.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_strike_19.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source and centered 206:141 crop inspected: the clawed hand and bright crescent rake dominate; the hooded face and one eye are visible but partly shadowed. The sweeping wedge action remains clear at thumbnail size."
+  },
+  {
+    "cardId": "shadow_strike_20",
+    "name": "Bloodletting Blade",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Bloodletting Blade”. Paint a complete elegant curved bloodletting blade as the central subject: dark steel sabre with a crimson-lit edge, a modest engraved guard and full wrapped handle. The blade spins in a tight returning boomerang arc through dark air, leaving a restrained ruby trail and one small suspended blood droplet, no gore. Keep the entire weapon uncut and unmistakable; no wielder required. Painterly medieval/high-fantasy collectible-card art, richly painted believable cloth, aged steel, stone, silk and feathers, dramatic moonlight, readable values and atmospheric depth, grounded anatomy and a clear small-card silhouette. Match the supplied shadow references' painterly materials and dark moonlit atmosphere. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep identity-critical face/eyes/hands and the named weapon or action within x24–488,y105–407 on the square; compose horizontally for a 206:141 crop with quiet scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-b83f796b-9915-41c5-a378-157938ba7441.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_strike_20.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source and centered 206:141 crop inspected: the complete blade, guard and handle remain inside the crop; the boomerang return arc is distinct and the weapon reads clearly at thumbnail size."
   }
 ]

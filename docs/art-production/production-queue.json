@@ -4,8 +4,8 @@
   "active": 1434,
   "remaining": 519,
   "pending": 319,
-  "assigned": 200,
-  "awaitingReview": 0,
+  "assigned": 186,
+  "awaitingReview": 14,
   "countsByColour": {
     "brown": 234,
     "fire": 246,
@@ -1163,7 +1163,7 @@
       "name": "Grappling Hook",
       "type": "instant",
       "color": "brown",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 13
     },
@@ -1172,7 +1172,7 @@
       "name": "Pop-Up Umbrella Shield",
       "type": "instant",
       "color": "brown",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 13
     },
@@ -1190,7 +1190,7 @@
       "name": "Gnomish Force Bubble",
       "type": "instant",
       "color": "brown",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 13
     },
@@ -2308,7 +2308,7 @@
       "name": "Volcanic Vent",
       "type": "strike",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 13
     },
@@ -4449,7 +4449,7 @@
       "name": "Siren's Song",
       "type": "strike",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 13
     },
@@ -4467,7 +4467,7 @@
       "name": "Kelpie's Plunge",
       "type": "strike",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 13
     },
@@ -4476,7 +4476,7 @@
       "name": "Nixie's Whirlpool",
       "type": "strike",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 13
     },
@@ -7709,7 +7709,7 @@
       "name": "Tomte",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 13
     },
@@ -7718,7 +7718,7 @@
       "name": "Hob of the Hearth",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 13
     },
@@ -7727,7 +7727,7 @@
       "name": "Zashiki-warashi",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 13
     },
@@ -8654,7 +8654,7 @@
       "name": "Astrolabe Sightline",
       "type": "strike",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 13
     },
@@ -8681,7 +8681,7 @@
       "name": "Shield Bash",
       "type": "strike",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 13
     },
@@ -10868,7 +10868,7 @@
       "name": "Moonlit Rake",
       "type": "strike",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 13
     },
@@ -10877,7 +10877,7 @@
       "name": "Bloodletting Blade",
       "type": "strike",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 13
     },

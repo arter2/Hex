@@ -3013,5 +3013,41 @@
     "status": "generated",
     "batch": 12,
     "reviewNote": "Shifted crop upward to retain full sling/arm tip and launched boulder while keeping the complete wooden frame and counterweight; inspected shifted wide crop and 128 thumbnail."
+  },
+  {
+    "cardId": "light_strike_16",
+    "name": "Astrolabe Sightline",
+    "prompt": "Paint an illustration for the exact card name “Astrolabe Sightline.” A focused medieval star-sage holds a complete palm-sized brass astrolabe in one hand and aligns its rings along a razor-straight beam of warm white light toward a distant armored target. Keep the astrolabe’s circular body, complete graduated ring and sighting rule clearly visible beside the sage’s intent face and eyes at the same height; the narrow sightline and a brief charged glint signal a precise critical strike. The named astrolabe is the primary object, not a generic spell. Painterly medieval high-fantasy collectible-card art matching the supplied Hexmancers light references: believable face and hand anatomy, intricate aged brass, layered brushwork, attractive directional dawn light, atmospheric depth and grounded materials, not photorealistic. Explicit square 1:1 composition for a 512x512 master and 206:141 landscape crop. Keep face, eyes, hand, complete astrolabe and its sighting rule inside x24–488,y105–407 in a compact horizontal middle-60% arrangement; quiet sky and stone above/below. No extra instruments, no readable markings, no card frame, text, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-106537b6-e6bf-41af-aa96-e3dafb782463.png",
+    "editableSourcePath": "game/cards/art/masters/light_strike_16.png",
+    "sourceNative": [
+      1269,
+      1239
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "512-square source, wide crop and 128px thumbnail inspected. The complete astrolabe ring, sighting rule, sage’s eyes and holding hand remain clear together; the line of sight reaches a small target on the distant wall. Painterly brass and dawn light read well."
+  },
+  {
+    "cardId": "light_strike_18",
+    "name": "Shield Bash",
+    "prompt": "Paint an illustration for the exact card name “Shield Bash.” Show a resolute medieval knight in a close three-quarter battle view driving a complete broad-faced kite shield forward in a forceful bash that knocks an opponent off balance. Keep the knight’s determined face, eyes, bracing arm and whole shield in frame; the shield boss and gold rim are unmistakable, while the opponent is only a secondary armored shoulder and recoil. A short bright stun flash at the collision and backward dust communicate the quick strike and knockback. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers light references: grounded anatomy and expression, nuanced steel, leather, cloth and stone, layered brushwork, attractive directional sunlight, atmospheric depth, not photorealistic. Explicit 1:1 square canvas for a 512x512 master. Keep primary face, relevant hand/arm, complete shield and collision point inside x24–488,y105–407, arranged horizontally in the middle 60 percent for a 206:141 crop; incidental legs and dust may extend. No gore, no text, heraldic letters, card frame, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-be999082-5a50-4128-8d35-6870b13d80f9.png",
+    "editableSourcePath": "game/cards/art/masters/light_strike_18.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "512-square master inspected. Shifted crop upward to include the shield’s top tip while keeping its visible face, the knight’s full face and collision point in frame; the revised crop and 128px thumbnail were inspected. Lower body and opposing figure are incidental."
   }
 ]

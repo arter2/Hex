@@ -3,29 +3,97 @@
   "workers": {
     "/root/b12_worker_1": {
       "packet": "brown-01",
-      "state": "running"
+      "state": "paused-usage-limit"
     },
     "/root/b12_worker_2": {
       "packet": "fire-01",
-      "state": "running"
+      "state": "paused-usage-limit"
     },
     "/root/b12_worker_3": {
       "packet": "frost-01",
-      "state": "running"
+      "state": "paused-usage-limit"
     },
     "/root/b12_worker_4": {
       "packet": "gray-01",
-      "state": "running"
+      "state": "paused-usage-limit"
     },
     "/root/b12_worker_5": {
       "packet": "light-01",
-      "state": "running"
+      "state": "paused-usage-limit"
     },
     "/root/b12_worker_6": {
       "packet": "shadow-01",
-      "state": "running"
+      "state": "paused-usage-limit"
     }
   },
   "completedPackets": [],
-  "reviewedSources": {}
+  "reviewedSources": {
+    "light_strike_16": {
+      "file": "game/cards/art/masters/light_strike_16.png",
+      "sha256": "d878dad86384d38f796e3e556a8a515836c8bf5dbac4be42e18e62b5b6a136e7"
+    },
+    "light_strike_18": {
+      "file": "game/cards/art/masters/light_strike_18.png",
+      "sha256": "5d61d2467f7928c4f61c14a5f532c030e789862006708e6e363dcbc30f76480d"
+    },
+    "fire_strike_18": {
+      "file": "game/cards/art/masters/fire_strike_18.png",
+      "sha256": "019723a3aa5b9c7c0a1b6aabe196ec58159d9263fd0dfd6d59f846a9ecc204a3"
+    },
+    "brown_instant_78": {
+      "file": "game/cards/art/masters/brown_instant_78.png",
+      "sha256": "862ab19232073457932878d4d513d2fa74c06b2690d3ac301fb8639404d12842"
+    },
+    "brown_instant_79": {
+      "file": "game/cards/art/masters/brown_instant_79.png",
+      "sha256": "6163d96e0a2868a709917ce6919be4093c486416a839b6f950912968c4b27cc7"
+    },
+    "brown_instant_81": {
+      "file": "game/cards/art/masters/brown_instant_81.png",
+      "sha256": "91bd847dfb8b73eecf7624f5029500072a9c27f984187eb9dd4ae226d00ea74d"
+    },
+    "shadow_strike_19": {
+      "file": "game/cards/art/masters/shadow_strike_19.png",
+      "sha256": "2646f256e93c09155ba442dd02774f4f94b3b6e11448e2cd7132fd2756b96e2f"
+    },
+    "shadow_strike_20": {
+      "file": "game/cards/art/masters/shadow_strike_20.png",
+      "sha256": "0eeaa33c12079c0af81b201989f13da28377820fdccf06276eba8abf18d4ec32"
+    },
+    "frost_strike_16": {
+      "file": "game/cards/art/masters/frost_strike_16.png",
+      "sha256": "1a2eb0a5d69eaaddfd82034e9030f421aab0231d0ca06973d941cf4f9d945150"
+    },
+    "frost_strike_18": {
+      "file": "game/cards/art/masters/frost_strike_18.png",
+      "sha256": "a72fdad084cd5f441a6caf57f7a08191b3f630e59de2d0f2cff9dbf843032ea6"
+    },
+    "frost_strike_19": {
+      "file": "game/cards/art/masters/frost_strike_19.png",
+      "sha256": "966c91b76b8c999fe792a85441f39aa859a14f8eef8fc9c770357fe51fcb8c1c"
+    },
+    "gray_summon_143": {
+      "file": "game/cards/art/masters/gray_summon_143.png",
+      "sha256": "e694a4fbd2c423922d3ccf03ed08d20b42406a8745ea99918f7c16404b531159"
+    },
+    "gray_summon_144": {
+      "file": "game/cards/art/masters/gray_summon_144.png",
+      "sha256": "ef024d05fee32ef427301aaaab6edf50feec10e644d9444036a072789d4c2cd8"
+    },
+    "gray_summon_145": {
+      "file": "game/cards/art/masters/gray_summon_145.png",
+      "sha256": "4ff619dc5834dc9b252bcf9cb7fea01bf62a1dd248a11dfd1df412beda3d5e4a"
+    }
+  },
+  "generationPause": {
+    "errorCode": "usage_limit_reached",
+    "httpStatus": 429,
+    "resetTimestamp": 1793483511,
+    "resetAtUTC": "2026-10-31 21:51:51 UTC",
+    "reportedResetTimestamps": [
+      1793483510,
+      1793483511
+    ],
+    "reason": "Image service returned a daily usage-limit response. Stop new generation and preserve completed sources; resume only after the reported reset."
+  }
 }

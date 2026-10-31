@@ -3027,5 +3027,59 @@
     "status": "generated",
     "batch": 12,
     "reviewNote": "512-square master inspected. Shifted the crop upward so Domovoi’s full face and eyes, both hands and glowing spark chain are visible together; the 206:141 crop and 128px thumbnail were inspected. Lower legs extend incidentally."
+  },
+  {
+    "cardId": "gray_summon_143",
+    "name": "Tomte",
+    "prompt": "Paint an original illustration for the fantasy creature card “Tomte.” Show an ancient Nordic household duende, a short sturdy old guardian with a weathered kind face, deep-set eyes, long frost-white beard and a simple muted red wool cap, standing inside a timber barn beside a warm lantern. In one hand he cups a small ember that bursts into a restrained spray of golden sparks, hinting at his magical blast; keep Tomte himself, face and ember hand the main subject. Snow is visible outside the barn door, while the interior has rough timber, hay and winter tools. Painterly medieval high-fantasy art, tactile wool, beard, wood and iron, dramatic warm/cool light, mature grounded anatomy and atmospheric depth; serious folklore tone, not a cartoon gnome. Horizontal portrait. True 1:1 SQUARE canvas for a 512x512 master; keep Tomte's full face, eyes, cap and ember hand within x24..488 and y105..407. Quiet rafters and floor above/below; center will be cropped to a wide 206:141 card illustration. No text, lettering, frame, UI, anime, Disney-like cartoon, toy proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ce97b570-7e06-4d38-ac62-d30e821efa65.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_143.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square, centered 206:141 crop, and 128x88 thumbnail inspected. Tomte's full face, eyes and ember hand with golden sparks remain prominent; barn and winter view support the folklore setting."
+  },
+  {
+    "cardId": "gray_summon_144",
+    "name": "Hob of the Hearth",
+    "prompt": "Paint an original illustration for “Hob of the Hearth.” Depict a loyal mossy house duende, an ancient small humanoid with a lined gentle face, earth-brown clothes and a thick beard threaded with green moss, standing beside the stone hearth of a medieval cottage. He tends a low fire with one hand and raises the other protectively toward a family doorway, as warm amber light gathers around his outstretched palm. Keep Hob's face, eyes, hands and the hearth in the same central band; the family remains a subtle background presence. Painterly medieval high-fantasy art, believable moss, linen, stone and soot, rich firelight against cool night, atmospheric depth, grounded serious folklore anatomy, not a cute cartoon. Horizontal composition. True 1:1 SQUARE canvas for a 512x512 master; keep Hob's face, both hands and central hearth action within x24..488 and y105..407. Quiet rafters and stone floor above/below; center will be cropped to a wide 206:141 card illustration. No text, lettering, frame, UI, anime, Disney-like cartoon, toy proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0091f0fd-ab93-4c93-8561-59f7558fdccc.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_144.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square, centered 206:141 crop, and 128x88 thumbnail inspected. Hob's face, eyes, both hands and hearth tending/protective gesture remain visible; family is secondary in the doorway."
+  },
+  {
+    "cardId": "gray_summon_145",
+    "name": "Zashiki-warashi",
+    "prompt": "Paint an original respectful folklore portrait for “Zashiki-warashi,” a lucky Japanese household spirit. Show one small, childlike but not toy-like kodama spirit in a traditional Edo-period timber home, with a clear solemn curious face, neat black bobbed hair, muted vermilion kimono and simple sash. The spirit stands beside a shoji doorway and gently raises both hands, forming a subtle protective halo of warm lantern motes around an elderly resident in the background. Keep the spirit's face, eyes and hands dominant; show enough of the traditional room to identify a home setting without decorative clutter. Painterly medieval-fantasy collectible-card art with respectful Japanese domestic details, textured wood and cloth, soft golden light and atmospheric depth, grounded mature storybook style; no exaggerated anime expressions. Horizontal composition. True 1:1 SQUARE canvas for a 512x512 master; keep the spirit's full face, hands and core silhouette within x24..488 and y105..407. Quiet ceiling and tatami floor above/below; center will be cropped to a wide 206:141 card illustration. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c4420885-5b37-402f-89ed-0d138d62f9a6.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_145.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square, centered 206:141 crop, and 128x88 thumbnail inspected. The spirit's complete face, eyes and raised hands remain clear; kimono and shoji room establish the Japanese home setting, with resident secondary."
   }
 ]

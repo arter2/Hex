@@ -3016,5 +3016,23 @@
     "status": "generated",
     "batch": 12,
     "reviewNote": "Square source and centered 206:141 crop inspected: the jet’s fissure origin and continuous horizontal stream remain visible with the distant slowed row of foes; the direction and hot-cold contrast read at thumbnail size."
+  },
+  {
+    "cardId": "fire_strike_18",
+    "name": "Volcanic Vent",
+    "prompt": "Paint an illustration for the exact card Volcanic Vent. A long volcanic fissure opens across a medieval battlefield, its central vent expelling a forceful horizontal line of orange-white fire and glowing ash that races along the row of stone paving between armored foes. Keep the mouth of the vent and the low river of flame clear, showing the land itself as the source; a few small shields and boots at the edges give scale without obscuring the effect. Painterly medieval high-fantasy collectible-card art, believable basalt, cracked stone, smoke and heat distortion, dramatic ember glow against a cool dusk sky, rich brushwork and atmospheric depth. Square 1:1 canvas for a 512×512 master; keep fissure, main fire jet and row action within x24..488,y105..407 for the 206:141 card crop, quiet smoky margins above/below. No frame, text, runes, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-771ef38f-371a-4a77-8d63-e80dd6b8b1d0.png",
+    "editableSourcePath": "game/cards/art/masters/fire_strike_18.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected 512 source, true wide crop and 128 thumbnail: volcanic fissure is clearly the fire source; low flame jet traverses a horizontal row and remains central."
   }
 ]

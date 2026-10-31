@@ -2566,5 +2566,167 @@
     "status": "generated",
     "batch": 11,
     "reviewNote": "Three taller or wide drafts were preserved and discarded. Reviewed final square source, default 206:141 crop and thumbnail: full case, lid, corners, all six flintlocks, gnome's face and both hands fit together."
+  },
+  {
+    "cardId": "fire_strike_14",
+    "name": "Forge Hammer Throw",
+    "prompt": "Paint an illustration for the exact card Forge Hammer Throw. A compact, powerful dwarf smith in a soot-dark apron and mail twists through a forceful throw, sending a heavy square-headed forging hammer across the central frame. Show the hammer clearly mid-flight, hot orange metal face blazing with sparks, striking a row of two armored foes with a stunning burst that continues along the line. Keep the dwarf's face, throwing hand, whole hammer head and handle, impact and both readable enemy silhouettes tightly in the middle 60% of the square; quiet smoky forge landscape above and below. Medieval high fantasy materials: worn leather, iron, stone, ember-lit forge. Painterly dramatic collectible card illustration with rich brushwork, grounded anatomy, directional light and cool soot shadows. Square 1:1 canvas for a 512×512 master, designed for a 206:141 horizontal crop; critical details inside x24..488,y105..407. No frame, text, rune, border or UI; no anime, Disney cartoon, toy look, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0c0767c5-c7a0-487f-b85d-4433bfb9bbc0.png",
+    "editableSourcePath": "game/cards/art/masters/fire_strike_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square source and 206:141 crop inspected: thrower, hammer, hot impact and both targets are clear and central; incidental lower legs crop naturally."
+  },
+  {
+    "cardId": "fire_lob_15",
+    "name": "Cannonball",
+    "prompt": "Paint an illustration for the exact card Cannonball. Make the single named projectile the unmistakable hero: a large iron cannonball hurtles just above a ruined medieval battlefield and slams into a stone barricade beside one armored soldier, hurling the soldier backward with one clear concussive knockback burst. Show a weathered bronze-and-wood medieval cannon far behind as context, but keep the whole round cannonball and impact dominant, crisp and central. Horizontal staging, face and recoiling hands readable, no clutter. Painterly medieval fantasy collectible-card art, dramatic orange forge-like flare on iron against cool smoke and dusk, textured believable iron, stone and armor, atmospheric depth. Square 1:1 canvas for editable 512×512 master; compose the complete important action inside x24..488,y105..407 for the 206:141 card crop, with quiet scenery above/below. No frame, text, runes, border or UI; no modern artillery, anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8a704112-b0d2-489a-9fd8-e4f48f8da846.png",
+    "editableSourcePath": "game/cards/art/masters/fire_lob_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square source and wide crop inspected: cannonball is prominent and fully visible; soldier face, recoiling hand and impact are clear; lower legs crop incidentally."
+  },
+  {
+    "cardId": "fire_ward_14",
+    "name": "Molten Shell",
+    "prompt": "Edit the referenced Molten Shell painting into a compact card-crop-safe composition while keeping the same knight, painterly style, basalt, iron and firelight. The current shell remains too tall. Scale the armored figure and entire thorn shell down to about 70 percent of the current height and arrange the shell as a broad horizontal oval around the knight. Keep exactly six short curved thorn tips, all fully visible inside the center horizontal band from y=105 to y=407, with generous blank smoky space above and below. Do not let any tip touch or cross the 206:141 crop edges. Preserve the knight's visible face and guarded hand; compact shell and face side by side at the same height. Square 1:1 canvas. No text, frame, UI, symbols, cartoon, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-647dea01-c60a-433b-ab26-e9a56b8a4d03.png",
+    "editableSourcePath": "game/cards/art/masters/fire_ward_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Second composition pass shortened the shell. Inspected source and 206:141 crop: knight face and hand remain visible; six thorn tips are all contained and distinct, with open smoky margins."
+  },
+  {
+    "cardId": "fire_boon_13",
+    "name": "Kitsune Blessing",
+    "prompt": "Paint an illustration for the exact card Kitsune Blessing. A graceful white-and-russet nine-tailed kitsune fox spirit circles protectively beside a nimble human duelist, blessing them to dodge: the warrior leans aside from an incoming sword with a calm focused face and visible open hand, while the fox's luminous tails sweep around the pair as a protective arc. Keep fox face, duelist face and hand in crisp focus together at the same height, compact and central; avoid tiny detail and avoid a towering tail halo. Painterly medieval fantasy collectible card illustration with grounded anatomy, nuanced fur, leather and steel, warm foxfire light, cool moonlit temple garden and atmospheric depth. Square 1:1 canvas for a 512×512 master; protect the whole fox face, duelist face, hand and readable dodge action within x24..488,y105..407 for the 206:141 card crop, quiet space above and below. No frame, text, runes, UI, anime, Disney-like cartoon proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-cc8fad82-c155-4bbd-ad72-c0686164c65f.png",
+    "editableSourcePath": "game/cards/art/masters/fire_boon_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512 source and wide crop inspected: fox and duelist faces, open hand and incoming sword read clearly as a dodge; secondary body and tail details extend beyond crop naturally."
+  },
+  {
+    "cardId": "fire_charge_13",
+    "name": "Blasting Caps",
+    "prompt": "Edit the referenced Blasting Caps painting into a square 1:1 card-safe illustration while preserving its same adult fantasy smith, leather pouch, brass caps, forge and painterly realism. Recompose the entire subject group smaller, about 78 percent of its current height, and place it in the middle of the square. Keep the full smith's head from hairline through chin, his gloved hand, the complete airborne blasting cap including its lit fuse spark, and all three caps in the pouch together fully inside x24..488,y105..407. The horizontal card crop must show every cap and every fuse clearly; leave quiet smoky space above and below. Keep the readable dramatic throwing action and warm forge light. No text, frame, symbols, UI, modern devices, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-370b1600-e8ee-4cd1-a93d-cef7f543b75c.png",
+    "editableSourcePath": "game/cards/art/masters/fire_charge_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Recomposed to protect the whole airborne cap, spark, face, hand and pouch contents. Inspected 512 source, wide crop and 128 thumbnail; all three caps and fuse glow remain readable."
+  },
+  {
+    "cardId": "fire_environment_12",
+    "name": "Sea of Flames",
+    "prompt": "Paint an illustration for the exact card Sea of Flames. A sweeping legendary landscape of fire erupts across a medieval stone battlefield: a broad circular sea of orange-white flame bursts outward in a low rolling wave, molten fissures and licking fire bands racing along the ground around a few tiny fleeing armored figures for scale. The flames form a clear, wide horizontal arc across the central frame, with a distinctive hotter center and rolling sparks; distant dark battlements and smoke remain subdued. Emphasize a long-lasting magical burn covering the whole arena, not a single projectile. Painterly medieval high-fantasy collectible-card art, rich brushwork, believable broken stone and smoke, dramatic firelight against cool dusk, atmospheric depth. Square 1:1 canvas for a 512×512 master; keep the main flame wave and any critical silhouettes within x24..488,y105..407 for the 206:141 card crop, quiet atmosphere above and below. No frame, text, runes, UI, anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6d046be7-0df4-475c-847d-d71b3f82fd00.png",
+    "editableSourcePath": "game/cards/art/masters/fire_environment_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Inspected 512 source, 206:141 crop and 128 thumbnail: broad circular sea of flames and ground-level wave are unmistakable; small fleeing figures give scale without competing."
+  },
+  {
+    "cardId": "fire_summon_09",
+    "name": "Nine-Tailed Kitsune",
+    "prompt": "Paint an illustration for the exact card Nine-Tailed Kitsune. A legendary ancient kitsune fox stands poised at the center of an ash-covered shrine clearing, full fox face and all nine long tails clearly distinguishable as a deliberate fan behind it. The fox is sturdy, powerful and mature, with russet-and-cream fur and subtle ember patterns; it lunges into a controlled burst of foxfire toward a shadowed foe, scattering sparks and leaving a few glowing leaves or petals in its wake to suggest harvest. Keep the entire animal's face, paws and recognizable many-tailed silhouette compact in the middle horizontal band; quiet forest and stone shrine beyond. Painterly medieval fantasy card illustration, nuanced fur, directional ember light, cool dusk atmosphere, grounded anatomy and strong silhouette. Square 1:1 canvas for a 512×512 master; keep face, body and all important tails inside x24..488,y105..407 for the 206:141 card crop. No frame, text, runes, UI, anime, Disney-like cartoon proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8f364baa-63f3-4c98-a5d0-7e710fbc0cbb.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Inspected 512 source, wide crop and 128 thumbnail: fox face and paws read clearly; the luminous tail fan is distinct and unmistakably nine-tailed at full crop scale."
+  },
+  {
+    "cardId": "fire_machine_08",
+    "name": "Mine Cart Barricade",
+    "prompt": "Paint an illustration for the exact card Mine Cart Barricade. A huge battered iron-and-oak mine cart has been tipped sideways across a narrow underground passage to form a sturdy palisade barricade. Its heavy wheels, braced timber sides and visible ore load make the ward-making machine unmistakable; a few small adventurers brace behind it as a slow armored ward while a sickly green-black mineral vapor seeps from the ore seams, hinting at its plague trait without obscuring the object. Show the complete cart, wheel and blocking silhouette across the central frame, horizontal and readable. Painterly medieval high fantasy collectible-card art, believable iron, oak, stone, soot and ore, warm torchlight against cool mine shadows, atmospheric depth. Square 1:1 canvas for a 512×512 editable master; keep the whole machine and defining wheels inside x24..488,y105..407 for the 206:141 crop, quiet cavern above and below. No frame, lettering, runes, UI, modern machinery, cartoon, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f9c8f869-5eea-47ae-83b4-f7d6af9cf5ba.png",
+    "editableSourcePath": "game/cards/art/masters/fire_machine_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Inspected 512 source, 206:141 crop and 128 thumbnail: full cart, wheel, braced wooden palisade silhouette and ore vapor stay readable; background adventurers are secondary."
+  },
+  {
+    "cardId": "hero_phoenixia",
+    "name": "Phoenixia",
+    "prompt": "Paint an illustration for the exact hero card Phoenixia. A formidable but graceful sky-borne heroine dives from the clouds toward a distant foe, her human face and outstretched guiding hand visible inside a vast silhouette of incandescent phoenix wings and streaming copper-gold feathers. The wing shapes clearly read as a phoenix in flight around her; a small ring of gentle healing embers circles a wounded ally far below, subtle enough not to distract. Keep Phoenixia compact and central, face and hand crisp and the winged dive understandable in one glance, with quiet smoky sky above and below. Painterly medieval fantasy collectible-card art, textured feather, burnished armor and cloth, radiant warm light against deep blue storm clouds, atmospheric depth. Square 1:1 canvas for a 512×512 master; protect face, hand and defining phoenix-wing silhouette within x24..488,y105..407 for the 206:141 card crop. No frame, text, runes, UI, anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4b6ba179-d6b4-4baf-9d07-77cdf9b6e519.png",
+    "editableSourcePath": "game/cards/art/masters/hero_phoenixia.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Inspected 512 source, wide crop and 128 thumbnail: Phoenixia’s face, guiding hand and unmistakable fiery phoenix wings remain clear; peripheral feathers and secondary ally are expendable crop details."
   }
 ]

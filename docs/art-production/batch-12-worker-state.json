@@ -2,10 +2,158 @@
   "batch": 12,
   "workers": {
     "/root/b12_worker_1": {
-      "packet": "brown-01",
+      "packet": "brown-02",
+      "state": "running"
+    },
+    "/root/b12_worker_2": {
+      "packet": "fire-02",
+      "state": "running"
+    },
+    "/root/b12_worker_3": {
+      "packet": "frost-02",
+      "state": "running"
+    },
+    "/root/b12_worker_4": {
+      "packet": "verdant-01",
+      "state": "running"
+    },
+    "/root/b12_worker_5": {
+      "packet": "storm-01",
+      "state": "running"
+    },
+    "/root/b12_worker_6": {
+      "packet": "gray-02",
       "state": "running"
     }
   },
-  "completedPackets": [],
-  "reviewedSources": {}
+  "completedPackets": [
+    "light-01",
+    "gray-01",
+    "shadow-01",
+    "fire-01",
+    "frost-01",
+    "brown-01"
+  ],
+  "reviewedSources": {
+    "light_strike_13": {
+      "file": "game/cards/art/masters/light_strike_13.png",
+      "sha256": "11f42900dc8d81441c47068e14d2195bf91e93db70443dab2a4361900b1ba671"
+    },
+    "light_lob_14": {
+      "file": "game/cards/art/masters/light_lob_14.png",
+      "sha256": "fe067bddc571d63b0f7f212bd2d1772f8c7c1d4095bf4bd019203567abdedc73"
+    },
+    "light_ward_15": {
+      "file": "game/cards/art/masters/light_ward_15.png",
+      "sha256": "97b2441b001bd5ec1425567ff43c6827b4067a90f254fc3c105a30d7f8a720cd"
+    },
+    "light_boon_12": {
+      "file": "game/cards/art/masters/light_boon_12.png",
+      "sha256": "26fc3194056486646af5a3fe139331dbb439a0fb0a928c992b149daa835d518c"
+    },
+    "light_charge_13": {
+      "file": "game/cards/art/masters/light_charge_13.png",
+      "sha256": "c7c55ea656897acd2adcef933aeb69486f675ca421f83fc21b7b052f87a4a729"
+    },
+    "gray_summon_118": {
+      "file": "game/cards/art/masters/gray_summon_118.png",
+      "sha256": "c462930b144dbcedb35c17d8f96df0d129313500f0f1fb8ea5a04a9b43de1f89"
+    },
+    "gray_summon_119": {
+      "file": "game/cards/art/masters/gray_summon_119.png",
+      "sha256": "55b7c65f51abd5e342606266d68dcd03e429b1988cd820471af89ccda465b707"
+    },
+    "gray_summon_120": {
+      "file": "game/cards/art/masters/gray_summon_120.png",
+      "sha256": "f3f2e1b66797b1964b99bb2eb54e14dc9892d622193b3cb51497bf116137d49d"
+    },
+    "gray_summon_121": {
+      "file": "game/cards/art/masters/gray_summon_121.png",
+      "sha256": "fbe97d4dc19e7acfd39a70f7a72089dee89fc8ff27783c2c844b2d1bc477fbf4"
+    },
+    "gray_summon_122": {
+      "file": "game/cards/art/masters/gray_summon_122.png",
+      "sha256": "f6147b80b6af3b0d3b433fdd718430944e16288effbcf60c3e0332c00eda2066"
+    },
+    "shadow_strike_13": {
+      "file": "game/cards/art/masters/shadow_strike_13.png",
+      "sha256": "6415f0fb3732dee7c2742f3c4bd374b3eb236858e573b167bef9d6147d80e6a3"
+    },
+    "shadow_lob_15": {
+      "file": "game/cards/art/masters/shadow_lob_15.png",
+      "sha256": "b0ca24ce925ea91df41940ed6263bed1f80bfadf946d50b6eb4d01937326b2cc"
+    },
+    "shadow_boon_13": {
+      "file": "game/cards/art/masters/shadow_boon_13.png",
+      "sha256": "03e2d93f9c7d7abb8e890bae8cdf207e4b4eccb36d9238aad0d2927b2a90e0fd"
+    },
+    "shadow_charge_12": {
+      "file": "game/cards/art/masters/shadow_charge_12.png",
+      "sha256": "f0b72a5dadb72738c0fac8c783f4e6a3141876e2fda147e6bacf248dff5165ba"
+    },
+    "shadow_summon_10": {
+      "file": "game/cards/art/masters/shadow_summon_10.png",
+      "sha256": "e3d71694e4329ba27434a5fb6c694f00ccd223a755f54bb1ccc334ac6d325fa2"
+    },
+    "fire_strike_14": {
+      "file": "game/cards/art/masters/fire_strike_14.png",
+      "sha256": "30c34486de2d1bdecccb5147abf031677960567546a0787ef32496ea6d3818cb"
+    },
+    "fire_lob_15": {
+      "file": "game/cards/art/masters/fire_lob_15.png",
+      "sha256": "cad5ae95bb850faded2215c0a05cd7c0c164655204f5f7f75a80510bd68fc49f"
+    },
+    "fire_ward_14": {
+      "file": "game/cards/art/masters/fire_ward_14.png",
+      "sha256": "9533dc3d8c214df87d500ea0e4bd2eae088429d1a9f6bc84b38fdfb97d927188"
+    },
+    "fire_boon_13": {
+      "file": "game/cards/art/masters/fire_boon_13.png",
+      "sha256": "998b50319aeeeb510145134ff424c9f09bec57a51e2c6e411b1dbc067e82e295"
+    },
+    "fire_charge_13": {
+      "file": "game/cards/art/masters/fire_charge_13.png",
+      "sha256": "4d004e0ef9ba674b3c918a229feb1d18c251de6ea87b992b8f93cc82b276321c"
+    },
+    "frost_strike_13": {
+      "file": "game/cards/art/masters/frost_strike_13.png",
+      "sha256": "04a26cd0c2c651c5829f65807d3b88e77827a6ec9db986857e3549a98672f18d"
+    },
+    "frost_lob_14": {
+      "file": "game/cards/art/masters/frost_lob_14.png",
+      "sha256": "b09b87e5b8dbb7233bc3711003ce54cb12b199704a6d444a8f33ccf1e0021d40"
+    },
+    "frost_ward_13": {
+      "file": "game/cards/art/masters/frost_ward_13.png",
+      "sha256": "01f2ac37aa1973957a4cf0f3ca23ba7111b9bb1f24869d647380718a9b9fb390"
+    },
+    "frost_boon_14": {
+      "file": "game/cards/art/masters/frost_boon_14.png",
+      "sha256": "88d66d61a772f49256190eec00e0ea636c131dfbe290fcdfe20c6ed7f6536f45"
+    },
+    "frost_charge_11": {
+      "file": "game/cards/art/masters/frost_charge_11.png",
+      "sha256": "175a7d41c5007abf72c95f118448a2f936d6d3d80bea07e4382d30ec684f8449"
+    },
+    "brown_instant_53": {
+      "file": "game/cards/art/masters/brown_instant_53.png",
+      "sha256": "792800734c2077580263c56910ad64ec78fc860c4db1ee8ada3138d4f276b3ae"
+    },
+    "brown_instant_54": {
+      "file": "game/cards/art/masters/brown_instant_54.png",
+      "sha256": "a95f1f086461b73c1e8e683076622f21412c56584876d3135d49fa5c013daf09"
+    },
+    "brown_instant_55": {
+      "file": "game/cards/art/masters/brown_instant_55.png",
+      "sha256": "aac1190491c65c7b36755e7103df6be7148db9a3cf4888804f90bbdb80bb1e33"
+    },
+    "brown_instant_56": {
+      "file": "game/cards/art/masters/brown_instant_56.png",
+      "sha256": "4b54c242f4c2db00ad6e42f305ca0d47217fe10b05961d963c5b20624ee10f9e"
+    },
+    "brown_instant_57": {
+      "file": "game/cards/art/masters/brown_instant_57.png",
+      "sha256": "f2936e8613c5addbfb7fb42b9c4c96a64d9f83a462ccf35d0d0596b89a0726f5"
+    }
+  }
 }

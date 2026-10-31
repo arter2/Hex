@@ -2569,5 +2569,59 @@
     "status": "generated",
     "batch": 11,
     "reviewNote": "Reviewed 512-square source and slightly upward-shifted crop/thumb at focal y=0.47. The wayfarer's face and guiding hand remain visible with the three subdued pixies and thorny root snares catching an armored pursuer; the pixies remain small and painterly rather than toy-like."
+  },
+  {
+    "cardId": "verdant_strike_15",
+    "name": "Komodo Bite",
+    "prompt": "Create an original painterly medieval high-fantasy collectible-card illustration for “Komodo Bite,” a charged wedge-like critical strike that bites and drains. Show a formidable giant komodo dragon in a low, lunging side view, its broad head and open jaws clamped around the armored forearm or shield edge of one adult adventurer. The komodo is the unmistakable primary subject: sharp amber eye, pebbled scales, muscular jaw and curved teeth clearly visible; keep the human secondary and do not obscure the reptile's face. Suggest a decisive charged impact with a restrained green-gold glint along the bite and a few flying leaves, without covering the animal. Lush old-growth jungle, painterly believable anatomy and scales, dramatic directional forest light, atmospheric depth, grounded serious tone. One bold horizontal subject/action, readable at small size. True 1:1 SQUARE canvas for a 512x512 master; keep the full komodo head, eye, jaws and relevant bite/contact area inside x24..488 and y105..407. Quiet expendable canopy and ground above and below; the center will be cropped to a wide 206:141 card image. No text, lettering, frame, UI, anime, Disney-like cartoon, toy proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-728cd23f-35fd-4815-8b9e-74c5633de2e8.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square, 206:141 crop, and 128x88 thumbnail inspected. The komodo's eye, jaws, and bite on the armored forearm remain prominent and readable in the crop and thumbnail."
+  },
+  {
+    "cardId": "verdant_lob_14",
+    "name": "Mokele-mbembe's Wake",
+    "prompt": "Create an original painterly medieval high-fantasy collectible-card illustration for “Mokele-mbembe's Wake.” Depict a legendary Mokele-mbembe, a vast long-necked river cryptid with a crocodilian head and heavy aquatic body, surging from a tropical African marsh river. Its head and long neck rise prominently beside its powerful shoulder while a broad rolling wake sweeps sideways through reeds and knocks a line of floating logs and lily leaves outward, suggesting a quick forceful lob impact. The creature's eye, head shape and the curving water wake must read clearly together; no generic sea serpent, no other monsters. Painterly water, scales and wet hide, strong warm sun shafts through mist, lush but restrained riverbank setting, believable anatomy and dramatic atmospheric depth. Strong horizontal silhouette with one dominant creature/action. True 1:1 SQUARE canvas for a 512x512 master; keep the cryptid's head/eye and essential arc of wake within x24..488 and y105..407. Quiet expendable mist and water above and below; the center will be cropped to a wide 206:141 card image. No text, lettering, frame, UI, anime, Disney-like cartoon, toy proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4947db16-9d48-4b0b-88b7-824266aa69b8.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_lob_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square, 206:141 crop, and 128x88 thumbnail inspected. The cryptid's head, long neck, heavy aquatic body, and broad sideways wake remain readable in the wide crop and thumbnail."
+  },
+  {
+    "cardId": "verdant_boon_12",
+    "name": "Tapio's Favour",
+    "prompt": "Create an original painterly medieval high-fantasy collectible-card illustration for “Tapio's Favour,” a long-lasting forest boon that increases power and carries a gentle glow. Show Tapio, an ancient Finnish forest guardian spirit as a dignified, weathered humanlike figure with a crown of living pine boughs and subtle bark textures, extending one open hand in blessing toward a sturdy human huntsman. Place their faces and the blessing hand close together at the same height, with the huntsman turning toward a quiet amber-green glow that strengthens his posture. Keep Tapio and the clear gesture as the subject; light should reveal faces and materials rather than become an empty flare. Painterly medieval woodland, tactile wool, leather, bark and moss, elegant directional light and atmospheric depth, grounded mature fantasy. Horizontal, readable composition. True 1:1 SQUARE canvas for a 512x512 master; keep both faces and the full blessing hand within x24..488 and y105..407. Quiet forest canopy and ground above and below; the center will be cropped to a wide 206:141 card image. No text, lettering, frame, UI, anime, Disney-like cartoon, toy proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-42b556d7-f20e-495f-a44e-e9d4e72a6139.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_boon_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square, 206:141 crop, and 128x88 thumbnail inspected. Tapio and the huntsman's faces remain clear beside the blessing hand; the gentle green-gold glow reads without obscuring either face."
   }
 ]

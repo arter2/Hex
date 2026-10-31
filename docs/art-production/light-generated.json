@@ -2563,5 +2563,95 @@
       1254
     ],
     "reviewNote": "Repainted after the first crop separated the face from the arrow set; prior source preserved at /tmp/light-charge-12-repair/light_charge_12-before-repair.png. Reviewed replacement square, crop and thumbnail: huntress face, both hands, held arrow and complete six-arrow set fit together."
+  },
+  {
+    "cardId": "light_strike_13",
+    "name": "Unicorn Horn Thrust",
+    "prompt": "Paint an illustration for the exact card name “Unicorn Horn Thrust.” Depict a noble ivory-white unicorn in strong side profile driving its long spiraled horn in a precise piercing thrust into a dark armored target, the horn and unicorn’s eye clearly readable, with a brief golden-white healing glimmer at the impact. One dominant subject and one clear action. Painterly medieval high-fantasy collectible-card art matching the supplied Hexmancers references: grounded anatomy, layered brushwork, nuanced pale coat, silver tack, believable metal, dramatic but attractive directional dawn light, atmospheric depth; neither photorealistic nor cartoon. Square 1:1 composition for a 512x512 master. Keep the unicorn’s eye, head and the named horn and impact clearly inside x24–488,y105–407 of the square; body and incidental scenery may extend. Arrange the action horizontally across the middle 60 percent, with quiet misty sky above and restrained ground below for a 206:141 landscape crop. The unicorn dominates a ruined stone courtyard; target is partial supporting form at right, not a second focal subject. No card frame, text, lettering, runes, numbers or UI. No anime, Disney-like proportions, toy cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-fd2774d4-262e-4b42-83a8-52b86ac94e0e.png",
+    "editableSourcePath": "game/cards/art/masters/light_strike_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square master and its wide crop and 128px thumbnail inspected. The unicorn eye and full thrusting horn remain readable in the crop; impact is clear, while the partial armored target is secondary. Painterly dawn light and material detail fit the art direction."
+  },
+  {
+    "cardId": "light_lob_14",
+    "name": "Southern Cross Starfall",
+    "prompt": "Paint an illustration for the exact card name “Southern Cross Starfall.” Show the distinctive Southern Cross constellation as a compact four-star cross in the night sky, with one heavy radiant meteor descending from it and crashing into the earth in a brilliant cross-shaped burst of golden starlight and dust; impact dominates, constellation remains unmistakable. This is a heavy lobbed starfall that strikes the ground and leaves nearby foes disoriented. Painterly medieval high-fantasy collectible-card art matching the supplied Hexmancers references: rich brushwork, luminous starfire, believable rock and dust, dramatic clear light, deep blue-violet atmosphere, grounded epic staging, not photorealistic. Square 1:1 canvas for a 512x512 master, horizontally arranged focal action in middle 60 percent; keep starfall impact and defining cross constellation within x24–488,y105–407. Quiet dark sky and plain low ground extend above/below for a 206:141 crop. A few arcs of disrupted dust suggest confusion but keep the named starfall clear. No people needed. No card frame, text, labels, runes, numbers or UI. No anime, Disney-like cartoon, toy-like shape, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4a49f6ee-92a1-4d7b-8304-edcbb16d7a36.png",
+    "editableSourcePath": "game/cards/art/masters/light_lob_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square master, wide crop and 128px thumbnail inspected. The heavy impact remains dominant in the crop; the Southern Cross is recognizable above it and the cross-shaped burst reads at thumbnail size. Painterly starlight and dust fit the direction."
+  },
+  {
+    "cardId": "light_ward_15",
+    "name": "Ishtar Gate",
+    "prompt": "Paint an illustration for the exact card name “Ishtar Gate.” Portray a monumental ancient Babylonian blue-glazed brick gate, unmistakably a protective magical wall: broad frontal gate flanked by thick heavy defensive masonry, with a short visible run of six luminous interlocking ward panels forming a protective cage-like barrier across a sunlit approach. Decorate the deep cobalt and turquoise tiles with subtle golden lion and dragon reliefs; sophisticated ancient architecture, not modern. Painterly medieval/high-fantasy collectible-card art matching supplied Hexmancers references, nuanced glazed ceramic, stone and gold, warm directional light, atmospheric depth and readable architectural silhouette. Square 1:1 composition for 512x512, gate and barrier centered horizontally in middle 60 percent, important gate crest and barrier line inside x24–488,y105–407, with quiet sky above and simple paving below for a 206:141 landscape crop. Gate is the dominant subject; no figures required. No card frame, writing, inscriptions, runes, lettering, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a7e8e920-c679-4259-8d73-b6379d27a8b5.png",
+    "editableSourcePath": "game/cards/art/masters/light_ward_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square master, wide crop and 128px thumbnail inspected. The monumental blue-and-gold gate remains identifiable, and all six luminous protective panels remain visible and distinct in the crop. Painterly glazed brick and warm light are clear at thumbnail size."
+  },
+  {
+    "cardId": "light_boon_12",
+    "name": "Angelic Veil",
+    "prompt": "Paint an illustration for the exact card name “Angelic Veil.” Show a single exquisitely translucent white-gold veil floating in a medieval chapel archway, its woven silk and pearl edge billowing sideways in a sudden divine breeze. A faint human silhouette is only partly visible phasing through the curtain, becoming briefly translucent with a restrained golden-white shimmer: the veil itself remains the primary clear subject. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: tactile silk and stone, graceful grounded spiritual atmosphere, subtle luminous light, painterly brushwork, readable values, not photorealistic. Square 1:1 canvas for a 512x512 master. Keep the complete central hanging veil and recognizable edge detail centered inside x24–488,y105–407; it may extend vertically into expendable quiet top/bottom margins, composed as a horizontal shape across the middle 60 percent for a 206:141 crop. Quiet stone chapel background, halo glow restrained. No extra angel figure, wings, text, symbols, lettering, card frame, numbers or UI. No anime, Disney-like cartoon, toy cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6ee0f7ae-b096-43f8-98bf-19c7260f6871.png",
+    "editableSourcePath": "game/cards/art/masters/light_boon_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square master, wide crop and 128px thumbnail inspected. The complete floating veil remains identifiable across the crop, with silk and pearl-edge detail intact; its far right edge sits close to the canvas edge. The faint phased silhouette supports the veil without competing."
+  },
+  {
+    "cardId": "light_charge_13",
+    "name": "Bag of Winds",
+    "prompt": "Paint an illustration for the exact card name “Bag of Winds.” Make the named object the unmistakable focal subject: a compact, finely made, pale leather and blue silk drawstring bag with an old bronze clasp and stitched swirling wind motifs, suspended at chest height as it releases a forceful spiral gust that visibly shoves dust, leaves and a few small stones sideways. A single curled plume of wind glows with restrained white-gold light; the whole bag, clasp and gathered mouth are clearly visible. Standalone artifact, no operator. Painterly medieval high-fantasy collectible-card art matching the supplied Hexmancers references: tactile leather, silk, aged bronze, layered brushwork, dramatic directional light and atmospheric depth, believable materials, grounded not photorealistic. Square 1:1 canvas for a 512x512 master. Keep the complete bag within x24–488,y105–407 in the center of the middle 60 percent, composed horizontally with quiet misty sky above and simple ground below for the 206:141 card crop; wind and incidental leaves can extend beyond. One clear forceful gust, no extra clutter. No lettering, labels, readable runes, card frame, numbers or UI. No anime, Disney-like cartoon, toy cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c2f04b99-85fe-4d81-baa0-12213227820b.png",
+    "editableSourcePath": "game/cards/art/masters/light_charge_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square master, wide crop and 128px thumbnail inspected. The complete bag and clasp remain centered and clear in the crop, and the wind spiral and displaced debris communicate a strong gust at thumbnail size. Painterly leather, silk, bronze and directional light are readable."
   }
 ]

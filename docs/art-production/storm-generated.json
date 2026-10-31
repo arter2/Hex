@@ -2572,5 +2572,95 @@
     "status": "generated",
     "batch": 11,
     "reviewNote": "The full bolt, magnet, tip and feather tail fit in the wide crop; magnetic arcs and iron filings read in the thumbnail, with modest side margins."
+  },
+  {
+    "cardId": "storm_strike_14",
+    "name": "Sirocco Gust",
+    "prompt": "Paint an illustration for the exact card name “Sirocco Gust.” Show a focused desert windcaller in close three-quarter view, their face and forward hand clearly visible at the same height, sweeping a broad fan of hot wind and golden sand from left to right. The gust strikes one armored foe and pushes the figure backward; the windcaller’s expression is intent, not theatrical. One prominent person and one clear wind action. Painterly medieval high-fantasy collectible-card art matching the supplied Hexmancers references: grounded face and hand anatomy, layered brushwork, nuanced sun-bleached linen, leather and metal, attractive directional desert light, atmospheric depth, clear readable action. Square 1:1 composition for a 512x512 master. Keep face, hand and fan-shaped gust in the central middle 60 percent and within x24–488,y105–407; incidental sand trails may extend. Horizontal action with quiet sky above and simple dunes below for a 206:141 crop. No modern clothing, card frame, text, inscriptions, runes, lettering, numbers or UI. No anime, Disney-like cartoon, toy-like proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f966934a-c2d3-40bb-8bea-d14bbe678892.png",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square master, wide crop and 128px thumbnail inspected. The windcaller’s face and forward hand stay clear in the crop, and the broad sand gust visibly pushes the armored foe back. Strong directional desert light and painterly materials read well."
+  },
+  {
+    "cardId": "storm_lob_14",
+    "name": "Storm Cloud Seed",
+    "prompt": "Paint an illustration for the exact card name “Storm Cloud Seed.” Make the named subject a dense, compact charcoal-blue storm cloud seed, a turbulent little seed-shaped cloud with a bright electric heart, descending above a dark medieval battlefield and bursting at ground level. A clear cross-shaped pattern of four branching lightning strikes flashes outward across the earth, briefly stunning and knocking back a few tiny distant silhouettes; the cloud seed remains dominant. Painterly medieval high-fantasy collectible-card art matching the supplied Hexmancers references: rich brushwork, nuanced cloud and rain, bold luminous lightning, attractive directional contrast, atmospheric depth and grounded scale, not photorealistic. Square 1:1 canvas for a 512x512 master. Keep the whole dense cloud seed and central cross-shaped ground impact readable inside x24–488,y105–407, arranged horizontally across the middle 60 percent; quiet storm sky above and low dark earth below for a 206:141 crop. No large characters, no unrelated spell scene. No card frame, words, labels, runes, numbers or UI. No anime, Disney-like cartoon, toy-like shape, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e96edd58-57b6-46de-bffc-cddab8e416f6.png",
+    "editableSourcePath": "game/cards/art/masters/storm_lob_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square master, wide crop and 128px thumbnail inspected. The compact charged cloud and its branching ground impact remain the dominant readable subject in the crop; tiny battlefield figures support the stun and knockback without distracting. Painterly cloud and lightning detail hold at thumbnail size."
+  },
+  {
+    "cardId": "storm_boon_13",
+    "name": "Aurum Potabile",
+    "prompt": "Repaint the exact card “Aurum Potabile” as a compact landscape composition. Create ONE squat, broad-shouldered medieval alchemical phial: a rounded low glass flask only about half as tall as it is wide, with a large unmistakable cork stopper and a sturdy bronze foot. Place the complete phial horizontally centered, its entire stopper and entire base clearly inside x48–464,y150–365 on a square 512x512 canvas, with generous clear space above and below. Fill it with luminous amber-gold drinkable tonic; subtle golden motes and a tiny green sprout reflected through the glass suggest delayed regeneration. The bottle itself is the primary named subject, no other vessels or prominent people. Painterly medieval high-fantasy collectible-card art matching the supplied Hexmancers references: detailed blown glass, liquid and engraved bronze, warm directional light, nuanced brushwork and quiet atmospheric depth, grounded and not photorealistic. Explicit 1:1 square master intended for a 206:141 wide crop; horizontal composition; exact stopper and base must both survive the crop and remain fully visible at thumbnail size. Quiet medieval apothecary background. No text, labels, writing, runes, card border, numbers or UI. No anime, Disney-like cartoon, toy cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2f00eb6e-bf61-48a2-8f91-5780efc1af94.png",
+    "editableSourcePath": "game/cards/art/masters/storm_boon_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Repainted after preserving the first attempt at /tmp/b12-storm-boon-13-first.png. 512-square master, wide crop and 128px thumbnail inspected: the complete squat phial, cork stopper and base remain clear in the crop. Warm light and gold tonic read at thumbnail size."
+  },
+  {
+    "cardId": "storm_charge_13",
+    "name": "Thunderbolt Sheaf",
+    "prompt": "Paint an illustration for the exact card name “Thunderbolt Sheaf.” Make the named artifact unmistakable: a compact sheaf of seven slender golden-white thunderbolts, shaped like short polished lightning javelins, securely bound together with a dark leather wrap and blue cord. One bolt is being drawn from the sheaf and piercing through a small distant practice shield with a brief stunning spark. If a carrier appears, keep one focused face, the drawing hand and the full sheaf close together at the same height. Painterly medieval high-fantasy collectible-card art matching the supplied Hexmancers references: grounded anatomy, tactile leather, cord and metal, fine brushwork, dramatic clear lightning glow, attractive directional light and atmospheric depth. Square 1:1 canvas for a 512x512 master. The full bundle, its visible lightning-shaped heads and the relevant hand/face must fit x24–488,y105–407 within the central middle 60 percent; horizontal arrangement with quiet stormy sky above and plain ground below for the 206:141 crop. Artifact dominates. No modern arrows or firearms. No card frame, text, lettering, runes, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-1bb19190-5954-42c9-9eee-358d4dea1f80.png",
+    "editableSourcePath": "game/cards/art/masters/storm_charge_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square master and 206:141 crop inspected. The carrier’s face is cut at the top of the crop, and the vertical sheaf’s tips and base fall outside the crop. This first attempt is preserved and flagged for repaint before acceptance."
+  },
+  {
+    "cardId": "storm_trap_12",
+    "name": "Cobra Basket Trap",
+    "prompt": "Paint an illustration for the exact card name “Cobra Basket Trap.” Make a single dark woven cobra basket the unmistakable central object: its hinged lid has snapped open and a vivid hooded cobra lunges upward from it, alert eyes and spread hood clear; three short concealed barbed wooden spikes spring from the basket rim as the trap is sprung. Sand and a few dry leaves scatter sideways to suggest a sudden confusing ambush, but the basket and cobra remain dominant. Painterly medieval high-fantasy collectible-card art matching the supplied Hexmancers references: believable handwoven wicker, scaled serpent, worn leather bindings and wood, nuanced brushwork, dramatic warm directional light and atmospheric depth, grounded anatomy, not photorealistic. Square 1:1 canvas for a 512x512 master. Keep entire basket, open lid, cobra head and hood and all three spikes inside x24–488,y105–407, arranged horizontally across the middle 60 percent with quiet desert-stone background above and below for the 206:141 crop. No person needed. No text, labels, readable runes, card frame, numbers or UI. No anime, Disney-like cartoon, toy-like proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-08fbfbc3-f3fe-4b7a-8ceb-fb502baff599.png",
+    "editableSourcePath": "game/cards/art/masters/storm_trap_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square master and wide crop inspected. The complete wicker basket, lid and spikes fit, but the crop cuts off the cobra head and top of its hood. This first attempt is preserved and flagged for repaint before acceptance."
   }
 ]

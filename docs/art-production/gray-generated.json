@@ -2577,5 +2577,131 @@
     "status": "generated",
     "batch": 11,
     "reviewNote": "Source native size [1254,1254]. Focal point [0.5,0.45] shifts the crop up. Artist inspected square, adjusted 206:141 crop and 128x88 thumbnail: full ogre face, striking gauntlet, other hand and gate-breaking action remain clear; parent review pending."
+  },
+  {
+    "cardId": "gray_summon_118",
+    "name": "Two-Headed Giant",
+    "prompt": "Paint an original illustration for the fantasy creature card “Two-Headed Giant.” Show one enormous veteran ogre with unmistakably TWO distinct heads side by side, both faces and both sets of eyes clearly visible, powering forward through a battered medieval mountain pass. One large hand reaches forward and the other braces a battered stone shield; imply massive trampling strength in the rubble and low foreground. The paired heads and face expressions are the defining identity. Painterly medieval high-fantasy collectible-card art, dramatic warm firelight against cool stone shadow, believable scarred skin, leather and battered iron, richly detailed atmospheric depth, grounded anatomy and expressive faces. One clear subject/action, horizontal arrangement. Create a true 1:1 SQUARE canvas for a 512x512 master. Keep both heads, faces, relevant hands, and the central body within x24..488 and y105..407 on the square; leave quiet expendable atmosphere above and below. The center will also be cropped to a wide 206:141 card illustration. No text, lettering, frame, UI, anime, Disney-like cartoon, toy proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-800ee38a-74e7-4376-86a8-fbaec09c2443.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_118.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square and centered wide crop inspected: both giant heads and faces are fully visible, with the reaching hand and shield present; rubble and battlefield scenery frame the dominant creature."
+  },
+  {
+    "cardId": "gray_summon_119",
+    "name": "Jotun Hurler",
+    "prompt": "Paint an original illustration for the fantasy creature card “Jotun Hurler.” Depict an ancient Jotun ogre, huge and weathered, in rough layered furs and old bronze, captured at the instant he hurls one prominent boulder across a bleak northern battlefield. His stern face, gripping throwing hand and the single clearly readable rock are the focus; show controlled immense strength and age, with distant standing stones and snow haze kept quiet. Painterly medieval high-fantasy collectible-card art, dramatic cold daylight and a warm edge of firelight, tactile stone, fur and metal, atmospheric depth, grounded anatomy. Strong readable silhouette, horizontal staging. Create a true 1:1 SQUARE canvas for a 512x512 master. Keep face, throwing hand, and whole boulder within x24..488 and y105..407 on the square; leave quiet scenery above and below. The center will also be cropped to a wide 206:141 card illustration. No text, lettering, frame, UI, anime, Disney-like cartoon, toy proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6898f113-881f-4654-aa98-26203c62d10c.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_119.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square and adjusted wide crop inspected. The Jotun's face and throwing hand remain clear, and the whole hurled boulder fits after shifting the crop upward; incidental lower legs are cropped."
+  },
+  {
+    "cardId": "gray_summon_120",
+    "name": "Fomorian Brute",
+    "prompt": "Paint an original illustration for the fantasy creature card “Fomorian Brute.” Show a feral Fomorian ogre brute, broad-shouldered and scarred, surging into a pouncing charge with one heavy hand reaching toward the viewer and the other clenched. Give the creature a single fierce, unmistakable face and rough primitive hide; a faint storm-wet shoreline and spray may suggest its tidal nature without obscuring the subject. Painterly medieval high-fantasy collectible-card art, dramatic directional storm light, believable skin, fur and rough iron fittings, atmospheric depth and grounded anatomy. One strong creature portrait/action, broad horizontal composition, readable at small size. Create a true 1:1 SQUARE canvas for a 512x512 master. Keep face, eyes, and forward reaching hand within x24..488 and y105..407 on the square; leave quiet expendable atmosphere above and below. The center will also be cropped to a wide 206:141 card illustration. No text, lettering, frame, UI, anime, Disney-like cartoon, toy proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-fa2a3e6d-67a4-402a-b1a2-7c2e1eaf1389.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_120.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square and centered wide crop inspected: the brute's face and eyes, charging pose, and forward reaching hand read clearly; storm coast spray stays behind the figure."
+  },
+  {
+    "cardId": "gray_summon_121",
+    "name": "Oni Pebble-Tosser",
+    "prompt": "Paint an original illustration for the fantasy creature card “Oni Pebble-Tosser.” Depict a compact but powerful tiny Oni warrior, a single face with small horns, crouched on a rocky rise and flinging a single clearly visible hand-sized pebble with surprising force. Keep the Oni’s face, eyes, throwing hand and pebble close together at the same height, all prominent; the pebble is small beside the ogre, never a boulder. Let a few loose stones and a restrained motion arc suggest a quick pounce. Painterly medieval high-fantasy collectible-card art, warm directional light, nuanced skin, cloth and old leather, atmospheric rocky setting, grounded anatomy and serious expressive face. Horizontal arrangement with a strong simple silhouette. Create a true 1:1 SQUARE canvas for a 512x512 master. Keep face, hand and complete pebble within x24..488 and y105..407 on the square; leave quiet expendable scenery above and below. The center will also be cropped to a wide 206:141 card illustration. No text, lettering, frame, UI, anime, Disney-like cartoon, toy proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b9eed82d-dedb-44af-b4b6-113339fb7f5e.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_121.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square and centered wide crop inspected: the Oni's single face, eyes, throwing hand, and entire small pebble are visible; the compact silhouette and rocky setting read clearly."
+  },
+  {
+    "cardId": "gray_summon_122",
+    "name": "Gremlin Pot-Thrower",
+    "prompt": "Paint an original illustration for the fantasy creature card “Gremlin Pot-Thrower.” Show a wiry, scrappy medieval gremlin with a lively but grounded single face, caught mid-throw as it hurls a small round earthen pot from one hand. Keep the gremlin’s face, eyes, throwing hand and complete pot clustered together and prominent; the pot should be a compact clay vessel, not a giant cauldron. A few restrained sparks or a subtle burst hint at a blast effect without obscuring the creature. Painterly medieval high-fantasy collectible-card art, directional amber workshop light, nuanced greenish skin, rough cloth, leather and fired clay, smoky old-stone background, atmospheric depth, believable anatomy and serious lively expression. One clear readable subject, horizontal arrangement. Create a true 1:1 SQUARE canvas for a 512x512 master. Keep face, hand, and whole pot within x24..488 and y105..407 on the square; leave quiet expendable atmosphere above and below. The center will also be cropped to a wide 206:141 card illustration. No text, lettering, frame, UI, anime, Disney-like cartoon, toy proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-3f19e376-6d0a-4b15-8590-cd99c49158ff.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_122.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square and centered wide crop inspected: the gremlin's face and eyes, throwing hand, and whole small earthen pot remain prominent; workshop background and restrained burst support the throw."
+  },
+  {
+    "cardId": "gray_summon_123",
+    "name": "Kobold Sapper",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Kobold Sapper”. Paint a clever, sturdy kobold sapper scout in a rough leather harness crouched beside a narrow tunnel opening, projecting a precise luminous arcane beam from a small rune tool toward a distant stone obstacle. Show the kobold's alert face, tool hand, and the purposeful line of the beam; medieval mine and stonework in quiet background. Painterly medieval/high-fantasy collectible-card art, richly painted believable cloth, leather, wood and stone, attractive directional light, readable values and atmospheric depth. Strong subject silhouette, grounded anatomy, narrative clarity at small card size, in the visual quality of the supplied Hexmancers references. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Keep the face, eyes, relevant hands, and named action within x24–488,y105–407 on the square; horizontal composition for a 206:141 wide crop, quiet expendable scenery at top and bottom. No card frame, text, lettering, numbers, runes as text, or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art, exaggerated caricature, or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-98a6acf7-1b24-4f40-a0c2-faa6b6c77095.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_123.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square source and 206:141 crop inspected: kobold face, tool hand, and the beam origin remain clear; the wide thumbnail reads as a miner projecting a beam toward stone."
+  },
+  {
+    "cardId": "gray_summon_124",
+    "name": "Hobgoblin Grenadier",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Hobgoblin Grenadier”. Paint a brave, sturdy hobgoblin grenadier in battered medieval armor, caught in the clear action of hurling one compact iron grenade forward. His determined face and throwing hand are visible; a small contained blast blooms in the distance. Grounded, disciplined veteran rather than comic caricature. Painterly medieval/high-fantasy collectible-card art, richly painted believable cloth, leather, wood and stone, attractive directional light, readable values and atmospheric depth. Strong subject silhouette, grounded anatomy, narrative clarity at small card size, in the visual quality of the supplied Hexmancers references. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Keep the face, eyes, relevant hands, and named action within x24–488,y105–407 on the square; horizontal composition for a 206:141 wide crop, quiet expendable scenery at top and bottom. No card frame, text, lettering, numbers, runes as text, or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art, exaggerated caricature, or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-0895beaa-107a-4de2-ac5c-988ff675cdff.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_124.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square source inspected. The centered crop clipped the grenade top, so the card crop is shifted upward to y=60 (focalPoint 0.46); the adjusted 206:141 crop and thumb show the entire grenade, hobgoblin face, and throwing hand."
   }
 ]

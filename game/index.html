@@ -44,6 +44,52 @@
     <div class="sticky labsticky"><button id="labRandom" class="btn ghost">🎲 Random</button><button id="labTry" class="btn">Try it ▶</button></div>
   </section>
 
+  <!-- a local duel against a friend (ui.js, netduel.js, nettransport.js). Opened from Debug › Multiplayer › Start a duel -->
+  <section id="scrDuel" class="screen">
+    <div class="bar"><button id="duBack" class="backbtn back" aria-label="Back"></button><h2>Duel</h2><span class="dim">same Wi-Fi</span></div>
+    <div id="duRole" class="dustep">
+      <p class="hint">Fight a friend on the same Wi-Fi. You each use your saved deck. One of you hosts, the other joins.</p>
+      <label class="duname"><span>Your name</span><input id="duName" type="text" maxlength="20" autocomplete="off" spellcheck="false"></label>
+      <div class="duchoice"><button id="duHost" class="btn big">Host</button><button id="duJoin" class="btn big">Join</button></div>
+    </div>
+    <div id="duHow" class="dustep" hidden>
+      <p id="duHowTxt" class="hint"></p>
+      <div class="duchoice"><button id="duWifi" class="btn big">Wi-Fi code</button><button id="duRoom" class="btn big" hidden>Room</button></div>
+      <p class="hint">Wi-Fi code: copy a code from one phone to the other. Works with no setup.<span id="duRoomHint"> Room: both of you open the same address and use a four-letter room name (needs the relay script on a computer).</span></p>
+    </div>
+    <div id="duHostCode" class="dustep" hidden>
+      <p class="hint">1. Send this code to your friend (any chat will do) and have them tap Join, then Wi-Fi code, and paste it.</p>
+      <textarea id="duOffer" class="ducode" readonly rows="4" aria-label="Your code"></textarea>
+      <button id="duCopy" class="btn ghost small">Copy</button>
+      <p class="hint">2. Paste the code they send back here.</p>
+      <textarea id="duAnswerIn" class="ducode" rows="4" placeholder="Paste their code (HEX1.…)" aria-label="Their code" autocomplete="off" spellcheck="false"></textarea>
+      <button id="duAccept" class="btn">Connect</button>
+    </div>
+    <div id="duJoinCode" class="dustep" hidden>
+      <p class="hint">Paste the code your host sent you.</p>
+      <textarea id="duOfferIn" class="ducode" rows="4" placeholder="Paste the host's code (HEX1.…)" aria-label="The host's code" autocomplete="off" spellcheck="false"></textarea>
+      <button id="duMakeAnswer" class="btn">Make my code</button>
+    </div>
+    <div id="duAnswerStep" class="dustep" hidden>
+      <p class="hint">Send this code back to your host and wait: they paste it in and the duel connects.</p>
+      <textarea id="duAnswer" class="ducode" readonly rows="4" aria-label="Your code"></textarea>
+      <button id="duCopy2" class="btn ghost small">Copy</button>
+    </div>
+    <div id="duRoomStep" class="dustep" hidden>
+      <p id="duRoomTxt" class="hint"></p>
+      <label class="duname"><span>Room</span><input id="duRoomName" type="text" maxlength="4" autocomplete="off" spellcheck="false" autocapitalize="characters"></label>
+      <button id="duRoomGo" class="btn">Connect</button>
+    </div>
+    <div id="duWait" class="dustep" hidden>
+      <p id="duWaitTxt" class="hint">Connecting…</p>
+    </div>
+    <div id="duLobby" class="dustep" hidden>
+      <h3 id="duLobbyTxt"></h3>
+      <p class="hint">Both of you are in. The duel starts in a moment.</p>
+    </div>
+    <p id="duMsg" class="hint warn" role="alert"></p>
+  </section>
+
   <!-- new game, step 1: your hexmancer: race, body and stats -->
   <section id="scrNewChar" class="screen">
     <div class="cc">
@@ -438,8 +484,16 @@
       <div id="dbgBody" class="dbgbody">
       <div class="bar"><h2>Debug</h2></div>
       <p class="hint">Test settings for the look of the dungeon and the battle (they share them). The view behind this panel changes as you slide. Saved in this browser. Open with three fingers tapped three times (or the ` key). Drag the bar at the bottom to resize; tap it to fold or unfold.</p>
-      <div class="srow"><span>Pause the game<small>Holds the fight or the dungeon still (nothing moves, no timers run) while everything keeps being drawn, so you can tune with the debug menu open. Not saved.</small></span><label class="scheck"><input id="dbgPause" type="checkbox"></label></div>
+      <div class="srow"><span>Pause the game<small>Holds the fight or the dungeon still (nothing moves, no timers run) while everything keeps being drawn, so you can tune with the debug menu open. Not saved.</small><small id="dbgPauseNote" class="warn" hidden>Off while a duel is running: it would stall the other player.</small></span><label class="scheck"><input id="dbgPause" type="checkbox"></label></div>
       <div class="srow"><span>Show Card lab<small>Adds a Card lab button to the front page, to build a card from its parts and try it in a test battle. Saved in this browser only.</small></span><label class="scheck"><input id="dbgLab" type="checkbox"></label></div>
+      <h3>Multiplayer</h3>
+      <div class="srow"><span>Start a duel<small>Fight a friend on the same Wi-Fi, one phone against another. You each use your saved deck, and a duel gives and costs nothing.</small><small id="dbgDuelHint" class="warn"></small></span><button id="dbgDuel" class="btn small">Start a duel</button></div>
+      <div class="srow"><span>Card screen length<small>How many seconds both players have on the shared card screen. 10 is normal.</small></span><span class="srange"><input id="dbgMpSpell" type="range" min="3" max="30" step="1"><b id="dbgMpSpellV"></b></span></div>
+      <div class="srow"><span>Defender window<small>A hit still misses if you left its tile this many milliseconds before it landed. 50 is normal.</small></span><span class="srange"><input id="dbgMpDefend" type="range" min="0" max="200" step="5"><b id="dbgMpDefendV"></b></span></div>
+      <div class="srow"><span>Back-date limit<small>The most, in milliseconds, that a late message from the other phone is counted as having happened earlier. 250 is normal.</small></span><span class="srange"><input id="dbgMpBackdate" type="range" min="50" max="1000" step="10"><b id="dbgMpBackdateV"></b></span></div>
+      <div class="srow"><span>Position send gap<small>The shortest wait, in milliseconds, between two position messages you send. 0 sends at every frame. 16 is normal.</small></span><span class="srange"><input id="dbgMpSend" type="range" min="0" max="100" step="1"><b id="dbgMpSendV"></b></span></div>
+      <div class="srow"><span>Avatar smoothing<small>The other mage is drawn this many milliseconds behind where they are, so it glides instead of jumping. 33 is normal.</small></span><span class="srange"><input id="dbgMpSmooth" type="range" min="0" max="100" step="1"><b id="dbgMpSmoothV"></b></span></div>
+      <div class="srow"><span>Reset multiplayer timings<small>Puts the five settings above back to their normal values.</small></span><button id="dbgMpReset" class="btn ghost small">Reset multiplayer timings</button></div>
       <h3>Lighting</h3>
       <div class="srow"><span>Texture-pixel lighting<small>On: light is worked out once per texture pixel, so it falls across walls and floors in crisp art-pixel steps. Off: smooth light.</small></span><label class="scheck"><input id="dbgTexel" type="checkbox"></label></div>
       <div class="srow"><span>Light bands<small>0 keeps light smooth. Otherwise light is rounded to this many levels per full brightness, for a banded pixel-art look.</small></span><span class="srange"><input id="dbgSteps" type="range" min="0" max="16" step="1"><b id="dbgStepsV"></b></span></div>
@@ -592,6 +646,9 @@
 <script src="collection.js"></script>
 <script src="gear.js"></script>
 <script src="battle.js"></script>
+<script src="netplay.js"></script>
+<script src="netduel.js"></script>
+<script src="nettransport.js"></script>
 <script src="enemies.js"></script>
 <script src="tactics.js"></script>
 <script src="fights.js"></script>

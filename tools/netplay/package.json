@@ -1,0 +1,6 @@
+{
+  "name": "hexmancers-netplay-relay",
+  "private": true,
+  "description": "LAN relay and static server for the local PvP duel",
+  "dependencies": { "ws": "^8.18.0" }
+}

@@ -2,10 +2,10 @@
   "batch": 11,
   "status": "in-progress",
   "targetNewImages": 200,
-  "generatedSources": 90,
-  "reviewedSources": 90,
-  "missingSources": 110,
-  "reviewedPackets": 18,
+  "generatedSources": 117,
+  "reviewedSources": 105,
+  "missingSources": 83,
+  "reviewedPackets": 21,
   "requiresRepaint": [],
   "baselineActive": 1034,
   "targetActive": 1234,
@@ -410,6 +410,30 @@
       ]
     },
     {
+      "cardId": "frost_lob_12",
+      "name": "Spring Water Gourd",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_lob_12.png",
+      "sha256": "58de742790e90c7a9c48798aefaf63d0f880cdf534aa516620dc943e99612d65",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.47
+      ]
+    },
+    {
+      "cardId": "frost_machine_06",
+      "name": "Mortar Ketch",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_machine_06.png",
+      "sha256": "bdff83403b457cf1bf1ced1c8bd52e0d07effa28ac8376e84330ef29940ea1f6",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "cardId": "frost_sentry_12",
       "name": "Tide Pole",
       "colour": "frost",
@@ -431,6 +455,18 @@
       "focalPoint": [
         0.5,
         0.5
+      ]
+    },
+    {
+      "cardId": "frost_strike_11",
+      "name": "Shark Bite",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_strike_11.png",
+      "sha256": "d2233070a245c505db1c324022697d464aaebc16ebbf892a66070fc0d5d7fe4d",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.53
       ]
     },
     {
@@ -512,6 +548,54 @@
       "source": "game/cards/art/masters/gray_summon_102.png",
       "sha256": "eba66b3963182bf7b8fcc466bd31569a1f1160250273642e657e4ae602c98dab",
       "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "gray_summon_103",
+      "name": "Maasai Spearman",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_103.png",
+      "sha256": "d85c39c237791d8574b200199aa5eb2e26a7ab9153862e06f6ea27ed30512c65",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.35
+      ]
+    },
+    {
+      "cardId": "gray_summon_104",
+      "name": "Zulu Impi",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_104.png",
+      "sha256": "b869ebb093c123df58a401795b41598c769d8e10f9a90503e215814ed0b1af2f",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.35
+      ]
+    },
+    {
+      "cardId": "gray_summon_105",
+      "name": "Viking Raider",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_105.png",
+      "sha256": "fd364baf400bc3c9a304731251af68021a27521ef5fc37aaf2b76fe4555698ef",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "gray_summon_106",
+      "name": "Hill Giant",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_106.png",
+      "sha256": "df132b407ded2f40f754481f14678fd160f45f466d48a388642dd948460f4573",
+      "reviewed": false,
       "focalPoint": [
         0.5,
         0.5
@@ -602,6 +686,30 @@
       ]
     },
     {
+      "cardId": "hero_cassia",
+      "name": "Dawn Knight Cassia",
+      "colour": "light",
+      "source": "game/cards/art/masters/hero_cassia.png",
+      "sha256": "5e1fc3ff7a8168ea7eda3abeff801e86d43eaa2bfa88e2e3b51ad3bb3072d51f",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "hero_frida",
+      "name": "Frida Snowveil",
+      "colour": "frost",
+      "source": "game/cards/art/masters/hero_frida.png",
+      "sha256": "fe4dabad8a1780623f7949caf899629fde29ad3243daa413912960a212a5f522",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.44
+      ]
+    },
+    {
       "cardId": "hero_kael",
       "name": "Kael the Cinderblade",
       "colour": "fire",
@@ -626,6 +734,30 @@
       ]
     },
     {
+      "cardId": "hero_nox",
+      "name": "Nox the Shadow King",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/hero_nox.png",
+      "sha256": "5528338466d0bfe0a08c02657a17765258984476f480ed8b53e24b369e954bf4",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.44
+      ]
+    },
+    {
+      "cardId": "hero_thundra",
+      "name": "Thundra the Hammer",
+      "colour": "storm",
+      "source": "game/cards/art/masters/hero_thundra.png",
+      "sha256": "2c484d5318db31a393af0639c9ff67bdad4e2b4f5c2017fee4009a05bbcda7d7",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.39
+      ]
+    },
+    {
       "cardId": "light_boon_09",
       "name": "Pegasus Flight",
       "colour": "light",
@@ -635,6 +767,18 @@
       "focalPoint": [
         0.5,
         0.5
+      ]
+    },
+    {
+      "cardId": "light_boon_10",
+      "name": "Crusader's Vow",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_boon_10.png",
+      "sha256": "3e509b739d397fa25e049d9ed345ec082f1ca92b888af8ee4d994429e03850dc",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
       ]
     },
     {
@@ -674,6 +818,18 @@
       ]
     },
     {
+      "cardId": "light_lob_12",
+      "name": "Abbey Bell Toll",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_lob_12.png",
+      "sha256": "3dbecc87ad15ed91b22d02aca8ca2a0f669d87e0e29a9b00807e6a537da15c0b",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.42
+      ]
+    },
+    {
       "cardId": "light_machine_06",
       "name": "Legion Camp Palisade",
       "colour": "light",
@@ -710,6 +866,18 @@
       ]
     },
     {
+      "cardId": "light_strike_11",
+      "name": "Pegasus Hoofbeat",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_strike_11.png",
+      "sha256": "1e7958d2a3fffdadc2526c3b1bab141b494b3b16196ddc18175d38ee16f87170",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "cardId": "light_summon_06",
       "name": "White Stag",
       "colour": "light",
@@ -739,6 +907,18 @@
       "colour": "light",
       "source": "game/cards/art/masters/light_ward_12.png",
       "sha256": "4a19463e0d584dde8eac3affeb0039ca9650aa37baefd1e2efdd811298d5f391",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "light_ward_13",
+      "name": "Sacsayhuaman Stones",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_ward_13.png",
+      "sha256": "cb8c4c5eaa70e643115c1d64b33064db25b66738d38c16f67c9f1afb54e6a47a",
       "reviewed": true,
       "focalPoint": [
         0.5,
@@ -794,6 +974,30 @@
       ]
     },
     {
+      "cardId": "shadow_lob_13",
+      "name": "Brimstone Hail",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_lob_13.png",
+      "sha256": "acb34f46ce53701f67194c761f2bcd79fc29969f905694994f413a5b23d25dae",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "shadow_machine_06",
+      "name": "Hut on Chicken Legs",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_machine_06.png",
+      "sha256": "19c9fac9fb6fa1be5397b1533ad2fe2b52484125ce2b4fba96d684a93c9c43be",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.47
+      ]
+    },
+    {
       "cardId": "shadow_sentry_12",
       "name": "Cursed Mirror",
       "colour": "shadow",
@@ -811,6 +1015,18 @@
       "colour": "shadow",
       "source": "game/cards/art/masters/shadow_strike_10.png",
       "sha256": "eee2070bf6cda5890222b37c4026726a30bac7c456fb3aed0bddcdda3942bdbc",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "shadow_strike_11",
+      "name": "Bog Muck Splash",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_strike_11.png",
+      "sha256": "3480fea8801a5995f38021b7ea5c11fcb7c2a2524dab8e0e1019426e1c77b4d8",
       "reviewed": true,
       "focalPoint": [
         0.5,
@@ -866,6 +1082,30 @@
       ]
     },
     {
+      "cardId": "shadow_ward_12",
+      "name": "Barrow Mound",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_ward_12.png",
+      "sha256": "e8e9747305c7480ad3fe348b2e4d0875b59152eb0c7300c587cd62dda36537ed",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "static_corridor",
+      "name": "Static Corridor",
+      "colour": "storm",
+      "source": "game/cards/art/masters/static_corridor.png",
+      "sha256": "930f07fc2d2d0b40cb37dc9a36bd5edacb3af606fb1a07e8d4a24bb1aec0c11e",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "cardId": "storm_boon_10",
       "name": "Mint Tea",
       "colour": "storm",
@@ -875,6 +1115,18 @@
       "focalPoint": [
         0.5,
         0.5
+      ]
+    },
+    {
+      "cardId": "storm_boon_11",
+      "name": "Hoard Fever",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_boon_11.png",
+      "sha256": "4d112d6bb6bdd8c7c717f888f58d8c12995ff8356c9a89919089aaa612f0cb37",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.34
       ]
     },
     {
@@ -914,6 +1166,18 @@
       ]
     },
     {
+      "cardId": "storm_lob_12",
+      "name": "Roc's Egg",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_lob_12.png",
+      "sha256": "67401f28a4a2f280e4729a447545fb518ae4ab21fa16372fe89b62d36c51fc67",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "cardId": "storm_machine_07",
       "name": "Scorpio Bolt Thrower",
       "colour": "storm",
@@ -947,6 +1211,18 @@
       "focalPoint": [
         0.5,
         0.44
+      ]
+    },
+    {
+      "cardId": "storm_strike_12",
+      "name": "Sandblast",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_strike_12.png",
+      "sha256": "ebce7af2fe7afa4faab408d2188fb961accb71c85cf24d6758e1faea314871e9",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
       ]
     },
     {
@@ -998,6 +1274,18 @@
       ]
     },
     {
+      "cardId": "verdant_boon_10",
+      "name": "Fern Seed Vanishing",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_boon_10.png",
+      "sha256": "0110c3e5547690a39d0d981678112c878b32d64af14b4d0f9989560d67be2d20",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "cardId": "verdant_charge_11",
       "name": "Mushroom Basket",
       "colour": "verdant",
@@ -1034,6 +1322,18 @@
       ]
     },
     {
+      "cardId": "verdant_lob_12",
+      "name": "Sasquatch Boulder",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_lob_12.png",
+      "sha256": "ec4bf6a464d35ea16539d63047f7207fd25731f3df9cd67599ce2bf763400f0c",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
       "cardId": "verdant_piece_06",
       "name": "Mask of the Green Man",
       "colour": "verdant",
@@ -1055,6 +1355,18 @@
       "focalPoint": [
         0.5,
         0.32
+      ]
+    },
+    {
+      "cardId": "verdant_strike_13",
+      "name": "Cobra Venom Spray",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_strike_13.png",
+      "sha256": "fa081da0c7ac586d90b653d2314e9f36a64e4b09c415d6f206a56df173a59058",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
       ]
     },
     {
@@ -1091,6 +1403,18 @@
       "focalPoint": [
         0.5,
         0.32
+      ]
+    },
+    {
+      "cardId": "verdant_ward_12",
+      "name": "Green Chapel Gate",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_ward_12.png",
+      "sha256": "0963927cf30c550817b181144559dc3de9b7b34f12087ee44d54afc197fa0834",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.43
       ]
     }
   ]

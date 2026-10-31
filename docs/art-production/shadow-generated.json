@@ -2293,5 +2293,95 @@
     "status": "generated",
     "batch": 11,
     "reviewNote": "Source native size [1254,1254]. Focal point [0.5,0.45] shifts the crop upward. Artist inspected the square, adjusted 206:141 crop and 128x88 thumbnail: full ghoul face and both reaching hands remain clear; parent review pending."
+  },
+  {
+    "cardId": "shadow_machine_06",
+    "name": "Hut on Chicken Legs",
+    "prompt": "Repaint Hut on Chicken Legs as a compact storybook-fantasy object on a square 1:1 canvas. Show a small squat log hut with a low triangular thatched roof and a short pair of bent chicken legs; reduce its height so the entire roof peak, hut body, both legs and both feet fit comfortably within the central band y105..407 of a 512 square, with margin above the roof and below the feet. Keep the whole hut silhouette clear and centered; no branches or scenery may cover its roof or feet. One small warm-lit window, misty moonlit forest as quiet supporting background. Painterly medieval high fantasy collectible-card art, believable wood, thatch and feathered legs, attractive moonlight, nuanced material detail and atmospheric depth. Design specifically for the 206:141 horizontal card crop. No people, text, letters, border or UI. No anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-120d2679-34e7-4ef5-b80a-cab4fadeee28.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_machine_06.png",
+    "sourceNative": [
+      1516,
+      1038
+    ],
+    "focalPoint": [
+      0.5,
+      0.47
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "First source preserved at /workspace/scratch/b11_worker_1/shadow_machine_06-first-attempt.png after its wide crop trimmed the roof peak and feet. Repaint native size [1516,1038]; focal point [0.5,0.47] moves crop up. Artist inspected new square, adjusted 206:141 crop and 128x88 thumbnail: complete roof, both legs and feet fit; parent review pending."
+  },
+  {
+    "cardId": "shadow_lob_13",
+    "name": "Brimstone Hail",
+    "prompt": "Paint an illustration for Brimstone Hail: a dangerous vertical column of glowing brimstone rocks and hot ash plunges from a storm-dark sky into an ancient battlefield, striking one point in a column-shaped impact. Show several distinct scorched stones in the central action band, with sparks and dust around the impact; keep the bright center readable rather than a wall of glare. Painterly medieval high fantasy collectible-card art, richly textured volcanic stone, amber firelight against cool storm shadows, dramatic atmosphere. Compose on a square 1:1 512x512 master but arrange stones and impact compactly through the middle 60% so the column reads in a 206:141 horizontal crop; keep key rocks inside x24..488 y105..407 with expendable sky/dust above and below. No text, border or UI. No anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-84b6054e-afeb-4167-9bf9-5dbc81b8ed97.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_lob_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Source native size [1254,1254]. Artist inspected square, 206:141 crop and 128x88 thumbnail: central brimstone column and fiery impact remain clear at thumbnail size; parent review pending."
+  },
+  {
+    "cardId": "hero_nox",
+    "name": "Nox the Shadow King",
+    "prompt": "Paint an illustration for Nox the Shadow King: a commanding shadow monarch in dark medieval armor and a subtle crown, shown from waist up with a distinct focused face and both hands visible as he summons a long shadow spear. Keep spearhead and both hands comfortably inside the central horizontal composition; the spear is a clear extension of his power but his face remains the focus. Painterly high fantasy collectible-card art, rich blackened steel and velvet, pale directional moonlight, restrained violet shadow magic and atmospheric depth, handsome dramatic lighting, grounded anatomy. Square 1:1 512x512 master, keep face, hands and spearhead within x24..488 y105..407 for a 206:141 card crop; quiet scenery top and bottom. No text, border or UI. No anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ce1b3a7e-72f7-4891-b7af-e4ea1867beb5.png",
+    "editableSourcePath": "game/cards/art/masters/hero_nox.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.44
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Source native size [1254,1254]. Focal point [0.5,0.44] shifts crop up. Artist inspected square, adjusted 206:141 crop and 128x88 thumbnail: crown, face, hands, and spearhead remain clear; parent review pending."
+  },
+  {
+    "cardId": "shadow_strike_11",
+    "name": "Bog Muck Splash",
+    "prompt": "Paint an illustration for Bog Muck Splash: a sudden burst of thick dark green-brown bog muck splashes across an armored enemy's shield and face, knocking them off balance. The fast explosive splash is the primary subject but leave enough of the startled face and raised shield hand readable; droplets may fly outward. Painterly medieval high fantasy collectible-card art, tactile muddy water and battered iron, sharp directional light with a muted green glint, dynamic grounded action and atmospheric swamp depth. Square 1:1 512x512 master, keep the central splash, visible face and relevant hand within x24..488 y105..407, quiet scenery above and below, readable 206:141 horizontal crop. No gore, text, border or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b1baf722-5067-41ea-abe8-b7191be46292.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_strike_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Source native size [1254,1254]. Artist inspected square, 206:141 crop and 128x88 thumbnail: bog-muck burst, startled face and shield hand read clearly; parent review pending."
+  },
+  {
+    "cardId": "shadow_ward_12",
+    "name": "Barrow Mound",
+    "prompt": "Paint an illustration for Barrow Mound: a long, low ancient burial mound transformed into a defensive rampart, its earth and stone walls running horizontally across a misty moor. A row of weathered standing stones and a carved barrow entrance identify it as a burial mound; a subtle soft green healing glow traces the protective ridge. Make the whole mound broad, low and clearly dominant, with both ends visible and calm air above and below. Painterly medieval high fantasy collectible-card art, textured earth, moss, stone and aged standing stones, attractive moonlight with restrained green light, atmospheric depth. Square 1:1 512x512 master; keep the entire mound/rampart within x24..488 y105..407 and centered for the 206:141 horizontal crop. No people required; no text, border or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4f00c97b-f01c-4794-912d-d7ccbfee0d24.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_ward_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Source native size [1254,1254]. Artist inspected the square, 206:141 crop and 128x88 thumbnail: entire low barrow rampart, both ends and carved entrance remain visible with quiet scenery above and below; parent review pending."
   }
 ]

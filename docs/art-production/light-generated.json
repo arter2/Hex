@@ -2293,5 +2293,95 @@
     "status": "generated",
     "batch": 11,
     "reviewNote": "The full palisade, gate and warded timber line read clearly in the wide crop and thumbnail; background towers and figures remain secondary."
+  },
+  {
+    "cardId": "hero_cassia",
+    "name": "Dawn Knight Cassia",
+    "prompt": "Paint a dramatic hero-card illustration for Dawn Knight Cassia, a radiant armored champion whose hits sometimes strike with a sudden brilliant double flash and whose presence protects allies. Show a resolute adult woman knight with a clear face, her raised sword hand and complete luminous longsword angled across her body; a controlled dawn-gold arc glows along the blade as she deflects an enemy strike, with two fine light echoes suggesting a critical hit. She wears believable polished plate over pale blue mail and a sunlit white mantle; no ornate halo obscures her. Painterly medieval high fantasy, textured steel and cloth, warm sunrise light, grounded anatomy and atmospheric depth. Explicit 1:1 SQUARE 512x512; keep full face, sword hand, defining blade and defensive action inside x24..488,y105..407 for 206:141 wide crop; quiet sky and battlefield above and below. No card frame, labels, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9fa9e5f2-9545-4a83-a46b-573e2c4ff8cd.png",
+    "editableSourcePath": "game/cards/art/masters/hero_cassia.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop and 128x88 thumbnail. Cassia's complete face and sword hand remain clear with the defensive blade action; the blade's far tip and lower armor are incidental crop details, while the radiant strike remains readable."
+  },
+  {
+    "cardId": "light_strike_11",
+    "name": "Pegasus Hoofbeat",
+    "prompt": "Paint an illustration for Pegasus Hoofbeat, a focused radiant strike that pushes a foe away. A powerful white pegasus descends low over a medieval battlefield, its clear noble face and one complete shining forehoof prominent; the hoof strikes the ground with a compact gold-white shockwave that drives a single armored enemy backward. Show the horse's face and striking hoof together in the action, while wing tips and legs may extend beyond the crop. The hoof impact is the named subject, not a generic airborne pegasus portrait. Painterly high fantasy, believable feathered wings, silky white coat, warm sunrise rim light, textured brushwork and grounded equine proportions. Explicit 1:1 SQUARE 512x512 composition; keep pegasus face, striking hoof and sharp snipe-like impact within x24..488,y105..407 for 206:141 card crop, quiet clouds and dust top/bottom. No border, lettering, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d6a35dd2-64d7-4fe5-be6d-d0a6648fbacb.png",
+    "editableSourcePath": "game/cards/art/masters/light_strike_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop and 128x88 thumbnail. Pegasus's face, striking forehoof and pushed-back foe remain clear; cropping only trims upper wing tips and incidental lower legs."
+  },
+  {
+    "cardId": "light_lob_12",
+    "name": "Abbey Bell Toll",
+    "prompt": "Paint an illustration for Abbey Bell Toll, a quick-fuse lob whose resonant ring stuns and knocks nearby foes down. Show one great ancient bronze abbey bell in the foreground, suspended in a compact stone arch with its full crown loop, shoulders, flared rim and clapper clearly visible; the bell itself is the named subject. It swings as a radiant circular sound wave pulses outward and two small armored intruders stagger and fall in the courtyard below. Warm shafts of dawn light catch the engraved metal, with cool abbey stone and atmospheric depth. Painterly medieval high fantasy, tactile bronze and stone, serious grounded style. Explicit 1:1 SQUARE 512x512 composition; entire bell and clapper plus clear ring effect fit x24..488,y105..407 for the 206:141 wide crop, quiet expendable tower masonry and courtyard beyond. No frame, text, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-767c531e-a764-422b-9840-71e343915708.png",
+    "editableSourcePath": "game/cards/art/masters/light_lob_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed 512-square source and upward-shifted 206:141 crop/thumb at focal y=0.42. The complete bronze bell body, shoulders, flared rim and clapper remain in view with its radiant sound ring; some suspension arch and lower courtyard are expendable."
+  },
+  {
+    "cardId": "light_ward_13",
+    "name": "Sacsayhuaman Stones",
+    "prompt": "Paint an illustration for Sacsayhuaman Stones, a long-lasting arc-shaped defensive wall of three massive ancient fitted stones with a shocking force. Show three enormous precisely interlocked polygonal dry-stone blocks curving in a short defensive arc across an Andean mountain pass, recognizable as monumental Inca masonry with angled joints and finely weathered granite. Thin blue-white lightning jumps from block to block as the stones shield a pair of small defenders from an advancing armored foe. Keep the three fitted stones and the arc of the wall as the primary named subject; distant terraces and peaks may be atmospheric. Painterly medieval fantasy landscape, tactile granite, attractive high-altitude sunlight and dramatic depth, no modern materials. Explicit 1:1 SQUARE 512x512 image; preserve all three central stones and readable electric barrier inside x24..488,y105..407 for the 206:141 card crop, quiet mountains and dust above/below. No frame, lettering, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9a88cc82-9eec-4e92-b189-3560f7090c8f.png",
+    "editableSourcePath": "game/cards/art/masters/light_ward_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop and 128x88 thumbnail. Three fitted granite blocks and the arc of blue-white lightning form a clear defensive wall; figures and distant Andean terraces are secondary."
+  },
+  {
+    "cardId": "light_boon_10",
+    "name": "Crusader's Vow",
+    "prompt": "Paint an illustration for Crusader's Vow, an immediate short-lived pact of courage that renews the crusader and jolts nearby foes. Show an adult crusader with a clear steadfast face kneeling to swear an oath, one bare hand pressed firmly over the heart and the other lifting a complete short sword upright beside the face. Warm white-gold light kindles beneath the palm and runs along the sword; a restrained pulse of bright force stuns a nearby enemy, while the crusader's expression shifts from strain to brave resolve. Focus on the human vow and face, with the sword visible as a secondary symbol. Painterly medieval high fantasy, believable armor, linen, leather and steel, attractive sunrise light, textured brushwork and grounded anatomy. Explicit 1:1 SQUARE 512x512 composition; keep full face, both hands, upright sword and clear oath/pact action inside x24..488,y105..407 for 206:141 crop; quiet monastery stone and dawn sky above/below. No frame, lettering, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-80a94803-912b-4968-a9cb-504acc641cd9.png",
+    "editableSourcePath": "game/cards/art/masters/light_boon_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed 512-square source and upward-shifted 206:141 crop/thumb at focal y=0.40. The crusader's complete face, heart hand, sword hand and vow remain visible with the bright pact light; lower legs and courtyard are expendable."
   }
 ]

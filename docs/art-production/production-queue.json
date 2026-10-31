@@ -4,8 +4,8 @@
   "active": 1034,
   "remaining": 919,
   "pending": 719,
-  "assigned": 110,
-  "awaitingReview": 90,
+  "assigned": 83,
+  "awaitingReview": 117,
   "countsByColour": {
     "brown": 234,
     "fire": 246,
@@ -4316,7 +4316,7 @@
       "name": "Shark Bite",
       "type": "strike",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -4641,7 +4641,7 @@
       "name": "Spring Water Gourd",
       "type": "lob",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -6044,7 +6044,7 @@
       "name": "Mortar Ketch",
       "type": "machine",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -6202,7 +6202,7 @@
       "name": "Frida Snowveil",
       "type": "hero",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -7209,7 +7209,7 @@
       "name": "Maasai Spearman",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -7218,7 +7218,7 @@
       "name": "Zulu Impi",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -7227,7 +7227,7 @@
       "name": "Viking Raider",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -7236,7 +7236,7 @@
       "name": "Hill Giant",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -8417,7 +8417,7 @@
       "name": "Pegasus Hoofbeat",
       "type": "strike",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -8686,7 +8686,7 @@
       "name": "Abbey Bell Toll",
       "type": "lob",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -8844,7 +8844,7 @@
       "name": "Sacsayhuaman Stones",
       "type": "ward",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -9082,7 +9082,7 @@
       "name": "Crusader's Vow",
       "type": "boon",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -10302,7 +10302,7 @@
       "name": "Dawn Knight Cassia",
       "type": "hero",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -10553,7 +10553,7 @@
       "name": "Bog Muck Splash",
       "type": "strike",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -10855,7 +10855,7 @@
       "name": "Brimstone Hail",
       "type": "lob",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -10996,7 +10996,7 @@
       "name": "Barrow Mound",
       "type": "ward",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -12314,7 +12314,7 @@
       "name": "Hut on Chicken Legs",
       "type": "machine",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -12440,7 +12440,7 @@
       "name": "Nox the Shadow King",
       "type": "hero",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -12701,7 +12701,7 @@
       "name": "Sandblast",
       "type": "strike",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -12985,7 +12985,7 @@
       "name": "Roc's Egg",
       "type": "lob",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -13333,7 +13333,7 @@
       "name": "Hoard Fever",
       "type": "boon",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -14561,7 +14561,7 @@
       "name": "Thundra the Hammer",
       "type": "hero",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -14635,7 +14635,7 @@
       "name": "Static Corridor",
       "type": "ward",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -14833,7 +14833,7 @@
       "name": "Cobra Venom Spray",
       "type": "strike",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -15177,7 +15177,7 @@
       "name": "Sasquatch Boulder",
       "type": "lob",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -15328,7 +15328,7 @@
       "name": "Green Chapel Gate",
       "type": "ward",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -15517,7 +15517,7 @@
       "name": "Fern Seed Vanishing",
       "type": "boon",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },

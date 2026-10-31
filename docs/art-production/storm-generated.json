@@ -2302,5 +2302,95 @@
       1254
     ],
     "reviewNote": "The first attempt clipped the bolt and wheel edges; its 512 source is preserved at /tmp/storm-machine-07-repair/storm_machine_07-before-repair.png. Reviewed this replacement square, wide crop and thumbnail: all four wheels, carriage, torsion engine and complete bolt tip fit with margins."
+  },
+  {
+    "cardId": "hero_thundra",
+    "name": "Thundra the Hammer",
+    "prompt": "Paint Thundra the Hammer, a powerful high-fantasy heroine whose hammer slam releases a stunning thunderclap and whose armor withstands harm. Show a formidable dark-skinned warrior woman in layered storm-gray armor and blue cloth, full focused face and eyes visible, gripping a massive rune-marked war hammer with both hands as she drives it down; a tight ring of blue-white thunder ripples around a nearby stunned foe, while the main heroine and hammer stay clear. Painterly medieval fantasy collectible-card art, grounded anatomy, expressive face, textured metal/leather, dramatic lightning and warm reflected light. Explicit 1:1 square 512 master; keep Thundra's full face, both hammer hands, hammer head/shaft and core thunderclap within x24..488,y105..407 for 206:141 crop. Incidental lower legs and distant foes may crop. No text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-97042a2e-fa60-444c-8c95-5037d34cb52e.png",
+    "focalPoint": [
+      0.5,
+      0.39
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/hero_thundra.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed square, top-shifted wide crop and thumbnail. Thundra's full face, both hands on the hammer, hammer head and thunderclap remain clear; incidental hair tips crop."
+  },
+  {
+    "cardId": "storm_strike_12",
+    "name": "Sandblast",
+    "prompt": "Paint Sandblast as a single forceful burst of desert sand magic. A compact bright gust erupts horizontally across an ancient stone courtyard, a dense fan of sand grains and dust striking one armored marauder and pushing him backward; his startled face and raised forearm are visible. Keep the burst itself as a clear readable shape rather than a full sandstorm, with a defined origin and sandy particles catching sunlight. Painterly medieval high-fantasy collectible-card art, atmospheric desert lighting, nuanced stone and cloth, energetic motion. Explicit 1:1 square 512 master; keep the full burst and primary face/impact hand inside x24..488,y105..407 for wide 206:141 crop; quiet wall and ground beyond. No text/frame/UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ee9fe9b3-b530-4484-8d15-65279b82545a.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/storm_strike_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed square, wide crop and thumbnail. Sand burst, caster hand and recoiling target's face read clearly; lower leg and flying grains are incidental."
+  },
+  {
+    "cardId": "storm_lob_12",
+    "name": "Roc's Egg",
+    "prompt": "Paint Roc's Egg as a single magnificent oversized roc egg, the unmistakable primary subject: one intact oval egg with richly mottled blue-gray shell and fine natural markings rests in a shallow woven nest on a broad desert cliff ledge. A huge roc's feathered wing and taloned foot loom nearby for scale, while a small gust lifts dust and nudges the egg toward the edge to suggest a powerful lob that will knock its target back. Show the complete egg from top to bottom with margin on every side; no hatching bird, no broken shell, no second egg. Painterly medieval high-fantasy collectible-card art, warm dawn light, tactile shell and feathers, atmospheric depth. Explicit 1:1 square 512 master; keep the entire egg, nest lip and nearby talon inside x24..488,y105..407 for 206:141 crop. No text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f1c34e2e-eec2-471b-a995-2b17cf267b89.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/storm_lob_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed square, wide crop and thumbnail. Whole intact egg and nest remain visible; roc talon and wing frame the object without obscuring it."
+  },
+  {
+    "cardId": "static_corridor",
+    "name": "Static Corridor",
+    "prompt": "Paint Static Corridor as a short defensive passage of storm magic: two parallel low stone walls form a clearly visible corridor receding gently through the frame, each crowned with sharp blue crystal thorns crackling with static. A lone armored traveler cautiously threads through the protected passage, face and one guiding hand visible; faint sparks jump toward an unseen threat outside the walls. Make the paired corridor structure and thorn defense the primary readable subject, not an abstract lightning pattern. Painterly medieval high fantasy illustration, atmospheric blue-white light against warm stone, nuanced materials and depth. Explicit 1:1 square 512 master; keep the corridor entrance and visible parallel thorned walls, plus traveler's face/hand, inside x24..488,y105..407 for 206:141 crop. No text/frame/UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-323831e3-7d8e-479f-aa9b-f72e09b2bd70.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/static_corridor.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed square, wide crop and thumbnail. Short corridor, paired thorned walls, traveler face/hand and static sparks remain legible."
+  },
+  {
+    "cardId": "storm_boon_11",
+    "name": "Hoard Fever",
+    "prompt": "Paint Hoard Fever as a courage-rallying moment in a medieval fantasy campaign: a determined treasure-hunter captain stands beside an open hoard of old gold and gems, face bright with fierce confidence, raising a clenched fist and sword to rally two nearby companions into a courageous charge. The captain's full face, fist and weapon are primary; treasure glow illuminates the group and supports the courage effect, without replacing the people. Compact horizontal staging in a stone vault, expressive grounded faces, believable mail, leather, coin and jewel details, warm directional gold light, painterly high-fantasy collectible-card illustration and atmospheric depth. Explicit 1:1 square 512 master; keep captain's full face, raised hand, sword and nearby rallied companions' heads within x24..488,y105..407 for 206:141 crop; incidental legs and distant treasure may crop. No text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ae08e35e-8e2f-4e69-bc8f-4f1df41732c6.png",
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/storm_boon_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed square, top-shifted wide crop and thumbnail. Captain's full face, raised sword hand, companions' faces and rally fist remain visible beside the illuminated hoard; sword blade and incidental lower hand crop."
   }
 ]

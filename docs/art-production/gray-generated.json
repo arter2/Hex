@@ -2307,5 +2307,77 @@
     "status": "generated",
     "batch": 11,
     "reviewNote": "Reviewed 512-square source, default 206:141 crop and thumbnail: Mongol rider's face, drawing hand, bow grip, arrow and horse's head are clear; upper bow limb is an incidental crop."
+  },
+  {
+    "cardId": "gray_summon_105",
+    "name": "Viking Raider",
+    "prompt": "Paint an illustration for Viking Raider, a creature summon whose medieval fantasy action is shown here. One sturdy Norse Viking raider charges across a rocky shore with a round shield forward and a broad hand axe ready, face and both hands visible beneath a plain iron cap (no horns). Wool tunic, chainmail, weathered leather and windblown beard; a few longship companions remain small in the mist. Horizontal crossing action, disciplined and formidable rather than comic. Painterly high fantasy collectible-card art with nuanced believable materials, textured brushwork, dramatic attractive light and atmospheric depth, consistent with Hexmancers references. Explicitly 1:1 square 512x512 master with horizontal staging. Keep primary face, relevant hands, key weapon or action inside x24..488,y105..407 for a 206:141 crop; compose main subject in middle 60%, with quiet scenery above and below. No frame, text, letters, UI, anime, Disney-like cartoon proportions, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-a543cb6f-047d-4b03-af18-f54c87524c2e.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_105.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed 512-square source, default 206:141 crop and thumbnail: Viking's face, shield, axe hand and forward charge remain clear; lower legs and scenic longship details crop incidentally."
+  },
+  {
+    "cardId": "gray_summon_106",
+    "name": "Hill Giant",
+    "prompt": "Paint an illustration for Hill Giant, a creature summon whose medieval fantasy action is shown here. A huge gentle-faced but powerful hill giant, a rugged ogre-like mountain dweller with wind-tangled hair and rough fur-and-hide clothing, stands on a steep green hillside and hurls a single large boulder across a valley. Keep the giant's face, throwing hand and boulder all in the central band, waist-up, with a tiny stone watchtower far below showing scale. Broad features and thick hands, no single eye and no cyclops traits, no caricature. Mountain stream and mist suggest a tidal current around the hill. Painterly high fantasy collectible-card art with nuanced believable materials, textured brushwork, dramatic attractive light and atmospheric depth, consistent with Hexmancers references. Explicitly 1:1 square 512x512 master with horizontal staging. Keep primary face, relevant hands, key weapon or action inside x24..488,y105..407 for a 206:141 crop; compose main subject in middle 60%, with quiet scenery above and below. No frame, text, letters, UI, anime, Disney-like cartoon proportions, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-c5281974-8168-437a-ac20-e1a4309038ba.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_106.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed 512-square source, default crop and thumbnail: hill giant face and both hands clearly show the rock throw; the boulder is visible at the right crop edge, while lower body and mountain scenery crop naturally."
+  },
+  {
+    "cardId": "gray_summon_103",
+    "name": "Maasai Spearman",
+    "prompt": "Paint an illustration for Maasai Spearman, a creature summon whose medieval fantasy action is shown here. A brave Maasai spearman in a dignified, historically inspired red shuka, leather sandals, restrained beadwork and practical shield stands beside two companions in an escort formation on an East African grassland. He holds one long throwing spear upright at a slight angle and a hide shield; his focused face and both hands are visible. Golden acacia plain and distant hills, calm readiness rather than battle frenzy; respectful cultural detail, grounded materials. Painterly high fantasy collectible-card art with nuanced believable materials, textured brushwork, dramatic attractive light and atmospheric depth, consistent with Hexmancers references. Explicitly 1:1 square 512x512 master with horizontal staging. Keep primary face, relevant hands, key weapon or action inside x24..488,y105..407 for a 206:141 crop; compose main subject in middle 60%, with quiet scenery above and below. No frame, text, letters, UI, anime, Disney-like cartoon proportions, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-83e2df39-34f8-426b-857e-e6ca1bd692af.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_103.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.35
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Default wide crop cut the spearman's face and spear tip. Reviewed source, shifted crop (focalPoint y=0.35; top y=4), and thumbnail: full face, spearhead, both hands and shield are visible; legs and grass crop naturally."
+  },
+  {
+    "cardId": "gray_summon_104",
+    "name": "Zulu Impi",
+    "prompt": "Paint an illustration for Zulu Impi, a creature summon whose medieval fantasy action is shown here. A swift Zulu impi warrior in historically inspired oxhide shield and short assegai iklwa, wearing dignified traditional attire and beadwork, strides diagonally across a battlefield in a disciplined escort formation. His face, shield arm and spear hand are clear; two companions trail in soft focus to suggest quick zigzag movement and last stand. South African grassland, dynamic but controlled pose, respectful specific cultural portrayal. Painterly high fantasy collectible-card art with nuanced believable materials, textured brushwork, dramatic attractive light and atmospheric depth, consistent with Hexmancers references. Explicitly 1:1 square 512x512 master with horizontal staging. Keep primary face, relevant hands, key weapon or action inside x24..488,y105..407 for a 206:141 crop; compose main subject in middle 60%, with quiet scenery above and below. No frame, text, letters, UI, anime, Disney-like cartoon proportions, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-1e3547ca-2e5c-42b8-a43c-bc4b3012df07.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_104.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.35
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Default wide crop cut the impi warrior's upper face and plume. Reviewed source, shifted crop (focalPoint y=0.35; top y=4), and thumbnail: face, plume, short spear and hide shield remain clear; lower legs and background companions crop naturally."
   }
 ]

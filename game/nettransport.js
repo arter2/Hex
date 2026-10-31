@@ -21,16 +21,34 @@ function b64urlToBytes(t) {
   return u8;
 }
 
+// CRC-16/CCITT: catches every single mistyped character (a burst of up to 11 bits)
+function crc16(u8) {
+  let c = 0xffff;
+  for (const b of u8) {
+    c ^= b << 8;
+    for (let i = 0; i < 8; i++) c = c & 0x8000 ? ((c << 1) ^ 0x1021) & 0xffff : (c << 1) & 0xffff;
+  }
+  return c;
+}
+const OLD = () => new Error('Bad code (this browser is too old for pairing codes)');
+
 // {type, sdp} -> "HEX1.xxxx-xxxx-..."
 async function packSignal(desc) {
+  if (typeof CompressionStream === 'undefined') throw OLD();
   const json = JSON.stringify({ type: desc.type, sdp: desc.sdp });
   const z = await pipeBytes(new TextEncoder().encode(json), new CompressionStream('deflate-raw'));
-  return SIGNAL_PREFIX + bytesToB64url(z).match(/.{1,4}/g).join('-');
+  const out = new Uint8Array(z.length + 2);
+  out.set(z);
+  const crc = crc16(z);
+  out[z.length] = crc >> 8;
+  out[z.length + 1] = crc & 255;
+  return SIGNAL_PREFIX + bytesToB64url(out).match(/.{1,4}/g).join('-');
 }
 
 // the inverse; tolerates whitespace, prefix case and stray separators. Throws Error('Bad code ...') and nothing else.
 async function unpackSignal(code) {
   const bad = why => new Error('Bad code (' + why + ')');
+  if (typeof DecompressionStream === 'undefined') throw OLD();
   if (typeof code !== 'string') throw bad('empty');
   const c = code.replace(/\s+/g, '');
   if (c.slice(0, SIGNAL_PREFIX.length).toUpperCase() !== SIGNAL_PREFIX) throw bad('it should start with HEX1.');
@@ -42,9 +60,13 @@ async function unpackSignal(code) {
   } catch (e) {
     throw bad('characters are wrong');
   }
+  // the last two bytes are the checksum; re-encoding must give the same text, so spare padding bits are checked too
+  if (z.length < 3 || bytesToB64url(z) !== body) throw bad('check the characters');
+  const zz = z.subarray(0, z.length - 2);
+  if (crc16(zz) !== ((z[z.length - 2] << 8) | z[z.length - 1])) throw bad('check the characters');
   let d;
   try {
-    d = JSON.parse(new TextDecoder('utf-8', { fatal: true }).decode(await pipeBytes(z, new DecompressionStream('deflate-raw'))));
+    d = JSON.parse(new TextDecoder('utf-8', { fatal: true }).decode(await pipeBytes(zz, new DecompressionStream('deflate-raw'))));
   } catch (e) {
     throw bad('it is damaged or incomplete');
   }

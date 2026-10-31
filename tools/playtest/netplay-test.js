@@ -442,13 +442,43 @@ test('forgiving input', async () => {
 });
 test('garbage', async () => {
   const code = await packSignal({ type: 'offer', sdp: FIXTURE_SDP });
-  const flip = i => code.slice(0, i) + (code[i] === 'A' ? 'B' : 'A') + code.slice(i + 1);
-  const toxic = ['', 'hello', 'HEX1.', 'HEX1.@@@', 'HEX2.' + code.slice(5), flip(5), flip(6), flip(20), flip(code.length >> 1), flip(code.length - 1),
+  const toxic = ['', 'hello', 'HEX1.', 'HEX1.@@@', 'HEX2.' + code.slice(5), 'HEX1.AAAA', 'HEX1.A',
     await packSignal({ type: 'offer', sdp: 'm=application 9' }), null, undefined, 42];
   for (const c of toxic) {
     const e = await badCode(c);
     assert.ok(e instanceof Error && e.message.startsWith('Bad code'), J(c) + ' -> ' + e);
   }
+});
+test('every single-character typo is caught', async () => {
+  const code = await packSignal({ type: 'offer', sdp: FIXTURE_SDP });
+  const alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_.';
+  let n = 0;
+  for (let i = 5; i < code.length; i++) {
+    if (code[i] === '-') continue;
+    for (const ch of [alpha[(alpha.indexOf(code[i]) + 1) % 64], alpha[(alpha.indexOf(code[i]) + 37) % 64]]) {
+      const e = await badCode(code.slice(0, i) + ch + code.slice(i + 1));
+      assert.ok(e instanceof Error && e.message.startsWith('Bad code'), 'position ' + i + ' ' + ch + ' -> ' + e);
+      n++;
+    }
+  }
+  assert.ok(n > 1000, 'substitutions: ' + n);
+});
+test('old browser without CompressionStream', async () => {
+  const code = await packSignal({ type: 'offer', sdp: FIXTURE_SDP });
+  const CS = globalThis.CompressionStream, DS = globalThis.DecompressionStream;
+  try {
+    delete globalThis.CompressionStream;
+    delete globalThis.DecompressionStream;
+    let e = null;
+    try { await packSignal({ type: 'offer', sdp: FIXTURE_SDP }); } catch (x) { e = x; }
+    assert.equal(e && e.message, 'Bad code (this browser is too old for pairing codes)');
+    e = await badCode(code);
+    assert.equal(e && e.message, 'Bad code (this browser is too old for pairing codes)');
+  } finally {
+    globalThis.CompressionStream = CS;
+    globalThis.DecompressionStream = DS;
+  }
+  assert.equal((await unpackSignal(code)).type, 'offer');
 });
 
 (async () => {

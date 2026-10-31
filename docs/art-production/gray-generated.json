@@ -2338,11 +2338,11 @@
     ],
     "focalPoint": [
       0.5,
-      0.5
+      0.43
     ],
     "status": "generated",
     "batch": 11,
-    "reviewNote": "Reviewed 512-square source, default crop and thumbnail: hill giant face and both hands clearly show the rock throw; the boulder is visible at the right crop edge, while lower body and mountain scenery crop naturally."
+    "reviewNote": "Reviewed shifted crop (focalPoint y=0.43) and thumbnail: giant face, throwing hand and full boulder are centered and readable; lower body and mountain scenery crop naturally."
   },
   {
     "cardId": "gray_summon_103",
@@ -2379,5 +2379,95 @@
     "status": "generated",
     "batch": 11,
     "reviewNote": "Default wide crop cut the impi warrior's upper face and plume. Reviewed source, shifted crop (focalPoint y=0.35; top y=4), and thumbnail: face, plume, short spear and hide shield remain clear; lower legs and background companions crop naturally."
+  },
+  {
+    "cardId": "gray_summon_107",
+    "name": "Rock-Throwing Cyclops",
+    "prompt": "Paint Rock-Throwing Cyclops as a dramatic medieval fantasy creature summon. A huge dire cyclops stands waist-up on a crumbling hillside, unmistakably having exactly one large central eye in its broad weathered face. It draws back a thick muscular arm to hurl one heavy rough boulder across the valley, while its other huge hand braces against a broken stone wall; a planted foot crushes fallen masonry to show trample. Keep the single eye and expression prominent, both hands readable, and the boulder fully visible nearby in the central band. Small distant defenders and a watchtower provide scale. Painterly high-fantasy collectible-card art, textured skin, rough hide, stone and dust, attractive golden storm light, serious grounded anatomy, atmospheric depth. Explicit 1:1 square 512x512 with horizontal staging; keep cyclops face, both hands and rock-throwing action in x24..488,y105..407 for 206:141 crop, quiet sky and ground above/below. No extra eyes, no second cyclops, no frame, text, UI, anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-ad35c20b-5d13-433d-b664-3eaae72af938.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_107.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed shifted crop (focalPoint y=0.43) and thumbnail: single eye and face, throwing and bracing hands, full boulder and trample rubble remain clear; lower legs and scenery crop naturally."
+  },
+  {
+    "cardId": "gray_summon_108",
+    "name": "Stone Troll",
+    "prompt": "Paint Stone Troll as a painterly medieval/high-fantasy collectible-card illustration. A powerful stone troll with a clearly troll-like broad face, heavy brow, weathered gray stone skin and moss-filled cracks bounds into a low pouncing stance beside two small armored companions. Its thick forearms and clenched hands show charging strength; flecks of warm amber energy glow only within stone fissures. Make the troll's face and rock body unmistakable, with the companions secondary. Grounded creature anatomy and fur, stone, leather and cloth materials; attractive directional light, atmospheric depth, textured brushwork consistent with Hexmancers references. Explicit 1:1 square 512x512 master with horizontal staging. Keep the primary face, species traits, relevant hands and action within x24..488,y105..407 for a 206:141 crop; compose the subject in the middle 60%, quiet scenery above and below, incidental legs/background may crop. No frame, text, letters, UI, anime, Disney-like proportions, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-4fa437be-055a-4f29-9e43-eb91b7107c5c.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_108.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed 512-square source, default crop and thumbnail: troll's broad face, stone skin with moss/cracks, pounce and both fists remain clear; companions stay secondary."
+  },
+  {
+    "cardId": "gray_summon_110",
+    "name": "Mountain Gorilla",
+    "prompt": "Paint Mountain Gorilla as a painterly medieval/high-fantasy collectible-card illustration. A powerful real mountain gorilla with dense dark fur, a distinct silver saddle across its back, deep-set intelligent eyes and broad nose surges forward in a short protective pounce through a misty mountain forest. One massive hand reaches forward while the other steadies against a rock; the gorilla's full face and unmistakable species traits dominate. Natural animal anatomy, no armor or human clothing. Grounded creature anatomy and fur, stone, leather and cloth materials; attractive directional light, atmospheric depth, textured brushwork consistent with Hexmancers references. Explicit 1:1 square 512x512 master with horizontal staging. Keep the primary face, species traits, relevant hands and action within x24..488,y105..407 for a 206:141 crop; compose the subject in the middle 60%, quiet scenery above and below, incidental legs/background may crop. No frame, text, letters, UI, anime, Disney-like proportions, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-071bf1a6-dfc0-49f7-8eb2-282a8f94d42d.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_110.png",
+    "sourceNative": [
+      1402,
+      1122
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed center-normalized 512 source, default crop and thumbnail: gorilla face, dark fur, silver saddle and both reaching hands remain unmistakable; incidental lower limbs and forest floor crop."
+  },
+  {
+    "cardId": "gray_summon_109",
+    "name": "Ogre Brute",
+    "prompt": "Paint Ogre Brute as a painterly medieval/high-fantasy collectible-card illustration. A huge broad-shouldered ogre brute with a blunt strong face, tusks, rough fur-and-hide clothing and enormous hands hurls one heavy boulder across a ruined hill pass. Its other hand braces on a low stone wall; two small allies sheltered behind show its escort role. Keep face, throwing arm, bracing hand and boulder visible together, waist-up. Grounded creature anatomy and fur, stone, leather and cloth materials; attractive directional light, atmospheric depth, textured brushwork consistent with Hexmancers references. Explicit 1:1 square 512x512 master with horizontal staging. Keep the primary face, species traits, relevant hands and action within x24..488,y105..407 for a 206:141 crop; compose the subject in the middle 60%, quiet scenery above and below, incidental legs/background may crop. No frame, text, letters, UI, anime, Disney-like proportions, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-4a4a4ac0-e006-4adb-bd86-c43903029a87.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_109.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Default crop clipped the boulder. Reviewed shifted crop (focalPoint y=0.43; top=46) and thumbnail: complete boulder, throwing hand, ogre's face and bracing hand all fit; lower body and scenery crop."
+  },
+  {
+    "cardId": "gray_summon_111",
+    "name": "Sling Monkey",
+    "prompt": "Paint Sling Monkey as a painterly medieval/high-fantasy collectible-card illustration. A nimble brown capuchin monkey perches on a low stone ledge, alert face visible, using both hands to swing a simple leather sling with one smooth stone toward a distant target. Keep the complete loop and weighted stone within the crop; show a faint pale-blue protective ward around the monkey's shoulders, restrained so it does not obscure the sling. Forest ruins, clever agile pose, believable small monkey anatomy. Grounded creature anatomy and fur, stone, leather and cloth materials; attractive directional light, atmospheric depth, textured brushwork consistent with Hexmancers references. Explicit 1:1 square 512x512 master with horizontal staging. Keep the primary face, species traits, relevant hands and action within x24..488,y105..407 for a 206:141 crop; compose the subject in the middle 60%, quiet scenery above and below, incidental legs/background may crop. No frame, text, letters, UI, anime, Disney-like proportions, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-f22670fd-35a4-4833-a502-186f05a3c366.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_111.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.32
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Default crop clipped the sling stone and top arc. Reviewed shifted crop (focalPoint y=0.32; top clamped at 0) and thumbnail: full sling loop, stone, monkey face and both working hands remain visible; lower ledge is incidental."
   }
 ]

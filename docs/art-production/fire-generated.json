@@ -2386,5 +2386,95 @@
     "status": "generated",
     "batch": 11,
     "reviewNote": "Repainted after the first crop clipped the flask-holding hand at the left edge. Reviewed the new 512-square source, 206:141 crop and 128x88 thumbnail: keeper's complete face and both hands, full held lantern-oil flask with stopper and base, airborne flask and oil splash all remain visible. Previous master preserved at /tmp/fire03-repaint-scratch/fire_charge_11-before-repaint.png."
+  },
+  {
+    "cardId": "fire_trap_10",
+    "name": "Firework Mine",
+    "prompt": "Paint Firework Mine as a single named fantasy trap: a compact iron-studded spherical mine with a short bright fuse rests half-concealed on a cobbled mountain pass, with its short-radius blast represented by a tight expanding ring of sparks and several vivid red, amber and gold firework stars. A tiny startled boot just outside the ring hints at danger. Keep the complete mine and its spark burst unmistakable, not a generic bonfire. Painterly medieval high-fantasy collectible-card illustration, tactile forged metal, colorful sparks, warm night lighting and atmospheric depth. Explicit 1:1 square 512 master; keep the entire mine and core blast inside x24..488,y105..407 for 206:141 crop. No text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-080b843f-1805-4b4e-bf2b-6d1c60d4a287.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/fire_trap_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed square, wide crop and thumbnail. Complete mine remains central and legible amid distinct short-radius firework sparks; boot is supporting context."
+  },
+  {
+    "cardId": "fire_environment_11",
+    "name": "Mountain's Wrath",
+    "prompt": "Paint Mountain's Wrath as a burst of cursed seismic fury: a great volcanic mountainside shudders, a fresh jagged crack races through the foreground stone, ash and fiery fragments burst outward while the mountain's summit vents a glowing plume. A small ancient shrine trembles at the edge to show scale. The mountain and its ground-burst are the clear subject; dramatic red-orange magma veins illuminate dark basalt and ash. Painterly medieval high-fantasy landscape art, textured rock, atmospheric depth, powerful readable tremor action. Explicit 1:1 square 512 master for a 206:141 horizontal crop; keep the central burst, cracked ground and visible mountain within x24..488,y105..407. Quiet smoky sky/foreground beyond. No text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2ec00624-3482-4523-8842-e6c91905e3b5.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/fire_environment_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed square, wide crop and thumbnail. Erupting mountain, seismic burst and cracked foreground remain clear with shrine as scale."
+  },
+  {
+    "cardId": "fire_summon_08",
+    "name": "Kitsune",
+    "prompt": "Paint Kitsune as a graceful but formidable Japanese fox spirit in a medieval fantasy forest: a beautiful red-gold fox with a clear intelligent face and bright amber eyes bounds in a sharp zigzag turn, its several flowing tails tracing elegant ribbons of warm foxfire and a few cool frost sparks that hint at its chilling aura. One fox only; the animal, face and lively movement are primary, with no human. Painterly high-fantasy folklore illustration, anatomically believable fox proportions, rich fur detail, expressive eyes, warm lantern light and atmospheric forest depth. Explicit 1:1 square 512 master; keep full fox face and central body within x24..488,y105..407 for 206:141 crop; tail tips and lower legs may crop. No anime, Disney-like proportions, text/frame/UI, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-02a70061-f17d-4cb9-b950-ba9f2a6be2a1.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/fire_summon_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed square, wide crop and thumbnail. Fox's complete face and body remain clear; tail tips and lower legs crop naturally."
+  },
+  {
+    "cardId": "fire_machine_07",
+    "name": "Iron Barricade",
+    "prompt": "Paint Iron Barricade as a complete standalone medieval-fantasy warding machine: a substantial portable iron-and-oak defensive barrier on sturdy feet, made of broad interlocked metal plates, riveted crossbars and a few upward-pointing spikes, with small orange ward-embers glowing along its front. Show the complete barricade from foot to top edge in a clear straight-on three-quarter view; the wall itself is the sole primary subject, with no operator. The broad structure feels huge and steady, not a handheld shield. Painterly medieval high-fantasy collectible-card art, believable forged iron and weathered oak, warm directional firelight and atmospheric depth. Explicit 1:1 square 512 master; keep the entire structure inside x24..488,y105..407 for the wide 206:141 crop, with margin on all sides. No text/frame/UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-718904d1-5e36-470d-96b8-b34948017a4d.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/fire_machine_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed square, wide crop and thumbnail. Main iron plate wall, spikes and ward-embers read clearly; outer spike tips and support-foot extremities crop naturally."
+  },
+  {
+    "cardId": "hero_magmar",
+    "name": "Magmar the Molten",
+    "prompt": "Paint Magmar the Molten, a powerful male fantasy hero made from living magma and dark volcanic stone, his stern molten face and glowing eyes clearly visible through a basalt helm-like brow. He wears natural crusted stone armor and drives one massive fist downward, erupting a compact ring of bright molten lava around a nearby enemy; the eruption burns while a hard outer crust shields Magmar. Keep his full face, both hands, central torso and main eruption distinct and readable, with the enemy secondary. Painterly medieval high-fantasy collectible-card art, sculptural volcanic materials, dramatic orange light against cool ash, atmospheric depth, grounded heroic anatomy. Explicit 1:1 square 512 master; keep face, action hands and core magma burst inside x24..488,y105..407 for the 206:141 horizontal crop; incidental lower legs and flying debris may crop. No text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2dbbc103-8aaf-4100-b709-8c2a1485351c.png",
+    "focalPoint": [
+      0.5,
+      0.35
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/hero_magmar.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed square, top-shifted wide crop and thumbnail. Focal y .35 retains Magmar's full face and both action hands together with the central eruption; lower legs are incidental."
   }
 ]

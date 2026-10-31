@@ -2325,11 +2325,11 @@
     ],
     "focalPoint": [
       0.5,
-      0.44
+      0.4
     ],
     "status": "generated",
     "batch": 11,
-    "reviewNote": "Focal y=0.44 keeps Frida’s face, raised hand and ice-spike action fully visible in the wide crop."
+    "reviewNote": "Focal y=0.44 keeps Frida’s face, raised hand and ice-spike action fully visible in the wide crop. Parent shifted crop to y=.40 for extra clearance above all raised fingertips; lower clothing and ice trails are incidental."
   },
   {
     "cardId": "frost_strike_11",
@@ -2352,8 +2352,8 @@
   {
     "cardId": "frost_lob_12",
     "name": "Spring Water Gourd",
-    "prompt": "Paint an illustration for Spring Water Gourd. A whole compact carved wooden gourd flask rests at center, with its rounded body, narrow neck, stopper and complete tied strap all visible; clear spring water glows through a carved opening and beads of cold water catch the light. Mechanics: a heavy single-target lobbed spring-water gourd with a lingering curse. Painterly medieval high-fantasy collectible-card artwork, believable materials and anatomy, dramatic cool directional light with warm accents, atmospheric depth matching supplied Hexmancers style references. Clear bold primary subject in the middle 60% of an explicit 1:1 square 512x512 master. Keep complete gourd, primary face and relevant hand, or whole ship/shark identity inside x24..488,y105..407 for a 206:141 crop; leave quiet scenery above and below. No border, letters, numbers, runes, UI, anime, Disney-like cartoon, photorealism or pixel art.",
-    "generatedPath": "/workspace/generated_images/exec-563dcc61-49eb-4564-a794-c5578db68ed0.png",
+    "prompt": "Repaint this as a painterly medieval high-fantasy collectible-card illustration of Spring Water Gourd. Preserve the carved wooden flask, clear luminous spring water, stopper, strap knot and refined craft, but make the complete gourd noticeably more compact, about 20% shorter in the frame than the reference. Center it with its highest stopper tip around y=125 and its lowest wooden base around y=385 on a 512x512 square, leaving clear margin above and below inside the card-safe band y105..407. Show the whole cork, neck, rounded body, base and tied strap knot together. Keep trailing strap short and incidental. Standalone artifact on a wet stone beside a cold spring, painterly fantasy light and atmospheric depth, strong readable silhouette in the 206:141 horizontal crop and at thumbnail size. Explicit 1:1 square 512x512. No people, text, border, letters, symbols, UI, photorealism, anime or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-373f075a-4571-4016-9b3f-fff3ced13d5b.png",
     "editableSourcePath": "game/cards/art/masters/frost_lob_12.png",
     "sourceNative": [
       1254,
@@ -2365,6 +2365,24 @@
     ],
     "status": "generated",
     "batch": 11,
-    "reviewNote": "Focal y=0.47 keeps the gourd body, neck, stopper and strap knot visible; trailing strap is incidental."
+    "reviewNote": "Repainted about 20% shorter in frame; full cork, neck, rounded body and wooden base fit with margin in the wide crop. Earlier source preserved at /tmp/worker-frost-03/frost_lob_12-initial.png."
+  },
+  {
+    "cardId": "frost_ward_11",
+    "name": "Kelp Curtain",
+    "prompt": "Paint an illustration for Kelp Curtain, a long warding shield formed by a dense curtain of kelp in a medieval fantasy sea. A sturdy interwoven wall of broad green kelp fronds and seaweed strands stretches across the center like a protective barrier, bubbles and cool turquoise light threading its wet leaves; a few incoming spears or bubbles stop at its surface, and fine thornlike kelp tips suggest a stinging defense. Make the central barrier bold and readable, fill most of the middle 60% of an explicit 1:1 square 512x512 canvas, with quiet dark water above and below for a 206:141 crop. No operator necessary. Painterly fantasy materials, atmospheric underwater light, clear value separation and detail that reads at thumbnail size. No frame, lettering, numbers, symbols, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-94ca3ec3-5abe-4fe6-9e1f-d9fd25da3743.png",
+    "editableSourcePath": "game/cards/art/masters/frost_ward_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "The long kelp barrier fills the wide crop with clear stopping spears and thornlike fronds; silhouettes and bubbles remain secondary."
   }
 ]

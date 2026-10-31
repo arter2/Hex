@@ -2383,5 +2383,95 @@
     "status": "generated",
     "batch": 11,
     "reviewNote": "Reviewed 512-square source and upward-shifted 206:141 crop/thumb at focal y=0.40. The crusader's complete face, heart hand, sword hand and vow remain visible with the bright pact light; lower legs and courtyard are expendable."
+  },
+  {
+    "cardId": "light_charge_11",
+    "name": "Sealed Edict Scrolls",
+    "prompt": "Paint an illustration for Sealed Edict Scrolls, a reusable holy charge thrown in a lob that erupts in a stunning burst. Show a small horizontal bundle of three complete ancient parchment scrolls, each tightly rolled and sealed with prominent red-gold wax stamps and silk cords; keep every rolled end, cord and seal visible. An ivory-robed courier with a clear face and throwing hand has just tossed the sealed bundle; it floats beside the courier's face at the same height while a restrained circle of golden force blooms around stunned armored foes. The complete sealed scroll bundle is the named subject; no readable writing. Painterly medieval high fantasy, believable parchment, wax and cloth, warm dawn light, atmospheric depth and grounded proportions. Explicit 1:1 SQUARE 512x512 composition; complete scroll bundle with all seals, operator face, hand and clear stun effect inside x24..488,y105..407 for 206:141 wide crop, quiet chapel shadows above and below. No card frame, lettering, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-63977a54-9aa8-433a-9fff-e28dd9131027.png",
+    "editableSourcePath": "game/cards/art/masters/light_charge_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop and 128x88 thumbnail. All three rolled scrolls, red wax seals and cords stay intact beside the courier's clear face and casting hand; the holy stun ring reads behind them."
+  },
+  {
+    "cardId": "light_utility_11",
+    "name": "Timbuktu Manuscripts",
+    "prompt": "Paint an illustration for Timbuktu Manuscripts, a rare scholarly utility that reveals knowledge from one manuscript. An elderly West African scholar-librarian with a clear wise face and one visible hand carefully draws one complete open illuminated manuscript from a short stack of leather-bound codices on a cedar reading table. Show the full book with both covers, spine and gently spread pages beside the scholar's face at the same height; the pages carry intricate geometric diagrams, gold illumination and fine non-legible ink strokes, no readable words. The manuscript is the strong named subject. Painterly medieval high fantasy grounded in historic Timbuktu scholarship, rich leather, parchment and brass, attractive lamplight, quiet library depth and respectful dignified portrayal. Explicit 1:1 SQUARE 512x512 image; keep complete open manuscript, covers, scholar's face and hand inside x24..488,y105..407 for 206:141 wide crop, quiet shelves above and table below. No frame, typography, legible text, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-1d0382e6-1e4f-4137-8944-0b2133fe93c1.png",
+    "editableSourcePath": "game/cards/art/masters/light_utility_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed 512-square source and upward-shifted 206:141 crop/thumb at focal y=0.40. This retains the scholar's full face and hand with the complete open manuscript, covers and illuminated diagrams; lower table/books are expendable."
+  },
+  {
+    "cardId": "light_summon_07",
+    "name": "Snow Crane",
+    "prompt": "Paint an illustration for Snow Crane, a sturdy summoned winter crane whose poised presence empowers an ally and frightens foes. A magnificent white snow crane stands at the edge of a frozen marsh, its full graceful head, long neck and sharp black-tipped beak clear; a compact folded wing and sturdy legs establish its bird form, with feather tips and lower legs allowed to crop naturally. A small frost-worn ranger beside it receives a soft blessing of pale gold light from the crane's raised wing, while a distant enemy hesitates in awe. Keep the crane much larger and more memorable than people, elegant and serious rather than cute. Painterly medieval fantasy, fine white plumage, silver-blue snow and warm low sunlight, atmospheric depth and natural bird anatomy. Explicit 1:1 SQUARE 512x512; crane eye, beak, head and neck plus the blessing action fit x24..488,y105..407 for 206:141 crop, quiet sky and reed beds above/below. No frame, lettering, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-1849768e-fef3-4080-9a66-9bb0b7ec5956.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed 512-square source and upward-shifted crop/thumb at focal y=0.38. The crane's complete head, eye, long neck and pointed beak remain visible with the blessing action; outer wing tips and lower legs are incidental."
+  },
+  {
+    "cardId": "light_machine_07",
+    "name": "Curtain Wall Rampart",
+    "prompt": "Paint an illustration for Curtain Wall Rampart, a huge slow medieval siege machine that builds a protective ward wall and pushes enemies back. Show a broad, squat wheeled rolling rampart of heavy oak panels, iron braces, a crenellated fighting platform and a full low carriage base; its complete horizontal silhouette is the main subject. A pair of medieval engineers guide it from beside the machine, one clear face and one hand on a control beam, as its shield panels unfold into a long defensive barrier across the battlefield and two foes are pushed away. Keep it a believable massive timber siege structure, not a castle or modern vehicle. Painterly medieval high fantasy, textured oak, iron and canvas, warm directional daylight, atmospheric depth, grounded figures. Explicit 1:1 SQUARE 512x512 composition; preserve the broad rampart, visible full base, defining extended wall and engineer face/hand within x24..488,y105..407 for the 206:141 crop; quiet smoke and sky top/bottom. No frame, text, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-433c8c3e-d566-4511-b5fb-f49547899e52.png",
+    "editableSourcePath": "game/cards/art/masters/light_machine_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop and 128x88 thumbnail. Broad curtain-wall machine, carriage wheels and extended defensive wall dominate; one engineer's face and hands remain recognizable beside it, while distant figures/scenery are secondary."
+  },
+  {
+    "cardId": "hero_lux",
+    "name": "Lux the Lantern Bearer",
+    "prompt": "Paint a dramatic hero-card illustration for Lux the Lantern Bearer, a radiant light hero whose lantern shines a piercing beam down a row while nearby allies steadily recover. Show a confident adult woman lantern-bearer with a clear expressive face and one raised hand holding a compact complete medieval brass-and-glass lantern beside her face at the same height; show its full arched handle, crown, glowing chamber and broad base. The lantern casts a narrow bright horizontal beam across a line of armored foes, while warm softer light mends a wounded ally near Lux. Keep Lux and the entire named lantern prominent and unhidden by glare; horizontal battle staging, grounded anatomy and a calm heroic expression. Painterly medieval high fantasy, richly textured brass, glass, leather and cloth, dawn-gold directional light and atmospheric depth. Explicit 1:1 SQUARE 512x512 composition; keep her whole face, lantern hand, complete lantern and defining horizontal beam inside x24..488,y105..407 for the 206:141 wide crop, quiet sky and battlefield above/below. No card frame, lettering, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-87b85221-7b7a-43b4-b94e-2ed8e9e8c8e3.png",
+    "editableSourcePath": "game/cards/art/masters/hero_lux.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop and 128x88 thumbnail. Lux's full face and raised lantern hand, complete brass lantern including handle/base, horizontal piercing beam and healing glow remain visible; the lantern reads at thumbnail scale."
   }
 ]

@@ -4,8 +4,8 @@
   "active": 1034,
   "remaining": 919,
   "pending": 719,
-  "assigned": 83,
-  "awaitingReview": 117,
+  "assigned": 61,
+  "awaitingReview": 139,
   "countsByColour": {
     "brown": 234,
     "fire": 246,
@@ -462,7 +462,7 @@
       "name": "Brass Tortoise Wall",
       "type": "machine",
       "color": "brown",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -857,7 +857,7 @@
       "name": "Elven Star Map",
       "type": "instant",
       "color": "brown",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -866,7 +866,7 @@
       "name": "Gnomish Punch-Card Reader",
       "type": "instant",
       "color": "brown",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -875,7 +875,7 @@
       "name": "Dowsing Rod",
       "type": "instant",
       "color": "brown",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -884,7 +884,7 @@
       "name": "Gnomish Card-Finder",
       "type": "instant",
       "color": "brown",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -3317,7 +3317,7 @@
       "name": "Firework Mine",
       "type": "trap",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -3416,7 +3416,7 @@
       "name": "Mountain's Wrath",
       "type": "environment",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -3541,7 +3541,7 @@
       "name": "Kitsune",
       "type": "summon",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -3900,7 +3900,7 @@
       "name": "Iron Barricade",
       "type": "machine",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -4081,7 +4081,7 @@
       "name": "Magmar the Molten",
       "type": "hero",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -4805,7 +4805,7 @@
       "name": "Kelp Curtain",
       "type": "ward",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -7245,7 +7245,7 @@
       "name": "Rock-Throwing Cyclops",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -7254,7 +7254,7 @@
       "name": "Stone Troll",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -7263,7 +7263,7 @@
       "name": "Ogre Brute",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -7272,7 +7272,7 @@
       "name": "Mountain Gorilla",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -7281,7 +7281,7 @@
       "name": "Sling Monkey",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -9214,7 +9214,7 @@
       "name": "Sealed Edict Scrolls",
       "type": "charge",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -9362,7 +9362,7 @@
       "name": "Timbuktu Manuscripts",
       "type": "utility",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -9656,7 +9656,7 @@
       "name": "Snow Crane",
       "type": "summon",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -10023,7 +10023,7 @@
       "name": "Curtain Wall Rampart",
       "type": "machine",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -10311,7 +10311,7 @@
       "name": "Lux the Lantern Bearer",
       "type": "hero",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -15657,7 +15657,7 @@
       "name": "Bola Set",
       "type": "charge",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },

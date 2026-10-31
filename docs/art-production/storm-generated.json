@@ -2212,5 +2212,95 @@
     "status": "generated",
     "batch": 11,
     "reviewNote": "The full celadon cup, handle, tea surface, mint leaves and saucer fit cleanly in the square source and wide crop; the herbal steam reads at thumbnail size."
+  },
+  {
+    "cardId": "storm_charge_10",
+    "name": "Alchemist's Bandolier",
+    "prompt": "Paint Alchemist's Bandolier as the clear named artifact: a compact richly crafted leather bandolier draped horizontally over a weathered wooden alchemist's workbench, filled with several small distinct glass flasks, corked vials and a few secure lobbed splash-charge bottles in different jewel tones. Show the entire strap from end to end and every bottle safely attached; one hand enters frame carefully selecting a flask, with a blurred robed alchemist's face softly visible behind at the same height. The bandolier and its contents are primary, not a generic explosion. Painterly medieval high fantasy collectible-card illustration, tactile leather stitching, glass reflections, warm workshop light and atmospheric depth. Explicit 1:1 square 512 master; entire bandolier and flask contents within x24..488,y105..407 for 206:141 crop. Quiet shelves/bench beyond. No text, frame, UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-863f4072-4bd0-457c-aace-dafb739d2e73.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/storm_charge_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed square, wide crop and thumbnail. Complete bandolier, strap and full flask array fit; selecting hand is clear, while alchemist is supporting context."
+  },
+  {
+    "cardId": "storm_trap_10",
+    "name": "Collapsing Tomb Floor",
+    "prompt": "Paint Collapsing Tomb Floor: a broad ancient stone floor suddenly gives way into a short but deep rectangular pit, with heavy carved slabs tipping inward and dust and fragments falling; a lone adventurer at the safe edge recoils, face and one bracing hand visible, while the trap opening is the primary subject. Show an unmistakable horizontal row of fractured floor stones and the dark cavity beneath, no gore. Painterly medieval high fantasy collectible-card illustration, ancient tomb carvings, warm torchlight against cool shadow, dramatic readable depth. Explicit 1:1 square 512 master; complete main opening and the adventurer's face/hand fit x24..488,y105..407 for wide 206:141 crop; quiet ceiling and lower rubble beyond. No text/frame/UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8a60d89e-b32f-4338-8916-ec9c5b38b8af.png",
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/storm_trap_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed square, top-shifted crop and thumbnail. Recoiling adventurer's full face and bracing hand now remain visible above the collapsing slab row; pit and tumbling stones stay clear."
+  },
+  {
+    "cardId": "storm_environment_09",
+    "name": "Storm Front",
+    "prompt": "Paint Storm Front as a horizontal advancing weather wall sweeping across a broad desert plain: a dramatic dark blue-gray shelf of storm cloud rolls from left to right, its leading edge driving a visible band of wind and sand across the ground, bending sparse palms and lifting dust; a tiny caravan at a safe distance shows scale. The immense storm front is the unmistakable subject and the ground-level gust row reads clearly. Painterly medieval high fantasy landscape, luminous breaks of sunlight, rich atmospheric depth and textured clouds, elegant dramatic light. Explicit 1:1 square 512 master for a horizontal 206:141 card crop; keep the storm's leading edge and key landscape action in x24..488,y105..407, with quiet sky above and ground below. No text/frame/UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-cce28093-6c25-4a21-a159-cbf6b1d3fc2f.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/storm_environment_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed square, wide crop and thumbnail. Storm wall's leading edge, ground-level wind and distant caravan read clearly as one advancing weather front."
+  },
+  {
+    "cardId": "storm_summon_07",
+    "name": "Sand Scarab",
+    "prompt": "Paint Sand Scarab: one formidable golden-brown scarab beetle scuttles quickly over wind-rippled desert stone, its intelligent dark eyes and horned head prominent, segmented shell dusted with sand and catching amber light. Its sturdy armored body is the primary subject; a few faint chained sparks of storm energy trail behind as a subtle hint of linked attacks, not obscuring the beetle. Painterly medieval high fantasy creature illustration, believable insect anatomy and detailed shell, warm directional light, atmospheric desert depth. Explicit 1:1 square 512 master; full scarab head, eyes and central shell/body fit x24..488,y105..407 for 206:141 crop; incidental legs may crop. Quiet sky and sand beyond. No text/frame/UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6ce8c089-a4aa-4f4e-9ed4-6a0f5591f945.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/storm_summon_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed square, wide crop and thumbnail. Scarab's full horned head, eyes and shell remain dominant; some incidental lower legs crop naturally."
+  },
+  {
+    "cardId": "storm_machine_07",
+    "name": "Scorpio Bolt Thrower",
+    "prompt": "Repaint Scorpio Bolt Thrower as a compact complete ancient-fantasy ballista, deliberately small enough to fit with generous margins. One self-contained Roman-style scorpio engine on a short four-wheel wooden carriage, with paired torsion bundles, crossbar, central trough and a single short loaded bolt visibly ending in its point. Show all four wheels and the entire pointed bolt together in one clear three-quarter view; nothing may touch any image edge. The whole machine should occupy only the central 68 percent of the square's width, with obvious empty sky at left and right. No oversized elongated weapon, no cropped parts, no people. Stand on a desert stone rampart under calm storm-blue sky; warm golden light on aged timber and bronze fittings. Painterly medieval high-fantasy collectible-card art, atmospheric depth, tactile material detail. Explicit 1:1 square 512 master. Keep every component from wheel rims through bolt tip inside x55..457 and y140..370, safely within the horizontal 206:141 card crop band. No text, frame, lettering, UI, modern weapons, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-fe7716e1-d244-425c-8d7a-ffcba1f34fde.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/storm_machine_07.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "The first attempt clipped the bolt and wheel edges; its 512 source is preserved at /tmp/storm-machine-07-repair/storm_machine_07-before-repair.png. Reviewed this replacement square, wide crop and thumbnail: all four wheels, carriage, torsion engine and complete bolt tip fit with margins."
   }
 ]

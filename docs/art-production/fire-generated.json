@@ -2246,8 +2246,8 @@
   {
     "cardId": "fire_summon_07",
     "name": "Phoenix Chick",
-    "prompt": "Paint an illustration for Phoenix Chick, a tiny but sturdy young phoenix that moves slowly, lashes enemies with a cone of flame and draws them toward it in fury. A vivid small young phoenix stands centered on a black volcanic ledge, complete bird visible from crest to tail; ember-gold feathers, ruby eyes and ash-grey down give it a recognizable juvenile bird silhouette without cute cartoon proportions. It beats its wings once, sending a broad short cone of flame toward an armored foe while a curling fire current pulls the foe toward it. Keep the bird larger and clearer than its target. Painterly medieval fantasy, finely brushed feathers, warm firelight against smoky dusk, grounded natural anatomy and atmospheric depth. Explicit 1:1 SQUARE 512x512 composition; complete phoenix body, face, wings and defining cone-and-pull action inside x24..488,y105..407 for 206:141 crop, quiet smoke above and basalt below. No frame, lettering, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
-    "generatedPath": "/workspace/generated_images/exec-1abe9b16-ce2d-4668-9eb8-2b389a681251.png",
+    "prompt": "Refine this illustration further so it reads unmistakably as a very young Phoenix Chick. Keep the same painterly fantasy style, volcanic ledge, warm ember lighting and broad action layout, but redesign the bird with clear baby-bird proportions: a compact round fluffy body, head relatively large but still natural, very short blunt beak, tiny dark natural eyes, short little legs, and small stubby developing wings only partly opened with sparse soft ember-colored down rather than long flight feathers. Add a soft uneven coat of gold, orange and soot-gray baby down; keep just a few emerging flame-feathers along the tiny wings and crown. It should look newly hatched, not a scaled-down adult phoenix, not like an eagle, and not cartoonish. Perch the tiny chick on a scorched stone beside a little nest of ember twigs; show its whole body and little feet. A modest cone of flame can flare from its beak toward a much larger distant enemy to convey the phoenix's magic. Make the large bird-size difference unmistakable. Keep the complete chick head, body, stubby wings and feet inside x24..488,y105..407 for the 206:141 crop, with quiet smoke above and basalt below. Square 1:1 image; no text, border, UI, anime, Disney, huge eyes, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-41a7134d-830a-4dbd-9404-09dbe2a65818.png",
     "editableSourcePath": "game/cards/art/masters/fire_summon_07.png",
     "sourceNative": [
       1254,
@@ -2259,7 +2259,7 @@
     ],
     "status": "generated",
     "batch": 11,
-    "reviewNote": "Reviewed the 512-square source, 206:141 crop and 128x88 thumbnail. The phoenix's head and body plus its cone of flame pulling a foe remain clear; upper wing tips and lower volcanic scenery are incidental crop details."
+    "reviewNote": "Repainted to show a clearly juvenile phoenix with a compact fluffy body, very short beak, tiny natural eye, stubby developing wings and little feet beside a small ember nest. Reviewed the new 512-square source, 206:141 crop and 128x88 thumbnail; the chick remains whole and distinct, and the modest fire cone still communicates its attack. Previous master preserved at /tmp/fire02-repaint-scratch/fire_summon_07-before-repaint.png."
   },
   {
     "cardId": "fire_machine_06",
@@ -2296,5 +2296,95 @@
     "status": "generated",
     "batch": 11,
     "reviewNote": "Reviewed the 512-square source, 206:141 crop and 128x88 thumbnail. Kael's full face, sword hand, cinderblade slash and the struck enemy remain clear in the wide crop and readable at thumbnail size."
+  },
+  {
+    "cardId": "fire_strike_12",
+    "name": "Pickaxe Strike",
+    "prompt": "Paint an illustration for Pickaxe Strike, a charged wedge-shaped blow that hits hard and knocks the target back, stunning them. A rugged dwarven miner with a clearly visible determined face plants both hands on a long-handled iron pickaxe and completes one powerful diagonal wedge strike against an armored foe; the foe recoils backward from the impact. Show the entire pickaxe, from butt of handle through both sharp head points, with strong readable silhouette beside the miner's face and hands; it is the named weapon and focal action. Painterly medieval high fantasy, believable forged iron, wood, leather and sparks, dramatic firelight against a dark stone mine, atmospheric depth and grounded anatomy. Explicit 1:1 SQUARE 512x512 composition; full face, both gripping hands, whole pickaxe head and handle, and recoiling impact fit x24..488,y105..407 for 206:141 crop, quiet mine shadows above and below. No frame, lettering, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-80a34f4c-edd0-42d8-88eb-7d0e486ef496.png",
+    "editableSourcePath": "game/cards/art/masters/fire_strike_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop and 128x88 thumbnail. Dwarf's face and hands, full pickaxe head and handle and recoiling impact remain visible; charged strike reads at thumbnail size."
+  },
+  {
+    "cardId": "fire_lob_13",
+    "name": "Gremlin Grenade",
+    "prompt": "Paint an illustration for Gremlin Grenade, a small quick-fuse thrown explosive that bursts in a cross pattern and knocks foes down. A mischievous but grounded medieval gremlin saboteur with a clearly visible face and throwing hand hurls one compact iron-and-brass grenade with a short burning fuse; show the complete round grenade body, four cross-like fins and entire fuse cap clearly beside the gremlin's face at the same height. It detonates in a compact four-direction cross-shaped burst, knocking two armored foes off balance, while the grenade stays recognizable as the named artifact. Painterly medieval high fantasy, tactile metal, soot and leather, vivid controlled orange firelight, atmospheric depth, no cartoon proportions. Explicit 1:1 SQUARE 512x512; keep full gremlin face, throwing hand, complete grenade with fuse and clear cross-burst inside x24..488,y105..407 for 206:141 crop, quiet expendable battlement above and below. No text, frame, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-1781abc9-4f1c-4b66-a073-f72ea6d2be7e.png",
+    "editableSourcePath": "game/cards/art/masters/fire_lob_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed 512-square source and shifted 206:141 crop/thumb at focal y=0.40. This upward crop restores the gremlin's full face and throwing hand while retaining the full cross-finned grenade, fuse and central blast; lower masonry and one foe are expendable."
+  },
+  {
+    "cardId": "fire_boon_11",
+    "name": "Molten Courage",
+    "prompt": "Paint an illustration for Molten Courage, an immediate short-lived fire boon that fills a warrior with bravery and scorches nearby enemies. A battle-worn human champion with a strong fully visible face raises one clenched hand and roars defiantly as molten orange light kindles inside his armor and along his sword arm; nearby foes flinch from the heat. Show confidence and courage in his expression and stance, with a restrained hot aura close to the champion rather than a giant spell explosion. Painterly medieval high-fantasy collectible-card art, textured steel, leather, soot and cloth, warm directional firelight, atmospheric depth and grounded anatomy. Explicit 1:1 SQUARE 512x512 composition; keep full face, raised hand, upper torso and nearby scorched enemies inside x24..488,y105..407 for 206:141 crop, quiet smoke above and battlefield below. No frame, lettering, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-05b766ec-31fc-41ec-b8aa-2f5ab892cb5a.png",
+    "editableSourcePath": "game/cards/art/masters/fire_boon_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop and 128x88 thumbnail. Champion's face, raised fist and upper body remain clear with firelight and nearby foes; molten courage reads at thumbnail scale."
+  },
+  {
+    "cardId": "fire_ward_12",
+    "name": "Anvil Guard",
+    "prompt": "Paint an illustration for Anvil Guard, a fire ward that forms a sturdy burning barrier. Show a stocky dwarven guard with a clearly visible resolute face standing behind a compact complete round iron shield engraved with a bold anvil emblem; hold the shield upright beside the dwarf's face at the same height, one gauntleted hand visible on its grip. The shield's iron rim is fully visible while a translucent wall of molten orange light forms a protective barrier around the guard and an ally, fire licking along the outer edge without obscuring the shield. Make the shield and guarded faces the clear subject. Painterly medieval high fantasy, forged iron, leather, embers, dramatic directional glow, grounded anatomy and atmospheric depth. Explicit 1:1 SQUARE 512x512 composition; full shield rim, anvil emblem, grip hand, dwarf face and relevant barrier fit x24..488,y105..407 for 206:141 wide crop, quiet forge smoke above and stone floor below. No card frame, lettering, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/recovered-fire_ward_12-f310bca4c292.png",
+    "editableSourcePath": "game/cards/art/masters/fire_ward_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Recovered the exact retained image bytes after the locator returned no match: length 2691121, fingerprints 2334268634/3566609846, SHA-256 f310bca4c292d3e839b962da0eb90de808105b712c5042eaf03fccdf4e84be61. Reviewed 512-square source, 206:141 crop and 128x88 thumbnail; complete anvil-embossed shield, guard's face and burning barrier remain clear. Original image output path was omitted during transport recovery."
+  },
+  {
+    "cardId": "fire_charge_11",
+    "name": "Lantern Oil Flask",
+    "prompt": "Recompose this same painterly fantasy illustration slightly inward to make the Lantern Oil Flask and its holder safe in the 206:141 horizontal card crop. Keep the same female lantern keeper, outfit, medieval fortress, lighting and throwing action. Shift her and the entire held oil flask away from the left edge toward the center: put the complete flask BESIDE her face at the same height, and show the entire flask-holding hand with margin from the canvas edge. The flask must be a compact amber-glass lantern-oil bottle with the complete glowing rounded body, narrow neck, cork stopper, metal collar and broad base; do not cut off any part. Keep her full face, both relevant hands (holding and throwing), complete flask, flying flask and compact burning splash visible together. The incoming thrown flask must also read as a flask. Preserve appealing painterly medieval fantasy brushwork and controlled orange fire. Explicit 1:1 SQUARE canvas; keep identity-critical face/hands and both bottle forms within x24..488,y105..407 for the wide crop, with quiet workshop shadows above and below. No text, frame, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ce8d6567-72f9-469b-891f-852dcca9e177.png",
+    "editableSourcePath": "game/cards/art/masters/fire_charge_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Repainted after the first crop clipped the flask-holding hand at the left edge. Reviewed the new 512-square source, 206:141 crop and 128x88 thumbnail: keeper's complete face and both hands, full held lantern-oil flask with stopper and base, airborne flask and oil splash all remain visible. Previous master preserved at /tmp/fire03-repaint-scratch/fire_charge_11-before-repaint.png."
   }
 ]

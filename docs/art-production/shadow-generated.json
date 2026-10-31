@@ -2203,5 +2203,95 @@
     "status": "generated",
     "batch": 11,
     "reviewNote": "Reviewed 512-square source, default 206:141 crop and thumbnail: warrior face and sword hand are clear against moon and frost; the compact action remains readable."
+  },
+  {
+    "cardId": "shadow_utility_09",
+    "name": "Necromancer's Grimoire",
+    "prompt": "Paint an illustration for Necromancer's Grimoire: a compact but substantial ancient open grimoire resting on a stone desk, seen at a slight three-quarter angle. The complete open book must fit comfortably inside the composition with visible left and right page edges, complete leather cover, spine and clasps, leaving clear breathing room on every side. Keep this entire named artifact centered in the middle horizontal crop band as well as within x24..488,y24..488 on the square. A faint translucent ghost rises from the pages, small and secondary; no operator or hands. Painterly medieval high fantasy collectible-card art, richly textured dark leather, brass corner fittings and aged parchment, moody candlelight balanced by cool spectral glow, attractive chiaroscuro and atmospheric depth. Square 1:1 canvas for a 512x512 master; design for the central 206:141 crop and keep the entire book inside x24..488 y105..407 with quiet scenery above and below. No text, legible writing, border or UI. No anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-3702174e-4fb0-4f7d-b35a-3022aa77a31c.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_utility_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Repainted after parent found the prior 512 source clipped the book edge. Prior source preserved at /workspace/scratch/b11_worker_1/shadow_utility_09-prior-accepted.png. Source native size [1254,1254]. Artist inspected new square, 206:141 crop and 128x88 thumbnail: complete cover, both page edges and spine fit with margin; faint ghost remains secondary. Parent review pending."
+  },
+  {
+    "cardId": "shadow_environment_10",
+    "name": "Catacomb Collapse",
+    "prompt": "Paint an illustration for Catacomb Collapse: a long row of underground catacomb arches and burial niches shuddering in a tremor, with one central span breaking down in a dramatic wave of falling stone blocks and dust. Make the row of ancient crypt architecture dominate the image; a tiny fleeing explorer may appear only for scale, safely in the middle. Painterly medieval high fantasy collectible-card art, deeply textured stone, dramatic torchlight and pale shafts through dust, rich atmospheric depth, clear readable collapse action. 1:1 square 512x512 master; keep the central collapsing row within x24..488 y105..407, with quiet shadows above/below; effective 206:141 horizontal crop. No text, border or UI. No anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-602235dd-7781-49e5-913d-11d4c7a5030c.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_environment_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Source native size [1254,1254]. Artist inspected 512 square, 206:141 crop and 128x88 thumbnail: collapsing row of catacomb arches reads clearly; small fleeing figure is incidental; parent review pending."
+  },
+  {
+    "cardId": "shadow_charge_10",
+    "name": "Ferryman's Coins",
+    "prompt": "Paint an illustration for Ferryman's Coins: three distinct ancient silver coins from a shadowy river ferryman, floating together in a tight horizontal cluster above an outstretched weathered hand. Each entire coin is visible and individually readable; one edge catches a cold blue-white bolt of magic with small contained sparks. A dim hooded ferryman's face may sit behind the hand. Painterly medieval high fantasy collectible-card art, aged silver, tarnished edges, dark river mist, luminous directional light and atmospheric depth. 1:1 square 512x512 master; keep all three complete coins, the hand and any face inside x24..488 y105..407; quiet atmosphere above/below and horizontal 206:141 crop. No text, legible markings, border or UI. No anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d42d58a5-53fc-4c41-89cf-17ba19b3391d.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_charge_10.png",
+    "sourceNative": [
+      1515,
+      1038
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Source native size [1515,1038]. Artist inspected 512 square, 206:141 crop and 128x88 thumbnail: all three complete coins, ferry hand and the bolt remain clear; parent review pending."
+  },
+  {
+    "cardId": "shadow_trap_09",
+    "name": "Cursed Tomb",
+    "prompt": "Paint an illustration for Cursed Tomb: a heavy stone sarcophagus inside a shadowy crypt, its cracked lid sliding open as pale undead hands and a rising zombie emerge. The tomb itself is the strong named subject, broad and centered; zombie face and reaching hands are visible above it. Keep the action eerie, not graphic. Painterly medieval high fantasy collectible-card art, carved ancient stone, subtle grave dust, dramatic cool moonlight and warm torchlight, atmospheric depth. 1:1 square 512x512 master; keep the entire readable sarcophagus lid, primary zombie face and hands within x24..488 y105..407, quiet scenery top and bottom, horizontal 206:141 crop. No text, frame, UI, gore, anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-24a90531-cb45-4d9a-b70d-773d797b3778.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_trap_09.png",
+    "sourceNative": [
+      1515,
+      1038
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Source native size [1515,1038]. Artist inspected 512 square, 206:141 crop and 128x88 thumbnail: carved tomb, emerging zombie face and reaching hands remain clear; parent review pending."
+  },
+  {
+    "cardId": "shadow_summon_08",
+    "name": "Ghoul",
+    "prompt": "Paint an illustration for Ghoul: a single gaunt undead ghoul rising from a shallow grave in a ruined medieval burial ground, with a distinct unsettling face, hollow eyes, and long clawed hands reaching forward. The ghoul's head, shoulders and both hands dominate the scene; make the creature's face and hands the unmistakable identity, with only enough grave earth and tattered cloth to establish its rising action. Painterly medieval high fantasy collectible-card art, believable anatomy and cloth, cold moonlight with a warm distant lantern, atmospheric depth, eerie but not graphic. 1:1 square canvas for a 512x512 master; keep face and both hands inside x24..488 y105..407, quiet atmosphere top/bottom, clear 206:141 horizontal crop. No blood, gore, text, border or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-11e009b6-cd56-483e-986e-2c2971705a96.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.45
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Source native size [1254,1254]. Focal point [0.5,0.45] shifts the crop upward. Artist inspected the square, adjusted 206:141 crop and 128x88 thumbnail: full ghoul face and both reaching hands remain clear; parent review pending."
   }
 ]

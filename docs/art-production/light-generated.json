@@ -24,7 +24,7 @@
   {
     "cardId": "holy_bolt",
     "name": "Holy Bolt",
-    "prompt": "Original painterly medieval fantasy card illustration, \u201cHoly Bolt.\u201d A healer-mage gathers a charged light spell, then fires a narrow golden-white horizontal bolt that pierces a shadow-armored foe and continues through a stone shield, while a gentle glow mends the mage\u2019s injured hand. Show the charge and impact in a clear action scene; bolt and subjects prominent. Grounded anatomy, rich cloth, metal and stone, dramatic directional light and atmospheric depth, like the supplied painterly fantasy references. Square 512 master, horizontal arrangement; keep face, hands, bolt impact and named objects within x24\u2026488, y105\u2026407 for a wide 206:141 crop, with quiet sky/ground margins. No border, lettering, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Original painterly medieval fantasy card illustration, “Holy Bolt.” A healer-mage gathers a charged light spell, then fires a narrow golden-white horizontal bolt that pierces a shadow-armored foe and continues through a stone shield, while a gentle glow mends the mage’s injured hand. Show the charge and impact in a clear action scene; bolt and subjects prominent. Grounded anatomy, rich cloth, metal and stone, dramatic directional light and atmospheric depth, like the supplied painterly fantasy references. Square 512 master, horizontal arrangement; keep face, hands, bolt impact and named objects within x24…488, y105…407 for a wide 206:141 crop, with quiet sky/ground margins. No border, lettering, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-4a7fb519-efc2-4a18-88d2-fe198e1ecc0e.png",
     "focalPoint": [
       0.5,
@@ -32,12 +32,12 @@
     ],
     "status": "generated",
     "batch": 2,
-    "reviewNote": "Reviewed original: healer-mage fires a bright horizontal piercing bolt into an armored foe; face, casting hand, impact and bolt remain within the central wide-crop band. Mending glow visible at the mage\u2019s other hand."
+    "reviewNote": "Reviewed original: healer-mage fires a bright horizontal piercing bolt into an armored foe; face, casting hand, impact and bolt remain within the central wide-crop band. Mending glow visible at the mage’s other hand."
   },
   {
     "cardId": "sanctuary",
     "name": "Sanctuary",
-    "prompt": "Paint an original illustration for the fantasy card \u201cSanctuary.\u201d Its mechanics are a heavy protective barrier lasting 20 seconds; hits against the barrier heal its bearer over time. Depict a weary armored pilgrim inside a broad, translucent golden shield dome in a ruined chapel, holding a braced stance as dark arrows and a blow strike and flare against the barrier; luminous healing threads flow from the impacts into the pilgrim\u2019s wounds. Let the barrier feel weighty, layered and protective, with an unmistakable shield-like curve around the person; no generic church exterior alone. Painterly medieval fantasy collectible-card art, nuanced stone, worn armor and light, dramatic directional glow, atmospheric depth and grounded anatomy in the supplied painterly reference spirit. Square 512 master with horizontal staging; keep the pilgrim\u2019s face, hands, shield arc and impacts within x24\u2026488, y105\u2026407 for a wide 206:141 crop; leave quiet chapel atmosphere at top and bottom. No border, lettering, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an original illustration for the fantasy card “Sanctuary.” Its mechanics are a heavy protective barrier lasting 20 seconds; hits against the barrier heal its bearer over time. Depict a weary armored pilgrim inside a broad, translucent golden shield dome in a ruined chapel, holding a braced stance as dark arrows and a blow strike and flare against the barrier; luminous healing threads flow from the impacts into the pilgrim’s wounds. Let the barrier feel weighty, layered and protective, with an unmistakable shield-like curve around the person; no generic church exterior alone. Painterly medieval fantasy collectible-card art, nuanced stone, worn armor and light, dramatic directional glow, atmospheric depth and grounded anatomy in the supplied painterly reference spirit. Square 512 master with horizontal staging; keep the pilgrim’s face, hands, shield arc and impacts within x24…488, y105…407 for a wide 206:141 crop; leave quiet chapel atmosphere at top and bottom. No border, lettering, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-524c7cc4-ac66-468c-9bd2-e1034b03e5f5.png",
     "focalPoint": [
       0.5,
@@ -50,7 +50,7 @@
   {
     "cardId": "beacon_hope",
     "name": "Beacon of Hope",
-    "prompt": "Create original painterly medieval fantasy card art for \u201cBeacon of Hope.\u201d Mechanics: a sturdy magical sentry fires a steady bolt down its row at an enemy; every third attack overcharges, doubles and stuns; it also mends its allies. Show a compact but substantial carved ivory-stone and gold ward-tower sentry planted on a battlefield parapet, its bright lens launching a straight golden bolt horizontally into a dark armored raider, who is caught rigid in a radiant stun flash. Behind the sentry, healing rays fall on a wounded ally. Make the sentry itself the clear subject, strong and durable, with readable lens and firing action. Painterly medieval fantasy collectible-card illustration, nuanced carved stone, brass and worn armor, dramatic directional light, atmospheric depth, grounded scale and detail inspired by supplied painterly references. Square 512 master; compose the sentry and target horizontally, keep sentry, bolt, target head/hands and healing effect within x24\u2026488, y105\u2026407 for a 206:141 crop, leaving spare sky and ground above and below. No border, text, numbers, lettering, UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Create original painterly medieval fantasy card art for “Beacon of Hope.” Mechanics: a sturdy magical sentry fires a steady bolt down its row at an enemy; every third attack overcharges, doubles and stuns; it also mends its allies. Show a compact but substantial carved ivory-stone and gold ward-tower sentry planted on a battlefield parapet, its bright lens launching a straight golden bolt horizontally into a dark armored raider, who is caught rigid in a radiant stun flash. Behind the sentry, healing rays fall on a wounded ally. Make the sentry itself the clear subject, strong and durable, with readable lens and firing action. Painterly medieval fantasy collectible-card illustration, nuanced carved stone, brass and worn armor, dramatic directional light, atmospheric depth, grounded scale and detail inspired by supplied painterly references. Square 512 master; compose the sentry and target horizontally, keep sentry, bolt, target head/hands and healing effect within x24…488, y105…407 for a 206:141 crop, leaving spare sky and ground above and below. No border, text, numbers, lettering, UI. No anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-db959756-3ba2-4e69-ac2a-96f8afde1282.png",
     "focalPoint": [
       0.5,
@@ -63,7 +63,7 @@
   {
     "cardId": "blessing",
     "name": "Blessing",
-    "prompt": "Paint original card illustration for \u201cBlessing,\u201d a brief boon that heals the recipient for 2 each second over 3 seconds, jolts and briefly stuns the nearest enemy, then echoes again at half strength five seconds later. Show a wounded medieval ranger receiving a warm blessing from a small golden sigil of living light hovering over their chest; a short radiant pulse jolts a nearby charging undead raider into a frozen, stunned pose, while a fainter second halo behind the first suggests the delayed weaker echo. Clear narrative action in one cohesive moment; faces, healing recipient, stunned foe and pulses all readable. Painterly medieval fantasy collectible-card art, textured travel-worn cloth, leather and armor, nuanced luminous gold against cool twilight, atmospheric depth, grounded anatomy, in supplied painterly reference spirit. Square composition for 512 master, horizontal scene; keep faces, hands and key magical action within x24\u2026488, y105\u2026407 for 206:141 crop, quiet background above and below. No border, lettering, text, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint original card illustration for “Blessing,” a brief boon that heals the recipient for 2 each second over 3 seconds, jolts and briefly stuns the nearest enemy, then echoes again at half strength five seconds later. Show a wounded medieval ranger receiving a warm blessing from a small golden sigil of living light hovering over their chest; a short radiant pulse jolts a nearby charging undead raider into a frozen, stunned pose, while a fainter second halo behind the first suggests the delayed weaker echo. Clear narrative action in one cohesive moment; faces, healing recipient, stunned foe and pulses all readable. Painterly medieval fantasy collectible-card art, textured travel-worn cloth, leather and armor, nuanced luminous gold against cool twilight, atmospheric depth, grounded anatomy, in supplied painterly reference spirit. Square composition for 512 master, horizontal scene; keep faces, hands and key magical action within x24…488, y105…407 for 206:141 crop, quiet background above and below. No border, lettering, text, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-3490bfe3-6e70-45a7-a773-46f83927bbc8.png",
     "focalPoint": [
       0.5,
@@ -128,7 +128,7 @@
   {
     "cardId": "radiant_motes",
     "name": "Radiant Motes",
-    "prompt": "Paint an original illustration for the fantasy card \u2018Radiant Motes.\u2019 Its mechanics: four quick golden missiles strike separate enemies, a kill replenishes the spell reserve, and the cast mends the caster. Depict a luminous robed battle-healer in a ruined medieval courtyard, three or four distinct small radiant motes streaking horizontally toward multiple shadow-armored foes; one foe dissolves in a brief clear impact while a soft gold healing glow closes a wound on the healer\u2019s forearm. The motes and healer dominate the narrative, avoid an abstract magic-only image. Painterly medieval fantasy collectible-card art, believable cloth, stone, metal and anatomy, dramatic attractive warm light balanced by cool dusk, nuanced brushwork, atmospheric depth, grounded mature fantasy style consistent with supplied painterly reference art. Explicit 1:1 SQUARE canvas intended for editable 512x512 master. Compose horizontally for the 206:141 card crop. Keep all critical faces, hands, missiles and impact within normalized x24..488,y105..407; quiet expendable sky and ground above and below. Strong readable focal subject. No frame, border, lettering, text, numbers, UI. No anime, Disney-like cartoon proportions, photorealism, pixel art, or blinding glare.",
+    "prompt": "Paint an original illustration for the fantasy card ‘Radiant Motes.’ Its mechanics: four quick golden missiles strike separate enemies, a kill replenishes the spell reserve, and the cast mends the caster. Depict a luminous robed battle-healer in a ruined medieval courtyard, three or four distinct small radiant motes streaking horizontally toward multiple shadow-armored foes; one foe dissolves in a brief clear impact while a soft gold healing glow closes a wound on the healer’s forearm. The motes and healer dominate the narrative, avoid an abstract magic-only image. Painterly medieval fantasy collectible-card art, believable cloth, stone, metal and anatomy, dramatic attractive warm light balanced by cool dusk, nuanced brushwork, atmospheric depth, grounded mature fantasy style consistent with supplied painterly reference art. Explicit 1:1 SQUARE canvas intended for editable 512x512 master. Compose horizontally for the 206:141 card crop. Keep all critical faces, hands, missiles and impact within normalized x24..488,y105..407; quiet expendable sky and ground above and below. Strong readable focal subject. No frame, border, lettering, text, numbers, UI. No anime, Disney-like cartoon proportions, photorealism, pixel art, or blinding glare.",
     "generatedPath": "/workspace/generated_images/exec-1a76fe2c-368c-4df5-9224-cfe7d35ab91f.png",
     "focalPoint": [
       0.5,
@@ -136,12 +136,12 @@
     ],
     "status": "generated",
     "batch": 4,
-    "reviewNote": "Reviewed actual 1254\u00d71254 square and normalized 206:141 crop: healer\u2019s face and both hands, distinct horizontal motes, armored targets and impact all remain legible in the crop. Lower crop trims expendable robe and ground."
+    "reviewNote": "Reviewed actual 1254×1254 square and normalized 206:141 crop: healer’s face and both hands, distinct horizontal motes, armored targets and impact all remain legible in the crop. Lower crop trims expendable robe and ground."
   },
   {
     "cardId": "courage",
     "name": "Courage",
-    "prompt": "Original fantasy card art for Courage. Mechanics: cards and wand strengthened for 14 seconds without health cost; casting stuns the nearest enemy. A brave medieval spellcaster rallies allies on a stone battlement, amber courage aura strengthening their raised wand and companions\u2019 ready cards, while a nearby charging shadow-armored enemy freezes in a golden jolt. Painterly medieval fantasy collectible card illustration with believable faces, hands, parchment, leather and steel, nuanced brush texture, warm directional light against cool twilight, atmospheric depth. Explicit 1:1 SQUARE canvas for editable 512x512 master. Keep critical faces, complete wand including tip, hands, cards and stunned foe within normalized x24..488,y105..407 for the 206:141 wide crop; quiet sky and stone above and below. Strong readable subject. No frame, lettering, UI, anime, cartoon, photorealism or pixel art. Composition repaired twice to move group down and preserve wand in crop.",
+    "prompt": "Original fantasy card art for Courage. Mechanics: cards and wand strengthened for 14 seconds without health cost; casting stuns the nearest enemy. A brave medieval spellcaster rallies allies on a stone battlement, amber courage aura strengthening their raised wand and companions’ ready cards, while a nearby charging shadow-armored enemy freezes in a golden jolt. Painterly medieval fantasy collectible card illustration with believable faces, hands, parchment, leather and steel, nuanced brush texture, warm directional light against cool twilight, atmospheric depth. Explicit 1:1 SQUARE canvas for editable 512x512 master. Keep critical faces, complete wand including tip, hands, cards and stunned foe within normalized x24..488,y105..407 for the 206:141 wide crop; quiet sky and stone above and below. Strong readable subject. No frame, lettering, UI, anime, cartoon, photorealism or pixel art. Composition repaired twice to move group down and preserve wand in crop.",
     "generatedPath": "/workspace/generated_images/exec-5c08b19f-8216-4e9d-a872-16f033688ec1.png",
     "focalPoint": [
       0.5,
@@ -149,12 +149,12 @@
     ],
     "status": "generated",
     "batch": 4,
-    "reviewNote": "Reviewed 1254-square original and 206:141 crop after two composition repairs. Spellcaster\u2019s complete wand tip, faces, hands, glowing cards and stunned foe remain visible in central card crop; quiet sky fills above."
+    "reviewNote": "Reviewed 1254-square original and 206:141 crop after two composition repairs. Spellcaster’s complete wand tip, faces, hands, glowing cards and stunned foe remain visible in central card crop; quiet sky fills above."
   },
   {
     "cardId": "light_utility_01",
     "name": "Imperial Scribe's Brush",
-    "prompt": "Original art for Imperial Scribe\u2019s Brush, a named enchanted calligraphy brush that draws two cards into hand. An ornate ivory-and-gold scribe\u2019s brush with sable tip dominates diagonally across a richly lit medieval writing desk; its stroke unfurls into exactly two distinct floating blank parchment cards drifting into the open hand of an imperial scribe whose full face and fingers are visible. Painterly medieval fantasy collectible-card art, refined wood, ivory, gold and paper, warm directional candlelight, nuanced brushwork and depth. Explicit 1:1 SQUARE composition for 512 master. Keep entire brush, tip, face, hands and two cards within x24..488,y105..407 normalized for wide 206:141 crop. No writing or glyphs on cards, no frame/UI, anime, cartoon, photorealism or pixel art. Composition repaired to central square and wide crop.",
+    "prompt": "Original art for Imperial Scribe’s Brush, a named enchanted calligraphy brush that draws two cards into hand. An ornate ivory-and-gold scribe’s brush with sable tip dominates diagonally across a richly lit medieval writing desk; its stroke unfurls into exactly two distinct floating blank parchment cards drifting into the open hand of an imperial scribe whose full face and fingers are visible. Painterly medieval fantasy collectible-card art, refined wood, ivory, gold and paper, warm directional candlelight, nuanced brushwork and depth. Explicit 1:1 SQUARE composition for 512 master. Keep entire brush, tip, face, hands and two cards within x24..488,y105..407 normalized for wide 206:141 crop. No writing or glyphs on cards, no frame/UI, anime, cartoon, photorealism or pixel art. Composition repaired to central square and wide crop.",
     "generatedPath": "/workspace/generated_images/exec-00db9bad-e208-446a-bb35-93ff300efd23.png",
     "focalPoint": [
       0.5,
@@ -188,12 +188,12 @@
     ],
     "status": "generated",
     "batch": 5,
-    "reviewNote": "Reviewed 1514\u00d71039 source, central square normalization and 206:141 crop. Guardian hand and all fingertips, knight face/hands, axe impact and stunned foe remain fully visible."
+    "reviewNote": "Reviewed 1514×1039 source, central square normalization and 206:141 crop. Guardian hand and all fingertips, knight face/hands, axe impact and stunned foe remain fully visible."
   },
   {
     "cardId": "dawnbreaker",
     "name": "Dawnbreaker",
-    "prompt": "Illustrate legendary light strike Dawnbreaker. After a brief charge, a powerful sweeping wave crosses every enemy row, hits each once and mends the caster. A medieval dawn-priest bracing on a ruined ridge releases one broad controlled horizontal crescent of golden sunrise across shadow-armored foes; each is caught once while subtle healing light closes the priest\u2019s wound. Painterly medieval fantasy art, believable faces/hands, textured cloth, steel and stone, attractive directional light, depth. Explicit 1:1 SQUARE 512 master. Keep caster face/hands, complete horizontal wave and foes within normalized x24..488,y105..407 for 206:141 crop. No frame/text/UI, anime/cartoon/photorealism/pixel art.",
+    "prompt": "Illustrate legendary light strike Dawnbreaker. After a brief charge, a powerful sweeping wave crosses every enemy row, hits each once and mends the caster. A medieval dawn-priest bracing on a ruined ridge releases one broad controlled horizontal crescent of golden sunrise across shadow-armored foes; each is caught once while subtle healing light closes the priest’s wound. Painterly medieval fantasy art, believable faces/hands, textured cloth, steel and stone, attractive directional light, depth. Explicit 1:1 SQUARE 512 master. Keep caster face/hands, complete horizontal wave and foes within normalized x24..488,y105..407 for 206:141 crop. No frame/text/UI, anime/cartoon/photorealism/pixel art.",
     "generatedPath": "/workspace/generated_images/exec-2e8f1e50-9998-4841-99eb-4a4dd673da7e.png",
     "focalPoint": [
       0.5,
@@ -253,7 +253,7 @@
     ],
     "status": "generated",
     "batch": 6,
-    "reviewNote": "Reviewed the 1254\u00d71254 original, 512\u00d7512 editable source, and centered 206:141 crop plus thumbnail. Archer face, casting hand, and distinct pilum heads remain in the crop; the flying javelins read at thumbnail size.",
+    "reviewNote": "Reviewed the 1254×1254 original, 512×512 editable source, and centered 206:141 crop plus thumbnail. Archer face, casting hand, and distinct pilum heads remain in the crop; the flying javelins read at thumbnail size.",
     "editableSourcePath": "game/cards/art/masters/light_strike_01.png",
     "sourceNative": [
       1254,
@@ -317,7 +317,7 @@
   {
     "cardId": "light_strike_02",
     "name": "Gladius Thrust",
-    "prompt": "Paint the LIGHT strike card Gladius Thrust. Mechanics: a powerful gladius thrust pierces the first enemy in the row into the foe behind; the force recoils the attacker one tile backward. Show a determined medieval legionary in ivory-and-gold armor driving a short Roman gladius straight through the front enemy\u2019s armor into a second enemy directly behind, while the shock slides the attacker back, boots scraping stone. Strong horizontal action, clear sword point and both foes in a straight line; no extra magical beam. Painterly medieval fantasy collectible-card art with believable anatomy, iron, leather, cloth, dramatic directional sunlight and atmospheric depth, mature grounded style. Explicit 1:1 SQUARE composition for an editable 512x512 master and horizontal 206:141 crop. Keep attacker face, sword hand, entire gladius and both impact targets inside normalized x24..488,y105..407; quiet sky/ground at top and bottom. No frame, border, words, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint the LIGHT strike card Gladius Thrust. Mechanics: a powerful gladius thrust pierces the first enemy in the row into the foe behind; the force recoils the attacker one tile backward. Show a determined medieval legionary in ivory-and-gold armor driving a short Roman gladius straight through the front enemy’s armor into a second enemy directly behind, while the shock slides the attacker back, boots scraping stone. Strong horizontal action, clear sword point and both foes in a straight line; no extra magical beam. Painterly medieval fantasy collectible-card art with believable anatomy, iron, leather, cloth, dramatic directional sunlight and atmospheric depth, mature grounded style. Explicit 1:1 SQUARE composition for an editable 512x512 master and horizontal 206:141 crop. Keep attacker face, sword hand, entire gladius and both impact targets inside normalized x24..488,y105..407; quiet sky/ground at top and bottom. No frame, border, words, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-81d6cd5e-0965-4503-bee0-3367ad4fe8dc.png",
     "focalPoint": [
       0.5,
@@ -361,7 +361,7 @@
     ],
     "status": "generated",
     "batch": 7,
-    "reviewNote": "Reviewed source original, editable 512 square, wide crop, and thumbnail. Repainted to keep warder\u2019s full face and raised hand inside the crop while retaining three distinct parallel brick walls and the near-wall impact. All read at thumbnail scale.",
+    "reviewNote": "Reviewed source original, editable 512 square, wide crop, and thumbnail. Repainted to keep warder’s full face and raised hand inside the crop while retaining three distinct parallel brick walls and the near-wall impact. All read at thumbnail scale.",
     "editableSourcePath": "game/cards/art/masters/light_ward_04.png",
     "sourceNative": [
       1254,
@@ -438,7 +438,7 @@
     ],
     "status": "generated",
     "batch": 7,
-    "reviewNote": "Reviewed 1254-square original, exact 512 source, centered 206:141 crop and 96px thumbnail. After one framing repair, papermaker\u2019s complete head and face, both hands, full central sheet and the two blank drawn sheets remain visible. Paper craft reads clearly at thumbnail size."
+    "reviewNote": "Reviewed 1254-square original, exact 512 source, centered 206:141 crop and 96px thumbnail. After one framing repair, papermaker’s complete head and face, both hands, full central sheet and the two blank drawn sheets remain visible. Paper craft reads clearly at thumbnail size."
   },
   {
     "cardId": "light_trap_02",
@@ -492,12 +492,12 @@
     ],
     "status": "generated",
     "batch": 7,
-    "reviewNote": "Reviewed 1478\u00d71064 original, exact 512 source, upward-focused 206:141 crop and 96px thumbnail. The full Grail, gripping hand and king's face fit after shifting crop focus upward (focalPoint y=0.34); the chalice remains legible at thumbnail size. Incidental chill halos and background foes are secondary."
+    "reviewNote": "Reviewed 1478×1064 original, exact 512 source, upward-focused 206:141 crop and 96px thumbnail. The full Grail, gripping hand and king's face fit after shifting crop focus upward (focalPoint y=0.34); the chalice remains legible at thumbnail size. Incidental chill halos and background foes are secondary."
   },
   {
     "cardId": "light_summon_01",
     "name": "Pegasus Foal",
-    "prompt": "Painterly high-fantasy collectible-card illustration for Light summon \u201cPegasus Foal.\u201d A young, sturdy foal with a soft golden-white coat and unmistakable feathered wings springs joyfully through a sunlit meadow, wings half-open and tiny hooves lifted above wildflowers. Its gentle face, full four-legged foal body and both wings are the clear central subject; believable young-horse anatomy, no horn. Bright morning air, warm divine sunlight, detailed feathers and coat, Greek-inspired meadow and distant marble temple hints, atmospheric painterly fantasy. Explicit 1:1 SQUARE 512x512 master; keep face, body, hooves and wing tips inside x24..488,y105..407 for 206:141 crop, quiet sky and grass beyond. No text, frame, UI, watermark, anime, cartoon, photorealism or pixel art. Repaired by scaling and lowering the foal so the crop preserves the full face, wings and hooves.",
+    "prompt": "Painterly high-fantasy collectible-card illustration for Light summon “Pegasus Foal.” A young, sturdy foal with a soft golden-white coat and unmistakable feathered wings springs joyfully through a sunlit meadow, wings half-open and tiny hooves lifted above wildflowers. Its gentle face, full four-legged foal body and both wings are the clear central subject; believable young-horse anatomy, no horn. Bright morning air, warm divine sunlight, detailed feathers and coat, Greek-inspired meadow and distant marble temple hints, atmospheric painterly fantasy. Explicit 1:1 SQUARE 512x512 master; keep face, body, hooves and wing tips inside x24..488,y105..407 for 206:141 crop, quiet sky and grass beyond. No text, frame, UI, watermark, anime, cartoon, photorealism or pixel art. Repaired by scaling and lowering the foal so the crop preserves the full face, wings and hooves.",
     "generatedPath": "/workspace/generated_images/exec-f9cd067f-7106-40ae-9924-b2d992815cea.png",
     "editableSourcePath": "game/cards/art/masters/light_summon_01.png",
     "sourceNative": [
@@ -515,7 +515,7 @@
   {
     "cardId": "light_machine_01",
     "name": "Roman Ballista",
-    "prompt": "Painterly medieval-fantasy collectible-card illustration for Light machine \u201cRoman Ballista.\u201d Show a stout Roman torsion ballista in clear three-quarter side view on an ancient stone battlement: sturdy timber frame, twin bundled sinew torsion springs, winch, bow-arms and one complete long iron-tipped bolt loaded in its central groove. A single legionary engineer turns the winch, focused on the weapon. The full ballista and loaded bolt are unmistakable; authentic classical construction, no modern gun parts. Warm sunrise on bronze fittings and pale stone, distant Roman walls and banners. Rich painterly wood, rope, metal and stone. Explicit 1:1 SQUARE canvas for editable 512x512 source; keep full weapon, loaded bolt tip and operator\u2019s face/hands inside x24..488,y105..407 for 206:141 crop. No frame, letters, numbers, UI, watermark, anime, cartoon, photorealism or pixel art. Repaired by scaling down and raising the ballista to preserve its complete base and bolt tip in the wide crop.",
+    "prompt": "Painterly medieval-fantasy collectible-card illustration for Light machine “Roman Ballista.” Show a stout Roman torsion ballista in clear three-quarter side view on an ancient stone battlement: sturdy timber frame, twin bundled sinew torsion springs, winch, bow-arms and one complete long iron-tipped bolt loaded in its central groove. A single legionary engineer turns the winch, focused on the weapon. The full ballista and loaded bolt are unmistakable; authentic classical construction, no modern gun parts. Warm sunrise on bronze fittings and pale stone, distant Roman walls and banners. Rich painterly wood, rope, metal and stone. Explicit 1:1 SQUARE canvas for editable 512x512 source; keep full weapon, loaded bolt tip and operator’s face/hands inside x24..488,y105..407 for 206:141 crop. No frame, letters, numbers, UI, watermark, anime, cartoon, photorealism or pixel art. Repaired by scaling down and raising the ballista to preserve its complete base and bolt tip in the wide crop.",
     "generatedPath": "/workspace/generated_images/exec-6ceebc33-708f-475e-9090-51d48100002d.png",
     "editableSourcePath": "game/cards/art/masters/light_machine_01.png",
     "sourceNative": [
@@ -528,12 +528,12 @@
     ],
     "status": "generated",
     "batch": 7,
-    "reviewNote": "Inspected repaired raw square, exact 512 master, wide crop and thumbnail. Complete ballista base, winch, operator\u2019s face/hands, torsion frame and bolt point remain in the card crop."
+    "reviewNote": "Inspected repaired raw square, exact 512 master, wide crop and thumbnail. Complete ballista base, winch, operator’s face/hands, torsion frame and bolt point remain in the card crop."
   },
   {
     "cardId": "light_ace_01",
     "name": "Sun Spear",
-    "prompt": "Painterly medieval fantasy collectible-card illustration for Light weapon \u201cSun Spear.\u201d A bronze-armored classical warrior thrusts one ceremonial golden spear horizontally across the foreground, its complete leaf-shaped sun-bright spearhead aimed toward an unseen foe. The focused face, both gripping hands, complete shaft and pointed head are clear; strong horizontal composition, weapon as named subject. Golden light runs along the shaft without obscuring its silhouette. Roman-inspired armor and distant marble battlements, warm directional light, rich metal, leather and cloth, atmospheric painterly fantasy. Explicit 1:1 SQUARE canvas for editable 512x512 master; keep face, hands, complete spear and tip inside x24..488,y105..407 for 206:141 crop. No frame, writing, numbers, UI, watermark, anime, cartoon, photorealism or pixel art. Repaired by shortening the spear to preserve both ends within the crop.",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Light weapon “Sun Spear.” A bronze-armored classical warrior thrusts one ceremonial golden spear horizontally across the foreground, its complete leaf-shaped sun-bright spearhead aimed toward an unseen foe. The focused face, both gripping hands, complete shaft and pointed head are clear; strong horizontal composition, weapon as named subject. Golden light runs along the shaft without obscuring its silhouette. Roman-inspired armor and distant marble battlements, warm directional light, rich metal, leather and cloth, atmospheric painterly fantasy. Explicit 1:1 SQUARE canvas for editable 512x512 master; keep face, hands, complete spear and tip inside x24..488,y105..407 for 206:141 crop. No frame, writing, numbers, UI, watermark, anime, cartoon, photorealism or pixel art. Repaired by shortening the spear to preserve both ends within the crop.",
     "generatedPath": "/workspace/generated_images/exec-e5f0c084-e2dc-4395-a4fb-d002b9d020d3.png",
     "editableSourcePath": "game/cards/art/masters/light_ace_01.png",
     "sourceNative": [
@@ -546,12 +546,12 @@
     ],
     "status": "generated",
     "batch": 7,
-    "reviewNote": "Inspected repaired raw square, exact 512 master, wide crop and thumbnail. Warrior\u2019s face and both hands, full shaft and complete spearhead tip remain visible in the crop."
+    "reviewNote": "Inspected repaired raw square, exact 512 master, wide crop and thumbnail. Warrior’s face and both hands, full shaft and complete spearhead tip remain visible in the crop."
   },
   {
     "cardId": "light_aceup_01",
     "name": "Blessed Oil",
-    "prompt": "Painterly medieval fantasy collectible-card illustration for Light enchantment \u201cBlessed Oil.\u201d A priestly arm in gold-trimmed linen carefully pours a thin ribbon of luminous amber oil from a small ornate glass vial over a polished bronze Sun Spear blade. The full vial, its faceted stopper, pouring hand and oil stream are visible; make the blessed-oil bottle the clearest named subject, with a soft healing glow where oil touches the weapon. No text or labels on the vial. Warm shrine light, ivory marble and subtle gold mosaic, richly painted glass, liquid, bronze and cloth, atmospheric depth, elegant classical fantasy. Explicit 1:1 SQUARE canvas for editable 512x512 source; keep complete bottle including stopper, hand and stream within x24..488,y105..407 for the horizontal crop. No frame, letters, numbers, UI, watermark, anime, cartoon, photorealism or pixel art.",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Light enchantment “Blessed Oil.” A priestly arm in gold-trimmed linen carefully pours a thin ribbon of luminous amber oil from a small ornate glass vial over a polished bronze Sun Spear blade. The full vial, its faceted stopper, pouring hand and oil stream are visible; make the blessed-oil bottle the clearest named subject, with a soft healing glow where oil touches the weapon. No text or labels on the vial. Warm shrine light, ivory marble and subtle gold mosaic, richly painted glass, liquid, bronze and cloth, atmospheric depth, elegant classical fantasy. Explicit 1:1 SQUARE canvas for editable 512x512 source; keep complete bottle including stopper, hand and stream within x24..488,y105..407 for the horizontal crop. No frame, letters, numbers, UI, watermark, anime, cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-9b8738ca-ee69-4f7c-bf6b-c0a9628b0b55.png",
     "editableSourcePath": "game/cards/art/masters/light_aceup_01.png",
     "sourceNative": [
@@ -569,7 +569,7 @@
   {
     "cardId": "light_claim_01",
     "name": "Marble Causeway",
-    "prompt": "Painterly high-fantasy collectible-card art for Light claim \u201cMarble Causeway.\u201d A broad causeway of pale veined marble extends across the front of a battlefield, its rectangular stones forming a clear raised road. At the far edge, a dark-armored raider is driven backward by a restrained golden-white pulse, while a calm Roman guardian stands safely on the marble. The luminous marble road is the unmistakable named subject; emphasize solid paving stones and the protected front line rather than a generic magic blast. Classical colonnade and distant hills in warm dawn light, rich marble grain, subtle gold inlay, layered painterly medieval fantasy atmosphere. Explicit 1:1 SQUARE canvas for an editable 512x512 master; keep the central causeway and visible guardian/raider action within x24..488,y105..407 for 206:141 horizontal crop; quiet sky and foreground beyond. No text, frame, UI, watermark, anime, cartoon, photorealism or pixel art.",
+    "prompt": "Painterly high-fantasy collectible-card art for Light claim “Marble Causeway.” A broad causeway of pale veined marble extends across the front of a battlefield, its rectangular stones forming a clear raised road. At the far edge, a dark-armored raider is driven backward by a restrained golden-white pulse, while a calm Roman guardian stands safely on the marble. The luminous marble road is the unmistakable named subject; emphasize solid paving stones and the protected front line rather than a generic magic blast. Classical colonnade and distant hills in warm dawn light, rich marble grain, subtle gold inlay, layered painterly medieval fantasy atmosphere. Explicit 1:1 SQUARE canvas for an editable 512x512 master; keep the central causeway and visible guardian/raider action within x24..488,y105..407 for 206:141 horizontal crop; quiet sky and foreground beyond. No text, frame, UI, watermark, anime, cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-0fa4a5d0-3e67-4e8b-bbfe-8848a6238214.png",
     "editableSourcePath": "game/cards/art/masters/light_claim_01.png",
     "sourceNative": [
@@ -695,7 +695,7 @@
   {
     "cardId": "light_charge_03",
     "name": "Yew Longbow Quiver",
-    "prompt": "Painterly medieval fantasy collectible-card art for Light charge \u201cYew Longbow Quiver.\u201d A focused archer in pale gold-trimmed armor draws a curved yew longbow with one arrow nocked; a distinctive complete leather quiver at the hip holds several yew arrows with pale fletching. Keep face, hands, complete quiver and arrows clear; show the precise archer action. Tactile wood, leather, feather and steel, warm directional light and atmospheric fortress garden, grounded painterly style matching supplied Hexmancers references. Explicit 1:1 square for a 512x512 master and 206:141 crop; keep face, hands and entire quiver in x24..488,y105..407. No text, numbers, frame or UI; no anime, cartoon, photorealism or pixel art. Repainted composition smaller to fit the full quiver and archer action into the crop.",
+    "prompt": "Painterly medieval fantasy collectible-card art for Light charge “Yew Longbow Quiver.” A focused archer in pale gold-trimmed armor draws a curved yew longbow with one arrow nocked; a distinctive complete leather quiver at the hip holds several yew arrows with pale fletching. Keep face, hands, complete quiver and arrows clear; show the precise archer action. Tactile wood, leather, feather and steel, warm directional light and atmospheric fortress garden, grounded painterly style matching supplied Hexmancers references. Explicit 1:1 square for a 512x512 master and 206:141 crop; keep face, hands and entire quiver in x24..488,y105..407. No text, numbers, frame or UI; no anime, cartoon, photorealism or pixel art. Repainted composition smaller to fit the full quiver and archer action into the crop.",
     "generatedPath": "/workspace/generated_images/exec-f16588ce-f045-4b17-9a10-2f1e5d69d62a.png",
     "editableSourcePath": "game/cards/art/masters/light_charge_03.png",
     "sourceNative": [
@@ -713,7 +713,7 @@
   {
     "cardId": "light_utility_03",
     "name": "Quipu Record",
-    "prompt": "Painterly high-fantasy collectible-card illustration for Light utility \u201cQuipu Record.\u201d The recall mechanic is shown through an archive scholar carefully opening an encoded quipu record so a remembered ally and battlefield appear softly in luminous memory behind it. The quipu is the clear named subject: a complete gold main cord with red, yellow, cream, green and blue hanging cords, distinct tactile knots and all tassel ends, held between both hands. Respectful historically inspired cord craft and archive, grounded face and anatomy, nuanced wool, dyed cord, bronze, vellum and stone, warm directional light and atmospheric depth in supplied Hexmancers style. Explicit 1:1 square for a 512x512 source and 206:141 crop; keep scholar face, hands and full quipu inside x24..488,y105..407. No text, alphabetic marks, frame, UI, anime, cartoon, photorealism or pixel art. Repainted smaller to bring the face and all cord ends into the crop.",
+    "prompt": "Painterly high-fantasy collectible-card illustration for Light utility “Quipu Record.” The recall mechanic is shown through an archive scholar carefully opening an encoded quipu record so a remembered ally and battlefield appear softly in luminous memory behind it. The quipu is the clear named subject: a complete gold main cord with red, yellow, cream, green and blue hanging cords, distinct tactile knots and all tassel ends, held between both hands. Respectful historically inspired cord craft and archive, grounded face and anatomy, nuanced wool, dyed cord, bronze, vellum and stone, warm directional light and atmospheric depth in supplied Hexmancers style. Explicit 1:1 square for a 512x512 source and 206:141 crop; keep scholar face, hands and full quipu inside x24..488,y105..407. No text, alphabetic marks, frame, UI, anime, cartoon, photorealism or pixel art. Repainted smaller to bring the face and all cord ends into the crop.",
     "generatedPath": "/workspace/generated_images/exec-1c7be548-e6db-48f4-b1fc-79d922f9bd25.png",
     "editableSourcePath": "game/cards/art/masters/light_utility_03.png",
     "sourceNative": [
@@ -726,7 +726,7 @@
     ],
     "status": "generated",
     "batch": 7,
-    "reviewNote": "Repainted after the first crop clipped the scholar\u2019s hairline and cord tassels; preserved the initial master at /tmp/light_utility_03-first.png. Inspected final exact 512-square source, centered 206:141 crop and 128x88 thumbnail: full face, both hands, main cord and all knotted strands/tassels remain visible."
+    "reviewNote": "Repainted after the first crop clipped the scholar’s hairline and cord tassels; preserved the initial master at /tmp/light_utility_03-first.png. Inspected final exact 512-square source, centered 206:141 crop and 128x88 thumbnail: full face, both hands, main cord and all knotted strands/tassels remain visible."
   },
   {
     "cardId": "light_trap_03",
@@ -749,7 +749,7 @@
   {
     "cardId": "light_environment_02",
     "name": "Hedge Maze",
-    "prompt": "Painterly medieval fantasy collectible-card illustration for Light environment \u201cHedge Maze.\u201d A dense formal garden maze of chest-high clipped yew hedges and flowering greenery surrounds a central crossing. Four perpendicular lanes of thorny brambles erupt outward in a clearly readable cross, knocking two armored intruders backward; the hedge maze and cross-shaped bramble action dominate, not a generic magic blast. Ancient cloister in warm golden light, detailed leaves, thorns, stone paths, atmospheric painterly depth and grounded figures in supplied Hexmancers reference spirit. Explicit 1:1 square for a 512x512 master and 206:141 crop; keep the crossing, four bramble lanes and figures in x24..488,y105..407. No text, numbers, frame, UI, anime, cartoon, photorealism or pixel art.",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Light environment “Hedge Maze.” A dense formal garden maze of chest-high clipped yew hedges and flowering greenery surrounds a central crossing. Four perpendicular lanes of thorny brambles erupt outward in a clearly readable cross, knocking two armored intruders backward; the hedge maze and cross-shaped bramble action dominate, not a generic magic blast. Ancient cloister in warm golden light, detailed leaves, thorns, stone paths, atmospheric painterly depth and grounded figures in supplied Hexmancers reference spirit. Explicit 1:1 square for a 512x512 master and 206:141 crop; keep the crossing, four bramble lanes and figures in x24..488,y105..407. No text, numbers, frame, UI, anime, cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-2a739283-b2af-4b0f-9755-c8960bef553b.png",
     "editableSourcePath": "game/cards/art/masters/light_environment_02.png",
     "sourceNative": [
@@ -780,12 +780,12 @@
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Inspected exact 512-square source, centered 206:141 crop and 128x88 thumbnail. Crusader\u2019s face, sword hand, full sword and enemy\u2019s struck upper body remain readable in the wide crop; lower legs are expendable scenery."
+    "reviewNote": "Inspected exact 512-square source, centered 206:141 crop and 128x88 thumbnail. Crusader’s face, sword hand, full sword and enemy’s struck upper body remain readable in the wide crop; lower legs are expendable scenery."
   },
   {
     "cardId": "light_lob_05",
     "name": "Falling Masonry",
-    "prompt": "Painterly medieval fantasy collectible-card illustration for the exact card Falling Masonry. In a sunlit ruined fortress lane, a colossal old stone arch and tower section breaks loose above a charging armored raider; a vertical column of heavy masonry crashes down and knocks the raider off balance, with a small burst of impact dust. The falling blocks and toppled figure clearly communicate a delayed, stunning knockdown. Keep the largest distinctive stone blocks, raider\u2019s face, and impact action centered and crop-safe. Strong readable architecture, believable chipped limestone, dust, warm directional light, painterly high-fantasy card art in the supplied Hexmancers style. Explicit 1:1 SQUARE canvas for a 512x512 editable source, composed also for a 206:141 horizontal crop; all identity-critical face/action inside x24..488,y105..407. No text, border, frame, UI, anime, cartoon, photorealism, pixel art.",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for the exact card Falling Masonry. In a sunlit ruined fortress lane, a colossal old stone arch and tower section breaks loose above a charging armored raider; a vertical column of heavy masonry crashes down and knocks the raider off balance, with a small burst of impact dust. The falling blocks and toppled figure clearly communicate a delayed, stunning knockdown. Keep the largest distinctive stone blocks, raider’s face, and impact action centered and crop-safe. Strong readable architecture, believable chipped limestone, dust, warm directional light, painterly high-fantasy card art in the supplied Hexmancers style. Explicit 1:1 SQUARE canvas for a 512x512 editable source, composed also for a 206:141 horizontal crop; all identity-critical face/action inside x24..488,y105..407. No text, border, frame, UI, anime, cartoon, photorealism, pixel art.",
     "generatedPath": "/workspace/generated_images/exec-883d3dca-7b24-4d2b-aeaf-6b015465c6ff.png",
     "editableSourcePath": "game/cards/art/masters/light_lob_05.png",
     "sourceNative": [
@@ -798,12 +798,12 @@
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Inspected exact 512-square source, centered 206:141 crop and 128x88 thumbnail. Large falling blocks, the raider\u2019s face and both arms, and the knockdown action read clearly and remain within the wide crop."
+    "reviewNote": "Inspected exact 512-square source, centered 206:141 crop and 128x88 thumbnail. Large falling blocks, the raider’s face and both arms, and the knockdown action read clearly and remain within the wide crop."
   },
   {
     "cardId": "light_ward_06",
     "name": "Spiked Pavise",
-    "prompt": "Create a painterly medieval fantasy collectible-card illustration for the exact card Spiked Pavise. A veteran crusader braces behind a curved, spike-covered pavise shield, forming a short arcing defensive line against arrows and a charging foe. The shield dominates; include its full outline, top cap, bottom edge and spikes, plus defender\u2019s focused face and gripping hand. Three overlapping shield sections are suggested by the battlefield arc, while one shield and defender form the central focal point. Rich carved wood, worn steel, ivory-red-gold heraldic details, warm light, painterly Hexmancers fantasy. Explicit 1:1 SQUARE canvas for editable 512x512 master and 206:141 crop; after repair the entire shield fits in the crop-safe center, with face and hand around y240. No text, lettering, border, UI, anime, cartoon, photorealism, pixel art.",
+    "prompt": "Create a painterly medieval fantasy collectible-card illustration for the exact card Spiked Pavise. A veteran crusader braces behind a curved, spike-covered pavise shield, forming a short arcing defensive line against arrows and a charging foe. The shield dominates; include its full outline, top cap, bottom edge and spikes, plus defender’s focused face and gripping hand. Three overlapping shield sections are suggested by the battlefield arc, while one shield and defender form the central focal point. Rich carved wood, worn steel, ivory-red-gold heraldic details, warm light, painterly Hexmancers fantasy. Explicit 1:1 SQUARE canvas for editable 512x512 master and 206:141 crop; after repair the entire shield fits in the crop-safe center, with face and hand around y240. No text, lettering, border, UI, anime, cartoon, photorealism, pixel art.",
     "generatedPath": "/workspace/generated_images/exec-2de42672-1430-443d-ae36-e6dd057cf354.png",
     "editableSourcePath": "game/cards/art/masters/light_ward_06.png",
     "sourceNative": [
@@ -816,12 +816,12 @@
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Repainted twice after the first versions clipped shield spikes in the centered crop; preserved intermediate sources at /tmp/light_ward_06-first.png and /tmp/light_ward_06-second.png. Inspected final exact 512-square source, centered 206:141 crop and 128x88 thumbnail. Full pavise, its spike tips, the crusader\u2019s face and gripping hand fit the wide crop."
+    "reviewNote": "Repainted twice after the first versions clipped shield spikes in the centered crop; preserved intermediate sources at /tmp/light_ward_06-first.png and /tmp/light_ward_06-second.png. Inspected final exact 512-square source, centered 206:141 crop and 128x88 thumbnail. Full pavise, its spike tips, the crusader’s face and gripping hand fit the wide crop."
   },
   {
     "cardId": "light_sentry_05",
     "name": "Weathervane Cockerel",
-    "prompt": "Painterly medieval fantasy collectible-card illustration for the exact card Weathervane Cockerel. Show a gilded bronze rooster weather vane mounted on a monastery roof turret, its tail and beak shaped as a directional pointer, turning in a gust and sending a visible chain of golden guardian sparks toward a nearby monk. The metal cockerel is the dominant recognizable subject with complete silhouette and arrow; monk\u2019s face and raised hand clear. Warm dawn light, weathered bronze, carved stone, wind-blown pennants and atmospheric painterly Hexmancers fantasy. Explicit 1:1 SQUARE canvas for 512x512 source and 206:141 crop. Repainted to scale the cockerel and mount down and fit full vane within crop-safe center. No text, border, UI, anime, cartoon, photorealism, pixel art.",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for the exact card Weathervane Cockerel. Show a gilded bronze rooster weather vane mounted on a monastery roof turret, its tail and beak shaped as a directional pointer, turning in a gust and sending a visible chain of golden guardian sparks toward a nearby monk. The metal cockerel is the dominant recognizable subject with complete silhouette and arrow; monk’s face and raised hand clear. Warm dawn light, weathered bronze, carved stone, wind-blown pennants and atmospheric painterly Hexmancers fantasy. Explicit 1:1 SQUARE canvas for 512x512 source and 206:141 crop. Repainted to scale the cockerel and mount down and fit full vane within crop-safe center. No text, border, UI, anime, cartoon, photorealism, pixel art.",
     "generatedPath": "/workspace/generated_images/exec-6fef293f-eeda-4605-a251-de800eee9168.png",
     "editableSourcePath": "game/cards/art/masters/light_sentry_05.png",
     "sourceNative": [
@@ -834,7 +834,7 @@
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Repainted after the first version cropped the cockerel crest; preserved it at /tmp/light_sentry_05-first.png. Inspected final exact 512-square source, centered 206:141 crop and 128x88 thumbnail. Full cockerel, vane arrow, monk\u2019s face and raised hand are visible."
+    "reviewNote": "Repainted after the first version cropped the cockerel crest; preserved it at /tmp/light_sentry_05-first.png. Inspected final exact 512-square source, centered 206:141 crop and 128x88 thumbnail. Full cockerel, vane arrow, monk’s face and raised hand are visible."
   },
   {
     "cardId": "light_boon_03",
@@ -852,7 +852,7 @@
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Repainted after the first version clipped the scout\u2019s face in the centered crop; preserved it at /tmp/light_boon_03-first.png. Inspected final exact 512-square source, centered 206:141 crop and 128x88 thumbnail. Scout\u2019s full face, leading hand and running torso remain clear; lower boots are cropped as expendable detail."
+    "reviewNote": "Repainted after the first version clipped the scout’s face in the centered crop; preserved it at /tmp/light_boon_03-first.png. Inspected final exact 512-square source, centered 206:141 crop and 128x88 thumbnail. Scout’s full face, leading hand and running torso remain clear; lower boots are cropped as expendable detail."
   },
   {
     "cardId": "light_charge_04",
@@ -870,7 +870,7 @@
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Inspected exact 512-square source, centered 206:141 crop and 128x88 thumbnail. Slinger\u2019s face and release hand, full sling and two stones remain clearly visible in the crop."
+    "reviewNote": "Inspected exact 512-square source, centered 206:141 crop and 128x88 thumbnail. Slinger’s face and release hand, full sling and two stones remain clearly visible in the crop."
   },
   {
     "cardId": "light_utility_04",
@@ -888,12 +888,12 @@
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Inspected exact 512-square source, centered 206:141 crop and 128x88 thumbnail. Pilgrim\u2019s face and cleansing hand/forearm stay clear in the crop; bathhouse marble, pool and golden cleansing water remain legible."
+    "reviewNote": "Inspected exact 512-square source, centered 206:141 crop and 128x88 thumbnail. Pilgrim’s face and cleansing hand/forearm stay clear in the crop; bathhouse marble, pool and golden cleansing water remain legible."
   },
   {
     "cardId": "light_trap_04",
     "name": "Sunfire Glyph",
-    "prompt": "Painterly medieval fantasy collectible-card illustration for Sunfire Glyph. In a monastery stone passage, a circular engraved sunburst glyph embedded in paving ignites under an intruding armored raider\u2019s boot, erupting into a golden-white blast that lifts him backward. The glyph is the named subject; show the complete circular inlay and the raider\u2019s face and boot action. Ancient carved stone, brass, warm daylight, painterly dramatic Hexmancers fantasy. Explicit 1:1 SQUARE for 512x512 and 206:141 crop. Repainted glyph smaller to fit whole in crop; use focalPoint y=.45 to retain face and complete circle. No text, border, UI, anime, cartoon, photorealism, pixel art.",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Sunfire Glyph. In a monastery stone passage, a circular engraved sunburst glyph embedded in paving ignites under an intruding armored raider’s boot, erupting into a golden-white blast that lifts him backward. The glyph is the named subject; show the complete circular inlay and the raider’s face and boot action. Ancient carved stone, brass, warm daylight, painterly dramatic Hexmancers fantasy. Explicit 1:1 SQUARE for 512x512 and 206:141 crop. Repainted glyph smaller to fit whole in crop; use focalPoint y=.45 to retain face and complete circle. No text, border, UI, anime, cartoon, photorealism, pixel art.",
     "generatedPath": "/workspace/generated_images/exec-4790c984-cbac-4503-9f1e-2d0857a16314.png",
     "editableSourcePath": "game/cards/art/masters/light_trap_04.png",
     "sourceNative": [
@@ -906,7 +906,7 @@
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Repainted after first glyph circumference and raider face clipped; preserved it at /tmp/light_trap_04-first.png. Inspected exact 512-square master, crop shifted up using y=.45, and 128 thumbnail from that crop. Entire glyph remains visible; raider\u2019s facial features and boot action read clearly."
+    "reviewNote": "Repainted after first glyph circumference and raider face clipped; preserved it at /tmp/light_trap_04-first.png. Inspected exact 512-square master, crop shifted up using y=.45, and 128 thumbnail from that crop. Entire glyph remains visible; raider’s facial features and boot action read clearly."
   },
   {
     "cardId": "light_environment_03",
@@ -924,12 +924,12 @@
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Repainted after the first version clipped the monks\u2019 heads in the centered crop; preserved it at /tmp/light_environment_03-first.png. Inspected final exact 512-square source, centered 206:141 crop and 128x88 thumbnail. Cloister herb garden and cross-shaped bramble action are clear; both faces and raised hands fit crop."
+    "reviewNote": "Repainted after the first version clipped the monks’ heads in the centered crop; preserved it at /tmp/light_environment_03-first.png. Inspected final exact 512-square source, centered 206:141 crop and 128x88 thumbnail. Cloister herb garden and cross-shaped bramble action are clear; both faces and raised hands fit crop."
   },
   {
     "cardId": "light_piece_03",
     "name": "Stone of the Philosophers",
-    "prompt": "Painterly medieval fantasy collectible-card illustration for the legendary Stone of the Philosophers. In an alchemist\u2019s cloister, a scholar-priest holds a palm-sized faceted ruby-gold philosopher\u2019s stone above an injured crusader; restorative light flows from the complete stone into the knight\u2019s wound. The complete distinct stone, holding hand and both faces are prominent. Brass instruments and parchment softly suggest alchemy, rich gold/ruby/ivory materials, dramatic healing glow and painterly Hexmancers fantasy. Explicit 1:1 SQUARE for 512x512 source and 206:141 crop; stone, hands and faces inside safe region. Use focalPoint y=.34 to include the scholar\u2019s complete face and both figures.",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for the legendary Stone of the Philosophers. In an alchemist’s cloister, a scholar-priest holds a palm-sized faceted ruby-gold philosopher’s stone above an injured crusader; restorative light flows from the complete stone into the knight’s wound. The complete distinct stone, holding hand and both faces are prominent. Brass instruments and parchment softly suggest alchemy, rich gold/ruby/ivory materials, dramatic healing glow and painterly Hexmancers fantasy. Explicit 1:1 SQUARE for 512x512 source and 206:141 crop; stone, hands and faces inside safe region. Use focalPoint y=.34 to include the scholar’s complete face and both figures.",
     "generatedPath": "/workspace/generated_images/exec-1fc7b85c-f82a-4717-b6b1-dedce3e688e3.png",
     "editableSourcePath": "game/cards/art/masters/light_piece_03.png",
     "sourceNative": [
@@ -942,7 +942,7 @@
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Inspected exact 512-square source, shifted 206:141 crop at y=.34 and 128x88 thumbnail. This crop includes the scholar\u2019s full face, holding hand and complete stone, as well as the healed knight\u2019s face and wound."
+    "reviewNote": "Inspected exact 512-square source, shifted 206:141 crop at y=.34 and 128x88 thumbnail. This crop includes the scholar’s full face, holding hand and complete stone, as well as the healed knight’s face and wound."
   },
   {
     "cardId": "light_summon_02",
@@ -983,7 +983,7 @@
   {
     "cardId": "light_ace_02",
     "name": "Archangel's Verdict",
-    "prompt": "Painterly medieval fantasy collectible-card illustration for Archangel\u2019s Verdict. A radiant archangel in ivory-gold armor descends above a dark battlefield, wings spread and sword raised, delivering a decisive lance of sunlight across shadowy foes; a wounded ally below glows in healing light. Archangel\u2019s face and sword hand are the focal point, with rich feather and metal detail, sunrise and painterly high fantasy. Explicit 1:1 SQUARE for 512x512 and 206:141 crop; use focalPoint y=.34 to retain upper sword and angel face in crop. No text, border, UI, anime, cartoon, photorealism, pixel art.",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Archangel’s Verdict. A radiant archangel in ivory-gold armor descends above a dark battlefield, wings spread and sword raised, delivering a decisive lance of sunlight across shadowy foes; a wounded ally below glows in healing light. Archangel’s face and sword hand are the focal point, with rich feather and metal detail, sunrise and painterly high fantasy. Explicit 1:1 SQUARE for 512x512 and 206:141 crop; use focalPoint y=.34 to retain upper sword and angel face in crop. No text, border, UI, anime, cartoon, photorealism, pixel art.",
     "generatedPath": "/workspace/generated_images/exec-7a9836c1-9483-4ca2-aeed-bf0336b6f3a5.png",
     "editableSourcePath": "game/cards/art/masters/light_ace_02.png",
     "sourceNative": [
@@ -996,7 +996,7 @@
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Inspected exact 512-square source, shifted 206:141 crop at y=.34 and 128x88 thumbnail. Archangel\u2019s face, sword hand and sword tip are retained, with healing light and enemies readable below."
+    "reviewNote": "Inspected exact 512-square source, shifted 206:141 crop at y=.34 and 128x88 thumbnail. Archangel’s face, sword hand and sword tip are retained, with healing light and enemies readable below."
   },
   {
     "cardId": "light_aceup_02",
@@ -1055,7 +1055,7 @@
   {
     "cardId": "light_strike_05",
     "name": "Longbow Volley",
-    "prompt": "Repaint the Longbow Volley illustration in grounded painterly medieval fantasy. One skilled archer releases a single piercing arrow at an armored target; show the entire longbow tip to tip with generous sky margin, plus the archer\u2019s face, hands, arrow line and impact. Keep every critical part inside a centered 1:1 square master and its 206:141 crop. Wide staging at sunset, nuanced yew, feather, leather and steel, atmospheric depth. No foreground figures obscuring the action; no frame, lettering, UI, anime, cartoon, photorealism or pixel art.",
+    "prompt": "Repaint the Longbow Volley illustration in grounded painterly medieval fantasy. One skilled archer releases a single piercing arrow at an armored target; show the entire longbow tip to tip with generous sky margin, plus the archer’s face, hands, arrow line and impact. Keep every critical part inside a centered 1:1 square master and its 206:141 crop. Wide staging at sunset, nuanced yew, feather, leather and steel, atmospheric depth. No foreground figures obscuring the action; no frame, lettering, UI, anime, cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-8d404026-596f-47f1-9a40-e9ebe59d654f.png",
     "editableSourcePath": "game/cards/art/masters/light_strike_05.png",
     "sourceNative": [
@@ -1109,7 +1109,7 @@
   {
     "cardId": "light_sentry_06",
     "name": "Wayside Shrine",
-    "prompt": "Original painterly medieval fantasy collectible-card art for Wayside Shrine. A sturdy stationary sentry steadily mends nearby allies. Show one modest complete freestanding roadside shrine of carved pale stone, with a small arched niche and luminous sacred lamp; it is the main subject but occupies about 55 percent of square height, with generous sky and ground margins. A weary armored traveler sits to its right receiving a gentle golden healing glow on a bandaged arm. Keep the entire roof, both sides and base, plus the traveler\u2019s face and hands inside the safe crop of a 1:1 square; horizontal 206:141 card view. Painterly materials, warm dawn light, atmospheric depth and quiet countryside. No frame, text, UI, anime, cartoon, photorealism or pixel art.",
+    "prompt": "Original painterly medieval fantasy collectible-card art for Wayside Shrine. A sturdy stationary sentry steadily mends nearby allies. Show one modest complete freestanding roadside shrine of carved pale stone, with a small arched niche and luminous sacred lamp; it is the main subject but occupies about 55 percent of square height, with generous sky and ground margins. A weary armored traveler sits to its right receiving a gentle golden healing glow on a bandaged arm. Keep the entire roof, both sides and base, plus the traveler’s face and hands inside the safe crop of a 1:1 square; horizontal 206:141 card view. Painterly materials, warm dawn light, atmospheric depth and quiet countryside. No frame, text, UI, anime, cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-e74cda38-b566-4bac-af84-d43023251dfb.png",
     "editableSourcePath": "game/cards/art/masters/light_sentry_06.png",
     "sourceNative": [
@@ -1122,12 +1122,12 @@
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Repainted twice after square normalization clipped the shrine at the left and then put its roof outside the wide crop; preserved prior sources at /tmp/light_sentry_06-second-source.png and /tmp/light_sentry_06-first.png. Reviewed final exact 512 source, shifted 206:141 crop (focal y=.45) and 128x88 thumbnail: full shrine roof and base, traveler\u2019s face and healing hands remain visible."
+    "reviewNote": "Repainted twice after square normalization clipped the shrine at the left and then put its roof outside the wide crop; preserved prior sources at /tmp/light_sentry_06-second-source.png and /tmp/light_sentry_06-first.png. Reviewed final exact 512 source, shifted 206:141 crop (focal y=.45) and 128x88 thumbnail: full shrine roof and base, traveler’s face and healing hands remain visible."
   },
   {
     "cardId": "light_boon_04",
     "name": "Owl's Foresight",
-    "prompt": "Repaint for Owl\u2019s Foresight as a centered square: a complete alert owl, face and both eyes fully visible, soars over a ranger who sidesteps an incoming strike while a chilled armored attacker is knocked down. Moonlit medieval road, painterly fantasy, clear owl focal point and atmospheric depth. Keep owl face, ranger face and moving hand, and the knockdown within the 206:141 safe crop. No frame, text, UI, anime, cartoon, photorealism or pixel art.",
+    "prompt": "Repaint for Owl’s Foresight as a centered square: a complete alert owl, face and both eyes fully visible, soars over a ranger who sidesteps an incoming strike while a chilled armored attacker is knocked down. Moonlit medieval road, painterly fantasy, clear owl focal point and atmospheric depth. Keep owl face, ranger face and moving hand, and the knockdown within the 206:141 safe crop. No frame, text, UI, anime, cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-9b884146-3b5a-4b41-8394-f4626947efcc.png",
     "editableSourcePath": "game/cards/art/masters/light_boon_04.png",
     "sourceNative": [
@@ -1145,7 +1145,7 @@
   {
     "cardId": "light_charge_05",
     "name": "Brick Hod",
-    "prompt": "Repaint for Brick Hod in a centered square: a medieval bricklayer\u2019s complete shoulder-carried wooden trough with both ends and four clay bricks visible, held across the worker\u2019s torso. The worker throws one brick in an arc that punches through a wooden shield and staggers an armored foe. Keep the full hod, face, hands, brick and impact inside the 206:141 safe crop. Painterly medieval fantasy with warm light and believable wood, clay and armor. No frame, text, UI, anime, cartoon, photorealism or pixel art.",
+    "prompt": "Repaint for Brick Hod in a centered square: a medieval bricklayer’s complete shoulder-carried wooden trough with both ends and four clay bricks visible, held across the worker’s torso. The worker throws one brick in an arc that punches through a wooden shield and staggers an armored foe. Keep the full hod, face, hands, brick and impact inside the 206:141 safe crop. Painterly medieval fantasy with warm light and believable wood, clay and armor. No frame, text, UI, anime, cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-34ef7588-8383-4103-8c41-26821531c65e.png",
     "editableSourcePath": "game/cards/art/masters/light_charge_05.png",
     "sourceNative": [
@@ -1158,12 +1158,12 @@
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Repainted after first normalized source cut the hod\u2019s left end; preserved first raw and source at /tmp/light_charge_05-first.png and /tmp/light_charge_05-first-source.png. Reviewed final exact 512 source, centered 206:141 crop and 128x88 thumbnail: whole hod and bricks, worker face/hands, projectile and shield impact are legible."
+    "reviewNote": "Repainted after first normalized source cut the hod’s left end; preserved first raw and source at /tmp/light_charge_05-first.png and /tmp/light_charge_05-first-source.png. Reviewed final exact 512 source, centered 206:141 crop and 128x88 thumbnail: whole hod and bricks, worker face/hands, projectile and shield impact are legible."
   },
   {
     "cardId": "light_utility_05",
     "name": "Illuminated Manuscript",
-    "prompt": "Repaint for Illuminated Manuscript: a complete ornate open codex with richly illuminated blank pages sits on a lectern; exactly three separate blank parchment cards rise above it toward a scholar\u2019s receiving hand. The full book, pages, spine, scholar\u2019s full face and hand, and all three cards fit inside a centered square and horizontal card crop. Warm candlelight, believable vellum, gold leaf and carved wood, painterly medieval fantasy. No readable writing, glyphs, frame, lettering or UI; no anime, cartoon, photorealism or pixel art.",
+    "prompt": "Repaint for Illuminated Manuscript: a complete ornate open codex with richly illuminated blank pages sits on a lectern; exactly three separate blank parchment cards rise above it toward a scholar’s receiving hand. The full book, pages, spine, scholar’s full face and hand, and all three cards fit inside a centered square and horizontal card crop. Warm candlelight, believable vellum, gold leaf and carved wood, painterly medieval fantasy. No readable writing, glyphs, frame, lettering or UI; no anime, cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-c4685c4d-9a2b-408c-bddb-741c199c67b3.png",
     "editableSourcePath": "game/cards/art/masters/light_utility_05.png",
     "sourceNative": [
@@ -1176,12 +1176,12 @@
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Repainted after the first crop clipped the scholar\u2019s face, top card and lower book; preserved first raw and source at /tmp/light_utility_05-first.png and /tmp/light_utility_05-first-source.png. Reviewed exact 512 source, shifted 206:141 crop (focal y=.44) and 128x88 thumbnail: scholar\u2019s face/hand, three complete blank cards and full open pages are retained; lower lectern is expendable."
+    "reviewNote": "Repainted after the first crop clipped the scholar’s face, top card and lower book; preserved first raw and source at /tmp/light_utility_05-first.png and /tmp/light_utility_05-first-source.png. Reviewed exact 512 source, shifted 206:141 crop (focal y=.44) and 128x88 thumbnail: scholar’s face/hand, three complete blank cards and full open pages are retained; lower lectern is expendable."
   },
   {
     "cardId": "light_trap_05",
     "name": "Lilia Pits",
-    "prompt": "Repaint for Lilia Pits: a compact complete roadside spike pit trap has a full narrow rectangular rim and four visible corners, with several sharp wooden spikes inside; an armored raider has fallen across the far rim after triggering it. Keep the whole opening, spikes and raider\u2019s face and hands in a centered square and horizontal card crop. Painterly medieval woodland, believable timber and earth, attractive directional light. No cropped pit edge or face; no frame, text, UI, anime, cartoon, photorealism or pixel art.",
+    "prompt": "Repaint for Lilia Pits: a compact complete roadside spike pit trap has a full narrow rectangular rim and four visible corners, with several sharp wooden spikes inside; an armored raider has fallen across the far rim after triggering it. Keep the whole opening, spikes and raider’s face and hands in a centered square and horizontal card crop. Painterly medieval woodland, believable timber and earth, attractive directional light. No cropped pit edge or face; no frame, text, UI, anime, cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-e5f39d2e-99bd-4e03-9339-45cae29b4e90.png",
     "editableSourcePath": "game/cards/art/masters/light_trap_05.png",
     "sourceNative": [
@@ -1194,7 +1194,7 @@
     ],
     "status": "generated",
     "batch": 8,
-    "reviewNote": "Repainted after the first normalized crop cut the raider\u2019s face and pit corners; preserved first raw and source at /tmp/light_trap_05-first.png and /tmp/light_trap_05-first-source.png. Reviewed final exact 512 source, centered 206:141 crop and 128x88 thumbnail: complete rectangular rim, spikes and fallen raider\u2019s face/hands remain clear."
+    "reviewNote": "Repainted after the first normalized crop cut the raider’s face and pit corners; preserved first raw and source at /tmp/light_trap_05-first.png and /tmp/light_trap_05-first-source.png. Reviewed final exact 512 source, centered 206:141 crop and 128x88 thumbnail: complete rectangular rim, spikes and fallen raider’s face/hands remain clear."
   },
   {
     "cardId": "light_environment_04",
@@ -1230,7 +1230,7 @@
     ],
     "status": "generated",
     "batch": 9,
-    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop and 128x88 thumbnail. Three archers\u2019 faces and drawing hands, complete bows, and the arrowstorm remain visible; top bow limbs and lower foreground are expendable scenery."
+    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop and 128x88 thumbnail. Three archers’ faces and drawing hands, complete bows, and the arrowstorm remain visible; top bow limbs and lower foreground are expendable scenery."
   },
   {
     "cardId": "light_lob_07",
@@ -1248,7 +1248,7 @@
     ],
     "status": "generated",
     "batch": 9,
-    "reviewNote": "Repainted after the first master\u2019s column capital was clipped by the centered 206:141 crop; preserved that exact source at /tmp/light_lob_07-first-source.png. Reviewed corrected exact 512-square source, centered wide crop and 128x88 thumbnail: complete ornate capital, full shaft and rounded base now fit the crop."
+    "reviewNote": "Repainted after the first master’s column capital was clipped by the centered 206:141 crop; preserved that exact source at /tmp/light_lob_07-first-source.png. Reviewed corrected exact 512-square source, centered wide crop and 128x88 thumbnail: complete ornate capital, full shaft and rounded base now fit the crop."
   },
   {
     "cardId": "light_ward_08",
@@ -1289,7 +1289,7 @@
   {
     "cardId": "light_boon_05",
     "name": "Physician's Balm",
-    "prompt": "Painterly medieval fantasy collectible-card art for Physician's Balm, a healing boon that also chills the foe who attacked. Close narrative scene: a compassionate battlefield physician in simple linen applies a dab of luminous pale-gold salve from a small ceramic balm jar onto a wounded knight's forearm; the knight\u2019s face relaxes as the wound closes. In the background a hostile armored raider is held at bay by a faint blue chill mist. The physician's face and healing hand, knight's face, and small open balm jar are the clear focal elements, all safely inside x24..488,y105..407. Warm candle and dawn light, expressive traditional oil-paint brushwork, believable skin, cloth, ceramic and steel. Strict 1:1 square 512x512, staged wide for a 206:141 card illustration, quiet expendable sky and ground. No frame, text, lettering, UI, anime, cartoon, photorealism or pixel art.",
+    "prompt": "Painterly medieval fantasy collectible-card art for Physician's Balm, a healing boon that also chills the foe who attacked. Close narrative scene: a compassionate battlefield physician in simple linen applies a dab of luminous pale-gold salve from a small ceramic balm jar onto a wounded knight's forearm; the knight’s face relaxes as the wound closes. In the background a hostile armored raider is held at bay by a faint blue chill mist. The physician's face and healing hand, knight's face, and small open balm jar are the clear focal elements, all safely inside x24..488,y105..407. Warm candle and dawn light, expressive traditional oil-paint brushwork, believable skin, cloth, ceramic and steel. Strict 1:1 square 512x512, staged wide for a 206:141 card illustration, quiet expendable sky and ground. No frame, text, lettering, UI, anime, cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-04b9de8c-95de-47e9-b973-f803ce745244.png",
     "editableSourcePath": "game/cards/art/masters/light_boon_05.png",
     "sourceNative": [
@@ -1302,7 +1302,7 @@
     ],
     "status": "generated",
     "batch": 9,
-    "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop (focal y=.43) and 128x88 thumbnail. The physician\u2019s face and healing fingers, patient\u2019s face and salve jar remain visible along with the chilled attacker; lower armor is expendable."
+    "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop (focal y=.43) and 128x88 thumbnail. The physician’s face and healing fingers, patient’s face and salve jar remain visible along with the chilled attacker; lower armor is expendable."
   },
   {
     "cardId": "light_charge_06",
@@ -1325,7 +1325,7 @@
   {
     "cardId": "light_utility_06",
     "name": "Alchemist's Still",
-    "prompt": "Painterly medieval fantasy illustration for Alchemist's Still, an alchemical tool that copies a potion. Show one complete elegant small copper-and-glass distillation still on a stout workbench: round flask, neck, swan-neck tube, condenser and receiver all connected and uncut. The receiver produces a second identical glowing blue potion vial beside the original, clearly showing duplication. A focused alchemist\u2019s face and careful hands may appear behind the apparatus, but complete still and two bottles dominate. Keep every named piece inside x24..488,y105..407. Hand-painted collectible-card art, warm candlelight, believable copper, glass and wood, atmospheric workshop depth. Strict 1:1 square 512x512 staged wide for a 206:141 card crop. No labels, readable writing, frame, UI, anime, cartoon, photorealism or pixel art.",
+    "prompt": "Painterly medieval fantasy illustration for Alchemist's Still, an alchemical tool that copies a potion. Show one complete elegant small copper-and-glass distillation still on a stout workbench: round flask, neck, swan-neck tube, condenser and receiver all connected and uncut. The receiver produces a second identical glowing blue potion vial beside the original, clearly showing duplication. A focused alchemist’s face and careful hands may appear behind the apparatus, but complete still and two bottles dominate. Keep every named piece inside x24..488,y105..407. Hand-painted collectible-card art, warm candlelight, believable copper, glass and wood, atmospheric workshop depth. Strict 1:1 square 512x512 staged wide for a 206:141 card crop. No labels, readable writing, frame, UI, anime, cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-16e1cf9c-3355-4954-98f0-5df0509b2124.png",
     "editableSourcePath": "game/cards/art/masters/light_utility_06.png",
     "sourceNative": [
@@ -1338,7 +1338,7 @@
     ],
     "status": "generated",
     "batch": 9,
-    "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop (focal y=.375) and 128x88 thumbnail. Full still, curved tube, connected condenser and receiving flask, paired potion vials and alchemist\u2019s face are visible."
+    "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop (focal y=.375) and 128x88 thumbnail. Full still, curved tube, connected condenser and receiving flask, paired potion vials and alchemist’s face are visible."
   },
   {
     "cardId": "light_trap_06",
@@ -1356,12 +1356,12 @@
     ],
     "status": "generated",
     "batch": 9,
-    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop and 128x88 thumbnail. The ceiling opening and stone blast remain central with three intruders\u2019 faces and raised hands readable; lower bodies and outer arch are incidental."
+    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop and 128x88 thumbnail. The ceiling opening and stone blast remain central with three intruders’ faces and raised hands readable; lower bodies and outer arch are incidental."
   },
   {
     "cardId": "light_environment_05",
     "name": "Pure Snowfield",
-    "prompt": "Original painterly medieval fantasy landscape for Pure Snowfield, an environmental burst of freezing force. A broad pristine alpine snowfield fills the scene, fresh powder swept by a ring-shaped gust of frost; a lone armored traveler near center braces against the blast as frost crystallizes across the ground and nearby stones. Vast clean white-blue snow basin and distant pines and peaks identify the named environment; keep traveler\u2019s face and the central ice burst in x24..488,y105..407. Traditional hand-painted collectible-card fantasy art, luminous cold daylight, nuanced snow and atmospheric blue shadows. Strict 1:1 square 512x512; wide landscape staging for 206:141 crop; no text, frame, UI, anime, cartoon, photorealism or pixel art.",
+    "prompt": "Original painterly medieval fantasy landscape for Pure Snowfield, an environmental burst of freezing force. A broad pristine alpine snowfield fills the scene, fresh powder swept by a ring-shaped gust of frost; a lone armored traveler near center braces against the blast as frost crystallizes across the ground and nearby stones. Vast clean white-blue snow basin and distant pines and peaks identify the named environment; keep traveler’s face and the central ice burst in x24..488,y105..407. Traditional hand-painted collectible-card fantasy art, luminous cold daylight, nuanced snow and atmospheric blue shadows. Strict 1:1 square 512x512; wide landscape staging for 206:141 crop; no text, frame, UI, anime, cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-b38d3791-0a88-40e6-abc0-cba3506a93c8.png",
     "editableSourcePath": "game/cards/art/masters/light_environment_05.png",
     "sourceNative": [
@@ -1392,12 +1392,12 @@
     ],
     "status": "generated",
     "batch": 9,
-    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop and 128x88 thumbnail. Full jeweled bridle and reins, pegasus muzzle/eye and rider\u2019s hand remain clear; upper ear tips and outer wing are expendable at the card crop."
+    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop and 128x88 thumbnail. Full jeweled bridle and reins, pegasus muzzle/eye and rider’s hand remain clear; upper ear tips and outer wing are expendable at the card crop."
   },
   {
     "cardId": "light_summon_03",
     "name": "Centaur Archer",
-    "prompt": "Repaint Centaur Archer in hand-painted medieval fantasy style. Strict 1:1 square, broad centered side view. One female centaur archer with full human torso and clearly joined horse body stands in profile. She holds a compact short recurved bow diagonally across her chest, not vertically; BOTH bow tips and full string are clearly separated from all image edges, with wide sky around them. The centaur\u2019s face, both hands, bow and arrow are centered within x60..450,y125..385. Main figure occupies about 60 percent of canvas height; horse legs may trail into the ground margin. Beautiful forest-edge dawn, expressive brushwork and nuanced leather, yew, feather and equine coat. Keep identity-critical face, hands, full bow and joined centaur body intact in 206:141 card crop. No frame, text, UI, anime, cartoon, photorealism, pixel art.",
+    "prompt": "Repaint Centaur Archer in hand-painted medieval fantasy style. Strict 1:1 square, broad centered side view. One female centaur archer with full human torso and clearly joined horse body stands in profile. She holds a compact short recurved bow diagonally across her chest, not vertically; BOTH bow tips and full string are clearly separated from all image edges, with wide sky around them. The centaur’s face, both hands, bow and arrow are centered within x60..450,y125..385. Main figure occupies about 60 percent of canvas height; horse legs may trail into the ground margin. Beautiful forest-edge dawn, expressive brushwork and nuanced leather, yew, feather and equine coat. Keep identity-critical face, hands, full bow and joined centaur body intact in 206:141 card crop. No frame, text, UI, anime, cartoon, photorealism, pixel art.",
     "generatedPath": "/workspace/generated_images/exec-01807b66-62f3-40f6-bf87-b8bb0ab2d2c6.png",
     "editableSourcePath": "game/cards/art/masters/light_summon_03.png",
     "sourceNative": [
@@ -1451,7 +1451,7 @@
   {
     "cardId": "light_aceup_03",
     "name": "Halo of Judgment",
-    "prompt": "Painterly medieval fantasy collectible-card illustration for Halo of Judgment, a radiant expanding nova of divine power. A single complete ornate golden halo, a perfect circular ring of engraved light, floats above a small kneeling armored knight; a brilliant expanding burst of rays radiates from it and drives back two shadowed foes. Keep the entire circular halo with clear margin on every side, the knight\u2019s face and hands, and the full nova safely in x40..472,y105..407. Halo remains a legible ring, not an unstructured white flare. Hand-painted epic fantasy, strong dawn contrast, nuanced gold and steel. Strict 1:1 square 512x512 for 206:141 crop. No frame, lettering, rune text, UI, anime, cartoon, photorealism or pixel art.",
+    "prompt": "Painterly medieval fantasy collectible-card illustration for Halo of Judgment, a radiant expanding nova of divine power. A single complete ornate golden halo, a perfect circular ring of engraved light, floats above a small kneeling armored knight; a brilliant expanding burst of rays radiates from it and drives back two shadowed foes. Keep the entire circular halo with clear margin on every side, the knight’s face and hands, and the full nova safely in x40..472,y105..407. Halo remains a legible ring, not an unstructured white flare. Hand-painted epic fantasy, strong dawn contrast, nuanced gold and steel. Strict 1:1 square 512x512 for 206:141 crop. No frame, lettering, rune text, UI, anime, cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-47a30428-545c-418c-b54a-76ce31e73931.png",
     "editableSourcePath": "game/cards/art/masters/light_aceup_03.png",
     "sourceNative": [
@@ -1464,12 +1464,12 @@
     ],
     "status": "generated",
     "batch": 9,
-    "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop (focal y=.34) and 128x88 thumbnail. The complete engraved halo ring remains intact with the knight\u2019s face and open hands; outer rays and distant foes can extend beyond the crop."
+    "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop (focal y=.34) and 128x88 thumbnail. The complete engraved halo ring remains intact with the knight’s face and open hands; outer rays and distant foes can extend beyond the crop."
   },
   {
     "cardId": "light_claim_03",
     "name": "Temple Foundation",
-    "prompt": "Painterly medieval fantasy landscape illustration for Temple Foundation, a marble temple site being claimed and consecrated. Show a complete low marble temple foundation platform on a rocky terrace: rectangular pale stone base with all four edges and broad steps visible, a few newly raised columns and scattered foundation blocks. A priest and masons lay one final stone as warm sacred light spreads across the plaza. The full base/platform is the named focal object, low and compact, occupying the central horizontal band with margin on every side; keep all platform corners, steps and workers\u2019 faces inside x24..488,y105..407. Classical marble architecture, distant hills, warm morning light, expressive traditional fantasy painting. Strict 1:1 square 512x512 composed wide for a 206:141 card crop. No towering building that exceeds the crop, no frame, lettering, UI, anime, cartoon, photorealism or pixel art.",
+    "prompt": "Painterly medieval fantasy landscape illustration for Temple Foundation, a marble temple site being claimed and consecrated. Show a complete low marble temple foundation platform on a rocky terrace: rectangular pale stone base with all four edges and broad steps visible, a few newly raised columns and scattered foundation blocks. A priest and masons lay one final stone as warm sacred light spreads across the plaza. The full base/platform is the named focal object, low and compact, occupying the central horizontal band with margin on every side; keep all platform corners, steps and workers’ faces inside x24..488,y105..407. Classical marble architecture, distant hills, warm morning light, expressive traditional fantasy painting. Strict 1:1 square 512x512 composed wide for a 206:141 card crop. No towering building that exceeds the crop, no frame, lettering, UI, anime, cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-9988a3f2-4b13-4d76-8e5a-2d224d298013.png",
     "editableSourcePath": "game/cards/art/masters/light_claim_03.png",
     "sourceNative": [
@@ -1500,12 +1500,12 @@
     ],
     "status": "generated",
     "batch": 9,
-    "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop (focal y=.34) and 128x88 thumbnail. Solaris\u2019s face, both hands, full bow and five sun arrows remain visible; lower armor is expendable."
+    "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop (focal y=.34) and 128x88 thumbnail. Solaris’s face, both hands, full bow and five sun arrows remain visible; lower armor is expendable."
   },
   {
     "cardId": "light_strike_07",
     "name": "West Wind Gust",
-    "prompt": "Painterly medieval fantasy illustration for West Wind Gust, a swift wedge-shaped gust that knocks a foe back. A west wind sweeps diagonally from a vigilant light-aligned ranger\u2019s outstretched hand as a broad translucent fan of pale gold and blue air; three armored foes are struck in a forward wedge and pushed backward, one clearly staggering. Ranger\u2019s face, casting hand and the complete wedge-shaped front of wind stay inside x24..488,y105..407. Leaves and dust show direction, dawn at the western horizon, expressive hand-painted fantasy materials. Strict 1:1 square 512x512 composed wide for 206:141 crop. No frame, lettering, UI, anime, cartoon, photorealism or pixel art.",
+    "prompt": "Painterly medieval fantasy illustration for West Wind Gust, a swift wedge-shaped gust that knocks a foe back. A west wind sweeps diagonally from a vigilant light-aligned ranger’s outstretched hand as a broad translucent fan of pale gold and blue air; three armored foes are struck in a forward wedge and pushed backward, one clearly staggering. Ranger’s face, casting hand and the complete wedge-shaped front of wind stay inside x24..488,y105..407. Leaves and dust show direction, dawn at the western horizon, expressive hand-painted fantasy materials. Strict 1:1 square 512x512 composed wide for 206:141 crop. No frame, lettering, UI, anime, cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-b881b09b-6316-47d6-bf4d-6b2ec65fb336.png",
     "editableSourcePath": "game/cards/art/masters/light_strike_07.png",
     "sourceNative": [
@@ -1518,7 +1518,7 @@
     ],
     "status": "generated",
     "batch": 9,
-    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop and 128x88 thumbnail. Ranger\u2019s face and casting hand, broad wind wedge and recoiling foes are clear; the wedge is emphasized by blowing leaves and dust."
+    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop and 128x88 thumbnail. Ranger’s face and casting hand, broad wind wedge and recoiling foes are clear; the wedge is emphasized by blowing leaves and dust."
   },
   {
     "cardId": "light_lob_08",
@@ -1536,7 +1536,7 @@
     ],
     "status": "generated",
     "batch": 9,
-    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop and 128x88 thumbnail. The meteor\u2019s rocky core, staggered foe\u2019s face, raised hands and impact remain readable; the upper trail is expendable."
+    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop and 128x88 thumbnail. The meteor’s rocky core, staggered foe’s face, raised hands and impact remain readable; the upper trail is expendable."
   },
   {
     "cardId": "light_ward_09",
@@ -1577,7 +1577,7 @@
   {
     "cardId": "light_boon_06",
     "name": "Herbal Poultice",
-    "prompt": "Painterly medieval fantasy card illustration for Herbal Poultice, a long-lasting regenerative healing boon. A village healer carefully lays a fresh green herb poultice, wrapped in linen, onto the shoulder of an exhausted but recovering knight; the wound visibly closes with gentle golden-green light. A faint spark of light jolts a lurking attacker away in the far background. Keep healer\u2019s face and applying fingers, patient\u2019s face, and the complete poultice wrap inside x24..488,y105..407. Warm woodland infirmary at dawn, expressive hand-painted fantasy, believable medicinal leaves, linen and armor. Strict 1:1 square 512x512 staged wide for a 206:141 card crop. No frame, writing, UI, anime, cartoon, photorealism or pixel art.",
+    "prompt": "Painterly medieval fantasy card illustration for Herbal Poultice, a long-lasting regenerative healing boon. A village healer carefully lays a fresh green herb poultice, wrapped in linen, onto the shoulder of an exhausted but recovering knight; the wound visibly closes with gentle golden-green light. A faint spark of light jolts a lurking attacker away in the far background. Keep healer’s face and applying fingers, patient’s face, and the complete poultice wrap inside x24..488,y105..407. Warm woodland infirmary at dawn, expressive hand-painted fantasy, believable medicinal leaves, linen and armor. Strict 1:1 square 512x512 staged wide for a 206:141 card crop. No frame, writing, UI, anime, cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-d5b01604-6a3f-4335-b943-34c1d5145dea.png",
     "editableSourcePath": "game/cards/art/masters/light_boon_06.png",
     "sourceNative": [
@@ -1590,12 +1590,12 @@
     ],
     "status": "generated",
     "batch": 9,
-    "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop (focal y=.34) and 128x88 thumbnail. Healer\u2019s full face and applying fingers, patient\u2019s face and leaf poultice wrap remain in view; background attacker is secondary."
+    "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop (focal y=.34) and 128x88 thumbnail. Healer’s full face and applying fingers, patient’s face and leaf poultice wrap remain in view; background attacker is secondary."
   },
   {
     "cardId": "light_charge_07",
     "name": "Owl-Feather Darts",
-    "prompt": "Painterly medieval fantasy collectible-card art for Owl-Feather Darts. A skilled light-aligned scout casts a pair of short silver throwing darts with distinct soft gray owl-feather fletching; both entire dart bodies and sharp tips are visible in mid-flight toward an armored target, with a subtle bright critical glint. The scout\u2019s focused face, throwing hand, both full darts and feather vanes all fit inside x24..488,y105..407. Moonlit stone courtyard, hand-painted fantasy, detailed steel, feather and leather, crisp directional light. Strict 1:1 square 512x512 composed wide for 206:141 crop. No cropped dart tips, no text, frame, UI, anime, cartoon, photorealism or pixel art.",
+    "prompt": "Painterly medieval fantasy collectible-card art for Owl-Feather Darts. A skilled light-aligned scout casts a pair of short silver throwing darts with distinct soft gray owl-feather fletching; both entire dart bodies and sharp tips are visible in mid-flight toward an armored target, with a subtle bright critical glint. The scout’s focused face, throwing hand, both full darts and feather vanes all fit inside x24..488,y105..407. Moonlit stone courtyard, hand-painted fantasy, detailed steel, feather and leather, crisp directional light. Strict 1:1 square 512x512 composed wide for 206:141 crop. No cropped dart tips, no text, frame, UI, anime, cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-a3ce30e8-6bf0-4a75-a4d0-0b1472c4616d.png",
     "editableSourcePath": "game/cards/art/masters/light_charge_07.png",
     "sourceNative": [
@@ -1608,12 +1608,12 @@
     ],
     "status": "generated",
     "batch": 9,
-    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop and 128x88 thumbnail. Scout\u2019s face and throwing hand plus both complete owl-feathered darts and bright tips fit in the crop; target remains partial and secondary."
+    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop and 128x88 thumbnail. Scout’s face and throwing hand plus both complete owl-feathered darts and bright tips fit in the crop; target remains partial and secondary."
   },
   {
     "cardId": "light_utility_07",
     "name": "Movable Type Press",
-    "prompt": "REPAINT Movable Type Press as traditional hand-painted medieval fantasy art. Create a SMALL compact wooden movable-type hand press on a worktable, seen from a slightly farther viewpoint. The entire press must fit inside the central horizontal band of a square: screw cap and top crossbar, vertical screw, flat platen and type bed, both side posts and complete lower base are visible with generous margin. Keep the complete press only 55 percent of square height, approximately y125..390, and 65 percent width, approximately x80..435. A printer is beside it, his entire face visible with ample margin, holding a fresh completely blank parchment sheet; an identical blank sheet lies on the table to show copying. All named machine parts and the printer\u2019s head and hands inside x24..488,y105..407. Cozy candlelit medieval print shop, expressive brush-painted wood, iron and vellum. Strict 1:1 square 512x512 composed for 206:141 card crop. No huge press, no cropped screw, frame, written letters, words, UI, anime, cartoon, photorealism or pixel art.",
+    "prompt": "REPAINT Movable Type Press as traditional hand-painted medieval fantasy art. Create a SMALL compact wooden movable-type hand press on a worktable, seen from a slightly farther viewpoint. The entire press must fit inside the central horizontal band of a square: screw cap and top crossbar, vertical screw, flat platen and type bed, both side posts and complete lower base are visible with generous margin. Keep the complete press only 55 percent of square height, approximately y125..390, and 65 percent width, approximately x80..435. A printer is beside it, his entire face visible with ample margin, holding a fresh completely blank parchment sheet; an identical blank sheet lies on the table to show copying. All named machine parts and the printer’s head and hands inside x24..488,y105..407. Cozy candlelit medieval print shop, expressive brush-painted wood, iron and vellum. Strict 1:1 square 512x512 composed for 206:141 card crop. No huge press, no cropped screw, frame, written letters, words, UI, anime, cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-80f60a3d-e04f-46d2-92dd-f88af857b6da.png",
     "editableSourcePath": "game/cards/art/masters/light_utility_07.png",
     "sourceNative": [
@@ -1626,12 +1626,12 @@
     ],
     "status": "generated",
     "batch": 9,
-    "reviewNote": "Repainted after first crop clipped the screw and printer\u2019s head; preserved that source at /tmp/light_utility_07-first-source.png and exact raw at /workspace/generated_images/exec-74000dcb-cc98-43d6-93b0-9524317ec176.png. Reviewed exact 512 source, upward-shifted crop (focal y=.34) and thumbnail: full screw, press frame, platen, type bed and base, printer\u2019s face/hands and blank copy sheets remain visible."
+    "reviewNote": "Repainted after first crop clipped the screw and printer’s head; preserved that source at /tmp/light_utility_07-first-source.png and exact raw at /workspace/generated_images/exec-74000dcb-cc98-43d6-93b0-9524317ec176.png. Reviewed exact 512 source, upward-shifted crop (focal y=.34) and thumbnail: full screw, press frame, platen, type bed and base, printer’s face/hands and blank copy sheets remain visible."
   },
   {
     "cardId": "light_trap_07",
     "name": "Riddle at the Gate",
-    "prompt": "Painterly medieval fantasy collectible-card art for Riddle at the Gate, a long snaring and confusing trap. An old compact stone gate blocks a woodland road; an ornate circular geometric puzzle lock with abstract non-letter symbols is set at chest height. A curious traveler reaches toward the mechanism and becomes caught in luminous golden cords springing from the gate, with a small dizzy swirl of abstract shapes around their head. Keep complete puzzle lock, traveler\u2019s face and hand, and the snare cords inside x24..488,y105..407. Gate is broad and modest, fully visible within the central band; moody dawn, expressive hand-painted stone, wood, cloth and magic. Strict 1:1 square 512x512 composed wide for 206:141 crop. No written words or letters, no frame, UI, anime, cartoon, photorealism or pixel art.",
+    "prompt": "Painterly medieval fantasy collectible-card art for Riddle at the Gate, a long snaring and confusing trap. An old compact stone gate blocks a woodland road; an ornate circular geometric puzzle lock with abstract non-letter symbols is set at chest height. A curious traveler reaches toward the mechanism and becomes caught in luminous golden cords springing from the gate, with a small dizzy swirl of abstract shapes around their head. Keep complete puzzle lock, traveler’s face and hand, and the snare cords inside x24..488,y105..407. Gate is broad and modest, fully visible within the central band; moody dawn, expressive hand-painted stone, wood, cloth and magic. Strict 1:1 square 512x512 composed wide for 206:141 crop. No written words or letters, no frame, UI, anime, cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-f4f2dc28-41aa-4324-88a2-b9b3c01c6b7a.png",
     "editableSourcePath": "game/cards/art/masters/light_trap_07.png",
     "sourceNative": [
@@ -1644,12 +1644,12 @@
     ],
     "status": "generated",
     "batch": 9,
-    "reviewNote": "Reviewed normalized exact 512-square source, upward-shifted 206:141 crop (focal y=.42) and 128x88 thumbnail. Full puzzle gate/arch and circular mechanism, traveler\u2019s face/hand and snare cords are retained; lower legs are incidental."
+    "reviewNote": "Reviewed normalized exact 512-square source, upward-shifted 206:141 crop (focal y=.42) and 128x88 thumbnail. Full puzzle gate/arch and circular mechanism, traveler’s face/hand and snare cords are retained; lower legs are incidental."
   },
   {
     "cardId": "light_environment_06",
     "name": "Consecrated Ground",
-    "prompt": "Painterly medieval fantasy landscape for Consecrated Ground, a sacred place whose power sets enemies alight. Show a compact ancient marble sanctuary courtyard and circular consecrated stone plaza at dawn; a warm radiant golden fire burns low along a curved line in the paving, surrounding a patch of shadow corruption while the surrounding ground remains peaceful. A lone armored intruder recoils from the holy flame at the edge. The complete central consecrated ground motif and intruder\u2019s face stay inside x24..488,y105..407. Hand-painted fantasy landscape, clear sacred marble geometry, warm gold and cool shadow contrast, atmospheric depth. Strict 1:1 square 512x512 composed wide for 206:141 card crop. Keep environment dominant, flames clearly on ground, not a large fireball. No frame, text, UI, anime, cartoon, photorealism or pixel art.",
+    "prompt": "Painterly medieval fantasy landscape for Consecrated Ground, a sacred place whose power sets enemies alight. Show a compact ancient marble sanctuary courtyard and circular consecrated stone plaza at dawn; a warm radiant golden fire burns low along a curved line in the paving, surrounding a patch of shadow corruption while the surrounding ground remains peaceful. A lone armored intruder recoils from the holy flame at the edge. The complete central consecrated ground motif and intruder’s face stay inside x24..488,y105..407. Hand-painted fantasy landscape, clear sacred marble geometry, warm gold and cool shadow contrast, atmospheric depth. Strict 1:1 square 512x512 composed wide for 206:141 card crop. Keep environment dominant, flames clearly on ground, not a large fireball. No frame, text, UI, anime, cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-cf03fc48-0264-4801-af9e-944ec1ca74aa.png",
     "editableSourcePath": "game/cards/art/masters/light_environment_06.png",
     "sourceNative": [
@@ -1667,7 +1667,7 @@
   {
     "cardId": "light_strike_08",
     "name": "Zephyr's Breath",
-    "prompt": "Paint original painterly medieval fantasy collectible-card art for Zephyr's Breath. A wind adept in a mountain pass sweeps one open hand sideways, unleashing a quick broad horizontal fan of pale gold and blue wind that slams a nearby raider back. Clear gust shape and impact, adept\u2019s visible face and casting hand; a critical sweeping strike, not a generic wind landscape. One main figure, one secondary foe. Rich painted cloth and stone, dramatic dawn light, atmospheric depth, grounded anatomy, hand-painted oil/gouache like supplied Hexmancers fantasy art. STRICT 1:1 square composition for 512 master; horizontal arrangement, place face, hand, and impact within x24..488,y105..407 for 206:141 crop, quiet top/bottom margins. No text, letters, border, UI, anime, cartoon, photorealism or pixel art.",
+    "prompt": "Paint original painterly medieval fantasy collectible-card art for Zephyr's Breath. A wind adept in a mountain pass sweeps one open hand sideways, unleashing a quick broad horizontal fan of pale gold and blue wind that slams a nearby raider back. Clear gust shape and impact, adept’s visible face and casting hand; a critical sweeping strike, not a generic wind landscape. One main figure, one secondary foe. Rich painted cloth and stone, dramatic dawn light, atmospheric depth, grounded anatomy, hand-painted oil/gouache like supplied Hexmancers fantasy art. STRICT 1:1 square composition for 512 master; horizontal arrangement, place face, hand, and impact within x24..488,y105..407 for 206:141 crop, quiet top/bottom margins. No text, letters, border, UI, anime, cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-2cbd513c-13f1-4506-a8e5-dcbd62a26baf.png",
     "editableSourcePath": "game/cards/art/masters/light_strike_08.png",
     "sourceNative": [
@@ -1680,7 +1680,7 @@
     ],
     "status": "generated",
     "batch": 10,
-    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop and 128x88 thumbnail. Adept\u2019s face and casting hand and the broad wind impact remain visible; trailing robes and displaced foe\u2019s legs are incidental."
+    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop and 128x88 thumbnail. Adept’s face and casting hand and the broad wind impact remain visible; trailing robes and displaced foe’s legs are incidental."
   },
   {
     "cardId": "light_lob_09",
@@ -1698,12 +1698,12 @@
     ],
     "status": "generated",
     "batch": 10,
-    "reviewNote": "Recovered the raw result by explicit visual flask identity after its path line was truncated; reviewed the square source, upward focal crop and thumbnail. Stoppered flask, alchemist\u2019s face/hand and impact remain visible; background workshop is incidental."
+    "reviewNote": "Recovered the raw result by explicit visual flask identity after its path line was truncated; reviewed the square source, upward focal crop and thumbnail. Stoppered flask, alchemist’s face/hand and impact remain visible; background workshop is incidental."
   },
   {
     "cardId": "light_ward_10",
     "name": "Shieldwall of the Fyrd",
-    "prompt": "Paint original painterly medieval fantasy collectible-card art for Shieldwall of the Fyrd. Three fyrd warriors brace shoulder-to-shoulder behind one broad, continuous heavy golden shield barrier; enemy arrows and one mace strike the barrier and flare outward. Show sturdy construction and defense, with front warrior\u2019s visible face and gripping hands. Strong horizontal line, barrier dominates. Grounded mail, wood and stone, hand-painted oil/gouache, dramatic directional light, atmospheric depth and supplied Hexmancers fantasy character art style. STRICT 1:1 square 512 master; keep barrier, faces, hands, and impacts in x24..488,y105..407 for 206:141 crop, quiet top/bottom margins. No text, border, UI, anime, cartoon, photorealism or pixel art.",
+    "prompt": "Paint original painterly medieval fantasy collectible-card art for Shieldwall of the Fyrd. Three fyrd warriors brace shoulder-to-shoulder behind one broad, continuous heavy golden shield barrier; enemy arrows and one mace strike the barrier and flare outward. Show sturdy construction and defense, with front warrior’s visible face and gripping hands. Strong horizontal line, barrier dominates. Grounded mail, wood and stone, hand-painted oil/gouache, dramatic directional light, atmospheric depth and supplied Hexmancers fantasy character art style. STRICT 1:1 square 512 master; keep barrier, faces, hands, and impacts in x24..488,y105..407 for 206:141 crop, quiet top/bottom margins. No text, border, UI, anime, cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-53592b12-8850-42ef-95e6-cd2e58775724.png",
     "editableSourcePath": "game/cards/art/masters/light_ward_10.png",
     "sourceNative": [
@@ -1716,12 +1716,12 @@
     ],
     "status": "generated",
     "batch": 10,
-    "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop and thumbnail. Front warrior\u2019s face and bracing hands, continuous golden barrier and its impacts fit; flying arrows and background are incidental."
+    "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop and thumbnail. Front warrior’s face and bracing hands, continuous golden barrier and its impacts fit; flying arrows and background are incidental."
   },
   {
     "cardId": "light_sentry_09",
     "name": "Obelisk of the Sun",
-    "prompt": "Repaint this as original painterly medieval fantasy collectible card art for Obelisk of the Sun. Preserve the sunlit rampart, radiant gold beam, and strong oil/gouache fantasy illustration style, but make the obelisk a compact, stout square solar sentinel instead of a tall narrow tower: whole pyramid crown, shaft, broad stepped base all clearly visible, monument no more than 250 pixels tall within a 512-square image, positioned horizontally at left-center. The complete monument must fit in x24..488,y105..407 of the square, leaving generous safety margin above and below. Its bronze sunstone eye fires one steady narrow ray across toward a small recoiling raider on the right; keep raider\u2019s face and the ray inside that same safe band. Make stone sentinel dominant and readable, grounded carved limestone and bronze, warm directional light, atmospheric depth, supplied Hexmancers painterly fantasy style. Strict 1:1 square, horizontal action-safe composition for 206:141 crop. No text, border, UI, anime, cartoon, photorealism, pixel art.",
+    "prompt": "Repaint this as original painterly medieval fantasy collectible card art for Obelisk of the Sun. Preserve the sunlit rampart, radiant gold beam, and strong oil/gouache fantasy illustration style, but make the obelisk a compact, stout square solar sentinel instead of a tall narrow tower: whole pyramid crown, shaft, broad stepped base all clearly visible, monument no more than 250 pixels tall within a 512-square image, positioned horizontally at left-center. The complete monument must fit in x24..488,y105..407 of the square, leaving generous safety margin above and below. Its bronze sunstone eye fires one steady narrow ray across toward a small recoiling raider on the right; keep raider’s face and the ray inside that same safe band. Make stone sentinel dominant and readable, grounded carved limestone and bronze, warm directional light, atmospheric depth, supplied Hexmancers painterly fantasy style. Strict 1:1 square, horizontal action-safe composition for 206:141 crop. No text, border, UI, anime, cartoon, photorealism, pixel art.",
     "generatedPath": "/workspace/generated_images/exec-85ec7886-0c04-47f1-9cfb-256addd7994c.png",
     "editableSourcePath": "game/cards/art/masters/light_sentry_09.png",
     "sourceNative": [
@@ -1752,11 +1752,11 @@
     ],
     "status": "generated",
     "batch": 10,
-    "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop and thumbnail. Watchkeeper\u2019s face and open hand, full candle, wick and flame fit; quiet dawn landscape remains secondary."
+    "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop and thumbnail. Watchkeeper’s face and open hand, full candle, wick and flame fit; quiet dawn landscape remains secondary."
   },
   {
     "cardId": "light_charge_08",
-    "prompt": "Original painterly medieval fantasy card illustration for Tesserae Pouch. A compact, handsome leather pouch spills small colorful glass tesserae onto a stone table; a nearby artisan guardian gathers one in a gloved hand as the tiny fragments flare in a short radiant burst. The entire closed pouch including drawstring and every spill of chips stays visible; pouch is the primary named object. Show the guardian\u2019s face and working hands beside it, considerably smaller than the pouch, never looming over a tall object. Mediterranean basilica workshop atmosphere, refined bronze clasp, leather and handmade tesserae, directional gold light, atmospheric painterly oil/gouache, supplied Hexmancers fantasy art style. Strict 1:1 square 512 master, horizontal staging; complete pouch, chips, face/hands fit within x24..488,y105..407 for 206:141 crop. No frame, words, lettering, UI, anime, cartoon, photorealism, pixel art.",
+    "prompt": "Original painterly medieval fantasy card illustration for Tesserae Pouch. A compact, handsome leather pouch spills small colorful glass tesserae onto a stone table; a nearby artisan guardian gathers one in a gloved hand as the tiny fragments flare in a short radiant burst. The entire closed pouch including drawstring and every spill of chips stays visible; pouch is the primary named object. Show the guardian’s face and working hands beside it, considerably smaller than the pouch, never looming over a tall object. Mediterranean basilica workshop atmosphere, refined bronze clasp, leather and handmade tesserae, directional gold light, atmospheric painterly oil/gouache, supplied Hexmancers fantasy art style. Strict 1:1 square 512 master, horizontal staging; complete pouch, chips, face/hands fit within x24..488,y105..407 for 206:141 crop. No frame, words, lettering, UI, anime, cartoon, photorealism, pixel art.",
     "generatedPath": "/workspace/generated_images/exec-5af9ef09-db2c-49f4-aec2-a56c407ecd5f.png",
     "editableSourcePath": "game/cards/art/masters/light_charge_08.png",
     "sourceNative": [
@@ -1769,7 +1769,7 @@
     ],
     "status": "generated",
     "batch": 10,
-    "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop and 128x88 thumbnail. Entire pouch, drawstring tassels and spill of tesserae fit; artisan\u2019s face and working hands remain visible beside it.",
+    "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop and 128x88 thumbnail. Entire pouch, drawstring tassels and spill of tesserae fit; artisan’s face and working hands remain visible beside it.",
     "name": "Tesserae Pouch"
   },
   {
@@ -1787,7 +1787,7 @@
     ],
     "status": "generated",
     "batch": 10,
-    "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop and thumbnail. Cleric\u2019s face and hands, silver basin, patient\u2019s full face and cleansing light are visible; robes and background extend beyond the crop.",
+    "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop and thumbnail. Cleric’s face and hands, silver basin, patient’s full face and cleansing light are visible; robes and background extend beyond the crop.",
     "name": "Cleric's Absolution"
   },
   {
@@ -1805,7 +1805,7 @@
     ],
     "status": "generated",
     "batch": 10,
-    "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop and thumbnail. Victim\u2019s face, both reaching hands, pit opening and clear iron spike field fit; incidental upper tomb wall and lower pit spikes crop naturally.",
+    "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop and thumbnail. Victim’s face, both reaching hands, pit opening and clear iron spike field fit; incidental upper tomb wall and lower pit spikes crop naturally.",
     "name": "Tomb Builder's Pitfall"
   },
   {
@@ -1823,7 +1823,7 @@
     ],
     "status": "generated",
     "batch": 10,
-    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop and thumbnail. Garden remains dominant, with the full horizontal bramble row, trespasser\u2019s face and hands, and rose foliage readable.",
+    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop and thumbnail. Garden remains dominant, with the full horizontal bramble row, trespasser’s face and hands, and rose foliage readable.",
     "name": "Rose Garden of Shiraz"
   },
   {
@@ -1841,12 +1841,12 @@
     ],
     "status": "generated",
     "batch": 10,
-    "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop and thumbnail. Entire balance scale, finial, beam, both chains and pans, stepped base, and nearby magistrate\u2019s face/hand remain visible.",
+    "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop and thumbnail. Entire balance scale, finial, beam, both chains and pans, stepped base, and nearby magistrate’s face/hand remain visible.",
     "name": "Scales of the Final Judge"
   },
   {
     "cardId": "light_summon_04",
-    "prompt": "Original painterly medieval fantasy collectible-card art for Chiron, Healer of Heroes. Depict the legendary ancient centaur healer, a dignified mature Greek mentor with one fully visible calm face, powerful chestnut centaur body, and human hands gently tending a wounded young hero with luminous herbs and a small golden healing glow. Make Chiron the clear subject; show his human torso joined naturally to the horse body, with one healing hand and the patient\u2019s face. Ancient grove beside a marble shrine, grounded anatomy, refined leather, hair and cloth, hand-painted oil/gouache, dramatic warm light and atmospheric depth in supplied Hexmancers fantasy style. Strict 1:1 square 512 master; keep Chiron\u2019s face, hands and healing action inside x24..488,y105..407 for 206:141 crop; scenery and horse legs may extend. No text, frame, UI, anime, cartoon, photorealism or pixel art.",
+    "prompt": "Original painterly medieval fantasy collectible-card art for Chiron, Healer of Heroes. Depict the legendary ancient centaur healer, a dignified mature Greek mentor with one fully visible calm face, powerful chestnut centaur body, and human hands gently tending a wounded young hero with luminous herbs and a small golden healing glow. Make Chiron the clear subject; show his human torso joined naturally to the horse body, with one healing hand and the patient’s face. Ancient grove beside a marble shrine, grounded anatomy, refined leather, hair and cloth, hand-painted oil/gouache, dramatic warm light and atmospheric depth in supplied Hexmancers fantasy style. Strict 1:1 square 512 master; keep Chiron’s face, hands and healing action inside x24..488,y105..407 for 206:141 crop; scenery and horse legs may extend. No text, frame, UI, anime, cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-23d04385-f3db-4171-9d98-9ba8b4096c90.png",
     "editableSourcePath": "game/cards/art/masters/light_summon_04.png",
     "sourceNative": [
@@ -1859,12 +1859,12 @@
     ],
     "status": "generated",
     "batch": 10,
-    "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop and thumbnail. Chiron\u2019s complete head/face, human torso, healing hands and patient\u2019s face fit; lower centaur legs are incidental.",
+    "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop and thumbnail. Chiron’s complete head/face, human torso, healing hands and patient’s face fit; lower centaur legs are incidental.",
     "name": "Chiron, Healer of Heroes"
   },
   {
     "cardId": "light_machine_04",
-    "prompt": "Repaint this scene as original painterly medieval fantasy card art for Battering Ram. Keep the gate assault and supplied Hexmancers oil/gouache style, but show the camera farther away and the entire compact wooden siege ram occupying only the middle 72 percent of the square width, with at least 45 pixels of clear margin to both left and right. Complete ram silhouette is mandatory: fully visible ram-head cap with nose/horns, full horizontal timber beam, complete supporting frame, and both complete wheels. Place two small crew on the left beside the machine, with the chief\u2019s entire face and one guiding hand visible. Make the machine a short, sturdy wheeled battering ram rather than a huge horizontal tower; no part touches the canvas edge. Keep all named machine parts and operator face/hand within x24..488,y105..407 of a strict 1:1 512-square master for a 206:141 crop. Dramatic firelit stone gate, refined rope, iron and oak, grounded fantasy anatomy. No text, border, UI, anime, cartoon, photorealism, pixel art.",
+    "prompt": "Repaint this scene as original painterly medieval fantasy card art for Battering Ram. Keep the gate assault and supplied Hexmancers oil/gouache style, but show the camera farther away and the entire compact wooden siege ram occupying only the middle 72 percent of the square width, with at least 45 pixels of clear margin to both left and right. Complete ram silhouette is mandatory: fully visible ram-head cap with nose/horns, full horizontal timber beam, complete supporting frame, and both complete wheels. Place two small crew on the left beside the machine, with the chief’s entire face and one guiding hand visible. Make the machine a short, sturdy wheeled battering ram rather than a huge horizontal tower; no part touches the canvas edge. Keep all named machine parts and operator face/hand within x24..488,y105..407 of a strict 1:1 512-square master for a 206:141 crop. Dramatic firelit stone gate, refined rope, iron and oak, grounded fantasy anatomy. No text, border, UI, anime, cartoon, photorealism, pixel art.",
     "generatedPath": "/workspace/generated_images/exec-350a0d11-3189-4c0b-978d-581ae4a6f5c7.png",
     "editableSourcePath": "game/cards/art/masters/light_machine_04.png",
     "sourceNative": [
@@ -1877,12 +1877,12 @@
     ],
     "status": "generated",
     "batch": 10,
-    "reviewNote": "Repainted after first ram\u2019s head reached the canvas edge; preserved first source at /tmp/light_machine_04-first-source.png. Reviewed final square, centered crop and thumbnail: full ram-head cap, beam, frame, both wheels, operator face and guiding hand fit.",
+    "reviewNote": "Repainted after first ram’s head reached the canvas edge; preserved first source at /tmp/light_machine_04-first-source.png. Reviewed final square, centered crop and thumbnail: full ram-head cap, beam, frame, both wheels, operator face and guiding hand fit.",
     "name": "Battering Ram"
   },
   {
     "cardId": "hero_oracle",
-    "prompt": "Original painterly medieval fantasy collectible-card art for The Oracle. A revered female oracle in a pale linen veil stands in a marble observatory, her expressive face clearly visible as she lifts both hands and sends a narrow golden ray straight across the row of distant shadow figures; fine luminous rings around her wrists suggest quickening foresight and a filling spell gauge without symbols or text. She is the single primary subject, poised and powerful, not a generic beam landscape. Hand-painted oil/gouache, nuanced skin, linen and marble, controlled directional light, atmospheric depth, supplied Hexmancers fantasy style. Strict 1:1 square 512 master, horizontal action composition; oracle\u2019s full face, hands and ray origin within x24..488,y105..407 for 206:141 crop. No lettering, runes, UI, border, anime, cartoon, photorealism or pixel art.",
+    "prompt": "Original painterly medieval fantasy collectible-card art for The Oracle. A revered female oracle in a pale linen veil stands in a marble observatory, her expressive face clearly visible as she lifts both hands and sends a narrow golden ray straight across the row of distant shadow figures; fine luminous rings around her wrists suggest quickening foresight and a filling spell gauge without symbols or text. She is the single primary subject, poised and powerful, not a generic beam landscape. Hand-painted oil/gouache, nuanced skin, linen and marble, controlled directional light, atmospheric depth, supplied Hexmancers fantasy style. Strict 1:1 square 512 master, horizontal action composition; oracle’s full face, hands and ray origin within x24..488,y105..407 for 206:141 crop. No lettering, runes, UI, border, anime, cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-92678213-899c-4281-b26e-0057767fddb9.png",
     "editableSourcePath": "game/cards/art/masters/hero_oracle.png",
     "sourceNative": [
@@ -1895,12 +1895,12 @@
     ],
     "status": "generated",
     "batch": 10,
-    "reviewNote": "Reviewed exact 512-square source, upward-shifted crop and thumbnail. Oracle\u2019s full face and both hands remain in the crop, with the horizontal ray clear; distant row of figures is secondary.",
+    "reviewNote": "Reviewed exact 512-square source, upward-shifted crop and thumbnail. Oracle’s full face and both hands remain in the crop, with the horizontal ray clear; distant row of figures is secondary.",
     "name": "The Oracle"
   },
   {
     "cardId": "light_strike_09",
-    "prompt": "Original painterly medieval fantasy collectible-card art for Mistral Gale. A young armored wind-saint braces and releases a charged broad fan of pale blue-white mistral wind from both open hands; the powerful gust sweeps horizontally down a mountain path and lifts a dark raider backward. Clear broad fan shape, visible caster\u2019s face and both hands, readable impact; one main figure. Flowing cloth and loose leaves show motion but may trail outside crop. Hand-painted oil/gouache, dramatic cool-to-warm light, grounded anatomy and atmospheric mountain depth, supplied Hexmancers fantasy art style. Strict 1:1 square 512 master, horizontal composition; face, hands and the main fan-shaped gust inside x24..488,y105..407 for 206:141 crop. No text, frame, UI, anime, cartoon, photorealism or pixel art.",
+    "prompt": "Original painterly medieval fantasy collectible-card art for Mistral Gale. A young armored wind-saint braces and releases a charged broad fan of pale blue-white mistral wind from both open hands; the powerful gust sweeps horizontally down a mountain path and lifts a dark raider backward. Clear broad fan shape, visible caster’s face and both hands, readable impact; one main figure. Flowing cloth and loose leaves show motion but may trail outside crop. Hand-painted oil/gouache, dramatic cool-to-warm light, grounded anatomy and atmospheric mountain depth, supplied Hexmancers fantasy art style. Strict 1:1 square 512 master, horizontal composition; face, hands and the main fan-shaped gust inside x24..488,y105..407 for 206:141 crop. No text, frame, UI, anime, cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-d8bb4655-6774-422a-b256-d7e27305d574.png",
     "editableSourcePath": "game/cards/art/masters/light_strike_09.png",
     "sourceNative": [
@@ -1913,12 +1913,12 @@
     ],
     "status": "generated",
     "batch": 10,
-    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop and thumbnail. Mistral caster\u2019s face and both casting hands plus the charged fan-shaped gust and impact remain visible; trailing robe and foe\u2019s legs are incidental.",
+    "reviewNote": "Reviewed exact 512-square source, centered 206:141 crop and thumbnail. Mistral caster’s face and both casting hands plus the charged fan-shaped gust and impact remain visible; trailing robe and foe’s legs are incidental.",
     "name": "Mistral Gale"
   },
   {
     "cardId": "light_lob_10",
-    "prompt": "Original painterly medieval fantasy collectible-card art for Salve Jar. A field medic in linen robes throws a compact squat earthenware salve jar with a clearly visible complete stopper; the whole jar from cork to rounded base is fully intact and unobscured as it travels horizontally, releasing a bright golden restorative splash that draws a wounded soldier\u2019s attention. The jar is the named focus, sized compactly within the middle horizontal band, with generous space around its stopper and base; show the medic\u2019s face and throwing hand clearly beside it. Make this a vessel of healing ointment, not a bomb or potion vial. Hand-painted oil/gouache, nuanced glazed ceramic, linen and armor, warm healing light, atmospheric battlefield-medical tent, supplied Hexmancers fantasy illustration style. Strict 1:1 square 512 master; jar, stopper, complete base, face and hand remain inside x24..488,y105..407 for 206:141 card crop. No text, labels, border, UI, anime, cartoon, photorealism or pixel art.",
+    "prompt": "Original painterly medieval fantasy collectible-card art for Salve Jar. A field medic in linen robes throws a compact squat earthenware salve jar with a clearly visible complete stopper; the whole jar from cork to rounded base is fully intact and unobscured as it travels horizontally, releasing a bright golden restorative splash that draws a wounded soldier’s attention. The jar is the named focus, sized compactly within the middle horizontal band, with generous space around its stopper and base; show the medic’s face and throwing hand clearly beside it. Make this a vessel of healing ointment, not a bomb or potion vial. Hand-painted oil/gouache, nuanced glazed ceramic, linen and armor, warm healing light, atmospheric battlefield-medical tent, supplied Hexmancers fantasy illustration style. Strict 1:1 square 512 master; jar, stopper, complete base, face and hand remain inside x24..488,y105..407 for 206:141 card crop. No text, labels, border, UI, anime, cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-86de04d2-24b6-4e20-bef6-18215ef1484d.png",
     "editableSourcePath": "game/cards/art/masters/light_lob_10.png",
     "sourceNative": [
@@ -1931,12 +1931,12 @@
     ],
     "status": "generated",
     "batch": 10,
-    "reviewNote": "Reviewed exact 512-square source, upward focal crop and thumbnail. Salve Jar\u2019s complete stopper-to-base silhouette, medic\u2019s full face and throwing hand fit the wide crop; the patient\u2019s lower body and supply tent are incidental.",
+    "reviewNote": "Reviewed exact 512-square source, upward focal crop and thumbnail. Salve Jar’s complete stopper-to-base silhouette, medic’s full face and throwing hand fit the wide crop; the patient’s lower body and supply tent are incidental.",
     "name": "Salve Jar"
   },
   {
     "cardId": "light_ward_11",
-    "prompt": "Original painterly medieval fantasy collectible-card art for Sheltering Wings, a heavy steady defensive arc. A frightened young shield-bearer crouches behind a single broad curved barrier formed by immense pale gold-feathered wings sweeping forward around her; visible angelic guardian face and one protective hand, protected warrior\u2019s face and gripping hands clearly readable. Wings are a luminous wall, not a flying creature portrait; their outer feathers may extend past frame, but central faces/hands and the solid barrier arc stay inside x24..488,y105..407. Hand-painted oil/gouache feathers, mail and stone, directional warm light, atmospheric depth, supplied Hexmancers style. Strict 1:1 square 512 master composed for horizontal 206:141 card crop. No border, text, UI, anime, cartoon, photorealism or pixel art.",
+    "prompt": "Original painterly medieval fantasy collectible-card art for Sheltering Wings, a heavy steady defensive arc. A frightened young shield-bearer crouches behind a single broad curved barrier formed by immense pale gold-feathered wings sweeping forward around her; visible angelic guardian face and one protective hand, protected warrior’s face and gripping hands clearly readable. Wings are a luminous wall, not a flying creature portrait; their outer feathers may extend past frame, but central faces/hands and the solid barrier arc stay inside x24..488,y105..407. Hand-painted oil/gouache feathers, mail and stone, directional warm light, atmospheric depth, supplied Hexmancers style. Strict 1:1 square 512 master composed for horizontal 206:141 card crop. No border, text, UI, anime, cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-34bf6f34-b4dc-4184-86d8-0d6736248984.png",
     "editableSourcePath": "game/cards/art/masters/light_ward_11.png",
     "sourceNative": [
@@ -1949,7 +1949,7 @@
     ],
     "status": "generated",
     "batch": 10,
-    "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop and thumbnail. Protected warrior\u2019s face and gripping hand, guardian\u2019s face and protecting hand remain clear; outer wing feathers are incidental and crop at the edges.",
+    "reviewNote": "Reviewed exact 512-square source, upward-shifted 206:141 crop and thumbnail. Protected warrior’s face and gripping hand, guardian’s face and protecting hand remain clear; outer wing feathers are incidental and crop at the edges.",
     "name": "Sheltering Wings"
   },
   {
@@ -1972,7 +1972,7 @@
   },
   {
     "cardId": "light_boon_08",
-    "prompt": "Original painterly medieval fantasy collectible-card art for Rally the Legion. A battle-worn woman captain stands on a low wall and raises one open hand while calling soldiers forward; a bright blue-gold pulse of courage travels down the line, lifting the legion\u2019s shields and making their faces resolute. Captain\u2019s whole face and raised hand are clear primary focus; a few close soldiers respond, distant ranks remain atmospheric. Strong horizontal staging, believable armor, cloth and banners, warm dawn rim light against cool battlefield shadows, hand-painted oil/gouache supplied Hexmancers fantasy style. Strict 1:1 square 512 master; captain face/hand and nearest reacting faces inside x24..488,y105..407 for 206:141 crop. No text or lettering on banners, no frame/UI, anime, cartoon, photorealism or pixel art.",
+    "prompt": "Original painterly medieval fantasy collectible-card art for Rally the Legion. A battle-worn woman captain stands on a low wall and raises one open hand while calling soldiers forward; a bright blue-gold pulse of courage travels down the line, lifting the legion’s shields and making their faces resolute. Captain’s whole face and raised hand are clear primary focus; a few close soldiers respond, distant ranks remain atmospheric. Strong horizontal staging, believable armor, cloth and banners, warm dawn rim light against cool battlefield shadows, hand-painted oil/gouache supplied Hexmancers fantasy style. Strict 1:1 square 512 master; captain face/hand and nearest reacting faces inside x24..488,y105..407 for 206:141 crop. No text or lettering on banners, no frame/UI, anime, cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-6969ab4a-9795-4b72-8686-24ace2a5019e.png",
     "editableSourcePath": "game/cards/art/masters/light_boon_08.png",
     "sourceNative": [
@@ -1985,12 +1985,12 @@
     ],
     "status": "generated",
     "batch": 10,
-    "reviewNote": "Reviewed exact 512-square source, upward-shifted crop and thumbnail. Captain\u2019s face and full raised hand and responding legion faces are clear; lower body and distant ranks are incidental.",
+    "reviewNote": "Reviewed exact 512-square source, upward-shifted crop and thumbnail. Captain’s face and full raised hand and responding legion faces are clear; lower body and distant ranks are incidental.",
     "name": "Rally the Legion"
   },
   {
     "cardId": "light_charge_09",
-    "prompt": "Original painterly medieval fantasy card art for Genoese Crossbow Bolts. A Genoese crossbow archer with a visible focused face holds one long complete steel-tipped wooden bolt in a gloved hand beside a compact leather bolt quiver holding two more; show each bolt\u2019s full point, shaft and fletching, entirely within the horizontal safe band. The hand-held bolt is aligned toward a distant armored target, with a small clear pierce impact; the complete named bolts are the focus. Rich blue-red medieval cloth, leather, steel and wood, hand-painted oil/gouache, dramatic light, supplied Hexmancers fantasy style. Strict 1:1 square 512 master horizontal arrangement; archer face, relevant hand, and all named bolts fit within x24..488,y105..407 for 206:141 crop. No lettering, frame, UI, anime, cartoon, photorealism or pixel art.",
+    "prompt": "Original painterly medieval fantasy card art for Genoese Crossbow Bolts. A Genoese crossbow archer with a visible focused face holds one long complete steel-tipped wooden bolt in a gloved hand beside a compact leather bolt quiver holding two more; show each bolt’s full point, shaft and fletching, entirely within the horizontal safe band. The hand-held bolt is aligned toward a distant armored target, with a small clear pierce impact; the complete named bolts are the focus. Rich blue-red medieval cloth, leather, steel and wood, hand-painted oil/gouache, dramatic light, supplied Hexmancers fantasy style. Strict 1:1 square 512 master horizontal arrangement; archer face, relevant hand, and all named bolts fit within x24..488,y105..407 for 206:141 crop. No lettering, frame, UI, anime, cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-881b581a-d645-43de-8895-50fff6e8140f.png",
     "editableSourcePath": "game/cards/art/masters/light_charge_09.png",
     "sourceNative": [
@@ -2003,7 +2003,7 @@
     ],
     "status": "generated",
     "batch": 10,
-    "reviewNote": "Reviewed exact 512-square source, upward-shifted wide crop and thumbnail. Archer\u2019s face and hand plus one complete pointed, shafted and fletched bolt are visible; further bolts remain secondary in the quiver.",
+    "reviewNote": "Reviewed exact 512-square source, upward-shifted wide crop and thumbnail. Archer’s face and hand plus one complete pointed, shafted and fletched bolt are visible; further bolts remain secondary in the quiver.",
     "name": "Genoese Crossbow Bolts"
   },
   {
@@ -2021,7 +2021,7 @@
     ],
     "status": "generated",
     "batch": 10,
-    "reviewNote": "Repainted after focal adjustment could not retain both the scholar\u2019s full head and all tablet edges; preserved first source at /tmp/light_utility_09-first-source.png. Reviewed final square, centered 206:141 crop and thumbnail: scholar\u2019s full face/hand and all three palm-leaf tables plus ivory board fit.",
+    "reviewNote": "Repainted after focal adjustment could not retain both the scholar’s full head and all tablet edges; preserved first source at /tmp/light_utility_09-first-source.png. Reviewed final square, centered 206:141 crop and thumbnail: scholar’s full face/hand and all three palm-leaf tables plus ivory board fit.",
     "name": "Aryabhata's Tables"
   },
   {
@@ -2117,7 +2117,7 @@
   {
     "cardId": "light_strike_10",
     "name": "Owl's Silent Dive",
-    "prompt": "Paint an illustration for Owl's Silent Dive, a charged precision strike that stuns its target. A powerful tawny owl dives silently through a sunlit medieval forest canopy toward a small distant target, owl\u2019s face and both eyes sharply readable, wings spread in a dynamic horizontal diagonal, talons visible; make the owl the clear dominant subject. Painterly medieval fantasy collectible-card art with rich feather texture, golden directional light and atmospheric depth, consistent with the supplied Hexmancers references. 1:1 SQUARE composition for a 512x512 master. Keep owl face, eyes, wings\u2019 important anatomy and talons in x24..488 y105..407; quiet forest atmosphere above and below. No frame, text, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint an illustration for Owl's Silent Dive, a charged precision strike that stuns its target. A powerful tawny owl dives silently through a sunlit medieval forest canopy toward a small distant target, owl’s face and both eyes sharply readable, wings spread in a dynamic horizontal diagonal, talons visible; make the owl the clear dominant subject. Painterly medieval fantasy collectible-card art with rich feather texture, golden directional light and atmospheric depth, consistent with the supplied Hexmancers references. 1:1 SQUARE composition for a 512x512 master. Keep owl face, eyes, wings’ important anatomy and talons in x24..488 y105..407; quiet forest atmosphere above and below. No frame, text, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-8e745aab-189a-4c51-8699-dcc70b11a562.png",
     "editableSourcePath": "game/cards/art/masters/light_strike_10.png",
     "sourceNative": [
@@ -2130,7 +2130,7 @@
     ],
     "status": "generated",
     "batch": 11,
-    "reviewNote": "Owl\u2019s face, both eyes and talons remain clear in the wide crop and thumbnail. Wing tips crop incidentally; the named silent dive reads at card size."
+    "reviewNote": "Owl’s face, both eyes and talons remain clear in the wide crop and thumbnail. Wing tips crop incidentally; the named silent dive reads at card size."
   },
   {
     "cardId": "light_lob_11",
@@ -2138,7 +2138,7 @@
     "prompt": "Paint Quicksilver Retort as a compact, complete alchemical retort flask: squat clear glass vessel with a rounded belly, short neck, fitted stopper, and curved glass spout, containing bright liquid quicksilver that bursts outward in a small controlled silver splash. An alchemist crouches beside it at the same height, face and working hand clear, the entire retort including stopper, spout and base unobstructed and prominent. Painterly medieval high-fantasy collectible-card art, dramatic warm workshop lighting against cool silver reflections, believable glass and brass. 1:1 SQUARE composition for a 512x512 master, horizontal staging; put face and compact object together in the middle 60%, all critical parts within x24..488 y105..407, quiet workshop above and below. No frame, lettering, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-b82d048a-267b-4e8e-9d6d-2b77dd7e961e.png",
     "editableSourcePath": "game/cards/art/masters/light_lob_11.png",
-    "reviewNote": "Retort stopper, curved spout, glass belly and full base remain visible in the wide crop; the alchemist\u2019s face and hand sit beside it. Bottle and face remain readable in the thumbnail.",
+    "reviewNote": "Retort stopper, curved spout, glass belly and full base remain visible in the wide crop; the alchemist’s face and hand sit beside it. Bottle and face remain readable in the thumbnail.",
     "sourceNative": [
       1254,
       1254
@@ -2171,7 +2171,7 @@
   {
     "cardId": "light_sentry_11",
     "name": "Lamassu Gate Statue",
-    "prompt": "Paint the Lamassu Gate Statue, a monumental ancient limestone guardian with a human face, curled beard, horned crown, powerful lion body and folded feathered wings, standing beside a palace gate. The sculpted human face is clear and serene, front forepaw and carved stone body visible; the statue itself dominates, with its gate setting secondary. Painterly medieval high-fantasy collectible-card art, warm golden light, finely painted stone and feather relief, atmospheric depth. 1:1 SQUARE canvas for a 512x512 master. Keep the statue\u2019s entire face and defining upper body, and a clear view of the gate-guardian form, inside x24..488 y105..407; wings may naturally crop at edges. Quiet sky and pavement above and below. No frame, text, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "prompt": "Paint the Lamassu Gate Statue, a monumental ancient limestone guardian with a human face, curled beard, horned crown, powerful lion body and folded feathered wings, standing beside a palace gate. The sculpted human face is clear and serene, front forepaw and carved stone body visible; the statue itself dominates, with its gate setting secondary. Painterly medieval high-fantasy collectible-card art, warm golden light, finely painted stone and feather relief, atmospheric depth. 1:1 SQUARE canvas for a 512x512 master. Keep the statue’s entire face and defining upper body, and a clear view of the gate-guardian form, inside x24..488 y105..407; wings may naturally crop at edges. Quiet sky and pavement above and below. No frame, text, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
     "generatedPath": "/workspace/generated_images/exec-66fa6a6e-6a73-4134-8dfd-9e1117719de8.png",
     "editableSourcePath": "game/cards/art/masters/light_sentry_11.png",
     "sourceNative": [
@@ -2203,5 +2203,95 @@
     "status": "generated",
     "batch": 11,
     "reviewNote": "Pegasus face, torso and raised forelegs are clear in the wide crop and thumbnail. Outer wing tips crop incidentally; the flight and rallying light remain legible."
+  },
+  {
+    "cardId": "light_charge_10",
+    "name": "Censer Coals",
+    "prompt": "Repaint this as a polished painterly medieval high-fantasy collectible-card illustration for Censer Coals. Preserve the ornate warm bronze censer, glowing coals and delicate smoke, but show it as a standalone artifact floating or resting on a small dark stone plinth, with no person, no hand, and no cropped chain. Keep the whole recognizable censer including its finial, domed perforated lid, rounded coal vessel, and lower point fully inside the middle safe band y105..407 of a 512x512 square. Compact object occupying about 65% of the wide crop height, centered, ample quiet margin above and below for the 206:141 card crop. Attractive directional golden light, subtle smoke, believable chased bronze, painterly fantasy, simple readable composition at thumbnail size. Explicit square 1:1 512x512 canvas. No lettering, labels, runes, frame, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5b9505b2-f048-4f69-a6fa-f51614230e35.png",
+    "editableSourcePath": "game/cards/art/masters/light_charge_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.44
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Standalone repaint removes the cropped operator hand; focal y=0.44 includes the full finial, lid and coal vessel in the wide crop. Earlier source preserved at /tmp/worker-light-02/light_charge_10-initial.png."
+  },
+  {
+    "cardId": "light_utility_10",
+    "name": "House of Wisdom",
+    "prompt": "Create a painterly medieval high-fantasy collectible card illustration of House of Wisdom. A welcoming medieval center of learning in Baghdad: a compact domed library and open arch reveal a scholar's table with three illuminated books and scrolls, warm lamplight and quiet courtyard plants. The building and learning purpose read immediately. Actual card effect/mechanics: a utility that draws three cards. Believable material detail, attractive golden directional light, atmospheric depth, consistent with supplied Hexmancers style references. One strong readable subject, horizontally composed in the middle 60% of an explicit 1:1 512-square canvas. Keep complete named censer/face and relevant hands within x24..488,y105..407 for the 206:141 wide crop; quiet scenery at top and bottom. No border, text, numbers, lettering, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-13945adf-e25b-4e42-a8c7-e3db09ee0fb9.png",
+    "editableSourcePath": "game/cards/art/masters/light_utility_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Scholar, face, hands, open books and library arches remain legible in the wide crop."
+  },
+  {
+    "cardId": "light_environment_09",
+    "name": "Hanging Gardens of Babylon",
+    "prompt": "Create a painterly medieval high-fantasy collectible card illustration of Hanging Gardens of Babylon. The legendary terraced Hanging Gardens of Babylon rise in layered stone balconies, channels and cascading greenery above the ancient city; lush hanging vines and flowering trees dominate the scene, with a glimpse of the great stepped architecture. Actual card effect/mechanics: a burst of brambles that knocks foes down. Believable material detail, attractive golden directional light, atmospheric depth, consistent with supplied Hexmancers style references. One strong readable subject, horizontally composed in the middle 60% of an explicit 1:1 512-square canvas. Keep complete named censer/face and relevant hands within x24..488,y105..407 for the 206:141 wide crop; quiet scenery at top and bottom. No border, text, numbers, lettering, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6e0295d5-e857-484f-9551-1865bc3df78c.png",
+    "editableSourcePath": "game/cards/art/masters/light_environment_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Terraced gardens and bramble burst read clearly; background combatants are incidental."
+  },
+  {
+    "cardId": "light_summon_06",
+    "name": "White Stag",
+    "prompt": "Create a painterly medieval high-fantasy collectible card illustration of White Stag. A noble pale white stag stands alert in a sunlit forest clearing, full noble head, branching antlers and steady eyes clearly visible, its shoulders and forequarters prominent; luminous guardian presence, background foliage secondary. Actual card effect/mechanics: a sturdy guardian stag that mends allies. Believable material detail, attractive golden directional light, atmospheric depth, consistent with supplied Hexmancers style references. One strong readable subject, horizontally composed in the middle 60% of an explicit 1:1 512-square canvas. Keep complete named censer/face and relevant hands within x24..488,y105..407 for the 206:141 wide crop; quiet scenery at top and bottom. No border, text, numbers, lettering, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-12b5159d-faaf-4a38-b17e-5707e5222516.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.44
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Focal y=0.44 preserves the stag’s full face and antler tips; lower legs are incidental."
+  },
+  {
+    "cardId": "light_machine_06",
+    "name": "Legion Camp Palisade",
+    "prompt": "Illustrate Legion Camp Palisade, a huge medieval military wardmaker structure that slowly repairs itself and reinforces a camp's defenses. Show one strong, broad timber palisade across the middle: tightly fitted sharpened oak trunks, heavy cross braces, brass-bound joints and a simple guarded gate, with tiny legionary silhouettes behind for scale only. Bright protective golden sigils glow subtly between the posts, suggesting a self-mending ward without adding readable runes or text. Keep the key wall structure and gate within the central 60% of an explicit 1:1 square 512x512 painting, designed for the 206:141 horizontal card crop; quiet sky and earth at top and bottom. Painterly medieval high fantasy, believable weathered wood and bronze, attractive directional morning light, atmospheric depth. No modern military objects, no frame, lettering, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-203752a8-af63-4c4d-95e3-5a85e9c832b2.png",
+    "editableSourcePath": "game/cards/art/masters/light_machine_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "The full palisade, gate and warded timber line read clearly in the wide crop and thumbnail; background towers and figures remain secondary."
   }
 ]

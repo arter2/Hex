@@ -4,8 +4,8 @@
   "active": 1034,
   "remaining": 919,
   "pending": 719,
-  "assigned": 140,
-  "awaitingReview": 60,
+  "assigned": 110,
+  "awaitingReview": 90,
   "countsByColour": {
     "brown": 234,
     "fire": 246,
@@ -435,7 +435,7 @@
       "name": "Pike Palisade",
       "type": "machine",
       "color": "brown",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -444,7 +444,7 @@
       "name": "Alchemist's Glass Bulwark",
       "type": "machine",
       "color": "brown",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -453,7 +453,7 @@
       "name": "Djinn Mirage Wall",
       "type": "machine",
       "color": "brown",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -839,7 +839,7 @@
       "name": "Pocket Almanac",
       "type": "instant",
       "color": "brown",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -848,7 +848,7 @@
       "name": "Dwarven Ledger",
       "type": "instant",
       "color": "brown",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -2218,7 +2218,7 @@
       "name": "Pickaxe Strike",
       "type": "strike",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -2528,7 +2528,7 @@
       "name": "Gremlin Grenade",
       "type": "lob",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -2717,7 +2717,7 @@
       "name": "Anvil Guard",
       "type": "ward",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -2932,7 +2932,7 @@
       "name": "Molten Courage",
       "type": "boon",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -3080,7 +3080,7 @@
       "name": "Lantern Oil Flask",
       "type": "charge",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -9205,7 +9205,7 @@
       "name": "Censer Coals",
       "type": "charge",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -9353,7 +9353,7 @@
       "name": "House of Wisdom",
       "type": "utility",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -9548,7 +9548,7 @@
       "name": "Hanging Gardens of Babylon",
       "type": "environment",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -9647,7 +9647,7 @@
       "name": "White Stag",
       "type": "summon",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -10014,7 +10014,7 @@
       "name": "Legion Camp Palisade",
       "type": "machine",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -11361,7 +11361,7 @@
       "name": "Ferryman's Coins",
       "type": "charge",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -11475,7 +11475,7 @@
       "name": "Necromancer's Grimoire",
       "type": "utility",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -11556,7 +11556,7 @@
       "name": "Cursed Tomb",
       "type": "trap",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -11646,7 +11646,7 @@
       "name": "Catacomb Collapse",
       "type": "environment",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -11754,7 +11754,7 @@
       "name": "Ghoul",
       "type": "summon",
       "color": "shadow",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -13456,7 +13456,7 @@
       "name": "Alchemist's Bandolier",
       "type": "charge",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -13693,7 +13693,7 @@
       "name": "Collapsing Tomb Floor",
       "type": "trap",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -13807,7 +13807,7 @@
       "name": "Storm Front",
       "type": "environment",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -13924,7 +13924,7 @@
       "name": "Sand Scarab",
       "type": "summon",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -14332,7 +14332,7 @@
       "name": "Scorpio Bolt Thrower",
       "type": "machine",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -15868,7 +15868,7 @@
       "name": "Giant Puffball",
       "type": "trap",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -15940,7 +15940,7 @@
       "name": "Mire of the Fens",
       "type": "environment",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -16027,7 +16027,7 @@
       "name": "Mask of the Green Man",
       "type": "piece",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -16063,7 +16063,7 @@
       "name": "Kodama",
       "type": "summon",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -16699,7 +16699,7 @@
       "name": "Mossback the Tortoise Sage",
       "type": "hero",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },

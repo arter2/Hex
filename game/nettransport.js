@@ -205,4 +205,59 @@ class RtcTransport {
   }
 }
 
+// WebSocket transport through tools/netplay/relay.js (same-LAN play without pairing codes). Browser only.
+// One ordered stream, so the channel argument of send() is ignored.
+class WsTransport {
+  constructor(ws) {
+    this.ws = ws;
+    this.onclose = null;
+    this.closed = false;
+    this._h = null;
+    this._q = [];
+    ws.onmessage = e => {
+      if (this.closed || typeof e.data !== 'string') return;
+      if (this._h) this._h(e.data);
+      else this._q.push(e.data);
+    };
+    ws.onclose = ws.onerror = () => this._fire();
+  }
+  get onmessage() {
+    return this._h;
+  }
+  set onmessage(f) {
+    this._h = f;
+    while (f && this._q.length) f(this._q.shift());
+  }
+  send(text) {
+    if (this.closed || this.ws.readyState !== 1) return;
+    try {
+      this.ws.send(text);
+    } catch (e) {}
+  }
+  _fire() {
+    if (this.closed) return;
+    this.closed = true;
+    try {
+      this.ws.close();
+    } catch (e) {}
+    if (this.onclose) this.onclose();
+  }
+  close() {
+    this._fire();
+  }
+  static connect(room) {
+    return new Promise((res, rej) => {
+      const fail = () => rej(new Error('Could not reach the room (is the relay running?)'));
+      let ws;
+      try {
+        ws = new WebSocket((location.protocol === 'https:' ? 'wss://' : 'ws://') + location.host + '/relay?room=' + encodeURIComponent(room));
+      } catch (e) {
+        return fail();
+      }
+      ws.onopen = () => res(new WsTransport(ws));
+      ws.onerror = ws.onclose = fail;
+    });
+  }
+}
+
 if (typeof module !== 'undefined' && module.exports) module.exports = { packSignal, unpackSignal };

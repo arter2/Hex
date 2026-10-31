@@ -1,0 +1,31 @@
+{
+  "batch": 13,
+  "workers": {
+    "/root/b12_worker_1": {
+      "packet": "brown-01",
+      "state": "running"
+    },
+    "/root/b12_worker_2": {
+      "packet": "fire-01",
+      "state": "running"
+    },
+    "/root/b12_worker_3": {
+      "packet": "frost-01",
+      "state": "running"
+    },
+    "/root/b12_worker_4": {
+      "packet": "gray-01",
+      "state": "running"
+    },
+    "/root/b12_worker_5": {
+      "packet": "light-01",
+      "state": "running"
+    },
+    "/root/b12_worker_6": {
+      "packet": "shadow-01",
+      "state": "running"
+    }
+  },
+  "completedPackets": [],
+  "reviewedSources": {}
+}

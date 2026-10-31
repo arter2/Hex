@@ -64,3 +64,6 @@ After all 200 batch-12 cards are reviewed and exported, prepare their incrementa
 
 
 The latest completed production is batch 12: 200 new cards, 25 per colour, additional to the 1234-card baseline for 1434 active illustrations. Its transfer command is `node tools/card-art-handoff.js /workspace/card-art-batch-12 200 --batch=12`. Follow the shared packet workflow for subsequent authorized batches.
+
+
+Current authorized production is batch13: 200 new cards, comprising the remaining 11 Brown cards and 27 in each other colour, additional to the 1434-card baseline for 1634 active illustrations. Use 45 shared packets with up to five cards each; do not activate partial sources before parent review/export.

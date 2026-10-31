@@ -1,0 +1,825 @@
+{
+  "batch": 13,
+  "targetNewImages": 200,
+  "startingActive": 1434,
+  "targetActive": 1634,
+  "baselineCommit": "84293195279d8c2d94214ce59b01f5e7f381498e",
+  "assignments": {
+    "brown": [
+      {
+        "id": "brown_instant_78",
+        "name": "Grappling Hook"
+      },
+      {
+        "id": "brown_instant_79",
+        "name": "Pop-Up Umbrella Shield"
+      },
+      {
+        "id": "brown_instant_80",
+        "name": "Dwarven Shield Charm"
+      },
+      {
+        "id": "brown_instant_81",
+        "name": "Gnomish Force Bubble"
+      },
+      {
+        "id": "brown_instant_82",
+        "name": "Elven Glass Ward"
+      },
+      {
+        "id": "brown_instant_83",
+        "name": "Sea-Folk Shell Guard"
+      },
+      {
+        "id": "brown_instant_84",
+        "name": "Djinn Mirage Cloak"
+      },
+      {
+        "id": "potion_heal",
+        "name": "Healing Draught"
+      },
+      {
+        "id": "potion_tonic",
+        "name": "Iron Tonic"
+      },
+      {
+        "id": "potion_elixir",
+        "name": "Quicksilver Elixir"
+      },
+      {
+        "id": "potion_wind",
+        "name": "Second Wind"
+      }
+    ],
+    "fire": [
+      {
+        "id": "fire_strike_18",
+        "name": "Volcanic Vent"
+      },
+      {
+        "id": "fire_strike_19",
+        "name": "Cyclone of Cinders"
+      },
+      {
+        "id": "fire_strike_20",
+        "name": "Fire Whirl"
+      },
+      {
+        "id": "fire_strike_21",
+        "name": "Phoenix Feather"
+      },
+      {
+        "id": "fire_strike_22",
+        "name": "Griffin Talon"
+      },
+      {
+        "id": "fire_strike_23",
+        "name": "Coyote's Trick Shot"
+      },
+      {
+        "id": "fire_strike_24",
+        "name": "Goblin Slingshot"
+      },
+      {
+        "id": "fire_strike_25",
+        "name": "Gremlin Sparkler"
+      },
+      {
+        "id": "fire_strike_26",
+        "name": "Duende's Ember"
+      },
+      {
+        "id": "fire_strike_27",
+        "name": "Shishi Roar"
+      },
+      {
+        "id": "fire_strike_28",
+        "name": "Iaido Slash"
+      },
+      {
+        "id": "fire_strike_29",
+        "name": "Flaming Shuriken"
+      },
+      {
+        "id": "fire_strike_30",
+        "name": "Dragon Fist"
+      },
+      {
+        "id": "fire_strike_31",
+        "name": "Rockslide"
+      },
+      {
+        "id": "fire_strike_32",
+        "name": "Obsidian Spear"
+      },
+      {
+        "id": "fire_strike_33",
+        "name": "Vampire's Kiss"
+      },
+      {
+        "id": "fire_strike_34",
+        "name": "Purifying Flame"
+      },
+      {
+        "id": "fire_strike_35",
+        "name": "Great Dragon's Roar"
+      },
+      {
+        "id": "fire_strike_36",
+        "name": "Oni King's Kanabo"
+      },
+      {
+        "id": "fire_lob_18",
+        "name": "Phoenix Ash Bomb"
+      },
+      {
+        "id": "fire_lob_19",
+        "name": "Sake Firebomb"
+      },
+      {
+        "id": "fire_lob_20",
+        "name": "Thunder-Egg Geode"
+      },
+      {
+        "id": "fire_lob_21",
+        "name": "Cinder Cone"
+      },
+      {
+        "id": "fire_lob_22",
+        "name": "Pyroclastic Cloud"
+      },
+      {
+        "id": "fire_lob_23",
+        "name": "Eruption"
+      },
+      {
+        "id": "fire_boon_16",
+        "name": "Bull's Endurance"
+      },
+      {
+        "id": "fire_boon_17",
+        "name": "Dwarven Ale"
+      }
+    ],
+    "frost": [
+      {
+        "id": "frost_strike_16",
+        "name": "Siren's Song"
+      },
+      {
+        "id": "frost_strike_17",
+        "name": "Lorelei's Lure"
+      },
+      {
+        "id": "frost_strike_18",
+        "name": "Kelpie's Plunge"
+      },
+      {
+        "id": "frost_strike_19",
+        "name": "Nixie's Whirlpool"
+      },
+      {
+        "id": "frost_strike_20",
+        "name": "Frostbite"
+      },
+      {
+        "id": "frost_strike_21",
+        "name": "Blizzard Gale"
+      },
+      {
+        "id": "frost_strike_22",
+        "name": "Avalanche Rush"
+      },
+      {
+        "id": "frost_strike_23",
+        "name": "Hailstone Barrage"
+      },
+      {
+        "id": "frost_strike_24",
+        "name": "Sleet Volley"
+      },
+      {
+        "id": "frost_strike_25",
+        "name": "Winter Wolf Fangs"
+      },
+      {
+        "id": "frost_strike_26",
+        "name": "Yeti's Swipe"
+      },
+      {
+        "id": "frost_strike_28",
+        "name": "Kappa's Sumo Shove"
+      },
+      {
+        "id": "frost_strike_29",
+        "name": "Rusalka's Embrace"
+      },
+      {
+        "id": "frost_strike_30",
+        "name": "Umibozu's Grasp"
+      },
+      {
+        "id": "frost_strike_31",
+        "name": "Ningyo Scale Dart"
+      },
+      {
+        "id": "frost_strike_32",
+        "name": "Ice Skate Slash"
+      },
+      {
+        "id": "frost_strike_33",
+        "name": "Glacier Calving"
+      },
+      {
+        "id": "frost_strike_34",
+        "name": "Waterspout"
+      },
+      {
+        "id": "frost_strike_35",
+        "name": "Leviathan's Wake"
+      },
+      {
+        "id": "frost_strike_36",
+        "name": "World Serpent's Coil"
+      },
+      {
+        "id": "frost_strike_37",
+        "name": "Bunyip's Bellow"
+      },
+      {
+        "id": "frost_strike_38",
+        "name": "Leister Spear"
+      },
+      {
+        "id": "frost_lob_17",
+        "name": "Jellyfish Bloom"
+      },
+      {
+        "id": "frost_lob_18",
+        "name": "Pufferfish Toss"
+      },
+      {
+        "id": "frost_lob_19",
+        "name": "Monsoon Downpour"
+      },
+      {
+        "id": "frost_lob_20",
+        "name": "Rogue Wave"
+      },
+      {
+        "id": "frost_charge_14",
+        "name": "Ice Javelins"
+      }
+    ],
+    "gray": [
+      {
+        "id": "gray_summon_143",
+        "name": "Tomte"
+      },
+      {
+        "id": "gray_summon_144",
+        "name": "Hob of the Hearth"
+      },
+      {
+        "id": "gray_summon_145",
+        "name": "Zashiki-warashi"
+      },
+      {
+        "id": "gray_summon_146",
+        "name": "Lares of the Home"
+      },
+      {
+        "id": "gray_summon_147",
+        "name": "Household Kobold"
+      },
+      {
+        "id": "gray_summon_148",
+        "name": "Village Healer"
+      },
+      {
+        "id": "gray_summon_149",
+        "name": "Wise Woman"
+      },
+      {
+        "id": "gray_summon_150",
+        "name": "Field Surgeon"
+      },
+      {
+        "id": "gray_summon_151",
+        "name": "Herbwife"
+      },
+      {
+        "id": "gray_summon_152",
+        "name": "Midwife"
+      },
+      {
+        "id": "gray_summon_153",
+        "name": "Saint Bernard"
+      },
+      {
+        "id": "gray_summon_154",
+        "name": "Therapy Pony"
+      },
+      {
+        "id": "gray_summon_155",
+        "name": "Faithful Donkey"
+      },
+      {
+        "id": "gray_summon_156",
+        "name": "Milk Cow"
+      },
+      {
+        "id": "gray_summon_157",
+        "name": "Mother Hen"
+      },
+      {
+        "id": "gray_summon_158",
+        "name": "Honeybadger"
+      },
+      {
+        "id": "gray_summon_159",
+        "name": "Sacred Ibis"
+      },
+      {
+        "id": "gray_summon_160",
+        "name": "Beaver Builder"
+      },
+      {
+        "id": "gray_summon_161",
+        "name": "Capybara"
+      },
+      {
+        "id": "gray_summon_162",
+        "name": "Wandering Monk"
+      },
+      {
+        "id": "gray_summon_163",
+        "name": "Pilgrim"
+      },
+      {
+        "id": "gray_summon_164",
+        "name": "Tea Master"
+      },
+      {
+        "id": "gray_summon_165",
+        "name": "Camp Cook"
+      },
+      {
+        "id": "gray_summon_166",
+        "name": "Beowulf"
+      },
+      {
+        "id": "gray_summon_167",
+        "name": "Gilgamesh"
+      },
+      {
+        "id": "gray_summon_168",
+        "name": "Enkidu"
+      },
+      {
+        "id": "gray_summon_169",
+        "name": "Hua Mulan"
+      }
+    ],
+    "light": [
+      {
+        "id": "light_strike_16",
+        "name": "Astrolabe Sightline"
+      },
+      {
+        "id": "light_strike_17",
+        "name": "Gavel of Justice"
+      },
+      {
+        "id": "light_strike_18",
+        "name": "Shield Bash"
+      },
+      {
+        "id": "light_strike_19",
+        "name": "Phalanx Advance"
+      },
+      {
+        "id": "light_strike_20",
+        "name": "Crane Wing Sweep"
+      },
+      {
+        "id": "light_strike_21",
+        "name": "Qilin's Flame"
+      },
+      {
+        "id": "light_strike_22",
+        "name": "White Stag's Antlers"
+      },
+      {
+        "id": "light_strike_23",
+        "name": "Simurgh Feather Gust"
+      },
+      {
+        "id": "light_strike_24",
+        "name": "Paladin's Oath Blade"
+      },
+      {
+        "id": "light_strike_25",
+        "name": "Martyr's Last Stand"
+      },
+      {
+        "id": "light_strike_26",
+        "name": "Riddle of the Sphinx"
+      },
+      {
+        "id": "light_strike_27",
+        "name": "Scholar's Paradox"
+      },
+      {
+        "id": "light_strike_28",
+        "name": "Marble Shard Spray"
+      },
+      {
+        "id": "light_strike_29",
+        "name": "Valkyrie's Descent"
+      },
+      {
+        "id": "light_strike_30",
+        "name": "Durandal's Stroke"
+      },
+      {
+        "id": "light_strike_31",
+        "name": "Excalibur's Arc"
+      },
+      {
+        "id": "light_lob_17",
+        "name": "Siege Stone of Acre"
+      },
+      {
+        "id": "light_lob_18",
+        "name": "Holy Water Vials"
+      },
+      {
+        "id": "light_lob_19",
+        "name": "Apothecary's Vials"
+      },
+      {
+        "id": "light_charge_16",
+        "name": "Arrows of Heracles"
+      },
+      {
+        "id": "light_summon_11",
+        "name": "White Wolf"
+      },
+      {
+        "id": "light_summon_12",
+        "name": "White Wolf Matriarch"
+      },
+      {
+        "id": "light_summon_13",
+        "name": "Talbot Hound"
+      },
+      {
+        "id": "light_summon_14",
+        "name": "Royal Gyrfalcon"
+      },
+      {
+        "id": "light_summon_15",
+        "name": "Heraldic Griffin"
+      },
+      {
+        "id": "light_summon_16",
+        "name": "Lamassu"
+      },
+      {
+        "id": "light_summon_17",
+        "name": "Guardian Sphinx of Giza"
+      }
+    ],
+    "shadow": [
+      {
+        "id": "shadow_strike_19",
+        "name": "Moonlit Rake"
+      },
+      {
+        "id": "shadow_strike_20",
+        "name": "Bloodletting Blade"
+      },
+      {
+        "id": "shadow_strike_21",
+        "name": "Web Spray"
+      },
+      {
+        "id": "shadow_strike_22",
+        "name": "Jiangshi Hop"
+      },
+      {
+        "id": "shadow_strike_23",
+        "name": "Asanbosam Hook"
+      },
+      {
+        "id": "shadow_strike_24",
+        "name": "Hellhound Howl"
+      },
+      {
+        "id": "shadow_strike_25",
+        "name": "Infernal Brand"
+      },
+      {
+        "id": "shadow_strike_26",
+        "name": "Reaper's Scythe"
+      },
+      {
+        "id": "shadow_strike_27",
+        "name": "Danse Macabre"
+      },
+      {
+        "id": "shadow_strike_28",
+        "name": "Onryo's Grudge"
+      },
+      {
+        "id": "shadow_strike_29",
+        "name": "Manananggal Swoop"
+      },
+      {
+        "id": "shadow_strike_30",
+        "name": "Mara's Ride"
+      },
+      {
+        "id": "shadow_strike_31",
+        "name": "Death Card"
+      },
+      {
+        "id": "shadow_strike_32",
+        "name": "Wild Hunt of the Dead"
+      },
+      {
+        "id": "shadow_strike_33",
+        "name": "Gashadokuro's Fist"
+      },
+      {
+        "id": "shadow_strike_34",
+        "name": "Maw of the Abyss"
+      },
+      {
+        "id": "shadow_strike_35",
+        "name": "Bone Darts"
+      },
+      {
+        "id": "shadow_summon_15",
+        "name": "Cave Spider"
+      },
+      {
+        "id": "shadow_summon_16",
+        "name": "Death's-Head Moth"
+      },
+      {
+        "id": "shadow_summon_17",
+        "name": "Carrion Beetle"
+      },
+      {
+        "id": "shadow_summon_18",
+        "name": "Cave Centipede"
+      },
+      {
+        "id": "shadow_summon_19",
+        "name": "Plague Rat"
+      },
+      {
+        "id": "shadow_summon_20",
+        "name": "Bog Leech"
+      },
+      {
+        "id": "shadow_summon_21",
+        "name": "Gravedigger"
+      },
+      {
+        "id": "shadow_summon_22",
+        "name": "Dungeon Jailer"
+      },
+      {
+        "id": "shadow_summon_23",
+        "name": "Brimstone Imp"
+      },
+      {
+        "id": "shadow_summon_24",
+        "name": "Murder of Crows"
+      }
+    ],
+    "storm": [
+      {
+        "id": "storm_strike_18",
+        "name": "Camel Kick"
+      },
+      {
+        "id": "storm_strike_19",
+        "name": "Ifrit's Flame"
+      },
+      {
+        "id": "storm_strike_20",
+        "name": "Sun Disk Ray"
+      },
+      {
+        "id": "storm_strike_21",
+        "name": "Noon Sun Glare"
+      },
+      {
+        "id": "storm_strike_22",
+        "name": "Mirage Dagger"
+      },
+      {
+        "id": "storm_strike_23",
+        "name": "Djinn's Whirlwind"
+      },
+      {
+        "id": "storm_strike_24",
+        "name": "Coin Toss"
+      },
+      {
+        "id": "storm_strike_25",
+        "name": "Golden Touch"
+      },
+      {
+        "id": "storm_strike_26",
+        "name": "Bronze Fist"
+      },
+      {
+        "id": "storm_strike_27",
+        "name": "Talos's Boulder"
+      },
+      {
+        "id": "storm_strike_28",
+        "name": "Serpent Whip"
+      },
+      {
+        "id": "storm_strike_29",
+        "name": "Lodestone Pull"
+      },
+      {
+        "id": "storm_strike_30",
+        "name": "Raiju's Pounce"
+      },
+      {
+        "id": "storm_strike_31",
+        "name": "Plumed Serpent Gale"
+      },
+      {
+        "id": "storm_strike_32",
+        "name": "Perun's Oak-Splitter"
+      },
+      {
+        "id": "storm_strike_33",
+        "name": "Midas's Last Embrace"
+      },
+      {
+        "id": "storm_strike_34",
+        "name": "Heaven-Rending Bolt"
+      },
+      {
+        "id": "storm_charge_16",
+        "name": "Ifrit Embers"
+      },
+      {
+        "id": "storm_charge_17",
+        "name": "Canopic Jars"
+      },
+      {
+        "id": "storm_charge_18",
+        "name": "Forty Thieves' Hoard"
+      },
+      {
+        "id": "storm_summon_12",
+        "name": "Manticore"
+      },
+      {
+        "id": "storm_summon_13",
+        "name": "Chimera"
+      },
+      {
+        "id": "storm_summon_14",
+        "name": "Emperor Scorpion"
+      },
+      {
+        "id": "storm_summon_15",
+        "name": "Sand Scorpion"
+      },
+      {
+        "id": "storm_summon_16",
+        "name": "Girtablilu Gatewarden"
+      },
+      {
+        "id": "storm_summon_17",
+        "name": "Jackal Tomb Guard"
+      },
+      {
+        "id": "storm_summon_18",
+        "name": "Nile Crocodile"
+      }
+    ],
+    "verdant": [
+      {
+        "id": "verdant_strike_19",
+        "name": "Anaconda Squeeze"
+      },
+      {
+        "id": "verdant_strike_20",
+        "name": "Liana Whip"
+      },
+      {
+        "id": "verdant_strike_21",
+        "name": "Strangler Fig"
+      },
+      {
+        "id": "verdant_strike_22",
+        "name": "Will-o'-Wisp Lure"
+      },
+      {
+        "id": "verdant_strike_23",
+        "name": "Stag Leap"
+      },
+      {
+        "id": "verdant_strike_24",
+        "name": "Grizzly Charge"
+      },
+      {
+        "id": "verdant_strike_25",
+        "name": "Moose Antler Rush"
+      },
+      {
+        "id": "verdant_strike_26",
+        "name": "Highland Caber Toss"
+      },
+      {
+        "id": "verdant_strike_27",
+        "name": "Tanuki Leaf Trick"
+      },
+      {
+        "id": "verdant_strike_28",
+        "name": "Ratatoskr's Insult"
+      },
+      {
+        "id": "verdant_strike_29",
+        "name": "Leshy's Wrong Turn"
+      },
+      {
+        "id": "verdant_strike_30",
+        "name": "Curupira's Backward Trail"
+      },
+      {
+        "id": "verdant_strike_31",
+        "name": "Pan's Panic Pipes"
+      },
+      {
+        "id": "verdant_strike_32",
+        "name": "Monkey Coconut Toss"
+      },
+      {
+        "id": "verdant_strike_33",
+        "name": "Elf-Shot"
+      },
+      {
+        "id": "verdant_strike_34",
+        "name": "Mapinguari Roar"
+      },
+      {
+        "id": "verdant_strike_35",
+        "name": "Druid's Golden Sickle"
+      },
+      {
+        "id": "verdant_strike_36",
+        "name": "Ride of the Wild Hunt"
+      },
+      {
+        "id": "verdant_strike_37",
+        "name": "Green Knight's Axe"
+      },
+      {
+        "id": "verdant_strike_38",
+        "name": "Caledfwlch"
+      },
+      {
+        "id": "verdant_strike_39",
+        "name": "Dart Frog Leap"
+      },
+      {
+        "id": "verdant_charge_18",
+        "name": "Horn of Plenty"
+      },
+      {
+        "id": "verdant_summon_18",
+        "name": "Faun Reveler"
+      },
+      {
+        "id": "verdant_summon_19",
+        "name": "Elven Pathfinder"
+      },
+      {
+        "id": "verdant_summon_20",
+        "name": "Patupaiarehe Mist Folk"
+      },
+      {
+        "id": "verdant_summon_21",
+        "name": "Curupira"
+      },
+      {
+        "id": "verdant_summon_22",
+        "name": "Chullachaqui"
+      }
+    ]
+  }
+}

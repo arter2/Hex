@@ -747,7 +747,7 @@ function runLootPool(){ const out=[];
   if(B&&B.explore&&typeof XRUN!=='undefined'&&XRUN&&XRUN.snap) for(const id in save.owned){ if(CARDS[id]&&save.owned[id]-(XRUN.snap.owned[id]||0)>0&&CARDS[id].rarity!=='hero') out.push(id); }
   if(!out.length) for(const id in save.owned) if(CARDS[id]&&CARDS[id].rarity!=='hero'&&!CARDS[id].mastery&&spareCopies(save,id)>0) out.push(id);
   return out; }
-const runBlocked=()=>!B||(B.phase!=='fight'&&B.phase!=='custom')?'':B.trial?'This is a test: end it from the pause menu':B.enemies.some(e=>e.def.boss&&e.hp>0)?'You can’t run from a boss':'';
+const runBlocked=()=>B&&B.pvp?'You can’t run from a duel':!B||(B.phase!=='fight'&&B.phase!=='custom')?'':B.trial?'This is a test: end it from the pause menu':B.enemies.some(e=>e.def.boss&&e.hp>0)?'You can’t run from a boss':'';
 function openRun(){ if(!B||(B.phase!=='custom'&&B.phase!=='fight')) return; const why=runBlocked(); if(why) return tip(why);
   paused=true; B.player.charging=false; $('#btnWand').classList.remove('charging');
   const cost=runCost(), pool=runLootPool(), found=B.explore&&typeof XRUN!=='undefined'&&XRUN&&XRUN.snap&&pool.some(id=>save.owned[id]-(XRUN.snap.owned[id]||0)>0);
@@ -757,7 +757,8 @@ function openRun(){ if(!B||(B.phase!=='custom'&&B.phase!=='fight')) return; cons
   if(g.disabled&&c.disabled){ g.disabled=false; g.innerHTML=uiIcon('coin',22)+' Drop all '+save.gold+' gold'; }
   $('#runSheet').classList.add('on'); }
 function closeRun(){ $('#runSheet').classList.remove('on'); paused=false; }
-function doRun(kind){ const b=B; $('#runSheet').classList.remove('on'); if(!b||(b.phase!=='custom'&&b.phase!=='fight')){ paused=false; return; }
+function doRun(kind){ const b=B; $('#runSheet').classList.remove('on'); if(b&&b.pvp){ paused=false; return; }   // a duel has no Run: it costs gold and ends the battle without leaving the session
+  if(!b||(b.phase!=='custom'&&b.phase!=='fight')){ paused=false; return; }
   $('#custom').classList.remove('on');
   let lost;
   if(kind==='gold'){ const c=Math.min(save.gold,runCost()); save.gold-=c; lost=c+' gold'; }

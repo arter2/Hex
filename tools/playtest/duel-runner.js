@@ -972,6 +972,45 @@ check('a paused tab does not forfeit, and a death ends the duel', async () => {
   return { ok: still.state === 'fighting' && !still.reveal && okA && okB && t[0] === 'You lost' && t[1] === 'You won' && menus.every(Boolean), detail: { still, t, menus } };
 });
 
+check('no Run in a duel: hidden on the card screen, and the entry points do nothing', async () => {
+  await uiPair();
+  for (const n of NAMES) await until(n, inDuel, null, 15000);
+  const before = await savedData('A');
+  const vis = await ev('A', () => {
+    hud(true);
+    const b = document.getElementById('btnRun');
+    return { custom: document.getElementById('custom').classList.contains('on'), hidden: b.hidden || b.disabled || b.offsetParent === null };
+  });
+  const r = await ev('A', () => {
+    window.__camp = 0;
+    const o = window.openCamp;
+    window.openCamp = function () { window.__camp++; return o.apply(this, arguments); };
+    const gold = save.gold;
+    try { document.getElementById('btnRun').click(); } catch (e) {}
+    try { doRun('gold'); doRun('card'); } catch (e) {}
+    window.openCamp = o;
+    return { camp: window.__camp, gold: save.gold === gold, b: !!B, pvp: !!(B && B.pvp), session: !!DU.session, timer: !!DU.timer, state: DU.session && DU.session.state };
+  });
+  const after = await savedData('A');
+  const ok = vis.custom && vis.hidden && r.camp === 0 && r.gold && r.b && r.pvp && r.session && r.timer && before === after;
+  await both(() => duelLeave(true));
+  return { ok, detail: { vis, r, same: before === after } };
+});
+
+check('single-player Run still works outside a duel', async () => {
+  const r = await ev('A', () => {
+    B = null;
+    openMenu();
+    return { pvpBlocked: (() => { fight(1); const x = runBlocked(); const gold = save.gold; const hidden = document.getElementById('btnRun').hidden; return { x, hidden }; })() };
+  });
+  await ev('A', () => { openCustomScreen(); hud(true); });
+  const r2 = await ev('A', () => ({ blocked: runBlocked(), hidden: document.getElementById('btnRun').hidden }));
+  await ev('A', () => { openRun(); });
+  const sheet = await ev('A', () => document.getElementById('runSheet').classList.contains('on'));
+  await ev('A', () => { document.getElementById('runSheet').classList.remove('on'); B = null; paused = false; openMenu(); });
+  return { ok: r2.blocked === '' && !r2.hidden && sheet, detail: { r, r2, sheet } };
+});
+
 check('room: the relay pairs two pages by a room name (host first, then guest)', async () => {
   const relay = await require('../netplay/relay.js').startRelay({ port: 0, dir: path.join(__dirname, '..', '..', 'game') });
   try {

@@ -660,6 +660,357 @@ check('webrtc: session clock.rtt after the lobby handshake', async () => {
   return { ok: ok && rtt.every(r => r[1] < 40), detail: { rtt } };
 });
 
+
+// ---- the Duel menu: real clicks on the real buttons (debug menu, pairing screen, pause menu, result card) ----
+// (a click at the middle of the element, after checking that it is the element that would get it; Wi-Fi codes
+// travel between the two pages through Node, as people would carry them between phones)
+const MP_KEYS = ['mpSpell', 'mpDefend', 'mpBackdate', 'mpSend', 'mpSmooth'];
+const MP_DEFAULTS = [10, 50, 250, 16, 33];
+async function uiTap(n, sel) {
+  const page = pages[n];
+  const el = page.locator(sel).filter({ visible: true }).first();
+  await el.waitFor({ state: 'visible', timeout: 5000 }).catch(() => {
+    throw Error('nothing visible to tap on ' + n + ': ' + sel);
+  });
+  await el.scrollIntoViewIfNeeded();
+  const box = await el.boundingBox();
+  const x = box.x + box.width / 2,
+    y = box.y + box.height / 2;
+  const hit = await el.evaluate((el, { x, y }) => {
+    const t = document.elementFromPoint(x, y);
+    return t === el || el.contains(t);
+  }, { x, y });
+  if (!hit) throw Error('tap intercepted on ' + n + ': ' + sel);
+  await page.mouse.click(x, y);
+}
+const uiFill = (n, sel, text) => pages[n].fill(sel, text);
+// back to a known place: any duel gone, the menu showing, no overlay open
+async function uiReset(n) {
+  await ev(n, () => {
+    View.gl = false;
+    if (window.__D) window.__D.s.leave();
+    if (window.__T && !window.__T.closed) window.__T.close();
+    if (typeof duelLeave === 'function') duelLeave(true);
+    B = null;
+    paused = false;
+    window.__hold = null;
+    for (const id of ['custom', 'pause', 'reveal', 'debug']) document.getElementById(id).classList.remove('on');
+    openMenu();
+  });
+}
+async function uiDebug(n) {
+  await ev(n, () => document.activeElement && document.activeElement.blur());
+  if (!(await ev(n, () => document.getElementById('debug').classList.contains('on')))) await pages[n].keyboard.press('`');
+  await until(n, () => document.getElementById('debug').classList.contains('on'), null, 2000);
+  await uiTap(n, '.dbgTabs button[data-pane="General"]');
+}
+async function reloadPage(n) {
+  await pages[n].reload();
+  await pages[n].waitForFunction(() => typeof openCamp === 'function' && typeof save !== 'undefined');
+  await ev(n, () => {
+    save = newSave(STARTERS[0]);
+    save.char = lockChar(newChar('human', 0));
+  });
+  await ev(n, pageKit);
+}
+// both players tap through to the lobby; returns when each has typed in its code
+async function uiPair(opts = {}) {
+  const names = { A: 'Ann', B: 'Bo' };
+  for (const n of NAMES) await uiReset(n);
+  gen++;
+  await uiDebug('A');
+  await uiTap('A', '#dbgDuel');
+  await until('A', () => document.getElementById('scrDuel').classList.contains('on') && !document.getElementById('debug').classList.contains('on'), null, 2000);
+  await uiFill('A', '#duName', names.A);
+  await uiTap('A', '#duHost');
+  await uiTap('A', '#duWifi');
+  await until('A', () => document.getElementById('duOffer').value.startsWith('HEX1.'), null, 15000);
+  const offer = await ev('A', () => document.getElementById('duOffer').value);
+  await uiDebug('B');
+  await uiTap('B', '#dbgDuel');
+  await uiFill('B', '#duName', names.B);
+  await uiTap('B', '#duJoin');
+  await uiTap('B', '#duWifi');
+  await uiFill('B', '#duOfferIn', offer);
+  await uiTap('B', '#duMakeAnswer');
+  await until('B', () => document.getElementById('duAnswer').value.startsWith('HEX1.'), null, 15000);
+  const answer = await ev('B', () => document.getElementById('duAnswer').value);
+  if (opts.stopBeforeAccept) return { offer, answer };
+  await uiFill('A', '#duAnswerIn', answer);
+  await uiTap('A', '#duAccept');
+  return { offer, answer };
+}
+const lobbyText = n => ev(n, () => document.getElementById('duLobbyTxt').textContent);
+const inDuel = () => B && B.pvp && B.pvp.session.state === 'fighting' && B.pvp.session.spell.open;
+const savedData = n =>
+  ev(n, () => {
+    const o = {};
+    for (const k of Object.keys(localStorage)) if (!/^hexmancers-(xl-|mpname|dbg)/.test(k)) o[k] = localStorage.getItem(k);
+    return JSON.stringify(o);
+  });
+let uiSaved = null;
+
+check('multiplayer section is in the debug menu', async () => {
+  await uiReset('A');
+  await ev('A', ([keys]) => {
+    for (const k of keys) {
+      localStorage.removeItem('hexmancers-xl-' + k);
+      XLIT[k] = XLIT_DEF[k];
+    }
+  }, [MP_KEYS]);
+  await uiDebug('A');
+  const r = await ev('A', ([keys]) => {
+    const q = id => document.getElementById(id);
+    const vis = el => !!el && el.offsetParent !== null;
+    const ids = ['dbgMpSpell', 'dbgMpDefend', 'dbgMpBackdate', 'dbgMpSend', 'dbgMpSmooth'];
+    return {
+      heading: [...document.querySelectorAll('#debug h3')].some(h => h.textContent.trim() === 'Multiplayer' && vis(h)),
+      btn: vis(q('dbgDuel')),
+      enabled: q('dbgDuel') && !q('dbgDuel').disabled,
+      vals: ids.map(id => q(id) && +q(id).value),
+      readouts: ids.map(id => q(id + 'V') && q(id + 'V').textContent),
+      reset: !!q('dbgMpReset'),
+      mmDuel: !!q('mmDuel'),
+      order: ['dbgDuel', ...ids, 'dbgMpReset'].map(id => q(id) && [...document.querySelectorAll('#debug *')].indexOf(q(id)))
+    };
+  }, [MP_KEYS]);
+  const sorted = r.order.every((x, i) => x > 0 && (i === 0 || x > r.order[i - 1]));
+  const ok = r.heading && r.btn && r.enabled && JSON.stringify(r.vals) === JSON.stringify(MP_DEFAULTS) && r.readouts.every(t => t) && r.reset && !r.mmDuel && sorted;
+  return { ok, detail: r };
+});
+
+check('sliders are saved and live', async () => {
+  await ev('A', () => {
+    const el = document.getElementById('dbgMpSpell');
+    el.value = 4;
+    el.dispatchEvent(new Event('input', { bubbles: true }));
+  });
+  const live = await ev('A', () => [XLIT.mpSpell, localStorage.getItem('hexmancers-xl-mpSpell'), document.getElementById('dbgMpSpellV').textContent]);
+  const html = fs.readFileSync(path.join(__dirname, '..', '..', 'game', 'index.html'), 'utf8'); // (the page rewrites step to 'any' for fine dragging)
+  const ranges = ['dbgMpSpell', 'dbgMpDefend', 'dbgMpBackdate', 'dbgMpSend', 'dbgMpSmooth'].map(id => {
+    const m = html.match(new RegExp('id="' + id + '" type="range" min="(\\d+)" max="(\\d+)" step="(\\d+)"'));
+    return m ? [+m[1], +m[2], +m[3]] : null;
+  });
+  await reloadPage('A');
+  const kept = await ev('A', () => XLIT.mpSpell);
+  await uiDebug('A');
+  const shown = await ev('A', () => +document.getElementById('dbgMpSpell').value);
+  await ev('A', () => {
+    for (const id of ['dbgMpDefend', 'dbgMpSmooth']) {
+      const el = document.getElementById(id);
+      el.value = 100;
+      el.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+  });
+  await uiTap('A', '#dbgMpReset');
+  const after = await ev('A', ([keys]) => ({ x: keys.map(k => XLIT[k]), ls: keys.map(k => localStorage.getItem('hexmancers-xl-' + k)), shown: ['dbgMpSpell', 'dbgMpDefend', 'dbgMpBackdate', 'dbgMpSend', 'dbgMpSmooth'].map(id => +document.getElementById(id).value) }), [MP_KEYS]);
+  const wantRanges = [[3, 30, 1], [0, 200, 5], [50, 1000, 10], [0, 100, 1], [0, 100, 1]];
+  const ok =
+    live[0] === 4 && live[1] === '4' && live[2] === '4' && kept === 4 && shown === 4 &&
+    JSON.stringify(ranges) === JSON.stringify(wantRanges) &&
+    JSON.stringify(after.x) === JSON.stringify(MP_DEFAULTS) && JSON.stringify(after.shown) === JSON.stringify(MP_DEFAULTS) &&
+    after.ls.every(v => v === null || v === String(MP_DEFAULTS[after.ls.indexOf(v)]));
+  return { ok, detail: { live, ranges, kept, shown, after } };
+});
+
+check('duel button disabled without a valid deck', async () => {
+  await uiReset('A');
+  const orig = await ev('A', () => {
+    window.__deck = activeDeck().list.slice();
+    activeDeck().list = window.__deck.slice(0, 10);
+  });
+  await uiDebug('A');
+  const bad = await ev('A', () => ({ disabled: document.getElementById('dbgDuel').disabled, hint: document.getElementById('dbgDuelHint').textContent, shown: document.getElementById('dbgDuelHint').offsetParent !== null }));
+  await ev('A', () => document.getElementById('dbgDuel').click());
+  const stayed = await ev('A', () => !document.getElementById('scrDuel').classList.contains('on'));
+  await uiReset('A');
+  await ev('A', () => (activeDeck().list = window.__deck));
+  await uiDebug('A');
+  const good = await ev('A', () => ({ disabled: document.getElementById('dbgDuel').disabled, hint: document.getElementById('dbgDuelHint').textContent }));
+  return { ok: bad.disabled && bad.shown && bad.hint.length > 5 && stayed && !good.disabled && good.hint === '', detail: { bad, stayed, good } };
+});
+
+check('room is offered only over http and not on itch.io', async () => {
+  const r = await ev('A', () => [duelRoomOk('http:', '192.168.1.5'), duelRoomOk('http:', 'localhost'), duelRoomOk('https:', 'example.com'), duelRoomOk('https:', 'bryan.itch.io'), duelRoomOk('http:', 'x.itch.zone'), duelRoomOk('http:', 'html-classic.itch.zone'), duelRoomOk('http:', 'itch.io')]);
+  return { ok: JSON.stringify(r) === JSON.stringify([true, true, false, false, false, false, false]), detail: r };
+});
+
+check('bad code shows an error', async () => {
+  await uiReset('A');
+  await uiDebug('A');
+  await uiTap('A', '#dbgDuel');
+  await uiTap('A', '#duJoin');
+  await uiTap('A', '#duWifi');
+  await uiFill('A', '#duOfferIn', 'HEX1.nonsense');
+  await uiTap('A', '#duMakeAnswer');
+  const ok1 = await within('A', () => /Bad code/.test(document.getElementById('duMsg').textContent), null, 4000);
+  const r = await ev('A', () => ({ msg: document.getElementById('duMsg').textContent, step: DU.step, joinShown: !document.getElementById('duJoinCode').hidden, on: document.getElementById('scrDuel').classList.contains('on') }));
+  // a way back: Back goes a step back, and from the first step to the menu, closing everything
+  await uiTap('A', '#duBack');
+  const s1 = await ev('A', () => DU.step);
+  await uiTap('A', '#duBack');
+  const s2 = await ev('A', () => DU.step);
+  await uiTap('A', '#duBack');
+  const menu = await ev('A', () => document.getElementById('scrMenu').classList.contains('on'));
+  return { ok: ok1 && r.joinShown && r.on && r.step === 'joincode' && s1 === 'how' && s2 === 'role' && menu, detail: { r, s1, s2, menu } };
+});
+
+check('connect times out with a readable message and a way back', async () => {
+  await uiPair({ stopBeforeAccept: true }).then(async ({ answer }) => {
+    await ev('B', () => document.getElementById('duBack').click()); // the guest goes away: its end of the link closes
+    await ev('A', () => (DU.timeout = 1500));
+    await uiFill('A', '#duAnswerIn', answer);
+    await uiTap('A', '#duAccept');
+  });
+  const ok1 = await within('A', () => /Could not connect\. Check you are on the same Wi-Fi and try again\./.test(document.getElementById('duMsg').textContent), null, 8000);
+  const r = await ev('A', () => ({ msg: document.getElementById('duMsg').textContent, step: DU.step, session: !!DU.session, tr: !!DU.tr }));
+  await uiTap('A', '#duBack');
+  const back = await ev('A', () => DU.step);
+  await ev('A', () => (DU.timeout = 20000));
+  return { ok: ok1 && !r.session && !r.tr && r.step === 'how' && back === 'role', detail: { r, back } };
+});
+
+check('refused handshake shows its reason inline', async () => {
+  await uiReset('A');
+  await uiReset('B');
+  await ev('B', () => {
+    window.__deck = activeDeck().list.slice();
+    activeDeck().list = window.__deck.slice(0, 40); // too short for the host to accept
+  });
+  // (the debug button would be disabled for B: it opens the screen itself)
+  await ev('B', () => openDuel());
+  await uiDebug('A');
+  await uiTap('A', '#dbgDuel');
+  await uiTap('A', '#duHost');
+  await uiTap('A', '#duWifi');
+  await until('A', () => document.getElementById('duOffer').value.startsWith('HEX1.'), null, 15000);
+  const offer = await ev('A', () => document.getElementById('duOffer').value);
+  await uiTap('B', '#duJoin');
+  await uiTap('B', '#duWifi');
+  await uiFill('B', '#duOfferIn', offer);
+  await uiTap('B', '#duMakeAnswer');
+  await until('B', () => document.getElementById('duAnswer').value.startsWith('HEX1.'), null, 15000);
+  await uiFill('A', '#duAnswerIn', await ev('B', () => document.getElementById('duAnswer').value));
+  await uiTap('A', '#duAccept');
+  const ok1 = await within('A', () => /invalid deck size/.test(document.getElementById('duMsg').textContent), null, 8000);
+  const r = await ev('A', () => ({ msg: document.getElementById('duMsg').textContent, on: document.getElementById('scrDuel').classList.contains('on'), session: !!DU.session }));
+  await ev('B', () => (activeDeck().list = window.__deck));
+  return { ok: ok1 && r.on && !r.session, detail: r };
+});
+
+check('host and guest reach lobby', async () => {
+  uiSaved = await savedData('A');
+  await uiPair();
+  const ok1 = await within('A', () => /Bo/.test(document.getElementById('duLobbyTxt').textContent), null, 15000);
+  const ok2 = await within('B', () => /Ann/.test(document.getElementById('duLobbyTxt').textContent), null, 15000);
+  const t = [await lobbyText('A'), await lobbyText('B')];
+  let fight = true;
+  for (const n of NAMES) fight = fight && (await within(n, inDuel, null, 8000));
+  const dbg = ok1 && ok2 && fight ? null : await both(() => ({ step: DU.step, msg: document.getElementById('duMsg').textContent, session: DU.session && DU.session.state, to: DU.timeout, gen: DU.gen, tr: !!DU.tr, wait: document.getElementById('duWaitTxt').textContent }));
+  return { ok: ok1 && ok2 && fight, detail: { t, fight, dbg } };
+});
+
+check('pause is disabled in a duel', async () => {
+  const run = await both(() => ({ dis: document.getElementById('dbgPause').disabled, note: document.getElementById('dbgPauseNote').hidden, timer: !!DU.timer, custom: document.getElementById('custom').classList.contains('on') }));
+  const ok = run.every(r => r.dis && !r.note && r.timer && r.custom);
+  return { ok, detail: run };
+});
+
+check('a result closes the card screen, and leaving tears the duel down', async () => {
+  // B leaves from the card screen (the same function the pause menu's Leave runs); A is shown the result with its card screen open
+  await ev('B', () => duelLeave());
+  const okA = await within('A', () => document.getElementById('reveal').classList.contains('on'), null, 4000);
+  const a = await ev('A', () => ({ title: document.getElementById('rvTitle').textContent, custom: document.getElementById('custom').classList.contains('on'), dis: document.getElementById('dbgPause').disabled, timer: DU.timer, tr: !!DU.tr, session: !!DU.session }));
+  const b = await ev('B', () => ({ b: B, menu: document.getElementById('scrMenu').classList.contains('on'), custom: document.getElementById('custom').classList.contains('on'), dis: document.getElementById('dbgPause').disabled, timer: DU.timer, tr: !!DU.tr, session: !!DU.session, closed: window.__lastClosed }));
+  const ok = okA && a.title === 'Opponent left' && !a.custom && !a.dis && !a.timer && b.b === null && b.menu && !b.custom && !b.dis && !b.timer && !b.tr && !b.session;
+  return { ok, detail: { a, b } };
+});
+
+check('result card and back', async () => {
+  const before = await ev('A', () => document.getElementById('rvBtns').textContent);
+  await uiTap('A', '#rvBtns .btn');
+  const r = await ev('A', () => ({ menu: document.getElementById('scrMenu').classList.contains('on'), b: B === null, reveal: document.getElementById('reveal').classList.contains('on') }));
+  const same = (await savedData('A')) === uiSaved;
+  return { ok: before === 'Back to menu' && r.menu && r.b && !r.reveal && same, detail: { before, r, same } };
+});
+
+check('pause menu leaves a duel and the other side is told', async () => {
+  await uiPair();
+  for (const n of NAMES) await until(n, inDuel, null, 15000);
+  await both(() => duelFight());
+  for (const n of NAMES) await until(n, () => B.phase === 'fight', null, 4000);
+  await uiTap('A', '#btnMenu');
+  const m = await ev('A', () => ({ leave: !document.getElementById('mLeave').hidden, run: !document.getElementById('mRun').hidden, text: document.getElementById('mLeave').textContent }));
+  await uiTap('A', '#mLeave');
+  await uiTap('A', '#mLeave');
+  const a = await ev('A', () => ({ menu: document.getElementById('scrMenu').classList.contains('on'), b: B === null, pause: document.getElementById('pause').classList.contains('on'), timer: DU.timer, session: !!DU.session, dis: document.getElementById('dbgPause').disabled }));
+  const okB = await within('B', () => document.getElementById('reveal').classList.contains('on') && document.getElementById('rvTitle').textContent === 'Opponent left', null, 4000);
+  await uiTap('B', '#rvBtns .btn');
+  const bMenu = await ev('B', () => document.getElementById('scrMenu').classList.contains('on') && B === null);
+  const ok = m.leave && !m.run && a.menu && a.b && !a.pause && !a.timer && !a.session && !a.dis && okB && bMenu;
+  return { ok, detail: { m, a, okB, bMenu } };
+});
+
+check('a paused tab does not forfeit, and a death ends the duel', async () => {
+  await uiPair();
+  for (const n of NAMES) await until(n, inDuel, null, 15000);
+  await both(() => duelFight());
+  for (const n of NAMES) await until(n, () => B.phase === 'fight', null, 4000);
+  await ev('A', () => openPause());
+  await sleep(6500); // longer than the 5 s of silence that forfeits; only the 500 ms timer is ticking A
+  const still = await ev('B', () => ({ state: B.pvp.session.state, reveal: document.getElementById('reveal').classList.contains('on') }));
+  await ev('A', () => closePause());
+  await ev('A', () => {
+    B.player.hp = 1;
+  });
+  await ev('B', () => hitEnemy(duelAvatar(), 5, null, { raw: true })); // B lands the blow that A falls to
+  const okA = await within('A', () => document.getElementById('reveal').classList.contains('on'), null, 4000);
+  const okB = await within('B', () => document.getElementById('reveal').classList.contains('on'), null, 4000);
+  const t = await both(() => document.getElementById('rvTitle').textContent);
+  for (const n of NAMES) await uiTap(n, '#rvBtns .btn');
+  const menus = await both(() => document.getElementById('scrMenu').classList.contains('on') && B === null && !DU.timer && !DU.session);
+  return { ok: still.state === 'fighting' && !still.reveal && okA && okB && t[0] === 'You lost' && t[1] === 'You won' && menus.every(Boolean), detail: { still, t, menus } };
+});
+
+check('room: the relay pairs two pages by a room name (host first, then guest)', async () => {
+  const relay = await require('../netplay/relay.js').startRelay({ port: 0, dir: path.join(__dirname, '..', '..', 'game') });
+  try {
+    const url = 'http://127.0.0.1:' + relay.port + '/index.html';
+    for (const n of NAMES) {
+      await pages[n].goto(url);
+      await pages[n].waitForFunction(() => typeof openCamp === 'function' && typeof save !== 'undefined');
+      await ev(n, () => {
+        save = newSave(STARTERS[0]);
+        save.char = lockChar(newChar('human', 0));
+        View.gl = false;
+      });
+    }
+    await uiDebug('A');
+    await uiTap('A', '#dbgDuel');
+    await uiFill('A', '#duName', 'Ann');
+    await uiTap('A', '#duHost');
+    await uiTap('A', '#duRoom');
+    const room = await ev('A', () => document.getElementById('duRoomName').value);
+    await uiTap('A', '#duRoomGo');
+    await until('A', () => DU.step === 'wait' && !!DU.tr, null, 5000);
+    await uiDebug('B');
+    await uiTap('B', '#dbgDuel');
+    await uiFill('B', '#duName', 'Bo');
+    await uiTap('B', '#duJoin');
+    await uiTap('B', '#duRoom');
+    await uiFill('B', '#duRoomName', room.toLowerCase());
+    await uiTap('B', '#duRoomGo');
+    const ok1 = await within('A', () => /Bo/.test(document.getElementById('duLobbyTxt').textContent), null, 8000);
+    const ok2 = await within('B', () => /Ann/.test(document.getElementById('duLobbyTxt').textContent), null, 8000);
+    let fight = true;
+    for (const n of NAMES) fight = fight && (await within(n, inDuel, null, 8000));
+    await both(() => duelLeave(true));
+    return { ok: /^[A-Z]{4}$/.test(room) && ok1 && ok2 && fight, detail: { room, ok1, ok2, fight } };
+  } finally {
+    await relay.close();
+  }
+});
+
 async function run(out = process.argv[2] || 'playtest-duel-results') {
   fs.mkdirSync(out, { recursive: true });
   const results = [];
@@ -696,6 +1047,7 @@ async function run(out = process.argv[2] || 'playtest-duel-results') {
       setup = e.message;
     }
     for (const [name, fn] of checks) {
+      if (process.env.DUEL_ONLY && !new RegExp(process.env.DUEL_ONLY).test(name)) continue; // while working: DUEL_ONLY='lobby|pause'
       let r;
       if (setup) r = { ok: false, detail: setup };
       else

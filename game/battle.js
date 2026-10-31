@@ -972,6 +972,7 @@ const PACE=.7;
 function update(dt){
   const b=B; if(!b) return;
   if(b.pvp) duelTick(b);   // a duel: messages, the avatar, hits that arrived (on wall time, so it runs on the card screen too)
+  if(B!==b) return;   // duelTick can end the duel, and its onEnd may null or replace B
   if(b.hitStop>0){ b.hitStop-=dt; dt*=.08; }   // a Counter Hit, a kill or a WEAK hit freezes the moment for a beat
   else if(b.slowMo>0){ b.slowMo-=dt; dt*=.25; }   // the killing blow of a boss fight plays in slow motion
   b.time+=dt;

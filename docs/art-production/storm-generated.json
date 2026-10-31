@@ -1672,5 +1672,455 @@
       1254
     ],
     "reviewNote": "FocalPoint [0.5,0.586] shifts the 206:141 crop to y≈125, preserving the turret emitter, stacked plates and complete plinth alongside the piercing beam. Reviewed at /tmp/voltaic-pile-turret-y125.png."
+  },
+  {
+    "cardId": "storm_strike_08",
+    "prompt": "A powerful branching-but-readable chain of lightning jumps from a robed storm mage's raised metal staff through exactly three staggered armored foes along a ruined medieval courtyard; one bright primary Tesla-like arc connects them in sequence, with the first target visibly recoiling in a stun flash and restrained kickback sparks around the mage. Keep faces, staff hand, arc path and all three targets readable, no modern technology. Painterly medieval fantasy collectible-card art, tactile bronze and wet stone, vivid electric blue-white light against storm clouds, atmospheric depth in a serious high-fantasy style. Explicit 1:1 SQUARE 512x512 composition; keep identity-critical caster face/hand, entire chain arc and target faces inside x24..488,y105..407 for the 206:141 crop, quiet expendable sky and paving outside. No frame, text, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-74511f45-10e2-4bc2-ba74-753c112e2076.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "The caster, connected lightning arc and three recoiling foes remain readable in the card crop; the staff tip and foreground legs are expendable at the edges. The chain strike reads at thumbnail size.",
+    "name": "Tesla Arc",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_08.png",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "storm_lob_09",
+    "prompt": "A row-wide volley of golden hailstones falls in a tight horizontal band across a medieval desert battlefield, each bright gold-white ice pellet striking the ground and shields of several aligned armored foes; show one foreground hailstone in sharp focus and the line of impacts receding sideways, with a small caster's hand at far left implying the lob. Gold metal-like sheen mixed with crystalline ice, no fireballs. Painterly medieval fantasy collectible-card art, tactile armor and sandstone, warm gold light under dark storm clouds, atmospheric depth. Explicit 1:1 square canvas. Keep the complete hail impact row and foreground target within x24..488,y105..407 for the wide crop, quiet storm sky and ground beyond. No border, words, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-3a74f009-27c0-4812-a17e-c56b77a47fdf.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "The horizontal hail volley and multiple shield impacts cross the wide crop; foreground target faces and one large golden hailstone remain clear. The caster hand is incidental and partly outside the left edge. The row-wide golden hail reads at thumbnail size.",
+    "name": "Golden Hail",
+    "editableSourcePath": "game/cards/art/masters/storm_lob_09.png",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "storm_ward_10",
+    "prompt": "A lone desert djinn mage in flowing blue robes conjures a heavy long-lasting protective veil: a broad translucent turquoise-blue wind-and-glass barrier wraps around the mage and an ally, catching incoming arrows while drawing a thin stream of life-force from a distant enemy through the veil into a small glowing core. Show the djinn's face and open hand, full broad shield curve and visible arrow impacts; grounded serious expression and believable cloth, no genie lamp. Painterly medieval fantasy collectible-card art, polished glasslike magic, warm sandstone and cool electric-blue light, atmospheric depth. Explicit 1:1 square 512 master. Preserve face, hand, full barrier and siphon link within x24..488,y105..407 for wide crop; quiet desert ruins above/below. No frame, text, letters, numbers, UI, anime/cartoon/photorealism/pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-43ab1906-66ad-46f6-8aac-b03f7e27a0de.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.55
+    ],
+    "reviewNote": "The crop shifted down to retain the wide glassy barrier, djinn face and open hand, ally, arrow impacts and siphon thread. The veil and protected pair remain identifiable at thumbnail size.",
+    "name": "Djinn's Veil",
+    "editableSourcePath": "game/cards/art/masters/storm_ward_10.png",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "storm_sentry_10",
+    "prompt": "A sturdy stationary sandstone idol sentry stands on a low plinth in an ancient desert fortress, carved as a solemn humanlike guardian with a clear face and broad shoulders; it does not attack but empowers a nearby storm mage's next spell, sending a focused amber-blue rune beam into the mage's raised staff while a small greedy gold glow gathers in the idol's palm and a tiny stun-like spark flickers near an approaching foe. Idol is dominant, complete head-to-base silhouette visible, tactile layered sandstone carvings, warm sunlight and restrained electric magic. Painterly medieval fantasy collectible-card art, atmospheric depth, serious grounded proportions. Explicit 1:1 square 512x512; keep whole idol, face and empowerment link in x24..488,y105..407 for 206:141 crop; expendable dunes and fortress above/below. No frame, lettering, numbers, UI, anime/cartoon/photorealism/pixel art. Revised composition from image edit: scale the complete idol down and place centrally so crown, face, feet and plinth fit comfortably inside the wide crop; retain the same palette and setting.",
+    "generatedPath": "/workspace/generated_images/exec-c469acdc-aa7c-49d8-a7c0-c5106c090b93.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "After a composition adjustment, the complete sandstone idol from crown through plinth, its glowing palm, and the empowerment beam all fit in the card crop. The idol remains dominant and readable at thumbnail size.",
+    "name": "Sandstone Idol",
+    "editableSourcePath": "game/cards/art/masters/storm_sentry_10.png",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "storm_boon_08",
+    "prompt": "Paint a dramatic medieval fantasy collectible-card illustration for Camel's Endurance. Actual effect: a seven-second regeneration boon and a rally that musters allies. Show a sturdy Bactrian camel and its battle-worn rider at a desert oasis after a hard march; the rider drinks from a waterskin while a warm restorative green-gold glow closes small wounds, and two nearby weary soldiers rise and rally behind them. The camel's full recognizable double hump, head and neck are the named focal subject, with rider face/hand and companions readable. Painterly high fantasy, tactile leather tack, cloth and sandstone, golden late-day light, rich atmospheric depth consistent with supplied art. Explicit 1:1 SQUARE 512 master, horizontal arrangement; keep camel head, both humps, rider face and drinking hand within x24..488,y105..407 for 206:141 crop; quiet sky and sand beyond. No text, lettering, frame, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-89ca7c18-1402-461b-a189-65bd30f3f0b5.png",
+    "sourceNative": [
+      1287,
+      1222
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "reviewNote": "The upward-shifted crop keeps the camel head and both humps, rider face and waterskin hand, plus rallying companions visible. Lower camel legs and some upper sky are expendable; the endurance scene reads at thumbnail size.",
+    "name": "Camel's Endurance",
+    "editableSourcePath": "game/cards/art/masters/storm_boon_08.png",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "storm_charge_08",
+    "prompt": "A storm alchemist in weathered medieval travel gear grips a complete matched set of three small round naphtha grenades with dark ceramic bodies, brass necks and short lit fuses; one grenade is flying in a clear lob toward a compact row of armored foes as a bright orange-blue blast erupts on impact. Keep all three grenade bodies, necks, fuses and the alchemist's throwing hand in the central band; no modern military hardware. Painterly medieval fantasy collectible-card art, tactile ceramic, brass and leather, energetic directional firelight mixed with cool storm light, atmospheric depth. Explicit 1:1 SQUARE 512x512 master; keep the alchemist face, relevant hand and complete named grenade silhouettes within x24..488,y105..407 for a 206:141 crop, quiet expendable sky/ground beyond. No frame, text, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7bc211f0-917b-43e7-acbd-8ac0719c6c4a.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.44
+    ],
+    "reviewNote": "The upward crop adjustment preserves the alchemist’s full face and throwing hand with the complete flying grenade, one complete hand-held grenade and belt vials; explosion and target row remain clear. The grenade action reads at thumbnail size.",
+    "name": "Naphtha Grenades",
+    "editableSourcePath": "game/cards/art/masters/storm_charge_08.png",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "storm_utility_08",
+    "prompt": "In a medieval counting house, a shrewd moneylender in fine but restrained robes lends a small tied purse of coins and a blank parchment contract to a storm mage; the mage's other hand draws one glowing blank spell card from an open folio into a neat short queue of two waiting blank cards, showing a loan that helps recall a card. No legible writing or numbers. Keep the coin purse, moneylender face/hands, mage hand and blank card prominent. Painterly medieval fantasy collectible-card art, tactile parchment, brass scales, wood and velvet, warm window light with subtle electric blue glints, rich atmospheric depth. Explicit 1:1 square 512x512 composition, horizontal staging; keep named people, hands, purse and recalled blank card inside x24..488,y105..407 for wide crop, quiet shelves above and table below. No frame, lettering, numbers, UI, anime/cartoon/photorealism/pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-02274972-948d-4e25-a899-67e0366a73ee.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "The moneylender and mage faces and hands, tied purse, blank parchment and recalled blank card are visible in the wide crop; the exchange reads at thumbnail size.",
+    "name": "Moneylender's Loan",
+    "editableSourcePath": "game/cards/art/masters/storm_utility_08.png",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "storm_trap_08",
+    "prompt": "A ruined medieval stone corridor contains a clearly visible row of exactly three flat square trap tiles in the floor, each with a small brass storm rune and raised stone rim; an armored intruder steps on the middle tile, which crackles with blue-white electricity and holds him rigid, while a second foe entering the neighboring tile is caught by a short branching shock arc. Show the three tiles as a single readable named trap and the primary stepping boot/face clearly. Painterly medieval fantasy card illustration, wet flagstones, iron armor, dramatic electric light and atmospheric depth. Explicit 1:1 square master, horizontal low-angle composition; keep all three trap tiles and trapped intruder's face/foot inside x24..488,y105..407 for 206:141 crop, expendable corridor scenery beyond. No frame, text, numbers, UI, anime, cartoon, photorealism or pixel art. Recomposition requested: make both armored intruders shorter in frame by crouching or buckling close to the floor; retain a complete face, both hands, planted boot and exactly three complete rune tiles in one row, all safely inside the central horizontal band.",
+    "generatedPath": "/workspace/generated_images/exec-bfd7d6d5-0b78-490f-bae5-bb79fe1060a9.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.53
+    ],
+    "reviewNote": "The downward-shifted wide crop retains the trapped intruder’s full face and both hands, planted boot, and all three complete rune tiles; the second intruder is secondary. The row of shocking floor tiles reads at thumbnail size.",
+    "name": "Shocking Floor Tiles",
+    "editableSourcePath": "game/cards/art/masters/storm_trap_08.png",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "storm_environment_07",
+    "prompt": "An ancient battlefield is transformed by a long-lived cross-shaped lightning field: four vivid blue-white bolts strike the ground along two intersecting lanes, forming an unmistakable broad cross pattern of scorched glowing stone; a small armored foe caught at the intersection is blasted and staggered. View from a slightly elevated angle so the cross-shaped area reads clearly across the horizontal scene, with a storm mage at one edge. Painterly medieval fantasy card art, believable stone and armor, high contrast electric light beneath dark storm clouds, deep atmosphere. Explicit 1:1 SQUARE 512x512; keep the cross intersection and its defining horizontal/vertical lanes, mage face/hand if visible, and target within x24..488,y105..407 for 206:141 crop; quiet clouds and paving beyond. No frame, writing, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-516fbf7d-4e61-4028-ab78-988bf27e4327.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "The intersecting lightning lanes and staggered target remain prominent in the wide crop; the mage is incidental and partly cropped at left. The cross-shaped field reads immediately at thumbnail size.",
+    "name": "Lightning Field",
+    "editableSourcePath": "game/cards/art/masters/storm_environment_07.png",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "storm_summon_05",
+    "prompt": "Create a high-fantasy medieval collectible-card illustration for Si'lat Shapeshifter. The actual creature is a sly, steady pouncing djinn shapeshifter with a second rise if first defeated. Depict one dominant lean humanoid desert djinn with a sharp sly face, wind-carved blue-bronze skin, flowing teal and amber robes, and cloudlike lower body; it is mid-pounce across a horizontal battlefield toward a wary armored foe. A faint translucent echo of the same djinn rising from a fading silhouette behind it suggests it can rise again, but keep the real djinn dominant. Grounded anatomical proportions, expressive eyes, tactile cloth and metal, dramatic desert moonlight and restrained electric-blue magic, painterly materials and atmosphere consistent with supplied fantasy art. Explicit 1:1 SQUARE 512x512 master. Preserve the djinn's face, leading hands/claws, and pouncing upper body inside x24..488,y105..407 for the 206:141 crop; quiet dunes and sky beyond. No text, border, numbers, UI, cartoon, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-fc3b9c90-2e1f-40a6-b1b5-f7426b13f1a2.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "The dominant djinn’s full sly face and leading hand/claws remain visible in the wide crop with its airborne lunge toward the foe; the spectral rising echo is incidental. The shapeshifter reads clearly at thumbnail size.",
+    "name": "Si'lat Shapeshifter",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_05.png",
+    "status": "generated",
+    "batch": 10
+  },
+  {
+    "cardId": "storm_machine_05",
+    "name": "Arc Gatling",
+    "prompt": "Square 1:1 512x512 master illustration for the medieval fantasy collectible card \"Arc Gatling\". A compact sturdy dwarven arc gatling apparatus on a low wheeled wooden carriage: a rotating cluster of short copper-and-brass barrels linked to a blue-white lightning coil, with a stout artisan gripping its two handles. Its overcharged barrels discharge a straight piercing stream of tiny electric bolts. Keep the entire device, muzzle cluster and operator's focused face and hands close together and centered; no modern firearm styling. Painterly traditional high-fantasy card artwork in the established Hexmancers style: expressive brushwork, detailed believable leather, wood, brass, glass, stone, feathers and skin, dramatic directional light, atmospheric depth, compact readable action. Keep complete named device/flask/creature, primary face and relevant hand within x24..488,y105..407 after square normalization for centered 206:141 crop; leave quiet scenery above and below. No frame, words, runes, numbers, UI, modern technology, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a4c7269f-f1aa-4074-970d-c6203604c4ed.png",
+    "editableSourcePath": "game/cards/art/masters/storm_machine_05.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Square source, centered wide crop and thumbnail inspected. Complete gatling, muzzle cluster, carriage, operator face and both hands remain clear; electric discharge trails outward."
+  },
+  {
+    "cardId": "hero_tempest",
+    "name": "Tempest the Stormcaller",
+    "prompt": "Square 1:1 512x512 master illustration for the medieval fantasy collectible card \"Tempest the Stormcaller\". Tempest, a heroic sky-mage in wind-tossed blue robes and weathered leather, stands on a high cliff. Show her full expressive face and raised casting hand as she calls a bolt of lightning down onto an enemy far below; forked light stuns a distant armored silhouette while her coat and hair stream in the wind. A restrained circular gauge-like glow around her chest suggests rising spell power without symbols or text. Painterly traditional high-fantasy card artwork in the established Hexmancers style: expressive brushwork, detailed believable leather, wood, brass, glass, stone, feathers and skin, dramatic directional light, atmospheric depth, compact readable action. Keep complete named device/flask/creature, primary face and relevant hand within x24..488,y105..407 after square normalization for centered 206:141 crop; leave quiet scenery above and below. No frame, words, runes, numbers, UI, modern technology, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e0d97f31-8b80-4dad-9a37-f97e8ee2b3f2.png",
+    "editableSourcePath": "game/cards/art/masters/hero_tempest.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Focal point raised to include Tempest’s complete face and staff orb with the casting hand and lightning origin. Adjusted crop and thumbnail inspected; legs and distant target are incidental."
+  },
+  {
+    "cardId": "storm_strike_09",
+    "name": "Scorpion Sting",
+    "prompt": "Square 1:1 512x512 master illustration for the medieval fantasy collectible card \"Scorpion Sting\". A large desert scorpion rears in a clear side profile, its curved tail delivering a quick precise sting while one small electric-blue magical arc curves out and returns like a boomerang toward an unseen foe. Keep the scorpion's whole head, claws and tail stinger in view; the swift arc and tiny impact spark read as the attack. Ancient sandstone ground, dusk. Painterly traditional high-fantasy card artwork in the established Hexmancers style: expressive brushwork, detailed believable leather, wood, brass, glass, stone, feathers and skin, dramatic directional light, atmospheric depth, compact readable action. Keep complete named device/flask/creature, primary face and relevant hand within x24..488,y105..407 after square normalization for centered 206:141 crop; leave quiet scenery above and below. No frame, words, runes, numbers, UI, modern technology, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2ae9ea1d-76f5-4040-b547-4c77a086622d.png",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Focal point raised to retain the complete arched tail and stinger while preserving claws and body. Adjusted crop and thumbnail inspected; the full scorpion remains identifiable."
+  },
+  {
+    "cardId": "storm_lob_10",
+    "name": "Mercury Flask",
+    "prompt": "Square 1:1 512x512 master illustration for the medieval fantasy collectible card \"Mercury Flask\". One complete stoppered glass mercury flask flies just above a stone floor, clearly showing its rounded bottom, narrow neck, and sealed stopper. Heavy silver mercury sloshes visibly inside, then bursts into a quick cross-shaped splash of liquid metal and pale blue sparks that knocks loose pebbles outward. Keep entire flask and stopper central and clear; burst trails are secondary. Painterly traditional high-fantasy card artwork in the established Hexmancers style: expressive brushwork, detailed believable leather, wood, brass, glass, stone, feathers and skin, dramatic directional light, atmospheric depth, compact readable action. Keep complete named device/flask/creature, primary face and relevant hand within x24..488,y105..407 after square normalization for centered 206:141 crop; leave quiet scenery above and below. No frame, words, runes, numbers, UI, modern technology, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5d266e2b-e951-4a02-8f8c-e78001097baa.png",
+    "editableSourcePath": "game/cards/art/masters/storm_lob_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Focal point raised so the flask’s complete stopper, neck and rounded base remain visible in the actual crop. Adjusted crop and thumbnail inspected; mercury contents and knockback burst are clear."
+  },
+  {
+    "cardId": "storm_ward_11",
+    "name": "Lightning Rod Array",
+    "prompt": "Square 1:1 512x512 painterly medieval fantasy card illustration for \"Lightning Rod Array\". Depict a compact, heavy protective array of three bronze lightning rods mounted on sturdy stone-and-iron bases and joined by a curved copper arc. All three complete rods, pointed tips and bases fit together in a central horizontal arrangement, modest in height with clear margins above and below. A smith's face and one gloved hand remain visible beside the array as it gathers a blue-white electrical barrier that deflects a bolt outward. The rods and shield effect are the named focus; no tall tower, no cropped tip or base. Painterly tabletop high-fantasy illustration with expressive brushwork, believable brass, iron, stone, dramatic storm lighting and atmospheric depth, consistent with established Hexmancers art. Keep every rod/tip/base, face and hand within x35..477,y130..390 on square, designed for centered 206:141 crop. No frame, text, runes, numbers, UI, anime, cartoon, photorealism, pixel art or modern electrical equipment.",
+    "generatedPath": "/workspace/generated_images/exec-c0666f53-dccc-460f-a1ff-80ddcbf4ae75.png",
+    "editableSourcePath": "game/cards/art/masters/storm_ward_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Square master, centered wide crop and thumbnail inspected. All three rod tips and bases, copper links, smith face and hand remain clear; protective lightning barrier reads around the array."
+  },
+  {
+    "cardId": "storm_sentry_11",
+    "name": "Thunder Drum",
+    "prompt": "Edit this artwork to fix its wide-card crop. Keep the storm musician and mountain night style, but make the primary scene compact and horizontal. The THUNDER DRUM is a compact cylindrical waist-high object placed in the middle: keep the entire circular rim and the whole cylindrical drum body from top to bottom visible, approximately x145…365,y190…360 on a normalized 512 square. Stand feet may be secondary, but do not crop any part of the drum cylinder. Place the smaller keeper beside it on the LEFT at the same visual height, not towering above it: his complete uncut face and both eyes at x55…155,y185…250, both arms/hands and short mallets reach the drum around y255…300. Keep face, eyes, hands, mallets and full cylindrical drum inside the safe rectangle x24…488,y105…407. Clear empty margins above y105 and below y395. Do not make the drum tall; do not put the keeper’s head at the top edge. Painterly medieval fantasy, dramatic storm light, square 1:1 512 master, no text/UI.",
+    "generatedPath": "/workspace/generated_images/exec-e5cbb258-da23-42c0-809c-1261b6d9dba4.png",
+    "editableSourcePath": "game/cards/art/masters/storm_sentry_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Repainted after parent review found the earlier full drum and keeper face too tall to share the crop; preserved the prior source in /tmp/storm04-attempts. Reviewed replacement square, 206:141 crop, and thumbnail. Keeper’s full face and eyes, both mallets/hands, and entire cylindrical drum body fit with clear top and bottom margin; stand feet also remain visible."
+  },
+  {
+    "cardId": "storm_boon_09",
+    "name": "Date Palm Oasis",
+    "prompt": "Paint an illustration for the fantasy card Date Palm Oasis. Actual mechanics cue: an immediate healing boon. A tranquil medieval desert date-palm oasis at sunset, a clear spring pool ringed with date palms heavy with golden fruit and cool shade, a weary traveler kneels at the water's edge and regains strength, face visible but small. The healing oasis itself is the main subject, a broad horizontal landscape; palms, pool and fruit are recognizable, no giant spell glow. Painterly medieval fantasy collectible-card art, grounded anatomy, expressive faces, rich metal/leather/paper/wood materials, directional dramatic light, visible brushwork and atmospheric depth. Use a compact horizontal composition. Keep the complete named object and any primary face and both hands within x24…488,y105…407 on the normalized 512 square, with clear margins at top and bottom. It must remain identifiable in a 206:141 crop and 128px thumbnail. Explicit 1:1 square canvas for a 512×512 editable master. No lettering, labels, border, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-71d95b70-494e-4e53-ba50-032c8f54f8a3.png",
+    "editableSourcePath": "game/cards/art/masters/storm_boon_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. Date palms, visible fruit, clear pool, and small resting traveler establish the oasis and healing mood; outer fronds are incidental scenery."
+  },
+  {
+    "cardId": "storm_charge_09",
+    "name": "Sling of Thunderstones",
+    "prompt": "Paint an illustration for the fantasy card Sling of Thunderstones. Actual mechanics cue: a small lobbed thunderstone with splash and stun. A compact leather shepherd's sling, complete with both cords, pouch and one glowing rounded thunderstone, held clearly by a desert scout. The scout stands at the same level beside the sling in profile, full intent face and both hands visible drawing the sling back; a faint blue crackle on the stone, distant sandstone target. Show full sling shape and entire stone. Painterly medieval fantasy collectible-card art, grounded anatomy, expressive faces, rich metal/leather/paper/wood materials, directional dramatic light, visible brushwork and atmospheric depth. Use a compact horizontal composition. Keep the complete named object and any primary face and both hands within x24…488,y105…407 on the normalized 512 square, with clear margins at top and bottom. It must remain identifiable in a 206:141 crop and 128px thumbnail. Explicit 1:1 square canvas for a 512×512 editable master. No lettering, labels, border, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0cfc20e4-dfd3-4c28-a4c3-6336efbaaf0c.png",
+    "editableSourcePath": "game/cards/art/masters/storm_charge_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed square, crop at focal [0.5,0.38], and 128x88 thumbnail. The scout’s full face and both hands, sling cords/pouch, and complete thunderstone remain visible; lower body is incidental."
+  },
+  {
+    "cardId": "storm_utility_09",
+    "name": "Inventor's Codex",
+    "prompt": "Paint an illustration for the fantasy card Inventor's Codex. Actual mechanics cue: a utility codex that reveals an invention. One complete ancient inventor's codex, open but intact with full covers, spine and pages visible, held horizontally in a compact scholar's hands at chest height. Beside the codex a focused medieval inventor with clear whole face and both working hands examines its brass-inlaid diagrams; book and face are side by side, no flying books or clipped corners. Painterly medieval fantasy collectible-card art, grounded anatomy, expressive faces, rich metal/leather/paper/wood materials, directional dramatic light, visible brushwork and atmospheric depth. Use a compact horizontal composition. Keep the complete named object and any primary face and both hands within x24…488,y105…407 on the normalized 512 square, with clear margins at top and bottom. It must remain identifiable in a 206:141 crop and 128px thumbnail. Explicit 1:1 square canvas for a 512×512 editable master. No lettering, labels, border, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-08add538-caa9-4dc5-a44c-43be2d0ef7c2.png",
+    "editableSourcePath": "game/cards/art/masters/storm_utility_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Reviewed 512-square source, 206:141 crop, and 128x88 thumbnail. Inventor's face, working hands, and full open codex with covers, spine and diagrams remain clear."
+  },
+  {
+    "cardId": "storm_trap_09",
+    "name": "Djinn Bottle",
+    "prompt": "Edit this artwork to fix its wide-card crop. Keep the elegant wizard-table mood, but redesign the Djinn Bottle as a SHORT squat rounded glass bottle, not a tall flask. The complete portable object—intact cork stopper, short neck, entire glass body, rounded base—must occupy about 200 pixels in height, x95…300,y180…380 on a normalized 512 square, with clear margins above and below. A small blue djinn’s complete face and both eyes appear beside the bottle’s neck at x305…420,y190…260, with both hands gripping the neck around y245…290; keep genie face/hands beside and level with the bottle, not floating above it. Bottle may show the djinn’s faint reflection and a curling smoky snare inside. Require stopper, whole bottle base, djinn face/eyes and both hands within x24…488,y105…407. No tall neck, no cropped stopper, no cut base. Painterly medieval fantasy art with luminous teal glass, warm candlelight, grounded expressive face. Square 1:1 512 master, no lettering, labels, border or UI.",
+    "generatedPath": "/workspace/generated_images/exec-c7d495c9-23ea-4706-8124-30f79b4714d7.png",
+    "editableSourcePath": "game/cards/art/masters/storm_trap_09.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "reviewNote": "Repainted after parent review found the previous flask too tall for a crop containing stopper and base together; preserved the prior source in /tmp/storm04-attempts. Reviewed replacement square, 206:141 crop, and thumbnail. Full cork, short neck, complete bottle body and rounded base fit beside the djinn’s full face and both hands."
+  },
+  {
+    "cardId": "storm_environment_08",
+    "name": "Sun-Baked Wadi",
+    "prompt": "Paint Sun-Baked Wadi as a storm environment: a long narrow desert canyon of ochre sandstone, its dry riverbed winding between tall sun-cracked walls while a vertical column of shimmering heat and pale gold light pours down the central ravine. A weary caravan traveler with visible face and raised hand staggers in the drained heat haze, tiny against the landscape; the wadi itself remains the unmistakable subject. Painterly medieval fantasy collectible-card environment art, believable eroded rock and dust, hot amber sunlight, cool deep canyon shadows, atmospheric depth and textured brushwork. Explicit 1:1 square 512 master; keep canyon opening, central wadi and traveler face/hand within x24..488 y105..407 for horizontal 206:141 crop; expendable sky and foreground rock may crop. No text, frame, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9175baf4-ef7e-43f0-b258-1aa1e78d2439.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/storm_environment_08.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed square, actual 206:141 crop and thumbnail: canyon and central heat column remain dominant; caravan traveler is small but visible in the wide crop."
+  },
+  {
+    "cardId": "storm_summon_06",
+    "name": "Dybbuk",
+    "prompt": "Paint Dybbuk as a grim storm summon: a tormented spectral spirit in a tattered burial shroud darts in a zigzag through a moonlit ruined courtyard, its pale human face and reaching hands visible while a second translucent shadow trails behind like a stolen echo. Blue-white lightning crawls around the spirit as it drains a fading strand of life-light from a fallen foe's gauntlet. Keep one face and both hands clear; the apparition is the dominant subject. Painterly medieval fantasy collectible-card art, believable cloth, spectral mist, cool storm light, deep shadow and textured brushwork. Explicit 1:1 square 512 master; keep spirit face/hands and central body in x24..488 y105..407 for 206:141 crop; wisps and fallen lower body may crop. No text, frame, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-233e10f6-a2d2-4259-aa2f-ce9c760f8195.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/storm_summon_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed square, actual 206:141 crop and thumbnail: Dybbuk face, reaching hand and trailing spirit remain clear; foreground foe is incidental."
+  },
+  {
+    "cardId": "storm_machine_06",
+    "name": "Brass Automaton Archer",
+    "prompt": "Paint Brass Automaton Archer as a compact mechanical sentry: a sturdy brass automaton with a readable mask-like face, articulated shoulders and a polished longbow aimed toward an unseen target. Place the full figure and bow in a horizontal side profile, bow and arrow extending across the same band as the automaton's face and hands gripping the string; keep the bow's full arc and arrow visible, no modern rifle. Painterly medieval fantasy collectible-card art, engraved brass plates, leather joints, believable mechanical anatomy, cool workshop light with gold highlights, atmospheric depth and textured brushwork. Explicit 1:1 square 512 master; keep face, both hands, bow and arrow inside x24..488 y105..407 for 206:141 crop; incidental legs may crop. No text, frame, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7d60e27a-e18e-4d7d-93a6-2e3b30a5e8d9.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/storm_machine_06.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed square, actual 206:141 crop and thumbnail: automaton face, hands, arrow and most of the bow remain readable in the horizontal crop; the upper bow tip reaches beyond the crop edge."
+  },
+  {
+    "cardId": "hero_gale",
+    "name": "Gale, the Sky Pirate",
+    "prompt": "Paint Gale, the Sky Pirate as a bold storm hero: a daring woman sky pirate in weathered blue-black leather and a gold-trimmed scarf braces on a wooden airship deck, her face visible as she turns and slashes with a curved cutlass while gusting wind bends the rigging and a bolt of lightning lights the clouds behind. Keep Gale's full face and sword hand central; show a second defensive hand raised against incoming wind to suggest her nimble dodge. Painterly medieval fantasy collectible-card hero art, believable face, cloth, steel and rope, dramatic storm light, textured brushwork and atmospheric depth. Explicit 1:1 square 512 master; keep face, both hands and cutlass within x24..488 y105..407 for 206:141 crop; sail tips and distant sky may crop. No text, frame, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-549b2e3c-cc09-4a9d-a252-036afd752ac0.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/hero_gale.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed square, actual 206:141 crop and thumbnail: Gale face, raised hand, sword hand and cutlass remain clear; peripheral rigging and lower clothing crop naturally."
+  },
+  {
+    "cardId": "storm_strike_10",
+    "name": "Manticore Tail Spikes",
+    "prompt": "Paint Manticore Tail Spikes as a quick storm strike: a recognizable tawny manticore with lion body and expressive humanlike lion face crouches in a compact three-quarter pose, its long segmented scorpion tail curling horizontally around its flank to the right. The whole arcing tail and a cluster of three long ivory spear spikes at its tip are prominent and fully visible; one matching spike is launching toward an unseen target with a thin streak of storm light. Keep manticore face and full spiked tail together at the same middle height, avoiding a tall vertical curl. Painterly medieval fantasy collectible-card art, believable fur, iron-dark tail plates and bone spikes, cool lightning light, textured brushwork and dramatic depth. Explicit 1:1 square 512 master; keep face, complete tail tip and all named spikes inside x24..488 y105..407 for 206:141 crop; incidental paws may crop. No text, frame, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d30cb872-4ac8-405d-ad92-688aec74a73e.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 10,
+    "editableSourcePath": "game/cards/art/masters/storm_strike_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed square, actual 206:141 crop and thumbnail: manticore face and full curled spiked tail remain prominent; launched spike and storm trail read clearly."
   }
 ]

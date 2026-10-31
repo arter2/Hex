@@ -955,7 +955,7 @@ function renderCustom(){
   $('#custAce').innerHTML=B.sidearm?`<b>♠ Sidearm:</b> ${esc(B.sidearm.name)} ×${B.sidearm.mult.toFixed(1)}`:(B.acePending||[]).length?`<b>♤</b> ${B.acePending.length} Ace Enchantment${B.acePending.length>1?'s':''} waiting for an Ace`:'';
   $('#custEmpty').textContent=wandOnly(p)?'Your deck is empty. Fight on with your wand!':!p.draw.length?'Deck empty: these are your last cards.':'';
   const empty=Math.max(0,RULES.slots-p.queue.length);
-  $('#btnFight').textContent='Fight!';   // (empty slots no longer draw extra: the hand holds 6 at most)
+  $('#btnFight').textContent=duelFightText()||'Fight!';   // a duel's shared screen: its countdown, then Waiting for opponent (empty slots no longer draw extra: the hand holds 6 at most)
 }
 // a Charge card's uses, big on the card: white while it has plenty, yellow at half, red at a quarter or its last one
 function chargeBadge(left,max){ const f=left/Math.max(1,max), cls=left<=1||f<=.25?' low':f<=.5?' mid':''; return `<span class="chg${cls}" title="${left} of ${max} uses left">${left}/${max}</span>`; }
@@ -1085,7 +1085,7 @@ function dragCard(el,inst){
   el.addEventListener('contextmenu',e=>e.preventDefault());
 }
 function dropTarget(x,y){ const el=document.elementFromPoint(x,y); return el&&el.closest('#custom [data-zone]'); }
-$('#btnFight').onclick=()=>{ choose=null; closeCustomScreen(); };
+$('#btnFight').onclick=()=>{ choose=null; if(B&&B.pvp) return duelFight(); closeCustomScreen(); };
 /* The Custom button acts on the finger going down, so the screen opens while the finger is still
    on the glass, and the tap's click (sent when the finger lifts, however long it was held) lands on
    whatever is under it now. So a click on the Custom screen only counts when its press also began
@@ -1149,6 +1149,7 @@ function hud(force){
     if(s){ $('#aceName').textContent='×'+s.mult.toFixed(1); bt.title=s.name+' ×'+s.mult.toFixed(1); bt.style.setProperty('--k',((s.mult-1)/(ACE_MAX-1)*100).toFixed(0)+'%'); bt.classList.toggle('hot',s.mult>=2); } });
   set('soul',b.soul?[Math.round(b.soul.charge),Math.ceil(b.soul.unisonT),soulReady(),(pl.queue[0]||{}).uid].join('|'):'',soulHud);
   const canCustom=b.phase==='fight'&&gaugeFull()&&!wandOnly(pl);
+  if(b.pvp) set('duel',duelFightText(),()=>{ if(b.phase==='custom') $('#btnFight').textContent=duelFightText()||'Fight!'; });   // the shared card screen's countdown
   set('custom',canCustom+'|'+wandOnly(pl),()=>{ for(const bt of [$('#btnCustom'),$('#btnSpell')]){ bt.disabled=!canCustom; bt.classList.toggle('ready',canCustom); } });
 }
 
@@ -1179,7 +1180,7 @@ function trySoul(){ if(!soulReady()) return; const m=$('#soulMenu'); soulMenu(!m
 /* ---------------- battle input ---------------- */
 function tryCustom(){ if(!(B&&B.phase==='fight'&&gaugeFull()&&!wandOnly(B.piles))) return;
   if(B.player.charging){ wandUp(); $('#btnWand').classList.remove('charging'); }   // a shot you were charging goes off first
-  openCustomScreen(); }
+  if(B.pvp) B.pvp.session.openSpell(); else openCustomScreen(); }   // a duel opens the shared screen on both (startDuel)
 /* Mobile browsers never make a click from a touch while another finger is down, so with the
    thumb holding Fire a tap on Cast did nothing. Battle buttons act on their own pointerdown
    instead (each finger is its own pointer); click is kept only for keyboard/assistive presses. */
@@ -1307,7 +1308,7 @@ window.addEventListener('keydown',e=>{
     if(n>=1&&n<=9&&B.piles.hand[n-1]){ const h=B.piles.hand[n-1]; if(isInstant(h.card)) tapInstant(h); else { toggleQueue(B.piles,h.uid); renderCustom(); } }
     else if(k==='u'){ const t=B.piles.queue.find(c=>isDeckTool(c.card)); if(t) fireTool(t); }   // use the deck tool in your slots
     else if(k==='backspace'&&B.piles.queue.length){ toggleQueue(B.piles,B.piles.queue[B.piles.queue.length-1].uid); renderCustom(); }
-    else if((k==='enter'||k===' ')&&!e.repeat&&!held.has(k)){ e.preventDefault(); closeCustomScreen(); }
+    else if((k==='enter'||k===' ')&&!e.repeat&&!held.has(k)){ e.preventDefault(); if(B.pvp) duelFight(); else closeCustomScreen(); }
     return;
   }
   if(B.phase!=='fight'||paused||held.has(k)) return; held.add(k);
@@ -1342,8 +1343,9 @@ function frame(now){
     if(!(View.w>0&&View.h>0)) resizeView();
     if(!document.hidden) checkControls(dt);
     let updates=0;
-    if(!document.hidden&&!paused&&!DBG.pause){ const battle=B, steps=Math.max(1,Math.ceil(dt/.05)), step=dt/steps;
-      for(let i=0;i<steps&&B===battle&&!paused&&!DBG.pause&&$('#scrBattle').classList.contains('on');i++){
+    const hold=DBG.pause&&!B.pvp;   // the debug pause never holds a duel: it would stall the opponent
+    if(!document.hidden&&!paused&&!hold){ const battle=B, steps=Math.max(1,Math.ceil(dt/.05)), step=dt/steps;
+      for(let i=0;i<steps&&B===battle&&!paused&&!(DBG.pause&&!B.pvp)&&$('#scrBattle').classList.contains('on');i++){
         heldWalk(); stickWalk(); if(typeof elabBotTick==='function') elabBotTick(step); update(step); updates++;
       } }   // the debug menu's pause holds the fight but keeps drawing it
     perfTick(now,updates);

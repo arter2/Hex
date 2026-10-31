@@ -60,3 +60,6 @@ Do not mark the remaining catalogue complete: record generated, reviewed/exporte
 ## Named transfer for Claude
 
 After all 200 batch-10 cards are reviewed and exported, prepare their incremental transfer with `node tools/card-art-handoff.js /workspace/card-art-batch-10 200 --batch=10`. This creates no ZIP. It includes only that batch's named masters and three crops per card, exact catalogue mappings, checksums, the previous delivery manifest and `README_FOR_CLAUDE.md`. The latest completed batch is batch 10, adding 200 to the 834-card baseline for 1034 active illustrations. Use an explicit `--all` scope only when intentionally delivering the combined collection. Keep the repository's stable runtime destinations; the manifest maps human-readable delivery names to those paths. Count unique new card illustrations, not thumbnails or reused references. The user has requested Git delivery; publish the reviewed art package on its dedicated branch and verify the actual GitHub archive before reporting its link.
+
+
+Current authorized production is batch11: 200 new cards,25 percolour, additional to the1034-card baseline for1234 active illustrations after completion. Follow `batch-11-brief.md` and the shared packet queue. Do not update delivery counts or activate partial sources before parent review/export.

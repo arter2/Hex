@@ -3,8 +3,8 @@
   "total": 1953,
   "active": 1034,
   "remaining": 919,
-  "pending": 919,
-  "assigned": 0,
+  "pending": 719,
+  "assigned": 200,
   "awaitingReview": 0,
   "countsByColour": {
     "brown": 234,
@@ -390,72 +390,81 @@
       "name": "Elven Thornglass Barrier",
       "type": "machine",
       "color": "brown",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "brown_machine_42",
       "name": "Goblin Scrap Barricade",
       "type": "machine",
       "color": "brown",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "brown_machine_43",
       "name": "Coral Rampart",
       "type": "machine",
       "color": "brown",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "brown_machine_44",
       "name": "Sky-Folk Wind Sail Wall",
       "type": "machine",
       "color": "brown",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "brown_machine_45",
       "name": "Troll Stone Rampart",
       "type": "machine",
       "color": "brown",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "brown_machine_46",
       "name": "Pike Palisade",
       "type": "machine",
       "color": "brown",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "brown_machine_47",
       "name": "Alchemist's Glass Bulwark",
       "type": "machine",
       "color": "brown",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "brown_machine_48",
       "name": "Djinn Mirage Wall",
       "type": "machine",
       "color": "brown",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "brown_machine_49",
       "name": "Brass Tortoise Wall",
       "type": "machine",
       "color": "brown",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "brown_instant_01",
@@ -785,128 +794,144 @@
       "name": "Acid Flask",
       "type": "instant",
       "color": "brown",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "brown_instant_38",
       "name": "Sky-Folk Lightning Jar",
       "type": "instant",
       "color": "brown",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "brown_instant_39",
       "name": "Troll Snot Bomb",
       "type": "instant",
       "color": "brown",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "brown_instant_40",
       "name": "Dwarven Rune Grenade",
       "type": "instant",
       "color": "brown",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "brown_instant_41",
       "name": "Spyglass Peek",
       "type": "instant",
       "color": "brown",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "brown_instant_42",
       "name": "Pocket Almanac",
       "type": "instant",
       "color": "brown",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "brown_instant_43",
       "name": "Dwarven Ledger",
       "type": "instant",
       "color": "brown",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "brown_instant_44",
       "name": "Elven Star Map",
       "type": "instant",
       "color": "brown",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "brown_instant_45",
       "name": "Gnomish Punch-Card Reader",
       "type": "instant",
       "color": "brown",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "brown_instant_46",
       "name": "Dowsing Rod",
       "type": "instant",
       "color": "brown",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "brown_instant_47",
       "name": "Gnomish Card-Finder",
       "type": "instant",
       "color": "brown",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "brown_instant_48",
       "name": "Smuggler's Map",
       "type": "instant",
       "color": "brown",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "brown_instant_49",
       "name": "Goblin Rummage Sack",
       "type": "instant",
       "color": "brown",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "brown_instant_50",
       "name": "Quartermaster's Ledger",
       "type": "instant",
       "color": "brown",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "brown_instant_51",
       "name": "Weapon Rack Index",
       "type": "instant",
       "color": "brown",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "brown_instant_52",
       "name": "Armorer's Catalog",
       "type": "instant",
       "color": "brown",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "brown_instant_53",
@@ -2184,24 +2209,27 @@
       "name": "Bull Rush",
       "type": "strike",
       "color": "fire",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "fire_strike_12",
       "name": "Pickaxe Strike",
       "type": "strike",
       "color": "fire",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "fire_strike_13",
       "name": "Miner's Drill",
       "type": "strike",
       "color": "fire",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "fire_strike_14",
@@ -2491,24 +2519,27 @@
       "name": "Goblin Bomb",
       "type": "lob",
       "color": "fire",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "fire_lob_13",
       "name": "Gremlin Grenade",
       "type": "lob",
       "color": "fire",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "fire_lob_14",
       "name": "Mortar Round",
       "type": "lob",
       "color": "fire",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "fire_lob_15",
@@ -2677,24 +2708,27 @@
       "name": "Brimstone Rampart",
       "type": "ward",
       "color": "fire",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "fire_ward_12",
       "name": "Anvil Guard",
       "type": "ward",
       "color": "fire",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "fire_ward_13",
       "name": "Great Wall Bricks",
       "type": "ward",
       "color": "fire",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "fire_ward_14",
@@ -2889,24 +2923,27 @@
       "name": "Smith's Focus",
       "type": "boon",
       "color": "fire",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "fire_boon_11",
       "name": "Molten Courage",
       "type": "boon",
       "color": "fire",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "fire_boon_12",
       "name": "Mountain Strength",
       "type": "boon",
       "color": "fire",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "fire_boon_13",
@@ -3034,24 +3071,27 @@
       "name": "Firecracker String",
       "type": "charge",
       "color": "fire",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "fire_charge_11",
       "name": "Lantern Oil Flask",
       "type": "charge",
       "color": "fire",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "fire_charge_12",
       "name": "Pistol Case",
       "type": "charge",
       "color": "fire",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "fire_charge_13",
@@ -3268,16 +3308,18 @@
       "name": "Ember Spike Pit",
       "type": "trap",
       "color": "fire",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "fire_trap_10",
       "name": "Firework Mine",
       "type": "trap",
       "color": "fire",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "fire_environment_01",
@@ -3365,16 +3407,18 @@
       "name": "Rockslide Valley",
       "type": "environment",
       "color": "fire",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "fire_environment_11",
       "name": "Mountain's Wrath",
       "type": "environment",
       "color": "fire",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "fire_environment_12",
@@ -3488,16 +3532,18 @@
       "name": "Phoenix Chick",
       "type": "summon",
       "color": "fire",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "fire_summon_08",
       "name": "Kitsune",
       "type": "summon",
       "color": "fire",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "fire_summon_09",
@@ -3845,16 +3891,18 @@
       "name": "Dwarven Siege Cannon",
       "type": "machine",
       "color": "fire",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "fire_machine_07",
       "name": "Iron Barricade",
       "type": "machine",
       "color": "fire",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "fire_machine_08",
@@ -4024,16 +4072,18 @@
       "name": "Kael the Cinderblade",
       "type": "hero",
       "color": "fire",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "hero_magmar",
       "name": "Magmar the Molten",
       "type": "hero",
       "color": "fire",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "hero_phoenixia",
@@ -4257,24 +4307,27 @@
       "name": "Narwhal Tusk",
       "type": "strike",
       "color": "frost",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "frost_strike_11",
       "name": "Shark Bite",
       "type": "strike",
       "color": "frost",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "frost_strike_12",
       "name": "Frenzy of Sharks",
       "type": "strike",
       "color": "frost",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "frost_strike_13",
@@ -4579,24 +4632,27 @@
       "name": "Holy Water Flask",
       "type": "lob",
       "color": "frost",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "frost_lob_12",
       "name": "Spring Water Gourd",
       "type": "lob",
       "color": "frost",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "frost_lob_13",
       "name": "Hailstone Cross",
       "type": "lob",
       "color": "frost",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "frost_lob_14",
@@ -4740,24 +4796,27 @@
       "name": "Mirror of Still Water",
       "type": "ward",
       "color": "frost",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "frost_ward_11",
       "name": "Kelp Curtain",
       "type": "ward",
       "color": "frost",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "frost_ward_12",
       "name": "Pack Ice Bulwark",
       "type": "ward",
       "color": "frost",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "frost_ward_13",
@@ -4879,8 +4938,9 @@
       "name": "Tide Pole",
       "type": "sentry",
       "color": "frost",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "frost_boon_01",
@@ -4977,24 +5037,27 @@
       "name": "Sorcerer's Trance",
       "type": "boon",
       "color": "frost",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "frost_boon_12",
       "name": "Sea Witch's Bargain",
       "type": "boon",
       "color": "frost",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "frost_boon_13",
       "name": "Blood Price of the Deep",
       "type": "boon",
       "color": "frost",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "frost_boon_14",
@@ -5097,16 +5160,18 @@
       "name": "Sea Urchin Quills",
       "type": "charge",
       "color": "frost",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "frost_charge_10",
       "name": "Conch Shell Blasts",
       "type": "charge",
       "color": "frost",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "frost_charge_11",
@@ -5274,8 +5339,9 @@
       "name": "Sorcerer's Grimoire",
       "type": "utility",
       "color": "frost",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "frost_trap_01",
@@ -5363,8 +5429,9 @@
       "name": "Davy Jones' Locker",
       "type": "trap",
       "color": "frost",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "frost_environment_01",
@@ -5452,16 +5519,18 @@
       "name": "Kelp Forest",
       "type": "environment",
       "color": "frost",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "frost_environment_11",
       "name": "Mangrove Roots",
       "type": "environment",
       "color": "frost",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "frost_environment_12",
@@ -5592,16 +5661,18 @@
       "name": "Selkie",
       "type": "summon",
       "color": "frost",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "frost_summon_08",
       "name": "Nixie",
       "type": "summon",
       "color": "frost",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "frost_summon_09",
@@ -5973,16 +6044,18 @@
       "name": "Mortar Ketch",
       "type": "machine",
       "color": "frost",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "frost_machine_07",
       "name": "Sluice Gate Bulwark",
       "type": "machine",
       "color": "frost",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "frost_machine_08",
@@ -6129,16 +6202,18 @@
       "name": "Frida Snowveil",
       "type": "hero",
       "color": "frost",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "hero_tundra",
       "name": "Tundra the Mammoth Lord",
       "type": "hero",
       "color": "frost",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "hero_sora",
@@ -7044,200 +7119,225 @@
       "name": "Uchchaihshravas",
       "type": "summon",
       "color": "gray",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "gray_summon_94",
       "name": "Wandering Bard",
       "type": "summon",
       "color": "gray",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "gray_summon_95",
       "name": "Crossbow Militia",
       "type": "summon",
       "color": "gray",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "gray_summon_96",
       "name": "Pikeman",
       "type": "summon",
       "color": "gray",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "gray_summon_97",
       "name": "Sellsword",
       "type": "summon",
       "color": "gray",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "gray_summon_98",
       "name": "Veteran Captain",
       "type": "summon",
       "color": "gray",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "gray_summon_99",
       "name": "Errant Knight",
       "type": "summon",
       "color": "gray",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "gray_summon_100",
       "name": "Cossack Rider",
       "type": "summon",
       "color": "gray",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "gray_summon_101",
       "name": "Gaucho with Bolas",
       "type": "summon",
       "color": "gray",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "gray_summon_102",
       "name": "Mongol Outrider",
       "type": "summon",
       "color": "gray",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "gray_summon_103",
       "name": "Maasai Spearman",
       "type": "summon",
       "color": "gray",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "gray_summon_104",
       "name": "Zulu Impi",
       "type": "summon",
       "color": "gray",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "gray_summon_105",
       "name": "Viking Raider",
       "type": "summon",
       "color": "gray",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "gray_summon_106",
       "name": "Hill Giant",
       "type": "summon",
       "color": "gray",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "gray_summon_107",
       "name": "Rock-Throwing Cyclops",
       "type": "summon",
       "color": "gray",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "gray_summon_108",
       "name": "Stone Troll",
       "type": "summon",
       "color": "gray",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "gray_summon_109",
       "name": "Ogre Brute",
       "type": "summon",
       "color": "gray",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "gray_summon_110",
       "name": "Mountain Gorilla",
       "type": "summon",
       "color": "gray",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "gray_summon_111",
       "name": "Sling Monkey",
       "type": "summon",
       "color": "gray",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "gray_summon_112",
       "name": "Howler Monkey",
       "type": "summon",
       "color": "gray",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "gray_summon_113",
       "name": "Coconut Crab",
       "type": "summon",
       "color": "gray",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "gray_summon_114",
       "name": "Boulder Golem",
       "type": "summon",
       "color": "gray",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "gray_summon_115",
       "name": "Pebble Golem",
       "type": "summon",
       "color": "gray",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "gray_summon_116",
       "name": "Rock Elemental",
       "type": "summon",
       "color": "gray",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "gray_summon_117",
       "name": "Siege Ogre",
       "type": "summon",
       "color": "gray",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "gray_summon_118",
@@ -8308,24 +8408,27 @@
       "name": "Owl's Silent Dive",
       "type": "strike",
       "color": "light",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "light_strike_11",
       "name": "Pegasus Hoofbeat",
       "type": "strike",
       "color": "light",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "light_strike_12",
       "name": "Centaur's Arrow",
       "type": "strike",
       "color": "light",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "light_strike_13",
@@ -8574,24 +8677,27 @@
       "name": "Quicksilver Retort",
       "type": "lob",
       "color": "light",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "light_lob_12",
       "name": "Abbey Bell Toll",
       "type": "lob",
       "color": "light",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "light_lob_13",
       "name": "Slinger's Hail",
       "type": "lob",
       "color": "light",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "light_lob_14",
@@ -8729,24 +8835,27 @@
       "name": "Hadrian's Wall",
       "type": "ward",
       "color": "light",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "light_ward_13",
       "name": "Sacsayhuaman Stones",
       "type": "ward",
       "color": "light",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "light_ward_14",
       "name": "Great Zimbabwe Walls",
       "type": "ward",
       "color": "light",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "light_ward_15",
@@ -8875,8 +8984,9 @@
       "name": "Lamassu Gate Statue",
       "type": "sentry",
       "color": "light",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "light_sentry_12",
@@ -8963,24 +9073,27 @@
       "name": "Pegasus Flight",
       "type": "boon",
       "color": "light",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "light_boon_10",
       "name": "Crusader's Vow",
       "type": "boon",
       "color": "light",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "light_boon_11",
       "name": "Sushruta's Stitches",
       "type": "boon",
       "color": "light",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "light_boon_12",
@@ -9092,24 +9205,27 @@
       "name": "Censer Coals",
       "type": "charge",
       "color": "light",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "light_charge_11",
       "name": "Sealed Edict Scrolls",
       "type": "charge",
       "color": "light",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "light_charge_12",
       "name": "Silver Arrows of the Hunt",
       "type": "charge",
       "color": "light",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "light_lob_19",
@@ -9237,16 +9353,18 @@
       "name": "House of Wisdom",
       "type": "utility",
       "color": "light",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "light_utility_11",
       "name": "Timbuktu Manuscripts",
       "type": "utility",
       "color": "light",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "light_utility_12",
@@ -9430,8 +9548,9 @@
       "name": "Hanging Gardens of Babylon",
       "type": "environment",
       "color": "light",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "light_piece_01",
@@ -9528,16 +9647,18 @@
       "name": "White Stag",
       "type": "summon",
       "color": "light",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "light_summon_07",
       "name": "Snow Crane",
       "type": "summon",
       "color": "light",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "light_summon_08",
@@ -9893,16 +10014,18 @@
       "name": "Legion Camp Palisade",
       "type": "machine",
       "color": "light",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "light_machine_07",
       "name": "Curtain Wall Rampart",
       "type": "machine",
       "color": "light",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "light_machine_08",
@@ -10179,16 +10302,18 @@
       "name": "Dawn Knight Cassia",
       "type": "hero",
       "color": "light",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "hero_lux",
       "name": "Lux the Lantern Bearer",
       "type": "hero",
       "color": "light",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "hero_halo",
@@ -10419,24 +10544,27 @@
       "name": "Spider Silk Shot",
       "type": "strike",
       "color": "shadow",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "shadow_strike_11",
       "name": "Bog Muck Splash",
       "type": "strike",
       "color": "shadow",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "shadow_strike_12",
       "name": "Yurei's Lament",
       "type": "strike",
       "color": "shadow",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "shadow_strike_13",
@@ -10718,24 +10846,27 @@
       "name": "Funeral Wreath",
       "type": "lob",
       "color": "shadow",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "shadow_lob_13",
       "name": "Brimstone Hail",
       "type": "lob",
       "color": "shadow",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "shadow_lob_14",
       "name": "The Tower Card",
       "type": "lob",
       "color": "shadow",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "shadow_lob_15",
@@ -10856,24 +10987,27 @@
       "name": "Iron Maiden Shell",
       "type": "ward",
       "color": "shadow",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "shadow_ward_12",
       "name": "Barrow Mound",
       "type": "ward",
       "color": "shadow",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "shadow_ward_13",
       "name": "Hell's Gate",
       "type": "ward",
       "color": "shadow",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "shadow_sentry_01",
@@ -10979,8 +11113,9 @@
       "name": "Cursed Mirror",
       "type": "sentry",
       "color": "shadow",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "shadow_boon_01",
@@ -11068,24 +11203,27 @@
       "name": "Full Moon Frenzy",
       "type": "boon",
       "color": "shadow",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "shadow_boon_11",
       "name": "Blood Moon",
       "type": "boon",
       "color": "shadow",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "shadow_boon_12",
       "name": "Crossroads Bargain",
       "type": "boon",
       "color": "shadow",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "shadow_boon_13",
@@ -11223,16 +11361,18 @@
       "name": "Ferryman's Coins",
       "type": "charge",
       "color": "shadow",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "shadow_charge_11",
       "name": "Hellfire Embers",
       "type": "charge",
       "color": "shadow",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "shadow_charge_12",
@@ -11335,8 +11475,9 @@
       "name": "Necromancer's Grimoire",
       "type": "utility",
       "color": "shadow",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "shadow_trap_01",
@@ -11415,8 +11556,9 @@
       "name": "Cursed Tomb",
       "type": "trap",
       "color": "shadow",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "shadow_environment_01",
@@ -11504,16 +11646,18 @@
       "name": "Catacomb Collapse",
       "type": "environment",
       "color": "shadow",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "shadow_environment_11",
       "name": "Mouth of Hell",
       "type": "environment",
       "color": "shadow",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "shadow_piece_01",
@@ -11610,16 +11754,18 @@
       "name": "Ghoul",
       "type": "summon",
       "color": "shadow",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "shadow_summon_09",
       "name": "Poltergeist",
       "type": "summon",
       "color": "shadow",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "shadow_summon_10",
@@ -12159,16 +12305,18 @@
       "name": "Gibbet Tower",
       "type": "sentry",
       "color": "shadow",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "shadow_machine_06",
       "name": "Hut on Chicken Legs",
       "type": "machine",
       "color": "shadow",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "shadow_ace_01",
@@ -12292,16 +12440,18 @@
       "name": "Nox the Shadow King",
       "type": "hero",
       "color": "shadow",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "hero_mordo",
       "name": "Graveborn Mordo",
       "type": "hero",
       "color": "shadow",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "hero_shade",
@@ -12542,24 +12692,27 @@
       "name": "Cobra Spit",
       "type": "strike",
       "color": "storm",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "storm_strike_12",
       "name": "Sandblast",
       "type": "strike",
       "color": "storm",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "storm_strike_13",
       "name": "Dune Lash",
       "type": "strike",
       "color": "storm",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "storm_strike_14",
@@ -12823,24 +12976,27 @@
       "name": "Scarab Swarm Jar",
       "type": "lob",
       "color": "storm",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "storm_lob_12",
       "name": "Roc's Egg",
       "type": "lob",
       "color": "storm",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "storm_lob_13",
       "name": "Saltpeter Charge",
       "type": "lob",
       "color": "storm",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "storm_lob_14",
@@ -12979,8 +13135,9 @@
       "name": "Walls of the City of Brass",
       "type": "ward",
       "color": "storm",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "storm_sentry_01",
@@ -13086,8 +13243,9 @@
       "name": "Burning Mirror",
       "type": "sentry",
       "color": "storm",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "storm_boon_02",
@@ -13166,24 +13324,27 @@
       "name": "Mint Tea",
       "type": "boon",
       "color": "storm",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "storm_boon_11",
       "name": "Hoard Fever",
       "type": "boon",
       "color": "storm",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "storm_boon_12",
       "name": "Merchant's Luck",
       "type": "boon",
       "color": "storm",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "storm_boon_13",
@@ -13295,24 +13456,27 @@
       "name": "Alchemist's Bandolier",
       "type": "charge",
       "color": "storm",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "storm_charge_11",
       "name": "Sun-Glass Lenses",
       "type": "charge",
       "color": "storm",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "storm_charge_12",
       "name": "Magnet Shot",
       "type": "charge",
       "color": "storm",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "storm_charge_13",
@@ -13529,16 +13693,18 @@
       "name": "Collapsing Tomb Floor",
       "type": "trap",
       "color": "storm",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "storm_trap_11",
       "name": "Electrified Gold Idol",
       "type": "trap",
       "color": "storm",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "storm_trap_12",
@@ -13641,16 +13807,18 @@
       "name": "Storm Front",
       "type": "environment",
       "color": "storm",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "storm_environment_10",
       "name": "Great Sand Sea",
       "type": "environment",
       "color": "storm",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "storm_piece_01",
@@ -13756,16 +13924,18 @@
       "name": "Sand Scarab",
       "type": "summon",
       "color": "storm",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "storm_summon_08",
       "name": "Golden Scarab",
       "type": "summon",
       "color": "storm",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "storm_summon_09",
@@ -14162,16 +14332,18 @@
       "name": "Scorpio Bolt Thrower",
       "type": "machine",
       "color": "storm",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "storm_machine_08",
       "name": "Naphtha Siphon",
       "type": "machine",
       "color": "storm",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "storm_machine_09",
@@ -14389,16 +14561,18 @@
       "name": "Thundra the Hammer",
       "type": "hero",
       "color": "storm",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "hero_voltaire",
       "name": "Voltaire the Spark",
       "type": "hero",
       "color": "storm",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "hero_cyclona",
@@ -14461,8 +14635,9 @@
       "name": "Static Corridor",
       "type": "ward",
       "color": "storm",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "thorn_dart",
@@ -14649,24 +14824,27 @@
       "name": "Viper Strike",
       "type": "strike",
       "color": "verdant",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "verdant_strike_13",
       "name": "Cobra Venom Spray",
       "type": "strike",
       "color": "verdant",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "verdant_strike_14",
       "name": "Hornet Swarm",
       "type": "strike",
       "color": "verdant",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "verdant_strike_15",
@@ -14981,8 +15159,9 @@
       "name": "Kapok Fluff Burst",
       "type": "lob",
       "color": "verdant",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "verdant_boon_01",
@@ -14998,16 +15177,18 @@
       "name": "Sasquatch Boulder",
       "type": "lob",
       "color": "verdant",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "verdant_lob_13",
       "name": "Treefolk Stomp",
       "type": "lob",
       "color": "verdant",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "verdant_lob_14",
@@ -15138,16 +15319,18 @@
       "name": "Pangolin Scales",
       "type": "ward",
       "color": "verdant",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "verdant_ward_12",
       "name": "Green Chapel Gate",
       "type": "ward",
       "color": "verdant",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "verdant_sentry_01",
@@ -15325,24 +15508,27 @@
       "name": "Wolfskin Frenzy",
       "type": "boon",
       "color": "verdant",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "verdant_boon_10",
       "name": "Fern Seed Vanishing",
       "type": "boon",
       "color": "verdant",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "verdant_boon_11",
       "name": "Green Man's Blessing",
       "type": "boon",
       "color": "verdant",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "verdant_boon_12",
@@ -15462,24 +15648,27 @@
       "name": "Mushroom Basket",
       "type": "charge",
       "color": "verdant",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "verdant_charge_12",
       "name": "Bola Set",
       "type": "charge",
       "color": "verdant",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "verdant_charge_13",
       "name": "Gourd of Pine Sap",
       "type": "charge",
       "color": "verdant",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "verdant_charge_14",
@@ -15679,24 +15868,27 @@
       "name": "Giant Puffball",
       "type": "trap",
       "color": "verdant",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "verdant_trap_11",
       "name": "Strangler Vine Snare",
       "type": "trap",
       "color": "verdant",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "verdant_trap_12",
       "name": "Pixie-Led Path",
       "type": "trap",
       "color": "verdant",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "verdant_environment_01",
@@ -15748,16 +15940,18 @@
       "name": "Mire of the Fens",
       "type": "environment",
       "color": "verdant",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "verdant_environment_07",
       "name": "Stampede",
       "type": "environment",
       "color": "verdant",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "verdant_environment_08",
@@ -15833,8 +16027,9 @@
       "name": "Mask of the Green Man",
       "type": "piece",
       "color": "verdant",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "verdant_summon_09",
@@ -15868,16 +16063,18 @@
       "name": "Kodama",
       "type": "summon",
       "color": "verdant",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "verdant_summon_13",
       "name": "Oak Dryad",
       "type": "summon",
       "color": "verdant",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "verdant_summon_14",
@@ -16502,16 +16699,18 @@
       "name": "Mossback the Tortoise Sage",
       "type": "hero",
       "color": "verdant",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "hero_venna",
       "name": "Venna, the Viper Queen",
       "type": "hero",
       "color": "verdant",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "hero_lia",
@@ -16598,8 +16797,9 @@
       "name": "Briar Arc",
       "type": "ward",
       "color": "verdant",
-      "status": "pending",
-      "source": null
+      "status": "assigned",
+      "source": null,
+      "batch": 11
     },
     {
       "id": "thornwood_cage",

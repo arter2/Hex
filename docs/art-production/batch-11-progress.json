@@ -1,0 +1,16 @@
+{
+  "batch": 11,
+  "status": "in-progress",
+  "targetNewImages": 200,
+  "generatedSources": 0,
+  "reviewedSources": 0,
+  "missingSources": 200,
+  "reviewedPackets": 0,
+  "requiresRepaint": [],
+  "baselineActive": 1034,
+  "targetActive": 1234,
+  "runtimeActive": 1034,
+  "previousRuntimeImagesUnchanged": 4200,
+  "previousGeneratedRecordsUnchanged": 984,
+  "savedCards": []
+}

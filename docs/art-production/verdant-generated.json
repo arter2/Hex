@@ -2929,5 +2929,95 @@
     "status": "generated",
     "batch": 12,
     "reviewNote": "Square, centered 206:141 crop, and 128x88 thumbnail inspected. Queen Mab's face, crown and raised hand are clear; helper fairies and protective ring remain secondary and readable."
+  },
+  {
+    "name": "Queen of the Hive",
+    "prompt": "Paint an illustration for the Hexmancers hero “Queen of the Hive.” An original adult elven queen stands in an ancient greenwood glade, composed and regal, with a natural crown of small amber combs and leaf-shaped gold. She raises one hand and directs a focused swarm of five luminous honeybees toward the unseen foe; her full face, hand and the distinct bees remain visible. Layered moss-green cloth, fine leather and subtle bee motifs, no cartoon insect proportions. Painterly medieval high-fantasy collectible-card art, grounded anatomy, tactile materials, warm sunbeams through leaves, rich forest depth and attractive light, readable at thumbnail size. Square 1:1 composition for a 512x512 master; keep her face, raised hand and five main bees within x24..488,y105..407, centered in middle 60%, quiet woodland above/below for 206:141 crop. No frame, text, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-eba7d2d6-f0bf-44f3-9397-d6964b5277b2.png",
+    "editableSourcePath": "game/cards/art/masters/hero_hivequeen.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square editable source prepared; crop shifted upward (focalPoint y=0.42) to retain the Queen's full crown, face, guiding hand and five bees.",
+    "cardId": "hero_hivequeen"
+  },
+  {
+    "name": "Root Grasp",
+    "prompt": "Paint an illustration for the Hexmancers card “Root Grasp.” Thick living roots burst from the forest floor and whip upward in a sweeping boomerang arc, catching an armored foe around both greaves and pinning them off balance. Show the whole root origin, grasping wrap and clear return curve; keep the warrior's face and trapped legs identifiable beside the action. Painterly medieval high-fantasy collectible-card art, richly textured bark, moss, mail and leather, directional green-gold forest light, grounded anatomy, energetic but crisp silhouette and atmospheric depth. Square 1:1 composition for a 512x512 master; keep the critical grasp, root arc, warrior's face and wrapped legs within x24..488,y105..407, horizontal action in the middle 60%, quiet forest margins top/bottom for a 206:141 crop. No frame, lettering, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-753e949d-fc2e-4bae-83c0-fd68ed499a3d.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_18.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square source and upward-shifted crop (focalPoint y=0.40) reviewed. The warrior’s full face, wrapped legs and main grasping roots remain visible; the lower loop is incidental.",
+    "cardId": "verdant_strike_18"
+  },
+  {
+    "name": "Annwn Hunting Quiver",
+    "prompt": "Paint an illustration for the Hexmancers card “Annwn Hunting Quiver.” Make one complete compact hunting quiver the central named artifact: dark green weathered leather, a carved silver clasp, leaf-pattern stitching and several dark-fletched arrows whose full heads and feather tips remain visible. The quiver rests horizontally on a mossy branch, with a faint moonlit green glow in one arrowhead hinting at its many-use enchanted ammunition and costly drain. Painterly medieval high-fantasy collectible-card art, tactile leather, silver, wood and feathers, beautiful directional forest light, deep but clear woodland shadows, strong silhouette readable at thumbnail size. Square 1:1 composition for a 512x512 master; keep the entire quiver, clasp, arrowheads and fletching inside x24..488,y105..407, horizontally centered in middle 60%, quiet forest above/below for 206:141 crop. No frame, text, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c3ff165c-da3a-40dd-97a1-1dff55194aa5.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_charge_17.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square source and centered crop/thumbnail reviewed; the quiver, clasp, arrowheads and fletching read clearly at card scale.",
+    "cardId": "verdant_charge_17"
+  },
+  {
+    "name": "Will-o'-Wisp",
+    "prompt": "Paint an illustration for the Hexmancers summon “Will-o'-Wisp.” A single pale marsh spirit floats just above black water at night, a small luminous face suspended inside a soft ivory-green flame, with a thin wandering zigzag trail of light across the reeds showing its quick erratic movement. Make the wisp the clear subject; any distant lights stay faint and secondary. Painterly medieval high-fantasy collectible-card art, mysterious rather than cute, restrained spectral glow, delicately painted mist and reeds, deep teal shadows, attractive contrast and atmospheric depth, clearly readable at thumbnail size. Square 1:1 composition for a 512x512 master; keep the entire bright wisp and main zigzag within x24..488,y105..407, centered in middle 60%, quiet dark marsh margins above/below for a 206:141 crop. No frame, lettering, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-48a72901-840b-442f-89cf-8c5200eefd75.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_17.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square source and centered crop/thumbnail reviewed; the spirit face and zigzag trail remain clear at card scale.",
+    "cardId": "verdant_summon_17"
+  },
+  {
+    "name": "Ulfa the Wolf Mother",
+    "prompt": "Paint an illustration for the Hexmancers hero “Ulfa the Wolf Mother.” An original adult northern huntress with a focused, protective face leaps into a decisive pouncing strike through an old greenwood; her open hand reaches toward an unseen foe while a powerful gray wolf lunges beside her, its head and amber eyes level with her shoulder. A second wolf silhouette follows among the trees, suggesting a mother leading her pack. Layered moss-green leather, fur mantle and carved antler clasp, grounded anatomy and believable wolves; the woman and lead wolf are co-equal clear subjects. Painterly medieval high-fantasy collectible-card art, rich fur, leather and foliage textures, directional shafts of forest light, atmospheric depth, dynamic but readable at thumbnail size. Square 1:1 composition for a 512x512 master; keep Ulfa's full face, reaching hand and the lead wolf's complete face and ears inside x24..488,y105..407, center them together in middle 60%, quiet forest above/below for a 206:141 crop. No frame, text, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b8a4600b-053a-4dc3-b9bc-0e25ec42f083.png",
+    "editableSourcePath": "game/cards/art/masters/hero_ulfa.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square source and upward-shifted crop/thumbnail reviewed (focalPoint y=0.42); Ulfa's face, reaching hand, and lead wolf's full face and ears have breathing room.",
+    "cardId": "hero_ulfa"
   }
 ]

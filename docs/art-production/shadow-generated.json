@@ -2923,5 +2923,95 @@
     "status": "generated",
     "batch": 12,
     "reviewNote": "512-square master, wide crop and 128px thumbnail inspected. The complete jar, stopper and base remain visible, with a distinct line of dark carrion beetles spilling out. Glass, cork and iridescent shells are readable at thumbnail size."
+  },
+  {
+    "cardId": "shadow_summon_13",
+    "name": "Adze",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Adze”. Paint an unsettling but beautiful shadow moth spirit known as Adze, with a sturdy compact body, velvety charcoal wings patterned in muted ivory, and alert ember-red eyes. It hovers at face height above a moonlit ruined garden, drawing a thin strand of violet curse-light toward a distant foe; its still wing posture and fixed gaze taunt and hold attention. Make it read clearly as a supernatural moth, not a weapon or human. Painterly medieval/high-fantasy collectible-card art, rich believable feathers, fur, cloth and stone, dramatic but readable shadow lighting, atmospheric depth, strong small-card silhouette and grounded anatomy. Match the supplied shadow references' moonlit atmosphere and detailed fantasy materials. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep identity-critical face/eyes/hands and the main named subject within x24–488,y105–407; compose horizontally for a 206:141 card crop with quiet expendable scenery above and below. No frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-9494d993-9f43-4a90-80f8-8c786e33bfe1.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square source and centered 206:141 crop inspected: Adze’s face and red eyes are clear, and broad patterned wings make the moth identity strong at thumbnail size; outer wing tips naturally extend beyond the crop."
+  },
+  {
+    "cardId": "hero_hexa",
+    "name": "Hexa the Curse-Weaver",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Hexa the Curse-Weaver”. Paint Hexa, a formidable curse-weaver heroine in layered black plum robes, her intelligent face and both hands clear as she sends four thin violet-black curse threads in a horizontal chain between shadowy enemy silhouettes. A small lantern-like hex glow lights her expression; keep the magic delicate enough that Hexa remains the focal person and the chain action reads. Painterly medieval/high-fantasy collectible-card art, rich believable feathers, fur, cloth and stone, dramatic but readable shadow lighting, atmospheric depth, strong small-card silhouette and grounded anatomy. Match the supplied shadow references' moonlit atmosphere and detailed fantasy materials. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep identity-critical face/eyes/hands and the main named subject within x24–488,y105–407; compose horizontally for a 206:141 card crop with quiet expendable scenery above and below. No frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-379e1dde-6011-4804-8c2f-2ec223bf453c.png",
+    "editableSourcePath": "game/cards/art/masters/hero_hexa.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square source and centered 206:141 crop inspected: Hexa’s face and both casting hands remain clear, while the linked curse threads cross the enemy line and read in the thumbnail."
+  },
+  {
+    "cardId": "shadow_strike_18",
+    "name": "Raven of Ill Omen",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Raven of Ill Omen”. Paint a large black raven swooping low through a moonlit graveyard, sharp intelligent eye and glossy charcoal feathers catching a cold rim of light. One taloned foot reaches toward an ominous crimson curse-mark appearing beneath a distant enemy, while a few subtle featherlike shadows follow. Make the raven itself the bold unmistakable subject and the ill omen immediate. Painterly medieval/high-fantasy collectible-card art, rich believable feathers, fur, cloth and stone, dramatic but readable shadow lighting, atmospheric depth, strong small-card silhouette and grounded anatomy. Match the supplied shadow references' moonlit atmosphere and detailed fantasy materials. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep identity-critical face/eyes/hands and the main named subject within x24–488,y105–407; compose horizontally for a 206:141 card crop with quiet expendable scenery above and below. No frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-e1489860-c6f3-4613-9abc-0cbbdfdde598.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_strike_18.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square source and centered 206:141 crop inspected: the raven’s eye, beak and reaching talons remain prominent over the crimson omen; outer wing tips extend beyond the crop, with the raven clear at thumbnail size."
+  },
+  {
+    "cardId": "shadow_summon_14",
+    "name": "Night-Pack Wolf",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Night-Pack Wolf”. Paint one powerful dark gray wolf pouncing low from a moonlit pine forest, focused pale eyes, complete muzzle and both forward paws visible; a second wolf shape emerges behind to suggest the night pack. A restrained violet life-drain haze clings to the lead wolf's teeth and the fallen foe's shoulder. Grounded wild-wolf anatomy, grim and dangerous, not cartoon. Painterly medieval/high-fantasy collectible-card art, rich believable feathers, fur, cloth and stone, dramatic but readable shadow lighting, atmospheric depth, strong small-card silhouette and grounded anatomy. Match the supplied shadow references' moonlit atmosphere and detailed fantasy materials. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep identity-critical face/eyes/hands and the main named subject within x24–488,y105–407; compose horizontally for a 206:141 card crop with quiet expendable scenery above and below. No frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-ee437a25-3c59-4f59-a5de-8cb5bf1684ae.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square source and centered 206:141 crop inspected: lead wolf’s eyes, muzzle, and both paws stay visible as it pounces; the second wolf and violet drain effect reinforce the pack at thumbnail size."
+  },
+  {
+    "cardId": "hero_reaper",
+    "name": "The Pale Reaper",
+    "prompt": "Create a standalone illustration for the Hexmancers card “The Pale Reaper”. Paint a towering but grounded pale-faced reaper in a weathered charcoal hood and layered funeral robes, shown as a strong upper-body figure; keep the gaunt face, cold eyes, and both gloved hands clearly visible. The reaper swings a compact full-length scythe beside the face, its entire crescent blade and tip visible within the frame, releasing a narrow piercing wave of violet shadow horizontally across a row of distant foes. Dramatic moonlit graveyard, restrained spectral light, believable cloth, bone and aged iron, ominous but dignified fantasy illustration. Painterly medieval/high-fantasy collectible-card art with refined brushwork, rich materials, strong value structure and atmospheric depth. Match the supplied shadow references' moonlit atmosphere and detailed fantasy materials. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep face, eyes, hands, complete scythe blade and its tip within x24–488,y105–407 on the square; compose horizontally for a 206:141 card crop with quiet expendable scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-5840c7ff-3196-4a3d-922c-030f09272020.png",
+    "editableSourcePath": "game/cards/art/masters/hero_reaper.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square source inspected. Centered crop clipped the top of the crescent blade, so the crop is shifted upward to y=45 (focalPoint 0.43); the adjusted 206:141 crop and thumbnail show the reaper’s face, both hands, and complete scythe blade and tip."
   }
 ]

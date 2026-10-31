@@ -2932,5 +2932,95 @@
     "status": "generated",
     "batch": 12,
     "reviewNote": "Inspected 512 source, wide crop and 128 thumbnail: face, hand and full stopped bottle fit together; sand-and-bolt vortex plus outward gust and pushed foe read clearly."
+  },
+  {
+    "cardId": "storm_trap_14",
+    "name": "Pharaoh's Curse Seal",
+    "prompt": "Paint an original illustration for the storm-magic trap “Pharaoh's Curse Seal.” Show one ancient Egyptian-inspired royal seal disk of dark lapis, bronze and sandstone embedded in a tomb threshold, its complete oval face and carved scarab-and-crescent emblem clearly visible. The trap has just awakened: a violent golden sand vortex and blue-white storm sparks burst outward from the seal, flinging small chips of stone and draining the light from the shadowed corridor. Keep the seal itself the dominant named object; the magic should illuminate its carved face, not replace it with a generic explosion. Painterly medieval high-fantasy craftsmanship, rich bronze, stone and lapis textures, dramatic warm/cool light and atmospheric depth, grounded archaeological fantasy. Horizontal centered arrangement. True 1:1 SQUARE canvas for a 512x512 master; keep the whole seal and its central emblem inside x24..488 and y105..407. Quiet tomb walls above/below; center will be cropped to a wide 206:141 card illustration. No readable writing, no card frame or UI, no anime, Disney-like cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a326aa23-a2c6-4b41-92c7-46fb2c694a14.png",
+    "editableSourcePath": "game/cards/art/masters/storm_trap_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square, centered 206:141 crop, and 128x88 thumbnail inspected. The complete blue-lapis and bronze seal with scarab/crescent emblem stays prominent amid the sand-and-storm burst; no writing is present."
+  },
+  {
+    "cardId": "storm_summon_11",
+    "name": "War Camel",
+    "prompt": "Paint an original creature illustration for “War Camel.” Show a brave, powerful desert war camel in a strong horizontal side view, charging through ochre sand with head raised and expressive intelligent eyes, two distinct humps and sturdy legs clearly identifying it as a camel. Fit it with practical leather-and-bronze battle harness and layered Bedouin-inspired cloth armor; a small rider may hold on but remains secondary. Suggest a drilled zigzag maneuver with sweeping sand trails and a few distant lances, keeping the camel's full head, humps and main body readable. Painterly medieval high-fantasy art, tactile fur, leather and metal, dramatic sunlit desert atmosphere, mature grounded anatomy and strong silhouette. True 1:1 SQUARE canvas for a 512x512 master; keep the camel's face, eyes, harness and core body within x24..488 and y105..407; incidental leg tips may crop. Quiet sky and sand above/below; center will be cropped to a wide 206:141 card illustration. No anime, Disney-like cartoon, toy proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-fbcc9055-be2a-418c-a989-cdf2c8a1bf5d.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square, upward-shifted 206:141 crop, and 128x88 thumbnail inspected. The camel's full head/eyes, two humps and decorated body, plus the rider's face, fit the crop; incidental flag and lower legs may crop."
+  },
+  {
+    "cardId": "hero_nimbus",
+    "name": "Nimbus the Cloud Sage",
+    "prompt": "Paint an original heroic portrait for “Nimbus the Cloud Sage,” a storm-mage who calls down a rain-laden thundercloud and slowly restores allies. Show a wise elderly desert sage with clear kind eyes, weathered face and long silver beard, wearing layered blue-gray robes and a cream turban, standing on a high stone terrace. Beside his face and raised hand, a compact dark cloud gathers and releases a short curtain of rain with delicate blue lightning; subtle cool green-blue light around his shoulders suggests renewal. Keep Nimbus's face, eyes, hand and the cloudburst as one central subject; do not hide him in a giant cloud. Painterly medieval high-fantasy art, believable cloth and skin, dramatic sky light, atmospheric depth and grounded mature anatomy. Horizontal composition. True 1:1 SQUARE canvas for a 512x512 master; keep his full face, relevant hand and complete cloudburst within x24..488 and y105..407. Quiet sky and stone above/below; center will be cropped to a wide 206:141 card illustration. No text, lettering, frame, UI, anime, Disney-like cartoon, toy proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9ba1004a-a17a-4e07-b097-765ffde1f7b3.png",
+    "editableSourcePath": "game/cards/art/masters/hero_nimbus.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.342
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square, upward-shifted 206:141 crop, and 128x88 thumbnail inspected. Shifting the crop to y≈0 keeps Nimbus's full face and the whole rain cloud/lightning beside his raised hand; incidental lower robe crops."
+  },
+  {
+    "cardId": "storm_machine_11",
+    "name": "Architronito",
+    "prompt": "Repaint “Architronito” as an original painterly medieval-fantasy machine illustration. Show one early Renaissance bronze bombard on a stout oak carriage in a coastal stone gunroom, in a compact three-quarter side view with clear breathing room around the entire machine. Keep the complete cannon from its unmistakable open muzzle at x70 through the whole engraved barrel to its breech at x405, with the carriage and wheels contained below; nothing important may touch or cross the image edge. A controlled white-gold thunder flash and curl of smoke issue just beyond the muzzle without hiding the opening or cutting off its lip; small bronze fittings glow from overcharge. Make the cannon the dominant named object, large enough to read but scaled to fit fully inside the wide crop. Rich engraved bronze, dark iron, timber and stone, dramatic firelight against stormy blue daylight, painterly historical-fantasy craft and atmospheric depth. True 1:1 SQUARE canvas for a 512x512 master; protect the full muzzle, barrel, breech and main carriage within x24..488 and y105..407, leaving quiet masonry and smoke above/below. The center will be cropped to a wide 206:141 card illustration. No text, lettering, frame, UI, modern industrial parts, photorealism, anime, Disney-like cartoon, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-38d0995d-0541-4e4c-92c7-d946f6f96eac.png",
+    "editableSourcePath": "game/cards/art/masters/storm_machine_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Repainted after the first image clipped the cannon muzzle. Square, centered 206:141 crop, and 128x88 thumbnail inspected: the full muzzle lip, engraved barrel, breech and main carriage fit; the bright flare extends off-frame but does not obscure the named machine. Earlier source preserved at /tmp/b12_worker_4_scratch/storm_machine_11_attempt1.png."
+  },
+  {
+    "cardId": "storm_strike_17",
+    "name": "Bedouin Lance",
+    "prompt": "Paint an original illustration for the fantasy weapon card “Bedouin Lance.” Show a focused adult desert Bedouin lancer in historically inspired layered sand-colored robes, wrapped headcloth, leather armor and bronze fittings, his face and intent eyes clearly visible. He holds one long lance horizontally across his chest, the complete dark shaft, grip, and bright spearhead visible from end to end; place his hands and the weapon at nearly the same height as his face. The lancer advances through blowing desert dust, with a subtle distant silhouette suggesting the decisive strike that finishes a foe, but the full lance remains the primary named object and nothing obscures its point. Painterly medieval high-fantasy art, believable face, hands, cloth, leather, wood and steel, dramatic warm desert light with storm-blue shadows, atmospheric depth and grounded mature anatomy. Strong horizontal composition. True 1:1 SQUARE canvas for a 512x512 master; keep the whole lance and spearhead, the lancer's face and both relevant hands within x24..488 and y105..407. Quiet sky and sand above/below; center will be cropped to a wide 206:141 card illustration. No text, lettering, frame, UI, anime, Disney-like cartoon, toy proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-19fc029a-d5c9-4fe2-a6a2-76427f3208f5.png",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_17.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square, centered 206:141 crop, and 128x88 thumbnail inspected. The lancer's full face, both gripping hands, complete lance shaft and spearhead fit the wide crop; target figure remains secondary."
   }
 ]

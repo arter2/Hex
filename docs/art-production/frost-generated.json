@@ -2924,5 +2924,95 @@
     "status": "generated",
     "batch": 12,
     "reviewNote": "Square source and centered 206:141 crop inspected: bottle body, neck, and cork stopper all remain complete and clear with the scroll visible inside; the artifact reads strongly at thumbnail size."
+  },
+  {
+    "cardId": "frost_charge_13",
+    "name": "Bottled Waves",
+    "prompt": "Square 1:1 painterly medieval high-fantasy collectible-card illustration, cool sea blues with warm dawn highlights. Bottled Waves: one compact squat round glass bottle with a short cork and small glass bead stopper, fully visible and centered with generous empty space around its complete silhouette. The entire bottle from stopper tip to broad brass foot fits inside x145..367 and y160..350 of the square; it is only about 42% of image height. Inside, a miniature curling blue ocean wave rolls in a luminous arc with foam and one tiny sea-spark. Keep bottle shoulders, full bulbous body, stopper, neck and entire base clearly visible; no crop or obstruction. The bottle is the only dominant object, resting on wet dark shoreline; quiet sea and mist above and below. Believable glass refraction and brass craft, painterly, attractive lighting, immediately readable small. No text, writing, labels, UI, frame, logo, watermark, Disney, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d078c51f-9c3a-4bd1-b9c0-2d0ac1dae6d2.png",
+    "editableSourcePath": "game/cards/art/masters/frost_charge_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Repainted after the first composition clipped the bottle stopper or base in the centered wide crop; prior source preserved at /tmp/frost_charge_13-before-repair.png. Reviewed final 512-square source, centered 206:141 crop and 128x88 thumbnail: stopper, neck, full body and complete brass base all fit."
+  },
+  {
+    "cardId": "glacier_rampart",
+    "name": "Glacier Rampart",
+    "prompt": "Square 1:1 painterly medieval high-fantasy collectible-card illustration in cold blue twilight with warm sunrise glints. Glacier Rampart: a long defensive wall of dense sculpted ice and blue-white glacier stone, sturdy and complete across the middle of the scene, with a few crenellated ice towers and deep translucent layers; frost mist curls along its face to suggest freezing protection. The full central rampart wall is the clear main subject, no figures needed. Horizontal composition across middle 60%, keep the complete wall silhouette and its key crenels within x24..488 y105..407, quiet snowy sky and foreground above and below. Rich crystalline texture, believable monumental construction, painterly light, strong readable small. No text, card frame/UI/logo/watermark, modern objects, Disney, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-76a694eb-6e01-4d4b-9400-e292ba2dba22.png",
+    "editableSourcePath": "game/cards/art/masters/glacier_rampart.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "reviewNote": "Reviewed the 512-square source, focal y=0.40 206:141 crop and 128x88 thumbnail. Main glacier wall, towers, crenels and visible base fit; surrounding snowy landscape is secondary.",
+    "batch": 12,
+    "status": "generated"
+  },
+  {
+    "cardId": "frost_boon_16",
+    "name": "Gift of the River Mother",
+    "prompt": "Square 1:1 painterly medieval high-fantasy collectible-card illustration, luminous river-blue water and gentle silver light. Gift of the River Mother: a serene ancient river goddess with a clear compassionate face and one open hand raises a smooth curved shield of living water around a weary traveler; the water barrier glows with protective light and a healing silver current, while the goddess’s face and hand remain beside it at the same height. Keep face, eyes, hand and full protective water arc within x24..488 y105..407, balanced horizontally across middle 60%, quiet riverbank above and below. Flowing robes, subtle river-shell jewelry, grounded painterly materials, calm majesty, readable small. No text, UI, card frame, logo, watermark, Disney, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c65ca879-9cf0-4fe5-93f4-ea47b34e40f7.png",
+    "editableSourcePath": "game/cards/art/masters/frost_boon_16.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "reviewNote": "Reviewed the 512-square source, focal y=0.42 206:141 crop and 128x88 thumbnail. River Mother’s face, eyes and guiding hand, the traveler and the complete protective water arc remain visible.",
+    "batch": 12,
+    "status": "generated"
+  },
+  {
+    "cardId": "frost_summon_11",
+    "name": "Umibozu",
+    "prompt": "Square 1:1 painterly medieval high-fantasy collectible-card illustration, ominous arctic sea and cold mist. Umibozu: an enormous ancient sea ogre with a smooth bald head, broad shoulders and calm eerie humanlike face rises from dark ocean water; pale eyes and both strong hands are clearly visible, and a frost-blue chill halo feathers the waves around him. Keep face, eyes, shoulders and hands together within x24..488 y105..407, horizontally centered in the middle 60%, quiet foggy sea and distant ice cliffs above and below. Powerful but gentle guardian presence, not a monster attack, rich painterly water and mist, grounded anatomy, readable small. No text, UI, frame, logo, watermark, gore, Disney, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5ebdef49-9e70-485f-82de-580c866617fb.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "reviewNote": "Reviewed the 512-square source, focal y=0.40 206:141 crop and 128x88 thumbnail. Umibozu’s full head and face, eyes, shoulders and both hands fit; only lower waves are trimmed.",
+    "batch": 12,
+    "status": "generated"
+  },
+  {
+    "cardId": "frost_machine_10",
+    "name": "Diving Bell Automaton",
+    "prompt": "Square 1:1 painterly medieval high-fantasy collectible-card illustration, deep ocean blue with warm brass glow. Diving Bell Automaton: a compact squat underwater guardian machine, no taller than about 55% of the square image, centered with generous clear water around it. Its complete silhouette from bell-helmet crown to both weighted feet fits inside x120..392 and y135..385. Design it wide rather than tall: a low round riveted brass diving bell helmet with three luminous glass porthole eyes, broad short chest, two chunky articulated arms and short mechanical legs ending in flipper-like feet; a small side bell and a short bubble vent are secondary fittings. Keep every part, including helmet crown, hands and feet, fully visible with margin. No human operator. Underwater ruin background stays soft and secondary. Aged brass, dark iron joints, painterly textures, readable strong silhouette small. No text, logos, frame/UI/watermark, modern scuba gear, Disney, anime, toy cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-dda6747a-caf2-481c-8aaa-ce6382fad23b.png",
+    "editableSourcePath": "game/cards/art/masters/frost_machine_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Recomposed the previous tall source, preserved at /tmp/frost_machine_10-before-repair.png, after its centered crop clipped the helmet crown. Reviewed final 512-square source, centered 206:141 crop and 128x88 thumbnail: complete helmet, arms, hands and both feet now fit with margins."
   }
 ]

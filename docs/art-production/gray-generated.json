@@ -2937,5 +2937,95 @@
     "batch": 12,
     "reviewNote": "512-square source, upward-shifted wide crop (focalPoint y=0.47) and thumbnail reviewed. Tabby’s full striped face, both ear tips, body and healing paw remain visible; the adventurer's wounded wrist supports the mend and the beetle is secondary. Parent review pending.",
     "cardId": "gray_summon_137"
+  },
+  {
+    "cardId": "gray_summon_138",
+    "name": "Owl Familiar",
+    "prompt": "Paint an illustration for the exact card name “Owl Familiar.” Show a single clever tawny owl familiar perched beside a lone traveler’s pack on a moonlit stone wall, its large bright amber eyes and distinct feathered facial disk sharply readable. One wing is partly lifted as a protective escort while a thin pale-gold diagonal glimmer sweeps from the owl’s talons toward a distant threat; the owl itself remains the dominant subject. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: believable layered feathers, talons and weathered leather, expressive natural bird anatomy, dramatic directional moonlight with a warm lantern accent, layered brushwork and atmospheric depth. Square 1:1 canvas for a 512x512 master. Keep owl face, eyes, beak, head and main body inside x24–488,y105–407 in the middle 60 percent; incidental wingtip, tail and background may extend. Quiet night sky above and dark stone below for a 206:141 crop. No human face, no extra birds, no cartoon eyes. No text, symbols, card frame, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f34aae1c-d0ce-4026-9e9f-8140b5a2fabb.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_138.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square master, wide crop and 128px thumbnail inspected. The owl’s face, amber eyes, beak and body remain clear; only an incidental wingtip extends beyond the crop. The moonlit escort glimmer is readable at thumbnail size."
+  },
+  {
+    "cardId": "gray_summon_139",
+    "name": "Toad Familiar",
+    "prompt": "Paint an illustration for the exact card name “Toad Familiar.” Show a single stout, gentle olive-green toad familiar seated calmly on a rain-darkened forest stone, its alert golden eyes, broad mouth and warty skin clearly readable. A subtle translucent pale-blue protective shield curves around the toad and a nearby boot, suggesting a sturdy front-line guardian; keep the toad the unmistakable main subject and the magic restrained. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: believable amphibian anatomy and damp textured skin, nuanced moss, stone and water, layered brushwork, soft directional lantern light and atmospheric depth. Square 1:1 composition for a 512x512 master. Keep the full toad head and main body centered inside x24–488,y140–390; its lower feet and the shield rim may extend, but do not clip its eyes or mouth. Horizontal centered subject with quiet forest background for a 206:141 crop. No cartoon grin, no extra animals, no human figure needed. No text, runes, card frame, numbers or UI. No anime, Disney-like proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-336ade6b-4e4f-44a3-b868-09f22f6c9ec2.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_139.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square master, wide crop and 128px thumbnail inspected. The toad’s eyes, broad mouth and body remain visible within the quiet shield arc; the nearby armored boot supports the defensive role without competing. The toad is clear at thumbnail size."
+  },
+  {
+    "cardId": "gray_summon_140",
+    "name": "Raven Familiar",
+    "prompt": "Paint an illustration for the exact card name “Raven Familiar.” Depict a single intelligent glossy black raven familiar perched on a worn medieval bracer or low stone balustrade, its bright dark-blue eye, hooked beak and layered blue-black feathers crisp and unmistakable. One wing is half-spread as the raven offers a small glowing healing herb or leaf in its beak to a barely visible wounded traveler’s hand; the raven remains the dominant subject and no person’s face is needed. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: natural corvid anatomy, fine feather texture, believable leather, stone and herb, layered brushwork, cool dusk light with a warm healing glint, atmospheric depth. Square 1:1 canvas for a 512x512 master. Keep raven’s eye, beak, head and torso within x24–488,y105–407; incidental wingtip may extend. Horizontal centered composition with quiet ruined woodland background for a 206:141 crop. No extra ravens, no cartoon proportions. No text, symbols, card frame, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-bbbd2c5b-1fc0-4c93-81f9-aa753194bcaa.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_140.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square master, wide crop and 128px thumbnail inspected. The raven’s blue eye, hooked beak and body remain clear while the wingtip extends incidentally. It offers a glowing herb to the traveler’s hand; raven and healing action are readable at thumbnail size."
+  },
+  {
+    "cardId": "gray_summon_141",
+    "name": "Brownie",
+    "prompt": "Paint an illustration for the exact card name “Brownie.” Depict a small helpful duende household spirit in a humble medieval cottage at dusk, with warm brown skin, a tousled dark head of hair, bright clever eyes and a gentle, focused expression. The tiny brownie is sturdy and natural in proportion, kneeling beside a stone hearth while tossing a short handful of three glowing pebbles toward a threatening boot just entering frame, suggesting a gentle barrage that nudges the foe back. Keep brownie’s whole face, eyes and working hands together at chest height; the thrown pebbles are secondary. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: grounded folk-spirit design, textured wool, wood and stone, nuanced brushwork, warm hearth light against cool dusk, atmospheric depth; not a toy or cartoon. Square 1:1 composition for a 512x512 master. Keep the brownie’s face, hands and upper body inside x24–488,y105–407 in the middle 60 percent; legs and background may extend. Quiet cottage setting for the 206:141 crop. No chocolate, no extra faeries, no text, runes, card frame, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f9651e88-fbcf-4eb2-850e-89e2157c41bd.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_141.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square master, wide crop and 128px thumbnail inspected. The brownie’s full face, eyes and hands remain visible, with three small glowing pebbles flying toward the boot at right. Hearth light and cottage details remain readable without obscuring the duende."
+  },
+  {
+    "cardId": "gray_summon_142",
+    "name": "Domovoi",
+    "prompt": "Paint an illustration for the exact card name “Domovoi.” Depict an old, sturdy Slavic household spirit: a compact but broad-shouldered elder duende with kind yet commanding amber eyes, a weathered face, thick smoke-gray beard and a simple felt cap, standing protectively beside a medieval cottage hearth. He plants one boot on the stone hearth ledge, opens one hand in a fearless taunt, and with the other draws a short glowing chain of hearth sparks that pulls a shadowy intruder closer. His age, strength and household guardian role are clear; this is an older, larger guardian than a small Brownie. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: natural expressive face and hands, believable wool, beard, wood and stone, warm ember light against cool shadow, layered brushwork and atmospheric depth, grounded folk-spirit design, not cartoon. Square 1:1 canvas for a 512x512 master. Keep Domovoi’s full face, eyes, both hands and upper body within x24–488,y105–407, centered in the middle 60 percent for a 206:141 crop; incidental lower legs and hearth may extend. Quiet cottage background, no other foreground figures. No modern elements, no text, letters, runes, card frame, numbers or UI. No anime, Disney-like cartoon, toy proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-028422b2-3ecc-4a70-a4a2-216988021965.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_142.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.44
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square master inspected. Shifted the crop upward so Domovoi’s full face and eyes, both hands and glowing spark chain are visible together; the 206:141 crop and 128px thumbnail were inspected. Lower legs extend incidentally."
   }
 ]

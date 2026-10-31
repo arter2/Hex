@@ -2914,5 +2914,23 @@
     "status": "generated",
     "batch": 12,
     "reviewNote": "Inspected 512 source, wide crop and 128 thumbnail: falcon’s face and broad protective wing dominate, arrow is caught by the ward, and warrior face/hand clearly show the dodge."
+  },
+  {
+    "cardId": "storm_charge_15",
+    "name": "Bottled Sirocco",
+    "prompt": "Paint an illustration for the exact card Bottled Sirocco. A compact clear glass flask with an ornate brass stopper is the dominant named artifact beside a desert mage's focused face at the same height; the entire bottle from rounded base to stopper is fully visible in the mage's raised hand. Inside it, a miniature tan-gold sirocco spirals around sand and a thin blue-white bolt, while a stronger gust unfurls from its neck and shoves a distant armored foe backward. Keep the bottle small enough to sit beside the face, with both readable as one compact horizontal subject, not hanging below the mage. Painterly medieval fantasy collectible-card art, believable glass, brass, leather and linen, warm desert light against cool storm shadow, refined brushwork and atmospheric depth. Square 1:1 canvas for a 512×512 master; protect face, gripping hand, full bottle and wind/bolt effect inside x24..488,y105..407 for the 206:141 card crop, quiet margins above and below. No frame, lettering, runes, UI, cartoon, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ba457683-25b6-48f5-b368-3581b3e089ce.png",
+    "editableSourcePath": "game/cards/art/masters/storm_charge_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Inspected 512 source, wide crop and 128 thumbnail: face, hand and full stopped bottle fit together; sand-and-bolt vortex plus outward gust and pushed foe read clearly."
   }
 ]

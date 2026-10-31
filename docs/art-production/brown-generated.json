@@ -2939,7 +2939,7 @@
     ],
     "status": "generated",
     "batch": 12,
-    "reviewNote": "512-square editable source prepared; centered crop review pending for the full smelling-salts vial, stopper and vapor source.",
+    "reviewNote": "512-square source, centered wide crop and thumbnail reviewed. The complete faceted smelling-salts vial, aromatic crystals, open mouth and separate fitted stopper remain visible; the vapor source is clear at small size. Parent review pending.",
     "cardId": "brown_instant_73"
   },
   {
@@ -2957,7 +2957,7 @@
     ],
     "status": "generated",
     "batch": 12,
-    "reviewNote": "512-square editable source prepared; centered crop review pending for the complete open kit, lid and fitted contents.",
+    "reviewNote": "512-square source, centered wide crop and thumbnail reviewed. The open case, fitted contents, bottles and lower case body read clearly as an antidote kit. The upper edge of the lid is tight to the crop; parent review passed.",
     "cardId": "brown_instant_74"
   },
   {
@@ -2975,14 +2975,32 @@
     ],
     "status": "generated",
     "batch": 12,
-    "reviewNote": "512-square editable source prepared; crop shifted upward (focalPoint y=0.42) to retain the full lamp handle and base.",
+    "reviewNote": "512-square source, upward-shifted wide crop (focalPoint y=0.42) and thumbnail reviewed. Complete lantern handle, chamber, frame and base fit beside its purifying light. Parent review pending.",
     "cardId": "brown_instant_75"
   },
   {
     "name": "Copying Press",
-    "prompt": "Paint an illustration for the Hexmancers card “Copying Press.” A compact medieval hand-operated copying press sits squarely on an artisan's desk: complete wooden frame, iron screw and broad platen pressing a blank parchment against a second sheet. One original page and one crisp duplicate emerge side by side, visibly identical but with no legible text. The sturdy press is the dominant named subject. Painterly medieval high-fantasy collectible-card art, finely textured dark oak, iron, parchment and brass, warm workshop light, atmospheric depth, clean readable mechanical silhouette at thumbnail scale. Square 1:1 composition for a 512x512 master; keep full frame, screw, platen and both sheets inside x24..488,y105..407, horizontally centered in middle 60%, quiet desk and wall above/below for 206:141 crop. No frame, readable writing, runes, numbers or UI; no modern office equipment, anime, Disney-like cartoon, photorealism or pixel art.",
-    "generatedPath": "/workspace/generated_images/exec-2cf95c46-f9bd-441c-a8f3-5d8229f84734.png",
+    "prompt": "Paint an illustration for the Hexmancers card “Copying Press.” A compact medieval hand-operated copying press sits squarely on an artisan's desk: complete wooden frame, iron screw and broad platen pressing a blank parchment against a second sheet. One original page and one crisp duplicate emerge side by side, visibly identical but with no legible text. The sturdy press is the dominant named subject. Painterly medieval high-fantasy collectible-card art, finely textured dark oak, iron, parchment and brass, warm workshop light, atmospheric depth, clean readable mechanical silhouette at thumbnail scale. Square 1:1 composition for a 512x512 master; keep full frame, screw, platen and both sheets inside x24..488,y105..407, horizontally centered in middle 60%, quiet desk and wall above/below for 206:141 crop. No frame, readable writing, runes, numbers or UI; no modern office equipment, anime, Disney-like cartoon, photorealism or pixel art.\n\nRepaint instruction: Recompose this illustration for the Hexmancers card “Copying Press.” Preserve the same richly painterly medieval workshop, warm light, dark oak and iron, and the clear paired printed sheets. Make the entire copying press smaller and more compact, occupying about 58 percent of the square canvas height, centered with ample space above and below. Keep the complete wooden frame, both feet/base rails, top crossbar, full screw and handle, pressing platen, and both printed sheets visible together with clear margins inside the middle 60 percent of the 1:1 square for a 206:141 horizontal card crop. The press remains the strong central subject; remove incidental foreground clutter. No card frame, lettering, modern equipment or UI.",
+    "generatedPath": "/workspace/generated_images/exec-05a8ef53-39ec-43f5-abc4-35c0fc2c7ada.png",
     "editableSourcePath": "game/cards/art/masters/brown_instant_76.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.48
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Repainted after the first crop clipped the press handle; original 512 source preserved at /tmp/worker-brown-05/brown_instant_76-initial.png. Final 512 source, upward-shifted crop (focalPoint y=0.48) and thumbnail reviewed: full handle, screw, frame, base and both printed sheets fit. Parent review pending.",
+    "cardId": "brown_instant_76"
+  },
+  {
+    "name": "Gnomish Duplicator",
+    "prompt": "Paint an illustration for the Hexmancers card “Gnomish Duplicator.” A compact tabletop gnomish clockwork duplicator is the sole central artifact: a complete boxy brass-and-oak device with small visible gears, two matched roller plates and three identical blank parchment slips emerging side by side from one original. The full device, feet, crank and all copies fit together comfortably, with enough open space around them. Distinguish it from a simple screw press through its twin geared output rollers and delicate gnomish mechanisms. Painterly medieval high-fantasy collectible-card art, fine mechanical detail, warm workshop light, brushed brass, polished wood and parchment, atmospheric depth, clear silhouette at thumbnail size. Square 1:1 composition for a 512x512 master; keep the entire compact duplicator and copies inside x24..488,y105..407, compose horizontally in the middle 60%, quiet workshop background above/below for a 206:141 crop. No frame, legible text, runes, numbers or UI; no modern office equipment, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9eef31ef-00bf-454b-a5ba-17ec4dff7be2.png",
+    "editableSourcePath": "game/cards/art/masters/brown_instant_77.png",
     "sourceNative": [
       1254,
       1254
@@ -2993,7 +3011,7 @@
     ],
     "status": "generated",
     "batch": 12,
-    "reviewNote": "512-square editable source prepared; centered crop review pending for the full press frame, handle, platen and duplicate sheets.",
-    "cardId": "brown_instant_76"
+    "reviewNote": "512-square source, centered wide crop and thumbnail reviewed. Full gnomish duplicator, crank, twin rollers, feet and three output copies remain visible and clear at small size. Parent review pending.",
+    "cardId": "brown_instant_77"
   }
 ]

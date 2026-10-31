@@ -2852,10 +2852,82 @@
     ],
     "focalPoint": [
       0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square, upward-shifted 206:141 crop, and 128x88 thumbnail inspected. Shifting the crop up restores the raider’s full face and eyes while keeping the horizontal ivy surge and greave wrap clear; incidental lower legs crop."
+  },
+  {
+    "cardId": "verdant_boon_14",
+    "name": "Green Knight's Girdle",
+    "prompt": "Paint an original artifact illustration for “Green Knight's Girdle,” a legendary protective boon that intervenes and sprouts new life. Feature a complete broad green knight's girdle laid horizontally across a weathered stone altar: rich emerald leather, linked antique-gold fittings, and a large oak-leaf clasp shaped like a small shield. Fresh shoots curl around the belt and the clasp catches a restrained protective green-gold glow. Make the entire flexible belt, both ends, buckle and decorative shield clasp plainly visible; do not add a wearer whose face would compete with the artifact. Painterly medieval high-fantasy craftsmanship, nuanced leather, aged gold and leaves, dramatic directional woodland light, atmospheric depth and grounded elegance. Clear horizontal silhouette. True 1:1 SQUARE canvas for a 512x512 master; keep the whole girdle within x24..488 and y105..407. Quiet forest and stone above/below; center will be cropped to a wide 206:141 card illustration. No text, lettering, frame, UI, anime, Disney-like cartoon, toy proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f12aba5e-b62c-4886-ae4c-5811ddb7ebab.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_boon_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
       0.5
     ],
     "status": "generated",
     "batch": 12,
-    "reviewNote": "Square, centered 206:141 crop, and 128x88 thumbnail inspected. The horizontal ivy surge and its wrap around the raider's greaves/hand are clear; the raider's face and contact point remain visible."
+    "reviewNote": "Square, centered 206:141 crop, and 128x88 thumbnail inspected. The whole green leather girdle, both ends, antique-gold fittings and oak-leaf shield clasp are visible and recognizable at thumbnail size."
+  },
+  {
+    "cardId": "verdant_charge_16",
+    "name": "Silver Arrow Prize",
+    "prompt": "Paint an original artifact illustration for the fantasy card “Silver Arrow Prize.” Show one complete exceptional silver arrow arranged horizontally on a dark mossy archer's table, its long straight shaft, clearly shaped bright silver arrowhead and full feather fletching all visible from tip to tail. Let a few restrained silver sparks and moonlit reflections make it feel like a rare prize, while the arrow remains a real crafted weapon rather than an energy bolt. Subtle carved elven markings may decorate the shaft but include no readable text. Painterly medieval high-fantasy craft, believable silver, dark wood and feathers, dramatic cool light with a warm reflected edge, atmospheric forest background and strong readable silhouette. No operator needed. True 1:1 SQUARE canvas for a 512x512 master; keep the entire arrow and its point and fletching inside x24..488 and y105..407. Quiet foliage and shadow above/below; center will be cropped to a wide 206:141 card illustration. No lettering, runes that form words, frame, UI, modern equipment, anime, Disney-like cartoon, toy proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e664ba08-c3bc-4c93-99fc-e689aab1918b.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_charge_16.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square, centered 206:141 crop, and 128x88 thumbnail inspected. The complete silver arrow, full broadhead point, shaft and feather fletching fit in the crop and remain legible at thumbnail size."
+  },
+  {
+    "cardId": "verdant_environment_10",
+    "name": "Primeval Wildwood",
+    "prompt": "Paint an original environment illustration for “Primeval Wildwood,” a legendary ancient forest where living brambles surge in a wide burst. Show a vast untouched woodland of enormous old trees, tangled roots and deep green shadow; in the central clearing, a broad ring of thorny brambles rapidly unfurls across the earth, lifting stones and leaves as it spreads outward. Make the ancient forest dominant and the bramble burst clear, with a shaft of sunlight revealing depth through layers of trunk and fern. Painterly medieval high-fantasy landscape, richly detailed bark, moss and foliage, dramatic natural light, atmospheric distance, grounded mature tone and no buildings or modern traces. Horizontal landscape composition, readable at small size. True 1:1 SQUARE canvas for a 512x512 master; keep the central forest and bramble action within x24..488 and y105..407. Quiet canopy and foreground above/below; center will be cropped to a wide 206:141 card illustration. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e6d377c3-0502-42cc-853f-bc4f30ff0ae8.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_environment_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square, centered 206:141 crop, and 128x88 thumbnail inspected. Deep old-growth forest and broad thorny bramble burst across the clearing read clearly at both crop sizes."
+  },
+  {
+    "cardId": "verdant_summon_16",
+    "name": "Queen Mab",
+    "prompt": "Paint an original high-fantasy portrait for the fairy queen “Queen Mab.” Depict a noble adult fairy ruler with a composed, intelligent face, a slender crown of living thorn and silver leaves, and delicate translucent wings. She stands in a moonlit forest court, raising one elegant hand as several small winged helper fairies gather behind her and form a faint protective ring. Queen Mab is the dominant named subject: her face, eyes, crown, raised hand and dignified leaf-woven mantle must read clearly; the helpers remain secondary. Painterly medieval fantasy, nuanced bark, leaf, silk, silver and wing textures, dramatic moonlight with a warm lantern edge, atmospheric depth, grounded mature anatomy and stately expression, not toy-like or cute. Broad horizontal portrait composition. True 1:1 SQUARE canvas for a 512x512 master; keep Queen Mab's complete face, crown and hand within x24..488 and y105..407, with helpers nearby at the same height. Quiet canopy and ground above/below; center will be cropped to a wide 206:141 card illustration. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-17ec6749-f520-4643-b0eb-1ebc163b1b78.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_16.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square, centered 206:141 crop, and 128x88 thumbnail inspected. Queen Mab's face, crown and raised hand are clear; helper fairies and protective ring remain secondary and readable."
   }
 ]

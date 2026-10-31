@@ -2980,5 +2980,41 @@
     "status": "generated",
     "batch": 12,
     "reviewNote": "Square source and centered 206:141 crop inspected: Emberly’s face, lantern and raised casting hand stay clear, and the linked flame chain reads across the thumbnail."
+  },
+  {
+    "cardId": "fire_charge_15",
+    "name": "Fox-Fire Jar",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Fox-Fire Jar”. Paint one compact, complete antique glass-and-bronze jar with a cork stopper, centered in the square and occupying only about half the canvas width; leave generous empty margin on every side. Its entire outline, including stopper, neck, rounded body, and little feet, must fit safely between x80 and x430 and y130 and y385. Inside the clear glass, a bright foxfire wisp curls into the unmistakable silhouette of a tiny fox made of flame, and a narrow controlled bolt of fire shoots horizontally from the jar's bronze spout toward a distant target. Keep the jar itself as the main named artifact and fully visible; the target and bolt are background action only. Painterly medieval/high-fantasy collectible-card art, tactile glass, bronze filigree and warm firelight, grounded materials, readable silhouette and atmospheric depth. Match the supplied Hexmancers fire references' warm forge glow and ember detail. Explicitly create a 1:1 SQUARE canvas for an editable 512×512 master, composed for a 206:141 horizontal card crop. No people. No frame, text, lettering, numbers, UI, anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-dc5e20af-5036-4d62-9047-7a1e33ded37e.png",
+    "editableSourcePath": "game/cards/art/masters/fire_charge_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Preserved the clipped first attempt at /tmp/fire_charge_15-attempt-01.png. The replacement square and centered 206:141 crop show the jar’s complete stopper, neck, body and feet; the foxfire silhouette and bolt read at thumbnail size."
+  },
+  {
+    "cardId": "fire_strike_17",
+    "name": "Lava Jet",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Lava Jet”. Paint a forceful horizontal jet of bright molten lava blasting from a fissure in a volcanic cliff across a battlefield, a continuous arcing stream of glowing orange magma and dark crust spraying sparks as it sweeps past a row of distant armored foes whose boots are caught in cooling lava. The lava jet is the clear dominant subject, its start and direction readable; keep the main stream within the central horizontal band with quiet smoke and sky above and dark cooled rock below. Painterly medieval/high-fantasy collectible-card art, richly painted liquid fire, volcanic stone and sparks, attractive warm directional light, readable values and atmospheric depth. Match the supplied Hexmancers fire references' warm forge glow and ember detail. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master, composed for a 206:141 horizontal card crop. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-62d200cd-257c-489d-a563-1bcf59e90626.png",
+    "editableSourcePath": "game/cards/art/masters/fire_strike_17.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square source and centered 206:141 crop inspected: the jet’s fissure origin and continuous horizontal stream remain visible with the distant slowed row of foes; the direction and hot-cold contrast read at thumbnail size."
   }
 ]

@@ -2923,5 +2923,41 @@
     "status": "generated",
     "batch": 12,
     "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Owl’s face, luminous pellet, trajectory and knockback impact are visible; upper wing tips are incidental and partly cropped."
+  },
+  {
+    "cardId": "light_ward_18",
+    "name": "Theodosian Walls",
+    "prompt": "Paint an illustration for the exact card Theodosian Walls. A compact view of Constantinople's legendary Theodosian fortifications: a massive pale-stone outer wall, square crenellated towers and a recessed defensive corridor with four distinct low ward segments across the gate approach. Blue-white electric arcs shimmer along the temporary barrier while small defenders hold the towers. Make the thick layered walls, towers and corridor unmistakably Byzantine and monumental, with the whole central gate section readable across a horizontal frame. Painterly medieval high-fantasy collectible-card art, believable limestone, brick, banners and bronze, bright Mediterranean light with cool azure ward glow, refined brushwork and atmospheric depth. Square 1:1 canvas for a 512×512 master; keep towers, main wall and all four ward segments inside x24..488,y105..407 for the 206:141 card crop, quiet sky/ground margins. No frame, text, runes, UI, modern architecture, cartoon, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d4dc29ae-5c4a-4f44-b35a-6b69c89b974f.png",
+    "editableSourcePath": "game/cards/art/masters/light_ward_18.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Inspected 512 source, wide crop and 128 thumbnail: layered Theodosian gate, towers and corridor ward lines read as a monumental defensive wall; small defenders give scale."
+  },
+  {
+    "cardId": "light_charge_15",
+    "name": "Burning Lens of Archimedes",
+    "prompt": "Paint an illustration for the exact card Burning Lens of Archimedes. A compact portable bronze-and-glass focusing lens, ringed by fine gearwork, is the unmistakable named artifact, held beside an ancient Greek engineer's focused face and supporting hand at the same height. Sunlight converges through the complete circular lens into a narrow white-gold burning bolt that scorches the rigging of a distant warship; a second faint scorch mark hints at repeated charges. Keep the full lens rim, fittings, face and hand clear and central, with ship and sea secondary. Painterly medieval fantasy collectible-card art with classical bronze, polished glass, linen and marble, brilliant directional light, warm sun against cool Aegean haze, rich brushwork and atmospheric depth. Square 1:1 canvas for a 512×512 master; protect whole artifact and face/hand within x24..488,y105..407 for the 206:141 crop, quiet margins above and below. No frame, words, runes, UI, cartoon, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ed492a00-985c-47dd-a959-4917be24171b.png",
+    "editableSourcePath": "game/cards/art/masters/light_charge_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Inspected 512 source, wide crop and thumbnail: complete Archimedean lens, both hands and engineer’s face are readable; focused bolt strikes the ship’s rigging."
   }
 ]

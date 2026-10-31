@@ -2818,5 +2818,23 @@
     "status": "generated",
     "batch": 12,
     "reviewNote": "Square source inspected. The centered 206:141 crop clipped the pearl’s top edge, so the crop is shifted upward to y=60 (focalPoint 0.46); the adjusted crop and thumbnail show the full round pearl, carved shishi motif, and firing bolt."
+  },
+  {
+    "cardId": "fire_summon_10",
+    "name": "Fire Fox",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Fire Fox”. Paint a fierce but graceful russet fox dashing low across ancient volcanic stones, its face and bright amber eyes focused ahead, both leading paws visible and wrapped in small golden flames, one full sweeping tail trailing a warm ember arc. A second smaller fox darts just behind as an echo of the two-fox summon. Medieval fantasy at dusk, rocky path, smoke and a few embers; keep the lead fox large and unmistakable with grounded animal anatomy and rich realistic fur, agile rather than cute or cartoonish. Painterly medieval/high-fantasy collectible-card art, richly painted believable fur, stone and scorched earth, attractive directional lighting, strong readable values and atmospheric depth. Match the supplied fire references' warm forge glow and ember detail while keeping the fox as the clear subject. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep lead fox face/eyes and paws within x24–488,y105–407 on the square; compose horizontally for a 206:141 card crop with quiet expendable scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-c54110b5-b2d9-4ec6-bd6c-53126121c626.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_10.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Square source and 206:141 crop inspected: lead fox’s eyes, full head, and flaming leading paws are clear, with a second fox reinforcing the summon; the running silhouette remains readable in the thumbnail."
   }
 ]

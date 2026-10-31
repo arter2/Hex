@@ -2725,5 +2725,23 @@
     "status": "generated",
     "batch": 12,
     "reviewNote": "Inspected 512 source, wide crop and 128 thumbnail: child face, open mouth, raised hands and halo are strong; four separate light rays reach battlefield enemies while allies remain softly healed."
+  },
+  {
+    "cardId": "light_strike_14",
+    "name": "Aegis Bash",
+    "prompt": "Edit the referenced Aegis Bash painting into a crop-safe square card illustration. Keep the same focused female knight, ornate bronze-and-steel tower shield, armored opponent and radiant wedge-shaped impact, with the same grounded painterly medieval-fantasy style. The entire shield is currently too tall: make it smaller and more compact, around 78 percent of its current height, and place it close beside the knight at the same height. Keep the full shield from top rim to pointed lower tip, the knight's complete face and braced hand, and the bright impact all inside x24..488,y105..407 of the 512-square canvas so the 206:141 horizontal crop cannot clip the shield. Clear the crop margins above and below. The opponent may remain secondary. No text, frame, runes, UI, cartoon, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b3888f53-96d8-4252-bdb9-21564415201a.png",
+    "editableSourcePath": "game/cards/art/masters/light_strike_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "Recomposed shield smaller for crop safety. Inspected 512 source, wide crop and 128 thumbnail: full shield rim and tip, knight face and braced hand, and the stunning wedge impact all remain clear."
   }
 ]

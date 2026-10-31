@@ -2,15 +2,15 @@
   "batch": 12,
   "workers": {
     "/root/b12_worker_1": {
-      "packet": "brown-03",
+      "packet": "storm-03",
       "state": "running"
     },
     "/root/b12_worker_2": {
-      "packet": "light-02",
+      "packet": "gray-03",
       "state": "running"
     },
     "/root/b12_worker_3": {
-      "packet": "shadow-02",
+      "packet": "shadow-03",
       "state": "running"
     },
     "/root/b12_worker_4": {
@@ -22,7 +22,7 @@
       "state": "running"
     },
     "/root/b12_worker_6": {
-      "packet": "fire-03",
+      "packet": "light-03",
       "state": "running"
     }
   },
@@ -39,7 +39,11 @@
     "brown-02",
     "gray-02",
     "verdant-01",
-    "storm-02"
+    "storm-02",
+    "light-02",
+    "fire-03",
+    "shadow-02",
+    "brown-03"
   ],
   "reviewedSources": {
     "light_strike_13": {
@@ -301,6 +305,86 @@
     "storm_lob_15": {
       "file": "game/cards/art/masters/storm_lob_15.png",
       "sha256": "f74f2b28c5a95384f26e1e906661b50b121f593fec57e544be11c66d3c30b4fb"
+    },
+    "light_utility_12": {
+      "file": "game/cards/art/masters/light_utility_12.png",
+      "sha256": "e236feaa62bf3daccea1c954f601feedd114605df5a87558cba1189474205a89"
+    },
+    "light_summon_08": {
+      "file": "game/cards/art/masters/light_summon_08.png",
+      "sha256": "07f37994ada47cabae1737f40ad55f1f95bd2c61e84b8be72117b34a51673a51"
+    },
+    "light_machine_08": {
+      "file": "game/cards/art/masters/light_machine_08.png",
+      "sha256": "dd5bfc5219aedbcc91ecbf2bcbdd24ad6af66388d57dbbbb48b87af049f53931"
+    },
+    "hero_halo": {
+      "file": "game/cards/art/masters/hero_halo.png",
+      "sha256": "9c819f013b6d0a73a97db86dc14a3e0893cb835827a24ba72be596fa5778e9e3"
+    },
+    "light_strike_14": {
+      "file": "game/cards/art/masters/light_strike_14.png",
+      "sha256": "660dc9a49b40f6db24baebbabdf421f72149f000284284e2903e36d8bbb92167"
+    },
+    "fire_lob_16": {
+      "file": "game/cards/art/masters/fire_lob_16.png",
+      "sha256": "c2bc3778184fd995a699dbf6194e0e60c451da87d4976bf7b27fdc1a3a9d8c25"
+    },
+    "cinder_rampart": {
+      "file": "game/cards/art/masters/cinder_rampart.png",
+      "sha256": "150d94df1c7985bc2520125eedc87262e887508366984c8744fc57e4013d4be6"
+    },
+    "fire_boon_14": {
+      "file": "game/cards/art/masters/fire_boon_14.png",
+      "sha256": "dad95487f5b3c11082e2b7807f364a3187fb6284012acad48029c99300412779"
+    },
+    "fire_charge_14": {
+      "file": "game/cards/art/masters/fire_charge_14.png",
+      "sha256": "4e7b1fe48b32a345c721c5747d37ee30f2c65fb4b98ed020d2292053af450f92"
+    },
+    "fire_summon_10": {
+      "file": "game/cards/art/masters/fire_summon_10.png",
+      "sha256": "46720dadcb8d1b8bef59dda40d4323d8414e0a31964bf2e1d4fa0dcb5f4f5b30"
+    },
+    "hero_shade": {
+      "file": "game/cards/art/masters/hero_shade.png",
+      "sha256": "9f0ac00aaf560eeed2423b93e8ca6047cb19e75996793b3bf6ef26a3f297604b"
+    },
+    "grave_rampart": {
+      "file": "game/cards/art/masters/grave_rampart.png",
+      "sha256": "6708179bbc83f8689f67f02e5bfad1fbe991ccf377a1311f10c4df1f8a2aa0d9"
+    },
+    "shadow_strike_14": {
+      "file": "game/cards/art/masters/shadow_strike_14.png",
+      "sha256": "1f35bd16d4508349b5e3074dcb38d29b1330a1c3b3919e94f512acac4c6d49fc"
+    },
+    "shadow_lob_16": {
+      "file": "game/cards/art/masters/shadow_lob_16.png",
+      "sha256": "13275e408a760d60d708d228a0287b2c41eb1b04ba0531bbfdf2cf9fa2be8f04"
+    },
+    "shadow_boon_14": {
+      "file": "game/cards/art/masters/shadow_boon_14.png",
+      "sha256": "6ddc2d4115b7607cef901da0852c211402f24126c0f814d81163c945deaff150"
+    },
+    "brown_instant_63": {
+      "file": "game/cards/art/masters/brown_instant_63.png",
+      "sha256": "66db518aae1ed8e98ec50b501701d2bbd2d6e2abf89f4d1e6b4412a8742dc08c"
+    },
+    "brown_instant_64": {
+      "file": "game/cards/art/masters/brown_instant_64.png",
+      "sha256": "54f1f492c27c343836a8e50e6d708fbf10ab165a6eddf4d2128a9c6ee12f3078"
+    },
+    "brown_instant_65": {
+      "file": "game/cards/art/masters/brown_instant_65.png",
+      "sha256": "c08da9ee29cd918f969e9893c8e0c24c93776df0d6625dff997e1b058969092e"
+    },
+    "brown_instant_66": {
+      "file": "game/cards/art/masters/brown_instant_66.png",
+      "sha256": "bcbd5cb92b98b22b4f69fd0ce7449fed7857283d4573e68d8daee1a241cda7b9"
+    },
+    "brown_instant_67": {
+      "file": "game/cards/art/masters/brown_instant_67.png",
+      "sha256": "45367d3292ed22fd80d81fd6adc66ae0eb3ffa10e081d89176931957a41bc839"
     }
   }
 }

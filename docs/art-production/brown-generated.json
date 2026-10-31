@@ -2765,18 +2765,18 @@
   {
     "cardId": "brown_instant_64",
     "name": "Dwarven Sorting Tray",
-    "prompt": "Square 1:1 grounded painterly medieval fantasy card art, crisp warm forge light. Dwarven Sorting Tray: a fully visible compact heavy brass-and-oak tray with several distinct shallow compartments, filled with tidy sorted blank-backed parchment cards and one chosen card lifted slightly in a gloved dwarf hand; the tray is the dominant named artifact. Dwarf face beside it at the same height, calm and focused. Show strong compartment dividers, sturdy riveted handles and selected card clearly, horizontally across middle 60%, keep face, hand, entire tray and card within x24..488 y105..407. Quiet armory workbench above and below. Aged brass, dark oak, soft glowing forge highlights, painterly and readable small. No writing or marks on cards, no card border/UI/logo/watermark, modern tech, Disney, anime, cartoon, photorealism, pixel art.",
-    "generatedPath": "/workspace/generated_images/exec-ed8c84f8-dc15-4b4c-9385-bb8885736f12.png",
+    "prompt": "Square 1:1 painterly medieval fantasy card illustration in warm forge light. Show one compact standalone Dwarven Sorting Tray, with NO operator or hands. The entire tray is a small horizontal wooden-and-brass object centered in the square, occupying only about 68% of the image width and 40% of its height, with clear background margins on all four sides. Its complete left and right outer handles and all four corners of its box frame must be visible well inside the square, with at least 45 pixels of margin at each side. The top contains six shallow divided compartments neatly holding blank parchment cards; one chosen card is set upright in the center slot. Emphasize strong compartment dividers, oak grain, brass corner caps and rivets, sturdy handles, believable dwarf craft. Put the full object within x60..452 and y155..360 of the 512-square composition, leaving quiet armory workshop scenery above and below for a 206:141 landscape card crop. Rich warm cinematic light, painterly high-fantasy collectible card art, clear readable silhouette at small size. No writing, text, letters, people, hand, card frame, UI, logo, watermark, modern technology, Disney, anime, cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-131f2b5f-1c85-411e-8de2-880725f66993.png",
     "editableSourcePath": "game/cards/art/masters/brown_instant_64.png",
     "sourceNative": [
-      1408,
-      1117
+      1254,
+      1254
     ],
     "focalPoint": [
       0.5,
       0.5
     ],
-    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Complete tray, compartments, lifted card and dwarf face remain visible; crop trims the top of the dwarf’s hair and background.",
+    "reviewNote": "Repainted the preserved original to keep the tray compact and standalone. Reviewed the final 512-square source, centered 206:141 crop and 128x88 thumbnail: all outer edges and handles, six compartments and chosen card fit with clear margins.",
     "batch": 12,
     "status": "generated"
   },
@@ -2810,9 +2810,9 @@
     ],
     "focalPoint": [
       0.5,
-      0.5
+      0.46
     ],
-    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Complete scale, beam, both pans, selected card, tokens and djinn face remain visible; top of the headwear is trimmed.",
+    "reviewNote": "Reviewed the 512-square source, focal y=0.46 206:141 crop and 128x88 thumbnail. Djinn’s eyes and guiding hand remain visible with the complete scale, both pans, selected card, tokens and full base; only the top of the turban is trimmed.",
     "batch": 12,
     "status": "generated"
   },

@@ -2744,5 +2744,77 @@
     "batch": 12,
     "reviewNote": "512-square source, upward-shifted wide crop (focalPoint y=0.41) and thumbnail reviewed. The raider's face, gripping hand and complete axe head and haft fit inside the crop; the weapon reads clearly at small size. Parent review pending.",
     "cardId": "frost_strike_14"
+  },
+  {
+    "cardId": "frost_lob_15",
+    "name": "Falling Iceberg",
+    "prompt": "Paint an illustration for the exact card name “Falling Iceberg.” Show one enormous but fully readable blue-white iceberg section breaking loose and plunging vertically into a frozen northern sea in a heavy column-like impact. Its sharply faceted top, thick floating body and grounded lower point remain fully visible; the collision raises a massive wall of ice shards and snow in one clear vertical strike. A thin ribbon of clear water and gentle frost suggests a small healing aftermath. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: nuanced translucent ice and deep blue shadow, layered brushwork, dramatic arctic dawn light, atmospheric depth, grounded scale, not photorealistic. Square 1:1 canvas for a 512x512 master. Keep the entire identity-defining iceberg and impact column inside x24–488,y105–407, arranged in a compact central composition that survives a 206:141 horizontal crop; quiet polar sky above and quiet frozen water below. Do not clip the iceberg tip or base. No large figures needed. No text, labels, runes, card frame, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-94513dea-f309-4c34-9624-032d98dd7ca1.png",
+    "editableSourcePath": "game/cards/art/masters/frost_lob_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.41
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square master inspected. Wide crop shifted upward to retain the full iceberg peak; a 128px crop thumbnail was inspected. The iceberg body and impact remain centered, while some lower spray is expendable. Painterly ice and snow read clearly."
+  },
+  {
+    "cardId": "frost_ward_14",
+    "name": "Dome of Atlantis",
+    "prompt": "Paint an illustration for the exact card name “Dome of Atlantis.” Depict an elegant complete pale turquoise protective dome shield over an ancient Atlantean undersea sanctuary. Its curved translucent barrier must be clearly dome-shaped and fully visible, with luminous blue water pressing outside and a warm restorative golden current flowing through it; the ancient submerged columns and carved sea-stone architecture are secondary, softened behind the shield. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: believable water, ice-blue glasslike ward light, carved stone and coral, nuanced brushwork, dramatic shafts of light through the sea, atmospheric depth. Square 1:1 composition for a 512x512 master. Keep the complete dome arch and its footings inside x24–488,y105–407, centered in the middle 60 percent; quiet blue water fills above and low seabed below for a 206:141 wide crop. No foreground people. No text, inscriptions, letters, runes, card frame, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-853d1741-fa1a-4ca7-9139-1da62fa0495b.png",
+    "editableSourcePath": "game/cards/art/masters/frost_ward_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square master, wide crop and 128px thumbnail inspected. The complete turquoise dome and its footings remain visible across the crop, with Atlantis readable within the shield. The glow and structure hold at thumbnail size."
+  },
+  {
+    "cardId": "frost_boon_15",
+    "name": "Lucky Doubloon",
+    "prompt": "Paint an illustration for the exact card name “Lucky Doubloon.” Make a single ancient golden doubloon the clear central subject, caught mid-spin above a weathered gloved palm or floating just over a small block of carved ice. Show both the recognizable round coin face and its thick milled edge, with a simple raised four-point lucky star surrounded by a subtle ring of frost-blue light; no words, no letters and no tiny illegible details. The glinting coin conveys a sudden lucky rally and nimble dodge. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: tactile hammered gold and worn metal, crisp frost crystals, layered brushwork, attractive cold directional light, atmospheric depth, grounded not photorealistic. Square 1:1 composition for a 512x512 master. Keep the entire coin, its edge and any supporting hand clearly within x24–488,y130–385, centered in the middle 60 percent for a 206:141 crop; quiet snowy background. Standalone coin is welcome; no person required. No text, letters, symbols beyond the simple star, card frame, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d198d792-f70c-4d7d-a704-f90bbe25c2bb.png",
+    "editableSourcePath": "game/cards/art/masters/frost_boon_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square master, wide crop and 128px thumbnail inspected. The complete doubloon face and milled edge stay clear above the supporting hand; the star and frost rim make the coin distinctive at thumbnail size."
+  },
+  {
+    "cardId": "frost_charge_12",
+    "name": "Hail Pouch",
+    "prompt": "Paint an illustration for the exact card name “Hail Pouch.” Make the named object unmistakable: a compact medieval leather sling pouch, open at the gathered mouth, with two large jagged hailstones nestled inside and another cold stone just leaving the opening as if lobbed. The heavy blue ice stones carry sharp glittering facets and one restrained dark curse glimmer; keep the pouch, drawcord, mouth and full hailstones together so all critical features fit. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: tactile aged leather, frozen water, snow crust and cord, layered brushwork, attractive directional arctic light, atmospheric depth, grounded materials and shape. Square 1:1 canvas for a 512x512 master. Keep complete pouch and every identifying hailstone inside x40–472,y135–380, horizontally centered in the middle 60 percent for a 206:141 wide crop; quiet snow and stone background above/below. Standalone artifact, no hand or operator needed. No text, readable runes, card frame, lettering, numbers or UI. No anime, Disney-like cartoon, toy cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2ae58845-f598-420c-8507-37b7f5bb4beb.png",
+    "editableSourcePath": "game/cards/art/masters/frost_charge_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square master, wide crop and 128px thumbnail inspected. The pouch opening, drawcord and stones are all fully visible; one hailstone is caught just as it leaves the pouch. Leather and ice detail read at thumbnail size."
   }
 ]

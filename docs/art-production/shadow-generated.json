@@ -2669,7 +2669,7 @@
     ],
     "status": "generated",
     "batch": 12,
-    "reviewNote": "512-square source and upward-shifted wide crop (focalPoint y=0.42) reviewed. Shade’s full hooded face, dagger hand and blade remain inside the crop; reaching arm is incidental. Parent review pending.",
+    "reviewNote": "512-square source, upward-shifted wide crop (focalPoint y=0.42) and thumbnail reviewed. Shade’s full hooded face, dagger hand and blade remain inside the crop; reaching arm is incidental. Parent review pending.",
     "cardId": "hero_shade"
   },
   {
@@ -2687,7 +2687,7 @@
     ],
     "status": "generated",
     "batch": 12,
-    "reviewNote": "512-square editable source prepared; centered crop review pending to check the complete heavy stone wall.",
+    "reviewNote": "512-square source, centered wide crop and thumbnail reviewed. The continuous fortified grave wall spans the frame with visible tombstone carvings and violet wisps; it remains legible at small size. Parent review pending.",
     "cardId": "grave_rampart"
   },
   {
@@ -2705,7 +2705,7 @@
     ],
     "status": "generated",
     "batch": 12,
-    "reviewNote": "512-square editable source prepared; crop shifted upward (focalPoint y=0.40) review pending for the vampire's face, victim's face and bite.",
+    "reviewNote": "512-square source, upward-shifted wide crop (focalPoint y=0.40) and thumbnail reviewed. Both faces, vampire fangs, bite and gripping hand remain visible; the draining red light reads clearly. Parent review pending.",
     "cardId": "shadow_strike_14"
   },
   {
@@ -2723,7 +2723,25 @@
     ],
     "status": "generated",
     "batch": 12,
-    "reviewNote": "Repainted after the original crop clipped both stopper and base; original 512 source preserved at /tmp/worker-shadow-02/shadow_lob_16-initial.png. Upward focal shift y=0.48 leaves clear space above the complete stopper while keeping the entire base inside the crop. Parent review pending.",
+    "reviewNote": "Repainted after the original crop clipped both stopper and base; original 512 source preserved at /tmp/worker-shadow-02/shadow_lob_16-initial.png. The upward crop y=0.48 leaves clear space above the entire crown and keeps the bottle base visible. A stronger shift upward (y=0.46) clips the base. Parent review pending.",
     "cardId": "shadow_lob_16"
+  },
+  {
+    "name": "Infernal Contract",
+    "prompt": "Paint an illustration for the Hexmancers card “Infernal Contract.” The central story is a pact sealed by a clasped handshake: a mortal's gloved hand grips a red-skinned demon's dark clawed hand above a single complete, unmarked parchment contract with a large dark wax seal. A faint stream of warm ember-colored light siphons from the mortal's wrist into the demon's sleeve, showing the bargain's cost; a shadowy horned profile looms in the background. Keep the hands and entire blank contract fully visible and unmistakable, with no legible writing. Painterly medieval high-fantasy collectible-card art, believable parchment, leather, skin and brass, dramatic candlelight against deep burgundy and charcoal, rich directional lighting, atmospheric depth, grounded anatomy and a readable silhouette. Square 1:1 composition for a 512x512 master; keep both clasped hands, full document and seal within x24..488,y105..407, arrange them together in the middle 60%, quiet dark stone and smoke above/below for the 206:141 crop. No frame, lettering, readable text, runes, numbers or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-763181fc-dac0-4976-aaf9-6ac008bfda8a.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_boon_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.52
+    ],
+    "status": "generated",
+    "batch": 12,
+    "reviewNote": "512-square source, downward-shifted wide crop (focalPoint y=0.52) and thumbnail reviewed. The clasped pact hands, entire parchment and wax seal fit clearly; the ember siphon conveys the bargain. Parent review pending.",
+    "cardId": "shadow_boon_14"
   }
 ]

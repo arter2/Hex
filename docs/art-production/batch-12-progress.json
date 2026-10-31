@@ -2,10 +2,10 @@
   "batch": 12,
   "status": "in-progress",
   "targetNewImages": 200,
-  "generatedSources": 82,
-  "reviewedSources": 65,
-  "missingSources": 118,
-  "reviewedPackets": 13,
+  "generatedSources": 93,
+  "reviewedSources": 85,
+  "missingSources": 107,
+  "reviewedPackets": 17,
   "requiresRepaint": [],
   "baselineActive": 1234,
   "targetActive": 1434,
@@ -139,7 +139,7 @@
       "colour": "brown",
       "source": "game/cards/art/masters/brown_instant_63.png",
       "sha256": "66db518aae1ed8e98ec50b501701d2bbd2d6e2abf89f4d1e6b4412a8742dc08c",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.5
@@ -150,8 +150,8 @@
       "name": "Dwarven Sorting Tray",
       "colour": "brown",
       "source": "game/cards/art/masters/brown_instant_64.png",
-      "sha256": "a62d403c237d03a79eaa56047299130dc7ee48ab9ad1329779662dfe0dc108a1",
-      "reviewed": false,
+      "sha256": "54f1f492c27c343836a8e50e6d708fbf10ab165a6eddf4d2128a9c6ee12f3078",
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.5
@@ -163,7 +163,7 @@
       "colour": "brown",
       "source": "game/cards/art/masters/brown_instant_65.png",
       "sha256": "c08da9ee29cd918f969e9893c8e0c24c93776df0d6625dff997e1b058969092e",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.25
@@ -175,10 +175,10 @@
       "colour": "brown",
       "source": "game/cards/art/masters/brown_instant_66.png",
       "sha256": "bcbd5cb92b98b22b4f69fd0ce7449fed7857283d4573e68d8daee1a241cda7b9",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
-        0.5
+        0.46
       ]
     },
     {
@@ -187,7 +187,7 @@
       "colour": "brown",
       "source": "game/cards/art/masters/brown_instant_67.png",
       "sha256": "45367d3292ed22fd80d81fd6adc66ae0eb3ffa10e081d89176931957a41bc839",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.5
@@ -199,7 +199,7 @@
       "colour": "fire",
       "source": "game/cards/art/masters/cinder_rampart.png",
       "sha256": "150d94df1c7985bc2520125eedc87262e887508366984c8744fc57e4013d4be6",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.5
@@ -223,7 +223,7 @@
       "colour": "fire",
       "source": "game/cards/art/masters/fire_boon_14.png",
       "sha256": "dad95487f5b3c11082e2b7807f364a3187fb6284012acad48029c99300412779",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.5
@@ -247,7 +247,7 @@
       "colour": "fire",
       "source": "game/cards/art/masters/fire_charge_14.png",
       "sha256": "4e7b1fe48b32a345c721c5747d37ee30f2c65fb4b98ed020d2292053af450f92",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.46
@@ -283,7 +283,7 @@
       "colour": "fire",
       "source": "game/cards/art/masters/fire_lob_16.png",
       "sha256": "c2bc3778184fd995a699dbf6194e0e60c451da87d4976bf7b27fdc1a3a9d8c25",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.46
@@ -338,6 +338,18 @@
       ]
     },
     {
+      "cardId": "fire_summon_10",
+      "name": "Fire Fox",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_summon_10.png",
+      "sha256": "46720dadcb8d1b8bef59dda40d4323d8414e0a31964bf2e1d4fa0dcb5f4f5b30",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "cardId": "fire_ward_14",
       "name": "Molten Shell",
       "colour": "fire",
@@ -362,12 +374,36 @@
       ]
     },
     {
+      "cardId": "frost_boon_15",
+      "name": "Lucky Doubloon",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_boon_15.png",
+      "sha256": "0a480eb6869cd680cfdb5e16e1a43dbe3a540907a9a7f6d54cab2c45d1669569",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "cardId": "frost_charge_11",
       "name": "Frozen Arrows",
       "colour": "frost",
       "source": "game/cards/art/masters/frost_charge_11.png",
       "sha256": "175a7d41c5007abf72c95f118448a2f936d6d3d80bea07e4382d30ec684f8449",
       "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "frost_charge_12",
+      "name": "Hail Pouch",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_charge_12.png",
+      "sha256": "6bf12830146a592614d46a056a05326897dd5a0b341a138cf7e40a6d4409b2b5",
+      "reviewed": false,
       "focalPoint": [
         0.5,
         0.5
@@ -395,6 +431,18 @@
       "focalPoint": [
         0.5,
         0.5
+      ]
+    },
+    {
+      "cardId": "frost_lob_15",
+      "name": "Falling Iceberg",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_lob_15.png",
+      "sha256": "0a69c3b4c6f168432a556303e891a649b13c36dcb1b84e4cbf29f1c7409f03aa",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.41
       ]
     },
     {
@@ -458,12 +506,24 @@
       ]
     },
     {
+      "cardId": "frost_ward_14",
+      "name": "Dome of Atlantis",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_ward_14.png",
+      "sha256": "ab5ac3c50459e32b8a27210455d2fdb1163317164bd4cdc03b35f170a758ad6a",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "cardId": "grave_rampart",
       "name": "Grave Rampart",
       "colour": "shadow",
       "source": "game/cards/art/masters/grave_rampart.png",
       "sha256": "6708179bbc83f8689f67f02e5bfad1fbe991ccf377a1311f10c4df1f8a2aa0d9",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.5
@@ -607,10 +667,22 @@
       "colour": "light",
       "source": "game/cards/art/masters/hero_halo.png",
       "sha256": "9c819f013b6d0a73a97db86dc14a3e0893cb835827a24ba72be596fa5778e9e3",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.5
+      ]
+    },
+    {
+      "cardId": "hero_lia",
+      "name": "Bloomwarden Lia",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/hero_lia.png",
+      "sha256": "260c1515f5e9e8313414ce8039fa8c96a7ae137654fbdc993192f05f206d404d",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.342
       ]
     },
     {
@@ -631,7 +703,7 @@
       "colour": "shadow",
       "source": "game/cards/art/masters/hero_shade.png",
       "sha256": "9f0ac00aaf560eeed2423b93e8ca6047cb19e75996793b3bf6ef26a3f297604b",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.42
@@ -691,7 +763,7 @@
       "colour": "light",
       "source": "game/cards/art/masters/light_machine_08.png",
       "sha256": "dd5bfc5219aedbcc91ecbf2bcbdd24ad6af66388d57dbbbb48b87af049f53931",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.44
@@ -710,12 +782,24 @@
       ]
     },
     {
+      "cardId": "light_strike_14",
+      "name": "Aegis Bash",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_strike_14.png",
+      "sha256": "660dc9a49b40f6db24baebbabdf421f72149f000284284e2903e36d8bbb92167",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "cardId": "light_summon_08",
       "name": "Thousand-Year Crane",
       "colour": "light",
       "source": "game/cards/art/masters/light_summon_08.png",
       "sha256": "07f37994ada47cabae1737f40ad55f1f95bd2c61e84b8be72117b34a51673a51",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.43
@@ -727,7 +811,7 @@
       "colour": "light",
       "source": "game/cards/art/masters/light_utility_12.png",
       "sha256": "e236feaa62bf3daccea1c954f601feedd114605df5a87558cba1189474205a89",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.5
@@ -755,6 +839,18 @@
       "focalPoint": [
         0.5,
         0.5
+      ]
+    },
+    {
+      "cardId": "shadow_boon_14",
+      "name": "Infernal Contract",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_boon_14.png",
+      "sha256": "6ddc2d4115b7607cef901da0852c211402f24126c0f814d81163c945deaff150",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.52
       ]
     },
     {
@@ -787,10 +883,10 @@
       "colour": "shadow",
       "source": "game/cards/art/masters/shadow_lob_16.png",
       "sha256": "13275e408a760d60d708d228a0287b2c41eb1b04ba0531bbfdf2cf9fa2be8f04",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
-        0.5
+        0.48
       ]
     },
     {
@@ -811,7 +907,7 @@
       "colour": "shadow",
       "source": "game/cards/art/masters/shadow_strike_14.png",
       "sha256": "1f35bd16d4508349b5e3074dcb38d29b1330a1c3b3919e94f512acac4c6d49fc",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.4
@@ -938,6 +1034,18 @@
       ]
     },
     {
+      "cardId": "thornwood_cage",
+      "name": "Thornwood Cage",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/thornwood_cage.png",
+      "sha256": "045f7163d9b97d545f5d31238fb45f056584371fa2847304a37ebd797e4ea2da",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.449
+      ]
+    },
+    {
       "cardId": "verdant_boon_12",
       "name": "Tapio's Favour",
       "colour": "verdant",
@@ -992,6 +1100,30 @@
       "source": "game/cards/art/masters/verdant_strike_15.png",
       "sha256": "de51a73adfcf94068b65ce1a8b63fec70be72bfe67957342ad30b45c69712b60",
       "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_strike_16",
+      "name": "Curare Needle",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_strike_16.png",
+      "sha256": "3eb0bea37b2808c93fb3ea1f45fe2e7e1615668b272c2af91d6d331638685c11",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_summon_14",
+      "name": "Pixie Swarm",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_14.png",
+      "sha256": "e32ae1b0d3c8619f32617ea1ebdf6256e48805fc79a079547571f6ae5fc111f7",
+      "reviewed": false,
       "focalPoint": [
         0.5,
         0.5

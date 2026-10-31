@@ -405,6 +405,52 @@ test('hostile peer messages are ignored', () => {
   assert.equal(p.B.state, 'fighting'); assert.equal(p.B.log('hit').length, 0);
 });
 
+// ---- pairing codes (nettransport.js) ----
+const { packSignal, unpackSignal } = require('../../game/nettransport.js');
+const FIXTURE_SDP = ['v=0', 'o=- 4611731400430051336 2 IN IP4 127.0.0.1', 's=-', 't=0 0', 'a=group:BUNDLE 0',
+  'm=application 9 UDP/DTLS/SCTP webrtc-datachannel', 'c=IN IP4 0.0.0.0', 'a=ice-ufrag:abcd', 'a=ice-pwd:' + 'x7Qp'.repeat(6),
+  'a=fingerprint:sha-256 ' + Array.from({ length: 32 }, (_, i) => ((i * 37 + 11) & 255).toString(16).padStart(2, '0').toUpperCase()).join(':'),
+  'a=setup:actpass', 'a=mid:0', 'a=sctp-port:5000', 'a=max-message-size:262144',
+  ...Array.from({ length: 12 }, (_, i) => `a=candidate:${1000 + i * 31} 1 udp ${2113937151 - i * 13} 192.168.${i * 7 + 3}.${10 + i * 5} ${50000 + i * 977} typ host generation 0 ufrag q${i}Zk network-id ${i + 1} network-cost ${999 - i}`),
+  ''].join('\r\n');
+const badCode = async c => { try { await unpackSignal(c); return null; } catch (e) { return e; } };
+test('code round trip', async () => {
+  assert.ok(FIXTURE_SDP.length > 1000);
+  const d = { type: 'offer', sdp: FIXTURE_SDP };
+  const code = await packSignal(d);
+  assert.ok(code.startsWith('HEX1.'));
+  assert.ok(/^HEX1\.[A-Za-z0-9_.]{1,4}(-[A-Za-z0-9_.]{1,4})*$/.test(code), code);
+  assert.deepEqual(await unpackSignal(code), d);
+  assert.deepEqual(await unpackSignal(await packSignal({ type: 'answer', sdp: FIXTURE_SDP })), { type: 'answer', sdp: FIXTURE_SDP });
+});
+test('forgiving input', async () => {
+  const d = { type: 'offer', sdp: FIXTURE_SDP };
+  const code = await packSignal(d);
+  const mid = code.length >> 1;
+  const variants = [
+    code.replace(/-/g, ' '), code.slice(0, mid) + '\n' + code.slice(mid), '  ' + code + '\r\n', code + '-', code.toLowerCase().replace('hex1.', 'HEX1.'),
+    'hex1.' + code.slice(5), 'Hex1.' + code.slice(5), code.replace(/-/g, '-\n')
+  ];
+  for (const v of variants) {
+    const r = await badCode(v);
+    if (r) { assert.ok(r instanceof Error && r.message.startsWith('Bad code'), String(r)); continue; }
+    assert.deepEqual(await unpackSignal(v), d);
+  }
+  // the clearly valid ones really do parse
+  for (const v of [code.replace(/-/g, ' '), code + '-', '  ' + code + '\r\n', 'hex1.' + code.slice(5), code.slice(0, mid) + '\n' + code.slice(mid)])
+    assert.deepEqual(await unpackSignal(v), d);
+});
+test('garbage', async () => {
+  const code = await packSignal({ type: 'offer', sdp: FIXTURE_SDP });
+  const flip = i => code.slice(0, i) + (code[i] === 'A' ? 'B' : 'A') + code.slice(i + 1);
+  const toxic = ['', 'hello', 'HEX1.', 'HEX1.@@@', 'HEX2.' + code.slice(5), flip(5), flip(6), flip(20), flip(code.length >> 1), flip(code.length - 1),
+    await packSignal({ type: 'offer', sdp: 'm=application 9' }), null, undefined, 42];
+  for (const c of toxic) {
+    const e = await badCode(c);
+    assert.ok(e instanceof Error && e.message.startsWith('Bad code'), J(c) + ' -> ' + e);
+  }
+});
+
 (async () => {
   let failed = 0;
   for (const [name, fn] of tests) {

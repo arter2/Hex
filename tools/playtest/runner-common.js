@@ -28,6 +28,7 @@ async function launch(options = {}) {
     opts.args = [
       '--use-gl=swiftshader',
       '--enable-unsafe-swiftshader',
+      ...(options.args || []),
       ...(options.preciseMemory ? ['--enable-precise-memory-info', '--js-flags=--expose-gc'] : [])
     ];
   return { browser: await pw[engine].launch(opts), engine };

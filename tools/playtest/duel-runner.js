@@ -560,6 +560,106 @@ check('opponent leaves', async () => {
   };
 });
 
+// ---- real WebRTC between the two pages (no bridge): RtcTransport from nettransport.js, pairing by code ----
+async function rtcConnect() {
+  await both(() => {
+    if (window.__rtc) window.__rtc.close();
+    window.__rtc = null;
+  });
+  const { offerCode } = await ev('A', async () => {
+    const h = await RtcTransport.host();
+    window.__rtcHost = h;
+    window.__rtc = h.transport;
+    return { offerCode: h.offerCode };
+  });
+  const { answerCode } = await ev('B', async c => {
+    const j = await RtcTransport.join(c);
+    window.__rtc = j.transport;
+    return { answerCode: j.answerCode };
+  }, offerCode);
+  await ev('A', c => window.__rtcHost.accept(c), answerCode);
+  await both(() => {
+    window.__rtcGot = [];
+    window.__rtc.onmessage = t => window.__rtcGot.push([performance.now(), t]);
+    return window.__rtc.opened(10000);
+  });
+  return { offerCode, answerCode };
+}
+check('webrtc: connect by code and hello', async () => {
+  const t0 = Date.now();
+  const { offerCode, answerCode } = await rtcConnect().catch(e => ({ err: e.message }));
+  if (!offerCode) return { ok: false, detail: answerCode || 'connect failed' };
+  await ev('A', () => __rtc.send(JSON.stringify({ t: 'hello', v: 1, name: 'Ann', deck: [] }), 'safe'));
+  const ok = await within('B', () => __rtcGot.some(g => JSON.parse(g[1]).t === 'hello'), null, 2000);
+  return { ok, detail: { ms: Date.now() - t0, offerLen: offerCode.length, answerLen: answerCode.length } };
+});
+
+check('webrtc: channels are separate', async () => {
+  await ev('B', () => (__rtcGot.length = 0));
+  await ev('A', () => {
+    // 200 position messages on the fast channel and 20 hits on the safe one, interleaved
+    for (let i = 0; i < 200; i++) {
+      __rtc.send(JSON.stringify({ t: 'pos', ts: i, fx: i, fz: 0, vx: 0, vz: 0 }), 'fast');
+      if (i % 10 === 0) __rtc.send(JSON.stringify({ t: 'hit', ts: i, dmg: i / 10, color: 'red', tile: { c: 0, r: 0 } }), 'safe');
+    }
+  });
+  await within('B', () => __rtcGot.filter(g => JSON.parse(g[1]).t === 'hit').length >= 20, null, 3000);
+  await sleep(300);
+  const got = (await ev('B', () => __rtcGot.map(g => g[1]))).map(JSON.parse);
+  const hits = got.filter(m => m.t === 'hit').map(m => m.dmg);
+  const pos = got.filter(m => m.t === 'pos');
+  const inOrder = hits.length === 20 && hits.every((d, i) => d === i);
+  const valid = pos.every(m => Number.isInteger(m.ts) && m.ts >= 0 && m.ts < 200 && m.fx === m.ts);
+  return { ok: inOrder && valid && pos.length > 0, detail: { hits: hits.length, inOrder, posArrived: pos.length, valid } };
+});
+
+check('webrtc: latency budget', async () => {
+  // B echoes each ping as a pong on the same channel; A times 200 round trips at 20 ms spacing
+  await ev('B', () => {
+    __rtc.onmessage = t => {
+      const m = JSON.parse(t);
+      if (m.t === 'ping') __rtc.send(JSON.stringify({ t: 'pong', n: m.n }), 'fast');
+    };
+  });
+  const rtts = await ev('A', async () => {
+    const sent = [], got = new Array(200).fill(null);
+    __rtc.onmessage = t => {
+      const m = JSON.parse(t);
+      if (m.t === 'pong') got[m.n] = performance.now() - sent[m.n];
+    };
+    for (let i = 0; i < 200; i++) {
+      sent[i] = performance.now();
+      __rtc.send(JSON.stringify({ t: 'ping', n: i }), 'fast');
+      await new Promise(r => setTimeout(r, 20));
+    }
+    await new Promise(r => setTimeout(r, 300));
+    return got;
+  });
+  const done = rtts.filter(x => x !== null).sort((a, b) => a - b);
+  const q = f => done[Math.min(done.length - 1, Math.floor(done.length * f))];
+  const detail = { replies: done.length, medianMs: +q(0.5).toFixed(2), p95Ms: +q(0.95).toFixed(2), maxMs: +done[done.length - 1].toFixed(2) };
+  console.log('  latency (fast channel, 200 pings @20ms):', JSON.stringify(detail));
+  return { ok: done.length >= 190 && detail.medianMs < 15 && detail.p95Ms < 40, detail };
+});
+
+check('webrtc: session clock.rtt after the lobby handshake', async () => {
+  await rtcConnect();
+  await both(() => {
+    window.__rtc.onmessage = null;
+  });
+  for (const [n, host, name] of [['A', true, 'Ann'], ['B', false, 'Bo']])
+    await ev(n, ([host, name]) => {
+      window.__rs = new DuelSession(window.__rtc, { name, deck: activeDeck().list, host });
+    }, [host, name]);
+  const ok = await within('A', () => __rs.state !== 'connecting' && __rs._samples.length > 0, null, 5000);
+  const rtt = await both(() => [__rs.state, __rs.clock.rtt]);
+  await both(() => {
+    __rs.leave();
+    __rtc.close();
+  });
+  return { ok: ok && rtt.every(r => r[1] < 40), detail: { rtt } };
+});
+
 async function run(out = process.argv[2] || 'playtest-duel-results') {
   fs.mkdirSync(out, { recursive: true });
   const results = [];

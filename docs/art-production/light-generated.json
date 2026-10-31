@@ -3284,5 +3284,113 @@
     "batch": 13,
     "reviewNote": "First source preserved at /tmp/light-03-repairs/light_strike_30-attempt-01.png. Inspected replacement 512-square source, centered 206:141 crop and 128-pixel crop: the knight face and hands, Durandal pommel, grip, guard, complete blade and struck shield all fit with clear margin; the bright tip and straight stroke remain readable.",
     "previousGeneratedPath": "/workspace/generated_images/exec-ee140d07-1287-49fa-9a47-b2ce6a5a5864.png"
+  },
+  {
+    "cardId": "light_strike_31",
+    "name": "Excalibur's Arc",
+    "prompt": "Create standalone painterly medieval-high-fantasy collectible-card art for the exact card Excalibur's Arc. A calm, determined medieval kingly knight with a clear face and firm gauntleted hand presents Excalibur, a complete compact one-handed legendary sword with ornate gold crossguard, blue jewel pommel and fully visible bright blade. The sword angles gently across the central square, entirely within x90..420,y165..355; show both pommel and sharp tip with empty margin. A swift golden arc from the blade chains cleanly to two separate armored foes in a staggered row, each hit marked by a bright but controlled impact, while the knight’s posture and glow suggest valor. The whole sword stays the main named subject; no oversized beam obscures it. Believable steel, enamel, cloth and mail, dramatic warm light against cool stone, painterly grounded brushwork and atmospheric depth matching supplied Hexmancers light references. Explicit 1:1 SQUARE canvas for a 512x512 editable master composed for the 206:141 card crop. Keep face, sword, hand and chain impacts in x24..488,y105..407. No text, lettering, runes, frame or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6d4c6ec7-5417-4ec0-82fd-3124985f5248.png",
+    "editableSourcePath": "game/cards/art/masters/light_strike_31.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop at focalPoint [0.5,0.46], and 128-pixel crop: the knight’s crown/face and hand, complete Excalibur pommel/guard/tip and the chain impacts all remain visible."
+  },
+  {
+    "cardId": "light_lob_17",
+    "name": "Siege Stone of Acre",
+    "prompt": "Create standalone painterly medieval-high-fantasy collectible-card art for the exact card Siege Stone of Acre. Show one complete dense dark-gray siege stone, an irregular fist-sized carved limestone projectile with a small simple cross-shaped carving but no letters, spinning in a short low arc toward a battered medieval gate; the whole stone is the prominent named object, fully outlined and not hidden by the impact. At the gate it bursts into pale stone chips and dusty gold light, a pressure wave knocking two armored defenders backward. Compact horizontal composition keeps complete stone and gate impact readable, the stone itself centered within x150..365,y165..340. Believable weathered limestone, old masonry, iron and dust, dramatic warm sunbeam, grounded painterly brushwork and atmospheric depth matching supplied Hexmancers light references. Explicit 1:1 SQUARE canvas for a 512x512 editable master designed for a 206:141 crop. Keep full stone, trajectory and burst within x24..488,y105..407; quiet siege sky/ground beyond. No text, readable symbols, frame or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9d1c8f23-e9cc-4567-9993-2acf1ac146a9.png",
+    "editableSourcePath": "game/cards/art/masters/light_lob_17.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel crop: the whole carved siege stone remains distinct from its burst, with the gate impact and two knocked-back defenders clear."
+  },
+  {
+    "cardId": "light_lob_18",
+    "name": "Holy Water Vials",
+    "prompt": "Create standalone painterly medieval-fantasy collectible-card art for the exact card Holy Water Vials. Three compact clear-glass holy-water flasks, each a different simple shape, float whole and distinct in a gentle horizontal arc above a stone courtyard; each complete cork stopper, glass shoulder, body and rounded base is visible. One flask has just landed and released a bright circular ring of water across the ground, washing the stone in a soft warm restorative glow. Keep all three full vials the named main subject, with their silhouettes unobscured and the ring pattern clearly circular; no people needed. Tactile glass, cork and silver collars, warm sunlight through cool water, painterly grounded materials and atmospheric depth matching supplied Hexmancers light references. Explicit 1:1 SQUARE canvas for a 512x512 editable master composed for the 206:141 crop. Keep every stopper and base safely within x80..432,y135..385 and the ring fully readable within x24..488,y105..407. No labels, writing, runes, frame or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6e0d77c2-0bd2-4daf-a205-da93b858f04a.png",
+    "editableSourcePath": "game/cards/art/masters/light_lob_18.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.44
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop at focalPoint [0.5,0.44], and 128-pixel crop: all three vials retain complete corks, necks, bodies and bases with margin; the restorative splash ring is still recognizable along the ground."
+  },
+  {
+    "cardId": "light_lob_19",
+    "name": "Apothecary's Vials",
+    "prompt": "Create standalone painterly medieval-fantasy collectible-card art for the exact card Apothecary's Vials. Three small complete glass apothecary vials, each with a visible cork stopper and weighted base, fly together in a brief shallow arc toward an armored target; give the trio distinct ruby, blue and amber liquids while keeping all three bottles whole, evenly spaced and easy to count. At the target they burst in one compact splash of colored potion and glass-light, showing a quick single impact with no lingering field. The complete vials remain the dominant named subject; no apothecary figure is needed. Believable clear glass, cork, brass collars and fluid, painterly warm candlelight against cool stone, grounded brushwork and atmospheric depth matching supplied Hexmancers light references. Explicit 1:1 SQUARE canvas for a 512x512 editable master designed for a 206:141 crop. Keep all bottle stoppers and bases safely inside x80..432,y135..385, with the impact still inside x24..488,y105..407. No labels, writing, runes, frame or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d7fd4a56-d1ed-48df-afdf-7ed57a9c3278.png",
+    "editableSourcePath": "game/cards/art/masters/light_lob_19.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop at focalPoint [0.5,0.46], and 128-pixel crop: all three full vials retain complete stoppers, glass bodies and bases; the single quick splash on the armored target remains clear."
+  },
+  {
+    "cardId": "light_charge_16",
+    "name": "Arrows of Heracles",
+    "prompt": "Create standalone painterly medieval-Greek-fantasy collectible-card art for the exact card Arrows of Heracles. A strong but grounded Greek archer with a clear focused face and visible drawing hand releases one special golden-headed arrow horizontally across the center; show the entire arrow from its nocked feather-fletching to its sharp bronze point, unbroken and safely inside x110..432,y220..285 on the 512-square canvas. The arrow pierces a shield rim and continues toward a second armored foe, where a bright contained impact briefly stuns him. A compact quiver of several matching arrows at the archer’s shoulder suggests many uses; keep the full shaft of the main flying arrow the named subject, not an oversized energy beam. Compact horizontal staging keeps archer face, both relevant hands, full arrow, quiver and piercing action visible in the 206:141 card crop. Believable bronze, leather, wood, feather and cloth, warm Olympian sun against cool battlefield shadows, grounded painterly brushwork and atmospheric depth matching supplied Hexmancers light references. Explicit 1:1 SQUARE canvas for a 512x512 editable master. Keep all identity-critical face, hand and arrow features inside x24..488,y105..407 with quiet sky/ground outside. No gore, text, lettering, runes, frame or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-897dee90-16a7-4e25-a581-8de9d19f8c97.png",
+    "editableSourcePath": "game/cards/art/masters/light_charge_16.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel crop: archer face, drawing hand, full arrow shaft/fletching and quiver remain visible; the arrow pierces the shield at a clear bright stun impact."
+  },
+  {
+    "cardId": "light_summon_11",
+    "name": "White Wolf",
+    "prompt": "Create standalone painterly medieval-high-fantasy collectible-card art for the exact summon White Wolf. Depict one unmistakable true arctic white wolf, not a dog or fox: lean athletic wolf anatomy, long muzzle, alert pointed ears, pale silver-white winter coat and sharp natural amber eyes. It pounces forward over a snow-dusted ridge, forepaws extended and breath leaving a faint chilling mist; keep the whole wolf’s head/eyes and forequarters prominent and centered, with the trailing legs allowed to crop naturally. A cool silver aura catches on the fur without hiding its silhouette. Painterly grounded anatomy and believable layered fur, warm sunrise rim light against cool blue snow, atmospheric depth matching supplied Hexmancers light-creature references. Explicit 1:1 SQUARE canvas for a 512x512 editable master designed for a 206:141 crop. Keep face, eyes, chest and leading paws inside x24..488,y105..407, with quiet snowy margins. No collar, human clothing, text, frame or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-10a84eec-75f4-42b6-aebb-4f38d5492912.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel crop: true wolf head, pointed ears, amber eyes, chest and two leading paws remain central and readable; trailing body crops naturally."
   }
 ]

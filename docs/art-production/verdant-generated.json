@@ -3291,5 +3291,95 @@
     "status": "generated",
     "batch": 13,
     "reviewNote": "Square source, centered 206:141 crop and thumbnail inspected: the elf’s focused face, both drawing hands and full arrow path remain visible, with the distinct tip meeting the shield and fletching visible by the drawing hand. The target is secondary and partly cropped."
+  },
+  {
+    "cardId": "verdant_strike_34",
+    "name": "Mapinguari Roar",
+    "prompt": "Illustrate the Hexmancers verdant strike Mapinguari Roar, a quick concussive shockwave that can restore the beast's vitality after a foe falls. A legendary Amazonian mapinguari fills the scene: a huge shaggy sloth-like forest creature with deep-set amber eyes, a powerful open maw and curved foreclaws, its fur threaded with moss and leaves. It unleashes a resonant roar across a jungle clearing; a broad ring of green-gold air bends branches and knocks two armored intruders backward, while a few healing motes flow back toward the creature. Keep the creature's eyes, full muzzle and open mouth clearly visible, with the shockwave readable and not hiding its face. Painterly medieval high-fantasy collectible-card art, believable fur, moss, bark and stone, dramatic forest light, atmospheric depth and expressive brushwork. Explicit 1:1 square composition for an editable 512x512 master. Keep face, mouth and main shockwave inside x24..488,y105..407; horizontal middle-60% composition, quiet canopy and forest floor above/below for a 206:141 crop. Incidental limbs, leaves and wave edges may crop. No gore, text, frame, numbers, interface, logo, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7d452593-99b2-4992-959b-a714b0502abb.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_34.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Mapinguari eyes, full muzzle and open mouth remain prominent inside its shockwave; the creature and roar read clearly at small size. Parent review pending."
+  },
+  {
+    "cardId": "verdant_strike_35",
+    "name": "Druid's Golden Sickle",
+    "prompt": "Illustrate the Hexmancers verdant strike Druid's Golden Sickle, a ricocheting weapon whose magic restores a little vitality. A focused druid in layered forest-green robes stands in a sunlit grove, face and eyes visible beside one hand holding a compact golden sickle at chest height. Show the entire curved bright-gold blade, pointed tip, narrow neck, complete handle and pommel with clear margin around it. The druid has just sent the sickle in a short luminous ricochet between two distant thorn-armored foes; a few soft green healing motes return along the gold trail to the druid's free hand. Keep the named weapon large and unmistakable, all of it in frame, with the druid as a supporting presence. Painterly medieval high-fantasy collectible-card art, believable gold, carved wood, leather and leaves, warm directional forest light, atmospheric depth and detailed brushwork. Explicit 1:1 square composition for an editable 512x512 master. Keep druid face, hand, complete sickle and ricochet action within x24..488,y105..407, arrange horizontally across middle 60%, quiet canopy/clearing above and below for a 206:141 crop. No text, frame, numbers, interface, logo, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-44cc712a-e50e-442f-b616-5e3c96a6ff6a.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_35.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Druid face and hand, full golden sickle including its tip and handle, and ricochet/healing trails remain clear. Parent review pending."
+  },
+  {
+    "cardId": "verdant_strike_36",
+    "name": "Ride of the Wild Hunt",
+    "prompt": "Illustrate the Hexmancers verdant strike Ride of the Wild Hunt, a precise snipe that drains vitality from its target and sends recoil through the rider. A spectral wild-hunt ranger rides a powerful dark forest stag at a gallop through misty ancient trees. Keep the ranger's face and focused eyes clear beside the drawing hand and a complete compact longbow; show the stag's head, bright eye and branching antlers at the same height. The rider looses one narrow emerald-gold arrow toward a single distant armored target; a thin thread of green vitality streams back along the shot, while the rider's cloak pulls sharply from the recoil. Make the mounted hunter and stag the dominant subject, with a clean horizontal shot path. Painterly medieval high-fantasy collectible-card art, believable horse tack, antlers, leather and leaf-shadow, dramatic moonlit forest atmosphere and fine brushwork. Explicit 1:1 square composition for an editable 512x512 master. Keep faces, drawing hand, full bow, stag head/antlers and arrow path inside x24..488,y105..407; compact horizontal middle-60% composition, quiet misty woods above/below for a 206:141 crop. Incidental hooves and cloak tails may crop. No text, frame, numbers, interface, logo, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f98599b1-9e4e-4886-99dd-9f1ef52d0d0f.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_36.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Rider face and drawing hand, stag head/eye/antlers, target and green snipe trail remain visible. Bow upper tip extends beyond the source; it is incidental to the named hunt and crop remains readable. Parent review pending."
+  },
+  {
+    "cardId": "verdant_strike_37",
+    "name": "Green Knight's Axe",
+    "prompt": "Illustrate the Hexmancers verdant strike Green Knight's Axe, a wedge-shaped cleaving blow with a chance for a critical hit and a valorous surge. A resolute green knight in leaf-patterned steel and dark emerald cloak swings a compact one-handed battle axe across a forest glade. Keep the knight's focused face and both gripping hands clear beside the full axe: complete curved blade, pointed cutting edge, haft and pommel all fit with margin. A broad wedge of green-gold force travels from the axe through two armored foes, with one bright starburst at the critical impact; a warm leaf-glow gathers over the knight's chest. Make the axe the unmistakable named feature, not hidden inside the light. Painterly medieval high-fantasy collectible-card art, believable steel, wood, leather, moss and leaves, dramatic forest light, atmospheric depth and fine brushwork. Explicit 1:1 square composition for an editable 512x512 master. Keep face, hands, complete axe and wedge action inside x24..488,y105..407; horizontal middle-60% arrangement, quiet canopy and ground above/below for a 206:141 crop. Incidental cloak hem may crop. No text, frame, numbers, interface, logo, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-de825426-d7d7-4590-a8e8-bd6ec869d90b.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_37.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Knight face and grips, full axe head and haft, and its broad wedge impact remain visible; weapon reads at thumbnail size. Parent review pending."
+  },
+  {
+    "cardId": "verdant_strike_38",
+    "name": "Caledfwlch",
+    "prompt": "Illustrate the Hexmancers verdant strike Caledfwlch, a charged piercing strike that empowers the wielder's valor. A legendary Welsh king in weathered green-and-gold armor stands in a forest clearing, face and steady eyes clear beside both hands gripping a complete ancient longsword named Caledfwlch. Show the entire sword from pommel through crossguard to pointed tip, compactly angled across the king's chest with generous margin; its pale steel blade has a subtle leaf-like fuller and warm golden edge-light, no writing. A straight green-gold line of force extends from the sword tip through two distant armored targets, piercing their shields in sequence, while a calm valor glow gathers around the king's hands. Keep the complete sword the strongest named object, fully separated from the background and not hidden in glare. Painterly medieval high-fantasy collectible-card art, believable steel, leather and engraved armor, dramatic woodland light and atmospheric depth, refined brushwork. Explicit 1:1 square composition for an editable 512x512 master. Keep king face, both hands, whole sword and linear action within x24..488,y105..407, horizontal middle-60% composition, quiet forest canopy/floor above/below for a 206:141 crop. No text, frame, numbers, interface, logo, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f0b333b4-3280-4175-a6bd-39fea9ea90cc.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_38.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. King face and both hands, complete pommel-to-point sword, straight piercing ray and shield impacts remain visible; the sword reads at thumbnail size. Parent review pending."
   }
 ]

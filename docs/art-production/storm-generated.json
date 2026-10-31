@@ -3292,5 +3292,95 @@
     "status": "generated",
     "batch": 13,
     "reviewNote": "Reviewed the 512-square source, direct 512×350 crop and 128×88 thumbnail: warrior’s face and throwing hand, full oak-splitting axe from haft end to blade and the boomerang lightning impact all remain inside the wide crop."
+  },
+  {
+    "cardId": "storm_strike_33",
+    "name": "Midas's Last Embrace",
+    "prompt": "Paint an original illustration for the exact card “Midas’s Last Embrace.” Mechanics: a quick boomerang-like golden strike drains an enemy’s vitality and returns spell energy when it kills. Depict King Midas as a weathered ancient ruler in dark bronze armor, his face and both hands clear, extending one golden hand toward a single armored foe. A luminous band of gold coils in a compact returning loop around the foe like an embrace, turning the foe’s armor to gold and drawing a thin golden stream back to Midas’s open hand. Show a faint blue spark returning to him to suggest spell energy, without text or symbols. Keep Midas’s face, hands and the full central embrace action within the crop-safe band; do not let the loop trail off. Painterly medieval fantasy collectible-card art, tactile aged bronze, leather and gold, dramatic warm highlights against storm-blue dusk, atmospheric depth like supplied Hexmancers storm references. Exact 1:1 square for 512×512 editable master, horizontal staging; keep face, hands and the complete main golden loop within x24…488,y105…407 for the 206:141 crop. Quiet sky/ground margins. No frame, text, numbers, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-48785d58-f54b-4b66-b4e5-49650cfd8582.png",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_33.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "The initial centered wide crop clipped the top of Midas’s face. Reviewed the full 512-square source and shifted the crop upward to focalPoint [0.5,0.42]; the revised direct 512×349 crop and 128×88 thumbnail keep his full face, eyes, crown and both casting hands visible, as well as the complete golden embrace around the target. Lower legs and scenery crop incidentally."
+  },
+  {
+    "cardId": "storm_strike_34",
+    "name": "Heaven-Rending Bolt",
+    "prompt": "Paint an original illustration for the exact card “Heaven-Rending Bolt.” Mechanics: a quick straight-line thunder strike stuns the first enemy and recoils its caster. Depict a storm-scarred warrior-mage at the edge of a high cliff, face and braced hands clearly visible as they release one brilliant, perfectly straight bolt of lightning from the palm across the battlefield into the first armored foe. The bolt tears through a dense seam in the cloud ceiling and hits with a compact blue-white stun flash; the caster’s cloak and stance recoil from the force. Keep the face, releasing hand and full central bolt path/impact inside the wide crop. Painterly medieval fantasy collectible-card illustration, believable wool, steel, rock and storm-clouds, dramatic directional light, rich blue-white electricity and atmospheric depth matching the supplied Hexmancers storm art. Exact 1:1 square master; arrange horizontally and protect the face, hand and main bolt inside x24…488,y105…407 for 206:141 crop, with expendable sky and cliff beyond. No frame, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d693f7e5-c7a1-4fb8-9c02-716e6cf6378c.png",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_34.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, direct 512×350 crop and 128×88 thumbnail: caster’s face and releasing hand remain within the crop; straight heaven-rending lightning, first impact and recoiling enemy read clearly."
+  },
+  {
+    "cardId": "storm_charge_16",
+    "name": "Ifrit Embers",
+    "prompt": "Paint an original illustration for the exact card “Ifrit Embers.” Mechanics: a limited handful of lobbed fire embers that drain vitality from the target. Depict a compact fire ifrit, a powerful ember spirit with a fierce but noble face and bright eyes, standing beside a small shallow bronze ember cup held at the same height as its face. With one visible hand the ifrit lobs three distinct orange-white embers in a short arc toward a distant armored target; a thin crimson thread of stolen vitality curls back from the target toward the spirit. The spirit’s face and both hands are prominent, the embers read as the action, and the complete cup from rim to rounded base remains visible. Painterly medieval fantasy collectible-card art, textured bronze, coal, smoke and fire, dramatic amber and storm-violet light, atmospheric depth like supplied Hexmancers references. Exact 1:1 square for a 512×512 editable master; horizontal composition, keep face, hands, full cup and central ember arc within x24…488,y105…407 for 206:141 crop. Quiet smoke and ground margins. No frame, lettering, text, runes, numbers or UI; no anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8770a8fb-526f-4940-91ce-d024fb6d4095.png",
+    "editableSourcePath": "game/cards/art/masters/storm_charge_16.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Repaired the first render because the ember cup was cut off. Reviewed the repaired 512-square source, direct 512×350 crop and 128×88 thumbnail: Ifrit’s face and hands, complete bronze cup from rim through rounded base, three-ember arc and target all remain legible."
+  },
+  {
+    "cardId": "storm_charge_17",
+    "name": "Canopic Jars",
+    "prompt": "Paint an original illustration for the exact card “Canopic Jars.” Mechanics: a reusable set of lobbed jars. Depict four compact ancient Egyptian canopic jars as the only foreground subject, carefully arranged side by side on a low stone ledge. Each is squat and wide, with a complete distinct stopper shaped as a human head, jackal head, baboon head, or falcon head; each stopper joins a rounded glazed-clay jar body and a solid footed base. Keep every jar separated enough that all four stoppers, shoulders, bodies and full bases are individually visible; no jar overlaps or hides another. One jar is caught just above the ledge in a gentle lob, glowing faintly with storm-blue light, while three remain upright. These are named reusable magic jars, so their complete silhouettes from stopper to base are the whole focus. Painterly medieval fantasy collectible-card still-life, nuanced glazed clay, worn gold, lapis and limestone, dramatic blue-gold directional light and atmospheric depth, matching supplied Hexmancers storm references. Exact 1:1 square composition for a 512×512 master; set the small jars in a horizontal row across the middle and keep every complete stopper and complete base within x24…488,y105…407 for the 206:141 crop, with quiet temple wall above and ledge below. No operator, no hands, no frame, labels, lettering, symbols, runes, numbers or UI. No anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a42658cf-575c-43b1-9eca-e78f43a9a8d1.png",
+    "editableSourcePath": "game/cards/art/masters/storm_charge_17.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, direct 512×350 crop and 128×88 thumbnail: all four canopic jars remain fully visible, each complete from distinct head-shaped stopper through glazed body to footed base; floating jar and storm glow read at thumbnail size."
+  },
+  {
+    "cardId": "storm_charge_18",
+    "name": "Forty Thieves' Hoard",
+    "prompt": "Paint an original illustration for the exact card “Forty Thieves’ Hoard.” Mechanics: a large supply of lobbed treasure strikes that drain vitality, with occasional critical hits. Depict one squat, compact ancient wooden treasure chest overflowing with forty thieves’ gold and gems on a dark stone floor. Show the complete object in a three-quarter view with the entire raised lid, hinge, side walls, front lock, complete sturdy base and feet all unobstructed and visible. A short arc of several gold coins and jewels lifts from the hoard toward a distant armored foe; one brilliant coin flashes as it hits, and a fine golden thread of stolen vitality curls back to the chest. The chest and its hoard are the clear named subject; no operator is present. Painterly medieval fantasy collectible-card still-life, tactile carved wood, aged bronze, gold and gemstones, storm-lit blue shadows with dramatic amber highlights and atmospheric depth matching the supplied Hexmancers storm references. Exact 1:1 square for a 512×512 master; chest is low and wide, centered horizontally; keep every part of its complete lid and base inside x24…488,y105…407 for the 206:141 crop. Quiet cave wall above and floor below. No frame, labels, text, lettering, runes, numbers or UI. No anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0f183e7a-da9d-47f0-9a1a-afae7f170c2c.png",
+    "editableSourcePath": "game/cards/art/masters/storm_charge_18.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, direct 512×350 crop and 128×88 thumbnail: full treasure chest from raised lid and hinges through front and feet/base remains visible; coin arc, gem hoard and vitality strike read at thumbnail size."
   }
 ]

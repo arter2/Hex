@@ -3376,5 +3376,77 @@
     "status": "generated",
     "batch": 13,
     "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Complete bomb, crest, glowing fuse and base remain visible beside the broad ring of fire; it reads as a distinct ash bomb at small size. Parent review pending."
+  },
+  {
+    "cardId": "fire_lob_19",
+    "name": "Sake Firebomb",
+    "prompt": "Paint an original standalone artifact illustration for the Hexmancers fire lob “Sake Firebomb.” Make one compact traditional ceramic sake flask the unmistakable central subject, with a rounded glazed body, short neck, sealed stopper and a small paper-wrapped fuse; show no writing or label text. The intact flask arcs just above a stone battlefield path, fuse glowing, as an orange ground burst begins a short distance behind it and throws dust outward. Keep the entire flask and every part of its stopper and fuse clearly visible, distinct from the fire and rocks. Painterly medieval/high-fantasy collectible-card art, nuanced believable glazed ceramic, paper, stone and embers, dramatic warm light, atmospheric depth and strong readable values. Match the supplied references' painterly materials and directional fantasy lighting, with the warm high-fantasy action feel of the accepted fire art. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the whole named sake flask, stopper and fuse within x24–488,y105–407 on the square; compose the artifact large and compact for the 206:141 card crop, with quiet scenery above and below. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-60c76263-88e1-4591-9bbf-3f8d929e2424.png",
+    "editableSourcePath": "game/cards/art/masters/fire_lob_19.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source and upward-adjusted 206:141 crop/thumb inspected (focalPoint y=0.43): the complete ceramic sake flask, stopper and burning fuse remain visible. The ground burst is distinct from the vessel and reads as the delayed firebomb impact."
+  },
+  {
+    "cardId": "fire_lob_20",
+    "name": "Thunder-Egg Geode",
+    "prompt": "Repaint the Hexmancers fire lob “Thunder-Egg Geode” as a more compact artifact composition. Make one complete, low horizontally nestled, egg-shaped thunder-egg geode the central subject, about 55% of the square’s width and 45% of its height, resting on a dark volcanic shelf. The whole oval nodule must fit with generous clear space above and below: visible rounded top, both sides and rounded bottom. Its rough charcoal stone shell has one narrow natural crack showing bright violet-blue crystals; short blue-white lightning forks frame the crack without obscuring or replacing the geode. A small scorched impact mark beneath it suggests a delayed stun burst. Keep the artifact fully intact and separate from surrounding rock. Painterly medieval/high-fantasy collectible-card art, nuanced believable stone, faceted crystal and volcanic ground, dramatic cool lightning against warm ember light, atmospheric depth and strong readable values. Match the supplied references' painterly materials and directional fantasy lighting, with the warm high-fantasy action feel of the accepted fire art. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the entire named egg-shaped geode and crystal seam within x48–464,y120–392 on the square, with visible margins on all sides; compose it horizontally for the 206:141 card crop, with quiet scenery above and below. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-a8cd81f3-d69f-4946-aa9c-731bfee8f90b.png",
+    "editableSourcePath": "game/cards/art/masters/fire_lob_20.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source, centered 206:141 crop and thumbnail inspected after compact re-render; the entire oval shell, rounded top and bottom, and violet crystal seam remain visible within the wide crop. Lightning frames the geode without obscuring it."
+  },
+  {
+    "cardId": "fire_lob_21",
+    "name": "Cinder Cone",
+    "prompt": "Paint an original illustration for the Hexmancers fire lob “Cinder Cone.” Show one compact, clearly conical cinder volcano rising from a dark basalt plain, its complete low triangular silhouette visible from base to open summit. A quick delayed ring of orange embers and flame circles the cone’s base as a red glow breaks through the crater; a modest ash puff rises but never hides the cone. The named feature must read immediately as a cinder cone, not a generic blast or towering volcano. Painterly medieval/high-fantasy collectible-card art, nuanced believable ash, basalt and molten rock, dramatic warm lava light against cool twilight, atmospheric depth and strong readable values. Match the supplied references' painterly materials and directional fantasy lighting, with the warm high-fantasy action feel of the accepted fire art. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the entire cone silhouette, open summit and ground ring within x24–488,y105–407 on the square; make the cone compact and wide for the 206:141 crop, with quiet volcanic sky and plain above and below. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-e95d10ba-c9e9-4cd9-a318-65660d482cce.png",
+    "editableSourcePath": "game/cards/art/masters/fire_lob_21.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source, centered 206:141 crop and thumbnail inspected: the entire cinder cone from base to open summit fits, with the complete ring of fire around its foot. The moderate ash plume stays behind the silhouette and does not obscure the named feature."
+  },
+  {
+    "cardId": "fire_lob_22",
+    "name": "Pyroclastic Cloud",
+    "prompt": "Repaint the Hexmancers fire lob “Pyroclastic Cloud” as a compact, complete spell feature. Show one dense, low rolling cloud of hot ash and gas, fully contained in the center of the square and occupying about 60% of its width and 40% of its height, with generous clear margins on every side. Give the cloud one rounded leading edge, a coherent dark gray billowing body and a distinct orange incandescent core inside; a few tiny distant figures below are knocked aside, but stay secondary. No plume may run off the canvas, and the cloud must not fill the whole sky. Painterly medieval/high-fantasy collectible-card art, nuanced believable ash, dust and embers, dramatic warm light against quiet cool twilight, atmospheric depth and strong readable values. Match the supplied references' painterly materials and directional fantasy lighting, with the warm high-fantasy action feel of the accepted fire art. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the entire main cloud, including both ends and its leading edge, within x48–464,y120–392 on the square; compose it wide and low for the 206:141 card crop, with quiet sky and ground above and below. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-a9fe93b3-1f84-407c-a932-c86e46c39f82.png",
+    "editableSourcePath": "game/cards/art/masters/fire_lob_22.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source, centered 206:141 crop and thumbnail inspected after compact re-render; the complete ash cloud, both ends, rounded leading edge and incandescent core fit with margin. Small figures stay beneath it and secondary."
   }
 ]

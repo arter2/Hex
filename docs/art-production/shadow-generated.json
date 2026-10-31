@@ -3287,5 +3287,98 @@
     "status": "generated",
     "batch": 13,
     "reviewNote": "Generated square normalized to exact 512x512 and inspected with true 206:141 crop and 128x88 thumbnail. Full fist and giant skull remain legible; target is knocked backward by the wedge-shaped impact."
+  },
+  {
+    "cardId": "shadow_strike_34",
+    "name": "Maw of the Abyss",
+    "prompt": "Create original square 1:1 painterly medieval-dark-fantasy collectible-card art for Maw of the Abyss. Actual legendary strike: a mine-shaped abyssal eruption strikes with tremendous force, knocks the target back, persists for two turns, and scorches its caster in the backlash. Show a vast stone chasm opening like a toothed mouth beneath one armored warrior, the dark maw as the dominant named subject; the warrior is hurled backward by a rising wedge of black-violet force while a warlock nearby recoils from a small burn across their own sleeve. Two dim afterglowing cracks suggest the danger lingers. Keep the full open maw and warrior's face visible, no gore. Painterly medieval ruin, layered stone teeth, smoke and iron, dramatic cold blue light around deep abyssal darkness, rich material detail, strong horizontal silhouette. Square 512x512; keep the complete maw, warrior face and warlock hand/face inside x24..488 y105..407; quiet mist above and broken stone below; designed for true 206:141 crop. Illustration only, no text/frame/UI, no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7187e96b-535f-46f4-9d95-340f6ba77915.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_strike_34.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "The exact 512 source, true 206:141 crop and 128x88 thumbnail were inspected. The complete central abyssal maw and the thrown target remain clear; the caster and backlash are readable as secondary action."
+  },
+  {
+    "cardId": "shadow_summon_15",
+    "name": "Cave Spider",
+    "prompt": "Create original square 1:1 painterly medieval-dark-fantasy collectible-card art for Cave Spider. Actual summon: a sturdy cave spider is a steady bolt attacker that curses foes and lingers for three turns. Show one large, anatomically believable cave spider clinging to the edge of a cavern wall, its eight legs and glossy black-brown body visible, a clear cluster of pale luminous eyes and fangs; it snaps a narrow thread of sickly violet curse at a distant armored explorer. The spider is the dominant recognizable creature, not a web-filled scenery scene. Painterly cavern stone, subtle moss, wet silk and chitin, dramatic teal cave light with a small cursed violet glow, atmospheric depth and readable silhouette. Square 512x512 master; keep spider's full face/eyes and the explorer's face inside x24..488 y105..407, quiet cave ceiling and ground margins; designed for true 206:141 crop. No text/frame/UI, no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6309e2a5-a5dd-4507-8ef5-550c78d1f427.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected square source, true 206:141 crop and 128x88 thumbnail. The spider’s face, luminous eyes and curse bolt dominate; the explorer remains a small, readable target."
+  },
+  {
+    "cardId": "shadow_summon_16",
+    "name": "Death's-Head Moth",
+    "prompt": "Create original square 1:1 painterly medieval-dark-fantasy collectible-card art for Death's-Head Moth. Actual summon: a frail, quick moth flies in a zigzag, carries a curse, and shatters after two turns. Make one large pale nocturnal moth the clear subject, wings spread in a sharp turning flight; the distinct natural skull-shaped pattern on its thorax/wings must be clearly recognizable and fully inside the safe crop. It darts around an armored sentry's head, leaving a short zigzag trail of black-violet dust; its delicate wing edges begin to break into luminous fragments to suggest its fragile short life. Painterly gothic garden at night, detailed velvet scales and wing veins, moonlit silver against deep indigo, subtle curse glow, elegant natural insect anatomy, strong silhouette. Square 512x512; keep whole moth including skull marking and the sentry's face inside x24..488 y105..407, quiet dark foliage above and below; designed for true 206:141 crop. No letters, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-eee69e7d-4df7-401c-8aa2-d36e5b40f6b7.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_16.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected square source, true 206:141 crop and 128x88 thumbnail. The moth’s skull-shaped body pattern and curse trail are legible; its main wing pattern and the sentry’s face remain visible."
+  },
+  {
+    "cardId": "shadow_strike_35",
+    "name": "Bone Darts",
+    "prompt": "Create original square 1:1 painterly medieval-dark-fantasy collectible-card art for Bone Darts. Actual quick strike: a straight line of bone darts hits and freezes a target for 1.3 seconds. Show a necromancer's bony gloved hand at left releasing three narrow ivory bone darts in one clean horizontal line toward a lone armored guard at right; the darts are clearly bone, and cold frost rapidly crystallizes across the struck guard's shoulder and braced forearm as he stiffens. The guard's face and caster's releasing hand stay visible. Painterly moonlit ossuary corridor, textured old bone, mail, stone and mist, sharp blue-white frost highlights with restrained violet shadow, grounded anatomy, strong horizontal action. Square 512x512 master; keep all dart heads, casting hand and target face/arm inside x24..488 y105..407, calm dark margins; designed for true 206:141 crop. No lettering/frame/UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6d0a54e3-5957-41e3-8e9b-12a5cad2a9b6.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_strike_35.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "repairPrompt": "Create a replacement square 1:1 painterly medieval-dark-fantasy illustration for Bone Darts. The previous crop showed an unintended partial caster face at the left edge. Remove the caster's face entirely: depict only a complete skeletal gauntlet and forearm entering at far left, with no head or body visible, so the hand is the intentional caster cue. Actual quick strike: three straight bone darts fly in one horizontal line and freeze a target for 1.3 seconds. Stage the full skeletal hand around x120 and a lone armored guard at right-center around x405, with the guard's complete face clearly inside the square; ivory darts travel horizontally from hand to target and blue-white frost spreads across the struck shoulder and braced forearm. Keep each dart point distinct and in frame. Painterly medieval ossuary corridor, tactile old bone, dark mail, stone and cold mist, controlled blue-white light, grounded anatomy, strong clean silhouette. Square 512x512, keep complete casting hand, all dart tips, target face and impact inside x24..488 y105..407; quiet shadowed margins; designed for true 206:141 crop. No other heads or faces, text/frame/UI, no anime, Disney-like cartoon, photorealism or pixel art.",
+    "previousGeneratedPath": "/workspace/generated_images/exec-c51c52fb-7114-40f5-b497-900d7737bd88.png",
+    "intermediateRepairPath": "/workspace/generated_images/exec-1f9bff53-976b-40da-a241-ff158253d15a.png",
+    "reviewNote": "Repainted after original square crop showed a partial unintended caster face; original source preserved at /tmp/shadow_strike_35-before-repaint.png. First repair had the hand too close to the left edge; prepared the final replacement separately and atomically replaced canonical. Inspected final source, true 206:141 crop and thumbnail: full skeletal hand and all three darts are visible; only incidental forearm continues off-frame, while target face and frost impact are clear."
+  },
+  {
+    "cardId": "shadow_summon_17",
+    "name": "Carrion Beetle",
+    "prompt": "Paint original square 1:1 painterly medieval-dark-fantasy collectible-card art for Carrion Beetle. Actual summon: a tough, slow moss-coated beetle guards its allies and drains a little life from foes over two turns. Show one large carrion beetle with a thick oval carapace carpeted in soft moss, positioned low and broad in a protective stance before a wounded cloaked ally; its head, dark eyes and mandibles are fully visible as it faces an approaching armored ghoul. A faint green thread of stolen vitality draws from the ghoul to the beetle, while the beetle's heavy legs brace like a living shield. Suggest lingering presence with a faint afterimage of its shell, not extra creatures. Old forest crypt, richly painted chitin, moss, soil, weathered bone and cloth, dramatic moonlit teal-green highlights against deep shadow, grounded insect anatomy, strong readable silhouette. Square 512x512 master; keep beetle's entire head/eyes, mossy carapace and any visible character face inside x24..488 y105..407, quiet dark canopy and earth margins; designed for a true 206:141 crop. No gore, text, frame or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8eaf6d2d-1b2e-4ed0-a665-1f54a8b07eb4.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_17.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Generated square normalized to exact 512x512 source; inspected square, true 206:141 crop and thumbnail. Beetle head/eyes and mossy carapace dominate, with defensive stance and green drain thread clearly visible; surrounding faces remain secondary."
   }
 ]

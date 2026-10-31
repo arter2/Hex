@@ -3019,5 +3019,493 @@
     "batch": 12,
     "reviewNote": "512-square source and upward-shifted crop/thumbnail reviewed (focalPoint y=0.42); Ulfa's face, reaching hand, and lead wolf's full face and ears have breathing room.",
     "cardId": "hero_ulfa"
+  },
+  {
+    "cardId": "verdant_strike_19",
+    "name": "Anaconda Squeeze",
+    "prompt": "Create original square 1:1 painterly medieval-fantasy collectible card art for Anaconda Squeeze. Actual strike: a powerful anaconda constricts one target in a straight-line attack, slowing it; its critical hit can strike harder. Show one enormous emerald-and-ochre anaconda dominating the horizontal composition, its coils tightly pinning an armored forest raider against a mossy fallen log while the serpent's alert head and the raider's tense face remain clearly visible. Emphasize the constricting pressure and slowed struggle with crushed leaves and taut coils; no gore. Dense old-growth forest, nuanced scales, leather, iron and bark, directional shafts of green-gold light, painterly brushwork, grounded anatomy, dramatic readable silhouette. Square 512x512 master; keep serpent head, coils and target face inside x24..488 y105..407, quiet foliage above and earth below, designed for true 206:141 crop. Illustration only, no text/frame/UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-3a7dd1e3-490f-49f0-a93d-b28d265d706c.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_19.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "The exact 512 source, 206:141 crop and 128x88 thumbnail were inspected. The anaconda head, constricting coils and raider face are readable inside the safe crop."
+  },
+  {
+    "cardId": "verdant_strike_21",
+    "name": "Strangler Fig",
+    "prompt": "Create original square 1:1 painterly medieval-fantasy collectible card art for Strangler Fig. Actual strike: a wave of fig roots lashes a target and pulls it, with a recoil after the strike. Show an ancient strangler fig tree at left, its thick pale roots bursting from the forest floor in a broad curling wave that wraps around an armored trespasser's torso and draws him toward the tree; the old fig trunk and one recognizable fig fruit cluster are visible, while its roots dominate the action. A few snapped roots recoil back toward the tree, implying the follow-through without clutter. Verdant ruins swallowed by jungle, painterly textured bark, moss, mail and soil, dramatic filtered light, grounded anatomy, strong horizontal silhouette. Square 512x512 master; keep tree-root action and target face inside x24..488 y105..407, calm foliage above and forest floor below, designed for true 206:141 crop. Illustration only, no frame/text/UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8d18d172-c8d3-48b8-b185-35c7de40bd51.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_21.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "The exact 512 source, 206:141 crop and 128x88 thumbnail were inspected. The strangler fig trunk, fruit cluster, root wave and target face remain visible; the pulling action reads clearly."
+  },
+  {
+    "cardId": "verdant_strike_22",
+    "name": "Will-o'-Wisp Lure",
+    "prompt": "Create original square 1:1 painterly medieval-fantasy collectible card art for Will-o'-Wisp Lure. Actual strike: a zigzagging ghost-light lures and pulls a target. Show a small brilliant blue-green will-o'-wisp with a flame-like translucent core leading a sharply zigzagging trail through a dark forest; a curious armored scout is visibly being pulled after it, boots sliding across wet leaves, his face and reaching hand clear. The wisp itself must remain the bright named focal object, with the trail guiding the eye, not replacing it. Painterly medieval folklore, deep mossy shadows, delicate luminous mist, believable cloth, mail, leaves and wet bark, atmospheric depth and clear contrast. Square 512x512 master; keep wisp, zigzag path and scout face/hand inside x24..488 y105..407, quiet canopy above and forest floor below; designed for true 206:141 crop. Illustration only, no text/frame/UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7671965c-33f4-4a5d-9d61-6901fadb9f5f.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_22.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "The exact 512 source, 206:141 crop and 128x88 thumbnail were inspected. The luminous wisp, zigzag trail, scout face and reaching hand remain visible with strong contrast at thumbnail size."
+  },
+  {
+    "cardId": "verdant_strike_20",
+    "name": "Liana Whip",
+    "prompt": "Create original square 1:1 painterly medieval-fantasy collectible card art for Liana Whip. Actual strike: a quick zigzagging piercing vine lash pulls a target toward the caster. Show a nimble dryad-like woodland huntress at left, face and gripping hand clear as she snaps one long thorned liana in a sharp zigzag across the scene; the vine pierces the edge of an armored raider's shield and draws him off balance toward her. Make the living vine the unmistakable named subject, with a few small leaves and thorns, no blood. Lush forest clearing, richly painted bark, woven cloth, iron and leaf surfaces, warm green light against cool shade, grounded anatomy and strong action silhouette. Square 512x512; keep the huntress face, hand, vine path and raider face inside x24..488 y105..407; quiet canopy/ground margins; designed for a true 206:141 crop. Illustration only, no lettering/frame/UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-45b3670a-e0a3-4ec5-81d8-f4473f1abf1c.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_20.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "repairPrompt": "Repaint Liana Whip as an original square 1:1 painterly medieval-fantasy card illustration. The earlier version placed the pulled raider too close to the right crop edge; move BOTH characters inward, with their faces comfortably inside the central 80% of the square. Actual action: a quick piercing liana whip lashes in a zigzag and pulls its target toward the caster. Show a woodland huntress on the left and an armored raider on the right, both fully readable from head to waist, positioned near x125 and x385 respectively on a 512 square, with the raider's complete face, helmet and reaching hand clearly away from the border. The huntress's gripping hand holds a thorned living vine that makes a clean two-bend zigzag across the middle, piercing the edge of his wooden shield and drawing him off balance toward her. One continuous clear action, no extra figures. Lush old-growth clearing, painterly bark, leaf, woven cloth and iron, warm green-gold sunlight, believable anatomy and expressive faces, high-end medieval fantasy collectible-card art. Keep both faces, caster hand, full visible zigzag vine and the target's relevant hand inside x24..488 y105..407 on the square; quiet forest canopy above, forest floor below; designed for a true 206:141 wide crop. No frame, text, UI, modern objects; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "previousGeneratedPath": "/workspace/generated_images/exec-edc85751-8433-4a72-a7db-87b43e523016.png",
+    "reviewNote": "Repainted after inspection showed the original target face too close to the right crop edge; original 512 source preserved at /tmp/verdant_strike_20-before-repaint.png. Prepared the replacement as an exact 512x512 source, then atomically replaced the canonical. Inspected replacement source, true 206:141 crop and 128x88 thumbnail: both faces, caster hand and zigzag liana are clear and in frame; target hand is near the right edge."
+  },
+  {
+    "cardId": "verdant_strike_23",
+    "name": "Stag Leap",
+    "prompt": "Paint original square 1:1 painterly medieval-fantasy collectible-card art for Stag Leap. Actual strike: a stag leaps through a mine-shaped attack and shoves its target backward, leaving the area threatening for two turns. Show a powerful red-brown forest stag with bright branching antlers bounding from left to right through a low circular ring of glowing roots and leaves embedded in the ground; its shoulder and antlers drive an armored raider backward off his feet. The stag's face, antlers, full leaping silhouette and the raider's face remain clear; the persistent root-ring under the impact hints at the lingering hazard. One stag and one target only, no gore. Old forest at dusk, painterly fur, bark, mail, moss and leaf detail, dramatic shafts of green-gold light, grounded animal anatomy, readable horizontal action. Square 512x512 master, keep stag face/antlers, raider face and root-ring inside x24..488 y105..407; calm canopy above and forest floor below; designed for a true 206:141 crop. Illustration only, no text, frame, border or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b1cf7438-564f-40e1-8d89-934479f6a9b4.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_23.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Generated square normalized to an exact 512x512 source and inspected with its true 206:141 crop and 128x88 thumbnail. Stag and raider faces, leaping silhouette and persistent root-ring are readable; antler tips naturally extend into the expendable upper margin."
+  },
+  {
+    "cardId": "verdant_strike_24",
+    "name": "Grizzly Charge",
+    "prompt": "Paint an original illustration for the exact card “Grizzly Charge.” Mechanics: a charged, heavy spear-like charge through enemies in a line, knocking them back and throwing the attacker back with recoil. Depict a massive brown grizzly bear surging low from a forest clearing in a powerful straight-line charge, shoulder and forepaws driving into the first armored foe and sending a second foe backward behind him. The bear’s eyes, muzzle, shoulders and extended forepaw dominate; show the linear impact and a subtle recoil trail of kicked leaves behind the bear. Grounded, believable bear anatomy and textured fur, no clothing or weapons on the bear. Painterly medieval fantasy collectible-card illustration, rich moss, bark, fur and worn steel; directional shafts of autumn-green light, atmospheric forest depth, dramatic readable values, style in the supplied Hexmancers verdant reference spirit. Exact 1:1 square for 512×512 master, horizontal action; keep bear’s eyes/face, forepaw and collision within x24…488,y105…407 for the 206:141 crop, with expendable forest canopy and ground beyond. No frame, words, lettering, symbols, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-aab53873-0e3c-45d6-aee7-2f466e74f06a.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_24.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, direct 512×350 wide crop and 128×88 thumbnail: grizzly’s full face, charging forepaw and central impact remain in the crop; second foe is pushed backward and action reads at thumbnail scale."
+  },
+  {
+    "cardId": "verdant_strike_25",
+    "name": "Moose Antler Rush",
+    "prompt": "Paint an original illustration for the exact card “Moose Antler Rush.” Mechanics: a straight-line piercing rush through one enemy into another, knocking them back. Depict a powerful bull moose charging across a forest track, head lowered and broad antlers driving through the shields of two armored foes aligned behind one another; the first foe is being carried backward into the second. Make the moose’s full head, both eyes, muzzle and entire antler rack the unmistakable subject. The antlers must be clearly shaped and complete, with no branch or point cropped. Painterly medieval fantasy collectible-card illustration, grounded animal anatomy, richly textured dark brown fur, mossy woodland and battered steel, crisp green-gold rim light and atmospheric depth like the supplied Hexmancers verdant references. Exact 1:1 square for a 512×512 master; stage horizontally and keep full moose face, entire antlers and central impact within x24…488,y105…407 for 206:141 crop. Quiet expendable treetops and forest floor beyond. No frame, text, lettering, symbols, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0674db60-cbe7-4864-84b0-bf847ab0675b.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_25.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, vertically shifted direct 512×349 crop and 128×88 thumbnail: full moose face, both eyes and entire antler rack remain in the crop; the broad antlers pierce the first foe into the next. Focal point shifted up to include the complete rack."
+  },
+  {
+    "cardId": "verdant_strike_26",
+    "name": "Highland Caber Toss",
+    "prompt": "Paint an original illustration for the exact card “Highland Caber Toss.” Mechanics: a quick, heavy clustered strike scatters smaller fragments on impact, pushes foes and recoils the thrower. Depict a strong Highlander in a practical wool tunic and leather belt making a powerful sideways caber toss at a close group of armored foes. The complete compact tree-trunk caber is airborne horizontally beside the thrower, about to strike and burst into a scattered cross of heavy wooden splinters that knocks the group back; the thrower leans into the recoil. Keep the Highlander’s face and both hands visible, and show the entire named caber with both ends clearly inside the crop. Painterly medieval fantasy collectible-card art, tactile knotty wood, wool, leather and steel, dramatic clear light, windswept green highland and atmospheric depth in supplied Hexmancers reference style. Exact 1:1 square master, horizontal staging; keep face, hands, entire caber and impact within x24…488,y105…407 for the 206:141 crop, with quiet hill sky/ground beyond. No frame, lettering, glyphs, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4a536d7c-b10a-44a4-bb0a-a97796ee624d.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_26.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, direct 512×350 wide crop and 128×88 thumbnail: Highlander’s face and both hands remain visible, the complete horizontal caber leads into the splinter burst, and the clustered knockback reads clearly."
+  },
+  {
+    "cardId": "verdant_strike_27",
+    "name": "Tanuki Leaf Trick",
+    "prompt": "Paint an original illustration for the exact card “Tanuki Leaf Trick.” Mechanics: a charged, close targeted strike that knocks its marked target backward. Depict a sly tanuki spirit standing beside an old Japanese forest shrine, focused on a single armored intruder as it flicks one broad maple leaf toward the intruder’s brow; the leaf lands like a luminous green mark and a compact pulse of wind shoves the target backward. The tanuki’s face, eyes, paw and the small leaf at impact are prominent and legible; play the trick with calm folkloric mischief, not slapstick. Naturalistic raccoon-dog anatomy and a little weathered shrine detail, believable fur, bark, cloth and stone. Painterly medieval fantasy collectible-card illustration with nuanced green-gold light, soft forest atmosphere, clear contrast and grounded materials like supplied Hexmancers verdant references. Exact 1:1 square for a 512×512 master, horizontal composition; keep face, paw, leaf mark and impact inside x24…488,y105…407 for the 206:141 crop; quiet tree canopy and mossy ground beyond. No text, frame, lettering, symbols, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-75561d5d-b9c7-441f-ad06-c338013ad51e.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_27.png",
+    "sourceNative": [
+      1471,
+      1069
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square normalized source, direct 512×350 wide crop and 128×88 thumbnail: tanuki’s full face and leaf-throwing paw are visible; glowing leaf mark, target and knockback action remain readable. Raw output was 1471×1069 and the source tool prepared its central square."
+  },
+  {
+    "cardId": "verdant_strike_28",
+    "name": "Ratatoskr's Insult",
+    "prompt": "Paint an original illustration for the exact card “Ratatoskr’s Insult.” Mechanics: a quick cross-shaped burst of clustered strikes that knocks enemies back. Depict Ratatoskr as a prominent russet-red squirrel messenger braced on a mossy branch of an ancient Nordic forest tree, mouth open in a sharp defiant chitter toward a group of armored foes below. A compact cross-shaped burst of four heavy acorns and thorny seed-pods erupts from the branch around the enemies, scattering leaves and pushing them backward. Keep the squirrel’s expressive naturalistic face, both eyes, forepaws and bushy russet head clear and large enough to read at card size; the cross-burst and recoil of foes support the squirrel rather than overwhelm it. Believable squirrel anatomy, richly painted fur, bark, leaves and old steel; dramatic green-gold woodland light, layered atmospheric forest and painterly medieval fantasy collectible-card art consistent with supplied Hexmancers verdant references. Exact 1:1 square composition for a 512×512 editable master, arranged horizontally; keep face, eyes, paws and central burst within x24…488,y105…407 for the 206:141 crop, with quiet canopy and ground outside. No text or literal insult lettering, no frame, runes, numbers or UI. No anime, Disney-like cartoon proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-def37c96-0727-4099-8c03-a95f76ed3a18.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_28.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, direct 512×350 wide crop and 128×88 thumbnail: squirrel’s full face, eyes and forepaws remain visible; the cross-shaped burst of acorns and seed-pods and recoiling foes read at thumbnail size. Tail tip extends beyond crop as an incidental extremity."
+  },
+  {
+    "cardId": "verdant_strike_29",
+    "name": "Leshy's Wrong Turn",
+    "prompt": "Paint an original illustration for the Hexmancers verdant strike “Leshy's Wrong Turn.” Depict a powerful, age-old Slavic forest spirit with a bark-textured face, mossy beard, leafy mantle and clear humanlike eyes standing at a woodland crossroads. With one visible hand the leshy subtly bends a green-lit path into a sharp zigzag, sending a helmeted pursuer toward a harmless loop while a small restorative glow closes a scrape on the spirit’s other arm. Keep the leshy’s face and hands clear, and make the wrong-way path legible without letting it dominate the figure. Respectful folklore-inspired fantasy, grounded and dignified, not a cartoon. Painterly medieval/high-fantasy collectible-card art, nuanced believable bark, moss, leaves and stone, dappled directional light, atmospheric depth and strong readable values. Match the supplied references' painterly materials and forested fantasy lighting, with the natural high-fantasy tone of the accepted verdant art. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the leshy’s face, eyes, both hands and path-changing action within x24–488,y105–407 on the square; arrange the spirit and zigzag trail horizontally for the 206:141 crop, with quiet canopy and ground beyond. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-4fe63126-d522-4180-9ddc-3772be3f3599.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_29.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.45
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source, upward-adjusted 206:141 crop and thumbnail inspected (focalPoint y=0.45): the bark face and visible eye, both hands and zigzag-lit path remain within the crop. Leafy crown and ground stay atmospheric; the leshy is identifiable at thumbnail size."
+  },
+  {
+    "cardId": "verdant_strike_30",
+    "name": "Curupira's Backward Trail",
+    "prompt": "Paint an original illustration for the Hexmancers verdant strike “Curupira's Backward Trail.” Depict the Curupira, a powerful Brazilian forest spirit with a vivid mane of copper-red hair, lively human face and strong bare feet turned backward, standing at the edge of a dense moonlit forest. It points one visible hand along a charged zigzag trail of backward footprints; pale green life-light follows the prints and drains toward a confused hunter being led away through the trees. Keep the Curupira’s face, pointing hand and distinctive backward-foot trail clear and respectful to the folklore. The spirit is alert and formidable, not cartoonish. Painterly medieval/high-fantasy collectible-card art, nuanced believable skin, leaves, bark and woven cloth, dramatic green-gold forest light, atmospheric depth and strong readable values. Match the supplied references' painterly materials and forested fantasy lighting, with the natural high-fantasy tone of the accepted verdant art. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the Curupira’s face, eyes, pointing hand and backward footprint trail within x24–488,y105–407 on the square; arrange spirit and zigzag trail horizontally for the 206:141 crop, with quiet canopy and forest beyond. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-986d20eb-a6bc-4f78-9827-2ee83ca5a227.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_30.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source and upward-adjusted 206:141 crop/thumb inspected (focalPoint y=0.40) to retain the Curupira’s face and pointing hand. The luminous zigzag of backward footprints is clear; lower legs continue beyond the crop, while the distinctive trail remains the named action."
+  },
+  {
+    "cardId": "verdant_strike_31",
+    "name": "Pan's Panic Pipes",
+    "prompt": "Paint an original illustration for the Hexmancers verdant strike “Pan's Panic Pipes.” Depict Pan as a mature woodland satyr with a grounded human face, small swept horns, subtle goat ears and a moss-green mantle, playing a complete compact panpipe with both hands at chest height. Keep Pan’s focused face, both hands and every pipe clearly visible; a sweeping wave of pale gold-green sound rolls horizontally through a forest clearing, startling a distant armored pursuer backward without obscuring the instrument. The scene feels mischievous and mythic, not comic. Painterly medieval/high-fantasy collectible-card art, nuanced believable skin, hair, wood, wool and leaves, warm dappled light, atmospheric depth and strong readable values. Match the supplied references' painterly materials and forested fantasy lighting, with the natural high-fantasy tone of the accepted verdant art. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep Pan’s face, eyes, both hands and the entire named panpipe instrument within x24–488,y105–407 on the square; arrange Pan and the sound wave horizontally for the 206:141 crop, with quiet canopy and ground beyond. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-a83ee973-5922-486c-88d6-99c03ddc626b.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_31.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source, centered 206:141 crop and thumbnail inspected: Pan’s face, both hands and complete panpipe are visible; the golden-green sound wave carries the panic effect to the distant pursuer. A horn tip approaches the top crop edge, but the face and named instrument remain clear."
+  },
+  {
+    "cardId": "verdant_strike_32",
+    "name": "Monkey Coconut Toss",
+    "prompt": "Paint an original illustration for the Hexmancers verdant strike “Monkey Coconut Toss.” Show a clever tropical forest monkey with natural, believable anatomy on a broad branch, throwing one complete large brown coconut toward a patch of earth below. Keep the monkey’s alert face, gripping throwing hand and the entire coconut with its fibrous husk visible in the air; the coconut lands as a sudden contained burst of roots, soil and leaves, like a hidden ground trap, not a fireball. A few fresh green leaves curl back around the monkey to suggest renewed vitality. Painterly medieval/high-fantasy collectible-card art, nuanced believable fur, husk, bark and foliage, bright filtered jungle light, atmospheric depth and strong readable values. Match the supplied references' painterly materials and forested fantasy lighting, with the natural high-fantasy tone of the accepted verdant art. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the monkey’s face, eyes, throwing hand and the complete named coconut within x24–488,y105–407 on the square; arrange throw and ground burst horizontally for the 206:141 crop, with quiet canopy and ground beyond. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-66b55fa2-f5a4-47b3-b11b-5739c5cb5519.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_32.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source and upward-adjusted 206:141 crop/thumb inspected (focalPoint y=0.42): the monkey’s face and throwing hand plus the complete coconut remain visible; the lower soil burst reads as a contained trap. The curling tail is incidental and partly cropped."
+  },
+  {
+    "cardId": "verdant_strike_33",
+    "name": "Elf-Shot",
+    "prompt": "Paint an original illustration for the Hexmancers verdant strike “Elf-Shot.” Show a mature woodland elf archer in a weathered green cloak loosing one swift, precise arrow from a compact yew bow. Keep the elf’s focused face, both hands and the complete arrow—with its sharp leaf-shaped stone point, shaft and feather fletching—clearly visible across the horizontal composition as it pierces a distant shield edge and pushes the armored target backward. The arrowhead remains distinct and unbroken; no blood or gore. Grounded elven anatomy, dignified forest folk rather than an ornate high-elf stereotype. Painterly medieval/high-fantasy collectible-card art, nuanced believable wood, feather, leather and foliage, attractive directional forest light, atmospheric depth and strong readable values. Match the supplied references' painterly materials and forested fantasy lighting, with the natural high-fantasy tone of the accepted verdant art. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the elf’s face, eyes, both hands and the whole arrow including its point and fletching within x24–488,y105–407 on the square; arrange the full shot horizontally for the 206:141 crop, with quiet canopy and forest beyond. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-608bd4e3-4990-438e-b19f-a3c9fe00bdc4.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_33.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source, centered 206:141 crop and thumbnail inspected: the elf’s focused face, both drawing hands and full arrow path remain visible, with the distinct tip meeting the shield and fletching visible by the drawing hand. The target is secondary and partly cropped."
+  },
+  {
+    "cardId": "verdant_strike_34",
+    "name": "Mapinguari Roar",
+    "prompt": "Illustrate the Hexmancers verdant strike Mapinguari Roar, a quick concussive shockwave that can restore the beast's vitality after a foe falls. A legendary Amazonian mapinguari fills the scene: a huge shaggy sloth-like forest creature with deep-set amber eyes, a powerful open maw and curved foreclaws, its fur threaded with moss and leaves. It unleashes a resonant roar across a jungle clearing; a broad ring of green-gold air bends branches and knocks two armored intruders backward, while a few healing motes flow back toward the creature. Keep the creature's eyes, full muzzle and open mouth clearly visible, with the shockwave readable and not hiding its face. Painterly medieval high-fantasy collectible-card art, believable fur, moss, bark and stone, dramatic forest light, atmospheric depth and expressive brushwork. Explicit 1:1 square composition for an editable 512x512 master. Keep face, mouth and main shockwave inside x24..488,y105..407; horizontal middle-60% composition, quiet canopy and forest floor above/below for a 206:141 crop. Incidental limbs, leaves and wave edges may crop. No gore, text, frame, numbers, interface, logo, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7d452593-99b2-4992-959b-a714b0502abb.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_34.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Mapinguari eyes, full muzzle and open mouth remain prominent inside its shockwave; the creature and roar read clearly at small size. Parent review pending."
+  },
+  {
+    "cardId": "verdant_strike_35",
+    "name": "Druid's Golden Sickle",
+    "prompt": "Illustrate the Hexmancers verdant strike Druid's Golden Sickle, a ricocheting weapon whose magic restores a little vitality. A focused druid in layered forest-green robes stands in a sunlit grove, face and eyes visible beside one hand holding a compact golden sickle at chest height. Show the entire curved bright-gold blade, pointed tip, narrow neck, complete handle and pommel with clear margin around it. The druid has just sent the sickle in a short luminous ricochet between two distant thorn-armored foes; a few soft green healing motes return along the gold trail to the druid's free hand. Keep the named weapon large and unmistakable, all of it in frame, with the druid as a supporting presence. Painterly medieval high-fantasy collectible-card art, believable gold, carved wood, leather and leaves, warm directional forest light, atmospheric depth and detailed brushwork. Explicit 1:1 square composition for an editable 512x512 master. Keep druid face, hand, complete sickle and ricochet action within x24..488,y105..407, arrange horizontally across middle 60%, quiet canopy/clearing above and below for a 206:141 crop. No text, frame, numbers, interface, logo, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-44cc712a-e50e-442f-b616-5e3c96a6ff6a.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_35.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Druid face and hand, full golden sickle including its tip and handle, and ricochet/healing trails remain clear. Parent review pending."
+  },
+  {
+    "cardId": "verdant_strike_36",
+    "name": "Ride of the Wild Hunt",
+    "prompt": "Illustrate the Hexmancers verdant strike Ride of the Wild Hunt, a precise snipe that drains vitality from its target and sends recoil through the rider. A spectral wild-hunt ranger rides a powerful dark forest stag at a gallop through misty ancient trees. Keep the ranger's face and focused eyes clear beside the drawing hand and a complete compact longbow; show the stag's head, bright eye and branching antlers at the same height. The rider looses one narrow emerald-gold arrow toward a single distant armored target; a thin thread of green vitality streams back along the shot, while the rider's cloak pulls sharply from the recoil. Make the mounted hunter and stag the dominant subject, with a clean horizontal shot path. Painterly medieval high-fantasy collectible-card art, believable horse tack, antlers, leather and leaf-shadow, dramatic moonlit forest atmosphere and fine brushwork. Explicit 1:1 square composition for an editable 512x512 master. Keep faces, drawing hand, full bow, stag head/antlers and arrow path inside x24..488,y105..407; compact horizontal middle-60% composition, quiet misty woods above/below for a 206:141 crop. Incidental hooves and cloak tails may crop. No text, frame, numbers, interface, logo, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f98599b1-9e4e-4886-99dd-9f1ef52d0d0f.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_36.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Rider face and drawing hand, stag head/eye/antlers, target and green snipe trail remain visible. Bow upper tip extends beyond the source; it is incidental to the named hunt and crop remains readable. Parent review pending."
+  },
+  {
+    "cardId": "verdant_strike_37",
+    "name": "Green Knight's Axe",
+    "prompt": "Illustrate the Hexmancers verdant strike Green Knight's Axe, a wedge-shaped cleaving blow with a chance for a critical hit and a valorous surge. A resolute green knight in leaf-patterned steel and dark emerald cloak swings a compact one-handed battle axe across a forest glade. Keep the knight's focused face and both gripping hands clear beside the full axe: complete curved blade, pointed cutting edge, haft and pommel all fit with margin. A broad wedge of green-gold force travels from the axe through two armored foes, with one bright starburst at the critical impact; a warm leaf-glow gathers over the knight's chest. Make the axe the unmistakable named feature, not hidden inside the light. Painterly medieval high-fantasy collectible-card art, believable steel, wood, leather, moss and leaves, dramatic forest light, atmospheric depth and fine brushwork. Explicit 1:1 square composition for an editable 512x512 master. Keep face, hands, complete axe and wedge action inside x24..488,y105..407; horizontal middle-60% arrangement, quiet canopy and ground above/below for a 206:141 crop. Incidental cloak hem may crop. No text, frame, numbers, interface, logo, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-de825426-d7d7-4590-a8e8-bd6ec869d90b.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_37.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Knight face and grips, full axe head and haft, and its broad wedge impact remain visible; weapon reads at thumbnail size. Parent review pending."
+  },
+  {
+    "cardId": "verdant_strike_38",
+    "name": "Caledfwlch",
+    "prompt": "Illustrate the Hexmancers verdant strike Caledfwlch, a charged piercing strike that empowers the wielder's valor. A legendary Welsh king in weathered green-and-gold armor stands in a forest clearing, face and steady eyes clear beside both hands gripping a complete ancient longsword named Caledfwlch. Show the entire sword from pommel through crossguard to pointed tip, compactly angled across the king's chest with generous margin; its pale steel blade has a subtle leaf-like fuller and warm golden edge-light, no writing. A straight green-gold line of force extends from the sword tip through two distant armored targets, piercing their shields in sequence, while a calm valor glow gathers around the king's hands. Keep the complete sword the strongest named object, fully separated from the background and not hidden in glare. Painterly medieval high-fantasy collectible-card art, believable steel, leather and engraved armor, dramatic woodland light and atmospheric depth, refined brushwork. Explicit 1:1 square composition for an editable 512x512 master. Keep king face, both hands, whole sword and linear action within x24..488,y105..407, horizontal middle-60% composition, quiet forest canopy/floor above/below for a 206:141 crop. No text, frame, numbers, interface, logo, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f0b333b4-3280-4175-a6bd-39fea9ea90cc.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_38.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. King face and both hands, complete pommel-to-point sword, straight piercing ray and shield impacts remain visible; the sword reads at thumbnail size. Parent review pending."
+  },
+  {
+    "cardId": "verdant_strike_39",
+    "name": "Dart Frog Leap",
+    "prompt": "Paint an original illustration for the Hexmancers verdant strike “Dart Frog Leap.” Show one clearly recognizable poison dart frog in mid-leap between rain-wet leaves: tiny but bold, with a vivid leaf-green back, deep black-and-blue markings, bright orange toes and a bright alert eye. The frog’s compact body and face are fully readable as it darts toward a small moth; a narrow spear-like trail of poisonous green droplets follows the leap, subtle and secondary to the animal. Keep the species grounded and natural, with real frog anatomy, not a cartoon or giant monster. Painterly medieval/high-fantasy collectible-card art, nuanced believable wet skin, leaves and rain, dramatic filtered forest light, atmospheric depth and strong readable values. Match the supplied references' painterly materials and forested fantasy lighting, with the natural high-fantasy tone of the accepted verdant art. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the frog’s face, eye, complete compact body and the spear-like poison action within x24–488,y105–407 on the square; arrange the leap horizontally for the 206:141 crop, with quiet canopy and leaves beyond. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-c405ce8e-6cc4-4f94-af9b-1dafefb26ef0.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_39.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source, centered 206:141 crop and thumbnail inspected: the animal reads clearly as a poison dart frog from its green back, black-blue spots and orange toes. Its alert face, full compact body and narrow poison trail all remain visible."
+  },
+  {
+    "cardId": "verdant_charge_18",
+    "name": "Horn of Plenty",
+    "prompt": "Paint an original standalone artifact illustration for the Hexmancers charge “Horn of Plenty.” Depict a compact golden cornucopia, the classic curved horn-shaped vessel of abundance, lying horizontally on a mossy stone ledge. Keep its entire curled horn from wide open rim through tapering tip clearly visible and unbroken; polished bronze and old gold catch soft green light as a modest cluster of apples, grapes, grain and leaves spills from the mouth. A gentle restorative glow and a few loose fruit rolling from the vessel suggest repeated nourishing power. Make the full horn the central named artifact; no person or musical instrument. Painterly medieval/high-fantasy collectible-card art, nuanced believable bronze, fruit, grain, leaves and stone, attractive directional light, atmospheric depth and strong readable values. Match the supplied references' painterly materials and forested fantasy lighting, with the natural high-fantasy tone of the accepted verdant art. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the complete named horn, entire rim, curled body and pointed tip within x24–488,y105–407 on the square; compose the artifact horizontally and compactly for the 206:141 crop, with quiet scenery above and below. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-5b4ef1f0-905b-4fae-b107-0c103bc2faf5.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_charge_18.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source, centered 206:141 crop and thumbnail inspected: the complete cornucopia’s open rim, curved body and curled tip remain visible, with fruit and grain spilling from the mouth. The horn stays distinct and dominant."
+  },
+  {
+    "cardId": "verdant_summon_18",
+    "name": "Faun Reveler",
+    "prompt": "Paint an original illustration for the Hexmancers summon “Faun Reveler.” Show a lively but grounded woodland faun, a mature humanlike forest spirit with small curling horns, pointed ears and strong goat legs ending in cloven hooves, dancing in a moonlit grove. Keep the faun’s joyful face and both expressive hands clear as he scatters glowing seeds in a crossing pattern around a ring of mossy stones; the seeds sprout small leaves and draw a couple of startled woodland creatures closer. His complete faun identity—horns, human torso and goat legs—should read at a glance, with believable anatomy and layered natural cloth, not cartoon proportions. Painterly medieval/high-fantasy collectible-card art, nuanced believable skin, fur, wool, seeds and leaves, warm lantern light against cool forest dusk, atmospheric depth and strong readable values. Match the supplied references' painterly materials and forested fantasy lighting, with the natural high-fantasy tone of the accepted verdant art. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the faun’s face, eyes, both hands and defining horns within x24–488,y105–407 on the square; arrange the dancing figure and seed-cross action horizontally for the 206:141 crop, with quiet canopy and ground beyond. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-f282c3ef-0949-497c-9eb3-60cd5f4c0fa1.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_18.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source and upward-adjusted 206:141 crop/thumb inspected (focalPoint y=0.43): the faun’s full face, horns and both expressive hands remain clear, and the crossing seed pattern is legible. Lower goat legs continue to the crop edge as incidental anatomy."
+  },
+  {
+    "cardId": "verdant_summon_19",
+    "name": "Elven Pathfinder",
+    "prompt": "Paint an original illustration for the Hexmancers summon “Elven Pathfinder.” Show a calm, experienced woodland elf scout in a weathered green-gray cloak crouching at the edge of a hidden animal tunnel beneath fern roots. Keep the elf’s alert face, pointed ears and both hands visible: one hand parts the roots to reveal a narrow glowing trail leading through the earth, while the other steadies a simple unstrung bow at the side. Fine green motes trail from the ground as the elf finds the safe route; no need for a full-body pose. Grounded elf anatomy and practical travel gear, mature and observant rather than ornate or ethereal. Painterly medieval/high-fantasy collectible-card art, nuanced believable wool, leather, roots and leaves, dappled forest light, atmospheric depth and strong readable values. Match the supplied references' painterly materials and forested fantasy lighting, with the natural high-fantasy tone of the accepted verdant art. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the elf’s face, eyes, pointed ears, both hands and tunnel entrance within x24–488,y105–407 on the square; compose the crouching figure and revealed path horizontally for the 206:141 crop, with quiet canopy and earth beyond. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-463bf937-8e4a-4c6e-ad8d-365a4bc03624.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_19.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.45
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source and upward-adjusted 206:141 crop/thumb inspected (focalPoint y=0.45): the elf’s full face, pointed ear and both hands remain clear beside the revealed burrow entrance and glowing trail. The lower bow extends to the crop edge as incidental gear."
+  },
+  {
+    "cardId": "verdant_summon_20",
+    "name": "Patupaiarehe Mist Folk",
+    "prompt": "Paint an original, respectful folklore-inspired illustration for the Hexmancers summon “Patupaiarehe Mist Folk.” Show a small band of patupaiarehe, the mist-dwelling people of Māori tradition, gathered beneath ancient forest trees. Make one lead figure the clear subject: a pale, graceful humanlike forest spirit with a fully readable, kind face and both hands extended as it scatters small silver-green seeds through curling morning mist. The seeds sprout delicate ferns and gently mend a companion’s scraped arm; the other mist folk remain softly distinct behind the leader, not a crowd. Give them simple, natural woven and leaf-textured garments, with no invented tribal markings, no caricature and no generic pointed-eared elf look. Painterly medieval/high-fantasy collectible-card art, nuanced believable skin, mist, woven cloth and fern, soft directional dawn light, atmospheric depth and strong readable values. Match the supplied references' painterly materials and forested fantasy lighting, with the natural high-fantasy tone of the accepted verdant art. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the lead figure’s full face, eyes, both hands and healing seeds within x24–488,y105–407 on the square; arrange the lead and a companion horizontally for the 206:141 crop, with quiet misty forest above and below. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-9163200c-167e-4311-b6f9-836b8b7f53bb.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_20.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.47
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source and slightly upward-adjusted 206:141 crop/thumb inspected (focalPoint y=0.47): the lead mist folk’s face, both hands and healing seeds are clear beside the companion’s wounded arm. Several folk remain distinct in the mist; no pointed ears or invented markings are added."
+  },
+  {
+    "cardId": "verdant_summon_21",
+    "name": "Curupira",
+    "prompt": "Paint an original illustration for the Hexmancers summon “Curupira.” Portray Curupira as the Brazilian forest guardian of folklore, not a generic elf: a lean humanlike spirit with vivid flame-red hair, a weathered expressive face, natural forest coverings and distinctly backward-turning bare feet, heels forward and toes pointing behind. Use a compact, low ambush pose among roots: Curupira glances back toward the viewer with alert eyes, one hand holds a glowing medicinal seed at a small scrape on the other arm, while the bent legs bring one backward foot clearly beside the face and hands. A few green-lit footprints and a hidden root snare suggest a forest ambush. Respectful folklore-inspired fantasy, grounded anatomy, no cartoon styling. Painterly medieval/high-fantasy collectible-card art, nuanced believable skin, hair, leaves, roots and moss, dramatic dappled forest light, atmospheric depth and strong readable values. Match the supplied references' painterly materials and forested fantasy lighting, while keeping this as a distinct close, crouched composition from the other Curupira artwork. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep Curupira’s full face, eyes, both hands and one unmistakable backward-facing foot within x24–488,y105–407 on the square; arrange face, hands and foot in a compact horizontal grouping for the 206:141 crop, with quiet foliage above and below. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-b07ba3ef-35ba-4796-b30f-968f9d36b522.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_21.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source and upward-adjusted 206:141 crop/thumb inspected (focalPoint y=0.43): the Curupira’s full face, both hands, vivid red hair and one backward-facing bare foot remain visible. Green-lit footprints and roots support the Brazilian forest-guardian identity; composition differs from the prior path scene."
+  },
+  {
+    "cardId": "verdant_summon_22",
+    "name": "Chullachaqui",
+    "prompt": "Paint an original, respectful folklore-inspired illustration for the Hexmancers summon “Chullachaqui.” Portray the Chullachaqui as a small, wiry forest spirit from Peruvian Amazonian folklore, not a European elf: a weathered humanlike face, dark alert eyes, simple woven-and-leaf clothing, no pointed ears. Use a compact crouched pose under giant rainforest roots so its two mismatched feet are clearly visible—one ordinary bare human foot and one backward-turned, hooflike foot. Keep the Chullachaqui’s face and both beckoning hands prominent as it summons two small green forest wisps from a seed pod; a faint poisonous mist clings low to the roots. The expression is clever but protective, with grounded anatomy and no caricature. Painterly medieval/high-fantasy collectible-card art, nuanced believable skin, woven fiber, bark, roots and mist, rich rainforest light with a cool green glow, atmospheric depth and strong readable values. Match the supplied references' painterly materials and forested fantasy lighting. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the full face, eyes, both hands, and the pair of visibly different feet within x24–488,y105–407 on the square; arrange the crouched spirit compactly so these identity details fit a 206:141 card crop, with quiet rainforest beyond. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-822ba2c8-8786-416b-987c-62ec76254494.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_22.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source, centered 206:141 crop and thumbnail inspected: this reads as a compact rainforest spirit, with a weathered human face, both beckoning hands and two visibly different feet—one bare human foot and one backward-turned hooflike foot. Green summoned wisps and seed pod support its forest-spirit identity."
   }
 ]

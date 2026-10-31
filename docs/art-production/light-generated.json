@@ -3013,5 +3013,493 @@
     "status": "generated",
     "batch": 12,
     "reviewNote": "Shifted crop upward to retain full sling/arm tip and launched boulder while keeping the complete wooden frame and counterweight; inspected shifted wide crop and 128 thumbnail."
+  },
+  {
+    "cardId": "light_strike_16",
+    "name": "Astrolabe Sightline",
+    "prompt": "Paint an illustration for the exact card name “Astrolabe Sightline.” A focused medieval star-sage holds a complete palm-sized brass astrolabe in one hand and aligns its rings along a razor-straight beam of warm white light toward a distant armored target. Keep the astrolabe’s circular body, complete graduated ring and sighting rule clearly visible beside the sage’s intent face and eyes at the same height; the narrow sightline and a brief charged glint signal a precise critical strike. The named astrolabe is the primary object, not a generic spell. Painterly medieval high-fantasy collectible-card art matching the supplied Hexmancers light references: believable face and hand anatomy, intricate aged brass, layered brushwork, attractive directional dawn light, atmospheric depth and grounded materials, not photorealistic. Explicit square 1:1 composition for a 512x512 master and 206:141 landscape crop. Keep face, eyes, hand, complete astrolabe and its sighting rule inside x24–488,y105–407 in a compact horizontal middle-60% arrangement; quiet sky and stone above/below. No extra instruments, no readable markings, no card frame, text, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-106537b6-e6bf-41af-aa96-e3dafb782463.png",
+    "editableSourcePath": "game/cards/art/masters/light_strike_16.png",
+    "sourceNative": [
+      1269,
+      1239
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "512-square source, wide crop and 128px thumbnail inspected. The complete astrolabe ring, sighting rule, sage’s eyes and holding hand remain clear together; the line of sight reaches a small target on the distant wall. Painterly brass and dawn light read well."
+  },
+  {
+    "cardId": "light_strike_18",
+    "name": "Shield Bash",
+    "prompt": "Paint an illustration for the exact card name “Shield Bash.” Show a resolute medieval knight in a close three-quarter battle view driving a complete broad-faced kite shield forward in a forceful bash that knocks an opponent off balance. Keep the knight’s determined face, eyes, bracing arm and whole shield in frame; the shield boss and gold rim are unmistakable, while the opponent is only a secondary armored shoulder and recoil. A short bright stun flash at the collision and backward dust communicate the quick strike and knockback. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers light references: grounded anatomy and expression, nuanced steel, leather, cloth and stone, layered brushwork, attractive directional sunlight, atmospheric depth, not photorealistic. Explicit 1:1 square canvas for a 512x512 master. Keep primary face, relevant hand/arm, complete shield and collision point inside x24–488,y105–407, arranged horizontally in the middle 60 percent for a 206:141 crop; incidental legs and dust may extend. No gore, no text, heraldic letters, card frame, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-be999082-5a50-4128-8d35-6870b13d80f9.png",
+    "editableSourcePath": "game/cards/art/masters/light_strike_18.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "512-square master inspected. Shifted crop upward to include the shield’s top tip while keeping its visible face, the knight’s full face and collision point in frame; the revised crop and 128px thumbnail were inspected. Lower body and opposing figure are incidental."
+  },
+  {
+    "cardId": "light_strike_17",
+    "name": "Gavel of Justice",
+    "prompt": "Paint an illustration for the exact card name “Gavel of Justice.” A dignified medieval magistrate-knight brings a complete heavy brass-and-oak ceremonial war gavel down onto a stone judgment block; the gavel is the unmistakable named artifact and focal point, with its full head, handle, and the striking hand all visible beside the stern face at the same height. At impact a compact ring of bright white-gold light and a few outward stone chips suggest a charged cluster strike and brief stun; keep the courtroom soldiers and target figures distant and subdued. Painterly medieval high-fantasy collectible-card illustration in the supplied Hexmancers reference style: grounded anatomy, nuanced brass, oak, worn steel and stone, layered brushwork, dramatic warm directional light and atmospheric depth, not photorealistic. Explicit 1:1 square canvas intended for a 512×512 editable master. Compose the gavel, hand, face and impact horizontally in the middle band; keep identity-critical face/eyes, relevant hand and the entire gavel inside x24–488,y105–407 for a 206:141 landscape crop, with quiet architecture above and below. Strong readable silhouette, attractive lighting. No card frame, lettering, runes, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-24023f15-f129-4666-9998-5dfda5487344.png",
+    "editableSourcePath": "game/cards/art/masters/light_strike_17.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.44
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Adjusted focal point upward to y=0.44 after parent crop review. Inspected the full 512-square source, revised 206:141 wide crop and 128px thumbnail: the magistrate’s complete forehead, eyes and face, the striking hand, and the entire gavel remain visible; the lower stone block is expendable."
+  },
+  {
+    "cardId": "light_strike_19",
+    "name": "Phalanx Advance",
+    "prompt": "Paint an illustration for the exact card name “Phalanx Advance.” A disciplined medieval phalanx of three foremost hoplite warriors advances shoulder to shoulder across a sunlit stone causeway, shields locked in a clear horizontal row and long spears angled forward; show the central captain’s determined face and the front line’s hands gripping the shields and spear shafts. A bright narrow band of holy light travels along the shield line as the formation presses an opposing armored rank backward, communicating a powerful coordinated advance and push; keep the enemy secondary and the friendly front rank dominant. Painterly medieval high-fantasy collectible-card illustration in the supplied Hexmancers reference style: grounded faces and anatomy, nuanced bronze, linen, leather and wood, layered brushwork, attractive directional sunlight, atmospheric depth, not photorealistic. Explicit 1:1 square canvas intended for a 512×512 editable master. Compose a compact horizontal formation in the middle band; keep the central face/eyes, gripping hands, complete front shields and readable spear shafts within x24–488,y105–407 for a 206:141 landscape crop. Quiet sky and ground above and below; peripheral warriors and spear tips may recede naturally. Strong silhouette, readable at small size. No card frame, lettering, runes, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d58be7b4-3c7e-4fd8-8621-ebf812e4c40e.png",
+    "editableSourcePath": "game/cards/art/masters/light_strike_19.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, true 206:141 wide crop and 128px thumbnail. The front rank remains a coherent advancing line; the central captain’s face, shield row and gripping hands are clear, with the push conveyed by the light band and opposing recoil. Peripheral spear tips and background soldiers recede."
+  },
+  {
+    "cardId": "light_strike_20",
+    "name": "Crane Wing Sweep",
+    "prompt": "Paint an illustration for the exact card name “Crane Wing Sweep.” A focused medieval martial artist in layered ivory and gold robes pivots into a broad crane-wing sweep, one arm extended in a graceful level arc while the other balances close to the body; the artist’s calm intent face, eyes, both hands and sweeping sleeve are clear. The sweeping arm releases a luminous feather-shaped band of white-gold force that curls through several nearby armored foes, slowing and staggering them without gore. The martial artist and the single decisive horizontal sweep dominate; the foes remain secondary silhouettes. Painterly medieval high-fantasy collectible-card illustration in the supplied Hexmancers reference style: grounded anatomy and expression, nuanced silk, leather, stone and metal, layered brushwork, dramatic directional light and atmospheric depth, not photorealistic. Explicit 1:1 square canvas intended for a 512×512 editable master. Arrange face and upper body beside the sweeping arm at the same height; keep face/eyes, hands and the principal arc within x24–488,y105–407 for a 206:141 landscape crop. Quiet temple background above and below; incidental robe tails and outer wisps may extend. Strong readable action silhouette and attractive lighting. No card frame, lettering, runes, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5c72704c-430b-4fc8-aeb3-c633533625db.png",
+    "editableSourcePath": "game/cards/art/masters/light_strike_20.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, true 206:141 wide crop and 128px thumbnail. Martial artist’s face, eyes, both hands and long sweeping sleeve remain visible; the broad feather-like light arc clearly sweeps through secondary opponents. Robe tails and peripheral figures are incidental."
+  },
+  {
+    "cardId": "light_strike_21",
+    "name": "Qilin's Flame",
+    "prompt": "Illustrate the Hexmancers light strike Qilin's Flame. A majestic qilin, a sacred Chinese mythic beast with a deer-like body, scaled dragon muzzle, one slender antler-like horn, cloven hooves and a flowing mane, surges across a stone garden. Its head and clear eye lead a broad wedge-shaped stream of pearl-gold sacred fire that sweeps across two shadowy opponents; one foe dissolves into harmless sparks and a small warm glow returns to the qilin, hinting at its on-kill vitality. The qilin's face, horn and flame origin are the strong readable focus; keep the animal natural and dignified, not cartoon-like. Painterly medieval high-fantasy collectible-card art, finely rendered scales, silk mane and stone, luminous daylight, atmospheric depth, cinematic brushwork. Explicit 1:1 square composition for an editable 512x512 master. Keep qilin face, horn and main wedge of fire within x24..488,y105..407; horizontal middle-60% staging, quiet garden sky and stones in margins for a 206:141 crop. Incidental legs and trailing mane may reach beyond the crop. No text, frame, numbers, interface, logo, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-dfd30187-8f13-4da0-87fb-442bb2a7774a.png",
+    "editableSourcePath": "game/cards/art/masters/light_strike_21.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Qilin face, horn and wedge of sacred fire remain visible; the attack reads clearly at small size. Parent review pending."
+  },
+  {
+    "cardId": "light_strike_22",
+    "name": "White Stag's Antlers",
+    "prompt": "Illustrate the Hexmancers light strike White Stag's Antlers, a charged mine-like ward that blasts an attacker backward and recoils. A strong white stag stands broadside in a moonlit forest clearing, its calm face and complete branching ivory antlers clearly visible, comfortably smaller than the square so every antler tip fits. Golden-white light gathers at the antler crown and drops into a subtle glowing sigil in the ground beneath the stag; when a single armored hunter approaches, the stored burst erupts outward in a low radiant ring and pushes the hunter back. The stag remains the primary subject, with the antlers unmistakable and intact; show only one brief recoil spark along its shoulder. Painterly medieval high-fantasy collectible-card illustration, detailed pale fur, natural anatomy, warm sacred light against deep forest greens, atmospheric depth and elegant brushwork. Explicit 1:1 square composition for an editable 512x512 master. Keep stag face, all antler tips and central blast within x24..488,y105..407, arrange antlers and action horizontally in the middle 60%, quiet woodland above/below for a 206:141 crop. No text, frame, numbers, interface, logo, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-bce2fc51-929c-4ef3-8cdd-8666387baa2e.png",
+    "editableSourcePath": "game/cards/art/masters/light_strike_22.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, upward-shifted 206:141 crop (focalPoint y=0.42) and 128x88 thumbnail. The stag face and all antler tips remain visible; a low light burst pushes the hunter back. Hunter lower legs are incidental and cropped. Parent review pending."
+  },
+  {
+    "cardId": "light_strike_23",
+    "name": "Simurgh Feather Gust",
+    "prompt": "Illustrate the Hexmancers light strike Simurgh Feather Gust, a fan-shaped burst that pushes opponents back and recoils. A magnificent simurgh, an ancient Persian mythic bird with a noble eagle-like head, curved beak, feathered crest and richly layered peacock-blue, ivory and gold plumage, stands on a high stone terrace. Its near wing sweeps forward, releasing a broad fan of luminous feathers and wind that radiates across three small armored opponents and drives them backward; a gentle counter-curl of air touches the bird's shoulder as recoil. The simurgh's face, eye, beak and striking fan of feathers are the unmistakable focus, with a clean silhouette. Painterly medieval high-fantasy collectible-card illustration, refined individual feathers, credible bird anatomy, strong sunlit directional light, atmospheric depth and elegant brushwork. Explicit 1:1 square composition for an editable 512x512 master. Keep head, beak, near wing fan and push action within x24..488,y105..407; compose horizontally across middle 60%, quiet highland sky and stone above/below for a 206:141 crop. Incidental far wing tips may crop. No text, frame, numbers, interface, logo, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-96bd51c9-4e5f-44a6-a01c-33b5caad3d02.png",
+    "editableSourcePath": "game/cards/art/masters/light_strike_23.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Simurgh face, eye and beak, feather fan and wind push remain clear; only an incidental upper crest tip is cropped. Parent review pending."
+  },
+  {
+    "cardId": "light_strike_24",
+    "name": "Paladin's Oath Blade",
+    "prompt": "Illustrate the Hexmancers light strike Paladin's Oath Blade, a weapon that arcs out and returns to its wielder, strengthening their valor. A resolute medieval paladin in polished but practical ivory-and-gold armor stands in a ruined chapel, face and focused eyes beside an outstretched gauntlet. The complete named oath blade is clearly visible in a diagonal flight just in front of the hand: a straight silver sword with readable point, full blade, crossguard, grip and pommel. A graceful golden boomerang-shaped light arc traces its return path from a distant armored foe back toward the paladin; warm light gathers around the paladin's gauntlet as it catches the blade. Keep the face, hand and entire sword comfortably inside the frame, with the sword the strongest object and the return arc clear but restrained. Painterly medieval high-fantasy collectible-card art, nuanced steel, enamel, leather and stone, dramatic sacred light, atmospheric depth and elegant brushwork. Explicit 1:1 square composition for an editable 512x512 master. Compose face, hand, full sword and return path horizontally inside x24..488,y105..407 in the middle 60%, quiet chapel atmosphere above/below for a 206:141 crop. No text, lettering, frame, numbers, interface, logo, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a7b8f4d8-f0d0-43f5-9c3b-5853a281f210.png",
+    "editableSourcePath": "game/cards/art/masters/light_strike_24.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Paladin face and hand, full point-to-pommel sword and boomerang-shaped return trail remain visible; the oath blade reads clearly at thumbnail size. Parent review pending."
+  },
+  {
+    "cardId": "light_strike_25",
+    "name": "Martyr's Last Stand",
+    "prompt": "Illustrate the Hexmancers light strike Martyr's Last Stand, a quick wave-shaped sacred attack that leaves a defeated foe's vitality flowing back. A wounded but resolute medieval martyr-knight kneels in a ruined chapel courtyard, face and eyes calm and clearly visible, one hand gripping a small complete shield at chest height. From the shield bursts a broad, low wave of pearl-gold light that sweeps horizontally across two armored enemies; one falls harmlessly back in a flash while a thin warm stream of light returns toward the martyr. The martyr's face, gripping hand and complete shield remain the focal subject; the wave is a distinct luminous crescent rather than a blinding wash. Painterly medieval high-fantasy collectible-card art, believable worn ivory armor, cloth, steel and stone, dramatic sacred light, atmospheric depth and expressive brushwork. Explicit 1:1 square composition for an editable 512x512 master. Keep face, hand, full shield and wave action within x24..488,y105..407, arrange them horizontally across the middle 60%, quiet chapel atmosphere above and below for a 206:141 crop. No graphic wounds, text, frame, numbers, interface, logo, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0cdd4496-221e-46f7-8acb-0c34d2e12888.png",
+    "editableSourcePath": "game/cards/art/masters/light_strike_25.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Martyr face, gripping hand, complete shield and broad wave remain clear; the return glow is visible without obscuring the scene. Parent review pending."
+  },
+  {
+    "cardId": "light_strike_26",
+    "name": "Riddle of the Sphinx",
+    "prompt": "Create standalone painterly medieval-high-fantasy collectible-card art for the exact card Riddle of the Sphinx. A noble ancient sphinx with a clear humanlike face, lion body and folded feathered wings dominates a horizontal scene, raising one paw as five distinct small golden-white magical missiles fan toward one distant armored foe; their crossing glimmers create a visible swirl around the foe’s helmet to suggest confusion. Keep sphinx face/eyes, paw, all five light missiles and the target readable, with the sphinx the main named subject. Believable sandstone, bronze, feather and cloth, warm directional light, atmospheric depth and grounded brushwork matching supplied Hexmancers light references. Explicit 1:1 SQUARE canvas for an editable 512x512 master. Keep sphinx face, paw, missiles and target within x24..488,y105..407 for the 206:141 crop, with quiet sky/temple at top and bottom. No frame, lettering, runes, symbols or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0f5e44fc-4a77-43c1-b200-b595496e25b4.png",
+    "editableSourcePath": "game/cards/art/masters/light_strike_26.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel crop: sphinx face, raised paw, distinct golden missiles and the disoriented target stay readable; the sphinx remains the unmistakable main subject."
+  },
+  {
+    "cardId": "light_strike_27",
+    "name": "Scholar's Paradox",
+    "prompt": "Create standalone painterly medieval-high-fantasy collectible-card art for the exact card Scholar's Paradox. In a medieval library, a thoughtful robed scholar with a clear face raises both hands as a quick thin golden zigzag bolt jumps from one polished mirror to another in a sharp S-shaped path, leaving brief ghostly afterimages that confuse a single armored intruder. Keep scholar face, hands and the complete zigzag spell central; the alternating mirror reflections suggest paradox without multiplying the characters. Tactile vellum, carved wood, glass and cloth, attractive warm candlelight against cool blue shadows, grounded expressive brushwork and atmospheric depth matching supplied Hexmancers light references. Explicit 1:1 SQUARE canvas for an editable 512x512 master. Keep face, hands, mirrors, bolt and target within x24..488,y105..407 for the 206:141 crop, quiet shelves above and below. No readable writing, frame, lettering, runes, symbols or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9f76f2ad-1306-40f9-9f24-cb5604748863.png",
+    "editableSourcePath": "game/cards/art/masters/light_strike_27.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source and upward-shifted 206:141 crop at focalPoint [0.5,0.46] plus 128-pixel crop: the scholar’s full face and both hands remain visible; the zigzag bolt, mirror rebounds and target stay clear."
+  },
+  {
+    "cardId": "light_strike_28",
+    "name": "Marble Shard Spray",
+    "prompt": "Create standalone painterly medieval-high-fantasy collectible-card art for the exact card Marble Shard Spray. A charged horizontal wave of bright white marble fragments bursts from a cracked sculpted marble guardian and sweeps in a clear row across three armored foes; chips and dust strike their legs and shields, pinning their advance, while one foe falls and a few clean shards flare with stored light after the takedown. Show the recognizable broken marble statue and the spray as the main named action, not an unrelated stone projectile. Keep the statue fragment, bright shard line and row of targets central and readable. Believable veined marble, weathered armor, warm sacred highlights, cool stone-dust shadows, painterly grounded materials and atmospheric depth matching supplied Hexmancers light references. Explicit 1:1 SQUARE canvas for a 512x512 editable master. Keep main action within x24..488,y105..407 for the 206:141 crop; quiet temple margins above and below. No gore, frame, text, lettering, runes, symbols or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2d3352a5-03f1-4c5e-93bd-9415b971e1b4.png",
+    "editableSourcePath": "game/cards/art/masters/light_strike_28.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel crop: broken marble statue, bright charged shard spray and three foes across the row remain clear; the leading statue face and shard line are fully readable."
+  },
+  {
+    "cardId": "light_strike_29",
+    "name": "Valkyrie's Descent",
+    "prompt": "Create standalone painterly medieval-high-fantasy collectible-card art for the exact card Valkyrie's Descent. A single brave valkyrie dives diagonally from the upper left toward the lower right in a forceful but graceful descending strike, her complete silver spear and one visible hand driving into an armored foe’s raised shield; the impact throws the foe backward with shield and dust, while a restrained gold halo of valor lights her focused face. Keep the valkyrie’s face/eyes, gripping hand, full spear and recoiling target inside the central action area; her wings may extend naturally beyond the crop. Believable feather, mail and metal, dramatic golden sky light against cool battle haze, painterly grounded materials and atmospheric depth matching supplied Hexmancers light references. Explicit 1:1 SQUARE canvas for an editable 512x512 master. Keep face, hand, full weapon and clear impact within x24..488,y105..407 for the 206:141 crop, quiet sky/ground above and below. No gore, frame, text, lettering, runes, symbols or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-18209550-a979-4bd3-95b5-b39c2a457962.png",
+    "editableSourcePath": "game/cards/art/masters/light_strike_29.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel crop: the valkyrie’s face, gripping hand, spearhead, impact and recoiling foe remain readable. Outer wing feathers and the trailing spear shaft extend beyond the frame, while the named figure and descending strike stay clear."
+  },
+  {
+    "cardId": "light_strike_30",
+    "name": "Durandal's Stroke",
+    "prompt": "Repaint standalone painterly medieval-high-fantasy collectible-card art for the exact card Durandal's Stroke. The first version stretched the sword beyond the square, so use one compact, believable one-handed arming sword whose ENTIRE silhouette is safely framed well away from every edge. Put its pommel, blue enamel grip, ornate crossguard and complete bright steel blade inside x135..402,y215..305 on the 512-square canvas; the sword should occupy about half the canvas width, with the sharp point clearly visible and empty margin beyond it. A focused medieval knight stands behind the hilt at left, with a clear complete face and both gauntleted hands visible as he makes one swift straight horizontal cut toward a nearby enemy's raised shield at right. The luminous stroke follows the blade and ends at its visible tip; no beam or weapon continues off-frame. A restrained golden aura suggests valor. Compact composition keeps knight face, both hands, full sword and shield-impact within the central horizontal card crop. Painterly medieval high fantasy collectible-card art, believable steel, enamel, leather, mail and stone, attractive directional light, atmospheric depth and grounded brushwork matching supplied Hexmancers light references. Explicit 1:1 SQUARE canvas for an editable 512x512 master composed for a 206:141 card crop. No frame, text, lettering, runes, symbols or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-bd3a5182-f020-4fb7-b48b-a6d9fb9fa05b.png",
+    "editableSourcePath": "game/cards/art/masters/light_strike_30.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "First source preserved at /tmp/light-03-repairs/light_strike_30-attempt-01.png. Inspected replacement 512-square source, centered 206:141 crop and 128-pixel crop: the knight face and hands, Durandal pommel, grip, guard, complete blade and struck shield all fit with clear margin; the bright tip and straight stroke remain readable.",
+    "previousGeneratedPath": "/workspace/generated_images/exec-ee140d07-1287-49fa-9a47-b2ce6a5a5864.png"
+  },
+  {
+    "cardId": "light_strike_31",
+    "name": "Excalibur's Arc",
+    "prompt": "Create standalone painterly medieval-high-fantasy collectible-card art for the exact card Excalibur's Arc. A calm, determined medieval kingly knight with a clear face and firm gauntleted hand presents Excalibur, a complete compact one-handed legendary sword with ornate gold crossguard, blue jewel pommel and fully visible bright blade. The sword angles gently across the central square, entirely within x90..420,y165..355; show both pommel and sharp tip with empty margin. A swift golden arc from the blade chains cleanly to two separate armored foes in a staggered row, each hit marked by a bright but controlled impact, while the knight’s posture and glow suggest valor. The whole sword stays the main named subject; no oversized beam obscures it. Believable steel, enamel, cloth and mail, dramatic warm light against cool stone, painterly grounded brushwork and atmospheric depth matching supplied Hexmancers light references. Explicit 1:1 SQUARE canvas for a 512x512 editable master composed for the 206:141 card crop. Keep face, sword, hand and chain impacts in x24..488,y105..407. No text, lettering, runes, frame or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6d4c6ec7-5417-4ec0-82fd-3124985f5248.png",
+    "editableSourcePath": "game/cards/art/masters/light_strike_31.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop at focalPoint [0.5,0.46], and 128-pixel crop: the knight’s crown/face and hand, complete Excalibur pommel/guard/tip and the chain impacts all remain visible."
+  },
+  {
+    "cardId": "light_lob_17",
+    "name": "Siege Stone of Acre",
+    "prompt": "Create standalone painterly medieval-high-fantasy collectible-card art for the exact card Siege Stone of Acre. Show one complete dense dark-gray siege stone, an irregular fist-sized carved limestone projectile with a small simple cross-shaped carving but no letters, spinning in a short low arc toward a battered medieval gate; the whole stone is the prominent named object, fully outlined and not hidden by the impact. At the gate it bursts into pale stone chips and dusty gold light, a pressure wave knocking two armored defenders backward. Compact horizontal composition keeps complete stone and gate impact readable, the stone itself centered within x150..365,y165..340. Believable weathered limestone, old masonry, iron and dust, dramatic warm sunbeam, grounded painterly brushwork and atmospheric depth matching supplied Hexmancers light references. Explicit 1:1 SQUARE canvas for a 512x512 editable master designed for a 206:141 crop. Keep full stone, trajectory and burst within x24..488,y105..407; quiet siege sky/ground beyond. No text, readable symbols, frame or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9d1c8f23-e9cc-4567-9993-2acf1ac146a9.png",
+    "editableSourcePath": "game/cards/art/masters/light_lob_17.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel crop: the whole carved siege stone remains distinct from its burst, with the gate impact and two knocked-back defenders clear."
+  },
+  {
+    "cardId": "light_lob_18",
+    "name": "Holy Water Vials",
+    "prompt": "Create standalone painterly medieval-fantasy collectible-card art for the exact card Holy Water Vials. Three compact clear-glass holy-water flasks, each a different simple shape, float whole and distinct in a gentle horizontal arc above a stone courtyard; each complete cork stopper, glass shoulder, body and rounded base is visible. One flask has just landed and released a bright circular ring of water across the ground, washing the stone in a soft warm restorative glow. Keep all three full vials the named main subject, with their silhouettes unobscured and the ring pattern clearly circular; no people needed. Tactile glass, cork and silver collars, warm sunlight through cool water, painterly grounded materials and atmospheric depth matching supplied Hexmancers light references. Explicit 1:1 SQUARE canvas for a 512x512 editable master composed for the 206:141 crop. Keep every stopper and base safely within x80..432,y135..385 and the ring fully readable within x24..488,y105..407. No labels, writing, runes, frame or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6e0d77c2-0bd2-4daf-a205-da93b858f04a.png",
+    "editableSourcePath": "game/cards/art/masters/light_lob_18.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.44
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop at focalPoint [0.5,0.44], and 128-pixel crop: all three vials retain complete corks, necks, bodies and bases with margin; the restorative splash ring is still recognizable along the ground."
+  },
+  {
+    "cardId": "light_lob_19",
+    "name": "Apothecary's Vials",
+    "prompt": "Create standalone painterly medieval-fantasy collectible-card art for the exact card Apothecary's Vials. Three small complete glass apothecary vials, each with a visible cork stopper and weighted base, fly together in a brief shallow arc toward an armored target; give the trio distinct ruby, blue and amber liquids while keeping all three bottles whole, evenly spaced and easy to count. At the target they burst in one compact splash of colored potion and glass-light, showing a quick single impact with no lingering field. The complete vials remain the dominant named subject; no apothecary figure is needed. Believable clear glass, cork, brass collars and fluid, painterly warm candlelight against cool stone, grounded brushwork and atmospheric depth matching supplied Hexmancers light references. Explicit 1:1 SQUARE canvas for a 512x512 editable master designed for a 206:141 crop. Keep all bottle stoppers and bases safely inside x80..432,y135..385, with the impact still inside x24..488,y105..407. No labels, writing, runes, frame or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d7fd4a56-d1ed-48df-afdf-7ed57a9c3278.png",
+    "editableSourcePath": "game/cards/art/masters/light_lob_19.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop at focalPoint [0.5,0.46], and 128-pixel crop: all three full vials retain complete stoppers, glass bodies and bases; the single quick splash on the armored target remains clear."
+  },
+  {
+    "cardId": "light_charge_16",
+    "name": "Arrows of Heracles",
+    "prompt": "Create standalone painterly medieval-Greek-fantasy collectible-card art for the exact card Arrows of Heracles. A strong but grounded Greek archer with a clear focused face and visible drawing hand releases one special golden-headed arrow horizontally across the center; show the entire arrow from its nocked feather-fletching to its sharp bronze point, unbroken and safely inside x110..432,y220..285 on the 512-square canvas. The arrow pierces a shield rim and continues toward a second armored foe, where a bright contained impact briefly stuns him. A compact quiver of several matching arrows at the archer’s shoulder suggests many uses; keep the full shaft of the main flying arrow the named subject, not an oversized energy beam. Compact horizontal staging keeps archer face, both relevant hands, full arrow, quiver and piercing action visible in the 206:141 card crop. Believable bronze, leather, wood, feather and cloth, warm Olympian sun against cool battlefield shadows, grounded painterly brushwork and atmospheric depth matching supplied Hexmancers light references. Explicit 1:1 SQUARE canvas for a 512x512 editable master. Keep all identity-critical face, hand and arrow features inside x24..488,y105..407 with quiet sky/ground outside. No gore, text, lettering, runes, frame or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-897dee90-16a7-4e25-a581-8de9d19f8c97.png",
+    "editableSourcePath": "game/cards/art/masters/light_charge_16.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel crop: archer face, drawing hand, full arrow shaft/fletching and quiver remain visible; the arrow pierces the shield at a clear bright stun impact."
+  },
+  {
+    "cardId": "light_summon_11",
+    "name": "White Wolf",
+    "prompt": "Create standalone painterly medieval-high-fantasy collectible-card art for the exact summon White Wolf. Depict one unmistakable true arctic white wolf, not a dog or fox: lean athletic wolf anatomy, long muzzle, alert pointed ears, pale silver-white winter coat and sharp natural amber eyes. It pounces forward over a snow-dusted ridge, forepaws extended and breath leaving a faint chilling mist; keep the whole wolf’s head/eyes and forequarters prominent and centered, with the trailing legs allowed to crop naturally. A cool silver aura catches on the fur without hiding its silhouette. Painterly grounded anatomy and believable layered fur, warm sunrise rim light against cool blue snow, atmospheric depth matching supplied Hexmancers light-creature references. Explicit 1:1 SQUARE canvas for a 512x512 editable master designed for a 206:141 crop. Keep face, eyes, chest and leading paws inside x24..488,y105..407, with quiet snowy margins. No collar, human clothing, text, frame or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-10a84eec-75f4-42b6-aebb-4f38d5492912.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel crop: true wolf head, pointed ears, amber eyes, chest and two leading paws remain central and readable; trailing body crops naturally."
+  },
+  {
+    "cardId": "light_summon_12",
+    "name": "White Wolf Matriarch",
+    "prompt": "Create standalone painterly medieval-high-fantasy collectible-card art for the exact summon White Wolf Matriarch. Show one mature noble female arctic white wolf, unmistakably a true wolf with robust shoulders, long muzzle, pointed ears, thick silver-white winter ruff and steady golden eyes; she stands slightly ahead of the viewer as a regal guardian, with no crown, collar or human adornment. A restrained swirl of windblown snow mixed with pale sand coils around her chest and paws to suggest a sandstorm trait, while her focused head and eyes dominate. Keep her head/eyes and powerful forequarters entirely clear; hind legs may extend naturally toward the edge. Painterly grounded wolf anatomy and detailed fur, cool moonlit blue with warm pale-gold rim light, atmospheric depth matching supplied Hexmancers light-creature references. Explicit 1:1 SQUARE canvas for a 512x512 editable master for the 206:141 crop. Keep head, ruff, forelegs and sand-snow aura within x24..488,y105..407. No extra wolves, text, frame or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-93ba9a59-9d20-4d83-b8d9-99200fad9c99.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source and upward-shifted 206:141 crop at focalPoint [0.5,0.38] plus 128-pixel crop: full wolf ears, head, eyes and ruff fit with margin, with chest and sand-snow aura prominent; lower legs crop naturally."
+  },
+  {
+    "cardId": "light_summon_13",
+    "name": "Talbot Hound",
+    "prompt": "Repaint the exact summon Talbot Hound as a historically recognizable English Talbot scent hound, not a Saint Bernard, not a wolf, and not a modern fluffy pet dog. Show one compact powerful hound in a low forward dash, with an unmistakable elongated narrow scent-hound muzzle, black nose, deep-set focused eyes, long low-hanging pendulous ears, long neck, deep chest and short smooth coat. Its coat is uniformly clean ivory-white from muzzle to tail, with absolutely no brown, red, tan, cream or dark patches and no spots. Use a leaner old hunting-hound silhouette rather than broad jowls: longer face, clear jawline, short close hair. Keep the full head, both hanging ears, eyes and leading foreleg dominant in x90..425,y145..385; trailing body/legs may crop naturally. A faint pale-gold dash afterimage behind its shoulder suggests two quick strikes without creating a second dog. Medieval stone woodland path, painterly grounded canine anatomy, soft warm rim light and cool forest shadows, atmospheric depth matching supplied Hexmancers creature art. Explicit 1:1 SQUARE canvas for a 512x512 editable master composed for a 206:141 card crop. No collar or leash, no text, frame or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-edf3fb5b-f13e-4f4c-ae67-e165166e6afb.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "First source preserved at /tmp/light-05-repairs/light_summon_13-attempt-01.png. Inspected replacement 512-square source, centered 206:141 crop and 128-pixel crop: the Talbot is now an unmistakable all-white, short-coated scent hound with a long muzzle, pendulous ears and focused eyes; leading foreleg remains clear and hind legs crop naturally.",
+    "previousGeneratedPath": "/workspace/generated_images/exec-81541b71-420d-47f3-beb9-59e69631782b.png"
+  },
+  {
+    "cardId": "light_summon_14",
+    "name": "Royal Gyrfalcon",
+    "prompt": "Create standalone painterly medieval-high-fantasy collectible-card art for the exact summon Royal Gyrfalcon. Show one large, true gyrfalcon of the northern cliffs, not an eagle or owl: compact falcon body, short hooked beak, intense dark eye with a bold brow, pointed wings and pale gray-white plumage densely freckled with charcoal marks. It dives diagonally through bright highland air with one foot extended and a restrained radiant gold-white trail; a small royal blue-and-gold jess at the leg suggests its noble falconry without hiding the bird. Keep its entire head and eye crisp, and its shoulder and lead talon visible; outer wing tips may extend naturally. Painterly grounded bird anatomy and layered feathers, attractive sunrise light against cool mountain haze, atmospheric depth matching supplied Hexmancers light-creature references. Explicit 1:1 SQUARE canvas for a 512x512 editable master composed for the 206:141 crop. Keep beak, eye, body and leading talon inside x24..488,y105..407. No person, text, frame or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-320de274-244c-4c49-acd8-707dc6c3d9a2.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel crop: pale speckled gyrfalcon, hooked beak, dark eye and extended talon read clearly; only outer wing feathers extend beyond the crop."
+  },
+  {
+    "cardId": "light_summon_15",
+    "name": "Heraldic Griffin",
+    "prompt": "Create standalone painterly medieval-high-fantasy collectible-card art for the exact summon Heraldic Griffin. One proud noble griffin stands broadside as the central guardian, with a sharply defined golden eagle head and clear amber eye, hooked beak, feathered eagle forelegs with strong talons, tawny lion hindquarters and a full feathered wing. The griffin braces behind two small allied guards, extending one wing into a translucent curved shield of warm gold light around them; a few gentle restorative motes suggest rallying aid. Keep griffin head/eye, chest and leading talons prominent, with the wing forming the protective arc; background allies remain secondary. Painterly grounded griffin anatomy, richly layered feathers and fur, believable bronze harness without lettering, warm directional sunrise light and atmospheric depth matching supplied Hexmancers light-creature references. Explicit 1:1 SQUARE canvas for a 512x512 editable master composed for a 206:141 crop. Keep head, eye, talons, shield edge and nearest allied faces inside x24..488,y105..407; outer wing tips may extend naturally. No readable heraldic text, frame, runes, symbols or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a888d626-ddba-44fd-90f4-687bd86a9dd1.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel crop: the griffin’s eagle head/eye, hooked beak, chest and leading talons remain distinct; its protective wing arc and two secondary allied guards are readable, with outer wing tips cropped naturally."
+  },
+  {
+    "cardId": "light_summon_16",
+    "name": "Lamassu",
+    "prompt": "Create standalone painterly medieval-high-fantasy collectible-card art for the exact summon Lamassu. Depict one unmistakable ancient Assyrian lamassu guardian: a colossal tawny bull’s powerful body, cloven hooves, enormous feathered eagle wings, and a calm human king’s head with a curled beard and horned crown. Make the complete human face and eyes clear and central, so it cannot read as a sphinx or griffin. The lamassu stands beside a palace gate, raising one foreleg as a warm blessed aura strengthens a small pair of allied guards; a subtle ribbon of light around the stone arch hints at confusion without overpowering the creature. Keep human face, bull chest and wing root within x24..488,y105..407; legs and wing tips may crop naturally. Painterly grounded anatomy and carved stone, richly layered feathers, gold and wool, warm directional sunrise against cool blue shadow, atmospheric depth matching supplied Hexmancers light-creature references. Explicit 1:1 SQUARE canvas for a 512x512 editable master composed for a 206:141 crop. No text, lettering, frame, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0becb360-057b-417e-a818-f5328969fbf9.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_16.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.33
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, top-shifted 206:141 crop at focalPoint [0.5,0.33], and 128-pixel crop: the human head/eyes and full crown, bull chest and raised foreleg remain legible; bull legs and outer wing feathers crop naturally."
+  },
+  {
+    "cardId": "light_summon_17",
+    "name": "Guardian Sphinx of Giza",
+    "prompt": "Create standalone painterly medieval-high-fantasy collectible-card art for the exact summon Guardian Sphinx of Giza. Show one monumental ancient Egyptian sphinx in unmistakable profile: an attentive human pharaoh’s face with clear eyes and striped nemes headdress atop a powerful tawny lion’s body, broad front paws on Giza limestone, a calm but clever guardian’s gaze fixed on an approaching intruder. No wings, no eagle head, no bull horns. A subtle static halo of fine golden motes and a ripple of sunlit sand around the paws suggests its steady taunting presence, while the sphinx’s face remains the strongest focal point. Keep the entire human head, eyes, headdress and forepaws inside x24..488,y105..407; lion’s hind legs may crop naturally. Painterly grounded ancient stone, believable human face, leonine anatomy and linen, warm desert sun with cool temple shadows, atmospheric depth matching supplied Hexmancers light-creature references. Explicit 1:1 SQUARE canvas for a 512x512 editable master composed for a 206:141 crop. No hieroglyphs or readable text, frame, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4d1dbf8a-4d21-4fec-9208-1307f0006667.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_17.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop at focalPoint [0.5,0.38], and 128-pixel crop: the full human face, eyes and nemes headdress are visible above the lion’s body; Giza setting and guardian pose remain clear while lower body crops naturally."
   }
 ]

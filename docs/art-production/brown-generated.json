@@ -3013,5 +3013,208 @@
     "batch": 12,
     "reviewNote": "512-square source, centered wide crop and thumbnail reviewed. Full gnomish duplicator, crank, twin rollers, feet and three output copies remain visible and clear at small size. Parent review pending.",
     "cardId": "brown_instant_77"
+  },
+  {
+    "cardId": "brown_instant_78",
+    "name": "Grappling Hook",
+    "prompt": "Square 1:1 painterly medieval high-fantasy collectible-card illustration with warm lantern light and sea-spray blues. Grappling Hook: a complete compact three-pronged iron grappling hook with a stout rope coiled neatly beside it on a ship’s weathered deck; its curved points are clearly separated and the rope is visibly knotted to the ring. One taut length reaches toward a small chest being hauled back aboard, suggesting recall, but the hook remains the dominant named subject. Keep the entire hook, knot and essential rope connection within x24..488 y105..407, arranged horizontally across the middle 60%, quiet rigging and ocean above and below. Believable forged iron, tarred rope, painterly material detail, strong silhouette readable small. No text, UI, card frame, logo, watermark, modern gear, Disney, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6be490e6-22be-4b7e-9977-48593e7ac78c.png",
+    "editableSourcePath": "game/cards/art/masters/brown_instant_78.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Complete grappling hook, all three prongs, rope knot and retrieval line are clear.",
+    "batch": 13,
+    "status": "generated"
+  },
+  {
+    "cardId": "brown_instant_79",
+    "name": "Pop-Up Umbrella Shield",
+    "prompt": "Square 1:1 painterly medieval fantasy collectible-card art, warm workshop light with a healing green-gold glow. Pop-Up Umbrella Shield: a compact fully opened enchanted umbrella used as a protective shield, short sturdy handle and rounded brass-ribbed canopy clearly visible; a curved translucent barrier shimmers along its outer edge. A small gnome defender stands immediately beside the umbrella at the same height, face and eyes clearly visible and one hand on the handle. Keep full canopy, handle, face, hand and barrier within x24..488 y105..407, horizontal middle-60% composition; quiet courtyard above and below. A few rain beads and soft healing sparks, painterly wood, brass and cloth, clear silhouette small. No text, frame/UI/logo/watermark, modern umbrella, Disney, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-daadfaf7-278e-4679-88c7-6f2eca77c8b2.png",
+    "editableSourcePath": "game/cards/art/masters/brown_instant_79.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "reviewNote": "Reviewed the 512-square source, focal y=0.38 206:141 crop and 128x88 thumbnail. Full canopy, face, eyes and gripping hand fit; the lower handle tip is clipped by the crop and may need repaint after service availability returns. Parent square/crop inspection confirms the named canopy and held handle fit at y=.38; only incidental gnome feet are outside. No repaint is required.",
+    "batch": 13,
+    "status": "generated"
+  },
+  {
+    "cardId": "brown_instant_81",
+    "name": "Gnomish Force Bubble",
+    "prompt": "Square 1:1 painterly medieval high-fantasy collectible-card illustration, clear cool light with warm brass workshop accents. Gnomish Force Bubble: one small gnome tinkerer stands fully protected inside a complete translucent spherical force bubble, a few fine geometric glints ripple across its surface; gnome’s face, eyes and open palm are clearly visible through the sphere. The bubble is the main subject and full circumference stays inside the crop with generous margin. Center horizontally in middle 60%, keep whole bubble and gnome within x40..472 y105..407; quiet workshop setting above and below. Subtle blue-silver transparency, soft healing warmth at the gnome’s feet, painterly grounded materials, strong clean circle readable small. No text, UI, card frame, logo, watermark, sci-fi technology, Disney, anime, cartoon, photorealism, pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0edb4783-3d05-4c32-8d39-594f3e729196.png",
+    "editableSourcePath": "game/cards/art/masters/brown_instant_81.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Gnome face, eyes, hands and feet are visible; the sphere’s outer rim is slightly clipped at the top, so a future repaint may be needed. Parent shifted the crop upward to retain the force-bubble rim with the gnome face/hand.",
+    "batch": 13,
+    "status": "generated"
+  },
+  {
+    "cardId": "brown_instant_80",
+    "name": "Dwarven Shield Charm",
+    "prompt": "Create one illustration for the Hexmancers card Dwarven Shield Charm. The named subject is a single compact dwarven charm: a palm-sized round bronze-and-iron medallion shaped like a miniature sturdy shield, with a small inset pale blue crystal, hand-forged rivets and restrained angular dwarven engraving (abstract marks only, no readable writing). The complete charm is the strong central subject, shown upright at a slight three-quarter angle, with a translucent warm silver-blue barrier visibly blossoming around it as a clean protective arc, suggesting a shield ward. No operator or extra props. Painterly medieval high-fantasy collectible-card illustration, grounded detailed metalwork, dramatic directional forge light, atmospheric stone workshop background, clear silhouette and attractive contrast. Explicit 1:1 square canvas, intended as an editable 512x512 master. Keep the entire charm and its complete protective arc within x24..488,y105..407 on the square, arranged horizontally through the middle 60%; quiet scenery above and below for a 206:141 horizontal crop. The charm should remain legible at thumbnail size. No card border, text, numbers, interface, logo or watermark; no modern technology, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-71ad89f0-4dcd-4872-ab0a-5b54146b959c.png",
+    "editableSourcePath": "game/cards/art/masters/brown_instant_80.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. The full dwarven shield charm and crystal remain clear; the barrier arc frames it, with only a small part of its uppermost glow cropped in the wide view. Parent review pending."
+  },
+  {
+    "cardId": "brown_instant_82",
+    "name": "Elven Glass Ward",
+    "prompt": "Create an illustration for the Hexmancers card Elven Glass Ward. The named subject is a compact, light-built elven defensive ward: exactly three joined, slightly curved translucent glass panels forming a short wall across the scene, each panel distinct with delicate silver-green elven metal edging and a few tiny leaf-shaped crystal details. An incoming arrow and a small stone fragment glance away from the clear glass surface, showing it blocks attacks; no characters or extra props. Make the complete three-panel ward the prominent central subject, horizontal and broad, with all ends and lower supports visible. Painterly medieval high-fantasy collectible-card art, believable glass reflections and fine metalwork, elegant elven craftsmanship, luminous forest light, atmospheric woodland stone path behind it, crisp readable silhouette and attractive directional lighting. Explicit 1:1 square canvas, intended as an editable 512x512 master. Keep the complete ward and its defensive action inside x24..488,y105..407 on the square; quiet scenery above and below for a 206:141 horizontal crop. The three glass sections must remain distinct at thumbnail size. No card frame, text, numbers, readable runes, interface, logo or watermark; no modern technology, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8189a68f-a0e8-4a17-8c69-a138ef5386be.png",
+    "editableSourcePath": "game/cards/art/masters/brown_instant_82.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. All three glass panels, their complete supports and the arrow deflection remain visible and distinct; the ward reads clearly at small size. Parent review pending."
+  },
+  {
+    "cardId": "brown_instant_83",
+    "name": "Sea-Folk Shell Guard",
+    "prompt": "Repaint the exact Hexmancers illustration for Sea-Folk Shell Guard as a standalone painterly medieval-high-fantasy collectible-card artwork. The first attempt made the shell shield too tall for the card crop, so make a much more compact, stout shield: one broad, complete spiral nautilus shell guard with a thick overlapping shell rim, short broad pointed base, small dark-bronze side bindings and compact grip. The full object should occupy about 55% of the square's height and width, centered in x140..372,y140..372, with generous empty margin above and below; show the whole silhouette, every rim and the entire bottom point with no edge cut. A subtle translucent blue-white ward surrounds the shell but remains secondary. Quiet moonlit surf and deep-water blue in the background. Believable shell ridges, weathered bronze, luminous water, nuanced brushwork and dramatic directional light matching the supplied grounded Hexmancers references. Explicit 1:1 SQUARE canvas for an editable 512x512 master, composed for a 206:141 wide crop. No character, no frame, no text, labels, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-51e8118c-55f1-43ea-95e4-c448e9d04f00.png",
+    "editableSourcePath": "game/cards/art/masters/brown_instant_83.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "First attempt preserved at /tmp/brown-02-repairs/brown_instant_83-attempt-01.png. Inspected replacement 512-square source, centered 206:141 crop and 128-pixel crop: the complete shell guard, rim, spiral and short pointed base fit with margin; the blue ward remains secondary.",
+    "previousGeneratedPath": "/workspace/generated_images/exec-c50afeab-b17e-4495-8331-618140be7695.png"
+  },
+  {
+    "cardId": "brown_instant_84",
+    "name": "Djinn Mirage Cloak",
+    "prompt": "Repaint standalone painterly medieval-high-fantasy card art for the exact card Djinn Mirage Cloak. The first composition made the cloak much too tall for the card crop. Show ONE compact complete turquoise silk cloak floating upright, detached from any body, as the clear main subject. Its complete high collar, hood, short wide sleeves, and full scalloped hem must all fit around x150..362,y145..365 on the 512-square canvas, taking no more than 48% of canvas height, with generous empty margin above and below and nothing cropped. The cloak has a small warm-gold trim, translucent mirage folds, and a subtle ghostly djinn face suggested only inside the upper fabric. A soft thin amber ward oval may surround it, clearly secondary and not tangled with the silhouette. Quiet sunlit palace arches recede behind. Painterly, grounded, believable silk and gold thread, dramatic light, atmospheric depth matching the supplied Hexmancers references. Explicit 1:1 SQUARE canvas for an editable 512x512 source composed for the 206:141 wide crop. No body, no extra garments, no frame, lettering, labels, symbols or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f28252d3-f1f3-499b-a4a9-bec4fae4848d.png",
+    "editableSourcePath": "game/cards/art/masters/brown_instant_84.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "First attempt preserved at /tmp/brown-02-repairs/brown_instant_84-attempt-01.png. Inspected replacement 512-square source, upward-shifted 206:141 crop at focalPoint [0.5,0.46], and 128-pixel crop: the full hood, sleeves and hem fit with margin; the faint djinn face and protective mirage remain legible.",
+    "previousGeneratedPath": "/workspace/generated_images/exec-e7aefba2-384c-452f-ab3e-4ce0fbad3c77.png"
+  },
+  {
+    "cardId": "potion_heal",
+    "name": "Healing Draught",
+    "prompt": "Create standalone painterly medieval-fantasy collectible-card art for the exact potion Healing Draught. One small, beautifully crafted clear-glass medicine bottle is the only main subject, isolated against a calm dim apothecary background. Show the entire glass vessel, rounded heavy base, narrow neck and complete cork stopper with clear empty space around every part; do not crop its silhouette. Inside is translucent ruby-amber restorative liquid, with a few gentle gold healing motes and a tiny sprig of medicinal herb beside it. Tactile glass, cork and brass collar, warm directional candlelight, rich but restrained brushwork, atmospheric depth, matching the supplied grounded Hexmancers references. Explicitly create a 1:1 SQUARE canvas for an editable 512x512 master. Keep stopper and base safely within x112..400,y118..394 on the square, well within the 206:141 crop. No writing, label, symbols, frame or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9faaccf9-814a-415e-9ae5-f1ae645508df.png",
+    "editableSourcePath": "game/cards/art/masters/potion_heal.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel crop: the medicine bottle’s full cork stopper, neck, glass body and rounded base fit with margin; ruby-amber healing liquid reads clearly."
+  },
+  {
+    "cardId": "potion_tonic",
+    "name": "Iron Tonic",
+    "prompt": "Repaint standalone painterly medieval-fantasy collectible-card art for the exact potion Iron Tonic. The first bottle was too tall and its cork stopper clipped the card crop, so show ONE distinctly compact, squat apothecary flask, centered and isolated. The complete closed cork stopper, short neck, wide shoulder, entire round weighted glass body and full thick base must fit inside x150..362,y145..365 on the square canvas, with generous empty margin; bottle height must be less than half the square. It contains dense smoky iron-gray and bronze liquid. A subtle blue-white barrier forms a small halo around the glass but stays secondary. The flask itself is clearly glass, with a small weathered hammered-iron collar. Quiet medieval forge background with warm hearth light against cool shadow. Believable glass, cork and iron, nuanced painterly brushwork and atmospheric depth matching the supplied grounded Hexmancers references. Explicit 1:1 SQUARE canvas for an editable 512x512 master composed for a 206:141 wide crop. No text, writing, label, symbols, frame or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0279ddc4-059d-427b-ace7-c59ba0c43e15.png",
+    "editableSourcePath": "game/cards/art/masters/potion_tonic.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "First attempt preserved at /tmp/brown-02-repairs/potion_tonic-attempt-01.png. Inspected replacement 512-square source, centered 206:141 crop and 128-pixel crop: the complete compact bottle, cork stopper, glass body and weighted base fit with generous margin; the ward and iron-gray tonic remain clear.",
+    "previousGeneratedPath": "/workspace/generated_images/exec-500f29c8-d6d6-45d5-982c-754f776394ea.png"
+  },
+  {
+    "cardId": "potion_elixir",
+    "name": "Quicksilver Elixir",
+    "prompt": "Repaint standalone painterly medieval-fantasy collectible-card art for the exact potion Quicksilver Elixir. The first vial was too tall and its silver stopper clipped the card crop, so make a noticeably shorter, squat bottle. Show ONE compact complete apothecary vial centered and isolated, its complete silver stopper, short neck, rounded shoulders, body and thick weighted foot all visible; the full silhouette should occupy less than 50% of the square's height and fit entirely within x150..362,y145..365 with generous margin. The vial holds bright reflective liquid mercury, with a small restrained silver ribbon curling around only its lower half to suggest haste, never covering the stopper or base. Tactile clear glass, pale metal, fluid silver, warm candlelit apothecary background, nuanced painterly brushwork and atmospheric depth matching the supplied grounded Hexmancers references. Explicit 1:1 SQUARE canvas for an editable 512x512 master composed for the 206:141 crop. No label, lettering, runes, symbols, frame or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-362894a4-f2f0-4171-8806-8fe005c93eb9.png",
+    "editableSourcePath": "game/cards/art/masters/potion_elixir.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "First attempt preserved at /tmp/brown-02-repairs/potion_elixir-attempt-01.png. Inspected replacement 512-square source, centered 206:141 crop and 128-pixel crop: complete silver stopper, neck, body and weighted base fit comfortably; the contained quicksilver ribbon and silver liquid remain distinct.",
+    "previousGeneratedPath": "/workspace/generated_images/exec-ac54f881-e624-4202-bb28-521122050059.png"
+  },
+  {
+    "cardId": "potion_wind",
+    "name": "Second Wind",
+    "prompt": "Repaint standalone painterly medieval-fantasy card art for the exact potion Second Wind. The first composition placed the stopper and bottle too close to the wide-crop edges; compose a much smaller, squat arrangement with large empty space above and below. One compact round clear-glass flask, its very short neck and thick circular foot, is centered. Show its complete weighted base and entire glass outline, plus the complete separate cork stopper floating just above the open neck. Keep the bottle and stopper together within x170..348,y158..348 on the 512-square canvas. Inside the flask, pale blue-silver potion curls like a fresh gust. A restrained spiral of air rises between bottle and stopper and gently lifts exactly two small blank parchment slips beside it; keep both slips inside x135..380,y140..360 and away from the stopper. The bottle remains the dominant named subject and none of these objects overlap or touch the canvas edge. Tactile glass, cork and parchment, invigorating blue light against warm candlelit apothecary surroundings, nuanced painterly brushwork, atmospheric depth matching supplied grounded Hexmancers references. Explicit 1:1 SQUARE canvas for an editable 512x512 master composed for the 206:141 card crop. No labels, writing, runes, symbols, frame or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5527082d-6c44-4d14-8973-24acfebb06f6.png",
+    "editableSourcePath": "game/cards/art/masters/potion_wind.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "First attempt preserved at /tmp/brown-03-repairs/potion_wind-attempt-01.png. Inspected replacement 512-square source, centered 206:141 crop and 128-pixel crop: the entire cork stopper, short-necked glass bottle and weighted base have clear margin; both blank slips and the spiral gust remain legible.",
+    "previousGeneratedPath": "/workspace/generated_images/exec-0a760171-54a5-482e-bf70-1b9976cfcfcb.png"
   }
 ]

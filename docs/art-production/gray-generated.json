@@ -3027,5 +3027,491 @@
     "status": "generated",
     "batch": 12,
     "reviewNote": "512-square master inspected. Shifted the crop upward so Domovoi’s full face and eyes, both hands and glowing spark chain are visible together; the 206:141 crop and 128px thumbnail were inspected. Lower legs extend incidentally."
+  },
+  {
+    "cardId": "gray_summon_143",
+    "name": "Tomte",
+    "prompt": "Paint an original illustration for the fantasy creature card “Tomte.” Show an ancient Nordic household duende, a short sturdy old guardian with a weathered kind face, deep-set eyes, long frost-white beard and a simple muted red wool cap, standing inside a timber barn beside a warm lantern. In one hand he cups a small ember that bursts into a restrained spray of golden sparks, hinting at his magical blast; keep Tomte himself, face and ember hand the main subject. Snow is visible outside the barn door, while the interior has rough timber, hay and winter tools. Painterly medieval high-fantasy art, tactile wool, beard, wood and iron, dramatic warm/cool light, mature grounded anatomy and atmospheric depth; serious folklore tone, not a cartoon gnome. Horizontal portrait. True 1:1 SQUARE canvas for a 512x512 master; keep Tomte's full face, eyes, cap and ember hand within x24..488 and y105..407. Quiet rafters and floor above/below; center will be cropped to a wide 206:141 card illustration. No text, lettering, frame, UI, anime, Disney-like cartoon, toy proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ce97b570-7e06-4d38-ac62-d30e821efa65.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_143.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square, centered 206:141 crop, and 128x88 thumbnail inspected. Tomte's full face, eyes and ember hand with golden sparks remain prominent; barn and winter view support the folklore setting."
+  },
+  {
+    "cardId": "gray_summon_144",
+    "name": "Hob of the Hearth",
+    "prompt": "Paint an original illustration for “Hob of the Hearth.” Depict a loyal mossy house duende, an ancient small humanoid with a lined gentle face, earth-brown clothes and a thick beard threaded with green moss, standing beside the stone hearth of a medieval cottage. He tends a low fire with one hand and raises the other protectively toward a family doorway, as warm amber light gathers around his outstretched palm. Keep Hob's face, eyes, hands and the hearth in the same central band; the family remains a subtle background presence. Painterly medieval high-fantasy art, believable moss, linen, stone and soot, rich firelight against cool night, atmospheric depth, grounded serious folklore anatomy, not a cute cartoon. Horizontal composition. True 1:1 SQUARE canvas for a 512x512 master; keep Hob's face, both hands and central hearth action within x24..488 and y105..407. Quiet rafters and stone floor above/below; center will be cropped to a wide 206:141 card illustration. No text, lettering, frame, UI, anime, Disney-like cartoon, toy proportions, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0091f0fd-ab93-4c93-8561-59f7558fdccc.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_144.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square, centered 206:141 crop, and 128x88 thumbnail inspected. Hob's face, eyes, both hands and hearth tending/protective gesture remain visible; family is secondary in the doorway."
+  },
+  {
+    "cardId": "gray_summon_145",
+    "name": "Zashiki-warashi",
+    "prompt": "Paint an original respectful folklore portrait for “Zashiki-warashi,” a lucky Japanese household spirit. Show one small, childlike but not toy-like kodama spirit in a traditional Edo-period timber home, with a clear solemn curious face, neat black bobbed hair, muted vermilion kimono and simple sash. The spirit stands beside a shoji doorway and gently raises both hands, forming a subtle protective halo of warm lantern motes around an elderly resident in the background. Keep the spirit's face, eyes and hands dominant; show enough of the traditional room to identify a home setting without decorative clutter. Painterly medieval-fantasy collectible-card art with respectful Japanese domestic details, textured wood and cloth, soft golden light and atmospheric depth, grounded mature storybook style; no exaggerated anime expressions. Horizontal composition. True 1:1 SQUARE canvas for a 512x512 master; keep the spirit's full face, hands and core silhouette within x24..488 and y105..407. Quiet ceiling and tatami floor above/below; center will be cropped to a wide 206:141 card illustration. No text, lettering, frame, UI, anime, Disney-like cartoon, photorealism, or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c4420885-5b37-402f-89ed-0d138d62f9a6.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_145.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square, centered 206:141 crop, and 128x88 thumbnail inspected. The spirit's complete face, eyes and raised hands remain clear; kimono and shoji room establish the Japanese home setting, with resident secondary."
+  },
+  {
+    "cardId": "gray_summon_146",
+    "name": "Lares of the Home",
+    "prompt": "Paint an original illustration for the exact card “Lares of the Home.” Mechanics: a sturdy, steady household spirit that draws danger toward itself while protecting its home. Depict a gentle, ancient household guardian spirit in the form of a dignified translucent elder emerging beside a stone hearth in a medieval home. The spirit turns toward a threat at the open doorway, calmly drawing the intruder’s attention away from a worried family in the background; one luminous hand rests near the hearth as warm ember-light and a faint protective aura soothe the room. Keep the spirit’s face, hands and central upper body unmistakable and prominent; family and threat remain secondary. Grounded Roman-inspired domestic details, believable wool, wood, iron and stone; restrained spectral glow, warm firelight against cool evening shadows. Painterly medieval fantasy collectible-card art, tactile brushwork and atmospheric depth, dramatic but legible lighting consistent with the supplied Hexmancers reference art. Exact 1:1 square composition for a 512×512 editable master. Arrange subject horizontally; keep face, hands and defining spirit features within x24…488, y105…407 for the 206:141 wide crop, with expendable ceiling and floor atmosphere beyond. No frame, lettering, numbers, runes, UI or typography. No anime, Disney-like cartoon proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ab521012-caea-4b41-a8c3-acbec60e8803.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_146.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Repaired the first render because the top of the spirit’s head fell outside the wide crop. Reviewed the repaired 512-square source, direct 512×350 crop and 128×88 thumbnail: complete face and both hands are inside the crop; hearthside family and doorway threat remain readable as supporting context."
+  },
+  {
+    "cardId": "gray_summon_147",
+    "name": "Household Kobold",
+    "prompt": "Paint an original illustration for the exact card “Household Kobold.” Mechanics: a sturdy, slow household goblin guardian that creates a protective ward and remains steadfast. Depict a compact, broad-shouldered goblin household guardian standing firmly at the threshold of a medieval cottage, sheltering the home with a visible pale-gold ward that curves across the doorway. He is gentle rather than monstrous: attentive face, sturdy stance, one hand braced on the ward and the other holding a small wooden broom or household tool; a warm hearth and modest family room glow behind him. The kobold’s face, both hands and clear protective action dominate; keep the ward compact and close to him. Believable weathered green skin, patched wool and leather, wood, iron and stone; painterly medieval fantasy collectible-card art with tactile brushwork, dramatic firelight and atmospheric depth matching the supplied Hexmancers reference art. Exact 1:1 square composition for a 512×512 editable master. Horizontal staging; keep face, hands, ward contact and upper body within x24…488, y105…407 for a 206:141 crop; quiet expendable room and floor above and below. No frame, lettering, numbers, runes, UI or typography. No anime, Disney-like cartoon proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-06cd24aa-9c43-4f9b-924c-eaa7d9e12148.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_147.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Repaired the first render because the kobold’s upper face fell outside the wide crop. Reviewed the repaired 512-square source, direct 512×350 crop and 128×88 thumbnail: full face, ears and both hands stay in the crop; the broom, protective ward and warm home remain readable."
+  },
+  {
+    "cardId": "gray_summon_148",
+    "name": "Village Healer",
+    "prompt": "Paint an original illustration for the Hexmancers summon “Village Healer.” Show a veteran village healer, a sturdy, kind middle-aged woman in weathered gray-green wool and a simple leather satchel, escorting an injured village guard along a stone lane. Her focused face and both hands stay clear as she presses a softly glowing herb poultice to the guard’s shoulder; warm restorative light gently strengthens the guard, while a few villagers shelter behind them. The healer is the unmistakable central subject, with a calm protective stance and grounded medieval village details. Painterly medieval/high-fantasy collectible-card art, nuanced believable cloth, herbs, leather and stone, attractive directional light, atmospheric depth, strong readable values. Match the supplied references' painterly materials and dramatic fantasy lighting, with a grounded gray-village tone. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the healer’s face, eyes, both working hands and the healing action within x24–488,y105–407 on the square; arrange the healer and patient horizontally for the 206:141 card crop, with quiet scenery above and below. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-8dfb811b-b99a-4d1d-abcf-39fb35ee9be3.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_148.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source, centered 206:141 crop and thumbnail inspected: the healer’s face, both hands and glowing treatment remain visible beside the patient. The escorting posture and restorative action are clear at thumbnail size."
+  },
+  {
+    "cardId": "gray_summon_149",
+    "name": "Wise Woman",
+    "prompt": "Paint an original illustration for the Hexmancers summon “Wise Woman.” Show a sturdy, composed elderly village woman with silver braids and a weathered face, wearing layered charcoal wool and a muted blue-gray shawl. She stands escorting two villagers through a misty crossroads, holding a smooth ashwood staff and raising her other hand to form a subtle crossing lattice of pale protective light around them. Keep her calm eyes, face, both hands and the staff head visible; her presence is reassuring and resolute, not a caricatured witch. Painterly medieval/high-fantasy collectible-card art, nuanced believable wool, wood, skin and stone, attractive moonlit directional light, atmospheric depth and strong readable values. Match the supplied references' painterly materials and dramatic fantasy lighting, with the grounded elder-spirit tone of the accepted gray household-guardian art. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the woman's face, eyes, both hands and protective action within x24–488,y105–407 on the square; arrange the woman and villagers horizontally for the 206:141 card crop, with quiet scenery above and below. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-0ff16d6e-e44b-46a6-aa16-4d9d24f802d8.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_149.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source, centered 206:141 crop and thumbnail inspected: the wise woman’s face, both hands and staff head remain visible as she escorts two villagers. The crossing lattice reads as a protective ward, while the woman remains the clear focal subject."
+  },
+  {
+    "cardId": "gray_summon_150",
+    "name": "Field Surgeon",
+    "prompt": "Paint an original illustration for the Hexmancers summon “Field Surgeon.” Depict a clever, steadfast male battlefield surgeon in a weathered charcoal coat and sturdy leather apron, kneeling beside a wounded soldier at a medieval field camp. The surgeon’s focused face, both careful hands and compact leather instrument roll are clearly visible as he applies a clean linen dressing under a small pool of lantern light; show no gore. A few distant figures and angled tent lines suggest a disciplined rearward aid station, while the surgeon remains the strong central subject. Painterly medieval/high-fantasy collectible-card art, nuanced believable cloth, leather, linen, metal and wood, attractive directional light, atmospheric depth and strong readable values. Match the supplied references' painterly materials and dramatic fantasy lighting, with the grounded gray-village tone of the accepted gray guardian art. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the surgeon’s face, eyes, both working hands and instrument roll within x24–488,y105–407 on the square; arrange surgeon and patient horizontally for the 206:141 card crop, with quiet scenery above and below. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-bc676160-cae2-4695-b5aa-266a00a944c5.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_150.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.44
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source and thumbnail inspected. The centered crop clipped the surgeon’s hair and forehead, so focalPoint y=0.44 shifts the 206:141 crop upward to include his full face; both working hands and the bandage remain visible, with lower patient limbs expendable."
+  },
+  {
+    "cardId": "gray_summon_151",
+    "name": "Herbwife",
+    "prompt": "Paint an original illustration for the Hexmancers summon “Herbwife.” Show a sturdy, moss-cloaked village herbwife with a lined, capable face, standing at the front of a woodland lane beside a humble stone cottage. She holds a clear bundle of fresh medicinal herbs in one hand and reaches with the other to cast a short chain of living green vines that catches an approaching shadowy raider’s boot; keep the plant magic secondary to her resolute face, visible hands and recognizable herbs. Her weathered apron carries a few small herb pouches, with no potion bottles. Painterly medieval/high-fantasy collectible-card art, nuanced believable wool, moss, herbs, bark and stone, attractive directional light, atmospheric depth and strong readable values. Match the supplied references' painterly materials and dramatic fantasy lighting, with a grounded gray-village tone. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the herbwife’s face, eyes, both hands and herb bundle within x24–488,y105–407 on the square; arrange her and the vine action horizontally for the 206:141 card crop, with quiet scenery above and below. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-8e58f1da-2513-4974-9ed3-0aba9a4f0980.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_151.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source, centered 206:141 crop and thumbnail inspected: the herbwife’s face, herb bundle and extended vine-casting hand remain clear. The vine catches the raider’s lower leg at the crop edge; the incidental raider figure continues beyond the frame."
+  },
+  {
+    "cardId": "gray_summon_152",
+    "name": "Midwife",
+    "prompt": "Paint an original illustration for the Hexmancers summon “Midwife.” In a humble medieval cottage by lantern light, depict a gentle, steady village midwife in soft gray-blue wool cradling a safely swaddled newborn beside the relieved mother. The midwife’s kind face and both supporting hands are clear at the center; a restrained warm protective glow radiates from her arms to comfort the mother and child, like a brief pulse of healing magic. Show tender, calm expressions and believable cloth, no birth scene or injury. Painterly medieval/high-fantasy collectible-card art, nuanced materials, attractive directional light, atmospheric depth and strong readable values. Match the supplied references' painterly materials and dramatic fantasy lighting, with a grounded gray-village tone. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the midwife’s face, eyes, both hands and the swaddled newborn within x24–488,y105–407 on the square; arrange the three figures closely in a horizontal group for the 206:141 card crop, with quiet scenery above and below. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-047c49b1-896a-4bd6-aa18-7e9098ec16ae.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_152.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source, adjusted 206:141 crop and thumbnail inspected. FocalPoint y=0.46 keeps the midwife’s full face and head covering, both supporting hands and the swaddled newborn inside the crop; the gentle protective glow and mother remain clear at thumbnail size."
+  },
+  {
+    "cardId": "gray_summon_153",
+    "name": "Saint Bernard",
+    "prompt": "Paint an illustration for the exact card name “Saint Bernard.” A powerful, gentle Saint Bernard rescue dog with a broad white-and-russet face, kind eyes and a small brass rescue cask at its collar leans toward an exhausted medieval traveler, offering a healing herb pouch as soft golden light mends the traveler. The dog’s recognizable face, muzzle and collar cask dominate; show its paw and the traveler only as supporting details. Painterly medieval high-fantasy collectible-card art matching the supplied Hexmancers references: believable canine anatomy and long fur, nuanced leather, brass, wool and stone, layered brushwork, warm hearth-and-lantern light, atmospheric depth, grounded and natural rather than cute or cartoonish. Explicit 1:1 square canvas intended for a 512×512 editable master. Compose dog’s head, eyes and rescue cask in the middle band; keep full face/eyes and collar object inside x24–488,y105–407 for a 206:141 landscape crop. Quiet mountain hospice scenery above and below. Strong readable silhouette and compassionate action. No text, card frame, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-10d8953e-cd20-44a7-8d04-4d1cf683d87b.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_153.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, true 206:141 wide crop and 128px thumbnail. Saint Bernard’s full face and kind eyes, collar cask and offered herb pouch stay clear together; the traveler and hospice setting remain supporting context."
+  },
+  {
+    "cardId": "gray_summon_154",
+    "name": "Therapy Pony",
+    "prompt": "Paint an illustration for the exact card name “Therapy Pony.” A small sturdy medieval pony with a calm face, soft eyes and a braided mane stands beside a weary young squire in a cloister garden; the squire rests a hand on the pony’s neck while a gentle pale-gold aura steadies and empowers them both. The pony is the primary subject—show its complete head, eye, muzzle and neck clearly at the same height as the squire’s hand, with the human kept secondary. Painterly medieval high-fantasy collectible-card art matching the supplied Hexmancers references: realistic equine anatomy, nuanced coat, mane, leather tack, wool and stone, layered brushwork, gentle directional morning light and atmospheric depth, grounded rather than toy-like or cartoonish. Explicit 1:1 square canvas for a 512×512 editable master. Compose pony’s head/neck and the touching hand horizontally in the middle band; keep pony eyes, muzzle and hand contact inside x24–488,y105–407 for a 206:141 landscape crop, with quiet garden above and below. Strong readable silhouette. No costume caricature, card frame, lettering, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-93b120e1-a62f-4c83-9d09-ed87d1904b70.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_154.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, true 206:141 wide crop and 128px thumbnail. Pony’s complete ears, face, soft eye and muzzle remain clear beside the squire’s touching hand; the gentle aura supports the empowering escort role."
+  },
+  {
+    "cardId": "gray_summon_155",
+    "name": "Faithful Donkey",
+    "prompt": "Paint an illustration for the exact card name “Faithful Donkey.” A loyal gray-brown medieval pack donkey with long expressive ears and a gentle, steadfast face stands protectively beside its nearly identical young twin on a mountain road; both animals wear simple weathered leather packs and remain calm under a stormy sky. Make the adult donkey’s face and eyes dominant, with the smaller companion clearly visible to communicate the twin summon and faithful escort role. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: believable donkey anatomy, coarse coat and mane, leather straps, stone and wool, rich layered brushwork, soft directional light through clouds and atmospheric depth, grounded and natural rather than cute or cartoonish. Explicit 1:1 square canvas intended for a 512×512 editable master. Compose the two heads side by side in a compact horizontal middle band; keep adult face/eyes and the companion’s head fully inside x24–488,y105–407 for a 206:141 landscape crop. Quiet road, mountain and sky above and below. Clear silhouettes and warm emotional bond. No text, card frame, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c5ae35e9-b3c9-410b-a578-c76755560ebe.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_155.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Shifted focal point upward to y=0.34 and inspected the 512-square source, top-aligned wide crop and 128px thumbnail. Both donkeys’ complete ears, faces and eyes are preserved; the larger animal reads as a steadfast escort with a smaller twin. Incidental lower legs and road crop away."
+  },
+  {
+    "cardId": "gray_summon_156",
+    "name": "Milk Cow",
+    "prompt": "Paint an illustration for the exact card name “Milk Cow.” A sturdy black-and-white dairy cow stands calmly in a medieval farmyard, her broad gentle face, clear eyes and small curved horns prominent beside a wooden pail brimming with fresh milk. She lowers her head protectively as a faint silvery-gray magical haze curls from her breath and makes a distant intruding goblin falter; the animal remains the focus, with the soft curse effect understated. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: believable bovine anatomy and coat markings, nuanced wood, iron, straw and stone, layered brushwork, warm barn light against cool morning mist, atmospheric depth, grounded and natural rather than cute or cartoonish. Explicit 1:1 square canvas intended for a 512×512 editable master. Compose cow’s head, eyes and milk pail horizontally in the middle band; keep full face, eyes, horns and pail inside x24–488,y105–407 for a 206:141 landscape crop. Quiet farmstead scenery above and below. Strong readable silhouette. No text, card frame, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f6edfcc3-3f45-4ad5-acaa-5b9c1ca771d2.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_156.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, true 206:141 wide crop and 128px thumbnail. Cow’s face/eyes and curved horns remain prominent with the pail; the faint gray breath haze and recoiling distant intruder suggest the curse mechanic without distracting from the animal."
+  },
+  {
+    "cardId": "gray_summon_157",
+    "name": "Mother Hen",
+    "prompt": "Repaint the illustration for the exact card name “Mother Hen” as an unmistakable domestic chicken, with no crane, stork, goose, or long-necked bird anatomy. Show one broad-bodied brown-and-cream farm hen with a short tucked neck, rounded body, small red comb and wattle, short sturdy yellow beak, bright alert chicken eye, and layered natural feathers. She spreads one protective wing over several tiny fluffy chicks nestled safely beneath her. The adult hen’s head, comb, beak, eye and protective wing are the clear focal point; chicks are visible as small summoned helpers. Set the scene in a humble medieval farmyard with straw, wood coop and dawn light. Painterly medieval high-fantasy collectible-card illustration in the supplied Hexmancers reference style: realistic chicken proportions and feather texture, believable straw, wood and stone, rich layered brushwork, warm directional light and atmospheric depth; grounded and natural, never toy-like or cartoonish. Explicit 1:1 square canvas intended for an editable 512×512 master. Compose the hen’s head, short neck and chicks in a compact horizontal middle band; keep her entire head with red comb, eye and beak plus the chicks beneath her wing inside x24–488,y105–407 for a 206:141 landscape crop. Quiet farmyard scenery above and below. No other large birds, no crane/stork anatomy, no card frame, lettering, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-1ea47e4d-1101-4052-a548-1423308282e2.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_157.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Repainted after identity review with an unmistakable broad-bodied domestic hen: short tucked neck, red comb and wattle, short yellow beak, brown-and-cream feathers and chicks beneath a protective wing. Inspected the replacement 512-square source, true 206:141 wide crop and 128px thumbnail; hen’s full face/comb/beak and all chick faces remain clear."
+  },
+  {
+    "cardId": "gray_summon_158",
+    "name": "Honeybadger",
+    "prompt": "Paint an original illustration for the Hexmancers summon “Honeybadger.” The named animal must read clearly as a real honey badger: compact, heavy-bodied, low to the ground, with black legs and underside, a broad pale gray-white mantle from crown down the back, small rounded ears and strong digging claws. Show it bravely guarding the front of a forest pass, forepaws braced on a low earthen-and-root barrier it has raised; a cold silver ward glazes the ground before an approaching wolf silhouette. Keep the honey badger’s face, eyes, stripe and forepaws unmistakable, grounded wildlife anatomy rather than a cute mascot. Painterly medieval/high-fantasy collectible-card art, nuanced believable fur, soil, roots and stone, cool moonlight with warm rim light, atmospheric depth and strong readable values. Match the supplied references' painterly materials and dramatic fantasy lighting, with a grounded gray guardian tone. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the honey badger’s face, eyes, forepaws and full pale dorsal stripe within x24–488,y105–407 on the square; arrange the animal and barrier horizontally for the 206:141 crop, with quiet forest beyond. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-7e8e190b-0bca-4c7c-876a-5fcdbbd87f36.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_158.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source, centered 206:141 crop and thumbnail inspected: this reads as a real honey badger by its low heavy body, dark face/legs and full pale mantle stripe. Face and forepaws stay clear behind the root-earth barrier; the cold ward and distant wolf remain secondary."
+  },
+  {
+    "cardId": "gray_summon_159",
+    "name": "Sacred Ibis",
+    "prompt": "Paint an original illustration for the Hexmancers summon “Sacred Ibis.” The named bird must read unmistakably as an African sacred ibis, not a crane: a slender white wading bird with a bare black head and neck, long down-curved black bill, black flight feathers and long legs. Show one noble ibis standing at the front of an ancient river-temple pool, tossing a small glowing river pebble in a clean arc with its curved bill toward a dark intruder on the far bank. Keep the ibis’s full head, eye, bill and recognizable white-and-black plumage crisp and prominent; its body stays natural and birdlike, never humanoid. Painterly medieval/high-fantasy collectible-card art, nuanced believable feathers, water and carved stone, elegant dawn light, atmospheric depth and strong readable values. Match the supplied references' painterly materials and dramatic fantasy lighting, with a grounded gray guardian tone. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the ibis’s head, eye, full curved bill and the tossed pebble’s clear arc within x24–488,y105–407 on the square; arrange the bird and arc horizontally for the 206:141 crop, with quiet temple and river scenery above and below. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-d940f303-76be-4ca5-8335-4060ca9d260f.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_159.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source, centered 206:141 crop and thumbnail inspected: this reads as a sacred ibis through its bare black head/neck, long down-curved bill, white body and black flight feathers. The head, eye, full bill and tossed pebble arc are clear at thumbnail size."
+  },
+  {
+    "cardId": "gray_summon_160",
+    "name": "Beaver Builder",
+    "prompt": "Paint an original illustration for the Hexmancers summon “Beaver Builder.” The named animal must read clearly as a real beaver, not a rat: a sturdy brown semi-aquatic rodent with small rounded ears, strong orange incisors, broad webbed forepaws and its unmistakable flat dark paddle tail. Show it cleverly fitting a branch into a sturdy dam of sticks and rounded stones across a woodland stream, slowing the water into a calm pool. Keep the beaver’s face, incisors, working forepaws and full paddle tail visible; natural animal proportions and fur, no clothing or tools. Painterly medieval/high-fantasy collectible-card art, nuanced believable wet fur, wood, water and stone, cool forest light with warm highlights, atmospheric depth and strong readable values. Match the supplied references' painterly materials and dramatic fantasy lighting, with a grounded gray guardian tone. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the beaver’s face, eyes, incisors, working forepaws and distinctive tail within x24–488,y105–407 on the square; arrange the builder and dam horizontally for the 206:141 crop, with quiet forest above and below. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-a13b2ba4-279f-4414-b8c8-d3cfd5b3911b.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_160.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source, centered 206:141 crop and thumbnail inspected: the animal reads clearly as a beaver through its orange incisors, broad body and flat dark paddle tail. Its face, working paws and tail remain visible while it fits a branch into the stick-and-stone dam."
+  },
+  {
+    "cardId": "gray_summon_161",
+    "name": "Capybara",
+    "prompt": "Paint an original illustration for the Hexmancers summon “Capybara.” The named animal must read unmistakably as a real capybara: the world’s largest rodent, with a broad barrel-shaped body, reddish-brown coarse fur, blunt square muzzle, tiny rounded ears and short sturdy legs. Show a calm adult capybara standing at the front of a misty woodland stream, facing the viewer in three-quarter profile as it sends a gentle fan-shaped splash through reeds to push back two small river predators. Keep the full muzzle, dark eyes, forepaws and recognizable bulky body clear; a smaller capybara may rest behind it, but the lead animal remains dominant and naturally proportioned, never cartoonish. Painterly medieval/high-fantasy collectible-card art, nuanced believable fur, water, reeds and stone, soft dawn light with strong readable values, atmospheric depth. Match the supplied references' painterly materials and dramatic fantasy lighting, with a grounded gray guardian tone. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the capybara’s face, eyes, forepaws and distinctive body shape within x24–488,y105–407 on the square; arrange it and the water fan horizontally for the 206:141 crop, with quiet river scenery above and below. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-8a4c4a3a-a340-4e25-b82f-8ed4e8960e52.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_161.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source, centered 206:141 crop and thumbnail inspected: the broad capybara body, blunt muzzle, dark eyes and short forepaws are clear, with realistic reddish coarse fur and proportions. The fan-shaped splash pushes the river animals back while the capybara remains dominant."
+  },
+  {
+    "cardId": "gray_summon_162",
+    "name": "Wandering Monk",
+    "prompt": "Paint an original illustration for the Hexmancers summon “Wandering Monk.” Show a steady, gentle traveling monk in weathered gray robes and a simple wooden staff, pausing on a moonlit river path to mend the scraped forearm of a weary traveler. Keep the monk’s compassionate face, eyes, both working hands and the patient’s injured arm clear; a soft ribbon of tidal water gathers around the bandage and glows with quiet restorative light. The monk is the central escorting presence, grounded and humane, with a small travel bundle and river stones secondary. Painterly medieval/high-fantasy collectible-card art, nuanced believable skin, cloth, wood and water, attractive cool moonlight balanced by warm healing light, atmospheric depth and strong readable values. Match the supplied references' painterly materials and dramatic fantasy lighting, with a grounded gray-village tone. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the monk’s face, eyes, both hands and healing action within x24–488,y105–407 on the square; arrange monk and traveler horizontally for the 206:141 crop, with quiet river scenery above and below. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-5d38ddaf-c579-4bfb-aca5-ecdc0753df52.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_162.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.44
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source and upward-adjusted 206:141 crop/thumb inspected (focalPoint y=0.44): the monk’s entire head, eyes, both working hands and the patient’s treated forearm remain visible. Tidal healing light is clear; lower garments and riverbank are incidental."
+  },
+  {
+    "cardId": "gray_summon_163",
+    "name": "Pilgrim",
+    "prompt": "Paint an illustration for the exact card name “Pilgrim.” An elderly medieval pilgrim in a weathered gray cloak and travel-worn boots pauses on a snowy mountain pass, his lined face and steady eyes clearly visible beneath a simple hood. One hand grips a carved walking staff, and its iron tip sends a short fan of pale frost stones toward distant raiders, leaving them rimed with ice; the old traveler remains the calm, steadfast escorting subject. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: grounded human anatomy and expression, nuanced wool, leather, wood and iron, layered brushwork, cool snow light with a warm lantern accent, atmospheric depth, not photorealistic. Explicit 1:1 square canvas intended for a 512×512 editable master. Compose face, staff grip and frost action horizontally in the middle band; keep eyes, relevant hand and staff head inside x24–488,y105–407 for a 206:141 landscape crop. Quiet mountain sky and trail above and below; lower legs may crop. Strong readable silhouette. No card frame, text, runes, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-820fe412-d722-474a-93d6-eaab46592c17.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_163.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, true 206:141 wide crop and 128px thumbnail. Pilgrim’s full lined face and eyes, staff-gripping hand and frost-tipped walking staff are clear; the fan of frost and distant frozen raiders support his barrage effect."
+  },
+  {
+    "cardId": "gray_summon_164",
+    "name": "Tea Master",
+    "prompt": "Paint an illustration for the exact card name “Tea Master.” A seasoned medieval tea master in understated indigo robes sits at a low wooden table, her composed, clever face and focused eyes visible as she tips a complete hammered bronze kettle with steady hands. A plume of brilliant scalding steam bursts from the spout in a controlled fan toward a shadowy intruder, while a small porcelain tea bowl catches the last golden drops. The tea master and her whole kettle remain the clear focal point; the steam communicates a charged blast. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: grounded human expression and hands, nuanced bronze, ceramic, linen and wood, layered brushwork, warm hearth light meeting cool courtyard shadows, atmospheric depth, not photorealistic. Explicit 1:1 square canvas intended for a 512×512 editable master. Arrange face, pouring hands, complete kettle and steam horizontally in the middle band; keep eyes, both hands, full kettle and spout inside x24–488,y105–407 for a 206:141 landscape crop. Quiet tea-house setting above and below. No legible writing, card frame, text, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e2817609-cc35-4988-9d8a-93a89dd4db43.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_164.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, true 206:141 wide crop and 128px thumbnail. Tea master’s face/eyes and both hands remain clear with the complete hammered kettle, handle and spout; the burst of steam reaches a secondary intruder."
+  },
+  {
+    "cardId": "gray_summon_165",
+    "name": "Camp Cook",
+    "prompt": "Paint an illustration for the exact card name “Camp Cook.” A broad, gentle ogre camp cook in a weathered apron stirs a large iron cauldron over a medieval field fire, his thoughtful face and hands clearly visible as he lobs a steaming round loaf from a wooden paddle toward hungry soldiers along the camp line. The ogre’s warm presence and rugged camp cooking are the main subject; the arcing loaf hints at his lob attack without turning the scene into comedy. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: grounded ogre anatomy and expression, nuanced wool, leather, iron, wood and stone, rich layered brushwork, warm firelight against cool dusk, atmospheric depth, natural proportions rather than cartoonish. Explicit 1:1 square canvas intended for a 512×512 editable master. Compose ogre’s face, stirring hand and cauldron/paddle horizontally in the middle band; keep eyes, hands and recognizable cooking setup inside x24–488,y105–407 for a 206:141 landscape crop. Quiet camp background above and below; incidental lower body may crop. Strong readable silhouette. No text, card frame, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c93245b9-a7f1-49fe-9261-85cd5f6e655e.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_165.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Shifted focal point upward to y=0.43 and inspected the 512-square source, revised wide crop and 128px thumbnail. Ogre cook’s full face/eyes, stirring hand and extended bread paddle remain visible; the cauldron and fire establish the camp kitchen, while lower fire and onlookers are incidental."
+  },
+  {
+    "cardId": "gray_summon_166",
+    "name": "Beowulf",
+    "prompt": "Repaint the exact card “Beowulf” with a centered, crop-safe composition. A brave legendary Norse warrior in ring mail and a dark blue cloak stands in a torchlit mead hall, his weathered heroic face and clear eyes visible. At the center of the square, he draws back one arm with a heavy rounded stone held securely in a fully visible hand, preparing to hurl it at a charging troll several paces away; do not put the hand or stone near either side edge. Keep Beowulf’s full face and both arms, especially the complete throwing hand and whole stone, together in the central horizontal band. The loyal shield-bearers and shadowy monster remain secondary. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: grounded anatomy, nuanced iron rings, wool, leather, wood and stone, layered brushwork, warm firelight against cool winter shadows, atmospheric depth, not photorealistic. Explicit 1:1 square canvas for a 512×512 master; keep face, eyes, both hands and complete stone safely within x48–464,y105–407 for the 206:141 card crop. Quiet rafters and floor above and below. No gore, modern props, card frame, text, runes, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-21c82244-cf10-43ef-851c-2834808f662d.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_166.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Repainted after crop inspection moved the throwing hand inward. Inspected the replacement 512-square source, true 206:141 wide crop and 128px thumbnail; Beowulf’s full face/eyes, complete stone and throwing hand are visible within the crop, with troll and shield-bearers secondary."
+  },
+  {
+    "cardId": "gray_summon_167",
+    "name": "Gilgamesh",
+    "prompt": "Paint an illustration for the exact card name “Gilgamesh.” A noble legendary king of ancient Uruk, wearing a blue wool mantle, layered bronze armor and a simple gold circlet, stands before his companions with a calm resolute face and clear eyes. He raises a broad bronze-faced shield in one hand to guard them from incoming arrows and keeps his other hand on a spear shaft. Gilgamesh is the unmistakable front-line protector; the sheltered companions remain secondary. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: grounded human anatomy and expression, nuanced bronze, lapis-blue cloth, leather, wood and stone, layered brushwork, warm torchlight against cool dusk, atmospheric depth, not photorealistic. Explicit 1:1 square canvas for a 512×512 editable master. Compose face, shield and hands in a horizontal middle band; keep eyes, relevant hands, complete shield face and spear grip inside x24–488,y105–407 for a 206:141 landscape crop. Quiet ancient city gate above and below. Strong readable silhouette. No readable writing, no gore, no card frame, text, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2a518e90-e0b8-4293-bb2c-701ccfb0a2bc.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_167.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Shifted focal point upward to y=0.46 and inspected the 512-square source, revised wide crop and 128px thumbnail. Gilgamesh’s full face/eyes, spear hand and raised shield remain visible together as he guards his companions; incidental lower cloak crops away."
+  },
+  {
+    "cardId": "gray_summon_168",
+    "name": "Enkidu",
+    "prompt": "Paint an illustration for the exact card name “Enkidu.” Depict Enkidu as a legendary wild ape guardian of ancient Mesopotamia: a towering, intelligent, broad-shouldered ape with a rugged humanlike face, deep-set eyes, long dark mane and simple bronze-and-leather bracers. He stands upright in a cedar forest at the edge of an ancient city, turning to protect his companions as a forceful burst of wind, dust and leaves blasts outward from his raised hand. Keep Enkidu’s face, eyes, both hands and powerful upper body clearly visible; the mythic hero is the dominant subject, not a generic animal. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: believable ape anatomy, nuanced fur, bronze, leather and ancient stone, layered brushwork, warm firelight against cool forest shadows, atmospheric depth, grounded and solemn rather than cartoonish. Explicit 1:1 square canvas intended for a 512×512 editable master. Compose Enkidu’s face and raised hands in the middle horizontal band; keep eyes, hands and blast source within x24–488,y105–407 for a 206:141 landscape crop. Quiet cedar forest and city walls above and below. Strong readable silhouette. No card frame, text, runes, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c494d73b-f7ef-404a-aeb0-b6928985bbaf.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_168.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Shifted focal point upward to y=0.40 and inspected the 512-square source, revised wide crop and 128px thumbnail. Enkidu’s full wild-ape face/eyes, both hands and blast source stay visible together; companions and ancient city are supporting context."
+  },
+  {
+    "cardId": "gray_summon_169",
+    "name": "Hua Mulan",
+    "prompt": "Paint an illustration for the exact card name “Hua Mulan.” Depict the legendary Chinese woman warrior Hua Mulan in historically grounded Northern Wei lamellar armor and a muted red cloak, standing at a mountain pass with her hair tied beneath a simple helmet. Her brave face and alert eyes are unmistakably female and fully visible as she draws a complete recurved bow toward a distant threat; keep both hands, bow grip and drawn arrow clear. A few companions behind her suggest her loyal escort, but Mulan remains the dominant hero. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: grounded human anatomy and expression, nuanced lacquered leather, bronze, silk and wood, rich layered brushwork, cool dawn light with warm red accents, atmospheric depth, not photorealistic. Explicit 1:1 square canvas intended for a 512×512 editable master. Compose Mulan’s face, hands and full bow horizontally in the middle band; keep eyes, both hands, complete bow and arrow inside x24–488,y105–407 for a 206:141 landscape crop. Quiet mountain sky and ground above and below. Strong readable silhouette. No Disney likeness, no card frame, legible writing, text, numbers, UI, anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-87ecf534-99e5-413d-bcdf-beeafc900ca1.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_169.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.44
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Shifted focal point upward to y=0.44 and inspected the 512-square source, revised wide crop and 128px thumbnail. Hua Mulan’s full face/eyes, bow hand, drawing hand and arrow remain clear; the upper bow limb extends into expendable sky, while her identity and action stay unmistakable."
   }
 ]

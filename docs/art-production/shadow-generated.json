@@ -3013,5 +3013,498 @@
     "status": "generated",
     "batch": 12,
     "reviewNote": "Square source inspected. Centered crop clipped the top of the crescent blade, so the crop is shifted upward to y=45 (focalPoint 0.43); the adjusted 206:141 crop and thumbnail show the reaper’s face, both hands, and complete scythe blade and tip."
+  },
+  {
+    "cardId": "shadow_strike_19",
+    "name": "Moonlit Rake",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Moonlit Rake”. Paint a shadow assassin in a dark hooded mantle, face and one clawed gauntlet visible as the hand slashes in a broad wedge through moonlit mist. Three silver talons rake a luminous crescent across the scene; the assassin recoils into a braced stance after the strike, and faint curse-darkness clings to the cut. Grounded medieval anatomy, one clear action, no gardening tools. Painterly medieval/high-fantasy collectible-card art, richly painted believable cloth, aged steel, stone, silk and feathers, dramatic moonlight, readable values and atmospheric depth, grounded anatomy and a clear small-card silhouette. Match the supplied shadow references' painterly materials and dark moonlit atmosphere. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep identity-critical face/eyes/hands and the named weapon or action within x24–488,y105–407 on the square; compose horizontally for a 206:141 crop with quiet scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-aa0000c1-a790-47e1-b7c0-7fe75f773af0.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_strike_19.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source and centered 206:141 crop inspected: the clawed hand and bright crescent rake dominate; the hooded face and one eye are visible but partly shadowed. The sweeping wedge action remains clear at thumbnail size."
+  },
+  {
+    "cardId": "shadow_strike_20",
+    "name": "Bloodletting Blade",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Bloodletting Blade”. Paint a complete elegant curved bloodletting blade as the central subject: dark steel sabre with a crimson-lit edge, a modest engraved guard and full wrapped handle. The blade spins in a tight returning boomerang arc through dark air, leaving a restrained ruby trail and one small suspended blood droplet, no gore. Keep the entire weapon uncut and unmistakable; no wielder required. Painterly medieval/high-fantasy collectible-card art, richly painted believable cloth, aged steel, stone, silk and feathers, dramatic moonlight, readable values and atmospheric depth, grounded anatomy and a clear small-card silhouette. Match the supplied shadow references' painterly materials and dark moonlit atmosphere. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep identity-critical face/eyes/hands and the named weapon or action within x24–488,y105–407 on the square; compose horizontally for a 206:141 crop with quiet scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-b83f796b-9915-41c5-a378-157938ba7441.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_strike_20.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source and centered 206:141 crop inspected: the complete blade, guard and handle remain inside the crop; the boomerang return arc is distinct and the weapon reads clearly at thumbnail size."
+  },
+  {
+    "cardId": "shadow_strike_21",
+    "name": "Web Spray",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Web Spray”. Its charged fan-shaped piercing strike snares and slows its target. Paint a large pale cave spider in the foreground, legs poised as it forcefully sprays a broad fan of fine silver webbing across a shadowy forest path; the web strands pierce through drifting leaves toward a distant fleeing silhouette. Keep the spider's many-eyed face and front legs clearly readable, with crisp luminous web filaments rather than a vague magical blast. Grounded eerie medieval fantasy, elegant and dangerous, not horror gore. Painterly medieval/high-fantasy collectible-card art, richly painted believable silk, bark, stone and chitin, dramatic moonlight, readable values and atmospheric depth, grounded anatomy and clear small-card silhouette. Match the supplied shadow references' painterly materials and dark moonlit atmosphere. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep identity-critical face/eyes/hands and the named subject/action within x24–488,y105–407 on the square; compose horizontally for a 206:141 crop with quiet scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-77b9c9ae-702c-411f-bb04-8eb5602c7f9a.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_strike_21.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source, centered 206:141 crop and thumbnail inspected: the spider’s many-eyed face and front legs remain clear while its web spreads across the scene to a snared fleeing figure. The web fan and named subject stay readable at thumbnail size."
+  },
+  {
+    "cardId": "shadow_strike_22",
+    "name": "Jiangshi Hop",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Jiangshi Hop”. Its charged strike is a sudden tunneling leap that stuns with a critical impact. Paint a single recognizable jiangshi, a pale undead hopping vampire in layered weathered dark robes and a simple traditional talisman on its brow, springing horizontally up out of a split earthen grave path. The jiangshi's face, talisman, bent arms and forward-kicking boot are clearly visible as the decisive impact sends a restrained ring of dust and dark force toward a shadowed pursuer. Make the leap and strike readable, with grounded human anatomy and old graveyard details. Painterly medieval/high-fantasy collectible-card art, richly painted believable cloth, leather, soil and stone, dramatic moonlight, readable values and atmospheric depth, grounded anatomy and a clear small-card silhouette. Match the supplied shadow references' painterly materials and dark moonlit atmosphere. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep identity-critical face/eyes/hands and the named subject/action within x24–488,y105–407 on the square; compose horizontally for a 206:141 crop with quiet scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-6cadd827-5607-4704-8b73-046a6cf89afd.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_strike_22.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.44
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source, centered 206:141 crop and thumbnail inspected: the jiangshi’s face, brow talisman, arms and forward boot remain visible in its grave-leaping impact. Dust and the shadowed pursuer support the charged strike; the undead figure reads clearly at thumbnail size. Parent shifted crop y to .44 to retain full hat/face and forward hop action."
+  },
+  {
+    "cardId": "shadow_strike_23",
+    "name": "Asanbosam Hook",
+    "prompt": "Create a standalone illustration for the Hexmancers card “Asanbosam Hook”. Its quick zigzag strike pulls a foe off balance with a critical hook. Paint a fearsome Asanbosam, a dark forest spirit from West African folklore, as a lean shadowed humanoid with a weathered face, wild dark hair and a distinctive curved iron hook in one strong hand. It swings low and diagonally through moonlit trees, the hook catching the belt or armor edge of a distant armored foe and pulling them sideways through a zigzagging trail of pale leaves. Keep the spirit's face, hooked hand and full hook clear and fully visible; let the pull action read in one glance. Respectful folklore-inspired fantasy, not caricature. Painterly medieval/high-fantasy collectible-card art, richly painted believable bark, cloth, aged iron and leaves, dramatic moonlight, readable values and atmospheric depth, grounded anatomy and a clear small-card silhouette. Match the supplied shadow references' painterly materials and dark moonlit atmosphere. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep identity-critical face/eyes/hands and the named subject/action within x24–488,y105–407 on the square; compose horizontally for a 206:141 crop with quiet scenery above and below. No card frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, toy style, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-c56eb23f-c669-42c0-9b44-2137761782b6.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_strike_23.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source, centered 206:141 crop and thumbnail inspected: the Asanbosam’s face, hooked hand and entire curved hook remain clear as the hook pulls the armored foe sideways. The diagonal leaves convey the zigzag strike, and the action reads at thumbnail size."
+  },
+  {
+    "cardId": "shadow_strike_24",
+    "name": "Hellhound Howl",
+    "prompt": "Create original square 1:1 painterly medieval-dark-fantasy collectible-card art for Hellhound Howl. Actual quick strike: an infernal hound releases a concussive shockwave and curses its victim. Show a huge coal-black hellhound in a low three-quarter pose, mouth open in a visible howl, glowing ember eyes and ember-lit fangs; a bright circular ripple of shadowed red-violet air bursts outward, bending dead leaves and staggering one armored guard. Faint curse smoke clings to the guard's armor. The hound's head and expression dominate; guard face remains readable. Gloomy ruined graveyard at night, richly textured fur, iron and stone, painterly surfaces, dramatic directional ember light against cold moonlit blue, grounded anatomy and strong silhouette. Square 512x512 master, keep hound face, open muzzle and target face inside x24..488 y105..407, quiet misty sky and earth margins; designed for a true 206:141 crop. Illustration only, no text/frame/UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-1a298409-44db-4e1c-bd6a-58c104563025.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_strike_24.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the exact 512 source, 206:141 crop and 128x88 thumbnail. The hellhound face/howl, shockwave and target remain readable within the wide crop."
+  },
+  {
+    "cardId": "shadow_strike_25",
+    "name": "Infernal Brand",
+    "prompt": "Create original square 1:1 painterly medieval-dark-fantasy collectible-card art for Infernal Brand. Actual quick strike: a mine-shaped infernal brand erupts for enormous damage, can crit, lingers for two turns, and scorches the caster for a smaller self-inflicted cost. Make one large molten brand mark the named focal object: a bold, non-letter-shaped sigil burned into a cracked stone floor, surrounded by a low ring of hellfire. An armored enemy is caught at the center of the eruption, while a warlock at the edge recoils and shields a singed hand, implying the backlash. Show the brand still smoldering in two fading ember rings; controlled fire, readable characters, no gore. Painterly medieval hellish ruin, detailed stone, mail and leather, dramatic orange light against smoky charcoal shadow, grounded proportions, strong horizontal composition. Square 512x512; keep brand, enemy face and warlock hand/face inside x24..488 y105..407; simple smoke above and ground below; designed for a true 206:141 crop. No readable letters/runes, no frame/text/UI, no modern objects, no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7468278f-c32c-4ae3-9c34-dbb80efd5bf4.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_strike_25.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the exact 512 source, 206:141 crop and 128x88 thumbnail. The molten brand, trapped target and warlock’s singed hand read clearly; the fiery mark dominates without obscuring the figures."
+  },
+  {
+    "cardId": "shadow_strike_27",
+    "name": "Danse Macabre",
+    "prompt": "Create original square 1:1 painterly medieval-dark-fantasy collectible-card art for Danse Macabre. Actual quick strike reaches every enemy and leaves them confused, with a chance of a critical hit. Show a necromancer conductor at center-left raising both hands as a ring of skeletal warriors and living armored foes across a ruined battlefield are caught in the same unnatural dance; skeletons spin and bow in a readable macabre rhythm while the confused human fighters stagger with bewildered faces. One bright bone-white flash at a central impact suggests a critical strike, but the dancing figures remain the subject. Rich painterly bone, aged mail, tattered velvet and stone; dramatic violet moonlight and candle-gold glints, grounded proportions, atmospheric depth, clear grouped silhouettes. Square 512x512; keep conductor face/hands and several clearly distinct dancers with readable faces inside x24..488 y105..407, calm smoke above and dark earth below; designed for true 206:141 crop. Illustration only, no text/frame/UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ea0f0606-0f0b-49f9-8f5d-ba4f30fc6e80.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_strike_27.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the exact 512 source, 206:141 crop and 128x88 thumbnail. The conductor, dancers and struck/astonished faces remain visible; the thumbnail retains a legible battlefield-wide macabre scene."
+  },
+  {
+    "cardId": "shadow_strike_26",
+    "name": "Reaper's Scythe",
+    "prompt": "Create original square 1:1 painterly medieval-dark-fantasy collectible-card art for Reaper's Scythe. Actual strike: the reaper throws a sweeping boomerang-like scythe attack that freezes its target; a finishing blow strengthens the reaper. Show a hooded reaper in a forceful side-on stance, one hand gripping the haft, sweeping one complete enormous curved scythe horizontally toward an armored foe. The entire crescent blade, its point, and the visible haft from hand to end must fit clearly inside the central safe band; stage the arc like a returning boomerang, with a thin icy spectral trail and frost crystallizing across the foe's armor. The reaper's face/shadowed features and the foe's face remain visible. Painterly medieval death fantasy, nuanced dark cloth, aged iron and frost, moonlit blue-white edge light over deep charcoal, grounded anatomy and crisp readable silhouettes. Square 512x512; full scythe blade and critical faces/hands inside x24..488 y105..407; quiet grave-mist above and below; designed for a true 206:141 crop. No card frame, text, symbols, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-69384c1d-b6b6-4fd4-ba9c-0d7f64dfea11.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_strike_26.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "repairPrompt": "Repaint Reaper's Scythe as an original square 1:1 painterly medieval-dark-fantasy card illustration. The previous version put the struck foe too close to the right crop edge. Move the reaper and foe inward, around x145 and x380 on a 512 square, with complete faces comfortably inside the central 80%. Show a hooded reaper at left, recognizable pale face visible, gripping a compact iron haft with one clear hand; swing a single complete scythe horizontally in a sweeping boomerang arc. The entire curved blade, sharp point, socket and enough haft to identify the weapon must fit inside x24..488 y105..407 with generous margin; do not let the blade touch any border. At right, an armored foe with full face and upper body recoils as frost crystallizes across his shoulder. Keep a clean separation between blade edge and target face so both read clearly. Painterly medieval death fantasy, rich black cloth, weathered steel, crisp ice, moonlit blue-white edge light, atmospheric graveyard mist, grounded expressive anatomy. Square 512x512 master, quiet grave-mist above and below, designed for a true 206:141 card crop. No card frame, text, rune, UI or gore; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "previousGeneratedPath": "/workspace/generated_images/exec-8e9f6a8f-4232-485f-9cfd-fb4131f7693e.png",
+    "reviewNote": "Repainted after crop inspection showed the struck foe too close to the right edge. Preserved earlier 512 source at /tmp/shadow_strike_26-before-repaint.png, prepared replacement separately, then atomically replaced canonical. Inspected final square, true 206:141 crop and thumbnail: the complete blade, haft/gripping hand, reaper face and target face fit clearly."
+  },
+  {
+    "cardId": "shadow_strike_28",
+    "name": "Onryo's Grudge",
+    "prompt": "Paint original square 1:1 painterly medieval-dark-fantasy collectible-card art for Onryo's Grudge. Actual strike: a ricocheting curse rebounds from its target and drives them back with a heavy recoil. Show a vengeful onryo ghost at left, pale expressive face and reaching hand visible beneath long black hair, her white burial robe streaming in the wind. A compact red-black spirit bolt ricochets sharply from an armored guard's raised iron shield toward his chest, the impact hurling him backward; a faint curse haze follows the bolt's rebound. The ghost and one target are the clear subjects; show one readable ricochet angle, not a web of trails. Feudal Japanese-inspired ruined shrine courtyard at night, painterly weathered iron, stone, silk and mist, cold moonlight with restrained crimson curse glow, grounded anatomy, cinematic depth and dramatic silhouette. Square 512x512 master; keep both faces, ghost's hand, shield and ricochet impact inside x24..488 y105..407, quiet moonlit mist above and stone ground below; designed for a true 206:141 wide card crop. No lettering, legible talisman text, frame or UI; no modern elements, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7bacf683-0fba-4545-9045-036e2fb8966f.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_strike_28.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Generated square normalized to an exact 512x512 source. Inspected source, true 206:141 crop and 128x88 thumbnail: ghost face/hand, ricochet from shield, impact and target face remain visible with readable recoil."
+  },
+  {
+    "cardId": "shadow_strike_29",
+    "name": "Manananggal Swoop",
+    "prompt": "Create original square 1:1 painterly medieval-dark-fantasy collectible-card art for Manananggal Swoop. Actual quick strike: a winged night predator dives from above, drains life, and grows stronger on a kill. Show a terrifying but elegant manananggal, a pale adult woman with large batlike wings and long dark hair, swooping out of a moonlit burial hollow toward one armored sentry; her face and reaching clawed hand clear, a thin ribbon of violet life-essence drawn from his chest toward her. Keep this folkloric vampire grounded and non-gory, no exposed organs or detached bloody body. Old island graveyard beneath tropical palms, painterly feather, skin, cloth and stone textures, dramatic moonlight and restrained purple magic, strong readable horizontal silhouette. Square 512x512; keep predator face/hand and target face inside x24..488 y105..407, quiet night sky and earth at top/bottom; designed for true 206:141 crop. Illustration only, no text/frame/UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-231534dc-0706-4b7a-80d5-2c0bc35590a8.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_strike_29.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected square source, true 206:141 crop and 128x88 thumbnail. Manananggal face/claw, wings and life-drain action are clear; the target face remains visible near the right but within the safe area."
+  },
+  {
+    "cardId": "shadow_strike_31",
+    "name": "Death Card",
+    "prompt": "Create original square 1:1 painterly medieval-dark-fantasy collectible-card art for Death Card. Actual strike: a mark targets one foe for a devastating hit with a chance to crit. Make a single antique black funeral card the clear named object, held between the bony fingers of a spectral herald at left; its face bears one simple raised silver skull-and-withered-rose relief, no writing or playing-card numbers. The card's dark mark flies toward a lone armored guard at right and burns as a small skull-shaped shadow on his breastplate; his face and the hand holding the card remain visible. The card itself must be clearly recognizable, not replaced by a generic spell. Painterly gothic medieval hall, tactile black paper, tarnished silver, velvet, iron and candle smoke, dramatic cold moonlight with a small silver flash, strong horizontal composition. Square 512x512; keep full card, herald hand and guard face inside x24..488 y105..407, quiet shadowed margins; designed for a true 206:141 crop. No text/letters/numbers, frame, UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-00247396-9cda-4a4d-84a7-40fc1e6364ba.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_strike_31.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Adjusted focalPoint upward to [0.5,0.4] after crop inspection so the herald skull/eyes appear together with the complete Death Card, held hand and target face. Source pixels unchanged; reviewed shifted 206:141 crop and thumbnail."
+  },
+  {
+    "cardId": "shadow_strike_32",
+    "name": "Wild Hunt of the Dead",
+    "prompt": "Create original square 1:1 painterly medieval-dark-fantasy collectible-card art for Wild Hunt of the Dead. Actual legendary strike: a long-range spectral hunt singles out and confuses one target, with a chance of a critical hit. Show a leading ghostly hunter on a gaunt black horse, face and bow hand readable, drawing a pale longbow from a distant ridge; one luminous arrow streaks in a clean snipe line toward a lone armored traveler in the foreground, who turns in bewilderment as the shot nears. A few distant riders of the dead follow as soft silhouettes, supporting the legendary hunt without crowding the target. Wild midnight moor, painterly weathered tack, spectral cloth, moonlit fog and silver arrow light, grounded anatomy and crisp horizontal action. Square 512x512 master; keep lead hunter face/hand, the target face and arrow impact zone inside x24..488 y105..407; expendable mist above and moor below; designed for a true 206:141 crop. No text/frame/UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-3cdf73f0-7df3-4cb9-a546-d7eb483a3978.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_strike_32.png",
+    "sourceNative": [
+      1269,
+      1240
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Adjusted focalPoint upward to [0.5,0.4] after crop inspection to retain the lead Wild Hunt rider head; the target face and snipe line remain visible while lower scenery/legs crop naturally. Source pixels unchanged; reviewed shifted 206:141 crop and thumbnail."
+  },
+  {
+    "cardId": "shadow_strike_30",
+    "name": "Mara's Ride",
+    "prompt": "Create original square 1:1 painterly medieval-dark-fantasy collectible-card art for Mara's Ride. Actual strike: a straight-line nightmare charge leaves its victim confused and knocks them back. Show Mara, a pale nightmare rider in dark tattered robes, astride a black spectral horse charging from left to right through a sleeping keep's courtyard; horse head and rider face are clear, one armored guard is struck and hurled backward with a bewildered expression as shadowy afterimages blur his balance. Keep the line of motion clear and horizontal, with controlled dark mane and mist trails, not a tangle. Painterly old-world stone, iron and cloth, eerie moonlight and subtle violet haze, grounded anatomy, dramatic readable silhouette. Square 512x512 master; keep horse/rider faces and target face inside x24..488 y105..407, quiet night mist above and ground below; designed for a true 206:141 crop. No card frame, lettering, UI, modern objects, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-42c406e3-d35b-4466-a754-b14259c22cb5.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_strike_30.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "repairPrompt": "Repaint Mara's Ride as original square 1:1 painterly medieval-dark-fantasy collectible-card art. The previous landscape image normalized to a square and cut off the target, so move the entire horse-and-rider and struck guard inward. Actual strike: Mara's nightmare horse charges in a straight line, leaving the guard confused and recoiling. Compose the black spectral horse and pale-faced Mara at left-center, with the horse's head near x210 on a 512 square; put the complete armored guard, including full face and both hands, at right-center near x395 with generous space to the right border. The charge throws him backward and a faint violet haze blurs his balance. Keep one clear horizontal line of action and simple castle courtyard scenery. Painterly medieval darkness, detailed black horse, leather tack, mail and weathered stone, moonlit cool gray with restrained purple shadows, grounded anatomy and readable faces. Square 512x512; horse/rider faces, guard's face/hands and impact inside x24..488 y105..407; quiet night mist above and paving below; designed for true 206:141 wide crop. No frame, words, banners or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "previousGeneratedPath": "/workspace/generated_images/exec-3f6f6254-1cec-43d8-be48-0bb875468c76.png",
+    "reviewNote": "Repainted after landscape normalization clipped the original target. Preserved previous canonical at /tmp/shadow_strike_30-before-repaint.png, prepared the replacement separately and atomically replaced the source. Inspected final square, true 206:141 crop and 128x88 thumbnail: Mara/horse, target face and both hands remain inside the action crop."
+  },
+  {
+    "cardId": "shadow_strike_33",
+    "name": "Gashadokuro's Fist",
+    "prompt": "Paint original square 1:1 painterly medieval-dark-fantasy collectible-card art for Gashadokuro's Fist. Actual quick strike: a giant skeleton delivers a wedge-shaped critical blow that stuns its target for 1.4 seconds. Show the enormous complete bony fist as the dominant named subject, punching diagonally from left-center toward one armored warrior at right; the giant's skull and glowing eye sockets appear behind the forearm in mist. The impact drives the warrior backward and a broad triangular wedge of dust, bone fragments and cold spectral force fans out from the fist, briefly dazing him. Keep the whole clenched fist and knuckles intact, plus giant skull and warrior face/hands clearly visible. Japanese folklore-inspired medieval ruin, painterly bone, iron, cloth and stone, dramatic moonlit blue-gray with restrained ghostly light, grounded anatomy and powerful silhouette. Square 512x512 master; keep entire fist, giant face and target face/hand within x24..488 y105..407; quiet fog above and broken stone below; designed for true 206:141 card crop. Illustration only, no text/frame/UI, no gore; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f1b2add0-9a36-4b14-9f9a-1124404254e0.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_strike_33.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Generated square normalized to exact 512x512 and inspected with true 206:141 crop and 128x88 thumbnail. Full fist and giant skull remain legible; target is knocked backward by the wedge-shaped impact."
+  },
+  {
+    "cardId": "shadow_strike_34",
+    "name": "Maw of the Abyss",
+    "prompt": "Create original square 1:1 painterly medieval-dark-fantasy collectible-card art for Maw of the Abyss. Actual legendary strike: a mine-shaped abyssal eruption strikes with tremendous force, knocks the target back, persists for two turns, and scorches its caster in the backlash. Show a vast stone chasm opening like a toothed mouth beneath one armored warrior, the dark maw as the dominant named subject; the warrior is hurled backward by a rising wedge of black-violet force while a warlock nearby recoils from a small burn across their own sleeve. Two dim afterglowing cracks suggest the danger lingers. Keep the full open maw and warrior's face visible, no gore. Painterly medieval ruin, layered stone teeth, smoke and iron, dramatic cold blue light around deep abyssal darkness, rich material detail, strong horizontal silhouette. Square 512x512; keep the complete maw, warrior face and warlock hand/face inside x24..488 y105..407; quiet mist above and broken stone below; designed for true 206:141 crop. Illustration only, no text/frame/UI, no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7187e96b-535f-46f4-9d95-340f6ba77915.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_strike_34.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "The exact 512 source, true 206:141 crop and 128x88 thumbnail were inspected. The complete central abyssal maw and the thrown target remain clear; the caster and backlash are readable as secondary action."
+  },
+  {
+    "cardId": "shadow_summon_15",
+    "name": "Cave Spider",
+    "prompt": "Create original square 1:1 painterly medieval-dark-fantasy collectible-card art for Cave Spider. Actual summon: a sturdy cave spider is a steady bolt attacker that curses foes and lingers for three turns. Show one large, anatomically believable cave spider clinging to the edge of a cavern wall, its eight legs and glossy black-brown body visible, a clear cluster of pale luminous eyes and fangs; it snaps a narrow thread of sickly violet curse at a distant armored explorer. The spider is the dominant recognizable creature, not a web-filled scenery scene. Painterly cavern stone, subtle moss, wet silk and chitin, dramatic teal cave light with a small cursed violet glow, atmospheric depth and readable silhouette. Square 512x512 master; keep spider's full face/eyes and the explorer's face inside x24..488 y105..407, quiet cave ceiling and ground margins; designed for true 206:141 crop. No text/frame/UI, no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6309e2a5-a5dd-4507-8ef5-550c78d1f427.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected square source, true 206:141 crop and 128x88 thumbnail. The spider’s face, luminous eyes and curse bolt dominate; the explorer remains a small, readable target."
+  },
+  {
+    "cardId": "shadow_summon_16",
+    "name": "Death's-Head Moth",
+    "prompt": "Create original square 1:1 painterly medieval-dark-fantasy collectible-card art for Death's-Head Moth. Actual summon: a frail, quick moth flies in a zigzag, carries a curse, and shatters after two turns. Make one large pale nocturnal moth the clear subject, wings spread in a sharp turning flight; the distinct natural skull-shaped pattern on its thorax/wings must be clearly recognizable and fully inside the safe crop. It darts around an armored sentry's head, leaving a short zigzag trail of black-violet dust; its delicate wing edges begin to break into luminous fragments to suggest its fragile short life. Painterly gothic garden at night, detailed velvet scales and wing veins, moonlit silver against deep indigo, subtle curse glow, elegant natural insect anatomy, strong silhouette. Square 512x512; keep whole moth including skull marking and the sentry's face inside x24..488 y105..407, quiet dark foliage above and below; designed for true 206:141 crop. No letters, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-eee69e7d-4df7-401c-8aa2-d36e5b40f6b7.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_16.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected square source, true 206:141 crop and 128x88 thumbnail. The moth’s skull-shaped body pattern and curse trail are legible; its main wing pattern and the sentry’s face remain visible."
+  },
+  {
+    "cardId": "shadow_strike_35",
+    "name": "Bone Darts",
+    "prompt": "Create original square 1:1 painterly medieval-dark-fantasy collectible-card art for Bone Darts. Actual quick strike: a straight line of bone darts hits and freezes a target for 1.3 seconds. Show a necromancer's bony gloved hand at left releasing three narrow ivory bone darts in one clean horizontal line toward a lone armored guard at right; the darts are clearly bone, and cold frost rapidly crystallizes across the struck guard's shoulder and braced forearm as he stiffens. The guard's face and caster's releasing hand stay visible. Painterly moonlit ossuary corridor, textured old bone, mail, stone and mist, sharp blue-white frost highlights with restrained violet shadow, grounded anatomy, strong horizontal action. Square 512x512 master; keep all dart heads, casting hand and target face/arm inside x24..488 y105..407, calm dark margins; designed for true 206:141 crop. No lettering/frame/UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6d0a54e3-5957-41e3-8e9b-12a5cad2a9b6.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_strike_35.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "repairPrompt": "Create a replacement square 1:1 painterly medieval-dark-fantasy illustration for Bone Darts. The previous crop showed an unintended partial caster face at the left edge. Remove the caster's face entirely: depict only a complete skeletal gauntlet and forearm entering at far left, with no head or body visible, so the hand is the intentional caster cue. Actual quick strike: three straight bone darts fly in one horizontal line and freeze a target for 1.3 seconds. Stage the full skeletal hand around x120 and a lone armored guard at right-center around x405, with the guard's complete face clearly inside the square; ivory darts travel horizontally from hand to target and blue-white frost spreads across the struck shoulder and braced forearm. Keep each dart point distinct and in frame. Painterly medieval ossuary corridor, tactile old bone, dark mail, stone and cold mist, controlled blue-white light, grounded anatomy, strong clean silhouette. Square 512x512, keep complete casting hand, all dart tips, target face and impact inside x24..488 y105..407; quiet shadowed margins; designed for true 206:141 crop. No other heads or faces, text/frame/UI, no anime, Disney-like cartoon, photorealism or pixel art.",
+    "previousGeneratedPath": "/workspace/generated_images/exec-c51c52fb-7114-40f5-b497-900d7737bd88.png",
+    "intermediateRepairPath": "/workspace/generated_images/exec-1f9bff53-976b-40da-a241-ff158253d15a.png",
+    "reviewNote": "Repainted after original square crop showed a partial unintended caster face; original source preserved at /tmp/shadow_strike_35-before-repaint.png. First repair had the hand too close to the left edge; prepared the final replacement separately and atomically replaced canonical. Inspected final source, true 206:141 crop and thumbnail: full skeletal hand and all three darts are visible; only incidental forearm continues off-frame, while target face and frost impact are clear."
+  },
+  {
+    "cardId": "shadow_summon_17",
+    "name": "Carrion Beetle",
+    "prompt": "Paint original square 1:1 painterly medieval-dark-fantasy collectible-card art for Carrion Beetle. Actual summon: a tough, slow moss-coated beetle guards its allies and drains a little life from foes over two turns. Show one large carrion beetle with a thick oval carapace carpeted in soft moss, positioned low and broad in a protective stance before a wounded cloaked ally; its head, dark eyes and mandibles are fully visible as it faces an approaching armored ghoul. A faint green thread of stolen vitality draws from the ghoul to the beetle, while the beetle's heavy legs brace like a living shield. Suggest lingering presence with a faint afterimage of its shell, not extra creatures. Old forest crypt, richly painted chitin, moss, soil, weathered bone and cloth, dramatic moonlit teal-green highlights against deep shadow, grounded insect anatomy, strong readable silhouette. Square 512x512 master; keep beetle's entire head/eyes, mossy carapace and any visible character face inside x24..488 y105..407, quiet dark canopy and earth margins; designed for a true 206:141 crop. No gore, text, frame or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8eaf6d2d-1b2e-4ed0-a665-1f54a8b07eb4.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_17.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Generated square normalized to exact 512x512 source; inspected square, true 206:141 crop and thumbnail. Beetle head/eyes and mossy carapace dominate, with defensive stance and green drain thread clearly visible; surrounding faces remain secondary."
+  },
+  {
+    "cardId": "shadow_summon_18",
+    "name": "Cave Centipede",
+    "prompt": "Create original square 1:1 painterly medieval-dark-fantasy collectible-card art for Cave Centipede. Actual summon: a sturdy but slow cave centipede pounces from shadow and curses foes. Show one unmistakable giant centipede emerging from a low cavern fissure in a slow, powerful pounce, long segmented rust-black body and many short hooked legs clearly articulated; its blunt head, small pale eyes and curved mandibles are the primary focal point. A faint violet curse haze clings to a single armored explorer it has cornered. Keep the species clear, not a worm or snake. Painterly cave geology, wet chitin, blue-green subterranean light with restrained violet curse glow, grounded insect anatomy and dramatic readable silhouette. Square 512x512; keep the centipede head, front legs and explorer face inside x24..488 y105..407; quiet cave ceiling and floor margins; designed for true 206:141 crop. No text/frame/UI, no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9a5b7f28-4226-4c15-901c-328210181b1d.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_18.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the exact source, true 206:141 crop and 128x88 thumbnail. Segmented body, hooked legs, centipede head and pale eyes are unmistakable and remain in the crop."
+  },
+  {
+    "cardId": "shadow_summon_19",
+    "name": "Plague Rat",
+    "prompt": "Create original square 1:1 painterly medieval-dark-fantasy collectible-card art for Plague Rat. Actual summon: two small, frail, mossy plague rats dash quickly and pull at a foe, carrying disease for two turns. Show exactly two clearly recognizable brown rats with pointed snouts, round ears, whiskers and long tails; moss clings to their backs. They dart in opposing zigzags through a crypt gutter, one rat gripping an armored guard's boot strap and tugging him off balance while a small green plague mist trails behind. Rats must be readable as rats, not mice or cats; no gore. Painterly medieval stone, wet moss, fur, iron and candlelight, dramatic cold green highlights over deep shadow, low horizontal action. Square 512x512; keep both rat faces, whiskers and the guard's face/boot inside x24..488 y105..407, simple dark margins; designed for a true 206:141 crop. No words/frame/UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-76c0189f-8a52-430e-a21d-70ed8d13d58c.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_19.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Shifted focalPoint upward to [0.5,0.4] after crop inspection. Reviewed the translated 206:141 crop and thumbnail: both rat faces and mossy bodies, the tugging action and guard face are now visible."
+  },
+  {
+    "cardId": "shadow_summon_20",
+    "name": "Bog Leech",
+    "prompt": "Create original square 1:1 painterly medieval-dark-fantasy collectible-card art for Bog Leech. Actual summon: a sturdy, slow leech bolts a dark curse and drains life from its target for two turns. Show one massive unmistakable bog leech rising in a heavy arc from dark marsh water; its broad sucker-mouth and ringed, slick olive-brown body are clear, with a narrow violet-green thread of vitality draining from an armored hunter's forearm toward its mouth. The hunter recoils at right while the leech dominates the scene. Keep the animal clearly a leech, not a snake, eel or worm: flattened annulated body and round sucker-disc are key. Painterly wet reeds, peat, mud, water and mail, luminous fog, cold teal moonlight with restrained curse green, grounded natural textures. Square 512x512; keep leech head/sucker and target face/forearm inside x24..488 y105..407; quiet mist above and water below; designed for true 206:141 crop. No gore, text/frame/UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f2fcfec6-b4f8-4e9d-ac41-5a1c3ca57463.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_20.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the exact 512 source, true 206:141 crop and thumbnail. The annulated bog leech and large sucker-disc dominate; the vitality thread connects to the hunter while its face and forearm remain legible."
+  },
+  {
+    "cardId": "shadow_summon_21",
+    "name": "Gravedigger",
+    "prompt": "Create original square 1:1 painterly medieval-dark-fantasy collectible-card art for Gravedigger. Actual summon: an old but sturdy squire burrows through earth, steadily pulling a foe toward him for two turns. Show a recognizable elderly gravedigger squire in worn mail and a patched dark surcoat, lined face and strong hands visible as he plants a broad iron spade into a fresh grave and pulls an armored intruder down into loosened soil by the cloak. The man, not a monster, is the named subject; show his old face, shovel blade and gripping hands clearly. Gloomy graveyard at night, painterly wet soil, old iron, worn cloth, moonlight and low lantern glow, grounded human anatomy and restrained supernatural undertone. Square 512x512; keep gravedigger face, both hands, full spade head and target face within x24..488 y105..407; quiet mist above and ground below; designed for true 206:141 crop. No gore, text/frame/UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b18a2398-e8a2-41d6-ac63-9a842701e080.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_21.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Shifted focalPoint upward to [0.5,0.4] to include the old gravedigger face and shovel hand with the target face and shovel blade. Inspected the translated 206:141 crop and thumbnail; the human character, tool and pull action read clearly."
+  },
+  {
+    "cardId": "shadow_summon_22",
+    "name": "Dungeon Jailer",
+    "prompt": "Paint original square 1:1 painterly medieval-dark-fantasy collectible-card art for Dungeon Jailer. Actual summon: a sturdy, quick iron-armored ogre creates a strong warding barrier and pulls a foe toward it; the ward lasts three turns. Show one hulking, unmistakable ogre jailer with a broad expressive face, heavy iron shoulder plates and a ring of ancient keys, at left-center. He grips a chain in one strong hand and pulls a struggling armored captive toward a newly raised wall of thick iron bars at right; the bars are a visible protective ward, not prison text or symbols. Keep the ogre's face, pulling hand, key ring, target face and top/bottom of the barred ward inside the safe crop; clear silhouettes, one ogre and one captive. Painterly medieval dungeon, detailed iron, chain, stone, leather and worn cloth, directional torchlight against cold blue shadow, grounded powerful anatomy, high-end fantasy collectible-card style. Square 512x512; all primary faces/hands and the ward's main structure inside x24..488 y105..407; quiet dungeon darkness above/below; designed for a true 206:141 horizontal crop. No text, numbers, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b075ef69-11e1-4943-ab99-ca15fcf4e54b.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_22.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Shifted focalPoint upward to [0.5,0.4] after crop inspection to retain the jailer’s face together with key ring, pulling hand, target face and iron ward. Inspected translated 206:141 crop and thumbnail; ogre identity and protective bars remain clear."
+  },
+  {
+    "cardId": "shadow_summon_23",
+    "name": "Brimstone Imp",
+    "prompt": "Paint original square 1:1 painterly medieval-dark-fantasy collectible-card art for Brimstone Imp. Actual summon: a frail, quick imp delivers a barrage of brimstone sparks, curses its foes, and lingers for three turns with a harvest trait. Show one compact but distinct imp in mid-leap, with a sharply readable horned face, ember eyes, clawed hands and small batlike wings; its wings and limbs may trail beyond the composition, but keep head and hands clear. It spits several tiny sulfur-orange firebolts toward a single armored traveler, while a wisp of dark essence curls back toward the imp to hint at harvest. The imp is the clear named subject, nimble rather than bulky; grounded fantasy anatomy, no toy/cartoon proportions. Painterly ruined watchtower at night, richly textured leathery wings, soot, iron and stone, dramatic ember light against cold slate moonlight, atmospheric depth. Square 512x512; keep imp face/eyes/hands and target face inside x24..488 y105..407, quiet smoky margins; designed for true 206:141 crop. No text/frame/UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8371eeec-7871-43bc-8af1-eaa557899f13.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_23.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected exact 512 source, true 206:141 crop and 128x88 thumbnail. Horned imp face, ember eyes, hands and brimstone barrage remain distinct; its wings naturally extend beyond the crop."
+  },
+  {
+    "cardId": "shadow_summon_24",
+    "name": "Murder of Crows",
+    "prompt": "Paint original square 1:1 painterly medieval-dark-fantasy collectible-card art for Murder of Crows. Actual summon: a frantic phantom flock attacks in repeated barrages, curses its target and lingers for three turns. Show a coherent murder of five or six unmistakable crows sweeping across a moonlit graveyard; one dominant foreground crow has a clearly readable sharp beak and bright eye, while the flock's other heads and beaks remain distinct rather than merging into a black blur. Several birds dive past a lone armored sentinel, whose startled face is visible through the flock; translucent spectral edges and cold violet curse mist mark the birds as phantom. Painterly feather detail, twisted bare trees, old stone and restrained moonlight, dramatic black-blue values and high-contrast silhouettes. Square 512x512; keep the main crow head/eye, several flock heads/beaks and the target face inside x24..488 y105..407; incidental wing tips and trails may crop; quiet mist above and earth below; designed for a true 206:141 card crop. No frame, lettering or UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-249b65de-d7ec-49cd-8983-7bacd5c43581.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_24.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected exact 512 source, true 206:141 crop and 128x88 thumbnail. Several distinct crow heads, sharp beaks and eyes read as a phantom flock, with the sentinel face visible through the barrage; wing tips are incidental crop."
   }
 ]

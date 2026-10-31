@@ -3022,5 +3022,491 @@
     "status": "generated",
     "batch": 12,
     "reviewNote": "Square, centered 206:141 crop, and 128x88 thumbnail inspected. The lancer's full face, both gripping hands, complete lance shaft and spearhead fit the wide crop; target figure remains secondary."
+  },
+  {
+    "cardId": "storm_strike_18",
+    "name": "Camel Kick",
+    "prompt": "Illustrate the Hexmancers storm strike Camel Kick, a charged chained attack with a small recoil. A powerful realistic desert camel in ornate but practical bronze-and-leather tack delivers a sudden backward kick, its hind hoof striking the nearest armored raider; a bright blue-white thunder impact leaps in a clear chain to two more silhouettes in a horizontal line. Show the camel's head and focused eye beside its kicking body, the whole relevant leg and hoof visible, and a tiny harmless spark curling back toward the camel's tack to suggest recoil. The camel and kick are the unmistakable primary subject; no comic expression or cartoon anatomy. Painterly medieval fantasy collectible-card art, grounded animal anatomy, worn tack, desert dust, cinematic storm light, deep atmospheric distance and crisp action. Explicit 1:1 square composition for an editable 512x512 master. Keep camel's face, full kicking hoof and chain impact inside x24..488,y105..407, compose horizontally in the middle 60%, quiet sky and sand in top/bottom margins for a 206:141 crop. No frame, lettering, numbers, interface, logo, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-cfe27932-50d3-4fff-83ad-67ec13704003.png",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_18.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Camel face, kicking leg and hoof remain clear; the charged impact chains across opponents in the wide view. Parent review pending."
+  },
+  {
+    "cardId": "storm_strike_19",
+    "name": "Ifrit's Flame",
+    "prompt": "Illustrate the Hexmancers storm strike Ifrit's Flame, a charged chained attack that scorches its caster slightly. A powerful ifrit fire spirit is the unmistakable central subject: an ancient ember-red djinn with a sharply defined face, swept-back crown-like horns, dark bronze armor plates and smoke-wreathed shoulders. It thrusts one open hand forward, releasing a bright ribbon of golden-orange flame that leaps in a clear chain through two distant armored foes; a small curl of flame bites its own forearm as recoil. Keep the ifrit face, casting hand and full flame chain readable, the spirit remains the dominant subject rather than a wall of fire. Painterly medieval high-fantasy collectible-card art, grounded sculptural anatomy, hammered bronze, ember glow, dramatic storm-lit shadows and atmospheric depth. Explicit 1:1 square composition for a 512x512 editable master. Keep face, hand and chain action inside x24..488,y105..407, arranged horizontally in the middle 60%, quiet smoky stone ruins above and below for a 206:141 crop. No text, card frame, numbers, interface, logo, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-13a3a3a8-a421-461f-a693-8dd6aabb0ec4.png",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_19.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.45
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, upward-shifted 206:141 crop (focalPoint y=0.45) and 128x88 thumbnail. The ifrit face and eyes, casting hand and chained flame strike remain visible; some upper flame is expendable. Parent review pending."
+  },
+  {
+    "cardId": "storm_strike_20",
+    "name": "Sun Disk Ray",
+    "prompt": "Illustrate the Hexmancers storm strike Sun Disk Ray, a quick row-wide radiant attack with a small recoil. An elven sun-priest braces a complete palm-sized round golden sun disk at chest height; its engraved rays and central amber crystal are clear. A single brilliant, straight golden-white beam shoots horizontally from the disk across an entire line of distant armored opponents, lighting them in sequence; a brief spark snaps back against the priest's glove to suggest recoil. Keep the priest's focused face and full supporting hand beside the entire disk, all at the same height, and make the straight beam unmistakable without washing out the subjects. Painterly medieval high-fantasy collectible-card illustration, believable gold and leather, warm noon light against storm-blue shadows, atmospheric depth, elegant brushwork. Explicit 1:1 square composition for an editable 512x512 master. Keep face, hand, full disk and beam action within x24..488,y105..407, horizontally arranged across the middle 60%, quiet sky and stone above and below for a 206:141 crop. No text, card border, numbers, interface, logo, watermark, modern technology, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-384d9837-9b89-41cb-ad78-1afefcabea69.png",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_20.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. The priest face and hand, complete sun disk and straight beam across the opponent row remain clear; a small spark indicates recoil. Parent review pending."
+  },
+  {
+    "cardId": "storm_strike_21",
+    "name": "Noon Sun Glare",
+    "prompt": "Illustrate the Hexmancers storm strike Noon Sun Glare, a quick ricocheting light attack that can land a critical hit and draw a little vitality back. On a bright medieval battlefield at high noon, a focused sun-priest holds a small polished bronze mirror-disc in one gloved hand; a razor-bright white-gold glare ricochets in a clear zigzag from one armored foe's shield to a second foe, with an intense starburst at the final critical impact. A thin warm thread of light flows back toward the priest's hand to suggest the drained vitality returning. Keep the priest's calm face, glove and complete mirror-disc clearly visible beside the effect; the controlled ricochet path is the main action, not a broad wash of glare. Painterly high-fantasy collectible-card art, believable bronze, cloth and armor, strong noon contrast, atmospheric depth, readable distinct silhouettes and elegant brushwork. Explicit 1:1 square composition for an editable 512x512 master. Keep face, hand, full disc and the complete ricochet action within x24..488,y105..407, arrange them horizontally through the middle 60%, quiet sky and ground above/below for a 206:141 crop. No text, card frame, numbers, interface, logo, watermark, modern objects, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ad75e536-03b4-4189-be86-bd0151be07c1.png",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_21.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. The priest face, hand and full mirror-disc remain clear; the glare ricochets between two foes with a bright final impact and a fine return thread. Parent review pending."
+  },
+  {
+    "cardId": "storm_strike_22",
+    "name": "Mirage Dagger",
+    "prompt": "Illustrate the Hexmancers storm strike Mirage Dagger, a quick diagonal attack that leaves its target confused. A desert illusionist stands in a warm, windblown sandstone courtyard, face and focused eyes clearly visible beside the raised hand at the same height. The hand grips one complete elegant short dagger diagonally, from lower left to upper right: a curved dark-steel blade, distinct point, bronze guard and wrapped hilt all visible. Along its diagonal path shimmer two faint offset afterimages of the same dagger, like a mirage; a distant armored target turns toward the false images in confusion. Keep the real dagger strongest and unmistakable, with the entire blade, tip, guard, hilt, hand and wielder's face inside the central crop. Painterly medieval high-fantasy collectible-card illustration, believable steel and leather, subtle heat haze, dramatic directional light, atmospheric depth and clear thumbnail silhouette. Explicit 1:1 square composition for an editable 512x512 master. Arrange face, hand and whole dagger across x24..488,y105..407 in the middle 60%, quiet sandstone and sky above and below for a 206:141 crop. No text, frame, numbers, interface, logo, watermark, modern objects, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6c26d402-9af3-4998-93d6-aa616b9d3eec.png",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_22.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. The wielder's face and gripping hand, full diagonal dagger and its two mirage afterimages remain visible; the confused opponent is secondary. Parent review pending."
+  },
+  {
+    "cardId": "storm_strike_23",
+    "name": "Djinn's Whirlwind",
+    "prompt": "Paint an illustration for the exact card name “Djinn's Whirlwind.” A commanding blue-skinned djinn with a clearly visible expressive face and bright eyes rises from a compact brass censer, one hand extended as it conjures a powerful spiraling whirlwind. The wind curls across a row of armored opponents in a charged ricochet, lifting dust and sending them staggering in confusion; the djinn remains the unmistakable subject, with the hand and wind path both readable. Painterly medieval high-fantasy collectible-card art in the supplied Hexmancers reference style: grounded face and anatomy, believable silk, brass, stone and cloudlike vapor, layered brushwork, luminous blue-white stormlight against warm metal accents, atmospheric depth, not photorealistic. Explicit 1:1 square canvas intended for a 512×512 editable master. Compose djinn face, conjuring hand and main whirlwind horizontally in the middle band; keep eyes, hand and principal wind arc inside x24–488,y105–407 for a 206:141 landscape crop, with quiet sky and architecture above and below. Strong readable silhouette and attractive directional light. No card frame, text, runes, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-072472c4-7546-41d1-9234-905163067cad.png",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_23.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop (focal y=0.42) and 128px thumbnail. Shift keeps the djinn’s full hairline, face/eyes and conjuring hand together with the main whirlwind; target figures are secondary and lower censer is incidental."
+  },
+  {
+    "cardId": "storm_strike_24",
+    "name": "Coin Toss",
+    "prompt": "Paint an illustration for the exact card name “Coin Toss.” A confident medieval adventurer with a focused face flicks one large, complete golden coin upward from a gloved hand; at the apex it bursts into a neat cluster of smaller radiant coins that streak toward several distant armored opponents. Make the original coin, its readable embossed sun-like face (no letters or numbers), the tossing hand and the adventurer’s eyes clear; the burst suggests a charged cluster strike without becoming a generic magic blast. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: believable face, glove, gold and leather, layered brushwork, warm gold light against cool storm shadows, atmospheric depth, not photorealistic. Explicit 1:1 square canvas for a 512×512 editable master. Arrange face, hand, whole coin and coin cluster horizontally across the middle band; keep face/eyes, tossing hand and original coin within x24–488,y105–407 for a 206:141 landscape crop, with quiet tavern-courtyard background above and below. Strong readable focal point. No readable markings, no card frame, text, runes, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-59564ce2-4667-459b-9443-f56a694dff9f.png",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_24.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, true 206:141 wide crop and 128px thumbnail. Adventurer’s face and eyes, tossing hand, complete original coin with embossed sun motif and the radiating coin cluster remain visible; opponents and courtyard are secondary."
+  },
+  {
+    "cardId": "storm_strike_25",
+    "name": "Golden Touch",
+    "prompt": "Paint an illustration for the exact card name “Golden Touch.” In a charged medieval battle, a poised storm-mage with a clear focused face and bright eyes reaches out and touches an armored foe with one bare fingertip; brilliant gold spreads from the precise contact across the foe’s breastplate while a thin stream of blue-white life-light curls back toward the mage’s hand. A short zigzag of gold energy ricochets to two more distant enemies, but the main face, hand, and transforming armor remain the dominant readable action. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: grounded anatomy, nuanced skin, cloth, steel and luminous gold, layered brushwork, dramatic directional lighting and atmospheric depth, not photorealistic. Explicit 1:1 square canvas intended for a 512×512 editable master. Place mage’s face and outstretched hand beside the contact point at equal height; keep eyes, fingertip, full contact point and gilded armor detail inside x24–488,y105–407 for a 206:141 landscape crop. Quiet battlefield atmosphere above and below. No gore, no card frame, text, runes, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7315c9b2-c1c3-42de-a425-254d77cd71c6.png",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_25.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, true 206:141 wide crop and 128px thumbnail. Mage’s face/eyes, fingertip and contact point are visible beside clearly gilding armor; blue-white energy streams back to the hand and gold ricochets to secondary enemies."
+  },
+  {
+    "cardId": "storm_strike_26",
+    "name": "Bronze Fist",
+    "prompt": "Paint an illustration for the exact card name “Bronze Fist.” A battle-worn storm-knight in blue cloth drives an enormous complete bronze gauntlet forward in a decisive punch, the polished fist and engraved knuckles striking an armored opponent’s shield with a sharp white-blue flash. Keep the knight’s determined face and eyes beside the entire bronze fist and braced arm; show the opponent recoiling backward as the critical blow pushes them away. The bronze gauntlet is the named focal object, unmistakable and fully visible. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: grounded anatomy and expression, nuanced bronze, steel, leather and cloth, layered brushwork, dramatic directional stormlight, atmospheric depth, not photorealistic. Explicit 1:1 square canvas intended for a 512×512 editable master. Compose knight, fist and impact horizontally in the middle band; keep face/eyes, relevant hand, whole gauntlet and collision point inside x24–488,y105–407 for a 206:141 landscape crop. Quiet battlement scenery above and below; incidental legs and debris may extend. No gore, no card frame, lettering, runes, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c7e74ad0-7af3-47c4-91b9-5b63866b27a9.png",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_26.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Shifted focal point upward to y=0.46 and inspected the 512-square source, revised true wide crop and 128px thumbnail. Knight’s full face/eyes, complete bronze gauntlet and impact on the shield stay in frame; recoil is clear. Lower stonework is incidental."
+  },
+  {
+    "cardId": "storm_strike_27",
+    "name": "Talos's Boulder",
+    "prompt": "Paint an illustration for the exact card name “Talos's Boulder.” A towering ancient bronze guardian named Talos, with a clearly visible stern sculpted face and glowing eyes, hurls one enormous round boulder toward a line of armored foes. Show the complete boulder beside Talos’s grasping hand at the same height, with a strong chain of blue-white lightning jumping from the boulder’s impact to nearby enemies and pushing them backward; the boulder and giant are unmistakably the named subject. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: believable monumental bronze, stone, weathered masonry and lightning, layered brushwork, dramatic storm-lit contrast and atmospheric depth, not photorealistic. Explicit 1:1 square canvas intended for a 512×512 editable master. Compose Talos’s face, holding hand and full boulder horizontally across the middle band; keep eyes/face, relevant hand, complete boulder and impact inside x24–488,y105–407 for a 206:141 landscape crop. Quiet ruined battlement sky and ground above and below; background foes may be small. Strong readable silhouette. No text, runes, card frame, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0308e3f2-b7c1-4976-ae15-b77398303206.png",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_27.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Shifted focal point upward to y=0.34 (crop begins at top edge) and inspected the 512-square source, revised wide crop and 128px thumbnail. This preserves Talos’s entire sculpted face/head and extended hand together with the complete boulder and lightning impact; incidental lower ruins and figures crop away."
+  },
+  {
+    "cardId": "storm_strike_28",
+    "name": "Serpent Whip",
+    "prompt": "Paint an original illustration for the exact card “Serpent Whip.” Mechanics: a serpent-shaped lash sweeps out and boomerangs back, mending its wielder. Depict a focused desert storm-mage wielding a compact, complete whip whose flexible leather body and bronze snake-head tip form a living serpent shape. The whip makes one clear looping boomerang arc around a nearby armored foe and returns beside the mage; a small cool-blue healing glow gathers at the mage’s forearm as the lash comes back. Keep mage’s face, whip hand and the entire named serpent-whip head and handle visible at the same height; the looping energy trail may be decorative. Painterly medieval fantasy collectible-card art, tactile leather, bronze, cloth and weathered steel, storm-lit blue and amber palette, dramatic directional light and atmospheric depth like the supplied Hexmancers storm references. Exact 1:1 square composition for 512×512 editable master, horizontal; keep face, hand, complete compact whip and central action within x24…488,y105…407 for 206:141 crop. Quiet sky and ground margins. No frame, text, lettering, runes, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-02e83e9d-83ee-4144-9019-2ce79244a8b1.png",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_28.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Repaired the first render because the mage’s whip hand and far end of the serpent whip fell outside the crop. Reviewed the repaired 512-square source, direct 512×350 crop and 128×88 thumbnail: full face, both hands, handle, serpent head and complete compact whip loop remain inside the crop."
+  },
+  {
+    "cardId": "storm_strike_29",
+    "name": "Lodestone Pull",
+    "prompt": "Paint an original illustration for the exact card “Lodestone Pull.” Mechanics: a quick chain of magnetic strikes draws enemies together and a defeated foe feeds a spark back to the caster. Depict a medieval storm scholar in a weathered blue cloak holding a complete fist-sized black lodestone beside their focused face. A twisting chain of bright iron filings and steel shards leaps from the stone to pull three armored foes toward one another across the row; one collapsing foe sends a tiny blue spark of energy back to the scholar’s other hand. Make the natural dark lodestone clear and visible in the hand, with the magnetic chain and pulling action strongest. Painterly medieval fantasy collectible-card art, believable basalt, iron, wool and steel, electric blue-white sparks against subdued storm clouds, atmospheric depth in supplied Hexmancers storm-reference style. Exact 1:1 square master; horizontal action, keep scholar’s face, both hands, full lodestone and central chain impacts within x24…488,y105…407 for the 206:141 crop. Quiet expendable cloud and ground above/below. No frame, words, runes, numbers, UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-bdcd258c-92b1-4095-abcc-2b3e34fa09d1.png",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_29.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Repaired the first render because the named lodestone was absent. Reviewed the repaired 512-square source, direct 512×350 crop and 128×88 thumbnail: scholar’s full face and both hands remain visible, with a distinct complete dark lodestone in the open palm and the magnetic chain pulling foes."
+  },
+  {
+    "cardId": "storm_strike_30",
+    "name": "Raiju's Pounce",
+    "prompt": "Paint an original illustration for the exact card “Raiju’s Pounce.” Mechanics: the lightning beast leaps and ricochets through foes, stunning them; a kill restores a spark of spell energy. Depict a Japanese raiju, a lean spectral storm hound with bristling silver-gray fur, bright indigo eyes and a curling lightning tail, caught mid-pounce from the shoulder-height of one armored foe toward a second. A sharp electric impact ricochets between them, briefly stunning both; a small returning spark trails back toward the beast. Keep the raiju’s full face, both eyes, paws and leap direction clear and prominent. Grounded animal anatomy and Japanese shrine-forest details, painterly medieval fantasy collectible-card illustration, storm-blue lightning, wet bark, worn armor and atmospheric depth like supplied Hexmancers storm references. Exact 1:1 square for a 512×512 master, horizontal action; protect face, eyes and paws within x24…488,y105…407 for 206:141 crop. Tail and lightning trails may extend into quiet margins. No frame, lettering, text, runes, numbers or UI. No anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-bbae245c-5298-4e43-b5c1-51acb9e9ab3c.png",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_30.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, direct 512×350 crop and 128×88 thumbnail: Raiju’s full face, both eyes and forepaws remain in frame; leap direction, lightning ricochet and stunned armored foes read clearly."
+  },
+  {
+    "cardId": "storm_strike_31",
+    "name": "Plumed Serpent Gale",
+    "prompt": "Paint an original illustration for the exact card “Plumed Serpent Gale.” Mechanics: a broad fan-shaped wind strike pierces and shoves foes away. Depict a magnificent feathered serpent spirit with a sharp, unmistakable snake head and swept-back jade, turquoise and gold plumes, flying horizontally across a stormy mountain pass. It drives a broad fan of wind and feather-bright air through a line of armored foes, piercing the formation and hurling them outward. Keep the serpent’s complete head, eye and feathered neck crest dominant; the fanned gale should spread clearly from its head and pass through the foes without obscuring the face. Painterly medieval fantasy collectible-card art, believable scaled body, feather detail, weathered armor and dramatic lightning-lit clouds, atmospheric depth in the supplied Hexmancers storm reference spirit. Exact 1:1 square for 512×512 editable master; horizontal staging, keep head, eye, crest and central fan impact within x24…488,y105…407 for the 206:141 crop; its trailing body may crop incidentally. No frame, words, symbols, runes, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-384c9077-e8c6-4b97-9fe7-c20d50bb9a63.png",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_31.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, direct 512×350 crop and 128×88 thumbnail: serpent’s full snake head and eye, colorful plumed neck crest and broad fan-shaped gale remain legible; distant foes are pushed away. Trailing body/plume extremities extend beyond the crop."
+  },
+  {
+    "cardId": "storm_strike_32",
+    "name": "Perun's Oak-Splitter",
+    "prompt": "Paint an original illustration for the exact card “Perun’s Oak-Splitter.” Mechanics: a charged thunder strike flings a stunning axe in a boomerang arc and recoils its wielder. Depict a powerful, weathered Slavic thunder-warrior with a braided beard and storm-blue cloak, drawing back a compact broad-bladed oak-splitting axe before hurling it. The complete axe is large and clearly visible in the central band, its short hardwood haft and entire rune-free iron head with a carved oak-leaf relief all visible. Its bright curved lightning trail loops around a nearby armored foe and the stunned foe recoils; the warrior leans into the throw’s recoil. Keep warrior’s face, throwing hand, axe handle and full axe head unmistakable; the curved lightning path can trail into scenery. Painterly medieval fantasy collectible-card art, tactile forged iron, oak, wool and worn armor, dramatic lightning over a dark forest, strong directional light and atmospheric depth like supplied Hexmancers storm references. Exact 1:1 square composition for a 512×512 editable master, horizontal staging; keep face, hand, entire axe and central impact within x24…488,y105…407 for the 206:141 crop; expendable sky and ground beyond. No frame, lettering, glyphs, numbers, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-03fd1ad2-0670-4ea6-9218-67e2de233a96.png",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_32.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, direct 512×350 crop and 128×88 thumbnail: warrior’s face and throwing hand, full oak-splitting axe from haft end to blade and the boomerang lightning impact all remain inside the wide crop."
+  },
+  {
+    "cardId": "storm_strike_33",
+    "name": "Midas's Last Embrace",
+    "prompt": "Paint an original illustration for the exact card “Midas’s Last Embrace.” Mechanics: a quick boomerang-like golden strike drains an enemy’s vitality and returns spell energy when it kills. Depict King Midas as a weathered ancient ruler in dark bronze armor, his face and both hands clear, extending one golden hand toward a single armored foe. A luminous band of gold coils in a compact returning loop around the foe like an embrace, turning the foe’s armor to gold and drawing a thin golden stream back to Midas’s open hand. Show a faint blue spark returning to him to suggest spell energy, without text or symbols. Keep Midas’s face, hands and the full central embrace action within the crop-safe band; do not let the loop trail off. Painterly medieval fantasy collectible-card art, tactile aged bronze, leather and gold, dramatic warm highlights against storm-blue dusk, atmospheric depth like supplied Hexmancers storm references. Exact 1:1 square for 512×512 editable master, horizontal staging; keep face, hands and the complete main golden loop within x24…488,y105…407 for the 206:141 crop. Quiet sky/ground margins. No frame, text, numbers, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-48785d58-f54b-4b66-b4e5-49650cfd8582.png",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_33.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "The initial centered wide crop clipped the top of Midas’s face. Reviewed the full 512-square source and shifted the crop upward to focalPoint [0.5,0.42]; the revised direct 512×349 crop and 128×88 thumbnail keep his full face, eyes, crown and both casting hands visible, as well as the complete golden embrace around the target. Lower legs and scenery crop incidentally."
+  },
+  {
+    "cardId": "storm_strike_34",
+    "name": "Heaven-Rending Bolt",
+    "prompt": "Paint an original illustration for the exact card “Heaven-Rending Bolt.” Mechanics: a quick straight-line thunder strike stuns the first enemy and recoils its caster. Depict a storm-scarred warrior-mage at the edge of a high cliff, face and braced hands clearly visible as they release one brilliant, perfectly straight bolt of lightning from the palm across the battlefield into the first armored foe. The bolt tears through a dense seam in the cloud ceiling and hits with a compact blue-white stun flash; the caster’s cloak and stance recoil from the force. Keep the face, releasing hand and full central bolt path/impact inside the wide crop. Painterly medieval fantasy collectible-card illustration, believable wool, steel, rock and storm-clouds, dramatic directional light, rich blue-white electricity and atmospheric depth matching the supplied Hexmancers storm art. Exact 1:1 square master; arrange horizontally and protect the face, hand and main bolt inside x24…488,y105…407 for 206:141 crop, with expendable sky and cliff beyond. No frame, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d693f7e5-c7a1-4fb8-9c02-716e6cf6378c.png",
+    "editableSourcePath": "game/cards/art/masters/storm_strike_34.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, direct 512×350 crop and 128×88 thumbnail: caster’s face and releasing hand remain within the crop; straight heaven-rending lightning, first impact and recoiling enemy read clearly."
+  },
+  {
+    "cardId": "storm_charge_16",
+    "name": "Ifrit Embers",
+    "prompt": "Paint an original illustration for the exact card “Ifrit Embers.” Mechanics: a limited handful of lobbed fire embers that drain vitality from the target. Depict a compact fire ifrit, a powerful ember spirit with a fierce but noble face and bright eyes, standing beside a small shallow bronze ember cup held at the same height as its face. With one visible hand the ifrit lobs three distinct orange-white embers in a short arc toward a distant armored target; a thin crimson thread of stolen vitality curls back from the target toward the spirit. The spirit’s face and both hands are prominent, the embers read as the action, and the complete cup from rim to rounded base remains visible. Painterly medieval fantasy collectible-card art, textured bronze, coal, smoke and fire, dramatic amber and storm-violet light, atmospheric depth like supplied Hexmancers references. Exact 1:1 square for a 512×512 editable master; horizontal composition, keep face, hands, full cup and central ember arc within x24…488,y105…407 for 206:141 crop. Quiet smoke and ground margins. No frame, lettering, text, runes, numbers or UI; no anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8770a8fb-526f-4940-91ce-d024fb6d4095.png",
+    "editableSourcePath": "game/cards/art/masters/storm_charge_16.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Repaired the first render because the ember cup was cut off. Reviewed the repaired 512-square source, direct 512×350 crop and 128×88 thumbnail: Ifrit’s face and hands, complete bronze cup from rim through rounded base, three-ember arc and target all remain legible."
+  },
+  {
+    "cardId": "storm_charge_17",
+    "name": "Canopic Jars",
+    "prompt": "Paint an original illustration for the exact card “Canopic Jars.” Mechanics: a reusable set of lobbed jars. Depict four compact ancient Egyptian canopic jars as the only foreground subject, carefully arranged side by side on a low stone ledge. Each is squat and wide, with a complete distinct stopper shaped as a human head, jackal head, baboon head, or falcon head; each stopper joins a rounded glazed-clay jar body and a solid footed base. Keep every jar separated enough that all four stoppers, shoulders, bodies and full bases are individually visible; no jar overlaps or hides another. One jar is caught just above the ledge in a gentle lob, glowing faintly with storm-blue light, while three remain upright. These are named reusable magic jars, so their complete silhouettes from stopper to base are the whole focus. Painterly medieval fantasy collectible-card still-life, nuanced glazed clay, worn gold, lapis and limestone, dramatic blue-gold directional light and atmospheric depth, matching supplied Hexmancers storm references. Exact 1:1 square composition for a 512×512 master; set the small jars in a horizontal row across the middle and keep every complete stopper and complete base within x24…488,y105…407 for the 206:141 crop, with quiet temple wall above and ledge below. No operator, no hands, no frame, labels, lettering, symbols, runes, numbers or UI. No anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a42658cf-575c-43b1-9eca-e78f43a9a8d1.png",
+    "editableSourcePath": "game/cards/art/masters/storm_charge_17.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, direct 512×350 crop and 128×88 thumbnail: all four canopic jars remain fully visible, each complete from distinct head-shaped stopper through glazed body to footed base; floating jar and storm glow read at thumbnail size."
+  },
+  {
+    "cardId": "storm_charge_18",
+    "name": "Forty Thieves' Hoard",
+    "prompt": "Paint an original illustration for the exact card “Forty Thieves’ Hoard.” Mechanics: a large supply of lobbed treasure strikes that drain vitality, with occasional critical hits. Depict one squat, compact ancient wooden treasure chest overflowing with forty thieves’ gold and gems on a dark stone floor. Show the complete object in a three-quarter view with the entire raised lid, hinge, side walls, front lock, complete sturdy base and feet all unobstructed and visible. A short arc of several gold coins and jewels lifts from the hoard toward a distant armored foe; one brilliant coin flashes as it hits, and a fine golden thread of stolen vitality curls back to the chest. The chest and its hoard are the clear named subject; no operator is present. Painterly medieval fantasy collectible-card still-life, tactile carved wood, aged bronze, gold and gemstones, storm-lit blue shadows with dramatic amber highlights and atmospheric depth matching the supplied Hexmancers storm references. Exact 1:1 square for a 512×512 master; chest is low and wide, centered horizontally; keep every part of its complete lid and base inside x24…488,y105…407 for the 206:141 crop. Quiet cave wall above and floor below. No frame, labels, text, lettering, runes, numbers or UI. No anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0f183e7a-da9d-47f0-9a1a-afae7f170c2c.png",
+    "editableSourcePath": "game/cards/art/masters/storm_charge_18.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, direct 512×350 crop and 128×88 thumbnail: full treasure chest from raised lid and hinges through front and feet/base remains visible; coin arc, gem hoard and vitality strike read at thumbnail size."
+  },
+  {
+    "cardId": "storm_summon_12",
+    "name": "Manticore",
+    "prompt": "Paint an original illustration for the exact card “Manticore.” Mechanics: a sturdy hybrid beast attacks in a broad cone and disrupts/confuses enemies. Depict a mythic manticore in grounded painterly medieval fantasy: a powerful tawny lion’s body and forepaws, a clearly humanlike bearded face framed by a lion’s mane, and a long scorpion tail arcing over its back to a sharp visible stinger. It roars and breathes a broad cone of windblown sand toward armored foes. Make the humanlike face, both eyes, lion shoulders and claws, and the entire scorpion tail and stinger all individually readable; the wings may extend incidentally beyond the frame. Painterly collectible-card art, richly textured fur, skin, chitin, stone and steel, stormy desert light and atmospheric depth like supplied Hexmancers storm references. Exact 1:1 square for a 512×512 editable master; horizontal staging, keep face, eyes, foreclaws and complete tail/stinger within x24…488,y105…407 for the 206:141 crop. Quiet sky and sand margins. No frame, lettering, runes, numbers or UI. No anime, cartoon proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-618e172d-72c4-4040-89c6-1b1413a5b794.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Repaired the first render because it showed a lion face and clipped the scorpion stinger. Reviewed repaired 512-square source plus upward-shifted direct 512×350 crop and 128×88 thumbnail: humanlike face/eyes, lion body and foreclaws, and full segmented scorpion tail/stinger are visible. FocalPoint [0.5,0.42] places the full tail in the wide crop; wing edges and incidental foreground foe are cropped."
+  },
+  {
+    "cardId": "storm_summon_13",
+    "name": "Chimera",
+    "prompt": "Paint an original illustration for the exact card “Chimera.” Mechanics: a sturdy three-headed hybrid blasts a broad cone of static storm energy and overcharges. Depict one powerful chimera with exactly three distinct heads growing from the same lion-bodied creature: a central lion head, a horned goat head on one side and a long-necked serpent head on the other. Keep all three complete faces and eyes unobstructed and clearly separate; show the lion’s front claws braced on a rocky ledge. A broad fan of blue-white static wind erupts from the lion head toward shadowy foes; faint electric sparks link the three heads. Grounded mythic anatomy, believable tawny fur, curled goat horns, scales, claws and weathered stone, painterly medieval fantasy collectible-card art in supplied Hexmancers storm style, dramatic directional light and atmospheric depth. Exact 1:1 square for 512×512 master; arrange the three heads horizontally and keep all three heads/eyes and both front claws inside x24…488,y105…407 for the wide crop. Quiet storm clouds and ground beyond. No extra heads, no frame, text, lettering, symbols, numbers or UI. No anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-aaa58867-993c-4fda-8225-c4885ac17346.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the full 512-square source plus upward-shifted direct 512×350 crop and 128×88 thumbnail: exactly three distinct heads/eyes are visible (lion, horned goat, serpent), with lion foreclaws and the cone of static breath clear. Focal point [0.5,0.42] preserves the complete goat horns and heads; lower incidental legs/rocks crop."
+  },
+  {
+    "cardId": "storm_summon_14",
+    "name": "Emperor Scorpion",
+    "prompt": "Paint an original illustration for the exact card “Emperor Scorpion.” Mechanics: a sturdy imperial scorpion steadily fires storm bolts. Depict an enormous regal black emperor scorpion on a sunlit desert ruin, its whole armored body and segmented tail forming a clean horizontal silhouette. Both oversized pincers are open and fully visible; a cluster of small luminous eyes and the forward headplate are prominent; its curved segmented tail ends in a distinct sharp stinger, completely within the composition. Two precise blue-white bolts shoot from the pincers toward distant foes, like an emperor’s controlled volley. Naturalistic scorpion anatomy, richly detailed dark bronze-black chitin and sand, painterly medieval fantasy collectible-card illustration, dramatic amber sky with cool lightning and atmospheric depth like supplied Hexmancers storm references. Exact 1:1 square for a 512×512 editable master; keep head/eyes, both full pincers and complete tail/stinger within x24…488,y105…407 for 206:141 crop. Quiet sky and sand margins. No frame, lettering, runes, numbers or UI. No cartoon, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b5d7a51d-6f98-4227-b26c-2c6f46a04e9c.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source plus upward-shifted direct 512×350 crop and 128×88 thumbnail: scorpion’s head/eye cluster, both complete pincers and complete curled tail/stinger remain visible; bolt attack reads clearly. FocalPoint [0.5,0.42] protects the full stinger; incidental legs/ground crop."
+  },
+  {
+    "cardId": "storm_summon_15",
+    "name": "Sand Scorpion",
+    "prompt": "Paint an original illustration for the exact card “Sand Scorpion.” Mechanics: a quick sand scorpion pounces and knocks a nearby foe backward. Depict a large pale-gold desert scorpion leaping forward over a dune, six legs tucked in a powerful pounce while its two strong claws reach toward an armored raider; its segmented tail curls overhead with the whole hooked stinger visible. A compact burst of sand knocks the raider backward. Keep the scorpion’s forward head and small dark eyes clear, both claws complete, and entire tail and stinger fully inside the wide-crop action band; legs may crop incidentally. Naturalistic scorpion proportions, patterned sandy chitin, painterly medieval fantasy collectible-card art, warm desert dusk with cool storm rim light, textured sand and atmospheric depth in supplied Hexmancers style. Exact 1:1 square composition for 512×512 editable master, horizontal action; keep head/eyes, claws and full tail/stinger within x24…488,y105…407 for the 206:141 crop. Quiet sky and dune below. No frame, lettering, text, numbers, runes or UI. No anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-bdc8819e-4515-4760-92cc-521e66db5b77.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source and upward-shifted direct 512×350 crop and 128×88 thumbnail: scorpion head/eyes, both pincers and complete curled tail/stinger fit; pounce and knockback are clear. FocalPoint [0.5,0.38] retains the full stinger; lower incidental legs and target extremities may crop."
+  },
+  {
+    "cardId": "storm_summon_16",
+    "name": "Girtablilu Gatewarden",
+    "prompt": "Paint an original illustration for the exact card “Girtablilu Gatewarden.” Mechanics: a noble, exceptionally tough scorpion-man guards allies and stuns intruders. Depict a mythic Mesopotamian scorpion-man gatekeeper before an ancient sandstone city gate: a stern human male head and armored human torso fused seamlessly to a dark bronze scorpion abdomen, with two enormous articulated scorpion pincers raised protectively and a segmented tail curling close behind one shoulder to a clear hooked stinger. He shields a smaller traveler from an armored intruder and a restrained blue-white stun spark leaps from one pincer. Make the human face, both eyes, both complete claws and the full curved tail/stinger individually clear; do not hide one claw behind the other. His scorpion legs may extend beyond the frame. Painterly medieval fantasy collectible-card art, tactile bronze, chitin, sandstone and wool, dramatic storm light and atmospheric depth like supplied Hexmancers storm references. Exact 1:1 square for 512×512 editable master, horizontal composition; keep face, eyes, both full pincers, shoulder and tail/stinger within x24…488,y105…407 for the 206:141 crop. Quiet gate and sand above/below. No frame, text, lettering, runes, numbers or UI. No anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-af29b9ee-e65b-4fbc-bcb4-473ac8e978dc.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_16.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Repaired the first render because its left pincer fell outside the crop; a second composition adjustment moved and scaled the guardian for safe margins. Reviewed the final 512-square source, direct upward-shifted 512×350 crop and 128×88 thumbnail: human face/eyes, both complete pincers and full tail/stinger remain visible; legs and foreground intruders are incidental crops."
+  },
+  {
+    "cardId": "storm_summon_17",
+    "name": "Jackal Tomb Guard",
+    "prompt": "Paint an original illustration for the exact card “Jackal Tomb Guard.” Mechanics: a tough jackal guardian dashes between two foes and knocks them back. Depict a formidable jackal-headed fantasy guard at the entrance of an ancient Egyptian tomb, upright in bronze-and-linen armor, with unmistakable long canine muzzle, pointed ears and alert golden eyes. He dashes across the threshold to intercept two armored intruders; one gloved hand grips a round shield and the other reaches out as a compact burst of sand and storm light knocks the nearest intruder backward. Make the guard’s complete jackal face/eyes/ears and both hands prominent; keep the silhouette grounded and protective, not monstrous. Painterly medieval fantasy collectible-card art, textured dark fur, aged bronze, linen, sandstone and storm-blue light, atmospheric depth matching supplied Hexmancers storm references. Exact 1:1 square composition for a 512×512 master; horizontal action, face and both hands/shield safely inside x24…488,y105…407 for the 206:141 crop. Quiet tomb wall and sand beyond. No frame, lettering, labels, runes, numbers or UI. No anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-66b97c10-ad3e-47a6-bf86-9981e2e07d79.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_17.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source plus upward-shifted direct 512×350 crop and 128×88 thumbnail: complete jackal ears, muzzle, eyes and both hands/shield remain in frame; dash and knockback read clearly. FocalPoint [0.5,0.42] preserves the ear tips; lower incidental legs/intruders crop."
+  },
+  {
+    "cardId": "storm_summon_18",
+    "name": "Nile Crocodile",
+    "prompt": "Paint an original illustration for the exact card “Nile Crocodile.” Mechanics: a huge, steady crocodile zigzags across a riverbank and stuns foes with a crushing attack. Depict an enormous Nile crocodile lunging from the shallow river, its complete long broad snout, closed powerful jaws, one bright amber eye and heavily plated head and back dominating the foreground. Its massive armored body curves in a clear zigzag toward the water behind it; ripples and a compact blue-white static shock around the shoulder stun one armored foe on the bank. Keep the crocodile’s snout tip, eye, plated shoulder and striking jaw entirely inside the crop-safe band; tail can extend incidentally into the water. Painterly medieval fantasy collectible-card art, naturalistic crocodile anatomy, richly textured olive-green scales and plated hide, wet stone, reeds and storm-lit Nile water, dramatic directional light and atmospheric depth like supplied Hexmancers storm references. Exact 1:1 square for a 512×512 master, horizontal staging; protect full snout/jaws, eye and plated head/body within x24…488,y105…407 for the 206:141 crop. Quiet sky and water margins. No frame, lettering, runes, numbers or UI. No anime, cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5548e747-4aa1-4f4c-8593-e5a004431e76.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_18.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Repaired the first render because its snout tip sat too close to the right edge. Reviewed the repaired 512-square source, direct 512×350 crop and 128×88 thumbnail: complete broad snout/jaws, amber eye and plated head/shoulder remain within the crop; stunned foe and electric impact support the crocodile."
   }
 ]

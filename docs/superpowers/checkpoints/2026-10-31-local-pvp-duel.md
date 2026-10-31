@@ -9,10 +9,12 @@ Saved so a new session can pick up after a usage-limit cutoff. Updated at each s
   2. `clearForClaim` (battle.js) sets curseT on the remote avatar and moves it. That gives a permanent ×1.3 on later hits.
   3. Burn and poison are never mirrored to the opponent. The docs say they are.
   4. Minor: CI step "LAN relay checks" needs `if: always()`.
-- A fix agent was working on all four. Its in-progress edits are in the `wip: checkpoint` commit. **They may be incomplete or untested.**
+- All four are fixed (code in 6a0eb20, marker commit a414eca). The controller re-checked the diff and re-ran the suites: netplay 40/40, relay ok, selftest 23/23, battle-clock ok, duel-runner 38/39 or 39/39.
+- Known flaky: duel-runner "avatar tracks a walk". It always passes alone (6/6). Under full-suite load it sometimes peaks at 0.35-0.44 against a 0.3 limit, around 0.9-1.35 s into the walk, with no sample gaps, so this is real smoothing error when frames are slow, not a measurement bug. It predates the fixes. Not fixed.
+- v181 bumped and packaged: `python3 tools/package-itch.py out/hexmancers-v181-itch.zip` (967 files, checks pass).
 
 ## To resume
-1. `git log` — if the commit "fix: symmetric draw, avatar ignores land claims, mirrored burn/poison" exists, go to step 3.
+1. Fixes are done; skip to step 4 unless something new came up. (Old step:) `git log` — if the commit "fix: symmetric draw, avatar ignores land claims, mirrored burn/poison" exists, go to step 3.
 2. Otherwise finish findings 1-4 above on top of the wip commit. Draw repro idea: a loopbackPair with delay L and a fake clock; L=5, x=295 should give both sides the same result.
 3. Run the tests one at a time: `node tools/playtest/netplay-test.js`, `node tools/playtest/duel-runner.js <outdir>`, `(cd tools/netplay && npm ci && node relay-test.js)`, `node tools/playtest/selftest.js`, `node tools/playtest/battle-clock-test.js`.
 4. Do a scoped re-review of the fix commit, then the finishing-a-development-branch step. No PR unless the user asks.

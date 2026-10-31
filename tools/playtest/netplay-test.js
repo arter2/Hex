@@ -90,6 +90,321 @@ test('loopback', async () => {
   assert.equal(ca, 1); assert.equal(cb, 1);
 });
 
+// ---- DuelSession (Task 2) ----
+const D = require('../../game/netduel.js');
+const { DuelSession, PosHistory, hitLands, NET_DEFAULTS } = D;
+const DECK = n => Array.from({ length: n === undefined ? 50 : n }, (_, i) => 'card' + i);
+
+// Fake world: one clock T, a queue that carries loopback deliveries, manual ticking.
+function world() {
+  const w = { T: 1000000, q: [] };
+  w.setTimeout = (fn, ms) => { w.q.push([w.T + ms, fn]); };
+  w.flush = () => {
+    for (;;) {
+      const i = w.q.findIndex(e => e[0] <= w.T);
+      if (i < 0) return;
+      const [, fn] = w.q.splice(i, 1)[0]; fn();
+    }
+  };
+  return w;
+}
+function advance(w, ms, ss) {
+  for (let i = 0; i < ms; i++) { w.T++; w.flush(); for (const s of ss) s.tick(); w.flush(); }
+}
+const EVENTS = ['lobby', 'start', 'fight', 'hit', 'pos', 'step', 'sync', 'shot', 'end', 'refused', 'spellopen', 'spellresume'];
+function track(S) {
+  S.events = [];
+  S.log = n => S.events.filter(e => e[0] === n).map(e => e[1]);
+  for (const n of EVENTS) S.on(n, p => S.events.push([n, p]));
+  return S;
+}
+function spy(t) {
+  const sent = []; const orig = t.send;
+  t.send = (text, ch) => { sent.push(decode(text)); return orig(text, ch); };
+  return sent;
+}
+function pair(o = {}) {
+  const w = world();
+  const [ta, tb] = loopbackPair({ delayMs: o.delayMs || 0, setTimeout: w.setTimeout });
+  const sentA = spy(ta), sentB = spy(tb);
+  const A = track(new DuelSession(ta, { name: 'A', deck: DECK(), host: true, now: () => w.T, settings: o.sa, seed: () => 777 }));
+  const B = track(new DuelSession(tb, { name: 'B', deck: DECK(), host: false, now: () => w.T + (o.off || 0), settings: o.sb }));
+  w.flush();
+  return { w, A, B, ta, tb, sentA, sentB };
+}
+function fight(p) {
+  advance(p.w, 30, [p.A, p.B]);
+  p.A.ready(); p.B.ready();
+  advance(p.w, 30, []);
+  assert.equal(p.A.state, 'fighting'); assert.equal(p.B.state, 'fighting');
+}
+// A session talking to a raw scripted peer.
+function raw(o = {}) {
+  const w = world();
+  const [ta, tb] = loopbackPair({ setTimeout: w.setTimeout });
+  const got = []; tb.onmessage = s => got.push(decode(s));
+  const S = track(new DuelSession(ta, { name: 'S', deck: DECK(), host: !!o.host, now: () => w.T, settings: o.settings, seed: () => 5 }));
+  const say = m => { tb.send(encode(m), 'safe'); w.flush(); };
+  return { w, S, got, say, tb, ta };
+}
+const hello = (o = {}) => ({ t: 'hello', v: 1, name: 'R', deck: DECK(), ...o });
+function rawFight() {
+  const r = raw({ host: false });
+  r.say(hello()); r.say({ t: 'start', seed: 1 }); r.S.ready(); r.say({ t: 'ready' });
+  assert.equal(r.S.state, 'fighting');
+  return r;
+}
+
+test('duel handshake', () => {
+  const { A, B } = pair();
+  assert.equal(A.state, 'starting'); assert.equal(B.state, 'starting');
+  assert.equal(A.log('start')[0].seed, 777); assert.equal(B.log('start')[0].seed, 777);
+  assert.equal(A.log('lobby')[0].name, 'B'); assert.equal(B.log('lobby')[0].name, 'A');
+  assert.equal(A.log('start').length, 1); assert.equal(B.log('start').length, 1);
+});
+test('duel ready -> fighting', () => { fight(pair()); });
+test('version mismatch', () => {
+  const r = raw({ host: true });
+  r.say(hello({ v: 0 }));
+  assert.match(r.S.log('refused')[0].reason, /version/);
+  assert.notEqual(r.S.state, 'starting');
+  assert.ok(r.got.some(m => m && m.t === 'bye'));
+});
+test('invalid deck refused', () => {
+  for (const n of [0, 44, 61]) {
+    const r = raw({ host: true });
+    r.say(hello({ deck: DECK(n) }));
+    assert.match(r.S.log('refused')[0].reason, /deck/, 'n=' + n);
+    assert.notEqual(r.S.state, 'starting');
+  }
+  for (const n of [45, 60]) {
+    const r = raw({ host: true }); r.say(hello({ deck: DECK(n) }));
+    assert.equal(r.S.log('refused').length, 0); assert.equal(r.S.state, 'starting');
+  }
+});
+test('hit relay', () => {
+  const p = pair(); fight(p);
+  p.A.sendHit(12, 'red'); p.w.flush();
+  const h = p.B.log('hit')[0];
+  assert.equal(h.dmg, 12); assert.equal(h.color, 'red'); assert.equal(h.tile, undefined);
+  for (let i = 0; i < 50; i++) p.A.sendHit(1 + i, 'red');
+  p.w.flush();
+  assert.equal(p.B.log('hit').length, 51);
+});
+test('throttle', () => {
+  const p = pair(); fight(p);
+  const n = () => p.B.log('pos').length;
+  for (let i = 0; i < 10; i++) { p.A.sendPos(i, 0, 1, 0); p.w.T++; }
+  p.w.flush(); assert.equal(n(), 1);
+  p.w.T += 16 - 10;                       // first delivered call was 10 ms ago
+  for (let i = 0; i < 3; i++) { p.A.sendPos(100 + i, 0, 1, 0); p.w.T += 16; }
+  p.w.flush(); assert.equal(n(), 4);
+  p.w.T += 100; p.A.sendPos(102, 0, 1, 0); p.w.flush();
+  assert.equal(n(), 4, 'identical values dropped');
+  p.A.sendPos(102, 0, 1, 0.5); p.w.flush(); assert.equal(n(), 5);
+});
+test('step shot sync relay and sync throttle', () => {
+  const p = pair(); fight(p);
+  p.A.sendStep({ c: 1, r: 1 }, { c: 2, r: 1 }, 0.4); p.A.sendShot(3, 'red', true);
+  p.A.sendSync(5, 10, 0, 2); p.w.T += 50; p.A.sendSync(4, 10, 0, 2); p.w.flush();
+  assert.equal(p.B.log('step')[0].dur, 0.4); assert.equal(p.B.log('shot')[0].big, true);
+  assert.equal(p.B.log('sync').length, 1); assert.equal(p.B.log('sync')[0].hp, 5);
+  assert.ok(typeof p.B.log('step')[0].localTs === 'number');
+  p.w.T += 200; p.A.sendSync(3, 10, 0, 2); p.w.flush(); assert.equal(p.B.log('sync').length, 2);
+});
+test('clock offset', () => {
+  const p = pair({ off: 5000, delayMs: 10 });
+  advance(p.w, 200, [p.A, p.B]);
+  assert.ok(Math.abs(p.A.clock.offset - 5000) <= 1, 'A offset ' + p.A.clock.offset);
+  assert.ok(Math.abs(p.B.clock.offset + 5000) <= 1, 'B offset ' + p.B.clock.offset);
+  assert.equal(p.A.clock.rtt, 20);
+  assert.ok(Math.abs(p.A.clock.toLocal(p.w.T + 5000) - p.w.T) <= 1);
+  // one 200 ms-late pong (asymmetric) among the samples must not move the offset
+  const pts = p.w.T - 220;
+  p.ta.onmessage(J({ t: 'pong', ts: pts + 5010, n: 99, pts }));
+  assert.ok(Math.abs(p.A.clock.offset - 5000) <= 1, 'after late pong ' + p.A.clock.offset);
+  assert.equal(p.A.clock.rtt, 20);
+});
+test('spell opens on both', () => {
+  const p = pair(); fight(p);
+  p.A.openSpell(); p.w.flush();
+  assert.equal(p.A.log('spellopen').length, 1); assert.equal(p.B.log('spellopen').length, 1);
+  assert.deepEqual(p.A.log('spellopen')[0], { sec: 10, byMe: true });
+  assert.deepEqual(p.B.log('spellopen')[0], { sec: 10, byMe: false });
+  assert.ok(p.A.spell.open && p.B.spell.open);
+  const sent = p.sentA.length + p.sentB.length;
+  p.A.openSpell(); p.ta.onmessage(J({ t: 'spell', ts: p.w.T, sec: 10 })); p.w.flush();
+  assert.equal(p.sentA.length + p.sentB.length, sent);
+  assert.equal(p.A.log('spellopen').length, 1); assert.equal(p.B.log('spellopen').length, 1);
+  const q = pair(); fight(q);
+  q.A.openSpell(); q.B.openSpell(); q.w.flush();
+  assert.equal(q.A.log('spellopen').length, 1); assert.equal(q.B.log('spellopen').length, 1);
+  assert.ok(q.A.spell.open && q.B.spell.open);
+});
+test('spell resumes only when both are done', () => {
+  const p = pair(); fight(p);
+  p.A.openSpell(); p.w.flush();
+  p.A.spellDone(); p.w.flush();
+  assert.equal(p.A.log('spellresume').length, 0); assert.equal(p.B.log('spellresume').length, 0);
+  assert.ok(p.A.spell.mineDone && p.B.spell.theirsDone);
+  p.B.spellDone(); p.w.flush();
+  advance(p.w, 50, [p.A, p.B]);
+  assert.equal(p.A.log('spellresume').length, 1); assert.equal(p.B.log('spellresume').length, 1);
+  assert.equal(p.A.spell.open, false);
+});
+test('spell times out', () => {
+  const p = pair(); fight(p);
+  p.A.openSpell(); p.w.flush();
+  advance(p.w, 9990, [p.A, p.B]);
+  assert.equal(p.A.log('spellresume').length + p.B.log('spellresume').length, 0);
+  advance(p.w, 10, [p.A, p.B]);
+  assert.equal(p.A.log('spellresume').length, 1); assert.equal(p.B.log('spellresume').length, 1);
+  advance(p.w, 3000, [p.A, p.B]);
+  assert.equal(p.A.log('spellresume').length, 1); assert.equal(p.B.log('spellresume').length, 1);
+  // only A done: B's late spelldone is waited for until sec*1000 + 2000
+  const q = pair(); fight(q);
+  q.A.openSpell(); q.w.flush(); q.A.spellDone();
+  advance(q.w, 11999, [q.A]);
+  assert.equal(q.A.log('spellresume').length, 0);
+  advance(q.w, 1, [q.A]);
+  assert.equal(q.A.log('spellresume').length, 1);
+  q.B.tick(); q.w.flush();
+  assert.equal(q.B.log('spellresume').length, 1);
+});
+test('spell length follows settings', () => {
+  const cfg = { mpSpell: 4 };
+  const p = pair({ sa: () => cfg }); fight(p);
+  p.A.openSpell(); p.w.flush();
+  assert.equal(p.B.log('spellopen')[0].sec, 4);
+  p.A.spellDone(); p.B.spellDone(); p.w.flush();
+  assert.equal(p.A.spell.open, false); assert.equal(p.B.spell.open, false);
+  cfg.mpSpell = 15;
+  p.A.openSpell(); p.w.flush();
+  assert.equal(p.B.log('spellopen')[1].sec, 15);
+  p.A.spellDone(); p.B.spellDone(); p.w.flush();
+  p.B._handle({ t: 'spell', ts: p.w.T, sec: 0 });
+  assert.equal(p.B.log('spellopen')[2].sec, 1);
+  p.B.spellDone(); p.B._handle({ t: 'spelldone', ts: p.w.T });
+  assert.equal(p.B.spell.open, false);
+  p.B._handle({ t: 'spell', ts: p.w.T, sec: 999 });
+  assert.equal(p.B.log('spellopen')[3].sec, 60);
+});
+test('spell ends on leave', () => {
+  const p = pair(); fight(p);
+  p.A.openSpell(); p.w.flush();
+  p.B.leave(); p.w.flush();
+  assert.deepEqual(p.A.log('end'), [{ result: 'win', reason: 'left' }]);
+  assert.equal(p.A.log('spellresume').length, 0);
+  advance(p.w, 15000, [p.A]);
+  assert.equal(p.A.log('spellresume').length, 0);
+});
+test('settings are live', () => {
+  const cfg = { mpSend: 16, mpBackdate: 250, mpDefend: 50 };
+  const p = pair({ sa: () => cfg }); fight(p);
+  const n = () => p.B.log('pos').length;
+  p.A.sendPos(1, 0, 0, 0); p.w.T += 20; p.A.sendPos(2, 0, 0, 0); p.w.flush(); assert.equal(n(), 2);
+  cfg.mpSend = 100;
+  p.w.T += 20; p.A.sendPos(3, 0, 0, 0); p.w.flush(); assert.equal(n(), 2);
+  p.w.T += 80; p.A.sendPos(3, 0, 0, 1); p.w.flush(); assert.equal(n(), 3);
+  assert.equal(p.A.clampTs(p.w.T - 1000), p.w.T - 250);
+  cfg.mpBackdate = 1500;
+  assert.equal(p.A.clampTs(p.w.T - 1000), p.w.T - 1000);
+  const h = new PosHistory(); h.record(0, 11, 4); h.record(980, 11, 3);
+  assert.equal(hitLands(h, { c: 11, r: 3 }, 1000, p.A.setting('mpDefend')), false);
+  cfg.mpDefend = 10;
+  assert.equal(hitLands(h, { c: 11, r: 3 }, 1000, p.A.setting('mpDefend')), true);
+  assert.equal(raw({ settings: () => ({}) }).S.setting('mpSend'), NET_DEFAULTS.mpSend);
+  assert.deepEqual(NET_DEFAULTS, { mpSpell: 10, mpDefend: 50, mpBackdate: 250, mpSend: 16, mpSmooth: 33 });
+});
+test('ts clamping', () => {
+  const p = pair(); fight(p);
+  p.ta.send(J({ t: 'hit', ts: p.w.T - 2000, dmg: 3, color: 'red' }), 'safe');
+  p.ta.send(J({ t: 'hit', ts: p.w.T + 5000, dmg: 3, color: 'red' }), 'safe');
+  p.w.flush();
+  const [a, b] = p.B.log('hit');
+  assert.equal(a.localTs, p.w.T - 250); assert.equal(b.localTs, p.w.T);
+});
+test('tile mapping', () => {
+  const p = pair(); fight(p);
+  p.ta.send(J({ t: 'hit', ts: p.w.T, dmg: 3, color: 'red', tile: { c: 2, r: 4 } }), 'safe');
+  p.ta.send(J({ t: 'hit', ts: p.w.T, dmg: 3, color: 'red', tile: { c: 0, r: 8 } }), 'safe');
+  p.w.flush();
+  assert.deepEqual(p.B.log('hit').map(h => h.tile), [{ c: 11, r: 4 }, { c: 13, r: 8 }]);
+});
+test('defender wins', () => {
+  const h = new PosHistory(); h.record(0, 11, 4);
+  assert.equal(hitLands(h, { c: 11, r: 4 }, 1000, 50), true);
+  h.record(980, 11, 3);
+  assert.equal(hitLands(h, { c: 11, r: 4 }, 1000, 50), false);
+  assert.equal(hitLands(h, { c: 11, r: 3 }, 1000, 50), false);
+  const g = new PosHistory(); g.record(0, 11, 4); g.record(1001, 11, 3);
+  assert.equal(hitLands(g, { c: 11, r: 4 }, 1000, 50), true);
+  assert.equal(hitLands(h, undefined, 1000, 50), true);
+  assert.equal(hitLands(new PosHistory(), undefined, 1000, 50), true);
+  const old = new PosHistory(); old.record(5000, 11, 4); old.record(6500, 11, 4);
+  assert.equal(hitLands(old, { c: 11, r: 4 }, 100, 50), false);
+  assert.equal(hitLands(new PosHistory(), { c: 1, r: 1 }, 100, 50), false);
+});
+test('forfeit on bye', () => {
+  const p = pair(); fight(p);
+  p.B.leave(); p.w.flush();
+  advance(p.w, 500, [p.A]);
+  assert.deepEqual(p.A.log('end'), [{ result: 'win', reason: 'left' }]);
+  assert.equal(p.A.state, 'over');
+});
+test('forfeit on transport close', () => {
+  const p = pair(); fight(p);
+  p.tb.close(); p.w.flush();
+  assert.deepEqual(p.A.log('end'), [{ result: 'win', reason: 'left' }]);
+});
+test('silence timeout', () => {
+  const r = rawFight();
+  advance(r.w, 4999, [r.S]);
+  assert.equal(r.S.log('end').length, 0);
+  advance(r.w, 1, [r.S]);
+  assert.deepEqual(r.S.log('end'), [{ result: 'win', reason: 'timeout' }]);
+  const q = rawFight();
+  advance(q.w, 4900, [q.S]);
+  q.say({ t: 'ping', ts: q.w.T, n: 1 });
+  advance(q.w, 4999, [q.S]);
+  assert.equal(q.S.log('end').length, 0);
+  advance(q.w, 1, [q.S]);
+  assert.deepEqual(q.S.log('end'), [{ result: 'win', reason: 'timeout' }]);
+  assert.ok(q.got.some(m => m && m.t === 'pong'), 'pings are answered');
+});
+test('heartbeat ping each second', () => {
+  const r = rawFight();
+  advance(r.w, 300, [r.S]);
+  const n0 = r.got.filter(m => m && m.t === 'ping').length;
+  advance(r.w, 3000, [r.S]);
+  const n = r.got.filter(m => m && m.t === 'ping').length - n0;
+  assert.ok(n >= 2 && n <= 4, 'pings ' + n);
+});
+test('draw', () => {
+  const p = pair(); fight(p);
+  p.A.iDied(); p.B.iDied(); p.w.flush();
+  for (const S of [p.A, p.B]) assert.deepEqual(S.log('end'), [{ result: 'draw', reason: 'hp' }]);
+  advance(p.w, 500, [p.A, p.B]);
+  for (const S of [p.A, p.B]) assert.equal(S.log('end').length, 1);
+});
+test('single death', () => {
+  const p = pair(); fight(p);
+  p.A.iDied(); p.w.flush();
+  advance(p.w, 299, [p.A, p.B]);
+  assert.equal(p.A.log('end').length + p.B.log('end').length, 0, 'grace window');
+  advance(p.w, 10, [p.A, p.B]);
+  assert.deepEqual(p.A.log('end'), [{ result: 'lose', reason: 'hp' }]);
+  assert.deepEqual(p.B.log('end'), [{ result: 'win', reason: 'hp' }]);
+  advance(p.w, 1000, [p.A, p.B]);
+  assert.equal(p.A.log('end').length, 1); assert.equal(p.B.log('end').length, 1);
+});
+test('hostile peer messages are ignored', () => {
+  const p = pair(); fight(p);
+  for (const s of ['junk', '{"t":"hit"}', J({ t: 'hello', v: 1, name: 'x', deck: [] })]) p.ta.send(s, 'safe');
+  p.w.flush();
+  assert.equal(p.B.state, 'fighting'); assert.equal(p.B.log('hit').length, 0);
+});
+
 (async () => {
   let failed = 0;
   for (const [name, fn] of tests) {

@@ -99,15 +99,70 @@ const get = (port, path) =>
       d.close();
       await sleep(50);
     },
+    async 'rejected sockets cannot crash the relay'() {
+      const abuse = room =>
+        new Promise(res => {
+          const ws = new WebSocket(`ws://127.0.0.1:${port}/relay?room=${room}`);
+          ws.onopen = () => {
+            ws.send('x'.repeat(20000));
+            ws.send('y'.repeat(20000));
+          };
+          ws.onclose = () => res();
+          ws.onerror = () => {};
+        });
+      await abuse('12');
+      const a = await open(port, 'ABCD'), b = await open(port, 'ABCD');
+      await abuse('ABCD'); // third socket into a full room
+      await sleep(100);
+      a.send('still');
+      assert(await until(() => b.inbox.length === 1));
+      assert.strictEqual(b.inbox[0], 'still');
+      assert.strictEqual((await get(port, '/index.html')).status, 200);
+      a.close();
+      b.close();
+      await sleep(50);
+    },
     async 'serves the game'() {
       const r = await get(port, '/index.html');
       assert.strictEqual(r.status, 200);
       assert(r.body.includes('Hexmancers'));
       assert.strictEqual((await get(port, '/')).status, 200);
-      assert.strictEqual((await get(port, '/../package.json')).status, 404);
-      assert.strictEqual((await get(port, '/%2e%2e/package.json')).status, 404);
-      assert.strictEqual((await get(port, '/%2e%2e%2fpackage.json')).status, 404);
       assert.strictEqual((await get(port, '/nope.html')).status, 404);
+    },
+    async 'path traversal is refused'() {
+      const fs = require('fs'), os = require('os'), path = require('path'), net = require('net');
+      const parent = fs.mkdtempSync(path.join(os.tmpdir(), 'relay-trav-'));
+      const dir = path.join(parent, 'site');
+      fs.mkdirSync(dir);
+      fs.writeFileSync(path.join(parent, 'secret.txt'), 'TOPSECRET');
+      fs.writeFileSync(path.join(dir, 'hello.txt'), 'inside');
+      const r2 = await startRelay({ port: 0, dir });
+      try {
+        const ok = await get(r2.port, '/hello.txt');
+        assert.strictEqual(ok.status, 200);
+        assert.strictEqual(ok.body, 'inside');
+        for (const p of ['/%2e%2e/secret.txt', '/..%2fsecret.txt', '/%2e%2e%2fsecret.txt', '/%252e%252e/secret.txt', '/sub/../../secret.txt', '/%2e%2e/site/../secret.txt']) {
+          const r = await get(r2.port, p);
+          assert(r.status !== 200 && !r.body.includes('TOPSECRET'), p + ' -> ' + r.status);
+        }
+        const raw = await new Promise(res => {
+          let b = '';
+          const c = net.connect(r2.port, '127.0.0.1', () => c.write('GET /../secret.txt HTTP/1.1\r\nHost: x\r\nConnection: close\r\n\r\n'));
+          c.on('data', d => (b += d));
+          c.on('close', () => res(b));
+        });
+        assert(!raw.includes('TOPSECRET') && !/^HTTP\/1\.1 200/.test(raw), 'raw: ' + raw.split('\r\n')[0]);
+        // the root itself: no index.html here, so 404, never a listing
+        const root = await get(r2.port, '/');
+        assert.strictEqual(root.status, 404);
+        assert(!root.body.includes('secret.txt'));
+        fs.writeFileSync(path.join(dir, 'index.html'), 'INDEX');
+        const root2 = await get(r2.port, '/');
+        assert.deepStrictEqual([root2.status, root2.body], [200, 'INDEX']);
+      } finally {
+        await r2.close();
+        fs.rmSync(parent, { recursive: true, force: true });
+      }
     }
   };
   let failed = 0;

@@ -67,6 +67,7 @@ function startRelay({ port = 8080, dir = 'game' } = {}) {
     }
     if (url.pathname !== '/relay') return socket.destroy();
     wss.handleUpgrade(req, socket, head, ws => {
+      ws.on('error', () => {}); // first: rejected or abusive sockets must never throw uncaught
       const room = (url.searchParams.get('room') || '').toUpperCase();
       if (!/^[A-Z]{4}$/.test(room)) return ws.close(4000, 'bad room');
       const members = rooms.get(room) || [];
@@ -78,7 +79,6 @@ function startRelay({ port = 8080, dir = 'game' } = {}) {
         const peer = members.find(m => m !== ws);
         if (peer && peer.readyState === 1) peer.send(data.toString(), { binary: false });
       });
-      ws.on('error', () => {});
       ws.on('close', () => {
         if (rooms.get(room) === members) rooms.delete(room);
         for (const m of members) if (m !== ws && m.readyState <= 1) m.close(1000, 'peer left');

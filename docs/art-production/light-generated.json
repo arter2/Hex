@@ -2473,5 +2473,77 @@
     "status": "generated",
     "batch": 11,
     "reviewNote": "Reviewed 512-square source, 206:141 crop and 128x88 thumbnail. Lux's full face and raised lantern hand, complete brass lantern including handle/base, horizontal piercing beam and healing glow remain visible; the lantern reads at thumbnail scale."
+  },
+  {
+    "cardId": "light_strike_12",
+    "name": "Centaur's Arrow",
+    "prompt": "Paint Centaur's Arrow as a charged, straight-line magical shot: a resolute centaur archer with a fully visible expressive face and muscular human torso draws a longbow to the cheek, releasing one bright arrow down a clean horizontal line of golden force. His horse body stands firmly in the foreground; one charged arrow is primary, with the straight beam-like trail crossing the composition toward a distant target. Painterly medieval high-fantasy collectible-card art, grounded centaur anatomy, textured bow, leather and hair, bright directional light and atmospheric depth. Explicit 1:1 square 512 master; keep centaur's full face, drawing hand, bow grip hand and arrow nock/head area within x24..488,y105..407 for 206:141 crop; incidental horse legs may crop. No text/frame/UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d68408b0-8d68-4e5e-abdd-ac2cbc3590c1.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/light_strike_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed square, crop and thumbnail. Centaur's face, both bow hands and luminous arrow line remain clear; horse legs are incidental."
+  },
+  {
+    "cardId": "light_ward_14",
+    "name": "Great Zimbabwe Walls",
+    "prompt": "Paint Great Zimbabwe Walls as monumental ancient dry-stone defensive ramparts inspired by the massive curved stone walls of Great Zimbabwe: carefully fitted golden granite blocks form a broad, high rampart with a striking conical tower and narrow passage, extending across the horizontal scene. A subtle pale-gold protective ward with fine electric sparks runs along the wall's crown, showing a sturdy shocking defense without obscuring the real architecture. No people needed; the named historic stonework is the primary subject. Painterly medieval-fantasy architectural illustration, warm sun, textured stone, rich atmosphere and strong readable silhouette. Explicit 1:1 square 512 master for 206:141 horizontal crop; keep the wall and distinctive tower/passage recognizable inside x24..488,y105..407; distant hills and sky can crop. No text/frame/UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-86e5f00a-89f6-481b-a8b8-a4aa160921f5.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/light_ward_14.png",
+    "sourceNative": [
+      1515,
+      1038
+    ],
+    "reviewNote": "Reviewed normalized square, crop and thumbnail. Broad golden granite rampart, conical tower and narrow passage remain distinctive; tower tip is slightly cropped, incidental architecture."
+  },
+  {
+    "cardId": "light_boon_11",
+    "name": "Sushruta's Stitches",
+    "prompt": "Paint Sushruta's Stitches as a compassionate ancient healer carefully closing a small clean cut with fine sutures and wrapping a patient's forearm; no gore. The skilled healer's calm face, precise hands, fine needle and thread are the clear focal point, with the patient resting safely nearby and a small bowl of herbal remedies on a low table. Gentle warm healing light, historically inspired South Asian medical setting with carved wood and cotton cloth. Painterly medieval high-fantasy collectible-card art, respectful and humane, fine hand detail, natural materials, atmospheric depth. Explicit 1:1 square 512 master; keep healer's full face, both careful hands, needle/thread and patient's arm together within x24..488,y105..407 for 206:141 crop. No text/frame/UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-eb5d6cf1-00ac-458c-9e7b-9db19688c713.png",
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/light_boon_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed square, wide crop and thumbnail. Healer's full face, careful hands and fine stitching on the patient's forearm are visible; patient rests calmly."
+  },
+  {
+    "cardId": "light_lob_13",
+    "name": "Slinger's Hail",
+    "prompt": "Paint Slinger's Hail: a nimble medieval slinger whirls a simple leather sling and releases a quick row of five smooth stones that streak low across the scene and strike the ground in a line, kicking up small puffs of dust. The slinger's focused face, both sling hands and the clearly spaced row of stones read immediately; no arrows or modern weapons. Compact horizontal action against a sunlit stone courtyard. Painterly medieval high-fantasy collectible-card art, believable cloth and stone, clear motion, warm daylight and atmospheric depth. Explicit 1:1 square 512 master; keep face, both hands and the sling, plus visible stone row, within x24..488,y105..407 for wide 206:141 crop. No text/frame/UI, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-678d0d89-f63e-4abb-ab3e-9456a9ec9601.png",
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 11,
+    "editableSourcePath": "game/cards/art/masters/light_lob_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "reviewNote": "Reviewed square, top-shifted crop and thumbnail. Full focused face, both sling hands and sling remain visible; three clearly spaced stones and their ground strikes show the row; lower legs crop."
   }
 ]

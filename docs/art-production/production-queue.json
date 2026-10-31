@@ -4,8 +4,8 @@
   "active": 1034,
   "remaining": 919,
   "pending": 719,
-  "assigned": 46,
-  "awaitingReview": 154,
+  "assigned": 17,
+  "awaitingReview": 183,
   "countsByColour": {
     "brown": 234,
     "fire": 246,
@@ -893,7 +893,7 @@
       "name": "Smuggler's Map",
       "type": "instant",
       "color": "brown",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -902,7 +902,7 @@
       "name": "Goblin Rummage Sack",
       "type": "instant",
       "color": "brown",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -911,7 +911,7 @@
       "name": "Quartermaster's Ledger",
       "type": "instant",
       "color": "brown",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -920,7 +920,7 @@
       "name": "Weapon Rack Index",
       "type": "instant",
       "color": "brown",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -929,7 +929,7 @@
       "name": "Armorer's Catalog",
       "type": "instant",
       "color": "brown",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -2227,7 +2227,7 @@
       "name": "Miner's Drill",
       "type": "strike",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -2537,7 +2537,7 @@
       "name": "Mortar Round",
       "type": "lob",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -2726,7 +2726,7 @@
       "name": "Great Wall Bricks",
       "type": "ward",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -2941,7 +2941,7 @@
       "name": "Mountain Strength",
       "type": "boon",
       "color": "fire",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -4325,7 +4325,7 @@
       "name": "Frenzy of Sharks",
       "type": "strike",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -4650,7 +4650,7 @@
       "name": "Hailstone Cross",
       "type": "lob",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -4814,7 +4814,7 @@
       "name": "Pack Ice Bulwark",
       "type": "ward",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -5055,7 +5055,7 @@
       "name": "Blood Price of the Deep",
       "type": "boon",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -6211,7 +6211,7 @@
       "name": "Tundra the Mammoth Lord",
       "type": "hero",
       "color": "frost",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -7299,7 +7299,7 @@
       "name": "Coconut Crab",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -7308,7 +7308,7 @@
       "name": "Boulder Golem",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -7317,7 +7317,7 @@
       "name": "Pebble Golem",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -7326,7 +7326,7 @@
       "name": "Rock Elemental",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -7335,7 +7335,7 @@
       "name": "Siege Ogre",
       "type": "summon",
       "color": "gray",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -8426,7 +8426,7 @@
       "name": "Centaur's Arrow",
       "type": "strike",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -8695,7 +8695,7 @@
       "name": "Slinger's Hail",
       "type": "lob",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -8853,7 +8853,7 @@
       "name": "Great Zimbabwe Walls",
       "type": "ward",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -9091,7 +9091,7 @@
       "name": "Sushruta's Stitches",
       "type": "boon",
       "color": "light",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -14341,7 +14341,7 @@
       "name": "Naphtha Siphon",
       "type": "machine",
       "color": "storm",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -14842,7 +14842,7 @@
       "name": "Hornet Swarm",
       "type": "strike",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -15877,7 +15877,7 @@
       "name": "Strangler Vine Snare",
       "type": "trap",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -15949,7 +15949,7 @@
       "name": "Stampede",
       "type": "environment",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -16072,7 +16072,7 @@
       "name": "Oak Dryad",
       "type": "summon",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },
@@ -16708,7 +16708,7 @@
       "name": "Venna, the Viper Queen",
       "type": "hero",
       "color": "verdant",
-      "status": "assigned",
+      "status": "generated-awaiting-review",
       "source": null,
       "batch": 11
     },

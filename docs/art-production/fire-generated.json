@@ -2476,5 +2476,77 @@
       1254
     ],
     "reviewNote": "Reviewed square, top-shifted wide crop and thumbnail. Focal y .35 retains Magmar's full face and both action hands together with the central eruption; lower legs are incidental."
+  },
+  {
+    "cardId": "fire_strike_13",
+    "name": "Miner's Drill",
+    "prompt": "Paint an illustration for Miner's Drill as painterly medieval/high-fantasy collectible-card art. A battle-hardened dwarf miner braces a complete heavy hand-cranked dwarven boring drill against a dark ore-veined rock face. Its long spiral steel bit, brass-and-iron gear housing, wooden grip and crank are all clearly visible as the charged bit bites into stone, throwing a tight fan of sparks; the recoil rocks the miner's shoulders back. Show his determined face and both hands on the grips beside the drill, with the full named machine compact across the middle. Believable materials, dramatic attractive lighting, atmospheric depth and textured brushwork matching Hexmancers references. Explicit 1:1 square 512x512 master, horizontal staging. Keep whole named drill/round/brick and any important face/hands inside x24..488,y105..407 for 206:141 crop; main subject in middle 60%, quiet scenery above and below. No card frame, text, numbers, UI, anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-8968b7d7-708e-45f9-b77a-b541350ceebf.png",
+    "editableSourcePath": "game/cards/art/masters/fire_strike_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed shifted crop (focalPoint y=0.43) and thumbnail: miner's face and both hands, complete geared hand-crank drill and spiral bit, and charged impact all remain visible."
+  },
+  {
+    "cardId": "fire_lob_14",
+    "name": "Mortar Round",
+    "prompt": "Paint an illustration for Mortar Round as painterly medieval/high-fantasy collectible-card art. One complete medieval fantasy mortar round, a dark iron spherical shell with a short burning cloth fuse, arcs low above a battlefield toward one ground tile; the impact below raises a compact column of dust that pushes a small shield and stones outward. Put the whole shell clearly in the foreground at center, fuse and round intact, not a modern finned projectile. A low bronze mortar and one distant bombardier support the action without obscuring the round. Believable materials, dramatic attractive lighting, atmospheric depth and textured brushwork matching Hexmancers references. Explicit 1:1 square 512x512 master, horizontal staging. Keep whole named drill/round/brick and any important face/hands inside x24..488,y105..407 for 206:141 crop; main subject in middle 60%, quiet scenery above and below. No card frame, text, numbers, UI, anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-de228320-2f21-4cbf-88e3-1d4da12532b2.png",
+    "editableSourcePath": "game/cards/art/masters/fire_lob_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed shifted crop (focalPoint y=0.43) and thumbnail: complete iron mortar round with intact burning fuse is centered above the ground impact column; incidental smoke and battlefield scenery crop naturally."
+  },
+  {
+    "cardId": "fire_ward_13",
+    "name": "Great Wall Bricks",
+    "prompt": "Paint an illustration for Great Wall Bricks as painterly medieval/high-fantasy collectible-card art. At a mountain pass, two ancient Chinese-inspired masons in practical work robes set a large fired-clay brick into a sturdy defensive wall under construction. Show the whole main brick in one worker's hands, the second mason's face and hands, and a broad, low segment of heavy brick rampart with a level top and visible base. Warm kiln light and cool mountain air, authentic masonry craft, no tall tower. Believable materials, dramatic attractive lighting, atmospheric depth and textured brushwork matching Hexmancers references. Explicit 1:1 square 512x512 master, horizontal staging. Keep whole named drill/round/brick and any important face/hands inside x24..488,y105..407 for 206:141 crop; main subject in middle 60%, quiet scenery above and below. No card frame, text, numbers, UI, anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-8247a495-8914-4d81-b4b4-713dfba77665.png",
+    "editableSourcePath": "game/cards/art/masters/fire_ward_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed shifted crop (focalPoint y=0.43) and thumbnail: full brick being set, both workers' faces/hands and the sturdy wall course remain legible; masonry continues beyond frame."
+  },
+  {
+    "cardId": "fire_boon_12",
+    "name": "Mountain Strength",
+    "prompt": "Paint an illustration for Mountain Strength as painterly medieval/high-fantasy collectible-card art. A powerful medieval warrior stands on a rugged mountain ledge, drawing a deep breath as a sudden boon of strength flares through clenched gauntleted fists and shoulders. The warrior's face and both hands are visible; he steadies himself beside a stone boulder cracked by his grip, with subtle ember-orange light along the cracks suggesting a brief scorching surge of power. Grounded anatomy, inspiring rather than monstrous. Believable materials, dramatic attractive lighting, atmospheric depth and textured brushwork matching Hexmancers references. Explicit 1:1 square 512x512 master, horizontal staging. Keep whole named drill/round/brick and any important face/hands inside x24..488,y105..407 for 206:141 crop; main subject in middle 60%, quiet scenery above and below. No card frame, text, numbers, UI, anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-05f5bc25-2c6f-44a2-8608-a45822edb254.png",
+    "editableSourcePath": "game/cards/art/masters/fire_boon_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Reviewed shifted crop (focalPoint y=0.43) and thumbnail: warrior's full face and both ember-lit fists remain visible; legs and mountain scenery crop naturally."
   }
 ]

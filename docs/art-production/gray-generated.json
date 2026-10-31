@@ -2487,5 +2487,95 @@
     "status": "generated",
     "batch": 11,
     "reviewNote": "Default crop clipped the top of the howler's head. Reviewed shifted crop (focalPoint y=0.43; top=46) and thumbnail: full dark face, red-brown mantle, open mouth/throat sac and both gripping hands remain readable."
+  },
+  {
+    "cardId": "gray_summon_116",
+    "name": "Rock Elemental",
+    "prompt": "Paint an illustration for Rock Elemental: an ancient elemental spirit rising as a humanoid form of dark standing stones, jagged rock plates and glowing mineral seams, with a distinct ancient face formed in the central stone head and two heavy hands. Keep face and hands clear and the body unmistakably made of living rock, with a subtle cross-shaped pulse of energy through the chest. Painterly medieval high fantasy collectible-card art, rich stone strata and crystalline seams, dramatic directional light and atmospheric depth. Square 1:1 512x512 master; face and both hands inside x24..488 y105..407, quiet scenery above/below and clear 206:141 crop. No text, border or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ab9f8ce7-7c2e-4bd9-9fb7-c756dac97694.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_116.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Source native size [1254,1254]. Focal point [0.5,0.46] brings full rock-elemental face into crop with both hands visible. Artist inspected adjusted crop and thumbnail; parent review pending."
+  },
+  {
+    "cardId": "gray_summon_115",
+    "name": "Pebble Golem",
+    "prompt": "Repaint Pebble Golem as a small but tough medieval fantasy construct formed from rough, irregular river stones and weathered mineral fragments. Show a grounded humanoid with modest head-to-body proportions, a thoughtful stone face with narrow subtle rune-lit eye slits, and two clearly visible pebble-built hands as it thrusts one hand forward to launch a single pebble. Keep the complete face, both hands and action clear at card size. Surface detail should be rough, cracked, moss-flecked and naturally varied; expression is ancient and intent, never toy-like or cute. Painterly medieval high fantasy collectible-card art with attractive warm light over ancient ruin stones, restrained magic, atmospheric depth and believable materials. Square 1:1 512x512 master; keep face, hands and pebble action within x24..488 y105..407 for the 206:141 crop. No glossy button eyes, smooth round baby head, cartoon smile, text, border or UI. No anime, Disney/Pixar-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-86d946a3-407e-4ef3-b409-95df5f14cf3f.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_115.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "First source preserved at /workspace/scratch/b11_worker_1/gray_summon_115-prior.png after parent found its face toy-like. Repaint native size [1254,1254] uses irregular weathered stones and a grounded thoughtful face; focal point [0.5,0.4] keeps full face, both hands and pebble action in the crop. Artist inspected adjusted crop and thumbnail; parent review pending."
+  },
+  {
+    "cardId": "gray_summon_114",
+    "name": "Boulder Golem",
+    "prompt": "Paint an illustration for Boulder Golem: a broad powerful stone golem built from massive rounded boulders, with a clearly defined stern face and two huge rocky hands, raising one fist as if to hurl a stone projectile. Keep the face and both hands at readable scale; its boulder shoulders and chest establish the large form. Painterly medieval high fantasy collectible-card art, detailed weathered stone, warm directional light, dust and atmospheric depth, imposing but grounded. Square 1:1 512x512 master; face and hands inside x24..488 y105..407, quiet sky and ground beyond, horizontal 206:141 crop. No text, border or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-854fcb0a-251c-4ada-ae0b-e7345f6f18c4.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_114.png",
+    "sourceNative": [
+      1514,
+      1039
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Source native size [1514,1039]. Focal point [0.5,0.46] brings full face into crop while retaining the visible rocky hand and action. Artist inspected adjusted crop and thumbnail; parent review pending."
+  },
+  {
+    "cardId": "gray_summon_113",
+    "name": "Coconut Crab",
+    "prompt": "Paint an illustration for Coconut Crab: a powerful giant land crab with a rounded coconut-brown shell, unmistakable beady eyes and two enormous asymmetrical claws raised in defense on a moonlit tropical shore. The face and full claws dominate the middle of the image, while incidental legs and scenery may extend beyond view. Painterly medieval high fantasy collectible-card art, tactile shell and wet stone, attractive cool moonlight with warm reflected torchlight, atmospheric depth, lively but grounded animal anatomy. Square 1:1 512x512 master; keep eyes and both complete claws inside x24..488 y105..407; quiet scenery above/below and clear 206:141 horizontal crop. No text, border or UI. No anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-fc2f93f3-6942-4f11-92f8-2ffb0fc4b70c.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_113.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Source native size [1254,1254]. Artist inspected square, 206:141 crop and 128x88 thumbnail: crab face/eyes and both claws are clear; parent review pending."
+  },
+  {
+    "cardId": "gray_summon_117",
+    "name": "Siege Ogre",
+    "prompt": "Paint an illustration for Siege Ogre: an enormous grim ogre in battered dark iron armor, its broad expressive face, shoulders and both powerful hands filling the composition as one iron-gauntleted fist smashes through a fortified wooden gate. Broken planks fly from the impact, clearly showing the ogre's siege action; keep face and striking hand unobscured. Painterly medieval high fantasy collectible-card art, grounded ogre anatomy, weathered iron and splintered oak, warm directional torchlight against cool stone shadows, dramatic atmospheric depth. Square 1:1 512x512 master; keep ogre face, both hands and central gate impact within x24..488 y105..407; quiet scenery beyond, effective 206:141 horizontal crop. No gore, text, border or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ca87b5a3-7e0c-41a3-91c4-c6ace406c0ce.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_117.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.45
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Source native size [1254,1254]. Focal point [0.5,0.45] shifts the crop up. Artist inspected square, adjusted 206:141 crop and 128x88 thumbnail: full ogre face, striking gauntlet, other hand and gate-breaking action remain clear; parent review pending."
   }
 ]

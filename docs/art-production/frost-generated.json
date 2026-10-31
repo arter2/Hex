@@ -2474,5 +2474,95 @@
     "status": "generated",
     "batch": 11,
     "reviewNote": "The paired sluice leaves, gearworks, canal opening and controlled water remain clear in the wide crop and thumbnail."
+  },
+  {
+    "cardId": "hero_tundra",
+    "name": "Tundra the Mammoth Lord",
+    "prompt": "Create painterly medieval high-fantasy collectible card art for Tundra the Mammoth Lord. A proud mammoth lord strides through windblown snow: a rugged northern rider's focused face and gripping gloved hand are visible above the great mammoth's head; the mammoth's eyes, shaggy forehead and both huge ivory tusks dominate the foreground as its feet send a low frost quake across the ground. Mechanics: hero Tundra stamps a frost quake that slows nearby enemies and carries protective armor. Believable anatomy and materials, dramatic icy directional light with warm highlights, atmospheric depth consistent with supplied Hexmancers references. Strong readable central composition on an explicit 1:1 512x512 square. Keep mammoth eyes and both tusks plus rider's face/hand, shark eyes and full jaws, hail cross and casting hands, or full wall inside x24..488,y105..407 for 206:141 crop; quiet scenery top and bottom. No border, text, numbers, runes, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0f289569-4843-4243-b07e-a834b15b0220.png",
+    "editableSourcePath": "game/cards/art/masters/hero_tundra.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Focal y=0.34 shifts crop upward to include Tundra's face plus the mammoth's eyes and both tusks; mammoth trunk and feet crop as incidental."
+  },
+  {
+    "cardId": "frost_strike_12",
+    "name": "Frenzy of Sharks",
+    "prompt": "Create painterly medieval high-fantasy collectible card art for Frenzy of Sharks. Three swift great white sharks surge forward through glacial water like a missile volley; the largest shark fills the center with both eyes and full open jaws clearly visible, two smaller sharks flank it, icy bubbles and spray behind. Mechanics: a quick volley of three shark-shaped missiles that also mend. Believable anatomy and materials, dramatic icy directional light with warm highlights, atmospheric depth consistent with supplied Hexmancers references. Strong readable central composition on an explicit 1:1 512x512 square. Keep mammoth eyes and both tusks plus rider's face/hand, shark eyes and full jaws, hail cross and casting hands, or full wall inside x24..488,y105..407 for 206:141 crop; quiet scenery top and bottom. No border, text, numbers, runes, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b4f9e820-29f9-48bd-a40f-3d3af3fb0c83.png",
+    "editableSourcePath": "game/cards/art/masters/frost_strike_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "The largest shark's full jaws and eyes remain prominent with two flanking sharks also readable in the wide crop and thumbnail."
+  },
+  {
+    "cardId": "frost_lob_13",
+    "name": "Hailstone Cross",
+    "prompt": "Create painterly medieval high-fantasy collectible card art for Hailstone Cross. A compact hailstorm has coalesced into a clear cross-shaped volley of five hard blue-white hailstones above an icy ground impact; at the side, a frost caster's face and raised hands shape the cross, all sharply visible and central. Mechanics: a lobbed cross-pattern of hail that lands and knocks foes down. Believable anatomy and materials, dramatic icy directional light with warm highlights, atmospheric depth consistent with supplied Hexmancers references. Strong readable central composition on an explicit 1:1 512x512 square. Keep mammoth eyes and both tusks plus rider's face/hand, shark eyes and full jaws, hail cross and casting hands, or full wall inside x24..488,y105..407 for 206:141 crop; quiet scenery top and bottom. No border, text, numbers, runes, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-db6ffd52-06e1-43aa-9e7e-623f8906cbb1.png",
+    "editableSourcePath": "game/cards/art/masters/frost_lob_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Focal y=0.40 keeps the caster's face, both casting hands and cross-shaped hail volley visible; distant combatants are incidental."
+  },
+  {
+    "cardId": "frost_ward_12",
+    "name": "Pack Ice Bulwark",
+    "prompt": "Create painterly medieval high-fantasy collectible card art for Pack Ice Bulwark. A heavy single rampart of packed blue-white sea ice forms a continuous defensive wall across the middle, its interlocked slabs and frozen ridges clear; a few small penguin-like silhouettes or distant sailors may give scale, but the ice barrier is the obvious subject. Mechanics: a heavy short rampart wall of pack ice that freezes attackers. Believable anatomy and materials, dramatic icy directional light with warm highlights, atmospheric depth consistent with supplied Hexmancers references. Strong readable central composition on an explicit 1:1 512x512 square. Keep mammoth eyes and both tusks plus rider's face/hand, shark eyes and full jaws, hail cross and casting hands, or full wall inside x24..488,y105..407 for 206:141 crop; quiet scenery top and bottom. No border, text, numbers, runes, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-269dd84d-42f1-438a-bf27-6f2242814f8d.png",
+    "editableSourcePath": "game/cards/art/masters/frost_ward_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "The continuous pack-ice wall reads clearly across the wide crop; shoreline details are secondary."
+  },
+  {
+    "cardId": "frost_boon_13",
+    "name": "Blood Price of the Deep",
+    "prompt": "Illustrate Blood Price of the Deep, a long pact with the old powers beneath a frozen sea. A weathered sea-priestess stands waist-up on an icebound shore, her determined face and both hands clearly visible in the central frame: one palm bears a single luminous crimson droplet offered toward the dark water, the other hand gestures to summon ghostly allied sailors rising beneath the waves. Suggest the pact's cost through the tiny drop and its echo in the sea, not gore. Keep face, hands, crimson droplet and summoned spectral allies within x24..488,y105..407 on an explicit 1:1 square 512x512 canvas composed for a 206:141 card crop, with quiet icy atmosphere above and below. Painterly medieval high fantasy, believable face and clothing, dramatic cool light with restrained red accent, atmospheric depth. No graphic blood, lettering, border, UI, anime, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-16213c23-05db-4f2d-8669-53c439f79e27.png",
+    "editableSourcePath": "game/cards/art/masters/frost_boon_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 11,
+    "reviewNote": "Focal y=0.34 preserves the pact-holder’s full face, both gesturing hands and offered crimson drop in wide crop and thumbnail; spectral allies remain below the waterline."
   }
 ]

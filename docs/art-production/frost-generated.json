@@ -3429,5 +3429,41 @@
     "status": "generated",
     "batch": 13,
     "reviewNote": "Reviewed the 512-square source, upward-shifted 206:141 crop (focalPoint y=0.41) and 128x88 thumbnail. The complete jellyfish bell and bloom remain visible; icy tendrils and knocked-down, cursed foes read clearly. Parent review pending."
+  },
+  {
+    "cardId": "frost_lob_18",
+    "name": "Pufferfish Toss",
+    "prompt": "Illustrate the Hexmancers frost lob Pufferfish Toss, a single-target throw that pulls an enemy toward its impact and knocks them down. A compact round pufferfish is the central named projectile, fully inflated in midair above a frozen harbor: its entire spherical body, curious eyes, small mouth and all short icy spines are clearly visible, with safe margin on every side. A merfolk fisher at the left has just tossed it, face and releasing hand visible; a curling blue-white water vortex pulls one armored foe toward the fish before impact. Keep the pufferfish large and unmistakable, with the pull line clear and no distracting burst hiding it. Painterly medieval high-fantasy collectible-card art, believable scales, spines, wet leather and ice, cold directional light, atmospheric harbor mist and refined brushwork. Explicit 1:1 square composition for an editable 512x512 master. Keep complete fish, fisher face/hand and pull action inside x24..488,y105..407; compact horizontal middle-60% composition, quiet snowy harbor above/below for a 206:141 crop. No text, frame, numbers, interface, logo, watermark, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-55669e26-c49a-43d1-8c02-8c66d023c1e9.png",
+    "editableSourcePath": "game/cards/art/masters/frost_lob_18.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. The full inflated pufferfish and spines are clear; the fisher hand, face and water pull toward the target remain visible. Parent review pending."
+  },
+  {
+    "cardId": "frost_lob_19",
+    "name": "Monsoon Downpour",
+    "prompt": "Illustrate the Hexmancers frost lob Monsoon Downpour, a delayed row-wide icy rain attack that slows its targets. A broad dark storm cloud hangs low over a medieval battlefield and pours a dense, clearly visible curtain of cold rain diagonally across an entire line of armored opponents. The downpour is the central subject: silver-blue sheets, large distinct droplets and icy splashes fill the middle band, while the soldiers below hunch and stagger as frost gathers around their boots and armor. Keep the cloud and the full rain band visible as one coherent horizontal weather event; use a restrained cool palette with a few warm torchlights in the distance. Painterly medieval high-fantasy collectible-card art, atmospheric depth, believable rain, wet steel and stone, dramatic storm lighting and refined brushwork. Explicit 1:1 square composition for an editable 512x512 master. Keep the cloud base, central rain sheet and target row within x24..488,y105..407, horizontal middle-60% layout, quiet storm sky and wet ground in top/bottom margins for a 206:141 crop. No text, frame, numbers, interface, logo, watermark, modern objects, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c4cc3d9c-b044-4e8b-b4fe-0129430f36cb.png",
+    "editableSourcePath": "game/cards/art/masters/frost_lob_19.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Storm cloud, full silver-blue rain band and staggered row of armored targets remain visible; the downpour reads clearly at small size. Parent review pending."
   }
 ]

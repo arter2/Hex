@@ -3448,5 +3448,23 @@
     "status": "generated",
     "batch": 13,
     "reviewNote": "Square source, centered 206:141 crop and thumbnail inspected after compact re-render; the complete ash cloud, both ends, rounded leading edge and incandescent core fit with margin. Small figures stay beneath it and secondary."
+  },
+  {
+    "cardId": "fire_lob_23",
+    "name": "Eruption",
+    "prompt": "Paint an original illustration for the legendary Hexmancers fire lob “Eruption.” Show a compact volcanic cone in the foreground erupting in one dramatic but fully visible burst: its whole low cone, crater mouth and a bright rising column of lava, ash and glowing stones all fit in the composition. The eruption expands outward in a broad fiery crown above the crater, with a restrained ring of molten light across the nearby ground; keep the complete plume and cone distinct against the dusk sky rather than letting smoke fill the frame. Painterly medieval/high-fantasy collectible-card art, nuanced believable basalt, ash and molten rock, dramatic warm volcanic light against cool twilight, atmospheric depth and strong readable values. Match the supplied references' painterly materials and directional fantasy lighting, with the warm high-fantasy action feel of the accepted fire art. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the complete cone, crater, eruption plume and main burst within x24–488,y105–407 on the square; make the eruption compact and broad for the 206:141 card crop, with quiet sky and volcanic ground beyond. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-75b68d33-884f-423b-9382-2c0cb34939ca.png",
+    "editableSourcePath": "game/cards/art/masters/fire_lob_23.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source, centered 206:141 crop and thumbnail inspected: the cone, crater and bright lava/rock burst are prominent and clear. The highest smoke billow reaches the upper crop edge, while the named eruption’s incandescent jet and ejected stones remain visible."
   }
 ]

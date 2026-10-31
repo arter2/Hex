@@ -3392,5 +3392,78 @@
     "status": "generated",
     "batch": 13,
     "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel crop: true wolf head, pointed ears, amber eyes, chest and two leading paws remain central and readable; trailing body crops naturally."
+  },
+  {
+    "cardId": "light_summon_12",
+    "name": "White Wolf Matriarch",
+    "prompt": "Create standalone painterly medieval-high-fantasy collectible-card art for the exact summon White Wolf Matriarch. Show one mature noble female arctic white wolf, unmistakably a true wolf with robust shoulders, long muzzle, pointed ears, thick silver-white winter ruff and steady golden eyes; she stands slightly ahead of the viewer as a regal guardian, with no crown, collar or human adornment. A restrained swirl of windblown snow mixed with pale sand coils around her chest and paws to suggest a sandstorm trait, while her focused head and eyes dominate. Keep her head/eyes and powerful forequarters entirely clear; hind legs may extend naturally toward the edge. Painterly grounded wolf anatomy and detailed fur, cool moonlit blue with warm pale-gold rim light, atmospheric depth matching supplied Hexmancers light-creature references. Explicit 1:1 SQUARE canvas for a 512x512 editable master for the 206:141 crop. Keep head, ruff, forelegs and sand-snow aura within x24..488,y105..407. No extra wolves, text, frame or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-93ba9a59-9d20-4d83-b8d9-99200fad9c99.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source and upward-shifted 206:141 crop at focalPoint [0.5,0.38] plus 128-pixel crop: full wolf ears, head, eyes and ruff fit with margin, with chest and sand-snow aura prominent; lower legs crop naturally."
+  },
+  {
+    "cardId": "light_summon_13",
+    "name": "Talbot Hound",
+    "prompt": "Repaint the exact summon Talbot Hound as a historically recognizable English Talbot scent hound, not a Saint Bernard, not a wolf, and not a modern fluffy pet dog. Show one compact powerful hound in a low forward dash, with an unmistakable elongated narrow scent-hound muzzle, black nose, deep-set focused eyes, long low-hanging pendulous ears, long neck, deep chest and short smooth coat. Its coat is uniformly clean ivory-white from muzzle to tail, with absolutely no brown, red, tan, cream or dark patches and no spots. Use a leaner old hunting-hound silhouette rather than broad jowls: longer face, clear jawline, short close hair. Keep the full head, both hanging ears, eyes and leading foreleg dominant in x90..425,y145..385; trailing body/legs may crop naturally. A faint pale-gold dash afterimage behind its shoulder suggests two quick strikes without creating a second dog. Medieval stone woodland path, painterly grounded canine anatomy, soft warm rim light and cool forest shadows, atmospheric depth matching supplied Hexmancers creature art. Explicit 1:1 SQUARE canvas for a 512x512 editable master composed for a 206:141 card crop. No collar or leash, no text, frame or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-edf3fb5b-f13e-4f4c-ae67-e165166e6afb.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "First source preserved at /tmp/light-05-repairs/light_summon_13-attempt-01.png. Inspected replacement 512-square source, centered 206:141 crop and 128-pixel crop: the Talbot is now an unmistakable all-white, short-coated scent hound with a long muzzle, pendulous ears and focused eyes; leading foreleg remains clear and hind legs crop naturally.",
+    "previousGeneratedPath": "/workspace/generated_images/exec-81541b71-420d-47f3-beb9-59e69631782b.png"
+  },
+  {
+    "cardId": "light_summon_14",
+    "name": "Royal Gyrfalcon",
+    "prompt": "Create standalone painterly medieval-high-fantasy collectible-card art for the exact summon Royal Gyrfalcon. Show one large, true gyrfalcon of the northern cliffs, not an eagle or owl: compact falcon body, short hooked beak, intense dark eye with a bold brow, pointed wings and pale gray-white plumage densely freckled with charcoal marks. It dives diagonally through bright highland air with one foot extended and a restrained radiant gold-white trail; a small royal blue-and-gold jess at the leg suggests its noble falconry without hiding the bird. Keep its entire head and eye crisp, and its shoulder and lead talon visible; outer wing tips may extend naturally. Painterly grounded bird anatomy and layered feathers, attractive sunrise light against cool mountain haze, atmospheric depth matching supplied Hexmancers light-creature references. Explicit 1:1 SQUARE canvas for a 512x512 editable master composed for the 206:141 crop. Keep beak, eye, body and leading talon inside x24..488,y105..407. No person, text, frame or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-320de274-244c-4c49-acd8-707dc6c3d9a2.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel crop: pale speckled gyrfalcon, hooked beak, dark eye and extended talon read clearly; only outer wing feathers extend beyond the crop."
+  },
+  {
+    "cardId": "light_summon_15",
+    "name": "Heraldic Griffin",
+    "prompt": "Create standalone painterly medieval-high-fantasy collectible-card art for the exact summon Heraldic Griffin. One proud noble griffin stands broadside as the central guardian, with a sharply defined golden eagle head and clear amber eye, hooked beak, feathered eagle forelegs with strong talons, tawny lion hindquarters and a full feathered wing. The griffin braces behind two small allied guards, extending one wing into a translucent curved shield of warm gold light around them; a few gentle restorative motes suggest rallying aid. Keep griffin head/eye, chest and leading talons prominent, with the wing forming the protective arc; background allies remain secondary. Painterly grounded griffin anatomy, richly layered feathers and fur, believable bronze harness without lettering, warm directional sunrise light and atmospheric depth matching supplied Hexmancers light-creature references. Explicit 1:1 SQUARE canvas for a 512x512 editable master composed for a 206:141 crop. Keep head, eye, talons, shield edge and nearest allied faces inside x24..488,y105..407; outer wing tips may extend naturally. No readable heraldic text, frame, runes, symbols or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a888d626-ddba-44fd-90f4-687bd86a9dd1.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel crop: the griffin’s eagle head/eye, hooked beak, chest and leading talons remain distinct; its protective wing arc and two secondary allied guards are readable, with outer wing tips cropped naturally."
   }
 ]

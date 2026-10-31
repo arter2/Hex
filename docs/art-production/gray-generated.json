@@ -3441,5 +3441,41 @@
     "status": "generated",
     "batch": 13,
     "reviewNote": "Shifted focal point upward to y=0.43 and inspected the 512-square source, revised wide crop and 128px thumbnail. Ogre cook’s full face/eyes, stirring hand and extended bread paddle remain visible; the cauldron and fire establish the camp kitchen, while lower fire and onlookers are incidental."
+  },
+  {
+    "cardId": "gray_summon_166",
+    "name": "Beowulf",
+    "prompt": "Repaint the exact card “Beowulf” with a centered, crop-safe composition. A brave legendary Norse warrior in ring mail and a dark blue cloak stands in a torchlit mead hall, his weathered heroic face and clear eyes visible. At the center of the square, he draws back one arm with a heavy rounded stone held securely in a fully visible hand, preparing to hurl it at a charging troll several paces away; do not put the hand or stone near either side edge. Keep Beowulf’s full face and both arms, especially the complete throwing hand and whole stone, together in the central horizontal band. The loyal shield-bearers and shadowy monster remain secondary. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: grounded anatomy, nuanced iron rings, wool, leather, wood and stone, layered brushwork, warm firelight against cool winter shadows, atmospheric depth, not photorealistic. Explicit 1:1 square canvas for a 512×512 master; keep face, eyes, both hands and complete stone safely within x48–464,y105–407 for the 206:141 card crop. Quiet rafters and floor above and below. No gore, modern props, card frame, text, runes, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-21c82244-cf10-43ef-851c-2834808f662d.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_166.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Repainted after crop inspection moved the throwing hand inward. Inspected the replacement 512-square source, true 206:141 wide crop and 128px thumbnail; Beowulf’s full face/eyes, complete stone and throwing hand are visible within the crop, with troll and shield-bearers secondary."
+  },
+  {
+    "cardId": "gray_summon_167",
+    "name": "Gilgamesh",
+    "prompt": "Paint an illustration for the exact card name “Gilgamesh.” A noble legendary king of ancient Uruk, wearing a blue wool mantle, layered bronze armor and a simple gold circlet, stands before his companions with a calm resolute face and clear eyes. He raises a broad bronze-faced shield in one hand to guard them from incoming arrows and keeps his other hand on a spear shaft. Gilgamesh is the unmistakable front-line protector; the sheltered companions remain secondary. Painterly medieval high-fantasy collectible-card art matching supplied Hexmancers references: grounded human anatomy and expression, nuanced bronze, lapis-blue cloth, leather, wood and stone, layered brushwork, warm torchlight against cool dusk, atmospheric depth, not photorealistic. Explicit 1:1 square canvas for a 512×512 editable master. Compose face, shield and hands in a horizontal middle band; keep eyes, relevant hands, complete shield face and spear grip inside x24–488,y105–407 for a 206:141 landscape crop. Quiet ancient city gate above and below. Strong readable silhouette. No readable writing, no gore, no card frame, text, numbers, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2a518e90-e0b8-4293-bb2c-701ccfb0a2bc.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_167.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Shifted focal point upward to y=0.46 and inspected the 512-square source, revised wide crop and 128px thumbnail. Gilgamesh’s full face/eyes, spear hand and raised shield remain visible together as he guards his companions; incidental lower cloak crops away."
   }
 ]

@@ -3380,5 +3380,95 @@
     "status": "generated",
     "batch": 13,
     "reviewNote": "Generated square normalized to exact 512x512 source; inspected square, true 206:141 crop and thumbnail. Beetle head/eyes and mossy carapace dominate, with defensive stance and green drain thread clearly visible; surrounding faces remain secondary."
+  },
+  {
+    "cardId": "shadow_summon_18",
+    "name": "Cave Centipede",
+    "prompt": "Create original square 1:1 painterly medieval-dark-fantasy collectible-card art for Cave Centipede. Actual summon: a sturdy but slow cave centipede pounces from shadow and curses foes. Show one unmistakable giant centipede emerging from a low cavern fissure in a slow, powerful pounce, long segmented rust-black body and many short hooked legs clearly articulated; its blunt head, small pale eyes and curved mandibles are the primary focal point. A faint violet curse haze clings to a single armored explorer it has cornered. Keep the species clear, not a worm or snake. Painterly cave geology, wet chitin, blue-green subterranean light with restrained violet curse glow, grounded insect anatomy and dramatic readable silhouette. Square 512x512; keep the centipede head, front legs and explorer face inside x24..488 y105..407; quiet cave ceiling and floor margins; designed for true 206:141 crop. No text/frame/UI, no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9a5b7f28-4226-4c15-901c-328210181b1d.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_18.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the exact source, true 206:141 crop and 128x88 thumbnail. Segmented body, hooked legs, centipede head and pale eyes are unmistakable and remain in the crop."
+  },
+  {
+    "cardId": "shadow_summon_19",
+    "name": "Plague Rat",
+    "prompt": "Create original square 1:1 painterly medieval-dark-fantasy collectible-card art for Plague Rat. Actual summon: two small, frail, mossy plague rats dash quickly and pull at a foe, carrying disease for two turns. Show exactly two clearly recognizable brown rats with pointed snouts, round ears, whiskers and long tails; moss clings to their backs. They dart in opposing zigzags through a crypt gutter, one rat gripping an armored guard's boot strap and tugging him off balance while a small green plague mist trails behind. Rats must be readable as rats, not mice or cats; no gore. Painterly medieval stone, wet moss, fur, iron and candlelight, dramatic cold green highlights over deep shadow, low horizontal action. Square 512x512; keep both rat faces, whiskers and the guard's face/boot inside x24..488 y105..407, simple dark margins; designed for a true 206:141 crop. No words/frame/UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-76c0189f-8a52-430e-a21d-70ed8d13d58c.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_19.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Shifted focalPoint upward to [0.5,0.4] after crop inspection. Reviewed the translated 206:141 crop and thumbnail: both rat faces and mossy bodies, the tugging action and guard face are now visible."
+  },
+  {
+    "cardId": "shadow_summon_20",
+    "name": "Bog Leech",
+    "prompt": "Create original square 1:1 painterly medieval-dark-fantasy collectible-card art for Bog Leech. Actual summon: a sturdy, slow leech bolts a dark curse and drains life from its target for two turns. Show one massive unmistakable bog leech rising in a heavy arc from dark marsh water; its broad sucker-mouth and ringed, slick olive-brown body are clear, with a narrow violet-green thread of vitality draining from an armored hunter's forearm toward its mouth. The hunter recoils at right while the leech dominates the scene. Keep the animal clearly a leech, not a snake, eel or worm: flattened annulated body and round sucker-disc are key. Painterly wet reeds, peat, mud, water and mail, luminous fog, cold teal moonlight with restrained curse green, grounded natural textures. Square 512x512; keep leech head/sucker and target face/forearm inside x24..488 y105..407; quiet mist above and water below; designed for true 206:141 crop. No gore, text/frame/UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f2fcfec6-b4f8-4e9d-ac41-5a1c3ca57463.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_20.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Inspected the exact 512 source, true 206:141 crop and thumbnail. The annulated bog leech and large sucker-disc dominate; the vitality thread connects to the hunter while its face and forearm remain legible."
+  },
+  {
+    "cardId": "shadow_summon_21",
+    "name": "Gravedigger",
+    "prompt": "Create original square 1:1 painterly medieval-dark-fantasy collectible-card art for Gravedigger. Actual summon: an old but sturdy squire burrows through earth, steadily pulling a foe toward him for two turns. Show a recognizable elderly gravedigger squire in worn mail and a patched dark surcoat, lined face and strong hands visible as he plants a broad iron spade into a fresh grave and pulls an armored intruder down into loosened soil by the cloak. The man, not a monster, is the named subject; show his old face, shovel blade and gripping hands clearly. Gloomy graveyard at night, painterly wet soil, old iron, worn cloth, moonlight and low lantern glow, grounded human anatomy and restrained supernatural undertone. Square 512x512; keep gravedigger face, both hands, full spade head and target face within x24..488 y105..407; quiet mist above and ground below; designed for true 206:141 crop. No gore, text/frame/UI; no anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b18a2398-e8a2-41d6-ac63-9a842701e080.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_21.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Shifted focalPoint upward to [0.5,0.4] to include the old gravedigger face and shovel hand with the target face and shovel blade. Inspected the translated 206:141 crop and thumbnail; the human character, tool and pull action read clearly."
+  },
+  {
+    "cardId": "shadow_summon_22",
+    "name": "Dungeon Jailer",
+    "prompt": "Paint original square 1:1 painterly medieval-dark-fantasy collectible-card art for Dungeon Jailer. Actual summon: a sturdy, quick iron-armored ogre creates a strong warding barrier and pulls a foe toward it; the ward lasts three turns. Show one hulking, unmistakable ogre jailer with a broad expressive face, heavy iron shoulder plates and a ring of ancient keys, at left-center. He grips a chain in one strong hand and pulls a struggling armored captive toward a newly raised wall of thick iron bars at right; the bars are a visible protective ward, not prison text or symbols. Keep the ogre's face, pulling hand, key ring, target face and top/bottom of the barred ward inside the safe crop; clear silhouettes, one ogre and one captive. Painterly medieval dungeon, detailed iron, chain, stone, leather and worn cloth, directional torchlight against cold blue shadow, grounded powerful anatomy, high-end fantasy collectible-card style. Square 512x512; all primary faces/hands and the ward's main structure inside x24..488 y105..407; quiet dungeon darkness above/below; designed for a true 206:141 horizontal crop. No text, numbers, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b075ef69-11e1-4943-ab99-ca15fcf4e54b.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_22.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Shifted focalPoint upward to [0.5,0.4] after crop inspection to retain the jailer’s face together with key ring, pulling hand, target face and iron ward. Inspected translated 206:141 crop and thumbnail; ogre identity and protective bars remain clear."
   }
 ]

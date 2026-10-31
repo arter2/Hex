@@ -3381,5 +3381,59 @@
     "status": "generated",
     "batch": 13,
     "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. King face and both hands, complete pommel-to-point sword, straight piercing ray and shield impacts remain visible; the sword reads at thumbnail size. Parent review pending."
+  },
+  {
+    "cardId": "verdant_strike_39",
+    "name": "Dart Frog Leap",
+    "prompt": "Paint an original illustration for the Hexmancers verdant strike “Dart Frog Leap.” Show one clearly recognizable poison dart frog in mid-leap between rain-wet leaves: tiny but bold, with a vivid leaf-green back, deep black-and-blue markings, bright orange toes and a bright alert eye. The frog’s compact body and face are fully readable as it darts toward a small moth; a narrow spear-like trail of poisonous green droplets follows the leap, subtle and secondary to the animal. Keep the species grounded and natural, with real frog anatomy, not a cartoon or giant monster. Painterly medieval/high-fantasy collectible-card art, nuanced believable wet skin, leaves and rain, dramatic filtered forest light, atmospheric depth and strong readable values. Match the supplied references' painterly materials and forested fantasy lighting, with the natural high-fantasy tone of the accepted verdant art. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the frog’s face, eye, complete compact body and the spear-like poison action within x24–488,y105–407 on the square; arrange the leap horizontally for the 206:141 crop, with quiet canopy and leaves beyond. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-c405ce8e-6cc4-4f94-af9b-1dafefb26ef0.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_strike_39.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source, centered 206:141 crop and thumbnail inspected: the animal reads clearly as a poison dart frog from its green back, black-blue spots and orange toes. Its alert face, full compact body and narrow poison trail all remain visible."
+  },
+  {
+    "cardId": "verdant_charge_18",
+    "name": "Horn of Plenty",
+    "prompt": "Paint an original standalone artifact illustration for the Hexmancers charge “Horn of Plenty.” Depict a compact golden cornucopia, the classic curved horn-shaped vessel of abundance, lying horizontally on a mossy stone ledge. Keep its entire curled horn from wide open rim through tapering tip clearly visible and unbroken; polished bronze and old gold catch soft green light as a modest cluster of apples, grapes, grain and leaves spills from the mouth. A gentle restorative glow and a few loose fruit rolling from the vessel suggest repeated nourishing power. Make the full horn the central named artifact; no person or musical instrument. Painterly medieval/high-fantasy collectible-card art, nuanced believable bronze, fruit, grain, leaves and stone, attractive directional light, atmospheric depth and strong readable values. Match the supplied references' painterly materials and forested fantasy lighting, with the natural high-fantasy tone of the accepted verdant art. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the complete named horn, entire rim, curled body and pointed tip within x24–488,y105–407 on the square; compose the artifact horizontally and compactly for the 206:141 crop, with quiet scenery above and below. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-5b4ef1f0-905b-4fae-b107-0c103bc2faf5.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_charge_18.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source, centered 206:141 crop and thumbnail inspected: the complete cornucopia’s open rim, curved body and curled tip remain visible, with fruit and grain spilling from the mouth. The horn stays distinct and dominant."
+  },
+  {
+    "cardId": "verdant_summon_18",
+    "name": "Faun Reveler",
+    "prompt": "Paint an original illustration for the Hexmancers summon “Faun Reveler.” Show a lively but grounded woodland faun, a mature humanlike forest spirit with small curling horns, pointed ears and strong goat legs ending in cloven hooves, dancing in a moonlit grove. Keep the faun’s joyful face and both expressive hands clear as he scatters glowing seeds in a crossing pattern around a ring of mossy stones; the seeds sprout small leaves and draw a couple of startled woodland creatures closer. His complete faun identity—horns, human torso and goat legs—should read at a glance, with believable anatomy and layered natural cloth, not cartoon proportions. Painterly medieval/high-fantasy collectible-card art, nuanced believable skin, fur, wool, seeds and leaves, warm lantern light against cool forest dusk, atmospheric depth and strong readable values. Match the supplied references' painterly materials and forested fantasy lighting, with the natural high-fantasy tone of the accepted verdant art. Explicitly create a 1:1 SQUARE canvas for a 512×512 editable master. Keep the faun’s face, eyes, both hands and defining horns within x24–488,y105–407 on the square; arrange the dancing figure and seed-cross action horizontally for the 206:141 crop, with quiet canopy and ground beyond. No card border, text, lettering, numbers, runes or UI. No anime, Disney-like cartoon, photorealism, pixel art or modern objects.",
+    "generatedPath": "/workspace/generated_images/exec-f282c3ef-0949-497c-9eb3-60cd5f4c0fa1.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_18.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 13,
+    "reviewNote": "Square source and upward-adjusted 206:141 crop/thumb inspected (focalPoint y=0.43): the faun’s full face, horns and both expressive hands remain clear, and the crossing seed pattern is legible. Lower goat legs continue to the crop edge as incidental anatomy."
   }
 ]

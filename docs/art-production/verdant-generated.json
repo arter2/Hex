@@ -3778,5 +3778,96 @@
     "status": "generated",
     "batch": 14,
     "reviewNote": "Inspected the 512-square source, top-shifted 206:141 crop at focalPoint [0.5,0.34] and 128-pixel thumbnail: complete broad humanlike face, eyes and reaching hand are visible; the shaggy upright forest giant, thorny berries and cedar setting read clearly, lower body crops."
+  },
+  {
+    "cardId": "verdant_summon_38",
+    "name": "Yowie",
+    "prompt": "Paint standalone painterly medieval-high-fantasy collectible-card art for the exact summon Yowie, the giant wild hominid of Australian bush folklore. Show one unmistakable large bipedal wild man with a powerful broad frame, long shaggy russet-brown fur, rugged humanlike face, deep-set amber eyes, broad flat nose and strong hands; he must read as an Australian forest cryptid rather than a gorilla, bear or generic troll. Yowie steps from eucalyptus and ancient tree ferns, raising one arm as a protective arc of thorny branches and poisonous red berries curls around tiny unseen allies; a few pale green motes suggest rallying strength. Keep face, eyes and raised hand clear and prominent, with only one main creature. Australian bushland at blue dusk, eucalyptus leaves, fern fronds and ochre rock; painterly visible brush texture in fur, bark and mist, dramatic warm edge light against deep green shadows, grounded medieval-fantasy materials in the supplied Hexmancers verdant style, not glossy photorealism. Explicit 1:1 SQUARE canvas for an editable 512x512 master composed horizontally for the 206:141 crop; keep face, eyes and relevant hand inside x24..488,y105..407 with quiet forest atmosphere above and below. No clothing, sacred symbols, text, frame or UI. No anime, Disney-like cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8bc59cee-b4a2-4e2a-b1fd-ae3ebb39d98f.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_38.png",
+    "sourceNative": [
+      1269,
+      1239
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop at focalPoint [0.5,0.4] and 128-pixel thumbnail: Yowie's rugged humanlike face, eyes and raised hand are visible; Australian eucalyptus/banksia forest and poisonous bramble shield support its bush-giant identity."
+  },
+  {
+    "cardId": "verdant_summon_39",
+    "name": "Basajaun",
+    "prompt": "Paint standalone painterly medieval-high-fantasy collectible-card art for the exact summon Basajaun, the noble forest lord of Basque folklore who guards woods and shepherds. Show one immense yet benevolent humanlike guardian with a broad human face, deep-set kind eyes, long chestnut hair and beard, and a heavy mantle of tawny forest hair, moss and leaves; his features should read as an ancient wild man, not an ape, troll or generic Sasquatch. He kneels among roots in a Basque Pyrenean oak forest, extending one large open hand over a handful of acorns as bright green seedlings sprout and small leaf-shaped motes gather around him, suggesting his seed-summoning nature. A tiny flock of sheep and a stone shepherd shelter may sit far in the background as quiet folklore context, never competing with his face. Painterly visible brush texture in hair, moss, bark and stone, warm sunlight through old oaks, grounded materials and atmospheric depth matching supplied Hexmancers verdant art, not glossy photorealism. Explicit 1:1 SQUARE canvas for an editable 512x512 master composed horizontally for a 206:141 crop; keep face, eyes and acorn-bearing hand within x24..488,y105..407, with quiet canopy/ground beyond. No horns, weapons, text, frame, lettering or UI. No anime, Disney-like cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b5e8d283-8f64-45ee-a8e3-23b9a2e2bc8b.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_39.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop at focalPoint [0.5,0.4] and 128-pixel thumbnail: Basajaun's humanlike forest-lord face and eyes and open acorn-bearing hand are visible; Pyrenean shepherd shelter and tiny flock support Basque folklore identity."
+  },
+  {
+    "cardId": "verdant_summon_40",
+    "name": "Kapre Tree Giant",
+    "prompt": "Paint standalone painterly medieval-high-fantasy collectible-card art for the exact summon Kapre Tree Giant, the giant tree-dwelling being of Philippine folklore. Show one enormous old Filipino giant with a clearly human face, deep bronze-brown skin, long coarse black hair, kind but formidable dark eyes, broad shoulders, and a thick dark beard; he is unmistakably a giant man, not an ape, and sits within the huge buttress roots and hollow branches of an ancient balete fig tree. In one hand held beside his face he carries a small traditional rolled tobacco cigar, its faint curl of smoke weaving into the leaves; keep it subtle and secondary. The other arm grips a thick living root as fresh green shoots grow from a place his hand has pressed into the bark, suggesting his bond with the tree and regrowth. Philippine tropical forest at dusk with giant roots and hanging vines. Painterly visible brush texture in hair, skin, bark and leaves, warm firefly-like light against rich jungle greens, grounded medieval-fantasy materials and atmospheric depth matching supplied Hexmancers verdant style, no glossy photorealism. Explicit 1:1 SQUARE canvas for a 512x512 editable master, compact horizontal staging for a 206:141 crop; keep face, eyes, cigar hand and root-gripping hand within x24..488,y105..407. No text, frame, symbols, UI or extra giants. No anime, Disney-like cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-151d8980-29f2-40a1-8c26-3c570b7f03e7.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_40.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop at focalPoint [0.5,0.4] and 128-pixel thumbnail: Kapre reads as a giant human tree-dweller in a balete fig, with face, eyes, subtle tobacco cigar and both hands visible; trunk, roots and seedlings reinforce his identity."
+  },
+  {
+    "cardId": "verdant_summon_41",
+    "name": "Orang Pendek",
+    "prompt": "Repaint this illustration for the exact summon Orang Pendek, the short forest person of Sumatran folklore. Correct the creature identity: it MUST look like a compact, upright humanlike wild person, NOT an orangutan, orangutan baby, chimpanzee, gorilla or long-armed ape. Give it a short dark-chestnut coat of close hair (not long orange shag), an ordinary small rounded head with a broad flat humanlike nose, expressive dark eyes and a subtly human face, short proportionate arms and legs, and a small bipedal stance. Keep the creature's short stature visible beside tall Sumatran ferns and roots. It stands upright while one small hand touches a medicinal forest plant with a few soft green restorative motes. Keep face, eyes, ears and hand clear and sufficiently large in the composition. Do not lengthen its arms or muzzle and do not make it knuckle-walk or carry itself like an orangutan. Painterly medieval-fantasy card art with visible brush texture in short dark fur, leaves and humid mist, warm green-gold shafts through Sumatran rainforest, grounded anatomy and atmospheric depth matching supplied Hexmancers verdant art, no glossy photorealism. Explicit 1:1 SQUARE canvas for editable 512x512 source composed horizontally for the 206:141 crop; keep face, eyes and hand within x24..488,y105..407 with quiet foliage beyond. No tail, clothes, text, frame, UI, anime, Disney-like cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-97f0a4f1-c237-45ef-9b35-67b160240c02.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_41.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "previousGeneratedPath": "/workspace/generated_images/exec-92089e12-68bb-4c79-bdb1-808ad8dc13d5.png",
+    "reviewNote": "Repainted for a compact, upright humanlike Sumatran forest person with short dark-brown close fur. Inspected replacement 512-square source, centered 206:141 crop and 128-pixel thumbnail: face, eyes, small ears, proportionate limbs and restorative hand remain clear beside oversized rainforest ferns. Previous source preserved at /tmp/verdant-04-repairs/verdant_summon_41-before-repaint.png."
+  },
+  {
+    "cardId": "verdant_summon_42",
+    "name": "Mapinguari",
+    "prompt": "Paint standalone painterly medieval-fantasy collectible-card art for the exact summon Mapinguari, the fearsome hairy monster of Amazonian folklore. Follow the vivid folkloric form: one huge shaggy upright forest being with a powerful slothlike torso, long curved claws, short dark rust-brown fur, heavy shoulders and backward-turned feet subtly visible in the undergrowth. Give it a single large central eye in its rugged face and a vertical mouth set in its abdomen, a strange defining feature; keep both eye and belly-mouth clearly visible but non-gory, with no blood or exposed entrails. It raises one clawed hand as a narrow emerald beam shines from its single eye toward a distant tree, drawing a few glowing motes back toward its chest to suggest the card's draining beam. Dense Amazon rainforest, giant leaves and mist, no other monster. Painterly visible brush texture in fur, claws, bark and humid foliage, dramatic shafts of green-gold light against deep jungle shadows, grounded fantasy anatomy matching supplied Hexmancers verdant style, not glossy photorealism. Explicit 1:1 SQUARE canvas for an editable 512x512 master with horizontal staging for 206:141 crop; keep single eye, full face, abdomen mouth and raised hand within x24..488,y105..407. Quiet canopy and forest floor beyond. No text, frame, runes, UI, anime, Disney-like cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-08c8fd5d-4372-429f-8a1c-528dce4ed054.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_42.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop at focalPoint [0.5,0.4] and 128-pixel thumbnail: complete shaggy head and single central eye are now visible with margin; the non-gory vertical belly-mouth, raised claw and beam remain clear."
   }
 ]

@@ -3776,5 +3776,113 @@
     "status": "generated",
     "batch": 14,
     "reviewNote": "Reviewed the 512-square source, direct 512×350 crop and 128×88 thumbnail: the nightmare reads as a horse, with complete equine head, near eye, ears and muzzle clear; shadow mane and moor rise from the earth, while legs and trailing shadow are incidental crops."
+  },
+  {
+    "cardId": "shadow_summon_40",
+    "name": "Black Widow",
+    "prompt": "Paint an illustration for the exact card name “Black Widow.” Depict a real black widow spider as the clear main subject: a glossy jet-black female spider with eight natural legs, a rounded black abdomen marked by the distinctive bright red hourglass, and small clustered eyes visible on the front of the cephalothorax. The spider hangs from a fine web in a moonlit ruined garden while tiny pale spiderlings emerge behind it, hinting at its summoned brood. Keep the spider’s full body, head, eye cluster and red marking dominant and unobscured. Painterly medieval high-fantasy collectible-card art with visible brush texture and layered strokes, nuanced chitin, silk and weathered stone, cool silver moonlight with a small warm lantern glow, atmospheric depth and accurate spider anatomy. Explicit 1:1 square canvas for an editable 512×512 master; fit full spider body, eye cluster and abdomen marking within x24–488,y105–407 for a 206:141 crop; incidental web strands and leg tips may extend. No anthropomorphic woman, text, frame, UI, anime, cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-967e4e76-3ade-47ea-99d1-d5991d36bb54.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_40.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, exact wide crop and 128px thumbnail. A real black widow spider is unmistakable from its clustered eyes, eight legs and red hourglass abdomen; full body remains visible while peripheral leg tips/web are incidental."
+  },
+  {
+    "cardId": "shadow_summon_41",
+    "name": "Bog Witch",
+    "prompt": "Paint an illustration for the exact card name “Bog Witch.” A weathered elderly witch with a mossy green cloak, tangled gray hair and a shrewd, readable face stands in a misty peat bog, her eyes and both hands clear as she twists a knotted ash staff and gathers a chain of pale will-o’-wisps around it. Her mud-stained robes, moss and reeds establish the bog; she remains a recognizable human sorceress rather than a monster. Painterly medieval high-fantasy collectible-card illustration with visible brush texture and layered brushstrokes, tactile wool, bark, moss, glassy water and reeds, eerie green-gold lantern light against cool fog, atmospheric depth and grounded anatomy. Explicit 1:1 square canvas for an editable 512×512 master; keep her full head/face/eyes, staff hand and spell hand safely inside x24–488,y105–407 for a 206:141 landscape crop. Quiet marsh sky and water above/below; incidental staff tip may crop. No text, frame, runes, UI, anime, Disney-like cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-742a1df6-0efe-451d-973c-46ed0eb22383.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_41.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Shifted focalPoint upward to y=0.42 after crop inspection; reviewed the unchanged 512-square source, revised 206:141 crop and 128px thumbnail. Bog Witch’s full head, hair, face/eyes and both hands on the staff/spell remain visible; lower robe and bog water are incidental."
+  },
+  {
+    "cardId": "shadow_summon_42",
+    "name": "Plague Doctor",
+    "prompt": "Paint an illustration for the exact card name “Plague Doctor.” Depict a medieval plague physician in a heavy black wool coat, leather gloves and the historically recognizable long-beaked leather mask with dark glass eye lenses. The doctor’s masked head, eyes behind the lenses, and both gloved hands are clear as he raises a bundle of healing herbs and a small glass vial in a smoke-veiled stone alley. Show the mask as a practical protective costume, not a bird head or monstrous beak. Painterly medieval high-fantasy collectible-card art with visible brush texture and layered pigment, nuanced leather, glass, wool and iron, dramatic candlelight against cool fog, atmospheric depth. Explicit 1:1 square canvas for a 512×512 master; keep the complete masked head/beak, lens-eye area and both hands with their small objects inside x24–488,y105–407 for a 206:141 landscape crop. Quiet alley background above/below. No visible gore, text, frame, UI, anime, cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7360ba79-bc93-46e8-bfd8-ccb6cc30bf2a.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_42.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Shifted focalPoint upward to y=0.42 after crop inspection; reviewed the unchanged 512-square source, revised 206:141 crop and 128px thumbnail. Full top hat and complete beaked mask/lenses now fit with both gloved hands and their herbs/vial; lower coat is incidental."
+  },
+  {
+    "cardId": "shadow_summon_43",
+    "name": "Necromancer",
+    "prompt": "Paint an illustration for the exact card name “Necromancer.” Show a clever, scholarly sorcerer in a dark travel robe standing in an ancient crypt, his mature face and eyes visible as he raises one hand to awaken a single skeletal guardian from a stone bier. In his other hand he holds a small bone-tipped wand; keep the necromancer dominant and the skeleton secondary, with restrained spectral light rather than gore. Painterly medieval high-fantasy collectible-card illustration with visible brush texture and layered strokes, nuanced wool, bone, aged stone and candle wax, cold blue grave-light balanced by warm candles, atmospheric depth and believable anatomy. Explicit 1:1 square canvas intended for an editable 512×512 master; keep his full head/face/eyes and both hands inside x24–488,y105–407 for a 206:141 landscape crop; incidental robe hems and skeleton limbs may crop. No gore, lettering, frame, runes, UI, anime, Disney-like cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5b0a2c8d-1ad6-46d5-8b57-63d2aa557c5a.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_43.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Shifted focalPoint upward to y=0.42 after crop inspection; reviewed the unchanged 512-square source, revised 206:141 crop and 128px thumbnail. Necromancer’s full hair/head, face/eyes, raised spell hand and wand hand are visible; subordinate skeleton and robe are supporting context."
+  },
+  {
+    "cardId": "shadow_summon_44",
+    "name": "Horned Night Visitor",
+    "prompt": "Paint an illustration for the exact card name “Horned Night Visitor.” A small, feral night demon has quietly slipped into a medieval cottage through an arched window, its compact humanoid head and shoulders emerging from moonlit shadow. Give it a clearly demonic face, two complete swept-back ram horns, luminous intelligent eyes, pointed ears and one clawed hand gripping the stone sill. The demon startles a sleeping household with a wavering shadow that bends the candlelight, but the visitor itself remains the focus, strange and unsettling rather than grotesque. Painterly medieval high-fantasy collectible-card art with visible brush texture and layered strokes, nuanced dark fur, horn, stone and linen, warm candlelight against cool indigo night, atmospheric depth and grounded anatomy. Explicit 1:1 square canvas for an editable 512×512 master; keep its full head, both horns, eyes and sill hand together inside x24–488,y105–407 for a 206:141 crop. Quiet room and night sky above/below. No gore, text, frame, runes, UI, anime, Disney-like cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-608637d4-609e-45b5-a1a7-ed68febeb51c.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_44.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Shifted focalPoint upward to y=0.42 after crop inspection; reviewed the unchanged 512-square source, revised 206:141 crop and 128px thumbnail. Demon’s complete head, both swept horns, eyes and sill hand are visible with margin; the sleeping household is supporting context."
+  },
+  {
+    "cardId": "shadow_summon_45",
+    "name": "Omen Raven",
+    "prompt": "Paint standalone painterly medieval-fantasy collectible-card art for the exact summon Omen Raven. Show one large true raven, not a crow flock: a glossy blue-black bird with a heavy curved beak, sharp intelligent dark eyes, layered iridescent feathers and strong raven-shaped feet, perched low on a weathered stone marker in a moorland graveyard. The raven turns its head toward the viewer and spreads one wing as a restrained diagonal green-black plume of cursed mist passes behind it, suggesting an omen of plague and stolen vitality; keep bird face, eye, beak and wing readable rather than drowning it in magic. Misty Scottish-like moor at twilight, distant ruined chapel, no other birds. Painterly visible brush texture in feathers, stone and mist, attractive moonlit edge light against deep blue-green shadow, atmospheric depth matching supplied Hexmancers shadow art; no glossy photorealism. Explicit 1:1 SQUARE canvas for an editable 512x512 master, horizontal staging for a 206:141 card crop; keep head, eye, complete beak and shoulder inside x24..488,y105..407. Quiet sky and heath beyond. No text, letters, frame or UI. No anime, Disney-like cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-11926fa9-dc81-4ff5-99e0-6273a1c3963e.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_45.png",
+    "sourceNative": [
+      1506,
+      1045
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop at focalPoint [0.5,0.42] and 128-pixel thumbnail: raven's full head, eye, hooked beak and shoulder remain clear; ominous feathered wing and dark plague mist trail incidentally."
   }
 ]

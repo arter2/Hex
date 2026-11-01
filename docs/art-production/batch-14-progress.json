@@ -2,10 +2,10 @@
   "batch": 14,
   "status": "in-progress",
   "targetNewImages": 200,
-  "generatedSources": 116,
-  "reviewedSources": 110,
-  "missingSources": 84,
-  "reviewedPackets": 22,
+  "generatedSources": 152,
+  "reviewedSources": 135,
+  "missingSources": 48,
+  "reviewedPackets": 27,
   "requiresRepaint": [],
   "baselineActive": 1634,
   "targetActive": 1834,
@@ -194,6 +194,90 @@
       "focalPoint": [
         0.5,
         0.5
+      ]
+    },
+    {
+      "cardId": "fire_summon_24",
+      "name": "Duende",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_summon_24.png",
+      "sha256": "5310b433b6f57786cc9d4c972f8ba37f366f2aa4ca8cb774ad013545ab37b57b",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "fire_summon_25",
+      "name": "Salamander",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_summon_25.png",
+      "sha256": "ab46b7f74087fc5a3f4ac01d8d329504a56cfb19f8203ba9fb9a6a286151f77e",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_summon_26",
+      "name": "Lava Golem",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_summon_26.png",
+      "sha256": "d5f7940b39cb43f7fbff2c993ac2671710ff676d39396d010a2e4a32d751890d",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.38
+      ]
+    },
+    {
+      "cardId": "fire_summon_27",
+      "name": "Magma Elemental",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_summon_27.png",
+      "sha256": "375efd9a0302c1ec33d203ff754eed70d13fa4a5e0323cfb7c338a6962664fe0",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "fire_summon_28",
+      "name": "Dwarven Smith",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_summon_28.png",
+      "sha256": "263712977082dee9d7d0bbc00b5934fc9e1b379fd01014a7cf8726cd01b6ed1c",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.38
+      ]
+    },
+    {
+      "cardId": "fire_summon_29",
+      "name": "Dwarven Miner",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_summon_29.png",
+      "sha256": "3924ec2b0413292e99391e96bed4570eda5836c8c62677356731547c820391f6",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "fire_summon_30",
+      "name": "Dwarven Musketeer",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_summon_30.png",
+      "sha256": "6d2c00a03f85ce858a621f09c6ccc08549a293cb39bcefc16da9e9a0e5dd4caa",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.4
       ]
     },
     {
@@ -437,6 +521,66 @@
       ]
     },
     {
+      "cardId": "frost_summon_26",
+      "name": "King Crab",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_summon_26.png",
+      "sha256": "fe059abbd4ba43bd02c98e26c5ee53f59ab78a47e086aef8e4961115b6176ae0",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.42
+      ]
+    },
+    {
+      "cardId": "frost_summon_27",
+      "name": "Giant Squid",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_summon_27.png",
+      "sha256": "537f9e2207a57a384332773527081975a2736ade0a656a4c2667a95217844417",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "frost_summon_28",
+      "name": "The Kraken",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_summon_28.png",
+      "sha256": "91dd62a5f9597365a82ed871aca906af4701755e7365819e5dadc0bfca2fee25",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.42
+      ]
+    },
+    {
+      "cardId": "frost_summon_29",
+      "name": "Kraken Spawn",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_summon_29.png",
+      "sha256": "8ac042369fe6dd7ddcdc94841c965df7a12f93cdc38e0ac126fdceee63f8d57d",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.42
+      ]
+    },
+    {
+      "cardId": "frost_summon_30",
+      "name": "Leviathan",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_summon_30.png",
+      "sha256": "ebb49226b10855a4ca380ab5fe3c46376c18e13c72ecfaf0fe48a8db48156ee9",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "cardId": "gray_summon_170",
       "name": "Cu Chulainn",
       "colour": "gray",
@@ -622,7 +766,7 @@
       "colour": "gray",
       "source": "game/cards/art/masters/gray_summon_185.png",
       "sha256": "94a6284b1f2e301dd0d9c0e44f69a06b0c8ca22a8ce41507254df48c4e0ea5f4",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.342
@@ -634,6 +778,66 @@
       "colour": "gray",
       "source": "game/cards/art/masters/gray_summon_186.png",
       "sha256": "25824ded5d83bdb74da822d4b51b37338681137fa684d17a42ee803eccf74fb6",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.342
+      ]
+    },
+    {
+      "cardId": "gray_summon_187",
+      "name": "Robin Hood",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_187.png",
+      "sha256": "bdae155d8aa2eef4c25571213abe6ad75023c28c4ebd621d4ea5af2f1763deba",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "gray_summon_188",
+      "name": "Mwindo",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_188.png",
+      "sha256": "cf61543b2521501d4a0de05e230801bda0f0682fc943e8690252be7008123075",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.342
+      ]
+    },
+    {
+      "cardId": "gray_summon_189",
+      "name": "Kintaro",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_189.png",
+      "sha256": "d9394c5acd8450844a6611fe2f26427f261d0b0d731f101090c90756b3a6a1c0",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.45
+      ]
+    },
+    {
+      "cardId": "gray_summon_190",
+      "name": "Fionn mac Cumhaill",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_190.png",
+      "sha256": "946395e76b85186b8720a41d7ccd8adf9b8f10181f8ca3fdc89859552309d5db",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.391
+      ]
+    },
+    {
+      "cardId": "gray_summon_191",
+      "name": "Scathach",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_191.png",
+      "sha256": "225f59a62a37663903d53495038a35da416484454e7b726123baefdb92680697",
       "reviewed": false,
       "focalPoint": [
         0.5,
@@ -826,10 +1030,10 @@
       "colour": "light",
       "source": "game/cards/art/masters/light_summon_33.png",
       "sha256": "30ccc55158be8314ca103bd999217ce9033e4f547482ec73d5e4b6441f554f2f",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
-        0.42
+        0.36
       ]
     },
     {
@@ -838,7 +1042,7 @@
       "colour": "light",
       "source": "game/cards/art/masters/light_summon_34.png",
       "sha256": "3cc9c490497c3e6b64fab5c497f7ddf7b94c202eeacd185d8c92ed1d74c97d9e",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.42
@@ -850,7 +1054,7 @@
       "colour": "light",
       "source": "game/cards/art/masters/light_summon_35.png",
       "sha256": "cdcab1c858417fa26fb8f00b3bec79e177de43a9c67f56cfe8b390c24e845ae1",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.42
@@ -862,6 +1066,54 @@
       "colour": "light",
       "source": "game/cards/art/masters/light_summon_36.png",
       "sha256": "3ae31285f63f8111042758beaf74594a6c20257346af4030af2fbdf48010b9f0",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.42
+      ]
+    },
+    {
+      "cardId": "light_summon_37",
+      "name": "Village Physician",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_summon_37.png",
+      "sha256": "7ef15201c1dcf09a9b27d2741a5b259a4b997d0d3976ac272b1818da973be665",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.38
+      ]
+    },
+    {
+      "cardId": "light_summon_38",
+      "name": "Battle Cleric",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_summon_38.png",
+      "sha256": "1a937b1f58c68ff00102140e90c500d1cbf0bbf47e01869786e067107a0d6682",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.38
+      ]
+    },
+    {
+      "cardId": "light_summon_39",
+      "name": "Vaidya of Taxila",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_summon_39.png",
+      "sha256": "7b5d5dc9dc0b78a3d2519a925c23b4d98dd57909dd25941c92363c4445158fde",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.42
+      ]
+    },
+    {
+      "cardId": "light_summon_40",
+      "name": "Hanlin Academy Scribe",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_summon_40.png",
+      "sha256": "e2e8f230e1f7e63f0a4d307cfce764fb851c217a865867692bad63d0b04b8103",
       "reviewed": false,
       "focalPoint": [
         0.5,
@@ -1049,6 +1301,78 @@
       ]
     },
     {
+      "cardId": "shadow_summon_40",
+      "name": "Black Widow",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_40.png",
+      "sha256": "5aa7d82e276a805c4fbf75b33ceaa1dfb738b78e02b5587c7622dc92db44bfce",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "shadow_summon_41",
+      "name": "Bog Witch",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_41.png",
+      "sha256": "86c0e251117bd210abaf3fbe89bb26f273a2f37490ffaa03f8526fb16b60c380",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.42
+      ]
+    },
+    {
+      "cardId": "shadow_summon_42",
+      "name": "Plague Doctor",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_42.png",
+      "sha256": "c24d9e437d71eac52eb1626da5dbf659e231dfefdcf7717f21c1aabcc126dd90",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.42
+      ]
+    },
+    {
+      "cardId": "shadow_summon_43",
+      "name": "Necromancer",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_43.png",
+      "sha256": "9c470a35c0d91ac431026d913afdba8b0a3a3ae1e2a447b9eab1957777ff7da5",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.42
+      ]
+    },
+    {
+      "cardId": "shadow_summon_44",
+      "name": "Horned Night Visitor",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_44.png",
+      "sha256": "558d0f0b7ee2e7cbb526963cd233ba2fa29562405e09eefa9822861b141218ce",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.42
+      ]
+    },
+    {
+      "cardId": "shadow_summon_45",
+      "name": "Omen Raven",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_45.png",
+      "sha256": "fcd7d102c0bc10ccdf55e47e66d35554dded0db0a42526c81df7cd14817f8902",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.42
+      ]
+    },
+    {
       "cardId": "storm_summon_19",
       "name": "Great River Crocodile",
       "colour": "storm",
@@ -1229,6 +1553,54 @@
       ]
     },
     {
+      "cardId": "storm_summon_34",
+      "name": "Foo Dog Sentinel",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_summon_34.png",
+      "sha256": "85293bebd564e58b944022ceb7c3b9d9e781fb41a522b9397ec1289facdabf82",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.46
+      ]
+    },
+    {
+      "cardId": "storm_summon_35",
+      "name": "Brass Foo Pup",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_summon_35.png",
+      "sha256": "52362c49dfd42c8fbac27d70ced3c210c49cebc5b38a03de9af76b963be42221",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_summon_36",
+      "name": "Bahamut",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_summon_36.png",
+      "sha256": "662576ada2e3744e96f280b59d44f5aafd8ba734c25bced5cc34beffe90905e6",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "storm_summon_37",
+      "name": "Falak the Abyss Serpent",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_summon_37.png",
+      "sha256": "bb78c21c0cb9d55e09507309315d9ba0e455c2c1a6e2acfc54c8608c53886f11",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "cardId": "verdant_summon_23",
       "name": "Alux Field Keeper",
       "colour": "verdant",
@@ -1406,6 +1778,66 @@
       "focalPoint": [
         0.5,
         0.34
+      ]
+    },
+    {
+      "cardId": "verdant_summon_38",
+      "name": "Yowie",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_38.png",
+      "sha256": "7e54bef4f05b9eb30ac2180ef232ff0af3dfaa460f07ced8fd0b6587c43c853d",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "verdant_summon_39",
+      "name": "Basajaun",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_39.png",
+      "sha256": "3769944cc16f2c8a2b0d053d15e3e511e50b5e9d12c39c31fd0244423ef37eb7",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "verdant_summon_40",
+      "name": "Kapre Tree Giant",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_40.png",
+      "sha256": "a72827146f6d574ac41d4a2dd884c4bc8a9aa8312edc5788cb8ada64818aecc0",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
+      ]
+    },
+    {
+      "cardId": "verdant_summon_41",
+      "name": "Orang Pendek",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_41.png",
+      "sha256": "4f86623b769513903e4050102581d5e52d19d042cf50dd0acf4d6cd3c5a71529",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "cardId": "verdant_summon_42",
+      "name": "Mapinguari",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_42.png",
+      "sha256": "2d816985e2fd1894b1af6e5165d9168e5d61a886c9122f3abfd0e3247009c73a",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.4
       ]
     }
   ]

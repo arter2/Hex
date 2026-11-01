@@ -3819,5 +3819,95 @@
     "status": "generated",
     "batch": 14,
     "reviewNote": "512-square source, top-aligned 206:141 crop, and 128x88 thumbnail reviewed. Roland’s complete head/face, eyes, hands on the oliphant, and Durendal hilt remain visible; the left rim of the horn bell touches the normalized square edge."
+  },
+  {
+    "cardId": "gray_summon_187",
+    "name": "Robin Hood",
+    "prompt": "Recompose this same green-hooded English outlaw as Robin Hood, legendary archer of Sherwood Forest. Make a compact half-length waist-up portrait in a square 1:1 canvas. Scale the figure so the complete hood and head sit around y120..245, and both hands plus the bow grip sit around y260..360, all within x80..430; leave ample quiet forest scenery above and below. Robin holds an upright English longbow close beside his shoulder with one hand on the grip and holds an arrow diagonally across his chest in the other hand. Both hands are clearly visible with all fingers; neither arm extends toward the image border. Preserve his full face and both eyes, green hood, leather bracers and arrow quiver; no object obscures his face. Bow extremities may crop naturally, while the gripping hand and grip stay fully visible. Painterly medieval fantasy collectible-card painting, visible brush texture, tactile green wool, leather, wood and feathers, no photographic gloss. Dappled Sherwood light, clear values and atmospheric depth. No frame, lettering, UI, anime, Disney proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-090ecc61-e4aa-473c-b933-9abfdb0016d2.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_187.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "512-square replacement source, centered 206:141 crop, and 128x88 thumbnail reviewed. Robin Hood’s full hood/head, face, eyes, both hands and bow grip are safely inside the crop, with quiet woodland above and below; prior source preserved at /tmp/gray_summon_187-previous.png."
+  },
+  {
+    "cardId": "gray_summon_188",
+    "name": "Mwindo",
+    "prompt": "Paint an illustration for the exact card Mwindo, the Nyanga epic hero of the mountainous forests of eastern Congo. Portray Mwindo as a youthful but commanding Nyanga hero, a compact human adult in finely textured woven regalia and beadwork, not European armor. His defining object is the conga scepter: a short wooden handle ending in a buffalo-tail or antelope-tail flywhisk, held upright near his shoulder, with a small traditional shoulderbag visible. A restrained arc of lightning answers the scepter. Keep his complete head, face, eyes, scepter hand and flywhisk fully inside x24..488,y105..407; waist-up horizontal portrait, Mwindo dominant, quiet Nyanga forest village behind. Painterly medieval fantasy collectible-card art with visible brush texture, tactile wood, tail-fiber, woven cloth and beads, no photographic gloss or generic pan-African costume. Dramatic warm light through green forest with cool lightning, readable values and atmospheric depth. Explicit 1:1 square composition for a 512x512 editable master and 206:141 wide crop; leave quiet scenery above and below. No frame, lettering, UI, anime, Disney proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-11d42cee-4e8d-40df-bbe6-1acf549d3f87.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_188.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.342
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "512-square source, top-aligned 206:141 crop, and 128x88 thumbnail reviewed. Mwindo’s full face/eyes, conga scepter hand and complete buffalo/antelope-tail flywhisk remain visible; Nyanga forest setting supports the epic identity."
+  },
+  {
+    "cardId": "gray_summon_189",
+    "name": "Kintaro",
+    "prompt": "Paint an illustration for the exact card Kintaro, the legendary strong child of Japanese folklore, raised in the mountains with the wild animals. Show a sturdy Japanese boy with a small traditional topknot, a plain vermilion red bib with a simple gold disk (no writing), and practical Heian-era mountain clothes. He grips the handle of an oversized woodcutter's axe at chest level, showing his legendary strength, while a calm brown bear companion stands close beside him. Keep Kintaro's complete head, face, eyes and both hands fully clear inside x80..430,y120..380; the axe grip stays beside his body and only the outer axe head may crop. His face is the clear primary subject; bear is secondary. Painterly medieval fantasy collectible-card art with visible brushwork and tactile wood, cloth and fur; no photographic gloss or cartoon child proportions. Warm mountain dawn through a Japanese cedar forest, atmospheric depth and clear values. Explicit square 1:1 composition for a 512 editable master and 206:141 wide crop, with quiet scenery above and below. No frame, lettering, UI, anime, Disney style, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-631945be-a779-4c08-9a0c-b5478c269a6a.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_189.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.45
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "512-square source, upward-adjusted 206:141 crop, and 128x88 thumbnail reviewed. Kintaro’s full topknot/head, face, eyes, axe-gripping hands, red bib and bear companion remain readable."
+  },
+  {
+    "cardId": "gray_summon_190",
+    "name": "Fionn mac Cumhaill",
+    "prompt": "Paint an illustration for the exact card Fionn mac Cumhaill, legendary Irish leader of the Fianna. Show a rugged adult Irish hero with a weathered face, long dark hair lightly streaked with gray, a green wool cloak fastened with a bronze Celtic brooch, and practical early Irish leather armor. At a riverside he touches his thumb thoughtfully to his lips, recalling the Salmon of Knowledge; a luminous silver salmon is visible just beneath the water, secondary to Fionn. A simple spear rests in his other hand. Keep his complete head, face, both eyes, thumb-at-lips hand, and spear hand inside x80..430,y120..380; waist-up horizontal portrait with quiet river scenery above and below. Painterly medieval fantasy collectible-card art with visible brush texture, believable wool, bronze, leather and water, no photographic gloss. Cool morning mist and warm dawn highlights, readable values and atmospheric depth. Explicit 1:1 square composition for 512 master and 206:141 card crop. No frame, lettering, UI, anime, Disney proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ff2db44c-a33d-45c5-8e22-5c51c94669f8.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_190.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.391
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "512-square source, upward-shifted 206:141 crop, and 128x88 thumbnail reviewed. Fionn’s full head/face/eyes and thumb-to-lips gesture plus spear-gripping hand are visible; the salmon remains secondary."
+  },
+  {
+    "cardId": "gray_summon_191",
+    "name": "Scathach",
+    "prompt": "Paint an illustration for the exact card Scathach, the formidable warrior-teacher of the Ulster Cycle who trains Cú Chulainn at Dún Scáith in Alba. Show a mature, athletic Celtic woman with braided dark auburn hair, a stern focused face, a practical wool cloak fastened by a bronze brooch over early Iron Age leather and linen battle dress. She holds a long ash spear crosswise at chest height, demonstrating its grip; the face, eyes, and both hands on the spear are fully clear within x80..430,y120..380. A rugged stone dun on a misty Scottish island coast suggests her fortress, with one tiny trainee silhouette far behind at most. Painterly medieval fantasy collectible-card art with visible brush texture, tactile wood, wool and bronze; no photographic gloss, no generic Viking costume. Cool sea mist with dramatic warm sidelight, clear silhouette and atmospheric depth. Explicit 1:1 square composition for a 512 editable master and 206:141 wide crop, quiet scenery above and below. No frame, lettering, UI, anime, Disney proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-09f58559-36f5-43e4-85f5-5a9228dc20e4.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_191.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.342
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "512-square source, top-aligned 206:141 crop, and 128x88 thumbnail reviewed. Scathach’s full head/face/eyes and both spear-gripping hands remain visible; training dun and sea cliffs evoke her Ulster Cycle teacher role."
   }
 ]

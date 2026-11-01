@@ -3784,11 +3784,11 @@
     ],
     "focalPoint": [
       0.5,
-      0.42
+      0.36
     ],
     "status": "generated",
     "batch": 14,
-    "reviewNote": "Shifted to focalPoint [0.5,0.42]. Reviewed the 512-square source, direct shifted 512×350 crop and 128×88 thumbnail: Galahad's complete face/eyes, sword hand and hand on the squire's shoulder all remain clear; the squire's face is also readable."
+    "reviewNote": "Shifted to focalPoint [0.5,0.36]. Reviewed the 512-square source, direct shifted 512×350 crop and 128×88 thumbnail: Galahad's complete hair, face/eyes, sword hand and hand on the squire's shoulder remain clear; the squire's face is also readable while sword length crops."
   },
   {
     "cardId": "light_summon_34",
@@ -3843,5 +3843,77 @@
     "status": "generated",
     "batch": 14,
     "reviewNote": "Shifted to focalPoint [0.5,0.42]. Reviewed the 512-square source, direct shifted 512×350 crop and 128×88 thumbnail: artisan's full headband, face/eyes, both working hands, stone hammer, chisel and fitted Inca masonry remain readable; lower torso crops."
+  },
+  {
+    "cardId": "light_summon_37",
+    "name": "Village Physician",
+    "prompt": "Paint an original illustration for the exact card Village Physician: a compassionate medieval village doctor treating an injured farmer inside a small timber-and-stone cottage. Depict a middle-aged woman physician with kind intelligent eyes and an uncovered face framed by a simple linen wimple, practical brown wool gown, apron and leather pouch of dried herbs. In a compact horizontal waist-up composition she holds a small ceramic cup of herbal medicine in one hand and gently places a pale-gold healing cloth on the farmer's forearm with the other; both working hands and her calm face are large and clear, while the patient remains secondary. A gentle healing glow blooms from her hands and a few luminous motes rise around them. Use believable medieval herbs, mortar, linen and wood, not modern medical equipment. Painterly medieval fantasy collectible-card art, expressive brushwork, warm hearth light, matte pigments, tactile cloth and wood and atmospheric depth. Exact 1:1 SQUARE editable 512x512 master; keep the physician's full face/eyes and both working hands/cup/cloth within x24..488,y105..407 for the 206:141 crop, horizontal staging, quiet cottage margins above/below. No frame, lettering, text, symbols, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-eb7b7396-4fc5-4237-8341-32c6a9abf467.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_37.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Shifted to focalPoint [0.5,0.38]. Reviewed the 512-square source, direct shifted 512×350 crop and 128×88 thumbnail: physician's full wimple, face/eyes, cup hand and healing hand with cloth remain visible; patient's face stays secondary."
+  },
+  {
+    "cardId": "light_summon_38",
+    "name": "Battle Cleric",
+    "prompt": "Paint an illustration for the exact card name “Battle Cleric.” Show a brave medieval field cleric in practical mail and a pale wool surcoat, his resolute face and clear eyes visible as he kneels beside a wounded companion under fire. He raises a small round shield to deflect a nearby arrow while pressing a warm healing light from his other hand onto the companion’s shoulder. Keep the cleric’s face, both hands, shield and healing touch together; the light should support the human action rather than overwhelm it. Painterly medieval high-fantasy collectible-card illustration with visible brush texture and layered strokes, nuanced mail, wool, leather and wood, warm dawn light against cool battlefield smoke, atmospheric depth and grounded anatomy. Explicit 1:1 square canvas intended for a 512×512 editable master; keep the entire face/eyes, hands and shield safe inside x24–488,y105–407 for a 206:141 landscape crop. Quiet battlefield sky and ground above/below; incidental weapon tips may crop. No gore, text, cross-shaped religious emblems, frame, UI, anime, Disney-like cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d0ec3284-63a9-4d33-8104-0f8e83d85645.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_38.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Shifted focalPoint upward to y=0.38 after crop inspection; reviewed the unchanged 512-square source, revised true 206:141 crop and 128px thumbnail. Cleric’s full head/face/eyes, healing hand and raised shield remain visible together; the shield grip is naturally behind the shield and weapon tips are incidental."
+  },
+  {
+    "cardId": "light_summon_39",
+    "name": "Vaidya of Taxila",
+    "prompt": "Paint an illustration for the exact card name “Vaidya of Taxila.” Depict an experienced ancient Indian physician from Taxila in the Gandhara region, a calm middle-aged man in a simple cream cotton dhoti and draped saffron-edged uttariya, with restrained jewelry and a tied cloth band for practical work. His attentive face and eyes are visible as he gently prepares medicine: one hand grinds healing leaves in a small stone mortar while the other holds a palm-leaf medical manuscript beside a patient’s bandaged arm. The scene suggests a learned vaidya and compassionate healer in an ancient Taxila courtyard, with sober Gandharan stone columns and a few jars, not medieval European robes. Painterly medieval high-fantasy collectible-card illustration with visible brush texture and layered brushstrokes, nuanced cotton, stone, leaves and pottery, warm courtyard light against cool shade, atmospheric depth and historically grounded anatomy/costume. Explicit 1:1 square canvas for an editable 512×512 master; keep the physician’s full face/eyes, both hands and compact mortar/manuscript within x24–488,y105–407 for the 206:141 landscape crop. Quiet courtyard above/below. No readable writing, text, frame, UI, anime, Disney-like cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-12df8537-72b0-42d2-aa9f-2d70673456e1.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_39.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Shifted focalPoint upward to y=0.42 after crop inspection; reviewed the unchanged 512-square source, revised true 206:141 crop and 128px thumbnail. Vaidya’s full head, tied hair, face/eyes and both medicine-preparing hands remain visible with the mortar and palm-leaf manuscript; patient is supporting context."
+  },
+  {
+    "cardId": "light_summon_40",
+    "name": "Hanlin Academy Scribe",
+    "prompt": "Paint an illustration for the exact card name “Hanlin Academy Scribe.” Depict a learned scholar-official of the Ming-era Hanlin Academy, wearing a restrained red court robe with a black gauze futou cap and jade belt, seated at a dark wooden writing desk in a Chinese academy hall. His calm face and clear eyes are visible as one hand guides a fine calligraphy brush and the other steadies a long paper scroll; a small stack of folded scholarly papers and inkstone frame the action. Suggest the academy’s learned tradition with shelves and carved timber, but no legible text or modern props. Painterly medieval high-fantasy collectible-card illustration with visible brush texture and layered strokes, nuanced silk, paper, ink, wood and jade, warm window light against cool interior shadow, atmospheric depth and historically grounded Chinese dress. Explicit 1:1 square canvas intended for an editable 512×512 master; keep the scribe’s full face/eyes, both hands, brush and compact writing area within x24–488,y105–407 for the 206:141 landscape crop. Quiet rafters and floor above/below. No readable writing, text, frame, UI, anime, Disney-like cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f97cd6a1-c82f-4bf7-922b-bc338d861422.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_40.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Shifted focalPoint upward to y=0.42 after crop inspection; reviewed the unchanged 512-square source, revised true 206:141 crop and 128px thumbnail. Scribe’s complete cap/head, face/eyes and both hands with brush and scroll remain visible; lower desk is incidental."
   }
 ]

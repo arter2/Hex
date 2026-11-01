@@ -3773,5 +3773,131 @@
     "status": "generated",
     "batch": 14,
     "reviewNote": "Gremlin’s full face, monocle, both hands, brass tongs and crystal remain clear in the 206:141 crop and 128px thumb. Warm painterly workshop light. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_24",
+    "name": "Duende",
+    "prompt": "Paint “Duende,” a folkloric Iberian woodland spirit: a compact adult-like supernatural little person with a weathered olive complexion, deep-set mischievous eyes, dark curls beneath a faded red cap, and a rough green-brown cloak. The duende peers slyly from the forest edge with one hand extended as a few dim moth-like motes gather around it, suggesting a troublesome curse. Make it feel like old Iberian folklore, a secretive spirit rather than a generic goblin or a cute cartoon. Keep the full face, both hands and red cap visible. Painterly medieval high-fantasy collectible-card illustration with visible brush texture, grounded materials, nuanced cloth and bark, warm directional light and atmospheric depth, no photographic gloss. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Compose the duende horizontally in the central area; keep face, eyes, hands and cap inside x24…488,y105…407 for the true 206:141 crop. Quiet dusky forest above and below, readable at 96px. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2f925df1-a316-4b6c-8c9f-4def52a1c2a7.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_24.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Upward-adjusted crop retains Duende’s full red cap, face, eyes and both hands with moth-like motes visible in the 206:141 crop and 128px thumb. Painterly folkloric forest light. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_25",
+    "name": "Salamander",
+    "prompt": "Paint “Salamander,” a living fire salamander from medieval natural-philosophy lore, shown unmistakably as a long-bodied four-legged amphibian lizard with smooth crimson-and-gold skin, moist rounded eyes, a broad amphibian head and long tail; no humanoid body. It braces on warm dark stone and emits a narrow, controlled ribbon of fire from its mouth, like a focused beam, with subtle glowing markings along its back. Keep its full head, eyes, mouth and front limbs clear; its tail may curl behind. Painterly medieval high-fantasy collectible-card art with visible brush texture, grounded animal anatomy, nuanced scale and stone, dramatic warm directional light, atmospheric depth, no photographic gloss. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Arrange salamander horizontally in the center; keep head, eyes, mouth and relevant limbs inside x24…488,y105…407 for the true 206:141 crop. Quiet volcanic rock and dark atmosphere above and below; clear lizard silhouette at 96px. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f2d1720a-f6d4-413a-8899-1b016a73827d.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_25.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Salamander remains clearly a full four-legged lizard with visible eyes, mouth, limbs and a clean fire beam in the 206:141 crop and 128px thumbnail. Warm painterly volcanic light. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_26",
+    "name": "Lava Golem",
+    "prompt": "Paint “Lava Golem,” a massive stone guardian animated by molten lava. Show one compact, broad-shouldered humanoid golem built from dark volcanic boulders, with a clearly defined craggy head, glowing amber eyes and two immense stone hands held protectively in front of its chest. Bright molten seams glow between the rocks, with small scorched flakes and heat shimmer; no vague fire cloud replacing the body. Painterly medieval high-fantasy collectible-card illustration with visible brush texture, weighty stone and molten detail, dramatic directional orange light and atmospheric depth, no photographic gloss. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Keep the whole head/eyes and both important hands centered horizontally inside x24…488,y105…407 for the true 206:141 crop. Quiet dark volcanic cavern above and below; strong readable silhouette at 96px. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-76e76d4e-4bd0-46e8-8652-5edee6783a0c.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_26.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Upward-adjusted crop now retains the golem’s entire craggy head and glowing eyes along with both protective stone fists in the 206:141 crop and 128px thumb. Painterly molten stone. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_27",
+    "name": "Magma Elemental",
+    "prompt": "Paint “Magma Elemental,” a fearsome spirit of molten earth, formed from a flowing humanoid upper body of red-orange magma and black volcanic crust, with a clear head and two ember-bright eyes. Its raised arms cast a small volley of molten stones and sparks outward in a controlled arc; a few fragments may trail, but the elemental’s face and hands remain the focal subject. Distinguish it from a stone golem: this spirit has a fluid, flame-rimmed body with no solid boulder limbs. Painterly medieval high-fantasy collectible-card art with visible brush texture, rich molten reds and dark crust, dramatic directional light, atmospheric depth, no photographic gloss. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Compose the head, eyes and both hands in the central horizontal safe area x24…488,y105…407 for the true 206:141 crop. Quiet volcanic atmosphere above and below, readable at 96px. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d68cf437-f0c0-4050-8406-36d3cb43ab7e.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_27.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Upward-adjusted crop keeps magma spirit’s full eyes/head and both hands with fingers inside the 206:141 crop and 128px thumb; stray molten fragments trail out. Clear distinction from solid Lava Golem. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_28",
+    "name": "Dwarven Smith",
+    "prompt": "Paint “Dwarven Smith,” a stout, powerfully built dwarf blacksmith with a broad face, bright eyes, soot-darkened skin and a long copper-brown beard in neat braids. At a medieval forge he grips a heavy hammer with both hands, about to strike a glowing horseshoe-shaped piece of iron on a low anvil; a few sparks and a small blurred group of fellow dwarves in the distance suggest his rallying presence. Keep the dwarf’s full face and both hammer hands beside the hammer head clearly visible. Painterly medieval high-fantasy collectible-card art with visible brush texture, richly nuanced iron, leather, beard and firelight, dramatic directional light and atmospheric depth, no photographic gloss. Explicit 1:1 SQUARE canvas for an editable 512×512 master. Compose the smith horizontally in the central area; preserve full face/eyes, both hands and hammer head inside x24…488,y105…407 for the true 206:141 crop. Quiet forge atmosphere above and below; strong readable silhouette at 96px. No modern tools, text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-680ba153-4921-450f-a986-8297fff8d610.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_28.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Upward-adjusted crop retains the smith’s full head/face, both hands and full hammer head in the 206:141 crop and 128px thumbnail; hot iron/anvil remain visible at the lower edge. Painterly forge light. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_29",
+    "name": "Dwarven Miner",
+    "prompt": "Paint “Dwarven Miner,” a stout, bearded dwarf miner with a soot-smudged face, bright eyes, a leather mining cap with a small oil lamp and rugged work clothes. He swings a short-handled iron pick into a glowing seam of ore in a mountain tunnel, pausing mid-action with his sturdy hands firmly on the shaft. Keep the dwarf’s full face, lamp, both hands and entire pick head visible; a distant dwarf silhouette rallies beside the tunnel entrance. Painterly medieval high-fantasy collectible-card illustration with visible brush texture, nuanced stone, iron, leather and beard, warm lantern light, atmospheric depth, no photographic gloss. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Arrange dwarf and pick horizontally in center; keep face/eyes, hands and complete named tool inside x24…488,y105…407 for the true 206:141 crop. Quiet mine shadows above and below, clear at 96px. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ad65445a-3b50-4028-a060-8d7a4deccb7b.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_29.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Miner’s full face, lamp, both hands and entire pick head remain visible in the 206:141 crop and 128px thumbnail; glowing ore supports the mining action. Painterly warm light. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_30",
+    "name": "Dwarven Musketeer",
+    "prompt": "Paint “Dwarven Musketeer,” a compact, stout dwarf marksman with a braided beard, focused eyes, a riveted kettle helmet and sturdy leather-and-iron armor. He braces a short twin-barrel matchlock arquebus, with two parallel iron barrels, a short wooden stock and glowing match cord, firing twin bright bolts in a small controlled burst. The dwarf’s face, both hands and entire compact gun are clearly visible. This is a primitive medieval fantasy firearm, not a modern rifle. Painterly medieval high-fantasy collectible-card art with visible brush texture, nuanced materials and warm directional light, atmospheric depth, no photographic gloss. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Arrange dwarf and compact gun horizontally; keep face/eyes, hands and entire gun inside x24…488,y105…407 for the true 206:141 crop. Quiet stone fortress atmosphere above and below; readable at 96px. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6cb87250-1c19-4755-a494-933f7b29f05f.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_30.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Upward crop preserves the complete kettle helmet/head, eyes, both hands and complete twin-barrel matchlock in the 206:141 crop and 128px thumb. Medieval fantasy firearm, painterly light. Awaiting parent review."
   }
 ]

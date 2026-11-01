@@ -3861,5 +3861,95 @@
     "status": "generated",
     "batch": 14,
     "reviewNote": "Inspected the 512-square source, exact wide crop and 128px thumbnail. Zaratan’s full head, eye, beak and island-bearing turtle shell remain unmistakable; island trees and foreground flipper/waves are supporting scale and may crop."
+  },
+  {
+    "cardId": "frost_summon_26",
+    "name": "King Crab",
+    "prompt": "Paint an original fantasy illustration for the exact card King Crab. Depict one enormous true red king crab guarding an icy northern shore: a low broad spiny carapace with natural crimson-orange shell plates, two asymmetrical powerful claws and long jointed walking legs, plus two clear dark eyes on stalks above its face. It is a real crab, not a lobster, humanoid warrior or crab carrying a crown. One pincer shields a small stranded sailor while a blue-white frost burst flashes at the other claw; crystalline cracks in the tough shell show the explosive frost magic. Make the eye stalks, broad shell and both pincers unmistakable. Painterly medieval fantasy collectible-card art, tactile shell, wet rock and ice, dramatic blue storm light and warm glints, layered brushwork and atmospheric depth. Exact 1:1 SQUARE for editable 512x512 master; keep full eyes/face and both claw joints and pincers within x24..488,y105..407 for the 206:141 crop; horizontal low pose, quiet sea and sky margins above/below. No frame, text, symbols, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-cb9765c6-7282-4e1e-a1a2-863f72ff5315.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_26.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Shifted to focalPoint [0.5,0.42]. Reviewed the 512-square source, shifted direct 512×350 crop and 128×88 thumbnail: the spiny true-crab shell, both eye stalks and the two large pincers stay clear; lower walking legs and distant sailor may crop."
+  },
+  {
+    "cardId": "frost_summon_27",
+    "name": "Giant Squid",
+    "prompt": "Paint an original illustration for the exact card Giant Squid: an immense natural giant squid rising through deep blue Arctic water beside a small wooden ship trapped in pack ice. Clearly show the squid's long streamlined mantle with triangular fins, two very large pale eyes, eight sucker-lined arms and two notably longer feeding tentacles with clubbed tips. It must read as a squid with an elongated mantle and ten appendages, not an octopus-shaped Kraken. The full face and eyes emerge between the arms, and a cold breath of frost spreads across the sea as the creature surges upward. Painterly medieval fantasy collectible-card art, nuanced wet skin in slate blue, violet and silver, atmospheric underwater light and storm foam, visible expressive brushwork. Exact 1:1 SQUARE editable 512x512 master; keep the entire head/mantle front, both eyes and nearest arm roots inside x24..488,y105..407 for 206:141 crop; tentacle ends and ship rigging may crop. Wide composition, quiet water above/below. No frame, text, lettering, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e3c68349-a718-4183-a425-392f36c3349c.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_27.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, direct 512×350 crop and 128×88 thumbnail: the giant squid's full face and eyes, elongated finned mantle and sucker-lined arms read clearly; tentacle ends and ship rigging crop incidentally."
+  },
+  {
+    "cardId": "frost_summon_28",
+    "name": "The Kraken",
+    "prompt": "Paint an original mythic illustration for the exact card The Kraken: a legendary colossal octopus-like sea monster erupting from a polar tidal whirlpool and dragging an ancient longship toward the abyss. Give the Kraken a broad rounded cephalopod head, two enormous pale intelligent eyes and eight thick muscular sucker-lined arms; two front arms curl visibly around the ship's hull while the others arc through towering waves. Make the head, eyes and front arms the clear primary subject. It must look like a mythic giant octopus, distinct from a squid's long tapered mantle and two extra feeding tentacles, and distinct from a long-bodied sea serpent. Painterly medieval fantasy collectible-card art, monumental foaming waves, cold indigo water, silver spray and dramatic light, tactile anatomy and expressive brush strokes. Exact 1:1 SQUARE for 512x512 editable master; keep the complete head/eyes and two front arm bases within x24..488,y105..407; far tentacle tips and ship rigging may crop incidentally. Horizontal staging with quiet water/sky margins for 206:141 crop. No frame, text, symbols, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9b7c755d-4811-4c82-9cf1-984134e17379.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_28.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Shifted to focalPoint [0.5,0.42]. Reviewed the unchanged 512-square source, shifted direct 512×350 crop and 128×88 thumbnail: the complete Kraken dome/forehead, both eyes and thick sucker-lined front arms remain clear; distant tentacle tips and rigging crop incidentally."
+  },
+  {
+    "cardId": "frost_summon_29",
+    "name": "Kraken Spawn",
+    "prompt": "Paint an original fantasy illustration for the exact card Kraken Spawn: one young but already enormous juvenile kraken emerging from an icy underwater cavern beside a small sailing boat, showing that it is a newly hatched creature of colossal eventual size. Give it a smooth rounded octopus-like mantle, two oversized curious turquoise eyes and eight shorter curling arms lined with neat round suckers; its body is compact and youthful, much smaller than an adult Kraken, yet large beside the boat. A pair of short front arms pulls the tiny vessel toward a dark current, and a subtle frost aura clouds the surrounding water. Make the juvenile's full face and both eyes unmistakable; it is one young octopus-like kraken, not a squid with a long mantle or a many-headed monster. Painterly medieval fantasy collectible-card illustration, cool blue-violet underwater atmosphere, tactile wet skin, glowing ice crystals, expressive brushwork and clear silhouette. Exact 1:1 SQUARE 512x512 master; keep head, eyes and main front arm bases inside x24..488,y105..407; incidental tentacle tips/boat rigging may crop for the 206:141 card window. Quiet deep water margins. No frame, text, lettering, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-90904a96-e927-4308-8b39-ed8e564219ac.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_29.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Shifted to focalPoint [0.5,0.42]. Reviewed the 512-square source, shifted direct 512×350 crop and 128×88 thumbnail: the juvenile's rounded mantle, both turquoise eyes and short front arms are fully visible; peripheral tentacle tips and boat rigging crop."
+  },
+  {
+    "cardId": "frost_summon_30",
+    "name": "Leviathan",
+    "prompt": "Paint an original mythic sea-monster illustration for the exact card Leviathan: one ancient enormous sea serpent rising in a long S-curve through a polar ocean beside a tiny icebound ship. Give it a broad crocodilian dragonlike head, long closed jaws with visible teeth, two clear icy blue eyes, swept-back bony ridges, and a continuous blue-black plated serpentine neck and back that arches across the waves. It has no legs, wings, tentacles, pincers or human features: its long sea-serpent body and armored dorsal ridges distinguish it from squid, kraken and whale. A surge of ice and spray bursts around the creature as it crashes through the sea, while the ship shows its colossal scale. Keep the complete head, both eyes, muzzle and jaw cleanly visible; the tail may continue beyond the frame. Painterly medieval fantasy collectible-card art, tactile overlapping scales and ice, deep navy water, pale glacial light and atmospheric brushwork. Exact 1:1 SQUARE for editable 512x512 master; put the head and neck horizontally in the central action band x24..488,y105..407 for the 206:141 crop, with quiet storm sky and dark water margins above and below. No horns like a ram, no wings, no extra heads, no frame, text, symbols, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-1136d5d1-5861-4b79-9f68-f14c1bee84ff.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_30.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, direct 512×350 crop and 128×88 thumbnail: Leviathan reads as a long armored sea serpent with complete dragonlike head, eyes, muzzle and jaws; body coils through the ice-choked waves while tail and ship rigging are incidental."
   }
 ]

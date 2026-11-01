@@ -3778,5 +3778,77 @@
     "status": "generated",
     "batch": 14,
     "reviewNote": "Reviewed the 512-square source, focal-adjusted wide crop and thumbnail. The lean quadrupedal cryptid’s narrow muzzle, visible eye and full dorsal spine ridge remain readable; distant goats establish folklore context without violence. Storm lighting, textured hide and a quick forward spring."
+  },
+  {
+    "cardId": "storm_summon_34",
+    "name": "Foo Dog Sentinel",
+    "prompt": "Paint original illustration-only art for the storm summon Foo Dog Sentinel, a loyal East Asian shishi guardian that pounces and draws life from the storm. Show an animated Chinese guardian lion-dog carved from weathered gray granite, unmistakably a foo dog/shishi rather than a natural dog or ordinary lion: broad fanged muzzle, fierce almond eyes, thick mane made of curled stone scrolls, small upright ears and a sturdy curled tail. It springs from a temple gate plinth with one stone paw raised, blue-white storm current glowing in fine cracks along its sculpted mane. Keep the full recognizable head, eyes, complete curled mane and raised paw inside the central wide-card band. Painterly medieval fantasy collectible-card art with visible brush texture, tactile matte carved stone and bronze inlay, warm lantern rim light against cool rain, atmospheric depth consistent with the supplied Hexmancers storm art. Avoid glossy photorealism, toy proportions, modern dog breeds, anime, Disney cartoon or pixel art. Explicit 1:1 square canvas for a 512x512 editable master; all identity-critical face and shishi features in x24..488,y105..407 for the 206:141 crop, quiet gate sky and stone beyond. No extra characters, writing, frame, numbers or UI.",
+    "generatedPath": "/workspace/generated_images/exec-140b950c-9502-4e88-ad48-8d5716b605aa.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_34.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, focal-adjusted wide crop and thumbnail. This reads as an animated carved shishi/foo dog: full fanged face and eyes, curled stone mane, granite paws and a pouncing pose. Upper curls touch the crop edge; stormlight and bronze details support the sentinel identity."
+  },
+  {
+    "cardId": "storm_summon_35",
+    "name": "Brass Foo Pup",
+    "prompt": "Paint original illustration-only art for the storm summon Brass Foo Pup, a tiny, frail but swift shishi guardian. Show a small living brass foo-dog pup in a quick diagonal dash across a rain-dark temple roof: lion-dog face with short muzzle, both bright eyes, little fangs, rounded oversized paws, short legs, a curled tail and a miniature mane of carved scroll curls. It must read as a young East Asian guardian lion-dog, not an ordinary puppy, wolf or metal toy. Build it from aged brass with warm highlights and green-brown patina; a few blue static sparks skate across the tiny paws. Keep the entire compact figure, face and defining curled mane comfortably inside the central 60% of the square, with quiet temple mist above and below. Painterly medieval fantasy collectible-card illustration with visible brush strokes, simplified matte brass and stone, attractive warm/cool storm lighting, consistent with the supplied Hexmancers storm refs. Avoid cartoon or toy proportions, glossy photorealism, 3D shine, anime or pixel art. Explicit 1:1 square canvas for a 512x512 editable source; subject and face within x24..488,y105..407 for the 206:141 crop. No text, lettering, numbers, frame or UI.",
+    "generatedPath": "/workspace/generated_images/exec-864491c3-70d1-4bbc-9e0e-e8c721454d0f.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_35.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, wide crop and thumbnail. The compact, big-headed shishi pup has a clear foo-dog face, bright eyes, curled mane, short legs and aged brass/patina, distinct from the granite sentinel. Full face and raised paw remain visible with quick storm sparks."
+  },
+  {
+    "cardId": "storm_summon_36",
+    "name": "Bahamut",
+    "prompt": "Paint original illustration-only art for the legendary storm summon Bahamut, following the catalogue's Middle Eastern myth context: Bahamut is a vast primordial cosmic fish of medieval Arabic cosmology, not a Western fantasy dragon. Show an immense deep-sea fish turning through a storm-dark ocean: broad piscine head, clearly visible gill slits, large intelligent eyes, heavy scales, strong pectoral fins and a huge forked tail. Its immense body bends in a zigzag beneath the surface while blue-white lightning illuminates waves around it, creating awe and dread. Keep unmistakable fish anatomy—no legs, wings, horns or dragon head. Use a low horizontal side-three-quarter view so the entire head, both eyes, gills and near pectoral fin are visible within the card's central band; distant clouds and sea establish vast scale. Painterly medieval fantasy collectible-card illustration with visible brushwork, simplified matte scales and water, luminous storm light and atmospheric depth matching the supplied Hexmancers storm art. Avoid glossy photorealism, 3D shine, anime, Disney cartoon or pixel art. Explicit 1:1 square canvas for a 512x512 editable master; keep the head, eyes, gills and defining fin in x24..488,y105..407 for the 206:141 crop, with quiet cloud and water above/below. No dragon traits, extra creatures, lettering, frame, numbers or UI.",
+    "generatedPath": "/workspace/generated_images/exec-6b7a2e07-595d-485f-a877-19cf68cbc0ba.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_36.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, wide crop and thumbnail. Bahamut reads as a colossal primordial fish from the catalogue’s Middle Eastern myth context, not a Western dragon: full piscine head, eye, gill plates and near fin remain visible amid the storm sea. Long body and tail continue beyond the crop."
+  },
+  {
+    "cardId": "storm_summon_37",
+    "name": "Falak the Abyss Serpent",
+    "prompt": "Paint original illustration-only art for the legendary storm summon Falak the Abyss Serpent. Draw on the catalogue's Middle Eastern desert mythology: Falak is an ancient serpent of the abyss, here a vast sand-burrowing serpentine creature rather than a conventional Western dragon. It rises from a dark chasm beneath storm-swept desert dunes, with an elongated serpent head, clear glowing eyes, broad scaled muzzle and a massive curved coil vanishing into sand. Blue-white lightning runs from its mouth along the coil like a bolt, and a restrained stun flash catches the sand grains. No legs, wings, fins, feathers or cobra hood; the identity is a long-bodied abyss serpent, not a fish or a generic segmented worm. Painterly medieval fantasy collectible-card illustration with visible brushwork, simplified matte scales, dark indigo and bronze-gold highlights, dramatic lightning and atmospheric desert depth matching the supplied Hexmancers storm art. Avoid glossy photorealism, 3D shine, anime, Disney cartoon or pixel art. Explicit 1:1 square canvas for a 512x512 editable master. Keep the complete head, eyes, snout and defining serpent anatomy in x24..488,y105..407 for the 206:141 crop; body coil and sand plume may trail into quiet top/bottom scenery. No text, frame, runes, numbers or UI.",
+    "generatedPath": "/workspace/generated_images/exec-e04c07a7-0cae-4c25-a43f-844e334d1069.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_37.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, wide crop and thumbnail. Falak reads as a long-bodied abyss serpent emerging through desert sand, with complete head, both eyes and snout visible; no wings or legs. Its vast coil and lightning bolt support the legendary storm/desert identity."
   }
 ]

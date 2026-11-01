@@ -3657,5 +3657,131 @@
     ],
     "status": "generated",
     "batch": 14
+  },
+  {
+    "cardId": "gray_summon_177",
+    "name": "Achilles",
+    "prompt": "Paint “Achilles,” the swift Greek hero, as a calm but resolute mythic warrior standing ready in bronze armor. Give him a recognizable archaic Greek helmet with a high red horsehair crest, a round bronze shield and a long spear; his face and eyes are clear beneath the helmet. A blue sea wind lifts his cloak, evoking his legendary swiftness. No combat, wounds, blood, or injury. Create a painterly mythic collectible-card illustration with visible hand-painted brush texture, layered painted edges and warm classical pigments, matching Hexmancers' grounded high-fantasy art direction; dramatic directional light, atmospheric depth, believable ancient Greek materials, no photographic gloss or photoreal rendering. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Place the hero horizontally in the central area; preserve entire face/eyes, relevant hands, shield and spear hand inside x24…488, y105…407 for the 206:141 crop. Quiet atmosphere above and below; clear silhouette and identity readable at 96px. No text, frame, UI, anime, Disney proportions or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e473c017-0008-4702-9f74-cf0e6167a794.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_177.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Achilles’s full helmet and face, spear hand and shield are visible in the upward-adjusted 206:141 crop and 128px thumbnail; lower legs crop incidentally. Painterly brush texture and sea light. Awaiting parent review."
+  },
+  {
+    "cardId": "gray_summon_179",
+    "name": "Rostam",
+    "prompt": "Paint “Rostam,” the legendary champion of the Persian Shahnameh, as a powerful but noble Persian hero standing beside his beloved horse Rakhsh. Rostam wears richly painted ancient Persian armor with a recognizable tiger-skin mantle over the shoulders and a heroic Persian helmet; he holds a heavy wooden mace lowered at his side. Rakhsh’s head is beside his shoulder at the same height, with its distinctive warm reddish coat and leopard-like spots, alert eyes and bridle. Both are calm and resolute; keep Rostam’s face and Rakhsh’s face clearly readable. Painterly mythic collectible-card illustration with visible hand-painted brush texture, layered edges and jewel-toned Persian pigments, matching Hexmancers’ grounded high-fantasy direction. Beautiful directional evening light, atmospheric depth, no photographic gloss or photoreal rendering. Explicit 1:1 SQUARE canvas for an editable 512×512 master. Compose horse and hero horizontally in the central area; keep Rostam’s face, hands, mace and tiger-skin mantle plus Rakhsh’s head within x24…488, y105…407 for the 206:141 crop. Quiet Persian landscape atmosphere above and below, clear silhouette readable at 96px. No battle, blood, text, frame, UI, anime, Disney proportions or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2114730a-fa97-44bc-ab5f-34262959febd.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_179.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Upward-adjusted 206:141 crop retains Rostam’s face, tiger-skin mantle and Rakhsh’s head/spotting; mace is incidentally cropped below. Both hero identities remain clear at 128px. Painterly Persian colors and brush texture. Awaiting parent review."
+  },
+  {
+    "cardId": "gray_summon_180",
+    "name": "Arjuna",
+    "prompt": "Paint an illustration for the exact card Arjuna, the noble archer prince and hero of the Indian Mahabharata. Show a focused adult South Asian warrior with warm brown skin, dark hair beneath a royal diadem, wearing refined ancient Indian mail and patterned sash, drawing his distinctive ornate golden composite bow Gandiva. A few luminous arrows rest ready, not obscuring the hero. Face, eyes, bow hand and arrow hand fully visible inside x24..488 y105..407; horizontal waist-up heroic composition. His appearance and attire evoke epic-era India, not medieval European armor. Painterly medieval fantasy collectible-card art with visible brushwork, nuanced painted metal and cloth, atmospheric depth; avoid photographic gloss. Dramatic dawn light and a distant Indian palace rampart, dignified heroic mood. Square 1:1 for editable 512 master and 206:141 crop. No frame, text, UI, anime, Disney proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c1e7311f-830e-4035-b241-093e31d2f176.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_180.png",
+    "sourceNative": [
+      1478,
+      1064
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "512-square source, centered 206:141 crop, and 128x88 thumbnail reviewed. Arjuna is a jeweled Indian epic archer drawing Gandiva; face, eyes, and drawing hand are readable."
+  },
+  {
+    "cardId": "gray_summon_181",
+    "name": "Sigurd",
+    "prompt": "Paint an illustration for the exact card Sigurd, the young Norse saga hero who slew the dragon Fafnir. A courageous Scandinavian warrior in early medieval mail and a dark red cloak grips the legendary sword Gram, its complete blade and hilt visible beside his face; a fallen dragon's scaled head lies in shadow behind him as a clear saga clue. Face, eyes, sword hand, and named sword features all fit x24..488 y105..407; horizontal waist-up composition, Sigurd dominant. Painterly medieval fantasy collectible-card painting with clear visible brushwork, tactile iron, leather, scale and fur; avoid glossy photo-real finish. Firelight glints along Gram against a cool Nordic cave, atmospheric depth. Square 1:1 512 master and 206:141 card crop. No frame, text, runes, UI, anime, Disney proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a5278857-d89f-4909-933a-d51c680d9662.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_181.png",
+    "sourceNative": [
+      1516,
+      1037
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "512-square source, centered 206:141 crop, and 128x88 thumbnail reviewed. Sigurd reads as the Norse dragon-slayer through his saga sword, mail, red cloak, and dragon remains; face and sword grip are clear."
+  },
+  {
+    "cardId": "gray_summon_182",
+    "name": "Ilya Muromets",
+    "prompt": "Paint an illustration for the exact card Ilya Muromets, the legendary Russian bogatyr of the byliny: an older broad-shouldered Slavic hero with a weathered face, long gray-white beard, simple conical Rus helmet and richly worked scale armor over a red tunic. He plants a heavy iron-shod wooden mace firmly beside him, ready to defend a stone bridge. Keep his face, eyes and gripping hand fully inside x24..488 y105..407; horizontal waist-up heroic portrait, old bogatyr dominates. Painterly medieval fantasy collectible-card art with visible brushwork in beard, metal and cloth, grounded Slavic/Rus details, no photographic gloss. Cold dawn light with a warm sunrise edge and atmospheric depth. Square 1:1 for 512 master and 206:141 crop. No frame, text, UI, anime, Disney proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-54edab37-2bc1-4fbf-858b-dde53c706516.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_182.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "512-square source, centered 206:141 crop, and 128x88 thumbnail reviewed. Ilya reads as an older Rus bogatyr with white beard, scale armor, and iron-spiked mace; face and mace-gripping hand remain visible."
+  },
+  {
+    "cardId": "gray_summon_183",
+    "name": "Lancelot",
+    "prompt": "Paint an illustration for the exact card Lancelot, the renowned knight of Arthurian legend: a noble French knight in finely crafted silver plate and a deep blue mantle, bareheaded so his composed face and eyes are visible, holding a steel sword upright beside him. A misty lake and stone castle in the far background hint at his tale without adding another hero. Keep face, eyes, sword hand and hilt fully inside x24..488 y105..407; horizontal waist-up composition, Lancelot dominant. Painterly medieval fantasy collectible-card art with visible brushwork, tactile steel and velvet, no glossy photographic finish. Cool lake light balanced by a warm golden rim, readable heroic silhouette and atmospheric depth. Square 1:1 master and 206:141 crop. No frame, lettering, UI, anime, Disney proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-76b3f2a8-5fac-4cc5-883b-c8dc4a747b74.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_183.png",
+    "sourceNative": [
+      1517,
+      1037
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "512-square source, centered 206:141 crop, and 128x88 thumbnail reviewed. Lancelot is a bareheaded Arthurian knight in silver plate and blue mantle beside a lake; face, eyes, and sword grip are visible."
+  },
+  {
+    "cardId": "gray_summon_184",
+    "name": "Gawain",
+    "prompt": "Repaint the illustration for the exact card Gawain as a square composition for a 512x512 master. Gawain is a young human Arthurian Round Table knight, not the Green Knight. Frame him from waist to head, with his complete face and eyes centered around y175 and his pentangle shield held high at chest height beside him; his shield-gripping hand and fingers must be visible around y270. Keep head, eyes, hand, and five-point interlaced pentangle safely inside x24..488 and y105..407 so the 206:141 horizontal crop shows every identity feature. He wears early medieval steel armor, a dark green mantle and sash; the red shield bears the legendary pentangle design. Warm sunlight breaks through a cool green forest. Visible painterly brush strokes, layered textured metal and cloth, gentle painted edges; avoid photographic gloss. Attractive dramatic light and atmospheric depth. No frame, lettering, other characters, UI, anime, Disney proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-72614d34-6522-4509-bd72-8e6237d5f0c7.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_184.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.44
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "512-square replacement source, crop shifted upward to retain full face, eyes and shield grip, and 128x88 thumbnail reviewed. Gawain is a human Arthurian knight with a visible red pentangle shield; earlier source preserved at /tmp/gray-03-review/gray_summon_184-previous.png."
   }
 ]

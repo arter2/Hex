@@ -3597,5 +3597,95 @@
     "status": "generated",
     "batch": 14,
     "reviewNote": "Outlaw’s full face, reaching hand, thorny bow and briar helper are visible in the 206:141 crop and 128px thumbnail; upper hood is incidentally cropped. Painterly forest lighting. Awaiting parent review."
+  },
+  {
+    "cardId": "verdant_summon_28",
+    "name": "Hooded Outlaw Captain",
+    "prompt": "Paint “Hooded Outlaw Captain.” A clever, weathered outlaw captain in a deep green hood and practical leather armor, face visible beneath the hood, raising one hand to rally a small band of distant woodland companions; a sprig of fresh green growth curls around his bracer to suggest resilience. He carries a short bow at his back, not aimed. Painterly medieval Arthurian collectible-card illustration with visible hand-painted brushwork and textured pigment rather than photographic gloss. Match Hexmancers' grounded high-fantasy references: nuanced cloth, leather, metal and foliage, strong directional light, atmospheric depth. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Arrange named hero horizontally through the central area; keep whole face/eyes, relevant hands and named heraldry or equipment inside x24…488, y105…407 for the true 206:141 crop. Quiet forest atmosphere above and below. Clear identity readable at 96px. No blood, battle wounds, text, frame, UI, anime, Disney proportions or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a999b302-fcda-4667-8caa-8786a36104f4.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_28.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "The outlaw captain’s face, full raised hand, hood and bow remain visible in the upward-adjusted 206:141 crop and 128px thumb; background companions stay secondary. Painterly green forest light. Awaiting parent review."
+  },
+  {
+    "cardId": "verdant_summon_29",
+    "name": "Mountain Man Trapper",
+    "prompt": "Paint “Mountain Man Trapper.” A rugged mountain man trapper, sturdy human squire in patched wool, fur-lined leather and a practical cap, with a broad weathered face, a coil of rope and simple wooden trap carried safely at his belt; standing protectively at a snowy forest pass beside a bundled shield-like hide, calm and rallying. Painterly medieval Arthurian collectible-card illustration with visible hand-painted brushwork and textured pigment rather than photographic gloss. Match Hexmancers' grounded high-fantasy references: nuanced cloth, leather, metal and foliage, strong directional light, atmospheric depth. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Arrange named hero horizontally through the central area; keep whole face/eyes, relevant hands and named heraldry or equipment inside x24…488, y105…407 for the true 206:141 crop. Quiet forest atmosphere above and below. Clear identity readable at 96px. No blood, battle wounds, text, frame, UI, anime, Disney proportions or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c90a77b9-0769-4ef4-89e9-2e519c2b1fe7.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_29.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Upward-adjusted crop retains the trapper’s complete face and hat, staff hand and belt trap/rope; lower body crops incidentally. Painterly snowy mountain light. Awaiting parent review."
+  },
+  {
+    "cardId": "verdant_summon_30",
+    "name": "Sir Gawain",
+    "prompt": "Paint “Sir Gawain.” Sir Gawain, the noble Arthurian knight, in polished but painterly red-gold armor and a green mantle, carrying a shield bearing a clear five-point pentangle and a longsword held down at his side; handsome composed face, a sunlit medieval forest behind. Painterly medieval Arthurian collectible-card illustration with visible hand-painted brushwork and textured pigment rather than photographic gloss. Match Hexmancers' grounded high-fantasy references: nuanced cloth, leather, metal and foliage, strong directional light, atmospheric depth. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Arrange named hero horizontally through the central area; keep whole face/eyes, relevant hands and named heraldry or equipment inside x24…488, y105…407 for the true 206:141 crop. Quiet forest atmosphere above and below. Clear identity readable at 96px. No blood, battle wounds, text, frame, UI, anime, Disney proportions or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-13434101-525a-4681-90dc-dd07193eb46b.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_30.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Upward-adjusted crop retains Sir Gawain’s full face, green mantle, pentangle shield and sword hilt; blade end crops incidentally. Brush-painted Arthurian forest and armor. Awaiting parent review."
+  },
+  {
+    "cardId": "verdant_summon_31",
+    "name": "The Green Knight",
+    "prompt": "Paint “The Green Knight.” The Green Knight from Arthurian legend: an imposing, noble giant knight with rich green skin and mossy hair, clad in living leaf-and-bark armor, holding a large ceremonial axe lowered harmlessly at his side; face and eyes clear, uncanny but dignified, vivid woodland light. Painterly medieval Arthurian collectible-card illustration with visible hand-painted brushwork and textured pigment rather than photographic gloss. Match Hexmancers' grounded high-fantasy references: nuanced cloth, leather, metal and foliage, strong directional light, atmospheric depth. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Arrange named hero horizontally through the central area; keep whole face/eyes, relevant hands and named heraldry or equipment inside x24…488, y105…407 for the true 206:141 crop. Quiet forest atmosphere above and below. Clear identity readable at 96px. No blood, battle wounds, text, frame, UI, anime, Disney proportions or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-cff2211c-8fee-4341-9706-aa1e2ebadbd7.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_31.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Upward-adjusted crop retains the Green Knight’s full face, eyes and leafy armor; the axe head and lower body are partly incidental to the crop. Painterly living foliage and rich green light. Awaiting parent review."
+  },
+  {
+    "cardId": "verdant_summon_32",
+    "name": "Arthur, the Once King",
+    "prompt": "Paint “Arthur, the Once King,” the legendary Arthurian king shown in his later years after his reign. Portray a dignified, silver-haired and bearded older man with a thoughtful, slightly weary face, wearing a weathered royal cloak over old but noble armor and a simple worn crown. He stands in a quiet green forest, holding the sheathed legendary sword Excalibur close to his chest, with one hand protecting it; a faint warm light suggests his enduring kingly legacy. His face, eyes, hand and sword hilt must be clear. Painterly medieval Arthurian collectible-card illustration with visible hand-painted brushwork, textured pigment, nuanced cloth and metal, strong directional light and atmospheric depth, matching Hexmancers’ grounded high-fantasy art direction; no photographic gloss or photoreal rendering. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Arrange Arthur horizontally in the central area; keep face, eyes, hand, crown and sword hilt inside x24…488, y105…407 for the 206:141 crop; quiet woodland above and below. Clear identity readable at 96px. No battle, wounds, blood, text, frame, UI, anime, Disney proportions or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-50752ba3-1b00-41a5-bb71-fd72eb1cc881.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_32.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Upward-adjusted 206:141 crop keeps Arthur’s full face, eyes, crown, protective hands and Excalibur hilt clear at 128px; lower hilt/body extends below crop. Painterly forest light. Awaiting parent review."
   }
 ]

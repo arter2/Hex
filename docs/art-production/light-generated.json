@@ -3591,5 +3591,185 @@
     "status": "generated",
     "batch": 14,
     "reviewNote": "Inspected the 512-square master, upward-shifted 206:141 crop at focalPoint [0.5,0.39] and 128-pixel thumbnail: Valkyrie's face, horn and raised rallying hand all fit clearly with winged silhouette; lower legs and outer wing tips crop naturally."
+  },
+  {
+    "cardId": "light_summon_23",
+    "name": "Valkyrie Shieldmaiden",
+    "prompt": "Paint an illustration for the exact card name “Valkyrie Shieldmaiden.” A Norse valkyrie warrior stands firm on a windswept ridge, her mature face and steady eyes visible beneath a simple winged helm. She raises a broad round shield to protect a fallen companion while holding a short spear ready at her side; show the entire shield face and the hand gripping its rim. Historically grounded early medieval wool, leather, mail and bronze, with a restrained feathered mantle rather than giant wings. Painterly medieval high-fantasy collectible-card illustration with visible brush texture, layered opaque strokes and softly worked edges, vivid directional dawn light, atmospheric depth and believable anatomy. Explicit 1:1 square canvas for a 512×512 editable master; compose face, hands and shield together in the horizontal middle band, all within x24–488,y105–407 for a 206:141 card crop. Quiet northern sky and ridge above and below. No frame, text, runes, UI, anime, Disney-like cartoon or glossy photorealism.",
+    "generatedPath": "/workspace/generated_images/exec-6214e26e-dd7f-447f-99b0-c987f8f06f39.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_23.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Parent crop review noted forehead/face at the upper edge. Shifted focalPoint upward to y=0.43 and inspected the revised 206:141 crop and 128px thumbnail from the unchanged 512-square source. Valkyrie’s full forehead, face/eyes, spear hand and shield hand are now visible; the shield’s lower rim and lower body crop incidentally."
+  },
+  {
+    "cardId": "light_summon_24",
+    "name": "Cherub",
+    "prompt": "Paint an illustration for the exact card name “Cherub.” Depict a small, gentle robed winged angel in the visual language of a medieval illuminated church painting: youthful but serene human face, soft curls, a simple halo, tiny feathered wings and layered pale robes. The cherub floats beside a tired pilgrim and extends both hands, releasing a warm blessing that strengthens the traveler; the angel is the clear subject, not an oversized burst of light. Use believable feather and cloth detail, restrained gold leaf accents, visible painterly brushwork and softly blended tempera-like color, warm candlelight and deep atmospheric shadows. Keep the angel small in stature, dignified and sacred rather than cute or toy-like. Explicit 1:1 square illustration for a 512×512 master; keep the whole face, both hands and winged upper body inside x24–488,y105–407 for a 206:141 landscape crop. Quiet chapel interior above and below. No lettering, frame, UI, anime, Disney-like cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f6d519a0-8c79-4604-9e5a-0cbc747cc3c7.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_24.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, exact wide crop and 128px thumbnail. The small robed cherub’s full face and blessing hands remain visible with the tired pilgrim; fine wing extremities and chapel details are secondary."
+  },
+  {
+    "cardId": "light_summon_25",
+    "name": "Guardian Angel",
+    "prompt": "Paint an illustration for the exact card name “Guardian Angel.” Show a majestic but compassionate armored angel shielding a wounded human knight from dark arrows in a rain-swept medieval battlefield. The angel’s calm face and clear eyes are visible; one outstretched hand sustains a luminous protective ward while the other supports the knight. Her feathered wings frame the scene, but the face, hands and ward remain the focus. Painterly medieval high-fantasy collectible-card art with visible brush texture and layered brushstrokes, nuanced white-gold mail, feathers, leather and wet stone, strong warm light against cool storm shadows, believable anatomy and atmospheric depth. Explicit 1:1 square canvas for an editable 512×512 master; keep the angel’s face, both hands and the protected knight’s head safely inside x24–488,y105–407 for the 206:141 landscape crop; incidental wing tips may extend beyond. No frame, words, runes, UI, anime, Disney-like cartoon or glossy photorealism.",
+    "generatedPath": "/workspace/generated_images/exec-dae4156e-27e6-436d-8768-254cc03518c4.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_25.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Parent crop review noted the angel’s forehead and raised fingertips at the upper edge. Shifted focalPoint upward to y=0.43 and inspected the revised 206:141 crop and 128px thumbnail from the unchanged 512-square source. Full forehead, face/eyes and all raised-hand fingertips now show, along with the supporting hand on the knight; wing tips and lower armor crop incidentally."
+  },
+  {
+    "cardId": "light_summon_26",
+    "name": "Forbidden City Lion",
+    "prompt": "Paint an illustration for the exact card name “Forbidden City Lion.” Depict a massive Chinese imperial guardian lion, a traditional stone shishi with a curly carved mane, alert wide-set eyes and a richly ornamented collar, springing down from a palace terrace to defend its vermilion gate. The lion is clearly a carved stone guardian brought to life, with believable weight and chiseled paw details; its face, both forepaws and mane remain prominent. Painterly medieval high-fantasy collectible-card art with visible brush texture and layered strokes, tactile weathered stone and bronze, dramatic golden lantern light against cool blue evening, atmospheric depth, noble rather than cartoonish. Explicit 1:1 square illustration for a 512×512 editable master; keep the lion’s face, eyes, paws and distinctive mane within x24–488,y105–407 for a 206:141 landscape crop. Palace scenery stays quiet above and below. No text, frame, UI, anime, Disney-like cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7cc9a844-6236-48b5-9486-3e099e237063.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_26.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, exact wide crop and 128px thumbnail. The stone shishi’s entire face/eyes, curled mane and both forepaws read clearly as it springs from the palace terrace; lower step detail is incidental."
+  },
+  {
+    "cardId": "light_summon_27",
+    "name": "Rose-Garden Simurgh",
+    "prompt": "Paint an illustration for the exact legendary card name “Rose-Garden Simurgh.” Depict the Simurgh as a single immense, benevolent Persian mythic bird perched above a walled rose garden: a majestic hooked beak, expressive intelligent eyes, crowned crest, powerful feathered body and a long peacock-like tail patterned in emerald, sapphire and muted gold. Rose vines wind among the lower boughs while the bird spreads one radiant wing over a wounded gardener, bathing the person and roses in gentle healing light. The bird’s face, beak, eye and layered plumage dominate; keep the garden subordinate. This is a wise Persian Simurgh, not a generic flaming phoenix. Painterly medieval high-fantasy collectible-card illustration with clearly visible brush texture, layered pigment and soft worked edges, tactile iridescent feathers, warm sunlit gold against cool garden shade, atmospheric depth, grounded natural bird anatomy. Explicit 1:1 square canvas intended for an editable 512×512 master; compose the head, eye, breast and radiant wing in the horizontal middle band, keeping face and distinctive feather details inside x24–488,y105–407 for a 206:141 crop; incidental outer wing and tail tips may extend. Quiet Persian garden scenery above and below. No text, frame, runes, UI, anime, Disney-like cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e65e28e8-bbe5-4f4b-8395-4b458f5d5e4c.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_27.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, revised true 206:141 crop (focal y=0.34) and 128px thumbnail. Raised the crop to retain the Simurgh’s complete crown crest, eye, beak and upper wing; its lower body/tail and the gardener are subordinate and may crop."
+  },
+  {
+    "cardId": "light_summon_28",
+    "name": "Sylph of the Gale",
+    "prompt": "Paint an illustration for the exact card name “Sylph of the Gale.” A swift, small but clearly legible wind spirit sweeps across an ancient mountaintop battlefield, shown as an elegant translucent humanoid sylph with a distinct face, luminous eyes and hands visible within the flowing air. Her spiraling gust crosses the scene and scatters dust and leaves around distant warriors; keep the spirit’s head and hand as the central focal point so she does not dissolve into a generic wind effect. Painterly medieval high-fantasy collectible-card art with visible brush texture and layered brushstrokes, nuanced mist, gauzy fabric and windblown leaves, cool silver-blue light with a warm break in the clouds, atmospheric depth and readable silhouette. Explicit 1:1 square canvas intended for a 512×512 editable master; keep the sylph’s full face/eyes and hands within x24–488,y105–407 for a 206:141 landscape crop; incidental trailing wisps may extend. Quiet sky and rock above and below. No frame, text, runes, UI, anime, Disney-like cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-de2b5b26-aebd-4496-bcab-468dc1320963.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_28.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Raised focalPoint to y=0.42 after crop inspection; reviewed the unchanged 512-square source, revised 206:141 crop and 128px thumbnail. Sylph’s full head/face/eyes and extended hand are visible, with the hand clear at card size; lower battlefield and trailing wisps are incidental."
+  },
+  {
+    "cardId": "light_summon_29",
+    "name": "Roman Legionary",
+    "prompt": "Paint an illustration for the exact card name “Roman Legionary.” Depict a disciplined Roman soldier of the early empire in historically grounded lorica segmentata, red wool tunic, leather baltea and a crested helmet, his steady face and eyes visible. He stands with his scutum and pilum beside a companion, gesturing the legion into a close defensive formation as a hard desert wind lifts dust around them; he is the recognizable frontline legionary, not a generic medieval knight. Painterly medieval high-fantasy collectible-card art with visible brush texture, layered brushstrokes, believable iron, leather, wood and cloth, strong warm light through dust against cool shadows, atmospheric depth. Explicit 1:1 square canvas for a 512×512 editable master; compose face, shield grip and signaling hand together in the middle band, keeping the whole face and relevant hands inside x24–488,y105–407 for a 206:141 crop. Quiet camp and sky above/below. No text, frame, UI, anime, Disney-like cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b21f93b0-8aae-45d0-9efa-62df530e30fa.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_29.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Raised focalPoint to y=0.42 after crop inspection; reviewed the unchanged 512-square source, revised 206:141 crop and 128px thumbnail. Legionary’s full face/eyes, pilum hand and signaling hand are visible; upper plume extremity and lower legs crop incidentally."
+  },
+  {
+    "cardId": "light_summon_30",
+    "name": "Centurion",
+    "prompt": "Paint an illustration for the exact card name “Centurion.” Show an older Roman centurion with weathered but alert eyes and a graying beard, wearing practical iron armor, a transverse-crested helmet and a deep crimson cloak. He stands firm before a cohort, raising one open hand to command the line while holding his short sword low, his authority and veteran experience clear. Painterly medieval high-fantasy collectible-card art with visible brush texture and layered brushwork, richly worked iron, leather, wool and wood, dramatic torchlight against dusty blue evening, atmospheric depth and grounded anatomy. Explicit 1:1 square canvas for an editable 512×512 master; keep his entire face/eyes, commanding hand and sword hand within x24–488,y105–407 for the 206:141 landscape crop. Supporting soldiers stay secondary; quiet standards and dusk above/below. No text, frame, UI, anime, Disney-like cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-368a91d6-02f9-421e-96df-8d77ada1ee14.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_30.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, true wide crop and 128px thumbnail. Centurion’s full face/eyes, raised commanding hand and sword hand remain readable; the hand leading the cohort is fully visible, while crest tips and the sword/lower cloak approach crop edges."
+  },
+  {
+    "cardId": "light_summon_31",
+    "name": "Crusader Knight",
+    "prompt": "Paint an illustration for the exact card name “Crusader Knight.” Depict a brave medieval knight in historically grounded mail, a surcoat bearing a small plain red cross and a weathered cloak, his face and clear eyes visible as he turns to shield a wounded traveler from incoming arrows. He braces his kite shield with one hand and holds a sword close in the other; the protective gesture is central and solemn, with no glorification of violence. Painterly medieval high-fantasy collectible-card art with visible brush texture, nuanced mail, wool, leather and steel, warm lantern light against cool rain and stone, layered brushstrokes, atmospheric depth and realistic proportions. Explicit 1:1 square canvas for a 512×512 editable master; keep face/eyes, shield grip and sword hand within x24–488,y105–407 for a 206:141 crop. Incidental cloak and weapon extremities may crop. No text, card frame, modern symbols, UI, anime, Disney-like cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c269119f-1167-490c-9b4a-3af355ab53e7.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_31.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "After parent crop review, shifted focalPoint upward to y=0.42 and inspected the revised 206:141 crop and 128px thumbnail from the unchanged 512-square source. The knight’s entire head/hair, full face/eyes and modest sky margin now fit; his shield hand remains naturally hidden behind the shield. Traveler, arrows and lower limbs are supporting action."
+  },
+  {
+    "cardId": "light_summon_32",
+    "name": "Knight of the Round Table",
+    "prompt": "Paint an illustration for the exact legendary card name “Knight of the Round Table.” Depict a noble Arthurian knight in practical 12th-century mail and blue wool cloak, his calm face and clear eyes visible as he steps between his companions and danger inside a stone great hall. He braces a kite shield in one hand and holds a sword low in the other, guarding the gathered fellowship around a broad circular oak table visible behind him. His simple shield bears a restrained golden sun emblem; no heraldic writing. Painterly medieval high-fantasy collectible-card illustration with visible brush texture and layered pigment, believable steel, wool, leather and oak, warm candlelight against cool stone shadows, atmospheric depth and grounded anatomy. Explicit 1:1 square canvas intended for an editable 512×512 master; compose face, eyes, shield and relevant hands in the horizontal middle band, all within x24–488,y105–407 for a 206:141 landscape crop. Quiet rafters and floor above/below; incidental lower legs and sword extremity may crop. No frame, text, runes, UI, anime, Disney-like cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-566b59c4-e71d-42a6-9fd6-89dafa04b2cb.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_32.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, true wide crop and 128px thumbnail. The knight’s full face/eyes and sword hand remain visible as he guards the fellowship; the shield clearly identifies his protective stance, while his shield hand is positioned behind it and the round table is supporting context."
   }
 ]

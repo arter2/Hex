@@ -3596,5 +3596,185 @@
     "status": "generated",
     "batch": 14,
     "reviewNote": "512-square source, centered 206:141 crop, and 128x88 thumbnail reviewed. The hungry shroud-wrapped corpse, face, mouth, and grasping hands read clearly with no critical clipping."
+  },
+  {
+    "cardId": "shadow_summon_30",
+    "name": "Yurei",
+    "prompt": "Paint a standalone illustration for the exact summon Yurei, a Japanese ghost of the dead. Show one unmistakable yurei in a plain white burial kimono, long loose black hair and a pale sorrowful face, floating just above the earth with her hands hanging forward and the lower hem dissolving into mist. She drifts sideways between tilted Japanese grave markers and a dark pine at moonrise, leaving a thin zigzagging phantom trail that bends around her and draws one small lantern toward her. Keep the ghost's entire face, eyes and both hands large and readable. Quiet, haunting, compassionate rather than monstrous; no red eyes, horns, gore or horror caricature. Painterly medieval-fantasy collectible-card art with visible brush texture, believable fabric and mist, subtle warm lanternlight against blue-black moonlight, atmospheric depth matching supplied Hexmancers art and accepted light creature master; painterly, never glossy or photoreal. Explicit 1:1 SQUARE canvas for an editable 512x512 master, composed horizontally; keep face, eyes, hands and the floating upper body within x24..488,y105..407, with expendable mist and graveyard beyond for 206:141 crop. No card frame, lettering, kanji, symbols or UI. No anime, Disney-like cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6291eb92-7b89-4367-ba37-f78637671ace.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_30.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel thumbnail: Yurei's pale face and both hands are fully visible above the mist, with burial kimono, zigzag phantom trail and Japanese graveyard readable; hair and robe tails trail incidentally."
+  },
+  {
+    "cardId": "shadow_summon_31",
+    "name": "Vetala",
+    "prompt": "Paint standalone painterly medieval-fantasy collectible-card art for the exact summon Vetala, the clever spirit of Indian folklore that inhabits a corpse. Show a single eerie but dignified vetala: a slender ash-pale corpse-spirit with amber knowing eyes, long dark hair and simple ancient Indian burial cloth, hanging upside down from a gnarled banyan branch over a cremation-ground path, its knees hooked over the branch and head/shoulders suspended clearly in view. Its clever gaze turns toward the viewer as several small spectral hands or ghostly motes fan outward in a measured barrage; a faint green-gold glow rising from old offerings suggests harvest, never gore. No corpse wounds or exposed bones; the vetala itself is the main subject. Painterly visible brush texture, atmospheric Indian night landscape, restrained flame and cool indigo shadows, rich cloth and bark materials, directional light, matching supplied Hexmancers references and accepted master; avoid slick photo gloss. Explicit 1:1 SQUARE canvas for editable 512x512 source; horizontal staging; keep face, eyes, shoulders and hooked legs clearly readable inside x24..488,y105..407, quiet branch and ground beyond for the 206:141 card crop. No frame, text, lettering or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-967cade0-7ab7-4a29-8c77-cad2371ff227.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_31.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel thumbnail: Vetala's upside-down face, eyes and reaching hands remain clear, with the hooked inverted body, Indian burial cloth and banyan/cremation-ground setting identifying the folklore spirit; feet crop incidentally."
+  },
+  {
+    "cardId": "shadow_summon_32",
+    "name": "Mara",
+    "prompt": "Create standalone painterly medieval-high-fantasy collectible-card art for the exact summon Mara, referring to Mara the tempter and adversary in Buddhist tradition. Depict one uncanny, sly shadow spirit beneath a great Bodhi tree, with a composed and alluring humanlike face, intent eyes, dark flowing robes and a subtle crown-like silhouette of leaves, while keeping the figure more spirit than ordinary person. Mara surges forward swiftly from the tree's shadow, one hand reaching out as thin shadow tendrils drain the warm glow from a small golden temple lamp; dim ghostly impressions of temptation swirl around the figure but stay secondary. Keep face, eyes and reaching hand sharp and clearly visible; restrained, symbolic, not horror or a generic witch. Painterly brush texture, layered dark cloth and foliage, warm lamp against cool midnight teal and plum shadows, atmospheric light, matching supplied Hexmancers references and accepted master; avoid photographic gloss. Explicit 1:1 SQUARE canvas for an editable 512x512 master, horizontal composition; keep face, eyes, hands and drain tendrils within x24..488,y105..407, quiet tree canopy and path beyond for 206:141 crop. No text, religious lettering, frame or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f33eb386-150e-4bc0-a838-1cadd0f0fd08.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_32.png",
+    "sourceNative": [
+      1536,
+      1024
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source normalized from the returned landscape image, centered 206:141 crop and 128-pixel thumbnail: Mara's sly face, eyes and reaching hand read clearly as the tempter spirit beneath a Bodhi-like tree; shadow tendrils and lamp support the draining action."
+  },
+  {
+    "cardId": "shadow_summon_33",
+    "name": "Pontianak",
+    "prompt": "Paint standalone painterly medieval-high-fantasy collectible-card art for the exact summon Pontianak, the Malay-Indonesian female vampiric ghost of folklore. Show one frightening but elegant pontianak as a long-haired woman in a flowing white burial dress, with a pale unmistakably feminine face, dark sunken eyes and long loose black hair blown behind her. She floats out from a moonlit banana grove, one pale hand reaching toward the viewer while a low supernatural pressure-wave of cold shadow and drifting frangipani petals rolls through the grove, slowing a few tiny distant figures; her face and hand dominate. Keep supernatural menace atmospheric and folkloric, not gory or a generic European banshee; no fangs emphasized, no blood. Painterly visible brush texture, layered fabric, leaves and mist, warm ivory moonlight against deep indigo-green shadows, atmospheric depth matching supplied Hexmancers art and accepted master; not glossy or photoreal. Explicit 1:1 SQUARE canvas for an editable 512x512 master; horizontal staging; keep face, eyes and reaching hand inside x24..488,y105..407, loose hair and dress may trail beyond for 206:141 crop. No frame, words, symbols or UI. No anime, Disney-like cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-0323d208-9ba8-4925-aaf6-09142d07a91e.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_33.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel thumbnail: Pontianak's pale female face, eyes and reaching hand are clear, with long black hair, white burial dress, banana grove and frangipani giving a distinct Malay-Indonesian ghost identity."
+  },
+  {
+    "cardId": "shadow_summon_34",
+    "name": "Bog Revenant",
+    "prompt": "Paint standalone painterly medieval-fantasy collectible-card art for the exact summon Bog Revenant, a moss-covered undead zombie risen from a bog. Show one unmistakably reanimated humanoid in tattered mud-dark burial clothing and corroded fragments of armor, with a weathered corpse-pale face, sunken but visible eyes, and both muddy hands clawing up through waterlogged roots. Thick moss, small swamp plants and beads of water cling to its shoulders; a pale green bog-light glows in the chest and in the disturbed water as it rises again, suggesting its persistent healing/returning nature. Keep face, eyes and hands large, distinct and within the central crop; no exposed gore, bones or extra undead. Painterly visible brush texture, grounded aged cloth, oxidized metal, wet roots and moss, atmospheric swamp dusk, restrained warm lantern-colored light against deep teal-green fog, matching supplied Hexmancers art; richly painted, never photographic gloss. Explicit 1:1 SQUARE canvas for an editable 512x512 master, horizontal composition; keep face, eyes, hands and upper torso within x24..488,y105..407, with expendable reeds and bog beyond for the 206:141 crop. No frame, lettering, runes or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-eafc0328-3057-4dfc-9d5b-4fbb39933029.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_34.png",
+    "sourceNative": [
+      1269,
+      1240
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel thumbnail: bog revenant face, eyes and both rising hands are prominent, with mossy armor, wet roots and bog-light reinforcing the undead rising identity; lower body is submerged."
+  },
+  {
+    "cardId": "shadow_summon_35",
+    "name": "Loup-Garou",
+    "prompt": "Paint an original illustration for the exact card Loup-Garou, a French folktale werewolf. Depict one rangy, upright wolf-headed humanoid prowling through an ancient European beech forest beneath a narrow moon: pointed ears, long gray muzzle, bright amber eyes, thick salt-and-iron-gray fur, long clawed hands and a torn dark medieval mantle caught on branches. Its wary but fierce face is the unmistakable focal point; one claw gently touches a smaller injured wolf companion as a subdued violet-green healing glow gathers around the pair. Keep it clearly a wolf-man, not a normal wolf, dog or bear. Painterly medieval fantasy collectible-card art, textured fur, worn cloth and wet bark, dramatic moonlight and atmospheric depth, layered hand-painted strokes with readable shapes. Exact 1:1 SQUARE for 512x512 editable master; keep full face, eyes, muzzle and clawed hands within x24..488,y105..407; horizontal staging with quiet branches and mist above/below for 206:141 crop. No frame, writing, symbols, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8f12a0a7-acb1-4636-bb20-807b1edbe8fa.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_35.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "The shift to focalPoint [0.5,0.42] preserves the Loup-Garou's complete wolf face, amber eyes, ears and clawed healing hand in the wide crop. Reviewed the 512-square source, revised direct 512×350 crop and 128×88 thumbnail; the smaller companion's lower body crops incidentally."
+  },
+  {
+    "cardId": "shadow_summon_36",
+    "name": "Bayou Rougarou",
+    "prompt": "Paint an original illustration for the exact card Bayou Rougarou, the Cajun Louisiana bayou werewolf. Show one unmistakable upright wolf-headed humanoid emerging from waist-deep black-green swamp water at night, with long pointed ears, a broad wolf muzzle, glowing pale yellow eyes, rangy arms and coarse dark fur thickly tangled with wet Spanish moss, cypress leaves and small vines. His face and eyes are prominent; a cursed breath of sickly violet shadow ripples across the water and makes distant swamp lights recoil. Cypress knees, hanging moss and a lantern-lit bayou establish Louisiana; the Rougarou remains the main subject and reads as a werewolf rather than a dog or swamp plant monster. Painterly medieval fantasy collectible-card art, richly textured wet fur and moss, atmospheric blue-green moonlight, expressive brushwork and clear silhouette. Exact 1:1 SQUARE 512x512 master; keep full face, eyes, muzzle and upper hands within x24..488,y105..407; horizontal portrait, quiet canopy and dark water margins for 206:141 crop. No frame, text, lettering, runes, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-3cb4573b-2565-492a-b75f-5d840e4d41d3.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_36.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "The shift to focalPoint [0.5,0.42] preserves the Rougarou's complete moss-tangled wolf face, eyes and ears in the wide crop. Reviewed the 512-square source, revised direct 512×350 crop and 128×88 thumbnail; lower arms and swamp water remain expendable."
+  },
+  {
+    "cardId": "shadow_summon_37",
+    "name": "Barghest",
+    "prompt": "Paint an original illustration for the exact card Barghest, the huge black death-omen hound of northern English folklore. Depict one massive shaggy black dog stalking along a misty Yorkshire moor road between old dry-stone walls: unmistakably canine head and broad muzzle, long pendulous fur, pointed ears, huge paws and two clear ember-red eyes beneath a furrowed brow. A cracked standing stone splinters beneath one forepaw as dark red-black motes spiral around the dog; keep the Barghest's head and burning eyes as the dominant identity. It is a supernatural hound, not a wolf-man, horse or demon with a human face. Painterly medieval fantasy collectible-card illustration, layered charcoal-black fur, weathered stone, cold moon haze and a dramatic warm glint in its eyes, textured brushwork and atmospheric depth. Exact 1:1 SQUARE for 512x512 master; keep full canine face, both eyes, muzzle and front paws inside x24..488,y105..407; horizontal composition, quiet fog and road margins for 206:141 crop. No frame, text, symbols, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5efc0572-77d6-4141-92ae-0d6845d4dbd3.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_37.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "The shift to focalPoint [0.5,0.42] preserves the Barghest's complete shaggy canine face, both ember eyes, ears and forepaw in the wide crop. Reviewed the 512-square source, revised direct 512×350 crop and 128×88 thumbnail; legs, road and peripheral smoke may crop."
+  },
+  {
+    "cardId": "shadow_summon_38",
+    "name": "Black Cadejo",
+    "prompt": "Paint an original illustration for the exact card Black Cadejo, the malevolent black dog spirit of Central American folklore. Show a lean, long-coated supernatural black hound stepping from a moonlit tropical village road, with a natural dog head, alert red-orange eyes, long muzzle, pointed ears, and a broken iron chain trailing from its collar; subtle blue-white static flickers through the chain and fur as it pounces toward a distant armed traveler. Distinguish it from a gigantic shaggy Barghest: this Cadejo is sleek, low, agile, glossy-black but painted with clear fur strokes, and framed by broad-leaf jungle plants, adobe walls and warm lantern light. Keep the red-eyed canine face primary and recognizable, not a wolf-man or lion. Painterly medieval fantasy collectible-card art, tactile fur, iron, earth and leaves, expressive hand-painted strokes, dramatic shadow-blue and amber light. Exact 1:1 SQUARE for editable 512x512 master; keep full face, eyes, muzzle and upper forelegs inside x24..488,y105..407; horizontal leap, quiet sky/road margins for 206:141 crop. No text, frame, letters, symbols, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-bc4ef712-efd8-4373-9cb1-b1ae155f6d49.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_38.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "The shift to focalPoint [0.5,0.42] preserves the Black Cadejo's complete red-eyed canine face, ears, muzzle and chain collar in the wide crop. Reviewed the 512-square source, revised direct 512×350 crop and 128×88 thumbnail; hindquarters and trailing chain extend incidentally."
+  },
+  {
+    "cardId": "shadow_summon_39",
+    "name": "Night Mare",
+    "prompt": "Paint an original illustration for the exact card Night Mare: a nightmare horse from dark folklore, shown as one powerful black mare galloping out of a moonlit burial mound into a misty medieval moor. It must read unmistakably as an anatomical horse: long equine face, soft muzzle, pointed horse ears, large bright silver-white eye, muscular shoulder, flowing mane and long equine legs. Her thick mane and tail unravel into black-violet smoke, and shadowy soil streams around her hooves as if she has just risen from beneath the earth; a narrow dark ribbon reaches toward a fleeing traveler, suggesting the horse's night-haunting life-drain. Keep the horse's face and near eye large, clear and unmistakable; do not give her a human face, horns, wings, antlers or wolf traits. Painterly medieval fantasy collectible-card illustration, layered matte blacks and indigo, hand-brushed fur/mane strokes, broken fog edges, moonlit rim light and atmospheric depth. Exact 1:1 SQUARE for editable 512x512 master; compose the horse horizontally, keeping head, eye, muzzle and neck inside x24..488,y105..407 for the 206:141 crop; legs, tail and smoke may extend incidentally. Quiet moonlit sky and moor above/below. No frame, text, runes, symbols, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-fc6e4291-ecce-464a-935c-266386e9134f.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_39.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, direct 512×350 crop and 128×88 thumbnail: the nightmare reads as a horse, with complete equine head, near eye, ears and muzzle clear; shadow mane and moor rise from the earth, while legs and trailing shadow are incidental crops."
   }
 ]

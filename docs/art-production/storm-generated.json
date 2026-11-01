@@ -3598,5 +3598,95 @@
     "status": "generated",
     "batch": 14,
     "reviewNote": "Reviewed the 512-square source, direct 512×350 crop and 128×88 thumbnail: the living winged sphinx's feminine face, eyes, lion muzzle, feathers and full forward paw on the blank tablet remain readable; incidental hair tips, wing edges and travelers crop."
+  },
+  {
+    "cardId": "storm_summon_24",
+    "name": "Bronze Automaton",
+    "prompt": "Paint an original illustration for the exact card Bronze Automaton. Depict a single squat but powerful ancient bronze humanoid guardian standing protectively in a ruined temple doorway, broad segmented breastplate, thick articulated arms and a stern unmistakable face with two clear glowing blue eyes; one open metal hand guards a small traveler while the other reaches forward through a restrained blue-white storm aura that saps an approaching raider's strength. Make the bronze automaton the dominant subject, steady and unyielding, with archaic hand-forged plate seams and rivets, not modern machinery. Painterly medieval fantasy collectible-card art with visibly brushed bronze, layered paint strokes in the background, softly broken edges, matte metallic highlights and atmospheric storm light; expressive hand-painted surface, avoid polished CGI, photographic gloss or hyperreal detail. Exact 1:1 SQUARE for an editable 512x512 master; keep face, eyes and hands within x24..488,y105..407, horizontal staging and quiet stone/smoke above and below for 206:141 crop. No frame, writing, lettering, runes, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-77543655-69cc-465f-821f-be4109618b70.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_24.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reframed to focalPoint [0.5,0.42]. Reviewed the 512-square source and revised direct 512×350 crop/128×88 thumbnail: complete bronze face/eyes and both hands remain in frame; protective guard and storm attack read clearly."
+  },
+  {
+    "cardId": "storm_summon_25",
+    "name": "Talos the Bronze Giant",
+    "prompt": "Paint an original mythic illustration for the exact card Talos the Bronze Giant: the legendary colossal bronze automaton guardian of Crete, striding across a rocky shore in an ancient Greek gale. Show a towering broad-shouldered bronze giant in archaic hammered armor, with a strong recognizable human face and bright eyes, great articulated hands and huge feet; his mighty stride scatters rock and sand, disorienting tiny raiders below. Include a subtle sealed bronze channel running down one lower leg as a classical Talos detail, but keep the face and upper body primary. The giant should feel ancient, monumental and alive, not a robot from science fiction. Painterly medieval fantasy collectible-card art with clearly visible hand-brushed strokes across bronze, sea and clouds, matte aged metal, broken painterly edges, dramatic blue-gray storm and warm sunset light; avoid shiny CGI, photographic gloss, hyperrealism. Exact 1:1 SQUARE for 512x512 editable master; keep face, eyes, both hands and upper torso safely inside x24..488,y105..407; legs/feet may extend incidentally. Horizontal wide staging, quiet sky and shore margins for 206:141 crop. No frame, lettering, symbols, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5f69dd9e-dd90-439c-bdf2-ab5be07da40d.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_25.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reframed to focalPoint [0.5,0.34]. Reviewed the 512-square source and top-aligned direct 512×350 crop/128×88 thumbnail: Talos's face/eyes, torso and both hands are preserved; lower legs, feet and raiders crop incidentally."
+  },
+  {
+    "cardId": "storm_summon_26",
+    "name": "Clockwork Falcon",
+    "prompt": "Paint an original illustration for the exact card Clockwork Falcon: a living falcon-shaped medieval clockwork familiar diving across a stormy castle courtyard. It has a sharp natural falcon profile and clear bright eye, a curved hooked beak, overlapping feather-shaped bronze plates, articulated feathered-metal wings, and a few visible small brass gears at the shoulder; it remains unmistakably a falcon rather than a dragon or generic machine. A focused blue-white bolt fires from its beak toward a distant armored target, while the falcon’s chest clockwork glows as it overcharges. Painterly medieval fantasy collectible-card art, visibly hand-painted brush texture on each feather plate and storm sky, layered matte bronze and steel rather than glossy CGI, expressive brushwork and clear silhouette. Exact 1:1 SQUARE for 512x512 master; keep the whole head, eye, beak and wing roots within x24..488,y105..407; distant wing tips may crop. Horizontal flight, quiet cloud and stone margins for 206:141 crop. No modern technology, frame, text, lettering, numbers, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f6cb72aa-7638-4e12-a780-24e1045562a0.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_26.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, direct 512×350 crop and 128×88 thumbnail: unmistakable falcon face/eye, hooked beak, mechanical feather plates, shoulder gears and bolt remain readable; incidental wing tips crop."
+  },
+  {
+    "cardId": "storm_summon_27",
+    "name": "Horus the Far-Seeing",
+    "prompt": "Paint an original mythic illustration for the exact card Horus the Far-Seeing: the noble Egyptian sky god in his sacred falcon form, a great dark-gold peregrine falcon perched upon a worn temple obelisk above the Nile at stormy dawn. Give him a sharply hooked falcon beak, clear far-seeing amber eyes, regal blue-and-gold double crown of Upper and Lower Egypt, and broad layered wings; a faint blue-white static arc travels from his vigilant eye toward a distant enemy, suggesting precise supernatural vision and a controlled stun. This is the named god Horus, not an ordinary bird: dignified, royal and divine, but anatomically a falcon. Painterly medieval fantasy collectible-card art with visible hand-brushed feather strokes and matte gold-blue pigments, softened edges, atmospheric Nile clouds and dramatic dawn light; avoid photorealistic gloss and polished CGI. Exact 1:1 SQUARE for an editable 512x512 master; keep both eyes, full beak, crown and head completely within x24..488,y105..407; wings may extend incidentally. Horizontal composition with quiet sky and river margins for 206:141 crop. No hieroglyphic writing, frame, text, lettering, symbols, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-353c9c0d-a6c2-4d99-9039-7d82f070025c.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_27.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reframed to focalPoint [0.5,0.34]. Reviewed the 512-square source and top-aligned direct 512×350 crop/128×88 thumbnail: Horus's complete crown, falcon head, eyes and hooked beak remain visible; lower perch/body and wing tips crop incidentally."
+  },
+  {
+    "cardId": "storm_summon_28",
+    "name": "Ibis Scribe",
+    "prompt": "Paint an original illustration for the exact card Ibis Scribe: a graceful, slender Egyptian ibis-headed scholar standing in an ancient temple archive at night. Give the figure a distinctively long down-curved black ibis beak, attentive amber eye, white-feathered head and neck, dark wing-feather mantle over simple ivory linen, and two clear humanlike hands: one holds a reed stylus poised over a blank papyrus roll, the other supports a wooden writing palette. The papyrus has no visible marks or writing. A narrow beam of pale blue-white storm light flows from the scribe's beak toward a distant shadow, and a faint upward swirl of feathers and light suggests the risen magical guardian. Keep the ibis face/beak, eye, both hands, stylus and blank scroll unmistakable; this is a bird-headed scribe, not a human in a bird mask. Painterly medieval fantasy collectible-card illustration with clearly visible hand-brushed feather and linen texture, matte pigments, layered expressive strokes, softly broken edges, warm candlelight against storm blue, atmospheric depth. Exact 1:1 SQUARE for an editable 512x512 master; horizontal pose with face, eye, beak, hands, stylus and scroll inside x24..488,y105..407; quiet archive above and below for 206:141 crop. No hieroglyphs, readable marks, frame, text, symbols, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-499641d3-a944-4804-8107-fee37b2c6853.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_28.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, direct 512×350 crop and 128×88 thumbnail: the white ibis head, amber eye, long curved black beak, both hands, reed stylus and blank scroll remain fully readable; the luminous ibis-shaped spirit and temple archive are incidental atmosphere."
   }
 ]

@@ -3593,5 +3593,95 @@
     "status": "generated",
     "batch": 14,
     "reviewNote": "Shishi Lion-Dog’s guardian mane, broad face, eyes and pouncing paws remain visible in the 206:141 crop and 128px thumbnail. Painterly fantasy presentation. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_14",
+    "name": "Oni Brute",
+    "prompt": "Paint a new original card illustration of the same blue-gray Japanese Oni Brute, preserving his tusks, black mane, two horns and battered iron shoulder armor. Compose a compact, wide, waist-up pounce with the full expressive face centered at y≈245 and both large clawed hands raised beside the face at y≈325, not hanging below his waist. Include clear complete horn tips and all claws; keep the character smaller so there is visible smoky sky above and ember-lit space below. This is a square image designed to be cropped into a horizontal card window: keep face, eyes, horns and both hands in the central stripe y=120..390. Distinct hand-painted fantasy illustration, obvious brushstrokes and simplified matte painted planes, textured blue-gray skin and worn iron, strong amber rim light, atmospheric smoke. Avoid glossy photography, 3D render, hyperreal surfaces or lens effects. 1:1 square for 512x512 master, no text, no border or UI, no anime, Disney cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-18d4c4ee-b6ca-4796-9e97-2695280626db.png",
+    "focalPoint": [
+      0.5,
+      0.37
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, wide crop and thumbnail. Blue-gray oni identity, complete horns and face, eyes, and both forward claws remain visible in the crop; pouncing motion reads clearly. Textured, visibly painted surfaces with cinematic highlights.",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "fire_summon_15",
+    "name": "Red Oni",
+    "prompt": "Repaint and recompose this Red Oni as a hand-painted medieval-fantasy collectible-card illustration. Preserve the imposing scarlet Japanese oni, black mane, tusks and dark lamellar armor, but replace the oversized vertical full-body charge with a compact horizontal chest-up trample pose. Keep the complete face, both horn tips, eyes and both clenched hands in one clear central band; show only enough broken stone and embers at the lower edge to suggest unstoppable trample and explosive fire. Use visible brushwork, simplified readable shape planes, matte crimson skin, rough cloth and worn iron, with attractive firelight and painted smoke. Avoid glossy photographic skin, 3D-render shine, lens effects and hyperreal microdetail. Explicit square 1:1 canvas for a 512x512 editable source; critical face, horns, eyes, hands and upper anatomy within x24..488,y105..407 for the 206:141 card crop, quiet smoke above and below. No weapon, frame, writing, numbers, UI, anime, Disney cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6ebe7b83-8d5b-4cdb-8546-6e2f7f836bc6.png",
+    "focalPoint": [
+      0.5,
+      0.37
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, wide crop and thumbnail. Red oni face, complete horns, eyes and both charging fists remain readable; broken stone and embers support the trample/explosive traits. Visible painterly texture and warm directional light.",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "fire_summon_17",
+    "name": "Minotaur",
+    "prompt": "Paint a new original card illustration of the same russet-furred humanoid Minotaur, preserving a bovine muzzle, ears, two large horns and bronze harness. Recompose as a compact, wide waist-up forward lunge; the complete bull face is centered around y≈240 and both powerful humanoid hands are raised near chest height at y≈325, fully visible with space around each fist. Do not show an axe. It must remain a bull-headed humanoid, not a four-legged bull. Keep face, eyes, full horn tips and both hands inside the central stripe y=120..390 of the square so they all survive a horizontal card crop; quiet arena sky above and dust below. Hand-painted medieval-fantasy illustration with clear visible brushstrokes, simplified matte fur, leather and bronze, warm firelight and painted atmospheric depth. Avoid glossy photo realism, 3D render shine, lens effects or hyperreal texture. Explicit square 1:1 512 master; no text, frame, numbers or UI, no anime, Disney cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4ecb4bad-2701-4bb7-a57f-55476d42410b.png",
+    "focalPoint": [
+      0.5,
+      0.37
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, wide crop and thumbnail. Bull-headed humanoid face, full horns, eyes and both hands remain intact; its humanoid anatomy reads distinctly from a four-legged bull. Textured hand-painted surfaces and a clear forward trample pose.",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_17.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "fire_summon_16",
+    "name": "Oni Warlord",
+    "prompt": "Create original illustration-only fantasy card art of the Oni Warlord, a legendary Japanese ogre-demon with dark crimson skin, two swept ivory horns, tusks, thick black hair tied high, and black-bronze lamellar armor. Use a three-quarter chest-up portrait, shoulders square to the viewer, face near center. One complete gauntleted hand is raised beside his cheek on the RIGHT side of the composition, fingers fully visible; the other hand is hidden behind his torso. The gesture is a poised pounce, not a long reaching arm. The entire head, both horn tips, eyes and raised hand fit comfortably inside a central horizontal stripe with generous margins on all sides; no body part touches the image border. Paint this as a traditional medieval-fantasy collectible-card illustration with visible brushstrokes, broad simplified matte shapes, textured worn metal, cloth and hair, dramatic amber firelight and painted atmospheric depth. Keep the finish painterly and matte, not photographic, not glossy 3D. Explicit square 1:1 composition for a 512x512 editable source; safe face, horns, hand in x24..488 and y105..407 for the 206:141 crop. Quiet smoky sky above and below. No weapon, text, letters, border, numbers, UI, anime, Disney cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2b6c6261-f32e-488d-8f6a-bdef46921c40.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_16.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, focal-adjusted wide crop and thumbnail. Both horn tips, full face, eyes and the complete raised hand remain visible; the compact chest-up pose reads as an oni warlord. Textured painted surfaces and warm directional light."
+  },
+  {
+    "cardId": "fire_summon_18",
+    "name": "Fire Bull",
+    "prompt": "Paint an original illustration for the fantasy summon card Fire Bull. This is a real four-legged bull, not a humanoid minotaur: a powerful russet-brown bull with a broad bovine muzzle, two full ivory horns, alert eyes, heavy neck and clearly quadruped shoulders, surging through a scorched medieval pasture. Use a compact horizontal three-quarter composition: the complete bull face, eyes and horns dominate, with front legs and a raised hoof showing steady trample; ember-cracked earth and lightly scorched grass hint at its fire and curse. Do not add armor, rider or humanoid limbs. Painterly medieval fantasy collectible-card art with visible brush strokes, simplified matte planes and rich painted fur, horn and earth; dramatic warm low sunlight, restrained fire glow, atmospheric depth and the artful hand-painted finish of the supplied Hexmancers reference. Avoid glossy photographic fur, 3D shine, camera effects and hyperreal detail. Explicit 1:1 square canvas for a 512x512 editable master; keep face, both complete horns, eyes and defining shoulders in x24..488,y105..407 for the 206:141 crop, quiet smoke and sky above, expendable grass below. No frame, text, numbers, UI, anime, Disney cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2d96d0ba-9479-4a59-ab10-25da69b42cc3.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_18.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.37
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, focal-adjusted wide crop and thumbnail. This is a true four-legged bull, distinct from the humanoid Minotaur; full horns, face and eyes stay visible, and scorched ground supports its charge. Lower legs are incidental crop detail. Painterly fur texture and warm directional light."
   }
 ]

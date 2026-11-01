@@ -118,7 +118,7 @@ function cardEl(c,extra,locked,mode,opts={}){
    - type line: type · role, whole, 16 down to 10;
    - rules: 18 on 16.5 (3 lines), 16 on 14.5 (4), 14 on 12 (5); longer still, the box scrolls on a big card (a fade
      at its foot), and the full text is in its title either way;
-   - footer value: 14 down to 10; count: 22 down to 14.
+   - footer value: 14 down to 10 (a small card, which drops the labels: 20 down to 10); count: 22 down to 14.
    The faces' vertical ink centring (--ink-dy) is measured here too, once per face. */
 const KIT_FIT={canvas:null, ready:false};
 function kitMeasure(text,px,face){ const cv=KIT_FIT.canvas||(KIT_FIT.canvas=document.createElement('canvas')), x=cv.getContext('2d');
@@ -139,6 +139,9 @@ function kitFit(el){ if(!el||!el.dataset||el.dataset.kname==null){ if(el&&el.que
   const rb=el.querySelector('.k-rules'), rt=rb.textContent, fit=[[18,16.5],[16,14.5],[14,12]].find(([s,l])=>kitLines(rt,s,G.w.rules)*l<=G.w.rulesH)||[14,12];
   set(el,'--rfs',fit[0]); set(el,'--rlh',fit[1]); rb.classList.toggle('scroll',kitLines(rt,fit[0],G.w.rules)*fit[1]>G.w.rulesH);
   el.querySelectorAll('.k-foot>span').forEach(v=>set(v,'--vfs',steps(G.type.footer[0],10,1).find(s=>kitMeasure(v.textContent,s)<=G.w.foot)||10));
+  // a small card: both footer values at one size, the largest that fits the longer of them
+  const fv=[...el.querySelectorAll('.k-foot>span')].map(v=>v.textContent);
+  set(el,'--vfss',steps(20,10,1).find(s=>fv.every(t=>kitMeasure(t,s)<=G.w.footS))||10);
   el.querySelectorAll('.k-count').forEach(b=>set(b,'--cfs',steps(G.type.count[0],14,1).find(s=>kitMeasure(b.textContent,s)<=G.w.count-pad)||14));
   // short glyph runs (rune, rank, count) centre on their own painted ink, measured for the string itself
   el.querySelectorAll(':scope>:is(.k-rune,.k-rank,.k-count)>span').forEach(sp=>{ const o=kitInkOf(sp.textContent); sp.style.transform='translate('+o[0].toFixed(3)+'em,'+o[1].toFixed(3)+'em)'; }); }

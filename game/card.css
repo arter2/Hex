@@ -84,7 +84,7 @@ html body #dkColl .card.kit.full .dkfrac{color:#ffd866;}
 /* a small card (a hand, a grid of many) keeps the same frame and its rules, shrunk with the card (kitFit picks the
    size); it drops the footer's labels (its icons and numbers stay) */
 @container (max-width:179px){
-  .card.kit .k-foot small{display:none;} .card.kit .k-foot span{font-size:calc(20 * var(--u)); line-height:1;}
+  .card.kit .k-foot small{display:none;} .card.kit .k-foot span{font-size:var(--vfss,calc(20 * var(--u))); line-height:1;}
 }
 
 /* the combo / recipe tag over the art's foot (v175) */

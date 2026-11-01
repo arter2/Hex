@@ -1439,6 +1439,6 @@ function unitSprite(u){
     else (THING[key]||THING.sentry)(()=>.5); });
 }
 
-Object.assign(root,{ART_SIZE,cardArt,artCSV,artURL,cardIllustration,cardArtVariants,cardArtSprite,cardArtThumb,motifKey,unitSprite,lookSprite,rigSprite,palFrame,palSprite,palPlay,palHas,LOOK_ALIAS});
+Object.assign(root,{ART_SIZE,cardArt,artCSV,artURL,cardIllustration,cardArtVariants,cardArtSprite,cardArtThumb,motifKey,unitSprite,lookSprite,playerLook,rigSprite,palFrame,palSprite,palPlay,palHas,LOOK_ALIAS});
 if(typeof module!=='undefined') module.exports={ART_SIZE,cardArt,artCSV,motifKey};
 })(typeof window!=='undefined'?window:globalThis);

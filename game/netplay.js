@@ -18,7 +18,7 @@ const _nOpt=p=>v=>v===undefined||p(v);
 
 // SHAPES[t][field] = predicate; every listed field is checked (use _nOpt for optional ones).
 const SHAPES={
-  hello:{v:_nFin,name:_nName,deck:_nDeck},
+  hello:{v:_nFin,name:_nName,deck:_nDeck,look:_nOpt(_nStr)},   // look: the sender's hexmancer (art.js PLAYER_LOOKS id), optional
   ready:{},
   start:{seed:_nFin},
   pos:{ts:_nFin,fx:_nFin,fz:_nFin,vx:_nFin,vz:_nFin},

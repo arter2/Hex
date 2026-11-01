@@ -13,17 +13,22 @@ Code: `game/netplay.js` (message format and checks), `game/netduel.js` (the duel
 
 ## 1. Starting a duel
 
-Multiplayer is in the debug menu, not on the main menu: open **Debug › General › Multiplayer** and press
-**Start a duel**.
+At camp, tap **Duel a friend**. (Debug › General › Multiplayer › **Start a duel** opens the same screen; from there,
+leaving goes back to the main menu instead of camp.)
 
-The button is greyed out, with the reason under it, when:
+The camp button is dimmed when your saved deck cannot duel; tapping it then says why (no deck, or the deck does not
+pass the normal deck check). The debug button is greyed out, with the reason under it, when:
 
 - no game is started or loaded,
 - you have no deck, or your saved deck does not pass the normal deck check (fix it at camp),
 - you are in a fight or a dungeon run,
 - a duel is already set up.
 
-On the Duel screen, type a name (it is remembered on this device) and pick **Host** or **Join**. One player hosts and
+The Duel screen shows your hexmancer, your name and your saved deck at the top, and a three-step track (Choose,
+Connect, Fight) under it. The lobby shows both hexmancers, you against them: each side sends its look with its name,
+and in the fight the other player's mage is drawn with their own look.
+
+On the Duel screen, type a name (it is remembered on this device) and pick **Host** or **Join**. The code steps have **Copy code** and **Paste** buttons (Paste reads the clipboard where the browser allows it; otherwise long-press the box). One player hosts and
 the other joins. Then pick how to connect: **Wi-Fi code** or **Room**.
 
 ### 1a. Wi-Fi code (WebRTC, no setup)

@@ -400,6 +400,7 @@ function openCamp(){
   if(pickDepth==null) pickDepth=save.deepest;
   pickDepth=Math.min(Math.max(1,pickDepth),save.deepest);
   const d=activeDeck(), v=validateDeck(d.list,CARDS,save.owned);
+  $('#goDuel').classList.toggle('off',!v.ok);   // still tappable: it says why it can't duel
   $('#campGold').innerHTML=uiIcon('coin',32)+save.gold; xpBar($('#campLevel'));
   $('#campColl').innerHTML=uiIcon('cards',32)+ownedUnique(save)+'<span class="campshard">'+uiIcon('shard',28)+(save.shards||0)+'</span>'+(Object.keys(gearState(save).cursed).length?' <em class="curse">cursed</em>':'');
   $('#campDeck').textContent=d.name;
@@ -456,6 +457,7 @@ $('#depthUp').onclick=()=>{ pickDepth++; openCamp(); };
 $('#btnDescend').onclick=()=>enterExplore(pickDepth);
 $('#btnQuick').onclick=()=>fight(pickDepth);   // the battle on its own, no dungeon
 $('#goBuilder').onclick=()=>openBuilder();
+$('#goDuel').onclick=()=>{ const why=duelDeckProblem(); if(why) return tip(why); openDuel('camp'); };
 $('#goCollection').onclick=()=>openCollection();
 $('#goShop').onclick=()=>openShop();
 $('#goChar').onclick=()=>openCharacter();
@@ -1526,18 +1528,25 @@ window.addEventListener('keydown',e=>{ if(e.key!=='Escape'||keyCapture) return;
   if(back){ e.preventDefault(); e.stopImmediatePropagation(); back.click(); } },true);
 
 /* ---------------- local duel ----------------
-   Debug › Multiplayer › Start a duel opens #scrDuel: Host or Join, then a Wi-Fi code (WebRTC, nettransport.js: the
+   Camp's Duel a friend (or Debug › Multiplayer › Start a duel) opens #scrDuel: Host or Join, then a Wi-Fi code (WebRTC, nettransport.js: the
    host's code goes to the guest, the guest's code comes back) or a Room (the LAN relay, http pages only), then the
    lobby and the duel itself (battle.js startDuel, netduel.js DuelSession). A duel ends in one place, duelOver, with
    a result card; leaving (Back, the pause menu's Leave) is duelLeave. Both stop the session, the transport and the
    timers, so nothing of a duel outlives it. */
-const DU={step:'role', host:false, gen:0, timeout:20000, tr:null, accept:null, session:null, list:null, timer:0, startT:0, waitT:0, closed:false, over:false};
+const DU={step:'role', from:'menu', host:false, gen:0, timeout:20000, tr:null, accept:null, session:null, list:null, timer:0, startT:0, waitT:0, closed:false, over:false};
 const DU_NAME_KEY='hexmancers-mpname', DU_SLOW_MSG='Could not connect. Check you are on the same Wi-Fi and try again.', DU_PROBE='hexmancers-hi';
 const DU_STEPS={role:'duRole', how:'duHow', hostcode:'duHostCode', joincode:'duJoinCode', answer:'duAnswerStep', room:'duRoomStep', wait:'duWait', lobby:'duLobby'};
 // Room (the relay) needs a page served over http: by something that runs it; itch.io pages are https and cannot reach it
 const duelRoomOk=(proto,host)=>proto==='http:'&&!/itch\.(io|zone)$/i.test(host||'');
 const duMsg=t=>{ $('#duMsg').textContent=t||''; };
-function duStep(name,msg){ DU.step=name; for(const k in DU_STEPS) $('#'+DU_STEPS[k]).hidden=k!==name; duMsg(msg); }
+const DU_TRACK={role:0, lobby:2};   // every other step is Connect (1)
+function duStep(name,msg){ DU.step=name; for(const k in DU_STEPS) $('#'+DU_STEPS[k]).hidden=k!==name; duMsg(msg);
+  const at=name in DU_TRACK?DU_TRACK[name]:1; document.querySelectorAll('#duTrack li').forEach(li=>{ const i=+li.dataset.i; li.classList.toggle('on',i===at); li.classList.toggle('done',i<at); }); }
+// a hexmancer look drawn into one of the screen's canvases, front view
+function duSprite(cv,look){ const x=cv.getContext('2d'); x.clearRect(0,0,cv.width,cv.height); x.imageSmoothingEnabled=false;
+  const sp=typeof lookSprite==='function'?lookSprite(look||'wizard','front',true):null; if(sp) x.drawImage(sp.img,0,0,sp.img.width,sp.img.height,0,0,cv.width,cv.height); }
+// back where the duel was opened from: camp, or the main menu (the debug menu's Start a duel)
+const duHome=()=>DU.from==='camp'&&save?openCamp():openMenu();
 function duelName(){ const v=($('#duName').value||'').trim().slice(0,20); return v||'Hexmancer'; }
 // '' when the saved deck can duel, else why not
 function duelDeckProblem(){ if(!save) return 'Start or load a game first.'; const d=activeDeck(); if(!d) return 'You have no deck yet.';
@@ -1556,16 +1565,20 @@ function duStop(){ clearInterval(DU.timer); clearTimeout(DU.startT); clearTimeou
   duelPauseSync(); }
 // leave a duel (or its pairing) at any point: the local battle stops and the game is back at the menu (quiet: no menu)
 function duelLeave(quiet){ duStop(); $('#custom').classList.remove('on'); $('#pause').classList.remove('on'); paused=false;
-  if(B&&B.pvp) B=null; DU.over=false; if(!quiet) openMenu(); }
-function openDuel(){ if(DU.session||DU.tr) duStop(); try{ xDbgClose(); }catch(e){}
+  if(B&&B.pvp) B=null; DU.over=false; if(!quiet) duHome(); }
+function openDuel(from){ if(DU.session||DU.tr) duStop(); try{ xDbgClose(); }catch(e){}
+  DU.from=from==='camp'?'camp':'menu';
   try{ $('#duName').value=localStorage.getItem(DU_NAME_KEY)||''; }catch(e){}
+  duSprite($('#duMe'),playerLook());
+  const d=save&&activeDeck(), why=duelDeckProblem(), dk=$('#duDeck'); dk.classList.toggle('bad',!!why);
+  dk.innerHTML=why?esc(why):'Deck: <b>'+esc(d.name||'My deck')+'</b> · '+d.list.length+' cards';
   duStep('role'); show('scrDuel'); }
 const duRace=(p,ms)=>new Promise((res,rej)=>{ const t=setTimeout(()=>rej(new Error(DU_SLOW_MSG)),ms); p.then(v=>{ clearTimeout(t); res(v); },e=>{ clearTimeout(t); rej(e); }); });
 function duFail(g,msg){ if(g!==DU.gen) return; duStop(); duStep('how',msg instanceof Error?msg.message:msg||DU_SLOW_MSG); }
 
 // the duel session over a transport that is open (both ends): lobby, start, result
 function duBegin(tr,host){
-  const d=activeDeck(), s=new DuelSession(tr,{name:duelName(),deck:d.list.slice(),host});
+  const d=activeDeck(), s=new DuelSession(tr,{name:duelName(),deck:d.list.slice(),host,look:playerLook()});
   try{ localStorage.setItem(DU_NAME_KEY,$('#duName').value.trim().slice(0,20)); }catch(e){}
   DU.session=s; DU.tr=tr; DU.list=d.list.slice(); DU.over=false; DU.closed=false;
   const g=DU.gen, oc=tr.onclose; tr.onclose=()=>{ DU.closed=true; if(oc) oc(); };   // a bye comes before a close; a close alone is a lost connection
@@ -1574,7 +1587,9 @@ function duBegin(tr,host){
   DU.timer=setInterval(()=>{ try{ s.tick(); }catch(e){ console.error('duel tick:',e); } },500);
   duelPauseSync();
   clearTimeout(DU.waitT); DU.waitT=setTimeout(()=>{ if(DU.session===s&&s.state==='connecting') duFail(g,DU_SLOW_MSG); },DU.timeout);
-  s.on('lobby',m=>{ if(DU.session!==s) return; clearTimeout(DU.waitT); duStep('lobby'); $('#duLobbyTxt').textContent='Opponent: '+m.name; });
+  s.on('lobby',m=>{ if(DU.session!==s) return; clearTimeout(DU.waitT); duStep('lobby');
+    $('#duVsMeName').textContent=duelName(); $('#duLobbyTxt').textContent=m.name||'Hexmancer';
+    duSprite($('#duVsMe'),playerLook()); duSprite($('#duVsOpp'),m.look||'wizard'); });
   s.on('refused',m=>{ if(DU.session!==s) return;
     const why=m.reason==='timeout'?DU_SLOW_MSG:m.reason==='peer left'?'The other player left.':'Duel refused: '+m.reason+(m.reason==='invalid deck size'?' (a duel deck has 45 to 60 cards)':'')+'.';
     duStop(); $('#duWaitTxt').textContent=''; duMsg(why); });
@@ -1599,13 +1614,18 @@ function duelOver(s,result,reason){ if(DU.session!==s||DU.over) return; DU.over=
   const title=result==='draw'?'Draw':result==='lose'?'You lost':reason==='timeout'||(reason==='left'&&DU.closed)?'Connection lost':reason==='left'?'Opponent left':'You won';
   const text={'Draw':'You both fell at the same moment.','You lost':'Their spell found you first.','You won':'You outlasted them.','Opponent left':'The other player left the duel.','Connection lost':'The other phone stopped answering.'}[title];
   duStop(); $('#custom').classList.remove('on'); $('#pause').classList.remove('on'); paused=false; dragAbort();
-  reveal(title,text+' A duel gives nothing and costs nothing.',[],[['Back to menu',()=>{ B=null; DU.over=false; openMenu(); }]]); }
+  reveal(title,text+' A duel gives nothing and costs nothing.',[],[[DU.from==='camp'?'Back to camp':'Back to menu',()=>{ B=null; DU.over=false; duHome(); }]]); }
 
 // ---- the pairing screen ----
 function duCopy(btn,ta){ ta.focus(); ta.select(); let ok=false; try{ ok=document.execCommand('copy'); }catch(e){}
-  const done=r=>{ btn.textContent=r?'Copied ✓':'Select & copy ↓'; setTimeout(()=>{ btn.textContent='Copy'; },1800); };
+  const label=btn.dataset.label||(btn.dataset.label=btn.textContent);
+  const done=r=>{ btn.textContent=r?'Copied ✓':'Select & copy ↓'; setTimeout(()=>{ btn.textContent=label; },1800); };
   if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(ta.value).then(()=>done(true),()=>done(ok)); else done(ok); }
 $('#duCopy').onclick=()=>duCopy($('#duCopy'),$('#duOffer'));
+// Paste: the clipboard straight into the box, or (no clipboard access) the box focused for a long-press paste
+for(const id of ['duPaste1','duPaste2']) $('#'+id).onclick=async()=>{ const ta=$('#'+$('#'+id).dataset.to);
+  try{ const t=await navigator.clipboard.readText(); if(t){ ta.value=t.trim(); duMsg(''); return; } }catch(e){}
+  ta.focus(); duMsg('Long-press the box and choose Paste.'); };
 $('#duCopy2').onclick=()=>duCopy($('#duCopy2'),$('#duAnswer'));
 $('#duBack').onclick=()=>{ if(DU.step==='role') return duelLeave(); duStop(); if(DU.step==='how') return duStep('role'); duStep('how'); };
 $('#duHost').onclick=()=>{ DU.host=true; duStep('how'); $('#duHowTxt').textContent='You host. How will your friend connect?'; duHow(); };

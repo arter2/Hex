@@ -40,6 +40,7 @@ class DuelSession{
     this.transport=transport;
     this.name=opts.name||'';
     this.deck=opts.deck||[];
+    this.look=opts.look||'';
     this.host=!!opts.host;
     this.now=opts.now||(()=>Date.now());
     this._seed=opts.seed||(()=>Math.floor(Math.random()*4294967296));
@@ -59,7 +60,8 @@ class DuelSession{
     this._lastRx=this.now();
     transport.onmessage=text=>{ const m=_np.decode(text); if(m) this._handle(m); };
     transport.onclose=()=>this._onClose();
-    this._send({t:'hello',v:_np.NET_V,name:this.name,deck:this.deck},false);
+    const hi={t:'hello',v:_np.NET_V,name:this.name,deck:this.deck}; if(this.look) hi.look=this.look;
+    this._send(hi,false);
   }
 
   on(name,fn){ (this._h[name]||(this._h[name]=[])).push(fn); return this; }
@@ -130,10 +132,10 @@ class DuelSession{
       this._emit('refused',{reason:why});
       return;
     }
-    this.opp={name:m.name};
+    this.opp={name:m.name,look:m.look||''};
     this.state='lobby';
     this._lastRx=this.now();
-    this._emit('lobby',{name:m.name});
+    this._emit('lobby',{name:m.name,look:m.look||''});
     this._ping(); this._burstLeft=NET_BURST_N-1; this._burstNext=this.now()+NET_BURST_GAP;
     if(this.host&&this.state==='lobby'){
       const seed=this._seed();

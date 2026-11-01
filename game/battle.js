@@ -1969,7 +1969,7 @@ function tinted(img,c){ let m=TINTS.get(img); if(!m) TINTS.set(img,m={}); if(m[c
   const cv=document.createElement('canvas'); cv.width=img.width; cv.height=img.height; const x=cv.getContext('2d');
   x.drawImage(img,0,0); x.globalCompositeOperation='source-in'; x.fillStyle=c; x.fillRect(0,0,cv.width,cv.height); return m[c]=cv; }
 function drawSprite(ctx,u,T,S,o){
-  const spr=typeof unitSprite==='function'?unitSprite(u.remote?{kind:'player',view:'front',look:B.player.look}:u):null, [wx,wz]=posOf(u), [x,y]=proj(wx,0,wz);
+  const spr=typeof unitSprite==='function'?unitSprite(u.remote?{kind:'player',view:'front',lookId:B.pvp&&B.pvp.session.opp&&B.pvp.session.opp.look||undefined}:u):null, [wx,wz]=posOf(u), [x,y]=proj(wx,0,wz);
   const sc=(o.scale||1)*((spr&&spr.zoom)||1), H=S*2.7*sc, k=H/32, alpha=o.alpha==null?1:o.alpha;
   if(!spr){ if(gl3()) return {x,top:y-H};
     const g=ctx.createRadialGradient(x,y,0,x,y,S*.62*sc); g.addColorStop(0,'rgba(0,0,0,.55)'); g.addColorStop(1,'rgba(0,0,0,0)');

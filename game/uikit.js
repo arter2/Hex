@@ -131,6 +131,10 @@ const ICONS={
     for(const x of [9,11,13,15]) I.set(x,19,C.gold3); I.set(7,6,light(C.gold)); },
   scroll(I,a){ I.rect(5,4,18,19,C.paper); I.rect(6,5,17,18,C.white); I.rect(3,2,20,4,C.paper2); I.rect(3,19,20,21,C.paper2); I.line(3,3,20,3,C.paper);
     for(const y of [8,11,14]) I.line(8,y,15,y,dark(a,.3)); I.rect(11,19,13,23,a); I.set(12,23,dark(a)); },
+  // a duel: two wands crossed, a frost gem and a fire gem, a spark where they meet
+  duel(I){ I.line(3,21,17,7,C.wood2,2); I.line(3,20,16,7,C.wood3); I.line(20,21,6,7,C.wood2,2); I.line(20,20,7,7,C.wood3);
+    I.poly([[19,1],[22,4],[19,7],[16,4]],C.blue); I.set(19,3,C.white); I.poly([[4,1],[7,4],[4,7],[1,4]],FIRE[3]); I.set(4,3,C.white);
+    I.set(11,13,C.white); I.set(12,13,C.white); I.set(11,12,C.gold); I.set(12,14,C.gold); I.set(10,13,C.gold); I.set(13,13,C.gold); },
   wand(I,a){ I.line(3,20,15,8,C.wood2,2); I.line(3,19,14,8,C.wood3); I.line(4,19,6,17,C.gold,2);
     I.poly([[18,2],[21,5],[18,8],[15,5]],a); I.set(18,4,C.white); I.set(17,5,light(a)); I.set(19,6,dark(a));
     for(const [x,y] of [[22,1],[14,1],[22,9],[13,9]]) I.set(x,y,light(a,.3)); },

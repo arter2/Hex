@@ -3984,10 +3984,46 @@
     ],
     "focalPoint": [
       0.5,
-      0.34
+      0.38
     ],
     "status": "generated",
     "batch": 14,
-    "reviewNote": "Upward-adjusted crop retains the monk’s full head/face, staff hand and glowing empowering hand; secondary companion is partially cropped below. Shrine and mountain light remain. Painterly treatment; clear at 128px. Awaiting parent review."
+    "reviewNote": "Slightly downward-adjusted crop preserves the monk’s full head, staff head and casting fingers; upper companion is secondary. Painterly mountain-shrine light. Parent reviewing updated crop."
+  },
+  {
+    "cardId": "fire_summon_36",
+    "name": "Tengu",
+    "prompt": "Paint “Tengu,” a legendary Japanese mountain spirit in the long-nosed yamabushi Tengu tradition: a stern red-faced humanoid with a very long nose, bright amber eyes, dark feathered wings and a small black mountain-ascetic cap over layered robes. He holds a folded war fan in one hand and a short wooden staff in the other, both calmly at his sides. Keep the entire long-nosed face and eyes clearly visible; the black wings may extend beyond the frame. Painterly medieval high-fantasy collectible-card art with visible brush texture, culturally grounded Japanese folklore details, nuanced feathers and cloth, dramatic mountain light and atmospheric depth, no photographic gloss. Explicit 1:1 SQUARE canvas for an editable 512×512 master. Compose Tengu’s face and upper body horizontally in the central area; preserve face/eyes, both hands and small handheld fan/staff inside x24…488,y105…407 for the true 206:141 crop. Quiet pine-mountain atmosphere above and below, readable at 96px. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2b52fbf1-47b7-4698-810e-94a313ec3a0d.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_36.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Upward-adjusted crop retains Tengu’s whole cap/head and long-nosed face/eyes, plus fan and staff hands; wing tips may crop. Painterly Japanese mountain setting. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_37",
+    "name": "Lantern Ghost",
+    "prompt": "Paint “Lantern Ghost,” a gentle wandering spirit from an old Japanese mountain tale, a translucent pale-blue ghost with a distinct calm face and luminous eyes, wearing a tattered pale kimono-like robe. It holds a small complete wooden-and-paper lantern with both spectral hands; warm golden light glows through the paper and softly mends a cracked stone marker below. Keep the ghost’s full face/eyes, both hands and the entire lantern clearly together; lantern is the key portable feature, compact and unobscured. Painterly medieval high-fantasy collectible-card art with visible brush texture, atmospheric night lighting, nuanced old wood, paper and flowing spirit cloth, no photographic gloss. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Compose spirit and lantern horizontally in the central area; preserve full head, eyes, hands and entire lantern inside x24…488,y105…407 for the true 206:141 crop. Quiet moonlit shrine atmosphere above and below, clear at 96px. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7dd78a77-c250-4b65-84cf-3637cda331b5.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_37.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Upward-adjusted crop keeps the ghost’s full head and luminous face, both hands and complete paper lantern intact in the 206:141 crop and 128px thumb. Painterly moonlit shrine. Awaiting parent review."
   }
 ]

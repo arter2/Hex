@@ -3910,7 +3910,7 @@
     "cardId": "verdant_summon_46",
     "name": "Tanuki Drummer",
     "prompt": "Paint an original folklore illustration for the exact card Tanuki Drummer. Depict one naturalistic Japanese raccoon-dog tanuki in a moonlit cedar grove, seated upright beside a small hand-built wooden taiko drum and beating it with its two forepaws; the drumbeat sends out a few gentle green-gold rings of empowering forest light. Give the real animal a rounded dark eye mask, small pointed ears, compact muzzle, gray-brown coat and a full bushy banded tail. Keep the complete tanuki face/eyes, both paws and drumhead clearly visible. Grounded wild animal and folkloric atmosphere, not a raccoon, fox, toy, plush mascot or cartoon; no human clothes or human hands. Painterly medieval fantasy collectible-card art, tactile fur, wood and hide, quiet forest mist, warm lanternlike light, natural anatomy and textured brushwork. Exact 1:1 SQUARE 512x512 master; place face, eyes, both drumming paws and the drum together within x24..488,y105..407 for 206:141 crop; tail may crop incidentally. No frame, text, symbols, logo, watermark, anime, Disney, photorealism or pixel art.",
-    "generatedPath": "/workspace/generated_images/exec-011b2ba4-99dc-4b4c-b49a-0a707682e58f.png",
+    "generatedPath": "/workspace/generated_images/exec-93e82bcc-b04e-48f2-a8fc-baaa074ce315.png",
     "editableSourcePath": "game/cards/art/masters/verdant_summon_46.png",
     "sourceNative": [
       1254,
@@ -3922,7 +3922,8 @@
     ],
     "status": "generated",
     "batch": 14,
-    "reviewNote": "Shifted to focalPoint [0.5,0.42]. Reviewed the 512-square source and shifted direct 512×350 crop/128×88 thumbnail: natural raccoon-dog's full mask, eyes, ears, both drumming paws and taiko drumhead remain clear; banded tail and lower body crop incidentally."
+    "reviewNote": "Repainted to correct species details, preserving the original composition and drum. Reviewed the replaced 512-square source, shifted direct 512×350 crop and 128×88 thumbnail: the natural Japanese raccoon-dog has a longer canine muzzle and plain unringed bushy tail; face/eyes, both drumming paws and drumhead remain visible.",
+    "revisionPrompt": "Edit the supplied Tanuki Drummer illustration while preserving its composition, moonlit Japanese cedar grove, wooden taiko drum, green-gold sound rings, and the animal's upright drumming action. Correct the animal to a natural Japanese raccoon dog (tanuki): give it a longer, narrower canine muzzle, small pointed canine ears, realistic gray-brown fur and subtle dark eye patches. Most important: its thick bushy tail must be plain, evenly gray-brown and completely unringed, with no stripes, bands or alternating dark/light rings anywhere. The tail should visibly read as a raccoon-dog tail, not a North American raccoon's striped tail. Keep the real animal wild and grounded, with natural paws striking the drum; no clothes, human hands, plush or cartoon mascot proportions. Maintain a clear complete face, both eyes, both drumming paws and the drumhead. Painterly medieval fantasy collectible-card art, textured fur and wood, atmospheric moonlight. Square illustration, no frame, text or UI."
   },
   {
     "cardId": "verdant_summon_47",
@@ -3941,5 +3942,23 @@
     "status": "generated",
     "batch": 14,
     "reviewNote": "Shifted to focalPoint [0.5,0.42]. Reviewed the 512-square source and shifted direct 512×350 crop/128×88 thumbnail: grizzly matriarch's complete face/eyes, ears and maternal stance remain clear, with cubs visible between her forelegs; lower paws crop incidentally."
+  },
+  {
+    "cardId": "verdant_summon_48",
+    "name": "Otso the Honey-Paw",
+    "prompt": "Paint an original Nordic forest-folklore illustration for the exact card Otso the Honey-Paw. Depict Otso as one ancient enormous Finnish brown bear, a revered old forest king, standing in a spruce-and-birch clearing. He has a broad natural bear muzzle, clear amber eyes, grizzled russet-brown fur and silver at the muzzle; one huge forepaw holds a torn honeycomb beside his face, dripping thick golden honey, so the named Honey-Paw feature is unmistakable. A few small forest bears wait in the background as Otso shares the honey and a soft green-gold mend glow passes among them. Keep the bear fully animal and dignified, not a human in a bear suit, teddy bear or costumed mascot. Painterly medieval fantasy collectible-card illustration, tactile fur, bark and amber honey, layered expressive brushwork, warm shafts of summer light and atmospheric Nordic forest depth. Exact 1:1 SQUARE for editable 512x512 master; compose Otso's complete face/eyes and honey-bearing forepaw close together inside x24..488,y105..407 for the 206:141 crop; second paw and cubs may be partial. Horizontal portrait with quiet canopy and ground margins. No frame, text, runes, symbols, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-91c4b7d5-5563-47f0-a685-d0c45c2b042d.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_48.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Shifted to focalPoint [0.5,0.38]. Reviewed the 512-square source, shifted direct 512×350 crop and 128×88 thumbnail: Otso's complete bear face/eyes and honey-bearing paw stay visible together; cubs remain secondary and lower body crops."
   }
 ]

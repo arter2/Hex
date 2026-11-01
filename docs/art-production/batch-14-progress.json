@@ -2,10 +2,10 @@
   "batch": 14,
   "status": "in-progress",
   "targetNewImages": 200,
-  "generatedSources": 180,
-  "reviewedSources": 170,
-  "missingSources": 20,
-  "reviewedPackets": 34,
+  "generatedSources": 193,
+  "reviewedSources": 192,
+  "missingSources": 7,
+  "reviewedPackets": 40,
   "requiresRepaint": [],
   "baselineActive": 1634,
   "targetActive": 1834,
@@ -322,7 +322,7 @@
       "colour": "fire",
       "source": "game/cards/art/masters/fire_summon_34.png",
       "sha256": "ab845d342267d722ad3d433ec56beaaec760b34f7f624f07508bb45a6b061aab",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.5
@@ -334,10 +334,34 @@
       "colour": "fire",
       "source": "game/cards/art/masters/fire_summon_35.png",
       "sha256": "67152ac0b25c3882d15bfaa8af0ce336a9be789acce4472b6a07ba2bddc43fd7",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
-        0.34
+        0.38
+      ]
+    },
+    {
+      "cardId": "fire_summon_36",
+      "name": "Tengu",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_summon_36.png",
+      "sha256": "255e5d061131ecb7a617b499d58afb40f4bd08b8a21bef5b883bd406d8a7fe1c",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.38
+      ]
+    },
+    {
+      "cardId": "fire_summon_37",
+      "name": "Lantern Ghost",
+      "colour": "fire",
+      "source": "game/cards/art/masters/fire_summon_37.png",
+      "sha256": "46736f109c8ff1aac3126a750ee019e49370a646d1cd2b328ae1ecb1602cb088",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.38
       ]
     },
     {
@@ -646,7 +670,7 @@
       "colour": "frost",
       "source": "game/cards/art/masters/frost_summon_31.png",
       "sha256": "2e016c0368e20ebe8797077418440bb662a7c149a189966934f4c8fb9e06e7c2",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.5
@@ -658,7 +682,7 @@
       "colour": "frost",
       "source": "game/cards/art/masters/frost_summon_32.png",
       "sha256": "b169acdf36e0aef74d2da571d6855ad6fcb0ba23ac37604ab7c65aa164ce5c05",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.5
@@ -670,7 +694,19 @@
       "colour": "frost",
       "source": "game/cards/art/masters/frost_summon_33.png",
       "sha256": "6b54a6a0f498d62ff8691272db50ec4f6a4fba69c879c9a387634b849aa3971b",
-      "reviewed": false,
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.42
+      ]
+    },
+    {
+      "cardId": "frost_summon_34",
+      "name": "River Lung",
+      "colour": "frost",
+      "source": "game/cards/art/masters/frost_summon_34.png",
+      "sha256": "5898560327ae00098b11c8fafe11dfa889665abe3cf9a7e1ac879ebf136880c9",
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.42
@@ -974,6 +1010,30 @@
       "focalPoint": [
         0.5,
         0.342
+      ]
+    },
+    {
+      "cardId": "gray_summon_195",
+      "name": "Glooscap",
+      "colour": "gray",
+      "source": "game/cards/art/masters/gray_summon_195.png",
+      "sha256": "192746a34be337c75f51b67c07c2f57d4a5c7b2248f227b3e5d9734c70424951",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.342
+      ]
+    },
+    {
+      "cardId": "light_machine_11",
+      "name": "Zhuge Nu Repeater",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_machine_11.png",
+      "sha256": "4600b07b27d2c9bddaced0dab9dd31862bcd363538ba4b7aeb60f539ae78fe26",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.5
       ]
     },
     {
@@ -1282,10 +1342,34 @@
       "colour": "light",
       "source": "game/cards/art/masters/light_summon_43.png",
       "sha256": "ffdab73d4a39b3e15ba9078184af630d0a358c20bfc4b097f803ce60bf733e3d",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.4
+      ]
+    },
+    {
+      "cardId": "light_summon_44",
+      "name": "Terracotta Warrior",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_summon_44.png",
+      "sha256": "b3d470d8e2d64d5e639c7518997d634f52ccdb85af454be7378774bd22b552cc",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.36
+      ]
+    },
+    {
+      "cardId": "light_summon_45",
+      "name": "Talos, the Bronze Guard",
+      "colour": "light",
+      "source": "game/cards/art/masters/light_summon_45.png",
+      "sha256": "1ec14a4bd5d0d69a225b867314437846d1d6538310ce810d2f7287b8bf41eaa7",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.34
       ]
     },
     {
@@ -1589,6 +1673,54 @@
       ]
     },
     {
+      "cardId": "shadow_summon_50",
+      "name": "Ankou",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_50.png",
+      "sha256": "2d8c82b14dafa026cbf4be95dc7a504eab875058bcac691d4d6945b5f30b32d2",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.34
+      ]
+    },
+    {
+      "cardId": "shadow_summon_51",
+      "name": "Strigoi",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_51.png",
+      "sha256": "1259b8ebeb028f4f47f0f9df5c62c596b8233cd63d52de0fb85ca0ca0f173a30",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.43
+      ]
+    },
+    {
+      "cardId": "shadow_summon_52",
+      "name": "Aswang",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_52.png",
+      "sha256": "697c8f81a8e89ff38750a7b859fc4945fd8132e2e8e36f082d9aaf5e785be46f",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.52
+      ]
+    },
+    {
+      "cardId": "shadow_summon_53",
+      "name": "Manananggal",
+      "colour": "shadow",
+      "source": "game/cards/art/masters/shadow_summon_53.png",
+      "sha256": "a355046f611a9544952d7246ae9b1d30df2bb7c7f1575cb3a6dda1697da3c080",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.41
+      ]
+    },
+    {
       "cardId": "storm_summon_19",
       "name": "Great River Crocodile",
       "colour": "storm",
@@ -1889,6 +2021,18 @@
       ]
     },
     {
+      "cardId": "storm_summon_44",
+      "name": "Bazaar Pickpocket",
+      "colour": "storm",
+      "source": "game/cards/art/masters/storm_summon_44.png",
+      "sha256": "c3787e86ab289107952a93d96712d82425f1deafbb790354885f7ea73af3deaf",
+      "reviewed": false,
+      "focalPoint": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "cardId": "verdant_summon_23",
       "name": "Alux Field Keeper",
       "colour": "verdant",
@@ -2134,7 +2278,7 @@
       "colour": "verdant",
       "source": "game/cards/art/masters/verdant_summon_43.png",
       "sha256": "ab2ddf4e01dfd3df516b97048d4826072ccc2072c9545072c19190735141b704",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.5
@@ -2146,7 +2290,7 @@
       "colour": "verdant",
       "source": "game/cards/art/masters/verdant_summon_45.png",
       "sha256": "4fd1050b2a0013a069f7cd50f5d38f69389a19e6f909d2f716f4c392f7801282",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.42
@@ -2157,8 +2301,8 @@
       "name": "Tanuki Drummer",
       "colour": "verdant",
       "source": "game/cards/art/masters/verdant_summon_46.png",
-      "sha256": "621ec0848cc562aff5febef00c1a85238424e98d9abb91989043bf653b29501d",
-      "reviewed": false,
+      "sha256": "f4838d07a3cfc831227204b0be4445a771d69847800dc8533d7d9b66502ee3c3",
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.42
@@ -2170,10 +2314,22 @@
       "colour": "verdant",
       "source": "game/cards/art/masters/verdant_summon_47.png",
       "sha256": "3fa82c2db938cc96bdb9320d527b5e738e4fcc1499f91ef8fe4cd6f883493a77",
-      "reviewed": false,
+      "reviewed": true,
       "focalPoint": [
         0.5,
         0.42
+      ]
+    },
+    {
+      "cardId": "verdant_summon_48",
+      "name": "Otso the Honey-Paw",
+      "colour": "verdant",
+      "source": "game/cards/art/masters/verdant_summon_48.png",
+      "sha256": "4bfcbd24309dc522b7988cc5443479ebadd2db818baf6cc8f75ecde4eb1e0920",
+      "reviewed": true,
+      "focalPoint": [
+        0.5,
+        0.38
       ]
     }
   ]

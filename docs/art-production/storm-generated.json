@@ -3958,5 +3958,23 @@
     "status": "generated",
     "batch": 14,
     "reviewNote": "Reviewed the 512-square source, slightly upward-shifted wide crop and thumbnail. The mounted Parthian rider’s entire face, bow grip, drawing hand and nocked arrow remain visible; the horse’s head and neck establish the mounted archer identity."
+  },
+  {
+    "cardId": "storm_summon_44",
+    "name": "Bazaar Pickpocket",
+    "prompt": "Paint an illustration for the exact card name “Bazaar Pickpocket.” Depict a small, sly goblin thief in a crowded medieval Persian bazaar, with green-gray skin, pointed ears, alert amber eyes and a sharp, intelligent face. In one nimble hand he lifts a compact coin purse from a merchant’s belt while the other hand discreetly steadies it; his glance checks whether anyone has noticed. Keep the goblin’s complete face, both hands and purse central and unobscured. Layered carpets, brass lamps and spice baskets establish the bazaar without hiding the action; he is clearly a goblin, not a human child. Painterly medieval high-fantasy collectible-card art with visible brush texture and layered strokes, tactile wool, leather, brass and woven cloth, warm shafts of light through market awnings, cool shadow and atmospheric depth. Explicit 1:1 square canvas intended for an editable 512×512 master; keep face/eyes, hands and the whole small purse inside x24–488,y105–407 for a 206:141 landscape crop. Quiet awning and paving above/below. No text, frame, UI, anime, Disney-like cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5235017f-1777-4bba-9fe6-c36156d3f55f.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_44.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, exact wide crop and 128px thumbnail. A green-gray goblin’s pointed ears, full face/eyes, both nimble hands and entire coin purse are clear in the bazaar theft; merchant and market goods are supporting context."
   }
 ]

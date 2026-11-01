@@ -3963,5 +3963,23 @@
     "status": "generated",
     "batch": 14,
     "reviewNote": "512-square source, top-aligned 206:141 crop, and 128x88 thumbnail reviewed. Both Hero Twins’ full heads, faces and eyes remain distinct; Hunahpu’s blowgun hand and Xbalanque’s ball-holding hand are visible with Maya ballcourt cues."
+  },
+  {
+    "cardId": "gray_summon_195",
+    "name": "Glooscap",
+    "prompt": "Paint an illustration for the exact card Glooscap, revered culture hero of the Wabanaki peoples of the Dawnland. Draw respectfully on a Mi’kmaq/Wabanaki creation account in which Glooscap’s arrow strikes a brown ash tree and the first people emerge. Show a dignified Wabanaki man with long dark hair, a calm powerful face and a subtle larger-than-life presence. Dress him in historically grounded Northeastern Woodland clothing: soft deerskin tunic, leggings and moccasins with restrained porcupine-quill decoration, no European armor and no Plains-style feather warbonnet. He draws a simple wooden bow toward the brown ash trunk; face, both eyes, bow-gripping hand and arrow-drawing hand are all fully visible inside x80..430,y120..380. The glowing split in the tree softly reveals tiny human forms emerging, secondary to Glooscap. An Atlantic river and eastern forest establish the Dawnland. Painterly medieval fantasy collectible-card art with visible brush texture, tactile deerskin, wood and bark, no photographic gloss or generic pan-Indigenous costume. Warm first-light glow, cool tidal mist, readable values and atmospheric depth. Explicit 1:1 square composition for editable 512 master and 206:141 wide crop, compact central subject with quiet scenery above and below. No frame, text, symbols, UI, anime, Disney proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-70737398-0c69-4842-97c9-eca1e6642aa1.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_195.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.342
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "512-square source, top-aligned 206:141 crop, and 128x88 thumbnail reviewed. Full face/eyes and both bow-and-arrow hands are visible, with the brown ash creation-tree cue; the wide crop shows a relatively distant figure, submitted for parent review before any composition repair."
   }
 ]

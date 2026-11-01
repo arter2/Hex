@@ -4005,5 +4005,23 @@
     "status": "generated",
     "batch": 14,
     "reviewNote": "Reworked the composition after crop inspection showed the initial antlers and long whiskers reaching/cropping at the edges; copied the prior 512-square master to scratch, then atomically replaced it with the prepared 512-square repaint. Inspected the replacement square, revised 206:141 crop and 128px thumbnail. Complete antlers, full face/eyes, muzzle and inward-curled whiskers now fit safely; long neck is incidental."
+  },
+  {
+    "cardId": "frost_summon_34",
+    "name": "River Lung",
+    "prompt": "Edit this illustration, preserving its painterly Chinese River Lung identity. Recompose the dragon’s head slightly smaller and lower in the square; shorten the branch-like antlers and curl the whiskers inward so the complete antler tips, both eyes, full face and all whiskers fit safely within x24–488,y105–407 in the final 206:141 horizontal crop. Keep the gentle jade-green serpentine river dragon, mountain stream, old stone bridge and healing golden water, with the dragon’s face still dominant and the injured deer secondary. Do not add a crown or wings. Explicit 1:1 square canvas for an editable 512×512 master; clearly preserve layered painterly brush texture, natural scales and warm-cool light. No text, frame, UI, anime, cartoon or glossy photorealism.",
+    "generatedPath": "/workspace/generated_images/exec-3b59bd79-f462-440d-9194-5cd6bf632278.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_34.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reworked after the initial crop clipped the River Lung’s antler tips. Inspected the replacement 512-square source, revised true 206:141 crop (focal y=0.42) and 128px thumbnail; the complete short antlers, face/eyes and curled whiskers now fit with margin. The serpentine neck and healing water remain legible, with the deer subordinate."
   }
 ]

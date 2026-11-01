@@ -3956,5 +3956,77 @@
     "status": "generated",
     "batch": 14,
     "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop at focalPoint [0.5,0.42] and 128-pixel thumbnail: lich skull, both glowing eyes, crown and both casting hands are fully visible; poison-green miasma and rising tomb wisps remain secondary."
+  },
+  {
+    "cardId": "shadow_summon_50",
+    "name": "Ankou",
+    "prompt": "Square 1:1 painterly medieval fantasy collectible-card illustration, editable 512x512 master. Show one unmistakable Ankou: the old Breton personification of death, a gaunt ancient reaper in a weathered black burial cloak and hood, pale skull-like face with clear hollow luminous eyes, one bony hand gripping the wooden shaft of an upright scythe held close beside the face. Somber, folkloric, not a generic armored skeleton; subtle Breton stone churchyard and drifting night mist behind. Keep full face and eyes, gripping hand, and scythe head entirely within central action-safe region x24..488,y105..407; compact horizontal staging, quiet sky and ground above/below. Visible brush texture, believable matte cloth, wood and bone, atmospheric moonlit lighting, grounded medieval high-fantasy art consistent with supplied Hexmancers shadow painting. Spooky, dignified, non-gory. No photorealism, glossy 3D, anime, Disney, pixel art, text, lettering, runes, frame or UI. Explicit square 1:1 image.",
+    "generatedPath": "/workspace/generated_images/exec-414a8301-6d83-4672-91ef-9e3f1ffaa538.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_50.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source and upward-shifted wide crop. The Ankou’s full skull face and eyes, scythe hand, and complete scythe blade fit; the Breton churchyard remains atmospheric and non-gory."
+  },
+  {
+    "cardId": "shadow_summon_51",
+    "name": "Strigoi",
+    "prompt": "Original painterly medieval fantasy collectible-card illustration, explicit square 1:1 for editable 512x512 master. Portray a Romanian strigoi: a pale revenant vampire risen from its grave, not the aristocratic Dracula stereotype. A gaunt, corpse-pale Transylvanian peasant revenant in a torn dark wool burial shirt, long dark hair, unsettling red-brown eyes and small visible fangs, reaching forward with one hand as it emerges from a cracked grave; restrained bloodless mist and faint red moonlight. Strongly readable human face, no gore, no blood. Keep whole face, eyes, fangs and reaching hand within central 206:141 crop safe zone x24..488,y105..407; compact head-and-shoulders pose, quiet cemetery above/below. Painterly brush texture, matte skin, wool, stone and mist, atmospheric dramatic light, grounded medieval folklore fantasy consistent with Hexmancers shadow master. Not glossy photorealism, 3D, anime, Disney or pixel art. No text, lettering, symbols, border or UI. Square 1:1.",
+    "generatedPath": "/workspace/generated_images/exec-76dcd02e-dd5b-46e7-95c0-50bef833aa7e.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_51.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.43
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, upward-shifted wide crop and thumbnail. The pale Romanian revenant’s full face, red-brown eyes, fangs and reaching hands remain visible as it rises from a grave; the image is spooky without gore."
+  },
+  {
+    "cardId": "shadow_summon_52",
+    "name": "Aswang",
+    "prompt": "Painterly medieval fantasy collectible-card art, explicit square 1:1 composition for editable 512x512 master. Render an Aswang, the shapeshifting night predator of Filipino folklore, as a lean uncanny humanoid-wolf spirit rather than an ordinary European werewolf: dusky Filipino facial features still visible beneath a narrow canine muzzle, pointed ears, dark hair, long clawed hands, and a thin shadow-tongue flickering in the mist (no blood, no gore). Its half-human silhouette slips between a nipa village and broad balete tree under a tropical moon; faint double-image of its shifting shape trails behind. Face and eyes and both hands are the focus, kept fully inside central x24..488,y105..407 safe area of 512 square; compact horizontal arrangement. Respectful folk-horror, atmospheric and eerie. Visible painterly brushwork, matte fur, cloth and tropical foliage, strong moonlit values consistent with grounded Hexmancers shadow fantasy. Avoid generic western werewolf styling, glossy photorealism, 3D, anime, Disney, pixel art. No text, runes, border or UI. Square 1:1.",
+    "generatedPath": "/workspace/generated_images/exec-5049354f-b1c7-4acb-9e74-f02553767901.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_52.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.52
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, downward-shifted wide crop and thumbnail. The Aswang’s full face, eyes, long tongue and both reaching hands remain visible; its uncanny Filipino folkloric shapeshifter identity and tropical village setting read clearly without gore."
+  },
+  {
+    "cardId": "shadow_summon_53",
+    "name": "Manananggal",
+    "prompt": "Painterly medieval fantasy collectible-card illustration, explicit 1:1 square for editable 512x512 master. A tasteful mythic Manananggal, the winged nocturnal spirit of Filipino folklore: a striking Filipina woman’s fully clothed upper-body figure in a dark traditional-inspired wrap and shawl, long black hair, luminous focused eyes, arms extended gently as enormous dark bat-like wings unfurl behind her; swirling magical silver mist obscures her lower body in a seamless supernatural way. Do not show a severed torso, wound, blood, exposed anatomy or gore; she is a complete dignified spirit silhouette emerging from mist. Tropical moonlit village rooftops and palms in the distance. Keep entire face, eyes and both hands within x24..488,y105..407 in the square, compact horizontal pose; wing tips may extend beyond crop. Spooky but beautiful folklore fantasy. Visible painterly brushwork, matte cloth, feathers and mist, dramatic moon rimlight and atmospheric depth matching supplied Hexmancers shadow art. Avoid glossy photorealism, 3D, anime, Disney, pixel art. No text, border, writing, symbols or UI. Square 1:1.",
+    "generatedPath": "/workspace/generated_images/exec-7f5e4cea-3ecd-4ad3-90c7-892b688ba5f3.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_53.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.41
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, central wide crop and thumbnail. The fully clothed Manananggal’s face, eyes and both hands are clear with wings and silver mist establishing the folkloric spirit; no graphic anatomy or gore."
   }
 ]

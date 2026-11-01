@@ -3982,10 +3982,47 @@
     ],
     "focalPoint": [
       0.5,
-      0.4
+      0.36
     ],
     "status": "generated",
     "batch": 14,
-    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop at focalPoint [0.5,0.4] and 128-pixel thumbnail: full Qin terracotta face/eyes and spear hand fit, with topknot and cracked fired-clay lamellar armor readable against the mausoleum army."
+    "reviewNote": "Inspected the 512-square source, top-shifted 206:141 crop at focalPoint [0.5,0.36] and 128-pixel thumbnail: full fired-clay Qin warrior face, eyes and topknot now fit; spear grip remains visible, while spear extremities may crop."
+  },
+  {
+    "cardId": "light_summon_45",
+    "name": "Talos, the Bronze Guard",
+    "prompt": "Repaint the exact summon Talos, the Bronze Guard, as the Greek mythic bronze automaton that guarded Crete. FIX THE COMPOSITION so the entire humanlike face and the whole open hand fit comfortably in the horizontal crop. One compact, centered half-body bronze guardian: helmeted head and glowing amber eyes in x140..300,y125..260; complete forward-facing hand, including all five fingertips, in x350..470,y170..330; shoulder and chest connect these features without an arm stretched to the image edge. All important features remain within x24..488,y105..407. Talos is a mythic cast-metal giant, not a modern robot: Greek archaic helmet, articulated hammered bronze plates with dark rivets, curls of bronze hair and aged verdigris. His full open hand calmly bars entry to a temple gateway; a restrained golden protective glow outlines it. Show Aegean shore and Greek temple behind him. Painterly visible brush texture in weathered bronze and stone, warm sunlight against cool sea shadows, grounded Greek mythic style matching supplied Hexmancers light art; no glossy photorealism. Explicit 1:1 SQUARE canvas, editable 512x512 master, composed for 206:141 crop with quiet sky above and sea below. Keep face, eyes and complete palm/fingers far from all edges. No text, lettering, frame, extra figures, UI, anime, Disney-like cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9bff715a-8e3b-45e0-b8b4-2caeb8fccfca.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_45.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 14,
+    "previousGeneratedPath": "/workspace/generated_images/exec-c6eb8146-4936-45f8-9583-cac3ec679109.png",
+    "reviewNote": "Repainted to keep the full guardian head and hand within the crop. Inspected replacement 512-square source, top-shifted 206:141 crop at focalPoint [0.5,0.34] and 128-pixel thumbnail: bronze face/eyes and the entire forward palm with all five fingertips fit; old source preserved at /tmp/light-06-repairs/light_summon_45-before-repaint.png."
+  },
+  {
+    "cardId": "light_machine_11",
+    "name": "Zhuge Nu Repeater",
+    "prompt": "Paint standalone painterly medieval-fantasy collectible-card art for the exact named artifact Zhuge Nu Repeater, the repeating crossbow associated with Zhuge Liang and ancient Chinese military engineering. Show a single complete compact wooden repeating crossbow alone in clear side-on three-quarter view, no operator: a short carved stock, small curved horizontal bow limb at the forward end, clear taut bowstring, trigger grip, and a distinctive box magazine mounted above the stock holding several short bolts nose-forward. Include the simple sliding lever linked to the string beneath the magazine so the repeated loading-and-release mechanism is mechanically readable. It must read unmistakably as a historical Chinese repeating crossbow, never a firearm, pistol, modern machine gun, hand cannon or generic magic device. Keep the entire mechanism intact with visible bow tips, stock butt, grip, magazine and bolts; center it across the composition, occupying about 70% of the image width and 45% of image height. Set it on a dark lacquered workbench in a lamplit ancient Chinese arsenal, with rolled parchment and a blurred bronze bell in the background only. Painterly visible brush texture in warm wood grain, cord, iron fittings and paper; attractive gold light against deep blue shadows, medieval-fantasy craft matching supplied Hexmancers light art, no glossy photorealism. Explicit 1:1 SQUARE canvas for an editable 512x512 source intended for 206:141 crop; keep every component of the full named crossbow inside x24..488,y105..407 with quiet wall above and bench below. No text, symbols, lettering, frame or UI. No anime, Disney-like cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f47bbd10-e822-4438-8d10-75ab492b2b41.png",
+    "editableSourcePath": "game/cards/art/masters/light_machine_11.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel thumbnail: entire Zhuge Nu repeater fits with margin, and short stock, bow limbs/string, bolt magazine and linked loading lever are readable as an ancient Chinese repeating crossbow."
   }
 ]

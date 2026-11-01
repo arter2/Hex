@@ -27,37 +27,43 @@ SKIP_NAMES = {".DS_Store", "Thumbs.db", ".gitkeep"}
 BUILD_ONLY = {"allocate.js", "cards/README.md", "cards/contract.json", "cards/palettes.json", "cards/art-focus.json"}
 
 
+def ships(rel):
+    """Whether game/<rel> goes in the zip (tools/package-itch-packed.py ships the same files)."""
+    parts = rel.parts
+    if rel.name in SKIP_NAMES or "__pycache__" in parts:
+        return False
+    if rel.as_posix() == "art-review.html":
+        return False
+    if parts[:3] == ("cards", "art", "masters"):
+        return False
+    if parts[:2] == ("cards", "art") and len(parts) == 3 and rel.suffix.lower() == ".png":
+        return False
+    if parts[:3] == ("cards", "art", "display"):
+        return False
+    if rel.as_posix() in BUILD_ONLY:
+        return False
+    if parts[:2] == ("cards", "symbols") or (parts[:2] == ("cards", "icons") and not rel.name.startswith("element-")):
+        return False
+    return True
+
+
+def version_of(game):
+    found = re.search(r'<meta name="application-version" content="(\d+)"', (game / "index.html").read_text())
+    if not found:
+        raise SystemExit("index.html has no application-version")
+    return found.group(1)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("output", type=Path, nargs="?", default=Path("."))
     args = parser.parse_args()
     game = Path(__file__).resolve().parent.parent / "game"
-    found = re.search(r'<meta name="application-version" content="(\d+)"', (game / "index.html").read_text())
-    if not found:
-        raise SystemExit("index.html has no application-version")
-    version = found.group(1)
+    version = version_of(game)
     if args.output.suffix.lower() != ".zip":
         args.output = args.output / f"hexmancers-itch-v{version}.zip"
     variants = (game / "cards/art-variants.js").read_text()
     named = set(re.findall(r"cards/art/atlas/[^\"'\s]+", variants))
-
-    def ships(rel):
-        parts = rel.parts
-        if rel.name in SKIP_NAMES or "__pycache__" in parts:
-            return False
-        if rel.as_posix() == "art-review.html":
-            return False
-        if parts[:3] == ("cards", "art", "masters"):
-            return False
-        if parts[:2] == ("cards", "art") and len(parts) == 3 and rel.suffix.lower() == ".png":
-            return False
-        if parts[:3] == ("cards", "art", "display"):
-            return False
-        if rel.as_posix() in BUILD_ONLY:
-            return False
-        if parts[:2] == ("cards", "symbols") or (parts[:2] == ("cards", "icons") and not rel.name.startswith("element-")):
-            return False
-        return True
 
     files = sorted(f for f in game.rglob("*") if f.is_file() and ships(f.relative_to(game)))
     args.output.parent.mkdir(parents=True, exist_ok=True)

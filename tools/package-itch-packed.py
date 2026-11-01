@@ -1,13 +1,11 @@
-"""The small itch.io zip: python tools/package-itch-packed.py out/hexmancers-vNNN-itch.zip [--art-width 512] [--art-quality 80]
+"""The release itch.io zip: python tools/package-itch-packed.py [out-folder or .zip]
 
 The release build. game/ stays the dev build (run it as it is, edit it as it is); this script copies what
 package-itch.py would ship into memory, rewrites the copy, and zips it. Nothing under game/ is changed.
 
-  1. Card art: one size per card instead of three (128/256/512). The largest crop, re-encoded as WebP at
-     --art-quality and shrunk to --art-width if that is under 512; the browser scales it for the small card.
-     Each stays its own file (keeping its 512 crop's name), so the game still fetches only the pictures on screen:
-     702 files become 234. (Packing them into a script was tried and dropped: it doubled the start-up download
-     and the JS memory, since every picture then loaded at start and sat in memory as base64.)
+  1. Card art: shipped as package-itch.py ships it, the per-colour atlas sheets (tools/card-art-build.js), so
+     there is nothing more to do for it here. (One WebP per card was this step before the sheets; packing the art
+     into a script was tried and dropped: it doubled the start-up download and the JS memory.)
   3. sprites.js: its PNG data URIs become lossless WebP (exact: every pixel, alpha included, is kept).
   4. ui/*.svg: the pixel-run SVGs (tools/ui-svg.py) become palette PNGs of the same pixels, checked pixel by
      pixel against the SVG's runs, then inlined.
@@ -19,11 +17,12 @@ package-itch.py would ship into memory, rewrites the copy, and zips it. Nothing 
      no longer matches, the build stops and says which, so a change to ui.js cannot silently ship broken art.
 Also left out: cards/*.json, cards/README.md and ui/sizes.json, which the game never loads.
 
-Then it checks the zip: CRC, index.html at the root, no more than itch's 1,000 files, every card in
-art-variants.js present, and no shipped file still naming a file this build removed. Prints counts and sizes as JSON.
+Then it checks the zip: CRC, index.html at the root, no more than itch's 1,000 files, every atlas sheet
+art-variants.js names present, and no shipped file still naming a file this build removed. Prints counts and sizes as JSON.
 docs/packing.md has the when and why."""
 import argparse
 import base64
+import importlib.util
 import io
 import json
 import re
@@ -34,8 +33,10 @@ from pathlib import Path
 from PIL import Image
 
 ITCH_MAX_FILES = 1000
-SKIP_NAMES = {".DS_Store", "Thumbs.db", ".gitkeep"}
-NEVER_LOADED = {"cards/art-focus.json", "cards/contract.json", "cards/palettes.json", "cards/README.md", "ui/sizes.json"}
+NEVER_LOADED = {"ui/sizes.json"}  # beyond what package-itch.py already leaves out
+_spec = importlib.util.spec_from_file_location("package_itch", Path(__file__).resolve().parent / "package-itch.py")
+package_itch = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(package_itch)
 # folders whose every file this build inlines or packs (or drops, when nothing names it)
 INLINED_DIRS = ("ui/", "cards/frames/", "cards/textures/", "cards/foils/", "cards/effects/", "cards/glows/",
                 "cards/badges/", "cards/icons/", "cards/symbols/", "fonts/", "cards/fonts/", "art/ui/")
@@ -46,7 +47,7 @@ PACKED_FAMILIES = (r"ui/[^/]+\.svg", r"cards/icons/element-[^/]+\.svg", r"cards/
 UI_PATCHES = [
     ("""src="ui/'+statusArt(t)+'.svg\"""", """src="'+hexAsset('ui/'+statusArt(t)+'.svg')+'\"""", 1),
     ("""src="ui/${cardArt(c)}.svg\"""", """src="${hexAsset('ui/'+cardArt(c)+'.svg')}\"""", 2),
-    ("""u=p=>'url(cards/'+p+')'""", """u=p=>'url('+hexAsset('cards/'+p)+')'""", 1),
+    ("""kitURL=p=>'url(cards/'+p+')'""", """kitURL=p=>'url('+hexAsset('cards/'+p)+')'""", 1),
     ("""src="cards/icons/element-${kc}${kc==='white'?'-ink':''}.svg\"""",
      """src="${hexAsset('cards/icons/element-'+kc+(kc==='white'?'-ink':'')+'.svg')}\"""", 1),
 ]
@@ -63,65 +64,12 @@ UI_HEAD = re.compile(r'^<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 (\d
 
 def staged_files(game):
     """What package-itch.py ships, as {path: bytes}."""
-    variants = (game / "cards/art-variants.js").read_text()
-    named = set(re.findall(r"cards/art/display/[^\"'\s]+", variants))
-
-    def ships(rel):
-        parts = rel.parts
-        if rel.name in SKIP_NAMES or "__pycache__" in parts or rel.as_posix() == "art-review.html":
-            return False
-        if parts[:3] == ("cards", "art", "masters"):
-            return False
-        if parts[:2] == ("cards", "art") and len(parts) == 3 and rel.suffix.lower() == ".png":
-            return False
-        if parts[:3] == ("cards", "art", "display") and rel.as_posix() not in named:
-            return False
-        return True
-
     return {f.relative_to(game).as_posix(): f.read_bytes()
-            for f in sorted(game.rglob("*")) if f.is_file() and ships(f.relative_to(game))}
+            for f in sorted(game.rglob("*")) if f.is_file() and package_itch.ships(f.relative_to(game))}
 
 
 def b64(data):
     return base64.b64encode(data).decode("ascii")
-
-
-def one_size_art(files, width, quality, stats):
-    """Step 1: one WebP file per card instead of three sizes. Each card keeps the name of its largest crop."""
-    src = files["cards/art-variants.js"].decode()
-    m = re.search(r"const HEX_CARD_ART_VARIANTS=Object\.freeze\((\{.*\})\);\s*$", src, re.S)
-    if not m:
-        raise SystemExit("art-variants.js: expected `const HEX_CARD_ART_VARIANTS=Object.freeze({...});`")
-    variants = json.loads(m.group(1))
-    before = sum(len(files[p]) for p in files if p.startswith("cards/art/display/"))
-    count = sum(1 for p in files if p.startswith("cards/art/display/"))
-    art, out_variants = {}, {}
-    for cid, v in variants.items():
-        best = max(v["outputs"], key=lambda o: o["width"])
-        im = Image.open(io.BytesIO(files[best["url"]]))
-        rgba = im.convert("RGBA")
-        im = rgba if rgba.getextrema()[3][0] < 255 else im.convert("RGB")  # keep alpha only if a pixel uses it
-        if im.width > width:
-            im = im.resize((width, round(im.height * width / im.width)), Image.LANCZOS)
-        out = io.BytesIO()
-        im.save(out, "WEBP", quality=quality, method=6)
-        data = out.getvalue()
-        if im.width == best["width"] and len(files[best["url"]]) <= len(data):
-            data = files[best["url"]]  # the crop as built is already smaller
-        url = best["url"]
-        art[url] = data
-        out_variants[cid] = {**v, "large": url, "thumbnail": url,
-                             "outputs": [{"width": im.width, "height": im.height, "url": url}]}
-    for p in [p for p in files if p.startswith("cards/art/display/")]:
-        del files[p]
-    files.update(art)
-    files["cards/art-variants.js"] = (
-        "// Rewritten by tools/package-itch-packed.py from the generated art-variants.js: one WebP per card.\n"
-        "const HEX_CARD_ART_VARIANTS=Object.freeze(" + json.dumps(out_variants, separators=(",", ":")) + ");\n").encode()
-    stats["art"] = {"cards": len(out_variants), "files": len(art), "filesBefore": count,
-                    "mbBefore": round(before / 1048576, 1), "mbAfter": round(sum(map(len, art.values())) / 1048576, 1),
-                    "width": width, "quality": quality}
-    return out_variants
 
 
 def webp_sprites(files, stats):
@@ -284,11 +232,12 @@ def write_pack(files, ui_cache, stats):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("output", type=Path)
-    parser.add_argument("--art-width", type=int, default=512, help="card art width in pixels (512 is the crop size)")
-    parser.add_argument("--art-quality", type=int, default=80, help="card art WebP quality, 0-100")
+    parser.add_argument("output", type=Path, nargs="?", default=Path("."))
     args = parser.parse_args()
     game = Path(__file__).resolve().parent.parent / "game"
+    version = package_itch.version_of(game)
+    if args.output.suffix.lower() != ".zip":
+        args.output = args.output / f"hexmancers-itch-v{version}.zip"
     files = staged_files(game)
     before = {"files": len(files), "mb": round(sum(map(len, files.values())) / 1048576, 1)}
     before_names = set(files)
@@ -296,7 +245,7 @@ def main():
 
     for p in NEVER_LOADED:
         files.pop(p, None)
-    cards = one_size_art(files, args.art_width, args.art_quality, stats)
+    sheets = set(re.findall(r"cards/art/atlas/[^\"'\s]+", files["cards/art-variants.js"].decode()))
     webp_sprites(files, stats)
     used = inline_css(files, ui_cache, stats) | write_pack(files, ui_cache, stats)
     removed = {p for p in files if p.startswith(INLINED_DIRS) and not KEEP.search(p)}
@@ -326,10 +275,8 @@ def main():
             for s in FORBIDDEN_IN_JS:
                 if s in text:
                     problems.append(f"{p} builds a path with {s!r}: add it to UI_PATCHES")
-    art_urls = {v["large"] for v in cards.values()}
-    extra = sorted(p for p in files if p.startswith("cards/art/display/") and p not in art_urls)
-    if extra:
-        problems.append(f"{len(extra)} card art files no card names, e.g. {extra[0]}")
+    if not sheets:
+        problems.append("art-variants.js names no atlas sheets: run node tools/card-art-build.js")
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with zipfile.ZipFile(args.output, "w", zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
@@ -343,12 +290,12 @@ def main():
         names = set(archive.namelist())
     if "index.html" not in names:
         problems.append("index.html is not at the zip's root")
-    missing = sorted(u for u in art_urls if u not in names)
+    missing = sorted(u for u in sheets if u not in names)
     if missing:
-        problems.append(f"{len(missing)} card art files named in art-variants.js are missing, e.g. {missing[0]}")
+        problems.append(f"{len(missing)} atlas sheets named in art-variants.js are missing, e.g. {missing[0]}")
     if len(names) > ITCH_MAX_FILES:
         problems.append(f"{len(names)} files: itch.io takes at most {ITCH_MAX_FILES} in an HTML game's zip")
-    print(json.dumps({"output": str(args.output), "before": before, "files": len(names),
+    print(json.dumps({"output": str(args.output), "version": version, "before": before, "files": len(names),
                       "mb": round(args.output.stat().st_size / 1048576, 1),
                       "unzippedMb": round(sum(map(len, files.values())) / 1048576, 1), **stats,
                       "droppedUnnamed": len(unnamed), "crc": "pass", "warnings": sorted(set(warnings)),

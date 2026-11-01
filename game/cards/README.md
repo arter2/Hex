@@ -62,3 +62,7 @@ Copied: frames, backgrounds, textures (compact/expanded), foils, effects, glows,
 - **Texture behind text**: the texture layer now sits above the readability panels (style.css), so it shows faintly in
   the text areas; its strength is still the 0.05 texture-ink.
 - Large cards now use the expanded buffed glow, and enchanted + buffed uses the kit's split rim (style.css "rim states").
+
+## v186: the short card
+
+Hands and grids use the short card: `contract.json` "short" (240x362) replaces the full card's canvas, bands, panels, dividers and slots; `tools/card-build.py` writes its layers under `frames/short`, `textures/short`, `glows/short`, `foils/short` and `badges/short`, and its slots into `card-geo.css` under `.card.kit.compact`. The texture strength is now set by the build (`TEXTURE_INK`, 0.8), so a rebuild keeps it.

@@ -81,7 +81,7 @@ function cardKit(c){ const kc=KIT_COLOR[c.color]||'gray', t=KIT_TEX[kc][[...Stri
   return {kc, tex:kitURL('textures/card/'+kc+'-'+t+'.svg')}; }
 function cardEl(c,extra,locked,mode,opts={}){
   const el=document.createElement('button'), col=COLORS[c.color], {kc,tex:texURL}=cardKit(c), big=mode==='expanded';
-  el.className='card kit c-'+kc+(big?' expanded':' compact')+(c.rarity==='legendary'?' leg':'')+(c.rarity==='hero'?' hero':'')+(locked?' locked':'')+(c.mastery?' mcard':'');
+  el.className='card kit c-'+kc+(big?' expanded':' small')+(c.rarity==='legendary'?' leg':'')+(c.rarity==='hero'?' hero':'')+(locked?' locked':'')+(c.mastery?' mcard':'');
   el.style.setProperty('--c',col.c);
   el.style.setProperty('--k-tex',texURL); el.style.setProperty('--k-frame',kitURL('frames/card/'+kc+'.svg'));
   if(ART_FOCUS[c.id]) el.style.setProperty('--k-focus',ART_FOCUS[c.id]);

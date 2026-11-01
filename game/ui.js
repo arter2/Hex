@@ -31,7 +31,8 @@ const CARD_PAL={
    Layers, bottom up: the colour's base, its material texture (one of three, fixed per card), the art (and a holo
    foil), the frame with any state glow, then the glyphs and live text. Every functional icon is a shape from
    cards/icons drawn in the card's own colour (a mask), so a Pull is blue on a frost card and orange on a fire one.
-   The 'compact' / 'expanded' mode no longer changes the card: a small card simply hides what it can't show (card.css). */
+   cardEl(c,extra,locked,mode): mode "expanded" is the full card (the detail, a held card); anything else is the short
+   card (v186: contract.json "short", .card.kit.compact), with no rules or footer and bigger rune and rank plates. */
 const KIT_COLOR={fire:'red',frost:'blue',storm:'yellow',verdant:'green',light:'white',shadow:'black',gray:'gray',brown:'brown'};
 // each colour's three material textures (palettes.json variants)
 const KIT_TEX={red:['embers','lava-crust','volcanic-ridges'], blue:['water-ripples','cracked-ice','frost-facets'], yellow:['dune-sand','static-arcs','sandstone'],
@@ -86,19 +87,21 @@ const kitIcon=(cls,n,label)=>`<svg class="k-ic ${cls}" viewBox="0 0 32 32" shape
 // a card-kit file under cards/ as a CSS url() (the packed release build points this at its packed copy)
 const kitURL=p=>'url(cards/'+p+')';
 // a card's frame colour (cards/palettes.json) and its one of three material textures, picked by its id
-function cardKit(c){ const kc=KIT_COLOR[c.color]||'gray', t=KIT_TEX[kc][[...String(c.id)].reduce((h,ch)=>(h*31+ch.charCodeAt(0))>>>0,0)%3];
-  return {kc, tex:kitURL('textures/card/'+kc+'-'+t+'.svg')}; }
+// (shape: 'card' for the full card, 'short' for the short one: hand, grids, shop)
+function cardKit(c,shape='card'){ const kc=KIT_COLOR[c.color]||'gray', t=KIT_TEX[kc][[...String(c.id)].reduce((h,ch)=>(h*31+ch.charCodeAt(0))>>>0,0)%3];
+  return {kc, tex:kitURL('textures/'+shape+'/'+kc+'-'+t+'.svg')}; }
 function cardEl(c,extra,locked,mode,opts={}){
-  const el=document.createElement('button'), col=COLORS[c.color], {kc,tex:texURL}=cardKit(c), big=mode==='expanded';
+  // the full card (expanded: the detail, a held card) or the short card (everywhere else: no rules or footer, big plates)
+  const big=mode==='expanded', shape=big?'card':'short', el=document.createElement('button'), col=COLORS[c.color], {kc,tex:texURL}=cardKit(c,shape);
   el.className='card kit c-'+kc+(big?' expanded':' compact')+(c.rarity==='legendary'?' leg':'')+(c.rarity==='hero'?' hero':'')+(locked?' locked':'')+(c.mastery?' mcard':'');
   el.style.setProperty('--c',col.c);
-  el.style.setProperty('--k-tex',texURL); el.style.setProperty('--k-frame',kitURL('frames/card/'+kc+'.svg'));
+  el.style.setProperty('--k-tex',texURL); el.style.setProperty('--k-frame',kitURL('frames/'+shape+'/'+kc+'.svg'));
   if(ART_FOCUS[c.id]) el.style.setProperty('--k-focus',ART_FOCUS[c.id]);
   // holo: a legendary you own a holo copy of (or one passed in as holo); the moving foil only on the big card
   const holo=!locked&&c.rarity==='legendary'&&(opts.holo||typeof holoCount==='function'&&holoCount(save,c.id)>0);
   if(holo){ const mv=big&&!(typeof matchMedia==='function'&&matchMedia('(prefers-reduced-motion: reduce)').matches)?'-animated':'';
     el.classList.add('holo'); el.style.setProperty('--k-foil',[kitURL('effects/expanded/foil-glints'+mv+'.svg'),kitURL('effects/expanded/foil-shimmer'+mv+'.svg'),kitURL('effects/expanded/foil-etch.svg'),kitURL('foils/expanded/'+kc+'/art'+mv+'.svg')].join(','));
-    el.style.setProperty('--k-trim',kitURL('foils/card/'+kc+'/trim'+mv+'.svg')); }
+    el.style.setProperty('--k-trim',kitURL('foils/'+shape+'/'+kc+'/trim'+mv+'.svg')); }
   const T=TYPES[c.type]||{name:''}, R=ROLES[cardRole(c)], stat=locked?'':kitStat(c), name=locked?'???':c.name, hero=c.rarity==='hero';
   const rules=locked?'Not found yet.':cardText(c), foot=locked?[['target','Target','—'],['range','Range','—']]:kitFooter(c);
   el.dataset.kname=name; el.dataset.ktype=T.name+'|'+R.name; el.dataset.kstat=stat;
@@ -142,9 +145,12 @@ function kitInk(face){ const cv=KIT_FIT.canvas||(KIT_FIT.canvas=document.createE
 function kitFit(el){ if(!el||!el.dataset||el.dataset.kname==null){ if(el&&el.querySelectorAll) el.querySelectorAll('.card.kit').forEach(kitFit); return; }
   if(!KIT_FIT.ready&&!(document.fonts&&document.fonts.check('12px "Hex Card"')&&document.fonts.check('12px "Hex Card Caps"'))) return;
   if(!KIT_FIT.ready){ KIT_FIT.ready=true; const r=document.documentElement.style; r.setProperty('--ink-dy',kitInk('Hex Card').toFixed(3)); r.setProperty('--ink-dy-caps',kitInk('Hex Card Caps').toFixed(3)); }
-  const G=KIT_GEO, pad=2*G.w.pad, set=(e,k,v)=>e.style.setProperty(k,'calc('+v+' * var(--u))'), steps=(a,b,d)=>{ const o=[]; for(let s=a;s>=b;s-=d) o.push(s); return o; };
+  const S=el.classList.contains('compact')&&KIT_GEO.short, G=S?{...KIT_GEO,type:{...KIT_GEO.type,...S.type},w:{...KIT_GEO.w,...S.w}}:KIT_GEO, pad=2*G.w.pad, set=(e,k,v)=>e.style.setProperty(k,'calc('+v+' * var(--u))'), steps=(a,b,d)=>{ const o=[]; for(let s=a;s>=b;s-=d) o.push(s); return o; };
   const name=el.dataset.kname, nm=el.querySelector('.k-name'), ns=[29,26,23,20,18].find(s=>kitMeasure(name,s)<=G.w.name-pad);
-  nm.classList.toggle('two',!ns); set(el,'--nfs',ns||15); if(!ns) set(el,'--nlh',14);
+  // a name too long for one line: two lines at 15 on 14
+  // (the short card's taller bar takes two lines at the biggest of 23..15 that fits, whenever that beats one line)
+  const two2=S?[23,22,20,18,16,15].find(s=>kitLines(name,s,G.w.name-pad)<=2&&2*s*.95<=G.w.nameH)||15:15, one=ns&&!(S&&two2>ns)?ns:0, two=one?0:two2;
+  nm.classList.toggle('two',!one); set(el,'--nfs',one||two); if(!one) set(el,'--nlh',S?Math.round(two*.95*10)/10:14);
   const [ty,ro]=el.dataset.ktype.split('|'), tw=s=>kitMeasure((ty+ro).toUpperCase(),s,'Hex Card Caps')+14;   // + the drawn dot and its gaps
   set(el,'--tfs',steps(G.type.type[0],10,1).find(s=>tw(s)<=G.w.type-pad)||10);
   const rb=el.querySelector('.k-rules'), rt=rb.textContent, fit=[[18,16.5],[16,14.5],[14,12]].find(([s,l])=>kitLines(rt,s,G.w.rules)*l<=G.w.rulesH)||[14,12];

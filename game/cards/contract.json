@@ -355,5 +355,267 @@
     "glyph_visible_center_error_canonical_units_max": 1,
     "divider_edge_error_canonical_units_max": 1,
     "minimum_text_edge_clearance_canonical_units": 2
+  },
+  "short": {
+    "about": "The short card (v186): hand, collection, deck builder, shop and rewards. The same frame style with the rules and footer left out, bigger rune and rank plates, a name bar with room for two lines and a bigger stat. Holding a card opens the full card. Keys here replace the full card's; the rest are shared.",
+    "canvas": {
+      "width": 240,
+      "height": 362
+    },
+    "bands": {
+      "steel": 3,
+      "gap": 2,
+      "stone": 7,
+      "gap2": 2,
+      "accent": 3,
+      "bottom": {
+        "accent": [
+          333,
+          3
+        ],
+        "gap": [
+          336,
+          2
+        ],
+        "stone": [
+          338,
+          7
+        ],
+        "gap2": [
+          345,
+          2
+        ],
+        "strip": [
+          347,
+          10
+        ],
+        "gap3": [
+          357,
+          1
+        ],
+        "steel": [
+          358,
+          4
+        ]
+      }
+    },
+    "corner": {
+      "size": 12,
+      "at": [
+        [
+          5,
+          5
+        ],
+        [
+          223,
+          5
+        ],
+        [
+          5,
+          333
+        ],
+        [
+          223,
+          333
+        ]
+      ],
+      "rivet": [
+        4,
+        4,
+        4,
+        4
+      ]
+    },
+    "face": [
+      17,
+      17,
+      206,
+      316
+    ],
+    "dividers": [
+      59,
+      108,
+      276,
+      296
+    ],
+    "panels": {
+      "header": [
+        17,
+        17,
+        206,
+        40
+      ],
+      "name": [
+        17,
+        62,
+        206,
+        44
+      ],
+      "type": [
+        17,
+        279,
+        206,
+        15
+      ],
+      "stat": [
+        17,
+        299,
+        206,
+        34
+      ]
+    },
+    "separators": [
+      [
+        56,
+        19,
+        36
+      ],
+      [
+        131,
+        19,
+        36
+      ],
+      [
+        190,
+        302,
+        28
+      ]
+    ],
+    "bounds": {
+      "element": [
+        21,
+        22,
+        30,
+        30
+      ],
+      "rune_plate": [
+        137,
+        20,
+        38,
+        34
+      ],
+      "rank_plate": [
+        180,
+        20,
+        38,
+        34
+      ],
+      "hero": [
+        138,
+        22,
+        36,
+        30
+      ],
+      "badge_a": [
+        62,
+        29,
+        16,
+        16
+      ],
+      "badge_b": [
+        82,
+        29,
+        16,
+        16
+      ],
+      "name": [
+        22,
+        62,
+        196,
+        44
+      ],
+      "art": [
+        17,
+        110,
+        206,
+        165
+      ],
+      "type_line": [
+        22,
+        279,
+        196,
+        15
+      ],
+      "stat_icon": [
+        21,
+        302,
+        28,
+        28
+      ],
+      "stat_value": [
+        54,
+        299,
+        130,
+        34
+      ],
+      "rarity": [
+        198,
+        308,
+        16,
+        16
+      ],
+      "count_plaque": [
+        84,
+        331,
+        72,
+        26
+      ],
+      "count_text": [
+        88,
+        335,
+        64,
+        19
+      ]
+    },
+    "plaque": {
+      "rim": [
+        84,
+        331,
+        72,
+        26
+      ],
+      "face": [
+        86,
+        334,
+        68,
+        20
+      ],
+      "wings": [
+        [
+          77,
+          337,
+          8,
+          11
+        ],
+        [
+          155,
+          337,
+          8,
+          11
+        ]
+      ]
+    },
+    "type_px": {
+      "name": [
+        29,
+        29
+      ],
+      "plate": [
+        46,
+        34
+      ],
+      "type": [
+        15,
+        15
+      ],
+      "stat": [
+        44,
+        36
+      ],
+      "count": [
+        22,
+        19
+      ]
+    }
   }
 }

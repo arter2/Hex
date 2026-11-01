@@ -23,6 +23,9 @@ html body .card.kit::after{content:''; display:block; position:absolute; inset:0
 .card.kit.ench{--k-glow:url(cards/glows/card/enchanted.svg); --k-ba:url(cards/badges/card/enchanted.svg);}
 .card.kit.buff{--k-glow:url(cards/glows/card/buffed.svg); --k-bb:url(cards/badges/card/buffed.svg);}
 .card.kit.ench.buff{--k-glow:url(cards/glows/card/enchanted-and-buffed.svg);}
+.card.kit.compact.ench{--k-glow:url(cards/glows/short/enchanted.svg); --k-ba:url(cards/badges/short/enchanted.svg);}
+.card.kit.compact.buff{--k-glow:url(cards/glows/short/buffed.svg); --k-bb:url(cards/badges/short/buffed.svg);}
+.card.kit.compact.ench.buff{--k-glow:url(cards/glows/short/enchanted-and-buffed.svg);}
 html body .card.kit.ench,html body .card.kit.buff{outline:0; filter:none;}
 
 .card.kit>*{position:absolute; z-index:4; margin:0; padding:0; pointer-events:none; box-sizing:border-box;}
@@ -81,8 +84,8 @@ html body #dkColl .card.kit .dkown::before{content:'×';}
 html body #dkColl .card.kit .dkfrac~.dkown{display:none;}
 html body #dkColl .card.kit.full .dkfrac{color:#ffd866;}
 
-/* a small card (a hand, a grid of many) keeps the same frame and its rules, shrunk with the card (kitFit picks the
-   size); it drops the footer's labels (its icons and numbers stay) */
+/* a small full card drops the footer's labels (its icons and numbers stay); hands and grids use the short card
+   (.compact, cards/card-geo.css), which has no rules or footer: hold one for the full card */
 @container (max-width:179px){
   .card.kit .k-foot small{display:none;} .card.kit .k-foot span{font-size:var(--vfss,calc(20 * var(--u))); line-height:1;}
 }

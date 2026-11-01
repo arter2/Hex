@@ -13,6 +13,8 @@ Writes, under game/cards/:
   foils/card/<colour>/trim*.svg      the holo rim: a rainbow leaning 40% toward the colour's accent, plaque left dark
   badges/card/*.svg                  the enchanted / buffed state badges in the header
   card-geo.css                       every slot's place, as percentages of the canvas
+The short card (contract.json "short": hand, collection, deck builder, shop, rewards) gets the same layers under
+frames/short, textures/short, glows/short, foils/short and badges/short, and its slots under .card.kit.compact.
 Colours come from palettes.json; structural colours (steel, stone, copper, plates) from the contract. Deterministic:
 the same contract and palettes give the same files.
 """
@@ -20,10 +22,19 @@ import colorsys, json, os, random, re
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'game', 'cards')
 SRC = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'card-src')   # the v2.2 kit's material tiles and state badges
-C = json.load(open(os.path.join(ROOT, 'contract.json')))
+FULL = json.load(open(os.path.join(ROOT, 'contract.json')))
 PAL = json.load(open(os.path.join(ROOT, 'palettes.json')))
-W, H = C['canvas']['width'], C['canvas']['height']
-ST = C['structural']
+ST = FULL['structural']
+TEXTURE_INK = 0.8   # the texture-ink opacity written into every texture (the kit's tiles say 0.05; v184 set 0.8)
+C = W = H = B = BOT = FACE = AY1 = None; OUT = 'card'
+
+
+def use(variant):
+    """point the builders at one card shape: 'card' (the full 240x434) or 'short' (the contract's short card)"""
+    global C, W, H, B, BOT, FACE, AY1, OUT
+    C = FULL if variant == 'card' else dict(FULL, **FULL['short'])
+    W, H = C['canvas']['width'], C['canvas']['height']
+    B = C['bands']; BOT = B['bottom']; FACE = C['face']; AY1 = BOT['accent'][0] + BOT['accent'][1]; OUT = variant
 
 
 def hx(c):
@@ -66,10 +77,8 @@ def write(rel, text):
     open(p, 'w').write(text)
 
 
-B = C['bands']; BOT = B['bottom']
-FACE = C['face']
-AX0 = 14; AX1 = W - 14          # the accent ring's outer edge, x
-AY0 = 14; AY1 = BOT['accent'][0] + BOT['accent'][1]   # and y (14..407)
+AX0 = 14; AX1 = 240 - 14        # the accent ring's outer edge, x
+AY0 = 14                        # and y (AY1, its foot, is set by use())
 
 
 def stone_rail(s, rnd, x, y, w, h, horiz):
@@ -213,8 +222,9 @@ def textures():
         t = open(os.path.join(src, f)).read()
         pat = re.search(r'<pattern .*?</pattern>', t, re.S).group(0)
         defs = '<defs>%s<clipPath id="body-clip"><path d="M0 0h%dv%dH0zM%d %dh%dv%dh-%dz" clip-rule="evenodd"/></clipPath></defs>' % (pat, W, H, ax, ay, aw, ah, aw)
+        defs = re.sub(r'id="texture-ink" opacity="[0-9.]+"', 'id="texture-ink" opacity="%g"' % TEXTURE_INK, defs)
         s = Svg(); s.raw('<g clip-path="url(#body-clip)"><rect x="0" y="0" width="%d" height="%d" fill="url(#material-pattern)"/></g>' % (W, H))
-        write('textures/card/' + f, s.doc('Hexmancers card texture', defs)); n += 1
+        write('textures/%s/%s' % (OUT, f), s.doc('Hexmancers card texture', defs)); n += 1
     return n
 
 
@@ -248,10 +258,10 @@ def glows():
             if anim: s.raw('<g><animate attributeName="opacity" values=".55;1;.55" dur="1.6s" repeatCount="indefinite"/>')
             rim(s, col)
             if anim: s.raw('</g>')
-            s.raw('</g>'); write('glows/card/%s%s.svg' % (name, anim), s.doc('Hexmancers card glow, ' + name, '<defs>%s</defs>' % plaque_mask()))
+            s.raw('</g>'); write('glows/%s/%s%s.svg' % (OUT, name, anim), s.doc('Hexmancers card glow, ' + name, '<defs>%s</defs>' % plaque_mask()))
     s = Svg(); s.raw('<g mask="url(#no-plaque)"><g clip-path="url(#left)">'); rim(s, GLOW['enchanted']); s.raw('</g><g clip-path="url(#right)">'); rim(s, GLOW['buffed']); s.raw('</g></g>')
     clips = '<clipPath id="left"><rect width="%d" height="%d"/></clipPath><clipPath id="right"><rect x="%d" width="%d" height="%d"/></clipPath>' % (W // 2, H, W // 2, W // 2, H)
-    write('glows/card/enchanted-and-buffed.svg', s.doc('Hexmancers card glow, enchanted and buffed', '<defs>%s%s</defs>' % (plaque_mask(), clips)))
+    write('glows/%s/enchanted-and-buffed.svg' % OUT, s.doc('Hexmancers card glow, enchanted and buffed', '<defs>%s%s</defs>' % (plaque_mask(), clips)))
 
 
 def rainbow(accent):
@@ -273,7 +283,7 @@ def foils():
             s = Svg(); s.raw('<g mask="url(#no-plaque)" opacity=".7">'); ring(s, 0, 3, 'url(#holo)', None)
             x0, x1 = C['divider_x']
             for m in C['dividers']: s.r(x0, m - 1, x1 - x0, 3, 'url(#holo)', .6)
-            s.raw('</g>'); write('foils/card/%s/trim%s.svg' % (colour, anim), s.doc('Hexmancers holo trim, ' + colour, '<defs>%s%s</defs>' % (plaque_mask(), g)))
+            s.raw('</g>'); write('foils/%s/%s/trim%s.svg' % (OUT, colour, anim), s.doc('Hexmancers holo trim, ' + colour, '<defs>%s%s</defs>' % (plaque_mask(), g)))
 
 
 def badges():
@@ -283,7 +293,7 @@ def badges():
         x, y, w, h = C['bounds'][slot]; s = Svg()
         s.r(x, y, w, h, '#000000'); s.r(x + 1, y + 1, w - 2, h - 2, '#101b24')
         s.raw('<g transform="translate(%g %g) scale(%g)">%s</g>' % (x + 2, y + 2, (w - 4) / 32, inner))
-        write('badges/card/%s.svg' % name, s.doc('Hexmancers card badge, ' + name))
+        write('badges/%s/%s.svg' % (OUT, name), s.doc('Hexmancers card badge, ' + name))
 
 
 SLOTS = [('.k-el', 'element'), ('.k-hero', 'hero'), ('.k-rune', 'rune_plate'), ('.k-rank', 'rank_plate'), ('.k-name', 'name'),
@@ -294,26 +304,35 @@ SLOTS = [('.k-el', 'element'), ('.k-hero', 'hero'), ('.k-rune', 'rune_plate'), (
 def pct(b): x, y, w, h = b; return 'left:%.3f%%; top:%.3f%%; width:%.3f%%; height:%.3f%%;' % (x / W * 100, y / H * 100, w / W * 100, h / H * 100)
 
 
-def geo_css():
-    L = ['/* Generated by tools/card-build.py from cards/contract.json: do not edit by hand. Every card slot, as a percentage of the',
-         '   %dx%d canvas; --u is one canvas unit, for sizes. */' % (W, H),
-         '.card.kit{aspect-ratio:%d/%d; --u:calc(100cqw / %d);}' % (W, H, W)]
-    for sel, k in SLOTS: L.append('.card.kit>%s{%s}' % (sel, pct(C['bounds'][k])))
+def geo_css(L):
+    if OUT == 'card':
+        L += ['/* Generated by tools/card-build.py from cards/contract.json: do not edit by hand. Every card slot, as a percentage of the',
+              '   %dx%d canvas; --u is one canvas unit, for sizes. The short card (hand, grids) follows, under .card.kit.compact. */' % (W, H),
+              '.card.kit{aspect-ratio:%d/%d; --u:calc(100cqw / %d);}' % (W, H, W)]
+        K = '.card.kit'
+    else:
+        K = '.card.kit.compact'
+        L += ['', '/* the short card: %dx%d, no rules or footer */' % (W, H),
+              'html body .card.kit.compact{aspect-ratio:%d/%d!important;}' % (W, H),
+              '%s>:is(.k-rules,.k-foot){display:none;}' % K]
+    for sel, k in SLOTS:
+        if k in C['bounds']: L.append('%s>%s{%s}' % (K, sel, pct(C['bounds'][k])))
     # the two cost plates snap to the same whole-pixel size, so rounding never draws one wider than the other
     for sel, k in (('.k-rune', 'rune_plate'), ('.k-rank', 'rank_plate')):
-        L.append('.card.kit>%s{width:round(calc(%d * var(--u)),1px); height:round(calc(%d * var(--u)),1px);}' % (sel, C['bounds'][k][2], C['bounds'][k][3]))
+        L.append('%s>%s{width:round(calc(%d * var(--u)),1px); height:round(calc(%d * var(--u)),1px);}' % (K, sel, C['bounds'][k][2], C['bounds'][k][3]))
     # the count plaque's text also beats the older per-screen count-badge rules (some name screens by id)
-    L.append('.card.kit>.k-count{%s right:auto!important; bottom:auto!important; max-width:none!important;}' % pct(C['bounds']['count_text']).replace(';', '!important;'))
+    L.append(K + '>.k-count{%s right:auto!important; bottom:auto!important; max-width:none!important;}' % pct(C['bounds']['count_text']).replace(';', '!important;'))
     ax, ay, aw, ah = C['bounds']['art']
     # the holo art foils are the kit's 240x456 effects, scaled by width (uniformly), their art rect (18,110) on this window
-    L.append('.card.kit>.k-foil{%s background-size:%.4fcqw %.4fcqw; background-position:%.4fcqw %.4fcqw;}' % (pct(C['bounds']['art']), 100, 456 / 240 * 100, (ax - 18) / 240 * 100, (ay - 110) / 240 * 100))
+    L.append(K + '>.k-foil{%s background-size:%.4fcqw %.4fcqw; background-position:%.4fcqw %.4fcqw;}' % (pct(C['bounds']['art']), 100, 456 / 240 * 100, (ax - 18) / 240 * 100, (ay - 110) / 240 * 100))
     # each colour's ramp (palettes.json), for type, icons and labels: the card's class is c-<colour> (.kpal: other
     # things drawn in a card's colours, like the deck builder's tiles)
-    for colour, p in PAL.items():
+    if OUT == 'card':
+      for colour, p in PAL.items():
         L.append('.card.kit.c-%s,.kpal.c-%s{--k-acc:%s; --k-lt:%s; --k-dk:%s; --k-basec:%s; --k-text:%s; --k-ui:%s; --k-muted:%s;}' % (
             colour, colour, p['accent'], p['light'], p['dark'], p['base'], p['text'], p['ui_accent'], p['muted']))
-    for k, v in C['type_px'].items(): L.append('.card.kit{--fs-%s:calc(%d * var(--u)); --lh-%s:calc(%d * var(--u));}' % (k, v[0], k, v[1]))
-    write('card-geo.css', '\n'.join(L) + '\n')
+    for k, v in C['type_px'].items(): L.append('%s{--fs-%s:calc(%d * var(--u)); --lh-%s:calc(%d * var(--u));}' % (K, k, v[0], k, v[1]))
+    return L
 
 
 def icons_js():
@@ -340,6 +359,9 @@ def icons_js():
            # foot: the value beside its icon and label on a big card; footS: on a small card, which drops the label
            # (the slot less the 16-unit icon, the 4-unit gap and 2 units of edge clearance)
            'foot': b['footer_left'][2] - 26, 'footS': b['footer_left'][2] - 22, 'count': b['count_text'][2], 'pad': C['tolerances']['minimum_text_edge_clearance_canonical_units']}}
+    use('short'); sb = C['bounds']
+    geo['short'] = {'type': C['type_px'], 'w': {'name': sb['name'][2], 'nameH': sb['name'][3], 'type': sb['type_line'][2], 'count': sb['count_text'][2]}}
+    use('card')
     write('card-geo.js', '/* Generated by tools/card-build.py from cards/contract.json: type sizes [size, line height] and slot widths, in canvas units. */\n'
           'const KIT_GEO=' + json.dumps(geo, separators=(',', ':')) + ';\n')
     return len(out)
@@ -353,6 +375,11 @@ def light_element():
 
 
 if __name__ == '__main__':
-    for colour in PAL: write('frames/card/%s.svg' % colour, frame(colour))
-    n = textures(); glows(); foils(); badges(); geo_css(); light_element(); k = icons_js()
-    print('frames %d, textures %d, icons %d, glows, foils, badges, card-geo.css' % (len(PAL), n, k))
+    css = []
+    for v in ('card', 'short'):
+        use(v)
+        for colour in PAL: write('frames/%s/%s.svg' % (OUT, colour), frame(colour))
+        n = textures(); glows(); foils(); badges(); geo_css(css)
+    write('card-geo.css', '\n'.join(css) + '\n')
+    use('card'); light_element(); k = icons_js()
+    print('frames %d x2, textures %d x2, icons %d, glows, foils, badges, card-geo.css' % (len(PAL), n, k))

@@ -1084,7 +1084,7 @@ body.lsS #custHand .slot.hole{min-height:104px;}
 #cGrid,#dkColl,#custHand,#rvCards,#pkCards,#bColl,#bDeck,#custQueue,#dkDeck,#dtCard,#dkpCard{zoom:calc(1/var(--tz,1));}
 .peek,.cast-fx{zoom:var(--uib,1);}
 #cGrid,#dkColl,#custHand,#rvCards,#pkCards,#bColl{display:grid!important; grid-template-columns:repeat(auto-fill,var(--cardw,104px))!important; justify-content:center; gap:6px!important;}
-#cGrid>.card,#dkColl>.card,#custHand>.card,#custHand>.slot,#rvCards>.card,#rvCards>*,#pkCards>.card,#bColl>.card{width:var(--cardw,104px); height:calc(var(--cardw,104px)*1.7)!important; min-height:0!important; aspect-ratio:auto!important;}
+#cGrid>.card,#dkColl>.card,#custHand>.card,#custHand>.slot,#rvCards>.card,#rvCards>*,#pkCards>.card,#bColl>.card{width:var(--cardw,104px); height:calc(var(--cardw,104px)*362/240)!important; min-height:0!important; aspect-ratio:auto!important;}
 /* a reward that isn't a card (XP, gold, gear) keeps a card's size: its picture sits at the top at a
    fixed size and long text is cut to fit, so nothing spills out of the box */
 #rvCards>.reward{justify-content:flex-start; overflow:hidden; padding:8px 6px; gap:3px;}

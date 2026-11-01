@@ -1,0 +1,1057 @@
+{
+  "batch": 14,
+  "packets": [
+    {
+      "packet": "fire-01",
+      "colour": "fire",
+      "cards": [
+        {
+          "id": "fire_charge_16",
+          "name": "Wineskin of Flame"
+        },
+        {
+          "id": "fire_charge_17",
+          "name": "Meteorite Fragments"
+        },
+        {
+          "id": "fire_charge_18",
+          "name": "Bottomless Powder Keg"
+        },
+        {
+          "id": "fire_summon_12",
+          "name": "Ember Coyote"
+        },
+        {
+          "id": "fire_summon_13",
+          "name": "Shishi Lion-Dog"
+        }
+      ]
+    },
+    {
+      "packet": "frost-01",
+      "colour": "frost",
+      "cards": [
+        {
+          "id": "frost_charge_15",
+          "name": "Rusalka's Tears"
+        },
+        {
+          "id": "frost_charge_16",
+          "name": "Ghost Ship Volley"
+        },
+        {
+          "id": "frost_charge_17",
+          "name": "Sorcerer's Orbs"
+        },
+        {
+          "id": "frost_charge_18",
+          "name": "Glass Fishing Floats"
+        },
+        {
+          "id": "frost_charge_19",
+          "name": "Holy Spring Droplets"
+        }
+      ]
+    },
+    {
+      "packet": "gray-01",
+      "colour": "gray",
+      "cards": [
+        {
+          "id": "gray_summon_170",
+          "name": "Cu Chulainn"
+        },
+        {
+          "id": "gray_summon_171",
+          "name": "Sundiata Keita"
+        },
+        {
+          "id": "gray_summon_172",
+          "name": "Momotaro"
+        },
+        {
+          "id": "gray_summon_173",
+          "name": "Atalanta"
+        },
+        {
+          "id": "gray_summon_174",
+          "name": "Heracles"
+        }
+      ]
+    },
+    {
+      "packet": "light-01",
+      "colour": "light",
+      "cards": [
+        {
+          "id": "light_summon_18",
+          "name": "Great Sphinx of Giza"
+        },
+        {
+          "id": "light_summon_19",
+          "name": "White Elephant"
+        },
+        {
+          "id": "light_summon_20",
+          "name": "Hannibal's War Elephant"
+        },
+        {
+          "id": "light_summon_21",
+          "name": "Qilin"
+        },
+        {
+          "id": "light_summon_22",
+          "name": "Valkyrie Herald"
+        }
+      ]
+    },
+    {
+      "packet": "shadow-01",
+      "colour": "shadow",
+      "cards": [
+        {
+          "id": "shadow_summon_25",
+          "name": "Witch's Toad"
+        },
+        {
+          "id": "shadow_summon_26",
+          "name": "Black Cat Familiar"
+        },
+        {
+          "id": "shadow_summon_27",
+          "name": "Haugbui"
+        },
+        {
+          "id": "shadow_summon_28",
+          "name": "Jiangshi"
+        },
+        {
+          "id": "shadow_summon_29",
+          "name": "Nachzehrer"
+        }
+      ]
+    },
+    {
+      "packet": "storm-01",
+      "colour": "storm",
+      "cards": [
+        {
+          "id": "storm_summon_19",
+          "name": "Great River Crocodile"
+        },
+        {
+          "id": "storm_summon_20",
+          "name": "Roc"
+        },
+        {
+          "id": "storm_summon_21",
+          "name": "Simurgh"
+        },
+        {
+          "id": "storm_summon_22",
+          "name": "Great Sphinx"
+        },
+        {
+          "id": "storm_summon_23",
+          "name": "Riddling Sphinx"
+        }
+      ]
+    },
+    {
+      "packet": "verdant-01",
+      "colour": "verdant",
+      "cards": [
+        {
+          "id": "verdant_summon_23",
+          "name": "Alux Field Keeper"
+        },
+        {
+          "id": "verdant_summon_24",
+          "name": "Grove Druid"
+        },
+        {
+          "id": "verdant_summon_25",
+          "name": "Rainforest Curandero"
+        },
+        {
+          "id": "verdant_summon_26",
+          "name": "Archdruid of the Oaks"
+        },
+        {
+          "id": "verdant_summon_27",
+          "name": "Greenwood Outlaw"
+        }
+      ]
+    },
+    {
+      "packet": "fire-02",
+      "colour": "fire",
+      "cards": [
+        {
+          "id": "fire_summon_14",
+          "name": "Oni Brute"
+        },
+        {
+          "id": "fire_summon_15",
+          "name": "Red Oni"
+        },
+        {
+          "id": "fire_summon_16",
+          "name": "Oni Warlord"
+        },
+        {
+          "id": "fire_summon_17",
+          "name": "Minotaur"
+        },
+        {
+          "id": "fire_summon_18",
+          "name": "Fire Bull"
+        }
+      ]
+    },
+    {
+      "packet": "frost-02",
+      "colour": "frost",
+      "cards": [
+        {
+          "id": "frost_charge_20",
+          "name": "Narwhal Ivory Darts"
+        },
+        {
+          "id": "frost_summon_12",
+          "name": "Yeti"
+        },
+        {
+          "id": "frost_summon_13",
+          "name": "Yeti Cub"
+        },
+        {
+          "id": "frost_summon_14",
+          "name": "Yeti Matriarch"
+        },
+        {
+          "id": "frost_summon_15",
+          "name": "Snowman"
+        }
+      ]
+    },
+    {
+      "packet": "gray-02",
+      "colour": "gray",
+      "cards": [
+        {
+          "id": "gray_summon_175",
+          "name": "Perseus"
+        },
+        {
+          "id": "gray_summon_176",
+          "name": "Theseus"
+        },
+        {
+          "id": "gray_summon_177",
+          "name": "Achilles"
+        },
+        {
+          "id": "gray_summon_178",
+          "name": "Hector of Troy"
+        },
+        {
+          "id": "gray_summon_179",
+          "name": "Rostam"
+        }
+      ]
+    },
+    {
+      "packet": "light-02",
+      "colour": "light",
+      "cards": [
+        {
+          "id": "light_summon_23",
+          "name": "Valkyrie Shieldmaiden"
+        },
+        {
+          "id": "light_summon_24",
+          "name": "Cherub"
+        },
+        {
+          "id": "light_summon_25",
+          "name": "Guardian Angel"
+        },
+        {
+          "id": "light_summon_26",
+          "name": "Forbidden City Lion"
+        },
+        {
+          "id": "light_summon_27",
+          "name": "Rose-Garden Simurgh"
+        }
+      ]
+    },
+    {
+      "packet": "shadow-02",
+      "colour": "shadow",
+      "cards": [
+        {
+          "id": "shadow_summon_30",
+          "name": "Yurei"
+        },
+        {
+          "id": "shadow_summon_31",
+          "name": "Vetala"
+        },
+        {
+          "id": "shadow_summon_32",
+          "name": "Mara"
+        },
+        {
+          "id": "shadow_summon_33",
+          "name": "Pontianak"
+        },
+        {
+          "id": "shadow_summon_34",
+          "name": "Bog Revenant"
+        }
+      ]
+    },
+    {
+      "packet": "storm-02",
+      "colour": "storm",
+      "cards": [
+        {
+          "id": "storm_summon_24",
+          "name": "Bronze Automaton"
+        },
+        {
+          "id": "storm_summon_25",
+          "name": "Talos the Bronze Giant"
+        },
+        {
+          "id": "storm_summon_26",
+          "name": "Clockwork Falcon"
+        },
+        {
+          "id": "storm_summon_27",
+          "name": "Horus the Far-Seeing"
+        },
+        {
+          "id": "storm_summon_28",
+          "name": "Ibis Scribe"
+        }
+      ]
+    },
+    {
+      "packet": "verdant-02",
+      "colour": "verdant",
+      "cards": [
+        {
+          "id": "verdant_summon_28",
+          "name": "Hooded Outlaw Captain"
+        },
+        {
+          "id": "verdant_summon_29",
+          "name": "Mountain Man Trapper"
+        },
+        {
+          "id": "verdant_summon_30",
+          "name": "Sir Gawain"
+        },
+        {
+          "id": "verdant_summon_31",
+          "name": "The Green Knight"
+        },
+        {
+          "id": "verdant_summon_32",
+          "name": "Arthur, the Once King"
+        }
+      ]
+    },
+    {
+      "packet": "fire-03",
+      "colour": "fire",
+      "cards": [
+        {
+          "id": "fire_summon_19",
+          "name": "Goblin Sapper"
+        },
+        {
+          "id": "fire_summon_20",
+          "name": "Goblin Gunner"
+        },
+        {
+          "id": "fire_summon_21",
+          "name": "Goblin Chieftain"
+        },
+        {
+          "id": "fire_summon_22",
+          "name": "Gremlin"
+        },
+        {
+          "id": "fire_summon_23",
+          "name": "Gremlin Tinkerer"
+        }
+      ]
+    },
+    {
+      "packet": "frost-03",
+      "colour": "frost",
+      "cards": [
+        {
+          "id": "frost_summon_16",
+          "name": "Winter Wolf"
+        },
+        {
+          "id": "frost_summon_17",
+          "name": "Frost Wolf Alpha"
+        },
+        {
+          "id": "frost_summon_18",
+          "name": "Rockhopper Penguin"
+        },
+        {
+          "id": "frost_summon_19",
+          "name": "Walrus"
+        },
+        {
+          "id": "frost_summon_20",
+          "name": "Narwhal"
+        }
+      ]
+    },
+    {
+      "packet": "gray-03",
+      "colour": "gray",
+      "cards": [
+        {
+          "id": "gray_summon_180",
+          "name": "Arjuna"
+        },
+        {
+          "id": "gray_summon_181",
+          "name": "Sigurd"
+        },
+        {
+          "id": "gray_summon_182",
+          "name": "Ilya Muromets"
+        },
+        {
+          "id": "gray_summon_183",
+          "name": "Lancelot"
+        },
+        {
+          "id": "gray_summon_184",
+          "name": "Gawain"
+        }
+      ]
+    },
+    {
+      "packet": "light-03",
+      "colour": "light",
+      "cards": [
+        {
+          "id": "light_summon_28",
+          "name": "Sylph of the Gale"
+        },
+        {
+          "id": "light_summon_29",
+          "name": "Roman Legionary"
+        },
+        {
+          "id": "light_summon_30",
+          "name": "Centurion"
+        },
+        {
+          "id": "light_summon_31",
+          "name": "Crusader Knight"
+        },
+        {
+          "id": "light_summon_32",
+          "name": "Knight of the Round Table"
+        }
+      ]
+    },
+    {
+      "packet": "shadow-03",
+      "colour": "shadow",
+      "cards": [
+        {
+          "id": "shadow_summon_35",
+          "name": "Loup-Garou"
+        },
+        {
+          "id": "shadow_summon_36",
+          "name": "Bayou Rougarou"
+        },
+        {
+          "id": "shadow_summon_37",
+          "name": "Barghest"
+        },
+        {
+          "id": "shadow_summon_38",
+          "name": "Black Cadejo"
+        },
+        {
+          "id": "shadow_summon_39",
+          "name": "Night Mare"
+        }
+      ]
+    },
+    {
+      "packet": "storm-03",
+      "colour": "storm",
+      "cards": [
+        {
+          "id": "storm_summon_29",
+          "name": "Frilled Lizard"
+        },
+        {
+          "id": "storm_summon_30",
+          "name": "Horned Viper"
+        },
+        {
+          "id": "storm_summon_31",
+          "name": "Uraeus Cobra"
+        },
+        {
+          "id": "storm_summon_32",
+          "name": "Plumed Serpent"
+        },
+        {
+          "id": "storm_summon_33",
+          "name": "Chupacabra"
+        }
+      ]
+    },
+    {
+      "packet": "verdant-03",
+      "colour": "verdant",
+      "cards": [
+        {
+          "id": "verdant_summon_33",
+          "name": "Gwyn ap Nudd"
+        },
+        {
+          "id": "verdant_summon_34",
+          "name": "Cwn Annwn Hound"
+        },
+        {
+          "id": "verdant_summon_35",
+          "name": "Herne the Hunter"
+        },
+        {
+          "id": "verdant_summon_36",
+          "name": "Tapio, King of the Forest"
+        },
+        {
+          "id": "verdant_summon_37",
+          "name": "Sasquatch"
+        }
+      ]
+    },
+    {
+      "packet": "fire-04",
+      "colour": "fire",
+      "cards": [
+        {
+          "id": "fire_summon_24",
+          "name": "Duende"
+        },
+        {
+          "id": "fire_summon_25",
+          "name": "Salamander"
+        },
+        {
+          "id": "fire_summon_26",
+          "name": "Lava Golem"
+        },
+        {
+          "id": "fire_summon_27",
+          "name": "Magma Elemental"
+        },
+        {
+          "id": "fire_summon_28",
+          "name": "Dwarven Smith"
+        }
+      ]
+    },
+    {
+      "packet": "frost-04",
+      "colour": "frost",
+      "cards": [
+        {
+          "id": "frost_summon_21",
+          "name": "Orca"
+        },
+        {
+          "id": "frost_summon_22",
+          "name": "Hammerhead Shark"
+        },
+        {
+          "id": "frost_summon_23",
+          "name": "Great White Shark"
+        },
+        {
+          "id": "frost_summon_24",
+          "name": "Sea Turtle"
+        },
+        {
+          "id": "frost_summon_25",
+          "name": "Zaratan the Island Turtle"
+        }
+      ]
+    },
+    {
+      "packet": "gray-04",
+      "colour": "gray",
+      "cards": [
+        {
+          "id": "gray_summon_185",
+          "name": "El Cid"
+        },
+        {
+          "id": "gray_summon_186",
+          "name": "Roland"
+        },
+        {
+          "id": "gray_summon_187",
+          "name": "Robin Hood"
+        },
+        {
+          "id": "gray_summon_188",
+          "name": "Mwindo"
+        },
+        {
+          "id": "gray_summon_189",
+          "name": "Kintaro"
+        }
+      ]
+    },
+    {
+      "packet": "light-04",
+      "colour": "light",
+      "cards": [
+        {
+          "id": "light_summon_33",
+          "name": "Sir Galahad, the Pure"
+        },
+        {
+          "id": "light_summon_34",
+          "name": "El Cid Campeador"
+        },
+        {
+          "id": "light_summon_35",
+          "name": "Longbowman"
+        },
+        {
+          "id": "light_summon_36",
+          "name": "Inca Stonemason"
+        },
+        {
+          "id": "light_summon_37",
+          "name": "Village Physician"
+        }
+      ]
+    },
+    {
+      "packet": "shadow-04",
+      "colour": "shadow",
+      "cards": [
+        {
+          "id": "shadow_summon_40",
+          "name": "Black Widow"
+        },
+        {
+          "id": "shadow_summon_41",
+          "name": "Bog Witch"
+        },
+        {
+          "id": "shadow_summon_42",
+          "name": "Plague Doctor"
+        },
+        {
+          "id": "shadow_summon_43",
+          "name": "Necromancer"
+        },
+        {
+          "id": "shadow_summon_44",
+          "name": "Horned Night Visitor"
+        }
+      ]
+    },
+    {
+      "packet": "storm-04",
+      "colour": "storm",
+      "cards": [
+        {
+          "id": "storm_summon_34",
+          "name": "Foo Dog Sentinel"
+        },
+        {
+          "id": "storm_summon_35",
+          "name": "Brass Foo Pup"
+        },
+        {
+          "id": "storm_summon_36",
+          "name": "Bahamut"
+        },
+        {
+          "id": "storm_summon_37",
+          "name": "Falak the Abyss Serpent"
+        },
+        {
+          "id": "storm_summon_38",
+          "name": "Sandworm"
+        }
+      ]
+    },
+    {
+      "packet": "verdant-04",
+      "colour": "verdant",
+      "cards": [
+        {
+          "id": "verdant_summon_38",
+          "name": "Yowie"
+        },
+        {
+          "id": "verdant_summon_39",
+          "name": "Basajaun"
+        },
+        {
+          "id": "verdant_summon_40",
+          "name": "Kapre Tree Giant"
+        },
+        {
+          "id": "verdant_summon_41",
+          "name": "Orang Pendek"
+        },
+        {
+          "id": "verdant_summon_42",
+          "name": "Mapinguari"
+        }
+      ]
+    },
+    {
+      "packet": "fire-05",
+      "colour": "fire",
+      "cards": [
+        {
+          "id": "fire_summon_29",
+          "name": "Dwarven Miner"
+        },
+        {
+          "id": "fire_summon_30",
+          "name": "Dwarven Musketeer"
+        },
+        {
+          "id": "fire_summon_31",
+          "name": "Dwarven Rocketeer"
+        },
+        {
+          "id": "fire_summon_32",
+          "name": "Mountain Hermit"
+        },
+        {
+          "id": "fire_summon_33",
+          "name": "Samurai"
+        }
+      ]
+    },
+    {
+      "packet": "frost-05",
+      "colour": "frost",
+      "cards": [
+        {
+          "id": "frost_summon_26",
+          "name": "King Crab"
+        },
+        {
+          "id": "frost_summon_27",
+          "name": "Giant Squid"
+        },
+        {
+          "id": "frost_summon_28",
+          "name": "The Kraken"
+        },
+        {
+          "id": "frost_summon_29",
+          "name": "Kraken Spawn"
+        },
+        {
+          "id": "frost_summon_30",
+          "name": "Leviathan"
+        }
+      ]
+    },
+    {
+      "packet": "gray-05",
+      "colour": "gray",
+      "cards": [
+        {
+          "id": "gray_summon_190",
+          "name": "Fionn mac Cumhaill"
+        },
+        {
+          "id": "gray_summon_191",
+          "name": "Scathach"
+        },
+        {
+          "id": "gray_summon_192",
+          "name": "Tomoe Gozen"
+        },
+        {
+          "id": "gray_summon_193",
+          "name": "Antarah the Poet-Knight"
+        },
+        {
+          "id": "gray_summon_194",
+          "name": "Hunahpu and Xbalanque"
+        }
+      ]
+    },
+    {
+      "packet": "light-05",
+      "colour": "light",
+      "cards": [
+        {
+          "id": "light_summon_38",
+          "name": "Battle Cleric"
+        },
+        {
+          "id": "light_summon_39",
+          "name": "Vaidya of Taxila"
+        },
+        {
+          "id": "light_summon_40",
+          "name": "Hanlin Academy Scribe"
+        },
+        {
+          "id": "light_summon_41",
+          "name": "Persian Astronomer"
+        },
+        {
+          "id": "light_summon_42",
+          "name": "Astronomer of Copan"
+        }
+      ]
+    },
+    {
+      "packet": "shadow-05",
+      "colour": "shadow",
+      "cards": [
+        {
+          "id": "shadow_summon_45",
+          "name": "Omen Raven"
+        },
+        {
+          "id": "shadow_summon_46",
+          "name": "Draugr"
+        },
+        {
+          "id": "shadow_summon_47",
+          "name": "Onryo"
+        },
+        {
+          "id": "shadow_summon_48",
+          "name": "Bean Sidhe"
+        },
+        {
+          "id": "shadow_summon_49",
+          "name": "Lich"
+        }
+      ]
+    },
+    {
+      "packet": "storm-05",
+      "colour": "storm",
+      "cards": [
+        {
+          "id": "storm_summon_39",
+          "name": "Linen-Wrapped Sentinel"
+        },
+        {
+          "id": "storm_summon_40",
+          "name": "Sand Golem"
+        },
+        {
+          "id": "storm_summon_41",
+          "name": "Wandering Alchemist"
+        },
+        {
+          "id": "storm_summon_42",
+          "name": "Bedouin Raider"
+        },
+        {
+          "id": "storm_summon_43",
+          "name": "Parthian Horse Archer"
+        }
+      ]
+    },
+    {
+      "packet": "verdant-05",
+      "colour": "verdant",
+      "cards": [
+        {
+          "id": "verdant_summon_43",
+          "name": "Old Man of the Forest"
+        },
+        {
+          "id": "verdant_summon_45",
+          "name": "Monkey King's Vanguard"
+        },
+        {
+          "id": "verdant_summon_46",
+          "name": "Tanuki Drummer"
+        },
+        {
+          "id": "verdant_summon_47",
+          "name": "Grizzly Matriarch"
+        },
+        {
+          "id": "verdant_summon_48",
+          "name": "Otso the Honey-Paw"
+        }
+      ]
+    },
+    {
+      "packet": "fire-06",
+      "colour": "fire",
+      "cards": [
+        {
+          "id": "fire_summon_34",
+          "name": "Ronin Archer"
+        },
+        {
+          "id": "fire_summon_35",
+          "name": "Mountain Monk"
+        },
+        {
+          "id": "fire_summon_36",
+          "name": "Tengu"
+        },
+        {
+          "id": "fire_summon_37",
+          "name": "Lantern Ghost"
+        }
+      ]
+    },
+    {
+      "packet": "frost-06",
+      "colour": "frost",
+      "cards": [
+        {
+          "id": "frost_summon_31",
+          "name": "Bunyip of the Billabong"
+        },
+        {
+          "id": "frost_summon_32",
+          "name": "Sea Serpent"
+        },
+        {
+          "id": "frost_summon_33",
+          "name": "Dragon King of the Deep"
+        },
+        {
+          "id": "frost_summon_34",
+          "name": "River Lung"
+        }
+      ]
+    },
+    {
+      "packet": "gray-06",
+      "colour": "gray",
+      "cards": [
+        {
+          "id": "gray_summon_195",
+          "name": "Glooscap"
+        }
+      ]
+    },
+    {
+      "packet": "light-06",
+      "colour": "light",
+      "cards": [
+        {
+          "id": "light_summon_43",
+          "name": "Imhotep the Builder"
+        },
+        {
+          "id": "light_summon_44",
+          "name": "Terracotta Warrior"
+        },
+        {
+          "id": "light_summon_45",
+          "name": "Talos, the Bronze Guard"
+        },
+        {
+          "id": "light_machine_11",
+          "name": "Zhuge Nu Repeater"
+        }
+      ]
+    },
+    {
+      "packet": "shadow-06",
+      "colour": "shadow",
+      "cards": [
+        {
+          "id": "shadow_summon_50",
+          "name": "Ankou"
+        },
+        {
+          "id": "shadow_summon_51",
+          "name": "Strigoi"
+        },
+        {
+          "id": "shadow_summon_52",
+          "name": "Aswang"
+        },
+        {
+          "id": "shadow_summon_53",
+          "name": "Manananggal"
+        }
+      ]
+    },
+    {
+      "packet": "storm-06",
+      "colour": "storm",
+      "cards": [
+        {
+          "id": "storm_summon_44",
+          "name": "Bazaar Pickpocket"
+        },
+        {
+          "id": "storm_summon_45",
+          "name": "Mamluk Lancer"
+        },
+        {
+          "id": "storm_summon_46",
+          "name": "Persian Immortal"
+        },
+        {
+          "id": "storm_summon_47",
+          "name": "Storm Imp"
+        }
+      ]
+    },
+    {
+      "packet": "verdant-06",
+      "colour": "verdant",
+      "cards": [
+        {
+          "id": "verdant_summon_49",
+          "name": "Bull Moose"
+        },
+        {
+          "id": "verdant_summon_50",
+          "name": "Dappled Fawn"
+        },
+        {
+          "id": "verdant_summon_51",
+          "name": "Balam Jaguar Knight"
+        },
+        {
+          "id": "verdant_summon_52",
+          "name": "Clouded Leopard"
+        }
+      ]
+    }
+  ]
+}

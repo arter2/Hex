@@ -1,0 +1,11 @@
+{
+  "batch": 14,
+  "workers": {
+    "/root/b14_worker_1": {
+      "packet": "fire-01",
+      "state": "running"
+    }
+  },
+  "completedPackets": [],
+  "reviewedSources": {}
+}

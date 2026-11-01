@@ -3501,5 +3501,527 @@
     "status": "generated",
     "batch": 13,
     "reviewNote": "Inspected exact 512 source, true 206:141 crop and 128x88 thumbnail. All three compact javelins retain their complete crystalline tips, wrapped shafts and butts in frame; the ranger’s casting hand and piercing impact read clearly."
+  },
+  {
+    "cardId": "frost_charge_15",
+    "name": "Rusalka's Tears",
+    "prompt": "Paint an illustration for the frost charge card “Rusalka's Tears.” Depict three or four luminous water droplets falling from the sorrowful face of a Slavic rusalka water spirit, each tear becoming a small clear blue ice jewel as it falls toward a frozen woodland pool; the rusalka's face and the tears are the unmistakable central subject. The effect is a bolt of restorative magic, so imply a gentle healing glow in the droplets without adding a modern object. Painterly medieval fantasy collectible-card art, nuanced wet skin, flowing pale hair, translucent ice and dark water, attractive cold moonlight with a warm reflected lantern glint, atmospheric depth, matching the supplied Hexmancers frost references. Horizontal staging within a 1:1 square canvas for a 512×512 editable master: keep face and entire focal tear droplets in x24..488,y105..407; leave quiet scenery above and below for the 206:141 crop. Strong silhouette, readable at card size. No frame, words, lettering, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-45bbc95e-e159-47bc-ab05-145be031a44f.png",
+    "editableSourcePath": "game/cards/art/masters/frost_charge_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "512-square source and wide crop reviewed: rusalka face and descending jewel tears remain readable; frost-lit water and quiet glints support the restorative bolt. Strong cinematic detail, though the finish leans glossy rather than visibly brush-painted."
+  },
+  {
+    "cardId": "frost_charge_16",
+    "name": "Ghost Ship Volley",
+    "prompt": "Paint an illustration for the frost charge card “Ghost Ship Volley.” A compact ghostly medieval longship breaks through a frozen sea mist, its spectral crew loosing a single readable volley of icy blue ghostly cannon-fire/orbs from the ship's side, projectiles arcing toward the viewer; the whole ship and the volley are the clear named subject. Convey a curse through cold ghostlight and a few frost wisps. Painterly medieval fantasy collectible-card art, intricate weathered timber, icy rigging, translucent sails, dramatic moonlit storm and atmospheric depth, grounded materials and attractive blue-white light, consistent with the supplied Hexmancers frost art. Bold horizontal staging in a 1:1 square canvas for a 512×512 master; keep ship silhouette and several projectile orbs wholly within x24..488,y105..407, with quiet cloud and water bands above and below for the 206:141 crop. Readable small. No frame, text, symbols, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ff265ab2-9f98-4f2c-b410-c1f7b8c1d493.png",
+    "editableSourcePath": "game/cards/art/masters/frost_charge_16.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "512-square source and wide crop reviewed: ghost ship, crew volley and icy projectiles remain legible; mast tops extend beyond the card crop, while the ship and volley remain clear. Strong cinematic detail, with a glossy finish."
+  },
+  {
+    "cardId": "frost_charge_17",
+    "name": "Sorcerer's Orbs",
+    "prompt": "Paint an illustration for the frost charge card “Sorcerer's Orbs.” Three distinct enchanted crystal orbs, one largest and brightest at center, hover beside an elderly frost sorcerer's focused face and one visible gloved hand; elegant internal blue-white light and precise icy bolts make their magic unmistakable. The orbs are the primary named objects, fully visible, with a subtle critical spark at the leading orb. Painterly medieval fantasy collectible-card art, believable crystal facets, aged wool, leather and silver, cinematic cold light against a dusky winter stone tower, atmospheric depth and grounded anatomy, in the supplied Hexmancers frost reference style. Compose horizontally on a 1:1 square canvas for a 512×512 editable master; keep sorcerer's face, hand and all three complete orbs within x24..488,y105..407, quiet scenery at top and bottom for the 206:141 card crop. Strong simple silhouettes, readable at small size. No frame, lettering, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a43e09a5-cd75-475c-91f1-a20e340ca7d2.png",
+    "editableSourcePath": "game/cards/art/masters/frost_charge_17.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "512-square source and wide crop reviewed: sorcerer's face, casting hand and all three orbs remain intact in the card crop. Strong cinematic detail, though the finish leans glossy rather than visibly brush-painted."
+  },
+  {
+    "cardId": "frost_charge_18",
+    "name": "Glass Fishing Floats",
+    "prompt": "Paint an illustration for the frost charge card “Glass Fishing Floats.” Show three hand-blown glass fishing floats, perfectly round and fully visible, tethered by a short loop of rope and buoying in an icy harbor pool beside a fisherman's cropped but clear mittened hand; the jewel-like floats are the entire named subject, with one frosted orb catching a bright glint. Painterly medieval fantasy collectible-card art, finely rendered clear aqua glass, weathered rope and rough wood, peaceful cold morning light and subtle harbor atmosphere, with the grounded materials and painterly finish of the supplied Hexmancers frost references. Horizontal composition in a 1:1 square canvas for a 512×512 master; keep the full floats and relevant hand inside x24..488,y105..407, quiet sky and water beyond for the 206:141 crop. Keep shapes simple and readable as glass at card size. No modern tackle, frame, text, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-dafc2dd1-9ae6-415c-aa4c-da9c4f290d3d.png",
+    "editableSourcePath": "game/cards/art/masters/frost_charge_18.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "512-square source and wide crop reviewed: all three glass floats are fully visible and read as the named subject; the incidental glove is partly above the wide crop. Strong material highlights, with a glossy finish."
+  },
+  {
+    "cardId": "frost_charge_19",
+    "name": "Holy Spring Droplets",
+    "prompt": "Paint an illustration for the frost charge card “Holy Spring Droplets.” Show a small sacred spring emerging from a carved medieval stone basin in a snowy mountain chapel courtyard; three crystal-clear, luminous droplets leap from the spring in a decisive piercing arc through a dark icy curse-mist, dissolving it into pale silver vapor. The complete spring droplets and their piercing trajectory are the dominant named subject, with a subtle shrine carving and winter stonework as supporting context. Painterly medieval fantasy collectible-card art with visible brush texture, nuanced translucent water, worn stone, moss and frost, strong directional dawn light, restrained blue-white radiance and atmospheric depth, matched to the supplied Hexmancers frost references. 1:1 square composition for an editable 512×512 master; keep the spring, full droplets, and crucial impact arc inside x24..488,y105..407, with quiet snowy stone and pale sky above and below for the 206:141 crop. Clear silhouette, readable at card size. No people needed. No frame, text, lettering, numbers or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b5fce84f-da9f-4621-8762-562edb5c4d22.png",
+    "editableSourcePath": "game/cards/art/masters/frost_charge_19.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "512-square source, wide crop and thumbnail reviewed: all three luminous droplets and their piercing arc are clear; the spring basin is partly cropped at the lower edge. Strong icy light and material detail, though the finish is glossy rather than visibly brush-painted."
+  },
+  {
+    "cardId": "frost_charge_20",
+    "name": "Narwhal Ivory Darts",
+    "prompt": "Paint an illustration for the exact card Narwhal Ivory Darts: three compact, fully visible throwing darts carved from pale narwhal ivory, their unmistakable spiral tusk grain and tapered ivory points clearly readable; subtle blue frost gathers on the tips as they arc toward a blurred target. The complete dart heads, shafts and feather fletching are visible, side-by-side in a strong horizontal arrangement inside x24..488 y105..407. Keep the darts the single dominant subject, no people needed. Painterly medieval fantasy collectible-card art with clearly visible brushwork, softly worked edges and tactile carved ivory, avoid glossy photo-real surfaces. Cool window light against a warm candlelit medieval workshop, atmospheric depth and clear values. Square 1:1 composition for editable 512x512 master and 206:141 card crop. No frame, lettering, numbers, UI, anime, Disney cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2f046806-8ca0-46c0-9e89-f7dae71239bf.png",
+    "editableSourcePath": "game/cards/art/masters/frost_charge_20.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "512-square source, upward-shifted 206:141 crop, and 128x88 thumbnail reviewed. All three complete ivory darts retain their spiral grain, points, and full feather fletching with crop margin."
+  },
+  {
+    "cardId": "frost_summon_13",
+    "name": "Yeti Cub",
+    "prompt": "Paint an illustration for the exact card Yeti Cub: a small, unmistakable juvenile yeti, a compact fluffy white ape-like mountain creature with a round expressive face, dark eyes, broad little nose and oversized paws, clambering playfully over a low snow-covered boulder. Clearly a young yeti, with shorter stature and softer downy fur than an adult; face and both paws fully visible inside x24..488 y105..407. One cub is the prominent subject; an adult silhouette may be far in the background only. Painterly medieval fantasy collectible-card art with visibly layered brushwork and tactile snowy fur, avoid photographic gloss. Cool blue snow light and a subtle warm dawn rim, lively readable silhouette and atmospheric depth. Square 1:1 for editable 512 master and 206:141 crop. No frame, lettering, UI, anime, Disney cartoon proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-86b78568-02cc-441c-beb8-b5c746a32510.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "512-square source, centered 206:141 crop, and 128x88 thumbnail reviewed. The small juvenile yeti is distinct from an adult, with full face, eyes, and both oversized paws visible."
+  },
+  {
+    "cardId": "frost_summon_12",
+    "name": "Yeti",
+    "prompt": "Paint a new illustration for the exact card Yeti, a huge adult ape-like snow creature. Compose a horizontal medium close view from waist to head, placing the Yeti's head, clear dark eyes and both broad hands together within the central band x24..488, y105..407 of the square. Its head must not touch or leave the top; hands reach forward at chest height, not down toward the bottom edge. A few snowy pines and mountain mist frame the creature. It has powerful shoulders, thick shaggy ivory-white fur, a weathered stern face and immense scale. Distinct painterly brushstrokes and worked fur texture must be visible; avoid glossy photographic realism. Medieval fantasy collectible-card painting, dramatic blue glacial light and warm reflected sunrise, clear silhouette and atmospheric depth. Square 1:1 master intended for a 206:141 card crop. No frame, lettering, symbols, UI, anime, Disney proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-3e27f2e6-6926-4446-8fbf-865ba59ee51d.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.342
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "512-square replacement source, top-aligned 206:141 crop, and 128x88 thumbnail reviewed. Yeti face, eyes, and both forward hands remain visible; preserved the prior source in /tmp/frost-02-review/frost_summon_12-previous.png."
+  },
+  {
+    "cardId": "frost_summon_14",
+    "name": "Yeti Matriarch",
+    "prompt": "Paint a new illustration for the exact card Yeti Matriarch: a towering maternal adult female yeti, a broad powerful ape-like snow creature with thick ivory fur and an expressive weathered face. Compose a horizontal waist-up portrait so her entire head, eyes, and two large hands all fit comfortably inside x24..488, y105..407 on the square. One hand protects a smaller Yeti Cub tucked beside her; the other holds a compact snow boulder at chest height, suggesting her lob attack. Make the adult distinctly much larger than the cub and dominant. Visible painterly brushstrokes in fur and snow, tactile surfaces, no glossy photo-real finish. Medieval fantasy collectible-card art, cool glacial light with warm sunrise edge light, readable silhouette and atmospheric depth. Square 1:1 master for 206:141 crop. No frame, lettering, UI, anime, Disney proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-1b6d7446-aaed-4ae1-b285-bce4439327f5.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.342
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "512-square replacement source, top-aligned 206:141 crop, and 128x88 thumbnail reviewed. Matriarch face and eyes, protective hand with cub, and snowball-holding hand remain visible; preserved the prior source in /tmp/frost-02-review/frost_summon_14-previous.png."
+  },
+  {
+    "cardId": "frost_summon_15",
+    "name": "Snowman",
+    "prompt": "Paint an illustration for the exact card Snowman: a solitary old-fashioned snowman animated in a medieval winter courtyard, built from three uneven packed snow spheres with distinct coal eyes, a short carrot nose, crooked twig arms, and a weathered wool scarf. The snowman leans forward as frost magic mends a crack in its torso; snow texture and its handmade construction are clear. Keep the whole head, coal eyes, carrot nose and both twig hands fully within x24..488 y105..407; horizontal mid-distance composition, snowman dominant, quiet snow-covered stonework behind. Painterly medieval fantasy collectible-card art with visible brushwork and softly layered snow, no glossy photo look. Cool moonlight with warm lantern glow, dramatic readable values and atmospheric depth. Square 1:1 composition for editable 512x512 master and 206:141 crop. No frame, lettering, symbols, UI, anime, Disney cartoon proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4c343943-e7e1-42dd-8bc7-1e032b9263a4.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.342
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "512-square source, top-aligned 206:141 crop, and 128x88 thumbnail reviewed. Snowman retains its full head, coal eyes, carrot nose, scarf, and both twig hands; lower snow body crops incidentally."
+  },
+  {
+    "cardId": "frost_summon_16",
+    "name": "Winter Wolf",
+    "prompt": "Paint standalone painterly medieval-high-fantasy collectible-card art for the exact summon Winter Wolf. Show one true arctic wolf, not a domestic husky: lean powerful build, thick pale silver-white winter coat, long narrow muzzle, upright pointed ears, clear amber eyes, dark nose and large forepaws. The wolf bounds in a low pounce through fresh snow, with muzzle, eyes and one leading paw prominent and intact; a small drift of magical frost trails behind its motion. Moonlit fir forest and distant blue glacier, strong warm rim light on fur against cold blue shadows. Painterly visible brush texture in fur, snow and tree branches, atmospheric depth and grounded animal anatomy matching supplied Hexmancers frost art and accepted master; avoid CGI sheen and glossy photoreal finish. Explicit 1:1 SQUARE canvas for a 512x512 editable master, composed horizontally; keep full head, both ears, eyes, muzzle and leading paw within x24..488,y105..407 for the 206:141 card crop, quiet snowy atmosphere above and below. No frame, text, collar, extra wolves or UI. No anime, Disney-like cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-15ef4f25-9465-4a47-a6f8-069ec4c16537.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_16.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, centered 206:141 crop and 128-pixel thumbnail: unmistakable pale winter wolf with both ears, eyes, long muzzle and leading paw clearly visible; lower body and snow spray crop incidentally."
+  },
+  {
+    "cardId": "frost_summon_17",
+    "name": "Frost Wolf Alpha",
+    "prompt": "Paint standalone painterly medieval-fantasy collectible-card art for the exact summon Frost Wolf Alpha. Depict one commanding dire wolf alpha, unmistakably a true wolf with a broad powerful shoulder, long wolf muzzle, upright pointed ears and intense ice-blue eyes; thick ash-silver and white fur catches a rim of pale frost. The alpha dashes forward across a frozen ridge, jaws parted just enough to show natural wolf teeth, leading paw lifted and frost vapor coiling behind it; its fierce gaze and dominant presence suggest the dread and cold aura of the pack leader. Keep it one main wolf with no crowd or domesticated collar. Layered fur, snow and ice rendered with visible painterly brush strokes, dramatic moonlight and distant aurora against cool blue-gray shadows, matching supplied Hexmancers frost art and accepted master; avoid slick CGI/photo gloss. Explicit 1:1 SQUARE canvas for an editable 512x512 source with horizontal staging; keep whole face, eyes, ears, muzzle and leading shoulder inside x24..488,y105..407, lower legs and tail may extend for the 206:141 crop. No frame, text, UI, anime, Disney-like cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-92843f0e-0a1b-41f2-a1ea-88a2d3e71023.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_17.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop at focalPoint [0.5,0.42] and 128-pixel thumbnail: both pointed ears, eyes, muzzle and leading shoulder of the dire-wolf alpha are fully visible; legs and tail may crop naturally."
+  },
+  {
+    "cardId": "frost_summon_18",
+    "name": "Rockhopper Penguin",
+    "prompt": "Create standalone painterly medieval-fantasy collectible-card art for the exact summon Rockhopper Penguin. Show one unmistakable southern rockhopper penguin, not an emperor penguin: compact black-and-white body, narrow red eyes, vivid golden-yellow spiky crest plumes sweeping over each eye, orange-red beak, and stout orange webbed feet. It hops diagonally from one rough sea rock to another above foaming cold surf, with its expressive crest, red eye and beak clearly visible; a tiny second penguin far behind may suggest a rally, but the main bird dominates. Wind and sea spray, rocky island cliffs and cold distant water. Visible painterly brush texture in the crest feathers, wet rock and waves; attractive warm light on yellow feathers against blue sea shadows, grounded bird anatomy and atmospheric depth matching supplied Hexmancers frost art and accepted master, not glossy or photoreal. Explicit 1:1 SQUARE canvas for an editable 512x512 master; horizontal composition; keep head, eye, complete golden crest, beak and body fully within x24..488,y105..407 for the 206:141 crop, legs may crop naturally. No frame, writing or UI. No anime, Disney-like cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-885bfd4c-00c6-42af-bc49-c33c5b0f8ba9.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_18.png",
+    "sourceNative": [
+      1347,
+      1167
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop at focalPoint [0.5,0.4] and 128-pixel thumbnail: the complete golden rockhopper crest has clear margin above the red eye and orange beak; body and feet remain readable though partly cropped."
+  },
+  {
+    "cardId": "frost_summon_19",
+    "name": "Walrus",
+    "prompt": "Paint standalone painterly medieval-high-fantasy collectible-card art for the exact summon Walrus. Show one unmistakable adult walrus, massive barrel-shaped brown-gray marine mammal with folds of weathered skin, sparse pale whiskers, broad muzzle, small dark eyes, two very long smooth ivory tusks and visible front flippers; never depict a seal or sea lion. It surges up from cold water amid a sweeping tidal swell that draws loose ice floes toward it, signaling its powerful pulling chain attack. Keep both eyes, broad whiskered muzzle, and the entire length and tips of both tusks clearly visible with margin. Arctic shore at blue dawn, painterly brush texture in skin, whiskers, tusks and breaking water; warm reflected light on ivory tusks against blue-green ice, atmospheric depth matching supplied Hexmancers frost art and accepted master, avoiding glossy photographic sheen. Explicit 1:1 SQUARE canvas for editable 512x512 source, horizontal staging; fit face, eyes, whiskered muzzle, full tusks and front shoulders inside x24..488,y105..407 for a 206:141 crop; lower body/water may crop. No other large animals, text, frame or UI. No anime, Disney-like cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ba23f053-454d-4c99-8af8-1376f7970e23.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_19.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop at focalPoint [0.5,0.4] and 128-pixel thumbnail: full walrus forehead, eyes, whiskered muzzle and both complete ivory tusk tips remain visible with margin; lower body is cropped."
+  },
+  {
+    "cardId": "frost_summon_20",
+    "name": "Narwhal",
+    "prompt": "Repaint this for the exact summon Narwhal with a more compact, horizontal profile so the complete named tusk has real margin. Keep one unmistakable real mottled blue-gray narwhal, with rounded forehead (no horn), small dark eye, blunt short muzzle, broad body and flippers. Position its moderately sized head left-of-center and extend its single spiraled ivory upper-jaw tusk horizontally forward toward the right, but end the pointed tip around x435-455 on the square, never touching or nearing the edge. Keep the full eye, tusk base and complete spiral-grained tusk with comfortable margin inside x24..488,y105..407, the central band of a 206:141 crop. The narwhal surges through clear glacial water beneath broken sea ice; the wave supports the subject without obscuring face or tusk. Visible painterly brush texture in whale skin, spiral ivory, sea spray and ice, attractive pale dawn light and atmospheric blue depth in the supplied Hexmancers frost style; no glossy photographic finish. Explicit 1:1 SQUARE canvas for an editable 512x512 master, horizontal composition, quiet ice/water above and below. Do not add another narwhal, a second tusk, unicorn horn, text, frame or UI. No anime, Disney-like cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6a4f049a-5c03-4ffd-8692-e17e2c6ea524.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_20.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Repainted and inspected replacement 512-square source, centered 206:141 crop and 128-pixel thumbnail: the real narwhal has a clearly visible eye and one complete spiral-grained upper-jaw tusk ending with safe margin inside the right edge; old attempt preserved at /tmp/frost-03-repairs/frost_summon_20-before-repaint.png."
+  },
+  {
+    "cardId": "frost_summon_21",
+    "name": "Orca",
+    "prompt": "Paint an illustration for the exact card name “Orca.” Show one powerful killer whale surfacing through cold blue water, unmistakably an orca with a glossy black back, crisp white eye patch and white belly, a tall curved dorsal fin and broad tail. Its intelligent eye is clearly visible as it drives a curling tidal wave toward a distant ship, an action suggested by spray and water movement rather than a beam of blinding magic. Keep the orca’s full head and characteristic white markings dominant. Painterly medieval high-fantasy collectible-card illustration with visible brush texture and layered brushwork, luminous cold water, mist, subtle warm light breaking through storm clouds, atmospheric depth and natural animal anatomy. Explicit 1:1 square canvas for an editable 512×512 master; keep its eye, full head and dorsal-fin identity inside x24–488,y105–407 for the 206:141 crop; incidental tail and spray may extend. No text, frame, UI, anime, cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-df957efb-7ceb-4b3f-8739-a88bcf18d200.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_21.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, exact wide crop and 128px thumbnail. Orca’s full head, eye, white eye patch and dorsal-fin identity remain clear; water spray and tail are incidental."
+  },
+  {
+    "cardId": "frost_summon_22",
+    "name": "Hammerhead Shark",
+    "prompt": "Paint an illustration for the exact card name “Hammerhead Shark.” Depict a real great hammerhead shark swimming in clear northern sea water, its entire broad T-shaped hammer head spanning the center of the square and both small lateral eyes plainly visible at the far ends of the cephalofoil. Keep the complete hammerhead width inside the intended landscape crop, with the unmistakable flattened head dominating rather than a generic pointed shark face. Show subtle gill slits, gray-brown dorsal surface and pale underside; one smaller fish swims nearby for scale. Painterly medieval high-fantasy collectible-card art with visible brush texture and layered brushstrokes, nuanced water and reflected arctic light, atmospheric depth and biologically grounded anatomy. Explicit 1:1 square canvas for a 512×512 editable master; keep the whole hammer head, both eyes and full face inside x24–488,y105–407 for the 206:141 crop; tail and fins may crop incidentally. No text, frame, UI, anime, cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6bef6221-53ea-4e48-93af-7ddb776b6e41.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_22.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, exact wide crop and 128px thumbnail. Both eyes and the full broad hammer-shaped head are visible; the cephalofoil approaches the outer left/right margins, with no visible cut to either eye or head."
+  },
+  {
+    "cardId": "frost_summon_23",
+    "name": "Great White Shark",
+    "prompt": "Paint an illustration for the exact card name “Great White Shark.” A large great white shark surges upward through cold coastal water, clearly identifiable by its broad conical snout, small black eye, gray upper body, stark white belly and tall triangular dorsal fin. Its jaws are slightly parted in a natural feeding display as it turns toward a distant school of fish; no gore or attack on people. Keep the shark’s face and eye unmistakable and the head dominant. Painterly medieval high-fantasy collectible-card art with visible brush texture and layered strokes, dramatic cold sea light with a warm glint on the water, atmospheric bubbles and spray, natural shark proportions and depth. Explicit 1:1 square canvas for an editable 512×512 master; keep the full snout, eye and recognizable head safely within x24–488,y105–407 for a 206:141 landscape crop; incidental tail and fin tips may crop. No text, frame, UI, anime, cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a1940782-98c2-402c-9a57-f689d3e827e0.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_23.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, exact wide crop and 128px thumbnail. Great white’s full conical snout, eye and head remain within the crop; mouth is slightly open and the small reddish mark on the snout is nonprominent, with no depicted prey or person."
+  },
+  {
+    "cardId": "frost_summon_24",
+    "name": "Sea Turtle",
+    "prompt": "Paint an illustration for the exact card name “Sea Turtle.” Depict a graceful green sea turtle gliding through a cold, clear coastal current, its domed mottled olive shell and patterned front flippers visible, with a gentle alert face, clear eye and beaked mouth. The turtle guides a small school of fish and shelters them beneath one flipper as the current carries them past kelp. Painterly medieval high-fantasy collectible-card illustration with visible brush texture and layered strokes, nuanced shell scutes, skin, water and kelp, soft arctic light, atmospheric depth and biologically grounded proportions. Explicit 1:1 square canvas intended for a 512×512 master; keep the full head/eyes, mouth and defining shell edge safely inside x24–488,y105–407 for a 206:141 landscape crop; flipper tips may crop incidentally. No text, frame, UI, anime, cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-a765483e-fa23-4604-8cc6-de8e60c70f58.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_24.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, exact wide crop and 128px thumbnail. Sea turtle’s full face/eye, beaked mouth and domed shell remain clear; front-flipper tips approach the lower/left edges as permitted."
+  },
+  {
+    "cardId": "frost_summon_25",
+    "name": "Zaratan the Island Turtle",
+    "prompt": "Paint an illustration for the exact legendary card name “Zaratan the Island Turtle.” Depict Zaratan as an immense ancient sea turtle so vast that a small green island with windswept trees, a few old stone ruins and a tiny lighthouse rises from its broad weathered shell. Show the turtle’s unmistakable head, calm clear eye, beaked mouth and one massive scaled foreflipper emerging from cold ocean water; the giant living animal is the primary subject, with the island scale made clear by tiny trees and a distant boat. Give it aged shell plates like rugged cliffs but keep them visibly turtle-shaped, not a generic floating island. Painterly medieval high-fantasy collectible-card art with visible brush texture and layered brushwork, nuanced shell, scales, stone and water, dramatic pale northern light with warm sunset glints, atmospheric mist and natural anatomy. Explicit 1:1 square canvas for a 512×512 editable master; keep Zaratan’s full face/eye, beak and defining shell/head silhouette within x24–488,y105–407 for a 206:141 landscape crop; flipper tips, island trees and waves may extend. No text, frame, UI, anime, cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-deccfabc-9a0f-4171-a3fb-b1ae76e078ca.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_25.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, exact wide crop and 128px thumbnail. Zaratan’s full head, eye, beak and island-bearing turtle shell remain unmistakable; island trees and foreground flipper/waves are supporting scale and may crop."
+  },
+  {
+    "cardId": "frost_summon_26",
+    "name": "King Crab",
+    "prompt": "Paint an original fantasy illustration for the exact card King Crab. Depict one enormous true red king crab guarding an icy northern shore: a low broad spiny carapace with natural crimson-orange shell plates, two asymmetrical powerful claws and long jointed walking legs, plus two clear dark eyes on stalks above its face. It is a real crab, not a lobster, humanoid warrior or crab carrying a crown. One pincer shields a small stranded sailor while a blue-white frost burst flashes at the other claw; crystalline cracks in the tough shell show the explosive frost magic. Make the eye stalks, broad shell and both pincers unmistakable. Painterly medieval fantasy collectible-card art, tactile shell, wet rock and ice, dramatic blue storm light and warm glints, layered brushwork and atmospheric depth. Exact 1:1 SQUARE for editable 512x512 master; keep full eyes/face and both claw joints and pincers within x24..488,y105..407 for the 206:141 crop; horizontal low pose, quiet sea and sky margins above/below. No frame, text, symbols, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-cb9765c6-7282-4e1e-a1a2-863f72ff5315.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_26.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Shifted to focalPoint [0.5,0.42]. Reviewed the 512-square source, shifted direct 512×350 crop and 128×88 thumbnail: the spiny true-crab shell, both eye stalks and the two large pincers stay clear; lower walking legs and distant sailor may crop."
+  },
+  {
+    "cardId": "frost_summon_27",
+    "name": "Giant Squid",
+    "prompt": "Paint an original illustration for the exact card Giant Squid: an immense natural giant squid rising through deep blue Arctic water beside a small wooden ship trapped in pack ice. Clearly show the squid's long streamlined mantle with triangular fins, two very large pale eyes, eight sucker-lined arms and two notably longer feeding tentacles with clubbed tips. It must read as a squid with an elongated mantle and ten appendages, not an octopus-shaped Kraken. The full face and eyes emerge between the arms, and a cold breath of frost spreads across the sea as the creature surges upward. Painterly medieval fantasy collectible-card art, nuanced wet skin in slate blue, violet and silver, atmospheric underwater light and storm foam, visible expressive brushwork. Exact 1:1 SQUARE editable 512x512 master; keep the entire head/mantle front, both eyes and nearest arm roots inside x24..488,y105..407 for 206:141 crop; tentacle ends and ship rigging may crop. Wide composition, quiet water above/below. No frame, text, lettering, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e3c68349-a718-4183-a425-392f36c3349c.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_27.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, direct 512×350 crop and 128×88 thumbnail: the giant squid's full face and eyes, elongated finned mantle and sucker-lined arms read clearly; tentacle ends and ship rigging crop incidentally."
+  },
+  {
+    "cardId": "frost_summon_28",
+    "name": "The Kraken",
+    "prompt": "Paint an original mythic illustration for the exact card The Kraken: a legendary colossal octopus-like sea monster erupting from a polar tidal whirlpool and dragging an ancient longship toward the abyss. Give the Kraken a broad rounded cephalopod head, two enormous pale intelligent eyes and eight thick muscular sucker-lined arms; two front arms curl visibly around the ship's hull while the others arc through towering waves. Make the head, eyes and front arms the clear primary subject. It must look like a mythic giant octopus, distinct from a squid's long tapered mantle and two extra feeding tentacles, and distinct from a long-bodied sea serpent. Painterly medieval fantasy collectible-card art, monumental foaming waves, cold indigo water, silver spray and dramatic light, tactile anatomy and expressive brush strokes. Exact 1:1 SQUARE for 512x512 editable master; keep the complete head/eyes and two front arm bases within x24..488,y105..407; far tentacle tips and ship rigging may crop incidentally. Horizontal staging with quiet water/sky margins for 206:141 crop. No frame, text, symbols, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9b7c755d-4811-4c82-9cf1-984134e17379.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_28.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Shifted to focalPoint [0.5,0.42]. Reviewed the unchanged 512-square source, shifted direct 512×350 crop and 128×88 thumbnail: the complete Kraken dome/forehead, both eyes and thick sucker-lined front arms remain clear; distant tentacle tips and rigging crop incidentally."
+  },
+  {
+    "cardId": "frost_summon_29",
+    "name": "Kraken Spawn",
+    "prompt": "Paint an original fantasy illustration for the exact card Kraken Spawn: one young but already enormous juvenile kraken emerging from an icy underwater cavern beside a small sailing boat, showing that it is a newly hatched creature of colossal eventual size. Give it a smooth rounded octopus-like mantle, two oversized curious turquoise eyes and eight shorter curling arms lined with neat round suckers; its body is compact and youthful, much smaller than an adult Kraken, yet large beside the boat. A pair of short front arms pulls the tiny vessel toward a dark current, and a subtle frost aura clouds the surrounding water. Make the juvenile's full face and both eyes unmistakable; it is one young octopus-like kraken, not a squid with a long mantle or a many-headed monster. Painterly medieval fantasy collectible-card illustration, cool blue-violet underwater atmosphere, tactile wet skin, glowing ice crystals, expressive brushwork and clear silhouette. Exact 1:1 SQUARE 512x512 master; keep head, eyes and main front arm bases inside x24..488,y105..407; incidental tentacle tips/boat rigging may crop for the 206:141 card window. Quiet deep water margins. No frame, text, lettering, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-90904a96-e927-4308-8b39-ed8e564219ac.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_29.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Shifted to focalPoint [0.5,0.42]. Reviewed the 512-square source, shifted direct 512×350 crop and 128×88 thumbnail: the juvenile's rounded mantle, both turquoise eyes and short front arms are fully visible; peripheral tentacle tips and boat rigging crop."
+  },
+  {
+    "cardId": "frost_summon_30",
+    "name": "Leviathan",
+    "prompt": "Paint an original mythic sea-monster illustration for the exact card Leviathan: one ancient enormous sea serpent rising in a long S-curve through a polar ocean beside a tiny icebound ship. Give it a broad crocodilian dragonlike head, long closed jaws with visible teeth, two clear icy blue eyes, swept-back bony ridges, and a continuous blue-black plated serpentine neck and back that arches across the waves. It has no legs, wings, tentacles, pincers or human features: its long sea-serpent body and armored dorsal ridges distinguish it from squid, kraken and whale. A surge of ice and spray bursts around the creature as it crashes through the sea, while the ship shows its colossal scale. Keep the complete head, both eyes, muzzle and jaw cleanly visible; the tail may continue beyond the frame. Painterly medieval fantasy collectible-card art, tactile overlapping scales and ice, deep navy water, pale glacial light and atmospheric brushwork. Exact 1:1 SQUARE for editable 512x512 master; put the head and neck horizontally in the central action band x24..488,y105..407 for the 206:141 crop, with quiet storm sky and dark water margins above and below. No horns like a ram, no wings, no extra heads, no frame, text, symbols, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-1136d5d1-5861-4b79-9f68-f14c1bee84ff.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_30.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, direct 512×350 crop and 128×88 thumbnail: Leviathan reads as a long armored sea serpent with complete dragonlike head, eyes, muzzle and jaws; body coils through the ice-choked waves while tail and ship rigging are incidental."
+  },
+  {
+    "cardId": "frost_summon_31",
+    "name": "Bunyip of the Billabong",
+    "prompt": "Paint an illustration for the exact card name “Bunyip of the Billabong.” Depict the bunyip as an eerie Australian freshwater spirit surfacing from a remote billabong at twilight, its broad seal-like body wet with dark water, its rounded whiskered head and watchful eyes unmistakable above the reeds. Keep the creature folkloric and strange rather than a familiar marine seal: suggest shaggy fur, a broad flat muzzle and powerful flippered forelimbs, with only its head and shoulders emerging. River gums, reeds, a still waterhole and a few distant birds establish the Australian setting; no people or sacred ceremonial objects. Painterly medieval high-fantasy collectible-card illustration with visible brush texture and layered strokes, nuanced dark fur, water, reeds and bark, moody blue dusk with warm sunset glow, atmospheric depth and grounded animal anatomy. Explicit 1:1 square canvas intended for an editable 512×512 master; keep the complete head, eyes, muzzle/whiskers and upper body within x24–488,y105–407 for a 206:141 crop; incidental forelimbs and ripples may crop. No frame, text, UI, anime, Disney-like cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7ae24b35-4c4e-4775-a3ba-49ff27adc7eb.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_31.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, exact wide crop and 128px thumbnail. Bunyip’s full rounded head, eyes, muzzle, long whiskers and seal-like shoulders remain visible as an Australian billabong spirit; reeds and ripples are supporting setting."
+  },
+  {
+    "cardId": "frost_summon_32",
+    "name": "Sea Serpent",
+    "prompt": "Paint an illustration for the exact card name “Sea Serpent.” Show a vast wild sea serpent rising from a storm-tossed northern ocean, its narrow reptilian head, bright watchful eyes, long jaw and ridged finned neck sharply visible above the water. Its powerful eel-like body coils through a breaking wave behind it, but the face remains the main subject; this is a marine serpent, not a horned East Asian dragon. Use dark blue-green scales, small gill slits and a line of dorsal fins to establish its aquatic identity. Painterly medieval high-fantasy collectible-card art with visible brush texture and layered brushstrokes, nuanced scales, spray and mist, dramatic cold sea light with warm sunset along the horizon, atmospheric depth and natural serpentine anatomy. Explicit 1:1 square canvas for a 512×512 editable master; keep the complete head, eyes, jaw and defining neck profile inside x24–488,y105–407 for the 206:141 landscape crop; long body, tail and wave crests may crop incidentally. No text, frame, UI, anime, cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-343cfdb9-7395-4190-835b-b1d7b12016a7.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_32.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, exact wide crop and 128px thumbnail. Sea serpent’s full narrow head, eye, jaw, gill line and finned neck profile remain visible; its long body coils through the crop as secondary form."
+  },
+  {
+    "cardId": "frost_summon_33",
+    "name": "Dragon King of the Deep",
+    "prompt": "Edit this illustration, preserving its recognizable Chinese Dragon King of the Deep identity and painterly high-fantasy treatment. Recompose the dragon’s head modestly smaller and lower in the square, so the entire branching antler crown, both eyes, full muzzle and the complete flowing whiskers have comfortable space from every edge and all fit within x24–488,y105–407 on the eventual 206:141 horizontal crop. Shorten and curl whiskers inward rather than letting them reach the side edges. Keep the noble underwater dragon face dominant, with jade scales, small regal crown, underwater palace, fish and controlled cold mist; the long neck and body may extend beyond the crop. Do not change to a western winged dragon. Explicit 1:1 square canvas for an editable 512×512 master. Painterly medieval fantasy with clearly visible brush texture and layered strokes. No text, frame, UI, anime, cartoon or glossy photorealism.",
+    "generatedPath": "/workspace/generated_images/exec-0983b0f0-ef2b-4768-a80a-853a7de5a1c1.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_33.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reworked the composition after crop inspection showed the initial antlers and long whiskers reaching/cropping at the edges; copied the prior 512-square master to scratch, then atomically replaced it with the prepared 512-square repaint. Inspected the replacement square, revised 206:141 crop and 128px thumbnail. Complete antlers, full face/eyes, muzzle and inward-curled whiskers now fit safely; long neck is incidental."
+  },
+  {
+    "cardId": "frost_summon_34",
+    "name": "River Lung",
+    "prompt": "Edit this illustration, preserving its painterly Chinese River Lung identity. Recompose the dragon’s head slightly smaller and lower in the square; shorten the branch-like antlers and curl the whiskers inward so the complete antler tips, both eyes, full face and all whiskers fit safely within x24–488,y105–407 in the final 206:141 horizontal crop. Keep the gentle jade-green serpentine river dragon, mountain stream, old stone bridge and healing golden water, with the dragon’s face still dominant and the injured deer secondary. Do not add a crown or wings. Explicit 1:1 square canvas for an editable 512×512 master; clearly preserve layered painterly brush texture, natural scales and warm-cool light. No text, frame, UI, anime, cartoon or glossy photorealism.",
+    "generatedPath": "/workspace/generated_images/exec-3b59bd79-f462-440d-9194-5cd6bf632278.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_34.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reworked after the initial crop clipped the River Lung’s antler tips. Inspected the replacement 512-square source, revised true 206:141 crop (focal y=0.42) and 128px thumbnail; the complete short antlers, face/eyes and curled whiskers now fit with margin. The serpentine neck and healing water remain legible, with the deer subordinate."
   }
 ]

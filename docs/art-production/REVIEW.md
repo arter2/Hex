@@ -107,3 +107,11 @@ Six lighter artists completed 200 additional named paintings: 11 Brown and 27 in
 The combined registry contains 1634 active illustrations (1584 generated and 50 supplied). All 6600 runtime images decode at declared dimensions; 3268 compact/expanded markup checks, locked-art gating and fallback checks pass. All 5800 earlier source/crop files, 1384 earlier records and 66 supplied originals remain unchanged. The queue contains 319 pending cards and no assignments. Browser/Safari/device layout remains unverified; image and markup checks are not browser tests.
 
 The delivery `card-art-deliveries/batch-13-200/` on `art/1634-card-handoff` contains exactly 200 editable 512-square PNGs and 600 WebP crops, exact mappings and Claude instructions. Its `AUDIT.json` verifies counts, decoded dimensions, checksums, colour allocation and disjointness from all 1434 earlier cards. Earlier delivery folders remain untouched.
+
+## Batch 14: the next 200 paintings
+
+Six lighter artists completed 200 additional named paintings: 29 Fire, 29 Frost, 26 Gray, 29 Light, 29 Shadow, 29 Storm, 29 Verdant. Parent review inspected all 42 packets in the actual 206:141 crop and as small thumbnails, pinning all 200 source hashes. Prompts and honest crop/repaint/provenance notes are preserved in the colour manifests. Source hashes are unique and disjoint from earlier artwork. No image was accepted by timestamp guessing. Previously completed sources were preserved, and only assigned missing IDs were generated.
+
+The combined registry contains 1834 active illustrations (1784 generated and 50 supplied). All 7400 runtime images decode at declared dimensions; 3668 compact/expanded markup checks, locked-art gating and fallback checks pass. All 6600 earlier source/crop files, 1584 earlier records and 66 supplied originals remain unchanged. The queue contains 119 pending cards and no assignments. Browser/Safari/device layout remains unverified; image and markup checks are not browser tests.
+
+The delivery `card-art-deliveries/batch-14-200/` on `art/1834-card-handoff` contains exactly 200 editable 512-square PNGs and 600 WebP crops, exact mappings and Claude instructions. Its `AUDIT.json` verifies counts, decoded dimensions, checksums, colour allocation and disjointness from all 1634 earlier cards. Earlier delivery folders remain untouched.

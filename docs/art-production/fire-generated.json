@@ -3503,5 +3503,527 @@
     "status": "generated",
     "batch": 13,
     "reviewNote": "Reviewed the 512-square source, centered 206:141 crop and 128x88 thumbnail. Dwarf face and hand, complete foamy tankard including handle and base, and healing glow remain clear. Parent review pending."
+  },
+  {
+    "cardId": "fire_charge_16",
+    "name": "Wineskin of Flame",
+    "prompt": "Paint a standalone illustration for the fantasy charge artifact “Wineskin of Flame.” Show one compact, beautifully crafted medieval leather wineskin as the clear dominant subject, arranged horizontally across the middle of the square. Its entire rounded body, neck, stopper, and short spout must be visible together, with nothing clipped. A controlled vivid flame glows through a small translucent inset and curls just from the spout, suggesting a charged burst; keep the bottle itself fully readable and unobscured. Painterly medieval high-fantasy collectible-card illustration, nuanced worn leather, brass fittings and glass, dramatic warm directional light, atmospheric depth, grounded believable materials, strong silhouette, style consistent with painterly Hexmancers reference art. Explicit 1:1 SQUARE canvas, intended as an editable 512×512 master. Keep every identity-critical part of the wineskin within x24…488 and y105…407 of the square; quiet dark workshop atmosphere fills the top and bottom. The wineskin occupies roughly 70% of the future 206:141 horizontal crop. No person or extra props. No card border, lettering, numbers, runes, symbols or UI. No anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5824db66-eb5d-4340-8bca-d9fc4582df98.png",
+    "editableSourcePath": "game/cards/art/masters/fire_charge_16.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Standalone wineskin fully readable in the 206:141 crop and 128px thumbnail; body, stopper and spout are intact. Strong warm lighting and painterly materials. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_charge_17",
+    "name": "Meteorite Fragments",
+    "prompt": "Paint an illustration for “Meteorite Fragments.” A small cluster of jagged, dark iron meteorite fragments, glowing at their molten orange edges, caught mid-flight in a clear arcing lob toward the viewer; fragments distinct and compact, with one lead shard and a few smaller shards, dramatic impact sparks, no generic fireball replacing the stones. Painterly medieval high-fantasy collectible-card art matching the supplied Hexmancers painterly references, nuanced materials, grounded anatomy, rich directional light, atmospheric depth, readable silhouette and strong focal subject. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Compose the single main subject horizontally through the central area; keep all identity-critical features fully inside x24…488 and y105…407 for the 206:141 horizontal card crop, with quiet atmosphere above and below. Keep the subject about 70% of the future wide crop and identifiable at 96px wide. No card frame, lettering, numbers, runes or UI. No anime, Disney-like proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-de95a6e1-969f-42b1-bd66-5ce101f2c2ad.png",
+    "editableSourcePath": "game/cards/art/masters/fire_charge_17.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Meteorite fragments and lob trajectory remain distinct in the 206:141 crop and 128px thumbnail; lead fragment fully visible. Painterly fantasy lighting. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_charge_18",
+    "name": "Bottomless Powder Keg",
+    "prompt": "Paint an illustration for “Bottomless Powder Keg.” A single stout, ornate but practical medieval powder keg, clearly a keg rather than a wineskin, with dark oak staves, iron hoops, and a visible open powder vent releasing a small controlled flare; suggest an endlessly replenished charge through a subtle magical glow inside, object remains the dominant fully visible subject. Painterly medieval high-fantasy collectible-card art matching the supplied Hexmancers painterly references, nuanced materials, grounded anatomy, rich directional light, atmospheric depth, readable silhouette and strong focal subject. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Compose the single main subject horizontally through the central area; keep all identity-critical features fully inside x24…488 and y105…407 for the 206:141 horizontal card crop, with quiet atmosphere above and below. Keep the subject about 70% of the future wide crop and identifiable at 96px wide. No card frame, lettering, numbers, runes or UI. No anime, Disney-like proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8b4af791-899a-49fc-9bdb-928cded06e92.png",
+    "editableSourcePath": "game/cards/art/masters/fire_charge_18.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Complete oak keg, iron hoops and open vent remain legible in the 206:141 crop and 128px thumbnail. Warm directional light, painterly materials. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_12",
+    "name": "Ember Coyote",
+    "prompt": "Paint an illustration for “Ember Coyote.” A living lean coyote made of natural tawny fur with ember-bright markings and a few restrained glowing embers along its coat, captured in a low forward pounce with alert coyote face, long ears and bushy tail unmistakable; wild rocky firelit terrain. Painterly medieval high-fantasy collectible-card art matching the supplied Hexmancers painterly references, nuanced materials, grounded anatomy, rich directional light, atmospheric depth, readable silhouette and strong focal subject. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Compose the single main subject horizontally through the central area; keep all identity-critical features fully inside x24…488 and y105…407 for the 206:141 horizontal card crop, with quiet atmosphere above and below. Keep the subject about 70% of the future wide crop and identifiable at 96px wide. No card frame, lettering, numbers, runes or UI. No anime, Disney-like proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-9ed99c6a-0ed0-4407-815d-f5028bf6ccd8.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_12.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Coyote face, ears and pouncing body are clear in the 206:141 crop; tail tip extends to the crop edge but identity/action remain intact. Readable at 128px. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_13",
+    "name": "Shishi Lion-Dog",
+    "prompt": "Paint an illustration for “Shishi Lion-Dog.” A traditional Japanese shishi lion-dog guardian creature, powerful compact canine-lion body with curly mane, broad muzzle, rounded expressive eyes, carved-guardian-inspired fur tufts and sturdy paws, caught in a forward pounce; clearly an animal, not a statue, oriental guardian detail grounded in painterly fantasy. Painterly medieval high-fantasy collectible-card art matching the supplied Hexmancers painterly references, nuanced materials, grounded anatomy, rich directional light, atmospheric depth, readable silhouette and strong focal subject. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Compose the single main subject horizontally through the central area; keep all identity-critical features fully inside x24…488 and y105…407 for the 206:141 horizontal card crop, with quiet atmosphere above and below. Keep the subject about 70% of the future wide crop and identifiable at 96px wide. No card frame, lettering, numbers, runes or UI. No anime, Disney-like proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-839b4020-a620-4e3e-a4d4-a4b3c5962656.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_13.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Shishi Lion-Dog’s guardian mane, broad face, eyes and pouncing paws remain visible in the 206:141 crop and 128px thumbnail. Painterly fantasy presentation. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_14",
+    "name": "Oni Brute",
+    "prompt": "Paint a new original card illustration of the same blue-gray Japanese Oni Brute, preserving his tusks, black mane, two horns and battered iron shoulder armor. Compose a compact, wide, waist-up pounce with the full expressive face centered at y≈245 and both large clawed hands raised beside the face at y≈325, not hanging below his waist. Include clear complete horn tips and all claws; keep the character smaller so there is visible smoky sky above and ember-lit space below. This is a square image designed to be cropped into a horizontal card window: keep face, eyes, horns and both hands in the central stripe y=120..390. Distinct hand-painted fantasy illustration, obvious brushstrokes and simplified matte painted planes, textured blue-gray skin and worn iron, strong amber rim light, atmospheric smoke. Avoid glossy photography, 3D render, hyperreal surfaces or lens effects. 1:1 square for 512x512 master, no text, no border or UI, no anime, Disney cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-18d4c4ee-b6ca-4796-9e97-2695280626db.png",
+    "focalPoint": [
+      0.5,
+      0.37
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, wide crop and thumbnail. Blue-gray oni identity, complete horns and face, eyes, and both forward claws remain visible in the crop; pouncing motion reads clearly. Textured, visibly painted surfaces with cinematic highlights.",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_14.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "fire_summon_15",
+    "name": "Red Oni",
+    "prompt": "Repaint and recompose this Red Oni as a hand-painted medieval-fantasy collectible-card illustration. Preserve the imposing scarlet Japanese oni, black mane, tusks and dark lamellar armor, but replace the oversized vertical full-body charge with a compact horizontal chest-up trample pose. Keep the complete face, both horn tips, eyes and both clenched hands in one clear central band; show only enough broken stone and embers at the lower edge to suggest unstoppable trample and explosive fire. Use visible brushwork, simplified readable shape planes, matte crimson skin, rough cloth and worn iron, with attractive firelight and painted smoke. Avoid glossy photographic skin, 3D-render shine, lens effects and hyperreal microdetail. Explicit square 1:1 canvas for a 512x512 editable source; critical face, horns, eyes, hands and upper anatomy within x24..488,y105..407 for the 206:141 card crop, quiet smoke above and below. No weapon, frame, writing, numbers, UI, anime, Disney cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6ebe7b83-8d5b-4cdb-8546-6e2f7f836bc6.png",
+    "focalPoint": [
+      0.5,
+      0.37
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, wide crop and thumbnail. Red oni face, complete horns, eyes and both charging fists remain readable; broken stone and embers support the trample/explosive traits. Visible painterly texture and warm directional light.",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_15.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "fire_summon_17",
+    "name": "Minotaur",
+    "prompt": "Paint a new original card illustration of the same russet-furred humanoid Minotaur, preserving a bovine muzzle, ears, two large horns and bronze harness. Recompose as a compact, wide waist-up forward lunge; the complete bull face is centered around y≈240 and both powerful humanoid hands are raised near chest height at y≈325, fully visible with space around each fist. Do not show an axe. It must remain a bull-headed humanoid, not a four-legged bull. Keep face, eyes, full horn tips and both hands inside the central stripe y=120..390 of the square so they all survive a horizontal card crop; quiet arena sky above and dust below. Hand-painted medieval-fantasy illustration with clear visible brushstrokes, simplified matte fur, leather and bronze, warm firelight and painted atmospheric depth. Avoid glossy photo realism, 3D render shine, lens effects or hyperreal texture. Explicit square 1:1 512 master; no text, frame, numbers or UI, no anime, Disney cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4ecb4bad-2701-4bb7-a57f-55476d42410b.png",
+    "focalPoint": [
+      0.5,
+      0.37
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, wide crop and thumbnail. Bull-headed humanoid face, full horns, eyes and both hands remain intact; its humanoid anatomy reads distinctly from a four-legged bull. Textured hand-painted surfaces and a clear forward trample pose.",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_17.png",
+    "sourceNative": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "cardId": "fire_summon_16",
+    "name": "Oni Warlord",
+    "prompt": "Create original illustration-only fantasy card art of the Oni Warlord, a legendary Japanese ogre-demon with dark crimson skin, two swept ivory horns, tusks, thick black hair tied high, and black-bronze lamellar armor. Use a three-quarter chest-up portrait, shoulders square to the viewer, face near center. One complete gauntleted hand is raised beside his cheek on the RIGHT side of the composition, fingers fully visible; the other hand is hidden behind his torso. The gesture is a poised pounce, not a long reaching arm. The entire head, both horn tips, eyes and raised hand fit comfortably inside a central horizontal stripe with generous margins on all sides; no body part touches the image border. Paint this as a traditional medieval-fantasy collectible-card illustration with visible brushstrokes, broad simplified matte shapes, textured worn metal, cloth and hair, dramatic amber firelight and painted atmospheric depth. Keep the finish painterly and matte, not photographic, not glossy 3D. Explicit square 1:1 composition for a 512x512 editable source; safe face, horns, hand in x24..488 and y105..407 for the 206:141 crop. Quiet smoky sky above and below. No weapon, text, letters, border, numbers, UI, anime, Disney cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2b6c6261-f32e-488d-8f6a-bdef46921c40.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_16.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, focal-adjusted wide crop and thumbnail. Both horn tips, full face, eyes and the complete raised hand remain visible; the compact chest-up pose reads as an oni warlord. Textured painted surfaces and warm directional light."
+  },
+  {
+    "cardId": "fire_summon_18",
+    "name": "Fire Bull",
+    "prompt": "Paint an original illustration for the fantasy summon card Fire Bull. This is a real four-legged bull, not a humanoid minotaur: a powerful russet-brown bull with a broad bovine muzzle, two full ivory horns, alert eyes, heavy neck and clearly quadruped shoulders, surging through a scorched medieval pasture. Use a compact horizontal three-quarter composition: the complete bull face, eyes and horns dominate, with front legs and a raised hoof showing steady trample; ember-cracked earth and lightly scorched grass hint at its fire and curse. Do not add armor, rider or humanoid limbs. Painterly medieval fantasy collectible-card art with visible brush strokes, simplified matte planes and rich painted fur, horn and earth; dramatic warm low sunlight, restrained fire glow, atmospheric depth and the artful hand-painted finish of the supplied Hexmancers reference. Avoid glossy photographic fur, 3D shine, camera effects and hyperreal detail. Explicit 1:1 square canvas for a 512x512 editable master; keep face, both complete horns, eyes and defining shoulders in x24..488,y105..407 for the 206:141 crop, quiet smoke and sky above, expendable grass below. No frame, text, numbers, UI, anime, Disney cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2d96d0ba-9479-4a59-ab10-25da69b42cc3.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_18.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.37
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, focal-adjusted wide crop and thumbnail. This is a true four-legged bull, distinct from the humanoid Minotaur; full horns, face and eyes stay visible, and scorched ground supports its charge. Lower legs are incidental crop detail. Painterly fur texture and warm directional light."
+  },
+  {
+    "cardId": "fire_summon_19",
+    "name": "Goblin Sapper",
+    "prompt": "Paint “Goblin Sapper,” a wiry medieval fantasy goblin demolitions scout in patched leather and rough iron bits, crouched behind a low stone and holding a small sealed clay fire-charge with a clearly visible fuse in one hand; alert goblin face and pointed ears visible, a few harmless sparks suggest his role. His hands and complete clay charge stay together in frame. Painterly medieval high-fantasy collectible-card illustration with visible brush texture, grounded goblin anatomy, nuanced leather, iron and clay, dramatic warm firelight, atmospheric depth, no photographic gloss. Explicit 1:1 SQUARE canvas for an editable 512×512 master. Center the goblin horizontally; keep full face/eyes, both hands and entire named portable charge inside x24…488,y105…407 for the 206:141 card crop; quiet smoky stone atmosphere above and below. Strong readable silhouette at 96px. No text, frame, lettering, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ee8b90d9-0586-4623-9da0-1233c13906a3.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_19.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Upward-adjusted crop gives modest headroom around the complete goblin hood, face and ears; the bomb and gripping hands remain visible in the 206:141 crop and 128px thumb. Painterly warm light. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_20",
+    "name": "Goblin Gunner",
+    "prompt": "Paint “Goblin Gunner,” a stocky goblin marksman in rugged medieval leather and iron armor, bracing a compact hand cannon made from an iron tube, wooden stock and brass fittings. The gunner’s sharp goblin face, both hands and the complete short cannon are clear; a glowing piercing bolt exits the barrel and bursts into a small star of sparks. The weapon is unmistakably a primitive fantasy hand cannon, not a modern firearm. Painterly medieval high-fantasy collectible-card illustration with visible brush texture, grounded goblin anatomy, nuanced materials and dramatic warm light, atmospheric depth, no photographic gloss. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Compose the goblin and cannon horizontally; keep full face, eyes, hands and complete cannon safely inside x24…488,y105…407 for the true 206:141 crop. Quiet stone battlement background above and below; bold silhouette at 96px. No text, frame, lettering, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-908c72a9-624b-47df-bd52-eb812767ab33.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_20.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Gunner’s face, both hands and complete hand cannon remain readable in the 206:141 crop and 128px thumbnail; bolt and sparks extend into atmosphere. Painterly medieval fantasy treatment. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_21",
+    "name": "Goblin Chieftain",
+    "prompt": "Paint “Goblin Chieftain,” a grim, battle-hardened goblin leader with olive-green skin, sharp ears, a rugged face, rough iron-and-leather armor, red war paint and a small bone-and-bronze crown. He stands prominently on a rock, shouting a rallying cry and raising one clenched fist while fierce goblin followers gather behind him in soft focus. His face and raised hand are fully visible; a warm red banner and ember-lit sky suggest fury and command. Painterly medieval high-fantasy collectible-card illustration with visible brush texture, grounded goblin anatomy, nuanced iron, leather and cloth, dramatic directional light, atmospheric depth, no photographic gloss. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Center chieftain horizontally; keep face, eyes, fist and crown inside x24…488,y105…407 for the 206:141 crop. Quiet smoky stone backdrop above and below; clear silhouette at 96px. No text, frame, lettering, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-58313bfb-351a-47be-a1aa-6a809aa6e88f.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_21.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.34
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Upward-adjusted crop retains the chieftain’s whole face, crown and full raised fist; lower body and followers are incidental. Clear at 128px with painterly warm light. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_22",
+    "name": "Gremlin",
+    "prompt": "Paint “Gremlin,” a small, wiry cave gremlin darting sideways in a quick zigzag, distinct from a goblin: slate-gray skin, narrow sharp face, oversized pointed ears, long nimble fingers, ragged fur vest and bony limbs. It carries no equipment; its frosty breath and a thin icy glimmer around its quick-moving hand suggest its chilling presence. Keep the gremlin’s complete face, eyes and both hands readable; only a faint painterly motion trail behind it. Painterly medieval high-fantasy collectible-card art with visible brush texture, grounded creature anatomy, nuanced stone and fur, dramatic cool directional light, atmospheric depth, no photographic gloss. Explicit 1:1 SQUARE canvas for an editable 512×512 master. Place the creature horizontally in the center; keep full face/eyes and hands inside x24…488,y105…407 for the true 206:141 crop. Quiet dark cavern above and below; clear silhouette at 96px. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-37880e59-3d80-4bcb-aa1c-586450bd7b80.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_22.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Upward-adjusted crop retains both complete gremlin ear tips, face and eyes, with both hands still visible in the 206:141 crop and 128px thumb. Painterly icy cave light. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_23",
+    "name": "Gremlin Tinkerer",
+    "prompt": "Paint “Gremlin Tinkerer,” a clever small gremlin with dusky green-gray skin, sharp pointed ears and a bright calculating face, wearing a rough leather apron and a tiny brass-lensed monocle. It carefully harvests a glowing amber crystal from a cracked stone with narrow brass tongs, carrying a compact hand-forged tool roll at its belt. Keep the gremlin’s full face, both hands, tongs and whole crystal clearly together; no modern machinery. Painterly medieval high-fantasy collectible-card illustration with visible brush texture, grounded creature anatomy, nuanced brass, leather and stone, warm alchemical light and atmospheric depth, no photographic gloss. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Arrange gremlin horizontally in the center; keep full face/eyes, hands and all named tools/crystal inside x24…488,y105…407 for the true 206:141 crop. Quiet old-workshop cave atmosphere above and below; clear silhouette at 96px. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-4d5a1c30-6417-4168-9997-21df3b739914.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_23.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Gremlin’s full face, monocle, both hands, brass tongs and crystal remain clear in the 206:141 crop and 128px thumb. Warm painterly workshop light. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_24",
+    "name": "Duende",
+    "prompt": "Paint “Duende,” a folkloric Iberian woodland spirit: a compact adult-like supernatural little person with a weathered olive complexion, deep-set mischievous eyes, dark curls beneath a faded red cap, and a rough green-brown cloak. The duende peers slyly from the forest edge with one hand extended as a few dim moth-like motes gather around it, suggesting a troublesome curse. Make it feel like old Iberian folklore, a secretive spirit rather than a generic goblin or a cute cartoon. Keep the full face, both hands and red cap visible. Painterly medieval high-fantasy collectible-card illustration with visible brush texture, grounded materials, nuanced cloth and bark, warm directional light and atmospheric depth, no photographic gloss. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Compose the duende horizontally in the central area; keep face, eyes, hands and cap inside x24…488,y105…407 for the true 206:141 crop. Quiet dusky forest above and below, readable at 96px. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2f925df1-a316-4b6c-8c9f-4def52a1c2a7.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_24.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Upward-adjusted crop retains Duende’s full red cap, face, eyes and both hands with moth-like motes visible in the 206:141 crop and 128px thumb. Painterly folkloric forest light. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_25",
+    "name": "Salamander",
+    "prompt": "Paint “Salamander,” a living fire salamander from medieval natural-philosophy lore, shown unmistakably as a long-bodied four-legged amphibian lizard with smooth crimson-and-gold skin, moist rounded eyes, a broad amphibian head and long tail; no humanoid body. It braces on warm dark stone and emits a narrow, controlled ribbon of fire from its mouth, like a focused beam, with subtle glowing markings along its back. Keep its full head, eyes, mouth and front limbs clear; its tail may curl behind. Painterly medieval high-fantasy collectible-card art with visible brush texture, grounded animal anatomy, nuanced scale and stone, dramatic warm directional light, atmospheric depth, no photographic gloss. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Arrange salamander horizontally in the center; keep head, eyes, mouth and relevant limbs inside x24…488,y105…407 for the true 206:141 crop. Quiet volcanic rock and dark atmosphere above and below; clear lizard silhouette at 96px. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-f2d1720a-f6d4-413a-8899-1b016a73827d.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_25.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Salamander remains clearly a full four-legged lizard with visible eyes, mouth, limbs and a clean fire beam in the 206:141 crop and 128px thumbnail. Warm painterly volcanic light. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_26",
+    "name": "Lava Golem",
+    "prompt": "Paint “Lava Golem,” a massive stone guardian animated by molten lava. Show one compact, broad-shouldered humanoid golem built from dark volcanic boulders, with a clearly defined craggy head, glowing amber eyes and two immense stone hands held protectively in front of its chest. Bright molten seams glow between the rocks, with small scorched flakes and heat shimmer; no vague fire cloud replacing the body. Painterly medieval high-fantasy collectible-card illustration with visible brush texture, weighty stone and molten detail, dramatic directional orange light and atmospheric depth, no photographic gloss. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Keep the whole head/eyes and both important hands centered horizontally inside x24…488,y105…407 for the true 206:141 crop. Quiet dark volcanic cavern above and below; strong readable silhouette at 96px. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-76e76d4e-4bd0-46e8-8652-5edee6783a0c.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_26.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Upward-adjusted crop now retains the golem’s entire craggy head and glowing eyes along with both protective stone fists in the 206:141 crop and 128px thumb. Painterly molten stone. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_27",
+    "name": "Magma Elemental",
+    "prompt": "Paint “Magma Elemental,” a fearsome spirit of molten earth, formed from a flowing humanoid upper body of red-orange magma and black volcanic crust, with a clear head and two ember-bright eyes. Its raised arms cast a small volley of molten stones and sparks outward in a controlled arc; a few fragments may trail, but the elemental’s face and hands remain the focal subject. Distinguish it from a stone golem: this spirit has a fluid, flame-rimmed body with no solid boulder limbs. Painterly medieval high-fantasy collectible-card art with visible brush texture, rich molten reds and dark crust, dramatic directional light, atmospheric depth, no photographic gloss. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Compose the head, eyes and both hands in the central horizontal safe area x24…488,y105…407 for the true 206:141 crop. Quiet volcanic atmosphere above and below, readable at 96px. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-d68cf437-f0c0-4050-8406-36d3cb43ab7e.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_27.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Upward-adjusted crop keeps magma spirit’s full eyes/head and both hands with fingers inside the 206:141 crop and 128px thumb; stray molten fragments trail out. Clear distinction from solid Lava Golem. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_28",
+    "name": "Dwarven Smith",
+    "prompt": "Paint “Dwarven Smith,” a stout, powerfully built dwarf blacksmith with a broad face, bright eyes, soot-darkened skin and a long copper-brown beard in neat braids. At a medieval forge he grips a heavy hammer with both hands, about to strike a glowing horseshoe-shaped piece of iron on a low anvil; a few sparks and a small blurred group of fellow dwarves in the distance suggest his rallying presence. Keep the dwarf’s full face and both hammer hands beside the hammer head clearly visible. Painterly medieval high-fantasy collectible-card art with visible brush texture, richly nuanced iron, leather, beard and firelight, dramatic directional light and atmospheric depth, no photographic gloss. Explicit 1:1 SQUARE canvas for an editable 512×512 master. Compose the smith horizontally in the central area; preserve full face/eyes, both hands and hammer head inside x24…488,y105…407 for the true 206:141 crop. Quiet forge atmosphere above and below; strong readable silhouette at 96px. No modern tools, text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-680ba153-4921-450f-a986-8297fff8d610.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_28.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Upward-adjusted crop retains the smith’s full head/face, both hands and full hammer head in the 206:141 crop and 128px thumbnail; hot iron/anvil remain visible at the lower edge. Painterly forge light. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_29",
+    "name": "Dwarven Miner",
+    "prompt": "Paint “Dwarven Miner,” a stout, bearded dwarf miner with a soot-smudged face, bright eyes, a leather mining cap with a small oil lamp and rugged work clothes. He swings a short-handled iron pick into a glowing seam of ore in a mountain tunnel, pausing mid-action with his sturdy hands firmly on the shaft. Keep the dwarf’s full face, lamp, both hands and entire pick head visible; a distant dwarf silhouette rallies beside the tunnel entrance. Painterly medieval high-fantasy collectible-card illustration with visible brush texture, nuanced stone, iron, leather and beard, warm lantern light, atmospheric depth, no photographic gloss. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Arrange dwarf and pick horizontally in center; keep face/eyes, hands and complete named tool inside x24…488,y105…407 for the true 206:141 crop. Quiet mine shadows above and below, clear at 96px. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-ad65445a-3b50-4028-a060-8d7a4deccb7b.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_29.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Miner’s full face, lamp, both hands and entire pick head remain visible in the 206:141 crop and 128px thumbnail; glowing ore supports the mining action. Painterly warm light. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_30",
+    "name": "Dwarven Musketeer",
+    "prompt": "Paint “Dwarven Musketeer,” a compact, stout dwarf marksman with a braided beard, focused eyes, a riveted kettle helmet and sturdy leather-and-iron armor. He braces a short twin-barrel matchlock arquebus, with two parallel iron barrels, a short wooden stock and glowing match cord, firing twin bright bolts in a small controlled burst. The dwarf’s face, both hands and entire compact gun are clearly visible. This is a primitive medieval fantasy firearm, not a modern rifle. Painterly medieval high-fantasy collectible-card art with visible brush texture, nuanced materials and warm directional light, atmospheric depth, no photographic gloss. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Arrange dwarf and compact gun horizontally; keep face/eyes, hands and entire gun inside x24…488,y105…407 for the true 206:141 crop. Quiet stone fortress atmosphere above and below; readable at 96px. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6cb87250-1c19-4755-a494-933f7b29f05f.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_30.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Upward crop preserves the complete kettle helmet/head, eyes, both hands and complete twin-barrel matchlock in the 206:141 crop and 128px thumb. Medieval fantasy firearm, painterly light. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_31",
+    "name": "Dwarven Rocketeer",
+    "prompt": "Paint “Dwarven Rocketeer,” a sturdy young dwarf engineer with a soot-streaked face, round protective goggles pushed up on his forehead and sturdy leather-and-iron armor. He shoulders a compact hand-built medieval rocket tube with riveted bronze bands, while a small iron-capped rocket arcs upward from its mouth on a controlled trail of sparks. Keep the dwarf’s full face, eyes, hands and the short rocket launcher together and clearly visible; the flying rocket may extend into the background. Painterly medieval high-fantasy collectible-card art with visible brush texture, nuanced metal, leather and smoke, dramatic forge light and atmospheric depth, no photographic gloss or modern military hardware. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Compose dwarf and launcher horizontally; keep full head/eyes, hands and entire portable tube inside x24…488,y105…407 for the true 206:141 crop. Quiet mountain battlement above and below, readable at 96px. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-aa995883-5c42-48fa-ab75-dd1b7fa7001e.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_31.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Dwarf’s face, goggles, both hands and complete short rocket tube remain visible in the 206:141 crop and 128px thumb; airborne rocket is incidental background. Painterly mountain-forge lighting. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_32",
+    "name": "Mountain Hermit",
+    "prompt": "Paint “Mountain Hermit,” an old dwarf sage living alone in the high crags. He has a weathered, deeply lined face, alert steady eyes, a long frost-silver beard and a coarse hooded mountain cloak. He grips an old carved walking staff in one hand and raises the other as a compact blast of warm amber magic scatters loose stones away from his cave entrance. Keep the hermit’s face, eyes, both hands and staff visible; no explosive weapon. Painterly medieval high-fantasy collectible-card illustration with visible brush texture, nuanced wool, wood and weathered stone, dramatic mountain light and atmospheric depth, no photographic gloss. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Compose hermit horizontally in the central area; keep face/eyes, hands and staff head inside x24…488,y105…407 for the true 206:141 crop. Quiet mountain sky and cave above/below, clear at 96px. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8be5a8b8-f894-4ff2-b607-c13ced6ae8ea.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_32.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Hermit’s full face, eyes, both hands and carved staff head remain visible in the 206:141 crop and 128px thumbnail; magic blast stays secondary. Painterly mountain light. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_33",
+    "name": "Samurai",
+    "prompt": "Paint “Samurai,” a disciplined Japanese samurai warrior in historically inspired dark red lacquered lamellar armor, a kabuto helmet with a modest crescent crest and a tied menpō mask hanging at the waist so the warrior’s focused face and eyes remain visible. He holds a katana diagonally in both hands in a poised guard, blade warmed by reflected firelight; quiet Japanese pine forest and stone lanterns behind. Keep face/eyes, both sword hands, hilt and most of the blade clearly visible. Painterly medieval high-fantasy collectible-card illustration with visible brush texture and carefully painted lacquer, silk and steel, dramatic directional light, atmospheric depth, culturally grounded Japanese armor, no photographic gloss. Explicit 1:1 SQUARE canvas for an editable 512×512 master. Compose samurai horizontally in the middle; protect full face, eyes, hands and katana hilt inside x24…488,y105…407 for the true 206:141 crop; blade tip may extend toward edge. Quiet forest atmosphere above and below, legible at 96px. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5fb93ea5-9f2d-4f6f-910e-bb41146a0f69.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_33.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Upward-adjusted crop retains the samurai’s full kabuto and crescent crest, face/eyes, hands and katana hilt; blade tip extends beyond crop. Readable at 128px with painterly lacquer and forest light. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_34",
+    "name": "Ronin Archer",
+    "prompt": "Paint “Ronin Archer,” a disciplined wandering Japanese ronin in weathered indigo and charcoal lamellar armor, face bare and focused beneath a travel-worn jingasa hat. He draws a traditional tall asymmetrical yumi bow, one hand holding the bow and the other drawing the arrow to his cheek; a compact quiver rests behind his shoulder. Keep the archer’s full face and both hands clearly visible gripping the bow and arrow; the tall bow tips may extend beyond the frame. Painterly medieval high-fantasy collectible-card art with visible brush texture, culturally grounded Japanese clothing and bow, nuanced lacquer, silk and wood, dramatic warm light and atmospheric depth, no photographic gloss. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Compose ronin and bow horizontally; keep face/eyes and both bow/arrow hands inside x24…488,y105…407 for the true 206:141 crop. Quiet mountain-pine atmosphere above and below, readable at 96px. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-bcdf7a4a-bb5a-4639-86dd-cc2fb53e3f4b.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_34.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Ronin’s full face, eyes and both drawing/bow hands remain visible in the 206:141 crop and 128px thumbnail; upper/lower bow tips crop incidentally. Painterly Japanese mountain light. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_35",
+    "name": "Mountain Monk",
+    "prompt": "Paint “Mountain Monk,” a calm, strong adult mountain ascetic in simple layered ochre-brown robes, a weathered compassionate face, shaved head, and wooden prayer beads at his wrist. He stands at a high mountain shrine, resting a hand on a carved staff while the other hand glows with concentrated golden energy that gently empowers a small companion warrior beside him. Keep the monk’s full face, eyes, both hands and staff head clear; the companion remains secondary. Painterly medieval high-fantasy collectible-card art with visible brush texture, nuanced wool, wood and stone, serene mountain light and atmospheric depth, no photographic gloss. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Compose monk horizontally in the central area; keep face/eyes and hands inside x24…488,y105…407 for the true 206:141 crop. Quiet mountain shrine atmosphere above and below, clear at 96px. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2be4c799-ee63-4bc5-89fb-5d1df32036f2.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_35.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Slightly downward-adjusted crop preserves the monk’s full head, staff head and casting fingers; upper companion is secondary. Painterly mountain-shrine light. Parent reviewing updated crop."
+  },
+  {
+    "cardId": "fire_summon_36",
+    "name": "Tengu",
+    "prompt": "Paint “Tengu,” a legendary Japanese mountain spirit in the long-nosed yamabushi Tengu tradition: a stern red-faced humanoid with a very long nose, bright amber eyes, dark feathered wings and a small black mountain-ascetic cap over layered robes. He holds a folded war fan in one hand and a short wooden staff in the other, both calmly at his sides. Keep the entire long-nosed face and eyes clearly visible; the black wings may extend beyond the frame. Painterly medieval high-fantasy collectible-card art with visible brush texture, culturally grounded Japanese folklore details, nuanced feathers and cloth, dramatic mountain light and atmospheric depth, no photographic gloss. Explicit 1:1 SQUARE canvas for an editable 512×512 master. Compose Tengu’s face and upper body horizontally in the central area; preserve face/eyes, both hands and small handheld fan/staff inside x24…488,y105…407 for the true 206:141 crop. Quiet pine-mountain atmosphere above and below, readable at 96px. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-2b52fbf1-47b7-4698-810e-94a313ec3a0d.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_36.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Upward-adjusted crop retains Tengu’s whole cap/head and long-nosed face/eyes, plus fan and staff hands; wing tips may crop. Painterly Japanese mountain setting. Awaiting parent review."
+  },
+  {
+    "cardId": "fire_summon_37",
+    "name": "Lantern Ghost",
+    "prompt": "Paint “Lantern Ghost,” a gentle wandering spirit from an old Japanese mountain tale, a translucent pale-blue ghost with a distinct calm face and luminous eyes, wearing a tattered pale kimono-like robe. It holds a small complete wooden-and-paper lantern with both spectral hands; warm golden light glows through the paper and softly mends a cracked stone marker below. Keep the ghost’s full face/eyes, both hands and the entire lantern clearly together; lantern is the key portable feature, compact and unobscured. Painterly medieval high-fantasy collectible-card art with visible brush texture, atmospheric night lighting, nuanced old wood, paper and flowing spirit cloth, no photographic gloss. Explicit 1:1 SQUARE canvas for a 512×512 editable master. Compose spirit and lantern horizontally in the central area; preserve full head, eyes, hands and entire lantern inside x24…488,y105…407 for the true 206:141 crop. Quiet moonlit shrine atmosphere above and below, clear at 96px. No text, frame, UI, anime, Disney-like cartoon, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7dd78a77-c250-4b65-84cf-3637cda331b5.png",
+    "editableSourcePath": "game/cards/art/masters/fire_summon_37.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Upward-adjusted crop keeps the ghost’s full head and luminous face, both hands and complete paper lantern intact in the 206:141 crop and 128px thumb. Painterly moonlit shrine. Awaiting parent review."
   }
 ]

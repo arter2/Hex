@@ -3915,5 +3915,77 @@
     "status": "generated",
     "batch": 14,
     "reviewNote": "Shifted focalPoint upward to y=0.42 after crop inspection; reviewed the unchanged 512-square source, revised true 206:141 crop and 128px thumbnail. Scribe’s complete cap/head, face/eyes and both hands with brush and scroll remain visible; lower desk is incidental."
+  },
+  {
+    "cardId": "light_summon_41",
+    "name": "Persian Astronomer",
+    "prompt": "Paint an illustration for the exact card name “Persian Astronomer.” Depict a learned Persian astronomer of the 13th century at the Maragha observatory, wearing a finely woven indigo robe and a simple cream turban, his thoughtful face and eyes clearly visible. In one hand he holds a compact brass astrolabe at chest height; with the other he aligns its sighting rule toward a bright star above a stone observatory terrace. A parchment star chart and a few instruments rest nearby. His work is precise observation, not magical fortune-telling. Painterly medieval high-fantasy collectible-card illustration with visible brush texture and layered brushstrokes, nuanced brass, wool, parchment and stone, deep blue night light balanced by a warm lamp, atmospheric depth and historically grounded Persian dress and instruments. Explicit 1:1 square canvas intended for a 512×512 editable master; keep the astronomer’s entire head/turban, face/eyes, both hands and complete astrolabe within x24–488,y105–407 for a 206:141 landscape crop. Quiet sky and terrace above/below. No readable writing, text, frame, UI, anime, Disney-like cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-93dbce73-b05a-4430-abc8-b1ec05a2bd5f.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_41.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Shifted focalPoint upward to y=0.42 after crop inspection; reviewed the unchanged 512-square source, revised true 206:141 crop and 128px thumbnail. Astronomer’s full turban/head, face/eyes, both hands and complete astrolabe/sighting rule fit together; desk and observatory grounds are secondary."
+  },
+  {
+    "cardId": "light_summon_42",
+    "name": "Astronomer of Copan",
+    "prompt": "Paint an illustration for the exact card name “Astronomer of Copan.” Depict a Classic Maya sky-watcher at Copán around the 8th century, a learned man with dark hair, restrained jade ear spools and a finely woven cotton mantle, his calm face and alert eyes visible on a stepped stone observatory terrace. He compares the bright morning star Venus above the mountain horizon with a compact folded bark-paper codex of painted astronomical tables, holding the codex steady in one hand and indicating a planet glyph with a slender stylus in the other. Behind him stands a Copán-style carved Maya stela with intricate low-relief glyph blocks; avoid Aztec calendar imagery and European instruments. Painterly medieval high-fantasy collectible-card illustration with visible brush texture and layered brushstrokes, tactile cotton, jade, bark paper and carved limestone, warm dawn light against cool blue night, atmospheric depth and culturally grounded Maya clothing/architecture. Explicit 1:1 square canvas intended for an editable 512×512 master; keep the astronomer’s full head/face/eyes, both hands, stylus and compact codex together inside x24–488,y105–407 for a 206:141 landscape crop. Quiet temple court and sky above/below. No legible writing, text, frame, UI, anime, Disney-like cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-5c23261c-4c1e-45c5-9b96-7f2915b68e79.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_42.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Shifted focalPoint upward to y=0.42 after crop inspection; reviewed the unchanged 512-square source, revised true 206:141 crop and 128px thumbnail. Astronomer’s full head/hair, face/eyes, both hands, stylus and painted codex remain visible; carved Copán stela and temple court establish place."
+  },
+  {
+    "cardId": "light_summon_43",
+    "name": "Imhotep the Builder",
+    "prompt": "Paint standalone painterly medieval-fantasy collectible-card art for the exact summon Imhotep the Builder, the historical ancient Egyptian architect and vizier associated with Djoser's Step Pyramid. Show one dignified Egyptian scholar-builder, a mature dark-skinned man with a focused human face, shaved or close-cropped head beneath a simple dark linen headcloth, white linen kilt and robe, broad blue-and-gold collar, and a carpenter's measuring cord in one hand. With the other hand he points to a rolled papyrus architectural plan held open beside him; keep both hands, face and measuring tool readable. Behind him rise the monumental limestone steps of Djoser's pyramid at Saqqara, with a few cut blocks and a restrained swirl of desert sand, not a generic European castle. Historically grounded Old Kingdom Egyptian clothing, no Greek costume. Painterly visible brush texture in linen, limestone and sand, warm sun on stone with cool blue shadow, atmospheric depth matching supplied Hexmancers light art and accepted master, not glossy photorealism. Explicit 1:1 SQUARE canvas for an editable 512x512 master, horizontal composition for a 206:141 card crop; keep face, eyes, hands and plan within x24..488,y105..407, quiet sky and desert beyond. No readable hieroglyphs, text, frame or UI. No anime, Disney-like cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7f28d571-6faf-44f3-8546-66241f6b4fdb.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_43.png",
+    "sourceNative": [
+      1427,
+      1102
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop at focalPoint [0.5,0.4] and 128-pixel thumbnail: Imhotep's full face/eyes and both measuring/planning hands fit; papyrus plan, measuring cord and Saqqara step pyramid read clearly."
+  },
+  {
+    "cardId": "light_summon_44",
+    "name": "Terracotta Warrior",
+    "prompt": "Paint standalone painterly medieval-fantasy collectible-card art for the exact summon Terracotta Warrior, a fired-clay soldier from the Qin dynasty mausoleum army of ancient China. Show one full-sized Chinese infantry warrior made unmistakably from warm gray-brown terracotta clay: sculpted human face with calm dark clay eyes, period topknot, molded mustache, detailed Qin-style lamellar armor and a hand gripping a bronze-tipped spear. Dry clay seams and small kiln cracks are visible across face, fingers and armor; do not make him flesh, stone golem, Roman soldier or Japanese samurai. He strides out from the archaeological rows of the Terracotta Army into a shaft of warm light, while other clay figures remain small and soft in the background. Keep his full face/eyes and spear hand readable. Painterly visible brush texture in clay, bronze and earth, atmospheric depth and dramatic lantern-sunlight matching supplied Hexmancers light art and accepted master, no glossy photorealism. Explicit 1:1 SQUARE canvas for editable 512x512 master, horizontal staging for a 206:141 crop; keep head, face, eyes, armor shoulder and hand inside x24..488,y105..407; spear extremities and legs may crop naturally. No text, frame, Chinese writing, UI, anime, Disney-like cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-08e9cad6-491a-47f6-b4a5-f98878b16657.png",
+    "editableSourcePath": "game/cards/art/masters/light_summon_44.png",
+    "sourceNative": [
+      1269,
+      1240
+    ],
+    "focalPoint": [
+      0.5,
+      0.4
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop at focalPoint [0.5,0.4] and 128-pixel thumbnail: full Qin terracotta face/eyes and spear hand fit, with topknot and cracked fired-clay lamellar armor readable against the mausoleum army."
   }
 ]

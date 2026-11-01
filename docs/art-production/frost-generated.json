@@ -3951,5 +3951,59 @@
     "status": "generated",
     "batch": 14,
     "reviewNote": "Reviewed the 512-square source, direct 512×350 crop and 128×88 thumbnail: Leviathan reads as a long armored sea serpent with complete dragonlike head, eyes, muzzle and jaws; body coils through the ice-choked waves while tail and ship rigging are incidental."
+  },
+  {
+    "cardId": "frost_summon_31",
+    "name": "Bunyip of the Billabong",
+    "prompt": "Paint an illustration for the exact card name “Bunyip of the Billabong.” Depict the bunyip as an eerie Australian freshwater spirit surfacing from a remote billabong at twilight, its broad seal-like body wet with dark water, its rounded whiskered head and watchful eyes unmistakable above the reeds. Keep the creature folkloric and strange rather than a familiar marine seal: suggest shaggy fur, a broad flat muzzle and powerful flippered forelimbs, with only its head and shoulders emerging. River gums, reeds, a still waterhole and a few distant birds establish the Australian setting; no people or sacred ceremonial objects. Painterly medieval high-fantasy collectible-card illustration with visible brush texture and layered strokes, nuanced dark fur, water, reeds and bark, moody blue dusk with warm sunset glow, atmospheric depth and grounded animal anatomy. Explicit 1:1 square canvas intended for an editable 512×512 master; keep the complete head, eyes, muzzle/whiskers and upper body within x24–488,y105–407 for a 206:141 crop; incidental forelimbs and ripples may crop. No frame, text, UI, anime, Disney-like cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7ae24b35-4c4e-4775-a3ba-49ff27adc7eb.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_31.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, exact wide crop and 128px thumbnail. Bunyip’s full rounded head, eyes, muzzle, long whiskers and seal-like shoulders remain visible as an Australian billabong spirit; reeds and ripples are supporting setting."
+  },
+  {
+    "cardId": "frost_summon_32",
+    "name": "Sea Serpent",
+    "prompt": "Paint an illustration for the exact card name “Sea Serpent.” Show a vast wild sea serpent rising from a storm-tossed northern ocean, its narrow reptilian head, bright watchful eyes, long jaw and ridged finned neck sharply visible above the water. Its powerful eel-like body coils through a breaking wave behind it, but the face remains the main subject; this is a marine serpent, not a horned East Asian dragon. Use dark blue-green scales, small gill slits and a line of dorsal fins to establish its aquatic identity. Painterly medieval high-fantasy collectible-card art with visible brush texture and layered brushstrokes, nuanced scales, spray and mist, dramatic cold sea light with warm sunset along the horizon, atmospheric depth and natural serpentine anatomy. Explicit 1:1 square canvas for a 512×512 editable master; keep the complete head, eyes, jaw and defining neck profile inside x24–488,y105–407 for the 206:141 landscape crop; long body, tail and wave crests may crop incidentally. No text, frame, UI, anime, cartoon, glossy photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-343cfdb9-7395-4190-835b-b1d7b12016a7.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_32.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, exact wide crop and 128px thumbnail. Sea serpent’s full narrow head, eye, jaw, gill line and finned neck profile remain visible; its long body coils through the crop as secondary form."
+  },
+  {
+    "cardId": "frost_summon_33",
+    "name": "Dragon King of the Deep",
+    "prompt": "Edit this illustration, preserving its recognizable Chinese Dragon King of the Deep identity and painterly high-fantasy treatment. Recompose the dragon’s head modestly smaller and lower in the square, so the entire branching antler crown, both eyes, full muzzle and the complete flowing whiskers have comfortable space from every edge and all fit within x24–488,y105–407 on the eventual 206:141 horizontal crop. Shorten and curl whiskers inward rather than letting them reach the side edges. Keep the noble underwater dragon face dominant, with jade scales, small regal crown, underwater palace, fish and controlled cold mist; the long neck and body may extend beyond the crop. Do not change to a western winged dragon. Explicit 1:1 square canvas for an editable 512×512 master. Painterly medieval fantasy with clearly visible brush texture and layered strokes. No text, frame, UI, anime, cartoon or glossy photorealism.",
+    "generatedPath": "/workspace/generated_images/exec-0983b0f0-ef2b-4768-a80a-853a7de5a1c1.png",
+    "editableSourcePath": "game/cards/art/masters/frost_summon_33.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reworked the composition after crop inspection showed the initial antlers and long whiskers reaching/cropping at the edges; copied the prior 512-square master to scratch, then atomically replaced it with the prepared 512-square repaint. Inspected the replacement square, revised 206:141 crop and 128px thumbnail. Complete antlers, full face/eyes, muzzle and inward-curled whiskers now fit safely; long neck is incidental."
   }
 ]

@@ -1,8 +1,8 @@
 # Batch 14 production progress
 
-**152 of 200 new 512×512 sources saved; 135 approved.**
+**180 of 200 new 512×512 sources saved; 170 approved.**
 
-48 sources remain ungenerated. 0 saved sources require repainting. 27 packets of up to five cards passed parent crop/thumbnail review.
+20 sources remain ungenerated. 0 saved sources require repainting. 34 packets of up to five cards passed parent crop/thumbnail review.
 
 Current runtime: 1634 illustrations. Starting baseline: 1634; target: 1834. No complete batch-14 delivery has been prepared yet.
 
@@ -32,8 +32,13 @@ Read `batch-14-brief.md` and `batch-14-worker-state.json`. Resume only missing r
 | Lava Golem | `fire_summon_26` | Accepted | [512×512 PNG](../../game/cards/art/masters/fire_summon_26.png) |
 | Magma Elemental | `fire_summon_27` | Accepted | [512×512 PNG](../../game/cards/art/masters/fire_summon_27.png) |
 | Dwarven Smith | `fire_summon_28` | Accepted | [512×512 PNG](../../game/cards/art/masters/fire_summon_28.png) |
-| Dwarven Miner | `fire_summon_29` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/fire_summon_29.png) |
-| Dwarven Musketeer | `fire_summon_30` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/fire_summon_30.png) |
+| Dwarven Miner | `fire_summon_29` | Accepted | [512×512 PNG](../../game/cards/art/masters/fire_summon_29.png) |
+| Dwarven Musketeer | `fire_summon_30` | Accepted | [512×512 PNG](../../game/cards/art/masters/fire_summon_30.png) |
+| Dwarven Rocketeer | `fire_summon_31` | Accepted | [512×512 PNG](../../game/cards/art/masters/fire_summon_31.png) |
+| Mountain Hermit | `fire_summon_32` | Accepted | [512×512 PNG](../../game/cards/art/masters/fire_summon_32.png) |
+| Samurai | `fire_summon_33` | Accepted | [512×512 PNG](../../game/cards/art/masters/fire_summon_33.png) |
+| Ronin Archer | `fire_summon_34` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/fire_summon_34.png) |
+| Mountain Monk | `fire_summon_35` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/fire_summon_35.png) |
 | Rusalka's Tears | `frost_charge_15` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_charge_15.png) |
 | Ghost Ship Volley | `frost_charge_16` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_charge_16.png) |
 | Sorcerer's Orbs | `frost_charge_17` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_charge_17.png) |
@@ -54,11 +59,14 @@ Read `batch-14-brief.md` and `batch-14-worker-state.json`. Resume only missing r
 | Great White Shark | `frost_summon_23` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_summon_23.png) |
 | Sea Turtle | `frost_summon_24` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_summon_24.png) |
 | Zaratan the Island Turtle | `frost_summon_25` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_summon_25.png) |
-| King Crab | `frost_summon_26` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/frost_summon_26.png) |
-| Giant Squid | `frost_summon_27` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/frost_summon_27.png) |
-| The Kraken | `frost_summon_28` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/frost_summon_28.png) |
-| Kraken Spawn | `frost_summon_29` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/frost_summon_29.png) |
-| Leviathan | `frost_summon_30` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/frost_summon_30.png) |
+| King Crab | `frost_summon_26` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_summon_26.png) |
+| Giant Squid | `frost_summon_27` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_summon_27.png) |
+| The Kraken | `frost_summon_28` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_summon_28.png) |
+| Kraken Spawn | `frost_summon_29` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_summon_29.png) |
+| Leviathan | `frost_summon_30` | Accepted | [512×512 PNG](../../game/cards/art/masters/frost_summon_30.png) |
+| Bunyip of the Billabong | `frost_summon_31` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/frost_summon_31.png) |
+| Sea Serpent | `frost_summon_32` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/frost_summon_32.png) |
+| Dragon King of the Deep | `frost_summon_33` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/frost_summon_33.png) |
 | Cu Chulainn | `gray_summon_170` | Accepted | [512×512 PNG](../../game/cards/art/masters/gray_summon_170.png) |
 | Sundiata Keita | `gray_summon_171` | Accepted | [512×512 PNG](../../game/cards/art/masters/gray_summon_171.png) |
 | Momotaro | `gray_summon_172` | Accepted | [512×512 PNG](../../game/cards/art/masters/gray_summon_172.png) |
@@ -79,8 +87,11 @@ Read `batch-14-brief.md` and `batch-14-worker-state.json`. Resume only missing r
 | Robin Hood | `gray_summon_187` | Accepted | [512×512 PNG](../../game/cards/art/masters/gray_summon_187.png) |
 | Mwindo | `gray_summon_188` | Accepted | [512×512 PNG](../../game/cards/art/masters/gray_summon_188.png) |
 | Kintaro | `gray_summon_189` | Accepted | [512×512 PNG](../../game/cards/art/masters/gray_summon_189.png) |
-| Fionn mac Cumhaill | `gray_summon_190` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/gray_summon_190.png) |
-| Scathach | `gray_summon_191` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/gray_summon_191.png) |
+| Fionn mac Cumhaill | `gray_summon_190` | Accepted | [512×512 PNG](../../game/cards/art/masters/gray_summon_190.png) |
+| Scathach | `gray_summon_191` | Accepted | [512×512 PNG](../../game/cards/art/masters/gray_summon_191.png) |
+| Tomoe Gozen | `gray_summon_192` | Accepted | [512×512 PNG](../../game/cards/art/masters/gray_summon_192.png) |
+| Antarah the Poet-Knight | `gray_summon_193` | Accepted | [512×512 PNG](../../game/cards/art/masters/gray_summon_193.png) |
+| Hunahpu and Xbalanque | `gray_summon_194` | Accepted | [512×512 PNG](../../game/cards/art/masters/gray_summon_194.png) |
 | Great Sphinx of Giza | `light_summon_18` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_summon_18.png) |
 | White Elephant | `light_summon_19` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_summon_19.png) |
 | Hannibal's War Elephant | `light_summon_20` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_summon_20.png) |
@@ -101,9 +112,12 @@ Read `batch-14-brief.md` and `batch-14-worker-state.json`. Resume only missing r
 | Longbowman | `light_summon_35` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_summon_35.png) |
 | Inca Stonemason | `light_summon_36` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_summon_36.png) |
 | Village Physician | `light_summon_37` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_summon_37.png) |
-| Battle Cleric | `light_summon_38` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/light_summon_38.png) |
-| Vaidya of Taxila | `light_summon_39` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/light_summon_39.png) |
-| Hanlin Academy Scribe | `light_summon_40` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/light_summon_40.png) |
+| Battle Cleric | `light_summon_38` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_summon_38.png) |
+| Vaidya of Taxila | `light_summon_39` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_summon_39.png) |
+| Hanlin Academy Scribe | `light_summon_40` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_summon_40.png) |
+| Persian Astronomer | `light_summon_41` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_summon_41.png) |
+| Astronomer of Copan | `light_summon_42` | Accepted | [512×512 PNG](../../game/cards/art/masters/light_summon_42.png) |
+| Imhotep the Builder | `light_summon_43` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/light_summon_43.png) |
 | Witch's Toad | `shadow_summon_25` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_summon_25.png) |
 | Black Cat Familiar | `shadow_summon_26` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_summon_26.png) |
 | Haugbui | `shadow_summon_27` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_summon_27.png) |
@@ -124,7 +138,11 @@ Read `batch-14-brief.md` and `batch-14-worker-state.json`. Resume only missing r
 | Plague Doctor | `shadow_summon_42` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_summon_42.png) |
 | Necromancer | `shadow_summon_43` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_summon_43.png) |
 | Horned Night Visitor | `shadow_summon_44` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_summon_44.png) |
-| Omen Raven | `shadow_summon_45` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/shadow_summon_45.png) |
+| Omen Raven | `shadow_summon_45` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_summon_45.png) |
+| Draugr | `shadow_summon_46` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_summon_46.png) |
+| Onryo | `shadow_summon_47` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_summon_47.png) |
+| Bean Sidhe | `shadow_summon_48` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_summon_48.png) |
+| Lich | `shadow_summon_49` | Accepted | [512×512 PNG](../../game/cards/art/masters/shadow_summon_49.png) |
 | Great River Crocodile | `storm_summon_19` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_summon_19.png) |
 | Roc | `storm_summon_20` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_summon_20.png) |
 | Simurgh | `storm_summon_21` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_summon_21.png) |
@@ -140,10 +158,16 @@ Read `batch-14-brief.md` and `batch-14-worker-state.json`. Resume only missing r
 | Uraeus Cobra | `storm_summon_31` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_summon_31.png) |
 | Plumed Serpent | `storm_summon_32` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_summon_32.png) |
 | Chupacabra | `storm_summon_33` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_summon_33.png) |
-| Foo Dog Sentinel | `storm_summon_34` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/storm_summon_34.png) |
-| Brass Foo Pup | `storm_summon_35` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/storm_summon_35.png) |
-| Bahamut | `storm_summon_36` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/storm_summon_36.png) |
-| Falak the Abyss Serpent | `storm_summon_37` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/storm_summon_37.png) |
+| Foo Dog Sentinel | `storm_summon_34` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_summon_34.png) |
+| Brass Foo Pup | `storm_summon_35` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_summon_35.png) |
+| Bahamut | `storm_summon_36` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_summon_36.png) |
+| Falak the Abyss Serpent | `storm_summon_37` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_summon_37.png) |
+| Sandworm | `storm_summon_38` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_summon_38.png) |
+| Linen-Wrapped Sentinel | `storm_summon_39` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_summon_39.png) |
+| Sand Golem | `storm_summon_40` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_summon_40.png) |
+| Wandering Alchemist | `storm_summon_41` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_summon_41.png) |
+| Bedouin Raider | `storm_summon_42` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_summon_42.png) |
+| Parthian Horse Archer | `storm_summon_43` | Accepted | [512×512 PNG](../../game/cards/art/masters/storm_summon_43.png) |
 | Alux Field Keeper | `verdant_summon_23` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_summon_23.png) |
 | Grove Druid | `verdant_summon_24` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_summon_24.png) |
 | Rainforest Curandero | `verdant_summon_25` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_summon_25.png) |
@@ -164,3 +188,7 @@ Read `batch-14-brief.md` and `batch-14-worker-state.json`. Resume only missing r
 | Kapre Tree Giant | `verdant_summon_40` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_summon_40.png) |
 | Orang Pendek | `verdant_summon_41` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_summon_41.png) |
 | Mapinguari | `verdant_summon_42` | Accepted | [512×512 PNG](../../game/cards/art/masters/verdant_summon_42.png) |
+| Old Man of the Forest | `verdant_summon_43` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/verdant_summon_43.png) |
+| Monkey King's Vanguard | `verdant_summon_45` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/verdant_summon_45.png) |
+| Tanuki Drummer | `verdant_summon_46` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/verdant_summon_46.png) |
+| Grizzly Matriarch | `verdant_summon_47` | Awaiting review | [512×512 PNG](../../game/cards/art/masters/verdant_summon_47.png) |

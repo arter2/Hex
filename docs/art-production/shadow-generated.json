@@ -3884,5 +3884,77 @@
     "status": "generated",
     "batch": 14,
     "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop at focalPoint [0.5,0.42] and 128-pixel thumbnail: raven's full head, eye, hooked beak and shoulder remain clear; ominous feathered wing and dark plague mist trail incidentally."
+  },
+  {
+    "cardId": "shadow_summon_46",
+    "name": "Draugr",
+    "prompt": "Paint standalone painterly medieval-fantasy collectible-card art for the exact summon Draugr, an undead warrior of Norse folklore. Show one corporeal ancient Norse revenant rising from a stone barrow, not a skeleton and not a modern zombie: pallid blue-gray weathered skin, deep-set glowing ice-blue eyes, long matted blond-gray hair and beard, worn early medieval mail and a tarnished round brooch, one strong hand gripping a short seax beside his face. His other hand lifts from the burial mound as faint shadowy figures stir in the mist behind him, suggesting an ancient summoner. Keep the entire human face, eyes and sword hand prominent; no blood, torn flesh or gore. Cold northern burial mound, runestone shapes without readable marks, twisted grass and blue twilight with a narrow warm torch rim light. Painterly visible brush texture in mail, skin, earth and mist, grounded Nordic materials and atmospheric depth matching supplied Hexmancers shadow style, no glossy photorealism. Explicit 1:1 SQUARE canvas for an editable 512x512 master in a horizontal composition for the 206:141 crop; keep face, eyes and hands inside x24..488,y105..407, quiet mound and sky beyond. No text, frame, runes, UI or anime; no Disney-like cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-eb03486b-98f0-40a4-9a66-7be8c1d979a5.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_46.png",
+    "sourceNative": [
+      1505,
+      1045
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop at focalPoint [0.5,0.42] and 128-pixel thumbnail: full undead Norse warrior face, eyes and both relevant hands remain visible with the seax grip; hair and blade extremity may crop."
+  },
+  {
+    "cardId": "shadow_summon_47",
+    "name": "Onryo",
+    "prompt": "Paint standalone painterly medieval-fantasy collectible-card art for the exact summon Onryo, a vengeful spirit of Japanese folklore. Show one furious but dignified woman who died unjustly, with a pale human face, clearly visible dark eyes fixed in anger, long loose black hair swept behind rather than covering her face, and a plain white burial kimono (shiro-shozoku) with long sleeves. She floats from a moonlit Japanese graveyard with both hands reaching forward, while a jagged zigzag ribbon of cold ghost-fire and shadow curls around her arms to express her curse; keep magic restrained so the face, eyes and hands dominate. Differentiate her from a sorrowful generic yurei: expression is focused and vengeful, stance forceful, aura sharper and more ominous. No gore, exposed wounds, fangs or caricature. Painterly visible brush texture in fabric, hair, mist and stone, dramatic cool moonlight with a restrained red-violet edge glow, grounded materials and atmospheric depth matching supplied Hexmancers shadow style, no glossy photorealism. Explicit 1:1 SQUARE canvas for an editable 512x512 master composed horizontally for the 206:141 crop; keep full face, eyes, both hands and shoulders inside x24..488,y105..407, quiet moonlit cemetery beyond. No text, frame, kanji, runes or UI. No anime, Disney-like cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-908c305a-e9b2-46cb-a4fa-3b1e4f8b8151.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_47.png",
+    "sourceNative": [
+      1269,
+      1240
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop at focalPoint [0.5,0.42] and 128-pixel thumbnail: Onryo's complete pale face, angry eyes, both reaching hands and white burial kimono remain visible; sharp spectral curse trail stays secondary."
+  },
+  {
+    "cardId": "shadow_summon_48",
+    "name": "Bean Sidhe",
+    "prompt": "Paint standalone painterly medieval-fantasy collectible-card art for the exact summon Bean Sidhe, the Irish fairy woman and death-messenger known for keening. Show one spectral Irish woman, not a Japanese ghost: pale lined face with clear grey eyes and an open mouth in a mournful keening cry, long silver-white hair streaming from an old deep-green hood, and a flowing weathered green-gray mantle. She kneels beside a misty stream among ancient Irish standing stones, lifting one delicate hand as small warm ancestral lights rise gently behind her, suggesting summoned helpers and harvest of life. The face, eyes, expressive mouth and hand must be the primary readable features. Eerie and sorrowful rather than monstrous; no blood, fangs or horror caricature. Painterly visible brush texture in hair, worn wool, stones and fog, soft moonlight with muted green-gold light, grounded medieval-fantasy materials and atmospheric depth matching supplied Hexmancers shadow style, not glossy photorealism. Explicit 1:1 SQUARE canvas for an editable 512x512 master, compact horizontal staging for a 206:141 crop; keep full face, eyes, mouth and raised hand within x24..488,y105..407, quiet moorland beyond. No text, Celtic lettering, frame, runes or UI. No anime, Disney-like cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-c0cc18c1-9b40-466b-9f35-0886c6b6e3ca.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_48.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop at focalPoint [0.5,0.42] and 128-pixel thumbnail: Bean Sidhe's complete face, grey eyes, keening mouth and raised hand remain clear; silver hair, green hood, Irish standing stones and ancestral lights distinguish the death-messenger."
+  },
+  {
+    "cardId": "shadow_summon_49",
+    "name": "Lich",
+    "prompt": "Paint standalone painterly medieval-fantasy collectible-card art for the exact summon Lich, an ancient undead sorcerer risen from a tomb. Show one regal, centuries-old skeletal mage with a recognizable skull face, two clear pale-green eye lights, a tarnished narrow crown, and layered black-violet burial robes stitched with subtle aged-gold embroidery. His skeletal face remains central and readable; one bone hand is raised beside it, the other turns a small cloud of poisonous green-black miasma while faint ancestral wisps rise from a cracked stone sarcophagus behind him. The lich is a powerful undead caster, not a generic warrior skeleton; keep the skull, glowing eyes and both hands clear, magic restrained. Painterly visible brush texture in bone, old cloth, stone and vapor, dramatic green underlight and warm candle rim, grounded medieval-fantasy materials and atmospheric depth matching supplied Hexmancers shadow art; not glossy photorealism. Explicit 1:1 SQUARE canvas for editable 512x512 master with horizontal compact composition for 206:141 crop; keep full skull face, both eyes and both hands inside x24..488,y105..407; quiet tomb stone above and below. No text, frame, runes, lettering or UI. No anime, Disney-like cartoon or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-60a95918-774f-448f-8f73-609b1ddd53de.png",
+    "editableSourcePath": "game/cards/art/masters/shadow_summon_49.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop at focalPoint [0.5,0.42] and 128-pixel thumbnail: lich skull, both glowing eyes, crown and both casting hands are fully visible; poison-green miasma and rising tomb wisps remain secondary."
   }
 ]

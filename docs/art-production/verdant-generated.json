@@ -3869,5 +3869,77 @@
     "status": "generated",
     "batch": 14,
     "reviewNote": "Inspected the 512-square source, upward-shifted 206:141 crop at focalPoint [0.5,0.4] and 128-pixel thumbnail: complete shaggy head and single central eye are now visible with margin; the non-gory vertical belly-mouth, raised claw and beam remain clear."
+  },
+  {
+    "cardId": "verdant_summon_43",
+    "name": "Old Man of the Forest",
+    "prompt": "Paint an original fantasy wildlife illustration for the exact card Old Man of the Forest. Depict one very old male Bornean orangutan, the true “person of the forest,” seated in a misty ancient rainforest. He has long rust-red shaggy fur, natural broad cheek flanges, a bare charcoal face, wise dark eyes and extremely long powerful arms resting on a mossy log. The complete orangutan face and both eyes are the clear focus; two younger orangutans are small companions among the branches behind him, answering his summons. This is a real old orangutan, not a human hermit, gorilla or costume-wearing cartoon. Painterly medieval fantasy collectible-card illustration, richly layered forest green, warm red fur, damp wood and soft shafts of dawn light, expressive hand-brushed texture and atmospheric depth. Exact 1:1 SQUARE for editable 512x512 master; keep full face/eyes and hands within x24..488,y105..407 for the 206:141 crop; horizontal portrait, quiet canopy and ground margins above/below. No frame, text, symbols, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-08d7e1c6-8581-42dc-8b07-24fcff736868.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_43.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, direct 512×350 crop and 128×88 thumbnail: old male orangutan's full cheek-flanged face and eyes remain clear; his rust-red fur and long arms identify the species, while lower resting hands and companion bodies crop incidentally."
+  },
+  {
+    "cardId": "verdant_summon_45",
+    "name": "Monkey King's Vanguard",
+    "prompt": "Paint an original mythic Chinese fantasy illustration for the exact card Monkey King's Vanguard. Show a brave macaque warrior of the Monkey King's guard standing against an approaching foe on a mountain temple path: clearly simian face, bright focused eyes, small rounded ears, brown-gold fur, a simple red-gold forehead band, practical Chinese lamellar armor and a red sash. In a compact horizontal pose he braces a straight golden-brown staff with both hands before his chest, turning toward the threat to draw its attention and protect allies. The monkey's entire face, eyes and both hands gripping the staff are the primary features; no human face, European knight armor, lion head or toy mascot. Painterly medieval fantasy collectible-card art with Chinese-inspired materials and architecture, tactile fur, lacquered lamellar and cloth, dramatic green-gold forest light, textured brushwork. Exact 1:1 SQUARE editable 512x512 master; keep face/eyes, both hands and staff grip safely inside x24..488,y105..407 for 206:141 crop; staff ends and lower body may crop. Quiet path and trees above/below. No lettering, frame, runes, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-8e307b87-8c3e-4c29-8d31-4c13d60b234d.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_45.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Shifted to focalPoint [0.5,0.42]. Reviewed the 512-square source and shifted direct 512×350 crop/128×88 thumbnail: vanguard's full simian face, eyes, headband and both staff-gripping hands remain visible; staff ends and lower armor crop incidentally."
+  },
+  {
+    "cardId": "verdant_summon_46",
+    "name": "Tanuki Drummer",
+    "prompt": "Paint an original folklore illustration for the exact card Tanuki Drummer. Depict one naturalistic Japanese raccoon-dog tanuki in a moonlit cedar grove, seated upright beside a small hand-built wooden taiko drum and beating it with its two forepaws; the drumbeat sends out a few gentle green-gold rings of empowering forest light. Give the real animal a rounded dark eye mask, small pointed ears, compact muzzle, gray-brown coat and a full bushy banded tail. Keep the complete tanuki face/eyes, both paws and drumhead clearly visible. Grounded wild animal and folkloric atmosphere, not a raccoon, fox, toy, plush mascot or cartoon; no human clothes or human hands. Painterly medieval fantasy collectible-card art, tactile fur, wood and hide, quiet forest mist, warm lanternlike light, natural anatomy and textured brushwork. Exact 1:1 SQUARE 512x512 master; place face, eyes, both drumming paws and the drum together within x24..488,y105..407 for 206:141 crop; tail may crop incidentally. No frame, text, symbols, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-011b2ba4-99dc-4b4c-b49a-0a707682e58f.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_46.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Shifted to focalPoint [0.5,0.42]. Reviewed the 512-square source and shifted direct 512×350 crop/128×88 thumbnail: natural raccoon-dog's full mask, eyes, ears, both drumming paws and taiko drumhead remain clear; banded tail and lower body crop incidentally."
+  },
+  {
+    "cardId": "verdant_summon_47",
+    "name": "Grizzly Matriarch",
+    "prompt": "Paint an original fantasy wildlife illustration for the exact card Grizzly Matriarch. Depict one powerful mature female grizzly bear standing protectively at the edge of a boreal forest, her massive shoulders raised and both heavy forepaws planted in front of two small cubs sheltering close behind her. Her strong but gentle bear face, rounded ears, deep brown eyes, broad muzzle and thick grizzled brown-gold coat are prominent; faint emerald healing motes gather around the cubs as she calls forest kin to protect them. This is a natural grizzly bear and mother, not a human-like warrior in fur. Painterly medieval fantasy collectible-card art, believable bear anatomy, textured fur, moss, cedar and warm shafts of late-day light, atmospheric depth and visible brushwork. Exact 1:1 SQUARE for 512x512 editable master; keep complete face/eyes and both forepaws within x24..488,y105..407 for the 206:141 crop; cubs and lower legs may crop incidentally. Horizontal composition, quiet canopy and ground above/below. No frame, text, lettering, symbols, logo, watermark, anime, Disney, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-e1999560-931a-49bd-8b05-dbb7abead95c.png",
+    "editableSourcePath": "game/cards/art/masters/verdant_summon_47.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.42
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Shifted to focalPoint [0.5,0.42]. Reviewed the 512-square source and shifted direct 512×350 crop/128×88 thumbnail: grizzly matriarch's complete face/eyes, ears and maternal stance remain clear, with cubs visible between her forelegs; lower paws crop incidentally."
   }
 ]

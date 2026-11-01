@@ -3909,5 +3909,59 @@
     "status": "generated",
     "batch": 14,
     "reviewNote": "512-square source, top-aligned 206:141 crop, and 128x88 thumbnail reviewed. Scathach’s full head/face/eyes and both spear-gripping hands remain visible; training dun and sea cliffs evoke her Ulster Cycle teacher role."
+  },
+  {
+    "cardId": "gray_summon_192",
+    "name": "Tomoe Gozen",
+    "prompt": "Paint an illustration for the exact card Tomoe Gozen, the legendary Japanese woman warrior from the Tale of the Heike. Show her as a capable mounted samurai commander of Kiso Yoshinaka in the late twelfth-century Genpei War: long dark hair tied back, strong composed face, historically grounded red-laced lamellar armor and a practical silk mantle. On a battle horse, she holds the reins in one hand and a Japanese yumi bow upright in the other; her face, both eyes, and both hands are clear inside x80..430,y120..380. A quiver of arrows and a sheathed tachi support her archery and sword skill. Crop horse and bow extremities naturally; keep Tomoe dominant, no other main figure. Painterly medieval fantasy collectible-card art with visible brush texture, accurate Japanese armor materials, no glossy photographic finish. Dawn light over a misty battlefield, dramatic but quiet background. Explicit 1:1 square composition for 512 master and 206:141 crop; leave scenery above and below. No frame, lettering, UI, anime, Disney proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-6bd0cbfa-d006-4e99-b34c-812ef1f00877.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_192.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.342
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "512-square source, top-aligned 206:141 crop, and 128x88 thumbnail reviewed. Tomoe retains full head/face/eyes, bow-gripping hand and reins hand; Japanese mounted archer identity is clear."
+  },
+  {
+    "cardId": "gray_summon_193",
+    "name": "Antarah the Poet-Knight",
+    "prompt": "Recompose this same ʿAntarah ibn Shaddād as the pre-Islamic Arabian warrior-poet Antarah the Poet-Knight. Make a genuinely compact square waist-up portrait, not a tall full-length pose. Move his complete head and all curls to the center with the full head spanning roughly y120..250; lift both relevant hands so the parchment-and-reed-pen hand and sword-hilt hand sit together around y270..350. Keep his complete head, face, both eyes and both full hands wholly inside x80..430,y120..380 so they all survive the horizontal 206:141 crop. Preserve his dark skin, curly black hair, early Arabian cloak and leather armor, blank parchment with only unreadable ink, and a quiet black Arabian horse. Keep the sword hilt visible at chest height. Painterly medieval fantasy collectible-card art with visible brush texture and tactile leather, linen, parchment, no photographic gloss or exoticizing stereotype. Warm Najd desert light. Explicit 1:1 square canvas, leave quiet scenery above and below. No frame, lettering, readable text, UI, anime, Disney proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-7da57046-eeb9-4aac-a7de-53b6cd7c3be0.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_193.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.471
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "512-square replacement source, final downward-adjusted 206:141 crop, and 128x88 thumbnail reviewed. Antarah retains his full head/face/eyes, full parchment hand, and visible gripping fingers on the sword hilt; black Arabian horse remains behind."
+  },
+  {
+    "cardId": "gray_summon_194",
+    "name": "Hunahpu and Xbalanque",
+    "prompt": "Paint an illustration for the exact combined card Hunahpu and Xbalanque, the Hero Twins of the K’iche’ Maya Popol Vuh. Show exactly two distinct young adult Maya brothers side by side as equal heroes, both faces and both pairs of eyes unobstructed and fully inside x80..430,y120..380. Use historically grounded Classic Maya-inspired woven cotton garments, jade ornaments and modest feathered headbands, not Aztec war bonnets or generic fantasy armor. Hunahpu holds a traditional wooden blowgun at chest height; Xbalanque holds a dark rubber ball from their sacred ballgame and has subtle jaguar markings on one cheek. Their hands and these named objects fit inside the safe area. A quiet Maya ballcourt in the shadowy entrance to Xibalba establishes the Popol Vuh without showing extra main figures. Horizontal waist-up duo, clear spacing between both faces. Painterly medieval fantasy collectible-card art with visible brush texture, culturally careful woven cloth, jade and stone, no photographic gloss. Dramatic warm light on both heroes against cool underworld blues, atmospheric depth. Explicit 1:1 square composition for a 512 master and 206:141 crop, leave quiet scenery above and below. No frame, lettering, UI, anime, Disney proportions, photorealism or pixel art.",
+    "generatedPath": "/workspace/generated_images/exec-b8cc2964-c7d9-409f-8aea-9c24f57b51f9.png",
+    "editableSourcePath": "game/cards/art/masters/gray_summon_194.png",
+    "sourceNative": [
+      1278,
+      1230
+    ],
+    "focalPoint": [
+      0.5,
+      0.342
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "512-square source, top-aligned 206:141 crop, and 128x88 thumbnail reviewed. Both Hero Twins’ full heads, faces and eyes remain distinct; Hunahpu’s blowgun hand and Xbalanque’s ball-holding hand are visible with Maya ballcourt cues."
   }
 ]

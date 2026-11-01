@@ -3849,6 +3849,114 @@
     ],
     "status": "generated",
     "batch": 14,
-    "reviewNote": "Reviewed the 512-square source, wide crop and thumbnail. Falak reads as a long-bodied abyss serpent emerging through desert sand, with complete head, both eyes and snout visible; no wings or legs. Its vast coil and lightning bolt support the legendary storm/desert identity."
+    "reviewNote": "Reviewed the 512-square source, wide crop and thumbnail. Falak reads as a long-bodied abyss serpent emerging through desert sand, with complete head, both eyes and snout visible; a pair of short horn-like brow ridges are present. No wings or legs. Its vast coil and lightning bolt support the legendary storm/desert identity."
+  },
+  {
+    "cardId": "storm_summon_38",
+    "name": "Sandworm",
+    "prompt": "Paint original illustration-only art for the storm summon Sandworm, a slow, sturdy burrower. Make the creature unmistakably a giant worm rather than a snake: a blunt cylindrical head with a round radial maw, concentric fleshy-chitin rings and a few small hooked teeth, two tiny dark sensory eyes above the mouth, and a thick body made of broad segmented sand-colored annuli. It erupts vertically through a dune in a rolling sandstorm, displacing small rocks and dust; a restrained blue lightning flash rims its armored rings. Do not give it horns, fins, limbs, feather crest or a long serpent muzzle. Painterly medieval fantasy collectible-card illustration with visible brush texture, simplified matte sand, chitin and stone, warm desert light against cool stormlight and atmospheric depth consistent with the supplied Hexmancers storm art. Avoid glossy photorealism, 3D shine, anime, Disney cartoon or pixel art. Explicit 1:1 square canvas for an editable 512x512 master. Keep the complete blunt head, circular mouth and visible eye features inside x24..488,y105..407 for the 206:141 crop; the segmented body and sand plume may extend beyond. No text, frame, writing, numbers or UI.",
+    "generatedPath": "/workspace/generated_images/exec-c2859d66-3407-4164-91fe-7079ee0cfd5e.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_38.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.39
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, focal-adjusted wide crop and thumbnail. The blunt segmented burrower is distinct from Falak’s serpent; its complete circular maw, small eyes and ringed chitin head stay visible as it erupts through sand. Lower body continues beyond the crop with stormlight on the segments."
+  },
+  {
+    "cardId": "storm_summon_39",
+    "name": "Linen-Wrapped Sentinel",
+    "prompt": "Square 1:1 illustration for a medieval fantasy collectible card, composed to remain readable in a wide 206:141 crop: keep the entire primary face, eyes, shoulders and any relevant hands inside the central horizontal safe zone (roughly x 24–488 and y 105–407 of a 512 square). Depict one imposing ancient linen-wrapped sentinel, an Egyptian-inspired funerary guardian knight with layered pale linen bandages over bronze and dark stone armor, face clearly visible through the wrapping, stern alert eyes, one hand holding a short upright spear close to the body. Ancient desert temple doorway, muted ochre and blue storm light behind. Strong, clear silhouette and compact central grouping. Painterly medieval fantasy card art with visible brush texture, carefully simplified matte materials and atmospheric lighting, matching traditional painted tabletop fantasy illustration. Not anime, not Disney, not photorealistic, not glossy 3D. No text, no border, no symbols or lettering. Deliver a square 1:1 image.",
+    "generatedPath": "/workspace/generated_images/exec-a1f5a87c-c23d-4f96-b77a-6fc42205e4fa.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_39.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, central wide crop and thumbnail. The sentinel’s full face, eyes and spear hand remain within the crop; pale linen wrapping, bronze armor and ancient desert-temple setting read clearly."
+  },
+  {
+    "cardId": "storm_summon_40",
+    "name": "Sand Golem",
+    "prompt": "Create original painterly medieval fantasy card art, explicit square 1:1 composition for an editable 512x512 master. One massive Sand Golem formed from compacted ochre sand, sandstone plates and grit, unmistakably a constructed humanoid guardian with broad shoulders, thick arms and a clear head with two bright blue stormlit eyes. Its body is cracking and shedding grains as it trudges through a windblown desert ruin; one heavy fist forward, a small distant lightning fork in the sky. No metal armor, no rocky mountain monster, no loose cloud-shaped elemental: make sand grains and layered sandstone the defining materials. Keep its full head, eyes and primary forearms within central wide-crop safe area x24..488,y105..407 of square image; compact silhouette. Horizontal energy, quiet upper/lower margins. Visible painterly brush texture, matte simplified materials, atmospheric traditional tabletop fantasy illustration, warm sand with restrained cool stormlight. Avoid photorealism, glossy 3D, anime, Disney and pixel art. No text, letters, frame or symbols.",
+    "generatedPath": "/workspace/generated_images/exec-86f7f2d6-c032-48a8-ad69-8a927a164b97.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_40.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.38
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, upward-shifted wide crop and thumbnail. The complete head and glowing eyes, shoulders and both heavy forearms fit; compacted ochre sand and sandstone are clear in the stormy desert setting."
+  },
+  {
+    "cardId": "storm_summon_41",
+    "name": "Wandering Alchemist",
+    "prompt": "Painterly medieval fantasy card illustration, square 1:1 composition for editable 512x512 master. Depict one wandering medieval alchemist, a road-worn scholar in practical travel cloak and layered leather satchel, mature expressive face and alert eyes, studying a small glowing blue vial held near chest; visible bundled alchemy tools and a few glass bottles at the belt. The character should feel like an itinerant craftsperson, not a wizard with a staff, not a modern scientist. A dusty road through a ruined desert caravanserai, distant storm clouds. Keep full head, face, vial hand and other visible hand inside central horizontal safe zone x24..488,y105..407; compact portrait with shoulders and kit grouped close. Strong face readability at thumbnail. Visible brushwork, matte cloth/leather/glass, atmospheric light, traditional painted tabletop fantasy style. Avoid glossy photorealism, 3D render, anime, Disney, pixel art. No text, writing, labels, symbols, border or UI. Explicit square 1:1 image.",
+    "generatedPath": "/workspace/generated_images/exec-850e273f-6b46-4e87-9636-0c500472f49a.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_41.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, central wide crop and thumbnail. The alchemist’s full face, vial hand and other hand remain visible, with travel cloak, satchel and belt vials clearly reading as a wandering medieval craftsperson."
+  },
+  {
+    "cardId": "storm_summon_42",
+    "name": "Bedouin Raider",
+    "prompt": "Painterly medieval fantasy card art, explicit 1:1 square composition for an editable 512x512 master. A single Bedouin desert raider on foot, a capable Arab warrior in historically grounded loose desert robes and wrapped headcloth, practical leather belt, weathered face and focused eyes; holds a curved saber close to the body, other hand gripping a small round shield. Respectful, specific Middle Eastern desert traveler-warrior design; no caricature, no exoticized costume, no fantasy pirate, no modern gear. Sandstorm moves through a rocky caravan route behind, a restrained glint of blue storm light. Compact chest-up action pose, keep full head/eyes and both gripping hands with weapon hilt and shield grip within central safe zone x24..488,y105..407. Visible brushwork, matte fabric/leather/steel, muted sand and indigo palette, atmospheric traditional tabletop medieval fantasy painting. Avoid glossy photorealism, 3D, anime, Disney, pixel art. No text, labels, symbols, border or UI. Square 1:1.",
+    "generatedPath": "/workspace/generated_images/exec-3869e877-d5dc-4857-859c-ec34ed262c0b.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_42.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.5
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, central wide crop and thumbnail. The raider’s entire face, both weapon grips, saber hilt and shield remain clear within the crop; wrapped desert clothing and windblown sand establish the setting."
+  },
+  {
+    "cardId": "storm_summon_43",
+    "name": "Parthian Horse Archer",
+    "prompt": "Create an original painterly medieval fantasy card illustration, explicit square 1:1 composition for an editable 512x512 master. Depict one ancient Parthian horse archer, a mounted Iranian cavalry warrior in historically grounded Parthian riding clothes, scale vest and soft cap, performing the famed Parthian shot: twisting in the saddle to aim a recurved composite bow backward while galloping. The archer’s full face and eyes, bow hand holding the grip, drawing hand pulling the string, and arrow nock must all be clear and entirely inside central safe zone x24..488,y105..407. Keep rider and horse grouped centrally in a compact horizontal silhouette; horse’s head and neck visible beside the rider, legs and bow tips may reach edges. Horse tack and clothing should suggest ancient Parthia, not medieval European knight, Mongol stereotype or modern gear. Dusty steppe with storm clouds and distant hills, restrained blue lightning on bow limbs. Visible painterly brush texture, matte horse coat/leather/cloth, atmospheric traditional tabletop fantasy art. Avoid glossy photorealism, 3D, anime, Disney or pixel art. No text, border, symbols or UI. Square 1:1.",
+    "generatedPath": "/workspace/generated_images/exec-f7fe23c7-142f-4538-b278-f58197adce3f.png",
+    "editableSourcePath": "game/cards/art/masters/storm_summon_43.png",
+    "sourceNative": [
+      1254,
+      1254
+    ],
+    "focalPoint": [
+      0.5,
+      0.46
+    ],
+    "status": "generated",
+    "batch": 14,
+    "reviewNote": "Reviewed the 512-square source, slightly upward-shifted wide crop and thumbnail. The mounted Parthian rider’s entire face, bow grip, drawing hand and nocked arrow remain visible; the horse’s head and neck establish the mounted archer identity."
   }
 ]
